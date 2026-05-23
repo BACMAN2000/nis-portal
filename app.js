@@ -186,7 +186,7 @@ async function adminUsers(){
       <td><button class="btn sm ghost" onclick="editUser('${p.id}')">Editar</button></td>
     </tr>`).join('');
   $('#main').innerHTML=`<div class="row" style="justify-content:space-between"><h1>Alumnos</h1>
-      <button class="btn sm" onclick="adminNewInfo()">+ Nuevo</button></div>
+      <button class="btn sm" onclick="adminNewUser()">+ Nuevo</button></div>
     <div class="card" style="padding:0;overflow-x:auto">
       <table><thead><tr><th>Nombre</th><th>Grado</th><th>Nivel</th><th>Rol</th><th>Contraseña</th><th>Estado</th><th></th></tr></thead>
       <tbody>${rows||'<tr><td colspan="7" class="center muted">Aún no hay usuarios. Cuando un alumno se registre aparecerá aquí.</td></tr>'}</tbody></table>
@@ -199,7 +199,32 @@ window.togglePw = async (id, btn)=>{
   span.textContent = data?.password || '(no guardada)';
   span.dataset.shown='1';
 };
-window.adminNewInfo = ()=> alert('Para crear cuentas masivas con rol asignado usaremos una función segura (service role) en la siguiente fase. Por ahora el alumno se registra desde la pantalla de inicio y aquí lo gestionas (grado, nivel, estado).');
+window.adminNewUser = ()=>{
+  $('#main').innerHTML=`<button class="btn sm ghost" onclick="adminUsers()">← Volver</button>
+    <div class="card" style="max-width:600px"><h2>Nuevo usuario</h2>
+    <div class="field-2"><div><label>Nombres</label><input id="n_first"></div><div><label>Apellidos</label><input id="n_last"></div></div>
+    <label>Correo</label><input id="n_email" type="email" placeholder="nombre.apellido@nordic-school.edu.pe">
+    <div class="field-2"><div><label>Rol</label><select id="n_role"><option value="student">student</option><option value="teacher">teacher</option><option value="admin">admin</option></select></div>
+      <div><label>Contraseña</label><input id="n_pw" placeholder="visible para el admin"></div></div>
+    <div class="field-2"><div><label>Grado</label><select id="n_grade"><option value="">—</option>${GRADES.map(g=>`<option value="${g.id}">${g.name}</option>`).join('')}</select></div>
+      <div><label>Sección</label><input id="n_section"></div></div>
+    <div class="field-2"><div><label>Nivel</label><select id="n_level"><option value="">—</option>${LEVELS.map(l=>`<option>${l}</option>`).join('')}</select></div>
+      <div><label>Documento</label><input id="n_doc"></div></div>
+    <div id="nmsg"></div>
+    <div class="row" style="margin-top:14px"><button class="btn" onclick="createUser()">Crear cuenta</button></div></div>`;
+};
+window.createUser = async ()=>{
+  const v=id=>$('#'+id).value.trim();
+  const email=v('n_email'), pw=v('n_pw');
+  if(!v('n_first')||!v('n_last')||!email||!pw) return $('#nmsg').innerHTML='<div class="note err">Completa nombres, apellidos, correo y contraseña.</div>';
+  if(pw.length<6) return $('#nmsg').innerHTML='<div class="note err">La contraseña debe tener al menos 6 caracteres.</div>';
+  const meta={first_name:v('n_first'),last_name:v('n_last'),full_name:v('n_first')+' '+v('n_last'),
+    role:$('#n_role').value, document_id:v('n_doc'),
+    grade_id:$('#n_grade').value||null, section:v('n_section')||null, cefr_level:$('#n_level').value||null};
+  const { error } = await sb.rpc('admin_create_user',{p_email:email,p_password:pw,p_meta:meta});
+  $('#nmsg').innerHTML = error?`<div class="note err">${esc(error.message)}</div>`:`<div class="note ok">Cuenta creada.</div>`;
+  if(!error) setTimeout(adminUsers,800);
+};
 window.editUser = async (id)=>{
   const { data:p } = await sb.from('profiles').select('*').eq('id',id).single();
   const m=$('#main');
