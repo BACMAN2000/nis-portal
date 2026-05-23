@@ -1,0 +1,96 @@
+/* ===== Nordic International School — brand system ===== */
+@font-face{font-family:'Gotham';src:url('fonts/GothamBook.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'Gotham';src:url('fonts/GothamMedium.ttf') format('truetype');font-weight:500;font-display:swap}
+@font-face{font-family:'Gotham';src:url('fonts/GothamBold.ttf') format('truetype');font-weight:700;font-display:swap}
+@font-face{font-family:'Gotham';src:url('fonts/GothamLight.ttf') format('truetype');font-weight:300;font-display:swap}
+
+:root{
+  --blue:#4987c6; --blue-d:#2f5f93; --blue-dd:#244c77;
+  --bg:#f2f3ff; --white:#fff; --grey:#636465; --line:#e3e5f3;
+  --lila:#d1d2ea; --celeste:#76cbe5; --puce:#d2909b;
+  --good:#16a34a; --warn:#f59e0b; --bad:#dc2626;
+  --ink:#2b2c33;
+  --r:16px; --r-sm:10px;
+  --shadow:0 10px 30px rgba(36,76,119,.10);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:'Gotham','Montserrat',system-ui,Segoe UI,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5;font-weight:400}
+h1,h2,h3{font-weight:700;line-height:1.2;color:var(--ink);margin:0 0 .4em}
+a{color:var(--blue-d);text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+.muted{color:var(--grey)}
+
+/* layout */
+.app-header{display:flex;align-items:center;gap:14px;background:var(--blue);padding:12px 22px;color:#fff;box-shadow:var(--shadow)}
+.app-header img{height:34px;width:auto;display:block}
+.app-header .spacer{flex:1}
+.app-header .who{font-size:.9rem;opacity:.95}
+.app-header .role-chip{background:rgba(255,255,255,.18);padding:4px 12px;border-radius:999px;font-size:.78rem;font-weight:500;letter-spacing:.5px;text-transform:uppercase}
+.app-header button.logout{background:rgba(255,255,255,.16);color:#fff;border:none;padding:8px 14px;border-radius:var(--r-sm);font-weight:500}
+.app-header button.logout:hover{background:rgba(255,255,255,.28)}
+
+.shell{display:flex;min-height:calc(100vh - 58px)}
+.sidebar{width:230px;background:#fff;border-right:1px solid var(--line);padding:18px 12px;flex-shrink:0}
+.sidebar .nav-item{display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:var(--r-sm);color:var(--grey);font-weight:500;cursor:pointer;margin-bottom:4px}
+.sidebar .nav-item:hover{background:var(--bg)}
+.sidebar .nav-item.active{background:var(--blue);color:#fff}
+.main{flex:1;padding:26px 30px;max-width:1200px}
+@media(max-width:760px){.shell{flex-direction:column}.sidebar{width:auto;display:flex;gap:6px;overflow-x:auto}.sidebar .nav-item{margin:0;white-space:nowrap}}
+
+/* cards */
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px;box-shadow:var(--shadow);margin-bottom:18px}
+.grid{display:grid;gap:16px}
+.grid.cols-3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.grid.cols-2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.stat{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;box-shadow:var(--shadow)}
+.stat .n{font-size:2rem;font-weight:700;color:var(--blue-d)}
+.stat .l{color:var(--grey);font-size:.85rem;text-transform:uppercase;letter-spacing:.5px}
+
+/* forms */
+label{display:block;font-weight:500;font-size:.85rem;margin:12px 0 5px;color:var(--ink)}
+input,select{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:var(--r-sm);font:inherit;background:#fff;color:var(--ink)}
+input:focus,select:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px var(--lila)}
+.btn{background:var(--blue);color:#fff;border:none;padding:12px 22px;border-radius:var(--r-sm);font-weight:700;font-size:1rem}
+.btn:hover{background:var(--blue-d)}
+.btn.ghost{background:#fff;color:var(--blue-d);border:1px solid var(--blue)}
+.btn.sm{padding:7px 14px;font-size:.85rem;font-weight:500}
+.btn.danger{background:var(--bad)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.field-2{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+@media(max-width:560px){.field-2{grid-template-columns:1fr}}
+
+/* table */
+table{width:100%;border-collapse:collapse;font-size:.92rem}
+th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-weight:700;color:var(--grey);font-size:.78rem;text-transform:uppercase;letter-spacing:.5px;background:#fafbff}
+tr:hover td{background:#fafbff}
+.badge{display:inline-block;padding:3px 10px;border-radius:999px;font-size:.74rem;font-weight:500}
+.badge.lvl{background:var(--lila);color:var(--blue-dd)}
+.badge.grade{background:var(--celeste);color:#0b3a48}
+.badge.on{background:#dcfce7;color:#166534}
+.badge.off{background:#fee2e2;color:#991b1b}
+.pw{font-family:Consolas,monospace;letter-spacing:1px}
+.eye{background:none;border:none;font-size:1.05rem;padding:2px 6px;border-radius:6px}
+.eye:hover{background:var(--bg)}
+
+/* auth screen */
+.auth-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;
+  background:linear-gradient(160deg,#4987c6 0%,#76cbe5 100%)}
+.auth-card{background:#fff;border-radius:22px;box-shadow:0 24px 60px rgba(36,76,119,.30);padding:34px;width:100%;max-width:460px}
+.auth-card .logo{display:block;height:46px;margin:0 auto 14px}
+.auth-card h1{text-align:center;font-size:1.5rem}
+.auth-card .sub{text-align:center;color:var(--grey);margin:0 0 18px;font-size:.95rem}
+.auth-switch{text-align:center;margin-top:14px;font-size:.9rem;color:var(--grey)}
+.auth-switch a{font-weight:700;cursor:pointer}
+.note{font-size:.85rem;border-radius:var(--r-sm);padding:10px 12px;margin:10px 0}
+.note.err{background:#fef2f2;color:#991b1b;border:1px solid #fecaca}
+.note.ok{background:#f0fdf4;color:#166534;border:1px solid #bbf7d0}
+.note.info{background:#eff6ff;color:#1e40af;border:1px solid #bfdbfe}
+
+/* progress bars */
+.bar{background:var(--bg);border-radius:999px;height:12px;overflow:hidden;border:1px solid var(--line)}
+.bar > span{display:block;height:100%;background:var(--blue);border-radius:999px}
+.proj{border-left:4px solid var(--blue);background:#fafbff;padding:14px 16px;border-radius:0 var(--r-sm) var(--r-sm) 0}
+.center{text-align:center}
+.hidden{display:none}
