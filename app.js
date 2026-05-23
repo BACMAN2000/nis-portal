@@ -289,8 +289,9 @@ async function studentHome(){
   const { data:atts } = await sb.from('exam_attempts').select('*').eq('student_id',p.id).order('submitted_at',{ascending:false});
   const bySkill = SKILLS.map(sk=>{
     const a=(atts||[]).filter(x=>x.skill===sk);
-    const best=a.length?Math.max(...a.map(x=>+x.percent||0)):null;
-    const avg=a.length?Math.round(a.reduce((s,x)=>s+(+x.percent||0),0)/a.length):null;
+    const scored=a.filter(x=>x.percent!=null);              // Writing is not auto-scored
+    const best=scored.length?Math.max(...scored.map(x=>+x.percent)):null;
+    const avg=scored.length?Math.round(scored.reduce((s,x)=>s+(+x.percent),0)/scored.length):null;
     return {sk,n:a.length,best,avg};
   });
   $('#main').innerHTML=`<h1>Hola, ${esc(p.first_name||p.full_name||'')} 👋</h1>
