@@ -440,17 +440,31 @@ function projection(p,bySkill,atts){
     <div class="note ${cls}" style="margin:8px 0">${verdict}</div>
     <div class="muted">Destreza a reforzar: <b>${weak.sk}</b> (${weak.avg}%).</div></div>`;
 }
-function studentExams(){
+async function studentExams(){
   document.querySelectorAll('[data-nav]').forEach(e=>e.classList.toggle('active',e.dataset.nav==='exams'));
   const ICON={Listening:'🎧',Reading:'📖',Writing:'✍️'};
   const FILE={Reading:'reading-quiz.html',Listening:'listening-quiz.html',Writing:'writing-quiz.html'};
+  const order=['Listening','Reading','Writing'];
+  $('#main').innerHTML=`<h1>Rendir examen</h1><p class="muted">Cargando tu progreso…</p>`;
+  const { data:atts } = await sb.from('exam_attempts').select('skill').eq('student_id', state.profile.id);
+  const done = new Set((atts||[]).map(a=>a.skill));
+  const next = order.find(s=>!done.has(s));
+  const cards = order.map(s=>{
+    const isDone = done.has(s), isNext = s===next;
+    const status = isDone ? `<div class="badge on" style="margin-top:8px">✓ Completado</div>`
+                  : isNext ? `<div class="badge" style="background:var(--blue);color:#fff;margin-top:8px">▶ Empieza aquí</div>`
+                  : `<div class="badge" style="background:var(--lila);color:var(--blue-dd);margin-top:8px">Pendiente</div>`;
+    const ring = isNext ? 'box-shadow:0 0 0 3px var(--blue), var(--shadow);' : '';
+    return `<a class="card center" href="${QUIZ_URL}${FILE[s]}" style="text-decoration:none;color:inherit;display:block;padding:30px 18px;${ring}transition:.15s" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform=''">
+        <div style="font-size:3.6rem;line-height:1;${isDone?'':'filter:none'}">${ICON[s]}</div>
+        <h2 style="margin:10px 0 2px;color:var(--blue-d)">${s}</h2>
+        <div class="muted" style="font-size:.85rem">MOCK 1 y MOCK 2 · A2–C1</div>
+        ${status}
+      </a>`;
+  }).join('');
+  const allDone = order.every(s=>done.has(s));
   $('#main').innerHTML=`<h1>Rendir examen</h1>
-    <p class="muted" style="margin-top:-6px">Elige una destreza. No necesitas volver a poner tus datos — luego eliges el nivel (A2 · B1 · B2 · C1) y tu resultado se guarda en tu avance.</p>
-    <div class="grid cols-3" style="margin-top:12px">
-      ${SKILLS.map(s=>`<a class="card center" href="${QUIZ_URL}${FILE[s]}" style="text-decoration:none;color:inherit;display:block;padding:34px 18px;transition:.15s" onmouseover="this.style.boxShadow='0 14px 36px rgba(36,76,119,.18)';this.style.transform='translateY(-3px)'" onmouseout="this.style.boxShadow='';this.style.transform=''">
-        <div style="font-size:4rem;line-height:1">${ICON[s]}</div>
-        <h2 style="margin:12px 0 4px;color:var(--blue-d)">${s}</h2>
-        <div class="muted">MOCK 1 y MOCK 2 · A2–C1</div>
-      </a>`).join('')}
-    </div>`;
+    <p class="muted" style="margin-top:-6px">Recorrido sugerido: <b>Listening → Reading → Writing</b>. No necesitas volver a poner tus datos; al entrar eliges el nivel (A2 · B1 · B2 · C1) y tu resultado se guarda solo. Al terminar, vuelve al portal para la siguiente.</p>
+    ${allDone?`<div class="note ok">🎉 ¡Completaste las tres destrezas! Puedes repetir cualquiera o revisar tu avance.</div>`:''}
+    <div class="grid cols-3" style="margin-top:12px">${cards}</div>`;
 }
