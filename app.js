@@ -442,10 +442,15 @@ function projection(p,bySkill,atts){
 }
 function studentExams(){
   document.querySelectorAll('[data-nav]').forEach(e=>e.classList.toggle('active',e.dataset.nav==='exams'));
+  const ICON={Listening:'🎧',Reading:'📖',Writing:'✍️'};
+  const FILE={Reading:'reading-quiz.html',Listening:'listening-quiz.html',Writing:'writing-quiz.html'};
   $('#main').innerHTML=`<h1>Rendir examen</h1>
-    <div class="note info">Los exámenes MOCKS CAMBRIDGE se integrarán dentro del portal (guardado automático de resultados). Por ahora puedes abrir la app de exámenes; en la siguiente fase quedará embebida y conectada a tu avance.</div>
-    <div class="grid cols-3">
-      ${SKILLS.map(s=>`<div class="card center"><h2>${s}</h2><p class="muted">MOCK 1 y MOCK 2</p>
-        <a class="btn" href="${QUIZ_URL}${s==='Reading'?'reading-quiz.html':s==='Listening'?'listening-quiz.html':'writing-quiz.html'}" target="_blank" rel="noopener">Abrir ${s} ↗</a></div>`).join('')}
+    <p class="muted" style="margin-top:-6px">Elige una destreza. No necesitas volver a poner tus datos — luego eliges el nivel (A2 · B1 · B2 · C1) y tu resultado se guarda en tu avance.</p>
+    <div class="grid cols-3" style="margin-top:12px">
+      ${SKILLS.map(s=>`<a class="card center" href="${QUIZ_URL}${FILE[s]}" style="text-decoration:none;color:inherit;display:block;padding:34px 18px;transition:.15s" onmouseover="this.style.boxShadow='0 14px 36px rgba(36,76,119,.18)';this.style.transform='translateY(-3px)'" onmouseout="this.style.boxShadow='';this.style.transform=''">
+        <div style="font-size:4rem;line-height:1">${ICON[s]}</div>
+        <h2 style="margin:12px 0 4px;color:var(--blue-d)">${s}</h2>
+        <div class="muted">MOCK 1 y MOCK 2 · A2–C1</div>
+      </a>`).join('')}
     </div>`;
 }
