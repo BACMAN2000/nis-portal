@@ -10,6 +10,35 @@ const SKILLS = ['Reading','Listening','Writing'];
 const QUIZ_URL = 'https://bacman2000.github.io/mocks-cambridge/';
 
 let state = { session:null, profile:null };
+let resultsBranch = 'mock'; // 'mock' | 'practice'
+
+/* ---------- analysis helpers ---------- */
+function isMockAttempt(a){ return a.mock==='mock1' || a.mock==='mock2'; }
+function mockLabel(a){ return a.mock==='mock2'?'MOCK 2':a.mock==='mock1'?'MOCK 1':(a.mock||'Practice'); }
+function partsOf(breakdown){
+  if(!breakdown) return [];
+  const arr = Array.isArray(breakdown) ? breakdown : (breakdown.parts || []);
+  return (arr||[]).map(p=>{
+    const correct = p.correct!=null?p.correct:(p.right!=null?p.right:null);
+    const total = p.total!=null?p.total:(p.outOf!=null?p.outOf:null);
+    let pct = p.pct!=null?p.pct:(p.percent!=null?p.percent:null);
+    if(pct==null && correct!=null && total) pct = Math.round(correct/total*100);
+    return { name: p.part||p.name||p.label||'Part', correct, total, pct };
+  }).filter(p=>p.pct!=null);
+}
+function cefrRec(level, pct){
+  const L = level||'B2';
+  if(pct==null) return {tier:'info', label:'Sin calificar', text:`Esta destreza no se califica automáticamente (la revisa el profesor). No afecta la proyección hacia ${L}.`};
+  if(pct>=80) return {tier:'good', label:`Aprobado alto — ${L}`, text:`Desempeño fuerte en ${L} (${pct}%). Listo para empezar a practicar el nivel siguiente.`};
+  if(pct>=60) return {tier:'good', label:`Aprobado — ${L}`, text:`Aprobado en ${L} (${pct}%); el estándar Cambridge ronda el 60%. Consolidar para asegurar el examen oficial.`};
+  if(pct>=40) return {tier:'warn', label:`Acercándose a ${L}`, text:`Se está acercando a ${L} (${pct}%). Reforzar las partes más bajas antes de presentarse.`};
+  return {tier:'bad', label:`Por debajo de ${L}`, text:`Por debajo de ${L} (${pct}%). Conviene más práctica en este nivel antes del examen oficial.`};
+}
+function barRow(label, pct){
+  const cls = pct>=70?'var(--good)':pct>=50?'var(--warn)':'var(--bad)';
+  return `<div style="margin:8px 0"><div class="row" style="justify-content:space-between"><b>${esc(label)}</b><span class="muted">${pct}%</span></div>
+    <div class="bar"><span style="width:${Math.max(2,pct)}%;background:${cls}"></span></div></div>`;
+}
 
 /* ---------- boot ---------- */
 init();
@@ -255,14 +284,68 @@ window.saveUser = async (id)=>{
   if(!error) setTimeout(adminUsers,700);
 };
 async function adminResults(){
-  const { data } = await sb.from('exam_attempts').select('*, profiles(full_name,grades(name))').order('submitted_at',{ascending:false}).limit(100);
-  const rows=(data||[]).map(a=>`<tr><td>${esc(a.profiles?.full_name||'')}</td><td>${esc(a.profiles?.grades?.name||'')}</td>
-    <td>${esc(a.skill)} · ${esc(a.level)} · ${a.mock==='mock2'?'MOCK 2':'MOCK 1'}</td>
-    <td>${a.score}/${a.total} (${a.percent}%)</td><td class="muted">${new Date(a.submitted_at).toLocaleString()}</td></tr>`).join('');
-  $('#main').innerHTML=`<h1>Resultados</h1><div class="card" style="padding:0;overflow-x:auto">
-    <table><thead><tr><th>Alumno</th><th>Grado</th><th>Examen</th><th>Puntaje</th><th>Fecha</th></tr></thead>
-    <tbody>${rows||'<tr><td colspan="5" class="center muted">Aún no hay resultados. Aparecerán cuando los alumnos rindan los exámenes integrados.</td></tr>'}</tbody></table></div>`;
+  const { data } = await sb.from('exam_attempts').select('*, profiles(full_name,grades(name))').order('submitted_at',{ascending:false}).limit(300);
+  const all = data||[];
+  const isMock = resultsBranch==='mock';
+  const list = all.filter(a=> isMock ? isMockAttempt(a) : !isMockAttempt(a));
+  const tabs = `<div class="row" style="gap:8px;margin:0 0 14px">
+    <button class="btn sm ${isMock?'':'ghost'}" onclick="window._setResBranch('mock')">📝 Mocks (${all.filter(isMockAttempt).length})</button>
+    <button class="btn sm ${isMock?'ghost':''}" onclick="window._setResBranch('practice')">🎯 Practice Tests (${all.filter(a=>!isMockAttempt(a)).length})</button>
+  </div>`;
+  const rows = list.map(a=>`<tr>
+    <td><b>${esc(a.profiles?.full_name||'')}</b></td>
+    <td><span class="badge grade">${esc(a.profiles?.grades?.name||'—')}</span></td>
+    <td>${esc(a.skill)} · <span class="badge lvl">${esc(a.level)}</span> · ${mockLabel(a)}</td>
+    <td>${a.percent!=null?`<b>${a.percent}%</b> <span class="muted">(${a.score}/${a.total})</span>`:'<span class="muted">— (revisión)</span>'}</td>
+    <td>${a.duration_min!=null?a.duration_min+' min':'—'}</td>
+    <td class="muted">${new Date(a.submitted_at).toLocaleDateString()}</td>
+    <td><button class="btn sm ghost" onclick="openAttempt('${a.id}')">Ver análisis →</button></td>
+  </tr>`).join('');
+  $('#main').innerHTML=`<h1>Resultados</h1>${tabs}
+    <div class="card" style="padding:0;overflow-x:auto"><table>
+      <thead><tr><th>Alumno</th><th>Grado</th><th>Examen</th><th>Puntaje</th><th>Tiempo</th><th>Fecha</th><th></th></tr></thead>
+      <tbody>${rows||`<tr><td colspan="7" class="center muted">Sin intentos ${isMock?'de mocks':'de practice tests'} todavía.${isMock?'':' (Los exámenes actuales son Mocks; aquí aparecerían los practice tests cuando se habiliten.)'}</td></tr>`}</tbody></table></div>`;
 }
+window._setResBranch = (b)=>{ resultsBranch=b; adminResults(); };
+
+window.openAttempt = async (id)=>{
+  const { data:a, error } = await sb.from('exam_attempts').select('*, profiles(full_name,grades(name))').eq('id',id).single();
+  if(error){ $('#main').innerHTML=`<div class="note err">${esc(error.message)}</div>`; return; }
+  const parts = partsOf(a.breakdown);
+  const rec = cefrRec(a.level, a.percent);
+  const strengths = parts.filter(p=>p.pct>=70).sort((x,y)=>y.pct-x.pct);
+  const weaknesses = parts.filter(p=>p.pct<50).sort((x,y)=>x.pct-y.pct);
+  const partsHtml = parts.length
+    ? parts.map(p=>barRow(p.name + (p.total?` (${p.correct}/${p.total})`:''), p.pct)).join('')
+    : `<p class="muted">Este intento no guardó detalle por partes${a.percent==null?' (Writing no se califica por partes)':''}.</p>`;
+  const swHtml = parts.length ? `<div class="grid cols-2">
+      <div><h3 style="color:var(--good)">💪 Fortalezas</h3>${strengths.length?'<ul>'+strengths.map(p=>`<li>${esc(p.name)} — ${p.pct}%</li>`).join('')+'</ul>':'<p class="muted">Ninguna parte ≥70% todavía.</p>'}</div>
+      <div><h3 style="color:var(--bad)">⚠️ A reforzar</h3>${weaknesses.length?'<ul>'+weaknesses.map(p=>`<li>${esc(p.name)} — ${p.pct}%</li>`).join('')+'</ul>':'<p class="muted">Sin partes por debajo del 50%. 👏</p>'}</div>
+    </div>` : `<p class="muted">Se mostrarán al guardar el detalle por partes.</p>`;
+  const focus = weaknesses[0] ? `Enfocar el refuerzo en <b>${esc(weaknesses[0].name)}</b> (${weaknesses[0].pct}%).` : (parts.length?'Buen equilibrio entre las partes.':'');
+  // Writing answers (if present)
+  let writingHtml='';
+  if(a.skill==='Writing' && Array.isArray(a.answers)){
+    writingHtml = `<div class="card"><h2>Textos entregados (Writing)</h2>${a.answers.map(t=>`<div style="border:1px solid var(--line);border-radius:10px;padding:12px;margin-bottom:10px"><b>${esc(t.label||'')}</b> <span class="muted">${t.wordCount||''} palabras</span><div class="answer" style="white-space:pre-wrap;margin-top:6px">${esc(t.text||'(sin respuesta)')}</div></div>`).join('')}</div>`;
+  }
+  $('#main').innerHTML=`
+    <button class="btn sm ghost" onclick="adminResults()">← Volver a resultados</button>
+    <div class="card"><h2 style="margin-bottom:2px">${esc(a.profiles?.full_name||'Alumno')}</h2>
+      <div class="muted">${esc(a.profiles?.grades?.name||'')} · ${esc(a.skill)} · ${esc(a.level)} · ${mockLabel(a)} · ${new Date(a.submitted_at).toLocaleString()}</div>
+      <div class="grid cols-3" style="margin-top:14px">
+        <div class="stat"><div class="l">Puntaje</div><div class="n">${a.percent!=null?a.percent+'%':'—'}</div><div class="muted">${a.score!=null?a.score+'/'+a.total:'revisión del profesor'}</div></div>
+        <div class="stat"><div class="l">Tiempo</div><div class="n">${a.duration_min!=null?a.duration_min:'—'}<span style="font-size:1rem"> min</span></div></div>
+        <div class="stat"><div class="l">Tipo</div><div class="n" style="font-size:1.3rem">${isMockAttempt(a)?'Mock':'Practice'}</div><div class="muted">${mockLabel(a)}</div></div>
+      </div>
+    </div>
+    <div class="card"><h2>Resultados por parte</h2>${partsHtml}</div>
+    <div class="card"><h2>Fortalezas y debilidades</h2>${swHtml}</div>
+    <div class="card"><h2>Recomendación CEFR</h2>
+      <div class="note ${rec.tier==='good'?'ok':rec.tier==='bad'?'err':'info'}"><b>${esc(rec.label)}.</b> ${rec.text}</div>
+      ${focus?`<p style="margin-top:8px">${focus}</p>`:''}
+    </div>
+    ${writingHtml}`;
+};
 
 /* ===================== TEACHER ===================== */
 async function renderTeacher(){
