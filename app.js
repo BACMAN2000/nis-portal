@@ -1,6 +1,9 @@
 /* ===================== Portal NIS ===================== */
 const CFG = window.NIS_CONFIG;
-const sb = window.supabase.createClient(CFG.SUPABASE_URL, CFG.SUPABASE_KEY);
+if(!window.supabase || !window.supabase.createClient){
+  document.getElementById('app').innerHTML = '<div class="auth-wrap"><div class="auth-card center"><h1>Portal NIS</h1><p class="muted">No se pudo cargar una librería necesaria (conexión). Recarga la página.</p><button class="btn" onclick="location.reload()">Reintentar</button></div></div>';
+}
+const sb = (window.supabase && window.supabase.createClient) ? window.supabase.createClient(CFG.SUPABASE_URL, CFG.SUPABASE_KEY) : null;
 const $ = (s, r=document) => r.querySelector(s);
 const app = $('#app');
 const esc = s => (s==null?'':String(s)).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
@@ -11,8 +14,10 @@ const QUIZ_URL = 'https://bacman2000.github.io/mocks-cambridge/';
 
 let state = { session:null, profile:null };
 let resultsBranch = 'mock'; // 'mock' | 'practice'
+let userFilter = { grade:'', year:'' };
 
 /* ---------- analysis helpers ---------- */
+function yearOptions(sel){ const cur=new Date().getFullYear(); let o=''; for(let y=2026;y<=Math.max(cur+1,2027);y++){ o+=`<option ${String(sel)===String(y)?'selected':''}>${y}</option>`; } return o; }
 function isMockAttempt(a){ return a.mock==='mock1' || a.mock==='mock2'; }
 function mockLabel(a){ return a.mock==='mock2'?'MOCK 2':a.mock==='mock1'?'MOCK 1':(a.mock||'Practice'); }
 function partsOf(breakdown){
@@ -41,17 +46,24 @@ function barRow(label, pct){
 }
 
 /* ---------- boot ---------- */
+// Watchdog: never get stuck on the initial "Cargando…" splash.
+setTimeout(()=>{ try{ if(/Cargando Portal NIS/.test((document.getElementById('app')||{}).innerHTML||'')) renderAuth(); }catch(_){ } }, 7000);
 init();
 async function init(){
-  const { data } = await sb.auth.getSession();
-  state.session = data.session;
-  if(state.session){ await loadProfile(); }
-  route();
-  sb.auth.onAuthStateChange(async (_e, session)=>{
-    state.session = session;
-    if(session){ await loadProfile(); } else { state.profile=null; }
+  if(!sb) return;
+  try{
+    const { data } = await sb.auth.getSession();
+    state.session = data.session;
+    if(state.session){ await loadProfile(); }
     route();
-  });
+  }catch(e){ console.error('init failed', e); try{ renderAuth(); }catch(_){ } }
+  try{
+    sb.auth.onAuthStateChange(async (_e, session)=>{
+      state.session = session;
+      if(session){ try{ await loadProfile(); }catch(_){ state.profile=null; } } else { state.profile=null; }
+      route();
+    });
+  }catch(_){ }
 }
 async function loadProfile(){
   const { data, error } = await sb.from('profiles').select('*, grades(name)').eq('id', state.session.user.id).single();
@@ -205,22 +217,38 @@ async function adminOverview(){
 async function adminUsers(){
   const { data:profs, error } = await sb.from('profiles').select('*, grades(name)').order('created_at',{ascending:false});
   if(error){ $('#main').innerHTML=`<div class="note err">${esc(error.message)}</div>`; return; }
-  const rows=(profs||[]).map(p=>`<tr data-id="${p.id}">
+  const all = profs||[];
+  const years = [...new Set(all.map(p=>p.academic_year||2026))];
+  if(!years.includes(2026)) years.push(2026);
+  if(!years.includes(new Date().getFullYear())) years.push(new Date().getFullYear());
+  years.sort((a,b)=>a-b);
+  const fg=userFilter.grade, fy=userFilter.year;
+  const list = all.filter(p=> (!fg||String(p.grade_id)===String(fg)) && (!fy||String(p.academic_year||2026)===String(fy)) );
+  const gradeOpts = `<option value="">Todos los grados</option>`+GRADES.map(g=>`<option value="${g.id}" ${String(fg)===String(g.id)?'selected':''}>${g.name}</option>`).join('');
+  const yearOpts = `<option value="">Todos los años</option>`+years.map(y=>`<option value="${y}" ${String(fy)===String(y)?'selected':''}>${y}</option>`).join('');
+  const rows=list.map(p=>`<tr data-id="${p.id}">
       <td><b>${esc(p.full_name||((p.first_name||'')+' '+(p.last_name||'')))}</b><div class="muted" style="font-size:.8rem">${esc(p.email||'')}</div></td>
       <td><span class="badge grade">${esc(p.grades?.name||'—')}</span> ${p.section?esc(p.section):''}</td>
+      <td>${p.academic_year||2026}</td>
       <td><span class="badge lvl">${esc(p.cefr_level||'—')}</span></td>
       <td><span class="badge ${p.role==='student'?'':'on'}">${esc(p.role)}</span></td>
       <td class="pwcell"><span class="pw" data-pw="•••••••">•••••••</span> <button class="eye" title="Ver/ocultar" onclick="togglePw('${p.id}',this)">👁</button></td>
       <td><span class="badge ${p.active?'on':'off'}">${p.active?'Activo':'Inactivo'}</span></td>
       <td><button class="btn sm ghost" onclick="editUser('${p.id}')">Editar</button></td>
     </tr>`).join('');
-  $('#main').innerHTML=`<div class="row" style="justify-content:space-between"><h1>Alumnos</h1>
+  $('#main').innerHTML=`<div class="row" style="justify-content:space-between;align-items:center"><h1>Alumnos</h1>
       <button class="btn sm" onclick="adminNewUser()">+ Nuevo</button></div>
+    <div class="card" style="display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end">
+      <div><label>Grado</label><select onchange="window._setUserFilter('grade',this.value)" style="min-width:170px">${gradeOpts}</select></div>
+      <div><label>Año académico</label><select onchange="window._setUserFilter('year',this.value)" style="min-width:150px">${yearOpts}</select></div>
+      <div class="muted" style="padding-bottom:11px">${list.length} alumno(s)</div>
+    </div>
     <div class="card" style="padding:0;overflow-x:auto">
-      <table><thead><tr><th>Nombre</th><th>Grado</th><th>Nivel</th><th>Rol</th><th>Contraseña</th><th>Estado</th><th></th></tr></thead>
-      <tbody>${rows||'<tr><td colspan="7" class="center muted">Aún no hay usuarios. Cuando un alumno se registre aparecerá aquí.</td></tr>'}</tbody></table>
+      <table><thead><tr><th>Nombre</th><th>Grado</th><th>Año</th><th>Nivel</th><th>Rol</th><th>Contraseña</th><th>Estado</th><th></th></tr></thead>
+      <tbody>${rows||'<tr><td colspan="8" class="center muted">No hay alumnos con ese filtro.</td></tr>'}</tbody></table>
     </div>`;
 }
+window._setUserFilter = (k,v)=>{ userFilter[k]=v; adminUsers(); };
 window.togglePw = async (id, btn)=>{
   const span = btn.closest('.pwcell').querySelector('.pw');
   if(span.dataset.shown==='1'){ span.textContent='•••••••'; span.dataset.shown='0'; return; }
@@ -239,6 +267,7 @@ window.adminNewUser = ()=>{
       <div><label>Sección</label><input id="n_section"></div></div>
     <div class="field-2"><div><label>Nivel</label><select id="n_level"><option value="">—</option>${LEVELS.map(l=>`<option>${l}</option>`).join('')}</select></div>
       <div><label>Documento</label><input id="n_doc"></div></div>
+    <div class="field-2"><div><label>Año académico</label><select id="n_year">${yearOptions(2026)}</select></div><div></div></div>
     <div id="nmsg"></div>
     <div class="row" style="margin-top:14px"><button class="btn" onclick="createUser()">Crear cuenta</button></div></div>`;
 };
@@ -249,7 +278,8 @@ window.createUser = async ()=>{
   if(pw.length<6) return $('#nmsg').innerHTML='<div class="note err">La contraseña debe tener al menos 6 caracteres.</div>';
   const meta={first_name:v('n_first'),last_name:v('n_last'),full_name:v('n_first')+' '+v('n_last'),
     role:$('#n_role').value, document_id:v('n_doc'),
-    grade_id:$('#n_grade').value||null, section:v('n_section')||null, cefr_level:$('#n_level').value||null};
+    grade_id:$('#n_grade').value||null, section:v('n_section')||null, cefr_level:$('#n_level').value||null,
+    academic_year:$('#n_year').value||'2026'};
   const { error } = await sb.rpc('admin_create_user',{p_email:email,p_password:pw,p_meta:meta});
   $('#nmsg').innerHTML = error?`<div class="note err">${esc(error.message)}</div>`:`<div class="note ok">Cuenta creada.</div>`;
   if(!error) setTimeout(adminUsers,800);
@@ -268,7 +298,10 @@ window.editUser = async (id)=>{
         <div><label>Nivel</label><select id="e_level"><option value="">—</option>${LEVELS.map(l=>`<option ${p.cefr_level===l?'selected':''}>${l}</option>`).join('')}</select></div>
         <div><label>Rol</label><select id="e_role">${['student','teacher','admin'].map(r=>`<option ${p.role===r?'selected':''}>${r}</option>`).join('')}</select></div>
       </div>
-      <label>Estado</label><select id="e_active"><option value="true" ${p.active?'selected':''}>Activo</option><option value="false" ${!p.active?'selected':''}>Inactivo</option></select>
+      <div class="field-2">
+        <div><label>Año académico</label><select id="e_year">${yearOptions(p.academic_year||2026)}</select></div>
+        <div><label>Estado</label><select id="e_active"><option value="true" ${p.active?'selected':''}>Activo</option><option value="false" ${!p.active?'selected':''}>Inactivo</option></select></div>
+      </div>
       <label>Reestablecer contraseña visible (opcional)</label><input id="e_pw" placeholder="dejar vacío para no cambiar">
       <div id="emsg"></div>
       <div class="row" style="margin-top:14px"><button class="btn" onclick="saveUser('${id}')">Guardar</button></div>
@@ -276,7 +309,8 @@ window.editUser = async (id)=>{
 };
 window.saveUser = async (id)=>{
   const upd={ grade_id:+$('#e_grade').value, section:$('#e_section').value.trim()||null,
-    cefr_level:$('#e_level').value||null, role:$('#e_role').value, active:$('#e_active').value==='true' };
+    cefr_level:$('#e_level').value||null, role:$('#e_role').value, active:$('#e_active').value==='true',
+    academic_year:+($('#e_year').value||2026) };
   const { error } = await sb.from('profiles').update(upd).eq('id',id);
   const pw=$('#e_pw').value.trim();
   if(pw){ await sb.from('student_credentials').upsert({profile_id:id,password:pw,updated_at:new Date().toISOString()}); }
