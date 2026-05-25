@@ -75,8 +75,11 @@ function route(){
   const r = state.profile.role;
   if(r==='admin') return renderAdmin();
   if(r==='teacher') return renderTeacher();
-  // Students go straight to the quizzes menu (same origin → shared session).
+  // Students go straight to the quizzes menu (same origin → shared session),
+  // UNLESS they explicitly asked to see their progress panel (?me=1).
   if(r==='student'){
+    const wantsProgress = new URLSearchParams(location.search).get('me')==='1';
+    if(wantsProgress) return renderStudent();
     const dest = location.origin + '/mocks-cambridge/quizzes.html';
     if(location.href !== dest){ window.location.replace(dest); }
     return;
