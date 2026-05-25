@@ -75,6 +75,12 @@ function route(){
   const r = state.profile.role;
   if(r==='admin') return renderAdmin();
   if(r==='teacher') return renderTeacher();
+  // Students go straight to the quizzes menu (same origin → shared session).
+  if(r==='student'){
+    const dest = location.origin + '/mocks-cambridge/quizzes.html';
+    if(location.href !== dest){ window.location.replace(dest); }
+    return;
+  }
   return renderStudent();
 }
 async function logout(){ await sb.auth.signOut(); }
