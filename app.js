@@ -480,11 +480,14 @@ function teacherAllowedGrades(){
   return acc.all_grades ? GRADES : GRADES.filter(g => (acc.grades||[]).includes(g.id));
 }
 async function renderTeacher(tab){
+  // "Exámenes" is a link out to the quizzes portal (Listening/Reading/Writing).
+  if(tab==='exams'){ window.location.assign(location.origin + '/mocks-cambridge/quizzes.html'); return; }
   const acc = state.teacherAccess || await loadTeacherAccess();
   const nav=[];
   if(acc.can_results) nav.push({key:'results',label:'📝 Resultados'});
   if(acc.can_students) nav.push({key:'students',label:'👥 Alumnos'});
   if(!nav.length) nav.push({key:'none',label:'— sin accesos —'});
+  nav.push({key:'exams',label:'🎧 Exámenes'});
   const active = (tab && nav.some(n=>n.key===tab)) ? tab : nav[0].key;
   document.body.innerHTML = shell(nav, active, `<div class="center muted">Cargando…</div>`);
   bindNav(renderTeacher);
