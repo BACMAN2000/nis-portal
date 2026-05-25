@@ -206,11 +206,13 @@ async function renderAdmin(tab='users'){
     {key:'overview',label:'📊 Resumen'},
     {key:'users',label:'👥 Alumnos'},
     {key:'results',label:'📝 Resultados'},
+    {key:'teachers',label:'👨‍🏫 Profesores'},
     {key:'mocks',label:'🔓 Mocks'},
   ], tab, `<div class="center muted">Cargando…</div>`);
   bindNav(renderAdmin);
   if(tab==='overview') return adminOverview();
   if(tab==='results') return adminResults();
+  if(tab==='teachers') return adminTeachers();
   if(tab==='mocks') return adminMocks();
   return adminUsers();
 }
@@ -230,6 +232,45 @@ async function adminOverview(){
         <div class="bar"><span style="width:${students.length?Math.round(x.n/students.length*100):0}%"></span></div></div>`).join('')}
     </div>`;
 }
+async function adminTeachers(){
+  const { data:profs, error } = await sb.from('profiles').select('id, full_name, email, grades(name)').eq('role','teacher').order('full_name');
+  if(error){ $('#main').innerHTML=`<div class="note err">${esc(error.message)}</div>`; return; }
+  const { data:accs } = await sb.from('teacher_access').select('*');
+  const amap={}; (accs||[]).forEach(a=>amap[a.profile_id]=a);
+  const teachers=profs||[];
+  if(!teachers.length){ $('#main').innerHTML=`<h1>Profesores — accesos</h1><div class="card">No hay usuarios con rol <b>teacher</b> todavía. Crea uno en <b>Alumnos → + Nuevo</b> (rol = teacher) o cambia el rol de un usuario existente en <b>Editar</b>.</div>`; return; }
+  const chipCss="display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);border-radius:8px;padding:4px 9px;font-size:.85rem";
+  const cards=teachers.map(t=>{
+    const a=amap[t.id]||{can_results:true,can_students:false,all_grades:true,grades:[]};
+    const gradeChips=GRADES.map(g=>`<label style="${chipCss}"><input type="checkbox" class="tg-grade" value="${g.id}" ${(a.grades||[]).includes(g.id)?'checked':''} ${a.all_grades?'disabled':''}> ${g.name}</label>`).join('');
+    return `<div class="card" data-tid="${t.id}">
+      <div class="row" style="justify-content:space-between;align-items:center"><h2 style="margin:0;font-size:1.1rem">${esc(t.full_name||t.email)}</h2><span class="muted" style="font-size:.82rem">${esc(t.email||'')}</span></div>
+      <div class="row" style="gap:18px;flex-wrap:wrap;margin-top:10px">
+        <label style="${chipCss}"><input type="checkbox" class="tg-results" ${a.can_results?'checked':''}> 📝 Ver resultados</label>
+        <label style="${chipCss}"><input type="checkbox" class="tg-students" ${a.can_students?'checked':''}> 👥 Ver alumnos</label>
+        <label style="${chipCss}"><input type="checkbox" class="tg-all" ${a.all_grades?'checked':''} onchange="window._tgAll(this)"> 🏫 Todos los grados</label>
+      </div>
+      <div class="muted" style="margin:10px 0 4px;font-size:.85rem">Grados específicos (sólo si desmarcas "Todos los grados"):</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">${gradeChips}</div>
+      <div class="row" style="margin-top:12px;align-items:center;gap:10px"><button class="btn sm" onclick="window._saveTeacher('${t.id}', this)">Guardar</button><span class="tmsg muted" style="font-size:.85rem"></span></div>
+    </div>`;
+  }).join('');
+  $('#main').innerHTML=`<h1>Profesores — accesos</h1>
+    <div class="note">Asigna qué puede ver cada profesor. Por defecto: <b>Resultados</b> de <b>todos los grados</b>. Desmarca "Todos los grados" para limitarlo a grados específicos.</div>${cards}`;
+}
+window._tgAll=(cb)=>{ cb.closest('.card').querySelectorAll('.tg-grade').forEach(c=>{ c.disabled=cb.checked; }); };
+window._saveTeacher=async(id,btn)=>{
+  const card=btn.closest('.card'); const msgEl=card.querySelector('.tmsg');
+  const row={ profile_id:id,
+    can_results:card.querySelector('.tg-results').checked,
+    can_students:card.querySelector('.tg-students').checked,
+    all_grades:card.querySelector('.tg-all').checked,
+    grades:[...card.querySelectorAll('.tg-grade:checked')].map(c=>+c.value),
+    updated_at:new Date().toISOString(), updated_by:(state.session&&state.session.user&&state.session.user.id)||null };
+  msgEl.textContent='Guardando…';
+  const { error } = await sb.from('teacher_access').upsert(row,{onConflict:'profile_id'});
+  msgEl.textContent = error ? ('⚠ '+error.message) : '✓ Guardado';
+};
 async function adminMocks(){
   const { data, error } = await sb.from('mock_access').select('grade_id, unlocked, updated_at').order('grade_id');
   if(error){ $('#main').innerHTML=`<div class="note err">${esc(error.message)}</div>`; return; }
@@ -384,7 +425,8 @@ async function adminResults(){
       <thead><tr><th>Alumno</th><th>Grado</th><th>Examen</th><th>Puntaje</th><th>Tiempo</th><th>Fecha</th><th></th></tr></thead>
       <tbody>${rows||`<tr><td colspan="7" class="center muted">Sin intentos ${isMock?'de mocks':'de practice tests'} todavía.${isMock?'':' (Los exámenes actuales son Mocks; aquí aparecerían los practice tests cuando se habiliten.)'}</td></tr>`}</tbody></table></div>`;
 }
-window._setResBranch = (b)=>{ resultsBranch=b; adminResults(); };
+window._setResBranch = (b)=>{ resultsBranch=b; (state.profile && state.profile.role==='teacher') ? teacherResults() : adminResults(); };
+window.backToResults = ()=>{ (state.profile && state.profile.role==='teacher') ? teacherResults() : adminResults(); };
 
 window.openAttempt = async (id)=>{
   const { data:a, error } = await sb.from('exam_attempts').select('*, profiles(full_name,grades(name))').eq('id',id).single();
@@ -407,7 +449,7 @@ window.openAttempt = async (id)=>{
     writingHtml = `<div class="card"><h2>Textos entregados (Writing)</h2>${a.answers.map(t=>`<div style="border:1px solid var(--line);border-radius:10px;padding:12px;margin-bottom:10px"><b>${esc(t.label||'')}</b> <span class="muted">${t.wordCount||''} palabras</span><div class="answer" style="white-space:pre-wrap;margin-top:6px">${esc(t.text||'(sin respuesta)')}</div></div>`).join('')}</div>`;
   }
   $('#main').innerHTML=`
-    <button class="btn sm ghost" onclick="adminResults()">← Volver a resultados</button>
+    <button class="btn sm ghost" onclick="backToResults()">← Volver a resultados</button>
     <div class="card"><h2 style="margin-bottom:2px">${esc(a.profiles?.full_name||'Alumno')}</h2>
       <div class="muted">${esc(a.profiles?.grades?.name||'')} · ${esc(a.skill)} · ${esc(a.level)} · ${mockLabel(a)} · ${new Date(a.submitted_at).toLocaleString()}</div>
       <div class="grid cols-3" style="margin-top:14px">
@@ -426,13 +468,72 @@ window.openAttempt = async (id)=>{
 };
 
 /* ===================== TEACHER ===================== */
-async function renderTeacher(){
-  document.body.innerHTML = shell([{key:'g',label:'👥 Mi grado'}],'g',`<div class="center muted">Cargando…</div>`);
+let teacherFilter = { grade:'' };
+async function loadTeacherAccess(){
+  const { data } = await sb.from('teacher_access').select('*').eq('profile_id', state.session.user.id).maybeSingle();
+  // Defaults when the admin hasn't configured the teacher yet: results, all grades.
+  state.teacherAccess = data || { can_results:true, can_students:false, all_grades:true, grades:[] };
+  return state.teacherAccess;
+}
+function teacherAllowedGrades(){
+  const acc = state.teacherAccess || { all_grades:true, grades:[] };
+  return acc.all_grades ? GRADES : GRADES.filter(g => (acc.grades||[]).includes(g.id));
+}
+async function renderTeacher(tab){
+  const acc = state.teacherAccess || await loadTeacherAccess();
+  const nav=[];
+  if(acc.can_results) nav.push({key:'results',label:'📝 Resultados'});
+  if(acc.can_students) nav.push({key:'students',label:'👥 Alumnos'});
+  if(!nav.length) nav.push({key:'none',label:'— sin accesos —'});
+  const active = (tab && nav.some(n=>n.key===tab)) ? tab : nav[0].key;
+  document.body.innerHTML = shell(nav, active, `<div class="center muted">Cargando…</div>`);
+  bindNav(renderTeacher);
+  if(active==='results') return teacherResults();
+  if(active==='students') return teacherStudents();
+  $('#main').innerHTML = `<div class="card">El administrador aún no te ha asignado accesos. Escríbele para que te habilite <b>Resultados</b> o <b>Alumnos</b>.</div>`;
+}
+function gradeFilterBar(onchangeFn){
+  const fg=teacherFilter.grade;
+  const opts=`<option value="">Todos los grados</option>`+teacherAllowedGrades().map(g=>`<option value="${g.id}" ${String(fg)===String(g.id)?'selected':''}>${g.name}</option>`).join('');
+  return `<div class="card" style="display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end">
+      <div><label>Grado</label><select onchange="${onchangeFn}(this.value)" style="min-width:180px">${opts}</select></div>
+    </div>`;
+}
+window._setTeacherGrade = (v)=>{ teacherFilter.grade=v; renderTeacher(state._tab||'results'); };
+async function teacherResults(){
+  state._tab='results';
+  const { data } = await sb.from('exam_attempts').select('*, profiles(full_name,grade_id,grades(name))').order('submitted_at',{ascending:false}).limit(500);
+  const all = data||[]; const isMock = resultsBranch==='mock'; const fg=teacherFilter.grade;
+  let list = all.filter(a=> isMock?isMockAttempt(a):!isMockAttempt(a));
+  if(fg) list = list.filter(a=> String(a.profiles?.grade_id)===String(fg));
+  const tabs=`<div class="row" style="gap:8px;margin:0 0 14px">
+    <button class="btn sm ${isMock?'':'ghost'}" onclick="window._setResBranch('mock')">📝 Mocks (${all.filter(isMockAttempt).length})</button>
+    <button class="btn sm ${isMock?'ghost':''}" onclick="window._setResBranch('practice')">🎯 Practice Tests (${all.filter(a=>!isMockAttempt(a)).length})</button></div>`;
+  const rows=list.map(a=>`<tr>
+    <td><b>${esc(a.profiles?.full_name||'')}</b></td>
+    <td><span class="badge grade">${esc(a.profiles?.grades?.name||'—')}</span></td>
+    <td>${esc(a.skill)} · <span class="badge lvl">${esc(a.level)}</span> · ${mockLabel(a)}</td>
+    <td>${a.percent!=null?`<b>${a.percent}%</b> <span class="muted">(${a.score}/${a.total})</span>`:'<span class="muted">— (revisión)</span>'}</td>
+    <td>${a.duration_min!=null?a.duration_min+' min':'—'}</td>
+    <td class="muted">${new Date(a.submitted_at).toLocaleDateString()}</td>
+    <td><button class="btn sm ghost" onclick="openAttempt('${a.id}')">Ver análisis →</button></td></tr>`).join('');
+  $('#main').innerHTML=`<h1>Resultados</h1>${gradeFilterBar('window._setTeacherGrade')}${tabs}
+    <div class="card" style="padding:0;overflow-x:auto"><table>
+      <thead><tr><th>Alumno</th><th>Grado</th><th>Examen</th><th>Puntaje</th><th>Tiempo</th><th>Fecha</th><th></th></tr></thead>
+      <tbody>${rows||`<tr><td colspan="7" class="center muted">Sin intentos ${isMock?'de mocks':'de practice tests'} para este filtro.</td></tr>`}</tbody></table></div>`;
+}
+async function teacherStudents(){
+  state._tab='students';
   const { data } = await sb.from('profiles').select('*, grades(name)').eq('role','student');
-  const rows=(data||[]).map(p=>`<tr><td>${esc(p.full_name||p.email)}</td><td>${esc(p.grades?.name||'')}</td><td><span class="badge lvl">${esc(p.cefr_level||'—')}</span></td></tr>`).join('');
-  $('#main').innerHTML=`<h1>Mis alumnos</h1><div class="card" style="padding:0;overflow-x:auto">
-    <table><thead><tr><th>Alumno</th><th>Grado</th><th>Nivel</th></tr></thead>
-    <tbody>${rows||'<tr><td colspan="3" class="center muted">Sin alumnos asignados a tu grado.</td></tr>'}</tbody></table></div>`;
+  let list=data||[]; const fg=teacherFilter.grade;
+  if(fg) list=list.filter(p=>String(p.grade_id)===String(fg));
+  list.sort((a,b)=>(a.full_name||'').localeCompare(b.full_name||''));
+  const rows=list.map(p=>`<tr><td><b>${esc(p.full_name||p.email)}</b></td><td><span class="badge grade">${esc(p.grades?.name||'—')}</span> ${p.section?esc(p.section):''}</td><td><span class="badge lvl">${esc(p.cefr_level||'—')}</span></td></tr>`).join('');
+  $('#main').innerHTML=`<h1>Alumnos</h1>${gradeFilterBar('window._setTeacherGrade')}
+    <div class="card" style="padding:0;overflow-x:auto"><table>
+      <thead><tr><th>Alumno</th><th>Grado</th><th>Nivel</th></tr></thead>
+      <tbody>${rows||'<tr><td colspan="3" class="center muted">Sin alumnos para este filtro.</td></tr>'}</tbody></table>
+      <div class="muted" style="padding:10px 14px">${list.length} alumno(s)</div></div>`;
 }
 
 /* ===================== STUDENT ===================== */
