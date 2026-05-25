@@ -124,9 +124,14 @@ function renderAuth(mode='login'){
   if(mode==='login'){
     $('#toSignup').onclick=()=>renderAuth('signup');
     $('#loginBtn').onclick=doLogin;
+    // Enter key submits the login form
+    ['li_email','li_pw'].forEach(id=>{ const el=$('#'+id); if(el) el.addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); doLogin(); } }); });
+    const fe=$('#li_email'); if(fe) fe.focus();
   } else {
     $('#toLogin').onclick=()=>renderAuth('login');
     $('#signupBtn').onclick=doSignup;
+    // Enter key submits the signup form (from any field)
+    document.querySelectorAll('#form input').forEach(el=>{ el.addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); doSignup(); } }); });
   }
 }
 function loginForm(){
