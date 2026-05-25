@@ -192,10 +192,12 @@ async function renderAdmin(tab='users'){
     {key:'overview',label:'📊 Resumen'},
     {key:'users',label:'👥 Alumnos'},
     {key:'results',label:'📝 Resultados'},
+    {key:'mocks',label:'🔓 Mocks'},
   ], tab, `<div class="center muted">Cargando…</div>`);
   bindNav(renderAdmin);
   if(tab==='overview') return adminOverview();
   if(tab==='results') return adminResults();
+  if(tab==='mocks') return adminMocks();
   return adminUsers();
 }
 async function adminOverview(){
@@ -214,6 +216,34 @@ async function adminOverview(){
         <div class="bar"><span style="width:${students.length?Math.round(x.n/students.length*100):0}%"></span></div></div>`).join('')}
     </div>`;
 }
+async function adminMocks(){
+  const { data, error } = await sb.from('mock_access').select('grade_id, unlocked, updated_at').order('grade_id');
+  if(error){ $('#main').innerHTML=`<div class="note err">${esc(error.message)}</div>`; return; }
+  const map={}; (data||[]).forEach(r=>map[r.grade_id]=r);
+  const rows = GRADES.map(g=>{
+    const r=map[g.id]; const on=!!(r&&r.unlocked);
+    const when = (r&&r.updated_at)?new Date(r.updated_at).toLocaleString():'';
+    return `<tr>
+      <td><b>${g.name}</b></td>
+      <td><span class="badge ${on?'on':'off'}">${on?'🔓 Desbloqueado':'🔒 Bloqueado'}</span></td>
+      <td class="muted" style="font-size:.82rem">${when}</td>
+      <td><button class="btn sm ${on?'ghost':''}" onclick="window._toggleMock(${g.id}, ${on?'false':'true'}, this)">${on?'Bloquear':'Desbloquear'}</button></td>
+    </tr>`;
+  }).join('');
+  $('#main').innerHTML = `<h1>Mocks — control de acceso</h1>
+    <div class="note">Por defecto los <b>MOCKS están bloqueados</b> para los alumnos. Habilítalos por grado cuando estén listos para rendirlos. Los <b>Practice Tests</b> siempre están disponibles. Profesores y administradores siempre ven los mocks.</div>
+    <div class="card" style="padding:0;overflow-x:auto"><table>
+      <thead><tr><th>Grado</th><th>Estado de Mocks</th><th>Última actualización</th><th></th></tr></thead>
+      <tbody>${rows}</tbody></table></div>`;
+}
+window._toggleMock = async (gradeId, to, btn)=>{
+  if(btn){ btn.disabled=true; btn.textContent='…'; }
+  const { error } = await sb.from('mock_access').upsert(
+    { grade_id:gradeId, unlocked:to, updated_at:new Date().toISOString(), updated_by:(state.session&&state.session.user&&state.session.user.id)||null },
+    { onConflict:'grade_id' });
+  if(error){ alert('No se pudo actualizar: '+error.message); }
+  adminMocks();
+};
 async function adminUsers(){
   const { data:profs, error } = await sb.from('profiles').select('*, grades(name)').order('created_at',{ascending:false});
   if(error){ $('#main').innerHTML=`<div class="note err">${esc(error.message)}</div>`; return; }
