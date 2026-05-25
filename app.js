@@ -51,6 +51,17 @@ setTimeout(()=>{ try{ if(/Cargando Portal NIS/.test((document.getElementById('ap
 init();
 async function init(){
   if(!sb) return;
+  // Came from "Cerrar sesión": force sign-out and show the login screen.
+  try{
+    const params = new URLSearchParams(location.search);
+    if(params.get('logout')==='1'){
+      try{ await sb.auth.signOut(); }catch(_){}
+      try{ history.replaceState(null,'',location.pathname); }catch(_){}
+      state.session=null; state.profile=null;
+      renderAuth();
+      return;
+    }
+  }catch(_){ }
   try{
     const { data } = await sb.auth.getSession();
     state.session = data.session;
