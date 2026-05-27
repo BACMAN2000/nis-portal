@@ -601,31 +601,61 @@ window.gradeWriting = async (id)=>{
   const { data:a, error } = await sb.from('exam_attempts').select('*, profiles(full_name,email,grade_id,grades(name))').eq('id',id).single();
   if(error){ $('#main').innerHTML=`<div class="note err">${esc(error.message)}</div>`; return; }
   const rubric = WRITING_RUBRICS[a.level] || WRITING_RUBRICS.B1;
-  // restore previous selection if re-grading
-  const prev = {}; const pb = (a.breakdown && a.breakdown.parts) || [];
-  pb.forEach(p=>{ prev[p.part] = (p.correct!=null?p.correct:null); });
-  gradeState = { id, attempt:a, rubric, sel: Object.assign({}, prev), msg:(a.breakdown&&a.breakdown.teacherMessage)||'', touched: !!(a.breakdown&&a.breakdown.teacherMessage) };
+  // restore previous per-task selections if re-grading
+  const sel_t1 = {}, sel_t2 = {};
+  const pb = (a.breakdown && a.breakdown.parts) || [];
+  pb.forEach(p=>{
+    const m1 = p.part && p.part.match(/^Task 1 — (.+)$/);
+    const m2 = p.part && p.part.match(/^Task 2 — (.+)$/);
+    if(m1) sel_t1[m1[1]] = p.correct!=null ? p.correct : null;
+    else if(m2) sel_t2[m2[1]] = p.correct!=null ? p.correct : null;
+    else if(p.part) sel_t1[p.part] = p.correct!=null ? p.correct : null; // backwards compat
+  });
+  gradeState = { id, attempt:a, rubric, sel_t1, sel_t2, msg:(a.breakdown&&a.breakdown.teacherMessage)||'', touched: !!(a.breakdown&&a.breakdown.teacherMessage) };
   renderGradeWriting();
 };
-function renderGradeWriting(){
-  const a=gradeState.attempt, rubric=gradeState.rubric, sel=gradeState.sel;
-  const answers = Array.isArray(a.answers) ? a.answers : [];
-  const textsHtml = answers.length
-    ? answers.map(t=>`<div style="border:1px solid var(--line);border-radius:10px;padding:12px;margin-bottom:10px">
-        <div class="row" style="justify-content:space-between"><b>${esc(t.label||'Task')}</b><span class="muted" style="font-size:.82rem">${t.wordCount!=null?t.wordCount+' palabras':''}</span></div>
-        <div style="white-space:pre-wrap;margin-top:6px">${esc(t.text||'(sin respuesta)')}</div></div>`).join('')
-    : `<p class="muted">Este intento no guardó el texto del alumno.</p>`;
+
+/* Builds the rubric card grid for one task (taskIdx = 0 or 1). */
+function _taskRubricHtml(taskLabel, taskIdx){
+  const rubric = gradeState.rubric;
+  const sel = taskIdx === 0 ? gradeState.sel_t1 : gradeState.sel_t2;
+  const taskMax = rubric.subs.length * rubric.bandMax;
   const subsHtml = rubric.subs.map((s,si)=>{
     const desc = WRITING_SUBSCALE[s] || [];
     const cards = desc.map((d,band)=>{
       const on = sel[s]===band;
-      return `<div onclick="window._pickBand(${si},${band})" style="cursor:pointer;border:2px solid ${on?'#4987c6':'var(--line)'};background:${on?'#eef4fb':'#fff'};border-radius:8px;padding:8px 10px;margin:4px 0;display:flex;gap:10px;align-items:flex-start">
+      return `<div onclick="window._pickBand(${taskIdx},${si},${band})" style="cursor:pointer;border:2px solid ${on?'#4987c6':'var(--line)'};background:${on?'#eef4fb':'#fff'};border-radius:8px;padding:8px 10px;margin:4px 0;display:flex;gap:10px;align-items:flex-start">
         <span style="flex:0 0 auto;font-weight:700;color:${on?'#2d5a8d':'#94a3b8'};min-width:46px">Band ${band}</span>
         <span style="font-size:.88rem">${esc(d)}</span></div>`;
     }).join('');
-    return `<div class="card"><h3 style="margin:0 0 6px">${esc(s)} <span class="muted" style="font-weight:400">/ ${rubric.bandMax}</span> <b id="sub-${si}" style="float:right;color:#2d5a8d">${sel[s]!=null?sel[s]:'—'}</b></h3>${cards}</div>`;
+    return `<div class="card" style="margin-bottom:6px"><h3 style="margin:0 0 6px">${esc(s)} <span class="muted" style="font-weight:400">/ ${rubric.bandMax}</span> <b style="float:right;color:#2d5a8d">${sel[s]!=null?sel[s]:'—'}</b></h3>${cards}</div>`;
   }).join('');
-  const max = rubric.subs.length*rubric.bandMax;
+  return `<div style="border:2px solid #4987c6;border-radius:14px;padding:12px 14px;margin-bottom:14px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+      <h3 style="margin:0;color:#2d5a8d">✏️ ${esc(taskLabel)}</h3>
+      <span style="font-size:1.1rem;font-weight:800;color:#2d5a8d" id="gw-sub${taskIdx+1}">—&nbsp;/&nbsp;${taskMax}</span>
+    </div>
+    ${subsHtml}
+  </div>`;
+}
+
+function renderGradeWriting(){
+  const a=gradeState.attempt, rubric=gradeState.rubric;
+  const answers = Array.isArray(a.answers) ? a.answers : [];
+  const taskMax = rubric.subs.length * rubric.bandMax;
+  const totalMax = taskMax * 2;
+
+  // Left column: both answer texts
+  const textsHtml = answers.length
+    ? answers.map(t=>`<div style="border:1px solid var(--line);border-radius:10px;padding:12px;margin-bottom:10px">
+        <div class="row" style="justify-content:space-between"><b>${esc(t.label||'Task')}</b><span class="muted" style="font-size:.82rem">${t.wordCount!=null?t.wordCount+' palabras':''}</span></div>
+        <div style="white-space:pre-wrap;margin-top:6px;font-size:.93rem;line-height:1.6">${esc(t.text||'(sin respuesta)')}</div></div>`).join('')
+    : `<p class="muted">Este intento no guardó el texto del alumno.</p>`;
+
+  // Right column: Task 1 rubrics + Task 2 rubrics
+  const t1Label = (answers[0] && answers[0].label) || 'Task 1 — Part 1';
+  const t2Label = (answers[1] && answers[1].label) || 'Task 2 — Part 2';
+
   $('#main').innerHTML = `
     <button class="btn sm ghost" onclick="teacherResults()">← Volver a resultados</button>
     <h1 style="margin:.4rem 0 0">✍️ Calificar Writing</h1>
@@ -635,14 +665,18 @@ function renderGradeWriting(){
         <div class="card"><h2 style="margin-top:0">Texto del alumno</h2>${textsHtml}</div>
       </div>
       <div>
-        <div class="note">Haz clic en el descriptor que corresponde en cada criterio (rúbrica Cambridge, 0–${rubric.bandMax}). La nota total se calcula sola.</div>
-        ${subsHtml}
+        <div class="note">Haz clic en el descriptor que corresponde en cada criterio (rúbrica Cambridge, 0–${rubric.bandMax}). La nota de cada parte se calcula sola.</div>
+        ${_taskRubricHtml(t1Label, 0)}
+        ${_taskRubricHtml(t2Label, 1)}
         <div class="card" style="position:sticky;bottom:0">
-          <div class="row" style="justify-content:space-between;align-items:center">
+          <div class="row" style="justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">
             <h2 style="margin:0">Total</h2>
-            <div style="font-size:1.4rem;font-weight:800;color:#2d5a8d"><span id="gw-total">0</span> / ${max} · <span id="gw-pct">0</span>%</div>
+            <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap">
+              <span class="muted" style="font-size:.85rem">T1: <b id="gw-sub1-lbl">—</b> &nbsp;T2: <b id="gw-sub2-lbl">—</b></span>
+              <div style="font-size:1.4rem;font-weight:800;color:#2d5a8d"><span id="gw-total">0</span> / ${totalMax} · <span id="gw-pct">0</span>%</div>
+            </div>
           </div>
-          <label style="margin-top:10px">Mensaje para el alumno (editable)</label>
+          <label style="margin-top:10px;display:block">Mensaje para el alumno (editable)</label>
           <textarea id="gw-msg" rows="5" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:8px" oninput="gradeState.touched=true;gradeState.msg=this.value">${esc(gradeState.msg||'')}</textarea>
           <div id="gw-status" style="margin-top:6px;font-size:.88rem"></div>
           <div class="row" style="margin-top:10px;gap:10px">
@@ -653,42 +687,66 @@ function renderGradeWriting(){
     </div>`;
   _recalcGrade();
 }
+
 function _recalcGrade(){
-  const r=gradeState.rubric, sel=gradeState.sel;
-  let total=0, all=true;
-  r.subs.forEach(s=>{ if(sel[s]!=null) total+=sel[s]; else all=false; });
-  const max=r.subs.length*r.bandMax;
-  const pct=Math.round(total/max*100);
-  const tEl=$('#gw-total'), pEl=$('#gw-pct'); if(tEl) tEl.textContent=total; if(pEl) pEl.textContent=pct;
-  gradeState.total=total; gradeState.max=max; gradeState.pct=pct; gradeState.complete=all;
-  // Auto-suggest the message only while the teacher hasn't edited it.
+  const r=gradeState.rubric;
+  let t1=0, t2=0, all=true;
+  r.subs.forEach(s=>{
+    if(gradeState.sel_t1[s]!=null) t1+=gradeState.sel_t1[s]; else all=false;
+    if(gradeState.sel_t2[s]!=null) t2+=gradeState.sel_t2[s]; else all=false;
+  });
+  const taskMax=r.subs.length*r.bandMax, totalMax=taskMax*2;
+  const total=t1+t2, pct=Math.round(total/totalMax*100);
+  const tEl=$('#gw-total'), pEl=$('#gw-pct');
+  if(tEl) tEl.textContent=total; if(pEl) pEl.textContent=pct;
+  const s1=$('#gw-sub1-lbl'), s2=$('#gw-sub2-lbl');
+  if(s1) s1.textContent=t1+'/'+taskMax; if(s2) s2.textContent=t2+'/'+taskMax;
+  gradeState.t1=t1; gradeState.t2=t2; gradeState.total=total; gradeState.max=totalMax; gradeState.pct=pct; gradeState.complete=all;
+  // Auto-suggest message only while teacher hasn't edited it
   if(all && !gradeState.touched){
     gradeState.msg = writingMessage(gradeState.attempt.profiles?.full_name, gradeState.attempt.level, pct);
     const msg=$('#gw-msg'); if(msg) msg.value=gradeState.msg;
   }
 }
-window._pickBand = (si,band)=>{
-  const s=gradeState.rubric.subs[si]; gradeState.sel[s]=band;
+window._pickBand = (taskIdx, si, band)=>{
+  const s=gradeState.rubric.subs[si];
+  if(taskIdx===0) gradeState.sel_t1[s]=band; else gradeState.sel_t2[s]=band;
   renderGradeWriting();
 };
 window._sendWritingResult = async ()=>{
   const st=$('#gw-status');
-  if(!gradeState.complete){ st.innerHTML='<span style="color:var(--bad)">Selecciona un Band en cada criterio antes de enviar.</span>'; return; }
+  if(!gradeState.complete){ st.innerHTML='<span style="color:var(--bad)">Selecciona un Band en cada criterio de ambas partes antes de enviar.</span>'; return; }
   const a=gradeState.attempt; const msg=($('#gw-msg').value||'').trim();
-  const breakdown={ kind:'writing-graded',
-    parts: gradeState.rubric.subs.map(s=>({part:s, correct:gradeState.sel[s], total:gradeState.rubric.bandMax})),
+  const rubric=gradeState.rubric;
+  const breakdown={
+    kind:'writing-graded',
+    parts:[
+      ...rubric.subs.map(s=>({part:'Task 1 — '+s, correct:gradeState.sel_t1[s], total:rubric.bandMax})),
+      ...rubric.subs.map(s=>({part:'Task 2 — '+s, correct:gradeState.sel_t2[s], total:rubric.bandMax}))
+    ],
+    task1Total: gradeState.t1, task2Total: gradeState.t2,
     teacherMessage: msg,
     gradedBy: (state.profile&&state.profile.full_name)||(state.session&&state.session.user&&state.session.user.email)||'teacher',
-    gradedAt: new Date().toISOString() };
+    gradedAt: new Date().toISOString()
+  };
   $('#gw-send').disabled=true; st.textContent='Guardando…';
-  const { error } = await sb.rpc('grade_writing',{ p_attempt:a.id, p_score:gradeState.total, p_total:gradeState.max, p_percent:gradeState.pct, p_breakdown:breakdown });
-  if(error){ $('#gw-send').disabled=false; st.innerHTML=`<span style="color:var(--bad)">No se pudo guardar: ${esc(error.message)}</span>`; return; }
-  // Email the student via the school webhook (Apps Script sends from pbaca@). Fire-and-forget.
+  // ── FIX: wrap RPC in try/catch + timeout so it never freezes on "Guardando…" ──
+  let rpcErr = null;
+  try {
+    const rpcPromise = sb.rpc('grade_writing',{ p_attempt:a.id, p_score:gradeState.total, p_total:gradeState.max, p_percent:gradeState.pct, p_breakdown:breakdown });
+    const timeout = new Promise((_,rej)=>setTimeout(()=>rej(new Error('Tiempo de espera agotado — intenta de nuevo.')),12000));
+    const { error } = await Promise.race([rpcPromise, timeout]);
+    rpcErr = error || null;
+  } catch(e){ rpcErr = e; }
+  if(rpcErr){ $('#gw-send').disabled=false; st.innerHTML=`<span style="color:var(--bad)">No se pudo guardar: ${esc(rpcErr.message||String(rpcErr))}</span>`; return; }
+  // Fire-and-forget webhook (Apps Script emails the student)
   try{
     fetch(WRITING_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
       body:JSON.stringify({ type:'writing_result', studentEmail:a.profiles?.email||'', studentName:a.profiles?.full_name||'',
         firstName:(a.profiles?.full_name||'').split(' ')[0], grade:a.profiles?.grades?.name||'', level:a.level,
         examTitle:'Writing '+(mockLabel(a)), score:gradeState.total, total:gradeState.max, percent:gradeState.pct,
+        task1Score:gradeState.t1, task1Total:rubric.subs.length*rubric.bandMax,
+        task2Score:gradeState.t2, task2Total:rubric.subs.length*rubric.bandMax,
         message:msg, teacherEmail:'pbaca@nordic-school.edu.pe', teacherName:breakdown.gradedBy, schoolName:'Nordic International School of Lima' }) });
   }catch(e){}
   st.innerHTML='<span style="color:var(--good)">✓ Resultado guardado y enviado al alumno.</span>';
