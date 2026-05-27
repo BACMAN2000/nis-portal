@@ -530,7 +530,9 @@ async function teacherResults(){
     <td>${a.percent!=null?`<b>${a.percent}%</b> <span class="muted">(${a.score}/${a.total})</span>`:'<span class="muted">— (revisión)</span>'}</td>
     <td>${a.duration_min!=null?a.duration_min+' min':'—'}</td>
     <td class="muted">${new Date(a.submitted_at).toLocaleDateString()}</td>
-    <td><button class="btn sm ghost" onclick="openAttempt('${a.id}')">Ver análisis →</button></td></tr>`).join('');
+    <td>${a.skill==='Writing'
+        ? `<button class="btn sm" onclick="gradeWriting('${a.id}')">✍️ ${a.percent!=null?'Re-calificar':'Calificar'}</button>`
+        : `<button class="btn sm ghost" onclick="openAttempt('${a.id}')">Ver análisis →</button>`}</td></tr>`).join('');
   $('#main').innerHTML=`<h1>Resultados</h1>${gradeFilterBar('window._setTeacherGrade')}${tabs}
     <div class="card" style="padding:0;overflow-x:auto"><table>
       <thead><tr><th>Alumno</th><th>Grado</th><th>Examen</th><th>Puntaje</th><th>Tiempo</th><th>Fecha</th><th></th></tr></thead>
@@ -549,6 +551,149 @@ async function teacherStudents(){
       <tbody>${rows||'<tr><td colspan="3" class="center muted">Sin alumnos para este filtro.</td></tr>'}</tbody></table>
       <div class="muted" style="padding:10px 14px">${list.length} alumno(s)</div></div>`;
 }
+
+/* ===================== WRITING GRADING (teacher) ===================== */
+const WRITING_WEBHOOK = 'https://script.google.com/macros/s/AKfycbzwn09Be0ZfKxGpwgkjLdp7nIs7awq8h7SVKkMlWN4EjekkOFqpLmnChzGHN_bB6kN-/exec';
+function band6(b1,b3,b5){
+  return [
+    'Below Band 1 — content largely irrelevant, or too little language to assess.',
+    b1,
+    'Between Bands 1 and 3 — shares features of both.',
+    b3,
+    'Between Bands 3 and 5 — shares features of both.',
+    b5
+  ];
+}
+const WRITING_SUBSCALE = {
+  'Content': band6(
+    'Irrelevances or misunderstanding of the task; the reader is only minimally informed.',
+    'Minor irrelevances and/or omissions; on the whole the target reader is informed.',
+    'All parts of the task are covered with relevant ideas; the target reader is fully informed.'),
+  'Communicative Achievement': band6(
+    'Communicates simple ideas in a basic way; register and format only partly appropriate.',
+    'Uses a generally appropriate register and format; main ideas communicated and the reader’s attention mostly held.',
+    'Register, format and tone fully fit the task; simple and more complex ideas are communicated clearly and the reader is engaged throughout.'),
+  'Organisation': band6(
+    'Ideas connected with basic, high-frequency linkers (and, but, then, because).',
+    'Generally well organised and coherent; a range of basic linkers and some cohesive devices.',
+    'Well organised and coherent; a variety of cohesive devices and organisational patterns used smoothly.'),
+  'Language': band6(
+    'Basic everyday vocabulary and simple structures; errors may obscure meaning at times.',
+    'Everyday vocabulary used appropriately, with a mix of simple and some complex grammar; errors present but rarely impede communication.',
+    'Wide range of vocabulary and structures including less common items, used with control; errors are minimal and meaning is always clear.')
+};
+const WRITING_RUBRICS = {
+  A2:{ bandMax:5, subs:['Content','Organisation','Language'] },
+  B1:{ bandMax:5, subs:['Content','Communicative Achievement','Organisation','Language'] },
+  B2:{ bandMax:5, subs:['Content','Communicative Achievement','Organisation','Language'] },
+  C1:{ bandMax:5, subs:['Content','Communicative Achievement','Organisation','Language'] }
+};
+let gradeState = null;
+function writingMessage(name, level, pct){
+  const f = (name||'').split(' ')[0] || 'there';
+  if(pct>=85) return `Hi ${f}! Excellent work on your ${level} writing — you scored ${pct}%. Your ideas are clear, well organised, and your language is strong and varied. Keep writing like this! 🌟`;
+  if(pct>=70) return `Hi ${f}! Good job on your ${level} writing — ${pct}%. You communicate your ideas well and cover the task. To reach the top band, add a little more range and accuracy in your language. 👍`;
+  if(pct>=50) return `Hi ${f}! Nice effort on your ${level} writing — ${pct}%. You're developing well. Focus on covering every part of the task and linking your ideas more clearly with connectors. 💪`;
+  if(pct>=30) return `Hi ${f}! Thanks for your ${level} writing — ${pct}%. Let's work on answering every point in the task, organising your paragraphs, and writing a bit more. You'll improve quickly with practice! ✍️`;
+  return `Hi ${f}! Thanks for handing in your ${level} writing — ${pct}%. Don't worry: with regular practice on task content, organisation and basic grammar you'll make fast progress. Your teacher is here to help! ✍️`;
+}
+window.gradeWriting = async (id)=>{
+  const { data:a, error } = await sb.from('exam_attempts').select('*, profiles(full_name,email,grade_id,grades(name))').eq('id',id).single();
+  if(error){ $('#main').innerHTML=`<div class="note err">${esc(error.message)}</div>`; return; }
+  const rubric = WRITING_RUBRICS[a.level] || WRITING_RUBRICS.B1;
+  // restore previous selection if re-grading
+  const prev = {}; const pb = (a.breakdown && a.breakdown.parts) || [];
+  pb.forEach(p=>{ prev[p.part] = (p.correct!=null?p.correct:null); });
+  gradeState = { id, attempt:a, rubric, sel: Object.assign({}, prev), msg:(a.breakdown&&a.breakdown.teacherMessage)||'', touched: !!(a.breakdown&&a.breakdown.teacherMessage) };
+  renderGradeWriting();
+};
+function renderGradeWriting(){
+  const a=gradeState.attempt, rubric=gradeState.rubric, sel=gradeState.sel;
+  const answers = Array.isArray(a.answers) ? a.answers : [];
+  const textsHtml = answers.length
+    ? answers.map(t=>`<div style="border:1px solid var(--line);border-radius:10px;padding:12px;margin-bottom:10px">
+        <div class="row" style="justify-content:space-between"><b>${esc(t.label||'Task')}</b><span class="muted" style="font-size:.82rem">${t.wordCount!=null?t.wordCount+' palabras':''}</span></div>
+        <div style="white-space:pre-wrap;margin-top:6px">${esc(t.text||'(sin respuesta)')}</div></div>`).join('')
+    : `<p class="muted">Este intento no guardó el texto del alumno.</p>`;
+  const subsHtml = rubric.subs.map((s,si)=>{
+    const desc = WRITING_SUBSCALE[s] || [];
+    const cards = desc.map((d,band)=>{
+      const on = sel[s]===band;
+      return `<div onclick="window._pickBand(${si},${band})" style="cursor:pointer;border:2px solid ${on?'#4987c6':'var(--line)'};background:${on?'#eef4fb':'#fff'};border-radius:8px;padding:8px 10px;margin:4px 0;display:flex;gap:10px;align-items:flex-start">
+        <span style="flex:0 0 auto;font-weight:700;color:${on?'#2d5a8d':'#94a3b8'};min-width:46px">Band ${band}</span>
+        <span style="font-size:.88rem">${esc(d)}</span></div>`;
+    }).join('');
+    return `<div class="card"><h3 style="margin:0 0 6px">${esc(s)} <span class="muted" style="font-weight:400">/ ${rubric.bandMax}</span> <b id="sub-${si}" style="float:right;color:#2d5a8d">${sel[s]!=null?sel[s]:'—'}</b></h3>${cards}</div>`;
+  }).join('');
+  const max = rubric.subs.length*rubric.bandMax;
+  $('#main').innerHTML = `
+    <button class="btn sm ghost" onclick="teacherResults()">← Volver a resultados</button>
+    <h1 style="margin:.4rem 0 0">✍️ Calificar Writing</h1>
+    <div class="muted" style="margin-bottom:10px">${esc(a.profiles?.full_name||'Alumno')} · ${esc(a.profiles?.grades?.name||'')} · ${esc(a.level)} · ${mockLabel(a)} · ${new Date(a.submitted_at).toLocaleString()}</div>
+    <div class="grid cols-2" style="align-items:start">
+      <div>
+        <div class="card"><h2 style="margin-top:0">Texto del alumno</h2>${textsHtml}</div>
+      </div>
+      <div>
+        <div class="note">Haz clic en el descriptor que corresponde en cada criterio (rúbrica Cambridge, 0–${rubric.bandMax}). La nota total se calcula sola.</div>
+        ${subsHtml}
+        <div class="card" style="position:sticky;bottom:0">
+          <div class="row" style="justify-content:space-between;align-items:center">
+            <h2 style="margin:0">Total</h2>
+            <div style="font-size:1.4rem;font-weight:800;color:#2d5a8d"><span id="gw-total">0</span> / ${max} · <span id="gw-pct">0</span>%</div>
+          </div>
+          <label style="margin-top:10px">Mensaje para el alumno (editable)</label>
+          <textarea id="gw-msg" rows="5" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:8px" oninput="gradeState.touched=true;gradeState.msg=this.value">${esc(gradeState.msg||'')}</textarea>
+          <div id="gw-status" style="margin-top:6px;font-size:.88rem"></div>
+          <div class="row" style="margin-top:10px;gap:10px">
+            <button class="btn" id="gw-send" onclick="window._sendWritingResult()">📧 Enviar resultado al alumno</button>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  _recalcGrade();
+}
+function _recalcGrade(){
+  const r=gradeState.rubric, sel=gradeState.sel;
+  let total=0, all=true;
+  r.subs.forEach(s=>{ if(sel[s]!=null) total+=sel[s]; else all=false; });
+  const max=r.subs.length*r.bandMax;
+  const pct=Math.round(total/max*100);
+  const tEl=$('#gw-total'), pEl=$('#gw-pct'); if(tEl) tEl.textContent=total; if(pEl) pEl.textContent=pct;
+  gradeState.total=total; gradeState.max=max; gradeState.pct=pct; gradeState.complete=all;
+  // Auto-suggest the message only while the teacher hasn't edited it.
+  if(all && !gradeState.touched){
+    gradeState.msg = writingMessage(gradeState.attempt.profiles?.full_name, gradeState.attempt.level, pct);
+    const msg=$('#gw-msg'); if(msg) msg.value=gradeState.msg;
+  }
+}
+window._pickBand = (si,band)=>{
+  const s=gradeState.rubric.subs[si]; gradeState.sel[s]=band;
+  renderGradeWriting();
+};
+window._sendWritingResult = async ()=>{
+  const st=$('#gw-status');
+  if(!gradeState.complete){ st.innerHTML='<span style="color:var(--bad)">Selecciona un Band en cada criterio antes de enviar.</span>'; return; }
+  const a=gradeState.attempt; const msg=($('#gw-msg').value||'').trim();
+  const breakdown={ kind:'writing-graded',
+    parts: gradeState.rubric.subs.map(s=>({part:s, correct:gradeState.sel[s], total:gradeState.rubric.bandMax})),
+    teacherMessage: msg,
+    gradedBy: (state.profile&&state.profile.full_name)||(state.session&&state.session.user&&state.session.user.email)||'teacher',
+    gradedAt: new Date().toISOString() };
+  $('#gw-send').disabled=true; st.textContent='Guardando…';
+  const { error } = await sb.rpc('grade_writing',{ p_attempt:a.id, p_score:gradeState.total, p_total:gradeState.max, p_percent:gradeState.pct, p_breakdown:breakdown });
+  if(error){ $('#gw-send').disabled=false; st.innerHTML=`<span style="color:var(--bad)">No se pudo guardar: ${esc(error.message)}</span>`; return; }
+  // Email the student via the school webhook (Apps Script sends from pbaca@). Fire-and-forget.
+  try{
+    fetch(WRITING_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body:JSON.stringify({ type:'writing_result', studentEmail:a.profiles?.email||'', studentName:a.profiles?.full_name||'',
+        firstName:(a.profiles?.full_name||'').split(' ')[0], grade:a.profiles?.grades?.name||'', level:a.level,
+        examTitle:'Writing '+(mockLabel(a)), score:gradeState.total, total:gradeState.max, percent:gradeState.pct,
+        message:msg, teacherEmail:'pbaca@nordic-school.edu.pe', teacherName:breakdown.gradedBy, schoolName:'Nordic International School of Lima' }) });
+  }catch(e){}
+  st.innerHTML='<span style="color:var(--good)">✓ Resultado guardado y enviado al alumno.</span>';
+  setTimeout(teacherResults, 1200);
+};
 
 /* ===================== STUDENT ===================== */
 async function renderStudent(){
@@ -580,7 +725,14 @@ async function studentHome(){
     <div class="card"><h2>Proyección</h2>${projection(p,bySkill,atts||[])}</div>
     <div class="card"><h2>Historial</h2>
       ${(atts&&atts.length)? `<table><thead><tr><th>Examen</th><th>Puntaje</th><th>Fecha</th></tr></thead><tbody>${
-        atts.map(a=>`<tr><td>${esc(a.skill)} · ${esc(a.level)} · ${a.mock==='mock2'?'MOCK 2':'MOCK 1'}</td><td>${a.score}/${a.total} (${a.percent}%)</td><td class="muted">${new Date(a.submitted_at).toLocaleDateString()}</td></tr>`).join('')
+        atts.map(a=>{
+          const lbl=`${esc(a.skill)} · ${esc(a.level)} · ${mockLabel(a)}`;
+          const score = a.percent!=null ? `${a.score}/${a.total} (${a.percent}%)`
+            : (a.skill==='Writing' ? '<span class="muted">Pendiente de calificación</span>' : '—');
+          const msg = (a.breakdown&&a.breakdown.teacherMessage)
+            ? `<tr><td colspan="3" style="background:#f7faff;font-size:.9rem">📣 <b>Profesor:</b> ${esc(a.breakdown.teacherMessage)}</td></tr>` : '';
+          return `<tr><td>${lbl}</td><td>${score}</td><td class="muted">${new Date(a.submitted_at).toLocaleDateString()}</td></tr>${msg}`;
+        }).join('')
       }</tbody></table>` : `<p class="muted">Aún no has rendido exámenes. Ve a “Rendir examen”.</p>`}
     </div>`;
 }
