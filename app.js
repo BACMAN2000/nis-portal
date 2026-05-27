@@ -249,13 +249,30 @@ async function adminTeachers(){
   const { data:accs } = await sb.from('teacher_access').select('*');
   const amap={}; (accs||[]).forEach(a=>amap[a.profile_id]=a);
   const teachers=profs||[];
-  if(!teachers.length){ $('#main').innerHTML=`<h1>Profesores — accesos</h1><div class="card">No hay usuarios con rol <b>teacher</b> todavía. Crea uno en <b>Alumnos → + Nuevo</b> (rol = teacher) o cambia el rol de un usuario existente en <b>Editar</b>.</div>`; return; }
+  // Fetch stored passwords for all teachers
+  const { data:creds } = teachers.length
+    ? await sb.from('student_credentials').select('profile_id,password').in('profile_id', teachers.map(t=>t.id))
+    : { data:[] };
+  const credmap={}; (creds||[]).forEach(c=>credmap[c.profile_id]=c.password||'');
   const chipCss="display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);border-radius:8px;padding:4px 9px;font-size:.85rem";
   const cards=teachers.map(t=>{
     const a=amap[t.id]||{can_results:true,can_students:false,all_grades:true,grades:[]};
     const gradeChips=GRADES.map(g=>`<label style="${chipCss}"><input type="checkbox" class="tg-grade" value="${g.id}" ${(a.grades||[]).includes(g.id)?'checked':''} ${a.all_grades?'disabled':''}> ${g.name}</label>`).join('');
+    const pw=credmap[t.id]||'';
     return `<div class="card" data-tid="${t.id}">
-      <div class="row" style="justify-content:space-between;align-items:center"><h2 style="margin:0;font-size:1.1rem">${esc(t.full_name||t.email)}</h2><span class="muted" style="font-size:.82rem">${esc(t.email||'')}</span></div>
+      <div class="row" style="justify-content:space-between;align-items:flex-start">
+        <h2 style="margin:0;font-size:1.1rem">${esc(t.full_name||t.email)}</h2>
+        <div style="text-align:right">
+          <span class="muted" style="font-size:.82rem;display:block">${esc(t.email||'')}</span>
+          <span style="display:inline-flex;align-items:center;gap:5px;margin-top:3px">
+            <span class="muted" style="font-size:.8rem">Contraseña:</span>
+            <span id="pw-dot-${t.id}" style="font-size:.82rem;letter-spacing:2px;color:var(--muted)">●●●●●●</span>
+            <span id="pw-val-${t.id}" style="display:none;font-family:monospace;font-size:.82rem">${esc(pw||'(sin contraseña)')}</span>
+            <button onclick="window._togglePw('${t.id}')" id="pw-btn-${t.id}" title="Mostrar/ocultar contraseña"
+              style="background:none;border:none;cursor:pointer;font-size:.9rem;padding:2px;line-height:1;color:var(--muted)">👁</button>
+          </span>
+        </div>
+      </div>
       <div class="row" style="gap:18px;flex-wrap:wrap;margin-top:10px">
         <label style="${chipCss}"><input type="checkbox" class="tg-results" ${a.can_results?'checked':''}> 📝 Ver resultados</label>
         <label style="${chipCss}"><input type="checkbox" class="tg-students" ${a.can_students?'checked':''}> 👥 Ver alumnos</label>
@@ -266,9 +283,63 @@ async function adminTeachers(){
       <div class="row" style="margin-top:12px;align-items:center;gap:10px"><button class="btn sm" onclick="window._saveTeacher('${t.id}', this)">Guardar</button><span class="tmsg muted" style="font-size:.85rem"></span></div>
     </div>`;
   }).join('');
-  $('#main').innerHTML=`<h1>Profesores — accesos</h1>
-    <div class="note">Asigna qué puede ver cada profesor. Por defecto: <b>Resultados</b> de <b>todos los grados</b>. Desmarca "Todos los grados" para limitarlo a grados específicos.</div>${cards}`;
+  const emptyMsg = teachers.length ? '' : `<div class="card"><p class="muted">Aún no hay profesores. Usa el botón de arriba para agregar uno.</p></div>`;
+  $('#main').innerHTML=`
+    <div class="row" style="justify-content:space-between;align-items:center;margin-bottom:6px">
+      <h1 style="margin:0">Profesores — accesos</h1>
+      <button class="btn sm" onclick="adminNewTeacher()">+ Agregar Profesor</button>
+    </div>
+    <div class="note">Asigna qué puede ver cada profesor. Por defecto: <b>Resultados</b> de <b>todos los grados</b>. Desmarca "Todos los grados" para limitarlo a grados específicos.</div>
+    ${cards}${emptyMsg}`;
 }
+window._togglePw=(id)=>{
+  const dot=$('#pw-dot-'+id), val=$('#pw-val-'+id), btn=$('#pw-btn-'+id);
+  const showing=dot.style.display==='none';
+  dot.style.display=showing?'':'none';
+  val.style.display=showing?'none':'';
+  if(btn) btn.textContent=showing?'👁':'🙈';
+};
+window.adminNewTeacher=()=>{
+  $('#main').innerHTML=`<button class="btn sm ghost" onclick="adminTeachers()">← Volver a Profesores</button>
+    <div class="card" style="max-width:560px;margin-top:12px"><h2 style="margin-top:0">Agregar Profesor</h2>
+    <div class="field-2"><div><label>Nombres</label><input id="nt_first" placeholder="Ej: María"></div><div><label>Apellidos</label><input id="nt_last" placeholder="Ej: García"></div></div>
+    <label>Correo electrónico</label><input id="nt_email" type="email" placeholder="nombre.apellido@nordic-school.edu.pe">
+    <label style="margin-top:10px;display:block">Contraseña</label>
+    <div style="position:relative;display:flex;align-items:center">
+      <input id="nt_pw" type="password" placeholder="Mínimo 6 caracteres" style="flex:1;padding-right:40px">
+      <button onclick="window._toggleNewPw('nt_pw','nt_pw_btn')" id="nt_pw_btn" title="Mostrar/ocultar contraseña"
+        style="position:absolute;right:10px;background:none;border:none;cursor:pointer;font-size:1rem;color:var(--muted);line-height:1;padding:0">👁</button>
+    </div>
+    <div id="nt_msg" style="margin-top:10px"></div>
+    <div class="row" style="margin-top:16px"><button class="btn" onclick="window.createTeacher()">Crear Profesor</button></div>
+    </div>`;
+};
+window._toggleNewPw=(inputId,btnId)=>{
+  const inp=$('#'+inputId), btn=$('#'+btnId);
+  if(!inp) return;
+  const hidden=inp.type==='password';
+  inp.type=hidden?'text':'password';
+  if(btn) btn.textContent=hidden?'🙈':'👁';
+};
+window.createTeacher=async()=>{
+  const v=id=>($('#'+id)||{value:''}).value.trim();
+  const first=v('nt_first'), last=v('nt_last'), email=v('nt_email'), pw=v('nt_pw');
+  const msg=$('#nt_msg');
+  if(!first||!last||!email||!pw) return msg.innerHTML='<div class="note err">Completa todos los campos: nombres, apellidos, correo y contraseña.</div>';
+  if(pw.length<6) return msg.innerHTML='<div class="note err">La contraseña debe tener al menos 6 caracteres.</div>';
+  msg.innerHTML='<div class="note">Creando cuenta…</div>';
+  const meta={ first_name:first, last_name:last, full_name:first+' '+last, role:'teacher', academic_year:new Date().getFullYear() };
+  let rpcErr=null;
+  try{
+    const rpcPromise=sb.rpc('admin_create_user',{p_email:email,p_password:pw,p_meta:meta});
+    const timeout=new Promise((_,rej)=>setTimeout(()=>rej(new Error('Tiempo de espera agotado.')),12000));
+    const {error}=await Promise.race([rpcPromise,timeout]);
+    rpcErr=error||null;
+  }catch(e){ rpcErr=e; }
+  if(rpcErr){ msg.innerHTML=`<div class="note err">${esc(rpcErr.message||String(rpcErr))}</div>`; return; }
+  msg.innerHTML='<div class="note ok">✓ Profesor creado correctamente. Redirigiendo…</div>';
+  setTimeout(adminTeachers, 900);
+};
 window._tgAll=(cb)=>{ cb.closest('.card').querySelectorAll('.tg-grade').forEach(c=>{ c.disabled=cb.checked; }); };
 window._saveTeacher=async(id,btn)=>{
   const card=btn.closest('.card'); const msgEl=card.querySelector('.tmsg');
