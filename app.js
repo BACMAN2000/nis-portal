@@ -23,12 +23,32 @@ function mockLabel(a){ return a.mock==='mock2'?'MOCK 2':a.mock==='mock1'?'MOCK 1
 function partsOf(breakdown){
   if(!breakdown) return [];
   const arr = Array.isArray(breakdown) ? breakdown : (breakdown.parts || []);
-  return (arr||[]).map(p=>{
+  if(!arr.length) return [];
+
+  // ── Listening format: flat array of questions with {audio, ok, q, type} ──
+  // Detect by checking first item has 'audio' string + boolean 'ok', no 'pct'.
+  if(arr[0].audio !== undefined && arr[0].ok !== undefined && arr[0].pct === undefined){
+    const groups = {}, order = [];
+    arr.forEach(q=>{
+      const key = q.audio || 'Part';
+      if(!groups[key]){ groups[key]={name:key, correct:0, total:0}; order.push(key); }
+      groups[key].total++;
+      if(q.ok) groups[key].correct++;
+    });
+    return order.map(k=>{
+      const g=groups[k];
+      const pct=Math.round(g.correct/g.total*100);
+      return {name:g.name, correct:g.correct, total:g.total, pct};
+    });
+  }
+
+  // ── Standard format: each item already has {part/name, correct, total, pct} ──
+  return arr.map(p=>{
     const correct = p.correct!=null?p.correct:(p.right!=null?p.right:null);
-    const total = p.total!=null?p.total:(p.outOf!=null?p.outOf:null);
-    let pct = p.pct!=null?p.pct:(p.percent!=null?p.percent:null);
+    const total   = p.total!=null?p.total:(p.outOf!=null?p.outOf:null);
+    let   pct     = p.pct!=null?p.pct:(p.percent!=null?p.percent:null);
     if(pct==null && correct!=null && total) pct = Math.round(correct/total*100);
-    return { name: p.part||p.name||p.label||'Part', correct, total, pct };
+    return {name: p.part||p.name||p.label||'Part', correct, total, pct};
   }).filter(p=>p.pct!=null);
 }
 function cefrRec(level, pct){
