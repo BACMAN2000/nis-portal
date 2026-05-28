@@ -485,10 +485,10 @@ window.saveUser = async (id)=>{
   if(!error) setTimeout(adminUsers,700);
 };
 async function adminResults(){
-  const { data } = await sb.from('exam_attempts').select('*, profiles(full_name,grades(name))').order('submitted_at',{ascending:false}).limit(300);
+  const { data } = await sb.from('exam_attempts').select('*, profiles(full_name,grade_id,grades(name))').order('submitted_at',{ascending:false}).limit(500);
   const all = data||[];
   const isMock = resultsBranch==='mock';
-  const list = all.filter(a=> isMock ? isMockAttempt(a) : !isMockAttempt(a));
+  let list = applyResultsFilter(all.filter(a=> isMock ? isMockAttempt(a) : !isMockAttempt(a)));
   const tabs = `<div class="row" style="gap:8px;margin:0 0 14px">
     <button class="btn sm ${isMock?'':'ghost'}" onclick="window._setResBranch('mock')">📝 Mocks (${all.filter(isMockAttempt).length})</button>
     <button class="btn sm ${isMock?'ghost':''}" onclick="window._setResBranch('practice')">🎯 Practice Tests (${all.filter(a=>!isMockAttempt(a)).length})</button>
@@ -500,12 +500,17 @@ async function adminResults(){
     <td>${a.percent!=null?`<b>${a.percent}%</b> <span class="muted">(${a.score}/${a.total})</span>`:'<span class="muted">— (revisión)</span>'}</td>
     <td>${a.duration_min!=null?a.duration_min+' min':'—'}</td>
     <td class="muted">${new Date(a.submitted_at).toLocaleDateString()}</td>
-    <td><button class="btn sm ghost" onclick="openAttempt('${a.id}')">Ver análisis →</button></td>
+    <td>${a.skill==='Writing'
+        ? `<button class="btn sm" onclick="gradeWriting('${a.id}')">✍️ ${a.percent!=null?'Re-calificar':'Calificar'}</button>`
+        : `<button class="btn sm ghost" onclick="openAttempt('${a.id}')">Ver análisis →</button>`}</td>
   </tr>`).join('');
-  $('#main').innerHTML=`<h1>Resultados</h1>${tabs}
+  $('#main').innerHTML=`<h1>Resultados</h1>
+    ${resultsFilterBar(GRADES,'window._setResFilter')}${tabs}
     <div class="card" style="padding:0;overflow-x:auto"><table>
       <thead><tr><th>Alumno</th><th>Grado</th><th>Examen</th><th>Puntaje</th><th>Tiempo</th><th>Fecha</th><th></th></tr></thead>
-      <tbody>${rows||`<tr><td colspan="7" class="center muted">Sin intentos ${isMock?'de mocks':'de practice tests'} todavía.${isMock?'':' (Los exámenes actuales son Mocks; aquí aparecerían los practice tests cuando se habiliten.)'}</td></tr>`}</tbody></table></div>`;
+      <tbody>${rows||`<tr><td colspan="7" class="center muted">Sin resultados para este filtro.</td></tr>`}</tbody>
+    </table>
+    <div class="muted" style="padding:8px 14px;font-size:.82rem">${list.length} resultado(s)</div></div>`;
 }
 window._setResBranch = (b)=>{ resultsBranch=b; (state.profile && state.profile.role==='teacher') ? teacherResults() : adminResults(); };
 window.backToResults = ()=>{ (state.profile && state.profile.role==='teacher') ? teacherResults() : adminResults(); };
@@ -550,10 +555,9 @@ window.openAttempt = async (id)=>{
 };
 
 /* ===================== TEACHER ===================== */
-let teacherFilter = { grade:'' };
+let resultsFilter = { grade:'', name:'', dateFrom:'', dateTo:'' };
 async function loadTeacherAccess(){
   const { data } = await sb.from('teacher_access').select('*').eq('profile_id', state.session.user.id).maybeSingle();
-  // Defaults when the admin hasn't configured the teacher yet: results, all grades.
   state.teacherAccess = data || { can_results:true, can_students:false, all_grades:true, grades:[] };
   return state.teacherAccess;
 }
@@ -562,7 +566,6 @@ function teacherAllowedGrades(){
   return acc.all_grades ? GRADES : GRADES.filter(g => (acc.grades||[]).includes(g.id));
 }
 async function renderTeacher(tab){
-  // "Exámenes" is a link out to the quizzes portal (Listening/Reading/Writing).
   if(tab==='exams'){ window.location.assign(location.origin + '/mocks-cambridge/quizzes.html'); return; }
   const acc = state.teacherAccess || await loadTeacherAccess();
   const nav=[];
@@ -577,20 +580,51 @@ async function renderTeacher(tab){
   if(active==='students') return teacherStudents();
   $('#main').innerHTML = `<div class="card">El administrador aún no te ha asignado accesos. Escríbele para que te habilite <b>Resultados</b> o <b>Alumnos</b>.</div>`;
 }
-function gradeFilterBar(onchangeFn){
-  const fg=teacherFilter.grade;
-  const opts=`<option value="">Todos los grados</option>`+teacherAllowedGrades().map(g=>`<option value="${g.id}" ${String(fg)===String(g.id)?'selected':''}>${g.name}</option>`).join('');
-  return `<div class="card" style="display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end">
-      <div><label>Grado</label><select onchange="${onchangeFn}(this.value)" style="min-width:180px">${opts}</select></div>
-    </div>`;
+/* ── Shared results filter bar (admin + teacher) ────────────────────── */
+function resultsFilterBar(gradeList, onChangeFn){
+  const f = resultsFilter;
+  const gradeOpts = `<option value="">Todos los grados</option>`
+    + gradeList.map(g=>`<option value="${g.id}" ${String(f.grade)===String(g.id)?'selected':''}>${g.name}</option>`).join('');
+  const hasFilter = f.grade||f.name||f.dateFrom||f.dateTo;
+  return `<div class="card" style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;padding:14px 16px;margin-bottom:10px">
+    <div>
+      <label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">GRADO</label>
+      <select onchange="${onChangeFn}('grade',this.value)" style="min-width:160px">${gradeOpts}</select>
+    </div>
+    <div>
+      <label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">NOMBRE</label>
+      <input type="text" placeholder="Buscar alumno…" value="${esc(f.name)}"
+        oninput="${onChangeFn}('name',this.value)" style="min-width:190px">
+    </div>
+    <div>
+      <label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">DESDE</label>
+      <input type="date" value="${f.dateFrom}" onchange="${onChangeFn}('dateFrom',this.value)">
+    </div>
+    <div>
+      <label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">HASTA</label>
+      <input type="date" value="${f.dateTo}" onchange="${onChangeFn}('dateTo',this.value)">
+    </div>
+    ${hasFilter ? `<button class="btn sm ghost" style="align-self:flex-end" onclick="${onChangeFn}('_clear','')">✕ Limpiar</button>` : ''}
+  </div>`;
 }
-window._setTeacherGrade = (v)=>{ teacherFilter.grade=v; renderTeacher(state._tab||'results'); };
+function applyResultsFilter(list){
+  const f = resultsFilter;
+  if(f.grade)    list = list.filter(a=> String(a.profiles?.grade_id)===String(f.grade));
+  if(f.name)     list = list.filter(a=> (a.profiles?.full_name||'').toLowerCase().includes(f.name.toLowerCase()));
+  if(f.dateFrom) list = list.filter(a=> (a.submitted_at||'') >= f.dateFrom);
+  if(f.dateTo)   list = list.filter(a=> (a.submitted_at||'') <= f.dateTo+'T23:59:59');
+  return list;
+}
+window._setResFilter = (k,v)=>{
+  if(k==='_clear') resultsFilter={grade:'',name:'',dateFrom:'',dateTo:''};
+  else resultsFilter[k]=v;
+  (state.profile && state.profile.role==='teacher') ? teacherResults() : adminResults();
+};
 async function teacherResults(){
   state._tab='results';
   const { data } = await sb.from('exam_attempts').select('*, profiles(full_name,grade_id,grades(name))').order('submitted_at',{ascending:false}).limit(500);
-  const all = data||[]; const isMock = resultsBranch==='mock'; const fg=teacherFilter.grade;
-  let list = all.filter(a=> isMock?isMockAttempt(a):!isMockAttempt(a));
-  if(fg) list = list.filter(a=> String(a.profiles?.grade_id)===String(fg));
+  const all = data||[]; const isMock = resultsBranch==='mock';
+  let list = applyResultsFilter(all.filter(a=> isMock?isMockAttempt(a):!isMockAttempt(a)));
   const tabs=`<div class="row" style="gap:8px;margin:0 0 14px">
     <button class="btn sm ${isMock?'':'ghost'}" onclick="window._setResBranch('mock')">📝 Mocks (${all.filter(isMockAttempt).length})</button>
     <button class="btn sm ${isMock?'ghost':''}" onclick="window._setResBranch('practice')">🎯 Practice Tests (${all.filter(a=>!isMockAttempt(a)).length})</button></div>`;
@@ -604,10 +638,13 @@ async function teacherResults(){
     <td>${a.skill==='Writing'
         ? `<button class="btn sm" onclick="gradeWriting('${a.id}')">✍️ ${a.percent!=null?'Re-calificar':'Calificar'}</button>`
         : `<button class="btn sm ghost" onclick="openAttempt('${a.id}')">Ver análisis →</button>`}</td></tr>`).join('');
-  $('#main').innerHTML=`<h1>Resultados</h1>${gradeFilterBar('window._setTeacherGrade')}${tabs}
+  $('#main').innerHTML=`<h1>Resultados</h1>
+    ${resultsFilterBar(teacherAllowedGrades(),'window._setResFilter')}${tabs}
     <div class="card" style="padding:0;overflow-x:auto"><table>
       <thead><tr><th>Alumno</th><th>Grado</th><th>Examen</th><th>Puntaje</th><th>Tiempo</th><th>Fecha</th><th></th></tr></thead>
-      <tbody>${rows||`<tr><td colspan="7" class="center muted">Sin intentos ${isMock?'de mocks':'de practice tests'} para este filtro.</td></tr>`}</tbody></table></div>`;
+      <tbody>${rows||`<tr><td colspan="7" class="center muted">Sin intentos ${isMock?'de mocks':'de practice tests'} para este filtro.</td></tr>`}</tbody>
+    </table>
+    <div class="muted" style="padding:8px 14px;font-size:.82rem">${list.length} resultado(s)</div></div>`;
 }
 async function teacherStudents(){
   state._tab='students';
