@@ -505,10 +505,11 @@ window.saveUser = async (id)=>{
   if(!error) setTimeout(adminUsers,700);
 };
 async function adminResults(){
-  const { data } = await sb.from('exam_attempts').select('*, profiles(full_name,grade_id,grades(name))').order('submitted_at',{ascending:false}).limit(500);
+  const { data } = await sb.from('exam_attempts').select('*, profiles(full_name,grade_id,section,grades(name))').order('submitted_at',{ascending:false}).limit(500);
   const all = data||[];
   const isMock = resultsBranch==='mock';
   let list = applyResultsFilter(all.filter(a=> isMock ? isMockAttempt(a) : !isMockAttempt(a)));
+  _currentResultsList = list;
   const tabs = `<div class="row" style="gap:8px;margin:0 0 14px">
     <button class="btn sm ${isMock?'':'ghost'}" onclick="window._setResBranch('mock')">📝 Mocks (${all.filter(isMockAttempt).length})</button>
     <button class="btn sm ${isMock?'ghost':''}" onclick="window._setResBranch('practice')">🎯 Practice Tests (${all.filter(a=>!isMockAttempt(a)).length})</button>
@@ -516,6 +517,7 @@ async function adminResults(){
   const rows = list.map(a=>`<tr>
     <td><b>${esc(a.profiles?.full_name||'')}</b></td>
     <td><span class="badge grade">${esc(a.profiles?.grades?.name||'—')}</span></td>
+    <td style="text-align:center">${a.profiles?.section?`<span class="badge">${esc(a.profiles.section)}</span>`:'<span class="muted">—</span>'}</td>
     <td>${esc(a.skill)} · <span class="badge lvl">${esc(a.level)}</span> · ${mockLabel(a)}</td>
     <td>${a.percent!=null?`<b>${a.percent}%</b> <span class="muted">(${a.score}/${a.total})</span>`:'<span class="muted">— (revisión)</span>'}</td>
     <td>${a.duration_min!=null?a.duration_min+' min':'—'}</td>
@@ -524,11 +526,15 @@ async function adminResults(){
         ? `<button class="btn sm" onclick="gradeWriting('${a.id}')">✍️ ${a.percent!=null?'Re-calificar':'Calificar'}</button>`
         : `<button class="btn sm ghost" onclick="openAttempt('${a.id}')">Ver análisis →</button>`}</td>
   </tr>`).join('');
-  $('#main').innerHTML=`<h1>Resultados</h1>
+  $('#main').innerHTML=`
+    <div class="row" style="justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:4px">
+      <h1 style="margin:0">Resultados</h1>
+      <button class="btn sm ghost" onclick="window.exportResultsExcel()">📥 Exportar Excel</button>
+    </div>
     ${resultsFilterBar(GRADES,'window._setResFilter')}${tabs}
     <div class="card" style="padding:0;overflow-x:auto"><table>
-      <thead><tr><th>Alumno</th><th>Grado</th><th>Examen</th><th>Puntaje</th><th>Tiempo</th><th>Fecha</th><th></th></tr></thead>
-      <tbody>${rows||`<tr><td colspan="7" class="center muted">Sin resultados para este filtro.</td></tr>`}</tbody>
+      <thead><tr><th>Alumno</th><th>Grado</th><th>Sección</th><th>Examen</th><th>Puntaje</th><th>Tiempo</th><th>Fecha</th><th></th></tr></thead>
+      <tbody>${rows||`<tr><td colspan="8" class="center muted">Sin resultados para este filtro.</td></tr>`}</tbody>
     </table>
     <div class="muted" style="padding:8px 14px;font-size:.82rem">${list.length} resultado(s)</div></div>`;
 }
@@ -575,7 +581,8 @@ window.openAttempt = async (id)=>{
 };
 
 /* ===================== TEACHER ===================== */
-let resultsFilter = { grade:'', name:'', dateFrom:'', dateTo:'' };
+let resultsFilter = { grade:'', section:'', name:'', dateFrom:'', dateTo:'' };
+let _currentResultsList = [];
 async function loadTeacherAccess(){
   const { data } = await sb.from('teacher_access').select('*').eq('profile_id', state.session.user.id).maybeSingle();
   state.teacherAccess = data || { can_results:true, can_students:false, all_grades:true, grades:[] };
@@ -605,16 +612,22 @@ function resultsFilterBar(gradeList, onChangeFn){
   const f = resultsFilter;
   const gradeOpts = `<option value="">Todos los grados</option>`
     + gradeList.map(g=>`<option value="${g.id}" ${String(f.grade)===String(g.id)?'selected':''}>${g.name}</option>`).join('');
-  const hasFilter = f.grade||f.name||f.dateFrom||f.dateTo;
+  const sectionOpts = `<option value="">Todas</option>`
+    + ['A','B'].map(s=>`<option value="${s}" ${f.section===s?'selected':''}>${s}</option>`).join('');
+  const hasFilter = f.grade||f.section||f.name||f.dateFrom||f.dateTo;
   return `<div class="card" style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;padding:14px 16px;margin-bottom:10px">
     <div>
       <label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">GRADO</label>
-      <select onchange="${onChangeFn}('grade',this.value)" style="min-width:160px">${gradeOpts}</select>
+      <select onchange="${onChangeFn}('grade',this.value)" style="min-width:140px">${gradeOpts}</select>
+    </div>
+    <div>
+      <label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">SECCIÓN</label>
+      <select onchange="${onChangeFn}('section',this.value)" style="min-width:100px">${sectionOpts}</select>
     </div>
     <div>
       <label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">NOMBRE</label>
       <input type="text" placeholder="Buscar alumno…" value="${esc(f.name)}"
-        oninput="${onChangeFn}('name',this.value)" style="min-width:190px">
+        oninput="${onChangeFn}('name',this.value)" style="min-width:180px">
     </div>
     <div>
       <label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">DESDE</label>
@@ -630,27 +643,61 @@ function resultsFilterBar(gradeList, onChangeFn){
 function applyResultsFilter(list){
   const f = resultsFilter;
   if(f.grade)    list = list.filter(a=> String(a.profiles?.grade_id)===String(f.grade));
+  if(f.section)  list = list.filter(a=> (a.profiles?.section||'').toUpperCase()===f.section.toUpperCase());
   if(f.name)     list = list.filter(a=> (a.profiles?.full_name||'').toLowerCase().includes(f.name.toLowerCase()));
   if(f.dateFrom) list = list.filter(a=> (a.submitted_at||'') >= f.dateFrom);
   if(f.dateTo)   list = list.filter(a=> (a.submitted_at||'') <= f.dateTo+'T23:59:59');
   return list;
 }
 window._setResFilter = (k,v)=>{
-  if(k==='_clear') resultsFilter={grade:'',name:'',dateFrom:'',dateTo:''};
+  if(k==='_clear') resultsFilter={grade:'',section:'',name:'',dateFrom:'',dateTo:''};
   else resultsFilter[k]=v;
   (state.profile && state.profile.role==='teacher') ? teacherResults() : adminResults();
 };
+
+/* ── Export filtered results to CSV (Excel-compatible with UTF-8 BOM) ── */
+window.exportResultsExcel = ()=>{
+  const list = _currentResultsList || [];
+  if(!list.length){ alert('No hay resultados para exportar.'); return; }
+  const headers = ['Alumno','Grado','Sección','Nivel CEFR','Examen','Destreza','Puntaje (%)','Correctas','Total','Tiempo (min)','Fecha'];
+  const rows = list.map(a=>[
+    a.profiles?.full_name||'',
+    a.profiles?.grades?.name||'',
+    a.profiles?.section||'',
+    a.level||'',
+    mockLabel(a),
+    a.skill||'',
+    a.percent!=null ? a.percent : '',
+    a.score!=null   ? a.score   : '',
+    a.total!=null   ? a.total   : '',
+    a.duration_min!=null ? a.duration_min : '',
+    a.submitted_at  ? new Date(a.submitted_at).toLocaleDateString('es-PE') : ''
+  ]);
+  const csv = [headers,...rows]
+    .map(r => r.map(c=>`"${String(c).replace(/"/g,'""')}"`).join(','))
+    .join('\r\n');
+  const bom = '﻿'; // UTF-8 BOM so Excel opens with correct encoding
+  const blob = new Blob([bom+csv], {type:'text/csv;charset=utf-8;'});
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = `resultados_NIS_${new Date().toISOString().slice(0,10)}.csv`;
+  document.body.appendChild(link); link.click(); document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+};
 async function teacherResults(){
   state._tab='results';
-  const { data } = await sb.from('exam_attempts').select('*, profiles(full_name,grade_id,grades(name))').order('submitted_at',{ascending:false}).limit(500);
+  const { data } = await sb.from('exam_attempts').select('*, profiles(full_name,grade_id,section,grades(name))').order('submitted_at',{ascending:false}).limit(500);
   const all = data||[]; const isMock = resultsBranch==='mock';
   let list = applyResultsFilter(all.filter(a=> isMock?isMockAttempt(a):!isMockAttempt(a)));
+  _currentResultsList = list;
   const tabs=`<div class="row" style="gap:8px;margin:0 0 14px">
     <button class="btn sm ${isMock?'':'ghost'}" onclick="window._setResBranch('mock')">📝 Mocks (${all.filter(isMockAttempt).length})</button>
     <button class="btn sm ${isMock?'ghost':''}" onclick="window._setResBranch('practice')">🎯 Practice Tests (${all.filter(a=>!isMockAttempt(a)).length})</button></div>`;
   const rows=list.map(a=>`<tr>
     <td><b>${esc(a.profiles?.full_name||'')}</b></td>
     <td><span class="badge grade">${esc(a.profiles?.grades?.name||'—')}</span></td>
+    <td style="text-align:center">${a.profiles?.section?`<span class="badge">${esc(a.profiles.section)}</span>`:'<span class="muted">—</span>'}</td>
     <td>${esc(a.skill)} · <span class="badge lvl">${esc(a.level)}</span> · ${mockLabel(a)}</td>
     <td>${a.percent!=null?`<b>${a.percent}%</b> <span class="muted">(${a.score}/${a.total})</span>`:'<span class="muted">— (revisión)</span>'}</td>
     <td>${a.duration_min!=null?a.duration_min+' min':'—'}</td>
@@ -658,11 +705,15 @@ async function teacherResults(){
     <td>${a.skill==='Writing'
         ? `<button class="btn sm" onclick="gradeWriting('${a.id}')">✍️ ${a.percent!=null?'Re-calificar':'Calificar'}</button>`
         : `<button class="btn sm ghost" onclick="openAttempt('${a.id}')">Ver análisis →</button>`}</td></tr>`).join('');
-  $('#main').innerHTML=`<h1>Resultados</h1>
+  $('#main').innerHTML=`
+    <div class="row" style="justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:4px">
+      <h1 style="margin:0">Resultados</h1>
+      <button class="btn sm ghost" onclick="window.exportResultsExcel()">📥 Exportar Excel</button>
+    </div>
     ${resultsFilterBar(teacherAllowedGrades(),'window._setResFilter')}${tabs}
     <div class="card" style="padding:0;overflow-x:auto"><table>
-      <thead><tr><th>Alumno</th><th>Grado</th><th>Examen</th><th>Puntaje</th><th>Tiempo</th><th>Fecha</th><th></th></tr></thead>
-      <tbody>${rows||`<tr><td colspan="7" class="center muted">Sin intentos ${isMock?'de mocks':'de practice tests'} para este filtro.</td></tr>`}</tbody>
+      <thead><tr><th>Alumno</th><th>Grado</th><th>Sección</th><th>Examen</th><th>Puntaje</th><th>Tiempo</th><th>Fecha</th><th></th></tr></thead>
+      <tbody>${rows||`<tr><td colspan="8" class="center muted">Sin intentos ${isMock?'de mocks':'de practice tests'} para este filtro.</td></tr>`}</tbody>
     </table>
     <div class="muted" style="padding:8px 14px;font-size:.82rem">${list.length} resultado(s)</div></div>`;
 }
