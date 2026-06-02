@@ -133,7 +133,7 @@ function header(){
 }
 function shell(navItems, activeKey, body){
   return header()+`<div class="shell">
-    <nav class="sidebar">${navItems.map(n=>`<div class="nav-item ${n.key===activeKey?'active':''}" data-nav="${n.key}">${n.label}</div>`).join('')}</nav>
+    <nav class="sidebar">${navItems.map(n=> n.href ? `<a class="nav-item" href="${n.href}" target="_blank" rel="noopener">${n.label}</a>` : `<div class="nav-item ${n.key===activeKey?'active':''}" data-nav="${n.key}">${n.label}</div>`).join('')}</nav>
     <main class="main" id="main">${body}</main>
   </div>`;
 }
@@ -239,6 +239,7 @@ async function renderAdmin(tab='users'){
     {key:'results',label:'📝 Resultados'},
     {key:'teachers',label:'👨‍🏫 Profesores'},
     {key:'mocks',label:'🔓 Mocks'},
+    {key:'mun',label:'🌐 MUN Academy',href:'mun-academy.html'},
   ], tab, `<div class="center muted">Cargando…</div>`);
   bindNav(renderAdmin);
   if(tab==='overview') return adminOverview();
@@ -600,6 +601,7 @@ async function renderTeacher(tab){
   if(acc.can_students) nav.push({key:'students',label:'👥 Alumnos'});
   if(!nav.length) nav.push({key:'none',label:'— sin accesos —'});
   nav.push({key:'exams',label:'🎧 Exámenes'});
+  nav.push({key:'mun',label:'🌐 MUN Academy',href:'mun-academy.html'});
   const active = (tab && nav.some(n=>n.key===tab)) ? tab : nav[0].key;
   document.body.innerHTML = shell(nav, active, `<div class="center muted">Cargando…</div>`);
   bindNav(renderTeacher);
@@ -937,6 +939,7 @@ async function renderStudent(){
   document.body.innerHTML = shell([
     {key:'home',label:'🏠 Mi avance'},
     {key:'exams',label:'🎓 Rendir examen'},
+    {key:'mun',label:'🌐 MUN Academy',href:'mun-academy.html'},
   ],'home',`<div class="center muted">Cargando…</div>`);
   bindNav(k=> k==='exams'?studentExams():studentHome());
   studentHome();
