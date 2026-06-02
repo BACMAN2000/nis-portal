@@ -138,6 +138,8 @@ function shell(navItems, activeKey, body){
   </div>`;
 }
 function bindNav(handler){ document.querySelectorAll('[data-nav]').forEach(e=>e.onclick=()=>handler(e.dataset.nav)); }
+function munBody(){ return `<iframe src="mun-academy.html" title="MUN Academy" style="width:100%;height:82vh;min-height:560px;border:0;border-radius:12px;display:block;background:#fff"></iframe>`; }
+function studentMun(){ document.querySelectorAll('[data-nav]').forEach(e=>e.classList.toggle('active',e.dataset.nav==='mun')); $('#main').innerHTML = munBody(); }
 
 /* ===================== AUTH ===================== */
 function renderAuth(mode='login'){
@@ -239,9 +241,10 @@ async function renderAdmin(tab='users'){
     {key:'results',label:'📝 Resultados'},
     {key:'teachers',label:'👨‍🏫 Profesores'},
     {key:'mocks',label:'🔓 Mocks'},
-    {key:'mun',label:'🌐 MUN Academy',href:'mun-academy.html'},
+    {key:'mun',label:'🌐 MUN Academy'},
   ], tab, `<div class="center muted">Cargando…</div>`);
   bindNav(renderAdmin);
+  if(tab==='mun') return $('#main').innerHTML = munBody();
   if(tab==='overview') return adminOverview();
   if(tab==='results') return adminResults();
   if(tab==='teachers') return adminTeachers();
@@ -601,10 +604,11 @@ async function renderTeacher(tab){
   if(acc.can_students) nav.push({key:'students',label:'👥 Alumnos'});
   if(!nav.length) nav.push({key:'none',label:'— sin accesos —'});
   nav.push({key:'exams',label:'🎧 Exámenes'});
-  nav.push({key:'mun',label:'🌐 MUN Academy',href:'mun-academy.html'});
+  nav.push({key:'mun',label:'🌐 MUN Academy'});
   const active = (tab && nav.some(n=>n.key===tab)) ? tab : nav[0].key;
   document.body.innerHTML = shell(nav, active, `<div class="center muted">Cargando…</div>`);
   bindNav(renderTeacher);
+  if(active==='mun') return $('#main').innerHTML = munBody();
   if(active==='results') return teacherResults();
   if(active==='students') return teacherStudents();
   $('#main').innerHTML = `<div class="card">El administrador aún no te ha asignado accesos. Escríbele para que te habilite <b>Resultados</b> o <b>Alumnos</b>.</div>`;
@@ -939,9 +943,9 @@ async function renderStudent(){
   document.body.innerHTML = shell([
     {key:'home',label:'🏠 Mi avance'},
     {key:'exams',label:'🎓 Rendir examen'},
-    {key:'mun',label:'🌐 MUN Academy',href:'mun-academy.html'},
+    {key:'mun',label:'🌐 MUN Academy'},
   ],'home',`<div class="center muted">Cargando…</div>`);
-  bindNav(k=> k==='exams'?studentExams():studentHome());
+  bindNav(k=> k==='mun'?studentMun(): k==='exams'?studentExams():studentHome());
   studentHome();
 }
 async function studentHome(){
