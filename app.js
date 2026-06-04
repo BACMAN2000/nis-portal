@@ -244,15 +244,19 @@ function renderPending(){
 async function renderAdmin(tab='users'){
   document.body.innerHTML = shell([
     {key:'overview',label:'📊 Resumen'},
+    {key:'stats',label:'📈 Estadísticas'},
     {key:'users',label:'👥 Alumnos'},
     {key:'results',label:'📝 Resultados'},
     {key:'teachers',label:'👨‍🏫 Profesores'},
     {key:'mocks',label:'🔓 Mocks'},
+    {key:'phonics',label:'🔤 Phonics'},
     {key:'mun',label:'🌐 MUN Academy'},
   ], tab, `<div class="center muted">Cargando…</div>`);
   bindNav(renderAdmin);
   if(tab==='mun') return $('#main').innerHTML = munBody();
+  if(tab==='phonics') return $('#main').innerHTML = phonicsPanel();
   if(tab==='overview') return adminOverview();
+  if(tab==='stats') return adminStats();
   if(tab==='results') return adminResults();
   if(tab==='teachers') return adminTeachers();
   if(tab==='mocks') return adminMocks();
@@ -261,6 +265,9 @@ async function renderAdmin(tab='users'){
 async function adminOverview(){
   const { data:profs } = await sb.from('profiles').select('role,grade_id,cefr_level');
   const { count:att } = await sb.from('exam_attempts').select('*',{count:'exact',head:true});
+  const { data:mocks } = await sb.from('mock_access').select('grade_id,unlocked');
+  const { count:teacherAcc } = await sb.from('teacher_access').select('*',{count:'exact',head:true});
+  const mockMap={}; (mocks||[]).forEach(m=>mockMap[m.grade_id]=m.unlocked);
   const students=(profs||[]).filter(p=>p.role==='student');
   const byLevel=LEVELS.map(l=>({l,n:students.filter(s=>s.cefr_level===l).length}));
   $('#main').innerHTML=`<h1>Resumen</h1>
@@ -272,6 +279,13 @@ async function adminOverview(){
     <div class="card"><h2>Alumnos por nivel</h2>
       ${byLevel.map(x=>`<div style="margin:8px 0"><div class="row" style="justify-content:space-between"><b>${x.l}</b><span class="muted">${x.n}</span></div>
         <div class="bar"><span style="width:${students.length?Math.round(x.n/students.length*100):0}%"></span></div></div>`).join('')}
+    </div>
+    <div class="card"><h2>¿Qué está activado?</h2>
+      <p class="muted" style="margin-top:-4px">Estado de los <b>Mocks</b> por grado (clic en la pestaña 🔓 Mocks para cambiarlos). ${teacherAcc||0} profesor(es) con accesos configurados (pestaña 👨‍🏫 Profesores).</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px">
+        ${GRADES.map(g=>`<span class="badge ${mockMap[g.id]?'on':'off'}" style="font-size:.82rem">${g.name}: ${mockMap[g.id]?'🔓':'🔒'}</span>`).join('')}
+      </div>
+      <div class="row" style="gap:8px;margin-top:14px"><button class="btn sm" onclick="adminNewUser()">+ Crear alumno</button><button class="btn sm ghost" onclick="adminNewTeacher()">+ Crear profesor</button><button class="btn sm ghost" onclick="renderAdmin('stats')">📈 Ver estadísticas</button></div>
     </div>`;
 }
 async function adminTeachers(){
@@ -590,6 +604,210 @@ window.openAttempt = async (id)=>{
     </div>
     ${writingHtml}`;
 };
+
+/* ===================== ADMIN · ESTADÍSTICAS (visual) ===================== */
+const CHART_PALETTE=['#4987c6','#76cbe5','#2f5f93','#d2909b','#16a34a','#f59e0b','#7c6fd2','#e07a5f','#2a9d8f','#9b5de5','#ef476f'];
+const READY_TIERS=[
+  {key:'high',label:'Aprobado alto (≥80%)',color:'#16a34a',min:80},
+  {key:'pass',label:'Aprobado (60–79%)',color:'#4987c6',min:60},
+  {key:'near',label:'Acercándose (40–59%)',color:'#f59e0b',min:40},
+  {key:'below',label:'Por debajo (<40%)',color:'#dc2626',min:0}
+];
+let statsState={view:'grade',type:'bar',grade:'',section:'',skill:'',exam:'all'};
+let _statsAll=null,_statsStudents=null,_chart=null,_chartDec=null,_chartLib=null;
+function ensureChart(){
+  if(window.Chart) return Promise.resolve();
+  if(_chartLib) return _chartLib;
+  _chartLib=new Promise((res,rej)=>{
+    const s=document.createElement('script');
+    s.src='https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js';
+    s.onload=()=>res(); s.onerror=()=>rej(new Error('No se pudo cargar Chart.js (conexión).'));
+    document.head.appendChild(s);
+  });
+  return _chartLib;
+}
+function _avg(a){ return a.length?Math.round(a.reduce((s,x)=>s+x,0)/a.length):null; }
+function statsFiltered(){
+  let l=(_statsAll||[]).filter(a=>a.percent!=null);
+  const s=statsState;
+  if(s.grade) l=l.filter(a=>String(a.profiles?.grade_id)===String(s.grade));
+  if(s.section) l=l.filter(a=>(a.profiles?.section||'')===s.section);
+  if(s.skill) l=l.filter(a=>a.skill===s.skill);
+  if(s.exam==='mock1') l=l.filter(a=>a.mock==='mock1');
+  else if(s.exam==='mock2') l=l.filter(a=>a.mock==='mock2');
+  else if(s.exam==='practice') l=l.filter(a=>!isMockAttempt(a));
+  return l;
+}
+/* readiness bucket for a percent */
+function readyTier(pct){ for(const t of READY_TIERS){ if(pct>=t.min) return t; } return READY_TIERS[READY_TIERS.length-1]; }
+
+async function adminStats(){
+  $('#main').innerHTML=`<h1>Estadísticas y Reportes</h1><p class="muted">Cargando datos…</p>`;
+  try{ await ensureChart(); }catch(e){ $('#main').innerHTML=`<div class="note err">${esc(e.message)}</div>`; return; }
+  if(!_statsAll){
+    const { data:att } = await sb.from('exam_attempts').select('skill,level,mock,percent,score,total,submitted_at,student_id, profiles(full_name,grade_id,section,grades(name))').limit(3000);
+    _statsAll=att||[];
+    const { data:st } = await sb.from('profiles').select('id,full_name,grade_id,section,cefr_level').eq('role','student');
+    _statsStudents=st||[];
+  }
+  const sections=[...new Set((_statsStudents||[]).map(s=>s.section).filter(Boolean))].sort();
+  const f=statsState;
+  const gOpts=`<option value="">Todos los grados</option>`+GRADES.map(g=>`<option value="${g.id}" ${String(f.grade)===String(g.id)?'selected':''}>${g.name}</option>`).join('');
+  const sOpts=`<option value="">Todas las secciones</option>`+sections.map(s=>`<option value="${s}" ${f.section===s?'selected':''}>${s}</option>`).join('');
+  const skOpts=`<option value="">Todas las destrezas</option>`+SKILLS.map(s=>`<option value="${s}" ${f.skill===s?'selected':''}>${s}</option>`).join('');
+  const exOpts=[['all','Todos los exámenes'],['mock1','Mock 1'],['mock2','Mock 2'],['practice','Practice Tests']].map(([v,l])=>`<option value="${v}" ${f.exam===v?'selected':''}>${l}</option>`).join('');
+  const scored=statsFiltered();
+  const studentsAssessed=new Set(scored.map(a=>a.student_id)).size;
+  const overall=_avg(scored.map(a=>a.percent));
+  // December readiness: per student, projected = latest mock (mock2 else mock1) avg
+  const proj=decemberProjection();
+  const readyPct=proj.students.length?Math.round(proj.students.filter(s=>s.proj!=null&&s.proj>=60).length/proj.students.filter(s=>s.proj!=null).length*100):0;
+  const VIEWS=[['grade','Por grado'],['skill','Por destreza'],['gradesection','Por grado y sección'],['ready','Preparación CEFR'],['mockprog','Progreso Mock 1 → 2'],['level','Por nivel CEFR']];
+  const TYPES=[['bar','Barras'],['line','Línea'],['doughnut','Dona'],['polarArea','Polar']];
+  $('#main').innerHTML=`
+    <div class="row" style="justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+      <h1 style="margin:0">Estadísticas y Reportes</h1>
+      <div class="row" style="gap:8px"><button class="btn sm" onclick="adminNewUser()">+ Alumno</button><button class="btn sm ghost" onclick="adminNewTeacher()">+ Profesor</button></div>
+    </div>
+    <div class="card" style="display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end">
+      <div><label>Grado</label><select onchange="window._stF('grade',this.value)" style="min-width:150px">${gOpts}</select></div>
+      <div><label>Sección</label><select onchange="window._stF('section',this.value)" style="min-width:140px">${sOpts}</select></div>
+      <div><label>Destreza</label><select onchange="window._stF('skill',this.value)" style="min-width:150px">${skOpts}</select></div>
+      <div><label>Examen</label><select onchange="window._stF('exam',this.value)" style="min-width:150px">${exOpts}</select></div>
+    </div>
+    <div class="grid cols-3" style="margin-bottom:4px">
+      <div class="stat"><div class="l">Exámenes calificados</div><div class="n">${scored.length}</div></div>
+      <div class="stat"><div class="l">Promedio general</div><div class="n">${overall!=null?overall+'%':'—'}</div></div>
+      <div class="stat"><div class="l">Alumnos evaluados</div><div class="n">${studentsAssessed}</div></div>
+      <div class="stat" style="background:linear-gradient(135deg,var(--blue),var(--celeste));color:#fff"><div class="l" style="color:#eaf4ff">Listos p/ oficial (Dic)</div><div class="n" style="color:#fff">${readyPct}%</div></div>
+    </div>
+    <div class="card">
+      <div class="row" style="justify-content:space-between;flex-wrap:wrap;gap:10px;align-items:center">
+        <div class="row" style="gap:6px;flex-wrap:wrap">${VIEWS.map(([v,l])=>`<button class="btn sm ${f.view===v?'':'ghost'}" onclick="window._stView('${v}')">${l}</button>`).join('')}</div>
+        <div class="row" style="gap:6px">${TYPES.map(([v,l])=>`<button class="btn sm ${f.type===v?'':'ghost'}" style="font-size:.78rem;padding:5px 10px" onclick="window._stType('${v}')">${l}</button>`).join('')}</div>
+      </div>
+      <div style="position:relative;height:380px;margin-top:14px"><canvas id="statChart"></canvas></div>
+      <div id="statLegend" class="row" style="gap:14px;flex-wrap:wrap;margin-top:10px;font-size:.82rem"></div>
+    </div>
+    <div class="card">
+      <h2>📅 Proyección a Diciembre — Examen oficial</h2>
+      <p class="muted" style="margin-top:-4px">Cada alumno se proyecta con su <b>Mock 2</b> (o Mock 1 si aún no rinde el segundo). Estándar de aprobación Cambridge ≈ 60%.</p>
+      <div style="position:relative;height:300px;margin:10px 0"><canvas id="statDec"></canvas></div>
+      <div style="overflow-x:auto"><table>
+        <thead><tr><th>Grado</th><th>Alumnos</th><th>Prom. Mock 1</th><th>Prom. Mock 2</th><th>Proyección Dic</th><th>Listos</th><th>Pendiente 2.º mock</th></tr></thead>
+        <tbody>${proj.byGrade.map(r=>`<tr>
+          <td><b>${esc(r.grade)}</b></td>
+          <td>${r.total}</td>
+          <td>${r.m1!=null?r.m1+'%':'—'}</td>
+          <td>${r.m2!=null?`<b>${r.m2}%</b>`:'<span class="muted">—</span>'}</td>
+          <td>${r.proj!=null?`<span class="badge ${r.proj>=60?'on':'off'}">${r.proj}%</span>`:'<span class="muted">—</span>'}</td>
+          <td>${r.ready}/${r.assessed}</td>
+          <td>${r.pending? `<span class="badge off">${r.pending}</span>`:'<span class="badge on">0</span>'}</td>
+        </tr>`).join('')||'<tr><td colspan="7" class="center muted">Sin datos de mocks todavía.</td></tr>'}</tbody>
+      </table></div>
+    </div>`;
+  drawStatChart();
+  drawDecChart(proj);
+}
+window._stF=(k,v)=>{ statsState[k]=v; adminStats(); };
+window._stView=(v)=>{ statsState.view=v; adminStats(); };
+window._stType=(v)=>{ statsState.type=v; adminStats(); };
+
+function statSeries(){
+  const sc=statsFiltered();
+  const v=statsState.view;
+  if(v==='grade'){
+    const rows=GRADES.map((g,i)=>({label:g.name, val:_avg(sc.filter(a=>String(a.profiles?.grade_id)===String(g.id)).map(a=>a.percent)), color:CHART_PALETTE[i%CHART_PALETTE.length]})).filter(r=>r.val!=null);
+    return {labels:rows.map(r=>r.label), data:rows.map(r=>r.val), colors:rows.map(r=>r.color), title:'Promedio (%) por grado'};
+  }
+  if(v==='skill'){
+    const rows=SKILLS.map((s,i)=>({label:s, val:_avg(sc.filter(a=>a.skill===s).map(a=>a.percent)), color:CHART_PALETTE[i%CHART_PALETTE.length]})).filter(r=>r.val!=null);
+    return {labels:rows.map(r=>r.label), data:rows.map(r=>r.val), colors:rows.map(r=>r.color), title:'Promedio (%) por destreza'};
+  }
+  if(v==='level'){
+    const rows=LEVELS.map((l,i)=>({label:l, val:_avg(sc.filter(a=>a.level===l).map(a=>a.percent)), color:CHART_PALETTE[i%CHART_PALETTE.length]})).filter(r=>r.val!=null);
+    return {labels:rows.map(r=>r.label), data:rows.map(r=>r.val), colors:rows.map(r=>r.color), title:'Promedio (%) por nivel CEFR'};
+  }
+  if(v==='gradesection'){
+    const keys=[...new Set(sc.map(a=>`${a.profiles?.grade_id}|${a.profiles?.section||'—'}`))]
+      .filter(k=>!k.startsWith('undefined')).sort();
+    const rows=keys.map((k,i)=>{ const [g,sec]=k.split('|'); return {label:`${gradeName(g)} ${sec}`, val:_avg(sc.filter(a=>`${a.profiles?.grade_id}|${a.profiles?.section||'—'}`===k).map(a=>a.percent)), color:CHART_PALETTE[i%CHART_PALETTE.length]};}).filter(r=>r.val!=null);
+    return {labels:rows.map(r=>r.label), data:rows.map(r=>r.val), colors:rows.map(r=>r.color), title:'Promedio (%) por grado y sección'};
+  }
+  if(v==='ready'){
+    const rows=READY_TIERS.map(t=>({label:t.label, val:sc.filter(a=>readyTier(a.percent).key===t.key).length, color:t.color})).filter(r=>r.val>0);
+    return {labels:rows.map(r=>r.label), data:rows.map(r=>r.val), colors:rows.map(r=>r.color), title:'Distribución de preparación (n.º de exámenes)', distribution:true};
+  }
+  if(v==='mockprog'){
+    const labels=GRADES.map(g=>g.name);
+    const m1=GRADES.map(g=>_avg(sc.filter(a=>a.mock==='mock1'&&String(a.profiles?.grade_id)===String(g.id)).map(a=>a.percent)));
+    const m2=GRADES.map(g=>_avg(sc.filter(a=>a.mock==='mock2'&&String(a.profiles?.grade_id)===String(g.id)).map(a=>a.percent)));
+    const keep=labels.map((_,i)=>m1[i]!=null||m2[i]!=null);
+    return {labels:labels.filter((_,i)=>keep[i]), multi:[
+      {label:'Mock 1', data:labels.map((_,i)=>m1[i]).filter((_,i)=>keep[i]), color:'#76cbe5'},
+      {label:'Mock 2', data:labels.map((_,i)=>m2[i]).filter((_,i)=>keep[i]), color:'#2f5f93'}
+    ], title:'Progreso Mock 1 → Mock 2 (% por grado)'};
+  }
+  return {labels:[],data:[],colors:[],title:''};
+}
+function gradeName(id){ const g=GRADES.find(x=>String(x.id)===String(id)); return g?g.name:'—'; }
+
+function drawStatChart(){
+  const s=statSeries(); const ctx=document.getElementById('statChart'); if(!ctx) return;
+  if(_chart){ _chart.destroy(); _chart=null; }
+  let type=statsState.type;
+  if(s.distribution && (type==='line')) type='doughnut';
+  if(s.multi && (type==='doughnut'||type==='polarArea')) type='bar';
+  let cfg;
+  if(s.multi){
+    cfg={type:type==='line'?'line':'bar', data:{labels:s.labels, datasets:s.multi.map(d=>({label:d.label, data:d.data, backgroundColor:d.color, borderColor:d.color, borderWidth:2, tension:.3, fill:false}))},
+      options:{responsive:true,maintainAspectRatio:false, scales:{y:{beginAtZero:true,max:100,ticks:{callback:v=>v+'%'}}}, plugins:{legend:{position:'bottom'}}}};
+  } else {
+    const single=(type==='doughnut'||type==='polarArea');
+    cfg={type, data:{labels:s.labels, datasets:[{label:s.title, data:s.data, backgroundColor:single?s.colors:s.colors, borderColor:single?'#fff':s.colors, borderWidth:single?2:0, borderRadius:type==='bar'?8:0, tension:.3, fill:type==='line'?false:true, pointBackgroundColor:s.colors}]},
+      options:{responsive:true,maintainAspectRatio:false,
+        scales:(type==='doughnut'||type==='polarArea')?{}:{y:{beginAtZero:true, max:s.distribution?undefined:100, ticks:{callback:v=>s.distribution?v:v+'%'}}},
+        plugins:{legend:{display:(type==='doughnut'||type==='polarArea'), position:'bottom'},
+          title:{display:true,text:s.title,color:'#2b2c33',font:{size:14,weight:'700'}}}}};
+  }
+  _chart=new Chart(ctx,cfg);
+  // custom legend for bar/line single series
+  const leg=document.getElementById('statLegend');
+  if(leg){ leg.innerHTML = (!s.multi && !(statsState.type==='doughnut'||statsState.type==='polarArea'))
+    ? s.labels.map((l,i)=>`<span style="display:inline-flex;align-items:center;gap:5px"><span style="width:12px;height:12px;border-radius:3px;background:${s.colors[i]};display:inline-block"></span>${esc(l)}: <b>${s.data[i]}${s.distribution?'':'%'}</b></span>`).join('')
+    : ''; }
+}
+function decemberProjection(){
+  const students=(_statsStudents||[]).map(st=>{
+    const mine=(_statsAll||[]).filter(a=>a.student_id===st.id && a.percent!=null && isMockAttempt(a));
+    const m1=_avg(mine.filter(a=>a.mock==='mock1').map(a=>a.percent));
+    const m2=_avg(mine.filter(a=>a.mock==='mock2').map(a=>a.percent));
+    const proj = m2!=null?m2:m1;
+    return {id:st.id, grade_id:st.grade_id, section:st.section, m1, m2, proj, hasM1:m1!=null, hasM2:m2!=null};
+  });
+  const byGrade=GRADES.map(g=>{
+    const gs=students.filter(s=>String(s.grade_id)===String(g.id));
+    const assessed=gs.filter(s=>s.proj!=null);
+    return {grade:g.name, total:gs.length,
+      m1:_avg(gs.filter(s=>s.m1!=null).map(s=>s.m1)),
+      m2:_avg(gs.filter(s=>s.m2!=null).map(s=>s.m2)),
+      proj:_avg(assessed.map(s=>s.proj)),
+      assessed:assessed.length,
+      ready:assessed.filter(s=>s.proj>=60).length,
+      pending:gs.filter(s=>s.hasM1&&!s.hasM2).length};
+  }).filter(r=>r.total>0);
+  return {students, byGrade};
+}
+function drawDecChart(proj){
+  const ctx=document.getElementById('statDec'); if(!ctx) return;
+  if(_chartDec){ _chartDec.destroy(); _chartDec=null; }
+  const rows=proj.byGrade;
+  _chartDec=new Chart(ctx,{type:'bar', data:{labels:rows.map(r=>r.grade), datasets:[
+    {label:'Mock 1', data:rows.map(r=>r.m1), backgroundColor:'#76cbe5', borderRadius:6},
+    {label:'Mock 2', data:rows.map(r=>r.m2), backgroundColor:'#2f5f93', borderRadius:6},
+    {label:'Meta (60%)', type:'line', data:rows.map(()=>60), borderColor:'#dc2626', borderDash:[6,4], pointRadius:0, borderWidth:2}
+  ]}, options:{responsive:true,maintainAspectRatio:false, scales:{y:{beginAtZero:true,max:100,ticks:{callback:v=>v+'%'}}}, plugins:{legend:{position:'bottom'}}}});
+}
 
 /* ===================== TEACHER ===================== */
 let resultsFilter = { grade:'', section:'', name:'', dateFrom:'', dateTo:'' };
@@ -1011,9 +1229,25 @@ function projection(p,bySkill,atts){
   else if(overall>=40){verdict=`Te estás <b>acercando</b> a ${lvl}. Enfócate en las destrezas más bajas de arriba.`;cls='info';}
   else {verdict=`Aún <b>por debajo</b> de ${lvl}. Conviene más práctica antes del examen oficial.`;cls='err';}
   const weak=[...done].sort((a,b)=>a.avg-b.avg)[0];
+  // December official-test roadmap: Mock 1 → Mock 2 → Examen oficial
+  const hasM1=(atts||[]).some(a=>a.mock==='mock1');
+  const hasM2=(atts||[]).some(a=>a.mock==='mock2');
+  const steps=[
+    {k:'m1',label:'Mock 1',done:hasM1},
+    {k:'m2',label:'Mock 2',done:hasM2},
+    {k:'off',label:'Examen oficial · Diciembre',done:false}
+  ];
+  const roadmap=`<div class="row" style="gap:8px;flex-wrap:wrap;margin:12px 0 4px">${steps.map((s,i)=>`
+    <span class="badge ${s.done?'on':(i===steps.findIndex(x=>!x.done)?'':'off')}" style="${(!s.done&&i===steps.findIndex(x=>!x.done))?'background:var(--blue);color:#fff':''}">${s.done?'✓ ':(i===steps.findIndex(x=>!x.done)?'▶ ':'')}${s.label}</span>${i<steps.length-1?'<span class="muted">→</span>':''}`).join('')}</div>`;
+  const nextMsg = !hasM1 ? 'Tu siguiente paso es rendir el <b>Mock 1</b>.'
+    : !hasM2 ? 'Rinde tu <b>Mock 2</b> para confirmar tu progreso antes del examen oficial de diciembre.'
+    : (overall>=60 ? 'Vas en camino al <b>examen oficial de diciembre</b>. ¡Sigue practicando para asegurar el resultado!'
+                   : 'Refuerza tus destrezas más bajas antes del <b>examen oficial de diciembre</b>.');
   return `<div class="proj"><div style="font-size:1.1rem;margin-bottom:6px">Promedio general: <b>${overall}%</b></div>
     <div class="note ${cls}" style="margin:8px 0">${verdict}</div>
-    <div class="muted">Destreza a reforzar: <b>${weak.sk}</b> (${weak.avg}%).</div></div>`;
+    <div class="muted">Destreza a reforzar: <b>${weak.sk}</b> (${weak.avg}%).</div>
+    ${roadmap}
+    <div class="note info" style="margin-top:8px">📅 ${nextMsg}</div></div>`;
 }
 async function studentExams(){
   document.querySelectorAll('[data-nav]').forEach(e=>e.classList.toggle('active',e.dataset.nav==='exams'));
