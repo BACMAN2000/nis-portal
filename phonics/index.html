@@ -324,16 +324,20 @@ function splitSounds(w){
 }
 const VOWELS="aeiou";
 /* Colour each letter: consonants blue, vowels coral, silent-e muted. */
-function ColorWord({w,big,highlight}){
+function ColorWord({w,big,highlight,hi}){
   const magicE = /^[a-z]+e$/.test(w) && w.length>=4 && !"aeiou".includes(w[w.length-2]);
   return (
-    <span className={(big?"text-3xl ":"text-xl ")+"font-extrabold tracking-tight"}>
+    <span className={(big?"text-3xl ":"text-xl ")+"font-extrabold tracking-tight inline-flex items-end"}>
       {w.split("").map((ch,i)=>{
         const silentE = magicE && i===w.length-1;
         const isV = VOWELS.includes(ch);
         const col = silentE ? "#9AA8B8" : isV ? "#D2607A" : "#2E5B9E";
         const hl = highlight && w.endsWith(highlight.replace("-","")) && i>=w.length-highlight.replace("-","").length;
-        return <span key={i} style={{color:col}} className={hl?"underline decoration-2 underline-offset-4":""}>{ch}</span>;
+        const lit = hi && i>=hi[0] && i<hi[1];   // karaoke: this letter is sounding now
+        return <span key={i} style={{color:col}}
+          className={"inline-block transition-all duration-150 origin-bottom "
+            +(hl?"underline decoration-2 underline-offset-4 ":"")
+            +(lit?"scale-[1.6] -translate-y-1 drop-shadow ":"")}>{ch}</span>;
       })}
     </span>
   );
@@ -402,6 +406,10 @@ function WordModal({w,onClose}){
   useEffect(()=>{ setActive(-1); },[w]);
   if(!w) return null;
   const parts=splitSounds(w);
+  // map each sound → its letter span [start,end) in the word, so the spoken
+  // letter(s) can grow inside the big word too.
+  const letterRanges=(()=>{ let off=0; return parts.map(p=>{ const base=p.replace('_e',''); const len = p.includes('_e')? base.length+1 : base.length; const r=[off,off+len]; off+=len; return r; }); })();
+  const hiRange = active>=0 ? letterRanges[active] : null;
   const playOne=(i)=>{ setActive(i); speak(parts[i].replace("_e",""),{rate:0.5}); setTimeout(()=>setActive(a=>a===i?-1:a),700); };
   const playAll=()=>{
     setActive(-1);
@@ -413,7 +421,7 @@ function WordModal({w,onClose}){
       <div className="bg-white rounded-3xl max-w-md w-full p-6 card-shadow animate-slide-up text-center" onClick={e=>e.stopPropagation()}>
         <button onClick={onClose} className="float-right text-nordic-300 hover:text-nordic-600 text-2xl leading-none">×</button>
         {PIC[w] && <div className="text-6xl mt-1 mb-1">{PIC[w]}</div>}
-        <div className="mt-1"><ColorWord w={w} big/></div>
+        <div className="mt-1 mb-1 min-h-[2.5rem] flex items-end justify-center"><ColorWord w={w} big hi={hiRange}/></div>
         <div className="flex items-center justify-center gap-2 my-5">
           {parts.map((s,i)=>(
             <div key={i} onClick={()=>playOne(i)}
