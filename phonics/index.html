@@ -209,18 +209,56 @@ const FAMILIES = [
   {rime:"-ight",words:["night","light","right","sight","fight","might","bright","fright","flight","tight","slight"]}
 ];
 
-/* ---- Web Speech helpers (offline, no proprietary audio needed) ---- */
+/* ============================================================
+   AUDIO ENGINE
+   Plays a pre-generated ElevenLabs clip if one exists
+   (audio/<accent>-<gender>/<word>.mp3), otherwise falls back to the
+   browser's speech engine. Accent (US/UK) and voice (female/male) are
+   user-selectable and remembered. Slow, clear pace for PK–K–G1.
+   ============================================================ */
+const AUDIO_BASE = 'audio';
+const KID_RATE = 0.72;            // slow & clear for young learners
+let voicePrefs = (()=>{ try{ return JSON.parse(localStorage.getItem('phonicsVoice'))||{}; }catch(e){ return {}; } })();
+if(!voicePrefs.accent) voicePrefs.accent='us';   // 'us' | 'uk'
+if(!voicePrefs.gender) voicePrefs.gender='female'; // 'female' | 'male'
+function saveVoicePrefs(){ try{ localStorage.setItem('phonicsVoice',JSON.stringify(voicePrefs)); }catch(e){} }
+function voiceVariant(){ return voicePrefs.accent+'-'+voicePrefs.gender; }
+function audioKey(text){ return String(text).toLowerCase().replace(/[^a-z]/g,''); }
+
 function pickVoice(){
   const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
-  return vs.find(v=>/en[-_]US/i.test(v.lang)) || vs.find(v=>/^en/i.test(v.lang)) || vs[0];
+  if(!vs.length) return null;
+  const wantUK = voicePrefs.accent==='uk';
+  const langRe = wantUK ? /en[-_]GB/i : /en[-_]US/i;
+  let pool = vs.filter(v=>langRe.test(v.lang));
+  if(!pool.length) pool = vs.filter(v=>/^en/i.test(v.lang));
+  if(!pool.length) pool = vs;
+  const female=/(female|zira|hazel|susan|sonia|libby|maisie|aria|jenny|eva|catherine|hayley|clara)/i;
+  const male=/(male|david|mark|guy|ryan|george|daniel|thomas|james|william|brandon)/i;
+  const want = voicePrefs.gender==='female'?female:male;
+  return pool.find(v=>want.test(v.name)) || pool[0];
 }
-function speak(text,{rate=0.85}={}){
+function webSpeak(text,rate){
   if(!window.speechSynthesis) return;
   speechSynthesis.cancel();
   const u = new SpeechSynthesisUtterance(text);
   const v = pickVoice(); if(v) u.voice=v;
-  u.lang='en-US'; u.rate=rate; u.pitch=1;
+  u.lang = voicePrefs.accent==='uk'?'en-GB':'en-US';
+  u.rate = rate; u.pitch = 1;
   speechSynthesis.speak(u);
+}
+function speak(text,{rate=KID_RATE}={}){
+  const key = audioKey(text);
+  if(!key){ return webSpeak(text,rate); }
+  let done=false;
+  const fallback=()=>{ if(done) return; done=true; webSpeak(text,rate); };
+  try{
+    const a = new Audio(`${AUDIO_BASE}/${voiceVariant()}/${key}.mp3`);
+    a.onerror = fallback;
+    a.onplaying = ()=>{ done=true; };
+    const p = a.play();
+    if(p && p.catch) p.catch(fallback);
+  }catch(e){ fallback(); }
 }
 const LIP_LABEL={closed:"Lips closed",rounded:"Lips rounded",spread:"Lips spread (smile)",neutral:"Lips relaxed"};
 
@@ -597,6 +635,23 @@ function Overview({go}){
     </div>
   );
 }
+function VoiceControls(){
+  const [,force]=useState(0);
+  const set=(k,v)=>{ voicePrefs[k]=v; saveVoicePrefs(); force(n=>n+1); speak(voicePrefs.gender==='female'?'Hello':'Hello'); };
+  const seg=(active)=> "px-2.5 py-1 text-xs font-bold rounded-lg transition "+(active?"bg-nordic-700 text-white":"text-nordic-500 hover:bg-nordic-100");
+  return (
+    <div className="flex items-center gap-2">
+      <div className="flex gap-0.5 bg-nordic-50 rounded-xl p-0.5 border border-nordic-100" title="Acento del inglés">
+        <button onClick={()=>set('accent','us')} className={seg(voicePrefs.accent==='us')}>🇺🇸 US</button>
+        <button onClick={()=>set('accent','uk')} className={seg(voicePrefs.accent==='uk')}>🇬🇧 UK</button>
+      </div>
+      <div className="flex gap-0.5 bg-nordic-50 rounded-xl p-0.5 border border-nordic-100" title="Voz">
+        <button onClick={()=>set('gender','female')} className={seg(voicePrefs.gender==='female')}>👩 Miss</button>
+        <button onClick={()=>set('gender','male')} className={seg(voicePrefs.gender==='male')}>👨 Mr</button>
+      </div>
+    </div>
+  );
+}
 function App(){
   const [tab,setTab]=useState("home");
   useEffect(()=>{ if(window.speechSynthesis){ speechSynthesis.getVoices(); speechSynthesis.onvoiceschanged=()=>speechSynthesis.getVoices(); } window.scrollTo(0,0);},[]);
@@ -609,13 +664,13 @@ function App(){
           <div className="max-w-6xl mx-auto px-4 py-3 flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-nordic-700 text-white flex items-center justify-center font-bold">NIS</div>
             <div className="leading-tight"><div className="font-bold text-nordic-800">Phonics Studio</div><div className="text-[11px] text-nordic-400">English Department · NIS</div></div>
-            <nav className="ml-auto flex flex-wrap gap-1">{tabs.map(([id,label])=>(<button key={id} onClick={()=>setTab(id)} className={"px-3 py-1.5 rounded-lg text-sm font-semibold transition "+(tab===id?"tab-active":"text-nordic-600 hover:bg-nordic-50")}>{label}</button>))}</nav>
+            <nav className="ml-auto flex flex-wrap items-center gap-1">{tabs.map(([id,label])=>(<button key={id} onClick={()=>setTab(id)} className={"px-3 py-1.5 rounded-lg text-sm font-semibold transition "+(tab===id?"tab-active":"text-nordic-600 hover:bg-nordic-50")}>{label}</button>))}<span className="mx-1 w-px h-6 bg-nordic-100"></span><VoiceControls/></nav>
           </div>
         </header>
       )}
       {EMBED && (
         <div className="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-nordic-100 no-print">
-          <div className="max-w-6xl mx-auto px-4 py-2 flex flex-wrap gap-1">{tabs.map(([id,label])=>(<button key={id} onClick={()=>setTab(id)} className={"px-3 py-1.5 rounded-lg text-sm font-semibold transition "+(tab===id?"tab-active":"text-nordic-600 hover:bg-nordic-50")}>{label}</button>))}</div>
+          <div className="max-w-6xl mx-auto px-4 py-2 flex flex-wrap items-center gap-1">{tabs.map(([id,label])=>(<button key={id} onClick={()=>setTab(id)} className={"px-3 py-1.5 rounded-lg text-sm font-semibold transition "+(tab===id?"tab-active":"text-nordic-600 hover:bg-nordic-50")}>{label}</button>))}<span className="mx-1 w-px h-6 bg-nordic-100"></span><VoiceControls/></div>
         </div>
       )}
       <main className="max-w-6xl mx-auto px-4 py-6 pb-16">
@@ -627,7 +682,7 @@ function App(){
         {tab==="activities" && <Activities/>}
         {tab==="guide" && <Guide/>}
       </main>
-      {!EMBED && <footer className="max-w-6xl mx-auto px-4 py-6 text-center text-xs text-nordic-400 no-print">NIS English — Phonics Studio · Sound inventory based on Pronunciation Coach 3D · Audio via your browser’s speech engine (offline-capable).</footer>}
+      {!EMBED && <footer className="max-w-6xl mx-auto px-4 py-6 text-center text-xs text-nordic-400 no-print">NIS English — Phonics Studio · Sound inventory based on Pronunciation Coach 3D · Audio: ElevenLabs clips when available, with browser speech fallback · Accent &amp; voice selectable above.</footer>}
     </div>
   );
 }

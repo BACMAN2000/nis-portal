@@ -6,3 +6,7 @@ Thumbs.db
 # Never publish student credentials to the public Pages repo
 CREDENCIALES_2026.csv
 *CREDENCIAL*
+
+# Secrets — never commit the ElevenLabs key
+phonics/tools/.env
+.env
