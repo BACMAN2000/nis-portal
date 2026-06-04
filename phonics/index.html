@@ -274,12 +274,13 @@ function speak(text,{rate=BASE_RATE}={}){
 }
 /* Speak a list of clips one after another — next starts only when the previous
    ends (plus a short gap). Fixes the "middle sound (vowel) gets cut" problem. */
-function speakSequence(parts,{rate=0.5, gap=200}={}){
+function speakSequence(parts,{rate=0.5, gap=200, onStep, onDone}={}){
   const eff = Math.max(0.35, Math.min(1, rate*speedMul()));
   let i=0;
   const step=()=>{
-    if(i>=parts.length) return;
-    const t=parts[i++];
+    if(i>=parts.length){ if(onDone) onDone(); return; }
+    const idx=i; const t=parts[i++];
+    if(onStep) onStep(idx);                // karaoke: tell the caller which clip is sounding
     let advanced=false;
     const go=()=>{ if(advanced) return; advanced=true; setTimeout(step, gap); };
     const watchdog=setTimeout(go, 2800);   // never stall if onend doesn't fire
@@ -397,8 +398,16 @@ function PhonemeModal({p,onClose}){
    WORD CHIP + BREAKDOWN MODAL
    ============================================================ */
 function WordModal({w,onClose}){
+  const [active,setActive]=useState(-1);   // karaoke: index of the sounding box
+  useEffect(()=>{ setActive(-1); },[w]);
   if(!w) return null;
   const parts=splitSounds(w);
+  const playOne=(i)=>{ setActive(i); speak(parts[i].replace("_e",""),{rate:0.5}); setTimeout(()=>setActive(a=>a===i?-1:a),700); };
+  const playAll=()=>{
+    setActive(-1);
+    speakSequence(parts.map(s=>s.replace('_e','')),{rate:0.5, gap:240, onStep:setActive, onDone:()=>setActive(-1)});
+  };
+  const playWhole=()=>{ setActive(-2); speak(w,{rate:0.8}); setTimeout(()=>setActive(-1),900); };
   return (
     <div className="fixed inset-0 z-50 bg-nordic-900/50 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in" onClick={onClose}>
       <div className="bg-white rounded-3xl max-w-md w-full p-6 card-shadow animate-slide-up text-center" onClick={e=>e.stopPropagation()}>
@@ -406,10 +415,18 @@ function WordModal({w,onClose}){
         {PIC[w] && <div className="text-6xl mt-1 mb-1">{PIC[w]}</div>}
         <div className="mt-1"><ColorWord w={w} big/></div>
         <div className="flex items-center justify-center gap-2 my-5">
-          {parts.map((s,i)=><div key={i} onClick={()=>speak(s.replace("_e",""),{rate:0.5})} className="cursor-pointer w-14 h-14 rounded-xl bg-nordic-100 text-nordic-700 flex items-center justify-center text-xl font-bold hover:bg-nordic-200">{s.replace("_e","_e")}</div>)}
+          {parts.map((s,i)=>(
+            <div key={i} onClick={()=>playOne(i)}
+              className={"cursor-pointer w-14 h-14 rounded-xl flex items-center justify-center text-xl font-bold transition-all duration-150 "+
+                (active===i
+                  ? "bg-nordic-600 text-white scale-125 shadow-lg ring-4 ring-nordic-200"
+                  : "bg-nordic-100 text-nordic-700 hover:bg-nordic-200")}>
+              {s.replace("_e","_e")}
+            </div>
+          ))}
         </div>
         <p className="text-sm text-nordic-500 mb-3"><b className="text-nordic-700">{parts.length}</b> sounds · <b className="text-nordic-700">{w.length}</b> letters</p>
-        <div className="flex gap-2"><button onClick={()=>speakSequence(parts.map(s=>s.replace('_e','')),{rate:0.5})} className="flex-1 bg-nordic-100 hover:bg-nordic-200 text-nordic-700 font-bold rounded-xl py-2.5 text-sm">Sound by sound</button><button onClick={()=>speak(w,{rate:0.8})} className="flex-1 bg-nordic-600 hover:bg-nordic-700 text-white font-bold rounded-xl py-2.5 text-sm">🔊 Blend → read</button></div>
+        <div className="flex gap-2"><button onClick={playAll} className="flex-1 bg-nordic-100 hover:bg-nordic-200 text-nordic-700 font-bold rounded-xl py-2.5 text-sm">🎤 Sound by sound</button><button onClick={playWhole} className="flex-1 bg-nordic-600 hover:bg-nordic-700 text-white font-bold rounded-xl py-2.5 text-sm">🔊 Blend → read</button></div>
         <p className="text-[11px] text-nordic-400 mt-3"><span style={{color:'#2E5B9E'}}>■</span> consonant &nbsp; <span style={{color:'#D2607A'}}>■</span> vowel &nbsp; <span style={{color:'#9AA8B8'}}>■</span> silent e</p>
       </div>
     </div>
