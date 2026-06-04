@@ -321,6 +321,29 @@ async function adminOverview(){
         ${GRADES.map(g=>`<span class="badge ${mockMap[g.id]?'on':'off'}" style="font-size:.82rem">${g.name}: ${mockMap[g.id]?'🔓':'🔒'}</span>`).join('')}
       </div>
       <div class="row" style="gap:8px;margin-top:14px"><button class="btn sm" onclick="adminNewUser()">+ Crear alumno</button><button class="btn sm ghost" onclick="adminNewTeacher()">+ Crear profesor</button><button class="btn sm ghost" onclick="renderAdmin('stats')">📈 Ver estadísticas</button></div>
+    </div>
+    <div class="card"><h2>Roles y permisos</h2>
+      <p class="muted" style="margin-top:-4px">Cada persona entra con su correo y su rol decide qué ve y qué puede hacer.</p>
+      <div style="overflow-x:auto"><table>
+        <thead><tr><th>Acción / Vista</th><th style="text-align:center">🛡️ Admin</th><th style="text-align:center">👨‍🏫 Profesor</th><th style="text-align:center">🎓 Alumno</th></tr></thead>
+        <tbody>
+          ${[
+            ['Ver su propio avance y proyección','—','—','✓'],
+            ['Rendir exámenes (Mocks / Practice)','—','—','✓'],
+            ['Ver resultados de alumnos','✓ (todos)','Si se le habilita · sólo sus grados','—'],
+            ['Ver lista de alumnos','✓ (todos)','Si se le habilita · sólo sus grados','—'],
+            ['Calificar Writing','✓','✓ (sus grados)','—'],
+            ['📈 Estadísticas y reportes','✓ (sólo admin)','—','—'],
+            ['📝 Registro: crear / editar / eliminar usuarios','✓ (sólo admin)','—','—'],
+            ['Definir accesos y grados de profesores','✓ (sólo admin)','—','—'],
+            ['🔓 Desbloquear Mocks por grado','✓ (sólo admin)','—','—'],
+            ['Phonics y MUN Academy','✓','✓','✓']
+          ].map(r=>`<tr><td>${r[0]}</td>
+            <td style="text-align:center">${r[1]}</td>
+            <td style="text-align:center;font-size:.85rem">${r[2]}</td>
+            <td style="text-align:center">${r[3]}</td></tr>`).join('')}
+        </tbody></table></div>
+      <p class="muted" style="font-size:.82rem;margin-top:8px">Para definir qué ve cada profesor y de qué grados, entra a <b>👨‍🏫 Profesores</b>. <b>Estadísticas</b> y <b>Registro</b> de usuarios son exclusivos del administrador.</p>
     </div>`;
 }
 async function adminTeachers(){
@@ -360,7 +383,7 @@ async function adminTeachers(){
       </div>
       <div class="muted" style="margin:10px 0 4px;font-size:.85rem">Grados específicos (sólo si desmarcas "Todos los grados"):</div>
       <div style="display:flex;flex-wrap:wrap;gap:8px">${gradeChips}</div>
-      <div class="row" style="margin-top:12px;align-items:center;gap:10px"><button class="btn sm" onclick="window._saveTeacher('${t.id}', this)">Guardar</button><span class="tmsg muted" style="font-size:.85rem"></span></div>
+      <div class="row" style="margin-top:12px;align-items:center;gap:10px"><button class="btn sm" onclick="window._saveTeacher('${t.id}', this)">Guardar accesos</button><button class="btn sm danger" onclick="deleteUser('${t.id}','teacher')">Eliminar profesor</button><span class="tmsg muted" style="font-size:.85rem"></span></div>
     </div>`;
   }).join('');
   const emptyMsg = teachers.length ? '' : `<div class="card"><p class="muted">Aún no hay profesores. Usa el botón de arriba para agregar uno.</p></div>`;
@@ -481,7 +504,7 @@ async function adminUsers(){
       <td><span class="badge ${p.role==='student'?'':'on'}">${esc(p.role)}</span></td>
       <td class="pwcell"><span class="pw" data-pw="•••••••">•••••••</span> <button class="eye" title="Ver/ocultar" onclick="togglePw('${p.id}',this)">👁</button></td>
       <td><span class="badge ${p.active?'on':'off'}">${p.active?'Activo':'Inactivo'}</span></td>
-      <td><button class="btn sm ghost" onclick="editUser('${p.id}')">Editar</button></td>
+      <td style="white-space:nowrap"><button class="btn sm ghost" onclick="editUser('${p.id}')">Editar</button> <button class="btn sm danger" onclick="deleteUser('${p.id}','user')">Eliminar</button></td>
     </tr>`).join('');
   $('#main').innerHTML=`<div class="row" style="justify-content:space-between;align-items:center"><h1>Alumnos</h1>
       <button class="btn sm" onclick="adminNewUser()">+ Nuevo</button></div>
@@ -563,6 +586,16 @@ window.saveUser = async (id)=>{
   if(pw){ await sb.from('student_credentials').upsert({profile_id:id,password:pw,updated_at:new Date().toISOString()}); }
   $('#emsg').innerHTML = error?`<div class="note err">${esc(error.message)}</div>`:`<div class="note ok">Guardado.</div>`;
   if(!error) setTimeout(adminUsers,700);
+};
+/* Permanently delete a user (admin only). Cascades to results, credentials and
+   teacher access via the DB. Guarded server-side: can't delete self or the last admin. */
+window.deleteUser = async (id, kind)=>{
+  const el = document.querySelector(`tr[data-id="${id}"]`) || document.querySelector(`.card[data-tid="${id}"]`);
+  const name = el ? ((el.querySelector('b')||el.querySelector('h2'))||{}).textContent || 'este usuario' : 'este usuario';
+  if(!confirm(`¿Eliminar definitivamente a "${name}"?\n\nSe borrará su cuenta y TODOS sus resultados. Esta acción no se puede deshacer.`)) return;
+  const { error } = await sb.rpc('admin_delete_user', { p_id:id });
+  if(error){ alert('No se pudo eliminar: '+error.message); return; }
+  (kind==='teacher' ? adminTeachers : adminUsers)();
 };
 async function adminResults(){
   const { data } = await sb.from('exam_attempts').select('*, profiles(full_name,grade_id,section,grades(name))').order('submitted_at',{ascending:false}).limit(500);
