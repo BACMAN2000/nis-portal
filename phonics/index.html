@@ -327,7 +327,7 @@ const VOWELS="aeiou";
 function ColorWord({w,big,highlight,hi}){
   const magicE = /^[a-z]+e$/.test(w) && w.length>=4 && !"aeiou".includes(w[w.length-2]);
   return (
-    <span className={(big?"text-3xl ":"text-xl ")+"font-extrabold tracking-tight inline-flex items-end"}>
+    <span className={"font-extrabold inline-flex items-end "+(big?"text-3xl gap-3 ":"text-xl tracking-tight ")}>
       {w.split("").map((ch,i)=>{
         const silentE = magicE && i===w.length-1;
         const isV = VOWELS.includes(ch);
