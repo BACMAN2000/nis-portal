@@ -356,7 +356,7 @@ async function adminOverview(){
     </div>`;
 }
 async function adminTeachers(){
-  const { data:profs, error } = await sb.from('profiles').select('id, full_name, email, grades(name)').eq('role','teacher').order('full_name');
+  const { data:profs, error } = await sb.from('profiles').select('id, full_name, email, active, grades(name)').eq('role','teacher').order('full_name');
   if(error){ $('#main').innerHTML=`<div class="note err">${esc(error.message)}</div>`; return; }
   const { data:accs } = await sb.from('teacher_access').select('*');
   const amap={}; (accs||[]).forEach(a=>amap[a.profile_id]=a);
@@ -371,9 +371,10 @@ async function adminTeachers(){
     const a=amap[t.id]||{can_results:true,can_students:false,all_grades:true,grades:[]};
     const gradeChips=GRADES.map(g=>`<label style="${chipCss}"><input type="checkbox" class="tg-grade" value="${g.id}" ${(a.grades||[]).includes(g.id)?'checked':''} ${a.all_grades?'disabled':''}> ${g.name}</label>`).join('');
     const pw=credmap[t.id]||'';
-    return `<div class="card" data-tid="${t.id}">
+    const suspended = t.active===false;
+    return `<div class="card" data-tid="${t.id}" style="${suspended?'opacity:.6':''}">
       <div class="row" style="justify-content:space-between;align-items:flex-start">
-        <h2 style="margin:0;font-size:1.1rem">${esc(t.full_name||t.email)}</h2>
+        <h2 style="margin:0;font-size:1.1rem">${esc(t.full_name||t.email)} ${suspended?'<span class="badge off" style="font-size:.7rem;vertical-align:middle">Suspendido</span>':''}</h2>
         <div style="text-align:right">
           <span class="muted" style="font-size:.82rem;display:block">${esc(t.email||'')}</span>
           <span style="display:inline-flex;align-items:center;gap:5px;margin-top:3px">
@@ -392,7 +393,7 @@ async function adminTeachers(){
       </div>
       <div class="muted" style="margin:10px 0 4px;font-size:.85rem">Grados específicos (sólo si desmarcas "Todos los grados"):</div>
       <div style="display:flex;flex-wrap:wrap;gap:8px">${gradeChips}</div>
-      <div class="row" style="margin-top:12px;align-items:center;gap:10px"><button class="btn sm" onclick="window._saveTeacher('${t.id}', this)">Guardar accesos</button><button class="btn sm danger" onclick="deleteUser('${t.id}','teacher')">Eliminar profesor</button><span class="tmsg muted" style="font-size:.85rem"></span></div>
+      <div class="row" style="margin-top:12px;align-items:center;gap:10px"><button class="btn sm" onclick="window._saveTeacher('${t.id}', this)">Guardar accesos</button>${suspended?`<button class="btn sm" style="background:var(--good)" onclick="suspendUser('${t.id}',true,'teacher')">Reactivar</button>`:`<button class="btn sm ghost" style="border-color:var(--warn);color:#92600a" onclick="suspendUser('${t.id}',false,'teacher')">Suspender</button>`}<button class="btn sm danger" onclick="deleteUser('${t.id}','teacher')">Eliminar profesor</button><span class="tmsg muted" style="font-size:.85rem"></span></div>
     </div>`;
   }).join('');
   const emptyMsg = teachers.length ? '' : `<div class="card"><p class="muted">Aún no hay profesores. Usa el botón de arriba para agregar uno.</p></div>`;
@@ -615,11 +616,11 @@ window.deleteUser = async (id, kind)=>{
 };
 /* Suspend (soft): keep the account + data but block access and hide it from the
    default list. Reversible with Reactivar. */
-window.suspendUser = async (id, to)=>{
+window.suspendUser = async (id, to, kind)=>{
   if(!to && !confirm('¿Suspender este usuario? No podrá iniciar sesión y se ocultará de la lista (puedes reactivarlo cuando quieras).')) return;
   const { error } = await sb.from('profiles').update({ active:to }).eq('id',id);
   if(error){ alert('No se pudo actualizar: '+error.message); return; }
-  adminUsers();
+  (kind==='teacher' ? adminTeachers : adminUsers)();
 };
 async function adminResults(){
   const { data } = await sb.from('exam_attempts').select('*, profiles(full_name,grade_id,section,grades(name))').order('submitted_at',{ascending:false}).limit(500);
