@@ -64,6 +64,41 @@ function barRow(label, pct){
   return `<div style="margin:8px 0"><div class="row" style="justify-content:space-between"><b>${esc(label)}</b><span class="muted">${pct}%</span></div>
     <div class="bar"><span style="width:${Math.max(2,pct)}%;background:${cls}"></span></div></div>`;
 }
+/* ---- Parts strengths/weaknesses helpers ---- */
+function attemptParts(a){ return partsOf(a.breakdown).filter(p=>p.pct!=null); }
+function weakStrong(a){
+  const ps=attemptParts(a); if(!ps.length) return null;
+  const sorted=[...ps].sort((x,y)=>x.pct-y.pct);
+  return { weak:sorted[0], strong:sorted[sorted.length-1] };
+}
+/* Aggregate average % per exam part (skill · part) across a list of attempts. */
+function aggregateParts(list){
+  const map={};
+  list.forEach(a=>{
+    attemptParts(a).forEach(p=>{
+      const key=`${a.skill} · ${p.name}`;
+      (map[key]=map[key]||{name:key,sum:0,n:0});
+      map[key].sum+=p.pct; map[key].n++;
+    });
+  });
+  return Object.values(map).map(x=>({name:x.name,avg:Math.round(x.sum/x.n),n:x.n})).sort((a,b)=>a.avg-b.avg);
+}
+/* Card: group strengths & weaknesses by part (weakest first). */
+function partsBreakdownCard(list){
+  const parts=aggregateParts(list);
+  if(!parts.length) return '';
+  const weak=parts.filter(p=>p.avg<50), strong=parts.filter(p=>p.avg>=70);
+  const chip=(p,color)=>`<span class="badge" style="background:${color};color:#fff;font-size:.8rem">${esc(p.name)} · ${p.avg}%</span>`;
+  return `<div class="card">
+    <h2 style="margin-bottom:2px">Partes del examen — fortalezas y debilidades del grupo</h2>
+    <p class="muted" style="margin-top:0;font-size:.85rem">Promedio por parte sobre los resultados filtrados (${list.length} examen(es)). Lo más débil va primero.</p>
+    <div class="grid cols-2" style="margin:10px 0">
+      <div><h3 style="color:var(--bad);margin:0 0 6px">⚠️ A reforzar (&lt;50%)</h3>${weak.length?`<div style="display:flex;flex-wrap:wrap;gap:6px">${weak.map(p=>chip(p,'#dc2626')).join('')}</div>`:'<p class="muted">Ninguna parte por debajo del 50%. 👏</p>'}</div>
+      <div><h3 style="color:var(--good);margin:0 0 6px">💪 Fortalezas (≥70%)</h3>${strong.length?`<div style="display:flex;flex-wrap:wrap;gap:6px">${strong.map(p=>chip(p,'#16a34a')).join('')}</div>`:'<p class="muted">Aún ninguna parte ≥70%.</p>'}</div>
+    </div>
+    <div style="margin-top:6px">${parts.map(p=>barRow(`${p.name} (${p.n})`, p.avg)).join('')}</div>
+  </div>`;
+}
 
 /* ---------- boot ---------- */
 // Watchdog: never get stuck on the initial "Cargando…" splash.
@@ -539,26 +574,32 @@ async function adminResults(){
     <button class="btn sm ${isMock?'':'ghost'}" onclick="window._setResBranch('mock')">📝 Mocks (${all.filter(isMockAttempt).length})</button>
     <button class="btn sm ${isMock?'ghost':''}" onclick="window._setResBranch('practice')">🎯 Practice Tests (${all.filter(a=>!isMockAttempt(a)).length})</button>
   </div>`;
-  const rows = list.map(a=>`<tr>
+  const rows = list.map(a=>{
+    const ws=weakStrong(a);
+    const wsCell = ws
+      ? `<span class="badge off" title="Parte más débil" style="font-size:.72rem">▼ ${esc(ws.weak.name)} ${ws.weak.pct}%</span> <span class="badge on" title="Parte más fuerte" style="font-size:.72rem">▲ ${esc(ws.strong.name)} ${ws.strong.pct}%</span>`
+      : '<span class="muted">—</span>';
+    return `<tr>
     <td><b>${esc(a.profiles?.full_name||'')}</b></td>
     <td><span class="badge grade">${esc(a.profiles?.grades?.name||'—')}</span></td>
     <td style="text-align:center">${a.profiles?.section?`<span class="badge">${esc(a.profiles.section)}</span>`:'<span class="muted">—</span>'}</td>
     <td>${esc(a.skill)} · <span class="badge lvl">${esc(a.level)}</span> · ${mockLabel(a)}</td>
     <td>${a.percent!=null?`<b>${a.percent}%</b> <span class="muted">(${a.score}/${a.total})</span>`:'<span class="muted">— (revisión)</span>'}</td>
-    <td>${a.duration_min!=null?a.duration_min+' min':'—'}</td>
+    <td style="min-width:200px">${wsCell}</td>
     <td class="muted">${new Date(a.submitted_at).toLocaleDateString()}</td>
     <td>${a.skill==='Writing'
         ? `<button class="btn sm" onclick="gradeWriting('${a.id}')">✍️ ${a.percent!=null?'Re-calificar':'Calificar'}</button>`
         : `<button class="btn sm ghost" onclick="openAttempt('${a.id}')">Ver análisis →</button>`}</td>
-  </tr>`).join('');
+  </tr>`;}).join('');
   $('#main').innerHTML=`
     <div class="row" style="justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:4px">
       <h1 style="margin:0">Resultados</h1>
       <button class="btn sm ghost" onclick="window.exportResultsExcel()">📥 Exportar Excel</button>
     </div>
     ${resultsFilterBar(GRADES,'window._setResFilter')}${tabs}
+    ${partsBreakdownCard(list)}
     <div class="card" style="padding:0;overflow-x:auto"><table>
-      <thead><tr><th>Alumno</th><th>Grado</th><th>Sección</th><th>Examen</th><th>Puntaje</th><th>Tiempo</th><th>Fecha</th><th></th></tr></thead>
+      <thead><tr><th>Alumno</th><th>Grado</th><th>Sección</th><th>Examen</th><th>Puntaje</th><th>Débil / Fuerte (partes)</th><th>Fecha</th><th></th></tr></thead>
       <tbody>${rows||`<tr><td colspan="8" class="center muted">Sin resultados para este filtro.</td></tr>`}</tbody>
     </table>
     <div class="muted" style="padding:8px 14px;font-size:.82rem">${list.length} resultado(s)</div></div>`;
@@ -645,7 +686,7 @@ async function adminStats(){
   $('#main').innerHTML=`<h1>Estadísticas y Reportes</h1><p class="muted">Cargando datos…</p>`;
   try{ await ensureChart(); }catch(e){ $('#main').innerHTML=`<div class="note err">${esc(e.message)}</div>`; return; }
   if(!_statsAll){
-    const { data:att } = await sb.from('exam_attempts').select('skill,level,mock,percent,score,total,submitted_at,student_id, profiles(full_name,grade_id,section,grades(name))').limit(3000);
+    const { data:att } = await sb.from('exam_attempts').select('skill,level,mock,percent,score,total,breakdown,submitted_at,student_id, profiles(full_name,grade_id,section,grades(name))').limit(3000);
     _statsAll=att||[];
     const { data:st } = await sb.from('profiles').select('id,full_name,grade_id,section,cefr_level').eq('role','student');
     _statsStudents=st||[];
@@ -662,7 +703,7 @@ async function adminStats(){
   // December readiness: per student, projected = latest mock (mock2 else mock1) avg
   const proj=decemberProjection();
   const readyPct=proj.students.length?Math.round(proj.students.filter(s=>s.proj!=null&&s.proj>=60).length/proj.students.filter(s=>s.proj!=null).length*100):0;
-  const VIEWS=[['grade','Por grado'],['skill','Por destreza'],['gradesection','Por grado y sección'],['ready','Preparación CEFR'],['mockprog','Progreso Mock 1 → 2'],['level','Por nivel CEFR']];
+  const VIEWS=[['grade','Por grado'],['skill','Por destreza'],['parts','Por parte del examen'],['gradesection','Por grado y sección'],['ready','Preparación CEFR'],['mockprog','Progreso Mock 1 → 2'],['level','Por nivel CEFR']];
   const TYPES=[['bar','Barras'],['line','Línea'],['doughnut','Dona'],['polarArea','Polar']];
   $('#main').innerHTML=`
     <div class="row" style="justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
@@ -737,6 +778,11 @@ function statSeries(){
   if(v==='ready'){
     const rows=READY_TIERS.map(t=>({label:t.label, val:sc.filter(a=>readyTier(a.percent).key===t.key).length, color:t.color})).filter(r=>r.val>0);
     return {labels:rows.map(r=>r.label), data:rows.map(r=>r.val), colors:rows.map(r=>r.color), title:'Distribución de preparación (n.º de exámenes)', distribution:true};
+  }
+  if(v==='parts'){
+    const ps=aggregateParts(sc); // weakest first
+    const col=p=>p.avg<50?'#dc2626':p.avg<70?'#f59e0b':'#16a34a';
+    return {labels:ps.map(p=>p.name), data:ps.map(p=>p.avg), colors:ps.map(col), title:'Promedio (%) por parte del examen — débil → fuerte'};
   }
   if(v==='mockprog'){
     const labels=GRADES.map(g=>g.name);
@@ -927,25 +973,31 @@ async function teacherResults(){
   const tabs=`<div class="row" style="gap:8px;margin:0 0 14px">
     <button class="btn sm ${isMock?'':'ghost'}" onclick="window._setResBranch('mock')">📝 Mocks (${all.filter(isMockAttempt).length})</button>
     <button class="btn sm ${isMock?'ghost':''}" onclick="window._setResBranch('practice')">🎯 Practice Tests (${all.filter(a=>!isMockAttempt(a)).length})</button></div>`;
-  const rows=list.map(a=>`<tr>
+  const rows=list.map(a=>{
+    const ws=weakStrong(a);
+    const wsCell = ws
+      ? `<span class="badge off" title="Parte más débil" style="font-size:.72rem">▼ ${esc(ws.weak.name)} ${ws.weak.pct}%</span> <span class="badge on" title="Parte más fuerte" style="font-size:.72rem">▲ ${esc(ws.strong.name)} ${ws.strong.pct}%</span>`
+      : '<span class="muted">—</span>';
+    return `<tr>
     <td><b>${esc(a.profiles?.full_name||'')}</b></td>
     <td><span class="badge grade">${esc(a.profiles?.grades?.name||'—')}</span></td>
     <td style="text-align:center">${a.profiles?.section?`<span class="badge">${esc(a.profiles.section)}</span>`:'<span class="muted">—</span>'}</td>
     <td>${esc(a.skill)} · <span class="badge lvl">${esc(a.level)}</span> · ${mockLabel(a)}</td>
     <td>${a.percent!=null?`<b>${a.percent}%</b> <span class="muted">(${a.score}/${a.total})</span>`:'<span class="muted">— (revisión)</span>'}</td>
-    <td>${a.duration_min!=null?a.duration_min+' min':'—'}</td>
+    <td style="min-width:200px">${wsCell}</td>
     <td class="muted">${new Date(a.submitted_at).toLocaleDateString()}</td>
     <td>${a.skill==='Writing'
         ? `<button class="btn sm" onclick="gradeWriting('${a.id}')">✍️ ${a.percent!=null?'Re-calificar':'Calificar'}</button>`
-        : `<button class="btn sm ghost" onclick="openAttempt('${a.id}')">Ver análisis →</button>`}</td></tr>`).join('');
+        : `<button class="btn sm ghost" onclick="openAttempt('${a.id}')">Ver análisis →</button>`}</td></tr>`;}).join('');
   $('#main').innerHTML=`
     <div class="row" style="justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:4px">
       <h1 style="margin:0">Resultados</h1>
       <button class="btn sm ghost" onclick="window.exportResultsExcel()">📥 Exportar Excel</button>
     </div>
     ${resultsFilterBar(teacherAllowedGrades(),'window._setResFilter')}${tabs}
+    ${partsBreakdownCard(list)}
     <div class="card" style="padding:0;overflow-x:auto"><table>
-      <thead><tr><th>Alumno</th><th>Grado</th><th>Sección</th><th>Examen</th><th>Puntaje</th><th>Tiempo</th><th>Fecha</th><th></th></tr></thead>
+      <thead><tr><th>Alumno</th><th>Grado</th><th>Sección</th><th>Examen</th><th>Puntaje</th><th>Débil / Fuerte (partes)</th><th>Fecha</th><th></th></tr></thead>
       <tbody>${rows||`<tr><td colspan="8" class="center muted">Sin intentos ${isMock?'de mocks':'de practice tests'} para este filtro.</td></tr>`}</tbody>
     </table>
     <div class="muted" style="padding:8px 14px;font-size:.82rem">${list.length} resultado(s)</div></div>`;
