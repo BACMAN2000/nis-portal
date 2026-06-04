@@ -179,7 +179,7 @@ function studentMun(){ document.querySelectorAll('[data-nav]').forEach(e=>e.clas
 /* Phonics Studio embedded as an iframe (same-origin app in /phonics).
    ?embed=1 tells it to hide its own top bar so it nests under the portal. */
 function phonicsPanel(){
-  return `<iframe src="phonics/index.html?embed=1&v=2" title="Phonics Studio"
+  return `<iframe src="phonics/index.html?embed=1&v=3" title="Phonics Studio"
     style="width:100%;height:calc(100vh - 120px);border:none;border-radius:14px;box-shadow:var(--shadow);background:#fff"></iframe>`;
 }
 

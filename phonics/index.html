@@ -217,11 +217,13 @@ const FAMILIES = [
    user-selectable and remembered. Slow, clear pace for PK–K–G1.
    ============================================================ */
 const AUDIO_BASE = 'audio';
-const KID_RATE = 0.72;            // slow & clear for young learners
+const BASE_RATE = 0.85;            // baseline; the speed toggle scales this
 let voicePrefs = (()=>{ try{ return JSON.parse(localStorage.getItem('phonicsVoice'))||{}; }catch(e){ return {}; } })();
-if(!voicePrefs.accent) voicePrefs.accent='us';   // 'us' | 'uk'
+if(!voicePrefs.accent) voicePrefs.accent='us';     // 'us' | 'uk'
 if(!voicePrefs.gender) voicePrefs.gender='female'; // 'female' | 'male'
+if(!voicePrefs.speed)  voicePrefs.speed='slow';    // 'normal' | 'slow'
 function saveVoicePrefs(){ try{ localStorage.setItem('phonicsVoice',JSON.stringify(voicePrefs)); }catch(e){} }
+function speedMul(){ return voicePrefs.speed==='slow' ? 0.8 : 1; }   // scales TTS rate + mp3 playbackRate
 function voiceVariant(){ return voicePrefs.accent+'-'+voicePrefs.gender; }
 function audioKey(text){ return String(text).toLowerCase().replace(/[^a-z]/g,''); }
 
@@ -247,13 +249,16 @@ function webSpeak(text,rate){
   u.rate = rate; u.pitch = 1;
   speechSynthesis.speak(u);
 }
-function speak(text,{rate=KID_RATE}={}){
+function speak(text,{rate=BASE_RATE}={}){
+  const eff = Math.max(0.4, Math.min(1, rate*speedMul()));  // effective TTS rate
   const key = audioKey(text);
-  if(!key){ return webSpeak(text,rate); }
+  if(!key){ return webSpeak(text,eff); }
   let done=false;
-  const fallback=()=>{ if(done) return; done=true; webSpeak(text,rate); };
+  const fallback=()=>{ if(done) return; done=true; webSpeak(text,eff); };
   try{
     const a = new Audio(`${AUDIO_BASE}/${voiceVariant()}/${key}.mp3`);
+    try{ a.preservesPitch=true; a.mozPreservesPitch=true; a.webkitPreservesPitch=true; }catch(e){}
+    a.playbackRate = speedMul();        // slow the pre-recorded clip too, keeping pitch
     a.onerror = fallback;
     a.onplaying = ()=>{ done=true; };
     const p = a.play();
@@ -648,6 +653,10 @@ function VoiceControls(){
       <div className="flex gap-0.5 bg-nordic-50 rounded-xl p-0.5 border border-nordic-100" title="Voz">
         <button onClick={()=>set('gender','female')} className={seg(voicePrefs.gender==='female')}>👩 Miss</button>
         <button onClick={()=>set('gender','male')} className={seg(voicePrefs.gender==='male')}>👨 Mr</button>
+      </div>
+      <div className="flex gap-0.5 bg-nordic-50 rounded-xl p-0.5 border border-nordic-100" title="Velocidad">
+        <button onClick={()=>set('speed','normal')} className={seg(voicePrefs.speed==='normal')}>▶ Normal</button>
+        <button onClick={()=>set('speed','slow')} className={seg(voicePrefs.speed==='slow')}>🐢 Lento</button>
       </div>
     </div>
   );
