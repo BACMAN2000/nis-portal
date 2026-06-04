@@ -138,6 +138,7 @@ async function loadProfile(){
 function route(){
   if(!state.session){ return renderAuth(); }
   if(!state.profile){ return renderPending(); }
+  if(state.profile.active===false){ return renderSuspended(); }
   const r = state.profile.role;
   if(r==='admin') return renderAdmin();
   if(r==='teacher') return renderTeacher();
@@ -271,6 +272,14 @@ function renderPending(){
     <img class="logo" src="assets/logo-h.svg">
     <h1>Casi listo</h1>
     <p class="sub">Tu cuenta existe pero aún no tiene perfil/rol. Pide al administrador que te active.</p>
+    <button class="btn ghost" onclick="logout()">Salir</button>
+  </div></div>`;
+}
+function renderSuspended(){
+  document.body.innerHTML = `<div class="auth-wrap"><div class="auth-card center">
+    <img class="logo" src="assets/logo-h.svg">
+    <h1>Cuenta suspendida</h1>
+    <p class="sub">Tu acceso al Portal NIS está temporalmente suspendido. Comunícate con el administrador del colegio para reactivarlo.</p>
     <button class="btn ghost" onclick="logout()">Salir</button>
   </div></div>`;
 }
@@ -492,26 +501,33 @@ async function adminUsers(){
   if(!years.includes(2026)) years.push(2026);
   if(!years.includes(new Date().getFullYear())) years.push(new Date().getFullYear());
   years.sort((a,b)=>a-b);
-  const fg=userFilter.grade, fy=userFilter.year;
-  const list = all.filter(p=> (!fg||String(p.grade_id)===String(fg)) && (!fy||String(p.academic_year||2026)===String(fy)) );
+  const fg=userFilter.grade, fy=userFilter.year, showInactive=!!userFilter.showInactive;
+  const suspendedCount = all.filter(p=>p.active===false).length;
+  const list = all.filter(p=> (!fg||String(p.grade_id)===String(fg)) && (!fy||String(p.academic_year||2026)===String(fy)) && (showInactive || p.active!==false) );
   const gradeOpts = `<option value="">Todos los grados</option>`+GRADES.map(g=>`<option value="${g.id}" ${String(fg)===String(g.id)?'selected':''}>${g.name}</option>`).join('');
   const yearOpts = `<option value="">Todos los años</option>`+years.map(y=>`<option value="${y}" ${String(fy)===String(y)?'selected':''}>${y}</option>`).join('');
-  const rows=list.map(p=>`<tr data-id="${p.id}">
+  const rows=list.map(p=>{
+    const suspended = p.active===false;
+    const toggleBtn = suspended
+      ? `<button class="btn sm" style="background:var(--good)" onclick="suspendUser('${p.id}',true)">Reactivar</button>`
+      : `<button class="btn sm ghost" style="border-color:var(--warn);color:#92600a" onclick="suspendUser('${p.id}',false)">Suspender</button>`;
+    return `<tr data-id="${p.id}" style="${suspended?'opacity:.55':''}">
       <td><b>${esc(p.full_name||((p.first_name||'')+' '+(p.last_name||'')))}</b><div class="muted" style="font-size:.8rem">${esc(p.email||'')}</div></td>
       <td><span class="badge grade">${esc(p.grades?.name||'—')}</span> ${p.section?esc(p.section):''}</td>
       <td>${p.academic_year||2026}</td>
       <td><span class="badge lvl">${esc(p.cefr_level||'—')}</span></td>
       <td><span class="badge ${p.role==='student'?'':'on'}">${esc(p.role)}</span></td>
       <td class="pwcell"><span class="pw" data-pw="•••••••">•••••••</span> <button class="eye" title="Ver/ocultar" onclick="togglePw('${p.id}',this)">👁</button></td>
-      <td><span class="badge ${p.active?'on':'off'}">${p.active?'Activo':'Inactivo'}</span></td>
-      <td style="white-space:nowrap"><button class="btn sm ghost" onclick="editUser('${p.id}')">Editar</button> <button class="btn sm danger" onclick="deleteUser('${p.id}','user')">Eliminar</button></td>
-    </tr>`).join('');
+      <td><span class="badge ${suspended?'off':'on'}">${suspended?'Suspendido':'Activo'}</span></td>
+      <td style="white-space:nowrap"><button class="btn sm ghost" onclick="editUser('${p.id}')">Editar</button> ${toggleBtn} <button class="btn sm danger" onclick="deleteUser('${p.id}','user')">Eliminar</button></td>
+    </tr>`;}).join('');
   $('#main').innerHTML=`<div class="row" style="justify-content:space-between;align-items:center"><h1>Alumnos</h1>
       <button class="btn sm" onclick="adminNewUser()">+ Nuevo</button></div>
     <div class="card" style="display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end">
       <div><label>Grado</label><select onchange="window._setUserFilter('grade',this.value)" style="min-width:170px">${gradeOpts}</select></div>
       <div><label>Año académico</label><select onchange="window._setUserFilter('year',this.value)" style="min-width:150px">${yearOpts}</select></div>
-      <div class="muted" style="padding-bottom:11px">${list.length} alumno(s)</div>
+      <label style="display:flex;align-items:center;gap:7px;font-weight:500;margin:0 0 10px"><input type="checkbox" ${showInactive?'checked':''} onchange="window._setUserFilter('showInactive',this.checked)" style="width:auto"> Mostrar suspendidos${suspendedCount?` (${suspendedCount})`:''}</label>
+      <div class="muted" style="padding-bottom:11px">${list.length} usuario(s)</div>
     </div>
     <div class="card" style="padding:0;overflow-x:auto">
       <table><thead><tr><th>Nombre</th><th>Grado</th><th>Año</th><th>Nivel</th><th>Rol</th><th>Contraseña</th><th>Estado</th><th></th></tr></thead>
@@ -596,6 +612,14 @@ window.deleteUser = async (id, kind)=>{
   const { error } = await sb.rpc('admin_delete_user', { p_id:id });
   if(error){ alert('No se pudo eliminar: '+error.message); return; }
   (kind==='teacher' ? adminTeachers : adminUsers)();
+};
+/* Suspend (soft): keep the account + data but block access and hide it from the
+   default list. Reversible with Reactivar. */
+window.suspendUser = async (id, to)=>{
+  if(!to && !confirm('¿Suspender este usuario? No podrá iniciar sesión y se ocultará de la lista (puedes reactivarlo cuando quieras).')) return;
+  const { error } = await sb.from('profiles').update({ active:to }).eq('id',id);
+  if(error){ alert('No se pudo actualizar: '+error.message); return; }
+  adminUsers();
 };
 async function adminResults(){
   const { data } = await sb.from('exam_attempts').select('*, profiles(full_name,grade_id,section,grades(name))').order('submitted_at',{ascending:false}).limit(500);
