@@ -240,30 +240,52 @@ function pickVoice(){
   const want = voicePrefs.gender==='female'?female:male;
   return pool.find(v=>want.test(v.name)) || pool[0];
 }
-function webSpeak(text,rate){
-  if(!window.speechSynthesis) return;
+function webSpeak(text,rate,onDone){
+  if(!window.speechSynthesis){ if(onDone) onDone(); return; }
   speechSynthesis.cancel();
   const u = new SpeechSynthesisUtterance(text);
   const v = pickVoice(); if(v) u.voice=v;
   u.lang = voicePrefs.accent==='uk'?'en-GB':'en-US';
   u.rate = rate; u.pitch = 1;
+  if(onDone){ let fired=false; const fire=()=>{ if(fired) return; fired=true; onDone(); }; u.onend=fire; u.onerror=fire; }
   speechSynthesis.speak(u);
 }
-function speak(text,{rate=BASE_RATE}={}){
-  const eff = Math.max(0.4, Math.min(1, rate*speedMul()));  // effective TTS rate
+/* Play one clip (ElevenLabs mp3 if present, else browser TTS). Calls onDone
+   when the clip finishes — so callers can chain reliably without timing races. */
+function playClip(text,rate,onDone){
+  const cb = onDone || function(){};
   const key = audioKey(text);
-  if(!key){ return webSpeak(text,eff); }
-  let done=false;
-  const fallback=()=>{ if(done) return; done=true; webSpeak(text,eff); };
+  if(!key){ return webSpeak(text,rate,cb); }
+  let settled=false;
+  const fallback=()=>{ if(settled) return; settled=true; webSpeak(text,rate,cb); };
   try{
     const a = new Audio(`${AUDIO_BASE}/${voiceVariant()}/${key}.mp3`);
     try{ a.preservesPitch=true; a.mozPreservesPitch=true; a.webkitPreservesPitch=true; }catch(e){}
     a.playbackRate = speedMul();        // slow the pre-recorded clip too, keeping pitch
     a.onerror = fallback;
-    a.onplaying = ()=>{ done=true; };
+    a.onplaying = ()=>{ settled=true; };
+    a.onended = ()=>{ if(settled) cb(); };   // fires only when the mp3 actually played
     const p = a.play();
     if(p && p.catch) p.catch(fallback);
   }catch(e){ fallback(); }
+}
+function speak(text,{rate=BASE_RATE}={}){
+  playClip(text, Math.max(0.4, Math.min(1, rate*speedMul())), null);
+}
+/* Speak a list of clips one after another — next starts only when the previous
+   ends (plus a short gap). Fixes the "middle sound (vowel) gets cut" problem. */
+function speakSequence(parts,{rate=0.5, gap=200}={}){
+  const eff = Math.max(0.35, Math.min(1, rate*speedMul()));
+  let i=0;
+  const step=()=>{
+    if(i>=parts.length) return;
+    const t=parts[i++];
+    let advanced=false;
+    const go=()=>{ if(advanced) return; advanced=true; setTimeout(step, gap); };
+    const watchdog=setTimeout(go, 2800);   // never stall if onend doesn't fire
+    playClip(t, eff, ()=>{ clearTimeout(watchdog); go(); });
+  };
+  step();
 }
 const LIP_LABEL={closed:"Lips closed",rounded:"Lips rounded",spread:"Lips spread (smile)",neutral:"Lips relaxed"};
 
@@ -387,7 +409,7 @@ function WordModal({w,onClose}){
           {parts.map((s,i)=><div key={i} onClick={()=>speak(s.replace("_e",""),{rate:0.5})} className="cursor-pointer w-14 h-14 rounded-xl bg-nordic-100 text-nordic-700 flex items-center justify-center text-xl font-bold hover:bg-nordic-200">{s.replace("_e","_e")}</div>)}
         </div>
         <p className="text-sm text-nordic-500 mb-3"><b className="text-nordic-700">{parts.length}</b> sounds · <b className="text-nordic-700">{w.length}</b> letters</p>
-        <div className="flex gap-2"><button onClick={()=>{parts.forEach((s,i)=>setTimeout(()=>speak(s.replace('_e',''),{rate:0.5}),i*650));}} className="flex-1 bg-nordic-100 hover:bg-nordic-200 text-nordic-700 font-bold rounded-xl py-2.5 text-sm">Sound by sound</button><button onClick={()=>speak(w,{rate:0.8})} className="flex-1 bg-nordic-600 hover:bg-nordic-700 text-white font-bold rounded-xl py-2.5 text-sm">🔊 Blend → read</button></div>
+        <div className="flex gap-2"><button onClick={()=>speakSequence(parts.map(s=>s.replace('_e','')),{rate:0.5})} className="flex-1 bg-nordic-100 hover:bg-nordic-200 text-nordic-700 font-bold rounded-xl py-2.5 text-sm">Sound by sound</button><button onClick={()=>speak(w,{rate:0.8})} className="flex-1 bg-nordic-600 hover:bg-nordic-700 text-white font-bold rounded-xl py-2.5 text-sm">🔊 Blend → read</button></div>
         <p className="text-[11px] text-nordic-400 mt-3"><span style={{color:'#2E5B9E'}}>■</span> consonant &nbsp; <span style={{color:'#D2607A'}}>■</span> vowel &nbsp; <span style={{color:'#9AA8B8'}}>■</span> silent e</p>
       </div>
     </div>
@@ -460,7 +482,7 @@ function WordPatterns(){
             <div className="flex items-center gap-3 mb-3">
               <span className="text-3xl font-extrabold text-[#D2607A]">{fam.rime}</span>
               <span className="text-nordic-400 text-sm">family · {fam.words.length} words</span>
-              <button onClick={()=>fam.words.forEach((w,i)=>setTimeout(()=>speak(w,{rate:0.85}),i*700))} className="ml-auto bg-nordic-600 hover:bg-nordic-700 text-white text-sm font-semibold rounded-lg px-3 py-1.5 no-print">🔊 Read all</button>
+              <button onClick={()=>speakSequence(fam.words,{rate:BASE_RATE, gap:280})} className="ml-auto bg-nordic-600 hover:bg-nordic-700 text-white text-sm font-semibold rounded-lg px-3 py-1.5 no-print">🔊 Read all</button>
             </div>
             <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2">
               {fam.words.map(w=>(
@@ -642,7 +664,7 @@ function Overview({go}){
 }
 function VoiceControls(){
   const [,force]=useState(0);
-  const set=(k,v)=>{ voicePrefs[k]=v; saveVoicePrefs(); force(n=>n+1); speak(voicePrefs.gender==='female'?'Hello':'Hello'); };
+  const set=(k,v)=>{ voicePrefs[k]=v; saveVoicePrefs(); force(n=>n+1); };
   const seg=(active)=> "px-2.5 py-1 text-xs font-bold rounded-lg transition "+(active?"bg-nordic-700 text-white":"text-nordic-500 hover:bg-nordic-100");
   return (
     <div className="flex items-center gap-2">
