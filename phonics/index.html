@@ -252,12 +252,13 @@ function webSpeak(text,rate,onDone){
 }
 /* Play one clip (ElevenLabs mp3 if present, else browser TTS). Calls onDone
    when the clip finishes — so callers can chain reliably without timing races. */
-function playClip(text,rate,onDone){
+function playClip(text,rate,onDone,ttsText){
   const cb = onDone || function(){};
   const key = audioKey(text);
-  if(!key){ return webSpeak(text,rate,cb); }
+  const say = (ttsText!=null ? ttsText : text);   // phonetic text for the TTS fallback
+  if(!key){ return webSpeak(say,rate,cb); }
   let settled=false;
-  const fallback=()=>{ if(settled) return; settled=true; webSpeak(text,rate,cb); };
+  const fallback=()=>{ if(settled) return; settled=true; webSpeak(say,rate,cb); };
   try{
     const a = new Audio(`${AUDIO_BASE}/${voiceVariant()}/${key}.mp3`);
     try{ a.preservesPitch=true; a.mozPreservesPitch=true; a.webkitPreservesPitch=true; }catch(e){}
@@ -274,7 +275,7 @@ function speak(text,{rate=BASE_RATE}={}){
 }
 /* Speak a list of clips one after another — next starts only when the previous
    ends (plus a short gap). Fixes the "middle sound (vowel) gets cut" problem. */
-function speakSequence(parts,{rate=0.5, gap=200, onStep, onDone}={}){
+function speakSequence(parts,{rate=0.5, gap=200, onStep, onDone, sounds=false}={}){
   const eff = Math.max(0.35, Math.min(1, rate*speedMul()));
   let i=0;
   const step=()=>{
@@ -284,7 +285,7 @@ function speakSequence(parts,{rate=0.5, gap=200, onStep, onDone}={}){
     let advanced=false;
     const go=()=>{ if(advanced) return; advanced=true; setTimeout(step, gap); };
     const watchdog=setTimeout(go, 2800);   // never stall if onend doesn't fire
-    playClip(t, eff, ()=>{ clearTimeout(watchdog); go(); });
+    playClip(t, eff, ()=>{ clearTimeout(watchdog); go(); }, sounds?soundOf(t):undefined);
   };
   step();
 }
@@ -321,6 +322,24 @@ function splitSounds(w){
     else { out.push(w[i]); i++; }
   }
   return out;
+}
+/* Each grapheme → the SOUND it makes (phonetic spelling the voice can say), so
+   "ar" sounds /ar/ and "sh" sounds /sh/ instead of being spelled out letter by
+   letter. Used by the sound-by-sound + activities. mp3 clips are keyed by the
+   grapheme itself; this text is what the browser voice says as a fallback. */
+const GRAPHEME_SOUNDS = {
+  b:'buh',c:'kuh',d:'duh',f:'fff',g:'guh',h:'huh',j:'juh',k:'kuh',l:'lll',m:'mmm',n:'nnn',
+  p:'puh',q:'kwuh',r:'rrr',s:'sss',t:'tuh',v:'vvv',w:'wuh',x:'ks',y:'yuh',z:'zzz',
+  a:'aah',e:'ehh',i:'ih',o:'ah',u:'uh',
+  sh:'shh',ch:'chuh',th:'th',wh:'wuh',ck:'kuh',ng:'ng',ph:'fff',qu:'kwuh',tch:'chuh',dge:'juh',
+  ai:'ay',ay:'ay',ea:'eee',ee:'eee',oa:'ohh',oo:'oo',igh:'eye',ow:'ow',ou:'ow',oi:'oy',oy:'oy',
+  ar:'are',or:'or',er:'er',ir:'er',ur:'er'
+};
+function soundOf(g){ g=String(g).replace('_e',''); return GRAPHEME_SOUNDS[g] || g; }
+/* Speak ONE grapheme as its sound (mp3 keyed by grapheme, else phonetic TTS). */
+function speakGrapheme(g,{rate=0.5}={}){
+  const eff = Math.max(0.35, Math.min(1, rate*speedMul()));
+  playClip(g.replace('_e',''), eff, null, soundOf(g));
 }
 const VOWELS="aeiou";
 /* Colour each letter: consonants blue, vowels coral, silent-e muted. */
@@ -389,7 +408,7 @@ function PhonemeModal({p,onClose}){
             <div><div className="text-xs uppercase tracking-wide text-nordic-400 font-bold">How to make it</div><p className="text-nordic-800 text-[15px] leading-snug mt-1">{p.tip}</p></div>
             <div className="flex flex-wrap gap-2 text-xs"><span className="px-2 py-1 rounded-lg bg-nordic-100 text-nordic-700 font-semibold">{p.voiced?"Voice ON (buzz)":"Voice OFF (whisper)"}</span><span className="px-2 py-1 rounded-lg bg-nordic-100 text-nordic-700 font-semibold">{LIP_LABEL[p.lip]}</span></div>
             <div><div className="text-xs uppercase tracking-wide text-nordic-400 font-bold">Common spellings</div><div className="flex flex-wrap gap-1.5 mt-1">{p.graphemes.map(g=><span key={g} className="px-2.5 py-1 rounded-lg bg-white border border-nordic-200 text-nordic-700 font-bold text-sm">{g}</span>)}</div></div>
-            <div className="flex gap-2 pt-1"><button onClick={()=>speak(p.word)} className="flex-1 bg-nordic-600 hover:bg-nordic-700 text-white font-semibold rounded-xl py-2.5 text-sm">🔊 Hear word “{p.word}”</button><button onClick={()=>speak(p.say,{rate:0.6})} className="bg-nordic-100 hover:bg-nordic-200 text-nordic-700 font-semibold rounded-xl py-2.5 px-3 text-sm">Sound</button></div>
+            <div className="flex gap-2 pt-1"><button onClick={()=>speak(p.word)} className="flex-1 bg-nordic-600 hover:bg-nordic-700 text-white font-semibold rounded-xl py-2.5 text-sm">🔊 Hear word “{p.word}”</button><button onClick={()=>speakGrapheme(p.say,{rate:0.6})} className="bg-nordic-100 hover:bg-nordic-200 text-nordic-700 font-semibold rounded-xl py-2.5 px-3 text-sm">Sound</button></div>
             <p className="text-[11px] text-nordic-400">Tip: have students say it into a mirror and check the buzz at the throat.</p>
           </div>
         </div>
@@ -410,10 +429,10 @@ function WordModal({w,onClose}){
   // letter(s) can grow inside the big word too.
   const letterRanges=(()=>{ let off=0; return parts.map(p=>{ const base=p.replace('_e',''); const len = p.includes('_e')? base.length+1 : base.length; const r=[off,off+len]; off+=len; return r; }); })();
   const hiRange = active>=0 ? letterRanges[active] : null;
-  const playOne=(i)=>{ setActive(i); speak(parts[i].replace("_e",""),{rate:0.5}); setTimeout(()=>setActive(a=>a===i?-1:a),700); };
+  const playOne=(i)=>{ setActive(i); speakGrapheme(parts[i],{rate:0.5}); setTimeout(()=>setActive(a=>a===i?-1:a),800); };
   const playAll=()=>{
     setActive(-1);
-    speakSequence(parts.map(s=>s.replace('_e','')),{rate:0.5, gap:240, onStep:setActive, onDone:()=>setActive(-1)});
+    speakSequence(parts.map(s=>s.replace('_e','')),{rate:0.5, gap:240, sounds:true, onStep:setActive, onDone:()=>setActive(-1)});
   };
   const playWhole=()=>{ setActive(-2); speak(w,{rate:0.8}); setTimeout(()=>setActive(-1),900); };
   return (
@@ -597,14 +616,14 @@ function BlendingMachine(){
   const [revealed,setRevealed]=useState(0);
   const parts=useMemo(()=>splitSounds(word),[word]);
   useEffect(()=>{setRevealed(0)},[word]);
-  const reveal=()=>{ if(revealed<parts.length){ speak(parts[revealed].replace("_e",""),{rate:0.5}); setRevealed(r=>r+1);} };
+  const reveal=()=>{ if(revealed<parts.length){ speakGrapheme(parts[revealed],{rate:0.5}); setRevealed(r=>r+1);} };
   const blend=()=>{ setRevealed(parts.length); speak(word,{rate:0.7}); };
   return (
     <div className="bg-white rounded-2xl p-5 card-shadow border border-nordic-100">
       <div className="flex items-center justify-between flex-wrap gap-2"><h4 className="font-bold text-nordic-800 text-lg">🧩 Blending Machine</h4><select value={bank} onChange={e=>{setBank(e.target.value);setWord(WORD_BANK[e.target.value][0]);}} className="text-sm border border-nordic-200 rounded-lg px-2 py-1 text-nordic-700">{banks.map(b=><option key={b}>{b}</option>)}</select></div>
       <p className="text-sm text-nordic-500 mt-1">Tap each box to say the sound, then “Blend” to read the whole word.</p>
       <div className="flex flex-wrap gap-2 mt-3">{WORD_BANK[bank].map(w=><button key={w} onClick={()=>setWord(w)} className={"px-3 py-1 rounded-lg text-sm font-semibold "+(w===word?"bg-nordic-600 text-white":"bg-nordic-50 text-nordic-600 hover:bg-nordic-100")}>{w}</button>)}</div>
-      <div className="flex items-center justify-center gap-2 my-7 min-h-[90px]">{parts.map((s,i)=>(<div key={i} onClick={()=>{if(i<=revealed){speak(s.replace("_e",""),{rate:0.5});setRevealed(Math.max(revealed,i+1));}}} className={"cursor-pointer select-none w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center text-3xl font-bold transition-all "+(i<revealed?"bg-nordic-600 text-white animate-pop":"bg-nordic-100 text-nordic-300")}>{i<revealed?s.replace("_e","_e"):"?"}</div>))}</div>
+      <div className="flex items-center justify-center gap-2 my-7 min-h-[90px]">{parts.map((s,i)=>(<div key={i} onClick={()=>{if(i<=revealed){speakGrapheme(s,{rate:0.5});setRevealed(Math.max(revealed,i+1));}}} className={"cursor-pointer select-none w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center text-3xl font-bold transition-all "+(i<revealed?"bg-nordic-600 text-white animate-pop":"bg-nordic-100 text-nordic-300")}>{i<revealed?s.replace("_e","_e"):"?"}</div>))}</div>
       <div className="flex gap-2"><button onClick={reveal} className="flex-1 bg-nordic-100 hover:bg-nordic-200 text-nordic-700 font-bold rounded-xl py-2.5">Reveal next sound</button><button onClick={blend} className="flex-1 bg-nordic-600 hover:bg-nordic-700 text-white font-bold rounded-xl py-2.5">🔊 Blend → read</button></div>
     </div>
   );
@@ -620,7 +639,7 @@ function SoundBoxes(){
       <h4 className="font-bold text-nordic-800 text-lg">🔢 Sound Boxes (Elkonin)</h4>
       <p className="text-sm text-nordic-500 mt-1">Listen, then push a counter into a box for each sound you hear. Builds segmenting — the bridge to spelling.</p>
       <div className="flex flex-wrap gap-2 mt-3">{words.map(w=><button key={w} onClick={()=>setWord(w)} className={"px-3 py-1 rounded-lg text-sm font-semibold "+(w===word?"bg-nordic-600 text-white":"bg-nordic-50 text-nordic-600 hover:bg-nordic-100")}>{w}</button>)}<button onClick={()=>speak(word,{rate:0.6})} className="px-3 py-1 rounded-lg text-sm font-semibold bg-emerald-500 text-white">🔊 Say it</button></div>
-      <div className="flex items-center justify-center gap-2 my-7">{parts.map((s,i)=>(<div key={i} onClick={()=>{const f=[...filled];f[i]=!f[i];setFilled(f);speak(s.replace("_e",""),{rate:0.5});}} className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl border-2 border-dashed border-nordic-300 flex items-center justify-center cursor-pointer relative">{filled[i] && <div className="w-9 h-9 rounded-full bg-nordic-500 animate-pop flex items-center justify-center text-white font-bold text-sm">{s.replace("_e","")}</div>}</div>))}</div>
+      <div className="flex items-center justify-center gap-2 my-7">{parts.map((s,i)=>(<div key={i} onClick={()=>{const f=[...filled];f[i]=!f[i];setFilled(f);speakGrapheme(s,{rate:0.5});}} className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl border-2 border-dashed border-nordic-300 flex items-center justify-center cursor-pointer relative">{filled[i] && <div className="w-9 h-9 rounded-full bg-nordic-500 animate-pop flex items-center justify-center text-white font-bold text-sm">{s.replace("_e","")}</div>}</div>))}</div>
       <div className="flex gap-2"><button onClick={()=>setFilled(parts.map(()=>true))} className="flex-1 bg-nordic-100 hover:bg-nordic-200 text-nordic-700 font-bold rounded-xl py-2.5">Show all sounds</button><button onClick={()=>setFilled([])} className="flex-1 bg-white border border-nordic-200 text-nordic-600 font-bold rounded-xl py-2.5">Clear counters</button></div>
       <p className="text-center text-nordic-400 text-sm mt-3">“{word}” has <b className="text-nordic-700">{parts.length}</b> sounds and <b className="text-nordic-700">{word.length}</b> letters.</p>
     </div>

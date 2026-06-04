@@ -54,6 +54,16 @@ const SOUND_TEXT = {
   s:'sss', z:'zzz', sh:'shh', zh:'zhuh', h:'huh', ch:'chuh', j:'juh', m:'mmm',
   n:'nnn', ng:'ng', l:'lll', r:'rrr', w:'wuh', y:'yuh'
 };
+/* Per-grapheme sound clips (keyed by the grapheme), so the sound-by-sound plays
+   /ar/, /sh/, /igh/… as ONE sound. MUST match GRAPHEME_SOUNDS in index.html. */
+const GRAPHEME_SOUNDS = {
+  b:'buh',c:'kuh',d:'duh',f:'fff',g:'guh',h:'huh',j:'juh',k:'kuh',l:'lll',m:'mmm',n:'nnn',
+  p:'puh',q:'kwuh',r:'rrr',s:'sss',t:'tuh',v:'vvv',w:'wuh',x:'ks',y:'yuh',z:'zzz',
+  a:'aah',e:'ehh',i:'ih',o:'ah',u:'uh',
+  sh:'shh',ch:'chuh',th:'th',wh:'wuh',ck:'kuh',ng:'ng',ph:'fff',qu:'kwuh',tch:'chuh',dge:'juh',
+  ai:'ay',ay:'ay',ea:'eee',ee:'eee',oa:'ohh',oo:'oo',igh:'eye',ow:'ow',ou:'ow',oi:'oy',oy:'oy',
+  ar:'are',or:'or',er:'er',ir:'er',ur:'er'
+};
 
 /* ---------- load API key from env or tools/.env ---------- */
 function loadEnv(){
@@ -80,6 +90,8 @@ function extractContent(){
     const key = m[2].toLowerCase().replace(/[^a-z]/g,'');
     sounds.set(key, SOUND_TEXT[m[2]] || m[2]);
   }
+  // per-grapheme sound clips (keyed by grapheme) used by the sound-by-sound
+  for(const [g,txt] of Object.entries(GRAPHEME_SOUNDS)) sounds.set(g, txt);
   // every words:[ ... ] array (patterns + families)
   const arrRe = /words:\[([^\]]*)\]/g;
   while((m = arrRe.exec(html))){
