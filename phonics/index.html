@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en" class="teacher-mode">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NIS English — Phonics Studio</title>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          nordic: { 50:'#F0F4FA',100:'#DCE6F1',200:'#B4BCDF',300:'#8FA3D5',400:'#6B91D6',500:'#4A7BC8',600:'#2E5B9E',700:'#1F4E79',800:'#143254',900:'#0A1F38' },
+          cons:'#2E5B9E', vow:'#D2607A'
+        },
+        animation: {'fade-in':'fadeIn .4s ease-out','slide-up':'slideUp .4s ease-out','pop':'pop .25s ease-out'},
+        keyframes: {
+          fadeIn:{'0%':{opacity:0},'100%':{opacity:1}},
+          slideUp:{'0%':{opacity:0,transform:'translateY(12px)'},'100%':{opacity:1,transform:'translateY(0)'}},
+          pop:{'0%':{transform:'scale(.85)'},'60%':{transform:'scale(1.06)'},'100%':{transform:'scale(1)'}}
+        }
+      }
+    }
+  }
+</script>
+<style>
+  body{font-family:'Gotham','Segoe UI',system-ui,-apple-system,sans-serif;background:linear-gradient(160deg,#F0F4FA 0%,#E4ECF7 100%);}
+  body.embed{background:#f2f3ff;}
+  .card-shadow{box-shadow:0 1px 3px rgba(20,50,84,.08),0 8px 24px rgba(20,50,84,.06);}
+  .grad-text{background:linear-gradient(90deg,#1F4E79,#4A7BC8);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .tab-active{background:#1F4E79;color:#fff;box-shadow:0 4px 12px rgba(31,78,121,.3);}
+  ::-webkit-scrollbar{height:8px;width:8px}::-webkit-scrollbar-thumb{background:#B4BCDF;border-radius:8px}
+  @media print{.no-print{display:none!important}body{background:#fff}}
+  .voiced-dot{box-shadow:0 0 0 4px rgba(74,123,200,.18)}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const {useState,useEffect,useRef,useMemo} = React;
+/* Embedded inside the NIS portal? Then hide our own top bar so it nests under
+   the portal header/sidebar. ?embed=1 or being inside an iframe both trigger it. */
+const EMBED = new URLSearchParams(location.search).get('embed')==='1' || (window.self!==window.top);
+
+/* ============================================================
+   1) SCOPE & SEQUENCE — verbatim from the NIS Teacher Dashboard
+   tab "06_Phonics".
+   ============================================================ */
+const GRADES = ["PK","Kinder","G1","G2","G3","G4","G5"];
+const SS = {
+  U1:["Rhyme repetition · Alliteration · Word-level PA","Noise awareness · Phonological awareness intro","Closed syllables (CVC) 1-syll review","Closed syllables (CVC) + 2-syll review","Short/long vowel patterns (CVCe, CVVC)","Long vowel patterns review · Diphthongs","Syllable juncture (VCCV/VCV/VV) + accented patterns"],
+  U2:["Rhyme repetition · Sentence-level PA","Phonemic awareness: blending + segmenting","Long vowel digraphs","Long vowel digraphs + application","Open syllables + long vowel patterns (CVVC)","Beginning and ending complex consonants","Long-vowel patterns in accented syllables"],
+  U3:["Rhyme recognition · Alliteration","Phonemic awareness: blending + segmenting","Long vowel digraphs + other vowel patterns","Long and other vowel patterns","Short/long vowel patterns (CVVC, open)","Homophones & homographs · Inflected endings","Unaccented syllables · Complex consonants"],
+  U4:["Rhyme recognition · Alliteration","Phonemic awareness: blending + segmenting","Phonemic awareness: manipulating sounds","Vowel spelling alternatives (long vowel digraphs)","R-influenced vowel patterns (Vr syllable)","Inflected endings (-es, -s) · Unusual past tenses","Prefixes (re-, un-, dis-, mis-, pre-, ex-, non-)"],
+  U5:["Rhyme recognition · Blend/segment","Phonemic awareness: consonant digraphs","Phonemic awareness: segmenting longer words","Vowel alternatives (/aw/, au, aw)","Diphthongs and ambiguous vowels","Syllable juncture (VCCV, VCV, VCCCV, VV)","Suffixes (-y, -ly, -ily, -er, -est, -ness, -ful)"],
+  U6:["Rhyme generation · Syllable PA","Phonemic awareness: adding/substituting","Phonemic awareness: manipulating + discriminating","Vowel alternatives + tricky spelling","Beginning complex consonants","Long-vowel patterns in accented syllables","Suffixes (-ous, -ious, -ary, -ery, -ory, -al)"],
+  U7:["Rhyme generation · Syllable delete","Phonemic awareness: manipulating sounds","Phonemic awareness: manipulating sounds (application)","Vowel spelling alternatives (/oo/, /ow/)","Ending complex consonants · Homophones/graphs","Other vowel patterns in accented syllables","Spelling-meaning patterns (-ity, -ation, -ent)"],
+  U8:["Phoneme isolation","Phonemic awareness: complete review","Complete review + application","Review + application","Review + application of all vowel spellings","Review + application with morphemes","Greek/Latin roots intro"]
+};
+
+/* ============================================================
+   2) THE 40 ENGLISH PHONEMES — Pronunciation Coach 3D inventory.
+   ============================================================ */
+const PHONEMES = [
+  {arp:"ae",ipa:"/æ/",grp:"Short vowel",voiced:true,word:"cat",say:"a",graphemes:["a"],place:"vowel-low",lip:"spread",manner:"Open front vowel",tip:"Mouth wide open, tongue low and forward — the 'angry cat' sound."},
+  {arp:"eh",ipa:"/ɛ/",grp:"Short vowel",voiced:true,word:"bed",say:"e",graphemes:["e","ea"],place:"vowel-mid",lip:"spread",manner:"Mid front vowel",tip:"Tongue mid-front, mouth half open, lips relaxed and slightly spread."},
+  {arp:"ih",ipa:"/ɪ/",grp:"Short vowel",voiced:true,word:"sit",say:"i",graphemes:["i","y"],place:"vowel-high",lip:"spread",manner:"Near-high front vowel",tip:"Short, quick sound. Tongue high-front, jaw barely open."},
+  {arp:"ah",ipa:"/ʌ/",grp:"Short vowel",voiced:true,word:"cup",say:"u",graphemes:["u","o"],place:"vowel-mid",lip:"neutral",manner:"Mid-central vowel",tip:"Relaxed, central 'uh'. Tongue and lips neutral, mouth half open."},
+  {arp:"uh",ipa:"/ʊ/",grp:"Short vowel",voiced:true,word:"book",say:"oo",graphemes:["oo","u"],place:"vowel-high",lip:"rounded",manner:"Near-high back vowel",tip:"Short rounded 'oo'. Lips slightly rounded, tongue high-back."},
+  {arp:"aa",ipa:"/ɑː/",grp:"Short vowel",voiced:true,word:"father",say:"ah",graphemes:["o","a"],place:"vowel-low",lip:"neutral",manner:"Open back vowel",tip:"Big open 'ah'. Drop the jaw, tongue low and back — doctor's sound."},
+  {arp:"ax",ipa:"/ə/",grp:"Short vowel",voiced:true,word:"about",say:"uh",graphemes:["a","er"],place:"vowel-mid",lip:"neutral",manner:"Schwa (unstressed)",tip:"The lazy 'uh' in unstressed syllables. The most common sound in English."},
+  {arp:"iy",ipa:"/iː/",grp:"Long vowel",voiced:true,word:"see",say:"ee",graphemes:["ee","ea","e_e","y"],place:"vowel-high",lip:"spread",manner:"High front long vowel",tip:"Big smile! Lips spread wide, tongue high and forward — 'ee'."},
+  {arp:"ey",ipa:"/eɪ/",grp:"Long vowel",voiced:true,word:"cake",say:"ay",graphemes:["a_e","ai","ay","ei"],place:"vowel-mid",lip:"spread",manner:"Diphthong e→i",tip:"Glide from 'e' up to 'i'. The vowel 'says its name': A."},
+  {arp:"ay",ipa:"/aɪ/",grp:"Long vowel",voiced:true,word:"bike",say:"eye",graphemes:["i_e","igh","y","ie"],place:"vowel-low",lip:"neutral",manner:"Diphthong a→i",tip:"Glide from open 'ah' up to 'ee'. The letter I 'says its name'."},
+  {arp:"ow",ipa:"/oʊ/",grp:"Long vowel",voiced:true,word:"boat",say:"oh",graphemes:["o_e","oa","ow"],place:"vowel-mid",lip:"rounded",manner:"Diphthong o→u",tip:"Lips round and push forward, gliding to 'oo'. O 'says its name'."},
+  {arp:"uw",ipa:"/uː/",grp:"Long vowel",voiced:true,word:"moon",say:"oo",graphemes:["oo","ue","u_e","ew"],place:"vowel-high",lip:"rounded",manner:"High back long vowel",tip:"Tight rounded lips, like blowing a kiss. Tongue high and back — 'oo'."},
+  {arp:"ao",ipa:"/ɔː/",grp:"Long vowel",voiced:true,word:"saw",say:"aw",graphemes:["aw","au","or"],place:"vowel-low",lip:"rounded",manner:"Open-mid back rounded",tip:"Rounded 'aw'. Lips lightly rounded, tongue low and back."},
+  {arp:"aw",ipa:"/aʊ/",grp:"Long vowel",voiced:true,word:"cow",say:"ow",graphemes:["ow","ou"],place:"vowel-low",lip:"rounded",manner:"Diphthong a→u",tip:"Start open 'ah', glide to rounded 'oo' — the 'ouch!' sound."},
+  {arp:"oy",ipa:"/ɔɪ/",grp:"Long vowel",voiced:true,word:"boy",say:"oy",graphemes:["oy","oi"],place:"vowel-mid",lip:"rounded",manner:"Diphthong o→i",tip:"Glide from rounded 'aw' to smiling 'ee'."},
+  {arp:"er",ipa:"/ɜːr/",grp:"Long vowel",voiced:true,word:"bird",say:"er",graphemes:["er","ir","ur"],place:"vowel-mid",lip:"neutral",manner:"R-controlled vowel",tip:"The 'bossy R' vowel. Tongue bunches in the middle, tip curls slightly."},
+  {arp:"p",ipa:"/p/",grp:"Stop",voiced:false,word:"pig",say:"p",graphemes:["p"],place:"lips",lip:"closed",manner:"Voiceless bilabial stop",tip:"Press both lips, build air, release in a puff. No voice. Feel the pop."},
+  {arp:"b",ipa:"/b/",grp:"Stop",voiced:true,word:"bat",say:"b",graphemes:["b"],place:"lips",lip:"closed",manner:"Voiced bilabial stop",tip:"Same as /p/ but turn the voice ON — feel the throat buzz."},
+  {arp:"t",ipa:"/t/",grp:"Stop",voiced:false,word:"top",say:"t",graphemes:["t"],place:"ridge",lip:"neutral",manner:"Voiceless alveolar stop",tip:"Tongue tip taps the bumpy ridge behind the top teeth, then releases."},
+  {arp:"d",ipa:"/d/",grp:"Stop",voiced:true,word:"dog",say:"d",graphemes:["d"],place:"ridge",lip:"neutral",manner:"Voiced alveolar stop",tip:"Same tap as /t/ but with voice on."},
+  {arp:"k",ipa:"/k/",grp:"Stop",voiced:false,word:"cat",say:"k",graphemes:["c","k","ck"],place:"velum",lip:"neutral",manner:"Voiceless velar stop",tip:"Back of the tongue lifts to the soft palate, then releases. No voice."},
+  {arp:"g",ipa:"/g/",grp:"Stop",voiced:true,word:"goat",say:"g",graphemes:["g"],place:"velum",lip:"neutral",manner:"Voiced velar stop",tip:"Same back-of-tongue lift as /k/ but with voice on."},
+  {arp:"f",ipa:"/f/",grp:"Fricative",voiced:false,word:"fan",say:"f",graphemes:["f","ph"],place:"teeth",lip:"neutral",manner:"Voiceless labiodental fricative",tip:"Top teeth touch the bottom lip; push air through. Like an angry cat: ffff."},
+  {arp:"v",ipa:"/v/",grp:"Fricative",voiced:true,word:"van",say:"v",graphemes:["v"],place:"teeth",lip:"neutral",manner:"Voiced labiodental fricative",tip:"Same as /f/ but voice on — lip and teeth buzz."},
+  {arp:"th",ipa:"/θ/",grp:"Fricative",voiced:false,word:"thin",say:"th",graphemes:["th"],place:"teeth",lip:"neutral",manner:"Voiceless dental fricative",tip:"Tongue tip peeks between the teeth; blow gently. No voice."},
+  {arp:"dh",ipa:"/ð/",grp:"Fricative",voiced:true,word:"this",say:"th",graphemes:["th"],place:"teeth",lip:"neutral",manner:"Voiced dental fricative",tip:"Same tongue-between-teeth as /θ/ but voice on — buzz."},
+  {arp:"s",ipa:"/s/",grp:"Fricative",voiced:false,word:"sun",say:"s",graphemes:["s","ss","ce"],place:"ridge",lip:"spread",manner:"Voiceless alveolar fricative",tip:"Tongue near the ridge, air hisses down the middle — snake sound: sssss."},
+  {arp:"z",ipa:"/z/",grp:"Fricative",voiced:true,word:"zip",say:"z",graphemes:["z","s"],place:"ridge",lip:"spread",manner:"Voiced alveolar fricative",tip:"Same as /s/ but voice on — buzzing bee: zzzz."},
+  {arp:"sh",ipa:"/ʃ/",grp:"Fricative",voiced:false,word:"ship",say:"sh",graphemes:["sh","ti","ci"],place:"palate",lip:"rounded",manner:"Voiceless postalveolar fricative",tip:"Lips push forward and round; quiet sound — shhh, like 'be quiet'."},
+  {arp:"zh",ipa:"/ʒ/",grp:"Fricative",voiced:true,word:"vision",say:"zh",graphemes:["s","ge"],place:"palate",lip:"rounded",manner:"Voiced postalveolar fricative",tip:"Same lip-rounding as /ʃ/ but voice on — the 's' in 'measure'."},
+  {arp:"h",ipa:"/h/",grp:"Fricative",voiced:false,word:"hat",say:"h",graphemes:["h"],place:"glottis",lip:"neutral",manner:"Voiceless glottal fricative",tip:"Just a puff of air from the throat — fog up a mirror: haa."},
+  {arp:"ch",ipa:"/tʃ/",grp:"Affricate",voiced:false,word:"chip",say:"ch",graphemes:["ch","tch"],place:"palate",lip:"rounded",manner:"Voiceless affricate (t+sh)",tip:"A /t/ stop that explodes into /ʃ/ — sneezing train: ch-ch."},
+  {arp:"jh",ipa:"/dʒ/",grp:"Affricate",voiced:true,word:"jam",say:"j",graphemes:["j","ge","dge"],place:"palate",lip:"rounded",manner:"Voiced affricate (d+zh)",tip:"Same as /tʃ/ but voice on — a /d/ that bursts into /ʒ/."},
+  {arp:"m",ipa:"/m/",grp:"Nasal",voiced:true,word:"man",say:"m",graphemes:["m","mm"],place:"lips",lip:"closed",manner:"Bilabial nasal",tip:"Lips closed, sound hums out the nose — 'yummy!' mmmm."},
+  {arp:"n",ipa:"/n/",grp:"Nasal",voiced:true,word:"net",say:"n",graphemes:["n","nn","kn"],place:"ridge",lip:"neutral",manner:"Alveolar nasal",tip:"Tongue tip on the ridge, sound hums out the nose — nnnn."},
+  {arp:"ng",ipa:"/ŋ/",grp:"Nasal",voiced:true,word:"sing",say:"ng",graphemes:["ng","n"],place:"velum",lip:"neutral",manner:"Velar nasal",tip:"Back of tongue up (like /g/), hum through the nose — 'ring' ending."},
+  {arp:"l",ipa:"/l/",grp:"Glide/Liquid",voiced:true,word:"lip",say:"l",graphemes:["l","ll"],place:"ridge",lip:"neutral",manner:"Alveolar lateral",tip:"Tongue tip on the ridge, voice flows around the sides — llll."},
+  {arp:"r",ipa:"/r/",grp:"Glide/Liquid",voiced:true,word:"run",say:"r",graphemes:["r","rr","wr"],place:"palate",lip:"rounded",manner:"Alveolar approximant",tip:"Tongue curls back without touching; lips slightly round — a growl: rrr."},
+  {arp:"w",ipa:"/w/",grp:"Glide/Liquid",voiced:true,word:"wet",say:"w",graphemes:["w","wh"],place:"lips",lip:"rounded",manner:"Labial-velar glide",tip:"Tight round lips that quickly open — like blowing out a candle: w."},
+  {arp:"y",ipa:"/j/",grp:"Glide/Liquid",voiced:true,word:"yes",say:"y",graphemes:["y","i"],place:"palate",lip:"spread",manner:"Palatal glide",tip:"Tongue high and forward (like 'ee'), then glides into the next sound."}
+];
+
+/* ============================================================
+   3) WORD PATTERNS — lots of examples of word shapes & blends,
+   organised the way children meet them. C = consonant, V = vowel.
+   ============================================================ */
+const PATTERNS = [
+  {key:"vc",name:"VC & CV — first little words",formula:["V","C"],level:"PK–G1",
+   def:"The simplest 2-sound words: a vowel + a consonant (VC) or a consonant + a vowel (CV, open syllable).",
+   teach:"Start oral blending here: stretch the two sounds, then snap them together.",
+   words:["at","an","am","as","in","it","is","if","on","ox","up","us","go","no","so","me","we","be","hi","my"]},
+  {key:"cvc",name:"CVC — closed syllable",formula:["C","V","C"],level:"G1",
+   def:"Consonant–Vowel–Consonant. The vowel is 'closed in' by a consonant, so it stays SHORT (a, e, i, o, u).",
+   teach:"The heart of early decoding. Drill all five short-vowel families.",
+   words:["cat","map","bag","fan","ham","jam","tap","sad","rat","van",
+          "bed","red","hen","pen","ten","net","pet","jet","leg","web",
+          "pig","sit","fin","win","tin","lip","zip","kid","six","big",
+          "dog","fox","hot","pot","mop","top","box","cot","rob","job",
+          "bug","sun","run","cup","mud","nut","hug","jug","rug","bun"]},
+  {key:"ccvc",name:"CCVC — beginning blends",formula:["C","C","V","C"],level:"G1–G2",
+   def:"Two consonants at the START, each keeping its own sound (a blend, not a digraph): bl, cr, st, sw, fr…",
+   teach:"Children must hear BOTH sounds: /s/-/t/-/o/-/p/, not 'st'. Stretch the blend.",
+   words:["stop","spin","swim","plan","clap","flag","glad","slim","snap","step",
+          "drum","frog","grab","trap","crab","brag","drip","grin","trip","prom",
+          "skip","scan","plug","slug","twin","bled","clip","from","grip","spot"]},
+  {key:"cvcc",name:"CVCC — ending blends",formula:["C","V","C","C"],level:"G1–G2",
+   def:"Two consonants at the END, each with its own sound: -nd, -mp, -st, -lt, -nk, -sk…",
+   teach:"Tricky for Spanish L1 — English keeps final clusters crisp. Tap each sound.",
+   words:["hand","land","sand","bend","send","milk","jump","bump","lump","fast",
+          "last","nest","best","rest","test","lamp","camp","damp","gift","lift",
+          "soft","sink","pink","link","bank","desk","mask","belt","melt","felt"]},
+  {key:"ccvcc",name:"CCVCC — blends both ends",formula:["C","C","V","C","C"],level:"G2",
+   def:"A blend at the start AND a blend at the end — up to five sounds in one syllable.",
+   teach:"Great fluency stretch once single blends are secure.",
+   words:["stand","brand","blink","drink","frost","plant","grant","crisp","blast","spend",
+          "stamp","swift","trust","twist","blend","brisk","clamp","stomp","grunt","print"]},
+  {key:"digraph",name:"Consonant digraphs — 2 letters, 1 sound",formula:["C","C","→","1"],level:"G1–G2",
+   def:"Two letters that team up for ONE new sound: sh, ch, th, wh, ck, ng, ph, qu.",
+   teach:"Contrast with blends: in 'ship' the s+h make a single /ʃ/, not /s/-/h/.",
+   words:["ship","shop","fish","wish","dish","chip","chin","chat","much","rich",
+          "this","that","then","with","bath","math","thin","when","what","whale",
+          "duck","sock","rock","kick","back","pack","ring","king","sing","song",
+          "phone","graph","quit","quiz","queen","quick"]},
+  {key:"cvce",name:"CVCe — magic / silent e",formula:["C","V","C","e"],level:"G1–G2",
+   def:"A silent 'e' at the end jumps back and makes the vowel say its NAME (long): cap → cape.",
+   teach:"Show the contrast pairs (tap/tape, kit/kite, hop/hope) so the job of 'e' is obvious.",
+   words:["cake","lake","make","take","name","game","gate","late","cave","wave",
+          "bike","like","time","ride","side","kite","bite","nine","pine","line",
+          "bone","cone","home","nose","rose","note","rope","hope","cube","tube",
+          "cute","mule","these","theme","plate","grape","slide","stone","smile","shape"]},
+  {key:"vowelteam",name:"Vowel teams — CVVC & friends",formula:["C","V","V","C"],level:"G2–G3",
+   def:"Two vowels walking together make one long sound: ai, ay, ee, ea, oa, ow, oo, ue…",
+   teach:"“When two vowels go walking, the first one often does the talking.” Sort by spelling.",
+   words:["rain","pain","train","brain","paint","day","play","stay","tray","clay",
+          "see","tree","feet","green","sleep","eat","sea","bean","leaf","beach",
+          "boat","coat","goat","road","soap","snow","slow","grow","show","yellow",
+          "moon","soon","food","room","boot","tooth","book","look","cook","good"]},
+  {key:"diphthong",name:"Diphthongs — gliding vowels",formula:["V","→","V"],level:"G3",
+   def:"The mouth GLIDES from one vowel to another inside one sound: oi, oy, ou, ow.",
+   teach:"Feel the lips move (coin, boy, out, cow). These aren't 'long' — they slide.",
+   words:["coin","join","soil","boil","point","oil","boy","toy","joy","enjoy",
+          "out","loud","cloud","mouse","house","found","round","sound","mouth","shout",
+          "cow","now","how","owl","down","town","brown","clown","crown","flower"]},
+  {key:"rcontrol",name:"R-controlled — the bossy R",formula:["V","r"],level:"G2–G3",
+   def:"When 'r' follows a vowel it changes it: ar, or, er, ir, ur. The R is the boss.",
+   teach:"er, ir, ur usually all say /er/ (her, bird, fur). Group them together.",
+   words:["car","star","far","arm","card","park","dark","shark","farm","yard",
+          "for","corn","born","horn","fork","port","sport","short","storm","north",
+          "her","bird","girl","dirt","shirt","first","fur","turn","burn","hurt",
+          "curl","surf","nurse","church","stir","term","fern"]},
+  {key:"trigraph",name:"Trigraphs — 3 letters, 1 sound",formula:["C","C","C","→","1"],level:"G3",
+   def:"Three letters for one sound: igh (/ī/), tch (/ch/), dge (/j/).",
+   teach:"tch and dge come right after a short vowel (catch, badge). igh = long i.",
+   words:["night","light","right","sight","high","bright","fight","might","sigh","tight",
+          "catch","match","watch","pitch","witch","ditch","fetch","hatch","stitch","sketch",
+          "bridge","edge","badge","fudge","judge","hedge","dodge","ledge","ridge","budge"]},
+  {key:"multi",name:"Two-syllable & compound words",formula:["σ","+","σ"],level:"G3–G5",
+   def:"Bigger words split into syllables (chunks with one vowel sound each) — clap them out.",
+   teach:"Teach syllable division (VC/CV: rab-bit) and compounds (two real words joined).",
+   words:["rabbit","sunset","picnic","napkin","muffin","kitten","basket","magnet","pumpkin","helmet",
+          "cupcake","football","bedroom","raincoat","sunflower","cobweb","popcorn","backpack","starfish","rainbow"]}
+];
+
+/* Word families (rimes) — same ending, swap the onset. The classic
+   "combination" practice the request asks for. */
+const FAMILIES = [
+  {rime:"-at",words:["cat","hat","bat","mat","rat","sat","fat","pat","that","flat","chat","spat"]},
+  {rime:"-an",words:["can","man","pan","ran","fan","van","tan","plan","than","span","clan","bran"]},
+  {rime:"-ap",words:["cap","map","nap","tap","lap","gap","clap","snap","trap","flap","slap","wrap"]},
+  {rime:"-ig",words:["pig","big","dig","fig","wig","jig","rig","twig"]},
+  {rime:"-in",words:["pin","win","bin","fin","tin","sin","chin","thin","spin","grin","twin","shin"]},
+  {rime:"-it",words:["sit","bit","fit","hit","kit","lit","pit","spit","quit","slit","grit","knit"]},
+  {rime:"-op",words:["top","hop","mop","pop","cop","stop","drop","shop","chop","flop","crop","prop"]},
+  {rime:"-ot",words:["hot","pot","dot","got","lot","not","cot","spot","shot","plot","trot","slot"]},
+  {rime:"-un",words:["run","sun","fun","bun","gun","nun","spun","stun","shun"]},
+  {rime:"-ug",words:["bug","hug","jug","mug","rug","tug","plug","slug","drug","snug"]},
+  {rime:"-ell",words:["bell","fell","sell","tell","well","yell","shell","smell","spell","swell","dwell"]},
+  {rime:"-ick",words:["kick","lick","pick","sick","tick","brick","stick","click","trick","thick","quick","chick"]},
+  {rime:"-ump",words:["bump","jump","lump","dump","pump","hump","plump","stump","grump","slump"]},
+  {rime:"-ing",words:["king","ring","sing","wing","bring","sting","thing","swing","spring","string","sling"]},
+  {rime:"-ake",words:["cake","lake","make","take","bake","rake","wake","shake","snake","brake","flake","stake"]},
+  {rime:"-ight",words:["night","light","right","sight","fight","might","bright","fright","flight","tight","slight"]}
+];
+
+/* ---- Web Speech helpers (offline, no proprietary audio needed) ---- */
+function pickVoice(){
+  const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+  return vs.find(v=>/en[-_]US/i.test(v.lang)) || vs.find(v=>/^en/i.test(v.lang)) || vs[0];
+}
+function speak(text,{rate=0.85}={}){
+  if(!window.speechSynthesis) return;
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  const v = pickVoice(); if(v) u.voice=v;
+  u.lang='en-US'; u.rate=rate; u.pitch=1;
+  speechSynthesis.speak(u);
+}
+const LIP_LABEL={closed:"Lips closed",rounded:"Lips rounded",spread:"Lips spread (smile)",neutral:"Lips relaxed"};
+
+/* Picture for each word (emoji = offline, colourful "drawing" for young
+   learners). Only picturable nouns/verbs; the rest just show the word. */
+const PIC = {
+  cat:"🐱",hat:"🎩",bat:"🦇",rat:"🐀",map:"🗺️",bag:"🎒",fan:"🪭",ham:"🍖",jam:"🍓",van:"🚐",sad:"😢",pan:"🍳",can:"🥫",man:"👨",cap:"🧢",nap:"😴",tap:"🚰",
+  bed:"🛏️",red:"🔴",hen:"🐔",pen:"🖊️",ten:"🔟",net:"🥅",pet:"🐾",jet:"✈️",leg:"🦵",web:"🕸️",bell:"🔔",
+  pig:"🐷",wig:"💇",fin:"🐟",win:"🏆",tin:"🥫",lip:"👄",zip:"🤐",kid:"🧒",six:"6️⃣",pin:"📌",sit:"🪑",
+  dog:"🐶",fox:"🦊",hot:"🔥",pot:"🍲",mop:"🧹",top:"🔝",box:"📦",cot:"🛏️",log:"🪵",
+  bug:"🐛",sun:"☀️",run:"🏃",cup:"☕",nut:"🥜",hug:"🤗",jug:"🫙",bun:"🍔",mug:"☕",
+  ship:"🚢",shop:"🏪",fish:"🐟",dish:"🍽️",chip:"🍟",chat:"💬",duck:"🦆",sock:"🧦",rock:"🪨",ring:"💍",king:"🤴",sing:"🎤",song:"🎵",phone:"📱",queen:"👑",
+  cake:"🍰",bike:"🚲",home:"🏠",game:"🎮",gate:"🚪",kite:"🪁",bone:"🦴",nose:"👃",rose:"🌹",note:"📝",rope:"🪢",cube:"🧊",grape:"🍇",snake:"🐍",
+  rain:"🌧️",train:"🚆",play:"🧸",tree:"🌳",feet:"🦶",green:"🟢",sea:"🌊",leaf:"🍃",beach:"🏖️",boat:"⛵",goat:"🐐",road:"🛣️",soap:"🧼",snow:"❄️",moon:"🌙",food:"🍕",book:"📖",foot:"🦶",
+  coin:"🪙",boy:"👦",toy:"🧸",joy:"😊",cloud:"☁️",mouse:"🐭",house:"🏠",cow:"🐮",owl:"🦉",crown:"👑",flower:"🌸",
+  car:"🚗",star:"⭐",arm:"💪",park:"🏞️",shark:"🦈",farm:"🚜",corn:"🌽",horn:"📯",fork:"🍴",storm:"⛈️",bird:"🐦",girl:"👧",shirt:"👕",nurse:"👩‍⚕️",church:"⛪",
+  night:"🌙",light:"💡",bridge:"🌉",judge:"⚖️",watch:"⌚",chick:"🐤",brick:"🧱",stick:"🥢",jump:"🤾",wing:"🪽",lake:"🏞️",shell:"🐚",
+  rabbit:"🐰",sunset:"🌅",picnic:"🧺",kitten:"🐱",basket:"🧺",magnet:"🧲",pumpkin:"🎃",cupcake:"🧁",football:"⚽",bedroom:"🛏️",raincoat:"🧥",popcorn:"🍿",backpack:"🎒",starfish:"⭐",rainbow:"🌈"
+};
+function WordPic({w,size}){ const e=PIC[w]; if(!e) return null; return <div className={(size||"text-2xl")+" leading-none"}>{e}</div>; }
+
+/* grapheme splitter for sound breakdowns */
+const DIGRAPHS=["sh","ch","th","ck","ai","ay","ea","ee","oa","ow","oo","igh","ng","wh","ph","qu","oi","oy","ou","ar","or","er","ir","ur","tch","dge"];
+function splitSounds(w){
+  let i=0,out=[];
+  const magicE = /^[a-z]+e$/.test(w) && w.length>=4 && !"aeiou".includes(w[w.length-2]);
+  while(i<w.length){
+    if(magicE && i===w.length-1){ out[out.length-1]=out[out.length-1]+"_e"; i++; continue; }
+    const tri=w.slice(i,i+3), two=w.slice(i,i+2);
+    if(DIGRAPHS.includes(tri)){ out.push(tri); i+=3; }
+    else if(DIGRAPHS.includes(two)){ out.push(two); i+=2; }
+    else { out.push(w[i]); i++; }
+  }
+  return out;
+}
+const VOWELS="aeiou";
+/* Colour each letter: consonants blue, vowels coral, silent-e muted. */
+function ColorWord({w,big,highlight}){
+  const magicE = /^[a-z]+e$/.test(w) && w.length>=4 && !"aeiou".includes(w[w.length-2]);
+  return (
+    <span className={(big?"text-3xl ":"text-xl ")+"font-extrabold tracking-tight"}>
+      {w.split("").map((ch,i)=>{
+        const silentE = magicE && i===w.length-1;
+        const isV = VOWELS.includes(ch);
+        const col = silentE ? "#9AA8B8" : isV ? "#D2607A" : "#2E5B9E";
+        const hl = highlight && w.endsWith(highlight.replace("-","")) && i>=w.length-highlight.replace("-","").length;
+        return <span key={i} style={{color:col}} className={hl?"underline decoration-2 underline-offset-4":""}>{ch}</span>;
+      })}
+    </span>
+  );
+}
+
+/* ============================================================
+   MOUTH DIAGRAM
+   ============================================================ */
+function MouthDiagram({place,voiced}){
+  const zones={lips:[60,118],teeth:[78,110],ridge:[104,96],palate:[132,86],velum:[166,96],glottis:[196,128],"vowel-high":[120,84],"vowel-mid":[126,104],"vowel-low":[120,128]};
+  const [cx,cy]=zones[place]||[120,104];
+  return (
+    <svg viewBox="0 0 240 200" className="w-full h-full">
+      <defs><radialGradient id="hl" cx="50%" cy="50%" r="50%"><stop offset="0%" stopColor="#4A7BC8" stopOpacity="0.55"/><stop offset="100%" stopColor="#4A7BC8" stopOpacity="0"/></radialGradient></defs>
+      <path d="M30,40 C60,18 150,10 196,40 C214,52 220,78 212,104 C208,118 214,128 220,140 C224,150 214,156 204,156 C204,170 196,188 168,190 L168,198 L70,198 L70,150 C44,146 26,120 26,92 C26,72 22,52 30,40 Z" fill="#FCEFE6" stroke="#C9A98F" strokeWidth="2"/>
+      <path d="M120,46 C150,44 178,50 192,60 C176,58 150,58 120,62 Z" fill="#F4DCC9"/>
+      <path d="M70,92 C100,80 150,78 188,92" fill="none" stroke="#D98C7A" strokeWidth="3" strokeLinecap="round"/>
+      <circle cx="104" cy="92" r="4" fill="#D98C7A"/>
+      <path d="M78,150 C92,120 140,116 176,128 C150,140 120,150 96,156 Z" fill="#E8917F" stroke="#C56F5D" strokeWidth="1.5"/>
+      <path d="M52,108 C58,104 64,104 68,108 C64,112 58,112 52,108 Z" fill="#D9776B"/>
+      <path d="M52,118 C58,122 64,122 68,118 C64,114 58,114 52,118 Z" fill="#D9776B"/>
+      <circle cx={cx} cy={cy} r="26" fill="url(#hl)"/><circle cx={cx} cy={cy} r="7" fill="#1F4E79"/>
+      <g transform="translate(196,150)"><circle r="11" fill={voiced?"#2E9E6B":"#9AA8B8"} className={voiced?"voiced-dot":""}/><text x="0" y="4" textAnchor="middle" fontSize="11" fill="#fff" fontWeight="700">{voiced?"♪":"·"}</text></g>
+    </svg>
+  );
+}
+
+function PhonemeCard({p,onOpen}){
+  return (
+    <button onClick={()=>onOpen(p)} className="group text-left bg-white rounded-2xl p-3 card-shadow hover:-translate-y-1 transition-all border border-nordic-100 hover:border-nordic-300">
+      <div className="flex items-center justify-between"><span className="text-2xl font-bold text-nordic-700">{p.ipa}</span><span className={"text-[10px] font-bold px-2 py-0.5 rounded-full "+(p.voiced?"bg-emerald-100 text-emerald-700":"bg-slate-100 text-slate-500")}>{p.voiced?"voiced":"unvoiced"}</span></div>
+      <div className="mt-1 text-sm text-nordic-900 font-semibold">{p.word}</div>
+      <div className="text-[11px] text-nordic-400">{p.graphemes.join("  ")}</div>
+    </button>
+  );
+}
+function PhonemeModal({p,onClose}){
+  if(!p) return null;
+  return (
+    <div className="fixed inset-0 z-50 bg-nordic-900/50 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in" onClick={onClose}>
+      <div className="bg-white rounded-3xl max-w-2xl w-full p-6 card-shadow animate-slide-up" onClick={e=>e.stopPropagation()}>
+        <div className="flex justify-between items-start">
+          <div><div className="text-5xl font-bold grad-text">{p.ipa}</div><div className="text-nordic-500 mt-1">{p.grp} · {p.manner}</div></div>
+          <button onClick={onClose} className="text-nordic-300 hover:text-nordic-600 text-2xl leading-none">×</button>
+        </div>
+        <div className="grid md:grid-cols-2 gap-5 mt-4">
+          <div className="bg-nordic-50 rounded-2xl p-3 aspect-[6/5]"><MouthDiagram place={p.place} voiced={p.voiced}/></div>
+          <div className="space-y-3">
+            <div><div className="text-xs uppercase tracking-wide text-nordic-400 font-bold">How to make it</div><p className="text-nordic-800 text-[15px] leading-snug mt-1">{p.tip}</p></div>
+            <div className="flex flex-wrap gap-2 text-xs"><span className="px-2 py-1 rounded-lg bg-nordic-100 text-nordic-700 font-semibold">{p.voiced?"Voice ON (buzz)":"Voice OFF (whisper)"}</span><span className="px-2 py-1 rounded-lg bg-nordic-100 text-nordic-700 font-semibold">{LIP_LABEL[p.lip]}</span></div>
+            <div><div className="text-xs uppercase tracking-wide text-nordic-400 font-bold">Common spellings</div><div className="flex flex-wrap gap-1.5 mt-1">{p.graphemes.map(g=><span key={g} className="px-2.5 py-1 rounded-lg bg-white border border-nordic-200 text-nordic-700 font-bold text-sm">{g}</span>)}</div></div>
+            <div className="flex gap-2 pt-1"><button onClick={()=>speak(p.word)} className="flex-1 bg-nordic-600 hover:bg-nordic-700 text-white font-semibold rounded-xl py-2.5 text-sm">🔊 Hear word “{p.word}”</button><button onClick={()=>speak(p.say,{rate:0.6})} className="bg-nordic-100 hover:bg-nordic-200 text-nordic-700 font-semibold rounded-xl py-2.5 px-3 text-sm">Sound</button></div>
+            <p className="text-[11px] text-nordic-400">Tip: have students say it into a mirror and check the buzz at the throat.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ============================================================
+   WORD CHIP + BREAKDOWN MODAL
+   ============================================================ */
+function WordModal({w,onClose}){
+  if(!w) return null;
+  const parts=splitSounds(w);
+  return (
+    <div className="fixed inset-0 z-50 bg-nordic-900/50 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in" onClick={onClose}>
+      <div className="bg-white rounded-3xl max-w-md w-full p-6 card-shadow animate-slide-up text-center" onClick={e=>e.stopPropagation()}>
+        <button onClick={onClose} className="float-right text-nordic-300 hover:text-nordic-600 text-2xl leading-none">×</button>
+        {PIC[w] && <div className="text-6xl mt-1 mb-1">{PIC[w]}</div>}
+        <div className="mt-1"><ColorWord w={w} big/></div>
+        <div className="flex items-center justify-center gap-2 my-5">
+          {parts.map((s,i)=><div key={i} onClick={()=>speak(s.replace("_e",""),{rate:0.5})} className="cursor-pointer w-14 h-14 rounded-xl bg-nordic-100 text-nordic-700 flex items-center justify-center text-xl font-bold hover:bg-nordic-200">{s.replace("_e","_e")}</div>)}
+        </div>
+        <p className="text-sm text-nordic-500 mb-3"><b className="text-nordic-700">{parts.length}</b> sounds · <b className="text-nordic-700">{w.length}</b> letters</p>
+        <div className="flex gap-2"><button onClick={()=>{parts.forEach((s,i)=>setTimeout(()=>speak(s.replace('_e',''),{rate:0.5}),i*650));}} className="flex-1 bg-nordic-100 hover:bg-nordic-200 text-nordic-700 font-bold rounded-xl py-2.5 text-sm">Sound by sound</button><button onClick={()=>speak(w,{rate:0.8})} className="flex-1 bg-nordic-600 hover:bg-nordic-700 text-white font-bold rounded-xl py-2.5 text-sm">🔊 Blend → read</button></div>
+        <p className="text-[11px] text-nordic-400 mt-3"><span style={{color:'#2E5B9E'}}>■</span> consonant &nbsp; <span style={{color:'#D2607A'}}>■</span> vowel &nbsp; <span style={{color:'#9AA8B8'}}>■</span> silent e</p>
+      </div>
+    </div>
+  );
+}
+
+/* ============================================================
+   VIEW: WORD PATTERNS
+   ============================================================ */
+function FormulaPill({f}){
+  const colorOf=t=>t==="C"?"bg-nordic-600":t==="V"?"bg-[#D2607A]":t==="e"?"bg-slate-400":"bg-nordic-300";
+  return (
+    <div className="flex items-center gap-1">
+      {f.map((t,i)=> ["→","+","1","σ"].includes(t)
+        ? <span key={i} className="text-nordic-400 font-bold px-0.5">{t==="σ"?"σ":t}</span>
+        : <span key={i} className={"w-7 h-7 rounded-lg text-white font-bold text-sm flex items-center justify-center "+colorOf(t)}>{t}</span>)}
+    </div>
+  );
+}
+function WordPatterns(){
+  const [sub,setSub]=useState("struct");
+  const [sel,setSel]=useState(PATTERNS[1]); // default CVC
+  const [fam,setFam]=useState(FAMILIES[0]);
+  const [word,setWord]=useState(null);
+  return (
+    <div className="animate-fade-in">
+      <SectionHead title="Word Patterns & Families" sub="Lots of examples of the word shapes and letter combinations children meet — CVC, blends, magic-e, vowel teams, digraphs and more. Tap any word to hear it, see it colour-coded and break it into sounds."/>
+      <div className="flex gap-2 mb-4 no-print">
+        <button onClick={()=>setSub("struct")} className={"px-4 py-2 rounded-xl font-bold text-sm "+(sub==="struct"?"tab-active":"bg-white text-nordic-600 border border-nordic-200")}>By structure</button>
+        <button onClick={()=>setSub("fam")} className={"px-4 py-2 rounded-xl font-bold text-sm "+(sub==="fam"?"tab-active":"bg-white text-nordic-600 border border-nordic-200")}>Word families (rimes)</button>
+      </div>
+
+      {sub==="struct" && (
+        <div className="grid lg:grid-cols-[260px_1fr] gap-4">
+          <div className="space-y-1.5 no-print">
+            {PATTERNS.map(p=>(
+              <button key={p.key} onClick={()=>setSel(p)} className={"w-full text-left px-3 py-2.5 rounded-xl border transition "+(sel.key===p.key?"bg-nordic-700 text-white border-nordic-700":"bg-white text-nordic-700 border-nordic-100 hover:border-nordic-300")}>
+                <div className="font-bold text-sm leading-tight">{p.name}</div>
+                <div className={"text-[11px] "+(sel.key===p.key?"text-nordic-100":"text-nordic-400")}>{p.level} · {p.words.length} words</div>
+              </button>
+            ))}
+          </div>
+          <div className="bg-white rounded-2xl p-5 card-shadow border border-nordic-100">
+            <div className="flex items-center justify-between flex-wrap gap-3">
+              <div>
+                <h3 className="text-xl font-bold text-nordic-800">{sel.name}</h3>
+                <div className="text-xs text-nordic-400 font-semibold uppercase tracking-wide mt-0.5">{sel.level}</div>
+              </div>
+              <FormulaPill f={sel.formula}/>
+            </div>
+            <p className="text-nordic-700 mt-3 text-[15px]">{sel.def}</p>
+            <div className="mt-2 bg-nordic-50 border-l-4 border-nordic-400 rounded-r-xl px-3 py-2 text-sm text-nordic-600"><b className="text-nordic-700">Teach it:</b> {sel.teach}</div>
+            <div className="flex flex-wrap gap-2 mt-4">
+              {sel.words.map(w=>(
+                <button key={w} onClick={()=>{setWord(w);speak(w,{rate:0.8});}} className="px-3 py-2 rounded-xl bg-nordic-50 hover:bg-nordic-100 border border-nordic-100 transition hover:-translate-y-0.5 flex flex-col items-center gap-0.5"><WordPic w={w}/><ColorWord w={w}/></button>
+              ))}
+            </div>
+            <p className="text-[11px] text-nordic-400 mt-4"><span style={{color:'#2E5B9E'}}>■</span> consonant &nbsp; <span style={{color:'#D2607A'}}>■</span> vowel &nbsp; <span style={{color:'#9AA8B8'}}>■</span> silent e &nbsp;·&nbsp; tap a word to hear &amp; break it down.</p>
+          </div>
+        </div>
+      )}
+
+      {sub==="fam" && (
+        <div>
+          <p className="text-sm text-nordic-500 mb-3">A word family shares the same <b>rime</b> (ending). Swap the first sound (onset) to build a new word — the fastest way for children to read by analogy.</p>
+          <div className="flex flex-wrap gap-2 mb-4 no-print">
+            {FAMILIES.map(f=><button key={f.rime} onClick={()=>setFam(f)} className={"px-3 py-1.5 rounded-full font-bold text-sm "+(fam.rime===f.rime?"tab-active":"bg-white text-nordic-600 border border-nordic-200 hover:border-nordic-400")}>{f.rime}</button>)}
+          </div>
+          <div className="bg-white rounded-2xl p-5 card-shadow border border-nordic-100">
+            <div className="flex items-center gap-3 mb-3">
+              <span className="text-3xl font-extrabold text-[#D2607A]">{fam.rime}</span>
+              <span className="text-nordic-400 text-sm">family · {fam.words.length} words</span>
+              <button onClick={()=>fam.words.forEach((w,i)=>setTimeout(()=>speak(w,{rate:0.85}),i*700))} className="ml-auto bg-nordic-600 hover:bg-nordic-700 text-white text-sm font-semibold rounded-lg px-3 py-1.5 no-print">🔊 Read all</button>
+            </div>
+            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2">
+              {fam.words.map(w=>(
+                <button key={w} onClick={()=>{setWord(w);speak(w,{rate:0.8});}} className="px-2 py-3 rounded-xl bg-nordic-50 hover:bg-nordic-100 border border-nordic-100 transition hover:-translate-y-0.5 text-center flex flex-col items-center gap-0.5"><WordPic w={w}/><ColorWord w={w} highlight={fam.rime}/></button>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+      <WordModal w={word} onClose={()=>setWord(null)}/>
+    </div>
+  );
+}
+
+/* ============================================================
+   VIEW: SOUND WALL
+   ============================================================ */
+function SoundWall(){
+  const [open,setOpen]=useState(null);
+  const [filter,setFilter]=useState("All");
+  const groups=["All","Short vowel","Long vowel","Stop","Fricative","Affricate","Nasal","Glide/Liquid"];
+  const list=filter==="All"?PHONEMES:PHONEMES.filter(p=>p.grp===filter);
+  return (
+    <div className="animate-fade-in">
+      <SectionHead title="Sound Wall — the 44 English Phonemes" sub="The same sound inventory as Pronunciation Coach 3D (ARPABET). Click any sound to see the mouth position, voicing, spellings and to hear it."/>
+      <div className="flex flex-wrap gap-2 mb-4 no-print">{groups.map(g=><button key={g} onClick={()=>setFilter(g)} className={"px-3 py-1.5 rounded-full text-sm font-semibold transition "+(filter===g?"tab-active":"bg-white text-nordic-600 border border-nordic-200 hover:border-nordic-400")}>{g}</button>)}</div>
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">{list.map(p=><PhonemeCard key={p.arp} p={p} onOpen={setOpen}/>)}</div>
+      <div className="mt-4 flex flex-wrap gap-4 text-xs text-nordic-500"><span className="flex items-center gap-1"><span className="w-3 h-3 rounded-full bg-emerald-400 inline-block"></span> voiced = throat buzzes</span><span className="flex items-center gap-1"><span className="w-3 h-3 rounded-full bg-slate-300 inline-block"></span> unvoiced = whispered air</span><span className="flex items-center gap-1"><span className="w-3 h-3 rounded-full bg-nordic-700 inline-block"></span> blue dot = place of articulation</span></div>
+      <PhonemeModal p={open} onClose={()=>setOpen(null)}/>
+    </div>
+  );
+}
+
+/* ============================================================
+   VIEW: SCOPE & SEQUENCE
+   ============================================================ */
+function Scope(){
+  const [g,setG]=useState("G1"); const gi=GRADES.indexOf(g);
+  return (
+    <div className="animate-fade-in">
+      <SectionHead title="Scope & Sequence — Systematic Phonics PK→G5" sub="Orton-Gillingham-aligned progression, 8 units per year. This is tab 06_Phonics of the NIS Teacher Dashboard, made interactive."/>
+      <div className="flex flex-wrap gap-2 mb-4 no-print">{GRADES.map(x=><button key={x} onClick={()=>setG(x)} className={"px-4 py-2 rounded-xl font-bold text-sm "+(g===x?"tab-active":"bg-white text-nordic-600 border border-nordic-200 hover:border-nordic-400")}>{x}</button>)}</div>
+      <div className="grid md:grid-cols-2 gap-3">{Object.keys(SS).map((u,i)=>(<div key={u} className="bg-white rounded-2xl p-4 card-shadow border border-nordic-100"><div className="flex items-center gap-2"><span className="w-9 h-9 rounded-xl bg-nordic-600 text-white flex items-center justify-center font-bold text-sm">{u}</span><span className="text-nordic-400 text-xs font-semibold uppercase tracking-wide">Unit {i+1} · {g}</span></div><p className="mt-2 text-nordic-800 font-medium leading-snug">{SS[u][gi]}</p></div>))}</div>
+      <div className="mt-6 overflow-x-auto no-print">
+        <div className="text-xs uppercase tracking-wide text-nordic-400 font-bold mb-2">Full matrix (all grades)</div>
+        <table className="min-w-full text-xs border-separate border-spacing-1"><thead><tr><th className="bg-nordic-700 text-white rounded-lg px-2 py-2">Unit</th>{GRADES.map(x=><th key={x} className="bg-nordic-600 text-white rounded-lg px-2 py-2">{x}</th>)}</tr></thead><tbody>{Object.keys(SS).map(u=>(<tr key={u}><td className="bg-nordic-100 text-nordic-700 font-bold rounded-lg px-2 py-1 text-center">{u}</td>{SS[u].map((c,i)=><td key={i} className="bg-white rounded-lg px-2 py-1 text-nordic-700 align-top min-w-[120px]">{c}</td>)}</tr>))}</tbody></table>
+      </div>
+    </div>
+  );
+}
+
+/* ============================================================
+   VIEW: LESSON ROUTINE
+   ============================================================ */
+function Routine(){
+  const steps=[
+    {t:"1 · Warm-up / Review",m:"2–3 min",d:"Quick-fire review of taught sound–spelling cards. See the grapheme, say the sound. Builds automaticity.",icon:"🔁"},
+    {t:"2 · Phonemic Awareness",m:"3–5 min",d:"Ears only, no print. Oral blending (c-a-t → cat) and segmenting (cat → c-a-t). Clap or push counters per sound.",icon:"👂"},
+    {t:"3 · Teach the new GPC",m:"5 min",d:"Introduce ONE new grapheme–phoneme link explicitly. Show the mouth position, the letter, an anchor word. See it, hear it, feel the mouth, write it (VAKT).",icon:"✏️"},
+    {t:"4 · Blend to READ",m:"6–8 min",d:"Decode words with the new sound, sound-by-sound, then blend. Words → phrases → a decodable sentence.",icon:"📖"},
+    {t:"5 · Segment to SPELL",m:"6–8 min",d:"Reverse it: say a word, children segment the sounds and write the graphemes (sound boxes).",icon:"🔤"},
+    {t:"6 · Apply & Reread",m:"5 min",d:"Read a decodable text that recycles the pattern; dictate one sentence. Send a matching decodable home.",icon:"🎯"}
+  ];
+  return (
+    <div className="animate-fade-in">
+      <SectionHead title="The Daily Phonics Routine" sub="An evidence-based ~30-minute systematic synthetic phonics lesson. Same structure daily — only the target sound changes. Blending and segmenting are taught together from day one."/>
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">{steps.map((s,i)=>(<div key={i} className="bg-white rounded-2xl p-4 card-shadow border border-nordic-100 hover:-translate-y-0.5 transition"><div className="flex items-center justify-between"><span className="text-2xl">{s.icon}</span><span className="text-[11px] font-bold text-nordic-400 bg-nordic-50 px-2 py-0.5 rounded-full">{s.m}</span></div><h4 className="font-bold text-nordic-800 mt-2">{s.t}</h4><p className="text-sm text-nordic-600 leading-snug mt-1">{s.d}</p></div>))}</div>
+      <div className="mt-5 bg-nordic-700 text-white rounded-2xl p-5"><h4 className="font-bold text-lg">The 4 non-negotiables (Science of Reading)</h4><div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-3 text-sm">{[["Systematic","Sounds taught in a planned sequence, simple → complex."],["Explicit","Each sound–spelling is directly taught, never guessed from pictures."],["Cumulative","Every lesson reviews old sounds and adds one new one."],["Multisensory","See · hear · feel the mouth · write — all four channels (VAKT)."]].map(([h,d])=>(<div key={h} className="bg-white/10 rounded-xl p-3"><div className="font-bold">{h}</div><div className="text-nordic-100 text-[13px] mt-0.5">{d}</div></div>))}</div></div>
+    </div>
+  );
+}
+
+/* ============================================================
+   ACTIVITIES
+   ============================================================ */
+const WORD_BANK={
+  "CVC (short a)":["cat","map","bag","fan","ham","jam","tap","van","sad","rat"],
+  "CVC (short i/o/u)":["pig","sit","fox","dog","mud","sun","bus","hop","lip","cup"],
+  "Digraphs sh/ch/th":["ship","shop","chip","chin","chat","this","thin","bath","fish","duck"],
+  "CVCe (magic e)":["cake","bike","home","cute","name","ride","note","tube","lime","rope"],
+  "Long vowel teams":["rain","boat","seed","leaf","team","goat","play","road","tree","beach"]
+};
+function BlendingMachine(){
+  const banks=Object.keys(WORD_BANK);
+  const [bank,setBank]=useState(banks[0]);
+  const [word,setWord]=useState(WORD_BANK[banks[0]][0]);
+  const [revealed,setRevealed]=useState(0);
+  const parts=useMemo(()=>splitSounds(word),[word]);
+  useEffect(()=>{setRevealed(0)},[word]);
+  const reveal=()=>{ if(revealed<parts.length){ speak(parts[revealed].replace("_e",""),{rate:0.5}); setRevealed(r=>r+1);} };
+  const blend=()=>{ setRevealed(parts.length); speak(word,{rate:0.7}); };
+  return (
+    <div className="bg-white rounded-2xl p-5 card-shadow border border-nordic-100">
+      <div className="flex items-center justify-between flex-wrap gap-2"><h4 className="font-bold text-nordic-800 text-lg">🧩 Blending Machine</h4><select value={bank} onChange={e=>{setBank(e.target.value);setWord(WORD_BANK[e.target.value][0]);}} className="text-sm border border-nordic-200 rounded-lg px-2 py-1 text-nordic-700">{banks.map(b=><option key={b}>{b}</option>)}</select></div>
+      <p className="text-sm text-nordic-500 mt-1">Tap each box to say the sound, then “Blend” to read the whole word.</p>
+      <div className="flex flex-wrap gap-2 mt-3">{WORD_BANK[bank].map(w=><button key={w} onClick={()=>setWord(w)} className={"px-3 py-1 rounded-lg text-sm font-semibold "+(w===word?"bg-nordic-600 text-white":"bg-nordic-50 text-nordic-600 hover:bg-nordic-100")}>{w}</button>)}</div>
+      <div className="flex items-center justify-center gap-2 my-7 min-h-[90px]">{parts.map((s,i)=>(<div key={i} onClick={()=>{if(i<=revealed){speak(s.replace("_e",""),{rate:0.5});setRevealed(Math.max(revealed,i+1));}}} className={"cursor-pointer select-none w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center text-3xl font-bold transition-all "+(i<revealed?"bg-nordic-600 text-white animate-pop":"bg-nordic-100 text-nordic-300")}>{i<revealed?s.replace("_e","_e"):"?"}</div>))}</div>
+      <div className="flex gap-2"><button onClick={reveal} className="flex-1 bg-nordic-100 hover:bg-nordic-200 text-nordic-700 font-bold rounded-xl py-2.5">Reveal next sound</button><button onClick={blend} className="flex-1 bg-nordic-600 hover:bg-nordic-700 text-white font-bold rounded-xl py-2.5">🔊 Blend → read</button></div>
+    </div>
+  );
+}
+function SoundBoxes(){
+  const words=["dog","fish","ship","cake","train","duck","map","sun","chin","boat"];
+  const [word,setWord]=useState("dog");
+  const parts=useMemo(()=>splitSounds(word),[word]);
+  const [filled,setFilled]=useState([]);
+  useEffect(()=>setFilled([]),[word]);
+  return (
+    <div className="bg-white rounded-2xl p-5 card-shadow border border-nordic-100">
+      <h4 className="font-bold text-nordic-800 text-lg">🔢 Sound Boxes (Elkonin)</h4>
+      <p className="text-sm text-nordic-500 mt-1">Listen, then push a counter into a box for each sound you hear. Builds segmenting — the bridge to spelling.</p>
+      <div className="flex flex-wrap gap-2 mt-3">{words.map(w=><button key={w} onClick={()=>setWord(w)} className={"px-3 py-1 rounded-lg text-sm font-semibold "+(w===word?"bg-nordic-600 text-white":"bg-nordic-50 text-nordic-600 hover:bg-nordic-100")}>{w}</button>)}<button onClick={()=>speak(word,{rate:0.6})} className="px-3 py-1 rounded-lg text-sm font-semibold bg-emerald-500 text-white">🔊 Say it</button></div>
+      <div className="flex items-center justify-center gap-2 my-7">{parts.map((s,i)=>(<div key={i} onClick={()=>{const f=[...filled];f[i]=!f[i];setFilled(f);speak(s.replace("_e",""),{rate:0.5});}} className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl border-2 border-dashed border-nordic-300 flex items-center justify-center cursor-pointer relative">{filled[i] && <div className="w-9 h-9 rounded-full bg-nordic-500 animate-pop flex items-center justify-center text-white font-bold text-sm">{s.replace("_e","")}</div>}</div>))}</div>
+      <div className="flex gap-2"><button onClick={()=>setFilled(parts.map(()=>true))} className="flex-1 bg-nordic-100 hover:bg-nordic-200 text-nordic-700 font-bold rounded-xl py-2.5">Show all sounds</button><button onClick={()=>setFilled([])} className="flex-1 bg-white border border-nordic-200 text-nordic-600 font-bold rounded-xl py-2.5">Clear counters</button></div>
+      <p className="text-center text-nordic-400 text-sm mt-3">“{word}” has <b className="text-nordic-700">{parts.length}</b> sounds and <b className="text-nordic-700">{word.length}</b> letters.</p>
+    </div>
+  );
+}
+function Activities(){
+  return (
+    <div className="animate-fade-in">
+      <SectionHead title="Classroom Activities" sub="Project these on the board. They model the two core skills — blending (to read) and segmenting (to spell) — with audio built in."/>
+      <div className="grid lg:grid-cols-2 gap-4"><BlendingMachine/><SoundBoxes/></div>
+      <div className="mt-4 grid sm:grid-cols-3 gap-3">{[["Mirror talk","Students watch their mouth in a mirror while making each sound — see the lips, feel the buzz (VAKT)."],["Sound sort","Sort picture cards by initial sound, or voiced vs. unvoiced (e.g. /s/ vs /z/)."],["Sky-write","Trace the grapheme in the air / sand while saying the sound — tactile memory."]].map(([h,d])=>(<div key={h} className="bg-nordic-50 rounded-2xl p-4 border border-nordic-100"><div className="font-bold text-nordic-700">{h}</div><div className="text-sm text-nordic-600 mt-1">{d}</div></div>))}</div>
+    </div>
+  );
+}
+
+/* ============================================================
+   VIEW: TEACHER GUIDE
+   ============================================================ */
+function Guide(){
+  return (
+    <div className="animate-fade-in max-w-3xl">
+      <SectionHead title="Teacher Guide & Glossary" sub="One page to hand to any teacher delivering the phonics strand."/>
+      <div className="space-y-3">{[
+        ["What is phonics?","Teaching the relationship between the sounds of spoken English (phonemes) and the letters that spell them (graphemes). The goal is automatic decoding so attention is freed for meaning."],
+        ["Phonemic awareness ≠ phonics","Phonemic awareness is ears-only (no print): hearing, blending and segmenting sounds. It is the foundation; phonics attaches those sounds to print. Do a little every day."],
+        ["Blending","Pushing sounds together to read: /sh/ /i/ /p/ → ship."],
+        ["Segmenting","Pulling a word apart into sounds to spell: ship → /sh/ /i/ /p/."],
+        ["Grapheme vs phoneme","A phoneme is a sound (44 in English). A grapheme is its spelling — 1+ letters: 'sh', 'igh', 'a_e' are single graphemes."],
+        ["Onset & rime","The onset is the first sound(s); the rime is the vowel + what follows. In 'flat', fl = onset, -at = rime. Word families share a rime."],
+        ["Digraph / trigraph","Two (sh, ch, th, ck) or three (igh, tch, dge) letters making ONE sound."],
+        ["Blend (cluster)","Two consonants TOGETHER but each keeping its sound: st, bl, cr, -nd, -mp. Different from a digraph."],
+        ["CVC / CVCe","Consonant-Vowel-Consonant (cat = short vowel). Add silent 'magic e' and the vowel says its name: cap → cape (CVCe)."],
+        ["Decodable text","A book using only sound-spellings already taught, so children apply phonics rather than guess from pictures."]
+      ].map(([h,d])=>(<div key={h} className="bg-white rounded-2xl p-4 card-shadow border border-nordic-100"><h4 className="font-bold text-nordic-800">{h}</h4><p className="text-sm text-nordic-600 mt-1 leading-snug">{d}</p></div>))}</div>
+      <div className="mt-5 bg-nordic-50 border border-nordic-200 rounded-2xl p-4 text-sm text-nordic-600"><b className="text-nordic-700">For EFL learners (Spanish L1):</b> watch the sounds Spanish does not have — short /ɪ/ vs /iː/ (sit/seat), /v/ vs /b/ (van/ban), /θ/ /ð/ (think/this), final consonant blends (-st, -nd), and /h/. Use the Sound Wall mouth positions and the voiced/unvoiced check, and contrast minimal pairs explicitly.</div>
+    </div>
+  );
+}
+
+/* ============================================================
+   SHELL
+   ============================================================ */
+function SectionHead({title,sub}){
+  return (<div className="mb-5"><h2 className="text-2xl font-bold text-nordic-800">{title}</h2><p className="text-nordic-500 mt-1 max-w-3xl text-[15px]">{sub}</p></div>);
+}
+function Overview({go}){
+  const cards=[
+    ["Word Patterns & Families","patterns","🔤","Hundreds of examples by shape — CVC, blends, magic-e, vowel teams, digraphs + word families."],
+    ["Scope & Sequence","scope","🗺️","The PK→G5 phonics roadmap from the dashboard — 8 units per grade, interactive."],
+    ["Sound Wall","wall","🔊","All 44 English phonemes with mouth positions, voicing & audio."],
+    ["Lesson Routine","routine","⏱️","The daily 30-minute systematic synthetic phonics lesson, step by step."],
+    ["Activities","activities","🧩","Project-ready Blending Machine & Sound Boxes with built-in audio."],
+    ["Teacher Guide","guide","📋","Plain-English glossary and EFL tips for any teacher."]
+  ];
+  return (
+    <div className="animate-fade-in">
+      <div className="bg-gradient-to-br from-nordic-700 to-nordic-500 rounded-3xl p-7 text-white card-shadow">
+        <div className="text-sm font-semibold text-nordic-100 uppercase tracking-wide">NIS English Department · Phonics Strand</div>
+        <h1 className="text-3xl sm:text-4xl font-bold mt-1">Phonics Studio</h1>
+        <p className="mt-2 text-nordic-50 max-w-2xl">A teaching companion to the NIS portal. It turns the phonics scope &amp; sequence into a classroom-ready toolkit: the word patterns and families children read, the 44 sounds with their mouth positions, the daily lesson routine, and interactive blending &amp; segmenting — grounded in the Science of Reading.</p>
+        <div className="flex flex-wrap gap-2 mt-4 text-xs">{["Systematic","Explicit","Cumulative","Multisensory (VAKT)","Orton-Gillingham aligned"].map(t=><span key={t} className="bg-white/15 rounded-full px-3 py-1 font-semibold">{t}</span>)}</div>
+      </div>
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-5">{cards.map(([t,id,ic,d])=>(<button key={id} onClick={()=>go(id)} className="text-left bg-white rounded-2xl p-5 card-shadow border border-nordic-100 hover:-translate-y-1 transition-all"><div className="text-3xl">{ic}</div><h3 className="font-bold text-nordic-800 mt-2">{t}</h3><p className="text-sm text-nordic-500 mt-1 leading-snug">{d}</p></button>))}</div>
+    </div>
+  );
+}
+function App(){
+  const [tab,setTab]=useState("home");
+  useEffect(()=>{ if(window.speechSynthesis){ speechSynthesis.getVoices(); speechSynthesis.onvoiceschanged=()=>speechSynthesis.getVoices(); } window.scrollTo(0,0);},[]);
+  useEffect(()=>{window.scrollTo(0,0)},[tab]);
+  const tabs=[["home","Home"],["patterns","Word Patterns"],["scope","Scope & Sequence"],["wall","Sound Wall"],["routine","Lesson Routine"],["activities","Activities"],["guide","Teacher Guide"]];
+  return (
+    <div className="min-h-screen">
+      {!EMBED && (
+        <header className="sticky top-0 z-40 bg-white/85 backdrop-blur border-b border-nordic-100 no-print">
+          <div className="max-w-6xl mx-auto px-4 py-3 flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-nordic-700 text-white flex items-center justify-center font-bold">NIS</div>
+            <div className="leading-tight"><div className="font-bold text-nordic-800">Phonics Studio</div><div className="text-[11px] text-nordic-400">English Department · NIS</div></div>
+            <nav className="ml-auto flex flex-wrap gap-1">{tabs.map(([id,label])=>(<button key={id} onClick={()=>setTab(id)} className={"px-3 py-1.5 rounded-lg text-sm font-semibold transition "+(tab===id?"tab-active":"text-nordic-600 hover:bg-nordic-50")}>{label}</button>))}</nav>
+          </div>
+        </header>
+      )}
+      {EMBED && (
+        <div className="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-nordic-100 no-print">
+          <div className="max-w-6xl mx-auto px-4 py-2 flex flex-wrap gap-1">{tabs.map(([id,label])=>(<button key={id} onClick={()=>setTab(id)} className={"px-3 py-1.5 rounded-lg text-sm font-semibold transition "+(tab===id?"tab-active":"text-nordic-600 hover:bg-nordic-50")}>{label}</button>))}</div>
+        </div>
+      )}
+      <main className="max-w-6xl mx-auto px-4 py-6 pb-16">
+        {tab==="home" && <Overview go={setTab}/>}
+        {tab==="patterns" && <WordPatterns/>}
+        {tab==="scope" && <Scope/>}
+        {tab==="wall" && <SoundWall/>}
+        {tab==="routine" && <Routine/>}
+        {tab==="activities" && <Activities/>}
+        {tab==="guide" && <Guide/>}
+      </main>
+      {!EMBED && <footer className="max-w-6xl mx-auto px-4 py-6 text-center text-xs text-nordic-400 no-print">NIS English — Phonics Studio · Sound inventory based on Pronunciation Coach 3D · Audio via your browser’s speech engine (offline-capable).</footer>}
+    </div>
+  );
+}
+if(EMBED) document.body.classList.add('embed');
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+</script>
+</body>
+</html>

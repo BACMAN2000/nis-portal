@@ -141,6 +141,13 @@ function bindNav(handler){ document.querySelectorAll('[data-nav]').forEach(e=>e.
 function munBody(){ return `<iframe src="mun-academy.html" title="MUN Academy" style="width:100%;height:82vh;min-height:560px;border:0;border-radius:12px;display:block;background:#fff"></iframe>`; }
 function studentMun(){ document.querySelectorAll('[data-nav]').forEach(e=>e.classList.toggle('active',e.dataset.nav==='mun')); $('#main').innerHTML = munBody(); }
 
+/* Phonics Studio embedded as an iframe (same-origin app in /phonics).
+   ?embed=1 tells it to hide its own top bar so it nests under the portal. */
+function phonicsPanel(){
+  return `<iframe src="phonics/index.html?embed=1" title="Phonics Studio"
+    style="width:100%;height:calc(100vh - 120px);border:none;border-radius:14px;box-shadow:var(--shadow);background:#fff"></iframe>`;
+}
+
 /* ===================== AUTH ===================== */
 function renderAuth(mode='login'){
   document.body.innerHTML = `<div class="auth-wrap"><div class="auth-card">
@@ -605,12 +612,14 @@ async function renderTeacher(tab){
   if(!nav.length) nav.push({key:'none',label:'— sin accesos —'});
   nav.push({key:'exams',label:'🎧 Exámenes'});
   nav.push({key:'mun',label:'🌐 MUN Academy'});
+  nav.push({key:'phonics',label:'🔤 Phonics'});
   const active = (tab && nav.some(n=>n.key===tab)) ? tab : nav[0].key;
   document.body.innerHTML = shell(nav, active, `<div class="center muted">Cargando…</div>`);
   bindNav(renderTeacher);
   if(active==='mun') return $('#main').innerHTML = munBody();
   if(active==='results') return teacherResults();
   if(active==='students') return teacherStudents();
+  if(active==='phonics'){ $('#main').innerHTML = phonicsPanel(); return; }
   $('#main').innerHTML = `<div class="card">El administrador aún no te ha asignado accesos. Escríbele para que te habilite <b>Resultados</b> o <b>Alumnos</b>.</div>`;
 }
 /* ── Shared results filter bar (admin + teacher) ────────────────────── */
@@ -944,9 +953,14 @@ async function renderStudent(){
     {key:'home',label:'🏠 Mi avance'},
     {key:'exams',label:'🎓 Rendir examen'},
     {key:'mun',label:'🌐 MUN Academy'},
+    {key:'phonics',label:'🔤 Phonics'},
   ],'home',`<div class="center muted">Cargando…</div>`);
-  bindNav(k=> k==='mun'?studentMun(): k==='exams'?studentExams():studentHome());
+  bindNav(k=> k==='mun'?studentMun(): k==='exams'?studentExams(): k==='phonics'?studentPhonics() : studentHome());
   studentHome();
+}
+function studentPhonics(){
+  document.querySelectorAll('[data-nav]').forEach(e=>e.classList.toggle('active',e.dataset.nav==='phonics'));
+  $('#main').innerHTML = phonicsPanel();
 }
 async function studentHome(){
   document.querySelectorAll('[data-nav]').forEach(e=>e.classList.toggle('active',e.dataset.nav==='home'));
@@ -965,6 +979,12 @@ async function studentHome(){
       ${bySkill.map(s=>`<div class="stat"><div class="l">${s.sk}</div>
         <div class="n">${s.best!=null?s.best+'%':'—'}</div>
         <div class="muted" style="font-size:.8rem">${s.n} intento(s)${s.avg!=null?' · prom '+s.avg+'%':''}</div></div>`).join('')}
+    </div>
+    <div class="card" onclick="studentPhonics()" style="display:flex;align-items:center;gap:16px;cursor:pointer;background:linear-gradient(135deg,var(--blue),var(--celeste));color:#fff;border:none">
+      <div style="font-size:2.6rem;line-height:1">🔤</div>
+      <div><h2 style="color:#fff;margin:0 0 2px">Phonics Studio</h2>
+        <div style="opacity:.93;font-size:.9rem">Aprende los sonidos y las formas de las palabras — CVC, blends, magic-e, familias y más.</div></div>
+      <div style="margin-left:auto;font-size:1.6rem">→</div>
     </div>
     <div class="card"><h2>Proyección</h2>${projection(p,bySkill,atts||[])}</div>
     <div class="card"><h2>Historial</h2>
