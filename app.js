@@ -642,11 +642,11 @@ async function adminResults(){
     <td><span class="badge grade">${esc(a.profiles?.grades?.name||'—')}</span></td>
     <td style="text-align:center">${a.profiles?.section?`<span class="badge">${esc(a.profiles.section)}</span>`:'<span class="muted">—</span>'}</td>
     <td>${esc(a.skill)} · <span class="badge lvl">${esc(a.level)}</span> · ${mockLabel(a)}</td>
-    <td>${a.percent!=null?`<b>${a.percent}%</b> <span class="muted">(${a.score}/${a.total})</span>`:'<span class="muted">— (revisión)</span>'}</td>
+    <td>${a.percent!=null?`<b>${a.percent}%</b> <span class="muted">(${a.score}/${a.total})</span>`:((a.breakdown&&a.breakdown.teacherMessage)?'<span class="badge on" style="font-size:.72rem">✓ comentario enviado</span>':'<span class="muted">— (revisión)</span>')}</td>
     <td style="min-width:200px">${wsCell}</td>
     <td class="muted">${new Date(a.submitted_at).toLocaleDateString()}</td>
     <td>${a.skill==='Writing'
-        ? `<button class="btn sm" onclick="gradeWriting('${a.id}')">✍️ ${a.percent!=null?'Re-calificar':'Calificar'}</button>`
+        ? `<button class="btn sm${(a.percent!=null||(a.breakdown&&a.breakdown.teacherMessage))?' ghost':''}" onclick="gradeWriting('${a.id}')">✍️ ${a.percent!=null?'Re-calificar':((a.breakdown&&a.breakdown.teacherMessage)?'Editar comentario':'Calificar')}</button>${(a.percent!=null||(a.breakdown&&a.breakdown.teacherMessage))?' <span class="badge on" style="font-size:.7rem">✓ enviado</span>':''}`
         : `<button class="btn sm ghost" onclick="openAttempt('${a.id}')">Ver análisis →</button>`}</td>
   </tr>`;}).join('');
   $('#main').innerHTML=`
@@ -1041,11 +1041,11 @@ async function teacherResults(){
     <td><span class="badge grade">${esc(a.profiles?.grades?.name||'—')}</span></td>
     <td style="text-align:center">${a.profiles?.section?`<span class="badge">${esc(a.profiles.section)}</span>`:'<span class="muted">—</span>'}</td>
     <td>${esc(a.skill)} · <span class="badge lvl">${esc(a.level)}</span> · ${mockLabel(a)}</td>
-    <td>${a.percent!=null?`<b>${a.percent}%</b> <span class="muted">(${a.score}/${a.total})</span>`:'<span class="muted">— (revisión)</span>'}</td>
+    <td>${a.percent!=null?`<b>${a.percent}%</b> <span class="muted">(${a.score}/${a.total})</span>`:((a.breakdown&&a.breakdown.teacherMessage)?'<span class="badge on" style="font-size:.72rem">✓ comentario enviado</span>':'<span class="muted">— (revisión)</span>')}</td>
     <td style="min-width:200px">${wsCell}</td>
     <td class="muted">${new Date(a.submitted_at).toLocaleDateString()}</td>
     <td>${a.skill==='Writing'
-        ? `<button class="btn sm" onclick="gradeWriting('${a.id}')">✍️ ${a.percent!=null?'Re-calificar':'Calificar'}</button>`
+        ? `<button class="btn sm${(a.percent!=null||(a.breakdown&&a.breakdown.teacherMessage))?' ghost':''}" onclick="gradeWriting('${a.id}')">✍️ ${a.percent!=null?'Re-calificar':((a.breakdown&&a.breakdown.teacherMessage)?'Editar comentario':'Calificar')}</button>${(a.percent!=null||(a.breakdown&&a.breakdown.teacherMessage))?' <span class="badge on" style="font-size:.7rem">✓ enviado</span>':''}`
         : `<button class="btn sm ghost" onclick="openAttempt('${a.id}')">Ver análisis →</button>`}</td></tr>`;}).join('');
   $('#main').innerHTML=`
     <div class="row" style="justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:4px">
