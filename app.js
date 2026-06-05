@@ -1075,7 +1075,7 @@ async function teacherStudents(){
 }
 
 /* ===================== WRITING GRADING (teacher) ===================== */
-const WRITING_WEBHOOK = 'https://script.google.com/macros/s/AKfycbzwn09Be0ZfKxGpwgkjLdp7nIs7awq8h7SVKkMlWN4EjekkOFqpLmnChzGHN_bB6kN-/exec';
+const WRITING_WEBHOOK = (window.NIS_CONFIG && window.NIS_CONFIG.WRITING_WEBHOOK) || '';
 function band6(b1,b3,b5){
   return [
     'Below Band 1 — content largely irrelevant, or too little language to assess.',
