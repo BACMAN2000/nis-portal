@@ -1233,15 +1233,26 @@ function _recalcGrade(){
 window._pickBand = (taskIdx, si, band)=>{
   const s=gradeState.rubric.subs[si];
   if(taskIdx===0) gradeState.sel_t1[s]=band; else gradeState.sel_t2[s]=band;
+  // Preserve scroll position: re-rendering used to jump back to the top on
+  // every click, which made it almost impossible to finish all the criteria.
+  const y = window.scrollY;
   renderGradeWriting();
+  window.scrollTo(0, y);
 };
 window._sendWritingResult = async ()=>{
   const st=$('#gw-status');
-  if(!gradeState.complete){ st.innerHTML='<span style="color:var(--bad)">Selecciona un Band en cada criterio de ambas partes antes de enviar.</span>'; return; }
   const a=gradeState.attempt; const msg=($('#gw-msg').value||'').trim();
   const rubric=gradeState.rubric;
+  // The teacher can send when the rubric is fully marked (a graded result) OR
+  // when there is at least a written comment (a comment-only feedback).
+  const graded = !!gradeState.complete;
+  if(!graded && !msg){
+    st.innerHTML='<span style="color:var(--bad)">Escribe un comentario para el alumno, o marca un Band en cada criterio de ambas partes, antes de enviar.</span>';
+    return;
+  }
   const breakdown={
     kind:'writing-graded',
+    graded,                                   // false = comment-only (sin nota todavía)
     parts:[
       ...rubric.subs.map(s=>({part:'Task 1 — '+s, correct:gradeState.sel_t1[s], total:rubric.bandMax})),
       ...rubric.subs.map(s=>({part:'Task 2 — '+s, correct:gradeState.sel_t2[s], total:rubric.bandMax}))
@@ -1252,26 +1263,33 @@ window._sendWritingResult = async ()=>{
     gradedAt: new Date().toISOString()
   };
   $('#gw-send').disabled=true; st.textContent='Guardando…';
-  // ── FIX: wrap RPC in try/catch + timeout so it never freezes on "Guardando…" ──
+  // ── wrap RPC in try/catch + timeout so it never freezes on "Guardando…" ──
   let rpcErr = null;
   try {
-    const rpcPromise = sb.rpc('grade_writing',{ p_attempt:a.id, p_score:gradeState.total, p_total:gradeState.max, p_percent:gradeState.pct, p_breakdown:breakdown });
+    const rpcPromise = sb.rpc('grade_writing',{ p_attempt:a.id,
+      p_score:   graded ? gradeState.total : null,
+      p_total:   graded ? gradeState.max   : null,
+      p_percent: graded ? gradeState.pct   : null,
+      p_breakdown:breakdown });
     const timeout = new Promise((_,rej)=>setTimeout(()=>rej(new Error('Tiempo de espera agotado — intenta de nuevo.')),12000));
     const { error } = await Promise.race([rpcPromise, timeout]);
     rpcErr = error || null;
   } catch(e){ rpcErr = e; }
   if(rpcErr){ $('#gw-send').disabled=false; st.innerHTML=`<span style="color:var(--bad)">No se pudo guardar: ${esc(rpcErr.message||String(rpcErr))}</span>`; return; }
-  // Fire-and-forget webhook (Apps Script emails the student)
+  // Fire-and-forget webhook (Apps Script emails the student + archives to Drive).
+  // We also send the student's own texts so the archived copy is complete.
   try{
+    const texts = (Array.isArray(a.answers)?a.answers:[]).map(t=>({ label:t.label||'', text:t.text||'', wordCount:t.wordCount!=null?t.wordCount:null }));
     fetch(WRITING_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
-      body:JSON.stringify({ type:'writing_result', studentEmail:a.profiles?.email||'', studentName:a.profiles?.full_name||'',
+      body:JSON.stringify({ type:'writing_result', graded, studentEmail:a.profiles?.email||'', studentName:a.profiles?.full_name||'',
         firstName:(a.profiles?.full_name||'').split(' ')[0], grade:a.profiles?.grades?.name||'', level:a.level,
-        examTitle:'Writing '+(mockLabel(a)), score:gradeState.total, total:gradeState.max, percent:gradeState.pct,
-        task1Score:gradeState.t1, task1Total:rubric.subs.length*rubric.bandMax,
-        task2Score:gradeState.t2, task2Total:rubric.subs.length*rubric.bandMax,
+        examTitle:'Writing '+(mockLabel(a)), score:graded?gradeState.total:null, total:graded?gradeState.max:null, percent:graded?gradeState.pct:null,
+        task1Score:graded?gradeState.t1:null, task1Total:rubric.subs.length*rubric.bandMax,
+        task2Score:graded?gradeState.t2:null, task2Total:rubric.subs.length*rubric.bandMax,
+        texts,
         message:msg, teacherEmail:'pbaca@nordic-school.edu.pe', teacherName:breakdown.gradedBy, schoolName:'Nordic International School of Lima' }) });
   }catch(e){}
-  st.innerHTML='<span style="color:var(--good)">✓ Resultado guardado y enviado al alumno.</span>';
+  st.innerHTML=`<span style="color:var(--good)">✓ ${graded?'Resultado guardado y enviado al alumno.':'Comentario guardado y enviado al alumno.'}</span>`;
   setTimeout(teacherResults, 1200);
 };
 
