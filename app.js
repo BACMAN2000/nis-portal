@@ -1263,18 +1263,35 @@ window._sendWritingResult = async ()=>{
     gradedAt: new Date().toISOString()
   };
   $('#gw-send').disabled=true; st.textContent='Guardando…';
-  // ── wrap RPC in try/catch + timeout so it never freezes on "Guardando…" ──
+  // Guardamos con fetch directo a PostgREST en vez de sb.rpc(): el cliente
+  // supabase-js a veces se queda colgado esperando el "lock" de auth (sobre
+  // todo con el portal abierto en varios dispositivos/pestañas a la vez) y la
+  // petición nunca llega a salir. Con fetch controlamos el envío y el timeout.
   let rpcErr = null;
   try {
-    const rpcPromise = sb.rpc('grade_writing',{ p_attempt:a.id,
-      p_score:   graded ? gradeState.total : null,
-      p_total:   graded ? gradeState.max   : null,
-      p_percent: graded ? gradeState.pct   : null,
-      p_breakdown:breakdown });
-    const timeout = new Promise((_,rej)=>setTimeout(()=>rej(new Error('Tiempo de espera agotado — intenta de nuevo.')),12000));
-    const { error } = await Promise.race([rpcPromise, timeout]);
-    rpcErr = error || null;
-  } catch(e){ rpcErr = e; }
+    const token = (state.session && state.session.access_token) || CFG.SUPABASE_KEY;
+    const ctrl = new AbortController();
+    const to = setTimeout(()=>ctrl.abort(), 15000);
+    const res = await fetch(CFG.SUPABASE_URL + '/rest/v1/rpc/grade_writing', {
+      method:'POST',
+      headers:{ 'apikey':CFG.SUPABASE_KEY, 'Authorization':'Bearer '+token, 'Content-Type':'application/json' },
+      body: JSON.stringify({ p_attempt:a.id,
+        p_score:   graded ? gradeState.total : null,
+        p_total:   graded ? gradeState.max   : null,
+        p_percent: graded ? gradeState.pct   : null,
+        p_breakdown:breakdown }),
+      signal: ctrl.signal
+    });
+    clearTimeout(to);
+    if(!res.ok){
+      const txt = await res.text().catch(()=>'');
+      rpcErr = new Error('Error ' + res.status + (txt ? (' — ' + txt) : ''));
+    }
+  } catch(e){
+    rpcErr = (e && e.name==='AbortError')
+      ? new Error('Tiempo de espera agotado — revisa tu conexión e intenta de nuevo.')
+      : e;
+  }
   if(rpcErr){ $('#gw-send').disabled=false; st.innerHTML=`<span style="color:var(--bad)">No se pudo guardar: ${esc(rpcErr.message||String(rpcErr))}</span>`; return; }
   // Fire-and-forget webhook (Apps Script emails the student + archives to Drive).
   // We also send the student's own texts so the archived copy is complete.
