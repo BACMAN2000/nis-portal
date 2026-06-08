@@ -1486,7 +1486,7 @@ async function studentResults(){
   const { data:acts } = await sb.from('activity_attempts').select('*').eq('student_id',p.id).order('submitted_at',{ascending:false});
   const fmtT=(s)=>{ s=s||0; return Math.floor(s/60)+'m '+String(s%60).padStart(2,'0')+'s'; };
   const actTable=(list)=> list.length ? `<table><thead><tr><th>Actividad</th><th>Nivel</th><th>Resultado</th><th>⏱ Tiempo</th><th>💡 Pistas</th><th>Fecha</th></tr></thead><tbody>${
-      list.map(a=>`<tr><td>${a.activity==='crossword'?'🔎 Crossword':'🔍 Word Search'} — Digital Footprint</td><td>${esc(a.level)}</td><td>${a.score!=null?`${a.score}/${a.total}`:'—'}</td><td>${fmtT(a.duration_sec)}</td><td>${a.hints_used||0}</td><td class="muted">${new Date(a.submitted_at).toLocaleDateString()}</td></tr>`).join('')
+      list.map(a=>`<tr><td>${a.activity==='crossword'?'🔎':'🔍'} ${esc(a.title||(a.activity==='crossword'?'Crossword':'Word Search'))}</td><td>${esc(a.level)}</td><td>${a.score!=null?`${a.score}/${a.total}`:'—'}</td><td>${fmtT(a.duration_sec)}</td><td>${a.hints_used||0}</td><td class="muted">${new Date(a.submitted_at).toLocaleDateString()}</td></tr>`).join('')
     }</tbody></table>` : `<p class="muted">Aún no has completado actividades. Ve a <b>Classes → Activities</b>.</p>`;
   $('#main').innerHTML=`<h1>📊 My Results</h1>
     <p class="muted" style="margin-top:-6px">${esc(p.grades?.name||'')} ${p.section?'· '+esc(p.section):''} · Nivel ${esc(p.cefr_level||'sin asignar')}</p>
