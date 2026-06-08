@@ -1458,6 +1458,11 @@ async function studentResults(){
     }</tbody></table>` : `<p class="muted">Aún no hay intentos aquí.</p>`;
   const all=atts||[];
   const mocks=all.filter(isMockAttempt), practice=all.filter(a=>!isMockAttempt(a));
+  const { data:acts } = await sb.from('activity_attempts').select('*').eq('student_id',p.id).order('submitted_at',{ascending:false});
+  const fmtT=(s)=>{ s=s||0; return Math.floor(s/60)+'m '+String(s%60).padStart(2,'0')+'s'; };
+  const actTable=(list)=> list.length ? `<table><thead><tr><th>Actividad</th><th>Nivel</th><th>Resultado</th><th>⏱ Tiempo</th><th>💡 Pistas</th><th>Fecha</th></tr></thead><tbody>${
+      list.map(a=>`<tr><td>${a.activity==='crossword'?'🔎 Crossword':'🔍 Word Search'} — Digital Footprint</td><td>${esc(a.level)}</td><td>${a.score!=null?`${a.score}/${a.total}`:'—'}</td><td>${fmtT(a.duration_sec)}</td><td>${a.hints_used||0}</td><td class="muted">${new Date(a.submitted_at).toLocaleDateString()}</td></tr>`).join('')
+    }</tbody></table>` : `<p class="muted">Aún no has completado actividades. Ve a <b>Classes → Activities</b>.</p>`;
   $('#main').innerHTML=`<h1>📊 My Results</h1>
     <p class="muted" style="margin-top:-6px">${esc(p.grades?.name||'')} ${p.section?'· '+esc(p.section):''} · Nivel ${esc(p.cefr_level||'sin asignar')}</p>
     <div class="grid cols-3">
@@ -1468,6 +1473,7 @@ async function studentResults(){
     <div class="card"><h2>Proyección</h2>${projection(p,bySkill,all)}</div>
     <div class="card"><h2>📝 Mocks (${mocks.length})</h2>${histTable(mocks)}</div>
     <div class="card"><h2>🎯 Practice Tests (${practice.length})</h2>${histTable(practice)}</div>
+    <div class="card"><h2>🎲 Activities (${(acts||[]).length})</h2>${actTable(acts||[])}</div>
     ${all.length?'':'<div class="note info">Aún no has rendido exámenes. Empieza en <b>Practice Tests</b> o <b>Cambridge Mocks</b>.</div>'}`;
 }
 function projection(p,bySkill,atts){

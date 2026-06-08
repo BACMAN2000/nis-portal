@@ -66,6 +66,10 @@
 <div class="wrap">
   <div class="board">
     <div class="gridbox" id="grid"></div>
+    <div id="lifebar" style="margin-top:10px;font-weight:800;font-size:1.05rem;display:flex;gap:16px;align-items:center">
+      <span id="hearts" title="Vidas: cada pista cuesta 1 vida"></span>
+      <span id="watch" style="font-variant-numeric:tabular-nums;color:var(--accent)">⏱ 00:00</span>
+    </div>
     <div class="info" id="dirinfo"></div>
     <div class="btns">
       <button class="act b-hint" onclick="hint()">💡 Hint</button>
@@ -84,6 +88,35 @@
 
 <footer>U3W1S3 · Digital Footprints &amp; Online Identity · 48 words · Levels A2 · B1 · B2 · C1</footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+<script src="config.js"></script>
+<script>
+/* Portal NIS: guarda el resultado en activity_attempts y lo envia por email (webhook).
+   Si no hay sesion del portal (uso independiente), no hace nada. */
+window.NISACT=(function(){
+  let _sb=null;
+  function client(){ if(_sb) return _sb; if(!window.supabase||!window.NIS_CONFIG) return null;
+    _sb=window.supabase.createClient(NIS_CONFIG.SUPABASE_URL,NIS_CONFIG.SUPABASE_KEY); return _sb; }
+  async function student(){ const c=client(); if(!c) return null;
+    try{ const u=await c.auth.getUser(); if(!u||!u.data||!u.data.user) return null;
+      const p=await c.from('profiles').select('full_name,first_name,email,cefr_level,grades(name)').eq('id',u.data.user.id).maybeSingle();
+      const d=(p&&p.data)||{}; return {uid:u.data.user.id,email:u.data.user.email||d.email,full_name:d.full_name,first_name:d.first_name};
+    }catch(e){ return null; } }
+  async function submit(r){
+    const s=await student(); if(!s) return {skipped:true};
+    try{ await client().from('activity_attempts').insert({student_id:s.uid,activity:r.activity,title:r.title,level:r.level,
+      score:r.score,total:r.total,hints_used:r.hints,lives_left:r.lives,duration_sec:r.duration}); }catch(e){}
+    try{ const m=Math.floor(r.duration/60), sec=r.duration%60;
+      await fetch(NIS_CONFIG.WRITING_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body:JSON.stringify({skill:'Activity',name:s.full_name||s.first_name||'',email:s.email||'',level:r.level,
+          examTitle:r.title+' - Time '+m+'m '+String(sec).padStart(2,'0')+'s - Hints '+r.hints+' - Lives left '+r.lives,
+          examType:r.activity,score:r.score,total:r.total,duration_min:Math.max(1,Math.round(r.duration/60))})});
+    }catch(e){}
+    return {sent:true};
+  }
+  return {submit};
+})();
+</script>
 <script>
 const DATA = {
 "A2":{label:"A2",sub:"Elementary",note:"Words go → across and ↓ down.",size:12,
@@ -121,6 +154,22 @@ function locate(gridRows, word){
 const PALETTE = ['--f1','--f2','--f3','--f4','--f5','--f6'];
 let level="A2", found={}, hintsUsed=0;
 const done={}, foundState={};
+/* === Vidas y cronómetro (por nivel) === */
+const livesState={}, hintsState={}, elapsedState={};
+let timerInt=null;
+function fmtT(s){ return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0'); }
+function drawStatus(){
+  const h=document.getElementById('hearts'), w=document.getElementById('watch');
+  const lv=livesState[level]==null?5:livesState[level];
+  if(h) h.textContent='❤️'.repeat(lv)+'🤍'.repeat(Math.max(0,5-lv));
+  if(w) w.textContent='⏱ '+fmtT(elapsedState[level]||0);
+}
+function startWatch(){
+  clearInterval(timerInt);
+  if(done[level]){ drawStatus(); return; }
+  timerInt=setInterval(()=>{ elapsedState[level]=(elapsedState[level]||0)+1; drawStatus(); },1000);
+  drawStatus();
+}
 
 function buildTabs(){
   const t=document.getElementById('tabs'); t.innerHTML='';
@@ -143,6 +192,9 @@ function load(){
     if (p) w.cells = p;
   }
   found = foundState[level] = foundState[level] || {};
+  if(livesState[level]==null) livesState[level]=5;
+  hintsUsed = hintsState[level]||0;
+  startWatch();
   cellEls={}; selStart=null; selCells=[];
   document.getElementById('banner').classList.remove('show');
   document.getElementById('dirinfo').textContent = d.note;
@@ -206,7 +258,18 @@ function endSel(){
   selStart=null; selCells=[];
   updateScore();
   const all=d.words.every(w=>found[w.word]);
-  if (all){ done[level]=true; document.getElementById('banner').classList.add('show'); buildTabs(); }
+  if (all){
+    if(!done[level]){
+      done[level]=true;
+      clearInterval(timerInt);
+      const dur=elapsedState[level]||0;
+      const b=document.getElementById('banner');
+      b.textContent='🎉 Brilliant! All words found in '+fmtT(dur)+'! Tu resultado fue guardado en My Results y enviado a tu correo.';
+      if(window.NISACT) NISACT.submit({activity:'wordsearch',title:'Word Search — Digital Footprint',level:level,
+        score:d.words.length,total:d.words.length,hints:hintsUsed,lives:livesState[level],duration:dur});
+    }
+    document.getElementById('banner').classList.add('show'); buildTabs();
+  }
 }
 function paint(w, i){
   const col=`var(${PALETTE[i%PALETTE.length]})`;
@@ -224,6 +287,7 @@ function updateScore(){
     `Words found: ${n} / ${d.words.length}`+(hintsUsed?` · Hints used: ${hintsUsed}`:'');
 }
 function hint(){
+  if(done[level]) return;
   const d=DATA[level];
   const left=d.words.filter(w=>!found[w.word]);
   if (!left.length) return;
@@ -232,10 +296,20 @@ function hint(){
   cellEls[r+'_'+c].classList.remove('flash');
   void cellEls[r+'_'+c].offsetWidth;
   cellEls[r+'_'+c].classList.add('flash');
-  hintsUsed++; updateScore();
+  hintsUsed++; hintsState[level]=hintsUsed;
+  livesState[level]--; drawStatus();
+  if(livesState[level]<=0){
+    setTimeout(()=>{
+      alert('💔 ¡Te quedaste sin vidas! El nivel se reinicia desde cero.');
+      resetLevel();
+    }, 900);
+    return;
+  }
+  updateScore();
 }
 function resetLevel(){
   foundState[level]={}; hintsUsed=0;
+  livesState[level]=5; hintsState[level]=0; elapsedState[level]=0;
   for (const k in cellEls){ cellEls[k].style.background=''; cellEls[k].classList.remove('found'); }
   load();
 }
