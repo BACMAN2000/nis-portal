@@ -172,11 +172,14 @@ function header(){
 }
 function shell(navItems, activeKey, body){
   return header()+`<div class="shell">
-    <nav class="sidebar">${navItems.map(n=> n.href ? `<a class="nav-item" href="${n.href}" target="_blank" rel="noopener">${n.label}</a>` : `<div class="nav-item ${n.key===activeKey?'active':''}" data-nav="${n.key}">${n.label}</div>`).join('')}</nav>
+    <nav class="sidebar">${navItems.map(n=> n.href ? `<a class="nav-item" href="${n.href}" target="_blank" rel="noopener">${n.label}</a>` : `<div class="nav-item ${n.key===activeKey?'active':''}" data-nav="${n.key}" tabindex="0" role="button">${n.label}</div>`).join('')}</nav>
     <main class="main" id="main">${body}</main>
   </div>`;
 }
-function bindNav(handler){ document.querySelectorAll('[data-nav]').forEach(e=>e.onclick=()=>handler(e.dataset.nav)); }
+function bindNav(handler){ document.querySelectorAll('[data-nav]').forEach(e=>{
+  e.onclick=()=>handler(e.dataset.nav);
+  e.onkeydown=(ev)=>{ if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); handler(e.dataset.nav); } };
+}); }
 function munBody(){ return `<iframe src="mun-academy.html" title="MUN Academy" style="width:100%;height:82vh;min-height:560px;border:0;border-radius:12px;display:block;background:#fff"></iframe>`; }
 function studentMun(){ document.querySelectorAll('[data-nav]').forEach(e=>e.classList.toggle('active',e.dataset.nav==='mun')); $('#main').innerHTML = munBody(); }
 
@@ -1364,7 +1367,7 @@ function studentPhonics(){ _setNav('phonics'); $('#main').innerHTML = phonicsPan
 
 /* ---------- Student dashboard (hub) ---------- */
 function _hubCard(emoji,title,desc,onclick,extra){
-  return `<div class="card center" ${onclick?`onclick="${onclick}"`:''} style="cursor:${onclick?'pointer':'default'};padding:28px 16px;margin-bottom:0;transition:.15s"
+  return `<div class="card center" ${onclick?`onclick="${onclick}" tabindex="0" role="button" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();${onclick}}"`:''} style="cursor:${onclick?'pointer':'default'};padding:28px 16px;margin-bottom:0;transition:.15s"
     onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform=''">
     <div style="font-size:3rem;line-height:1">${emoji}</div>
     <h2 style="margin:10px 0 4px;color:var(--blue-d)">${title}</h2>
