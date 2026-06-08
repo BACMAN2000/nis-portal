@@ -11,6 +11,12 @@ const GRADES = Array.from({length:11},(_,i)=>({id:i+1,name:'G'+(i+1)}));
 const LEVELS = ['A2','B1','B2','C1'];
 const SKILLS = ['Reading','Listening','Writing'];
 const QUIZ_URL = 'https://bacman2000.github.io/mocks-cambridge/';
+/* === Enlaces configurables del dashboard de alumnos === */
+const LIBRARY_URL = 'http://127.0.0.1:8900/';   // Biblioteca NIS (OPAC local). Cambiar por la URL pública cuando esté en línea.
+const CLASSES_LINKS = {
+  presentations: '',   // pegar URL de las presentaciones de clase (vacío = "Próximamente")
+  activities:    ''    // pegar URL de las actividades/juegos (vacío = "Próximamente")
+};
 
 let state = { session:null, profile:null };
 let resultsBranch = 'mock'; // 'mock' | 'practice'
@@ -146,10 +152,7 @@ function route(){
   // UNLESS they explicitly asked to see their progress panel (?me=1).
   if(r==='student'){
     const wantsProgress = new URLSearchParams(location.search).get('me')==='1';
-    if(wantsProgress) return renderStudent();
-    const dest = location.origin + '/mocks-cambridge/quizzes.html';
-    if(location.href !== dest){ window.location.replace(dest); }
-    return;
+    return renderStudent(wantsProgress ? 'results' : 'home');
   }
   return renderStudent();
 }
@@ -1311,23 +1314,130 @@ window._sendWritingResult = async ()=>{
 };
 
 /* ===================== STUDENT ===================== */
-async function renderStudent(){
+async function renderStudent(initial){
   document.body.innerHTML = shell([
-    {key:'home',label:'🏠 Mi avance'},
-    {key:'exams',label:'🎓 Rendir examen'},
+    {key:'home',label:'🏠 Inicio'},
+    {key:'mocks',label:'🎓 Cambridge Mocks'},
+    {key:'practice',label:'🎯 Practice Tests'},
+    {key:'library',label:'📚 Library'},
     {key:'mun',label:'🌐 MUN Academy'},
+    {key:'classes',label:'🏫 Classes'},
     {key:'phonics',label:'🔤 Phonics'},
-  ],'home',`<div class="center muted">Cargando…</div>`);
-  bindNav(k=> k==='mun'?studentMun(): k==='exams'?studentExams(): k==='phonics'?studentPhonics() : studentHome());
-  studentHome();
+    {key:'results',label:'📊 My Results'},
+  ], initial||'home', `<div class="center muted">Cargando…</div>`);
+  bindNav(k=>{
+    if(k==='mun') return studentMun();
+    if(k==='phonics') return studentPhonics();
+    if(k==='mocks') return studentMocks();
+    if(k==='practice') return studentPractice();
+    if(k==='classes') return studentClasses();
+    if(k==='library') return studentLibrary();
+    if(k==='results') return studentResults();
+    return studentHub();
+  });
+  if(initial==='results') studentResults(); else studentHub();
 }
-function studentPhonics(){
-  document.querySelectorAll('[data-nav]').forEach(e=>e.classList.toggle('active',e.dataset.nav==='phonics'));
-  $('#main').innerHTML = phonicsPanel();
+function _setNav(k){ document.querySelectorAll('[data-nav]').forEach(e=>e.classList.toggle('active',e.dataset.nav===k)); }
+function studentPhonics(){ _setNav('phonics'); $('#main').innerHTML = phonicsPanel(); }
+
+/* ---------- Student dashboard (hub) ---------- */
+function _hubCard(emoji,title,desc,onclick,extra){
+  return `<div class="card center" ${onclick?`onclick="${onclick}"`:''} style="cursor:${onclick?'pointer':'default'};padding:28px 16px;margin-bottom:0;transition:.15s"
+    onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform=''">
+    <div style="font-size:3rem;line-height:1">${emoji}</div>
+    <h2 style="margin:10px 0 4px;color:var(--blue-d)">${title}</h2>
+    <div class="muted" style="font-size:.85rem">${desc}</div>${extra||''}
+  </div>`;
 }
-async function studentHome(){
-  document.querySelectorAll('[data-nav]').forEach(e=>e.classList.toggle('active',e.dataset.nav==='home'));
+function studentHub(){
+  _setNav('home');
   const p=state.profile;
+  $('#main').innerHTML=`<h1>Hola, ${esc(p.first_name||p.full_name||'')} 👋</h1>
+    <p class="muted" style="margin-top:-6px">${esc(p.grades?.name||'')} ${p.section?'· '+esc(p.section):''} · Nivel ${esc(p.cefr_level||'sin asignar')} — ¿Qué quieres hacer hoy?</p>
+    <div class="grid cols-3" style="margin-top:14px">
+      ${_hubCard('🎓','Cambridge Mocks','Simulacros oficiales MOCK 1 y MOCK 2 por destreza.',"window._nav('mocks')")}
+      ${_hubCard('🎯','Practice Tests','Prácticas 1, 2 y 3 en formato Cambridge, siempre disponibles.',"window._nav('practice')")}
+      ${_hubCard('📚','Library','Biblioteca NIS: busca y explora los libros del colegio.',"window._nav('library')")}
+      ${_hubCard('🌐','MUN Academy','Model United Nations: debate, oratoria y diplomacia.',"window._nav('mun')")}
+      ${_hubCard('🏫','Classes','Presentaciones y actividades de tus clases.',"window._nav('classes')")}
+      ${_hubCard('🔤','Phonics','Sonidos y formas de las palabras: CVC, blends, magic-e y más.',"window._nav('phonics')")}
+      ${_hubCard('📊','My Results','Todos tus mocks y practice tests, con tu proyección.',"window._nav('results')")}
+    </div>`;
+}
+window._nav=(k)=>{
+  const fn={mocks:studentMocks,practice:studentPractice,library:studentLibrary,mun:studentMun,classes:studentClasses,phonics:studentPhonics,results:studentResults,home:studentHub}[k];
+  if(fn) fn();
+};
+
+/* ---------- Cambridge Mocks: 4 tarjetas (sin QR, sin re-registro) ---------- */
+function _skillCard(emoji,title,desc,href){
+  return `<a class="card center" href="${href}" style="text-decoration:none;color:inherit;display:block;padding:30px 18px;margin-bottom:0;transition:.15s"
+      onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform=''">
+      <div style="font-size:3.4rem;line-height:1">${emoji}</div>
+      <h2 style="margin:10px 0 2px;color:var(--blue-d)">${title}</h2>
+      <div class="muted" style="font-size:.85rem">${desc}</div>
+    </a>`;
+}
+function _soonCard(emoji,title,desc){
+  return `<div class="card center" style="padding:30px 18px;margin-bottom:0;opacity:.75">
+      <div style="font-size:3.4rem;line-height:1">${emoji}</div>
+      <h2 style="margin:10px 0 2px;color:var(--blue-d)">${title}</h2>
+      <div class="muted" style="font-size:.85rem">${desc}</div>
+      <div class="badge" style="background:var(--lila);color:var(--blue-dd);margin-top:10px">Próximamente</div>
+    </div>`;
+}
+function studentMocks(){
+  _setNav('mocks');
+  $('#main').innerHTML=`<h1>🎓 Cambridge Mocks</h1>
+    <p class="muted" style="margin-top:-6px">MOCK 1 y MOCK 2 en formato Cambridge oficial (A2 · B1 · B2 · C1). Entras directo con tu sesión — no necesitas volver a poner tus datos. Tu resultado se guarda solo en My Results.</p>
+    <div class="grid cols-2" style="margin-top:12px">
+      ${_skillCard('📖','Reading & Use of English','Textos y tareas estilo KET/PET/FCE/CAE con temporizador.',QUIZ_URL+'reading-quiz.html?branch=mocks')}
+      ${_skillCard('🎧','Listening','Audio real en formato Cambridge, con temporizador.',QUIZ_URL+'listening-quiz.html?branch=mocks')}
+      ${_skillCard('✍️','Writing','Part 1 obligatoria + Part 2 a elegir. Lo califica tu profesor. Solo B1 · B2 · C1.',QUIZ_URL+'writing-quiz.html?branch=mocks')}
+      ${_soonCard('🗣️','Speaking','Entrevista estilo Cambridge con examinador.')}
+    </div>`;
+}
+
+/* ---------- Practice Tests: siempre disponibles (sin QR, sin re-registro) ---------- */
+function studentPractice(){
+  _setNav('practice');
+  $('#main').innerHTML=`<h1>🎯 Practice Tests</h1>
+    <p class="muted" style="margin-top:-6px">Prácticas 1, 2 y 3 en formato Cambridge auténtico — siempre disponibles. Entras directo con tu sesión y tu resultado se guarda solo en My Results.</p>
+    <div class="grid cols-3" style="margin-top:12px">
+      ${_skillCard('📖','Reading & Use of English','Práctica 1 · 2 · 3 con corrección automática y feedback CEFR.',QUIZ_URL+'reading-quiz.html?branch=practice')}
+      ${_skillCard('🎧','Listening','Práctica con audio real y corrección automática.',QUIZ_URL+'listening-quiz.html?branch=practice')}
+      ${_skillCard('✍️','Writing','Tareas de escritura que tu profesor califica con rúbrica.',QUIZ_URL+'writing-quiz.html?branch=practice')}
+    </div>`;
+}
+
+/* ---------- Library ---------- */
+function studentLibrary(){
+  _setNav('library');
+  $('#main').innerHTML=`<h1>📚 Library</h1>
+    <p class="muted" style="margin-top:-6px">Biblioteca NIS — catálogo en línea (OPAC).</p>
+    <div class="grid cols-2" style="margin-top:12px">
+      ${_skillCard('📚','Abrir la Biblioteca','Busca libros, revisa disponibilidad y tus préstamos.',LIBRARY_URL)}
+    </div>
+    <div class="note info" style="margin-top:14px">ℹ️ La biblioteca se abre en una pestaña nueva. Si no carga, avisa a tu profesor (el servidor de la biblioteca debe estar encendido).</div>`;
+}
+
+/* ---------- Classes: Presentations + Activities ---------- */
+function studentClasses(){
+  _setNav('classes');
+  const card=(emoji,title,desc,url)=> url ? _skillCard(emoji,title,desc,url) : _soonCard(emoji,title,desc);
+  $('#main').innerHTML=`<h1>🏫 Classes</h1>
+    <p class="muted" style="margin-top:-6px">Material de tus clases de inglés.</p>
+    <div class="grid cols-2" style="margin-top:12px">
+      ${card('🖥️','Presentations','Las presentaciones que usamos en clase, por unidad y semana.',CLASSES_LINKS.presentations)}
+      ${card('🎲','Activities','Juegos y actividades interactivas: crosswords, word searches y más.',CLASSES_LINKS.activities)}
+    </div>`;
+}
+
+/* ---------- My Results: todos los mocks y practice tests ---------- */
+async function studentResults(){
+  _setNav('results');
+  const p=state.profile;
+  $('#main').innerHTML=`<h1>📊 My Results</h1><p class="muted">Cargando…</p>`;
   const { data:atts } = await sb.from('exam_attempts').select('*').eq('student_id',p.id).order('submitted_at',{ascending:false});
   const bySkill = SKILLS.map(sk=>{
     const a=(atts||[]).filter(x=>x.skill===sk);
@@ -1336,32 +1446,29 @@ async function studentHome(){
     const avg=scored.length?Math.round(scored.reduce((s,x)=>s+(+x.percent),0)/scored.length):null;
     return {sk,n:a.length,best,avg};
   });
-  $('#main').innerHTML=`<h1>Hola, ${esc(p.first_name||p.full_name||'')} 👋</h1>
-    <p class="muted">${esc(p.grades?.name||'')} ${p.section?'· '+esc(p.section):''} · Nivel ${esc(p.cefr_level||'sin asignar')}</p>
+  const histTable=(list)=> list.length ? `<table><thead><tr><th>Examen</th><th>Puntaje</th><th>Fecha</th></tr></thead><tbody>${
+      list.map(a=>{
+        const lbl=`${esc(a.skill)} · ${esc(a.level)} · ${mockLabel(a)}`;
+        const score = a.percent!=null ? `${a.score}/${a.total} (${a.percent}%)`
+          : (a.skill==='Writing' ? '<span class="muted">Pendiente de calificación</span>' : '—');
+        const msg = (a.breakdown&&a.breakdown.teacherMessage)
+          ? `<tr><td colspan="3" style="background:#f7faff;font-size:.9rem">📣 <b>Profesor:</b> ${esc(a.breakdown.teacherMessage)}</td></tr>` : '';
+        return `<tr><td>${lbl}</td><td>${score}</td><td class="muted">${new Date(a.submitted_at).toLocaleDateString()}</td></tr>${msg}`;
+      }).join('')
+    }</tbody></table>` : `<p class="muted">Aún no hay intentos aquí.</p>`;
+  const all=atts||[];
+  const mocks=all.filter(isMockAttempt), practice=all.filter(a=>!isMockAttempt(a));
+  $('#main').innerHTML=`<h1>📊 My Results</h1>
+    <p class="muted" style="margin-top:-6px">${esc(p.grades?.name||'')} ${p.section?'· '+esc(p.section):''} · Nivel ${esc(p.cefr_level||'sin asignar')}</p>
     <div class="grid cols-3">
       ${bySkill.map(s=>`<div class="stat"><div class="l">${s.sk}</div>
         <div class="n">${s.best!=null?s.best+'%':'—'}</div>
         <div class="muted" style="font-size:.8rem">${s.n} intento(s)${s.avg!=null?' · prom '+s.avg+'%':''}</div></div>`).join('')}
     </div>
-    <div class="card" onclick="studentPhonics()" style="display:flex;align-items:center;gap:16px;cursor:pointer;background:linear-gradient(135deg,var(--blue),var(--celeste));color:#fff;border:none">
-      <div style="font-size:2.6rem;line-height:1">🔤</div>
-      <div><h2 style="color:#fff;margin:0 0 2px">Phonics Studio</h2>
-        <div style="opacity:.93;font-size:.9rem">Aprende los sonidos y las formas de las palabras — CVC, blends, magic-e, familias y más.</div></div>
-      <div style="margin-left:auto;font-size:1.6rem">→</div>
-    </div>
-    <div class="card"><h2>Proyección</h2>${projection(p,bySkill,atts||[])}</div>
-    <div class="card"><h2>Historial</h2>
-      ${(atts&&atts.length)? `<table><thead><tr><th>Examen</th><th>Puntaje</th><th>Fecha</th></tr></thead><tbody>${
-        atts.map(a=>{
-          const lbl=`${esc(a.skill)} · ${esc(a.level)} · ${mockLabel(a)}`;
-          const score = a.percent!=null ? `${a.score}/${a.total} (${a.percent}%)`
-            : (a.skill==='Writing' ? '<span class="muted">Pendiente de calificación</span>' : '—');
-          const msg = (a.breakdown&&a.breakdown.teacherMessage)
-            ? `<tr><td colspan="3" style="background:#f7faff;font-size:.9rem">📣 <b>Profesor:</b> ${esc(a.breakdown.teacherMessage)}</td></tr>` : '';
-          return `<tr><td>${lbl}</td><td>${score}</td><td class="muted">${new Date(a.submitted_at).toLocaleDateString()}</td></tr>${msg}`;
-        }).join('')
-      }</tbody></table>` : `<p class="muted">Aún no has rendido exámenes. Ve a “Rendir examen”.</p>`}
-    </div>`;
+    <div class="card"><h2>Proyección</h2>${projection(p,bySkill,all)}</div>
+    <div class="card"><h2>📝 Mocks (${mocks.length})</h2>${histTable(mocks)}</div>
+    <div class="card"><h2>🎯 Practice Tests (${practice.length})</h2>${histTable(practice)}</div>
+    ${all.length?'':'<div class="note info">Aún no has rendido exámenes. Empieza en <b>Practice Tests</b> o <b>Cambridge Mocks</b>.</div>'}`;
 }
 function projection(p,bySkill,atts){
   const done=bySkill.filter(s=>s.avg!=null);
@@ -1393,32 +1500,4 @@ function projection(p,bySkill,atts){
     <div class="muted">Destreza a reforzar: <b>${weak.sk}</b> (${weak.avg}%).</div>
     ${roadmap}
     <div class="note info" style="margin-top:8px">📅 ${nextMsg}</div></div>`;
-}
-async function studentExams(){
-  document.querySelectorAll('[data-nav]').forEach(e=>e.classList.toggle('active',e.dataset.nav==='exams'));
-  const ICON={Listening:'🎧',Reading:'📖',Writing:'✍️'};
-  const FILE={Reading:'reading-quiz.html',Listening:'listening-quiz.html',Writing:'writing-quiz.html'};
-  const order=['Listening','Reading','Writing'];
-  $('#main').innerHTML=`<h1>Rendir examen</h1><p class="muted">Cargando tu progreso…</p>`;
-  const { data:atts } = await sb.from('exam_attempts').select('skill').eq('student_id', state.profile.id);
-  const done = new Set((atts||[]).map(a=>a.skill));
-  const next = order.find(s=>!done.has(s));
-  const cards = order.map(s=>{
-    const isDone = done.has(s), isNext = s===next;
-    const status = isDone ? `<div class="badge on" style="margin-top:8px">✓ Completado</div>`
-                  : isNext ? `<div class="badge" style="background:var(--blue);color:#fff;margin-top:8px">▶ Empieza aquí</div>`
-                  : `<div class="badge" style="background:var(--lila);color:var(--blue-dd);margin-top:8px">Pendiente</div>`;
-    const ring = isNext ? 'box-shadow:0 0 0 3px var(--blue), var(--shadow);' : '';
-    return `<a class="card center" href="${QUIZ_URL}${FILE[s]}" style="text-decoration:none;color:inherit;display:block;padding:30px 18px;${ring}transition:.15s" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform=''">
-        <div style="font-size:3.6rem;line-height:1;${isDone?'':'filter:none'}">${ICON[s]}</div>
-        <h2 style="margin:10px 0 2px;color:var(--blue-d)">${s}</h2>
-        <div class="muted" style="font-size:.85rem">MOCK 1 y MOCK 2 · A2–C1</div>
-        ${status}
-      </a>`;
-  }).join('');
-  const allDone = order.every(s=>done.has(s));
-  $('#main').innerHTML=`<h1>Rendir examen</h1>
-    <p class="muted" style="margin-top:-6px">Recorrido sugerido: <b>Listening → Reading → Writing</b>. No necesitas volver a poner tus datos; al entrar eliges el nivel (A2 · B1 · B2 · C1) y tu resultado se guarda solo. Al terminar, vuelve al portal para la siguiente.</p>
-    ${allDone?`<div class="note ok">🎉 ¡Completaste las tres destrezas! Puedes repetir cualquiera o revisar tu avance.</div>`:''}
-    <div class="grid cols-3" style="margin-top:12px">${cards}</div>`;
 }
