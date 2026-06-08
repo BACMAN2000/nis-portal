@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Digital Footprint Word Search — 4 Levels</title>
 <style>
   :root{
@@ -12,7 +12,7 @@
     --f1:#ffd8a8; --f2:#b2f2bb; --f3:#a5d8ff; --f4:#fcc2d7; --f5:#d0bfff; --f6:#ffec99;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
-  body{font-family:'Segoe UI',system-ui,Arial,sans-serif; background:var(--bg); color:var(--ink); padding:18px; user-select:none; -webkit-user-select:none;}
+  body{-webkit-touch-callout:none; font-family:'Segoe UI',system-ui,Arial,sans-serif; background:var(--bg); color:var(--ink); padding:18px; user-select:none; -webkit-user-select:none; touch-action:manipulation;}
   header{max-width:1100px; margin:0 auto 14px; text-align:center;}
   header h1{font-size:1.5rem;}
   header p{color:var(--muted); font-size:.9rem; margin-top:4px;}
@@ -198,7 +198,7 @@ function load(){
   cellEls={}; selStart=null; selCells=[];
   document.getElementById('banner').classList.remove('show');
   document.getElementById('dirinfo').textContent = d.note;
-  const cs = Math.min(38, Math.floor(Math.min(window.innerWidth-70, 560)/d.size));
+  const cs = Math.max(22, Math.min(38, Math.floor(Math.min(window.innerWidth-44, 560)/d.size)));
   const g=document.getElementById('grid');
   g.style.gridTemplateColumns=`repeat(${d.size}, ${cs}px)`;
   g.innerHTML='';
@@ -207,12 +207,24 @@ function load(){
     el.className='cell'; el.textContent=d.grid[r][c];
     el.style.setProperty('--cs',cs+'px');
     el.dataset.r=r; el.dataset.c=c;
-    el.addEventListener('pointerdown',e=>{e.preventDefault(); selStart=[r,c]; updateSel(r,c);});
+    el.addEventListener('pointerdown',e=>{
+      e.preventDefault();
+      try{ e.target.releasePointerCapture(e.pointerId); }catch(_){}
+      selStart=[r,c]; updateSel(r,c);
+    });
     el.addEventListener('pointerenter',()=>{ if(selStart) updateSel(r,c); });
     cellEls[r+'_'+c]=el;
     g.appendChild(el);
   }
   document.addEventListener('pointerup', endSel);
+  /* En táctil, pointerenter no se dispara durante el arrastre: usar elementFromPoint. */
+  document.addEventListener('pointermove', e=>{
+    if(!selStart) return;
+    const t=document.elementFromPoint(e.clientX,e.clientY);
+    if(t && t.classList && t.classList.contains('cell') && t.dataset.r!=null){
+      updateSel(+t.dataset.r, +t.dataset.c);
+    }
+  }, {passive:true});
   // word chips
   const wl=document.getElementById('wlist'); wl.innerHTML='';
   for (const w of d.words.slice().sort((a,b)=>a.word.localeCompare(b.word))){
