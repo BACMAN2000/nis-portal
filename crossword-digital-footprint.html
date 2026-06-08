@@ -26,7 +26,7 @@
   .tab.done::after{content:" ✓"; color:var(--good);}
   .tab.on.done::after{color:#bff2cc;}
   .wrap{max-width:1100px; margin:0 auto; display:flex; gap:18px; align-items:flex-start; flex-wrap:wrap;}
-  .board{background:var(--card); border-radius:14px; padding:16px; box-shadow:0 2px 10px rgba(20,30,60,.08); flex:0 0 auto;}
+  .board{max-width:100%; background:var(--card); border-radius:14px; padding:16px; box-shadow:0 2px 10px rgba(20,30,60,.08); flex:0 0 auto;}
   .gridbox{display:grid; gap:2px;}
   .cell{position:relative; width:var(--cs); height:var(--cs); background:var(--accent-soft); border-radius:4px;}
   .cell.block{background:transparent;}
@@ -59,6 +59,7 @@
   @keyframes pop{0%{transform:scale(.85); opacity:0;} 100%{transform:scale(1); opacity:1;}}
   footer{max-width:1100px; margin:18px auto 0; text-align:center; color:var(--muted); font-size:.75rem;}
   @media (max-width:760px){ .wrap{justify-content:center;} }
+  @media (max-width:480px){ body{padding:8px;} .board{padding:10px;} .gridbox{gap:1px;} }
 </style>
 </head>
 <body>
@@ -221,7 +222,8 @@ function load(){
   for (const w of d.words) w.num = numbers[key(w.row,w.col)];
   entries = d.words.slice().sort((a,b)=>a.num-b.num);
   // grid
-  const cs = Math.max(24, Math.min(40, Math.floor((Math.min(window.innerWidth-48, 560))/d.width)));
+  const pad = window.innerWidth<=480 ? 42 : 84;
+  const cs = Math.max(20, Math.min(40, Math.floor((Math.min(window.innerWidth,640)-pad-d.width)/d.width)));
   const g = document.getElementById('grid');
   g.style.setProperty('--cs', cs+'px');
   g.style.gridTemplateColumns = `repeat(${d.width}, var(--cs))`;
