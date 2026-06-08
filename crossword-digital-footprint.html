@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Footprint Crossword — 4 Levels</title>
+<style>
+  :root{
+    --bg:#f4f6fb; --card:#ffffff; --ink:#1e2433; --muted:#67718a;
+    --accent:#3b5bdb; --accent-soft:#e7ecfd;
+    --good:#2f9e44; --good-soft:#d3f4dc; --bad:#e03131; --bad-soft:#ffe3e3;
+    --gold:#f59f00;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:'Segoe UI',system-ui,Arial,sans-serif; background:var(--bg); color:var(--ink); padding:18px;}
+  header{max-width:1100px; margin:0 auto 14px; text-align:center;}
+  header h1{font-size:1.5rem; letter-spacing:.3px;}
+  header p{color:var(--muted); font-size:.9rem; margin-top:4px;}
+  .tabs{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin:14px auto;}
+  .tab{border:2px solid transparent; background:var(--card); color:var(--ink); padding:9px 20px; border-radius:24px;
+       font-weight:700; font-size:.95rem; cursor:pointer; box-shadow:0 1px 3px rgba(20,30,60,.12); transition:.15s;}
+  .tab small{display:block; font-weight:500; font-size:.68rem; color:var(--muted);}
+  .tab.on{background:var(--accent); color:#fff; border-color:var(--accent);}
+  .tab.on small{color:#dce4ff;}
+  .tab.done{border-color:var(--good);}
+  .tab.done::after{content:" ✓"; color:var(--good);}
+  .tab.on.done::after{color:#bff2cc;}
+  .wrap{max-width:1100px; margin:0 auto; display:flex; gap:18px; align-items:flex-start; flex-wrap:wrap;}
+  .board{background:var(--card); border-radius:14px; padding:16px; box-shadow:0 2px 10px rgba(20,30,60,.08); flex:0 0 auto;}
+  .gridbox{display:grid; gap:2px;}
+  .cell{position:relative; width:var(--cs); height:var(--cs); background:var(--accent-soft); border-radius:4px;}
+  .cell.block{background:transparent;}
+  .cell input{width:100%; height:100%; border:none; background:transparent; text-align:center; font-weight:800;
+              font-size:calc(var(--cs)*.52); text-transform:uppercase; color:var(--ink); caret-color:var(--accent); border-radius:4px; outline:none;}
+  .cell input:focus{background:#cdd9ff;}
+  .cell.hl input{background:#dfe7ff;}
+  .cell.hl input:focus{background:#c4d2ff;}
+  .cell .num{position:absolute; top:1px; left:3px; font-size:calc(var(--cs)*.28); font-weight:700; color:var(--accent); pointer-events:none;}
+  .cell.ok input{background:var(--good-soft); color:var(--good);}
+  .cell.ko input{background:var(--bad-soft); color:var(--bad);}
+  .side{flex:1 1 300px; min-width:280px;}
+  .panel{background:var(--card); border-radius:14px; padding:16px 18px; box-shadow:0 2px 10px rgba(20,30,60,.08); margin-bottom:14px;}
+  .panel h3{font-size:.85rem; text-transform:uppercase; letter-spacing:1px; color:var(--accent); margin-bottom:8px;}
+  .clue{font-size:.88rem; padding:5px 7px; border-radius:7px; cursor:pointer; line-height:1.35;}
+  .clue:hover{background:var(--accent-soft);}
+  .clue.cur{background:var(--accent-soft); font-weight:600;}
+  .clue.solved{color:var(--muted); text-decoration:line-through;}
+  .clue b{color:var(--accent); margin-right:4px;}
+  .btns{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;}
+  button.act{border:none; border-radius:9px; padding:10px 16px; font-weight:700; font-size:.88rem; cursor:pointer; transition:.15s;}
+  .b-check{background:var(--accent); color:#fff;}
+  .b-hint{background:var(--gold); color:#fff;}
+  .b-clear{background:#e9ecf3; color:var(--ink);}
+  button.act:hover{filter:brightness(1.08);}
+  .score{font-size:.92rem; margin-top:10px; color:var(--muted); font-weight:600;}
+  .banner{display:none; margin-top:10px; padding:12px; border-radius:10px; background:var(--good-soft); color:var(--good);
+          font-weight:800; text-align:center; font-size:1rem;}
+  .banner.show{display:block; animation:pop .4s;}
+  @keyframes pop{0%{transform:scale(.85); opacity:0;} 100%{transform:scale(1); opacity:1;}}
+  footer{max-width:1100px; margin:18px auto 0; text-align:center; color:var(--muted); font-size:.75rem;}
+  @media (max-width:760px){ .wrap{justify-content:center;} }
+</style>
+</head>
+<body>
+<header>
+  <h1>🔎 Digital Footprint — Crossword Challenge</h1>
+  <p>Unit 3 · Scrolling Identities · Week 1 — Choose your level, read the clue, and type the word. Grade 9 · NIS English</p>
+</header>
+
+<div class="tabs" id="tabs"></div>
+
+<div class="wrap">
+  <div class="board">
+    <div class="gridbox" id="grid"></div>
+    <div class="btns">
+      <button class="act b-check" onclick="checkAll()">✔ Check answers</button>
+      <button class="act b-hint" onclick="hintLetter()">💡 Hint (1 letter)</button>
+      <button class="act b-clear" onclick="clearGrid()">↺ Clear</button>
+    </div>
+    <div class="score" id="score"></div>
+    <div class="banner" id="banner">🎉 Excellent! Level complete!</div>
+  </div>
+  <div class="side">
+    <div class="panel"><h3>→ Across</h3><div id="acrossList"></div></div>
+    <div class="panel"><h3>↓ Down</h3><div id="downList"></div></div>
+  </div>
+</div>
+
+<footer>U3W1S3 · Digital Footprints &amp; Online Identity · Levels A2 · B1 · B2 · C1</footer>
+
+<script>
+const DATA = {
+"A2": {label:"A2", sub:"Elementary", width:13, height:13, words:[
+ {word:"RESPECTFUL",row:9,col:0,dir:"across",clue:"Kind and polite to other people online."},
+ {word:"IDENTITY",row:5,col:6,dir:"down",clue:"Your online ___ is who you are on the internet."},
+ {word:"PASSIVE",row:7,col:0,dir:"across",clue:"The footprint you do NOT see — websites can watch the pages you visit."},
+ {word:"DELETE",row:6,col:6,dir:"across",clue:"To remove a photo or message from the internet."},
+ {word:"PRIVATE",row:0,col:9,dir:"down",clue:"Secret; only for you. Keep your information like this!"},
+ {word:"FOOTPRINT",row:1,col:4,dir:"across",clue:"All the information about you on the internet — your digital ___."},
+ {word:"INTERNET",row:3,col:11,dir:"down",clue:"We use it every day, and it does not forget."},
+ {word:"POST",row:0,col:6,dir:"down",clue:"To put a photo or a message online."},
+ {word:"ACTIVE",row:4,col:4,dir:"down",clue:"The footprint you make on purpose, like writing a post."},
+ {word:"COMMENT",row:11,col:0,dir:"across",clue:"The words you write under a photo or a video."}]},
+"B1": {label:"B1", sub:"Intermediate", width:13, height:13, words:[
+ {word:"REPUTATION",row:6,col:0,dir:"across",clue:"The opinion that other people have of you."},
+ {word:"PRIVACY",row:5,col:0,dir:"down",clue:"Check the ___ settings on your apps to protect your information."},
+ {word:"SCREENSHOT",row:1,col:9,dir:"down",clue:"Even deleted posts can survive as one of these."},
+ {word:"ADVANTAGE",row:0,col:5,dir:"down",clue:"A positive digital footprint can be a real ___ when you apply for a job."},
+ {word:"EMPLOYER",row:4,col:2,dir:"down",clue:"This person may search for information about you before hiring you."},
+ {word:"LOCATION",row:10,col:5,dir:"across",clue:"Apps often record this — the place where you are."},
+ {word:"SETTINGS",row:5,col:12,dir:"down",clue:"Privacy ___ are controls that protect your information."},
+ {word:"HARMLESS",row:12,col:5,dir:"across",clue:"Not dangerous; a funny photo might seem ___ today."},
+ {word:"PROFILE",row:2,col:7,dir:"down",clue:"Your ___ picture is part of your active footprint."},
+ {word:"TRAIL",row:0,col:3,dir:"across",clue:"A series of marks you leave behind you every time you go online."}]},
+"B2": {label:"B2", sub:"Upper-Int (FCE)", width:13, height:12, words:[
+ {word:"IMPRESSION",row:5,col:0,dir:"across",clue:"A single careless post can shape the ___ a stranger forms of us."},
+ {word:"THREAT",row:3,col:3,dir:"down",clue:"It would be a mistake to view the digital footprint only as a ___."},
+ {word:"AWARENESS",row:7,col:3,dir:"across",clue:"Digital ___: understanding how your online actions affect you."},
+ {word:"TRACES",row:0,col:6,dir:"down",clue:"Small signs that something has happened; we leave them whenever we open an app."},
+ {word:"CONTEXT",row:3,col:9,dir:"down",clue:"A private joke among friends may later be read completely out of ___."},
+ {word:"PERMANENT",row:2,col:1,dir:"down",clue:"Lasting, not temporary — deletion is rarely this."},
+ {word:"PRESENCE",row:4,col:11,dir:"down",clue:"A carefully curated online ___ can highlight talents that might go unnoticed."},
+ {word:"CURATED",row:11,col:6,dir:"across",clue:"Carefully selected and arranged, like a thoughtful online profile."},
+ {word:"DELETION",row:0,col:2,dir:"across",clue:"This is rarely permanent — a screenshot can outlive the original post."},
+ {word:"ASSET",row:9,col:5,dir:"across",clue:"Something useful or valuable — what a footprint can become if used thoughtfully."}]},
+"C1": {label:"C1", sub:"Advanced", width:14, height:14, words:[
+ {word:"STEWARDSHIP",row:5,col:2,dir:"across",clue:"The careful management of something entrusted to you."},
+ {word:"EPHEMERAL",row:5,col:4,dir:"down",clue:"Lasting a very short time — what young users wrongly assume online content is."},
+ {word:"ALGORITHM",row:1,col:7,dir:"down",clue:"It quietly records browsing patterns, movements and consumer preferences."},
+ {word:"DISCRETION",row:3,col:2,dir:"down",clue:"We should extend to others the same ___ we would expect for ourselves."},
+ {word:"RELINQUISH",row:11,col:4,dir:"across",clue:"To give up control — what we do the moment we press 'share'."},
+ {word:"SCRUTINISE",row:0,col:11,dir:"down",clue:"To examine very closely, as recruiters do with candidates' online histories."},
+ {word:"FORESIGHT",row:1,col:9,dir:"down",clue:"Anticipating future consequences; managing a footprint is an exercise in this."},
+ {word:"LIABILITY",row:13,col:4,dir:"across",clue:"To regard the footprint solely as one of these would be reductive."},
+ {word:"ENDURING",row:3,col:0,dir:"across",clue:"Lasting over a long period; the opposite of fleeting."},
+ {word:"ERASURE",row:3,col:0,dir:"down",clue:"Deletion offers no guarantee of this — copies routinely survive."}]}
+};
+
+let level = "A2", cells = {}, sol = {}, numbers = {}, entries = [], curEntry = null, hintsUsed = 0;
+const done = {};
+
+function buildTabs(){
+  const t = document.getElementById('tabs');
+  t.innerHTML = '';
+  for (const k of Object.keys(DATA)){
+    const b = document.createElement('button');
+    b.className = 'tab' + (k===level?' on':'') + (done[k]?' done':'');
+    b.innerHTML = `${DATA[k].label}<small>${DATA[k].sub}</small>`;
+    b.onclick = () => { level = k; load(); };
+    t.appendChild(b);
+  }
+}
+
+function key(r,c){ return r+'_'+c; }
+
+function load(){
+  const d = DATA[level];
+  cells = {}; sol = {}; numbers = {}; entries = []; curEntry = null; hintsUsed = 0;
+  document.getElementById('banner').classList.remove('show');
+  // build solution map
+  for (const w of d.words){
+    const dr = w.dir==='down'?1:0, dc = w.dir==='across'?1:0;
+    for (let i=0;i<w.word.length;i++) sol[key(w.row+dr*i, w.col+dc*i)] = w.word[i];
+  }
+  // numbering (standard: scan rows, number cells starting a word)
+  let n = 1;
+  for (let r=0;r<d.height;r++) for (let c=0;c<d.width;c++){
+    if (!sol[key(r,c)]) continue;
+    const startsA = sol[key(r,c+1)] && !sol[key(r,c-1)];
+    const startsD = sol[key(r+1,c)] && !sol[key(r-1,c)];
+    if (startsA || startsD) numbers[key(r,c)] = n++;
+  }
+  for (const w of d.words) w.num = numbers[key(w.row,w.col)];
+  entries = d.words.slice().sort((a,b)=>a.num-b.num);
+  // grid
+  const cs = Math.min(40, Math.floor((Math.min(window.innerWidth-80, 560))/d.width));
+  const g = document.getElementById('grid');
+  g.style.setProperty('--cs', cs+'px');
+  g.style.gridTemplateColumns = `repeat(${d.width}, var(--cs))`;
+  g.innerHTML = '';
+  for (let r=0;r<d.height;r++) for (let c=0;c<d.width;c++){
+    const div = document.createElement('div');
+    const k = key(r,c);
+    if (sol[k]){
+      div.className = 'cell';
+      div.style.setProperty('--cs', cs+'px');
+      if (numbers[k]) div.innerHTML = `<span class="num">${numbers[k]}</span>`;
+      const inp = document.createElement('input');
+      inp.maxLength = 1; inp.autocomplete='off'; inp.dataset.r=r; inp.dataset.c=c;
+      inp.addEventListener('input', onInput);
+      inp.addEventListener('keydown', onKey);
+      inp.addEventListener('focus', ()=>selectEntryAt(r,c));
+      div.appendChild(inp);
+      cells[k] = div;
+    } else {
+      div.className = 'cell block';
+      div.style.setProperty('--cs', cs+'px');
+    }
+    g.appendChild(div);
+  }
+  // clues
+  const al = document.getElementById('acrossList'), dl = document.getElementById('downList');
+  al.innerHTML=''; dl.innerHTML='';
+  for (const w of entries){
+    const el = document.createElement('div');
+    el.className='clue'; el.id = 'clue_'+w.num+'_'+w.dir;
+    el.innerHTML = `<b>${w.num}.</b> ${w.clue} <span style="color:var(--muted)">(${w.word.length})</span>`;
+    el.onclick = ()=>{ setEntry(w); focusCell(w.row,w.col); };
+    (w.dir==='across'?al:dl).appendChild(el);
+  }
+  buildTabs();
+  updateScore();
+}
+
+function entryCells(w){
+  const dr = w.dir==='down'?1:0, dc = w.dir==='across'?1:0, out=[];
+  for (let i=0;i<w.word.length;i++) out.push(key(w.row+dr*i, w.col+dc*i));
+  return out;
+}
+function setEntry(w){
+  curEntry = w;
+  document.querySelectorAll('.cell.hl').forEach(e=>e.classList.remove('hl'));
+  document.querySelectorAll('.clue.cur').forEach(e=>e.classList.remove('cur'));
+  for (const k of entryCells(w)) cells[k].classList.add('hl');
+  const el = document.getElementById('clue_'+w.num+'_'+w.dir);
+  if (el){ el.classList.add('cur'); el.scrollIntoView({block:'nearest'}); }
+}
+function selectEntryAt(r,c){
+  const hits = entries.filter(w=>entryCells(w).includes(key(r,c)));
+  if (!hits.length) return;
+  if (curEntry && hits.includes(curEntry)) { setEntry(curEntry); return; }
+  setEntry(hits[0]);
+}
+function focusCell(r,c){
+  const k = key(r,c);
+  if (cells[k]) cells[k].querySelector('input').focus();
+}
+function onInput(e){
+  const inp = e.target;
+  inp.value = inp.value.replace(/[^a-zA-Z]/g,'').toUpperCase();
+  inp.parentElement.classList.remove('ok','ko');
+  if (inp.value && curEntry){
+    const ks = entryCells(curEntry), i = ks.indexOf(key(+inp.dataset.r, +inp.dataset.c));
+    if (i>-1 && i<ks.length-1){
+      const [r,c] = ks[i+1].split('_').map(Number);
+      focusCell(r,c);
+    }
+  }
+  liveCheck();
+}
+function onKey(e){
+  const r = +e.target.dataset.r, c = +e.target.dataset.c;
+  const mv = {ArrowUp:[-1,0],ArrowDown:[1,0],ArrowLeft:[0,-1],ArrowRight:[0,1]}[e.key];
+  if (mv){ e.preventDefault();
+    let rr=r+mv[0], cc=c+mv[1];
+    while (rr>=0&&cc>=0&&rr<DATA[level].height&&cc<DATA[level].width){
+      if (cells[key(rr,cc)]){ focusCell(rr,cc); break; }
+      rr+=mv[0]; cc+=mv[1];
+    }
+  } else if (e.key==='Backspace' && !e.target.value && curEntry){
+    const ks = entryCells(curEntry), i = ks.indexOf(key(r,c));
+    if (i>0){ const [pr,pc] = ks[i-1].split('_').map(Number); focusCell(pr,pc); }
+  }
+}
+function wordSolved(w){
+  return entryCells(w).every(k=>cells[k].querySelector('input').value === sol[k]);
+}
+function liveCheck(){
+  let solved = 0;
+  for (const w of entries){
+    const ok = wordSolved(w);
+    const el = document.getElementById('clue_'+w.num+'_'+w.dir);
+    if (el) el.classList.toggle('solved', ok);
+    if (ok) solved++;
+  }
+  updateScore(solved);
+  if (solved === entries.length){
+    done[level] = true;
+    document.getElementById('banner').classList.add('show');
+    Object.keys(cells).forEach(k=>{cells[k].classList.add('ok'); cells[k].classList.remove('ko');});
+    buildTabs();
+  }
+}
+function updateScore(solved){
+  if (solved===undefined) solved = entries.filter(wordSolved).length;
+  document.getElementById('score').textContent =
+    `Words solved: ${solved} / ${entries.length}` + (hintsUsed?` · Hints used: ${hintsUsed}`:'');
+}
+function checkAll(){
+  for (const k in cells){
+    const inp = cells[k].querySelector('input');
+    cells[k].classList.remove('ok','ko');
+    if (!inp.value) continue;
+    cells[k].classList.add(inp.value===sol[k] ? 'ok' : 'ko');
+  }
+  liveCheck();
+}
+function hintLetter(){
+  const empty = Object.keys(cells).filter(k=>cells[k].querySelector('input').value !== sol[k]);
+  if (!empty.length) return;
+  let pool = empty;
+  if (curEntry){
+    const inEntry = entryCells(curEntry).filter(k=>empty.includes(k));
+    if (inEntry.length) pool = inEntry;
+  }
+  const k = pool[Math.floor(Math.random()*pool.length)];
+  const inp = cells[k].querySelector('input');
+  inp.value = sol[k];
+  cells[k].classList.remove('ko'); cells[k].classList.add('ok');
+  hintsUsed++;
+  liveCheck();
+}
+function clearGrid(){
+  for (const k in cells){
+    const inp = cells[k].querySelector('input');
+    inp.value=''; cells[k].classList.remove('ok','ko');
+  }
+  document.getElementById('banner').classList.remove('show');
+  liveCheck();
+}
+load();
+</script>
+</body>
+</html>

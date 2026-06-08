@@ -15,7 +15,7 @@ const QUIZ_URL = 'https://bacman2000.github.io/mocks-cambridge/';
 const LIBRARY_URL = 'http://127.0.0.1:8900/';   // Biblioteca NIS (OPAC local). Cambiar por la URL pública cuando esté en línea.
 const CLASSES_LINKS = {
   presentations: '',   // pegar URL de las presentaciones de clase (vacío = "Próximamente")
-  activities:    ''    // pegar URL de las actividades/juegos (vacío = "Próximamente")
+  activities:    'activities.html'    // hub de juegos y actividades de clase
 };
 
 let state = { session:null, profile:null };
