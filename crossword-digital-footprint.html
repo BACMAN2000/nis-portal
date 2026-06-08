@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Digital Footprint Crossword — 4 Levels</title>
 <style>
   :root{
@@ -12,7 +12,7 @@
     --gold:#f59f00;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
-  body{font-family:'Segoe UI',system-ui,Arial,sans-serif; background:var(--bg); color:var(--ink); padding:18px;}
+  body{font-family:'Segoe UI',system-ui,Arial,sans-serif; background:var(--bg); color:var(--ink); padding:18px; touch-action:manipulation;}
   header{max-width:1100px; margin:0 auto 14px; text-align:center;}
   header h1{font-size:1.5rem; letter-spacing:.3px;}
   header p{color:var(--muted); font-size:.9rem; margin-top:4px;}
@@ -31,7 +31,7 @@
   .cell{position:relative; width:var(--cs); height:var(--cs); background:var(--accent-soft); border-radius:4px;}
   .cell.block{background:transparent;}
   .cell input{width:100%; height:100%; border:none; background:transparent; text-align:center; font-weight:800;
-              font-size:calc(var(--cs)*.52); text-transform:uppercase; color:var(--ink); caret-color:var(--accent); border-radius:4px; outline:none;}
+              font-size:max(16px, calc(var(--cs)*.52)); text-transform:uppercase; color:var(--ink); caret-color:var(--accent); border-radius:4px; outline:none;}
   .cell input:focus{background:#cdd9ff;}
   .cell.hl input{background:#dfe7ff;}
   .cell.hl input:focus{background:#c4d2ff;}
@@ -221,7 +221,7 @@ function load(){
   for (const w of d.words) w.num = numbers[key(w.row,w.col)];
   entries = d.words.slice().sort((a,b)=>a.num-b.num);
   // grid
-  const cs = Math.min(40, Math.floor((Math.min(window.innerWidth-80, 560))/d.width));
+  const cs = Math.max(24, Math.min(40, Math.floor((Math.min(window.innerWidth-48, 560))/d.width)));
   const g = document.getElementById('grid');
   g.style.setProperty('--cs', cs+'px');
   g.style.gridTemplateColumns = `repeat(${d.width}, var(--cs))`;
@@ -234,7 +234,7 @@ function load(){
       div.style.setProperty('--cs', cs+'px');
       if (numbers[k]) div.innerHTML = `<span class="num">${numbers[k]}</span>`;
       const inp = document.createElement('input');
-      inp.maxLength = 1; inp.autocomplete='off'; inp.dataset.r=r; inp.dataset.c=c;
+      inp.maxLength = 1; inp.autocomplete='off'; inp.setAttribute('autocapitalize','characters'); inp.setAttribute('autocorrect','off'); inp.setAttribute('spellcheck','false'); inp.dataset.r=r; inp.dataset.c=c;
       inp.addEventListener('input', onInput);
       inp.addEventListener('keydown', onKey);
       inp.addEventListener('focus', ()=>selectEntryAt(r,c));
@@ -252,6 +252,8 @@ function load(){
   for (const w of entries){
     const el = document.createElement('div');
     el.className='clue'; el.id = 'clue_'+w.num+'_'+w.dir;
+    el.tabIndex=0; el.setAttribute('role','button');
+    el.addEventListener('keydown',ev=>{ if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); el.click(); } });
     el.innerHTML = `<b>${w.num}.</b> ${w.clue} <span style="color:var(--muted)">(${w.word.length})</span>`;
     el.onclick = ()=>{ setEntry(w); focusCell(w.row,w.col); };
     (w.dir==='across'?al:dl).appendChild(el);
