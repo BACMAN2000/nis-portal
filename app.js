@@ -205,7 +205,8 @@ function renderAuth(mode='login'){
     $('#loginBtn').onclick=doLogin;
     // Enter key submits the login form
     ['li_email','li_pw'].forEach(id=>{ const el=$('#'+id); if(el) el.addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); doLogin(); } }); });
-    const fe=$('#li_email'); if(fe) fe.focus();
+    // Si ya recordamos el correo, salta directo a la contraseña.
+    const fe = ($('#li_email') && $('#li_email').value) ? $('#li_pw') : $('#li_email'); if(fe) fe.focus();
   } else {
     $('#toLogin').onclick=()=>renderAuth('login');
     $('#signupBtn').onclick=doSignup;
@@ -214,10 +215,26 @@ function renderAuth(mode='login'){
   }
 }
 function loginForm(){
-  return `<label>Correo</label><input id="li_email" type="email" placeholder="tucorreo@nordic-school.edu.pe">
-    <label>Contraseña</label><input id="li_pw" type="password" placeholder="••••••••">
+  let savedEmail=''; try{ savedEmail=localStorage.getItem('nis_remember_email')||''; }catch(_){}
+  return `<label>Correo</label><input id="li_email" type="email" placeholder="tucorreo@nordic-school.edu.pe" value="${esc(savedEmail)}">
+    <label>Contraseña</label>
+    <div style="position:relative">
+      <input id="li_pw" type="password" placeholder="••••••••" style="width:100%;padding-right:42px">
+      <button type="button" id="li_eye" onclick="window._toggleLoginPw()" title="Mostrar / ocultar contraseña"
+        style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:1.15rem;line-height:1;padding:0;color:var(--muted)">👁</button>
+    </div>
+    <label style="display:flex;align-items:center;gap:8px;margin-top:10px;font-weight:400;cursor:pointer">
+      <input type="checkbox" id="li_remember" ${savedEmail?'checked':''} style="width:auto;margin:0"> Recordar mi correo
+    </label>
     <div style="margin-top:16px"><button class="btn" id="loginBtn" style="width:100%">Ingresar</button></div>`;
 }
+window._toggleLoginPw=()=>{
+  const inp=$('#li_pw'), btn=$('#li_eye'); if(!inp) return;
+  const hidden = inp.type==='password';
+  inp.type = hidden ? 'text' : 'password';
+  if(btn) btn.textContent = hidden ? '🙈' : '👁';   // 🙈 = visible (clic para ocultar)
+  inp.focus();
+};
 function signupForm(){
   return `
     <div class="field-2">
@@ -251,6 +268,11 @@ function msg(kind, text){ $('#msg').innerHTML = `<div class="note ${kind}">${esc
 async function doLogin(){
   const email=$('#li_email').value.trim(), pw=$('#li_pw').value;
   if(!email||!pw) return msg('err','Ingresa correo y contraseña.');
+  // Recordar (o olvidar) el correo según la casilla.
+  try{
+    if($('#li_remember') && $('#li_remember').checked) localStorage.setItem('nis_remember_email', email);
+    else localStorage.removeItem('nis_remember_email');
+  }catch(_){}
   const { error } = await sb.auth.signInWithPassword({ email, password:pw });
   if(error) return msg('err', error.message.includes('Email not confirmed')?'Tu correo aún no está confirmado. (El admin puede desactivar la confirmación de correo en Supabase.)':error.message);
 }
