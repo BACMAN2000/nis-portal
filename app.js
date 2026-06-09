@@ -323,9 +323,13 @@ async function renderAdmin(tab='users'){
     {key:'mocks',label:'🔓 Mocks'},
     {key:'phonics',label:'🔤 Phonics'},
     {key:'mun',label:'🌐 MUN Academy'},
+    {key:'classes',label:'🏫 Classes'},
+    {key:'library',label:'📚 Library'},
   ], tab, `<div class="center muted">Cargando…</div>`);
   bindNav(renderAdmin);
   if(tab==='mun') return $('#main').innerHTML = munBody();
+  if(tab==='classes') return studentClasses();
+  if(tab==='library') return studentLibrary();
   if(tab==='phonics') return $('#main').innerHTML = phonicsPanel();
   if(tab==='overview') return adminOverview();
   if(tab==='stats') return adminStats();
