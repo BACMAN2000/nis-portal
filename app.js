@@ -319,6 +319,7 @@ async function renderAdmin(tab='users'){
     {key:'stats',label:'📈 Estadísticas'},
     {key:'users',label:'👥 Alumnos'},
     {key:'results',label:'📝 Resultados'},
+    {key:'final',label:'🎓 Resultado final'},
     {key:'teachers',label:'👨‍🏫 Profesores'},
     {key:'mocks',label:'🔓 Mocks'},
     {key:'phonics',label:'🔤 Phonics'},
@@ -334,6 +335,7 @@ async function renderAdmin(tab='users'){
   if(tab==='overview') return adminOverview();
   if(tab==='stats') return adminStats();
   if(tab==='results') return adminResults();
+  if(tab==='final') return cefrFinalPanel();
   if(tab==='teachers') return adminTeachers();
   if(tab==='mocks') return adminMocks();
   return adminUsers();
@@ -962,6 +964,7 @@ async function renderTeacher(tab){
   const acc = state.teacherAccess || await loadTeacherAccess();
   const nav=[];
   if(acc.can_results) nav.push({key:'results',label:'📝 Resultados'});
+  if(acc.can_results) nav.push({key:'final',label:'🎓 Resultado final'});
   if(acc.can_students) nav.push({key:'students',label:'👥 Alumnos'});
   if(!nav.length) nav.push({key:'none',label:'— sin accesos —'});
   nav.push({key:'exams',label:'🎧 Exámenes'});
@@ -972,6 +975,7 @@ async function renderTeacher(tab){
   bindNav(renderTeacher);
   if(active==='mun') return $('#main').innerHTML = munBody();
   if(active==='results') return teacherResults();
+  if(active==='final') return cefrFinalPanel();
   if(active==='students') return teacherStudents();
   if(active==='phonics'){ $('#main').innerHTML = phonicsPanel(); return; }
   $('#main').innerHTML = `<div class="card">El administrador aún no te ha asignado accesos. Escríbele para que te habilite <b>Resultados</b> o <b>Alumnos</b>.</div>`;
@@ -1536,3 +1540,333 @@ function projection(p,bySkill,atts){
     ${roadmap}
     <div class="note info" style="margin-top:8px">📅 ${nextMsg}</div></div>`;
 }
+
+/* ===================== RESULTADO FINAL / CEFR ===================== */
+/* Cambridge English Scale: reported range per exam level. A skill's % within
+   its exam level maps linearly onto that range; the final is the average of the
+   four skills' scale scores, mapped back to a CEFR band (the official chart). */
+const SCALE_RANGE = { A2:[100,150], B1:[120,170], B2:[140,190], C1:[160,210] };
+const CEFR_BANDS = [ {min:200,cefr:'C2'},{min:180,cefr:'C1'},{min:160,cefr:'B2'},
+  {min:140,cefr:'B1'},{min:120,cefr:'A2'},{min:100,cefr:'A1'},{min:0,cefr:'<A1'} ];
+function skillScale(level, pct){
+  const r = SCALE_RANGE[level] || SCALE_RANGE.B1;
+  if(pct==null || isNaN(pct)) return null;
+  return Math.round(Math.max(r[0], Math.min(r[1], r[0] + (pct/100)*(r[1]-r[0]))));
+}
+function scaleToCefr(scale){
+  if(scale==null) return '—';
+  for(const b of CEFR_BANDS){ if(scale>=b.min) return b.cefr; }
+  return '<A1';
+}
+/* Target ("applying-for") CEFR level per grade — school policy map.
+   Only G6–G11 have students today; lower grades default to A2. Falls back to
+   the student's stored cefr_level if a grade isn't mapped. */
+const GRADE_TARGET = {1:'A2',2:'A2',3:'A2',4:'A2',5:'A2',6:'A2',7:'A2',8:'B1',9:'B2',10:'B2',11:'C1'};
+function targetLevel(p){ return (p && (GRADE_TARGET[p.grade_id] || p.cefr_level)) || null; }
+const CEFR_RANK = {'<A1':0,'A1':1,'A2':2,'B1':3,'B2':4,'C1':5,'C2':6};
+/* Compare a final CEFR against the target: 'meets' | 'below' | 'above' | null */
+function targetStatus(finalCefr, target){
+  if(!target || finalCefr==null || finalCefr==='—' || !(finalCefr in CEFR_RANK)) return null;
+  const d = CEFR_RANK[finalCefr] - CEFR_RANK[target];
+  return d<0 ? 'below' : d>0 ? 'above' : 'meets';
+}
+/* Best attempt for a skill (mocks + practice), PASS-AWARE.
+   A sub-pass attempt at a high level must NOT out-rank a genuine pass at a
+   lower level (e.g. C1 @ 0% would otherwise score B2). So: pick the highest
+   scale among attempts that reach the pass mark; if none passed, fall back to
+   the highest-% attempt (not the highest level). */
+const PASS_MIN = 50;
+function bestAttemptScale(atts, skill){
+  const rows = (atts||[])
+    .filter(a => a.skill===skill && a.percent!=null)
+    .map(a => ({ a, pct:Number(a.percent), scale:skillScale(a.level, Number(a.percent)) }))
+    .filter(x => x.scale!=null);
+  if(!rows.length) return null;
+  const passed = rows.filter(x => x.pct >= PASS_MIN);
+  const pick = passed.length
+    ? passed.reduce((b,x) => x.scale > b.scale ? x : b)   // best pass by scale
+    : rows.reduce((b,x) => x.pct > b.pct ? x : b);        // none passed: highest %, not highest level
+  return { scale:pick.scale, cefr:scaleToCefr(pick.scale), level:pick.a.level,
+           pct:Math.round(pick.pct), source:mockLabel(pick.a), passed:passed.length>0 };
+}
+/* Combine the four skills into a provisional/final CEFR result. */
+function _finalFromData(profile, atts, spk){
+  const Reading   = bestAttemptScale(atts,'Reading');
+  const Listening = bestAttemptScale(atts,'Listening');
+  const Writing   = bestAttemptScale(atts,'Writing');
+  let Speaking = null;
+  if(spk && spk.percent!=null){
+    const lvl = spk.level || profile.cefr_level || 'B1';
+    const sc = skillScale(lvl, Number(spk.percent));
+    Speaking = { scale:sc, cefr:scaleToCefr(sc), level:lvl, pct:Math.round(Number(spk.percent)), source:'Rúbrica' };
+  }
+  const skills = { Reading, Listening, Writing, Speaking };
+  const present = [Reading,Listening,Writing,Speaking].filter(Boolean);
+  const finalScale = present.length ? Math.round(present.reduce((s,x)=>s+x.scale,0)/present.length) : null;
+  const labels = { Reading:'Reading', Listening:'Listening', Writing:'Writing', Speaking:'Speaking' };
+  return { profile, skills, finalScale, finalCefr:scaleToCefr(finalScale),
+           complete: present.length===4, missing: Object.keys(skills).filter(k=>!skills[k]).map(k=>labels[k]) };
+}
+function _skillCellHtml(b){
+  if(!b) return '';
+  return `<b style="color:#2d5a8d">${b.cefr}</b> <span class="muted" style="font-size:.78rem">${b.scale} · ${b.pct}%</span>`;
+}
+
+/* ---- Speaking rubric (Cambridge analytical scales, 0–5 per descriptor) ---- */
+const SPEAKING_SUBSCALE = {
+  'Grammar and Vocabulary': band6(
+    'Uses basic words and simple structures; frequent errors; vocabulary limited to familiar topics.',
+    'Uses a range of everyday vocabulary and simple grammatical forms with some control; errors occur but meaning is clear.',
+    'Uses a wide range of vocabulary and grammatical forms, including complex structures, with good control and precision.'),
+  'Discourse Management': band6(
+    'Produces very short, often isolated responses; long pauses; little development.',
+    'Produces extended stretches of language with some hesitation; mostly relevant and coherent with some repetition.',
+    'Produces extended, relevant and coherent discourse with very little hesitation; ideas are well developed and linked.'),
+  'Pronunciation': band6(
+    'Pronunciation is heavily influenced by L1; the listener must make significant effort to understand.',
+    'Generally intelligible; some control of stress and intonation, though L1 influence is noticeable.',
+    'Intelligible throughout; stress, rhythm and intonation are used effectively to support meaning.'),
+  'Interactive Communication': band6(
+    'Needs a lot of prompting and support to keep the interaction going.',
+    'Initiates and responds appropriately, keeping the interaction going with some support.',
+    'Interacts with ease, initiating and developing the exchange naturally and responding to the other speaker effectively.'),
+  'Global Achievement': band6(
+    'Manages only very simple exchanges on familiar topics with much effort.',
+    'Handles the tasks at this level adequately, conveying meaning despite some limitations.',
+    'Fully handles the demands of the tasks at this level with confidence and effectiveness.')
+};
+const SPEAKING_RUBRICS = {
+  A2:{ bandMax:5, subs:['Grammar and Vocabulary','Pronunciation','Interactive Communication','Global Achievement'] },
+  B1:{ bandMax:5, subs:['Grammar and Vocabulary','Discourse Management','Pronunciation','Interactive Communication','Global Achievement'] },
+  B2:{ bandMax:5, subs:['Grammar and Vocabulary','Discourse Management','Pronunciation','Interactive Communication','Global Achievement'] },
+  C1:{ bandMax:5, subs:['Grammar and Vocabulary','Discourse Management','Pronunciation','Interactive Communication','Global Achievement'] }
+};
+
+async function cefrFinalPanel(){
+  if($('#main')) $('#main').innerHTML = `<div class="center muted">Cargando…</div>`;
+  const isTeacher = state.profile && state.profile.role==='teacher';
+  const gradeList = isTeacher ? teacherAllowedGrades() : GRADES;
+  const allowed = isTeacher ? gradeList.map(g=>g.id) : null;
+  const { data:studentsRaw, error } = await sb.from('profiles')
+    .select('id,full_name,section,cefr_level,grade_id,grades(name)').eq('role','student');
+  if(error){ $('#main').innerHTML=`<div class="note err">${esc(error.message)}</div>`; return; }
+  let students = studentsRaw||[];
+  if(allowed) students = students.filter(s=>allowed.includes(s.grade_id));
+  const f = resultsFilter;
+  if(f.grade)   students = students.filter(s=>String(s.grade_id)===String(f.grade));
+  if(f.section) students = students.filter(s=>(s.section||'').toUpperCase()===f.section.toUpperCase());
+  if(f.name)    students = students.filter(s=>(s.full_name||'').toLowerCase().includes(f.name.toLowerCase()));
+  students.sort((a,b)=>(a.full_name||'').localeCompare(b.full_name||''));
+
+  const ids = students.map(s=>s.id);
+  const safeIds = ids.length?ids:['00000000-0000-0000-0000-000000000000'];
+  const { data:atts } = await sb.from('exam_attempts')
+    .select('id,student_id,skill,level,percent,mock,submitted_at').in('student_id', safeIds).limit(8000);
+  const { data:spks } = await sb.from('speaking_results').select('*').in('student_id', safeIds);
+  const aBy={}; (atts||[]).forEach(a=>{(aBy[a.student_id]=aBy[a.student_id]||[]).push(a);});
+  const sBy={}; (spks||[]).forEach(s=>{ sBy[s.student_id]=s; });
+
+  const rows = students.map(s=>{
+    const at=aBy[s.id]||[]; const fin=_finalFromData(s, at, sBy[s.id]);
+    const tgt=targetLevel(s);
+    const wAtt=at.filter(a=>a.skill==='Writing').sort((x,y)=>(y.submitted_at||'').localeCompare(x.submitted_at||''))[0];
+    const wCell = fin.skills.Writing ? _skillCellHtml(fin.skills.Writing)
+      : (wAtt ? `<button class="btn sm ghost" onclick="gradeWriting('${wAtt.id}')">✍️ Calificar</button>`
+              : '<span class="muted" style="font-size:.8rem">sin examen</span>');
+    const spkLvl = (fin.skills.Speaking&&fin.skills.Speaking.level)||tgt||'';
+    const sCell = fin.skills.Speaking
+      ? `${_skillCellHtml(fin.skills.Speaking)} <button class="btn sm ghost" style="padding:2px 7px" onclick="speakingGrader('${s.id}','${spkLvl}')">✎</button>`
+      : `<button class="btn sm ghost" onclick="speakingGrader('${s.id}','${spkLvl}')">🗣️ Calificar</button>`;
+    const stt=targetStatus(fin.finalCefr, tgt);
+    const sttChip = stt==='below' ? ` <span class="badge off" style="font-size:.66rem;background:#dc2626;color:#fff" title="Por debajo del objetivo ${tgt}">▼</span>`
+      : stt==='above' ? ' <span class="badge on" style="font-size:.66rem" title="Sobre el objetivo">▲</span>'
+      : stt==='meets' ? ' <span class="badge on" style="font-size:.66rem" title="Cumple el objetivo">✓</span>' : '';
+    const finBadge = fin.finalScale!=null
+      ? `<span class="badge lvl" style="font-size:.92rem">${fin.finalCefr} · ${fin.finalScale}</span>${sttChip}${fin.complete?'':' <span class="badge off" style="font-size:.66rem" title="Faltan: '+esc(fin.missing.join(', '))+'">prov.</span>'}`
+      : '<span class="muted">—</span>';
+    return `<tr>
+      <td><b>${esc(s.full_name||'')}</b></td>
+      <td><span class="badge grade">${esc(s.grades?.name||'—')}</span> ${s.section?esc(s.section):''}</td>
+      <td><span class="badge lvl" style="opacity:.8">${tgt||'—'}</span></td>
+      <td>${_skillCellHtml(fin.skills.Reading)||'<span class="muted">—</span>'}</td>
+      <td>${_skillCellHtml(fin.skills.Listening)||'<span class="muted">—</span>'}</td>
+      <td>${wCell}</td>
+      <td style="white-space:nowrap">${sCell}</td>
+      <td>${finBadge}</td>
+      <td><button class="btn sm" onclick="studentReportPDF('${s.id}')">📄 PDF</button></td>
+    </tr>`;
+  }).join('');
+
+  $('#main').innerHTML = `
+    <h1 style="margin:0 0 4px">🎓 Resultado final · CEFR</h1>
+    <p class="muted" style="margin-top:0;font-size:.88rem">Mejor resultado por destreza convertido a la <b>Escala Cambridge</b> (A2 100–150 · B1 120–170 · B2 140–190 · C1 160–210). El <b>final</b> es el promedio de las destrezas evaluadas (se toma el mejor intento <b>aprobado ≥50%</b>; si ninguno aprueba, el de mayor %). <b>Writing</b> y <b>Speaking</b> se califican con la rúbrica Cambridge (0–5 por descriptor). <b>Objetivo</b> = nivel al que apunta el grado; <span class="badge off" style="font-size:.66rem;background:#dc2626;color:#fff">▼</span> = por debajo del objetivo, <span class="badge on" style="font-size:.66rem">✓</span> = lo cumple. <span class="badge off" style="font-size:.66rem">prov.</span> = aún faltan destrezas.</p>
+    ${resultsFilterBar(gradeList,'window._setFinalFilter')}
+    <div class="card" style="padding:0;overflow-x:auto"><table>
+      <thead><tr><th>Alumno</th><th>Grado</th><th>Objetivo</th><th>Reading &amp; UoE</th><th>Listening</th><th>Writing</th><th>Speaking</th><th>Final CEFR</th><th></th></tr></thead>
+      <tbody>${rows||`<tr><td colspan="9" class="center muted">Sin alumnos para este filtro.</td></tr>`}</tbody>
+    </table><div class="muted" style="padding:8px 14px;font-size:.82rem">${students.length} alumno(s)</div></div>`;
+}
+window.cefrFinalPanel = cefrFinalPanel;
+window._setFinalFilter = (k,v)=>{
+  if(k==='_clear') resultsFilter={grade:'',section:'',name:'',dateFrom:'',dateTo:''};
+  else resultsFilter[k]=v;
+  cefrFinalPanel();
+};
+
+/* ---- Speaking grader (rubric, mirrors writing grader) ---- */
+let speakingState=null;
+function speakingRubric(){ return SPEAKING_RUBRICS[speakingState.level] || SPEAKING_RUBRICS.B1; }
+window.speakingGrader = async (studentId, level)=>{
+  const { data:p, error } = await sb.from('profiles').select('id,full_name,email,grade_id,cefr_level,grades(name)').eq('id',studentId).single();
+  if(error){ $('#main').innerHTML=`<div class="note err">${esc(error.message)}</div>`; return; }
+  const { data:prev } = await sb.from('speaking_results').select('*').eq('student_id',studentId).maybeSingle();
+  const lvl = level || (prev&&prev.level) || targetLevel(p) || 'B1';
+  const sel = {};
+  if(prev && prev.breakdown && Array.isArray(prev.breakdown.parts)) prev.breakdown.parts.forEach(pp=>{ sel[pp.part]=pp.correct; });
+  speakingState = { studentId, profile:p, level:lvl, sel, msg:(prev&&prev.comment)||'' };
+  renderSpeakingGrader();
+};
+function renderSpeakingGrader(){
+  const r=speakingRubric(), sel=speakingState.sel, p=speakingState.profile;
+  const max=r.subs.length*r.bandMax;
+  let total=0, all=true; r.subs.forEach(s=>{ if(sel[s]!=null) total+=sel[s]; else all=false; });
+  const pct=Math.round(total/max*100);
+  const subsHtml=r.subs.map((s,si)=>{
+    const desc=SPEAKING_SUBSCALE[s]||[];
+    const cards=desc.map((d,band)=>{
+      const on=sel[s]===band;
+      return `<div onclick="window._pickSpeak(${si},${band})" style="cursor:pointer;border:2px solid ${on?'#4987c6':'var(--line)'};background:${on?'#eef4fb':'#fff'};border-radius:8px;padding:8px 10px;margin:4px 0;display:flex;gap:10px;align-items:flex-start">
+        <span style="flex:0 0 auto;font-weight:700;color:${on?'#2d5a8d':'#94a3b8'};min-width:46px">Band ${band}</span>
+        <span style="font-size:.88rem">${esc(d)}</span></div>`;
+    }).join('');
+    return `<div class="card" style="margin-bottom:6px"><h3 style="margin:0 0 6px">${esc(s)} <span class="muted" style="font-weight:400">/ ${r.bandMax}</span> <b style="float:right;color:#2d5a8d">${sel[s]!=null?sel[s]:'—'}</b></h3>${cards}</div>`;
+  }).join('');
+  const lvlSel=LEVELS.map(l=>`<option ${speakingState.level===l?'selected':''}>${l}</option>`).join('');
+  $('#main').innerHTML=`
+    <button class="btn sm ghost" onclick="cefrFinalPanel()">← Volver al resultado final</button>
+    <h1 style="margin:.4rem 0 0">🗣️ Calificar Speaking</h1>
+    <div class="muted" style="margin-bottom:10px">${esc(p.full_name||'Alumno')} · ${esc(p.grades?.name||'')}</div>
+    <div class="note">Elige el descriptor que corresponde en cada criterio (escalas analíticas de Cambridge Speaking, 0–${r.bandMax}). La nota se calcula sola. El nivel define los criterios.</div>
+    <div class="row" style="gap:10px;align-items:center;margin:10px 0">
+      <label style="font-weight:700">Nivel del examen</label>
+      <select onchange="window._setSpeakLevel(this.value)" style="min-width:90px">${lvlSel}</select>
+    </div>
+    ${subsHtml}
+    <div class="card" style="position:sticky;bottom:0">
+      <div class="row" style="justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">
+        <h2 style="margin:0">Total</h2>
+        <div style="font-size:1.4rem;font-weight:800;color:#2d5a8d"><span>${total}</span> / ${max} · <span>${pct}</span>%</div>
+      </div>
+      <label style="margin-top:10px;display:block">Comentario para el alumno (opcional)</label>
+      <textarea id="sp-msg" rows="4" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:8px" oninput="speakingState.msg=this.value">${esc(speakingState.msg||'')}</textarea>
+      <div id="sp-status" style="margin-top:6px;font-size:.88rem"></div>
+      <div class="row" style="margin-top:10px;gap:10px">
+        <button class="btn" onclick="window._saveSpeaking()">💾 Guardar Speaking</button>
+      </div>
+    </div>`;
+}
+window._pickSpeak = (si,band)=>{ const s=speakingRubric().subs[si]; speakingState.sel[s]=band; const y=window.scrollY; renderSpeakingGrader(); window.scrollTo(0,y); };
+window._setSpeakLevel = (v)=>{ speakingState.level=v; speakingState.sel={}; renderSpeakingGrader(); };
+window._saveSpeaking = async ()=>{
+  const r=speakingRubric(), sel=speakingState.sel, st=$('#sp-status');
+  let total=0, all=true; r.subs.forEach(s=>{ if(sel[s]!=null) total+=sel[s]; else all=false; });
+  if(!all){ st.innerHTML='<span style="color:var(--bad)">Marca un Band en cada criterio antes de guardar.</span>'; return; }
+  const max=r.subs.length*r.bandMax, pct=Math.round(total/max*100);
+  const breakdown={ kind:'speaking-graded', parts:r.subs.map(s=>({part:s, correct:sel[s], total:r.bandMax})) };
+  st.textContent='Guardando…';
+  const { error } = await sb.rpc('upsert_speaking', {
+    p_student:speakingState.studentId, p_level:speakingState.level, p_score:total, p_total:max,
+    p_percent:pct, p_breakdown:breakdown, p_comment:(speakingState.msg||'').trim()||null });
+  if(error){ st.innerHTML=`<span style="color:var(--bad)">No se pudo guardar: ${esc(error.message)}</span>`; return; }
+  cefrFinalPanel();
+};
+
+/* ---- PDF report (lazy-load html2pdf, mirrors ensureChart) ---- */
+let _h2pLib=null;
+function ensureHtml2pdf(){
+  if(window.html2pdf) return Promise.resolve();
+  if(_h2pLib) return _h2pLib;
+  _h2pLib=new Promise((res,rej)=>{
+    const s=document.createElement('script');
+    s.src='https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.1/dist/html2pdf.bundle.min.js';
+    s.onload=()=>res(); s.onerror=()=>rej(new Error('No se pudo cargar html2pdf (conexión).'));
+    document.head.appendChild(s);
+  });
+  return _h2pLib;
+}
+/* Inline SVG of the Cambridge English Scale / CEFR with a "you are here" marker. */
+function cefrScaleSVG(scale, cefr){
+  const W=720,H=560,topY=46,botY=512,minV=80,maxV=230;
+  const yOf=v=>topY+(maxV-Math.max(minV,Math.min(maxV,v)))/(maxV-minV)*(botY-topY);
+  const bands=[{cefr:'C2',lo:200,hi:230,c:'#5a2d82'},{cefr:'C1',lo:180,hi:200,c:'#7c6fd2'},
+    {cefr:'B2',lo:160,hi:180,c:'#2d5a8d'},{cefr:'B1',lo:140,hi:160,c:'#4987c6'},
+    {cefr:'A2',lo:120,hi:140,c:'#76cbe5'},{cefr:'A1',lo:100,hi:120,c:'#aebfd0'}];
+  const quals=[{name:'A2 Key',lo:100,hi:150,c:'#76cbe5'},{name:'B1 Prelim.',lo:120,hi:170,c:'#4987c6'},
+    {name:'B2 First',lo:140,hi:190,c:'#2d5a8d'},{name:'C1 Adv.',lo:160,hi:210,c:'#7c6fd2'},
+    {name:'C2 Prof.',lo:180,hi:230,c:'#5a2d82'}];
+  const bandX=64,bandW=92;
+  const bandRects=bands.map(b=>{const y=yOf(b.hi),h=yOf(b.lo)-yOf(b.hi);
+    return `<rect x="${bandX}" y="${y}" width="${bandW}" height="${h}" fill="${b.c}" opacity="0.92"/><text x="${bandX+bandW/2}" y="${y+h/2+5}" text-anchor="middle" fill="#fff" font-weight="800" font-size="15">${b.cefr}</text>`;}).join('');
+  const qBaseX=200,qW=64,qGap=22;
+  const qBars=quals.map((q,i)=>{const x=qBaseX+i*(qW+qGap),y=yOf(q.hi),h=yOf(q.lo)-yOf(q.hi);
+    return `<rect x="${x}" y="${y}" width="${qW}" height="${h}" rx="5" fill="${q.c}" opacity="0.85"/><text x="${x+qW/2}" y="${y-6}" text-anchor="middle" font-size="10" fill="#334155" font-weight="700">${q.name}</text>`;}).join('');
+  const axisX=W-44; let ticks=`<line x1="${axisX}" y1="${yOf(230)}" x2="${axisX}" y2="${yOf(80)}" stroke="#cbd5e1"/>`;
+  for(let v=80;v<=230;v+=10){const y=yOf(v);ticks+=`<line x1="${axisX-6}" y1="${y}" x2="${axisX}" y2="${y}" stroke="#94a3b8"/><text x="${axisX+5}" y="${y+4}" font-size="10" fill="#64748b">${v}</text>`;}
+  let marker='';
+  if(scale!=null){ const y=yOf(scale); const lblY=Math.max(topY+12, Math.min(botY-6, y));
+    marker=`<line x1="${bandX-12}" y1="${y}" x2="${axisX}" y2="${y}" stroke="#dc2626" stroke-width="2.5" stroke-dasharray="6 4"/><circle cx="${axisX}" cy="${y}" r="6" fill="#dc2626"/><rect x="${qBaseX+95}" y="${lblY-32}" width="234" height="24" rx="6" fill="#dc2626"/><text x="${qBaseX+212}" y="${lblY-15}" text-anchor="middle" fill="#fff" font-size="12" font-weight="800">● Tú estás aquí · ${cefr} · ${scale}</text>`;
+  }
+  return `<svg viewBox="0 0 ${W} ${H}" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,system-ui,sans-serif">
+    <text x="${bandX+bandW/2}" y="30" text-anchor="middle" font-size="11" font-weight="700" fill="#334155">CEFR</text>
+    <text x="${qBaseX+(quals.length*(qW+qGap))/2-qGap/2}" y="30" text-anchor="middle" font-size="11" font-weight="700" fill="#334155">Cambridge English Qualifications</text>
+    <text x="${axisX}" y="30" text-anchor="middle" font-size="11" font-weight="700" fill="#334155">Escala</text>
+    ${bandRects}${qBars}${ticks}${marker}</svg>`;
+}
+window.studentReportPDF = async (studentId)=>{
+  try{ await ensureHtml2pdf(); }catch(e){ alert(e.message); return; }
+  const { data:p, error } = await sb.from('profiles').select('id,full_name,email,section,cefr_level,grade_id,grades(name)').eq('id',studentId).single();
+  if(error){ alert('No se pudo cargar el alumno: '+error.message); return; }
+  const { data:at } = await sb.from('exam_attempts').select('id,skill,level,percent,mock,submitted_at').eq('student_id',studentId);
+  const { data:sp } = await sb.from('speaking_results').select('*').eq('student_id',studentId).maybeSingle();
+  const fin=_finalFromData(p, at||[], sp);
+  const tgt=targetLevel(p); const stt=targetStatus(fin.finalCefr, tgt);
+  const sttTxt = stt==='below' ? `▼ Por debajo del objetivo (${tgt})` : stt==='above' ? `▲ Por encima del objetivo (${tgt})` : stt==='meets' ? `✓ Cumple el objetivo (${tgt})` : '';
+  const sttColor = stt==='below' ? '#fca5a5' : '#86efac';
+  const cell='padding:8px;border:1px solid #e2e8f0;text-align:center';
+  const row=(label,b)=>`<tr><td style="padding:8px;border:1px solid #e2e8f0"><b>${label}</b></td>
+    <td style="${cell}">${b?b.level:'—'}</td>
+    <td style="${cell}">${b?(b.pct!=null?b.pct+'%':'—'):'<span style="color:#b45309">Pendiente</span>'}</td>
+    <td style="${cell};color:#2d5a8d;font-weight:700">${b?b.cefr:'—'}</td>
+    <td style="${cell}">${b?b.scale:'—'}</td></tr>`;
+  const node=document.createElement('div');
+  node.style.cssText='position:fixed;left:-9999px;top:0;width:760px;padding:24px;font-family:Montserrat,system-ui,sans-serif;color:#0f172a;background:#fff';
+  node.innerHTML=`
+    <div style="text-align:center;border-bottom:3px solid #4987c6;padding-bottom:10px;margin-bottom:14px">
+      <img src="assets/logo-h.svg" style="height:46px"><div style="letter-spacing:1px;color:#64748b;font-size:.78rem;margin-top:4px">REPORTE DE RESULTADO FINAL · MARCO COMÚN EUROPEO (CEFR)</div></div>
+    <table style="width:100%;border-collapse:collapse;margin-bottom:12px;font-size:.92rem">
+      <tr><td style="padding:4px"><b>Alumno:</b> ${esc(p.full_name||'')}</td><td style="padding:4px"><b>Grado:</b> ${esc(p.grades?.name||'')} ${esc(p.section||'')}</td></tr>
+      <tr><td style="padding:4px"><b>Nivel objetivo:</b> ${esc(tgt||'—')}</td><td style="padding:4px"><b>Fecha:</b> ${new Date().toLocaleDateString('es-PE')}</td></tr>
+    </table>
+    <table style="width:100%;border-collapse:collapse;font-size:.9rem;margin-bottom:14px">
+      <thead><tr style="background:#eef4fb"><th style="${cell};text-align:left">Destreza</th><th style="${cell}">Nivel examen</th><th style="${cell}">Resultado</th><th style="${cell}">CEFR</th><th style="${cell}">Escala</th></tr></thead>
+      <tbody>${row('Reading &amp; Use of English',fin.skills.Reading)}${row('Listening',fin.skills.Listening)}${row('Writing',fin.skills.Writing)}${row('Speaking',fin.skills.Speaking)}</tbody>
+    </table>
+    <div style="display:flex;gap:16px;align-items:center;background:#0f2741;color:#fff;border-radius:12px;padding:14px 18px;margin-bottom:14px">
+      <div><div style="font-size:.78rem;opacity:.8">RESULTADO FINAL</div><div style="font-size:2.4rem;font-weight:800;line-height:1">${fin.finalCefr}</div></div>
+      <div style="border-left:1px solid rgba(255,255,255,.3);padding-left:16px"><div style="font-size:.78rem;opacity:.8">ESCALA CAMBRIDGE</div><div style="font-size:1.8rem;font-weight:700">${fin.finalScale!=null?fin.finalScale:'—'}</div></div>
+      <div style="margin-left:auto;text-align:right;max-width:240px">
+        ${sttTxt?`<div style="font-size:.85rem;font-weight:700;color:${sttColor}">${sttTxt}</div>`:''}
+        ${fin.complete?'':`<div style="font-size:.74rem;opacity:.9;margin-top:4px">⚠ Resultado provisional. Faltan: ${esc(fin.missing.join(', '))}.</div>`}
+      </div>
+    </div>
+    <div style="text-align:center;font-size:.76rem;color:#64748b;margin-bottom:4px">Posición del alumno en la Escala Cambridge English / CEFR</div>
+    ${cefrScaleSVG(fin.finalScale, fin.finalCefr)}
+    <p style="font-size:.7rem;color:#94a3b8;margin-top:12px">Cálculo: por cada destreza se toma el mejor resultado y se convierte a la Escala Cambridge (A2 100–150 · B1 120–170 · B2 140–190 · C1 160–210); el resultado final es el promedio de las destrezas evaluadas. Nordic International School of Lima.</p>`;
+  document.body.appendChild(node);
+  const opt={ margin:8, filename:`NIS-Resultado-${(p.full_name||'alumno').replace(/\s+/g,'_')}.pdf`,
+    image:{type:'jpeg',quality:0.96}, html2canvas:{scale:2,useCORS:true,backgroundColor:'#ffffff'},
+    jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}, pagebreak:{mode:['css','legacy']} };
+  try{ await window.html2pdf().set(opt).from(node).save(); }
+  catch(e){ alert('No se pudo generar el PDF: '+(e&&e.message||e)); }
+  finally{ node.remove(); }
+};
