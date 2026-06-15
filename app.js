@@ -189,6 +189,11 @@ function phonicsPanel(){
   return `<iframe src="phonics/index.html?embed=1&v=8" title="Phonics Studio"
     style="width:100%;height:calc(100vh - 120px);border:none;border-radius:14px;box-shadow:var(--shadow);background:#fff"></iframe>`;
 }
+/* Pronunciation Coach embedded as an iframe (same-origin app in /pronunciation-coach). */
+function coachPanel(){
+  return `<iframe src="pronunciation-coach/index.html?embed=1&v=1" title="Pronunciation Coach"
+    style="width:100%;height:calc(100vh - 120px);border:none;border-radius:14px;box-shadow:var(--shadow);background:#fff"></iframe>`;
+}
 
 /* ===================== AUTH ===================== */
 function renderAuth(mode='login'){
@@ -323,6 +328,7 @@ async function renderAdmin(tab='users'){
     {key:'teachers',label:'👨‍🏫 Profesores'},
     {key:'mocks',label:'🔓 Mocks'},
     {key:'phonics',label:'🔤 Phonics'},
+    {key:'coach',label:'🎙️ Pronunciación'},
     {key:'mun',label:'🌐 MUN Academy'},
     {key:'classes',label:'🏫 Classes'},
     {key:'library',label:'📚 Library'},
@@ -332,6 +338,7 @@ async function renderAdmin(tab='users'){
   if(tab==='classes') return studentClasses();
   if(tab==='library') return studentLibrary();
   if(tab==='phonics') return $('#main').innerHTML = phonicsPanel();
+  if(tab==='coach') return $('#main').innerHTML = coachPanel();
   if(tab==='overview') return adminOverview();
   if(tab==='stats') return adminStats();
   if(tab==='results') return adminResults();
@@ -970,6 +977,7 @@ async function renderTeacher(tab){
   nav.push({key:'exams',label:'🎧 Exámenes'});
   nav.push({key:'mun',label:'🌐 MUN Academy'});
   nav.push({key:'phonics',label:'🔤 Phonics'});
+  nav.push({key:'coach',label:'🎙️ Pronunciación'});
   const active = (tab && nav.some(n=>n.key===tab)) ? tab : nav[0].key;
   document.body.innerHTML = shell(nav, active, `<div class="center muted">Cargando…</div>`);
   bindNav(renderTeacher);
@@ -978,6 +986,7 @@ async function renderTeacher(tab){
   if(active==='final') return cefrFinalPanel();
   if(active==='students') return teacherStudents();
   if(active==='phonics'){ $('#main').innerHTML = phonicsPanel(); return; }
+  if(active==='coach'){ $('#main').innerHTML = coachPanel(); return; }
   $('#main').innerHTML = `<div class="card">El administrador aún no te ha asignado accesos. Escríbele para que te habilite <b>Resultados</b> o <b>Alumnos</b>.</div>`;
 }
 /* ── Shared results filter bar (admin + teacher) ────────────────────── */
@@ -1356,11 +1365,13 @@ async function renderStudent(initial){
     {key:'mun',label:'🌐 MUN Academy'},
     {key:'classes',label:'🏫 Classes'},
     {key:'phonics',label:'🔤 Phonics'},
+    {key:'coach',label:'🎙️ Pronunciación'},
     {key:'results',label:'📊 My Results'},
   ], initial||'home', `<div class="center muted">Cargando…</div>`);
   bindNav(k=>{
     if(k==='mun') return studentMun();
     if(k==='phonics') return studentPhonics();
+    if(k==='coach') return studentCoach();
     if(k==='mocks') return studentMocks();
     if(k==='practice') return studentPractice();
     if(k==='classes') return studentClasses();
@@ -1372,6 +1383,7 @@ async function renderStudent(initial){
 }
 function _setNav(k){ document.querySelectorAll('[data-nav]').forEach(e=>e.classList.toggle('active',e.dataset.nav===k)); }
 function studentPhonics(){ _setNav('phonics'); $('#main').innerHTML = phonicsPanel(); }
+function studentCoach(){ _setNav('coach'); $('#main').innerHTML = coachPanel(); }
 
 /* ---------- Student dashboard (hub) ---------- */
 function _hubCard(emoji,title,desc,onclick,extra){
@@ -1394,11 +1406,12 @@ function studentHub(){
       ${_hubCard('🌐','MUN Academy','Model United Nations: debate, oratoria y diplomacia.',"window._nav('mun')")}
       ${_hubCard('🏫','Classes','Presentaciones y actividades de tus clases.',"window._nav('classes')")}
       ${_hubCard('🔤','Phonics','Sonidos y formas de las palabras: CVC, blends, magic-e y más.',"window._nav('phonics')")}
+      ${_hubCard('🎙️','Pronunciation Coach','Escucha cada sonido, mira la lengua y el aire, y practica diciéndolo.',"window._nav('coach')")}
       ${_hubCard('📊','My Results','Todos tus mocks y practice tests, con tu proyección.',"window._nav('results')")}
     </div>`;
 }
 window._nav=(k)=>{
-  const fn={mocks:studentMocks,practice:studentPractice,library:studentLibrary,mun:studentMun,classes:studentClasses,phonics:studentPhonics,results:studentResults,home:studentHub}[k];
+  const fn={mocks:studentMocks,practice:studentPractice,library:studentLibrary,mun:studentMun,classes:studentClasses,phonics:studentPhonics,coach:studentCoach,results:studentResults,home:studentHub}[k];
   if(fn) fn();
 };
 
