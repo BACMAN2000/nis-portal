@@ -327,6 +327,7 @@ async function renderAdmin(tab='users'){
     {key:'final',label:'🎓 Resultado final'},
     {key:'teachers',label:'👨‍🏫 Profesores'},
     {key:'mocks',label:'🔓 Mocks'},
+    {key:'access',label:'🔐 Accesos'},
     {key:'phonics',label:'🔤 Phonics'},
     {key:'coach',label:'🎙️ Pronunciación'},
     {key:'mun',label:'🌐 MUN Academy'},
@@ -345,8 +346,34 @@ async function renderAdmin(tab='users'){
   if(tab==='final') return cefrFinalPanel();
   if(tab==='teachers') return adminTeachers();
   if(tab==='mocks') return adminMocks();
+  if(tab==='access') return adminAccess();
   return adminUsers();
 }
+/* 🔐 Accesos — matriz grado × actividad (node_access). Mocks va aparte. */
+async function adminAccess(){
+  const { data, error } = await sb.from('node_access').select('grade_id,node_key,unlocked');
+  if(error){ $('#main').innerHTML=`<div class="note err">${esc(error.message)}</div>`; return; }
+  const map={}; (data||[]).forEach(r=>{ (map[r.grade_id]=map[r.grade_id]||{})[r.node_key]=r.unlocked; });
+  const head = `<th style="text-align:left">Actividad</th>` + GRADES.map(g=>`<th>${g.name}</th>`).join('');
+  const rows = ACCESS_NODES.map(n=>{
+    const cells = GRADES.map(g=>{
+      const has = map[g.id] && Object.prototype.hasOwnProperty.call(map[g.id], n.key);
+      const on = has ? map[g.id][n.key] : _nodeDefaultOpen(n.key);
+      return `<td style="text-align:center"><input type="checkbox" ${on?'checked':''} onchange="window._toggleNode(${g.id},'${n.key}',this.checked,this)"></td>`;
+    }).join('');
+    return `<tr><td><b>${esc(n.label)}</b><div class="muted" style="font-size:.7rem">${n.key}</div></td>${cells}</tr>`;
+  }).join('');
+  $('#main').innerHTML=`<h1>🔐 Accesos por grado</h1>
+    <div class="note">Marca qué actividades ve cada <b>grado</b>. Lo nuevo (French, Grammar) nace bloqueado; el resto, abierto. Para excepciones de un alumno, el profesor las ajusta en <b>Alumnos</b>. Los <b>Mocks</b> se gestionan en su pestaña 🔓 Mocks.</div>
+    <div class="card" style="padding:0;overflow-x:auto"><table>
+      <thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table></div>`;
+}
+window._toggleNode=async(g,key,to,el)=>{
+  el.disabled=true;
+  const { error } = await sb.from('node_access').upsert({grade_id:g,node_key:key,unlocked:to,updated_at:new Date().toISOString(),updated_by:(state.session&&state.session.user&&state.session.user.id)||null},{onConflict:'grade_id,node_key'});
+  el.disabled=false;
+  if(error){ alert('No se pudo guardar: '+error.message); el.checked=!to; }
+};
 async function adminOverview(){
   const { data:profs } = await sb.from('profiles').select('role,grade_id,cefr_level');
   const { count:att } = await sb.from('exam_attempts').select('*',{count:'exact',head:true});
@@ -401,6 +428,8 @@ async function adminTeachers(){
   if(error){ $('#main').innerHTML=`<div class="note err">${esc(error.message)}</div>`; return; }
   const { data:accs } = await sb.from('teacher_access').select('*');
   const amap={}; (accs||[]).forEach(a=>amap[a.profile_id]=a);
+  const { data:tna } = await sb.from('teacher_node_access').select('profile_id,node_key,allowed');
+  const tnaMap={}; (tna||[]).forEach(r=>{ const m=tnaMap[r.profile_id]=tnaMap[r.profile_id]||new Set(); if(r.allowed) m.add(r.node_key); });
   const teachers=profs||[];
   // Fetch stored passwords for all teachers
   const { data:creds } = teachers.length
@@ -411,6 +440,8 @@ async function adminTeachers(){
   const cards=teachers.map(t=>{
     const a=amap[t.id]||{can_results:true,can_students:false,all_grades:true,grades:[]};
     const gradeChips=GRADES.map(g=>`<label style="${chipCss}"><input type="checkbox" class="tg-grade" value="${g.id}" ${(a.grades||[]).includes(g.id)?'checked':''} ${a.all_grades?'disabled':''}> ${g.name}</label>`).join('');
+    const managed=tnaMap[t.id];
+    const nodeChips=ACCESS_NODES.map(n=>`<label style="${chipCss}"><input type="checkbox" class="tg-node" value="${n.key}" ${(managed? managed.has(n.key): true)?'checked':''}> ${esc(n.label)}</label>`).join('');
     const pw=credmap[t.id]||'';
     const suspended = t.active===false;
     return `<div class="card" data-tid="${t.id}" style="${suspended?'opacity:.6':''}">
@@ -434,6 +465,8 @@ async function adminTeachers(){
       </div>
       <div class="muted" style="margin:10px 0 4px;font-size:.85rem">Grados específicos (sólo si desmarcas "Todos los grados"):</div>
       <div style="display:flex;flex-wrap:wrap;gap:8px">${gradeChips}</div>
+      <div class="muted" style="margin:10px 0 4px;font-size:.85rem">Actividades que gestiona (para sus grados):</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">${nodeChips}</div>
       <div class="row" style="margin-top:12px;align-items:center;gap:10px"><button class="btn sm" onclick="window._saveTeacher('${t.id}', this)">Guardar accesos</button>${suspended?`<button class="btn sm" style="background:var(--good)" onclick="suspendUser('${t.id}',true,'teacher')">Reactivar</button>`:`<button class="btn sm ghost" style="border-color:var(--warn);color:#92600a" onclick="suspendUser('${t.id}',false,'teacher')">Suspender</button>`}<button class="btn sm danger" onclick="deleteUser('${t.id}','teacher')">Eliminar profesor</button><span class="tmsg muted" style="font-size:.85rem"></span></div>
     </div>`;
   }).join('');
@@ -505,7 +538,11 @@ window._saveTeacher=async(id,btn)=>{
     updated_at:new Date().toISOString(), updated_by:(state.session&&state.session.user&&state.session.user.id)||null };
   msgEl.textContent='Guardando…';
   const { error } = await sb.from('teacher_access').upsert(row,{onConflict:'profile_id'});
-  msgEl.textContent = error ? ('⚠ '+error.message) : '✓ Guardado';
+  if(error){ msgEl.textContent='⚠ '+error.message; return; }
+  const uid=(state.session&&state.session.user&&state.session.user.id)||null;
+  const nodeRows=[...card.querySelectorAll('.tg-node')].map(c=>({profile_id:id,node_key:c.value,allowed:c.checked,updated_at:new Date().toISOString(),updated_by:uid}));
+  const { error:e2 } = nodeRows.length ? await sb.from('teacher_node_access').upsert(nodeRows,{onConflict:'profile_id,node_key'}) : {error:null};
+  msgEl.textContent = e2 ? ('⚠ '+e2.message) : '✓ Guardado';
 };
 async function adminMocks(){
   const { data, error } = await sb.from('mock_access').select('grade_id, unlocked, updated_at').order('grade_id');
@@ -1111,13 +1148,49 @@ async function teacherStudents(){
   let list=data||[]; const fg=teacherFilter.grade;
   if(fg) list=list.filter(p=>String(p.grade_id)===String(fg));
   list.sort((a,b)=>(a.full_name||'').localeCompare(b.full_name||''));
-  const rows=list.map(p=>`<tr><td><b>${esc(p.full_name||p.email)}</b></td><td><span class="badge grade">${esc(p.grades?.name||'—')}</span> ${p.section?esc(p.section):''}</td><td><span class="badge lvl">${esc(p.cefr_level||'—')}</span></td></tr>`).join('');
+  const rows=list.map(p=>`<tr><td><b>${esc(p.full_name||p.email)}</b></td><td><span class="badge grade">${esc(p.grades?.name||'—')}</span> ${p.section?esc(p.section):''}</td><td><span class="badge lvl">${esc(p.cefr_level||'—')}</span></td>
+    <td><button class="btn sm ghost" onclick="window._openStudentAccess('${p.id}',${p.grade_id||'null'},'${esc((p.full_name||p.email||'').replace(/'/g,'’'))}')">🔧 Accesos</button></td></tr>`).join('');
   $('#main').innerHTML=`<h1>Alumnos</h1>${gradeFilterBar('window._setTeacherGrade')}
     <div class="card" style="padding:0;overflow-x:auto"><table>
-      <thead><tr><th>Alumno</th><th>Grado</th><th>Nivel</th></tr></thead>
-      <tbody>${rows||'<tr><td colspan="3" class="center muted">Sin alumnos para este filtro.</td></tr>'}</tbody></table>
+      <thead><tr><th>Alumno</th><th>Grado</th><th>Nivel</th><th>Accesos</th></tr></thead>
+      <tbody>${rows||'<tr><td colspan="4" class="center muted">Sin alumnos para este filtro.</td></tr>'}</tbody></table>
       <div class="muted" style="padding:10px 14px">${list.length} alumno(s)</div></div>`;
 }
+/* Editor de accesos por alumno (profesor): override de nodos que el profesor gestiona y el grado tiene habilitados. */
+window._openStudentAccess = async (sid, gradeId, name)=>{
+  const meId=(state.session&&state.session.user&&state.session.user.id)||null;
+  const isAdmin = state.profile && state.profile.role==='admin';
+  let managed=null;
+  if(!isAdmin){
+    const { data:t } = await sb.from('teacher_node_access').select('node_key,allowed').eq('profile_id',meId);
+    if(t && t.length) managed=new Set(t.filter(r=>r.allowed).map(r=>r.node_key)); // sin filas => gestiona todo
+  }
+  const { data:na } = gradeId!=null ? await sb.from('node_access').select('node_key,unlocked').eq('grade_id',gradeId) : {data:[]};
+  const gradeMap={}; (na||[]).forEach(r=>gradeMap[r.node_key]=r.unlocked);
+  const { data:sa } = await sb.from('student_access').select('node_key,unlocked').eq('student_id',sid);
+  const stuMap={}; (sa||[]).forEach(r=>stuMap[r.node_key]=r.unlocked);
+  const gradeOn=(k)=> Object.prototype.hasOwnProperty.call(gradeMap,k)?gradeMap[k]:_nodeDefaultOpen(k);
+  const nodes=ACCESS_NODES.filter(n=> isAdmin || !managed || managed.has(n.key));
+  const rows=nodes.map(n=>{
+    const base=gradeOn(n.key);
+    const eff=Object.prototype.hasOwnProperty.call(stuMap,n.key)?stuMap[n.key]:base;
+    return `<tr><td><b>${esc(n.label)}</b></td>
+      <td style="text-align:center" class="muted">${base?'Habilitado':'Bloqueado'}</td>
+      <td style="text-align:center"><input type="checkbox" ${eff?'checked':''} onchange="window._setStudentAccess('${sid}','${n.key}',this.checked,this)"></td></tr>`;
+  }).join('');
+  $('#main').innerHTML=`<button class="btn sm ghost" onclick="teacherStudents()">← Volver a Alumnos</button>
+    <h1 style="margin-top:8px">Accesos — ${esc(name)}</h1>
+    <div class="note">Activa o bloquea actividades para este alumno. Por defecto hereda lo del grado; aquí defines la excepción.</div>
+    <div class="card" style="padding:0;overflow-x:auto"><table>
+      <thead><tr><th>Actividad</th><th>Por grado</th><th>Este alumno</th></tr></thead>
+      <tbody>${rows||'<tr><td colspan="3" class="center muted">No tienes actividades asignadas para gestionar.</td></tr>'}</tbody></table></div>`;
+};
+window._setStudentAccess = async (sid,key,to,el)=>{
+  el.disabled=true;
+  const { error } = await sb.rpc('set_student_access',{p_student:sid,p_node:key,p_unlocked:to});
+  el.disabled=false;
+  if(error){ alert('No se pudo guardar: '+error.message); el.checked=!to; }
+};
 
 /* ===================== WRITING GRADING (teacher) ===================== */
 const WRITING_WEBHOOK = (window.NIS_CONFIG && window.NIS_CONFIG.WRITING_WEBHOOK) || '';
@@ -1380,6 +1453,7 @@ async function renderStudent(initial){
     if(k==='final') return studentFinal();
     return studentHub();
   });
+  state.access = await loadStudentAccess();   // Fase 2: visibilidad por nodo
   if(initial==='results') studentResults(); else studentHub();
 }
 function _setNav(k){ document.querySelectorAll('[data-nav]').forEach(e=>e.classList.toggle('active',e.dataset.nav===k)); }
@@ -1403,23 +1477,23 @@ function studentHub(){
     <h2 style="margin:18px 0 8px">Materias</h2>
     <div class="grid cols-3">
       ${_hubCard('🇬🇧','English','Pronunciation, Mocks, Classes y más.',"window._nav('english')")}
-      ${_hubCard('🇫🇷','French','Próximamente — pronto habilitaremos el francés.',"window._nav('french')")}
+      ${nodeVisible('french') ? _hubCard('🇫🇷','French','Pronunciation, Mocks, Classes y más.',"window._nav('french')") : _lockedCard('🇫🇷','French','Próximamente — pronto habilitaremos el francés.')}
     </div>
     <h2 style="margin:22px 0 8px">General</h2>
     <div class="grid cols-3">
-      ${_hubCard('📚','Library','Biblioteca NIS: busca y explora los libros del colegio.',"window._nav('library')")}
-      ${_hubCard('🌐','MUN Academy','Model United Nations: debate, oratoria y diplomacia.',"window._nav('mun')")}
+      ${nodeVisible('general.library') ? _hubCard('📚','Library','Biblioteca NIS: busca y explora los libros del colegio.',"window._nav('library')") : _lockedCard('📚','Library','Biblioteca NIS.')}
+      ${nodeVisible('general.mun') ? _hubCard('🌐','MUN Academy','Model United Nations: debate, oratoria y diplomacia.',"window._nav('mun')") : _lockedCard('🌐','MUN Academy','Model United Nations.')}
     </div>`;
 }
 
 /* ---------- Jerarquía de contenido: Materia → Área → Grado → Actividad ----------
    Las áreas de English se reflejan en French (placeholder hasta alimentarlas). */
 const ENGLISH_AREAS = [
-  {emoji:'🎙️', title:'Pronunciation', desc:'Escucha cada sonido, mira la lengua y el aire, y practica.', nav:'coach'},
+  {emoji:'🎙️', title:'Pronunciation', desc:'Escucha cada sonido, mira la lengua y el aire, y practica.', nav:'coach',    node:'english.pronunciation'},
   {emoji:'🎓', title:'Mocks',         desc:'Simulacros oficiales MOCK 1 y MOCK 2 por destreza.',        nav:'mocks'},
-  {emoji:'🏫', title:'Classes',       desc:'Material de clase por grado: grammar, actividades y más.',  nav:'classes'},
-  {emoji:'🎯', title:'Practice Tests',desc:'Prácticas 1, 2 y 3 en formato Cambridge, siempre disponibles.', nav:'practice'},
-  {emoji:'🔤', title:'Phonics',       desc:'Sonidos y formas de las palabras: CVC, blends, magic-e.',  nav:'phonics'},
+  {emoji:'🏫', title:'Classes',       desc:'Material de clase por grado: grammar, actividades y más.',  nav:'classes',  node:'english.classes'},
+  {emoji:'🎯', title:'Practice Tests',desc:'Prácticas 1, 2 y 3 en formato Cambridge, siempre disponibles.', nav:'practice', node:'english.practice'},
+  {emoji:'🔤', title:'Phonics',       desc:'Sonidos y formas de las palabras: CVC, blends, magic-e.',  nav:'phonics',  node:'english.phonics'},
   {emoji:'📊', title:'My Progress',   desc:'Todos tus exámenes y prácticas: tu historial y avance.',    nav:'results', englishOnly:true},
   {emoji:'🏅', title:'Resultado final',desc:'Tu nivel final CEFR (reporte para los padres) + PDF.',      nav:'final',   englishOnly:true},
 ];
@@ -1428,15 +1502,70 @@ function _backBtn(onclick,label){
 }
 function _isStudent(){ return !!(state.profile && state.profile.role==='student'); }
 
+/* ===== Fase 2: visibilidad por nodo (admin->grado->alumno) =====
+   Defaults: nodos existentes ABIERTOS; nodos nuevos BLOQUEADOS hasta que el
+   admin los habilite. La resolución es client-side (igual que Mocks). */
+const NODE_DEFAULT_LOCKED = new Set(['french','english.classes.g9.grammar']);
+function _nodeDefaultOpen(key){
+  if(key==='french' || key.indexOf('french')===0) return false;   // subárbol French = nuevo
+  if(key.slice(-8)==='.grammar') return false;                    // grammar = nuevo
+  return !NODE_DEFAULT_LOCKED.has(key);
+}
+async function loadStudentAccess(){
+  const p=state.profile; const out={grade:{}, student:{}};
+  if(!p || p.role!=='student') return out;
+  try{
+    const [g,s] = await Promise.all([
+      p.grade_id!=null ? sb.from('node_access').select('node_key,unlocked').eq('grade_id',p.grade_id) : Promise.resolve({data:[]}),
+      sb.from('student_access').select('node_key,unlocked').eq('student_id',p.id)
+    ]);
+    (g.data||[]).forEach(r=>out.grade[r.node_key]=r.unlocked);
+    (s.data||[]).forEach(r=>out.student[r.node_key]=r.unlocked);
+  }catch(e){}
+  return out;
+}
+/* ¿Visible este nodo para el usuario actual? Admin/Profesor: siempre (preview). */
+function nodeVisible(key){
+  const p=state.profile;
+  if(p && (p.role==='admin'||p.role==='teacher')) return true;
+  const a=state.access||{grade:{},student:{}};
+  if(Object.prototype.hasOwnProperty.call(a.student,key)) return !!a.student[key]; // override por alumno
+  if(Object.prototype.hasOwnProperty.call(a.grade,key))   return !!a.grade[key];   // habilitación por grado
+  return _nodeDefaultOpen(key);
+}
+function _lockedCard(emoji,title,desc){
+  return `<div class="card center" style="padding:28px 16px;margin-bottom:0;opacity:.7">
+    <div style="font-size:3rem;line-height:1">${emoji}</div>
+    <h2 style="margin:10px 0 4px;color:var(--blue-d)">${title}</h2>
+    <div class="muted" style="font-size:.85rem">${desc||''}</div>
+    <div class="badge" style="background:#fee2e2;color:#991b1b;margin-top:10px">🔒 Lo habilitará tu profesor</div>
+  </div>`;
+}
+/* Nodos gateables por el admin/profesor (Mocks va aparte; My Progress y Resultado final son datos propios). */
+const ACCESS_NODES = [
+  {key:'english.pronunciation',         label:'Pronunciation'},
+  {key:'english.practice',              label:'Practice Tests'},
+  {key:'english.phonics',               label:'Phonics'},
+  {key:'english.classes',               label:'Classes'},
+  {key:'english.classes.g9',            label:'Classes · 9th grade'},
+  {key:'english.classes.g9.activities', label:'9th · Activities'},
+  {key:'english.classes.g9.grammar',    label:'9th · Grammar'},
+  {key:'french',                        label:'French (toda la materia)'},
+  {key:'general.library',               label:'Library'},
+  {key:'general.mun',                   label:'MUN Academy'},
+];
+
 /* Vista de materia (English / French) */
 function studentSubject(key){
   _setNav(key);
   const isEn = key==='english';
   const title = isEn ? '🇬🇧 English' : '🇫🇷 French';
   const areas = isEn ? ENGLISH_AREAS : ENGLISH_AREAS.filter(a=>!a.englishOnly);
-  const cards = areas.map(a=> isEn
-    ? _hubCard(a.emoji,a.title,a.desc,`window._nav('${a.nav}')`)
-    : _soonCard(a.emoji,a.title,a.desc)).join('');
+  const cards = areas.map(a=>{
+    if(!isEn) return _soonCard(a.emoji,a.title,a.desc);
+    if(a.node && !nodeVisible(a.node)) return _lockedCard(a.emoji,a.title,a.desc);
+    return _hubCard(a.emoji,a.title,a.desc,`window._nav('${a.nav}')`);
+  }).join('');
   $('#main').innerHTML = `${_backBtn("window._nav('home')",'Inicio')}<h1>${title}</h1>
     <p class="muted" style="margin-top:-6px">${isEn?'Tus áreas de inglés.':'Próximamente — iremos habilitando el francés poco a poco.'}</p>
     <div class="grid cols-3" style="margin-top:12px">${cards}</div>`;
@@ -1445,12 +1574,15 @@ function studentSubject(key){
 /* Vista General (transversal) */
 function studentGeneral(){
   _setNav('general');
+  const lib = nodeVisible('general.library')
+    ? _hubCard('📚','Library','Biblioteca NIS: busca y explora los libros del colegio.',"window._nav('library')")
+    : _lockedCard('📚','Library','Biblioteca NIS.');
+  const mun = nodeVisible('general.mun')
+    ? _hubCard('🌐','MUN Academy','Model United Nations: debate, oratoria y diplomacia.',"window._nav('mun')")
+    : _lockedCard('🌐','MUN Academy','Model United Nations.');
   $('#main').innerHTML=`<h1>🗂️ General</h1>
     <p class="muted" style="margin-top:-6px">Recursos generales del portal.</p>
-    <div class="grid cols-3" style="margin-top:12px">
-      ${_hubCard('📚','Library','Biblioteca NIS: busca y explora los libros del colegio.',"window._nav('library')")}
-      ${_hubCard('🌐','MUN Academy','Model United Nations: debate, oratoria y diplomacia.',"window._nav('mun')")}
-    </div>`;
+    <div class="grid cols-3" style="margin-top:12px">${lib}${mun}</div>`;
 }
 
 /* Resultado final del alumno = reporte CEFR que se entrega a los padres + PDF.
@@ -1502,8 +1634,8 @@ function studentGrade(key){
   $('#main').innerHTML=`${back}<h1>9️⃣ 9th grade</h1>
     <p class="muted" style="margin-top:-6px">Material de 9no grado.</p>
     <div class="grid cols-2" style="margin-top:12px">
-      ${_skillCard('📝','Grammar','Gramática de 9no: explicaciones y práctica (en construcción).','grammar.html')}
-      ${_skillCard('🎲','Activities','Juegos y actividades: crosswords, word searches y más.','activities.html')}
+      ${nodeVisible('english.classes.g9.grammar') ? _skillCard('📝','Grammar','Gramática de 9no: explicaciones y práctica (en construcción).','grammar.html') : _lockedCard('📝','Grammar','Gramática de 9no grado.')}
+      ${nodeVisible('english.classes.g9.activities') ? _skillCard('🎲','Activities','Juegos y actividades: crosswords, word searches y más.','activities.html') : _lockedCard('🎲','Activities','Juegos y actividades.')}
     </div>`;
 }
 window._nav=(k)=>{
@@ -1573,7 +1705,7 @@ function studentClasses(){
   $('#main').innerHTML=`${back}<h1>🏫 Classes</h1>
     <p class="muted" style="margin-top:-6px">Material de clase por grado.</p>
     <div class="grid cols-3" style="margin-top:12px">
-      ${_hubCard('9️⃣','9th grade','Grammar y actividades de 9no grado.',"window._nav('classes_g9')")}
+      ${nodeVisible('english.classes.g9') ? _hubCard('9️⃣','9th grade','Grammar y actividades de 9no grado.',"window._nav('classes_g9')") : _lockedCard('9️⃣','9th grade','Grammar y actividades de 9no grado.')}
     </div>
     <p class="muted" style="margin-top:12px;font-size:.85rem">Más grados próximamente.</p>`;
 }
