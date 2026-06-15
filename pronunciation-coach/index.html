@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pronunciation Coach · NIS English</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = { theme: { extend: { colors: {
+  nordic: { 50:'#F0F4FA',100:'#DCE6F1',200:'#B4BCDF',300:'#8FA3D5',400:'#6B91D6',500:'#4A7BC8',600:'#2E5B9E',700:'#1F4E79',800:'#143254',900:'#0A1F38' }
+}}}};
+</script>
+<style>
+  body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:#F0F4FA}
+  .card-shadow{box-shadow:0 4px 18px -6px rgba(31,78,121,.18)}
+  @keyframes pulse-ring{0%{transform:scale(.9);opacity:.7}70%{transform:scale(1.6);opacity:0}100%{opacity:0}}
+  .rec-ring{animation:pulse-ring 1.4s cubic-bezier(.2,.6,.4,1) infinite}
+  @keyframes fade-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .fade-in{animation:fade-in .25s ease}
+  .voiced-dot{animation:vd 1.2s ease-in-out infinite}@keyframes vd{0%,100%{opacity:.5}50%{opacity:1}}
+  .airflow{stroke-dasharray:7 8;animation:flow 1.1s linear infinite;animation-play-state:paused;opacity:.45}
+  @keyframes flow{to{stroke-dashoffset:-15}}
+  .tts-on .airflow{animation-play-state:running;opacity:1}
+  .vibe{animation:vibe .5s ease-in-out infinite alternate;animation-play-state:paused;opacity:.5}
+  @keyframes vibe{from{opacity:.4}to{opacity:1}}
+  .tts-on .vibe{animation-play-state:running}
+  .anim-loop .airflow{animation-play-state:running!important;opacity:1}
+  .anim-loop .vibe{animation-play-state:running!important;opacity:1}
+  svg .part{cursor:help}
+  svg .part:hover{filter:brightness(.9) saturate(1.25)}
+  svg .lead{stroke:#9AA8B8;stroke-width:.8}
+  svg .lbl{font-size:8.5px;font-weight:700;fill:#5A6B80}
+  svg .ldot{fill:#9AA8B8}
+</style>
+</head>
+<body class="text-nordic-900">
+<div id="app" class="max-w-6xl mx-auto px-4 py-5"></div>
+
+<script>
+/* ============================================================
+   PRONUNCIATION COACH — NIS English
+   Original phoneme data (ARPABET/IPA inventory is standard
+   linguistics). Audio = browser speech synthesis; scoring =
+   browser SpeechRecognition. No third-party assets bundled.
+   ============================================================ */
+
+/* ---- 1) THE 40 ENGLISH PHONEMES (original dataset) ---- */
+const PHONEMES = [
+  {arp:"ae",ipa:"/æ/",grp:"Short vowel",voiced:true,word:"cat",graphemes:["a"],place:"vowel-low",lip:"spread",manner:"Open front vowel",tip:"Mouth wide open, tongue low and forward — the 'angry cat' sound.",say:"a"},
+  {arp:"eh",ipa:"/ɛ/",grp:"Short vowel",voiced:true,word:"bed",graphemes:["e","ea"],place:"vowel-mid",lip:"spread",manner:"Mid front vowel",tip:"Tongue mid-front, mouth half open, lips relaxed and slightly spread.",say:"eh"},
+  {arp:"ih",ipa:"/ɪ/",grp:"Short vowel",voiced:true,word:"sit",graphemes:["i","y"],place:"vowel-high",lip:"spread",manner:"Near-high front vowel",tip:"Short, quick sound. Tongue high-front, jaw barely open. NOT the long 'ee'.",say:"ih"},
+  {arp:"ah",ipa:"/ʌ/",grp:"Short vowel",voiced:true,word:"cup",graphemes:["u","o"],place:"vowel-mid",lip:"neutral",manner:"Mid-central vowel",tip:"Relaxed, central 'uh'. Tongue and lips neutral, mouth half open.",say:"uh"},
+  {arp:"uh",ipa:"/ʊ/",grp:"Short vowel",voiced:true,word:"book",graphemes:["oo","u"],place:"vowel-high",lip:"rounded",manner:"Near-high back vowel",tip:"Short rounded 'oo'. Lips slightly rounded, tongue high-back.",say:"uu"},
+  {arp:"aa",ipa:"/ɑː/",grp:"Short vowel",voiced:true,word:"father",graphemes:["o","a"],place:"vowel-low",lip:"neutral",manner:"Open back vowel",tip:"Big open 'ah'. Drop the jaw, tongue low and back — the doctor's sound.",say:"ah"},
+  {arp:"ax",ipa:"/ə/",grp:"Short vowel",voiced:true,word:"about",graphemes:["a","er"],place:"vowel-mid",lip:"neutral",manner:"Schwa (unstressed)",tip:"The lazy 'uh' in unstressed syllables — the most common sound in English.",say:"uh"},
+  {arp:"iy",ipa:"/iː/",grp:"Long vowel",voiced:true,word:"see",graphemes:["ee","ea","e_e","y"],place:"vowel-high",lip:"spread",manner:"High front long vowel",tip:"Big smile! Lips spread wide, tongue high and forward — long 'ee'.",say:"ee"},
+  {arp:"ey",ipa:"/eɪ/",grp:"Long vowel",voiced:true,word:"cake",graphemes:["a_e","ai","ay","ei"],place:"vowel-mid",lip:"spread",manner:"Diphthong e→i",tip:"Glide from 'e' up to 'i'. The vowel 'says its name': A.",say:"ay"},
+  {arp:"ay",ipa:"/aɪ/",grp:"Long vowel",voiced:true,word:"bike",graphemes:["i_e","igh","y","ie"],place:"vowel-low",lip:"neutral",manner:"Diphthong a→i",tip:"Glide from open 'ah' up to 'ee'. The letter I 'says its name'.",say:"eye"},
+  {arp:"ow",ipa:"/oʊ/",grp:"Long vowel",voiced:true,word:"boat",graphemes:["o_e","oa","ow"],place:"vowel-mid",lip:"rounded",manner:"Diphthong o→u",tip:"Lips round and push forward, gliding to 'oo'. O 'says its name'.",say:"oh"},
+  {arp:"uw",ipa:"/uː/",grp:"Long vowel",voiced:true,word:"moon",graphemes:["oo","ue","u_e","ew"],place:"vowel-high",lip:"rounded",manner:"High back long vowel",tip:"Tight rounded lips, like blowing a kiss. Tongue high and back — 'oo'.",say:"oo"},
+  {arp:"ao",ipa:"/ɔː/",grp:"Long vowel",voiced:true,word:"saw",graphemes:["aw","au","or"],place:"vowel-low",lip:"rounded",manner:"Open-mid back rounded",tip:"Rounded 'aw'. Lips lightly rounded, tongue low and back.",say:"aw"},
+  {arp:"aw",ipa:"/aʊ/",grp:"Long vowel",voiced:true,word:"cow",graphemes:["ow","ou"],place:"vowel-low",lip:"rounded",manner:"Diphthong a→u",tip:"Start open 'ah', glide to rounded 'oo' — the 'ouch!' sound.",say:"ow"},
+  {arp:"oy",ipa:"/ɔɪ/",grp:"Long vowel",voiced:true,word:"boy",graphemes:["oy","oi"],place:"vowel-mid",lip:"rounded",manner:"Diphthong o→i",tip:"Glide from rounded 'aw' to smiling 'ee'.",say:"oy"},
+  {arp:"er",ipa:"/ɜːr/",grp:"Long vowel",voiced:true,word:"bird",graphemes:["er","ir","ur"],place:"vowel-mid",lip:"neutral",manner:"R-controlled vowel",tip:"The 'bossy R' vowel. Tongue bunches in the middle, tip curls slightly.",say:"er"},
+  {arp:"p",ipa:"/p/",grp:"Stop",voiced:false,word:"pig",graphemes:["p"],place:"lips",lip:"closed",manner:"Voiceless bilabial stop",tip:"Press both lips, build air, release in a puff. No voice. Feel the pop.",say:"puh"},
+  {arp:"b",ipa:"/b/",grp:"Stop",voiced:true,word:"bat",graphemes:["b"],place:"lips",lip:"closed",manner:"Voiced bilabial stop",tip:"Same as /p/ but turn the voice ON — feel the throat buzz.",say:"buh"},
+  {arp:"t",ipa:"/t/",grp:"Stop",voiced:false,word:"top",graphemes:["t"],place:"ridge",lip:"neutral",manner:"Voiceless alveolar stop",tip:"Tongue tip taps the bumpy ridge behind the top teeth, then releases.",say:"tuh"},
+  {arp:"d",ipa:"/d/",grp:"Stop",voiced:true,word:"dog",graphemes:["d"],place:"ridge",lip:"neutral",manner:"Voiced alveolar stop",tip:"Same tap as /t/ but with voice on.",say:"duh"},
+  {arp:"k",ipa:"/k/",grp:"Stop",voiced:false,word:"cat",graphemes:["c","k","ck"],place:"velum",lip:"neutral",manner:"Voiceless velar stop",tip:"Back of the tongue lifts to the soft palate, then releases. No voice.",say:"kuh"},
+  {arp:"g",ipa:"/g/",grp:"Stop",voiced:true,word:"goat",graphemes:["g"],place:"velum",lip:"neutral",manner:"Voiced velar stop",tip:"Same back-of-tongue lift as /k/ but with voice on.",say:"guh"},
+  {arp:"f",ipa:"/f/",grp:"Fricative",voiced:false,word:"fan",graphemes:["f","ph"],place:"teeth",lip:"neutral",manner:"Voiceless labiodental fricative",tip:"Top teeth touch the bottom lip; push air through — ffff.",say:"fff"},
+  {arp:"v",ipa:"/v/",grp:"Fricative",voiced:true,word:"van",graphemes:["v"],place:"teeth",lip:"neutral",manner:"Voiced labiodental fricative",tip:"Same as /f/ but voice on — lip and teeth buzz. NOT a /b/ (lips stay open).",say:"vvv"},
+  {arp:"th",ipa:"/θ/",grp:"Fricative",voiced:false,word:"thin",graphemes:["th"],place:"teeth",lip:"neutral",manner:"Voiceless dental fricative",tip:"Tongue tip peeks between the teeth; blow gently. No voice.",say:"th"},
+  {arp:"dh",ipa:"/ð/",grp:"Fricative",voiced:true,word:"this",graphemes:["th"],place:"teeth",lip:"neutral",manner:"Voiced dental fricative",tip:"Same tongue-between-teeth as /θ/ but voice on — buzz.",say:"th"},
+  {arp:"s",ipa:"/s/",grp:"Fricative",voiced:false,word:"sun",graphemes:["s","ss","ce"],place:"ridge",lip:"spread",manner:"Voiceless alveolar fricative",tip:"Tongue near the ridge, air hisses down the middle — snake: sssss.",say:"sss"},
+  {arp:"z",ipa:"/z/",grp:"Fricative",voiced:true,word:"zip",graphemes:["z","s"],place:"ridge",lip:"spread",manner:"Voiced alveolar fricative",tip:"Same as /s/ but voice on — buzzing bee: zzzz.",say:"zzz"},
+  {arp:"sh",ipa:"/ʃ/",grp:"Fricative",voiced:false,word:"ship",graphemes:["sh","ti","ci"],place:"palate",lip:"rounded",manner:"Voiceless postalveolar fricative",tip:"Lips push forward and round; quiet sound — shhh, like 'be quiet'.",say:"shh"},
+  {arp:"zh",ipa:"/ʒ/",grp:"Fricative",voiced:true,word:"vision",graphemes:["s","ge"],place:"palate",lip:"rounded",manner:"Voiced postalveolar fricative",tip:"Same lip-rounding as /ʃ/ but voice on — the 's' in 'measure'.",say:"zhh"},
+  {arp:"h",ipa:"/h/",grp:"Fricative",voiced:false,word:"hat",graphemes:["h"],place:"glottis",lip:"neutral",manner:"Voiceless glottal fricative",tip:"Just a puff of air from the throat — fog up a mirror: haa.",say:"huh"},
+  {arp:"ch",ipa:"/tʃ/",grp:"Affricate",voiced:false,word:"chip",graphemes:["ch","tch"],place:"palate",lip:"rounded",manner:"Voiceless affricate (t+sh)",tip:"A /t/ stop that explodes into /ʃ/ — sneezing train: ch-ch.",say:"chuh"},
+  {arp:"jh",ipa:"/dʒ/",grp:"Affricate",voiced:true,word:"jam",graphemes:["j","ge","dge"],place:"palate",lip:"rounded",manner:"Voiced affricate (d+zh)",tip:"Same as /tʃ/ but voice on — a /d/ that bursts into /ʒ/.",say:"juh"},
+  {arp:"m",ipa:"/m/",grp:"Nasal",voiced:true,word:"man",graphemes:["m","mm"],place:"lips",lip:"closed",manner:"Bilabial nasal",tip:"Lips closed, sound hums out the nose — 'yummy!' mmmm.",say:"mmm"},
+  {arp:"n",ipa:"/n/",grp:"Nasal",voiced:true,word:"net",graphemes:["n","nn","kn"],place:"ridge",lip:"neutral",manner:"Alveolar nasal",tip:"Tongue tip on the ridge, sound hums out the nose — nnnn.",say:"nnn"},
+  {arp:"ng",ipa:"/ŋ/",grp:"Nasal",voiced:true,word:"sing",graphemes:["ng","n"],place:"velum",lip:"neutral",manner:"Velar nasal",tip:"Back of tongue up (like /g/), hum through the nose — 'ring' ending.",say:"ng"},
+  {arp:"l",ipa:"/l/",grp:"Glide/Liquid",voiced:true,word:"lip",graphemes:["l","ll"],place:"ridge",lip:"neutral",manner:"Alveolar lateral",tip:"Tongue tip on the ridge, voice flows around the sides — llll.",say:"lll"},
+  {arp:"r",ipa:"/r/",grp:"Glide/Liquid",voiced:true,word:"run",graphemes:["r","rr","wr"],place:"palate",lip:"rounded",manner:"Alveolar approximant",tip:"Tongue curls back without touching; lips slightly round — a growl: rrr.",say:"rrr"},
+  {arp:"w",ipa:"/w/",grp:"Glide/Liquid",voiced:true,word:"wet",graphemes:["w","wh"],place:"lips",lip:"rounded",manner:"Labial-velar glide",tip:"Tight round lips that quickly open — like blowing out a candle: w.",say:"wuh"},
+  {arp:"y",ipa:"/j/",grp:"Glide/Liquid",voiced:true,word:"yes",graphemes:["y","i"],place:"palate",lip:"spread",manner:"Palatal glide",tip:"Tongue high and forward (like 'ee'), then glides into the next sound.",say:"yuh"}
+];
+
+/* ---- 2) MINIMAL PAIRS (Spanish-L1 focus, original selection) ---- */
+const MIN_PAIRS = [
+  {a:"ih",b:"iy",pairs:[["sit","seat"],["ship","sheep"],["bit","beat"],["fit","feet"],["live","leave"],["fill","feel"],["chip","cheap"],["din","dean"]],note:"Short /ɪ/ vs long /iː/ — the classic Spanish-speaker challenge."},
+  {a:"b",b:"v",pairs:[["ban","van"],["bat","vat"],["base","vase"],["berry","very"],["boat","vote"],["ban","van"],["curb","curve"],["marble","marvel"]],note:"/b/ closes the lips; /v/ keeps lips open with teeth on the lip."},
+  {a:"th",b:"s",pairs:[["thin","sin"],["thick","sick"],["mouth","mouse"],["path","pass"],["thing","sing"],["theme","seem"],["worth","worse"],["bath","bass"]],note:"/θ/ tongue between the teeth vs /s/ tongue behind the ridge."},
+  {a:"dh",b:"d",pairs:[["they","day"],["then","den"],["there","dare"],["breathe","breed"],["other","udder"],["ladder","lather"],["worthy","wordy"],["soothe","sued"]],note:"Voiced /ð/ (tongue out) vs /d/ (tongue tapping the ridge)."},
+  {a:"sh",b:"ch",pairs:[["ship","chip"],["shop","chop"],["wash","watch"],["share","chair"],["sheep","cheap"],["cash","catch"],["mush","much"],["wish","witch"]],note:"/ʃ/ is a smooth hiss; /tʃ/ starts with a /t/ burst."},
+  {a:"s",b:"z",pairs:[["sip","zip"],["bus","buzz"],["price","prize"],["place","plays"],["race","raise"],["loose","lose"],["ice","eyes"],["niece","knees"]],note:"/s/ no voice, /z/ voice on — feel the buzz in the throat."},
+  {a:"ae",b:"eh",pairs:[["bad","bed"],["man","men"],["sad","said"],["bat","bet"],["had","head"],["pan","pen"],["sat","set"],["dad","dead"]],note:"/æ/ mouth wide open vs /ɛ/ mouth half open."},
+  {a:"aa",b:"ah",pairs:[["cot","cut"],["lock","luck"],["bomb","bum"],["shot","shut"],["fond","fund"],["cop","cup"],["robber","rubber"],["doll","dull"]],note:"Open back /ɑː/ vs central /ʌ/."},
+  {a:"l",b:"r",pairs:[["light","right"],["lace","race"],["lock","rock"],["lead","read"],["glass","grass"],["play","pray"],["alive","arrive"],["collect","correct"]],note:"/l/ tongue tip touches the ridge; /r/ curls back, no contact."},
+  {a:"n",b:"ng",pairs:[["thin","thing"],["sin","sing"],["ban","bang"],["ran","rang"],["win","wing"],["ton","tongue"],["kin","king"],["run","rung"]],note:"/n/ tongue on the ridge vs /ŋ/ back of tongue, hum through the nose."}
+];
+
+/* ---- 3) AUDIO ENGINE (browser speech synthesis) ---- */
+let prefs = (()=>{ try{ return JSON.parse(localStorage.getItem('pcoachPrefs'))||{}; }catch(e){ return {}; } })();
+prefs.accent = prefs.accent||'us';
+prefs.gender = prefs.gender||'female';
+prefs.speed  = prefs.speed ||'slow';
+function savePrefs(){ try{ localStorage.setItem('pcoachPrefs',JSON.stringify(prefs)); }catch(e){} }
+function rateMul(){ return prefs.speed==='slow'?0.75:1; }
+function pickVoice(){
+  const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+  if(!vs.length) return null;
+  const langRe = prefs.accent==='uk' ? /en[-_]GB/i : /en[-_]US/i;
+  let pool = vs.filter(v=>langRe.test(v.lang));
+  if(!pool.length) pool = vs.filter(v=>/^en/i.test(v.lang));
+  if(!pool.length) pool = vs;
+  const female=/(female|zira|hazel|susan|sonia|libby|maisie|aria|jenny|eva|catherine|hayley|clara|samantha)/i;
+  const male=/(male|david|mark|guy|ryan|george|daniel|thomas|james|william|brandon|alex)/i;
+  const want = prefs.gender==='female'?female:male;
+  return pool.find(v=>want.test(v.name)) || pool[0];
+}
+function ttsOn(on){ try{ document.body.classList.toggle('tts-on', on); }catch(e){} }
+function speak(text,{rate=0.85,onDone}={}){
+  if(!window.speechSynthesis){ if(onDone) onDone(); return; }
+  speechSynthesis.cancel(); ttsOn(false);
+  const u=new SpeechSynthesisUtterance(text);
+  const v=pickVoice(); if(v) u.voice=v;
+  u.lang = prefs.accent==='uk'?'en-GB':'en-US';
+  u.rate = Math.max(0.4,Math.min(1, rate*rateMul())); u.pitch=1;
+  let f=false, wd=0; const fire=()=>{ if(f) return; f=true; clearTimeout(wd); ttsOn(false); if(onDone) onDone(); };
+  u.onstart=()=>ttsOn(true); u.onend=fire; u.onerror=fire;
+  // safety: animate immediately, and never let it run forever if onend never fires
+  ttsOn(true);
+  wd=setTimeout(fire, Math.max(2500, String(text).length*220));
+  speechSynthesis.speak(u);
+}
+if(window.speechSynthesis) speechSynthesis.onvoiceschanged=()=>{};
+
+/* ---- 4) SPEECH RECOGNITION (scoring) ---- */
+const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+const SR_OK = !!SR;
+function normalise(s){ return String(s||'').toLowerCase().replace(/[^a-z ]/g,'').trim(); }
+/* Levenshtein-based similarity 0..1 for soft scoring. */
+function similarity(a,b){
+  a=normalise(a); b=normalise(b);
+  if(!a||!b) return 0;
+  if(a===b) return 1;
+  const m=a.length,n=b.length,d=Array.from({length:m+1},(_,i)=>[i,...Array(n).fill(0)]);
+  for(let j=0;j<=n;j++) d[0][j]=j;
+  for(let i=1;i<=m;i++)for(let j=1;j<=n;j++)
+    d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1));
+  return 1 - d[m][n]/Math.max(m,n);
+}
+/* Listen once and return the best transcript. */
+function listenOnce({onResult,onError,onEnd}){
+  if(!SR_OK){ onError&&onError('no-sr'); return null; }
+  const r=new SR();
+  r.lang = prefs.accent==='uk'?'en-GB':'en-US';
+  r.interimResults=false; r.maxAlternatives=5;
+  r.onresult=e=>{
+    const alts=[]; for(let i=0;i<e.results[0].length;i++) alts.push(e.results[0][i].transcript);
+    onResult&&onResult(alts);
+  };
+  r.onerror=e=>onError&&onError(e.error);
+  r.onend=()=>onEnd&&onEnd();
+  try{ r.start(); }catch(e){ onError&&onError('start-failed'); }
+  return r;
+}
+
+/* ---- 5) ARTICULATION DIAGRAM — side-view vocal tract, tongue + airflow ----
+   Original sagittal cross-section (standard phonetics). The tongue shape,
+   velum (raised/lowered), constriction point and airflow change per sound. */
+const TSHAPE={
+  neutral   :{T:[80,160],B:[126,152]},  // tongue lies low+flat (action at lips/throat)
+  tipfront  :{T:[92,120],B:[126,152]},  // tip up to the alveolar ridge (t,d,n,s,z,l)
+  tipteeth  :{T:[60,128],B:[124,152]},  // tip forward at the teeth (th,dh)
+  bodypalate:{T:[88,142],B:[112,118]},  // body humped to hard palate (sh,zh,ch,jh,y)
+  backvelum :{T:[88,160],B:[146,116]},  // back up to soft palate (k,g,ng)
+  bunched   :{T:[96,138],B:[122,130]},  // bunched / curled back (r, er)
+  highfront :{T:[80,130],B:[104,124]},
+  midfront  :{T:[80,142],B:[110,136]},
+  lowfront  :{T:[80,154],B:[116,154]},
+  highback  :{T:[90,154],B:[140,124]},
+  midback   :{T:[90,154],B:[138,134]},
+  midcentral:{T:[86,150],B:[126,144]},
+  lowback   :{T:[90,160],B:[136,154]}
+};
+const CONSTRICT={lips:[46,134],teeth:[60,126],ridge:[103,126],palate:[124,122],velum:[158,123],glottis:[186,168]};
+function artParams(p){
+  const air = p.grp==='Stop'?'stop':(p.grp==='Fricative'||p.grp==='Affricate')?'fric':p.grp==='Nasal'?'nasal':/vowel/i.test(p.grp)?'vowel':'glide';
+  let shape;
+  if(/vowel/i.test(p.grp)){
+    shape = {ae:'lowfront',eh:'midfront',ih:'highfront',iy:'highfront',ey:'midfront',ay:'lowfront',
+      ah:'midcentral',ax:'midcentral',uh:'highback',uw:'highback',aa:'lowback',ao:'lowback',
+      ow:'midback',aw:'lowback',oy:'midback',er:'bunched'}[p.arp] || 'midcentral';
+  } else {
+    shape = {lips:'neutral',teeth:(p.arp==='th'||p.arp==='dh')?'tipteeth':'neutral',
+      ridge:'tipfront',palate:'bodypalate',velum:'backvelum',glottis:'neutral'}[p.place] || 'neutral';
+    if(p.arp==='r') shape='bunched';
+    if(p.arp==='w') shape='highback';
+    if(p.arp==='y') shape='highfront';
+  }
+  return {air,shape,velum:air==='nasal'?'low':'high'};
+}
+/* fixed line-art anatomy (original drawing, profile facing left) */
+const FACE   = "M170,22 C128,10 90,15 83,42 C79,57 79,67 83,77 C71,86 47,90 38,105 C34,111 45,115 58,116 C68,118 72,123 72,132 C72,140 71,146 78,148";
+const PALATE = "M88,136 C82,132 86,127 98,127 C100,121 104,121 106,128 C128,121 147,118 159,119 C167,121 170,129 163,137 C160,141 154,139 153,132";
+const JAW    = "M76,152 C67,161 68,173 82,184 C97,198 124,205 154,205 C184,205 201,200 207,184";
+const PHAR   = "M204,150 C203,164 204,175 207,184";
+function articulationSVG(p){
+  const A=artParams(p), S=TSHAPE[A.shape]||TSHAPE.midcentral, T=S.T, B=S.B, C=CONSTRICT[p.place]||[46,134];
+  const ink='#C9544A';
+  const tongue=`M78,184 Q${(78+T[0])>>1},${T[1]-6} ${T[0]},${T[1]} Q${(T[0]+B[0])>>1},${Math.min(T[1],B[1])-14} ${B[0]},${B[1]} Q${(B[0]+182)>>1},${B[1]} 184,154 L186,190 L78,188 Z`;
+  const velum = A.velum==='high'
+    ? 'M158,114 C168,120 174,130 169,146 C167,151 162,150 160,144'   // raised: closes the nasal port
+    : 'M158,114 C160,130 156,146 148,160 C145,164 141,162 142,154';  // lowered: uvula drops, nose opens
+  let flow, fcolor= A.air==='stop'?'#E0683A':'#2E78D6', burst='';
+  if(A.air==='nasal'){
+    flow='M186,166 C193,150 188,122 168,110 C132,96 74,92 34,100';
+  } else if(A.air==='stop'){
+    flow=`M${C[0]-2},${C[1]} L${C[0]-28},${C[1]-3}`;
+    // hold (closure bar) + a puff of release arrows bursting out of the lips
+    burst=`<line x1="${C[0]}" y1="${C[1]-7}" x2="${C[0]}" y2="${C[1]+7}" stroke="#E0683A" stroke-width="3" stroke-linecap="round"/>
+      <g stroke="#E0683A" stroke-width="2.2" stroke-linecap="round" fill="none" opacity=".85"><path d="M33,128 L19,120"/><path d="M33,135 L16,135"/><path d="M33,142 L19,150"/></g>`;
+  } else {
+    flow='M186,166 C196,150 150,138 42,136';
+    // fricatives: a second, faster streamline to read as turbulent hiss
+    if(A.air==='fric') burst=`<path d="M168,140 C128,144 80,142 46,144" class="airflow" fill="none" stroke="#2E78D6" stroke-width="2" stroke-linecap="round" opacity=".5" style="animation-duration:.8s"/>`;
+  }
+  const voice = p.voiced
+    ? `<g class="vibe" stroke="#2E9E6B" stroke-width="2" fill="none" stroke-linecap="round"><path d="M176,172 q4,-4 8,0 t8,0"/><path d="M176,178 q4,-4 8,0 t8,0"/></g>`
+    : `<line x1="176" y1="175" x2="192" y2="175" stroke="#9AA8B8" stroke-width="2" stroke-linecap="round"/>`;
+  // where to point the "air flow" label, by manner
+  const aF = A.air==='stop' ? [150,150,60,130] : A.air==='nasal' ? [150,94,122,103] : [158,118,120,138];
+  const teeth = `<g class="part"><title>Teeth</title>
+    <path d="M50,116 q9,2 16,0 l-1,13 q-7,2 -14,0 Z" fill="#fff" stroke="#D7C2B8" stroke-width="1"/><line x1="58" y1="117" x2="58" y2="129" stroke="#E4D2C8"/>
+    <path d="M54,150 q7,-2 13,0 l-1,11 q-6,2 -11,0 Z" fill="#fff" stroke="#D7C2B8" stroke-width="1"/></g>`;
+  const L=(x,y,tx,ty,txt,anchor)=>`<g class="lbl"><line class="lead" x1="${tx}" y1="${ty}" x2="${x}" y2="${y}"/><circle class="ldot" cx="${x}" cy="${y}" r="1.6"/><text x="${tx}" y="${ty}"${anchor?` text-anchor="${anchor}"`:''}>${txt}</text></g>`;
+  const id=p.arp;
+  return `<svg viewBox="0 0 220 225" class="w-full h-full">
+    <defs>
+      <marker id="ah-${id}" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="${fcolor}"/></marker>
+      <radialGradient id="gl-${id}" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#4A7BC8" stop-opacity=".4"/><stop offset="100%" stop-color="#4A7BC8" stop-opacity="0"/></radialGradient>
+      <linearGradient id="fl-${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F8D2CA"/><stop offset="1" stop-color="#EBAEA2"/></linearGradient>
+      <linearGradient id="tg-${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ECAAA2"/><stop offset="1" stop-color="#D78A83"/></linearGradient>
+    </defs>
+    <g class="part"><title>Face — nose, lips, jaw (side view)</title><path d="M196,18 C150,6 84,12 75,44 C71,58 71,68 75,80 C63,88 39,92 30,106 C26,112 40,116 52,116 C62,118 67,123 67,132 C67,140 66,147 72,151 C65,159 66,171 79,183 C94,197 121,204 151,204 L210,204 C216,150 220,78 196,18 Z" fill="url(#fl-${id})" stroke="#D89488" stroke-width="1.5"/></g>
+    <g class="part"><title>Nasal cavity — air to the nose</title><path d="M32,102 C72,90 120,88 152,96 C150,101 150,103 152,107 C120,99 72,101 40,113 C34,111 28,107 32,102 Z" fill="#FCEEEB" stroke="#E6B9AF" stroke-width="1"/><path d="M60,100 q7,5 14,0 t14,0 t14,0" fill="none" stroke="#E6B9AF" stroke-width="1.4"/></g>
+    <g class="part"><title>Mouth &amp; throat (air cavity)</title><path d="M40,132 C80,120 126,112 158,108 C166,118 168,128 166,142 C168,158 168,176 166,188 L156,190 C126,186 86,188 62,186 C50,168 44,150 40,132 Z" fill="#FDF3F1"/></g>
+    <g class="part"><title>Hard palate &amp; alveolar ridge — roof of the mouth and the bump behind the upper teeth</title><path d="M44,128 C86,116 128,108 158,105 C159,108 159,110 161,112 C130,116 88,124 48,134 C46,132 45,130 44,128 Z" fill="#E8A79D" stroke="#D6938A" stroke-width=".8"/></g>
+    ${teeth}
+    <g class="part"><title>Tongue — its position changes for every sound</title><path d="${tongue}" fill="url(#tg-${id})" stroke="#C57E77" stroke-width="1.8" stroke-linejoin="round"/><path d="M88,182 Q${(88+T[0])>>1},${T[1]+4} ${T[0]},${T[1]+8}" fill="none" stroke="#C98C86" stroke-width="1" opacity=".5"/></g>
+    <g class="part"><title>Soft palate (velum) &amp; uvula — ${A.velum==='low'?'lowered: opens the nose for nasals':'raised: closes off the nose'}</title><path d="${velum}" fill="#E59CA6" stroke="#D2818C" stroke-width="1.2"/></g>
+    <path d="M200,150 C198,166 200,178 206,188" fill="none" stroke="#D6938A" stroke-width="1.4" opacity=".6"/>
+    <g class="part"><title>Voice box (larynx) — ${p.voiced?'vibrating (voiced)':'still (voiceless)'}</title>${voice}</g>
+    <path d="${flow}" class="airflow" fill="none" stroke="${fcolor}" stroke-width="3.4" stroke-linecap="round" marker-end="url(#ah-${id})"/>
+    ${burst}
+    <circle cx="${C[0]}" cy="${C[1]}" r="17" fill="url(#gl-${id})"/>
+    ${L(40,101, 4,36,'nose')}
+    ${L(60,120, 44,26,'teeth')}
+    ${L(103,123, 96,22,'alveolar ridge','middle')}
+    ${L(46,135, 2,154,'lips')}
+    <g class="lbl"><text x="108" y="170" text-anchor="middle" fill="#A85F54">tongue</text></g>
+    ${L(aF[2],aF[3], aF[0],aF[1],'air flow')}
+    <text x="150" y="212" font-size="8.5" fill="${p.voiced?'#2E9E6B':'#9AA8B8'}" font-weight="700">voice ${p.voiced?'ON':'OFF'}</text>
+  </svg>`;
+}
+const LIP_LABEL={closed:"Lips closed",rounded:"Lips rounded",spread:"Lips spread (smile)",neutral:"Lips relaxed"};
+
+/* ---- 5b) PROFESSIONAL DIAGRAM — CC0 sagittal sections (Wright & McCloy,
+   public domain) per sound, with our English labels + animated airflow on top.
+   Profile faces RIGHT; template viewBox is 173×245, we pad to 252 for labels. */
+const DIAG={p:'p',b:'b',t:'t',d:'d',k:'k',g:'g',f:'f',v:'v',th:'th',dh:'dh',
+  s:'s',z:'z',sh:'sh',zh:'zh',ch:'sh',jh:'zh',m:'m',n:'n',ng:'ng',
+  l:'d',r:'r',w:'V_u',y:'j',h:'neutral',
+  iy:'V_i',ih:'V_ih',eh:'V_eh',ae:'V_ae',aa:'V_a',ah:'V_a',ax:'neutral',
+  uw:'V_u',uh:'V_uh',ao:'V_uh',er:'r',ey:'V_eh',ay:'V_a',ow:'V_u',aw:'V_a',oy:'V_uh'};
+function diagramSVG(p){
+  const f=DIAG[p.arp]||'neutral', A=artParams(p), id=p.arp;
+  let flow, fc=A.air==='stop'?'#E0683A':'#2E78D6', burst='';
+  if(A.air==='nasal')      flow='M148,150 C150,120 158,98 167,82';
+  else if(A.air==='stop'){ flow='M150,126 L178,126'; burst='<line x1="150" y1="119" x2="150" y2="133" stroke="#E0683A" stroke-width="3" stroke-linecap="round"/>'; }
+  else                     flow='M120,140 C142,135 162,128 184,123';
+  const L=(sx,sy,tx,ty,txt)=>`<g class="lbl"><line class="lead" x1="${tx}" y1="${ty}" x2="${sx}" y2="${sy}"/><circle class="ldot" cx="${sx}" cy="${sy}" r="1.8"/><text x="${tx+3}" y="${ty+2.6}">${txt}</text></g>`;
+  return `<svg viewBox="0 0 252 245" class="w-full h-full">
+    <defs><marker id="pc-${id}" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="${fc}"/></marker></defs>
+    <image href="diagrams/${f}.svg?v=2" x="0" y="0" width="173" height="245" preserveAspectRatio="xMidYMid meet"/>
+    <path d="${flow}" class="airflow" fill="none" stroke="${fc}" stroke-width="3.4" stroke-linecap="round" marker-end="url(#pc-${id})"/>
+    ${burst}
+    ${L(160,93, 182,86,'nose')}
+    ${L(142,108, 182,104,'alveolar ridge')}
+    ${L(152,116, 182,120,'teeth')}
+    ${L(167,124, 182,136,'lips')}
+    ${L(174,127, 182,152,'air flow')}
+    ${L(116,150, 182,170,'tongue')}
+  </svg>`;
+}
+
+/* ============================================================
+   APP STATE + RENDER
+   ============================================================ */
+const EMBED = /[?&]embed=1/.test(location.search);
+const GROUPS = ["All","Short vowel","Long vowel","Stop","Fricative","Affricate","Nasal","Glide/Liquid"];
+let state = { view:'sounds', filter:'All', open:null, recording:false, lastScore:null, pairIdx:0, pairTarget:0, anim:false };
+const $ = sel => document.querySelector(sel);
+function setState(p){ Object.assign(state,p); render(); }
+
+function header(){
+  const tabs=[['sounds','Sounds'],['pairs','Minimal Pairs'],['guide','How to use']];
+  return `<header class="flex flex-wrap items-center gap-3 justify-between mb-5">
+    ${EMBED?'<div></div>':`<div class="flex items-center gap-3">
+      <div class="w-11 h-11 rounded-2xl bg-nordic-600 text-white grid place-items-center text-xl font-black">🎙️</div>
+      <div><div class="text-lg font-black text-nordic-800 leading-tight">Pronunciation Coach</div>
+      <div class="text-xs text-nordic-400">NIS English · hear it · see the mouth · say it · get scored</div></div>
+    </div>`}
+    <div class="flex items-center gap-2 text-xs">
+      ${voiceControls()}
+    </div>
+  </header>
+  <nav class="flex gap-1 bg-white rounded-2xl p-1 card-shadow w-full sm:w-auto mb-5">
+    ${tabs.map(([k,l])=>`<button data-tab="${k}" class="flex-1 sm:flex-none px-4 py-2 rounded-xl text-sm font-semibold ${state.view===k?'bg-nordic-600 text-white':'text-nordic-600 hover:bg-nordic-50'}">${l}</button>`).join('')}
+  </nav>`;
+}
+function voiceControls(){
+  const seg=(name,opts)=>`<div class="inline-flex bg-white rounded-full p-0.5 card-shadow">${opts.map(([v,l])=>`<button data-pref="${name}" data-val="${v}" class="px-2.5 py-1 rounded-full font-semibold ${prefs[name]===v?'bg-nordic-600 text-white':'text-nordic-500'}">${l}</button>`).join('')}</div>`;
+  return seg('accent',[['us','US'],['uk','UK']])+seg('gender',[['female','♀'],['male','♂']])+seg('speed',[['slow','🐢 Slow'],['normal','▶ Normal']]);
+}
+
+function soundsView(){
+  const list = state.filter==='All'?PHONEMES:PHONEMES.filter(p=>p.grp===state.filter);
+  return `<div class="flex flex-wrap gap-2 mb-4">
+    ${GROUPS.map(g=>`<button data-filter="${g}" class="px-3 py-1.5 rounded-full text-xs font-semibold ${state.filter===g?'bg-nordic-700 text-white':'bg-white text-nordic-600 card-shadow'}">${g}</button>`).join('')}
+  </div>
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+    ${list.map(p=>`<button data-open="${p.arp}" class="group text-left bg-white rounded-2xl p-3 card-shadow hover:-translate-y-1 transition-all border border-nordic-100 hover:border-nordic-300">
+      <div class="flex items-center justify-between"><span class="text-2xl font-bold text-nordic-700">${p.ipa}</span>
+      <span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${p.voiced?'bg-emerald-100 text-emerald-700':'bg-slate-100 text-slate-500'}">${p.voiced?'voiced':'unvoiced'}</span></div>
+      <div class="mt-1 text-sm text-nordic-900 font-semibold">${p.word}</div>
+      <div class="text-[11px] text-nordic-400">${p.graphemes.join('  ')}</div>
+    </button>`).join('')}
+  </div>`;
+}
+
+function detailView(p){
+  const sc=state.lastScore;
+  const scoreBox = !SR_OK ? `<div class="text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-xl p-3">🎤 Speech scoring needs Chrome or Edge (browser SpeechRecognition). You can still hear the sound and word.</div>`
+    : sc ? `<div class="rounded-xl p-3 ${sc.pct>=75?'bg-emerald-50 border border-emerald-200':sc.pct>=50?'bg-amber-50 border border-amber-200':'bg-rose-50 border border-rose-200'}">
+        <div class="flex items-center justify-between"><span class="font-bold ${sc.pct>=75?'text-emerald-700':sc.pct>=50?'text-amber-700':'text-rose-700'}">${sc.pct>=75?'✅ Great!':sc.pct>=50?'🟡 Close — try again':'🔴 Try again'} ${sc.pct}%</span></div>
+        <div class="text-xs text-nordic-500 mt-1">I heard: <b>"${sc.heard||'—'}"</b> · target: <b>${p.word}</b></div>
+      </div>` : `<div class="text-xs text-nordic-400">Press <b>🎤 Say "${p.word}"</b> and read the word aloud.</div>`;
+  return `<button data-back class="text-sm text-nordic-500 mb-3">← All sounds</button>
+  <div class="grid md:grid-cols-2 gap-5">
+    <div class="bg-white rounded-3xl p-5 card-shadow">
+      <div class="flex items-start justify-between">
+        <div><div class="text-5xl font-black text-nordic-700">${p.ipa}</div>
+        <div class="text-nordic-400 text-sm mt-1">${p.manner}</div></div>
+        <span class="text-xs font-bold px-3 py-1 rounded-full ${p.voiced?'bg-emerald-100 text-emerald-700':'bg-slate-100 text-slate-500'}">${p.voiced?'voiced ♪':'unvoiced ·'}</span>
+      </div>
+      <div class="mt-4 bg-white rounded-2xl overflow-hidden border border-nordic-100" style="height:330px">${diagramSVG(p)}</div>
+      <div class="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-[11px] text-nordic-400">
+        <span>Side view of the mouth — labels show <b>nose, teeth, alveolar ridge, lips, tongue, air flow</b>.</span>
+        <span><span class="inline-block w-2.5 h-2.5 rounded-full bg-[#2E78D6] align-middle"></span> air flow</span>
+        <span><span class="inline-block w-2.5 h-2.5 rounded-full bg-[#E0683A] align-middle"></span> stop / burst</span>
+        <span>wavy throat = voiced</span>
+      </div>
+      <div class="mt-1 text-[11px] text-nordic-300">Diagrams: Wright &amp; McCloy, CC0 (public domain) · air flows when you press 🔊 or ▶ Animate.</div>
+      <div class="mt-3 flex flex-wrap gap-2 text-xs">
+        <span class="px-2.5 py-1 rounded-full bg-nordic-50 text-nordic-600 font-semibold">${LIP_LABEL[p.lip]||''}</span>
+        <span class="px-2.5 py-1 rounded-full bg-nordic-50 text-nordic-600 font-semibold">Spellings: ${p.graphemes.join(', ')}</span>
+      </div>
+    </div>
+    <div class="bg-white rounded-3xl p-5 card-shadow flex flex-col gap-4">
+      <p class="text-nordic-700">${p.tip}</p>
+      <div class="grid grid-cols-2 gap-3">
+        <button data-say="sound" class="py-3 rounded-2xl bg-nordic-100 text-nordic-700 font-bold hover:bg-nordic-200">🔊 Hear sound</button>
+        <button data-say="word" class="py-3 rounded-2xl bg-nordic-600 text-white font-bold hover:bg-nordic-700">🔊 Hear "${p.word}"</button>
+      </div>
+      <button data-anim class="py-2.5 rounded-2xl font-bold border-2 ${state.anim?'bg-amber-500 text-white border-amber-500':'bg-white text-nordic-600 border-nordic-200 hover:border-nordic-400'}">${state.anim?'⏸ Stop animation':'▶ Animate the airflow (loop)'}</button>
+      <div class="border-t border-nordic-100 pt-4">
+        <div class="text-xs font-bold text-nordic-400 uppercase tracking-wide mb-2">Practice — say it</div>
+        <button id="recBtn" data-rec class="relative w-full py-4 rounded-2xl font-black text-white ${state.recording?'bg-rose-500':'bg-emerald-600 hover:bg-emerald-700'}" ${SR_OK?'':'disabled'}>
+          ${state.recording?'<span class="absolute inset-0 rounded-2xl rec-ring bg-rose-400"></span><span class="relative">● Listening… say "'+p.word+'"</span>':'🎤 Say "'+p.word+'"'}
+        </button>
+        <div class="mt-3">${scoreBox}</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function pairsView(){
+  const set=MIN_PAIRS[state.pairIdx];
+  const A=PHONEMES.find(x=>x.arp===set.a), B=PHONEMES.find(x=>x.arp===set.b);
+  const sc=state.lastScore;
+  return `<div class="flex flex-wrap gap-2 mb-4">
+    ${MIN_PAIRS.map((m,i)=>{const a=PHONEMES.find(x=>x.arp===m.a),b=PHONEMES.find(x=>x.arp===m.b);
+      return `<button data-pairset="${i}" class="px-3 py-1.5 rounded-full text-xs font-bold ${state.pairIdx===i?'bg-nordic-700 text-white':'bg-white text-nordic-600 card-shadow'}">${a.ipa} vs ${b.ipa}</button>`;}).join('')}
+  </div>
+  <div class="bg-white rounded-3xl p-5 card-shadow">
+    <p class="text-sm text-nordic-500 mb-4">${set.note}</p>
+    <div class="grid sm:grid-cols-2 gap-3 mb-5">
+      <div class="rounded-2xl border-2 border-nordic-200 p-3 text-center">
+        <div class="text-3xl font-black text-nordic-700">${A.ipa}</div><div class="text-xs text-nordic-400">${A.manner}</div>
+        <div class="aspect-square mt-2 bg-white rounded-xl overflow-hidden border border-nordic-100">${diagramSVG(A)}</div>
+      </div>
+      <div class="rounded-2xl border-2 border-nordic-200 p-3 text-center">
+        <div class="text-3xl font-black text-nordic-700">${B.ipa}</div><div class="text-xs text-nordic-400">${B.manner}</div>
+        <div class="aspect-square mt-2 bg-white rounded-xl overflow-hidden border border-nordic-100">${diagramSVG(B)}</div>
+      </div>
+    </div>
+    <div class="space-y-2">
+      ${set.pairs.map((pr,i)=>`<div class="flex items-center gap-2 ${i%2?'':'bg-nordic-50/60'} rounded-xl p-2">
+        <button data-pw="${pr[0]}" class="flex-1 py-2 rounded-lg bg-white border border-nordic-100 font-bold text-nordic-700 hover:border-nordic-300">🔊 ${pr[0]}</button>
+        <span class="text-nordic-300 text-xs">vs</span>
+        <button data-pw="${pr[1]}" class="flex-1 py-2 rounded-lg bg-white border border-nordic-100 font-bold text-nordic-700 hover:border-nordic-300">🔊 ${pr[1]}</button>
+        <button data-ptest='${JSON.stringify(pr)}' class="px-3 py-2 rounded-lg bg-emerald-600 text-white text-xs font-bold hover:bg-emerald-700" ${SR_OK?'':'disabled'}>🎤 Test</button>
+      </div>`).join('')}
+    </div>
+    ${sc&&sc.kind==='pair'?`<div class="mt-4 rounded-xl p-3 ${sc.correct?'bg-emerald-50 border border-emerald-200 text-emerald-700':'bg-rose-50 border border-rose-200 text-rose-700'} text-sm font-semibold">
+      ${sc.correct?'✅ Correct!':'🔴 Not quite.'} I heard <b>"${sc.heard||'—'}"</b> — you ${state.recording?'are saying':'said'} <b>${sc.target}</b>.</div>`:''}
+  </div>`;
+}
+
+function guideView(){
+  return `<div class="bg-white rounded-3xl p-6 card-shadow max-w-3xl space-y-4 text-sm text-nordic-700">
+    <h2 class="text-lg font-black text-nordic-800">How to use the Pronunciation Coach</h2>
+    <ol class="list-decimal pl-5 space-y-2">
+      <li><b>Sounds</b> — tap any of the 40 English phonemes. You'll see the IPA symbol, whether it's voiced, where in the mouth it's made (the blue glow), the lip shape, and how it's spelled.</li>
+      <li><b>Hear it</b> — use <b>🔊 Hear sound</b> and <b>🔊 Hear "word"</b>. Toggle US/UK accent, voice, and 🐢 slow speed at the top.</li>
+      <li><b>Say it & get scored</b> — press <b>🎤 Say "word"</b> and read it aloud. The coach listens and scores how close you were.</li>
+      <li><b>Minimal Pairs</b> — drill the contrasts Spanish speakers find hardest (sit/seat, ban/van, thin/sin…). Hear each word, then <b>🎤 Test</b> yourself.</li>
+    </ol>
+    <div class="bg-nordic-50 border border-nordic-200 rounded-2xl p-4">
+      <b class="text-nordic-700">Tips for Spanish-L1 learners:</b> watch short /ɪ/ vs long /iː/, /v/ vs /b/, the two <i>th</i> sounds /θ/ /ð/, final consonant clusters, and /h/. Use the mouth diagram and the voiced/unvoiced dot, and contrast minimal pairs out loud.
+    </div>
+    <p class="text-xs text-nordic-400">🎤 Speech scoring uses your browser's built-in recognition (best in Chrome/Edge) and runs on Google's service when online. Audio uses the browser's speech engine — no external files. Inventory follows the standard ARPABET/IPA phoneme set.</p>
+  </div>`;
+}
+
+function render(){
+  let body='';
+  if(state.view==='sounds') body = state.open ? detailView(PHONEMES.find(p=>p.arp===state.open)) : soundsView();
+  else if(state.view==='pairs') body = pairsView();
+  else body = guideView();
+  $('#app').innerHTML = header() + `<div class="fade-in">${body}</div>`
+    + (EMBED?'':`<footer class="mt-8 text-center text-xs text-nordic-400">NIS English — Pronunciation Coach · original phoneme content · browser speech engine</footer>`);
+  try{ document.body.classList.toggle('anim-loop', !!(state.anim && state.open)); }catch(e){}
+  bind();
+}
+
+/* ---- event binding ---- */
+function bind(){
+  document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>setState({view:b.dataset.tab,open:null,lastScore:null}));
+  document.querySelectorAll('[data-pref]').forEach(b=>b.onclick=()=>{ prefs[b.dataset.pref]=b.dataset.val; savePrefs(); render(); });
+  document.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>setState({filter:b.dataset.filter}));
+  document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>{ setState({open:b.dataset.open,lastScore:null}); const p=PHONEMES.find(x=>x.arp===b.dataset.open); speak(p.word); });
+  const back=$('[data-back]'); if(back) back.onclick=()=>setState({open:null,lastScore:null,recording:false});
+  document.querySelectorAll('[data-say]').forEach(b=>b.onclick=()=>{ const p=PHONEMES.find(x=>x.arp===state.open); speak(b.dataset.say==='word'?p.word:p.say,{rate:b.dataset.say==='word'?0.85:0.7}); });
+  const rec=$('[data-rec]'); if(rec) rec.onclick=()=>toggleRecord();
+  const anim=$('[data-anim]'); if(anim) anim.onclick=()=>setState({anim:!state.anim});
+  document.querySelectorAll('[data-pairset]').forEach(b=>b.onclick=()=>setState({pairIdx:+b.dataset.pairset,lastScore:null}));
+  document.querySelectorAll('[data-pw]').forEach(b=>b.onclick=()=>speak(b.dataset.pw));
+  document.querySelectorAll('[data-ptest]').forEach(b=>b.onclick=()=>testPair(JSON.parse(b.dataset.ptest)));
+}
+
+/* ---- recording: single phoneme word ---- */
+let activeRec=null;
+function toggleRecord(){
+  if(state.recording){ if(activeRec){ try{activeRec.stop();}catch(e){} } setState({recording:false}); return; }
+  const p=PHONEMES.find(x=>x.arp===state.open);
+  setState({recording:true,lastScore:null});
+  activeRec=listenOnce({
+    onResult:alts=>{
+      const best=alts.map(a=>({a,s:similarity(a,p.word)})).sort((x,y)=>y.s-x.s)[0];
+      setState({recording:false,lastScore:{pct:Math.round(best.s*100),heard:best.a,kind:'word'}});
+      activeRec=null;
+    },
+    onError:err=>{ setState({recording:false,lastScore:{pct:0,heard:(err==='not-allowed'?'(mic blocked)':err==='no-speech'?'(no speech heard)':'(error)'),kind:'word'}}); activeRec=null; },
+    onEnd:()=>{ if(state.recording){ setState({recording:false}); activeRec=null; } }
+  });
+}
+/* ---- recording: minimal pair — which one did they say? ---- */
+function testPair(pr){
+  setState({recording:true,lastScore:null});
+  activeRec=listenOnce({
+    onResult:alts=>{
+      const heard=alts[0]||'';
+      const s0=Math.max(...alts.map(a=>similarity(a,pr[0])));
+      const s1=Math.max(...alts.map(a=>similarity(a,pr[1])));
+      const said = s0>=s1?pr[0]:pr[1];
+      const correct = Math.max(s0,s1)>=0.6;
+      setState({recording:false,lastScore:{kind:'pair',heard,target:said,correct}});
+      activeRec=null;
+    },
+    onError:err=>{ setState({recording:false,lastScore:{kind:'pair',heard:(err==='not-allowed'?'(mic blocked)':'(no speech)'),target:'',correct:false}}); activeRec=null; },
+    onEnd:()=>{ if(state.recording){ setState({recording:false}); activeRec=null; } }
+  });
+}
+
+/* warm up voices then render */
+if(window.speechSynthesis) speechSynthesis.getVoices();
+render();
+</script>
+</body>
+</html>
