@@ -1359,24 +1359,25 @@ window._sendWritingResult = async ()=>{
 async function renderStudent(initial){
   document.body.innerHTML = shell([
     {key:'home',label:'🏠 Inicio'},
-    {key:'mocks',label:'🎓 Cambridge Mocks'},
-    {key:'practice',label:'🎯 Practice Tests'},
-    {key:'library',label:'📚 Library'},
-    {key:'mun',label:'🌐 MUN Academy'},
-    {key:'classes',label:'🏫 Classes'},
-    {key:'phonics',label:'🔤 Phonics'},
-    {key:'coach',label:'🎙️ Pronunciación'},
+    {key:'english',label:'🇬🇧 English'},
+    {key:'french',label:'🇫🇷 French'},
+    {key:'general',label:'🗂️ General'},
     {key:'results',label:'📊 My Results'},
   ], initial||'home', `<div class="center muted">Cargando…</div>`);
   bindNav(k=>{
+    if(k==='english') return studentSubject('english');
+    if(k==='french') return studentSubject('french');
+    if(k==='general') return studentGeneral();
     if(k==='mun') return studentMun();
     if(k==='phonics') return studentPhonics();
     if(k==='coach') return studentCoach();
     if(k==='mocks') return studentMocks();
     if(k==='practice') return studentPractice();
     if(k==='classes') return studentClasses();
+    if(k==='classes_g9') return studentGrade('g9');
     if(k==='library') return studentLibrary();
     if(k==='results') return studentResults();
+    if(k==='final') return studentResultsView('final');
     return studentHub();
   });
   if(initial==='results') studentResults(); else studentHub();
@@ -1399,19 +1400,113 @@ function studentHub(){
   const p=state.profile;
   $('#main').innerHTML=`<h1>Hola, ${esc(p.first_name||p.full_name||'')} 👋</h1>
     <p class="muted" style="margin-top:-6px">${esc(p.grades?.name||'')} ${p.section?'· '+esc(p.section):''} · Nivel ${esc(p.cefr_level||'sin asignar')} — ¿Qué quieres hacer hoy?</p>
-    <div class="grid cols-3" style="margin-top:14px">
-      ${_hubCard('🎓','Cambridge Mocks','Simulacros oficiales MOCK 1 y MOCK 2 por destreza.',"window._nav('mocks')")}
-      ${_hubCard('🎯','Practice Tests','Prácticas 1, 2 y 3 en formato Cambridge, siempre disponibles.',"window._nav('practice')")}
+    <h2 style="margin:18px 0 8px">Materias</h2>
+    <div class="grid cols-3">
+      ${_hubCard('🇬🇧','English','Pronunciation, Mocks, Classes y más.',"window._nav('english')")}
+      ${_hubCard('🇫🇷','French','Próximamente — pronto habilitaremos el francés.',"window._nav('french')")}
+    </div>
+    <h2 style="margin:22px 0 8px">General</h2>
+    <div class="grid cols-3">
       ${_hubCard('📚','Library','Biblioteca NIS: busca y explora los libros del colegio.',"window._nav('library')")}
       ${_hubCard('🌐','MUN Academy','Model United Nations: debate, oratoria y diplomacia.',"window._nav('mun')")}
-      ${_hubCard('🏫','Classes','Presentaciones y actividades de tus clases.',"window._nav('classes')")}
-      ${_hubCard('🔤','Phonics','Sonidos y formas de las palabras: CVC, blends, magic-e y más.',"window._nav('phonics')")}
-      ${_hubCard('🎙️','Pronunciation Coach','Escucha cada sonido, mira la lengua y el aire, y practica diciéndolo.',"window._nav('coach')")}
-      ${_hubCard('📊','My Results','Todos tus mocks y practice tests, con tu proyección.',"window._nav('results')")}
+    </div>`;
+}
+
+/* ---------- Jerarquía de contenido: Materia → Área → Grado → Actividad ----------
+   Las áreas de English se reflejan en French (placeholder hasta alimentarlas). */
+const ENGLISH_AREAS = [
+  {emoji:'🎙️', title:'Pronunciation', desc:'Escucha cada sonido, mira la lengua y el aire, y practica.', nav:'coach'},
+  {emoji:'🎓', title:'Mocks',         desc:'Simulacros oficiales MOCK 1 y MOCK 2 por destreza.',        nav:'mocks'},
+  {emoji:'🏫', title:'Classes',       desc:'Material de clase por grado: grammar, actividades y más.',  nav:'classes'},
+  {emoji:'🎯', title:'Practice Tests',desc:'Prácticas 1, 2 y 3 en formato Cambridge, siempre disponibles.', nav:'practice'},
+  {emoji:'🔤', title:'Phonics',       desc:'Sonidos y formas de las palabras: CVC, blends, magic-e.',  nav:'phonics'},
+  {emoji:'📊', title:'My Results',    desc:'Tu detalle de mocks/practice y tu resultado final CEFR + PDF.', nav:'results', englishOnly:true},
+];
+function _backBtn(onclick,label){
+  return `<button class="btn sm ghost" onclick="${onclick}" style="margin-bottom:10px">← ${label}</button>`;
+}
+function _isStudent(){ return !!(state.profile && state.profile.role==='student'); }
+
+/* Vista de materia (English / French) */
+function studentSubject(key){
+  _setNav(key);
+  const isEn = key==='english';
+  const title = isEn ? '🇬🇧 English' : '🇫🇷 French';
+  const areas = isEn ? ENGLISH_AREAS : ENGLISH_AREAS.filter(a=>!a.englishOnly);
+  const cards = areas.map(a=> isEn
+    ? _hubCard(a.emoji,a.title,a.desc,`window._nav('${a.nav}')`)
+    : _soonCard(a.emoji,a.title,a.desc)).join('');
+  $('#main').innerHTML = `${_backBtn("window._nav('home')",'Inicio')}<h1>${title}</h1>
+    <p class="muted" style="margin-top:-6px">${isEn?'Tus áreas de inglés.':'Próximamente — iremos habilitando el francés poco a poco.'}</p>
+    <div class="grid cols-3" style="margin-top:12px">${cards}</div>`;
+}
+
+/* Vista General (transversal) */
+function studentGeneral(){
+  _setNav('general');
+  $('#main').innerHTML=`<h1>🗂️ General</h1>
+    <p class="muted" style="margin-top:-6px">Recursos generales del portal.</p>
+    <div class="grid cols-3" style="margin-top:12px">
+      ${_hubCard('📚','Library','Biblioteca NIS: busca y explora los libros del colegio.',"window._nav('library')")}
+      ${_hubCard('🌐','MUN Academy','Model United Nations: debate, oratoria y diplomacia.',"window._nav('mun')")}
+    </div>`;
+}
+
+/* Resultado final propio del alumno (read-only) + descarga de PDF — pestaña de My Results */
+async function _resultsFinal(tok){
+  const p=state.profile;
+  const { data:at } = await sb.from('exam_attempts').select('id,skill,level,percent,mock,submitted_at').eq('student_id',p.id);
+  let sp=null; try{ const r=await sb.from('speaking_results').select('*').eq('student_id',p.id).maybeSingle(); sp=r&&r.data; }catch(e){}
+  const fin=_finalFromData(p, at||[], sp);
+  const tgt=targetLevel(p), stt=targetStatus(fin.finalCefr,tgt);
+  const sttTxt = stt==='below'?`▼ Por debajo de tu objetivo (${tgt})`:stt==='above'?`▲ Por encima de tu objetivo (${tgt})`:stt==='meets'?`✓ Cumples tu objetivo (${tgt})`:'';
+  const ch='padding:8px;border:1px solid var(--line)';
+  const row=(label,b)=>`<tr><td style="${ch}"><b>${label}</b></td>
+    <td style="${ch};text-align:center">${b?b.level:'—'}</td>
+    <td style="${ch};text-align:center">${b?(b.pct!=null?b.pct+'%':'—'):'<span style="color:#b45309">Pendiente</span>'}</td>
+    <td style="${ch};text-align:center;color:var(--blue-d);font-weight:700">${b?b.cefr:'—'}</td>
+    <td style="${ch};text-align:center">${b?b.scale:'—'}</td></tr>`;
+  const wRow = fin.isA2
+    ? `<tr><td style="${ch}"><b>Writing</b></td><td colspan="4" style="${ch};color:var(--grey)">Incluido en Reading &amp; Use of English (A2 Key)</td></tr>`
+    : row('Writing', fin.skills.Writing);
+  if(tok!==_resultsTok) return;
+  $('#rbody').innerHTML=`
+    <p class="muted" style="margin-top:-6px">Tu nivel estimado combinando tus mejores resultados por destreza en la Escala Cambridge.</p>
+    <div class="card" style="overflow-x:auto"><table style="width:100%;border-collapse:collapse">
+      <thead><tr><th style="${ch};text-align:left">Destreza</th><th style="${ch}">Nivel</th><th style="${ch}">Resultado</th><th style="${ch}">CEFR</th><th style="${ch}">Escala</th></tr></thead>
+      <tbody>
+        ${row('Reading &amp; Use of English'+(fin.isA2?' (incluye Writing)':''),fin.skills.Reading)}
+        ${row('Listening',fin.skills.Listening)}
+        ${wRow}
+        ${row('Speaking',fin.skills.Speaking)}
+      </tbody></table></div>
+    <div class="card" style="display:flex;gap:16px;align-items:center;background:#0f2741;color:#fff">
+      <div><div style="font-size:.78rem;opacity:.8">RESULTADO FINAL</div><div style="font-size:2.2rem;font-weight:800;line-height:1">${fin.finalCefr}</div></div>
+      <div style="border-left:1px solid rgba(255,255,255,.3);padding-left:16px"><div style="font-size:.78rem;opacity:.8">ESCALA CAMBRIDGE</div><div style="font-size:1.6rem;font-weight:700">${fin.finalScale!=null?fin.finalScale:'—'}</div></div>
+      <div style="margin-left:auto;text-align:right">
+        ${sttTxt?`<div style="font-size:.85rem;font-weight:700;color:${stt==='below'?'#fca5a5':'#86efac'}">${sttTxt}</div>`:''}
+        ${fin.complete?'':`<div style="font-size:.74rem;opacity:.9;margin-top:4px">⚠ Provisional. Faltan: ${esc(fin.missing.join(', '))}.</div>`}
+      </div>
+    </div>
+    <button class="btn" onclick="window.studentReportPDF('${p.id}')">📄 Descargar mi PDF</button>`;
+}
+
+/* Vista de un grado dentro de Classes (9th grade → Grammar + Activities) */
+function studentGrade(key){
+  _setNav('classes');
+  const back = _isStudent() ? _backBtn("window._nav('classes')",'Classes') : '';
+  $('#main').innerHTML=`${back}<h1>9️⃣ 9th grade</h1>
+    <p class="muted" style="margin-top:-6px">Material de 9no grado.</p>
+    <div class="grid cols-2" style="margin-top:12px">
+      ${_skillCard('📝','Grammar','Gramática de 9no: explicaciones y práctica (en construcción).','grammar.html')}
+      ${_skillCard('🎲','Activities','Juegos y actividades: crosswords, word searches y más.','activities.html')}
     </div>`;
 }
 window._nav=(k)=>{
-  const fn={mocks:studentMocks,practice:studentPractice,library:studentLibrary,mun:studentMun,classes:studentClasses,phonics:studentPhonics,coach:studentCoach,results:studentResults,home:studentHub}[k];
+  const fn={english:()=>studentSubject('english'),french:()=>studentSubject('french'),general:studentGeneral,
+    mocks:studentMocks,practice:studentPractice,library:studentLibrary,mun:studentMun,classes:studentClasses,
+    classes_g9:()=>studentGrade('g9'),phonics:studentPhonics,coach:studentCoach,results:studentResults,
+    final:()=>studentResultsView('final'),home:studentHub}[k];
   if(fn) fn();
 };
 
@@ -1470,20 +1565,34 @@ function studentLibrary(){
 /* ---------- Classes: Presentations + Activities ---------- */
 function studentClasses(){
   _setNav('classes');
-  const card=(emoji,title,desc,url)=> url ? _skillCard(emoji,title,desc,url) : _soonCard(emoji,title,desc);
-  $('#main').innerHTML=`<h1>🏫 Classes</h1>
-    <p class="muted" style="margin-top:-6px">Material de tus clases de inglés.</p>
-    <div class="grid cols-2" style="margin-top:12px">
-      ${card('🖥️','Presentations','Las presentaciones que usamos en clase, por unidad y semana.',CLASSES_LINKS.presentations)}
-      ${card('🎲','Activities','Juegos y actividades interactivas: crosswords, word searches y más.',CLASSES_LINKS.activities)}
-    </div>`;
+  const back = _isStudent() ? _backBtn("window._nav('english')",'English') : '';
+  $('#main').innerHTML=`${back}<h1>🏫 Classes</h1>
+    <p class="muted" style="margin-top:-6px">Material de clase por grado.</p>
+    <div class="grid cols-3" style="margin-top:12px">
+      ${_hubCard('9️⃣','9th grade','Grammar y actividades de 9no grado.',"window._nav('classes_g9')")}
+    </div>
+    <p class="muted" style="margin-top:12px;font-size:.85rem">Más grados próximamente.</p>`;
 }
 
 /* ---------- My Results: todos los mocks y practice tests ---------- */
-async function studentResults(){
+/* My Results = vista con pestañas (Detalle + Resultado final CEFR) */
+let _resultsTok=0;
+async function studentResults(){ return studentResultsView('detalle'); }
+function studentResultsView(tab){
   _setNav('results');
+  tab = (tab==='final') ? 'final' : 'detalle';
+  const tok=++_resultsTok;   // guard: only the latest tab render may write #rbody
+  const back = _isStudent() ? _backBtn("window._nav('english')",'English') : '';
+  const tb=(k,label)=>`<button class="btn sm ${tab===k?'':'ghost'}" onclick="window._resultsTab('${k}')">${label}</button>`;
+  $('#main').innerHTML = `${back}<h1>📊 My Results</h1>
+    <div class="row" style="gap:8px;margin:6px 0 12px">${tb('detalle','📈 Detalle')}${tb('final','🏅 Resultado final CEFR')}</div>
+    <div id="rbody"><div class="center muted">Cargando…</div></div>`;
+  if(tab==='final') _resultsFinal(tok); else _resultsDetalle(tok);
+}
+window._resultsTab = (k)=>studentResultsView(k);
+
+async function _resultsDetalle(tok){
   const p=state.profile;
-  $('#main').innerHTML=`<h1>📊 My Results</h1><p class="muted">Cargando…</p>`;
   const { data:atts } = await sb.from('exam_attempts').select('*').eq('student_id',p.id).order('submitted_at',{ascending:false});
   const bySkill = SKILLS.map(sk=>{
     const a=(atts||[]).filter(x=>x.skill===sk);
@@ -1509,7 +1618,8 @@ async function studentResults(){
   const actTable=(list)=> list.length ? `<table><thead><tr><th>Actividad</th><th>Nivel</th><th>Resultado</th><th>⏱ Tiempo</th><th>💡 Pistas</th><th>Fecha</th></tr></thead><tbody>${
       list.map(a=>`<tr><td>${a.activity==='crossword'?'🔎':'🔍'} ${esc(a.title||(a.activity==='crossword'?'Crossword':'Word Search'))}</td><td>${esc(a.level)}</td><td>${a.score!=null?`${a.score}/${a.total}`:'—'}</td><td>${fmtT(a.duration_sec)}</td><td>${a.hints_used||0}</td><td class="muted">${new Date(a.submitted_at).toLocaleDateString()}</td></tr>`).join('')
     }</tbody></table>` : `<p class="muted">Aún no has completado actividades. Ve a <b>Classes → Activities</b>.</p>`;
-  $('#main').innerHTML=`<h1>📊 My Results</h1>
+  if(tok!==_resultsTok) return;
+  $('#rbody').innerHTML=`
     <p class="muted" style="margin-top:-6px">${esc(p.grades?.name||'')} ${p.section?'· '+esc(p.section):''} · Nivel ${esc(p.cefr_level||'sin asignar')}</p>
     <div class="grid cols-3">
       ${bySkill.map(s=>`<div class="stat"><div class="l">${s.sk}</div>
