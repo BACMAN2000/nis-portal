@@ -191,7 +191,7 @@ function phonicsPanel(){
 }
 /* Pronunciation Coach embedded as an iframe (same-origin app in /pronunciation-coach). */
 function coachPanel(){
-  return `<iframe src="pronunciation-coach/index.html?embed=1&v=1" title="Pronunciation Coach"
+  return `<iframe src="pronunciation-coach/index.html?embed=1&v=2" title="Pronunciation Coach"
     style="width:100%;height:calc(100vh - 120px);border:none;border-radius:14px;box-shadow:var(--shadow);background:#fff"></iframe>`;
 }
 

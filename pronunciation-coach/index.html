@@ -108,7 +108,9 @@ prefs.accent = prefs.accent||'us';
 prefs.gender = prefs.gender||'female';
 prefs.speed  = prefs.speed ||'slow';
 function savePrefs(){ try{ localStorage.setItem('pcoachPrefs',JSON.stringify(prefs)); }catch(e){} }
-function rateMul(){ return prefs.speed==='slow'?0.75:1; }
+/* iOS/Safari garbles speech at low rates — keep "slow" gentle and floor the rate there. */
+const isIOS = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform==='MacIntel' && navigator.maxTouchPoints>1);
+function rateMul(){ return prefs.speed==='slow' ? (isIOS?0.9:0.75) : 1; }
 function pickVoice(){
   const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
   if(!vs.length) return null;
@@ -128,15 +130,24 @@ function speak(text,{rate=0.85,onDone}={}){
   const u=new SpeechSynthesisUtterance(text);
   const v=pickVoice(); if(v) u.voice=v;
   u.lang = prefs.accent==='uk'?'en-GB':'en-US';
-  u.rate = Math.max(0.4,Math.min(1, rate*rateMul())); u.pitch=1;
+  u.rate = Math.max(isIOS?0.7:0.4, Math.min(1, rate*rateMul())); u.pitch=1; u.volume=1;
   let f=false, wd=0; const fire=()=>{ if(f) return; f=true; clearTimeout(wd); ttsOn(false); if(onDone) onDone(); };
   u.onstart=()=>ttsOn(true); u.onend=fire; u.onerror=fire;
   // safety: animate immediately, and never let it run forever if onend never fires
   ttsOn(true);
   wd=setTimeout(fire, Math.max(2500, String(text).length*220));
   speechSynthesis.speak(u);
+  try{ if(isIOS) speechSynthesis.resume(); }catch(e){}   // iOS sometimes leaves the queue paused
 }
 if(window.speechSynthesis) speechSynthesis.onvoiceschanged=()=>{};
+/* iOS/Safari only allows speech started from a user gesture — unlock the engine
+   on the first tap with a silent utterance so the first real word actually speaks. */
+let ttsUnlocked=false;
+function unlockTTS(){
+  if(ttsUnlocked || !window.speechSynthesis) return; ttsUnlocked=true;
+  try{ const u=new SpeechSynthesisUtterance(' '); u.volume=0; speechSynthesis.speak(u); speechSynthesis.resume(); }catch(e){}
+}
+['pointerdown','touchstart','keydown'].forEach(ev=>document.addEventListener(ev, unlockTTS, {once:true, passive:true}));
 
 /* ---- 4) SPEECH RECOGNITION (scoring) ---- */
 const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -345,7 +356,7 @@ function soundsView(){
 
 function detailView(p){
   const sc=state.lastScore;
-  const scoreBox = !SR_OK ? `<div class="text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-xl p-3">🎤 Speech scoring needs Chrome or Edge (browser SpeechRecognition). You can still hear the sound and word.</div>`
+  const scoreBox = !SR_OK ? `<div class="text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-xl p-3">🎤 Say-it scoring works in Chrome or Edge (Android/computer). Safari on iPhone/iPad doesn't support it yet — but you can still hear the sound and see the mouth here.</div>`
     : sc ? `<div class="rounded-xl p-3 ${sc.pct>=75?'bg-emerald-50 border border-emerald-200':sc.pct>=50?'bg-amber-50 border border-amber-200':'bg-rose-50 border border-rose-200'}">
         <div class="flex items-center justify-between"><span class="font-bold ${sc.pct>=75?'text-emerald-700':sc.pct>=50?'text-amber-700':'text-rose-700'}">${sc.pct>=75?'✅ Great!':sc.pct>=50?'🟡 Close — try again':'🔴 Try again'} ${sc.pct}%</span></div>
         <div class="text-xs text-nordic-500 mt-1">I heard: <b>"${sc.heard||'—'}"</b> · target: <b>${p.word}</b></div>
