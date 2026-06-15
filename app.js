@@ -1362,7 +1362,7 @@ async function renderStudent(initial){
     {key:'english',label:'🇬🇧 English'},
     {key:'french',label:'🇫🇷 French'},
     {key:'general',label:'🗂️ General'},
-    {key:'results',label:'📊 My Results'},
+    {key:'results',label:'📊 My Progress'},
   ], initial||'home', `<div class="center muted">Cargando…</div>`);
   bindNav(k=>{
     if(k==='english') return studentSubject('english');
@@ -1377,7 +1377,7 @@ async function renderStudent(initial){
     if(k==='classes_g9') return studentGrade('g9');
     if(k==='library') return studentLibrary();
     if(k==='results') return studentResults();
-    if(k==='final') return studentResultsView('final');
+    if(k==='final') return studentFinal();
     return studentHub();
   });
   if(initial==='results') studentResults(); else studentHub();
@@ -1420,7 +1420,8 @@ const ENGLISH_AREAS = [
   {emoji:'🏫', title:'Classes',       desc:'Material de clase por grado: grammar, actividades y más.',  nav:'classes'},
   {emoji:'🎯', title:'Practice Tests',desc:'Prácticas 1, 2 y 3 en formato Cambridge, siempre disponibles.', nav:'practice'},
   {emoji:'🔤', title:'Phonics',       desc:'Sonidos y formas de las palabras: CVC, blends, magic-e.',  nav:'phonics'},
-  {emoji:'📊', title:'My Results',    desc:'Tu detalle de mocks/practice y tu resultado final CEFR + PDF.', nav:'results', englishOnly:true},
+  {emoji:'📊', title:'My Progress',   desc:'Todos tus exámenes y prácticas: tu historial y avance.',    nav:'results', englishOnly:true},
+  {emoji:'🏅', title:'Resultado final',desc:'Tu nivel final CEFR (reporte para los padres) + PDF.',      nav:'final',   englishOnly:true},
 ];
 function _backBtn(onclick,label){
   return `<button class="btn sm ghost" onclick="${onclick}" style="margin-bottom:10px">← ${label}</button>`;
@@ -1452,9 +1453,13 @@ function studentGeneral(){
     </div>`;
 }
 
-/* Resultado final propio del alumno (read-only) + descarga de PDF — pestaña de My Results */
-async function _resultsFinal(tok){
+/* Resultado final del alumno = reporte CEFR que se entrega a los padres + PDF.
+   El alumno ve el suyo; Profesor/Admin lo generan desde su panel (cefrFinalPanel). */
+async function studentFinal(){
+  _setNav('final');
   const p=state.profile;
+  const back=_isStudent()?_backBtn("window._nav('english')",'English'):'';
+  $('#main').innerHTML=`${back}<h1>🏅 Resultado final · CEFR</h1><p class="muted">Cargando…</p>`;
   const { data:at } = await sb.from('exam_attempts').select('id,skill,level,percent,mock,submitted_at').eq('student_id',p.id);
   let sp=null; try{ const r=await sb.from('speaking_results').select('*').eq('student_id',p.id).maybeSingle(); sp=r&&r.data; }catch(e){}
   const fin=_finalFromData(p, at||[], sp);
@@ -1469,9 +1474,8 @@ async function _resultsFinal(tok){
   const wRow = fin.isA2
     ? `<tr><td style="${ch}"><b>Writing</b></td><td colspan="4" style="${ch};color:var(--grey)">Incluido en Reading &amp; Use of English (A2 Key)</td></tr>`
     : row('Writing', fin.skills.Writing);
-  if(tok!==_resultsTok) return;
-  $('#rbody').innerHTML=`
-    <p class="muted" style="margin-top:-6px">Tu nivel estimado combinando tus mejores resultados por destreza en la Escala Cambridge.</p>
+  $('#main').innerHTML=`${back}<h1>🏅 Resultado final · CEFR</h1>
+    <p class="muted" style="margin-top:-6px">Este es el reporte que se entrega a los padres: tu nivel final combinando tus mejores resultados por destreza en la Escala Cambridge.</p>
     <div class="card" style="overflow-x:auto"><table style="width:100%;border-collapse:collapse">
       <thead><tr><th style="${ch};text-align:left">Destreza</th><th style="${ch}">Nivel</th><th style="${ch}">Resultado</th><th style="${ch}">CEFR</th><th style="${ch}">Escala</th></tr></thead>
       <tbody>
@@ -1506,7 +1510,7 @@ window._nav=(k)=>{
   const fn={english:()=>studentSubject('english'),french:()=>studentSubject('french'),general:studentGeneral,
     mocks:studentMocks,practice:studentPractice,library:studentLibrary,mun:studentMun,classes:studentClasses,
     classes_g9:()=>studentGrade('g9'),phonics:studentPhonics,coach:studentCoach,results:studentResults,
-    final:()=>studentResultsView('final'),home:studentHub}[k];
+    final:studentFinal,home:studentHub}[k];
   if(fn) fn();
 };
 
@@ -1530,7 +1534,7 @@ function _soonCard(emoji,title,desc){
 function studentMocks(){
   _setNav('mocks');
   $('#main').innerHTML=`<h1>🎓 Cambridge Mocks</h1>
-    <p class="muted" style="margin-top:-6px">MOCK 1 y MOCK 2 en formato Cambridge oficial (A2 · B1 · B2 · C1). Entras directo con tu sesión — no necesitas volver a poner tus datos. Tu resultado se guarda solo en My Results.</p>
+    <p class="muted" style="margin-top:-6px">MOCK 1 y MOCK 2 en formato Cambridge oficial (A2 · B1 · B2 · C1). Entras directo con tu sesión — no necesitas volver a poner tus datos. Tu resultado se guarda solo en My Progress.</p>
     <div class="grid cols-2" style="margin-top:12px">
       ${_skillCard('📖','Reading & Use of English','Textos y tareas estilo KET/PET/FCE/CAE con temporizador.',QUIZ_URL+'reading-quiz.html?branch=mocks')}
       ${_skillCard('🎧','Listening','Audio real en formato Cambridge, con temporizador.',QUIZ_URL+'listening-quiz.html?branch=mocks')}
@@ -1543,7 +1547,7 @@ function studentMocks(){
 function studentPractice(){
   _setNav('practice');
   $('#main').innerHTML=`<h1>🎯 Practice Tests</h1>
-    <p class="muted" style="margin-top:-6px">Prácticas 1, 2 y 3 en formato Cambridge auténtico — siempre disponibles. Entras directo con tu sesión y tu resultado se guarda solo en My Results.</p>
+    <p class="muted" style="margin-top:-6px">Prácticas 1, 2 y 3 en formato Cambridge auténtico — siempre disponibles. Entras directo con tu sesión y tu resultado se guarda solo en My Progress.</p>
     <div class="grid cols-3" style="margin-top:12px">
       ${_skillCard('📖','Reading & Use of English','Práctica 1 · 2 · 3 con corrección automática y feedback CEFR.',QUIZ_URL+'reading-quiz.html?branch=practice')}
       ${_skillCard('🎧','Listening','Práctica con audio real y corrección automática.',QUIZ_URL+'listening-quiz.html?branch=practice')}
@@ -1574,25 +1578,12 @@ function studentClasses(){
     <p class="muted" style="margin-top:12px;font-size:.85rem">Más grados próximamente.</p>`;
 }
 
-/* ---------- My Results: todos los mocks y practice tests ---------- */
-/* My Results = vista con pestañas (Detalle + Resultado final CEFR) */
-let _resultsTok=0;
-async function studentResults(){ return studentResultsView('detalle'); }
-function studentResultsView(tab){
+/* ---------- My Progress: historial completo del alumno (mocks, practice y actividades) ---------- */
+async function studentResults(){
   _setNav('results');
-  tab = (tab==='final') ? 'final' : 'detalle';
-  const tok=++_resultsTok;   // guard: only the latest tab render may write #rbody
-  const back = _isStudent() ? _backBtn("window._nav('english')",'English') : '';
-  const tb=(k,label)=>`<button class="btn sm ${tab===k?'':'ghost'}" onclick="window._resultsTab('${k}')">${label}</button>`;
-  $('#main').innerHTML = `${back}<h1>📊 My Results</h1>
-    <div class="row" style="gap:8px;margin:6px 0 12px">${tb('detalle','📈 Detalle')}${tb('final','🏅 Resultado final CEFR')}</div>
-    <div id="rbody"><div class="center muted">Cargando…</div></div>`;
-  if(tab==='final') _resultsFinal(tok); else _resultsDetalle(tok);
-}
-window._resultsTab = (k)=>studentResultsView(k);
-
-async function _resultsDetalle(tok){
   const p=state.profile;
+  const back = _isStudent() ? _backBtn("window._nav('english')",'English') : '';
+  $('#main').innerHTML=`${back}<h1>📊 My Progress</h1><p class="muted">Cargando…</p>`;
   const { data:atts } = await sb.from('exam_attempts').select('*').eq('student_id',p.id).order('submitted_at',{ascending:false});
   const bySkill = SKILLS.map(sk=>{
     const a=(atts||[]).filter(x=>x.skill===sk);
@@ -1618,8 +1609,7 @@ async function _resultsDetalle(tok){
   const actTable=(list)=> list.length ? `<table><thead><tr><th>Actividad</th><th>Nivel</th><th>Resultado</th><th>⏱ Tiempo</th><th>💡 Pistas</th><th>Fecha</th></tr></thead><tbody>${
       list.map(a=>`<tr><td>${a.activity==='crossword'?'🔎':'🔍'} ${esc(a.title||(a.activity==='crossword'?'Crossword':'Word Search'))}</td><td>${esc(a.level)}</td><td>${a.score!=null?`${a.score}/${a.total}`:'—'}</td><td>${fmtT(a.duration_sec)}</td><td>${a.hints_used||0}</td><td class="muted">${new Date(a.submitted_at).toLocaleDateString()}</td></tr>`).join('')
     }</tbody></table>` : `<p class="muted">Aún no has completado actividades. Ve a <b>Classes → Activities</b>.</p>`;
-  if(tok!==_resultsTok) return;
-  $('#rbody').innerHTML=`
+  $('#main').innerHTML=`${back}<h1>📊 My Progress</h1>
     <p class="muted" style="margin-top:-6px">${esc(p.grades?.name||'')} ${p.section?'· '+esc(p.section):''} · Nivel ${esc(p.cefr_level||'sin asignar')}</p>
     <div class="grid cols-3">
       ${bySkill.map(s=>`<div class="stat"><div class="l">${s.sk}</div>
