@@ -1604,21 +1604,26 @@ function bestAttemptScale(atts, skill){
 }
 /* Combine the four skills into a provisional/final CEFR result. */
 function _finalFromData(profile, atts, spk){
+  // A2 Key is a combined "Reading and Writing" paper, so Writing is NOT a
+  // separate skill at A2 — it's embedded in Reading & Use of English. A2-track
+  // students are therefore scored on Reading + Listening + Speaking only.
+  const isA2 = targetLevel(profile)==='A2';
   const Reading   = bestAttemptScale(atts,'Reading');
   const Listening = bestAttemptScale(atts,'Listening');
-  const Writing   = bestAttemptScale(atts,'Writing');
+  const Writing   = isA2 ? null : bestAttemptScale(atts,'Writing');
   let Speaking = null;
   if(spk && spk.percent!=null){
-    const lvl = spk.level || profile.cefr_level || 'B1';
+    const lvl = spk.level || targetLevel(profile) || 'B1';
     const sc = skillScale(lvl, Number(spk.percent));
     Speaking = { scale:sc, cefr:scaleToCefr(sc), level:lvl, pct:Math.round(Number(spk.percent)), source:'Rúbrica' };
   }
-  const skills = { Reading, Listening, Writing, Speaking };
-  const present = [Reading,Listening,Writing,Speaking].filter(Boolean);
+  const skills = isA2 ? { Reading, Listening, Speaking } : { Reading, Listening, Writing, Speaking };
+  const present = Object.values(skills).filter(Boolean);
+  const required = isA2 ? 3 : 4;
   const finalScale = present.length ? Math.round(present.reduce((s,x)=>s+x.scale,0)/present.length) : null;
   const labels = { Reading:'Reading', Listening:'Listening', Writing:'Writing', Speaking:'Speaking' };
-  return { profile, skills, finalScale, finalCefr:scaleToCefr(finalScale),
-           complete: present.length===4, missing: Object.keys(skills).filter(k=>!skills[k]).map(k=>labels[k]) };
+  return { profile, skills, isA2, finalScale, finalCefr:scaleToCefr(finalScale),
+           complete: present.length===required, missing: Object.keys(skills).filter(k=>!skills[k]).map(k=>labels[k]) };
 }
 function _skillCellHtml(b){
   if(!b) return '';
@@ -1683,7 +1688,8 @@ async function cefrFinalPanel(){
     const at=aBy[s.id]||[]; const fin=_finalFromData(s, at, sBy[s.id]);
     const tgt=targetLevel(s);
     const wAtt=at.filter(a=>a.skill==='Writing').sort((x,y)=>(y.submitted_at||'').localeCompare(x.submitted_at||''))[0];
-    const wCell = fin.skills.Writing ? _skillCellHtml(fin.skills.Writing)
+    const wCell = fin.isA2 ? '<span class="muted" style="font-size:.78rem" title="En A2 Key el Writing va dentro de Reading &amp; Use of English">— en Reading</span>'
+      : fin.skills.Writing ? _skillCellHtml(fin.skills.Writing)
       : (wAtt ? `<button class="btn sm ghost" onclick="gradeWriting('${wAtt.id}')">✍️ Calificar</button>`
               : '<span class="muted" style="font-size:.8rem">sin examen</span>');
     const spkLvl = (fin.skills.Speaking&&fin.skills.Speaking.level)||tgt||'';
@@ -1712,7 +1718,7 @@ async function cefrFinalPanel(){
 
   $('#main').innerHTML = `
     <h1 style="margin:0 0 4px">🎓 Resultado final · CEFR</h1>
-    <p class="muted" style="margin-top:0;font-size:.88rem">Mejor resultado por destreza convertido a la <b>Escala Cambridge</b> (A2 100–150 · B1 120–170 · B2 140–190 · C1 160–210). El <b>final</b> es el promedio de las destrezas evaluadas (se toma el mejor intento <b>aprobado ≥50%</b>; si ninguno aprueba, el de mayor %). <b>Writing</b> y <b>Speaking</b> se califican con la rúbrica Cambridge (0–5 por descriptor). <b>Objetivo</b> = nivel al que apunta el grado; <span class="badge off" style="font-size:.66rem;background:#dc2626;color:#fff">▼</span> = por debajo del objetivo, <span class="badge on" style="font-size:.66rem">✓</span> = lo cumple. <span class="badge off" style="font-size:.66rem">prov.</span> = aún faltan destrezas.</p>
+    <p class="muted" style="margin-top:0;font-size:.88rem">Mejor resultado por destreza convertido a la <b>Escala Cambridge</b> (A2 100–150 · B1 120–170 · B2 140–190 · C1 160–210). El <b>final</b> es el promedio de las destrezas evaluadas (se toma el mejor intento <b>aprobado ≥50%</b>; si ninguno aprueba, el de mayor %). <b>Writing</b> y <b>Speaking</b> se califican con la rúbrica Cambridge (0–5 por descriptor). En <b>A2</b> el Writing va dentro de Reading &amp; Use of English (examen A2 Key), así que no cuenta como destreza aparte. <b>Objetivo</b> = nivel al que apunta el grado; <span class="badge off" style="font-size:.66rem;background:#dc2626;color:#fff">▼</span> = por debajo del objetivo, <span class="badge on" style="font-size:.66rem">✓</span> = lo cumple. <span class="badge off" style="font-size:.66rem">prov.</span> = aún faltan destrezas.</p>
     ${resultsFilterBar(gradeList,'window._setFinalFilter')}
     <div class="card" style="padding:0;overflow-x:auto"><table>
       <thead><tr><th>Alumno</th><th>Grado</th><th>Objetivo</th><th>Reading &amp; UoE</th><th>Listening</th><th>Writing</th><th>Speaking</th><th>Final CEFR</th><th></th></tr></thead>
@@ -1852,7 +1858,7 @@ window.studentReportPDF = async (studentId)=>{
     <td style="${cell};color:#2d5a8d;font-weight:700">${b?b.cefr:'—'}</td>
     <td style="${cell}">${b?b.scale:'—'}</td></tr>`;
   const node=document.createElement('div');
-  node.style.cssText='position:fixed;left:-9999px;top:0;width:760px;padding:24px;font-family:Montserrat,system-ui,sans-serif;color:#0f172a;background:#fff';
+  node.style.cssText='width:760px;padding:24px;font-family:Montserrat,system-ui,sans-serif;color:#0f172a;background:#fff';
   node.innerHTML=`
     <div style="text-align:center;border-bottom:3px solid #4987c6;padding-bottom:10px;margin-bottom:14px">
       <img src="assets/logo-h.svg" style="height:46px"><div style="letter-spacing:1px;color:#64748b;font-size:.78rem;margin-top:4px">REPORTE DE RESULTADO FINAL · MARCO COMÚN EUROPEO (CEFR)</div></div>
@@ -1862,7 +1868,7 @@ window.studentReportPDF = async (studentId)=>{
     </table>
     <table style="width:100%;border-collapse:collapse;font-size:.9rem;margin-bottom:14px">
       <thead><tr style="background:#eef4fb"><th style="${cell};text-align:left">Destreza</th><th style="${cell}">Nivel examen</th><th style="${cell}">Resultado</th><th style="${cell}">CEFR</th><th style="${cell}">Escala</th></tr></thead>
-      <tbody>${row('Reading &amp; Use of English',fin.skills.Reading)}${row('Listening',fin.skills.Listening)}${row('Writing',fin.skills.Writing)}${row('Speaking',fin.skills.Speaking)}</tbody>
+      <tbody>${row('Reading &amp; Use of English'+(fin.isA2?' (incluye Writing)':''),fin.skills.Reading)}${row('Listening',fin.skills.Listening)}${fin.isA2?`<tr><td style="padding:8px;border:1px solid #e2e8f0"><b>Writing</b></td><td colspan="4" style="${cell};text-align:left;color:#64748b">Incluido en Reading &amp; Use of English (examen A2 Key)</td></tr>`:row('Writing',fin.skills.Writing)}${row('Speaking',fin.skills.Speaking)}</tbody>
     </table>
     <div style="display:flex;gap:16px;align-items:center;background:#0f2741;color:#fff;border-radius:12px;padding:14px 18px;margin-bottom:14px">
       <div><div style="font-size:.78rem;opacity:.8">RESULTADO FINAL</div><div style="font-size:2.4rem;font-weight:800;line-height:1">${fin.finalCefr}</div></div>
@@ -1875,11 +1881,20 @@ window.studentReportPDF = async (studentId)=>{
     <div style="text-align:center;font-size:.76rem;color:#64748b;margin-bottom:4px">Posición del alumno en la Escala Cambridge English / CEFR</div>
     ${cefrScaleSVG(fin.finalScale, fin.finalCefr)}
     <p style="font-size:.7rem;color:#94a3b8;margin-top:12px">Cálculo: por cada destreza se toma el mejor resultado y se convierte a la Escala Cambridge (A2 100–150 · B1 120–170 · B2 140–190 · C1 160–210); el resultado final es el promedio de las destrezas evaluadas. Nordic International School of Lima.</p>`;
-  document.body.appendChild(node);
+  // El nodo se renderiza dentro de un contenedor 0x0 con overflow:hidden: queda
+  // invisible para el usuario pero EN FLUJO NORMAL, para que html2pdf pueda medir
+  // su altura. Un nodo en position:fixed/absolute fuera de pantalla produce un
+  // canvas de altura 0 -> PDF en blanco (bug corregido).
+  const host=document.createElement('div');
+  host.style.cssText='position:absolute;left:0;top:0;width:0;height:0;overflow:hidden;z-index:-1';
+  host.appendChild(node);
+  document.body.appendChild(host);
+  // Esperar a que el logo (y cualquier imagen) carguen antes de rasterizar.
+  await Promise.all(Array.from(node.querySelectorAll('img')).map(im=>im.complete?Promise.resolve():new Promise(r=>{im.onload=im.onerror=r;})));
   const opt={ margin:8, filename:`NIS-Resultado-${(p.full_name||'alumno').replace(/\s+/g,'_')}.pdf`,
     image:{type:'jpeg',quality:0.96}, html2canvas:{scale:2,useCORS:true,backgroundColor:'#ffffff'},
     jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}, pagebreak:{mode:['css','legacy']} };
   try{ await window.html2pdf().set(opt).from(node).save(); }
   catch(e){ alert('No se pudo generar el PDF: '+(e&&e.message||e)); }
-  finally{ node.remove(); }
+  finally{ host.remove(); }
 };
