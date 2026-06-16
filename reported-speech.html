@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reported Speech — Grammar — Portal NIS</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font:15px/1.55 "Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:#0f172a;background:linear-gradient(180deg,#d1d2ea 0%,#f8fafc 60%,#fff 100%);min-height:100vh}
+  header{background:#fff;padding:12px 22px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+    box-shadow:0 4px 16px rgba(15,23,42,.06);position:sticky;top:0;z-index:10;border-bottom:1px solid #e2e8f0}
+  header img{display:block;height:38px;width:auto}
+  header .sub{color:#636465;font-size:13px;margin-left:auto;font-weight:600}
+  header a.back{margin-left:14px;text-decoration:none;background:#2d5a8d;color:#fff;font-weight:700;font-size:13px;padding:8px 14px;border-radius:9px;white-space:nowrap}
+  main{max-width:760px;margin:0 auto;padding:22px 18px}
+  h1{font-size:22px;margin:0 0 6px}
+  p.lead{color:#475569;margin:0 0 16px}
+  .rules{background:#eef2fb;border:1px solid #d7e0f2;border-radius:14px;padding:14px 16px;margin-bottom:18px;font-size:13.5px;color:#26415e}
+  .rules b{color:#2d5a8d}
+  .rules ul{margin:6px 0 0 18px}
+  .rules li{margin:3px 0}
+  .panel{background:#fff;border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 8px 24px rgba(15,23,42,.08);padding:22px}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+  .pill{background:#d1d2ea;color:#244c77;font-weight:700;font-size:13px;padding:6px 12px;border-radius:20px}
+  .progress{flex:1;height:9px;background:#e2e8f0;border-radius:99px;overflow:hidden;min-width:120px}
+  .progress>span{display:block;height:100%;background:#2d5a8d;width:0;transition:width .3s}
+  .tagdir{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.5px;padding:4px 10px;border-radius:20px;text-transform:uppercase}
+  .tagdir.d{background:#dbeafe;color:#1e40af}
+  .tagdir.r{background:#dcfce7;color:#166534}
+  .prompt{font-size:19px;font-weight:600;margin:10px 0 4px;line-height:1.4}
+  .ask{color:#475569;font-size:14px;margin-bottom:14px}
+  .opts{display:flex;flex-direction:column;gap:10px}
+  .opt{text-align:left;background:#fff;border:2px solid #e2e8f0;border-radius:12px;padding:13px 15px;font:inherit;font-size:15px;cursor:pointer;transition:.12s;color:#0f172a}
+  .opt:hover:not(:disabled){border-color:#4987c6;background:#f6f9fe}
+  .opt:disabled{cursor:default}
+  .opt.correct{border-color:#16a34a;background:#f0fdf4}
+  .opt.wrong{border-color:#dc2626;background:#fef2f2}
+  .opt .mk{float:right;font-weight:800}
+  .fb{margin-top:14px;padding:12px 14px;border-radius:12px;font-size:14px;display:none}
+  .fb.ok{background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;display:block}
+  .fb.no{background:#fef2f2;border:1px solid #fecaca;color:#991b1b;display:block}
+  .fb b{color:inherit}
+  .actions{margin-top:16px;display:flex;gap:10px;justify-content:flex-end}
+  .btn{background:#2d5a8d;color:#fff;border:0;border-radius:10px;padding:11px 20px;font:inherit;font-weight:700;cursor:pointer}
+  .btn.ghost{background:#fff;color:#2d5a8d;border:2px solid #2d5a8d}
+  .btn:disabled{opacity:.45;cursor:default}
+  .result{text-align:center;padding:18px 6px}
+  .result .big{font-size:46px;font-weight:800;color:#2d5a8d;line-height:1}
+  .result .msg{color:#475569;margin:10px 0 18px}
+  .footer{color:#475569;font-size:12px;text-align:center;padding:22px 0 32px}
+</style>
+</head>
+<body>
+<header>
+  <img src="assets/logo-h.svg" alt="Nordic International School" onerror="this.style.display='none'">
+  <div class="sub">GRAMMAR · REPORTED SPEECH</div>
+  <a class="back" href="grammar.html">← Grammar</a>
+</header>
+<main>
+  <h1>🗣️ Reported Speech</h1>
+  <p class="lead">Contar lo que otra persona dijo. Lee el resumen y practica con el juego: elige la transformación correcta, recibe feedback al instante.</p>
+
+  <div class="rules">
+    <b>Lo esencial</b>
+    <ul>
+      <li>El verbo suele <b>retroceder un tiempo</b>: present → past, past → past perfect, <i>will → would</i>, <i>can → could</i>.</li>
+      <li>Cambian los <b>pronombres</b> (I → he/she, my → his/her, you → me…).</li>
+      <li>Cambian el <b>tiempo y el lugar</b>: now → then, today → that day, tomorrow → the next day, here → there, this → that, last week → the week before.</li>
+      <li><b>Preguntas:</b> orden de afirmación (sin <i>do/does/did</i>); sí/no → <i>if/whether</i>.</li>
+      <li><b>Órdenes/peticiones:</b> <i>tell + objeto + (not) to + infinitivo</i> → <i>He told me to wait / not to be late.</i></li>
+    </ul>
+  </div>
+
+  <div class="panel" id="panel"></div>
+  <div class="footer">9th grade · Grammar — NIS English · 2026</div>
+</main>
+
+<script>
+/* Banco de preguntas ORIGINAL (NIS). Direct ⇄ Reported, nivel B1.
+   dir: 'D' = se da Direct y se pide Reported; 'R' = se da Reported y se pide Direct. */
+const QUESTIONS = [
+  {dir:'D', prompt:'"I am hungry," said Tom.',
+   correct:'Tom said (that) he was hungry.',
+   wrong:['Tom said that he is hungry.','Tom said he has been hungry.','Tom said I was hungry.'],
+   note:'Present simple → past (am → was) y el pronombre I → he.'},
+  {dir:'D', prompt:'"We are studying English," they said.',
+   correct:'They said they were studying English.',
+   wrong:['They said we are studying English.','They said they are studying English.','They said they had studied English.'],
+   note:'Present continuous → past continuous (are → were).'},
+  {dir:'D', prompt:'"I finished my homework," she said.',
+   correct:'She said she had finished her homework.',
+   wrong:['She said she finished her homework yesterday.','She said I had finished my homework.','She said she has finished her homework.'],
+   note:'Past simple → past perfect (finished → had finished); my → her.'},
+  {dir:'D', prompt:'"I’ll help you tomorrow," he said.',
+   correct:'He said he would help me the next day.',
+   wrong:['He said he will help me tomorrow.','He said he would help you tomorrow.','He said he helped me the next day.'],
+   note:'will → would; tomorrow → the next day; you → me.'},
+  {dir:'D', prompt:'"Do you speak French?" she asked me.',
+   correct:'She asked me if I spoke French.',
+   wrong:['She asked me do I speak French.','She asked me if I speak French.','She asked me if you spoke French.'],
+   note:'Pregunta de sí/no → if + orden de afirmación, sin "do"; speak → spoke.'},
+  {dir:'D', prompt:'"Where are you going?" he asked.',
+   correct:'He asked where I was going.',
+   wrong:['He asked where was I going.','He asked where I am going.','He asked where you were going.'],
+   note:'Pregunta wh- → orden de afirmación; are → was; you → I.'},
+  {dir:'D', prompt:'"Please open the window," the teacher said.',
+   correct:'The teacher told us to open the window.',
+   wrong:['The teacher said open the window.','The teacher told us open the window.','The teacher said us to open the window.'],
+   note:'Orden → tell + objeto + to + infinitivo.'},
+  {dir:'D', prompt:'"Don’t touch that," she said to him.',
+   correct:'She told him not to touch that.',
+   wrong:['She told him don’t touch that.','She said him not to touch that.','She told him to not touching that.'],
+   note:'Orden negativa → not + to + infinitivo; say to → tell.'},
+  {dir:'D', prompt:'"I can drive," Maria said.',
+   correct:'Maria said she could drive.',
+   wrong:['Maria said she can drive.','Maria said she could drives.','Maria said I could drive.'],
+   note:'can → could; el infinitivo no cambia (drive).'},
+  {dir:'D', prompt:'"I saw this film last week," he said.',
+   correct:'He said he had seen that film the week before.',
+   wrong:['He said he saw this film last week.','He said he had saw that film the week before.','He said he has seen that film the week before.'],
+   note:'saw → had seen; this → that; last week → the week before.'},
+  {dir:'R', prompt:'She said she was tired.',
+   correct:'"I am tired," she said.',
+   wrong:['"She is tired," she said.','"I was tired," she said.','"You are tired," she said.'],
+   note:'Volvemos al presente y a la 1ª persona: was → am; she → I.'},
+  {dir:'R', prompt:'He asked me where I lived.',
+   correct:'"Where do you live?" he asked.',
+   wrong:['"Where I live?" he asked.','"Where did you live?" he asked.','"Where you live?" he asked.'],
+   note:'Pregunta directa: recupera "do" y el orden de pregunta; lived → live; I → you.'},
+];
+
+let order=[], idx=0, score=0, answered=false;
+const panel=document.getElementById('panel');
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+
+function start(){ order=shuffle(QUESTIONS.map((_,i)=>i)); idx=0; score=0; answered=false; render(); }
+
+function render(){
+  const q=QUESTIONS[order[idx]];
+  const opts=shuffle([{t:q.correct,ok:true}, ...q.wrong.map(w=>({t:w,ok:false}))]);
+  const pct=Math.round(idx/QUESTIONS.length*100);
+  panel.innerHTML=`
+    <div class="bar">
+      <span class="pill">Pregunta ${idx+1}/${QUESTIONS.length}</span>
+      <div class="progress"><span style="width:${pct}%"></span></div>
+      <span class="pill">★ ${score}</span>
+    </div>
+    <span class="tagdir ${q.dir==='D'?'d':'r'}">${q.dir==='D'?'Direct speech':'Reported speech'}</span>
+    <div class="prompt">${q.prompt}</div>
+    <div class="ask">${q.dir==='D'?'Elige el <b>reported speech</b> correcto:':'Elige el <b>direct speech</b> correcto (las palabras exactas):'}</div>
+    <div class="opts" id="opts">
+      ${opts.map((o,i)=>`<button class="opt" data-ok="${o.ok?1:0}" onclick="pick(this)">${o.t}<span class="mk"></span></button>`).join('')}
+    </div>
+    <div class="fb" id="fb"></div>
+    <div class="actions">
+      <button class="btn" id="next" disabled onclick="next()">${idx===QUESTIONS.length-1?'Ver resultado':'Siguiente →'}</button>
+    </div>`;
+}
+
+window.pick=(btn)=>{
+  if(answered) return; answered=true;
+  const q=QUESTIONS[order[idx]];
+  const ok=btn.dataset.ok==='1';
+  document.querySelectorAll('#opts .opt').forEach(b=>{
+    b.disabled=true;
+    if(b.dataset.ok==='1'){ b.classList.add('correct'); b.querySelector('.mk').textContent='✓'; }
+  });
+  if(!ok){ btn.classList.add('wrong'); btn.querySelector('.mk').textContent='✗'; }
+  else score++;
+  const fb=document.getElementById('fb');
+  fb.className='fb '+(ok?'ok':'no');
+  fb.innerHTML=(ok?'✅ <b>¡Correcto!</b> ':'❌ <b>Casi.</b> ')+'Respuesta: <b>'+q.correct+'</b><br>💡 '+q.note;
+  document.getElementById('next').disabled=false;
+};
+
+window.next=()=>{
+  if(idx<QUESTIONS.length-1){ idx++; answered=false; render(); }
+  else end();
+};
+
+function end(){
+  const pct=Math.round(score/QUESTIONS.length*100);
+  const msg = pct>=80 ? '¡Excelente! Dominas el reported speech. 🌟'
+            : pct>=60 ? 'Buen trabajo. Repasa los cambios de tiempo y pronombres. 👍'
+            : pct>=40 ? 'Vas bien. Revisa el resumen de arriba y vuelve a intentar. 💪'
+            : 'Sigue practicando: lee el resumen y juega otra vez. ✍️';
+  panel.innerHTML=`<div class="result">
+    <div class="big">${score}/${QUESTIONS.length}</div>
+    <div class="msg">${pct}% &middot; ${msg}</div>
+    <button class="btn" onclick="start()">↻ Jugar otra vez</button>
+    <a class="btn ghost" href="grammar.html" style="text-decoration:none;display:inline-block">← Volver a Grammar</a>
+  </div>`;
+}
+
+start();
+</script>
+</body>
+</html>
