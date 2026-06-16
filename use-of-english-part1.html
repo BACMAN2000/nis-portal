@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FCE · Use of English · Part 1 (B2)</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--blue:#4987c6;--blue-d:#2d5a8d;--ink:#1f2a37;--muted:#6b7280;--line:#e3e8ef;--bg:#f7faff;
+        --good:#16a34a;--good-bg:#ecfdf3;--bad:#dc2626;--bad-bg:#fef2f2;--gold:#f59e0b}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Montserrat,system-ui,Segoe UI,sans-serif;color:var(--ink);background:#eef3f9;line-height:1.5}
+  .wrap{max-width:860px;margin:0 auto;padding:18px 16px 60px}
+  header{background:var(--blue-d);color:#fff;border-radius:16px;padding:18px 22px;margin-bottom:16px}
+  header h1{margin:0 0 2px;font-size:1.3rem}
+  header p{margin:0;opacity:.85;font-size:.85rem}
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+  .tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 16px;cursor:pointer;font-weight:600;color:var(--blue-d);font-size:.9rem}
+  .tab.on{background:var(--blue);border-color:var(--blue);color:#fff}
+  .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:16px;box-shadow:0 1px 3px rgba(20,40,80,.04)}
+  .instr{background:var(--bg);border-left:4px solid var(--blue);padding:10px 14px;border-radius:8px;font-size:.88rem;color:#33415a;margin-bottom:16px}
+  h2.title{text-align:center;font-size:1.15rem;color:var(--blue-d);margin:4px 0 16px}
+  .passage{font-size:1.02rem;line-height:1.95;color:#243244}
+  .passage p{margin:0 0 12px}
+  .gap{display:inline-block;min-width:64px;text-align:center;border-bottom:2px solid var(--blue);
+       color:var(--blue-d);font-weight:700;padding:0 6px}
+  .gap .num{font-size:.72rem;vertical-align:super;color:var(--muted);margin-right:2px}
+  .gap.ex{border-bottom-style:dotted}
+  .gap.filled-ok{color:var(--good);border-color:var(--good)}
+  .gap.filled-bad{color:var(--bad);border-color:var(--bad)}
+  .q{border-top:1px solid var(--line);padding:14px 0}
+  .q:first-child{border-top:none}
+  .q .qnum{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;
+           background:var(--blue-d);color:#fff;font-weight:700;font-size:.85rem;margin-right:8px;flex:0 0 auto}
+  .qrow{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+  .opts{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  @media(max-width:620px){.opts{grid-template-columns:repeat(2,1fr)}}
+  .opt{border:1.5px solid var(--line);border-radius:10px;padding:9px 10px;cursor:pointer;background:#fff;
+       display:flex;align-items:center;gap:7px;font-size:.92rem;transition:.12s;user-select:none}
+  .opt:hover{border-color:var(--blue)}
+  .opt .ltr{font-weight:700;color:var(--blue-d);background:var(--bg);border-radius:6px;width:22px;height:22px;
+            display:inline-flex;align-items:center;justify-content:center;font-size:.8rem;flex:0 0 auto}
+  .opt.sel{border-color:var(--blue);background:#eef4fb}
+  .opt.sel .ltr{background:var(--blue);color:#fff}
+  .opt.correct{border-color:var(--good);background:var(--good-bg)}
+  .opt.correct .ltr{background:var(--good);color:#fff}
+  .opt.wrong{border-color:var(--bad);background:var(--bad-bg)}
+  .opt.wrong .ltr{background:var(--bad);color:#fff}
+  .why{font-size:.83rem;color:var(--muted);margin-top:8px;padding:8px 10px;background:var(--bg);border-radius:8px;display:none}
+  .why.show{display:block}
+  .bar{position:sticky;bottom:0;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 16px;
+       display:flex;align-items:center;gap:14px;flex-wrap:wrap;box-shadow:0 -2px 10px rgba(20,40,80,.06);margin-top:8px}
+  .btn{border:none;border-radius:10px;padding:10px 18px;font-weight:700;cursor:pointer;font-family:inherit;font-size:.92rem}
+  .btn.primary{background:var(--blue);color:#fff}
+  .btn.ghost{background:#fff;border:1px solid var(--line);color:var(--blue-d)}
+  .btn:disabled{opacity:.5;cursor:not-allowed}
+  .score{font-size:1.05rem;font-weight:800;color:var(--blue-d)}
+  .score .pct{font-weight:600;color:var(--muted);font-size:.85rem}
+  .watch{margin-left:auto;color:var(--muted);font-size:.85rem;font-variant-numeric:tabular-nums}
+  .count{font-size:.85rem;color:var(--muted)}
+  .foot{text-align:center;color:var(--muted);font-size:.78rem;margin-top:10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Use of English · Part 1</h1>
+    <p>B2 First (FCE) — Multiple-choice cloze · Cambridge English style</p>
+  </header>
+  <div class="tabs" id="tabs"></div>
+  <div class="card">
+    <div class="instr">For questions <b>1–8</b>, read the text and decide which answer (<b>A</b>, <b>B</b>, <b>C</b> or <b>D</b>) best fits each gap. There is an example at the beginning <b>(0)</b>.</div>
+    <h2 class="title" id="title"></h2>
+    <div class="passage" id="passage"></div>
+    <div id="questions" style="margin-top:18px"></div>
+  </div>
+  <div class="bar">
+    <button class="btn primary" id="checkBtn">Check answers</button>
+    <button class="btn ghost" id="resetBtn">Try again</button>
+    <span class="count" id="count"></span>
+    <span class="score" id="score"></span>
+    <span class="watch" id="watch">⏱ 00:00</span>
+  </div>
+  <div class="foot">Nordic International School · FCE Use of English trainer. Test 1 “Why we need to play” is an official Cambridge sample; Tests 2–4 are original practice in the same format.</div>
+</div>
+
+<script>
+const TESTS = [
+  {
+    title: "Why we need to play",
+    text: "Human beings are not the only creatures that like to (0) fun. Many animals play, as do some birds. However, no other creatures spend so much time enjoying themselves as human beings do. Indeed, we (1) onto our sense of fun right into adulthood.||So why do human beings spend so much time playing? One reason is that we have time for leisure; animals have very little time to play as most of their life is spent sleeping and (2) food.||So, is play just an opportunity for us to (3) in enjoyable activities, or does it have a more important (4)? According to scientists, (5) from being fun, play has several very real (6) for us — it helps our physical, intellectual and social development. It also helps to (7) us for what we have not yet experienced. With very (8) risk, we can act out what we would do in unexpected, or even dangerous, situations.",
+    example: {options:["have","do","get","take"], answer:0},
+    questions:[
+      {options:["hold","keep","save","stay"], answer:0, why:"“hold onto” = keep / retain something."},
+      {options:["searching","looking","seeking","gaining"], answer:2, why:"“seek” takes a direct object (seek food); search / look need “for”."},
+      {options:["engage","combine","contribute","involve"], answer:0, why:"“engage in an activity” = take part in it."},
+      {options:["motive","purpose","intention","cause"], answer:1, why:"“a more important purpose” is the natural collocation here."},
+      {options:["excluding","except","apart","away"], answer:2, why:"“apart from” = besides / in addition to."},
+      {options:["assets","profits","services","benefits"], answer:3, why:"“benefits for us” = advantages."},
+      {options:["plan","prepare","practise","provide"], answer:1, why:"“prepare somebody for something”."},
+      {options:["brief","short","narrow","little"], answer:3, why:"“very little risk” — little + uncountable noun."}
+    ]
+  },
+  {
+    title: "A new hobby: photography",
+    text: "Last year, I finally (0) up photography as a hobby. At first, I found it difficult to (1) the difference between a good photo and a bad one. However, I gradually (2) progress and came to understand the basics.||A good photographer must pay (3) to small details, and you also need to (4) patience, especially when waiting for the perfect light. (5) being a relaxing way to spend an afternoon, photography gets me outdoors and keeps me active.||These days I spend most weekends (6) photos in the countryside, and my friends often (7) me to enter competitions. One day, I hope to (8) a living from my pictures.",
+    example:{options:["took","made","got","had"], answer:0},
+    questions:[
+      {options:["tell","say","speak","talk"], answer:0, why:"“tell the difference between”."},
+      {options:["gained","made","did","took"], answer:1, why:"“make progress”."},
+      {options:["care","mind","notice","attention"], answer:3, why:"“pay attention to”."},
+      {options:["keep","do","have","take"], answer:2, why:"“have patience” = be patient."},
+      {options:["Despite","Besides","However","Although"], answer:1, why:"“Besides + -ing” = in addition to; the idea is additive, not a contrast."},
+      {options:["making","doing","getting","taking"], answer:3, why:"“take photos”."},
+      {options:["suggest","recommend","encourage","insist"], answer:2, why:"“encourage somebody to do something” — only this verb takes object + to-infinitive."},
+      {options:["earn","win","gain","pay"], answer:0, why:"“earn a living”."}
+    ]
+  },
+  {
+    title: "Volunteering abroad",
+    text: "Every year, thousands of young people (0) part in volunteering projects abroad. These projects (1) them the chance to help others while seeing the world. Volunteers usually (2) on tasks such as teaching English or building schools.||The work can be demanding, but most people find it extremely (3). (4) the living costs are usually low, many volunteers still have to pay for their own flights. For this reason, it is sensible to (5) plenty of research and to (6) the local culture into account before choosing a project.||Volunteering also looks impressive on a CV and can (7) up new career opportunities. Above all, though, it is a chance to make a real (8) to other people's lives.",
+    example:{options:["take","make","do","have"], answer:0},
+    questions:[
+      {options:["make","give","let","allow"], answer:1, why:"“give somebody the chance”."},
+      {options:["take","carry","bring","put"], answer:0, why:"“take on a task” = accept it."},
+      {options:["worth","valued","pleased","rewarding"], answer:3, why:"“extremely rewarding” = very satisfying (adjective)."},
+      {options:["Despite","However","Although","Unless"], answer:2, why:"“Although + clause” introduces a contrast."},
+      {options:["make","do","take","have"], answer:1, why:"“do research”."},
+      {options:["bring","put","keep","take"], answer:3, why:"“take something into account” = consider it."},
+      {options:["open","set","bring","put"], answer:0, why:"“open up opportunities”."},
+      {options:["change","effect","difference","result"], answer:2, why:"“make a difference to”."}
+    ]
+  },
+  {
+    title: "The benefits of reading",
+    text: "Reading is one of the best ways to (0) your free time. A good book can (1) you to faraway places without your ever leaving your chair. Reading regularly also helps to (2) your vocabulary and, what (3) more, it improves your concentration.||Unlike watching television, a good story never (4) you down. In fact, many people find it almost impossible to (5) a really good book down once they have started it. If you want to read more, try to (6) aside a little time every day, and perhaps (7) a local book club to share ideas with others.||(8) all, reading is a hobby that can last a whole lifetime.",
+    example:{options:["spend","pass","make","do"], answer:0},
+    questions:[
+      {options:["bring","take","carry","move"], answer:1, why:"“take somebody to a place”."},
+      {options:["grow","rise","lift","widen"], answer:3, why:"“widen / broaden your vocabulary”."},
+      {options:["more","better","further","else"], answer:0, why:"“what is more” = furthermore."},
+      {options:["puts","turns","lets","brings"], answer:2, why:"“let somebody down” = disappoint."},
+      {options:["set","put","take","lay"], answer:1, why:"“put a book down” (you can't put it down)."},
+      {options:["set","put","take","give"], answer:0, why:"“set aside time” = reserve it."},
+      {options:["enter","attend","access","join"], answer:3, why:"“join a club”."},
+      {options:["After","Over","Above","Beyond"], answer:2, why:"“above all” = most importantly."}
+    ]
+  }
+];
+
+const LET=["A","B","C","D"];
+let cur=0, sel={}, checked=false, secs=0, timer=null;
+
+const $=id=>document.getElementById(id);
+
+function buildTabs(){
+  $('tabs').innerHTML = TESTS.map((t,i)=>`<div class="tab${i===cur?' on':''}" onclick="go(${i})">Test ${i+1}</div>`).join('');
+}
+function startWatch(){ clearInterval(timer); secs=0; draw(); timer=setInterval(()=>{secs++;draw();},1000);
+  function draw(){ const m=String(Math.floor(secs/60)).padStart(2,'0'), s=String(secs%60).padStart(2,'0'); $('watch').textContent='⏱ '+m+':'+s; } }
+
+function renderPassage(){
+  const t=TESTS[cur];
+  const html=t.text.split('||').map(par=>{
+    return '<p>'+par.replace(/\((\d)\)/g,(m,n)=>{
+      n=+n;
+      if(n===0){ const ex=t.example; return `<span class="gap ex" title="example">(<span class="num">0</span>) ${ex.options[ex.answer]}</span>`; }
+      let cls='gap', content='<span class="num">'+n+'</span>…';
+      if(checked){
+        const q=t.questions[n-1], chosen=sel[n-1];
+        if(chosen===q.answer){ cls+=' filled-ok'; content='<span class="num">'+n+'</span>'+q.options[q.answer]; }
+        else { cls+=' filled-bad'; content='<span class="num">'+n+'</span>'+(chosen!=null?q.options[chosen]:'—'); }
+      }
+      return `<span class="${cls}">${content}</span>`;
+    })+'</p>';
+  }).join('');
+  $('passage').innerHTML=html;
+}
+function renderQuestions(){
+  const t=TESTS[cur];
+  $('questions').innerHTML=t.questions.map((q,qi)=>{
+    const opts=q.options.map((w,oi)=>{
+      let cls='opt';
+      if(checked){
+        if(oi===q.answer) cls+=' correct';
+        else if(sel[qi]===oi) cls+=' wrong';
+      } else if(sel[qi]===oi) cls+=' sel';
+      const click = checked ? '' : `onclick="pick(${qi},${oi})"`;
+      return `<div class="${cls}" ${click}><span class="ltr">${LET[oi]}</span><span>${w}</span></div>`;
+    }).join('');
+    return `<div class="q">
+      <div class="qrow"><span class="qnum">${qi+1}</span></div>
+      <div class="opts">${opts}</div>
+      <div class="why${checked?' show':''}">${checked&&sel[qi]!==q.answer?'❌ ':'✓ '}<b>${LET[q.answer]} ${q.options[q.answer]}</b> — ${q.why}</div>
+    </div>`;
+  }).join('');
+}
+function updateBar(){
+  const answered=Object.keys(sel).length;
+  $('count').textContent = checked ? '' : `${answered}/8 answered`;
+  $('checkBtn').disabled = checked || answered<8;
+  $('checkBtn').textContent = checked ? 'Checked' : 'Check answers';
+}
+window.pick=(qi,oi)=>{ if(checked)return; sel[qi]=oi; renderQuestions(); updateBar(); };
+window.go=(i)=>{ cur=i; sel={}; checked=false; buildTabs(); render(); startWatch(); };
+function render(){ $('title').textContent=TESTS[cur].title; renderPassage(); renderQuestions(); updateBar(); $('score').textContent=''; }
+
+$('checkBtn').onclick=()=>{
+  if(Object.keys(sel).length<8) return;
+  checked=true; clearInterval(timer);
+  const t=TESTS[cur];
+  let n=0; t.questions.forEach((q,qi)=>{ if(sel[qi]===q.answer) n++; });
+  const pct=Math.round(n/8*100);
+  $('score').innerHTML=`Score: ${n}/8 <span class="pct">(${pct}%)</span>`;
+  renderPassage(); renderQuestions(); updateBar();
+  window.scrollTo({top:0,behavior:'smooth'});
+};
+$('resetBtn').onclick=()=>{ sel={}; checked=false; render(); startWatch(); };
+
+buildTabs(); render(); startWatch();
+</script>
+</body>
+</html>
