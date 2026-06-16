@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grammar Quiz — Portal NIS</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font:15px/1.55 "Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:#0f172a;background:linear-gradient(180deg,#d1d2ea 0%,#f8fafc 60%,#fff 100%);min-height:100vh}
+  header{background:#fff;padding:12px 22px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+    box-shadow:0 4px 16px rgba(15,23,42,.06);position:sticky;top:0;z-index:10;border-bottom:1px solid #e2e8f0}
+  header img{display:block;height:38px;width:auto}
+  header .sub{color:#636465;font-size:13px;margin-left:auto;font-weight:600}
+  header a.back{margin-left:14px;text-decoration:none;background:#2d5a8d;color:#fff;font-weight:700;font-size:13px;padding:8px 14px;border-radius:9px;white-space:nowrap}
+  main{max-width:760px;margin:0 auto;padding:22px 18px}
+  h1{font-size:22px;margin:0 0 4px}
+  .lvl{display:inline-block;background:#d1d2ea;color:#244c77;font-weight:800;font-size:12px;padding:4px 11px;border-radius:20px;margin-bottom:8px}
+  p.lead{color:#475569;margin:0 0 16px}
+  .panel{background:#fff;border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 8px 24px rgba(15,23,42,.08);padding:22px}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+  .pill{background:#d1d2ea;color:#244c77;font-weight:700;font-size:13px;padding:6px 12px;border-radius:20px}
+  .progress{flex:1;height:9px;background:#e2e8f0;border-radius:99px;overflow:hidden;min-width:120px}
+  .progress>span{display:block;height:100%;background:#2d5a8d;width:0;transition:width .3s}
+  .prompt{font-size:19px;font-weight:600;margin:6px 0 14px;line-height:1.45}
+  .opts{display:flex;flex-direction:column;gap:10px}
+  .opt{text-align:left;background:#fff;border:2px solid #e2e8f0;border-radius:12px;padding:13px 15px;font:inherit;font-size:15px;cursor:pointer;transition:.12s;color:#0f172a}
+  .opt:hover:not(:disabled){border-color:#4987c6;background:#f6f9fe}
+  .opt:disabled{cursor:default}
+  .opt.correct{border-color:#16a34a;background:#f0fdf4}
+  .opt.wrong{border-color:#dc2626;background:#fef2f2}
+  .opt .mk{float:right;font-weight:800}
+  .fb{margin-top:14px;padding:12px 14px;border-radius:12px;font-size:14px;display:none}
+  .fb.ok{background:#f0fdf4;border:1px solid #bbf7d0;color:#166534;display:block}
+  .fb.no{background:#fef2f2;border:1px solid #fecaca;color:#991b1b;display:block}
+  .actions{margin-top:16px;display:flex;gap:10px;justify-content:flex-end}
+  .btn{background:#2d5a8d;color:#fff;border:0;border-radius:10px;padding:11px 20px;font:inherit;font-weight:700;cursor:pointer}
+  .btn.ghost{background:#fff;color:#2d5a8d;border:2px solid #2d5a8d}
+  .btn:disabled{opacity:.45;cursor:default}
+  .result{text-align:center;padding:18px 6px}
+  .result .big{font-size:46px;font-weight:800;color:#2d5a8d;line-height:1}
+  .result .msg{color:#475569;margin:10px 0 18px}
+  .footer{color:#475569;font-size:12px;text-align:center;padding:22px 0 32px}
+</style>
+</head>
+<body>
+<header>
+  <img src="assets/logo-h.svg" alt="Nordic International School" onerror="this.style.display='none'">
+  <div class="sub" id="hsub">GRAMMAR · QUIZ</div>
+  <a class="back" id="backlink" href="grammar.html">← Grammar</a>
+</header>
+<main>
+  <div class="lvl" id="lvl"></div>
+  <h1 id="title">Grammar Quiz</h1>
+  <p class="lead" id="intro"></p>
+  <div class="panel" id="panel"></div>
+  <div class="footer">Grammar — NIS English · 2026</div>
+</main>
+
+<script>
+/* ===== Biblioteca de temas (contenido original NIS). Cada opción: t=texto, ok=correcta ===== */
+const SETS = {
+  'a2-present': { title:'Present Simple vs Continuous', level:'A2',
+    intro:'Simple para rutinas y hechos; continuous para lo que pasa ahora (now, at the moment, Look!, Listen!).',
+    q:[
+      {q:'She ___ to school every day.', o:[['is going',0],['goes',1],['go',0],['going',0]], n:'"every day" = rutina → present simple (goes).'},
+      {q:'Look! It ___ now.', o:[['rains',0],['is raining',1],['rain',0],['raining',0]], n:'"Look!/now" → present continuous.'},
+      {q:'I ___ coffee every morning.', o:[['am drinking',0],['drinks',0],['drink',1],['drinking',0]], n:'Rutina + "I" → drink.'},
+      {q:'They ___ football at the moment.', o:[['play',0],['plays',0],['are playing',1],['playing',0]], n:'"at the moment" → continuous.'},
+      {q:'He ___ TV right now.', o:[['watch',0],['watches',0],['is watching',1],['watched',0]], n:'"right now" → continuous.'},
+      {q:'We usually ___ dinner at 7.', o:[['are having',0],['have',1],['has',0],['having',0]], n:'"usually" → simple (have).'},
+      {q:'Listen! The baby ___.', o:[['cries',0],['cry',0],['is crying',1],['cried',0]], n:'"Listen!" → continuous.'},
+      {q:'My mother ___ in a hospital.', o:[['is working',0],['work',0],['works',1],['working',0]], n:'Hecho permanente → works.'}
+    ]},
+  'b1-perfect': { title:'Present Perfect vs Past Simple', level:'B1',
+    intro:'Present perfect para experiencias y resultados (ever, never, already, since, for); past simple para tiempo terminado (yesterday, last…, ago).',
+    q:[
+      {q:'I ___ my homework already.', o:[['finished',0],['have finished',1],['finish',0],['finishing',0]], n:'"already" → present perfect.'},
+      {q:'She ___ to Paris last year.', o:[['has gone',0],['went',1],['goes',0],['has been',0]], n:'"last year" (terminado) → past simple.'},
+      {q:'We ___ each other since 2019.', o:[['know',0],['have known',1],['knew',0],['known',0]], n:'"since" → present perfect.'},
+      {q:'___ you ever ___ sushi?', o:[['Did / eat',0],['Have / eaten',1],['Do / eat',0],['Have / ate',0]], n:'"ever" → present perfect (Have you eaten).'},
+      {q:"He ___ his keys, so he can't get in.", o:[['lost',0],['has lost',1],['loses',0],['is losing',0]], n:'Resultado en el presente → present perfect.'},
+      {q:'They ___ that film yesterday.', o:[['have seen',0],['saw',1],['see',0],['seen',0]], n:'"yesterday" → past simple.'},
+      {q:'I ___ never ___ to Japan.', o:[['have / been',1],['did / go',0],['has / gone',0],['was / been',0]], n:'"never" → present perfect (have been).'},
+      {q:'When ___ you ___ here?', o:[['have / arrived',0],['did / arrive',1],['do / arrive',0],['did / arrived',0]], n:'"When" + momento definido → past simple.'}
+    ]},
+  'b2-passive': { title:'Passive Voice', level:'B2',
+    intro:'La pasiva: be + participio. El foco está en la acción o el objeto, no en quién la hace (by + agente, opcional).',
+    q:[
+      {q:'The Mona Lisa ___ by Leonardo da Vinci.', o:[['painted',0],['was painted',1],['is painting',0],['has painting',0]], n:'Pasado pasivo: was + painted.'},
+      {q:'English ___ all over the world.', o:[['speaks',0],['is spoken',1],['spoke',0],['speaking',0]], n:'Presente pasivo: is + spoken.'},
+      {q:'The report ___ by tomorrow.', o:[['will finish',0],['will be finished',1],['is finishing',0],['finished',0]], n:'Futuro pasivo: will be + finished.'},
+      {q:'This bridge ___ in 1990.', o:[['built',0],['was built',1],['is built',0],['has built',0]], n:'Pasado pasivo: was built.'},
+      {q:'The offices ___ every day.', o:[['clean',0],['are cleaned',1],['cleaned',0],['cleaning',0]], n:'Presente pasivo plural: are cleaned.'},
+      {q:'A new hospital ___ at the moment.', o:[['is building',0],['is being built',1],['builds',0],['was built',0]], n:'Presente continuo pasivo: is being built.'},
+      {q:'Our car ___ last week.', o:[['was stolen',1],['stole',0],['is stolen',0],['has stolen',0]], n:'Pasado pasivo: was stolen.'},
+      {q:'The letters ___ already ___.', o:[['have / sent',0],['have / been sent',1],['was / sent',0],['are / sending',0]], n:'Present perfect pasivo: have been sent.'}
+    ]},
+  'c1-cond': { title:'Conditionals (advanced)', level:'C1',
+    intro:'Condicionales mixtos, wish e inversión formal (Had I…, Were I…, Should it…).',
+    q:[
+      {q:'If I ___ harder, I would have passed.', o:[['studied',0],['had studied',1],['study',0],['have studied',0]], n:'Third conditional: if + past perfect.'},
+      {q:"If she ___ more careful, she wouldn't be in trouble now.", o:[['was',0],['were',1],['is',0],['had been',0]], n:'Second conditional (were para todas las personas).'},
+      {q:'If he had taken the job, he ___ in London now.', o:[['would live',1],['would have lived',0],['lived',0],['lives',0]], n:'Mixto: condición pasada → resultado presente (would live).'},
+      {q:'___ I known, I would have helped.', o:[['If',0],['Had',1],['Have',0],['Did',0]], n:'Inversión: "Had I known" = "If I had known".'},
+      {q:'If I were you, I ___ apologise.', o:[['will',0],['would',1],['would have',0],['had',0]], n:'Second conditional: would + infinitivo.'},
+      {q:"If she weren't so shy, she ___ that speech yesterday.", o:[['would give',0],['would have given',1],['gave',0],['gives',0]], n:'Mixto: condición presente → resultado pasado (would have given).'},
+      {q:'___ it rain, the match will be cancelled.', o:[['Should',1],['If',0],['Were',0],['Had',0]], n:'Inversión formal: "Should it rain" = "If it rains".'},
+      {q:'I wish I ___ more time.', o:[['have',0],['had',1],['would have',0],['had had',0]], n:'wish + past simple para un deseo presente.'}
+    ]}
+};
+
+const params=new URLSearchParams(location.search);
+const key=params.get('set')||'a2-present';
+const grade=params.get('grade');
+if(grade) document.getElementById('backlink').href='grammar.html?grade='+encodeURIComponent(grade);
+const SET=SETS[key]||SETS['a2-present'];
+
+document.getElementById('title').textContent=SET.title;
+document.getElementById('lvl').textContent='Nivel '+SET.level;
+document.getElementById('intro').textContent=SET.intro;
+document.getElementById('hsub').textContent='GRAMMAR · '+SET.title.toUpperCase();
+
+let order=[], idx=0, score=0, answered=false;
+const panel=document.getElementById('panel');
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+
+function start(){ order=shuffle(SET.q.map((_,i)=>i)); idx=0; score=0; answered=false; render(); }
+
+function render(){
+  const item=SET.q[order[idx]];
+  const opts=shuffle(item.o.map(o=>({t:o[0],ok:o[1]===1})));
+  const pct=Math.round(idx/SET.q.length*100);
+  panel.innerHTML=`
+    <div class="bar">
+      <span class="pill">${idx+1}/${SET.q.length}</span>
+      <div class="progress"><span style="width:${pct}%"></span></div>
+      <span class="pill">★ ${score}</span>
+    </div>
+    <div class="prompt">${item.q.replace('___','<u>&nbsp;&nbsp;&nbsp;___&nbsp;&nbsp;&nbsp;</u>')}</div>
+    <div class="opts" id="opts">
+      ${opts.map(o=>`<button class="opt" data-ok="${o.ok?1:0}" onclick="pick(this)">${o.t}<span class="mk"></span></button>`).join('')}
+    </div>
+    <div class="fb" id="fb"></div>
+    <div class="actions">
+      <button class="btn" id="next" disabled onclick="next()">${idx===SET.q.length-1?'Ver resultado':'Siguiente →'}</button>
+    </div>`;
+}
+
+window.pick=(btn)=>{
+  if(answered) return; answered=true;
+  const item=SET.q[order[idx]];
+  const ok=btn.dataset.ok==='1';
+  document.querySelectorAll('#opts .opt').forEach(b=>{ b.disabled=true; if(b.dataset.ok==='1'){ b.classList.add('correct'); b.querySelector('.mk').textContent='✓'; }});
+  if(!ok){ btn.classList.add('wrong'); btn.querySelector('.mk').textContent='✗'; } else score++;
+  const fb=document.getElementById('fb');
+  fb.className='fb '+(ok?'ok':'no');
+  fb.innerHTML=(ok?'✅ <b>¡Correcto!</b> ':'❌ <b>Casi.</b> ')+'💡 '+item.n;
+  document.getElementById('next').disabled=false;
+};
+window.next=()=>{ if(idx<SET.q.length-1){ idx++; answered=false; render(); } else end(); };
+
+function end(){
+  const pct=Math.round(score/SET.q.length*100);
+  const msg=pct>=80?'¡Excelente! 🌟':pct>=60?'Buen trabajo. 👍':pct>=40?'Vas mejorando. 💪':'Repasa la regla de arriba y vuelve a intentar. ✍️';
+  panel.innerHTML=`<div class="result">
+    <div class="big">${score}/${SET.q.length}</div>
+    <div class="msg">${pct}% &middot; ${msg}</div>
+    <button class="btn" onclick="start()">↻ Jugar otra vez</button>
+    <a class="btn ghost" href="${document.getElementById('backlink').href}" style="text-decoration:none;display:inline-block">← Grammar</a>
+  </div>`;
+}
+start();
+</script>
+</body>
+</html>

@@ -1681,7 +1681,7 @@ function studentGrade(key){
   $('#main').innerHTML=`${back}<h1>${emoji} ${label}</h1>
     <p class="muted" style="margin-top:-6px">Material de ${label}.</p>
     <div class="grid cols-2" style="margin-top:12px">
-      ${nodeVisible(base+'.grammar') ? _skillCard('📝','Grammar','Gramática de '+label+': explicaciones y práctica (en construcción).','grammar.html') : _lockedCard('📝','Grammar','Gramática de '+label+'.')}
+      ${nodeVisible(base+'.grammar') ? _skillCard('📝','Grammar','Gramática de '+label+': explicaciones y juegos por unidad.','grammar.html?grade='+key) : _lockedCard('📝','Grammar','Gramática de '+label+'.')}
       ${nodeVisible(base+'.activities') ? _hubCard('🎲','Activities','Crosswords y word searches por nivel.',"window._nav('classes_"+key+"_act')") : _lockedCard('🎲','Activities','Juegos y actividades.')}
       ${key==='g9' ? _skillCard('🧩','Use of English · Part 1','Multiple-choice cloze B2 (estilo Cambridge): 8 huecos, opciones A–D, con corrección y explicaciones.','use-of-english-part1.html') : ''}
     </div>`;
