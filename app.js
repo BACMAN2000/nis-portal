@@ -441,7 +441,13 @@ async function adminTeachers(){
     const a=amap[t.id]||{can_results:true,can_students:false,all_grades:true,grades:[]};
     const gradeChips=GRADES.map(g=>`<label style="${chipCss}"><input type="checkbox" class="tg-grade" value="${g.id}" ${(a.grades||[]).includes(g.id)?'checked':''} ${a.all_grades?'disabled':''}> ${g.name}</label>`).join('');
     const managed=tnaMap[t.id];
-    const nodeChips=ACCESS_NODES.map(n=>`<label style="${chipCss}"><input type="checkbox" class="tg-node" value="${n.key}" ${(managed? managed.has(n.key): true)?'checked':''}> ${esc(n.label)}</label>`).join('');
+    const _nodeChip=(key,label)=>`<label style="${chipCss}"><input type="checkbox" class="tg-node" value="${key}" ${(managed? managed.has(key): true)?'checked':''}> ${esc(label)}</label>`;
+    const _gradeKeySet=new Set(GRADE_ORDER.flatMap(g=>['english.classes.'+g,'english.classes.'+g+'.activities','english.classes.'+g+'.grammar']));
+    const generalChips=ACCESS_NODES.filter(n=>!_gradeKeySet.has(n.key)).map(n=>_nodeChip(n.key,n.label)).join('');
+    const gradeBlocks=GRADE_ORDER.map(g=>{
+      const items=[['english.classes.'+g,'Classes'],['english.classes.'+g+'.activities','🎲 Activities'],['english.classes.'+g+'.grammar','📝 Grammar']];
+      return `<div class="row" style="gap:6px;align-items:center;margin-top:5px;flex-wrap:wrap"><span class="muted" style="font-size:.8rem;min-width:84px">${GRADE_META[g][0]} ${GRADE_META[g][1]}</span>${items.map(it=>_nodeChip(it[0],it[1])).join('')}</div>`;
+    }).join('');
     const pw=credmap[t.id]||'';
     const suspended = t.active===false;
     return `<div class="card" data-tid="${t.id}" style="${suspended?'opacity:.6':''}">
@@ -465,8 +471,10 @@ async function adminTeachers(){
       </div>
       <div class="muted" style="margin:10px 0 4px;font-size:.85rem">Grados específicos (sólo si desmarcas "Todos los grados"):</div>
       <div style="display:flex;flex-wrap:wrap;gap:8px">${gradeChips}</div>
-      <div class="muted" style="margin:10px 0 4px;font-size:.85rem">Actividades que gestiona (para sus grados):</div>
-      <div style="display:flex;flex-wrap:wrap;gap:8px">${nodeChips}</div>
+      <div class="muted" style="margin:10px 0 4px;font-size:.85rem">Tarjetas que ve y gestiona:</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">${generalChips}</div>
+      <div class="muted" style="margin:8px 0 2px;font-size:.8rem">Classes — por grado (cada uno: la tarjeta del grado, sus Activities y su Grammar):</div>
+      ${gradeBlocks}
       <div class="row" style="margin-top:12px;align-items:center;gap:10px"><button class="btn sm" onclick="window._saveTeacher('${t.id}', this)">Guardar accesos</button>${suspended?`<button class="btn sm" style="background:var(--good)" onclick="suspendUser('${t.id}',true,'teacher')">Reactivar</button>`:`<button class="btn sm ghost" style="border-color:var(--warn);color:#92600a" onclick="suspendUser('${t.id}',false,'teacher')">Suspender</button>`}<button class="btn sm danger" onclick="deleteUser('${t.id}','teacher')">Eliminar profesor</button><span class="tmsg muted" style="font-size:.85rem"></span></div>
     </div>`;
   }).join('');
@@ -516,13 +524,19 @@ window.createTeacher=async()=>{
   if(pw.length<6) return msg.innerHTML='<div class="note err">La contraseña debe tener al menos 6 caracteres.</div>';
   msg.innerHTML='<div class="note">Creando cuenta…</div>';
   const meta={ first_name:first, last_name:last, full_name:first+' '+last, role:'teacher', academic_year:new Date().getFullYear() };
-  let rpcErr=null;
+  let rpcErr=null, timedOut=false;
   try{
     const rpcPromise=sb.rpc('admin_create_user',{p_email:email,p_password:pw,p_meta:meta});
-    const timeout=new Promise((_,rej)=>setTimeout(()=>rej(new Error('Tiempo de espera agotado.')),12000));
+    // La creación en BD es instantánea, pero la red/pooler puede tardar. Damos 30s.
+    const timeout=new Promise((_,rej)=>setTimeout(()=>{ timedOut=true; rej(new Error('__timeout__')); },30000));
     const {error}=await Promise.race([rpcPromise,timeout]);
     rpcErr=error||null;
   }catch(e){ rpcErr=e; }
+  if(timedOut){
+    msg.innerHTML='<div class="note">La creación está tardando más de lo normal por la conexión. <b>Es muy posible que la cuenta SÍ se haya creado.</b> Volviendo a la lista de Profesores para que verifiques — <b>no uses el mismo correo dos veces</b>. Si no aparece, espera unos segundos y recarga.</div>';
+    setTimeout(adminTeachers, 3000);
+    return;
+  }
   if(rpcErr){ msg.innerHTML=`<div class="note err">${esc(rpcErr.message||String(rpcErr))}</div>`; return; }
   msg.innerHTML='<div class="note ok">✓ Profesor creado correctamente. Redirigiendo…</div>';
   setTimeout(adminTeachers, 900);
@@ -997,6 +1011,11 @@ let _currentResultsList = [];
 async function loadTeacherAccess(){
   const { data } = await sb.from('teacher_access').select('*').eq('profile_id', state.session.user.id).maybeSingle();
   state.teacherAccess = data || { can_results:true, can_students:false, all_grades:true, grades:[] };
+  // Tarjetas (nodos) que el admin asignó a este profesor. Sin filas → ve todo.
+  try{
+    const { data:tn } = await sb.from('teacher_node_access').select('node_key,allowed').eq('profile_id', state.session.user.id);
+    state.teacherNodes = { has:(tn||[]).length>0, set:new Set((tn||[]).filter(r=>r.allowed).map(r=>r.node_key)) };
+  }catch(e){ state.teacherNodes={ has:false, set:new Set() }; }
   return state.teacherAccess;
 }
 function teacherAllowedGrades(){
@@ -1010,6 +1029,9 @@ async function renderTeacher(tab){
   if(acc.can_results) nav.push({key:'results',label:'📝 Resultados'});
   if(acc.can_results) nav.push({key:'final',label:'🎓 Resultado final'});
   if(acc.can_students) nav.push({key:'students',label:'👥 Alumnos'});
+  const _tn = state.teacherNodes||{has:false,set:new Set()};
+  const _canClasses = !_tn.has || _tn.set.has('english.classes') || [..._tn.set].some(k=>k.indexOf('english.classes.')===0);
+  if(_canClasses) nav.push({key:'classes',label:'🏫 Classes'});
   if(!nav.length) nav.push({key:'none',label:'— sin accesos —'});
   nav.push({key:'exams',label:'🎧 Exámenes'});
   nav.push({key:'mun',label:'🌐 MUN Academy'});
@@ -1022,6 +1044,7 @@ async function renderTeacher(tab){
   if(active==='results') return teacherResults();
   if(active==='final') return cefrFinalPanel();
   if(active==='students') return teacherStudents();
+  if(active==='classes') return studentClasses();
   if(active==='phonics'){ $('#main').innerHTML = phonicsPanel(); return; }
   if(active==='coach'){ $('#main').innerHTML = coachPanel(); return; }
   $('#main').innerHTML = `<div class="card">El administrador aún no te ha asignado accesos. Escríbele para que te habilite <b>Resultados</b> o <b>Alumnos</b>.</div>`;
@@ -1527,7 +1550,13 @@ async function loadStudentAccess(){
 /* ¿Visible este nodo para el usuario actual? Admin/Profesor: siempre (preview). */
 function nodeVisible(key){
   const p=state.profile;
-  if(p && (p.role==='admin'||p.role==='teacher')) return true;
+  if(p && p.role==='admin') return true;                       // admin: preview total
+  if(p && p.role==='teacher'){                                 // profesor: según lo asignado por el admin
+    const tn=state.teacherNodes;
+    if(!tn || !tn.has) return true;                            // sin configurar → ve todo
+    if(!_GATEABLE.has(key)) return true;                       // claves no gestionables → visibles
+    return tn.set.has(key);
+  }
   const a=state.access||{grade:{},student:{}};
   if(Object.prototype.hasOwnProperty.call(a.student,key)) return !!a.student[key]; // override por alumno
   if(Object.prototype.hasOwnProperty.call(a.grade,key))   return !!a.grade[key];   // habilitación por grado
@@ -1542,18 +1571,26 @@ function _lockedCard(emoji,title,desc){
   </div>`;
 }
 /* Nodos gateables por el admin/profesor (Mocks va aparte; My Progress y Resultado final son datos propios). */
+const _GRADE_NODES = ['g6','g7','g8','g9','g10','g11'].flatMap(g=>{
+  const lbl = {g6:'6th',g7:'7th',g8:'8th',g9:'9th',g10:'10th',g11:'11th'}[g];
+  return [
+    {key:'english.classes.'+g,            label:'Classes · '+lbl+' grade'},
+    {key:'english.classes.'+g+'.activities', label:lbl+' · Activities'},
+    {key:'english.classes.'+g+'.grammar',    label:lbl+' · Grammar'},
+  ];
+});
 const ACCESS_NODES = [
   {key:'english.pronunciation',         label:'Pronunciation'},
   {key:'english.practice',              label:'Practice Tests'},
   {key:'english.phonics',               label:'Phonics'},
   {key:'english.classes',               label:'Classes'},
-  {key:'english.classes.g9',            label:'Classes · 9th grade'},
-  {key:'english.classes.g9.activities', label:'9th · Activities'},
-  {key:'english.classes.g9.grammar',    label:'9th · Grammar'},
+  ..._GRADE_NODES,
   {key:'french',                        label:'French (toda la materia)'},
   {key:'general.library',               label:'Library'},
   {key:'general.mun',                   label:'MUN Academy'},
 ];
+/* Claves gestionables por profesor (para la restricción de su vista). */
+const _GATEABLE = new Set(ACCESS_NODES.map(n=>n.key));
 
 /* Vista de materia (English / French) */
 function studentSubject(key){
@@ -1627,21 +1664,48 @@ async function studentFinal(){
     <button class="btn" onclick="window.studentReportPDF('${p.id}')">📄 Descargar mi PDF</button>`;
 }
 
-/* Vista de un grado dentro de Classes (9th grade → Grammar + Activities) */
+/* Metadatos de grados dentro de Classes y niveles de actividades por grado.
+   6/7/8 → A1–B2 · 9/10/11 → A1–C1 */
+const GRADE_META = { g6:['6️⃣','6th grade'], g7:['7️⃣','7th grade'], g8:['8️⃣','8th grade'],
+  g9:['9️⃣','9th grade'], g10:['🔟','10th grade'], g11:['🎓','11th grade'] };
+const GRADE_LEVELS = { g6:'A1,A2,B1,B2', g7:'A1,A2,B1,B2', g8:'A1,A2,B1,B2',
+  g9:'A1,A2,B1,B2,C1', g10:'A1,A2,B1,B2,C1', g11:'A1,A2,B1,B2,C1' };
+const GRADE_ORDER = ['g6','g7','g8','g9','g10','g11'];
+
+/* Vista de un grado dentro de Classes (→ Grammar + Activities) */
 function studentGrade(key){
   _setNav('classes');
-  const back = _isStudent() ? _backBtn("window._nav('classes')",'Classes') : '';
-  $('#main').innerHTML=`${back}<h1>9️⃣ 9th grade</h1>
-    <p class="muted" style="margin-top:-6px">Material de 9no grado.</p>
+  const [emoji,label]=GRADE_META[key]||['🏫',key];
+  const base='english.classes.'+key;
+  const back = _backBtn("window._nav('classes')",'Classes');
+  $('#main').innerHTML=`${back}<h1>${emoji} ${label}</h1>
+    <p class="muted" style="margin-top:-6px">Material de ${label}.</p>
     <div class="grid cols-2" style="margin-top:12px">
-      ${nodeVisible('english.classes.g9.grammar') ? _skillCard('📝','Grammar','Gramática de 9no: explicaciones y práctica (en construcción).','grammar.html') : _lockedCard('📝','Grammar','Gramática de 9no grado.')}
-      ${nodeVisible('english.classes.g9.activities') ? _skillCard('🎲','Activities','Juegos y actividades: crosswords, word searches y más.','activities.html') : _lockedCard('🎲','Activities','Juegos y actividades.')}
+      ${nodeVisible(base+'.grammar') ? _skillCard('📝','Grammar','Gramática de '+label+': explicaciones y práctica (en construcción).','grammar.html') : _lockedCard('📝','Grammar','Gramática de '+label+'.')}
+      ${nodeVisible(base+'.activities') ? _hubCard('🎲','Activities','Crosswords y word searches por nivel.',"window._nav('classes_"+key+"_act')") : _lockedCard('🎲','Activities','Juegos y actividades.')}
+      ${key==='g9' ? _skillCard('🧩','Use of English · Part 1','Multiple-choice cloze B2 (estilo Cambridge): 8 huecos, opciones A–D, con corrección y explicaciones.','use-of-english-part1.html') : ''}
+    </div>`;
+}
+/* Actividades de un grado → Crossword + Word Search con los niveles del grado */
+function studentGradeActivities(key){
+  _setNav('classes');
+  const [emoji,label]=GRADE_META[key]||['🏫',key];
+  const lv=GRADE_LEVELS[key]||'A1,A2,B1,B2,C1';
+  const back = _backBtn("window._nav('classes_"+key+"')",label);
+  $('#main').innerHTML=`${back}<h1>🎲 Activities · ${label}</h1>
+    <p class="muted" style="margin-top:-6px">Niveles disponibles: ${lv.split(',').join(' · ')}.</p>
+    <div class="grid cols-2" style="margin-top:12px">
+      ${_skillCard('🧩','Crosswords','10 crucigramas temáticos por nivel — pistas, vidas y cronómetro.','crosswords.html?levels='+encodeURIComponent(lv))}
+      ${_skillCard('🔎','Word Search','10 sopas de letras temáticas por nivel.','wordsearches.html?levels='+encodeURIComponent(lv))}
     </div>`;
 }
 window._nav=(k)=>{
+  let m;
+  if(m=/^classes_(g\d+)_act$/.exec(k)) return studentGradeActivities(m[1]);
+  if(m=/^classes_(g\d+)$/.exec(k))     return studentGrade(m[1]);
   const fn={english:()=>studentSubject('english'),french:()=>studentSubject('french'),general:studentGeneral,
     mocks:studentMocks,practice:studentPractice,library:studentLibrary,mun:studentMun,classes:studentClasses,
-    classes_g9:()=>studentGrade('g9'),phonics:studentPhonics,coach:studentCoach,results:studentResults,
+    phonics:studentPhonics,coach:studentCoach,results:studentResults,
     final:studentFinal,home:studentHub}[k];
   if(fn) fn();
 };
@@ -1698,16 +1762,20 @@ function studentLibrary(){
     <div class="note info" style="margin-top:14px">ℹ️ La biblioteca se abre en una pestaña nueva. Si no carga, avisa a tu profesor (el servidor de la biblioteca debe estar encendido).</div>`;
 }
 
-/* ---------- Classes: Presentations + Activities ---------- */
+/* ---------- Classes: tarjetas por grado (6th–11th) ---------- */
 function studentClasses(){
   _setNav('classes');
   const back = _isStudent() ? _backBtn("window._nav('english')",'English') : '';
+  const cards = GRADE_ORDER.map(k=>{
+    const [emoji,label]=GRADE_META[k];
+    const node='english.classes.'+k;
+    return nodeVisible(node)
+      ? _hubCard(emoji,label,'Grammar y actividades de '+label+'.',"window._nav('classes_"+k+"')")
+      : _lockedCard(emoji,label,'Grammar y actividades de '+label+'.');
+  }).join('');
   $('#main').innerHTML=`${back}<h1>🏫 Classes</h1>
     <p class="muted" style="margin-top:-6px">Material de clase por grado.</p>
-    <div class="grid cols-3" style="margin-top:12px">
-      ${nodeVisible('english.classes.g9') ? _hubCard('9️⃣','9th grade','Grammar y actividades de 9no grado.',"window._nav('classes_g9')") : _lockedCard('9️⃣','9th grade','Grammar y actividades de 9no grado.')}
-    </div>
-    <p class="muted" style="margin-top:12px;font-size:.85rem">Más grados próximamente.</p>`;
+    <div class="grid cols-3" style="margin-top:12px">${cards}</div>`;
 }
 
 /* ---------- My Progress: historial completo del alumno (mocks, practice y actividades) ---------- */
