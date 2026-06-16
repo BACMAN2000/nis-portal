@@ -1596,6 +1596,16 @@ const _GATEABLE = new Set(ACCESS_NODES.map(n=>n.key));
 function studentSubject(key){
   _setNav(key);
   const isEn = key==='english';
+  if(!isEn){
+    $('#main').innerHTML = `${_backBtn("window._nav('home')",'Inicio')}<h1>🇫🇷 French</h1>
+      <p class="muted" style="margin-top:-6px">Juegos de vocabulario en francés por niveles del Marco Común Europeo (A1 · A2 · B1 · B2 · C1).</p>
+      <div class="grid cols-2" style="margin-top:12px">
+        ${_skillCard('🧩','Crosswords','Crucigramas temáticos de vocabulario francés — 10 por nivel (A1–C1).','crosswords-fr.html')}
+        ${_skillCard('🔎','Word Search','Sopas de letras temáticas en francés — 10 por nivel (A1–C1).','wordsearches-fr.html')}
+      </div>
+      <p class="muted" style="margin-top:14px;font-size:.85rem">Más material de francés próximamente.</p>`;
+    return;
+  }
   const title = isEn ? '🇬🇧 English' : '🇫🇷 French';
   const areas = isEn ? ENGLISH_AREAS : ENGLISH_AREAS.filter(a=>!a.englishOnly);
   const cards = areas.map(a=>{
