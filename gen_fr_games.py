@@ -125,12 +125,12 @@ def make_crossword(pairs):
 # ---------- Word search ----------
 DIRS=[(0,1),(1,0),(0,-1),(-1,0),(1,1),(1,-1),(-1,1),(-1,-1)]
 def make_wordsearch(pairs, base):
-    words=[strip(fr) for fr,es in pairs]
-    words=[w for w in words if 2<len(w)<=15]
-    size=max(base, max(len(w) for w in words))
+    items=[(strip(fr), fr) for fr,es in pairs]
+    items=[(w,fr) for w,fr in items if 2<len(w)<=15]
+    size=max(base, max(len(w) for w,fr in items))
     grid=[[None]*size for _ in range(size)]
     placed=[]
-    for W in sorted(words,key=lambda w:-len(w)):
+    for W,fr in sorted(items,key=lambda x:-len(x[0])):
         ok=False
         for _ in range(400):
             dr,dc=random.choice(DIRS)
@@ -145,7 +145,7 @@ def make_wordsearch(pairs, base):
             if not good: continue
             for k,ch in enumerate(W):
                 r,c=cells[k]; grid[r][c]=ch
-            placed.append({'word':W,'cells':[[r,c] for r,c in cells]})
+            placed.append({'word':W,'fr':fr,'cells':[[r,c] for r,c in cells]})
             ok=True; break
     for r in range(size):
         for c in range(size):
@@ -200,6 +200,21 @@ def emit(src, dst, data, title):
 
 emit('crosswords.html','crosswords-fr.html',cw,'Crosswords (Français) — Portal NIS')
 emit('wordsearches.html','wordsearches-fr.html',ws,'Word Search (Français) — Portal NIS')
+
+# Pronunciación (TTS) al encontrar una palabra — sólo en el word search francés.
+_wp=os.path.join(REPO,'wordsearches-fr.html'); _s=open(_wp,encoding='utf-8').read()
+_old='found[w.word]=true; paint(w,d.words.indexOf(w));'
+_new='found[w.word]=true; try{speakFR(w);}catch(_){} paint(w,d.words.indexOf(w));'
+assert _old in _s, 'no se encontro el handler de palabra encontrada'
+_s=_s.replace(_old,_new,1)
+_audio=("\n/* Pronunciacion francesa (Web Speech API) al encontrar una palabra */\n"
+"let _frVoice=null;\n"
+"function _pickFrVoice(){ try{ var vs=speechSynthesis.getVoices(); _frVoice=vs.find(function(v){return /^fr/i.test(v.lang);})||vs.find(function(v){return /fran/i.test(v.name);})||null; }catch(e){} }\n"
+"if('speechSynthesis' in window){ _pickFrVoice(); try{ speechSynthesis.onvoiceschanged=_pickFrVoice; }catch(e){} }\n"
+"function speakFR(w){ if(!('speechSynthesis' in window))return; var t=(w&&(w.fr||w.word))||''; if(!t)return; var u=new SpeechSynthesisUtterance(t); u.lang='fr-FR'; if(_frVoice)u.voice=_frVoice; u.rate=0.9; try{speechSynthesis.cancel();}catch(e){} speechSynthesis.speak(u); }\n")
+_i=_s.rfind('</script>'); _s=_s[:_i]+_audio+_s[_i:]
+open(_wp,'w',encoding='utf-8').write(_s)
+print('TTS inyectado en wordsearches-fr.html:', ('speakFR' in _s) and (_new in _s))
 
 print('CROSSWORDS placed per level:', {lv:[p['placed'] for p in cw[lv]] for lv in LEVELS})
 print('WS words per level:', {lv:[len(p['words']) for p in ws[lv]] for lv in LEVELS})
