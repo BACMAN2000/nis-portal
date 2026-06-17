@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Backshifting Machine · NIS English</title>
+<style>
+  :root{
+    --bg:#f4f6fb; --card:#fff; --ink:#1e2433; --muted:#67718a;
+    --accent:#3b5bdb; --accent-soft:#e7ecfd;
+    --good:#2f9e44; --good-soft:#d3f4dc; --bad:#e03131; --bad-soft:#ffe3e3; --gold:#f59f00;
+    --now:#0c8599; --then:#e8590c;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:'Segoe UI',system-ui,Arial,sans-serif; background:var(--bg); color:var(--ink); padding:16px; line-height:1.5;}
+  .topnav{position:sticky; top:0; z-index:30; background:#fff; display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+    padding:10px 18px; box-shadow:0 2px 10px rgba(20,30,60,.08); margin:-16px -16px 16px;}
+  .topnav img{height:30px; width:auto; display:block;}
+  .topnav .nav-sp{margin-left:auto;}
+  .navbtn{text-decoration:none; font-weight:700; font-size:.85rem; padding:8px 14px; border-radius:9px; white-space:nowrap;
+    background:var(--accent-soft); color:var(--accent); transition:.15s; border:none; cursor:pointer;}
+  .navbtn:hover{filter:brightness(.97);}
+  .navbtn.primary{background:var(--accent); color:#fff;}
+  header{max-width:960px; margin:0 auto 8px; text-align:center;}
+  header h1{font-size:1.5rem;}
+  header p{color:var(--muted); font-size:.9rem; margin-top:4px;}
+  .tabs{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin:14px auto; max-width:960px;}
+  .tab{border:2px solid transparent; background:var(--card); color:var(--ink); padding:9px 18px; border-radius:24px;
+       font-weight:700; font-size:.92rem; cursor:pointer; box-shadow:0 1px 3px rgba(20,30,60,.12); transition:.15s;}
+  .tab small{display:block; font-weight:500; font-size:.66rem; color:var(--muted);}
+  .tab.on{background:var(--accent); color:#fff; border-color:var(--accent);}
+  .tab.on small{color:#dce4ff;}
+  main{max-width:960px; margin:0 auto;}
+  .card{background:var(--card); border-radius:16px; padding:20px; box-shadow:0 2px 12px rgba(20,30,60,.08); margin-bottom:14px;}
+  /* ---- Ladder ---- */
+  .ladder{display:grid; gap:10px;}
+  .rung{display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:12px; background:#f8fafc; border:1px solid #e6ebf3;
+    border-radius:14px; padding:12px 14px; cursor:pointer; transition:.15s;}
+  .rung:hover{border-color:var(--accent); box-shadow:0 3px 10px rgba(59,91,219,.12);}
+  .rung.open{border-color:var(--accent); background:#fff;}
+  .side{padding:8px 10px; border-radius:10px; font-weight:700;}
+  .side.from{background:#e0f5f8; color:var(--now);}
+  .side.to{background:#ffeede; color:var(--then); text-align:right;}
+  .side .lab{font-size:.7rem; text-transform:uppercase; letter-spacing:.5px; opacity:.8; display:block;}
+  .side .tense{font-size:1rem;}
+  .mid{font-size:1.4rem; color:var(--accent);}
+  .detail{grid-column:1/-1; display:none; padding:10px 4px 2px; font-size:.95rem; border-top:1px dashed #d7def0; margin-top:6px;}
+  .rung.open .detail{display:block;}
+  .ex{display:flex; gap:10px; flex-wrap:wrap; margin-top:8px;}
+  .ex .b{flex:1 1 230px; background:#f8fafc; border-radius:10px; padding:9px 12px; font-size:.92rem;}
+  .ex .b .t{font-size:.7rem; font-weight:800; text-transform:uppercase; letter-spacing:.5px; color:var(--muted);}
+  q{quotes:none;}
+  .hl-now{color:var(--now); font-weight:800;} .hl-then{color:var(--then); font-weight:800;}
+  .nochg{background:#fff8e6; border:1px solid #ffe3a3; border-radius:12px; padding:12px 16px; margin-top:8px; font-size:.92rem;}
+  /* ---- Match ---- */
+  .mwrap{display:grid; grid-template-columns:1fr 1fr; gap:24px; max-width:620px; margin:0 auto;}
+  .mcol h3{font-size:.78rem; text-transform:uppercase; letter-spacing:1px; text-align:center; margin-bottom:10px;}
+  .mcol.l h3{color:var(--now);} .mcol.r h3{color:var(--then);}
+  .mcard{background:#fff; border:2px solid #d7def0; border-radius:12px; padding:12px; margin-bottom:10px; font-weight:700; cursor:pointer; text-align:center; transition:.12s; font-size:.95rem;}
+  .mcol.l .mcard:hover{border-color:var(--now);} .mcol.r .mcard:hover{border-color:var(--then);}
+  .mcard.sel{border-color:var(--accent); background:var(--accent-soft);}
+  .mcard.matched{border-color:var(--good); background:var(--good-soft); color:var(--good); cursor:default; opacity:.85;}
+  .mcard.bad{animation:shake .3s;}
+  @keyframes shake{25%{transform:translateX(-5px);}75%{transform:translateX(5px);}}
+  /* ---- Drill ---- */
+  .status{display:flex; gap:16px; align-items:center; justify-content:center; font-weight:800; margin-bottom:12px; flex-wrap:wrap;}
+  .watch{font-variant-numeric:tabular-nums; color:var(--accent);}
+  .qdirect{background:var(--accent-soft); border-radius:14px; padding:14px 18px; font-weight:600; font-size:1.12rem; margin-bottom:6px;}
+  .qspk{color:var(--muted); font-size:.85rem; margin:8px 0 14px;}
+  .opts{display:grid; gap:10px;}
+  .opt{text-align:left; background:#fff; border:2px solid #d7def0; border-radius:12px; padding:13px 16px; font-size:1rem; cursor:pointer; transition:.12s; font-weight:600;}
+  .opt:hover{border-color:var(--accent); background:var(--accent-soft);}
+  .opt.correct{border-color:var(--good); background:var(--good-soft); color:var(--good);}
+  .opt.wrong{border-color:var(--bad); background:var(--bad-soft); color:var(--bad);}
+  .opt:disabled{cursor:default;}
+  .explain{margin-top:14px; padding:12px 16px; border-radius:12px; background:#fff8e6; border:1px solid #ffe3a3; font-size:.92rem; display:none;}
+  .explain.show{display:block;}
+  .progress{height:7px; background:#e9ecf3; border-radius:6px; overflow:hidden; margin:10px 0 16px;}
+  .progress>i{display:block; height:100%; background:var(--accent); width:0; transition:.3s;}
+  .banner{display:none; margin-top:14px; padding:14px; border-radius:12px; background:var(--good-soft); color:var(--good); font-weight:800; text-align:center; font-size:1.05rem;}
+  .banner.show{display:block; animation:pop .4s;}
+  @keyframes pop{0%{transform:scale(.85); opacity:0;}100%{transform:scale(1); opacity:1;}}
+  button.act{border:none; border-radius:10px; padding:11px 18px; font-weight:700; font-size:.9rem; cursor:pointer;}
+  .b-alt{background:#e9ecf3; color:var(--ink);}
+  footer{max-width:960px; margin:18px auto 0; text-align:center; color:var(--muted); font-size:.75rem;}
+  @media (max-width:520px){ body{padding:10px;} .topnav{margin:-10px -10px 12px;} .rung{grid-template-columns:1fr; gap:6px; text-align:center;} .side.to{text-align:center;} .mid{transform:rotate(90deg);} .mwrap{gap:12px;} }
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <img src="assets/logo-h.svg" alt="Nordic International School" onerror="this.style.display='none'">
+  <span class="nav-sp"></span>
+  <a class="navbtn" href="grammar.html?grade=g9">📘 Grammar</a>
+  <a class="navbtn primary" href="./">🏫 Portal</a>
+</nav>
+
+<header>
+  <h1>⏪ The Backshifting Machine</h1>
+  <p>When the reporting verb is in the <b>past</b> (said, told, asked…), tenses step <b>one move back</b> in time. Grade 8–11 · NIS English</p>
+</header>
+
+<div class="tabs" id="tabs">
+  <button class="tab on" data-tab="learn" onclick="go('learn')">① The Ladder<small>tap a tense to shift</small></button>
+  <button class="tab" data-tab="match" onclick="go('match')">② Match<small>direct ↔ reported</small></button>
+  <button class="tab" data-tab="drill" onclick="go('drill')">③ Drill<small>pick the right form</small></button>
+</div>
+
+<main id="main"></main>
+
+<footer>Reported Speech &amp; Backshifting · NIS English · 2026 — <a href="reported-speech-lab.html" style="color:var(--accent)">← Back to the Reported Speech Lab</a></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+<script src="config.js"></script>
+<script>
+window.NISACT=(function(){
+  let _sb=null;
+  function client(){ if(_sb) return _sb; if(!window.supabase||!window.NIS_CONFIG) return null;
+    _sb=window.supabase.createClient(NIS_CONFIG.SUPABASE_URL,NIS_CONFIG.SUPABASE_KEY); return _sb; }
+  async function student(){ const c=client(); if(!c) return null;
+    try{ const u=await c.auth.getUser(); if(!u||!u.data||!u.data.user) return null;
+      const p=await c.from('profiles').select('full_name,first_name,email').eq('id',u.data.user.id).maybeSingle();
+      const d=(p&&p.data)||{}; return {uid:u.data.user.id,email:u.data.user.email||d.email,full_name:d.full_name,first_name:d.first_name};
+    }catch(e){ return null; } }
+  async function submit(r){
+    const s=await student(); if(!s) return {skipped:true};
+    try{ await client().from('activity_attempts').insert({student_id:s.uid,activity:r.activity,title:r.title,level:r.level,
+      score:r.score,total:r.total,hints_used:0,lives_left:r.lives,duration_sec:r.duration}); }catch(e){}
+    try{ const m=Math.floor(r.duration/60), sec=r.duration%60;
+      await fetch(NIS_CONFIG.WRITING_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body:JSON.stringify({skill:'Grammar',name:s.full_name||s.first_name||'',email:s.email||'',level:r.level,
+          examTitle:r.title+' - Time '+m+'m '+String(sec).padStart(2,'0')+'s',
+          examType:r.activity,score:r.score,total:r.total,duration_min:Math.max(1,Math.round(r.duration/60))})});
+    }catch(e){}
+    return {sent:true};
+  }
+  return {submit};
+})();
+
+/* ============== DATA: tense ladder ============== */
+const LADDER=[
+  { from:'Present simple', to:'Past simple', fe:'work / works', te:'worked',
+    d:'<q>I <span class="hl-now">work</span> here.</q> → She said she <span class="hl-then">worked</span> there.' },
+  { from:'Present continuous', to:'Past continuous', fe:'am / is / are working', te:'was / were working',
+    d:'<q>I <span class="hl-now">am working</span>.</q> → He said he <span class="hl-then">was working</span>.' },
+  { from:'Present perfect', to:'Past perfect', fe:'have / has worked', te:'had worked',
+    d:'<q>I <span class="hl-now">have finished</span>.</q> → She said she <span class="hl-then">had finished</span>.' },
+  { from:'Present perfect continuous', to:'Past perfect continuous', fe:'have / has been working', te:'had been working',
+    d:'<q>I <span class="hl-now">have been waiting</span>.</q> → He said he <span class="hl-then">had been waiting</span>.' },
+  { from:'Past simple', to:'Past perfect', fe:'worked', te:'had worked',
+    d:'<q>I <span class="hl-now">saw</span> it.</q> → She said she <span class="hl-then">had seen</span> it.' },
+  { from:'Past continuous', to:'Past perfect continuous', fe:'was / were working', te:'had been working',
+    d:'<q>I <span class="hl-now">was reading</span>.</q> → He said he <span class="hl-then">had been reading</span>.' },
+  { from:'will', to:'would', fe:'will go', te:'would go', modal:true,
+    d:'<q>I <span class="hl-now">will</span> help.</q> → She said she <span class="hl-then">would</span> help.' },
+  { from:'can', to:'could', fe:'can swim', te:'could swim', modal:true,
+    d:'<q>I <span class="hl-now">can</span> swim.</q> → He said he <span class="hl-then">could</span> swim.' },
+  { from:'may', to:'might', fe:'may come', te:'might come', modal:true,
+    d:'<q>I <span class="hl-now">may</span> come.</q> → She said she <span class="hl-then">might</span> come.' },
+  { from:'must', to:'had to', fe:'must go', te:'had to go', modal:true,
+    d:'<q>I <span class="hl-now">must</span> go.</q> → He said he <span class="hl-then">had to</span> go. (obligation)' },
+  { from:'shall', to:'should / would', fe:'shall we?', te:'should / would', modal:true,
+    d:'<q>I <span class="hl-now">shall</span> try.</q> → She said she <span class="hl-then">would</span> try.' },
+];
+const NOCHANGE=['would','could','might','should','ought to','used to','had better','past perfect (already back)'];
+
+/* ============== DATA: match (8 pairs) ============== */
+const MATCH=[
+  ['am / is / are','was / were'], ['do / does','did'], ['have / has','had'],
+  ['will','would'], ['can','could'], ['may','might'], ['must','had to'], ['is going to','was going to']
+];
+
+/* ============== DATA: drill ============== */
+const DRILL=[
+  { d:'"I <u>play</u> tennis."', s:'present simple', o:['played','have played','had played'], a:0,
+    e:'Present simple → <b>past simple</b>: play → <b>played</b>.' },
+  { d:'"We <u>are leaving</u> now."', s:'present continuous', o:['are leaving','were leaving','had left'], a:1,
+    e:'Present continuous → <b>past continuous</b>: are leaving → <b>were leaving</b>.' },
+  { d:'"She <u>has called</u> me."', s:'present perfect', o:['has called','called','had called'], a:2,
+    e:'Present perfect → <b>past perfect</b>: has called → <b>had called</b>.' },
+  { d:'"I <u>will</u> win."', s:'modal: will', o:['will','would','will have'], a:1,
+    e:'<b>will</b> → <b>would</b>.' },
+  { d:'"You <u>can</u> stay."', s:'modal: can', o:['can','could','can have'], a:1,
+    e:'<b>can</b> → <b>could</b>.' },
+  { d:'"I <u>must</u> leave."', s:'modal: must (obligation)', o:['must','had to','must have'], a:1,
+    e:'Obligation <b>must</b> → <b>had to</b>.' },
+  { d:'"I <u>visited</u> Rome."', s:'past simple', o:['visited','had visited','have visited'], a:1,
+    e:'Past simple → <b>past perfect</b>: visited → <b>had visited</b>.' },
+  { d:'"Water <u>boils</u> at 100°C."', s:'a scientific fact', o:['boiled','boils','had boiled'], a:1,
+    e:'A <b>general truth</b> can stay in the present — no back-shift needed: <b>boils</b>.' },
+  { d:'"I <u>would</u> love to come."', s:'modal: would (already past form)', o:['would','will','had would'], a:0,
+    e:'<b>would, could, might, should</b> do <b>not</b> change — they are already back-shifted.' },
+];
+
+/* ============== STATE ============== */
+let tab='learn';
+function go(t){ tab=t; document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('on',b.dataset.tab===t)); render(); }
+
+/* ---- Learn / ladder ---- */
+function renderLearn(){
+  const rows=LADDER.map((r,i)=>`
+    <div class="rung" id="rung${i}" onclick="toggleRung(${i})">
+      <div class="side from"><span class="lab">Direct ${r.modal?'(modal)':''}</span><span class="tense">${r.from}</span></div>
+      <div class="mid">⟶</div>
+      <div class="side to"><span class="lab">Reported</span><span class="tense">${r.to}</span></div>
+      <div class="detail">
+        <div class="ex">
+          <div class="b"><div class="t" style="color:var(--now)">Direct form</div>${r.fe}</div>
+          <div class="b"><div class="t" style="color:var(--then)">Back-shifted</div>${r.te}</div>
+        </div>
+        <p style="margin-top:8px">${r.d}</p>
+      </div>
+    </div>`).join('');
+  document.getElementById('main').innerHTML=`
+    <div class="card">
+      <p style="margin-bottom:12px; font-size:.95rem"><b style="color:var(--accent)">Tap any tense</b> to see it step back one move and read an example.</p>
+      <div class="ladder">${rows}</div>
+      <div class="nochg">
+        <b>⚠️ These do NOT back-shift</b> (they are already in a past/modal-past form):
+        ${NOCHANGE.map(x=>`<b>${x}</b>`).join(' · ')}.<br>
+        <b>Tip:</b> if the reporting verb is in the <b>present</b> (says, asks) or the statement is a <b>general truth</b>, you can keep the original tense.
+      </div>
+    </div>`;
+}
+function toggleRung(i){ const el=document.getElementById('rung'+i); el.classList.toggle('open'); }
+
+/* ---- Match game ---- */
+let mSelL=null, mMatched=0, mElapsed=0, mTimer=null, mOrderR=[];
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor((i*7+3)%(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function renderMatch(){
+  clearInterval(mTimer); mSelL=null; mMatched=0; mElapsed=0;
+  mOrderR=shuffle(MATCH.map((p,i)=>i));
+  const left=MATCH.map((p,i)=>`<div class="mcard" data-l="${i}" onclick="pickL(${i})">${p[0]}</div>`).join('');
+  const right=mOrderR.map(i=>`<div class="mcard" data-r="${i}" onclick="pickR(${i})">${MATCH[i][1]}</div>`).join('');
+  document.getElementById('main').innerHTML=`
+    <div class="card">
+      <div class="status"><span id="mscore" style="color:var(--muted)">Matched 0/${MATCH.length}</span><span class="watch" id="mwatch">⏱ 00:00</span></div>
+      <p style="text-align:center; font-size:.9rem; color:var(--muted); margin-bottom:14px">Click a <b style="color:var(--now)">direct</b> form, then its <b style="color:var(--then)">reported</b> form.</p>
+      <div class="mwrap">
+        <div class="mcol l"><h3>Direct (now)</h3>${left}</div>
+        <div class="mcol r"><h3>Reported (then)</h3>${right}</div>
+      </div>
+      <div class="banner" id="mbanner"></div>
+    </div>`;
+  mTimer=setInterval(()=>{ mElapsed++; const w=document.getElementById('mwatch'); if(w) w.textContent='⏱ '+fmtT(mElapsed); },1000);
+}
+function fmtT(s){ return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0'); }
+function pickL(i){ const el=document.querySelector(`[data-l="${i}"]`); if(el.classList.contains('matched')) return;
+  document.querySelectorAll('[data-l]').forEach(e=>e.classList.remove('sel')); el.classList.add('sel'); mSelL=i; }
+function pickR(j){ const el=document.querySelector(`[data-r="${j}"]`); if(el.classList.contains('matched')) return;
+  if(mSelL===null){ el.classList.add('sel'); setTimeout(()=>el.classList.remove('sel'),200); return; }
+  const lEl=document.querySelector(`[data-l="${mSelL}"]`);
+  if(mSelL===j){ lEl.classList.add('matched'); el.classList.add('matched'); lEl.classList.remove('sel'); mSelL=null; mMatched++;
+    document.getElementById('mscore').textContent=`Matched ${mMatched}/${MATCH.length}`;
+    if(mMatched===MATCH.length){ clearInterval(mTimer); const b=document.getElementById('mbanner');
+      b.innerHTML=`🎉 All matched in ${fmtT(mElapsed)}! <br><span style="font-weight:600;font-size:.85rem">Saved to My Results (if signed in).</span>`; b.classList.add('show');
+      if(window.NISACT) NISACT.submit({activity:'backshifting', title:'Backshifting — Match', level:'match', score:MATCH.length, total:MATCH.length, lives:5, duration:mElapsed}); }
+  } else { el.classList.add('bad'); lEl.classList.remove('sel'); setTimeout(()=>el.classList.remove('bad'),300); mSelL=null; }
+}
+
+/* ---- Drill ---- */
+let dIdx=0, dScore=0, dLives=5, dElapsed=0, dTimer=null, dAnswered=false;
+function renderDrill(){
+  clearInterval(dTimer); dIdx=0; dScore=0; dLives=5; dElapsed=0;
+  document.getElementById('main').innerHTML=`
+    <div class="card">
+      <div class="status"><span id="dhearts"></span><span class="watch" id="dwatch">⏱ 00:00</span><span id="dsc" style="color:var(--muted)"></span></div>
+      <div class="progress"><i id="dbar"></i></div>
+      <div id="dq"></div>
+      <div class="banner" id="dbanner"></div>
+    </div>`;
+  drawDH(); drawQ(); dTimer=setInterval(()=>{ dElapsed++; const w=document.getElementById('dwatch'); if(w) w.textContent='⏱ '+fmtT(dElapsed); },1000);
+}
+function drawDH(){ const h=document.getElementById('dhearts'); if(h) h.textContent='❤️'.repeat(dLives)+'🤍'.repeat(Math.max(0,5-dLives)); }
+function drawQ(){
+  dAnswered=false; const q=DRILL[dIdx];
+  document.getElementById('dsc').textContent=`Score ${dScore}/${DRILL.length}`;
+  document.getElementById('dbar').style.width=(dIdx/DRILL.length*100)+'%';
+  document.getElementById('dq').innerHTML=`
+    <div class="qdirect">Direct: ${q.d}</div>
+    <div class="qspk">(${q.s}) — in reported speech, the verb becomes:</div>
+    <div class="opts">${q.o.map((t,i)=>`<button class="opt" onclick="ansD(${i})">${t}</button>`).join('')}</div>
+    <div class="explain" id="dex"><b>Why:</b> ${q.e}</div>`;
+}
+function ansD(i){
+  if(dAnswered) return; dAnswered=true; const q=DRILL[dIdx];
+  const opts=document.querySelectorAll('.opt'); opts.forEach(o=>o.disabled=true);
+  opts[q.a].classList.add('correct');
+  if(i===q.a) dScore++; else{ opts[i].classList.add('wrong'); dLives--; drawDH(); }
+  document.getElementById('dsc').textContent=`Score ${dScore}/${DRILL.length}`;
+  document.getElementById('dex').classList.add('show');
+  if(dLives<=0){ setTimeout(()=>{ const b=document.getElementById('dbanner'); b.textContent='💔 Out of lives! Restarting the drill.'; b.classList.add('show'); setTimeout(renderDrill,1400); },700); return; }
+  const last=dIdx>=DRILL.length-1;
+  setTimeout(()=>{ if(last) finishDrill(); else { dIdx++; drawQ(); } },1200);
+}
+function finishDrill(){
+  clearInterval(dTimer); document.getElementById('dbar').style.width='100%';
+  const b=document.getElementById('dbanner');
+  b.innerHTML=`🎉 Drill complete — ${dScore}/${DRILL.length} in ${fmtT(dElapsed)}! <br><span style="font-weight:600;font-size:.85rem">Saved to My Results (if signed in).</span>`;
+  b.classList.add('show');
+  if(window.NISACT) NISACT.submit({activity:'backshifting', title:'Backshifting — Drill', level:'drill', score:dScore, total:DRILL.length, lives:dLives, duration:dElapsed});
+}
+
+function render(){
+  clearInterval(mTimer); clearInterval(dTimer);
+  if(tab==='learn') renderLearn(); else if(tab==='match') renderMatch(); else renderDrill();
+}
+render();
+</script>
+</body>
+</html>
