@@ -2015,7 +2015,7 @@ async function cefrFinalPanel(){
     const tgt=targetLevel(s);
     const wAtt=at.filter(a=>a.skill==='Writing').sort((x,y)=>(y.submitted_at||'').localeCompare(x.submitted_at||''))[0];
     const wCell = fin.a2NoWriting ? '<span class="muted" style="font-size:.78rem" title="En A2 Key el Writing va dentro de Reading &amp; Use of English">— en Reading</span>'
-      : fin.skills.Writing ? _skillCellHtml(fin.skills.Writing)
+      : fin.skills.Writing ? `${_skillCellHtml(fin.skills.Writing)}${wAtt?` <button class="btn sm ghost" style="padding:2px 7px" onclick="gradeWriting('${wAtt.id}')" title="Editar calificación">✎</button>`:''}`
       : (wAtt ? `<button class="btn sm ghost" onclick="gradeWriting('${wAtt.id}')">✍️ Calificar</button>`
               : '<span class="muted" style="font-size:.8rem">sin examen</span>');
     const spkLvl = (fin.skills.Speaking&&fin.skills.Speaking.level)||tgt||'';
