@@ -3,9 +3,15 @@
 clonando la UI de los archivos en inglés y sólo cambiando const DATA y el <title>.
 Pistas en español. Cuadrículas válidas (algoritmo). Reproducible (seed)."""
 import re, json, random, unicodedata, string, os
+from fr_definitions import DEF
 
 random.seed(20260616)
 REPO = os.path.dirname(os.path.abspath(__file__))
+_MISSING_DEF=set()
+def fr_clue(fr, es):
+    d=DEF.get(fr)
+    if not d: _MISSING_DEF.add(fr)
+    return d or es
 
 def strip(w):
     w = unicodedata.normalize('NFD', w)
@@ -158,7 +164,7 @@ cw={}; ws={}
 for lv, themes in LEVELS.items():
     cw[lv]=[]; ws[lv]=[]
     for n,(theme,pairs) in enumerate(themes,1):
-        c=make_crossword(pairs); c['title']='Crossword %d'%n; c['theme']=theme; cw[lv].append(c)
+        c=make_crossword([(fr, fr_clue(fr,es)) for fr,es in pairs]); c['title']='Crossword %d'%n; c['theme']=theme; cw[lv].append(c)
         w=make_wordsearch(pairs, WS_BASE[lv]); w['title']='Word Search %d'%n; w['theme']=theme; ws[lv].append(w)
 
 # ---------- Validation ----------
@@ -276,3 +282,4 @@ print('WS sizes:', {lv:ws[lv][0]['size'] for lv in LEVELS})
 print('levels-param kept (cw):', 'URLSearchParams(location.search).get' in open(os.path.join(REPO,'crosswords-fr.html'),encoding='utf-8').read())
 print('levels-param kept (ws):', 'URLSearchParams(location.search).get' in open(os.path.join(REPO,'wordsearches-fr.html'),encoding='utf-8').read())
 print('PROBLEMS:', probs if probs else 'NONE — ALL VALID')
+print('DEFINICIONES FALTANTES (usaron español):', sorted(_MISSING_DEF) if _MISSING_DEF else 'NINGUNA')
