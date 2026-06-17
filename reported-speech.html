@@ -63,17 +63,17 @@
 </header>
 <main>
   <h1>🗣️ Reported Speech</h1>
-  <p class="lead">Contar lo que otra persona dijo. Lee el resumen y practica con el juego: elige la transformación correcta, recibe feedback al instante.</p>
-  <a href="reported-speech-order.html" style="display:inline-block;text-decoration:none;background:#fff;border:2px solid #2d5a8d;color:#2d5a8d;font-weight:700;font-size:13px;padding:7px 13px;border-radius:9px;margin-bottom:16px">🔤 Otro juego: Ordena la oración →</a>
+  <p class="lead">Report what another person said. Read the summary, then play: choose the correct transformation and get instant feedback.</p>
+  <a href="reported-speech-order.html" style="display:inline-block;text-decoration:none;background:#fff;border:2px solid #2d5a8d;color:#2d5a8d;font-weight:700;font-size:13px;padding:7px 13px;border-radius:9px;margin-bottom:16px">🔤 Another game: Put the sentence in order →</a>
 
   <div class="rules">
-    <b>Lo esencial</b>
+    <b>The essentials</b>
     <ul>
-      <li>El verbo suele <b>retroceder un tiempo</b>: present → past, past → past perfect, <i>will → would</i>, <i>can → could</i>.</li>
-      <li>Cambian los <b>pronombres</b> (I → he/she, my → his/her, you → me…).</li>
-      <li>Cambian el <b>tiempo y el lugar</b>: now → then, today → that day, tomorrow → the next day, here → there, this → that, last week → the week before.</li>
-      <li><b>Preguntas:</b> orden de afirmación (sin <i>do/does/did</i>); sí/no → <i>if/whether</i>.</li>
-      <li><b>Órdenes/peticiones:</b> <i>tell + objeto + (not) to + infinitivo</i> → <i>He told me to wait / not to be late.</i></li>
+      <li>The verb usually <b>shifts back one tense</b>: present → past, past → past perfect, <i>will → would</i>, <i>can → could</i>.</li>
+      <li><b>Pronouns</b> change (I → he/she, my → his/her, you → me…).</li>
+      <li><b>Time and place words</b> change: now → then, today → that day, tomorrow → the next day, here → there, this → that, last week → the week before.</li>
+      <li><b>Questions:</b> statement word order (no <i>do/does/did</i>); yes/no → <i>if/whether</i>.</li>
+      <li><b>Orders/requests:</b> <i>tell + object + (not) to + infinitive</i> → <i>He told me to wait / not to be late.</i></li>
     </ul>
   </div>
 
@@ -88,7 +88,7 @@ const QUESTIONS = [
   {dir:'D', prompt:'"I am hungry," said Tom.',
    correct:'Tom said (that) he was hungry.',
    wrong:['Tom said that he is hungry.','Tom said he has been hungry.','Tom said I was hungry.'],
-   note:'Present simple → past (am → was) y el pronombre I → he.'},
+   note:'Present simple → past (am → was); pronoun I → he.'},
   {dir:'D', prompt:'"We are studying English," they said.',
    correct:'They said they were studying English.',
    wrong:['They said we are studying English.','They said they are studying English.','They said they had studied English.'],
@@ -104,23 +104,23 @@ const QUESTIONS = [
   {dir:'D', prompt:'"Do you speak French?" she asked me.',
    correct:'She asked me if I spoke French.',
    wrong:['She asked me do I speak French.','She asked me if I speak French.','She asked me if you spoke French.'],
-   note:'Pregunta de sí/no → if + orden de afirmación, sin "do"; speak → spoke.'},
+   note:'Yes/no question → if + statement word order, no "do"; speak → spoke.'},
   {dir:'D', prompt:'"Where are you going?" he asked.',
    correct:'He asked where I was going.',
    wrong:['He asked where was I going.','He asked where I am going.','He asked where you were going.'],
-   note:'Pregunta wh- → orden de afirmación; are → was; you → I.'},
+   note:'Wh- question → statement word order; are → was; you → I.'},
   {dir:'D', prompt:'"Please open the window," the teacher said.',
    correct:'The teacher told us to open the window.',
    wrong:['The teacher said open the window.','The teacher told us open the window.','The teacher said us to open the window.'],
-   note:'Orden → tell + objeto + to + infinitivo.'},
+   note:'Order → tell + object + to + infinitive.'},
   {dir:'D', prompt:'"Don’t touch that," she said to him.',
    correct:'She told him not to touch that.',
    wrong:['She told him don’t touch that.','She said him not to touch that.','She told him to not touching that.'],
-   note:'Orden negativa → not + to + infinitivo; say to → tell.'},
+   note:'Negative order → not + to + infinitive; say to → tell.'},
   {dir:'D', prompt:'"I can drive," Maria said.',
    correct:'Maria said she could drive.',
    wrong:['Maria said she can drive.','Maria said she could drives.','Maria said I could drive.'],
-   note:'can → could; el infinitivo no cambia (drive).'},
+   note:'can → could; the infinitive does not change (drive).'},
   {dir:'D', prompt:'"I saw this film last week," he said.',
    correct:'He said he had seen that film the week before.',
    wrong:['He said he saw this film last week.','He said he had saw that film the week before.','He said he has seen that film the week before.'],
@@ -128,11 +128,11 @@ const QUESTIONS = [
   {dir:'R', prompt:'She said she was tired.',
    correct:'"I am tired," she said.',
    wrong:['"She is tired," she said.','"I was tired," she said.','"You are tired," she said.'],
-   note:'Volvemos al presente y a la 1ª persona: was → am; she → I.'},
+   note:'Back to present and first person: was → am; she → I.'},
   {dir:'R', prompt:'He asked me where I lived.',
    correct:'"Where do you live?" he asked.',
    wrong:['"Where I live?" he asked.','"Where did you live?" he asked.','"Where you live?" he asked.'],
-   note:'Pregunta directa: recupera "do" y el orden de pregunta; lived → live; I → you.'},
+   note:'Direct question: bring back "do" and question word order; lived → live; I → you.'},
 ];
 
 let order=[], idx=0, score=0, answered=false;
@@ -153,13 +153,13 @@ function render(){
     </div>
     <span class="tagdir ${q.dir==='D'?'d':'r'}">${q.dir==='D'?'Direct speech':'Reported speech'}</span>
     <div class="prompt">${q.prompt}</div>
-    <div class="ask">${q.dir==='D'?'Elige el <b>reported speech</b> correcto:':'Elige el <b>direct speech</b> correcto (las palabras exactas):'}</div>
+    <div class="ask">${q.dir==='D'?'Choose the correct <b>reported speech</b>:':'Choose the correct <b>direct speech</b> (the exact words):'}</div>
     <div class="opts" id="opts">
       ${opts.map((o,i)=>`<button class="opt" data-ok="${o.ok?1:0}" onclick="pick(this)">${o.t}<span class="mk"></span></button>`).join('')}
     </div>
     <div class="fb" id="fb"></div>
     <div class="actions">
-      <button class="btn" id="next" disabled onclick="next()">${idx===QUESTIONS.length-1?'Ver resultado':'Siguiente →'}</button>
+      <button class="btn" id="next" disabled onclick="next()">${idx===QUESTIONS.length-1?'See result':'Next →'}</button>
     </div>`;
 }
 
@@ -175,7 +175,7 @@ window.pick=(btn)=>{
   else score++;
   const fb=document.getElementById('fb');
   fb.className='fb '+(ok?'ok':'no');
-  fb.innerHTML=(ok?'✅ <b>¡Correcto!</b> ':'❌ <b>Casi.</b> ')+'Respuesta: <b>'+q.correct+'</b><br>💡 '+q.note;
+  fb.innerHTML=(ok?'✅ <b>Correct!</b> ':'❌ <b>Almost.</b> ')+'Answer: <b>'+q.correct+'</b><br>💡 '+q.note;
   document.getElementById('next').disabled=false;
 };
 
@@ -186,14 +186,14 @@ window.next=()=>{
 
 function end(){
   const pct=Math.round(score/QUESTIONS.length*100);
-  const msg = pct>=80 ? '¡Excelente! Dominas el reported speech. 🌟'
-            : pct>=60 ? 'Buen trabajo. Repasa los cambios de tiempo y pronombres. 👍'
-            : pct>=40 ? 'Vas bien. Revisa el resumen de arriba y vuelve a intentar. 💪'
-            : 'Sigue practicando: lee el resumen y juega otra vez. ✍️';
+  const msg = pct>=80 ? 'Excellent! You have mastered reported speech. 🌟'
+            : pct>=60 ? 'Good job. Review the tense and pronoun changes. 👍'
+            : pct>=40 ? 'You are getting there. Check the summary above and try again. 💪'
+            : 'Keep practising: read the summary and play again. ✍️';
   panel.innerHTML=`<div class="result">
     <div class="big">${score}/${QUESTIONS.length}</div>
     <div class="msg">${pct}% &middot; ${msg}</div>
-    <button class="btn" onclick="start()">↻ Jugar otra vez</button>
+    <button class="btn" onclick="start()">↻ Play again</button>
     <a class="btn ghost" href="grammar.html" style="text-decoration:none;display:inline-block">← Volver a Grammar</a>
   </div>`;
 }

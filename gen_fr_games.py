@@ -235,6 +235,41 @@ _ci=_cs.rfind('</script>'); _cs=_cs[:_ci]+_caudio+_cs[_ci:]
 open(_cp,'w',encoding='utf-8').write(_cs)
 print('TTS inyectado en crosswords-fr.html:', ('speakFR' in _cs) and ('_spoken.add' in _cs))
 
+# Instrucciones/UI en FRANCÉS para los juegos franceses.
+def _fr_localize(fname, reps):
+    p=os.path.join(REPO,fname); s=open(p,encoding='utf-8').read(); miss=[]
+    for old,new in reps:
+        if old in s: s=s.replace(old,new)
+        else: miss.append(old)
+    open(p,'w',encoding='utf-8').write(s)
+    print(fname,'-> FR UI', 'OK' if not miss else ('FALTAN: '+str(miss)))
+
+_fr_localize('crosswords-fr.html', [
+ ('<h1>🔡 Crosswords · A1–C1</h1>','<h1>🔡 Mots croisés · A1–C1</h1>'),
+ ('👩‍🏫 Teacher/Admin view — answers are shown (solved). Lives and timer are off.',
+  '👩‍🏫 Vue prof/admin — les réponses sont affichées (résolues). Vies et minuteur désactivés.'),
+ ('💡 Hint (−1 life)','💡 Indice (−1 vie)'),
+ ('`Words: ${solved} / ${entries.length}`','`Mots : ${solved} / ${entries.length}`'),
+ (' · Hints: ',' · Indices : '),
+ ('✅ Solved view (teacher/admin).','✅ Vue corrigée (prof/admin).'),
+ ('🎉 Completed in ${fmtT(elapsed)}! Saved to My Results and emailed to you.',
+  '🎉 Terminé en ${fmtT(elapsed)} ! Enregistré dans My Results et envoyé par e-mail.'),
+ ('`Crossword ${pidx+1} — ${d.theme}`','`Mots croisés ${pidx+1} — ${d.theme}`'),
+ ('💔 No lives left! This crossword restarts.','💔 Plus de vies ! Ces mots croisés recommencent.'),
+])
+_fr_localize('wordsearches-fr.html', [
+ ('<h1>🔍 Word Searches · A1–C1</h1>','<h1>🔍 Mots mêlés · A1–C1</h1>'),
+ ('👩‍🏫 Teacher/Admin view — all words are shown highlighted (solved).',
+  '👩‍🏫 Vue prof/admin — tous les mots sont surlignés (résolus).'),
+ ('💡 Hint (−1 life)','💡 Indice (−1 vie)'),
+ ('`Found: ${n} / ${d.words.length}`','`Trouvés : ${n} / ${d.words.length}`'),
+ (' · Hints: ',' · Indices : '),
+ ('✅ Solved view (teacher/admin).','✅ Vue corrigée (prof/admin).'),
+ ('🎉 All words found in ${fmtT(elapsed)}! Saved to My Results and emailed to you.',
+  '🎉 Tous les mots trouvés en ${fmtT(elapsed)} ! Enregistré dans My Results et envoyé par e-mail.'),
+ ('💔 No lives left! This word search restarts.','💔 Plus de vies ! Cette grille recommence.'),
+])
+
 print('CROSSWORDS placed per level:', {lv:[p['placed'] for p in cw[lv]] for lv in LEVELS})
 print('WS words per level:', {lv:[len(p['words']) for p in ws[lv]] for lv in LEVELS})
 print('WS sizes:', {lv:ws[lv][0]['size'] for lv in LEVELS})

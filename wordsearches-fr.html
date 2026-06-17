@@ -49,11 +49,11 @@
 </head>
 <body>
 <header>
-  <h1>🔍 Word Searches · A1–C1</h1>
+  <h1>🔍 Mots mêlés · A1–C1</h1>
   <p>Cambridge vocabulary by level — words run in any direction (even backwards and diagonally). Drag across the letters.</p>
   <a class="back" href="./activities.html">🏫 Back to Activities</a>
 </header>
-<div class="staffnote" id="staffnote">👩‍🏫 Teacher/Admin view — all words are shown highlighted (solved).</div>
+<div class="staffnote" id="staffnote">👩‍🏫 Vue prof/admin — tous les mots sont surlignés (résolus).</div>
 <div class="levels" id="levels"></div>
 <div class="puzzles" id="puzzles"></div>
 <div class="wrap">
@@ -62,7 +62,7 @@
     <div class="info" id="dirinfo"></div>
     <div class="lifebar"><span id="hearts"></span><span class="watch" id="watch">⏱ 00:00</span></div>
     <div class="btns">
-      <button class="act b-hint" onclick="hint()">💡 Hint (−1 life)</button>
+      <button class="act b-hint" onclick="hint()">💡 Indice (−1 vie)</button>
       <button class="act b-clear" onclick="resetLevel()">↺ Restart</button>
     </div>
     <div class="score" id="score"></div>
@@ -149,19 +149,19 @@ function endSel(){ if(!selStart)return; const d=cur(); const s=selCells.map(([r,
 function paint(w,i){ const col=`var(${PALETTE[i%PALETTE.length]})`; for(const [r,c] of w.cells){ const el=cellEls[r+'_'+c]; el.classList.add('found'); el.style.background=col; } }
 function updateScore(){ const d=cur(); const n=d.words.filter(w=>found[w.word]).length;
   const cEl=document.getElementById('count'); if(cEl)cEl.textContent=`(${n}/${d.words.length})`;
-  document.getElementById('score').textContent=`Found: ${n} / ${d.words.length}`+(hintsUsed?` · Hints: ${hintsUsed}`:''); }
+  document.getElementById('score').textContent=`Trouvés : ${n} / ${d.words.length}`+(hintsUsed?` · Indices : ${hintsUsed}`:''); }
 function onComplete(){ completed=true; clearInterval(timerInt); const b=document.getElementById('banner');
-  if(staff()){ b.textContent='✅ Solved view (teacher/admin).'; b.classList.add('show'); return; }
-  b.textContent=`🎉 All words found in ${fmtT(elapsed)}! Saved to My Results and emailed to you.`; b.classList.add('show');
+  if(staff()){ b.textContent='✅ Vue corrigée (prof/admin).'; b.classList.add('show'); return; }
+  b.textContent=`🎉 Tous les mots trouvés en ${fmtT(elapsed)} ! Enregistré dans My Results et envoyé par e-mail.`; b.classList.add('show');
   if(window.NISACT) NISACT.submit({activity:'wordsearch',title:`Word Search ${pidx+1} — ${cur().theme}`,level:level,score:cur().words.length,total:cur().words.length,hints:hintsUsed,lives:lives,duration:elapsed}); }
 function hint(){ if(completed||staff())return; const d=cur(); const left=d.words.filter(w=>!found[w.word]); if(!left.length)return;
   const w=left[Math.floor(Math.random()*left.length)]; const [r,c]=w.cells[0];
   cellEls[r+'_'+c].classList.remove('flash'); void cellEls[r+'_'+c].offsetWidth; cellEls[r+'_'+c].classList.add('flash');
   hintsUsed++; lives--; drawStatus();
-  if(lives<=0){ setTimeout(()=>{ alert('💔 No lives left! This word search restarts.'); resetLevel(); },900); return; } updateScore(); }
+  if(lives<=0){ setTimeout(()=>{ alert('💔 Plus de vies ! Cette grille recommence.'); resetLevel(); },900); return; } updateScore(); }
 function resetLevel(){ load(); }
 function revealAll(){ const d=cur(); d.words.forEach((w,i)=>{ found[w.word]=true; paint(w,i); const chip=document.getElementById('chip_'+w.word); if(chip)chip.classList.add('found'); });
-  clearInterval(timerInt); updateScore(); const b=document.getElementById('banner'); b.textContent='✅ Solved view (teacher/admin).'; b.classList.add('show'); drawStatus(); }
+  clearInterval(timerInt); updateScore(); const b=document.getElementById('banner'); b.textContent='✅ Vue corrigée (prof/admin).'; b.classList.add('show'); drawStatus(); }
 window.NISACT.onReady(()=>{ document.getElementById('staffnote').style.display=staff()?'block':'none'; load(); });
 setTimeout(()=>{ if(!document.getElementById('grid').children.length) load(); },1500);
 
