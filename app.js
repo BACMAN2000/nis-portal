@@ -2264,7 +2264,7 @@ window.studentReportPDF = async (studentId, lang)=>{
   const node=document.createElement('div');
   node.style.cssText='width:760px;padding:22px;font-family:Montserrat,system-ui,sans-serif;color:#0f172a;background:#fff';
   node.innerHTML=
-    '<img src="assets/logo-h.svg" style="height:32px;display:block">'+
+    '<img src="assets/logo-h.svg" width="150" height="28" style="width:150px;height:28px;display:block">'+
     '<div style="font-size:11px;color:#6b7280;margin:3px 0 10px">'+T.sub+'</div>'+
     '<div style="background:#2f5f93;color:#fff;border-radius:10px;padding:10px 14px;margin-bottom:12px">'+
       '<div style="font-size:20px;font-weight:800">'+esc(p.full_name||'')+'</div>'+
