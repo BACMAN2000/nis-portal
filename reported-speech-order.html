@@ -137,7 +137,7 @@ window.check=()=>{
     solved=true; score++;
     ans.classList.remove('no'); ans.classList.add('ok');
     document.querySelectorAll('#pool .chip,#answer .chip').forEach(b=>b.disabled=true);
-    fb.className='fb ok'; fb.innerHTML='✅ <b>Correct!</b> '+it.reported;
+    fb.className='fb ok'; fb.innerHTML='✅ <b>Correct!</b> '+it.reported; speakEN(it.reported);
     swapToNext();
   } else {
     ans.classList.add('no');
@@ -152,7 +152,7 @@ window.reveal=()=>{
   render();
   const ans=document.getElementById('answer'), fb=document.getElementById('fb');
   ans.classList.add('ok'); document.querySelectorAll('#answer .chip').forEach(b=>b.disabled=true);
-  fb.className='fb ok'; fb.innerHTML='👀 Answer: <b>'+it.reported+'</b>';
+  fb.className='fb ok'; fb.innerHTML='👀 Answer: <b>'+it.reported+'</b>'; speakEN(it.reported);
   swapToNext();
 };
 function swapToNext(){
@@ -173,6 +173,14 @@ function end(){
 }
 
 start();
+
+/* Pronunciacion en ingles britanico (en-GB) de la oracion correcta.
+   Si en el futuro hay MP3 pre-generados (ElevenLabs) en audio/rs/, se pueden
+   reproducir aqui; por ahora usa la voz del navegador en-GB. */
+let _enVoice=null;
+function _pickEn(){ try{ var vs=speechSynthesis.getVoices(); _enVoice=vs.find(function(v){return v.lang==='en-GB';})||vs.find(function(v){return /en[-_]?gb/i.test(v.lang);})||vs.find(function(v){return /uk english|british/i.test(v.name);})||vs.find(function(v){return /^en/i.test(v.lang);})||null; }catch(e){} }
+if('speechSynthesis' in window){ _pickEn(); try{ speechSynthesis.onvoiceschanged=_pickEn; }catch(e){} }
+function speakEN(t){ if(!t||!('speechSynthesis' in window))return; var u=new SpeechSynthesisUtterance(t); u.lang='en-GB'; if(_enVoice)u.voice=_enVoice; u.rate=0.95; try{speechSynthesis.cancel();}catch(e){} speechSynthesis.speak(u); }
 </script>
 </body>
 </html>

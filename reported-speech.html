@@ -175,7 +175,7 @@ window.pick=(btn)=>{
   else score++;
   const fb=document.getElementById('fb');
   fb.className='fb '+(ok?'ok':'no');
-  fb.innerHTML=(ok?'✅ <b>Correct!</b> ':'❌ <b>Almost.</b> ')+'Answer: <b>'+q.correct+'</b><br>💡 '+q.note;
+  fb.innerHTML=(ok?'✅ <b>Correct!</b> ':'❌ <b>Almost.</b> ')+'Answer: <b>'+q.correct+'</b><br>💡 '+q.note; speakEN(q.correct);
   document.getElementById('next').disabled=false;
 };
 
@@ -199,6 +199,14 @@ function end(){
 }
 
 start();
+
+/* Pronunciacion en ingles britanico (en-GB) de la oracion correcta.
+   Si en el futuro hay MP3 pre-generados (ElevenLabs) en audio/rs/, se pueden
+   reproducir aqui; por ahora usa la voz del navegador en-GB. */
+let _enVoice=null;
+function _pickEn(){ try{ var vs=speechSynthesis.getVoices(); _enVoice=vs.find(function(v){return v.lang==='en-GB';})||vs.find(function(v){return /en[-_]?gb/i.test(v.lang);})||vs.find(function(v){return /uk english|british/i.test(v.name);})||vs.find(function(v){return /^en/i.test(v.lang);})||null; }catch(e){} }
+if('speechSynthesis' in window){ _pickEn(); try{ speechSynthesis.onvoiceschanged=_pickEn; }catch(e){} }
+function speakEN(t){ if(!t||!('speechSynthesis' in window))return; var u=new SpeechSynthesisUtterance(t); u.lang='en-GB'; if(_enVoice)u.voice=_enVoice; u.rate=0.95; try{speechSynthesis.cancel();}catch(e){} speechSynthesis.speak(u); }
 </script>
 </body>
 </html>
