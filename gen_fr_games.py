@@ -101,7 +101,7 @@ def make_crossword(pairs):
     grid={}; placed=[]
     first=words[0]
     for i,ch in enumerate(first['w']): grid[(0,i)]=ch
-    placed.append((first['w'],0,0,'across',first['clue']))
+    placed.append((first['w'],0,0,'across',first['clue'],first['fr']))
     for it in words[1:]:
         W=it['w']; best=None; bestcross=0
         for i,ch in enumerate(W):
@@ -111,15 +111,15 @@ def make_crossword(pairs):
                     r0=r-dr*i; c0=c-dc*i
                     cr=check_place(grid,W,r0,c0,dr,dc)
                     if cr>bestcross:
-                        bestcross=cr; best=(W,r0,c0,dirn,it['clue'],dr,dc)
+                        bestcross=cr; best=(W,r0,c0,dirn,it['clue'],dr,dc,it['fr'])
         if best:
-            W,rb,cb,dirb,clb,dr,dc=best
+            W,rb,cb,dirb,clb,dr,dc,frb=best
             for k,ch in enumerate(W): grid[(rb+dr*k,cb+dc*k)]=ch
-            placed.append((W,rb,cb,dirb,clb))
+            placed.append((W,rb,cb,dirb,clb,frb))
     minr=min(r for r,c in grid); minc=min(c for r,c in grid)
     maxr=max(r for r,c in grid); maxc=max(c for r,c in grid)
     W_=maxc-minc+1; H_=maxr-minr+1
-    words_out=[{'word':w,'row':r-minr,'col':c-minc,'dir':d,'clue':cl} for (w,r,c,d,cl) in placed]
+    words_out=[{'word':w,'row':r-minr,'col':c-minc,'dir':d,'clue':cl,'fr':fr} for (w,r,c,d,cl,fr) in placed]
     return {'width':W_,'height':H_,'placed':len(words_out),'words':words_out}
 
 # ---------- Word search ----------
@@ -215,6 +215,25 @@ _audio=("\n/* Pronunciacion francesa (Web Speech API) al encontrar una palabra *
 _i=_s.rfind('</script>'); _s=_s[:_i]+_audio+_s[_i:]
 open(_wp,'w',encoding='utf-8').write(_s)
 print('TTS inyectado en wordsearches-fr.html:', ('speakFR' in _s) and (_new in _s))
+
+# Pronunciación (TTS) al resolver una entrada — sólo en el crossword francés.
+_cp=os.path.join(REPO,'crosswords-fr.html'); _cs=open(_cp,encoding='utf-8').read()
+_cold="  for(const w of entries){ const ok=wordSolved(w); const el=document.getElementById('clue_'+w.num+'_'+w.dir); if(el)el.classList.toggle('solved',ok); if(ok)solved++; }"
+_cnew=("  for(const w of entries){ const ok=wordSolved(w); const el=document.getElementById('clue_'+w.num+'_'+w.dir); if(el)el.classList.toggle('solved',ok); "
+       "if(ok){ solved++; var _kk=w.num+'_'+w.dir; if(!_spoken.has(_kk)){ _spoken.add(_kk); try{speakFR(w);}catch(_){} } } }")
+assert _cold in _cs, 'no se encontro liveCheck en crosswords-fr'
+_cs=_cs.replace(_cold,_cnew,1)
+_lold="  cells={};sol={};numbers={};entries=[];curEntry=null;hintsUsed=0;lives=5;elapsed=0;completed=false;"
+assert _lold in _cs, 'no se encontro reset de load en crosswords-fr'
+_cs=_cs.replace(_lold,_lold+" _spoken=new Set();",1)
+_caudio=("\n/* Pronunciacion francesa (Web Speech API) al resolver una entrada */\n"
+"let _spoken=new Set(), _frVoice=null;\n"
+"function _pickFrVoice(){ try{ var vs=speechSynthesis.getVoices(); _frVoice=vs.find(function(v){return /^fr/i.test(v.lang);})||vs.find(function(v){return /fran/i.test(v.name);})||null; }catch(e){} }\n"
+"if('speechSynthesis' in window){ _pickFrVoice(); try{ speechSynthesis.onvoiceschanged=_pickFrVoice; }catch(e){} }\n"
+"function speakFR(w){ if(!('speechSynthesis' in window))return; var t=(w&&(w.fr||w.word))||''; if(!t)return; var u=new SpeechSynthesisUtterance(t); u.lang='fr-FR'; if(_frVoice)u.voice=_frVoice; u.rate=0.9; try{speechSynthesis.cancel();}catch(e){} speechSynthesis.speak(u); }\n")
+_ci=_cs.rfind('</script>'); _cs=_cs[:_ci]+_caudio+_cs[_ci:]
+open(_cp,'w',encoding='utf-8').write(_cs)
+print('TTS inyectado en crosswords-fr.html:', ('speakFR' in _cs) and ('_spoken.add' in _cs))
 
 print('CROSSWORDS placed per level:', {lv:[p['placed'] for p in cw[lv]] for lv in LEVELS})
 print('WS words per level:', {lv:[len(p['words']) for p in ws[lv]] for lv in LEVELS})
