@@ -1924,16 +1924,19 @@ function _finalFromData(profile, atts, spk){
   const isA2 = targetLevel(profile)==='A2';
   const Reading   = bestAttemptScale(atts,'Reading');
   const Listening = bestAttemptScale(atts,'Listening');
-  const Writing   = isA2 ? null : bestAttemptScale(atts,'Writing');
+  // A2 (KET) normalmente combina Reading+Writing (sin Writing aparte). Pero si la
+  // profesora SÍ calificó un Writing (p. ej. G7 a nivel B1), se incluye igual.
+  const Writing   = bestAttemptScale(atts,'Writing');
   let Speaking = null;
   if(spk && spk.percent!=null){
     const lvl = spk.level || targetLevel(profile) || 'B1';
     const sc = skillScale(lvl, Number(spk.percent));
     Speaking = { scale:sc, cefr:scaleToCefr(sc), level:lvl, pct:Math.round(Number(spk.percent)), source:'Rúbrica' };
   }
-  const skills = isA2 ? { Reading, Listening, Speaking } : { Reading, Listening, Writing, Speaking };
+  const a2NoWriting = isA2 && !Writing;
+  const skills = a2NoWriting ? { Reading, Listening, Speaking } : { Reading, Listening, Writing, Speaking };
   const present = Object.values(skills).filter(Boolean);
-  const required = isA2 ? 3 : 4;
+  const required = a2NoWriting ? 3 : 4;
   const finalScale = present.length ? Math.round(present.reduce((s,x)=>s+x.scale,0)/present.length) : null;
   const labels = { Reading:'Reading', Listening:'Listening', Writing:'Writing', Speaking:'Speaking' };
   return { profile, skills, isA2, finalScale, finalCefr:scaleToCefr(finalScale),
