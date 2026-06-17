@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reported Speech Wheel · NIS English</title>
+<style>
+  :root{
+    --bg:#f4f6fb; --card:#fff; --ink:#1e2433; --muted:#67718a;
+    --accent:#3b5bdb; --accent-soft:#e7ecfd;
+    --good:#2f9e44; --good-soft:#d3f4dc; --gold:#f59f00;
+    --c-verb:#9b5de5; --c-pron:#3b5bdb; --c-tense:#e8590c; --c-time:#0c8599; --c-struct:#c2255c;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:'Segoe UI',system-ui,Arial,sans-serif; background:var(--bg); color:var(--ink); padding:16px; line-height:1.5;}
+  .topnav{position:sticky; top:0; z-index:30; background:#fff; display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+    padding:10px 18px; box-shadow:0 2px 10px rgba(20,30,60,.08); margin:-16px -16px 16px;}
+  .topnav img{height:30px; width:auto; display:block;}
+  .topnav .nav-sp{margin-left:auto;}
+  .navbtn{text-decoration:none; font-weight:700; font-size:.85rem; padding:8px 14px; border-radius:9px; white-space:nowrap;
+    background:var(--accent-soft); color:var(--accent); transition:.15s;}
+  .navbtn.primary{background:var(--accent); color:#fff;}
+  header{max-width:900px; margin:0 auto 6px; text-align:center;}
+  header h1{font-size:1.5rem;}
+  header p{color:var(--muted); font-size:.9rem; margin-top:4px;}
+  .stage{max-width:900px; margin:10px auto 0; display:flex; gap:24px; align-items:center; justify-content:center; flex-wrap:wrap;}
+  .wheelbox{position:relative; width:340px; max-width:90vw; flex:0 0 auto;}
+  .pointer{position:absolute; top:-6px; left:50%; transform:translateX(-50%); z-index:5;
+    width:0; height:0; border-left:16px solid transparent; border-right:16px solid transparent; border-top:28px solid var(--accent); filter:drop-shadow(0 2px 2px rgba(0,0,0,.25));}
+  #wheelsvg{width:100%; height:auto; display:block;}
+  #wheel{transform-origin:160px 160px; transition:transform 4.2s cubic-bezier(.16,.74,.1,1);}
+  .hub{position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:64px; height:64px; border-radius:50%;
+    background:#fff; box-shadow:0 2px 8px rgba(0,0,0,.2); display:flex; align-items:center; justify-content:center; font-size:1.8rem; cursor:pointer; border:3px solid var(--accent);}
+  .hub:active{transform:translate(-50%,-50%) scale(.94);}
+  .panel{flex:1 1 320px; min-width:300px;}
+  .card{background:var(--card); border-radius:16px; padding:20px; box-shadow:0 2px 12px rgba(20,30,60,.08);}
+  .who{color:var(--muted); font-size:.9rem; margin-bottom:4px;}
+  .direct{font-size:1.5rem; font-weight:800; color:var(--accent); min-height:40px;}
+  .arrow{font-size:1.4rem; color:var(--muted); margin:10px 0;}
+  .reported{font-size:1.3rem; font-weight:700; padding:14px 16px; border-radius:12px; background:#f8fafc; border:1px dashed #cbd5e1; min-height:52px;}
+  .reported.show{background:var(--good-soft); border-color:var(--good);}
+  mark{background:none; font-weight:800; padding:0 1px;}
+  .c-verb{color:var(--c-verb);} .c-pron{color:var(--c-pron);} .c-tense{color:var(--c-tense);} .c-time{color:var(--c-time);} .c-struct{color:var(--c-struct);}
+  .legend{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; font-size:.75rem; font-weight:700;}
+  .legend span{display:flex; align-items:center; gap:5px;}
+  .dot{width:10px; height:10px; border-radius:50%; display:inline-block;}
+  .btns{display:flex; gap:8px; flex-wrap:wrap; margin-top:16px;}
+  button.act{border:none; border-radius:10px; padding:12px 18px; font-weight:700; font-size:.95rem; cursor:pointer; transition:.15s;}
+  .b-go{background:var(--accent); color:#fff;} .b-alt{background:#e9ecf3; color:var(--ink);}
+  button.act:hover{filter:brightness(1.06);} button.act:disabled{opacity:.5; cursor:default;}
+  .hint{color:var(--muted); font-size:.85rem; text-align:center; margin-top:12px;}
+  footer{max-width:900px; margin:18px auto 0; text-align:center; color:var(--muted); font-size:.75rem;}
+  @media (max-width:480px){ body{padding:10px;} .topnav{margin:-10px -10px 12px;} .direct{font-size:1.25rem;} .reported{font-size:1.1rem;} }
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <img src="assets/logo-h.svg" alt="Nordic International School" onerror="this.style.display='none'">
+  <span class="nav-sp"></span>
+  <a class="navbtn" href="grammar.html?grade=g9">📘 Grammar</a>
+  <a class="navbtn primary" href="./">🏫 Portal</a>
+</nav>
+
+<header>
+  <h1>🎡 Reported Speech Wheel</h1>
+  <p>Spin the wheel, read the direct sentence aloud, and <b>say it in reported speech</b> — then reveal the answer. Great for the whole class. NIS English</p>
+</header>
+
+<div class="stage">
+  <div class="wheelbox">
+    <div class="pointer"></div>
+    <svg id="wheelsvg" viewBox="0 0 320 320" aria-label="Spin wheel"><g id="wheel"></g></svg>
+    <div class="hub" id="hub" onclick="spin()" title="Spin">🎯</div>
+  </div>
+  <div class="panel">
+    <div class="card">
+      <div class="who" id="who">Press SPIN to start</div>
+      <div class="direct" id="direct">“ … ”</div>
+      <div class="arrow">⬇️ report it</div>
+      <div class="reported" id="reported"><span style="color:var(--muted)">The reported version appears here.</span></div>
+      <div class="legend">
+        <span><i class="dot" style="background:var(--c-verb)"></i>Reporting verb</span>
+        <span><i class="dot" style="background:var(--c-pron)"></i>Pronoun</span>
+        <span><i class="dot" style="background:var(--c-tense)"></i>Tense</span>
+        <span><i class="dot" style="background:var(--c-time)"></i>Time/place</span>
+        <span><i class="dot" style="background:var(--c-struct)"></i>Structure</span>
+      </div>
+      <div class="btns">
+        <button class="act b-go" id="spinBtn" onclick="spin()">🎡 Spin</button>
+        <button class="act b-alt" id="revBtn" onclick="reveal()" disabled>👁️ Reveal answer</button>
+      </div>
+      <div class="hint">Tip: cover the answer, let a student transform it out loud, then reveal to check.</div>
+    </div>
+  </div>
+</div>
+
+<footer>Reported Speech &amp; Backshifting · NIS English · 2026 — <a href="reported-speech-lab.html" style="color:var(--accent)">More games: Reported Speech Lab →</a></footer>
+
+<script>
+const ITEMS=[
+  {who:'Tom said:', d:'I am hungry.', r:'Tom <mark class="c-verb">said</mark> <mark class="c-pron">he</mark> <mark class="c-tense">was</mark> hungry.'},
+  {who:'They said:', d:'We are leaving now.', r:'They <mark class="c-verb">said</mark> <mark class="c-pron">they</mark> <mark class="c-tense">were</mark> leaving <mark class="c-time">then</mark>.'},
+  {who:'Maya said:', d:'I have finished.', r:'Maya <mark class="c-verb">said</mark> <mark class="c-pron">she</mark> <mark class="c-tense">had</mark> finished.'},
+  {who:'Sam said to me:', d:'I will call you.', r:'Sam <mark class="c-verb">said</mark> <mark class="c-pron">he</mark> <mark class="c-tense">would</mark> call <mark class="c-pron">me</mark>.'},
+  {who:'She asked me:', d:'Do you like coffee?', r:'She <mark class="c-verb">asked</mark> <mark class="c-struct">if</mark> <mark class="c-pron">I</mark> <mark class="c-tense">liked</mark> coffee.'},
+  {who:'He asked me:', d:'Where do you live?', r:'He <mark class="c-verb">asked</mark> where <mark class="c-pron">I</mark> <mark class="c-tense">lived</mark>.'},
+  {who:'The teacher said to us:', d:'Close the door.', r:'The teacher <mark class="c-verb">told</mark> <mark class="c-pron">us</mark> <mark class="c-struct">to close</mark> the door.'},
+  {who:'Dad said to me:', d:"Don't be late.", r:'Dad <mark class="c-verb">told</mark> <mark class="c-pron">me</mark> <mark class="c-struct">not to be</mark> late.'},
+  {who:'Nora said:', d:'I can drive.', r:'Nora <mark class="c-verb">said</mark> <mark class="c-pron">she</mark> <mark class="c-tense">could</mark> drive.'},
+  {who:'Leo said:', d:'I saw him yesterday.', r:'Leo <mark class="c-verb">said</mark> <mark class="c-pron">he</mark> <mark class="c-tense">had seen</mark> him <mark class="c-time">the day before</mark>.'},
+  {who:'Ana said to me:', d:'Please help me.', r:'Ana <mark class="c-verb">asked</mark> <mark class="c-pron">me</mark> <mark class="c-struct">to help</mark> <mark class="c-pron">her</mark>.'},
+  {who:'Mum said:', d:'It is raining today.', r:'Mum <mark class="c-verb">said</mark> it <mark class="c-tense">was</mark> raining <mark class="c-time">that day</mark>.'},
+];
+const N=ITEMS.length, SEG=360/N, R=150, CX=160, CY=160;
+const COLORS=['#3b5bdb','#1c7ed6','#0c8599','#2f9e44','#e8590c','#f59f00','#c2255c','#9b5de5'];
+function pt(ang,rad){ const a=(ang-90)*Math.PI/180; return [CX+rad*Math.cos(a), CY+rad*Math.sin(a)]; }
+(function buildWheel(){
+  const g=document.getElementById('wheel'); let h='';
+  for(let i=0;i<N;i++){
+    const a0=i*SEG, a1=(i+1)*SEG, [x0,y0]=pt(a0,R), [x1,y1]=pt(a1,R);
+    h+=`<path d="M${CX},${CY} L${x0.toFixed(1)},${y0.toFixed(1)} A${R},${R} 0 0,1 ${x1.toFixed(1)},${y1.toFixed(1)} Z" fill="${COLORS[i%COLORS.length]}" stroke="#fff" stroke-width="2"/>`;
+    const [lx,ly]=pt(a0+SEG/2, R*0.7);
+    h+=`<text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" fill="#fff" font-size="15" font-weight="800" text-anchor="middle" dominant-baseline="middle" transform="rotate(${(a0+SEG/2).toFixed(1)} ${lx.toFixed(1)} ${ly.toFixed(1)})">${i+1}</text>`;
+  }
+  g.innerHTML=h;
+})();
+
+let rot=0, spinning=false, landed=-1;
+function spin(){
+  if(spinning) return; spinning=true;
+  document.getElementById('spinBtn').disabled=true; document.getElementById('revBtn').disabled=true;
+  const idx=Math.floor(Math.random()*N);
+  const center=(idx+0.5)*SEG;            // clockwise from top
+  rot += 360*5 + (360 - (center % 360));  // land idx under the top pointer
+  document.getElementById('wheel').style.transform=`rotate(${rot}deg)`;
+  landed=idx;
+  document.getElementById('who').textContent='Spinning…';
+  document.getElementById('direct').textContent='“ … ”';
+  const rep=document.getElementById('reported'); rep.classList.remove('show'); rep.innerHTML='<span style="color:var(--muted)">Say it in reported speech, then reveal…</span>';
+}
+document.getElementById('wheel').addEventListener('transitionend',()=>{
+  spinning=false;
+  const it=ITEMS[landed];
+  document.getElementById('who').textContent=it.who;
+  document.getElementById('direct').textContent='“'+it.d+'”';
+  document.getElementById('spinBtn').disabled=false; document.getElementById('spinBtn').textContent='🎡 Spin again';
+  document.getElementById('revBtn').disabled=false;
+});
+function reveal(){
+  if(landed<0) return;
+  const rep=document.getElementById('reported'); rep.innerHTML=ITEMS[landed].r; rep.classList.add('show');
+  document.getElementById('revBtn').disabled=true;
+}
+</script>
+</body>
+</html>
