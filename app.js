@@ -1654,7 +1654,7 @@ async function studentFinal(){
     <td style="${ch};text-align:center">${b?(b.pct!=null?b.pct+'%':'—'):'<span style="color:#b45309">Pendiente</span>'}</td>
     <td style="${ch};text-align:center;color:var(--blue-d);font-weight:700">${b?b.cefr:'—'}</td>
     <td style="${ch};text-align:center">${b?b.scale:'—'}</td></tr>`;
-  const wRow = fin.isA2
+  const wRow = fin.a2NoWriting
     ? `<tr><td style="${ch}"><b>Writing</b></td><td colspan="4" style="${ch};color:var(--grey)">Incluido en Reading &amp; Use of English (A2 Key)</td></tr>`
     : row('Writing', fin.skills.Writing);
   $('#main').innerHTML=`${back}<h1>🏅 Resultado final · CEFR</h1>
@@ -1662,7 +1662,7 @@ async function studentFinal(){
     <div class="card" style="overflow-x:auto"><table style="width:100%;border-collapse:collapse">
       <thead><tr><th style="${ch};text-align:left">Destreza</th><th style="${ch}">Nivel</th><th style="${ch}">Resultado</th><th style="${ch}">CEFR</th><th style="${ch}">Escala</th></tr></thead>
       <tbody>
-        ${row('Reading &amp; Use of English'+(fin.isA2?' (incluye Writing)':''),fin.skills.Reading)}
+        ${row('Reading &amp; Use of English'+(fin.a2NoWriting?' (incluye Writing)':''),fin.skills.Reading)}
         ${row('Listening',fin.skills.Listening)}
         ${wRow}
         ${row('Speaking',fin.skills.Speaking)}
@@ -1933,13 +1933,15 @@ function _finalFromData(profile, atts, spk){
     const sc = skillScale(lvl, Number(spk.percent));
     Speaking = { scale:sc, cefr:scaleToCefr(sc), level:lvl, pct:Math.round(Number(spk.percent)), source:'Rúbrica' };
   }
-  const a2NoWriting = isA2 && !Writing;
+  // Plegar Writing dentro de Reading SOLO en A2 puro (sin ningún writing rendido).
+  // Si hay writing (calificado o no), se muestra como destreza propia (B1+).
+  const a2NoWriting = isA2 && !(atts||[]).some(a=>a.skill==='Writing');
   const skills = a2NoWriting ? { Reading, Listening, Speaking } : { Reading, Listening, Writing, Speaking };
   const present = Object.values(skills).filter(Boolean);
   const required = a2NoWriting ? 3 : 4;
   const finalScale = present.length ? Math.round(present.reduce((s,x)=>s+x.scale,0)/present.length) : null;
   const labels = { Reading:'Reading', Listening:'Listening', Writing:'Writing', Speaking:'Speaking' };
-  return { profile, skills, isA2, finalScale, finalCefr:scaleToCefr(finalScale),
+  return { profile, skills, isA2, a2NoWriting, finalScale, finalCefr:scaleToCefr(finalScale),
            complete: present.length===required, missing: Object.keys(skills).filter(k=>!skills[k]).map(k=>labels[k]) };
 }
 function _skillCellHtml(b){
@@ -2005,7 +2007,7 @@ async function cefrFinalPanel(){
     const at=aBy[s.id]||[]; const fin=_finalFromData(s, at, sBy[s.id]);
     const tgt=targetLevel(s);
     const wAtt=at.filter(a=>a.skill==='Writing').sort((x,y)=>(y.submitted_at||'').localeCompare(x.submitted_at||''))[0];
-    const wCell = fin.isA2 ? '<span class="muted" style="font-size:.78rem" title="En A2 Key el Writing va dentro de Reading &amp; Use of English">— en Reading</span>'
+    const wCell = fin.a2NoWriting ? '<span class="muted" style="font-size:.78rem" title="En A2 Key el Writing va dentro de Reading &amp; Use of English">— en Reading</span>'
       : fin.skills.Writing ? _skillCellHtml(fin.skills.Writing)
       : (wAtt ? `<button class="btn sm ghost" onclick="gradeWriting('${wAtt.id}')">✍️ Calificar</button>`
               : '<span class="muted" style="font-size:.8rem">sin examen</span>');
@@ -2185,7 +2187,7 @@ window.studentReportPDF = async (studentId)=>{
     </table>
     <table style="width:100%;border-collapse:collapse;font-size:.9rem;margin-bottom:14px">
       <thead><tr style="background:#eef4fb"><th style="${cell};text-align:left">Destreza</th><th style="${cell}">Nivel examen</th><th style="${cell}">Resultado</th><th style="${cell}">CEFR</th><th style="${cell}">Escala</th></tr></thead>
-      <tbody>${row('Reading &amp; Use of English'+(fin.isA2?' (incluye Writing)':''),fin.skills.Reading)}${row('Listening',fin.skills.Listening)}${fin.isA2?`<tr><td style="padding:8px;border:1px solid #e2e8f0"><b>Writing</b></td><td colspan="4" style="${cell};text-align:left;color:#64748b">Incluido en Reading &amp; Use of English (examen A2 Key)</td></tr>`:row('Writing',fin.skills.Writing)}${row('Speaking',fin.skills.Speaking)}</tbody>
+      <tbody>${row('Reading &amp; Use of English'+(fin.a2NoWriting?' (incluye Writing)':''),fin.skills.Reading)}${row('Listening',fin.skills.Listening)}${fin.a2NoWriting?`<tr><td style="padding:8px;border:1px solid #e2e8f0"><b>Writing</b></td><td colspan="4" style="${cell};text-align:left;color:#64748b">Incluido en Reading &amp; Use of English (examen A2 Key)</td></tr>`:row('Writing',fin.skills.Writing)}${row('Speaking',fin.skills.Speaking)}</tbody>
     </table>
     <div style="display:flex;gap:16px;align-items:center;background:#0f2741;color:#fff;border-radius:12px;padding:14px 18px;margin-bottom:14px">
       <div><div style="font-size:.78rem;opacity:.8">RESULTADO FINAL</div><div style="font-size:2.4rem;font-weight:800;line-height:1">${fin.finalCefr}</div></div>
