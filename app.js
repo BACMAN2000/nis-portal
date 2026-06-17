@@ -1675,7 +1675,7 @@ async function studentFinal(){
         ${fin.complete?'':`<div style="font-size:.74rem;opacity:.9;margin-top:4px">⚠ Provisional. Faltan: ${esc(fin.missing.join(', '))}.</div>`}
       </div>
     </div>
-    <button class="btn" onclick="window.studentReportPDF('${p.id}')">📄 Descargar mi PDF</button>`;
+    <button class="btn" onclick="window.studentReportPDF('${p.id}','es')">📄 PDF (Español)</button> <button class="btn ghost" onclick="window.studentReportPDF('${p.id}','en')">📄 PDF (English)</button>`;
 }
 
 /* Metadatos de grados dentro de Classes y niveles de actividades por grado.
@@ -2031,7 +2031,7 @@ async function cefrFinalPanel(){
       <td>${wCell}</td>
       <td style="white-space:nowrap">${sCell}</td>
       <td>${finBadge}</td>
-      <td><button class="btn sm" onclick="studentReportPDF('${s.id}')">📄 PDF</button></td>
+      <td><button class="btn sm" onclick="studentReportPDF('${s.id}','es')">📄 ES</button> <button class="btn sm ghost" onclick="studentReportPDF('${s.id}','en')">📄 EN</button></td>
     </tr>`;
   }).join('');
 
@@ -2160,59 +2160,128 @@ function cefrScaleSVG(scale, cefr){
     <text x="${axisX}" y="30" text-anchor="middle" font-size="11" font-weight="700" fill="#334155">Escala</text>
     ${bandRects}${qBars}${ticks}${marker}</svg>`;
 }
-window.studentReportPDF = async (studentId)=>{
+window.studentReportPDF = async (studentId, lang)=>{
+  lang = (lang==='en') ? 'en' : 'es';
   try{ await ensureHtml2pdf(); }catch(e){ alert(e.message); return; }
   const { data:p, error } = await sb.from('profiles').select('id,full_name,email,section,cefr_level,grade_id,grades(name)').eq('id',studentId).single();
   if(error){ alert('No se pudo cargar el alumno: '+error.message); return; }
-  const { data:at } = await sb.from('exam_attempts').select('id,skill,level,percent,mock,submitted_at').eq('student_id',studentId);
+  const { data:at } = await sb.from('exam_attempts').select('id,skill,level,percent,score,total,mock,submitted_at,breakdown').eq('student_id',studentId);
   const { data:sp } = await sb.from('speaking_results').select('*').eq('student_id',studentId).maybeSingle();
   const fin=_finalFromData(p, at||[], sp);
-  const tgt=targetLevel(p); const stt=targetStatus(fin.finalCefr, tgt);
-  const sttTxt = stt==='below' ? `▼ Por debajo del objetivo (${tgt})` : stt==='above' ? `▲ Por encima del objetivo (${tgt})` : stt==='meets' ? `✓ Cumple el objetivo (${tgt})` : '';
-  const sttColor = stt==='below' ? '#fca5a5' : '#86efac';
-  const cell='padding:8px;border:1px solid #e2e8f0;text-align:center';
-  const row=(label,b)=>`<tr><td style="padding:8px;border:1px solid #e2e8f0"><b>${label}</b></td>
-    <td style="${cell}">${b?b.level:'—'}</td>
-    <td style="${cell}">${b?(b.pct!=null?b.pct+'%':'—'):'<span style="color:#b45309">Pendiente</span>'}</td>
-    <td style="${cell};color:#2d5a8d;font-weight:700">${b?b.cefr:'—'}</td>
-    <td style="${cell}">${b?b.scale:'—'}</td></tr>`;
+  const tgt=targetLevel(p)||'B1'; const stt=targetStatus(fin.finalCefr, tgt);
+  const EN = lang==='en';
+  const T = EN ? {
+    sub:'Nordic International School of Lima · Cambridge English · Results report',
+    sectionW:'Section', objective:'Target level', cefr:'Common European Framework (CEFR)', scaleName:'Cambridge English Scale',
+    s1:'1) Skills summary (best result)', s2:'2) Reading & Use of English detail (by part)', s3:'3) Overall result on the CEFR',
+    hSkill:'Skill', hLevel:'Level', hScore:'Score', hPct:'%', hScale:'Scale', hProg:'Progress', hStatus:'Status',
+    reading:'Reading & Use of English', listening:'Listening', writing:'Writing', speaking:'Speaking',
+    part:'Part', oral:'Oral session', notHere:'Not in this cycle', pending:'Pending (teacher)', notTaken:'Not taken',
+    incl:' (includes Writing)', inReading:'Included in Reading & Use of English (A2 Key)',
+    finalLbl:'Final result', targetGrade:'Target level for the grade', scaleLbl:'Cambridge Scale',
+    below:'▼ Below the target ('+tgt+')', meets:'✓ Meets the target ('+tgt+')', above:'▲ Above the target ('+tgt+')',
+    gnote:'The final result is the average of the scales of the assessed skills (Reading & Use of English, Listening and Writing). Speaking is assessed in an oral session.',
+    prov:'Provisional result', commentTitle:'A message for the family',
+    sign:'— English Department · Nordic International School of Lima',
+    foot:'Cambridge Scale: A2 100-150 · B1 120-170 · B2 140-190 · C1 160-210' } : {
+    sub:'Nordic International School of Lima · Cambridge English · Reporte de resultados',
+    sectionW:'Sección', objective:'Objetivo del grado', cefr:'Marco Común Europeo', scaleName:'Cambridge English Scale',
+    s1:'1) Resumen por destreza (mejor resultado)', s2:'2) Detalle de Reading & Use of English (por parte)', s3:'3) Resultado global según el Marco Común Europeo (CEFR)',
+    hSkill:'Destreza', hLevel:'Nivel', hScore:'Puntaje', hPct:'%', hScale:'Esc.', hProg:'Progreso', hStatus:'Estado',
+    reading:'Reading & Use of English', listening:'Listening', writing:'Writing', speaking:'Speaking',
+    part:'Parte', oral:'Sesión oral', notHere:'No en este ciclo', pending:'Pendiente', notTaken:'No rindió',
+    incl:' (incluye Writing)', inReading:'Incluido en Reading & Use of English (examen A2 Key)',
+    finalLbl:'Resultado final', targetGrade:'Nivel objetivo del grado', scaleLbl:'Escala Cambridge',
+    below:'▼ Por debajo del objetivo ('+tgt+')', meets:'✓ Cumple el objetivo ('+tgt+')', above:'▲ Por encima del objetivo ('+tgt+')',
+    gnote:'El resultado final es el promedio de las escalas de las destrezas evaluadas (Reading & Use of English, Listening y Writing). Speaking se evalúa en sesión oral.',
+    prov:'Resultado provisional', commentTitle:'Comentario para la familia',
+    sign:'— English Department · Nordic International School of Lima',
+    foot:'Escala Cambridge: A2 100-150 · B1 120-170 · B2 140-190 · C1 160-210' };
+  const tier=(pc)=>{ if(pc==null)return['',''];
+    if(pc>=80)return[EN?'High pass':'Aprobado alto','#16a34a'];
+    if(pc>=60)return[EN?'Pass':'Aprobado','#16a34a'];
+    if(pc>=40)return[EN?'Approaching':'Acercándose','#f59e0b'];
+    return[EN?'Developing':'En desarrollo','#dc2626']; };
+  const bar=(pc)=>{ if(pc==null)return '<div style="height:9px;background:#eef2f7;border-radius:99px"></div>';
+    const c=pc>=60?'#16a34a':pc>=40?'#f59e0b':'#dc2626';
+    return '<div style="height:9px;background:#e2e8f0;border-radius:99px;overflow:hidden"><div style="height:100%;width:'+Math.max(3,pc)+'%;background:'+c+'"></div></div>'; };
+  const ba={};
+  ['Reading','Listening','Writing'].forEach(sk=>{
+    const rows=(at||[]).filter(a=>a.skill===sk&&a.percent!=null).map(a=>({a,pct:Number(a.percent),scale:skillScale(a.level,Number(a.percent))})).filter(x=>x.scale!=null);
+    if(rows.length){ const ps=rows.filter(x=>x.pct>=50); ba[sk]=(ps.length?ps.reduce((b,x)=>x.scale>b.scale?x:b):rows.reduce((b,x)=>x.pct>b.pct?x:b)).a; }
+  });
+  const wAttAny=(at||[]).some(a=>a.skill==='Writing');
+  const cs='padding:6px 8px;border:1px solid #e2e8f0;text-align:center;font-size:12px';
+  const th='padding:7px 8px;border:1px solid #e2e8f0;font-size:12px;color:#fff';
+  const skHead='<tr style="background:#4987c6"><th style="'+th+';text-align:left">'+T.hSkill+'</th><th style="'+th+'">'+T.hLevel+'</th><th style="'+th+'">'+T.hScore+'</th><th style="'+th+'">'+T.hPct+'</th><th style="'+th+'">'+T.hScale+'</th><th style="'+th+';width:120px">'+T.hProg+'</th><th style="'+th+'">'+T.hStatus+'</th></tr>';
+  const skRow=(label,b,att,opt)=>{
+    if(!b){ const m=(opt&&opt.pending)?T.pending:(opt&&opt.oral)?T.oral:T.notTaken;
+      const est=(opt&&opt.oral)?T.notHere:(opt&&opt.pending)?T.pending:'-';
+      return '<tr><td style="'+cs+';text-align:left">'+label+'</td><td style="'+cs+'">-</td><td style="'+cs+';color:#6b7280">'+m+'</td><td style="'+cs+'">-</td><td style="'+cs+'">-</td><td style="'+cs+'">'+bar(null)+'</td><td style="'+cs+';color:#6b7280">'+est+'</td></tr>'; }
+    const t=tier(b.pct), sc=att?(att.score+'/'+att.total):'—';
+    return '<tr><td style="'+cs+';text-align:left">'+label+'</td><td style="'+cs+'">'+b.level+'</td><td style="'+cs+'">'+sc+'</td><td style="'+cs+'"><b>'+b.pct+'%</b></td><td style="'+cs+'"><b>'+b.scale+'</b></td><td style="'+cs+'">'+bar(b.pct)+'</td><td style="'+cs+';color:'+t[1]+';font-weight:700">'+t[0]+'</td></tr>';
+  };
+  const rRow=skRow(T.reading+(fin.a2NoWriting?T.incl:''), fin.skills.Reading, ba['Reading']);
+  const lRow=skRow(T.listening, fin.skills.Listening, ba['Listening']);
+  const wRow=fin.a2NoWriting
+    ? '<tr><td style="'+cs+';text-align:left">'+T.writing+'</td><td colspan="6" style="'+cs+';text-align:left;color:#6b7280">'+T.inReading+'</td></tr>'
+    : skRow(T.writing, fin.skills.Writing, ba['Writing'], {pending: wAttAny && !fin.skills.Writing});
+  const spRow=skRow(T.speaking, fin.skills.Speaking, null, {oral:true});
+  const rParts = ba['Reading'] ? partsOf(ba['Reading'].breakdown) : [];
+  let partsTbl='';
+  if(rParts.length){
+    partsTbl='<div style="font-size:13px;font-weight:800;color:#2f5f93;margin:10px 0 4px">'+T.s2+'</div>'+
+      '<table style="width:100%;border-collapse:collapse;margin-bottom:6px"><tr style="background:#76cbe5"><th style="'+cs+';text-align:left;color:#0f172a">'+T.part+'</th><th style="'+cs+'">%</th><th style="'+cs+';width:170px">'+T.hProg+'</th></tr>'+
+      rParts.map((pt,i)=>'<tr><td style="'+cs+';text-align:left">'+T.part+' '+(i+1)+'</td><td style="'+cs+'"><b>'+pt.pct+'%</b></td><td style="'+cs+'">'+bar(pt.pct)+'</td></tr>').join('')+'</table>';
+  }
+  const stColor = stt==='below'?'#f59e0b':'#16a34a';
+  const stBadge = stt==='below'?T.below:stt==='above'?T.above:stt==='meets'?T.meets:'';
+  const globalBox='<div style="background:#f7faff;border:1.5px solid '+stColor+';border-radius:12px;padding:12px 16px;margin:2px 0 12px">'+
+    '<div style="font-size:13px"><b>'+T.targetGrade+':</b> '+tgt+' &nbsp;•&nbsp; <b>'+T.finalLbl+':</b> <span style="color:#2f5f93;font-weight:800">'+fin.finalCefr+'</span> &nbsp;•&nbsp; <b>'+T.scaleLbl+':</b> '+(fin.finalScale!=null?fin.finalScale:'—')+' &nbsp;•&nbsp; <span style="color:'+stColor+';font-weight:800">'+stBadge+'</span></div>'+
+    '<div style="font-size:11px;color:#6b7280;margin-top:5px">'+T.gnote+(fin.complete?'':' '+T.prov+'.')+'</div></div>';
+  const SKL={Reading:T.reading,Listening:T.listening,Writing:T.writing,Speaking:T.speaking};
+  const pres=Object.keys(fin.skills).filter(k=>fin.skills[k]);
+  let strong='',weak='';
+  if(pres.length){ strong=SKL[pres.reduce((b,k)=>fin.skills[k].scale>fin.skills[b].scale?k:b)]; weak=SKL[pres.reduce((b,k)=>fin.skills[k].scale<fin.skills[b].scale?k:b)]; }
+  const first=(p.full_name||'').split(' ')[0]||'';
+  const rank=CEFR_RANK[fin.finalCefr]||0, tg=CEFR_RANK[tgt]||3, fs=fin.finalScale||0;
+  let msg;
+  if(EN){
+    if(rank>tg) msg='Congratulations, '+first+'! Your results are excellent and already above the '+tgt+' target, showing very solid English, especially in '+strong+'. We encourage you to keep challenging yourself with higher-level material. Keep shining!';
+    else if(rank>=tg) msg='Well done, '+first+'! You have reached '+tgt+', your grade target. You stand out in '+strong+', and with a little more practice in '+weak+' you will keep growing. We are proud of your effort. Keep it up!';
+    else if(fs>=130) msg='Good work, '+first+'! You are very close to '+tgt+'. Your strongest area is '+strong+'; with some focus on '+weak+' you will soon reach the goal. We fully believe in your progress. You can do it!';
+    else msg=first+', you have taken important steps towards '+tgt+', with good moments in '+strong+'. Let us work together on '+weak+' with steady practice and you will see great progress. You have all our support!';
+  } else {
+    if(rank>tg) msg='¡Felicitaciones, '+first+'! Tus resultados son excelentes y ya superas el objetivo '+tgt+', mostrando un dominio muy sólido del inglés, especialmente en '+strong+'. Te animamos a seguir retándote con materiales de nivel superior. ¡Sigue brillando!';
+    else if(rank>=tg) msg='¡Muy bien, '+first+'! Has alcanzado el nivel '+tgt+', el objetivo de tu grado. Destacas en '+strong+', y con un poco más de práctica en '+weak+' seguirás creciendo. Estamos muy orgullosos de tu esfuerzo. ¡Continúa así!';
+    else if(fs>=130) msg='¡Buen trabajo, '+first+'! Estás muy cerca del nivel '+tgt+'. Tu punto más fuerte es '+strong+'; si refuerzas un poco '+weak+', pronto alcanzarás la meta. Confiamos plenamente en tu progreso. ¡Tú puedes!';
+    else msg=first+', has dado pasos importantes hacia el '+tgt+', con buenos momentos en '+strong+'. Vamos a trabajar juntos en '+weak+' con práctica constante y verás grandes avances. ¡Cuentas con todo nuestro apoyo!';
+  }
+  const commentBox='<div style="background:#f0fdf4;border:1.5px solid #bbf7d0;border-radius:12px;padding:12px 16px;margin-top:4px">'+
+    '<div style="font-size:12px;font-weight:800;color:#166534;margin-bottom:5px">'+T.commentTitle+'</div>'+
+    '<div style="font-size:13px;color:#0f172a;line-height:1.5">'+msg+'</div>'+
+    '<div style="font-size:12px;font-weight:800;color:#0f172a;margin-top:8px">'+T.sign+'</div></div>';
   const node=document.createElement('div');
-  node.style.cssText='width:760px;padding:24px;font-family:Montserrat,system-ui,sans-serif;color:#0f172a;background:#fff';
-  node.innerHTML=`
-    <div style="text-align:center;border-bottom:3px solid #4987c6;padding-bottom:10px;margin-bottom:14px">
-      <img src="assets/logo-h.svg" style="height:46px"><div style="letter-spacing:1px;color:#64748b;font-size:.78rem;margin-top:4px">REPORTE DE RESULTADO FINAL · MARCO COMÚN EUROPEO (CEFR)</div></div>
-    <table style="width:100%;border-collapse:collapse;margin-bottom:12px;font-size:.92rem">
-      <tr><td style="padding:4px"><b>Alumno:</b> ${esc(p.full_name||'')}</td><td style="padding:4px"><b>Grado:</b> ${esc(p.grades?.name||'')} ${esc(p.section||'')}</td></tr>
-      <tr><td style="padding:4px"><b>Nivel objetivo:</b> ${esc(tgt||'—')}</td><td style="padding:4px"><b>Fecha:</b> ${new Date().toLocaleDateString('es-PE')}</td></tr>
-    </table>
-    <table style="width:100%;border-collapse:collapse;font-size:.9rem;margin-bottom:14px">
-      <thead><tr style="background:#eef4fb"><th style="${cell};text-align:left">Destreza</th><th style="${cell}">Nivel examen</th><th style="${cell}">Resultado</th><th style="${cell}">CEFR</th><th style="${cell}">Escala</th></tr></thead>
-      <tbody>${row('Reading &amp; Use of English'+(fin.a2NoWriting?' (incluye Writing)':''),fin.skills.Reading)}${row('Listening',fin.skills.Listening)}${fin.a2NoWriting?`<tr><td style="padding:8px;border:1px solid #e2e8f0"><b>Writing</b></td><td colspan="4" style="${cell};text-align:left;color:#64748b">Incluido en Reading &amp; Use of English (examen A2 Key)</td></tr>`:row('Writing',fin.skills.Writing)}${row('Speaking',fin.skills.Speaking)}</tbody>
-    </table>
-    <div style="display:flex;gap:16px;align-items:center;background:#0f2741;color:#fff;border-radius:12px;padding:14px 18px;margin-bottom:14px">
-      <div><div style="font-size:.78rem;opacity:.8">RESULTADO FINAL</div><div style="font-size:2.4rem;font-weight:800;line-height:1">${fin.finalCefr}</div></div>
-      <div style="border-left:1px solid rgba(255,255,255,.3);padding-left:16px"><div style="font-size:.78rem;opacity:.8">ESCALA CAMBRIDGE</div><div style="font-size:1.8rem;font-weight:700">${fin.finalScale!=null?fin.finalScale:'—'}</div></div>
-      <div style="margin-left:auto;text-align:right;max-width:240px">
-        ${sttTxt?`<div style="font-size:.85rem;font-weight:700;color:${sttColor}">${sttTxt}</div>`:''}
-        ${fin.complete?'':`<div style="font-size:.74rem;opacity:.9;margin-top:4px">⚠ Resultado provisional. Faltan: ${esc(fin.missing.join(', '))}.</div>`}
-      </div>
-    </div>
-    <div style="text-align:center;font-size:.76rem;color:#64748b;margin-bottom:4px">Posición del alumno en la Escala Cambridge English / CEFR</div>
-    ${cefrScaleSVG(fin.finalScale, fin.finalCefr)}
-    <p style="font-size:.7rem;color:#94a3b8;margin-top:12px">Cálculo: por cada destreza se toma el mejor resultado y se convierte a la Escala Cambridge (A2 100–150 · B1 120–170 · B2 140–190 · C1 160–210); el resultado final es el promedio de las destrezas evaluadas. Nordic International School of Lima.</p>`;
-  // El nodo se renderiza dentro de un contenedor 0x0 con overflow:hidden: queda
-  // invisible para el usuario pero EN FLUJO NORMAL, para que html2pdf pueda medir
-  // su altura. Un nodo en position:fixed/absolute fuera de pantalla produce un
-  // canvas de altura 0 -> PDF en blanco (bug corregido).
+  node.style.cssText='width:760px;padding:22px;font-family:Montserrat,system-ui,sans-serif;color:#0f172a;background:#fff';
+  node.innerHTML=
+    '<img src="assets/logo-h.svg" style="height:32px;display:block">'+
+    '<div style="font-size:11px;color:#6b7280;margin:3px 0 10px">'+T.sub+'</div>'+
+    '<div style="background:#2f5f93;color:#fff;border-radius:10px;padding:10px 14px;margin-bottom:12px">'+
+      '<div style="font-size:20px;font-weight:800">'+esc(p.full_name||'')+'</div>'+
+      '<div style="font-size:12px">'+esc(p.grades&&p.grades.name||'')+(p.section?' · '+T.sectionW+' '+esc(p.section):'')+' &nbsp;•&nbsp; '+T.objective+': <b>'+tgt+'</b> ('+T.cefr+') &nbsp;•&nbsp; '+T.scaleName+'</div>'+
+    '</div>'+
+    '<div style="font-size:13px;font-weight:800;color:#2f5f93;margin:6px 0 4px">'+T.s1+'</div>'+
+    '<table style="width:100%;border-collapse:collapse;margin-bottom:4px">'+skHead+rRow+lRow+wRow+spRow+'</table>'+
+    partsTbl+
+    '<div style="font-size:13px;font-weight:800;color:#2f5f93;margin:8px 0 4px">'+T.s3+'</div>'+
+    globalBox+ commentBox+
+    '<div style="font-size:9px;color:#94a3b8;margin-top:10px">'+T.foot+'</div>';
   const host=document.createElement('div');
   host.style.cssText='position:absolute;left:0;top:0;width:0;height:0;overflow:hidden;z-index:-1';
-  host.appendChild(node);
-  document.body.appendChild(host);
-  // Esperar a que el logo (y cualquier imagen) carguen antes de rasterizar.
+  host.appendChild(node); document.body.appendChild(host);
   await Promise.all(Array.from(node.querySelectorAll('img')).map(im=>im.complete?Promise.resolve():new Promise(r=>{im.onload=im.onerror=r;})));
-  const opt={ margin:8, filename:`NIS-Resultado-${(p.full_name||'alumno').replace(/\s+/g,'_')}.pdf`,
-    image:{type:'jpeg',quality:0.96}, html2canvas:{scale:2,useCORS:true,backgroundColor:'#ffffff'},
-    jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}, pagebreak:{mode:['css','legacy']} };
+  const fname='NIS-'+(EN?'Report':'Resultado')+'-'+(p.full_name||'alumno').replace(/\s+/g,'_')+'-'+(EN?'EN':'ES')+'.pdf';
+  const opt={ margin:8, filename:fname, image:{type:'jpeg',quality:0.96}, html2canvas:{scale:2,useCORS:true,backgroundColor:'#ffffff'}, jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}, pagebreak:{mode:['css','legacy']} };
   try{ await window.html2pdf().set(opt).from(node).save(); }
   catch(e){ alert('No se pudo generar el PDF: '+(e&&e.message||e)); }
   finally{ host.remove(); }
