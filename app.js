@@ -1872,13 +1872,20 @@ function projection(p,bySkill,atts){
 /* Cambridge English Scale: reported range per exam level. A skill's % within
    its exam level maps linearly onto that range; the final is the average of the
    four skills' scale scores, mapped back to a CEFR band (the official chart). */
-const SCALE_RANGE = { A2:[100,150], B1:[120,170], B2:[140,190], C1:[160,210] };
+const SCALE_RANGE = { A2:[100,150], B1:[120,170], B2:[140,190], C1:[160,210] }; // rango Cambridge reportado por nivel (referencia)
+const SCALE_BOUNDARY = { A2:120, B1:140, B2:160, C1:180 };  // inicio CEFR del nivel ≈ aprobar (~60%)
 const CEFR_BANDS = [ {min:200,cefr:'C2'},{min:180,cefr:'C1'},{min:160,cefr:'B2'},
   {min:140,cefr:'B1'},{min:120,cefr:'A2'},{min:100,cefr:'A1'},{min:0,cefr:'<A1'} ];
+/* %→Escala Cambridge anclado al APROBADO: 60% cae en el límite del nivel; por
+   encima sube hacia la banda siguiente; por debajo baja ~1 banda cada 20 puntos.
+   (Antes el piso del nivel era la banda inferior, así un 20% en B2 daba 150=B1;
+    ahora 20% en B2 → 120 = A2.) */
 function skillScale(level, pct){
-  const r = SCALE_RANGE[level] || SCALE_RANGE.B1;
   if(pct==null || isNaN(pct)) return null;
-  return Math.round(Math.max(r[0], Math.min(r[1], r[0] + (pct/100)*(r[1]-r[0]))));
+  const B = SCALE_BOUNDARY[level] || SCALE_BOUNDARY.B1;
+  pct = Number(pct);
+  const s = pct>=60 ? B + (pct-60)*0.75 : B - (60-pct)*1.0;
+  return Math.round(Math.max(80, Math.min(230, s)));
 }
 function scaleToCefr(scale){
   if(scale==null) return '—';
@@ -2037,7 +2044,7 @@ async function cefrFinalPanel(){
 
   $('#main').innerHTML = `
     <h1 style="margin:0 0 4px">🎓 Resultado final · CEFR</h1>
-    <p class="muted" style="margin-top:0;font-size:.88rem">Mejor resultado por destreza convertido a la <b>Escala Cambridge</b> (A2 100–150 · B1 120–170 · B2 140–190 · C1 160–210). El <b>final</b> es el promedio de las destrezas evaluadas (se toma el mejor intento <b>aprobado ≥50%</b>; si ninguno aprueba, el de mayor %). <b>Writing</b> y <b>Speaking</b> se califican con la rúbrica Cambridge (0–5 por descriptor). En <b>A2</b> el Writing va dentro de Reading &amp; Use of English (examen A2 Key), así que no cuenta como destreza aparte. <b>Objetivo</b> = nivel al que apunta el grado; <span class="badge off" style="font-size:.66rem;background:#dc2626;color:#fff">▼</span> = por debajo del objetivo, <span class="badge on" style="font-size:.66rem">✓</span> = lo cumple. <span class="badge off" style="font-size:.66rem">prov.</span> = aún faltan destrezas.</p>
+    <p class="muted" style="margin-top:0;font-size:.88rem">Mejor resultado por destreza convertido a la <b>Escala Cambridge</b> (aprobar ≈60% cae en el límite del nivel; por debajo baja de banda). El <b>final</b> es el promedio de las destrezas evaluadas (se toma el mejor intento <b>aprobado ≥50%</b>; si ninguno aprueba, el de mayor %). <b>Writing</b> y <b>Speaking</b> se califican con la rúbrica Cambridge (0–5 por descriptor). En <b>A2</b> el Writing va dentro de Reading &amp; Use of English (examen A2 Key), así que no cuenta como destreza aparte. <b>Objetivo</b> = nivel al que apunta el grado; <span class="badge off" style="font-size:.66rem;background:#dc2626;color:#fff">▼</span> = por debajo del objetivo, <span class="badge on" style="font-size:.66rem">✓</span> = lo cumple. <span class="badge off" style="font-size:.66rem">prov.</span> = aún faltan destrezas.</p>
     ${resultsFilterBar(gradeList,'window._setFinalFilter')}
     <div class="card" style="padding:0;overflow-x:auto"><table>
       <thead><tr><th>Alumno</th><th>Grado</th><th>Objetivo</th><th>Reading &amp; UoE</th><th>Listening</th><th>Writing</th><th>Speaking</th><th>Final CEFR</th><th></th></tr></thead>
@@ -2183,7 +2190,7 @@ window.studentReportPDF = async (studentId, lang)=>{
     gnote:'The final result is the average of the scales of the assessed skills (Reading & Use of English, Listening and Writing). Speaking is assessed in an oral session.',
     prov:'Provisional result', commentTitle:'A message for the family',
     sign:'— English Department · Nordic International School of Lima',
-    foot:'Cambridge Scale: A2 100-150 · B1 120-170 · B2 140-190 · C1 160-210' } : {
+    foot:'Cambridge Scale — pass (~60%) lands at the level boundary; below that drops a band.' } : {
     sub:'Nordic International School of Lima · Cambridge English · Reporte de resultados',
     sectionW:'Sección', objective:'Objetivo del grado', cefr:'Marco Común Europeo', scaleName:'Cambridge English Scale',
     s1:'1) Resumen por destreza (mejor resultado)', s2:'2) Detalle de Reading & Use of English (por parte)', s3:'3) Resultado global según el Marco Común Europeo (CEFR)',
@@ -2196,7 +2203,7 @@ window.studentReportPDF = async (studentId, lang)=>{
     gnote:'El resultado final es el promedio de las escalas de las destrezas evaluadas (Reading & Use of English, Listening y Writing). Speaking se evalúa en sesión oral.',
     prov:'Resultado provisional', commentTitle:'Comentario para la familia',
     sign:'— English Department · Nordic International School of Lima',
-    foot:'Escala Cambridge: A2 100-150 · B1 120-170 · B2 140-190 · C1 160-210' };
+    foot:'Escala Cambridge — aprobar (~60%) cae en el límite del nivel; por debajo baja de banda.' };
   const tier=(pc)=>{ if(pc==null)return['',''];
     if(pc>=80)return[EN?'High pass':'Aprobado alto','#16a34a'];
     if(pc>=60)return[EN?'Pass':'Aprobado','#16a34a'];
