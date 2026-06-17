@@ -10,6 +10,7 @@
     --accent:#3b5bdb; --accent-soft:#e7ecfd;
     --good:#2f9e44; --good-soft:#d3f4dc; --bad:#e03131; --bad-soft:#ffe3e3; --gold:#f59f00;
     --c-verb:#9b5de5; --c-pron:#3b5bdb; --c-tense:#e8590c; --c-time:#0c8599; --c-struct:#c2255c;
+    --say:#1c7ed6; --tell:#e8590c; --ask:#2f9e44;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   body{font-family:'Segoe UI',system-ui,Arial,sans-serif; background:var(--bg); color:var(--ink); padding:16px; line-height:1.5;}
@@ -25,51 +26,41 @@
   header h1{font-size:1.5rem;}
   header p{color:var(--muted); font-size:.9rem; margin-top:4px;}
   .tabs{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin:14px auto; max-width:920px;}
-  .tab{border:2px solid transparent; background:var(--card); color:var(--ink); padding:9px 18px; border-radius:24px;
-       font-weight:700; font-size:.92rem; cursor:pointer; box-shadow:0 1px 3px rgba(20,30,60,.12); transition:.15s;}
-  .tab small{display:block; font-weight:500; font-size:.66rem; color:var(--muted);}
+  .tab{border:2px solid transparent; background:var(--card); color:var(--ink); padding:9px 16px; border-radius:24px;
+       font-weight:700; font-size:.9rem; cursor:pointer; box-shadow:0 1px 3px rgba(20,30,60,.12); transition:.15s;}
+  .tab small{display:block; font-weight:500; font-size:.64rem; color:var(--muted);}
   .tab.on{background:var(--accent); color:#fff; border-color:var(--accent);}
   .tab.on small{color:#dce4ff;}
-  .tab.done{border-color:var(--good);}
-  .tab.done::after{content:" ✓"; color:var(--good);}
-  .tab.on.done::after{color:#bff2cc;}
   main{max-width:920px; margin:0 auto;}
   .card{background:var(--card); border-radius:16px; padding:20px; box-shadow:0 2px 12px rgba(20,30,60,.08); margin-bottom:14px;}
-  /* ---- Learn ---- */
-  .bubble{position:relative; background:var(--accent-soft); color:var(--ink); border-radius:16px; padding:16px 20px;
-    font-size:1.25rem; font-weight:600; display:inline-block; max-width:100%;}
-  .bubble.direct::after{content:""; position:absolute; left:30px; bottom:-12px; border:8px solid transparent;
-    border-top-color:var(--accent-soft); border-bottom:0;}
-  .who{color:var(--muted); font-size:.85rem; margin:8px 0 2px;}
-  .arrow{text-align:center; font-size:1.6rem; color:var(--accent); margin:14px 0 6px;}
-  .reported{font-size:1.25rem; font-weight:600; padding:14px 18px; border-radius:14px; background:#f8fafc;
-    border:1px dashed #cbd5e1; min-height:54px; transition:.2s;}
-  .reported.show{background:var(--good-soft); border-color:var(--good);}
-  mark{background:none; font-weight:800; padding:0 1px; border-radius:3px; cursor:help;}
-  .c-verb{color:var(--c-verb);} .c-pron{color:var(--c-pron);} .c-tense{color:var(--c-tense);}
-  .c-time{color:var(--c-time);} .c-struct{color:var(--c-struct);}
-  .legend{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px; font-size:.8rem; font-weight:700;}
-  .legend span{display:flex; align-items:center; gap:5px;}
-  .dot{width:11px; height:11px; border-radius:50%; display:inline-block;}
-  .changes{margin-top:14px; display:none;}
-  .changes.show{display:block;}
-  .chg{display:flex; gap:10px; align-items:flex-start; padding:7px 0; border-top:1px solid #eef1f7; font-size:.9rem;}
-  .chg .pill{font-size:.7rem; font-weight:800; padding:3px 8px; border-radius:10px; white-space:nowrap; color:#fff;}
-  .btns{display:flex; gap:8px; flex-wrap:wrap; margin-top:16px;}
   button.act{border:none; border-radius:10px; padding:11px 18px; font-weight:700; font-size:.9rem; cursor:pointer; transition:.15s;}
   .b-go{background:var(--accent); color:#fff;} .b-alt{background:#e9ecf3; color:var(--ink);}
   button.act:hover{filter:brightness(1.06);} button.act:disabled{opacity:.5; cursor:default;}
+  /* ---- Learn ---- */
+  .who{color:var(--muted); font-size:.85rem; margin:8px 0 2px;}
+  .bubble{position:relative; background:var(--accent-soft); color:var(--ink); border-radius:16px; padding:16px 20px; font-size:1.25rem; font-weight:600; display:inline-block; max-width:100%;}
+  .bubble.direct::after{content:""; position:absolute; left:30px; bottom:-12px; border:8px solid transparent; border-top-color:var(--accent-soft); border-bottom:0;}
+  .arrow{text-align:center; font-size:1.6rem; color:var(--accent); margin:14px 0 6px;}
+  .reported{font-size:1.25rem; font-weight:600; padding:14px 18px; border-radius:14px; background:#f8fafc; border:1px dashed #cbd5e1; min-height:54px; transition:.2s;}
+  .reported.show{background:var(--good-soft); border-color:var(--good);}
+  mark{background:none; font-weight:800; padding:0 1px; border-radius:3px; cursor:help;}
+  .c-verb{color:var(--c-verb);} .c-pron{color:var(--c-pron);} .c-tense{color:var(--c-tense);} .c-time{color:var(--c-time);} .c-struct{color:var(--c-struct);}
+  .legend{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px; font-size:.8rem; font-weight:700;}
+  .legend span{display:flex; align-items:center; gap:5px;}
+  .dot{width:11px; height:11px; border-radius:50%; display:inline-block;}
+  .changes{margin-top:14px; display:none;} .changes.show{display:block;}
+  .chg{display:flex; gap:10px; align-items:flex-start; padding:7px 0; border-top:1px solid #eef1f7; font-size:.9rem;}
+  .chg .pill{font-size:.7rem; font-weight:800; padding:3px 8px; border-radius:10px; white-space:nowrap; color:#fff;}
+  .btns{display:flex; gap:8px; flex-wrap:wrap; margin-top:16px;}
   .counter{color:var(--muted); font-size:.85rem; text-align:center; margin-top:6px;}
-  /* ---- Practice ---- */
-  .lvlbar{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-bottom:12px;}
-  .lvl{border:2px solid #d7def0; background:#fff; padding:7px 16px; border-radius:20px; font-weight:700; font-size:.85rem; cursor:pointer;}
-  .lvl.on{background:var(--accent); color:#fff; border-color:var(--accent);}
-  .lvl.done{border-color:var(--good);} .lvl.done::after{content:" ✓"; color:var(--good);}
-  .status{display:flex; gap:16px; align-items:center; justify-content:center; font-weight:800; margin-bottom:12px; flex-wrap:wrap;}
-  .watch{font-variant-numeric:tabular-nums; color:var(--accent);}
-  .qbox{font-size:1.05rem;}
-  .qdirect{background:var(--accent-soft); border-radius:14px; padding:14px 18px; font-weight:600; font-size:1.15rem; position:relative; margin-bottom:6px;}
-  .qspk{color:var(--muted); font-size:.85rem; margin:8px 0 14px;}
+  /* ---- Speed Quiz (gameshow) ---- */
+  .hud{display:flex; gap:10px; justify-content:space-between; align-items:center; flex-wrap:wrap; margin-bottom:10px;}
+  .hud .chip{font-weight:800; font-size:.95rem; background:#f1f3f9; padding:7px 12px; border-radius:12px; display:flex; align-items:center; gap:6px;}
+  .hud .score{color:var(--accent);} .hud .streak{color:var(--gold);}
+  .tbar{height:12px; background:#e9ecf3; border-radius:8px; overflow:hidden; margin-bottom:14px;}
+  .tbar>i{display:block; height:100%; width:100%; background:linear-gradient(90deg,#2f9e44,#f59f00,#e03131); transition:width .1s linear;}
+  .qdirect{background:var(--accent-soft); border-radius:14px; padding:16px 18px; font-weight:700; font-size:1.18rem; margin-bottom:6px; text-align:center;}
+  .qspk{color:var(--muted); font-size:.85rem; margin:8px 0 14px; text-align:center;}
   .opts{display:grid; gap:10px;}
   .opt{text-align:left; background:#fff; border:2px solid #d7def0; border-radius:12px; padding:13px 16px; font-size:1rem; cursor:pointer; transition:.12s; font-weight:600;}
   .opt:hover{border-color:var(--accent); background:var(--accent-soft);}
@@ -77,15 +68,38 @@
   .opt.wrong{border-color:var(--bad); background:var(--bad-soft); color:var(--bad);}
   .opt:disabled{cursor:default;}
   .explain{margin-top:14px; padding:12px 16px; border-radius:12px; background:#fff8e6; border:1px solid #ffe3a3; font-size:.92rem; display:none;}
-  .explain.show{display:block;}
-  .explain b{color:var(--c-tense);}
+  .explain.show{display:block;} .explain b{color:var(--c-tense);}
+  .combo{position:fixed; left:50%; top:38%; transform:transl(-50%,-50%); font-size:2.4rem; font-weight:900; color:var(--gold); text-shadow:0 2px 0 #fff; pointer-events:none; opacity:0; z-index:50;}
+  .combo.pop{animation:combo 1s ease-out;}
+  @keyframes combo{0%{opacity:0; transform:translate(-50%,-30%) scale(.6);} 25%{opacity:1; transform:translate(-50%,-50%) scale(1.15);} 100%{opacity:0; transform:translate(-50%,-80%) scale(1);}}
+  .result{text-align:center; padding:10px;}
+  .result .big{font-size:3rem; font-weight:900; color:var(--accent); line-height:1;}
+  .result .stars{font-size:2rem; margin:8px 0;}
+  .result .row{display:flex; gap:18px; justify-content:center; flex-wrap:wrap; margin:14px 0; color:var(--muted); font-weight:700;}
+  /* ---- Sort it! ---- */
+  .buckets{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:14px;}
+  .bucket{border-radius:14px; padding:14px 8px; text-align:center; font-weight:800; color:#fff; cursor:pointer; transition:.12s; border:3px solid transparent;}
+  .bucket small{display:block; font-weight:600; font-size:.7rem; opacity:.9; margin-top:3px;}
+  .bucket.say{background:var(--say);} .bucket.tell{background:var(--tell);} .bucket.ask{background:var(--ask);}
+  .bucket:hover{transform:translateY(-2px);} .bucket.flash{animation:bflash .4s;}
+  @keyframes bflash{50%{filter:brightness(1.4);}}
+  .sortcard{background:var(--accent-soft); border-radius:14px; padding:18px; font-size:1.2rem; font-weight:700; text-align:center; min-height:90px; display:flex; align-items:center; justify-content:center; flex-direction:column;}
+  .sortcard .ctx{font-size:.8rem; color:var(--muted); font-weight:600; margin-top:8px;}
+  /* ---- Match ---- */
+  .mwrap{display:grid; grid-template-columns:1fr 1fr; gap:22px; max-width:600px; margin:14px auto 0;}
+  .mcol h3{font-size:.76rem; text-transform:uppercase; letter-spacing:1px; text-align:center; margin-bottom:10px;}
+  .mcol.l h3{color:var(--c-time);} .mcol.r h3{color:var(--then,#e8590c);}
+  .mcard{background:#fff; border:2px solid #d7def0; border-radius:12px; padding:12px; margin-bottom:10px; font-weight:700; cursor:pointer; text-align:center; transition:.12s;}
+  .mcard.sel{border-color:var(--accent); background:var(--accent-soft);}
+  .mcard.matched{border-color:var(--good); background:var(--good-soft); color:var(--good); cursor:default; opacity:.85;}
+  .mcard.bad{animation:shake .3s;}
+  @keyframes shake{25%{transform:translateX(-5px);}75%{transform:translateX(5px);}}
+  .watch{font-variant-numeric:tabular-nums; color:var(--accent);}
   .banner{display:none; margin-top:14px; padding:14px; border-radius:12px; background:var(--good-soft); color:var(--good); font-weight:800; text-align:center; font-size:1.05rem;}
   .banner.show{display:block; animation:pop .4s;}
-  @keyframes pop{0%{transform:scale(.85); opacity:0;} 100%{transform:scale(1); opacity:1;}}
-  .progress{height:7px; background:#e9ecf3; border-radius:6px; overflow:hidden; margin:10px 0 16px;}
-  .progress>i{display:block; height:100%; background:var(--accent); width:0; transition:.3s;}
+  @keyframes pop{0%{transform:scale(.85); opacity:0;}100%{transform:scale(1); opacity:1;}}
   footer{max-width:920px; margin:18px auto 0; text-align:center; color:var(--muted); font-size:.75rem;}
-  @media (max-width:480px){ body{padding:10px;} .topnav{margin:-10px -10px 12px;} .bubble,.reported,.qdirect{font-size:1.05rem;} }
+  @media (max-width:480px){ body{padding:10px;} .topnav{margin:-10px -10px 12px;} .bubble,.reported,.qdirect{font-size:1.05rem;} .buckets{grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
@@ -98,22 +112,25 @@
 
 <header>
   <h1>🗣️ Reported Speech Lab</h1>
-  <p>Turn what people <b>say</b> into what we <b>report</b>. Learn the changes, then practise. Grade 8–11 · NIS English</p>
+  <p>Learn it, then play 3 games: a timed quiz show, a say/tell/ask sorter and a time-words match. Grade 8–11 · NIS English</p>
 </header>
 
 <div class="tabs" id="tabs">
-  <button class="tab on" data-tab="learn" onclick="go('learn')">① Learn<small>watch the changes</small></button>
-  <button class="tab" data-tab="practice" onclick="go('practice')">② Practice<small>statements · questions · commands</small></button>
+  <button class="tab on" data-tab="learn" onclick="go('learn')">📖 Learn<small>watch the changes</small></button>
+  <button class="tab" data-tab="quiz" onclick="go('quiz')">⚡ Speed Quiz<small>beat the clock</small></button>
+  <button class="tab" data-tab="sort" onclick="go('sort')">🗂️ Sort it!<small>say · tell · ask</small></button>
+  <button class="tab" data-tab="match" onclick="go('match')">🔗 Match<small>time &amp; place words</small></button>
 </div>
 
 <main id="main"></main>
+<div class="combo" id="combo"></div>
 
 <footer>Reported Speech &amp; Backshifting · NIS English · 2026 — <a href="backshifting.html" style="color:var(--accent)">Need the tenses? Try the Backshifting Machine →</a></footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js"></script>
 <script>
-/* Portal NIS bridge: saves the result to activity_attempts + emails it. No portal session => no-op. */
+/* Portal NIS bridge */
 window.NISACT=(function(){
   let _sb=null;
   function client(){ if(_sb) return _sb; if(!window.supabase||!window.NIS_CONFIG) return null;
@@ -130,154 +147,97 @@ window.NISACT=(function(){
     try{ const m=Math.floor(r.duration/60), sec=r.duration%60;
       await fetch(NIS_CONFIG.WRITING_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
         body:JSON.stringify({skill:'Grammar',name:s.full_name||s.first_name||'',email:s.email||'',level:r.level,
-          examTitle:r.title+' - Time '+m+'m '+String(sec).padStart(2,'0')+'s - Lives left '+r.lives,
+          examTitle:r.title+' - Time '+m+'m '+String(sec).padStart(2,'0')+'s'+(r.points?(' - '+r.points+' pts'):''),
           examType:r.activity,score:r.score,total:r.total,duration_min:Math.max(1,Math.round(r.duration/60))})});
     }catch(e){}
     return {sent:true};
   }
   return {submit};
 })();
+const shuffle=a=>{ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; };
 
 /* ============== DATA ============== */
-const PILL = {verb:'var(--c-verb)',pron:'var(--c-pron)',tense:'var(--c-tense)',time:'var(--c-time)',struct:'var(--c-struct)'};
-const PILLNAME = {verb:'Reporting verb',pron:'Pronoun',tense:'Tense back-shift',time:'Time / place',struct:'Structure'};
+const PILL={verb:'var(--c-verb)',pron:'var(--c-pron)',tense:'var(--c-tense)',time:'var(--c-time)',struct:'var(--c-struct)'};
+const PILLNAME={verb:'Reporting verb',pron:'Pronoun',tense:'Tense back-shift',time:'Time / place',struct:'Structure'};
 
-const LEARN = [
+const LEARN=[
   { who:'Tom said:', direct:'I am tired.',
     reported:'Tom <mark class="c-verb">said</mark> (that) <mark class="c-pron">he</mark> <mark class="c-tense">was</mark> tired.',
-    changes:[
-      {t:'verb', txt:'We add a reporting verb: <b>said</b>. After <i>say</i> we don\'t need an object.'},
-      {t:'pron', txt:'<b>I</b> → <b>he</b> (Tom is the speaker, so the pronoun changes to match).'},
-      {t:'tense', txt:'<b>am</b> → <b>was</b>: present simple back-shifts to past simple.'} ] },
+    changes:[{t:'verb',txt:'We add a reporting verb: <b>said</b>. After <i>say</i> we don\'t need an object.'},
+      {t:'pron',txt:'<b>I</b> → <b>he</b> (Tom is the speaker).'},
+      {t:'tense',txt:'<b>am</b> → <b>was</b>: present simple back-shifts to past simple.'}]},
   { who:'Sara said to me:', direct:'I will call you tomorrow.',
     reported:'Sara <mark class="c-verb">said</mark> <mark class="c-pron">she</mark> <mark class="c-tense">would</mark> call <mark class="c-pron">me</mark> <mark class="c-time">the next day</mark>.',
-    changes:[
-      {t:'pron', txt:'<b>I</b> → <b>she</b>, and <b>you</b> → <b>me</b> (you = the listener, which is me).'},
-      {t:'tense', txt:'<b>will</b> → <b>would</b>: the modal back-shifts.'},
-      {t:'time', txt:'<b>tomorrow</b> → <b>the next day</b> (the moment of speaking has passed).'} ] },
+    changes:[{t:'pron',txt:'<b>I</b> → <b>she</b>, and <b>you</b> → <b>me</b>.'},
+      {t:'tense',txt:'<b>will</b> → <b>would</b>.'},
+      {t:'time',txt:'<b>tomorrow</b> → <b>the next day</b>.'}]},
   { who:'He asked me:', direct:'Do you like this song?',
     reported:'He <mark class="c-verb">asked</mark> <mark class="c-struct">if</mark> <mark class="c-pron">I</mark> <mark class="c-tense">liked</mark> <mark class="c-time">that</mark> song.',
-    changes:[
-      {t:'verb', txt:'For questions we use <b>ask</b>, not <i>say</i>.'},
-      {t:'struct', txt:'Yes/No question → add <b>if</b> (or <i>whether</i>) and use <b>statement word order</b> (no <i>do/does/did</i>, no question mark).'},
-      {t:'tense', txt:'<b>do you like</b> → <b>liked</b>: present simple back-shifts to past simple.'},
-      {t:'time', txt:'<b>this</b> → <b>that</b>.'} ] },
+    changes:[{t:'verb',txt:'For questions we use <b>ask</b>, not <i>say</i>.'},
+      {t:'struct',txt:'Yes/No question → add <b>if</b> and use <b>statement word order</b> (no <i>do</i>, no ?).'},
+      {t:'tense',txt:'<b>do you like</b> → <b>liked</b>.'},
+      {t:'time',txt:'<b>this</b> → <b>that</b>.'}]},
   { who:'She asked me:', direct:'Where are you going?',
     reported:'She <mark class="c-verb">asked</mark> where <mark class="c-pron">I</mark> <mark class="c-tense">was</mark> going.',
-    changes:[
-      {t:'struct', txt:'Wh- question → keep the question word (<b>where</b>) but use <b>statement order</b> and drop the question mark.'},
-      {t:'pron', txt:'<b>you</b> → <b>I</b>.'},
-      {t:'tense', txt:'<b>are going</b> → <b>was going</b>: present continuous back-shifts to past continuous.'} ] },
+    changes:[{t:'struct',txt:'Wh- question → keep <b>where</b>, statement order, drop the ?.'},
+      {t:'pron',txt:'<b>you</b> → <b>I</b>.'},
+      {t:'tense',txt:'<b>are going</b> → <b>was going</b>.'}]},
   { who:'The teacher said to us:', direct:'Close the window, please.',
     reported:'The teacher <mark class="c-verb">asked</mark> <mark class="c-pron">us</mark> <mark class="c-struct">to close</mark> the window.',
-    changes:[
-      {t:'verb', txt:'Polite order/request → <b>ask</b> + object. (A strong order uses <b>tell</b> / <b>order</b>.)'},
-      {t:'struct', txt:'Imperative → <b>to + infinitive</b>: <i>close</i> → <b>to close</b>. No tense back-shift here.'},
-      {t:'pron', txt:'The object is <b>us</b> (the people spoken to).'} ] },
+    changes:[{t:'verb',txt:'Polite request → <b>ask</b> + object. (A strong order → <b>tell</b>.)'},
+      {t:'struct',txt:'Imperative → <b>to + infinitive</b>. No tense back-shift here.'},
+      {t:'pron',txt:'The object is <b>us</b>.'}]},
   { who:'My mum said to me:', direct:"Don't touch that!",
     reported:'My mum <mark class="c-verb">told</mark> <mark class="c-pron">me</mark> <mark class="c-struct">not to touch</mark> that.',
-    changes:[
-      {t:'verb', txt:'A firm command → <b>tell</b> + object.'},
-      {t:'struct', txt:'Negative imperative → <b>not to + infinitive</b>: <i>don\'t touch</i> → <b>not to touch</b>.'} ] },
+    changes:[{t:'verb',txt:'A firm command → <b>tell</b> + object.'},
+      {t:'struct',txt:'Negative imperative → <b>not to + infinitive</b>.'}]},
 ];
 
-const PRACTICE = {
-  statements: { label:'Statements', items:[
-    { d:'"I work in a bank."', s:'— Mr Diaz', o:[
-        'Mr Diaz said he works in a bank.',
-        'Mr Diaz said he worked in a bank.',
-        'Mr Diaz said he had worked in a bank.'], a:1,
-      e:'Present simple <b>work</b> → past simple <b>worked</b>.' },
-    { d:'"I have lost my keys."', s:'— Lucy', o:[
-        'Lucy said she lost her keys.',
-        'Lucy said she has lost her keys.',
-        'Lucy said she had lost her keys.'], a:2,
-      e:'Present perfect <b>have lost</b> → past perfect <b>had lost</b>. Note <i>my</i> → <i>her</i>.' },
-    { d:'"We are watching a film."', s:'— the kids', o:[
-        'They said they were watching a film.',
-        'They said they are watching a film.',
-        'They said they had watched a film.'], a:0,
-      e:'Present continuous <b>are watching</b> → past continuous <b>were watching</b>. <i>We</i> → <i>they</i>.' },
-    { d:'"I will help you tomorrow."', s:'— Sam to me', o:[
-        'Sam said he will help me tomorrow.',
-        'Sam said he would help me the next day.',
-        'Sam said he would help you tomorrow.'], a:1,
-      e:'<b>will</b> → <b>would</b>; <i>you</i> → <i>me</i>; <i>tomorrow</i> → <b>the next day</b>.' },
-    { d:'"I can swim very well."', s:'— Nora', o:[
-        'Nora said she can swim very well.',
-        'Nora said she could swim very well.',
-        'Nora said she could swum very well.'], a:1,
-      e:'Modal <b>can</b> → <b>could</b>.' },
-    { d:'"The sun rises in the east."', s:'— teacher (a general truth)', o:[
-        'The teacher said the sun rose in the east.',
-        'The teacher said the sun rises in the east.',
-        'Both are acceptable.'], a:2,
-      e:'For <b>general truths / facts</b> the back-shift is <i>optional</i> — you may keep the present.' },
-  ]},
-  questions: { label:'Questions', items:[
-    { d:'"Do you speak French?"', s:'— she asked me', o:[
-        'She asked do I speak French.',
-        'She asked if I spoke French.',
-        'She asked if I speak French.'], a:1,
-      e:'Yes/No → add <b>if</b>, statement order (no <i>do</i>), back-shift <b>speak</b> → <b>spoke</b>.' },
-    { d:'"Where do you live?"', s:'— he asked me', o:[
-        'He asked where did I live.',
-        'He asked where I lived.',
-        'He asked where do I live.'], a:1,
-      e:'Wh- → keep <b>where</b>, statement order, no <i>do</i>: <b>lived</b>.' },
-    { d:'"Are you coming to the party?"', s:'— Mia asked me', o:[
-        'Mia asked if I was coming to the party.',
-        'Mia asked was I coming to the party.',
-        'Mia asked if I am coming to the party.'], a:0,
-      e:'Yes/No → <b>if</b> + statement order; <b>are</b> → <b>was</b>.' },
-    { d:'"What time does the train leave?"', s:'— a tourist asked me', o:[
-        'He asked what time does the train leave.',
-        'He asked what time the train left.',
-        'He asked what time did the train leave.'], a:1,
-      e:'Wh- + statement order, drop <i>does</i>: <b>left</b>.' },
-    { d:'"Have you finished?"', s:'— the coach asked us', o:[
-        'The coach asked if we had finished.',
-        'The coach asked if we have finished.',
-        'The coach asked had we finished.'], a:0,
-      e:'Yes/No → <b>if</b>; present perfect <b>have finished</b> → past perfect <b>had finished</b>.' },
-  ]},
-  commands: { label:'Commands & requests', items:[
-    { d:'"Sit down."', s:'— the teacher to the class', o:[
-        'The teacher told the class sit down.',
-        'The teacher told the class to sit down.',
-        'The teacher said the class to sit down.'], a:1,
-      e:'Command → <b>tell</b> + object + <b>to</b> + infinitive. (Not <i>say</i>.)' },
-    { d:'"Please wait for me."', s:'— Ana to me', o:[
-        'Ana asked me to wait for her.',
-        'Ana told me wait for her.',
-        'Ana asked me waiting for her.'], a:0,
-      e:'Polite request → <b>ask</b> + object + <b>to</b>-infinitive; <i>me</i> → <i>her</i>.' },
-    { d:'"Don\'t be late."', s:'— Dad to us', o:[
-        'Dad told us don\'t be late.',
-        'Dad told us not to be late.',
-        'Dad told us to not be late.'], a:1,
-      e:'Negative command → <b>not to</b> + infinitive.' },
-    { d:'"Could you open the door?"', s:'— she to me', o:[
-        'She asked me to open the door.',
-        'She told me open the door.',
-        'She asked me opening the door.'], a:0,
-      e:'A request → <b>ask</b> + object + <b>to</b>-infinitive.' },
-    { d:'"Turn off your phones."', s:'— the guide to the group', o:[
-        'The guide told the group to turn off their phones.',
-        'The guide said to turn off your phones.',
-        'The guide told the group turn off their phones.'], a:0,
-      e:'<b>tell</b> + object + <b>to</b>-infinitive; <i>your</i> → <i>their</i>.' },
-  ]},
-};
+/* Speed Quiz pool */
+const QUIZ=[
+  { d:'I work in a bank.', s:'Mr Diaz said…', o:['he works in a bank.','he worked in a bank.','he had worked in a bank.'], a:1, e:'Present simple <b>work</b> → past simple <b>worked</b>.' },
+  { d:'I have lost my keys.', s:'Lucy said…', o:['she lost her keys.','she has lost her keys.','she had lost her keys.'], a:2, e:'Present perfect → <b>past perfect</b>; my → her.' },
+  { d:'We are watching a film.', s:'The kids said…', o:['they were watching a film.','they are watching a film.','they had watched a film.'], a:0, e:'Present continuous → <b>past continuous</b>; we → they.' },
+  { d:'I will help you tomorrow.', s:'Sam said to me…', o:['he will help me tomorrow.','he would help me the next day.','he would help you tomorrow.'], a:1, e:'will → would; you → me; tomorrow → <b>the next day</b>.' },
+  { d:'I can swim very well.', s:'Nora said…', o:['she can swim very well.','she could swim very well.','she could swum very well.'], a:1, e:'Modal <b>can</b> → <b>could</b>.' },
+  { d:'Do you speak French?', s:'She asked me…', o:['do I speak French.','if I spoke French.','if I speak French.'], a:1, e:'Yes/No → <b>if</b> + statement order; speak → spoke.' },
+  { d:'Where do you live?', s:'He asked me…', o:['where did I live.','where I lived.','where do I live.'], a:1, e:'Wh- + statement order, no <i>do</i>: <b>lived</b>.' },
+  { d:'Are you coming to the party?', s:'Mia asked me…', o:['if I was coming to the party.','was I coming to the party.','if I am coming to the party.'], a:0, e:'Yes/No → <b>if</b>; are → was.' },
+  { d:'Have you finished?', s:'The coach asked us…', o:['if we had finished.','if we have finished.','had we finished.'], a:0, e:'Present perfect → <b>past perfect</b>.' },
+  { d:'Sit down.', s:'The teacher to the class…', o:['told the class sit down.','told the class to sit down.','said the class to sit down.'], a:1, e:'Command → <b>tell</b> + object + <b>to</b> + infinitive.' },
+  { d:'Please wait for me.', s:'Ana to me…', o:['asked me to wait for her.','told me wait for her.','asked me waiting for her.'], a:0, e:'Request → <b>ask</b> + object + <b>to</b>-infinitive; me → her.' },
+  { d:"Don't be late.", s:'Dad to us…', o:["told us don't be late.",'told us not to be late.','told us to not be late.'], a:1, e:'Negative command → <b>not to</b> + infinitive.' },
+  { d:'I met him yesterday.', s:'She said…', o:['she met him yesterday.','she had met him the day before.','she has met him the day before.'], a:1, e:'Past simple → <b>past perfect</b>; yesterday → <b>the day before</b>.' },
+  { d:'The sun rises in the east.', s:'The teacher said… (a fact)', o:['the sun rose in the east.','the sun rises in the east.','the sun had risen in the east.'], a:1, e:'A <b>general truth</b> can stay in the present — back-shift is optional.' },
+];
 
-/* ============== STATE ============== */
-let tab='learn', learnIdx=0, learnShown=false;
-let plevel='statements', pidx=0, lives=5, score=0, elapsed=0, timer=null, answered=false;
-const pdone={};
+/* Sort it! say / tell / ask */
+const SORT=[
+  { t:'"It\'s raining."', ctx:'a statement, no listener mentioned', a:'say', why:'No object → <b>say</b>.' },
+  { t:'"Be quiet!"', ctx:'an order to the class', a:'tell', why:'A command to someone → <b>tell</b> + object + to-inf.' },
+  { t:'"Do you like pizza?"', ctx:'a question', a:'ask', why:'A question → <b>ask</b>.' },
+  { t:'"…, ___ me he was tired."', ctx:'+ object (me), a statement', a:'tell', why:'A statement with the person → <b>tell</b> + object.' },
+  { t:'"Could you wait?"', ctx:'a polite request', a:'ask', why:'A request → <b>ask</b> + object + to-inf.' },
+  { t:'"The film starts at eight."', ctx:'information, no listener', a:'say', why:'No object → <b>say</b>.' },
+  { t:'"Where are you going?"', ctx:'a question', a:'ask', why:'A question → <b>ask</b>.' },
+  { t:'"Don\'t touch it!"', ctx:'a command to her brother', a:'tell', why:'A command to someone → <b>tell</b>.' },
+  { t:'"I\'m really happy."', ctx:'a statement, no listener', a:'say', why:'No object → <b>say</b>.' },
+];
 
+/* Match: time & place words */
+const MATCH=[
+  ['now','then'], ['today','that day'], ['tomorrow','the next day'], ['yesterday','the day before'],
+  ['tonight','that night'], ['here','there'], ['this','that'], ['last week','the week before']
+];
+
+/* ============== ROUTER ============== */
+let tab='learn';
 function go(t){ tab=t; document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('on',b.dataset.tab===t)); render(); }
+function fmt(s){ return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0'); }
+function popCombo(txt){ const c=document.getElementById('combo'); c.textContent=txt; c.classList.remove('pop'); void c.offsetWidth; c.classList.add('pop'); }
 
 /* ============== LEARN ============== */
+let learnIdx=0, learnShown=false;
 function renderLearn(){
   const ex=LEARN[learnIdx];
   const legend=Object.keys(PILLNAME).map(k=>`<span><i class="dot" style="background:${PILL[k]}"></i>${PILLNAME[k]}</span>`).join('');
@@ -288,23 +248,21 @@ function renderLearn(){
       <div class="arrow">⬇️ report it</div>
       <div class="reported ${learnShown?'show':''}" id="rep">${learnShown?ex.reported:'<span style="color:var(--muted)">Press <b>Report it ▶</b> to reveal the reported sentence…</span>'}</div>
       <div class="legend">${legend}</div>
-      <div class="changes ${learnShown?'show':''}" id="changes">
-        ${ex.changes.map(c=>`<div class="chg"><span class="pill" style="background:${PILL[c.t]}">${PILLNAME[c.t]}</span><span>${c.txt}</span></div>`).join('')}
-      </div>
+      <div class="changes ${learnShown?'show':''}">${ex.changes.map(c=>`<div class="chg"><span class="pill" style="background:${PILL[c.t]}">${PILLNAME[c.t]}</span><span>${c.txt}</span></div>`).join('')}</div>
       <div class="btns">
-        <button class="act b-go" id="goBtn" onclick="reveal()" ${learnShown?'disabled':''}>Report it ▶</button>
+        <button class="act b-go" onclick="reveal()" ${learnShown?'disabled':''}>Report it ▶</button>
         <button class="act b-alt" onclick="prevEx()">‹ Previous</button>
         <button class="act b-alt" onclick="nextEx()">Next example ›</button>
       </div>
-      <div class="counter">Example ${learnIdx+1} of ${LEARN.length}</div>
+      <div class="counter">Example ${learnIdx+1} of ${LEARN.length} — when you\'re ready, hit <b>⚡ Speed Quiz</b>.</div>
     </div>
     <div class="card" style="font-size:.92rem">
-      <b style="color:var(--accent)">Remember the 4 moves of reported speech</b>
+      <b style="color:var(--accent)">The 4 moves of reported speech</b>
       <ol style="margin:8px 0 0 18px; line-height:1.7">
         <li><b style="color:var(--c-verb)">Reporting verb</b> — say (no object) · tell (+ object) · ask (questions/requests).</li>
-        <li><b style="color:var(--c-pron)">Pronouns</b> change to match the new speaker (I→he/she, you→me, my→his/her…).</li>
-        <li><b style="color:var(--c-tense)">Tenses back-shift</b> one step into the past (present→past, will→would…). <a href="backshifting.html" style="color:var(--accent)">See the full table →</a></li>
-        <li><b style="color:var(--c-time)">Time &amp; place</b> words shift (now→then, today→that day, here→there, this→that…).</li>
+        <li><b style="color:var(--c-pron)">Pronouns</b> match the new speaker (I→he/she, you→me…).</li>
+        <li><b style="color:var(--c-tense)">Tenses back-shift</b> one step. <a href="backshifting.html" style="color:var(--accent)">See the full table →</a></li>
+        <li><b style="color:var(--c-time)">Time &amp; place</b> shift (now→then, today→that day, here→there…).</li>
       </ol>
     </div>`;
 }
@@ -312,81 +270,169 @@ function reveal(){ learnShown=true; renderLearn(); }
 function nextEx(){ learnIdx=(learnIdx+1)%LEARN.length; learnShown=false; renderLearn(); }
 function prevEx(){ learnIdx=(learnIdx-1+LEARN.length)%LEARN.length; learnShown=false; renderLearn(); }
 
-/* ============== PRACTICE ============== */
-function fmt(s){ return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0'); }
-function startTimer(){ clearInterval(timer); timer=setInterval(()=>{ elapsed++; const w=document.getElementById('watch'); if(w) w.textContent='⏱ '+fmt(elapsed); },1000); }
-
-function renderPractice(){
-  clearInterval(timer);
-  const keys=Object.keys(PRACTICE);
-  const bar=keys.map(k=>`<button class="lvl ${k===plevel?'on':''} ${pdone[k]?'done':''}" onclick="setLevel('${k}')">${PRACTICE[k].label}</button>`).join('');
-  document.getElementById('main').innerHTML=`
-    <div class="card">
-      <div class="lvlbar">${bar}</div>
-      <div class="status">
-        <span id="hearts"></span>
-        <span class="watch" id="watch">⏱ 00:00</span>
-        <span id="sc" style="color:var(--muted)"></span>
-      </div>
-      <div class="progress"><i id="bar"></i></div>
-      <div id="q"></div>
-      <div class="banner" id="banner"></div>
-    </div>`;
-  drawHearts(); renderQ(); startTimer();
+/* ============== SPEED QUIZ ============== */
+const QTIME=15; // seconds per question
+let qList=[], qi=0, qScore=0, qPoints=0, qStreak=0, qBest=0, qLives=3, qElapsed=0, qAnswered=false, qTick=null, qLeft=0, qStart=0;
+function renderQuiz(){
+  qList=shuffle(QUIZ).slice(0,10); qi=0; qScore=0; qPoints=0; qStreak=0; qBest=0; qLives=3; qElapsed=0; qStart=0;
+  document.getElementById('main').innerHTML=`<div class="card"><div id="qarea"></div></div>`;
+  drawQ();
 }
-function setLevel(k){ plevel=k; pidx=0; lives=5; score=0; elapsed=0; renderPractice(); }
-function drawHearts(){ const h=document.getElementById('hearts'); if(h) h.textContent='❤️'.repeat(lives)+'🤍'.repeat(Math.max(0,5-lives)); }
-
-function renderQ(){
-  answered=false;
-  const set=PRACTICE[plevel].items, q=set[pidx];
-  document.getElementById('sc').textContent=`Score ${score}/${set.length}`;
-  document.getElementById('bar').style.width=(pidx/set.length*100)+'%';
-  document.getElementById('q').innerHTML=`
-    <div class="qbox">
-      <div class="qdirect">Direct: “${q.d.replace(/^"|"$/g,'')}”</div>
-      <div class="qspk">${q.s} — choose the correct <b>reported</b> sentence:</div>
-      <div class="opts">${q.o.map((t,i)=>`<button class="opt" data-i="${i}" onclick="answer(${i})">${t}</button>`).join('')}</div>
-      <div class="explain" id="ex"><b>Why:</b> ${q.e}</div>
-    </div>`;
+function hud(){
+  return `<div class="hud">
+    <span class="chip">${'❤️'.repeat(qLives)}${'🤍'.repeat(Math.max(0,3-qLives))}</span>
+    <span class="chip score">⭐ ${qPoints} pts</span>
+    <span class="chip streak">🔥 ${qStreak}${qStreak>=3?' COMBO':''}</span>
+    <span class="chip">${qi+1}/${qList.length}</span>
+  </div>`;
 }
-function answer(i){
-  if(answered) return; answered=true;
-  const set=PRACTICE[plevel].items, q=set[pidx];
+function drawQ(){
+  qAnswered=false; const q=qList[qi];
+  document.getElementById('qarea').innerHTML=`
+    ${hud()}
+    <div class="tbar"><i id="tb"></i></div>
+    <div class="qdirect">“${q.d}”</div>
+    <div class="qspk">${q.s} choose the correct reported sentence:</div>
+    <div class="opts">${q.o.map((t,i)=>`<button class="opt" onclick="ansQ(${i})">${t}</button>`).join('')}</div>
+    <div class="explain" id="qex"><b>Why:</b> ${q.e}</div>`;
+  qLeft=QTIME*1000; qStart=performance.now();
+  clearInterval(qTick);
+  qTick=setInterval(()=>{
+    const el=performance.now()-qStart; qLeft=QTIME*1000-el;
+    const tb=document.getElementById('tb'); if(tb) tb.style.width=Math.max(0,qLeft/(QTIME*1000)*100)+'%';
+    if(qLeft<=0){ clearInterval(qTick); timeout(); }
+  },80);
+}
+function endQ(correct){ clearInterval(qTick); qElapsed+=Math.round((performance.now()-qStart)/1000); }
+function ansQ(i){
+  if(qAnswered) return; qAnswered=true; const q=qList[qi];
+  endQ();
   const opts=document.querySelectorAll('.opt'); opts.forEach(o=>o.disabled=true);
   opts[q.a].classList.add('correct');
-  if(i===q.a){ score++; }
-  else{ opts[i].classList.add('wrong'); lives--; drawHearts(); }
-  document.getElementById('sc').textContent=`Score ${score}/${set.length}`;
-  document.getElementById('ex').classList.add('show');
-
-  if(lives<=0){
-    setTimeout(()=>{ const b=document.getElementById('banner'); b.textContent='💔 Out of lives! Restarting this level.'; b.classList.add('show');
-      setTimeout(()=>setLevel(plevel),1400); },700);
-    return;
+  if(i===q.a){
+    qScore++; qStreak++; qBest=Math.max(qBest,qStreak);
+    const timeBonus=Math.round(qLeft/1000)*5;
+    const mult = qStreak>=5?2 : qStreak>=3?1.5 : 1;
+    const gained=Math.round((100+timeBonus)*mult);
+    qPoints+=gained;
+    popCombo((mult>1?('x'+mult+' '):'')+'+'+gained);
+  } else {
+    if(i>=0) opts[i].classList.add('wrong');
+    qStreak=0; qLives--;
   }
-  const last=pidx>=set.length-1;
-  setTimeout(()=>{
-    if(last){ finishLevel(); }
-    else{ pidx++; renderQ(); }
-  }, 1200);
+  document.getElementById('qex').classList.add('show');
+  document.querySelector('.hud').outerHTML=hud(); // refresh hud
+  if(qLives<=0){ setTimeout(()=>finishQuiz(false),1200); return; }
+  const last=qi>=qList.length-1;
+  setTimeout(()=>{ if(last) finishQuiz(true); else { qi++; drawQ(); } },1250);
 }
-function finishLevel(){
-  clearInterval(timer);
-  document.getElementById('bar').style.width='100%';
-  pdone[plevel]=true;
-  document.querySelectorAll('.lvl').forEach(b=>{ if(b.textContent.trim().startsWith(PRACTICE[plevel].label)) b.classList.add('done'); });
-  const set=PRACTICE[plevel].items;
-  const b=document.getElementById('banner');
-  b.innerHTML=`🎉 ${PRACTICE[plevel].label} complete — ${score}/${set.length} in ${fmt(elapsed)}! `+
-    (Object.keys(PRACTICE).every(k=>pdone[k])?'You finished every level! 🏆':'Pick another level above.')+
-    `<br><span style="font-weight:600;font-size:.85rem">Saved to My Results (if you\'re signed in to the portal).</span>`;
-  b.classList.add('show');
-  if(window.NISACT) NISACT.submit({activity:'reported-speech', title:'Reported Speech — '+PRACTICE[plevel].label,
-    level:plevel, score:score, total:set.length, lives:lives, duration:elapsed});
+function timeout(){
+  if(qAnswered) return; qAnswered=true; const q=qList[qi];
+  const opts=document.querySelectorAll('.opt'); opts.forEach(o=>o.disabled=true); opts[q.a].classList.add('correct');
+  qStreak=0; qLives--; document.getElementById('qex').classList.add('show');
+  document.querySelector('.hud').outerHTML=hud();
+  if(qLives<=0){ setTimeout(()=>finishQuiz(false),1200); return; }
+  const last=qi>=qList.length-1;
+  setTimeout(()=>{ if(last) finishQuiz(true); else { qi++; drawQ(); } },1250);
+}
+function finishQuiz(completed){
+  clearInterval(qTick);
+  const total=qList.length, acc=Math.round(qScore/total*100);
+  const stars = qPoints>=1300?'⭐⭐⭐' : qPoints>=800?'⭐⭐' : qPoints>=300?'⭐':'✨';
+  document.getElementById('main').innerHTML=`<div class="card result">
+    <div class="stars">${stars}</div>
+    <div class="big">${qPoints}</div>
+    <div style="color:var(--muted);font-weight:700;margin-top:4px">points ${completed?'':'· you ran out of lives 💔'}</div>
+    <div class="row"><span>✅ ${qScore}/${total} correct</span><span>🎯 ${acc}%</span><span>🔥 best streak ${qBest}</span><span>⏱ ${fmt(qElapsed)}</span></div>
+    <p style="color:var(--muted);font-size:.85rem;margin-bottom:14px">Saved to My Results (if you\'re signed in to the portal).</p>
+    <button class="act b-go" onclick="renderQuiz()">▶ Play again</button>
+    <button class="act b-alt" onclick="go('sort')">Next game: Sort it! →</button>
+  </div>`;
+  if(window.NISACT) NISACT.submit({activity:'reported-speech', title:'Reported Speech — Speed Quiz', level:'quiz', score:qScore, total:total, lives:qLives, duration:Math.max(1,qElapsed), points:qPoints});
 }
 
-function render(){ if(tab==='learn'){ clearInterval(timer); renderLearn(); } else renderPractice(); }
+/* ============== SORT IT! ============== */
+let sList=[], si=0, sScore=0, sElapsed=0, sTimer=null, sLock=false;
+function renderSort(){
+  sList=shuffle(SORT); si=0; sScore=0; sElapsed=0; sLock=false;
+  document.getElementById('main').innerHTML=`<div class="card">
+    <div class="hud"><span class="chip">🗂️ <span id="sprog">1/${sList.length}</span></span><span class="chip score">✅ <span id="ssc">0</span></span><span class="chip"><span class="watch" id="swatch">⏱ 00:00</span></span></div>
+    <p style="text-align:center;color:var(--muted);font-size:.88rem;margin-bottom:6px">Which reporting verb fits? Tap a bucket.</p>
+    <div id="scard"></div>
+    <div class="buckets">
+      <div class="bucket say" onclick="sortPick('say')">SAY<small>no object</small></div>
+      <div class="bucket tell" onclick="sortPick('tell')">TELL<small>+ person</small></div>
+      <div class="bucket ask" onclick="sortPick('ask')">ASK<small>question / request</small></div>
+    </div>
+    <div class="explain" id="sex"></div>
+    <div class="banner" id="sbanner"></div>
+  </div>`;
+  drawSort(); clearInterval(sTimer); sTimer=setInterval(()=>{ sElapsed++; const w=document.getElementById('swatch'); if(w) w.textContent='⏱ '+fmt(sElapsed); },1000);
+}
+function drawSort(){
+  sLock=false; const c=sList[si];
+  document.getElementById('sprog').textContent=(si+1)+'/'+sList.length;
+  document.getElementById('scard').innerHTML=`<div class="sortcard">${c.t}<span class="ctx">${c.ctx}</span></div>`;
+  document.getElementById('sex').classList.remove('show');
+}
+function sortPick(choice){
+  if(sLock) return; sLock=true; const c=sList[si];
+  const bk=document.querySelector('.bucket.'+choice); bk.classList.add('flash');
+  const ok=choice===c.a;
+  if(ok){ sScore++; document.getElementById('ssc').textContent=sScore; }
+  const ex=document.getElementById('sex');
+  ex.innerHTML=(ok?'✅ Correct! ':`❌ It\'s <b>${c.a.toUpperCase()}</b>. `)+c.why;
+  ex.classList.add('show');
+  setTimeout(()=>{
+    bk.classList.remove('flash');
+    if(si>=sList.length-1){
+      clearInterval(sTimer);
+      const b=document.getElementById('sbanner');
+      b.innerHTML=`🎉 Done — ${sScore}/${sList.length} in ${fmt(sElapsed)}! <br><span style="font-weight:600;font-size:.85rem">Saved to My Results (if signed in).</span>`;
+      b.classList.add('show');
+      if(window.NISACT) NISACT.submit({activity:'reported-speech', title:'Reported Speech — Sort (say/tell/ask)', level:'sort', score:sScore, total:sList.length, lives:3, duration:Math.max(1,sElapsed)});
+    } else { si++; drawSort(); }
+  }, ok?700:1500);
+}
+
+/* ============== MATCH ============== */
+let mSelL=null, mMatched=0, mElapsed=0, mTimer=null, mOrder=[];
+function renderMatch(){
+  clearInterval(mTimer); mSelL=null; mMatched=0; mElapsed=0; mOrder=shuffle(MATCH.map((p,i)=>i));
+  const left=MATCH.map((p,i)=>`<div class="mcard" data-l="${i}" onclick="pickL(${i})">${p[0]}</div>`).join('');
+  const right=mOrder.map(i=>`<div class="mcard" data-r="${i}" onclick="pickR(${i})">${MATCH[i][1]}</div>`).join('');
+  document.getElementById('main').innerHTML=`<div class="card">
+    <div class="hud"><span class="chip">🔗 <span id="mscore">0/${MATCH.length}</span></span><span class="chip"><span class="watch" id="mwatch">⏱ 00:00</span></span></div>
+    <p style="text-align:center;color:var(--muted);font-size:.88rem">Match each <b style="color:var(--c-time)">direct</b> time/place word with its <b style="color:#e8590c">reported</b> form.</p>
+    <div class="mwrap">
+      <div class="mcol l"><h3>Direct (now)</h3>${left}</div>
+      <div class="mcol r"><h3>Reported (then)</h3>${right}</div>
+    </div>
+    <div class="banner" id="mbanner"></div>
+  </div>`;
+  mTimer=setInterval(()=>{ mElapsed++; const w=document.getElementById('mwatch'); if(w) w.textContent='⏱ '+fmt(mElapsed); },1000);
+}
+function pickL(i){ const el=document.querySelector(`[data-l="${i}"]`); if(el.classList.contains('matched')) return;
+  document.querySelectorAll('[data-l]').forEach(e=>e.classList.remove('sel')); el.classList.add('sel'); mSelL=i; }
+function pickR(j){ const el=document.querySelector(`[data-r="${j}"]`); if(el.classList.contains('matched')) return;
+  if(mSelL===null){ el.classList.add('sel'); setTimeout(()=>el.classList.remove('sel'),200); return; }
+  const lEl=document.querySelector(`[data-l="${mSelL}"]`);
+  if(mSelL===j){ lEl.classList.add('matched'); el.classList.add('matched'); lEl.classList.remove('sel'); mSelL=null; mMatched++;
+    document.getElementById('mscore').textContent=`${mMatched}/${MATCH.length}`;
+    if(mMatched===MATCH.length){ clearInterval(mTimer); const b=document.getElementById('mbanner');
+      b.innerHTML=`🎉 All matched in ${fmt(mElapsed)}! <br><span style="font-weight:600;font-size:.85rem">Saved to My Results (if signed in).</span>`; b.classList.add('show');
+      if(window.NISACT) NISACT.submit({activity:'reported-speech', title:'Reported Speech — Time-words Match', level:'match', score:MATCH.length, total:MATCH.length, lives:3, duration:Math.max(1,mElapsed)}); }
+  } else { el.classList.add('bad'); lEl.classList.remove('sel'); setTimeout(()=>el.classList.remove('bad'),300); mSelL=null; }
+}
+
+/* ============== render ============== */
+function render(){
+  clearInterval(qTick); clearInterval(sTimer); clearInterval(mTimer);
+  if(tab==='learn') renderLearn();
+  else if(tab==='quiz') renderQuiz();
+  else if(tab==='sort') renderSort();
+  else renderMatch();
+}
 render();
 </script>
 </body>
