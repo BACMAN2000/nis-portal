@@ -65,52 +65,52 @@
 /* ===== Biblioteca de temas (contenido original NIS). Cada opción: t=texto, ok=correcta ===== */
 const SETS = {
   'a2-present': { title:'Present Simple vs Continuous', level:'A2',
-    intro:'Simple para rutinas y hechos; continuous para lo que pasa ahora (now, at the moment, Look!, Listen!).',
+    intro:'Simple for routines and facts; continuous for what is happening now (now, at the moment, Look!, Listen!).',
     q:[
-      {q:'She ___ to school every day.', o:[['is going',0],['goes',1],['go',0],['going',0]], n:'"every day" = rutina → present simple (goes).'},
+      {q:'She ___ to school every day.', o:[['is going',0],['goes',1],['go',0],['going',0]], n:'"every day" = routine → present simple (goes).'},
       {q:'Look! It ___ now.', o:[['rains',0],['is raining',1],['rain',0],['raining',0]], n:'"Look!/now" → present continuous.'},
-      {q:'I ___ coffee every morning.', o:[['am drinking',0],['drinks',0],['drink',1],['drinking',0]], n:'Rutina + "I" → drink.'},
+      {q:'I ___ coffee every morning.', o:[['am drinking',0],['drinks',0],['drink',1],['drinking',0]], n:'Routine + "I" → drink.'},
       {q:'They ___ football at the moment.', o:[['play',0],['plays',0],['are playing',1],['playing',0]], n:'"at the moment" → continuous.'},
       {q:'He ___ TV right now.', o:[['watch',0],['watches',0],['is watching',1],['watched',0]], n:'"right now" → continuous.'},
       {q:'We usually ___ dinner at 7.', o:[['are having',0],['have',1],['has',0],['having',0]], n:'"usually" → simple (have).'},
       {q:'Listen! The baby ___.', o:[['cries',0],['cry',0],['is crying',1],['cried',0]], n:'"Listen!" → continuous.'},
-      {q:'My mother ___ in a hospital.', o:[['is working',0],['work',0],['works',1],['working',0]], n:'Hecho permanente → works.'}
+      {q:'My mother ___ in a hospital.', o:[['is working',0],['work',0],['works',1],['working',0]], n:'Permanent fact → works.'}
     ]},
   'b1-perfect': { title:'Present Perfect vs Past Simple', level:'B1',
-    intro:'Present perfect para experiencias y resultados (ever, never, already, since, for); past simple para tiempo terminado (yesterday, last…, ago).',
+    intro:'Present perfect for experiences and results (ever, never, already, since, for); past simple for finished time (yesterday, last…, ago).',
     q:[
       {q:'I ___ my homework already.', o:[['finished',0],['have finished',1],['finish',0],['finishing',0]], n:'"already" → present perfect.'},
-      {q:'She ___ to Paris last year.', o:[['has gone',0],['went',1],['goes',0],['has been',0]], n:'"last year" (terminado) → past simple.'},
+      {q:'She ___ to Paris last year.', o:[['has gone',0],['went',1],['goes',0],['has been',0]], n:'"last year" (finished) → past simple.'},
       {q:'We ___ each other since 2019.', o:[['know',0],['have known',1],['knew',0],['known',0]], n:'"since" → present perfect.'},
       {q:'___ you ever ___ sushi?', o:[['Did / eat',0],['Have / eaten',1],['Do / eat',0],['Have / ate',0]], n:'"ever" → present perfect (Have you eaten).'},
-      {q:"He ___ his keys, so he can't get in.", o:[['lost',0],['has lost',1],['loses',0],['is losing',0]], n:'Resultado en el presente → present perfect.'},
+      {q:"He ___ his keys, so he can't get in.", o:[['lost',0],['has lost',1],['loses',0],['is losing',0]], n:'Result in the present → present perfect.'},
       {q:'They ___ that film yesterday.', o:[['have seen',0],['saw',1],['see',0],['seen',0]], n:'"yesterday" → past simple.'},
       {q:'I ___ never ___ to Japan.', o:[['have / been',1],['did / go',0],['has / gone',0],['was / been',0]], n:'"never" → present perfect (have been).'},
-      {q:'When ___ you ___ here?', o:[['have / arrived',0],['did / arrive',1],['do / arrive',0],['did / arrived',0]], n:'"When" + momento definido → past simple.'}
+      {q:'When ___ you ___ here?', o:[['have / arrived',0],['did / arrive',1],['do / arrive',0],['did / arrived',0]], n:'"When" + a definite time → past simple.'}
     ]},
   'b2-passive': { title:'Passive Voice', level:'B2',
-    intro:'La pasiva: be + participio. El foco está en la acción o el objeto, no en quién la hace (by + agente, opcional).',
+    intro:'The passive: be + past participle. The focus is on the action or the object, not on who does it (by + agent, optional).',
     q:[
-      {q:'The Mona Lisa ___ by Leonardo da Vinci.', o:[['painted',0],['was painted',1],['is painting',0],['has painting',0]], n:'Pasado pasivo: was + painted.'},
-      {q:'English ___ all over the world.', o:[['speaks',0],['is spoken',1],['spoke',0],['speaking',0]], n:'Presente pasivo: is + spoken.'},
-      {q:'The report ___ by tomorrow.', o:[['will finish',0],['will be finished',1],['is finishing',0],['finished',0]], n:'Futuro pasivo: will be + finished.'},
-      {q:'This bridge ___ in 1990.', o:[['built',0],['was built',1],['is built',0],['has built',0]], n:'Pasado pasivo: was built.'},
-      {q:'The offices ___ every day.', o:[['clean',0],['are cleaned',1],['cleaned',0],['cleaning',0]], n:'Presente pasivo plural: are cleaned.'},
-      {q:'A new hospital ___ at the moment.', o:[['is building',0],['is being built',1],['builds',0],['was built',0]], n:'Presente continuo pasivo: is being built.'},
-      {q:'Our car ___ last week.', o:[['was stolen',1],['stole',0],['is stolen',0],['has stolen',0]], n:'Pasado pasivo: was stolen.'},
-      {q:'The letters ___ already ___.', o:[['have / sent',0],['have / been sent',1],['was / sent',0],['are / sending',0]], n:'Present perfect pasivo: have been sent.'}
+      {q:'The Mona Lisa ___ by Leonardo da Vinci.', o:[['painted',0],['was painted',1],['is painting',0],['has painting',0]], n:'Past passive: was + painted.'},
+      {q:'English ___ all over the world.', o:[['speaks',0],['is spoken',1],['spoke',0],['speaking',0]], n:'Present passive: is + spoken.'},
+      {q:'The report ___ by tomorrow.', o:[['will finish',0],['will be finished',1],['is finishing',0],['finished',0]], n:'Future passive: will be + finished.'},
+      {q:'This bridge ___ in 1990.', o:[['built',0],['was built',1],['is built',0],['has built',0]], n:'Past passive: was built.'},
+      {q:'The offices ___ every day.', o:[['clean',0],['are cleaned',1],['cleaned',0],['cleaning',0]], n:'Present passive (plural): are cleaned.'},
+      {q:'A new hospital ___ at the moment.', o:[['is building',0],['is being built',1],['builds',0],['was built',0]], n:'Present continuous passive: is being built.'},
+      {q:'Our car ___ last week.', o:[['was stolen',1],['stole',0],['is stolen',0],['has stolen',0]], n:'Past passive: was stolen.'},
+      {q:'The letters ___ already ___.', o:[['have / sent',0],['have / been sent',1],['was / sent',0],['are / sending',0]], n:'Present perfect passive: have been sent.'}
     ]},
   'c1-cond': { title:'Conditionals (advanced)', level:'C1',
-    intro:'Condicionales mixtos, wish e inversión formal (Had I…, Were I…, Should it…).',
+    intro:'Mixed conditionals, wish and formal inversion (Had I…, Were I…, Should it…).',
     q:[
       {q:'If I ___ harder, I would have passed.', o:[['studied',0],['had studied',1],['study',0],['have studied',0]], n:'Third conditional: if + past perfect.'},
-      {q:"If she ___ more careful, she wouldn't be in trouble now.", o:[['was',0],['were',1],['is',0],['had been',0]], n:'Second conditional (were para todas las personas).'},
-      {q:'If he had taken the job, he ___ in London now.', o:[['would live',1],['would have lived',0],['lived',0],['lives',0]], n:'Mixto: condición pasada → resultado presente (would live).'},
-      {q:'___ I known, I would have helped.', o:[['If',0],['Had',1],['Have',0],['Did',0]], n:'Inversión: "Had I known" = "If I had known".'},
-      {q:'If I were you, I ___ apologise.', o:[['will',0],['would',1],['would have',0],['had',0]], n:'Second conditional: would + infinitivo.'},
-      {q:"If she weren't so shy, she ___ that speech yesterday.", o:[['would give',0],['would have given',1],['gave',0],['gives',0]], n:'Mixto: condición presente → resultado pasado (would have given).'},
-      {q:'___ it rain, the match will be cancelled.', o:[['Should',1],['If',0],['Were',0],['Had',0]], n:'Inversión formal: "Should it rain" = "If it rains".'},
-      {q:'I wish I ___ more time.', o:[['have',0],['had',1],['would have',0],['had had',0]], n:'wish + past simple para un deseo presente.'}
+      {q:"If she ___ more careful, she wouldn't be in trouble now.", o:[['was',0],['were',1],['is',0],['had been',0]], n:'Second conditional (were for all persons).'},
+      {q:'If he had taken the job, he ___ in London now.', o:[['would live',1],['would have lived',0],['lived',0],['lives',0]], n:'Mixed: past condition → present result (would live).'},
+      {q:'___ I known, I would have helped.', o:[['If',0],['Had',1],['Have',0],['Did',0]], n:'Inversion: "Had I known" = "If I had known".'},
+      {q:'If I were you, I ___ apologise.', o:[['will',0],['would',1],['would have',0],['had',0]], n:'Second conditional: would + infinitive.'},
+      {q:"If she weren't so shy, she ___ that speech yesterday.", o:[['would give',0],['would have given',1],['gave',0],['gives',0]], n:'Mixed: present condition → past result (would have given).'},
+      {q:'___ it rain, the match will be cancelled.', o:[['Should',1],['If',0],['Were',0],['Had',0]], n:'Formal inversion: "Should it rain" = "If it rains".'},
+      {q:'I wish I ___ more time.', o:[['have',0],['had',1],['would have',0],['had had',0]], n:'wish + past simple for a present wish.'}
     ]}
 };
 
@@ -121,7 +121,7 @@ if(grade) document.getElementById('backlink').href='grammar.html?grade='+encodeU
 const SET=SETS[key]||SETS['a2-present'];
 
 document.getElementById('title').textContent=SET.title;
-document.getElementById('lvl').textContent='Nivel '+SET.level;
+document.getElementById('lvl').textContent='Level '+SET.level;
 document.getElementById('intro').textContent=SET.intro;
 document.getElementById('hsub').textContent='GRAMMAR · '+SET.title.toUpperCase();
 
@@ -147,7 +147,7 @@ function render(){
     </div>
     <div class="fb" id="fb"></div>
     <div class="actions">
-      <button class="btn" id="next" disabled onclick="next()">${idx===SET.q.length-1?'Ver resultado':'Siguiente →'}</button>
+      <button class="btn" id="next" disabled onclick="next()">${idx===SET.q.length-1?'See result':'Next →'}</button>
     </div>`;
 }
 
@@ -159,18 +159,18 @@ window.pick=(btn)=>{
   if(!ok){ btn.classList.add('wrong'); btn.querySelector('.mk').textContent='✗'; } else score++;
   const fb=document.getElementById('fb');
   fb.className='fb '+(ok?'ok':'no');
-  fb.innerHTML=(ok?'✅ <b>¡Correcto!</b> ':'❌ <b>Casi.</b> ')+'💡 '+item.n;
+  fb.innerHTML=(ok?'✅ <b>Correct!</b> ':'❌ <b>Almost.</b> ')+'💡 '+item.n;
   document.getElementById('next').disabled=false;
 };
 window.next=()=>{ if(idx<SET.q.length-1){ idx++; answered=false; render(); } else end(); };
 
 function end(){
   const pct=Math.round(score/SET.q.length*100);
-  const msg=pct>=80?'¡Excelente! 🌟':pct>=60?'Buen trabajo. 👍':pct>=40?'Vas mejorando. 💪':'Repasa la regla de arriba y vuelve a intentar. ✍️';
+  const msg=pct>=80?'Excellent! 🌟':pct>=60?'Good job. 👍':pct>=40?'Getting better. 💪':'Review the rule above and try again. ✍️';
   panel.innerHTML=`<div class="result">
     <div class="big">${score}/${SET.q.length}</div>
     <div class="msg">${pct}% &middot; ${msg}</div>
-    <button class="btn" onclick="start()">↻ Jugar otra vez</button>
+    <button class="btn" onclick="start()">↻ Play again</button>
     <a class="btn ghost" href="${document.getElementById('backlink').href}" style="text-decoration:none;display:inline-block">← Grammar</a>
   </div>`;
 }

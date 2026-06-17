@@ -53,11 +53,11 @@
 </head>
 <body>
 <header>
-  <h1>🔡 Crosswords · A1–C1</h1>
+  <h1>🔡 Mots croisés · A1–C1</h1>
   <p>Cambridge vocabulary by level — pick a level and a puzzle, read the clue, type the word.</p>
   <a class="back" href="./activities.html">🏫 Back to Activities</a>
 </header>
-<div class="staffnote" id="staffnote">👩‍🏫 Teacher/Admin view — answers are shown (solved). Lives and timer are off.</div>
+<div class="staffnote" id="staffnote">👩‍🏫 Vue prof/admin — les réponses sont affichées (résolues). Vies et minuteur désactivés.</div>
 <div class="levels" id="levels"></div>
 <div class="puzzles" id="puzzles"></div>
 <div class="wrap">
@@ -66,7 +66,7 @@
     <div class="lifebar"><span id="hearts"></span><span class="watch" id="watch">⏱ 00:00</span></div>
     <div class="btns">
       <button class="act b-check" onclick="checkAll()">✔ Check</button>
-      <button class="act b-hint" onclick="hintLetter()">💡 Hint (−1 life)</button>
+      <button class="act b-hint" onclick="hintLetter()">💡 Indice (−1 vie)</button>
       <button class="act b-clear" onclick="clearGrid()">↺ Clear</button>
     </div>
     <div class="score" id="score"></div>
@@ -140,7 +140,7 @@ function load(){
   cells={};sol={};numbers={};entries=[];curEntry=null;hintsUsed=0;lives=5;elapsed=0;completed=false; _spoken=new Set();
   document.getElementById('banner').classList.remove('show');
   document.getElementById('staffnote').style.display=staff()?'block':'none';
-  document.getElementById('ptitle').textContent=`Crossword ${pidx+1} — ${d.theme}`;
+  document.getElementById('ptitle').textContent=`Mots croisés ${pidx+1} — ${d.theme}`;
   for(const w of d.words){ const dr=w.dir==='down'?1:0,dc=w.dir==='across'?1:0;
     for(let i=0;i<w.word.length;i++) sol[key(w.row+dr*i,w.col+dc*i)]=w.word[i]; }
   let n=1;
@@ -198,12 +198,12 @@ function onComplete(){
   completed=true; clearInterval(timerInt);
   Object.keys(cells).forEach(k=>{cells[k].classList.add('ok');cells[k].classList.remove('ko');});
   const b=document.getElementById('banner');
-  if(staff()){ b.textContent='✅ Solved view (teacher/admin).'; b.classList.add('show'); return; }
-  b.textContent=`🎉 Completed in ${fmtT(elapsed)}! Saved to My Results and emailed to you.`; b.classList.add('show');
+  if(staff()){ b.textContent='✅ Vue corrigée (prof/admin).'; b.classList.add('show'); return; }
+  b.textContent=`🎉 Terminé en ${fmtT(elapsed)} ! Enregistré dans My Results et envoyé par e-mail.`; b.classList.add('show');
   if(window.NISACT) NISACT.submit({activity:'crossword',title:`Crossword ${pidx+1} — ${DATA[level][pidx].theme}`,level:level,score:entries.length,total:entries.length,hints:hintsUsed,lives:lives,duration:elapsed});
 }
 function updateScore(solved){ if(solved===undefined)solved=entries.filter(wordSolved).length;
-  document.getElementById('score').textContent=`Words: ${solved} / ${entries.length}`+(hintsUsed?` · Hints: ${hintsUsed}`:''); }
+  document.getElementById('score').textContent=`Mots : ${solved} / ${entries.length}`+(hintsUsed?` · Indices : ${hintsUsed}`:''); }
 function checkAll(){ for(const k in cells){ const inp=cells[k].querySelector('input'); cells[k].classList.remove('ok','ko'); if(!inp.value)continue; cells[k].classList.add(inp.value===sol[k]?'ok':'ko'); } liveCheck(); }
 function hintLetter(){ if(completed||staff())return;
   const empty=Object.keys(cells).filter(k=>cells[k].querySelector('input').value!==sol[k]); if(!empty.length)return;
@@ -211,11 +211,11 @@ function hintLetter(){ if(completed||staff())return;
   const k=pool[Math.floor(Math.random()*pool.length)]; const inp=cells[k].querySelector('input'); inp.value=sol[k];
   cells[k].classList.remove('ko'); cells[k].classList.add('ok'); hintsUsed++;
   lives--; drawStatus();
-  if(lives<=0&&!entries.every(wordSolved)){ setTimeout(()=>{ alert('💔 No lives left! This crossword restarts.'); load(); },150); return; }
+  if(lives<=0&&!entries.every(wordSolved)){ setTimeout(()=>{ alert('💔 Plus de vies ! Ces mots croisés recommencent.'); load(); },150); return; }
   liveCheck();
 }
 function clearGrid(){ for(const k in cells){const inp=cells[k].querySelector('input');inp.value='';cells[k].classList.remove('ok','ko');} document.getElementById('banner').classList.remove('show'); liveCheck(); }
-function revealAll(){ for(const k in cells){const inp=cells[k].querySelector('input');inp.value=sol[k];cells[k].classList.add('ok');} entries.forEach(w=>{const el=document.getElementById('clue_'+w.num+'_'+w.dir);if(el)el.classList.add('solved');}); clearInterval(timerInt); updateScore(entries.length); const b=document.getElementById('banner'); b.textContent='✅ Solved view (teacher/admin).'; b.classList.add('show'); drawStatus(); }
+function revealAll(){ for(const k in cells){const inp=cells[k].querySelector('input');inp.value=sol[k];cells[k].classList.add('ok');} entries.forEach(w=>{const el=document.getElementById('clue_'+w.num+'_'+w.dir);if(el)el.classList.add('solved');}); clearInterval(timerInt); updateScore(entries.length); const b=document.getElementById('banner'); b.textContent='✅ Vue corrigée (prof/admin).'; b.classList.add('show'); drawStatus(); }
 window.NISACT.onReady(()=>{ document.getElementById('staffnote').style.display=staff()?'block':'none'; load(); });
 setTimeout(()=>{ if(!document.getElementById('grid').children.length) load(); },1500);
 

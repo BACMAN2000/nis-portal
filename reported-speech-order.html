@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Reported Speech · Ordena la oración — Portal NIS</title>
+<title>Reported Speech · Word Order — Portal NIS</title>
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +30,7 @@
   .direct{font-size:19px;font-weight:600;margin:10px 0 4px;line-height:1.4}
   .ask{color:#475569;font-size:14px;margin:2px 0 14px}
   .answer{min-height:58px;border:2px dashed #cbd5e1;border-radius:12px;padding:10px;display:flex;flex-wrap:wrap;gap:8px;align-content:flex-start;background:#f8fafc;margin-bottom:6px}
-  .answer.empty::before{content:"Toca las palabras para construir la oración…";color:#94a3b8;font-size:14px}
+  .answer.empty::before{content:"Tap the words to build the sentence…";color:#94a3b8;font-size:14px}
   .answer.ok{border-color:#16a34a;border-style:solid;background:#f0fdf4}
   .answer.no{border-color:#dc2626;border-style:solid;background:#fef2f2}
   .pool{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 4px}
@@ -59,9 +59,9 @@
   <a class="back" href="grammar.html">← Grammar</a>
 </header>
 <main>
-  <h1>🔤 Reported Speech — Ordena la oración</h1>
-  <p class="lead">Lee la oración en <b>Direct speech</b>. Luego ordena las palabras para formar el <b>Reported speech</b> correcto.</p>
-  <a class="switch" href="reported-speech.html">🧩 Otro juego: Elige la opción correcta →</a>
+  <h1>🔤 Reported Speech — Word Order</h1>
+  <p class="lead">Read the sentence in <b>Direct speech</b>. Then put the words in order to form the correct <b>Reported speech</b>.</p>
+  <a class="switch" href="reported-speech.html">🧩 Another game: Choose the correct option →</a>
   <div class="panel" id="panel"></div>
   <div class="footer">9th grade · Grammar — NIS English · 2026</div>
 </main>
@@ -104,13 +104,13 @@ function render(){
   const pct=Math.round(idx/ITEMS.length*100);
   panel.innerHTML=`
     <div class="bar">
-      <span class="pill">Oración ${idx+1}/${ITEMS.length}</span>
+      <span class="pill">Sentence ${idx+1}/${ITEMS.length}</span>
       <div class="progress"><span style="width:${pct}%"></span></div>
       <span class="pill">★ ${score}</span>
     </div>
     <span class="tagdir">Direct speech</span>
     <div class="direct">${it.direct}</div>
-    <div class="ask">Ordena el <b>reported speech</b>:</div>
+    <div class="ask">Put the <b>reported speech</b> in order:</div>
     <div class="answer ${answer.length?'':'empty'}" id="answer">
       ${answer.map(t=>`<button class="chip placed" onclick="unplace(${t.id})">${t.w}</button>`).join('')}
     </div>
@@ -119,9 +119,9 @@ function render(){
     </div>
     <div class="fb" id="fb"></div>
     <div class="actions">
-      <button class="btn lite" onclick="reset()">↺ Reiniciar</button>
-      <button class="btn ghost" id="reveal" onclick="reveal()">Mostrar respuesta</button>
-      <button class="btn" id="check" onclick="check()" ${answer.length?'':'disabled'}>Comprobar</button>
+      <button class="btn lite" onclick="reset()">↺ Reset</button>
+      <button class="btn ghost" id="reveal" onclick="reveal()">Show answer</button>
+      <button class="btn" id="check" onclick="check()" ${answer.length?'':'disabled'}>Check</button>
     </div>`;
 }
 
@@ -137,11 +137,11 @@ window.check=()=>{
     solved=true; score++;
     ans.classList.remove('no'); ans.classList.add('ok');
     document.querySelectorAll('#pool .chip,#answer .chip').forEach(b=>b.disabled=true);
-    fb.className='fb ok'; fb.innerHTML='✅ <b>¡Correcto!</b> '+it.reported;
+    fb.className='fb ok'; fb.innerHTML='✅ <b>Correct!</b> '+it.reported;
     swapToNext();
   } else {
     ans.classList.add('no');
-    fb.className='fb no'; fb.innerHTML='🤔 Aún no. Revisa el orden (tiempo verbal, pronombres) e inténtalo otra vez.';
+    fb.className='fb no'; fb.innerHTML='🤔 Not yet. Check the order (verb tense, pronouns) and try again.';
     setTimeout(()=>ans.classList.remove('no'),900);
   }
 };
@@ -152,22 +152,22 @@ window.reveal=()=>{
   render();
   const ans=document.getElementById('answer'), fb=document.getElementById('fb');
   ans.classList.add('ok'); document.querySelectorAll('#answer .chip').forEach(b=>b.disabled=true);
-  fb.className='fb ok'; fb.innerHTML='👀 Respuesta: <b>'+it.reported+'</b>';
+  fb.className='fb ok'; fb.innerHTML='👀 Answer: <b>'+it.reported+'</b>';
   swapToNext();
 };
 function swapToNext(){
   const a=document.querySelector('.actions');
-  a.innerHTML=`<button class="btn" onclick="next()">${idx===ITEMS.length-1?'Ver resultado':'Siguiente →'}</button>`;
+  a.innerHTML=`<button class="btn" onclick="next()">${idx===ITEMS.length-1?'See result':'Next →'}</button>`;
 }
 window.next=()=>{ if(idx<ITEMS.length-1){ idx++; load(); } else end(); };
 
 function end(){
   const pct=Math.round(score/ITEMS.length*100);
-  const msg = pct>=80?'¡Excelente orden! 🌟' : pct>=60?'Buen trabajo. 👍' : pct>=40?'Vas mejorando. 💪' : 'Repasa el resumen y vuelve a intentar. ✍️';
+  const msg = pct>=80?'Excellent ordering! 🌟' : pct>=60?'Good job. 👍' : pct>=40?'Getting better. 💪' : 'Review and try again. ✍️';
   panel.innerHTML=`<div class="result">
     <div class="big">${score}/${ITEMS.length}</div>
     <div class="msg">${pct}% &middot; ${msg}</div>
-    <button class="btn" onclick="start()">↻ Jugar otra vez</button>
+    <button class="btn" onclick="start()">↻ Play again</button>
     <a class="btn ghost" href="grammar.html" style="text-decoration:none;display:inline-block">← Grammar</a>
   </div>`;
 }
