@@ -109,6 +109,14 @@ function partsBreakdownCard(list){
 /* ---------- boot ---------- */
 // Watchdog: never get stuck on the initial "Cargando…" splash.
 setTimeout(()=>{ try{ if(/Cargando Portal NIS/.test((document.getElementById('app')||{}).innerHTML||'')) renderAuth(); }catch(_){ } }, 7000);
+// Safety net: if a panel stays on the bare "Cargando…" too long (stalled query),
+// surface a manual retry instead of leaving the user stuck forever.
+setTimeout(()=>{ try{
+  const m=document.getElementById('main');
+  if(m && (m.textContent||'').trim()==='Cargando…'){
+    m.innerHTML='<div class="center muted" style="padding:24px">No se pudo cargar.<br><button class="btn" style="margin-top:10px" onclick="location.reload()">↻ Reintentar</button></div>';
+  }
+}catch(_){ } }, 12000);
 init();
 async function init(){
   if(!sb) return;
@@ -129,11 +137,23 @@ async function init(){
     if(state.session){ await loadProfile(); }
     route();
   }catch(e){ console.error('init failed', e); try{ renderAuth(); }catch(_){ } }
+  // supabase-js holds an internal auth lock while this callback runs; doing DB
+  // queries (loadProfile/route) synchronously inside it can deadlock the very
+  // first load against the initial token refresh → app stuck on "Cargando…"
+  // until a manual reload. Defer the work so the lock is released first, and
+  // skip redundant re-routes (init() already handled the initial session).
   try{
-    sb.auth.onAuthStateChange(async (_e, session)=>{
-      state.session = session;
-      if(session){ try{ await loadProfile(); }catch(_){ state.profile=null; } } else { state.profile=null; }
-      route();
+    let lastUid = (state.session && state.session.user) ? state.session.user.id : null;
+    sb.auth.onAuthStateChange((evt, session)=>{
+      setTimeout(async ()=>{
+        state.session = session;
+        const uid = (session && session.user) ? session.user.id : null;
+        if(evt==='TOKEN_REFRESHED' || evt==='USER_UPDATED') return;   // token housekeeping, no UI change
+        if(uid===lastUid && (uid===null || state.profile)) return;    // already routed by init()
+        lastUid = uid;
+        if(session){ try{ await loadProfile(); }catch(_){ state.profile=null; } } else { state.profile=null; }
+        route();
+      }, 0);
     });
   }catch(_){ }
 }
