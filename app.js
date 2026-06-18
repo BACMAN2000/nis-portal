@@ -1945,11 +1945,14 @@ function _finalFromData(profile, atts, spk){
   const a2NoWriting = isA2 && !(atts||[]).some(a=>a.skill==='Writing');
   const skills = a2NoWriting ? { Reading, Listening, Speaking } : { Reading, Listening, Writing, Speaking };
   const present = Object.values(skills).filter(Boolean);
-  const required = a2NoWriting ? 3 : 4;
+  // Reglas de "informe completo":
+  //  · A2 puro (A2 Key): Reading & Use of English (incluye Writing) + Listening. No requiere Speaking.
+  //  · B1/B2/C1 (o A2 con Writing aparte): Reading & UoE + Listening + Writing + Speaking.
+  const requiredKeys = a2NoWriting ? ['Reading','Listening'] : ['Reading','Listening','Writing','Speaking'];
   const finalScale = present.length ? Math.round(present.reduce((s,x)=>s+x.scale,0)/present.length) : null;
-  const labels = { Reading:'Reading', Listening:'Listening', Writing:'Writing', Speaking:'Speaking' };
+  const labels = { Reading:'Reading & Use of English', Listening:'Listening', Writing:'Writing', Speaking:'Speaking' };
   return { profile, skills, isA2, a2NoWriting, finalScale, finalCefr:scaleToCefr(finalScale),
-           complete: present.length===required, missing: Object.keys(skills).filter(k=>!skills[k]).map(k=>labels[k]) };
+           complete: requiredKeys.every(k=>skills[k]), missing: requiredKeys.filter(k=>!skills[k]).map(k=>labels[k]) };
 }
 function _skillCellHtml(b){
   if(!b) return '';
@@ -2030,7 +2033,7 @@ async function cefrFinalPanel(){
       ? `<span class="badge lvl" style="font-size:.92rem">${fin.finalCefr} · ${fin.finalScale}</span>${sttChip}${fin.complete?'':' <span class="badge off" style="font-size:.66rem" title="Faltan: '+esc(fin.missing.join(', '))+'">prov.</span>'}`
       : '<span class="muted">—</span>';
     return `<tr>
-      <td><b>${esc(s.full_name||'')}</b></td>
+      <td><a href="#" onclick="event.preventDefault();studentDetailReport('${s.id}','es')" title="Ver informe detallado e imprimir" style="color:#2d5a8d;font-weight:700;text-decoration:none;cursor:pointer">${esc(s.full_name||'')}</a></td>
       <td><span class="badge grade">${esc(s.grades?.name||'—')}</span> ${s.section?esc(s.section):''}</td>
       <td><span class="badge lvl" style="opacity:.8">${tgt||'—'}</span></td>
       <td>${_skillCellHtml(fin.skills.Reading)||'<span class="muted">—</span>'}</td>
@@ -2167,16 +2170,11 @@ function cefrScaleSVG(scale, cefr){
     <text x="${axisX}" y="30" text-anchor="middle" font-size="11" font-weight="700" fill="#334155">Escala</text>
     ${bandRects}${qBars}${ticks}${marker}</svg>`;
 }
-window.studentReportPDF = async (studentId, lang)=>{
-  lang = (lang==='en') ? 'en' : 'es';
-  try{ await ensureHtml2pdf(); }catch(e){ alert(e.message); return; }
-  const { data:p, error } = await sb.from('profiles').select('id,full_name,email,section,cefr_level,grade_id,grades(name)').eq('id',studentId).single();
-  if(error){ alert('No se pudo cargar el alumno: '+error.message); return; }
-  const { data:at } = await sb.from('exam_attempts').select('id,skill,level,percent,score,total,mock,submitted_at,breakdown').eq('student_id',studentId);
-  const { data:sp } = await sb.from('speaking_results').select('*').eq('student_id',studentId).maybeSingle();
-  const fin=_finalFromData(p, at||[], sp);
+/* Construye el HTML interior del reporte de resultados (compartido por el PDF y la
+   vista en pantalla). opts.detail=true añade el detalle de la evaluación de Writing y Speaking. */
+function _reportInner(p, at, sp, fin, EN, opts){
+  at = at||[]; opts = opts||{};
   const tgt=targetLevel(p)||'B1'; const stt=targetStatus(fin.finalCefr, tgt);
-  const EN = lang==='en';
   const T = EN ? {
     sub:'Nordic International School of Lima · Cambridge English · Results report',
     sectionW:'Section', objective:'Target level', cefr:'Common European Framework (CEFR)', scaleName:'Cambridge English Scale',
@@ -2268,9 +2266,28 @@ window.studentReportPDF = async (studentId, lang)=>{
     '<div style="font-size:12px;font-weight:800;color:#166534;margin-bottom:5px">'+T.commentTitle+'</div>'+
     '<div style="font-size:13px;color:#0f172a;line-height:1.5">'+msg+'</div>'+
     '<div style="font-size:12px;font-weight:800;color:#0f172a;margin-top:8px">'+T.sign+'</div></div>';
-  const node=document.createElement('div');
-  node.style.cssText='width:760px;padding:22px;font-family:Montserrat,system-ui,sans-serif;color:#0f172a;background:#fff';
-  node.innerHTML=
+
+  // Detalle de la evaluación de Writing y Speaking (solo en la vista detallada en pantalla)
+  let detail='';
+  if(opts.detail){
+    const dt = EN
+      ? { wTitle:'Writing — assessment detail', spTitle:'Speaking — assessment detail', crit:'Criterion', band:'Band', fb:"Teacher's feedback" }
+      : { wTitle:'Writing — detalle de la evaluación', spTitle:'Speaking — detalle de la evaluación', crit:'Criterio', band:'Banda', fb:'Comentario del profesor' };
+    const critTbl=(parts)=>'<table style="width:100%;border-collapse:collapse;margin-bottom:4px"><tr style="background:#4987c6"><th style="'+th+';text-align:left">'+dt.crit+'</th><th style="'+th+'">'+dt.band+'</th></tr>'+
+      parts.map(pt=>'<tr><td style="'+cs+';text-align:left">'+esc(pt.part)+'</td><td style="'+cs+'"><b>'+pt.correct+'</b> / '+pt.total+'</td></tr>').join('')+'</table>';
+    const fbBox=(txt)=>'<div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:8px 12px;font-size:12px;margin-bottom:8px"><b>'+dt.fb+':</b> '+esc(txt)+'</div>';
+    const wb = ba['Writing'] && ba['Writing'].breakdown;
+    if(wb && wb.kind==='writing-graded' && Array.isArray(wb.parts) && wb.parts.length){
+      detail += '<div style="font-size:13px;font-weight:800;color:#2f5f93;margin:12px 0 4px">'+dt.wTitle+'</div>'+critTbl(wb.parts);
+      if(wb.teacherMessage) detail += fbBox(wb.teacherMessage);
+    }
+    if(sp && sp.breakdown && Array.isArray(sp.breakdown.parts) && sp.breakdown.parts.length){
+      detail += '<div style="font-size:13px;font-weight:800;color:#2f5f93;margin:12px 0 4px">'+dt.spTitle+'</div>'+critTbl(sp.breakdown.parts);
+      if(sp.comment) detail += fbBox(sp.comment);
+    }
+  }
+
+  return ''+
     '<img src="assets/logo-h.svg" width="150" height="28" style="width:150px;height:28px;display:block">'+
     '<div style="font-size:11px;color:#6b7280;margin:3px 0 10px">'+T.sub+'</div>'+
     '<div style="background:#2f5f93;color:#fff;border-radius:10px;padding:10px 14px;margin-bottom:12px">'+
@@ -2280,15 +2297,69 @@ window.studentReportPDF = async (studentId, lang)=>{
     '<div style="font-size:13px;font-weight:800;color:#2f5f93;margin:6px 0 4px">'+T.s1+'</div>'+
     '<table style="width:100%;border-collapse:collapse;margin-bottom:4px">'+skHead+rRow+lRow+wRow+spRow+'</table>'+
     partsTbl+
+    detail+
     '<div style="font-size:13px;font-weight:800;color:#2f5f93;margin:8px 0 4px">'+T.s3+'</div>'+
     globalBox+ commentBox+
     '<div style="font-size:9px;color:#94a3b8;margin-top:10px">'+T.foot+'</div>';
+}
+
+/* Inyecta una sola vez el CSS que, al imprimir, oculta todo menos el reporte (#print-report). */
+function _ensurePrintCss(){
+  if(document.getElementById('nis-print-css')) return;
+  const st=document.createElement('style'); st.id='nis-print-css';
+  st.textContent='@media print{body *{visibility:hidden!important}#print-report,#print-report *{visibility:visible!important}#print-report{position:absolute;left:0;top:0;width:100%;border:0!important;margin:0!important;box-shadow:none!important}.no-print{display:none!important}@page{margin:12mm}}';
+  document.head.appendChild(st);
+}
+
+/* Vista detallada en pantalla (profesor/admin al hacer clic en el nombre del alumno):
+   notas por destreza + detalle del Writing/Speaking evaluado + impresión + descarga PDF. */
+window.studentDetailReport = async (studentId, lang)=>{
+  lang=(lang==='en')?'en':'es'; const EN=lang==='en';
+  _setNav('final');
+  if($('#main')) $('#main').innerHTML='<div class="center muted">Cargando…</div>';
+  const { data:p, error } = await sb.from('profiles').select('id,full_name,email,section,cefr_level,grade_id,grades(name)').eq('id',studentId).single();
+  if(error){ $('#main').innerHTML='<div class="note err">'+esc(error.message)+'</div>'; return; }
+  const { data:at } = await sb.from('exam_attempts').select('id,skill,level,percent,score,total,mock,submitted_at,breakdown').eq('student_id',studentId);
+  let sp=null; try{ const r=await sb.from('speaking_results').select('*').eq('student_id',studentId).maybeSingle(); sp=r&&r.data; }catch(e){}
+  const fin=_finalFromData(p, at||[], sp);
+  _ensurePrintCss();
+  const inner=_reportInner(p, at||[], sp, fin, EN, {detail:true});
+  $('#main').innerHTML=
+    '<div class="no-print" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px">'+
+      '<button class="btn sm ghost" onclick="cefrFinalPanel()">← Volver al resultado final</button>'+
+      '<span style="width:1px;height:22px;background:var(--line)"></span>'+
+      '<button class="btn sm '+(EN?'ghost':'')+'" onclick="studentDetailReport(\''+studentId+'\',\'es\')">🇪🇸 Español</button>'+
+      '<button class="btn sm '+(EN?'':'ghost')+'" onclick="studentDetailReport(\''+studentId+'\',\'en\')">🇬🇧 English</button>'+
+      '<span style="flex:1"></span>'+
+      (fin.complete?'':'<span class="badge off" style="font-size:.7rem" title="Faltan: '+esc(fin.missing.join(', '))+'">Provisional</span> ')+
+      '<button class="btn sm" onclick="window.print()">🖨️ Imprimir</button>'+
+      '<button class="btn sm ghost" onclick="studentReportPDF(\''+studentId+'\',\''+lang+'\')">📄 Descargar PDF</button>'+
+    '</div>'+
+    '<div id="print-report" style="max-width:820px;margin:0 auto;padding:24px;border:1px solid var(--line);border-radius:12px;background:#fff;box-shadow:0 8px 24px rgba(15,23,42,.08)">'+inner+'</div>';
+  window.scrollTo(0,0);
+};
+
+window.studentReportPDF = async (studentId, lang)=>{
+  lang = (lang==='en') ? 'en' : 'es';
+  try{ await ensureHtml2pdf(); }catch(e){ alert(e.message); return; }
+  const { data:p, error } = await sb.from('profiles').select('id,full_name,email,section,cefr_level,grade_id,grades(name)').eq('id',studentId).single();
+  if(error){ alert('No se pudo cargar el alumno: '+error.message); return; }
+  const { data:at } = await sb.from('exam_attempts').select('id,skill,level,percent,score,total,mock,submitted_at,breakdown').eq('student_id',studentId);
+  const { data:sp } = await sb.from('speaking_results').select('*').eq('student_id',studentId).maybeSingle();
+  const fin=_finalFromData(p, at||[], sp);
+  const EN = lang==='en';
+  const node=document.createElement('div');
+  node.style.cssText='width:760px;padding:22px;font-family:Montserrat,system-ui,sans-serif;color:#0f172a;background:#fff';
+  node.innerHTML=_reportInner(p, at||[], sp, fin, EN, {});
+  // Host fuera de pantalla PERO con dimensiones reales (760px): un wrapper 0×0/overflow:hidden
+  // recorta el lienzo de html2canvas y solo captura el encabezado. left:-10000px lo mantiene
+  // invisible sin recortar el alto natural del nodo.
   const host=document.createElement('div');
-  host.style.cssText='position:absolute;left:0;top:0;width:0;height:0;overflow:hidden;z-index:-1';
+  host.style.cssText='position:fixed;left:-10000px;top:0;width:760px;background:#fff;z-index:-1';
   host.appendChild(node); document.body.appendChild(host);
   await Promise.all(Array.from(node.querySelectorAll('img')).map(im=>im.complete?Promise.resolve():new Promise(r=>{im.onload=im.onerror=r;})));
   const fname='NIS-'+(EN?'Report':'Resultado')+'-'+(p.full_name||'alumno').replace(/\s+/g,'_')+'-'+(EN?'EN':'ES')+'.pdf';
-  const opt={ margin:8, filename:fname, image:{type:'jpeg',quality:0.96}, html2canvas:{scale:2,useCORS:true,backgroundColor:'#ffffff'}, jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}, pagebreak:{mode:['css','legacy']} };
+  const opt={ margin:8, filename:fname, image:{type:'jpeg',quality:0.96}, html2canvas:{scale:2,useCORS:true,backgroundColor:'#ffffff',windowWidth:820}, jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}, pagebreak:{mode:['css','legacy']} };
   try{ await window.html2pdf().set(opt).from(node).save(); }
   catch(e){ alert('No se pudo generar el PDF: '+(e&&e.message||e)); }
   finally{ host.remove(); }
