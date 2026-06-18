@@ -1337,7 +1337,7 @@ function renderGradeWriting(){
             <h2 style="margin:0">Total</h2>
             <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap">
               <span class="muted" style="font-size:.85rem">T1: <b id="gw-sub1-lbl">—</b> &nbsp;T2: <b id="gw-sub2-lbl">—</b></span>
-              <div style="font-size:1.4rem;font-weight:800;color:#2d5a8d"><span id="gw-total">0</span> / ${totalMax} · <span id="gw-pct">0</span>%</div>
+              <div style="font-size:1.4rem;font-weight:800;color:#2d5a8d"><span id="gw-total">0</span> / ${totalMax} · <span id="gw-pct">0</span>% · <span id="gw-cefr" style="background:#d1d2ea;color:#244c77;border-radius:8px;padding:2px 10px;font-size:1.05rem">—</span></div>
             </div>
           </div>
           <label style="margin-top:10px;display:block">Mensaje para el alumno (editable)</label>
@@ -1363,6 +1363,9 @@ function _recalcGrade(){
   const total=t1+t2, pct=Math.round(total/totalMax*100);
   const tEl=$('#gw-total'), pEl=$('#gw-pct');
   if(tEl) tEl.textContent=total; if(pEl) pEl.textContent=pct;
+  // Nivel CEFR (Escala Cambridge) según el % en el nivel del examen — el profesor ve la banda, no solo el %.
+  const cEl=$('#gw-cefr');
+  if(cEl) cEl.textContent = gradeState.complete ? scaleToCefr(skillScale(gradeState.attempt.level, pct)) : '—';
   const s1=$('#gw-sub1-lbl'), s2=$('#gw-sub2-lbl');
   if(s1) s1.textContent=t1+'/'+taskMax; if(s2) s2.textContent=t2+'/'+taskMax;
   gradeState.t1=t1; gradeState.t2=t2; gradeState.total=total; gradeState.max=totalMax; gradeState.pct=pct; gradeState.complete=all;
@@ -1652,7 +1655,7 @@ async function studentFinal(){
   const row=(label,b)=>`<tr><td style="${ch}"><b>${label}</b></td>
     <td style="${ch};text-align:center">${b?b.level:'—'}</td>
     <td style="${ch};text-align:center">${b?(b.pct!=null?b.pct+'%':'—'):'<span style="color:#b45309">Pendiente</span>'}</td>
-    <td style="${ch};text-align:center;color:var(--blue-d);font-weight:700">${b?b.cefr:'—'}</td>
+    <td style="${ch};text-align:center;color:var(--blue-d);font-weight:700">${b?esc(b.cefr):'—'}</td>
     <td style="${ch};text-align:center">${b?b.scale:'—'}</td></tr>`;
   const wRow = fin.a2NoWriting
     ? `<tr><td style="${ch}"><b>Writing</b></td><td colspan="4" style="${ch};color:var(--grey)">Incluido en Reading &amp; Use of English (A2 Key)</td></tr>`
@@ -1668,7 +1671,7 @@ async function studentFinal(){
         ${row('Speaking',fin.skills.Speaking)}
       </tbody></table></div>
     <div class="card" style="display:flex;gap:16px;align-items:center;background:#0f2741;color:#fff">
-      <div><div style="font-size:.78rem;opacity:.8">RESULTADO FINAL</div><div style="font-size:2.2rem;font-weight:800;line-height:1">${fin.finalCefr}</div></div>
+      <div><div style="font-size:.78rem;opacity:.8">RESULTADO FINAL</div><div style="font-size:2.2rem;font-weight:800;line-height:1">${esc(fin.finalCefr)}</div></div>
       <div style="border-left:1px solid rgba(255,255,255,.3);padding-left:16px"><div style="font-size:.78rem;opacity:.8">ESCALA CAMBRIDGE</div><div style="font-size:1.6rem;font-weight:700">${fin.finalScale!=null?fin.finalScale:'—'}</div></div>
       <div style="margin-left:auto;text-align:right">
         ${sttTxt?`<div style="font-size:.85rem;font-weight:700;color:${stt==='below'?'#fca5a5':'#86efac'}">${sttTxt}</div>`:''}
@@ -1956,7 +1959,7 @@ function _finalFromData(profile, atts, spk){
 }
 function _skillCellHtml(b){
   if(!b) return '';
-  return `<b style="color:#2d5a8d">${b.cefr}</b> <span class="muted" style="font-size:.78rem">${b.scale} · ${b.pct}%</span>`;
+  return `<b style="color:#2d5a8d">${esc(b.cefr)}</b> <span class="muted" style="font-size:.78rem">${b.scale} · ${b.pct}%</span>`;
 }
 
 /* ---- Speaking rubric (Cambridge analytical scales, 0–5 per descriptor) ---- */
@@ -2030,7 +2033,7 @@ async function cefrFinalPanel(){
       : stt==='above' ? ' <span class="badge on" style="font-size:.66rem" title="Sobre el objetivo">▲</span>'
       : stt==='meets' ? ' <span class="badge on" style="font-size:.66rem" title="Cumple el objetivo">✓</span>' : '';
     const finBadge = fin.finalScale!=null
-      ? `<span class="badge lvl" style="font-size:.92rem">${fin.finalCefr} · ${fin.finalScale}</span>${sttChip}${fin.complete?'':' <span class="badge off" style="font-size:.66rem" title="Faltan: '+esc(fin.missing.join(', '))+'">prov.</span>'}`
+      ? `<span class="badge lvl" style="font-size:.92rem">${esc(fin.finalCefr)} · ${fin.finalScale}</span>${sttChip}${fin.complete?'':' <span class="badge off" style="font-size:.66rem" title="Faltan: '+esc(fin.missing.join(', '))+'">prov.</span>'}`
       : '<span class="muted">—</span>';
     return `<tr>
       <td><a href="#" onclick="event.preventDefault();studentDetailReport('${s.id}','es')" title="Ver informe detallado e imprimir" style="color:#2d5a8d;font-weight:700;text-decoration:none;cursor:pointer">${esc(s.full_name||'')}</a></td>
@@ -2079,6 +2082,7 @@ function renderSpeakingGrader(){
   const max=r.subs.length*r.bandMax;
   let total=0, all=true; r.subs.forEach(s=>{ if(sel[s]!=null) total+=sel[s]; else all=false; });
   const pct=Math.round(total/max*100);
+  const cefrBand = all ? scaleToCefr(skillScale(speakingState.level, pct)) : '—';
   const subsHtml=r.subs.map((s,si)=>{
     const desc=SPEAKING_SUBSCALE[s]||[];
     const cards=desc.map((d,band)=>{
@@ -2103,7 +2107,7 @@ function renderSpeakingGrader(){
     <div class="card" style="position:sticky;bottom:0">
       <div class="row" style="justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">
         <h2 style="margin:0">Total</h2>
-        <div style="font-size:1.4rem;font-weight:800;color:#2d5a8d"><span>${total}</span> / ${max} · <span>${pct}</span>%</div>
+        <div style="font-size:1.4rem;font-weight:800;color:#2d5a8d"><span>${total}</span> / ${max} · <span>${pct}</span>% · <span style="background:#d1d2ea;color:#244c77;border-radius:8px;padding:2px 10px;font-size:1.05rem">${esc(cefrBand)}</span></div>
       </div>
       <label style="margin-top:10px;display:block">Comentario para el alumno (opcional)</label>
       <textarea id="sp-msg" rows="4" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:8px" oninput="speakingState.msg=this.value">${esc(speakingState.msg||'')}</textarea>
@@ -2242,7 +2246,7 @@ function _reportInner(p, at, sp, fin, EN, opts){
   const stColor = stt==='below'?'#f59e0b':'#16a34a';
   const stBadge = stt==='below'?T.below:stt==='above'?T.above:stt==='meets'?T.meets:'';
   const globalBox='<div style="background:#f7faff;border:1.5px solid '+stColor+';border-radius:12px;padding:12px 16px;margin:2px 0 12px">'+
-    '<div style="font-size:13px"><b>'+T.targetGrade+':</b> '+tgt+' &nbsp;•&nbsp; <b>'+T.finalLbl+':</b> <span style="color:#2f5f93;font-weight:800">'+fin.finalCefr+'</span> &nbsp;•&nbsp; <b>'+T.scaleLbl+':</b> '+(fin.finalScale!=null?fin.finalScale:'—')+' &nbsp;•&nbsp; <span style="color:'+stColor+';font-weight:800">'+stBadge+'</span></div>'+
+    '<div style="font-size:13px"><b>'+T.targetGrade+':</b> '+tgt+' &nbsp;•&nbsp; <b>'+T.finalLbl+':</b> <span style="color:#2f5f93;font-weight:800">'+esc(fin.finalCefr)+'</span> &nbsp;•&nbsp; <b>'+T.scaleLbl+':</b> '+(fin.finalScale!=null?fin.finalScale:'—')+' &nbsp;•&nbsp; <span style="color:'+stColor+';font-weight:800">'+stBadge+'</span></div>'+
     '<div style="font-size:11px;color:#6b7280;margin-top:5px">'+T.gnote+(fin.complete?'':' '+T.prov+'.')+'</div></div>';
   const SKL={Reading:T.reading,Listening:T.listening,Writing:T.writing,Speaking:T.speaking};
   const pres=Object.keys(fin.skills).filter(k=>fin.skills[k]);
