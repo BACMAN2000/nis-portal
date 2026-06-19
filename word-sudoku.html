@@ -28,6 +28,10 @@
   .lv small{display:block; font-weight:500; font-size:.64rem; color:var(--muted);}
   .lv.on{background:var(--accent); color:#fff; border-color:var(--accent);} .lv.on small{color:#dce4ff;}
   .lv.done{border-color:var(--good);} .lv.done::after{content:" ✓"; color:var(--good);}
+  .puzzles{display:flex; gap:6px; justify-content:center; flex-wrap:wrap; margin:0 auto 10px; max-width:760px;}
+  .pz{border:1px solid #d7def0; background:#fff; color:var(--ink); min-width:34px; height:34px; padding:0 8px; border-radius:9px; font-weight:800; font-size:.85rem; cursor:pointer;}
+  .pz.on{background:var(--accent-soft); border-color:var(--accent); color:var(--accent);}
+  .pz.done{border-color:var(--good); color:var(--good);}
   main{max-width:760px; margin:0 auto;}
   .card{background:var(--card); border-radius:16px; padding:18px; box-shadow:0 2px 12px rgba(20,30,60,.08); margin-bottom:14px;}
   .theme{text-align:center; font-size:.95rem; margin-bottom:10px;}
@@ -74,6 +78,7 @@
 </header>
 
 <div class="levels" id="levels"></div>
+<div class="puzzles" id="puzzles"></div>
 <main>
   <div class="card">
     <div class="theme" id="theme"></div>
@@ -123,13 +128,13 @@ window.NISACT=(function(){
 })();
 const shuffle=a=>{ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; };
 
-/* Each level: a theme word with DISTINCT letters; grid size = word length. */
+/* Each level: 9 theme words, every word an isogram (all letters distinct); grid size = word length. */
 const LEVELS={
-  A1:{ word:'FISH',      n:4, br:2, bc:2, clues:8,  topic:'Animals' },
-  A2:{ word:'CAKE',      n:4, br:2, bc:2, clues:8,  topic:'Food' },
-  B1:{ word:'GARDEN',    n:6, br:2, bc:3, clues:18, topic:'The home' },
-  B2:{ word:'PLANET',    n:6, br:2, bc:3, clues:16, topic:'Space' },
-  C1:{ word:'DISCOVERY', n:9, br:3, bc:3, clues:40, topic:'Science' },
+  A1:{ n:4, br:2, bc:2, clues:8,  topic:'Animals', words:['FISH','DUCK','FROG','BIRD','GOAT','LION','BEAR','WOLF','CRAB'] },
+  A2:{ n:4, br:2, bc:2, clues:8,  topic:'Food',    words:['CAKE','MILK','RICE','SOUP','PEAR','LIME','CORN','SALT','BEAN'] },
+  B1:{ n:6, br:2, bc:3, clues:18, topic:'The home', words:['GARDEN','FRIDGE','BASKET','CARPET','TOWELS','CANDLE','FLOWER','GARLIC','PLATES'] },
+  B2:{ n:6, br:2, bc:3, clues:16, topic:'Science',  words:['PLANET','ROCKET','COMETS','SATURN','ORBITS','FLIGHT','OXYGEN','CARBON','GROWTH'] },
+  C1:{ n:9, br:3, bc:3, clues:40, topic:'Advanced', words:['DISCOVERY','EDUCATION','WORKPLACE','DANGEROUS','NIGHTMARE','KEYBOARDS','WONDERFUL','TRIANGLES','FLOWCHART'] },
 };
 const ORDER=['A1','A2','B1','B2','C1'];
 
@@ -160,28 +165,34 @@ function digHoles(sol,n,clues){
 }
 
 /* ---- State ---- */
-let level='A1', N=4, BR=2, BC=2, LETTERS=[], SOL=[], given=[], val=[], sel=null, elapsed=0, timer=null, hints=0, done={};
+let level='A1', pIdx=0, N=4, BR=2, BC=2, LETTERS=[], SOL=[], given=[], val=[], sel=null, elapsed=0, timer=null, hints=0, done={};
 
+function levelDone(l){ for(let i=0;i<LEVELS[l].words.length;i++) if(!done[l+'#'+i]) return false; return true; }
 function buildLevels(){
   const params=new URLSearchParams(location.search);
   let allow=ORDER;
   if(params.get('levels')) allow=params.get('levels').split(',').map(s=>s.trim().toUpperCase()).filter(l=>LEVELS[l]);
   if(!allow.length) allow=ORDER;
   window._ALLOW=allow;
-  document.getElementById('levels').innerHTML=allow.map(l=>`<button class="lv ${l===level?'on':''} ${done[l]?'done':''}" data-l="${l}" onclick="setLevel('${l}')">${l}<small>${LEVELS[l].topic}</small></button>`).join('');
+  document.getElementById('levels').innerHTML=allow.map(l=>`<button class="lv ${l===level?'on':''} ${levelDone(l)?'done':''}" data-l="${l}" onclick="setLevel('${l}')">${l}<small>${LEVELS[l].topic}</small></button>`).join('');
 }
-function setLevel(l){ level=l; newPuzzle(); }
+function buildPuzzles(){
+  const words=LEVELS[level].words;
+  document.getElementById('puzzles').innerHTML=words.map((w,i)=>`<button class="pz ${i===pIdx?'on':''} ${done[level+'#'+i]?'done':''}" title="${w}" onclick="setPuzzle(${i})">${i+1}</button>`).join('');
+}
+function setLevel(l){ level=l; pIdx=0; newPuzzle(); }
+function setPuzzle(i){ pIdx=i; newPuzzle(); }
 
 function newPuzzle(){
-  const cfg=LEVELS[level]; N=cfg.n; BR=cfg.br; BC=cfg.bc; LETTERS=cfg.word.split('');
+  const cfg=LEVELS[level]; N=cfg.n; BR=cfg.br; BC=cfg.bc; const word=cfg.words[pIdx]; LETTERS=word.split('');
   SOL=genSolved(N,BR,BC);
   given=digHoles(SOL,N,cfg.clues);
   val=Array.from({length:N},()=>Array(N).fill(0));
   for(let r=0;r<N;r++) for(let c=0;c<N;c++) if(given[r][c]) val[r][c]=SOL[r][c];
   sel=null; elapsed=0; hints=0;
   document.getElementById('banner').classList.remove('show');
-  document.getElementById('theme').innerHTML=`Theme: <b>${cfg.word}</b> <span style="color:var(--muted)">· ${cfg.topic} · ${N}×${N}</span>`;
-  buildLevels(); renderGrid(); renderPad();
+  document.getElementById('theme').innerHTML=`Word ${pIdx+1}/${cfg.words.length}: <b>${word}</b> <span style="color:var(--muted)">· ${cfg.topic} · ${N}×${N}</span>`;
+  buildLevels(); buildPuzzles(); renderGrid(); renderPad();
   clearInterval(timer); timer=setInterval(()=>{ elapsed++; document.getElementById('watch').textContent=fmt(elapsed); },1000);
   document.getElementById('watch').textContent='00:00';
 }
@@ -270,11 +281,12 @@ function isComplete(){
 }
 function checkWin(){
   if(!isComplete()) return;
-  clearInterval(timer); done[level]=true; buildLevels();
+  const word=LEVELS[level].words[pIdx];
+  clearInterval(timer); done[level+'#'+pIdx]=true; buildLevels(); buildPuzzles();
   const b=document.getElementById('banner');
-  b.innerHTML=`🎉 Solved <b>${LEVELS[level].word}</b> (${level}) in ${fmt(elapsed)}${hints?(' · '+hints+' hints'):''}! <br><span style="font-weight:600;font-size:.85rem">Saved to My Progress (if signed in). Try the next level!</span>`;
+  b.innerHTML=`🎉 Solved <b>${word}</b> (${level} · word ${pIdx+1}/${LEVELS[level].words.length}) in ${fmt(elapsed)}${hints?(' · '+hints+' hints'):''}! <br><span style="font-weight:600;font-size:.85rem">Saved to My Progress (if signed in). Try another word!</span>`;
   b.classList.add('show');
-  if(window.NISACT) NISACT.submit({activity:'word-sudoku', title:'Word Sudoku — '+LEVELS[level].word, level:level, score:1, total:1, hints:hints, duration:Math.max(1,elapsed)});
+  if(window.NISACT) NISACT.submit({activity:'word-sudoku', title:'Word Sudoku — '+word, level:level, score:1, total:1, hints:hints, duration:Math.max(1,elapsed)});
 }
 function hint(){
   // fill one empty (or wrong) cell with the solution letter
