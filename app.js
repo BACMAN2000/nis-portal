@@ -1899,8 +1899,8 @@ function projection(p,bySkill,atts){
    four skills' scale scores, mapped back to a CEFR band (the official chart). */
 const SCALE_RANGE = { A2:[100,150], B1:[120,170], B2:[140,190], C1:[160,210] }; // rango Cambridge reportado por nivel (referencia)
 const SCALE_BOUNDARY = { A2:120, B1:140, B2:160, C1:180 };  // inicio CEFR del nivel ≈ aprobar (~60%)
-const CEFR_BANDS = [ {min:200,cefr:'C2'},{min:180,cefr:'C1'},{min:160,cefr:'B2'},
-  {min:140,cefr:'B1'},{min:120,cefr:'A2'},{min:100,cefr:'A1'},{min:0,cefr:'<A1'} ];
+const CEFR_BANDS = [ {min:180,cefr:'C1'},{min:160,cefr:'B2'},
+  {min:140,cefr:'B1'},{min:120,cefr:'A2'},{min:100,cefr:'A1'},{min:0,cefr:'<A1'} ];  // C1 es el tope: cualquier escala ≥180 reporta C1 (sin C2)
 /* %→Escala Cambridge anclado al APROBADO: 60% cae en el límite del nivel; por
    encima sube hacia la banda siguiente; por debajo baja ~1 banda cada 20 puntos.
    (Antes el piso del nivel era la banda inferior, así un 20% en B2 daba 150=B1;
@@ -2172,12 +2172,11 @@ function ensureHtml2pdf(){
 function cefrScaleSVG(scale, cefr){
   const W=720,H=560,topY=46,botY=512,minV=80,maxV=230;
   const yOf=v=>topY+(maxV-Math.max(minV,Math.min(maxV,v)))/(maxV-minV)*(botY-topY);
-  const bands=[{cefr:'C2',lo:200,hi:230,c:'#5a2d82'},{cefr:'C1',lo:180,hi:200,c:'#7c6fd2'},
+  const bands=[{cefr:'C1',lo:180,hi:230,c:'#7c6fd2'},
     {cefr:'B2',lo:160,hi:180,c:'#2d5a8d'},{cefr:'B1',lo:140,hi:160,c:'#4987c6'},
     {cefr:'A2',lo:120,hi:140,c:'#76cbe5'},{cefr:'A1',lo:100,hi:120,c:'#aebfd0'}];
   const quals=[{name:'A2 Key',lo:100,hi:150,c:'#76cbe5'},{name:'B1 Prelim.',lo:120,hi:170,c:'#4987c6'},
-    {name:'B2 First',lo:140,hi:190,c:'#2d5a8d'},{name:'C1 Adv.',lo:160,hi:210,c:'#7c6fd2'},
-    {name:'C2 Prof.',lo:180,hi:230,c:'#5a2d82'}];
+    {name:'B2 First',lo:140,hi:190,c:'#2d5a8d'},{name:'C1 Adv.',lo:160,hi:210,c:'#7c6fd2'}];
   const bandX=64,bandW=92;
   const bandRects=bands.map(b=>{const y=yOf(b.hi),h=yOf(b.lo)-yOf(b.hi);
     return `<rect x="${bandX}" y="${y}" width="${bandW}" height="${h}" fill="${b.c}" opacity="0.92"/><text x="${bandX+bandW/2}" y="${y+h/2+5}" text-anchor="middle" fill="#fff" font-weight="800" font-size="15">${b.cefr}</text>`;}).join('');
