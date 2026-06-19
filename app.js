@@ -1929,7 +1929,11 @@ function targetStatus(finalCefr, target){
   const d = CEFR_RANK[finalCefr] - CEFR_RANK[target];
   return d<0 ? 'below' : d>0 ? 'above' : 'meets';
 }
-/* Best attempt for a skill (mocks + practice), PASS-AWARE.
+/* Best attempt for a skill — OFFICIAL MOCKS ONLY (mock1/mock2), PASS-AWARE.
+   The parent-facing final report counts only official mock exams; 'practice'
+   attempts are training and never feed the final CEFR (a high practice score
+   at a higher level must not inflate the result — e.g. a 97% B1 practice
+   reading turning an A2 mock into B2).
    A sub-pass attempt at a high level must NOT out-rank a genuine pass at a
    lower level (e.g. C1 @ 0% would otherwise score B2). So: pick the highest
    scale among attempts that reach the pass mark; if none passed, fall back to
@@ -1937,7 +1941,7 @@ function targetStatus(finalCefr, target){
 const PASS_MIN = 50;
 function bestAttemptScale(atts, skill){
   const rows = (atts||[])
-    .filter(a => a.skill===skill && a.percent!=null)
+    .filter(a => a.skill===skill && a.percent!=null && a.mock!=='practice')
     .map(a => ({ a, pct:Number(a.percent), scale:skillScale(a.level, Number(a.percent)) }))
     .filter(x => x.scale!=null);
   if(!rows.length) return null;
