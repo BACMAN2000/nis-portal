@@ -1946,22 +1946,26 @@ function targetStatus(finalCefr, target){
   const d = CEFR_RANK[finalCefr] - CEFR_RANK[target];
   return d<0 ? 'below' : d>0 ? 'above' : 'meets';
 }
-/* Best attempt for a skill — OFFICIAL MOCKS ONLY (mock1/mock2), PASS-AWARE.
-   The parent-facing final report counts only official mock exams; 'practice'
-   attempts are training and never feed the final CEFR (a high practice score
-   at a higher level must not inflate the result — e.g. a 97% B1 practice
-   reading turning an A2 mock into B2).
+/* Best attempt for a skill — MOCK-FIRST, PASS-AWARE.
+   The official mock (mock1/mock2) is authoritative: if the skill has ANY mock,
+   only mocks are considered, so a high 'practice' score at a higher level can't
+   inflate the final above the official mock (e.g. a 97% B1 practice reading
+   must NOT turn an A2 mock into B2). 'practice' is used only as a fallback when
+   the skill has no mock at all — otherwise that grade would simply vanish from
+   the report (most attempts in the system are practice).
    A sub-pass attempt at a high level must NOT out-rank a genuine pass at a
-   lower level (e.g. C1 @ 0% would otherwise score B2). So: pick the highest
-   scale among attempts that reach the pass mark; if none passed, fall back to
-   the highest-% attempt (not the highest level). */
+   lower level (e.g. C1 @ 0% would otherwise score B2). So within the chosen set
+   pick the highest scale among attempts that reach the pass mark; if none
+   passed, fall back to the highest-% attempt (not the highest level). */
 const PASS_MIN = 50;
 function bestAttemptScale(atts, skill){
-  const rows = (atts||[])
-    .filter(a => a.skill===skill && a.percent!=null && a.mock!=='practice')
-    .map(a => ({ a, pct:Number(a.percent), scale:skillScale(a.level, Number(a.percent)) }))
+  const all = (atts||[])
+    .filter(a => a.skill===skill && a.percent!=null)
+    .map(a => ({ a, pct:Number(a.percent), scale:skillScale(a.level, Number(a.percent)), isMock:a.mock!=='practice' }))
     .filter(x => x.scale!=null);
-  if(!rows.length) return null;
+  if(!all.length) return null;
+  const mocks = all.filter(x => x.isMock);
+  const rows = mocks.length ? mocks : all;   // mock-first; practice only if no mock
   const passed = rows.filter(x => x.pct >= PASS_MIN);
   const pick = passed.length
     ? passed.reduce((b,x) => x.scale > b.scale ? x : b)   // best pass by scale
