@@ -750,7 +750,7 @@ async function adminResults(){
     const wsCell = ws
       ? `<span class="badge off" title="Parte más débil" style="font-size:.72rem">▼ ${esc(ws.weak.name)} ${ws.weak.pct}%</span> <span class="badge on" title="Parte más fuerte" style="font-size:.72rem">▲ ${esc(ws.strong.name)} ${ws.strong.pct}%</span>`
       : '<span class="muted">—</span>';
-    return `<tr>
+    return `<tr data-sname="${esc((a.profiles?.full_name||'').toLowerCase())}">
     <td><b>${esc(a.profiles?.full_name||'')}</b></td>
     <td><span class="badge grade">${esc(a.profiles?.grades?.name||'—')}</span></td>
     <td style="text-align:center">${a.profiles?.section?`<span class="badge">${esc(a.profiles.section)}</span>`:'<span class="muted">—</span>'}</td>
@@ -773,7 +773,7 @@ async function adminResults(){
       <thead><tr><th>Alumno</th><th>Grado</th><th>Sección</th><th>Examen</th><th>Puntaje</th><th>Débil / Fuerte (partes)</th><th>Fecha</th><th></th></tr></thead>
       <tbody>${rows||`<tr><td colspan="8" class="center muted">Sin resultados para este filtro.</td></tr>`}</tbody>
     </table>
-    <div class="muted" style="padding:8px 14px;font-size:.82rem">${list.length} resultado(s)</div></div>`;
+    <div id="resCount" data-noun="resultado(s)" class="muted" style="padding:8px 14px;font-size:.82rem">${list.length} resultado(s)</div></div>`;
 }
 window._setResBranch = (b)=>{ resultsBranch=b; (state.profile && state.profile.role==='teacher') ? teacherResults() : adminResults(); };
 window.backToResults = ()=>{ (state.profile && state.profile.role==='teacher') ? teacherResults() : adminResults(); };
@@ -1090,7 +1090,7 @@ function resultsFilterBar(gradeList, onChangeFn){
     <div>
       <label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">NOMBRE</label>
       <input type="text" placeholder="Buscar alumno…" value="${esc(f.name)}"
-        oninput="${onChangeFn}('name',this.value)" style="min-width:180px">
+        oninput="window._liveNameFilter(this.value)" style="min-width:180px">
     </div>
     <div>
       <label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">DESDE</label>
@@ -1116,6 +1116,23 @@ window._setResFilter = (k,v)=>{
   if(k==='_clear') resultsFilter={grade:'',section:'',name:'',dateFrom:'',dateTo:''};
   else resultsFilter[k]=v;
   (state.profile && state.profile.role==='teacher') ? teacherResults() : adminResults();
+};
+/* Filtro por nombre EN VIVO: oculta/muestra las filas ya renderizadas (cada una
+   marcada con data-sname) sin re-renderizar #main ni reconsultar la BD. Así el
+   input no pierde el foco ni se "traba" al escribir. El valor se guarda en
+   resultsFilter.name para que un re-render real (cambiar grado/sección) lo
+   respete. */
+window._liveNameFilter = (v)=>{
+  resultsFilter.name = v;
+  const q = (v||'').toLowerCase().trim();
+  let shown = 0;
+  document.querySelectorAll('tr[data-sname]').forEach(tr=>{
+    const hit = tr.getAttribute('data-sname').includes(q);
+    tr.style.display = hit ? '' : 'none';
+    if(hit) shown++;
+  });
+  const c = document.getElementById('resCount');
+  if(c) c.textContent = shown + ' ' + (c.getAttribute('data-noun') || 'resultado(s)');
 };
 
 /* ── Export filtered results to CSV (Excel-compatible with UTF-8 BOM) ── */
@@ -1162,7 +1179,7 @@ async function teacherResults(){
     const wsCell = ws
       ? `<span class="badge off" title="Parte más débil" style="font-size:.72rem">▼ ${esc(ws.weak.name)} ${ws.weak.pct}%</span> <span class="badge on" title="Parte más fuerte" style="font-size:.72rem">▲ ${esc(ws.strong.name)} ${ws.strong.pct}%</span>`
       : '<span class="muted">—</span>';
-    return `<tr>
+    return `<tr data-sname="${esc((a.profiles?.full_name||'').toLowerCase())}">
     <td><b>${esc(a.profiles?.full_name||'')}</b></td>
     <td><span class="badge grade">${esc(a.profiles?.grades?.name||'—')}</span></td>
     <td style="text-align:center">${a.profiles?.section?`<span class="badge">${esc(a.profiles.section)}</span>`:'<span class="muted">—</span>'}</td>
@@ -1184,7 +1201,7 @@ async function teacherResults(){
       <thead><tr><th>Alumno</th><th>Grado</th><th>Sección</th><th>Examen</th><th>Puntaje</th><th>Débil / Fuerte (partes)</th><th>Fecha</th><th></th></tr></thead>
       <tbody>${rows||`<tr><td colspan="8" class="center muted">Sin intentos ${isMock?'de mocks':'de practice tests'} para este filtro.</td></tr>`}</tbody>
     </table>
-    <div class="muted" style="padding:8px 14px;font-size:.82rem">${list.length} resultado(s)</div></div>`;
+    <div id="resCount" data-noun="resultado(s)" class="muted" style="padding:8px 14px;font-size:.82rem">${list.length} resultado(s)</div></div>`;
 }
 async function teacherStudents(){
   state._tab='students';
@@ -2061,7 +2078,7 @@ async function cefrFinalPanel(){
     const finBadge = fin.finalScale!=null
       ? `<span class="badge lvl" style="font-size:.92rem">${esc(fin.finalCefr)} · ${fin.finalScale}</span>${sttChip}${fin.complete?'':' <span class="badge off" style="font-size:.66rem" title="Faltan: '+esc(fin.missing.join(', '))+'">prov.</span>'}`
       : '<span class="muted">—</span>';
-    return `<tr>
+    return `<tr data-sname="${esc((s.full_name||'').toLowerCase())}">
       <td><a href="#" onclick="event.preventDefault();studentDetailReport('${s.id}','es')" title="Ver informe detallado e imprimir" style="color:#2d5a8d;font-weight:700;text-decoration:none;cursor:pointer">${esc(s.full_name||'')}</a></td>
       <td><span class="badge grade">${esc(s.grades?.name||'—')}</span> ${s.section?esc(s.section):''}</td>
       <td><span class="badge lvl" style="opacity:.8">${tgt||'—'}</span></td>
@@ -2081,7 +2098,7 @@ async function cefrFinalPanel(){
     <div class="card" style="padding:0;overflow-x:auto"><table>
       <thead><tr><th>Alumno</th><th>Grado</th><th>Objetivo</th><th>Reading &amp; UoE</th><th>Listening</th><th>Writing</th><th>Speaking</th><th>Final CEFR</th><th></th></tr></thead>
       <tbody>${rows||`<tr><td colspan="9" class="center muted">Sin alumnos para este filtro.</td></tr>`}</tbody>
-    </table><div class="muted" style="padding:8px 14px;font-size:.82rem">${students.length} alumno(s)</div></div>`;
+    </table><div id="resCount" data-noun="alumno(s)" class="muted" style="padding:8px 14px;font-size:.82rem">${students.length} alumno(s)</div></div>`;
 }
 window.cefrFinalPanel = cefrFinalPanel;
 window._setFinalFilter = (k,v)=>{
