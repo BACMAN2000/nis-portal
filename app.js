@@ -1734,6 +1734,8 @@ function studentGradeActivities(key){
     <div class="grid cols-2" style="margin-top:12px">
       ${_skillCard('🧩','Crosswords','10 crucigramas temáticos por nivel — pistas, vidas y cronómetro.','crosswords.html?levels='+encodeURIComponent(lv))}
       ${_skillCard('🔎','Word Search','10 sopas de letras temáticas por nivel.','wordsearches.html?levels='+encodeURIComponent(lv))}
+      ${_skillCard('🔢','Word Sudoku','Sudoku de palabras: un puzzle por nivel ('+lv.split(',').join(' · ')+').','word-sudoku.html?levels='+encodeURIComponent(lv))}
+      ${key==='g9' ? _skillCard('🧠','Memory · Reported Speech','Empareja cada frase en estilo directo con su versión en reported speech.','memory-reported-speech.html') : ''}
     </div>`;
 }
 window._nav=(k)=>{

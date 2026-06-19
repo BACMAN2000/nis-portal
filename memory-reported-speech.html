@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Memory — Reported Speech · NIS English</title>
+<style>
+  :root{
+    --bg:#f4f6fb; --card:#fff; --ink:#1e2433; --muted:#67718a;
+    --accent:#3b5bdb; --accent-soft:#e7ecfd;
+    --good:#2f9e44; --good-soft:#d3f4dc; --bad:#e03131; --gold:#f59f00;
+    --direct:#1c7ed6; --direct-soft:#e7f2fd; --reported:#2f9e44; --reported-soft:#e4f6ea;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:'Segoe UI',system-ui,Arial,sans-serif; background:var(--bg); color:var(--ink); padding:16px; line-height:1.45;}
+  .topnav{position:sticky; top:0; z-index:30; background:#fff; display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+    padding:10px 18px; box-shadow:0 2px 10px rgba(20,30,60,.08); margin:-16px -16px 16px;}
+  .topnav img{height:30px; width:auto; display:block;}
+  .topnav .nav-sp{margin-left:auto;}
+  .navbtn{text-decoration:none; font-weight:700; font-size:.85rem; padding:8px 14px; border-radius:9px; white-space:nowrap;
+    background:var(--accent-soft); color:var(--accent); transition:.15s; border:none; cursor:pointer;}
+  .navbtn.primary{background:var(--accent); color:#fff;}
+  header{max-width:900px; margin:0 auto 6px; text-align:center;}
+  header h1{font-size:1.5rem;}
+  header p{color:var(--muted); font-size:.9rem; margin-top:4px;}
+  .hud{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; max-width:900px; margin:12px auto;}
+  .chip{font-weight:800; font-size:.95rem; background:#fff; padding:8px 14px; border-radius:12px; box-shadow:0 1px 4px rgba(20,30,60,.1);}
+  .chip.sc{color:var(--good);} .chip.mv{color:var(--accent);} .chip.tm{color:var(--gold);}
+  .legend{display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin:0 auto 12px; font-size:.82rem; font-weight:700;}
+  .legend span{display:flex; align-items:center; gap:6px;}
+  .swatch{width:14px; height:14px; border-radius:4px; display:inline-block;}
+  .board{max-width:900px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:10px;}
+  .cardc{perspective:900px; aspect-ratio:1/1.18;}
+  .inner{position:relative; width:100%; height:100%; transition:transform .4s; transform-style:preserve-3d; cursor:pointer;}
+  .cardc.up .inner, .cardc.done .inner{transform:rotateY(180deg);}
+  .face{position:absolute; inset:0; backface-visibility:hidden; border-radius:14px; display:flex; align-items:center; justify-content:center;
+    padding:8px; text-align:center; box-shadow:0 2px 8px rgba(20,30,60,.12);}
+  .front{background:linear-gradient(135deg,#3b5bdb,#5b7bf5); color:#fff; font-size:2rem;}
+  .back{background:#fff; transform:rotateY(180deg); border:2px solid #e2e8f0; flex-direction:column; gap:4px;}
+  .back .tag{font-size:.6rem; font-weight:800; letter-spacing:.5px; padding:2px 7px; border-radius:8px; text-transform:uppercase;}
+  .back .txt{font-size:.86rem; font-weight:600; line-height:1.25;}
+  .back.D{border-color:var(--direct); background:var(--direct-soft);} .back.D .tag{background:var(--direct); color:#fff;} .back.D .txt{color:#0b4a7a;}
+  .back.R{border-color:var(--reported); background:var(--reported-soft);} .back.R .tag{background:var(--reported); color:#fff;} .back.R .txt{color:#14532d;}
+  .cardc.done .inner{box-shadow:0 0 0 3px var(--good);} .cardc.done{animation:pulse .5s;}
+  .cardc.bad .inner{box-shadow:0 0 0 3px var(--bad);}
+  @keyframes pulse{50%{transform:scale(1.05);}}
+  .banner{display:none; max-width:900px; margin:16px auto 0; padding:16px; border-radius:14px; background:var(--good-soft); color:var(--good); font-weight:800; text-align:center; font-size:1.1rem;}
+  .banner.show{display:block; animation:pop .4s;}
+  @keyframes pop{0%{transform:scale(.85); opacity:0;}100%{transform:scale(1); opacity:1;}}
+  .btns{display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap;}
+  button.act{border:none; border-radius:10px; padding:11px 18px; font-weight:700; font-size:.9rem; cursor:pointer;}
+  .b-go{background:var(--accent); color:#fff;} .b-alt{background:#e9ecf3; color:var(--ink);}
+  footer{max-width:900px; margin:18px auto 0; text-align:center; color:var(--muted); font-size:.75rem;}
+  @media (max-width:620px){ .board{grid-template-columns:repeat(2,1fr); gap:8px;} .back .txt{font-size:.92rem;} .topnav{margin:-16px -16px 12px;} }
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <img src="assets/logo-h.svg" alt="Nordic International School" onerror="this.style.display='none'">
+  <span class="nav-sp"></span>
+  <button class="navbtn" onclick="history.back()">◀ Back</button>
+  <a class="navbtn primary" href="./">🏫 Portal</a>
+</nav>
+
+<header>
+  <h1>🧠 Memory — Reported Speech</h1>
+  <p>Flip the cards and match each <b style="color:var(--direct)">DIRECT</b> sentence with its <b style="color:var(--reported)">REPORTED</b> version. 9th grade · NIS English</p>
+</header>
+
+<div class="hud">
+  <span class="chip sc">✅ <span id="matched">0</span>/<span id="pairs">8</span></span>
+  <span class="chip mv">🔄 <span id="moves">0</span> moves</span>
+  <span class="chip tm">⏱ <span id="watch">00:00</span></span>
+</div>
+<div class="legend">
+  <span><i class="swatch" style="background:var(--direct)"></i>Direct speech</span>
+  <span><i class="swatch" style="background:var(--reported)"></i>Reported speech</span>
+</div>
+
+<div class="board" id="board"></div>
+<div class="banner" id="banner"></div>
+<div class="btns"><button class="act b-go" onclick="newGame()">🔀 New game</button></div>
+
+<footer>Reported Speech · Memory · NIS English · 2026 — <a href="reported-speech-lab.html" style="color:var(--accent)">More games: Reported Speech Lab →</a></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+<script src="config.js"></script>
+<script>
+window.NISACT=(function(){
+  let _sb=null;
+  function client(){ if(_sb) return _sb; if(!window.supabase||!window.NIS_CONFIG) return null;
+    _sb=window.supabase.createClient(NIS_CONFIG.SUPABASE_URL,NIS_CONFIG.SUPABASE_KEY); return _sb; }
+  async function student(){ const c=client(); if(!c) return null;
+    try{ const u=await c.auth.getUser(); if(!u||!u.data||!u.data.user) return null;
+      const p=await c.from('profiles').select('full_name,first_name,email').eq('id',u.data.user.id).maybeSingle();
+      const d=(p&&p.data)||{}; return {uid:u.data.user.id,email:u.data.user.email||d.email,full_name:d.full_name,first_name:d.first_name};
+    }catch(e){ return null; } }
+  async function submit(r){
+    const s=await student(); if(!s) return {skipped:true};
+    try{ await client().from('activity_attempts').insert({student_id:s.uid,activity:r.activity,title:r.title,level:r.level,
+      score:r.score,total:r.total,hints_used:0,lives_left:r.lives,duration_sec:r.duration}); }catch(e){}
+    try{ const m=Math.floor(r.duration/60), sec=r.duration%60;
+      await fetch(NIS_CONFIG.WRITING_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body:JSON.stringify({skill:'Activity',name:s.full_name||s.first_name||'',email:s.email||'',level:r.level,
+          examTitle:r.title+' - Time '+m+'m '+String(sec).padStart(2,'0')+'s - '+r.moves+' moves',
+          examType:r.activity,score:r.score,total:r.total,duration_min:Math.max(1,Math.round(r.duration/60))})});
+    }catch(e){}
+    return {sent:true};
+  }
+  return {submit};
+})();
+const shuffle=a=>{ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; };
+
+const PAIRS=[
+  {d:'I am tired.',            r:'He said he was tired.'},
+  {d:'I live in Lima.',        r:'She said she lived in Lima.'},
+  {d:'We are busy.',           r:'They said they were busy.'},
+  {d:'I have eaten.',          r:'He said he had eaten.'},
+  {d:'I will go.',             r:'She said she would go.'},
+  {d:'I can swim.',            r:'He said he could swim.'},
+  {d:'Do you like it?',        r:'She asked if I liked it.'},
+  {d:'Close the door.',        r:'He told me to close the door.'},
+];
+
+let deck=[], first=null, lock=false, matched=0, moves=0, elapsed=0, timer=null;
+function newGame(){
+  document.getElementById('banner').classList.remove('show');
+  first=null; lock=false; matched=0; moves=0; elapsed=0;
+  document.getElementById('pairs').textContent=PAIRS.length;
+  deck=[];
+  PAIRS.forEach((p,i)=>{ deck.push({pid:i,kind:'D',txt:p.d}); deck.push({pid:i,kind:'R',txt:p.r}); });
+  deck=shuffle(deck);
+  const b=document.getElementById('board'); b.innerHTML='';
+  deck.forEach((c,idx)=>{
+    const el=document.createElement('div'); el.className='cardc'; el.dataset.i=idx;
+    el.innerHTML=`<div class="inner">
+      <div class="face front">🗣️</div>
+      <div class="face back ${c.kind}"><span class="tag">${c.kind==='D'?'Direct':'Reported'}</span><span class="txt">${c.txt}</span></div>
+    </div>`;
+    el.addEventListener('click',()=>flip(idx,el));
+    b.appendChild(el);
+  });
+  updateHud();
+  clearInterval(timer); timer=setInterval(()=>{ elapsed++; document.getElementById('watch').textContent=fmt(elapsed); },1000);
+}
+function fmt(s){ return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0'); }
+function updateHud(){ document.getElementById('matched').textContent=matched; document.getElementById('moves').textContent=moves; }
+function flip(idx,el){
+  if(lock) return; const c=deck[idx];
+  if(el.classList.contains('done')||el.classList.contains('up')) return;
+  el.classList.add('up');
+  if(first===null){ first={idx,el,c}; return; }
+  if(first.idx===idx) return;
+  moves++; updateHud();
+  const a=first, bsel={idx,el,c};
+  if(a.c.pid===bsel.c.pid){
+    setTimeout(()=>{ a.el.classList.add('done'); bsel.el.classList.add('done'); matched++; updateHud();
+      first=null; if(matched===PAIRS.length) win();
+    },280);
+  } else {
+    lock=true;
+    a.el.classList.add('bad'); bsel.el.classList.add('bad');
+    setTimeout(()=>{ a.el.classList.remove('up','bad'); bsel.el.classList.remove('up','bad'); first=null; lock=false; },820);
+  }
+}
+function win(){
+  clearInterval(timer);
+  const b=document.getElementById('banner');
+  b.innerHTML=`🎉 All matched in ${fmt(elapsed)} with ${moves} moves! <br><span style="font-weight:600;font-size:.85rem">Saved to My Progress (if you\'re signed in).</span>`;
+  b.classList.add('show');
+  if(window.NISACT) NISACT.submit({activity:'memory-reported-speech', title:'Memory — Reported Speech', level:'g9', score:PAIRS.length, total:PAIRS.length, lives:3, duration:Math.max(1,elapsed), moves:moves});
+}
+newGame();
+</script>
+</body>
+</html>
