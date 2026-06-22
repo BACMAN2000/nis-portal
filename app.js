@@ -2086,6 +2086,17 @@ async function cefrFinalPanel(){
   const rows = students.map(s=>{
     const at=aBy[s.id]||[]; const fin=_finalFromData(s, at, sBy[s.id]);
     const tgt=targetLevel(s);
+    // Mock column (solo profesor/admin): el examen exacto que rindió = nivel · número de mock.
+    // Un alumno suele rendir un solo mock; si rindió varios (p. ej. Mock 1 y Mock 2) se listan.
+    const mockCell = (()=>{
+      const ms = at.filter(isMockAttempt);
+      if(!ms.length) return '<span class="muted" style="font-size:.8rem">—</span>';
+      ms.sort((x,y)=>(x.mock||'').localeCompare(y.mock||'')||(x.level||'').localeCompare(y.level||''));
+      const seen=new Set(), out=[];
+      ms.forEach(a=>{ const key=(a.level||'?')+'·'+a.mock; if(seen.has(key))return; seen.add(key);
+        out.push(`<span class="badge lvl" style="font-size:.78rem" title="${esc(mockLabel(a))} · nivel ${esc(a.level||'?')}">${esc(a.level||'?')} · ${esc(mockLabel(a))}</span>`); });
+      return out.join('<br>');
+    })();
     const wAtt=at.filter(a=>a.skill==='Writing').sort((x,y)=>(y.submitted_at||'').localeCompare(x.submitted_at||''))[0];
     const wCell = fin.a2NoWriting ? '<span class="muted" style="font-size:.78rem" title="En A2 Key el Writing va dentro de Reading &amp; Use of English">— en Reading</span>'
       : fin.skills.Writing ? `${_skillCellHtml(fin.skills.Writing)}${wAtt?` <button class="btn sm ghost" style="padding:2px 7px" onclick="gradeWriting('${wAtt.id}')" title="Editar calificación">✎</button>`:''}`
@@ -2106,6 +2117,7 @@ async function cefrFinalPanel(){
       <td><a href="#" onclick="event.preventDefault();studentDetailReport('${s.id}','es')" title="Ver informe detallado e imprimir" style="color:#2d5a8d;font-weight:700;text-decoration:none;cursor:pointer">${esc(s.full_name||'')}</a></td>
       <td><span class="badge grade">${esc(s.grades?.name||'—')}</span> ${s.section?esc(s.section):''}</td>
       <td><span class="badge lvl" style="opacity:.8">${tgt||'—'}</span></td>
+      <td style="white-space:nowrap">${mockCell}</td>
       <td>${_skillCellHtml(fin.skills.Reading)||'<span class="muted">—</span>'}</td>
       <td>${_skillCellHtml(fin.skills.Listening)||'<span class="muted">—</span>'}</td>
       <td>${wCell}</td>
@@ -2117,11 +2129,11 @@ async function cefrFinalPanel(){
 
   $('#main').innerHTML = `
     <h1 style="margin:0 0 4px">🎓 Resultado final · CEFR</h1>
-    <p class="muted" style="margin-top:0;font-size:.88rem">Mejor resultado por destreza convertido a la <b>Escala Cambridge</b> (aprobar ≈60% cae en el límite del nivel; por debajo baja de banda). El <b>final</b> es el promedio de las destrezas evaluadas (se toma el mejor intento <b>aprobado ≥50%</b>; si ninguno aprueba, el de mayor %). <b>Writing</b> y <b>Speaking</b> se califican con la rúbrica Cambridge (0–5 por descriptor). En <b>A2</b> el Writing va dentro de Reading &amp; Use of English (examen A2 Key), así que no cuenta como destreza aparte. <b>Objetivo</b> = nivel al que apunta el grado; <span class="badge off" style="font-size:.66rem;background:#dc2626;color:#fff">▼</span> = por debajo del objetivo, <span class="badge on" style="font-size:.66rem">✓</span> = lo cumple. <span class="badge off" style="font-size:.66rem">prov.</span> = aún faltan destrezas.</p>
+    <p class="muted" style="margin-top:0;font-size:.88rem">Mejor resultado por destreza convertido a la <b>Escala Cambridge</b> (aprobar ≈60% cae en el límite del nivel; por debajo baja de banda). El <b>final</b> es el promedio de las destrezas evaluadas (se toma el mejor intento <b>aprobado ≥50%</b>; si ninguno aprueba, el de mayor %). <b>Writing</b> y <b>Speaking</b> se califican con la rúbrica Cambridge (0–5 por descriptor). En <b>A2</b> el Writing va dentro de Reading &amp; Use of English (examen A2 Key), así que no cuenta como destreza aparte. <b>Mock</b> = examen rendido (nivel · número de mock); “—” = aún no rinde mock. <b>Objetivo</b> = nivel al que apunta el grado; <span class="badge off" style="font-size:.66rem;background:#dc2626;color:#fff">▼</span> = por debajo del objetivo, <span class="badge on" style="font-size:.66rem">✓</span> = lo cumple. <span class="badge off" style="font-size:.66rem">prov.</span> = aún faltan destrezas.</p>
     ${resultsFilterBar(gradeList,'window._setFinalFilter')}
     <div class="card" style="padding:0;overflow-x:auto"><table>
-      <thead><tr><th>Alumno</th><th>Grado</th><th>Objetivo</th><th>Reading &amp; UoE</th><th>Listening</th><th>Writing</th><th>Speaking</th><th>Final CEFR</th><th></th></tr></thead>
-      <tbody>${rows||`<tr><td colspan="9" class="center muted">Sin alumnos para este filtro.</td></tr>`}</tbody>
+      <thead><tr><th>Alumno</th><th>Grado</th><th>Objetivo</th><th>Mock</th><th>Reading &amp; UoE</th><th>Listening</th><th>Writing</th><th>Speaking</th><th>Final CEFR</th><th></th></tr></thead>
+      <tbody>${rows||`<tr><td colspan="10" class="center muted">Sin alumnos para este filtro.</td></tr>`}</tbody>
     </table><div id="resCount" data-noun="alumno(s)" class="muted" style="padding:8px 14px;font-size:.82rem">${students.length} alumno(s)</div></div>`;
 }
 window.cefrFinalPanel = cefrFinalPanel;
