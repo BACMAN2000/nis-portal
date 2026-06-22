@@ -2382,7 +2382,7 @@ function _reportInner(p, at, sp, fin, EN, opts){
     detail+
     '<div style="font-size:13px;font-weight:800;color:#2f5f93;margin:8px 0 4px">'+T.s3+'</div>'+
     globalBox+ commentBox+
-    '<div style="font-size:9px;color:#94a3b8;margin-top:10px">'+T.foot+'</div>';
+    '<div style="font-size:9px;color:#94a3b8;margin-top:10px">'+T.foot+' · build 69</div>';
 }
 
 /* Inyecta una sola vez el CSS que, al imprimir, oculta todo menos el reporte (#print-report). */
