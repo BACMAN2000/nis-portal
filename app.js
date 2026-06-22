@@ -2436,8 +2436,12 @@ window.studentReportPDF = async (studentId, lang)=>{
   // Host fuera de pantalla PERO con dimensiones reales (760px): un wrapper 0×0/overflow:hidden
   // recorta el lienzo de html2canvas y solo captura el encabezado. left:-10000px lo mantiene
   // invisible sin recortar el alto natural del nodo.
+  // El nodo DEBE estar en el origen del documento (0,0) y la captura debe ignorar
+  // el scroll de la página (scrollX/scrollY:0 abajo). Antes estaba fixed a
+  // left:-10000 y, con la página desplazada (tabla larga del Resultado final),
+  // html2canvas heredaba el scroll y recortaba/perdía el lado izquierdo del PDF.
   const host=document.createElement('div');
-  host.style.cssText='position:fixed;left:-10000px;top:0;width:760px;background:#fff;z-index:-1';
+  host.style.cssText='position:absolute;left:0;top:0;width:760px;background:#fff;z-index:-1';
   host.appendChild(node); document.body.appendChild(host);
   await Promise.all(Array.from(node.querySelectorAll('img')).map(im=>im.complete?Promise.resolve():new Promise(r=>{im.onload=im.onerror=r;})));
   const fname='NIS-'+(EN?'Report':'Resultado')+'-'+(p.full_name||'alumno').replace(/\s+/g,'_')+'-'+(EN?'EN':'ES')+'.pdf';
@@ -2445,7 +2449,7 @@ window.studentReportPDF = async (studentId, lang)=>{
   // html2canvas capturaba el lienzo a un ancho inconsistente (recortaba el lado
   // derecho → "solo se ve la mitad / muy grande para A4"). Fijar width+windowWidth
   // al ancho real del nodo hace la captura determinista y el PDF entra en A4.
-  const opt={ margin:[10,8,10,8], filename:fname, image:{type:'jpeg',quality:0.98}, html2canvas:{scale:2,useCORS:true,backgroundColor:'#ffffff',width:760,windowWidth:760}, jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}, pagebreak:{mode:['avoid-all','css','legacy']} };
+  const opt={ margin:[10,8,10,8], filename:fname, image:{type:'jpeg',quality:0.98}, html2canvas:{scale:2,useCORS:true,backgroundColor:'#ffffff',width:760,windowWidth:760,scrollX:0,scrollY:0}, jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}, pagebreak:{mode:['avoid-all','css','legacy']} };
   try{ await window.html2pdf().set(opt).from(node).save(); }
   catch(e){ alert('No se pudo generar el PDF: '+(e&&e.message||e)); }
   finally{ host.remove(); }
