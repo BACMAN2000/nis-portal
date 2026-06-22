@@ -2382,14 +2382,24 @@ function _reportInner(p, at, sp, fin, EN, opts){
     detail+
     '<div style="font-size:13px;font-weight:800;color:#2f5f93;margin:8px 0 4px">'+T.s3+'</div>'+
     globalBox+ commentBox+
-    '<div style="font-size:9px;color:#94a3b8;margin-top:10px">'+T.foot+' · build 69</div>';
+    '<div style="font-size:9px;color:#94a3b8;margin-top:10px">'+T.foot+' · build 70</div>';
 }
 
 /* Inyecta una sola vez el CSS que, al imprimir, oculta todo menos el reporte (#print-report). */
 function _ensurePrintCss(){
   if(document.getElementById('nis-print-css')) return;
   const st=document.createElement('style'); st.id='nis-print-css';
-  st.textContent='@media print{body *{visibility:hidden!important}#print-report,#print-report *{visibility:visible!important}#print-report{position:absolute;left:0;top:0;width:100%;border:0!important;margin:0!important;box-shadow:none!important}.no-print{display:none!important}@page{margin:12mm}}';
+  // Al imprimir (Ctrl+P): el reporte debe ocupar el ancho completo de la hoja
+  // (sin el max-width:820px que lo desbordaba) y DEBE imprimir los colores de
+  // fondo (barras de PROGRESO y badges) -> print-color-adjust:exact.
+  st.textContent='@media print{'+
+    'html,body{margin:0!important;padding:0!important;background:#fff!important}'+
+    'body *{visibility:hidden!important}'+
+    '#print-report,#print-report *{visibility:visible!important;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}'+
+    '#print-report{position:absolute!important;left:0!important;top:0!important;width:100%!important;max-width:100%!important;box-sizing:border-box!important;padding:0!important;margin:0!important;border:0!important;border-radius:0!important;box-shadow:none!important}'+
+    '.no-print{display:none!important}'+
+    '@page{size:A4;margin:12mm}'+
+  '}';
   document.head.appendChild(st);
 }
 
