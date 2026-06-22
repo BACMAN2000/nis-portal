@@ -1973,17 +1973,37 @@ function bestAttemptScale(atts, skill){
   return { scale:pick.scale, cefr:scaleToCefr(pick.scale), level:pick.a.level,
            pct:Math.round(pick.pct), source:mockLabel(pick.a), passed:passed.length>0 };
 }
+/* Per-student CEFR override, by skill — teacher's professional judgement.
+   This does NOT change the scoring formula: it pins one student's band when
+   the teacher decides the auto-mapped result doesn't reflect the real level.
+   The Cambridge scale is clamped into the chosen band so the displayed scale
+   (and the overall average) stay coherent with the pinned CEFR. */
+const FINAL_CEFR_OVERRIDE = {
+  // Kai Coll Mayo (G6 · A) — teacher: Reading & Use of English is A2, not B1.
+  'd441885a-6ec9-4b70-92db-10fa352326d2': { Reading:'A2' },
+};
+function _applyCefrOverride(profile, skill, b){
+  if(!b) return b;
+  const ov = FINAL_CEFR_OVERRIDE[profile && profile.id];
+  const lvl = ov && ov[skill];
+  if(!lvl || lvl===b.cefr) return b;
+  const band = CEFR_BANDS.find(x=>x.cefr===lvl);
+  if(!band) return b;
+  const top = CEFR_BANDS.filter(x=>x.min>band.min).reduce((m,x)=>Math.min(m,x.min),230) - 1;
+  const scale = Math.max(band.min, Math.min(top, b.scale));
+  return { ...b, cefr:lvl, scale, overridden:true };
+}
 /* Combine the four skills into a provisional/final CEFR result. */
 function _finalFromData(profile, atts, spk){
   // A2 Key is a combined "Reading and Writing" paper, so Writing is NOT a
   // separate skill at A2 — it's embedded in Reading & Use of English. A2-track
   // students are therefore scored on Reading + Listening + Speaking only.
   const isA2 = targetLevel(profile)==='A2';
-  const Reading   = bestAttemptScale(atts,'Reading');
-  const Listening = bestAttemptScale(atts,'Listening');
+  const Reading   = _applyCefrOverride(profile,'Reading',  bestAttemptScale(atts,'Reading'));
+  const Listening = _applyCefrOverride(profile,'Listening',bestAttemptScale(atts,'Listening'));
   // A2 (KET) normalmente combina Reading+Writing (sin Writing aparte). Pero si la
   // profesora SÍ calificó un Writing (p. ej. G7 a nivel B1), se incluye igual.
-  const Writing   = bestAttemptScale(atts,'Writing');
+  const Writing   = _applyCefrOverride(profile,'Writing',  bestAttemptScale(atts,'Writing'));
   let Speaking = null;
   if(spk && spk.percent!=null){
     const lvl = spk.level || targetLevel(profile) || 'B1';
