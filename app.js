@@ -2441,7 +2441,11 @@ window.studentReportPDF = async (studentId, lang)=>{
   host.appendChild(node); document.body.appendChild(host);
   await Promise.all(Array.from(node.querySelectorAll('img')).map(im=>im.complete?Promise.resolve():new Promise(r=>{im.onload=im.onerror=r;})));
   const fname='NIS-'+(EN?'Report':'Resultado')+'-'+(p.full_name||'alumno').replace(/\s+/g,'_')+'-'+(EN?'EN':'ES')+'.pdf';
-  const opt={ margin:8, filename:fname, image:{type:'jpeg',quality:0.96}, html2canvas:{scale:2,useCORS:true,backgroundColor:'#ffffff',windowWidth:820}, jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}, pagebreak:{mode:['css','legacy']} };
+  // windowWidth debe COINCIDIR con el ancho del nodo (760). Antes estaba en 820 y
+  // html2canvas capturaba el lienzo a un ancho inconsistente (recortaba el lado
+  // derecho → "solo se ve la mitad / muy grande para A4"). Fijar width+windowWidth
+  // al ancho real del nodo hace la captura determinista y el PDF entra en A4.
+  const opt={ margin:[10,8,10,8], filename:fname, image:{type:'jpeg',quality:0.98}, html2canvas:{scale:2,useCORS:true,backgroundColor:'#ffffff',width:760,windowWidth:760}, jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}, pagebreak:{mode:['avoid-all','css','legacy']} };
   try{ await window.html2pdf().set(opt).from(node).save(); }
   catch(e){ alert('No se pudo generar el PDF: '+(e&&e.message||e)); }
   finally{ host.remove(); }
