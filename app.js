@@ -2396,7 +2396,7 @@ function _reportInner(p, at, sp, fin, EN, opts){
     detail+
     '<div style="font-size:13px;font-weight:800;color:#2f5f93;margin:8px 0 4px">'+T.s3+'</div>'+
     globalBox+ commentBox+
-    '<div style="font-size:9px;color:#94a3b8;margin-top:10px">'+T.foot+' · build 71</div>';
+    '<div style="font-size:9px;color:#94a3b8;margin-top:10px">'+T.foot+' · build 72</div>';
 }
 
 /* Inyecta una sola vez el CSS que, al imprimir, oculta todo menos el reporte (#print-report). */
@@ -2463,6 +2463,21 @@ window.studentReportPDF = async (studentId, lang)=>{
   host.style.cssText='position:absolute;left:0;top:0;width:760px;background:#fff;z-index:-1';
   host.appendChild(node); document.body.appendChild(host);
   try{
+    // El logo es un SVG SIN width/height (solo viewBox 569x107): html2canvas lo
+    // renderiza a su tamaño intrínseco (~569px) y salía gigante. Lo rasterizamos a
+    // un PNG del tamaño exacto antes de capturar.
+    try{
+      const logo=node.querySelector('img[src*="logo"]');
+      if(logo){
+        const r=await fetch('assets/logo-h.svg'); let svg=await r.text();
+        svg=svg.replace(/<svg /i,'<svg width="300" height="57" ');
+        const im=new Image();
+        await new Promise((res,rej)=>{ im.onload=res; im.onerror=rej; setTimeout(rej,1500); im.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg); });
+        const c=document.createElement('canvas'); c.width=300; c.height=57;
+        c.getContext('2d').drawImage(im,0,0,300,57);
+        logo.src=c.toDataURL('image/png');
+      }
+    }catch(_){}
     await Promise.all(Array.from(node.querySelectorAll('img')).map(im=>im.complete?Promise.resolve():new Promise(r=>{im.onload=im.onerror=r;setTimeout(r,1500);})));
     try{ if(document.fonts&&document.fonts.ready) await Promise.race([document.fonts.ready, new Promise(r=>setTimeout(r,1200))]); }catch(_){}
     // CLAVE: capturar el nodo DIRECTAMENTE con html2canvas (no via html2pdf, que
