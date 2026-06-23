@@ -2225,6 +2225,20 @@ function ensureHtml2pdf(){
   });
   return _h2pLib;
 }
+/* Carga html2canvas + jsPDF por separado. Se captura el nodo DIRECTAMENTE con
+   html2canvas (no con html2pdf, que envuelve el nodo en un contenedor del ancho
+   de la VENTANA y hacía que el PDF saliera encogido/cortado en ventanas reales). */
+let _pdfLibs=null;
+function ensurePdfLibs(){
+  if(window.html2canvas && window.jspdf && window.jspdf.jsPDF) return Promise.resolve();
+  if(_pdfLibs) return _pdfLibs;
+  const load=(src)=>new Promise((res,rej)=>{ const s=document.createElement('script'); s.src=src; s.onload=res; s.onerror=()=>rej(new Error('No se pudieron cargar las librerías de PDF (conexión).')); document.head.appendChild(s); });
+  _pdfLibs=(async()=>{
+    if(!window.html2canvas) await load('https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js');
+    if(!(window.jspdf&&window.jspdf.jsPDF)) await load('https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js');
+  })();
+  return _pdfLibs;
+}
 /* Inline SVG of the Cambridge English Scale / CEFR with a "you are here" marker. */
 function cefrScaleSVG(scale, cefr){
   const W=720,H=560,topY=46,botY=512,minV=80,maxV=230;
@@ -2382,7 +2396,7 @@ function _reportInner(p, at, sp, fin, EN, opts){
     detail+
     '<div style="font-size:13px;font-weight:800;color:#2f5f93;margin:8px 0 4px">'+T.s3+'</div>'+
     globalBox+ commentBox+
-    '<div style="font-size:9px;color:#94a3b8;margin-top:10px">'+T.foot+' · build 70</div>';
+    '<div style="font-size:9px;color:#94a3b8;margin-top:10px">'+T.foot+' · build 71</div>';
 }
 
 /* Inyecta una sola vez el CSS que, al imprimir, oculta todo menos el reporte (#print-report). */
@@ -2433,34 +2447,49 @@ window.studentDetailReport = async (studentId, lang)=>{
 
 window.studentReportPDF = async (studentId, lang)=>{
   lang = (lang==='en') ? 'en' : 'es';
-  try{ await ensureHtml2pdf(); }catch(e){ alert(e.message); return; }
+  try{ await ensurePdfLibs(); }catch(e){ alert(e.message); return; }
   const { data:p, error } = await sb.from('profiles').select('id,full_name,email,section,cefr_level,grade_id,grades(name)').eq('id',studentId).single();
   if(error){ alert('No se pudo cargar el alumno: '+error.message); return; }
   const { data:at } = await sb.from('exam_attempts').select('id,skill,level,percent,score,total,mock,submitted_at,breakdown').eq('student_id',studentId);
   const { data:sp } = await sb.from('speaking_results').select('*').eq('student_id',studentId).maybeSingle();
   const fin=_finalFromData(p, at||[], sp);
   const EN = lang==='en';
+  const fname='NIS-'+(EN?'Report':'Resultado')+'-'+(p.full_name||'alumno').replace(/\s+/g,'_')+'-'+(EN?'EN':'ES')+'.pdf';
+  // Nodo del reporte (ancho fijo 760px) en el origen del documento.
   const node=document.createElement('div');
   node.style.cssText='width:760px;padding:22px;font-family:Montserrat,system-ui,sans-serif;color:#0f172a;background:#fff';
   node.innerHTML=_reportInner(p, at||[], sp, fin, EN, {});
-  // Host fuera de pantalla PERO con dimensiones reales (760px): un wrapper 0×0/overflow:hidden
-  // recorta el lienzo de html2canvas y solo captura el encabezado. left:-10000px lo mantiene
-  // invisible sin recortar el alto natural del nodo.
-  // El nodo DEBE estar en el origen del documento (0,0) y la captura debe ignorar
-  // el scroll de la página (scrollX/scrollY:0 abajo). Antes estaba fixed a
-  // left:-10000 y, con la página desplazada (tabla larga del Resultado final),
-  // html2canvas heredaba el scroll y recortaba/perdía el lado izquierdo del PDF.
   const host=document.createElement('div');
   host.style.cssText='position:absolute;left:0;top:0;width:760px;background:#fff;z-index:-1';
   host.appendChild(node); document.body.appendChild(host);
-  await Promise.all(Array.from(node.querySelectorAll('img')).map(im=>im.complete?Promise.resolve():new Promise(r=>{im.onload=im.onerror=r;})));
-  const fname='NIS-'+(EN?'Report':'Resultado')+'-'+(p.full_name||'alumno').replace(/\s+/g,'_')+'-'+(EN?'EN':'ES')+'.pdf';
-  // windowWidth debe COINCIDIR con el ancho del nodo (760). Antes estaba en 820 y
-  // html2canvas capturaba el lienzo a un ancho inconsistente (recortaba el lado
-  // derecho → "solo se ve la mitad / muy grande para A4"). Fijar width+windowWidth
-  // al ancho real del nodo hace la captura determinista y el PDF entra en A4.
-  const opt={ margin:[10,8,10,8], filename:fname, image:{type:'jpeg',quality:0.98}, html2canvas:{scale:2,useCORS:true,backgroundColor:'#ffffff',width:760,windowWidth:760,scrollX:0,scrollY:0}, jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}, pagebreak:{mode:['avoid-all','css','legacy']} };
-  try{ await window.html2pdf().set(opt).from(node).save(); }
-  catch(e){ alert('No se pudo generar el PDF: '+(e&&e.message||e)); }
+  try{
+    await Promise.all(Array.from(node.querySelectorAll('img')).map(im=>im.complete?Promise.resolve():new Promise(r=>{im.onload=im.onerror=r;setTimeout(r,1500);})));
+    try{ if(document.fonts&&document.fonts.ready) await Promise.race([document.fonts.ready, new Promise(r=>setTimeout(r,1200))]); }catch(_){}
+    // CLAVE: capturar el nodo DIRECTAMENTE con html2canvas (no via html2pdf, que
+    // envolvía el nodo en un contenedor del ancho de la ventana → el reporte salía
+    // encogido a la izquierda y cortado en ventanas reales). Así el lienzo siempre
+    // es del ancho del nodo (760), sin importar el ancho ni el scroll de la página.
+    const canvas=await window.html2canvas(node,{scale:2,useCORS:true,backgroundColor:'#ffffff',scrollX:0,scrollY:0,windowWidth:Math.max(760,document.documentElement.scrollWidth),windowHeight:document.documentElement.scrollHeight});
+    const { jsPDF }=window.jspdf;
+    const pdf=new jsPDF({unit:'mm',format:'a4',orientation:'portrait'});
+    const margin=8, pw=210, ph=297, iw=pw-2*margin, pageContentH=ph-2*margin;
+    const pxPerMM=canvas.width/iw;                       // px de lienzo por mm
+    const fullImgH=canvas.height/pxPerMM;                // alto total en mm
+    if(fullImgH<=pageContentH+0.5){
+      pdf.addImage(canvas.toDataURL('image/jpeg',0.95),'JPEG',margin,margin,iw,fullImgH);
+    } else {
+      const pageHpx=Math.floor(pageContentH*pxPerMM);    // px de lienzo por hoja
+      let y=0, first=true;
+      while(y<canvas.height){
+        const sliceH=Math.min(pageHpx, canvas.height-y);
+        const sc=document.createElement('canvas'); sc.width=canvas.width; sc.height=sliceH;
+        sc.getContext('2d').drawImage(canvas,0,y,canvas.width,sliceH,0,0,canvas.width,sliceH);
+        if(!first) pdf.addPage();
+        pdf.addImage(sc.toDataURL('image/jpeg',0.95),'JPEG',margin,margin,iw,sliceH/pxPerMM);
+        y+=sliceH; first=false;
+      }
+    }
+    pdf.save(fname);
+  }catch(e){ alert('No se pudo generar el PDF: '+(e&&e.message||e)); }
   finally{ host.remove(); }
 };
