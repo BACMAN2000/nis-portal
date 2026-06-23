@@ -283,13 +283,16 @@ footer{background:var(--deep); color:#9fb6d4; padding:28px 0; font-size:13px; te
   <div id="weeks"></div>
 </div></section>
 
+<section class="page" id="cases"><div class="wrap"><div id="casesBox"></div></div></section>
+
 <footer>Nordic International School of Lima · Model United Nations Academy · Edition 2026 — “Be the diplomat the world needs.”</footer>
 <div class="toast" id="toast"></div>
 
 <script>
 /* ---------- DATA ---------- */
-const TABS=[['home','Home'],['learn','Modules'],['quiz','Quiz'],['builder','Resolution'],['paper','Position Paper'],['speech','Speech Coach'],['ref','Reference'],['plan','8-Week Plan']];
+const TABS=[['home','Home'],['cases','Debate Cases'],['learn','Modules'],['quiz','Quiz'],['builder','Resolution'],['paper','Position Paper'],['speech','Speech Coach'],['ref','Reference'],['plan','8-Week Plan']];
 const FEATURES=[
+ ['cases','🌐','International Debates','Read a 10-minute briefing, run a 10-minute floor debate, then split into six committee scenarios.'],
  ['quiz','🎯','Knowledge quiz','15 questions with instant feedback across the whole course.'],
  ['builder','📜','Resolution builder','Assemble a correctly-formatted draft resolution and export it.'],
  ['paper','🗂️','Position paper builder','Draft a one-page paper with the Background→Position→Solutions structure.'],
@@ -495,6 +498,212 @@ function renderWeeks(){
   document.getElementById('progBar').style.width=(c/8*100)+'%';
 }
 renderWeeks();
+
+
+/* ---------- DEBATE CASES (International Debates) ---------- */
+const CX_FLOW=[
+ ["Motion & Roll Call","Chair reads the motion; delegations confirm presence."],
+ ["Opening Speeches","One speaker For, one Against (1 min each)."],
+ ["Moderated Caucus","Alternating 45-second interventions on the floor."],
+ ["Points & Rebuttals","Delegates may raise a Point of Information."],
+ ["Closing & Vote","Summaries, then the House votes on the motion."]];
+
+const CX_CASES=[
+{
+ id:"silicon", brand:"The Silicon", accent:"Accord", ref:"GA/AI/01",
+ sub:"A Model United Nations dossier on the global governance of artificial intelligence — when one nation’s breakthrough becomes the whole world’s dilemma.",
+ title:"The Silicon Accord: Who Owns the Future of Thinking Machines?",
+ brief:[
+"In March of this year, a private laboratory in the small, technologically advanced nation of <b>Aurelia</b> announced that it had built the most powerful artificial intelligence system ever created. The system, named <b>ORACLE</b>, could diagnose diseases more accurately than human doctors, predict crop failures months in advance, translate every living language in real time, and design new medicines in days rather than years. Within a week, the announcement had changed the mood of the entire planet. Some governments celebrated. Others were afraid. Almost all of them realised the same uncomfortable truth: the most important technology of the century was now controlled by a single company, in a single country, answerable to almost no one.",
+"The benefits arrived first. Hospitals that licensed ORACLE reported that waiting lists collapsed. Farmers in drought-prone regions received warnings that saved entire harvests. A team of researchers used the system to identify a promising treatment for a rare childhood illness that had defeated scientists for thirty years. For millions of people, the machine looked like a gift. Supporters argued that slowing it down with rules and committees would be cruel — that every month of delay meant lives lost that could have been saved.",
+"But the worries arrived close behind. Aurelia sold access to ORACLE at a high price, and only wealthy nations could afford it. Critics warned that the world was splitting into the “AI-rich” and the “AI-poor,” and that the gap between them would grow faster than any gap in history. Workers in call centres, translation offices, and legal firms began losing their jobs as the system did their tasks instantly and for free. Within months, three countries reported the largest single-year rise in unemployment they had ever recorded.",
+"Then came the security questions. Investigators discovered that an unknown group had used a copy of the system to generate flawless fake videos of a president declaring war — videos so convincing that two neighbouring armies were placed on alert before the truth came out. Military planners admitted, quietly, that the same technology that designed medicines could be turned to designing weapons, and that an AI capable of out-thinking human commanders might one day be handed control of real ones. A leaked memo suggested that at least four governments were already training their own secret versions, with no safety limits at all.",
+"Privacy collapsed in places too. Because ORACLE learned by absorbing oceans of data, it had quietly memorised the medical records, private messages, and faces of millions of people who had never agreed to anything. Human-rights groups asked a simple question that no one could answer cleanly: <i>if a machine knows everything about you, and a government owns the machine, are you still free?</i>",
+"By the time the United Nations called an emergency session, the positions had hardened. Aurelia insisted that ORACLE was its own invention, its own property, and its own right to sell — and that international rules were simply jealous nations trying to steal what they could not build. A bloc of developing countries demanded that the technology be declared a “common heritage of humankind,” shared with everyone, like the deep sea or outer space. The world’s largest powers wanted strict controls — but each suspected the others of secretly wanting the controls to apply to everyone <i>except</i> themselves. And a coalition of smaller states simply pleaded for a pause: a global agreement, a “Silicon Accord,” before the technology raced beyond the reach of any law."
+ ],
+ question:"The Secretary-General has placed one decision before the delegates. Should artificial intelligence be treated as private property, as shared human heritage, or as a danger to be tightly controlled? Who decides what a thinking machine is allowed to do — the country that built it, the people it affects, or the world as a whole? And can a single international agreement hold together nations that disagree about almost everything else?",
+ vocab:"<i>regulation</i> (official rules) · <i>moratorium</i> (a temporary pause) · <i>sovereignty</i> (a nation’s right to govern itself) · <i>proliferation</i> (rapid spread, esp. of weapons) · <i>equitable access</i> (fair sharing) · <i>oversight</i> (independent supervision) · <i>common heritage of humankind</i> (belonging to everyone, owned by no one).",
+ motion:"“Advanced artificial intelligence should be placed under binding international control, even if that limits the rights of the nations that create it.”",
+ forArgs:[
+  "A technology that can fake a declaration of war is too dangerous for one company to own.",
+  "Shared rules prevent a secret arms race — four states are already training unsafe versions.",
+  "If only the rich can buy it, AI will widen inequality more than any technology in history.",
+  "No nation should be free to harvest the private data of people who never consented."],
+ againstArgs:[
+  "Every month of delay costs lives the system could save — slowing it down is the real harm.",
+  "Aurelia built it; seizing or controlling it punishes success and violates sovereignty.",
+  "International “controls” will be ignored by the very states most likely to misuse AI.",
+  "Innovation thrives in freedom — heavy rules will simply push research underground."],
+ coms:[
+  ["DISEC","Disarmament & International Security","cx-disec","A leaked memo confirms four governments are training secret military versions of ORACLE with <b>no safety limits</b>, and one has tested an AI that selects its own targets without a human deciding to fire.","Draft a treaty on “autonomous weapons.” Must a human always approve before an AI takes a life? Can a ban be verified — or only promised?","A treaty banning lethal autonomous weapons systems"],
+  ["UNHRC","Human Rights Council","cx-hrc","ORACLE memorised the medical records, messages and faces of millions who <b>never consented</b>. One government now uses it to identify protesters from street-camera footage in seconds.","Define a global “right to privacy from machines.” Where is the line between public safety and mass surveillance?","Protecting privacy and human rights from AI surveillance"],
+  ["WHO","World Health Organization","cx-who","ORACLE found a cure for a rare childhood illness and emptied hospital waiting lists — but only wealthy nations can afford a licence. A misdiagnosis in a poorer clinic, using a cheap copy, has just caused its first death.","Should life-saving medical AI be a paid product or a human right? Who is responsible when the machine is wrong?","Ensuring equitable and safe access to medical artificial intelligence"],
+  ["ECOSOC","Economic & Social Council","cx-ecosoc","Three countries report record unemployment as call-centre, translation and legal jobs vanish overnight. Meanwhile Aurelia’s economy is booming, widening the gap between the “AI-rich” and the “AI-poor.”","Design a plan for the displaced workers. Retraining? A tax on AI profits? Should the gains be shared across borders?","Managing the economic impact of artificial intelligence on employment"],
+  ["UNESCO","Education, Science & Culture","cx-unesco","Flawless fake videos of a president declaring war nearly triggered a real conflict. Students now submit essays no teacher can prove they wrote, and minority languages are being rewritten by the machine that “translates” them.","How does the world protect truth, education and culture in an age of perfect fakes? Should AI-made content be labelled by law?","Protecting truth and culture from AI-generated disinformation"],
+  ["UNSC","Security Council","cx-sc","Aurelia refuses all oversight, calling ORACLE its sovereign property. A developing bloc demands the system be declared “common heritage of humankind.” Two great powers threaten sanctions; a third hints it will veto any deal.","Forge a binding resolution the powers will actually sign. Sanctions, inspections, or a shared global AI agency — and who holds the veto?","International oversight of advanced artificial-intelligence systems"]]
+},
+{
+ id:"sixteen", brand:"The Sixteen", accent:"Rule", ref:"GA/SOC/02",
+ sub:"A Model United Nations dossier on children, screens and the limits of the law — when protecting the young means restricting their freedom.",
+ title:"The Sixteen Rule: Should the Law Decide When a Child Goes Online?",
+ brief:[
+"This year the nation of <b>Valoria</b> passed the strictest law of its kind in the world: no one under the age of sixteen may hold a social-media account, and every platform must prove the age of its users or face fines large enough to bankrupt them. Supporters called it the bravest child-protection law of the century. Critics called it the largest restriction on young people’s freedom ever written into law. Within days, a dozen governments announced they were considering the same step, and the United Nations placed the question on its agenda.",
+"The case for the law was built on a wave of alarming evidence. Across many countries, rates of teenage anxiety, depression, self-harm and sleeplessness had climbed at the same time that phones and endless feeds entered children’s bedrooms. Doctors described teenagers who scrolled until three in the morning and woke up exhausted. Parents told stories of bullying that followed their children home from school and never switched off. Several schools that banned phones reported calmer classrooms within weeks. To supporters, the conclusion was obvious: a child cannot truly consent to having their attention and personal data harvested for profit, so the law must step in where parents and companies have failed.",
+"But the evidence cut both ways. For millions of young people, social media is not a threat — it is friendship, learning, news, activism and belonging. It is how a lonely teenager in a small town finds others like themselves, how a young volunteer organises a beach clean-up, how a student watches a free tutorial the night before an exam. Researchers warned that cutting teenagers off could deepen the very isolation the law hoped to cure, and that the benefits and harms of social media depend far more on <i>how</i> it is used than on a single birthday.",
+"Then came the hardest problem of all: enforcement. To keep under-sixteens out, platforms would have to check the age of <i>everyone</i> — demanding uploaded identity documents or live face scans from hundreds of millions of users. Privacy experts pointed out the bitter irony: a law meant to protect children would build the largest database of children’s faces and identities ever assembled. Meanwhile tech-savvy teenagers were already slipping past the rules with borrowed logins and simple tricks, raising the question of whether the ban could ever truly work.",
+"The divide between rich and poor nations cut deeper still. In wealthy countries, a banned teenager could turn to private tutors, paid apps and well-funded libraries. But in many parts of the world, a single social platform <i>is</i> the internet — the classroom, the marketplace, the place a small family business finds its customers. A blanket ban, delegates from those nations warned, might quietly cut their poorest children off from the only education and opportunity they could reach, while changing little for the privileged.",
+"And beneath the science and the economics ran the politics. The platforms lobbied furiously, spending fortunes to soften or delay the rules. A few governments, child-rights groups whispered, liked the ban for the wrong reason — because silencing young people online also silenced a generation of activists. Children’s organisations themselves were split: some demanded protection above all, others insisted that young people have a <i>right to take part</i> in the world and a right to be heard in the laws made about them. Smaller states simply asked for one clear global standard, rather than a patchwork of rules a child could escape by crossing an invisible border online."
+ ],
+ question:"Should the world set a minimum age for social media, teach children to navigate it, or leave the choice to families? Who should decide what is safe — governments, platforms, parents, or young people themselves? And can any rule be enforced without building the very surveillance it claims to prevent?",
+ vocab:"<i>age verification</i> (proving how old a user is) · <i>digital literacy</i> (skills to use technology wisely) · <i>algorithm</i> (the system that chooses what you see) · <i>safeguarding</i> (protecting children from harm) · <i>data minimisation</i> (collecting as little personal data as possible) · <i>participation rights</i> (a child’s right to take part in society) · <i>jurisdiction</i> (the area where a law applies).",
+ motion:"“This House would prohibit children under the age of sixteen from using social media.”",
+ forArgs:[
+  "Rising teen anxiety, depression and sleep loss track closely with social-media use.",
+  "Children cannot truly consent to having their data and attention harvested for profit.",
+  "A clear legal age is simpler to enforce than asking every parent to police every app.",
+  "Platforms designed addictive feeds aimed at children and will not fix themselves."],
+ againstArgs:[
+  "For many teenagers social media is friendship, learning, activism and a lifeline.",
+  "Age checks demand IDs or face scans — mass surveillance of the very children we protect.",
+  "Bans push teens to hidden, less safe corners of the internet, not offline.",
+  "In poorer regions social media is the classroom and the marketplace; a ban cuts them off."],
+ coms:[
+  ["WHO","World Health Organization","cx-who","Clinics report the sharpest rise in teenage anxiety, self-harm and sleep disorders ever recorded, and doctors link much of it to late-night feeds — yet the same platforms host mental-health support groups that thousands of teens rely on.","Is screen time a public-health emergency? Recommend limits, warnings or treatment — without cutting off the help teens already use.","Reducing the mental-health harms of social media on adolescents"],
+  ["UNICEF","UN Children’s Fund","cx-unicef","A child-rights survey finds teenagers split down the middle: some beg for protection from bullying and pressure; others say the ban silences their voice, their friendships and their right to take part in the world.","Balance the right to be protected with the right to participate. Should children have a say in the laws made about them?","Protecting children online while respecting their participation rights"],
+  ["UNESCO","Education, Science & Culture","cx-unesco","In one region social media is where lessons, homework groups and free tutorials live; a blanket ban would cut poorer students off from their only classroom, while wealthier families simply pay for private tools.","Should the answer be banning access, or teaching digital literacy? How do we close — not widen — the learning gap?","Digital literacy and equitable online education for minors"],
+  ["UNHRC","Human Rights Council","cx-hrc","To enforce the ban, platforms must verify every user’s age with ID uploads or face scans — assembling a database of children’s identities, the largest surveillance of minors ever proposed.","Where is the line between safeguarding children and surveilling them? Can a right to privacy survive mandatory age checks?","Privacy-respecting age verification and online freedom of expression"],
+  ["ECOSOC","Economic & Social Council","cx-ecosoc","A booming “age-verification” industry lobbies hard for the law, while teen creators, small online businesses and youth workers warn that livelihoods and a generation of digital skills will vanish overnight.","Who gains and who loses economically from the ban? Protect children without handing the internet to a few verification giants.","Regulating age-verification and protecting young digital workers"],
+  ["LEGAL","Legal (Sixth Committee)","cx-legal","Children cross borders online in a single click, but laws stop at borders. One nation bans under-sixteens; its neighbour does not; the platform is based in a third. A teen banned at home simply logs in through another country.","Can a social-media age limit work without a global treaty? Who has jurisdiction when child, platform and harm are in three different countries?","An international framework for enforcing online age limits"]]
+}
+];
+
+/* inject styles once */
+(function(){
+  var css=document.createElement('style');
+  css.textContent=
+  '#cases .cx-switch{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;}'+
+  '#cases .cx-case-tab{cursor:pointer;border:1px solid var(--line);background:#fff;color:var(--navy);border-radius:999px;padding:9px 18px;font-weight:700;font-size:14px;font-family:inherit;}'+
+  '#cases .cx-case-tab.on{background:var(--navy);color:#fff;border-color:var(--navy);}'+
+  '#cases .cx-hero{background:linear-gradient(135deg,var(--deep),var(--navy));color:#fff;border-radius:16px;padding:28px 30px;border:1px solid rgba(255,255,255,.1);margin-bottom:22px;}'+
+  '#cases .cx-hero .kick{letter-spacing:.3em;text-transform:uppercase;font-size:11px;font-weight:700;color:var(--celeste);}'+
+  '#cases .cx-hero h2{color:#fff;font-size:clamp(24px,4vw,38px);margin:8px 0 8px;}'+
+  '#cases .cx-hero h2 em{color:var(--celeste);font-style:italic;}'+
+  '#cases .cx-hero p{color:#cdd9ea;max-width:680px;margin:0;}'+
+  '#cases .cx-pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;}'+
+  '#cases .cx-pills span{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#eaf0f7;padding:6px 13px;border-radius:999px;font-size:12px;}'+
+  '#cases .cx-pills b{color:var(--celeste);}'+
+  '#cases .cx-timer{position:sticky;top:54px;z-index:20;background:var(--navy);color:#fff;border-radius:12px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center;padding:10px 14px;margin-bottom:22px;box-shadow:0 6px 16px rgba(13,29,51,.2);}'+
+  '#cases .cx-clock{font-weight:800;font-size:28px;min-width:104px;text-align:center;letter-spacing:1px;}'+
+  '#cases .cx-clock.warn{color:#ffd479;}#cases .cx-clock.done{color:#ff8a8a;}'+
+  '#cases .cx-tlabel{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--celeste);font-weight:700;}'+
+  '#cases .cx-phase{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#fff;font-weight:700;}'+
+  '#cases .cx-b{cursor:pointer;border:none;border-radius:8px;padding:8px 14px;font-weight:700;font-size:13px;font-family:inherit;}'+
+  '#cases .cx-read{background:var(--celeste);color:var(--navy);}#cases .cx-deb{background:var(--blue);color:#fff;}#cases .cx-gh{background:rgba(255,255,255,.14);color:#fff;}'+
+  '#cases .eyebrow2{color:var(--blue);font-weight:700;letter-spacing:2px;font-size:12px;text-transform:uppercase;}'+
+  '#cases .cx-read-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px clamp(18px,4vw,40px);box-shadow:0 8px 24px rgba(13,29,51,.05);}'+
+  '#cases .cx-dateline{text-transform:uppercase;letter-spacing:.18em;font-size:11px;color:var(--blue);font-weight:700;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:18px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;}'+
+  '#cases .cx-read-card h3{font-size:clamp(20px,3vw,28px);margin-bottom:14px;}'+
+  '#cases .cx-read-card p{font-size:16.5px;color:#27313f;margin:0 0 15px;}'+
+  '#cases .cx-read-card p.lead::first-letter{font-weight:800;float:left;font-size:58px;line-height:.8;padding:6px 9px 0 0;color:var(--blue);}'+
+  '#cases .cx-key{background:var(--bg);border-left:4px solid var(--celeste);border-radius:8px;padding:13px 16px;margin-top:20px;font-size:14px;}'+
+  '#cases .cx-motion{background:linear-gradient(135deg,var(--navy),var(--deep));color:#fff;border-radius:16px;padding:26px 28px;text-align:center;margin:26px 0 20px;}'+
+  '#cases .cx-motion .lbl{letter-spacing:.22em;text-transform:uppercase;font-size:11px;color:var(--celeste);font-weight:700;}'+
+  '#cases .cx-motion h3{color:#fff;font-size:clamp(18px,2.8vw,26px);margin:10px auto 0;max-width:720px;}'+
+  '#cases .cx-two{display:grid;grid-template-columns:1fr 1fr;gap:16px;}'+
+  '#cases .cx-stance{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;}'+
+  '#cases .cx-stance.for{border-top:5px solid #1f6b4a;}#cases .cx-stance.against{border-top:5px solid #9c2b2b;}'+
+  '#cases .cx-stance h4.for{color:#1f6b4a;}#cases .cx-stance h4.against{color:#9c2b2b;}'+
+  '#cases .cx-stance ul{margin:8px 0 0;padding-left:18px;}#cases .cx-stance li{margin-bottom:8px;font-size:14.5px;}'+
+  '#cases .cx-flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px;margin-top:20px;}'+
+  '#cases .cx-step{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px;}'+
+  '#cases .cx-step .n{font-weight:800;color:var(--blue);font-size:24px;line-height:1;}'+
+  '#cases .cx-step b{display:block;margin:5px 0 3px;font-size:14px;}#cases .cx-step span{font-size:12.5px;color:var(--grey);}'+
+  '#cases .cx-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px;}'+
+  '#cases .cx-com{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 5px 16px rgba(13,29,51,.05);display:flex;flex-direction:column;transition:.18s;}'+
+  '#cases .cx-com:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(13,29,51,.12);}'+
+  '#cases .cx-com-h{padding:15px 17px;color:#fff;display:flex;align-items:center;gap:11px;}'+
+  '#cases .cx-com-h .ab{font-weight:800;font-size:14px;background:rgba(255,255,255,.18);border-radius:8px;padding:6px 9px;white-space:nowrap;}'+
+  '#cases .cx-com-h b{font-size:14px;line-height:1.2;}'+
+  '#cases .cx-com-b{padding:17px;flex:1;display:flex;flex-direction:column;}'+
+  '#cases .cx-com-b .scn{font-size:14px;color:#2b3543;margin:0 0 13px;flex:1;}'+
+  '#cases .cx-com-b .q{font-size:12.5px;background:var(--bg);border-radius:8px;padding:10px 12px;border-left:3px solid var(--celeste);}'+
+  '#cases .cx-com-b .q b{display:block;text-transform:uppercase;letter-spacing:.1em;font-size:10px;color:var(--blue);margin-bottom:3px;}'+
+  '#cases .cx-resbtn{margin-top:11px;width:100%;cursor:pointer;border:1px solid var(--blue);background:#fff;color:var(--blue);border-radius:8px;padding:9px;font-weight:700;font-size:12.5px;font-family:inherit;}'+
+  '#cases .cx-resbtn:hover{background:var(--blue);color:#fff;}'+
+  '#cases .cx-disec{background:#3a3f52;}#cases .cx-hrc{background:#1f4e79;}#cases .cx-who{background:#1f6b4a;}'+
+  '#cases .cx-ecosoc{background:#8a5a1c;}#cases .cx-unesco{background:#5b2f6b;}#cases .cx-sc{background:#9c2b2b;}'+
+  '#cases .cx-unicef{background:#0e7490;}#cases .cx-legal{background:#334155;}'+
+  '#cases .cx-sec{margin-top:34px;}'+
+  '@media(max-width:640px){#cases .cx-two{grid-template-columns:1fr;}}';
+  document.head.appendChild(css);
+})();
+
+function cxA(s){return JSON.stringify(s).replace(/"/g,"&quot;");}
+function cxRenderCase(idx){
+  var c=CX_CASES[idx];
+  var h='';
+  h+='<div class="cx-hero"><div class="kick">International Debates · Case '+(idx+1)+' of '+CX_CASES.length+'</div>'+
+     '<h2>'+c.brand+' <em>'+c.accent+'</em></h2><p>'+c.sub+'</p>'+
+     '<div class="cx-pills"><span><b>1</b> &nbsp;10-min Briefing</span><span><b>2</b> &nbsp;10-min Floor Debate</span><span><b>'+c.coms.length+'</b> &nbsp;Committee Scenarios</span><span>Language: <b>English</b></span></div></div>';
+  h+='<div class="cx-timer"><span class="cx-tlabel">Timer</span><span id="cxClock" class="cx-clock">10:00</span>'+
+     '<button class="cx-b cx-read" onclick="cxStart(600,\'Reading\')">▶ Read 10:00</button>'+
+     '<button class="cx-b cx-deb" onclick="cxStart(600,\'Debate\')">▶ Debate 10:00</button>'+
+     '<button class="cx-b cx-gh" onclick="cxPause()">⏸</button>'+
+     '<button class="cx-b cx-gh" onclick="cxReset()">↻</button>'+
+     '<span id="cxPhase" class="cx-phase"></span></div>';
+  h+='<div class="cx-sec"><div class="eyebrow2">Phase 1 · Read for 10 minutes</div>'+
+     '<h2 style="margin:4px 0 14px;">Delegate Briefing</h2>'+
+     '<div class="cx-read-card"><div class="cx-dateline"><span>UN General Assembly · Background Paper '+c.ref+'</span><span>Classification: Open Debate</span></div>'+
+     '<h3>'+c.title+'</h3>';
+  c.brief.forEach(function(p,i){h+='<p'+(i===0?' class="lead"':'')+'>'+p+'</p>';});
+  h+='<h4 style="margin:22px 0 8px;">The question now before this body</h4><p>'+c.question+'</p>'+
+     '<p>No delegation arrives with clean hands, and none arrives without something to lose. The floor is now yours.</p>'+
+     '<div class="cx-key"><b>Useful vocabulary:</b> '+c.vocab+'</div></div></div>';
+  h+='<div class="cx-sec"><div class="eyebrow2">Phase 2 · Debate for 10 minutes</div>'+
+     '<h2 style="margin:4px 0 14px;">Open the Floor</h2>'+
+     '<div class="cx-motion"><div class="lbl">This House Believes That</div><h3>'+c.motion+'</h3></div>'+
+     '<div class="cx-two"><div class="cx-stance for"><h4 class="for">▲ Proposition (For)</h4><ul>'+
+     c.forArgs.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ul></div>'+
+     '<div class="cx-stance against"><h4 class="against">▼ Opposition (Against)</h4><ul>'+
+     c.againstArgs.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ul></div></div>'+
+     '<div class="cx-flow">'+CX_FLOW.map(function(s,i){return '<div class="cx-step"><div class="n">'+(i+1)+'</div><b>'+s[0]+'</b><span>'+s[1]+'</span></div>';}).join('')+'</div></div>';
+  h+='<div class="cx-sec"><div class="eyebrow2">Break-out rooms</div>'+
+     '<h2 style="margin:4px 0 6px;">Situations by Committee</h2>'+
+     '<p style="color:var(--grey);max-width:760px;margin:0 0 18px;">Split the room. Each committee tackles the case from its own mandate, then reports back to the General Assembly. Same crisis — '+c.coms.length+' very different fights. Click <b>Draft a resolution</b> on any card to load it into the Resolution builder.</p>'+
+     '<div class="cx-grid">'+c.coms.map(function(m){
+       var comName=m[0]+' — '+m[1];
+       return '<div class="cx-com"><div class="cx-com-h '+m[2]+'"><span class="ab">'+m[0]+'</span><b>'+m[1]+'</b></div>'+
+       '<div class="cx-com-b"><p class="scn">'+m[3]+'</p><div class="q"><b>Your task</b>'+m[4]+'</div>'+
+       '<button class="cx-resbtn" onclick="cxToBuilder('+cxA(comName)+','+cxA(m[5])+')">📜 Draft a resolution →</button></div></div>';
+     }).join('')+'</div></div>';
+  return h;
+}
+function cxShowCase(idx){
+  clearInterval(cxTick); cxTick=null; cxTotal=cxRem=600;
+  var box=document.getElementById('casesBox'); if(!box) return;
+  var sw='<div class="cx-switch">'+CX_CASES.map(function(c,i){return '<button class="cx-case-tab'+(i===idx?' on':'')+'" onclick="cxShowCase('+i+')">'+c.brand+' '+c.accent+'</button>';}).join('')+'</div>';
+  box.innerHTML=sw+cxRenderCase(idx);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function cxToBuilder(com,topic){
+  go('builder');
+  var rc=document.getElementById('r_com'), rt=document.getElementById('r_top');
+  if(rc) rc.value=com; if(rt) rt.value=topic;
+  if(typeof toast==='function') toast('Loaded into the Resolution builder ✓');
+}
+
+var cxTotal=600,cxRem=600,cxTick=null;
+function cxRender(){var c=document.getElementById('cxClock');if(!c)return;
+  c.textContent=String(Math.floor(cxRem/60)).padStart(2,'0')+':'+String(cxRem%60).padStart(2,'0');
+  c.classList.toggle('warn',cxRem<=60&&cxRem>0);c.classList.toggle('done',cxRem===0);}
+function cxStart(secs,label){clearInterval(cxTick);cxTotal=cxRem=secs;
+  var p=document.getElementById('cxPhase');if(p)p.textContent=label+' in progress';cxRender();
+  cxTick=setInterval(function(){if(cxRem>0){cxRem--;cxRender();}else{clearInterval(cxTick);
+    var pp=document.getElementById('cxPhase');if(pp)pp.textContent=label+' — time!';
+    try{var ctx=new (window.AudioContext||window.webkitAudioContext)();[0,0.25,0.5].forEach(function(t){var o=ctx.createOscillator(),g=ctx.createGain();o.connect(g);g.connect(ctx.destination);o.frequency.value=660;g.gain.value=0.15;o.start(ctx.currentTime+t);o.stop(ctx.currentTime+t+0.18);});}catch(e){}}},1000);}
+function cxPause(){clearInterval(cxTick);var p=document.getElementById('cxPhase');if(p)p.textContent='Paused';}
+function cxReset(){clearInterval(cxTick);cxRem=cxTotal;cxRender();var p=document.getElementById('cxPhase');if(p)p.textContent='';}
+if(document.getElementById('casesBox')) cxShowCase(0);
 
 /* ---------- TOAST ---------- */
 let tt;
