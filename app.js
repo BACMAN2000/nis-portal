@@ -2346,17 +2346,19 @@ function _reportInner(p, at, sp, fin, EN, opts){
   if(pres.length){ strong=SKL[pres.reduce((b,k)=>fin.skills[k].scale>fin.skills[b].scale?k:b)]; weak=SKL[pres.reduce((b,k)=>fin.skills[k].scale<fin.skills[b].scale?k:b)]; }
   const first=(p.full_name||'').split(' ')[0]||'';
   const rank=CEFR_RANK[fin.finalCefr]||0, tg=CEFR_RANK[tgt]||3, fs=fin.finalScale||0;
-  let msg;
+  let msg; const noData=!pres.length;
   if(EN){
-    if(rank>tg) msg='Congratulations, '+first+'! Your results are excellent and already above the '+tgt+' target, showing very solid English, especially in '+strong+'. We encourage you to keep challenging yourself with higher-level material. Keep shining!';
-    else if(rank>=tg) msg='Well done, '+first+'! You have reached '+tgt+', your grade target. You stand out in '+strong+', and with a little more practice in '+weak+' you will keep growing. We are proud of your effort. Keep it up!';
-    else if(fs>=130) msg='Good work, '+first+'! You are very close to '+tgt+'. Your strongest area is '+strong+'; with some focus on '+weak+' you will soon reach the goal. We fully believe in your progress. You can do it!';
-    else msg=first+', you have taken important steps towards '+tgt+', with good moments in '+strong+'. Let us work together on '+weak+' with steady practice and you will see great progress. You have all our support!';
+    if(noData) msg=first+', this first mock is a starting point. Let\'s keep practising together so you arrive well prepared and improve your results in the second mock in October. We are with you!';
+    else if(rank>tg) msg=first+', you did good work in this first practice mock, especially in '+strong+'. Keep in mind this is practice, not the real exam yet: the next step is to keep training, particularly '+weak+', so you reach the second mock in October with even stronger results. Let\'s keep practising!';
+    else if(rank>=tg) msg=first+', you are doing well in this first practice mock and you stand out in '+strong+'. There is still room to grow, so let\'s keep practising '+weak+' steadily to improve your result in the second mock in October. Keep it up!';
+    else if(fs>=130) msg=first+', you are on the right track in this first practice mock, with good moments in '+strong+'. If you keep practising, especially '+weak+', you will arrive much better prepared for the second mock in October. We are here to support you!';
+    else msg=first+', this first practice mock is a starting point and you already show progress in '+strong+'. Let\'s keep practising together, especially '+weak+', so you see clear progress in the second mock in October. Keep up the effort — we are with you!';
   } else {
-    if(rank>tg) msg='¡Felicitaciones, '+first+'! Tus resultados son excelentes y ya superas el objetivo '+tgt+', mostrando un dominio muy sólido del inglés, especialmente en '+strong+'. Te animamos a seguir retándote con materiales de nivel superior. ¡Sigue brillando!';
-    else if(rank>=tg) msg='¡Muy bien, '+first+'! Has alcanzado el nivel '+tgt+', el objetivo de tu grado. Destacas en '+strong+', y con un poco más de práctica en '+weak+' seguirás creciendo. Estamos muy orgullosos de tu esfuerzo. ¡Continúa así!';
-    else if(fs>=130) msg='¡Buen trabajo, '+first+'! Estás muy cerca del nivel '+tgt+'. Tu punto más fuerte es '+strong+'; si refuerzas un poco '+weak+', pronto alcanzarás la meta. Confiamos plenamente en tu progreso. ¡Tú puedes!';
-    else msg=first+', has dado pasos importantes hacia el '+tgt+', con buenos momentos en '+strong+'. Vamos a trabajar juntos en '+weak+' con práctica constante y verás grandes avances. ¡Cuentas con todo nuestro apoyo!';
+    if(noData) msg=first+', este primer simulacro es un punto de partida. Sigamos practicando juntos para que llegues bien preparado y mejores tus resultados en el segundo simulacro de octubre. ¡Te acompañamos!';
+    else if(rank>tg) msg=first+', hiciste un buen trabajo en este primer simulacro de práctica, sobre todo en '+strong+'. Ten presente que es una práctica, todavía no el examen real: el siguiente paso es seguir entrenando, especialmente '+weak+', para llegar al segundo simulacro de octubre con resultados aún mejores. ¡Sigamos practicando!';
+    else if(rank>=tg) msg=first+', vas bien en este primer simulacro de práctica y destacas en '+strong+'. Aún hay margen para crecer, así que sigamos practicando '+weak+' con constancia para mejorar tu resultado en el segundo simulacro de octubre. ¡Continúa con ese esfuerzo!';
+    else if(fs>=130) msg=first+', vas por buen camino en este primer simulacro de práctica, con buenos momentos en '+strong+'. Si sigues practicando, sobre todo '+weak+', llegarás mucho mejor preparado al segundo simulacro de octubre. ¡Cuentas con nosotros!';
+    else msg=first+', este primer simulacro de práctica es un punto de partida y ya muestras avances en '+strong+'. Vamos a seguir practicando juntos, especialmente '+weak+', para que en el segundo simulacro de octubre veas un progreso claro. ¡Sigue esforzándote, te acompañamos!';
   }
   const commentBox='<div style="background:#f0fdf4;border:1.5px solid #bbf7d0;border-radius:12px;padding:12px 16px;margin-top:4px">'+
     '<div style="font-size:12px;font-weight:800;color:#166534;margin-bottom:5px">'+T.commentTitle+'</div>'+
@@ -2396,7 +2398,7 @@ function _reportInner(p, at, sp, fin, EN, opts){
     detail+
     '<div style="font-size:13px;font-weight:800;color:#2f5f93;margin:8px 0 4px">'+T.s3+'</div>'+
     globalBox+ commentBox+
-    '<div style="font-size:9px;color:#94a3b8;margin-top:10px">'+T.foot+' · build 72</div>';
+    '<div style="font-size:9px;color:#94a3b8;margin-top:10px">'+T.foot+' · build 73</div>';
 }
 
 /* Inyecta una sola vez el CSS que, al imprimir, oculta todo menos el reporte (#print-report). */
