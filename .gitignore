@@ -7,6 +7,12 @@ Thumbs.db
 CREDENCIALES_2026.csv
 *CREDENCIAL*
 
+# Local report-generation scratch — may contain student data, never publish
+_g7data.json
+_g6*.json
+_core_report.js
+_genreports.html
+
 # Secrets — never commit the ElevenLabs key
 phonics/tools/.env
 .env

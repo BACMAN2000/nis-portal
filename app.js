@@ -2089,8 +2089,10 @@ function bestAttemptScale(atts, skill){
    The Cambridge scale is clamped into the chosen band so the displayed scale
    (and the overall average) stay coherent with the pinned CEFR. */
 const FINAL_CEFR_OVERRIDE = {
-  // Kai Coll Mayo (G6 · A) — teacher: Reading & Use of English is A2, not B1.
-  'd441885a-6ec9-4b70-92db-10fa352326d2': { Reading:'A2' },
+  // Kai Coll Mayo (G6 · A) — teacher: overall result pinned to A2 (Reading & Listening).
+  'd441885a-6ec9-4b70-92db-10fa352326d2': { Reading:'A2', Listening:'A2' },
+  // Caleb Eliahu Chinchay Roncal (G6 · B) — teacher: overall result pinned to A2.
+  'd1f12f91-64ba-403e-b191-783ec0280083': { Reading:'A2', Listening:'A2' },
 };
 function _applyCefrOverride(profile, skill, b){
   if(!b) return b;
