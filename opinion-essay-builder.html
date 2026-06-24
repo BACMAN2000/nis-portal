@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <meta name="google" content="notranslate">
 <script src="config.js?v=18"></script>
-<script src="anticheat.js?v=3"></script>
+<script src="anticheat.js?v=4"></script>
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
   body{font:15px/1.55 "Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
@@ -179,15 +179,16 @@
       </div>
 
       <div class="card">
-        <h3>📤 Finish</h3>
+        <h3>📤 Hand in</h3>
         <div class="acts">
-          <button class="btn" onclick="openPreview()">👀 Preview full essay</button>
-          <button class="btn ghost" onclick="copyEssay()" id="copyBtn">📋 Copy essay</button>
+          <button class="btn" id="submitBtn" onclick="submitEssay()" style="background:#16a34a">📤 Entregar a mi profesor</button>
+          <button class="btn ghost" onclick="openPreview()">👀 Preview full essay</button>
           <button class="btn ghost" onclick="window.print()">🖨️ Print / Save PDF</button>
           <button class="btn ghost" onclick="openModel()">📖 See a model essay</button>
           <button class="btn danger" onclick="clearAll()">🗑️ Clear this essay</button>
         </div>
-        <div class="saved" id="saved" style="margin-top:8px"></div>
+        <div class="saved" id="submitState" style="margin-top:8px;font-weight:700"></div>
+        <div class="saved" id="saved" style="margin-top:4px"></div>
       </div>
     </div>
   </div>
@@ -460,6 +461,7 @@ function update(){
   g.style.background=col;
   const ws=document.getElementById('wcState'); ws.textContent=state; ws.style.color=col;
   renderCheck(total);
+  renderSubmitState();
 }
 function renderCheck(total){
   const ft=fullText().toLowerCase();
@@ -515,8 +517,44 @@ window.closeOverlay=(id)=>document.getElementById(id).classList.remove('show');
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeOverlay('ovPrev');closeOverlay('ovModel');}});
 function esc(s){return String(s).replace(/\\/g,'\\\\').replace(/'/g,"\\'");}
 
+/* ---------- entrega al profesor ---------- */
+function submitKey(){ return 'nis_opinion_submitted_'+topicId+'_'+level; }
+function renderSubmitState(){
+  const el=document.getElementById('submitState'); if(!el) return;
+  let ts=''; try{ ts=localStorage.getItem(submitKey())||''; }catch(e){}
+  el.innerHTML = ts ? `<span style="color:#16a34a">✓ Entregado a tu profesor — ${new Date(ts).toLocaleString()}</span>` : '';
+}
+window.submitEssay = async ()=>{
+  const ft=fullText();
+  if(!ft.trim()){ alert('Tu ensayo está vacío. Escribe algo antes de entregar.'); return; }
+  const total=words(ft), L=LEVELS[level];
+  if(total < L.min && !confirm(`Tu ensayo tiene ${total} palabras (objetivo ${L.sub}). ¿Entregar de todas formas?`)) return;
+  const stu = (window.NISAntiCheat && NISAntiCheat.getStudent) ? NISAntiCheat.getStudent() : null;
+  if(!stu || !stu.name){ alert('Inicia sesión en el Portal NIS (con tu cuenta de alumno) para entregar tu trabajo a tu profesor.'); return; }
+  const CFG=window.NIS_CONFIG||{};
+  if(!CFG.WRITING_WEBHOOK){ alert('No hay un destino de entrega configurado. Avisa a tu profesor.'); return; }
+  if(!confirm(`¿Entregar tu ensayo «${topic().short}» (${L.name}, ${total} palabras) a tu profesor?`)) return;
+  const btn=document.getElementById('submitBtn'); const o=btn.textContent; btn.disabled=true; btn.textContent='Enviando…';
+  const payload={
+    skill:'Writing', examType:'Activity', examTitle:'Opinion Essay — '+topic().short,
+    name:stu.name, email:stu.email||'', grade:stu.grade||'', level:L.name,
+    writingEvaluation:[{ part:'Opinion Essay — '+topic().short, label:topic().short, wordCount:total, text:ft }],
+    topic:topicId, source:'opinion-essay-builder',
+    antiCheat:(window.NISAntiCheat?NISAntiCheat.getStatus():null)
+  };
+  try{
+    await fetch(CFG.WRITING_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)});
+    try{ localStorage.setItem(submitKey(), new Date().toISOString()); }catch(e){}
+    renderSubmitState();
+    alert('✅ ¡Entregado! Tu profesor recibirá tu ensayo por correo para corregirlo y darte tu nota. Puedes seguir editando y volver a entregar si lo necesitas.');
+  }catch(e){
+    alert('No se pudo entregar. Revisa tu conexión e inténtalo otra vez.');
+  }
+  btn.disabled=false; btn.textContent=o;
+};
+
 /* ---------- init ---------- */
-load(); renderPicker(); renderTask(); renderBank(); renderBlocks(); update();
+load(); renderPicker(); renderTask(); renderBank(); renderBlocks(); update(); renderSubmitState();
 
 /* ---------- anti-cheat (3 vidas · bloqueo · nota C · aviso al docente) ---------- */
 if(window.NISAntiCheat){

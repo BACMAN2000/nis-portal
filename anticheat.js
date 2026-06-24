@@ -367,6 +367,8 @@
   function pause() { paused = true; awayActive = false; }
   function resume() { paused = false; }
   function getStatus() { return { count: st.count, livesLeft: livesLeft(), maxLives: maxLives(), extraLives: extraLives, locked: st.locked }; }
+  // Identidad del alumno logueado (o null) — para que la actividad pueda entregar su trabajo.
+  function getStudent() { return me ? { id: me.id, name: me.name, email: me.email, grade: me.grade } : null; }
 
   function arm() {
     document.addEventListener('visibilitychange', onVisibility);
@@ -411,7 +413,7 @@
     }
   }
 
-  window.NISAntiCheat = { init: init, pause: pause, resume: resume, getStatus: getStatus, __ready: true, __inited: false };
+  window.NISAntiCheat = { init: init, pause: pause, resume: resume, getStatus: getStatus, getStudent: getStudent, __ready: true, __inited: false };
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', autoInit);
   else autoInit();
