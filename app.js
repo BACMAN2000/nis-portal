@@ -346,6 +346,7 @@ async function renderAdmin(tab='users'){
     {key:'results',label:'📝 Resultados'},
     {key:'final',label:'🎓 Resultado final'},
     {key:'teachers',label:'👨‍🏫 Profesores'},
+    {key:'honesty',label:'🛡️ Honestidad'},
     {key:'mocks',label:'🔓 Mocks'},
     {key:'access',label:'🔐 Accesos'},
     {key:'phonics',label:'🔤 Phonics'},
@@ -365,6 +366,7 @@ async function renderAdmin(tab='users'){
   if(tab==='results') return adminResults();
   if(tab==='final') return cefrFinalPanel();
   if(tab==='teachers') return adminTeachers();
+  if(tab==='honesty') return antiCheatPanel();
   if(tab==='mocks') return adminMocks();
   if(tab==='access') return adminAccess();
   return adminUsers();
@@ -393,6 +395,103 @@ window._toggleNode=async(g,key,to,el)=>{
   const { error } = await sb.from('node_access').upsert({grade_id:g,node_key:key,unlocked:to,updated_at:new Date().toISOString(),updated_by:(state.session&&state.session.user&&state.session.user.id)||null},{onConflict:'grade_id,node_key'});
   el.disabled=false;
   if(error){ alert('No se pudo guardar: '+error.message); el.checked=!to; }
+};
+/* ===================== 🛡️ HONESTIDAD (anti-trampa) =====================
+   Incidentes registrados por anticheat.js + botón "dar vida extra" a un
+   alumno en una actividad. Disponible para admin y profesor (con acceso). */
+const AC_ACTIVITIES = [
+  ['opinion-essay','Opinion Essay (Writing)'],['use-of-english-part1','Use of English · Part 1'],
+  ['grammar-quiz','Grammar Quiz'],['crosswords','Crosswords'],['wordsearches','Word Searches'],
+  ['crossword-digital-footprint','Crossword · Digital Footprint'],['wordsearch-digital-footprint','Word Search · Digital Footprint'],
+  ['crosswords-fr','Crosswords (FR)'],['wordsearches-fr','Word Searches (FR)'],
+  ['backshifting','Backshifting'],['reported-speech','Reported Speech'],['reported-speech-lab','Reported Speech · Lab'],
+  ['reported-speech-order','Reported Speech · Order'],['reported-speech-verbs','Reported Speech · Verbs'],
+  ['reported-speech-wheel','Reported Speech · Wheel'],['memory-reported-speech','Memory · Reported Speech'],
+  ['word-sudoku','Word Sudoku'],['mun-academy','MUN Academy'],['phonics','Phonics Studio'],['pronunciation-coach','Pronunciation Coach']
+];
+function acActLabel(k){ const f=AC_ACTIVITIES.find(a=>a[0]===k); return f?f[1]:(k||'—'); }
+const AC_EVENT = { tab_switch:'⚠️ Salida', reported:'🚩 Reportado', locked:'⛔ Eliminada (C)', translate_detected:'🌐 Traductor' };
+async function antiCheatPanel(){
+  const { data, error } = await sb.from('anticheat_incidents')
+    .select('id,student_id,activity,activity_label,level,event,lives_left,switch_count,seconds_away,os,browser,screen,grade_assigned,created_at, profiles(full_name,grades(name))')
+    .order('created_at',{ascending:false}).limit(150);
+  // alumnos para el selector del formulario
+  const { data:studs } = await sb.from('profiles').select('id,full_name,grades(name)').eq('role','student').order('full_name');
+  const studOpts = (studs||[]).map(s=>`<option value="${s.id}">${esc(s.full_name||'')}${s.grades?.name?(' · '+s.grades.name):''}</option>`).join('');
+  const actOpts = AC_ACTIVITIES.map(a=>`<option value="${a[0]}">${esc(a[1])}</option>`).join('');
+
+  const rows = (data||[]).map(a=>{
+    const name = a.profiles?.full_name || '—';
+    const grade = a.profiles?.grades?.name || '';
+    const when = new Date(a.created_at).toLocaleString();
+    const ev = AC_EVENT[a.event] || a.event;
+    const dev = [a.os,a.browser,a.screen].filter(Boolean).join(' · ');
+    const sname = esc(name).replace(/'/g,"\\'");
+    return `<tr data-ev="${esc(a.event)}">
+      <td><b>${esc(name)}</b>${grade?` <span class="badge grade">${esc(grade)}</span>`:''}</td>
+      <td>${esc(acActLabel(a.activity))}${a.level?` <span class="muted">· ${esc(a.level)}</span>`:''}</td>
+      <td style="text-align:center">${ev}</td>
+      <td style="text-align:center">${a.lives_left!=null?a.lives_left:'—'}</td>
+      <td class="muted" style="font-size:.78rem">${esc(dev)}</td>
+      <td class="muted" style="font-size:.78rem;white-space:nowrap">${esc(when)}</td>
+      <td style="text-align:center"><button class="btn sm" onclick="window._acGrant('${a.student_id}','${esc(a.activity)}','${sname}',this)">➕ Vida</button></td>
+    </tr>`;
+  }).join('');
+
+  $('#main').innerHTML=`<h1>🛡️ Honestidad — Anti-trampa</h1>
+    <div class="note">Cada actividad da <b>3 vidas</b>: salir de la pantalla (cambiar de pestaña, app o ventana) descuenta una. A la 2.ª se <b>reporta</b>, a la 3.ª se <b>elimina la actividad con nota C</b> y se notifica. Aquí puedes <b>otorgar una vida extra</b> a un alumno en una actividad concreta; el alumno la recibe al recargar (o pulsando «reintentar» si quedó bloqueado). Docentes y administradores están exentos del control. <b>El navegador no permite ver otras pestañas</b>; solo se registran los metadatos del evento.</div>
+
+    <div class="card">
+      <h2>➕ Dar vida extra</h2>
+      <div class="row" style="gap:10px;flex-wrap:wrap;align-items:flex-end">
+        <div><label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">ALUMNO</label>
+          <select id="ac_stud" style="min-width:240px">${studOpts}</select></div>
+        <div><label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">ACTIVIDAD</label>
+          <select id="ac_act" style="min-width:220px">${actOpts}</select></div>
+        <button class="btn" onclick="window._acGrantForm(this)">Otorgar +1 vida</button>
+      </div>
+      <div id="ac_msg" class="muted" style="margin-top:8px"></div>
+    </div>
+
+    <div class="card" style="padding:0">
+      <div class="row" style="justify-content:space-between;align-items:center;padding:12px 16px 0">
+        <h2 style="margin:0">Incidentes recientes</h2>
+        <select id="ac_filter" onchange="window._acFilter(this.value)" style="min-width:160px">
+          <option value="">Todos los eventos</option>
+          <option value="locked">Solo eliminadas (C)</option>
+          <option value="reported">Solo reportados</option>
+          <option value="tab_switch">Solo salidas</option>
+        </select>
+      </div>
+      <div style="overflow-x:auto"><table>
+        <thead><tr><th style="text-align:left">Alumno</th><th style="text-align:left">Actividad</th><th>Evento</th><th>Vidas</th><th style="text-align:left">Equipo</th><th style="text-align:left">Fecha</th><th>Acción</th></tr></thead>
+        <tbody id="ac_rows">${rows || `<tr><td colspan="7" class="center muted" style="padding:20px">Sin incidentes registrados.</td></tr>`}</tbody>
+      </table></div>
+    </div>
+    ${error?`<div class="note err">${esc(error.message)}</div>`:''}`;
+}
+window._acFilter=(v)=>{ document.querySelectorAll('#ac_rows tr[data-ev]').forEach(tr=>{ tr.style.display = (!v || tr.dataset.ev===v) ? '' : 'none'; }); };
+async function _acInsertGrant(studentId, activity){
+  const uid=(state.session&&state.session.user&&state.session.user.id)||null;
+  return sb.from('anticheat_grants').insert({ student_id:studentId, activity, extra_lives:1, granted_by:uid });
+}
+window._acGrant=async(studentId, activity, name, btn)=>{
+  if(!confirm(`¿Dar +1 vida a ${name} en «${acActLabel(activity)}»?`)) return;
+  if(btn){ btn.disabled=true; btn.textContent='…'; }
+  const { error } = await _acInsertGrant(studentId, activity);
+  if(btn){ btn.disabled=false; btn.textContent = error?'➕ Vida':'✓ Dada'; }
+  if(error) alert('No se pudo otorgar: '+error.message);
+};
+window._acGrantForm=async(btn)=>{
+  const studSel=$('#ac_stud'), actSel=$('#ac_act'), msg=$('#ac_msg');
+  const studentId=studSel.value, activity=actSel.value;
+  const name=studSel.options[studSel.selectedIndex]?.text||'';
+  btn.disabled=true;
+  const { error } = await _acInsertGrant(studentId, activity);
+  btn.disabled=false;
+  msg.innerHTML = error
+    ? `<span style="color:var(--danger,#b91c1c)">No se pudo: ${esc(error.message)}</span>`
+    : `✓ Vida extra otorgada a <b>${esc(name)}</b> en <b>${esc(acActLabel(activity))}</b>. El alumno la recibe al recargar la actividad.`;
 };
 async function adminOverview(){
   const { data:profs } = await sb.from('profiles').select('role,grade_id,cefr_level');
@@ -1050,6 +1149,7 @@ async function renderTeacher(tab){
   if(acc.can_results) nav.push({key:'results',label:'📝 Resultados'});
   if(acc.can_results) nav.push({key:'final',label:'🎓 Resultado final'});
   if(acc.can_students) nav.push({key:'students',label:'👥 Alumnos'});
+  if(acc.can_results||acc.can_students) nav.push({key:'honesty',label:'🛡️ Honestidad'});
   const _tn = state.teacherNodes||{has:false,set:new Set()};
   const _canClasses = !_tn.has || _tn.set.has('english.classes') || [..._tn.set].some(k=>k.indexOf('english.classes.')===0);
   if(_canClasses) nav.push({key:'classes',label:'🏫 Classes'});
@@ -1065,6 +1165,7 @@ async function renderTeacher(tab){
   if(active==='results') return teacherResults();
   if(active==='final') return cefrFinalPanel();
   if(active==='students') return teacherStudents();
+  if(active==='honesty') return antiCheatPanel();
   if(active==='classes') return studentClasses();
   if(active==='phonics'){ $('#main').innerHTML = phonicsPanel(); return; }
   if(active==='coach'){ $('#main').innerHTML = coachPanel(); return; }
