@@ -42,6 +42,12 @@ function doPost(e) {
       return json_({ ok: true });
     }
 
+    // ── Flujo C: incidente de honestidad (anti-cheat) desde una actividad ──
+    if (data.type === 'anticheat_incident') {
+      handleAntiCheat_(data);
+      return json_({ ok: true });
+    }
+
     // ── Flujo A: quizzes ──
     var skill = data.skill || (data.breakdown ? 'Listening' : 'Reading');
     if (skill === 'Writing') {
@@ -101,6 +107,46 @@ function handleWritingResult_(d) {
       (d.message || ''),
       tOpts);
   }
+}
+
+/* ============================================================
+ *  ANTI-CHEAT — incidente de honestidad (type:'anticheat_incident')
+ *  Se dispara en dos momentos: 'reported' (2da salida) y 'locked' (3ra,
+ *  actividad eliminada + nota C). Avisa al DOCENTE, que contacta a los padres.
+ * ============================================================ */
+function handleAntiCheat_(d) {
+  if (!SEND_EMAIL || !TEACHER_EMAIL) return;
+  var locked = (d.event === 'locked');
+  var tag = locked ? 'ACTIVIDAD ELIMINADA (nota C)' : 'ALUMNO REPORTADO';
+  var subject = '[' + SCHOOL_NAME + ' · Honestidad] ' + tag + ' — ' +
+                (d.student_name || 'Alumno') + (d.grade ? ' (' + d.grade + ')' : '');
+
+  var snap = d.snapshot || {};
+  var snapText = (snap && (snap.text || snap.essay)) ? String(snap.text || snap.essay) : '';
+
+  var lines = [
+    (locked
+      ? 'Un alumno salió de la actividad 3 veces. La actividad fue ELIMINADA y su nota es C.'
+      : 'Un alumno salió de la actividad por 2da vez y ha sido reportado (le queda 1 vida).'),
+    '',
+    'Alumno:        ' + (d.student_name || '') + '   ' + (d.student_email || ''),
+    'Grado:         ' + (d.grade || ''),
+    'Apoderado:     ' + (d.guardian_name || '(sin dato)') + '   Tel: ' + (d.guardian_phone || '(sin dato)'),
+    'Actividad:     ' + (d.activity_label || d.activity || '') + (d.level ? ('  ·  ' + d.level) : '') + (d.topic ? ('  ·  ' + d.topic) : ''),
+    'Evento:        ' + (d.event || '') + (locked ? '  (nota asignada: C)' : ''),
+    'Salidas:       ' + (d.switch_count != null ? d.switch_count : '?') + '   ·   Vidas restantes: ' + (d.lives_left != null ? d.lives_left : '?'),
+    (d.seconds_away != null ? ('Tiempo fuera:  ' + d.seconds_away + ' s (última salida)') : ''),
+    'Equipo:        ' + (d.os || '') + '  ·  ' + (d.browser || '') + '  ·  pantalla ' + (d.screen || '') + '  ·  idioma ' + (d.language || ''),
+    'Fecha:         ' + (d.at || new Date().toISOString()),
+    '',
+    (locked ? 'ACCIÓN: contactar a los padres del alumno para informar el incidente.' : 'Aún no se elimina la actividad; una salida más la elimina con nota C.')
+  ];
+  if (snapText) {
+    lines.push('', '--- Texto del alumno hasta el momento del incidente ---', snapText);
+  }
+  lines.push('', 'Nota: el navegador NO permite ver ni capturar otras pestañas. Se registran únicamente los metadatos del evento.');
+
+  try { MailApp.sendEmail(TEACHER_EMAIL, subject, lines.join('\n'), { name: SCHOOL_NAME + ' — Honestidad' }); } catch (_) {}
 }
 
 /* PDF de la devolución de Writing — SÍ incluye el comentario del profesor. */
