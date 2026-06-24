@@ -306,24 +306,29 @@
     }
   }
 
-  /* ---------- detección de salida ---------- */
+  /* ---------- detección de salida ----------
+     SOLO contamos un cambio REAL de pestaña/app/ventana (visibilitychange):
+     es la única señal fiable y multiplataforma. NO usamos window blur/focus
+     porque en macOS (y a veces Windows) se dispara solo con notificaciones,
+     el Dock, Mission Control o perder el foco un instante —generaba bloqueos
+     falsos "sin nada abierto". Además exigimos un tiempo mínimo fuera para
+     ignorar salidas accidentales muy cortas. */
+  function awayMin() { return (opts.minAwayMs != null) ? opts.minAwayMs : 1500; }
   function beginAway() {
     if (!armed || paused || st.locked || awayActive) return;
     awayActive = true; awayStart = nowMs();
   }
-  function endAway(minMs) {
+  function endAway() {
     if (!awayActive) return;
     awayActive = false;
     var dt = nowMs() - awayStart;
-    if (minMs && dt < minMs) return;          // ignora parpadeos triviales (ruta blur)
+    if (dt < awayMin()) return;               // salida demasiado corta → no penaliza
     penalize(Math.round(dt / 100) / 10);      // segundos con 1 decimal
   }
   function onVisibility() {
     if (document.visibilityState === 'hidden') beginAway();
-    else endAway(0);                          // visibilitychange ya es señal fuerte
+    else endAway();
   }
-  function onBlur() { beginAway(); }
-  function onFocus() { endAway(600); }        // ventana: exige ≥600ms para evitar falsos positivos
 
   /* ---------- bloqueo de copiar/pegar/traductores ---------- */
   function blockClipboard() {
@@ -365,9 +370,7 @@
 
   function arm() {
     document.addEventListener('visibilitychange', onVisibility);
-    window.addEventListener('blur', onBlur);
-    window.addEventListener('focus', onFocus);
-    window.addEventListener('pageshow', function () { if (document.visibilityState === 'visible') endAway(0); });
+    window.addEventListener('pageshow', function () { if (document.visibilityState === 'visible') endAway(); });
     // No penalizar por el diálogo de impresión propio.
     window.addEventListener('beforeprint', pause);
     window.addEventListener('afterprint', function () { setTimeout(resume, 300); });
