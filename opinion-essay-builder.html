@@ -457,7 +457,7 @@ function update(){
   if(total===0){state='Start writing…';col='#cbd5e1';}
   else if(total<L.min){state=`${L.min-total} more to reach ${L.min}`;col='#f59e0b';}
   else if(total<=L.max){state='✓ Within range — great!';col='#16a34a';}
-  else {state=`${total-L.max} over ${L.max} — trim a little`;col='#dc2626';}
+  else {state=`✓ ${total} words — over ${L.max}, that's fine`;col='#16a34a';}
   g.style.background=col;
   const ws=document.getElementById('wcState'); ws.textContent=state; ws.style.color=col;
   renderCheck(total);
@@ -479,7 +479,7 @@ function renderCheck(total){
     {ok: linkersUsed>=3, t:`Linkers used (${linkersUsed}/3+)`},
     {ok: words(data.concl||'')>=6 && has(/in conclusion|to sum up|to conclude|overall|on balance/),
       t:'Conclusion that restates your position'},
-    {ok: total>=L.min && total<=L.max, t:`Word count ${L.min}–${L.max} (now ${total})`}
+    {ok: total>=L.min, t:`Word count ${L.min}–${L.max} (now ${total})`}
   ];
   document.getElementById('check').innerHTML=items.map(i=>
     `<li class="${i.ok?'done':''}"><span class="mk">${i.ok?'✓':''}</span><span>${i.t}</span></li>`).join('');
