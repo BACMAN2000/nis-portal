@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Opinion Essay Builder — Writing — Portal NIS</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font:15px/1.55 "Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:#0f172a;background:linear-gradient(180deg,#d1d2ea 0%,#f8fafc 60%,#fff 100%);min-height:100vh}
+  header{background:#fff;padding:12px 22px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+    box-shadow:0 4px 16px rgba(15,23,42,.06);position:sticky;top:0;z-index:30;border-bottom:1px solid #e2e8f0}
+  header img{display:block;height:38px;width:auto}
+  header .sub{color:#636465;font-size:13px;margin-left:auto;font-weight:600}
+  header a.back{margin-left:14px;text-decoration:none;background:#2d5a8d;color:#fff;font-weight:700;font-size:13px;padding:8px 14px;border-radius:9px;white-space:nowrap}
+  main{max-width:1080px;margin:0 auto;padding:22px 18px 40px}
+  h1{font-size:23px;margin:0 0 6px}
+  p.lead{color:#475569;margin:0 0 18px;max-width:760px}
+
+  .picker{display:flex;flex-direction:column;gap:10px;margin:0 0 18px}
+  .prow{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .plabel{font-size:11px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#94a3b8;min-width:60px}
+  .tp{background:#fff;border:2px solid #e2e8f0;color:#475569;font:inherit;font-weight:700;font-size:13px;
+    padding:7px 13px;border-radius:20px;cursor:pointer;transition:.12s}
+  .tp:hover{border-color:#4987c6}
+  .tp.on{background:#2d5a8d;border-color:#2d5a8d;color:#fff}
+  .lv{background:#fff;border:2px solid #e2e8f0;color:#475569;font:inherit;font-weight:700;font-size:13px;
+    padding:6px 13px;border-radius:20px;cursor:pointer;transition:.12s}
+  .lv:hover{border-color:#4987c6}
+  .lv.on{background:#2d5a8d;border-color:#2d5a8d;color:#fff}
+  .lv small{font-weight:600;font-size:10.5px;opacity:.85;margin-left:4px}
+
+  .task{background:#eef2fb;border:1px solid #d7e0f2;border-radius:14px;padding:16px 18px;margin-bottom:18px;color:#26415e}
+  .task .ttl{font-weight:800;color:#2d5a8d;font-size:13px;letter-spacing:.4px;text-transform:uppercase;margin-bottom:6px}
+  .task .stmt{font-size:17px;font-weight:700;font-style:italic;margin:4px 0 10px;color:#1e3a5f}
+  .task ol{margin:0 0 0 20px;font-size:14px}
+  .task ol li{margin:2px 0}
+  .task .own{color:#2d5a8d;font-weight:700}
+
+  .layout{display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:start}
+  @media(max-width:880px){.layout{grid-template-columns:1fr}}
+
+  .bank{background:#fff;border:1px solid #e2e8f0;border-radius:14px;box-shadow:0 4px 14px rgba(15,23,42,.06);
+    padding:12px 14px;margin-bottom:16px;position:sticky;top:66px;z-index:20}
+  .bank h3{font-size:13px;color:#2d5a8d;margin:0 0 8px;display:flex;align-items:center;gap:8px}
+  .bank h3 .hint{margin-left:auto;font-weight:600;color:#94a3b8;font-size:11px}
+  .bankrow{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:7px}
+  .blab{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.4px;padding:3px 9px;border-radius:14px;align-self:center}
+  .blab.op{background:#dbeafe;color:#1e40af}
+  .blab.ad{background:#dcfce7;color:#166534}
+  .blab.co{background:#fee2e2;color:#991b1b}
+  .blab.re{background:#fef3c7;color:#92400e}
+  .blab.he{background:#ede9fe;color:#6d28d9}
+  .chip{background:#f6f9fe;border:1px solid #dbe6f4;color:#26415e;font:inherit;font-size:12.5px;
+    padding:5px 10px;border-radius:9px;cursor:pointer;transition:.1s}
+  .chip:hover{background:#2d5a8d;color:#fff;border-color:#2d5a8d}
+
+  .block{background:#fff;border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 8px 24px rgba(15,23,42,.07);
+    padding:18px 20px;margin-bottom:16px}
+  .block .bh{display:flex;align-items:baseline;gap:10px;margin-bottom:4px;flex-wrap:wrap}
+  .block .num{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;flex:none;
+    background:#2d5a8d;color:#fff;border-radius:8px;font-weight:800;font-size:13px}
+  .block h2{font-size:17px;color:#1e3a5f;margin:0}
+  .block .job{color:#64748b;font-size:13px;margin:2px 0 10px}
+  .frames{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:9px}
+  .frame{background:#fff;border:1px dashed #c5d3e6;color:#2d5a8d;font:inherit;font-size:12.5px;
+    padding:5px 10px;border-radius:9px;cursor:pointer;transition:.1s}
+  .frame:hover{background:#eef2fb;border-style:solid}
+  textarea{width:100%;border:2px solid #e2e8f0;border-radius:12px;padding:12px 13px;font:inherit;font-size:15px;
+    resize:vertical;min-height:84px;color:#0f172a;transition:.12s;line-height:1.5}
+  textarea:focus{outline:none;border-color:#4987c6;background:#fbfdff}
+  .bfoot{display:flex;justify-content:space-between;align-items:center;margin-top:7px;font-size:12px;color:#94a3b8}
+  .tip{color:#64748b}
+  .wc{font-weight:700}
+
+  .side{position:sticky;top:66px}
+  .card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 8px 24px rgba(15,23,42,.07);
+    padding:16px 18px;margin-bottom:16px}
+  .card h3{font-size:14px;color:#2d5a8d;margin:0 0 10px;display:flex;align-items:center;gap:7px}
+  .meter{text-align:center;margin-bottom:6px}
+  .meter .big{font-size:40px;font-weight:800;line-height:1;color:#2d5a8d}
+  .meter .lab{font-size:12px;color:#64748b}
+  .gauge{height:10px;border-radius:99px;background:#e2e8f0;overflow:hidden;margin:10px 0 6px;position:relative}
+  .gauge>span{display:block;height:100%;width:0;transition:width .3s,background .3s;background:#2d5a8d}
+  .range{display:flex;justify-content:space-between;font-size:11px;color:#94a3b8}
+  .wcstate{text-align:center;font-size:12.5px;font-weight:700;margin-top:4px}
+  .check{list-style:none;margin:0;padding:0}
+  .check li{display:flex;align-items:flex-start;gap:9px;font-size:13px;padding:5px 0;color:#475569;border-bottom:1px solid #f1f5f9}
+  .check li:last-child{border-bottom:0}
+  .check .mk{flex:none;width:20px;height:20px;border-radius:6px;background:#e2e8f0;color:#fff;display:inline-flex;
+    align-items:center;justify-content:center;font-size:12px;font-weight:800;margin-top:1px;transition:.15s}
+  .check li.done{color:#0f172a}
+  .check li.done .mk{background:#16a34a}
+  .acts{display:flex;flex-direction:column;gap:8px}
+  .btn{background:#2d5a8d;color:#fff;border:0;border-radius:10px;padding:11px 16px;font:inherit;font-weight:700;
+    cursor:pointer;text-align:center;text-decoration:none;display:block;transition:.12s}
+  .btn:hover{background:#244c77}
+  .btn.ghost{background:#fff;color:#2d5a8d;border:2px solid #2d5a8d}
+  .btn.ghost:hover{background:#eef2fb}
+  .btn.danger{background:#fff;color:#b91c1c;border:2px solid #fecaca}
+  .btn.danger:hover{background:#fef2f2}
+  .saved{font-size:11px;color:#94a3b8;text-align:center}
+
+  .overlay{position:fixed;inset:0;background:rgba(15,23,42,.55);display:none;align-items:center;justify-content:center;
+    padding:20px;z-index:50}
+  .overlay.show{display:flex}
+  .modal{background:#fff;border-radius:16px;max-width:720px;width:100%;max-height:88vh;overflow:auto;padding:26px 30px;
+    box-shadow:0 24px 60px rgba(0,0,0,.3)}
+  .modal h2{color:#2d5a8d;font-size:20px;margin:0 0 4px}
+  .modal .x{float:right;background:#f1f5f9;border:0;width:34px;height:34px;border-radius:9px;font-size:18px;cursor:pointer;color:#475569}
+  .essay{white-space:pre-wrap;font-size:15.5px;line-height:1.7;color:#1e293b;margin:14px 0}
+  .essay p{margin:0 0 12px}
+  .model{font-size:14px;color:#334155;line-height:1.65}
+  .model .mp{margin:0 0 10px}
+  .model .tg{display:inline-block;font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.4px;
+    background:#eef2fb;color:#2d5a8d;padding:2px 8px;border-radius:10px;margin-right:6px}
+  .warn{background:#fffbeb;border:1px solid #fde68a;color:#92400e;font-size:12.5px;padding:9px 12px;border-radius:10px;margin-bottom:12px}
+  .footer{color:#475569;font-size:12px;text-align:center;padding:26px 0 10px}
+
+  @media print{
+    header,.picker,.bank,.frames,.task,.side,.bfoot,.footer,.block .job,.block .num,.modal .x,.warn{display:none!important}
+    body{background:#fff}.layout{display:block}
+    .block{box-shadow:none;border:0;padding:0;margin:0 0 4px}
+    textarea{border:0;padding:0;min-height:0;font-size:13pt;height:auto}
+  }
+</style>
+</head>
+<body>
+<header>
+  <img src="assets/logo-h.svg" alt="Nordic International School" onerror="this.style.display='none'">
+  <div class="sub">WRITING · OPINION ESSAY</div>
+  <a class="back" href="grammar.html?grade=g9">← Grammar</a>
+</header>
+
+<main>
+  <h1>✍️ Opinion Essay Builder</h1>
+  <p class="lead">Build your <b>FCE Writing Part 1</b> essay one paragraph at a time. Pick a topic, use the sentence
+  starters and the language bank, watch your word count and tick off the checklist before you hand in.
+  Your work saves automatically for each topic and level.</p>
+
+  <div class="picker">
+    <div class="prow"><span class="plabel">Topic</span><span id="topics"></span></div>
+    <div class="prow"><span class="plabel">Level</span><span id="levels"></span></div>
+  </div>
+
+  <div class="task" id="task"></div>
+
+  <div class="layout">
+    <div>
+      <div class="bank">
+        <h3>🧰 Language bank <span class="hint">click to insert into the box you're writing in</span></h3>
+        <div id="bankrows"></div>
+      </div>
+      <div id="blocks"></div>
+    </div>
+
+    <div class="side">
+      <div class="card">
+        <h3>🔢 Word count</h3>
+        <div class="meter">
+          <div class="big" id="wcBig">0</div>
+          <div class="lab" id="wcTarget">target 140–190</div>
+        </div>
+        <div class="gauge"><span id="gauge"></span></div>
+        <div class="range"><span>0</span><span id="rmid"></span><span id="rmax"></span></div>
+        <div class="wcstate" id="wcState">Start writing…</div>
+      </div>
+
+      <div class="card">
+        <h3>✅ Before you hand in</h3>
+        <ul class="check" id="check"></ul>
+      </div>
+
+      <div class="card">
+        <h3>📤 Finish</h3>
+        <div class="acts">
+          <button class="btn" onclick="openPreview()">👀 Preview full essay</button>
+          <button class="btn ghost" onclick="copyEssay()" id="copyBtn">📋 Copy essay</button>
+          <button class="btn ghost" onclick="window.print()">🖨️ Print / Save PDF</button>
+          <button class="btn ghost" onclick="openModel()">📖 See a model essay</button>
+          <button class="btn danger" onclick="clearAll()">🗑️ Clear this essay</button>
+        </div>
+        <div class="saved" id="saved" style="margin-top:8px"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">9th grade · Unit 3 · Writing — NIS English · 2026</div>
+</main>
+
+<div class="overlay" id="ovPrev" onclick="if(event.target===this)closeOverlay('ovPrev')">
+  <div class="modal">
+    <button class="x" onclick="closeOverlay('ovPrev')">×</button>
+    <h2>👀 Your essay</h2>
+    <div class="lab" id="prevMeta" style="color:#64748b;font-size:13px"></div>
+    <div class="essay" id="prevBody"></div>
+    <button class="btn" onclick="copyEssay()">📋 Copy to clipboard</button>
+  </div>
+</div>
+
+<div class="overlay" id="ovModel" onclick="if(event.target===this)closeOverlay('ovModel')">
+  <div class="modal">
+    <button class="x" onclick="closeOverlay('ovModel')">×</button>
+    <h2 id="modelTitle">📖 Model essay</h2>
+    <div class="warn">⚠️ This is a <b>model</b> to learn the structure from — notice the thesis, linkers and register. Do <b>not</b> copy it: write about your own ideas.</div>
+    <div class="model" id="modelBody"></div>
+  </div>
+</div>
+
+<script>
+/* ---------- levels & word targets (matches the differentiation slide) ---------- */
+const LEVELS={
+  a2:{name:'A2',sub:'~60–80',min:60,max:80},
+  b1:{name:'B1',sub:'~100–120',min:100,max:120},
+  b2:{name:'B2',sub:'140–190',min:140,max:190},
+  c1:{name:'C1',sub:'220–260',min:220,max:260}
+};
+
+/* ---------- TOPICS — 6 FCE Writing Part 1 essays ---------- */
+/* Each: context line, statement, the two given notes (label + keyword detection),
+   and a model essay (intro / body1 / body2 / own idea / conclusion). */
+const TOPICS=[
+ {id:'social-media',emoji:'📱',short:'Social media & identity',
+  context:'social media and identity',
+  statement:'Social media lets us show our true identity.',
+  notes:[
+    {label:'self-expression / creativity', kw:['express','creativ','talent','personality','show who','share','self']},
+    {label:'pressure to look perfect', kw:['pressure','perfect','edit','filter','compare','unrealistic','fake','happiest','appear']}
+  ],
+  model:[
+   ['Intro','Social media is often praised for allowing us to express who we really are. While it certainly offers new ways to share our identity, I believe the picture it paints is only partly genuine.'],
+   ['Body 1','On the one hand, social media is a powerful tool for self-expression. Users can show their talents to a wide audience, so people who are shy in person often feel freer to reveal their true personality online.'],
+   ['Body 2','On the other hand, there is enormous pressure to appear perfect. Many users carefully edit their images and post only their happiest moments, so what we see is rarely the whole story.'],
+   ['Own idea','Another important point is privacy: to gain approval, some people share too much personal information, which they may later regret.'],
+   ['Conclusion','In conclusion, although social media can reveal aspects of our identity, it just as often hides them. It reflects the self we choose to show.']
+  ]},
+
+ {id:'phones-school',emoji:'🎓',short:'Phones in school',
+  context:'technology in the classroom',
+  statement:'Smartphones should be allowed in schools.',
+  notes:[
+    {label:'useful for learning', kw:['learn','research','dictionary','app','information','tool','educational','look up','study']},
+    {label:'a distraction', kw:['distract','social media','game','cheat','focus','concentrat','notification','addict','interrupt']}
+  ],
+  model:[
+   ['Intro','Mobile phones are now part of almost every teenager’s life, so it is no surprise that many people want them in the classroom. While I understand the concerns, I believe that, used wisely, smartphones can support learning.'],
+   ['Body 1','On the one hand, a smartphone is a powerful learning tool. Students can look up information instantly, use dictionaries and educational apps, so lessons can become more interactive and up to date.'],
+   ['Body 2','On the other hand, phones are an obvious distraction. With games, messages and social media only a tap away, some students find it hard to concentrate, and a few may even be tempted to cheat.'],
+   ['Own idea','Another important point is responsibility: if schools teach students when and how to use their phones, young people gain a skill they will need for the rest of their lives.'],
+   ['Conclusion','In conclusion, although smartphones can interrupt lessons, banning them completely is not the answer. With clear rules, they can do far more good than harm.']
+  ]},
+
+ {id:'environment',emoji:'🌍',short:'The environment',
+  context:'protecting the environment',
+  statement:'Young people can do more than governments to protect the environment.',
+  notes:[
+    {label:'everyday choices and habits', kw:['recycl','waste','plastic','transport','bike','energy','habit','consum','reduce','reuse']},
+    {label:'governments hold the real power', kw:['government','law','industr','factor','regulat','power','polic','company','large']}
+  ],
+  model:[
+   ['Intro','Climate change is one of the biggest challenges of our time, and people often disagree about who should solve it. While governments clearly have a role, I believe young people can make a real difference too.'],
+   ['Body 1','On the one hand, our everyday choices matter. By recycling, avoiding plastic and using public transport instead of cars, young people can reduce waste and save energy on a surprising scale.'],
+   ['Body 2','On the other hand, some problems are simply too big for individuals. Only governments can pass strict laws and control the large industries that cause most of the pollution.'],
+   ['Own idea','What is more, young people have a powerful voice. Through social media and peaceful protest, they can put pressure on leaders to act faster than ever before.'],
+   ['Conclusion','In conclusion, although governments hold the real power, young people are far from helpless. Together, small actions and loud voices can protect our planet.']
+  ]},
+
+ {id:'city-countryside',emoji:'🏙️',short:'City vs countryside',
+  context:'where people choose to live',
+  statement:'Living in a big city is better than living in the countryside.',
+  notes:[
+    {label:'opportunities (work, study, fun)', kw:['opportunit','job','work','study','univers','entertain','shop','transport','service']},
+    {label:'stress and pollution', kw:['stress','pollut','noise','crowd','expensive','traffic','busy','quiet','calm']}
+  ],
+  model:[
+   ['Intro','Where to live is a choice that affects every part of our lives. While the countryside has its charm, I would argue that a big city offers more to young people today.'],
+   ['Body 1','On the one hand, cities are full of opportunities. There are more jobs, universities and services, as well as endless entertainment, so it is easy to study, work and enjoy free time.'],
+   ['Body 2','On the other hand, city life can be stressful. The traffic, noise and pollution never seem to stop, and housing is often far more expensive than in rural areas.'],
+   ['Own idea','Another point worth considering is connection. In a small town people tend to know their neighbours, whereas in a city it is surprisingly easy to feel alone in the crowd.'],
+   ['Conclusion','In conclusion, although the countryside is calmer, the opportunities of a city are hard to match. For me, the energy of urban life wins.']
+  ]},
+
+ {id:'foreign-language',emoji:'🗣️',short:'Foreign languages',
+  context:'learning languages',
+  statement:'Everyone should learn a foreign language at school.',
+  notes:[
+    {label:'travel and work opportunities', kw:['travel','work','job','career','communicat','abroad','opportunit','business','cultur']},
+    {label:'technology can translate for us', kw:['technolog','translat','app','machine','software','automatic','device','phone']}
+  ],
+  model:[
+   ['Intro','In an increasingly connected world, languages open doors that once stayed closed. Although modern technology can translate for us, I believe learning a foreign language is more valuable than ever.'],
+   ['Body 1','On the one hand, speaking another language brings clear practical benefits. It makes travel easier and improves our chances of finding work, since many companies now operate across several countries.'],
+   ['Body 2','On the other hand, some argue that translation apps make this effort unnecessary. With a phone in our pocket, we can understand a menu or a sign in seconds.'],
+   ['Own idea','However, a machine cannot replace real human connection. Speaking someone’s language shows respect and helps us understand their culture in a way no app ever could.'],
+   ['Conclusion','In conclusion, although technology is impressive, it is no substitute for genuine communication. Learning a language is an investment that lasts a lifetime.']
+  ]},
+
+ {id:'part-time-job',emoji:'💼',short:'Part-time jobs',
+  context:'teenagers and work',
+  statement:'Teenagers should have a part-time job while they study.',
+  notes:[
+    {label:'money and responsibility', kw:['money','responsib','independ','experience','save','mature','skill','manage','earn']},
+    {label:'less time to study', kw:['time','study','tired','school','grade','homework','rest','exam','balance']}
+  ],
+  model:[
+   ['Intro','Many teenagers dream of earning their own money, and a part-time job seems the obvious way. While studies must come first, I believe a job can teach lessons no classroom can.'],
+   ['Body 1','On the one hand, working part-time builds independence. Teenagers learn to manage money, take responsibility and gain real experience that looks impressive on any future application.'],
+   ['Body 2','On the other hand, there are only so many hours in a day. A demanding job can leave students tired and stressed, with little time left for homework or rest.'],
+   ['Own idea','What is more, balance is the key. If the hours are reasonable, a weekend job need not harm grades, and it may even teach students to organise their time better.'],
+   ['Conclusion','In conclusion, although a job must never replace education, the right amount of work can prepare teenagers for adult life. With balance, both can succeed.']
+  ]}
+];
+
+/* ---------- generic (topic-neutral) sentence frames per block & level ---------- */
+const FRAMES={
+  intro:{a2:['Many people today …','In my opinion, …','I think that …'],
+         b1:['These days, many people …','In my opinion, …','I believe that …'],
+         b2:['It is often argued that …','While there is some truth in this, I believe …','It is widely claimed that …'],
+         c1:['It is frequently argued that …','Although there is some truth in the idea that …, I would contend that …']},
+  body1:{a2:['On the one hand, …','For example, …','This is good because …'],
+         b1:['Firstly, …','For example, …','As a result, …'],
+         b2:['On the one hand, …','For instance, …','This means that …'],
+         c1:['On the one hand, …','A clear example of this is …, which suggests …']},
+  body2:{a2:['On the other hand, …','But sometimes …','This is a problem because …'],
+         b1:['However, …','Also, …','Because of this, …'],
+         b2:['On the other hand, …','Many people …, so …','Consequently, …'],
+         c1:['On the other hand, …','It could be argued that …, since …']},
+  own:{a2:['Another idea is …','Also, …'],
+       b1:['Another important point is …','In addition, …'],
+       b2:['Another important point is …','What is more, …, which …'],
+       c1:['A further consideration, often overlooked, is …','This raises the question of whether …']},
+  concl:{a2:['In conclusion, I think …','So, …'],
+         b1:['In conclusion, …','To sum up, I believe …'],
+         b2:['In conclusion, although …, …','On balance, …'],
+         c1:['In conclusion, while …, it ultimately …','Perhaps, then, …']}
+};
+
+/* ---------- language bank ---------- */
+const BANK=[
+  {k:'op',lab:'Opinion',items:['I would argue that','It seems clear that','In my view','I believe that','From my point of view']},
+  {k:'ad',lab:'Addition',items:['furthermore','moreover','what is more','in addition','also']},
+  {k:'co',lab:'Contrast',items:['on the other hand','however','although','whereas','nevertheless']},
+  {k:'re',lab:'Result',items:['as a result','consequently','therefore','so','for this reason']},
+  {k:'he',lab:'Hedging',items:['tends to','is likely to','to some extent','arguably','in general']}
+];
+
+/* ---------- state ---------- */
+const qp=new URLSearchParams(location.search);
+let topicId=qp.get('topic')||TOPICS[0].id; if(!TOPICS.find(t=>t.id===topicId))topicId=TOPICS[0].id;
+let level=(qp.get('level')||'b2').toLowerCase(); if(!LEVELS[level])level='b2';
+let data={};
+let activeTA=null;
+
+function topic(){ return TOPICS.find(t=>t.id===topicId); }
+function storeKey(){ return 'nis_opinion_'+topicId+'_'+level; }
+function load(){ try{data=JSON.parse(localStorage.getItem(storeKey())||'{}')||{};}catch(e){data={};} }
+function save(){ try{localStorage.setItem(storeKey(),JSON.stringify(data));}catch(e){}
+  document.getElementById('saved').textContent='✓ saved '+new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}); }
+
+/* block definitions (titles for body1/body2 come from the topic's notes) */
+function blocks(){
+  const t=topic();
+  return [
+    {id:'intro',n:1,title:'Introduction',job:'Paraphrase the statement (don’t copy it) and state your thesis — your position.',tip:'💡 Re-word the prompt — never copy it.'},
+    {id:'body1',n:2,title:'Body 1 — '+t.notes[0].label,job:'Topic sentence about '+t.notes[0].label+' + a reason or example.',tip:'💡 One idea per paragraph; open with a topic sentence.'},
+    {id:'body2',n:3,title:'Body 2 — '+t.notes[1].label,job:'Topic sentence about '+t.notes[1].label+' + a reason or example.',tip:'💡 Use a contrast linker to balance your argument.'},
+    {id:'own',n:4,title:'Your own idea',job:'Add a third, relevant point of your own with a reason or example.',tip:'💡 Make it relevant and develop it with a reason.'},
+    {id:'concl',n:5,title:'Conclusion',job:'Restate your position in new words and add a final insight — don’t just repeat the intro.',tip:'💡 Add value — a final insight, not a repeat.'}
+  ];
+}
+
+/* ---------- render ---------- */
+function renderPicker(){
+  document.getElementById('topics').innerHTML=TOPICS.map(t=>
+    `<button class="tp ${t.id===topicId?'on':''}" onclick="setTopic('${t.id}')">${t.emoji} ${t.short}</button>`).join(' ');
+  document.getElementById('levels').innerHTML=Object.keys(LEVELS).map(k=>{
+    const L=LEVELS[k];
+    return `<button class="lv ${k===level?'on':''}" onclick="setLevel('${k}')">${L.name}<small>${L.sub}</small></button>`;
+  }).join(' ');
+}
+function syncURL(){ const u=new URL(location); u.searchParams.set('topic',topicId); u.searchParams.set('level',level); history.replaceState(null,'',u); }
+window.setTopic=(id)=>{ if(id===topicId)return; topicId=id; syncURL(); load(); renderPicker(); renderTask(); renderBlocks(); update(); window.scrollTo({top:0,behavior:'smooth'}); };
+window.setLevel=(k)=>{ if(k===level)return; level=k; syncURL(); load(); renderPicker(); renderTask(); renderBlocks(); update(); };
+
+function renderTask(){
+  const t=topic();
+  document.getElementById('task').innerHTML=`
+    <div class="ttl">📋 The task — FCE Writing Part 1</div>
+    <div>In your English class you have been talking about <b>${t.context}</b>. Now your teacher has asked you to write an essay.</div>
+    <div class="stmt">“${t.statement}”</div>
+    <div>Notes — write about:</div>
+    <ol>
+      <li>${t.notes[0].label}</li>
+      <li>${t.notes[1].label}</li>
+      <li class="own">…………… &nbsp;(<b>your own idea</b>)</li>
+    </ol>
+    <div style="margin-top:8px;font-size:13px">Write <b>${LEVELS[level].sub} words</b> in an appropriate, friendly-but-formal style.</div>`;
+}
+
+function renderBank(){
+  document.getElementById('bankrows').innerHTML=BANK.map(b=>
+    `<div class="bankrow"><span class="blab ${b.k}">${b.lab}</span>${
+      b.items.map(it=>`<button class="chip" onmousedown="event.preventDefault()" onclick="insert('${esc(it)}')">${it}</button>`).join('')
+    }</div>`).join('');
+}
+
+function renderBlocks(){
+  document.getElementById('blocks').innerHTML=blocks().map(b=>{
+    const fr=(FRAMES[b.id][level]||FRAMES[b.id].b2).map(f=>`<button class="frame" onmousedown="event.preventDefault()" onclick="insertInto('${b.id}','${esc(f)} ')">${f}</button>`).join('');
+    return `<div class="block">
+      <div class="bh"><span class="num">${b.n}</span><h2>${b.title}</h2></div>
+      <div class="job">${b.job}</div>
+      <div class="frames">${fr}</div>
+      <textarea id="ta_${b.id}" data-id="${b.id}" placeholder="Write here…"
+        oninput="onInput(this)" onfocus="activeTA=this">${(data[b.id]||'').replace(/</g,'&lt;')}</textarea>
+      <div class="bfoot"><span class="tip">${b.tip}</span><span class="wc" id="wc_${b.id}"></span></div>
+    </div>`;
+  }).join('');
+}
+
+/* ---------- editing ---------- */
+function onInput(ta){ data[ta.dataset.id]=ta.value; save(); update(); }
+window.insertInto=(id,text)=>{ const ta=document.getElementById('ta_'+id); ta.focus(); activeTA=ta; insert(text); };
+window.insert=(text)=>{
+  const ta=activeTA||document.getElementById('ta_intro'); ta.focus();
+  const s=ta.selectionStart??ta.value.length, e=ta.selectionEnd??ta.value.length;
+  const before=ta.value.slice(0,s), after=ta.value.slice(e);
+  let ins=text; if(before && !/\s$/.test(before) && !/^[\s.,;:!?]/.test(ins)) ins=' '+ins;
+  ta.value=before+ins+after;
+  const pos=(before+ins).length; ta.setSelectionRange(pos,pos);
+  data[ta.dataset.id]=ta.value; save(); update();
+};
+
+/* ---------- analysis ---------- */
+function words(t){ return (t.trim().match(/[A-Za-z0-9’'\-]+/g)||[]).length; }
+function fullText(){ return blocks().map(b=>(data[b.id]||'').trim()).filter(Boolean).join('\n\n'); }
+function update(){
+  let total=0;
+  blocks().forEach(b=>{ const w=words(data[b.id]||''); total+=w;
+    const el=document.getElementById('wc_'+b.id); if(el)el.textContent=w?w+' words':''; });
+  const L=LEVELS[level];
+  document.getElementById('wcBig').textContent=total;
+  document.getElementById('wcTarget').textContent='target '+L.sub;
+  document.getElementById('rmid').textContent=L.min;
+  document.getElementById('rmax').textContent=L.max;
+  const g=document.getElementById('gauge');
+  g.style.width=Math.min(100,Math.round(total/L.max*100))+'%';
+  let col='#2d5a8d',state='';
+  if(total===0){state='Start writing…';col='#cbd5e1';}
+  else if(total<L.min){state=`${L.min-total} more to reach ${L.min}`;col='#f59e0b';}
+  else if(total<=L.max){state='✓ Within range — great!';col='#16a34a';}
+  else {state=`${total-L.max} over ${L.max} — trim a little`;col='#dc2626';}
+  g.style.background=col;
+  const ws=document.getElementById('wcState'); ws.textContent=state; ws.style.color=col;
+  renderCheck(total);
+}
+function renderCheck(total){
+  const ft=fullText().toLowerCase();
+  const t=topic(), L=LEVELS[level];
+  const has=(re)=>re.test(ft);
+  const covers=(kw)=>kw.some(k=>ft.includes(k));
+  const linkerList=BANK.flatMap(b=>b.items).map(x=>x.toLowerCase());
+  const linkersUsed=linkerList.filter(x=>ft.includes(x)).length;
+  const items=[
+    {ok: words(data.intro||'')>=6 && has(/i (believe|think|would argue)|in my (view|opinion)|it seems|from my point/),
+      t:'Introduction with a clear thesis'},
+    {ok: covers(t.notes[0].kw), t:'Note 1 covered — '+t.notes[0].label},
+    {ok: covers(t.notes[1].kw), t:'Note 2 covered — '+t.notes[1].label},
+    {ok: words(data.own||'')>=10, t:'Your own (third) idea developed'},
+    {ok: linkersUsed>=3, t:`Linkers used (${linkersUsed}/3+)`},
+    {ok: words(data.concl||'')>=6 && has(/in conclusion|to sum up|to conclude|overall|on balance/),
+      t:'Conclusion that restates your position'},
+    {ok: total>=L.min && total<=L.max, t:`Word count ${L.min}–${L.max} (now ${total})`}
+  ];
+  document.getElementById('check').innerHTML=items.map(i=>
+    `<li class="${i.ok?'done':''}"><span class="mk">${i.ok?'✓':''}</span><span>${i.t}</span></li>`).join('');
+}
+
+/* ---------- actions ---------- */
+window.openPreview=()=>{
+  const ft=fullText();
+  document.getElementById('prevMeta').textContent=`${topic().emoji} ${topic().short} · ${LEVELS[level].name} · ${words(ft)} words`;
+  document.getElementById('prevBody').innerHTML= ft
+    ? blocks().map(b=>(data[b.id]||'').trim()).filter(Boolean).map(p=>`<p>${p.replace(/</g,'&lt;')}</p>`).join('')
+    : '<p style="color:#94a3b8">Your essay is empty — start writing in the boxes.</p>';
+  show('ovPrev');
+};
+window.openModel=()=>{
+  document.getElementById('modelTitle').textContent='📖 Model essay — '+topic().short;
+  document.getElementById('modelBody').innerHTML=topic().model.map(m=>
+    `<p class="mp"><span class="tg">${m[0]}</span>${m[1]}</p>`).join('');
+  show('ovModel');
+};
+window.copyEssay=async()=>{
+  const ft=fullText(); if(!ft){alert('Your essay is empty.');return;}
+  try{ await navigator.clipboard.writeText(ft);
+    const b=document.getElementById('copyBtn'); const o=b.textContent; b.textContent='✓ Copied!';
+    setTimeout(()=>b.textContent=o,1500);
+  }catch(e){ const x=document.createElement('textarea'); x.value=ft; document.body.appendChild(x); x.select();
+    document.execCommand('copy'); x.remove(); alert('Essay copied.'); }
+};
+window.clearAll=()=>{
+  if(!confirm('Clear your '+topic().short+' essay ('+LEVELS[level].name+')? This cannot be undone.'))return;
+  data={}; save(); renderBlocks(); update();
+};
+function show(id){document.getElementById(id).classList.add('show');}
+window.closeOverlay=(id)=>document.getElementById(id).classList.remove('show');
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeOverlay('ovPrev');closeOverlay('ovModel');}});
+function esc(s){return String(s).replace(/\\/g,'\\\\').replace(/'/g,"\\'");}
+
+/* ---------- init ---------- */
+load(); renderPicker(); renderTask(); renderBank(); renderBlocks(); update();
+</script>
+</body>
+</html>

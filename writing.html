@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Writing — Portal NIS</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font:15px/1.55 "Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:#0f172a;background:linear-gradient(180deg,#d1d2ea 0%,#f8fafc 60%,#fff 100%);min-height:100vh}
+  header{background:#fff;padding:12px 22px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+    box-shadow:0 4px 16px rgba(15,23,42,.06);position:sticky;top:0;z-index:10;border-bottom:1px solid #e2e8f0}
+  header img{display:block;height:38px;width:auto}
+  header .sub{color:#636465;font-size:13px;margin-left:auto;font-weight:600}
+  header a.back{margin-left:14px;text-decoration:none;background:#2d5a8d;color:#fff;font-weight:700;font-size:13px;padding:8px 14px;border-radius:9px;white-space:nowrap}
+  main{max-width:880px;margin:0 auto;padding:22px 18px}
+  h1{font-size:22px;margin:0 0 6px}
+  p.lead{color:#475569;margin:0 0 18px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+  .card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:26px 22px;
+    box-shadow:0 8px 24px rgba(15,23,42,.08);text-align:center;color:inherit;display:block;text-decoration:none;transition:.15s}
+  a.card:hover{transform:translateY(-3px)}
+  .card.soon{opacity:.7}
+  .card .ico{font-size:3rem;line-height:1}
+  .card h2{font-size:18px;margin:10px 0 4px;color:#2d5a8d}
+  .card .desc{color:#475569;font-size:13px;margin:0 0 12px}
+  .tag{display:inline-block;background:#d1d2ea;color:#244c77;font-weight:700;font-size:12px;padding:5px 12px;border-radius:14px;margin:2px}
+  .tag.go{background:#2d5a8d;color:#fff}
+  .footer{color:#475569;font-size:12px;text-align:center;padding:22px 0 32px}
+</style>
+</head>
+<body>
+<header>
+  <img src="assets/logo-h.svg" alt="Nordic International School" onerror="this.style.display='none'">
+  <div class="sub" id="hsub">CLASSES · WRITING</div>
+  <a class="back" href="./">🏫 Volver al Portal</a>
+</header>
+<main>
+  <h1 id="title">✍️ Writing</h1>
+  <p class="lead" id="lead">Escritura por grado. Iremos publicando más tareas y herramientas poco a poco.</p>
+  <div class="grid" id="grid"></div>
+  <div class="footer" id="foot">Writing — NIS English · 2026</div>
+</main>
+
+<script>
+const META={g6:['6️⃣','6th grade','A2'],g7:['7️⃣','7th grade','A2'],g8:['8️⃣','8th grade','B1'],
+  g9:['9️⃣','9th grade','B2'],g10:['🔟','10th grade','B2'],g11:['🎓','11th grade','C1']};
+
+// Tareas/herramientas de escritura por grado. soon:true = próximamente.
+const UNITS={
+  g9:[
+    {ico:'✍️',t:'Opinion Essay Builder',d:'Writing Part 1 (FCE): 6 tópicos a elegir. Arma tu opinion essay párrafo a párrafo con frases guía, banco de linkers, contador de palabras y checklist.',href:'opinion-essay-builder.html?level=b2'}
+  ],
+  g10:[
+    {ico:'✍️',t:'Opinion Essay Builder',d:'Writing Part 1 (FCE): 6 tópicos a elegir, con frases guía, linkers, contador de palabras y checklist.',href:'opinion-essay-builder.html?level=b2'}
+  ]
+};
+
+const grade=(new URLSearchParams(location.search).get('grade'))||'g9';
+const m=META[grade]||META.g9;
+const units=UNITS[grade]||[];
+document.getElementById('title').textContent=m[0]+' Writing — '+m[1];
+document.getElementById('hsub').textContent='CLASSES · '+m[1].toUpperCase()+' · WRITING';
+document.getElementById('lead').textContent='Escritura de '+m[1]+' (nivel '+m[2]+'). Toca una tarea para practicar.';
+document.getElementById('foot').textContent=m[1]+' · Writing — NIS English · 2026';
+document.getElementById('grid').innerHTML = units.length ? units.map(u=>{
+  if(u.soon) return `<div class="card soon"><div class="ico">${u.ico}</div><h2>${u.t}</h2><div class="desc">${u.d}</div><span class="tag">Próximamente</span></div>`;
+  return `<a class="card" href="${u.href}"><div class="ico">${u.ico}</div><h2>${u.t}</h2><div class="desc">${u.d}</div><span class="tag go">▶ Practicar</span></a>`;
+}).join('') : `<div class="card soon"><div class="ico">🛠️</div><h2>Próximamente</h2><div class="desc">Pronto publicaremos tareas de escritura para este grado.</div></div>`;
+</script>
+</body>
+</html>
