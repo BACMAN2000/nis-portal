@@ -448,7 +448,9 @@ async function antiCheatPanel(){
           <select id="ac_stud" style="min-width:240px">${studOpts}</select></div>
         <div><label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">ACTIVIDAD</label>
           <select id="ac_act" style="min-width:220px">${actOpts}</select></div>
-        <button class="btn" onclick="window._acGrantForm(this)">Otorgar +1 vida</button>
+        <div><label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">VIDAS EXTRA</label>
+          <input id="ac_qty" type="number" min="1" max="20" value="1" style="width:84px"></div>
+        <button class="btn" onclick="window._acGrantForm(this)">Otorgar vidas</button>
       </div>
       <div id="ac_msg" class="muted" style="margin-top:8px"></div>
     </div>
@@ -471,27 +473,32 @@ async function antiCheatPanel(){
     ${error?`<div class="note err">${esc(error.message)}</div>`:''}`;
 }
 window._acFilter=(v)=>{ document.querySelectorAll('#ac_rows tr[data-ev]').forEach(tr=>{ tr.style.display = (!v || tr.dataset.ev===v) ? '' : 'none'; }); };
-async function _acInsertGrant(studentId, activity){
+async function _acInsertGrant(studentId, activity, qty){
   const uid=(state.session&&state.session.user&&state.session.user.id)||null;
-  return sb.from('anticheat_grants').insert({ student_id:studentId, activity, extra_lives:1, granted_by:uid });
+  const n=Math.max(1, Math.min(20, parseInt(qty,10)||1));
+  return sb.from('anticheat_grants').insert({ student_id:studentId, activity, extra_lives:n, granted_by:uid });
 }
 window._acGrant=async(studentId, activity, name, btn)=>{
-  if(!confirm(`¿Dar +1 vida a ${name} en «${acActLabel(activity)}»?`)) return;
+  const ans=prompt(`¿Cuántas vidas extra dar a ${name} en «${acActLabel(activity)}»?`, '1');
+  if(ans===null) return;
+  const n=Math.max(1, Math.min(20, parseInt(ans,10)||0));
+  if(!n){ alert('Número no válido.'); return; }
   if(btn){ btn.disabled=true; btn.textContent='…'; }
-  const { error } = await _acInsertGrant(studentId, activity);
-  if(btn){ btn.disabled=false; btn.textContent = error?'➕ Vida':'✓ Dada'; }
+  const { error } = await _acInsertGrant(studentId, activity, n);
+  if(btn){ btn.disabled=false; btn.textContent = error?'➕ Vida':`✓ +${n}`; }
   if(error) alert('No se pudo otorgar: '+error.message);
 };
 window._acGrantForm=async(btn)=>{
   const studSel=$('#ac_stud'), actSel=$('#ac_act'), msg=$('#ac_msg');
-  const studentId=studSel.value, activity=actSel.value;
+  const studentId=studSel.value, activity=actSel.value, qty=$('#ac_qty')?.value||1;
+  const n=Math.max(1, Math.min(20, parseInt(qty,10)||1));
   const name=studSel.options[studSel.selectedIndex]?.text||'';
   btn.disabled=true;
-  const { error } = await _acInsertGrant(studentId, activity);
+  const { error } = await _acInsertGrant(studentId, activity, n);
   btn.disabled=false;
   msg.innerHTML = error
     ? `<span style="color:var(--danger,#b91c1c)">No se pudo: ${esc(error.message)}</span>`
-    : `✓ Vida extra otorgada a <b>${esc(name)}</b> en <b>${esc(acActLabel(activity))}</b>. El alumno la recibe al recargar la actividad.`;
+    : `✓ <b>${n}</b> vida(s) extra otorgada(s) a <b>${esc(name)}</b> en <b>${esc(acActLabel(activity))}</b>. El alumno las recibe al recargar la actividad.`;
 };
 async function adminOverview(){
   const { data:profs } = await sb.from('profiles').select('role,grade_id,cefr_level');
