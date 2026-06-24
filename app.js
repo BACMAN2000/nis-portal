@@ -462,11 +462,11 @@ async function adminTeachers(){
     const gradeChips=GRADES.map(g=>`<label style="${chipCss}"><input type="checkbox" class="tg-grade" value="${g.id}" ${(a.grades||[]).includes(g.id)?'checked':''} ${a.all_grades?'disabled':''}> ${g.name}</label>`).join('');
     const managed=tnaMap[t.id];
     const _nodeChip=(key,label)=>`<label style="${chipCss}"><input type="checkbox" class="tg-node" value="${key}" ${(managed? managed.has(key): true)?'checked':''}> ${esc(label)}</label>`;
-    const _gradeKeySet=new Set([...GRADE_ORDER.flatMap(g=>['english.classes.'+g,'english.classes.'+g+'.activities','english.classes.'+g+'.grammar']),'english.classes.g9.uoe1']);
+    const _gradeKeySet=new Set([...GRADE_ORDER.flatMap(g=>['english.classes.'+g,'english.classes.'+g+'.activities','english.classes.'+g+'.grammar']),'english.classes.g9.uoe1','english.classes.g9.writing']);
     const generalChips=ACCESS_NODES.filter(n=>!_gradeKeySet.has(n.key)).map(n=>_nodeChip(n.key,n.label)).join('');
     const gradeBlocks=GRADE_ORDER.map(g=>{
       const items=[['english.classes.'+g,'Classes'],['english.classes.'+g+'.activities','🎲 Activities'],['english.classes.'+g+'.grammar','📝 Grammar']];
-      if(g==='g9') items.push(['english.classes.g9.uoe1','🧩 Use of English P1']);
+      if(g==='g9') items.push(['english.classes.g9.uoe1','🧩 Use of English P1'],['english.classes.g9.writing','✍️ Writing']);
       return `<div class="row" style="gap:6px;align-items:center;margin-top:5px;flex-wrap:wrap"><span class="muted" style="font-size:.8rem;min-width:84px">${GRADE_META[g][0]} ${GRADE_META[g][1]}</span>${items.map(it=>_nodeChip(it[0],it[1])).join('')}</div>`;
     }).join('');
     const pw=credmap[t.id]||'';
@@ -1627,6 +1627,7 @@ const ACCESS_NODES = [
   {key:'english.classes',               label:'Classes'},
   ..._GRADE_NODES,
   {key:'english.classes.g9.uoe1',       label:'9th · Use of English P1'},
+  {key:'english.classes.g9.writing',    label:'9th · Writing'},
   {key:'french',                        label:'French (toda la materia)'},
   {key:'french.crosswords',             label:'French · Crosswords'},
   {key:'french.wordsearch',             label:'French · Word Search'},
@@ -1738,6 +1739,7 @@ function studentGrade(key){
       ${nodeVisible(base+'.grammar') ? _skillCard('📝','Grammar','Gramática de '+label+': explicaciones y juegos por unidad.','grammar.html?grade='+key) : _lockedCard('📝','Grammar','Gramática de '+label+'.')}
       ${nodeVisible(base+'.activities') ? _hubCard('🎲','Activities','Crosswords y word searches por nivel.',"window._nav('classes_"+key+"_act')") : _lockedCard('🎲','Activities','Juegos y actividades.')}
       ${key==='g9' ? (nodeVisible('english.classes.g9.uoe1') ? _skillCard('🧩','Use of English · Part 1','Multiple-choice cloze B2 (estilo Cambridge): 8 huecos, opciones A–D, con corrección y explicaciones.','use-of-english-part1.html') : _lockedCard('🧩','Use of English · Part 1','Cloze B2 estilo Cambridge.')) : ''}
+      ${key==='g9' ? (nodeVisible('english.classes.g9.writing') ? _skillCard('✍️','Writing','Opinion essay (FCE Writing Part 1): 6 tópicos con frases guía, banco de linkers, contador de palabras y checklist.','writing.html?grade='+key) : _lockedCard('✍️','Writing','Opinion essay FCE Writing Part 1.')) : ''}
     </div>`;
 }
 /* Actividades de un grado → Crossword + Word Search con los niveles del grado */
