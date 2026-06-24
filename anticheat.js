@@ -38,6 +38,7 @@
   var me = null;                 // { id, name, email, grade, guardian_name, guardian_phone }
   var opts = null;               // opciones de init()
   var st = { count: 0, locked: false, firstAt: null };
+  var extraLives = 0;            // vidas extra otorgadas por docente/admin
   var armed = false;             // tracking activo
   var paused = false;            // pausa temporal (print / portapapeles propios)
   var awayActive = false;        // hay un episodio "fuera" en curso
@@ -50,6 +51,9 @@
     try { var r = JSON.parse(localStorage.getItem(lsKey()) || 'null'); if (r) st = Object.assign(st, r); } catch (e) {}
   }
   function saveLS() { try { localStorage.setItem(lsKey(), JSON.stringify(st)); } catch (e) {} }
+  function maxLives() { return (opts.maxLives || 3) + extraLives; }
+  function livesLeft() { return Math.max(0, maxLives() - st.count); }
+  function isLocked() { return st.count >= maxLives(); }
 
   function deviceInfo() {
     var ua = navigator.userAgent || '';
@@ -129,6 +133,18 @@
         }
       }).catch(function () {});
   }
+  // Suma de vidas extra otorgadas por docente/admin para este alumno+actividad.
+  function loadGrants() {
+    if (!sb || !me) { extraLives = 0; return Promise.resolve(0); }
+    return sb.from('anticheat_grants')
+      .select('extra_lives')
+      .eq('student_id', me.id).eq('activity', opts.activity)
+      .then(function (r) {
+        var rows = (r && r.data) || [];
+        extraLives = rows.reduce(function (a, x) { return a + (x.extra_lives || 0); }, 0);
+        return extraLives;
+      }).catch(function () { extraLives = 0; return 0; });
+  }
 
   /* ---------- registro de incidentes ---------- */
   function record(event, extra) {
@@ -136,7 +152,7 @@
     var payload = Object.assign({
       activity: opts.activity, activity_label: opts.label || opts.activity,
       level: val(opts.level) || null, topic: val(opts.topic) || null,
-      event: event, lives_left: Math.max(0, (opts.maxLives - st.count)),
+      event: event, lives_left: livesLeft(),
       switch_count: st.count, os: dev.os, browser: dev.browser,
       platform: dev.platform, screen: dev.screen, language: dev.language,
       user_agent: dev.ua,
@@ -196,8 +212,8 @@
     document.head.appendChild(s);
   }
   function hearts() {
-    var left = Math.max(0, opts.maxLives - st.count), out = '';
-    for (var i = 0; i < opts.maxLives; i++) out += (i < left ? '❤️' : '🖤');
+    var left = livesLeft(), tot = maxLives(), out = '';
+    for (var i = 0; i < tot; i++) out += (i < left ? '❤️' : '🖤');
     return out;
   }
   function modal(html, isLock) {
@@ -212,21 +228,21 @@
     }
     return ov;
   }
-  function showWarning(level) {
-    // level 1 = aviso; 2 = reportado
-    var html;
-    if (level === 1) {
-      html = '<div class="nis-ac-ic">⚠️</div><h2>Saliste de la actividad</h2>' +
-        '<div class="nis-ac-lives">' + hearts() + '</div>' +
-        '<p>Te quedan <b>2 vidas</b>. La actividad detecta cuando cambias de pestaña, app o ventana.</p>' +
-        '<p><b>La próxima salida será reportada a tu docente.</b></p>' +
-        '<button class="nis-ac-btn">Volver a la actividad</button>';
-    } else {
+  function showWarning(reported) {
+    // reported = última vida (queda 1): se reporta al docente.
+    var left = livesLeft(), html;
+    if (reported) {
       html = '<div class="nis-ac-ic">🚩</div><h2>Has sido reportado</h2>' +
         '<div class="nis-ac-lives">' + hearts() + '</div>' +
         '<p>Saliste de nuevo. Esto ha sido <b>reportado a tu docente</b>.</p>' +
         '<p>Te queda <b>1 vida</b>. La próxima salida <b>eliminará la actividad</b> y tu nota será <b>C</b>.</p>' +
         '<button class="nis-ac-btn">Entiendo, volver</button>';
+    } else {
+      html = '<div class="nis-ac-ic">⚠️</div><h2>Saliste de la actividad</h2>' +
+        '<div class="nis-ac-lives">' + hearts() + '</div>' +
+        '<p>Te quedan <b>' + left + ' vidas</b>. La actividad detecta cuando cambias de pestaña, app o ventana.</p>' +
+        (left === 2 ? '<p><b>La próxima salida será reportada a tu docente.</b></p>' : '') +
+        '<button class="nis-ac-btn">Volver a la actividad</button>';
     }
     modal(html, false);
   }
@@ -237,10 +253,36 @@
       '<p>Saliste de la actividad demasiadas veces. Por las reglas de honestidad, esta actividad ha sido <b>eliminada</b>.</p>' +
       '<p>Tu nota es <b>C</b>. Se ha notificado a tu <b>docente</b>, quien informará a tus <b>padres</b>.</p>' +
       (who ? '<div class="nis-ac-meta">' + who + '</div>' : '') +
-      '<div class="nis-ac-meta">Si crees que es un error, habla con tu docente.</div>';
-    modal(html, true);
+      '<div class="nis-ac-meta">Si tu docente te dio una <b>vida extra</b>, pulsa el botón.</div>' +
+      '<button class="nis-ac-btn nis-ac-retry" style="margin-top:12px">🔄 Ya tengo permiso — reintentar</button>';
+    var ov = modal(html, true);
     document.body.classList.add('nis-ac-locked');
+    var rb = ov.querySelector('.nis-ac-retry');
+    if (rb) rb.addEventListener('click', function () {
+      rb.disabled = true; rb.textContent = 'Comprobando…';
+      loadGrants().then(function () {
+        if (!isLocked()) { revive(); }
+        else { rb.disabled = false; rb.textContent = '🔄 Aún sin vida extra — reintentar'; }
+      });
+    });
     if (opts.onLock) { try { opts.onLock(); } catch (e) {} }
+  }
+  function revive() {
+    st.locked = false; saveLS();
+    var prev = document.getElementById('nis-ac-modal'); if (prev) prev.remove();
+    document.body.classList.remove('nis-ac-locked');
+    showRevived(livesLeft());
+  }
+  function showRevived(n) {
+    var html = '<div class="nis-ac-ic">❤️</div><h2 style="color:#15803d">¡Tienes una vida extra!</h2>' +
+      '<div class="nis-ac-lives">' + hearts() + '</div>' +
+      '<p>Tu docente te otorgó una <b>vida extra</b>. Ahora te quedan <b>' + n + '</b>. ' +
+      'Recuerda: <b>no salgas</b> de la actividad.</p>' +
+      '<button class="nis-ac-btn">Continuar la actividad</button>';
+    var ov = modal(html, false);
+    var b = ov.querySelector('.nis-ac-btn');
+    // Recargar reactiva los campos deshabilitados y rearma el control.
+    if (b) b.addEventListener('click', function () { location.reload(); });
   }
 
   /* ---------- lógica de vidas ---------- */
@@ -248,17 +290,19 @@
     if (st.locked) return;
     if (!st.firstAt) st.firstAt = new Date().toISOString();
     st.count++;
-    saveLS();
-    if (st.count >= opts.maxLives) {
+    var left = livesLeft();
+    if (left <= 0) {
       st.locked = true; saveLS();
       record('locked', { grade_assigned: 'C', seconds_away: secondsAway });
       showLock();
-    } else if (st.count === 2) {
+    } else if (left === 1) {                 // última vida → reporte al docente
+      saveLS();
       record('reported', { seconds_away: secondsAway });
-      showWarning(2);
+      showWarning(true);
     } else {
+      saveLS();
       record('tab_switch', { seconds_away: secondsAway });
-      showWarning(1);
+      showWarning(false);
     }
   }
 
@@ -317,7 +361,7 @@
   /* ---------- API pública ---------- */
   function pause() { paused = true; awayActive = false; }
   function resume() { paused = false; }
-  function getStatus() { return { count: st.count, livesLeft: Math.max(0, opts.maxLives - st.count), locked: st.locked }; }
+  function getStatus() { return { count: st.count, livesLeft: livesLeft(), maxLives: maxLives(), extraLives: extraLives, locked: st.locked }; }
 
   function arm() {
     document.addEventListener('visibilitychange', onVisibility);
@@ -338,8 +382,10 @@
       // Docentes y administradores quedan exentos (pueden revisar sin bloquearse).
       if (me && (me.role === 'teacher' || me.role === 'admin')) return;
       loadLS();
-      return syncFromDB().then(function () {
-        if (st.locked) { showLock(); return; }   // ya estaba bloqueada → no se reabre
+      return Promise.all([syncFromDB(), loadGrants()]).then(function () {
+        // El bloqueo se DERIVA de salidas vs vidas efectivas: una vida extra revive.
+        st.locked = isLocked(); saveLS();
+        if (st.locked) { showLock(); return; }   // sigue bloqueada → no se reabre
         blockClipboard();
         discourageTranslate();
         arm();
