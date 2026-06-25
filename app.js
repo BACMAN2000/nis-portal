@@ -2048,7 +2048,9 @@ function scaleToCefr(scale){
    Only G6–G11 have students today; lower grades default to A2. Falls back to
    the student's stored cefr_level if a grade isn't mapped. */
 const GRADE_TARGET = {1:'A2',2:'A2',3:'A2',4:'A2',5:'A2',6:'A2',7:'A2',8:'B1',9:'B2',10:'B2',11:'C1'};
-function targetLevel(p){ return (p && (GRADE_TARGET[p.grade_id] || p.cefr_level)) || null; }
+/* Per-student grade-target override (accessibility / teacher judgement). */
+const TARGET_OVERRIDE = { '25555d21-e999-4b76-a5eb-827937b0d8a9':'A2' }; // Salvador Arata Morales (G9·B)
+function targetLevel(p){ return (p && (TARGET_OVERRIDE[p.id] || GRADE_TARGET[p.grade_id] || p.cefr_level)) || null; }
 const CEFR_RANK = {'<A1':0,'A1':1,'A2':2,'B1':3,'B2':4,'C1':5,'C2':6};
 /* Compare a final CEFR against the target: 'meets' | 'below' | 'above' | null */
 function targetStatus(finalCefr, target){
@@ -2093,6 +2095,8 @@ const FINAL_CEFR_OVERRIDE = {
   'd441885a-6ec9-4b70-92db-10fa352326d2': { Reading:'A2', Listening:'A2' },
   // Caleb Eliahu Chinchay Roncal (G6 · B) — teacher: overall result pinned to A2.
   'd1f12f91-64ba-403e-b191-783ec0280083': { Reading:'A2', Listening:'A2' },
+  // Salvador Arata Morales (G9 · B) — accessibility: all skills pinned to A2.
+  '25555d21-e999-4b76-a5eb-827937b0d8a9': { Reading:'A2', Listening:'A2', Writing:'A2', Speaking:'A2' },
 };
 function _applyCefrOverride(profile, skill, b){
   if(!b) return b;
@@ -2122,6 +2126,7 @@ function _finalFromData(profile, atts, spk){
     const sc = skillScale(lvl, Number(spk.percent));
     Speaking = { scale:sc, cefr:scaleToCefr(sc), level:lvl, pct:Math.round(Number(spk.percent)), source:'Rúbrica' };
   }
+  Speaking = _applyCefrOverride(profile,'Speaking', Speaking);
   // Plegar Writing dentro de Reading SOLO en A2 puro (sin ningún writing rendido).
   // Si hay writing (calificado o no), se muestra como destreza propia (B1+).
   const a2NoWriting = isA2 && !(atts||[]).some(a=>a.skill==='Writing');
