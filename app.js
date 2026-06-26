@@ -2148,7 +2148,7 @@ function _finalFromData(profile, atts, spk){
   // Salvador Arata (accesibilidad): recomputar cada destreza como A2 por % (coincide con el PDF
   // y no infla con el piso del nivel original). Mantiene techo A2 (139).
   if(profile && profile.id==='25555d21-e999-4b76-a5eb-827937b0d8a9'){
-    for(const x of present){ if(x && x.pct!=null){ x.scale=Math.max(120,Math.min(139,skillScale('A2',Number(x.pct)))); x.cefr='A2'; } }
+    for(const x of present){ if(x && x.pct!=null){ x.scale=Math.min(139,skillScale('A2',Number(x.pct))); x.cefr='A2'; } }
   }
   // Reglas de "informe completo":
   //  · A2 puro (A2 Key): Reading & Use of English (incluye Writing) + Listening. No requiere Speaking.
