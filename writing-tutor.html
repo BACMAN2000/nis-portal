@@ -28,6 +28,16 @@
   .brief h2{font-size:1.05rem;margin-bottom:4px}
   .brief .tt{font-size:.85rem;opacity:.96;line-height:1.45}
   .brief textarea{width:100%;margin-top:10px;border:none;border-radius:9px;padding:10px;font:inherit;font-size:.85rem;min-height:54px;resize:vertical;color:var(--ink)}
+  .topicpick{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:14px;padding:12px 14px;box-shadow:0 2px 10px rgba(20,30,60,.07)}
+  .topicpick .tp-h{font-size:.9rem;font-weight:800;margin-bottom:9px}
+  .topicpick .tp-h small{font-weight:600;color:var(--muted);font-size:.74rem;display:block;margin-top:2px}
+  .tchips{display:flex;flex-wrap:wrap;gap:7px}
+  .tchip{display:inline-flex;align-items:center;gap:7px;text-align:left;background:#f7f9ff;border:2px solid var(--line);border-radius:11px;padding:7px 11px;font:inherit;font-size:.82rem;font-weight:600;color:var(--ink);cursor:pointer;transition:.12s}
+  .tchip:hover{border-color:var(--accent);transform:translateY(-1px)}
+  .tchip.cur{border-color:var(--accent)}
+  .tchip.picked{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .tchip .tlv{flex:0 0 auto;font-size:.64rem;font-weight:800;background:var(--soft);color:var(--accent-d);border-radius:8px;padding:2px 6px}
+  .tchip.picked .tlv{background:rgba(255,255,255,.25);color:#fff}
   .sec{background:var(--card);border-radius:14px;padding:14px 16px;box-shadow:0 2px 10px rgba(20,30,60,.07);border-left:5px solid var(--accent)}
   .sec .top{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
   .sec .n{background:var(--accent);color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;flex:0 0 auto}
@@ -139,6 +149,7 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js"></script>
+<script src="anticheat.js?v=5" data-activity="writing-tutor" data-label="Virtual Writing Tutor"></script>
 <script>
 var P={
  opinion:{A2:["I think","I like","I don't like"],B1:["In my opinion","I believe that","I think that","From my point of view"],B2:["It seems to me that","I would argue that","Personally, I feel that","There is no doubt that"],C1:["I am firmly convinced that","It could be argued that","From my perspective","I am inclined to believe that"]},
@@ -219,6 +230,154 @@ var TYPES={
    sections:[{t:"Description",g:"What happened? Describe the situation or experience.",fns:["reportNeutral"]},{t:"Feelings",g:"What were you thinking and feeling at the time?",fns:["reflectFeel"]},{t:"Evaluation + analysis",g:"What was good or bad, and why? Link it to theory.",fns:["transContrast","reportArgue","examples"]},{t:"Conclusion + action plan",g:"What did you learn, and what will you do differently next time?",fns:["transCause","reflectAction"]}]}
 };
 var TYPE_KEYS=Object.keys(TYPES);
+/* 10 topics por tipo de texto, repartidos entre los niveles (A2·B1·B2·C1).
+   Al tocar uno, el tutor lo carga como tarea y ajusta el nivel sugerido. */
+var TOPICS={
+ essay:[
+   {lv:"A2",t:"Is it better to live in a city or in the countryside?"},
+   {lv:"A2",t:"Should every child have a pet at home?"},
+   {lv:"B1",t:"Are mobile phones good or bad for teenagers?"},
+   {lv:"B1",t:"Should students have to wear a school uniform?"},
+   {lv:"B2",t:"Does social media bring people together or push them apart?"},
+   {lv:"B2",t:"Should junk food be banned in schools?"},
+   {lv:"B2",t:"Is it better to study online or in a classroom?"},
+   {lv:"C1",t:"Should governments spend more on space exploration than on problems on Earth?"},
+   {lv:"C1",t:"Has technology made us less able to think for ourselves?"},
+   {lv:"C1",t:"Is economic growth always good for society?"}
+ ],
+ article:[
+   {lv:"A2",t:"My favourite place in my town"},
+   {lv:"A2",t:"A hobby everyone should try"},
+   {lv:"B1",t:"How to have a perfect weekend with no money"},
+   {lv:"B1",t:"The best app on my phone and why"},
+   {lv:"B2",t:"Why every teenager should learn to cook"},
+   {lv:"B2",t:"Is online gaming a real sport? Share your view"},
+   {lv:"B1",t:"A film or series you can't stop watching"},
+   {lv:"B2",t:"The trend that defines our generation"},
+   {lv:"C1",t:"The skill schools should teach but don't"},
+   {lv:"C1",t:"How travel changes the way we see the world"}
+ ],
+ emailF:[
+   {lv:"A2",t:"Write to a teacher to ask for homework you missed."},
+   {lv:"A2",t:"Write to a hotel to ask about rooms and prices."},
+   {lv:"B1",t:"Write to a shop to complain about a product that arrived broken."},
+   {lv:"B1",t:"Write to a language school asking about summer courses."},
+   {lv:"B2",t:"Write to your town council suggesting a new facility for young people."},
+   {lv:"B2",t:"Write to a company applying for a part-time summer job."},
+   {lv:"B2",t:"Write to an airline to request a refund for a cancelled flight."},
+   {lv:"C1",t:"Write to a newspaper responding to an article you disagree with."},
+   {lv:"C1",t:"Write to your principal proposing a change to the school timetable."},
+   {lv:"B1",t:"Write to a restaurant to book a table for a special event."}
+ ],
+ emailI:[
+   {lv:"A2",t:"Write to a friend about your weekend."},
+   {lv:"A2",t:"Invite a friend to your birthday party."},
+   {lv:"A2",t:"Thank a friend for a present."},
+   {lv:"B1",t:"Tell a friend about a trip you are planning together."},
+   {lv:"B1",t:"Write to a cousin who is coming to visit your city."},
+   {lv:"B1",t:"Tell a friend about a film you just watched."},
+   {lv:"B2",t:"Reply to a friend who is feeling stressed about exams."},
+   {lv:"B2",t:"Persuade a friend to come on holiday with you."},
+   {lv:"B2",t:"Tell a friend your exciting news and ask about theirs."},
+   {lv:"C1",t:"Write to an old friend you haven't spoken to in years."}
+ ],
+ review:[
+   {lv:"A2",t:"Review your favourite film."},
+   {lv:"A2",t:"Review a restaurant you like."},
+   {lv:"B1",t:"Review a book you read recently."},
+   {lv:"B1",t:"Review a video game or an app."},
+   {lv:"B1",t:"Review your favourite café for the school magazine."},
+   {lv:"B2",t:"Review a concert or event you went to."},
+   {lv:"B2",t:"Review a series everyone is talking about."},
+   {lv:"B2",t:"Review a museum or exhibition."},
+   {lv:"C1",t:"Review a product that disappointed you."},
+   {lv:"C1",t:"Review a place you visited on holiday."}
+ ],
+ report:[
+   {lv:"B1",t:"Report on the sports facilities at your school and suggest improvements."},
+   {lv:"B1",t:"Report on the food in your school canteen."},
+   {lv:"B1",t:"Report on the after-school clubs and what could be added."},
+   {lv:"B2",t:"Report on how students in your school use technology."},
+   {lv:"B2",t:"Report on a school trip and recommend whether to repeat it."},
+   {lv:"B2",t:"Report on the library and how to make it more useful."},
+   {lv:"B2",t:"Report on recycling habits at your school."},
+   {lv:"C1",t:"Report on the impact of a new policy at your school."},
+   {lv:"C1",t:"Report on transport options for students and recommend the best."},
+   {lv:"C1",t:"Report on the use of phones in class and recommend rules."}
+ ],
+ story:[
+   {lv:"A2",t:"Write a story that begins: 'It was a sunny morning when...'"},
+   {lv:"A2",t:"Write a story about a lost dog."},
+   {lv:"B1",t:"Write a story that ends: '...and I never went back there again.'"},
+   {lv:"B1",t:"Write a story about an unexpected visitor."},
+   {lv:"B1",t:"Write a story about finding something valuable."},
+   {lv:"B2",t:"Write a story that begins: 'Little did I know my life was about to change.'"},
+   {lv:"B2",t:"Write a story about a decision you regretted."},
+   {lv:"B2",t:"Write a story that includes the words: storm, key, promise."},
+   {lv:"C1",t:"Write a story that ends: '...some secrets are better left buried.'"},
+   {lv:"C1",t:"Write a story about a journey that went wrong."}
+ ],
+ descriptive:[
+   {lv:"A2",t:"Describe a typical school day."},
+   {lv:"A2",t:"Describe your hometown."},
+   {lv:"B1",t:"Describe how a plant grows from a seed."},
+   {lv:"B1",t:"Describe the water cycle."},
+   {lv:"B2",t:"Describe how a smartphone works."},
+   {lv:"B2",t:"Describe how vaccines protect the body."},
+   {lv:"B2",t:"Describe the structure of your local government."},
+   {lv:"C1",t:"Describe the main causes of climate change."},
+   {lv:"C1",t:"Outline the stages of the scientific method."},
+   {lv:"C1",t:"Summarise how the internet transmits information."}
+ ],
+ analytical:[
+   {lv:"B1",t:"Analyse why people spend so much time on social media."},
+   {lv:"B1",t:"Analyse why some students enjoy reading and others don't."},
+   {lv:"B2",t:"Analyse the causes and effects of teenage stress."},
+   {lv:"B2",t:"Compare online learning and classroom learning."},
+   {lv:"B2",t:"Examine the effects of sleep on learning."},
+   {lv:"B2",t:"Analyse why a particular sport is popular in your country."},
+   {lv:"C1",t:"Analyse the relationship between technology and loneliness."},
+   {lv:"C1",t:"Examine how advertising influences what we buy."},
+   {lv:"C1",t:"Analyse the impact of tourism on a local community."},
+   {lv:"C1",t:"Interpret the reasons behind a recent social trend."}
+ ],
+ critical:[
+   {lv:"B2",t:"Evaluate the claim that homework improves learning."},
+   {lv:"B2",t:"Assess the benefits and risks of artificial intelligence in schools."},
+   {lv:"B2",t:"Evaluate whether exams are a fair way to measure ability."},
+   {lv:"B2",t:"Evaluate the impact of fast fashion."},
+   {lv:"C1",t:"Critically evaluate the use of social media as a source of news."},
+   {lv:"C1",t:"Assess whether economic growth improves wellbeing."},
+   {lv:"C1",t:"Evaluate the argument that zoos should be banned."},
+   {lv:"C1",t:"Critique the idea that technology always makes life easier."},
+   {lv:"C1",t:"Assess the reliability of online information sources."},
+   {lv:"C1",t:"Challenge the view that money brings happiness."}
+ ],
+ persuasive:[
+   {lv:"B1",t:"Argue for or against school uniforms."},
+   {lv:"B1",t:"Persuade people to read more books."},
+   {lv:"B2",t:"Argue that schools should start later in the morning."},
+   {lv:"B2",t:"Persuade your reader that recycling should be compulsory."},
+   {lv:"B2",t:"Argue for or against banning single-use plastics."},
+   {lv:"B2",t:"Argue that homework should be optional."},
+   {lv:"C1",t:"Argue that public transport should be free."},
+   {lv:"C1",t:"Contend that art subjects are as important as science."},
+   {lv:"C1",t:"Propose that voting should be allowed at 16."},
+   {lv:"C1",t:"Advocate for stronger laws to protect the environment."}
+ ],
+ reflective:[
+   {lv:"B1",t:"Reflect on a time you learned something new."},
+   {lv:"B1",t:"Reflect on a mistake that taught you a lesson."},
+   {lv:"B1",t:"Reflect on your first day at a new place."},
+   {lv:"B2",t:"Reflect on a group project: what went well and what didn't?"},
+   {lv:"B2",t:"Reflect on how a challenge changed you."},
+   {lv:"B2",t:"Reflect on a time you helped someone."},
+   {lv:"B2",t:"Reflect on a habit you changed and the result."},
+   {lv:"C1",t:"Reflect on a decision and what you would do differently."},
+   {lv:"C1",t:"Reflect on an experience that changed your opinion."},
+   {lv:"C1",t:"Reflect on how a piece of feedback affected your work."}
+ ]
+};
 var LEVELS=["A2","B1","B2","C1"];
 var TARGET={A2:[40,60],B1:[90,120],B2:[140,190],C1:[220,260]};
 var TARGET_ACAD={A2:[60,90],B1:[120,160],B2:[200,260],C1:[280,350]};
@@ -257,6 +416,25 @@ function chipRow(fns){
   }
   return html;
 }
+function topicsHTML(){
+  var list=TOPICS[type]||[]; if(!list.length) return '';
+  var h='<div class="topicpick"><div class="tp-h">\u{1F4CC} Pick a topic'+
+    '<small>Tap one to load it as your task (or type your own above). The tag shows the suggested level.</small></div><div class="tchips">';
+  for(var i=0;i<list.length;i++){ var tp=list[i];
+    h+='<button class="tchip'+(tp.lv===level?' cur':'')+'" data-ti="'+i+'"><span class="tlv">'+tp.lv+'</span>'+
+       tp.t.replace(/&/g,'&amp;').replace(/</g,'&lt;')+'</button>';
+  }
+  return h+'</div></div>';
+}
+function pickTopic(idx){
+  var list=TOPICS[type]||[], tp=list[idx]; if(!tp) return;
+  var changed=(tp.lv!==level); level=tp.lv;
+  if(changed) render();                 // re-render at the topic's level
+  var pb=document.getElementById('promptBox');
+  if(pb){ pb.value=tp.t; saveDraft(); pb.scrollIntoView({block:'center',behavior:'smooth'}); }
+  var cs=document.querySelectorAll('.tchip');
+  for(var i=0;i<cs.length;i++){ cs[i].classList.toggle('picked', +cs[i].getAttribute('data-ti')===idx); }
+}
 function render(){
   buildControls();
   var d=TYPES[type], tg=targetFor();
@@ -264,7 +442,7 @@ function render(){
   document.getElementById('targetHint').textContent="Aim for about "+tg[0]+"-"+tg[1]+" words ("+level+" "+d.name.toLowerCase()+").";
   document.getElementById('tips').innerHTML=d.tips.map(function(t){return '<li>'+t+'</li>';}).join('');
   var saved=loadDraft();
-  var html=stepsHTML()+'<div class="brief"><h2>'+d.icon+' '+d.name+' - '+level+'</h2><div class="tt">'+d.brief+'</div>'+(d.verbs?'<div class="tt" style="margin-top:8px;font-weight:700">Power verbs: '+d.verbs+'</div>':'')+'<textarea id="promptBox" placeholder="Paste the exact task / question here (optional)">'+(saved.prompt||'')+'</textarea></div>';
+  var html=stepsHTML()+'<div class="brief"><h2>'+d.icon+' '+d.name+' - '+level+'</h2><div class="tt">'+d.brief+'</div>'+(d.verbs?'<div class="tt" style="margin-top:8px;font-weight:700">Power verbs: '+d.verbs+'</div>':'')+'<textarea id="promptBox" placeholder="Paste the exact task / question here (optional)">'+(saved.prompt||'')+'</textarea></div>'+topicsHTML();
   d.sections.forEach(function(s,i){
     html+='<div class="sec"><div class="top"><span class="n">'+(i+1)+'</span><h3>'+s.t+'</h3><span class="cnt" id="cnt'+i+'">0 words</span></div><div class="guide">'+s.g+'</div><textarea id="ta'+i+'" data-i="'+i+'" placeholder="Write here..."></textarea><div class="chips">'+chipRow(s.fns)+'</div></div>';
   });
@@ -275,6 +453,7 @@ function render(){
   });
   document.getElementById('promptBox').addEventListener('input',saveDraft);
   var chips=document.querySelectorAll('.chip'); for(var c=0;c<chips.length;c++){ (function(el){ el.addEventListener('click',function(){ insertText(el.getAttribute('data-ins')); }); })(chips[c]); }
+  var tchips=document.querySelectorAll('.tchip'); for(var tc=0;tc<tchips.length;tc++){ (function(el){ el.addEventListener('click',function(){ pickTopic(+el.getAttribute('data-ti')); }); })(tchips[tc]); }
   updateCounts(); showSaved();
 }
 function insertText(txt){
