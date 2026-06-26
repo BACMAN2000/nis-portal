@@ -307,28 +307,40 @@
   }
 
   /* ---------- detección de salida ----------
-     SOLO contamos un cambio REAL de pestaña/app/ventana (visibilitychange):
-     es la única señal fiable y multiplataforma. NO usamos window blur/focus
-     porque en macOS (y a veces Windows) se dispara solo con notificaciones,
-     el Dock, Mission Control o perder el foco un instante —generaba bloqueos
-     falsos "sin nada abierto". Además exigimos un tiempo mínimo fuera para
-     ignorar salidas accidentales muy cortas. */
+     Dos señales, ambas dentro del sandbox del navegador:
+       (a) visibilitychange  → cambió de PESTAÑA o de APP (la página se ocultó).
+       (b) window blur/focus → la VENTANA perdió el foco aunque siga visible:
+           es el caso "dos Chrome lado a lado" (juega en una, portal en la otra).
+     Para (b) confirmamos con document.hasFocus() ANTES de contar, así NO se
+     dispara cuando el foco pasa a un iframe hijo (Phonics/MUN) ni por micro-
+     parpadeos de macOS (notificación/Dock que devuelven el foco enseguida).
+     Cada fuente tiene su tiempo mínimo: pestaña 1.5s, ventana 3s (configurable).
+     NO penalizamos al salir de verdad (navegar a otra página): solo cuenta el
+     REGRESO tras un episodio "fuera". */
   function awayMin() { return (opts.minAwayMs != null) ? opts.minAwayMs : 1500; }
-  function beginAway() {
+  function focusGrace() { return (opts.focusGraceMs != null) ? opts.focusGraceMs : 3000; }
+  var awaySource = '';
+  function beginAway(source) {
     if (!armed || paused || st.locked || awayActive) return;
-    awayActive = true; awayStart = nowMs();
+    awayActive = true; awayStart = nowMs(); awaySource = source || 'hidden';
   }
   function endAway() {
     if (!awayActive) return;
     awayActive = false;
     var dt = nowMs() - awayStart;
-    if (dt < awayMin()) return;               // salida demasiado corta → no penaliza
+    var min = (awaySource === 'blur') ? focusGrace() : awayMin();
+    if (dt < min) return;                     // salida demasiado corta → no penaliza
     penalize(Math.round(dt / 100) / 10);      // segundos con 1 decimal
   }
   function onVisibility() {
-    if (document.visibilityState === 'hidden') beginAway();
+    if (document.visibilityState === 'hidden') beginAway('hidden');
     else endAway();
   }
+  function onWinBlur() {
+    // Confirma que la VENTANA (no un iframe hijo) perdió el foco de verdad.
+    setTimeout(function () { if (!st.locked && !document.hasFocus()) beginAway('blur'); }, 250);
+  }
+  function onWinFocus() { endAway(); }
 
   /* ---------- bloqueo de copiar/pegar/traductores ---------- */
   function blockClipboard() {
@@ -372,6 +384,8 @@
 
   function arm() {
     document.addEventListener('visibilitychange', onVisibility);
+    window.addEventListener('blur', onWinBlur);
+    window.addEventListener('focus', onWinFocus);
     window.addEventListener('pageshow', function () { if (document.visibilityState === 'visible') endAway(); });
     // No penalizar por el diálogo de impresión propio.
     window.addEventListener('beforeprint', pause);
@@ -386,6 +400,8 @@
     ensureSupabase().then(function () { return loadMe(); }).then(function () {
       // Docentes y administradores quedan exentos (pueden revisar sin bloquearse).
       if (me && (me.role === 'teacher' || me.role === 'admin')) return;
+      // En superficies compartidas (el portal) solo actúa con un alumno logueado.
+      if (opts.requireStudent && !me) return;
       loadLS();
       return Promise.all([syncFromDB(), loadGrants()]).then(function () {
         // El bloqueo se DERIVA de salidas vs vidas efectivas: una vida extra revive.
