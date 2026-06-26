@@ -2142,7 +2142,15 @@ function _finalFromData(profile, atts, spk){
   //  · A2 puro (A2 Key): Reading & Use of English (incluye Writing) + Listening. No requiere Speaking.
   //  · B1/B2/C1 (o A2 con Writing aparte): Reading & UoE + Listening + Writing + Speaking.
   const requiredKeys = a2NoWriting ? ['Reading','Listening'] : ['Reading','Listening','Writing','Speaking'];
-  const finalScale = present.length ? Math.round(present.reduce((s,x)=>s+x.scale,0)/present.length) : null;
+  let finalScale = present.length ? Math.round(present.reduce((s,x)=>s+x.scale,0)/present.length) : null;
+  // Tope por destrezas muy bajas (<50% = no aprobó la destreza): 1 baja -> máx B2,
+  // 2+ bajas -> máx B1. Solo BAJA el resultado (una escala alta por el piso del nivel
+  // no debe inflar un C1/C2 cuando una destreza está muy baja).
+  if(finalScale!=null){
+    const lows = present.filter(x=>x && x.pct!=null && Number(x.pct)<50).length;
+    const ceil = lows>=2 ? 159 : (lows>=1 ? 179 : null);
+    if(ceil!=null && finalScale>ceil) finalScale = ceil;
+  }
   const labels = { Reading:'Reading & Use of English', Listening:'Listening', Writing:'Writing', Speaking:'Speaking' };
   return { profile, skills, isA2, a2NoWriting, finalScale, finalCefr:scaleToCefr(finalScale),
            complete: requiredKeys.every(k=>skills[k]), missing: requiredKeys.filter(k=>!skills[k]).map(k=>labels[k]) };
