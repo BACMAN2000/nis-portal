@@ -329,6 +329,31 @@
   .hsv-card{border:1px solid var(--border);border-radius:12px;padding:14px;background:var(--paper)}
   .hsv-card h5{font-family:'Playfair Display',serif;font-size:15px;margin-bottom:8px}
   .hsv-card.hi{border-color:var(--amber);box-shadow:0 0 0 2px var(--amber-light)}
+  /* cell diagram */
+  .cell-wrap{display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start}
+  .cell-svgbox{flex:1;min-width:300px}
+  #cellSvg{width:100%;height:auto;background:radial-gradient(circle at 45% 45%,#fcf8f1,#f0e9dc);border:1px solid var(--border);border-radius:14px}
+  .org{cursor:pointer;transition:.15s}
+  .org:hover{opacity:.82}
+  .org.sel rect,.org.sel circle,.org.sel ellipse,.org.sel path,.org.sel polygon{stroke:#c8822a!important;stroke-width:4!important}
+  .olbl{font:600 10px 'DM Sans',sans-serif;fill:#5a5048;text-anchor:middle;pointer-events:none}
+  .cellinfo{flex:1;min-width:230px;border:1px solid var(--border);border-radius:13px;padding:18px;background:var(--paper);align-self:stretch}
+  .cellinfo .ci-name{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;margin-bottom:4px}
+  .cellinfo .ci-tag{font-family:'DM Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.05em;padding:2px 8px;border-radius:20px;display:inline-block;margin-bottom:10px}
+  .ci-both{background:var(--cream);color:var(--muted)} .ci-animal{background:var(--purple-light);color:var(--purple)} .ci-plant{background:var(--green-light);color:var(--green)}
+  .cellinfo .ci-fn{font-size:13.5px;line-height:1.6;color:#3a342e}
+  /* cell cycle wheel */
+  .cyc-wrap{display:flex;gap:22px;flex-wrap:wrap;align-items:center}
+  .cyc-svgbox{width:260px;max-width:100%}
+  #cycSvg{width:100%;height:auto}
+  .cyc-arc{fill:none;stroke-width:26;cursor:pointer;transition:stroke-width .2s,opacity .2s;opacity:.55}
+  .cyc-arc.on{opacity:1;stroke-width:32}
+  .cyc-pointer{transition:transform .8s cubic-bezier(.5,.1,.3,1);transform-origin:130px 130px}
+  .cyc-info{flex:1;min-width:230px}
+  .cyc-info .ci-name{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;margin-bottom:4px}
+  .cyc-info .ci-fn{font-size:13.5px;line-height:1.6;color:#3a342e;min-height:60px}
+  /* sub toggle */
+  .biosub{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap}
   /* quiz */
   .qz-q{border:1px solid var(--border);border-radius:11px;padding:14px 16px;margin-bottom:12px;background:var(--paper)}
   .qz-sec{display:inline-block;font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;background:var(--amber-light);color:var(--amber-dark);padding:2px 8px;border-radius:20px;margin-bottom:8px}
@@ -545,6 +570,162 @@
     <div class="view-desc" data-i18n="bio_desc"></div>
   </div>
 
+  <div class="biosub">
+    <span class="filter-pill active" id="subCells" onclick="showBioSub('cells')">🔬 <span data-i18n="bio_sub_cells"></span></span>
+    <span class="filter-pill" id="subGen" onclick="showBioSub('gen')">🧬 <span data-i18n="bio_sub_gen"></span></span>
+  </div>
+
+  <!-- ===== CELLS sub-section ===== -->
+  <div id="bioCells">
+    <!-- Interactive cell -->
+    <div class="card">
+      <div class="card-title" data-i18n="cell_diag_t"></div>
+      <div class="card-sub" data-i18n="cell_diag_s"></div>
+      <div class="biosub" style="margin-bottom:14px">
+        <span class="filter-pill active" id="ctAnimal" onclick="setCellType('animal')" data-i18n="cell_animal"></span>
+        <span class="filter-pill" id="ctPlant" onclick="setCellType('plant')" data-i18n="cell_plant"></span>
+      </div>
+      <div class="cell-wrap">
+        <div class="cell-svgbox">
+          <svg id="cellSvg" viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg">
+            <rect class="org plantonly" id="o-wall" x="3" y="3" width="414" height="294" rx="42" fill="#dcefe0" stroke="#3d8a4f" stroke-width="6" onclick="cellInfo('wall')"/>
+            <rect class="org" id="o-membrane" x="12" y="12" width="396" height="276" rx="34" fill="#fdf6ec" stroke="#c8822a" stroke-width="3" onclick="cellInfo('membrane')"/>
+            <g class="org" id="o-cyto" onclick="cellInfo('cyto')" opacity="0.55">
+              <line x1="40" y1="48" x2="380" y2="252" stroke="#d8cdbb" stroke-width="2"/>
+              <line x1="380" y1="55" x2="55" y2="250" stroke="#d8cdbb" stroke-width="2"/>
+              <line x1="120" y1="30" x2="250" y2="270" stroke="#d8cdbb" stroke-width="2"/>
+            </g>
+            <g class="org" id="o-nucleus" onclick="cellInfo('nucleus')">
+              <circle cx="128" cy="150" r="46" fill="#e8e3f5" stroke="#5a4a8a" stroke-width="2.5"/>
+              <circle cx="128" cy="150" r="16" fill="#5a4a8a"/>
+              <text class="olbl" x="128" y="210">Nucleus</text>
+            </g>
+            <g class="org" id="o-rer" onclick="cellInfo('rer')">
+              <path d="M180,112 q18,8 36,0 q18,-8 30,4" fill="none" stroke="#7a6a4a" stroke-width="3"/>
+              <path d="M180,128 q18,8 36,0 q18,-8 30,4" fill="none" stroke="#7a6a4a" stroke-width="3"/>
+              <circle cx="186" cy="110" r="2.4" fill="#5a4a8a"/><circle cx="208" cy="116" r="2.4" fill="#5a4a8a"/><circle cx="232" cy="112" r="2.4" fill="#5a4a8a"/><circle cx="200" cy="130" r="2.4" fill="#5a4a8a"/><circle cx="226" cy="128" r="2.4" fill="#5a4a8a"/>
+              <text class="olbl" x="214" y="100">Rough ER</text>
+            </g>
+            <g class="org" id="o-ser" onclick="cellInfo('ser')">
+              <path d="M150,196 q16,10 32,0 q16,-10 28,2" fill="none" stroke="#b08a3a" stroke-width="3"/>
+              <path d="M150,210 q16,10 32,0 q16,-10 28,2" fill="none" stroke="#b08a3a" stroke-width="3"/>
+              <text class="olbl" x="180" y="232">Smooth ER</text>
+            </g>
+            <g class="org" id="o-ribosome" onclick="cellInfo('ribosome')">
+              <circle cx="250" cy="120" r="3.4" fill="#5a4a8a"/><circle cx="262" cy="132" r="3.4" fill="#5a4a8a"/><circle cx="244" cy="138" r="3.4" fill="#5a4a8a"/><circle cx="258" cy="146" r="3.4" fill="#5a4a8a"/>
+            </g>
+            <g class="org" id="o-golgi" onclick="cellInfo('golgi')">
+              <path d="M286,96 q24,-8 44,0" fill="none" stroke="#2a7a6e" stroke-width="4"/>
+              <path d="M288,108 q24,-8 40,0" fill="none" stroke="#2a7a6e" stroke-width="4"/>
+              <path d="M290,120 q24,-8 36,0" fill="none" stroke="#2a7a6e" stroke-width="4"/>
+              <text class="olbl" x="308" y="86">Golgi</text>
+            </g>
+            <g class="org" id="o-vesicle" onclick="cellInfo('vesicle')">
+              <circle cx="332" cy="140" r="8" fill="#d4efeb" stroke="#2a7a6e" stroke-width="2"/>
+            </g>
+            <g class="org" id="o-mito" onclick="cellInfo('mito')">
+              <ellipse cx="300" cy="215" rx="26" ry="14" fill="#f7e4dc" stroke="#c45a3a" stroke-width="2.5" transform="rotate(-18 300 215)"/>
+              <path d="M286,212 q8,8 16,-2 q8,8 16,-2" fill="none" stroke="#c45a3a" stroke-width="2"/>
+              <ellipse cx="92" cy="238" rx="22" ry="12" fill="#f7e4dc" stroke="#c45a3a" stroke-width="2.5" transform="rotate(14 92 238)"/>
+              <text class="olbl" x="300" y="244">Mitochondria</text>
+            </g>
+            <g class="org" id="o-lyso" onclick="cellInfo('lyso')">
+              <circle cx="232" cy="244" r="12" fill="#f5e6cc" stroke="#8a5a1a" stroke-width="2"/>
+              <circle cx="232" cy="244" r="4" fill="#8a5a1a"/>
+            </g>
+            <g class="org" id="o-vacuole" onclick="cellInfo('vacuole')">
+              <ellipse id="vacShape" cx="352" cy="232" rx="32" ry="26" fill="#eaf4ff" stroke="#5a86c8" stroke-width="2.5"/>
+              <text class="olbl" id="vacLbl" x="352" y="234">Vacuole</text>
+            </g>
+            <g class="org plantonly" id="o-chloro" onclick="cellInfo('chloro')">
+              <ellipse cx="250" cy="185" rx="20" ry="11" fill="#cdeccf" stroke="#3d8a4f" stroke-width="2.5" transform="rotate(20 250 185)"/>
+              <line x1="236" y1="183" x2="264" y2="187" stroke="#3d8a4f" stroke-width="1.5"/>
+              <text class="olbl" x="250" y="166">Chloroplast</text>
+            </g>
+            <g class="org animalonly" id="o-centriole" onclick="cellInfo('centriole')">
+              <rect x="196" y="70" width="8" height="20" rx="2" fill="#7a7068"/>
+              <rect x="210" y="74" width="20" height="8" rx="2" fill="#7a7068"/>
+              <text class="olbl" x="214" y="64">Centrioles</text>
+            </g>
+          </svg>
+        </div>
+        <div class="cellinfo" id="cellInfo">
+          <div class="ci-name" data-i18n="cell_info_default"></div>
+          <div class="ci-fn" data-i18n="cell_info_hint"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cell cycle wheel -->
+    <div class="card">
+      <div class="card-title" data-i18n="cycle_t"></div>
+      <div class="card-sub" data-i18n="cycle_s"></div>
+      <div class="cyc-wrap">
+        <div class="cyc-svgbox">
+          <svg id="cycSvg" viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
+            <g id="cycArcs"></g>
+            <circle cx="130" cy="130" r="60" fill="#fff" stroke="var(--border)" stroke-width="1.5"/>
+            <text id="cycCenter" x="130" y="126" text-anchor="middle" style="font-family:'Playfair Display',serif;font-weight:700;font-size:15px;fill:#1a1714"></text>
+            <text id="cycCenter2" x="130" y="146" text-anchor="middle" style="font-family:'DM Mono',monospace;font-size:10px;fill:#7a7068"></text>
+            <g class="cyc-pointer" id="cycPointer"><polygon points="130,40 123,70 137,70" fill="#1a1714"/></g>
+          </svg>
+        </div>
+        <div class="cyc-info">
+          <div class="ci-name" id="cycName"></div>
+          <div class="ci-fn" id="cycDesc"></div>
+          <div class="toolbar" style="margin-top:10px">
+            <button class="btn ghost sm" onclick="cycPrev()" data-i18n="bio_prev"></button>
+            <button class="btn teal sm" id="cycPlayBtn" onclick="cycToggle()"></button>
+            <button class="btn ghost sm" onclick="cycNext()" data-i18n="bio_next"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mitosis player -->
+    <div class="card">
+      <div class="card-title" data-i18n="mit_t"></div>
+      <div class="card-sub" data-i18n="mit_s"></div>
+      <div class="bio-stage" id="mtStage">
+        <div class="cellout" id="mCell0"></div><div class="cellout" id="mCell1"></div>
+        <div class="cen" id="mCenMat"></div><div class="cen" id="mCenPat"></div>
+        <div class="chromatid red" id="mMatA"></div><div class="chromatid red" id="mMatB"></div>
+        <div class="chromatid blue" id="mPatA"></div><div class="chromatid blue" id="mPatB"></div>
+      </div>
+      <div class="phase-bar">
+        <span class="phase-name" id="mPhName"></span>
+        <span class="phase-tag pt1" id="mPhTag"></span>
+        <span class="phase-dots" id="mPhDots"></span>
+      </div>
+      <div class="phase-desc" id="mPhDesc"></div>
+      <div class="toolbar">
+        <button class="btn ghost sm" onclick="mitPrev()" data-i18n="bio_prev"></button>
+        <button class="btn teal sm" id="mitPlayBtn" onclick="mitToggle()"></button>
+        <button class="btn ghost sm" onclick="mitNext()" data-i18n="bio_next"></button>
+        <button class="btn ghost sm" onclick="mitRestart()" data-i18n="bio_reset"></button>
+      </div>
+      <div class="card-sub" style="margin:12px 0 0" data-i18n="mit_vs"></div>
+    </div>
+
+    <!-- Cell flashcards -->
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px">
+        <div><div class="card-title" data-i18n="cellcards_t"></div><div class="card-sub" data-i18n="cellcards_s"></div></div>
+        <div class="stat-num" id="cellCardScore" style="font-size:22px"></div>
+      </div>
+      <div class="flip-grid" id="cellCards"></div>
+    </div>
+
+    <!-- Cell concepts -->
+    <div class="card">
+      <div class="card-title" data-i18n="celltopics_t"></div>
+      <div id="cellTopics" style="margin-top:10px"></div>
+    </div>
+  </div>
+
+  <!-- ===== GENETICS sub-section ===== -->
+  <div id="bioGenetics" style="display:none">
+
   <!-- 1. Meiosis animated player -->
   <div class="card">
     <div class="card-title" data-i18n="bio_player_t"></div>
@@ -630,6 +811,8 @@
     <div class="card-title" data-i18n="bio_topics_t"></div>
     <div id="bioTopics" style="margin-top:10px"></div>
   </div>
+
+  </div><!-- /bioGenetics -->
 </section>
 
 <!-- ============ DATA ============ -->
@@ -2379,6 +2562,15 @@ const UI={
     bio_cards_t:'③ Memory flashcards', bio_cards_s:'Tap to flip. Mark the ones you know — the counter tracks how many terms you have memorized.', bio_mastered:'memorized',
     bio_pun_t:'④ Mendel — interactive Punnett square', bio_pun_s:'Cross two pea plants for flower colour (P = purple, dominant · p = white, recessive). A Pp × Pp cross gives Mendel’s 3 : 1.',
     bio_topics_t:'Key concepts from each deck', bio_p1:'Parent 1', bio_p2:'Parent 2',
+    bio_sub_cells:'Cells', bio_sub_gen:'Genetics',
+    cell_diag_t:'① The cell — click each organelle', cell_diag_s:'Tap any part of the cell to learn its name and function. Switch between an animal and a plant cell.',
+    cell_animal:'🐾 Animal cell', cell_plant:'🌿 Plant cell',
+    cell_info_default:'Click an organelle', cell_info_hint:'Tap any structure in the diagram to see what it is and what it does.',
+    cycle_t:'② The cell cycle — interactive wheel', cycle_s:'Interphase (G1·S·G2) is ~90% of the cycle, then M phase (mitosis + cytokinesis). Step or ▶ to travel the wheel.',
+    mit_t:'③ Mitosis — animated walkthrough', mit_s:'1 cell → 2 genetically IDENTICAL diploid cells. Sister chromatids separate (no crossing over).',
+    mit_vs:'Compare: mitosis makes 2 identical diploid cells; meiosis (Genetics tab) makes 4 unique haploid cells.',
+    cellcards_t:'④ Cell flashcards', cellcards_s:'Tap to flip. Mark the ones you know — the counter tracks how many you have memorized.',
+    celltopics_t:'Key concepts from each deck',
     /* dynamic */
     all:'All', hist:'History', eng:'English', corrections_word:'correction(s)',
     sev_list:['','Minor','Moderate','Serious'],
@@ -2457,6 +2649,15 @@ const UI={
     bio_cards_t:'③ Flashcards de memoria', bio_cards_s:'Toca para voltear. Marca las que ya sabes — el contador lleva cuántos términos memorizaste.', bio_mastered:'memorizados',
     bio_pun_t:'④ Mendel — cuadro de Punnett interactivo', bio_pun_s:'Cruza dos plantas de arveja por el color de la flor (P = púrpura, dominante · p = blanco, recesivo). Un cruce Pp × Pp da el 3 : 1 de Mendel.',
     bio_topics_t:'Conceptos clave de cada presentación', bio_p1:'Progenitor 1', bio_p2:'Progenitor 2',
+    bio_sub_cells:'Células', bio_sub_gen:'Genética',
+    cell_diag_t:'① La célula — haz clic en cada organelo', cell_diag_s:'Toca cualquier parte de la célula para ver su nombre y función. Cambia entre célula animal y vegetal.',
+    cell_animal:'🐾 Célula animal', cell_plant:'🌿 Célula vegetal',
+    cell_info_default:'Haz clic en un organelo', cell_info_hint:'Toca cualquier estructura del diagrama para ver qué es y qué hace.',
+    cycle_t:'② El ciclo celular — rueda interactiva', cycle_s:'La interfase (G1·S·G2) es ~90% del ciclo, luego la fase M (mitosis + citocinesis). Avanza o pulsa ▶ para recorrer la rueda.',
+    mit_t:'③ Mitosis — recorrido animado', mit_s:'1 célula → 2 células diploides IDÉNTICAS. Se separan las cromátidas hermanas (sin crossing over).',
+    mit_vs:'Compara: la mitosis hace 2 células diploides idénticas; la meiosis (pestaña Genética) hace 4 haploides únicas.',
+    cellcards_t:'④ Flashcards de la célula', cellcards_s:'Toca para voltear. Marca las que ya sabes — el contador lleva cuántas memorizaste.',
+    celltopics_t:'Conceptos clave de cada presentación',
     all:'Todos', hist:'Historia', eng:'English', corrections_word:'corrección(es)',
     sev_list:['','Leve','Media','Grave'],
     no_crit:'No hay criterios para este filtro.', no_corr:'Sin correcciones registradas.', no_data:'Sin datos aún.',
@@ -3120,12 +3321,175 @@ function renderBioTopics(){
       <div class="scene-body"><ul>${tp.pts[LANG].map(p=>`<li>${esc(p)}</li>`).join('')}</ul></div>
     </div>`).join('');
 }
+// ===== CELLS sub-section =====
+function showBioSub(which){
+  document.getElementById('bioCells').style.display=which==='cells'?'block':'none';
+  document.getElementById('bioGenetics').style.display=which==='gen'?'block':'none';
+  document.getElementById('subCells').classList.toggle('active',which==='cells');
+  document.getElementById('subGen').classList.toggle('active',which==='gen');
+}
+
+// Interactive cell — organelles
+const CELL_ORG={
+  membrane:{name:'Cell membrane',tag:'both',fn:{en:'Thin flexible boundary that controls what enters and leaves the cell. Present in ALL cells.',es:'Borde fino y flexible que controla qué entra y sale de la célula. Está en TODAS las células.'}},
+  cyto:{name:'Cytoskeleton',tag:'both',fn:{en:'Network of protein fibers that gives the cell shape and support and helps it move and divide (microtubules, intermediate filaments, microfilaments).',es:'Red de fibras de proteína que da forma y soporte a la célula y ayuda a moverse y dividirse (microtúbulos, filamentos intermedios, microfilamentos).'}},
+  nucleus:{name:'Nucleus',tag:'both',fn:{en:'Stores and protects the DNA and directs all cell activities. The dark spot inside is the nucleolus.',es:'Almacena y protege el ADN y dirige todas las actividades de la célula. El punto oscuro es el nucléolo.'}},
+  rer:{name:'Rough ER',tag:'both',fn:{en:'Endoplasmic reticulum studded with ribosomes — it makes and folds PROTEINS.',es:'Retículo endoplásmico cubierto de ribosomas — fabrica y pliega PROTEÍNAS.'}},
+  ser:{name:'Smooth ER',tag:'both',fn:{en:'Endoplasmic reticulum with no ribosomes — makes LIPIDS and breaks down drugs and alcohol.',es:'Retículo endoplásmico sin ribosomas — fabrica LÍPIDOS y descompone fármacos y alcohol.'}},
+  ribosome:{name:'Ribosomes',tag:'both',fn:{en:'Tiny machines that assemble the protein chain. Found on the rough ER or floating free.',es:'Máquinas diminutas que ensamblan la cadena de proteína. Están en el RE rugoso o libres.'}},
+  golgi:{name:'Golgi apparatus',tag:'both',fn:{en:'Modifies, packages and ships proteins to their destination — the cell\'s "post office".',es:'Modifica, empaqueta y envía las proteínas a su destino — el "correo" de la célula.'}},
+  vesicle:{name:'Vesicle',tag:'both',fn:{en:'Small membrane sac that carries proteins from the ER to the Golgi and beyond.',es:'Pequeña bolsa de membrana que transporta proteínas del RE al Golgi y más allá.'}},
+  mito:{name:'Mitochondrion',tag:'both',fn:{en:'Converts food into usable energy (ATP). Bean-shaped, has 2 membranes and its OWN DNA.',es:'Convierte el alimento en energía utilizable (ATP). Con forma de frijol, 2 membranas y su PROPIO ADN.'}},
+  lyso:{name:'Lysosome',tag:'animal',fn:{en:'Contains digestive enzymes — recycles worn-out parts and defends against bacteria. Mostly in animal cells.',es:'Contiene enzimas digestivas — recicla partes gastadas y defiende contra bacterias. Sobre todo en células animales.'}},
+  vacuole:{name:'Vacuole',tag:'both',fn:{en:'Fluid-filled sac that stores water, nutrients and waste. In plants it is ONE large central vacuole that supports the cell.',es:'Bolsa llena de líquido que guarda agua, nutrientes y desechos. En las plantas es UNA gran vacuola central que sostiene la célula.'}},
+  centriole:{name:'Centrioles',tag:'animal',fn:{en:'Short microtubules that help separate DNA during cell division. Found in animal cells.',es:'Microtúbulos cortos que ayudan a separar el ADN durante la división. Están en células animales.'}},
+  wall:{name:'Cell wall',tag:'plant',fn:{en:'Rigid layer of cellulose outside the membrane — gives shape, protection and support. PLANT cells only.',es:'Capa rígida de celulosa fuera de la membrana — da forma, protección y soporte. Solo en células VEGETALES.'}},
+  chloro:{name:'Chloroplast',tag:'plant',fn:{en:'Carries out PHOTOSYNTHESIS (sunlight → chemical energy) using green chlorophyll. PLANT cells only.',es:'Realiza la FOTOSÍNTESIS (luz solar → energía química) con clorofila verde. Solo en células VEGETALES.'}},
+};
+let curOrg=null;
+function cellInfo(key){
+  document.querySelectorAll('#cellSvg .org').forEach(g=>g.classList.remove('sel'));
+  const box=document.getElementById('cellInfo');
+  if(!key||!CELL_ORG[key]){curOrg=null;box.innerHTML=`<div class="ci-name">${T('cell_info_default')}</div><div class="ci-fn">${T('cell_info_hint')}</div>`;return;}
+  curOrg=key;const o=CELL_ORG[key];const g=document.getElementById('o-'+key);if(g)g.classList.add('sel');
+  const tg=o.tag==='animal'?'ci-animal':o.tag==='plant'?'ci-plant':'ci-both';
+  const tlab=o.tag==='animal'?(LANG==='es'?'animal':'animal'):o.tag==='plant'?(LANG==='es'?'vegetal':'plant'):(LANG==='es'?'ambas':'both cells');
+  box.innerHTML=`<div class="ci-name">${esc(o.name)}</div><span class="ci-tag ${tg}">${tlab}</span><div class="ci-fn">${esc(L(o.fn))}</div>`;
+}
+let cellType='animal';
+function setCellType(t){
+  cellType=t;
+  document.getElementById('ctAnimal').classList.toggle('active',t==='animal');
+  document.getElementById('ctPlant').classList.toggle('active',t==='plant');
+  document.querySelectorAll('#cellSvg .plantonly').forEach(e=>e.style.display=t==='plant'?'':'none');
+  document.querySelectorAll('#cellSvg .animalonly').forEach(e=>e.style.display=t==='animal'?'':'none');
+  const v=document.getElementById('vacShape'),vl=document.getElementById('vacLbl');
+  if(t==='plant'){v.setAttribute('cx',300);v.setAttribute('cy',158);v.setAttribute('rx',60);v.setAttribute('ry',82);vl.setAttribute('x',300);vl.setAttribute('y',160);}
+  else{v.setAttribute('cx',352);v.setAttribute('cy',232);v.setAttribute('rx',30);v.setAttribute('ry',24);vl.setAttribute('x',352);vl.setAttribute('y',234);}
+}
+
+// Cell cycle wheel
+const CYCLE=[
+  {k:'G1',col:'#3d8a4f',pct:34,name:{en:'G1 — Growth phase 1',es:'G1 — Crecimiento 1'},d:{en:'Interphase. The new daughter cell grows and carries out its normal functions.',es:'Interfase. La nueva célula hija crece y realiza sus funciones normales.'}},
+  {k:'S',col:'#5a86c8',pct:24,name:{en:'S — Synthesis',es:'S — Síntesis'},d:{en:'DNA is replicated — every chromosome is duplicated into two sister chromatids.',es:'Se replica el ADN — cada cromosoma se duplica en dos cromátidas hermanas.'}},
+  {k:'G2',col:'#2a7a6e',pct:24,name:{en:'G2 — Growth phase 2',es:'G2 — Crecimiento 2'},d:{en:'The cell grows more and prepares for division; organelles multiply and the DNA starts to condense.',es:'La célula crece más y se prepara para dividirse; los organelos se multiplican y el ADN empieza a condensarse.'}},
+  {k:'M',col:'#c8822a',pct:18,name:{en:'M — Mitotic phase',es:'M — Fase mitótica'},d:{en:'Mitosis + cytokinesis: the cell divides into two genetically identical daughter cells.',es:'Mitosis + citocinesis: la célula se divide en dos células hijas genéticamente idénticas.'}},
+];
+let cycI=0,cycTimer=null;
+function pol(cx,cy,r,a){const t=a*Math.PI/180;return[cx+r*Math.sin(t),cy-r*Math.cos(t)];}
+function renderCycle(){
+  let ang=0;const cx=130,cy=130,r=92;let html='';const mids=[];
+  CYCLE.forEach((p,i)=>{const span=p.pct/100*360, a0=ang, a1=ang+span; mids[i]=a0+span/2; ang=a1;
+    const[x0,y0]=pol(cx,cy,r,a0),[x1,y1]=pol(cx,cy,r,a1);const laf=span>180?1:0;
+    html+=`<path class="cyc-arc" id="cyc${i}" data-i="${i}" onclick="cycSet(${i})" stroke="${p.col}" d="M${x0.toFixed(1)} ${y0.toFixed(1)} A${r} ${r} 0 ${laf} 1 ${x1.toFixed(1)} ${y1.toFixed(1)}"/>`;});
+  document.getElementById('cycArcs').innerHTML=html;
+  CYCLE._mids=mids;
+}
+function cycSet(i){
+  cycI=(i+CYCLE.length)%CYCLE.length;const p=CYCLE[cycI];
+  CYCLE.forEach((_,k)=>document.getElementById('cyc'+k).classList.toggle('on',k===cycI));
+  document.getElementById('cycPointer').style.transform=`rotate(${CYCLE._mids[cycI]}deg)`;
+  document.getElementById('cycName').textContent=L(p.name);
+  document.getElementById('cycDesc').textContent=L(p.d);
+  document.getElementById('cycCenter').textContent=cycI<3?(LANG==='es'?'Interfase':'Interphase'):(LANG==='es'?'Fase M':'M phase');
+  document.getElementById('cycCenter2').textContent=p.k;
+}
+function cycNext(){cycSet(cycI+1);}
+function cycPrev(){cycStop();cycSet(cycI-1);}
+function cycStop(){if(cycTimer){clearInterval(cycTimer);cycTimer=null;}document.getElementById('cycPlayBtn').textContent=T('bio_play');}
+function cycToggle(){if(cycTimer){cycStop();return;}document.getElementById('cycPlayBtn').textContent=T('bio_pause');cycTimer=setInterval(()=>cycSet(cycI+1),1600);}
+
+// Mitosis player (reuses .bio-stage/.chromatid classes, m-prefixed ids)
+const BIO_MIT=[
+  {n:{en:'Interphase',es:'Interfase'},d:{en:'The cell grows and copies its DNA. Each chromosome becomes two sister chromatids (still loose chromatin).',es:'La célula crece y copia su ADN. Cada cromosoma se vuelve dos cromátidas hermanas (aún cromatina suelta).'},cells:[[50,50,86,86]],p:{matA:[37,40],matB:[43,40],patA:[59,62],patB:[65,62]},jm:1,jp:1},
+  {n:{en:'Prophase',es:'Profase'},d:{en:'Chromatin condenses into visible duplicated chromosomes. The nuclear envelope breaks down and spindle fibers form from the centrioles.',es:'La cromatina se condensa en cromosomas duplicados visibles. La envoltura nuclear se rompe y se forman fibras del huso desde los centriolos.'},cells:[[50,50,86,86]],p:{matA:[40,42],matB:[46,42],patA:[58,60],patB:[64,60]},jm:1,jp:1},
+  {n:{en:'Metaphase',es:'Metafase'},d:{en:'Spindle fibers attach to each centromere and line the chromosomes up along the cell equator (metaphase plate).',es:'Las fibras del huso se unen a cada centrómero y alinean los cromosomas en el ecuador de la célula (placa metafásica).'},cells:[[50,50,86,86]],p:{matA:[40,50],matB:[44,50],patA:[56,50],patB:[60,50]},jm:1,jp:1},
+  {n:{en:'Anaphase',es:'Anafase'},d:{en:'Sister chromatids SEPARATE — spindle fibers shorten and pull them to opposite poles. The cell begins to elongate.',es:'Las cromátidas hermanas se SEPARAN — las fibras se acortan y las llevan a polos opuestos. La célula empieza a alargarse.'},cells:[[50,50,86,86]],p:{matA:[40,22],matB:[40,78],patA:[60,22],patB:[60,78]},jm:0,jp:0},
+  {n:{en:'Telophase & Cytokinesis',es:'Telofase y Citocinesis'},d:{en:'Two new nuclei form and the cytoplasm divides (animal: cleavage furrow · plant: cell plate) → 2 genetically IDENTICAL diploid daughter cells.',es:'Se forman dos núcleos nuevos y el citoplasma se divide (animal: surco de división · planta: placa celular) → 2 células hijas diploides IDÉNTICAS.'},cells:[[50,27,82,44],[50,73,82,44]],p:{matA:[40,24],matB:[40,76],patA:[60,24],patB:[60,76]},jm:0,jp:0},
+];
+let mitI=0,mitTimer=null;
+function setMit(id,x,y){const e=document.getElementById(id);if(e){e.style.left=x+'%';e.style.top=y+'%';}}
+function setMitPhase(i){
+  mitI=(i+BIO_MIT.length)%BIO_MIT.length;const ph=BIO_MIT[mitI];
+  setMit('mMatA',...ph.p.matA);setMit('mMatB',...ph.p.matB);setMit('mPatA',...ph.p.patA);setMit('mPatB',...ph.p.patB);
+  for(let k=0;k<2;k++){const c=document.getElementById('mCell'+k);
+    if(k<ph.cells.length){const[x,y,w,h]=ph.cells[k];c.style.left=x+'%';c.style.top=y+'%';c.style.width=w+'%';c.style.height=h+'%';c.style.opacity='1';}else c.style.opacity='0';}
+  function cen(id,a,b,show){const e=document.getElementById(id);if(!show){e.style.opacity='0';return;}e.style.opacity='1';e.style.left=((a[0]+b[0])/2)+'%';e.style.top=((a[1]+b[1])/2)+'%';e.style.width=(Math.abs(a[0]-b[0])+6)+'%';}
+  cen('mCenMat',ph.p.matA,ph.p.matB,ph.jm);cen('mCenPat',ph.p.patA,ph.p.patB,ph.jp);
+  document.getElementById('mPhName').textContent=L(ph.n);
+  document.getElementById('mPhDesc').textContent=L(ph.d);
+  document.getElementById('mPhDots').innerHTML=BIO_MIT.map((_,k)=>`<span class="${k===mitI?'on':''}"></span>`).join('');
+}
+function mitNext(){setMitPhase(mitI+1);}
+function mitPrev(){mitStop();setMitPhase(mitI-1);}
+function mitRestart(){mitStop();setMitPhase(0);}
+function mitStop(){if(mitTimer){clearInterval(mitTimer);mitTimer=null;}document.getElementById('mitPlayBtn').textContent=T('bio_play');}
+function mitToggle(){if(mitTimer){mitStop();return;}if(mitI>=BIO_MIT.length-1)setMitPhase(0);document.getElementById('mitPlayBtn').textContent=T('bio_pause');mitTimer=setInterval(()=>{if(mitI>=BIO_MIT.length-1){mitStop();return;}setMitPhase(mitI+1);},1500);}
+
+// Cell flashcards
+const CELL_CARDS=[
+  {t:'Cell theory',d:{en:'1) All organisms are made of cells. 2) All cells come from pre-existing cells. 3) The cell is the most basic unit of life.',es:'1) Todos los organismos están hechos de células. 2) Toda célula proviene de otra célula. 3) La célula es la unidad básica de la vida.'}},
+  {t:'Prokaryotic cell',d:{en:'No membrane-bound nucleus; DNA floats in the cytoplasm; no organelles. Example: bacteria.',es:'Sin núcleo rodeado de membrana; el ADN flota en el citoplasma; sin organelos. Ejemplo: bacterias.'},m:{en:'PRO = before a true nucleus.',es:'PRO = antes del núcleo verdadero.'}},
+  {t:'Eukaryotic cell',d:{en:'Has a TRUE nucleus and membrane-bound organelles. Example: plants, animals, fungi.',es:'Tiene un núcleo VERDADERO y organelos con membrana. Ejemplo: plantas, animales, hongos.'},m:{en:'EU = a good (true) nucleus.',es:'EU = un buen núcleo (verdadero).'}},
+  {t:'Organelle',d:{en:'A membrane-bound structure inside a eukaryotic cell with a specific job.',es:'Estructura con membrana dentro de una célula eucariota con una función específica.'}},
+  {t:'Nucleus',d:{en:'Stores and protects DNA and directs all cell activities.',es:'Almacena y protege el ADN y dirige todas las actividades de la célula.'}},
+  {t:'Mitochondrion',d:{en:'Converts food into ATP (energy); has its own DNA. The cell\'s "power plant".',es:'Convierte el alimento en ATP (energía); tiene su propio ADN. La "central eléctrica" de la célula.'},m:{en:'Mito = power.',es:'Mito = energía.'}},
+  {t:'Ribosome',d:{en:'Builds proteins by assembling the amino-acid chain.',es:'Construye proteínas ensamblando la cadena de aminoácidos.'}},
+  {t:'Rough ER',d:{en:'ER covered in ribosomes — makes proteins.',es:'RE cubierto de ribosomas — fabrica proteínas.'},m:{en:'Rough = Ribosomes = pRoteins.',es:'Rugoso = Ribosomas = pRoteínas.'}},
+  {t:'Smooth ER',d:{en:'ER without ribosomes — makes lipids and breaks down drugs/alcohol.',es:'RE sin ribosomas — fabrica lípidos y descompone fármacos/alcohol.'}},
+  {t:'Golgi apparatus',d:{en:'Modifies, packages and ships proteins — the cell\'s post office.',es:'Modifica, empaqueta y envía proteínas — el correo de la célula.'}},
+  {t:'Lysosome',d:{en:'Holds digestive enzymes; recycles old parts and defends against bacteria.',es:'Contiene enzimas digestivas; recicla partes viejas y defiende contra bacterias.'}},
+  {t:'Vacuole',d:{en:'Storage sac for water, nutrients and waste. Plants have one large central vacuole.',es:'Bolsa de almacenamiento de agua, nutrientes y desechos. Las plantas tienen una gran vacuola central.'}},
+  {t:'Cell wall',d:{en:'Rigid cellulose layer outside plant cells — shape and support. (Plants only.)',es:'Capa rígida de celulosa fuera de las células vegetales — forma y soporte. (Solo plantas.)'}},
+  {t:'Chloroplast',d:{en:'Does photosynthesis using chlorophyll. (Plants only.)',es:'Realiza la fotosíntesis con clorofila. (Solo plantas.)'}},
+  {t:'Chromatin',d:{en:'Loose, uncoiled DNA + histones — the form for most of the cell\'s life.',es:'ADN + histonas sueltos y desenrollados — la forma durante casi toda la vida de la célula.'}},
+  {t:'Chromosome',d:{en:'Condensed DNA + histones, visible when the cell divides.',es:'ADN + histonas condensados, visibles cuando la célula se divide.'}},
+  {t:'Telomere',d:{en:'Protective repeated sequences at the ends of a chromosome.',es:'Secuencias repetidas protectoras en los extremos del cromosoma.'},m:{en:'Tips = Telomeres.',es:'Puntas = Telómeros.'}},
+  {t:'Spindle fibers',d:{en:'Microtubules that attach to centromeres and move chromosomes during mitosis.',es:'Microtúbulos que se unen a los centrómeros y mueven los cromosomas durante la mitosis.'}},
+  {t:'Interphase',d:{en:'The longest stage (G1, S, G2) — the cell grows and copies its DNA. ~90% of the cycle.',es:'La etapa más larga (G1, S, G2) — la célula crece y copia su ADN. ~90% del ciclo.'}},
+  {t:'Cyclin',d:{en:'Protein that drives the cell forward through the cell-cycle checkpoints.',es:'Proteína que impulsa a la célula a avanzar por los puntos de control del ciclo.'}},
+  {t:'Mitosis',d:{en:'Nuclear division → two genetically IDENTICAL nuclei (Prophase→Metaphase→Anaphase→Telophase).',es:'División del núcleo → dos núcleos genéticamente IDÉNTICOS (Profase→Metafase→Anafase→Telofase).'}},
+  {t:'Cytokinesis',d:{en:'Division of the cytoplasm. Animal: cleavage furrow · Plant: cell plate (Golgi).',es:'División del citoplasma. Animal: surco de división · Planta: placa celular (Golgi).'}},
+];
+let cellKnow={};
+function renderCellCards(){
+  document.getElementById('cellCardScore').textContent=Object.values(cellKnow).filter(Boolean).length+' / '+CELL_CARDS.length+' '+T('bio_mastered');
+  document.getElementById('cellCards').innerHTML=CELL_CARDS.map((c,i)=>`
+    <div class="flip ${cellKnow[i]?'know':''}" id="cc${i}">
+      <div class="flip-in" onclick="document.getElementById('cc${i}').classList.toggle('on')">
+        <div class="flip-f"><div class="term">${esc(c.t)}</div><div class="hintw">${LANG==='es'?'toca para voltear':'tap to flip'}</div></div>
+        <div class="flip-b"><div>${esc(L(c.d))}</div>${c.m?`<div class="mnem">💡 ${esc(L(c.m))}</div>`:''}
+          <div class="flip-mark"><button onclick="event.stopPropagation();cellMark(${i},1)">${T('q_got')}</button><button onclick="event.stopPropagation();cellMark(${i},0)">${T('q_review')}</button></div>
+        </div></div></div>`).join('');
+}
+function cellMark(i,v){cellKnow[i]=!!v;renderCellCards();}
+
+// Cell key concepts
+const CELL_TOPICS=[
+  {t:'3 · Cell Structure & Function',pts:{en:['Cell theory: all organisms are cells · cells come from cells · the cell is the basic unit of life.','Prokaryote = no nucleus (bacteria); Eukaryote = true nucleus + organelles (plants, animals, fungi).','Protein factory: Nucleus → Rough ER + ribosomes → vesicle → Golgi → secretion.','Mitochondria = energy (ATP); Lysosomes = recycling/defense; Cytoskeleton = shape & movement.','Plant-only: cell wall (cellulose), chloroplasts, one large central vacuole.'],es:['Teoría celular: todos los organismos son células · las células provienen de células · la célula es la unidad básica de la vida.','Procariota = sin núcleo (bacterias); Eucariota = núcleo verdadero + organelos (plantas, animales, hongos).','Fábrica de proteínas: Núcleo → RE rugoso + ribosomas → vesícula → Golgi → secreción.','Mitocondrias = energía (ATP); Lisosomas = reciclaje/defensa; Citoesqueleto = forma y movimiento.','Solo plantas: pared celular (celulosa), cloroplastos, una gran vacuola central.']}},
+  {t:'4 · The Cell Cycle',pts:{en:['Cell cycle = growth, DNA replication and division, producing two identical daughter cells.','Interphase (G1, S, G2) is the longest part, ~90% of the cycle.','G1 = growth · S = DNA is replicated (sister chromatids form) · G2 = grow & prepare for mitosis.','M phase = mitosis + cytokinesis.','Cyclins drive the cell through checkpoints; cells in G0 are not dividing.'],es:['Ciclo celular = crecimiento, replicación del ADN y división, que produce dos células hijas idénticas.','La interfase (G1, S, G2) es la parte más larga, ~90% del ciclo.','G1 = crecimiento · S = se replica el ADN (se forman cromátidas hermanas) · G2 = crecer y prepararse para la mitosis.','Fase M = mitosis + citocinesis.','Las ciclinas impulsan a la célula por los puntos de control; las células en G0 no se dividen.']}},
+  {t:'5 · Cell Division (Mitosis & Cytokinesis)',pts:{en:['DNA: chromatin (loose) → condensed chromosome; duplicated = 2 sister chromatids at the centromere; telomeres protect the ends.','Prophase: chromosomes condense, nuclear envelope breaks down, spindle forms.','Metaphase: chromosomes line up at the cell equator.','Anaphase: sister chromatids are pulled to opposite poles.','Telophase + cytokinesis: 2 nuclei form; 1 parent cell → 2 IDENTICAL daughter cells (furrow in animals, cell plate in plants).'],es:['ADN: cromatina (suelta) → cromosoma condensado; duplicado = 2 cromátidas hermanas en el centrómero; los telómeros protegen los extremos.','Profase: los cromosomas se condensan, la envoltura nuclear se rompe, se forma el huso.','Metafase: los cromosomas se alinean en el ecuador de la célula.','Anafase: las cromátidas hermanas son llevadas a polos opuestos.','Telofase + citocinesis: se forman 2 núcleos; 1 célula madre → 2 células hijas IDÉNTICAS (surco en animales, placa celular en plantas).']}},
+];
+function renderCellTopics(){
+  document.getElementById('cellTopics').innerHTML=CELL_TOPICS.map((tp,i)=>`
+    <div class="scene ${i===0?'open':''}" id="ct${i}">
+      <div class="scene-head" onclick="document.getElementById('ct${i}').classList.toggle('open')">
+        <div class="scene-title">${esc(tp.t)}</div><div class="scene-pages">▾</div></div>
+      <div class="scene-body"><ul>${tp.pts[LANG].map(p=>`<li>${esc(p)}</li>`).join('')}</ul></div>
+    </div>`).join('');
+}
+
 let bioInit=false;
 function renderBiology(){
-  if(!bioInit){bioInit=true;document.getElementById('bioPlayBtn').textContent=T('bio_play');setBioPhase(0);renderPunnett();}
-  else{setBioPhase(bioI);}
-  renderBioCards();renderBioTopics();
+  if(!bioInit){bioInit=true;
+    document.getElementById('bioPlayBtn').textContent=T('bio_play');setBioPhase(0);renderPunnett();
+    document.getElementById('mitPlayBtn').textContent=T('bio_play');document.getElementById('cycPlayBtn').textContent=T('bio_play');
+    renderCycle();cycSet(0);setMitPhase(0);setCellType('animal');cellInfo(null);showBioSub('cells');
+  } else {setBioPhase(bioI);setMitPhase(mitI);cycSet(cycI);cellInfo(curOrg);}
+  renderBioCards();renderBioTopics();renderCellCards();renderCellTopics();
   if(!bioTimer)document.getElementById('bioPlayBtn').textContent=T('bio_play');
+  if(!mitTimer)document.getElementById('mitPlayBtn').textContent=T('bio_play');
+  if(!cycTimer)document.getElementById('cycPlayBtn').textContent=T('bio_play');
 }
 
 /* ---------- UTIL & RENDER ---------- */
