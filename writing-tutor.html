@@ -74,6 +74,14 @@
   .check .done{color:var(--good);text-decoration:line-through}
   .checkmsg{margin-top:8px;font-weight:800;color:var(--good);font-size:.85rem;display:none}
   .checkmsg.show{display:block}
+  .lab details{border:1px solid var(--line);border-radius:10px;margin:8px 0;background:#fff}
+  .lab summary{cursor:pointer;padding:9px 11px;font-weight:700;font-size:.83rem;color:var(--accent-d);list-style:none}
+  .lab summary::-webkit-details-marker{display:none}
+  .lab summary:before{content:"\25B8\00A0";color:var(--accent)}
+  .lab details[open] summary:before{content:"\25BE\00A0"}
+  .lab .body{padding:0 11px 11px;font-size:.82rem;line-height:1.5;color:var(--ink)}
+  .lab table{width:100%;border-collapse:collapse;font-size:.78rem;margin-top:2px}
+  .lab td{border:1px solid var(--line);padding:5px 7px;vertical-align:top}
 </style>
 </head>
 <body>
@@ -107,24 +115,25 @@
       </div>
       <div class="panel"><h3>How to do well</h3><ul class="tips" id="tips"></ul></div>
       <div class="panel"><h3>&#9989; Proofreading checklist</h3><div class="check" id="check"></div><div class="checkmsg" id="checkmsg">&#127881; Great job! Your writing is ready to hand in.</div></div>
-      <div class="panel">
-        <h3>&#128218; Help &amp; resources (Purdue OWL)</h3>
-        <ul class="tips" style="list-style:none;margin:0;padding:0">
-          <li style="margin:6px 0">&#128279; <a href="https://owl.purdue.edu/owl/general_writing/the_writing_process/index.html" target="_blank" rel="noopener">The Writing Process</a></li>
-          <li style="margin:6px 0">&#128279; <a href="https://owl.purdue.edu/owl/general_writing/the_writing_process/thesis_statement_tips.html" target="_blank" rel="noopener">Writing Thesis Statements</a></li>
-          <li style="margin:6px 0">&#128279; <a href="https://owl.purdue.edu/owl/general_writing/academic_writing/index.html" target="_blank" rel="noopener">Academic Writing</a></li>
-          <li style="margin:6px 0">&#128279; <a href="https://owl.purdue.edu/owl/general_writing/common_writing_assignments/index.html" target="_blank" rel="noopener">Common Writing Assignments</a></li>
-          <li style="margin:6px 0">&#128279; <a href="https://owl.purdue.edu/owl/general_writing/the_writing_process/proofreading/index.html" target="_blank" rel="noopener">Proofreading</a></li>
-          <li style="margin:6px 0">&#128279; <a href="https://owl.purdue.edu/owl/general_writing/mechanics/index.html" target="_blank" rel="noopener">Mechanics &amp; Grammar</a></li>
-        </ul>
-        <div style="font-size:.7rem;color:var(--muted);margin-top:8px">External links to the Purdue OWL (open in a new tab). Content &copy; Purdue OWL &mdash; we link to it, we do not copy it.</div>
+      <div class="panel"><h3>&#128214; Writing guide</h3>
+        <div class="lab">
+          <details><summary>The writing process</summary><div class="body"><b>1 Brainstorm</b> - note every idea (who? what? why?). <b>2 Plan</b> - put ideas in order, one per paragraph. <b>3 Draft</b> - write freely, fix it later. <b>4 Revise</b> - make each idea clear, add an example, cut repeats. <b>5 Proofread</b> - hunt for mistakes and read it aloud.</div></details>
+          <details><summary>Build a strong paragraph (P.E.E.L.)</summary><div class="body"><b>P - Point:</b> one sentence with the main idea.<br><b>E - Evidence:</b> a fact, example or quote.<br><b>E - Explain:</b> say how it proves your point.<br><b>L - Link:</b> connect to the next idea.<br><i>Example:</i> "Sport is good for teenagers. For example, it lowers stress. This is because exercise releases endorphins. Therefore, schools should offer more sport."</div></details>
+          <details><summary>Write a thesis statement</summary><div class="body">A thesis is <b>one sentence</b> that states your main argument, usually at the end of your introduction.<br><b>Formula:</b> Topic + your position + main reason.<br><i>Example:</i> "Schools should teach coding because it builds problem-solving and future job skills." Make it specific and arguable.</div></details>
+          <details><summary>Linking words by job</summary><div class="body"><table>
+            <tr><td><b>Add</b></td><td>also, furthermore, moreover, in addition</td></tr>
+            <tr><td><b>Contrast</b></td><td>however, on the other hand, although, whereas</td></tr>
+            <tr><td><b>Example</b></td><td>for example, for instance, such as</td></tr>
+            <tr><td><b>Cause / effect</b></td><td>so, therefore, as a result, consequently</td></tr>
+            <tr><td><b>Sequence</b></td><td>first, next, then, finally</td></tr>
+            <tr><td><b>Conclude</b></td><td>in conclusion, to sum up, overall</td></tr>
+          </table><div style="margin-top:6px;color:var(--muted)">Tip: tap the blue phrases under each section to insert them.</div></div></details>
+          <details><summary>Proofread like a pro</summary><div class="body">Read your work <b>aloud</b>. Check one thing at a time: CAPITAL letters, end punctuation (. ? !), spelling and verb tense. Make sure each paragraph has <b>one</b> main idea and uses linking words. Leave it for a few minutes, then read it again with fresh eyes.</div></details>
+          <details><summary>Academic styles cheat-sheet</summary><div class="body"><b>Descriptive</b> - facts only, no opinion.<br><b>Analytical</b> - explain how &amp; why; find patterns.<br><b>Critical</b> - weigh strengths and limits, then judge.<br><b>Persuasive</b> - take a position, give evidence, answer the other side.<br><b>Reflective</b> - describe an experience, your feelings, and what you learned.</div></details>
+        </div>
       </div>
-      <div class="panel attr">
-        The <b>Academic styles</b> (Descriptive, Analytical, Critical, Persuasive, Reflective) and the academic phrase banks
-        (reporting verbs, hedging, signposting) are adapted from the
-        <a href="https://library.up.ac.za/c.php?g=1505780" target="_blank" rel="noopener">University of Pretoria &mdash; Academic Writing Guide</a>,
-        licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>.
       </div>
+      
     </div>
   </div>
 </div>
@@ -232,7 +241,7 @@ function wordCount(s){ s=(s||"").trim(); return s?s.split(/\s+/).length:0; }
 function buildControls(){
   var sel=document.getElementById('typeSel'); sel.innerHTML='';
   var camb=document.createElement('optgroup'); camb.label='Cambridge tasks';
-  var acad=document.createElement('optgroup'); acad.label='Academic styles (Univ. of Pretoria)';
+  var acad=document.createElement('optgroup'); acad.label='Academic styles';
   TYPE_KEYS.forEach(function(k){ var o=document.createElement('option'); o.value=k; o.textContent=TYPES[k].icon+"  "+TYPES[k].name; if(k===type)o.selected=true; (TYPES[k].acad?acad:camb).appendChild(o); });
   sel.appendChild(camb); sel.appendChild(acad);
   sel.onchange=function(){ type=sel.value; render(); };
