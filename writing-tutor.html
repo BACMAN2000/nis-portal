@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Virtual Writing Tutor · NIS English</title>
+<style>
+  :root{--bg:#eef1f9;--card:#fff;--ink:#1e2433;--muted:#67718a;--accent:#3b5bdb;--accent-d:#2d4ac0;
+    --soft:#e7ecfd;--good:#2f9e44;--good-soft:#d3f4dc;--warn:#e8590c;--gold:#f59f00;--line:#e2e8f0;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+  header{background:#fff;padding:12px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    box-shadow:0 3px 14px rgba(15,23,42,.06);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+  header h1{font-size:1.15rem}
+  header h1 small{display:block;font-weight:500;font-size:.72rem;color:var(--muted)}
+  header .sp{flex:1}
+  header a.back{text-decoration:none;background:#2d5a8d;color:#fff;font-weight:700;font-size:.8rem;padding:8px 13px;border-radius:9px}
+  .controls{max-width:1180px;margin:14px auto 0;padding:0 14px;display:flex;gap:18px;flex-wrap:wrap;align-items:flex-end}
+  .ctl label{display:block;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin-bottom:5px}
+  select{font:inherit;font-weight:700;padding:9px 12px;border-radius:10px;border:2px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;max-width:88vw}
+  .lvs{display:flex;gap:6px}
+  .lv{border:2px solid transparent;background:#fff;color:var(--ink);padding:8px 14px;border-radius:20px;font-weight:800;font-size:.85rem;cursor:pointer;box-shadow:0 1px 3px rgba(20,30,60,.1)}
+  .lv.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .wrap{max-width:1180px;margin:14px auto;padding:0 14px;display:grid;grid-template-columns:1.55fr 1fr;gap:16px;align-items:start}
+  @media(max-width:880px){.wrap{grid-template-columns:1fr}}
+  .col{display:flex;flex-direction:column;gap:14px}
+  .brief{background:linear-gradient(135deg,var(--accent),#5b78e6);color:#fff;border-radius:14px;padding:16px 18px;box-shadow:0 4px 16px rgba(59,91,219,.25)}
+  .brief h2{font-size:1.05rem;margin-bottom:4px}
+  .brief .tt{font-size:.85rem;opacity:.96;line-height:1.45}
+  .brief textarea{width:100%;margin-top:10px;border:none;border-radius:9px;padding:10px;font:inherit;font-size:.85rem;min-height:54px;resize:vertical;color:var(--ink)}
+  .sec{background:var(--card);border-radius:14px;padding:14px 16px;box-shadow:0 2px 10px rgba(20,30,60,.07);border-left:5px solid var(--accent)}
+  .sec .top{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .sec .n{background:var(--accent);color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;flex:0 0 auto}
+  .sec h3{font-size:.98rem}
+  .sec .cnt{margin-left:auto;font-size:.76rem;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums}
+  .sec .cnt.ok{color:var(--good)}
+  .sec .guide{font-size:.82rem;color:var(--muted);margin:7px 0 9px;line-height:1.45}
+  .sec textarea{width:100%;border:2px solid var(--line);border-radius:10px;padding:11px;font:inherit;font-size:.95rem;line-height:1.5;min-height:90px;resize:vertical;outline:none;transition:border .15s}
+  .sec textarea:focus{border-color:var(--accent)}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+  .chiplab{width:100%;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--accent);margin-top:4px}
+  .chip{background:var(--soft);color:var(--accent-d);border:none;border-radius:14px;padding:6px 11px;font:inherit;font-size:.8rem;font-weight:600;cursor:pointer;transition:.12s}
+  .chip:hover{background:var(--accent);color:#fff;transform:translateY(-1px)}
+  .side{position:sticky;top:78px}
+  .panel{background:var(--card);border-radius:14px;padding:16px;box-shadow:0 2px 10px rgba(20,30,60,.07);margin-bottom:14px}
+  .panel h3{font-size:.8rem;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:10px}
+  .total{font-size:2rem;font-weight:800;line-height:1}
+  .total small{font-size:.85rem;font-weight:600;color:var(--muted)}
+  .bar{height:10px;background:#eef1f9;border-radius:6px;overflow:hidden;margin:10px 0 6px}
+  .bar span{display:block;height:100%;background:var(--accent);transition:width .3s}
+  .bar span.ok{background:var(--good)}.bar span.over{background:var(--warn)}
+  .target{font-size:.8rem;color:var(--muted)}
+  .tips{font-size:.82rem;color:var(--ink);line-height:1.5}
+  .tips li{margin:5px 0 5px 16px}
+  .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+  button.act{border:none;border-radius:10px;padding:10px 14px;font:inherit;font-weight:700;font-size:.83rem;cursor:pointer}
+  .b-copy{background:var(--accent);color:#fff}.b-dl{background:#e9ecf3;color:var(--ink)}.b-send{background:var(--good);color:#fff}.b-clear{background:#fff0f0;color:#c92a2a}
+  .saved{font-size:.74rem;color:var(--muted);margin-top:8px}
+  .msg{display:none;margin-top:8px;padding:9px;border-radius:9px;font-weight:700;font-size:.82rem;text-align:center}
+  .msg.ok{display:block;background:var(--good-soft);color:var(--good)}
+  .msg.warn{display:block;background:#fff4e6;color:var(--warn)}
+  .attr{font-size:.72rem;color:var(--muted);line-height:1.5}
+  .attr a{color:var(--accent)}
+  .steps{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+  .step{flex:1 1 100px;background:#fff;border:2px solid var(--line);border-radius:12px;padding:8px 6px;text-align:center;cursor:pointer;transition:.15s;box-shadow:0 1px 3px rgba(20,30,60,.08)}
+  .step:hover{border-color:var(--accent);transform:translateY(-2px)}
+  .step.on{background:var(--soft);border-color:var(--accent)}
+  .step .si{font-size:1.45rem;line-height:1}
+  .step .sn{font-size:.72rem;font-weight:800;color:var(--ink);margin-top:2px}
+  .steptip{display:none;background:#fff;border-left:5px solid var(--gold);border-radius:10px;padding:11px 13px;font-size:.85rem;color:var(--ink);margin-bottom:14px;box-shadow:0 2px 10px rgba(20,30,60,.08);line-height:1.45}
+  .steptip.show{display:block}
+  .check label{display:flex;gap:8px;align-items:flex-start;font-size:.82rem;margin:8px 0;cursor:pointer;line-height:1.35}
+  .check input{margin-top:2px;width:17px;height:17px;accent-color:var(--good);flex:0 0 auto}
+  .check .done{color:var(--good);text-decoration:line-through}
+  .checkmsg{margin-top:8px;font-weight:800;color:var(--good);font-size:.85rem;display:none}
+  .checkmsg.show{display:block}
+</style>
+</head>
+<body>
+<header>
+  <h1>&#9997;&#65039; Virtual Writing Tutor<small>NIS English &middot; guided academic writing</small></h1>
+  <div class="sp"></div>
+  <a class="back" href="./">&#127979; Portal</a>
+  <a class="back" style="background:#3b5bdb" href="./activities.html">&#127922; Activities</a>
+</header>
+<div class="controls">
+  <div class="ctl"><label>Type of writing</label><select id="typeSel"></select></div>
+  <div class="ctl"><label>Level (CEFR)</label><div class="lvs" id="levels"></div></div>
+</div>
+<div class="wrap">
+  <div class="col" id="left"></div>
+  <div class="col">
+    <div class="side">
+      <div class="panel">
+        <h3>Word count</h3>
+        <div class="total"><span id="totalN">0</span> <small>/ <span id="targetTxt">&mdash;</span> words</small></div>
+        <div class="bar"><span id="bar" style="width:0%"></span></div>
+        <div class="target" id="targetHint"></div>
+        <div class="actions">
+          <button class="act b-copy" onclick="copyAll()">&#128203; Copy</button>
+          <button class="act b-dl" onclick="downloadTxt()">&#11015; Download</button>
+          <button class="act b-send" onclick="sendTeacher()">&#128231; Send to teacher</button>
+          <button class="act b-clear" onclick="clearAll()">&#128465; Clear</button>
+        </div>
+        <div class="msg" id="msg"></div>
+        <div class="saved" id="saved"></div>
+      </div>
+      <div class="panel"><h3>How to do well</h3><ul class="tips" id="tips"></ul></div>
+      <div class="panel"><h3>&#9989; Proofreading checklist</h3><div class="check" id="check"></div><div class="checkmsg" id="checkmsg">&#127881; Great job! Your writing is ready to hand in.</div></div>
+      <div class="panel">
+        <h3>&#128218; Help &amp; resources (Purdue OWL)</h3>
+        <ul class="tips" style="list-style:none;margin:0;padding:0">
+          <li style="margin:6px 0">&#128279; <a href="https://owl.purdue.edu/owl/general_writing/the_writing_process/index.html" target="_blank" rel="noopener">The Writing Process</a></li>
+          <li style="margin:6px 0">&#128279; <a href="https://owl.purdue.edu/owl/general_writing/the_writing_process/thesis_statement_tips.html" target="_blank" rel="noopener">Writing Thesis Statements</a></li>
+          <li style="margin:6px 0">&#128279; <a href="https://owl.purdue.edu/owl/general_writing/academic_writing/index.html" target="_blank" rel="noopener">Academic Writing</a></li>
+          <li style="margin:6px 0">&#128279; <a href="https://owl.purdue.edu/owl/general_writing/common_writing_assignments/index.html" target="_blank" rel="noopener">Common Writing Assignments</a></li>
+          <li style="margin:6px 0">&#128279; <a href="https://owl.purdue.edu/owl/general_writing/the_writing_process/proofreading/index.html" target="_blank" rel="noopener">Proofreading</a></li>
+          <li style="margin:6px 0">&#128279; <a href="https://owl.purdue.edu/owl/general_writing/mechanics/index.html" target="_blank" rel="noopener">Mechanics &amp; Grammar</a></li>
+        </ul>
+        <div style="font-size:.7rem;color:var(--muted);margin-top:8px">External links to the Purdue OWL (open in a new tab). Content &copy; Purdue OWL &mdash; we link to it, we do not copy it.</div>
+      </div>
+      <div class="panel attr">
+        The <b>Academic styles</b> (Descriptive, Analytical, Critical, Persuasive, Reflective) and the academic phrase banks
+        (reporting verbs, hedging, signposting) are adapted from the
+        <a href="https://library.up.ac.za/c.php?g=1505780" target="_blank" rel="noopener">University of Pretoria &mdash; Academic Writing Guide</a>,
+        licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a>.
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+<script src="config.js"></script>
+<script>
+var P={
+ opinion:{A2:["I think","I like","I don't like"],B1:["In my opinion","I believe that","I think that","From my point of view"],B2:["It seems to me that","I would argue that","Personally, I feel that","There is no doubt that"],C1:["I am firmly convinced that","It could be argued that","From my perspective","I am inclined to believe that"]},
+ adding:{A2:["and","also","First","Next"],B1:["Firstly","To begin with","In addition","Also","Secondly"],B2:["Furthermore","Moreover","What is more","Another point is that"],C1:["In addition to this","A further consideration is","Not only that, but"]},
+ examples:{A2:["for example","like"],B1:["for example","for instance","such as"],B2:["in particular","a good example of this is","to illustrate"],C1:["a case in point is","as can be seen in","this is exemplified by"]},
+ contrast:{A2:["but"],B1:["However","On the other hand","Although","but"],B2:["Nevertheless","Whereas","Despite this","Even though"],C1:["Nonetheless","Conversely","While it is true that","That said,"]},
+ result:{A2:["so"],B1:["so","because of this","therefore"],B2:["As a result","Consequently","For this reason"],C1:["Thus","Hence","This inevitably leads to"]},
+ conclude:{A2:["In the end"],B1:["In conclusion","To sum up","All in all"],B2:["To conclude","Taking everything into account","On balance"],C1:["In light of the above","Weighing up both sides","Ultimately"]},
+ fOpen:{A2:["I am writing about"],B1:["I am writing to","I am writing because"],B2:["I am writing with regard to","I am writing in response to","I am writing to enquire about"],C1:["I am writing to express my concern about","I am contacting you regarding"]},
+ fReq:{A2:["Please can you","Can you"],B1:["Could you please","I would like to","Please could you"],B2:["I would be grateful if you could","I would appreciate it if","Would it be possible to"],C1:["I would be most grateful if you would","I trust you will be able to"]},
+ fClose:{A2:["Thank you","Bye"],B1:["I look forward to hearing from you","Thank you for your help","Yours sincerely"],B2:["I look forward to your reply","Thank you for your time and attention","Yours faithfully"],C1:["I look forward to your prompt response","I would welcome the opportunity to discuss this further"]},
+ iOpen:{A2:["Hi!","How are you?","Thanks"],B1:["How are you?","Thanks for your email","It was great to hear from you","Sorry for the late reply"],B2:["I hope this email finds you well","It has been ages since we last spoke","Guess what!"],C1:["I have been meaning to write for ages","I just had to tell you about"]},
+ iClose:{A2:["Bye!","See you"],B1:["Write back soon","Take care","Hope to hear from you","Best wishes"],B2:["Anyway, I had better go","Can't wait to see you","Looking forward to your news"],C1:["Do drop me a line when you can","Let's catch up properly soon"]},
+ storyStart:{A2:["One day","It was sunny"],B1:["It was a normal day when","One sunny morning","I will never forget the day"],B2:["Little did I know that","It all began when","The moment I arrived,"],C1:["Looking back, I realise that","If only I had known what was about to happen"]},
+ storySeq:{A2:["Then","After that"],B1:["Suddenly","After a while","A few minutes later","Just then"],B2:["Without warning","Moments later","Before long","To my surprise"],C1:["In the blink of an eye","Against all odds","No sooner had I finished than"]},
+ storyEnd:{A2:["In the end","I was happy"],B1:["In the end","Finally","From that day on"],B2:["Looking back, I learned that","It was a day I would never forget","All is well that ends well"],C1:["With hindsight, it was a turning point","Little did I imagine how much it would change me"]},
+ reviewEval:{A2:["It is good","I like it"],B1:["The best thing about it is","I would recommend it","One problem is"],B2:["What makes it stand out is","A minor drawback is","It is well worth seeing","Overall, it is"],C1:["Its greatest strength lies in","One slight criticism would be","It thoroughly deserves"]},
+ articleHook:{A2:["Do you like it?"],B1:["Have you ever wondered?","Did you know that?","Imagine this"],B2:["What would you do if?","Picture this:","We have all been there:"],C1:["Few things are as exciting","There is a question on everyone's lips:"]},
+ articleEnd:{A2:["So, try it!"],B1:["So, why not try it?","What are you waiting for?","Give it a go!"],B2:["The choice is yours.","Isn't it time you did?","One thing is certain:"],C1:["So, the next time you do, remember this.","Perhaps it is time we all reconsidered."]},
+ reportLang:{B1:["This report looks at","The aim of this report is to"],B2:["The purpose of this report is to","Based on the findings,","It is worth noting that"],C1:["This report sets out to evaluate","The evidence strongly suggests that","In light of these findings"]},
+ reportNeutral:{A2:["states","notes","describes","reports","observes","identifies","outlines","indicates"]},
+ reportArgue:{A2:["argues","claims","asserts","contends","maintains","emphasises","demonstrates","establishes"]},
+ reportTentative:{A2:["suggests","proposes","implies","hints","speculates","appears to show"]},
+ reportCritical:{A2:["questions","challenges","disputes","refutes","critiques","overlooks"]},
+ hedging:{A2:["may","might","could","appears to","seems to","it is likely that","in most cases","to some extent","potentially","generally"]},
+ transAdd:{A2:["Furthermore","Moreover","In addition","Additionally","Equally important","Similarly","Coupled with this"]},
+ transContrast:{A2:["However","Conversely","Nevertheless","On the other hand","Despite this","Whereas","Admittedly"]},
+ transCause:{A2:["Consequently","Therefore","Hence","As a result","Thus","It follows that"]},
+ transSeq:{A2:["Firstly","Secondly","Subsequently","Following this","Finally","At this point"]},
+ signpost:{A2:["This essay will examine","This essay first considers, before","The aim of this essay is to","It is important to define","Having discussed X, it is now necessary to consider Y"]},
+ signpostConcl:{A2:["In conclusion, the evidence suggests","To summarise the main points","Overall, it can be argued that","Having examined X, it is clear that"]},
+ thesis:{A2:["This essay argues that","It will be argued that","The central claim of this essay is that","This essay contends that"]},
+ reflectFeel:{A2:["At first, I felt","I was surprised that","This experience made me realise","Initially, I assumed","On reflection, I now think"]},
+ reflectAction:{A2:["In future, I will","Next time, I would","This has taught me to","Going forward, I intend to"]}
+};
+function bank(fn,lv){ var order=["A2","B1","B2","C1"]; var o=P[fn]||{}; var out=[]; for(var i=0;i<order.length;i++){ var L=order[i]; if(o[L]) out=out.concat(o[L]); if(L===lv) break; } var seen={},r=[]; for(var j=0;j<out.length;j++){ if(!seen[out[j]]){seen[out[j]]=1;r.push(out[j]);} } return r; }
+var TYPES={
+ essay:{name:"Opinion Essay",icon:"\u{1F4DD}",brief:"Write an essay giving your opinion on a topic. Plan two clear ideas, support each one, and finish with a strong conclusion.",
+   tips:["State your opinion clearly in the introduction.","One main idea per paragraph, with a reason or example.","Use linking words to connect your ideas.","Do not add new ideas in the conclusion."],
+   sections:[{t:"Introduction",g:"Restate the topic in your own words and give your opinion.",fns:["opinion"]},{t:"Body 1 - First idea",g:"Your strongest point. Add a reason and an example to support it.",fns:["adding","examples","result"]},{t:"Body 2 - Second idea / other view",g:"A second point, or the opposite opinion. Support it too.",fns:["adding","contrast","examples"]},{t:"Conclusion",g:"Sum up your ideas and restate your opinion. No new information.",fns:["conclude"]}]},
+ article:{name:"Article",icon:"\u{1F4F0}",brief:"Write an article for a magazine or website. Use a catchy title and an engaging, friendly style that speaks to the reader.",
+   tips:["Hook the reader in the first line (a question works well).","Use a friendly, personal tone - address the reader as 'you'.","Organise ideas into clear paragraphs.","End in a memorable way."],
+   sections:[{t:"Title + Hook",g:"Write a short, catchy title, then open with something that grabs attention.",fns:["articleHook"]},{t:"Development 1",g:"Introduce your first main idea and explain it with detail or an example.",fns:["adding","examples"]},{t:"Development 2",g:"Add a second idea or a contrasting angle to keep it interesting.",fns:["adding","contrast","examples"]},{t:"Ending",g:"Finish with a comment, a question, or a call to the reader.",fns:["articleEnd"]}]},
+ emailF:{name:"Email / Letter (Formal)",icon:"\u{1F4E7}",brief:"Write a formal email or letter. Be polite and clear: state your reason, give details, and make your request.",
+   tips:["Start with 'Dear Sir/Madam' or 'Dear Mr/Ms'.","Keep a polite, formal tone - no contractions or slang.","One clear purpose; organise details logically.","End with 'Yours faithfully' or 'Yours sincerely'."],
+   sections:[{t:"Greeting + Reason for writing",g:"Open formally and state clearly why you are writing.",fns:["fOpen"]},{t:"Details / Background",g:"Give the necessary information, explanation or background.",fns:["adding","examples","result"]},{t:"Request / Action",g:"Politely say what you would like the reader to do.",fns:["fReq"]},{t:"Closing",g:"Finish politely and sign off correctly.",fns:["fClose"]}]},
+ emailI:{name:"Email / Letter (Informal)",icon:"\u{1F4AC}",brief:"Write a friendly email or letter to someone you know. Be warm and natural, and answer everything that was asked.",
+   tips:["Start with 'Hi' or 'Dear'.","Use a relaxed, friendly tone - contractions are fine.","Answer all the questions / points asked.","End with 'Best wishes', 'Take care', etc."],
+   sections:[{t:"Greeting + Opening",g:"Say hello, ask how they are, or thank them for their message.",fns:["iOpen"]},{t:"Main news / answers",g:"Give your news and answer everything you were asked.",fns:["adding","examples","contrast"]},{t:"Closing + Sign-off",g:"Wrap up warmly and say goodbye.",fns:["iClose"]}]},
+ review:{name:"Review",icon:"⭐",brief:"Write a review of a film, book, restaurant or product. Describe it, evaluate it, and give a recommendation.",
+   tips:["Say what you are reviewing in the first lines.","Describe it briefly - do not retell the whole plot.","Give your opinion with reasons (good and bad points).","End with a clear recommendation."],
+   sections:[{t:"Introduction",g:"Name what you are reviewing and give a first impression.",fns:["opinion"]},{t:"Description",g:"Briefly describe the key facts (what, where, who).",fns:["adding","examples"]},{t:"Evaluation",g:"Your opinion: strengths and weaknesses, with reasons.",fns:["reviewEval","contrast"]},{t:"Recommendation",g:"Tell the reader whether to choose it, and who would enjoy it.",fns:["reviewEval","conclude"]}]},
+ report:{name:"Report",icon:"\u{1F4CA}",brief:"Write a report. Use a clear purpose, organise findings under headings, and end with a recommendation.",
+   tips:["State the purpose of the report at the start.","Use clear sections/headings for your findings.","Stay factual and objective.","Finish with a recommendation based on the findings."],
+   sections:[{t:"Introduction / Purpose",g:"Explain the aim of the report and what it covers.",fns:["reportLang"]},{t:"Findings 1",g:"Present your first set of points or facts clearly.",fns:["adding","examples"]},{t:"Findings 2",g:"Present a second area, including any problems.",fns:["adding","contrast","result"]},{t:"Conclusion / Recommendation",g:"Summarise and recommend what should be done.",fns:["reportLang","conclude"]}]},
+ story:{name:"Story",icon:"\u{1F4D6}",brief:"Write a story. Set the scene, build up the action, reach a high point, and finish clearly.",
+   tips:["Start in an interesting way to hook the reader.","Use past tenses and time linkers (suddenly, after a while).","Use descriptive words for feelings and places.","Make sure your story has a clear ending."],
+   sections:[{t:"Beginning - set the scene",g:"Introduce the place, the people and the situation.",fns:["storyStart"]},{t:"Build-up",g:"Develop the action. Something starts to happen.",fns:["storySeq","examples"]},{t:"Climax - the main event",g:"The most exciting or important moment.",fns:["storySeq","contrast"]},{t:"Ending",g:"Resolve the story and show how it ends or what was learned.",fns:["storyEnd","conclude"]}]},
+ descriptive:{name:"Descriptive (Academic)",icon:"\u{1F9FE}",acad:true,verbs:"describe · report · summarise · outline",
+   brief:"Present facts, observations and information clearly and objectively, without interpretation. Establish the factual foundation before any analysis.",
+   tips:["Present facts objectively - no personal opinion.","Define key terms and classify information.","Explain processes in a logical, sequential order.","Power verbs: describe, report, summarise, outline."],
+   sections:[{t:"Introduce + define",g:"State the topic and define the key terms clearly.",fns:["signpost","reportNeutral"]},{t:"Present the facts",g:"Report the observations, data or key points objectively.",fns:["reportNeutral","transAdd","examples"]},{t:"Process / classify",g:"Outline the steps in order, or organise the facts into categories.",fns:["transSeq","examples"]},{t:"Brief summary",g:"Restate the key facts. No interpretation or argument.",fns:["signpostConcl"]}]},
+ analytical:{name:"Analytical (Academic)",icon:"\u{1F52C}",acad:true,verbs:"analyse · examine · compare · interpret",
+   brief:"Break information into parts, examine each one, and explain HOW and WHY things work - not just WHAT happened. Identify patterns and significance.",
+   tips:["Ask 'How?' and 'Why?', not just 'What?'.","Examine each component, then connect the parts.","Identify patterns and explain their significance.","Power verbs: analyse, examine, compare, interpret."],
+   sections:[{t:"Introduction + focus",g:"Say what you will analyse and the angle (the how/why).",fns:["signpost","thesis"]},{t:"Break down - part 1",g:"Examine the first component or factor in detail.",fns:["reportNeutral","examples","transAdd"]},{t:"Break down - part 2 / compare",g:"Examine a second part, or compare competing viewpoints.",fns:["transContrast","reportArgue","examples"]},{t:"Connect + significance",g:"Identify relationships and patterns, and explain why they matter.",fns:["transCause","signpostConcl"]}]},
+ critical:{name:"Critical (Academic)",icon:"⚖️",acad:true,verbs:"evaluate · critique · assess · challenge",
+   brief:"Go beyond analysis to evaluate the validity, reliability and significance of claims. Weigh strengths AND limitations, and form a reasoned judgement.",
+   tips:["Being critical is not being negative - weigh strengths and limits.","Question assumptions and the sufficiency of evidence.","Support every evaluation with evidence.","Power verbs: evaluate, critique, assess, challenge."],
+   sections:[{t:"Identify the argument",g:"State the main claim, theory or source you will evaluate.",fns:["reportNeutral","signpost"]},{t:"Evidence + strengths",g:"Weigh the strengths, supported with evidence.",fns:["reportArgue","examples","hedging"]},{t:"Question + limitations",g:"Challenge assumptions; note weaknesses (e.g. sample size, bias).",fns:["reportCritical","transContrast","hedging"]},{t:"Reasoned judgement",g:"Synthesise the views and state your evidence-based conclusion.",fns:["transCause","signpostConcl"]}]},
+ persuasive:{name:"Persuasive (Academic)",icon:"\u{1F4E3}",acad:true,verbs:"argue · advocate · contend · propose",
+   brief:"Take a clear position and convince the reader with evidence and logical reasoning. Acknowledge a counter-argument and explain why your position is stronger (ethos, logos, pathos).",
+   tips:["State a clear thesis (your position) at the start.","Support claims with credible evidence and data.","Address a counter-argument, then rebut it.","Power verbs: argue, advocate, contend, propose."],
+   sections:[{t:"Thesis / position",g:"State your position clearly in a thesis statement.",fns:["thesis","opinion","signpost"]},{t:"Argument + evidence",g:"Give your strongest argument, supported by research or data.",fns:["reportArgue","examples","transAdd"]},{t:"Counter-argument + rebuttal",g:"Acknowledge the opposing view, then explain why yours holds.",fns:["transContrast","hedging","reportCritical"]},{t:"Conclusion",g:"Restate your position and its wider significance.",fns:["transCause","signpostConcl"]}]},
+ reflective:{name:"Reflective (Academic)",icon:"\u{1FA9E}",acad:true,verbs:"reflect · evaluate · connect · apply",
+   brief:"Examine your own learning or experience and link it to theory. Uses the first person (I). Follow Gibbs' cycle: Description, Feelings, Evaluation, Analysis, Action.",
+   tips:["Go beyond 'what happened' to 'why' and 'so what'.","Use the first person (I), but stay structured.","Link your experience to academic theory.","End with what you learned and will do next."],
+   sections:[{t:"Description",g:"What happened? Describe the situation or experience.",fns:["reportNeutral"]},{t:"Feelings",g:"What were you thinking and feeling at the time?",fns:["reflectFeel"]},{t:"Evaluation + analysis",g:"What was good or bad, and why? Link it to theory.",fns:["transContrast","reportArgue","examples"]},{t:"Conclusion + action plan",g:"What did you learn, and what will you do differently next time?",fns:["transCause","reflectAction"]}]}
+};
+var TYPE_KEYS=Object.keys(TYPES);
+var LEVELS=["A2","B1","B2","C1"];
+var TARGET={A2:[40,60],B1:[90,120],B2:[140,190],C1:[220,260]};
+var TARGET_ACAD={A2:[60,90],B1:[120,160],B2:[200,260],C1:[280,350]};
+var PROCESS=[
+ {i:"\u{1F4AD}",n:"Brainstorm",t:"Dump every idea first - Who? What? Why? Jot down examples. Don't worry about mistakes yet."},
+ {i:"\u{1F5C2}\u{FE0F}",n:"Plan",t:"Put your best ideas in order. One idea = one paragraph. The sections below ARE your plan."},
+ {i:"\u270D\u{FE0F}",n:"Draft",t:"Write your first version. Keep going - you can fix it later. Tap the blue phrases to start sentences."},
+ {i:"\u{1F501}",n:"Revise",t:"Read it again. Is each idea clear? Add a reason or example. Cut anything that repeats."},
+ {i:"\u{1F50D}",n:"Proofread",t:"Hunt for mistakes: CAPITAL letters, full stops, spelling and linking words. Read it ALOUD!"}
+];
+var curStep=-1;
+function stepsHTML(){ var h='<div class="steps">'; for(var i=0;i<PROCESS.length;i++){ h+='<div class="step'+(i===curStep?' on':'')+'" data-s="'+i+'"><div class="si">'+PROCESS[i].i+'</div><div class="sn">'+(i+1)+'. '+PROCESS[i].n+'</div></div>'; } h+='</div><div class="steptip" id="steptip"></div>'; return h; }
+function wireSteps(){ var st=document.querySelectorAll('.step'); for(var i=0;i<st.length;i++){ (function(el){ el.addEventListener('click',function(){ var sx=+el.getAttribute('data-s'); curStep=(curStep===sx?-1:sx); var all=document.querySelectorAll('.step'); for(var k=0;k<all.length;k++){ all[k].classList.toggle('on',+all[k].getAttribute('data-s')===curStep); } var tip=document.getElementById('steptip'); if(curStep>=0){tip.textContent=PROCESS[curStep].t;tip.classList.add('show');}else{tip.classList.remove('show');} }); })(st[i]); } var tip=document.getElementById('steptip'); if(curStep>=0&&tip){tip.textContent=PROCESS[curStep].t;tip.classList.add('show');} }
+var CHECK=["Every sentence starts with a CAPITAL letter.","Every sentence ends with . ? or !","I checked the tricky spellings.","Each paragraph has ONE main idea.","I used linking words (however, because, firstly).","I read my work ALOUD to catch mistakes.","I am inside the word target."];
+function buildCheck(){ var c=document.getElementById('check'); if(!c)return; var h=''; for(var i=0;i<CHECK.length;i++){ h+='<label><input type="checkbox" data-c="'+i+'"><span>'+CHECK[i]+'</span></label>'; } c.innerHTML=h; var ins=c.querySelectorAll('input'); for(var j=0;j<ins.length;j++){ ins[j].addEventListener('change',function(){ var sp=this.parentNode.querySelector('span'); sp.classList.toggle('done',this.checked); var boxes=c.querySelectorAll('input'); var all=true; for(var m=0;m<boxes.length;m++){ if(!boxes[m].checked)all=false; } document.getElementById('checkmsg').classList.toggle('show',all); }); } }
+var type="essay", level="B1", lastTA=null;
+function draftKey(){ return "nis_wt_"+type+"_"+level; }
+function targetFor(){ return TYPES[type].acad ? TARGET_ACAD[level] : TARGET[level]; }
+function wordCount(s){ s=(s||"").trim(); return s?s.split(/\s+/).length:0; }
+function buildControls(){
+  var sel=document.getElementById('typeSel'); sel.innerHTML='';
+  var camb=document.createElement('optgroup'); camb.label='Cambridge tasks';
+  var acad=document.createElement('optgroup'); acad.label='Academic styles (Univ. of Pretoria)';
+  TYPE_KEYS.forEach(function(k){ var o=document.createElement('option'); o.value=k; o.textContent=TYPES[k].icon+"  "+TYPES[k].name; if(k===type)o.selected=true; (TYPES[k].acad?acad:camb).appendChild(o); });
+  sel.appendChild(camb); sel.appendChild(acad);
+  sel.onchange=function(){ type=sel.value; render(); };
+  var L=document.getElementById('levels'); L.innerHTML='';
+  LEVELS.forEach(function(lv){ var b=document.createElement('button'); b.className='lv'+(lv===level?' on':''); b.textContent=lv; b.onclick=function(){ level=lv; render(); }; L.appendChild(b); });
+}
+var LABELS={opinion:"Opinion",adding:"Add / sequence",examples:"Examples",contrast:"Contrast",result:"Result",conclude:"Conclude",fOpen:"Open formally",fReq:"Request",fClose:"Close formally",iOpen:"Friendly opening",iClose:"Friendly closing",storyStart:"Story openers",storySeq:"Sequencers",storyEnd:"Story endings",reviewEval:"Evaluate",articleHook:"Hooks",articleEnd:"Endings",reportLang:"Report language",reportNeutral:"Report (neutral)",reportArgue:"Report (strong)",reportTentative:"Report (tentative)",reportCritical:"Report (critical)",hedging:"Hedging (caution)",transAdd:"Add",transContrast:"Contrast",transCause:"Cause / effect",transSeq:"Sequence",signpost:"Signpost",signpostConcl:"Conclude (signpost)",thesis:"Thesis statement",reflectFeel:"Feelings",reflectAction:"Action plan"};
+function chipRow(fns){
+  var html='', seen={};
+  for(var i=0;i<fns.length;i++){ var fn=fns[i]; var words=bank(fn,level); if(!words.length)continue;
+    html+='<span class="chiplab">'+(LABELS[fn]||fn)+'</span>';
+    for(var j=0;j<words.length;j++){ var w=words[j]; if(seen[w])continue; seen[w]=1; html+='<button class="chip" data-ins="'+w.replace(/"/g,'&quot;')+'">'+w+'</button>'; }
+  }
+  return html;
+}
+function render(){
+  buildControls();
+  var d=TYPES[type], tg=targetFor();
+  document.getElementById('targetTxt').textContent=tg[0]+"-"+tg[1];
+  document.getElementById('targetHint').textContent="Aim for about "+tg[0]+"-"+tg[1]+" words ("+level+" "+d.name.toLowerCase()+").";
+  document.getElementById('tips').innerHTML=d.tips.map(function(t){return '<li>'+t+'</li>';}).join('');
+  var saved=loadDraft();
+  var html=stepsHTML()+'<div class="brief"><h2>'+d.icon+' '+d.name+' - '+level+'</h2><div class="tt">'+d.brief+'</div>'+(d.verbs?'<div class="tt" style="margin-top:8px;font-weight:700">Power verbs: '+d.verbs+'</div>':'')+'<textarea id="promptBox" placeholder="Paste the exact task / question here (optional)">'+(saved.prompt||'')+'</textarea></div>';
+  d.sections.forEach(function(s,i){
+    html+='<div class="sec"><div class="top"><span class="n">'+(i+1)+'</span><h3>'+s.t+'</h3><span class="cnt" id="cnt'+i+'">0 words</span></div><div class="guide">'+s.g+'</div><textarea id="ta'+i+'" data-i="'+i+'" placeholder="Write here..."></textarea><div class="chips">'+chipRow(s.fns)+'</div></div>';
+  });
+  document.getElementById('left').innerHTML=html; wireSteps();
+  d.sections.forEach(function(s,i){ var ta=document.getElementById('ta'+i); if(saved.secs&&saved.secs[i]!=null)ta.value=saved.secs[i];
+    ta.addEventListener('input',function(){ updateCounts(); saveDraft(); });
+    ta.addEventListener('focus',function(){ lastTA=ta; });
+  });
+  document.getElementById('promptBox').addEventListener('input',saveDraft);
+  var chips=document.querySelectorAll('.chip'); for(var c=0;c<chips.length;c++){ (function(el){ el.addEventListener('click',function(){ insertText(el.getAttribute('data-ins')); }); })(chips[c]); }
+  updateCounts(); showSaved();
+}
+function insertText(txt){
+  var ta=lastTA; if(!ta||!document.body.contains(ta)) ta=document.getElementById('ta0'); if(!ta)return;
+  ta.focus();
+  var s=ta.selectionStart, e=ta.selectionEnd; if(s==null){s=ta.value.length;e=s;}
+  var before=ta.value.slice(0,s), after=ta.value.slice(e), ins=txt;
+  if(before && !/\s$/.test(before)) ins=" "+ins;
+  if(after && after.charAt(0)!==" ") ins=ins+" ";
+  ta.value=before+ins+after;
+  var pos=(before+ins).length; ta.setSelectionRange(pos,pos);
+  updateCounts(); saveDraft();
+}
+function updateCounts(){
+  var d=TYPES[type], total=0;
+  d.sections.forEach(function(s,i){ var ta=document.getElementById('ta'+i); var n=wordCount(ta.value); total+=n;
+    var el=document.getElementById('cnt'+i); el.textContent=n+" words"; if(n>0)el.classList.add('ok'); else el.classList.remove('ok'); });
+  document.getElementById('totalN').textContent=total;
+  var t=targetFor(), lo=t[0], hi=t[1]; var bar=document.getElementById('bar');
+  bar.style.width=Math.min(100,Math.round(total/hi*100))+"%";
+  bar.classList.toggle('ok',total>=lo&&total<=hi+20); bar.classList.toggle('over',total>hi+30);
+}
+function assemble(){
+  var d=TYPES[type], prompt=document.getElementById('promptBox').value.trim();
+  var out=d.name+" ("+level+")"+(prompt?"\nTASK: "+prompt:"")+"\n\n";
+  d.sections.forEach(function(s,i){ var v=document.getElementById('ta'+i).value.trim(); if(v) out+=v+"\n\n"; });
+  return out.trim();
+}
+function saveDraft(){ try{ var d=TYPES[type]; var secs=d.sections.map(function(s,i){return document.getElementById('ta'+i).value;});
+  localStorage.setItem(draftKey(),JSON.stringify({prompt:document.getElementById('promptBox').value,secs:secs,t:Date.now()})); showSaved(); }catch(e){} }
+function loadDraft(){ try{ return JSON.parse(localStorage.getItem(draftKey())||'{}'); }catch(e){ return {}; } }
+function showSaved(){ var d=loadDraft(); document.getElementById('saved').textContent=d.t?("Draft auto-saved "+new Date(d.t).toLocaleTimeString()):"Your work auto-saves in this browser."; }
+function msg(t,cls){ var m=document.getElementById('msg'); m.textContent=t; m.className='msg '+cls; setTimeout(function(){m.className='msg';},4000); }
+function copyAll(){ var txt=assemble(); if(!txt){msg('Nothing to copy yet.','warn');return;} navigator.clipboard.writeText(txt).then(function(){msg('Copied to clipboard!','ok');},function(){msg('Could not copy.','warn');}); }
+function downloadTxt(){ var txt=assemble(); if(!txt){msg('Nothing to download yet.','warn');return;}
+  var a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([txt],{type:'text/plain'})); a.download=type+"-"+level+"-writing.txt"; a.click(); }
+function clearAll(){ if(!confirm('Clear this draft? Your text will be deleted.'))return; localStorage.removeItem(draftKey()); render(); }
+function sendTeacher(){
+  var txt=assemble(); if(wordCount(txt)<10){ msg('Write a bit more before sending.','warn'); return; }
+  var done=function(name,email){
+    if(!email){ msg('Log in to the portal first to send to your teacher.','warn'); return; }
+    try{ fetch(NIS_CONFIG.WRITING_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body:JSON.stringify({skill:'Writing',name:name,email:email,level:level,examTitle:'Writing Tutor - '+TYPES[type].name,examType:'writing-tutor',writingText:txt,words:wordCount(txt)})});
+      msg('Sent to your teacher and to your email!','ok'); }catch(e){ msg('Could not send right now.','warn'); }
+  };
+  try{ if(window.supabase&&window.NIS_CONFIG){ var sb=window.supabase.createClient(NIS_CONFIG.SUPABASE_URL,NIS_CONFIG.SUPABASE_KEY);
+    sb.auth.getUser().then(function(u){ if(u&&u.data&&u.data.user){ sb.from('profiles').select('full_name,email').eq('id',u.data.user.id).maybeSingle().then(function(p){
+      var name=(p&&p.data&&p.data.full_name)||''; var email=u.data.user.email||(p&&p.data&&p.data.email)||''; done(name,email); }); } else { done('',''); } }, function(){ done('',''); }); }
+    else { done('',''); } }catch(e){ done('',''); }
+}
+render(); buildCheck();
+</script>
+</body>
+</html>
