@@ -1863,6 +1863,7 @@ function studentGradeActivities(key){
       ${_skillCard('🔎','Word Search','10 sopas de letras temáticas por nivel.','wordsearches.html?levels='+encodeURIComponent(lv))}
       ${_skillCard('🔢','Word Sudoku','Sudoku de palabras: 9 puzzles por nivel ('+lv.split(',').join(' · ')+').','word-sudoku.html?levels='+encodeURIComponent(lv))}
       ${_skillCard('✍️','Writing Tutor','Te guía qué escribir en cada sección: tipos Cambridge + estilos académicos, frases sugeridas, contador, pasos y checklist (A2–C1).','writing-tutor.html')}
+      ${_skillCard('🧠','Exercises','Gramática, puntuación, estructura y vocabulario: ejercicios con corrección instantánea y puntaje (A2–C1).','exercises.html')}
       ${key==='g9' ? _skillCard('🧠','Memory · Reported Speech','Empareja cada frase en estilo directo con su versión en reported speech.','memory-reported-speech.html') : ''}
     </div>`;
 }

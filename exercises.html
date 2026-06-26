@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English Exercises · NIS English</title>
+<style>
+  :root{--bg:#eef1f9;--card:#fff;--ink:#1e2433;--muted:#67718a;--accent:#3b5bdb;--accent-d:#2d4ac0;
+    --soft:#e7ecfd;--good:#2f9e44;--good-soft:#d3f4dc;--bad:#e03131;--bad-soft:#ffe3e3;--gold:#f59f00;--line:#e2e8f0;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:var(--bg);color:var(--ink);padding:14px}
+  header{max-width:900px;margin:0 auto 6px;text-align:center}
+  header h1{font-size:1.35rem}
+  header p{color:var(--muted);font-size:.85rem;margin-top:3px}
+  a.back{display:inline-block;margin-top:8px;text-decoration:none;background:#2d5a8d;color:#fff;font-weight:700;font-size:.8rem;padding:7px 13px;border-radius:9px}
+  .row{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin:10px auto;max-width:900px}
+  .cat{border:2px solid transparent;background:var(--card);color:var(--ink);padding:8px 14px;border-radius:22px;font-weight:800;font-size:.85rem;cursor:pointer;box-shadow:0 1px 3px rgba(20,30,60,.12)}
+  .cat.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .lv{border:2px solid transparent;background:var(--card);color:var(--ink);padding:6px 14px;border-radius:20px;font-weight:800;font-size:.82rem;cursor:pointer;box-shadow:0 1px 3px rgba(20,30,60,.1)}
+  .lv.on{background:var(--gold);color:#fff;border-color:var(--gold)}
+  .wrap{max-width:760px;margin:10px auto 0}
+  .scorebar{position:sticky;top:0;z-index:5;background:var(--card);border-radius:12px;padding:10px 14px;box-shadow:0 2px 10px rgba(20,30,60,.08);display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+  .scorebar b{color:var(--accent)}
+  .scorebar .best{margin-left:auto;font-size:.8rem;color:var(--muted)}
+  .q{background:var(--card);border-radius:14px;padding:15px 16px;box-shadow:0 2px 10px rgba(20,30,60,.07);margin-bottom:12px;border-left:5px solid var(--accent)}
+  .q .num{font-size:.72rem;font-weight:800;color:var(--accent);text-transform:uppercase;letter-spacing:.5px}
+  .q .qt{font-size:.98rem;font-weight:600;margin:5px 0 10px;line-height:1.4}
+  .opt{display:block;width:100%;text-align:left;background:#f7f9fe;border:2px solid var(--line);border-radius:10px;padding:10px 12px;margin:6px 0;font:inherit;font-size:.9rem;cursor:pointer;transition:.12s}
+  .opt:hover{border-color:var(--accent)}
+  .opt.correct{background:var(--good-soft);border-color:var(--good);color:var(--good);font-weight:700}
+  .opt.wrong{background:var(--bad-soft);border-color:var(--bad);color:var(--bad)}
+  .opt:disabled{cursor:default}
+  .why{display:none;margin-top:8px;font-size:.84rem;background:#f1f5ff;border-left:4px solid var(--accent);border-radius:8px;padding:8px 10px;line-height:1.4}
+  .why.show{display:block}
+  .why.bad{background:var(--bad-soft);border-color:var(--bad)}
+  .actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:6px 0 20px}
+  button.act{border:none;border-radius:10px;padding:10px 16px;font:inherit;font-weight:700;font-size:.85rem;cursor:pointer}
+  .b-restart{background:#e9ecf3;color:var(--ink)}.b-send{background:var(--good);color:#fff}
+  .done{display:none;background:linear-gradient(135deg,var(--accent),#5b78e6);color:#fff;border-radius:14px;padding:18px;text-align:center;margin-bottom:12px}
+  .done.show{display:block}
+  .done .pct{font-size:2.4rem;font-weight:800;line-height:1}
+  .msg{display:none;text-align:center;font-weight:700;font-size:.85rem;margin:6px 0;padding:8px;border-radius:9px}
+  .msg.ok{display:block;background:var(--good-soft);color:var(--good)}
+  .msg.warn{display:block;background:#fff4e6;color:var(--gold)}
+  @media(max-width:480px){body{padding:8px}}
+</style>
+</head>
+<body>
+<header>
+  <h1>&#129504; English Exercises</h1>
+  <p>Choose a topic and your level. Tap an answer to check it instantly and see why.</p>
+  <a class="back" href="./">&#127979; Portal</a>
+</header>
+<div class="row" id="cats"></div>
+<div class="row" id="levels"></div>
+<div class="wrap">
+  <div class="scorebar"><span>Score: <b id="score">0</b> / <span id="total">0</span></span><span id="streak"></span><span class="best" id="best"></span></div>
+  <div class="done" id="done"></div>
+  <div id="list"></div>
+  <div class="actions">
+    <button class="act b-restart" onclick="restart()">&#8635; New set (shuffle)</button>
+    <button class="act b-send" onclick="sendScore()">&#128231; Send my score to teacher</button>
+  </div>
+  <div class="msg" id="msg"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+<script src="config.js"></script>
+<script>
+var CATS=[["g","Grammar"],["p","Punctuation"],["s","Sentence structure"],["w","Word choice & spelling"]];
+var LEVELS=["A2","B1","B2","C1"];
+var EX={
+g:{
+A2:[
+{q:"She ___ to school every day.",o:["go","goes","going","gone"],a:1,w:"Third person singular adds -s."},
+{q:"Look! It ___ now.",o:["rains","is raining","rain","rained"],a:1,w:"Action happening now → present continuous."},
+{q:"I ___ a sandwich for lunch yesterday.",o:["eat","ate","eaten","eating"],a:1,w:"Past simple of 'eat' is 'ate'."},
+{q:"There is ___ apple on the table.",o:["a","an","the","some"],a:1,w:"Use 'an' before a vowel sound."},
+{q:"My bag is ___ than yours.",o:["big","bigger","biggest","more big"],a:1,w:"Comparative of a short adjective → -er."},
+{q:"___ you like pizza?",o:["Do","Does","Are","Is"],a:0,w:"Present simple question with 'you' uses 'Do'."}],
+B1:[
+{q:"I have ___ finished my homework.",o:["already","yet","since","ago"],a:0,w:"'already' fits affirmative present perfect."},
+{q:"While I ___ TV, the phone rang.",o:["watch","watched","was watching","am watching"],a:2,w:"Past continuous for an interrupted action."},
+{q:"If it rains, we ___ at home.",o:["stay","will stay","stayed","would stay"],a:1,w:"First conditional: will + base verb."},
+{q:"I ___ live in London, but now I live here.",o:["use to","used to","am used to","using to"],a:1,w:"'used to' for past habits."},
+{q:"That's the man ___ helped me.",o:["which","who","whose","where"],a:1,w:"'who' refers to people."},
+{q:"I've lived here ___ 2019.",o:["for","since","ago","from"],a:1,w:"'since' + a point in time."}],
+B2:[
+{q:"By the time we arrived, the film ___.",o:["started","has started","had started","was starting"],a:2,w:"Past perfect for an earlier past action."},
+{q:"If I ___ rich, I would travel the world.",o:["am","was","were","be"],a:2,w:"Second conditional uses 'were'."},
+{q:"The bridge ___ in 1990.",o:["built","was built","has built","is building"],a:1,w:"Passive, past simple."},
+{q:"She said she ___ tired.",o:["is","was","has been","were"],a:1,w:"Reported speech backshifts 'is' → 'was'."},
+{q:"I wish I ___ harder for the exam.",o:["study","studied","had studied","have studied"],a:2,w:"'wish' + past perfect for a past regret."},
+{q:"The report needs ___.",o:["finish","finishing","to finishing","finished"],a:1,w:"'need + -ing' has a passive meaning."}],
+C1:[
+{q:"Hardly ___ when it started to rain.",o:["we had left","had we left","we left","did we leave"],a:1,w:"Inversion after the negative adverb 'hardly'."},
+{q:"___ I known earlier, I would have helped.",o:["If","Had","Should","Were"],a:1,w:"Inverted third conditional: 'Had I known'."},
+{q:"It was the manager ___ made the final decision.",o:["who","which","whom","what"],a:0,w:"Cleft sentence about a person → 'who'."},
+{q:"You ___ have told me; I would have understood.",o:["could","can","must","will"],a:0,w:"'could have' = past possibility / mild criticism."},
+{q:"Were it not ___ your help, we would have failed.",o:["for","to","of","with"],a:0,w:"Fixed structure: 'were it not for'."},
+{q:"No sooner had the bell rung ___ the students left.",o:["than","then","when","that"],a:0,w:"'no sooner ... than'."}]
+},
+p:{
+A2:[
+{q:"Choose the correct sentence.",o:["my name is ana.","My name is Ana.","My name is ana","my Name is Ana."],a:1,w:"Capital first letter, capital name, full stop."},
+{q:"Choose the correct question.",o:["Where do you live?","Where do you live.","where do you live?","Where do you Live?"],a:0,w:"Questions end with '?' and start with a capital."},
+{q:"This is my ___ book. (one boy owns it)",o:["boys","boy's","boys'","boy"],a:1,w:"Singular possessive = apostrophe + s."},
+{q:"Choose the correct list.",o:["I like tea, coffee and juice.","I like tea coffee and juice.","I like tea, coffee and juice","i like tea, coffee and juice."],a:0,w:"Commas separate list items; capital + full stop."},
+{q:"Pick the correct sentence.",o:["It's cold today.","Its cold today.","Its' cold today.","It's cold today"],a:0,w:"It's = it is; end with a full stop."},
+{q:"Choose the correct sentence.",o:["we went to Paris in July.","We went to Paris in July.","We went to paris in july.","We went to Paris in july."],a:1,w:"Capitalize the first word, places and months."}],
+B1:[
+{q:"Choose the correctly punctuated sentence.",o:["After I finished, I went home.","After I finished I went home.","After, I finished I went home.","After I finished; I went home."],a:0,w:"Use a comma after an introductory clause."},
+{q:"Possessive: the toys of several children.",o:["the children's toys","the childrens' toys","the childrens toys","the children toys"],a:0,w:"'children' is already plural → add 's."},
+{q:"Choose the correct sentence.",o:["She said, \"Let's go.\"","She said \"Let's go\".","She said, let's go.","She said: \"lets go.\""],a:0,w:"Comma before the quote; punctuation inside the quotes."},
+{q:"Which is correct?",o:["My brother, who is ten, plays chess.","My brother who is ten, plays chess.","My brother, who is ten plays chess.","My brother who is ten plays chess."],a:0,w:"Non-essential information takes a pair of commas."},
+{q:"Choose the correct word.",o:["Their house is big.","There house is big.","They're house is big.","Theyre house is big."],a:0,w:"'their' shows possession."},
+{q:"Pick the correct sentence.",o:["I have three pets: a cat, a dog and a fish.","I have three pets; a cat, a dog and a fish.","I have three pets, a cat, a dog and a fish.","I have three pets a cat, a dog and a fish."],a:0,w:"A colon introduces a list after a complete clause."}],
+B2:[
+{q:"Choose the correctly punctuated sentence.",o:["It was late; however, we kept working.","It was late, however, we kept working.","It was late however we kept working.","It was late; however we kept working."],a:0,w:"Semicolon before a conjunctive adverb, comma after it."},
+{q:"Which sentence is correct?",o:["The team, which won the cup, celebrated.","The team which won the cup celebrated.","The team, which won the cup celebrated.","The team which won the cup, celebrated."],a:0,w:"A non-defining clause needs commas on both sides."},
+{q:"Choose the correct punctuation.",o:["We visited three cities: Lima, Cusco and Quito.","We visited three cities; Lima, Cusco and Quito.","We visited three cities, Lima, Cusco and Quito.","We visited three cities Lima, Cusco and Quito."],a:0,w:"A colon introduces the list."},
+{q:"Pick the correct sentence. (one sister)",o:["My sister's friends arrived.","My sisters friend's arrived.","My sisters' friends arrived.","My sister's friend's arrived."],a:0,w:"One sister → sister's; 'friends' is plural, not possessive."},
+{q:"Choose the correctly joined sentence.",o:["I was tired, so I went to bed.","I was tired so, I went to bed.","I was tired so I went to bed.","I was tired; so I went to bed."],a:0,w:"Comma before a coordinating conjunction joining two clauses."},
+{q:"Which is correct?",o:["\"Are you coming?\" she asked.","\"Are you coming\"? she asked.","\"Are you coming?\", she asked.","\"are you coming?\" she asked."],a:0,w:"Question mark inside the quotes; no extra comma; capital start."}],
+C1:[
+{q:"Which uses semicolons correctly?",o:["We invited Ana, the manager; Sam, the lead; and Jo.","We invited Ana, the manager, Sam, the lead, and Jo.","We invited Ana; the manager, Sam; the lead, and Jo.","We invited Ana the manager; Sam the lead; and Jo."],a:0,w:"Semicolons separate list items that already contain commas."},
+{q:"Choose the correct sentence.",o:["Its significance, therefore, cannot be overstated.","It's significance, therefore, cannot be overstated.","Its significance therefore cannot be overstated.","Its significance, therefore cannot be overstated."],a:0,w:"'Its' = possessive; commas around 'therefore'."},
+{q:"Pick the correctly punctuated sentence.",o:["He gave one reason: the cost was too high.","He gave one reason; the cost was too high.","He gave one reason, the cost was too high.","He gave one reason the cost was too high."],a:0,w:"A colon introduces an explanation after a complete clause."},
+{q:"Which is correct?",o:["The 1990s were a decade of change.","The 1990's were a decade of change.","The 1990s' were a decade of change.","The 1990`s were a decade of change."],a:0,w:"Decades take no apostrophe: 1990s."},
+{q:"Choose the best sentence.",o:["Although difficult, the task was, in the end, rewarding.","Although difficult the task was in the end rewarding.","Although difficult, the task was in the end, rewarding.","Although, difficult, the task was in the end rewarding."],a:0,w:"Comma after the intro; a pair of commas around 'in the end'."},
+{q:"Which is correctly punctuated?",o:["The results, surprising as they were, changed everything.","The results surprising as they were changed everything.","The results, surprising as they were changed everything.","The results surprising, as they were, changed everything."],a:0,w:"A parenthetical phrase is set off by a pair of commas."}]
+},
+s:{
+A2:[
+{q:"Choose the complete sentence.",o:["Because I was tired.","I was tired.","When the bus.","Running fast."],a:1,w:"A sentence needs a subject, a verb and a complete idea."},
+{q:"I was hungry, ___ I ate.",o:["so","but","or","because"],a:0,w:"'so' shows a result."},
+{q:"Choose the correct word order.",o:["She plays often tennis.","She often plays tennis.","Often plays she tennis.","Plays she often tennis."],a:1,w:"Adverbs of frequency go before the main verb."},
+{q:"Pick the complete sentence.",o:["My friend and I.","We went to the park.","To the park yesterday.","Very happy today."],a:1,w:"It needs a subject + verb."},
+{q:"Join: I like tea. I like coffee.",o:["I like tea and coffee.","I like tea but coffee.","I like tea so coffee.","I like tea, coffee but."],a:0,w:"'and' adds similar ideas."},
+{q:"Which is a question?",o:["You are ready.","Are you ready?","Ready you are.","You ready are?"],a:1,w:"Questions invert the verb and the subject."}],
+B1:[
+{q:"Which is a run-on sentence (incorrect)?",o:["I woke up, and I had breakfast.","I woke up I had breakfast.","I woke up. I had breakfast.","After I woke up, I had breakfast."],a:1,w:"Two clauses with no punctuation or conjunction = run-on."},
+{q:"___ it was raining, we went out.",o:["Although","Because","So","Therefore"],a:0,w:"'Although' shows contrast."},
+{q:"Which option is a complete sentence?",o:["When the film ended.","The film ended.","Because of the film.","Such a long film."],a:1,w:"A fragment lacks a main clause; 'The film ended.' is complete."},
+{q:"Choose the best combined sentence.",o:["I studied hard, so I passed.","I studied hard so, I passed.","I studied hard, I passed.","I studied hard passed."],a:0,w:"Comma + 'so' correctly joins the clauses."},
+{q:"Which sentence is correct?",o:["Neither the teacher nor the students were ready.","Neither the teacher nor the students was ready.","Neither the teacher or the students were ready.","Neither the teacher nor the students is ready."],a:0,w:"With 'nor', the verb agrees with the nearer subject (students → were)."},
+{q:"Pick the correct adjective order.",o:["a beautiful old wooden table","a wooden old beautiful table","an old beautiful wooden table","a wooden beautiful old table"],a:0,w:"Adjective order: opinion – age – material."}],
+B2:[
+{q:"Which corrects the comma splice 'It was late, we left.'?",o:["It was late, so we left.","It was late we left.","It was late, then we left.","It was late we, left."],a:0,w:"A comma alone cannot join two clauses; add a conjunction."},
+{q:"Choose the parallel sentence.",o:["She likes reading, writing and to paint.","She likes reading, writing and painting.","She likes to read, writing and painting.","She likes read, write and paint."],a:1,w:"Keep items in the same form (parallelism)."},
+{q:"Pick the correct sentence.",o:["Walking home, the rain started.","Walking home, I got caught in the rain.","Walking home the rain started on me.","While walking home, the rain it started."],a:1,w:"The subject after the -ing phrase must do the action (no dangling modifier)."},
+{q:"The plan failed; ___, we learned a lot.",o:["nevertheless","because","so that","in order to"],a:0,w:"'nevertheless' shows contrast after a semicolon."},
+{q:"Choose the correct sentence.",o:["Not only did she sing, but she also danced.","Not only she sang, but also danced.","Not only she did sing, but danced.","Not only sang she, but danced too."],a:0,w:"Inversion after 'Not only' at the start of a sentence."},
+{q:"Which avoids the run-on?",o:["The test was hard; however, I finished it.","The test was hard however I finished it.","The test was hard, however I finished it.","The test was hard however, I finished it."],a:0,w:"Semicolon before 'however', comma after it."}],
+C1:[
+{q:"Choose the most concise version.",o:["Due to the fact that it rained, we stayed in.","Because it rained, we stayed in.","On account of the fact of rain, we stayed in.","Owing to the reason that it rained, we stayed in."],a:1,w:"Prefer concise wording: 'Because'."},
+{q:"Which is parallel and correct?",o:["The role requires creativity, patience and being organised.","The role requires creativity, patience and organisation.","The role requires to create, patience and organisation.","The role requires creativity, patient and organised."],a:1,w:"Three nouns keep parallel structure."},
+{q:"Pick the sentence with correct subordination.",o:["Having finished the report, she submitted it.","Having finished the report, it was submitted.","Finishing the report, the submission happened.","Having finished the report, submission occurred."],a:0,w:"The doer (she) must follow the participle phrase."},
+{q:"Choose the best cohesive sentence.",o:["The data were inconclusive; consequently, further study is needed.","The data were inconclusive, consequently further study is needed.","The data was inconclusive consequently further study needed.","The data were inconclusive; consequently further study, is needed."],a:0,w:"Semicolon + 'consequently,' links cause and effect."},
+{q:"Which is grammatically correct?",o:["Rarely have I encountered such a problem.","Rarely I have encountered such a problem.","Rarely I encountered such problem.","Rarely encountered I such a problem."],a:0,w:"A negative adverb at the front triggers inversion."},
+{q:"Choose the clearest sentence.",o:["The committee, after much debate, approved the plan.","After much debate the committee they approved the plan.","The committee approved, after much debate the plan.","After much debate, approved the committee the plan."],a:0,w:"Parenthetical phrase set off by commas; clear subject–verb."}]
+},
+w:{
+A2:[
+{q:"___ going to the park. (they are)",o:["Their","There","They're","Theyre"],a:2,w:"They're = they are."},
+{q:"I have ___ apples.",o:["much","many","a little","any"],a:1,w:"'many' with countable plural nouns."},
+{q:"Choose the correct spelling.",o:["freind","friend","frend","friynd"],a:1,w:"i before e: friend."},
+{q:"She is taller ___ me.",o:["then","than","that","as"],a:1,w:"'than' is used for comparisons."},
+{q:"Choose the correct spelling.",o:["becouse","becuase","because","becose"],a:2,w:"because."},
+{q:"I want ___ water, please.",o:["some","any","many","a"],a:0,w:"'some' in affirmative requests with uncountable nouns."}],
+B1:[
+{q:"The film had a big ___ on me.",o:["affect","effect","afect","efect"],a:1,w:"'effect' is the noun."},
+{q:"We should ___ the invitation.",o:["accept","except","acept","exept"],a:0,w:"'accept' = to agree to / receive."},
+{q:"Choose the correct spelling.",o:["definately","definitly","definitely","definetely"],a:2,w:"definitely."},
+{q:"He gave me good ___.",o:["advice","advise","advice's","advices"],a:0,w:"'advice' is an uncountable noun."},
+{q:"Choose the correct spelling.",o:["enviroment","environment","enviornment","environmant"],a:1,w:"environment."},
+{q:"I'm not used to ___ early.",o:["get up","getting up","got up","gets up"],a:1,w:"'used to + -ing' = accustomed to."}],
+B2:[
+{q:"The new law will ___ everyone.",o:["affect","effect","affekt","efect"],a:0,w:"'affect' is the verb."},
+{q:"He ___ a decision quickly.",o:["made","did","took","gave"],a:0,w:"Collocation: 'make a decision'."},
+{q:"Choose the correct meaning. The ___ reason was money. (main)",o:["principal","principle","principel","principale"],a:0,w:"'principal' = main; 'principle' = a rule."},
+{q:"Choose the correct spelling.",o:["recieve","receive","receeve","receve"],a:1,w:"i before e except after c: receive."},
+{q:"We need to ___ research before deciding.",o:["do","make","take","have"],a:0,w:"Collocation: 'do research'."},
+{q:"They live in a quiet, ___ area.",o:["peaceful","peacefull","peacefuly","peceful"],a:0,w:"peaceful."}],
+C1:[
+{q:"The findings are ___ with previous studies.",o:["consistent","persistent","resistant","insistent"],a:0,w:"'consistent with' = in agreement with."},
+{q:"The evidence is ___ (very convincing).",o:["compelling","compulsory","complimentary","comprehensive"],a:0,w:"'compelling' = convincing."},
+{q:"Her comment had little ___ on the result. (relevance)",o:["bearing","baring","barring","bearings"],a:0,w:"'bearing on' = relevance / influence."},
+{q:"Choose the correct spelling.",o:["accommodate","acommodate","accomodate","acomodate"],a:0,w:"accommodate: double c, double m."},
+{q:"The policy was finally ___ (put into effect).",o:["implemented","implicated","complemented","compromised"],a:0,w:"'implemented' = put into effect."},
+{q:"Write a ___ (brief) summary.",o:["concise","consice","concice","consise"],a:0,w:"concise."}]
+}
+};
+
+var cat="g", level="A2";
+function key(){ return "nis_ex_best_"+cat+"_"+level; }
+function buildBars(){
+  var c=document.getElementById('cats'); c.innerHTML='';
+  CATS.forEach(function(t){ var b=document.createElement('button'); b.className='cat'+(t[0]===cat?' on':''); b.textContent=t[1]; b.onclick=function(){cat=t[0];render();}; c.appendChild(b); });
+  var l=document.getElementById('levels'); l.innerHTML='';
+  LEVELS.forEach(function(lv){ var b=document.createElement('button'); b.className='lv'+(lv===level?' on':''); b.textContent=lv; b.onclick=function(){level=lv;render();}; l.appendChild(b); });
+}
+var items=[], answered=0, score=0;
+function shuffle(arr){ for(var i=arr.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=arr[i];arr[i]=arr[j];arr[j]=t; } return arr; }
+function render(){
+  buildBars();
+  items=shuffle((EX[cat][level]||[]).slice());
+  answered=0; score=0;
+  document.getElementById('total').textContent=items.length;
+  document.getElementById('score').textContent=0;
+  document.getElementById('streak').textContent='';
+  document.getElementById('done').className='done';
+  var best=localStorage.getItem(key());
+  document.getElementById('best').textContent=best?('Best: '+best+'%'):'';
+  var L=document.getElementById('list'); L.innerHTML='';
+  items.forEach(function(it,i){
+    var d=document.createElement('div'); d.className='q';
+    var opts=it.o.map(function(o,oi){ return '<button class="opt" data-i="'+i+'" data-o="'+oi+'">'+o+'</button>'; }).join('');
+    d.innerHTML='<div class="num">Question '+(i+1)+' / '+items.length+'</div><div class="qt">'+it.q+'</div>'+opts+'<div class="why" id="why'+i+'"></div>';
+    L.appendChild(d);
+  });
+  var btns=L.querySelectorAll('.opt');
+  for(var k=0;k<btns.length;k++){ btns[k].addEventListener('click',onAnswer); }
+}
+function onAnswer(e){
+  var b=e.target, i=+b.getAttribute('data-i'), oi=+b.getAttribute('data-o');
+  var it=items[i];
+  var parent=b.parentNode;
+  if(parent.getAttribute('data-done'))return;
+  parent.setAttribute('data-done','1');
+  var opts=parent.querySelectorAll('.opt');
+  for(var k=0;k<opts.length;k++){ opts[k].disabled=true; if(+opts[k].getAttribute('data-o')===it.a) opts[k].classList.add('correct'); }
+  var why=document.getElementById('why'+i);
+  if(oi===it.a){ score++; why.className='why show'; why.innerHTML='✅ Correct. '+it.w; }
+  else { b.classList.add('wrong'); why.className='why show bad'; why.innerHTML='❌ Not quite. '+it.w; }
+  answered++;
+  document.getElementById('score').textContent=score;
+  if(answered===items.length) finish();
+}
+function finish(){
+  var pct=Math.round(score/items.length*100);
+  var best=+(localStorage.getItem(key())||0);
+  if(pct>best){ localStorage.setItem(key(),pct); document.getElementById('best').textContent='Best: '+pct+'%'; }
+  var d=document.getElementById('done');
+  var emoji=pct>=80?'\u{1F389}':pct>=60?'\u{1F44D}':'\u{1F4AA}';
+  var note=pct>=80?'Excellent!':pct>=60?'Good job!':'Keep practising!';
+  d.innerHTML='<div class="pct">'+pct+'%</div><div>'+emoji+' '+note+' You got '+score+' / '+items.length+'.</div>';
+  d.className='done show';
+}
+function restart(){ document.getElementById('msg').className='msg'; render(); window.scrollTo({top:0,behavior:'smooth'}); }
+function msg(t,c){ var m=document.getElementById('msg'); m.textContent=t; m.className='msg '+c; setTimeout(function(){m.className='msg';},4000); }
+function sendScore(){
+  if(answered<items.length){ msg('Finish the set first, then send your score.','warn'); return; }
+  var pct=Math.round(score/items.length*100);
+  var catName=(CATS.filter(function(x){return x[0]===cat;})[0]||['',''])[1];
+  var done=function(name,email){
+    if(!email){ msg('Log in to the portal first to send your score.','warn'); return; }
+    try{ fetch(NIS_CONFIG.WRITING_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body:JSON.stringify({skill:'Exercise',name:name,email:email,level:level,examTitle:'Exercises - '+catName,examType:'exercises',score:score,total:items.length,percent:pct})});
+      msg('Sent to your teacher and your email!','ok'); }catch(e){ msg('Could not send right now.','warn'); }
+  };
+  try{ if(window.supabase&&window.NIS_CONFIG){ var sb=window.supabase.createClient(NIS_CONFIG.SUPABASE_URL,NIS_CONFIG.SUPABASE_KEY);
+    sb.auth.getUser().then(function(u){ if(u&&u.data&&u.data.user){ sb.from('profiles').select('full_name,email').eq('id',u.data.user.id).maybeSingle().then(function(p){
+      var name=(p&&p.data&&p.data.full_name)||''; var email=u.data.user.email||(p&&p.data&&p.data.email)||''; done(name,email); }); } else { done('',''); } }, function(){ done('',''); }); }
+    else { done('',''); } }catch(e){ done('',''); }
+}
+render();
+</script>
+</body>
+</html>
