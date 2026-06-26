@@ -1626,6 +1626,9 @@ async function renderStudent(initial){
     return studentHub();
   });
   state.access = await loadStudentAccess();   // Fase 2: visibilidad por nodo
+  // Anti-trampa en todo el portal: mismo criterio que las actividades, pero
+  // solo para alumnos logueados (docentes/admin quedan exentos en el motor).
+  try{ if(window.NISAntiCheat) NISAntiCheat.init({activity:'portal', label:'Portal NIS', requireStudent:true}); }catch(_){}
   if(initial==='results') studentResults(); else studentHub();
 }
 function _setNav(k){ document.querySelectorAll('[data-nav]').forEach(e=>e.classList.toggle('active',e.dataset.nav===k)); }
