@@ -2104,6 +2104,13 @@ const FINAL_CEFR_OVERRIDE = {
   // Salvador Arata Morales (G9 · B) — accessibility: all skills pinned to A2.
   '25555d21-e999-4b76-a5eb-827937b0d8a9': { Reading:'A2', Listening:'A2', Writing:'A2', Speaking:'A2' },
 };
+/* Per-student FINAL RESULT override (teacher judgement) — pins the overall result
+   and clamps the scale into that band, so portal == PDF report. */
+const FINAL_RESULT_OVERRIDE = {
+  'fdbd2138-32e3-44cb-93db-9ff74a2e7a80': 'C1', // David André Novoa Davis (G9·B)
+  'a53a5fce-5381-417a-910c-26d8888fbeac': 'A1', // Rafaella Vargas (G9·B)
+  'fdc5fd6f-cca7-44ee-b304-e6441b7e8b8d': 'A2', // Mikel Paolo Olcese Reategui (G9·A)
+};
 function _applyCefrOverride(profile, skill, b){
   if(!b) return b;
   const ov = FINAL_CEFR_OVERRIDE[profile && profile.id];
@@ -2151,8 +2158,15 @@ function _finalFromData(profile, atts, spk){
     const ceil = lows>=2 ? 159 : (lows>=1 ? 179 : null);
     if(ceil!=null && finalScale>ceil) finalScale = ceil;
   }
+  let finalCefr = scaleToCefr(finalScale);
+  const _fro = FINAL_RESULT_OVERRIDE[profile && profile.id];
+  if(_fro && finalScale!=null){
+    const _b = CEFR_BANDS.find(x=>x.cefr===_fro);
+    if(_b){ const _top = CEFR_BANDS.filter(x=>x.min>_b.min).reduce((m,x)=>Math.min(m,x.min),230)-1;
+      finalScale = Math.max(_b.min, Math.min(_top, finalScale)); finalCefr=_fro; }
+  }
   const labels = { Reading:'Reading & Use of English', Listening:'Listening', Writing:'Writing', Speaking:'Speaking' };
-  return { profile, skills, isA2, a2NoWriting, finalScale, finalCefr:scaleToCefr(finalScale),
+  return { profile, skills, isA2, a2NoWriting, finalScale, finalCefr,
            complete: requiredKeys.every(k=>skills[k]), missing: requiredKeys.filter(k=>!skills[k]).map(k=>labels[k]) };
 }
 function _skillCellHtml(b){
