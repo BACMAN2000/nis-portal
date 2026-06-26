@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Memory Game · NIS English</title>
+<style>
+  :root{--bg:#eef1f9;--card:#fff;--ink:#1e2433;--muted:#67718a;--accent:#3b5bdb;--accent-d:#2d4ac0;
+    --soft:#e7ecfd;--good:#2f9e44;--good-soft:#d3f4dc;--gold:#f59f00;--pink:#e64980;--line:#e2e8f0;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{-webkit-touch-callout:none;user-select:none;-webkit-user-select:none;font-family:'Segoe UI',system-ui,Arial,sans-serif;background:var(--bg);color:var(--ink);padding:14px}
+  header{max-width:820px;margin:0 auto 6px;text-align:center}
+  header h1{font-size:1.35rem}
+  header p{color:var(--muted);font-size:.85rem;margin-top:3px}
+  a.back{display:inline-block;margin-top:8px;text-decoration:none;background:#2d5a8d;color:#fff;font-weight:700;font-size:.8rem;padding:7px 13px;border-radius:9px}
+  .row{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin:9px auto;max-width:820px}
+  .lv{border:2px solid transparent;background:var(--card);color:var(--ink);padding:7px 15px;border-radius:20px;font-weight:800;font-size:.85rem;cursor:pointer;box-shadow:0 1px 3px rgba(20,30,60,.12)}
+  .lv.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .pz{border:1px solid #d7def0;background:var(--card);color:var(--ink);padding:6px 12px;border-radius:14px;font-weight:700;font-size:.8rem;cursor:pointer}
+  .pz.on{background:var(--soft);border-color:var(--accent);color:var(--accent)}
+  .pz.done::after{content:" ✓";color:var(--good)}
+  .bar{max-width:560px;margin:8px auto;background:var(--card);border-radius:12px;padding:10px 14px;box-shadow:0 2px 10px rgba(20,30,60,.08);display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap;font-weight:800;font-size:.9rem}
+  .bar .watch{color:var(--accent);font-variant-numeric:tabular-nums}
+  .bar .moves{color:var(--gold)}
+  .bar .pairs{color:var(--good)}
+  .grid{max-width:560px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  .cell{aspect-ratio:1/1;perspective:600px;cursor:pointer}
+  .inner{position:relative;width:100%;height:100%;transition:transform .35s;transform-style:preserve-3d}
+  .cell.flip .inner,.cell.matched .inner{transform:rotateY(180deg)}
+  .face{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;display:flex;align-items:center;justify-content:center;text-align:center;padding:4px;box-shadow:0 2px 8px rgba(20,30,60,.12)}
+  .back{background:linear-gradient(135deg,#3b5bdb,#8a5cf6,#e64980);color:#fff;font-size:1.7rem;font-weight:800}
+  .front{background:#fff;transform:rotateY(180deg);border:2px solid var(--soft)}
+  .front .emoji{font-size:2.2rem;line-height:1}
+  .front .word{font-size:.8rem;font-weight:800;color:var(--accent-d);text-transform:uppercase;letter-spacing:.5px;word-break:break-word}
+  .cell.matched .front{background:var(--good-soft);border-color:var(--good)}
+  .cell.matched{animation:pop .3s}
+  @keyframes pop{50%{transform:scale(1.06)}}
+  .btns{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:14px auto}
+  button.act{border:none;border-radius:10px;padding:10px 16px;font:inherit;font-weight:700;font-size:.85rem;cursor:pointer}
+  .b-restart{background:#e9ecf3;color:var(--ink)}.b-send{background:var(--good);color:#fff}
+  .banner{display:none;max-width:560px;margin:10px auto;padding:14px;border-radius:12px;background:linear-gradient(135deg,var(--good),#37b24d);color:#fff;font-weight:800;text-align:center}
+  .banner.show{display:block;animation:pop .4s}
+  .msg{display:none;max-width:560px;margin:6px auto;text-align:center;font-weight:700;font-size:.84rem;padding:8px;border-radius:9px}
+  .msg.ok{display:block;background:var(--good-soft);color:var(--good)}
+  .msg.warn{display:block;background:#fff4e6;color:var(--gold)}
+  @media(max-width:480px){body{padding:8px}.grid{gap:6px}.front .emoji{font-size:1.7rem}.front .word{font-size:.62rem}}
+</style>
+</head>
+<body>
+<header>
+  <h1>&#129504; Memory Game</h1>
+  <p>Flip two cards and match the picture with its word. Train your vocabulary memory!</p>
+  <a class="back" href="./">&#127979; Portal</a>
+</header>
+<div class="row" id="levels"></div>
+<div class="row" id="games"></div>
+<div class="bar"><span class="watch" id="watch">&#9201; 00:00</span><span class="moves" id="moves">Moves: 0</span><span class="pairs" id="pairs">Pairs: 0/8</span></div>
+<div class="banner" id="banner"></div>
+<div class="grid" id="grid"></div>
+<div class="btns">
+  <button class="act b-restart" onclick="load()">&#8635; Shuffle / Restart</button>
+  <button class="act b-send" onclick="sendScore()">&#128231; Send result to teacher</button>
+</div>
+<div class="msg" id="msg"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+<script src="config.js"></script>
+<script>
+var LEVELS=["A1","A2","B1","B2","C1"];
+var DATA={
+A1:[
+[["🐶","DOG"],["🐱","CAT"],["🐭","MOUSE"],["🐰","RABBIT"],["🐦","BIRD"],["🐟","FISH"],["🐝","BEE"],["🐴","HORSE"]],
+[["🍎","APPLE"],["🍌","BANANA"],["🍞","BREAD"],["🧀","CHEESE"],["🥛","MILK"],["🍰","CAKE"],["🍕","PIZZA"],["🥚","EGG"]],
+[["🏠","HOUSE"],["🚪","DOOR"],["🪑","CHAIR"],["🛏️","BED"],["🪟","WINDOW"],["📖","BOOK"],["🕐","CLOCK"],["💡","LAMP"]],
+[["☀️","SUN"],["🌙","MOON"],["⭐","STAR"],["🌳","TREE"],["🌸","FLOWER"],["🌧️","RAIN"],["❄️","SNOW"],["🔥","FIRE"]],
+[["✋","HAND"],["👁️","EYE"],["👂","EAR"],["👃","NOSE"],["⚽","BALL"],["🚗","CAR"],["🚲","BIKE"],["🎈","BALLOON"]]
+],
+A2:[
+[["👨‍⚕️","DOCTOR"],["👮","POLICE"],["👩‍🏫","TEACHER"],["👨‍🍳","COOK"],["👩‍🌾","FARMER"],["🧑‍🚒","FIREFIGHTER"],["👨‍✈️","PILOT"],["🎤","SINGER"]],
+[["🏫","SCHOOL"],["🏥","HOSPITAL"],["🏖️","BEACH"],["🏞️","PARK"],["🏪","SHOP"],["🏦","BANK"],["🍴","RESTAURANT"],["🚉","STATION"]],
+[["🚌","BUS"],["🚂","TRAIN"],["✈️","PLANE"],["🚢","SHIP"],["🚕","TAXI"],["🚁","HELICOPTER"],["🛵","SCOOTER"],["🚓","POLICE CAR"]],
+[["🍊","ORANGE"],["🍇","GRAPES"],["🍓","STRAWBERRY"],["🥕","CARROT"],["🥔","POTATO"],["🍅","TOMATO"],["🌽","CORN"],["🧅","ONION"]],
+[["🌤️","SUNNY"],["🌧️","RAINY"],["🌩️","STORMY"],["☁️","CLOUDY"],["🌈","RAINBOW"],["🌡️","TEMPERATURE"],["🗓️","CALENDAR"],["⌚","WATCH"]]
+],
+B1:[
+[["⚽","FOOTBALL"],["🏀","BASKETBALL"],["🎾","TENNIS"],["🏊","SWIMMING"],["🚴","CYCLING"],["🏃","RUNNING"],["🥊","BOXING"],["⛷️","SKIING"]],
+[["💻","COMPUTER"],["📱","PHONE"],["⌨️","KEYBOARD"],["🖱️","MOUSE"],["🎮","GAME"],["📷","CAMERA"],["🔋","BATTERY"],["📶","SIGNAL"]],
+[["🧳","LUGGAGE"],["🛂","PASSPORT"],["🎟️","TICKET"],["🗺️","MAP"],["🏨","HOTEL"],["🏝️","ISLAND"],["🏔️","MOUNTAIN"],["🧭","COMPASS"]],
+[["🦁","LION"],["🐘","ELEPHANT"],["🐧","PENGUIN"],["🐢","TURTLE"],["🦋","BUTTERFLY"],["🌍","EARTH"],["🌋","VOLCANO"],["🏜️","DESERT"]],
+[["😀","HAPPY"],["😢","SAD"],["😡","ANGRY"],["😴","TIRED"],["🤒","SICK"],["💪","STRONG"],["🧠","BRAIN"],["❤️","LOVE"]]
+],
+B2:[
+[["🌍","PLANET"],["♻️","RECYCLE"],["🌱","PLANT"],["💧","WATER"],["🔋","ENERGY"],["🌬️","WIND"],["🛢️","OIL"],["🗑️","WASTE"]],
+[["💼","BRIEFCASE"],["📈","GROWTH"],["📉","DECLINE"],["🏢","OFFICE"],["🤝","DEAL"],["💰","MONEY"],["🧾","INVOICE"],["📊","CHART"]],
+[["🩺","STETHOSCOPE"],["💊","MEDICINE"],["🏥","HOSPITAL"],["🦷","TOOTH"],["🦴","BONE"],["🧬","DNA"],["🩹","BANDAGE"],["🧘","RELAX"]],
+[["🔬","MICROSCOPE"],["🧪","EXPERIMENT"],["🎓","GRADUATE"],["📚","LIBRARY"],["🔭","TELESCOPE"],["🧲","MAGNET"],["⚗️","CHEMISTRY"],["📐","GEOMETRY"]],
+[["🏛️","GOVERNMENT"],["⚖️","JUSTICE"],["🗳️","VOTE"],["🌐","INTERNET"],["🕊️","PEACE"],["🤝","COOPERATION"],["🏳️","FLAG"],["👥","COMMUNITY"]]
+],
+C1:[
+[["💡","IDEA"],["🧠","INTELLECT"],["🤔","THINKING"],["🎯","GOAL"],["🔑","SOLUTION"],["⚖️","BALANCE"],["🧩","STRATEGY"],["🔍","ANALYSIS"]],
+[["❤️","COMPASSION"],["🕊️","FREEDOM"],["🛡️","PROTECTION"],["🤝","TRUST"],["🏆","ACHIEVEMENT"],["🌟","AMBITION"],["🧭","GUIDANCE"],["⏳","PATIENCE"]],
+[["🌍","GLOBALISATION"],["🌡️","CLIMATE"],["🏭","INDUSTRY"],["💵","ECONOMY"],["🧑‍🤝‍🧑","SOCIETY"],["📉","INEQUALITY"],["🌾","AGRICULTURE"],["🚸","MIGRATION"]],
+[["🤖","ROBOT"],["🛰️","SATELLITE"],["🔐","ENCRYPTION"],["📡","NETWORK"],["💾","DATA"],["⚙️","AUTOMATION"],["🧬","BIOTECH"],["🖥️","HARDWARE"]],
+[["📜","HERITAGE"],["🏛️","INSTITUTION"],["🔭","DISCOVERY"],["🎭","CULTURE"],["🗣️","RHETORIC"],["✍️","AUTHORSHIP"],["📖","KNOWLEDGE"],["🧱","STRUCTURE"]]
+]
+};
+var level="A1", game=0;
+var first=null, lock=false, moves=0, matched=0, total=8, elapsed=0, timer=null, started=false;
+var done={};
+function fmt(s){return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');}
+function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function buildBars(){
+  var L=document.getElementById('levels');L.innerHTML='';
+  LEVELS.forEach(function(lv){var b=document.createElement('button');b.className='lv'+(lv===level?' on':'');b.textContent=lv;b.onclick=function(){level=lv;game=0;load();};L.appendChild(b);});
+  var G=document.getElementById('games');G.innerHTML='';
+  DATA[level].forEach(function(_,i){var b=document.createElement('button');b.className='pz'+(i===game?' on':'')+(done[level+'_'+i]?' done':'');b.textContent='Memory '+(i+1);b.onclick=function(){game=i;load();};G.appendChild(b);});
+}
+function startWatch(){clearInterval(timer);elapsed=0;started=false;document.getElementById('watch').innerHTML='&#9201; 00:00';}
+function tick(){if(!started){started=true;timer=setInterval(function(){elapsed++;document.getElementById('watch').innerHTML='&#9201; '+fmt(elapsed);},1000);}}
+function load(){
+  buildBars();
+  var pairs=DATA[level][game]; total=pairs.length;
+  first=null;lock=false;moves=0;matched=0;
+  document.getElementById('moves').textContent='Moves: 0';
+  document.getElementById('pairs').textContent='Pairs: 0/'+total;
+  document.getElementById('banner').className='banner';
+  document.getElementById('msg').className='msg';
+  startWatch();
+  var cards=[];
+  pairs.forEach(function(p,idx){cards.push({type:'e',v:p[0],id:idx});cards.push({type:'w',v:p[1],id:idx});});
+  shuffle(cards);
+  var g=document.getElementById('grid');
+  var cols=Math.ceil(Math.sqrt(cards.length)); g.style.gridTemplateColumns='repeat('+cols+',1fr)';
+  g.innerHTML='';
+  cards.forEach(function(c){
+    var d=document.createElement('div');d.className='cell';d.setAttribute('data-id',c.id);d.setAttribute('data-type',c.type);
+    var face=c.type==='e'?('<div class="emoji">'+c.v+'</div>'):('<div class="word">'+c.v+'</div>');
+    d.innerHTML='<div class="inner"><div class="face back">?</div><div class="face front">'+face+'</div></div>';
+    d.addEventListener('click',function(){flip(d);});
+    g.appendChild(d);
+  });
+}
+function flip(d){
+  if(lock||d.classList.contains('flip')||d.classList.contains('matched'))return;
+  tick();
+  d.classList.add('flip');
+  if(!first){first=d;return;}
+  moves++;document.getElementById('moves').textContent='Moves: '+moves;
+  var a=first,b=d;
+  if(a.getAttribute('data-id')===b.getAttribute('data-id') && a.getAttribute('data-type')!==b.getAttribute('data-type')){
+    a.classList.add('matched');b.classList.add('matched');first=null;matched++;
+    document.getElementById('pairs').textContent='Pairs: '+matched+'/'+total;
+    if(matched===total)finish();
+  } else {
+    lock=true;
+    setTimeout(function(){a.classList.remove('flip');b.classList.remove('flip');first=null;lock=false;},800);
+  }
+}
+function finish(){
+  clearInterval(timer);
+  done[level+'_'+game]=true;buildBars();
+  var bk='nis_mem_best_'+level+'_'+game;
+  var prev=localStorage.getItem(bk);
+  var rec=moves+'|'+elapsed;
+  var bestTxt='';
+  if(!prev || moves<(+prev.split('|')[0])){localStorage.setItem(bk,rec);bestTxt=' New best!';}
+  var b=document.getElementById('banner');
+  b.innerHTML='🎉 Well done! You matched all '+total+' pairs in '+fmt(elapsed)+' with '+moves+' moves.'+bestTxt;
+  b.className='banner show';
+}
+function msg(t,c){var m=document.getElementById('msg');m.textContent=t;m.className='msg '+c;setTimeout(function(){m.className='msg';},4000);}
+function sendScore(){
+  if(matched<total){msg('Finish the game first, then send your result.','warn');return;}
+  var done2=function(name,email){
+    if(!email){msg('Log in to the portal first to send your result.','warn');return;}
+    try{fetch(NIS_CONFIG.WRITING_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body:JSON.stringify({skill:'Memory',name:name,email:email,level:level,examTitle:'Memory '+(game+1)+' - '+total+' pairs - '+fmt(elapsed)+' - '+moves+' moves',examType:'memory',score:total,total:total})});
+      msg('Sent to your teacher and your email!','ok');}catch(e){msg('Could not send right now.','warn');}
+  };
+  try{if(window.supabase&&window.NIS_CONFIG){var sb=window.supabase.createClient(NIS_CONFIG.SUPABASE_URL,NIS_CONFIG.SUPABASE_KEY);
+    sb.auth.getUser().then(function(u){if(u&&u.data&&u.data.user){sb.from('profiles').select('full_name,email').eq('id',u.data.user.id).maybeSingle().then(function(p){
+      var name=(p&&p.data&&p.data.full_name)||'';var email=u.data.user.email||(p&&p.data&&p.data.email)||'';done2(name,email);});}else{done2('','');}},function(){done2('','');});}
+    else{done2('','');}}catch(e){done2('','');}
+}
+load();
+</script>
+</body>
+</html>
