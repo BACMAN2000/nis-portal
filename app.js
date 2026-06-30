@@ -2464,18 +2464,18 @@ function _reportInner(p, at, sp, fin, EN, opts){
   const wAttAny=(at||[]).some(a=>a.skill==='Writing');
   const cs='padding:6px 8px;border:1px solid #e2e8f0;text-align:center;font-size:12px';
   const th='padding:7px 8px;border:1px solid #e2e8f0;font-size:12px;color:#fff';
-  const skHead='<tr style="background:#4987c6"><th style="'+th+';text-align:left">'+T.hSkill+'</th><th style="'+th+'">'+T.hLevel+'</th><th style="'+th+'">'+T.hScore+'</th><th style="'+th+'">'+T.hPct+'</th><th style="'+th+'">'+T.hScale+'</th><th style="'+th+';width:120px">'+T.hProg+'</th><th style="'+th+'">'+T.hStatus+'</th></tr>';
+  const skHead='<tr style="background:#4987c6"><th style="'+th+';text-align:left">'+T.hSkill+'</th><th style="'+th+'">'+T.hLevel+'</th><th style="'+th+'">CEFR</th><th style="'+th+'">'+T.hScore+'</th><th style="'+th+'">'+T.hPct+'</th><th style="'+th+'">'+T.hScale+'</th><th style="'+th+';width:120px">'+T.hProg+'</th><th style="'+th+'">'+T.hStatus+'</th></tr>';
   const skRow=(label,b,att,opt)=>{
     if(!b){ const m=(opt&&opt.pending)?T.pending:(opt&&opt.oral)?T.oral:T.notTaken;
       const est=(opt&&opt.oral)?T.notHere:(opt&&opt.pending)?T.pending:'-';
-      return '<tr><td style="'+cs+';text-align:left">'+label+'</td><td style="'+cs+'">-</td><td style="'+cs+';color:#6b7280">'+m+'</td><td style="'+cs+'">-</td><td style="'+cs+'">-</td><td style="'+cs+'">'+bar(null)+'</td><td style="'+cs+';color:#6b7280">'+est+'</td></tr>'; }
+      return '<tr><td style="'+cs+';text-align:left">'+label+'</td><td style="'+cs+'">-</td><td style="'+cs+'">-</td><td style="'+cs+';color:#6b7280">'+m+'</td><td style="'+cs+'">-</td><td style="'+cs+'">-</td><td style="'+cs+'">'+bar(null)+'</td><td style="'+cs+';color:#6b7280">'+est+'</td></tr>'; }
     const t=tier(b.pct), sc=att?(att.score+'/'+att.total):'—';
-    return '<tr><td style="'+cs+';text-align:left">'+label+'</td><td style="'+cs+'">'+b.level+'</td><td style="'+cs+'">'+sc+'</td><td style="'+cs+'"><b>'+b.pct+'%</b></td><td style="'+cs+'"><b>'+b.scale+'</b></td><td style="'+cs+'">'+bar(b.pct)+'</td><td style="'+cs+';color:'+t[1]+';font-weight:700">'+t[0]+'</td></tr>';
+    return '<tr><td style="'+cs+';text-align:left">'+label+'</td><td style="'+cs+'">'+b.level+'</td><td style="'+cs+';color:#2d5a8d;font-weight:800">'+esc(b.cefr)+'</td><td style="'+cs+'">'+sc+'</td><td style="'+cs+'"><b>'+b.pct+'%</b></td><td style="'+cs+'"><b>'+b.scale+'</b></td><td style="'+cs+'">'+bar(b.pct)+'</td><td style="'+cs+';color:'+t[1]+';font-weight:700">'+t[0]+'</td></tr>';
   };
   const rRow=skRow(T.reading+(fin.a2NoWriting?T.incl:''), fin.skills.Reading, ba['Reading']);
   const lRow=skRow(T.listening, fin.skills.Listening, ba['Listening']);
   const wRow=fin.a2NoWriting
-    ? '<tr><td style="'+cs+';text-align:left">'+T.writing+'</td><td colspan="6" style="'+cs+';text-align:left;color:#6b7280">'+T.inReading+'</td></tr>'
+    ? '<tr><td style="'+cs+';text-align:left">'+T.writing+'</td><td colspan="7" style="'+cs+';text-align:left;color:#6b7280">'+T.inReading+'</td></tr>'
     : skRow(T.writing, fin.skills.Writing, ba['Writing'], {pending: wAttAny && !fin.skills.Writing});
   const spRow=skRow(T.speaking, fin.skills.Speaking, null, {oral:true});
   const rParts = ba['Reading'] ? partsOf(ba['Reading'].breakdown) : [];
@@ -2548,7 +2548,7 @@ function _reportInner(p, at, sp, fin, EN, opts){
     detail+
     '<div style="font-size:13px;font-weight:800;color:#2f5f93;margin:8px 0 4px">'+T.s3+'</div>'+
     globalBox+ commentBox+
-    '<div style="font-size:9px;color:#94a3b8;margin-top:10px">'+T.foot+' · build 73</div>';
+    '<div style="font-size:9px;color:#94a3b8;margin-top:10px">'+T.foot+' · build 74</div>';
 }
 
 /* Inyecta una sola vez el CSS que, al imprimir, oculta todo menos el reporte (#print-report). */
