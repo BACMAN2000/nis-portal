@@ -2606,7 +2606,7 @@ window.studentReportPDF = async (studentId, lang)=>{
   const { data:sp } = await sb.from('speaking_results').select('*').eq('student_id',studentId).maybeSingle();
   const fin=_finalFromData(p, at||[], sp);
   const EN = lang==='en';
-  const fname='NIS-'+(EN?'Report':'Resultado')+'-'+(p.full_name||'alumno').replace(/\s+/g,'_')+'-'+(EN?'EN':'ES')+'.pdf';
+  const fname=(p.full_name||'alumno').replace(/\s+/g,'_')+'-'+(EN?'EN':'ES')+'.pdf';
   // Nodo del reporte (ancho fijo 760px) en el origen del documento.
   const node=document.createElement('div');
   node.style.cssText='width:760px;padding:22px;font-family:Montserrat,system-ui,sans-serif;color:#0f172a;background:#fff';
