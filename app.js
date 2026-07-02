@@ -201,6 +201,12 @@ function bindNav(handler){ document.querySelectorAll('[data-nav]').forEach(e=>{
   e.onkeydown=(ev)=>{ if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); handler(e.dataset.nav); } };
 }); }
 function munBody(){ return `<iframe src="mun-academy.html" title="MUN Academy" style="width:100%;height:82vh;min-height:560px;border:0;border-radius:12px;display:block;background:#fff"></iframe>`; }
+function liveQuizBody(){ return `
+  <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
+    <div class="muted" style="flex:1;min-width:220px">Aloja un juego en vivo estilo Kahoot. Proyecta esta pantalla; los alumnos entran con el PIN o el QR desde su celular.</div>
+    <a class="btn" href="live-quiz.html" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Abrir en pantalla completa ↗</a>
+  </div>
+  <iframe src="live-quiz.html" title="NIS Live Quiz" allow="autoplay" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#0d1d33"></iframe>`; }
 function studentMun(){ document.querySelectorAll('[data-nav]').forEach(e=>e.classList.toggle('active',e.dataset.nav==='mun')); $('#main').innerHTML = munBody(); }
 
 /* Phonics Studio embedded as an iframe (same-origin app in /phonics).
@@ -352,11 +358,13 @@ async function renderAdmin(tab='users'){
     {key:'phonics',label:'🔤 Phonics'},
     {key:'coach',label:'🎙️ Pronunciación'},
     {key:'mun',label:'🌐 MUN Academy'},
+    {key:'livequiz',label:'🎮 Live Quiz'},
     {key:'classes',label:'🏫 Classes'},
     {key:'library',label:'📚 Library'},
   ], tab, `<div class="center muted">Cargando…</div>`);
   bindNav(renderAdmin);
   if(tab==='mun') return $('#main').innerHTML = munBody();
+  if(tab==='livequiz') return $('#main').innerHTML = liveQuizBody();
   if(tab==='classes') return studentClasses();
   if(tab==='library') return studentLibrary();
   if(tab==='phonics') return $('#main').innerHTML = phonicsPanel();
@@ -1163,12 +1171,14 @@ async function renderTeacher(tab){
   if(!nav.length) nav.push({key:'none',label:'— sin accesos —'});
   nav.push({key:'exams',label:'🎧 Exámenes'});
   nav.push({key:'mun',label:'🌐 MUN Academy'});
+  nav.push({key:'livequiz',label:'🎮 Live Quiz'});
   nav.push({key:'phonics',label:'🔤 Phonics'});
   nav.push({key:'coach',label:'🎙️ Pronunciación'});
   const active = (tab && nav.some(n=>n.key===tab)) ? tab : nav[0].key;
   document.body.innerHTML = shell(nav, active, `<div class="center muted">Cargando…</div>`);
   bindNav(renderTeacher);
   if(active==='mun') return $('#main').innerHTML = munBody();
+  if(active==='livequiz') return $('#main').innerHTML = liveQuizBody();
   if(active==='results') return teacherResults();
   if(active==='final') return cefrFinalPanel();
   if(active==='students') return teacherStudents();
