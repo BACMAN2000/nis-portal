@@ -204,9 +204,9 @@ function munBody(){ return `<iframe src="mun-academy.html" title="MUN Academy" s
 function liveQuizBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
     <div class="muted" style="flex:1;min-width:220px">Aloja un juego en vivo estilo Kahoot. Proyecta esta pantalla; los alumnos entran con el PIN o el QR desde su celular.</div>
-    <a class="btn" href="live-quiz.html" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Abrir en pantalla completa ↗</a>
+    <a class="btn" href="live-quiz.html?v=2" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Abrir en pantalla completa ↗</a>
   </div>
-  <iframe src="live-quiz.html" title="NIS Live Quiz" allow="autoplay" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#0d1d33"></iframe>`; }
+  <iframe src="live-quiz.html?v=2" title="NIS Live Quiz" allow="autoplay" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#0d1d33"></iframe>`; }
 function studentMun(){ document.querySelectorAll('[data-nav]').forEach(e=>e.classList.toggle('active',e.dataset.nav==='mun')); $('#main').innerHTML = munBody(); }
 
 /* Phonics Studio embedded as an iframe (same-origin app in /phonics).
