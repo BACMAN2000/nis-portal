@@ -207,6 +207,12 @@ function liveQuizBody(){ return `
     <a class="btn" href="live-quiz.html?v=2" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Abrir en pantalla completa ↗</a>
   </div>
   <iframe src="live-quiz.html?v=2" title="NIS Live Quiz" allow="autoplay" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#0d1d33"></iframe>`; }
+function gamesLabBody(){ return `
+  <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
+    <div class="muted" style="flex:1;min-width:220px">Fichas + juegos de gramática, vocabulario, phrasal verbs e idioms (A1–C1): quiz, gap-fill y emparejar.</div>
+    <a class="btn" href="games-lab.html?v=1" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Abrir en pantalla completa ↗</a>
+  </div>
+  <iframe src="games-lab.html?v=1" title="English Games Lab" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#eef1f8"></iframe>`; }
 function studentMun(){ document.querySelectorAll('[data-nav]').forEach(e=>e.classList.toggle('active',e.dataset.nav==='mun')); $('#main').innerHTML = munBody(); }
 
 /* Phonics Studio embedded as an iframe (same-origin app in /phonics).
@@ -359,12 +365,14 @@ async function renderAdmin(tab='users'){
     {key:'coach',label:'🎙️ Pronunciación'},
     {key:'mun',label:'🌐 MUN Academy'},
     {key:'livequiz',label:'🎮 Live Quiz'},
+    {key:'games',label:'🎲 Games Lab'},
     {key:'classes',label:'🏫 Classes'},
     {key:'library',label:'📚 Library'},
   ], tab, `<div class="center muted">Cargando…</div>`);
   bindNav(renderAdmin);
   if(tab==='mun') return $('#main').innerHTML = munBody();
   if(tab==='livequiz') return $('#main').innerHTML = liveQuizBody();
+  if(tab==='games') return $('#main').innerHTML = gamesLabBody();
   if(tab==='classes') return studentClasses();
   if(tab==='library') return studentLibrary();
   if(tab==='phonics') return $('#main').innerHTML = phonicsPanel();
@@ -1172,6 +1180,7 @@ async function renderTeacher(tab){
   nav.push({key:'exams',label:'🎧 Exámenes'});
   nav.push({key:'mun',label:'🌐 MUN Academy'});
   nav.push({key:'livequiz',label:'🎮 Live Quiz'});
+  nav.push({key:'games',label:'🎲 Games Lab'});
   nav.push({key:'phonics',label:'🔤 Phonics'});
   nav.push({key:'coach',label:'🎙️ Pronunciación'});
   const active = (tab && nav.some(n=>n.key===tab)) ? tab : nav[0].key;
@@ -1179,6 +1188,7 @@ async function renderTeacher(tab){
   bindNav(renderTeacher);
   if(active==='mun') return $('#main').innerHTML = munBody();
   if(active==='livequiz') return $('#main').innerHTML = liveQuizBody();
+  if(active==='games') return $('#main').innerHTML = gamesLabBody();
   if(active==='results') return teacherResults();
   if(active==='final') return cefrFinalPanel();
   if(active==='students') return teacherStudents();
