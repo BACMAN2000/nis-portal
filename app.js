@@ -2110,6 +2110,11 @@ const FINAL_RESULT_OVERRIDE = {
   'fdbd2138-32e3-44cb-93db-9ff74a2e7a80': 'C1', // David André Novoa Davis (G9·B)
   'a53a5fce-5381-417a-910c-26d8888fbeac': 'A1', // Rafaella Vargas (G9·B)
   'fdc5fd6f-cca7-44ee-b304-e6441b7e8b8d': 'A2', // Mikel Paolo Olcese Reategui (G9·A)
+  '637dc77a-7f76-4d62-a3bc-44f7f55d2e67': 'B1', // Alejandro Mosi Pimentel (G8·B)
+  '55f919be-054d-4b7a-88a6-27dfcd124a60': 'B2', // Alessandra Paola Chiri Riva (G8·B)
+  '75d38ade-87c1-4558-9ba8-a5b44b4f9e31': 'A2', // Cristóbal Burga Garrúes (G8·B)
+  'a23da050-d6cb-4460-90dd-d6281974e5da': 'A1', // Joaquim Alfredo Ruiz Huallanca (G8·B)
+  '2ef7eb9f-8149-48c7-935b-7b9e4ddc8cff': 'A2', // Valeria Sofia Morales Parodi (G8·A)
 };
 function _applyCefrOverride(profile, skill, b){
   if(!b) return b;
