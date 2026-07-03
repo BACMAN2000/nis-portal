@@ -204,9 +204,9 @@ function munBody(){ return `<iframe src="mun-academy.html" title="MUN Academy" s
 function liveQuizBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
     <div class="muted" style="flex:1;min-width:220px">Aloja un juego en vivo estilo Kahoot. Proyecta esta pantalla; los alumnos entran con el PIN o el QR desde su celular.</div>
-    <a class="btn" href="live-quiz.html?v=10" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Abrir en pantalla completa ↗</a>
+    <a class="btn" href="live-quiz.html?v=11" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Abrir en pantalla completa ↗</a>
   </div>
-  <iframe src="live-quiz.html?v=10" title="NIShoot Live" allow="autoplay" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#0d1d33"></iframe>`; }
+  <iframe src="live-quiz.html?v=11" title="NIShoot Live" allow="autoplay" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#0d1d33"></iframe>`; }
 function gamesLabBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
     <div class="muted" style="flex:1;min-width:220px">Fichas + juegos de gramática, vocabulario, phrasal verbs e idioms (A1–C1): quiz, gap-fill y emparejar.</div>
@@ -218,9 +218,9 @@ function studentMun(){ document.querySelectorAll('[data-nav]').forEach(e=>e.clas
 function nishootJoinBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
     <div class="muted" style="flex:1;min-width:220px">Tu profe proyecta un juego en vivo. Escribe el <b>PIN</b> que aparece en la pantalla (o escanea el QR) y tu nombre para entrar.</div>
-    <a class="btn" href="live-quiz.html?join=1&v=10" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Abrir en pantalla completa ↗</a>
+    <a class="btn" href="live-quiz.html?join=1&v=11" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Abrir en pantalla completa ↗</a>
   </div>
-  <iframe src="live-quiz.html?join=1&v=10" title="NIShoot Live" allow="autoplay" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#0d1d33"></iframe>`; }
+  <iframe src="live-quiz.html?join=1&v=11" title="NIShoot Live" allow="autoplay" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#0d1d33"></iframe>`; }
 function studentNishoot(){ _setNav('nishoot'); $('#main').innerHTML = `${_backBtn("window._nav('english')",'English')}<h1>🎮 NIShoot Live</h1>${nishootJoinBody()}`; }
 /* Student view: English Games Lab (self-contained practice games). */
 function studentGames(){ _setNav('games'); $('#main').innerHTML = `${_backBtn("window._nav('english')",'English')}<h1>🎲 Games Lab</h1>${gamesLabBody()}`; }
