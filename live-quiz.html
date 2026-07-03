@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>NIS Live Quiz</title>
+<title>NIShoot Live · NIS</title>
 <style>
 :root{
   --navy:#142a4a; --deep:#0d1d33; --blue:#4987c6; --celeste:#76cbe5;
@@ -113,6 +113,17 @@ input.in:focus{border-color:var(--blue);}
 #confetti.on{display:block;}
 @keyframes fall{to{transform:translateY(108vh) rotate(720deg);opacity:.9;}}
 #hfWinner{margin:8px 0 0;}
+/* ===== NIShoot Live wordmark ===== */
+.top .brand{font-size:22px;font-weight:900;letter-spacing:.4px;display:inline-flex;align-items:center;gap:9px;}
+.top .brand .hoot{background:linear-gradient(90deg,#76cbe5,#bff0ff);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.top .brand .live{font-style:normal;font-size:11px;font-weight:900;letter-spacing:2px;background:var(--c0);color:#fff;padding:3px 8px;border-radius:6px;animation:livepulse 1.6s infinite;}
+@keyframes livepulse{0%,100%{box-shadow:0 0 0 0 rgba(232,68,59,.55);}50%{box-shadow:0 0 0 7px rgba(232,68,59,0);}}
+.bighoot{font-size:clamp(44px,11vw,84px)!important;font-weight:900;letter-spacing:1px;line-height:1;
+  filter:drop-shadow(0 6px 34px rgba(118,203,229,.35));animation:hootglow 3s ease-in-out infinite;}
+.bighoot span{background:linear-gradient(90deg,#76cbe5,#bff0ff)!important;-webkit-background-clip:text;background-clip:text;color:transparent!important;}
+.bighoot em{display:inline-block;font-style:normal;font-size:.34em;vertical-align:middle;background:var(--c0);color:#fff;
+  padding:5px 13px;border-radius:12px;letter-spacing:4px;margin-left:10px;box-shadow:0 8px 24px rgba(232,68,59,.55);animation:livepulse 1.6s infinite;}
+@keyframes hootglow{50%{filter:drop-shadow(0 6px 46px rgba(118,203,229,.65));}}
 .actions{display:flex;gap:12px;margin-top:18px;width:100%;max-width:520px;}
 .actions .btn{flex:1;}
 .err{color:#ffb4ac;font-weight:700;margin-top:10px;min-height:20px;}
@@ -129,14 +140,14 @@ input.in:focus{border-color:var(--blue);}
 <div class="wrap">
   <div class="top">
     <svg class="logo" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="#76cbe5" stroke-width="6"/><path d="M30 68 V32 L50 58 L70 32 V68" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    <b>NIS <span>Live Quiz</span></b>
+    <b class="brand">NIS<span class="hoot">hoot</span> <em class="live">LIVE</em></b>
     <div class="sp"></div>
     <div class="pill" id="statusPill" style="display:none"></div>
   </div>
 
   <!-- HOME -->
   <section class="screen center on" id="s-home">
-    <div class="hd"><h1>Play &amp; <span>Learn</span> Live</h1><p>Real-time classroom quiz — join from any phone.</p></div>
+    <div class="hd"><h1 class="bighoot">NIS<span>hoot</span> <em>LIVE</em></h1><p>Real-time classroom quiz show — join from any phone.</p></div>
     <div style="width:100%;max-width:420px;display:flex;flex-direction:column;gap:14px;">
       <button class="btn big" onclick="goHostSetup()">🎬 Host a game</button>
       <button class="btn big alt" onclick="show('s-join')">🙋 Join a game</button>
@@ -435,7 +446,8 @@ function beep(f,d){try{const c=new(window.AudioContext||window.webkitAudioContex
 function cheer(){try{const c=new(window.AudioContext||window.webkitAudioContext)();[523,659,784,1047,1319].forEach((f,i)=>{const o=c.createOscillator(),g=c.createGain();o.type='triangle';o.frequency.value=f;o.connect(g);g.connect(c.destination);const t=c.currentTime+i*0.11;g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.25,t+.03);g.gain.exponentialRampToValueAtTime(.0001,t+.4);o.start(t);o.stop(t+.45);});}catch(e){}}
 function speak(t){try{if(!('speechSynthesis'in window))return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=.98;u.pitch=1.12;u.volume=1;speechSynthesis.speak(u);}catch(e){}}
 function confetti(){const box=$('confetti');if(!box)return;box.innerHTML='';const cols=['#e8443b','#2367c9','#e6a417','#20955c','#76cbe5','#ffffff'];for(let i=0;i<90;i++){const d=document.createElement('i');const size=6+Math.random()*8;d.style.cssText='position:absolute;top:-18px;left:'+(Math.random()*100)+'%;width:'+size+'px;height:'+(size*.6)+'px;background:'+cols[i%cols.length]+';border-radius:2px;animation:fall '+(2.4+Math.random()*1.8)+'s linear '+(Math.random()*.6)+'s forwards;';box.appendChild(d);}box.classList.add('on');setTimeout(()=>box.classList.remove('on'),6500);}
-function announceWinner(name){const P=['{n}, you are the winner!','Congratulations {n}! You are the champion!','{n} takes the crown! Amazing job!','Well done {n}! You are number one!'];speak(P[Math.floor(Math.random()*P.length)].replace('{n}',name));cheer();confetti();}
+const GAME_NAME="NIShoot Live";
+function announceWinner(name){const P=['{n}, you are the winner of {g}!','Congratulations {n}! Champion of {g}!','{n} wins {g}! Amazing job!','Well done {n}! Number one at {g}!'];speak(P[Math.floor(Math.random()*P.length)].replace('{n}',name).replace('{g}',GAME_NAME));cheer();confetti();}
 function announceLeader(name){const P=['You are doing great, {n}!','{n} is on fire!','Keep it up, {n}!','Nice work {n}, you are leading!'];speak(P[Math.floor(Math.random()*P.length)].replace('{n}',name));cheer();}
 
 /* ================= SETUP SCREEN ================= */
