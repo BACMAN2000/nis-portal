@@ -709,8 +709,10 @@ function connectChannel(pin,onMsg,onReady){
 /* periodic host resync so late/dropped messages recover */
 setInterval(()=>{ if(ROLE==='host' && CH && (H.phase==='question'||H.phase==='lobby')) broadcastState(); },3000);
 
-/* deep link ?pin= */
-(function(){ const m=new URLSearchParams(location.search).get('pin'); if(m){ $('joinPin').value=m.replace(/\D/g,'').slice(0,6); show('s-join'); setTimeout(()=>$('joinName').focus(),200);} })();
+/* deep link: ?pin=123456 prefills the PIN · ?join=1 opens the Join screen directly (student card) */
+(function(){ const qs=new URLSearchParams(location.search); const m=qs.get('pin');
+  if(m){ $('joinPin').value=m.replace(/\D/g,'').slice(0,6); show('s-join'); setTimeout(()=>$('joinName').focus(),200); }
+  else if(qs.get('join')){ show('s-join'); setTimeout(()=>$('joinPin').focus(),200); } })();
 </script>
 </body>
 </html>
