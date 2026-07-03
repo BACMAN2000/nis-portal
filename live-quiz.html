@@ -109,6 +109,10 @@ input.in:focus{border-color:var(--blue);}
 .pod.p2{height:150px;}
 .pod.p3{height:120px;}
 .hidden{display:none!important;}
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:70;overflow:hidden;display:none;}
+#confetti.on{display:block;}
+@keyframes fall{to{transform:translateY(108vh) rotate(720deg);opacity:.9;}}
+#hfWinner{margin:8px 0 0;}
 .actions{display:flex;gap:12px;margin-top:18px;width:100%;max-width:520px;}
 .actions .btn{flex:1;}
 .err{color:#ffb4ac;font-weight:700;margin-top:10px;min-height:20px;}
@@ -158,7 +162,7 @@ input.in:focus{border-color:var(--blue);}
     <div class="quizlist" id="quizList"></div>
     <div style="max-width:560px;margin:0 auto;width:100%;">
       <button class="btn" id="createBtn" onclick="hostCreate()" disabled>Create game →</button>
-      <button class="btn ghost" style="margin-top:12px" onclick="show('s-home')">Back</button>
+      <button class="btn ghost" id="setupBack" style="margin-top:12px" onclick="show('s-home')">Back</button>
     </div>
   </section>
 
@@ -182,7 +186,7 @@ input.in:focus{border-color:var(--blue);}
 
   <!-- HOST QUESTION -->
   <section class="screen" id="s-hq">
-    <div class="qhead"><div class="qnum" id="hqNum"></div><div class="sp" style="flex:1"></div><div class="timer" id="hqTimer">20</div></div>
+    <div class="qhead"><button class="pill" onclick="hostBackToExercises()">⤺ Exercises</button><div class="qnum" id="hqNum"></div><div class="sp" style="flex:1"></div><div class="timer" id="hqTimer">20</div></div>
     <div class="qtext" id="hqText"></div>
     <div class="answered-n" id="hqAnswered">0 answers</div>
     <div class="opts" id="hqOpts"></div>
@@ -195,16 +199,27 @@ input.in:focus{border-color:var(--blue);}
     <div class="qtext" id="hrText" style="max-width:760px;"></div>
     <div class="opts" id="hrOpts" style="max-width:760px;width:100%;"></div>
     <div class="lb" id="hrBoard" style="margin-top:18px;"></div>
-    <div class="actions"><button class="btn" id="hrNext" onclick="hostNext()">Next question →</button></div>
+    <div class="actions"><button class="btn ghost" onclick="hostBackToExercises()">⤺ Exercises</button><button class="btn" id="hrNext" onclick="hostNext()">Next question →</button></div>
+  </section>
+
+  <!-- HOST QUIZ END (session standings between quizzes) -->
+  <section class="screen center" id="s-hmid">
+    <div class="hd"><h1>Quiz <span>complete</span></h1><p id="hmidSub">Session standings</p></div>
+    <div class="lb" id="hmidBoard"></div>
+    <div class="actions">
+      <button class="btn alt" onclick="hostFinal()">🏁 End session</button>
+      <button class="btn" onclick="goHostSetup()">▶ Next quiz</button>
+    </div>
+    <p class="muted" style="color:#9fb3cf;margin-top:12px;">Scores carry over to the next quiz.</p>
   </section>
 
   <!-- HOST FINAL -->
   <section class="screen center" id="s-hf">
-    <div class="hd"><h1>🏆 <span>Podium</span></h1></div>
+    <div class="hd"><h1>🏆 <span>Champion</span></h1><p id="hfWinner"></p></div>
     <div class="podium" id="podium"></div>
     <div class="lb" id="hfBoard"></div>
     <div class="actions">
-      <button class="btn" onclick="location.reload()">New game</button>
+      <button class="btn" onclick="location.reload()">New session</button>
     </div>
   </section>
 
@@ -230,11 +245,17 @@ input.in:focus{border-color:var(--blue);}
     <div class="result" id="przCard"><div id="przMsg" style="font-size:26px;font-weight:800;"></div><div class="pts" id="przPts"></div><div class="rk" id="przRank"></div></div>
   </section>
 
+  <!-- PLAYER STANDINGS (between quizzes) -->
+  <section class="screen center" id="s-ps">
+    <div class="result" id="psCard" style="background:var(--navy)"><div style="font-size:22px;font-weight:800">Standings</div><div class="pts" id="psRank"></div><div class="rk" id="psScore"></div><div style="margin-top:8px;color:#cfe0f2;font-size:15px">Get ready for the next quiz…</div></div>
+  </section>
+
   <!-- PLAYER FINAL -->
   <section class="screen center" id="s-pf">
     <div class="result" id="pfCard" style="background:var(--navy)"><div style="font-size:22px;font-weight:800">Game over!</div><div class="pts" id="pfRank"></div><div class="rk" id="pfScore"></div></div>
   </section>
 </div>
+<div id="confetti"></div>
 
 <script src="vendor/supabase-js.min.js"></script>
 <script src="vendor/qrcode.min.js"></script>
@@ -339,6 +360,68 @@ const QUIZZES=[
    ["“Let's go!” is usually reported as: He ___ going.",["suggested","told","asked","said"],0],
    ["“Don't worry.” → He told me ___.",["not to worry","to not worry","don't worry","not worrying"],0],
  ]},
+
+ /* ========== GRAMMAR LADDER (5) — difficulty A2 → B2 ========== */
+ {id:"gl1", ico:"🌱", title:"① A2 · Present & Basics", qs:[
+   ["___ apple a day keeps the doctor away.",["A","An","The","—"],1],
+   ["There ___ three books on the table.",["is","are","am","be"],1],
+   ["She ___ like coffee.",["don't","doesn't","isn't","not"],1],
+   ["I'd like ___ orange juice, please.",["a","an","some","many"],2],
+   ["He is good ___ maths.",["in","at","on","to"],1],
+   ["This is my sister. ___ name is Ana.",["His","Her","Their","Your"],1],
+   ["What is the plural of “child”?",["childs","children","childes","childrens"],1],
+   ["We ___ to the beach every summer.",["go","goes","going","gone"],0],
+   ["There aren't ___ eggs left.",["some","any","a","much"],1],
+   ["Which word is an adverb of frequency?",["quick","always","happy","under"],1],
+ ]},
+ {id:"gl2", ico:"🔵", title:"② A2+ · Past & Prepositions", qs:[
+   ["What is the past simple of “go”?",["goed","went","gone","goes"],1],
+   ["They ___ at home yesterday.",["was","were","are","be"],1],
+   ["I was born ___ 2010.",["on","in","at","by"],1],
+   ["The meeting is ___ Monday.",["in","on","at","to"],1],
+   ["She is taller ___ her brother.",["then","than","that","as"],1],
+   ["Tonight we ___ watch a film (a plan).",["are going to","go to","will to","going"],0],
+   ["___ you finish your homework last night?",["Did","Do","Was","Are"],0],
+   ["The keys are ___ the table (on top of it).",["under","on","in","between"],1],
+   ["He didn't ___ to the party.",["went","go","going","goes"],1],
+   ["What is the opposite of “expensive”?",["cheap","costly","rich","dear"],0],
+ ]},
+ {id:"gl3", ico:"🟢", title:"③ B1 · Perfect & Comparatives", qs:[
+   ["I ___ never been to Japan.",["have","has","had","am"],0],
+   ["She has lived here ___ 2015.",["for","since","from","at"],1],
+   ["We've been friends ___ ten years.",["since","for","during","ago"],1],
+   ["It's the ___ film I've ever seen.",["good","better","best","most good"],2],
+   ["There isn't ___ milk left.",["many","much","few","a little bit"],1],
+   ["I ___ smoke, but I stopped years ago.",["use to","used to","was used to","using to"],1],
+   ["Have you finished your project ___?",["yet","already","still","ever"],0],
+   ["How ___ sugar would you like?",["many","much","few","lot"],1],
+   ["Paris is ___ than Lima in winter.",["more cold","colder","coldest","the colder"],1],
+   ["What is the past participle of “write”?",["wrote","written","writed","writing"],1],
+ ]},
+ {id:"gl4", ico:"🟠", title:"④ B1+ · Conditionals & Modals", qs:[
+   ["If it rains, we ___ stay at home.",["will","would","are","won't to"],0],
+   ["If I ___ rich, I would travel the world.",["am","was","were","will be"],2],
+   ["You ___ smoke here. It's forbidden.",["mustn't","don't have to","needn't","shouldn't"],0],
+   ["She ___ be tired — she worked all day.",["must","can't","mustn't","needn't"],0],
+   ["We ___ hurry; there's plenty of time.",["mustn't","don't have to","can't","must"],1],
+   ["The man ___ lives next door is a doctor.",["which","who","whom","what"],1],
+   ["If you heat ice, it ___.",["melts","will melt","melted","would melt"],0],
+   ["You look exhausted. You ___ get some rest.",["should","must","can","would"],0],
+   ["That's the town ___ I grew up.",["which","where","who","what"],1],
+   ["He isn't answering — he ___ be asleep.",["might","must to","can","would to"],0],
+ ]},
+ {id:"gl5", ico:"🔴", title:"⑤ B2 · Passives, Relatives & More", qs:[
+   ["The bridge ___ built in 1990.",["was","is","has","were"],0],
+   ["English ___ spoken all over the world.",["is","are","has","was"],0],
+   ["If I had studied, I ___ passed the exam.",["would","will have","would have","had"],2],
+   ["I wish I ___ taller.",["am","was","were","be"],2],
+   ["This is the writer ___ books won awards.",["which","who","whose","that"],2],
+   ["By the time we arrived, the film ___.",["started","has started","had started","was start"],2],
+   ["The report ___ by tomorrow morning.",["will finish","will be finished","is finishing","finishes"],1],
+   ["She's used to ___ up early for work.",["get","gets","getting","got"],2],
+   ["Not only ___ late, but he also lost the keys.",["he was","was he","he is","is he"],1],
+   ["The phrasal verb “give up” means to…",["continue","quit","start","win"],1],
+ ]},
 ];
 
 /* ================= STATE ================= */
@@ -348,6 +431,12 @@ const $=id=>document.getElementById(id);
 function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('on',s.id===id));window.scrollTo(0,0);}
 function client(){ if(!CLIENT) CLIENT=supabase.createClient(SB_URL,SB_KEY); return CLIENT; }
 function beep(f,d){try{const c=new(window.AudioContext||window.webkitAudioContext)();const o=c.createOscillator(),g=c.createGain();o.connect(g);g.connect(c.destination);o.frequency.value=f||660;g.gain.value=.12;o.start();o.stop(c.currentTime+(d||.12));}catch(e){}}
+/* celebratory fanfare + spoken announcement + confetti */
+function cheer(){try{const c=new(window.AudioContext||window.webkitAudioContext)();[523,659,784,1047,1319].forEach((f,i)=>{const o=c.createOscillator(),g=c.createGain();o.type='triangle';o.frequency.value=f;o.connect(g);g.connect(c.destination);const t=c.currentTime+i*0.11;g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.25,t+.03);g.gain.exponentialRampToValueAtTime(.0001,t+.4);o.start(t);o.stop(t+.45);});}catch(e){}}
+function speak(t){try{if(!('speechSynthesis'in window))return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=.98;u.pitch=1.12;u.volume=1;speechSynthesis.speak(u);}catch(e){}}
+function confetti(){const box=$('confetti');if(!box)return;box.innerHTML='';const cols=['#e8443b','#2367c9','#e6a417','#20955c','#76cbe5','#ffffff'];for(let i=0;i<90;i++){const d=document.createElement('i');const size=6+Math.random()*8;d.style.cssText='position:absolute;top:-18px;left:'+(Math.random()*100)+'%;width:'+size+'px;height:'+(size*.6)+'px;background:'+cols[i%cols.length]+';border-radius:2px;animation:fall '+(2.4+Math.random()*1.8)+'s linear '+(Math.random()*.6)+'s forwards;';box.appendChild(d);}box.classList.add('on');setTimeout(()=>box.classList.remove('on'),6500);}
+function announceWinner(name){const P=['{n}, you are the winner!','Congratulations {n}! You are the champion!','{n} takes the crown! Amazing job!','Well done {n}! You are number one!'];speak(P[Math.floor(Math.random()*P.length)].replace('{n}',name));cheer();confetti();}
+function announceLeader(name){const P=['You are doing great, {n}!','{n} is on fire!','Keep it up, {n}!','Nice work {n}, you are leading!'];speak(P[Math.floor(Math.random()*P.length)].replace('{n}',name));cheer();}
 
 /* ================= SETUP SCREEN ================= */
 function goHostSetup(){
@@ -357,23 +446,40 @@ function goHostSetup(){
     d.innerHTML='<div class="ico">'+q.ico+'</div><div><b>'+q.title+'</b><small>'+q.qs.length+' questions</small></div>';
     list.appendChild(d);
   });
-  selectedQuiz=null; $('createBtn').disabled=true; show('s-setup');
+  selectedQuiz=null; $('createBtn').disabled=true;
+  // In an active session, picking a quiz starts it immediately keeping scores.
+  const inS=!!H.inSession;
+  $('createBtn').textContent = inS ? 'Start this quiz →' : 'Create game →';
+  $('createBtn').onclick = inS ? hostLoadQuiz : hostCreate;
+  $('setupBack').onclick = inS ? (()=>show('s-hmid')) : (()=>show('s-home'));
+  show('s-setup');
 }
 
 /* ================= HOST ================= */
-const H={players:{},answers:{},qi:-1,phase:'lobby',endsAt:0};
+const H={players:{},answers:{},qi:-1,phase:'lobby',endsAt:0,quizNo:0,inSession:false};
 function genPin(){let p='';for(let i=0;i<6;i++)p+=Math.floor(Math.random()*10);return p;}
 function joinLink(pin){return location.origin+location.pathname+'?pin='+pin;}
 
 function hostCreate(){
   if(!selectedQuiz) return;
-  ROLE='host'; PIN=genPin(); H.quiz=selectedQuiz; H.players={}; H.answers={}; H.qi=-1; H.phase='lobby';
+  ROLE='host'; PIN=genPin(); H.quiz=selectedQuiz; H.players={}; H.answers={}; H.qi=-1; H.phase='lobby'; H.quizNo=1; H.inSession=true;
   $('lobbyPin').textContent=PIN;
   $('lobbyUrl').textContent=joinLink(PIN).replace(/^https?:\/\//,'');
   $('lobbyQuiz').textContent=selectedQuiz.title;
   renderQR(joinLink(PIN));
   connectChannel(PIN, hostOnMessage, ()=>{});
   show('s-lobby');
+}
+/* Load the NEXT quiz in the same session: keep players, scores, PIN & channel. */
+function hostLoadQuiz(){
+  if(!selectedQuiz) return;
+  H.quiz=selectedQuiz; H.qi=-1; H.answers={}; H.quizNo=(H.quizNo||1)+1; H.phase='lobby';
+  if($('lobbyQuiz')) $('lobbyQuiz').textContent=selectedQuiz.title;
+  hostStart();
+}
+/* Leave the current quiz mid-way and go back to the exercise list (session kept). */
+function hostBackToExercises(){
+  clearInterval(hostTimerId); H.phase='standings'; broadcastState(); goHostSetup();
 }
 function renderQR(text){
   const box=$('qrbox'); box.innerHTML='';
@@ -400,7 +506,7 @@ function renderLobby(){
 function hostStart(){ H.qi=-1; hostNext(); }
 function hostNext(){
   H.qi++;
-  if(H.qi>=H.quiz.qs.length){ hostFinal(); return; }
+  if(H.qi>=H.quiz.qs.length){ hostQuizEnd(); return; }
   H.phase='question'; H.answers[H.qi]={}; H.endsAt=Date.now()+QDUR;
   renderHostQuestion(); broadcastState(); startHostTimer();
 }
@@ -463,6 +569,15 @@ function renderBoard(elId,limit){
     d.innerHTML='<span class="rk">'+(i+1)+'</span><span class="nm">'+p.name+'</span><span class="sc">'+p.score+'</span>';box.appendChild(d);});
   if(!r.length) box.innerHTML='<div class="muted" style="color:#9fb3cf;text-align:center">No players</div>';
 }
+/* Standings shown BETWEEN quizzes — scores carry over to the next quiz. */
+function hostQuizEnd(){
+  H.phase='standings'; clearInterval(hostTimerId);
+  renderBoard('hmidBoard',10);
+  $('hmidSub').textContent='Session standings · after '+(H.quiz?H.quiz.title:'');
+  show('s-hmid'); broadcastState();
+  const r=rankedPlayers();
+  if(r[0]) setTimeout(()=>announceLeader(r[0].name),350);
+}
 function hostFinal(){
   H.phase='ended'; clearInterval(hostTimerId);
   const r=rankedPlayers();
@@ -471,25 +586,27 @@ function hostFinal(){
   order.forEach(idx=>{ if(r[idx]){const p=r[idx];const d=document.createElement('div');d.className='pod p'+(idx+1);
     d.innerHTML='<div class="medal">'+medals[idx]+'</div><div class="nm">'+p.name+'</div><div class="sc">'+p.score+'</div>';pod.appendChild(d);} });
   renderBoard('hfBoard',10);
-  beep(740,.2);setTimeout(()=>beep(920,.25),180);
+  $('hfWinner').textContent = r[0] ? ('🎉 '+r[0].name+' — '+r[0].score+' pts') : '';
   show('s-hf'); broadcastState();
+  if(r[0]) setTimeout(()=>announceWinner(r[0].name),450); else beep(740,.2);
   saveResults(r);
 }
 async function saveResults(r){
-  try{ await client().from('quiz_results').insert({pin:PIN,quiz:H.quiz.title,players:Object.keys(H.players).length,ranking:r.slice(0,10),ended_at:new Date().toISOString()}); }catch(e){}
+  try{ const label=(H.quizNo>1)?('Session · '+H.quizNo+' quizzes'):(H.quiz?H.quiz.title:''); await client().from('quiz_results').insert({pin:PIN,quiz:label,players:Object.keys(H.players).length,ranking:r.slice(0,10),ended_at:new Date().toISOString()}); }catch(e){}
 }
 /* single sync event carrying everything a player needs for the current phase */
 function broadcastState(){
   if(!CH) return;
-  const base={phase:H.phase,qi:H.qi,total:H.quiz?H.quiz.qs.length:0};
+  const base={phase:H.phase,qi:H.qi,total:H.quiz?H.quiz.qs.length:0,quizNo:H.quizNo||1};
   if(H.phase==='question'){ const q=currentQ(); base.q={text:q[0],opts:q[1],dur:QDUR,endsAt:H.endsAt}; }
   if(H.phase==='reveal'){ const q=currentQ(); base.correct=q[2]; base.ranking=rankedPlayers(); }
+  if(H.phase==='standings'){ base.ranking=rankedPlayers(); }
   if(H.phase==='ended'){ base.ranking=rankedPlayers(); }
   CH.send({type:'broadcast',event:'state',payload:base});
 }
 
 /* ================= PLAYER ================= */
-const P={pid:null,name:null,qi:-1,answeredQi:-1,lastChoice:-1,phase:null};
+const P={pid:null,name:null,qi:-1,answeredQi:-1,lastChoice:-1,phase:null,quizNo:0};
 function myPid(){ let x=sessionStorage.getItem('nis_pid'); if(!x){x='p'+Math.random().toString(36).slice(2,10);sessionStorage.setItem('nis_pid',x);} return x; }
 function doJoin(){
   const pin=($('joinPin').value||'').replace(/\D/g,'').slice(0,6);
@@ -507,10 +624,21 @@ function playerOnMessage(ev,payload){ if(ev==='state') playerOnState(payload); }
 let pqTimerId=null, pLocalEnd=0;
 function playerOnState(s){
   P.phase=s.phase;
+  // New quiz in the session → reset per-quiz answer state (scores are kept host-side).
+  if(s.quizNo && s.quizNo!==P.quizNo){ P.quizNo=s.quizNo; P.qi=-1; P.answeredQi=-1; P.lastChoice=-1; }
   if(s.phase==='lobby'){ clearInterval(pqTimerId); show('s-pl'); }
   else if(s.phase==='question'){ playerShowQuestion(s); }
   else if(s.phase==='reveal'){ playerShowReveal(s); }
+  else if(s.phase==='standings'){ playerShowStandings(s); }
   else if(s.phase==='ended'){ playerShowFinal(s); }
+}
+function playerShowStandings(s){
+  clearInterval(pqTimerId);
+  const rank=(s.ranking||[]).findIndex(x=>x.pid===P.pid)+1;
+  const me=(s.ranking||[]).find(x=>x.pid===P.pid);
+  $('psRank').textContent=rank?('#'+rank):'—';
+  $('psScore').textContent=me?(me.score+' points'):'';
+  show('s-ps');
 }
 function playerShowQuestion(s){
   if(P.answeredQi===s.qi){ show('s-pw'); return; }        // already answered this one
