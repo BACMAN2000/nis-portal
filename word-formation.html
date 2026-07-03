@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,7 +22,6 @@
   .rules{background:#eef2fb;border:1px solid #dbe4f5;border-radius:12px;padding:12px 14px;color:#334155;font-size:13.5px;margin-bottom:16px}
   .rules b{color:#244c77}
 
-  /* Controls */
   .controls{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
   .group{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:8px 10px;display:flex;gap:6px;align-items:center;flex-wrap:wrap;box-shadow:0 4px 14px rgba(15,23,42,.05)}
   .group .glab{font-size:11px;font-weight:800;letter-spacing:.5px;color:#94a3b8;text-transform:uppercase;margin-right:2px}
@@ -60,13 +59,11 @@
   .opts{display:flex;flex-direction:column;gap:10px}
   .opt{text-align:left;background:#fff;border:2px solid #e2e8f0;border-radius:12px;padding:13px 15px;font:inherit;font-size:16px;font-weight:600;cursor:pointer;transition:.12s;color:#0f172a}
   .opt:hover{border-color:#c7d2ea;background:#f8fafc}
-  .opt.pick{border-color:#2d5a8d}
   .opt.ok{background:#f0fdf4;border-color:#86efac;color:#166534}
   .opt.no{background:#fef2f2;border-color:#fecaca;color:#991b1b}
 
-  /* Builder */
   .buildslot{min-height:56px;border:2px dashed #cbd5e1;border-radius:12px;padding:10px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px;background:#f8fafc}
-  .buildslot.empty::before{content:"Toca las piezas en orden…";color:#94a3b8;font-size:13px}
+  .buildslot.empty::before{content:"Tap the pieces in order…";color:#94a3b8;font-size:13px}
   .bank{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:6px}
   .piece{border:2px solid #cbd5e1;background:#fff;color:#0f172a;font:inherit;font-weight:700;font-size:16px;padding:9px 14px;border-radius:10px;cursor:pointer;transition:.12s}
   .piece:hover{border-color:#2d5a8d;background:#eef2fb}
@@ -74,12 +71,12 @@
   .piece.used{opacity:.35;pointer-events:none}
   .slotpiece{background:#2d5a8d;color:#fff;border:0;font:inherit;font-weight:700;font-size:16px;padding:9px 14px;border-radius:10px;cursor:pointer}
 
-  /* Matching */
   .matchwrap{display:flex;gap:14px}
   .mcol{flex:1;display:flex;flex-direction:column;gap:9px}
   .mitem{border:2px solid #e2e8f0;background:#fff;border-radius:11px;padding:11px 12px;font-weight:600;cursor:pointer;transition:.12s;font-size:14.5px}
   .mitem:hover{border-color:#c7d2ea}
   .mitem.sel{border-color:#2d5a8d;background:#eef2fb}
+  .mitem.no{border-color:#fecaca;background:#fef2f2}
   .mitem.done{background:#f0fdf4;border-color:#86efac;color:#166534;cursor:default;pointer-events:none}
   .mitem .aff{font-size:16px;font-weight:800;color:#2d5a8d}
   .mitem.done .aff{color:#166534}
@@ -107,161 +104,192 @@
 <header>
   <img src="assets/logo-h.svg" alt="Nordic International School" onerror="this.style.display='none'">
   <div class="sub">GRAMMAR · WORD FORMATION</div>
-  <a class="back" href="grammar.html?grade=g9">← Grammar</a>
+  <a class="back" id="backlink" href="grammar.html">← Grammar</a>
 </header>
 
 <main>
   <h1>🧩 Word Formation — Games</h1>
-  <p class="lead">Forma palabras con <b>prefijos</b>, <b>sufijos</b> y <b>raíces</b>. Niveles A1–C1 del Marco Común Europeo (CEFR).</p>
+  <p class="lead">Build words with <b>prefixes</b>, <b>suffixes</b> and <b>roots</b>. CEFR levels A1–C1.</p>
   <div class="rules">
-    <b>Cómo jugar:</b> elige tu <b>nivel</b> (A1→C1) y un <b>modo de juego</b>. Suma puntos y mantén tu <b>racha</b>.
-    Modos: <b>Constructor</b> (arma la palabra), <b>Opción múltiple</b>, <b>Emparejar</b> afijos, <b>Rellenar huecos</b> y <b>Word Formation (FCE)</b>.
+    <b>How to play:</b> choose your <b>level</b> and a <b>game mode</b>. Earn points and keep your <b>streak</b>.
+    Modes: <b>Builder</b> (build the word), <b>Multiple choice</b>, <b>Match affixes</b> to their meaning, <b>Gap-fill</b> and <b>Word Formation (FCE)</b>.
   </div>
 
   <div class="controls">
-    <div class="group" id="lvlGroup">
-      <span class="glab">Nivel</span>
-      <button class="chipbtn lvl on all" data-lvl="all">Todos</button>
-      <button class="chipbtn lvl a1" data-lvl="A1">A1</button>
-      <button class="chipbtn lvl a2" data-lvl="A2">A2</button>
-      <button class="chipbtn lvl b1" data-lvl="B1">B1</button>
-      <button class="chipbtn lvl b2" data-lvl="B2">B2</button>
-      <button class="chipbtn lvl c1" data-lvl="C1">C1</button>
-    </div>
+    <div class="group" id="lvlGroup"><span class="glab">Level</span></div>
   </div>
   <div class="controls">
     <div class="group" id="modeGroup">
-      <span class="glab">Modo</span>
-      <button class="chipbtn mode on" data-mode="build">🧱 Constructor</button>
-      <button class="chipbtn mode" data-mode="choice">🔘 Opción múltiple</button>
-      <button class="chipbtn mode" data-mode="match">🔗 Emparejar</button>
-      <button class="chipbtn mode" data-mode="gap">✍️ Rellenar huecos</button>
+      <span class="glab">Mode</span>
+      <button class="chipbtn mode on" data-mode="build">🧱 Builder</button>
+      <button class="chipbtn mode" data-mode="choice">🔘 Multiple choice</button>
+      <button class="chipbtn mode" data-mode="match">🔗 Match</button>
+      <button class="chipbtn mode" data-mode="gap">✍️ Gap-fill</button>
       <button class="chipbtn mode" data-mode="fce">🎯 Word Formation (FCE)</button>
     </div>
   </div>
 
   <div class="card" id="card"><!-- render --></div>
 
-  <p class="footer">9th grade · Grammar — Word Formation · NIS English · 2026</p>
+  <p class="footer" id="foot">Grammar — Word Formation · NIS English · 2026</p>
 </main>
 
 <script>
 /* ============================ DATA ============================ */
-/* Transform items: base word -> derived answer in a sentence.
-   Used by: choice, gap, fce.  pos = target part of speech.
-   alt = accepted alternative answers.  note = short explanation. */
+/* Transform items: base word -> derived answer in a sentence. (choice, gap, fce) */
 const TRANSFORM = [
   // ---------- A1 ----------
-  {lvl:'A1', base:'TEACH', ans:'teacher', pos:'noun', sent:'My English ___ is very kind.', note:'teach + -er = la persona que enseña.', opts:['teacher','teaching','teached','teachful']},
-  {lvl:'A1', base:'FRIEND', ans:'friendly', pos:'adj', sent:'She is very ___ and says hello to everyone.', note:'friend + -ly = adjetivo (amable).', opts:['friendly','friendful','friendness','friending']},
-  {lvl:'A1', base:'HAPPY', ans:'unhappy', pos:'adj', sent:'He was ___ because he lost his toy.', note:'un- = negativo (no feliz).', opts:['unhappy','happyless','dishappy','inhappy']},
-  {lvl:'A1', base:'PAINT', ans:'painter', pos:'noun', sent:'The ___ is working on the wall.', note:'paint + -er = la persona que pinta.', opts:['painter','painting','paintist','paintful']},
-  {lvl:'A1', base:'CARE', ans:'careful', pos:'adj', sent:'Be ___ with the hot cup!', note:'care + -ful = lleno de cuidado.', opts:['careful','careless','careness','caring']},
-  {lvl:'A1', base:'RAIN', ans:'rainy', pos:'adj', sent:"It's a ___ day, take an umbrella.", note:'rain + -y = adjetivo (lluvioso).', opts:['rainy','rainful','rainer','raining']},
-  {lvl:'A1', base:'HELP', ans:'helpful', pos:'adj', sent:'Thank you, you are so ___!', note:'help + -ful = que ayuda mucho.', opts:['helpful','helpless','helper','helpness']},
-  {lvl:'A1', base:'SING', ans:'singer', pos:'noun', sent:'My favourite ___ has a new song.', note:'sing + -er = la persona que canta.', opts:['singer','singist','singful','singing']},
+  {lvl:'A1', base:'TEACH', ans:'teacher', pos:'noun', sent:'My English ___ is very kind.', note:'teach + -er = the person who teaches.', opts:['teacher','teaching','teached','teachful']},
+  {lvl:'A1', base:'FRIEND', ans:'friendly', pos:'adj', sent:'She is very ___ and says hello to everyone.', note:'friend + -ly = adjective (kind).', opts:['friendly','friendful','friendness','friending']},
+  {lvl:'A1', base:'HAPPY', ans:'unhappy', pos:'adj', sent:'He was ___ because he lost his toy.', note:'un- = not (not happy).', opts:['unhappy','happyless','dishappy','inhappy']},
+  {lvl:'A1', base:'PAINT', ans:'painter', pos:'noun', sent:'The ___ is working on the wall.', note:'paint + -er = the person who paints.', opts:['painter','painting','paintist','paintful']},
+  {lvl:'A1', base:'CARE', ans:'careful', pos:'adj', sent:'Be ___ with the hot cup!', note:'care + -ful = full of care.', opts:['careful','careless','careness','caring']},
+  {lvl:'A1', base:'RAIN', ans:'rainy', pos:'adj', sent:"It's a ___ day, take an umbrella.", note:'rain + -y = adjective (with rain).', opts:['rainy','rainful','rainer','raining']},
+  {lvl:'A1', base:'HELP', ans:'helpful', pos:'adj', sent:'Thank you, you are so ___!', note:'help + -ful = giving help.', opts:['helpful','helpless','helper','helpness']},
+  {lvl:'A1', base:'SING', ans:'singer', pos:'noun', sent:'My favourite ___ has a new song.', note:'sing + -er = the person who sings.', opts:['singer','singist','singful','singing']},
 
   // ---------- A2 ----------
-  {lvl:'A2', base:'ACT', ans:'actor', pos:'noun', sent:'My favourite ___ is in this film.', note:'act + -or = la persona que actúa.', opts:['actor','acter','action','actful']},
-  {lvl:'A2', base:'DANGER', ans:'dangerous', pos:'adj', sent:'Skiing can be very ___.', note:'danger + -ous = que tiene peligro.', opts:['dangerous','dangerful','dangery','dangerness']},
-  {lvl:'A2', base:'HEALTH', ans:'healthy', pos:'adj', sent:'Eat fruit and vegetables to stay ___.', note:'health + -y = adjetivo (sano).', opts:['healthy','healthful','healthness','healthous']},
-  {lvl:'A2', base:'COMFORT', ans:'comfortable', pos:'adj', sent:'This sofa is really ___.', note:'comfort + -able = que se puede disfrutar (cómodo).', opts:['comfortable','comfortful','comfortous','comforty']},
-  {lvl:'A2', base:'HAPPY', ans:'happiness', pos:'noun', sent:"Money can't buy ___.", note:'happy → happi + -ness (sustantivo abstracto).', opts:['happiness','happyness','happyment','happity']},
-  {lvl:'A2', base:'AGREE', ans:'disagree', pos:'verb', sent:'I ___ with you — I think you are wrong.', note:'dis- = opuesto (no estar de acuerdo).', opts:['disagree','unagree','misagree','deagree']},
-  {lvl:'A2', base:'WONDER', ans:'wonderful', pos:'adj', sent:'We had a ___ holiday in the mountains.', note:'wonder + -ful = maravilloso.', opts:['wonderful','wonderous','wondery','wonderless']},
-  {lvl:'A2', base:'CHILD', ans:'childhood', pos:'noun', sent:'She had a very happy ___.', note:'child + -hood = etapa/estado (infancia).', opts:['childhood','childness','childship','childdom']},
-  {lvl:'A2', base:'POWER', ans:'powerful', pos:'adj', sent:'The car has a very ___ engine.', note:'power + -ful = lleno de fuerza.', opts:['powerful','powerless','powery','powerous']},
+  {lvl:'A2', base:'ACT', ans:'actor', pos:'noun', sent:'My favourite ___ is in this film.', note:'act + -or = the person who acts.', opts:['actor','acter','action','actful']},
+  {lvl:'A2', base:'DANGER', ans:'dangerous', pos:'adj', sent:'Skiing can be very ___.', note:'danger + -ous = having danger.', opts:['dangerous','dangerful','dangery','dangerness']},
+  {lvl:'A2', base:'HEALTH', ans:'healthy', pos:'adj', sent:'Eat fruit and vegetables to stay ___.', note:'health + -y = adjective (in good health).', opts:['healthy','healthful','healthness','healthous']},
+  {lvl:'A2', base:'COMFORT', ans:'comfortable', pos:'adj', sent:'This sofa is really ___.', note:'comfort + -able = giving comfort.', opts:['comfortable','comfortful','comfortous','comforty']},
+  {lvl:'A2', base:'HAPPY', ans:'happiness', pos:'noun', sent:"Money can't buy ___.", note:'happy → happi + -ness (abstract noun).', opts:['happiness','happyness','happyment','happity']},
+  {lvl:'A2', base:'AGREE', ans:'disagree', pos:'verb', sent:'I ___ with you — I think you are wrong.', note:'dis- = opposite (not agree).', opts:['disagree','unagree','misagree','deagree']},
+  {lvl:'A2', base:'WONDER', ans:'wonderful', pos:'adj', sent:'We had a ___ holiday in the mountains.', note:'wonder + -ful = full of wonder.', opts:['wonderful','wonderous','wondery','wonderless']},
+  {lvl:'A2', base:'CHILD', ans:'childhood', pos:'noun', sent:'She had a very happy ___.', note:'child + -hood = stage of life.', opts:['childhood','childness','childship','childdom']},
+  {lvl:'A2', base:'POWER', ans:'powerful', pos:'adj', sent:'The car has a very ___ engine.', note:'power + -ful = full of power.', opts:['powerful','powerless','powery','powerous']},
 
   // ---------- B1 ----------
-  {lvl:'B1', base:'DECIDE', ans:'decision', pos:'noun', sent:'It was a difficult ___ to make.', note:'decide → decision (-sion, sustantivo).', opts:['decision','decidement','deciding','decidation']},
-  {lvl:'B1', base:'INFORM', ans:'information', pos:'noun', sent:'I need more ___ about the course.', note:'inform + -ation = sustantivo incontable.', opts:['information','informment','informness','informing']},
-  {lvl:'B1', base:'POSSIBLE', ans:'impossible', pos:'adj', sent:"It's ___ to finish all this today.", note:'im- se usa antes de p (no posible).', opts:['impossible','unpossible','inpossible','dispossible']},
-  {lvl:'B1', base:'DEVELOP', ans:'development', pos:'noun', sent:'The ___ of the city was very fast.', note:'develop + -ment (sustantivo).', opts:['development','developation','developness','developing']},
-  {lvl:'B1', base:'SCIENCE', ans:'scientist', pos:'noun', sent:'She wants to be a ___ and study space.', note:'science → scient + -ist (experto).', opts:['scientist','sciencer','sciencist','scienceman']},
-  {lvl:'B1', base:'CREATE', ans:'creative', pos:'adj', sent:'He is a very ___ artist.', note:'create + -ive (adjetivo).', opts:['creative','creatful','creational','creaty']},
-  {lvl:'B1', base:'EXPLAIN', ans:'explanation', pos:'noun', sent:'Give me an ___ for being late.', note:'explain → explanation (nota el cambio ai→a).', opts:['explanation','explainment','explaination','explainion']},
-  {lvl:'B1', base:'APPEAR', ans:'disappear', pos:'verb', sent:'The magician made the coin ___.', note:'dis- = opuesto (desaparecer).', opts:['disappear','unappear','misappear','deappear']},
+  {lvl:'B1', base:'DECIDE', ans:'decision', pos:'noun', sent:'It was a difficult ___ to make.', note:'decide → decision (-sion noun).', opts:['decision','decidement','deciding','decidation']},
+  {lvl:'B1', base:'INFORM', ans:'information', pos:'noun', sent:'I need more ___ about the course.', note:'inform + -ation = uncountable noun.', opts:['information','informment','informness','informing']},
+  {lvl:'B1', base:'POSSIBLE', ans:'impossible', pos:'adj', sent:"It's ___ to finish all this today.", note:'im- before p = not (not possible).', opts:['impossible','unpossible','inpossible','dispossible']},
+  {lvl:'B1', base:'DEVELOP', ans:'development', pos:'noun', sent:'The ___ of the city was very fast.', note:'develop + -ment (noun).', opts:['development','developation','developness','developing']},
+  {lvl:'B1', base:'SCIENCE', ans:'scientist', pos:'noun', sent:'She wants to be a ___ and study space.', note:'science → scient + -ist (expert).', opts:['scientist','sciencer','sciencist','scienceman']},
+  {lvl:'B1', base:'CREATE', ans:'creative', pos:'adj', sent:'He is a very ___ artist.', note:'create + -ive (adjective).', opts:['creative','creatful','creational','creaty']},
+  {lvl:'B1', base:'EXPLAIN', ans:'explanation', pos:'noun', sent:'Give me an ___ for being late.', note:'explain → explanation (note ai → a).', opts:['explanation','explainment','explaination','explainion']},
+  {lvl:'B1', base:'APPEAR', ans:'disappear', pos:'verb', sent:'The magician made the coin ___.', note:'dis- = opposite (vanish).', opts:['disappear','unappear','misappear','deappear']},
   {lvl:'B1', base:'SUCCEED', ans:'successful', pos:'adj', sent:'The new business was very ___.', note:'succeed → success + -ful.', opts:['successful','succeedful','successive','successness']},
   {lvl:'B1', base:'RESPONSIBLE', ans:'responsibility', pos:'noun', sent:'Looking after pets is a big ___.', note:'responsible → responsibility (-ity).', opts:['responsibility','responsibleness','responsibilment','responsability']},
 
   // ---------- B2 ----------
-  {lvl:'B2', base:'ACHIEVE', ans:'achievement', pos:'noun', sent:'Winning the prize was a great ___.', note:'achieve + -ment (logro).', opts:['achievement','achievation','achievance','achieving']},
-  {lvl:'B2', base:'ECONOMY', ans:'economic', pos:'adj', sent:"The country's ___ growth is strong this year.", note:'economy → economic (adj. de economía).', opts:['economic','economical','economal','economious']},
-  {lvl:'B2', base:'RELY', ans:'reliable', pos:'adj', sent:'We need a ___ car for long trips.', note:'rely → reli + -able (de confianza).', opts:['reliable','relyable','reliful','relying']},
+  {lvl:'B2', base:'ACHIEVE', ans:'achievement', pos:'noun', sent:'Winning the prize was a great ___.', note:'achieve + -ment (noun).', opts:['achievement','achievation','achievance','achieving']},
+  {lvl:'B2', base:'ECONOMY', ans:'economic', pos:'adj', sent:"The country's ___ growth is strong this year.", note:'economy → economic (adjective).', opts:['economic','economical','economal','economious']},
+  {lvl:'B2', base:'RELY', ans:'reliable', pos:'adj', sent:'We need a ___ car for long trips.', note:'rely → reli + -able (can be trusted).', opts:['reliable','relyable','reliful','relying']},
   {lvl:'B2', base:'PERSUADE', ans:'persuasive', pos:'adj', sent:'She gave a very ___ argument.', note:'persuade → persuasive (-ive).', opts:['persuasive','persuadive','persuasful','persuasional']},
-  {lvl:'B2', base:'ANXIOUS', ans:'anxiety', pos:'noun', sent:'He felt a lot of ___ before the exam.', note:'anxious → anxiety (sustantivo).', opts:['anxiety','anxiousness','anxiousity','anxietion']},
-  {lvl:'B2', base:'STRONG', ans:'strengthen', pos:'verb', sent:'Exercise helps to ___ your muscles.', note:'strong → strength + -en (hacer fuerte).', opts:['strengthen','strongen','strengthise','stronghten']},
+  {lvl:'B2', base:'ANXIOUS', ans:'anxiety', pos:'noun', sent:'He felt a lot of ___ before the exam.', note:'anxious → anxiety (noun).', opts:['anxiety','anxiousness','anxiousity','anxietion']},
+  {lvl:'B2', base:'STRONG', ans:'strengthen', pos:'verb', sent:'Exercise helps to ___ your muscles.', note:'strong → strength + -en (make strong).', opts:['strengthen','strongen','strengthise','stronghten']},
   {lvl:'B2', base:'COMPETE', ans:'competition', pos:'noun', sent:'She won first place in the ___.', note:'compete → competition (-ition).', opts:['competition','competement','competness','competive']},
-  {lvl:'B2', base:'ANALYSE', ans:'analysis', pos:'noun', sent:'The ___ of the data took several days.', note:'analyse → analysis (sustantivo).', opts:['analysis','analysation','analysement','analyseness']},
+  {lvl:'B2', base:'ANALYSE', ans:'analysis', pos:'noun', sent:'The ___ of the data took several days.', note:'analyse → analysis (noun).', opts:['analysis','analysation','analysement','analyseness']},
   {lvl:'B2', base:'VARY', ans:'variety', pos:'noun', sent:'The shop offers a wide ___ of products.', note:'vary → variety (-ety).', opts:['variety','variation','variousness','varyment']},
-  {lvl:'B2', base:'APPROPRIATE', ans:'inappropriate', pos:'adj', sent:'His joke was ___ for a formal meeting.', note:'in- = negativo (no apropiado).', opts:['inappropriate','unappropriate','disappropriate','misappropriate']},
+  {lvl:'B2', base:'APPROPRIATE', ans:'inappropriate', pos:'adj', sent:'His joke was ___ for a formal meeting.', note:'in- = not (not appropriate).', opts:['inappropriate','unappropriate','disappropriate','misappropriate']},
 
   // ---------- C1 ----------
-  {lvl:'C1', base:'RESEMBLE', ans:'resemblance', pos:'noun', sent:'There is a strong ___ between the two sisters.', note:'resemble + -ance (parecido).', opts:['resemblance','resemblement','resembility','resembleness']},
-  {lvl:'C1', base:'PERSIST', ans:'persistence', pos:'noun', sent:'Her ___ finally paid off.', note:'persist + -ence (constancia).', opts:['persistence','persistment','persistance','persistness']},
+  {lvl:'C1', base:'RESEMBLE', ans:'resemblance', pos:'noun', sent:'There is a strong ___ between the two sisters.', note:'resemble + -ance (likeness).', opts:['resemblance','resemblement','resembility','resembleness']},
+  {lvl:'C1', base:'PERSIST', ans:'persistence', pos:'noun', sent:'Her ___ finally paid off.', note:'persist + -ence (determination).', opts:['persistence','persistment','persistance','persistness']},
   {lvl:'C1', base:'CONTROVERSY', ans:'controversial', pos:'adj', sent:'It was a ___ decision that divided the team.', note:'controversy → controversial (-ial).', opts:['controversial','controversous','controversal','controversive']},
-  {lvl:'C1', base:'SUSTAIN', ans:'sustainable', pos:'adj', sent:'The company focuses on ___ energy.', note:'sustain + -able (sostenible).', opts:['sustainable','sustainful','sustentable','sustaining']},
+  {lvl:'C1', base:'SUSTAIN', ans:'sustainable', pos:'adj', sent:'The company focuses on ___ energy.', note:'sustain + -able (able to continue).', opts:['sustainable','sustainful','sustentable','sustaining']},
   {lvl:'C1', base:'AMBITION', ans:'ambitious', pos:'adj', sent:'She is very ___ and wants to lead the company.', note:'ambition → ambitious (-ous).', opts:['ambitious','ambitional','ambitful','ambitive']},
   {lvl:'C1', base:'JUSTIFY', ans:'justification', pos:'noun', sent:'There is no ___ for such rude behaviour.', note:'justify → justification (-ication).', opts:['justification','justifyment','justifiance','justifyness']},
-  {lvl:'C1', base:'FORTUNE', ans:'unfortunately', pos:'adv', sent:'___, the train was cancelled and we missed the show.', note:'fortune → un + fortunate + -ly (adverbio).', opts:['Unfortunately','Unfortunatly','Misfortunately','Disfortunately']},
-  {lvl:'C1', base:'PRACTICAL', ans:'impractical', pos:'adj', sent:'The plan was ___ and impossible to follow.', note:'im- = negativo (poco práctico).', opts:['impractical','unpractical','dispractical','inpractical']},
+  {lvl:'C1', base:'FORTUNE', ans:'unfortunately', pos:'adv', sent:'___, the train was cancelled and we missed the show.', note:'fortune → un- + fortunate + -ly (adverb).', opts:['Unfortunately','Unfortunatly','Misfortunately','Disfortunately']},
+  {lvl:'C1', base:'PRACTICAL', ans:'impractical', pos:'adj', sent:'The plan was ___ and impossible to follow.', note:'im- = not (not practical).', opts:['impractical','unpractical','dispractical','inpractical']},
   {lvl:'C1', base:'COMPETENT', ans:'competence', pos:'noun', sent:'His ___ as a manager was never in doubt.', note:'competent → competence (-ence).', opts:['competence','competentness','competency','competation'], alt:['competency']},
   {lvl:'C1', base:'ADVENTURE', ans:'adventurous', pos:'adj', sent:'He has an ___ spirit and loves to travel.', note:'adventure → adventurous (-ous).', opts:['adventurous','adventureful','adventural','adventury']}
 ];
 
-/* Builder items: parts concatenate exactly into the answer. */
+/* Builder items: parts concatenate exactly into the answer. Uses only the listed affixes. */
 const BUILD = [
-  {lvl:'A1', parts:['teach','er'], ans:'teacher', note:'raíz + -er (persona).'},
-  {lvl:'A1', parts:['care','ful'], ans:'careful', note:'raíz + -ful (lleno de).'},
-  {lvl:'A1', parts:['power','ful'], ans:'powerful', note:'raíz + -ful.'},
-  {lvl:'A1', parts:['un','fair'], ans:'unfair', note:'un- (negativo) + raíz.'},
-  {lvl:'A1', parts:['use','less'], ans:'useless', note:'raíz + -less (sin).'},
-  {lvl:'A2', parts:['dis','agree'], ans:'disagree', note:'dis- (opuesto) + raíz.'},
-  {lvl:'A2', parts:['friend','ship'], ans:'friendship', note:'raíz + -ship (estado/relación).'},
-  {lvl:'A2', parts:['kind','ness'], ans:'kindness', note:'raíz + -ness (cualidad).'},
-  {lvl:'A2', parts:['child','hood'], ans:'childhood', note:'raíz + -hood (etapa).'},
-  {lvl:'A2', parts:['re','write'], ans:'rewrite', note:'re- (otra vez) + raíz.'},
-  {lvl:'B1', parts:['dis','appear'], ans:'disappear', note:'dis- (opuesto) + raíz.'},
-  {lvl:'B1', parts:['in','correct'], ans:'incorrect', note:'in- (negativo) + raíz.'},
-  {lvl:'B1', parts:['agree','ment'], ans:'agreement', note:'raíz + -ment (sustantivo).'},
-  {lvl:'B1', parts:['employ','ment'], ans:'employment', note:'raíz + -ment.'},
-  {lvl:'B1', parts:['pre','view'], ans:'preview', note:'pre- (antes) + raíz.'},
-  {lvl:'B1', parts:['un','help','ful'], ans:'unhelpful', note:'un- + raíz + -ful (tres piezas).'},
-  {lvl:'B2', parts:['mis','understand'], ans:'misunderstand', note:'mis- (mal) + raíz.'},
-  {lvl:'B2', parts:['over','cook'], ans:'overcook', note:'over- (demasiado) + raíz.'},
-  {lvl:'B2', parts:['under','estimate'], ans:'underestimate', note:'under- (poco) + raíz.'},
-  {lvl:'B2', parts:['inter','act'], ans:'interact', note:'inter- (entre) + raíz.'},
-  {lvl:'B2', parts:['co','operate'], ans:'cooperate', note:'co- (junto) + raíz.'},
-  {lvl:'C1', parts:['non','sense'], ans:'nonsense', note:'non- (no) + raíz.'},
-  {lvl:'C1', parts:['super','market'], ans:'supermarket', note:'super- (grande) + raíz.'},
-  {lvl:'C1', parts:['anti','social'], ans:'antisocial', note:'anti- (contra) + raíz.'},
-  {lvl:'C1', parts:['dis','un','ity'], ans:'disunity', note:'orden correcto: dis + un... revisa las piezas.', bad:true},
-  {lvl:'C1', parts:['self','ish','ness'], ans:'selfishness', note:'self + -ish + -ness (tres piezas).'}
+  {lvl:'A1', parts:['teach','er'], ans:'teacher', note:'root + -er (person).'},
+  {lvl:'A1', parts:['care','ful'], ans:'careful', note:'root + -ful (full of).'},
+  {lvl:'A1', parts:['use','less'], ans:'useless', note:'root + -less (without).'},
+  {lvl:'A1', parts:['un','fair'], ans:'unfair', note:'un- (not) + root.'},
+  {lvl:'A1', parts:['kind','ness'], ans:'kindness', note:'root + -ness (quality).'},
+  {lvl:'A2', parts:['dis','agree'], ans:'disagree', note:'dis- (opposite) + root.'},
+  {lvl:'A2', parts:['re','write'], ans:'rewrite', note:'re- (again) + root.'},
+  {lvl:'A2', parts:['friend','ship'], ans:'friendship', note:'root + -ship (relationship).'},
+  {lvl:'A2', parts:['child','hood'], ans:'childhood', note:'root + -hood (stage of life).'},
+  {lvl:'A2', parts:['pre','view'], ans:'preview', note:'pre- (before) + root.'},
+  {lvl:'B1', parts:['dis','connect'], ans:'disconnect', note:'dis- (apart) + root.'},
+  {lvl:'B1', parts:['in','correct'], ans:'incorrect', note:'in- (not) + root.'},
+  {lvl:'B1', parts:['agree','ment'], ans:'agreement', note:'root + -ment (noun).'},
+  {lvl:'B1', parts:['employ','ment'], ans:'employment', note:'root + -ment (noun).'},
+  {lvl:'B1', parts:['non','sense'], ans:'nonsense', note:'non- (not) + root.'},
+  {lvl:'B1', parts:['un','help','ful'], ans:'unhelpful', note:'un- + root + -ful (three pieces).'},
+  {lvl:'B2', parts:['mis','understand'], ans:'misunderstand', note:'mis- (wrongly) + root.'},
+  {lvl:'B2', parts:['inter','act'], ans:'interact', note:'inter- (between) + root.'},
+  {lvl:'B2', parts:['co','operate'], ans:'cooperate', note:'co- (together) + root.'},
+  {lvl:'B2', parts:['super','market'], ans:'supermarket', note:'super- (above/big) + root.'},
+  {lvl:'B2', parts:['sub','marine'], ans:'submarine', note:'sub- (under) + root.'},
+  {lvl:'B2', parts:['bi','cycle'], ans:'bicycle', note:'bi- (two) + root.'},
+  {lvl:'B2', parts:['semi','circle'], ans:'semicircle', note:'semi- (half) + root.'},
+  {lvl:'C1', parts:['anti','social'], ans:'antisocial', note:'anti- (against) + root.'},
+  {lvl:'C1', parts:['trans','port'], ans:'transport', note:'trans- (across) + root.'},
+  {lvl:'C1', parts:['de','frost'], ans:'defrost', note:'de- (reverse/remove) + root.'},
+  {lvl:'C1', parts:['micro','scope'], ans:'microscope', note:'micro- (very small) + root.'},
+  {lvl:'C1', parts:['dis','agree','ment'], ans:'disagreement', note:'dis- + root + -ment (three pieces).'}
 ];
 
-/* Matching: affix -> meaning.  ex = ejemplo. */
+/* Matching: affix -> English meaning (from the school's affix list). */
 const AFFIX = [
-  {lvl:'A1', aff:'un-', mean:'no / lo contrario', ex:'unhappy'},
-  {lvl:'A1', aff:'-er', mean:'persona que hace algo', ex:'teacher'},
-  {lvl:'A1', aff:'-ful', mean:'lleno de', ex:'careful'},
-  {lvl:'A1', aff:'-less', mean:'sin', ex:'useless'},
-  {lvl:'A2', aff:'re-', mean:'otra vez', ex:'rewrite'},
-  {lvl:'A2', aff:'dis-', mean:'opuesto de', ex:'disagree'},
-  {lvl:'A2', aff:'-ness', mean:'cualidad / estado', ex:'kindness'},
-  {lvl:'A2', aff:'-ly', mean:'de manera… (adverbio)', ex:'quickly'},
-  {lvl:'B1', aff:'mis-', mean:'mal / de forma incorrecta', ex:'misunderstand'},
-  {lvl:'B1', aff:'-ment', mean:'resultado / acción (sustantivo)', ex:'movement'},
-  {lvl:'B1', aff:'-tion', mean:'acción / proceso (sustantivo)', ex:'action'},
-  {lvl:'B1', aff:'-ist', mean:'experto / persona', ex:'scientist'},
-  {lvl:'B2', aff:'over-', mean:'demasiado', ex:'overcook'},
-  {lvl:'B2', aff:'under-', mean:'poco / no suficiente', ex:'underpay'},
-  {lvl:'B2', aff:'-able', mean:'que se puede…', ex:'reliable'},
-  {lvl:'B2', aff:'-ive', mean:'que tiende a…', ex:'creative'},
-  {lvl:'C1', aff:'inter-', mean:'entre', ex:'interact'},
-  {lvl:'C1', aff:'anti-', mean:'contra', ex:'antisocial'},
-  {lvl:'C1', aff:'-ify', mean:'hacer / causar', ex:'simplify'},
-  {lvl:'C1', aff:'-ance', mean:'cualidad / estado (sustantivo)', ex:'resemblance'}
+  // A1
+  {lvl:'A1', aff:'un-', mean:'not / opposite of', ex:'unhappy'},
+  {lvl:'A1', aff:'-er / -or', mean:'person who does an action', ex:'teacher'},
+  {lvl:'A1', aff:'-ful', mean:'full of', ex:'careful'},
+  {lvl:'A1', aff:'-less', mean:'without / lacking', ex:'careless'},
+  {lvl:'A1', aff:'-ly', mean:'in a certain way (adverb)', ex:'quickly'},
+  {lvl:'A1', aff:'re-', mean:'again / back', ex:'rewrite'},
+  // A2
+  {lvl:'A2', aff:'dis-', mean:'apart / opposite of', ex:'disagree'},
+  {lvl:'A2', aff:'pre-', mean:'before', ex:'preheat'},
+  {lvl:'A2', aff:'-ness', mean:'state or quality', ex:'happiness'},
+  {lvl:'A2', aff:'-ment', mean:'action or result of a verb', ex:'movement'},
+  {lvl:'A2', aff:'-y', mean:'characterized by', ex:'rainy'},
+  {lvl:'A2', aff:'mis-', mean:'wrong / wrongly', ex:'misspell'},
+  // B1
+  {lvl:'B1', aff:'in- / im-', mean:'not / without', ex:'impossible'},
+  {lvl:'B1', aff:'non-', mean:'not / absence of', ex:'nonsense'},
+  {lvl:'B1', aff:'post-', mean:'after', ex:'post-war'},
+  {lvl:'B1', aff:'-ion / -tion', mean:'process, state or result', ex:'action'},
+  {lvl:'B1', aff:'-ist', mean:'person who practices something', ex:'scientist'},
+  {lvl:'B1', aff:'-ian', mean:'profession or skill', ex:'musician'},
+  {lvl:'B1', aff:'-able / -ible', mean:'capable of being', ex:'readable'},
+  {lvl:'B1', aff:'-ship', mean:'position / relationship', ex:'friendship'},
+  // B2
+  {lvl:'B2', aff:'anti-', mean:'against / opposite to', ex:'antibiotic'},
+  {lvl:'B2', aff:'de-', mean:'reverse / remove', ex:'defrost'},
+  {lvl:'B2', aff:'ex-', mean:'former', ex:'ex-president'},
+  {lvl:'B2', aff:'sub-', mean:'under / below', ex:'submarine'},
+  {lvl:'B2', aff:'super-', mean:'above / beyond', ex:'superstar'},
+  {lvl:'B2', aff:'inter-', mean:'between / among', ex:'international'},
+  {lvl:'B2', aff:'co- / con-', mean:'with / together', ex:'co-worker'},
+  {lvl:'B2', aff:'bi-', mean:'two', ex:'bicycle'},
+  {lvl:'B2', aff:'semi-', mean:'half / partial', ex:'semicircle'},
+  {lvl:'B2', aff:'-ity / -ty', mean:'quality or state', ex:'activity'},
+  {lvl:'B2', aff:'-hood', mean:'state / stage of life', ex:'childhood'},
+  {lvl:'B2', aff:'-ous / -ious', mean:'having the quality of', ex:'dangerous'},
+  {lvl:'B2', aff:'-al / -ial', mean:'relating to', ex:'natural'},
+  {lvl:'B2', aff:'-ive', mean:'having the nature of', ex:'creative'},
+  {lvl:'B2', aff:'-ize / -ise', mean:'to make or become', ex:'modernize'},
+  {lvl:'B2', aff:'-en', mean:'to make or become', ex:'strengthen'},
+  {lvl:'B2', aff:'-ee', mean:'person who receives an action', ex:'employee'},
+  // C1
+  {lvl:'C1', aff:'multi-', mean:'many', ex:'multicultural'},
+  {lvl:'C1', aff:'micro-', mean:'very small', ex:'microscope'},
+  {lvl:'C1', aff:'macro-', mean:'large / large-scale', ex:'macroeconomics'},
+  {lvl:'C1', aff:'mono-', mean:'one / single', ex:'monorail'},
+  {lvl:'C1', aff:'trans-', mean:'across / beyond', ex:'transport'},
+  {lvl:'C1', aff:'-ance / -ence', mean:'state or quality', ex:'importance'},
+  {lvl:'C1', aff:'-ify', mean:'to make or cause to be', ex:'simplify'},
+  {lvl:'C1', aff:'-ate', mean:'to become, produce or treat', ex:'activate'},
+  {lvl:'C1', aff:'-ward / -wards', mean:'in the direction of', ex:'forward'},
+  {lvl:'C1', aff:'-wise', mean:'in the direction of / referring to', ex:'clockwise'}
 ];
+
+/* ============================ GRADE / LEVELS ============================ */
+const ALL_LEVELS = ['A1','A2','B1','B2','C1'];
+const grade = (new URLSearchParams(location.search).get('grade')) || '';
+// grades 6-8: A1..B2  ·  grades 9-11 (and default): all levels
+const LIMITED = ['g6','g7','g8'];
+const ALLOWED = LIMITED.includes(grade) ? ['A1','A2','B1','B2'] : ALL_LEVELS;
 
 /* ============================ STATE ============================ */
 let state = { lvl:'all', mode:'build', queue:[], i:0, score:0, streak:0, best:0, answered:false, total:0 };
@@ -269,31 +297,49 @@ let state = { lvl:'all', mode:'build', queue:[], i:0, score:0, streak:0, best:0,
 const $ = s => document.querySelector(s);
 const card = $('#card');
 const shuffle = a => { a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]];} return a; };
-const cap = s => s.charAt(0).toUpperCase()+s.slice(1);
 const norm = s => s.trim().toLowerCase().replace(/[.,!?;:]$/,'');
 
+// back link keeps the grade
+$('#backlink').href = 'grammar.html' + (grade ? '?grade='+grade : '');
+
+// build level buttons for allowed levels only
+(function buildLevels(){
+  const g = $('#lvlGroup');
+  const all = document.createElement('button');
+  all.className='chipbtn lvl on all'; all.dataset.lvl='all'; all.textContent='All';
+  g.appendChild(all);
+  ALLOWED.forEach(L=>{
+    const b=document.createElement('button');
+    b.className='chipbtn lvl '+L.toLowerCase(); b.dataset.lvl=L; b.textContent=L;
+    g.appendChild(b);
+  });
+  g.querySelectorAll('.lvl').forEach(b=>b.onclick=()=>{
+    g.querySelectorAll('.lvl').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on'); state.lvl=b.dataset.lvl; startRound();
+  });
+})();
+
+function inScope(x){ return ALLOWED.includes(x.lvl) && (state.lvl==='all' || x.lvl===state.lvl); }
 function poolFor(mode){
-  const byLvl = x => state.lvl==='all' || x.lvl===state.lvl;
-  if(mode==='build') return BUILD.filter(x=>!x.bad).filter(byLvl);
-  if(mode==='match') return AFFIX.filter(byLvl);
-  return TRANSFORM.filter(byLvl);
+  if(mode==='build') return BUILD.filter(inScope);
+  if(mode==='match') return AFFIX.filter(inScope);
+  return TRANSFORM.filter(inScope);
 }
+function chunk(a,n){const out=[];for(let i=0;i<a.length;i+=n)out.push(a.slice(i,i+n));return out;}
 
 function startRound(){
   const pool = poolFor(state.mode);
   state.i=0; state.score=0; state.streak=0; state.best=0; state.answered=false;
   if(state.mode==='match'){
-    // build rounds of up to 5 pairs
-    state.queue = chunk(shuffle(pool),5);
+    state.queue = chunk(shuffle(pool),5).slice(0,5);
     state.total = state.queue.length;
   } else {
     state.queue = shuffle(pool).slice(0, Math.min(pool.length, 12));
     state.total = state.queue.length;
   }
-  if(state.total===0){ card.innerHTML='<div class="result"><div class="msg">No hay items para este nivel/modo todavía. Prueba otro nivel.</div></div>'; return; }
+  if(state.total===0){ card.innerHTML='<div class="result"><div class="msg">No items for this level/mode yet. Try another level.</div></div>'; return; }
   render();
 }
-function chunk(a,n){const out=[];for(let i=0;i<a.length;i+=n)out.push(a.slice(i,i+n));return out;}
 
 /* ============================ RENDER ============================ */
 function scoreBar(){
@@ -306,7 +352,7 @@ function scoreBar(){
   </div>`;
 }
 const tagFor = l => `<span class="tag ${l.toLowerCase()}">${l}</span>`;
-const posLabel = {noun:'sustantivo',adj:'adjetivo',verb:'verbo',adv:'adverbio'};
+const posLabel = {noun:'noun',adj:'adjective',verb:'verb',adv:'adverb'};
 
 function render(){
   if(state.i>=state.total){ return renderResult(); }
@@ -317,21 +363,23 @@ function render(){
   if(state.mode==='fce') return renderFce();
 }
 
-/* ---- Constructor ---- */
+const PREFIX_RE = /^(un|dis|re|mis|pre|post|in|im|il|ir|non|anti|de|ex|bi|multi|micro|macro|semi|mono|sub|super|inter|trans|co|con)$/;
+
+/* ---- Builder ---- */
 function renderBuild(){
   const it = state.queue[state.i];
   state.answered=false; state.slot=[];
   const pieces = shuffle(it.parts.map((p,idx)=>({p,idx})));
   card.innerHTML = scoreBar()
-    + `<div class="modehead">🧱 Constructor de palabras · ${tagFor(it.lvl)}</div>`
-    + `<div class="ask">Toca las piezas en el <b>orden correcto</b> para formar la palabra:</div>`
+    + `<div class="modehead">🧱 Word Builder · ${tagFor(it.lvl)}</div>`
+    + `<div class="ask">Tap the pieces in the <b>correct order</b> to build the word:</div>`
     + `<div class="buildslot empty" id="slot"></div>`
     + `<div class="bank" id="bank">`+ pieces.map(o=>{
-        const cls = /^(un|dis|re|mis|over|under|in|im|pre|inter|co|non|super|anti|self)$/.test(o.p)?'pre':(o.idx===it.parts.length-1?'suf':'');
+        const cls = PREFIX_RE.test(o.p) ? 'pre' : (o.idx===it.parts.length-1?'suf':'');
         return `<button class="piece ${cls}" data-idx="${o.idx}" data-p="${o.p}">${o.p}</button>`;
       }).join('')+`</div>`
     + `<div class="fb" id="fb"></div>`
-    + `<div class="actions"><button class="btn ghost" id="clr">Borrar</button><button class="btn" id="chk" disabled>Comprobar</button></div>`;
+    + `<div class="actions"><button class="btn ghost" id="clr">Clear</button><button class="btn" id="chk" disabled>Check</button></div>`;
   const slot=$('#slot');
   document.querySelectorAll('#bank .piece').forEach(b=>b.onclick=()=>{
     b.classList.add('used'); state.slot.push({p:b.dataset.p, el:b});
@@ -355,19 +403,19 @@ function checkBuild(it){
   document.querySelectorAll('#bank .piece').forEach(b=>b.classList.add('used'));
   const fb=$('#fb');
   fb.className='fb '+(ok?'ok':'no');
-  fb.innerHTML = (ok?'✅ ¡Correcto! ':'❌ Casi. ')+`<b>${it.ans}</b>. <span class="ex">${it.note}</span>`;
+  fb.innerHTML = (ok?'✅ Correct! ':'❌ Almost. ')+`<b>${it.ans}</b>. <span class="ex">${it.note}</span>`;
   nextBtn();
 }
 
-/* ---- Opción múltiple ---- */
+/* ---- Multiple choice ---- */
 function renderChoice(){
   const it = state.queue[state.i]; state.answered=false;
   const opts = shuffle(it.opts);
   card.innerHTML = scoreBar()
-    + `<div class="modehead">🔘 Opción múltiple · ${tagFor(it.lvl)} <span class="tag pos">${posLabel[it.pos]||it.pos}</span></div>`
-    + `<div class="base">Palabra base: <b>${it.base}</b></div>`
+    + `<div class="modehead">🔘 Multiple choice · ${tagFor(it.lvl)} <span class="tag pos">${posLabel[it.pos]||it.pos}</span></div>`
+    + `<div class="base">Base word: <b>${it.base}</b></div>`
     + `<div class="prompt">${it.sent.replace('___','<span class="gap">?</span>')}</div>`
-    + `<div class="ask">Elige la forma correcta:</div>`
+    + `<div class="ask">Choose the correct form:</div>`
     + `<div class="opts" id="opts">`+ opts.map(o=>`<button class="opt" data-o="${o}">${o}</button>`).join('')+`</div>`
     + `<div class="fb" id="fb"></div>`
     + `<div class="actions" id="acts"></div>`;
@@ -381,27 +429,29 @@ function renderChoice(){
       x.style.pointerEvents='none';
     });
     const fb=$('#fb'); fb.className='fb '+(ok?'ok':'no');
-    fb.innerHTML=(ok?'✅ ¡Bien! ':'❌ La correcta es ')+`<b>${it.ans}</b>. <span class="ex">${it.note}</span>`;
+    fb.innerHTML=(ok?'✅ Correct! ':'❌ The correct answer is ')+`<b>${it.ans}</b>. <span class="ex">${it.note}</span>`;
     nextBtn();
   });
 }
 
-/* ---- Rellenar huecos (con pista de 1ª letra) ---- */
+/* ---- Gap-fill (with first-letter hint) ---- */
 function renderGap(){ renderInput('gap'); }
-/* ---- FCE Word Formation (sin pista) ---- */
+/* ---- FCE Word Formation (no hint) ---- */
 function renderFce(){ renderInput('fce'); }
 
 function renderInput(kind){
   const it = state.queue[state.i]; state.answered=false;
-  const hint = kind==='gap' ? `<div class="ask">Pista: empieza por <b>${it.ans[0]}</b> · ${it.ans.length} letras</div>` : `<div class="ask">Transforma la palabra base para completar la frase (estilo Cambridge FCE).</div>`;
+  const hint = kind==='gap'
+    ? `<div class="ask">Hint: starts with <b>${it.ans[0]}</b> · ${it.ans.length} letters</div>`
+    : `<div class="ask">Transform the base word to complete the sentence (Cambridge FCE style).</div>`;
   card.innerHTML = scoreBar()
-    + `<div class="modehead">${kind==='gap'?'✍️ Rellenar huecos':'🎯 Word Formation (FCE)'} · ${tagFor(it.lvl)} <span class="tag pos">${posLabel[it.pos]||it.pos}</span></div>`
-    + `<div class="base">Palabra base: <b>${it.base}</b></div>`
+    + `<div class="modehead">${kind==='gap'?'✍️ Gap-fill':'🎯 Word Formation (FCE)'} · ${tagFor(it.lvl)} <span class="tag pos">${posLabel[it.pos]||it.pos}</span></div>`
+    + `<div class="base">Base word: <b>${it.base}</b></div>`
     + `<div class="prompt">${it.sent.replace('___','<span class="gap">_____</span>')}</div>`
     + hint
-    + `<input class="answer" id="inp" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Escribe la palabra…">`
+    + `<input class="answer" id="inp" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Type the word…">`
     + `<div class="fb" id="fb"></div>`
-    + `<div class="actions"><button class="btn" id="chk">Comprobar</button></div>`;
+    + `<div class="actions"><button class="btn" id="chk">Check</button></div>`;
   const inp=$('#inp'); inp.focus();
   const submit=()=>{
     if(state.answered) return;
@@ -412,70 +462,66 @@ function renderInput(kind){
     score(ok);
     inp.disabled=true; $('#chk').disabled=true;
     const fb=$('#fb'); fb.className='fb '+(ok?'ok':'no');
-    fb.innerHTML=(ok?'✅ ¡Correcto! ':`❌ Respuesta: `)+`<b>${it.ans}</b>. <span class="ex">${it.note}</span>`;
+    fb.innerHTML=(ok?'✅ Correct! ':'❌ Answer: ')+`<b>${it.ans}</b>. <span class="ex">${it.note}</span>`;
     nextBtn();
   };
   $('#chk').onclick=submit;
   inp.addEventListener('keydown',e=>{ if(e.key==='Enter'){ if(state.answered){ $('#nx') && $('#nx').click(); } else submit(); } });
 }
 
-/* ---- Emparejar afijos ---- */
+/* ---- Match affixes ---- */
 function renderMatch(){
   const set = state.queue[state.i];
   const left = shuffle(set); const right = shuffle(set);
-  state.matchSel=null; state.matchDone=0;
+  state.selL=null; state.selR=null; state.matchDone=0;
   card.innerHTML = scoreBar()
-    + `<div class="modehead">🔗 Empareja afijo y significado · ${state.lvl==='all'?'A1–C1':tagFor(set[0].lvl)}</div>`
-    + `<div class="ask">Toca un <b>afijo</b> y luego su <b>significado</b>.</div>`
+    + `<div class="modehead">🔗 Match the affix with its meaning · ${state.lvl==='all'?ALLOWED[0]+'–'+ALLOWED[ALLOWED.length-1]:tagFor(set[0].lvl)}</div>`
+    + `<div class="ask">Tap an <b>affix</b>, then its <b>meaning</b>.</div>`
     + `<div class="matchwrap">
         <div class="mcol" id="L">`+ left.map(o=>`<div class="mitem" data-aff="${o.aff}"><span class="aff">${o.aff}</span></div>`).join('')+`</div>
         <div class="mcol" id="R">`+ right.map(o=>`<div class="mitem" data-aff="${o.aff}">${o.mean}</div>`).join('')+`</div>
       </div>`
     + `<div class="fb" id="fb"></div>`
     + `<div class="actions" id="acts"></div>`;
-  const clear=()=>document.querySelectorAll('.mitem.sel').forEach(x=>x.classList.remove('sel'));
-  document.querySelectorAll('#L .mitem').forEach(el=>el.onclick=()=>{ clearSide('#L'); el.classList.add('sel'); state.selL=el; tryPair(); });
-  document.querySelectorAll('#R .mitem').forEach(el=>el.onclick=()=>{ clearSide('#R'); el.classList.add('sel'); state.selR=el; tryPair(); });
+  document.querySelectorAll('#L .mitem').forEach(el=>el.onclick=()=>{ clearSide('#L'); el.classList.add('sel'); state.selL=el; tryPair(set); });
+  document.querySelectorAll('#R .mitem').forEach(el=>el.onclick=()=>{ clearSide('#R'); el.classList.add('sel'); state.selR=el; tryPair(set); });
   function clearSide(sel){document.querySelectorAll(sel+' .mitem.sel').forEach(x=>x.classList.remove('sel'));}
-  function tryPair(){
-    if(!state.selL||!state.selR) return;
-    const a=state.selL, b=state.selR;
-    if(a.dataset.aff===b.dataset.aff){
-      a.classList.remove('sel'); b.classList.remove('sel');
-      a.classList.add('done'); b.classList.add('done');
-      const ex=(set.find(x=>x.aff===a.dataset.aff)||{}).ex;
-      a.querySelector('.aff') && (a.innerHTML=`<span class="aff">${a.dataset.aff}</span> · <span style="font-weight:600;color:#166534">${ex}</span>`);
-      state.score+=10; state.streak++; if(state.streak>state.best)state.best=state.streak;
-      state.matchDone++; state.selL=null; state.selR=null;
-      updateBars();
-      if(state.matchDone===set.length){
-        const fb=$('#fb'); fb.className='fb ok'; fb.innerHTML='✅ ¡Grupo completo! Bien hecho.';
-        nextBtn();
-      }
-    } else {
-      state.streak=0;
-      a.classList.add('no'); b.classList.add('no');
-      setTimeout(()=>{ a.classList.remove('sel','no'); b.classList.remove('sel','no'); },500);
-      state.selL=null; state.selR=null; updateBars();
+}
+function tryPair(set){
+  if(!state.selL||!state.selR) return;
+  const a=state.selL, b=state.selR;
+  if(a.dataset.aff===b.dataset.aff){
+    a.classList.remove('sel'); b.classList.remove('sel');
+    a.classList.add('done'); b.classList.add('done');
+    const ex=(set.find(x=>x.aff===a.dataset.aff)||{}).ex;
+    a.innerHTML=`<span class="aff">${a.dataset.aff}</span> · <span style="font-weight:600;color:#166534">${ex}</span>`;
+    state.score+=10; state.streak++; if(state.streak>state.best)state.best=state.streak;
+    state.matchDone++; state.selL=null; state.selR=null; refreshBar();
+    if(state.matchDone===set.length){
+      const fb=$('#fb'); fb.className='fb ok'; fb.innerHTML='✅ Group complete! Well done.';
+      nextBtn();
     }
+  } else {
+    state.streak=0;
+    a.classList.add('no'); b.classList.add('no');
+    const aa=a, bb=b;
+    setTimeout(()=>{ aa.classList.remove('sel','no'); bb.classList.remove('sel','no'); },500);
+    state.selL=null; state.selR=null; refreshBar();
   }
 }
-function updateBars(){
-  const bar=card.querySelector('.bar'); if(bar) bar.outerHTML=scoreBar();
-  // reattach not needed for match interactions since bar has no handlers
-}
+function refreshBar(){ const bar=card.querySelector('.bar'); if(bar) bar.outerHTML=scoreBar(); }
 
 /* ============================ SCORING / NAV ============================ */
 function score(ok){
   state.answered=true;
   if(ok){ state.streak++; if(state.streak>state.best)state.best=state.streak;
-    state.score += 10 + Math.min(state.streak-1,5)*2; // bono por racha
+    state.score += 10 + Math.min(state.streak-1,5)*2;
   } else { state.streak=0; }
 }
 function nextBtn(){
   const acts = card.querySelector('.actions');
   const b=document.createElement('button'); b.className='btn'; b.id='nx';
-  b.textContent = (state.i>=state.total-1)?'Ver resultado ▸':'Siguiente ▸';
+  b.textContent = (state.i>=state.total-1)?'See result ▸':'Next ▸';
   b.onclick=()=>{ state.i++; render(); };
   if(acts){ acts.innerHTML=''; acts.appendChild(b); } else {
     const d=document.createElement('div'); d.className='actions'; d.appendChild(b); card.appendChild(d);
@@ -487,35 +533,32 @@ function renderResult(){
     ? state.queue.reduce((s,g)=>s+g.length,0)*10
     : state.total*10;
   const pctScore = max? Math.round(state.score/max*100):0;
-  let msg = pctScore>=90?'¡Excelente! Dominas la formación de palabras. 🌟'
-          : pctScore>=70?'¡Muy bien! Sigue practicando los afijos. 👏'
-          : pctScore>=50?'Buen intento. Repasa las reglas y vuelve a intentarlo. 💪'
-          : 'Sigue practicando: cada raíz cambia con su prefijo o sufijo. 📚';
+  let msg = pctScore>=90?"Excellent! You've mastered word formation. 🌟"
+          : pctScore>=70?'Great job! Keep practising the affixes. 👏'
+          : pctScore>=50?'Good try. Review the rules and play again. 💪'
+          : 'Keep practising: each root changes with its prefix or suffix. 📚';
   card.innerHTML = `<div class="result">
     <div class="big">${state.score}</div>
     <div class="msg">${msg}</div>
-    <div class="bd">Mejor racha: 🔥 ${state.best} · Nivel: ${state.lvl==='all'?'A1–C1':state.lvl} · Modo: ${modeName(state.mode)}</div>
+    <div class="bd">Best streak: 🔥 ${state.best} · Level: ${state.lvl==='all'?ALLOWED[0]+'–'+ALLOWED[ALLOWED.length-1]:state.lvl} · Mode: ${modeName(state.mode)}</div>
     <div class="actions" style="justify-content:center;margin-top:18px">
-      <button class="btn ghost" id="again">Otra ronda</button>
-      <button class="btn" id="switch">Cambiar modo</button>
+      <button class="btn ghost" id="again">Play again</button>
+      <button class="btn" id="switch">Change mode</button>
     </div>
   </div>`;
   $('#again').onclick=startRound;
   $('#switch').onclick=()=>{ document.querySelector('#modeGroup').scrollIntoView({behavior:'smooth'}); };
 }
-function modeName(m){return {build:'Constructor',choice:'Opción múltiple',match:'Emparejar',gap:'Rellenar huecos',fce:'Word Formation (FCE)'}[m];}
+function modeName(m){return {build:'Builder',choice:'Multiple choice',match:'Match',gap:'Gap-fill',fce:'Word Formation (FCE)'}[m];}
 
-/* ============================ CONTROLS ============================ */
-document.querySelectorAll('#lvlGroup .lvl').forEach(b=>b.onclick=()=>{
-  document.querySelectorAll('#lvlGroup .lvl').forEach(x=>x.classList.remove('on'));
-  b.classList.add('on'); state.lvl=b.dataset.lvl; startRound();
-});
+/* ============================ MODE CONTROLS ============================ */
 document.querySelectorAll('#modeGroup .mode').forEach(b=>b.onclick=()=>{
   document.querySelectorAll('#modeGroup .mode').forEach(x=>x.classList.remove('on'));
   b.classList.add('on'); state.mode=b.dataset.mode; startRound();
 });
 
 startRound();
+/* build v2 */
 </script>
 </body>
 </html>
