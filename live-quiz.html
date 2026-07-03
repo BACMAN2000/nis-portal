@@ -73,6 +73,7 @@ input.in:focus{border-color:var(--blue);}
 .qtext{background:#fff;border-radius:18px;padding:26px;font-size:clamp(22px,3.6vw,34px);font-weight:800;
   text-align:center;color:var(--navy);box-shadow:0 12px 30px rgba(0,0,0,.2);margin-bottom:16px;}
 .answered-n{color:#fff;font-weight:800;text-align:center;margin-bottom:10px;font-size:18px;}
+.answered-n .who{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.28);color:#fff;font-weight:700;font-size:13px;padding:3px 10px;border-radius:999px;margin:4px 3px 0;}
 .opts{display:grid;grid-template-columns:1fr 1fr;gap:14px;flex:1;}
 .opt{border-radius:16px;padding:20px;color:#fff;font-size:clamp(17px,2.4vw,22px);font-weight:800;
   display:flex;align-items:center;gap:14px;min-height:88px;text-align:left;box-shadow:0 8px 20px rgba(0,0,0,.22);transition:.12s;}
@@ -529,7 +530,7 @@ function renderHostQuestion(){
   $('hqText').textContent=q[0];
   const box=$('hqOpts'); box.innerHTML='';
   q[1].forEach((opt,i)=>{const d=document.createElement('div');d.className='opt c'+i;
-    d.innerHTML='<span class="shape">'+SHAPES[i]+'</span><span>'+opt+'</span><span class="cnt" id="cnt'+i+'">0</span>';box.appendChild(d);});
+    d.innerHTML='<span class="shape">'+SHAPES[i]+'</span><span>'+opt+'</span>';box.appendChild(d);});
   $('hqAnswered').textContent='0 answers';
   show('s-hq');
 }
@@ -551,11 +552,11 @@ function hostOnAnswer(a){
   const pts=correct?Math.round(500+500*frac):0;
   ans[a.pid]={choice:a.choice,pts:pts,correct:correct};
   if(H.players[a.pid]) H.players[a.pid].score+=pts;
-  // live counts
-  const counts=[0,0,0,0]; Object.values(ans).forEach(x=>counts[x.choice]++);
-  counts.forEach((c,i)=>{const el=$('cnt'+i);if(el)el.textContent=c;});
+  // Durante la pregunta NO se muestra cuántos van por cada color (evita que se
+  // copien al más votado). Solo el TOTAL de respuestas + quién ya votó (sin su opción).
   const na=Object.keys(ans).length, tot=Object.keys(H.players).length;
-  $('hqAnswered').textContent=na+' answer'+(na!==1?'s':'');
+  const who=Object.keys(ans).map(pid=>(H.players[pid]&&H.players[pid].name)||'').filter(Boolean);
+  $('hqAnswered').innerHTML='<b>'+na+'</b> answer'+(na!==1?'s':'')+(who.length?(' · '+who.map(n=>'<span class="who">✓ '+n+'</span>').join('')):'');
   if(tot>0 && na>=tot){ clearInterval(hostTimerId); setTimeout(hostReveal,400); }
 }
 function hostReveal(){
