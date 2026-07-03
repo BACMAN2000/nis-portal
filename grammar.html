@@ -52,9 +52,9 @@ const META={g6:['6️⃣','6th grade','A2'],g7:['7️⃣','7th grade','A2'],g8:[
 
 // Unidades por grado. go:true = juego listo; soon:true = próximamente.
 const UNITS={
-  g6:[{ico:'⏱️',t:'Present Simple vs Continuous',d:'Rutinas vs. lo que pasa ahora.',href:'grammar-quiz.html?set=a2-present'}],
-  g7:[{ico:'⏱️',t:'Present Simple vs Continuous',d:'Rutinas vs. lo que pasa ahora.',href:'grammar-quiz.html?set=a2-present'}],
-  g8:[{ico:'✅',t:'Present Perfect vs Past Simple',d:'ever/never/already/since vs. yesterday/last…',href:'grammar-quiz.html?set=b1-perfect'}],
+  g6:[{ico:'🧩',t:'Word Formation',d:'Prefixes, suffixes & roots — 5 CEFR games.',href:'word-formation.html?grade=g6'},{ico:'⏱️',t:'Present Simple vs Continuous',d:'Rutinas vs. lo que pasa ahora.',href:'grammar-quiz.html?set=a2-present'}],
+  g7:[{ico:'🧩',t:'Word Formation',d:'Prefixes, suffixes & roots — 5 CEFR games.',href:'word-formation.html?grade=g7'},{ico:'⏱️',t:'Present Simple vs Continuous',d:'Rutinas vs. lo que pasa ahora.',href:'grammar-quiz.html?set=a2-present'}],
+  g8:[{ico:'🧩',t:'Word Formation',d:'Prefixes, suffixes & roots — 5 CEFR games.',href:'word-formation.html?grade=g8'},{ico:'✅',t:'Present Perfect vs Past Simple',d:'ever/never/already/since vs. yesterday/last…',href:'grammar-quiz.html?set=b1-perfect'}],
   g9:[
     {ico:'🗣️',t:'Reported Speech — Lab',d:'Aprende los 4 cambios (animado) y practica statements, questions y commands.',href:'reported-speech-lab.html'},
     {ico:'⏪',t:'Backshifting Machine',d:'Cada tiempo un paso atrás: ladder, matching, drill y whack-a-mole (incluye modales).',href:'backshifting.html'},
@@ -62,14 +62,15 @@ const UNITS={
     {ico:'🗣️',t:'Reported Speech — Quiz',d:'Elige la transformación correcta.',href:'reported-speech.html'},
     {ico:'🔤',t:'Reported Speech — Ordena',d:'Ordena las palabras del reported speech.',href:'reported-speech-order.html'},
     {ico:'🎯',t:'Reporting Verbs (Challenge)',d:'Avanzado B2: advise/suggest/apologise/accuse… con su patrón. Con racha y cronómetro.',href:'reported-speech-verbs.html'},
-    {ico:'🧩',t:'Word Formation',d:'Prefijos, sufijos y raíces (A1–C1): constructor, quiz, matching y FCE.',href:'word-formation.html'},
+    {ico:'🧩',t:'Word Formation',d:'Prefixes, suffixes & roots — 5 CEFR games.',href:'word-formation.html?grade=g9'},
     {ico:'🔁',t:'Passive Voice',d:'be + participio: el foco en la acción.',href:'grammar-quiz.html?set=b2-passive'}
   ],
   g10:[
+    {ico:'🧩',t:'Word Formation',d:'Prefixes, suffixes & roots — 5 CEFR games.',href:'word-formation.html?grade=g10'},
     {ico:'🔁',t:'Passive Voice',d:'be + participio: el foco en la acción.',href:'grammar-quiz.html?set=b2-passive'},
     {ico:'✅',t:'Present Perfect vs Past Simple',d:'Repaso de tiempos clave B2.',href:'grammar-quiz.html?set=b1-perfect'}
   ],
-  g11:[{ico:'🔗',t:'Conditionals (advanced)',d:'Mixtos, wish e inversión (Had I…, Should it…).',href:'grammar-quiz.html?set=c1-cond'}]
+  g11:[{ico:'🧩',t:'Word Formation',d:'Prefixes, suffixes & roots — 5 CEFR games.',href:'word-formation.html?grade=g11'},{ico:'🔗',t:'Conditionals (advanced)',d:'Mixtos, wish e inversión (Had I…, Should it…).',href:'grammar-quiz.html?set=c1-cond'}]
 };
 
 const grade=(new URLSearchParams(location.search).get('grade'))||'g9';
