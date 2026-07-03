@@ -222,6 +222,8 @@ function nishootJoinBody(){ return `
   </div>
   <iframe src="live-quiz.html?join=1&v=8" title="NIShoot Live" allow="autoplay" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#0d1d33"></iframe>`; }
 function studentNishoot(){ _setNav('nishoot'); $('#main').innerHTML = `${_backBtn("window._nav('english')",'English')}<h1>🎮 NIShoot Live</h1>${nishootJoinBody()}`; }
+/* Student view: English Games Lab (self-contained practice games). */
+function studentGames(){ _setNav('games'); $('#main').innerHTML = `${_backBtn("window._nav('english')",'English')}<h1>🎲 Games Lab</h1>${gamesLabBody()}`; }
 
 /* Phonics Studio embedded as an iframe (same-origin app in /phonics).
    ?embed=1 tells it to hide its own top bar so it nests under the portal. */
@@ -1695,6 +1697,7 @@ const ENGLISH_AREAS = [
   {emoji:'🎙️', title:'Pronunciation', desc:'Escucha cada sonido, mira la lengua y el aire, y practica.', nav:'coach',    node:'english.pronunciation'},
   {emoji:'🎓', title:'Mocks',         desc:'Simulacros oficiales MOCK 1 y MOCK 2 por destreza.',        nav:'mocks'},
   {emoji:'🎮', title:'NIShoot Live',  desc:'Únete al juego en vivo de tu clase: entra con el PIN.',    nav:'nishoot'},
+  {emoji:'🎲', title:'Games Lab',     desc:'Juegos de gramática, vocabulario, phrasal verbs e idioms (A1–C1).', nav:'games'},
   {emoji:'🏫', title:'Classes',       desc:'Material de clase por grado: grammar, actividades y más.',  nav:'classes',  node:'english.classes'},
   {emoji:'🎯', title:'Practice Tests',desc:'Prácticas 1, 2 y 3 en formato Cambridge, siempre disponibles.', nav:'practice', node:'english.practice'},
   {emoji:'🔤', title:'Phonics',       desc:'Sonidos y formas de las palabras: CVC, blends, magic-e.',  nav:'phonics',  node:'english.phonics'},
@@ -1906,7 +1909,7 @@ window._nav=(k)=>{
   if(m=/^classes_(g\d+)$/.exec(k))     return studentGrade(m[1]);
   const fn={english:()=>studentSubject('english'),french:()=>studentSubject('french'),general:studentGeneral,
     mocks:studentMocks,practice:studentPractice,library:studentLibrary,mun:studentMun,classes:studentClasses,
-    phonics:studentPhonics,coach:studentCoach,results:studentResults,nishoot:studentNishoot,
+    phonics:studentPhonics,coach:studentCoach,results:studentResults,nishoot:studentNishoot,games:studentGames,
     final:studentFinal,home:studentHub}[k];
   if(fn) fn();
 };
