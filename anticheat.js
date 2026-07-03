@@ -43,6 +43,7 @@
   var paused = false;            // pausa temporal (print / portapapeles propios)
   var awayActive = false;        // hay un episodio "fuera" en curso
   var awayStart = 0;
+  var lastResizeMs = 0;          // marca de tiempo del último resize / pantalla completa
 
   /* ---------- utilidades ---------- */
   function nowMs() { return (window.performance && performance.now) ? performance.now() : (+new Date()); }
@@ -319,6 +320,9 @@
      REGRESO tras un episodio "fuera". */
   function awayMin() { return (opts.minAwayMs != null) ? opts.minAwayMs : 1500; }
   function focusGrace() { return (opts.focusGraceMs != null) ? opts.focusGraceMs : 3000; }
+  // Ventana de gracia tras redimensionar / entrar-salir de pantalla completa:
+  // cambiar el tamaño de la ventana NO es "salir", así que no debe costar vidas.
+  function resizeGrace() { return (opts.resizeGraceMs != null) ? opts.resizeGraceMs : 1500; }
   var awaySource = '';
   function beginAway(source) {
     if (!armed || paused || st.locked || awayActive) return;
@@ -327,6 +331,8 @@
   function endAway() {
     if (!awayActive) return;
     awayActive = false;
+    // Si justo hubo un resize / pantalla completa, el blur fue por eso, no por salir.
+    if (awaySource === 'blur' && (nowMs() - lastResizeMs) < resizeGrace()) return;
     var dt = nowMs() - awayStart;
     var min = (awaySource === 'blur') ? focusGrace() : awayMin();
     if (dt < min) return;                     // salida demasiado corta → no penaliza
@@ -338,9 +344,19 @@
   }
   function onWinBlur() {
     // Confirma que la VENTANA (no un iframe hijo) perdió el foco de verdad.
-    setTimeout(function () { if (!st.locked && !document.hasFocus()) beginAway('blur'); }, 250);
+    // Ignora el blur momentáneo que provocan redimensionar o pantalla completa.
+    setTimeout(function () {
+      if (st.locked) return;
+      if ((nowMs() - lastResizeMs) < resizeGrace()) return;
+      if (!document.hasFocus()) beginAway('blur');
+    }, 250);
   }
   function onWinFocus() { endAway(); }
+  // Redimensionar la ventana o cambiar de/hacia pantalla completa NO cuenta como salir.
+  function onResize() {
+    lastResizeMs = nowMs();
+    if (awayActive && awaySource === 'blur') awayActive = false;  // cancela un episodio de blur en curso
+  }
 
   /* ---------- bloqueo de copiar/pegar/traductores ---------- */
   function blockClipboard() {
@@ -387,6 +403,10 @@
     window.addEventListener('blur', onWinBlur);
     window.addEventListener('focus', onWinFocus);
     window.addEventListener('pageshow', function () { if (document.visibilityState === 'visible') endAway(); });
+    // Resize / pantalla completa: no penalizar por cambiar el tamaño de la ventana.
+    window.addEventListener('resize', onResize);
+    document.addEventListener('fullscreenchange', onResize);
+    document.addEventListener('webkitfullscreenchange', onResize);
     // No penalizar por el diálogo de impresión propio.
     window.addEventListener('beforeprint', pause);
     window.addEventListener('afterprint', function () { setTimeout(resume, 300); });
