@@ -142,6 +142,9 @@
   .checklist{margin-top:12px; font-size:13px}
   .checklist label{display:flex; gap:8px; align-items:flex-start; margin-bottom:6px; cursor:pointer}
   @media(max-width:640px){ .wr-cols{grid-template-columns:1fr} }
+  .reading{max-width:680px; margin:0 auto}
+  .reading p{font-size:16px; line-height:1.85; margin:0 0 14px; color:#1e293b; text-align:justify}
+  .reading p:first-of-type::first-letter{font-size:2.6em; font-weight:800; color:var(--blue); float:left; line-height:.9; padding:2px 8px 0 0}
   .score{font-size:2.5rem; font-weight:800; color:var(--blue)}
   .toast{margin-top:8px; font-weight:700}
   .toast.ok{color:#059669} .toast.no{color:#dc2626}
@@ -577,6 +580,7 @@ let view={screen:"chapters", chap:null, act:null};
 function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
 
 const ACTS=[
+  {id:"read",          ico:"📖", name:"Read the chapter", desc:"Read the story of this chapter (simplified, B1.2)."},
   {id:"comprehension", ico:"❓", name:"Comprehension",   desc:"8 questions about the chapter, with explanations."},
   {id:"truefalse",     ico:"✅", name:"True / False",     desc:"Decide if each statement is true or false."},
   {id:"multiplechoice",ico:"🔤", name:"Multiple Choice",  desc:"Choose the correct meaning of each word."},
@@ -1019,8 +1023,69 @@ function actScramble(c){
   score=0; idx=0; play();
 }
 
+/* ============================================================
+   READ THE CHAPTER
+   Simplified B1.2 retelling written for NIS (original text — NOT
+   the copyrighted Black Cat reader). One entry per chapter number.
+   ============================================================ */
+const READINGS = {
+1:["Algernon Moncrieff lived in a fashionable flat in London. One afternoon his friend Jack Worthing came to visit him. In town everybody knew Jack as ‘Ernest’, and he had come to ask Gwendolen, Algernon’s cousin, to marry him.",
+"Before Jack could speak, Algernon showed him a silver cigarette case. ‘You left this here last time,’ he said. ‘But it is a strange thing. Inside there is a message: “From little Cecily, with her fondest love to her dear Uncle Jack.” Who is Cecily, and why does she call you Jack?’",
+"Jack had to tell the truth. In the country he was called Jack, and he was the guardian of a young girl called Cecily. In town he used the name Ernest. He had even invented a wicked younger brother, ‘Ernest’, so that he had an excuse to leave the country and enjoy himself in London.",
+"Algernon laughed, because he had a secret too. He had invented a sick friend called Bunbury. When he wanted to escape a boring dinner, he simply said that poor Bunbury was ill and needed him in the country. ‘You are a Bunburyist,’ he told Jack, ‘just like me!’"],
+2:["That afternoon Lady Bracknell and her daughter Gwendolen were coming to tea. Algernon had ordered special cucumber sandwiches for his aunt. But while he waited, he ate every single one of them himself!",
+"When Lady Bracknell arrived and asked for the cucumber sandwiches, Algernon looked surprised. He called the butler, Lane, who said calmly that there had been no cucumbers in the shop that morning, ‘not even for ready money’. It was, of course, not true.",
+"While Algernon took his aunt into another room, Jack was finally alone with Gwendolen. Nervously, he told her how much he admired her. Gwendolen was happy. ‘I have always wanted to love a man called Ernest,’ she said. ‘It is a name that inspires complete confidence. The moment I heard your name was Ernest, I knew I would love you.’",
+"Jack asked her to marry him, and she accepted. But Jack was worried, because his real name was not Ernest at all."],
+3:["When Lady Bracknell came back into the room, she was not pleased to find her daughter engaged. Before she would agree, she wanted to interview Jack herself.",
+"She asked him many questions. Did he smoke? How much money did he have? Where were his houses? Jack answered well: he had a good income and property in town and in the country.",
+"Then Lady Bracknell asked about his family. This was a problem. Jack explained that he did not know his parents. As a baby, he had been found in a large black handbag at Victoria Station, and a kind gentleman, Mr Thomas Cardew, had adopted him.",
+"Lady Bracknell was astonished. ‘To be born, or at least brought up, in a handbag seems to me a great mistake,’ she said coldly. She refused to let Gwendolen marry a man with no family, and advised Jack to ‘acquire some relations as soon as possible’. Then she left."],
+4:["Meanwhile, in the country, life was quiet at Jack’s Manor House. His young ward, Cecily, was supposed to study German with her governess, Miss Prism. But Cecily found her lessons boring and preferred to write in her diary or dream about romance. Miss Prism, for her part, secretly admired the local rector, Dr Chasuble.",
+"One day a surprising visitor arrived. It was Algernon — but he introduced himself as ‘Ernest’, Jack’s wicked younger brother! Cecily was delighted. For months she had imagined this romantic, wicked brother, and now here he was, charming and handsome.",
+"Cecily did not know that the real Jack had already decided to ‘kill’ his imaginary brother. So while Jack was planning bad news in town, Algernon was happily pretending to be that very brother in the country."],
+5:["Soon Jack himself arrived home, dressed all in black. With a sad face, he announced terrible news: his poor brother Ernest had died suddenly in Paris, of a bad chill.",
+"But there was a problem. At that very moment, Cecily appeared and happily introduced ‘Ernest’ — Algernon — who was very much alive! Jack was shocked and angry, but he could not tell the truth in front of everyone.",
+"Now both young men had the same idea. Jack wanted to marry Gwendolen, Algernon wanted to marry Cecily, and both girls loved the name Ernest. So, separately and secretly, Jack and Algernon each went to Dr Chasuble and asked to be christened ‘Ernest’ that same afternoon."],
+6:["When Algernon was alone with Cecily, he told her that he loved her and wanted to marry her. To his great surprise, Cecily answered that they were already engaged — and had been for the last three months!",
+"She showed him her diary. In it she had written the whole story of their romance: the day ‘Ernest’ had proposed, the love letters he had sent her (which she had actually written herself), a terrible quarrel, and a happy reconciliation. Algernon was charmed by her imagination.",
+"Then Cecily explained something important: she could only ever love a man called Ernest. Hearing this, Algernon hurried away to find Dr Chasuble. He, too, needed to be christened Ernest — and quickly."],
+7:["That afternoon Gwendolen arrived at the Manor House, looking for Jack. She met Cecily, and at first the two young ladies were very polite and friendly.",
+"But soon they made a discovery. Gwendolen said she was engaged to Mr Ernest Worthing. Cecily said that she was engaged to Mr Ernest Worthing too! Suddenly they were rivals.",
+"Over afternoon tea their words became sharper, although they stayed perfectly polite. Cecily offered Gwendolen sugar and cake she did not want, and each lady made cool, clever remarks.",
+"Then Jack and Algernon appeared, and the truth came out: neither man was really called Ernest. Both had lied. Shocked and hurt, Gwendolen and Cecily took each other’s hand and walked into the house together, united against the two men."],
+8:["The men followed the women into the house and tried to explain. They were both willing to be christened Ernest that very afternoon, and this, at last, made the two ladies forgive them.",
+"Just then Lady Bracknell arrived, following Gwendolen. She still refused to let Gwendolen marry Jack. And when she heard that her nephew Algernon wanted to marry Cecily, she did not approve — until she learned that Cecily had a large fortune. Suddenly she decided that Cecily was a charming girl and ‘a perfect match’ for Algernon.",
+"But there was a new problem. Jack was Cecily’s guardian, and he refused to allow Cecily to marry Algernon unless Lady Bracknell allowed him to marry Gwendolen. Neither side would give way, and so they reached a complete deadlock."],
+9:["At that moment Lady Bracknell heard the name ‘Miss Prism’ and turned pale. She recognised the governess. Twenty-eight years before, Miss Prism had been a nursemaid in her family — and one day she had gone out with a baby and never come back.",
+"Miss Prism confessed the truth. That day, by a terrible mistake, she had put her novel in the baby’s pram and the baby in a large black handbag, which she had left at Victoria Station.",
+"Jack rushed away and came back with an old handbag. Miss Prism knew it at once: it was hers. So Jack was the lost baby! He was the son of Lady Bracknell’s sister, which meant he was really Algernon’s older brother.",
+"And his name? He had been named after his father, General Ernest John Moncrieff. So Jack’s real name had been Ernest all the time! Now everyone could marry: Jack and Gwendolen, Algernon and Cecily, and even Miss Prism and Dr Chasuble. ‘I’ve now realised for the first time in my life,’ said Jack, ‘the vital Importance of Being Earnest.’"]
+};
+function actRead(c){
+  const paras = READINGS[c.n] || [];
+  const words = paras.join(' ').split(/\s+/).filter(Boolean).length;
+  const idx = CHAPTERS.findIndex(x=>x.n===c.n);
+  const prev = idx>0 ? CHAPTERS[idx-1] : null;
+  const next = idx<CHAPTERS.length-1 ? CHAPTERS[idx+1] : null;
+  stage.innerHTML = `<div class="panel reading">
+    <div class="qnum">CHAPTER ${c.n} · READING</div>
+    <h2 style="color:var(--blue-d);margin:2px 0 2px">${c.title}</h2>
+    <p class="muted" style="margin:0 0 14px;font-size:.85rem">Simplified version · about ${words} words · ~${Math.max(1,Math.round(words/90))} min</p>
+    ${paras.map(p=>`<p>${p}</p>`).join('')}
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;align-items:center">
+      ${prev?`<button class="btn ghost sm" onclick="openReadChapter(${idx-1})">← Ch. ${prev.n}</button>`:''}
+      <button class="btn sm" onclick="openAct('comprehension')">Do the activities →</button>
+      ${next?`<button class="btn ghost sm" onclick="openReadChapter(${idx+1})">Ch. ${next.n} →</button>`:''}
+    </div>
+  </div>`;
+  window.scrollTo(0,0);
+}
+window.openReadChapter=(i)=>{ view.chap=i; view.act='read'; view.screen='act'; render(); };
+
 /* ---------- dispatch ---------- */
 const ACT_RENDER={
+  read:actRead,
   comprehension:actComprehension, truefalse:actTrueFalse, multiplechoice:actMultipleChoice,
   speed:actSpeed, writing:actWriting, wordsearch:actWordSearch, crossword:actCrossword,
   hangman:actHangman, memory:actMemory, scramble:actScramble
