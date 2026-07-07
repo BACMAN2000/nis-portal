@@ -1915,6 +1915,7 @@ function studentGradeActivities(key){
     <p class="muted" style="margin-top:-6px">Niveles disponibles: ${lv.split(',').join(' · ')}.</p>
     <div class="grid cols-2" style="margin-top:12px">
       ${key==='g7' ? _skillCard('🚣','Reader · Tom Sawyer','The Adventures of Tom Sawyer (A2): 7 actividades por capítulo — word search, crossword, comprehension, speed quiz, hangman, memory y scramble.','tom-sawyer.html') : ''}
+      ${key==='g9' ? _skillCard('🎩','Reader · Being Earnest','The Importance of Being Earnest (B1.2): 10 actividades por capítulo — comprehension, true/false, multiple choice, speed quiz, writing, word search, crossword, hangman, memory y scramble.','being-earnest.html') : ''}
       ${_skillCard('🧩','Crosswords','10 crucigramas temáticos por nivel — pistas, vidas y cronómetro.','crosswords.html?levels='+encodeURIComponent(lv))}
       ${_skillCard('🔎','Word Search','10 sopas de letras temáticas por nivel.','wordsearches.html?levels='+encodeURIComponent(lv))}
       ${_skillCard('🔢','Word Sudoku','Sudoku de palabras: 9 puzzles por nivel ('+lv.split(',').join(' · ')+').','word-sudoku.html?levels='+encodeURIComponent(lv))}
