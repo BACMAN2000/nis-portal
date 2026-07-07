@@ -597,6 +597,7 @@ const ACTS=[
 function render(){
   backEl.style.display = view.screen==="chapters" ? "none" : "inline-block";
   if(view.screen==="chapters"){ crumbEl.innerHTML=""; return renderChapters(); }
+  if(view.screen==="info"){ crumbEl.innerHTML = view.info==='bio' ? 'Oscar Wilde' : 'The characters'; return renderInfo(); }
   const c=CHAPTERS[view.chap];
   if(view.screen==="acts"){ crumbEl.innerHTML=`<b>Chapter ${c.n}</b> · ${c.title}`; return renderActs(); }
   crumbEl.innerHTML=`<b>Chapter ${c.n}</b> · ${c.title} &nbsp;›&nbsp; ${ACTS.find(a=>a.id===view.act).name}`;
@@ -604,16 +605,28 @@ function render(){
 }
 function back(){
   if(view.screen==="act"){ view.screen="acts"; view.act=null; }
-  else if(view.screen==="acts"){ view.screen="chapters"; view.chap=null; }
+  else if(view.screen==="acts" || view.screen==="info"){ view.screen="chapters"; view.chap=null; view.info=null; }
   render();
 }
 function openChapter(i){ view.chap=i; view.screen="acts"; render(); }
 function openAct(id){ view.act=id; view.screen="act"; render(); }
+function openInfo(kind){ view.info=kind; view.screen="info"; render(); }
 
 function renderChapters(){
   stage.innerHTML=`
     <h1><span class="em">🎩</span> The Importance of Being Earnest</h1>
     <p class="lead">Oscar Wilde · Black Cat Reading &amp; Training · Step Three · B1.2. Choose a chapter, then choose an activity — 10 activities per chapter.</p>
+    <div class="grid cols-2" style="margin-bottom:14px">
+      <div class="card" style="flex-direction:row;text-align:left;gap:14px;align-items:center" onclick="openInfo('bio')">
+        <div class="ico" style="font-size:2.2rem">✍️</div>
+        <div><h2 style="margin:0">Oscar Wilde</h2><div class="desc">A short biography of the author.</div></div>
+      </div>
+      <div class="card" style="flex-direction:row;text-align:left;gap:14px;align-items:center" onclick="openInfo('characters')">
+        <div class="ico" style="font-size:2.2rem">🎭</div>
+        <div><h2 style="margin:0">The characters</h2><div class="desc">Who is who in the play.</div></div>
+      </div>
+    </div>
+    <h2 style="font-size:16px;color:var(--blue-d);margin:4px 0 10px">📚 Chapters</h2>
     <div class="grid cols-2">
       ${CHAPTERS.map((c,i)=>`
         <div class="card chap-card" onclick="openChapter(${i})">
@@ -624,6 +637,40 @@ function renderChapters(){
           <span class="act-tag">Comprehension · True/False · Writing · +7 games</span>
         </div>`).join("")}
     </div>`;
+}
+const CHARACTERS = [
+  ["Jack Worthing (“Ernest”)","The serious young hero of the play. He lives in the country as Jack and is the guardian of Cecily, but in town he uses the name Ernest. He loves Gwendolen."],
+  ["Algernon Moncrieff","Jack’s clever, funny and pleasure-loving friend. He invents a sick friend called Bunbury to escape his duties, and later pretends to be Jack’s brother ‘Ernest’ to meet Cecily."],
+  ["Gwendolen Fairfax","Lady Bracknell’s elegant daughter and Algernon’s cousin. She loves Jack — mainly because she believes his name is Ernest."],
+  ["Cecily Cardew","Jack’s young and very romantic ward. With her lively imagination she has already ‘fallen in love’ with the mysterious Ernest before she even meets Algernon."],
+  ["Lady Bracknell","Gwendolen’s powerful and snobbish mother. She controls who may marry whom and cares greatly about family, money and social position."],
+  ["Miss Prism","Cecily’s strict governess. She hides an important secret from many years in the past, and she secretly admires Dr Chasuble."],
+  ["Dr Chasuble","The kind local rector (priest). He agrees to christen both men ‘Ernest’, and there is a shy romance between him and Miss Prism."],
+  ["Lane & Merriman","The servants — Algernon’s butler in London (Lane) and Jack’s butler in the country (Merriman)."]
+];
+const BIO = [
+  "Oscar Wilde (1854–1900) was an Irish writer, born in Dublin. He studied at Trinity College Dublin and then at Oxford University, where he became known for his intelligence, his elegant clothes and his brilliant, witty conversation.",
+  "In London he became one of the most famous personalities of his time. He wrote poems, essays, fairy tales, one novel — <i>The Picture of Dorian Gray</i> (1890) — and a series of very successful comedies, including <i>Lady Windermere’s Fan</i>, <i>An Ideal Husband</i> and <i>The Importance of Being Earnest</i> (1895), which many people consider his masterpiece.",
+  "His plays are full of clever, funny lines that gently make fun of the manners and rules of Victorian society. At the height of his fame, however, his life changed dramatically: he was put on trial and sent to prison for two years.",
+  "After his release he left England and lived in France, poor and in weak health. He died in Paris in 1900. Today he is remembered as one of the greatest and wittiest writers in the English language."
+];
+function renderInfo(){
+  if(view.info==='bio'){
+    stage.innerHTML=`<div class="panel reading">
+      <div class="qnum">THE AUTHOR</div>
+      <h2 style="color:var(--blue-d);margin:2px 0 12px">✍️ Oscar Wilde (1854–1900)</h2>
+      ${BIO.map(p=>`<p>${p}</p>`).join("")}
+      <div style="margin-top:16px"><button class="btn sm" onclick="openInfo('characters')">🎭 Meet the characters →</button></div>
+    </div>`;
+  } else {
+    stage.innerHTML=`<div class="panel reading">
+      <div class="qnum">THE PLAY</div>
+      <h2 style="color:var(--blue-d);margin:2px 0 12px">🎭 The characters</h2>
+      ${CHARACTERS.map(c=>`<p style="text-align:left;margin-bottom:12px"><b style="color:var(--blue-d)">${c[0]}</b><br>${c[1]}</p>`).join("")}
+      <div style="margin-top:8px"><button class="btn sm" onclick="back()">📚 Go to the chapters →</button></div>
+    </div>`;
+  }
+  window.scrollTo(0,0);
 }
 function renderActs(){
   const c=CHAPTERS[view.chap];
