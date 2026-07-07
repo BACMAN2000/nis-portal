@@ -856,7 +856,7 @@ window.editUser = async (id)=>{
         <div><label>Año académico</label><select id="e_year">${yearOptions(p.academic_year||2026)}</select></div>
         <div><label>Estado</label><select id="e_active"><option value="true" ${p.active?'selected':''}>Activo</option><option value="false" ${!p.active?'selected':''}>Inactivo</option></select></div>
       </div>
-      <label>Reestablecer contraseña visible (opcional)</label><input id="e_pw" placeholder="dejar vacío para no cambiar">
+      <label>Reestablecer contraseña de acceso (opcional)</label><input id="e_pw" placeholder="dejar vacío para no cambiar · mín. 6 caracteres">
       <div id="emsg"></div>
       <div class="row" style="margin-top:14px"><button class="btn" onclick="saveUser('${id}')">Guardar</button></div>
     </div>`;
@@ -867,9 +867,17 @@ window.saveUser = async (id)=>{
     academic_year:+($('#e_year').value||2026) };
   const { error } = await sb.from('profiles').update(upd).eq('id',id);
   const pw=$('#e_pw').value.trim();
-  if(pw){ await sb.from('student_credentials').upsert({profile_id:id,password:pw,updated_at:new Date().toISOString()}); }
-  $('#emsg').innerHTML = error?`<div class="note err">${esc(error.message)}</div>`:`<div class="note ok">Guardado.</div>`;
-  if(!error) setTimeout(adminUsers,700);
+  let pwErr=null;
+  if(pw){
+    if(pw.length<6){ $('#emsg').innerHTML='<div class="note err">La contraseña debe tener al menos 6 caracteres.</div>'; return; }
+    // Cambia la contraseña REAL de Auth (no solo la visible), para que el usuario pueda entrar.
+    const r = await sb.rpc('admin_set_password',{p_id:id,p_password:pw});
+    pwErr = r.error;
+    if(!pwErr){ await sb.from('student_credentials').upsert({profile_id:id,password:pw,updated_at:new Date().toISOString()}); }
+  }
+  const err = error||pwErr;
+  $('#emsg').innerHTML = err?`<div class="note err">${esc(err.message)}</div>`:`<div class="note ok">Guardado.${pw?' Contraseña actualizada — el usuario ya puede entrar con la nueva.':''}</div>`;
+  if(!err) setTimeout(adminUsers,900);
 };
 /* Permanently delete a user (admin only). Cascades to results, credentials and
    teacher access via the DB. Guarded server-side: can't delete self or the last admin. */
