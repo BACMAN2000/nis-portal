@@ -426,6 +426,7 @@ window._toggleNode=async(g,key,to,el)=>{
    Incidentes registrados por anticheat.js + botón "dar vida extra" a un
    alumno en una actividad. Disponible para admin y profesor (con acceso). */
 const AC_ACTIVITIES = [
+  ['portal','🏠 Portal (pantalla de inicio)'],
   ['opinion-essay','Opinion Essay (Writing)'],['use-of-english-part1','Use of English · Part 1'],
   ['grammar-quiz','Grammar Quiz'],['crosswords','Crosswords'],['wordsearches','Word Searches'],
   ['crossword-digital-footprint','Crossword · Digital Footprint'],['wordsearch-digital-footprint','Word Search · Digital Footprint'],
@@ -440,7 +441,7 @@ const AC_EVENT = { tab_switch:'⚠️ Salida', reported:'🚩 Reportado', locked
 async function antiCheatPanel(){
   const { data, error } = await sb.from('anticheat_incidents')
     .select('id,student_id,activity,activity_label,level,event,lives_left,switch_count,seconds_away,os,browser,screen,grade_assigned,created_at, profiles(full_name,grades(name))')
-    .order('created_at',{ascending:false}).limit(150);
+    .order('created_at',{ascending:false}).limit(500);
   // alumnos para el selector del formulario
   const { data:studs } = await sb.from('profiles').select('id,full_name,grades(name)').eq('role','student').order('full_name');
   const studOpts = (studs||[]).map(s=>`<option value="${s.id}">${esc(s.full_name||'')}${s.grades?.name?(' · '+s.grades.name):''}</option>`).join('');
@@ -453,7 +454,8 @@ async function antiCheatPanel(){
     const ev = AC_EVENT[a.event] || a.event;
     const dev = [a.os,a.browser,a.screen].filter(Boolean).join(' · ');
     const sname = esc(name).replace(/'/g,"\\'");
-    return `<tr data-ev="${esc(a.event)}">
+    const searchKey = esc((name+' '+grade+' '+acActLabel(a.activity)).toLowerCase());
+    return `<tr data-ev="${esc(a.event)}" data-search="${searchKey}">
       <td><b>${esc(name)}</b>${grade?` <span class="badge grade">${esc(grade)}</span>`:''}</td>
       <td>${esc(acActLabel(a.activity))}${a.level?` <span class="muted">· ${esc(a.level)}</span>`:''}</td>
       <td style="text-align:center">${ev}</td>
@@ -482,23 +484,41 @@ async function antiCheatPanel(){
     </div>
 
     <div class="card" style="padding:0">
-      <div class="row" style="justify-content:space-between;align-items:center;padding:12px 16px 0">
+      <div class="row" style="justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;padding:12px 16px 0">
         <h2 style="margin:0">Incidentes recientes</h2>
-        <select id="ac_filter" onchange="window._acFilter(this.value)" style="min-width:160px">
-          <option value="">Todos los eventos</option>
-          <option value="locked">Solo eliminadas (C)</option>
-          <option value="reported">Solo reportados</option>
-          <option value="tab_switch">Solo salidas</option>
-        </select>
+        <div class="row" style="gap:8px;flex-wrap:wrap;align-items:center">
+          <input id="ac_search" type="search" placeholder="🔎 Buscar alumno o actividad…" oninput="window._acApplyFilters()" style="min-width:220px">
+          <select id="ac_filter" onchange="window._acApplyFilters()" style="min-width:160px">
+            <option value="">Todos los eventos</option>
+            <option value="locked">Solo eliminadas (C)</option>
+            <option value="reported">Solo reportados</option>
+            <option value="tab_switch">Solo salidas</option>
+          </select>
+        </div>
       </div>
       <div style="overflow-x:auto"><table>
         <thead><tr><th style="text-align:left">Alumno</th><th style="text-align:left">Actividad</th><th>Evento</th><th>Vidas</th><th style="text-align:left">Equipo</th><th style="text-align:left">Fecha</th><th>Acción</th></tr></thead>
-        <tbody id="ac_rows">${rows || `<tr><td colspan="7" class="center muted" style="padding:20px">Sin incidentes registrados.</td></tr>`}</tbody>
+        <tbody id="ac_rows">${rows || `<tr><td colspan="7" class="center muted" style="padding:20px">Sin incidentes registrados.</td></tr>`}<tr id="ac_empty" style="display:none"><td colspan="7" class="center muted" style="padding:20px">Ningún incidente coincide con la búsqueda.</td></tr></tbody>
       </table></div>
     </div>
     ${error?`<div class="note err">${esc(error.message)}</div>`:''}`;
 }
-window._acFilter=(v)=>{ document.querySelectorAll('#ac_rows tr[data-ev]').forEach(tr=>{ tr.style.display = (!v || tr.dataset.ev===v) ? '' : 'none'; }); };
+window._acApplyFilters=()=>{
+  const ev=($('#ac_filter')?.value)||'';
+  const q=(($('#ac_search')?.value)||'').trim().toLowerCase();
+  let shown=0;
+  document.querySelectorAll('#ac_rows tr[data-ev]').forEach(tr=>{
+    const okEv = !ev || tr.dataset.ev===ev;
+    const okQ  = !q  || (tr.dataset.search||'').indexOf(q)>=0;
+    const vis = okEv && okQ;
+    tr.style.display = vis ? '' : 'none';
+    if(vis) shown++;
+  });
+  const empty=$('#ac_empty');
+  if(empty) empty.style.display = shown ? 'none' : '';
+};
+// Compatibilidad: llamadas antiguas a _acFilter siguen funcionando.
+window._acFilter=()=>window._acApplyFilters();
 async function _acInsertGrant(studentId, activity, qty){
   const uid=(state.session&&state.session.user&&state.session.user.id)||null;
   const n=Math.max(1, Math.min(20, parseInt(qty,10)||1));
