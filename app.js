@@ -20,7 +20,7 @@ const CLASSES_LINKS = {
 
 let state = { session:null, profile:null };
 let resultsBranch = 'mock'; // 'mock' | 'practice'
-let userFilter = { grade:'', year:'' };
+let userFilter = { grade:'', year:'', role:'' };
 
 /* ---------- analysis helpers ---------- */
 function yearOptions(sel){ const cur=new Date().getFullYear(); let o=''; for(let y=2026;y<=Math.max(cur+1,2027);y++){ o+=`<option ${String(sel)===String(y)?'selected':''}>${y}</option>`; } return o; }
@@ -767,11 +767,12 @@ async function adminUsers(){
   if(!years.includes(2026)) years.push(2026);
   if(!years.includes(new Date().getFullYear())) years.push(new Date().getFullYear());
   years.sort((a,b)=>a-b);
-  const fg=userFilter.grade, fy=userFilter.year, showInactive=!!userFilter.showInactive;
+  const fg=userFilter.grade, fy=userFilter.year, fr=userFilter.role, showInactive=!!userFilter.showInactive;
   const suspendedCount = all.filter(p=>p.active===false).length;
-  const list = all.filter(p=> (!fg||String(p.grade_id)===String(fg)) && (!fy||String(p.academic_year||2026)===String(fy)) && (showInactive || p.active!==false) );
+  const list = all.filter(p=> (!fg||String(p.grade_id)===String(fg)) && (!fy||String(p.academic_year||2026)===String(fy)) && (!fr||p.role===fr) && (showInactive || p.active!==false) );
   const gradeOpts = `<option value="">Todos los grados</option>`+GRADES.map(g=>`<option value="${g.id}" ${String(fg)===String(g.id)?'selected':''}>${g.name}</option>`).join('');
   const yearOpts = `<option value="">Todos los años</option>`+years.map(y=>`<option value="${y}" ${String(fy)===String(y)?'selected':''}>${y}</option>`).join('');
+  const roleOpts = `<option value="">Todos los roles</option>`+[['student','Alumnos'],['teacher','Profesores'],['admin','Admins']].map(([v,l])=>`<option value="${v}" ${fr===v?'selected':''}>${l}</option>`).join('');
   const rows=list.map(p=>{
     const suspended = p.active===false;
     const toggleBtn = suspended
@@ -792,12 +793,13 @@ async function adminUsers(){
     <div class="card" style="display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end">
       <div><label>Grado</label><select onchange="window._setUserFilter('grade',this.value)" style="min-width:170px">${gradeOpts}</select></div>
       <div><label>Año académico</label><select onchange="window._setUserFilter('year',this.value)" style="min-width:150px">${yearOpts}</select></div>
+      <div><label>Rol</label><select onchange="window._setUserFilter('role',this.value)" style="min-width:150px">${roleOpts}</select></div>
       <label style="display:flex;align-items:center;gap:7px;font-weight:500;margin:0 0 10px"><input type="checkbox" ${showInactive?'checked':''} onchange="window._setUserFilter('showInactive',this.checked)" style="width:auto"> Mostrar suspendidos${suspendedCount?` (${suspendedCount})`:''}</label>
       <div class="muted" style="padding-bottom:11px">${list.length} usuario(s)</div>
     </div>
     <div class="card" style="padding:0;overflow-x:auto">
       <table><thead><tr><th>Nombre</th><th>Grado</th><th>Año</th><th>Nivel</th><th>Rol</th><th>Contraseña</th><th>Estado</th><th></th></tr></thead>
-      <tbody>${rows||'<tr><td colspan="8" class="center muted">No hay alumnos con ese filtro.</td></tr>'}</tbody></table>
+      <tbody>${rows||'<tr><td colspan="8" class="center muted">No hay usuarios con ese filtro.</td></tr>'}</tbody></table>
     </div>`;
 }
 window._setUserFilter = (k,v)=>{ userFilter[k]=v; adminUsers(); };
