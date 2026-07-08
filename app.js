@@ -12,7 +12,7 @@ const LEVELS = ['A2','B1','B2','C1'];
 const SKILLS = ['Reading','Listening','Writing'];
 const QUIZ_URL = 'https://bacman2000.github.io/mocks-cambridge/';
 /* === Enlaces configurables del dashboard de alumnos === */
-const LIBRARY_URL = 'http://127.0.0.1:8900/';   // Biblioteca NIS (OPAC local). Cambiar por la URL pública cuando esté en línea.
+const LIBRARY_URL = 'http://127.0.0.1:8900/';   // Biblioteca NIS (OPAC local). Mientras sea 127.0.0.1/localhost, el tile se muestra "Próximamente" (ver studentLibrary). Pon aquí la URL pública para activarlo.
 const CLASSES_LINKS = {
   presentations: '',   // pegar URL de las presentaciones de clase (vacío = "Próximamente")
   activities:    'activities.html'    // hub de juegos y actividades de clase
@@ -1990,12 +1990,15 @@ function studentPractice(){
 /* ---------- Library ---------- */
 function studentLibrary(){
   _setNav('library');
+  // LIBRARY_URL aún apunta a un OPAC local (127.0.0.1) que no es público.
+  // Hasta tener una URL pública, el tile se muestra como "Próximamente"
+  // (evita un enlace roto para los alumnos en nis.cohasset.pe).
+  const libTile = (LIBRARY_URL && !/^https?:\/\/(127\.0\.0\.1|localhost)/.test(LIBRARY_URL))
+    ? _skillCard('📚','Abrir la Biblioteca','Busca libros, revisa disponibilidad y tus préstamos.',LIBRARY_URL)
+    : _soonCard('📚','Biblioteca','Catálogo en línea (OPAC): pronto podrás buscar libros y ver tus préstamos.');
   $('#main').innerHTML=`<h1>📚 Library</h1>
     <p class="muted" style="margin-top:-6px">Biblioteca NIS — catálogo en línea (OPAC).</p>
-    <div class="grid cols-2" style="margin-top:12px">
-      ${_skillCard('📚','Abrir la Biblioteca','Busca libros, revisa disponibilidad y tus préstamos.',LIBRARY_URL)}
-    </div>
-    <div class="note info" style="margin-top:14px">ℹ️ La biblioteca se abre en una pestaña nueva. Si no carga, avisa a tu profesor (el servidor de la biblioteca debe estar encendido).</div>`;
+    <div class="grid cols-2" style="margin-top:12px">${libTile}</div>`;
 }
 
 /* ---------- Classes: tarjetas por grado (6th–11th) ---------- */
