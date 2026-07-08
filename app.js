@@ -209,16 +209,16 @@ function liveQuizBody(){ return `
   <iframe src="live-quiz.html?v=11" title="NIShoot Live" allow="autoplay" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#0d1d33"></iframe>`; }
 function gamesLabBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
-    <div class="muted" style="flex:1;min-width:220px">Fichas + juegos de gramática, vocabulario, phrasal verbs e idioms (A1–C1): quiz, gap-fill y emparejar.</div>
-    <a class="btn" href="games-lab.html?v=1" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Abrir en pantalla completa ↗</a>
+    <div class="muted" style="flex:1;min-width:220px">Worksheets + games for grammar, vocabulary, phrasal verbs and idioms (A1–C1): quiz, gap-fill and matching.</div>
+    <a class="btn" href="games-lab.html?v=1" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
   </div>
   <iframe src="games-lab.html?v=1" title="English Games Lab" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#eef1f8"></iframe>`; }
 function studentMun(){ document.querySelectorAll('[data-nav]').forEach(e=>e.classList.toggle('active',e.dataset.nav==='mun')); $('#main').innerHTML = munBody(); }
 /* Student view: join a live NIShoot game (opens straight on the Join screen). */
 function nishootJoinBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
-    <div class="muted" style="flex:1;min-width:220px">Tu profe proyecta un juego en vivo. Escribe el <b>PIN</b> que aparece en la pantalla (o escanea el QR) y tu nombre para entrar.</div>
-    <a class="btn" href="live-quiz.html?join=1&v=11" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Abrir en pantalla completa ↗</a>
+    <div class="muted" style="flex:1;min-width:220px">Your teacher is projecting a live game. Type the <b>PIN</b> shown on the screen (or scan the QR) and your name to join.</div>
+    <a class="btn" href="live-quiz.html?join=1&v=11" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
   </div>
   <iframe src="live-quiz.html?join=1&v=11" title="NIShoot Live" allow="autoplay" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#0d1d33"></iframe>`; }
 function studentNishoot(){ _setNav('nishoot'); $('#main').innerHTML = `${_backBtn("window._nav('english')",'English')}<h1>🎮 NIShoot Live</h1>${nishootJoinBody()}`; }
@@ -1663,12 +1663,12 @@ window._sendWritingResult = async ()=>{
 /* ===================== STUDENT ===================== */
 async function renderStudent(initial){
   document.body.innerHTML = shell([
-    {key:'home',label:'🏠 Inicio'},
+    {key:'home',label:'🏠 Home'},
     {key:'english',label:'🇬🇧 English'},
     {key:'french',label:'🇫🇷 French'},
     {key:'general',label:'🗂️ General'},
     {key:'results',label:'📊 My Progress'},
-  ], initial||'home', `<div class="center muted">Cargando…</div>`);
+  ], initial||'home', `<div class="center muted">Loading…</div>`);
   bindNav(k=>{
     if(k==='english') return studentSubject('english');
     if(k==='french') return studentSubject('french');
@@ -1707,30 +1707,30 @@ function _hubCard(emoji,title,desc,onclick,extra){
 function studentHub(){
   _setNav('home');
   const p=state.profile;
-  $('#main').innerHTML=`<h1>Hola, ${esc(p.first_name||p.full_name||'')} 👋</h1>
-    <p class="muted" style="margin-top:-6px">${esc(p.grades?.name||'')} ${p.section?'· '+esc(p.section):''} · Nivel ${esc(p.cefr_level||'sin asignar')} — ¿Qué quieres hacer hoy?</p>
-    <h2 style="margin:18px 0 8px">Materias</h2>
+  $('#main').innerHTML=`<h1>Hi, ${esc(p.first_name||p.full_name||'')} 👋</h1>
+    <p class="muted" style="margin-top:-6px">${esc(p.grades?.name||'')} ${p.section?'· '+esc(p.section):''} · Level ${esc(p.cefr_level||'not set')} — What would you like to do today?</p>
+    <h2 style="margin:18px 0 8px">Subjects</h2>
     <div class="grid cols-3">
-      ${_hubCard('🇬🇧','English','Pronunciation, Mocks, Classes y más.',"window._nav('english')")}
+      ${_hubCard('🇬🇧','English','Pronunciation, Mocks, Classes and more.',"window._nav('english')")}
       ${nodeVisible('french') ? _hubCard('🇫🇷','French','Pronunciation, Mocks, Classes y más.',"window._nav('french')") : _lockedCard('🇫🇷','French','Próximamente — pronto habilitaremos el francés.')}
     </div>
     <h2 style="margin:22px 0 8px">General</h2>
     <div class="grid cols-3">
-      ${nodeVisible('general.library') ? _hubCard('📚','Library','Biblioteca NIS: busca y explora los libros del colegio.',"window._nav('library')") : _lockedCard('📚','Library','Biblioteca NIS.')}
-      ${nodeVisible('general.mun') ? _hubCard('🌐','MUN Academy','Model United Nations: debate, oratoria y diplomacia.',"window._nav('mun')") : _lockedCard('🌐','MUN Academy','Model United Nations.')}
+      ${nodeVisible('general.library') ? _hubCard('📚','Library','NIS Library: search and explore the school library.',"window._nav('library')") : _lockedCard('📚','Library','NIS Library.')}
+      ${nodeVisible('general.mun') ? _hubCard('🌐','MUN Academy','Model United Nations: debate, public speaking and diplomacy.',"window._nav('mun')") : _lockedCard('🌐','MUN Academy','Model United Nations.')}
     </div>`;
 }
 
 /* ---------- Jerarquía de contenido: Materia → Área → Grado → Actividad ----------
    Las áreas de English se reflejan en French (placeholder hasta alimentarlas). */
 const ENGLISH_AREAS = [
-  {emoji:'🎙️', title:'Pronunciation', desc:'Escucha cada sonido, mira la lengua y el aire, y practica.', nav:'coach',    node:'english.pronunciation'},
-  {emoji:'🎓', title:'Mocks',         desc:'Simulacros oficiales MOCK 1 y MOCK 2 por destreza.',        nav:'mocks'},
-  {emoji:'🎮', title:'NIShoot Live',  desc:'Únete al juego en vivo de tu clase: entra con el PIN.',    nav:'nishoot'},
-  {emoji:'🎲', title:'Games Lab',     desc:'Juegos de gramática, vocabulario, phrasal verbs e idioms (A1–C1).', nav:'games'},
-  {emoji:'🏫', title:'Classes',       desc:'Material de clase por grado: grammar, actividades y más.',  nav:'classes',  node:'english.classes'},
-  {emoji:'🎯', title:'Practice Tests',desc:'Prácticas 1, 2 y 3 en formato Cambridge, siempre disponibles.', nav:'practice', node:'english.practice'},
-  {emoji:'🔤', title:'Phonics',       desc:'Sonidos y formas de las palabras: CVC, blends, magic-e.',  nav:'phonics',  node:'english.phonics'},
+  {emoji:'🎙️', title:'Pronunciation', desc:'Listen to each sound, watch the tongue and airflow, and practise.', nav:'coach',    node:'english.pronunciation'},
+  {emoji:'🎓', title:'Mocks',         desc:'Official MOCK 1 and MOCK 2 exams by skill.',        nav:'mocks'},
+  {emoji:'🎮', title:'NIShoot Live',  desc:"Join your class's live game: enter with the PIN.",    nav:'nishoot'},
+  {emoji:'🎲', title:'Games Lab',     desc:'Games for grammar, vocabulary, phrasal verbs and idioms (A1–C1).', nav:'games'},
+  {emoji:'🏫', title:'Classes',       desc:'Class material by grade: grammar, activities and more.',  nav:'classes',  node:'english.classes'},
+  {emoji:'🎯', title:'Practice Tests',desc:'Practice tests 1, 2 and 3 in Cambridge format, always available.', nav:'practice', node:'english.practice'},
+  {emoji:'🔤', title:'Phonics',       desc:'Sounds and word shapes: CVC, blends, magic-e.',  nav:'phonics',  node:'english.phonics'},
   {emoji:'📊', title:'My Progress',   desc:'Todos tus exámenes y prácticas: tu historial y avance.',    nav:'results', englishOnly:true},
   {emoji:'🏅', title:'Resultado final',desc:'Tu nivel final CEFR (reporte para los padres) + PDF.',      nav:'final',   englishOnly:true},
 ];
@@ -1781,7 +1781,7 @@ function _lockedCard(emoji,title,desc){
     <div style="font-size:3rem;line-height:1">${emoji}</div>
     <h2 style="margin:10px 0 4px;color:var(--blue-d)">${title}</h2>
     <div class="muted" style="font-size:.85rem">${desc||''}</div>
-    <div class="badge" style="background:#fee2e2;color:#991b1b;margin-top:10px">🔒 Lo habilitará tu profesor</div>
+    <div class="badge" style="background:#fee2e2;color:#991b1b;margin-top:10px">🔒 Your teacher will unlock this</div>
   </div>`;
 }
 /* Nodos gateables por el admin/profesor (Mocks va aparte; My Progress y Resultado final son datos propios). */
@@ -1831,8 +1831,8 @@ function studentSubject(key){
     if(a.node && !nodeVisible(a.node)) return _lockedCard(a.emoji,a.title,a.desc);
     return _hubCard(a.emoji,a.title,a.desc,`window._nav('${a.nav}')`);
   }).join('');
-  $('#main').innerHTML = `${_backBtn("window._nav('home')",'Inicio')}<h1>${title}</h1>
-    <p class="muted" style="margin-top:-6px">${isEn?'Tus áreas de inglés.':'Próximamente — iremos habilitando el francés poco a poco.'}</p>
+  $('#main').innerHTML = `${_backBtn("window._nav('home')",'Home')}<h1>${title}</h1>
+    <p class="muted" style="margin-top:-6px">${isEn?'Your English areas.':'Próximamente — iremos habilitando el francés poco a poco.'}</p>
     <div class="grid cols-3" style="margin-top:12px">${cards}</div>`;
 }
 
@@ -1840,13 +1840,13 @@ function studentSubject(key){
 function studentGeneral(){
   _setNav('general');
   const lib = nodeVisible('general.library')
-    ? _hubCard('📚','Library','Biblioteca NIS: busca y explora los libros del colegio.',"window._nav('library')")
-    : _lockedCard('📚','Library','Biblioteca NIS.');
+    ? _hubCard('📚','Library','NIS Library: search and explore the school library.',"window._nav('library')")
+    : _lockedCard('📚','Library','NIS Library.');
   const mun = nodeVisible('general.mun')
-    ? _hubCard('🌐','MUN Academy','Model United Nations: debate, oratoria y diplomacia.',"window._nav('mun')")
+    ? _hubCard('🌐','MUN Academy','Model United Nations: debate, public speaking and diplomacy.',"window._nav('mun')")
     : _lockedCard('🌐','MUN Academy','Model United Nations.');
   $('#main').innerHTML=`<h1>🗂️ General</h1>
-    <p class="muted" style="margin-top:-6px">Recursos generales del portal.</p>
+    <p class="muted" style="margin-top:-6px">General portal resources.</p>
     <div class="grid cols-3" style="margin-top:12px">${lib}${mun}</div>`;
 }
 
@@ -1907,12 +1907,12 @@ function studentGrade(key){
   const base='english.classes.'+key;
   const back = _backBtn("window._nav('classes')",'Classes');
   $('#main').innerHTML=`${back}<h1>${emoji} ${label}</h1>
-    <p class="muted" style="margin-top:-6px">Material de ${label}.</p>
+    <p class="muted" style="margin-top:-6px">${label} material.</p>
     <div class="grid cols-2" style="margin-top:12px">
-      ${nodeVisible(base+'.grammar') ? _skillCard('📝','Grammar','Gramática de '+label+': explicaciones y juegos por unidad.','grammar.html?grade='+key) : _lockedCard('📝','Grammar','Gramática de '+label+'.')}
-      ${nodeVisible(base+'.activities') ? _hubCard('🎲','Activities','Crosswords y word searches por nivel.',"window._nav('classes_"+key+"_act')") : _lockedCard('🎲','Activities','Juegos y actividades.')}
-      ${key==='g9' ? (nodeVisible('english.classes.g9.uoe1') ? _skillCard('🧩','Use of English · Part 1','Multiple-choice cloze B2 (estilo Cambridge): 8 huecos, opciones A–D, con corrección y explicaciones.','use-of-english-part1.html') : _lockedCard('🧩','Use of English · Part 1','Cloze B2 estilo Cambridge.')) : ''}
-      ${key==='g9' ? (nodeVisible('english.classes.g9.writing') ? _skillCard('✍️','Writing','Opinion essay (FCE Writing Part 1): 6 tópicos con frases guía, banco de linkers, contador de palabras y checklist.','writing.html?grade='+key) : _lockedCard('✍️','Writing','Opinion essay FCE Writing Part 1.')) : ''}
+      ${nodeVisible(base+'.grammar') ? _skillCard('📝','Grammar','Grammar for '+label+': explanations and games by unit.','grammar.html?grade='+key) : _lockedCard('📝','Grammar','Grammar for '+label+'.')}
+      ${nodeVisible(base+'.activities') ? _hubCard('🎲','Activities','Crosswords and word searches by level.',"window._nav('classes_"+key+"_act')") : _lockedCard('🎲','Activities','Games and activities.')}
+      ${key==='g9' ? (nodeVisible('english.classes.g9.uoe1') ? _skillCard('🧩','Use of English · Part 1','Multiple-choice cloze B2 (Cambridge style): 8 gaps, options A–D, with correction and explanations.','use-of-english-part1.html') : _lockedCard('🧩','Use of English · Part 1','Cambridge-style B2 cloze.')) : ''}
+      ${key==='g9' ? (nodeVisible('english.classes.g9.writing') ? _skillCard('✍️','Writing','Opinion essay (FCE Writing Part 1): 6 topics with guide phrases, a bank of linkers, word counter and checklist.','writing.html?grade='+key) : _lockedCard('✍️','Writing','Opinion essay · FCE Writing Part 1.')) : ''}
     </div>`;
 }
 /* Actividades de un grado → Crossword + Word Search con los niveles del grado */
@@ -1922,17 +1922,17 @@ function studentGradeActivities(key){
   const lv=GRADE_LEVELS[key]||'A1,A2,B1,B2,C1';
   const back = _backBtn("window._nav('classes_"+key+"')",label);
   $('#main').innerHTML=`${back}<h1>🎲 Activities · ${label}</h1>
-    <p class="muted" style="margin-top:-6px">Niveles disponibles: ${lv.split(',').join(' · ')}.</p>
+    <p class="muted" style="margin-top:-6px">Available levels: ${lv.split(',').join(' · ')}.</p>
     <div class="grid cols-2" style="margin-top:12px">
-      ${key==='g7' ? _skillCard('🚣','Reader · Tom Sawyer','The Adventures of Tom Sawyer (A2): 7 actividades por capítulo — word search, crossword, comprehension, speed quiz, hangman, memory y scramble.','tom-sawyer.html') : ''}
-      ${key==='g9' ? _skillCard('🎩','Reader · Being Earnest','The Importance of Being Earnest (B1.2): 10 actividades por capítulo — comprehension, true/false, multiple choice, speed quiz, writing, word search, crossword, hangman, memory y scramble.','being-earnest.html') : ''}
-      ${_skillCard('🧩','Crosswords','10 crucigramas temáticos por nivel — pistas, vidas y cronómetro.','crosswords.html?levels='+encodeURIComponent(lv))}
-      ${_skillCard('🔎','Word Search','10 sopas de letras temáticas por nivel.','wordsearches.html?levels='+encodeURIComponent(lv))}
-      ${_skillCard('🔢','Word Sudoku','Sudoku de palabras: 9 puzzles por nivel ('+lv.split(',').join(' · ')+').','word-sudoku.html?levels='+encodeURIComponent(lv))}
-      ${_skillCard('✍️','Writing Tutor','Te guía qué escribir en cada sección: tipos Cambridge + estilos académicos, frases sugeridas, contador, pasos y checklist (A2–C1).','writing-tutor.html')}
-      ${_skillCard('🧠','Exercises','Gramática, puntuación, estructura y vocabulario: ejercicios con corrección instantánea y puntaje (A2–C1).','exercises.html')}
-      ${_skillCard('🃏','Memory','Voltea y empareja la imagen con su palabra: 5 juegos por nivel (A1–C1), con cronómetro y movimientos.','memory.html')}
-      ${key==='g9' ? _skillCard('🧠','Memory · Reported Speech','Empareja cada frase en estilo directo con su versión en reported speech.','memory-reported-speech.html') : ''}
+      ${key==='g7' ? _skillCard('🚣','Reader · Tom Sawyer','The Adventures of Tom Sawyer (A2): 7 activities per chapter — word search, crossword, comprehension, speed quiz, hangman, memory and scramble.','tom-sawyer.html') : ''}
+      ${key==='g9' ? _skillCard('🎩','Reader · Being Earnest','The Importance of Being Earnest (B1.2): 10 activities per chapter — comprehension, true/false, multiple choice, speed quiz, writing, word search, crossword, hangman, memory and scramble.','being-earnest.html') : ''}
+      ${_skillCard('🧩','Crosswords','10 themed crosswords per level — clues, lives and timer.','crosswords.html?levels='+encodeURIComponent(lv))}
+      ${_skillCard('🔎','Word Search','10 themed word searches per level.','wordsearches.html?levels='+encodeURIComponent(lv))}
+      ${_skillCard('🔢','Word Sudoku','Word sudoku: 9 puzzles per level ('+lv.split(',').join(' · ')+').','word-sudoku.html?levels='+encodeURIComponent(lv))}
+      ${_skillCard('✍️','Writing Tutor','Guides what to write in each section: Cambridge types + academic styles, suggested phrases, counter, steps and checklist (A2–C1).','writing-tutor.html')}
+      ${_skillCard('🧠','Exercises','Grammar, punctuation, structure and vocabulary: exercises with instant correction and score (A2–C1).','exercises.html')}
+      ${_skillCard('🃏','Memory','Flip and match the picture with its word: 5 games per level (A1–C1), with timer and moves.','memory.html')}
+      ${key==='g9' ? _skillCard('🧠','Memory · Reported Speech','Match each sentence in direct speech with its reported-speech version.','memory-reported-speech.html') : ''}
     </div>`;
 }
 window._nav=(k)=>{
@@ -1960,18 +1960,18 @@ function _soonCard(emoji,title,desc){
       <div style="font-size:3.4rem;line-height:1">${emoji}</div>
       <h2 style="margin:10px 0 2px;color:var(--blue-d)">${title}</h2>
       <div class="muted" style="font-size:.85rem">${desc}</div>
-      <div class="badge" style="background:var(--lila);color:var(--blue-dd);margin-top:10px">Próximamente</div>
+      <div class="badge" style="background:var(--lila);color:var(--blue-dd);margin-top:10px">Coming soon</div>
     </div>`;
 }
 function studentMocks(){
   _setNav('mocks');
   $('#main').innerHTML=`<h1>🎓 Cambridge Mocks</h1>
-    <p class="muted" style="margin-top:-6px">MOCK 1 y MOCK 2 en formato Cambridge oficial (A2 · B1 · B2 · C1). Entras directo con tu sesión — no necesitas volver a poner tus datos. Tu resultado se guarda solo en My Progress.</p>
+    <p class="muted" style="margin-top:-6px">MOCK 1 and MOCK 2 in official Cambridge format (A2 · B1 · B2 · C1). You go straight in with your session — no need to enter your details again. Your result is saved only in My Progress.</p>
     <div class="grid cols-2" style="margin-top:12px">
-      ${_skillCard('📖','Reading & Use of English','Textos y tareas estilo KET/PET/FCE/CAE con temporizador.',QUIZ_URL+'reading-quiz.html?branch=mocks')}
-      ${_skillCard('🎧','Listening','Audio real en formato Cambridge, con temporizador.',QUIZ_URL+'listening-quiz.html?branch=mocks')}
-      ${_skillCard('✍️','Writing','Part 1 obligatoria + Part 2 a elegir. Lo califica tu profesor. Solo B1 · B2 · C1.',QUIZ_URL+'writing-quiz.html?branch=mocks')}
-      ${_soonCard('🗣️','Speaking','Entrevista estilo Cambridge con examinador.')}
+      ${_skillCard('📖','Reading & Use of English','KET/PET/FCE/CAE-style texts and tasks with a timer.',QUIZ_URL+'reading-quiz.html?branch=mocks')}
+      ${_skillCard('🎧','Listening','Real audio in Cambridge format, with a timer.',QUIZ_URL+'listening-quiz.html?branch=mocks')}
+      ${_skillCard('✍️','Writing','Part 1 compulsory + Part 2 of your choice. Graded by your teacher. B1 · B2 · C1 only.',QUIZ_URL+'writing-quiz.html?branch=mocks')}
+      ${_soonCard('🗣️','Speaking','Cambridge-style interview with an examiner.')}
     </div>`;
 }
 
@@ -1979,11 +1979,11 @@ function studentMocks(){
 function studentPractice(){
   _setNav('practice');
   $('#main').innerHTML=`<h1>🎯 Practice Tests</h1>
-    <p class="muted" style="margin-top:-6px">Prácticas 1, 2 y 3 en formato Cambridge auténtico — siempre disponibles. Entras directo con tu sesión y tu resultado se guarda solo en My Progress.</p>
+    <p class="muted" style="margin-top:-6px">Practice tests 1, 2 and 3 in authentic Cambridge format — always available. You go straight in with your session and your result is saved only in My Progress.</p>
     <div class="grid cols-3" style="margin-top:12px">
-      ${_skillCard('📖','Reading & Use of English','Práctica 1 · 2 · 3 con corrección automática y feedback CEFR.',QUIZ_URL+'reading-quiz.html?branch=practice')}
-      ${_skillCard('🎧','Listening','Práctica con audio real y corrección automática.',QUIZ_URL+'listening-quiz.html?branch=practice')}
-      ${_skillCard('✍️','Writing','Tareas de escritura que tu profesor califica con rúbrica.',QUIZ_URL+'writing-quiz.html?branch=practice')}
+      ${_skillCard('📖','Reading & Use of English','Practice 1 · 2 · 3 with automatic marking and CEFR feedback.',QUIZ_URL+'reading-quiz.html?branch=practice')}
+      ${_skillCard('🎧','Listening','Practice with real audio and automatic marking.',QUIZ_URL+'listening-quiz.html?branch=practice')}
+      ${_skillCard('✍️','Writing','Writing tasks your teacher grades with a rubric.',QUIZ_URL+'writing-quiz.html?branch=practice')}
     </div>`;
 }
 
@@ -1994,10 +1994,10 @@ function studentLibrary(){
   // Hasta tener una URL pública, el tile se muestra como "Próximamente"
   // (evita un enlace roto para los alumnos en nis.cohasset.pe).
   const libTile = (LIBRARY_URL && !/^https?:\/\/(127\.0\.0\.1|localhost)/.test(LIBRARY_URL))
-    ? _skillCard('📚','Abrir la Biblioteca','Busca libros, revisa disponibilidad y tus préstamos.',LIBRARY_URL)
-    : _soonCard('📚','Biblioteca','Catálogo en línea (OPAC): pronto podrás buscar libros y ver tus préstamos.');
+    ? _skillCard('📚','Open the Library','Search books, check availability and your loans.',LIBRARY_URL)
+    : _soonCard('📚','Library','Online catalogue (OPAC): soon you\'ll be able to search books and see your loans.');
   $('#main').innerHTML=`<h1>📚 Library</h1>
-    <p class="muted" style="margin-top:-6px">Biblioteca NIS — catálogo en línea (OPAC).</p>
+    <p class="muted" style="margin-top:-6px">NIS Library — online catalogue (OPAC).</p>
     <div class="grid cols-2" style="margin-top:12px">${libTile}</div>`;
 }
 
@@ -2009,11 +2009,11 @@ function studentClasses(){
     const [emoji,label]=GRADE_META[k];
     const node='english.classes.'+k;
     return nodeVisible(node)
-      ? _hubCard(emoji,label,'Grammar y actividades de '+label+'.',"window._nav('classes_"+k+"')")
-      : _lockedCard(emoji,label,'Grammar y actividades de '+label+'.');
+      ? _hubCard(emoji,label,'Grammar and activities for '+label+'.',"window._nav('classes_"+k+"')")
+      : _lockedCard(emoji,label,'Grammar and activities for '+label+'.');
   }).join('');
   $('#main').innerHTML=`${back}<h1>🏫 Classes</h1>
-    <p class="muted" style="margin-top:-6px">Material de clase por grado.</p>
+    <p class="muted" style="margin-top:-6px">Class material by grade.</p>
     <div class="grid cols-3" style="margin-top:12px">${cards}</div>`;
 }
 
