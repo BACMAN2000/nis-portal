@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Grammar — Portal NIS</title>
+<title>Grammar — NIS Portal</title>
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,11 +37,11 @@
 <header>
   <img src="assets/logo-h.svg" alt="Nordic International School" onerror="this.style.display='none'">
   <div class="sub" id="hsub">CLASSES · GRAMMAR</div>
-  <a class="back" href="./">🏫 Volver al Portal</a>
+  <a class="back" href="./">🏫 Back to the Portal</a>
 </header>
 <main>
   <h1 id="title">📝 Grammar</h1>
-  <p class="lead" id="lead">Gramática por grado. Iremos publicando más unidades poco a poco.</p>
+  <p class="lead" id="lead">Grammar by grade. We will keep publishing more units little by little.</p>
   <div class="grid" id="grid"></div>
   <div class="footer" id="foot">Grammar — NIS English · 2026</div>
 </main>
@@ -52,25 +52,25 @@ const META={g6:['6️⃣','6th grade','A2'],g7:['7️⃣','7th grade','A2'],g8:[
 
 // Unidades por grado. go:true = juego listo; soon:true = próximamente.
 const UNITS={
-  g6:[{ico:'🧩',t:'Word Formation',d:'Prefixes, suffixes & roots — 5 CEFR games.',href:'word-formation.html?grade=g6'},{ico:'⏱️',t:'Present Simple vs Continuous',d:'Rutinas vs. lo que pasa ahora.',href:'grammar-quiz.html?set=a2-present'}],
-  g7:[{ico:'🧩',t:'Word Formation',d:'Prefixes, suffixes & roots — 5 CEFR games.',href:'word-formation.html?grade=g7'},{ico:'⏱️',t:'Present Simple vs Continuous',d:'Rutinas vs. lo que pasa ahora.',href:'grammar-quiz.html?set=a2-present'}],
+  g6:[{ico:'🧩',t:'Word Formation',d:'Prefixes, suffixes & roots — 5 CEFR games.',href:'word-formation.html?grade=g6'},{ico:'⏱️',t:'Present Simple vs Continuous',d:'Routines vs. what is happening now.',href:'grammar-quiz.html?set=a2-present'}],
+  g7:[{ico:'🧩',t:'Word Formation',d:'Prefixes, suffixes & roots — 5 CEFR games.',href:'word-formation.html?grade=g7'},{ico:'⏱️',t:'Present Simple vs Continuous',d:'Routines vs. what is happening now.',href:'grammar-quiz.html?set=a2-present'}],
   g8:[{ico:'🧩',t:'Word Formation',d:'Prefixes, suffixes & roots — 5 CEFR games.',href:'word-formation.html?grade=g8'},{ico:'✅',t:'Present Perfect vs Past Simple',d:'ever/never/already/since vs. yesterday/last…',href:'grammar-quiz.html?set=b1-perfect'}],
   g9:[
-    {ico:'🗣️',t:'Reported Speech — Lab',d:'Aprende los 4 cambios (animado) y practica statements, questions y commands.',href:'reported-speech-lab.html'},
-    {ico:'⏪',t:'Backshifting Machine',d:'Cada tiempo un paso atrás: ladder, matching, drill y whack-a-mole (incluye modales).',href:'backshifting.html'},
-    {ico:'🎡',t:'Reported Speech — Ruleta',d:'Ruleta de oraciones para transformar en voz alta en clase (proyector).',href:'reported-speech-wheel.html'},
-    {ico:'🗣️',t:'Reported Speech — Quiz',d:'Elige la transformación correcta.',href:'reported-speech.html'},
-    {ico:'🔤',t:'Reported Speech — Ordena',d:'Ordena las palabras del reported speech.',href:'reported-speech-order.html'},
-    {ico:'🎯',t:'Reporting Verbs (Challenge)',d:'Avanzado B2: advise/suggest/apologise/accuse… con su patrón. Con racha y cronómetro.',href:'reported-speech-verbs.html'},
+    {ico:'🗣️',t:'Reported Speech — Lab',d:'Learn the 4 changes (animated) and practise statements, questions and commands.',href:'reported-speech-lab.html'},
+    {ico:'⏪',t:'Backshifting Machine',d:'Every tense one step back: ladder, matching, drill and whack-a-mole (includes modals).',href:'backshifting.html'},
+    {ico:'🎡',t:'Reported Speech — Wheel',d:'Sentence wheel to transform out loud in class (projector).',href:'reported-speech-wheel.html'},
+    {ico:'🗣️',t:'Reported Speech — Quiz',d:'Choose the correct transformation.',href:'reported-speech.html'},
+    {ico:'🔤',t:'Reported Speech — Word Order',d:'Put the reported speech words in order.',href:'reported-speech-order.html'},
+    {ico:'🎯',t:'Reporting Verbs (Challenge)',d:'Advanced B2: advise/suggest/apologise/accuse… with their pattern. With streak and timer.',href:'reported-speech-verbs.html'},
     {ico:'🧩',t:'Word Formation',d:'Prefixes, suffixes & roots — 5 CEFR games.',href:'word-formation.html?grade=g9'},
-    {ico:'🔁',t:'Passive Voice',d:'be + participio: el foco en la acción.',href:'grammar-quiz.html?set=b2-passive'}
+    {ico:'🔁',t:'Passive Voice',d:'be + participle: the focus on the action.',href:'grammar-quiz.html?set=b2-passive'}
   ],
   g10:[
     {ico:'🧩',t:'Word Formation',d:'Prefixes, suffixes & roots — 5 CEFR games.',href:'word-formation.html?grade=g10'},
-    {ico:'🔁',t:'Passive Voice',d:'be + participio: el foco en la acción.',href:'grammar-quiz.html?set=b2-passive'},
-    {ico:'✅',t:'Present Perfect vs Past Simple',d:'Repaso de tiempos clave B2.',href:'grammar-quiz.html?set=b1-perfect'}
+    {ico:'🔁',t:'Passive Voice',d:'be + participle: the focus on the action.',href:'grammar-quiz.html?set=b2-passive'},
+    {ico:'✅',t:'Present Perfect vs Past Simple',d:'Review of key B2 tenses.',href:'grammar-quiz.html?set=b1-perfect'}
   ],
-  g11:[{ico:'🧩',t:'Word Formation',d:'Prefixes, suffixes & roots — 5 CEFR games.',href:'word-formation.html?grade=g11'},{ico:'🔗',t:'Conditionals (advanced)',d:'Mixtos, wish e inversión (Had I…, Should it…).',href:'grammar-quiz.html?set=c1-cond'}]
+  g11:[{ico:'🧩',t:'Word Formation',d:'Prefixes, suffixes & roots — 5 CEFR games.',href:'word-formation.html?grade=g11'},{ico:'🔗',t:'Conditionals (advanced)',d:'Mixed, wish and inversion (Had I…, Should it…).',href:'grammar-quiz.html?set=c1-cond'}]
 };
 
 const grade=(new URLSearchParams(location.search).get('grade'))||'g9';
@@ -78,12 +78,12 @@ const m=META[grade]||META.g9;
 const units=UNITS[grade]||UNITS.g9;
 document.getElementById('title').textContent=m[0]+' Grammar — '+m[1];
 document.getElementById('hsub').textContent='CLASSES · '+m[1].toUpperCase()+' · GRAMMAR';
-document.getElementById('lead').textContent='Gramática de '+m[1]+' (nivel '+m[2]+'). Toca una unidad para practicar.';
+document.getElementById('lead').textContent='Grammar for '+m[1]+' (level '+m[2]+'). Tap a unit to practise.';
 document.getElementById('foot').textContent=m[1]+' · Grammar — NIS English · 2026';
 document.getElementById('grid').innerHTML=units.map(u=>{
   const href=u.soon?null:(u.href.indexOf('grammar-quiz.html')===0?u.href+'&grade='+grade:u.href);
-  if(u.soon) return `<div class="card soon"><div class="ico">${u.ico}</div><h2>${u.t}</h2><div class="desc">${u.d}</div><span class="tag">Próximamente</span></div>`;
-  return `<a class="card" href="${href}"><div class="ico">${u.ico}</div><h2>${u.t}</h2><div class="desc">${u.d}</div><span class="tag go">▶ Practicar</span></a>`;
+  if(u.soon) return `<div class="card soon"><div class="ico">${u.ico}</div><h2>${u.t}</h2><div class="desc">${u.d}</div><span class="tag">Coming soon</span></div>`;
+  return `<a class="card" href="${href}"><div class="ico">${u.ico}</div><h2>${u.t}</h2><div class="desc">${u.d}</div><span class="tag go">▶ Practise</span></a>`;
 }).join('');
 </script>
 </body>

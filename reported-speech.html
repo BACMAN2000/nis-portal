@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -150,7 +150,7 @@ function render(){
   const pct=Math.round(idx/QUESTIONS.length*100);
   panel.innerHTML=`
     <div class="bar">
-      <span class="pill">Pregunta ${idx+1}/${QUESTIONS.length}</span>
+      <span class="pill">Question ${idx+1}/${QUESTIONS.length}</span>
       <div class="progress"><span style="width:${pct}%"></span></div>
       <span class="pill">★ ${score}</span>
     </div>
@@ -197,7 +197,7 @@ function end(){
     <div class="big">${score}/${QUESTIONS.length}</div>
     <div class="msg">${pct}% &middot; ${msg}</div>
     <button class="btn" onclick="start()">↻ Play again</button>
-    <a class="btn ghost" href="grammar.html" style="text-decoration:none;display:inline-block">← Volver a Grammar</a>
+    <a class="btn ghost" href="grammar.html" style="text-decoration:none;display:inline-block">← Back to Grammar</a>
   </div>`;
 }
 

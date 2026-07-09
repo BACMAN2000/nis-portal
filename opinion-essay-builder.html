@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -181,7 +181,7 @@
       <div class="card">
         <h3>📤 Hand in</h3>
         <div class="acts">
-          <button class="btn" id="submitBtn" onclick="submitEssay()" style="background:#16a34a">📤 Entregar a mi profesor</button>
+          <button class="btn" id="submitBtn" onclick="submitEssay()" style="background:#16a34a">📤 Hand in to my teacher</button>
           <button class="btn ghost" onclick="openPreview()">👀 Preview full essay</button>
           <button class="btn ghost" onclick="window.print()">🖨️ Print / Save PDF</button>
           <button class="btn ghost" onclick="openModel()">📖 See a model essay</button>
@@ -522,19 +522,19 @@ function submitKey(){ return 'nis_opinion_submitted_'+topicId+'_'+level; }
 function renderSubmitState(){
   const el=document.getElementById('submitState'); if(!el) return;
   let ts=''; try{ ts=localStorage.getItem(submitKey())||''; }catch(e){}
-  el.innerHTML = ts ? `<span style="color:#16a34a">✓ Entregado a tu profesor — ${new Date(ts).toLocaleString()}</span>` : '';
+  el.innerHTML = ts ? `<span style="color:#16a34a">✓ Handed in to your teacher — ${new Date(ts).toLocaleString()}</span>` : '';
 }
 window.submitEssay = async ()=>{
   const ft=fullText();
-  if(!ft.trim()){ alert('Tu ensayo está vacío. Escribe algo antes de entregar.'); return; }
+  if(!ft.trim()){ alert('Your essay is empty. Write something before you hand in.'); return; }
   const total=words(ft), L=LEVELS[level];
-  if(total < L.min && !confirm(`Tu ensayo tiene ${total} palabras (objetivo ${L.sub}). ¿Entregar de todas formas?`)) return;
+  if(total < L.min && !confirm(`Your essay has ${total} words (target ${L.sub}). Hand in anyway?`)) return;
   const stu = (window.NISAntiCheat && NISAntiCheat.getStudent) ? NISAntiCheat.getStudent() : null;
-  if(!stu || !stu.name){ alert('Inicia sesión en el Portal NIS (con tu cuenta de alumno) para entregar tu trabajo a tu profesor.'); return; }
+  if(!stu || !stu.name){ alert('Log in to the NIS Portal (with your student account) to hand your work in to your teacher.'); return; }
   const CFG=window.NIS_CONFIG||{};
-  if(!CFG.WRITING_WEBHOOK){ alert('No hay un destino de entrega configurado. Avisa a tu profesor.'); return; }
-  if(!confirm(`¿Entregar tu ensayo «${topic().short}» (${L.name}, ${total} palabras) a tu profesor?`)) return;
-  const btn=document.getElementById('submitBtn'); const o=btn.textContent; btn.disabled=true; btn.textContent='Enviando…';
+  if(!CFG.WRITING_WEBHOOK){ alert('No hand-in destination is set up. Let your teacher know.'); return; }
+  if(!confirm(`Hand in your essay "${topic().short}" (${L.name}, ${total} words) to your teacher?`)) return;
+  const btn=document.getElementById('submitBtn'); const o=btn.textContent; btn.disabled=true; btn.textContent='Sending…';
   const payload={
     skill:'Writing', examType:'Activity', examTitle:'Opinion Essay — '+topic().short,
     name:stu.name, email:stu.email||'', grade:stu.grade||'', level:L.name,
@@ -546,9 +546,9 @@ window.submitEssay = async ()=>{
     await fetch(CFG.WRITING_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)});
     try{ localStorage.setItem(submitKey(), new Date().toISOString()); }catch(e){}
     renderSubmitState();
-    alert('✅ ¡Entregado! Tu profesor recibirá tu ensayo por correo para corregirlo y darte tu nota. Puedes seguir editando y volver a entregar si lo necesitas.');
+    alert('✅ Handed in! Your teacher will receive your essay by email to mark it and give you your grade. You can keep editing and hand it in again if you need to.');
   }catch(e){
-    alert('No se pudo entregar. Revisa tu conexión e inténtalo otra vez.');
+    alert('Could not hand in. Check your connection and try again.');
   }
   btn.disabled=false; btn.textContent=o;
 };
