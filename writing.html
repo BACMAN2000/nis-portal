@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Writing — Portal NIS</title>
+<title>Writing — NIS Portal</title>
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,11 +37,11 @@
 <header>
   <img src="assets/logo-h.svg" alt="Nordic International School" onerror="this.style.display='none'">
   <div class="sub" id="hsub">CLASSES · WRITING</div>
-  <a class="back" href="./">🏫 Volver al Portal</a>
+  <a class="back" href="./">🏫 Back to the Portal</a>
 </header>
 <main>
   <h1 id="title">✍️ Writing</h1>
-  <p class="lead" id="lead">Escritura por grado. Iremos publicando más tareas y herramientas poco a poco.</p>
+  <p class="lead" id="lead">Writing by grade. We'll be publishing more tasks and tools little by little.</p>
   <div class="grid" id="grid"></div>
   <div class="footer" id="foot">Writing — NIS English · 2026</div>
 </main>
@@ -53,10 +53,10 @@ const META={g6:['6️⃣','6th grade','A2'],g7:['7️⃣','7th grade','A2'],g8:[
 // Tareas/herramientas de escritura por grado. soon:true = próximamente.
 const UNITS={
   g9:[
-    {ico:'✍️',t:'Opinion Essay Builder',d:'Writing Part 1 (FCE): 6 tópicos a elegir. Arma tu opinion essay párrafo a párrafo con frases guía, banco de linkers, contador de palabras y checklist.',href:'opinion-essay-builder.html?level=b2'}
+    {ico:'✍️',t:'Opinion Essay Builder',d:'Writing Part 1 (FCE): 6 topics to choose from. Build your opinion essay paragraph by paragraph with guide phrases, a bank of linkers, a word counter and a checklist.',href:'opinion-essay-builder.html?level=b2'}
   ],
   g10:[
-    {ico:'✍️',t:'Opinion Essay Builder',d:'Writing Part 1 (FCE): 6 tópicos a elegir, con frases guía, linkers, contador de palabras y checklist.',href:'opinion-essay-builder.html?level=b2'}
+    {ico:'✍️',t:'Opinion Essay Builder',d:'Writing Part 1 (FCE): 6 topics to choose from, with guide phrases, linkers, a word counter and a checklist.',href:'opinion-essay-builder.html?level=b2'}
   ]
 };
 
@@ -65,12 +65,12 @@ const m=META[grade]||META.g9;
 const units=UNITS[grade]||[];
 document.getElementById('title').textContent=m[0]+' Writing — '+m[1];
 document.getElementById('hsub').textContent='CLASSES · '+m[1].toUpperCase()+' · WRITING';
-document.getElementById('lead').textContent='Escritura de '+m[1]+' (nivel '+m[2]+'). Toca una tarea para practicar.';
+document.getElementById('lead').textContent='Writing for '+m[1]+' (level '+m[2]+'). Tap a task to practice.';
 document.getElementById('foot').textContent=m[1]+' · Writing — NIS English · 2026';
 document.getElementById('grid').innerHTML = units.length ? units.map(u=>{
-  if(u.soon) return `<div class="card soon"><div class="ico">${u.ico}</div><h2>${u.t}</h2><div class="desc">${u.d}</div><span class="tag">Próximamente</span></div>`;
-  return `<a class="card" href="${u.href}"><div class="ico">${u.ico}</div><h2>${u.t}</h2><div class="desc">${u.d}</div><span class="tag go">▶ Practicar</span></a>`;
-}).join('') : `<div class="card soon"><div class="ico">🛠️</div><h2>Próximamente</h2><div class="desc">Pronto publicaremos tareas de escritura para este grado.</div></div>`;
+  if(u.soon) return `<div class="card soon"><div class="ico">${u.ico}</div><h2>${u.t}</h2><div class="desc">${u.d}</div><span class="tag">Coming soon</span></div>`;
+  return `<a class="card" href="${u.href}"><div class="ico">${u.ico}</div><h2>${u.t}</h2><div class="desc">${u.d}</div><span class="tag go">▶ Practice</span></a>`;
+}).join('') : `<div class="card soon"><div class="ico">🛠️</div><h2>Coming soon</h2><div class="desc">We will soon publish writing tasks for this grade.</div></div>`;
 </script>
 </body>
 </html>

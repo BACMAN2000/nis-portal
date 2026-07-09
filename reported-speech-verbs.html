@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -62,11 +62,11 @@
   <a class="back" href="grammar.html">← Grammar</a>
 </header>
 <main>
-  <div class="lvl">Nivel B2 · Challenge</div>
+  <div class="lvl">Level B2 · Challenge</div>
   <h1>🎯 Reported Speech — Reporting Verbs</h1>
-  <p class="lead">El reto avanzado: reporta usando el <b>verbo y patrón correctos</b> (no solo say/tell). ¡Cuidado con la estructura! Suma <b>racha</b> y compite contra el cronómetro.</p>
+  <p class="lead">The advanced challenge: report using the <b>correct verb and pattern</b> (not just say/tell). Watch out for the structure! Build up your <b>streak</b> and race against the clock.</p>
   <div class="rules">
-    <b>Patrones clave:</b> advise / remind / warn / encourage / invite <b>+ obj + (not) to</b> · offer / promise / refuse / threaten <b>+ to</b> · suggest / recommend / admit / deny <b>+ -ing</b> · apologise <b>for + -ing</b> · accuse sb <b>of + -ing</b> · congratulate sb <b>on + -ing</b>.
+    <b>Key patterns:</b> advise / remind / warn / encourage / invite <b>+ obj + (not) to</b> · offer / promise / refuse / threaten <b>+ to</b> · suggest / recommend / admit / deny <b>+ -ing</b> · apologise <b>for + -ing</b> · accuse sb <b>of + -ing</b> · congratulate sb <b>on + -ing</b>.
   </div>
   <div class="panel" id="panel"></div>
   <div class="footer">9th grade · Grammar — NIS English · 2026</div>
@@ -77,16 +77,16 @@
 const Q = [
  {p:'"You should see a doctor," she said to me.', c:'She advised me to see a doctor.',
   w:['She advised me see a doctor.','She advised to see a doctor.','She said me to see a doctor.'],
-  n:'advise + objeto + to-infinitivo.'},
+  n:'advise + object + to-infinitive.'},
  {p:'"Don’t walk on the grass," the guard said.', c:'He warned us not to walk on the grass.',
   w:['He warned us to don’t walk on the grass.','He warned us not walking on the grass.','He warned to not walk on the grass.'],
-  n:'warn (+ objeto) + (not) to-infinitivo.'},
+  n:'warn (+ object) + (not) to-infinitive.'},
  {p:'"Let’s take a break," he said.', c:'He suggested taking a break.',
   w:['He suggested to take a break.','He suggested us to take a break.','He suggested take a break.'],
-  n:'suggest + -ing (o suggest that + should).'},
+  n:'suggest + -ing (or suggest that + should).'},
  {p:'"I’ll help you move," she said.', c:'She offered to help me move.',
   w:['She offered helping me move.','She offered me to help move.','She offered that she help me move.'],
-  n:'offer + to-infinitivo.'},
+  n:'offer + to-infinitive.'},
  {p:'"I’m sorry I forgot your birthday," he said.', c:'He apologised for forgetting my birthday.',
   w:['He apologised to forget my birthday.','He apologised forgetting my birthday.','He apologised for forget my birthday.'],
   n:'apologise for + -ing.'},
@@ -95,25 +95,25 @@ const Q = [
   n:'deny + -ing.'},
  {p:'"Yes, I copied the answers," he said.', c:'He admitted copying the answers.',
   w:['He admitted to copy the answers.','He admitted copy the answers.','He admitted he copy the answers.'],
-  n:'admit + -ing (o admit to + -ing).'},
+  n:'admit + -ing (or admit to + -ing).'},
  {p:'"Remember to lock the door," Dad said.', c:'Dad reminded me to lock the door.',
   w:['Dad reminded me locking the door.','Dad remembered me to lock the door.','Dad reminded to lock the door.'],
-  n:'remind + objeto + to-infinitivo (no confundir con remember).'},
+  n:'remind + object + to-infinitive (do not confuse with remember).'},
  {p:'"I promise I’ll pay you back," she said.', c:'She promised to pay me back.',
   w:['She promised paying me back.','She promised me paying back.','She promised that pay me back.'],
-  n:'promise + to-infinitivo.'},
+  n:'promise + to-infinitive.'},
  {p:'"Would you like to join us for dinner?" she said.', c:'She invited me to join them for dinner.',
   w:['She invited me joining them for dinner.','She invited to join them for dinner.','She invited me that I join them.'],
-  n:'invite + objeto + to-infinitivo.'},
+  n:'invite + object + to-infinitive.'},
  {p:'"No, I won’t apologise," he said.', c:'He refused to apologise.',
   w:['He refused apologising.','He refused to not apologise.','He denied to apologise.'],
-  n:'refuse + to-infinitivo.'},
+  n:'refuse + to-infinitive.'},
  {p:'"If you don’t pay, I’ll sue you," she said.', c:'She threatened to sue me.',
   w:['She threatened suing me.','She threatened me to sue.','She threatened that she sue me.'],
-  n:'threaten + to-infinitivo.'},
+  n:'threaten + to-infinitive.'},
  {p:'"You really must try this place," he said.', c:'He recommended trying the place.',
   w:['He recommended to try the place.','He recommended me trying the place.','He recommended try the place.'],
-  n:'recommend + -ing (o recommend that + should).'},
+  n:'recommend + -ing (or recommend that + should).'},
  {p:'"It was you who broke the vase!" she said.', c:'She accused me of breaking the vase.',
   w:['She accused me to break the vase.','She accused me breaking the vase.','She accused of breaking the vase.'],
   n:'accuse sb of + -ing.'},
@@ -122,7 +122,7 @@ const Q = [
   n:'congratulate sb on + -ing.'},
  {p:'"Come on, you can do it!" she said.', c:'She encouraged me to keep trying.',
   w:['She encouraged me keeping trying.','She encouraged to keep trying.','She encouraged that I keep trying.'],
-  n:'encourage + objeto + to-infinitivo.'}
+  n:'encourage + object + to-infinitive.'}
 ];
 
 let order=[], idx=0, score=0, answered=false, streak=0, best=0, t0=0, tNow=0, tick=null;
@@ -148,12 +148,12 @@ function render(){
     </div>
     <span style="display:inline-block;font-size:11px;font-weight:800;letter-spacing:.5px;padding:4px 10px;border-radius:20px;background:#dbeafe;color:#1e40af;text-transform:uppercase">Direct speech</span>
     <div class="prompt">${it.p}</div>
-    <div class="ask">Elige el <b>reported speech</b> con el verbo y patrón correctos:</div>
+    <div class="ask">Choose the <b>reported speech</b> with the correct verb and pattern:</div>
     <div class="opts" id="opts">
       ${opts.map(o=>`<button class="opt" data-ok="${o.ok?1:0}" onclick="pick(this)">${o.t}<span class="mk"></span></button>`).join('')}
     </div>
     <div class="fb" id="fb"></div>
-    <div class="actions"><button class="btn" id="next" disabled onclick="next()">${idx===Q.length-1?'Ver resultado':'Siguiente →'}</button></div>`;
+    <div class="actions"><button class="btn" id="next" disabled onclick="next()">${idx===Q.length-1?'See result':'Next →'}</button></div>`;
 }
 
 window.pick=(btn)=>{
@@ -172,14 +172,14 @@ window.next=()=>{ if(idx<Q.length-1){ idx++; answered=false; render(); } else en
 function end(){
   clearInterval(tick);
   const pct=Math.round(score/Q.length*100);
-  const msg = pct>=90?`¡Maestro de los reporting verbs! 🏆 Racha máxima: ${best}.`
-            : pct>=70?`¡Muy bien! Dominas los patrones. Racha máxima: ${best}.`
-            : pct>=50?`Buen intento. Repasa los patrones (-ing vs to) y vuelve a intentar.`
-            : `Estos verbos son difíciles. Lee los patrones de arriba y reinténtalo.`;
+  const msg = pct>=90?`You're a master of reporting verbs! 🏆 Best streak: ${best}.`
+            : pct>=70?`Great job! You've got the patterns down. Best streak: ${best}.`
+            : pct>=50?`Good try. Review the patterns (-ing vs to) and try again.`
+            : `These verbs are tricky. Read the patterns above and try again.`;
   panel.innerHTML=`<div class="result">
     <div class="big">${score}/${Q.length}</div>
-    <div class="msg">${pct}% &middot; ⏱ ${fmt(tNow)} &middot; 🔥 mejor racha ${best}<br>${msg}</div>
-    <button class="btn" onclick="start()">↻ Reintentar (mejora tu tiempo)</button>
+    <div class="msg">${pct}% &middot; ⏱ ${fmt(tNow)} &middot; 🔥 best streak ${best}<br>${msg}</div>
+    <button class="btn" onclick="start()">↻ Retry (beat your time)</button>
     <a class="btn ghost" href="grammar.html" style="text-decoration:none;display:inline-block">← Grammar</a>
   </div>`;
 }
