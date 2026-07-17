@@ -24,8 +24,8 @@ let userFilter = { grade:'', year:'', role:'' };
 
 /* ---------- analysis helpers ---------- */
 function yearOptions(sel){ const cur=new Date().getFullYear(); let o=''; for(let y=2026;y<=Math.max(cur+1,2027);y++){ o+=`<option ${String(sel)===String(y)?'selected':''}>${y}</option>`; } return o; }
-function isMockAttempt(a){ return a.mock==='mock1' || a.mock==='mock2'; }
-function mockLabel(a){ return a.mock==='mock2'?'MOCK 2':a.mock==='mock1'?'MOCK 1':(a.mock||'Practice'); }
+function isMockAttempt(a){ return /^mock\d+$/.test(a.mock||''); }
+function mockLabel(a){ const m=/^mock(\d+)$/.exec(a.mock||''); return m?('MOCK '+m[1]):(a.mock||'Practice'); }
 function partsOf(breakdown){
   if(!breakdown) return [];
   const arr = Array.isArray(breakdown) ? breakdown : (breakdown.parts || []);
@@ -370,6 +370,7 @@ async function renderAdmin(tab='users'){
     {key:'teachers',label:'👨‍🏫 Profesores'},
     {key:'honesty',label:'🛡️ Honestidad'},
     {key:'mocks',label:'🔓 Mocks'},
+    {key:'practice',label:'🎯 Practice Tests'},
     {key:'access',label:'🔐 Accesos'},
     {key:'phonics',label:'🔤 Phonics'},
     {key:'coach',label:'🎙️ Pronunciación'},
@@ -394,6 +395,7 @@ async function renderAdmin(tab='users'){
   if(tab==='teachers') return adminTeachers();
   if(tab==='honesty') return antiCheatPanel();
   if(tab==='mocks') return adminMocks();
+  if(tab==='practice') return practicePanel(GRADES);
   if(tab==='access') return adminAccess();
   return adminUsers();
 }
@@ -746,7 +748,7 @@ async function adminMocks(){
     </tr>`;
   }).join('');
   $('#main').innerHTML = `<h1>Mocks — control de acceso</h1>
-    <div class="note">Por defecto los <b>MOCKS están bloqueados</b> para los alumnos. Habilítalos por grado cuando estén listos para rendirlos. Los <b>Practice Tests</b> siempre están disponibles. Profesores y administradores siempre ven los mocks.</div>
+    <div class="note">Por defecto los <b>MOCKS están bloqueados</b> para los alumnos: son exámenes oficiales y solo el admin los habilita por grado cuando se programan. Los <b>Practice Tests</b> se gestionan en su pestaña 🎯 (admin y profesores). Profesores y administradores siempre ven los mocks.</div>
     <div class="card" style="padding:0;overflow-x:auto"><table>
       <thead><tr><th>Grado</th><th>Estado de Mocks</th><th>Última actualización</th><th></th></tr></thead>
       <tbody>${rows}</tbody></table></div>`;
@@ -758,6 +760,37 @@ window._toggleMock = async (gradeId, to, btn)=>{
     { onConflict:'grade_id' });
   if(error){ alert('No se pudo actualizar: '+error.message); }
   adminMocks();
+};
+/* 🎯 Practice Tests — control por grado. A diferencia de los Mocks (admin-only),
+   aquí también escriben los profesores cuyo teacher_access cubre el grado (RLS
+   practice_access). Sin fila en la tabla ⇒ DESBLOQUEADO (default abierto). */
+async function practicePanel(gradeList){
+  const { data, error } = await sb.from('practice_access').select('grade_id, unlocked, updated_at').order('grade_id');
+  if(error){ $('#main').innerHTML=`<div class="note err">${esc(error.message)}</div>`; return; }
+  const map={}; (data||[]).forEach(r=>map[r.grade_id]=r);
+  const rows = (gradeList||GRADES).map(g=>{
+    const r=map[g.id]; const on = r ? !!r.unlocked : true; // default: abierto
+    const when = (r&&r.updated_at)?new Date(r.updated_at).toLocaleString():'';
+    return `<tr>
+      <td><b>${g.name}</b></td>
+      <td><span class="badge ${on?'on':'off'}">${on?'🔓 Desbloqueado':'🔒 Bloqueado'}</span></td>
+      <td class="muted" style="font-size:.82rem">${when}</td>
+      <td><button class="btn sm ${on?'ghost':''}" onclick="window._togglePractice(${g.id}, ${on?'false':'true'}, this)">${on?'Bloquear':'Desbloquear'}</button></td>
+    </tr>`;
+  }).join('');
+  $('#main').innerHTML = `<h1>Practice Tests — control de acceso</h1>
+    <div class="note">Los <b>PRACTICE TESTS están desbloqueados por defecto</b> (práctica libre). Bloquéalos por grado cuando quieras reservarlos para usarlos en clase, y desbloquéalos al terminar. Los <b>Mocks</b> (exámenes oficiales) se gestionan aparte y solo por el admin.</div>
+    <div class="card" style="padding:0;overflow-x:auto"><table>
+      <thead><tr><th>Grado</th><th>Estado de Practice Tests</th><th>Última actualización</th><th></th></tr></thead>
+      <tbody>${rows}</tbody></table></div>`;
+}
+window._togglePractice = async (gradeId, to, btn)=>{
+  if(btn){ btn.disabled=true; btn.textContent='…'; }
+  const { error } = await sb.from('practice_access').upsert(
+    { grade_id:gradeId, unlocked:to, updated_at:new Date().toISOString(), updated_by:(state.session&&state.session.user&&state.session.user.id)||null },
+    { onConflict:'grade_id' });
+  if(error){ alert('No se pudo actualizar: '+error.message); }
+  practicePanel(state.profile && state.profile.role==='admin' ? GRADES : teacherAllowedGrades());
 };
 async function adminUsers(){
   const { data:profs, error } = await sb.from('profiles').select('*, grades(name)').order('created_at',{ascending:false});
@@ -1213,6 +1246,7 @@ async function renderTeacher(tab){
   if(acc.can_results) nav.push({key:'final',label:'🎓 Resultado final'});
   if(acc.can_students) nav.push({key:'students',label:'👥 Alumnos'});
   if(acc.can_results||acc.can_students) nav.push({key:'honesty',label:'🛡️ Honestidad'});
+  if(teacherAllowedGrades().length) nav.push({key:'practice',label:'🎯 Practice Tests'});
   const _tn = state.teacherNodes||{has:false,set:new Set()};
   const _canClasses = !_tn.has || _tn.set.has('english.classes') || [..._tn.set].some(k=>k.indexOf('english.classes.')===0);
   if(_canClasses) nav.push({key:'classes',label:'🏫 Classes'});
@@ -1233,6 +1267,7 @@ async function renderTeacher(tab){
   if(active==='final') return cefrFinalPanel();
   if(active==='students') return teacherStudents();
   if(active==='honesty') return antiCheatPanel();
+  if(active==='practice') return practicePanel(teacherAllowedGrades());
   if(active==='classes') return studentClasses();
   if(active==='phonics'){ $('#main').innerHTML = phonicsPanel(); return; }
   if(active==='coach'){ $('#main').innerHTML = coachPanel(); return; }
