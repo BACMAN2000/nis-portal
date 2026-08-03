@@ -10069,5 +10069,246 @@ window.GAMES_DATA = [
     "start again after a failed attempt"
    ]
   ]
+ },
+ /* ===== Unit 4 · Mind Over Matter — The Wellbeing Generation (Grade 9, B2) ===== */
+ {
+  "id": "u4-emotions",
+  "level": "B2",
+  "cat": "vocabulary",
+  "title": "U4 · Emotions & Intensity",
+  "icon": "🧘",
+  "rule": "Name emotions <b>precisely</b>: overwhelmed, anxious, drained, discouraged… and grade them with intensity adverbs: <b>slightly → fairly → really → utterly</b>.",
+  "examples": [
+   "Three exams tomorrow? I feel <b>utterly overwhelmed</b>.",
+   "She was <b>slightly uneasy</b> before the interview.",
+   "After the match I was completely <b>drained</b>.",
+   "He felt <b>discouraged</b> after failing twice."
+  ],
+  "quiz": [
+   ["Too much homework at the same time makes me feel ___.", ["overwhelmed","relieved","cheerful","proud"], 0, "overwhelmed = too much to handle"],
+   ["Before results day she was really ___ — she couldn't sit still.", ["content","anxious","drained","amused"], 1, "anxious = nervous and worried"],
+   ["After a 10-km race you feel absolutely ___.", ["uneasy","irritable","exhausted","tense"], 2, "exhausted = extremely tired"],
+   ["Which is the STRONGEST? \"I'm ___ furious.\"", ["slightly","fairly","rather","utterly"], 3, "utterly = totally, the top of the ladder"],
+   ["The ladder: worried → anxious → ___.", ["calm","panicked","tired","bored"], 1, "panicked = the extreme of worry"],
+   ["\"Drowning in homework\" is…", ["literal","figurative language","a modal verb","a quantifier"], 1, "a metaphor — figurative emotion language"]
+  ],
+  "gap": [
+   ["I was so ___ that my hands were shaking before the exam.", "anxious", ["content","drained","proud"]],
+   ["He's been studying for six hours — he must be mentally ___.", "drained", ["delighted","uneasy","cheerful"]],
+   ["I'm only ___ annoyed — it's really not a big deal.", "slightly", ["utterly","completely","totally"]],
+   ["She felt ___ after her third rejection, but she kept trying.", "discouraged", ["over the moon","relieved","amused"]],
+   ["___ of the noise outside, I couldn't focus on my essay.", "Because", ["Therefore","So","As a result"]],
+   ["I didn't sleep well; ___ a result, I was irritable all day.", "as", ["because","due","since"]]
+  ],
+  "match": [
+   ["overwhelmed", "too much to handle at once"],
+   ["anxious", "nervous about what may happen"],
+   ["drained", "empty of energy"],
+   ["irritable", "easily annoyed"],
+   ["relieved", "happy a worry is gone"],
+   ["restless", "unable to relax or stay still"],
+   ["utterly", "totally (very strong)"],
+   ["slightly", "a little (very weak)"]
+  ]
+ },
+ {
+  "id": "u4-gerund-infinitive",
+  "level": "B2",
+  "cat": "grammar",
+  "title": "U4 · Gerund vs Infinitive",
+  "icon": "🔀",
+  "rule": "<b>enjoy, avoid, keep, mind, suggest, finish</b> + -ing · <b>want, decide, hope, plan, learn, refuse</b> + to + infinitive · <b>like, love, start</b> take both.",
+  "examples": [
+   "I <b>enjoy playing</b> football. (never \"enjoy to play\")",
+   "She <b>decided to sleep</b> earlier.",
+   "He <b>avoids checking</b> his phone at night.",
+   "They <b>refused to give</b> up."
+  ],
+  "quiz": [
+   ["I enjoy ___ music while I study.", ["to listen to","listening to","listen to","listened to"], 1, "enjoy + -ing"],
+   ["We decided ___ a podcast about sleep.", ["recording","to record","record","recorded"], 1, "decide + to-infinitive"],
+   ["Do you mind ___ the window?", ["to open","opening","open","opened"], 1, "mind + -ing"],
+   ["My doctor suggested ___ screens off an hour before bed.", ["to turn","turning","turn","turned"], 1, "suggest + -ing"],
+   ["They hope ___ the showcase on Friday.", ["seeing","to see","see","saw"], 1, "hope + to-infinitive"],
+   ["I keep ___ my password — so frustrating!", ["to forget","forgetting","forget","forgot"], 1, "keep + -ing = repeated action"]
+  ],
+  "gap": [
+   ["I avoid ___ coffee after 3 p.m.", "drinking", ["to drink","drink","drank"]],
+   ["She plans ___ a sleep diary for three days.", "to keep", ["keeping","keep","kept"]],
+   ["He refused ___ his phone at the door.", "to leave", ["leaving","leave","left"]],
+   ["We finished ___ the article just in time.", "writing", ["to write","write","wrote"]],
+   ["I want ___ my habits this term.", "to change", ["changing","change","changed"]],
+   ["My friends suggested ___ a study group.", "starting", ["to start","start","started"]]
+  ],
+  "match": [
+   ["enjoy", "+ -ing"],
+   ["avoid", "+ -ing"],
+   ["suggest", "+ -ing"],
+   ["mind", "+ -ing"],
+   ["decide", "+ to-infinitive"],
+   ["hope", "+ to-infinitive"],
+   ["refuse", "+ to-infinitive"],
+   ["plan", "+ to-infinitive"]
+  ]
+ },
+ {
+  "id": "u4-tricky-verbs",
+  "level": "B2",
+  "cat": "grammar",
+  "title": "U4 · Tricky Verbs (Meaning Change)",
+  "icon": "🎭",
+  "rule": "<b>stop doing</b> = quit · <b>stop to do</b> = pause in order to · <b>remember/forget doing</b> = past memory · <b>remember/forget to do</b> = duty · <b>try doing</b> = experiment · <b>try to do</b> = effort.",
+  "examples": [
+   "I <b>stopped drinking</b> energy drinks. (quit)",
+   "We <b>stopped to drink</b> some water. (paused)",
+   "<b>Remember to bring</b> your worksheet! (duty)",
+   "I <b>remember seeing</b> the sea for the first time. (memory)"
+  ],
+  "quiz": [
+   ["I stopped ___ soda — my sleep improved a lot.", ["to drink","drinking","drink","drinks"], 1, "stop + -ing = quit the habit"],
+   ["On the hike we stopped ___ the view.", ["admiring","to admire","admire","admired"], 1, "stop + to-inf = pause in order to"],
+   ["Remember ___ your alarm for tomorrow!", ["setting","to set","set","sets"], 1, "remember + to-inf = future duty"],
+   ["I'll never forget ___ my first podcast.", ["to record","recording","record","recorded"], 1, "forget + -ing = unforgettable memory"],
+   ["Can't sleep? Try ___ a warm shower.", ["to take","taking","take","took"], 1, "try + -ing = experiment with a method"],
+   ["I tried ___ awake, but I fell asleep at nine.", ["staying","to stay","stay","stayed"], 1, "try + to-inf = make an effort (and fail)"]
+  ],
+  "gap": [
+   ["Dad stopped ___ five years ago and feels much better.", "smoking", ["to smoke","smoke","smoked"]],
+   ["Don't forget ___ your water bottle to practice.", "to bring", ["bringing","bring","brought"]],
+   ["I remember ___ nervous on my first day at Nordic.", "feeling", ["to feel","feel","felt"]],
+   ["She tried ___ the heavy box, but she couldn't.", "to lift", ["lifting","lift","lifted"]],
+   ["If the Wi-Fi fails, try ___ the router.", "restarting", ["to restart","restart","restarted"]],
+   ["We stopped ___ a photo of the sunset.", "to take", ["taking","take","took"]]
+  ],
+  "match": [
+   ["stop doing", "quit a habit"],
+   ["stop to do", "pause in order to do it"],
+   ["remember to do", "a duty (future)"],
+   ["remember doing", "a memory (past)"],
+   ["forget to do", "duty not done"],
+   ["never forget doing", "unforgettable memory"],
+   ["try doing", "experiment with a method"],
+   ["try to do", "make an effort"]
+  ]
+ },
+ {
+  "id": "u4-modals-advice",
+  "level": "B2",
+  "cat": "grammar",
+  "title": "U4 · Modals of Advice",
+  "icon": "🪜",
+  "rule": "The advice ladder: <b>could / might want to</b> (gentle) → <b>should / ought to</b> (standard) → <b>had better</b> (warning) → <b>must</b> (very strong). Softeners: \"Maybe you could…\", \"It might help to…\".",
+  "examples": [
+   "You <b>could</b> try a study timetable.",
+   "You <b>should</b> talk to your teacher about it.",
+   "You<b>'d better</b> back up your project — or you'll lose it.",
+   "You <b>must</b> get more sleep; this is serious."
+  ],
+  "quiz": [
+   ["Gentle option: \"You ___ join the morning run club.\"", ["must","could","had better","have to"], 1, "could = gentle suggestion"],
+   ["\"You ___ apologise — she's really hurt.\"", ["might","should","may","can"], 1, "should = standard advice"],
+   ["\"You ___ finish today, or you'll miss the deadline.\"", ["could","might","had better","may"], 2, "had better = warning + consequence"],
+   ["Doctors say teens ___ sleep 8-10 hours.", ["could","might","must","may"], 2, "must = strongest recommendation"],
+   ["Kindest phrasing?", ["You must change now.","It might help to talk to someone.","You'd better stop.","Just do it."], 1, "softeners = empathy"],
+   ["\"If I ___ you, I'd start tonight.\"", ["am","were","was being","be"], 1, "If I were you — advice formula"]
+  ],
+  "gap": [
+   ["Maybe you ___ try keeping a gratitude journal.", "could", ["must","had better","have to"]],
+   ["You ___ to see a doctor about that headache. (2 words: ... to)", "ought", ["should","must","could"]],
+   ["You'd ___ charge your laptop before the exam.", "better", ["best","rather","sooner"]],
+   ["Have you ___ going to bed 30 minutes earlier?", "tried", ["try","trying","to try"]],
+   ["It might ___ to talk to the counsellor.", "help", ["helps","helping","helped"]],
+   ["You ___ never skip breakfast before a test.", "should", ["could","may","might"]]
+  ],
+  "match": [
+   ["could", "gentle suggestion"],
+   ["should", "standard advice"],
+   ["ought to", "standard advice (formal)"],
+   ["had better", "strong warning"],
+   ["must", "very strong / urgent"],
+   ["Have you tried…?", "empathetic question"],
+   ["If I were you…", "personal advice formula"],
+   ["It might help to…", "softener"]
+  ]
+ },
+ {
+  "id": "u4-speculation",
+  "level": "B2",
+  "cat": "grammar",
+  "title": "U4 · Speculation Modals",
+  "icon": "🔮",
+  "rule": "Guessing about the present: <b>might / may / could</b> = possible · <b>must</b> = almost sure · <b>can't</b> = impossible. Careful: <b>\"must be\" is still a guess</b>, not a fact!",
+  "examples": [
+   "Her light is on — she <b>must</b> be studying.",
+   "He <b>might</b> be at the gym, I'm not sure.",
+   "That <b>can't</b> be Ana's bag; she took hers home.",
+   "They <b>may</b> come later."
+  ],
+  "quiz": [
+   ["It's 2 a.m. and his light is on. He ___ be cramming for finals.", ["can't","must","shouldn't","would"], 1, "strong logical guess → must"],
+   ["She ___ be on the bus — I'm not sure.", ["must","might","can't","should"], 1, "possibility → might"],
+   ["He ___ be hungry — he just ate two burgers!", ["must","might","can't","may"], 2, "logically impossible → can't"],
+   ["\"You must be joking!\" expresses…", ["a fact","a deduction","an obligation","advice"], 1, "must = deduction from evidence"],
+   ["I hear music next door. They ___ be having a party.", ["can't","could","shouldn't","would"], 1, "one possible explanation → could"],
+   ["Which is a GUESS, not a fact?", ["She is asleep.","She must be asleep.","I saw her sleeping.","She sleeps."], 1, "must be = strong guess"]
+  ],
+  "gap": [
+   ["The lights are off. They ___ be out. (almost sure)", "must", ["might","can't","should"]],
+   ["He ___ be at football practice — the season is over! (impossible)", "can't", ["must","may","should"]],
+   ["She ___ be tired after the trip, but I'm not certain.", "might", ["must","can't","will"]],
+   ["That phone ___ be Mateo's — his is broken. (impossible)", "can't", ["must","could","may"]],
+   ["You've studied all day — you ___ be exhausted. (deduction)", "must", ["can't","might","would"]],
+   ["They ___ arrive tonight or tomorrow; it depends on traffic.", "may", ["must","can't","should"]]
+  ],
+  "match": [
+   ["must be", "almost sure it is true"],
+   ["can't be", "sure it is impossible"],
+   ["might be", "possible, not sure"],
+   ["may be", "possible, not sure (formal)"],
+   ["could be", "one possible explanation"],
+   ["is", "a confirmed fact"],
+   ["must be joking", "classic deduction phrase"],
+   ["speculation", "an intelligent guess"]
+  ]
+ },
+ {
+  "id": "u4-sleep-science",
+  "level": "B2",
+  "cat": "vocabulary",
+  "title": "U4 · Sleep Science & Reporting Verbs",
+  "icon": "😴",
+  "rule": "Talk about research like a journalist: <b>claim, suggest, warn, point out, argue, according to</b>. Key sleep vocabulary: circadian rhythm, melatonin, screen time, wind-down routine.",
+  "examples": [
+   "Scientists <b>claim</b> that teens need 8-10 hours of sleep.",
+   "<b>According to</b> Dr. Rivera, screens delay melatonin.",
+   "Experts <b>warn</b> against caffeine after 3 p.m.",
+   "The study <b>suggests</b> keeping a regular schedule."
+  ],
+  "quiz": [
+   ["Researchers ___ that phones delay sleep by an hour.", ["say to","claim","tell","advice"], 1, "claim = state it as true"],
+   ["___ to the article, teens' body clocks shift later.", ["Reporting","According","Suggesting","Regarding"], 1, "according to + source"],
+   ["Doctors ___ teenagers not to drink caffeine late.", ["warn","suggest","say","point"], 0, "warn somebody (not) to do"],
+   ["The hormone that makes you sleepy is…", ["adrenaline","melatonin","caffeine","insulin"], 1, "melatonin = the sleep hormone"],
+   ["Your internal 24-hour body clock is your ___ rhythm.", ["circular","circadian","cardiac","seasonal"], 1, "circadian rhythm"],
+   ["A calm routine before bed is a ___ routine.", ["warm-up","wind-down","work-out","check-in"], 1, "wind-down = relax before sleep"]
+  ],
+  "gap": [
+   ["Experts ___ that screens should go off an hour before bed.", "suggest", ["warn to","say to","tell"]],
+   ["___ to Dr. Rivera, a cool dark room improves sleep.", "According", ["Reporting","Suggesting","Listening"]],
+   ["The study ___ out that most teens sleep less than 7 hours.", "points", ["claims","warns","argues"]],
+   ["Blue light from screens delays ___, the sleep hormone.", "melatonin", ["adrenaline","oxygen","vitamin D"]],
+   ["Teens' ___ rhythm makes them sleepy later than adults.", "circadian", ["cardiac","circular","annual"]],
+   ["Too much ___ time before bed ruins deep sleep.", "screen", ["play","free","lunch"]]
+  ],
+  "match": [
+   ["claim", "state something is true"],
+   ["suggest", "propose an idea"],
+   ["warn", "alert about a danger"],
+   ["point out", "highlight a fact"],
+   ["according to", "citing a source"],
+   ["melatonin", "the sleep hormone"],
+   ["circadian rhythm", "internal body clock"],
+   ["wind-down routine", "calm pre-sleep habits"]
+  ]
  }
 ];
