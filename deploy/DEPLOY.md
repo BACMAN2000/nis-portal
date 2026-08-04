@@ -22,8 +22,11 @@ de Cohasset (`204.168.174.160`, tras Cloudflare), **manteniendo el mismo stack**
 | `index.html` | Cache-busting `app.js?v=106 → v=107`. |
 | `deploy/` | Este runbook + `nginx-nis.cohasset.pe.conf`. |
 
-> **Mocks (`QUIZ_URL`)**: se dejan en `bacman2000.github.io/mocks-cambridge` por ahora
-> (funcionan cross-origin). Migrarlos al servidor es una tarea aparte.
+> **Mocks (`QUIZ_URL`)**: ya no es una URL fija. `app.js` arranca apuntando a
+> `bacman2000.github.io/mocks-cambridge` y **asciende solo** a `/mocks-cambridge/`
+> (mismo origen) en cuanto comprueba que el servidor responde ahí. Es decir: el
+> portal se puede desplegar antes que el paso 3-bis sin romper nada, y se corrige
+> solo al montarlo. Ver paso **3-bis**.
 
 **Nada más del código depende del dominio.** El resto de URLs absolutas son CDNs
 (Supabase JS, Google Fonts, Tailwind, chart.js, jspdf…) que funcionan desde cualquier
@@ -62,6 +65,43 @@ nginx -t && systemctl reload nginx
 ```
 > Recuerda: el nginx vive en el **servidor**, el `git pull` NO lo actualiza.
 > Guarda un backup como haces con `cohasset` (`/root/nis.nginx.bak-*`).
+
+### 3-bis. Servir los simulacros en el mismo origen (`/mocks-cambridge/`)
+
+Arregla dos cosas de una vez: el alumno deja de salir a `github.io` a media sesión, y
+—por compartir `localStorage` con el portal— los quizzes dejan de pedirle nombre, grado
+y correo a alguien que ya inició sesión (`NIS.currentStudent()` empieza a devolver
+al alumno, y el auto-skip que ya existe en los quizzes por fin se dispara).
+
+```bash
+# 1) Clonar el repo de los simulacros junto al portal
+cd /opt
+git clone https://github.com/bacman2000/mocks-cambridge.git
+#    (~60 MB de mp3; con la deploy-key igual que nis-portal si el repo es privado)
+
+# 2) Añadir /opt/mocks-cambridge al mismo auto-pull que /opt/nis-portal
+
+# 3) Copiar el bloque nginx ya actualizado y recargar
+cp /root/nis.nginx.bak-$(date +%F) /root/ 2>/dev/null || true   # backup previo
+cp /opt/nis-portal/deploy/nginx-nis.cohasset.pe.conf /etc/nginx/sites-available/nis.cohasset.pe
+nginx -t && systemctl reload nginx
+```
+
+Comprobación (debe dar `200`, no `404`):
+
+```bash
+curl -s -o /dev/null -w '%{http_code}\n' https://nis.cohasset.pe/mocks-cambridge/quizzes.html
+```
+
+> **El `^~` del bloque no es opcional.** En nginx las locations *regex* se evalúan antes
+> que las de prefijo: sin `^~`, la regex `\.(html|js|css)$` del propio archivo captura
+> `/mocks-cambridge/quizzes.html`, lo resuelve contra `root /opt/nis-portal` y devuelve
+> 404. Es un fallo que no deja rastro en los logs de error y parece "el clone salió mal".
+> Por el mismo motivo el bloque lleva su propio `location ~ /\.` : `^~` desactiva la
+> regla `/\.git` del server, y sin ese candado `/mocks-cambridge/.git/` quedaría expuesto.
+
+Mientras este paso no esté hecho **no se rompe nada**: el portal detecta el 404 y sigue
+usando GitHub Pages.
 
 ### 4. Supabase — permitir el origen nuevo
 Dashboard Supabase → proyecto `kjrppibltkbflvxmiyib` →
