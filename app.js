@@ -10,7 +10,29 @@ const esc = s => (s==null?'':String(s)).replace(/&/g,'&amp;').replace(/</g,'&lt;
 const GRADES = Array.from({length:11},(_,i)=>({id:i+1,name:'G'+(i+1)}));
 const LEVELS = ['A2','B1','B2','C1'];
 const SKILLS = ['Reading','Listening','Writing'];
-const QUIZ_URL = 'https://bacman2000.github.io/mocks-cambridge/';
+/* Motor de simulacros (repo mocks-cambridge).
+   Lo QUEREMOS en el MISMO ORIGEN (/mocks-cambridge/), porque eso arregla dos cosas
+   de golpe:
+     1) el alumno nunca sale de nis.cohasset.pe (misma marca en todas las páginas);
+     2) mismo origen = mismo localStorage = la sesión de Supabase se COMPARTE, así
+        `NIS.currentStudent()` (nis-bridge.js) devuelve al alumno logueado y los
+        quizzes saltan solos la pantalla de nombre/grado/correo.
+   Pero esa ruta solo existe cuando el servidor tiene montado el bloque nginx
+   (location /mocks-cambridge/ -> /opt/mocks-cambridge/). Por eso NO se fija a pelo:
+   arrancamos en GitHub Pages (que siempre responde) y ascendemos al mismo origen en
+   cuanto se comprueba que contesta. Así este archivo se puede desplegar ANTES que el
+   nginx sin dejar a nadie sin simulacros, y se corrige solo cuando el nginx exista.
+   El peor caso es el comportamiento de siempre, nunca una página rota. */
+const QUIZ_URL_LOCAL  = '/mocks-cambridge/';
+const QUIZ_URL_REMOTE = 'https://bacman2000.github.io/mocks-cambridge/';
+let QUIZ_URL = QUIZ_URL_REMOTE;
+(function(){
+  try{
+    fetch(QUIZ_URL_LOCAL+'quizzes.html', {method:'HEAD'})
+      .then(r=>{ if(r && r.ok) QUIZ_URL = QUIZ_URL_LOCAL; })
+      .catch(()=>{});
+  }catch(e){}
+})();
 /* === Enlaces configurables del dashboard de alumnos === */
 const LIBRARY_URL = 'http://127.0.0.1:8900/';   // Biblioteca NIS (OPAC local). Mientras sea 127.0.0.1/localhost, el tile se muestra "Próximamente" (ver studentLibrary). Pon aquí la URL pública para activarlo.
 const CLASSES_LINKS = {
