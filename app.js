@@ -1975,10 +1975,12 @@ function _lockedView(back,title){
   $('#main').innerHTML=`${back}<h1>${title}</h1>
     <p class="muted">🔒 This section isn't available for you yet. Ask your teacher to unlock it.</p>`;
 }
-/* Actividades de un grado → primero las de la UNIDAD en curso, luego las
-   genéricas por nivel. Las tarjetas por unidad vivían sólo en activities.html
-   y no se veían desde el portal; ahora salen de la misma fuente. */
-function studentGradeActivities(key){
+/* Actividades de un grado: TODAS las unidades con sus ejercicios desplegados
+   (nada de un clic extra por unidad), y al final las genéricas por nivel.
+   Es la misma lista de activities.html, pero dentro del portal y desde la
+   misma fuente (activities-data.js). `focusUnit` sólo desplaza la vista a
+   esa unidad: se usa al volver desde un juego. */
+function studentGradeActivities(key,focusUnit){
   _setNav('classes');
   const [emoji,label]=GRADE_META[key]||['🏫',key];
   const lv=GRADE_LEVELS[key]||'A1,A2,B1,B2,C1';
@@ -1988,15 +1990,25 @@ function studentGradeActivities(key){
   // visibilidad del nodo se comprueba aquí y no sólo al pintar la tarjeta.
   if(!_gradeNodeOpen(key,'activities')) return _lockedView(back,'🎲 Activities · '+label);
   const units=_unitsFor(key);
-  const unitsBlock = units.length ? `
-    <h2 style="margin:18px 0 8px">📘 By unit</h2>
-    <div class="grid cols-2">
-      ${units.map(u=>_hubCard(u.icon,esc(u.title),esc(u.blurb||''),"window._nav('classes_"+key+"_unit_"+u.id+"')")).join('')}
-    </div>
-    <h2 style="margin:22px 0 8px">🎯 By level</h2>` : '';
+  // Índice de saltos: la página es larga (una unidad puede traer 6 semanas).
+  const jump = units.length ? `<div style="display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 4px">
+      ${units.map(u=>`<a class="btn sm ghost" href="#unit-${u.id}" style="text-decoration:none">${u.icon} ${esc(u.title)}</a>`).join('')}
+      <a class="btn sm ghost" href="#by-level" style="text-decoration:none">🎯 By level</a>
+    </div>` : '';
+  const unitsBlock = units.map(u=>`
+    <h2 id="unit-${u.id}" style="margin:26px 0 4px">${u.icon} ${esc(u.title)}</h2>
+    ${u.lead?`<p class="muted" style="margin:0 0 10px">${esc(u.lead)}</p>`:''}
+    ${(u.weeks||[]).map(w=>`
+      ${w.title?`<h3 style="margin:16px 0 6px;font-size:1rem;color:var(--blue-d)">${esc(w.title)}</h3>`:''}
+      <div class="grid cols-3" style="margin-top:8px">
+        ${(w.games||[]).map(g=>_skillCard(g.icon,esc(g.title),esc(g.desc),
+            _withBack(g.href,'classes_'+key+'_unit_'+u.id))).join('')}
+      </div>`).join('')}`).join('');
   $('#main').innerHTML=`${back}<h1>🎲 Activities · ${label}</h1>
-    <p class="muted" style="margin-top:-6px">Available levels: ${lv.split(',').join(' · ')}.</p>
+    <p class="muted" style="margin-top:-6px">Games for each unit, plus extra practice by level (${lv.split(',').join(' · ')}).</p>
+    ${jump}
     ${unitsBlock}
+    <h2 id="by-level" style="margin:30px 0 8px">🎯 Extra practice by level</h2>
     <div class="grid cols-2" style="margin-top:12px">
       ${key==='g7' ? _skillCard('🚣','Reader · Tom Sawyer','The Adventures of Tom Sawyer (A2): 7 activities per chapter — word search, crossword, comprehension, speed quiz, hangman, memory and scramble.',_withBack('tom-sawyer.html',route)) : ''}
       ${key==='g9' ? _skillCard('🎩','Reader · Being Earnest','The Importance of Being Earnest (B1.2): 10 activities per chapter — comprehension, true/false, multiple choice, speed quiz, writing, word search, crossword, hangman, memory and scramble.',_withBack('being-earnest.html',route)) : ''}
@@ -2008,29 +2020,15 @@ function studentGradeActivities(key){
       ${_skillCard('🃏','Memory','Flip and match the picture with its word: 5 games per level (A1–C1), with timer and moves.',_withBack('memory.html',route))}
       ${key==='g9' ? _skillCard('🧠','Memory · Reported Speech','Match each sentence in direct speech with its reported-speech version.',_withBack('memory-reported-speech.html',route)) : ''}
     </div>`;
-}
-/* Una unidad dentro de Activities → sus semanas y los juegos de cada una.
-   Es la misma lista que muestra activities.html, pero dentro del portal. */
-function studentGradeUnit(key,unitId){
-  _setNav('classes');
-  const [emoji,label]=GRADE_META[key]||['🏫',key];
-  const route='classes_'+key+'_unit_'+unitId;
-  const back=_backBtn("window._nav('classes_"+key+"_act')",'Activities · '+label);
-  if(!_gradeNodeOpen(key,'activities')) return _lockedView(back,'🎲 Activities · '+label);
-  const u=_unitsFor(key).find(x=>x.id===unitId);
-  if(!u){
-    $('#main').innerHTML=`${back}<h1>🎲 Activities · ${label}</h1>
-      <p class="muted">This unit isn't available yet.</p>`;
-    return;
+  if(focusUnit){
+    const el=document.getElementById('unit-'+focusUnit);
+    if(el) el.scrollIntoView({block:'start'});
   }
-  const weeks=(u.weeks||[]).map(w=>`
-    ${w.title?`<h2 style="margin:20px 0 8px;font-size:1.05rem">${esc(w.title)}</h2>`:''}
-    <div class="grid cols-3" style="margin-top:8px">
-      ${(w.games||[]).map(g=>_skillCard(g.icon,esc(g.title),esc(g.desc),_withBack(g.href,route))).join('')}
-    </div>`).join('');
-  $('#main').innerHTML=`${back}<h1>${u.icon} ${esc(u.title)}</h1>
-    <p class="muted" style="margin-top:-6px">${esc(u.lead||'')}</p>${weeks}`;
 }
+/* Ruta por unidad (#classes_g9_unit_u4): ya no es una vista aparte — abre la
+   lista completa colocada en esa unidad. Se mantiene porque los juegos ya
+   publicados enlazan aquí con ?back=. */
+function studentGradeUnit(key,unitId){ studentGradeActivities(key,unitId); }
 /* Pinta una vista. Devuelve true si la clave era una ruta conocida. */
 function _navRender(k){
   let m;
