@@ -70,47 +70,33 @@
     </a>
   </div>
 
-  <h2 style="font-size:17px;margin:22px 0 12px;color:#2d5a8d">&#127760; Unit 3 &mdash; Digital Footprint</h2>
-  <div class="grid">
-    <a class="card" href="crossword-digital-footprint.html">
-      <div class="ico">&#128270;</div>
-      <h2>Crossword &mdash; Digital Footprint</h2>
-      <div class="desc">Interactive crossword with the Unit 3 vocabulary (Scrolling Identities). Clues, checking and scoring.</div>
-      <span class="tag">A2</span><span class="tag">B1</span><span class="tag">B2</span><span class="tag">C1</span>
-    </a>
-    <a class="card" href="wordsearch-digital-footprint.html">
-      <div class="ico">&#128269;</div>
-      <h2>Word Search &mdash; Digital Footprint</h2>
-      <div class="desc">Word search with 48 words from the topic. Drag over the letters to find them; difficulty increases by level.</div>
-      <span class="tag">A2</span><span class="tag">B1</span><span class="tag">B2</span><span class="tag">C1</span>
-    </a>
-  </div>
-
-  <h2 style="font-size:17px;margin:22px 0 12px;color:#2d5a8d">&#129504; Unit 4 &mdash; The Wellbeing Generation</h2>
-  <p class="lead" style="margin:-6px 0 14px">Mind Over Matter &middot; Grade 9. Each game has three tabs &mdash; <b>Day 1 &middot; Day 2 &middot; Day 3</b> &mdash; matching the week's sessions.</p>
-  <h3 style="font-size:14px;margin:0 0 10px;color:#475569;font-weight:700">Week 1 &mdash; Emotions &amp; Stress</h3>
-  <div class="grid">
-    <a class="card" href="crossword-u4w1.html">
-      <div class="ico">&#129504;</div>
-      <h2>Crossword &mdash; Week 1</h2>
-      <div class="desc">Emotions &amp; stress vocabulary (overwhelmed, apprehensive, uneasy&hellip;). Read the clue and type the word. Three days, lives, timer and results.</div>
-      <span class="tag">Day 1</span><span class="tag">Day 2</span><span class="tag">Day 3</span>
-    </a>
-    <a class="card" href="wordsearch-u4w1.html">
-      <div class="ico">&#128269;</div>
-      <h2>Word Search &mdash; Week 1</h2>
-      <div class="desc">Find the week's emotion words in the grid. Difficulty grows by day: across &amp; down, then diagonals, then all eight directions.</div>
-      <span class="tag">Day 1</span><span class="tag">Day 2</span><span class="tag">Day 3</span>
-    </a>
-    <a class="card" href="word-sudoku-u4w1.html">
-      <div class="ico">&#128290;</div>
-      <h2>Word Sudoku &mdash; Week 1</h2>
-      <div class="desc">A calm-mind warm-up: fill each row, column and box with the letters of a wellbeing word (calm, breath, growth&hellip;). One set per day.</div>
-      <span class="tag">Day 1</span><span class="tag">Day 2</span><span class="tag">Day 3</span>
-    </a>
-  </div>
+  <!-- Secciones por unidad: se pintan desde activities-data.js, la MISMA
+       fuente que usa el portal (Classes → grado → Activities → unidad),
+       para que las dos vistas no vuelvan a desincronizarse. -->
+  <div id="units"></div>
 
   <div class="footer">NIS English &middot; 2026</div>
 </main>
+<script src="activities-data.js?v=1"></script>
+<script>
+(function(){
+  const esc = s => (s==null?'':String(s)).replace(/&/g,'&amp;').replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  const card = g => `<a class="card" href="${esc(g.href)}">
+      <div class="ico">${g.icon}</div>
+      <h2>${esc(g.title)}</h2>
+      <div class="desc">${esc(g.desc)}</div>
+      ${(g.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join('')}
+    </a>`;
+  const week = w => (w.title ? `<h3 style="font-size:14px;margin:14px 0 10px;color:#475569;font-weight:700">${esc(w.title)}</h3>` : '')
+    + `<div class="grid">${(w.games||[]).map(card).join('')}</div>`;
+  const unit = u => `<h2 style="font-size:17px;margin:22px 0 12px;color:#2d5a8d">${u.icon} ${esc(u.title)}</h2>`
+    + (u.lead ? `<p class="lead" style="margin:-6px 0 14px">${esc(u.lead)}</p>` : '')
+    + (u.weeks||[]).map(week).join('');
+  const d = window.ACTIVITIES_DATA;
+  document.getElementById('units').innerHTML = d ? d.units.map(unit).join('') : '';
+})();
+</script>
+<script src="nis-nav.js?v=1"></script>
 </body>
 </html>

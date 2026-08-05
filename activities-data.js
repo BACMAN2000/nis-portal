@@ -1,0 +1,62 @@
+/* Actividades por unidad — ÚNICA fuente de verdad.
+   La renderizan tanto activities.html (hub suelto) como app.js
+   (Portal → Classes → grado → Activities → unidad), así las dos vistas
+   no pueden volver a desincronizarse: antes las tarjetas por unidad
+   existían sólo en activities.html y no se veían desde el portal. */
+(function(){
+  /* Unit 4 · Wellbeing: 6 semanas, los mismos 3 juegos cada una. */
+  const U4_TOPICS = [
+    'Emotions & Stress',
+    'Habits That Shape Us',
+    'Advice & Speculation',
+    'Sleep & the Science of Rest',
+    'Writing a Magazine Article',
+    'The Wellbeing Issue',
+  ];
+  const DAYS = ['Day 1','Day 2','Day 3'];
+  const u4Week = (topic, n) => ({
+    id: 'w' + n,
+    title: 'Week ' + n + ' — ' + topic,
+    games: [
+      { href:'crossword-u4w'+n+'.html', icon:'🧠', title:'Crossword — Week '+n,
+        desc: topic+' vocabulary. Read the clue and type the word. Three days, lives, timer and results.', tags:DAYS },
+      { href:'wordsearch-u4w'+n+'.html', icon:'🔍', title:'Word Search — Week '+n,
+        desc:'Find the week’s words in the grid. Difficulty grows by day: across & down, then diagonals, then all eight directions.', tags:DAYS },
+      { href:'word-sudoku-u4w'+n+'.html', icon:'🔢', title:'Word Sudoku — Week '+n,
+        desc:'A calm-mind warm-up: fill each row, column and box with the letters of a wellbeing word. One set per day.', tags:DAYS },
+    ],
+  });
+
+  window.ACTIVITIES_DATA = {
+    units: [
+      {
+        id:'u3', grade:'g9', icon:'🌐',
+        title:'Unit 3 — Digital Footprint',
+        blurb:'Scrolling Identities: crossword and word search with the unit vocabulary.',
+        lead:'Scrolling Identities · Grade 9.',
+        weeks: [
+          { id:'w0', title:'', games:[
+            { href:'crossword-digital-footprint.html', icon:'🔎', title:'Crossword — Digital Footprint',
+              desc:'Interactive crossword with the Unit 3 vocabulary (Scrolling Identities). Clues, checking and scoring.',
+              tags:['A2','B1','B2','C1'] },
+            { href:'wordsearch-digital-footprint.html', icon:'🔍', title:'Word Search — Digital Footprint',
+              desc:'Word search with 48 words from the topic. Drag over the letters to find them; difficulty increases by level.',
+              tags:['A2','B1','B2','C1'] },
+          ]},
+        ],
+      },
+      {
+        id:'u4', grade:'g9', icon:'🧠',
+        title:'Unit 4 — The Wellbeing Generation',
+        blurb:'Mind Over Matter: 6 weeks × 3 games (crossword, word search and word sudoku).',
+        lead:'Mind Over Matter · Grade 9. Each game has three tabs — Day 1 · Day 2 · Day 3 — matching the week’s sessions.',
+        weeks: U4_TOPICS.map((t,i)=>u4Week(t,i+1)),
+      },
+    ],
+  };
+
+  /* Unidades de un grado, en orden. */
+  window.ACTIVITIES_DATA.forGrade = function(grade){
+    return this.units.filter(u=>u.grade===grade);
+  };
+})();

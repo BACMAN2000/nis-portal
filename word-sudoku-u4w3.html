@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Word Sudoku A1–C1 · NIS English</title>
+<title>Unit 4 · Week 3 Word Sudoku — Advice &amp; Speculation</title>
 <style>
   :root{
     --bg:#f4f6fb; --card:#fff; --ink:#1e2433; --muted:#67718a;
@@ -65,7 +65,7 @@
 </style>
   <meta name="google" content="notranslate">
   <script src="config.js?v=18"></script>
-  <script src="anticheat.js?v=6" data-activity="word-sudoku"></script>
+  <script src="anticheat.js?v=6" data-activity="word-sudoku-u4w3"></script>
 <script src="nis-nav.js?v=1"></script>
 </head>
 <body>
@@ -78,7 +78,7 @@
 </nav>
 
 <header>
-  <h1>🔢 Word Sudoku</h1>
+  <h1>🔢 Unit 4 · Week 3 — Wellbeing Word Sudoku</h1>
   <p>Same rules as Sudoku — but with <b>letters</b>. Every row, column and box uses each letter of the theme word once. NIS English</p>
 </header>
 
@@ -104,7 +104,7 @@
   </div>
 </main>
 
-<footer>Word Sudoku · A1–C1 · NIS English · 2026</footer>
+<footer>Unit 4 · Week 3 · Wellbeing warm-up · Day 1 · Day 2 · Day 3 · NIS English</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js"></script>
@@ -135,14 +135,8 @@ window.NISACT=(function(){
 const shuffle=a=>{ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; };
 
 /* Each level: 9 theme words, every word an isogram (all letters distinct); grid size = word length. */
-const LEVELS={
-  A1:{ n:4, br:2, bc:2, clues:8,  topic:'Animals', words:['FISH','DUCK','FROG','BIRD','GOAT','LION','BEAR','WOLF','CRAB'] },
-  A2:{ n:4, br:2, bc:2, clues:8,  topic:'Food',    words:['CAKE','MILK','RICE','SOUP','PEAR','LIME','CORN','SALT','BEAN'] },
-  B1:{ n:6, br:2, bc:3, clues:18, topic:'The home', words:['GARDEN','FRIDGE','BASKET','CARPET','TOWELS','CANDLE','FLOWER','GARLIC','PLATES'] },
-  B2:{ n:6, br:2, bc:3, clues:16, topic:'Science',  words:['PLANET','ROCKET','COMETS','SATURN','ORBITS','FLIGHT','OXYGEN','CARBON','GROWTH'] },
-  C1:{ n:9, br:3, bc:3, clues:40, topic:'Advanced', words:['DISCOVERY','EDUCATION','WORKPLACE','DANGEROUS','NIGHTMARE','KEYBOARDS','WONDERFUL','TRIANGLES','FLOWCHART'] },
-};
-const ORDER=['A1','A2','B1','B2','C1'];
+const LEVELS={"D1": {"n": 4, "br": 2, "bc": 2, "clues": 8, "topic": "Clear thinking", "words": ["MIND", "CALM", "HOPE", "IDEA"]}, "D2": {"n": 6, "br": 2, "bc": 3, "clues": 18, "topic": "Give advice", "words": ["ADVICE", "POLITE", "WISDOM", "CHANGE"]}, "D3": {"n": 6, "br": 2, "bc": 3, "clues": 18, "topic": "Weigh it up", "words": ["GROWTH", "FRIEND", "CALMER", "ACTION"]}};
+const ORDER=['D1','D2','D3'];
 
 /* ---- Sudoku generator (randomised backtracking) ---- */
 function genSolved(n,br,bc){
@@ -171,7 +165,7 @@ function digHoles(sol,n,clues){
 }
 
 /* ---- State ---- */
-let level='A1', pIdx=0, N=4, BR=2, BC=2, LETTERS=[], SOL=[], given=[], val=[], sel=null, elapsed=0, timer=null, hints=0, done={};
+let level='D1', pIdx=0, N=4, BR=2, BC=2, LETTERS=[], SOL=[], given=[], val=[], sel=null, elapsed=0, timer=null, hints=0, done={};
 
 function levelDone(l){ for(let i=0;i<LEVELS[l].words.length;i++) if(!done[l+'#'+i]) return false; return true; }
 function buildLevels(){

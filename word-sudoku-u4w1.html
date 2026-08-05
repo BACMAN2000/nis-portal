@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Unit 4 · Week 1 Word Sudoku — The Wellbeing Generation</title>
+<title>Unit 4 · Week 1 Word Sudoku — Emotions &amp; Stress</title>
 <style>
   :root{
     --bg:#f4f6fb; --card:#fff; --ink:#1e2433; --muted:#67718a;
@@ -66,12 +66,14 @@
   <meta name="google" content="notranslate">
   <script src="config.js?v=18"></script>
   <script src="anticheat.js?v=6" data-activity="word-sudoku-u4w1"></script>
+<script src="nis-nav.js?v=1"></script>
 </head>
 <body>
 <nav class="topnav">
   <img src="assets/logo-h.svg" alt="Nordic International School" onerror="this.style.display='none'">
   <span class="nav-sp"></span>
-  <button class="navbtn" onclick="history.back()">◀ Back</button>
+  <a class="navbtn" data-nis-back>◀ Back</a>
+  <a class="navbtn" href="activities.html">🎲 Actividades</a>
   <a class="navbtn primary" href="./">🏫 Portal</a>
 </nav>
 
@@ -133,7 +135,7 @@ window.NISACT=(function(){
 const shuffle=a=>{ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; };
 
 /* Each level: 9 theme words, every word an isogram (all letters distinct); grid size = word length. */
-const LEVELS={"D1": {"n": 4, "br": 2, "bc": 2, "clues": 8, "topic": "Steady mind (4x4)", "words": ["CALM", "MIND", "REST", "HOPE", "COPE", "GRIT"]}, "D2": {"n": 6, "br": 2, "bc": 3, "clues": 18, "topic": "Breathe & notice (6x6)", "words": ["UNEASY", "BREATH", "SILENT", "DREAMS"]}, "D3": {"n": 6, "br": 2, "bc": 3, "clues": 18, "topic": "Growth (6x6)", "words": ["CALMER", "WISDOM", "GROWTH", "FRIEND"]}};
+const LEVELS={"D1": {"n": 4, "br": 2, "bc": 2, "clues": 8, "topic": "Steady mind", "words": ["CALM", "MIND", "REST", "HOPE", "COPE", "GRIT"]}, "D2": {"n": 6, "br": 2, "bc": 3, "clues": 18, "topic": "Breathe & notice", "words": ["UNEASY", "BREATH", "SILENT", "DREAMS"]}, "D3": {"n": 6, "br": 2, "bc": 3, "clues": 18, "topic": "Growth", "words": ["CALMER", "WISDOM", "GROWTH", "FRIEND"]}};
 const ORDER=['D1','D2','D3'];
 
 /* ---- Sudoku generator (randomised backtracking) ---- */

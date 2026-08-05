@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Digital Footprint Crossword — 4 Levels</title>
+<title>Unit 4 · Week 5 Crossword — Writing a Magazine Article</title>
 <style>
   :root{
     --bg:#f4f6fb; --card:#ffffff; --ink:#1e2433; --muted:#67718a;
@@ -72,7 +72,7 @@
 </style>
   <meta name="google" content="notranslate">
   <script src="config.js?v=18"></script>
-  <script src="anticheat.js?v=6" data-activity="crossword-digital-footprint"></script>
+  <script src="anticheat.js?v=6" data-activity="crossword-u4w5"></script>
 <script src="nis-nav.js?v=1"></script>
 </head>
 <body>
@@ -83,8 +83,8 @@
   <a class="navbtn primary" href="./">🏫 Portal</a>
 </nav>
 <header>
-  <h1>🔎 Digital Footprint — Crossword Challenge</h1>
-  <p>Unit 3 · Scrolling Identities · Week 1 — Choose your level, read the clue, and type the word. Grade 9 · NIS English</p>
+  <h1>📰 Unit 4 · Week 5 — Writing a Magazine Article Crossword</h1>
+  <p>Craft of the magazine article — Pick a day, read the clue, type the word. Grade 9 · NIS English</p>
 </header>
 
 <div class="tabs" id="tabs"></div>
@@ -110,7 +110,7 @@
   </div>
 </div>
 
-<footer>U3W1S3 · Digital Footprints &amp; Online Identity · Levels A2 · B1 · B2 · C1</footer>
+<footer>Unit 4 · Week 5 · Writing a Magazine Article · Day 1 · Day 2 · Day 3</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js"></script>
@@ -142,54 +142,9 @@ window.NISACT=(function(){
 })();
 </script>
 <script>
-const DATA = {
-"A2": {label:"A2", sub:"Elementary", width:13, height:13, words:[
- {word:"RESPECTFUL",row:9,col:0,dir:"across",clue:"Kind and polite to other people online."},
- {word:"IDENTITY",row:5,col:6,dir:"down",clue:"Your online ___ is who you are on the internet."},
- {word:"PASSIVE",row:7,col:0,dir:"across",clue:"The footprint you do NOT see — websites can watch the pages you visit."},
- {word:"DELETE",row:6,col:6,dir:"across",clue:"To remove a photo or message from the internet."},
- {word:"PRIVATE",row:0,col:9,dir:"down",clue:"Secret; only for you. Keep your information like this!"},
- {word:"FOOTPRINT",row:1,col:4,dir:"across",clue:"All the information about you on the internet — your digital ___."},
- {word:"INTERNET",row:3,col:11,dir:"down",clue:"We use it every day, and it does not forget."},
- {word:"POST",row:0,col:6,dir:"down",clue:"To put a photo or a message online."},
- {word:"ACTIVE",row:4,col:4,dir:"down",clue:"The footprint you make on purpose, like writing a post."},
- {word:"COMMENT",row:11,col:0,dir:"across",clue:"The words you write under a photo or a video."}]},
-"B1": {label:"B1", sub:"Intermediate", width:13, height:13, words:[
- {word:"REPUTATION",row:6,col:0,dir:"across",clue:"The opinion that other people have of you."},
- {word:"PRIVACY",row:5,col:0,dir:"down",clue:"Check the ___ settings on your apps to protect your information."},
- {word:"SCREENSHOT",row:1,col:9,dir:"down",clue:"Even deleted posts can survive as one of these."},
- {word:"ADVANTAGE",row:0,col:5,dir:"down",clue:"A positive digital footprint can be a real ___ when you apply for a job."},
- {word:"EMPLOYER",row:4,col:2,dir:"down",clue:"This person may search for information about you before hiring you."},
- {word:"LOCATION",row:10,col:5,dir:"across",clue:"Apps often record this — the place where you are."},
- {word:"SETTINGS",row:5,col:12,dir:"down",clue:"Privacy ___ are controls that protect your information."},
- {word:"HARMLESS",row:12,col:5,dir:"across",clue:"Not dangerous; a funny photo might seem ___ today."},
- {word:"PROFILE",row:2,col:7,dir:"down",clue:"Your ___ picture is part of your active footprint."},
- {word:"TRAIL",row:0,col:3,dir:"across",clue:"A series of marks you leave behind you every time you go online."}]},
-"B2": {label:"B2", sub:"Upper-Int (FCE)", width:13, height:12, words:[
- {word:"IMPRESSION",row:5,col:0,dir:"across",clue:"A single careless post can shape the ___ a stranger forms of us."},
- {word:"THREAT",row:3,col:3,dir:"down",clue:"It would be a mistake to view the digital footprint only as a ___."},
- {word:"AWARENESS",row:7,col:3,dir:"across",clue:"Digital ___: understanding how your online actions affect you."},
- {word:"TRACES",row:0,col:6,dir:"down",clue:"Small signs that something has happened; we leave them whenever we open an app."},
- {word:"CONTEXT",row:3,col:9,dir:"down",clue:"A private joke among friends may later be read completely out of ___."},
- {word:"PERMANENT",row:2,col:1,dir:"down",clue:"Lasting, not temporary — deletion is rarely this."},
- {word:"PRESENCE",row:4,col:11,dir:"down",clue:"A carefully curated online ___ can highlight talents that might go unnoticed."},
- {word:"CURATED",row:11,col:6,dir:"across",clue:"Carefully selected and arranged, like a thoughtful online profile."},
- {word:"DELETION",row:0,col:2,dir:"across",clue:"This is rarely permanent — a screenshot can outlive the original post."},
- {word:"ASSET",row:9,col:5,dir:"across",clue:"Something useful or valuable — what a footprint can become if used thoughtfully."}]},
-"C1": {label:"C1", sub:"Advanced", width:14, height:14, words:[
- {word:"STEWARDSHIP",row:5,col:2,dir:"across",clue:"The careful management of something entrusted to you."},
- {word:"EPHEMERAL",row:5,col:4,dir:"down",clue:"Lasting a very short time — what young users wrongly assume online content is."},
- {word:"ALGORITHM",row:1,col:7,dir:"down",clue:"It quietly records browsing patterns, movements and consumer preferences."},
- {word:"DISCRETION",row:3,col:2,dir:"down",clue:"We should extend to others the same ___ we would expect for ourselves."},
- {word:"RELINQUISH",row:11,col:4,dir:"across",clue:"To give up control — what we do the moment we press 'share'."},
- {word:"SCRUTINISE",row:0,col:11,dir:"down",clue:"To examine very closely, as recruiters do with candidates' online histories."},
- {word:"FORESIGHT",row:1,col:9,dir:"down",clue:"Anticipating future consequences; managing a footprint is an exercise in this."},
- {word:"LIABILITY",row:13,col:4,dir:"across",clue:"To regard the footprint solely as one of these would be reductive."},
- {word:"ENDURING",row:3,col:0,dir:"across",clue:"Lasting over a long period; the opposite of fleeting."},
- {word:"ERASURE",row:3,col:0,dir:"down",clue:"Deletion offers no guarantee of this — copies routinely survive."}]}
-};
+const DATA = {"D1": {"width": 12, "height": 10, "words": [{"word": "PARAGRAPH", "row": 2, "col": 3, "dir": "across", "clue": "A block of sentences on one idea."}, {"word": "HOOK", "row": 2, "col": 11, "dir": "down", "clue": "An opening that pulls the reader in."}, {"word": "ANECDOTE", "row": 2, "col": 9, "dir": "down", "clue": "A short, personal story used to illustrate."}, {"word": "QUOTE", "row": 9, "col": 5, "dir": "across", "clue": "Someone's exact spoken or written words."}, {"word": "HEADLINE", "row": 0, "col": 4, "dir": "down", "clue": "The title that grabs the reader's attention."}, {"word": "SUBHEADING", "row": 0, "col": 1, "dir": "across", "clue": "A smaller title for a section."}, {"word": "CAPTION", "row": 5, "col": 0, "dir": "across", "clue": "The text printed under a photo."}, {"word": "AUDIENCE", "row": 7, "col": 0, "dir": "across", "clue": "The readers you are writing for."}], "label": "Day 1", "sub": "Anatomy of an article"}, "D2": {"width": 14, "height": 9, "words": [{"word": "REGISTER", "row": 4, "col": 6, "dir": "across", "clue": "How formal or informal the language is."}, {"word": "CONCISE", "row": 0, "col": 9, "dir": "down", "clue": "Saying much in few words; short and clear."}, {"word": "CONCLUSION", "row": 2, "col": 0, "dir": "across", "clue": "The ending that wraps everything up."}, {"word": "ENGAGING", "row": 1, "col": 2, "dir": "down", "clue": "Interesting; holding the reader's attention."}, {"word": "TONE", "row": 4, "col": 11, "dir": "down", "clue": "The writer's attitude shown in the text."}, {"word": "VIVID", "row": 6, "col": 1, "dir": "across", "clue": "Creating a clear, strong mental picture."}, {"word": "DRAFT", "row": 3, "col": 13, "dir": "down", "clue": "A first version of a piece of writing."}, {"word": "STRUCTURE", "row": 0, "col": 5, "dir": "across", "clue": "The way the parts are organised."}], "label": "Day 2", "sub": "Drafting"}, "D3": {"width": 12, "height": 9, "words": [{"word": "IMPROVE", "row": 6, "col": 5, "dir": "across", "clue": "To make something better."}, {"word": "CLARITY", "row": 2, "col": 5, "dir": "down", "clue": "The quality of being easy to understand."}, {"word": "REVISE", "row": 1, "col": 11, "dir": "down", "clue": "To change and improve a draft."}, {"word": "COHESION", "row": 0, "col": 9, "dir": "down", "clue": "How smoothly ideas connect together."}, {"word": "RUBRIC", "row": 0, "col": 4, "dir": "across", "clue": "The set of criteria used to grade work."}, {"word": "FEEDBACK", "row": 4, "col": 0, "dir": "across", "clue": "Comments given to help you improve."}, {"word": "EDIT", "row": 4, "col": 2, "dir": "down", "clue": "To correct and polish a text."}, {"word": "PROOFREAD", "row": 0, "col": 0, "dir": "down", "clue": "To check writing for small mistakes."}], "label": "Day 3", "sub": "Peer review & revision"}};
 
-let level = "A2", cells = {}, sol = {}, numbers = {}, entries = [], curEntry = null, hintsUsed = 0;
+let level = "D1", cells = {}, sol = {}, numbers = {}, entries = [], curEntry = null, hintsUsed = 0;
 const done = {};
 /* === Vidas y cronómetro === */
 let lives = 5, elapsed = 0, timerInt = null;
@@ -351,7 +306,7 @@ function liveCheck(){
       clearInterval(timerInt);
       const b=document.getElementById('banner');
       b.textContent='🎉 Excellent! Level complete in '+fmtT(elapsed)+'! Tu resultado fue guardado en My Results y enviado a tu correo.';
-      if(window.NISACT) NISACT.submit({activity:'crossword',title:'Crossword — Digital Footprint',level:level,
+      if(window.NISACT) NISACT.submit({activity:'crossword',title:'Crossword — U4 Week 5',level:level,
         score:entries.length,total:entries.length,hints:hintsUsed,lives:lives,duration:elapsed});
     }
     document.getElementById('banner').classList.add('show');

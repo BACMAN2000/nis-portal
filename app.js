@@ -1726,27 +1726,17 @@ async function renderStudent(initial){
     {key:'general',label:'🗂️ General'},
     {key:'results',label:'📊 My Progress'},
   ], initial||'home', `<div class="center muted">Loading…</div>`);
-  bindNav(k=>{
-    if(k==='english') return studentSubject('english');
-    if(k==='french') return studentSubject('french');
-    if(k==='general') return studentGeneral();
-    if(k==='mun') return studentMun();
-    if(k==='phonics') return studentPhonics();
-    if(k==='coach') return studentCoach();
-    if(k==='mocks') return studentMocks();
-    if(k==='practice') return studentPractice();
-    if(k==='classes') return studentClasses();
-    if(k==='classes_g9') return studentGrade('g9');
-    if(k==='library') return studentLibrary();
-    if(k==='results') return studentResults();
-    if(k==='final') return studentFinal();
-    return studentHub();
-  });
+  // Toda la navegación pasa por window._nav para que la ruta quede en el hash
+  // (deep links desde las páginas de actividades + "atrás" del navegador).
+  bindNav(k=>window._nav(k||'home'));
   state.access = await loadStudentAccess();   // Fase 2: visibilidad por nodo
   // Anti-trampa en todo el portal: mismo criterio que las actividades, pero
   // solo para alumnos logueados (docentes/admin quedan exentos en el motor).
   try{ if(window.NISAntiCheat) NISAntiCheat.init({activity:'portal', label:'Portal NIS', requireStudent:true}); }catch(_){}
-  if(initial==='results') studentResults(); else studentHub();
+  // Volver desde un juego (./#classes_g9_unit_u4) reabre esa vista, no el hub.
+  const deep=(location.hash||'').replace(/^#/,'');
+  if(deep && _navRender(deep)) return;
+  if(initial==='results') window._nav('results'); else studentHub();
 }
 function _setNav(k){ document.querySelectorAll('[data-nav]').forEach(e=>e.classList.toggle('active',e.dataset.nav===k)); }
 function studentPhonics(){ _setNav('phonics'); $('#main').innerHTML = phonicsPanel(); }
@@ -1962,46 +1952,119 @@ function studentGrade(key){
   _setNav('classes');
   const [emoji,label]=GRADE_META[key]||['🏫',key];
   const base='english.classes.'+key;
+  const route='classes_'+key;
   const back = _backBtn("window._nav('classes')",'Classes');
   $('#main').innerHTML=`${back}<h1>${emoji} ${label}</h1>
     <p class="muted" style="margin-top:-6px">${label} material.</p>
     <div class="grid cols-2" style="margin-top:12px">
-      ${nodeVisible(base+'.grammar') ? _skillCard('📝','Grammar','Grammar for '+label+': explanations and games by unit.','grammar.html?grade='+key) : _lockedCard('📝','Grammar','Grammar for '+label+'.')}
-      ${nodeVisible(base+'.activities') ? _hubCard('🎲','Activities','Crosswords and word searches by level.',"window._nav('classes_"+key+"_act')") : _lockedCard('🎲','Activities','Games and activities.')}
-      ${key==='g9' ? (nodeVisible('english.classes.g9.uoe1') ? _skillCard('🧩','Use of English · Part 1','Multiple-choice cloze B2 (Cambridge style): 8 gaps, options A–D, with correction and explanations.','use-of-english-part1.html') : _lockedCard('🧩','Use of English · Part 1','Cambridge-style B2 cloze.')) : ''}
-      ${key==='g9' ? (nodeVisible('english.classes.g9.writing') ? _skillCard('✍️','Writing','Opinion essay (FCE Writing Part 1): 6 topics with guide phrases, a bank of linkers, word counter and checklist.','writing.html?grade='+key) : _lockedCard('✍️','Writing','Opinion essay · FCE Writing Part 1.')) : ''}
+      ${nodeVisible(base+'.grammar') ? _skillCard('📝','Grammar','Grammar for '+label+': explanations and games by unit.',_withBack('grammar.html?grade='+key,route)) : _lockedCard('📝','Grammar','Grammar for '+label+'.')}
+      ${nodeVisible(base+'.activities') ? _hubCard('🎲','Activities','Games by unit and by level: crosswords, word searches and more.',"window._nav('classes_"+key+"_act')") : _lockedCard('🎲','Activities','Games and activities.')}
+      ${key==='g9' ? (nodeVisible('english.classes.g9.uoe1') ? _skillCard('🧩','Use of English · Part 1','Multiple-choice cloze B2 (Cambridge style): 8 gaps, options A–D, with correction and explanations.',_withBack('use-of-english-part1.html',route)) : _lockedCard('🧩','Use of English · Part 1','Cambridge-style B2 cloze.')) : ''}
+      ${key==='g9' ? (nodeVisible('english.classes.g9.writing') ? _skillCard('✍️','Writing','Opinion essay (FCE Writing Part 1): 6 topics with guide phrases, a bank of linkers, word counter and checklist.',_withBack('writing.html?grade='+key,route)) : _lockedCard('✍️','Writing','Opinion essay · FCE Writing Part 1.')) : ''}
     </div>`;
 }
-/* Actividades de un grado → Crossword + Word Search con los niveles del grado */
+/* Unidades del grado (Unit 3, Unit 4…) según activities-data.js. */
+function _unitsFor(key){
+  const d=window.ACTIVITIES_DATA;
+  return (d && Array.isArray(d.units)) ? d.units.filter(u=>u.grade===key) : [];
+}
+function _gradeNodeOpen(key,leaf){
+  return nodeVisible('english.classes.'+key) && nodeVisible('english.classes.'+key+'.'+leaf);
+}
+function _lockedView(back,title){
+  $('#main').innerHTML=`${back}<h1>${title}</h1>
+    <p class="muted">🔒 This section isn't available for you yet. Ask your teacher to unlock it.</p>`;
+}
+/* Actividades de un grado → primero las de la UNIDAD en curso, luego las
+   genéricas por nivel. Las tarjetas por unidad vivían sólo en activities.html
+   y no se veían desde el portal; ahora salen de la misma fuente. */
 function studentGradeActivities(key){
   _setNav('classes');
   const [emoji,label]=GRADE_META[key]||['🏫',key];
   const lv=GRADE_LEVELS[key]||'A1,A2,B1,B2,C1';
+  const route='classes_'+key+'_act';
   const back = _backBtn("window._nav('classes_"+key+"')",label);
+  // Ahora se puede entrar por enlace directo (#classes_g9_act), así que la
+  // visibilidad del nodo se comprueba aquí y no sólo al pintar la tarjeta.
+  if(!_gradeNodeOpen(key,'activities')) return _lockedView(back,'🎲 Activities · '+label);
+  const units=_unitsFor(key);
+  const unitsBlock = units.length ? `
+    <h2 style="margin:18px 0 8px">📘 By unit</h2>
+    <div class="grid cols-2">
+      ${units.map(u=>_hubCard(u.icon,esc(u.title),esc(u.blurb||''),"window._nav('classes_"+key+"_unit_"+u.id+"')")).join('')}
+    </div>
+    <h2 style="margin:22px 0 8px">🎯 By level</h2>` : '';
   $('#main').innerHTML=`${back}<h1>🎲 Activities · ${label}</h1>
     <p class="muted" style="margin-top:-6px">Available levels: ${lv.split(',').join(' · ')}.</p>
+    ${unitsBlock}
     <div class="grid cols-2" style="margin-top:12px">
-      ${key==='g7' ? _skillCard('🚣','Reader · Tom Sawyer','The Adventures of Tom Sawyer (A2): 7 activities per chapter — word search, crossword, comprehension, speed quiz, hangman, memory and scramble.','tom-sawyer.html') : ''}
-      ${key==='g9' ? _skillCard('🎩','Reader · Being Earnest','The Importance of Being Earnest (B1.2): 10 activities per chapter — comprehension, true/false, multiple choice, speed quiz, writing, word search, crossword, hangman, memory and scramble.','being-earnest.html') : ''}
-      ${_skillCard('🧩','Crosswords','10 themed crosswords per level — clues, lives and timer.','crosswords.html?levels='+encodeURIComponent(lv))}
-      ${_skillCard('🔎','Word Search','10 themed word searches per level.','wordsearches.html?levels='+encodeURIComponent(lv))}
-      ${_skillCard('🔢','Word Sudoku','Word sudoku: 9 puzzles per level ('+lv.split(',').join(' · ')+').','word-sudoku.html?levels='+encodeURIComponent(lv))}
-      ${_skillCard('✍️','Writing Tutor','Guides what to write in each section: Cambridge types + academic styles, suggested phrases, counter, steps and checklist (A2–C1).','writing-tutor.html')}
-      ${_skillCard('🧠','Exercises','Grammar, punctuation, structure and vocabulary: exercises with instant correction and score (A2–C1).','exercises.html')}
-      ${_skillCard('🃏','Memory','Flip and match the picture with its word: 5 games per level (A1–C1), with timer and moves.','memory.html')}
-      ${key==='g9' ? _skillCard('🧠','Memory · Reported Speech','Match each sentence in direct speech with its reported-speech version.','memory-reported-speech.html') : ''}
+      ${key==='g7' ? _skillCard('🚣','Reader · Tom Sawyer','The Adventures of Tom Sawyer (A2): 7 activities per chapter — word search, crossword, comprehension, speed quiz, hangman, memory and scramble.',_withBack('tom-sawyer.html',route)) : ''}
+      ${key==='g9' ? _skillCard('🎩','Reader · Being Earnest','The Importance of Being Earnest (B1.2): 10 activities per chapter — comprehension, true/false, multiple choice, speed quiz, writing, word search, crossword, hangman, memory and scramble.',_withBack('being-earnest.html',route)) : ''}
+      ${_skillCard('🧩','Crosswords','10 themed crosswords per level — clues, lives and timer.',_withBack('crosswords.html?levels='+encodeURIComponent(lv),route))}
+      ${_skillCard('🔎','Word Search','10 themed word searches per level.',_withBack('wordsearches.html?levels='+encodeURIComponent(lv),route))}
+      ${_skillCard('🔢','Word Sudoku','Word sudoku: 9 puzzles per level ('+lv.split(',').join(' · ')+').',_withBack('word-sudoku.html?levels='+encodeURIComponent(lv),route))}
+      ${_skillCard('✍️','Writing Tutor','Guides what to write in each section: Cambridge types + academic styles, suggested phrases, counter, steps and checklist (A2–C1).',_withBack('writing-tutor.html',route))}
+      ${_skillCard('🧠','Exercises','Grammar, punctuation, structure and vocabulary: exercises with instant correction and score (A2–C1).',_withBack('exercises.html',route))}
+      ${_skillCard('🃏','Memory','Flip and match the picture with its word: 5 games per level (A1–C1), with timer and moves.',_withBack('memory.html',route))}
+      ${key==='g9' ? _skillCard('🧠','Memory · Reported Speech','Match each sentence in direct speech with its reported-speech version.',_withBack('memory-reported-speech.html',route)) : ''}
     </div>`;
 }
-window._nav=(k)=>{
+/* Una unidad dentro de Activities → sus semanas y los juegos de cada una.
+   Es la misma lista que muestra activities.html, pero dentro del portal. */
+function studentGradeUnit(key,unitId){
+  _setNav('classes');
+  const [emoji,label]=GRADE_META[key]||['🏫',key];
+  const route='classes_'+key+'_unit_'+unitId;
+  const back=_backBtn("window._nav('classes_"+key+"_act')",'Activities · '+label);
+  if(!_gradeNodeOpen(key,'activities')) return _lockedView(back,'🎲 Activities · '+label);
+  const u=_unitsFor(key).find(x=>x.id===unitId);
+  if(!u){
+    $('#main').innerHTML=`${back}<h1>🎲 Activities · ${label}</h1>
+      <p class="muted">This unit isn't available yet.</p>`;
+    return;
+  }
+  const weeks=(u.weeks||[]).map(w=>`
+    ${w.title?`<h2 style="margin:20px 0 8px;font-size:1.05rem">${esc(w.title)}</h2>`:''}
+    <div class="grid cols-3" style="margin-top:8px">
+      ${(w.games||[]).map(g=>_skillCard(g.icon,esc(g.title),esc(g.desc),_withBack(g.href,route))).join('')}
+    </div>`).join('');
+  $('#main').innerHTML=`${back}<h1>${u.icon} ${esc(u.title)}</h1>
+    <p class="muted" style="margin-top:-6px">${esc(u.lead||'')}</p>${weeks}`;
+}
+/* Pinta una vista. Devuelve true si la clave era una ruta conocida. */
+function _navRender(k){
   let m;
-  if(m=/^classes_(g\d+)_act$/.exec(k)) return studentGradeActivities(m[1]);
-  if(m=/^classes_(g\d+)$/.exec(k))     return studentGrade(m[1]);
+  if(m=/^classes_(g\d+)_unit_([a-z0-9]+)$/.exec(k)){ studentGradeUnit(m[1],m[2]); return true; }
+  if(m=/^classes_(g\d+)_act$/.exec(k)){ studentGradeActivities(m[1]); return true; }
+  if(m=/^classes_(g\d+)$/.exec(k))    { studentGrade(m[1]);           return true; }
   const fn={english:()=>studentSubject('english'),french:()=>studentSubject('french'),general:studentGeneral,
     mocks:studentMocks,practice:studentPractice,library:studentLibrary,mun:studentMun,classes:studentClasses,
     phonics:studentPhonics,coach:studentCoach,results:studentResults,nishoot:studentNishoot,games:studentGames,
     final:studentFinal,home:studentHub}[k];
-  if(fn) fn();
+  if(fn){ fn(); return true; }
+  return false;
+}
+/* La ruta va al hash (#classes_g9_unit_u4) para que se pueda volver a una
+   vista concreta desde fuera del portal y para que el "atrás" del navegador
+   funcione dentro del SPA. Antes no había ruta en la URL: cualquier regreso
+   al portal caía en el hub y había que rehacer todo el camino. */
+window._nav=(k)=>{
+  if(!k) return;
+  if(('#'+k)!==location.hash){ location.hash=k; return; }   // → hashchange → _navRender
+  _navRender(k);
 };
+window.addEventListener('hashchange',()=>{
+  if(!_isStudent()) return;                                  // admin/teacher no usan rutas por hash
+  const k=(location.hash||'').replace(/^#/,'');
+  if(!_navRender(k)) studentHub();
+});
+/* Enlaces que SALEN del portal (juegos, hubs sueltos): llevan ?back=./#ruta
+   para que nis-nav.js pueda devolver al alumno exactamente a esta vista. */
+function _withBack(href,route){
+  if(!route || !href) return href;
+  if(/^[a-z][a-z0-9+.\-]*:/i.test(href) || href.slice(0,2)==='//') return href;   // externo
+  return href+(href.indexOf('?')<0?'?':'&')+'back='+encodeURIComponent('./#'+route);
+}
 
 /* ---------- Cambridge Mocks: 4 tarjetas (sin QR, sin re-registro) ---------- */
 function _skillCard(emoji,title,desc,href){
