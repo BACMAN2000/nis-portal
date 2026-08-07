@@ -77,7 +77,9 @@
 
   <div class="footer">NIS English &middot; 2026</div>
 </main>
-<script src="activities-data.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+<script src="config.js?v=18"></script>
+<script src="activities-data.js?v=2"></script>
 <script>
 (function(){
   const esc = s => (s==null?'':String(s)).replace(/&/g,'&amp;').replace(/</g,'&lt;')
@@ -93,8 +95,47 @@
   const unit = u => `<h2 style="font-size:17px;margin:22px 0 12px;color:#2d5a8d">${u.icon} ${esc(u.title)}</h2>`
     + (u.lead ? `<p class="lead" style="margin:-6px 0 14px">${esc(u.lead)}</p>` : '')
     + (u.weeks||[]).map(week).join('');
+  const lockedUnit = u => `<h2 style="font-size:17px;margin:22px 0 8px;color:#2d5a8d">${u.icon} ${esc(u.title)}</h2>`
+    + `<p class="lead" style="margin:-4px 0 14px">🔒 Your teacher will unlock this.</p>`;
+
   const d = window.ACTIVITIES_DATA;
-  document.getElementById('units').innerHTML = d ? d.units.map(unit).join('') : '';
+  const box = document.getElementById('units');
+  const paint = hidden => { box.innerHTML = d
+    ? d.units.map(u => hidden.has(u.id) ? lockedUnit(u) : unit(u)).join('') : ''; };
+  // Primer pintado con el default de cada unidad; luego se afina con la sesión.
+  paint(new Set((d ? d.units : []).filter(u=>u.locked).map(u=>u.id)));
+
+  /* Mismo candado por unidad que el portal. La sesión de Supabase es del mismo
+     origen, así que aquí se ve al mismo alumno; si no hay sesión (o es
+     profesor/admin) se muestra todo, igual que antes. Es una comprobación de
+     interfaz, como el resto del gating del portal — no sustituye a RLS. */
+  (async function applyAccess(){
+    try{
+      const cfg = window.NIS_CONFIG;
+      if(!cfg || !window.supabase || !d) return;
+      const sb = window.supabase.createClient(cfg.SUPABASE_URL, cfg.SUPABASE_KEY);
+      const { data:{ session } } = await sb.auth.getSession();
+      if(!session) return;
+      const { data:me } = await sb.from('profiles').select('id,role,grade_id').eq('id',session.user.id).single();
+      if(!me || me.role!=='student') return;
+      const [g,s] = await Promise.all([
+        me.grade_id!=null ? sb.from('node_access').select('node_key,unlocked').eq('grade_id',me.grade_id)
+                          : Promise.resolve({data:[]}),
+        sb.from('student_access').select('node_key,unlocked').eq('student_id',me.id)
+      ]);
+      const grade={}, stu={};
+      (g.data||[]).forEach(r=>grade[r.node_key]=r.unlocked);
+      (s.data||[]).forEach(r=>stu[r.node_key]=r.unlocked);
+      const has=(o,k)=>Object.prototype.hasOwnProperty.call(o,k);
+      const hidden = new Set(d.units.filter(u=>{
+        const k = d.nodeKey(u.grade,u.id);
+        if(has(stu,k))   return !stu[k];
+        if(has(grade,k)) return !grade[k];
+        return !!u.locked;                       // default de la propia unidad
+      }).map(u=>u.id));
+      paint(hidden);            // repinta siempre: el grado puede ABRIR una unidad
+    }catch(e){ /* sin sesión o sin red: se queda como estaba */ }
+  })();
 })();
 </script>
 <script src="nis-nav.js?v=1"></script>
