@@ -14,9 +14,15 @@
     'The Wellbeing Issue',
   ];
   const DAYS = ['Day 1','Day 2','Day 3'];
+  /* Semanas que nacen BLOQUEADAS: el profesor las abre desde 🔐 Accesos
+     cuando toca. Ahora mismo ninguna, porque las 6 ya estaban publicadas.
+     Para soltar una unidad futura semana a semana, pon aquí sus números
+     (p. ej. `new Set([2,3,4,5,6])` deja abierta sólo la Week 1). */
+  const U4_LOCKED_WEEKS = new Set([]);
   const u4Week = (topic, n) => ({
     id: 'w' + n,
     title: 'Week ' + n + ' — ' + topic,
+    locked: U4_LOCKED_WEEKS.has(n),
     games: [
       { href:'crossword-u4w'+n+'.html', icon:'🧠', title:'Crossword — Week '+n,
         desc: topic+' vocabulary. Read the clue and type the word. Three days, lives, timer and results.', tags:DAYS },
@@ -66,5 +72,10 @@
      Cuelga de la de Activities: english.classes.g9.activities.u4 */
   window.ACTIVITIES_DATA.nodeKey = function(grade,unitId){
     return 'english.classes.'+grade+'.activities.'+unitId;
+  };
+  /* …y el de una semana cuelga del de su unidad:
+     english.classes.g9.activities.u4.w3 */
+  window.ACTIVITIES_DATA.weekNodeKey = function(grade,unitId,weekId){
+    return this.nodeKey(grade,unitId)+'.'+weekId;
   };
 })();
