@@ -436,7 +436,7 @@ async function adminAccess(){
     return `<tr><td><b>${esc(n.label)}</b><div class="muted" style="font-size:.7rem">${n.key}</div></td>${cells}</tr>`;
   }).join('');
   $('#main').innerHTML=`<h1>🔐 Accesos por grado</h1>
-    <div class="note">Marca qué actividades ve cada <b>grado</b>. Lo nuevo (French, Grammar) nace bloqueado; el resto, abierto. Las <b>unidades</b> (<code>…activities.u4</code>) se abren o cierran una a una: bloquear una unidad la oculta de <b>Activities</b> sin tocar el resto. Para excepciones de un alumno, el profesor las ajusta en <b>Alumnos</b>. Los <b>Mocks</b> se gestionan en su pestaña 🔓 Mocks.</div>
+    <div class="note">Marca qué actividades ve cada <b>grado</b>. Lo nuevo (French, Grammar) nace bloqueado; el resto, abierto. Las <b>unidades</b> (<code>…activities.u4</code>) y sus <b>semanas</b> (<code>…activities.u4.w3</code>) se abren o cierran una a una: cerrar una unidad la oculta entera de <b>Activities</b>; cerrar una semana deja el resto de la unidad como está. Para excepciones de un alumno, el profesor las ajusta en <b>Alumnos</b>. Los <b>Mocks</b> se gestionan en su pestaña 🔓 Mocks.</div>
     <div class="card" style="padding:0;overflow-x:auto"><table>
       <thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table></div>`;
 }
@@ -638,9 +638,9 @@ async function adminTeachers(){
     const gradeChips=GRADES.map(g=>`<label style="${chipCss}"><input type="checkbox" class="tg-grade" value="${g.id}" ${(a.grades||[]).includes(g.id)?'checked':''} ${a.all_grades?'disabled':''}> ${g.name}</label>`).join('');
     const managed=tnaMap[t.id];
     const _nodeChip=(key,label)=>`<label style="${chipCss}"><input type="checkbox" class="tg-node" value="${key}" ${(managed? managed.has(key): true)?'checked':''}> ${esc(label)}</label>`;
-    // Las unidades no se asignan al profesor por separado (heredan de su
-    // Activities), así que quedan fuera de los chips generales.
-    const _gradeKeySet=new Set([...GRADE_ORDER.flatMap(g=>['english.classes.'+g,'english.classes.'+g+'.activities','english.classes.'+g+'.grammar']),'english.classes.g9.uoe1','english.classes.g9.writing',..._UNIT_NODES.map(n=>n.key)]);
+    // Unidades y semanas no se asignan al profesor por separado (heredan de
+    // su Activities), así que quedan fuera de los chips generales.
+    const _gradeKeySet=new Set([...GRADE_ORDER.flatMap(g=>['english.classes.'+g,'english.classes.'+g+'.activities','english.classes.'+g+'.grammar']),'english.classes.g9.uoe1','english.classes.g9.writing',..._SUB_NODES.map(n=>n.key)]);
     const generalChips=ACCESS_NODES.filter(n=>!_gradeKeySet.has(n.key)).map(n=>_nodeChip(n.key,n.label)).join('');
     const gradeBlocks=GRADE_ORDER.map(g=>{
       const items=[['english.classes.'+g,'Classes'],['english.classes.'+g+'.activities','🎲 Activities'],['english.classes.'+g+'.grammar','📝 Grammar']];
@@ -1458,8 +1458,8 @@ window._openStudentAccess = async (sid, gradeId, name)=>{
   const { data:sa } = await sb.from('student_access').select('node_key,unlocked').eq('student_id',sid);
   const stuMap={}; (sa||[]).forEach(r=>stuMap[r.node_key]=r.unlocked);
   const gradeOn=(k)=> Object.prototype.hasOwnProperty.call(gradeMap,k)?gradeMap[k]:_nodeDefaultOpen(k);
-  // Una unidad la gestiona quien gestione su Activities (no se asigna aparte).
-  const nodes=ACCESS_NODES.filter(n=> isAdmin || !managed || managed.has(_UNIT_PARENT[n.key]||n.key));
+  // Unidades y semanas las gestiona quien gestione su Activities.
+  const nodes=ACCESS_NODES.filter(n=> isAdmin || !managed || managed.has(_GATE_PARENT[n.key]||n.key));
   const rows=nodes.map(n=>{
     const base=gradeOn(n.key);
     const eff=Object.prototype.hasOwnProperty.call(stuMap,n.key)?stuMap[n.key]:base;
@@ -1796,9 +1796,10 @@ const NODE_DEFAULT_LOCKED = new Set(['french','english.classes.g9.grammar']);
 function _nodeDefaultOpen(key){
   if(key==='french' || key.indexOf('french')===0) return false;   // subárbol French = nuevo
   if(key.slice(-8)==='.grammar') return false;                    // grammar = nuevo
-  // Unidades: cada una decide su default con `locked` en activities-data.js.
-  const u=_UNIT_NODES.find(n=>n.key===key);
-  if(u) return !u.locked;
+  // Unidades y semanas: cada una decide su default con `locked` en
+  // activities-data.js (así una semana futura puede nacer cerrada).
+  const n=_SUB_BY_KEY[key];
+  if(n) return !n.locked;
   return !NODE_DEFAULT_LOCKED.has(key);
 }
 async function loadStudentAccess(){
@@ -1821,10 +1822,10 @@ function nodeVisible(key){
   if(p && p.role==='teacher'){                                 // profesor: según lo asignado por el admin
     const tn=state.teacherNodes;
     if(!tn || !tn.has) return true;                            // sin configurar → ve todo
-    // Las unidades siguen a su Activities: el candado por unidad es para el
+    // Unidades y semanas siguen a su Activities: el candado fino es para el
     // alumno, no para el profesor, y así los profesores ya configurados no
-    // dejan de ver una unidad recién añadida.
-    const k=_UNIT_PARENT[key]||key;
+    // dejan de ver una unidad o semana recién añadida.
+    const k=_GATE_PARENT[key]||key;
     if(!_GATEABLE.has(k)) return true;                         // claves no gestionables → visibles
     return tn.set.has(k);
   }
@@ -1850,29 +1851,52 @@ const _GRADE_NODES = ['g6','g7','g8','g9','g10','g11'].flatMap(g=>{
     {key:'english.classes.'+g+'.grammar',    label:lbl+' · Grammar'},
   ];
 });
-/* Un nodo por UNIDAD, colgando del de Activities de su grado. Se derivan de
-   activities-data.js, así que añadir una unidad ahí la hace gateable sola. */
+/* Un nodo por UNIDAD y otro por SEMANA, colgando del de Activities de su
+   grado. Se derivan de activities-data.js, así que añadir allí una unidad
+   o una semana la hace gateable sola. */
 function _unitNode(grade,unitId){ return 'english.classes.'+grade+'.activities.'+unitId; }
+function _weekNode(grade,unitId,weekId){ return _unitNode(grade,unitId)+'.'+weekId; }
+const _GRADE_LBL={g6:'6th',g7:'7th',g8:'8th',g9:'9th',g10:'10th',g11:'11th'};
+const _shortTitle = t => String(t||'').split('—')[0].trim();
 const _UNIT_NODES = (function(){
-  const d=window.ACTIVITIES_DATA, lbl={g6:'6th',g7:'7th',g8:'8th',g9:'9th',g10:'10th',g11:'11th'};
+  const d=window.ACTIVITIES_DATA;
   if(!d || !Array.isArray(d.units)) return [];
   return d.units.map(u=>({
     key:   _unitNode(u.grade,u.id),
-    label: (lbl[u.grade]||u.grade)+' · '+u.title,
-    short: u.icon+' '+String(u.title).split('—')[0].trim(),
+    label: (_GRADE_LBL[u.grade]||u.grade)+' · '+u.title,
     grade: u.grade,
     parent:'english.classes.'+u.grade+'.activities',
     locked:!!u.locked,
   }));
 })();
-const _UNIT_PARENT = (function(){ const m={}; _UNIT_NODES.forEach(n=>m[n.key]=n.parent); return m; })();
+const _WEEK_NODES = (function(){
+  const d=window.ACTIVITIES_DATA;
+  if(!d || !Array.isArray(d.units)) return [];
+  const out=[];
+  d.units.forEach(u=>(u.weeks||[]).forEach(w=>{
+    if(!w.title) return;            // unidad de una sola tanda: la semana ES la unidad
+    out.push({
+      key:   _weekNode(u.grade,u.id,w.id),
+      label: (_GRADE_LBL[u.grade]||u.grade)+' · '+String(u.id).toUpperCase()+' · '+w.title,
+      grade: u.grade,
+      parent:'english.classes.'+u.grade+'.activities',
+      locked:!!w.locked,
+    });
+  }));
+  return out;
+})();
+/* Unidades y semanas comparten tratamiento: default propio (`locked`) y, para
+   el profesor, herencia del Activities del que cuelgan. */
+const _SUB_NODES  = [..._UNIT_NODES, ..._WEEK_NODES];
+const _SUB_BY_KEY = (function(){ const m={}; _SUB_NODES.forEach(n=>m[n.key]=n); return m; })();
+const _GATE_PARENT= (function(){ const m={}; _SUB_NODES.forEach(n=>m[n.key]=n.parent); return m; })();
 const ACCESS_NODES = [
   {key:'english.pronunciation',         label:'Pronunciation'},
   {key:'english.practice',              label:'Practice Tests'},
   {key:'english.phonics',               label:'Phonics'},
   {key:'english.classes',               label:'Classes'},
   ..._GRADE_NODES,
-  ..._UNIT_NODES.map(n=>({key:n.key,label:n.label})),
+  ..._SUB_NODES.map(n=>({key:n.key,label:n.label})),
   {key:'english.classes.g9.uoe1',       label:'9th · Use of English P1'},
   {key:'english.classes.g9.writing',    label:'9th · Writing'},
   {key:'french',                        label:'French (toda la materia)'},
@@ -2029,15 +2053,23 @@ function studentGradeActivities(key,focusUnit){
       ${units.map(u=>`<a class="btn sm ghost" href="#unit-${u.id}" style="text-decoration:none">${u.icon} ${esc(u.title)}</a>`).join('')}
       <a class="btn sm ghost" href="#by-level" style="text-decoration:none">🎯 By level</a>
     </div>` : '';
-  const unitsBlock = units.map(u=>`
+  // Candado POR SEMANA dentro de una unidad abierta: las cerradas se anuncian
+  // en una línea (el alumno ve que hay más, pero no los ejercicios).
+  const weekOpen=(u,w)=> !w.title || nodeVisible(_weekNode(key,u.id,w.id));
+  const unitsBlock = units.map(u=>{
+    const ws=u.weeks||[];
+    const soon=ws.filter(w=>!weekOpen(u,w));
+    return `
     <h2 id="unit-${u.id}" style="margin:26px 0 4px">${u.icon} ${esc(u.title)}</h2>
     ${u.lead?`<p class="muted" style="margin:0 0 10px">${esc(u.lead)}</p>`:''}
-    ${(u.weeks||[]).map(w=>`
+    ${ws.filter(w=>weekOpen(u,w)).map(w=>`
       ${w.title?`<h3 style="margin:16px 0 6px;font-size:1rem;color:var(--blue-d)">${esc(w.title)}</h3>`:''}
       <div class="grid cols-3" style="margin-top:8px">
         ${(w.games||[]).map(g=>_skillCard(g.icon,esc(g.title),esc(g.desc),
             _withBack(g.href,'classes_'+key+'_unit_'+u.id))).join('')}
-      </div>`).join('')}`).join('');
+      </div>`).join('')}
+    ${soon.length?`<p class="muted" style="margin:14px 0 0">🔒 ${soon.map(w=>esc(_shortTitle(w.title))).join(' · ')} — your teacher will unlock these.</p>`:''}`;
+  }).join('');
   $('#main').innerHTML=`${back}<h1>🎲 Activities · ${label}</h1>
     <p class="muted" style="margin-top:-6px">Games for each unit, plus extra practice by level (${lv.split(',').join(' · ')}).</p>
     ${jump}
