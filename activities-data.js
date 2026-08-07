@@ -29,6 +29,9 @@
 
   window.ACTIVITIES_DATA = {
     units: [
+      /* `locked:true` → la unidad nace BLOQUEADA para los alumnos y el admin
+         la abre desde 🔐 Accesos. u3 y u4 ya estaban publicadas y en uso, así
+         que nacen abiertas; las unidades nuevas conviene marcarlas locked. */
       {
         id:'u3', grade:'g9', icon:'🌐',
         title:'Unit 3 — Digital Footprint',
@@ -58,5 +61,10 @@
   /* Unidades de un grado, en orden. */
   window.ACTIVITIES_DATA.forGrade = function(grade){
     return this.units.filter(u=>u.grade===grade);
+  };
+  /* Clave del nodo de permisos de una unidad (tabla node_access/student_access).
+     Cuelga de la de Activities: english.classes.g9.activities.u4 */
+  window.ACTIVITIES_DATA.nodeKey = function(grade,unitId){
+    return 'english.classes.'+grade+'.activities.'+unitId;
   };
 })();
