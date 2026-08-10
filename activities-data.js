@@ -30,6 +30,8 @@
         desc:'Find the week’s words in the grid. Difficulty grows by day: across & down, then diagonals, then all eight directions.', tags:DAYS },
       { href:'word-sudoku-u4w'+n+'.html', icon:'🔢', title:'Word Sudoku — Week '+n,
         desc:'A calm-mind warm-up: fill each row, column and box with the letters of a wellbeing word. One set per day.', tags:DAYS },
+      { href:'word-invaders-u4w'+n+'.html', icon:'👾', title:'Word Invaders — Week '+n,
+        desc:'Arcade: the week’s words fall from the sky — type them before they land. Three shields, and the invasion gets faster.', tags:DAYS },
     ],
   });
 
