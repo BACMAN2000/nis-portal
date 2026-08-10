@@ -32,6 +32,8 @@
         desc:'A calm-mind warm-up: fill each row, column and box with the letters of a wellbeing word. One set per day.', tags:DAYS },
       { href:'word-invaders-u4w'+n+'.html', icon:'👾', title:'Word Invaders — Week '+n,
         desc:'Arcade: the week’s words fall from the sky — type them before they land. Three shields, and the invasion gets faster.', tags:DAYS },
+      { href:'voice-battle-u4w'+n+'.html', icon:'🎧', title:'Voice Battle — Week '+n,
+        desc:'Dictation duel against the Robo-Noob: listen to the word and spell it. Replay, slow it down, and five hearts.', tags:DAYS },
     ],
   });
 
