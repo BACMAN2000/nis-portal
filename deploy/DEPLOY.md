@@ -22,11 +22,12 @@ de Cohasset (`204.168.174.160`, tras Cloudflare), **manteniendo el mismo stack**
 | `index.html` | Cache-busting `app.js?v=106 → v=107`. |
 | `deploy/` | Este runbook + `nginx-nis.cohasset.pe.conf`. |
 
-> **Mocks (`QUIZ_URL`)**: ya no es una URL fija. `app.js` arranca apuntando a
-> `bacman2000.github.io/mocks-cambridge` y **asciende solo** a `/mocks-cambridge/`
-> (mismo origen) en cuanto comprueba que el servidor responde ahí. Es decir: el
-> portal se puede desplegar antes que el paso 3-bis sin romper nada, y se corrige
-> solo al montarlo. Ver paso **3-bis**.
+> **Mocks (`QUIZ_URL`)**: el **mismo origen es el default**. `app.js` arranca en
+> `/mocks-cambridge/` y solo cae a `bacman2000.github.io/mocks-cambridge` si esa
+> ruta no responde (red de emergencia). El HEAD se espera en `init()` antes del
+> primer render (`QUIZ_URL_READY`), así que nadie llega a ver la URL provisional.
+> Si en la consola aparece el aviso `[NIS] /mocks-cambridge/ no responde…`, el
+> problema está en el nginx del servidor → paso **3-bis**.
 
 **Nada más del código depende del dominio.** El resto de URLs absolutas son CDNs
 (Supabase JS, Google Fonts, Tailwind, chart.js, jspdf…) que funcionan desde cualquier
@@ -102,6 +103,30 @@ curl -s -o /dev/null -w '%{http_code}\n' https://nis.cohasset.pe/mocks-cambridge
 
 Mientras este paso no esté hecho **no se rompe nada**: el portal detecta el 404 y sigue
 usando GitHub Pages.
+
+#### Síntoma exacto de que falta el `^~` (medido el 2026-08-11)
+
+El clone en `/opt/mocks-cambridge` puede estar perfecto y aun así fallar. La huella es
+que **solo mueren las extensiones que capturan las regex del server**:
+
+```
+/mocks-cambridge/version.json   200   <- json no está en ninguna regex -> lo sirve el prefijo
+/mocks-cambridge/README.md      200
+/mocks-cambridge/quizzes.html   404   <- capturado por  \.(html|js|css)$
+/mocks-cambridge/nis-bridge.js  404
+/mocks-cambridge/favicon.svg    404   <- capturado por la regex de media
+/mocks-cambridge/              200 pero devuelve el index.html DEL PORTAL (fallback SPA)
+```
+
+Si ves ese patrón, el clone está bien y lo único que falta es recargar nginx con el
+bloque de este repo (el que ya lleva `^~`):
+
+```bash
+cp /etc/nginx/sites-available/nis.cohasset.pe /root/nis.nginx.bak-$(date +%F)
+cp /opt/nis-portal/deploy/nginx-nis.cohasset.pe.conf /etc/nginx/sites-available/nis.cohasset.pe
+nginx -t && systemctl reload nginx
+curl -s -o /dev/null -w '%{http_code}\n' https://nis.cohasset.pe/mocks-cambridge/quizzes.html   # 200
+```
 
 ### 4. Supabase — permitir el origen nuevo
 Dashboard Supabase → proyecto `kjrppibltkbflvxmiyib` →

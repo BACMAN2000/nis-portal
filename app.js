@@ -17,21 +17,30 @@ const SKILLS = ['Reading','Listening','Writing'];
      2) mismo origen = mismo localStorage = la sesión de Supabase se COMPARTE, así
         `NIS.currentStudent()` (nis-bridge.js) devuelve al alumno logueado y los
         quizzes saltan solos la pantalla de nombre/grado/correo.
-   Pero esa ruta solo existe cuando el servidor tiene montado el bloque nginx
-   (location /mocks-cambridge/ -> /opt/mocks-cambridge/). Por eso NO se fija a pelo:
-   arrancamos en GitHub Pages (que siempre responde) y ascendemos al mismo origen en
-   cuanto se comprueba que contesta. Así este archivo se puede desplegar ANTES que el
-   nginx sin dejar a nadie sin simulacros, y se corrige solo cuando el nginx exista.
-   El peor caso es el comportamiento de siempre, nunca una página rota. */
-const QUIZ_URL_LOCAL  = '/mocks-cambridge/';
-const QUIZ_URL_REMOTE = 'https://bacman2000.github.io/mocks-cambridge/';
-let QUIZ_URL = QUIZ_URL_REMOTE;
-(function(){
+   El mismo origen es AHORA EL DEFAULT: se arranca en '/mocks-cambridge/' y solo se
+   cae a GitHub Pages si esa ruta no responde (red de emergencia para que nadie se
+   quede sin examen si el nginx del servidor se toca). Antes era al revés — se
+   arrancaba en GitHub Pages y se "ascendía" — y eso hacía que, según lo rápido que
+   contestara el HEAD, algún alumno viera bacman2000.github.io en la barra.
+   `QUIZ_URL_READY` se espera en init() ANTES del primer render, así que ninguna
+   pantalla se pinta con la URL provisional.
+   OJO servidor: si /mocks-cambridge/*.html devuelve 404 (json y mp3 sí cargan), al
+   bloque nginx le falta el '^~' — ver deploy/DEPLOY.md, paso 3-bis. */
+const QUIZ_URL_LOCAL    = '/mocks-cambridge/';
+const QUIZ_URL_FALLBACK = 'https://bacman2000.github.io/mocks-cambridge/';
+let QUIZ_URL = QUIZ_URL_LOCAL;
+const QUIZ_URL_READY = (async function(){
   try{
-    fetch(QUIZ_URL_LOCAL+'quizzes.html', {method:'HEAD'})
-      .then(r=>{ if(r && r.ok) QUIZ_URL = QUIZ_URL_LOCAL; })
-      .catch(()=>{});
+    // Con timeout: init() espera esta promesa, así que una red colgada NO puede
+    // dejar el portal en "Cargando…". Si expira, se usa el fallback.
+    const ctl = (typeof AbortController!=='undefined') ? new AbortController() : null;
+    const t = setTimeout(()=>{ try{ ctl && ctl.abort(); }catch(_){ } }, 2500);
+    const r = await fetch(QUIZ_URL_LOCAL+'quizzes.html', {method:'HEAD', cache:'no-store', signal: ctl?ctl.signal:undefined});
+    clearTimeout(t);
+    if(r && r.ok) return (QUIZ_URL = QUIZ_URL_LOCAL);
   }catch(e){}
+  console.warn('[NIS] '+QUIZ_URL_LOCAL+' no responde en este origen — usando '+QUIZ_URL_FALLBACK+' (falta el ^~ en el nginx: ver deploy/DEPLOY.md 3-bis)');
+  return (QUIZ_URL = QUIZ_URL_FALLBACK);
 })();
 /* === Enlaces configurables del dashboard de alumnos === */
 const LIBRARY_URL = 'http://127.0.0.1:8900/';   // Biblioteca NIS (OPAC local). Mientras sea 127.0.0.1/localhost, el tile se muestra "Próximamente" (ver studentLibrary). Pon aquí la URL pública para activarlo.
@@ -157,6 +166,9 @@ async function init(){
     const { data } = await sb.auth.getSession();
     state.session = data.session;
     if(state.session){ await loadProfile(); }
+    // El HEAD arrancó al cargar el archivo; a estas alturas ya está resuelto. Se
+    // espera igual para que NINGÚN render use una QUIZ_URL provisional.
+    try{ await QUIZ_URL_READY; }catch(_){ }
     route();
   }catch(e){ console.error('init failed', e); try{ renderAuth(); }catch(_){ } }
   // supabase-js holds an internal auth lock while this callback runs; doing DB
@@ -757,6 +769,24 @@ window._saveTeacher=async(id,btn)=>{
   const { error:e2 } = nodeRows.length ? await sb.from('teacher_node_access').upsert(nodeRows,{onConflict:'profile_id,node_key'}) : {error:null};
   msgEl.textContent = e2 ? ('⚠ '+e2.message) : '✓ Guardado';
 };
+/* Vista previa del motor de exámenes para admin/profesor: abre el mismo quiz que
+   ve el alumno (branch 'mocks' o 'practice') en una pestaña nueva. nis-bridge.js
+   deja pasar SIEMPRE a admin y profesores, así que la previa funciona aunque el
+   grado esté bloqueado. El nivel y el número de examen se eligen dentro. */
+function _examPreviewCard(branch){
+  const isMock = branch==='mocks';
+  const q = s => `${QUIZ_URL}${s}-quiz.html?branch=${branch}`;
+  const btn = (href,label) => `<a class="btn sm ghost" href="${href}" target="_blank" rel="noopener" style="text-decoration:none">${label} ↗</a>`;
+  return `<div class="card">
+      <h2 style="margin:0 0 4px">👁️ Ver los ${isMock?'Mocks':'Practice Tests'}</h2>
+      <div class="muted" style="font-size:.85rem;margin-bottom:12px">Ábrelos como los ve el alumno${isMock?' (MOCK 1 · 2 y el nivel se eligen dentro)':' (el nivel y la práctica 1 · 2 · 3 se eligen dentro)'}. Profesores y administradores <b>siempre</b> pueden verlos, incluso con el grado bloqueado.</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        ${btn(q('reading'),'📖 Reading &amp; UoE')}
+        ${btn(q('listening'),'🎧 Listening')}
+        ${btn(q('writing'),'✍️ Writing')}
+      </div>
+    </div>`;
+}
 async function adminMocks(){
   const { data, error } = await sb.from('mock_access').select('grade_id, unlocked, updated_at').order('grade_id');
   if(error){ $('#main').innerHTML=`<div class="note err">${esc(error.message)}</div>`; return; }
@@ -773,6 +803,7 @@ async function adminMocks(){
   }).join('');
   $('#main').innerHTML = `<h1>Mocks — control de acceso</h1>
     <div class="note">Por defecto los <b>MOCKS están bloqueados</b> para los alumnos: son exámenes oficiales y solo el admin los habilita por grado cuando se programan. Los <b>Practice Tests</b> se gestionan en su pestaña 🎯 (admin y profesores). Profesores y administradores siempre ven los mocks.</div>
+    ${_examPreviewCard('mocks')}
     <div class="card" style="padding:0;overflow-x:auto"><table>
       <thead><tr><th>Grado</th><th>Estado de Mocks</th><th>Última actualización</th><th></th></tr></thead>
       <tbody>${rows}</tbody></table></div>`;
@@ -804,15 +835,7 @@ async function practicePanel(gradeList){
   }).join('');
   $('#main').innerHTML = `<h1>Practice Tests — control de acceso</h1>
     <div class="note">Los <b>PRACTICE TESTS están desbloqueados por defecto</b> (práctica libre). Bloquéalos por grado cuando quieras reservarlos para usarlos en clase, y desbloquéalos al terminar. Los <b>Mocks</b> (exámenes oficiales) se gestionan aparte y solo por el admin.</div>
-    <div class="card">
-      <h2 style="margin:0 0 4px">👁️ Ver los Practice Tests</h2>
-      <div class="muted" style="font-size:.85rem;margin-bottom:12px">Ábrelos como los ve el alumno (nivel y práctica 1 · 2 · 3 se eligen dentro). Profesores y administradores <b>siempre</b> pueden verlos, incluso con el grado bloqueado.</div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap">
-        <a class="btn sm ghost" href="${QUIZ_URL}reading-quiz.html?branch=practice" target="_blank" rel="noopener" style="text-decoration:none">📖 Reading &amp; UoE ↗</a>
-        <a class="btn sm ghost" href="${QUIZ_URL}listening-quiz.html?branch=practice" target="_blank" rel="noopener" style="text-decoration:none">🎧 Listening ↗</a>
-        <a class="btn sm ghost" href="${QUIZ_URL}writing-quiz.html?branch=practice" target="_blank" rel="noopener" style="text-decoration:none">✍️ Writing ↗</a>
-      </div>
-    </div>
+    ${_examPreviewCard('practice')}
     <div class="card" style="padding:0;overflow-x:auto"><table>
       <thead><tr><th>Grado</th><th>Estado de Practice Tests</th><th>Última actualización</th><th></th></tr></thead>
       <tbody>${rows}</tbody></table></div>`;
