@@ -804,6 +804,15 @@ async function practicePanel(gradeList){
   }).join('');
   $('#main').innerHTML = `<h1>Practice Tests — control de acceso</h1>
     <div class="note">Los <b>PRACTICE TESTS están desbloqueados por defecto</b> (práctica libre). Bloquéalos por grado cuando quieras reservarlos para usarlos en clase, y desbloquéalos al terminar. Los <b>Mocks</b> (exámenes oficiales) se gestionan aparte y solo por el admin.</div>
+    <div class="card">
+      <h2 style="margin:0 0 4px">👁️ Ver los Practice Tests</h2>
+      <div class="muted" style="font-size:.85rem;margin-bottom:12px">Ábrelos como los ve el alumno (nivel y práctica 1 · 2 · 3 se eligen dentro). Profesores y administradores <b>siempre</b> pueden verlos, incluso con el grado bloqueado.</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <a class="btn sm ghost" href="${QUIZ_URL}reading-quiz.html?branch=practice" target="_blank" rel="noopener" style="text-decoration:none">📖 Reading &amp; UoE ↗</a>
+        <a class="btn sm ghost" href="${QUIZ_URL}listening-quiz.html?branch=practice" target="_blank" rel="noopener" style="text-decoration:none">🎧 Listening ↗</a>
+        <a class="btn sm ghost" href="${QUIZ_URL}writing-quiz.html?branch=practice" target="_blank" rel="noopener" style="text-decoration:none">✍️ Writing ↗</a>
+      </div>
+    </div>
     <div class="card" style="padding:0;overflow-x:auto"><table>
       <thead><tr><th>Grado</th><th>Estado de Practice Tests</th><th>Última actualización</th><th></th></tr></thead>
       <tbody>${rows}</tbody></table></div>`;
