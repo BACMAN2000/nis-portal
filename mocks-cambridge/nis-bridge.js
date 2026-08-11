@@ -1,0 +1,96 @@
+/* ===== Portal NIS bridge =====
+   When a student is logged into Portal NIS (same origin → shared Supabase
+   session), this saves each finished exam attempt into the `exam_attempts`
+   table under that student's account. If nobody is logged in, it silently
+   does nothing (the app keeps working standalone). */
+(function(){
+  var URL = "https://kjrppibltkbflvxmiyib.supabase.co";
+  var KEY = "sb_publishable_HINNpxCDLvwXIlecuhKGcw_LDGamS-Z";
+  var _sb = null;
+  function client(){
+    if(_sb) return _sb;
+    if(!window.supabase) return null;
+    _sb = window.supabase.createClient(URL, KEY); // default storageKey shares portal session
+    return _sb;
+  }
+  async function currentStudent(){
+    var c = client(); if(!c) return null;
+    try{
+      var u = await c.auth.getUser();
+      if(!u || !u.data || !u.data.user) return null;
+      var prof = await c.from('profiles').select('id,full_name,first_name,email,grade_id,cefr_level,grades(name)').eq('id',u.data.user.id).maybeSingle();
+      var p = prof && prof.data ? prof.data : {};
+      return { uid:u.data.user.id, email:u.data.user.email, full_name:p.full_name, first_name:p.first_name,
+               grade:(p.grades&&p.grades.name)||'', cefr_level:p.cefr_level||'' };
+    }catch(e){ return null; }
+  }
+  async function save(att){
+    var c = client(); if(!c) return {skipped:true};
+    try{
+      var u = await c.auth.getUser();
+      if(!u || !u.data || !u.data.user) return {skipped:true};
+      var pct = att.percent;
+      if(pct==null && att.score!=null && att.total){ pct = Math.round(att.score/att.total*100); }
+      var row = {
+        student_id: u.data.user.id,
+        skill: att.skill,
+        level: att.level,
+        mock: ((att.examType && att.examType.indexOf('practice')===0) ? 'practice'
+               : (att.examType && /^mock0?(\d+)$/.test(att.examType)) ? ('mock' + att.examType.match(/^mock0?(\d+)$/)[1])
+               : 'mock1'),
+        score: (att.score!=null?att.score:null),
+        total: (att.total!=null?att.total:null),
+        percent: (pct!=null?pct:null),
+        duration_min: (att.duration_min!=null?att.duration_min:null),
+        breakdown: att.breakdown||null,
+        answers: att.answers||null
+      };
+      if(!['Reading','Listening','Writing'].includes(row.skill)) return {skipped:true};
+      if(!['A2','B1','B2','C1'].includes(row.level)) return {skipped:true};
+      var res = await c.from('exam_attempts').insert(row);
+      return res;
+    }catch(e){ return {error:e}; }
+  }
+  /* Returns true if MOCKS are unlocked for the logged-in student's grade.
+     Admins/teachers always get access (preview). Standalone / not-logged-in
+     users get FALSE (mocks stay locked until the admin unlocks them). */
+  async function mocksUnlocked(){
+    var c = client(); if(!c) return false;
+    try{
+      var u = await c.auth.getUser();
+      if(!u || !u.data || !u.data.user) return false;
+      var prof = await c.from('profiles').select('grade_id,role').eq('id',u.data.user.id).maybeSingle();
+      var p = prof && prof.data ? prof.data : null;
+      if(!p) return false;
+      if(p.role === 'admin' || p.role === 'teacher') return true;
+      if(!p.grade_id) return false;
+      var r = await c.from('mock_access').select('unlocked').eq('grade_id',p.grade_id).maybeSingle();
+      return !!(r && r.data && r.data.unlocked);
+    }catch(e){ return false; }
+  }
+  /* Returns true if PRACTICE TESTS are unlocked for the student's grade.
+     Unlike mocks, practices are OPEN BY DEFAULT (fail-open): standalone users,
+     missing rows and network errors all resolve to TRUE. A teacher/admin can
+     lock them per grade from the NIS Portal (practice_access.unlocked=false). */
+  async function practiceUnlocked(){
+    var c = client(); if(!c) return true;
+    try{
+      var u = await c.auth.getUser();
+      if(!u || !u.data || !u.data.user) return true;
+      var prof = await c.from('profiles').select('grade_id,role').eq('id',u.data.user.id).maybeSingle();
+      var p = prof && prof.data ? prof.data : null;
+      if(!p) return true;
+      if(p.role === 'admin' || p.role === 'teacher') return true;
+      if(!p.grade_id) return true;
+      var r = await c.from('practice_access').select('unlocked').eq('grade_id',p.grade_id).maybeSingle();
+      if(!r || !r.data) return true;           // sin fila ⇒ abierto (default)
+      return !!r.data.unlocked;
+    }catch(e){ return true; }
+  }
+  async function signOut(){
+    var c = client(); if(!c) return;
+    try{ await c.auth.signOut(); }catch(e){}
+    try{ localStorage.clear(); }catch(e){}
+  }
+  window.NIS = { client: client, currentStudent: currentStudent, save: save, mocksUnlocked: mocksUnlocked, practiceUnlocked: practiceUnlocked, signOut: signOut };
+})();

@@ -69,6 +69,17 @@ nginx -t && systemctl reload nginx
 
 ### 3-bis. Servir los simulacros en el mismo origen (`/mocks-cambridge/`)
 
+> **HECHO por la vía corta (2026-08-11), sin tocar el servidor.** El motor de
+> exámenes vive ahora como carpeta `mocks-cambridge/` **dentro de este repo**:
+> como el servidor ya auto-pullea `/opt/nis-portal` y nginx sirve cualquier
+> subcarpeta suya (comprobado: `/assets/favicon.svg`, `/jm7q2x/index.html` y
+> `/phonics/` responden 200), un `git push` basta para servirlos en el mismo
+> origen. Se sincroniza con `deploy/sync-mocks-cambridge.ps1`.
+>
+> Sigue mereciendo la pena hacer el paso de abajo cuando puedas: evita tener el
+> motor duplicado en dos repos (~111 MB de mp3). El `^~` gana sobre la carpeta,
+> así que al montarlo puedes borrar `mocks-cambridge/` de este repo sin cortes.
+
 Arregla dos cosas de una vez: el alumno deja de salir a `github.io` a media sesión, y
 —por compartir `localStorage` con el portal— los quizzes dejan de pedirle nombre, grado
 y correo a alguien que ya inició sesión (`NIS.currentStudent()` empieza a devolver
