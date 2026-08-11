@@ -104,28 +104,38 @@ curl -s -o /dev/null -w '%{http_code}\n' https://nis.cohasset.pe/mocks-cambridge
 Mientras este paso no esté hecho **no se rompe nada**: el portal detecta el 404 y sigue
 usando GitHub Pages.
 
-#### Síntoma exacto de que falta el `^~` (medido el 2026-08-11)
+#### Diagnóstico: NO te fíes del código 200 (medido el 2026-08-11)
 
-El clone en `/opt/mocks-cambridge` puede estar perfecto y aun así fallar. La huella es
-que **solo mueren las extensiones que capturan las regex del server**:
+Trampa: `location /` termina en `try_files ... /index.html`, así que **cualquier** ruta
+sin extensión-de-regex devuelve **200 con el index.html del PORTAL**, exista o no. Un
+`curl -I` da 200 y parece que el motor está servido cuando no lo está.
 
+Mide siempre contra un archivo que sabes que NO existe y compara:
+
+```bash
+curl -s https://nis.cohasset.pe/mocks-cambridge/version.json      | head -1
+curl -s https://nis.cohasset.pe/mocks-cambridge/zzz-no-existe.json | head -1
 ```
-/mocks-cambridge/version.json   200   <- json no está en ninguna regex -> lo sirve el prefijo
-/mocks-cambridge/README.md      200
-/mocks-cambridge/quizzes.html   404   <- capturado por  \.(html|js|css)$
-/mocks-cambridge/nis-bridge.js  404
-/mocks-cambridge/favicon.svg    404   <- capturado por la regex de media
-/mocks-cambridge/              200 pero devuelve el index.html DEL PORTAL (fallback SPA)
-```
 
-Si ves ese patrón, el clone está bien y lo único que falta es recargar nginx con el
-bloque de este repo (el que ya lleva `^~`):
+- Si **las dos** devuelven `<!doctype html>` del portal (`Cargando Portal NIS…`), el
+  bloque `/mocks-cambridge/` **no está montado** (o no hay clone): estado del
+  2026-08-11 — el paso 3-bis nunca se completó. Haz el paso entero: clone + auto-pull
+  + copiar la conf + reload.
+- Si la primera devuelve el JSON de verdad y `quizzes.html` da **404**, entonces el
+  clone sí está y lo único que falta es el `^~` (la regex `\.(html|js|css)$` se come la
+  ruta y la resuelve contra `/opt/nis-portal`). Basta con recopiar la conf y recargar:
 
 ```bash
 cp /etc/nginx/sites-available/nis.cohasset.pe /root/nis.nginx.bak-$(date +%F)
 cp /opt/nis-portal/deploy/nginx-nis.cohasset.pe.conf /etc/nginx/sites-available/nis.cohasset.pe
 nginx -t && systemctl reload nginx
-curl -s -o /dev/null -w '%{http_code}\n' https://nis.cohasset.pe/mocks-cambridge/quizzes.html   # 200
+```
+
+Comprobación final (debe imprimir `200` y el `<title>` de los quizzes, no el del portal):
+
+```bash
+curl -s -o /dev/null -w '%{http_code}\n' https://nis.cohasset.pe/mocks-cambridge/quizzes.html
+curl -s https://nis.cohasset.pe/mocks-cambridge/quizzes.html | grep -i '<title>'
 ```
 
 ### 4. Supabase — permitir el origen nuevo
