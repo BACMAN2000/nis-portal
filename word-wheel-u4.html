@@ -35,7 +35,8 @@ body{
   background-attachment:fixed;
   overflow-x:hidden;
 }
-.screen{display:none;min-height:100dvh;flex-direction:column}
+/* vh first: browsers without dvh support (iPadOS < 15.4) keep the vh line */
+.screen{display:none;min-height:100vh;min-height:100dvh;flex-direction:column}
 .screen.active{display:flex}
 
 /* ---------- top bar ---------- */
@@ -125,7 +126,7 @@ body{
 .lvl.done .check{display:grid}
 
 /* ---------- game ---------- */
-#game{justify-content:space-between;height:100dvh;overflow:hidden}
+#game{justify-content:space-between;height:100vh;height:100dvh;overflow:hidden}
 #game.active{display:flex}
 .board{flex:1 1 auto;display:flex;align-items:center;justify-content:center;padding:4px 10px 8px;min-height:0;overflow:hidden}
 .grid{display:grid;gap:4px;justify-content:center}
@@ -154,7 +155,9 @@ body{
 @keyframes shake{10%,90%{transform:translateX(-4px)}30%,70%{transform:translateX(6px)}50%{transform:translateX(-6px)}}
 
 .wheelrow{display:flex;align-items:center;justify-content:center;gap:10px}
-.wheel{width:min(300px,72vw,38dvh);height:min(300px,72vw,38dvh);touch-action:none;user-select:none;flex:0 0 auto}
+.wheel{width:min(300px,72vw,38vh);height:min(300px,72vw,38vh);
+  width:min(300px,72vw,38dvh);height:min(300px,72vw,38dvh);
+  touch-action:none;user-select:none;flex:0 0 auto}
 .wheel .disc{fill:rgba(255,255,255,.14);stroke:rgba(255,255,255,.22);stroke-width:2}
 .wheel .trace{fill:none;stroke:#FFD772;stroke-width:9;stroke-linecap:round;stroke-linejoin:round;opacity:.9}
 .wheel .lt circle{fill:#fff;transition:fill .12s ease, r .12s ease}
