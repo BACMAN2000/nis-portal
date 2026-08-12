@@ -65,7 +65,18 @@
         title:'Unit 4 — The Wellbeing Generation',
         blurb:'Mind Over Matter: 6 weeks × 3 games (crossword, word search and word sudoku).',
         lead:'Mind Over Matter · Grade 9. Each game has three tabs — Day 1 · Day 2 · Day 3 — matching the week’s sessions.',
-        weeks: U4_TOPICS.map((t,i)=>u4Week(t,i+1)),
+        weeks: [
+          /* Sin título a propósito: el renderizador trata las semanas sin título
+             como SIEMPRE visibles (`!w.title ||` en app.js) y no les exige nodo
+             de permisos, igual que u3.w0. El Word Wheel cubre las 6 semanas en
+             un solo archivo, así que no cuelga de ninguna en particular. */
+          { id:'w0', title:'', games:[
+            { href:'word-wheel-u4.html', icon:'🎡', title:'Word Wheel — Unit 4',
+              desc:'Spin the letter wheel to build words and fill the crossword, Words of Wonders style. 6 weeks × 6 levels, and each key word opens a vocabulary card.',
+              tags:['Weeks 1–6'] },
+          ]},
+          ...U4_TOPICS.map((t,i)=>u4Week(t,i+1)),
+        ],
       },
     ],
   };
