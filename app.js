@@ -2114,6 +2114,7 @@ function studentGradeActivities(key,focusUnit){
       ${_skillCard('🧩','Crosswords','10 themed crosswords per level — clues, lives and timer.',_withBack('crosswords.html?levels='+encodeURIComponent(lv),route))}
       ${_skillCard('🔎','Word Search','10 themed word searches per level.',_withBack('wordsearches.html?levels='+encodeURIComponent(lv),route))}
       ${_skillCard('🔢','Word Sudoku','Word sudoku: 9 puzzles per level ('+lv.split(',').join(' · ')+').',_withBack('word-sudoku.html?levels='+encodeURIComponent(lv),route))}
+      ${_skillCard('🎡','Word Wheel','Spin the letter wheel to build words and fill the crossword: 6 wheels per level ('+lv.split(',').join(' · ')+'), each with a vocabulary card.',_withBack('word-wheel.html?levels='+encodeURIComponent(lv),route))}
       ${_skillCard('✍️','Writing Tutor','Guides what to write in each section: Cambridge types + academic styles, suggested phrases, counter, steps and checklist (A2–C1).',_withBack('writing-tutor.html',route))}
       ${_skillCard('🧠','Exercises','Grammar, punctuation, structure and vocabulary: exercises with instant correction and score (A2–C1).',_withBack('exercises.html',route))}
       ${_skillCard('🃏','Memory','Flip and match the picture with its word: 5 games per level (A1–C1), with timer and moves.',_withBack('memory.html',route))}
