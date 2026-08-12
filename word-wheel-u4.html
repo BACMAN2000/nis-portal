@@ -76,11 +76,11 @@ body{
   color:rgba(255,255,255,.5);margin-top:5px}
 .slogan.grow{flex:1 1 auto}
 
-/* faint watermark behind the crossword's empty space */
-.board{position:relative}
-.board .mark{position:absolute;left:0;right:0;bottom:2px;text-align:center;pointer-events:none;
-  font-weight:300;font-size:clamp(13px,3vw,17px);letter-spacing:3px;
-  color:rgba(255,255,255,.16);text-transform:uppercase}
+/* slogan at the foot of the play screen — below the wheel, never under the
+   crossword, so a tall grid can't crowd it */
+.wheelwrap .mark{margin-top:7px;text-align:center;pointer-events:none;
+  font-weight:300;font-size:clamp(12px,2.8vw,16px);letter-spacing:3px;
+  color:rgba(255,255,255,.22);text-transform:uppercase}
 
 /* ---------- home ---------- */
 .hero{text-align:center;color:#fff;padding:8px 20px 22px}
@@ -297,7 +297,7 @@ body{
     <button class="iconbtn" id="btnReveal" title="Show answers" style="display:none">🔑</button>
     <div class="coins"><i class="c">$</i><span id="coinGame">0</span></div>
   </div>
-  <div class="board"><div class="grid" id="grid"></div><div class="mark">The Joy of Learning</div></div>
+  <div class="board"><div class="grid" id="grid"></div></div>
   <div class="wheelwrap">
     <div class="preview"><span id="preview"></span></div>
     <div class="wheelrow">
@@ -310,6 +310,7 @@ body{
       </div>
     </div>
     <div class="wordsleft" id="wordsLeft"></div>
+    <div class="mark">The Joy of Learning</div>
   </div>
 </section>
 
@@ -658,7 +659,7 @@ function fitGrid(){
   if(!G) return;
   const cr=G.cross, board=document.querySelector(".board");
   const bw=(board.clientWidth||window.innerWidth)-16;
-  const bh=(board.clientHeight||360)-30;   // leaves room for the slogan watermark
+  const bh=(board.clientHeight||360)-14;
   const byW=(bw-(cr.cols-1)*4)/cr.cols;
   const byH=(bh-(cr.rows-1)*4)/cr.rows;
   const size=Math.max(17,Math.min(44,Math.floor(Math.min(byW,byH))));
