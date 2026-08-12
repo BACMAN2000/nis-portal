@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>Unit 4 · Mind Over Matter — Word Wheel</title>
+<title>Word Wheel — Practice by level (A1–C2)</title>
 <style>
 /* Gotham comes from the portal when served there, or from the locally
    installed family when this file is opened straight from disk. */
@@ -252,12 +252,12 @@ body{
       </span>
       <span class="sl">The Joy of Learning</span>
     </div>
-    <button class="iconbtn" id="btnSound" title="Sound">🔊</button>
+    <button class="iconbtn" id="btnSound" title="Sound">🔊</button><!-- levels A1–C2 -->
     <div class="coins"><i class="c">$</i><span id="coinHome">0</span></div>
   </div>
   <div class="hero">
-    <div class="eyebrow">Unit 4</div>
-    <h1>Mind Over Matter</h1>
+    <div class="eyebrow">Extra practice</div>
+    <h1>Word Wheel</h1>
     <p>Spin the wheel · build the words · fill the crossword</p>
   </div>
   <div class="wrap">
@@ -285,7 +285,7 @@ body{
   <div class="slogan grow">
     <svg class="iso" style="color:#fff"><use href="#nsIso"/></svg>
     <b>The Joy of Learning</b>
-    <span>Unit 4 · Mind Over Matter</span>
+    <span>Word Wheel · Practice by level</span>
   </div>
 </section>
 
@@ -317,7 +317,7 @@ body{
 <section id="list" class="screen">
   <div class="topbar">
     <button class="iconbtn" data-back="home">←</button>
-    <div class="title"><b>Admin — Unit 4<span class="badge">TEACHER</span></b><span>Mind Over Matter · 6 weeks · 36 levels</span></div>
+    <div class="title"><b>Admin — Word Wheel<span class="badge">TEACHER</span></b><span id="adminSub">Practice by level · A1 → C2</span></div>
     <button class="iconbtn" onclick="window.print()" title="Print">🖨</button>
   </div>
   <div class="wrap">
@@ -367,95 +367,105 @@ body{
    UNIT 4 — MIND OVER MATTER · level data
    Every word in a level is formable from the letters of its key word.
    ================================================================== */
-/* Every key word below is taken from that week's crossword-u4wN.html, and the
-   definition is that crossword's own clue, so both games teach the same lexis.
-   Two key words per day (D1 · D2 · D3) of each week. */
-const DATA = [
-{n:1,name:"Emotions & Stress",focus:"Naming stress · precision & intensity",levels:[
-  {key:"PRESSURE",pos:"noun", def:"The feeling of being pushed to do too much.", es:"presión", ex:"Exam pressure builds up in the last week.",
-   words:["PRESSURE","PURSE","PRESS","SUPER","SPURS","REUSE","SPREE","PEERS","PURE","USER"]},
-  {key:"AGITATED",pos:"adjective", def:"Troubled, nervous or restless; unable to relax.", es:"agitado, alterado", ex:"He was too agitated to sit down.",
-   words:["AGITATED","AGITATE","GAIT","DATE","GATE","DIET","EDIT","TIDE","TAG"]},
-  {key:"RESTLESS",pos:"adjective", def:"Unable to keep still or quiet.", es:"inquieto", ex:"I get restless the night before a test.",
-   words:["RESTLESS","STRESS","LESSER","STEELS","SLEETS","RESETS","TREES","STEEL","SLEET","ELSE"]},
-  {key:"NERVOUS", pos:"adjective", def:"Easily worried or frightened.", es:"nervioso", ex:"She gets nervous before speaking exams.",
-   words:["NERVOUS","NURSE","OVENS","OVEN","ROSE","SURE","USER","RUNS","NOSE"]},
-  {key:"EMOTION", pos:"noun", def:"A strong feeling such as fear or joy.", es:"emoción", ex:"Name the emotion precisely, not just ‘bad’.",
-   words:["EMOTION","MOTION","ITEM","TIME","MINT","OMIT","MOON","NOTE","TONE","INTO"]},
-  {key:"BALANCE", pos:"noun", def:"A calm, steady state of mind.", es:"equilibrio", ex:"Sleep and study need balance.",
-   words:["BALANCE","BANAL","CANAL","CLEAN","CABLE","LANCE","CLAN","LACE","BEAN","ABLE"]}
+/* Practice by CEFR level, A1 → C2. Six letter wheels per band, graded by how
+   frequent and how precise the key word is. Filtered by ?levels=A1,A2,… the
+   same way crosswords.html / wordsearches.html do it. */
+const GROUP_LABEL = "Level";
+const ALL_DATA = [
+{n:"A1",name:"Everyday words",focus:"Concrete, high-frequency vocabulary",levels:[
+  {key:"SLEEP",  pos:"noun / verb", def:"Rest with your eyes closed and your mind inactive.", es:"dormir, sueño", ex:"Teenagers need 8–10 hours of sleep.",
+   words:["SLEEP","PEELS","PEEL","ELSE","EELS","SEE"]},
+  {key:"TIRED",  pos:"adjective", def:"Needing rest; having no energy left.", es:"cansado", ex:"I was tired because of the test.",
+   words:["TIRED","TRIED","DIET","EDIT","TIDE","TIRE","RIDE","DIRE"]},
+  {key:"HEALTH", pos:"noun", def:"The condition of your body and your mind.", es:"salud", ex:"Sleep is part of your health.",
+   words:["HEALTH","HEAL","HEAT","HATE","HALT","LATE","TALE","THE"]},
+  {key:"BEDROOM",pos:"noun", def:"The room where you sleep.", es:"dormitorio", ex:"Keep your bedroom cool, dark and phone-free.",
+   words:["BEDROOM","BOOMED","BROOM","BOOM","ROOM","DOOM","MOOD","MODE","ROBE","BORE"]},
+  {key:"TITLE",  pos:"noun", def:"The name of a text.", es:"título", ex:"A good title makes you want to read.",
+   words:["TITLE","TILT","TILE","LIT","TIE","LET"]},
+  {key:"HABIT",  pos:"noun", def:"Something you do regularly, often without thinking.", es:"hábito", ex:"Checking my phone in bed is a bad habit.",
+   words:["HABIT","BATH","BAIT","HAT","BAT","BIT","TAB","HIT"]}
 ]},
-{n:2,name:"Habits That Shape Us",focus:"Gerunds, infinitives & tricky verbs",levels:[
-  {key:"CONSIDER",pos:"verb + -ing", def:"Verb + -ing: ___ joining a club.", es:"considerar, plantearse", ex:"I'm considering joining the debate club.",
-   words:["CONSIDER","SENIOR","SECOND","CINDERS","DINERS","SCORE","SNORE","NOISE","CIDER","IRONS"]},
-  {key:"IMAGINE", pos:"verb + -ing", def:"Verb + -ing: ___ winning the prize.", es:"imaginar", ex:"Imagine winning the prize.",
-   words:["IMAGINE","AIMING","ANIME","GAIN","GAME","MAIN","MEAN","MINE","NAME"]},
-  {key:"FORGET",  pos:"tricky verb", def:"'___ to do' = fail to; '___ doing' = lose the memory.", es:"olvidar", ex:"I forgot to send it. / I'll never forget meeting her.",
-   words:["FORGET","FORGE","FROG","FORT","FORE","GORE","TOE","GET"]},
-  {key:"ROUTINE", pos:"noun", def:"A fixed sequence of daily actions.", es:"rutina", ex:"A fixed night routine improves sleep.",
-   words:["ROUTINE","ROUTE","UNITE","UNTIE","TUNER","NOTE","TONE","RIOT","TRIO","TIRE"]},
-  {key:"PRACTISE",pos:"verb + -ing", def:"Verb + -ing: keep doing it to improve.", es:"practicar", ex:"She practises speaking every morning.",
-   words:["PRACTISE","PIRATES","PARTIES","CARPETS","PRAISE","TRACES","CRATES","PASTE","PRICE"]},
-  {key:"PATTERN", pos:"noun", def:"A regular, repeated form or model.", es:"patrón", ex:"Gerund and infinitive follow different patterns.",
-   words:["PATTERN","PARENT","PATTER","PATENT","ENTRAP","TREAT","PART","TAPE","RENT","NEAT"]}
-]},
-{n:3,name:"Advice & Speculation",focus:"Modals of advice & speculation",levels:[
-  {key:"ADVICE", pos:"noun (uncountable!)", def:"A suggestion about what someone should do.", es:"consejo", ex:"Can I give you some advice? (NOT ✗ an advice)",
+{n:"A2",name:"Getting by",focus:"Common words for feelings, advice and media",levels:[
+  {key:"PANIC",  pos:"noun / verb", def:"A sudden strong fear that stops you thinking clearly.", es:"pánico / entrar en pánico", ex:"Don't panic — read the question again.",
+   words:["PANIC","PAIN","PAN","NAP","CAN","CAP","NIP","PIN"]},
+  {key:"ENERGY", pos:"noun", def:"The strength you need to be active.", es:"energía", ex:"Sleep debt destroys your energy.",
+   words:["ENERGY","GREEN","GENRE","GENE","GREY","EYE"]},
+  {key:"ADVICE", pos:"noun (uncountable!)", def:"An opinion about what someone should do.", es:"consejo", ex:"Can I give you some advice? (NOT ✗ an advice)",
    words:["ADVICE","ACID","CAVE","DICE","DIVE","VICE","IDEA","AIDE"]},
-  {key:"SHOULD", pos:"modal verb", def:"Give advice: you ___ sleep more.", es:"deberías", ex:"You should sleep eight hours.",
+  {key:"SHOULD", pos:"modal verb", def:"Used to give normal, everyday advice.", es:"deberías", ex:"You should sleep eight hours.",
    words:["SHOULD","HOLDS","HOLD","SOUL","SOLD","LOUD","OLD","DUO"]},
-  {key:"CERTAIN",pos:"adjective", def:"Completely sure; without doubt.", es:"seguro, cierto", ex:"I'm certain she'll pass.",
-   words:["CERTAIN","RETAIN","NECTAR","CANTER","TRANCE","REACT","TRACE","CRATE","TRAIN","NICER"]},
-  {key:"PERHAPS",pos:"adverb", def:"Maybe; possibly.", es:"quizás", ex:"Perhaps he missed the bus.",
-   words:["PERHAPS","PAPERS","PAPER","PHASE","SHAPE","SHARP","SPARE","HEAPS","HARPS","PEARS"]},
-  {key:"REASON", pos:"noun", def:"An explanation or cause for something.", es:"razón, motivo", ex:"Give a reason for your advice.",
-   words:["REASON","ARSON","SNORE","SOAR","ROSE","NOSE","NEAR","EARN","OARS"]},
-  {key:"POLITE", pos:"adjective", def:"Respectful and considerate.", es:"cortés, educado", ex:"‘You might want to’ is a polite way to advise.",
-   words:["POLITE","PILOT","POET","POLE","PILE","PLOT","TOIL","TILE"]}
+  {key:"READER", pos:"noun", def:"The person who reads your text.", es:"lector", ex:"Address the reader directly with ‘you’.",
+   words:["READER","READ","DEAR","DARE","DEER","REED","RARE","REAR","ERA"]},
+  {key:"PODCAST",pos:"noun", def:"An audio programme published online in episodes.", es:"pódcast", ex:"We recorded a five-minute podcast.",
+   words:["PODCAST","TACOS","COAST","COATS","PACTS","POST","STOP","SPOT","CAST","TACO"]}
 ]},
-{n:4,name:"Sleep & the Science of Rest",focus:"Sleep science & reporting verbs",levels:[
-  {key:"SCREENS", pos:"noun (plural)", def:"Devices whose blue light delays sleep.", es:"pantallas", ex:"Screens before bed delay the circadian rhythm.",
-   words:["SCREENS","SCREEN","SCENES","SCENE","SENSE","SEEN","SEER"]},
-  {key:"ALERT",   pos:"adjective", def:"Awake and fully aware.", es:"despierto, alerta", ex:"Blue light keeps the brain alert at night.",
+{n:"B1",name:"Independent user",focus:"Verb patterns and everyday abstract nouns",levels:[
+  {key:"AVOID",  pos:"verb + -ing", def:"To stay away from something on purpose.", es:"evitar", ex:"I avoid using screens after 10 p.m.",
+   words:["AVOID","VOID","AVID","DIVA","AID","VIA","ADO"]},
+  {key:"DECIDE", pos:"verb + to", def:"To choose something after thinking about it.", es:"decidir", ex:"I decided to start running.",
+   words:["DECIDE","DICE","ICED","CEDE","DEED","DIED","ICE","DIE"]},
+  {key:"MANAGE", pos:"verb + to", def:"To succeed in doing something difficult.", es:"lograr, conseguir", ex:"I managed to finish on time.",
+   words:["MANAGE","MANGA","GAME","MEAN","NAME","MANE","MEGA","AGE","MAN"]},
+  {key:"ROUTINE",pos:"noun", def:"A fixed order of things you do regularly.", es:"rutina", ex:"A calm night routine improves sleep.",
+   words:["ROUTINE","ROUTE","UNITE","UNTIE","TUNER","NOTE","TONE","RIOT","TRIO","TIRE"]},
+  {key:"NERVOUS",pos:"adjective", def:"Worried about something that is going to happen.", es:"nervioso", ex:"She gets nervous before speaking exams.",
+   words:["NERVOUS","NURSE","OVENS","OVEN","ROSE","SURE","USER","RUNS","NOSE"]},
+  {key:"ARTICLE",pos:"noun", def:"A piece of writing in a magazine or newspaper.", es:"artículo", ex:"Write a 140–190-word article.",
+   words:["ARTICLE","RECITAL","RETAIL","CLEAR","TRACE","TRAIL","ALERT","CRATE","LACE","RICE"]}
+]},
+{n:"B2",name:"Upper intermediate",focus:"Nuance in advice, warning and review",levels:[
+  {key:"REFUSE", pos:"verb + to", def:"To say firmly that you will not do something.", es:"negarse, rechazar", ex:"He refused to give up.",
+   words:["REFUSE","FUSE","FREE","REEF","FEES","SURE","USER","SEER","USE"]},
+  {key:"WARNING",pos:"noun", def:"Something that tells you about a possible danger.", es:"advertencia", ex:"‘Had better’ always carries a warning.",
+   words:["WARNING","GRAIN","WRING","RING","GRIN","RAIN","WARN","WING","RANG","GAIN"]},
+  {key:"ALERT",  pos:"adjective", def:"Awake and able to think quickly.", es:"despierto, alerta", ex:"Blue light keeps the brain alert at night.",
    words:["ALERT","ALTER","LATER","RATE","TALE","LATE","TEAR","REAL","EAT","ART"]},
-  {key:"EXPLAIN", pos:"reporting verb", def:"To make something clear or easy to understand.", es:"explicar", ex:"The study explains why teenagers sleep late.",
-   words:["EXPLAIN","ALIEN","PANEL","PENAL","PLAIN","PLANE","PLAN","NAIL","LINE","LEAN"]},
-  {key:"ADVISE",  pos:"reporting verb", def:"To recommend a course of action.", es:"aconsejar", ex:"Researchers advise keeping phones out of the bedroom.",
-   words:["ADVISE","ASIDE","AIDES","IDEAS","DIVAS","VISA","VASE","SAID","IDEA","DIVE"]},
-  {key:"RECOVER", pos:"verb", def:"To return to normal health or strength.", es:"recuperarse", ex:"The body recovers during deep sleep.",
-   words:["RECOVER","COVER","CORE","OVER","ROVE","EVER","ORE","ERR"]},
-  {key:"RESEARCH",pos:"noun (uncountable)", def:"Careful study done to discover facts.", es:"investigación", ex:"Recent research shows teens need 8–10 hours.",
-   words:["RESEARCH","SEARCH","CHEERS","CHASE","SHARE","SHEAR","REACH","HEARS","ACRES","RACES"]}
+  {key:"SCREENS",pos:"noun (plural)", def:"The glass parts of phones and laptops that show images.", es:"pantallas", ex:"Screens before bed delay sleep.",
+   words:["SCREENS","SCREEN","SCENES","SCENE","SENSE","SEEN","SEER"]},
+  {key:"REVIEW", pos:"verb / noun", def:"To look at your work again in order to improve it.", es:"revisar, reseña", ex:"Review your article against the checklist.",
+   words:["REVIEW","VIEWER","VIEW","WIRE","WERE","EVER","VEER"]},
+  {key:"CONTENT",pos:"noun", def:"The ideas and information inside a text.", es:"contenido", ex:"Content is worth 10 points of the rubric.",
+   words:["CONTENT","NEON","ONCE","CONE","NOTE","TONE","CENT","TENT","TOTE"]}
 ]},
-{n:5,name:"Writing a Magazine Article",focus:"Anatomy, drafting & revision",levels:[
-  {key:"CAPTION", pos:"noun", def:"The text printed under a photo.", es:"pie de foto", ex:"Write a caption under your magazine photo.",
+{n:"C1",name:"Advanced",focus:"The writer's craft",levels:[
+  {key:"OPENING",pos:"noun", def:"The first part of your text — the hook.", es:"apertura, inicio", ex:"A rhetorical question is the safest opening.",
+   words:["OPENING","PIGEON","OPINE","NINE","PINE","PING","GONE","OPEN","ONE"]},
+  {key:"DEVICE", pos:"noun", def:"A technique a writer uses for effect.", es:"recurso estilístico", ex:"Anecdotes and contrast are useful devices.",
+   words:["DEVICE","VICE","DICE","ICED","CEDE","VIED","ICE","DIE"]},
+  {key:"CAPTION",pos:"noun", def:"The short text printed under a photo.", es:"pie de foto", ex:"Write a caption for your photo.",
    words:["CAPTION","ACTION","PIANO","POINT","PAINT","PATIO","TOPIC","OPTIC","PANIC","COAT"]},
-  {key:"HEADLINE",pos:"noun", def:"The title that grabs the reader's attention.", es:"titular", ex:"A good headline grabs the reader in five words.",
-   words:["HEADLINE","INHALED","INHALE","HANDLE","DENIAL","LEANED","HEALED","HEAD","LEAN","IDEA"]},
-  {key:"REGISTER",pos:"noun", def:"How formal or informal the language is.", es:"registro (formalidad)", ex:"Keep the register friendly but mature.",
-   words:["REGISTER","TIGERS","GREETS","STEER","GREET","TIGER","TREES","RESET","RISE"]},
-  {key:"CONCISE", pos:"adjective", def:"Saying much in few words; short and clear.", es:"conciso", ex:"Be concise: 140–190 words only.",
-   words:["CONCISE","SONIC","ICONS","COINS","CONES","SINCE","ONCE","NICE","ICON","COIN"]},
-  {key:"IMPROVE", pos:"verb", def:"To make something better.", es:"mejorar", ex:"Peer feedback helps you improve the draft.",
-   words:["IMPROVE","MOVIE","MOVER","PROVE","PRIME","VIPER","POEM","MORE","ROPE","RIPE"]},
-  {key:"CLARITY", pos:"noun", def:"The quality of being easy to understand.", es:"claridad", ex:"Edit for clarity before you check spelling.",
-   words:["CLARITY","LYRIC","TRIAL","TRAIL","CART","CLAY","CITY","AIRY","LIAR"]}
+  {key:"EDITOR", pos:"noun", def:"The person who decides what goes into a magazine.", es:"editor", ex:"Write a 100-word editor's reflection.",
+   words:["EDITOR","TIRED","TRIED","RIOT","TRIO","RODE","TIDE","EDIT","RIDE"]},
+  {key:"REFLECT",pos:"verb", def:"To think carefully about your own work and choices.", es:"reflexionar", ex:"Reflect on one tension you faced.",
+   words:["REFLECT","ELECT","FLEET","FREE","TREE","FEEL","REEL","LEFT","FELT"]},
+  {key:"HOPEFUL",pos:"adjective", def:"Believing that good things will happen.", es:"esperanzado", ex:"I'm hopeful about next term.",
+   words:["HOPEFUL","HOPE","HELP","FUEL","POLE","HOLE","FOUL","FLU"]}
 ]},
-{n:6,name:"The Wellbeing Issue",focus:"Wish / if only & quantifiers",levels:[
-  {key:"PODCAST",pos:"noun", def:"An audio show you can stream or download.", es:"pódcast", ex:"Record a 5-minute interview-style podcast.",
-   words:["PODCAST","PAST","TACOS","COAST","COATS","PACTS","POST","STOP","SPOT","TACO"]},
-  {key:"ARTICLE",pos:"noun", def:"A piece of writing in a magazine.", es:"artículo", ex:"Write a 140–190-word magazine article.",
-   words:["ARTICLE","RECITAL","RETAIL","CLEAR","TRACE","TRAIL","ALERT","CRATE","LACE","RICE"]},
-  {key:"DESIRE", pos:"noun", def:"A strong wish for something.", es:"deseo", ex:"‘I wish I had more time’ expresses a desire.",
-   words:["DESIRE","RESIDE","DRIES","RIDES","SEED","DEER","REED","RISE","SIDE","RIDE"]},
-  {key:"LONGING",pos:"noun", def:"A strong, often sad, wish for something.", es:"anhelo, añoranza", ex:"‘If only’ expresses longing for the past.",
-   words:["LONGING","LOGIN","LINGO","GOING","GONG","LONG","LION","LOIN"]},
-  {key:"SEVERAL",pos:"quantifier", def:"More than two but not very many.", es:"varios", ex:"Several students said the same thing.",
-   words:["SEVERAL","REVEAL","LEAVES","LEAVE","LASER","EASEL","SERVE","VERSE","SEVER"]},
-  {key:"PLENTY", pos:"quantifier", def:"A large, more-than-enough amount.", es:"de sobra, mucho", ex:"There's plenty of evidence in the article.",
-   words:["PLENTY","TYPE","YELP","PELT","LENT","PLY","PEN","PET","NET"]}
+{n:"C2",name:"Precision",focus:"Saying exactly what you mean",levels:[
+  {key:"UNEASY", pos:"adjective", def:"Slightly worried or uncomfortable about something.", es:"inquieto, intranquilo", ex:"I felt uneasy before the presentation.",
+   words:["UNEASY","EASY","SANE","YES","ANY","SAY","USE","SUN","YEN"]},
+  {key:"DRAINED",pos:"adjective", def:"Completely without energy, physically or emotionally.", es:"agotado", ex:"After exam week I felt utterly drained.",
+   words:["DRAINED","RAINED","DRAIN","DINER","DARED","IDEA","READ","NEAR","DINE","ARID"]},
+  {key:"DROWSY", pos:"adjective", def:"Sleepy; almost falling asleep.", es:"somnoliento", ex:"I felt drowsy during first period.",
+   words:["DROWSY","WORDS","WORD","ROSY","ROWS","ROD","DRY"]},
+  {key:"URGENT", pos:"adjective", def:"So important that it needs action immediately.", es:"urgente", ex:"It isn't urgent — you needn't panic.",
+   words:["URGENT","GRUNT","TUNER","TRUE","TUNE","URGE","RENT","GENT","NUT"]},
+  {key:"EMPATHY",pos:"noun", def:"The ability to understand how another person feels.", es:"empatía", ex:"Good advice starts with empathy, not solutions.",
+   words:["EMPATHY","EMPTY","MATH","PATH","TEAM","MEAT","TAPE","HYPE","THEY","HEAP"]},
+  {key:"MODALS", pos:"noun (plural)", def:"Verbs like should, ought to, must, might.", es:"verbos modales", ex:"Modals show how strong your advice is.",
+   words:["MODALS","MODAL","LOADS","MOLDS","ALSO","LOAD","MOLD","SOLD","SLAM"]}
 ]}
 ];
+
+/* ?levels=A2,B1 → show only those bands (same convention as crosswords.html) */
+const DATA = (function(){
+  const q = new URLSearchParams(location.search).get('levels');
+  if(!q) return ALL_DATA;
+  const want = q.toUpperCase().split(',').map(function(s){return s.trim();});
+  const f = ALL_DATA.filter(function(b){ return want.indexOf(b.n) >= 0; });
+  return f.length ? f : ALL_DATA;
+})();
 
 /* ==================================================================
    Crossword builder (validated: every level solves within 11x11)
@@ -550,7 +560,7 @@ function buildCrossword(words){
    State
    ================================================================== */
 const ADMIN_PIN="2026";   // change this to whatever you want the teacher PIN to be
-const SAVE="u4wheel_v1";
+const SAVE="wheelcefr_v1";   // separate from the Unit 4 game's progress
 let S={coins:0,done:{},sound:true,admin:false};
 try{const raw=localStorage.getItem(SAVE); if(raw) S=Object.assign(S,JSON.parse(raw));}catch(e){}
 function save(){try{localStorage.setItem(SAVE,JSON.stringify(S));}catch(e){}}
@@ -601,7 +611,7 @@ function paintHome(){
     const b=document.createElement("button");
     b.className="week";
     b.innerHTML=
-      '<div class="num">WEEK<b>'+wk.n+'</b></div>'+
+      '<div class="num">CEFR<b>'+wk.n+'</b></div>'+
       '<div class="meta"><b>'+wk.name+'</b><span>'+wk.focus+' · '+wk.levels.length+' levels</span>'+
       '<div class="bar"><i style="width:'+pct+'%"></i></div></div>'+
       '<div class="pct">'+pct+'%</div>';
@@ -619,7 +629,7 @@ let curWeek=0;
 function openWeek(wi){
   curWeek=wi;
   const wk=DATA[wi];
-  $("lvTitle").textContent="Week "+wk.n+" — "+wk.name;
+  $("lvTitle").textContent=GROUP_LABEL+" "+wk.n+" — "+wk.name;
   $("lvFocus").textContent=wk.focus;
   const host=$("levelList"); host.innerHTML="";
   wk.levels.forEach(function(lv,li){
@@ -646,7 +656,7 @@ function startLevel(wi,li){
   G={wi:wi,li:li,lv:lv,cross:buildCrossword(lv.words),letters:lv.key.split(""),sel:[],dragging:false};
   revealed=false;
   shuffleLetters(true);
-  $("gTitle").textContent="Week "+DATA[wi].n+" · Level "+(li+1);
+  $("gTitle").textContent=DATA[wi].n+" · Wheel "+(li+1);
   $("gSub").textContent=DATA[wi].name;
   $("btnReveal").style.display = S.admin ? "" : "none";
   $("btnReveal").textContent="🔑";
@@ -892,9 +902,10 @@ function paintAdmin(){
   const tabs=document.querySelectorAll(".tab");
   for(let i=0;i<tabs.length;i++)
     tabs[i].classList.toggle("on", tabs[i].getAttribute("data-tab")===adminTab);
+  const nLv = DATA.reduce(function(a,b){return a+b.levels.length;},0);
   $("adminNote").textContent = adminTab==="words"
     ? "Las letras de la ruleta son la palabra clave; todas las demás se forman con esas mismas letras."
-    : "Solucionario de los 36 crucigramas. La casilla azul marca la palabra clave de la unidad. 🖨 imprime esta vista.";
+    : "Solucionario de los "+nLv+" crucigramas. La casilla azul marca la palabra clave del nivel. 🖨 imprime esta vista.";
   if(adminTab==="words") paintList(); else paintAnswers();
 }
 
@@ -908,7 +919,7 @@ function paintList(){
       rows+='<tr><td class="k">'+(i+1)+'. '+lv.key+'</td><td class="w">'+
             lv.words.slice(1).join(" · ")+'</td></tr>';
     });
-    d.innerHTML='<h3>Week '+wk.n+' — '+wk.name+'</h3>'+
+    d.innerHTML='<h3>'+GROUP_LABEL+' '+wk.n+' — '+wk.name+'</h3>'+
       '<div class="focus">'+wk.focus+'</div>'+
       '<table><tr><th>Wheel letters (key word)</th><th>Crossword words</th></tr>'+rows+'</table>';
     host.appendChild(d);
@@ -942,7 +953,7 @@ function paintAnswers(){
       keys+='<div class="key1"><div class="klab">'+(i+1)+'. '+lv.key+'</div>'+
             miniGrid(buildCrossword(lv.words),lv.key)+'</div>';
     });
-    d.innerHTML='<h3>Week '+wk.n+' — '+wk.name+'</h3>'+
+    d.innerHTML='<h3>'+GROUP_LABEL+' '+wk.n+' — '+wk.name+'</h3>'+
       '<div class="focus">'+wk.focus+' · answer keys</div>'+
       '<div class="keys">'+keys+'</div>';
     host.appendChild(d);
