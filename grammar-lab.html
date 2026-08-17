@@ -397,7 +397,14 @@ function results(g,score,total,dur,points,extra){
 let qs=[],qi=0,qsc=0,qpt=0,qstk=0,qbest=0,qlives=3,qel=0,qlock=false,qleft=0,qt0=0,QT=20;
 function startQuiz(g){
   QT = g.time||20;
-  qs=shuffle(g.items); qi=0; qsc=0; qpt=0; qstk=0; qbest=0; qlives=3; qel=0;
+  /* Se barajan las preguntas Y las opciones de cada una, remapeando el índice
+     correcto: así da igual que en los datos la respuesta esté siempre primera
+     (en varios bancos lo estaba) y en cada ronda cambia de sitio. */
+  qs=shuffle(g.items).map(it=>{
+    const ord=shuffle(it.o.map((_,i)=>i));
+    return Object.assign({},it,{o:ord.map(i=>it.o[i]),a:ord.indexOf(it.a)});
+  });
+  qi=0; qsc=0; qpt=0; qstk=0; qbest=0; qlives=3; qel=0;
   $('main').innerHTML = `<div class="card">${g.intro?`<p class="intro">${g.intro}</p>`:''}<div id="qa"></div></div>`+moreCards();
   drawQ(g);
 }
