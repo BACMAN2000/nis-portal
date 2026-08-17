@@ -193,13 +193,17 @@ async function logout(){ await sb.auth.signOut(); }
 function header(){
   const p = state.profile||{};
   const name = p.full_name || (p.first_name?`${p.first_name} ${p.last_name||''}`:state.session?.user?.email) || '';
+  // En vista de alumno el chip y el nombre son los del alumno simulado, así que
+  // la barra de aviso es lo único que recuerda quién está realmente dentro.
+  const real = _isPreview() ? (state.realProfile||{}) : null;
   return `<div class="app-header">
     <img src="assets/logo-white-h.svg" alt="Nordic International School">
     <div class="spacer"></div>
     <span class="role-chip">${esc(p.role||'')}</span>
     <span class="who">${esc(name)}</span>
+    ${real ? `<span class="who" style="opacity:.75">· sesión: ${esc(real.full_name||real.email||'admin')}</span>` : ''}
     <button class="logout" onclick="logout()">Salir</button>
-  </div>`;
+  </div>`+_previewBar();
 }
 function shell(navItems, activeKey, body){
   return header()+`<div class="shell">
@@ -424,7 +428,16 @@ async function adminAccess(){
     }).join('');
     return `<tr><td><b>${esc(n.label)}</b><div class="muted" style="font-size:.7rem">${n.key}</div></td>${cells}</tr>`;
   }).join('');
+  const pvOpts = GRADES.map(g=>`<option value="${g.id}" ${g.id===9?'selected':''}>${g.name}</option>`).join('');
   $('#main').innerHTML=`<h1>🔐 Accesos por grado</h1>
+    <div class="card" style="display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap">
+      <div><label>Comprobar el resultado</label>
+        <select id="pv_grade" style="min-width:120px">${pvOpts}</select></div>
+      <button class="btn sm" onclick="window._previewGrade(document.getElementById('pv_grade').value)">👁️ Ver el portal como alumno</button>
+      <div class="muted" style="padding-bottom:11px;flex:1;min-width:240px">Abre el portal con los ojos de un alumno de ese grado —
+        con sus candados— para verificar lo que acabas de marcar. Para un alumno concreto (con sus excepciones),
+        usa <b>👥 Alumnos → 👁️ Ver como</b>.</div>
+    </div>
     <div class="note">Marca qué actividades ve cada <b>grado</b>. Lo nuevo (French, Grammar) nace bloqueado; el resto, abierto. Las <b>unidades</b> (<code>…activities.u4</code>) y sus <b>semanas</b> (<code>…activities.u4.w3</code>) se abren o cierran una a una: cerrar una unidad la oculta entera de <b>Activities</b>; cerrar una semana deja el resto de la unidad como está. Para excepciones de un alumno, el profesor las ajusta en <b>Alumnos</b>. Los <b>Mocks</b> se gestionan en su pestaña 🔓 Mocks.</div>
     <div class="card" style="padding:0;overflow-x:auto"><table>
       <thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table></div>`;
@@ -852,7 +865,7 @@ async function adminUsers(){
       <td><span class="badge ${p.role==='student'?'':'on'}">${esc(p.role)}</span></td>
       <td class="pwcell"><span class="pw" data-pw="•••••••">•••••••</span> <button class="eye" title="Ver/ocultar" onclick="togglePw('${p.id}',this)">👁</button></td>
       <td><span class="badge ${suspended?'off':'on'}">${suspended?'Suspendido':'Activo'}</span></td>
-      <td style="white-space:nowrap">${p.role==='student'?`<button class="btn sm ghost" onclick="window._openStudentAccess('${p.id}',${p.grade_id||'null'},'${esc((p.full_name||p.email||'').replace(/'/g,'’'))}')">🔧 Accesos</button> `:''}<button class="btn sm ghost" onclick="editUser('${p.id}')">Editar</button> ${toggleBtn} <button class="btn sm danger" onclick="deleteUser('${p.id}','user')">Eliminar</button></td>
+      <td style="white-space:nowrap">${p.role==='student'?`<button class="btn sm ghost" onclick="window._previewStudent('${p.id}','${esc((p.full_name||p.email||'').replace(/'/g,'’'))}')" title="Ver el portal tal como lo ve este alumno">👁️ Ver como</button> <button class="btn sm ghost" onclick="window._openStudentAccess('${p.id}',${p.grade_id||'null'},'${esc((p.full_name||p.email||'').replace(/'/g,'’'))}')">🔧 Accesos</button> `:''}<button class="btn sm ghost" onclick="editUser('${p.id}')">Editar</button> ${toggleBtn} <button class="btn sm danger" onclick="deleteUser('${p.id}','user')">Eliminar</button></td>
     </tr>`;}).join('');
   $('#main').innerHTML=`<div class="row" style="justify-content:space-between;align-items:center"><h1>Alumnos</h1>
       <button class="btn sm" onclick="adminNewUser()">+ Nuevo</button></div>
@@ -1744,7 +1757,9 @@ async function renderStudent(initial){
   state.access = await loadStudentAccess();   // Fase 2: visibilidad por nodo
   // Anti-trampa en todo el portal: mismo criterio que las actividades, pero
   // solo para alumnos logueados (docentes/admin quedan exentos en el motor).
-  try{ if(window.NISAntiCheat) NISAntiCheat.init({activity:'portal', label:'Portal NIS', requireStudent:true}); }catch(_){}
+  // En la vista de alumno no se arma el anti-trampa: quien está dentro es el
+  // admin y no tiene sentido contarle salidas de pestaña ni reportarlas.
+  try{ if(window.NISAntiCheat && !_isPreview()) NISAntiCheat.init({activity:'portal', label:'Portal NIS', requireStudent:true}); }catch(_){}
   // Volver desde un juego (./#classes_g9_unit_u4) reabre esa vista, no el hub.
   const deep=(location.hash||'').replace(/^#/,'');
   if(deep && _navRender(deep)) return;
@@ -1817,7 +1832,8 @@ async function loadStudentAccess(){
   try{
     const [g,s] = await Promise.all([
       p.grade_id!=null ? sb.from('node_access').select('node_key,unlocked').eq('grade_id',p.grade_id) : Promise.resolve({data:[]}),
-      sb.from('student_access').select('node_key,unlocked').eq('student_id',p.id)
+      // p.id es nulo en la vista por grado (alumno tipo): no hay overrides que pedir.
+      p.id ? sb.from('student_access').select('node_key,unlocked').eq('student_id',p.id) : Promise.resolve({data:[]})
     ]);
     (g.data||[]).forEach(r=>out.grade[r.node_key]=r.unlocked);
     (s.data||[]).forEach(r=>out.student[r.node_key]=r.unlocked);
@@ -1851,6 +1867,75 @@ function _lockedCard(emoji,title,desc){
     <div class="badge" style="background:#fee2e2;color:#991b1b;margin-top:10px">🔒 Your teacher will unlock this</div>
   </div>`;
 }
+
+/* ===== 👁️ VISTA COMO ALUMNO (solo admin) =====
+   Para comprobar qué ve EXACTAMENTE un alumno sin pedirle su contraseña.
+   Truco: se cambia `state.profile` por el del alumno y se recargan SUS accesos.
+   Como todas las vistas de alumno leen `state.profile`, `state.access` y
+   `nodeVisible()`, el portal se pinta con sus candados sin tocar la sesión
+   (sigue siendo la del admin) ni escribir nada en la base. El perfil real
+   espera en `state.realProfile` y salir lo restaura; recargar también.
+   Dos modos:
+     · por ALUMNO → incluye sus excepciones de `student_access`;
+     · por GRADO  → alumno tipo, sin excepciones: solo lo que abre el grado.
+   Ojo si se amplía: NO habilitar acciones que escriban durante la vista; el
+   alumno previsualizado no ha consentido nada y las escrituras irían con la
+   sesión del admin. */
+function _isPreview(){ return !!state.preview; }
+function _canPreview(){ const p=state.realProfile||state.profile; return !!(p && p.role==='admin'); }
+window._previewStudent = async (sid, name)=>{
+  if(!_canPreview()) return;
+  const { data, error } = await sb.from('profiles').select('*, grades(name)').eq('id',sid).single();
+  if(error || !data) return alert('No se pudo abrir la vista del alumno: '+((error&&error.message)||'sin datos'));
+  await _previewEnter({kind:'student', label:(data.full_name||name||'alumno'), backTab:'users'}, data);
+};
+window._previewGrade = async (gradeId)=>{
+  if(!_canPreview()) return;
+  const g = GRADES.find(x=>String(x.id)===String(gradeId));
+  if(!g) return alert('Elige un grado.');
+  /* Alumno sintético SIN id: así no hay overrides por alumno que consultar y
+     los paneles de historial avisan en vez de consultar con id nulo. */
+  await _previewEnter({kind:'grade', label:'alumno tipo de '+g.name, backTab:'access'},
+    {id:null, role:'student', full_name:'alumno de '+g.name, first_name:'alumno de '+g.name,
+     last_name:'', section:null, cefr_level:null, grade_id:g.id, grades:{name:g.name}, active:true});
+};
+async function _previewEnter(meta, profile){
+  state.realProfile = state.realProfile || state.profile;
+  state.preview = meta;
+  state.profile = profile;
+  _previewClearHash();
+  await renderStudent('home');
+}
+window._previewExit = ()=>{
+  const tab=(state.preview&&state.preview.backTab)||'users';
+  if(state.realProfile) state.profile = state.realProfile;
+  state.realProfile=null; state.preview=null; state.access=null;
+  _previewClearHash();
+  renderAdmin(tab);
+};
+function _previewClearHash(){
+  try{ history.replaceState(null,'',location.pathname+location.search); }
+  catch(_){ location.hash=''; }
+}
+/* Barra permanente: va dentro de header(), así sale en TODA vista de alumno. */
+function _previewBar(){
+  if(!_isPreview()) return '';
+  const m=state.preview;
+  const note = m.kind==='grade'
+    ? 'Alumno tipo: solo lo que abre el grado, sin excepciones por alumno.'
+    : 'Con sus excepciones por alumno.';
+  return `<div class="preview-bar">
+    <span>👁️ Estás viendo el portal como <b>${esc(m.label)}</b></span>
+    <span class="pv-note">${note} Solo lectura.</span>
+    <button class="btn sm" onclick="window._previewExit()">✕ Salir de la vista</button></div>`;
+}
+/* Aviso en los paneles que necesitan un alumno concreto (modo por grado). */
+function _previewNeedsStudent(title, back){
+  $('#main').innerHTML=`${back||''}<h1>${title}</h1>
+    <div class="note">Esta vista es el historial personal de un alumno, así que en la
+      <b>vista por grado</b> no hay datos que mostrar. Sal de la vista y entra desde
+      <b>👥 Alumnos → 👁️ Ver como</b> con un alumno concreto.</div>`;
+}
 /* Nodos gateables por el admin/profesor (Mocks va aparte; My Progress y Resultado final son datos propios). */
 const _GRADE_NODES = ['g6','g7','g8','g9','g10','g11'].flatMap(g=>{
   const lbl = {g6:'6th',g7:'7th',g8:'8th',g9:'9th',g10:'10th',g11:'11th'}[g];
@@ -1860,23 +1945,38 @@ const _GRADE_NODES = ['g6','g7','g8','g9','g10','g11'].flatMap(g=>{
     {key:'english.classes.'+g+'.grammar',    label:lbl+' · Grammar'},
   ];
 });
+/* Los mismos nodos para francés (5.º–10.º). Sin `.grammar`: en francés la
+   gramática vive dentro de las actividades de cada semana, no en página aparte. */
+const _FR_GRADE_NODES = ['g5','g6','g7','g8','g9','g10'].flatMap(g=>{
+  const lbl = {g5:'5e',g6:'6e',g7:'7e',g8:'8e',g9:'9e',g10:'10e'}[g];
+  return [
+    {key:'french.classes.'+g,                label:'🇫🇷 Classes · '+lbl},
+    {key:'french.classes.'+g+'.activities',  label:'🇫🇷 '+lbl+' · Activités'},
+  ];
+});
 /* Un nodo por UNIDAD y otro por SEMANA, colgando del de Activities de su
    grado. Se derivan de activities-data.js, así que añadir allí una unidad
    o una semana la hace gateable sola. */
-function _unitNode(grade,unitId){ return 'english.classes.'+grade+'.activities.'+unitId; }
-function _weekNode(grade,unitId,weekId){ return _unitNode(grade,unitId)+'.'+weekId; }
-const _GRADE_LBL={g6:'6th',g7:'7th',g8:'8th',g9:'9th',g10:'10th',g11:'11th'};
+function _unitNode(grade,unitId,subject){ return (subject||'english')+'.classes.'+grade+'.activities.'+unitId; }
+function _weekNode(grade,unitId,weekId,subject){ return _unitNode(grade,unitId,subject)+'.'+weekId; }
+/* La materia de una unidad: 'english' salvo que activities-fr-data.js la
+   haya marcado como 'french'. Todo lo que ya existía cae en el default. */
+function _subjOf(u){ return (u && u.subject) || 'english'; }
+const _GRADE_LBL={g5:'5th',g6:'6th',g7:'7th',g8:'8th',g9:'9th',g10:'10th',g11:'11th'};
 const _shortTitle = t => String(t||'').split('—')[0].trim();
 const _UNIT_NODES = (function(){
   const d=window.ACTIVITIES_DATA;
   if(!d || !Array.isArray(d.units)) return [];
-  return d.units.map(u=>({
-    key:   _unitNode(u.grade,u.id),
-    label: (_GRADE_LBL[u.grade]||u.grade)+' · '+u.title,
-    grade: u.grade,
-    parent:'english.classes.'+u.grade+'.activities',
-    locked:!!u.locked,
-  }));
+  return d.units.map(u=>{
+    const s=_subjOf(u);
+    return {
+      key:   _unitNode(u.grade,u.id,s),
+      label: (s==='french'?'🇫🇷 ':'')+(_GRADE_LBL[u.grade]||u.grade)+' · '+u.title,
+      grade: u.grade,
+      parent:s+'.classes.'+u.grade+'.activities',
+      locked:!!u.locked,
+    };
+  });
 })();
 const _WEEK_NODES = (function(){
   const d=window.ACTIVITIES_DATA;
@@ -1884,11 +1984,12 @@ const _WEEK_NODES = (function(){
   const out=[];
   d.units.forEach(u=>(u.weeks||[]).forEach(w=>{
     if(!w.title) return;            // unidad de una sola tanda: la semana ES la unidad
+    const s=_subjOf(u);
     out.push({
-      key:   _weekNode(u.grade,u.id,w.id),
-      label: (_GRADE_LBL[u.grade]||u.grade)+' · '+String(u.id).toUpperCase()+' · '+w.title,
+      key:   _weekNode(u.grade,u.id,w.id,s),
+      label: (s==='french'?'🇫🇷 ':'')+(_GRADE_LBL[u.grade]||u.grade)+' · '+String(u.id).toUpperCase()+' · '+w.title,
       grade: u.grade,
-      parent:'english.classes.'+u.grade+'.activities',
+      parent:s+'.classes.'+u.grade+'.activities',
       locked:!!w.locked,
     });
   }));
@@ -1911,6 +2012,8 @@ const ACCESS_NODES = [
   {key:'french',                        label:'French (toda la materia)'},
   {key:'french.crosswords',             label:'French · Crosswords'},
   {key:'french.wordsearch',             label:'French · Word Search'},
+  {key:'french.classes',                label:'🇫🇷 Classes (toda)'},
+  ..._FR_GRADE_NODES,
   {key:'general.library',               label:'Library'},
   {key:'general.mun',                   label:'MUN Academy'},
 ];
@@ -1923,12 +2026,12 @@ function studentSubject(key){
   const isEn = key==='english';
   if(!isEn){
     $('#main').innerHTML = `${_backBtn("window._nav('home')",'Inicio')}<h1>🇫🇷 French</h1>
-      <p class="muted" style="margin-top:-6px">Juegos de vocabulario en francés por niveles del Marco Común Europeo (A1 · A2 · B1 · B2 · C1).</p>
-      <div class="grid cols-2" style="margin-top:12px">
+      <p class="muted" style="margin-top:-6px">Material de clase por grado y juegos de vocabulario por niveles del Marco Común Europeo (A1 · A2 · B1 · B2 · C1).</p>
+      <div class="grid cols-3" style="margin-top:12px">
+        ${nodeVisible('french.classes') ? _hubCard('🏫','Classes','Le matériel de chaque grade : les jeux de l’unité, semaine par semaine.',"window._nav('fr_classes')") : _lockedCard('🏫','Classes','Material de clase de francés por grado.')}
         ${nodeVisible('french.crosswords') ? _skillCard('🧩','Crosswords','Crucigramas temáticos de vocabulario francés — 10 por nivel (A1–C1).','crosswords-fr.html') : _lockedCard('🧩','Crosswords','Crucigramas de vocabulario francés.')}
         ${nodeVisible('french.wordsearch') ? _skillCard('🔎','Word Search','Sopas de letras temáticas en francés — 10 por nivel (A1–C1).','wordsearches-fr.html') : _lockedCard('🔎','Word Search','Sopas de letras en francés.')}
-      </div>
-      <p class="muted" style="margin-top:14px;font-size:.85rem">Más material de francés próximamente.</p>`;
+      </div>`;
     return;
   }
   const title = isEn ? '🇬🇧 English' : '🇫🇷 French';
@@ -1963,6 +2066,7 @@ async function studentFinal(){
   _setNav('final');
   const p=state.profile;
   const back=_isStudent()?_backBtn("window._nav('english')",'English'):'';
+  if(!p.id) return _previewNeedsStudent('🏅 Resultado final · CEFR', back);
   $('#main').innerHTML=`${back}<h1>🏅 Resultado final · CEFR</h1><p class="muted">Cargando…</p>`;
   const { data:at } = await sb.from('exam_attempts').select('id,skill,level,percent,mock,submitted_at').eq('student_id',p.id);
   let sp=null; try{ const r=await sb.from('speaking_results').select('*').eq('student_id',p.id).maybeSingle(); sp=r&&r.data; }catch(e){}
@@ -2006,6 +2110,12 @@ const GRADE_META = { g6:['6️⃣','6th grade'], g7:['7️⃣','7th grade'], g8:
 const GRADE_LEVELS = { g6:'A1,A2,B1,B2', g7:'A1,A2,B1,B2', g8:'A1,A2,B1,B2',
   g9:'A1,A2,B1,B2,C1', g10:'A1,A2,B1,B2,C1', g11:'A1,A2,B1,B2,C1' };
 const GRADE_ORDER = ['g6','g7','g8','g9','g10','g11'];
+/* Francés va de 5.º a 10.º (inglés empieza en 6.º y llega a 11.º), y sus
+   niveles del Marco son más bajos porque es segunda lengua extranjera. */
+const FR_GRADE_META  = { g5:['5️⃣','5e'], g6:['6️⃣','6e'], g7:['7️⃣','7e'],
+  g8:['8️⃣','8e'], g9:['9️⃣','9e'], g10:['🔟','10e'] };
+const FR_GRADE_ORDER = ['g5','g6','g7','g8','g9','g10'];
+const FR_GRADE_LEVEL = { g5:'A1.1', g6:'A1.2', g7:'A2.1', g8:'A2.2', g9:'A2.2', g10:'B1.1' };
 
 /* Vista de un grado dentro de Classes (→ Grammar + Activities) */
 function studentGrade(key){
@@ -2023,13 +2133,18 @@ function studentGrade(key){
       ${key==='g9' ? (nodeVisible('english.classes.g9.writing') ? _skillCard('✍️','Writing','Opinion essay (FCE Writing Part 1): 6 topics with guide phrases, a bank of linkers, word counter and checklist.',_withBack('writing.html?grade='+key,route)) : _lockedCard('✍️','Writing','Opinion essay · FCE Writing Part 1.')) : ''}
     </div>`;
 }
-/* Unidades del grado (Unit 3, Unit 4…) según activities-data.js. */
-function _unitsFor(key){
+/* Unidades del grado (Unit 3, Unit 4…) según activities-data.js.
+   FILTRA POR MATERIA a propósito: desde que activities-fr-data.js mete las
+   unidades de francés en la MISMA lista, sin este filtro el 9.º y el 10.º de
+   inglés mostrarían también la Unité 4 francesa. */
+function _unitsFor(key,subject){
   const d=window.ACTIVITIES_DATA;
-  return (d && Array.isArray(d.units)) ? d.units.filter(u=>u.grade===key) : [];
+  const s=subject||'english';
+  return (d && Array.isArray(d.units)) ? d.units.filter(u=>u.grade===key && _subjOf(u)===s) : [];
 }
-function _gradeNodeOpen(key,leaf){
-  return nodeVisible('english.classes.'+key) && nodeVisible('english.classes.'+key+'.'+leaf);
+function _gradeNodeOpen(key,leaf,subject){
+  const s=subject||'english';
+  return nodeVisible(s+'.classes.'+key) && nodeVisible(s+'.classes.'+key+'.'+leaf);
 }
 function _lockedView(back,title){
   $('#main').innerHTML=`${back}<h1>${title}</h1>
@@ -2040,19 +2155,22 @@ function _lockedView(back,title){
    Es la misma lista de activities.html, pero dentro del portal y desde la
    misma fuente (activities-data.js). `focusUnit` sólo desplaza la vista a
    esa unidad: se usa al volver desde un juego. */
-function studentGradeActivities(key,focusUnit){
-  _setNav('classes');
-  const [emoji,label]=GRADE_META[key]||['🏫',key];
+function studentGradeActivities(key,focusUnit,subject){
+  _setNav(subject==='french'?'french':'classes');
+  const isFr=subject==='french';
+  const [emoji,label]= (isFr?FR_GRADE_META[key]:GRADE_META[key]) || ['🏫',key];
   const lv=GRADE_LEVELS[key]||'A1,A2,B1,B2,C1';
-  const route='classes_'+key+'_act';
-  const back = _backBtn("window._nav('classes_"+key+"')",label);
+  const pre=isFr?'fr_classes_':'classes_';
+  const route=pre+key+'_act';
+  const back = _backBtn("window._nav('"+pre+key+"')",label);
   // Ahora se puede entrar por enlace directo (#classes_g9_act), así que la
   // visibilidad del nodo se comprueba aquí y no sólo al pintar la tarjeta.
-  if(!_gradeNodeOpen(key,'activities')) return _lockedView(back,'🎲 Activities · '+label);
+  if(!_gradeNodeOpen(key,'activities',subject))
+    return _lockedView(back,(isFr?'🎲 Activités · ':'🎲 Activities · ')+label);
   // Candado POR UNIDAD: el profesor abre cada unidad cuando toca.
-  const all=_unitsFor(key);
-  const units =all.filter(u=> nodeVisible(_unitNode(key,u.id)));
-  const locked=all.filter(u=>!nodeVisible(_unitNode(key,u.id)));
+  const all=_unitsFor(key,subject);
+  const units =all.filter(u=> nodeVisible(_unitNode(key,u.id,subject)));
+  const locked=all.filter(u=>!nodeVisible(_unitNode(key,u.id,subject)));
   const lockedBlock = locked.length ? `
     <div class="grid cols-3" style="margin-top:18px">
       ${locked.map(u=>_lockedCard(u.icon,esc(u.title),esc(u.blurb||''))).join('')}
@@ -2060,11 +2178,11 @@ function studentGradeActivities(key,focusUnit){
   // Índice de saltos: la página es larga (una unidad puede traer 6 semanas).
   const jump = units.length ? `<div style="display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 4px">
       ${units.map(u=>`<a class="btn sm ghost" href="#unit-${u.id}" style="text-decoration:none">${u.icon} ${esc(u.title)}</a>`).join('')}
-      <a class="btn sm ghost" href="#by-level" style="text-decoration:none">🎯 By level</a>
+      <a class="btn sm ghost" href="#by-level" style="text-decoration:none">${isFr?'🎯 Par niveau':'🎯 By level'}</a>
     </div>` : '';
   // Candado POR SEMANA dentro de una unidad abierta: las cerradas se anuncian
   // en una línea (el alumno ve que hay más, pero no los ejercicios).
-  const weekOpen=(u,w)=> !w.title || nodeVisible(_weekNode(key,u.id,w.id));
+  const weekOpen=(u,w)=> !w.title || nodeVisible(_weekNode(key,u.id,w.id,subject));
   const unitsBlock = units.map(u=>{
     const ws=u.weeks||[];
     const soon=ws.filter(w=>!weekOpen(u,w));
@@ -2075,10 +2193,28 @@ function studentGradeActivities(key,focusUnit){
       ${w.title?`<h3 style="margin:16px 0 6px;font-size:1rem;color:var(--blue-d)">${esc(w.title)}</h3>`:''}
       <div class="grid cols-3" style="margin-top:8px">
         ${(w.games||[]).map(g=>_skillCard(g.icon,esc(g.title),esc(g.desc),
-            _withBack(g.href,'classes_'+key+'_unit_'+u.id))).join('')}
+            _withBack(g.href,pre+key+'_unit_'+u.id))).join('')}
       </div>`).join('')}
-    ${soon.length?`<p class="muted" style="margin:14px 0 0">🔒 ${soon.map(w=>esc(_shortTitle(w.title))).join(' · ')} — your teacher will unlock these.</p>`:''}`;
+    ${soon.length?`<p class="muted" style="margin:14px 0 0">🔒 ${soon.map(w=>esc(_shortTitle(w.title))).join(' · ')} — ${isFr?'ton professeur les ouvrira bientôt.':'your teacher will unlock these.'}</p>`:''}`;
   }).join('');
+  // En francés las "prácticas por nivel" son las francesas (A1–C1); las de
+  // inglés no pintan nada aquí.
+  if(isFr){
+    const frLv=FR_GRADE_LEVEL[key]||'A1';
+    const lvParam=frLv.split('.')[0];      // A2.1 → A2 (los juegos van por nivel MCER)
+    $('#main').innerHTML=`${back}<h1>🎲 Activités · ${label}</h1>
+      <p class="muted" style="margin-top:-6px">Les jeux de chaque semaine de l'Unité 4, plus de l'entraînement libre par niveau (${esc(frLv)}).</p>
+      ${jump}
+      ${unitsBlock}
+      ${lockedBlock}
+      <h2 id="by-level" style="margin:30px 0 8px">🎯 Entraînement libre</h2>
+      <div class="grid cols-2" style="margin-top:12px">
+        ${_skillCard('🧩','Mots croisés','Mots croisés thématiques de vocabulaire français — 10 par niveau (A1–C1).',_withBack('crosswords-fr.html?levels='+encodeURIComponent(lvParam),route))}
+        ${_skillCard('🔎','Mots mêlés','Grilles de mots mêlés en français — 10 par niveau (A1–C1), avec la prononciation de chaque mot trouvé.',_withBack('wordsearches-fr.html?levels='+encodeURIComponent(lvParam),route))}
+      </div>`;
+    if(focusUnit) setTimeout(()=>{ const el=document.getElementById('unit-'+focusUnit); if(el) el.scrollIntoView({block:'start'}); },0);
+    return;
+  }
   $('#main').innerHTML=`${back}<h1>🎲 Activities · ${label}</h1>
     <p class="muted" style="margin-top:-6px">Games for each unit, plus extra practice by level (${lv.split(',').join(' · ')}).</p>
     ${jump}
@@ -2106,9 +2242,48 @@ function studentGradeActivities(key,focusUnit){
    lista completa colocada en esa unidad. Se mantiene porque los juegos ya
    publicados enlazan aquí con ?back=. */
 function studentGradeUnit(key,unitId){ studentGradeActivities(key,unitId); }
+
+/* ===== 🇫🇷 FRANCÉS: Classes → grado → Activités =====
+   Reutiliza studentGradeActivities pasándole subject:'french'; lo único
+   propio es la lista de grados (5.º–10.º, no 6.º–11.º como inglés). */
+function studentFrenchClasses(){
+  _setNav('french');
+  const back=_backBtn("window._nav('french')",'French');
+  if(!nodeVisible('french.classes')) return _lockedView(back,'🏫 Classes · Français');
+  const cards=FR_GRADE_ORDER.map(g=>{
+    const [emoji,label]=FR_GRADE_META[g];
+    const lvl=FR_GRADE_LEVEL[g]||'';
+    const desc='Unité 4 · '+lvl+' — les jeux de la semaine.';
+    return nodeVisible('french.classes.'+g)
+      ? _hubCard(emoji,label,desc,"window._nav('fr_classes_"+g+"')")
+      : _lockedCard(emoji,label,desc);
+  }).join('');
+  $('#main').innerHTML=`${back}<h1>🏫 Classes · Français</h1>
+    <p class="muted" style="margin-top:-6px">Choisis ton grade.</p>
+    <div class="grid cols-3" style="margin-top:12px">${cards}</div>`;
+}
+function studentFrenchGrade(key){
+  _setNav('french');
+  const [emoji,label]=FR_GRADE_META[key]||['🏫',key];
+  const back=_backBtn("window._nav('fr_classes')",'Classes');
+  if(!nodeVisible('french.classes.'+key)) return _lockedView(back,emoji+' '+label);
+  $('#main').innerHTML=`${back}<h1>${emoji} ${label}</h1>
+    <p class="muted" style="margin-top:-6px">Français · niveau ${esc(FR_GRADE_LEVEL[key]||'')}.</p>
+    <div class="grid cols-2" style="margin-top:12px">
+      ${nodeVisible('french.classes.'+key+'.activities')
+        ? _hubCard('🎲','Activités',"Les six jeux de chaque semaine de l'Unité 4.","window._nav('fr_classes_"+key+"_act')")
+        : _lockedCard('🎲','Activités','Les jeux de l’unité.')}
+    </div>`;
+}
 /* Pinta una vista. Devuelve true si la clave era una ruta conocida. */
 function _navRender(k){
   let m;
+  // Francés primero: sus rutas llevan el prefijo fr_ y si no, `classes_(g\d+)`
+  // se las tragaría y pintaría la vista de inglés.
+  if(m=/^fr_classes_(g\d+)_unit_([a-z0-9]+)$/.exec(k)){ studentGradeActivities(m[1],m[2],'french'); return true; }
+  if(m=/^fr_classes_(g\d+)_act$/.exec(k)){ studentGradeActivities(m[1],null,'french'); return true; }
+  if(m=/^fr_classes_(g\d+)$/.exec(k))    { studentFrenchGrade(m[1]);   return true; }
+  if(k==='fr_classes')                   { studentFrenchClasses();     return true; }
   if(m=/^classes_(g\d+)_unit_([a-z0-9]+)$/.exec(k)){ studentGradeUnit(m[1],m[2]); return true; }
   if(m=/^classes_(g\d+)_act$/.exec(k)){ studentGradeActivities(m[1]); return true; }
   if(m=/^classes_(g\d+)$/.exec(k))    { studentGrade(m[1]);           return true; }
@@ -2217,6 +2392,7 @@ async function studentResults(){
   _setNav('results');
   const p=state.profile;
   const back = _isStudent() ? _backBtn("window._nav('english')",'English') : '';
+  if(!p.id) return _previewNeedsStudent('📊 My Progress', back);
   $('#main').innerHTML=`${back}<h1>📊 My Progress</h1><p class="muted">Cargando…</p>`;
   const { data:atts } = await sb.from('exam_attempts').select('*').eq('student_id',p.id).order('submitted_at',{ascending:false});
   const bySkill = SKILLS.map(sk=>{
