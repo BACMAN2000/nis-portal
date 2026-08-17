@@ -2036,12 +2036,14 @@ function studentSubject(key){
   _setNav(key);
   const isEn = key==='english';
   if(!isEn){
+    // Dos vías distintas y no mezclables: Classes va POR GRADO (el temario que
+    // se está dando) y CEFR va POR NIVEL del Marco (A1–C2, entrenamiento libre).
+    const _cefrOn = nodeVisible('french.crosswords') || nodeVisible('french.wordsearch');
     $('#main').innerHTML = `${_backBtn("window._nav('home')",'Inicio')}<h1>🇫🇷 French</h1>
-      <p class="muted" style="margin-top:-6px">Material de clase por grado y juegos de vocabulario por niveles del Marco Común Europeo (A1 · A2 · B1 · B2 · C1).</p>
-      <div class="grid cols-3" style="margin-top:12px">
+      <p class="muted" style="margin-top:-6px">El material de clase va por grado; los juegos de vocabulario, por nivel del Marco Común Europeo.</p>
+      <div class="grid cols-2" style="margin-top:12px">
         ${nodeVisible('french.classes') ? _hubCard('🏫','Classes','Le matériel de chaque grade : les jeux de l’unité, semaine par semaine.',"window._nav('fr_classes')") : _lockedCard('🏫','Classes','Material de clase de francés por grado.')}
-        ${nodeVisible('french.crosswords') ? _skillCard('🧩','Crosswords','Crucigramas temáticos de vocabulario francés — 10 por nivel (A1–C1).','crosswords-fr.html') : _lockedCard('🧩','Crosswords','Crucigramas de vocabulario francés.')}
-        ${nodeVisible('french.wordsearch') ? _skillCard('🔎','Word Search','Sopas de letras temáticas en francés — 10 por nivel (A1–C1).','wordsearches-fr.html') : _lockedCard('🔎','Word Search','Sopas de letras en francés.')}
+        ${_cefrOn ? _hubCard('📚','CEFR','Mots croisés et mots mêlés par niveau, de A1 à C2.',"window._nav('fr_cefr')") : _lockedCard('📚','CEFR','Juegos de vocabulario por nivel (A1–C2).')}
       </div>`;
     return;
   }
@@ -2273,6 +2275,21 @@ function studentFrenchClasses(){
     <p class="muted" style="margin-top:-6px">Choisis ton grade.</p>
     <div class="grid cols-3" style="margin-top:12px">${cards}</div>`;
 }
+/* CEFR: el vocabulario por NIVEL (A1–C2), independiente del grado. Son los
+   dos generadores de gen_fr_games.py, con 10 rejillas por nivel. */
+function studentFrenchCefr(){
+  _setNav('french');
+  const back=_backBtn("window._nav('french')",'French');
+  const cw=nodeVisible('french.crosswords'), ws=nodeVisible('french.wordsearch');
+  if(!cw && !ws) return _lockedView(back,'📚 CEFR · Français');
+  $('#main').innerHTML=`${back}<h1>📚 CEFR · Français</h1>
+    <p class="muted" style="margin-top:-6px">Vocabulaire par niveau du Cadre européen — 10 grilles par niveau, de A1 à C2.</p>
+    <div class="grid cols-2" style="margin-top:12px">
+      ${cw ? _skillCard('🧩','Mots croisés','Mots croisés thématiques de vocabulaire français — 10 par niveau (A1 à C2). Les définitions sont en français.',_withBack('crosswords-fr.html','fr_cefr')) : _lockedCard('🧩','Mots croisés','Mots croisés de vocabulaire français.')}
+      ${ws ? _skillCard('🔎','Mots mêlés','Grilles de mots mêlés en français — 10 par niveau (A1 à C2), avec la prononciation de chaque mot trouvé.',_withBack('wordsearches-fr.html','fr_cefr')) : _lockedCard('🔎','Mots mêlés','Grilles de mots mêlés en français.')}
+    </div>
+    <p class="muted" style="margin-top:14px;font-size:.85rem">A1 · A2 · B1 · B2 · C1 · C2 — le niveau se choisit dans le jeu.</p>`;
+}
 function studentFrenchGrade(key){
   _setNav('french');
   const [emoji,label]=FR_GRADE_META[key]||['🏫',key];
@@ -2295,6 +2312,7 @@ function _navRender(k){
   if(m=/^fr_classes_(g\d+)_act$/.exec(k)){ studentGradeActivities(m[1],null,'french'); return true; }
   if(m=/^fr_classes_(g\d+)$/.exec(k))    { studentFrenchGrade(m[1]);   return true; }
   if(k==='fr_classes')                   { studentFrenchClasses();     return true; }
+  if(k==='fr_cefr')                      { studentFrenchCefr();        return true; }
   if(m=/^classes_(g\d+)_unit_([a-z0-9]+)$/.exec(k)){ studentGradeUnit(m[1],m[2]); return true; }
   if(m=/^classes_(g\d+)_act$/.exec(k)){ studentGradeActivities(m[1]); return true; }
   if(m=/^classes_(g\d+)$/.exec(k))    { studentGrade(m[1]);           return true; }

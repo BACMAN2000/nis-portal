@@ -4,12 +4,15 @@ clonando la UI de los archivos en inglés y sólo cambiando const DATA y el <tit
 Pistas en español. Cuadrículas válidas (algoritmo). Reproducible (seed)."""
 import re, json, random, unicodedata, string, os
 from fr_definitions import DEF
+from fr_definitions_c2 import DEF_C2      # nivel C2 (temas abstractos)
 
 random.seed(20260616)
 REPO = os.path.dirname(os.path.abspath(__file__))
 _MISSING_DEF=set()
 def fr_clue(fr, es):
-    d=DEF.get(fr)
+    # C2 primero: varias palabras (style, terrain, code…) existen ya con un
+    # sentido corriente, y en C2 hace falta el especializado.
+    d=DEF_C2.get(fr) or DEF.get(fr)
     if not d: _MISSING_DEF.add(fr)
     return d or es
 
@@ -80,9 +83,21 @@ LEVELS = {
  ('La résilience', [('adaptation','adaptación'),('courage','coraje'),('persévérance','perseverancia'),('épreuve','prueba'),('force','fuerza'),('espoir','esperanza'),('surmonter','superar'),('équilibre','equilibrio'),('soutien','apoyo'),('confiance','confianza')]),
  ('L\'éthique', [('morale','moral'),('valeur','valor'),('devoir','deber'),('dignité','dignidad'),('justice','justicia'),('respect','respeto'),('intégrité','integridad'),('responsabilité','responsabilidad'),('conscience','conciencia'),('honnêteté','honestidad')]),
 ],
+'C2': [
+ ('La rhétorique', [('éloquence','elocuencia'),('sophisme','sofisma'),('métaphore','metáfora'),('ironie','ironía'),('emphase','énfasis'),('réfutation','refutación'),('persuasion','persuasión'),('litote','lítote'),('plaidoyer','alegato'),('périphrase','perífrasis')]),
+ ("L'épistémologie", [('paradigme','paradigma'),('empirisme','empirismo'),('axiome','axioma'),('inférence','inferencia'),('objectivité','objetividad'),('scepticisme','escepticismo'),('postulat','postulado'),('corrélation','correlación'),('causalité','causalidad'),('réfutabilité','refutabilidad')]),
+ ('La géopolitique', [('souveraineté','soberanía'),('hégémonie','hegemonía'),('diplomatie','diplomacia'),('alliance','alianza'),('embargo','embargo'),('traité','tratado'),('ingérence','injerencia'),('dissuasion','disuasión'),('annexion','anexión'),('médiation','mediación')]),
+ ('La bioéthique', [('consentement','consentimiento'),('clonage','clonación'),('euthanasie','eutanasia'),('génome','genoma'),('embryon','embrión'),('greffe','trasplante'),('thérapie','terapia'),('anonymat','anonimato'),('prélèvement','extracción'),('incurable','incurable')]),
+ ("L'esthétique", [('sublime','sublime'),('harmonie','armonía'),('contemplation','contemplación'),('kitsch','kitsch'),('virtuosité','virtuosismo'),('sensibilité','sensibilidad'),('canon','canon'),('mimésis','mímesis'),('style','estilo'),('épure','boceto depurado')]),
+ ('La psychanalyse', [('inconscient','inconsciente'),('refoulement','represión'),('névrose','neurosis'),('pulsion','pulsión'),('transfert','transferencia'),('lapsus','lapsus'),('sublimation','sublimación'),('fantasme','fantasía'),('résistance','resistencia'),('divan','diván')]),
+ ('Le droit international', [('juridiction','jurisdicción'),('ratification','ratificación'),('arbitrage','arbitraje'),('immunité','inmunidad'),('extradition','extradición'),('sanction','sanción'),('protocole','protocolo'),('jurisprudence','jurisprudencia'),('plainte','denuncia'),('recours','recurso')]),
+ ('La macroéconomie', [('inflation','inflación'),('récession','recesión'),('relance','reactivación'),('austérité','austeridad'),('déficit','déficit'),('endettement','endeudamiento'),('conjoncture','coyuntura'),('stagnation','estancamiento'),('excédent','superávit'),('pénurie','escasez')]),
+ ("L'anthropologie", [('rite','rito'),('parenté','parentesco'),('totem','tótem'),('ethnie','etnia'),('altérité','alteridad'),('syncrétisme','sincretismo'),('acculturation','aculturación'),('mythe','mito'),('tabou','tabú'),('terrain','trabajo de campo')]),
+ ('La sémiotique', [('signe','signo'),('signifiant','significante'),('signifié','significado'),('code','código'),('connotation','connotación'),('dénotation','denotación'),('icône','icono'),('indice','indicio'),('symbole','símbolo'),('référent','referente')]),
+],
 }
 
-WS_BASE = {'A1':12,'A2':12,'B1':13,'B2':14,'C1':15}
+WS_BASE = {'A1':12,'A2':12,'B1':13,'B2':14,'C1':15,'C2':16}
 
 # ---------- Crossword ----------
 def check_place(grid, W, r0, c0, dr, dc):
@@ -197,10 +212,18 @@ probs=validate()
 def emit(src, dst, data, title):
     s=open(os.path.join(REPO,src),encoding='utf-8').read()
     lines=s.split('\n')
+    done_data=False
     for i,l in enumerate(lines):
-        if l.lstrip().startswith('const DATA'):
-            lines[i]='const DATA = '+json.dumps(data,ensure_ascii=False)+';'; break
+        if not done_data and l.lstrip().startswith('const DATA'):
+            lines[i]='const DATA = '+json.dumps(data,ensure_ascii=False)+';'; done_data=True
+        # La plantilla inglesa trae `let LEVELS=["A1",…,"C1"]` escrito a mano:
+        # sin reescribirlo, el francés genera los datos de C2 pero la pestaña
+        # no aparece y el nivel queda inalcanzable.
+        elif l.lstrip().startswith('let LEVELS='):
+            lines[i]='let LEVELS='+json.dumps(list(data.keys()))+';'
     s='\n'.join(lines)
+    assert done_data, 'no se encontro const DATA en '+src
+    assert 'let LEVELS='+json.dumps(list(data.keys())) in s, 'no se reescribio LEVELS en '+src
     s=re.sub(r'<title>.*?</title>', '<title>'+title+'</title>', s, count=1)
     open(os.path.join(REPO,dst),'w',encoding='utf-8').write(s)
 
@@ -251,7 +274,9 @@ def _fr_localize(fname, reps):
     print(fname,'-> FR UI', 'OK' if not miss else ('FALTAN: '+str(miss)))
 
 _fr_localize('crosswords-fr.html', [
- ('<h1>🔡 Crosswords · A1–C1</h1>','<h1>🔡 Mots croisés · A1–C1</h1>'),
+ ('<h1>🔡 Crosswords · A1–C1</h1>','<h1>🔡 Mots croisés · A1–C2</h1>'),
+ ('<p>Cambridge vocabulary by level — pick a level and a puzzle, read the clue, type the word.</p>',
+  '<p>Vocabulaire par niveau du Cadre européen — choisis un niveau et une grille, lis la définition et écris le mot.</p>'),
  ('👩‍🏫 Teacher/Admin view — answers are shown (solved). Lives and timer are off.',
   '👩‍🏫 Vue prof/admin — les réponses sont affichées (résolues). Vies et minuteur désactivés.'),
  ('💡 Hint (−1 life)','💡 Indice (−1 vie)'),
@@ -264,7 +289,9 @@ _fr_localize('crosswords-fr.html', [
  ('💔 No lives left! This crossword restarts.','💔 Plus de vies ! Ces mots croisés recommencent.'),
 ])
 _fr_localize('wordsearches-fr.html', [
- ('<h1>🔍 Word Searches · A1–C1</h1>','<h1>🔍 Mots mêlés · A1–C1</h1>'),
+ ('<h1>🔍 Word Searches · A1–C1</h1>','<h1>🔍 Mots mêlés · A1–C2</h1>'),
+ ('<p>Cambridge vocabulary by level — words run in any direction (even backwards and diagonally). Drag across the letters.</p>',
+  '<p>Vocabulaire par niveau du Cadre européen — les mots vont dans toutes les directions (même à l’envers et en diagonale). Glisse sur les lettres.</p>'),
  ('👩‍🏫 Teacher/Admin view — all words are shown highlighted (solved).',
   '👩‍🏫 Vue prof/admin — tous les mots sont surlignés (résolus).'),
  ('💡 Hint (−1 life)','💡 Indice (−1 vie)'),
