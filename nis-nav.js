@@ -12,6 +12,17 @@
    Se auto-inyecta en los dos patrones de barra que usan las páginas:
    `.topnav > .navbtn` y `header > a.back`. No hace nada dentro de un
    iframe (games-lab, live-quiz, MUN se embeben en el portal). */
+/* El sitio viejo de GitHub Pages (bacman2000.github.io/nis-portal) sigue en
+   línea y hay marcadores/enlaces antiguos apuntándole. Cualquier página que
+   cargue allí salta de inmediato a nis.cohasset.pe conservando ruta, query y
+   hash — ningún alumno debe ver github.io en la barra. En nis.cohasset.pe es
+   un no-op. */
+(function(){
+  if(/\.github\.io$/i.test(location.hostname)){
+    var p = location.pathname.replace(/^\/nis-portal\/?/, '/');
+    location.replace('https://nis.cohasset.pe' + p + location.search + location.hash);
+  }
+})();
 (function(){
   var PORTAL = './';
 

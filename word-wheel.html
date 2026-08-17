@@ -154,11 +154,15 @@ body{
 .preview span.dupe{background:var(--gold);color:#5A3800}
 @keyframes shake{10%,90%{transform:translateX(-4px)}30%,70%{transform:translateX(6px)}50%{transform:translateX(-6px)}}
 
-.wheelrow{display:flex;align-items:center;justify-content:center;gap:10px}
-.wheel{width:min(300px,72vw,38vh);height:min(300px,72vw,38vh);
-  width:min(300px,72vw,38dvh);height:min(300px,72vw,38dvh);
+.wheelrow{display:flex;align-items:center;justify-content:center;gap:12px}
+/* keep the wheel clear of the side buttons: 2 buttons + 2 gaps + page padding */
+.wheel{width:min(320px,calc(100vw - 172px),38vh);height:min(320px,calc(100vw - 172px),38vh);
+  width:min(320px,calc(100vw - 172px),38dvh);height:min(320px,calc(100vw - 172px),38dvh);
   touch-action:none;user-select:none;flex:0 0 auto}
 .wheel .disc{fill:rgba(255,255,255,.14);stroke:rgba(255,255,255,.22);stroke-width:2}
+/* dotted rim: rides with the letters so a spin is visible even between them */
+.wheel .ticks{fill:none;stroke:rgba(255,255,255,.32);stroke-width:5;stroke-linecap:round;
+  stroke-dasharray:1 21}
 .wheel .trace{fill:none;stroke:#FFD772;stroke-width:9;stroke-linecap:round;stroke-linejoin:round;opacity:.9}
 .wheel .lt circle{fill:#fff;transition:fill .12s ease, r .12s ease}
 .wheel .lt text{font-family:var(--sans);font-weight:700;font-size:30px;fill:var(--nordic-800);
@@ -166,11 +170,17 @@ body{
 .wheel .lt.sel circle{fill:var(--gold)}
 .wheel .lt.sel text{fill:#5A3800}
 .sidebtns{display:flex;flex-direction:column;gap:10px}
-.act{width:46px;height:46px;border:none;border-radius:14px;cursor:pointer;background:rgba(255,255,255,.18);
-  color:#fff;font-size:17px;display:grid;place-items:center;position:relative;transition:transform .12s}
+.act{width:58px;height:58px;border:none;border-radius:18px;cursor:pointer;background:rgba(255,255,255,.18);
+  color:#fff;font-size:24px;display:grid;place-items:center;position:relative;
+  box-shadow:0 4px 14px rgba(4,26,48,.26);transition:transform .12s, background .15s}
+.act:hover{background:rgba(255,255,255,.26)}
 .act:active{transform:scale(.9)}
-.act small{position:absolute;bottom:-2px;right:-2px;background:var(--gold);color:#5A3800;
-  font-size:9px;font-weight:700;border-radius:6px;padding:1px 4px}
+.act small{position:absolute;bottom:-3px;right:-3px;background:var(--gold);color:#5A3800;
+  font-size:10px;font-weight:800;border-radius:7px;padding:1px 5px}
+@media (max-width:420px){
+  .act{width:50px;height:50px;border-radius:15px;font-size:21px}
+  .wheel{width:min(320px,calc(100vw - 152px),40dvh);height:min(320px,calc(100vw - 152px),40dvh)}
+}
 .wordsleft{text-align:center;color:#fff;font-size:11px;letter-spacing:1.6px;text-transform:uppercase;opacity:.7;margin-top:8px}
 
 /* ---------- modal ---------- */
@@ -306,7 +316,7 @@ body{
       </div>
       <svg class="wheel" id="wheel" viewBox="0 0 300 300"></svg>
       <div class="sidebtns">
-        <button class="act" id="btnShuffle" title="Shuffle">🔀</button>
+        <button class="act" id="btnShuffle" title="Spin the letters" aria-label="Spin the letters">🔀</button>
       </div>
     </div>
     <div class="wordsleft" id="wordsLeft"></div>
@@ -594,6 +604,8 @@ function beep(freq,dur,type,vol){
 }
 const sfx={
   tick:function(i){beep(420+i*55,.08,"triangle",.06);},
+  spin:function(){[340,430,540,650,560,470,400].forEach(function(f,i){
+    setTimeout(function(){beep(f,.06,"triangle",.045);},i*62);});},
   good:function(){beep(660,.12,"sine",.09); setTimeout(function(){beep(880,.18,"sine",.09);},90);},
   bad:function(){beep(180,.18,"sawtooth",.05);},
   key:function(){[523,659,784,1047].forEach(function(f,i){setTimeout(function(){beep(f,.2,"sine",.08);},i*95);});},
@@ -737,11 +749,18 @@ function letterPos(i){
 function paintWheel(){
   const svg=$("wheel");
   svg.innerHTML="";
+  if(G) G.spinning=false;
   const disc=document.createElementNS(NS,"circle");
   disc.setAttribute("cx",150); disc.setAttribute("cy",150); disc.setAttribute("r",138);
   disc.setAttribute("class","disc"); svg.appendChild(disc);
   const trace=document.createElementNS(NS,"polyline");
   trace.setAttribute("class","trace"); trace.setAttribute("id","trace"); svg.appendChild(trace);
+  /* everything that turns lives in #ring: the dotted rim + the letters */
+  const ring=document.createElementNS(NS,"g");
+  ring.setAttribute("id","ring"); svg.appendChild(ring);
+  const ticks=document.createElementNS(NS,"circle");
+  ticks.setAttribute("cx",150); ticks.setAttribute("cy",150); ticks.setAttribute("r",136);
+  ticks.setAttribute("class","ticks"); ring.appendChild(ticks);
   G.letters.forEach(function(ch,i){
     const p=letterPos(i);
     const g=document.createElementNS(NS,"g");
@@ -750,7 +769,44 @@ function paintWheel(){
     c.setAttribute("cx",p.x); c.setAttribute("cy",p.y); c.setAttribute("r",29);
     const t=document.createElementNS(NS,"text");
     t.setAttribute("x",p.x); t.setAttribute("y",p.y+1); t.textContent=ch;
-    g.appendChild(c); g.appendChild(t); svg.appendChild(g);
+    g.appendChild(c); g.appendChild(t); ring.appendChild(g);
+  });
+}
+/* Spin: the ring makes one full turn, squashing a little at the fastest point,
+   and the letters change seats mid-turn — so a shuffle reads as movement
+   instead of letters teleporting. Seats never move, so letterPos/hitLetter
+   stay valid; the wheel is just deaf to the pointer while it turns. */
+function easeSpin(t){ return t<.5 ? 4*t*t*t : 1-Math.pow(-2*t+2,3)/2; }
+function relabelWheel(){
+  const nodes=$("wheel").querySelectorAll(".lt");
+  for(let i=0;i<nodes.length;i++){
+    const t=nodes[i].querySelector("text");
+    if(t) t.textContent=G.letters[i];
+    nodes[i].classList.remove("sel");
+  }
+}
+function spinWheel(){
+  if(!G||G.spinning) return;
+  const ring=document.getElementById("ring");
+  if(!ring||!window.requestAnimationFrame){        // no ring / ancient browser
+    shuffleLetters(false); paintWheel(); G.sel=[]; paintSelection(null); return;
+  }
+  const myG=G;                                     // bail out if the level changes
+  G.spinning=true; G.dragging=false;
+  G.sel=[]; paintSelection(null);
+  sfx.spin();
+  const DUR=680;
+  let t0=null, swapped=false;
+  requestAnimationFrame(function frame(ts){
+    if(G!==myG){ myG.spinning=false; return; }
+    if(t0===null) t0=ts;
+    let p=(ts-t0)/DUR; if(p>1) p=1;
+    const a=easeSpin(p)*360, s=1-.12*Math.sin(Math.PI*p);
+    ring.setAttribute("transform",
+      "translate(150,150) rotate("+a.toFixed(2)+") scale("+s.toFixed(3)+") translate(-150,-150)");
+    if(!swapped && p>=.46){ swapped=true; shuffleLetters(false); relabelWheel(); }
+    if(p<1) requestAnimationFrame(frame);
+    else { ring.removeAttribute("transform"); G.spinning=false; }
   });
 }
 function svgPoint(ev){
@@ -780,7 +836,7 @@ function paintSelection(pt,keepPreview){
 function currentWord(){return G.sel.map(function(i){return G.letters[i];}).join("");}
 
 function onDown(ev){
-  if(!G) return;
+  if(!G||G.spinning) return;
   const pt=svgPoint(ev), i=hitLetter(pt);
   if(i<0) return;
   ev.preventDefault();
@@ -970,7 +1026,7 @@ wheelEl.addEventListener("pointermove",onMove);
 window.addEventListener("pointerup",onUp);
 window.addEventListener("pointercancel",onUp);
 
-$("btnShuffle").onclick=function(){ shuffleLetters(false); paintWheel(); G.sel=[]; paintSelection(null); beep(520,.1,"triangle",.06); };
+$("btnShuffle").onclick=spinWheel;
 $("btnHint").onclick=hint;
 $("btnAdmin").onclick=askAdmin;
 $("btnAsStudent").onclick=exitAdmin;
