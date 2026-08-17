@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grammar Lab · NIS English</title>
+<meta name="google" content="notranslate">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* Gotham when the portal serves it (or when it is installed locally),
+   Montserrat as the web fallback — same lockup as the rest of the portal. */
+@font-face{font-family:'Gotham';src:local('Gotham Book'),local('Gotham'),url('fonts/GothamBook.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'Gotham';src:local('Gotham Medium'),local('Gotham'),url('fonts/GothamMedium.ttf') format('truetype');font-weight:500;font-display:swap}
+@font-face{font-family:'Gotham';src:local('Gotham Bold'),local('Gotham'),url('fonts/GothamBold.ttf') format('truetype');font-weight:700;font-display:swap}
+:root{
+  --blue:#4987C6; --blue-d:#2F5F93; --blue-dd:#244C77;
+  --lila:#D1D2EA; --lila-50:#EDEEF9; --celeste:#76CBE5; --puce:#D2909B; --grey:#636465;
+  --ink:#1B2733; --muted:#5A6B7D; --line:#E2E8F0;
+  --ok:#16A34A; --ok-soft:#E7F7EC; --bad:#DC2626; --bad-soft:#FDECEC;
+  --gold:#F59E0B; --paper:#fff;
+  --sans:'Gotham','Montserrat',system-ui,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  --r:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{font:15px/1.55 var(--sans);color:var(--ink);
+  background:linear-gradient(180deg,var(--lila) 0%,#F6F8FC 55%,#fff 100%);min-height:100vh;padding-bottom:30px}
+
+/* ---------- top bar ---------- */
+.topnav{position:sticky;top:0;z-index:30;background:#fff;display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  padding:10px 18px;box-shadow:0 2px 12px rgba(20,30,60,.08);border-bottom:1px solid var(--line)}
+.topnav img{height:30px;width:auto;display:block}
+.topnav .sp{margin-left:auto}
+.navbtn{text-decoration:none;font-weight:700;font-size:.83rem;padding:8px 13px;border-radius:9px;white-space:nowrap;
+  background:var(--lila-50);color:var(--blue-dd);border:none;cursor:pointer;transition:.15s}
+.navbtn:hover{filter:brightness(.97)}
+.navbtn.primary{background:var(--blue-d);color:#fff}
+
+/* ---------- header ---------- */
+header.hd{max-width:940px;margin:18px auto 6px;padding:0 16px;text-align:center}
+header.hd .eyebrow{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--blue-d);font-weight:700}
+header.hd h1{font-size:clamp(20px,4.6vw,27px);margin:6px 0 4px;letter-spacing:-.3px}
+header.hd h1 .ico{margin-right:6px}
+header.hd p{color:var(--muted);font-size:.92rem;max-width:640px;margin:0 auto}
+
+/* ---------- tabs ---------- */
+.tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:16px auto 4px;max-width:940px;padding:0 16px}
+.tab{border:2px solid transparent;background:#fff;color:var(--ink);padding:9px 15px;border-radius:22px;position:relative;
+  font-weight:700;font-size:.88rem;cursor:pointer;box-shadow:0 2px 8px rgba(20,30,60,.10);transition:.15s;font-family:inherit}
+.tab small{display:block;font-weight:500;font-size:.63rem;color:var(--muted);letter-spacing:.2px}
+.tab.on{background:var(--blue-d);color:#fff;border-color:var(--blue-d)}
+.tab.on small{color:#D9E6F5}
+.tab .done{position:absolute;top:-6px;right:-4px;background:var(--ok);color:#fff;font-size:.6rem;font-weight:800;
+  padding:2px 6px;border-radius:9px;box-shadow:0 1px 4px rgba(0,0,0,.2)}
+main{max-width:940px;margin:0 auto;padding:10px 16px 0}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:22px;
+  box-shadow:0 6px 22px rgba(20,30,60,.08);margin-bottom:14px}
+.intro{color:var(--muted);font-size:.9rem;text-align:center;margin-bottom:14px}
+
+/* ---------- learn (presentation) ---------- */
+.slide .eyebrow{font-size:10.5px;letter-spacing:2.2px;text-transform:uppercase;color:var(--puce);font-weight:800}
+.slide h2{font-size:clamp(18px,4vw,23px);margin:6px 0 8px;color:var(--blue-dd)}
+.slide .lead{color:var(--muted);font-size:1rem;margin-bottom:14px}
+.gtable{width:100%;border-collapse:collapse;margin:6px 0 4px;font-size:.9rem;display:block;overflow-x:auto}
+.gtable th{background:var(--lila-50);color:var(--blue-dd);text-align:left;padding:9px 11px;font-size:.78rem;
+  text-transform:uppercase;letter-spacing:.6px;border-bottom:2px solid var(--lila)}
+.gtable td{padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+.gtable tr:last-child td{border-bottom:none}
+.gtable td i{color:var(--blue-d)}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:8px 0}
+.col{background:var(--lila-50);border-radius:13px;padding:14px}
+.col h3{font-size:.95rem;color:var(--blue-dd);margin-bottom:2px}
+.col .sub{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:9px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:9px}
+.chip{background:#fff;border:1px solid var(--lila);color:var(--blue-dd);font-weight:700;font-size:.8rem;
+  padding:4px 9px;border-radius:11px}
+.col .ex{font-size:.86rem;color:var(--muted);border-left:3px solid var(--blue);padding-left:9px;margin-top:6px}
+ul.bul{margin:6px 0 2px 4px;list-style:none}
+ul.bul li{position:relative;padding:5px 0 5px 20px;font-size:.94rem}
+ul.bul li::before{content:"▸";position:absolute;left:0;color:var(--blue);font-weight:800}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:9px 0}
+.pair>div{border-radius:12px;padding:11px 13px;font-size:.93rem;font-weight:600}
+.pair .yes{background:var(--ok-soft);border:1px solid #B7E4C5;color:#14663A}
+.pair .no{background:var(--bad-soft);border:1px solid #F5C2C2;color:#8E2020}
+.pair .yes::before{content:"✓ ";font-weight:800}
+.pair .no::before{content:"✗ ";font-weight:800}
+.pnote{font-size:.83rem;color:var(--muted);margin:-3px 0 9px}
+.callout{border-radius:13px;padding:14px 16px;background:#FFF8E8;border:1px solid #FBE1A8;margin:10px 0}
+.callout b.t{display:block;color:#8A5A00;font-size:.95rem;margin-bottom:3px}
+.callout .tx{font-size:.93rem}
+.callout s{color:var(--bad)}
+.ccq{border-radius:13px;padding:14px 16px;background:var(--lila-50);border:1px dashed var(--blue);margin:10px 0}
+.ccq .q{font-weight:700;color:var(--blue-dd);font-size:1rem}
+.ccq .a{display:none;margin-top:10px;padding-top:10px;border-top:1px solid var(--lila);font-size:.94rem}
+.ccq.open .a{display:block}
+.ccq button{margin-top:9px;background:var(--blue-d);color:#fff;border:none;border-radius:9px;padding:7px 13px;
+  font-weight:700;font-size:.8rem;cursor:pointer;font-family:inherit}
+.ccq.open button{display:none}
+.tip{margin-top:12px;font-size:.87rem;color:var(--blue-dd);background:#EAF3FC;border-radius:11px;padding:10px 13px}
+.tip::before{content:"💡 "}
+.snav{display:flex;align-items:center;gap:10px;justify-content:space-between;margin-top:16px;flex-wrap:wrap}
+.dots{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;flex:1}
+.dots i{width:9px;height:9px;border-radius:50%;background:var(--lila);cursor:pointer;transition:.15s}
+.dots i.on{background:var(--blue-d);transform:scale(1.25)}
+.dots i.seen{background:var(--blue)}
+
+/* ---------- buttons ---------- */
+button.act{border:none;border-radius:10px;padding:11px 17px;font-weight:700;font-size:.88rem;cursor:pointer;
+  transition:.15s;font-family:inherit}
+.b-go{background:var(--blue-d);color:#fff}
+.b-alt{background:#EAEEF5;color:var(--ink)}
+button.act:hover{filter:brightness(1.06)}
+button.act:disabled{opacity:.45;cursor:default}
+.btns{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:14px}
+
+/* ---------- HUD ---------- */
+.hud{display:flex;gap:8px;justify-content:space-between;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+.hud .h{font-weight:800;font-size:.88rem;background:var(--lila-50);padding:7px 11px;border-radius:11px;white-space:nowrap}
+.hud .sc{color:var(--blue-d)} .hud .st{color:var(--gold)}
+.tbar{height:10px;background:#E9EDF4;border-radius:8px;overflow:hidden;margin-bottom:14px}
+.tbar>i{display:block;height:100%;width:100%;background:linear-gradient(90deg,var(--ok),var(--gold),var(--bad));transition:width .1s linear}
+
+/* ---------- quiz ---------- */
+.qtext{background:var(--lila-50);border-radius:13px;padding:15px 17px;font-weight:700;font-size:1.1rem;text-align:center}
+.qsub{color:var(--muted);font-size:.85rem;text-align:center;margin:9px 0 13px}
+.opts{display:grid;gap:9px}
+.opt{text-align:left;background:#fff;border:2px solid #D8E0EE;border-radius:12px;padding:13px 15px;font-size:.98rem;
+  cursor:pointer;transition:.12s;font-weight:600;font-family:inherit;color:inherit}
+.opt:hover{border-color:var(--blue);background:var(--lila-50)}
+.opt.right{border-color:var(--ok);background:var(--ok-soft);color:#14663A}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft);color:#8E2020}
+.opt:disabled{cursor:default}
+.why{margin-top:13px;padding:12px 15px;border-radius:12px;background:#FFF8E8;border:1px solid #FBE1A8;font-size:.92rem;display:none}
+.why.show{display:block}
+.combo{position:fixed;left:50%;top:36%;transform:translate(-50%,-50%);font-size:2.3rem;font-weight:800;color:var(--gold);
+  text-shadow:0 2px 0 #fff;pointer-events:none;opacity:0;z-index:50}
+.combo.pop{animation:cb 1s ease-out}
+@keyframes cb{0%{opacity:0;transform:translate(-50%,-30%) scale(.6)}25%{opacity:1;transform:translate(-50%,-50%) scale(1.12)}100%{opacity:0;transform:translate(-50%,-80%) scale(1)}}
+
+/* ---------- sort ---------- */
+.sortcard{background:var(--lila-50);border-radius:14px;padding:20px 18px;font-size:1.12rem;font-weight:700;text-align:center;
+  min-height:96px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:7px}
+.sortcard .ctx{font-size:.8rem;color:var(--muted);font-weight:600}
+.buckets{display:grid;gap:9px;margin-top:13px}
+.buckets.n2{grid-template-columns:1fr 1fr}
+.buckets.n3{grid-template-columns:repeat(3,1fr)}
+.buckets.n4{grid-template-columns:repeat(2,1fr)}
+.bucket{border:3px solid transparent;border-radius:13px;padding:14px 8px;text-align:center;font-weight:800;color:#fff;
+  cursor:pointer;transition:.12s;font-size:.92rem;font-family:inherit;line-height:1.25}
+.bucket small{display:block;font-weight:600;font-size:.68rem;opacity:.92;margin-top:3px}
+.bucket:hover{transform:translateY(-2px)}
+.bucket.flash{animation:bf .4s}
+@keyframes bf{50%{filter:brightness(1.35)}}
+.bk-a{background:#4987C6} .bk-b{background:#0E8AA8} .bk-c{background:#16A34A}
+.bk-d{background:#D97706} .bk-e{background:#B4405A}
+
+/* ---------- match ---------- */
+.mwrap{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:640px;margin:12px auto 0}
+.mcol h3{font-size:.72rem;text-transform:uppercase;letter-spacing:1.2px;text-align:center;margin-bottom:9px;color:var(--blue-d)}
+.mcard{background:#fff;border:2px solid #D8E0EE;border-radius:12px;padding:11px;margin-bottom:9px;font-weight:700;
+  cursor:pointer;text-align:center;transition:.12s;font-size:.9rem}
+.mcard.sel{border-color:var(--blue);background:var(--lila-50)}
+.mcard.matched{border-color:var(--ok);background:var(--ok-soft);color:#14663A;cursor:default;opacity:.85}
+.mcard.bad{animation:sh .3s}
+@keyframes sh{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+
+/* ---------- type ---------- */
+.tsrc{background:var(--lila-50);border-radius:12px;padding:12px 15px;font-size:.98rem;margin-bottom:10px}
+.tsrc .kw{display:inline-block;background:var(--blue-dd);color:#fff;font-weight:800;font-size:.72rem;letter-spacing:1px;
+  padding:3px 9px;border-radius:9px;margin-left:6px}
+.tline{font-size:1.05rem;font-weight:600;line-height:2.1;text-align:center}
+.tline input{font:inherit;font-weight:700;color:var(--blue-dd);border:none;border-bottom:2.5px solid var(--blue);
+  background:#F7FAFE;padding:5px 9px;min-width:190px;max-width:100%;text-align:center;border-radius:6px 6px 0 0;font-family:inherit}
+.tline input:focus{outline:none;background:#EAF3FC}
+.tline input.right{border-color:var(--ok);color:#14663A;background:var(--ok-soft)}
+.tline input.wrong{border-color:var(--bad);color:#8E2020;background:var(--bad-soft)}
+.tline .gp{color:var(--puce);font-weight:700;font-size:.9rem}
+.sol{font-weight:800;color:var(--ok)}
+
+/* ---------- results / banner ---------- */
+.res{text-align:center;padding:8px}
+.res .stars{font-size:2rem}
+.res .big{font-size:2.9rem;font-weight:800;color:var(--blue-d);line-height:1}
+.res .row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin:13px 0;color:var(--muted);font-weight:700;font-size:.9rem}
+.banner{display:none;margin-top:14px;padding:14px;border-radius:12px;background:var(--ok-soft);color:#14663A;
+  font-weight:800;text-align:center;font-size:1rem}
+.banner.show{display:block;animation:pp .4s}
+@keyframes pp{0%{transform:scale(.9);opacity:0}100%{transform:scale(1);opacity:1}}
+
+/* ---------- footer / topic nav ---------- */
+.morecards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin-top:6px}
+a.mini{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:13px;
+  padding:13px 15px;box-shadow:0 3px 12px rgba(20,30,60,.06);transition:.15s}
+a.mini:hover{transform:translateY(-2px)}
+a.mini .k{font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);font-weight:700}
+a.mini .n{font-weight:700;color:var(--blue-dd);margin-top:3px;font-size:.94rem}
+footer{max-width:940px;margin:16px auto 0;padding:0 16px;text-align:center;color:var(--muted);font-size:.78rem}
+footer a{color:var(--blue-d);font-weight:700}
+@media (max-width:560px){
+  body{font-size:14.5px}
+  .card{padding:17px}
+  .pair{grid-template-columns:1fr}
+  .buckets.n3,.buckets.n4{grid-template-columns:1fr 1fr}
+  .mwrap{gap:10px}
+  .qtext{font-size:1rem}
+  .tline input{min-width:150px}
+}
+</style>
+<script src="nis-nav.js?v=1"></script>
+</head>
+<body>
+<nav class="topnav">
+  <img src="assets/logo-h.svg" alt="Nordic International School" onerror="this.style.display='none'">
+  <span class="sp"></span>
+  <a class="navbtn" id="navGrammar" href="grammar.html?grade=g9">📘 All grammar</a>
+  <a class="navbtn primary" href="./">🏫 Portal</a>
+</nav>
+
+<header class="hd">
+  <div class="eyebrow" id="eyebrow">—</div>
+  <h1 id="title">Grammar Lab</h1>
+  <p id="lead"></p>
+</header>
+
+<div class="tabs" id="tabs"></div>
+<main id="main"></main>
+<div class="combo" id="combo"></div>
+
+<footer id="foot"></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+<script src="config.js"></script>
+<script src="grammar-lab-data.js?v=1"></script>
+<script>
+/* ===================================================================
+ *  GRAMMAR LAB — motor
+ *  Una presentación (Learn) + los juegos de cada punto de gramática.
+ *  Los datos viven en grammar-lab-data.js; aquí sólo está el motor.
+ * =================================================================== */
+
+/* ---------- puente con el Portal (mismo patrón que reported-speech-lab) ---------- */
+window.NISACT = (function () {
+  let _sb = null;
+  function client(){ if(_sb) return _sb; if(!window.supabase||!window.NIS_CONFIG) return null;
+    _sb = window.supabase.createClient(NIS_CONFIG.SUPABASE_URL, NIS_CONFIG.SUPABASE_KEY); return _sb; }
+  async function student(){ const c=client(); if(!c) return null;
+    try{ const u=await c.auth.getUser(); if(!u||!u.data||!u.data.user) return null;
+      const p=await c.from('profiles').select('full_name,first_name,email').eq('id',u.data.user.id).maybeSingle();
+      const d=(p&&p.data)||{};
+      return {uid:u.data.user.id,email:u.data.user.email||d.email,full_name:d.full_name,first_name:d.first_name};
+    }catch(e){ return null; } }
+  async function submit(r){
+    const s=await student(); if(!s) return {skipped:true};
+    try{ await client().from('activity_attempts').insert({student_id:s.uid,activity:r.activity,title:r.title,
+      level:r.level,score:r.score,total:r.total,hints_used:r.hints||0,lives_left:r.lives||3,duration_sec:r.duration}); }catch(e){}
+    try{ const m=Math.floor(r.duration/60), sec=r.duration%60;
+      await fetch(NIS_CONFIG.WRITING_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body:JSON.stringify({skill:'Grammar',name:s.full_name||s.first_name||'',email:s.email||'',level:r.level,
+          examTitle:r.title+' - Time '+m+'m '+String(sec).padStart(2,'0')+'s'+(r.points?(' - '+r.points+' pts'):''),
+          examType:r.activity,score:r.score,total:r.total,duration_min:Math.max(1,Math.round(r.duration/60))})});
+    }catch(e){}
+    return {sent:true};
+  }
+  return {submit};
+})();
+
+/* ---------- utilidades ---------- */
+const shuffle = a => { a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; };
+const fmt = s => String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+const $ = id => document.getElementById(id);
+function popCombo(t){ const c=$('combo'); c.textContent=t; c.classList.remove('pop'); void c.offsetWidth; c.classList.add('pop'); }
+
+/* mejor marca por juego, en el navegador del alumno */
+function bestKey(g){ return 'glab:'+T.id+':'+g.key; }
+function getBest(g){ try{ return JSON.parse(localStorage.getItem(bestKey(g))||'null'); }catch(e){ return null; } }
+function setBest(g,pct){ const b=getBest(g); if(!b||pct>b.pct){ try{ localStorage.setItem(bestKey(g),JSON.stringify({pct:pct})); }catch(e){} } }
+
+/* ---------- tema activo ---------- */
+const QS    = new URLSearchParams(location.search);
+const GRADE = QS.get('grade') || 'g9';
+const DATA  = window.GRAMMAR_LAB || {topics:[],units:{}};
+const T     = DATA.byId ? (DATA.byId(QS.get('topic')) || DATA.topics[0]) : DATA.topics[0];
+
+function boot(){
+  const U = (DATA.units && DATA.units[T.unit]) || {title:'', sub:''};
+  document.title = T.title + ' · Grammar Lab · NIS English';
+  $('eyebrow').textContent = [U.title, T.week].filter(Boolean).join(' · ');
+  $('title').innerHTML = '<span class="ico">'+T.icon+'</span>'+esc(T.title);
+  $('lead').textContent = T.lead || '';
+  $('navGrammar').href = 'grammar.html?grade='+GRADE;
+  drawTabs(); renderFoot(); go(0);
+  document.addEventListener('keydown', e=>{
+    if(tab!==0) return;
+    if(e.key==='ArrowRight') nextSlide();
+    if(e.key==='ArrowLeft')  prevSlide();
+  });
+}
+
+/* ---------- pestañas ---------- */
+let tab = 0;
+function drawTabs(){
+  const games = T.games||[];
+  const items = [{label:'📖 Learn', sub:'the presentation'}].concat(games.map(g=>{
+    const b=getBest(g); return {label:g.label, sub:g.sub, done:b?b.pct:null};
+  }));
+  $('tabs').innerHTML = items.map((it,i)=>
+    `<button class="tab${i===tab?' on':''}" onclick="go(${i})">${esc(it.label)}<small>${esc(it.sub||'')}</small>`+
+    (it.done!=null?`<span class="done">${it.done}%</span>`:'')+`</button>`).join('');
+}
+function go(i){ tab=i; stopClocks(); drawTabs(); window.scrollTo({top:0,behavior:'smooth'});
+  if(i===0) renderLearn(); else startGame(T.games[i-1]); }
+
+/* ===================================================================
+ *  LEARN — la presentación, diapositiva a diapositiva
+ * =================================================================== */
+let slide = 0;
+const seen = new Set([0]);
+function renderLearn(){
+  const s = T.learn[slide] || {};
+  let h = '<div class="slide">';
+  if(s.eyebrow) h += `<div class="eyebrow">${esc(s.eyebrow)}</div>`;
+  if(s.title)   h += `<h2>${s.title}</h2>`;
+  if(s.lead)    h += `<p class="lead">${s.lead}</p>`;
+  if(s.table){
+    h += '<table class="gtable"><thead><tr>'+s.table.head.map(x=>`<th>${x}</th>`).join('')+'</tr></thead><tbody>'+
+         s.table.rows.map(r=>'<tr>'+r.map(c=>`<td>${c}</td>`).join('')+'</tr>').join('')+'</tbody></table>';
+  }
+  if(s.cols){
+    h += '<div class="cols">'+s.cols.map(c=>
+      `<div class="col"><h3>${c.h}</h3>`+(c.sub?`<div class="sub">${esc(c.sub)}</div>`:'')+
+      (c.items?'<div class="chips">'+c.items.map(i=>`<span class="chip">${i}</span>`).join('')+'</div>':'')+
+      (c.ex?c.ex.map(e=>`<div class="ex">${e}</div>`).join(''):'')+'</div>').join('')+'</div>';
+  }
+  if(s.bullets) h += '<ul class="bul">'+s.bullets.map(b=>`<li>${b}</li>`).join('')+'</ul>';
+  if(s.pairs)   h += s.pairs.map(p=>
+    `<div class="pair"><div class="yes">${p.good}</div><div class="no">${p.bad}</div></div>`+
+    (p.note?`<div class="pnote">${p.note}</div>`:'')).join('');
+  if(s.callout) h += `<div class="callout"><b class="t">${s.callout.icon||'⚠️'} ${s.callout.title}</b><div class="tx">${s.callout.text}</div></div>`;
+  if(s.ccq)     h += `<div class="ccq" id="ccq"><div class="q">🤔 ${s.ccq.q}</div>`+
+                     `<div class="a">${s.ccq.a}</div><button onclick="document.getElementById('ccq').classList.add('open')">Reveal the answer</button></div>`;
+  if(s.tip)     h += `<div class="tip">${s.tip}</div>`;
+  h += '</div>';
+
+  const last = slide >= T.learn.length-1;
+  h += `<div class="snav">
+      <button class="act b-alt" onclick="prevSlide()" ${slide===0?'disabled':''}>‹ Back</button>
+      <div class="dots">${T.learn.map((_,i)=>`<i class="${i===slide?'on':(seen.has(i)?'seen':'')}" onclick="jump(${i})" title="Slide ${i+1}"></i>`).join('')}</div>
+      <button class="act b-go" onclick="${last?'go(1)':'nextSlide()'}">${last?'▶ Play the games':'Next ›'}</button>
+    </div>
+    <div class="intro" style="margin:10px 0 0">Slide ${slide+1} of ${T.learn.length}${last?'':' — use the arrow keys too'}</div>`;
+
+  $('main').innerHTML = `<div class="card">${h}</div>` + moreCards();
+}
+function nextSlide(){ if(slide<T.learn.length-1){ slide++; seen.add(slide); renderLearn(); } }
+function prevSlide(){ if(slide>0){ slide--; renderLearn(); } }
+function jump(i){ slide=i; seen.add(i); renderLearn(); }
+
+/* ===================================================================
+ *  JUEGOS
+ * =================================================================== */
+let clock=null, tick=null;
+function stopClocks(){ clearInterval(clock); clearInterval(tick); clock=null; tick=null; }
+function startGame(g){
+  if(g.type==='quiz')  return startQuiz(g);
+  if(g.type==='sort')  return startSort(g);
+  if(g.type==='match') return startMatch(g);
+  if(g.type==='type')  return startType(g);
+  $('main').innerHTML='<div class="card">Unknown game type.</div>';
+}
+function save(g,score,total,dur,points,lives){
+  const pct = total? Math.round(score/total*100) : 0;
+  setBest(g,pct); drawTabs();
+  if(window.NISACT) NISACT.submit({activity:'grammar-lab-'+T.id, title:T.title+' — '+g.label,
+    level:g.key, score:score, total:total, lives:lives||3, duration:Math.max(1,dur), points:points||0});
+  return pct;
+}
+function stars(pct){ return pct>=90?'⭐⭐⭐':pct>=70?'⭐⭐':pct>=50?'⭐':'✨'; }
+function results(g,score,total,dur,points,extra){
+  const pct = save(g,score,total,dur,points);
+  const idx = T.games.indexOf(g), nxt = T.games[idx+1];
+  $('main').innerHTML = `<div class="card res">
+    <div class="stars">${stars(pct)}</div>
+    <div class="big">${points?points:score+'/'+total}</div>
+    <div style="color:var(--muted);font-weight:700;margin-top:4px">${points?'points':'correct'}</div>
+    <div class="row"><span>✅ ${score}/${total}</span><span>🎯 ${pct}%</span><span>⏱ ${fmt(dur)}</span>${extra||''}</div>
+    <p class="intro">Saved to My Results (if you are signed in to the portal).</p>
+    <div class="btns">
+      <button class="act b-go" onclick="startGame(T.games[${idx}])">▶ Play again</button>
+      ${nxt?`<button class="act b-alt" onclick="go(${idx+2})">Next game: ${esc(nxt.label)} →</button>`
+           :`<button class="act b-alt" onclick="go(0)">↩ Back to the presentation</button>`}
+    </div>
+  </div>` + moreCards();
+}
+
+/* ---------------- QUIZ ---------------- */
+let qs=[],qi=0,qsc=0,qpt=0,qstk=0,qbest=0,qlives=3,qel=0,qlock=false,qleft=0,qt0=0,QT=20;
+function startQuiz(g){
+  QT = g.time||20;
+  qs=shuffle(g.items); qi=0; qsc=0; qpt=0; qstk=0; qbest=0; qlives=3; qel=0;
+  $('main').innerHTML = `<div class="card">${g.intro?`<p class="intro">${g.intro}</p>`:''}<div id="qa"></div></div>`+moreCards();
+  drawQ(g);
+}
+function qhud(){ return `<div class="hud">
+    <span class="h">${'❤️'.repeat(qlives)}${'🤍'.repeat(Math.max(0,3-qlives))}</span>
+    <span class="h sc">⭐ ${qpt} pts</span>
+    <span class="h st">🔥 ${qstk}${qstk>=3?' COMBO':''}</span>
+    <span class="h">${qi+1}/${qs.length}</span></div>`; }
+function drawQ(g){
+  qlock=false; const q=qs[qi];
+  $('qa').innerHTML = qhud()+
+    `<div class="tbar"><i id="tb"></i></div>
+     <div class="qtext">${q.q}</div>
+     <div class="qsub">${q.s||'Choose the correct option:'}</div>
+     <div class="opts">${q.o.map((t,i)=>`<button class="opt" onclick="ansQ(${i})">${t}</button>`).join('')}</div>
+     <div class="why" id="qw"><b>Why:</b> ${q.e}</div>`;
+  qleft=QT*1000; qt0=performance.now(); clearInterval(tick);
+  tick=setInterval(()=>{ qleft=QT*1000-(performance.now()-qt0);
+    const tb=$('tb'); if(tb) tb.style.width=Math.max(0,qleft/(QT*1000)*100)+'%';
+    if(qleft<=0){ clearInterval(tick); ansQ(-1); } },80);
+}
+function ansQ(i){
+  if(qlock) return; qlock=true; clearInterval(tick);
+  const g=T.games[tab-1], q=qs[qi];
+  qel += Math.round((performance.now()-qt0)/1000);
+  const opts=document.querySelectorAll('.opt'); opts.forEach(o=>o.disabled=true);
+  opts[q.a].classList.add('right');
+  if(i===q.a){
+    qsc++; qstk++; qbest=Math.max(qbest,qstk);
+    const mult = qstk>=5?2 : qstk>=3?1.5 : 1;
+    const gained = Math.round((100+Math.round(qleft/1000)*5)*mult);
+    qpt += gained; popCombo((mult>1?('x'+mult+' '):'')+'+'+gained);
+  } else {
+    if(i>=0) opts[i].classList.add('wrong');
+    qstk=0; qlives--;
+  }
+  $('qw').classList.add('show');
+  document.querySelector('.hud').outerHTML = qhud();
+  const last = qi>=qs.length-1;
+  setTimeout(()=>{ if(qlives<=0||last) results(g,qsc,qs.length,qel,qpt,qlives<=0?'<span>💔 out of lives</span>':'');
+                   else { qi++; drawQ(g); } }, i===q.a?1150:1750);
+}
+
+/* ---------------- SORT ---------------- */
+let ss=[],si=0,ssc=0,sel=0,slock=false;
+function startSort(g){
+  ss = g.n ? shuffle(g.items).slice(0,g.n) : shuffle(g.items);
+  si=0; ssc=0; sel=0; slock=false;
+  const n = Math.min(4,g.buckets.length);
+  $('main').innerHTML = `<div class="card">
+    ${g.intro?`<p class="intro">${g.intro}</p>`:''}
+    <div class="hud"><span class="h">🗂️ <span id="sp">1/${ss.length}</span></span>
+      <span class="h sc">✅ <span id="sc">0</span></span><span class="h" id="sw">⏱ 00:00</span></div>
+    <div id="scard"></div>
+    <div class="buckets n${n}">${g.buckets.map(b=>
+      `<button class="bucket bk-${b.c}" data-b="${b.id}" onclick="pickS('${b.id}')">${b.t}<small>${esc(b.s||'')}</small></button>`).join('')}</div>
+    <div class="why" id="sw2"></div>
+    <div class="banner" id="sb"></div></div>`+moreCards();
+  drawS(); clearInterval(clock);
+  clock=setInterval(()=>{ sel++; const w=$('sw'); if(w) w.textContent='⏱ '+fmt(sel); },1000);
+}
+function drawS(){
+  slock=false; const c=ss[si];
+  $('sp').textContent=(si+1)+'/'+ss.length;
+  $('scard').innerHTML=`<div class="sortcard">${c.t}${c.ctx?`<span class="ctx">${c.ctx}</span>`:''}</div>`;
+  $('sw2').classList.remove('show');
+}
+function pickS(id){
+  if(slock) return; slock=true;
+  const g=T.games[tab-1], c=ss[si];
+  const bk=document.querySelector(`.bucket[data-b="${id}"]`); bk.classList.add('flash');
+  const ok = id===c.a;
+  if(ok){ ssc++; $('sc').textContent=ssc; }
+  const label=(g.buckets.filter(b=>b.id===c.a)[0]||{}).t||'';
+  const w=$('sw2');
+  w.innerHTML=(ok?'✅ Correct! ':`❌ It goes in <b>${esc(label)}</b>. `)+(c.why||'');
+  w.classList.add('show');
+  setTimeout(()=>{
+    bk.classList.remove('flash');
+    if(si>=ss.length-1){ clearInterval(clock); results(g,ssc,ss.length,sel); }
+    else { si++; drawS(); }
+  }, ok?750:1800);
+}
+
+/* ---------------- MATCH ---------------- */
+let mL=null,mDone=0,mel=0,mPairs=[];
+function startMatch(g){
+  mL=null; mDone=0; mel=0; mPairs=g.pairs;
+  const order=shuffle(mPairs.map((p,i)=>i));
+  $('main').innerHTML=`<div class="card">
+    ${g.intro?`<p class="intro">${g.intro}</p>`:''}
+    <div class="hud"><span class="h">🔗 <span id="ms">0/${mPairs.length}</span></span><span class="h" id="mw">⏱ 00:00</span></div>
+    <div class="mwrap">
+      <div class="mcol"><h3>${esc(g.left||'')}</h3>${mPairs.map((p,i)=>`<div class="mcard" data-l="${i}" onclick="mPickL(${i})">${p[0]}</div>`).join('')}</div>
+      <div class="mcol"><h3>${esc(g.right||'')}</h3>${order.map(i=>`<div class="mcard" data-r="${i}" onclick="mPickR(${i})">${mPairs[i][1]}</div>`).join('')}</div>
+    </div>
+    <div class="banner" id="mb"></div></div>`+moreCards();
+  clearInterval(clock);
+  clock=setInterval(()=>{ mel++; const w=$('mw'); if(w) w.textContent='⏱ '+fmt(mel); },1000);
+}
+function mPickL(i){ const el=document.querySelector(`[data-l="${i}"]`); if(el.classList.contains('matched')) return;
+  document.querySelectorAll('[data-l]').forEach(e=>e.classList.remove('sel')); el.classList.add('sel'); mL=i; }
+function mPickR(j){
+  const el=document.querySelector(`[data-r="${j}"]`); if(el.classList.contains('matched')) return;
+  if(mL===null){ el.classList.add('sel'); setTimeout(()=>el.classList.remove('sel'),200); return; }
+  const lEl=document.querySelector(`[data-l="${mL}"]`);
+  if(mL===j){
+    lEl.classList.add('matched'); el.classList.add('matched'); lEl.classList.remove('sel'); mL=null; mDone++;
+    $('ms').textContent=mDone+'/'+mPairs.length;
+    if(mDone===mPairs.length){ clearInterval(clock); results(T.games[tab-1],mPairs.length,mPairs.length,mel); }
+  } else { el.classList.add('bad'); lEl.classList.remove('sel'); setTimeout(()=>el.classList.remove('bad'),300); mL=null; }
+}
+
+/* ---------------- TYPE ---------------- */
+let ts=[],ti=0,tsc=0,tel=0,thints=0,tlock=false;
+const norm = s => String(s).toLowerCase().replace(/[’‘`´]/g,"'").replace(/[“”]/g,'"')
+  .replace(/\s+/g,' ').replace(/[.,;:!?]+$/,'').trim();
+function startType(g){
+  ts=g.items.slice(); ti=0; tsc=0; tel=0; thints=0;
+  $('main').innerHTML=`<div class="card">
+    ${g.intro?`<p class="intro">${g.intro}</p>`:''}
+    <div class="hud"><span class="h">✍️ <span id="tp">1/${ts.length}</span></span>
+      <span class="h sc">✅ <span id="tc">0</span></span><span class="h" id="tw">⏱ 00:00</span></div>
+    <div id="tarea"></div>
+    <div class="why" id="tw2"></div>
+    <div class="banner" id="tb"></div></div>`+moreCards();
+  drawT(); clearInterval(clock);
+  clock=setInterval(()=>{ tel++; const w=$('tw'); if(w) w.textContent='⏱ '+fmt(tel); },1000);
+}
+function drawT(){
+  tlock=false; const it=ts[ti];
+  $('tp').textContent=(ti+1)+'/'+ts.length;
+  $('tarea').innerHTML =
+    (it.lead?`<div class="tsrc">${it.lead}${it.key?`<span class="kw">${esc(it.key)}</span>`:''}</div>`:'')+
+    `<div class="tline">${it.before||''}
+       <input id="tin" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false"
+              placeholder="…" onkeydown="if(event.key==='Enter')checkT()">
+       ${it.gap?`<span class="gp">${esc(it.gap)}</span>`:''}${/^[.,;:!?]/.test(it.after||'')?'':' '}${it.after||''}</div>
+     <div class="btns">
+       <button class="act b-go" onclick="checkT()">Check ✓</button>
+       <button class="act b-alt" onclick="hintT()">💡 Show answer</button>
+     </div>`;
+  $('tw2').classList.remove('show');
+  const el=$('tin'); if(el) el.focus();
+}
+function endT(ok,it){
+  const w=$('tw2');
+  w.innerHTML=(ok?'✅ Correct! ':`❌ Answer: <span class="sol">${esc(it.answers[0])}</span> — `)+(it.why||'');
+  w.classList.add('show');
+  const g=T.games[tab-1];
+  setTimeout(()=>{
+    if(ti>=ts.length-1){ clearInterval(clock); results(g,tsc,ts.length,tel,0,thints?`<span>💡 ${thints} shown</span>`:''); }
+    else { ti++; drawT(); }
+  }, ok?900:2300);
+}
+function checkT(){
+  if(tlock) return; const it=ts[ti], el=$('tin'); if(!el) return;
+  const v=norm(el.value); if(!v) { el.focus(); return; }
+  tlock=true; el.disabled=true;
+  const ok = it.answers.some(a=>norm(a)===v);
+  el.classList.add(ok?'right':'wrong');
+  if(ok){ tsc++; $('tc').textContent=tsc; }
+  endT(ok,it);
+}
+function hintT(){
+  if(tlock) return; tlock=true; thints++;
+  const it=ts[ti], el=$('tin'); if(el){ el.value=it.answers[0]; el.disabled=true; el.classList.add('wrong'); }
+  endT(false,it);
+}
+
+/* ===================================================================
+ *  Pie: otros puntos de la unidad + el quiz de 8 preguntas
+ * =================================================================== */
+function moreCards(){
+  const sibs=(DATA.forUnit?DATA.forUnit(T.unit):[]).filter(t=>t.id!==T.id);
+  if(!sibs.length && !T.quizSet) return '';
+  let h='<div class="card"><div class="eyebrow" style="color:var(--puce);letter-spacing:2.2px;font-size:10.5px;font-weight:800;text-transform:uppercase">Keep going</div><div class="morecards">';
+  if(T.quizSet) h+=`<a class="mini" href="grammar-quiz.html?set=${T.quizSet}&grade=${GRADE}">
+      <div class="k">Quick check</div><div class="n">✅ 8-question quiz with explanations</div></a>`;
+  h+=sibs.map(t=>`<a class="mini" href="grammar-lab.html?topic=${t.id}&grade=${GRADE}">
+      <div class="k">${esc(t.week)}</div><div class="n">${t.icon} ${esc(t.title)}</div></a>`).join('');
+  return h+'</div></div>';
+}
+function renderFoot(){
+  const U=(DATA.units&&DATA.units[T.unit])||{};
+  $('foot').innerHTML=`${esc(U.title||'')} · Grammar Lab — NIS English · 2026 —
+    <a href="grammar.html?grade=${GRADE}">all the grammar for this grade →</a>`;
+}
+
+/* arranca al final: boot() usa `tab`, `slide`… declarados arriba con let */
+if(!T){
+  $('main').innerHTML='<div class="card"><b>No grammar topics loaded.</b>'+
+    '<p class="intro">grammar-lab-data.js did not load — check the file and its ?v= number.</p></div>';
+} else {
+  boot();
+}
+</script>
+</body>
+</html>

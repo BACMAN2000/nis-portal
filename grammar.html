@@ -17,17 +17,29 @@
   header img{display:block;height:38px;width:auto}
   header .sub{color:#636465;font-size:13px;margin-left:auto;font-weight:600}
   header a.back{margin-left:14px;text-decoration:none;background:#2d5a8d;color:#fff;font-weight:700;font-size:13px;padding:8px 14px;border-radius:9px;white-space:nowrap}
-  main{max-width:880px;margin:0 auto;padding:22px 18px}
+  main{max-width:940px;margin:0 auto;padding:22px 18px}
   h1{font-size:22px;margin:0 0 6px}
-  p.lead{color:#475569;margin:0 0 18px}
+  p.lead{color:#475569;margin:0 0 16px}
+  /* índice de saltos entre unidades */
+  .jump{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 22px}
+  .jump a{text-decoration:none;background:#fff;border:1px solid #e2e8f0;color:#244c77;font-weight:700;font-size:12.5px;
+    padding:7px 13px;border-radius:20px;box-shadow:0 2px 8px rgba(15,23,42,.06)}
+  .jump a:hover{background:#eef2fb}
+  /* cabecera de unidad */
+  .unit{margin:0 0 30px;scroll-margin-top:74px}
+  .uhead{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;padding-bottom:8px;margin-bottom:14px;
+    border-bottom:2px solid #d1d2ea}
+  .uhead h2{font-size:18px;color:#244c77}
+  .uhead .s{color:#636465;font-size:12.5px;font-weight:600}
   .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-  .card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:26px 22px;
+  .card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:24px 20px;
     box-shadow:0 8px 24px rgba(15,23,42,.08);text-align:center;color:inherit;display:block;text-decoration:none;transition:.15s}
   a.card:hover{transform:translateY(-3px)}
   .card.soon{opacity:.7}
-  .card .ico{font-size:3rem;line-height:1}
-  .card h2{font-size:18px;margin:10px 0 4px;color:#2d5a8d}
+  .card .ico{font-size:2.7rem;line-height:1}
+  .card h3{font-size:17px;margin:9px 0 4px;color:#2d5a8d}
   .card .desc{color:#475569;font-size:13px;margin:0 0 12px}
+  .card .wk{display:block;font-size:10.5px;letter-spacing:1.4px;text-transform:uppercase;color:#8a97a8;font-weight:700;margin-bottom:2px}
   .tag{display:inline-block;background:#d1d2ea;color:#244c77;font-weight:700;font-size:12px;padding:5px 12px;border-radius:14px;margin:2px}
   .tag.go{background:#2d5a8d;color:#fff}
   .footer{color:#475569;font-size:12px;text-align:center;padding:22px 0 32px}
@@ -43,7 +55,8 @@
 <main>
   <h1 id="title">📝 Grammar</h1>
   <p class="lead" id="lead">Grammar by grade. We will keep publishing more units little by little.</p>
-  <div class="grid" id="grid"></div>
+  <div class="jump" id="jump"></div>
+  <div id="units"></div>
   <div class="footer" id="foot">Grammar — NIS English · 2026</div>
 </main>
 
@@ -51,32 +64,69 @@
 const META={g6:['6️⃣','6th grade','A2'],g7:['7️⃣','7th grade','A2'],g8:['8️⃣','8th grade','B1'],
   g9:['9️⃣','9th grade','B2'],g10:['🔟','10th grade','B2'],g11:['🎓','11th grade','C1']};
 
-// Unidades por grado. go:true = juego listo; soon:true = próximamente.
+/* Gramática agrupada POR UNIDAD, en el orden en que se dicta.
+   Cada bloque = { id, t:'título de la unidad', s:'subtítulo', cards:[...] }.
+   En una tarjeta: wk = semana/sesión, tag = etiqueta del botón,
+   soon:true = todavía sin juego (se muestra apagada, sin enlace).
+   Las tarjetas U4 apuntan al GRAMMAR LAB (grammar-lab.html), que trae la
+   presentación de la clase + sus 3 juegos; los datos están en
+   grammar-lab-data.js, así que al añadir un tema hay que tocar los dos. */
 const UNITS={
-  g6:[{ico:'🧩',t:'Word Formation',d:'Prefixes, suffixes & roots — 5 CEFR games.',href:'word-formation.html?grade=g6'},{ico:'⏱️',t:'Present Simple vs Continuous',d:'Routines vs. what is happening now.',href:'grammar-quiz.html?set=a2-present'}],
-  g7:[{ico:'🧩',t:'Word Formation',d:'Prefixes, suffixes & roots — 5 CEFR games.',href:'word-formation.html?grade=g7'},{ico:'⏱️',t:'Present Simple vs Continuous',d:'Routines vs. what is happening now.',href:'grammar-quiz.html?set=a2-present'}],
-  g8:[{ico:'🧩',t:'Word Formation',d:'Prefixes, suffixes & roots — 5 CEFR games.',href:'word-formation.html?grade=g8'},{ico:'✅',t:'Present Perfect vs Past Simple',d:'ever/never/already/since vs. yesterday/last…',href:'grammar-quiz.html?set=b1-perfect'}],
+  g6:[{id:'tools',t:'Language toolkit',s:'A2 · vocabulary building and core tenses',cards:[
+    {ico:'🧩',t:'Word Formation',d:'Prefixes, suffixes & roots — 5 CEFR games.',href:'word-formation.html?grade=g6'},
+    {ico:'⏱️',t:'Present Simple vs Continuous',d:'Routines vs. what is happening now.',href:'grammar-quiz.html?set=a2-present'}]}],
+
+  g7:[{id:'tools',t:'Language toolkit',s:'A2 · vocabulary building and core tenses',cards:[
+    {ico:'🧩',t:'Word Formation',d:'Prefixes, suffixes & roots — 5 CEFR games.',href:'word-formation.html?grade=g7'},
+    {ico:'⏱️',t:'Present Simple vs Continuous',d:'Routines vs. what is happening now.',href:'grammar-quiz.html?set=a2-present'}]}],
+
+  g8:[{id:'tools',t:'Language toolkit',s:'B1 · vocabulary building and core tenses',cards:[
+    {ico:'🧩',t:'Word Formation',d:'Prefixes, suffixes & roots — 5 CEFR games.',href:'word-formation.html?grade=g8'},
+    {ico:'✅',t:'Present Perfect vs Past Simple',d:'ever/never/already/since vs. yesterday/last…',href:'grammar-quiz.html?set=b1-perfect'}]}],
+
   g9:[
-    {ico:'🧘',t:'U4 · Gerunds vs Infinitives',d:'Unit 4 (Wellbeing): enjoy doing vs decide to do — the patterns with instant feedback.',href:'grammar-quiz.html?set=b2-gerund-inf'},
-    {ico:'🔀',t:'U4 · Tricky Verbs',d:'Unit 4: stop / remember / try / forget — the meaning changes with -ing vs to.',href:'grammar-quiz.html?set=b2-tricky-verbs'},
-    {ico:'🪜',t:'U4 · Modals of Advice',d:'Unit 4: the advice ladder (could → should → had better → must) + kind softeners.',href:'grammar-quiz.html?set=b2-modals-advice'},
-    {ico:'🔮',t:'U4 · Speculation Modals',d:'Unit 4: might / may / could / must / can\'t — guesses vs facts.',href:'grammar-quiz.html?set=b2-speculation'},
-    {ico:'⭐',t:'U4 · Wish, If only + Quantifiers',d:'Unit 4 final block: wishes, regrets and a little/a few/plenty of/hardly any.',href:'grammar-quiz.html?set=b2-wish-quant'},
-    {ico:'🗣️',t:'Reported Speech — Lab',d:'Learn the 4 changes (animated) and practise statements, questions and commands.',href:'reported-speech-lab.html'},
-    {ico:'⏪',t:'Backshifting Machine',d:'Every tense one step back: ladder, matching, drill and whack-a-mole (includes modals).',href:'backshifting.html'},
-    {ico:'🎡',t:'Reported Speech — Wheel',d:'Sentence wheel to transform out loud in class (projector).',href:'reported-speech-wheel.html'},
-    {ico:'🗣️',t:'Reported Speech — Quiz',d:'Choose the correct transformation.',href:'reported-speech.html'},
-    {ico:'🔤',t:'Reported Speech — Word Order',d:'Put the reported speech words in order.',href:'reported-speech-order.html'},
-    {ico:'🎯',t:'Reporting Verbs (Challenge)',d:'Advanced B2: advise/suggest/apologise/accuse… with their pattern. With streak and timer.',href:'reported-speech-verbs.html'},
-    {ico:'🧩',t:'Word Formation',d:'Prefixes, suffixes & roots — 5 CEFR games.',href:'word-formation.html?grade=g9'},
-    {ico:'🔁',t:'Passive Voice',d:'be + participle: the focus on the action.',href:'grammar-quiz.html?set=b2-passive'}
+    {id:'u4',t:'Unit 4 — Mind Over Matter',s:'The Wellbeing Generation · six grammar points, in teaching order · each card = the class presentation + 3 games',cards:[
+      {ico:'🎚️',wk:'Week 1 · S2',t:'Intensity Adverbs + Extreme Adjectives',
+       d:'slightly uneasy vs utterly exhausted: which adverb goes with which adjective, and the word order.',
+       href:'grammar-lab.html?topic=u4-intensity',tag:'📖 Learn + 3 games'},
+      {ico:'🧘',wk:'Week 2 · S1',t:'Gerunds vs Infinitives',
+       d:'enjoy doing vs decide to do — the three verb groups, the #1 exam error and the Grammar Doctor.',
+       href:'grammar-lab.html?topic=u4-gerund-inf',tag:'📖 Learn + 3 games'},
+      {ico:'🔀',wk:'Week 2 · S2',t:'Tricky Verbs',
+       d:'stop / remember / try / forget: same verb, two forms — and two meanings. Plus regret, go on, mean.',
+       href:'grammar-lab.html?topic=u4-tricky-verbs',tag:'📖 Learn + 3 games'},
+      {ico:'🪜',wk:'Week 3 · S1',t:'Modals of Advice',
+       d:'The advice ladder (could → should → had better → must) and the softeners that keep advice kind.',
+       href:'grammar-lab.html?topic=u4-modals-advice',tag:'📖 Learn + 3 games'},
+      {ico:'🔮',wk:'Week 3 · S3',t:'Speculation Modals',
+       d:'might / may / could / must / can’t: how sure you are, guesses vs facts, and guessing about the past.',
+       href:'grammar-lab.html?topic=u4-speculation',tag:'📖 Learn + 3 games'},
+      {ico:'⭐',wk:'Week 6 · S4',t:'Wish, If only + Quantifiers',
+       d:'Three wish patterns (the question is WHEN?), a few vs few, and the FCE Part 4 transformations.',
+       href:'grammar-lab.html?topic=u4-wish-quant',tag:'📖 Learn + 3 games'}]},
+
+    {id:'u3',t:'Unit 3 — Scrolling Identities',s:'Who are we online? · reported speech, reporting verbs and relative clauses',cards:[
+      {ico:'🗣️',wk:'Weeks 2–3',t:'Reported Speech — Lab',d:'Learn the 4 changes (animated) and practise statements, questions and commands.',href:'reported-speech-lab.html',tag:'📖 Learn + 3 games'},
+      {ico:'⏪',wk:'Week 2',t:'Backshifting Machine',d:'Every tense one step back: ladder, matching, drill and whack-a-mole (includes modals).',href:'backshifting.html'},
+      {ico:'🎡',wk:'Weeks 2–3',t:'Reported Speech — Wheel',d:'Sentence wheel to transform out loud in class (projector).',href:'reported-speech-wheel.html'},
+      {ico:'🗣️',wk:'Week 2',t:'Reported Speech — Quiz',d:'Choose the correct transformation.',href:'reported-speech.html'},
+      {ico:'🔤',wk:'Week 3',t:'Reported Speech — Word Order',d:'Put the reported speech words in order.',href:'reported-speech-order.html'},
+      {ico:'🎯',wk:'Week 3',t:'Reporting Verbs (Challenge)',d:'Advanced B2: advise/suggest/apologise/accuse… with their pattern. With streak and timer.',href:'reported-speech-verbs.html'},
+      {ico:'🔗',wk:'Week 4',t:'Relative Clauses',d:'Defining vs non-defining, and the commas that change the meaning.',soon:true}]},
+
+    {id:'exam',t:'Exam toolkit — all year',s:'B2 / FCE practice that is not tied to one unit',cards:[
+      {ico:'🧩',t:'Word Formation',d:'Prefixes, suffixes & roots — 5 CEFR games.',href:'word-formation.html?grade=g9'},
+      {ico:'🔁',t:'Passive Voice',d:'be + participle: the focus on the action.',href:'grammar-quiz.html?set=b2-passive'}]}
   ],
-  g10:[
+
+  g10:[{id:'tools',t:'Language toolkit',s:'B2 · exam-focused review',cards:[
     {ico:'🧩',t:'Word Formation',d:'Prefixes, suffixes & roots — 5 CEFR games.',href:'word-formation.html?grade=g10'},
     {ico:'🔁',t:'Passive Voice',d:'be + participle: the focus on the action.',href:'grammar-quiz.html?set=b2-passive'},
-    {ico:'✅',t:'Present Perfect vs Past Simple',d:'Review of key B2 tenses.',href:'grammar-quiz.html?set=b1-perfect'}
-  ],
-  g11:[{ico:'🧩',t:'Word Formation',d:'Prefixes, suffixes & roots — 5 CEFR games.',href:'word-formation.html?grade=g11'},{ico:'🔗',t:'Conditionals (advanced)',d:'Mixed, wish and inversion (Had I…, Should it…).',href:'grammar-quiz.html?set=c1-cond'}]
+    {ico:'✅',t:'Present Perfect vs Past Simple',d:'Review of key B2 tenses.',href:'grammar-quiz.html?set=b1-perfect'}]}],
+
+  g11:[{id:'tools',t:'Language toolkit',s:'C1 · advanced structures',cards:[
+    {ico:'🧩',t:'Word Formation',d:'Prefixes, suffixes & roots — 5 CEFR games.',href:'word-formation.html?grade=g11'},
+    {ico:'🔗',t:'Conditionals (advanced)',d:'Mixed, wish and inversion (Had I…, Should it…).',href:'grammar-quiz.html?set=c1-cond'}]}]
 };
 
 const grade=(new URLSearchParams(location.search).get('grade'))||'g9';
@@ -84,13 +134,25 @@ const m=META[grade]||META.g9;
 const units=UNITS[grade]||UNITS.g9;
 document.getElementById('title').textContent=m[0]+' Grammar — '+m[1];
 document.getElementById('hsub').textContent='CLASSES · '+m[1].toUpperCase()+' · GRAMMAR';
-document.getElementById('lead').textContent='Grammar for '+m[1]+' (level '+m[2]+'). Tap a unit to practise.';
+document.getElementById('lead').textContent='Grammar for '+m[1]+' (level '+m[2]+'), unit by unit. Tap a card to see the explanation and play its games.';
 document.getElementById('foot').textContent=m[1]+' · Grammar — NIS English · 2026';
-document.getElementById('grid').innerHTML=units.map(u=>{
-  const href=u.soon?null:(u.href.indexOf('grammar-quiz.html')===0?u.href+'&grade='+grade:u.href);
-  if(u.soon) return `<div class="card soon"><div class="ico">${u.ico}</div><h2>${u.t}</h2><div class="desc">${u.d}</div><span class="tag">Coming soon</span></div>`;
-  return `<a class="card" href="${href}"><div class="ico">${u.ico}</div><h2>${u.t}</h2><div class="desc">${u.d}</div><span class="tag go">▶ Practise</span></a>`;
-}).join('');
+
+/* las páginas que aceptan ?grade= lo reciben para que el botón "volver" sepa el grado */
+const withGrade=h=>/^(grammar-quiz|grammar-lab)\.html/.test(h)?h+(h.indexOf('?')>=0?'&':'?')+'grade='+grade:h;
+
+document.getElementById('jump').innerHTML = units.length>1
+  ? units.map(u=>`<a href="#${u.id}">${u.t}</a>`).join('') : '';
+
+document.getElementById('units').innerHTML=units.map(u=>`
+  <section class="unit" id="${u.id}">
+    <div class="uhead"><h2>${u.t}</h2><span class="s">${u.s||''}</span></div>
+    <div class="grid">${u.cards.map(c=>{
+      const head=`${c.wk?`<span class="wk">${c.wk}</span>`:''}<div class="ico">${c.ico}</div><h3>${c.t}</h3><div class="desc">${c.d}</div>`;
+      return c.soon
+        ? `<div class="card soon">${head}<span class="tag">Coming soon</span></div>`
+        : `<a class="card" href="${withGrade(c.href)}">${head}<span class="tag go">${c.tag||'▶ Practise'}</span></a>`;
+    }).join('')}</div>
+  </section>`).join('');
 </script>
 </body>
 </html>
