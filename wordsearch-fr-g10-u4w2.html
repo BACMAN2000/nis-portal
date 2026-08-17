@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Mots mêlés — FR · 10e · Semaine 2 — Faits et opinions</title>
+<style>
+  :root{
+    --bg:#f4f6fb; --card:#fff; --ink:#1e2433; --muted:#67718a;
+    --accent:#3b5bdb; --accent-soft:#e7ecfd;
+    --good:#2f9e44; --good-soft:#d3f4dc; --gold:#f59f00;
+    --f1:#ffd8a8; --f2:#b2f2bb; --f3:#a5d8ff; --f4:#fcc2d7; --f5:#d0bfff; --f6:#ffec99;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{-webkit-touch-callout:none; font-family:'Segoe UI',system-ui,Arial,sans-serif; background:var(--bg); color:var(--ink); padding:18px; user-select:none; -webkit-user-select:none; touch-action:manipulation;}
+  header{max-width:1100px; margin:0 auto 14px; text-align:center;}
+  header h1{font-size:1.5rem;}
+  header p{color:var(--muted); font-size:.9rem; margin-top:4px;}
+  .tabs{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin:14px auto;}
+  .tab{border:2px solid transparent; background:var(--card); color:var(--ink); padding:9px 20px; border-radius:24px;
+       font-weight:700; font-size:.95rem; cursor:pointer; box-shadow:0 1px 3px rgba(20,30,60,.12); transition:.15s;}
+  .tab small{display:block; font-weight:500; font-size:.68rem; color:var(--muted);}
+  .tab.on{background:var(--accent); color:#fff; border-color:var(--accent);}
+  .tab.on small{color:#dce4ff;}
+  .tab.done{border-color:var(--good);}
+  .tab.done::after{content:" ✓"; color:var(--good);}
+  .tab.on.done::after{color:#bff2cc;}
+  .wrap{max-width:1100px; margin:0 auto; display:flex; gap:18px; align-items:flex-start; flex-wrap:wrap; justify-content:center;}
+  .board{max-width:100%; background:var(--card); border-radius:14px; padding:16px; box-shadow:0 2px 10px rgba(20,30,60,.08);}
+  .gridbox{display:grid; gap:2px; touch-action:none;}
+  .cell{width:var(--cs); height:var(--cs); display:flex; align-items:center; justify-content:center;
+        background:var(--accent-soft); border-radius:5px; font-weight:800; font-size:calc(var(--cs)*.52);
+        cursor:pointer; transition:background .1s;}
+  .cell.sel{background:#94a8f5; color:#fff;}
+  .cell.found{color:#1e2433;}
+  .info{color:var(--muted); font-size:.8rem; margin-top:10px;}
+  .btns{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;}
+  button.act{border:none; border-radius:9px; padding:10px 16px; font-weight:700; font-size:.88rem; cursor:pointer;}
+  .b-hint{background:var(--gold); color:#fff;}
+  .b-clear{background:#e9ecf3; color:var(--ink);}
+  button.act:hover{filter:brightness(1.08);}
+  .side{flex:1 1 280px; min-width:260px; max-width:380px;}
+  .panel{background:var(--card); border-radius:14px; padding:16px 18px; box-shadow:0 2px 10px rgba(20,30,60,.08);}
+  .panel h3{font-size:.85rem; text-transform:uppercase; letter-spacing:1px; color:var(--accent); margin-bottom:10px;}
+  .wlist{display:flex; flex-wrap:wrap; gap:7px;}
+  .wchip{padding:6px 12px; border-radius:16px; background:var(--accent-soft); font-size:.84rem; font-weight:700; letter-spacing:.5px;}
+  .wchip.found{background:var(--good-soft); color:var(--good); text-decoration:line-through;}
+  .score{font-size:.92rem; margin-top:12px; color:var(--muted); font-weight:600;}
+  .banner{display:none; margin-top:10px; padding:12px; border-radius:10px; background:var(--good-soft); color:var(--good);
+          font-weight:800; text-align:center;}
+  .banner.show{display:block; animation:pop .4s;}
+  @keyframes pop{0%{transform:scale(.85); opacity:0;} 100%{transform:scale(1); opacity:1;}}
+  .flash{animation:flash 1s 3;}
+  @keyframes flash{50%{background:var(--gold); color:#fff;}}
+  @media (max-width:480px){ body{padding:8px;} .board{padding:10px;} .gridbox{gap:1px;} }
+  footer{max-width:1100px; margin:18px auto 0; text-align:center; color:var(--muted); font-size:.75rem;}
+  .topnav{position:sticky; top:0; z-index:30; background:#fff; display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+    padding:10px 18px; box-shadow:0 2px 10px rgba(20,30,60,.08); margin:-18px -18px 16px;}
+  .topnav img{height:32px; width:auto; display:block;}
+  .topnav .nav-sp{margin-left:auto;}
+  .navbtn{text-decoration:none; font-weight:700; font-size:.85rem; padding:8px 14px; border-radius:9px; white-space:nowrap;
+    background:var(--accent-soft); color:var(--accent); transition:.15s; border:none; cursor:pointer;}
+  .navbtn:hover{filter:brightness(.97);}
+  .navbtn.primary{background:var(--accent); color:#fff;}
+  @media (max-width:480px){ .topnav{margin:-8px -8px 12px; padding:8px 12px;} .navbtn{padding:7px 11px; font-size:.8rem;} }
+</style>
+  <meta name="google" content="notranslate">
+  <script src="config.js?v=18"></script>
+  <script src="anticheat.js?v=6" data-activity="wordsearch-u4w1"></script>
+<script src="nis-nav.js?v=1"></script>
+</head>
+<body>
+<nav class="topnav">
+  <img src="assets/logo-h.svg" alt="Nordic International School" onerror="this.style.display='none'">
+  <span class="nav-sp"></span>
+  <a class="navbtn" href="activities.html">🎲 Actividades</a>
+  <a class="navbtn primary" href="./">🏫 Portal</a>
+</nav>
+<header>
+  <h1>🔍 FR · 10e · Semaine 2 — Faits et opinions — Mots mêlés</h1>
+  <p>Glisse sur les lettres pour trouver chaque mot. Français NIS · 10e</p>
+</header>
+
+<div class="tabs" id="tabs"></div>
+
+<div class="wrap">
+  <div class="board">
+    <div class="gridbox" id="grid"></div>
+    <div id="lifebar" style="margin-top:10px;font-weight:800;font-size:1.05rem;display:flex;gap:16px;align-items:center">
+      <span id="hearts" title="Vidas: cada pista cuesta 1 vida"></span>
+      <span id="watch" style="font-variant-numeric:tabular-nums;color:var(--accent)">⏱ 00:00</span>
+    </div>
+    <div class="info" id="dirinfo"></div>
+    <div class="btns">
+      <button class="act b-hint" onclick="hint()">💡 Hint</button>
+      <button class="act b-clear" onclick="resetLevel()">↺ Restart level</button>
+    </div>
+    <div class="score" id="score"></div>
+    <div class="banner" id="banner">🎉 Brilliant! All words found!</div>
+  </div>
+  <div class="side">
+    <div class="panel">
+      <h3>Words to find <span id="count"></span></h3>
+      <div class="wlist" id="wlist"></div>
+    </div>
+  </div>
+</div>
+
+<footer>Unité 4 · 10e · Semaine 2 · Faits et opinions · Jour 1 · Jour 2 · Jour 3</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+<script src="config.js"></script>
+<script>
+/* Portal NIS: guarda el resultado en activity_attempts y lo envia por email (webhook).
+   Si no hay sesion del portal (uso independiente), no hace nada. */
+window.NISACT=(function(){
+  let _sb=null;
+  function client(){ if(_sb) return _sb; if(!window.supabase||!window.NIS_CONFIG) return null;
+    _sb=window.supabase.createClient(NIS_CONFIG.SUPABASE_URL,NIS_CONFIG.SUPABASE_KEY); return _sb; }
+  async function student(){ const c=client(); if(!c) return null;
+    try{ const u=await c.auth.getUser(); if(!u||!u.data||!u.data.user) return null;
+      const p=await c.from('profiles').select('full_name,first_name,email,cefr_level,grades(name)').eq('id',u.data.user.id).maybeSingle();
+      const d=(p&&p.data)||{}; return {uid:u.data.user.id,email:u.data.user.email||d.email,full_name:d.full_name,first_name:d.first_name};
+    }catch(e){ return null; } }
+  async function submit(r){
+    const s=await student(); if(!s) return {skipped:true};
+    try{ await client().from('activity_attempts').insert({student_id:s.uid,activity:r.activity,title:r.title,level:r.level,
+      score:r.score,total:r.total,hints_used:r.hints,lives_left:r.lives,duration_sec:r.duration}); }catch(e){}
+    try{ const m=Math.floor(r.duration/60), sec=r.duration%60;
+      await fetch(NIS_CONFIG.WRITING_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body:JSON.stringify({skill:'Activity',name:s.full_name||s.first_name||'',email:s.email||'',level:r.level,
+          examTitle:r.title+' - Time '+m+'m '+String(sec).padStart(2,'0')+'s - Hints '+r.hints+' - Lives left '+r.lives,
+          examType:r.activity,score:r.score,total:r.total,duration_min:Math.max(1,Math.round(r.duration/60))})});
+    }catch(e){}
+    return {sent:true};
+  }
+  return {submit};
+})();
+</script>
+<script>
+const DATA = {"D1": {"size": 12, "grid": ["OSENCTEJNOGA", "APIOKCCTLPVQ", "YFAITVFMKIET", "MOARWAUSBNRE", "HMVVIBXUZIIO", "KQSUQHZBCOFB", "TSRLGSWJMNIJ", "SKQZKABEGWAE", "LVDAYUQCGOBC", "LLQIJBPTAQLT", "QRHPUKEIWMEI", "MPREUVEFUFAF"], "words": [{"word": "VERIFIABLE", "fr": "vérifiable", "cells": [[1, 10], [2, 10], [3, 10], [4, 10], [5, 10], [6, 10], [7, 10], [8, 10], [9, 10], [10, 10]]}, {"word": "SUBJECTIF", "fr": "subjectif", "cells": [[3, 7], [4, 7], [5, 7], [6, 7], [7, 7], [8, 7], [9, 7], [10, 7], [11, 7]]}, {"word": "OBJECTIF", "fr": "objectif", "cells": [[4, 11], [5, 11], [6, 11], [7, 11], [8, 11], [9, 11], [10, 11], [11, 11]]}, {"word": "OPINION", "fr": "opinion", "cells": [[0, 9], [1, 9], [2, 9], [3, 9], [4, 9], [5, 9], [6, 9]]}, {"word": "PREUVE", "fr": "preuve", "cells": [[11, 1], [11, 2], [11, 3], [11, 4], [11, 5], [11, 6]]}, {"word": "FAIT", "fr": "fait", "cells": [[2, 1], [2, 2], [2, 3], [2, 4]]}], "note": "Les mots vont → horizontalement et ↓ verticalement.", "label": "Jour 1", "sub": "Découverte"}, "D2": {"size": 12, "grid": ["QSAPPPPARTIT", "FSWYCPYLZRBE", "PWAVISTNZOJM", "EHCSGKLLQAMO", "GIEKEAVKJQKI", "SIRKRDSNVAYG", "EFTSNOGTERKN", "SGIDVNMEOULA", "VVTKCNEGXMGG", "FYUIREDXPEFE", "RQDDAEWRAUWX", "TZEFCIQACRFD"], "words": [{"word": "TEMOIGNAGE", "fr": "témoignage", "cells": [[0, 11], [1, 11], [2, 11], [3, 11], [4, 11], [5, 11], [6, 11], [7, 11], [8, 11], [9, 11]]}, {"word": "CERTITUDE", "fr": "certitude", "cells": [[3, 2], [4, 2], [5, 2], [6, 2], [7, 2], [8, 2], [9, 2], [10, 2], [11, 2]]}, {"word": "DONNEE", "fr": "donnée", "cells": [[5, 5], [6, 5], [7, 5], [8, 5], [9, 5], [10, 5]]}, {"word": "RUMEUR", "fr": "rumeur", "cells": [[6, 9], [7, 9], [8, 9], [9, 9], [10, 9], [11, 9]]}, {"word": "PARTI", "fr": "parti", "cells": [[0, 6], [0, 7], [0, 8], [0, 9], [0, 10]]}, {"word": "AVIS", "fr": "avis", "cells": [[2, 2], [2, 3], [2, 4], [2, 5]]}], "note": "Les mots vont →, ↓ et ↘ en diagonale.", "label": "Jour 2", "sub": "Approfondissement"}, "D3": {"size": 12, "grid": ["WXJFQJFXZAIV", "PNJLCTIAFJOT", "EEVHLDTNCGBD", "DGEESQCIMKJR", "UARVIEEOCIEU", "TNIUVPJPLOCM", "IGFEAABIEYTE", "TIIRXRUNEPIU", "ROAPQTSINOFR", "EMBKBIZONUTR", "CELYDFDNOTTI", "GTEOZVYGDZYH"], "words": [{"word": "VERIFIABLE", "fr": "vérifiable", "cells": [[2, 2], [3, 2], [4, 2], [5, 2], [6, 2], [7, 2], [8, 2], [9, 2], [10, 2], [11, 2]]}, {"word": "TEMOIGNAGE", "fr": "témoignage", "cells": [[11, 1], [10, 1], [9, 1], [8, 1], [7, 1], [6, 1], [5, 1], [4, 1], [3, 1], [2, 1]]}, {"word": "SUBJECTIF", "fr": "subjectif", "cells": [[8, 6], [7, 6], [6, 6], [5, 6], [4, 6], [3, 6], [2, 6], [1, 6], [0, 6]]}, {"word": "CERTITUDE", "fr": "certitude", "cells": [[10, 0], [9, 0], [8, 0], [7, 0], [6, 0], [5, 0], [4, 0], [3, 0], [2, 0]]}, {"word": "OBJECTIF", "fr": "objectif", "cells": [[1, 10], [2, 10], [3, 10], [4, 10], [5, 10], [6, 10], [7, 10], [8, 10]]}, {"word": "OPINION", "fr": "opinion", "cells": [[4, 7], [5, 7], [6, 7], [7, 7], [8, 7], [9, 7], [10, 7]]}, {"word": "PREUVE", "fr": "preuve", "cells": [[8, 3], [7, 3], [6, 3], [5, 3], [4, 3], [3, 3]]}, {"word": "DONNEE", "fr": "donnée", "cells": [[11, 8], [10, 8], [9, 8], [8, 8], [7, 8], [6, 8]]}, {"word": "RUMEUR", "fr": "rumeur", "cells": [[3, 11], [4, 11], [5, 11], [6, 11], [7, 11], [8, 11]]}, {"word": "PARTI", "fr": "parti", "cells": [[5, 5], [6, 5], [7, 5], [8, 5], [9, 5]]}, {"word": "FAIT", "fr": "fait", "cells": [[1, 8], [1, 7], [1, 6], [1, 5]]}, {"word": "AVIS", "fr": "avis", "cells": [[6, 4], [5, 4], [4, 4], [3, 4]]}], "note": "Expert : les mots vont dans les 8 directions, y compris ↑ et ← à l'envers.", "label": "Jour 3", "sub": "Révision"}};
+
+// NOTE: word cell paths are regenerated below from the grid to guarantee straight lines.
+// (Some generated paths above may bend; we re-locate each word in the grid.)
+function locate(gridRows, word){
+  const n = gridRows.length;
+  const dirs = [[0,1],[0,-1],[1,0],[-1,0],[1,1],[1,-1],[-1,1],[-1,-1]];
+  for (let r=0;r<n;r++) for (let c=0;c<n;c++){
+    if (gridRows[r][c] !== word[0]) continue;
+    for (const [dr,dc] of dirs){
+      const er = r+dr*(word.length-1), ec = c+dc*(word.length-1);
+      if (er<0||ec<0||er>=n||ec>=n) continue;
+      let ok = true;
+      for (let i=1;i<word.length;i++)
+        if (gridRows[r+dr*i][c+dc*i] !== word[i]){ ok=false; break; }
+      if (ok) return Array.from({length:word.length},(_,i)=>[r+dr*i,c+dc*i]);
+    }
+  }
+  return null;
+}
+
+const PALETTE = ['--f1','--f2','--f3','--f4','--f5','--f6'];
+let level="D1", found={}, hintsUsed=0;
+const done={}, foundState={};
+/* === Vidas y cronómetro (por nivel) === */
+const livesState={}, hintsState={}, elapsedState={};
+let timerInt=null;
+function fmtT(s){ return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0'); }
+function drawStatus(){
+  const h=document.getElementById('hearts'), w=document.getElementById('watch');
+  const lv=livesState[level]==null?5:livesState[level];
+  if(h) h.textContent='❤️'.repeat(lv)+'🤍'.repeat(Math.max(0,5-lv));
+  if(w) w.textContent='⏱ '+fmtT(elapsedState[level]||0);
+}
+function startWatch(){
+  clearInterval(timerInt);
+  if(done[level]){ drawStatus(); return; }
+  timerInt=setInterval(()=>{ elapsedState[level]=(elapsedState[level]||0)+1; drawStatus(); },1000);
+  drawStatus();
+}
+
+function buildTabs(){
+  const t=document.getElementById('tabs'); t.innerHTML='';
+  for (const k of Object.keys(DATA)){
+    const b=document.createElement('button');
+    b.className='tab'+(k===level?' on':'')+(done[k]?' done':'');
+    b.innerHTML=`${DATA[k].label}<small>${DATA[k].sub}</small>`;
+    b.onclick=()=>{level=k; load();};
+    t.appendChild(b);
+  }
+}
+
+let cellEls={}, selStart=null, selCells=[];
+
+function load(){
+  const d=DATA[level];
+  // re-derive straight paths from grid (safety)
+  for (const w of d.words){
+    const p = locate(d.grid, w.word);
+    if (p) w.cells = p;
+  }
+  found = foundState[level] = foundState[level] || {};
+  if(livesState[level]==null) livesState[level]=5;
+  hintsUsed = hintsState[level]||0;
+  startWatch();
+  cellEls={}; selStart=null; selCells=[];
+  document.getElementById('banner').classList.remove('show');
+  document.getElementById('dirinfo').textContent = d.note;
+  const cs = Math.max(22, Math.min(38, Math.floor(Math.min(window.innerWidth-44, 560)/d.size)));
+  const g=document.getElementById('grid');
+  g.style.gridTemplateColumns=`repeat(${d.size}, ${cs}px)`;
+  g.innerHTML='';
+  for (let r=0;r<d.size;r++) for (let c=0;c<d.size;c++){
+    const el=document.createElement('div');
+    el.className='cell'; el.textContent=d.grid[r][c];
+    el.style.setProperty('--cs',cs+'px');
+    el.dataset.r=r; el.dataset.c=c;
+    el.addEventListener('pointerdown',e=>{
+      e.preventDefault();
+      try{ e.target.releasePointerCapture(e.pointerId); }catch(_){}
+      selStart=[r,c]; updateSel(r,c);
+    });
+    el.addEventListener('pointerenter',()=>{ if(selStart) updateSel(r,c); });
+    cellEls[r+'_'+c]=el;
+    g.appendChild(el);
+  }
+  document.addEventListener('pointerup', endSel);
+  /* En táctil, pointerenter no se dispara durante el arrastre: usar elementFromPoint. */
+  document.addEventListener('pointermove', e=>{
+    if(!selStart) return;
+    const t=document.elementFromPoint(e.clientX,e.clientY);
+    if(t && t.classList && t.classList.contains('cell') && t.dataset.r!=null){
+      updateSel(+t.dataset.r, +t.dataset.c);
+    }
+  }, {passive:true});
+  // word chips
+  const wl=document.getElementById('wlist'); wl.innerHTML='';
+  for (const w of d.words.slice().sort((a,b)=>a.word.localeCompare(b.word))){
+    const chip=document.createElement('div');
+    chip.className='wchip'+(found[w.word]?' found':'');
+    chip.id='chip_'+w.word; chip.textContent=w.word;
+    wl.appendChild(chip);
+  }
+  // repaint found
+  let i=0;
+  for (const w of d.words){ if (found[w.word]) paint(w, i); i++; }
+  buildTabs(); updateScore();
+}
+
+function lineCells(a,b){
+  const dr=Math.sign(b[0]-a[0]), dc=Math.sign(b[1]-a[1]);
+  const len=Math.max(Math.abs(b[0]-a[0]), Math.abs(b[1]-a[1]))+1;
+  if (dr!==0 && dc!==0 && Math.abs(b[0]-a[0])!==Math.abs(b[1]-a[1])) return null;
+  return Array.from({length:len},(_,i)=>[a[0]+dr*i, a[1]+dc*i]);
+}
+function updateSel(r,c){
+  const cells=lineCells(selStart,[r,c]);
+  document.querySelectorAll('.cell.sel').forEach(e=>e.classList.remove('sel'));
+  selCells = cells || [selStart];
+  for (const [rr,cc] of selCells) cellEls[rr+'_'+cc].classList.add('sel');
+}
+function endSel(){
+  if (!selStart) return;
+  const d=DATA[level];
+  const s=selCells.map(([r,c])=>d.grid[r][c]).join('');
+  let idx=0;
+  for (const w of d.words){
+    if (!found[w.word] && (s===w.word || s===[...w.word].reverse().join(''))){
+      found[w.word]=true;
+      paint(w, d.words.indexOf(w));
+      const chip=document.getElementById('chip_'+w.word);
+      if (chip) chip.classList.add('found');
+      break;
+    }
+    idx++;
+  }
+  document.querySelectorAll('.cell.sel').forEach(e=>e.classList.remove('sel'));
+  selStart=null; selCells=[];
+  updateScore();
+  const all=d.words.every(w=>found[w.word]);
+  if (all){
+    if(!done[level]){
+      done[level]=true;
+      clearInterval(timerInt);
+      const dur=elapsedState[level]||0;
+      const b=document.getElementById('banner');
+      b.textContent='🎉 Brilliant! All words found in '+fmtT(dur)+'! Tu resultado fue guardado en My Results y enviado a tu correo.';
+      if(window.NISACT) NISACT.submit({activity:'wordsearch',title:'Mots mêlés — FR 10e Semaine 2',level:level,
+        score:d.words.length,total:d.words.length,hints:hintsUsed,lives:livesState[level],duration:dur});
+    }
+    document.getElementById('banner').classList.add('show'); buildTabs();
+  }
+}
+function paint(w, i){
+  const col=`var(${PALETTE[i%PALETTE.length]})`;
+  for (const [r,c] of w.cells){
+    const el=cellEls[r+'_'+c];
+    el.classList.add('found');
+    el.style.background=col;
+  }
+}
+function updateScore(){
+  const d=DATA[level];
+  const n=d.words.filter(w=>found[w.word]).length;
+  document.getElementById('count').textContent=`(${n}/${d.words.length})`;
+  document.getElementById('score').textContent=
+    `Words found: ${n} / ${d.words.length}`+(hintsUsed?` · Hints used: ${hintsUsed}`:'');
+}
+function hint(){
+  if(done[level]) return;
+  const d=DATA[level];
+  const left=d.words.filter(w=>!found[w.word]);
+  if (!left.length) return;
+  const w=left[Math.floor(Math.random()*left.length)];
+  const [r,c]=w.cells[0];
+  cellEls[r+'_'+c].classList.remove('flash');
+  void cellEls[r+'_'+c].offsetWidth;
+  cellEls[r+'_'+c].classList.add('flash');
+  hintsUsed++; hintsState[level]=hintsUsed;
+  livesState[level]--; drawStatus();
+  if(livesState[level]<=0){
+    setTimeout(()=>{
+      alert('💔 ¡Te quedaste sin vidas! El nivel se reinicia desde cero.');
+      resetLevel();
+    }, 900);
+    return;
+  }
+  updateScore();
+}
+function resetLevel(){
+  foundState[level]={}; hintsUsed=0;
+  livesState[level]=5; hintsState[level]=0; elapsedState[level]=0;
+  for (const k in cellEls){ cellEls[k].style.background=''; cellEls[k].classList.remove('found'); }
+  load();
+}
+load();
+</script>
+</body>
+</html>

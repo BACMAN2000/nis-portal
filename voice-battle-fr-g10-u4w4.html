@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Voice Battle — FR · 10e · Semaine 4 — COD et COI ensemble</title>
+<style>
+  :root{
+    --bg:#f4f6fb; --card:#ffffff; --ink:#1e2433; --muted:#67718a;
+    --accent:#3b5bdb; --accent-soft:#e7ecfd;
+    --good:#2f9e44; --good-soft:#d3f4dc; --bad:#e03131; --bad-soft:#ffe3e3;
+    --gold:#f59f00;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:'Segoe UI',system-ui,Arial,sans-serif; background:var(--bg); color:var(--ink); padding:18px; touch-action:manipulation;}
+  header{max-width:1100px; margin:0 auto 14px; text-align:center;}
+  header h1{font-size:1.5rem; letter-spacing:.3px;}
+  header p{color:var(--muted); font-size:.9rem; margin-top:4px;}
+  .tabs{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin:14px auto;}
+  .tab{border:2px solid transparent; background:var(--card); color:var(--ink); padding:9px 20px; border-radius:24px;
+       font-weight:700; font-size:.95rem; cursor:pointer; box-shadow:0 1px 3px rgba(20,30,60,.12); transition:.15s;}
+  .tab small{display:block; font-weight:500; font-size:.68rem; color:var(--muted);}
+  .tab.on{background:var(--accent); color:#fff; border-color:var(--accent);}
+  .tab.on small{color:#dce4ff;}
+  .tab.done{border-color:var(--good);}
+  .tab.done::after{content:" ✓"; color:var(--good);}
+  .tab.on.done::after{color:#bff2cc;}
+  .wrap{max-width:1100px; margin:0 auto; display:flex; gap:18px; align-items:flex-start; flex-wrap:wrap;}
+  .board{max-width:100%; background:var(--card); border-radius:14px; padding:18px; box-shadow:0 2px 10px rgba(20,30,60,.08); flex:1 1 460px; min-width:300px;}
+  .side{flex:1 1 280px; min-width:260px;}
+  .panel{background:var(--card); border-radius:14px; padding:16px 18px; box-shadow:0 2px 10px rgba(20,30,60,.08); margin-bottom:14px;}
+  .panel h3{font-size:.85rem; text-transform:uppercase; letter-spacing:1px; color:var(--accent); margin-bottom:8px;}
+  .panel li{font-size:.86rem; line-height:1.5; margin-left:16px;}
+
+  /* ===== Arena ===== */
+  .boss{display:flex; align-items:center; gap:14px; background:var(--accent-soft); border-radius:12px; padding:12px 14px;}
+  .boss .face{font-size:2.5rem; line-height:1; transition:transform .18s;}
+  .boss.hurt .face{transform:scale(1.25) rotate(-8deg);}
+  .boss.dead .face{filter:grayscale(1); opacity:.55;}
+  .hpwrap{flex:1; min-width:0;}
+  .bossname{font-weight:800; font-size:.95rem; display:flex; justify-content:space-between; gap:8px; margin-bottom:6px;}
+  .bossname span{font-variant-numeric:tabular-nums; color:var(--accent);}
+  .hpbar{height:14px; background:#fff; border-radius:8px; overflow:hidden; box-shadow:inset 0 0 0 1px rgba(20,30,60,.08);}
+  .hpfill{height:100%; width:100%; background:linear-gradient(90deg,#e03131,#f59f00); transition:width .35s;}
+
+  #lifebar{margin-top:12px; font-weight:800; font-size:1.05rem; display:flex; gap:16px; align-items:center; flex-wrap:wrap;}
+  #watch{font-variant-numeric:tabular-nums; color:var(--accent);}
+
+  .startgate{text-align:center; padding:26px 8px 8px;}
+  .startgate p{color:var(--muted); font-size:.9rem; margin-bottom:14px; line-height:1.5;}
+  .big{font-size:1.05rem !important; padding:14px 28px !important;}
+
+  .timerbar{height:8px; background:#e9ecf3; border-radius:6px; overflow:hidden; margin:16px 0 10px;}
+  .timerfill{height:100%; width:100%; background:var(--accent); transition:width .1s linear;}
+  .timerfill.low{background:var(--bad);}
+  .roundinfo{display:flex; justify-content:space-between; gap:8px; font-size:.8rem; color:var(--muted); font-weight:600;}
+  .slots{margin:12px 0; font-weight:800; font-size:1.5rem; letter-spacing:.32em; color:var(--accent); text-align:center;
+         font-family:'Courier New',monospace; word-break:break-all;}
+  #answer{width:100%; border:2px solid var(--accent-soft); border-radius:10px; padding:13px 14px; font-size:1.15rem;
+          font-weight:700; font-family:inherit; color:var(--ink); outline:none; text-align:center; background:#fbfcff;}
+  #answer:focus{border-color:var(--accent); background:#fff;}
+  #answer:disabled{opacity:.6;}
+  .btns{display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;}
+  button.act{border:none; border-radius:9px; padding:10px 16px; font-weight:700; font-size:.88rem; cursor:pointer; transition:.15s; font-family:inherit;}
+  .b-attack{background:var(--accent); color:#fff;}
+  .b-play{background:var(--accent-soft); color:var(--accent);}
+  .b-slow{background:#e9ecf3; color:var(--ink);}
+  .b-hint{background:var(--gold); color:#fff;}
+  button.act:hover{filter:brightness(1.08);}
+  button.act:disabled{opacity:.5; cursor:default;}
+  .fb{min-height:22px; margin-top:12px; font-weight:800; font-size:.95rem;}
+  .fb.hit{color:var(--good);}
+  .fb.miss{color:var(--bad);}
+  .cluebox{display:none; margin-top:10px; padding:10px 12px; border-radius:10px; background:var(--accent-soft);
+           color:var(--ink); font-size:.88rem; line-height:1.45;}
+  .cluebox.show{display:block;}
+  .cluebox b{color:var(--accent);}
+  .score{font-size:.92rem; margin-top:12px; color:var(--muted); font-weight:600;}
+  .audionote{font-size:.75rem; color:var(--muted); margin-top:6px;}
+  .banner{display:none; margin-top:10px; padding:12px; border-radius:10px; background:var(--good-soft); color:var(--good);
+          font-weight:800; text-align:center; font-size:1rem;}
+  .banner.show{display:block; animation:pop .4s;}
+  @keyframes pop{0%{transform:scale(.85); opacity:0;} 100%{transform:scale(1); opacity:1;}}
+  .chips{display:flex; flex-wrap:wrap; gap:6px;}
+  .chip{background:var(--good-soft); color:var(--good); font-weight:700; font-size:.78rem; padding:4px 10px; border-radius:20px;}
+  .chip.empty{background:#eef1f7; color:var(--muted); font-weight:500;}
+  footer{max-width:1100px; margin:18px auto 0; text-align:center; color:var(--muted); font-size:.75rem;}
+  @media (max-width:760px){ .wrap{justify-content:center;} }
+  @media (max-width:480px){ body{padding:8px;} .board{padding:12px;} .slots{font-size:1.2rem; letter-spacing:.25em;} }
+  .topnav{position:sticky; top:0; z-index:30; background:#fff; display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+    padding:10px 18px; box-shadow:0 2px 10px rgba(20,30,60,.08); margin:-18px -18px 16px;}
+  .topnav img{height:32px; width:auto; display:block;}
+  .topnav .nav-sp{margin-left:auto;}
+  .navbtn{text-decoration:none; font-weight:700; font-size:.85rem; padding:8px 14px; border-radius:9px; white-space:nowrap;
+    background:var(--accent-soft); color:var(--accent); transition:.15s; border:none; cursor:pointer;}
+  .navbtn:hover{filter:brightness(.97);}
+  .navbtn.primary{background:var(--accent); color:#fff;}
+  @media (max-width:480px){ .topnav{margin:-8px -8px 12px; padding:8px 12px;} .navbtn{padding:7px 11px; font-size:.8rem;} }
+</style>
+  <meta name="google" content="notranslate">
+  <script src="config.js?v=18"></script>
+  <script src="anticheat.js?v=6" data-activity="voice-battle-u4w1"></script>
+<script src="nis-nav.js?v=1"></script>
+</head>
+<body>
+<nav class="topnav">
+  <img src="assets/logo-h.svg" alt="Nordic International School" onerror="this.style.display='none'">
+  <span class="nav-sp"></span>
+  <a class="navbtn" href="activities.html">🎲 Actividades</a>
+  <a class="navbtn primary" href="./">🏫 Portal</a>
+</nav>
+<header>
+  <h1>🎧 FR · 10e · Semaine 4 — COD et COI ensemble — Voice Battle</h1>
+  <p>Écoute le mot et écris ce que tu entends. Français NIS · 10e</p>
+</header>
+
+<div class="tabs" id="tabs"></div>
+
+<div class="wrap">
+  <div class="board">
+    <div class="boss" id="boss">
+      <div class="face" id="bossFace">🤖</div>
+      <div class="hpwrap">
+        <div class="bossname">Robo-Noob <span id="hptext">8 / 8 HP</span></div>
+        <div class="hpbar"><div class="hpfill" id="hpfill"></div></div>
+      </div>
+    </div>
+
+    <div id="lifebar">
+      <span id="hearts" title="Vidas: cada error cuesta 1 vida"></span>
+      <span id="watch">⏱ 00:00</span>
+    </div>
+
+    <div class="startgate" id="gate">
+      <p>🎧 Ponte los audifonos. Vas a escuchar una palabra: escribela correctamente para atacar a Robo-Noob.</p>
+      <button class="act b-attack big" id="startBtn" onclick="startBattle()">⚔️ Start battle</button>
+    </div>
+
+    <div id="round" style="display:none">
+      <div class="timerbar"><div class="timerfill" id="timerfill"></div></div>
+      <div class="roundinfo"><span id="roundno">Round 1</span><span id="lettercount">— letters</span></div>
+      <div class="slots" id="slots">_ _ _ _</div>
+      <input id="answer" type="text" placeholder="Écris ce que tu entends…" autocomplete="off" autocorrect="off"
+             autocapitalize="off" spellcheck="false" enterkeyhint="go" aria-label="Type what you hear">
+      <div class="btns">
+        <button class="act b-attack" onclick="attack()">⚔️ Attack</button>
+        <button class="act b-play" onclick="playWord(false)">🔊 Replay</button>
+        <button class="act b-slow" onclick="playWord(true)">🐢 Slower</button>
+        <button class="act b-hint" onclick="showHint()">💡 Hint</button>
+      </div>
+      <div class="fb" id="fb"></div>
+      <div class="cluebox" id="cluebox"></div>
+    </div>
+
+    <div class="score" id="score"></div>
+    <div class="banner" id="banner">🎉 ¡Robo-Noob derrotado!</div>
+    <div class="audionote" id="audionote"></div>
+  </div>
+
+  <div class="side">
+    <div class="panel">
+      <h3>⚔️ How to play</h3>
+      <ul>
+        <li>Listen and type the word — <b>Enter</b> or <b>Attack</b>.</li>
+        <li>Correct → Robo-Noob loses 1 HP.</li>
+        <li>Wrong or out of time → you lose ❤️ and the word comes back later.</li>
+        <li>💡 Hint gives you the meaning and the first letter (no heart cost).</li>
+        <li>Beat all 8 words before your 5 hearts run out.</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>💥 Defeated words</h3>
+      <div class="chips" id="defeated"></div>
+    </div>
+  </div>
+</div>
+
+<footer>Unité 4 · 10e · Semaine 4 · COD et COI ensemble · Jour 1 · Jour 2 · Jour 3</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+<script src="config.js"></script>
+<script>
+/* Portal NIS: guarda el resultado en activity_attempts y lo envia por email (webhook).
+   Si no hay sesion del portal (uso independiente), no hace nada. */
+window.NISACT=(function(){
+  let _sb=null;
+  function client(){ if(_sb) return _sb; if(!window.supabase||!window.NIS_CONFIG) return null;
+    _sb=window.supabase.createClient(NIS_CONFIG.SUPABASE_URL,NIS_CONFIG.SUPABASE_KEY); return _sb; }
+  async function student(){ const c=client(); if(!c) return null;
+    try{ const u=await c.auth.getUser(); if(!u||!u.data||!u.data.user) return null;
+      const p=await c.from('profiles').select('full_name,first_name,email,cefr_level,grades(name)').eq('id',u.data.user.id).maybeSingle();
+      const d=(p&&p.data)||{}; return {uid:u.data.user.id,email:u.data.user.email||d.email,full_name:d.full_name,first_name:d.first_name};
+    }catch(e){ return null; } }
+  async function submit(r){
+    const s=await student(); if(!s) return {skipped:true};
+    try{ await client().from('activity_attempts').insert({student_id:s.uid,activity:r.activity,title:r.title,level:r.level,
+      score:r.score,total:r.total,hints_used:r.hints,lives_left:r.lives,duration_sec:r.duration}); }catch(e){}
+    try{ const m=Math.floor(r.duration/60), sec=r.duration%60;
+      await fetch(NIS_CONFIG.WRITING_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body:JSON.stringify({skill:'Activity',name:s.full_name||s.first_name||'',email:s.email||'',level:r.level,
+          examTitle:r.title+' - Time '+m+'m '+String(sec).padStart(2,'0')+'s - Hints '+r.hints+' - Lives left '+r.lives,
+          examType:r.activity,score:r.score,total:r.total,duration_min:Math.max(1,Math.round(r.duration/60))})});
+    }catch(e){}
+    return {sent:true};
+  }
+  return {submit};
+})();
+</script>
+<script>
+const WEEK = 4;
+const DATA = {"D1": {"label": "Jour 1", "sub": "Découverte", "words": [{"word": "pronom", "clue": "Petit mot qui remplace un nom."}, {"word": "complément", "clue": "Mot ou groupe qui complète le verbe."}, {"word": "direct", "clue": "Se dit du complément qui suit le verbe sans préposition."}, {"word": "indirect", "clue": "Se dit du complément introduit par la préposition à."}, {"word": "ordre", "clue": "La place que les mots occupent dans la phrase."}, {"word": "phrase", "clue": "Ensemble de mots qui exprime une idée complète."}]}, "D2": {"label": "Jour 2", "sub": "Approfondissement", "words": [{"word": "remplacer", "clue": "Mettre une chose à la place d'une autre."}, {"word": "répéter", "clue": "Dire encore une fois la même chose."}, {"word": "envoyer", "clue": "Faire partir une chose vers quelqu'un."}, {"word": "expliquer", "clue": "Faire comprendre quelque chose."}, {"word": "montrer", "clue": "Faire voir quelque chose."}, {"word": "éviter", "clue": "Faire en sorte qu'une chose n'arrive pas."}]}, "D3": {"label": "Jour 3", "sub": "Révision", "words": [{"word": "pronom", "clue": "Petit mot qui remplace un nom."}, {"word": "complément", "clue": "Mot ou groupe qui complète le verbe."}, {"word": "direct", "clue": "Se dit du complément qui suit le verbe sans préposition."}, {"word": "indirect", "clue": "Se dit du complément introduit par la préposition à."}, {"word": "ordre", "clue": "La place que les mots occupent dans la phrase."}, {"word": "phrase", "clue": "Ensemble de mots qui exprime une idée complète."}, {"word": "remplacer", "clue": "Mettre une chose à la place d'une autre."}, {"word": "répéter", "clue": "Dire encore une fois la même chose."}, {"word": "envoyer", "clue": "Faire partir une chose vers quelqu'un."}, {"word": "expliquer", "clue": "Faire comprendre quelque chose."}, {"word": "montrer", "clue": "Faire voir quelque chose."}, {"word": "éviter", "clue": "Faire en sorte qu'une chose n'arrive pas."}]}};
+
+const ROUND_SEC = 20;
+let level = "D1", queue = [], cur = null, bossHP = 0, bossMax = 0, defeated = [];
+let lives = 5, elapsed = 0, timerInt = null, hintsUsed = 0, roundNo = 0;
+let roundInt = null, roundLeft = 0, started = false, busy = false, revealFirst = false;
+const done = {};
+
+/* ===== Audio: mp3 de ElevenLabs y, si falta, voz del navegador ===== */
+let ttsOnly = true, ttsVoice = null, curAudio = null, audioProbed = false;
+function src(word){ return 'voice-battle-audio/w' + WEEK + '/' + word.toLowerCase() + '.mp3'; }
+function pickVoice(){
+  if(!window.speechSynthesis) return;
+  const vs = window.speechSynthesis.getVoices() || [];
+  ttsVoice = vs.filter(v=>/^fr[-_]FR/i.test(v.lang))[0] || vs.filter(v=>/^fr/i.test(v.lang))[0] || null;
+}
+if(window.speechSynthesis){
+  pickVoice();
+  try{ window.speechSynthesis.addEventListener('voiceschanged', pickVoice); }catch(e){ window.speechSynthesis.onvoiceschanged = pickVoice; }
+}
+function note(t){ const n=document.getElementById('audionote'); if(n) n.textContent = t||''; }
+function speak(word, slow){
+  if(!window.speechSynthesis){ note('⚠️ Este navegador no puede reproducir el audio.'); return; }
+  try{
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(word.toLowerCase());
+    u.lang = 'fr-FR'; if(ttsVoice) u.voice = ttsVoice;
+    u.rate = slow ? 0.55 : 0.85; u.pitch = 1; u.volume = 1;
+    window.speechSynthesis.speak(u);
+    note('🗣️ Voix du navigateur (pas d\u2019audio enregistré pour cette semaine).');
+  }catch(e){ note('⚠️ No se pudo reproducir el audio.'); }
+}
+function playWord(slow){
+  if(!cur) return;
+  if(ttsOnly){ speak(cur.word, slow); return; }
+  try{ if(curAudio){ curAudio.pause(); curAudio = null; } }catch(e){}
+  let settled = false;
+  const fallback = function(){ if(settled) return; settled = true; ttsOnly = true; speak(cur.word, slow); };
+  try{
+    const a = new Audio(src(cur.word));
+    curAudio = a;
+    a.playbackRate = slow ? 0.7 : 1;
+    a.addEventListener('error', fallback);
+    a.addEventListener('playing', function(){ settled = true; audioProbed = true; note(''); });
+    const p = a.play();
+    if(p && p.catch) p.catch(function(err){
+      if(err && err.name === 'NotAllowedError'){ note('🔊 Toca "Replay" para escuchar la palabra.'); return; }
+      fallback();
+    });
+  }catch(e){ fallback(); }
+}
+let _actx = null;
+function unlockAudio(){
+  try{
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if(AC){
+      if(!_actx) _actx = new AC();
+      const ctx = _actx;
+      if(ctx.state === 'suspended' && ctx.resume) ctx.resume();
+      const o = ctx.createOscillator(), g = ctx.createGain();
+      g.gain.value = 0; o.connect(g); g.connect(ctx.destination);
+      o.start(0); o.stop(ctx.currentTime + 0.01);
+    }
+  }catch(e){}
+  try{
+    if(window.speechSynthesis){
+      const u = new SpeechSynthesisUtterance(' ');
+      u.volume = 0; u.lang = 'fr-FR';
+      window.speechSynthesis.speak(u);
+      pickVoice();
+    }
+  }catch(e){}
+}
+
+/* ===== Vidas y cronometro ===== */
+function fmtT(s){ return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0'); }
+function drawStatus(){
+  const h=document.getElementById('hearts'), w=document.getElementById('watch');
+  if(h) h.textContent='❤️'.repeat(Math.max(0,lives))+'🤍'.repeat(Math.max(0,5-lives));
+  if(w) w.textContent='⏱ '+fmtT(elapsed);
+}
+function startWatch(){
+  clearInterval(timerInt);
+  timerInt=setInterval(()=>{ elapsed++; drawStatus(); },1000);
+  drawStatus();
+}
+
+function buildTabs(){
+  const t = document.getElementById('tabs');
+  t.innerHTML = '';
+  for (const k of Object.keys(DATA)){
+    const b = document.createElement('button');
+    b.className = 'tab' + (k===level?' on':'') + (done[k]?' done':'');
+    b.innerHTML = `${DATA[k].label}<small>${DATA[k].sub}</small>`;
+    b.onclick = () => { level = k; load(); };
+    t.appendChild(b);
+  }
+}
+
+function shuffle(a){
+  for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); const t=a[i]; a[i]=a[j]; a[j]=t; }
+  return a;
+}
+function norm(s){ return (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z]/g,''); }
+
+function drawBoss(){
+  const pct = bossMax ? Math.max(0,bossHP)/bossMax*100 : 100;
+  document.getElementById('hpfill').style.width = pct+'%';
+  document.getElementById('hptext').textContent = Math.max(0,bossHP)+' / '+bossMax+' HP';
+  const b = document.getElementById('boss');
+  b.classList.toggle('dead', bossHP<=0);
+  document.getElementById('bossFace').textContent = bossHP<=0 ? '💀' : '🤖';
+}
+function renderDefeated(){
+  const d = document.getElementById('defeated');
+  d.innerHTML = defeated.length
+    ? defeated.map(w=>`<span class="chip">${w}</span>`).join('')
+    : '<span class="chip empty">Ninguna todavia…</span>';
+}
+function updateScore(){
+  document.getElementById('score').textContent =
+    `Words defeated: ${defeated.length} / ${bossMax}` + (hintsUsed?` · Hints used: ${hintsUsed}`:'');
+}
+function feedback(msg, cls){
+  const f = document.getElementById('fb');
+  f.className = 'fb' + (cls?' '+cls:'');
+  f.textContent = msg || '';
+}
+function drawSlots(){
+  if(!cur) return;
+  const w = cur.word;
+  const out = [];
+  for(let i=0;i<w.length;i++) out.push(i===0 && revealFirst ? w[0].toUpperCase() : '_');
+  document.getElementById('slots').textContent = out.join(' ');
+  document.getElementById('lettercount').textContent = w.length + ' letters';
+}
+function drawRoundBar(){
+  const total = ROUND_SEC*10;
+  const f = document.getElementById('timerfill');
+  f.style.width = Math.max(0, roundLeft/total*100) + '%';
+  f.classList.toggle('low', roundLeft <= 50);
+}
+
+function resetDay(){
+  clearInterval(roundInt); clearInterval(timerInt);
+  try{ if(curAudio){ curAudio.pause(); curAudio=null; } }catch(e){}
+  try{ if(window.speechSynthesis) window.speechSynthesis.cancel(); }catch(e){}
+  const d = DATA[level];
+  queue = shuffle(d.words.slice());
+  bossMax = d.words.length; bossHP = bossMax;
+  lives = 5; elapsed = 0; hintsUsed = 0; roundNo = 0;
+  cur = null; started = false; busy = false; revealFirst = false; defeated = [];
+}
+
+function load(){
+  resetDay();
+  document.getElementById('banner').classList.remove('show');
+  document.getElementById('gate').style.display = '';
+  document.getElementById('round').style.display = 'none';
+  document.getElementById('cluebox').classList.remove('show');
+  document.getElementById('startBtn').textContent = done[level] ? '⚔️ Volver a jugar' : '⚔️ Start battle';
+  feedback(''); note('');
+  drawStatus(); drawBoss(); renderDefeated(); updateScore(); buildTabs();
+}
+
+function startBattle(){
+  if(started) return;
+  if(!queue.length || bossHP<=0){          // repetir un dia ya ganado
+    resetDay();
+    document.getElementById('banner').classList.remove('show');
+    drawBoss(); renderDefeated(); updateScore(); drawStatus();
+  }
+  started = true;
+  unlockAudio();
+  document.getElementById('gate').style.display = 'none';
+  document.getElementById('round').style.display = 'block';
+  startWatch();
+  nextRound();
+}
+
+function nextRound(){
+  if(!queue.length) return;
+  busy = false; revealFirst = false;
+  cur = queue[0];
+  roundNo++;
+  document.getElementById('roundno').textContent = 'Round ' + roundNo + ' · ' + queue.length + ' left';
+  document.getElementById('cluebox').classList.remove('show');
+  feedback('');
+  drawSlots();
+  const inp = document.getElementById('answer');
+  inp.value = ''; inp.disabled = false;
+  try{ inp.focus(); }catch(e){}
+  clearInterval(roundInt);
+  roundLeft = ROUND_SEC*10;
+  drawRoundBar();
+  roundInt = setInterval(()=>{
+    roundLeft--;
+    drawRoundBar();
+    if(roundLeft<=0){ clearInterval(roundInt); timeUp(); }
+  },100);
+  playWord(false);
+}
+
+function revealClue(){
+  const c = document.getElementById('cluebox');
+  c.innerHTML = '<b>💡 Clue:</b> ' + cur.clue + ' <span style="color:var(--muted)">(' + cur.word.length + ' letters)</span>';
+  c.classList.add('show');
+}
+
+function showHint(){
+  if(!cur || busy || !started) return;
+  hintsUsed++;
+  revealFirst = true;
+  drawSlots();
+  revealClue();
+  updateScore();
+}
+
+function attack(){
+  if(!cur || busy || !started) return;
+  const val = document.getElementById('answer').value;
+  if(!norm(val)) return;
+  if(norm(val) === norm(cur.word)) hit(); else miss('❌ ¡Fallaste! Era otra palabra. Mira la pista.');
+}
+
+function hit(){
+  busy = true;
+  clearInterval(roundInt);
+  const w = queue.shift();
+  defeated.push(w.word);
+  bossHP--;
+  drawBoss(); renderDefeated(); updateScore();
+  const b = document.getElementById('boss');
+  b.classList.add('hurt'); setTimeout(()=>b.classList.remove('hurt'), 200);
+  feedback('⚔️ ¡Golpe directo! ' + w.word.toUpperCase(), 'hit');
+  document.getElementById('answer').disabled = true;
+  if(bossHP<=0){ win(); return; }
+  setTimeout(nextRound, 900);
+}
+
+function miss(msg){
+  busy = true;
+  clearInterval(roundInt);
+  lives--;
+  drawStatus();
+  revealClue();
+  feedback(msg, 'miss');
+  document.getElementById('answer').disabled = true;
+  const w = queue.shift(); queue.push(w);
+  if(lives<=0){ defeat(); return; }
+  setTimeout(nextRound, 2800);   // tiempo para leer la pista antes de la siguiente palabra
+}
+
+function timeUp(){ miss('⏳ ¡Se acabo el tiempo! Robo-Noob contraataca.'); }
+
+function defeat(){
+  clearInterval(roundInt); clearInterval(timerInt);
+  try{ if(window.speechSynthesis) window.speechSynthesis.cancel(); }catch(e){}
+  setTimeout(()=>{
+    alert('💔 ¡Te quedaste sin vidas! Robo-Noob gana esta ronda. El nivel se reinicia desde cero.');
+    load();
+  }, 150);
+}
+
+function win(){
+  clearInterval(roundInt); clearInterval(timerInt);
+  const b = document.getElementById('banner');
+  if(!done[level]){
+    done[level] = true;
+    b.textContent = '🎉 ¡Robo-Noob derrotado en '+fmtT(elapsed)+'! Tu resultado fue guardado en My Results y enviado a tu correo.';
+    if(window.NISACT) NISACT.submit({activity:'voice-battle',title:'Voice Battle — FR 10e Semaine 4',level:level,
+      score:bossMax,total:bossMax,hints:hintsUsed,lives:lives,duration:elapsed});
+  } else {
+    b.textContent = '🎉 ¡Robo-Noob derrotado otra vez en '+fmtT(elapsed)+'!';
+  }
+  b.classList.add('show');
+  document.getElementById('round').style.display = 'none';
+  document.getElementById('gate').style.display = '';
+  document.getElementById('startBtn').textContent = '⚔️ Volver a jugar';
+  started = false;
+  feedback('');
+  buildTabs();
+}
+
+document.getElementById('answer').addEventListener('keydown', function(e){
+  if(e.key === 'Enter'){ e.preventDefault(); attack(); }
+});
+
+load();
+
+/* Aviso: sin voz francesa instalada, la pronunciación no es de fiar. */
+var _frWarned = false;
+function _frVoiceCheck(){
+  try{
+    if(_frWarned) return;                       /* si no, sale duplicado */
+    if(!window.speechSynthesis) return;
+    var vs = window.speechSynthesis.getVoices() || [];
+    if(!vs.length) return;                      /* aún no han cargado */
+    if(vs.some(function(v){ return /^fr/i.test(v.lang); })) return;
+    var w = document.getElementById('audionote');
+    if(!w) return;
+    _frWarned = true;
+    w.textContent = '\u26a0\ufe0f Cet appareil n\u2019a aucune voix française installée : le mot sera lu avec une autre langue. Demande à ton professeur.';
+  }catch(e){}
+}
+if(window.speechSynthesis){
+  _frVoiceCheck();
+  try{ window.speechSynthesis.addEventListener('voiceschanged', _frVoiceCheck); }
+  catch(e){ }
+  setTimeout(_frVoiceCheck, 1500);              /* Chrome las carga tarde */
+}
+</script>
+</body>
+</html>

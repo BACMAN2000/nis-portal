@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Word Sudoku — FR · 8e · Semaine 6 — Projet — Portrait et interview</title>
+<style>
+  :root{
+    --bg:#f4f6fb; --card:#fff; --ink:#1e2433; --muted:#67718a;
+    --accent:#3b5bdb; --accent-soft:#e7ecfd;
+    --good:#2f9e44; --good-soft:#d3f4dc; --bad:#e03131; --bad-soft:#ffe3e3; --gold:#f59f00;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:'Segoe UI',system-ui,Arial,sans-serif; background:var(--bg); color:var(--ink); padding:16px; line-height:1.45;}
+  .topnav{position:sticky; top:0; z-index:30; background:#fff; display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+    padding:10px 18px; box-shadow:0 2px 10px rgba(20,30,60,.08); margin:-16px -16px 16px;}
+  .topnav img{height:30px; width:auto; display:block;}
+  .topnav .nav-sp{margin-left:auto;}
+  .navbtn{text-decoration:none; font-weight:700; font-size:.85rem; padding:8px 14px; border-radius:9px; white-space:nowrap;
+    background:var(--accent-soft); color:var(--accent); transition:.15s; border:none; cursor:pointer;}
+  .navbtn.primary{background:var(--accent); color:#fff;}
+  header{max-width:760px; margin:0 auto 6px; text-align:center;}
+  header h1{font-size:1.5rem;}
+  header p{color:var(--muted); font-size:.9rem; margin-top:4px;}
+  .levels{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin:14px auto; max-width:760px;}
+  .lv{border:2px solid transparent; background:var(--card); color:var(--ink); padding:8px 18px; border-radius:22px;
+    font-weight:800; font-size:.92rem; cursor:pointer; box-shadow:0 1px 3px rgba(20,30,60,.12);}
+  .lv small{display:block; font-weight:500; font-size:.64rem; color:var(--muted);}
+  .lv.on{background:var(--accent); color:#fff; border-color:var(--accent);} .lv.on small{color:#dce4ff;}
+  .lv.done{border-color:var(--good);} .lv.done::after{content:" ✓"; color:var(--good);}
+  .puzzles{display:flex; gap:6px; justify-content:center; flex-wrap:wrap; margin:0 auto 10px; max-width:760px;}
+  .pz{border:1px solid #d7def0; background:#fff; color:var(--ink); min-width:34px; height:34px; padding:0 8px; border-radius:9px; font-weight:800; font-size:.85rem; cursor:pointer;}
+  .pz.on{background:var(--accent-soft); border-color:var(--accent); color:var(--accent);}
+  .pz.done{border-color:var(--good); color:var(--good);}
+  main{max-width:760px; margin:0 auto;}
+  .card{background:var(--card); border-radius:16px; padding:18px; box-shadow:0 2px 12px rgba(20,30,60,.08); margin-bottom:14px;}
+  .theme{text-align:center; font-size:.95rem; margin-bottom:10px;}
+  .theme b{color:var(--accent); letter-spacing:2px; font-size:1.1rem;}
+  .hud{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:12px;}
+  .chip{font-weight:800; font-size:.9rem; background:#f1f3f9; padding:7px 12px; border-radius:12px;}
+  .chip.tm{color:var(--gold);}
+  .gridwrap{display:flex; justify-content:center;}
+  .grid{display:grid; gap:0; background:#1e2433; border:3px solid #1e2433; border-radius:8px; overflow:hidden;}
+  .cell{display:flex; align-items:center; justify-content:center; background:#fff; font-weight:800; cursor:pointer;
+    user-select:none; border:1px solid #cbd5e1; transition:background .1s;}
+  .cell.given{background:#cfd8ec; color:#0f172a; cursor:not-allowed;}
+  .cell:not(.given){color:var(--accent);}
+  .cell.sel{background:var(--accent-soft); box-shadow:inset 0 0 0 2px var(--accent);}
+  .cell.peer{background:#f5f7fc;}
+  .cell.bad{background:var(--bad-soft); color:var(--bad);}
+  .cell.br{border-right:3px solid #1e2433;} .cell.bb{border-bottom:3px solid #1e2433;}
+  .pad{display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-top:14px;}
+  .key{min-width:42px; height:46px; padding:0 10px; border:none; border-radius:10px; background:var(--accent); color:#fff;
+    font-weight:800; font-size:1.1rem; cursor:pointer;}
+  .key.erase{background:#e9ecf3; color:var(--ink);}
+  .btns{display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-top:14px;}
+  button.act{border:none; border-radius:10px; padding:11px 16px; font-weight:700; font-size:.88rem; cursor:pointer;}
+  .b-go{background:var(--accent); color:#fff;} .b-alt{background:#e9ecf3; color:var(--ink);} .b-hint{background:var(--gold); color:#fff;}
+  .banner{display:none; margin-top:14px; padding:14px; border-radius:12px; background:var(--good-soft); color:var(--good); font-weight:800; text-align:center; font-size:1.05rem;}
+  .banner.show{display:block; animation:pop .4s;}
+  @keyframes pop{0%{transform:scale(.85); opacity:0;}100%{transform:scale(1); opacity:1;}}
+  .help{font-size:.82rem; color:var(--muted); text-align:center; margin-top:10px;}
+  footer{max-width:760px; margin:18px auto 0; text-align:center; color:var(--muted); font-size:.75rem;}
+  @media (max-width:480px){ .topnav{margin:-16px -16px 12px;} .key{min-width:38px; height:42px;} }
+</style>
+  <meta name="google" content="notranslate">
+  <script src="config.js?v=18"></script>
+  <script src="anticheat.js?v=6" data-activity="word-sudoku-u4w1"></script>
+<script src="nis-nav.js?v=1"></script>
+</head>
+<body>
+<nav class="topnav">
+  <img src="assets/logo-h.svg" alt="Nordic International School" onerror="this.style.display='none'">
+  <span class="nav-sp"></span>
+  <a class="navbtn" data-nis-back>◀ Back</a>
+  <a class="navbtn" href="activities.html">🎲 Actividades</a>
+  <a class="navbtn primary" href="./">🏫 Portal</a>
+</nav>
+
+<header>
+  <h1>🔢 FR · 8e · Semaine 6 — Projet — Portrait et interview — Word Sudoku</h1>
+  <p>Comme le Sudoku, mais avec des <b>lettres</b> : chaque ligne, chaque colonne et chaque bloc utilise une seule fois chaque lettre du mot. Français NIS · 8e</p>
+</header>
+
+<div class="levels" id="levels"></div>
+<div class="puzzles" id="puzzles"></div>
+<main>
+  <div class="card">
+    <div class="theme" id="theme"></div>
+    <div class="hud">
+      <span class="chip tm">⏱ <span id="watch">00:00</span></span>
+      <span class="chip" id="fillchip">0/0</span>
+    </div>
+    <div class="gridwrap"><div class="grid" id="grid"></div></div>
+    <div class="pad" id="pad"></div>
+    <div class="btns">
+      <button class="act b-go" onclick="checkPuzzle()">✓ Check</button>
+      <button class="act b-hint" onclick="hint()">💡 Hint</button>
+      <button class="act b-alt" onclick="clearMine()">↺ Clear mine</button>
+      <button class="act b-alt" onclick="newPuzzle()">🔀 New puzzle</button>
+    </div>
+    <div class="help">Tap a cell, then a letter (or type). When you're done, tap ✓ Check to see if it's right — no answers are revealed while you play.</div>
+    <div class="banner" id="banner"></div>
+  </div>
+</main>
+
+<footer>Unité 4 · 8e · Semaine 6 · Projet — Portrait et interview · Jour 1 · Jour 2 · Jour 3</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+<script src="config.js"></script>
+<script>
+window.NISACT=(function(){
+  let _sb=null;
+  function client(){ if(_sb) return _sb; if(!window.supabase||!window.NIS_CONFIG) return null;
+    _sb=window.supabase.createClient(NIS_CONFIG.SUPABASE_URL,NIS_CONFIG.SUPABASE_KEY); return _sb; }
+  async function student(){ const c=client(); if(!c) return null;
+    try{ const u=await c.auth.getUser(); if(!u||!u.data||!u.data.user) return null;
+      const p=await c.from('profiles').select('full_name,first_name,email').eq('id',u.data.user.id).maybeSingle();
+      const d=(p&&p.data)||{}; return {uid:u.data.user.id,email:u.data.user.email||d.email,full_name:d.full_name,first_name:d.first_name};
+    }catch(e){ return null; } }
+  async function submit(r){
+    const s=await student(); if(!s) return {skipped:true};
+    try{ await client().from('activity_attempts').insert({student_id:s.uid,activity:r.activity,title:r.title,level:r.level,
+      score:r.score,total:r.total,hints_used:r.hints||0,lives_left:5,duration_sec:r.duration}); }catch(e){}
+    try{ const m=Math.floor(r.duration/60), sec=r.duration%60;
+      await fetch(NIS_CONFIG.WRITING_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body:JSON.stringify({skill:'Activity',name:s.full_name||s.first_name||'',email:s.email||'',level:r.level,
+          examTitle:r.title+' - Time '+m+'m '+String(sec).padStart(2,'0')+'s - Hints '+(r.hints||0),
+          examType:r.activity,score:r.score,total:r.total,duration_min:Math.max(1,Math.round(r.duration/60))})});
+    }catch(e){}
+    return {sent:true};
+  }
+  return {submit};
+})();
+const shuffle=a=>{ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; };
+
+/* Each level: 9 theme words, every word an isogram (all letters distinct); grid size = word length. */
+const LEVELS = {"D1": {"n": 4, "br": 2, "bc": 2, "clues": 8, "topic": "Découverte", "words": ["ROSE", "BLEU", "NOIR", "VERT"]}, "D2": {"n": 6, "br": 2, "bc": 3, "clues": 18, "topic": "Approfondissement", "words": ["PROJET", "AVENIR", "MEDIAS"]}, "D3": {"n": 6, "br": 2, "bc": 3, "clues": 18, "topic": "Révision", "words": ["SOURCE", "COMPTE", "GENTIL"]}};
+const ORDER=['D1','D2','D3'];
+
+/* ---- Sudoku generator (randomised backtracking) ---- */
+function genSolved(n,br,bc){
+  const g=Array.from({length:n},()=>Array(n).fill(0));
+  function ok(r,c,v){
+    for(let i=0;i<n;i++){ if(g[r][i]===v||g[i][c]===v) return false; }
+    const r0=Math.floor(r/br)*br, c0=Math.floor(c/bc)*bc;
+    for(let i=0;i<br;i++) for(let j=0;j<bc;j++) if(g[r0+i][c0+j]===v) return false;
+    return true;
+  }
+  function solve(p){
+    if(p===n*n) return true;
+    const r=Math.floor(p/n), c=p%n;
+    for(const v of shuffle(Array.from({length:n},(_,i)=>i+1))){
+      if(ok(r,c,v)){ g[r][c]=v; if(solve(p+1)) return true; g[r][c]=0; }
+    }
+    return false;
+  }
+  solve(0); return g;
+}
+function digHoles(sol,n,clues){
+  const mask=Array.from({length:n},()=>Array(n).fill(false)); // true = given
+  const idx=shuffle(Array.from({length:n*n},(_,i)=>i)).slice(0,clues);
+  idx.forEach(k=>{ mask[Math.floor(k/n)][k%n]=true; });
+  return mask;
+}
+
+/* ---- State ---- */
+let level='D1', pIdx=0, N=4, BR=2, BC=2, LETTERS=[], SOL=[], given=[], val=[], sel=null, elapsed=0, timer=null, hints=0, done={};
+
+function levelDone(l){ for(let i=0;i<LEVELS[l].words.length;i++) if(!done[l+'#'+i]) return false; return true; }
+function buildLevels(){
+  const params=new URLSearchParams(location.search);
+  let allow=ORDER;
+  if(params.get('levels')) allow=params.get('levels').split(',').map(s=>s.trim().toUpperCase()).filter(l=>LEVELS[l]);
+  if(!allow.length) allow=ORDER;
+  window._ALLOW=allow;
+  document.getElementById('levels').innerHTML=allow.map(l=>`<button class="lv ${l===level?'on':''} ${levelDone(l)?'done':''}" data-l="${l}" onclick="setLevel('${l}')">${l}<small>${LEVELS[l].topic}</small></button>`).join('');
+}
+function buildPuzzles(){
+  const words=LEVELS[level].words;
+  document.getElementById('puzzles').innerHTML=words.map((w,i)=>`<button class="pz ${i===pIdx?'on':''} ${done[level+'#'+i]?'done':''}" title="${w}" onclick="setPuzzle(${i})">${i+1}</button>`).join('');
+}
+function setLevel(l){ level=l; pIdx=0; newPuzzle(); }
+function setPuzzle(i){ pIdx=i; newPuzzle(); }
+
+function newPuzzle(){
+  const cfg=LEVELS[level]; N=cfg.n; BR=cfg.br; BC=cfg.bc; const word=cfg.words[pIdx]; LETTERS=word.split('');
+  SOL=genSolved(N,BR,BC);
+  given=digHoles(SOL,N,cfg.clues);
+  val=Array.from({length:N},()=>Array(N).fill(0));
+  for(let r=0;r<N;r++) for(let c=0;c<N;c++) if(given[r][c]) val[r][c]=SOL[r][c];
+  sel=null; elapsed=0; hints=0;
+  document.getElementById('banner').classList.remove('show');
+  document.getElementById('theme').innerHTML=`Word ${pIdx+1}/${cfg.words.length}: <b>${word}</b> <span style="color:var(--muted)">· ${cfg.topic} · ${N}×${N}</span>`;
+  buildLevels(); buildPuzzles(); renderGrid(); renderPad();
+  clearInterval(timer); timer=setInterval(()=>{ elapsed++; document.getElementById('watch').textContent=fmt(elapsed); },1000);
+  document.getElementById('watch').textContent='00:00';
+}
+function fmt(s){ return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0'); }
+
+function renderGrid(){
+  const g=document.getElementById('grid');
+  const cs=Math.max(34, Math.min(56, Math.floor((Math.min(window.innerWidth,560)-40)/N)));
+  g.style.gridTemplateColumns=`repeat(${N}, ${cs}px)`;
+  g.style.fontSize=(cs*0.5)+'px';
+  let h='';
+  for(let r=0;r<N;r++) for(let c=0;c<N;c++){
+    const isGiven=given[r][c];
+    const br=((c+1)%BC===0 && c!==N-1)?' br':'';
+    const bb=((r+1)%BR===0 && r!==N-1)?' bb':'';
+    const letter=val[r][c]?LETTERS[val[r][c]-1]:'';
+    h+=`<div class="cell${isGiven?' given':''}${br}${bb}" style="width:${cs}px;height:${cs}px" data-r="${r}" data-c="${c}" onclick="pick(${r},${c})">${letter}</div>`;
+  }
+  g.innerHTML=h; updateFill();
+}
+function renderPad(){
+  document.getElementById('pad').innerHTML=
+    LETTERS.map(L=>`<button class="key" onclick="place('${L}')">${L}</button>`).join('')+
+    `<button class="key erase" onclick="erase()">⌫</button>`;
+}
+function pick(r,c){
+  if(given[r][c]){ sel=null; } else { sel={r,c}; }
+  paintSel();
+}
+function paintSel(){
+  document.querySelectorAll('.cell').forEach(e=>e.classList.remove('sel','peer'));
+  if(!sel) return;
+  const cell=document.querySelector(`[data-r="${sel.r}"][data-c="${sel.c}"]`); if(cell) cell.classList.add('sel');
+  document.querySelectorAll('.cell').forEach(e=>{
+    const r=+e.dataset.r, c=+e.dataset.c;
+    const sameBox=Math.floor(r/BR)===Math.floor(sel.r/BR) && Math.floor(c/BC)===Math.floor(sel.c/BC);
+    if((r===sel.r||c===sel.c||sameBox) && !(r===sel.r&&c===sel.c)) e.classList.add('peer');
+  });
+}
+function place(L){
+  if(!sel) return; const v=LETTERS.indexOf(L)+1; if(v<=0) return;
+  val[sel.r][sel.c]=v; afterChange();
+}
+function erase(){ if(!sel) return; val[sel.r][sel.c]=0; afterChange(); }
+function afterChange(){
+  const cell=document.querySelector(`[data-r="${sel.r}"][data-c="${sel.c}"]`);
+  if(cell) cell.textContent=val[sel.r][sel.c]?LETTERS[val[sel.r][sel.c]-1]:'';
+  // No live right/wrong feedback: clear any red marks and any open check message,
+  // so clicking letters never reveals which one is correct.
+  document.querySelectorAll('.cell.bad').forEach(e=>e.classList.remove('bad'));
+  document.getElementById('banner').classList.remove('show');
+  paintSel(); updateFill(); checkWin();
+}
+function conflicts(){
+  const bad=Array.from({length:N},()=>Array(N).fill(false));
+  // rows & cols
+  for(let i=0;i<N;i++){
+    const rowSeen={}, colSeen={};
+    for(let j=0;j<N;j++){
+      if(val[i][j]){ (rowSeen[val[i][j]]=rowSeen[val[i][j]]||[]).push([i,j]); }
+      if(val[j][i]){ (colSeen[val[j][i]]=colSeen[val[j][i]]||[]).push([j,i]); }
+    }
+    [rowSeen,colSeen].forEach(seen=>{ Object.values(seen).forEach(list=>{ if(list.length>1) list.forEach(([r,c])=>bad[r][c]=true); }); });
+  }
+  // boxes
+  for(let R=0;R<N;R+=BR) for(let C=0;C<N;C+=BC){
+    const seen={};
+    for(let i=0;i<BR;i++) for(let j=0;j<BC;j++){ const r=R+i, c=C+j; if(val[r][c]) (seen[val[r][c]]=seen[val[r][c]]||[]).push([r,c]); }
+    Object.values(seen).forEach(list=>{ if(list.length>1) list.forEach(([r,c])=>bad[r][c]=true); });
+  }
+  return bad;
+}
+function markConflicts(){
+  const bad=conflicts();
+  document.querySelectorAll('.cell').forEach(e=>{
+    const r=+e.dataset.r, c=+e.dataset.c;
+    e.classList.toggle('bad', !given[r][c] && bad[r][c]);
+  });
+}
+function updateFill(){
+  let filled=0, total=0;
+  for(let r=0;r<N;r++) for(let c=0;c<N;c++){ if(!given[r][c]){ total++; if(val[r][c]) filled++; } }
+  document.getElementById('fillchip').textContent=filled+'/'+total+' filled';
+}
+function isComplete(){
+  for(let r=0;r<N;r++) for(let c=0;c<N;c++) if(!val[r][c]) return false;
+  const bad=conflicts();
+  for(let r=0;r<N;r++) for(let c=0;c<N;c++) if(bad[r][c]) return false;
+  return true;
+}
+function checkWin(){
+  if(!isComplete()) return;
+  const word=LEVELS[level].words[pIdx];
+  clearInterval(timer); done[level+'#'+pIdx]=true; buildLevels(); buildPuzzles();
+  const b=document.getElementById('banner');
+  b.style.background=''; b.style.color='';
+  b.innerHTML=`🎉 Solved <b>${word}</b> (${level} · word ${pIdx+1}/${LEVELS[level].words.length}) in ${fmt(elapsed)}${hints?(' · '+hints+' hints'):''}! <br><span style="font-weight:600;font-size:.85rem">Saved to My Progress (if signed in). Try another word!</span>`;
+  b.classList.add('show');
+  if(window.NISACT) NISACT.submit({activity:'word-sudoku', title:'Word Sudoku FR 8e S6 — '+word, level:level, score:1, total:1, hints:hints, duration:Math.max(1,elapsed)});
+}
+function checkPuzzle(){
+  markConflicts(); // reveal red on current duplicates — only when the student asks
+  const bad=conflicts();
+  let anyBad=false, blanks=0;
+  for(let r=0;r<N;r++) for(let c=0;c<N;c++){ if(bad[r][c]) anyBad=true; if(!val[r][c]) blanks++; }
+  if(!anyBad && blanks===0){ checkWin(); return; }
+  const b=document.getElementById('banner');
+  if(anyBad){ b.style.background='var(--bad-soft)'; b.style.color='var(--bad)';
+    b.innerHTML='❌ Some letters repeat in a row, column or box (shown in red). Fix them and check again.'; }
+  else { b.style.background='var(--accent-soft)'; b.style.color='var(--accent)';
+    b.innerHTML='👍 No mistakes so far — '+blanks+' cell'+(blanks===1?'':'s')+' to go.'; }
+  b.classList.add('show');
+}
+function hint(){
+  // fill one empty (or wrong) cell with the solution letter
+  const empties=[];
+  for(let r=0;r<N;r++) for(let c=0;c<N;c++) if(!given[r][c] && val[r][c]!==SOL[r][c]) empties.push([r,c]);
+  if(!empties.length) return;
+  const [r,c]=empties[Math.floor(Math.random()*empties.length)];
+  val[r][c]=SOL[r][c]; hints++;
+  const cell=document.querySelector(`[data-r="${r}"][data-c="${c}"]`); if(cell) cell.textContent=LETTERS[SOL[r][c]-1];
+  updateFill(); checkWin();
+}
+function clearMine(){
+  for(let r=0;r<N;r++) for(let c=0;c<N;c++) if(!given[r][c]) val[r][c]=0;
+  renderGrid(); sel=null;
+}
+document.addEventListener('keydown',e=>{
+  if(!sel) return;
+  const k=e.key.toUpperCase();
+  if(k==='BACKSPACE'||k==='DELETE'){ erase(); e.preventDefault(); return; }
+  if(LETTERS.includes(k)){ place(k); e.preventDefault(); }
+});
+window.addEventListener('resize',()=>{ if(N) renderGrid(); });
+
+newPuzzle();
+</script>
+</body>
+</html>

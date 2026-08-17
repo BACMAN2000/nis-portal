@@ -1818,12 +1818,17 @@ function _isStudent(){ return !!(state.profile && state.profile.role==='student'
    admin los habilite. La resolución es client-side (igual que Mocks). */
 const NODE_DEFAULT_LOCKED = new Set(['french','english.classes.g9.grammar']);
 function _nodeDefaultOpen(key){
-  if(key==='french' || key.indexOf('french')===0) return false;   // subárbol French = nuevo
-  if(key.slice(-8)==='.grammar') return false;                    // grammar = nuevo
   // Unidades y semanas: cada una decide su default con `locked` en
   // activities-data.js (así una semana futura puede nacer cerrada).
+  // Va ANTES del corte general de French a propósito: si no, la regla
+  // "todo french nace cerrado" pisaba el `locked` de cada semana y el
+  // profesor tendría que abrir a mano las 36 semanas para arrancar.
+  // Da igual el orden para la seguridad: la unidad y el Activities de los
+  // que cuelgan siguen naciendo cerrados, y cerrar el padre gana.
   const n=_SUB_BY_KEY[key];
   if(n) return !n.locked;
+  if(key==='french' || key.indexOf('french')===0) return false;   // subárbol French = nuevo
+  if(key.slice(-8)==='.grammar') return false;                    // grammar = nuevo
   return !NODE_DEFAULT_LOCKED.has(key);
 }
 async function loadStudentAccess(){
@@ -1963,6 +1968,12 @@ function _weekNode(grade,unitId,weekId,subject){ return _unitNode(grade,unitId,s
    haya marcado como 'french'. Todo lo que ya existía cae en el default. */
 function _subjOf(u){ return (u && u.subject) || 'english'; }
 const _GRADE_LBL={g5:'5th',g6:'6th',g7:'7th',g8:'8th',g9:'9th',g10:'10th',g11:'11th'};
+/* En francés los grados se nombran a la francesa (5e, 6e…). Va aquí y no en
+   FR_GRADE_META porque _UNIT_NODES se evalúa mucho antes que aquella. */
+const _FR_LBL={g5:'5e',g6:'6e',g7:'7e',g8:'8e',g9:'9e',g10:'10e'};
+function _gradeLbl(grade,subject){
+  return (subject==='french' ? _FR_LBL[grade] : _GRADE_LBL[grade]) || grade;
+}
 const _shortTitle = t => String(t||'').split('—')[0].trim();
 const _UNIT_NODES = (function(){
   const d=window.ACTIVITIES_DATA;
@@ -1971,7 +1982,7 @@ const _UNIT_NODES = (function(){
     const s=_subjOf(u);
     return {
       key:   _unitNode(u.grade,u.id,s),
-      label: (s==='french'?'🇫🇷 ':'')+(_GRADE_LBL[u.grade]||u.grade)+' · '+u.title,
+      label: (s==='french'?'🇫🇷 ':'')+_gradeLbl(u.grade,s)+' · '+u.title,
       grade: u.grade,
       parent:s+'.classes.'+u.grade+'.activities',
       locked:!!u.locked,
@@ -1987,7 +1998,7 @@ const _WEEK_NODES = (function(){
     const s=_subjOf(u);
     out.push({
       key:   _weekNode(u.grade,u.id,w.id,s),
-      label: (s==='french'?'🇫🇷 ':'')+(_GRADE_LBL[u.grade]||u.grade)+' · '+String(u.id).toUpperCase()+' · '+w.title,
+      label: (s==='french'?'🇫🇷 ':'')+_gradeLbl(u.grade,s)+' · '+String(u.id).toUpperCase()+' · '+w.title,
       grade: u.grade,
       parent:s+'.classes.'+u.grade+'.activities',
       locked:!!w.locked,

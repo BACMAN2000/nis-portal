@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Word Invaders — FR · 7e · Semaine 4 — Porter et mettre</title>
+<style>
+  :root{
+    --bg:#f4f6fb; --card:#ffffff; --ink:#1e2433; --muted:#67718a;
+    --accent:#3b5bdb; --accent-soft:#e7ecfd;
+    --good:#2f9e44; --good-soft:#d3f4dc; --bad:#e03131; --bad-soft:#ffe3e3;
+    --gold:#f59f00;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:'Segoe UI',system-ui,Arial,sans-serif; background:var(--bg); color:var(--ink); padding:18px; touch-action:manipulation;}
+  header{max-width:1100px; margin:0 auto 14px; text-align:center;}
+  header h1{font-size:1.5rem; letter-spacing:.3px;}
+  header p{color:var(--muted); font-size:.9rem; margin-top:4px;}
+  .tabs{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin:14px auto;}
+  .tab{border:2px solid transparent; background:var(--card); color:var(--ink); padding:9px 20px; border-radius:24px;
+       font-weight:700; font-size:.95rem; cursor:pointer; box-shadow:0 1px 3px rgba(20,30,60,.12); transition:.15s;}
+  .tab small{display:block; font-weight:500; font-size:.68rem; color:var(--muted);}
+  .tab.on{background:var(--accent); color:#fff; border-color:var(--accent);}
+  .tab.on small{color:#dce4ff;}
+  .tab.done{border-color:var(--good);}
+  .tab.done::after{content:" ✓"; color:var(--good);}
+  .tab.on.done::after{color:#bff2cc;}
+  .wrap{max-width:1100px; margin:0 auto; display:flex; gap:18px; align-items:flex-start; flex-wrap:wrap;}
+  .board{flex:1 1 520px; min-width:300px; max-width:100%; background:var(--card); border-radius:14px; padding:16px; box-shadow:0 2px 10px rgba(20,30,60,.08);}
+  .side{flex:1 1 280px; min-width:260px;}
+  .panel{background:var(--card); border-radius:14px; padding:16px 18px; box-shadow:0 2px 10px rgba(20,30,60,.08); margin-bottom:14px;}
+  .panel h3{font-size:.85rem; text-transform:uppercase; letter-spacing:1px; color:var(--accent); margin-bottom:8px;}
+  .hud{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;
+       font-weight:800; font-size:1rem; margin-bottom:8px;}
+  .hud .pill{background:var(--accent-soft); color:var(--accent); border-radius:20px; padding:4px 12px; font-size:.9rem;}
+  .hud #watch{font-variant-numeric:tabular-nums; color:var(--accent);}
+  #arena{position:relative; height:min(340px,48vh); background:linear-gradient(180deg,#0b1d3a,#1d5ab8);
+         border-radius:12px; overflow:hidden; box-shadow:inset 0 -14px 24px rgba(0,0,0,.35);}
+  #arena::after{content:""; position:absolute; left:0; right:0; bottom:0; height:8px;
+                background:repeating-linear-gradient(90deg,#ffd23f 0 14px,#0b1d3a 14px 28px); opacity:.75;}
+  .inv{position:absolute; top:-26px; font-weight:900; font-size:16px; color:#ffd23f; text-shadow:0 2px 4px #000;
+       white-space:nowrap; letter-spacing:.5px; transition:color .12s;}
+  .inv.near{color:#7bffb0;}
+  .inv.long{font-size:14px;}
+  #startCurtain{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;
+                gap:10px; background:rgba(8,20,45,.86); color:#fff; text-align:center; padding:16px; z-index:5;}
+  #startCurtain h2{font-size:1.15rem;}
+  #startCurtain p{font-size:.85rem; color:#c7d4f5; max-width:420px;}
+  #typed{width:100%; margin-top:10px; border:2px solid var(--accent-soft); border-radius:10px; padding:12px 14px;
+         font-size:1.05rem; font-weight:700; letter-spacing:1px; text-transform:lowercase; outline:none; background:#fff; color:var(--ink);}
+  #typed:focus{border-color:var(--accent);}
+  #typed:disabled{background:#f1f3f8; color:var(--muted);}
+  .btns{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;}
+  button.act{border:none; border-radius:9px; padding:10px 16px; font-weight:700; font-size:.88rem; cursor:pointer; transition:.15s;}
+  .b-go{background:var(--good); color:#fff;}
+  .b-again{background:#e9ecf3; color:var(--ink);}
+  button.act:hover{filter:brightness(1.08);}
+  .score{font-size:.92rem; margin-top:10px; color:var(--muted); font-weight:600;}
+  .banner{display:none; margin-top:10px; padding:12px; border-radius:10px; background:var(--good-soft); color:var(--good);
+          font-weight:800; text-align:center; font-size:1rem;}
+  .banner.show{display:block; animation:pop .4s;}
+  .banner.lose{background:var(--bad-soft); color:var(--bad);}
+  @keyframes pop{0%{transform:scale(.85); opacity:0;} 100%{transform:scale(1); opacity:1;}}
+  .wordrow{font-size:.86rem; padding:5px 7px; border-radius:7px; line-height:1.35;}
+  .wordrow b{color:var(--accent); text-transform:uppercase; letter-spacing:.5px;}
+  .wordrow.hit{color:var(--muted);}
+  .wordrow.hit b{color:var(--good);}
+  .wordrow.hit b::after{content:" ✓";}
+  footer{max-width:1100px; margin:18px auto 0; text-align:center; color:var(--muted); font-size:.75rem;}
+  @media (max-width:480px){ body{padding:8px;} .board{padding:10px;} .inv{font-size:15px;} }
+  .topnav{position:sticky; top:0; z-index:30; background:#fff; display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+    padding:10px 18px; box-shadow:0 2px 10px rgba(20,30,60,.08); margin:-18px -18px 16px;}
+  .topnav img{height:32px; width:auto; display:block;}
+  .topnav .nav-sp{margin-left:auto;}
+  .navbtn{text-decoration:none; font-weight:700; font-size:.85rem; padding:8px 14px; border-radius:9px; white-space:nowrap;
+    background:var(--accent-soft); color:var(--accent); transition:.15s; border:none; cursor:pointer;}
+  .navbtn:hover{filter:brightness(.97);}
+  .navbtn.primary{background:var(--accent); color:#fff;}
+  @media (max-width:480px){ .topnav{margin:-8px -8px 12px; padding:8px 12px;} .navbtn{padding:7px 11px; font-size:.8rem;} }
+</style>
+  <meta name="google" content="notranslate">
+  <script src="config.js?v=18"></script>
+  <script src="anticheat.js?v=6" data-activity="word-invaders-u4w1"></script>
+<script src="nis-nav.js?v=1"></script>
+</head>
+<body>
+<nav class="topnav">
+  <img src="assets/logo-h.svg" alt="Nordic International School" onerror="this.style.display='none'">
+  <span class="nav-sp"></span>
+  <a class="navbtn" href="activities.html">🎲 Actividades</a>
+  <a class="navbtn primary" href="./">🏫 Portal</a>
+</nav>
+<header>
+  <h1>👾 FR · 7e · Semaine 4 — Porter et mettre — Word Invaders</h1>
+  <p>Tape les mots avant qu'ils n'atterrissent. Français NIS · 7e</p>
+</header>
+
+<div class="tabs" id="tabs"></div>
+
+<div class="wrap">
+  <div class="board">
+    <div class="hud">
+      <span>👾 <span id="score">0</span> pts</span>
+      <span id="shields">🛡️🛡️🛡️</span>
+      <span class="pill" id="progress">0 / 15</span>
+      <span id="watch">⏱ 00:00</span>
+    </div>
+    <div id="arena">
+      <div id="startCurtain">
+        <h2>👾 <span id="curtainDay">Day 1</span></h2>
+        <p id="curtainSub">Type each word before it reaches the bottom. Three shields — every word that lands costs one.</p>
+        <button class="act b-go" id="startBtn">▶ Start invasion</button>
+      </div>
+    </div>
+    <input id="typed" placeholder="Tape le mot — BOUM 💣" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" disabled>
+    <div class="btns">
+      <button class="act b-again" id="againBtn">↺ Restart day</button>
+    </div>
+    <div class="score" id="stats"></div>
+    <div class="banner" id="banner"></div>
+  </div>
+  <div class="side">
+    <div class="panel"><h3>Words of the day</h3><div id="wordList"></div></div>
+    <div class="panel"><h3>How to play</h3>
+      <div class="wordrow">Words fall from the top. Type one and press nothing — it explodes as soon as it matches.</div>
+      <div class="wordrow">A word that reaches the bottom costs a 🛡️ shield. Lose all three and the day restarts.</div>
+      <div class="wordrow">Destroy 15 invaders to clear the day. Longer words are worth more points.</div>
+    </div>
+  </div>
+</div>
+
+<footer>Unité 4 · 7e · Semaine 4 · Porter et mettre · Jour 1 · Jour 2 · Jour 3</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+<script src="config.js"></script>
+<script>
+/* Portal NIS: guarda el resultado en activity_attempts y lo envia por email (webhook).
+   Si no hay sesion del portal (uso independiente), no hace nada. */
+window.NISACT=(function(){
+  let _sb=null;
+  function client(){ if(_sb) return _sb; if(!window.supabase||!window.NIS_CONFIG) return null;
+    _sb=window.supabase.createClient(NIS_CONFIG.SUPABASE_URL,NIS_CONFIG.SUPABASE_KEY); return _sb; }
+  async function student(){ const c=client(); if(!c) return null;
+    try{ const u=await c.auth.getUser(); if(!u||!u.data||!u.data.user) return null;
+      const p=await c.from('profiles').select('full_name,first_name,email,cefr_level,grades(name)').eq('id',u.data.user.id).maybeSingle();
+      const d=(p&&p.data)||{}; return {uid:u.data.user.id,email:u.data.user.email||d.email,full_name:d.full_name,first_name:d.first_name};
+    }catch(e){ return null; } }
+  async function submit(r){
+    const s=await student(); if(!s) return {skipped:true};
+    try{ await client().from('activity_attempts').insert({student_id:s.uid,activity:r.activity,title:r.title,level:r.level,
+      score:r.score,total:r.total,hints_used:r.hints,lives_left:r.lives,duration_sec:r.duration}); }catch(e){}
+    try{ const m=Math.floor(r.duration/60), sec=r.duration%60;
+      await fetch(NIS_CONFIG.WRITING_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body:JSON.stringify({skill:'Activity',name:s.full_name||s.first_name||'',email:s.email||'',level:r.level,
+          examTitle:r.title+' - Time '+m+'m '+String(sec).padStart(2,'0')+'s - Hints '+r.hints+' - Lives left '+r.lives,
+          examType:r.activity,score:r.score,total:r.total,duration_min:Math.max(1,Math.round(r.duration/60))})});
+    }catch(e){}
+    return {sent:true};
+  }
+  return {submit};
+})();
+</script>
+<script>
+const WEEK = 4;
+const TARGET = 15;          /* invasores a destruir para limpiar el dia */
+const DATA = {"D1": {"label": "Jour 1", "sub": "Découverte", "words": [{"w": "porter", "c": "Avoir un vêtement sur soi."}, {"w": "mettre", "c": "Enfiler un vêtement sur soi."}, {"w": "enlever", "c": "Retirer un vêtement que l'on a sur soi."}, {"w": "essayer", "c": "Mettre un vêtement pour voir s'il convient."}, {"w": "choisir", "c": "Prendre une chose plutôt qu'une autre."}, {"w": "acheter", "c": "Obtenir une chose en payant."}]}, "D2": {"label": "Jour 2", "sub": "Approfondissement", "words": [{"w": "taille", "c": "La mesure d'un vêtement : S, M, L…"}, {"w": "miroir", "c": "Surface où l'on voit son reflet."}, {"w": "cabine", "c": "Petite pièce du magasin où l'on essaie les vêtements."}, {"w": "tenue", "c": "L'ensemble des vêtements que l'on porte."}, {"w": "magasin", "c": "Endroit où l'on achète des choses."}, {"w": "prix", "c": "Ce que coûte une chose."}]}, "D3": {"label": "Jour 3", "sub": "Révision", "words": [{"w": "porter", "c": "Avoir un vêtement sur soi."}, {"w": "mettre", "c": "Enfiler un vêtement sur soi."}, {"w": "enlever", "c": "Retirer un vêtement que l'on a sur soi."}, {"w": "essayer", "c": "Mettre un vêtement pour voir s'il convient."}, {"w": "choisir", "c": "Prendre une chose plutôt qu'une autre."}, {"w": "acheter", "c": "Obtenir une chose en payant."}, {"w": "taille", "c": "La mesure d'un vêtement : S, M, L…"}, {"w": "miroir", "c": "Surface où l'on voit son reflet."}, {"w": "cabine", "c": "Petite pièce du magasin où l'on essaie les vêtements."}, {"w": "tenue", "c": "L'ensemble des vêtements que l'on porte."}, {"w": "magasin", "c": "Endroit où l'on achète des choses."}, {"w": "prix", "c": "Ce que coûte une chose."}]}};
+
+/* Motor: portado de games.wordInvaders (BLOX English) — palabras que caen,
+   3 escudos, spawn que acelera. Aqui el pool es el vocabulario del dia. */
+let level = 'D1';
+let live = [], score = 0, shields = 3, destroyed = 0, spawned = 0;
+let running = false, spawnMs = 2400, lastSpawn = 0, loopInt = null, lastTs = 0;
+let elapsed = 0, timerInt = null;
+const done = {}, hitWords = {};
+
+const $ = id => document.getElementById(id);
+const norm = s => String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z]/g,'');
+function fmtT(s){ return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0'); }
+
+function best(){ try{ return +localStorage.getItem('wi-u4w'+WEEK+'-'+level) || 0; }catch(e){ return 0; } }
+function setBest(v){ try{ localStorage.setItem('wi-u4w'+WEEK+'-'+level, v); }catch(e){} }
+
+function buildTabs(){
+  const t = $('tabs'); t.innerHTML = '';
+  for (const k of Object.keys(DATA)){
+    const b = document.createElement('button');
+    b.className = 'tab' + (k===level?' on':'') + (done[k]?' done':'');
+    b.innerHTML = DATA[k].label + '<small>' + DATA[k].sub + '</small>';
+    b.onclick = () => { level = k; load(); };
+    t.appendChild(b);
+  }
+}
+
+function drawHud(){
+  $('score').textContent = score;
+  $('shields').textContent = '🛡️'.repeat(Math.max(0,shields)) || '💀';
+  $('progress').textContent = destroyed + ' / ' + TARGET;
+  $('watch').textContent = '⏱ ' + fmtT(elapsed);
+  $('stats').textContent = 'Invaders destroyed: ' + destroyed + ' / ' + TARGET +
+    ' · Words that landed: ' + Math.max(0, spawned - destroyed - live.length) +
+    (best() ? ' · Best score: ' + best() : '');
+}
+
+function drawWordList(){
+  const box = $('wordList'); box.innerHTML = '';
+  for (const w of DATA[level].words){
+    const el = document.createElement('div');
+    el.className = 'wordrow' + (hitWords[w.w] ? ' hit' : '');
+    el.innerHTML = '<b>' + w.w + '</b> — ' + w.c;
+    box.appendChild(el);
+  }
+}
+
+function load(){
+  stop();
+  live.forEach(o => o.el.remove()); live = [];
+  score = 0; shields = 3; destroyed = 0; spawned = 0; elapsed = 0;
+  spawnMs = 2400; lastSpawn = 0; lastTs = 0;
+  for (const k in hitWords) delete hitWords[k];
+  $('banner').className = 'banner';
+  $('typed').value = ''; $('typed').disabled = true;
+  $('curtainDay').textContent = DATA[level].label + ' — ' + DATA[level].sub;
+  $('curtainSub').textContent = done[level]
+    ? 'Day cleared ✓ — play it again to beat your score.'
+    : 'Type each word before it reaches the bottom. Three shields — every word that lands costs one.';
+  $('startCurtain').style.display = 'flex';
+  buildTabs(); drawWordList(); drawHud();
+}
+
+function start(){
+  $('startCurtain').style.display = 'none';
+  $('typed').disabled = false;
+  setTimeout(() => { try{ $('typed').focus(); }catch(e){} }, 120);
+  running = true; lastTs = 0; lastSpawn = 0;
+  clearInterval(loopInt); loopInt = setInterval(frame, 33);
+  clearInterval(timerInt); timerInt = setInterval(() => { elapsed++; drawHud(); }, 1000);
+}
+
+function stop(){
+  running = false;
+  clearInterval(loopInt); clearInterval(timerInt);
+}
+
+function spawn(){
+  const pool = DATA[level].words.map(w => w.w.toLowerCase());
+  if (!pool.length) return;
+  const free = pool.filter(w => !live.some(o => o.w === w));
+  if (!free.length) return;
+  const w = free[Math.floor(Math.random()*free.length)];
+  const arena = $('arena');
+  const el = document.createElement('div');
+  el.className = 'inv' + (w.length > 9 ? ' long' : '');
+  el.textContent = w;
+  arena.appendChild(el);
+  const width = el.offsetWidth || w.length*10;
+  const x = Math.random() * Math.max(8, arena.clientWidth - width - 12) + 6;
+  el.style.left = x + 'px';
+  /* Las palabras largas caen algo mas lento: escribirlas toma mas tiempo. */
+  const slow = w.length > 9 ? 0.78 : 1;
+  live.push({ w, el, y:-26, speed: (20 + Math.random()*12 + (2400-spawnMs)/60) * slow });
+  spawned++;
+}
+
+function boom(o, hit){
+  o.el.textContent = hit ? '💥' : '😵';
+  o.el.style.color = '#fff';
+  setTimeout(() => o.el.remove(), 320);
+}
+
+function frame(){
+  if (!running) return;
+  const arena = $('arena');
+  const ts = performance.now();
+  const dt = Math.min(50, ts - (lastTs || ts)); lastTs = ts;
+  if (!lastSpawn) lastSpawn = ts;
+  if (ts - lastSpawn > spawnMs){ lastSpawn = ts; spawn(); spawnMs = Math.max(1000, spawnMs - 45); }
+  for (const o of [...live]){
+    o.y += o.speed * dt / 1000;
+    o.el.style.top = o.y + 'px';
+    if (o.y > arena.clientHeight - 24){
+      live = live.filter(x => x !== o); boom(o, false);
+      shields--; drawHud();
+      if (navigator.vibrate) try{ navigator.vibrate(60); }catch(e){}
+      if (shields <= 0) return gameOver();
+    }
+  }
+}
+
+/* Resalta en verde las palabras que empiezan por lo que va escribiendo. */
+function highlight(v){
+  for (const o of live) o.el.classList.toggle('near', !!v && norm(o.w).startsWith(v));
+}
+
+$('typed').addEventListener('input', e => {
+  const v = norm(e.target.value);
+  const o = live.find(x => norm(x.w) === v);
+  if (o){
+    live = live.filter(x => x !== o); boom(o, true);
+    score += o.w.length * 2; destroyed++;
+    hitWords[o.w.toUpperCase()] = true;
+    e.target.value = ''; drawWordList(); drawHud(); highlight('');
+    if (destroyed >= TARGET) return win();
+  } else {
+    highlight(v);
+  }
+});
+
+function endRound(){
+  stop();
+  live.forEach(o => o.el.remove()); live = [];
+  $('typed').disabled = true; $('typed').value = '';
+  if (score > best()) setBest(score);
+  drawHud();
+}
+
+function gameOver(){
+  endRound();
+  const b = $('banner');
+  b.className = 'banner lose show';
+  b.textContent = '💀 ¡Te quedaste sin escudos! Destruiste ' + destroyed + ' de ' + TARGET +
+                  '. Pulsa "Restart day" para volver a intentarlo.';
+  $('startCurtain').style.display = 'flex';
+  $('curtainDay').textContent = 'Game over';
+  $('curtainSub').textContent = 'Score ' + score + ' · destroyed ' + destroyed + '/' + TARGET;
+}
+
+function win(){
+  endRound();
+  const wasDone = done[level];
+  done[level] = true;
+  const b = $('banner');
+  b.className = 'banner show';
+  b.textContent = '🎉 ¡Invasión detenida en ' + fmtT(elapsed) + '! Score ' + score +
+                  '. Tu resultado fue guardado en My Results y enviado a tu correo.';
+  if (!wasDone && window.NISACT) NISACT.submit({
+    activity:'word-invaders', title:'Word Invaders — FR 7e Semaine 4', level:level,
+    score:destroyed, total:TARGET, hints:0, lives:shields, duration:elapsed });
+  buildTabs();
+  $('startCurtain').style.display = 'flex';
+  $('curtainDay').textContent = '🏆 Day cleared';
+  $('curtainSub').textContent = 'Score ' + score + ' · shields left ' + shields + ' · time ' + fmtT(elapsed);
+}
+
+$('startBtn').onclick = () => { if ($('banner').classList.contains('show')) load(); start(); };
+$('againBtn').onclick = () => { load(); };
+window.addEventListener('resize', () => { /* el arena es responsive; nada que recalcular */ });
+
+load();
+</script>
+</body>
+</html>
