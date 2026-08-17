@@ -81,18 +81,23 @@
     ],
   };
 
-  /* Unidades de un grado, en orden. */
-  window.ACTIVITIES_DATA.forGrade = function(grade){
-    return this.units.filter(u=>u.grade===grade);
+  /* Unidades de un grado, en orden. La materia por defecto es English para
+     que todo lo que existía siga funcionando sin tocar: las unidades de
+     francés (activities-fr-data.js) se marcan con subject:'french'. */
+  window.ACTIVITIES_DATA.subjectOf = function(u){ return (u && u.subject) || 'english'; };
+  window.ACTIVITIES_DATA.forGrade = function(grade,subject){
+    const s = subject || 'english';
+    return this.units.filter(u=>u.grade===grade && this.subjectOf(u)===s);
   };
   /* Clave del nodo de permisos de una unidad (tabla node_access/student_access).
-     Cuelga de la de Activities: english.classes.g9.activities.u4 */
-  window.ACTIVITIES_DATA.nodeKey = function(grade,unitId){
-    return 'english.classes.'+grade+'.activities.'+unitId;
+     Cuelga de la de Activities: english.classes.g9.activities.u4
+     …o french.classes.g7.activities.u4 cuando la materia es francés. */
+  window.ACTIVITIES_DATA.nodeKey = function(grade,unitId,subject){
+    return (subject||'english')+'.classes.'+grade+'.activities.'+unitId;
   };
   /* …y el de una semana cuelga del de su unidad:
      english.classes.g9.activities.u4.w3 */
-  window.ACTIVITIES_DATA.weekNodeKey = function(grade,unitId,weekId){
-    return this.nodeKey(grade,unitId)+'.'+weekId;
+  window.ACTIVITIES_DATA.weekNodeKey = function(grade,unitId,weekId,subject){
+    return this.nodeKey(grade,unitId,subject)+'.'+weekId;
   };
 })();

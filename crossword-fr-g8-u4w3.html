@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Mots croisés — FR · 8e · Semaine 3 — Personnalité, goûts et opinions</title>
+<style>
+  :root{
+    --bg:#f4f6fb; --card:#ffffff; --ink:#1e2433; --muted:#67718a;
+    --accent:#3b5bdb; --accent-soft:#e7ecfd;
+    --good:#2f9e44; --good-soft:#d3f4dc; --bad:#e03131; --bad-soft:#ffe3e3;
+    --gold:#f59f00;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:'Segoe UI',system-ui,Arial,sans-serif; background:var(--bg); color:var(--ink); padding:18px; touch-action:manipulation;}
+  header{max-width:1100px; margin:0 auto 14px; text-align:center;}
+  header h1{font-size:1.5rem; letter-spacing:.3px;}
+  header p{color:var(--muted); font-size:.9rem; margin-top:4px;}
+  .tabs{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin:14px auto;}
+  .tab{border:2px solid transparent; background:var(--card); color:var(--ink); padding:9px 20px; border-radius:24px;
+       font-weight:700; font-size:.95rem; cursor:pointer; box-shadow:0 1px 3px rgba(20,30,60,.12); transition:.15s;}
+  .tab small{display:block; font-weight:500; font-size:.68rem; color:var(--muted);}
+  .tab.on{background:var(--accent); color:#fff; border-color:var(--accent);}
+  .tab.on small{color:#dce4ff;}
+  .tab.done{border-color:var(--good);}
+  .tab.done::after{content:" ✓"; color:var(--good);}
+  .tab.on.done::after{color:#bff2cc;}
+  .wrap{max-width:1100px; margin:0 auto; display:flex; gap:18px; align-items:flex-start; flex-wrap:wrap;}
+  .board{max-width:100%; background:var(--card); border-radius:14px; padding:16px; box-shadow:0 2px 10px rgba(20,30,60,.08); flex:0 0 auto;}
+  .gridbox{display:grid; gap:2px;}
+  .cell{position:relative; width:var(--cs); height:var(--cs); background:var(--accent-soft); border-radius:4px;}
+  .cell.block{background:transparent;}
+  .cell input{width:100%; height:100%; border:none; background:transparent; text-align:center; font-weight:800;
+              font-size:max(16px, calc(var(--cs)*.52)); text-transform:uppercase; color:var(--ink); caret-color:var(--accent); border-radius:4px; outline:none;}
+  .cell input:focus{background:#cdd9ff;}
+  .cell.hl input{background:#dfe7ff;}
+  .cell.hl input:focus{background:#c4d2ff;}
+  .cell .num{position:absolute; top:1px; left:3px; font-size:calc(var(--cs)*.28); font-weight:700; color:var(--accent); pointer-events:none;}
+  .cell.ok input{background:var(--good-soft); color:var(--good);}
+  .cell.ko input{background:var(--bad-soft); color:var(--bad);}
+  .side{flex:1 1 300px; min-width:280px;}
+  .panel{background:var(--card); border-radius:14px; padding:16px 18px; box-shadow:0 2px 10px rgba(20,30,60,.08); margin-bottom:14px;}
+  .panel h3{font-size:.85rem; text-transform:uppercase; letter-spacing:1px; color:var(--accent); margin-bottom:8px;}
+  .clue{font-size:.88rem; padding:5px 7px; border-radius:7px; cursor:pointer; line-height:1.35;}
+  .clue:hover{background:var(--accent-soft);}
+  .clue.cur{background:var(--accent-soft); font-weight:600;}
+  .clue.solved{color:var(--muted); text-decoration:line-through;}
+  .clue b{color:var(--accent); margin-right:4px;}
+  .btns{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;}
+  button.act{border:none; border-radius:9px; padding:10px 16px; font-weight:700; font-size:.88rem; cursor:pointer; transition:.15s;}
+  .b-check{background:var(--accent); color:#fff;}
+  .b-hint{background:var(--gold); color:#fff;}
+  .b-clear{background:#e9ecf3; color:var(--ink);}
+  button.act:hover{filter:brightness(1.08);}
+  .score{font-size:.92rem; margin-top:10px; color:var(--muted); font-weight:600;}
+  .banner{display:none; margin-top:10px; padding:12px; border-radius:10px; background:var(--good-soft); color:var(--good);
+          font-weight:800; text-align:center; font-size:1rem;}
+  .banner.show{display:block; animation:pop .4s;}
+  @keyframes pop{0%{transform:scale(.85); opacity:0;} 100%{transform:scale(1); opacity:1;}}
+  footer{max-width:1100px; margin:18px auto 0; text-align:center; color:var(--muted); font-size:.75rem;}
+  @media (max-width:760px){ .wrap{justify-content:center;} }
+  @media (max-width:480px){ body{padding:8px;} .board{padding:10px;} .gridbox{gap:1px;} }
+  .topnav{position:sticky; top:0; z-index:30; background:#fff; display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+    padding:10px 18px; box-shadow:0 2px 10px rgba(20,30,60,.08); margin:-18px -18px 16px;}
+  .topnav img{height:32px; width:auto; display:block;}
+  .topnav .nav-sp{margin-left:auto;}
+  .navbtn{text-decoration:none; font-weight:700; font-size:.85rem; padding:8px 14px; border-radius:9px; white-space:nowrap;
+    background:var(--accent-soft); color:var(--accent); transition:.15s; border:none; cursor:pointer;}
+  .navbtn:hover{filter:brightness(.97);}
+  .navbtn.primary{background:var(--accent); color:#fff;}
+  @media (max-width:480px){ .topnav{margin:-8px -8px 12px; padding:8px 12px;} .navbtn{padding:7px 11px; font-size:.8rem;} }
+</style>
+  <meta name="google" content="notranslate">
+  <script src="config.js?v=18"></script>
+  <script src="anticheat.js?v=6" data-activity="crossword-u4w1"></script>
+<script src="nis-nav.js?v=1"></script>
+</head>
+<body>
+<nav class="topnav">
+  <img src="assets/logo-h.svg" alt="Nordic International School" onerror="this.style.display='none'">
+  <span class="nav-sp"></span>
+  <a class="navbtn" href="activities.html">🎲 Actividades</a>
+  <a class="navbtn primary" href="./">🏫 Portal</a>
+</nav>
+<header>
+  <h1>🧠 FR · 8e · Semaine 3 — Personnalité, goûts et opinions — Mots croisés</h1>
+  <p>Choisis un jour, lis la définition et écris le mot. Français NIS · 8e</p>
+</header>
+
+<div class="tabs" id="tabs"></div>
+
+<div class="wrap">
+  <div class="board">
+    <div class="gridbox" id="grid"></div>
+    <div id="lifebar" style="margin-top:10px;font-weight:800;font-size:1.05rem;display:flex;gap:16px;align-items:center">
+      <span id="hearts" title="Vidas: cada pista cuesta 1 vida"></span>
+      <span id="watch" style="font-variant-numeric:tabular-nums;color:var(--accent)">⏱ 00:00</span>
+    </div>
+    <div class="btns">
+      <button class="act b-check" onclick="checkAll()">✔ Check answers</button>
+      <button class="act b-hint" onclick="hintLetter()">💡 Hint (1 letter)</button>
+      <button class="act b-clear" onclick="clearGrid()">↺ Clear</button>
+    </div>
+    <div class="score" id="score"></div>
+    <div class="banner" id="banner">🎉 Excellent! Level complete!</div>
+  </div>
+  <div class="side">
+    <div class="panel"><h3>→ Across</h3><div id="acrossList"></div></div>
+    <div class="panel"><h3>↓ Down</h3><div id="downList"></div></div>
+  </div>
+</div>
+
+<footer>Unité 4 · 8e · Semaine 3 · Personnalité, goûts et opinions · Jour 1 · Jour 2 · Jour 3</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+<script src="config.js"></script>
+<script>
+/* Portal NIS: guarda el resultado en activity_attempts y lo envia por email (webhook).
+   Si no hay sesion del portal (uso independiente), no hace nada. */
+window.NISACT=(function(){
+  let _sb=null;
+  function client(){ if(_sb) return _sb; if(!window.supabase||!window.NIS_CONFIG) return null;
+    _sb=window.supabase.createClient(NIS_CONFIG.SUPABASE_URL,NIS_CONFIG.SUPABASE_KEY); return _sb; }
+  async function student(){ const c=client(); if(!c) return null;
+    try{ const u=await c.auth.getUser(); if(!u||!u.data||!u.data.user) return null;
+      const p=await c.from('profiles').select('full_name,first_name,email,cefr_level,grades(name)').eq('id',u.data.user.id).maybeSingle();
+      const d=(p&&p.data)||{}; return {uid:u.data.user.id,email:u.data.user.email||d.email,full_name:d.full_name,first_name:d.first_name};
+    }catch(e){ return null; } }
+  async function submit(r){
+    const s=await student(); if(!s) return {skipped:true};
+    try{ await client().from('activity_attempts').insert({student_id:s.uid,activity:r.activity,title:r.title,level:r.level,
+      score:r.score,total:r.total,hints_used:r.hints,lives_left:r.lives,duration_sec:r.duration}); }catch(e){}
+    try{ const m=Math.floor(r.duration/60), sec=r.duration%60;
+      await fetch(NIS_CONFIG.WRITING_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body:JSON.stringify({skill:'Activity',name:s.full_name||s.first_name||'',email:s.email||'',level:r.level,
+          examTitle:r.title+' - Time '+m+'m '+String(sec).padStart(2,'0')+'s - Hints '+r.hints+' - Lives left '+r.lives,
+          examType:r.activity,score:r.score,total:r.total,duration_min:Math.max(1,Math.round(r.duration/60))})});
+    }catch(e){}
+    return {sent:true};
+  }
+  return {submit};
+})();
+</script>
+<script>
+const DATA = {"D1": {"width": 12, "height": 11, "words": [{"word": "PERSONNALITE", "row": 3, "col": 0, "dir": "across", "clue": "L'ensemble de ce qui fait qu'on est soi-même."}, {"word": "CARACTERE", "row": 2, "col": 7, "dir": "down", "clue": "La manière d'être et de réagir d'une personne."}, {"word": "QUALITE", "row": 5, "col": 5, "dir": "across", "clue": "Un bon côté de quelqu'un."}, {"word": "OPINION", "row": 1, "col": 9, "dir": "down", "clue": "Ce que l'on pense d'un sujet."}, {"word": "DEFAUT", "row": 2, "col": 1, "dir": "down", "clue": "Un mauvais côté de quelqu'un."}, {"word": "AVIS", "row": 0, "col": 3, "dir": "down", "clue": "Ce que l'on pense d'une chose."}], "label": "Jour 1", "sub": "Découverte"}, "D2": {"width": 13, "height": 11, "words": [{"word": "RESPECTER", "row": 4, "col": 0, "dir": "across", "clue": "Traiter quelqu'un avec considération."}, {"word": "DETESTER", "row": 3, "col": 1, "dir": "down", "clue": "Ne pas aimer du tout."}, {"word": "ADMIRER", "row": 0, "col": 8, "dir": "down", "clue": "Trouver quelqu'un remarquable."}, {"word": "TROUVER", "row": 4, "col": 6, "dir": "down", "clue": "Le verbe qui sert à donner son opinion : je … que…"}, {"word": "PENSER", "row": 4, "col": 3, "dir": "down", "clue": "Avoir une idée dans la tête."}, {"word": "AIMER", "row": 0, "col": 8, "dir": "across", "clue": "Trouver quelqu'un ou quelque chose agréable."}], "label": "Jour 2", "sub": "Approfondissement"}, "D3": {"width": 15, "height": 19, "words": [{"word": "PERSONNALITE", "row": 2, "col": 3, "dir": "across", "clue": "L'ensemble de ce qui fait qu'on est soi-même."}, {"word": "CARACTERE", "row": 1, "col": 10, "dir": "down", "clue": "La manière d'être et de réagir d'une personne."}, {"word": "RESPECTER", "row": 2, "col": 5, "dir": "down", "clue": "Traiter quelqu'un avec considération."}, {"word": "DETESTER", "row": 9, "col": 4, "dir": "across", "clue": "Ne pas aimer du tout."}, {"word": "QUALITE", "row": 4, "col": 8, "dir": "across", "clue": "Un bon côté de quelqu'un."}, {"word": "OPINION", "row": 0, "col": 12, "dir": "down", "clue": "Ce que l'on pense d'un sujet."}, {"word": "ADMIRER", "row": 6, "col": 0, "dir": "across", "clue": "Trouver quelqu'un remarquable."}, {"word": "TROUVER", "row": 9, "col": 9, "dir": "down", "clue": "Le verbe qui sert à donner son opinion : je … que…"}, {"word": "DEFAUT", "row": 6, "col": 1, "dir": "down", "clue": "Un mauvais côté de quelqu'un."}, {"word": "PENSER", "row": 8, "col": 7, "dir": "down", "clue": "Avoir une idée dans la tête."}, {"word": "AIMER", "row": 15, "col": 5, "dir": "across", "clue": "Trouver quelqu'un ou quelque chose agréable."}, {"word": "AVIS", "row": 15, "col": 5, "dir": "down", "clue": "Ce que l'on pense d'une chose."}], "label": "Jour 3", "sub": "Révision"}};
+
+let level = "D1", cells = {}, sol = {}, numbers = {}, entries = [], curEntry = null, hintsUsed = 0;
+const done = {};
+/* === Vidas y cronómetro === */
+let lives = 5, elapsed = 0, timerInt = null;
+function fmtT(s){ return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0'); }
+function drawStatus(){
+  const h=document.getElementById('hearts'), w=document.getElementById('watch');
+  if(h) h.textContent='❤️'.repeat(lives)+'🤍'.repeat(Math.max(0,5-lives));
+  if(w) w.textContent='⏱ '+fmtT(elapsed);
+}
+function startWatch(){
+  clearInterval(timerInt);
+  if(done[level]) { drawStatus(); return; }
+  timerInt=setInterval(()=>{ elapsed++; drawStatus(); },1000);
+  drawStatus();
+}
+
+function buildTabs(){
+  const t = document.getElementById('tabs');
+  t.innerHTML = '';
+  for (const k of Object.keys(DATA)){
+    const b = document.createElement('button');
+    b.className = 'tab' + (k===level?' on':'') + (done[k]?' done':'');
+    b.innerHTML = `${DATA[k].label}<small>${DATA[k].sub}</small>`;
+    b.onclick = () => { level = k; load(); };
+    t.appendChild(b);
+  }
+}
+
+function key(r,c){ return r+'_'+c; }
+
+function load(){
+  const d = DATA[level];
+  cells = {}; sol = {}; numbers = {}; entries = []; curEntry = null; hintsUsed = 0;
+  lives = 5; elapsed = 0; startWatch();
+  document.getElementById('banner').classList.remove('show');
+  // build solution map
+  for (const w of d.words){
+    const dr = w.dir==='down'?1:0, dc = w.dir==='across'?1:0;
+    for (let i=0;i<w.word.length;i++) sol[key(w.row+dr*i, w.col+dc*i)] = w.word[i];
+  }
+  // numbering (standard: scan rows, number cells starting a word)
+  let n = 1;
+  for (let r=0;r<d.height;r++) for (let c=0;c<d.width;c++){
+    if (!sol[key(r,c)]) continue;
+    const startsA = sol[key(r,c+1)] && !sol[key(r,c-1)];
+    const startsD = sol[key(r+1,c)] && !sol[key(r-1,c)];
+    if (startsA || startsD) numbers[key(r,c)] = n++;
+  }
+  for (const w of d.words) w.num = numbers[key(w.row,w.col)];
+  entries = d.words.slice().sort((a,b)=>a.num-b.num);
+  // grid
+  const pad = window.innerWidth<=480 ? 42 : 84;
+  const cs = Math.max(20, Math.min(40, Math.floor((Math.min(window.innerWidth,640)-pad-d.width)/d.width)));
+  const g = document.getElementById('grid');
+  g.style.setProperty('--cs', cs+'px');
+  g.style.gridTemplateColumns = `repeat(${d.width}, var(--cs))`;
+  g.innerHTML = '';
+  for (let r=0;r<d.height;r++) for (let c=0;c<d.width;c++){
+    const div = document.createElement('div');
+    const k = key(r,c);
+    if (sol[k]){
+      div.className = 'cell';
+      div.style.setProperty('--cs', cs+'px');
+      if (numbers[k]) div.innerHTML = `<span class="num">${numbers[k]}</span>`;
+      const inp = document.createElement('input');
+      inp.maxLength = 1; inp.autocomplete='off'; inp.setAttribute('autocapitalize','characters'); inp.setAttribute('autocorrect','off'); inp.setAttribute('spellcheck','false'); inp.dataset.r=r; inp.dataset.c=c;
+      inp.addEventListener('input', onInput);
+      inp.addEventListener('keydown', onKey);
+      inp.addEventListener('focus', ()=>selectEntryAt(r,c));
+      div.appendChild(inp);
+      cells[k] = div;
+    } else {
+      div.className = 'cell block';
+      div.style.setProperty('--cs', cs+'px');
+    }
+    g.appendChild(div);
+  }
+  // clues
+  const al = document.getElementById('acrossList'), dl = document.getElementById('downList');
+  al.innerHTML=''; dl.innerHTML='';
+  for (const w of entries){
+    const el = document.createElement('div');
+    el.className='clue'; el.id = 'clue_'+w.num+'_'+w.dir;
+    el.tabIndex=0; el.setAttribute('role','button');
+    el.addEventListener('keydown',ev=>{ if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); el.click(); } });
+    el.innerHTML = `<b>${w.num}.</b> ${w.clue} <span style="color:var(--muted)">(${w.word.length})</span>`;
+    el.onclick = ()=>{ setEntry(w); focusCell(w.row,w.col); };
+    (w.dir==='across'?al:dl).appendChild(el);
+  }
+  buildTabs();
+  updateScore();
+}
+
+function entryCells(w){
+  const dr = w.dir==='down'?1:0, dc = w.dir==='across'?1:0, out=[];
+  for (let i=0;i<w.word.length;i++) out.push(key(w.row+dr*i, w.col+dc*i));
+  return out;
+}
+function setEntry(w){
+  curEntry = w;
+  document.querySelectorAll('.cell.hl').forEach(e=>e.classList.remove('hl'));
+  document.querySelectorAll('.clue.cur').forEach(e=>e.classList.remove('cur'));
+  for (const k of entryCells(w)) cells[k].classList.add('hl');
+  const el = document.getElementById('clue_'+w.num+'_'+w.dir);
+  if (el){ el.classList.add('cur'); el.scrollIntoView({block:'nearest'}); }
+}
+function selectEntryAt(r,c){
+  const hits = entries.filter(w=>entryCells(w).includes(key(r,c)));
+  if (!hits.length) return;
+  if (curEntry && hits.includes(curEntry)) { setEntry(curEntry); return; }
+  setEntry(hits[0]);
+}
+function focusCell(r,c){
+  const k = key(r,c);
+  if (cells[k]) cells[k].querySelector('input').focus();
+}
+function onInput(e){
+  const inp = e.target;
+  inp.value = inp.value.replace(/[^a-zA-Z]/g,'').toUpperCase();
+  inp.parentElement.classList.remove('ok','ko');
+  if (inp.value && curEntry){
+    const ks = entryCells(curEntry), i = ks.indexOf(key(+inp.dataset.r, +inp.dataset.c));
+    if (i>-1 && i<ks.length-1){
+      const [r,c] = ks[i+1].split('_').map(Number);
+      focusCell(r,c);
+    }
+  }
+  liveCheck();
+}
+function onKey(e){
+  const r = +e.target.dataset.r, c = +e.target.dataset.c;
+  const mv = {ArrowUp:[-1,0],ArrowDown:[1,0],ArrowLeft:[0,-1],ArrowRight:[0,1]}[e.key];
+  if (mv){ e.preventDefault();
+    let rr=r+mv[0], cc=c+mv[1];
+    while (rr>=0&&cc>=0&&rr<DATA[level].height&&cc<DATA[level].width){
+      if (cells[key(rr,cc)]){ focusCell(rr,cc); break; }
+      rr+=mv[0]; cc+=mv[1];
+    }
+  } else if (e.key==='Backspace' && !e.target.value && curEntry){
+    const ks = entryCells(curEntry), i = ks.indexOf(key(r,c));
+    if (i>0){ const [pr,pc] = ks[i-1].split('_').map(Number); focusCell(pr,pc); }
+  }
+}
+function wordSolved(w){
+  return entryCells(w).every(k=>cells[k].querySelector('input').value === sol[k]);
+}
+function liveCheck(){
+  let solved = 0;
+  for (const w of entries){
+    const ok = wordSolved(w);
+    const el = document.getElementById('clue_'+w.num+'_'+w.dir);
+    if (el) el.classList.toggle('solved', ok);
+    if (ok) solved++;
+  }
+  updateScore(solved);
+  if (solved === entries.length){
+    if(!done[level]){
+      done[level] = true;
+      clearInterval(timerInt);
+      const b=document.getElementById('banner');
+      b.textContent='🎉 Excellent! Level complete in '+fmtT(elapsed)+'! Tu resultado fue guardado en My Results y enviado a tu correo.';
+      if(window.NISACT) NISACT.submit({activity:'crossword',title:'Mots croisés — FR 8e Semaine 3',level:level,
+        score:entries.length,total:entries.length,hints:hintsUsed,lives:lives,duration:elapsed});
+    }
+    document.getElementById('banner').classList.add('show');
+    Object.keys(cells).forEach(k=>{cells[k].classList.add('ok'); cells[k].classList.remove('ko');});
+    buildTabs();
+  }
+}
+function updateScore(solved){
+  if (solved===undefined) solved = entries.filter(wordSolved).length;
+  document.getElementById('score').textContent =
+    `Words solved: ${solved} / ${entries.length}` + (hintsUsed?` · Hints used: ${hintsUsed}`:'');
+}
+function checkAll(){
+  for (const k in cells){
+    const inp = cells[k].querySelector('input');
+    cells[k].classList.remove('ok','ko');
+    if (!inp.value) continue;
+    cells[k].classList.add(inp.value===sol[k] ? 'ok' : 'ko');
+  }
+  liveCheck();
+}
+function hintLetter(){
+  if(done[level]) return;
+  const empty = Object.keys(cells).filter(k=>cells[k].querySelector('input').value !== sol[k]);
+  if (!empty.length) return;
+  let pool = empty;
+  if (curEntry){
+    const inEntry = entryCells(curEntry).filter(k=>empty.includes(k));
+    if (inEntry.length) pool = inEntry;
+  }
+  const k = pool[Math.floor(Math.random()*pool.length)];
+  const inp = cells[k].querySelector('input');
+  inp.value = sol[k];
+  cells[k].classList.remove('ko'); cells[k].classList.add('ok');
+  hintsUsed++;
+  lives--; drawStatus();
+  if(lives<=0 && !wordSolvedAll()){
+    setTimeout(()=>{
+      alert('💔 ¡Te quedaste sin vidas! El nivel se reinicia desde cero.');
+      clearGrid(); lives=5; hintsUsed=0; elapsed=0; startWatch(); updateScore();
+    }, 150);
+    return;
+  }
+  liveCheck();
+}
+function wordSolvedAll(){ return entries.every(wordSolved); }
+function clearGrid(){
+  for (const k in cells){
+    const inp = cells[k].querySelector('input');
+    inp.value=''; cells[k].classList.remove('ok','ko');
+  }
+  document.getElementById('banner').classList.remove('show');
+  liveCheck();
+}
+load();
+</script>
+</body>
+</html>

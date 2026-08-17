@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Say It Right — FR · 6e · Semaine 3 — Les adverbes de fréquence</title>
+<style>
+  :root{
+    --bg:#f4f6fb; --card:#ffffff; --ink:#1e2433; --muted:#67718a;
+    --accent:#3b5bdb; --accent-soft:#e7ecfd;
+    --good:#2f9e44; --good-soft:#d3f4dc; --bad:#e03131; --bad-soft:#ffe3e3;
+    --gold:#f59f00; --purple:#7048e8;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:'Segoe UI',system-ui,Arial,sans-serif; background:var(--bg); color:var(--ink); padding:18px; touch-action:manipulation;}
+  header{max-width:1100px; margin:0 auto 14px; text-align:center;}
+  header h1{font-size:1.5rem; letter-spacing:.3px;}
+  header p{color:var(--muted); font-size:.9rem; margin-top:4px;}
+  .tabs{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin:14px auto;}
+  .tab{border:2px solid transparent; background:var(--card); color:var(--ink); padding:9px 20px; border-radius:24px;
+       font-weight:700; font-size:.95rem; cursor:pointer; box-shadow:0 1px 3px rgba(20,30,60,.12); transition:.15s;}
+  .tab small{display:block; font-weight:500; font-size:.68rem; color:var(--muted);}
+  .tab.on{background:var(--accent); color:#fff; border-color:var(--accent);}
+  .tab.on small{color:#dce4ff;}
+  .tab.done{border-color:var(--good);}
+  .tab.done::after{content:" ✓"; color:var(--good);}
+  .tab.on.done::after{color:#bff2cc;}
+  .wrap{max-width:1100px; margin:0 auto; display:flex; gap:18px; align-items:flex-start; flex-wrap:wrap;}
+  .board{flex:1 1 520px; min-width:300px; max-width:100%; background:var(--card); border-radius:14px; padding:18px; box-shadow:0 2px 10px rgba(20,30,60,.08); text-align:center;}
+  .side{flex:1 1 280px; min-width:260px;}
+  .panel{background:var(--card); border-radius:14px; padding:16px 18px; box-shadow:0 2px 10px rgba(20,30,60,.08); margin-bottom:14px;}
+  .panel h3{font-size:.85rem; text-transform:uppercase; letter-spacing:1px; color:var(--accent); margin-bottom:8px;}
+  .hud{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; font-weight:800; font-size:.95rem; margin-bottom:10px;}
+  .hud .pill{background:var(--accent-soft); color:var(--accent); border-radius:20px; padding:4px 12px; font-size:.88rem;}
+  .boss{font-size:54px; line-height:1; margin:2px 0;}
+  .boss.dead{filter:grayscale(1); opacity:.6;}
+  .hpbar{height:12px; border-radius:8px; background:#e9ecf3; overflow:hidden; margin:8px auto 2px; max-width:340px;}
+  .hpfill{height:100%; width:100%; background:linear-gradient(90deg,#ef4444,#f97316); transition:width .4s;}
+  .qcard{background:var(--accent-soft); border-radius:12px; padding:16px; margin:14px auto; max-width:460px;}
+  .qcard .lbl{font-size:.72rem; color:var(--muted); text-transform:uppercase; letter-spacing:1px;}
+  .qcard .word{font-size:2rem; font-weight:900; color:var(--ink); letter-spacing:1px; margin:6px 0 4px; word-break:break-word;}
+  .qcard .clue{font-size:.86rem; color:var(--muted); line-height:1.35;}
+  .btns{display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-top:6px;}
+  button.act{border:none; border-radius:9px; padding:12px 18px; font-weight:700; font-size:.9rem; cursor:pointer; transition:.15s;}
+  .b-hear{background:#e9ecf3; color:var(--ink);}
+  .b-mic{background:var(--purple); color:#fff; min-width:170px; font-size:1rem;}
+  .b-mic.listening{animation:pulse 1s infinite;}
+  .b-skip{background:#e9ecf3; color:var(--muted);}
+  button.act:hover{filter:brightness(1.06);}
+  button.act:disabled{opacity:.5; cursor:default;}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.55}}
+  .fb{margin-top:12px; min-height:52px; font-weight:700; font-size:.95rem; line-height:1.4;}
+  .fb .heard{display:block; font-size:.78rem; font-weight:500; color:var(--muted); margin-top:3px;}
+  .fb.ok{color:var(--good);} .fb.ko{color:var(--bad);}
+  .meter{height:10px; border-radius:8px; background:#e9ecf3; overflow:hidden; max-width:340px; margin:8px auto 0;}
+  .meterfill{height:100%; width:0; background:var(--bad); transition:width .5s;}
+  .meterfill.ok{background:var(--good);}
+  .banner{display:none; margin-top:12px; padding:12px; border-radius:10px; background:var(--good-soft); color:var(--good);
+          font-weight:800; font-size:1rem;}
+  .banner.show{display:block; animation:pop .4s;}
+  .banner.lose{background:var(--bad-soft); color:var(--bad);}
+  @keyframes pop{0%{transform:scale(.85); opacity:0;} 100%{transform:scale(1); opacity:1;}}
+  .scorerow{display:flex; justify-content:space-between; gap:8px; font-size:.86rem; padding:5px 7px; border-radius:7px;}
+  .scorerow b{text-transform:uppercase; letter-spacing:.5px;}
+  .scorerow.ok{color:var(--good); background:var(--good-soft);}
+  .scorerow.ko{color:var(--bad); background:var(--bad-soft);}
+  .scorerow.pend{color:var(--muted);}
+  .warn{display:none; margin:10px auto 0; max-width:520px; padding:12px; border-radius:10px; background:#fff4e6; color:#b35309;
+        font-size:.85rem; font-weight:600; line-height:1.4;}
+  .warn.show{display:block;}
+  footer{max-width:1100px; margin:18px auto 0; text-align:center; color:var(--muted); font-size:.75rem;}
+  @media (max-width:480px){ body{padding:8px;} .board{padding:12px;} .qcard .word{font-size:1.6rem;} }
+  .topnav{position:sticky; top:0; z-index:30; background:#fff; display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+    padding:10px 18px; box-shadow:0 2px 10px rgba(20,30,60,.08); margin:-18px -18px 16px;}
+  .topnav img{height:32px; width:auto; display:block;}
+  .topnav .nav-sp{margin-left:auto;}
+  .navbtn{text-decoration:none; font-weight:700; font-size:.85rem; padding:8px 14px; border-radius:9px; white-space:nowrap;
+    background:var(--accent-soft); color:var(--accent); transition:.15s; border:none; cursor:pointer;}
+  .navbtn:hover{filter:brightness(.97);}
+  .navbtn.primary{background:var(--accent); color:#fff;}
+  @media (max-width:480px){ .topnav{margin:-8px -8px 12px; padding:8px 12px;} .navbtn{padding:7px 11px; font-size:.8rem;} }
+</style>
+  <meta name="google" content="notranslate">
+  <script src="config.js?v=18"></script>
+  <script src="anticheat.js?v=6" data-activity="say-it-right-u4w1"></script>
+<script src="nis-nav.js?v=1"></script>
+</head>
+<body>
+<nav class="topnav">
+  <img src="assets/logo-h.svg" alt="Nordic International School" onerror="this.style.display='none'">
+  <span class="nav-sp"></span>
+  <a class="navbtn" href="activities.html">🎲 Actividades</a>
+  <a class="navbtn primary" href="./">🏫 Portal</a>
+</nav>
+<header>
+  <h1>🗣️ FR · 6e · Semaine 3 — Les adverbes de fréquence — Say It Right</h1>
+  <p>Écoute, répète à voix haute et vois si tu t'en approches. Français NIS · 6e</p>
+</header>
+
+<div class="tabs" id="tabs"></div>
+
+<div class="wrap">
+  <div class="board">
+    <div class="hud">
+      <span class="pill" id="progress">1 / 8</span>
+      <span>🎯 <span id="hits">0</span> hits</span>
+      <span>📊 <span id="avg">—</span> avg</span>
+    </div>
+    <div class="boss" id="boss">🤖</div>
+    <b>Robo-Noob</b>
+    <div class="hpbar"><div class="hpfill" id="hpfill"></div></div>
+    <div class="qcard">
+      <div class="lbl">Say this word</div>
+      <div class="word" id="word">—</div>
+      <div class="clue" id="clue"></div>
+    </div>
+    <div class="btns">
+      <button class="act b-hear" id="hearBtn">🔊 Listen</button>
+      <button class="act b-mic" id="micBtn">🎤 SPEAK!</button>
+      <button class="act b-skip" id="skipBtn">⏭ Skip</button>
+    </div>
+    <div class="meter"><div class="meterfill" id="meterfill"></div></div>
+    <div class="fb" id="fb"></div>
+    <div class="banner" id="banner"></div>
+    <div class="warn" id="warn"></div>
+  </div>
+  <div class="side">
+    <div class="panel"><h3>Your accuracy</h3><div id="scoreList"></div></div>
+    <div class="panel"><h3>How it works</h3>
+      <div class="scorerow pend">Press 🔊 to hear the word, then 🎤 and say it out loud.</div>
+      <div class="scorerow pend">The app compares what it heard with the word and shows a % match. You need 70% to hit the robot.</div>
+      <div class="scorerow pend">Réussis 70 % des mots du jour pour battre le Robo-Noob.</div>
+      <div class="scorerow pend">Speak close to the mic, in a quiet room.</div>
+    </div>
+  </div>
+</div>
+
+<footer>Unité 4 · 6e · Semaine 3 · Les adverbes de fréquence · Jour 1 · Jour 2 · Jour 3</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+<script src="config.js"></script>
+<script>
+/* Portal NIS: guarda el resultado en activity_attempts y lo envia por email (webhook).
+   Si no hay sesion del portal (uso independiente), no hace nada. */
+window.NISACT=(function(){
+  let _sb=null;
+  function client(){ if(_sb) return _sb; if(!window.supabase||!window.NIS_CONFIG) return null;
+    _sb=window.supabase.createClient(NIS_CONFIG.SUPABASE_URL,NIS_CONFIG.SUPABASE_KEY); return _sb; }
+  async function student(){ const c=client(); if(!c) return null;
+    try{ const u=await c.auth.getUser(); if(!u||!u.data||!u.data.user) return null;
+      const p=await c.from('profiles').select('full_name,first_name,email,cefr_level,grades(name)').eq('id',u.data.user.id).maybeSingle();
+      const d=(p&&p.data)||{}; return {uid:u.data.user.id,email:u.data.user.email||d.email,full_name:d.full_name,first_name:d.first_name};
+    }catch(e){ return null; } }
+  async function submit(r){
+    const s=await student(); if(!s) return {skipped:true};
+    try{ await client().from('activity_attempts').insert({student_id:s.uid,activity:r.activity,title:r.title,level:r.level,
+      score:r.score,total:r.total,hints_used:r.hints,lives_left:r.lives,duration_sec:r.duration}); }catch(e){}
+    try{ const m=Math.floor(r.duration/60), sec=r.duration%60;
+      await fetch(NIS_CONFIG.WRITING_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body:JSON.stringify({skill:'Activity',name:s.full_name||s.first_name||'',email:s.email||'',level:r.level,
+          examTitle:r.title+' - Time '+m+'m '+String(sec).padStart(2,'0')+'s - Hints '+r.hints+' - Lives left '+r.lives,
+          examType:r.activity,score:r.score,total:r.total,duration_min:Math.max(1,Math.round(r.duration/60))})});
+    }catch(e){}
+    return {sent:true};
+  }
+  return {submit};
+})();
+</script>
+<script>
+const WEEK = 3;
+const DATA = {"D1": {"label": "Jour 1", "sub": "Découverte", "words": [{"word": "toujours", "clue": "Tout le temps, sans exception."}, {"word": "souvent", "clue": "Beaucoup de fois, presque toujours."}, {"word": "quelquefois", "clue": "De temps en temps, pas régulièrement."}, {"word": "parfois", "clue": "À certains moments seulement."}, {"word": "rarement", "clue": "Presque jamais, très peu de fois."}, {"word": "jamais", "clue": "Aucune fois, à aucun moment."}]}, "D2": {"label": "Jour 2", "sub": "Approfondissement", "words": [{"word": "matin", "clue": "Le début de la journée."}, {"word": "soir", "clue": "La fin de la journée."}, {"word": "semaine", "clue": "Période de sept jours."}, {"word": "mois", "clue": "Période d'environ trente jours."}, {"word": "dimanche", "clue": "Le jour de repos en fin de semaine."}, {"word": "samedi", "clue": "Le jour avant dimanche."}]}, "D3": {"label": "Jour 3", "sub": "Révision", "words": [{"word": "toujours", "clue": "Tout le temps, sans exception."}, {"word": "souvent", "clue": "Beaucoup de fois, presque toujours."}, {"word": "quelquefois", "clue": "De temps en temps, pas régulièrement."}, {"word": "parfois", "clue": "À certains moments seulement."}, {"word": "rarement", "clue": "Presque jamais, très peu de fois."}, {"word": "jamais", "clue": "Aucune fois, à aucun moment."}, {"word": "matin", "clue": "Le début de la journée."}, {"word": "soir", "clue": "La fin de la journée."}, {"word": "semaine", "clue": "Période de sept jours."}, {"word": "mois", "clue": "Période d'environ trente jours."}, {"word": "dimanche", "clue": "Le jour de repos en fin de semaine."}, {"word": "samedi", "clue": "Le jour avant dimanche."}]}};
+const PASS = 0.7;           /* umbral de acierto, igual que el original de BLOX */
+
+let level = 'D1';
+let queue = [], idx = 0, hits = 0, results = [], elapsed = 0, timerInt = null;
+let rec = null, listening = false, curAudio = null, ttsOnly = false;
+const done = {};
+
+const $ = id => document.getElementById(id);
+const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+/* ---------- puntuacion: portada tal cual de games.voiceBattle ---------- */
+function norm(s){ return String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9' ]/g,' ').replace(/\s+/g,' ').trim(); }
+function lev(a,b){
+  const m=[...Array(a.length+1)].map((_,r)=>[r]);
+  for(let c=0;c<=b.length;c++) m[0][c]=c;
+  for(let r=1;r<=a.length;r++) for(let c=1;c<=b.length;c++)
+    m[r][c]=Math.min(m[r-1][c]+1, m[r][c-1]+1, m[r-1][c-1]+(a[r-1]===b[c-1]?0:1));
+  return m[a.length][b.length];
+}
+function scoreSaid(target, said){
+  const tw = norm(target).split(' ').filter(Boolean);
+  const sw = norm(said).split(' ').filter(Boolean);
+  /* Objetivo de UNA palabra (todo este juego): la formula de BLOX (palabras
+     acertadas / palabras esperadas) solo podria dar 0% o 100%, y aqui el % es
+     lo que el alumno tiene que ver. Se mide por letras: de las alternativas
+     que oyo el reconocedor, la que mas se parezca. */
+  if(tw.length === 1){
+    const t = tw[0];
+    let best = 0;
+    (sw.length ? sw : ['']).forEach(s=>{
+      const r = 1 - lev(s, t) / Math.max(t.length, s.length || 1);
+      if(r > best) best = r;
+    });
+    return Math.max(0, best);
+  }
+  let hit=0;
+  tw.forEach(w=>{ if(sw.some(s2=>s2===w || lev(s2,w) <= (w.length>4?2:1))) hit++; });
+  return hit/Math.max(1,tw.length);
+}
+/* Se queda con la mejor de las alternativas que devuelve el reconocedor.
+   Con `>` (y no `>=` como el original) los empates los gana la primera, que es
+   la de mas confianza: asi el "I heard:" ensena lo que el alumno dijo de verdad. */
+function bestOf(target, alts){
+  let best = alts[0]||'', bestScore = -1;
+  alts.forEach(a=>{ const s = scoreSaid(target, a); if(s > bestScore){ bestScore = s; best = a; } });
+  return {best, score:Math.max(0,bestScore)};
+}
+
+/* ---------- audio: mp3 de ElevenLabs, con repliegue al TTS del navegador ---------- */
+function src(word){ return 'voice-battle-audio/w' + WEEK + '/' + word.toLowerCase() + '.mp3'; }
+let ttsVoice = null;
+function pickVoice(){
+  if(!window.speechSynthesis) return;
+  const vs = window.speechSynthesis.getVoices() || [];
+  ttsVoice = vs.find(v=>/^fr-FR/i.test(v.lang)) || vs.find(v=>/^fr/i.test(v.lang)) || null;
+}
+if(window.speechSynthesis){
+  pickVoice();
+  try{ window.speechSynthesis.addEventListener('voiceschanged', pickVoice); }catch(e){ window.speechSynthesis.onvoiceschanged = pickVoice; }
+}
+function speakFallback(word){
+  if(!window.speechSynthesis) return;
+  try{
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(word);
+    u.lang='fr-FR'; u.rate=0.9; if(ttsVoice) u.voice=ttsVoice;
+    window.speechSynthesis.speak(u);
+  }catch(e){}
+}
+function hear(){
+  const w = queue[idx]; if(!w) return;
+  try{ if(curAudio){ curAudio.pause(); curAudio=null; } }catch(e){}
+  if(ttsOnly) return speakFallback(w.word);
+  const a = new Audio(src(w.word));
+  a.onerror = () => { ttsOnly = true; speakFallback(w.word); };
+  curAudio = a;
+  a.play().catch(()=>{ ttsOnly = true; speakFallback(w.word); });
+}
+
+/* ---------- pintado ---------- */
+function buildTabs(){
+  const t = $('tabs'); t.innerHTML='';
+  for(const k of Object.keys(DATA)){
+    const b = document.createElement('button');
+    b.className = 'tab' + (k===level?' on':'') + (done[k]?' done':'');
+    b.innerHTML = DATA[k].label + '<small>' + DATA[k].sub + '</small>';
+    b.onclick = () => { level = k; load(); };
+    t.appendChild(b);
+  }
+}
+function avgPct(){
+  if(!results.length) return null;
+  return Math.round(results.reduce((s,r)=>s+r.score,0)/results.length*100);
+}
+function drawHud(){
+  $('progress').textContent = Math.min(idx+1, queue.length) + ' / ' + queue.length;
+  $('hits').textContent = hits;
+  const a = avgPct();
+  $('avg').textContent = a===null ? '—' : a + '%';
+  const pct = queue.length ? (queue.length-hits)/queue.length*100 : 100;
+  $('hpfill').style.width = Math.max(0,pct) + '%';
+  $('boss').classList.toggle('dead', hits >= queue.length);
+}
+function drawScoreList(){
+  const box = $('scoreList'); box.innerHTML='';
+  queue.forEach((w,i)=>{
+    const r = results.find(x=>x.i===i);
+    const el = document.createElement('div');
+    el.className = 'scorerow ' + (r ? (r.ok?'ok':'ko') : 'pend');
+    el.innerHTML = '<b>'+w.word+'</b><span>' + (r ? Math.round(r.score*100)+'%' : '—') + '</span>';
+    box.appendChild(el);
+  });
+}
+function drawWord(){
+  const w = queue[idx];
+  if(!w) return;
+  $('word').textContent = w.word;
+  $('clue').textContent = w.clue;
+  $('fb').textContent = ''; $('fb').className = 'fb';
+  $('meterfill').style.width = '0'; $('meterfill').className = 'meterfill';
+}
+
+/* ---------- ciclo de juego ---------- */
+function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); const t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+
+function load(){
+  try{ if(rec) rec.abort(); }catch(e){}
+  clearInterval(timerInt);
+  queue = shuffle(DATA[level].words.slice());
+  idx = 0; hits = 0; results = []; elapsed = 0; listening = false;
+  $('banner').className = 'banner';
+  $('micBtn').disabled = false; $('skipBtn').disabled = false; $('hearBtn').disabled = false;
+  buildTabs(); drawWord(); drawHud(); drawScoreList();
+  timerInt = setInterval(()=>{ elapsed++; }, 1000);
+  if(!SR){
+    $('warn').className = 'warn show';
+    $('warn').innerHTML = '🎤 Este navegador no reconoce la voz. <b>Usa Chrome</b> (PC o Android) para jugar. ' +
+      'Puedes seguir escuchando las palabras con 🔊, pero no se puede puntuar tu pronunciacion aqui.';
+    $('micBtn').disabled = true;
+  }
+}
+
+/* Recibe las alternativas del reconocedor (o de una prueba) y puntua. */
+function handleSaid(alts){
+  const w = queue[idx]; if(!w) return;
+  const {best, score} = bestOf(w.word, alts);
+  const ok = score >= PASS;
+  if(ok) hits++;
+  results.push({i:idx, word:w.word, score, ok, heard:best});
+  const fb = $('fb');
+  fb.className = 'fb ' + (ok?'ok':'ko');
+  fb.innerHTML = (ok ? '✅ BOOM! You hit the Robo-Noob — ' : '❌ The robot dodged… ') +
+                 Math.round(score*100) + '% match' +
+                 '<span class="heard">I heard: “' + (best || '…nothing') + '”</span>';
+  const mf = $('meterfill');
+  mf.style.width = Math.round(score*100) + '%';
+  mf.className = 'meterfill' + (ok?' ok':'');
+  drawHud(); drawScoreList();
+  setTimeout(next, 1900);
+}
+
+function next(){
+  idx++;
+  if(idx >= queue.length) return finish();
+  drawWord(); drawHud();
+}
+
+function skip(){
+  const w = queue[idx]; if(!w) return;
+  results.push({i:idx, word:w.word, score:0, ok:false, heard:''});
+  drawScoreList(); next();
+}
+
+function listen(){
+  if(listening || !SR) return;
+  listening = true;
+  try{ window.speechSynthesis.cancel(); }catch(e){}
+  try{ if(curAudio) curAudio.pause(); }catch(e){}
+  const btn = $('micBtn');
+  btn.textContent = '👂 Listening…'; btn.classList.add('listening');
+  rec = new SR();
+  rec.lang = 'fr-FR'; rec.interimResults = false; rec.maxAlternatives = 5;
+  let handled = false;
+  rec.onresult = ev => {
+    handled = true; listening = false;
+    btn.textContent = '🎤 SPEAK!'; btn.classList.remove('listening');
+    handleSaid([...ev.results[0]].map(r=>r.transcript));
+  };
+  rec.onerror = e => {
+    if(handled) return;
+    handled = true; listening = false;
+    btn.textContent = '🎤 SPEAK!'; btn.classList.remove('listening');
+    const fb = $('fb'); fb.className = 'fb ko';
+    fb.textContent = e.error === 'not-allowed'
+      ? '🚫 Permite el microfono en el navegador y vuelve a intentarlo.'
+      : '🎤 No te oi bien. Otra vez, alto y claro.';
+  };
+  rec.onend = () => {
+    listening = false;
+    btn.textContent = '🎤 SPEAK!'; btn.classList.remove('listening');
+    const fb = $('fb');
+    if(!handled && !fb.innerHTML) fb.textContent = '🤫 Silencio… pulsa el boton y habla.';
+  };
+  try{ rec.start(); }catch(e){ listening = false; btn.textContent='🎤 SPEAK!'; btn.classList.remove('listening'); }
+}
+
+function finish(){
+  clearInterval(timerInt);
+  $('micBtn').disabled = true; $('skipBtn').disabled = true;
+  const need = Math.ceil(queue.length*PASS);
+  const win = hits >= need;
+  const a = avgPct();
+  const b = $('banner');
+  if(win){
+    const wasDone = done[level];
+    done[level] = true;
+    b.className = 'banner show';
+    b.innerHTML = '🏆 ¡Robo-Noob derrotado! ' + hits + '/' + queue.length + ' palabras · ' + a + '% de precision media.' +
+                  '<br>Tu resultado fue guardado en My Results y enviado a tu correo.';
+    if(!wasDone && window.NISACT) NISACT.submit({
+      activity:'say-it-right', title:'Say It Right — FR 6e Semaine 3', level:level,
+      score:hits, total:queue.length, hints:0, lives:a, duration:elapsed });
+    buildTabs();
+  } else {
+    b.className = 'banner lose show';
+    b.innerHTML = '🤖 El Robo-Noob aguanto. ' + hits + '/' + queue.length + ' (necesitas ' + need + ') · ' +
+                  a + '% de precision media.<br>Vuelve a intentarlo: habla cerca del microfono, alto y claro.';
+  }
+  $('word').textContent = win ? '🏆' : '🤖';
+  $('clue').textContent = 'Pulsa una pestana para repetir el dia.';
+  drawHud();
+}
+
+$('hearBtn').onclick = hear;
+$('micBtn').onclick = listen;
+$('skipBtn').onclick = skip;
+
+load();
+
+/* Aviso: sin voz francesa instalada, la pronunciación no es de fiar. */
+var _frWarned = false;
+function _frVoiceCheck(){
+  try{
+    if(_frWarned) return;                       /* si no, sale duplicado */
+    if(!window.speechSynthesis) return;
+    var vs = window.speechSynthesis.getVoices() || [];
+    if(!vs.length) return;                      /* aún no han cargado */
+    if(vs.some(function(v){ return /^fr/i.test(v.lang); })) return;
+    var w = document.getElementById('warn');
+    if(!w) return;
+    _frWarned = true;
+    w.className = 'warn show';w.innerHTML += (w.innerHTML ? '<br>' : '') + '\ud83d\udd0a Cet appareil n\u2019a aucune voix française installée : le mod\u00e8le que tu entends ne sera pas fiable.';
+  }catch(e){}
+}
+if(window.speechSynthesis){
+  _frVoiceCheck();
+  try{ window.speechSynthesis.addEventListener('voiceschanged', _frVoiceCheck); }
+  catch(e){ }
+  setTimeout(_frVoiceCheck, 1500);              /* Chrome las carga tarde */
+}
+</script>
+</body>
+</html>

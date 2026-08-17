@@ -16,3 +16,6 @@ _genreports.html
 # Secrets — never commit the ElevenLabs key
 phonics/tools/.env
 .env
+
+# Python del generador de juegos franceses
+__pycache__/
