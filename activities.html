@@ -79,7 +79,8 @@
 </main>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js?v=18"></script>
-<script src="activities-data.js?v=7"></script>
+<script src="activities-data.js?v=8"></script>
+<script src="activities-fr-data.js?v=1"></script>
 <script>
 (function(){
   const esc = s => (s==null?'':String(s)).replace(/&/g,'&amp;').replace(/</g,'&lt;')
@@ -105,12 +106,18 @@
 
   const d = window.ACTIVITIES_DATA;
   const box = document.getElementById('units');
+  /* Clave ÚNICA por unidad. Antes se indexaba por `u.id` a secas, y eso valía
+     mientras la única unidad 'u4' era la de 9.º de inglés. Con el francés hay
+     SIETE unidades 'u4' (una por grado más la inglesa): al colisionar, bastaba
+     que una francesa naciera cerrada para que 'u4' entrara en el conjunto de
+     ocultas y desapareciera también la Unit 4 de INGLÉS. */
+  const uk = u => (u.subject||'english')+'|'+u.grade+'|'+u.id;
   const paint = (hidden, hiddenWeeks) => { box.innerHTML = d
-    ? d.units.map(u => hidden.has(u.id) ? lockedUnit(u) : unit(u, hiddenWeeks[u.id]||new Set())).join('') : ''; };
+    ? d.units.map(u => hidden.has(uk(u)) ? lockedUnit(u) : unit(u, hiddenWeeks[uk(u)]||new Set())).join('') : ''; };
   // Primer pintado con el default de cada unidad/semana; luego se afina con la sesión.
   const _defWeeks = {};
-  (d ? d.units : []).forEach(u=>{ _defWeeks[u.id]=new Set((u.weeks||[]).filter(w=>w.locked).map(w=>w.id)); });
-  paint(new Set((d ? d.units : []).filter(u=>u.locked).map(u=>u.id)), _defWeeks);
+  (d ? d.units : []).forEach(u=>{ _defWeeks[uk(u)]=new Set((u.weeks||[]).filter(w=>w.locked).map(w=>w.id)); });
+  paint(new Set((d ? d.units : []).filter(u=>u.locked).map(uk)), _defWeeks);
 
   /* Mismo candado por unidad y por semana que el portal. La sesión de Supabase
      es del mismo origen, así que aquí se ve al mismo alumno; si no hay sesión
@@ -136,11 +143,15 @@
       const has=(o,k)=>Object.prototype.hasOwnProperty.call(o,k);
       // Precedencia igual que en el portal: alumno > grado > default del nodo.
       const off = (k, def) => has(stu,k) ? !stu[k] : (has(grade,k) ? !grade[k] : !!def);
-      const hidden = new Set(d.units.filter(u=>off(d.nodeKey(u.grade,u.id), u.locked)).map(u=>u.id));
+      // La materia va en la clave: sin ella, una unidad francesa preguntaba
+      // por english.classes.g5.activities.u4 y se gateaba con el permiso
+      // equivocado.
+      const hidden = new Set(d.units
+        .filter(u=>off(d.nodeKey(u.grade,u.id,u.subject), u.locked)).map(uk));
       const hiddenWeeks = {};
       d.units.forEach(u=>{
-        hiddenWeeks[u.id] = new Set((u.weeks||[])
-          .filter(w=>w.title && off(d.weekNodeKey(u.grade,u.id,w.id), w.locked))
+        hiddenWeeks[uk(u)] = new Set((u.weeks||[])
+          .filter(w=>w.title && off(d.weekNodeKey(u.grade,u.id,w.id,u.subject), w.locked))
           .map(w=>w.id));
       });
       paint(hidden, hiddenWeeks);   // repinta siempre: el grado puede ABRIR algo
