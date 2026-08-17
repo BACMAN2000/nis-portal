@@ -10,38 +10,18 @@ const esc = s => (s==null?'':String(s)).replace(/&/g,'&amp;').replace(/</g,'&lt;
 const GRADES = Array.from({length:11},(_,i)=>({id:i+1,name:'G'+(i+1)}));
 const LEVELS = ['A2','B1','B2','C1'];
 const SKILLS = ['Reading','Listening','Writing'];
-/* Motor de simulacros (repo mocks-cambridge).
-   Lo QUEREMOS en el MISMO ORIGEN (/mocks-cambridge/), porque eso arregla dos cosas
-   de golpe:
-     1) el alumno nunca sale de nis.cohasset.pe (misma marca en todas las páginas);
+/* Motor de simulacros (repo mocks-cambridge), servido SIEMPRE desde este mismo
+   origen (/mocks-cambridge/):
+     1) el alumno nunca sale de nis.cohasset.pe (ninguna tarjeta debe mostrar
+        github.io ni bacman2000 en la barra — pedido explícito 2026-08-13);
      2) mismo origen = mismo localStorage = la sesión de Supabase se COMPARTE, así
         `NIS.currentStudent()` (nis-bridge.js) devuelve al alumno logueado y los
         quizzes saltan solos la pantalla de nombre/grado/correo.
-   El mismo origen es AHORA EL DEFAULT: se arranca en '/mocks-cambridge/' y solo se
-   cae a GitHub Pages si esa ruta no responde (red de emergencia para que nadie se
-   quede sin examen si el nginx del servidor se toca). Antes era al revés — se
-   arrancaba en GitHub Pages y se "ascendía" — y eso hacía que, según lo rápido que
-   contestara el HEAD, algún alumno viera bacman2000.github.io en la barra.
-   `QUIZ_URL_READY` se espera en init() ANTES del primer render, así que ninguna
-   pantalla se pinta con la URL provisional.
-   OJO servidor: si /mocks-cambridge/*.html devuelve 404 (json y mp3 sí cargan), al
-   bloque nginx le falta el '^~' — ver deploy/DEPLOY.md, paso 3-bis. */
-const QUIZ_URL_LOCAL    = '/mocks-cambridge/';
-const QUIZ_URL_FALLBACK = 'https://bacman2000.github.io/mocks-cambridge/';
-let QUIZ_URL = QUIZ_URL_LOCAL;
-const QUIZ_URL_READY = (async function(){
-  try{
-    // Con timeout: init() espera esta promesa, así que una red colgada NO puede
-    // dejar el portal en "Cargando…". Si expira, se usa el fallback.
-    const ctl = (typeof AbortController!=='undefined') ? new AbortController() : null;
-    const t = setTimeout(()=>{ try{ ctl && ctl.abort(); }catch(_){ } }, 2500);
-    const r = await fetch(QUIZ_URL_LOCAL+'quizzes.html', {method:'HEAD', cache:'no-store', signal: ctl?ctl.signal:undefined});
-    clearTimeout(t);
-    if(r && r.ok) return (QUIZ_URL = QUIZ_URL_LOCAL);
-  }catch(e){}
-  console.warn('[NIS] '+QUIZ_URL_LOCAL+' no responde en este origen — usando '+QUIZ_URL_FALLBACK+' (falta el ^~ en el nginx: ver deploy/DEPLOY.md 3-bis)');
-  return (QUIZ_URL = QUIZ_URL_FALLBACK);
-})();
+   El fallback a GitHub Pages (con HEAD de sondeo) se ELIMINÓ a propósito: con red
+   lenta el sondeo expiraba y mandaba alumnos a github.io. Si /mocks-cambridge/
+   diera 404 (json y mp3 sí cargan), al bloque nginx le falta el '^~' — arreglar el
+   servidor (deploy/DEPLOY.md, paso 3-bis), NO resucitar el fallback. */
+const QUIZ_URL = '/mocks-cambridge/';
 /* === Enlaces configurables del dashboard de alumnos === */
 const LIBRARY_URL = 'http://127.0.0.1:8900/';   // Biblioteca NIS (OPAC local). Mientras sea 127.0.0.1/localhost, el tile se muestra "Próximamente" (ver studentLibrary). Pon aquí la URL pública para activarlo.
 const CLASSES_LINKS = {
@@ -166,9 +146,6 @@ async function init(){
     const { data } = await sb.auth.getSession();
     state.session = data.session;
     if(state.session){ await loadProfile(); }
-    // El HEAD arrancó al cargar el archivo; a estas alturas ya está resuelto. Se
-    // espera igual para que NINGÚN render use una QUIZ_URL provisional.
-    try{ await QUIZ_URL_READY; }catch(_){ }
     route();
   }catch(e){ console.error('init failed', e); try{ renderAuth(); }catch(_){ } }
   // supabase-js holds an internal auth lock while this callback runs; doing DB

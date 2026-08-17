@@ -1,0 +1,1219 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google" content="notranslate">
+<title>And Then There Were None — Activities · Portal NIS</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--blue:#2d5a8d; --blue-d:#1e3f66; --line:#e2e8f0; --ink:#0f172a; --muted:#475569}
+  *{box-sizing:border-box; margin:0; padding:0}
+  body{font:15px/1.55 "Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink); background:linear-gradient(180deg,#cdd3e6 0%,#f8fafc 60%,#fff 100%); min-height:100vh;
+    -webkit-touch-callout:none}
+  header{background:#fff; padding:12px 22px; display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+    box-shadow:0 4px 16px rgba(15,23,42,.06); position:sticky; top:0; z-index:10; border-bottom:1px solid var(--line)}
+  header img{display:block; height:38px; width:auto}
+  header .sub{color:#636465; font-size:13px; margin-left:auto; font-weight:700; letter-spacing:.3px}
+  .backbtn{cursor:pointer; text-decoration:none; background:var(--blue); color:#fff; border:none;
+    font-weight:700; font-size:13px; padding:8px 14px; border-radius:9px; white-space:nowrap; font-family:inherit}
+  .backbtn.ghost{background:#eef2f9; color:var(--blue-d)}
+  main{max-width:940px; margin:0 auto; padding:20px 16px 60px}
+  h1{font-size:22px; margin:0 0 4px; color:var(--ink)}
+  h1 .em{font-size:1.35em; vertical-align:-3px}
+  p.lead{color:var(--muted); margin:2px 0 16px}
+  .bar{display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:14px}
+  .crumb{color:var(--muted); font-size:13px; font-weight:600}
+  .crumb b{color:var(--blue-d)}
+  .grid{display:grid; gap:14px}
+  .cols-2{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+  .cols-3{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+  .card{background:#fff; border:1px solid var(--line); border-radius:16px; padding:22px 18px;
+    box-shadow:0 8px 24px rgba(15,23,42,.08); text-align:center; cursor:pointer; transition:.15s;
+    display:flex; flex-direction:column; align-items:center; gap:6px}
+  .card:hover{transform:translateY(-3px); border-color:#c7d6ec}
+  .card .ico{font-size:2.5rem; line-height:1}
+  .card h2{font-size:16px; margin:6px 0 2px; color:var(--blue)}
+  .card .desc{color:var(--muted); font-size:12.5px}
+  .chip{display:inline-block; background:#e7ecfd; color:var(--blue-d); font-weight:700; font-size:11px;
+    padding:3px 9px; border-radius:12px; margin-top:6px}
+  .chap-card{position:relative; text-align:left; align-items:stretch}
+  .chap-card .num{position:absolute; top:10px; left:12px; font-size:12px; font-weight:800; color:#94a3b8}
+  .chap-card h2{text-align:left; margin-top:2px}
+  .chap-card .desc{text-align:left}
+  .chap-card .act-tag{font-size:11px;color:#94a3b8;font-weight:600;margin-top:4px}
+  .btn{cursor:pointer; font-family:inherit; font-weight:700; font-size:14px; border:none; border-radius:10px;
+    padding:10px 18px; background:var(--blue); color:#fff; transition:.12s}
+  .btn:hover{background:var(--blue-d)}
+  .btn.ghost{background:#eef2f9; color:var(--blue-d)}
+  .btn.sm{padding:7px 13px; font-size:13px}
+  .btn:disabled{opacity:.5; cursor:not-allowed}
+  .panel{background:#fff; border:1px solid var(--line); border-radius:16px; padding:20px 18px;
+    box-shadow:0 8px 24px rgba(15,23,42,.08)}
+  .muted{color:var(--muted)} .center{text-align:center}
+  /* Word search */
+  .ws-wrap{display:flex; gap:22px; flex-wrap:wrap; align-items:flex-start}
+  table.ws{border-collapse:collapse; user-select:none; touch-action:none; margin:0 auto}
+  table.ws td{width:28px; height:28px; text-align:center; font-weight:700; font-size:14px; cursor:pointer;
+    border:1px solid #eef2f7; color:#334155}
+  table.ws td.sel{background:#bfdbfe}
+  table.ws td.found{background:#bbf7d0; color:#065f46}
+  .wordlist{min-width:160px; flex:1}
+  .wordlist li{list-style:none; padding:4px 2px; font-weight:600; border-bottom:1px solid #f1f5f9; font-size:13px}
+  .wordlist li.done{text-decoration:line-through; color:#94a3b8}
+  /* Crossword */
+  table.cw{border-collapse:collapse; margin:0 auto}
+  table.cw td{width:28px; height:28px; padding:0; border:1px solid #cbd5e1; position:relative}
+  table.cw td.blk{background:#0f172a; border-color:#0f172a}
+  table.cw td input{width:100%; height:100%; border:none; text-align:center; text-transform:uppercase;
+    font-family:inherit; font-weight:700; font-size:14px; color:var(--blue-d); background:transparent; padding:0}
+  table.cw td input:focus{outline:2px solid #93c5fd; background:#eff6ff}
+  table.cw td .qn{position:absolute; top:0; left:1px; font-size:8px; color:#64748b; font-weight:700}
+  td.ok input{background:#bbf7d0} td.bad input{background:#fecaca}
+  .clues{display:flex; gap:26px; flex-wrap:wrap; margin-top:6px}
+  .clues h3{font-size:13px; color:var(--blue-d); margin:0 0 4px}
+  .clues ol{margin:0; padding-left:20px; font-size:13px}
+  .clues li{margin-bottom:3px}
+  /* Memory */
+  .mem-grid{display:grid; gap:8px; grid-template-columns:repeat(4,1fr); max-width:660px; margin:0 auto}
+  .mtile{aspect-ratio:1/1.15; border-radius:12px; background:var(--blue); color:#fff; display:flex;
+    align-items:center; justify-content:center; text-align:center; padding:6px; font-weight:700; cursor:pointer;
+    font-size:12px; transition:.15s; border:2px solid transparent}
+  .mtile.def{background:#eef2f9; color:var(--blue-d); font-weight:600}
+  .mtile.down{background:#fff; color:#0f172a; border-color:#cbd5e1; cursor:default}
+  .mtile.matched{background:#dcfce7; color:#065f46; border-color:#86efac; cursor:default}
+  .mtile .face-back{font-size:1.6rem}
+  /* Quiz / MC / TF */
+  .opt{display:block; width:100%; text-align:left; background:#f8fafc; border:1.5px solid var(--line);
+    border-radius:11px; padding:12px 14px; margin:8px 0; cursor:pointer; font-family:inherit; font-size:14px;
+    font-weight:600; color:var(--ink); transition:.12s}
+  .opt:hover{border-color:#93c5fd}
+  .opt.correct{background:#dcfce7; border-color:#4ade80; color:#065f46}
+  .opt.wrong{background:#fee2e2; border-color:#f87171; color:#991b1b}
+  .opt:disabled{cursor:default}
+  .prog{height:8px; background:#e2e8f0; border-radius:6px; overflow:hidden; margin:4px 0 14px}
+  .prog span{display:block; height:100%; background:var(--blue); transition:width .3s}
+  .timerbar{height:10px; background:#e2e8f0; border-radius:6px; overflow:hidden; margin:8px 0 16px}
+  .timerbar span{display:block; height:100%; background:#f59e0b; transition:width .1s linear}
+  .qnum{font-size:12px; font-weight:700; color:#94a3b8; letter-spacing:.5px}
+  .qtext{font-size:17px; font-weight:700; margin:4px 0 10px}
+  .explain{background:#eff6ff; border-left:4px solid var(--blue); border-radius:8px; padding:10px 12px;
+    font-size:13px; color:#1e3a5f; margin-top:6px}
+  /* True / False */
+  .tf-item{border:1px solid var(--line); border-radius:12px; padding:14px 16px; margin-bottom:12px; background:#fff}
+  .tf-stmt{font-weight:600; margin-bottom:10px}
+  .tf-btns{display:flex; gap:10px}
+  .tf-btn{flex:1; padding:9px; border:1.5px solid var(--line); border-radius:9px; background:#f8fafc;
+    font-family:inherit; font-weight:700; cursor:pointer; color:var(--blue-d)}
+  .tf-btn:hover{border-color:#93c5fd}
+  .tf-btn.pick-correct{background:#dcfce7; border-color:#4ade80; color:#065f46}
+  .tf-btn.pick-wrong{background:#fee2e2; border-color:#f87171; color:#991b1b}
+  .tf-btn:disabled{cursor:default}
+  .tf-corr{margin-top:9px; font-size:13px}
+  /* Hangman */
+  .hm-wrap{display:flex; gap:26px; flex-wrap:wrap; align-items:flex-start; justify-content:center}
+  .hm-word{font-size:1.8rem; letter-spacing:8px; font-weight:800; color:var(--blue-d); margin:10px 0; min-height:2.1rem}
+  .keyb{display:grid; grid-template-columns:repeat(9,1fr); gap:6px; max-width:430px; margin:14px auto 0}
+  .key{padding:9px 0; border:none; border-radius:8px; background:#eef2f9; color:var(--blue-d); font-weight:700;
+    font-family:inherit; cursor:pointer; font-size:14px}
+  .key:hover{background:#dbe4f3}
+  .key.good{background:#bbf7d0; color:#065f46} .key.bad{background:#fecaca; color:#991b1b}
+  .key:disabled{opacity:.55; cursor:default}
+  /* Scramble */
+  .scram{font-size:1.6rem; letter-spacing:6px; font-weight:800; color:var(--blue); text-align:center; margin:10px 0}
+  .scram-in{font-size:1.15rem; text-align:center; text-transform:uppercase; letter-spacing:4px; font-weight:700;
+    padding:10px; border:2px solid var(--line); border-radius:10px; width:100%; max-width:320px; font-family:inherit;
+    color:var(--blue-d)}
+  /* Writing */
+  .wr-cols{display:grid; grid-template-columns:1.4fr 1fr; gap:18px; margin-top:12px}
+  .wr-cols aside{background:#f8fafc; border:1px solid var(--line); border-radius:12px; padding:14px}
+  .wr-cols aside h4{font-size:13px; color:var(--blue-d); margin:0 0 6px}
+  .wr-cols aside ul{margin:0 0 12px; padding-left:18px; font-size:12.5px; color:#334155}
+  .wr-cols aside li{margin-bottom:4px}
+  textarea.wr{width:100%; min-height:220px; border:1.5px solid var(--line); border-radius:12px; padding:12px;
+    font-family:inherit; font-size:14px; line-height:1.6; resize:vertical; color:var(--ink)}
+  textarea.wr:focus{outline:2px solid #93c5fd; border-color:#93c5fd}
+  .wr-count{margin-top:8px; font-size:13px; color:var(--muted)}
+  .wr-count b{color:var(--blue-d)} .wr-count .in{color:#059669} .wr-count .out{color:#d97706}
+  .checklist{margin-top:12px; font-size:13px}
+  .checklist label{display:flex; gap:8px; align-items:flex-start; margin-bottom:6px; cursor:pointer}
+  @media(max-width:640px){ .wr-cols{grid-template-columns:1fr} }
+  .reading{max-width:680px; margin:0 auto}
+  .reading p{font-size:16px; line-height:1.85; margin:0 0 14px; color:#1e293b; text-align:justify}
+  .reading p:first-of-type::first-letter{font-size:2.6em; font-weight:800; color:var(--blue); float:left; line-height:.9; padding:2px 8px 0 0}
+  .score{font-size:2.5rem; font-weight:800; color:var(--blue)}
+  .toast{margin-top:8px; font-weight:700}
+  .toast.ok{color:#059669} .toast.no{color:#dc2626}
+  input,textarea,select,button{-webkit-user-select:auto; user-select:auto}
+</style>
+<script src="nis-nav.js?v=1"></script>
+</head>
+<body>
+<header>
+  <img src="assets/logo-h.svg" alt="Nordic International School" onerror="this.style.display='none'">
+  <div class="sub">9TH GRADE &middot; READER</div>
+  <button class="backbtn" onclick="goPortal()">&#127979; Portal</button>
+</header>
+<main>
+  <div class="bar">
+    <button id="backBtn" class="backbtn ghost" style="display:none" onclick="back()">&larr; Back</button>
+    <div class="crumb" id="crumb"></div>
+  </div>
+  <div id="stage"></div>
+</main>
+
+<script>
+/* ============================================================
+   AND THEN THERE WERE NONE — Agatha Christie
+   Black Cat · Reading & Training · Step Three · B1.2
+   Chapter-by-chapter interactive activities (10 per chapter).
+   One dataset per chapter feeds every activity.
+   ============================================================ */
+
+const CHAPTERS = [
+  { n:1, title:"Soldier Island",
+    sum:"Eight strangers travel down to Devon, each one invited to Soldier Island by a host they have never actually met. A local boatman takes them across to a beautiful modern house, where the servants, Mr and Mrs Rogers, explain that Mr and Mrs Owen have not arrived yet. In every bedroom hangs an old children’s rhyme about ten little soldiers, and on the dining table stand ten small china figures.",
+    vocab:[
+      ["ISLAND","a piece of land with water all around it"],
+      ["GUEST","a person who is invited to a house"],
+      ["HOST","the person who invites guests and receives them"],
+      ["BOAT","a small vessel for travelling on water"],
+      ["CLIFF","a high steep rock face beside the sea"],
+      ["SERVANT","a person paid to work in someone’s house"],
+      ["LUGGAGE","the bags and cases you take on a journey"],
+      ["RHYME","a short poem with words that sound the same"],
+      ["CHINA","fine white material used for cups and small figures"],
+      ["STRANGER","a person you do not know"],
+      ["SECRETARY","a person employed to write letters and organise work"],
+      ["MYSTERY","something strange that you cannot explain"]
+    ],
+    comp:[
+      ["Where is Soldier Island?",["Off the coast of Devon","Near Scotland","In the Thames","Off the coast of Wales"],0,"The island lies just off the Devon coast, near the little village of Sticklehaven."],
+      ["How do the guests reach the island?",["By plane","By boat","By bridge","They swim"],1,"A local boatman, Fred Narracott, takes them across from the mainland."],
+      ["Who welcomes the guests at the house?",["Mr and Mrs Owen","Mr and Mrs Rogers","Judge Wargrave","Vera Claythorne"],1,"The servants, Thomas and Ethel Rogers, receive them; the Owens have not arrived."],
+      ["Why has Vera Claythorne come to the island?",["For a holiday","To work as a secretary","To buy the house","To visit her family"],1,"Vera believes she has been hired as a holiday secretary for Mrs Owen."],
+      ["What has Philip Lombard been paid to do?",["Cook the meals","Come and be ready for trouble","Drive a car","Repair the house"],1,"Lombard was offered a hundred guineas simply to come and be useful if there was danger."],
+      ["What name does Mr Blore use when he arrives?",["Davis","Owen","Marston","Narracott"],0,"Blore is a former policeman and travels under the false name of Davis."],
+      ["What hangs framed in every bedroom?",["A map of Devon","An old rhyme about ten little soldiers","A photograph of the host","A list of rules"],1,"A framed copy of the old nursery rhyme hangs on the wall of each bedroom."],
+      ["What stands on the dining-room table?",["Ten candles","Ten china soldier figures","Ten glasses","Ten letters"],1,"Ten small china soldiers are arranged in the middle of the table."]
+    ],
+    tf:[
+      ["All the guests know their host personally.",false,"Not one of them has ever met Mr or Mrs Owen."],
+      ["The guests travel to the island by boat.",true,"Fred Narracott takes them across from Sticklehaven."],
+      ["Mr and Mrs Rogers are the servants of the house.",true,"Rogers is the butler and his wife is the cook."],
+      ["The house on the island is old and ruined.",false,"It is a beautiful, modern and very comfortable house."],
+      ["Mr Blore gives his real name when he arrives.",false,"He introduces himself as Davis."],
+      ["There are ten little china figures on the dining table.",true,"They stand in a row in the middle of the table."]
+    ],
+    writing:[
+      {task:"You are Vera Claythorne. Write a short letter to a friend describing your journey to Soldier Island and your first impressions of the house.",
+       target:"50–70 words",
+       tips:["Use the past simple to tell what happened.","Add two or three adjectives to describe the island and the house.","Open and close a friendly letter correctly."],
+       starters:["Dear Anna,","I arrived on the island this afternoon…","The house is…","Write soon, Vera"]},
+      {task:"Write the invitation letter that Mr Owen might have sent to one of the guests. Invite them to the island and give a reason.",
+       target:"40–60 words",
+       tips:["Use polite invitation language: I would be delighted if…","Give a date and say how they will travel.","Do not give too much information — keep it mysterious."],
+       starters:["Dear Mr…,","I would be delighted if you could…","A boat will meet you at…","Yours sincerely,"]}
+    ]},
+  { n:2, title:"The voice",
+    sum:"After an excellent dinner, the guests are relaxing with their coffee when a loud, cold voice suddenly fills the room. It calls out all ten names, one by one, and accuses every person in the house — including the two servants — of causing someone’s death. Mrs Rogers faints, and the guests discover that the voice came from a gramophone record hidden in the next room.",
+    vocab:[
+      ["VOICE","the sound a person makes when speaking"],
+      ["ACCUSE","to say that someone has done something wrong"],
+      ["MURDER","the crime of killing a person on purpose"],
+      ["SILENCE","complete absence of sound"],
+      ["RECORD","a flat black disc that plays recorded sound"],
+      ["DINNER","the main meal of the day, eaten in the evening"],
+      ["COFFEE","a hot dark drink made from roasted beans"],
+      ["FAINT","to lose consciousness for a short time"],
+      ["CHARGE","a formal statement that someone has broken the law"],
+      ["SHOCK","a sudden strong and unpleasant surprise"],
+      ["MACHINE","a device with moving parts that does a job"],
+      ["BRANDY","a strong alcoholic drink made from wine"]
+    ],
+    comp:[
+      ["When does the voice speak?",["Before dinner","After dinner, during coffee","At breakfast","In the middle of the night"],1,"The guests have just finished dinner and are drinking coffee in the sitting room."],
+      ["What does the voice do?",["It welcomes the guests","It accuses each person of causing a death","It reads a poem","It asks for money"],1,"It names all ten people and charges each of them with a death."],
+      ["How many people does the voice accuse?",["Eight","Nine","Ten","Six"],2,"All ten: the eight guests and the two servants."],
+      ["Where does the sound really come from?",["The garden","A gramophone in the next room","The radio","A person on the stairs"],1,"Rogers had been told to play a record called ‘Swan Song’ at that exact moment."],
+      ["Who had put on the record?",["Judge Wargrave","Rogers, following his instructions","Vera","Nobody"],1,"Rogers was simply obeying written orders from his employer."],
+      ["What happens to Mrs Rogers?",["She runs away","She faints","She laughs","She telephones the police"],1,"She collapses on the floor and Dr Armstrong looks after her."],
+      ["What does Dr Armstrong give Mrs Rogers?",["Water only","Something to help her sleep","Coffee","Nothing at all"],1,"He gives her a drink of brandy and later something to make her sleep."],
+      ["How do the guests feel after the voice stops?",["Amused","Shocked and frightened","Bored","Sleepy"],1,"There is a long, terrible silence before anybody can speak."]
+    ],
+    tf:[
+      ["The voice speaks before the guests have dinner.",false,"It speaks after dinner, while they are drinking coffee."],
+      ["The voice accuses only the eight guests.",false,"It also accuses the two servants, Mr and Mrs Rogers."],
+      ["The sound comes from a gramophone record.",true,"The record was hidden in the room next door."],
+      ["Rogers played the record because he was told to.",true,"He had written instructions from his employer to play it at that moment."],
+      ["Mrs Rogers is not affected by the accusation.",false,"She faints and has to be helped by Dr Armstrong."],
+      ["Everybody laughs at the voice.",false,"Nobody laughs: the guests are shocked and afraid."]
+    ],
+    writing:[
+      {task:"Write the short speech that the mysterious voice makes to three of the guests. Accuse each of them of causing a death.",
+       target:"50–70 words",
+       tips:["Use full names and a very formal, cold tone.","Repeat the same sentence pattern for each person.","Use the past simple: on such a date, you caused the death of…"],
+       starters:["Ladies and gentlemen, silence please.","You are charged with…","On the 14th of…","Prisoners at the bar, have you anything to say?"]},
+      {task:"You are one of the guests. Write a diary entry about the evening when you heard the voice. Describe what you heard and how you felt.",
+       target:"60–80 words",
+       tips:["Use the past simple and past continuous.","Include feelings: shocked, afraid, angry, confused.","Finish with a question you cannot answer."],
+       starters:["Tonight something terrible happened.","While we were drinking our coffee…","I felt…","Who could…?"]}
+    ]},
+  { n:3, title:"Accusations",
+    sum:"One after another, the guests try to explain the accusations against them. They also compare their invitations and realise that nobody has ever seen their host: the initials U. N. Owen simply mean ‘Unknown’. Then the youngest guest, Anthony Marston, drinks his whisky, chokes and falls dead — and one of the ten china soldiers has disappeared.",
+    vocab:[
+      ["INNOCENT","not guilty of a crime"],
+      ["GUILTY","responsible for doing something wrong"],
+      ["DEFEND","to speak or act in support of yourself or others"],
+      ["EVIDENCE","facts that show whether something is true"],
+      ["POISON","a substance that can kill you if you swallow it"],
+      ["GLASS","a container you drink from"],
+      ["CHOKE","to be unable to breathe because of something in the throat"],
+      ["INITIAL","the first letter of a name"],
+      ["UNKNOWN","not known or identified"],
+      ["VICTIM","a person who is hurt or killed"],
+      ["DRIVER","a person who drives a vehicle"],
+      ["JUSTICE","fair treatment according to the law"]
+    ],
+    comp:[
+      ["What do the guests do after the record has finished?",["They go to bed at once","They explain and defend themselves","They call the police","They leave the island"],1,"Each of them gives their own version of the events the voice described."],
+      ["What do the initials U. N. Owen really mean?",["A famous family","‘Unknown’","United Nations","Nothing at all"],1,"Judge Wargrave notices that ‘U. N. Owen’ sounds exactly like ‘unknown’."],
+      ["Who works out the meaning of the name?",["Vera","Judge Wargrave","Blore","Armstrong"],1,"The old judge is the first to see the joke hidden in the name."],
+      ["How did Anthony Marston cause two deaths?",["In a fire","He ran over two people with his car","In a fight","At sea"],1,"He knocked down and killed John and Lucy Combes while driving too fast."],
+      ["How does Marston feel about the accident?",["Very sorry","He calls it bad luck and blames the road","He denies it","He cries"],1,"He shows almost no regret, which shocks the others."],
+      ["How does Anthony Marston die?",["He is shot","He drinks poisoned whisky and chokes","He falls from the cliff","He is hit on the head"],1,"There is cyanide in his glass and he dies within seconds."],
+      ["What does Dr Armstrong find in the glass?",["Water","Cyanide","Sugar","Medicine"],1,"The doctor recognises the smell and effects of cyanide poisoning."],
+      ["What has happened to the china figures?",["One has broken","One has disappeared","They have moved","Nothing"],1,"Only nine are left on the table after Marston’s death."]
+    ],
+    tf:[
+      ["All the guests admit that they are guilty.",false,"Almost all of them say they are innocent and give an explanation."],
+      ["‘U. N. Owen’ is a way of writing ‘unknown’.",true,"Judge Wargrave points this out to the others."],
+      ["Anthony Marston killed two people with his car.",true,"He ran over John and Lucy Combes while driving fast."],
+      ["Marston is very sorry about the accident.",false,"He speaks about it lightly, as if it were only bad luck."],
+      ["Marston dies because of poison in his drink.",true,"There was cyanide in his whisky."],
+      ["After Marston’s death there are still ten china figures.",false,"Only nine remain: one has vanished."]
+    ],
+    writing:[
+      {task:"You are a newspaper reporter. Write a short news item about the death of Anthony Marston on Soldier Island.",
+       target:"60–80 words",
+       tips:["Begin with a short headline in capital letters.","Answer who, what, where and when in the first sentence.","Use the past simple and the passive: was found, was taken."],
+       starters:["DEATH ON SOLDIER ISLAND","A young man died last night…","Guests at the house said…","The police have been informed…"]},
+      {task:"Choose one guest and write the explanation they give to defend themselves against the accusation. Do you believe them? Say why.",
+       target:"60–80 words",
+       tips:["First give the character’s own version of events.","Then add one sentence with your own opinion.","Use linkers: however, because, in my opinion."],
+       starters:["…says that…","According to him/her…","However, I think…","In my opinion,…"]}
+    ]},
+  { n:4, title:"Death in the night",
+    sum:"In the morning Mrs Rogers does not wake up: she has died in her sleep, and now only eight china figures remain. The boat from the mainland never comes, and the guests slowly understand that they cannot leave. They search every rock and cave on the island — and find that there is absolutely nobody else there.",
+    vocab:[
+      ["MORNING","the early part of the day"],
+      ["BREAKFAST","the first meal of the day"],
+      ["ASLEEP","sleeping"],
+      ["OVERDOSE","too much of a medicine or drug"],
+      ["SLEEPING","resting with your eyes closed and mind at rest"],
+      ["SEARCH","to look carefully for something"],
+      ["CAVE","a large hole in a cliff or under the ground"],
+      ["TRAPPED","unable to escape from a place"],
+      ["SIGNAL","a sign or sound used to send a message"],
+      ["MAINLAND","the main area of land, not the islands"],
+      ["EMPTY","with nothing or nobody inside"],
+      ["FEAR","the feeling you have when you are afraid"]
+    ],
+    comp:[
+      ["What happens to Mrs Rogers?",["She leaves the island","She dies in her sleep","She is arrested","She hides"],1,"She never wakes up: she has died during the night."],
+      ["What caused Mrs Rogers’s death?",["A heart attack from old age","Too much sleeping medicine","Drowning","A fall"],1,"Dr Armstrong believes she was given an overdose of a sleeping draught."],
+      ["How many china figures are left now?",["Nine","Eight","Seven","Ten"],1,"Another figure has gone: only eight remain."],
+      ["Why does nobody come from the mainland?",["The boat has broken down","No boat comes at all","The boatman is ill","There is fog"],1,"Fred Narracott simply does not appear, and the guests begin to feel trapped."],
+      ["What do the guests do to try to get help?",["They swim to the coast","They try to signal to the mainland","They telephone the police","They light a lamp in the window"],1,"They try to make signals, but nobody on the coast takes any notice."],
+      ["What do the men do after breakfast?",["They go fishing","They search the whole island","They play cards","They sleep"],1,"They examine every part of the island and the house."],
+      ["What do they find during the search?",["A hidden room","Nobody else on the island","A boat","A radio"],1,"There is no other living person: the island is bare rock with nowhere to hide."],
+      ["What does General Macarthur say by the sea?",["That he wants to go home","That he will never leave the island","That he knows the killer","That he is hungry"],1,"He sits quietly by the water and says he does not expect to leave."]
+    ],
+    tf:[
+      ["Mrs Rogers dies during the night.",true,"She is found dead in her bed the next morning."],
+      ["Dr Armstrong thinks she was given too much sleeping medicine.",true,"He believes it was an overdose of a sleeping draught."],
+      ["The boat comes as usual in the morning.",false,"No boat comes, and the guests cannot leave the island."],
+      ["The guests find another person hiding in a cave.",false,"They search everywhere and find nobody at all."],
+      ["The island is covered with thick woods.",false,"It is bare rock, with no trees and nowhere to hide."],
+      ["General Macarthur believes he will leave the island alive.",false,"He calmly says that none of them will ever leave."]
+    ],
+    writing:[
+      {task:"Write the page of Dr Armstrong’s notebook for this morning. Record the death of Mrs Rogers and your medical opinion.",
+       target:"50–70 words",
+       tips:["Use short, factual sentences and give the time.","Use medical language: cause of death, dose, examination.","Do not add emotion — a doctor’s notes are cold and clear."],
+       starters:["8.15 a.m. Called to the room of…","On examination…","In my opinion the cause of death was…","No other marks were found."]},
+      {task:"Imagine you are trapped on a small island with no way to leave. Write about what you would do first and how you would feel.",
+       target:"60–80 words",
+       tips:["Use the second conditional: If I were…, I would…","Give at least two practical actions.","Finish with your feelings."],
+       starters:["If I were trapped on an island,…","The first thing I would do is…","After that, I would…","I would probably feel…"]}
+    ]},
+  { n:5, title:"A killer’s game",
+    sum:"General Macarthur is found dead on the shore, killed by a heavy blow on the back of the head. Judge Wargrave then says out loud what everybody is thinking: the murderer is not a stranger hiding on the island — the murderer is one of the seven people still alive. From this moment nobody trusts anybody, and each death follows a line of the old rhyme.",
+    vocab:[
+      ["MURDERER","a person who kills another person on purpose"],
+      ["SUSPECT","a person who may have committed a crime"],
+      ["TRUST","to believe that someone is honest and safe"],
+      ["BLOW","a hard hit"],
+      ["SHORE","the land at the edge of the sea"],
+      ["JUDGE","the official who controls a court of law"],
+      ["MADNESS","the state of having a very disturbed mind"],
+      ["THEORY","an idea that explains how something happens"],
+      ["PATTERN","a regular way in which something is repeated"],
+      ["WEAPON","an object used to hurt or kill"],
+      ["DANGER","the possibility of being harmed"],
+      ["ALIBI","proof that you were somewhere else when a crime happened"]
+    ],
+    comp:[
+      ["Where is General Macarthur found?",["In his bedroom","By the sea, on the shore","In the kitchen","On the cliff path"],1,"He is sitting in the same place by the water where he had spent the morning."],
+      ["How did General Macarthur die?",["Poison","A heavy blow on the back of the head","Drowning","A fall"],1,"Somebody came up behind him and struck him with something heavy."],
+      ["What does Judge Wargrave tell the others?",["That help is coming","That the murderer is one of them","That it was an accident","That they should swim"],1,"He explains calmly that no outsider can be on the island."],
+      ["Why can the murderer not be a stranger?",["The island has been searched completely","The boat has gone","The doors are locked","There is a storm"],0,"Their search proved that nobody else is hiding on the island."],
+      ["How many people are alive after Macarthur’s death?",["Eight","Seven","Six","Five"],1,"Marston, Mrs Rogers and Macarthur are dead, so seven remain."],
+      ["What connects the deaths to the rhyme?",["Nothing","Each death follows a line of the rhyme","The rhyme is sung each time","The rhyme is written on the bodies"],1,"The way each victim dies matches a verse about the ten little soldiers."],
+      ["What happens to the china figures after each death?",["They are cleaned","One disappears","They are counted","They are broken"],1,"Somebody removes one figure from the table for every person who dies."],
+      ["How do the survivors behave now?",["They relax","They suspect one another","They go to bed","They leave together"],1,"Nobody can trust anybody, and they watch each other constantly."]
+    ],
+    tf:[
+      ["General Macarthur is killed with a knife.",false,"He is killed by a heavy blow on the back of the head."],
+      ["Judge Wargrave believes the murderer is one of the guests.",true,"He states it clearly: the killer is one of the people in the house."],
+      ["Somebody else is hiding on the island.",false,"The search showed that nobody else is there."],
+      ["Seven people are still alive after this chapter.",true,"Three of the ten are already dead."],
+      ["Each death matches a line of the old rhyme.",true,"The murderer is following the rhyme exactly."],
+      ["After Wargrave’s speech the guests trust each other completely.",false,"From now on every person suspects everybody else."]
+    ],
+    writing:[
+      {task:"You are Judge Wargrave. Write the short speech in which you explain to the others that the murderer is one of them.",
+       target:"60–80 words",
+       tips:["Use a calm, logical order: first…, secondly…, therefore…","Use modal verbs of deduction: must be, cannot be.","End with a warning or an instruction."],
+       starters:["Ladies and gentlemen, let us look at the facts.","We have searched the island, and therefore…","The murderer must be…","From now on we must…"]},
+      {task:"Write a short paragraph explaining who you suspect at this point in the story and why.",
+       target:"50–70 words",
+       tips:["Name one character and give two reasons.","Use language of possibility: might, could, probably.","Mention one fact from the story as evidence."],
+       starters:["At this point I suspect…","The first reason is that…","Secondly,…","However, I am not sure because…"]}
+    ]},
+  { n:6, title:"The storm",
+    sum:"A violent storm breaks over the island and cuts it off completely from the coast. Locked in the house with the rain and the wind, the survivors watch each other and hardly dare to sleep. Rogers reports that another china figure has disappeared from the table, although nobody has died — and in the morning Rogers himself cannot be found.",
+    vocab:[
+      ["STORM","very bad weather with strong wind and rain"],
+      ["THUNDER","the loud noise you hear during a storm"],
+      ["WIND","air moving quickly"],
+      ["CANDLE","a stick of wax that gives light when it burns"],
+      ["LOCKED","closed with a key so that nobody can enter"],
+      ["NERVES","the feeling of being anxious and tense"],
+      ["WHISPER","to speak very quietly"],
+      ["SHADOW","a dark shape made when light is blocked"],
+      ["MISSING","not in the place where it should be"],
+      ["COUNTED","added up to find the total number"],
+      ["AWAKE","not sleeping"],
+      ["TERROR","very great fear"]
+    ],
+    comp:[
+      ["What happens to the weather?",["It becomes sunny","A violent storm breaks","It snows","There is fog only"],1,"Wind and heavy rain hit the island and the sea becomes dangerous."],
+      ["Why is the storm important?",["It cools the house","It makes escape and rescue impossible","It brings a boat","It puts out the lights"],1,"No boat can cross, so the survivors are completely cut off."],
+      ["How do the survivors spend the night?",["Sleeping deeply","Awake and watching one another","Playing games","Searching the cliffs"],1,"They are too frightened to sleep and lock their doors."],
+      ["What does Rogers notice on the table?",["A broken plate","Another china figure has gone","A letter","A knife"],1,"A figure has disappeared although nobody has died yet."],
+      ["Why does this frighten Rogers so much?",["He thinks a ghost took it","It suggests he may be the next victim","He must pay for it","He cannot count"],1,"Somebody has already prepared the next death."],
+      ["What do the survivors do with the drugs and weapons?",["Throw them into the sea","Try to lock them away safely","Share them","Hide them separately"],1,"They agree to keep dangerous things locked up, but the plan does not work."],
+      ["What is missing from Lombard’s room?",["His money","His revolver","His shoes","His notebook"],1,"Somebody has taken Philip Lombard’s gun."],
+      ["Where is Rogers in the morning?",["In the kitchen","He cannot be found","On the shore","In his room"],1,"He does not appear with the morning tea, and the others go to look for him."]
+    ],
+    tf:[
+      ["The storm makes it impossible for any boat to come.",true,"The island is completely cut off from the mainland."],
+      ["The survivors sleep well that night.",false,"They lie awake, listening and watching."],
+      ["A china figure disappears even though nobody has died.",true,"This shows that the murderer is already planning the next death."],
+      ["Lombard’s revolver is stolen.",true,"It disappears from his room and nobody knows who took it."],
+      ["The survivors decide to lock away the medicines.",true,"They try to make dangerous things safe, but it is not enough."],
+      ["Rogers appears as usual with the morning tea.",false,"He is missing, and the others go to search for him."]
+    ],
+    writing:[
+      {task:"Describe the storm on Soldier Island. Use your senses: what can you see, hear and feel?",
+       target:"60–80 words",
+       tips:["Use strong adjectives and verbs: crashing, roaring, freezing.","Use the past continuous for background description.","Add one sentence about how the storm made the people feel."],
+       starters:["All night the wind was…","Rain crashed against…","Somewhere below, the sea…","Inside the house, nobody…"]},
+      {task:"You are one of the survivors. Write the note you leave in your locked room in case you do not survive the night.",
+       target:"50–70 words",
+       tips:["Say the date and who you are.","List the facts you are sure about.","Say who you suspect and why."],
+       starters:["To whoever finds this,","My name is…","These are the facts as I know them:","If I die tonight, look for…"]}
+    ]},
+  { n:7, title:"Six little soldiers",
+    sum:"Rogers is found dead in the small washhouse, killed with an axe while he was chopping wood for the fire. Six people are left, and the atmosphere in the house becomes unbearable. They eat together, move together and refuse to be alone — but Emily Brent stays behind in the dining room after breakfast, sitting very still in her chair.",
+    vocab:[
+      ["WOOD","material from trees, used for fires and furniture"],
+      ["CHOPPING","cutting something with an axe or knife"],
+      ["BLOOD","the red liquid inside the body"],
+      ["KITCHEN","the room where food is cooked"],
+      ["TONGUE","the soft part inside your mouth used for speaking"],
+      ["SILENT","making no sound"],
+      ["PANIC","a sudden strong feeling of fear"],
+      ["HUNGRY","needing to eat"],
+      ["ACCUSE","to say that someone has done something wrong"],
+      ["GOVERNESS","a woman employed to teach children in their home"],
+      ["DROWNED","died under water"],
+      ["PROUD","feeling that you are better or more important"]
+    ],
+    comp:[
+      ["Where is Rogers found?",["In his bed","In the washhouse outside","On the cliff","In the sitting room"],1,"He is found in the little washhouse where he had gone to cut wood."],
+      ["What was Rogers doing when he was killed?",["Sleeping","Chopping wood","Making tea","Cleaning shoes"],1,"He had gone out early to cut sticks for the kitchen fire."],
+      ["What was used to kill him?",["A gun","An axe","Poison","A rope"],1,"The axe he was using was turned against him."],
+      ["Which line of the rhyme does his death follow?",["A bee stings one","One chopped himself in halves","One overslept","One got frizzled up"],1,"The verse about chopping sticks matches the way he died."],
+      ["How many people are still alive?",["Seven","Six","Five","Four"],1,"Wargrave, Armstrong, Lombard, Blore, Vera and Emily Brent remain."],
+      ["Who cooks the breakfast now?",["Nobody eats","The survivors prepare it themselves","Emily Brent","Dr Armstrong"],1,"With both servants dead, the guests must look after themselves."],
+      ["Who was Beatrice Taylor?",["Emily Brent’s young servant","A guest","A nurse","Vera’s sister"],0,"Emily Brent dismissed her young servant, who then drowned herself."],
+      ["How does Emily Brent feel about Beatrice Taylor?",["Very guilty","She believes she did the right thing","She does not remember","She never knew her"],1,"She is convinced her behaviour was correct and feels no guilt at all."]
+    ],
+    tf:[
+      ["Rogers is killed with an axe.",true,"He was chopping wood when the murderer struck him."],
+      ["Rogers dies inside his bedroom.",false,"He is found in the washhouse outside the main building."],
+      ["Six people are alive at the beginning of this chapter’s end.",true,"Four of the ten are now dead."],
+      ["The survivors now have to prepare their own food.",true,"Both servants are dead, so they cook and serve for themselves."],
+      ["Emily Brent feels very guilty about Beatrice Taylor.",false,"She insists that she only did her duty."],
+      ["The survivors want to be alone in their rooms during the day.",false,"They are frightened and try to stay together."]
+    ],
+    writing:[
+      {task:"You are William Blore. Write your notes about the death of Rogers: the facts, the time and your suspicions.",
+       target:"60–80 words",
+       tips:["Write like a police officer: short, numbered facts.","Use the passive: the body was found, the axe was left.","End with the name of the person you suspect most."],
+       starters:["Time of discovery:","The body was found…","The weapon used was…","My conclusion at present:"]},
+      {task:"Emily Brent believes she was right to dismiss her servant. Do you agree with her? Give your opinion with reasons.",
+       target:"70–90 words",
+       tips:["State your opinion in the first sentence.","Give two reasons and one example from the story.","Use linkers: firstly, moreover, on the other hand, in conclusion."],
+       starters:["In my opinion, Emily Brent was…","Firstly,…","On the other hand, some people would say…","In conclusion,…"]}
+    ]},
+  { n:8, title:"The bee and the seaweed",
+    sum:"Emily Brent is found dead in her chair with a tiny mark on her neck, while a bee buzzes at the window — a perfect copy of another line of the rhyme. The five survivors search each other and lock away everything dangerous, but that evening Vera screams: something cold and wet is hanging in her dark bedroom. Everyone runs upstairs, and downstairs Judge Wargrave is discovered dressed as a judge, with a bullet wound in his forehead.",
+    vocab:[
+      ["SEAWEED","a plant that grows in the sea"],
+      ["NEEDLE","a thin sharp metal point, used for injections"],
+      ["SYRINGE","an instrument used to inject liquid into the body"],
+      ["SCREAM","to give a loud high cry of fear"],
+      ["BULLET","the small piece of metal fired from a gun"],
+      ["CURTAIN","cloth hung in front of a window"],
+      ["FOREHEAD","the part of the face above the eyes"],
+      ["ROBE","a long loose piece of clothing worn for ceremonies"],
+      ["CEILING","the surface above you in a room"],
+      ["SEARCH","to look carefully for something"],
+      ["CORPSE","a dead body"],
+      ["DARKNESS","the absence of light"]
+    ],
+    comp:[
+      ["Where is Emily Brent found dead?",["In her bedroom","In her chair in the dining room","On the shore","In the kitchen"],1,"She had stayed behind after breakfast and never moved again."],
+      ["What mark is on her neck?",["A cut","A small mark like a sting","A bruise","Nothing"],1,"There is a tiny mark, and a syringe was used to inject poison."],
+      ["What is buzzing in the room?",["A fly","A bee","A wasp nest","Nothing"],1,"The murderer put a bee there so the death would match the rhyme."],
+      ["Why did the murderer bring a bee?",["To sting her","To copy the line of the rhyme","By accident","To frighten the others"],1,"The killer wants each death to imitate the verse exactly."],
+      ["What do the five survivors decide to do?",["Sleep separately","Search each other and lock up everything dangerous","Swim to the coast","Stop eating"],1,"They search one another’s rooms and lock away drugs, knives and matches."],
+      ["What does Vera find hanging in her dark room?",["A rope","Wet seaweed","A coat","A curtain"],1,"Cold, wet seaweed touches her face in the dark and she screams."],
+      ["Where is Judge Wargrave found?",["Upstairs","Downstairs, sitting in a chair","On the shore","In the garden"],1,"While everyone ran up to Vera, he was left alone below."],
+      ["How is Judge Wargrave dressed?",["In pyjamas","In a red curtain and a grey wool wig, like a judge","In a coat","In a raincoat"],1,"The murderer has dressed the body as a judge in court."]
+    ],
+    tf:[
+      ["Emily Brent is killed with a syringe.",true,"Poison was injected into her neck, leaving a tiny mark."],
+      ["The bee at the window arrived by accident.",false,"The murderer put it there so the death would match the rhyme."],
+      ["After Emily Brent’s death five people are alive.",true,"Wargrave, Armstrong, Lombard, Blore and Vera remain."],
+      ["Vera finds seaweed hanging in her bedroom.",true,"It is cold and wet, and it makes her scream."],
+      ["The seaweed was left there to frighten Vera.",true,"It is a trick, and it takes everybody upstairs at the same time."],
+      ["Judge Wargrave is found dead in his bed.",false,"He is found downstairs, dressed as a judge, with a wound in his forehead."]
+    ],
+    writing:[
+      {task:"Describe the moment when Vera enters her dark bedroom and touches the seaweed. Build the tension step by step.",
+       target:"70–90 words",
+       tips:["Use short sentences to create tension.","Use the senses: cold, wet, smell, darkness.","Delay the explanation until the last line."],
+       starters:["Vera opened the door.","The room was completely dark.","Something cold and wet touched…","She screamed."]},
+      {task:"Write the report Dr Armstrong might make about the deaths of Emily Brent and Judge Wargrave.",
+       target:"60–80 words",
+       tips:["Keep a formal, medical tone.","Give the apparent cause of death for each person.","Add one sentence saying what still cannot be explained."],
+       starters:["Report on two further deaths.","Miss Brent: apparent cause of death…","Mr Justice Wargrave: apparent cause of death…","One point remains unexplained:"]}
+    ]},
+  { n:9, title:"And now there are four",
+    sum:"Four people are left, and none of them dares to close their eyes. In the middle of the night Dr Armstrong leaves the house and never comes back, so in the morning only Vera, Lombard and Blore remain. They stay outside all day, but when Blore returns alone to the house to get food, a heavy marble clock in the shape of a bear falls from a window above him.",
+    vocab:[
+      ["FOOTSTEP","the sound of a foot touching the ground"],
+      ["CORRIDOR","a long passage inside a building"],
+      ["MARBLE","a hard stone used for statues and floors"],
+      ["CLOCK","a machine that shows the time"],
+      ["WINDOW","an opening in a wall with glass in it"],
+      ["HUNGER","the feeling of needing food"],
+      ["BISCUIT","a small hard sweet or dry cake"],
+      ["SUNSHINE","the light and heat from the sun"],
+      ["REVOLVER","a small gun with a turning cylinder"],
+      ["ESCAPE","to get away from a dangerous place"],
+      ["SUSPECT","a person who may have committed a crime"],
+      ["VANISH","to disappear suddenly and completely"]
+    ],
+    comp:[
+      ["How many people are alive at the start of this chapter?",["Five","Four","Three","Two"],1,"Armstrong, Blore, Lombard and Vera are the only survivors."],
+      ["How do they spend the night?",["Sleeping in their rooms","Sitting together, awake and armed","Searching the island","Outside on the rocks"],1,"They stay in one room together, too frightened to sleep."],
+      ["Who leaves the house during the night?",["Blore","Dr Armstrong","Vera","Lombard"],1,"Armstrong goes out and is never seen alive again."],
+      ["What does Blore hear in the night?",["Music","Footsteps in the corridor","A boat","Nothing"],1,"He hears someone moving quietly outside the rooms."],
+      ["Who is missing in the morning?",["Vera","Dr Armstrong","Lombard","Blore"],1,"His bed is empty and he is nowhere on the island."],
+      ["Why does Blore go back to the house alone?",["To sleep","To get some food","To find the boat","To hide"],1,"He is very hungry and decides to fetch something to eat."],
+      ["What kills Blore?",["A gun","A heavy marble clock shaped like a bear","A knife","The sea"],1,"The clock is pushed from a window above and crushes him."],
+      ["Which line of the rhyme does Blore’s death match?",["A bumblebee stung one","A big bear hugged one","One overslept","A red herring swallowed one"],1,"The marble bear makes the death match the verse about the zoo."]
+    ],
+    tf:[
+      ["Four people are alive at the beginning of this chapter.",true,"Armstrong, Blore, Lombard and Vera."],
+      ["The four survivors sleep in separate rooms that night.",false,"They stay together, awake, because they are too frightened."],
+      ["Dr Armstrong disappears during the night.",true,"He leaves the house and is not seen alive again."],
+      ["Vera goes back to the house alone to find food.",false,"It is Blore who goes back alone."],
+      ["Blore is killed by a falling marble clock.",true,"The clock is shaped like a bear, matching the rhyme."],
+      ["After Blore’s death three people are still alive.",false,"Only Vera and Lombard remain."]
+    ],
+    writing:[
+      {task:"Write Vera’s diary entry for this terrible night and morning. Describe what happened and how her feelings changed.",
+       target:"70–90 words",
+       tips:["Use the past simple and past perfect: I had never…","Show the change from fear to exhaustion.","Include one short sentence of direct thought."],
+       starters:["I have not slept.","During the night…","When morning came,…","Now there are only…"]},
+      {task:"Two people are left and each believes the other is the murderer. Write their short conversation.",
+       target:"60–80 words",
+       tips:["Write it as a dialogue with names and dashes or quotation marks.","Use accusations and denials: You must be…, It wasn’t me.","Keep the sentences short and tense."],
+       starters:["‘There is nobody else left,’ said…","‘Then it must be you.’","‘I swear it wasn’t me.’","Neither of them moved."]}
+    ]},
+  { n:10, title:"A message in a bottle",
+    sum:"Vera and Lombard find Dr Armstrong’s body washed up on the shore, and Vera, certain that Lombard is the killer, takes his revolver and shoots him. Alone at last, she walks up to the house in a dream and finds a rope already waiting in her room. Weeks later the police can explain nothing — until a fishing boat pulls a bottle out of the sea containing the murderer’s full confession.",
+    vocab:[
+      ["BOTTLE","a glass container for liquids"],
+      ["CONFESS","to admit that you have done something wrong"],
+      ["DOCUMENT","an official paper with written information"],
+      ["FISHERMAN","a person who catches fish"],
+      ["POLICE","the official force that keeps public order"],
+      ["PUZZLE","something difficult to understand or solve"],
+      ["ILLNESS","a disease or period of bad health"],
+      ["PLAN","an arrangement for doing something in the future"],
+      ["ROPE","a very thick strong string"],
+      ["SOLUTION","the answer to a problem"],
+      ["CORPSE","a dead body"],
+      ["SURVIVE","to continue to live after a dangerous event"]
+    ],
+    comp:[
+      ["Whose body do Vera and Lombard find on the shore?",["Blore’s","Dr Armstrong’s","Rogers’s","Nobody’s"],1,"Armstrong’s body has been washed up by the sea."],
+      ["What does Vera do to Lombard?",["She helps him","She shoots him with his own revolver","She locks him in","She runs away"],1,"She takes the gun while he is bending over the body and shoots him."],
+      ["What does Vera find waiting in her bedroom?",["A letter","A rope and a chair","Food","A china figure"],1,"Everything is prepared for the last line of the rhyme."],
+      ["How does Vera die?",["She is shot","She hangs herself","She drowns","She is poisoned"],1,"In a strange, dreamlike state she does exactly what the rhyme says."],
+      ["Why can the police not solve the case?",["There are no bodies","Everyone on the island is dead and no killer is found","They never go to the island","The bodies disappear"],1,"All ten people are dead and there is no possible survivor to be the murderer."],
+      ["Who wrote the confession in the bottle?",["Dr Armstrong","Judge Wargrave","Philip Lombard","Vera Claythorne"],1,"The judge explains the whole plan in a document thrown into the sea."],
+      ["How did the murderer pretend to be dead?",["He hid in a cave","Dr Armstrong helped him fake his death","He used a mask","He swam away"],1,"He persuaded Armstrong to help him, then killed him too."],
+      ["Why did the murderer choose these ten people?",["They were rich","The law could not punish them for the deaths they caused","They were his family","By accident"],1,"He wanted to punish crimes that no court could touch."]
+    ],
+    tf:[
+      ["Vera shoots Philip Lombard with his own revolver.",true,"She takes the gun while he is looking at Armstrong’s body."],
+      ["Vera escapes from the island alive.",false,"She hangs herself in her bedroom, exactly as the rhyme says."],
+      ["The police quickly understand what happened on the island.",false,"The case seems impossible: everyone is dead and nobody could be the killer."],
+      ["The truth is discovered in a message inside a bottle.",true,"A fishing boat finds the bottle with the confession inside."],
+      ["The murderer was Judge Wargrave.",true,"He explains everything in his written confession."],
+      ["The murderer chose his victims by chance.",false,"He chose people who had caused a death but could not be punished by law."]
+    ],
+    writing:[
+      {task:"Write the last part of the murderer’s confession: explain in your own words why he did it and how he tricked the others.",
+       target:"80–100 words",
+       tips:["Write in the first person and use a calm, logical tone.","Explain the motive first, then one trick in detail.","Use the past perfect for things done before: I had already…"],
+       starters:["I have always had two things in my nature:","I chose ten people who…","My greatest difficulty was…","And so, at the end,…"]},
+      {task:"‘Justice should always be done by the law, never by a private person.’ Do you agree? Give your opinion about the murderer’s idea of justice.",
+       target:"80–100 words",
+       tips:["State your opinion clearly in the first sentence.","Give two arguments and one example from the novel.","Use linkers: firstly, furthermore, however, to sum up."],
+       starters:["I strongly agree/disagree that…","Firstly,…","Furthermore, in the novel…","To sum up,…"]}
+    ]}
+];
+
+/* ---------- helpers ---------- */
+const $=(s,r=document)=>r.querySelector(s);
+const stage=$("#stage"), crumbEl=$("#crumb"), backEl=$("#backBtn");
+function goPortal(){ location.href="./"; }
+let view={screen:"chapters", chap:null, act:null};
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+
+const ACTS=[
+  {id:"read",          ico:"📖", name:"Read the chapter", desc:"Read the story of this chapter (simplified, B1.2)."},
+  {id:"comprehension", ico:"❓", name:"Comprehension",   desc:"8 questions about the chapter, with explanations."},
+  {id:"truefalse",     ico:"✅", name:"True / False",     desc:"Decide if each statement is true or false."},
+  {id:"multiplechoice",ico:"🔤", name:"Multiple Choice",  desc:"Choose the correct meaning of each word."},
+  {id:"speed",         ico:"⚡", name:"Speed Quiz",       desc:"Answer against the clock — think fast!"},
+  {id:"writing",       ico:"✍️", name:"Writing",          desc:"Guided writing tasks with tips and useful language."},
+  {id:"wordsearch",    ico:"🔎", name:"Word Search",      desc:"Find the chapter words hidden in the grid."},
+  {id:"crossword",     ico:"🧩", name:"Crossword",        desc:"Use the definitions to complete the crossword."},
+  {id:"hangman",       ico:"🎯", name:"Hangman",          desc:"Guess the word letter by letter."},
+  {id:"memory",        ico:"🃏", name:"Memory Match",     desc:"Match each word with its definition."},
+  {id:"scramble",      ico:"🔠", name:"Word Scramble",    desc:"Put the mixed letters in the right order."}
+];
+
+/* ---------- navigation ---------- */
+function render(){
+  backEl.style.display = view.screen==="chapters" ? "none" : "inline-block";
+  if(view.screen==="chapters"){ crumbEl.innerHTML=""; return renderChapters(); }
+  if(view.screen==="info"){ crumbEl.innerHTML = view.info==='bio' ? 'Agatha Christie' : 'The characters'; return renderInfo(); }
+  const c=CHAPTERS[view.chap];
+  if(view.screen==="acts"){ crumbEl.innerHTML=`<b>Chapter ${c.n}</b> · ${c.title}`; return renderActs(); }
+  crumbEl.innerHTML=`<b>Chapter ${c.n}</b> · ${c.title} &nbsp;›&nbsp; ${ACTS.find(a=>a.id===view.act).name}`;
+  ACT_RENDER[view.act](c);
+}
+function back(){
+  if(view.screen==="act"){ view.screen="acts"; view.act=null; }
+  else if(view.screen==="acts" || view.screen==="info"){ view.screen="chapters"; view.chap=null; view.info=null; }
+  render();
+}
+function openChapter(i){ view.chap=i; view.screen="acts"; render(); }
+function openAct(id){ view.act=id; view.screen="act"; render(); }
+function openInfo(kind){ view.info=kind; view.screen="info"; render(); }
+
+function renderChapters(){
+  stage.innerHTML=`
+    <h1><span class="em">🏝️</span> And Then There Were None</h1>
+    <p class="lead">Agatha Christie · Black Cat Reading &amp; Training · Step Three · B1.2. Choose a chapter, then choose an activity — 10 activities per chapter.</p>
+    <div class="grid cols-2" style="margin-bottom:14px">
+      <div class="card" style="flex-direction:row;text-align:left;gap:14px;align-items:center" onclick="openInfo('bio')">
+        <div class="ico" style="font-size:2.2rem">✍️</div>
+        <div><h2 style="margin:0">Agatha Christie</h2><div class="desc">A short biography of the author.</div></div>
+      </div>
+      <div class="card" style="flex-direction:row;text-align:left;gap:14px;align-items:center" onclick="openInfo('characters')">
+        <div class="ico" style="font-size:2.2rem">🕵️</div>
+        <div><h2 style="margin:0">The characters</h2><div class="desc">Who is who on Soldier Island.</div></div>
+      </div>
+    </div>
+    <h2 style="font-size:16px;color:var(--blue-d);margin:4px 0 10px">📚 Chapters</h2>
+    <div class="grid cols-2">
+      ${CHAPTERS.map((c,i)=>`
+        <div class="card chap-card" onclick="openChapter(${i})">
+          <span class="num">CHAPTER ${c.n}</span>
+          <h2>${c.title}</h2>
+          <div class="desc">${c.sum}</div>
+          <span class="chip">${c.vocab.length} words · ${c.comp.length} questions</span>
+          <span class="act-tag">Comprehension · True/False · Writing · +7 games</span>
+        </div>`).join("")}
+    </div>`;
+}
+const CHARACTERS = [
+  ["Mr Justice Lawrence Wargrave","A retired judge, old, cold and extremely intelligent. He has spent his life in court sending criminals to prison — and, some people say, enjoying it. He is the first to understand that the murderer must be one of the ten people on the island."],
+  ["Vera Claythorne","A young games mistress who comes to the island believing she has been hired as a secretary. She is calm and practical, but she is haunted by the memory of a little boy called Cyril, who drowned while she was looking after him."],
+  ["Philip Lombard","A tough, attractive soldier of fortune who has lived dangerously all over the world. He is paid a hundred guineas simply to come to the island and be ready for trouble, and he brings a revolver with him."],
+  ["Dr Edward Armstrong","A successful London doctor with a nervous, uncertain character. Years ago he operated on a patient after drinking too much, and the woman died. He is the only one who can examine the bodies."],
+  ["William Blore","A former police inspector, now a private detective. He arrives under the false name of ‘Davis’. He is strong and confident, but his evidence once sent an innocent man to prison, where the man died."],
+  ["Emily Brent","A hard, religious old lady who is completely certain that she has never done anything wrong. She dismissed her young servant Beatrice Taylor, who then killed herself, and she feels no guilt at all."],
+  ["General John Gordon Macarthur","An old soldier, quiet and sad. During the First World War he sent a young officer, his wife’s lover, on a mission from which he was certain to die. He is the first to accept that nobody will leave the island."],
+  ["Anthony Marston","A rich, handsome and careless young man who loves fast cars. He once ran over and killed two young people, and he speaks about the accident as if it were nothing more than bad luck."],
+  ["Thomas and Ethel Rogers","The butler and the cook, a married couple who look after the house. They were once servants to an old lady who died — and they inherited her money."],
+  ["Fred Narracott & ‘U. N. Owen’","Narracott is the local boatman who takes the guests across. ‘U. N. Owen’ is the name of the mysterious host — a name which, read aloud, simply means ‘unknown’."]
+];
+const BIO = [
+  "Agatha Christie (1890–1976) is the best-selling novelist of all time. She was born Agatha Mary Clarissa Miller in Torquay, a small town on the south coast of Devon, in the south-west of England. Her parents taught her at home, and because her brother and sister were much older she spent a great deal of time alone, reading books and inventing stories in her head.",
+  "During the First World War she worked in a hospital in Torquay, where she learned a great deal about medicines and poisons — knowledge that she later used in her crime novels. In 1920 she published her first book, <i>The Mysterious Affair at Styles</i>, which introduced the clever Belgian detective Hercule Poirot. Her other famous detective, the quiet village lady Miss Marple, appeared some years later.",
+  "In 1926, after the death of her mother and the end of her first marriage, Agatha Christie disappeared for eleven days. She was found in a hotel in Harrogate, and she never fully explained what had happened. In 1930 she married the archaeologist Max Mallowan and travelled with him to the Middle East; those journeys inspired novels such as <i>Murder on the Orient Express</i> and <i>Death on the Nile</i>.",
+  "<i>And Then There Were None</i> was first published in 1939 and is set much closer to home, on a small island off the Devon coast that she knew well. Christie said it was the most difficult book she ever wrote, and it has become the best-selling crime novel in the world. In 1971 Queen Elizabeth II made her a Dame of the British Empire. She died on 12th January 1976, at the age of 85, and her stories are still read, filmed and performed all over the world."
+];
+function renderInfo(){
+  if(view.info==='bio'){
+    stage.innerHTML=`<div class="panel reading">
+      <div class="qnum">THE AUTHOR</div>
+      <h2 style="color:var(--blue-d);margin:2px 0 12px">✍️ Agatha Christie (1890–1976)</h2>
+      ${BIO.map(p=>`<p>${p}</p>`).join("")}
+      <div style="margin-top:16px"><button class="btn sm" onclick="openInfo('characters')">🕵️ Meet the characters →</button></div>
+    </div>`;
+  } else {
+    stage.innerHTML=`<div class="panel reading">
+      <div class="qnum">THE NOVEL</div>
+      <h2 style="color:var(--blue-d);margin:2px 0 12px">🕵️ The characters</h2>
+      ${CHARACTERS.map(c=>`<p style="text-align:left;margin-bottom:12px"><b style="color:var(--blue-d)">${c[0]}</b><br>${c[1]}</p>`).join("")}
+      <div style="margin-top:8px"><button class="btn sm" onclick="back()">📚 Go to the chapters →</button></div>
+    </div>`;
+  }
+  window.scrollTo(0,0);
+}
+function renderActs(){
+  const c=CHAPTERS[view.chap];
+  stage.innerHTML=`
+    <h1>Chapter ${c.n} · ${c.title}</h1>
+    <p class="lead">${c.sum}</p>
+    <div class="grid cols-3">
+      ${ACTS.map(a=>`
+        <div class="card" onclick="openAct('${a.id}')">
+          <div class="ico">${a.ico}</div>
+          <h2>${a.name}</h2>
+          <div class="desc">${a.desc}</div>
+        </div>`).join("")}
+    </div>`;
+}
+
+/* ============================================================
+   QUIZ ENGINE (Comprehension · Speed Quiz · Multiple Choice)
+   ============================================================ */
+function runQuiz(questions, opts){
+  const speed=opts.speed, label=opts.label, replay=opts.replay;
+  const qs=shuffle(questions);
+  let i=0, score=0, timer=null; const PER=12;
+  function show(){
+    if(i>=qs.length) return finish();
+    const q=qs[i];
+    stage.innerHTML=`<div class="panel">
+      <div class="qnum">QUESTION ${i+1} / ${qs.length}${speed?" · ⚡ Speed":""}</div>
+      <div class="prog"><span style="width:${(i/qs.length)*100}%"></span></div>
+      ${speed?`<div class="timerbar"><span id="tb" style="width:100%"></span></div>`:""}
+      <div class="qtext">${q.q}</div>
+      <div id="opts">${q.opts.map((o,k)=>`<button class="opt" data-k="${k}" onclick="qzPick(${k})">${o.t}</button>`).join("")}</div>
+      <div id="fb"></div></div>`;
+    if(speed){ const t=PER*1000, bar=$("#tb"), t0=Date.now();
+      timer=setInterval(()=>{ const left=t-(Date.now()-t0); bar.style.width=Math.max(0,left/t*100)+"%";
+        if(left<=0){ clearInterval(timer); qzPick(-1); } },80); }
+  }
+  window.qzPick=(k)=>{
+    if(timer){ clearInterval(timer); timer=null; }
+    const q=qs[i], btns=[...stage.querySelectorAll(".opt")];
+    btns.forEach((b,idx)=>{ b.disabled=true; if(q.opts[idx].correct)b.classList.add("correct"); });
+    let correct=false;
+    if(k>=0){ correct=q.opts[k].correct; if(!correct)btns[k].classList.add("wrong"); }
+    if(correct) score++;
+    if(!speed){ $("#fb").innerHTML=`<div class="explain">${correct?"✅ Correct! ":"❌ "}${q.explain||""}</div>
+      <button class="btn sm" style="margin-top:12px" onclick="qzNext()">${i+1<qs.length?"Next →":"See results"}</button>`; }
+    else{ setTimeout(()=>{ i++; show(); }, 650); }
+  };
+  window.qzNext=()=>{ i++; show(); };
+  function finish(){
+    const pct=Math.round(score/qs.length*100);
+    const msg=pct>=80?"Excellent! 🌟":pct>=50?"Good job! 👍":"Keep practising! 💪";
+    stage.innerHTML=`<div class="panel center">
+      <p class="muted qnum">${label} · RESULT</p>
+      <div class="score">${score}/${qs.length}</div>
+      <p style="font-size:1.4rem;font-weight:700;color:var(--blue-d)">${pct}%</p>
+      <p class="muted" style="margin:6px 0 16px">${msg}</p>
+      <button class="btn sm" onclick="${replay}">Try again</button>
+      <button class="btn ghost sm" onclick="back()">Back to activities</button></div>`;
+  }
+  show();
+}
+function compQuestions(c){ return c.comp.map(q=>({q:q[0], opts:shuffle(q[1].map((t,i)=>({t,correct:i===q[2]}))), explain:q[3]})); }
+function actComprehension(c){ runQuiz(compQuestions(c), {speed:false, label:"COMPREHENSION", replay:"actComprehension(CHAPTERS[view.chap])"}); }
+function actSpeed(c){
+  stage.innerHTML=`<div class="panel center">
+    <div class="ico" style="font-size:3rem">⚡</div>
+    <h2 style="color:var(--blue-d);margin:6px 0">Speed Quiz</h2>
+    <p class="muted" style="max-width:420px;margin:0 auto 14px">You have <b>12 seconds</b> per question. Answer as fast as you can — the correct answer is shown after each one.</p>
+    <button class="btn" onclick="runQuiz(compQuestions(CHAPTERS[view.chap]),{speed:true,label:'SPEED QUIZ',replay:'actSpeed(CHAPTERS[view.chap])'})">Start ⚡</button>
+  </div>`;
+}
+function actMultipleChoice(c){
+  const defs=c.vocab.map(v=>v[1]);
+  const qs=shuffle(c.vocab).map(v=>{
+    const wrong=shuffle(defs.filter(d=>d!==v[1])).slice(0,3);
+    const opts=shuffle([{t:v[1],correct:true},...wrong.map(d=>({t:d,correct:false}))]);
+    return {q:`What does <b>${v[0]}</b> mean?`, opts, explain:`${v[0]} = ${v[1]}`};
+  });
+  runQuiz(qs, {speed:false, label:"MULTIPLE CHOICE", replay:"actMultipleChoice(CHAPTERS[view.chap])"});
+}
+
+/* ============================================================
+   TRUE / FALSE
+   ============================================================ */
+function actTrueFalse(c){
+  const items=shuffle(c.tf); let answered=0, score=0;
+  stage.innerHTML=`<div class="panel">
+    <p class="muted" style="margin-bottom:12px">Read each statement and choose <b>True</b> or <b>False</b>. <span id="tfScore"></span></p>
+    <div id="tfList">${items.map((it,idx)=>`
+      <div class="tf-item" data-i="${idx}">
+        <div class="tf-stmt">${idx+1}. ${it[0]}</div>
+        <div class="tf-btns">
+          <button class="tf-btn" onclick="tfPick(${idx},true)">✔ True</button>
+          <button class="tf-btn" onclick="tfPick(${idx},false)">✗ False</button>
+        </div>
+        <div class="tf-corr" style="display:none"></div>
+      </div>`).join("")}</div>
+    <div id="tfDone" class="center" style="margin-top:8px;display:none"></div>
+  </div>`;
+  window.tfPick=(idx,val)=>{
+    const it=items[idx]; const box=stage.querySelector(`.tf-item[data-i="${idx}"]`);
+    if(box.dataset.done) return; box.dataset.done="1";
+    const btns=box.querySelectorAll(".tf-btn"); btns.forEach(b=>b.disabled=true);
+    const correct = (val===it[1]);
+    if(correct) score++;
+    const picked = val ? btns[0] : btns[1];
+    picked.classList.add(correct?"pick-correct":"pick-wrong");
+    if(!correct){ (it[1]?btns[0]:btns[1]).classList.add("pick-correct"); }
+    const corr=box.querySelector(".tf-corr");
+    corr.style.display="block";
+    corr.innerHTML=`<span class="${correct?'toast ok':'toast no'}" style="margin:0">${correct?"✅ Correct.":"❌ It is "+(it[1]?"True":"False")+"."}</span> <span class="muted">${it[2]}</span>`;
+    answered++;
+    $("#tfScore").textContent=`(${answered}/${items.length})`;
+    if(answered===items.length){
+      const pct=Math.round(score/items.length*100);
+      $("#tfDone").style.display="block";
+      $("#tfDone").innerHTML=`<div class="score">${score}/${items.length}</div>
+        <p style="font-weight:700;color:var(--blue-d)">${pct}%</p>
+        <button class="btn sm" onclick="actTrueFalse(CHAPTERS[view.chap])">Try again</button>
+        <button class="btn ghost sm" onclick="back()">Back</button>`;
+    }
+  };
+}
+
+/* ============================================================
+   WRITING (guided tasks)
+   ============================================================ */
+function actWriting(c){
+  const tasks=c.writing; let idx=0;
+  const CHECK=["I answered the whole task","I wrote within the word count","I checked spelling and punctuation","I used linking words","I re-read my text"];
+  function parseTarget(t){ const m=t.match(/(\d+)\D+(\d+)/); return m?[+m[1],+m[2]]:[0,9999]; }
+  function show(){
+    const t=tasks[idx]; const [lo,hi]=parseTarget(t.target);
+    stage.innerHTML=`<div class="panel">
+      <div class="qnum">WRITING TASK ${idx+1} / ${tasks.length}</div>
+      <div class="qtext">${t.task}</div>
+      <p class="muted" style="margin-top:-4px">🎯 Target length: <b>${t.target}</b></p>
+      <div class="wr-cols">
+        <div>
+          <textarea class="wr" id="wrArea" placeholder="Write your answer here…"></textarea>
+          <div class="wr-count">Words: <b id="wc">0</b> <span id="wcHint"></span></div>
+          <div class="checklist"><b style="font-size:13px;color:var(--blue-d)">Self-check</b>
+            ${CHECK.map((x,i)=>`<label><input type="checkbox"> <span>${x}</span></label>`).join("")}
+          </div>
+        </div>
+        <aside>
+          <h4>💬 Useful language</h4>
+          <ul>${t.starters.map(s=>`<li>${s}</li>`).join("")}</ul>
+          <h4>💡 Tips</h4>
+          <ul>${t.tips.map(s=>`<li>${s}</li>`).join("")}</ul>
+        </aside>
+      </div>
+      <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+        ${idx>0?`<button class="btn ghost sm" onclick="wrGo(${idx-1})">← Previous task</button>`:""}
+        ${idx<tasks.length-1?`<button class="btn sm" onclick="wrGo(${idx+1})">Next task →</button>`:""}
+        <button class="btn ghost sm" onclick="wrCopy()">📋 Copy my text</button>
+        <span id="wrMsg" class="muted" style="font-size:13px"></span>
+      </div>
+    </div>`;
+    const area=$("#wrArea"), wc=$("#wc"), hint=$("#wcHint");
+    function count(){ const n=(area.value.trim().match(/\S+/g)||[]).length; wc.textContent=n;
+      if(n===0){ hint.textContent=""; hint.className=""; }
+      else if(n<lo){ hint.innerHTML=`<span class="out">— a bit short (${lo}–${hi})</span>`; }
+      else if(n>hi){ hint.innerHTML=`<span class="out">— a bit long (${lo}–${hi})</span>`; }
+      else{ hint.innerHTML=`<span class="in">✓ within target</span>`; } }
+    area.addEventListener("input",count); count();
+    window.wrCopy=()=>{ area.select(); try{ document.execCommand("copy"); $("#wrMsg").textContent="Copied ✓"; }catch(e){ $("#wrMsg").textContent="Select and copy manually."; } };
+  }
+  window.wrGo=(i)=>{ idx=i; show(); };
+  show();
+}
+
+/* ============================================================
+   WORD SEARCH
+   ============================================================ */
+function actWordSearch(c){
+  const words=c.vocab.map(v=>v[0]);
+  const maxLen=Math.max(...words.map(w=>w.length));
+  const N=Math.max(13, maxLen+1);
+  const grid=Array.from({length:N},()=>Array(N).fill(""));
+  const DIRS=[[0,1],[1,0],[1,1],[-1,1],[0,-1],[-1,0],[-1,-1],[1,-1]];
+  function tryPlace(w){
+    for(let att=0; att<500; att++){
+      const [dr,dc]=DIRS[Math.floor(Math.random()*DIRS.length)];
+      const r0=Math.floor(Math.random()*N), c0=Math.floor(Math.random()*N);
+      const rE=r0+dr*(w.length-1), cE=c0+dc*(w.length-1);
+      if(rE<0||rE>=N||cE<0||cE>=N) continue;
+      let ok=true;
+      for(let i=0;i<w.length;i++){ const ch=grid[r0+dr*i][c0+dc*i]; if(ch&&ch!==w[i]){ok=false;break;} }
+      if(!ok) continue;
+      for(let i=0;i<w.length;i++) grid[r0+dr*i][c0+dc*i]=w[i];
+      return true;
+    } return false;
+  }
+  const ok=[]; shuffle(words).forEach(w=>{ if(tryPlace(w)) ok.push(w); });
+  const A="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  for(let r=0;r<N;r++)for(let cc=0;cc<N;cc++)if(!grid[r][cc])grid[r][cc]=A[Math.floor(Math.random()*26)];
+  stage.innerHTML=`<div class="panel">
+    <p class="muted" style="margin-bottom:10px">Click and drag (or tap the first and last letter) to select a word. <b id="wsCount">0/${ok.length}</b> found.</p>
+    <div class="ws-wrap">
+      <table class="ws" id="wsGrid">${grid.map((row,r)=>`<tr>${row.map((ch,cc)=>`<td data-k="${r}_${cc}">${ch}</td>`).join("")}</tr>`).join("")}</table>
+      <ul class="wordlist" id="wsList">${ok.map(w=>`<li data-w="${w}">${w}</li>`).join("")}</ul>
+    </div>
+    <div id="wsDone" class="center" style="margin-top:14px;display:none">
+      <p class="toast ok">🎉 Great! You found all the words.</p>
+      <button class="btn ghost sm" onclick="actWordSearch(CHAPTERS[view.chap])">Play again</button>
+    </div></div>`;
+  const tbl=$("#wsGrid"); let start=null, selecting=false, curCells=[]; const found=new Set();
+  function cellsBetween(a,b){ const [r1,c1]=a.split("_").map(Number),[r2,c2]=b.split("_").map(Number);
+    if(!(r1===r2||c1===c2||Math.abs(r2-r1)===Math.abs(c2-c1))) return null;
+    const dr=Math.sign(r2-r1),dc=Math.sign(c2-c1), len=Math.max(Math.abs(r2-r1),Math.abs(c2-c1))+1;
+    const out=[]; for(let i=0;i<len;i++) out.push((r1+dr*i)+"_"+(c1+dc*i)); return out; }
+  function paint(cells){ tbl.querySelectorAll("td.sel").forEach(t=>t.classList.remove("sel"));
+    if(cells) cells.forEach(k=>{ const td=tbl.querySelector(`td[data-k="${k}"]`); if(td)td.classList.add("sel"); }); }
+  function letters(cells){ return cells.map(k=>tbl.querySelector(`td[data-k="${k}"]`).textContent).join(""); }
+  function commit(cells){ if(!cells) return; const str=letters(cells), rev=str.split("").reverse().join("");
+    const hit=ok.find(w=>(w===str||w===rev)&&!found.has(w));
+    if(hit){ found.add(hit); cells.forEach(k=>{ const td=tbl.querySelector(`td[data-k="${k}"]`); td.classList.remove("sel"); td.classList.add("found"); });
+      $(`#wsList li[data-w="${hit}"]`).classList.add("done"); $("#wsCount").textContent=found.size+"/"+ok.length;
+      if(found.size===ok.length)$("#wsDone").style.display="block"; } }
+  function keyFromEvent(e){ const t=(e.touches?document.elementFromPoint(e.touches[0].clientX,e.touches[0].clientY):e.target); return t&&t.dataset?t.dataset.k:null; }
+  function down(e){ const k=keyFromEvent(e); if(!k)return; selecting=true; start=k; curCells=[k]; paint(curCells); e.preventDefault(); }
+  function move(e){ if(!selecting)return; const k=keyFromEvent(e); if(!k)return; const cells=cellsBetween(start,k); if(cells){curCells=cells; paint(cells);} }
+  function up(){ if(!selecting)return; selecting=false; commit(curCells); paint(null); curCells=[]; }
+  tbl.addEventListener("mousedown",down); tbl.addEventListener("mousemove",move); document.addEventListener("mouseup",up);
+  tbl.addEventListener("touchstart",down,{passive:false}); tbl.addEventListener("touchmove",move,{passive:false}); document.addEventListener("touchend",up);
+}
+
+/* ============================================================
+   CROSSWORD
+   ============================================================ */
+function actCrossword(c){
+  const src=shuffle(c.vocab.filter(v=>/^[A-Z]+$/.test(v[0])&&v[0].length>=3&&v[0].length<=10))
+      .map(v=>({w:v[0],clue:v[1]})).sort((a,b)=>b.w.length-a.w.length);
+  const grid={}, placed=[]; const K=(r,cc)=>r+","+cc;
+  function canPlace(w,r,cc,dir){
+    for(let i=0;i<w.length;i++){ const rr=dir==="H"?r:r+i, ccc=dir==="H"?cc+i:cc, cur=grid[K(rr,ccc)];
+      if(cur&&cur!==w[i]) return false;
+      if(!cur){ if(dir==="H"){ if(grid[K(rr-1,ccc)]||grid[K(rr+1,ccc)])return false; } else{ if(grid[K(rr,ccc-1)]||grid[K(rr,ccc+1)])return false; } } }
+    if(dir==="H"){ if(grid[K(r,cc-1)]||grid[K(r,cc+w.length)])return false; } else{ if(grid[K(r-1,cc)]||grid[K(r+w.length,cc)])return false; }
+    return true;
+  }
+  function put(o){ for(let i=0;i<o.w.length;i++){ const rr=o.dir==="H"?o.r:o.r+i, cc=o.dir==="H"?o.c+i:o.c; grid[K(rr,cc)]=o.w[i]; } placed.push(o); }
+  if(!src.length){ stage.innerHTML=`<div class="panel">No words available.</div>`; return; }
+  put({w:src[0].w,clue:src[0].clue,r:0,c:0,dir:"H"});
+  for(let i=1;i<src.length;i++){ const wd=src[i]; let done=false;
+    for(const p of placed){ if(done)break;
+      for(let pi=0;pi<p.w.length&&!done;pi++)for(let wi=0;wi<wd.w.length&&!done;wi++){
+        if(p.w[pi]!==wd.w[wi])continue;
+        const pr=p.dir==="H"?p.r:p.r+pi, pc=p.dir==="H"?p.c+pi:p.c, dir=p.dir==="H"?"V":"H";
+        const r=dir==="H"?pr:pr-wi, cc=dir==="H"?pc-wi:pc;
+        if(canPlace(wd.w,r,cc,dir)){ put({w:wd.w,clue:wd.clue,r,c:cc,dir}); done=true; } } } }
+  const rs=Object.keys(grid).map(k=>+k.split(",")[0]), cs=Object.keys(grid).map(k=>+k.split(",")[1]);
+  const minR=Math.min(...rs),maxR=Math.max(...rs),minC=Math.min(...cs),maxC=Math.max(...cs);
+  const H=maxR-minR+1, W=maxC-minC+1; placed.forEach(p=>{ p.r-=minR; p.c-=minC; });
+  let num=0; const numAt={}, across=[], down=[], startsA={}, startsD={};
+  placed.forEach(p=>{ (p.dir==="H"?startsA:startsD)[p.r+","+p.c]=p; });
+  for(let r=0;r<H;r++)for(let cc=0;cc<W;cc++){ const isA=startsA[r+","+cc], isD=startsD[r+","+cc];
+    if(isA||isD){ num++; numAt[r+","+cc]=num;
+      if(isA) across.push({num,clue:isA.clue,ans:isA.w}); if(isD) down.push({num,clue:isD.clue,ans:isD.w}); } }
+  const cellId=(r,cc)=>"cw_"+r+"_"+cc;
+  let html='<div class="panel"><p class="muted" style="margin-bottom:10px">Read the definitions and type the words. Green = correct.</p><div style="overflow-x:auto"><table class="cw">';
+  for(let r=0;r<H;r++){ html+="<tr>";
+    for(let cc=0;cc<W;cc++){ const has=grid[K(r+minR,cc+minC)];
+      if(!has) html+='<td class="blk"></td>';
+      else{ const qn=numAt[r+","+cc]; html+=`<td>${qn?`<span class="qn">${qn}</span>`:""}<input id="${cellId(r,cc)}" maxlength="1" data-a="${has}" data-r="${r}" data-c="${cc}"></td>`; } }
+    html+="</tr>"; }
+  html+="</table></div><div class='clues'>";
+  html+='<div><h3>Across</h3><ol>'+across.map(a=>`<li value="${a.num}">${a.clue} <span class="muted">(${a.ans.length})</span></li>`).join("")+"</ol></div>";
+  html+='<div><h3>Down</h3><ol>'+down.map(a=>`<li value="${a.num}">${a.clue} <span class="muted">(${a.ans.length})</span></li>`).join("")+"</ol></div></div>";
+  html+=`<div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+    <button class="btn sm" onclick="cwCheck()">Check</button>
+    <button class="btn ghost sm" onclick="cwReveal()">Show answers</button>
+    <button class="btn ghost sm" onclick="actCrossword(CHAPTERS[view.chap])">New puzzle</button>
+    <span id="cwMsg" class="toast"></span></div></div>`;
+  stage.innerHTML=html;
+  const inputs=[...stage.querySelectorAll(".cw input")];
+  inputs.forEach(inp=>{
+    inp.addEventListener("input",()=>{ inp.value=inp.value.toUpperCase().replace(/[^A-Z]/g,""); inp.parentElement.classList.remove("ok","bad");
+      if(inp.value){ const r=+inp.dataset.r,cc=+inp.dataset.c; const nxt=stage.querySelector(`#${cellId(r,cc+1)}`)||stage.querySelector(`#${cellId(r+1,cc)}`); if(nxt)nxt.focus(); } });
+    inp.addEventListener("keydown",e=>{ if(e.key==="Backspace"&&!inp.value){ const r=+inp.dataset.r,cc=+inp.dataset.c; const prv=stage.querySelector(`#${cellId(r,cc-1)}`)||stage.querySelector(`#${cellId(r-1,cc)}`); if(prv)prv.focus(); } });
+  });
+  window.cwCheck=()=>{ let all=true,filled=true;
+    inputs.forEach(inp=>{ const td=inp.parentElement; td.classList.remove("ok","bad");
+      if(!inp.value){ filled=false; all=false; return; } if(inp.value===inp.dataset.a) td.classList.add("ok"); else{ td.classList.add("bad"); all=false; } });
+    const m=$("#cwMsg"); if(all){ m.textContent="🎉 Perfect! Crossword complete."; m.className="toast ok"; }
+    else if(!filled){ m.textContent="Some cells are still empty."; m.className="toast no"; }
+    else{ m.textContent="Some answers are wrong — keep trying!"; m.className="toast no"; } };
+  window.cwReveal=()=>{ inputs.forEach(inp=>{ inp.value=inp.dataset.a; inp.parentElement.classList.remove("bad"); inp.parentElement.classList.add("ok"); });
+    $("#cwMsg").textContent="Answers shown."; $("#cwMsg").className="toast"; };
+}
+
+/* ============================================================
+   HANGMAN
+   ============================================================ */
+function actHangman(c){
+  const words=shuffle(c.vocab); let idx=0, wins=0;
+  function play(){
+    if(idx>=words.length) return done();
+    const [word,clue]=words[idx]; let wrong=0; const MAX=6; const guessed=new Set();
+    function draw(){
+      const shown=word.split("").map(ch=>guessed.has(ch)?ch:"_").join(" ");
+      const solved=word.split("").every(ch=>guessed.has(ch)), dead=wrong>=MAX;
+      stage.innerHTML=`<div class="panel">
+        <div class="qnum">WORD ${idx+1} / ${words.length} · Lives: ${MAX-wrong}</div>
+        <div class="hm-wrap">
+          <div style="text-align:center">${hmSVG(wrong)}</div>
+          <div style="flex:1;min-width:240px">
+            <div class="explain" style="margin-top:0">💡 Clue: ${clue}</div>
+            <div class="hm-word">${shown}</div>
+            <div class="keyb">${"ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map(L=>{
+              const cls=guessed.has(L)?(word.includes(L)?"good":"bad"):"";
+              return `<button class="key ${cls}" ${guessed.has(L)||solved||dead?"disabled":""} onclick="hmGuess('${L}')">${L}</button>`; }).join("")}</div>
+            <div class="center" style="margin-top:14px">
+              ${solved?`<p class="toast ok">✅ Correct!</p><button class="btn sm" onclick="hmNext()">${idx+1<words.length?"Next word →":"See result"}</button>`:""}
+              ${dead&&!solved?`<p class="toast no">❌ The word was <b>${word}</b></p><button class="btn sm" onclick="hmNext()">${idx+1<words.length?"Next word →":"See result"}</button>`:""}
+            </div></div></div></div>`;
+      if(solved) wins++;
+    }
+    window.hmGuess=(L)=>{ if(guessed.has(L))return; guessed.add(L); if(!word.includes(L))wrong++; draw(); };
+    window.hmNext=()=>{ idx++; play(); };
+    draw();
+  }
+  function done(){ stage.innerHTML=`<div class="panel center">
+    <p class="muted qnum">HANGMAN · RESULT</p><div class="score">${wins}/${words.length}</div>
+    <p class="muted" style="margin:6px 0 16px">words guessed</p>
+    <button class="btn sm" onclick="actHangman(CHAPTERS[view.chap])">Play again</button>
+    <button class="btn ghost sm" onclick="back()">Back to activities</button></div>`; }
+  wins=0; idx=0; play();
+}
+function hmSVG(w){
+  const parts=['<line x1="70" y1="20" x2="70" y2="35" />','<circle cx="70" cy="45" r="10" />','<line x1="70" y1="55" x2="70" y2="85" />',
+    '<line x1="70" y1="62" x2="55" y2="75" />','<line x1="70" y1="62" x2="85" y2="75" />','<line x1="70" y1="85" x2="55" y2="100" /><line x1="70" y1="85" x2="85" y2="100" />'];
+  return `<svg width="130" height="130" viewBox="0 0 130 130" stroke="#334155" stroke-width="3" fill="none" stroke-linecap="round">
+    <line x1="15" y1="120" x2="60" y2="120"/><line x1="30" y1="120" x2="30" y2="20"/><line x1="30" y1="20" x2="70" y2="20"/>${parts.slice(0,w).join("")}</svg>`;
+}
+
+/* ============================================================
+   MEMORY MATCH
+   ============================================================ */
+function actMemory(c){
+  const pick=shuffle(c.vocab).slice(0,6); const tiles=[];
+  pick.forEach((v,i)=>{ tiles.push({pair:i,type:"w",txt:v[0]}); tiles.push({pair:i,type:"d",txt:v[1]}); });
+  const deck=shuffle(tiles); let first=null, lock=false, matched=0, moves=0;
+  stage.innerHTML=`<div class="panel">
+    <p class="muted" style="margin-bottom:10px">Flip two cards to match each <b>word</b> with its <b>definition</b>. <span id="mvCount">Moves: 0</span></p>
+    <div class="mem-grid" id="memGrid">${deck.map((t,i)=>`<div class="mtile down" data-i="${i}" onclick="memFlip(${i})"><span class="face-back">❓</span></div>`).join("")}</div>
+    <div id="memDone" class="center" style="margin-top:14px;display:none">
+      <p class="toast ok">🎉 All matched!</p><button class="btn ghost sm" onclick="actMemory(CHAPTERS[view.chap])">Play again</button></div></div>`;
+  function tileEl(i){ return stage.querySelector(`.mtile[data-i="${i}"]`); }
+  window.memFlip=(i)=>{
+    if(lock) return; const el=tileEl(i); if(!el.classList.contains("down")) return; const t=deck[i];
+    el.classList.remove("down"); if(t.type==="d")el.classList.add("def"); el.innerHTML=`<span>${t.txt}</span>`;
+    if(first===null){ first=i; return; } if(first===i) return;
+    moves++; $("#mvCount").textContent="Moves: "+moves; lock=true;
+    const a=deck[first], b=deck[i];
+    if(a.pair===b.pair && a.type!==b.type){
+      setTimeout(()=>{ [first,i].forEach(k=>{ const e=tileEl(k); e.classList.add("matched"); e.classList.remove("def"); e.onclick=null; });
+        first=null; lock=false; matched++; if(matched===pick.length)$("#memDone").style.display="block"; }, 380);
+    } else { setTimeout(()=>{ [first,i].forEach(k=>{ const e=tileEl(k); e.classList.add("down"); e.classList.remove("def"); e.innerHTML='<span class="face-back">❓</span>'; });
+        first=null; lock=false; }, 850); }
+  };
+}
+
+/* ============================================================
+   WORD SCRAMBLE
+   ============================================================ */
+function actScramble(c){
+  const words=shuffle(c.vocab); let idx=0, score=0, advanced=false;
+  function scrambleWord(w){ let s=w,g=0; while(s===w&&g<25){ s=shuffle(w.split("")).join(""); g++; } return s; }
+  function next(){ if(advanced)return; advanced=true; idx++; advanced=false; play(); }
+  function play(){
+    if(idx>=words.length) return done();
+    const [word,clue]=words[idx]; const mixed=scrambleWord(word);
+    stage.innerHTML=`<div class="panel center">
+      <div class="qnum">WORD ${idx+1} / ${words.length}</div>
+      <div class="explain" style="text-align:left">💡 Clue: ${clue}</div>
+      <div class="scram">${mixed.split("").join(" ")}</div>
+      <input id="scIn" class="scram-in" maxlength="${word.length}" autocomplete="off" placeholder="type here">
+      <div style="margin-top:14px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <button class="btn sm" onclick="scCheck()">Check</button>
+        <button class="btn ghost sm" onclick="scReveal()">Show</button></div>
+      <div id="scMsg" class="toast" style="margin-top:10px"></div></div>`;
+    const inp=$("#scIn"); inp.focus(); inp.addEventListener("keydown",e=>{ if(e.key==="Enter")scCheck(); });
+    window.scCheck=()=>{ const v=inp.value.toUpperCase().replace(/[^A-Z]/g,""); const m=$("#scMsg");
+      if(v===word){ score++; m.textContent="✅ Correct!"; m.className="toast ok"; inp.disabled=true; setTimeout(next,700); }
+      else{ m.textContent="❌ Try again"; m.className="toast no"; } };
+    window.scReveal=()=>{ inp.value=word; $("#scMsg").textContent="Answer: "+word; $("#scMsg").className="toast"; inp.disabled=true; setTimeout(next,900); };
+  }
+  function done(){ const pct=Math.round(score/words.length*100);
+    stage.innerHTML=`<div class="panel center">
+      <p class="muted qnum">WORD SCRAMBLE · RESULT</p><div class="score">${score}/${words.length}</div>
+      <p style="font-size:1.3rem;font-weight:700;color:var(--blue-d)">${pct}%</p>
+      <button class="btn sm" style="margin-top:12px" onclick="actScramble(CHAPTERS[view.chap])">Play again</button>
+      <button class="btn ghost sm" onclick="back()">Back to activities</button></div>`; }
+  score=0; idx=0; play();
+}
+
+/* ============================================================
+   READ THE CHAPTER
+   Simplified B1.2 retelling written for NIS (original text — NOT
+   the copyrighted Black Cat reader). One entry per chapter number.
+   ============================================================ */
+const READINGS = {
+1:["In the hot August sunshine, eight people were travelling towards the same small village on the coast of Devon. In the corner of a first-class railway carriage, old Mr Justice Wargrave, a retired judge, was smoking and thinking about the letter in his pocket. It came from a lady he could not quite remember, and it invited him to spend a few days on Soldier Island.",
+"The others were travelling too. Vera Claythorne, a young games mistress, had been offered work as a holiday secretary. Philip Lombard had been given a hundred guineas simply to come to the island and be ready for trouble. Emily Brent, a strict old lady, had accepted an invitation from a friend whose signature she could not read. Dr Armstrong had been asked to examine a lady who was unwell, General Macarthur had been promised a meeting with old army friends, and a big square man who called himself Davis had come, he said, for a holiday. Last of all came Anthony Marston, driving his enormous car far too fast along the narrow roads.",
+"At Sticklehaven a boatman named Fred Narracott was waiting for them. He took them across the water, and for the first time they saw Soldier Island properly: a rock rising out of the sea, with a low white modern house on top of it. Nobody spoke much. The sea was calm, but the island looked strangely lonely.",
+"At the door they were received by a servant, Thomas Rogers, and his wife Ethel, who was the cook. Rogers explained politely that Mr and Mrs Owen had been delayed and would arrive the following day. Everything, however, had been prepared for the guests: excellent rooms, excellent food, everything new and comfortable.",
+"Upstairs, each guest found the same thing hanging on the bedroom wall in a neat frame: an old children’s rhyme about ten little soldier boys who disappear, one after another, until there are none left. Most of the guests read it, smiled, and thought no more about it.",
+"Downstairs in the dining room the table had been laid for eight. In the very centre, on a round glass plate, stood ten little china soldiers. Vera counted them without knowing why. Then dinner was served, the wine was poured, and the strangers began to talk, each one still wondering exactly who their host was."],
+2:["Dinner was a success. The food was good, the wine was better, and the eight guests began to relax. Anthony Marston talked and laughed the loudest. Even Emily Brent, sitting very straight in her chair, allowed herself a small smile. Afterwards they moved into the sitting room, where Rogers brought in the coffee.",
+"And then, suddenly, a voice spoke. It was loud, clear and terribly cold, and it seemed to come from nowhere at all. ‘Ladies and gentlemen,’ it said. ‘Silence, please.’ Everyone stopped moving. Cups stayed in the air. The voice went on, and it began to call out their names.",
+"One by one, it accused them. Edward George Armstrong, it said, had caused the death of a woman during an operation. Emily Caroline Brent was responsible for the death of Beatrice Taylor. William Henry Blore had sent an innocent man to prison, where he died. Vera Elizabeth Claythorne had killed a little boy called Cyril Hamilton. Philip Lombard had left twenty-one men to die in Africa. John Gordon Macarthur had sent his wife’s lover to certain death. Anthony James Marston had run over and killed John and Lucy Combes. Thomas and Ethel Rogers had allowed an old lady to die. And Lawrence John Wargrave had murdered Edward Seton.",
+"Then the voice asked, in the calm tone of a judge in court, whether any of the prisoners had anything to say in their defence. After that there was silence — a silence so complete that they could hear the sea outside.",
+"There was a crash as Mrs Rogers fell to the floor. Dr Armstrong hurried to help her while Lombard and Blore ran out of the room to find the source of the voice. In a small room next door they found a gramophone, still turning, with its horn against the wall. The record on it was called ‘Swan Song’.",
+"Rogers, white and shaking, explained everything. His written instructions had told him to put on that record at exactly that moment. He had never heard it before; he had thought it was music. Dr Armstrong helped Mrs Rogers to her feet and gave her something to make her sleep. Nobody, that night, felt like laughing."],
+3:["Nobody could go to bed. In the sitting room the eight of them began, one after another, to answer the accusations. Dr Armstrong said the operation had been unlucky. General Macarthur said very little at all. Emily Brent said only that she had done her duty and that she had nothing whatever to explain. Vera said that she had swum after the little boy and had not been able to reach him.",
+"Blore admitted that his real name was not Davis: he was a former police inspector, now a private detective, and he had been paid to come and watch the other guests. Philip Lombard, smiling, admitted quite openly that he had left the twenty-one men in the bush and taken the food. ‘It was my life or theirs,’ he said.",
+"Then they compared their invitations. Each letter was signed differently, and none of them had ever met their host. Judge Wargrave took the letters, read them carefully, and pointed out something strange. The name of the host was written as U. N. Owen. Said aloud, quickly, those initials made one word: unknown.",
+"‘Somebody,’ said the judge quietly, ‘has brought us all here for a purpose.’ Anthony Marston, who was tired of the conversation, said that he needed a drink. He filled his glass with whisky, lifted it, and drank it down.",
+"A moment later his face changed colour. He tried to breathe, put his hands to his throat, and fell forward out of his chair. Dr Armstrong knelt beside him, smelled the glass, and looked up with a strange expression. ‘Cyanide,’ he said. ‘He must have taken it himself.’ But nobody in that room believed it.",
+"Much later, when Rogers came to clear the sitting room, he stopped in the doorway of the dining room and stared at the little glass plate in the middle of the table. He counted the china soldiers twice. There were nine."],
+4:["Rogers knocked at his wife’s door in the morning with a cup of tea, and she did not answer. Dr Armstrong was called at once, but there was nothing to be done: Ethel Rogers had died quietly in her sleep, some time during the night. The doctor said that in his opinion she had been given far too large a dose of a sleeping draught.",
+"At breakfast, Vera looked at the glass plate and said, in a voice that did not sound like her own, that there were only eight soldiers now. Nobody replied.",
+"They waited for the boat. It did not come. At ten o’clock, at eleven, at midday, they walked down to the little landing place and looked across at the mainland, where they could clearly see houses and the smoke of a train. They waved and shouted; nothing happened. Fred Narracott, they learned later, had been told that whatever signals came from the island were only part of a game.",
+"Now real fear entered the house. The men decided to search Soldier Island from end to end. It did not take long, because there was almost nothing there: bare rock, short grass, a few gulls, no trees, no buildings except the house itself. They looked into every cave and behind every stone. There was no boat, no hiding place and no other living person.",
+"They searched the house as well, from the cellar to the roof. Every cupboard was opened, every wall was measured. There was no secret room, no visitor, nobody at all beyond the seven people who were still alive.",
+"General Macarthur did not join the search. He sat down on a stone seat at the far end of the island, looking out at the water, and stayed there all morning. When Vera passed and spoke to him, he smiled at her gently and said that he was very glad it would soon be over. None of them, he told her, would ever leave the island. Then he turned back to the sea and did not speak again."],
+5:["At lunchtime General Macarthur did not come in. Dr Armstrong walked down to the stone seat to call him and found the old man still sitting there, facing the sea. He was dead. Somebody had come quietly up behind him and struck him a heavy blow on the back of the head.",
+"They carried the body up to the house and laid it in a bedroom, next to the others. Then Judge Wargrave asked everybody to come into the sitting room, and he spoke to them as he had once spoken to juries.",
+"‘Let us be clear about the facts,’ he said. ‘Three of us are dead. The island has been searched and there is nobody hiding on it. No boat can land without being seen. Therefore the person who has killed three people is not a stranger. He — or she — is in this room now.’",
+"Nobody moved. Outside, the wind was beginning to rise. Vera looked at the six faces around her and understood that one of them belonged to a murderer, and that there was no possible way of knowing which.",
+"There was something else, too. Vera said it out loud, because she could not keep it inside any longer: the deaths were following the rhyme on the bedroom walls. Marston had choked over his drink. Mrs Rogers had gone to sleep and never woken up. And the third little soldier, said the rhyme, had stayed in Devon for ever — exactly as the General had said he would.",
+"And every time a person died, one small china figure disappeared from the plate in the dining room. From that moment nobody in the house trusted anybody. They locked their doors, they watched each other’s hands, and they tried not to be alone in any room — with the terrible knowledge that being together was no safer at all."],
+6:["The storm arrived that evening. The wind rose until it screamed around the corners of the house, and the rain hit the windows like handfuls of stones. Down below, the sea turned white and threw itself against the rocks. Whatever else happened now, no boat could reach Soldier Island.",
+"They ate a cold supper and sat together in the sitting room, listening. Every sound seemed enormous. Blore watched Lombard; Lombard watched Armstrong; Vera watched them all. When Emily Brent said calmly that the guilty would be punished, nobody was quite sure whether she was talking about the others or about herself.",
+"Before he went upstairs, Rogers came in with a strange, grey face. He had been laying the table for breakfast, he said, and he had counted the little china soldiers. There were only seven. Yet nobody had died since the General. Somebody, then, had already taken away the figure for the next death.",
+"The survivors agreed to be sensible. They collected everything that could be dangerous — the doctor’s case of drugs, the kitchen knives, the matches — and locked them away, and Blore and Lombard kept the keys. It was a good plan, and it was completely useless.",
+"During the night, Philip Lombard discovered that his revolver had gone. He searched his room twice and swore quietly in the darkness. Now the murderer had a gun.",
+"Nobody slept properly. They lay awake behind locked doors, listening to the storm and to the sounds of the old house. Once, Blore was certain he heard footsteps in the corridor. Once, Vera heard a door open very softly and close again. And in the morning, when the storm had dropped and the survivors came down for breakfast, there was no fire in the kitchen, no tea on the table and no sign of Rogers anywhere."],
+7:["They found him in the little washhouse behind the kitchen. He had gone out early to chop sticks for the fire, and he was lying beside the wood with the axe still in the wound. He had been killed from behind, while his hands were busy and his back was turned.",
+"Vera began to laugh, and could not stop, and Lombard slapped her face until she was quiet. Then somebody said the words that were in everybody’s mind: the fourth little soldier in the rhyme had chopped himself in halves. In the dining room, six china figures now stood on the glass plate.",
+"Six people were left: Judge Wargrave, Dr Armstrong, Philip Lombard, William Blore, Vera Claythorne and Emily Brent. With both servants dead, they had to look after themselves. Vera and Emily Brent boiled water and opened tins, and the four of them who could still eat sat down to a strange breakfast of tongue and biscuits.",
+"They talked while they ate, and the talk was all suspicion. Blore said openly that he did not believe in Dr Armstrong’s medical explanations. Lombard suggested that the quietest person in the room was often the most dangerous. Wargrave listened to everything and said almost nothing.",
+"Emily Brent hardly spoke at all. When Vera asked her about Beatrice Taylor, the old lady answered in a hard, flat voice. The girl had been her servant, she said, and had got into trouble, so she had of course sent her away. When the girl drowned herself, that was the girl’s own sin, not hers. Emily Brent had done her duty, and her conscience was perfectly clear.",
+"After breakfast the others carried the dishes out and went to wash them. Miss Brent said that she felt a little strange, and that she would sit quietly for a moment. When Vera looked back from the door, the old lady was sitting very upright in her chair by the window, with her hands folded in her lap, exactly as usual."],
+8:["When they came back she was still sitting there, and she was dead. Her face had gone a curious colour and her lips were blue. On the right side of her neck there was a mark, small and round, like the sting of an insect. And on the window, buzzing loudly against the glass, there was a bee.",
+"Dr Armstrong looked at the mark for a long time. It was not the work of a bee, he said; something had been injected into her neck. Later they found the syringe, thrown out of the window into the grass below. The murderer had brought the bee simply so that the death would match its line of the rhyme.",
+"Five people were left, and now they were completely honest with one another about their fear. They searched each other, and each other’s rooms, and everything that could kill was locked away in a cupboard, with Lombard and Blore each keeping a key. Even so, when the search was finished, Lombard’s revolver was suddenly back in his room, exactly where it had been.",
+"That evening Vera went upstairs to have a bath. Her room was dark. She reached for the light, and as she did so something cold and wet touched her throat — something soft that hung down from the ceiling and moved against her skin. She screamed, and went on screaming.",
+"Every one of them came running: Lombard first, then Blore, then Armstrong, and they turned on the light and found her holding a long, dripping strand of seaweed that somebody had hung from the ceiling hook. Vera sat down on the bed and laughed weakly at herself while the men stared at each other.",
+"Then, slowly, the four of them realised that they were four. They went down the stairs together. In the sitting room, Mr Justice Wargrave was sitting in a high chair at the end of the room. Round his shoulders somebody had draped the scarlet curtain from the bathroom, and on his grey hair somebody had placed a wig of grey wool. He looked exactly like a judge in court. In the middle of his forehead there was a round dark hole where a bullet had gone in."],
+9:["Four were left: Dr Armstrong, William Blore, Philip Lombard and Vera Claythorne. They carried the judge’s body upstairs, they came down again, and they sat in the sitting room and looked at one another, and none of them said what they were all thinking.",
+"They did not go to bed. They sat together with the lamps burning, and the night went slowly by. At some point Vera slept a little in her chair. At some point Blore was sure he heard a door and then soft footsteps going along the corridor. He got up and looked out, and the corridor was empty and dark, and he went back and locked himself in again.",
+"In the morning Dr Armstrong was missing. His bed had been slept in and then left; his door was open; his coat had gone. They searched the house and then the island, walking along the cliffs and looking down into the water, and they found nothing at all. Three little china soldiers stood on the glass plate in the dining room.",
+"After that the three survivors made a decision: they would not go inside again. They stayed out in the sunshine on the open rock, where nobody could come near them without being seen, and they sat and watched each other, hour after hour, and said very little.",
+"By the afternoon Blore was extremely hungry. He said he was going up to the house to fetch some food, and he asked the others to come with him. They refused: nothing, said Vera, would make her go back inside that house. So Blore went alone, walking quickly, and they watched him disappear through the door.",
+"They heard the crash from where they sat. When they ran up, they found him lying on the terrace at the back of the house with his head crushed. Beside him on the stones lay a great block of white marble, a clock in the shape of a bear that had stood on the window sill of Vera’s room, one floor above. In the rhyme, a big bear had hugged one of the little soldiers. Now there were two."],
+10:["Vera and Lombard did not go back into the house. They walked down to the edge of the sea instead, saying nothing, keeping a careful distance from each other, and it was there, at the bottom of the cliff, that they saw something rolling in the water at the tide line. It was Dr Armstrong. The sea had brought him back.",
+"They pulled the body up out of the water together. And as Lombard bent over it, Vera stepped back, and her hand went into his pocket, and when he stood up again she was three metres away and his own revolver was pointing at his chest. He understood at once, and he was fast — but she fired first, and Philip Lombard fell across the body of the doctor.",
+"Vera was alone. She stood on the rocks with the gun in her hand and felt an enormous, wonderful sense of peace. It was over. She had won. Slowly she climbed the path to the house, went in through the open door, and started up the stairs to her room, thinking about a bath, and dry clothes, and sleep.",
+"Her bedroom door was open. There was a smell of the sea in the room. And from the hook in the ceiling, where the seaweed had hung, there now hung a rope with a noose ready at the end of it, and underneath it somebody had placed a chair. On the little table by the bed stood one small china soldier.",
+"Vera looked at it for a long time. She was very tired. Somewhere in her mind a voice that sounded like Hugo’s told her that this was what she must do now, and that she had always known it, and she found that she agreed. She stepped up onto the chair, put the rope round her neck and kicked the chair away.",
+"Weeks later, at Scotland Yard, two police officers went through the case again and gave it up. Ten people were dead on Soldier Island; ten deaths had been carefully arranged; and there was nobody left alive who could possibly have arranged them. Then a fishing boat off the Devon coast pulled up a bottle with a paper inside, and the paper was a confession signed by Mr Justice Wargrave. All his life, he wrote, he had felt two things at the same time: a passion for justice and a secret desire to kill. He was old and mortally ill, so he had chosen ten people who had caused a death that no court could punish, and he had brought them together to be judged. He had persuaded Dr Armstrong to help him ‘pretend’ to be dead — the red mark on his forehead was only mud and red curtain material — and then he had pushed the doctor into the sea. And when the last of the others was gone, he had lain down on his bed and arranged the revolver so that, when he fired, his body would fall exactly as it should. Nobody would ever solve it, he wrote. He simply could not bear the thought that nobody would ever know how clever he had been."
+]
+};
+function actRead(c){
+  const paras = READINGS[c.n] || [];
+  const words = paras.join(' ').split(/\s+/).filter(Boolean).length;
+  const idx = CHAPTERS.findIndex(x=>x.n===c.n);
+  const prev = idx>0 ? CHAPTERS[idx-1] : null;
+  const next = idx<CHAPTERS.length-1 ? CHAPTERS[idx+1] : null;
+  stage.innerHTML = `<div class="panel reading">
+    <div class="qnum">CHAPTER ${c.n} · READING</div>
+    <h2 style="color:var(--blue-d);margin:2px 0 2px">${c.title}</h2>
+    <p class="muted" style="margin:0 0 14px;font-size:.85rem">Simplified version · about ${words} words · ~${Math.max(1,Math.round(words/90))} min</p>
+    ${paras.map(p=>`<p>${p}</p>`).join('')}
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;align-items:center">
+      ${prev?`<button class="btn ghost sm" onclick="openReadChapter(${idx-1})">← Ch. ${prev.n}</button>`:''}
+      <button class="btn sm" onclick="openAct('comprehension')">Do the activities →</button>
+      ${next?`<button class="btn ghost sm" onclick="openReadChapter(${idx+1})">Ch. ${next.n} →</button>`:''}
+    </div>
+  </div>`;
+  window.scrollTo(0,0);
+}
+window.openReadChapter=(i)=>{ view.chap=i; view.act='read'; view.screen='act'; render(); };
+
+/* ---------- dispatch ---------- */
+const ACT_RENDER={
+  read:actRead,
+  comprehension:actComprehension, truefalse:actTrueFalse, multiplechoice:actMultipleChoice,
+  speed:actSpeed, writing:actWriting, wordsearch:actWordSearch, crossword:actCrossword,
+  hangman:actHangman, memory:actMemory, scramble:actScramble
+};
+render();
+</script>
+</body>
+</html>
