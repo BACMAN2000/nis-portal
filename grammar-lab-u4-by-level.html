@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grammar Practice by Level · Habits That Shape Us — A2–C1</title>
+<style>
+  :root{
+    --bg:#f4f6fb; --card:#ffffff; --ink:#1e2433; --muted:#67718a;
+    --accent:#3b5bdb; --accent-soft:#e7ecfd; --deep:#243b7a;
+    --good:#2f9e44; --good-soft:#d3f4dc; --bad:#e03131; --bad-soft:#ffe3e3;
+    --gold:#f59f00; --gold-soft:#fff4d6;
+    --ing:#7048e8; --ing-soft:#f3f0ff; --inf:#0c8599; --inf-soft:#e3fafc;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:'Segoe UI',system-ui,Arial,sans-serif; background:var(--bg); color:var(--ink); padding:18px 14px 60px;}
+  header{max-width:900px; margin:0 auto 6px; text-align:center;}
+  header .kicker{font-size:.72rem; letter-spacing:1.6px; text-transform:uppercase; color:var(--accent); font-weight:700;}
+  header h1{font-size:1.5rem; margin-top:6px; line-height:1.25;}
+  header p.sub{color:var(--muted); font-size:.88rem; margin-top:6px;}
+
+  .tabs{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin:16px auto 8px; max-width:900px;}
+  .tab{border:2px solid transparent; background:var(--card); color:var(--ink); padding:9px 18px; border-radius:24px;
+       font-weight:700; font-size:.95rem; cursor:pointer; box-shadow:0 1px 3px rgba(20,30,60,.12); transition:.15s;}
+  .tab small{display:block; font-weight:500; font-size:.68rem; color:var(--muted);}
+  .tab.on{background:var(--accent); color:#fff; border-color:var(--accent);}
+  .tab.on small{color:#dce4ff;}
+  .tab.done{border-color:var(--good);}
+  .tab.done::after{content:" ✓"; color:var(--good);}
+  .tab.on.done::after{color:#bff2cc;}
+  .mods{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin:0 auto 16px; max-width:900px;}
+  .mod{border:2px solid #dde3ef; background:var(--card); border-radius:11px; padding:10px 18px; cursor:pointer;
+       font-weight:700; font-size:.88rem; text-align:left; line-height:1.3;}
+  .mod small{display:block; font-weight:500; font-size:.7rem; color:var(--muted);}
+  .mod.on{border-color:var(--accent); background:var(--accent-soft); color:var(--deep);}
+
+  main{max-width:900px; margin:0 auto;}
+  .step{background:var(--card); border-radius:14px; padding:18px 20px; box-shadow:0 2px 10px rgba(20,30,60,.08); margin-bottom:16px;}
+  .step > h2{font-size:.78rem; text-transform:uppercase; letter-spacing:1.2px; color:var(--accent); margin-bottom:4px;}
+  .step > h3{font-size:1.1rem; margin-bottom:10px;}
+  .hint{font-size:.85rem; color:var(--muted); margin-bottom:12px; line-height:1.5;}
+
+  /* reference tables */
+  .ref{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:12px; margin-bottom:6px;}
+  .refbox{border-radius:11px; padding:12px 14px; font-size:.88rem; line-height:1.6;}
+  .refbox.ing{background:var(--ing-soft); border-left:4px solid var(--ing);}
+  .refbox.inf{background:var(--inf-soft); border-left:4px solid var(--inf);}
+  .refbox.both{background:var(--gold-soft); border-left:4px solid var(--gold);}
+  .refbox h4{font-size:.82rem; text-transform:uppercase; letter-spacing:.8px; margin-bottom:6px;}
+  .refbox.ing h4{color:var(--ing);} .refbox.inf h4{color:var(--inf);} .refbox.both h4{color:#a06c00;}
+  .refbox em{color:var(--muted); font-style:italic; display:block; margin-top:5px; font-size:.83rem;}
+  .watch{background:var(--bad-soft); border-left:4px solid var(--bad); border-radius:0 9px 9px 0; padding:10px 13px;
+         font-size:.87rem; line-height:1.6; margin-top:10px;}
+  .watch b{color:var(--bad);}
+  .watch s{opacity:.7;}
+
+  /* sorting */
+  .pool{display:flex; flex-wrap:wrap; gap:7px; margin-bottom:12px; min-height:40px;}
+  .vb{border:2px solid #dde3ef; background:#fff; border-radius:9px; padding:7px 14px; font-weight:700; font-size:.9rem;
+      cursor:pointer; transition:.13s;}
+  .vb:hover{border-color:var(--accent);}
+  .vb.ing{background:var(--ing-soft); border-color:var(--ing); color:var(--ing);}
+  .vb.inf{background:var(--inf-soft); border-color:var(--inf); color:var(--inf);}
+  .vb.ok{background:var(--good-soft); border-color:var(--good); color:var(--good);}
+  .vb.ko{background:var(--bad-soft); border-color:var(--bad); color:var(--bad); text-decoration:line-through;}
+  .cols{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
+  @media(max-width:560px){ .cols{grid-template-columns:1fr;} }
+  .col{border:2px dashed #dde3ef; border-radius:12px; padding:12px; min-height:96px;}
+  .col h4{font-size:.8rem; text-transform:uppercase; letter-spacing:.9px; margin-bottom:9px;}
+  .col.ingc{border-color:var(--ing);} .col.ingc h4{color:var(--ing);}
+  .col.infc{border-color:var(--inf);} .col.infc h4{color:var(--inf);}
+
+  /* gap fill / doctor */
+  .gapline{font-size:.95rem; line-height:2.4; margin-bottom:4px; padding:6px 9px; border-radius:9px;}
+  .gapline:nth-child(odd){background:#fafbff;}
+  .gapline b.n{color:var(--accent); margin-right:6px;}
+  .gapline input{display:inline-block; width:165px; margin:0 5px; padding:5px 9px; vertical-align:middle;
+        font-family:inherit; font-size:.93rem; border:2px solid #e2e7f2; border-radius:8px; background:#fff; outline:none;}
+  .gapline input:focus{border-color:var(--accent);}
+  .gapline input.ok{border-color:var(--good); background:var(--good-soft);}
+  .gapline input.ko{border-color:var(--bad); background:var(--bad-soft);}
+  .gapline .cue{color:var(--muted); font-size:.85rem; font-style:italic;}
+  .sick{color:var(--muted); text-decoration:line-through; font-size:.9rem;}
+  .why{display:none; font-size:.83rem; color:var(--muted); font-style:italic; margin:2px 0 6px 22px; line-height:1.5;}
+  .why.show{display:block;}
+
+  /* choice pairs */
+  .pair{display:flex; align-items:center; gap:8px; flex-wrap:wrap; padding:9px 11px; border-radius:10px;
+        border:2px solid #e2e7f2; background:#fbfcff; margin-bottom:8px; font-size:.94rem; line-height:1.6;}
+  .pair .sent{flex:1 1 100%;}
+  .pair.ok{border-color:var(--good); background:var(--good-soft);}
+  .pair.ko{border-color:var(--bad); background:var(--bad-soft);}
+  .chbtn{border:2px solid #dde3ef; background:#fff; border-radius:9px; padding:6px 15px; font-weight:700;
+         cursor:pointer; font-size:.88rem; font-family:inherit;}
+  .chbtn.sel{background:var(--accent); color:#fff; border-color:var(--accent);}
+  .chbtn.right{background:var(--good); color:#fff; border-color:var(--good);}
+  .chbtn.wrong{background:var(--bad); color:#fff; border-color:var(--bad);}
+
+  /* meaning map */
+  .map{display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:11px;}
+  .mcard{border:2px solid #e9edf6; border-radius:12px; padding:12px 14px; background:#fbfcff;}
+  .mcard h4{font-size:1rem; margin-bottom:8px; color:var(--deep);}
+  .mcard .side{font-size:.87rem; line-height:1.55; padding:7px 10px; border-radius:8px; margin-bottom:6px;}
+  .mcard .side.a{background:var(--ing-soft); border-left:3px solid var(--ing);}
+  .mcard .side.b{background:var(--inf-soft); border-left:3px solid var(--inf);}
+  .mcard .side b{display:block; font-size:.79rem; text-transform:uppercase; letter-spacing:.7px; margin-bottom:2px;}
+  .mcard .side.a b{color:var(--ing);} .mcard .side.b b{color:var(--inf);}
+  .mcard .side em{color:var(--muted); font-style:italic;}
+
+  .btns{display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;}
+  button.act{border:none; border-radius:9px; padding:10px 17px; font-weight:700; font-size:.88rem; cursor:pointer; transition:.15s; font-family:inherit;}
+  .b-check{background:var(--accent); color:#fff;}
+  .b-clear{background:#e9ecf3; color:var(--ink);}
+  button.act:hover{filter:brightness(1.08);}
+  .res{margin-top:10px; font-weight:700; font-size:.92rem; display:none;}
+  .res.show{display:block;}
+  .res.ok{color:var(--good);} .res.mid{color:var(--gold);} .res.ko{color:var(--bad);}
+
+  .final{background:linear-gradient(135deg,#3b5bdb,#5f7fe8); color:#fff; border-radius:14px; padding:22px; text-align:center; margin-bottom:16px;}
+  .final h3{font-size:1.15rem; margin-bottom:8px;}
+  .final .big{font-size:2.4rem; font-weight:800; letter-spacing:-1px;}
+  .final p{font-size:.88rem; opacity:.92; line-height:1.55;}
+  .final button{margin-top:12px; background:#fff; color:var(--accent);}
+  footer{max-width:900px; margin:20px auto 0; text-align:center; color:var(--muted); font-size:.75rem; line-height:1.6;}
+  @media print{ .tabs,.mods,.btns,footer{display:none;} .step{break-inside:avoid; box-shadow:none; border:1px solid #ddd;} }
+
+  /* --- portal nav (shared with the other activities) --- */
+  .topnav{position:sticky; top:0; z-index:30; background:#fff; display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+    padding:10px 18px; box-shadow:0 2px 10px rgba(20,30,60,.08); margin:-18px -14px 16px;}
+  .topnav img{height:32px; width:auto; display:block;}
+  .topnav .nav-sp{margin-left:auto;}
+  .navbtn{text-decoration:none; font-weight:700; font-size:.85rem; padding:8px 14px; border-radius:9px; white-space:nowrap;
+    background:var(--accent-soft); color:var(--accent); transition:.15s; border:none; cursor:pointer;}
+  .navbtn:hover{filter:brightness(.97);}
+  .navbtn.primary{background:var(--accent); color:#fff;}
+  @media (max-width:480px){ .topnav{margin:-18px -14px 12px; padding:8px 12px;} .topnav img{height:26px;} }
+  @media print{ .topnav{display:none;} }
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <img src="assets/logo-h.svg" alt="Nordic International School" onerror="this.style.display='none'">
+  <span class="nav-sp"></span>
+  <a class="navbtn" href="activities.html">&#127922; Activities</a>
+  <a class="navbtn primary" href="./">&#127979; Portal</a>
+</nav>
+
+<header>
+  <div class="kicker">English 9A · Unit 4 · Mind Over Matter</div>
+  <h1>Grammar Lab — Habits That Shape Us</h1>
+  <p class="sub">Week 2 · Gerund vs. infinitive, and the verbs that change meaning</p>
+</header>
+
+<div class="tabs" id="tabs"></div>
+<div class="mods" id="mods"></div>
+<main id="main"></main>
+
+<footer>
+  NIS English · Unit 4 — Mind Over Matter · Your answers are saved in this browser automatically.<br>
+  Use <b>Ctrl+P</b> to print or save your completed work as a PDF for your teacher.
+</footer>
+
+<script>
+/* ============================================================
+   MODULE A — verb + gerund vs verb + to-infinitive  (W2S1)
+   MODULE B — stop / remember / try / forget …       (W2S2)
+   All items come from the Unit 4 worksheets and answer keys.
+   ============================================================ */
+
+const SORT = {
+  ing:["enjoy","avoid","can't stand","keep","finish","mind","suggest","practise","imagine","feel like"],
+  inf:["want","decide","hope","plan","learn","refuse","manage","promise","expect","agree"],
+  both:["like","love","hate","prefer","start","begin","continue"]
+};
+
+const A = {   /* ---------------- gerund vs infinitive ---------------- */
+A2:{ bank:["listening","to sleep","to walk","eating","to feel","waking","checking","to do","turning","to cook"],
+ gap:[
+  {s:["I enjoy ","(listen) to music before bed."], a:["listening"]},
+  {s:["She wants ","(sleep) eight hours every night."], a:["to sleep"]},
+  {s:["We decided ","(walk) to school this week."], a:["to walk"]},
+  {s:["He avoids ","(eat) sweets after dinner."], a:["eating"]},
+  {s:["They hope ","(feel) more relaxed soon."], a:["to feel"]},
+  {s:["I can't stand ","(wake) up early on Sundays."], a:["waking"]},
+  {s:["My friend keeps ","(check) her phone at night."], a:["checking"]},
+  {s:["We plan ","(do) more exercise this month."], a:["to do"]},
+  {s:["Do you mind ","(turn) off the TV?"], a:["turning"]},
+  {s:["I learned ","(cook) healthy food with my mum."], a:["to cook"]}
+ ],
+ doc:[
+  {sick:"I enjoy to play video games.", a:["enjoy playing"], why:"enjoy always takes the gerund. This is the #1 exam error."},
+  {sick:"She wants going to bed early.", a:["wants to go"], why:"want takes the to-infinitive."},
+  {sick:"He avoids to eat junk food.", a:["avoids eating"], why:"avoid takes the gerund."},
+  {sick:"We decided walking home.", a:["decided to walk"], why:"decide takes the to-infinitive."},
+  {sick:"I can't stand to wait for the bus.", a:["can't stand waiting","cant stand waiting"], why:"can't stand takes the gerund."},
+  {sick:"They hope winning the match.", a:["hope to win"], why:"hope takes the to-infinitive."}
+ ]},
+B1:{ bank:null,
+ gap:[
+  {s:["Marco enjoys ","(play) football after school to clear his mind."], a:["playing"]},
+  {s:["I've decided ","(drink) more water and less soda."], a:["to drink"]},
+  {s:["She avoids ","(use) her phone during meals."], a:["using"]},
+  {s:["We hope ","(pass) the Cambridge exam next year."], a:["to pass"]},
+  {s:["He can't stand ","(be) late for training."], a:["being"]},
+  {s:["They agreed ","(meet) at the park at seven."], a:["to meet"]},
+  {s:["Keep ","(practise) and you will improve."], a:["practising","practicing"]},
+  {s:["My brother refuses ","(go) to bed before midnight."], a:["to go"]},
+  {s:["I don't mind ","(help) you with your homework."], a:["helping"]},
+  {s:["Lucía managed ","(finish) her project on time."], a:["to finish"]},
+  {s:["Imagine ","(live) without the internet for a week!"], a:["living"]},
+  {s:["We're planning ","(start) a walking club at school."], a:["to start"]}
+ ],
+ doc:[
+  {sick:"I enjoy to play basketball at break.", a:["enjoy playing"], why:"enjoy + gerund, always."},
+  {sick:"My sister keeps to forget her water bottle.", a:["keeps forgetting"], why:"keep + gerund = repeat the action."},
+  {sick:"We planned meeting at six o'clock.", a:["planned to meet"], why:"plan + to-infinitive."},
+  {sick:"He suggested to go for a run before class.", a:["suggested going"], why:"suggest + gerund (never suggest to do)."},
+  {sick:"I don't mind to share my notes with you.", a:["mind sharing","don't mind sharing","dont mind sharing"], why:"mind + gerund."},
+  {sick:"She refused eating her vegetables.", a:["refused to eat"], why:"refuse + to-infinitive."}
+ ]},
+B2:{ bank:null,
+ gap:[
+  {s:["The doctor suggested ","(cut) down on caffeine after 4 p.m."], a:["cutting"]},
+  {s:["Don't expect ","(see) results after only two days of a new habit."], a:["to see"]},
+  {s:["I don't feel like ","(do) anything productive on Sunday evenings."], a:["doing"]},
+  {s:["Rafaela promised ","(spend) less time scrolling before bed."], a:["to spend"]},
+  {s:["Experts say we should avoid ","(compare) ourselves to influencers."], a:["comparing"]},
+  {s:["After three attempts, he finally managed ","(stick) to a morning routine."], a:["to stick"]},
+  {s:["Most teenagers can't stand ","(tell) what to do.  [passive]"], a:["being told"]},
+  {s:["I keep ","(put) off my homework until the last minute."], a:["putting"]},
+  {s:["She refuses ","(give) up, even when training is hard."], a:["to give"]},
+  {s:["Every morning we practise ","(breathe) deeply for two minutes."], a:["breathing"]},
+  {s:["They hope ","(improve) their sleep habits before exam season."], a:["to improve"]},
+  {s:["Imagine ","(wake) up feeling energised every single day."], a:["waking"]}
+ ],
+ doc:[
+  {sick:"I really enjoy to spend time offline at weekends.", a:["enjoy spending"], why:"enjoy + gerund."},
+  {sick:"The coach suggested to train twice a week instead of once.", a:["suggested training"], why:"suggest + gerund — or suggest that we train."},
+  {sick:"Despite the rain, we managed finishing the race.", a:["managed to finish"], why:"manage + to-infinitive = succeed in doing."},
+  {sick:"I can't stand to be interrupted when I'm concentrating.", a:["can't stand being interrupted","cant stand being interrupted","stand being interrupted"], why:"can't stand + gerund — and the passive gerund is being interrupted."},
+  {sick:"He promised calling me as soon as the exam finished.", a:["promised to call"], why:"promise + to-infinitive."},
+  {sick:"Do you feel like to watch a film tonight?", a:["feel like watching"], why:"feel like + gerund (like is a preposition here)."}
+ ]},
+C1:{ bank:null,
+ gap:[
+  {s:["I can't imagine not ","(check) my phone first thing in the morning — sadly."], a:["checking"]},
+  {s:["She expects ","(give) honest feedback, not empty praise.  [passive]"], a:["to be given"]},
+  {s:["Teenagers often avoid ","(see) making mistakes in public.  [passive]"], a:["being seen"]},
+  {s:["He promised never ","(skip) breakfast again."], a:["to skip"]},
+  {s:["Keep ","(remind) yourself why you started."], a:["reminding"]},
+  {s:["They refused ","(take) part in the 30-day challenge."], a:["to take"]},
+  {s:["Would you mind not ","(play) music while I revise?"], a:["playing"]},
+  {s:["We managed ","(cut) our family screen time in half."], a:["to cut"]},
+  {s:["I suggest ","(keep) a sleep diary for a week before you change anything."], a:["keeping"]},
+  {s:["Nobody enjoys ","(criticise) in front of the whole class.  [passive]"], a:["being criticised","being criticized"]},
+  {s:["She hopes ","(finish) all her revision by June.  [perfect infinitive]"], a:["to have finished"]},
+  {s:["I don't feel like ","(go) out tonight; I'd rather recharge at home."], a:["going"]}
+ ],
+ doc:[
+  {sick:"I couldn't imagine to live without my morning routine.", a:["imagine living"], why:"imagine + gerund."},
+  {sick:"She expects being treated like an adult, and rightly so.", a:["expects to be treated"], why:"expect + to-infinitive — here the passive to be treated."},
+  {sick:"They agreed postponing the trip until after exams.", a:["agreed to postpone"], why:"agree + to-infinitive."},
+  {sick:"Avoid to make promises you can't keep.", a:["avoid making"], why:"avoid + gerund, even in the imperative."},
+  {sick:"Would you mind to close the window? It's freezing.", a:["mind closing"], why:"mind + gerund — the standard polite request."},
+  {sick:"He refuses admitting that he needs more sleep.", a:["refuses to admit"], why:"refuse + to-infinitive."}
+ ]}
+};
+
+const MAP = [
+ {v:"stop", a:{t:"stop + -ing", d:"You quit the habit for good.", e:"She stopped drinking coffee after lunch. (no more coffee)"},
+            b:{t:"stop + to-infinitive", d:"You pause what you are doing in order to do something else.", e:"She stopped to drink a juice on the way. (a pause)"}},
+ {v:"remember", a:{t:"remember + -ing", d:"A memory: the action happened BEFORE the remembering.", e:"I remember scoring that goal. (it happened)"},
+            b:{t:"remember + to-infinitive", d:"A duty: the action happens AFTER the remembering.", e:"Remember to pack your kit. (not done yet)"}},
+ {v:"try", a:{t:"try + -ing", d:"An experiment — easy to do, you want to see if it helps.", e:"Try going to bed earlier. (see what happens)"},
+            b:{t:"try + to-infinitive", d:"An effort — it is difficult and you may fail.", e:"I tried to open the window, but it was stuck."}},
+ {v:"forget", a:{t:"forget + -ing", d:"A memory you will never lose.", e:"I'll never forget swimming in the sea."},
+            b:{t:"forget + to-infinitive", d:"You did not do it. The duty was not done.", e:"He forgot to do his homework."}},
+ {v:"regret", lv:["B2","C1"], a:{t:"regret + -ing", d:"You are sorry about something in the past.", e:"I regret saying that to her yesterday."},
+            b:{t:"regret + to-infinitive", d:"Formal register: you are sorry about what you are about to say NOW.", e:"We regret to inform you that the trip is cancelled."}},
+ {v:"go on", lv:["B2","C1"], a:{t:"go on + -ing", d:"Continue the SAME activity.", e:"She went on talking about her diet for forty-five minutes."},
+            b:{t:"go on + to-infinitive", d:"Move on to something NEW.", e:"After a shaky start, he went on to become head boy."}},
+ {v:"mean", lv:["B2","C1"], a:{t:"mean + -ing", d:"To involve or require something.", e:"Getting fitter will mean changing our sleep routine."},
+            b:{t:"mean + to-infinitive", d:"To intend to do something.", e:"I didn't mean to upset you."}}
+];
+
+const B = {   /* ---------------- tricky verbs ---------------- */
+A2:{ kind:"choice",
+ hint:"Choose the correct form. The clue in brackets tells you the meaning.",
+ items:[
+  {s:"My dad stopped ___ two years ago.", o:["smoking","to smoke"], a:0, cue:"= he quit", why:"stop + -ing = quit the habit."},
+  {s:"We stopped ___ water at the kiosk on the way.", o:["buying","to buy"], a:1, cue:"= a pause", why:"stop + to-infinitive = pause in order to do it."},
+  {s:"Remember ___ your PE kit tomorrow.", o:["bringing","to bring"], a:1, cue:"= a duty", why:"remember + to = something you must still do."},
+  {s:"I remember ___ in this park when I was small.", o:["playing","to play"], a:0, cue:"= a memory", why:"remember + -ing = it already happened."},
+  {s:"She forgot ___ her English homework.", o:["doing","to do"], a:1, cue:"= not done!", why:"forget + to = the duty was not done."},
+  {s:"I'll never forget ___ in the sea for the first time.", o:["swimming","to swim"], a:0, cue:"= a memory", why:"forget + -ing = a memory you keep."},
+  {s:"Try ___ with the window open.", o:["sleeping","to sleep"], a:0, cue:"= an experiment", why:"try + -ing = test it and see."},
+  {s:"I tried ___ the heavy door, but I couldn't.", o:["opening","to open"], a:1, cue:"= difficult", why:"try + to = an effort that failed."}
+ ]},
+B1:{ kind:"choice",
+ hint:"Choose the correct form. Use the context — no clues this time.",
+ items:[
+  {s:"Please remember ___ the door when you leave tonight.", o:["locking","to lock"], a:1, why:"A duty for later → remember + to."},
+  {s:"I'll never forget ___ the Andes from the plane for the first time.", o:["seeing","to see"], a:0, why:"An unforgettable memory → forget + -ing."},
+  {s:"She stopped ___ sweets at the kiosk — she's saving money.", o:["buying","to buy"], a:0, why:"She quit the habit → stop + -ing."},
+  {s:"On the way home we stopped ___ bread for dinner.", o:["buying","to buy"], a:1, why:"A pause in the journey → stop + to."},
+  {s:"Can't sleep? Try ___ warm milk before bed.", o:["drinking","to drink"], a:0, why:"An easy experiment → try + -ing."},
+  {s:"I tried ___ the window, but it was completely stuck.", o:["opening","to open"], a:1, why:"An effort that failed → try + to."},
+  {s:"Did you remember ___ the email to the coach?", o:["sending","to send"], a:1, why:"A duty → remember + to."},
+  {s:"I remember ___ my grandparents every summer as a child.", o:["visiting","to visit"], a:0, why:"A childhood memory → remember + -ing."},
+  {s:"He forgot ___ his maths homework again.", o:["doing","to do"], a:1, why:"Not done → forget + to."},
+  {s:"She'll never forget ___ at her quinceañera.", o:["dancing","to dance"], a:0, why:"A memory she keeps → forget + -ing."}
+ ]},
+B2:{ kind:"gap",
+ hint:"Write the correct form of the verb in brackets. Think about the meaning first.",
+ items:[
+  {s:["I regret ","(say) that to her yesterday; it was unkind."], a:["saying"], why:"regret + -ing = sorry about the past."},
+  {s:["We regret ","(inform) you that Friday's trip is cancelled."], a:["to inform"], why:"regret + to-infinitive = formal announcement, now."},
+  {s:["After the survey, the class went on ","(analyse) the results."], a:["to analyse","to analyze"], why:"go on + to = a NEW activity."},
+  {s:["Getting fitter will mean ","(change) our sleep routine completely."], a:["changing"], why:"mean + -ing = involve, require."},
+  {s:["I didn't mean ","(upset) you — it came out wrong."], a:["to upset"], why:"mean + to = intend."},
+  {s:["He stopped ","(train) for six months when he injured his knee."], a:["training"], why:"stop + -ing = he quit training."},
+  {s:["We stopped ","(stretch) halfway through the run, then carried on."], a:["to stretch"], why:"stop + to = a pause in order to stretch."},
+  {s:["Remember ","(bring) your notes for the quiz tomorrow."], a:["to bring"], why:"A future duty → remember + to."},
+  {s:["I'll always remember ","(win) that final in the last minute."], a:["winning"], why:"A memory → remember + -ing."},
+  {s:["If you can't switch off at night, try ","(write) your worries in a journal."], a:["writing"], why:"An experiment → try + -ing."}
+ ]},
+C1:{ kind:"gap",
+ hint:"Write the correct form. Several items hinge on register or on which action came first.",
+ items:[
+  {s:["I regret ","(tell) him my password — lesson learned."], a:["telling"], why:"Past regret → regret + -ing. 'to tell' would be a present formal announcement — absurd here."},
+  {s:["The head teacher regrets ","(announce) that sports day is postponed."], a:["to announce"], why:"Formal register, announced now → regret + to-infinitive."},
+  {s:["She went on ","(talk) about her diet for forty-five minutes."], a:["talking"], why:"She persisted with the SAME topic → go on + -ing. 'to talk' would mean she moved on to it next."},
+  {s:["After a shaky start, he went on ","(become) head boy."], a:["to become"], why:"A new stage → go on + to."},
+  {s:["True rest means ","(put) the phone in another room, not just face down."], a:["putting"], why:"mean + -ing = involves, requires."},
+  {s:["I never meant ","(imply) that your habits were unhealthy."], a:["to imply"], why:"mean + to = intend."},
+  {s:["He stopped ","(check) his grades obsessively — his therapist suggested it."], a:["checking"], why:"He quit the compulsion → stop + -ing. 'to check' would mean he paused in order to check — the opposite."},
+  {s:["Jogging past the plaza, I stopped ","(catch) my breath."], a:["to catch"], why:"A pause with a purpose → stop + to."},
+  {s:["Will you remember ","(water) the plants while I'm away?"], a:["to water"], why:"A future duty → remember + to."},
+  {s:["I don't remember ever ","(feel) this well in exam season."], a:["feeling"], why:"Searching the memory → remember + -ing."}
+ ]}
+};
+
+const EXIT = {
+  A2:[{s:"I enjoy ___ chess online.", o:["to play","playing"], a:1},
+      {s:"She refused ___ at first, but then she agreed.", o:["to help","helping"], a:0},
+      {s:"I suggest ___ with just five minutes a day.", o:["to start","starting"], a:1}],
+  B1:[{s:"I enjoy ___ chess online.", o:["to play","playing"], a:1},
+      {s:"She refused ___ at first, but then she agreed.", o:["to help","helping"], a:0},
+      {s:"I suggest ___ with just five minutes a day.", o:["to start","starting"], a:1}],
+  B2:[{s:"I can't stand ___ when I'm concentrating.", o:["to be interrupted","being interrupted"], a:1},
+      {s:"He managed ___ the race despite the rain.", o:["to finish","finishing"], a:0},
+      {s:"Do you feel like ___ a film tonight?", o:["to watch","watching"], a:1}],
+  C1:[{s:"She expects ___ like an adult.", o:["to be treated","being treated"], a:0},
+      {s:"Would you mind ___ the window?", o:["to close","closing"], a:1},
+      {s:"He hopes ___ his revision by June.", o:["to have finished","having finished"], a:0}]
+};
+
+/* ============================================================
+   ENGINE
+   ============================================================ */
+const LV = ["A2","B1","B2","C1"];
+const SUBS = {A2:"Elementary",B1:"Intermediate",B2:"Upper-Intermediate",C1:"Advanced"};
+const MODS = [["a","① Gerund vs. Infinitive","Week 2 · Session 1"],["b","② Tricky Verbs","Week 2 · Session 2"]];
+let cur = localStorage.getItem("u4gl_lv") || "A2";
+let mod = localStorage.getItem("u4gl_mod") || "a";
+let store = {};
+try{ store = JSON.parse(localStorage.getItem("u4gl_store")||"{}"); }catch(e){ store={}; }
+function slot(){ store[cur] = store[cur] || {ans:{}, self:{}}; return store[cur]; }
+function save(){ localStorage.setItem("u4gl_store", JSON.stringify(store));
+                 localStorage.setItem("u4gl_lv", cur); localStorage.setItem("u4gl_mod", mod); }
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const norm = s => String(s).toLowerCase().replace(/[’']/g,"'").replace(/\s+/g," ").trim();
+
+function drawTabs(){
+  document.getElementById("tabs").innerHTML = LV.map(l=>{
+    const done = store[l] && store[l].self && store[l].self.allDone;
+    return `<button class="tab ${l===cur?'on':''} ${done?'done':''}" data-l="${l}">${l}<small>${SUBS[l]}</small></button>`;
+  }).join("");
+  document.querySelectorAll(".tab").forEach(b=> b.onclick = ()=>{ cur=b.dataset.l; save(); render(); scrollTo({top:0,behavior:"smooth"}); });
+  document.getElementById("mods").innerHTML = MODS.map(([k,t,s])=>
+    `<button class="mod ${k===mod?'on':''}" data-m="${k}">${t}<small>${s}</small></button>`).join("");
+  document.querySelectorAll(".mod").forEach(b=> b.onclick = ()=>{ mod=b.dataset.m; save(); render(); scrollTo({top:0,behavior:"smooth"}); });
+}
+
+function render(){
+  drawTabs();
+  const s = slot();
+  let h = "";
+
+  if(mod === "a"){
+    /* ---- 1. reference ---- */
+    h += `<section class="step"><h2>Step 1 — Input</h2><h3>Which verb comes next?</h3>
+      <p class="hint">After some verbs we use the gerund (<b>-ing</b>). After others we use the <b>to-infinitive</b>. There is no magic rule — we learn them in groups. Read this once before you start.</p>
+      <div class="ref">
+        <div class="refbox ing"><h4>verb + -ing (gerund)</h4>${SORT.ing.join(" · ")}
+          <em>I enjoy walking to school. · She avoids drinking fizzy drinks.</em></div>
+        <div class="refbox inf"><h4>verb + to + infinitive</h4>${SORT.inf.join(" · ")}
+          <em>I want to sleep more. · They hope to feel calmer.</em></div>
+        <div class="refbox both"><h4>both — little or no change</h4>${SORT.both.join(" · ")}
+          <em>I love running = I love to run.</em></div>
+      </div>
+      <div class="watch"><b>Watch out!</b> The most common error at this level: <s>I enjoy to play</s> → <b>I enjoy playing</b>.<br>
+        Negative gerund: I enjoy <b>not having</b> homework at the weekend. · Verb + object + to-infinitive: My parents want <b>me to sleep</b> more.</div>
+    </section>`;
+
+    /* ---- 2. sorting ---- */
+    const all = SORT.ing.concat(SORT.inf);
+    const order = shuffle(all, 17);
+    const pick = s.ans.sort || {};
+    h += `<section class="step" data-b="sort"><h2>Step 2 — Discover</h2><h3>Sort the verbs</h3>
+      <p class="hint">Click a verb once to send it to <b>-ING</b>, twice to send it to <b>TO</b>, three times to put it back.</p>
+      <div class="pool" id="pool">${order.filter(v=>!pick[v]).map(v=>`<button class="vb" data-v="${esc(v)}">${esc(v)}</button>`).join("")}</div>
+      <div class="cols">
+        <div class="col ingc"><h4>verb + -ing</h4><div class="pool" data-c="ing">${order.filter(v=>pick[v]==="ing").map(v=>`<button class="vb ing" data-v="${esc(v)}">${esc(v)}</button>`).join("")}</div></div>
+        <div class="col infc"><h4>verb + to-infinitive</h4><div class="pool" data-c="inf">${order.filter(v=>pick[v]==="inf").map(v=>`<button class="vb inf" data-v="${esc(v)}">${esc(v)}</button>`).join("")}</div></div>
+      </div>
+      <div class="btns"><button class="act b-check" data-check="sort">Check</button>
+        <button class="act b-clear" data-clear="sort">Clear</button></div>
+      <div class="res" id="res-sort"></div></section>`;
+
+    /* ---- 3. gap fill ---- */
+    const G = A[cur];
+    h += `<section class="step" data-b="gap"><h2>Step 3 — Controlled practice</h2><h3>Choose the right form</h3>
+      <p class="hint">Write the gerund or the to-infinitive of the verb in brackets.</p>
+      ${G.bank ? `<div class="refbox both" style="margin-bottom:12px"><h4>word bank</h4>${G.bank.join(" · ")}</div>` : ""}
+      ${G.gap.map((it,i)=>`<div class="gapline"><b class="n">${i+1}.</b>${esc(it.s[0])}
+        <input type="text" data-k="gap${i}" value="${esc(s.ans["gap"+i]||"")}" placeholder="…"> ${esc(it.s[1])}</div>`).join("")}
+      <div class="btns"><button class="act b-check" data-check="gap">Check</button></div>
+      <div class="res" id="res-gap"></div></section>`;
+
+    /* ---- 4. grammar doctor ---- */
+    h += `<section class="step" data-b="doc"><h2>Step 4 — Grammar doctor</h2><h3>Diagnose and cure</h3>
+      <p class="hint">Each sentence has ONE mistake in the verb pattern. Write <b>only the two corrected words</b> — for example <i>enjoy playing</i>.</p>
+      ${A[cur].doc.map((it,i)=>`<div class="gapline"><b class="n">${i+1}.</b> <span class="sick">${esc(it.sick)}</span> →
+        <input type="text" data-k="doc${i}" value="${esc(s.ans["doc"+i]||"")}" style="width:210px" placeholder="two words">
+        <div class="why">${esc(it.why)}</div></div>`).join("")}
+      <div class="btns"><button class="act b-check" data-check="doc">Check</button></div>
+      <div class="res" id="res-doc"></div></section>`;
+  }
+  else {
+    /* ---- meaning map ---- */
+    const cards = MAP.filter(m => !m.lv || m.lv.includes(cur));
+    h += `<section class="step"><h2>Step 1 — Input</h2><h3>The meaning map</h3>
+      <p class="hint">With these verbs the form is not a rule to memorise — it <b>changes what the sentence means</b>. Read the pairs before you practise.</p>
+      <div class="map">${cards.map(m=>`<div class="mcard"><h4>${esc(m.v)}</h4>
+        <div class="side a"><b>${esc(m.a.t)}</b>${esc(m.a.d)}<em>${esc(m.a.e)}</em></div>
+        <div class="side b"><b>${esc(m.b.t)}</b>${esc(m.b.d)}<em>${esc(m.b.e)}</em></div></div>`).join("")}</div>
+    </section>`;
+
+    /* ---- discrimination ---- */
+    const T = B[cur];
+    h += `<section class="step" data-b="tv"><h2>Step 2 — Discrimination</h2><h3>Which form, and why?</h3>
+      <p class="hint">${esc(T.hint)}</p>`;
+    if(T.kind === "choice"){
+      h += T.items.map((it,i)=>{
+        const v = s.ans["tv"+i];
+        return `<div class="pair" data-i="${i}"><div class="sent"><b class="n" style="color:var(--accent)">${i+1}.</b> ${esc(it.s).replace("___","<b>___</b>")}
+          ${it.cue?` <span class="cue">${esc(it.cue)}</span>`:""}</div>
+          ${it.o.map((o,j)=>`<button class="chbtn ${v===j?'sel':''}" data-o="${j}">${esc(o)}</button>`).join("")}
+          <div class="why" style="flex:1 1 100%">${esc(it.why)}</div></div>`;
+      }).join("");
+    } else {
+      h += T.items.map((it,i)=>`<div class="gapline"><b class="n">${i+1}.</b>${esc(it.s[0])}
+        <input type="text" data-k="tv${i}" value="${esc(s.ans["tv"+i]||"")}" placeholder="…"> ${esc(it.s[1])}
+        <div class="why">${esc(it.why)}</div></div>`).join("");
+    }
+    h += `<div class="btns"><button class="act b-check" data-check="tv">Check</button></div>
+      <div class="res" id="res-tv"></div></section>`;
+  }
+
+  /* ---- exit ticket (both modules) ---- */
+  h += `<section class="step" data-b="exit"><h2>Exit ticket</h2><h3>Three items before you go</h3>
+    <p class="hint">No notes, no reference table. This is what your teacher would collect at the door.</p>
+    ${EXIT[cur].map((it,i)=>{
+      const v = slot().ans["exit"+i];
+      return `<div class="pair" data-i="${i}"><div class="sent"><b style="color:var(--accent)">${i+1}.</b> ${esc(it.s).replace("___","<b>___</b>")}</div>
+        ${it.o.map((o,j)=>`<button class="chbtn ${v===j?'sel':''}" data-o="${j}">${esc(o)}</button>`).join("")}</div>`;
+    }).join("")}
+    <div class="btns"><button class="act b-check" data-check="exit">Check</button></div>
+    <div class="res" id="res-exit"></div></section>`;
+
+  h += `<div class="final"><h3>Score — level ${cur}</h3><div class="big" id="fscore">—</div>
+    <p id="fmsg">Check each section to build your total.</p>
+    <div class="btns" style="justify-content:center">
+      <button class="act" onclick="window.print()">🖨️ Print / Save as PDF</button>
+      <button class="act b-clear" data-reset="1">Clear this level</button></div></div>`;
+
+  document.getElementById("main").innerHTML = h;
+  wire(); updateTotal();
+}
+
+function shuffle(arr, seed){
+  const a = arr.slice(); let r = seed;
+  const rnd = ()=> (r = (r*9301 + 49297) % 233280) / 233280;
+  for(let i=a.length-1;i>0;i--){ const j = Math.floor(rnd()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
+  return a;
+}
+
+function wire(){
+  const s = slot();
+  document.querySelectorAll("input[data-k]").forEach(el=>{
+    el.oninput = ()=>{ s.ans[el.dataset.k] = el.value; save(); };
+  });
+  document.querySelectorAll(".vb").forEach(el=>{
+    el.onclick = ()=>{
+      const v = el.dataset.v;
+      s.ans.sort = s.ans.sort || {};
+      const now = s.ans.sort[v];
+      s.ans.sort[v] = now === undefined ? "ing" : now === "ing" ? "inf" : undefined;
+      if(s.ans.sort[v] === undefined) delete s.ans.sort[v];
+      save();
+      const y = scrollY; render(); scrollTo(0, y);
+    };
+  });
+  document.querySelectorAll(".chbtn").forEach(el=>{
+    el.onclick = ()=>{
+      const p = el.closest(".pair"), b = p.closest("section").dataset.b;
+      s.ans[b + p.dataset.i] = +el.dataset.o; save();
+      p.querySelectorAll(".chbtn").forEach(x=>x.classList.remove("sel"));
+      el.classList.add("sel");
+    };
+  });
+  document.querySelectorAll("[data-check]").forEach(b=> b.onclick = ()=> check(b.dataset.check));
+  document.querySelectorAll("[data-clear]").forEach(b=> b.onclick = ()=>{ delete s.ans.sort; delete s.self._sort; save(); render(); });
+  document.querySelectorAll("[data-reset]").forEach(b=> b.onclick = ()=>{
+    if(confirm("Clear all your answers for level " + cur + "?")){ delete store[cur]; save(); render(); }
+  });
+}
+
+function check(id){
+  const s = slot(); let got = 0, tot = 0;
+  const sec = document.querySelector(`section[data-b="${id}"]`);
+
+  if(id === "sort"){
+    const pick = s.ans.sort || {};
+    SORT.ing.concat(SORT.inf).forEach(v=>{
+      tot++;
+      const right = SORT.ing.includes(v) ? "ing" : "inf";
+      const el = sec.querySelector(`.vb[data-v="${CSS.escape(v)}"]`);
+      if(!el) return;
+      el.classList.remove("ok","ko");
+      if(pick[v] === right){ got++; el.classList.add("ok"); }
+      else if(pick[v]) el.classList.add("ko");
+    });
+  }
+  else if(id === "gap" || id === "doc" || (id === "tv" && B[cur].kind === "gap")){
+    const items = id === "gap" ? A[cur].gap : id === "doc" ? A[cur].doc : B[cur].items;
+    items.forEach((it,i)=>{
+      tot++;
+      const inp = sec.querySelector(`input[data-k="${id}${i}"]`);
+      inp.classList.remove("ok","ko");
+      const v = norm(inp.value);
+      if(v && it.a.some(a=>norm(a) === v)){ got++; inp.classList.add("ok"); }
+      else { inp.classList.add("ko"); inp.value = it.a[0]; s.ans[id+i] = it.a[0]; }
+      const w = inp.parentElement.querySelector(".why"); if(w) w.classList.add("show");
+    });
+  }
+  else if(id === "tv" || id === "exit"){
+    const items = id === "tv" ? B[cur].items : EXIT[cur];
+    items.forEach((it,i)=>{
+      tot++;
+      const p = sec.querySelector(`.pair[data-i="${i}"]`);
+      p.classList.remove("ok","ko");
+      p.querySelectorAll(".chbtn").forEach((btn,j)=>{
+        btn.classList.remove("right","wrong");
+        if(j === it.a) btn.classList.add("right");
+        else if(s.ans[id+i] === j) btn.classList.add("wrong");
+      });
+      if(s.ans[id+i] === it.a){ got++; p.classList.add("ok"); } else if(s.ans[id+i] !== undefined) p.classList.add("ko");
+      const w = p.querySelector(".why"); if(w) w.classList.add("show");
+    });
+  }
+
+  s.self["_"+id] = got; s.self["_"+id+"_tot"] = tot; save();
+  const el = document.getElementById("res-"+id);
+  const pc = tot ? got/tot : 0;
+  el.className = "res show " + (pc>=.8?"ok":pc>=.5?"mid":"ko");
+  el.textContent = pc>=.8 ? `Excellent — ${got} / ${tot}. That pattern is yours now.`
+                 : pc>=.5 ? `${got} / ${tot} — read the explanations above, then redo the ones you missed.`
+                 : `${got} / ${tot} — go back to the input box at the top before trying again.`;
+  updateTotal();
+}
+
+function updateTotal(){
+  const s = slot();
+  const ids = mod === "a" ? ["sort","gap","doc","exit"] : ["tv","exit"];
+  let got = 0, tot = 0, done = 0;
+  ids.forEach(id=>{
+    if(s.self["_"+id] !== undefined){ got += s.self["_"+id]; tot += s.self["_"+id+"_tot"]; done++; }
+  });
+  const fs = document.getElementById("fscore"), fm = document.getElementById("fmsg");
+  if(!fs) return;
+  if(!done){ fs.textContent = "—"; fm.textContent = "Check each section to build your total."; return; }
+  const p = tot ? Math.round(got/tot*100) : 0;
+  fs.textContent = p + "%";
+  fm.textContent = `${got} / ${tot} across the ${done} section${done>1?"s":""} you have checked · ${mod==="a"?"Gerund vs. Infinitive":"Tricky Verbs"}`;
+  const aDone = ["sort","gap","doc"].every(k=>s.self["_"+k] !== undefined);
+  const bDone = s.self["_tv"] !== undefined;
+  if(aDone && bDone){ s.self.allDone = true; save(); drawTabs(); }
+}
+
+render();
+</script>
+</body>
+</html>

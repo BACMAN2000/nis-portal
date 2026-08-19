@@ -83,6 +83,19 @@
             { href:'listening-mind-over-matter.html', icon:'🎧', title:'Listening — The Wellbeing Podcast',
               desc:'Recorded episode on the stress mindset, one per level (2–5 min; B2 and C1 are a two-speaker interview). Exam rules: two listenings, then the questions — the transcript unlocks afterwards.',
               tags:['A2','B1','B2','C1'] },
+            /* Versiones POR NIVEL de juegos que también existen por semana: aquí
+               el vocabulario es el de toda la unidad y lo que cambia es la
+               dosis (A2→C1), no la semana. Conviven a propósito con
+               crossword-u4w*.html y con grammar-lab.html. */
+            { href:'grammar-lab-u4-by-level.html', icon:'🧪', title:'Grammar Practice by Level — Habits That Shape Us',
+              desc:'Week 2 in two modules — gerund vs. infinitive (sorting, gap-fill, grammar doctor) and the meaning-change verbs — with the four worksheet dosages. A2 gets a word bank; C1 gets passives, perfect infinitives and regret / go on / mean.',
+              tags:['A2','B1','B2','C1'] },
+            { href:'crossword-mind-over-matter.html', icon:'🧠', title:'Crossword by Level — Mind Over Matter',
+              desc:'The unit’s emotion vocabulary in one crossword per CEFR level: precise adjectives, intensity adverbs and the words from the essay. Lives, timer and scoring.',
+              tags:['A2','B1','B2','C1'] },
+            { href:'wordsearch-mind-over-matter.html', icon:'🔍', title:'Word Search by Level — Mind Over Matter',
+              desc:'Same vocabulary, different muscle. A2 goes across and down only; by C1 the words run in all eight directions, backwards included.',
+              tags:['A2','B1','B2','C1'] },
           ]},
           ...U4_TOPICS.map((t,i)=>u4Week(t,i+1)),
         ],
