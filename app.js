@@ -465,7 +465,10 @@ const AC_ACTIVITIES = [
   // práctica autónoma: un alumno solo en casa se autobloquearía), pero quedan
   // registradas para poder darles vidas si algún día se les activa.
   ['reading-pretending-fine','U4 · Reading — Pretending I Was Fine'],
-  ['listening-mind-over-matter','U4 · Listening — Wellbeing Podcast']
+  ['listening-mind-over-matter','U4 · Listening — Wellbeing Podcast'],
+  ['grammar-lab-u4-by-level','U4 · Grammar Practice by Level'],
+  ['crossword-mind-over-matter','U4 · Crossword by Level'],
+  ['wordsearch-mind-over-matter','U4 · Word Search by Level']
 ];
 function acActLabel(k){ const f=AC_ACTIVITIES.find(a=>a[0]===k); return f?f[1]:(k||'—'); }
 const AC_EVENT = { tab_switch:'⚠️ Salida', reported:'🚩 Reportado', locked:'⛔ Eliminada (C)', translate_detected:'🌐 Traductor' };
