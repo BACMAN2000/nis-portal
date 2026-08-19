@@ -151,7 +151,9 @@ def main():
         subprocess.run(["ffmpeg", "-y", "-v", "error", "-f", "concat", "-safe", "0",
                         "-i", lst, "-c:a", "libmp3lame", "-b:a", "96k", "-ar", "44100", final], check=True)
 
-        manifest[lv] = {"file": f"audio/listening/u4-{lv}.mp3", "sig": sig,
+        # ?v=<sig> — cada regeneración cambia la URL, así Cloudflare no puede
+        # servir ni un mp3 viejo ni un 404 cacheado de antes del deploy.
+        manifest[lv] = {"file": f"audio/listening/u4-{lv}.mp3?v={sig[:8]}", "sig": sig,
                         "duration": dur(final), "turns": marks,
                         "voices": {w: VOICES[w][0] for w in set(x["who"] for x in marks)}}
         size = os.path.getsize(final) / 1024
