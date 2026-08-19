@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Unit 4 · Mind Over Matter — Word Wheel by level (A2–C1)</title>
+<style>
+/* Gotham comes from the portal when served there, or from the locally
+   installed family when this file is opened straight from disk. */
+@font-face{font-family:'Gotham';src:local('Gotham Book'),local('Gotham'),url('fonts/GothamBook.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'Gotham';src:local('Gotham Medium'),local('Gotham'),url('fonts/GothamMedium.ttf') format('truetype');font-weight:500;font-display:swap}
+@font-face{font-family:'Gotham';src:local('Gotham Bold'),local('Gotham'),url('fonts/GothamBold.ttf') format('truetype');font-weight:700;font-display:swap}
+@font-face{font-family:'Gotham';src:local('Gotham Light'),local('Gotham'),url('fonts/GothamLight.ttf') format('truetype');font-weight:300;font-display:swap}
+
+:root{
+  /* Nordic International School — same tokens as the portal's brand.css */
+  --blue:#4987C6; --blue-d:#2F5F93; --blue-dd:#244C77;
+  --lila:#D1D2EA; --celeste:#76CBE5; --puce:#D2909B; --grey:#636465;
+  --nordic-900:#2B2C33; --nordic-800:#244C77; --nordic-700:#2F5F93;
+  --nordic-600:#4987C6; --nordic-500:#4987C6; --nordic-100:#E3E5F3; --nordic-50:#F2F3FF;
+  --g9-bg:#EDEEF9; --g9-strong:#D1D2EA; --g9-text:#244C77;
+  --gold:#F59E0B; --gold-dark:#B45309;
+  --ok:#16A34A; --bad:#DC2626;
+  --cell:40px; --r:16px; --r-sm:10px;
+  --sans:'Gotham','Montserrat',system-ui,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{
+  margin:0;font-family:var(--sans);color:var(--nordic-900);
+  background:
+    radial-gradient(1100px 620px at 15% -10%, #5E97D2 0%, transparent 60%),
+    radial-gradient(900px 700px at 110% 15%, #76CBE5 0%, transparent 52%),
+    linear-gradient(170deg,#4987C6 0%,#2F5F93 48%,#1D3D61 100%);
+  background-attachment:fixed;
+  overflow-x:hidden;
+}
+/* vh first: browsers without dvh support (iPadOS < 15.4) keep the vh line */
+.screen{display:none;min-height:100vh;min-height:100dvh;flex-direction:column}
+.screen.active{display:flex}
+
+/* ---------- top bar ---------- */
+.topbar{display:flex;align-items:center;gap:10px;padding:12px 14px;flex:0 0 auto}
+.iconbtn{
+  width:40px;height:40px;border:none;border-radius:12px;cursor:pointer;
+  background:rgba(255,255,255,.16);color:#fff;font-size:18px;line-height:1;
+  display:grid;place-items:center;backdrop-filter:blur(6px);
+  transition:transform .12s ease, background .15s ease;
+}
+.iconbtn:hover{background:rgba(255,255,255,.28)}
+.iconbtn:active{transform:scale(.92)}
+.topbar .title{flex:1;min-width:0;color:#fff}
+.topbar .title b{display:block;font-size:15px;font-weight:600;letter-spacing:.2px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.topbar .title span{display:block;font-size:11px;opacity:.72;letter-spacing:.6px;text-transform:uppercase}
+.coins{
+  display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.16);
+  color:#fff;border-radius:999px;padding:7px 13px 7px 9px;font-weight:600;font-size:14px;
+}
+.coins .c{width:20px;height:20px;border-radius:50%;background:linear-gradient(160deg,#FFD772,var(--gold));
+  color:#7A4C00;font-size:11px;font-weight:700;display:grid;place-items:center;box-shadow:0 1px 3px rgba(0,0,0,.3)}
+
+/* ---------- brand lockup & slogan ---------- */
+.brandmark{display:flex;align-items:center;gap:10px;min-width:0}
+.brandmark svg{height:26px;width:auto;display:block;flex:0 0 auto}
+.brandmark .sl{font-size:10px;letter-spacing:1.6px;text-transform:uppercase;
+  color:rgba(255,255,255,.72);font-weight:500;white-space:nowrap}
+
+/* fills the empty space at the foot of a screen */
+.slogan{display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:12px;padding:34px 20px 30px;text-align:center;opacity:.9}
+.slogan .iso{width:34px;height:34px;opacity:.55}
+.slogan b{display:block;font-weight:300;font-size:clamp(19px,4.6vw,27px);
+  letter-spacing:.6px;color:rgba(255,255,255,.92)}
+.slogan span{display:block;font-size:10px;letter-spacing:2.6px;text-transform:uppercase;
+  color:rgba(255,255,255,.5);margin-top:5px}
+.slogan.grow{flex:1 1 auto}
+
+/* slogan at the foot of the play screen — below the wheel, never under the
+   crossword, so a tall grid can't crowd it */
+.wheelwrap .mark{margin-top:7px;text-align:center;pointer-events:none;
+  font-weight:300;font-size:clamp(12px,2.8vw,16px);letter-spacing:3px;
+  color:rgba(255,255,255,.22);text-transform:uppercase}
+
+/* ---------- home ---------- */
+.hero{text-align:center;color:#fff;padding:8px 20px 22px}
+.hero .eyebrow{font-size:11px;letter-spacing:2.4px;text-transform:uppercase;opacity:.72}
+.hero h1{margin:8px 0 4px;font-size:clamp(26px,7vw,40px);font-weight:700;letter-spacing:-.5px}
+.hero p{margin:0;font-size:13px;opacity:.8}
+.wrap{width:min(720px,100%);margin:0 auto;padding:0 16px 40px}
+.weeks{display:grid;gap:12px}
+.week{
+  display:flex;align-items:center;gap:14px;padding:14px;border:none;width:100%;
+  background:rgba(255,255,255,.95);border-radius:18px;cursor:pointer;text-align:left;
+  box-shadow:0 6px 20px rgba(4,26,48,.25);transition:transform .14s ease, box-shadow .14s ease;
+}
+.week:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(4,26,48,.32)}
+.week:active{transform:scale(.99)}
+.week .num{
+  flex:0 0 auto;width:48px;height:48px;border-radius:14px;display:grid;place-items:center;
+  background:var(--g9-bg);color:var(--g9-text);font-weight:700;font-size:12px;line-height:1.1;text-align:center;
+}
+.week .num b{display:block;font-size:19px}
+.week .meta{flex:1;min-width:0}
+.week .meta b{display:block;font-size:15px;color:var(--nordic-800)}
+.week .meta span{display:block;font-size:12px;color:#5a6b7d;margin-top:2px}
+.bar{height:6px;border-radius:99px;background:var(--nordic-100);margin-top:8px;overflow:hidden}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--nordic-500),var(--nordic-700));width:0;
+  transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.week .pct{flex:0 0 auto;font-size:12px;font-weight:700;color:var(--nordic-600);min-width:38px;text-align:right}
+
+/* ---------- level select ---------- */
+.levels{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.lvl{
+  border:none;cursor:pointer;text-align:left;padding:14px;border-radius:18px;
+  background:rgba(255,255,255,.95);box-shadow:0 6px 18px rgba(4,26,48,.22);
+  transition:transform .14s ease;position:relative;overflow:hidden;
+}
+.lvl:hover{transform:translateY(-2px)}
+.lvl .tag{font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:#7d8b99;font-weight:600}
+.lvl .key{font-size:19px;font-weight:700;color:var(--nordic-800);letter-spacing:2px;margin:3px 0 6px}
+.lvl .sub{font-size:11px;color:#5a6b7d}
+.lvl.done{background:linear-gradient(150deg,#EAF7EF,#ffffff)}
+.lvl .check{position:absolute;top:10px;right:10px;width:22px;height:22px;border-radius:50%;
+  background:var(--ok);color:#fff;font-size:12px;display:none;place-items:center}
+.lvl.done .check{display:grid}
+
+/* ---------- game ---------- */
+#game{justify-content:space-between;height:100vh;height:100dvh;overflow:hidden}
+#game.active{display:flex}
+.board{flex:1 1 auto;display:flex;align-items:center;justify-content:center;padding:4px 10px 8px;min-height:0;overflow:hidden}
+.grid{display:grid;gap:4px;justify-content:center}
+.cell{width:var(--cell);height:var(--cell);border-radius:8px;display:grid;place-items:center;
+  font-weight:700;font-size:calc(var(--cell)*.52);color:transparent;
+  background:rgba(255,255,255,.14);box-shadow:inset 0 0 0 1px rgba(255,255,255,.10)}
+.cell.empty{background:transparent;box-shadow:none}
+.cell.shown{background:#fff;color:var(--nordic-800);box-shadow:0 2px 5px rgba(0,0,0,.22)}
+.cell.hinted{background:#FFF3D6;color:var(--gold-dark)}
+.cell.reveal{background:rgba(255,255,255,.26);color:rgba(255,255,255,.92);
+  box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.45)}
+.cell.pop{animation:pop .38s cubic-bezier(.3,1.5,.5,1)}
+@keyframes pop{0%{transform:scale(.4) rotate(-8deg);opacity:.2}60%{transform:scale(1.12)}100%{transform:scale(1)}}
+
+.wheelwrap{flex:0 0 auto;padding:0 12px calc(14px + env(safe-area-inset-bottom))}
+.preview{height:46px;display:grid;place-items:center;margin-bottom:2px}
+.preview span{
+  display:inline-block;padding:7px 18px;border-radius:12px;background:#fff;color:var(--nordic-800);
+  font-weight:700;font-size:20px;letter-spacing:5px;box-shadow:0 4px 14px rgba(0,0,0,.28);
+  opacity:0;transform:translateY(8px);transition:opacity .12s, transform .12s, background .15s, color .15s;
+}
+.preview span.on{opacity:1;transform:none}
+.preview span.good{background:var(--ok);color:#fff}
+.preview span.bad{background:var(--bad);color:#fff;animation:shake .34s}
+.preview span.dupe{background:var(--gold);color:#5A3800}
+@keyframes shake{10%,90%{transform:translateX(-4px)}30%,70%{transform:translateX(6px)}50%{transform:translateX(-6px)}}
+
+.wheelrow{display:flex;align-items:center;justify-content:center;gap:12px}
+/* keep the wheel clear of the side buttons: 2 buttons + 2 gaps + page padding */
+.wheel{width:min(320px,calc(100vw - 172px),38vh);height:min(320px,calc(100vw - 172px),38vh);
+  width:min(320px,calc(100vw - 172px),38dvh);height:min(320px,calc(100vw - 172px),38dvh);
+  touch-action:none;user-select:none;flex:0 0 auto}
+.wheel .disc{fill:rgba(255,255,255,.14);stroke:rgba(255,255,255,.22);stroke-width:2}
+/* dotted rim: rides with the letters so a spin is visible even between them */
+.wheel .ticks{fill:none;stroke:rgba(255,255,255,.32);stroke-width:5;stroke-linecap:round;
+  stroke-dasharray:1 21}
+.wheel .trace{fill:none;stroke:#FFD772;stroke-width:9;stroke-linecap:round;stroke-linejoin:round;opacity:.9}
+.wheel .lt circle{fill:#fff;transition:fill .12s ease, r .12s ease}
+.wheel .lt text{font-family:var(--sans);font-weight:700;font-size:30px;fill:var(--nordic-800);
+  text-anchor:middle;dominant-baseline:central;pointer-events:none}
+.wheel .lt.sel circle{fill:var(--gold)}
+.wheel .lt.sel text{fill:#5A3800}
+.sidebtns{display:flex;flex-direction:column;gap:10px}
+.act{width:58px;height:58px;border:none;border-radius:18px;cursor:pointer;background:rgba(255,255,255,.18);
+  color:#fff;font-size:24px;display:grid;place-items:center;position:relative;
+  box-shadow:0 4px 14px rgba(4,26,48,.26);transition:transform .12s, background .15s}
+.act:hover{background:rgba(255,255,255,.26)}
+.act:active{transform:scale(.9)}
+.act small{position:absolute;bottom:-3px;right:-3px;background:var(--gold);color:#5A3800;
+  font-size:10px;font-weight:800;border-radius:7px;padding:1px 5px}
+@media (max-width:420px){
+  .act{width:50px;height:50px;border-radius:15px;font-size:21px}
+  .wheel{width:min(320px,calc(100vw - 152px),40dvh);height:min(320px,calc(100vw - 152px),40dvh)}
+}
+.wordsleft{text-align:center;color:#fff;font-size:11px;letter-spacing:1.6px;text-transform:uppercase;opacity:.7;margin-top:8px}
+
+/* ---------- modal ---------- */
+.modal{position:fixed;inset:0;background:rgba(6,22,40,.7);display:none;place-items:center;padding:20px;z-index:50;
+  backdrop-filter:blur(3px)}
+.modal.on{display:grid}
+.card{width:min(420px,100%);background:#fff;border-radius:22px;padding:22px;box-shadow:0 20px 50px rgba(0,0,0,.4);
+  animation:rise .3s cubic-bezier(.2,.9,.3,1)}
+@keyframes rise{from{transform:translateY(24px) scale(.96);opacity:0}}
+.card .kicker{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--nordic-500);font-weight:700}
+.card h2{margin:6px 0 2px;font-size:26px;letter-spacing:2px;color:var(--nordic-800)}
+.card .ipa{font-size:13px;color:#7d8b99;margin-bottom:12px}
+.card .def{font-size:15px;line-height:1.5;color:#2b3a48}
+.card .es{margin-top:8px;font-size:14px;color:var(--nordic-600);font-weight:600}
+.card .ex{margin-top:12px;padding:11px 13px;background:var(--g9-bg);border-radius:12px;font-size:14px;
+  color:var(--g9-text);font-style:italic}
+.btnrow{display:flex;gap:10px;margin-top:18px}
+.btn{flex:1;border:none;border-radius:14px;padding:13px;font-size:14px;font-weight:700;cursor:pointer;
+  font-family:var(--sans);transition:transform .12s}
+.btn:active{transform:scale(.97)}
+.btn.primary{background:var(--nordic-700);color:#fff}
+.btn.ghost{background:var(--nordic-50);color:var(--nordic-700)}
+
+/* ---------- admin ---------- */
+.topbar .title b .badge{display:inline-block;width:auto;background:var(--gold);color:#5A3800;
+  font-size:9px;font-weight:800;letter-spacing:1.2px;text-transform:none;opacity:1;
+  border-radius:6px;padding:2px 6px;margin-left:6px;vertical-align:2px}
+.tabs{display:flex;gap:8px;margin-bottom:14px}
+.tab{flex:1;border:none;border-radius:12px;padding:11px;font-family:var(--sans);font-size:13px;
+  font-weight:700;cursor:pointer;background:rgba(255,255,255,.16);color:#fff;transition:background .15s}
+.tab.on{background:#fff;color:var(--nordic-700)}
+.keys{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px}
+.key1 .klab{font-size:11px;font-weight:700;letter-spacing:1.2px;color:var(--nordic-700);margin-bottom:6px}
+.mini{display:grid;gap:1px;justify-content:start}
+.mini i{width:15px;height:15px;font-style:normal;font-size:9px;font-weight:700;
+  display:grid;place-items:center;background:var(--nordic-50);color:var(--nordic-800);border-radius:2px}
+.mini i.e{background:transparent}
+.mini i.k{background:var(--g9-strong);color:var(--g9-text)}
+.note{color:rgba(255,255,255,.8);font-size:12px;line-height:1.5;margin:0 0 14px}
+
+/* ---------- word list ---------- */
+.sheet{background:#fff;border-radius:18px;padding:18px;margin-bottom:14px}
+.sheet h3{margin:0 0 2px;font-size:16px;color:var(--nordic-800)}
+.sheet .focus{font-size:12px;color:#7d8b99;margin-bottom:12px}
+.sheet table{width:100%;border-collapse:collapse;font-size:13px}
+.sheet th{text-align:left;font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:#7d8b99;
+  padding:6px 8px;border-bottom:1px solid var(--nordic-100)}
+.sheet td{padding:7px 8px;border-bottom:1px solid #f0f3f7;vertical-align:top}
+.sheet td.k{font-weight:700;color:var(--nordic-700);letter-spacing:1.2px;white-space:nowrap}
+.sheet td.w{color:#4a5b6c;line-height:1.6}
+@media print{
+  body{background:#fff}
+  .topbar,.hero,.btnrow,.tabs,.note{display:none!important}
+  .sheet{break-inside:avoid;box-shadow:none;border:1px solid #ddd}
+  .key1{break-inside:avoid}
+  .screen{display:none!important} #list.active{display:block!important}
+}
+</style>
+</head>
+<body>
+
+<!-- Nordic isotipo, inlined so it also works opened straight from disk -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="nsIso" viewBox="0 0 54.69 54.69">
+    <path fill="currentColor" opacity=".3" d="M54.69,27.34c0,15.1-12.24,27.34-27.34,27.34S0,42.45,0,27.34,12.24,0,27.34,0s27.34,12.24,27.34,27.34"/>
+    <path fill="currentColor" d="M44.47,39.47c-.62,0-1.37-.44-2.32-1.35l-3.49-3.37.24,1.25c.25,1.34.14,2.31-.33,2.88-.28.34-.66.51-1.11.51-.69,0-1.51-.44-2.41-1.3l-17.3-16.55-6.65,15.18c-.81,1.86-1.29,2.23-1.79,2.23-.23,0-.44-.1-.6-.28-.24-.28-.43-.8-.15-2.68l2.31-15.53c.3-2.01,1.37-3.21,2.87-3.21.89,0,1.83.45,2.71,1.3l.88.85c.79-1.32,2.02-2.08,3.39-2.08,1.1,0,2.17.48,3.11,1.38l12.82,12.36-2.33-12.32c-.26-1.39-.05-2.59.61-3.38.84-1.01,2.29-1.25,3.9-.62,2.86,1.11,3.1,1.45,3,2.01-.02.1-.14.58-.81.58-.17,0-.4-.03-.71-.08-.39-.07-.76.09-.98.4-.18.26-.23.59-.11.89l6.03,17.63c.47,1.39.52,2.32.13,2.86-.21.3-.53.46-.91.46M44.47,38.2v.64-.64ZM38.25,32.58l4.79,4.62c.73.7,1.14.91,1.32.97.02-.21-.01-.71-.32-1.6l-6.03-17.62c-.25-.69-.16-1.44.27-2.05.21-.3.48-.53.78-.7-.21-.09-.44-.18-.7-.28-1.08-.42-1.97-.33-2.45.25-.41.5-.53,1.32-.34,2.33l2.67,14.09ZM18.29,20.3l17.64,16.86c.92.88,1.4.95,1.53.95.08,0,.1-.02.13-.05.15-.18.26-.77.06-1.83l-.57-3.02-14.12-13.61c-.69-.67-1.46-1.02-2.22-1.02-1,0-1.88.62-2.44,1.72M13.74,18.53c-1.16,0-1.51,1.48-1.6,2.12l-2.31,15.53c-.02.13-.03.24-.05.35.05-.1.1-.21.15-.32l6.83-15.6-1.19-1.13c-.64-.61-1.29-.94-1.83-.94"/>
+  </symbol>
+</svg>
+
+<!-- ============ HOME ============ -->
+<section id="home" class="screen active">
+  <div class="topbar">
+    <div class="title brandmark">
+      <img id="logoImg" src="assets/logo-white-h.svg" alt="Nordic International School" style="height:26px;width:auto"
+           onerror="this.style.display='none';document.getElementById('logoFallback').style.display='flex'">
+      <span id="logoFallback" class="brandmark" style="display:none">
+        <svg class="iso" style="width:26px;height:26px;color:#fff"><use href="#nsIso"/></svg>
+        <b style="font-size:14px">Nordic International School</b>
+      </span>
+      <span class="sl">The Joy of Learning</span>
+    </div>
+    <button class="iconbtn" id="btnSound" title="Sound">🔊</button>
+    <div class="coins"><i class="c">$</i><span id="coinHome">0</span></div>
+  </div>
+  <div class="hero">
+    <div class="eyebrow">Unit 4</div>
+    <h1>Mind Over Matter</h1>
+    <p>Spin the wheel · build the words · fill the crossword</p>
+  </div>
+  <div class="wrap">
+    <div class="weeks" id="weekList"></div>
+    <div class="btnrow" style="margin-top:16px">
+      <button class="btn ghost" id="btnAdmin">🔒 Admin</button>
+      <button class="btn ghost" id="btnReset">↺ Reset progress</button>
+    </div>
+  </div>
+  <div class="slogan">
+    <svg class="iso" style="color:#fff"><use href="#nsIso"/></svg>
+    <b>The Joy of Learning</b>
+    <span>Nordic International School</span>
+  </div>
+</section>
+
+<!-- ============ LEVEL SELECT ============ -->
+<section id="levels" class="screen">
+  <div class="topbar">
+    <button class="iconbtn" data-back="home">←</button>
+    <div class="title"><b id="lvTitle"></b><span id="lvFocus"></span></div>
+    <div class="coins"><i class="c">$</i><span id="coinLv">0</span></div>
+  </div>
+  <div class="wrap"><div class="levels" id="levelList"></div></div>
+  <div class="slogan grow">
+    <svg class="iso" style="color:#fff"><use href="#nsIso"/></svg>
+    <b>The Joy of Learning</b>
+    <span>Unit 4 · Mind Over Matter</span>
+  </div>
+</section>
+
+<!-- ============ GAME ============ -->
+<section id="game" class="screen">
+  <div class="topbar">
+    <button class="iconbtn" data-back="levels">←</button>
+    <div class="title"><b id="gTitle"></b><span id="gSub"></span></div>
+    <button class="iconbtn" id="btnReveal" title="Show answers" style="display:none">🔑</button>
+    <div class="coins"><i class="c">$</i><span id="coinGame">0</span></div>
+  </div>
+  <div class="board"><div class="grid" id="grid"></div></div>
+  <div class="wheelwrap">
+    <div class="preview"><span id="preview"></span></div>
+    <div class="wheelrow">
+      <div class="sidebtns">
+        <button class="act" id="btnHint" title="Hint">💡<small>25</small></button>
+      </div>
+      <svg class="wheel" id="wheel" viewBox="0 0 300 300"></svg>
+      <div class="sidebtns">
+        <button class="act" id="btnShuffle" title="Spin the letters" aria-label="Spin the letters">🔀</button>
+      </div>
+    </div>
+    <div class="wordsleft" id="wordsLeft"></div>
+    <div class="mark">The Joy of Learning</div>
+  </div>
+</section>
+
+<!-- ============ ADMIN PANEL ============ -->
+<section id="list" class="screen">
+  <div class="topbar">
+    <button class="iconbtn" data-back="home">←</button>
+    <div class="title"><b>Admin — Unit 4<span class="badge">TEACHER</span></b><span>Mind Over Matter · 4 CEFR levels · 36 words</span></div>
+    <button class="iconbtn" onclick="window.print()" title="Print">🖨</button>
+  </div>
+  <div class="wrap">
+    <div class="tabs">
+      <button class="tab on" data-tab="words">📋 Word list</button>
+      <button class="tab" data-tab="answers">🔑 Answer keys</button>
+    </div>
+    <p class="note" id="adminNote"></p>
+    <div id="listBody"></div>
+    <div class="btnrow">
+      <button class="btn primary" id="btnAsStudent">👁 Ver como alumno</button>
+    </div>
+    <div class="slogan">
+      <svg class="iso" style="color:#fff"><use href="#nsIso"/></svg>
+      <b>The Joy of Learning</b>
+      <span>Nordic International School</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MODALS ============ -->
+<div class="modal" id="mVocab"><div class="card">
+  <div class="kicker">Key vocabulary · Unit 4</div>
+  <h2 id="vWord"></h2>
+  <div class="ipa" id="vPos"></div>
+  <div class="def" id="vDef"></div>
+  <div class="es" id="vEs"></div>
+  <div class="ex" id="vEx"></div>
+  <div class="btnrow"><button class="btn primary" data-close="mVocab">Got it</button></div>
+</div></div>
+
+<div class="modal" id="mDone"><div class="card" style="text-align:center">
+  <div style="font-size:52px;line-height:1">🏆</div>
+  <div class="kicker">Level complete</div>
+  <h2 id="dTitle" style="letter-spacing:0"></h2>
+  <div class="def" id="dStats"></div>
+  <div class="btnrow">
+    <button class="btn ghost" data-close="mDone">Stay</button>
+    <button class="btn primary" id="btnNext">Next level →</button>
+  </div>
+</div></div>
+
+<script>
+"use strict";
+
+/* ==================================================================
+   UNIT 4 — MIND OVER MATTER · level data
+   Every word in a level is formable from the letters of its key word.
+   ================================================================== */
+/* Every key word below is taken from that week's crossword-u4wN.html, and the
+   definition is that crossword's own clue, so both games teach the same lexis.
+   Two key words per day (D1 · D2 · D3) of each week. */
+const DATA = [
+{n:"A2",name:"Elementary",focus:"Everyday words for feelings, advice and routines",levels:[
+  {key:"NERVOUS", pos:"adjective", def:"Easily worried or frightened.", es:"nervioso", ex:"She gets nervous before speaking exams.",
+   words:["NERVOUS","NURSE","OVENS","OVEN","ROSE","SURE","USER","RUNS","NOSE"]},
+  {key:"EMOTION", pos:"noun", def:"A strong feeling such as fear or joy.", es:"emoción", ex:"Name the emotion precisely, not just ‘bad’.",
+   words:["EMOTION","MOTION","ITEM","TIME","MINT","OMIT","MOON","NOTE","TONE","INTO"]},
+  {key:"ADVICE", pos:"noun (uncountable!)", def:"A suggestion about what someone should do.", es:"consejo", ex:"Can I give you some advice? (NOT ✗ an advice)",
+   words:["ADVICE","ACID","CAVE","DICE","DIVE","VICE","IDEA","AIDE"]},
+  {key:"SHOULD", pos:"modal verb", def:"Give advice: you ___ sleep more.", es:"deberías", ex:"You should sleep eight hours.",
+   words:["SHOULD","HOLDS","HOLD","SOUL","SOLD","LOUD","OLD","DUO"]},
+  {key:"REASON", pos:"noun", def:"An explanation or cause for something.", es:"razón, motivo", ex:"Give a reason for your advice.",
+   words:["REASON","ARSON","SNORE","SOAR","ROSE","NOSE","NEAR","EARN","OARS"]},
+  {key:"POLITE", pos:"adjective", def:"Respectful and considerate.", es:"cortés, educado", ex:"‘You might want to’ is a polite way to advise.",
+   words:["POLITE","PILOT","POET","POLE","PILE","PLOT","TOIL","TILE"]},
+  {key:"ALERT",   pos:"adjective", def:"Awake and fully aware.", es:"despierto, alerta", ex:"Blue light keeps the brain alert at night.",
+   words:["ALERT","ALTER","LATER","RATE","TALE","LATE","TEAR","REAL","EAT","ART"]},
+  {key:"ROUTINE", pos:"noun", def:"A fixed sequence of daily actions.", es:"rutina", ex:"A fixed night routine improves sleep.",
+   words:["ROUTINE","ROUTE","UNITE","UNTIE","TUNER","NOTE","TONE","RIOT","TRIO","TIRE"]},
+  {key:"PLENTY", pos:"quantifier", def:"A large, more-than-enough amount.", es:"de sobra, mucho", ex:"There's plenty of evidence in the article.",
+   words:["PLENTY","TYPE","YELP","PELT","LENT","PLY","PEN","PET","NET"]}
+]},
+{n:"B1",name:"Intermediate",focus:"Naming stress precisely, and hedging what you claim",levels:[
+  {key:"PRESSURE",pos:"noun", def:"The feeling of being pushed to do too much.", es:"presión", ex:"Exam pressure builds up in the last week.",
+   words:["PRESSURE","PURSE","PRESS","SUPER","SPURS","REUSE","SPREE","PEERS","PURE","USER"]},
+  {key:"RESTLESS",pos:"adjective", def:"Unable to keep still or quiet.", es:"inquieto", ex:"I get restless the night before a test.",
+   words:["RESTLESS","STRESS","LESSER","STEELS","SLEETS","RESETS","TREES","STEEL","SLEET","ELSE"]},
+  {key:"BALANCE", pos:"noun", def:"A calm, steady state of mind.", es:"equilibrio", ex:"Sleep and study need balance.",
+   words:["BALANCE","BANAL","CANAL","CLEAN","CABLE","LANCE","CLAN","LACE","BEAN","ABLE"]},
+  {key:"PERHAPS",pos:"adverb", def:"Maybe; possibly.", es:"quizás", ex:"Perhaps he missed the bus.",
+   words:["PERHAPS","PAPERS","PAPER","PHASE","SHAPE","SHARP","SPARE","HEAPS","HARPS","PEARS"]},
+  {key:"CERTAIN",pos:"adjective", def:"Completely sure; without doubt.", es:"seguro, cierto", ex:"I'm certain she'll pass.",
+   words:["CERTAIN","RETAIN","NECTAR","CANTER","TRANCE","REACT","TRACE","CRATE","TRAIN","NICER"]},
+  {key:"IMPROVE", pos:"verb", def:"To make something better.", es:"mejorar", ex:"Peer feedback helps you improve the draft.",
+   words:["IMPROVE","MOVIE","MOVER","PROVE","PRIME","VIPER","POEM","MORE","ROPE","RIPE"]},
+  {key:"EXPLAIN", pos:"reporting verb", def:"To make something clear or easy to understand.", es:"explicar", ex:"The study explains why teenagers sleep late.",
+   words:["EXPLAIN","ALIEN","PANEL","PENAL","PLAIN","PLANE","PLAN","NAIL","LINE","LEAN"]},
+  {key:"ARTICLE",pos:"noun", def:"A piece of writing in a magazine.", es:"artículo", ex:"Write a 140–190-word magazine article.",
+   words:["ARTICLE","RECITAL","RETAIL","CLEAR","TRACE","TRAIL","ALERT","CRATE","LACE","RICE"]},
+  {key:"SCREENS", pos:"noun (plural)", def:"Devices whose blue light delays sleep.", es:"pantallas", ex:"Screens before bed delay the circadian rhythm.",
+   words:["SCREENS","SCREEN","SCENES","SCENE","SENSE","SEEN","SEER"]}
+]},
+{n:"B2",name:"Upper-Intermediate",focus:"Verb patterns and the vocabulary of changing a habit",levels:[
+  {key:"AGITATED",pos:"adjective", def:"Troubled, nervous or restless; unable to relax.", es:"agitado, alterado", ex:"He was too agitated to sit down.",
+   words:["AGITATED","AGITATE","GAIT","DATE","GATE","DIET","EDIT","TIDE","TAG"]},
+  {key:"CONSIDER",pos:"verb + -ing", def:"Verb + -ing: ___ joining a club.", es:"considerar, plantearse", ex:"I'm considering joining the debate club.",
+   words:["CONSIDER","SENIOR","SECOND","CINDERS","DINERS","SCORE","SNORE","NOISE","CIDER","IRONS"]},
+  {key:"IMAGINE", pos:"verb + -ing", def:"Verb + -ing: ___ winning the prize.", es:"imaginar", ex:"Imagine winning the prize.",
+   words:["IMAGINE","AIMING","ANIME","GAIN","GAME","MAIN","MEAN","MINE","NAME"]},
+  {key:"FORGET",  pos:"tricky verb", def:"'___ to do' = fail to; '___ doing' = lose the memory.", es:"olvidar", ex:"I forgot to send it. / I'll never forget meeting her.",
+   words:["FORGET","FORGE","FROG","FORT","FORE","GORE","TOE","GET"]},
+  {key:"PRACTISE",pos:"verb + -ing", def:"Verb + -ing: keep doing it to improve.", es:"practicar", ex:"She practises speaking every morning.",
+   words:["PRACTISE","PIRATES","PARTIES","CARPETS","PRAISE","TRACES","CRATES","PASTE","PRICE"]},
+  {key:"PATTERN", pos:"noun", def:"A regular, repeated form or model.", es:"patrón", ex:"Gerund and infinitive follow different patterns.",
+   words:["PATTERN","PARENT","PATTER","PATENT","ENTRAP","TREAT","PART","TAPE","RENT","NEAT"]},
+  {key:"ADVISE",  pos:"reporting verb", def:"To recommend a course of action.", es:"aconsejar", ex:"Researchers advise keeping phones out of the bedroom.",
+   words:["ADVISE","ASIDE","AIDES","IDEAS","DIVAS","VISA","VASE","SAID","IDEA","DIVE"]},
+  {key:"RECOVER", pos:"verb", def:"To return to normal health or strength.", es:"recuperarse", ex:"The body recovers during deep sleep.",
+   words:["RECOVER","COVER","CORE","OVER","ROVE","EVER","ORE","ERR"]},
+  {key:"PODCAST",pos:"noun", def:"An audio show you can stream or download.", es:"pódcast", ex:"Record a 5-minute interview-style podcast.",
+   words:["PODCAST","PAST","TACOS","COAST","COATS","PACTS","POST","STOP","SPOT","TACO"]}
+]},
+{n:"C1",name:"Advanced",focus:"Academic register, and the words a magazine editor uses",levels:[
+  {key:"RESEARCH",pos:"noun (uncountable)", def:"Careful study done to discover facts.", es:"investigación", ex:"Recent research shows teens need 8–10 hours.",
+   words:["RESEARCH","SEARCH","CHEERS","CHASE","SHARE","SHEAR","REACH","HEARS","ACRES","RACES"]},
+  {key:"HEADLINE",pos:"noun", def:"The title that grabs the reader's attention.", es:"titular", ex:"A good headline grabs the reader in five words.",
+   words:["HEADLINE","INHALED","INHALE","HANDLE","DENIAL","LEANED","HEALED","HEAD","LEAN","IDEA"]},
+  {key:"REGISTER",pos:"noun", def:"How formal or informal the language is.", es:"registro (formalidad)", ex:"Keep the register friendly but mature.",
+   words:["REGISTER","TIGERS","GREETS","STEER","GREET","TIGER","TREES","RESET","RISE"]},
+  {key:"CONCISE", pos:"adjective", def:"Saying much in few words; short and clear.", es:"conciso", ex:"Be concise: 140–190 words only.",
+   words:["CONCISE","SONIC","ICONS","COINS","CONES","SINCE","ONCE","NICE","ICON","COIN"]},
+  {key:"CLARITY", pos:"noun", def:"The quality of being easy to understand.", es:"claridad", ex:"Edit for clarity before you check spelling.",
+   words:["CLARITY","LYRIC","TRIAL","TRAIL","CART","CLAY","CITY","AIRY","LIAR"]},
+  {key:"CAPTION", pos:"noun", def:"The text printed under a photo.", es:"pie de foto", ex:"Write a caption under your magazine photo.",
+   words:["CAPTION","ACTION","PIANO","POINT","PAINT","PATIO","TOPIC","OPTIC","PANIC","COAT"]},
+  {key:"LONGING",pos:"noun", def:"A strong, often sad, wish for something.", es:"anhelo, añoranza", ex:"‘If only’ expresses longing for the past.",
+   words:["LONGING","LOGIN","LINGO","GOING","GONG","LONG","LION","LOIN"]},
+  {key:"SEVERAL",pos:"quantifier", def:"More than two but not very many.", es:"varios", ex:"Several students said the same thing.",
+   words:["SEVERAL","REVEAL","LEAVES","LEAVE","LASER","EASEL","SERVE","VERSE","SEVER"]},
+  {key:"DESIRE", pos:"noun", def:"A strong wish for something.", es:"deseo", ex:"‘I wish I had more time’ expresses a desire.",
+   words:["DESIRE","RESIDE","DRIES","RIDES","SEED","DEER","REED","RISE","SIDE","RIDE"]}
+]}
+];
+
+/* ==================================================================
+   Crossword builder (validated: every level solves within 11x11)
+   ================================================================== */
+function makeRng(seed){let s=seed>>>0;return function(){s=(Math.imul(s,1664525)+1013904223)>>>0;return s/4294967296;};}
+
+function tryBuild(words,seed,maxDim){
+  const rnd=makeRng(seed);
+  let ws=words.slice().sort((a,b)=>b.length-a.length||(a<b?-1:a>b?1:0));
+  if(seed>0){
+    const tail=ws.slice(1);
+    for(let i=tail.length-1;i>0;i--){const j=Math.floor(rnd()*(i+1));const t=tail[i];tail[i]=tail[j];tail[j]=t;}
+    ws=[ws[0]].concat(tail);
+  }
+  const grid=new Map(),placed=[];
+  const K=(r,c)=>r+","+c;
+  for(let k=0;k<ws[0].length;k++) grid.set(K(0,k),ws[0][k]);
+  placed.push({w:ws[0],r:0,c:0,d:0});
+
+  function fits(word,r0,c0,d){
+    const dr=d===0?0:1, dc=d===0?1:0;
+    if(grid.has(K(r0-dr,c0-dc))||grid.has(K(r0+dr*word.length,c0+dc*word.length))) return -1;
+    let cross=0;
+    for(let i=0;i<word.length;i++){
+      const rr=r0+dr*i, cc=c0+dc*i, cur=grid.get(K(rr,cc));
+      if(cur!==undefined){ if(cur!==word[i]) return -1; cross++; }
+      else if(grid.has(K(rr+dc,cc+dr))||grid.has(K(rr-dc,cc-dr))) return -1;
+    }
+    return cross>=1?cross:-1;
+  }
+
+  for(let wi=1;wi<ws.length;wi++){
+    const word=ws[wi]; let best=null;
+    for(let i=0;i<word.length;i++){
+      for(const [key,gch] of grid){
+        if(gch!==word[i]) continue;
+        const p=key.split(","), rr=+p[0], cc=+p[1];
+        for(let d=0;d<2;d++){
+          const dr=d===0?0:1, dc=d===0?1:0;
+          const r0=rr-dr*i, c0=cc-dc*i;
+          const cross=fits(word,r0,c0,d);
+          if(cross<0) continue;
+          const rows=[r0,r0+(word.length-1)*dr], cols=[c0,c0+(word.length-1)*dc];
+          for(const q of placed){
+            const qdr=q.d===0?0:1, qdc=q.d===0?1:0;
+            rows.push(q.r,q.r+(q.w.length-1)*qdr);
+            cols.push(q.c,q.c+(q.w.length-1)*qdc);
+          }
+          const h=Math.max.apply(null,rows)-Math.min.apply(null,rows)+1;
+          const wd=Math.max.apply(null,cols)-Math.min.apply(null,cols)+1;
+          const score=cross*10-Math.max(h,wd)*2-Math.abs(h-wd);
+          if(!best||score>best.score) best={score:score,r0:r0,c0:c0,d:d};
+        }
+      }
+    }
+    if(!best) return null;
+    const dr=best.d===0?0:1, dc=best.d===0?1:0;
+    for(let i=0;i<word.length;i++) grid.set(K(best.r0+dr*i,best.c0+dc*i),word[i]);
+    placed.push({w:word,r:best.r0,c:best.c0,d:best.d});
+  }
+
+  let minR=1e9,maxR=-1e9,minC=1e9,maxC=-1e9;
+  for(const key of grid.keys()){
+    const p=key.split(","), r=+p[0], c=+p[1];
+    if(r<minR)minR=r; if(r>maxR)maxR=r; if(c<minC)minC=c; if(c>maxC)maxC=c;
+  }
+  const rows=maxR-minR+1, cols=maxC-minC+1;
+  if(rows>maxDim||cols>maxDim) return null;
+
+  const cells=new Map();
+  for(const [key,ch] of grid){
+    const p=key.split(",");
+    cells.set((+p[0]-minR)+","+(+p[1]-minC),{ch:ch,shown:false});
+  }
+  const slots=placed.map(function(q){
+    const dr=q.d===0?0:1, dc=q.d===0?1:0, list=[];
+    for(let i=0;i<q.w.length;i++) list.push((q.r-minR+dr*i)+","+(q.c-minC+dc*i));
+    return {word:q.w,cells:list,found:false};
+  });
+  return {rows:rows,cols:cols,cells:cells,slots:slots};
+}
+
+function buildCrossword(words){
+  for(let seed=0;seed<400;seed++){
+    const g=tryBuild(words,seed,11);
+    if(g) return g;
+  }
+  return tryBuild(words,0,99);
+}
+
+/* ==================================================================
+   State
+   ================================================================== */
+const ADMIN_PIN="2026";   // change this to whatever you want the teacher PIN to be
+const SAVE="u4wheel_bylevel_v1";
+let S={coins:0,done:{},sound:true,admin:false};
+try{const raw=localStorage.getItem(SAVE); if(raw) S=Object.assign(S,JSON.parse(raw));}catch(e){}
+function save(){try{localStorage.setItem(SAVE,JSON.stringify(S));}catch(e){}}
+function lid(w,l){return "w"+w+"l"+l;}
+
+const $=function(id){return document.getElementById(id);};
+function show(id){
+  const arr=document.querySelectorAll(".screen");
+  for(let i=0;i<arr.length;i++) arr[i].classList.remove("active");
+  $(id).classList.add("active");
+  window.scrollTo(0,0);
+}
+function paintCoins(){
+  const ids=["coinHome","coinLv","coinGame"];
+  for(let i=0;i<ids.length;i++){const el=$(ids[i]); if(el) el.textContent=S.coins;}
+}
+
+/* ---------- sound ---------- */
+let AC=null;
+function beep(freq,dur,type,vol){
+  if(!S.sound) return;
+  try{
+    if(!AC) AC=new (window.AudioContext||window.webkitAudioContext)();
+    const o=AC.createOscillator(), g=AC.createGain();
+    o.type=type||"sine"; o.frequency.value=freq;
+    g.gain.setValueAtTime(vol||.08,AC.currentTime);
+    g.gain.exponentialRampToValueAtTime(.0001,AC.currentTime+dur);
+    o.connect(g); g.connect(AC.destination); o.start(); o.stop(AC.currentTime+dur);
+  }catch(e){}
+}
+const sfx={
+  tick:function(i){beep(420+i*55,.08,"triangle",.06);},
+  spin:function(){[340,430,540,650,560,470,400].forEach(function(f,i){
+    setTimeout(function(){beep(f,.06,"triangle",.045);},i*62);});},
+  good:function(){beep(660,.12,"sine",.09); setTimeout(function(){beep(880,.18,"sine",.09);},90);},
+  bad:function(){beep(180,.18,"sawtooth",.05);},
+  key:function(){[523,659,784,1047].forEach(function(f,i){setTimeout(function(){beep(f,.2,"sine",.08);},i*95);});},
+  win:function(){[523,659,784,1047,1319].forEach(function(f,i){setTimeout(function(){beep(f,.28,"triangle",.09);},i*110);});}
+};
+
+/* ==================================================================
+   Home
+   ================================================================== */
+function paintHome(){
+  const host=$("weekList"); host.innerHTML="";
+  DATA.forEach(function(wk,wi){
+    let done=0;
+    for(let li=0;li<wk.levels.length;li++) if(S.done[lid(wi,li)]) done++;
+    const pct=Math.round(done/wk.levels.length*100);
+    const b=document.createElement("button");
+    b.className="week";
+    b.innerHTML=
+      '<div class="num">LEVEL<b>'+wk.n+'</b></div>'+
+      '<div class="meta"><b>'+wk.name+'</b><span>'+wk.focus+' · '+wk.levels.length+' words</span>'+
+      '<div class="bar"><i style="width:'+pct+'%"></i></div></div>'+
+      '<div class="pct">'+pct+'%</div>';
+    b.onclick=function(){openWeek(wi);};
+    host.appendChild(b);
+  });
+  $("btnAdmin").textContent = S.admin ? "🛠 Admin panel" : "🔒 Admin";
+  paintCoins();
+}
+
+/* ==================================================================
+   Level select
+   ================================================================== */
+let curWeek=0;
+function openWeek(wi){
+  curWeek=wi;
+  const wk=DATA[wi];
+  $("lvTitle").textContent="Level "+wk.n+" — "+wk.name;
+  $("lvFocus").textContent=wk.focus;
+  const host=$("levelList"); host.innerHTML="";
+  wk.levels.forEach(function(lv,li){
+    const b=document.createElement("button");
+    b.className="lvl"+(S.done[lid(wi,li)]?" done":"");
+    b.innerHTML='<div class="check">✓</div><div class="tag">Level '+(li+1)+'</div>'+
+      '<div class="key">'+lv.key+'</div>'+
+      '<div class="sub">'+lv.words.length+' words · '+lv.key.length+' letters</div>';
+    b.onclick=function(){startLevel(wi,li);};
+    host.appendChild(b);
+  });
+  paintCoins();
+  show("levels");
+}
+
+/* ==================================================================
+   Game
+   ================================================================== */
+let G=null;      // {wi,li,lv,cross,letters,sel,dragging}
+let revealed=false;   // admin "show answers" toggle for the current level
+
+function startLevel(wi,li){
+  const lv=DATA[wi].levels[li];
+  G={wi:wi,li:li,lv:lv,cross:buildCrossword(lv.words),letters:lv.key.split(""),sel:[],dragging:false};
+  revealed=false;
+  shuffleLetters(true);
+  $("gTitle").textContent="Level "+DATA[wi].n+" · Word "+(li+1);
+  $("gSub").textContent=DATA[wi].name;
+  $("btnReveal").style.display = S.admin ? "" : "none";
+  $("btnReveal").textContent="🔑";
+  paintGrid(); paintWheel(); paintLeft(); paintCoins();
+  show("game");
+}
+
+function fitGrid(){
+  if(!G) return;
+  const cr=G.cross, board=document.querySelector(".board");
+  const bw=(board.clientWidth||window.innerWidth)-16;
+  const bh=(board.clientHeight||360)-14;
+  const byW=(bw-(cr.cols-1)*4)/cr.cols;
+  const byH=(bh-(cr.rows-1)*4)/cr.rows;
+  const size=Math.max(17,Math.min(44,Math.floor(Math.min(byW,byH))));
+  document.documentElement.style.setProperty("--cell",size+"px");
+}
+
+function paintGrid(){
+  const g=$("grid"), cr=G.cross;
+  g.style.gridTemplateColumns="repeat("+cr.cols+",var(--cell))";
+  g.innerHTML="";
+  requestAnimationFrame(fitGrid);
+  for(let r=0;r<cr.rows;r++){
+    for(let c=0;c<cr.cols;c++){
+      const cell=cr.cells.get(r+","+c);
+      const d=document.createElement("div");
+      d.className="cell"+(cell?"":" empty");
+      if(cell) d.id="c_"+r+"_"+c;
+      g.appendChild(d);
+    }
+  }
+  paintCells();
+}
+
+/* repaint every cell from state: found > hint > admin reveal > hidden */
+function paintCells(){
+  G.cross.cells.forEach(function(cell,k){
+    const p=k.split(","), el=$("c_"+p[0]+"_"+p[1]);
+    if(!el) return;
+    el.classList.remove("shown","hinted","reveal");
+    if(cell.shown){ el.classList.add(cell.hint?"hinted":"shown"); el.textContent=cell.ch; }
+    else if(revealed){ el.classList.add("reveal"); el.textContent=cell.ch; }
+    else el.textContent="";
+  });
+}
+
+function toggleReveal(){
+  if(!S.admin||!G) return;
+  revealed=!revealed;
+  $("btnReveal").textContent = revealed ? "🙈" : "🔑";
+  paintCells();
+  beep(revealed?740:440,.1,"triangle",.06);
+}
+
+function paintLeft(){
+  let f=0;
+  for(let i=0;i<G.cross.slots.length;i++) if(G.cross.slots[i].found) f++;
+  $("wordsLeft").textContent=f+" / "+G.cross.slots.length+" words found";
+}
+
+/* ---------- wheel ---------- */
+const NS="http://www.w3.org/2000/svg";
+function shuffleLetters(first){
+  if(!first){
+    for(let i=G.letters.length-1;i>0;i--){
+      const j=Math.floor(Math.random()*(i+1));
+      const t=G.letters[i];G.letters[i]=G.letters[j];G.letters[j]=t;
+    }
+  }
+}
+function letterPos(i){
+  const n=G.letters.length;
+  const a=-Math.PI/2 + i*2*Math.PI/n;
+  return {x:150+Math.cos(a)*103, y:150+Math.sin(a)*103};
+}
+function paintWheel(){
+  const svg=$("wheel");
+  svg.innerHTML="";
+  if(G) G.spinning=false;
+  const disc=document.createElementNS(NS,"circle");
+  disc.setAttribute("cx",150); disc.setAttribute("cy",150); disc.setAttribute("r",138);
+  disc.setAttribute("class","disc"); svg.appendChild(disc);
+  const trace=document.createElementNS(NS,"polyline");
+  trace.setAttribute("class","trace"); trace.setAttribute("id","trace"); svg.appendChild(trace);
+  /* everything that turns lives in #ring: the dotted rim + the letters */
+  const ring=document.createElementNS(NS,"g");
+  ring.setAttribute("id","ring"); svg.appendChild(ring);
+  const ticks=document.createElementNS(NS,"circle");
+  ticks.setAttribute("cx",150); ticks.setAttribute("cy",150); ticks.setAttribute("r",136);
+  ticks.setAttribute("class","ticks"); ring.appendChild(ticks);
+  G.letters.forEach(function(ch,i){
+    const p=letterPos(i);
+    const g=document.createElementNS(NS,"g");
+    g.setAttribute("class","lt"); g.setAttribute("data-i",i);
+    const c=document.createElementNS(NS,"circle");
+    c.setAttribute("cx",p.x); c.setAttribute("cy",p.y); c.setAttribute("r",29);
+    const t=document.createElementNS(NS,"text");
+    t.setAttribute("x",p.x); t.setAttribute("y",p.y+1); t.textContent=ch;
+    g.appendChild(c); g.appendChild(t); ring.appendChild(g);
+  });
+}
+/* Spin: the ring makes one full turn, squashing a little at the fastest point,
+   and the letters change seats mid-turn — so a shuffle reads as movement
+   instead of letters teleporting. Seats never move, so letterPos/hitLetter
+   stay valid; the wheel is just deaf to the pointer while it turns. */
+function easeSpin(t){ return t<.5 ? 4*t*t*t : 1-Math.pow(-2*t+2,3)/2; }
+function relabelWheel(){
+  const nodes=$("wheel").querySelectorAll(".lt");
+  for(let i=0;i<nodes.length;i++){
+    const t=nodes[i].querySelector("text");
+    if(t) t.textContent=G.letters[i];
+    nodes[i].classList.remove("sel");
+  }
+}
+function spinWheel(){
+  if(!G||G.spinning) return;
+  const ring=document.getElementById("ring");
+  if(!ring||!window.requestAnimationFrame){        // no ring / ancient browser
+    shuffleLetters(false); paintWheel(); G.sel=[]; paintSelection(null); return;
+  }
+  const myG=G;                                     // bail out if the level changes
+  G.spinning=true; G.dragging=false;
+  G.sel=[]; paintSelection(null);
+  sfx.spin();
+  const DUR=680;
+  let t0=null, swapped=false;
+  requestAnimationFrame(function frame(ts){
+    if(G!==myG){ myG.spinning=false; return; }
+    if(t0===null) t0=ts;
+    let p=(ts-t0)/DUR; if(p>1) p=1;
+    const a=easeSpin(p)*360, s=1-.12*Math.sin(Math.PI*p);
+    ring.setAttribute("transform",
+      "translate(150,150) rotate("+a.toFixed(2)+") scale("+s.toFixed(3)+") translate(-150,-150)");
+    if(!swapped && p>=.46){ swapped=true; shuffleLetters(false); relabelWheel(); }
+    if(p<1) requestAnimationFrame(frame);
+    else { ring.removeAttribute("transform"); G.spinning=false; }
+  });
+}
+function svgPoint(ev){
+  const svg=$("wheel"), b=svg.getBoundingClientRect();
+  return {x:(ev.clientX-b.left)/b.width*300, y:(ev.clientY-b.top)/b.height*300};
+}
+function hitLetter(pt){
+  for(let i=0;i<G.letters.length;i++){
+    const p=letterPos(i);
+    if((p.x-pt.x)*(p.x-pt.x)+(p.y-pt.y)*(p.y-pt.y) < 32*32) return i;
+  }
+  return -1;
+}
+function paintSelection(pt,keepPreview){
+  const nodes=$("wheel").querySelectorAll(".lt");
+  for(let i=0;i<nodes.length;i++) nodes[i].classList.toggle("sel", G.sel.indexOf(i)>=0);
+  const pts=G.sel.map(function(i){const p=letterPos(i);return p.x+","+p.y;});
+  if(pt&&G.sel.length) pts.push(pt.x+","+pt.y);
+  const tr=document.getElementById("trace");
+  if(tr) tr.setAttribute("points",pts.join(" "));
+  if(keepPreview) return;   // submit() owns the preview while it flashes feedback
+  const pv=$("preview");
+  const w=G.sel.map(function(i){return G.letters[i];}).join("");
+  pv.className=""; pv.textContent=w;
+  if(w) pv.classList.add("on");
+}
+function currentWord(){return G.sel.map(function(i){return G.letters[i];}).join("");}
+
+function onDown(ev){
+  if(!G||G.spinning) return;
+  const pt=svgPoint(ev), i=hitLetter(pt);
+  if(i<0) return;
+  ev.preventDefault();
+  G.dragging=true; G.sel=[i]; sfx.tick(0); paintSelection(pt);
+  $("wheel").setPointerCapture&&$("wheel").setPointerCapture(ev.pointerId);
+}
+function onMove(ev){
+  if(!G||!G.dragging) return;
+  ev.preventDefault();
+  const pt=svgPoint(ev), i=hitLetter(pt);
+  if(i>=0){
+    const at=G.sel.indexOf(i);
+    if(at<0){ G.sel.push(i); sfx.tick(G.sel.length-1); }
+    else if(at===G.sel.length-2){ G.sel.pop(); }   // drag back to undo
+  }
+  paintSelection(pt);
+}
+function onUp(){
+  if(!G||!G.dragging) return;
+  G.dragging=false;
+  const word=currentWord();
+  G.sel=[]; paintSelection(null,true);
+  submit(word);
+}
+
+function submit(word){
+  const pv=$("preview");
+  if(word.length<3){ pv.className=""; pv.textContent=""; return; }
+  let slot=null;
+  for(let i=0;i<G.cross.slots.length;i++) if(G.cross.slots[i].word===word) slot=G.cross.slots[i];
+  if(!slot){ pv.className="on bad"; sfx.bad(); setTimeout(function(){pv.className="";},420); return; }
+  if(slot.found){ pv.className="on dupe"; setTimeout(function(){pv.className="";},420); return; }
+
+  slot.found=true;
+  pv.className="on good";
+  setTimeout(function(){pv.className="";},380);
+
+  slot.cells.forEach(function(k,idx){
+    const cell=G.cross.cells.get(k);
+    const wasShown=cell.shown;
+    cell.shown=true; cell.hint=false;
+    const p=k.split(","), el=$("c_"+p[0]+"_"+p[1]);
+    if(el){
+      setTimeout(function(){
+        el.classList.remove("hinted","reveal");
+        el.classList.add("shown");
+        if(!wasShown) el.classList.add("pop");
+        el.textContent=cell.ch;
+        setTimeout(function(){el.classList.remove("pop");},400);
+      }, idx*55);
+    }
+  });
+
+  const isKey=(word===G.lv.key);
+  S.coins += word.length*2 + (isKey?10:0);
+  save(); paintCoins(); paintLeft();
+
+  if(isKey){ sfx.key(); setTimeout(showVocab,650); } else { sfx.good(); }
+
+  let all=true;
+  for(let i=0;i<G.cross.slots.length;i++) if(!G.cross.slots[i].found) all=false;
+  if(all){
+    S.done[lid(G.wi,G.li)]=true; S.coins+=25; save(); paintCoins();
+    setTimeout(function(){ sfx.win(); finish(); }, isKey?2400:900);
+  }
+}
+
+function showVocab(){
+  const lv=G.lv;
+  $("vWord").textContent=lv.key;
+  $("vPos").textContent=lv.pos;
+  $("vDef").textContent=lv.def;
+  $("vEs").textContent="ES · "+lv.es;
+  $("vEx").textContent="“"+lv.ex+"”";
+  $("mVocab").classList.add("on");
+}
+
+function finish(){
+  const wk=DATA[G.wi];
+  $("dTitle").textContent=G.lv.key;
+  $("dStats").textContent="All "+G.cross.slots.length+" words found. +25 bonus coins.";
+  const hasNext = G.li+1 < wk.levels.length || G.wi+1 < DATA.length;
+  $("btnNext").style.display = hasNext ? "" : "none";
+  $("mDone").classList.add("on");
+}
+
+function hint(){
+  if(S.coins<25){ sfx.bad(); return; }
+  const opts=[];
+  G.cross.slots.forEach(function(s){
+    if(s.found) return;
+    s.cells.forEach(function(k){ if(!G.cross.cells.get(k).shown) opts.push(k); });
+  });
+  if(!opts.length){ sfx.bad(); return; }
+  const k=opts[Math.floor(Math.random()*opts.length)];
+  const cell=G.cross.cells.get(k);
+  cell.shown=true; cell.hint=true;
+  const p=k.split(","), el=$("c_"+p[0]+"_"+p[1]);
+  if(el){ el.classList.add("hinted","pop"); el.textContent=cell.ch;
+    setTimeout(function(){el.classList.remove("pop");},400); }
+  S.coins-=25; save(); paintCoins(); beep(900,.12,"sine",.07);
+}
+
+/* ==================================================================
+   Admin panel — word list + answer keys
+   ================================================================== */
+let adminTab="words";
+
+function askAdmin(){
+  if(S.admin){ openAdmin(); return; }
+  const p=window.prompt("Admin PIN:");
+  if(p===null) return;
+  if(p.trim()===ADMIN_PIN){ S.admin=true; save(); openAdmin(); }
+  else window.alert("PIN incorrecto.");
+}
+function openAdmin(){ paintAdmin(); show("list"); }
+function exitAdmin(){ S.admin=false; save(); revealed=false; paintHome(); show("home"); }
+
+function paintAdmin(){
+  const tabs=document.querySelectorAll(".tab");
+  for(let i=0;i<tabs.length;i++)
+    tabs[i].classList.toggle("on", tabs[i].getAttribute("data-tab")===adminTab);
+  $("adminNote").textContent = adminTab==="words"
+    ? "Las letras de la ruleta son la palabra clave; todas las demás se forman con esas mismas letras."
+    : "Solucionario de los 36 crucigramas. La casilla azul marca la palabra clave de la unidad. 🖨 imprime esta vista.";
+  if(adminTab==="words") paintList(); else paintAnswers();
+}
+
+function paintList(){
+  const host=$("listBody"); host.innerHTML="";
+  DATA.forEach(function(wk){
+    const d=document.createElement("div");
+    d.className="sheet";
+    let rows="";
+    wk.levels.forEach(function(lv,i){
+      rows+='<tr><td class="k">'+(i+1)+'. '+lv.key+'</td><td class="w">'+
+            lv.words.slice(1).join(" · ")+'</td></tr>';
+    });
+    d.innerHTML='<h3>Level '+wk.n+' — '+wk.name+'</h3>'+
+      '<div class="focus">'+wk.focus+'</div>'+
+      '<table><tr><th>Wheel letters (key word)</th><th>Crossword words</th></tr>'+rows+'</table>';
+    host.appendChild(d);
+  });
+}
+
+/* the builder is deterministic, so these grids are exactly what students see */
+function miniGrid(cross,key){
+  const keyCells={};
+  for(let i=0;i<cross.slots.length;i++)
+    if(cross.slots[i].word===key)
+      cross.slots[i].cells.forEach(function(k){ keyCells[k]=1; });
+  let s='<div class="mini" style="grid-template-columns:repeat('+cross.cols+',15px)">';
+  for(let r=0;r<cross.rows;r++){
+    for(let c=0;c<cross.cols;c++){
+      const cell=cross.cells.get(r+","+c);
+      if(!cell) s+='<i class="e"></i>';
+      else s+='<i'+(keyCells[r+","+c]?' class="k"':'')+'>'+cell.ch+'</i>';
+    }
+  }
+  return s+'</div>';
+}
+
+function paintAnswers(){
+  const host=$("listBody"); host.innerHTML="";
+  DATA.forEach(function(wk){
+    const d=document.createElement("div");
+    d.className="sheet";
+    let keys="";
+    wk.levels.forEach(function(lv,i){
+      keys+='<div class="key1"><div class="klab">'+(i+1)+'. '+lv.key+'</div>'+
+            miniGrid(buildCrossword(lv.words),lv.key)+'</div>';
+    });
+    d.innerHTML='<h3>Level '+wk.n+' — '+wk.name+'</h3>'+
+      '<div class="focus">'+wk.focus+' · answer keys</div>'+
+      '<div class="keys">'+keys+'</div>';
+    host.appendChild(d);
+  });
+}
+
+/* ==================================================================
+   Wiring
+   ================================================================== */
+const wheelEl=$("wheel");
+wheelEl.addEventListener("pointerdown",onDown);
+wheelEl.addEventListener("pointermove",onMove);
+window.addEventListener("pointerup",onUp);
+window.addEventListener("pointercancel",onUp);
+
+$("btnShuffle").onclick=spinWheel;
+$("btnHint").onclick=hint;
+$("btnAdmin").onclick=askAdmin;
+$("btnAsStudent").onclick=exitAdmin;
+$("btnReveal").onclick=toggleReveal;
+document.querySelectorAll(".tab").forEach(function(t){
+  t.onclick=function(){ adminTab=t.getAttribute("data-tab"); paintAdmin(); };
+});
+$("btnReset").onclick=function(){
+  if(!confirm("Reset all progress and coins?")) return;
+  S={coins:0,done:{},sound:S.sound,admin:S.admin}; save(); paintHome();
+};
+$("btnSound").onclick=function(){ S.sound=!S.sound; save(); $("btnSound").textContent=S.sound?"🔊":"🔇"; };
+$("btnNext").onclick=function(){
+  $("mDone").classList.remove("on");
+  const wk=DATA[G.wi];
+  if(G.li+1<wk.levels.length) startLevel(G.wi,G.li+1);
+  else if(G.wi+1<DATA.length) openWeek(G.wi+1);
+};
+document.querySelectorAll("[data-back]").forEach(function(b){
+  b.onclick=function(){
+    const t=b.getAttribute("data-back");
+    if(t==="levels") openWeek(curWeek); else { paintHome(); show("home"); }
+  };
+});
+document.querySelectorAll("[data-close]").forEach(function(b){
+  b.onclick=function(){ $(b.getAttribute("data-close")).classList.remove("on"); };
+});
+window.addEventListener("resize",function(){ if(G && $("game").classList.contains("active")) fitGrid(); });
+
+$("btnSound").textContent=S.sound?"🔊":"🔇";
+paintHome();
+</script>
+</body>
+</html>
