@@ -63,7 +63,7 @@
       {
         id:'u4', grade:'g9', icon:'🧠',
         title:'Unit 4 — The Wellbeing Generation',
-        blurb:'Mind Over Matter: 6 weeks × 3 games (crossword, word search and word sudoku).',
+        blurb:'Mind Over Matter: the Week 1 reading and listening by CEFR level, plus 6 weeks of games.',
         lead:'Mind Over Matter · Grade 9. Each game has three tabs — Day 1 · Day 2 · Day 3 — matching the week’s sessions.',
         weeks: [
           /* Sin título a propósito: el renderizador trata las semanas sin título
@@ -74,6 +74,15 @@
             { href:'word-wheel-u4.html', icon:'🎡', title:'Word Wheel — Unit 4',
               desc:'Spin the letter wheel to build words and fill the crossword, Words of Wonders style. 6 weeks × 6 levels, and each key word opens a vocabulary card.',
               tags:['Weeks 1–6'] },
+            /* Lectura y listening de la Semana 1, por nivel MCER en vez de por día:
+               cada nivel es un texto/guion distinto, no el mismo con otra etiqueta.
+               Van en w0 (sin nodo de permisos) para que estén disponibles siempre. */
+            { href:'reading-pretending-fine.html', icon:'📖', title:'Reading — The Day I Stopped Pretending I Was Fine',
+              desc:'The Week 1 essay in four real versions (240–500 words): pop-up glossary, gist, comprehension, a figurative-language hunt and a word-counted personal response. It corrects itself.',
+              tags:['A2','B1','B2','C1'] },
+            { href:'listening-mind-over-matter.html', icon:'🎧', title:'Listening — The Wellbeing Podcast',
+              desc:'Recorded episode on the stress mindset, one per level (2–5 min; B2 and C1 are a two-speaker interview). Exam rules: two listenings, then the questions — the transcript unlocks afterwards.',
+              tags:['A2','B1','B2','C1'] },
           ]},
           ...U4_TOPICS.map((t,i)=>u4Week(t,i+1)),
         ],

@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reading · The Day I Stopped Pretending I Was Fine — 4 Levels</title>
+<style>
+  :root{
+    --bg:#f4f6fb; --card:#ffffff; --ink:#1e2433; --muted:#67718a;
+    --accent:#3b5bdb; --accent-soft:#e7ecfd;
+    --good:#2f9e44; --good-soft:#d3f4dc; --bad:#e03131; --bad-soft:#ffe3e3;
+    --gold:#f59f00; --gold-soft:#fff4d6;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:'Segoe UI',system-ui,Arial,sans-serif; background:var(--bg); color:var(--ink); padding:18px 14px 60px;}
+  header{max-width:900px; margin:0 auto 6px; text-align:center;}
+  header .kicker{font-size:.72rem; letter-spacing:1.6px; text-transform:uppercase; color:var(--accent); font-weight:700;}
+  header h1{font-size:1.5rem; margin-top:6px; line-height:1.25;}
+  header p.sub{color:var(--muted); font-size:.88rem; margin-top:6px;}
+
+  .tabs{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin:16px auto 10px; max-width:900px;}
+  .tab{border:2px solid transparent; background:var(--card); color:var(--ink); padding:9px 18px; border-radius:24px;
+       font-weight:700; font-size:.95rem; cursor:pointer; box-shadow:0 1px 3px rgba(20,30,60,.12); transition:.15s;}
+  .tab small{display:block; font-weight:500; font-size:.68rem; color:var(--muted);}
+  .tab.on{background:var(--accent); color:#fff; border-color:var(--accent);}
+  .tab.on small{color:#dce4ff;}
+  .tab.done{border-color:var(--good);}
+  .tab.done::after{content:" ✓"; color:var(--good);}
+  .tab.on.done::after{color:#bff2cc;}
+
+  .bar{max-width:900px; margin:0 auto 16px; background:var(--card); border-radius:12px; padding:10px 14px;
+       box-shadow:0 2px 10px rgba(20,30,60,.08); display:flex; align-items:center; gap:12px; flex-wrap:wrap; font-size:.85rem;}
+  .bar .track{flex:1 1 160px; height:9px; background:#e6eaf4; border-radius:6px; overflow:hidden; min-width:120px;}
+  .bar .fill{height:100%; width:0; background:var(--accent); transition:width .3s;}
+  .bar b{color:var(--accent);}
+
+  main{max-width:900px; margin:0 auto;}
+  .step{background:var(--card); border-radius:14px; padding:18px 20px; box-shadow:0 2px 10px rgba(20,30,60,.08); margin-bottom:16px;}
+  .step > h2{font-size:.78rem; text-transform:uppercase; letter-spacing:1.2px; color:var(--accent); margin-bottom:4px;}
+  .step > h3{font-size:1.1rem; margin-bottom:10px;}
+  .hint{font-size:.85rem; color:var(--muted); margin-bottom:12px; line-height:1.5;}
+
+  textarea, input[type=text]{width:100%; font-family:inherit; font-size:.95rem; color:var(--ink);
+        border:2px solid #e2e7f2; border-radius:9px; padding:9px 11px; background:#fbfcff; outline:none; transition:.15s;}
+  textarea:focus, input[type=text]:focus{border-color:var(--accent); background:#fff;}
+  textarea{resize:vertical; min-height:70px; line-height:1.55;}
+  input.short{max-width:320px;}
+  .q{margin-bottom:14px;}
+  .q > p.qt{font-weight:600; font-size:.94rem; margin-bottom:6px; line-height:1.45;}
+  .q > p.qt span.n{color:var(--accent); margin-right:6px;}
+
+  .story{background:#fffdf7; border:1px solid #f1e6cd; border-radius:12px; padding:18px 20px; line-height:1.85; font-size:1.02rem;}
+  .story p{margin-bottom:14px;}
+  .story p:last-child{margin-bottom:0;}
+  .story .pn{display:inline-block; min-width:22px; font-weight:800; color:var(--gold); font-size:.8rem; vertical-align:top;}
+  .gl{border-bottom:2px dotted var(--accent); cursor:help; position:relative;}
+  .gl:hover, .gl.open{background:var(--accent-soft); border-radius:3px;}
+  .glbox{position:fixed; z-index:50; max-width:290px; background:#1e2433; color:#fff; padding:10px 12px; border-radius:9px;
+         font-size:.83rem; line-height:1.45; box-shadow:0 6px 22px rgba(20,30,60,.3); display:none;}
+  .glbox.show{display:block;}
+  .glbox b{color:#9dc0ff;}
+  .glbox em{color:#ffd98a; font-style:normal;}
+
+  .opt{display:block; border:2px solid #e2e7f2; border-radius:10px; padding:10px 13px; margin-bottom:8px; cursor:pointer;
+       font-size:.93rem; line-height:1.5; background:#fbfcff; transition:.13s;}
+  .opt:hover{border-color:var(--accent); background:#fff;}
+  .opt.sel{border-color:var(--accent); background:var(--accent-soft);}
+  .opt.ok{border-color:var(--good); background:var(--good-soft);}
+  .opt.ko{border-color:var(--bad); background:var(--bad-soft);}
+  .opt input{margin-right:8px;}
+
+  .tfrow{display:flex; align-items:flex-start; gap:10px; padding:9px 11px; border:2px solid #e2e7f2; border-radius:10px;
+         margin-bottom:8px; background:#fbfcff; font-size:.93rem; line-height:1.5;}
+  .tfrow .txt{flex:1;}
+  .tfbtns{display:flex; gap:5px; flex:0 0 auto;}
+  .tfb{border:2px solid #dde3ef; background:#fff; border-radius:8px; padding:4px 12px; font-weight:800; cursor:pointer; font-size:.85rem;}
+  .tfb.sel{background:var(--accent); color:#fff; border-color:var(--accent);}
+  .tfrow.ok{border-color:var(--good); background:var(--good-soft);}
+  .tfrow.ko{border-color:var(--bad); background:var(--bad-soft);}
+  .fix{display:none; font-size:.83rem; color:var(--muted); margin-top:5px; font-style:italic;}
+  .fix.show{display:block;}
+
+  select.mt{border:2px solid #e2e7f2; border-radius:8px; padding:6px 9px; font-family:inherit; font-size:.9rem; background:#fbfcff;}
+  select.mt.ok{border-color:var(--good); background:var(--good-soft);}
+  select.mt.ko{border-color:var(--bad); background:var(--bad-soft);}
+  .mrow{display:flex; align-items:center; gap:10px; margin-bottom:8px; font-size:.93rem; line-height:1.45; flex-wrap:wrap;}
+  .mrow .lbl{flex:1 1 240px;}
+  .legend{background:var(--accent-soft); border-radius:9px; padding:10px 13px; font-size:.86rem; line-height:1.75; margin-bottom:12px;}
+  .legend b{color:var(--accent);}
+
+  input.short.ok{border-color:var(--good); background:var(--good-soft);}
+  input.short.ko{border-color:var(--bad); background:var(--bad-soft);}
+  .model{display:none; margin-top:7px; padding:9px 12px; background:var(--gold-soft); border-left:4px solid var(--gold);
+         border-radius:0 8px 8px 0; font-size:.87rem; line-height:1.55;}
+  .model.show{display:block;}
+  .model b{color:#a06c00;}
+  .selfmark{display:none; gap:6px; margin-top:7px; align-items:center; font-size:.83rem; color:var(--muted); flex-wrap:wrap;}
+  .selfmark.show{display:flex;}
+  .smb{border:2px solid #dde3ef; background:#fff; border-radius:7px; padding:3px 10px; font-weight:700; cursor:pointer; font-size:.8rem;}
+  .smb.sel{background:var(--accent); color:#fff; border-color:var(--accent);}
+
+  .wc{font-size:.82rem; color:var(--muted); margin-top:6px; font-weight:600;}
+  .wc.good{color:var(--good);}
+  .wc.over{color:var(--bad);}
+  .frame{background:var(--accent-soft); border-radius:9px; padding:11px 14px; font-size:.9rem; line-height:1.9; margin-bottom:11px;}
+  .check{font-size:.88rem; line-height:1.9;}
+  .check label{display:block; cursor:pointer;}
+  .check input{margin-right:8px;}
+
+  .btns{display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;}
+  button.act{border:none; border-radius:9px; padding:10px 17px; font-weight:700; font-size:.88rem; cursor:pointer; transition:.15s; font-family:inherit;}
+  .b-check{background:var(--accent); color:#fff;}
+  .b-model{background:var(--gold); color:#fff;}
+  .b-clear{background:#e9ecf3; color:var(--ink);}
+  button.act:hover{filter:brightness(1.08);}
+  .res{margin-top:10px; font-weight:700; font-size:.92rem; display:none;}
+  .res.show{display:block;}
+  .res.ok{color:var(--good);} .res.mid{color:var(--gold);} .res.ko{color:var(--bad);}
+
+  .final{background:linear-gradient(135deg,#3b5bdb,#5f7fe8); color:#fff; border-radius:14px; padding:22px; text-align:center; margin-bottom:16px;}
+  .final h3{font-size:1.15rem; margin-bottom:8px;}
+  .final .big{font-size:2.4rem; font-weight:800; letter-spacing:-1px;}
+  .final p{font-size:.88rem; opacity:.92; line-height:1.55;}
+  .final button{margin-top:12px; background:#fff; color:var(--accent);}
+  footer{max-width:900px; margin:20px auto 0; text-align:center; color:var(--muted); font-size:.75rem; line-height:1.6;}
+  @media print{ .tabs,.bar,.btns,footer{display:none;} .step{break-inside:avoid; box-shadow:none; border:1px solid #ddd;} }
+
+  /* --- portal nav (shared with the other activities) --- */
+  .topnav{position:sticky; top:0; z-index:30; background:#fff; display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+    padding:10px 18px; box-shadow:0 2px 10px rgba(20,30,60,.08); margin:-18px -14px 16px;}
+  .topnav img{height:32px; width:auto; display:block;}
+  .topnav .nav-sp{margin-left:auto;}
+  .navbtn{text-decoration:none; font-weight:700; font-size:.85rem; padding:8px 14px; border-radius:9px; white-space:nowrap;
+    background:var(--accent-soft); color:var(--accent); transition:.15s; border:none; cursor:pointer;}
+  .navbtn:hover{filter:brightness(.97);}
+  .navbtn.primary{background:var(--accent); color:#fff;}
+  @media (max-width:480px){ .topnav{margin:-18px -14px 12px; padding:8px 12px;} .topnav img{height:26px;} }
+  @media print{ .topnav{display:none;} }
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <img src="assets/logo-h.svg" alt="Nordic International School" onerror="this.style.display='none'">
+  <span class="nav-sp"></span>
+  <a class="navbtn" href="activities.html">&#127922; Activities</a>
+  <a class="navbtn primary" href="./">&#127979; Portal</a>
+</nav>
+
+<header>
+  <div class="kicker">English 9A · Unit 4 · Mind Over Matter</div>
+  <h1>The Day I Stopped Pretending I Was Fine</h1>
+  <p class="sub">Reading · Week 1, Session 2 — choose your level and work at your own pace</p>
+</header>
+
+<div class="tabs" id="tabs"></div>
+
+<div class="bar">
+  <span>Progress</span>
+  <div class="track"><div class="fill" id="fill"></div></div>
+  <span id="pct"><b>0%</b></span>
+  <span>·</span>
+  <span>Score: <b id="score">0 / 0</b></span>
+  <span>·</span>
+  <span id="meta"></span>
+</div>
+
+<main id="main"></main>
+<div class="glbox" id="glbox"></div>
+
+<footer>
+  NIS English · Unit 4 — Mind Over Matter · Your answers are saved in this browser automatically.<br>
+  Tip: use <b>Ctrl+P</b> to print or save your completed worksheet as a PDF for your teacher.
+</footer>
+
+<script>
+/* ============================================================
+   GLOSSARY — shared entries; each level uses a subset
+   ============================================================ */
+const G = {
+  pretend:{re:"pretend(?:ing|ed)?", en:"to act as if something is true when it is not", es:"fingir"},
+  mask:{re:"mask", en:"something that covers and hides your face — here, a hidden feeling", es:"máscara"},
+  knot:{re:"knot", en:"a tight, twisted feeling (here, in the stomach)", es:"nudo"},
+  drown:{re:"drowning", en:"dying under water — here, having far too much to manage", es:"ahogarse"},
+  weak:{re:"weak", en:"not strong; without power or courage", es:"débil"},
+  shook:{re:"shook|shake|trembled", en:"moved quickly from side to side (from fear or cold)", es:"tembló / temblar"},
+  counsellor:{re:"counsellor(?:'s)?", en:"a person at school who helps students with problems and feelings", es:"consejero/a escolar"},
+  dam:{re:"dam", en:"a wall that holds back water — here, held-back emotions", es:"represa, dique"},
+  bricks:{re:"bricks", en:"heavy blocks used to build walls", es:"ladrillos"},
+  overwhelmed:{re:"overwhelmed", en:"having far more to deal with than you can manage", es:"abrumado/a"},
+  exhausted:{re:"exhausted", en:"extremely tired, with no energy left", es:"agotado/a"},
+  hamster:{re:"hamster on a wheel", en:"a small pet running and running without going anywhere", es:"hámster en una rueda"},
+  breakingpoint:{re:"breaking point", en:"the moment when you can no longer continue", es:"punto de quiebre"},
+  lecture:{re:"lecture(?:d)?", en:"to criticise someone with a long, serious talk", es:"sermonear"},
+  realistic:{re:"realistic", en:"sensible and possible in real life", es:"realista"},
+  swam:{re:"swam(?: and scattered)?", en:"moved like something in water — the letters would not stay still", es:"nadaban"},
+  cope:{re:"coping|cope", en:"to deal successfully with a difficult situation", es:"sobrellevar, arreglárselas"},
+  mumbled:{re:"mumbled", en:"said something quietly and unclearly", es:"masculló"},
+  excuse:{re:"excuse", en:"an explanation you give to escape a situation", es:"excusa"},
+  holdback:{re:"holding back|held back", en:"stopping yourself from expressing feelings", es:"contener, reprimir"},
+  pouring:{re:"pouring out|came pouring out", en:"flowing out fast and without control", es:"salir a borbotones"},
+  curated:{re:"curated feeds", en:"social media pages carefully selected to look perfect", es:"feeds seleccionados"},
+  braced:{re:"braced for", en:"prepared yourself for something unpleasant", es:"preparado para lo peor"},
+  choreography:{re:"choreography", en:"the planned steps of a dance — here, the effort of acting normal", es:"coreografía"},
+  dismantle:{re:"dismantle", en:"to take something apart into smaller pieces", es:"desmontar"},
+  rationed:{re:"rationed", en:"gave out in small, controlled amounts", es:"racionar"},
+  photogenic:{re:"photogenic", en:"looking attractive in photographs", es:"fotogénico"},
+  mythology:{re:"mythology", en:"a set of beliefs or stories people accept as true", es:"mitología"},
+  highlight:{re:"highlight reels", en:"a short film of only the best moments", es:"resumen de lo mejor"},
+  hauling:{re:"hauling", en:"pulling or carrying something heavy", es:"arrastrar, cargar"},
+  ceremony:{re:"without ceremony", en:"with no special announcement; suddenly and plainly", es:"sin aviso"},
+  unclenched:{re:"unclenched", en:"opened (a closed fist)", es:"se abría"},
+  looming:{re:"looming", en:"coming closer and feeling threatening", es:"inminente"},
+  insomnia:{re:"insomnia", en:"the inability to sleep", es:"insomnio"},
+  astonishment:{re:"astonishment", en:"very great surprise", es:"asombro"},
+  spared:{re:"spared", en:"did not give you something unpleasant", es:"me ahorró"}
+};
+
+/* ============================================================
+   LEVEL DATA
+   ============================================================ */
+const DATA = {
+
+/* ---------------------------------------------------------- A2 */
+A2:{ label:"A2", sub:"Elementary", words:240, mins:"25–30 min",
+ gloss:["pretend","mask","knot","drown","weak","shook","counsellor","dam","bricks","overwhelmed"],
+ text:[
+  `Last year, I was a good actor. Not in the theatre — at school and at home. Every morning I put on an invisible mask. I smiled and said, "I'm fine." But it was not true. There was a knot in my stomach.`,
+  `The truth? I was drowning in homework. Maths, science, history — too many tasks. At night I could not sleep because I thought about all the work. In the morning I was more tired than before.`,
+  `I did not tell anyone. I thought that asking for help meant being weak. My friend Diego played football five times a week and got top marks. Other students posted photos of perfect study notes. Comparing myself to them was like carrying a backpack full of bricks.`,
+  `Then came a Tuesday in October. I had a chemistry test and a presentation on the same day. I slept only four hours. In the test, my hands shook. I could not read the words. I stood up and walked out of the room.`,
+  `I sat outside the counsellor's office. Miss Elena opened the door and said, "Tell me what is happening." Then the dam broke. I told her everything: the bad nights, the fear, the pretending.`,
+  `Nobody laughed at me. Miss Elena helped me make a study plan. She sat with me when I told my parents.`,
+  `The stress did not disappear. But now, when I feel the knot in my stomach, I say: "I'm overwhelmed. I need help." They are hard words — but they are the most useful words I know.`
+ ],
+ comp:{kind:"tf", title:"True or false?", hint:"Read each sentence. Choose T (true) or F (false). If it is false, the correction appears when you check.", items:[
+  {t:"The narrator told everyone the truth about his feelings.", a:false, fix:"False — he smiled and said \"I'm fine\", but it was not true."},
+  {t:"He could not sleep because he thought about his homework.", a:true, fix:"True — \"At night I could not sleep because I thought about all the work.\""},
+  {t:"Diego was bad at school because of football.", a:false, fix:"False — Diego played football five times a week AND got top marks."},
+  {t:"On the Tuesday, the narrator had a test and a presentation.", a:true, fix:"True — a chemistry test and a presentation on the same day."},
+  {t:"Miss Elena laughed at his problems.", a:false, fix:"False — \"Nobody laughed at me.\" She listened and helped him."},
+  {t:"At the end, the stress disappears completely.", a:false, fix:"False — \"The stress did not disappear.\" What changed is that he now asks for help."}
+ ]},
+ figur:{kind:"match", title:"Picture language", hint:"Match each expression from the text with its meaning.",
+  keys:["A. too much homework — impossible to control","B. hiding your real feelings","C. all the emotions came out at the same time","D. a nervous feeling in your body","E. a heavy, invisible weight you carry"],
+  items:[ {l:"an invisible mask", a:1}, {l:"a knot in my stomach", a:3}, {l:"drowning in homework", a:0},
+          {l:"a backpack full of bricks", a:4}, {l:"the dam broke", a:2} ]},
+ vocab:{kind:"gap", title:"Words from the story", hint:"Complete each sentence with one word from the box.",
+  bank:["mask","knot","homework","weak","shook","plan"],
+  items:[ {s:"Every morning I put on an invisible ___ .", a:["mask"]},
+          {s:"There was a ___ in my stomach.", a:["knot"]},
+          {s:"I was drowning in ___ .", a:["homework"]},
+          {s:"I thought asking for help meant being ___ .", a:["weak"]},
+          {s:"In the test, my hands ___ .", a:["shook"]},
+          {s:"Miss Elena helped me make a study ___ .", a:["plan"]} ]},
+ writing:{min:40, max:60,
+  prompt:`Was there a day when YOU said "I'm fine" but it was not true? Use the writing frame below.`,
+  frame:[`One day I felt ____________ because ____________ .`, `I said "I'm fine" because ____________ .`, `Next time, I can ____________ .`],
+  check:["I used the three sentences of the frame.","I used one emotion adjective from Session 1 (tired, worried, overwhelmed…).","I wrote between 40 and 60 words."]}
+},
+
+/* ---------------------------------------------------------- B1 */
+B1:{ label:"B1", sub:"Intermediate", words:320, mins:"30–35 min",
+ gloss:["pretend","mask","knot","drown","weak","shook","counsellor","dam","bricks","overwhelmed","exhausted","hamster","breakingpoint","lecture","realistic","swam"],
+ text:[
+  `For most of Year 9, I was a very good actor. Not on a stage — at school and at home. Every morning I put on an invisible mask, smiled, and told everyone I was fine. "How's school?" my mother asked. "Fine," I said, while a knot tightened in my stomach.`,
+  `The truth was that I was drowning in homework. Maths, science, history — the tasks never stopped. When I finished one assignment, three more appeared. At night my mind turned like a hamster on a wheel, and I couldn't sleep. In the morning I woke up more exhausted than the night before.`,
+  `I didn't tell anyone, because I thought asking for help meant being weak. Everyone else seemed fine: my friend Diego trained football five times a week and still got top marks, and my classmates posted photos of perfect, colour-coded study notes. Comparing myself to them was like carrying a backpack full of bricks — invisible, but heavier every day.`,
+  `The breaking point came on a Tuesday in October. I had a chemistry test and a presentation on the same day, and I had slept only four hours. During the test, the words swam on the page and my hands shook. I stood up, said something quietly, and walked out of the room.`,
+  `I sat down outside the counsellor's office. Miss Elena saw my face and didn't give me a lecture. She just said, "Tell me what's been going on." Then the dam finally broke. I told her everything — the bad nights, the fear of failing, the pretending.`,
+  `Nobody laughed. Miss Elena helped me make a realistic study plan and taught me to break big tasks into small steps. She also sat next to me when I told my parents, so I didn't have to do it alone.`,
+  `The stress didn't disappear. But now, when the knot in my stomach comes back, I treat it like an alarm, not a secret. I say: "I'm overwhelmed. I need help." The hardest words I ever learned — and the most useful.`
+ ],
+ comp:{kind:"short", title:"Comprehension", hint:"Answer in your own words. Check your answer, then compare it with the model.", items:[
+  {q:`What did the narrator say every morning, and was it true?`, keys:["fine"], model:`He said he was "fine" — but it was not true: a knot tightened in his stomach at the same time.`},
+  {q:`Why couldn't he sleep at night?`, keys:["hamster","wheel","mind","thought","homework","tasks"], model:`Because his mind turned like a hamster on a wheel — he kept thinking about all the tasks he had not finished.`},
+  {q:`Why didn't he ask anyone for help?`, keys:["weak"], model:`Because he believed that asking for help meant being weak.`},
+  {q:`Give TWO examples of people who "seemed fine" to the narrator.`, keys:["diego","classmates","notes","football"], model:`Diego, who trained football five times a week and still got top marks; and his classmates, who posted photos of perfect, colour-coded study notes.`},
+  {q:`What happened during the chemistry test?`, keys:["swam","shook","walked out","hands","words"], model:`The words swam on the page, his hands shook, and he stood up and walked out of the room.`},
+  {q:`Name TWO things Miss Elena did to help him.`, keys:["plan","steps","parents","sat"], model:`She helped him make a realistic study plan, taught him to break big tasks into small steps, and sat next to him while he told his parents.`},
+  {q:`At the end, what does the narrator do when the knot in his stomach comes back?`, keys:["alarm","help","overwhelmed","says"], model:`He treats it like an alarm instead of a secret, and says out loud: "I'm overwhelmed. I need help."`}
+ ]},
+ figur:{kind:"write", title:"Figurative language hunt",
+  hint:`The writer never says "I was very stressed" — he paints pictures. Write the expression from the text that means:`,
+  items:[
+   {q:"hiding your real feelings", a:["an invisible mask","invisible mask","a mask","mask"]},
+   {q:"a nervous physical feeling", a:["a knot in my stomach","knot in my stomach","a knot tightened in my stomach","knot"]},
+   {q:"far too much homework to manage", a:["drowning in homework","i was drowning in homework","drowning"]},
+   {q:"repetitive thoughts that will not stop", a:["like a hamster on a wheel","a hamster on a wheel","hamster on a wheel","my mind turned like a hamster on a wheel"]},
+   {q:"all the held-back emotions suddenly coming out", a:["the dam broke","the dam finally broke","dam broke"]}
+  ]},
+ vocab:{kind:"match", title:"Vocabulary in context", hint:"Match each word or phrase from the text with its meaning.",
+  keys:["A. divide a big job into smaller parts","B. possible in real life, not just in theory","C. the moment when you cannot continue","D. extremely tired","E. respond to something as if it were","F. criticise someone with a long, serious talk"],
+  items:[ {l:"breaking point (¶4)", a:2}, {l:"give someone a lecture (¶5)", a:5}, {l:"realistic (¶6)", a:1},
+          {l:"break something into steps (¶6)", a:0}, {l:"treat something like (¶7)", a:4}, {l:"exhausted (¶2)", a:3} ]},
+ writing:{min:80, max:100,
+  prompt:`Why do people pretend to be fine when they are not? Give your opinion, one example (yours or from the story) and one piece of advice.`,
+  frame:[],
+  check:["I gave my opinion clearly.","I included one example.","I finished with one piece of advice.","I used at least TWO emotion adjectives from Session 1.","I used one figurative expression.","I wrote between 80 and 100 words."]}
+},
+
+/* ---------------------------------------------------------- B2 */
+B2:{ label:"B2", sub:"Upper-Intermediate", words:420, mins:"35–40 min",
+ gloss:["pretend","mask","knot","drown","counsellor","dam","bricks","overwhelmed","exhausted","hamster","breakingpoint","lecture","realistic","swam","cope","mumbled","excuse","holdback","pouring"],
+ text:[
+  `For most of Year 9, I was an excellent actor. Not on stage — in the corridors, in the classroom, at the dinner table. Every morning I put on an invisible mask, smiled, and told everyone I was fine. "How's school going?" my mother would ask. "Fine," I would say, while a knot tightened in my stomach.`,
+  `The truth was that I was drowning in homework. Maths, science, history — the tasks piled up like water rising around my ears. Every time I finished one assignment, three more appeared. At night I lay in bed with my mind spinning like a hamster on a wheel, replaying everything I hadn't done. In the morning I woke up more exhausted than when I had gone to sleep.`,
+  `I didn't tell anyone. In my head, asking for help meant admitting I was weak. Everyone else seemed to be coping perfectly: my best friend Diego trained football five times a week and still got top marks, and half my class posted photos of beautiful colour-coded revision notes. Comparing myself to them was like carrying a backpack full of bricks — invisible, but heavier every single day.`,
+  `The breaking point came on a Tuesday in October. I had a chemistry test in the morning and a history presentation in the afternoon, and I had slept four hours. When the teacher handed out the test, the words swam on the page. My hands shook. I stood up, mumbled an excuse, and walked out of the room.`,
+  `I ended up on the bench outside the counsellor's office — not because I had planned to go there, but because my legs simply stopped. Miss Elena opened her door, saw my face, and didn't lecture me. She just said, "Tell me what's been going on." And the dam finally broke. Everything I had been holding back for months came pouring out: the sleepless nights, the fear of failing, the exhausting effort of pretending.`,
+  `To my surprise, the world did not end. Nobody laughed. Miss Elena helped me build a realistic study plan, taught me to break big tasks into small steps, and — most importantly — sat next to me while I told my parents. I didn't have to do it alone.`,
+  `I would love to say the stress disappeared. It didn't. But now, when the knot in my stomach returns, I treat it like an alarm instead of a secret. I say the words out loud: "I'm overwhelmed. I need help." They were the hardest words I have ever learned — and the most useful. Pretending to be fine nearly broke me. Being honest is what put me back together.`
+ ],
+ comp:{kind:"short", title:"Comprehension", hint:"Answer in full sentences. Check, then compare with the model answer.", items:[
+  {q:`In what three places was the narrator "acting", according to paragraph 1?`, keys:["corridor","classroom","dinner"], model:`In the corridors, in the classroom and at the dinner table — that is, everywhere: at school and at home.`},
+  {q:`What happened every time he finished an assignment, and how did this affect his sleep?`, keys:["three","more","appeared","spinning","hamster","sleep"], model:`Three more assignments appeared. At night his mind spun like a hamster on a wheel, replaying everything he had not done, so he woke up more exhausted than when he went to sleep.`},
+  {q:`What belief stopped him from asking for help?`, keys:["weak","admitting"], model:`The belief that asking for help meant admitting he was weak.`},
+  {q:`What TWO examples does he give of people who seemed to be coping perfectly?`, keys:["diego","class","notes","revision"], model:`Diego, who trained football five times a week and still got top marks; and half his class, who posted photos of beautiful colour-coded revision notes.`},
+  {q:`What exactly happened when the teacher handed out the chemistry test?`, keys:["swam","shook","mumbled","walked"], model:`The words swam on the page and his hands shook; he stood up, mumbled an excuse and walked out of the room.`},
+  {q:`Why did he end up outside the counsellor's office? (Careful — it was not a plan.)`, keys:["legs","stopped","not","plan"], model:`Not because he had decided to go there, but because his legs simply stopped — he ended up on the bench without planning it.`},
+  {q:`What THREE things did Miss Elena do to help him?`, keys:["plan","steps","parents"], model:`She helped him build a realistic study plan, taught him to break big tasks into small steps, and sat next to him while he told his parents.`},
+  {q:`How has his relationship with the "knot in his stomach" changed by the end?`, keys:["alarm","secret"], model:`He now treats it as an alarm rather than a secret: instead of hiding it, he says out loud that he is overwhelmed and needs help.`}
+ ]},
+ figur:{kind:"write", title:"Figurative language hunt",
+  hint:`Find SIX figurative expressions the writer uses for emotions or stress. Type one per box (any order — the checker recognises all of them).`,
+  pool:true,
+  items:[
+   {q:"Image 1", a:[]},{q:"Image 2", a:[]},{q:"Image 3", a:[]},
+   {q:"Image 4", a:[]},{q:"Image 5", a:[]},{q:"Image 6", a:[]}
+  ],
+  accepted:[
+   {n:"an invisible mask", alts:["invisible mask","a mask","mask"], why:"hiding the real self behind a face you can put on"},
+   {n:"a knot tightened in my stomach", alts:["a knot in my stomach","knot in my stomach","knot","a knot tightened"], why:"anxiety felt physically, as tightness"},
+   {n:"drowning in homework / piled up like water rising", alts:["drowning in homework","drowning","piled up like water rising around my ears","like water rising","water rising"], why:"too much work, and it is rising — you cannot breathe"},
+   {n:"my mind spinning like a hamster on a wheel", alts:["like a hamster on a wheel","a hamster on a wheel","hamster on a wheel","mind spinning like a hamster on a wheel"], why:"constant effort with no progress at all"},
+   {n:"a backpack full of bricks", alts:["carrying a backpack full of bricks","backpack full of bricks","a backpack of bricks"], why:"an invisible weight that grows heavier every day"},
+   {n:"the words swam on the page", alts:["words swam on the page","the words swam","swam on the page"], why:"panic distorting perception — the text will not stay still"},
+   {n:"the dam finally broke", alts:["the dam broke","dam broke","dam finally broke"], why:"months of held-back emotion released at once"}
+  ]},
+ vocab:{kind:"exact", title:"Vocabulary in context",
+  hint:"Find the word or phrase in the text that matches each definition. Type it exactly as it appears (paragraph number in brackets).",
+  items:[
+   {q:"said quietly and unclearly (¶4)", a:["mumbled","mumble"]},
+   {q:"the moment when someone can no longer continue (¶4)", a:["breaking point","the breaking point"]},
+   {q:"managing a difficult situation successfully (¶3)", a:["coping","cope"]},
+   {q:"criticise someone with a long moral speech (¶5)", a:["lecture","lecture me","didn't lecture me"]},
+   {q:"stopping yourself from expressing feelings (¶5)", a:["holding back","hold back","been holding back"]},
+   {q:"flowing out rapidly and uncontrollably (¶5)", a:["pouring out","came pouring out","pour out"]},
+   {q:"sensible and achievable (¶6)", a:["realistic"]},
+   {q:"an explanation you give to escape a situation (¶4)", a:["excuse","an excuse"]}
+  ]},
+ writing:{min:100, max:120,
+  prompt:`"Asking for help is a sign of strength, not weakness." Do you agree? Write a mini-essay paragraph: state your opinion, support it with one reason + one example (the text or your experience), and finish with a recommendation for students your age.`,
+  frame:[],
+  check:["I stated my opinion in the first sentence.","I gave one reason AND one example.","I finished with a recommendation.","I included one figurative expression of my own.","I used at least one cause-effect linker (because of / due to / since / as a result / therefore).","I wrote between 100 and 120 words."]}
+},
+
+/* ---------------------------------------------------------- C1 */
+C1:{ label:"C1", sub:"Advanced", words:500, mins:"40–45 min",
+ gloss:["pretend","mask","knot","drown","counsellor","dam","bricks","overwhelmed","exhausted","hamster","breakingpoint","lecture","realistic","swam","mumbled","curated","braced","choreography","dismantle","rationed","photogenic","mythology","highlight","hauling","ceremony","unclenched","looming","insomnia","astonishment","spared"],
+ text:[
+  `For most of Year 9 I gave the performance of my life. Not on a stage — in corridors, in classrooms, across the dinner table. Each morning I fastened on an invisible mask, polished my smile, and assured the world I was fine. "How's school going?" my mother would ask, stirring her coffee. "Fine," I'd reply, while a knot tightened in my stomach like a fist that never unclenched.`,
+  `The truth was less photogenic: I was drowning in homework. Maths, chemistry, history — the assignments piled up like water rising steadily past my ears, and each completed task seemed to summon three more. At night my mind spun like a hamster on a wheel, replaying every unfinished exercise, every looming deadline. I would wake more exhausted than I had been at midnight, my energy already spent on dreams of failure.`,
+  `I confided in no one. In my private mythology, asking for help was a confession of weakness. Everyone else appeared to be coping effortlessly: Diego trained five times a week and still topped every test; half my classmates curated feeds of colour-coded revision notes and weekend adventures. Measuring myself against their highlight reels was like hauling a backpack full of bricks — invisible to everyone, yet heavier by the day.`,
+  `The breaking point arrived, without ceremony, on a Tuesday in October. A chemistry test before break, a history presentation after lunch, four hours of sleep behind me. When the paper landed on my desk, the words swam and scattered across the page like startled fish. My hands trembled. I rose, mumbled something about feeling ill, and walked out — past the whiteboard, past twenty curious faces, past the version of me who always held it together.`,
+  `I ended up on the bench outside the counsellor's office, not by decision but because my legs simply refused to carry me further. Miss Elena opened her door, took one look at my face, and spared me the lecture I was braced for. "Tell me what's been going on," she said. And the dam, patched and repatched for months, finally broke. It all came pouring out: the insomnia, the terror of failing, the exhausting choreography of seeming fine.`,
+  `To my astonishment, the world declined to end. Nobody laughed; nothing shattered. Miss Elena helped me draft a study plan that assumed I was human rather than a machine, showed me how to dismantle enormous tasks into small, survivable steps, and — most importantly — sat beside me while I told my parents the truth I had rationed for so long.`,
+  `I would love to report that the stress evaporated. It didn't; pressure is part of the landscape of being fifteen. But when the knot in my stomach returns these days, I read it as an alarm rather than a shameful secret. I say the words aloud: "I'm overwhelmed. I need help." They remain the hardest sentence I have ever learned — and the most useful. Pretending to be fine nearly broke me. Honesty is what put me back together.`
+ ],
+ inference:{kind:"mcq", title:"Close reading — inference check", hint:"Six questions on HOW the essay works. Only one option is fully defensible in each case.", items:[
+  {q:`The narrator calls his behaviour "the performance of my life". Why is the phrase double-edged?`,
+   o:[`It is a boast about his acting skill and, at the same time, a confession that none of it was real.`,
+      `It shows he wanted to become a professional actor after leaving school.`,
+      `It suggests his teachers were impressed by how well he was doing.`,
+      `It means the performance was the best moment of his school year.`], a:0,
+   why:`"Performance of my life" is the language of triumph, but what he achieved was a successful deception — the praise and the accusation are the same words.`},
+  {q:`What does "my private mythology" (¶3) suggest about the belief that asking for help is weakness?`,
+   o:[`That it was a widely shared cultural rule he had no power to question.`,
+      `That it was a story he told himself — powerful, but invented and untrue.`,
+      `That he had read about it in books on Greek and Roman gods.`,
+      `That his parents had explicitly taught him this rule at home.`], a:1,
+   why:`A myth is believed, not verified. Calling it "private" adds that nobody else imposed it — he built it, so he can dismantle it.`},
+  {q:`Why is it effective that the breaking point arrives "without ceremony"?`,
+   o:[`It shows the school had not organised any event that day.`,
+      `It implies the narrator was disappointed by the lack of attention.`,
+      `Collapse comes on an ordinary Tuesday, with no warning and no drama — which is how it actually happens.`,
+      `It tells us he had rehearsed the moment many times before.`], a:2,
+   why:`The anticlimax is the point: crisis does not announce itself. The flat, ordinary Tuesday makes it recognisable to any reader.`},
+  {q:`"...past the version of me who always held it together." What is he leaving behind?`,
+   o:[`The classmates who never noticed anything was wrong.`,
+      `An identity — the persona of the student who copes with everything alone.`,
+      `The chemistry test, which he decided never to take again.`,
+      `His ambition to get top marks in every subject.`], a:1,
+   why:`He walks past a person, not a place. The sentence turns an exit from a classroom into an exit from a self-image.`},
+  {q:`The dam had been "patched and repatched for months". What real behaviour does this describe?`,
+   o:[`Repeatedly making small temporary fixes to keep pretending, instead of addressing the cause.`,
+      `Asking several different teachers for help without success.`,
+      `Rebuilding his study notes again and again until they were perfect.`,
+      `Making friends with new people every few weeks.`], a:0,
+   why:`Each patch is another day of "I'm fine". The image tells us the collapse was engineered by months of maintenance, not by one bad Tuesday.`},
+  {q:`What does the verb "rationed" imply about how he had communicated before?`,
+   o:[`That he lied constantly and deliberately to everyone around him.`,
+      `That he spoke only to Miss Elena and to nobody else.`,
+      `That he released the truth in tiny controlled amounts, as if it were scarce and dangerous.`,
+      `That he had forgotten most of what had happened to him.`], a:2,
+   why:`Rationing implies scarcity and control in wartime. Honesty had become a limited resource he was afraid to spend.`}
+ ]},
+ comp:{kind:"open", title:"Interpretation — self-assessed", hint:"Write your answer, then reveal the model and mark yourself honestly. These are the questions your teacher would ask in class.", items:[
+  {q:`What is a "highlight reel", and why is comparing yourself to one misleading?`,
+   model:`A highlight reel is an edited sequence of only the best moments of a game or a life. Comparing yourself to one is misleading because you are measuring your unedited, ordinary reality — including the bad nights — against someone else's carefully selected best.`},
+  {q:`What is significant about a study plan "that assumed I was human rather than a machine"?`,
+   model:`It reframes the problem. His previous plans failed not because he lacked discipline but because they were built for a machine with no need for sleep, rest or error. A humane plan builds in limits, so success stops depending on him being superhuman.`},
+  {q:`The essay ends with two short sentences: "Pretending to be fine nearly broke me. Honesty is what put me back together." Why does the rhythm work?`,
+   model:`After long, ornate sentences full of imagery, the closing pair is bare and symmetrical: break / put back together. The plainness enacts the message — the mask is off, so the prose stops performing too.`}
+ ]},
+ figur:{kind:"write", title:"Imagery analysis",
+  hint:`Identify SIX images the writer uses for stress or concealment. Type one per box (any order).`,
+  pool:true,
+  items:[{q:"Image 1",a:[]},{q:"Image 2",a:[]},{q:"Image 3",a:[]},{q:"Image 4",a:[]},{q:"Image 5",a:[]},{q:"Image 6",a:[]}],
+  accepted:[
+   {n:"an invisible mask (fastened on, smile polished)", alts:["an invisible mask","invisible mask","a mask","mask","fastened on an invisible mask"], why:"concealment as costume — and something he actively puts on each day"},
+   {n:"a knot… like a fist that never unclenched", alts:["a knot in my stomach","knot in my stomach","like a fist that never unclenched","a fist that never unclenched","knot","a knot tightened in my stomach"], why:"anxiety as a permanently clenched muscle: aggression turned inwards"},
+   {n:"water rising steadily past my ears", alts:["drowning in homework","drowning","piled up like water rising steadily past my ears","water rising","like water rising","water rising past my ears"], why:"the level keeps rising — it is drowning in slow motion"},
+   {n:"my mind spun like a hamster on a wheel", alts:["like a hamster on a wheel","a hamster on a wheel","hamster on a wheel","mind spun like a hamster on a wheel"], why:"maximum effort, zero distance travelled"},
+   {n:"hauling a backpack full of bricks", alts:["a backpack full of bricks","backpack full of bricks","hauling a backpack full of bricks"], why:"invisible to observers, measurable only in fatigue"},
+   {n:"the words swam and scattered like startled fish", alts:["the words swam and scattered across the page like startled fish","like startled fish","words swam","the words swam","startled fish","swam and scattered"], why:"panic dissolving language itself — the simile is alive and evasive"},
+   {n:"the dam, patched and repatched for months", alts:["the dam broke","the dam finally broke","dam broke","patched and repatched","the dam patched and repatched for months","dam"], why:"the collapse has a maintenance history; it was always going to give way"},
+   {n:"the exhausting choreography of seeming fine", alts:["the exhausting choreography of seeming fine","choreography of seeming fine","choreography"], why:"wellness as rehearsed performance — every step planned for an audience"}
+  ]},
+ vocab:{kind:"open", title:"Vocabulary in context — self-assessed",
+  hint:"Explain the meaning of each phrase as it is used in the text, then reveal the model and mark yourself.", items:[
+   {q:`*curated feeds* (¶3)`, model:`Social media profiles that have been deliberately selected and arranged, like an exhibition, so that only the flattering material is on display.`},
+   {q:`*braced for* (¶5)`, model:`Physically and mentally prepared for an impact you are certain is coming — here, the telling-off he was sure Miss Elena would deliver.`},
+   {q:`*the exhausting choreography of seeming fine* (¶5)`, model:`The set of rehearsed behaviours — the smile, the "fine", the timing — required to appear normal, presented as tiring physical work rather than a feeling.`},
+   {q:`*declined to end* (¶6)`, model:`Ironic understatement: the world simply refused, politely, to collapse. Attributing a decision to the world mocks how catastrophic he had expected honesty to be.`},
+   {q:`*dismantle enormous tasks* (¶6)`, model:`Take huge assignments apart piece by piece, as you would a machine, until each component is small enough to be handled.`},
+   {q:`*pressure is part of the landscape* (¶7)`, model:`Stress is permanent scenery, not a passing storm — you do not remove it, you learn to live and navigate within it.`}
+ ]},
+ writing:{min:130, max:150,
+  prompt:`"We perform wellness for others instead of practising it for ourselves." To what extent is this true of people your age? Draw on the essay, your observation of social media culture, and your own experience.`,
+  frame:[],
+  check:["I opened with a clear thesis that answers 'to what extent'.","I developed ONE example rather than listing many.","I included one genuine counter-consideration.","I used one original metaphor (not one from the essay).","My register is consistently formal.","I wrote between 130 and 150 words."]}
+}
+};
+
+/* ============================================================
+   ENGINE
+   ============================================================ */
+const LV = ["A2","B1","B2","C1"];
+let cur = localStorage.getItem("u4rd_lv") || "A2";
+let store = {};
+try{ store = JSON.parse(localStorage.getItem("u4rd_store")||"{}"); }catch(e){ store={}; }
+function slot(){ store[cur] = store[cur] || {ans:{}, self:{}, done:false}; return store[cur]; }
+function save(){ localStorage.setItem("u4rd_store", JSON.stringify(store)); localStorage.setItem("u4rd_lv", cur); }
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const norm = s => String(s).toLowerCase().replace(/[’']/g,"'").replace(/[^a-z0-9' ]/g," ").replace(/\s+/g," ").trim();
+
+/* ---------- tabs ---------- */
+function drawTabs(){
+  document.getElementById("tabs").innerHTML = LV.map(l=>{
+    const d = DATA[l], done = store[l] && store[l].done;
+    return `<button class="tab ${l===cur?'on':''} ${done?'done':''}" data-l="${l}">${d.label}<small>${d.sub} · ${d.words} words</small></button>`;
+  }).join("");
+  document.querySelectorAll(".tab").forEach(b=> b.onclick = ()=>{ cur=b.dataset.l; save(); render(); window.scrollTo({top:0,behavior:"smooth"}); });
+}
+
+/* ---------- glossary marking ---------- */
+function markGloss(html, keys){
+  const list = keys.filter(k=>G[k])
+                   .map(k=>({k, src:G[k].re, one:new RegExp("^(?:"+G[k].re+")$","i")}))
+                   .sort((a,b)=> b.src.length - a.src.length);   // longest patterns win
+  if(!list.length) return html;
+  // single pass: the spans we insert are never re-scanned
+  const big = new RegExp("\\b(?:" + list.map(x=>x.src).join("|") + ")\\b", "gi");
+  const used = new Set();
+  return html.replace(big, m=>{
+    const hit = list.find(x=>x.one.test(m));
+    if(!hit || used.has(hit.k)) return m;          // one highlight per word per paragraph
+    used.add(hit.k);
+    return `<span class="gl" data-g="${hit.k}">${m}</span>`;
+  });
+}
+
+/* ---------- render ---------- */
+function render(){
+  drawTabs();
+  const d = DATA[cur], s = slot();
+  document.getElementById("meta").textContent = `${d.label} · ${d.words} words · ${d.mins}`;
+  let h = "";
+
+  /* 1 — predictions */
+  h += `<section class="step"><h2>Step 1 — Before you read</h2><h3>Predict from the title</h3>
+    <p class="hint">Look only at the title: <b>"The Day I Stopped Pretending I Was Fine."</b> Write what you expect. You will check your predictions after reading — there are no wrong answers here.</p>
+    ${["Who do you think is speaking, and how old are they?","What problem do you think they are hiding?","How do you think the story will end?"].map((q,i)=>
+      `<div class="q"><p class="qt"><span class="n">${i+1}.</span>${q}</p>
+       <textarea data-k="pred${i}" placeholder="Your prediction…">${esc(s.ans["pred"+i]||"")}</textarea></div>`).join("")}
+  </section>`;
+
+  /* 2 — the story */
+  h += `<section class="step"><h2>Step 2 — Read</h2><h3>The story <span style="font-weight:400;color:var(--muted);font-size:.9rem">· level ${d.label}, ${d.words} words</span></h3>
+    <p class="hint">Read it once <b>without stopping</b> at difficult words. Underlined words have a definition — tap or hover to see it. Then read a second time more slowly.</p>
+    <div class="story">${d.text.map((p,i)=>`<p><span class="pn">${i+1}</span> ${markGloss(esc(p), d.gloss)}</p>`).join("")}</div>
+  </section>`;
+
+  /* 3 — gist */
+  const gist = [
+    "A student hides his stress for months until a crisis forces him to ask for help — and honesty helps him recover.",
+    "A student explains how a school counsellor removed all of his stress with a perfect study plan.",
+    "A student describes how football and social media made him fail a chemistry test."
+  ];
+  h += `<section class="step" data-b="gist"><h2>Step 3 — First read</h2><h3>What is the story really about?</h3>
+    <p class="hint">Choose the best summary, then copy one sentence from the text that proves it.</p>
+    ${gist.map((o,i)=>`<label class="opt ${s.ans.gist==i?'sel':''}" data-o="${i}"><input type="radio" name="gist" ${s.ans.gist==i?'checked':''}> <b>${"ABC"[i]})</b> ${esc(o)}</label>`).join("")}
+    <div class="q" style="margin-top:10px"><p class="qt">One sentence from the text that proves it:</p>
+      <textarea data-k="gistproof" placeholder="Copy the sentence here…">${esc(s.ans.gistproof||"")}</textarea></div>
+    <div class="btns"><button class="act b-check" data-check="gist">Check</button></div>
+    <div class="res" id="res-gist"></div>
+    <div class="model" id="mod-gist"><b>Why A?</b> B is wrong because the stress does <em>not</em> disappear — the text says so explicitly in the last paragraph. C is wrong because football and social media are only examples of the comparisons that made him feel worse; he walks out of the test because of exhaustion and pressure, and the text never says he failed it.</div>
+  </section>`;
+
+  /* 4…7 — comprehension / inference / figurative / vocabulary */
+  if(d.inference){ h += block("inf", d.inference); h += block("comp", d.comp); }
+  else h += block("comp", d.comp);
+  h += block("fig", d.figur);
+  h += block("voc", d.vocab);
+
+  /* 7 — writing */
+  const w = d.writing;
+  h += `<section class="step"><h2>Step ${d.inference?8:7} — Your turn</h2><h3>Personal response <span style="font-weight:400;color:var(--muted);font-size:.9rem">· ${w.min}–${w.max} words</span></h3>
+    <p class="hint">${esc(w.prompt)}</p>
+    ${w.frame.length?`<div class="frame">${w.frame.map(f=>esc(f)).join("<br>")}</div>`:""}
+    <textarea data-k="writing" id="wtext" style="min-height:170px" placeholder="Write your response here…">${esc(s.ans.writing||"")}</textarea>
+    <div class="wc" id="wc">0 words</div>
+    <div class="legend" style="margin-top:12px"><b>Before you finish, check:</b></div>
+    <div class="check">${w.check.map((c,i)=>`<label><input type="checkbox" data-k="chk${i}" ${s.ans["chk"+i]?"checked":""}> ${esc(c)}</label>`).join("")}</div>
+  </section>`;
+
+  /* final */
+  h += `<div class="final"><h3>Session score</h3><div class="big" id="fscore">—</div>
+    <p id="fmsg">Check every section to see your total.</p>
+    <div class="btns" style="justify-content:center"><button class="act" onclick="window.print()">🖨️ Print / Save as PDF</button>
+    <button class="act b-clear" data-reset="1">Clear this level</button></div></div>`;
+
+  document.getElementById("main").innerHTML = h;
+  wire();
+  updateBar();
+}
+
+/* ---------- generic block builder ---------- */
+function block(id, b){
+  if(!b) return "";
+  const s = slot();
+  const order = DATA[cur].inference ? ["inf","comp","fig","voc"] : ["comp","fig","voc"];
+  const stepNo = order.indexOf(id) + 4;
+  let inner = "";
+
+  if(b.kind==="tf"){
+    inner = b.items.map((it,i)=>{
+      const v = s.ans[id+i];
+      return `<div class="tfrow" data-i="${i}"><div class="txt"><b>${i+1}.</b> ${esc(it.t)}
+        <div class="fix">${esc(it.fix)}</div></div>
+        <div class="tfbtns"><button class="tfb ${v===true?'sel':''}" data-tf="T">T</button><button class="tfb ${v===false?'sel':''}" data-tf="F">F</button></div></div>`;
+    }).join("");
+  }
+  else if(b.kind==="match"){
+    inner = `<div class="legend">${b.keys.map(k=>esc(k)).join("<br>")}</div>` + b.items.map((it,i)=>{
+      const v = s.ans[id+i];
+      return `<div class="mrow" data-i="${i}"><span class="lbl"><b>${i+1}.</b> ${esc(it.l)}</span>
+        <select class="mt">${['<option value="">—</option>'].concat(b.keys.map((k,j)=>`<option value="${j}" ${v==j?'selected':''}>${"ABCDEF"[j]}</option>`)).join("")}</select></div>`;
+    }).join("");
+  }
+  else if(b.kind==="gap"){
+    inner = `<div class="legend"><b>Word box:</b> ${b.bank.join(" · ")}</div>` + b.items.map((it,i)=>{
+      const parts = it.s.split("___");
+      return `<div class="mrow" data-i="${i}"><span class="lbl"><b>${i+1}.</b> ${esc(parts[0])}
+        <input type="text" class="short" style="max-width:150px;display:inline-block" data-k="${id}${i}" value="${esc(s.ans[id+i]||"")}"> ${esc(parts[1]||"")}</span></div>`;
+    }).join("");
+  }
+  else if(b.kind==="write" || b.kind==="exact"){
+    inner = b.items.map((it,i)=>
+      `<div class="q" data-i="${i}"><p class="qt"><span class="n">${i+1}.</span>${esc(it.q)}</p>
+       <input type="text" class="short" style="max-width:520px" data-k="${id}${i}" value="${esc(s.ans[id+i]||"")}" placeholder="…"></div>`).join("");
+  }
+  else if(b.kind==="short"){
+    inner = b.items.map((it,i)=>
+      `<div class="q" data-i="${i}"><p class="qt"><span class="n">${i+1}.</span>${esc(it.q)}</p>
+       <textarea data-k="${id}${i}" placeholder="Your answer…">${esc(s.ans[id+i]||"")}</textarea>
+       <div class="model"><b>Model answer:</b> ${esc(it.model)}</div>
+       <div class="selfmark">Mark yourself: <button class="smb" data-sm="1">✔ Got it</button><button class="smb" data-sm="0.5">± Partly</button><button class="smb" data-sm="0">✘ Missed it</button></div>
+      </div>`).join("");
+  }
+  else if(b.kind==="open"){
+    inner = b.items.map((it,i)=>
+      `<div class="q" data-i="${i}"><p class="qt"><span class="n">${i+1}.</span>${esc(it.q)}</p>
+       <textarea data-k="${id}${i}" style="min-height:90px" placeholder="Your answer…">${esc(s.ans[id+i]||"")}</textarea>
+       <div class="model"><b>Model answer:</b> ${esc(it.model)}</div>
+       <div class="selfmark">Mark yourself: <button class="smb" data-sm="1">✔ Got it</button><button class="smb" data-sm="0.5">± Partly</button><button class="smb" data-sm="0">✘ Missed it</button></div>
+      </div>`).join("");
+  }
+  else if(b.kind==="mcq"){
+    inner = b.items.map((it,i)=>
+      `<div class="q" data-i="${i}"><p class="qt"><span class="n">${i+1}.</span>${esc(it.q)}</p>
+       ${it.o.map((o,j)=>`<label class="opt ${s.ans[id+i]==j?'sel':''}" data-o="${j}"><input type="radio" name="${id}${i}" ${s.ans[id+i]==j?'checked':''}> ${esc(o)}</label>`).join("")}
+       <div class="model"><b>Why:</b> ${esc(it.why)}</div></div>`).join("");
+  }
+
+  const poolNote = b.pool ? `<p class="hint" style="margin-top:-4px">There are <b>${b.accepted.length}</b> possible images in the text — you only need six. Any six correct ones score full marks.</p>` : "";
+  return `<section class="step" data-b="${id}"><h2>Step ${stepNo}</h2><h3>${esc(b.title)}</h3>
+    <p class="hint">${esc(b.hint)}</p>${poolNote}${inner}
+    <div class="btns"><button class="act b-check" data-check="${id}">Check</button>
+      ${(b.kind==="short"||b.kind==="open"||b.kind==="mcq"||b.pool)?`<button class="act b-model" data-model="${id}">Show model answers</button>`:""}</div>
+    <div class="res" id="res-${id}"></div></section>`;
+}
+
+/* ---------- wiring ---------- */
+function wire(){
+  const s = slot();
+
+  document.querySelectorAll("textarea[data-k], input[type=text][data-k]").forEach(el=>{
+    el.oninput = ()=>{ s.ans[el.dataset.k] = el.value; save(); if(el.id==="wtext"){ wordCount(); updateBar(); } };
+  });
+  document.querySelectorAll("input[type=checkbox][data-k]").forEach(el=>{
+    el.onchange = ()=>{ s.ans[el.dataset.k] = el.checked; save(); };
+  });
+  document.querySelectorAll(".opt").forEach(el=>{
+    el.onclick = ()=>{
+      const sec = el.closest("section"), b = sec.dataset.b, q = el.closest(".q");
+      const key = b==="gist" ? "gist" : b + q.dataset.i;
+      s.ans[key] = +el.dataset.o; save();
+      (q||sec).querySelectorAll(".opt").forEach(o=>o.classList.remove("sel"));
+      el.classList.add("sel");
+      const r = el.querySelector("input"); if(r) r.checked = true;
+    };
+  });
+  document.querySelectorAll(".tfb").forEach(el=>{
+    el.onclick = ()=>{
+      const row = el.closest(".tfrow"), b = row.closest("section").dataset.b;
+      s.ans[b + row.dataset.i] = (el.dataset.tf === "T"); save();
+      row.querySelectorAll(".tfb").forEach(x=>x.classList.remove("sel"));
+      el.classList.add("sel");
+    };
+  });
+  document.querySelectorAll("select.mt").forEach(el=>{
+    el.onchange = ()=>{
+      const row = el.closest(".mrow"), b = row.closest("section").dataset.b;
+      s.ans[b + row.dataset.i] = el.value===""? null : +el.value; save();
+    };
+  });
+  document.querySelectorAll(".smb").forEach(el=>{
+    el.onclick = ()=>{
+      const q = el.closest(".q"), b = q.closest("section").dataset.b;
+      s.self[b + q.dataset.i] = +el.dataset.sm; save();
+      q.querySelectorAll(".smb").forEach(x=>x.classList.remove("sel"));
+      el.classList.add("sel"); updateBar();
+    };
+  });
+  document.querySelectorAll("[data-check]").forEach(b=> b.onclick = ()=> check(b.dataset.check));
+  document.querySelectorAll("[data-model]").forEach(b=> b.onclick = ()=>{
+    b.closest("section").querySelectorAll(".model,.selfmark").forEach(m=>m.classList.add("show"));
+    restoreSelf(b.dataset.model);
+  });
+  document.querySelectorAll("[data-reset]").forEach(b=> b.onclick = ()=>{
+    if(confirm("Clear all your answers for level " + cur + "?")){ delete store[cur]; save(); render(); }
+  });
+
+  /* glossary popups */
+  const box = document.getElementById("glbox");
+  document.querySelectorAll(".gl").forEach(el=>{
+    const show = e=>{
+      const g = G[el.dataset.g]; if(!g) return;
+      box.innerHTML = `<b>${esc(el.textContent)}</b> — ${esc(g.en)}<br><em>ES: ${esc(g.es)}</em>`;
+      box.classList.add("show");
+      const r = el.getBoundingClientRect();
+      let x = Math.min(r.left, window.innerWidth - 310);
+      box.style.left = Math.max(8, x) + "px";
+      box.style.top = (r.bottom + 8 > window.innerHeight - 90 ? r.top - box.offsetHeight - 8 : r.bottom + 8) + "px";
+    };
+    el.onmouseenter = show;
+    el.onmouseleave = ()=> box.classList.remove("show");
+    el.onclick = e=>{ e.preventDefault(); show(); setTimeout(()=>box.classList.remove("show"), 4200); };
+  });
+
+  /* restore visual state of self-marks already given */
+  ["comp","voc"].forEach(restoreSelf);
+  wordCount();
+}
+function restoreSelf(b){
+  const s = slot();
+  document.querySelectorAll(`section[data-b="${b}"] .q`).forEach(q=>{
+    const v = s.self[b + q.dataset.i];
+    if(v===undefined) return;
+    q.querySelectorAll(".model,.selfmark").forEach(m=>m.classList.add("show"));
+    q.querySelectorAll(".smb").forEach(x=> x.classList.toggle("sel", +x.dataset.sm === v));
+  });
+}
+
+function wordCount(){
+  const t = document.getElementById("wtext"); if(!t) return;
+  const n = (t.value.trim().match(/\S+/g)||[]).length, w = DATA[cur].writing;
+  const el = document.getElementById("wc");
+  el.textContent = `${n} words  (target ${w.min}–${w.max})`;
+  el.className = "wc" + (n>=w.min && n<=w.max ? " good" : n>w.max ? " over" : "");
+}
+
+/* ---------- checking ---------- */
+function check(id){
+  const d = DATA[cur], s = slot();
+  let got=0, tot=0;
+
+  if(id==="gist"){
+    tot=1; const sec=document.querySelector('section[data-b="gist"]');
+    sec.querySelectorAll(".opt").forEach((o,i)=>{
+      o.classList.remove("ok","ko");
+      if(i===0) o.classList.add("ok");
+      else if(s.ans.gist==i) o.classList.add("ko");
+    });
+    if(s.ans.gist===0) got=1;
+    document.getElementById("mod-gist").classList.add("show");
+    s.self["gist"] = got; save();
+    return showRes("gist", got, tot);
+  }
+
+  const b = id==="comp"?d.comp : id==="inf"?d.inference : id==="fig"?d.figur : d.vocab;
+  const sec = document.querySelector(`section[data-b="${id}"]`);
+
+  if(b.kind==="tf"){
+    b.items.forEach((it,i)=>{
+      tot++; const row = sec.querySelector(`.tfrow[data-i="${i}"]`);
+      row.classList.remove("ok","ko");
+      const v = s.ans[id+i];
+      if(v===undefined){ row.querySelector(".fix").classList.add("show"); return; }
+      if(v===it.a){ got++; row.classList.add("ok"); } else { row.classList.add("ko"); }
+      row.querySelector(".fix").classList.add("show");
+    });
+  }
+  else if(b.kind==="match"){
+    b.items.forEach((it,i)=>{
+      tot++; const sel = sec.querySelector(`.mrow[data-i="${i}"] select`);
+      sel.classList.remove("ok","ko");
+      if(s.ans[id+i]===it.a){ got++; sel.classList.add("ok"); }
+      else { sel.classList.add("ko"); sel.value = it.a; s.ans[id+i]=it.a; }
+    });
+  }
+  else if(b.kind==="gap" || b.kind==="write" || b.kind==="exact"){
+    if(b.pool){
+      /* pool mode: any N of the accepted images */
+      const used = new Set();
+      b.items.forEach((it,i)=>{
+        tot++; const inp = sec.querySelector(`input[data-k="${id}${i}"]`);
+        inp.classList.remove("ok","ko");
+        const v = norm(inp.value);
+        if(!v){ inp.classList.add("ko"); return; }
+        const hit = b.accepted.findIndex((a,ai)=> !used.has(ai) &&
+          (norm(a.n)===v || a.alts.some(x=>norm(x)===v) || norm(a.n).includes(v) && v.length>6));
+        if(hit>=0){ used.add(hit); got++; inp.classList.add("ok"); } else { inp.classList.add("ko"); }
+      });
+      const mod = document.createElement("div");
+      mod.className = "model show"; mod.style.marginTop = "10px";
+      mod.innerHTML = "<b>All the images in this text:</b><br>" + b.accepted.map(a=>`• <b>${esc(a.n)}</b> — ${esc(a.why)}`).join("<br>");
+      const old = sec.querySelector(".model.pool"); if(old) old.remove();
+      mod.classList.add("pool"); sec.querySelector(".btns").before(mod);
+    } else {
+      b.items.forEach((it,i)=>{
+        tot++; const inp = sec.querySelector(`input[data-k="${id}${i}"]`);
+        inp.classList.remove("ok","ko");
+        const v = norm(inp.value);
+        if(v && it.a.some(a=>norm(a)===v)){ got++; inp.classList.add("ok"); }
+        else { inp.classList.add("ko"); inp.value = it.a[0]; s.ans[id+i] = it.a[0]; }
+      });
+    }
+  }
+  else if(b.kind==="mcq"){
+    b.items.forEach((it,i)=>{
+      tot++; const q = sec.querySelector(`.q[data-i="${i}"]`);
+      q.querySelectorAll(".opt").forEach((o,j)=>{
+        o.classList.remove("ok","ko");
+        if(j===it.a) o.classList.add("ok");
+        else if(s.ans[id+i]==j) o.classList.add("ko");
+      });
+      q.querySelector(".model").classList.add("show");
+      if(s.ans[id+i]===it.a) got++;
+    });
+  }
+  else if(b.kind==="short"){
+    /* keyword-based: generous, then model + self-mark */
+    b.items.forEach((it,i)=>{
+      tot++; const q = sec.querySelector(`.q[data-i="${i}"]`);
+      const v = norm(s.ans[id+i]||"");
+      const hits = it.keys.filter(k=>v.includes(norm(k))).length;
+      const auto = v.length>10 && hits>0 ? 1 : 0;
+      if(s.self[id+i]===undefined){ s.self[id+i] = auto; }
+      got += s.self[id+i];
+      q.querySelectorAll(".model,.selfmark").forEach(m=>m.classList.add("show"));
+      q.querySelectorAll(".smb").forEach(x=> x.classList.toggle("sel", +x.dataset.sm === s.self[id+i]));
+    });
+  }
+  else if(b.kind==="open"){
+    b.items.forEach((it,i)=>{
+      tot++; const q = sec.querySelector(`.q[data-i="${i}"]`);
+      if(s.self[id+i]===undefined) s.self[id+i] = 0;
+      got += s.self[id+i];
+      q.querySelectorAll(".model,.selfmark").forEach(m=>m.classList.add("show"));
+      q.querySelectorAll(".smb").forEach(x=> x.classList.toggle("sel", +x.dataset.sm === s.self[id+i]));
+    });
+  }
+
+  if(b.kind!=="short" && b.kind!=="open"){
+    b.items.forEach((it,i)=>{ /* record objective marks for the total */ });
+    s.self["_"+id] = got; s.self["_"+id+"_tot"] = tot;
+  }
+  save();
+  showRes(id, got, tot);
+}
+
+function showRes(id, got, tot){
+  const el = document.getElementById("res-"+id);
+  const pc = tot? got/tot : 0;
+  el.className = "res show " + (pc>=.8?"ok":pc>=.5?"mid":"ko");
+  const g = Math.round(got*10)/10;
+  el.textContent = pc>=.8 ? `Excellent — ${g} / ${tot}. ` + (id==="fig"?"Your eye for imagery is sharp.":"You understood the text well.")
+                 : pc>=.5 ? `${g} / ${tot} — solid, but read the corrections above before moving on.`
+                 : `${g} / ${tot} — go back to the text and find the evidence for each answer, then try again.`;
+  updateBar();
+}
+
+/* ---------- progress + total ---------- */
+function updateBar(){
+  const d = DATA[cur], s = slot();
+  const blocks = ["gist","comp", d.inference?"inf":null, "fig","voc"].filter(Boolean);
+  let got=0, tot=0, doneBlocks=0;
+
+  blocks.forEach(id=>{
+    const b = id==="gist"? {kind:"one", items:[1]} : id==="comp"?d.comp : id==="inf"?d.inference : id==="fig"?d.figur : d.vocab;
+    const n = id==="gist"? 1 : b.items.length;
+    tot += n;
+    if(id==="gist"){ if(s.self.gist!==undefined){ got+=s.self.gist; doneBlocks++; } return; }
+    if(b.kind==="short"||b.kind==="open"){
+      let any=false, sum=0;
+      b.items.forEach((it,i)=>{ if(s.self[id+i]!==undefined){ sum+=s.self[id+i]; any=true; } });
+      got += sum; if(any) doneBlocks++;
+    } else if(s.self["_"+id]!==undefined){ got += s.self["_"+id]; doneBlocks++; }
+  });
+
+  const words = (String(s.ans.writing||"").trim().match(/\S+/g)||[]).length;
+  const wOk = words >= d.writing.min;
+  const pct = Math.round(((doneBlocks/blocks.length)*0.85 + (wOk?0.15:0))*100);
+  document.getElementById("fill").style.width = pct+"%";
+  document.getElementById("pct").innerHTML = `<b>${pct}%</b>`;
+  document.getElementById("score").textContent = `${Math.round(got*10)/10} / ${tot}`;
+
+  const fs = document.getElementById("fscore"), fm = document.getElementById("fmsg");
+  if(fs){
+    if(doneBlocks===0){ fs.textContent = "—"; fm.textContent = "Check every section to see your total."; }
+    else{
+      const p = tot? Math.round(got/tot*100) : 0;
+      fs.textContent = p + "%";
+      fm.innerHTML = `${Math.round(got*10)/10} / ${tot} on the ${doneBlocks} section${doneBlocks>1?"s":""} you have checked` +
+        (wOk ? ` · writing: <b>${words} words</b> ✔` : ` · writing: <b>${words} words</b> (target ${d.writing.min}–${d.writing.max})`);
+      if(doneBlocks===blocks.length && wOk){ slot().done = true; save(); drawTabs(); }
+    }
+  }
+}
+
+render();
+</script>
+</body>
+</html>
