@@ -460,7 +460,12 @@ const AC_ACTIVITIES = [
   ['backshifting','Backshifting'],['reported-speech','Reported Speech'],['reported-speech-lab','Reported Speech · Lab'],
   ['reported-speech-order','Reported Speech · Order'],['reported-speech-verbs','Reported Speech · Verbs'],
   ['reported-speech-wheel','Reported Speech · Wheel'],['memory-reported-speech','Memory · Reported Speech'],
-  ['word-sudoku','Word Sudoku'],['mun-academy','MUN Academy'],['phonics','Phonics Studio'],['pronunciation-coach','Pronunciation Coach']
+  ['word-sudoku','Word Sudoku'],['mun-academy','MUN Academy'],['phonics','Phonics Studio'],['pronunciation-coach','Pronunciation Coach'],
+  // U4 · lectura y listening por nivel. Hoy NO llaman a anticheat.js (son
+  // práctica autónoma: un alumno solo en casa se autobloquearía), pero quedan
+  // registradas para poder darles vidas si algún día se les activa.
+  ['reading-pretending-fine','U4 · Reading — Pretending I Was Fine'],
+  ['listening-mind-over-matter','U4 · Listening — Wellbeing Podcast']
 ];
 function acActLabel(k){ const f=AC_ACTIVITIES.find(a=>a[0]===k); return f?f[1]:(k||'—'); }
 const AC_EVENT = { tab_switch:'⚠️ Salida', reported:'🚩 Reportado', locked:'⛔ Eliminada (C)', translate_detected:'🌐 Traductor' };

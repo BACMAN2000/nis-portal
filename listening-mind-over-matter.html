@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Listening · Mind Over Matter — 4 Levels</title>
+<style>
+  :root{
+    --bg:#f4f6fb; --card:#ffffff; --ink:#1e2433; --muted:#67718a;
+    --accent:#3b5bdb; --accent-soft:#e7ecfd;
+    --good:#2f9e44; --good-soft:#d3f4dc; --bad:#e03131; --bad-soft:#ffe3e3;
+    --gold:#f59f00; --gold-soft:#fff4d6; --deep:#243b7a;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:'Segoe UI',system-ui,Arial,sans-serif; background:var(--bg); color:var(--ink); padding:18px 14px 60px;}
+  header{max-width:900px; margin:0 auto 6px; text-align:center;}
+  header .kicker{font-size:.72rem; letter-spacing:1.6px; text-transform:uppercase; color:var(--accent); font-weight:700;}
+  header h1{font-size:1.5rem; margin-top:6px; line-height:1.25;}
+  header p.sub{color:var(--muted); font-size:.88rem; margin-top:6px;}
+
+  .tabs{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin:16px auto 10px; max-width:900px;}
+  .tab{border:2px solid transparent; background:var(--card); color:var(--ink); padding:9px 18px; border-radius:24px;
+       font-weight:700; font-size:.95rem; cursor:pointer; box-shadow:0 1px 3px rgba(20,30,60,.12); transition:.15s;}
+  .tab small{display:block; font-weight:500; font-size:.68rem; color:var(--muted);}
+  .tab.on{background:var(--accent); color:#fff; border-color:var(--accent);}
+  .tab.on small{color:#dce4ff;}
+  .tab.done{border-color:var(--good);}
+  .tab.done::after{content:" ✓"; color:var(--good);}
+  .tab.on.done::after{color:#bff2cc;}
+
+  main{max-width:900px; margin:0 auto;}
+  .step{background:var(--card); border-radius:14px; padding:18px 20px; box-shadow:0 2px 10px rgba(20,30,60,.08); margin-bottom:16px;}
+  .step > h2{font-size:.78rem; text-transform:uppercase; letter-spacing:1.2px; color:var(--accent); margin-bottom:4px;}
+  .step > h3{font-size:1.1rem; margin-bottom:10px;}
+  .hint{font-size:.85rem; color:var(--muted); margin-bottom:12px; line-height:1.5;}
+
+  /* ---- player ---- */
+  .player{background:linear-gradient(135deg,#243b7a,#3b5bdb); color:#fff; border-radius:16px; padding:20px 22px; margin-bottom:16px;
+          box-shadow:0 4px 18px rgba(36,59,122,.28);}
+  .player .ptitle{font-size:.72rem; letter-spacing:1.4px; text-transform:uppercase; opacity:.8; font-weight:700;}
+  .player h3{font-size:1.15rem; margin:5px 0 3px;}
+  .player .pdesc{font-size:.85rem; opacity:.85; line-height:1.5; margin-bottom:14px;}
+  .prow{display:flex; align-items:center; gap:12px; flex-wrap:wrap;}
+  .pbig{border:none; background:#fff; color:var(--deep); width:60px; height:60px; border-radius:50%; font-size:1.5rem;
+        cursor:pointer; box-shadow:0 3px 10px rgba(0,0,0,.2); transition:.15s; flex:0 0 auto;}
+  .pbig:hover{transform:scale(1.06);}
+  .pbig:disabled{opacity:.4; cursor:not-allowed; transform:none;}
+  .psmall{border:2px solid rgba(255,255,255,.55); background:transparent; color:#fff; border-radius:9px; padding:8px 14px;
+          font-weight:700; font-size:.83rem; cursor:pointer; font-family:inherit;}
+  .psmall:hover{background:rgba(255,255,255,.15);}
+  .psmall:disabled{opacity:.35; cursor:not-allowed;}
+  .ptrack{flex:1 1 180px; min-width:140px; height:8px; background:rgba(255,255,255,.28); border-radius:5px; overflow:hidden;}
+  .pfill{height:100%; width:0; background:#fff; transition:width .25s;}
+  .pmeta{font-size:.8rem; opacity:.9; display:flex; gap:14px; flex-wrap:wrap; margin-top:12px; align-items:center;}
+  .pmeta b{background:rgba(255,255,255,.2); padding:2px 9px; border-radius:20px;}
+  .pmeta select{background:rgba(255,255,255,.15); color:#fff; border:1px solid rgba(255,255,255,.4); border-radius:7px;
+                padding:4px 7px; font-family:inherit; font-size:.78rem;}
+  .pmeta select option{color:#1e2433;}
+  .now{margin-top:12px; padding:11px 14px; background:rgba(0,0,0,.18); border-radius:10px; font-size:.9rem; line-height:1.5;
+       min-height:44px; display:none;}
+  .now.show{display:block;}
+  .now .who{font-size:.68rem; letter-spacing:1.2px; text-transform:uppercase; opacity:.75; display:block; margin-bottom:3px;}
+  .warn{background:var(--gold-soft); border-left:4px solid var(--gold); border-radius:0 9px 9px 0; padding:10px 13px;
+        font-size:.84rem; line-height:1.55; margin-top:12px; color:#7a5200;}
+
+  /* ---- exercises ---- */
+  textarea, input[type=text]{width:100%; font-family:inherit; font-size:.95rem; color:var(--ink);
+        border:2px solid #e2e7f2; border-radius:9px; padding:9px 11px; background:#fbfcff; outline:none; transition:.15s;}
+  textarea:focus, input[type=text]:focus{border-color:var(--accent); background:#fff;}
+  textarea{resize:vertical; min-height:70px; line-height:1.55;}
+  input.short{max-width:260px;}
+  input.short.ok{border-color:var(--good); background:var(--good-soft);}
+  input.short.ko{border-color:var(--bad); background:var(--bad-soft);}
+  .q{margin-bottom:14px;}
+  .q > p.qt{font-weight:600; font-size:.94rem; margin-bottom:6px; line-height:1.5;}
+  .q > p.qt span.n{color:var(--accent); margin-right:6px;}
+  .opt{display:block; border:2px solid #e2e7f2; border-radius:10px; padding:10px 13px; margin-bottom:8px; cursor:pointer;
+       font-size:.93rem; line-height:1.5; background:#fbfcff; transition:.13s;}
+  .opt:hover{border-color:var(--accent); background:#fff;}
+  .opt.sel{border-color:var(--accent); background:var(--accent-soft);}
+  .opt.ok{border-color:var(--good); background:var(--good-soft);}
+  .opt.ko{border-color:var(--bad); background:var(--bad-soft);}
+  .tfrow{display:flex; align-items:flex-start; gap:10px; padding:9px 11px; border:2px solid #e2e7f2; border-radius:10px;
+         margin-bottom:8px; background:#fbfcff; font-size:.93rem; line-height:1.5;}
+  .tfrow .txt{flex:1;}
+  .tfbtns{display:flex; gap:5px; flex:0 0 auto;}
+  .tfb{border:2px solid #dde3ef; background:#fff; border-radius:8px; padding:4px 12px; font-weight:800; cursor:pointer; font-size:.85rem;}
+  .tfb.sel{background:var(--accent); color:#fff; border-color:var(--accent);}
+  .tfrow.ok{border-color:var(--good); background:var(--good-soft);}
+  .tfrow.ko{border-color:var(--bad); background:var(--bad-soft);}
+  .fix{display:none; font-size:.83rem; color:var(--muted); margin-top:5px; font-style:italic;}
+  .fix.show{display:block;}
+  .gapline{font-size:.95rem; line-height:2.3; margin-bottom:6px;}
+  .gapline input{display:inline-block; width:170px; margin:0 4px; padding:5px 9px; vertical-align:middle;}
+  .model{display:none; margin-top:7px; padding:9px 12px; background:var(--gold-soft); border-left:4px solid var(--gold);
+         border-radius:0 8px 8px 0; font-size:.87rem; line-height:1.55;}
+  .model.show{display:block;}
+  .model b{color:#a06c00;}
+  .selfmark{display:none; gap:6px; margin-top:7px; align-items:center; font-size:.83rem; color:var(--muted); flex-wrap:wrap;}
+  .selfmark.show{display:flex;}
+  .smb{border:2px solid #dde3ef; background:#fff; border-radius:7px; padding:3px 10px; font-weight:700; cursor:pointer; font-size:.8rem;}
+  .smb.sel{background:var(--accent); color:#fff; border-color:var(--accent);}
+
+  /* ---- vocabulary chips ---- */
+  .chips{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:6px;}
+  .chip{background:var(--accent-soft); color:var(--deep); border-radius:20px; padding:4px 12px; font-size:.83rem; font-weight:600;}
+  .chip.adv{background:#fff0f6; color:#a61e4d;}
+  .chip.link{background:#e6fcf5; color:#087f5b;}
+  .chip.heard{background:var(--good-soft); color:var(--good);}
+  .catlbl{font-size:.72rem; text-transform:uppercase; letter-spacing:1.1px; color:var(--muted); font-weight:700; margin:10px 0 5px;}
+
+  /* ---- ladders ---- */
+  .ladder{border:2px solid #e9edf6; border-radius:12px; padding:12px 14px; margin-bottom:12px; background:#fbfcff;}
+  .ladder h4{font-size:.95rem; margin-bottom:3px;}
+  .ladder .lh{font-size:.78rem; color:var(--muted); margin-bottom:9px;}
+  .rungs{display:flex; flex-wrap:wrap; gap:7px;}
+  .rung{border:2px solid #dde3ef; background:#fff; border-radius:9px; padding:7px 13px; font-weight:600; font-size:.9rem;
+        cursor:pointer; transition:.13s; position:relative;}
+  .rung:hover{border-color:var(--accent);}
+  .rung.pick{background:var(--accent); color:#fff; border-color:var(--accent);}
+  .rung.pick::after{content:attr(data-pos); position:absolute; top:-8px; right:-7px; background:var(--gold); color:#fff;
+        width:19px; height:19px; border-radius:50%; font-size:.68rem; display:grid; place-items:center; font-weight:800;}
+  .rung.ok{background:var(--good-soft); border-color:var(--good); color:var(--good);}
+  .rung.ko{background:var(--bad-soft); border-color:var(--bad); color:var(--bad);}
+  .ladder .sol{display:none; font-size:.84rem; color:var(--muted); margin-top:8px; font-style:italic;}
+  .ladder .sol.show{display:block;}
+
+  /* ---- transcript ---- */
+  .tsc{background:#fffdf7; border:1px solid #f1e6cd; border-radius:12px; padding:16px 18px; line-height:1.9; font-size:.97rem;
+       display:none;}
+  .tsc.show{display:block;}
+  .tsc p{margin-bottom:11px;}
+  .tsc .who{font-weight:800; color:var(--gold); font-size:.78rem; text-transform:uppercase; letter-spacing:.8px; margin-right:6px;}
+  .tsc mark{background:#ffe9a8; border-radius:3px; padding:0 2px;}
+  .locked{text-align:center; padding:24px; color:var(--muted); font-size:.9rem; line-height:1.6;}
+  .locked .lk{font-size:2rem; display:block; margin-bottom:8px;}
+
+  .btns{display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;}
+  button.act{border:none; border-radius:9px; padding:10px 17px; font-weight:700; font-size:.88rem; cursor:pointer; transition:.15s; font-family:inherit;}
+  .b-check{background:var(--accent); color:#fff;}
+  .b-model{background:var(--gold); color:#fff;}
+  .b-clear{background:#e9ecf3; color:var(--ink);}
+  button.act:hover{filter:brightness(1.08);}
+  button.act:disabled{opacity:.45; cursor:not-allowed;}
+  .res{margin-top:10px; font-weight:700; font-size:.92rem; display:none;}
+  .res.show{display:block;}
+  .res.ok{color:var(--good);} .res.mid{color:var(--gold);} .res.ko{color:var(--bad);}
+
+  .final{background:linear-gradient(135deg,#3b5bdb,#5f7fe8); color:#fff; border-radius:14px; padding:22px; text-align:center; margin-bottom:16px;}
+  .final h3{font-size:1.15rem; margin-bottom:8px;}
+  .final .big{font-size:2.4rem; font-weight:800; letter-spacing:-1px;}
+  .final p{font-size:.88rem; opacity:.92; line-height:1.55;}
+  .final button{margin-top:12px; background:#fff; color:var(--accent);}
+  footer{max-width:900px; margin:20px auto 0; text-align:center; color:var(--muted); font-size:.75rem; line-height:1.6;}
+  @media print{ .tabs,.btns,.player,footer{display:none;} .step{break-inside:avoid; box-shadow:none; border:1px solid #ddd;} .tsc{display:block!important;} }
+
+  /* --- portal nav (shared with the other activities) --- */
+  .topnav{position:sticky; top:0; z-index:30; background:#fff; display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+    padding:10px 18px; box-shadow:0 2px 10px rgba(20,30,60,.08); margin:-18px -14px 16px;}
+  .topnav img{height:32px; width:auto; display:block;}
+  .topnav .nav-sp{margin-left:auto;}
+  .navbtn{text-decoration:none; font-weight:700; font-size:.85rem; padding:8px 14px; border-radius:9px; white-space:nowrap;
+    background:var(--accent-soft); color:var(--accent); transition:.15s; border:none; cursor:pointer;}
+  .navbtn:hover{filter:brightness(.97);}
+  .navbtn.primary{background:var(--accent); color:#fff;}
+  @media (max-width:480px){ .topnav{margin:-18px -14px 12px; padding:8px 12px;} .topnav img{height:26px;} }
+  @media print{ .topnav{display:none;} }
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <img src="assets/logo-h.svg" alt="Nordic International School" onerror="this.style.display='none'">
+  <span class="nav-sp"></span>
+  <a class="navbtn" href="activities.html">&#127922; Activities</a>
+  <a class="navbtn primary" href="./">&#127979; Portal</a>
+</nav>
+
+<header>
+  <div class="kicker">English 9A · Unit 4 · Mind Over Matter</div>
+  <h1>The Wellbeing Podcast — Make Stress Your Friend</h1>
+  <p class="sub">Listening · Week 1, Session 3 — choose your level. The audio is read aloud by your browser.</p>
+</header>
+
+<div class="tabs" id="tabs"></div>
+<main id="main"></main>
+
+<footer>
+  NIS English · Unit 4 — Mind Over Matter · Your answers are saved in this browser automatically.<br>
+  If you hear no sound: check the volume, and use <b>Chrome</b> or <b>Edge</b> (Firefox voices are limited).
+</footer>
+
+<script>
+/* ============================================================
+   TARGET VOCABULARY — every level's script is built to contain
+   its own list in full. Chips turn green once you have heard it.
+   ============================================================ */
+const VOCAB = {
+ A2:{ emotions:["tense","uneasy","exhausted","irritable","anxious","frustrated","drained","restless","discouraged","overwhelmed"],
+      adverbs:["slightly","fairly","really","completely"],
+      linkers:["because","so"],
+      lexis:["mindset","belief","harmful","perform","seek support"] },
+ B1:{ emotions:["tense","uneasy","exhausted","irritable","anxious","frustrated","drained","restless","discouraged","overwhelmed"],
+      adverbs:["slightly","fairly","rather","really","completely","utterly"],
+      linkers:["because of","since","so … that","as a result"],
+      lexis:["mindset","belief","harmful","cope","signal","perform","seek support","rise to the challenge"] },
+ B2:{ emotions:["tense","uneasy","exhausted","irritable","anxious","frustrated","drained","restless","discouraged","overwhelmed","apprehensive","agitated"],
+      adverbs:["slightly","fairly","rather","really","completely","utterly"],
+      linkers:["because of","due to","since","as a result","therefore","so … that"],
+      lexis:["mindset","belief","harmful","cope","signal","perform","seek support","rise to the challenge"] },
+ C1:{ emotions:["tense","uneasy","exhausted","irritable","anxious","frustrated","drained","restless","discouraged","overwhelmed","apprehensive","agitated","despondent","on edge"],
+      adverbs:["slightly","fairly","rather","really","completely","utterly"],
+      linkers:["because of","due to","since","as a result","therefore","so … that"],
+      lexis:["mindset","belief","harmful","cope","signal","perform","seek support","rise to the challenge"] }
+};
+
+/* ============================================================
+   LEVEL DATA — original scripts written for this unit
+   ============================================================ */
+const DATA = {
+
+/* -------------------------------------------------- A2 */
+A2:{ label:"A2", sub:"Elementary", words:230, mins:"20–25 min", plays:3,
+ title:"Episode 4 — Your body before a test",
+ desc:"One speaker. Short sentences. You may listen three times.",
+ script:[
+  {w:"host", t:"Hello, and welcome to the Wellbeing Podcast. I'm Nadia. Today we are talking about stress."},
+  {w:"host", t:"Think about the ten minutes before an exam. Your heart beats fast. Your hands are cold. You feel tense."},
+  {w:"host", t:"Many students feel like this. Some feel slightly uneasy. Some feel completely exhausted. Some are really irritable because they did not sleep, and they shout at their brother at home."},
+  {w:"host", t:"Here are six normal words for these feelings: anxious, frustrated, drained, restless, discouraged and overwhelmed. They are normal words. You are not broken."},
+  {w:"host", t:"Now, the interesting part. Scientists asked thousands of adults two questions. Question one: how much stress do you have? Question two: do you think stress is bad for you?"},
+  {w:"host", t:"The people with a lot of stress who believed that stress was harmful had more health problems. But the people with a lot of stress who did not believe this were fairly healthy. In fact, they were very healthy."},
+  {w:"host", t:"So the belief is important. We call this your mindset."},
+  {w:"host", t:"Next time your heart beats fast, you can think: I am anxious, I cannot do this. Or you can think: this is energy, my body is helping me perform."},
+  {w:"host", t:"One more thing. When we have problems, we look for other people. We seek support. Asking for help is not weak."},
+  {w:"host", t:"So, you cannot always choose your stress. But you can choose the story you tell about it. See you next week."}
+ ],
+ predict:{q:"Before you listen — what do you think the podcast will say about stress?",
+  o:["Stress is always bad. You must remove it completely.","What you believe about stress changes what stress does to you.","Only adults have stress; students do not."], a:1},
+ qs:{kind:"tf", title:"Listening — true or false?", hint:"Listen twice, then answer. If a sentence is false, the correction appears when you check.", items:[
+  {t:"The podcast is about sleep.", a:false, fix:"False — Nadia says: \"Today we are talking about stress.\""},
+  {t:"Before an exam, your heart beats fast.", a:true, fix:"True — \"Your heart beats fast. Your hands are cold.\""},
+  {t:"The scientists asked adults only one question.", a:false, fix:"False — they asked TWO questions: how much stress, and do you think stress is bad for you."},
+  {t:"People who believed stress was harmful had more health problems.", a:true, fix:"True — that is the key result of the study."},
+  {t:"People who did NOT believe stress was harmful were fairly healthy.", a:true, fix:"True — \"in fact, they were very healthy.\""},
+  {t:"Nadia says you are broken if you feel these emotions.", a:false, fix:"False — she says the opposite: \"They are normal words. You are not broken.\""},
+  {t:"When we have problems, we look for other people.", a:true, fix:"True — \"We seek support. Asking for help is not weak.\""},
+  {t:"Nadia says you can always choose your stress.", a:false, fix:"False — \"You cannot always choose your stress. But you can choose the story you tell about it.\""}
+ ]},
+ ladders:[
+  {name:"Happiness", words:["content","happy","delighted","over the moon"], note:"weakest → strongest"},
+  {name:"Anger", words:["annoyed","angry","furious","livid"], note:"weakest → strongest"},
+  {name:"Tiredness", words:["tired","worn out","exhausted","burnt out"], note:"weakest → strongest"}
+ ]
+},
+
+/* -------------------------------------------------- B1 */
+B1:{ label:"B1", sub:"Intermediate", words:340, mins:"25–30 min", plays:2,
+ title:"Episode 4 — Is stress always the enemy?",
+ desc:"One speaker, natural pace. You may listen twice — like the real exam.",
+ script:[
+  {w:"host", t:"Hello and welcome back to the Wellbeing Podcast. I'm Nadia, and today we're asking a simple question: is stress always the enemy?"},
+  {w:"host", t:"Let's start with the words. When students describe a hard week, they usually say I'm stressed. But stressed is a very small word for a very big range of feelings."},
+  {w:"host", t:"You might be slightly uneasy before a presentation. You might be fairly anxious the night before a test. You might be rather irritable because of a bad night's sleep, or utterly exhausted after three exams in two days."},
+  {w:"host", t:"By Friday you might feel really drained and restless: too tired to work, too tense to relax. And if the marks don't improve, you feel discouraged, frustrated, and completely overwhelmed."},
+  {w:"host", t:"Emotions come in ladders. You can be annoyed, then angry, then furious. You can be tired, then worn out, then exhausted, then burnt out. Choosing the right rung is a skill."},
+  {w:"host", t:"Now, the research. In one famous study in the United States, scientists followed thousands of adults for eight years. They asked two questions: how much stress have you experienced this year, and do you believe that stress is harmful to your health?"},
+  {w:"host", t:"Here is the surprise. People with high stress who believed stress was harmful had a much higher risk of serious health problems. But people with just as much stress who did not see it as harmful were among the healthiest people in the whole study."},
+  {w:"host", t:"So the stress itself was not the whole story. The belief mattered enormously. Psychologists call this your stress mindset."},
+  {w:"host", t:"Think about the signals. Your heart pounds before a presentation. You can read that signal in two ways. You can think: this is anxiety, I can't cope. Or you can think: this is energy, my body is preparing me to perform. As a result, students trained to read the second story felt more confident, and often performed better too."},
+  {w:"host", t:"And there's one more discovery. Stress doesn't only make us want to run away. It also pushes us to connect. Since we feel under pressure, we are more likely to seek support and to help others, and helping others actually protects our own health."},
+  {w:"host", t:"So the next time your heart races before an exam, try telling yourself a different story: this is my body helping me rise to the challenge. You cannot always choose your stress. But you can choose the story you tell about it."}
+ ],
+ predict:{q:"Before you listen — what do you think the podcast will say about stress?",
+  o:["Stress is always harmful and should be avoided completely.","What you believe about stress changes the effect it has on you.","Stress only affects students during exam weeks."], a:1},
+ qs:{kind:"mix", title:"Listening comprehension", hint:"Listen twice, then answer. Short answers are checked for key ideas — the model answer appears so you can mark yourself.", items:[
+  {type:"mcq", q:"How long did the scientists follow the adults in the study?", o:["Eight months","Eight years","Eighteen years","Eight weeks"], a:1,
+   why:"\"scientists followed thousands of adults for eight years\""},
+  {type:"mcq", q:"Which group was among the HEALTHIEST people in the whole study?", o:["People with very little stress","People with high stress who thought stress was harmful","People with high stress who did NOT see stress as harmful","People who never answered the questions"], a:2,
+   why:"This is the surprising result — the belief, not the amount of stress, made the difference."},
+  {type:"short", q:"Name THREE physical or emotional states Nadia mentions for a hard week.", keys:["uneasy","anxious","irritable","exhausted","drained","restless","tense","discouraged","frustrated","overwhelmed"],
+   model:"Any three of: slightly uneasy, fairly anxious, rather irritable, utterly exhausted, drained, restless, tense, discouraged, frustrated, completely overwhelmed."},
+  {type:"short", q:"What TWO questions did the scientists ask?", keys:["how much stress","believe","harmful","bad for"],
+   model:"How much stress have you experienced this year? And: do you believe that stress is harmful to your health?"},
+  {type:"short", q:"What are the TWO ways of reading the signal of a pounding heart?", keys:["anxiety","cope","energy","perform","preparing"],
+   model:"Either \"this is anxiety, I can't cope\", or \"this is energy, my body is preparing me to perform\"."},
+  {type:"short", q:"According to the last discovery, what does stress push us to do — apart from running away?", keys:["connect","support","help","others"],
+   model:"It pushes us to connect: to seek support and to help others — and helping others protects our own health."},
+  {type:"mcq", q:"Complete the final sentence: \"You cannot always choose your stress. But you can choose ___\"", o:["the exam you take","the story you tell about it","how much homework you get","the people in your class"], a:1,
+   why:"The closing line of the episode, and the thesis of the whole talk."},
+  {type:"short", q:"What does Nadia call the belief you hold about stress?", keys:["mindset","stress mindset"],
+   model:"Your stress mindset — \"Psychologists call this your stress mindset.\""}
+ ]},
+ ladders:[
+  {name:"Happiness", words:["content","happy","delighted","over the moon"], note:"weakest → strongest"},
+  {name:"Anger", words:["annoyed","angry","furious","livid"], note:"weakest → strongest"},
+  {name:"Worry", words:["uneasy","worried","anxious","panicked"], note:"weakest → strongest"},
+  {name:"Tiredness", words:["tired","worn out","exhausted","burnt out"], note:"weakest → strongest"}
+ ]
+},
+
+/* -------------------------------------------------- B2 */
+B2:{ label:"B2", sub:"Upper-Intermediate", words:450, mins:"30–35 min", plays:2,
+ title:"Episode 4 — The stress mindset, with Dr Okonjo",
+ desc:"Two speakers, natural pace, FCE-style questions. You may listen twice.",
+ script:[
+  {w:"host", t:"Welcome back to the Wellbeing Podcast. I'm Nadia, and my guest today is Dr Amara Okonjo, who researches stress in adolescents. Dr Okonjo, students tell me they're stressed. Is that a useful word?"},
+  {w:"guest", t:"It's a useful starting point, but it's far too blunt. Compare three students. One is slightly uneasy before a presentation. One is rather apprehensive about a result that arrives on Friday. One is utterly exhausted after a fortnight of deadlines. Those are three different problems, and they need three different solutions."},
+  {w:"host", t:"So precision matters."},
+  {w:"guest", t:"Precision is the whole intervention, in a sense. If a student can say I'm agitated rather than I'm fine, the conversation can begin. And notice the ladders. Annoyed, angry, furious, livid. Content, happy, delighted, over the moon. Down, sad, miserable, devastated. Each rung is a different level of intensity, and a fairly small vocabulary problem becomes a rather large emotional one."},
+  {w:"host", t:"Let's talk about the research that changed your field."},
+  {w:"guest", t:"In one American study, researchers followed thousands of adults for eight years, asking two questions: how much stress have you experienced, and do you believe stress is harmful to your health? People with high stress who believed it was harmful had a substantially higher risk of serious illness. But people with just as much stress who did not see it as harmful were among the healthiest in the entire sample. Healthier, in fact, than people reporting very little stress."},
+  {w:"host", t:"That's counter-intuitive. So the stress wasn't the problem?"},
+  {w:"guest", t:"The stress was not the whole story. Due to the belief attached to it, the same physiology produced different outcomes. We call it a stress mindset. Your heart pounds before an exam. That signal is ambiguous. Read it as threat — I'm anxious, I can't cope — and you become tense, restless, completely drained and frequently discouraged. Read it as challenge — this is energy, my body is pumping oxygen to my brain so that I can perform — and confidence rises. Therefore performance often rises with it, because you are ready to rise to the challenge."},
+  {w:"host", t:"Is it really that simple? Just tell yourself a better story?"},
+  {w:"guest", t:"No, and I want to be careful here. Reframing does not repair a timetable with four assessments in one week. If a student is drained and frustrated because of genuine overload, the honest answer is that the load must change. Reframing helps you meet a challenge; it doesn't invent extra hours."},
+  {w:"host", t:"There's one more finding I loved."},
+  {w:"guest", t:"Yes. Stress doesn't only trigger the impulse to escape. It also drives us towards other people. Since pressure makes us more likely to seek support — and, interestingly, to offer it — the social response protects our health. So when a student feels overwhelmed and irritable, the instinct to withdraw is exactly backwards. As a result, my advice is short. Name the feeling precisely. Read the signal as energy. And ask somebody for help before you are at breaking point."},
+  {w:"host", t:"Dr Okonjo, thank you. Next week: sleep, and why revising at two in the morning is so expensive that it costs you the exam."}
+ ],
+ predict:{q:"Before you listen — which claim do you expect Dr Okonjo to make?",
+  o:["Stress should be eliminated from schools entirely.","The belief you attach to stress changes its physical effect — but reframing has limits.","Only students who exercise can manage stress."], a:1},
+ qs:{kind:"gap", title:"Sentence completion (FCE Listening Part 2 style)", hint:"Complete each sentence with a word or short phrase you hear. Write NO MORE THAN THREE WORDS in each gap.", items:[
+  {pre:"Dr Okonjo says the word 'stressed' is useful as a starting point, but far too", post:".", a:["blunt"]},
+  {pre:"The researchers followed thousands of adults for", post:"years.", a:["eight","8"]},
+  {pre:"People with high stress who did not see it as harmful were among the", post:"in the entire sample.", a:["healthiest"]},
+  {pre:"Dr Okonjo calls the belief a person attaches to stress a stress", post:".", a:["mindset"]},
+  {pre:"If you read the signal as threat, you become tense, restless and frequently", post:".", a:["discouraged"]},
+  {pre:"Reframing helps you meet a challenge, but it does not invent extra", post:".", a:["hours"]},
+  {pre:"Pressure makes us more likely to", post:"— and to offer it.", a:["seek support"]},
+  {pre:"Her final advice is to ask somebody for help before you are at", post:".", a:["breaking point"]}
+ ]},
+ extra:{kind:"mcq", title:"Attitude and inference", hint:"Two questions about what the speakers mean, not just what they say.", items:[
+  {q:"Why does Dr Okonjo say \"I want to be careful here\"?",
+   o:["She is worried the interviewer has misunderstood the study design.","She wants to avoid the conclusion that positive thinking fixes a genuinely overloaded timetable.","She is not sure the research has been published yet.","She thinks students should not hear about the research at all."], a:1,
+   why:"She immediately adds that if the overload is real, \"the load must change\" — reframing has limits, and she does not want to be heard as blaming students."},
+  {q:"What does she mean when she says the instinct to withdraw is \"exactly backwards\"?",
+   o:["Students should study alone more often when they feel irritable.","Withdrawing is the correct response but students do it too late.","Stress makes us want to isolate ourselves at precisely the moment when connection would protect us.","Teachers should not ask stressed students any questions."], a:2,
+   why:"The social response — seeking and offering support — is protective; the impulse to hide runs in the opposite direction to what actually helps."}
+ ]},
+ ladders:[
+  {name:"Happiness", words:["content","happy","delighted","over the moon"], note:"weakest → strongest"},
+  {name:"Anger", words:["annoyed","angry","furious","livid"], note:"weakest → strongest"},
+  {name:"Worry", words:["uneasy","worried","anxious","panicked"], note:"weakest → strongest"},
+  {name:"Tiredness", words:["tired","worn out","exhausted","burnt out"], note:"burnt out = long-term"},
+  {name:"Sadness", words:["down","sad","miserable","devastated"], note:"weakest → strongest"}
+ ]
+},
+
+/* -------------------------------------------------- C1 */
+C1:{ label:"C1", sub:"Advanced", words:540, mins:"35–40 min", plays:2,
+ title:"Episode 4 — What the stress research does and doesn't prove",
+ desc:"Two speakers, unsimplified. Includes a critical evaluation of the evidence. Two listenings.",
+ script:[
+  {w:"host", t:"Welcome back to the Wellbeing Podcast. My guest is Dr Amara Okonjo, who researches adolescent stress. Dr Okonjo, every wellbeing assembly I've ever sat through begins with the sentence stress is bad for you. Is it?"},
+  {w:"guest", t:"It's a serviceable slogan and a poor summary. Begin with the vocabulary, because the vocabulary is where the trouble starts. A student who is slightly uneasy before a seminar, one who is rather apprehensive about a result due on Friday, one who is completely exhausted after a fortnight of deadlines, and one who is utterly despondent after a term of near-misses are not experiencing the same condition. Collapse all four into stressed and you have guaranteed that nobody receives the right help."},
+  {w:"host", t:"So the imprecision is itself part of the harm."},
+  {w:"guest", t:"It is. And notice how the ladders work. Annoyed, angry, furious, livid. Down, sad, miserable, devastated. Uneasy, worried, anxious, panicked. Each rung carries different information. There's a grammatical point buried in there, too: you can be fairly irritable, really tense or rather agitated, because those adjectives are gradable, but you cannot be slightly devastated. Devastated is a limit adjective. It has no dimmer switch."},
+  {w:"host", t:"Let's come to the study everyone quotes."},
+  {w:"guest", t:"American researchers tracked thousands of adults across eight years, asking two things: how much stress have you experienced, and do you believe stress is harmful to your health? Those reporting high stress who also believed it was harmful showed a substantially elevated risk of serious illness. Those reporting equally high stress who did not regard it as harmful were among the healthiest in the sample — healthier, remarkably, than respondents reporting very little stress at all."},
+  {w:"host", t:"Which is the finding that launched a thousand assemblies."},
+  {w:"guest", t:"And here I must be a spoilsport, because the study is observational, not experimental. Nobody assigned people to a belief. So the causal arrow may run backwards: people who are already healthy, well-supported and financially secure may find it considerably easier, because of those very circumstances, to regard stress as benign. Optimism, income and social support are all plausible confounders. And the measures are self-reported, which is to say approximate."},
+  {w:"host", t:"So should we stop telling students to reframe?"},
+  {w:"guest", t:"No — because the laboratory work is stronger than the survey. When you train participants to reinterpret a pounding heart — not as I can't cope, but as oxygen reaching the brain — you can measure the difference: they report greater confidence, their blood vessels behave differently, and they frequently perform better. They rise to the challenge. That's an experiment. What I object to is the leap from that finding to the claim that mindset is sufficient. If a fifteen-year-old is drained, restless, frustrated and discouraged, permanently on edge due to four assessments in one week, then the timetable is the pathology, and no amount of narrative repair will fix it. Therefore the honest formulation is: reframing helps you meet a challenge you have the resources to meet."},
+  {w:"host", t:"And the social finding?"},
+  {w:"guest", t:"That one I'd defend vigorously. Stress does not merely trigger flight; it drives affiliation. Since pressure makes us more inclined to seek support — and, crucially, to give it — the social response appears genuinely protective. Which makes the adolescent instinct to withdraw when overwhelmed almost perfectly counterproductive. As a result, my practical advice is unglamorous. Name the state precisely: apprehensive is not agitated, and neither is despondent. Read the signal as preparation rather than malfunction. And ask for help while you still have the capacity to describe what's wrong — not at breaking point, when you can't."},
+  {w:"host", t:"Dr Okonjo, thank you."}
+ ],
+ predict:{q:"Before you listen — what position do you expect Dr Okonjo to take?",
+  o:["That the stress-mindset research is flawed and should be ignored.","That reframing works, and structural workload is irrelevant.","That the belief matters, but the famous study has real methodological limits."], a:2},
+ qs:{kind:"mcq", title:"Inference and attitude", hint:"Six questions. Only one option in each is fully defensible from what you actually heard.", items:[
+  {q:"Dr Okonjo calls \"stress is bad for you\" a \"serviceable slogan and a poor summary\". What does this pairing convey?",
+   o:["That the phrase is useful for getting attention but misrepresents the evidence.","That she has never heard the phrase used in schools before.","That schools should repeat the phrase more often.","That the phrase was invented by the researchers themselves."], a:0,
+   why:"\"Serviceable\" concedes practical usefulness; \"poor summary\" withdraws accuracy. She is criticising the compression, not the intention."},
+  {q:"What is her point about \"slightly devastated\"?",
+   o:["That students overuse the word devastated in their writing.","That devastated is a limit adjective and cannot be graded, unlike irritable or agitated.","That devastated is stronger than livid and belongs on a different ladder.","That intensity adverbs should never be used with emotion adjectives."], a:1,
+   why:"Gradable adjectives take slightly/fairly/rather; limit adjectives like devastated do not — \"It has no dimmer switch.\""},
+  {q:"Why does she describe herself as \"a spoilsport\"?",
+   o:["Because she dislikes appearing on podcasts about wellbeing.","Because she is about to complicate a finding the audience enjoys, by pointing out it is observational.","Because she disagrees with the interviewer's opening question.","Because she believes the researchers falsified their data."], a:1,
+   why:"The word marks a deliberate deflation: she is about to withhold the satisfying conclusion by naming the study's design limits."},
+  {q:"What does \"the causal arrow may run backwards\" mean here?",
+   o:["The study measured the wrong kind of stress entirely.","Being healthy and well-supported may be what makes it easy to see stress as benign — not the reverse.","Stress causes health problems only in older adults.","The researchers reversed their results by accident."], a:1,
+   why:"Observational data cannot separate cause from consequence: the belief may be a symptom of a comfortable life rather than the engine of good health."},
+  {q:"Why does she consider the laboratory work stronger than the survey?",
+   o:["Because more people took part in the laboratory studies.","Because participants are randomly assigned and trained, so the reinterpretation itself is the variable being tested.","Because laboratory studies lasted longer than eight years.","Because the laboratory results were published more recently."], a:1,
+   why:"\"That's an experiment.\" Assignment and training turn the belief from something observed into something manipulated — which licenses a causal claim."},
+  {q:"What does she mean by \"the timetable is the pathology\"?",
+   o:["That students should be taught to read timetables more carefully.","That the school day should start later in the morning.","That when overload is structural, the illness is in the schedule, not in the student's attitude.","That teachers set assessments without consulting each other."], a:2,
+   why:"She relocates the diagnosis from the individual to the institution — which is exactly why she refuses to let reframing be described as sufficient."}
+ ]},
+ extra:{kind:"open", title:"Critical response — self-assessed", hint:"Write your answer, reveal the model, and mark yourself honestly.", items:[
+  {q:"Dr Okonjo both defends and limits the stress-mindset idea. Summarise her position in two sentences.",
+   model:"She accepts that reinterpreting stress signals produces measurable benefits, because the laboratory studies manipulate the belief directly rather than merely observing it. But she rejects the stronger claim that mindset is sufficient: where the overload is structural, the workload — not the student's attitude — is what has to change."},
+  {q:"Which of her criticisms of the eight-year study do you find most damaging, and why?",
+   model:"Strong answers pick reverse causation (health and security may produce the benign belief, not the other way round) and explain why an observational design cannot rule it out. Confounders — optimism, income, social support — and self-reported measures are also defensible choices if the reasoning is explicit."},
+  {q:"She calls the instinct to withdraw \"almost perfectly counterproductive\". How does the social finding support that judgement, and what would you add?",
+   model:"If stress drives affiliation, and seeking and giving support is itself protective, then isolating yourself removes the very mechanism that mitigates the harm — you keep the physiological load and discard the buffer. A good addition notes that withdrawal is also self-concealing: it hides the problem from the people who could reduce it, which links directly back to the essay in Session 2."}
+ ]},
+ ladders:[
+  {name:"Happiness", words:["content","happy","delighted","over the moon"], note:"weakest → strongest"},
+  {name:"Anger", words:["annoyed","angry","furious","livid"], note:"furious / livid debatable — be ready to justify"},
+  {name:"Worry", words:["uneasy","worried","anxious","panicked"], note:"weakest → strongest"},
+  {name:"Tiredness", words:["tired","worn out","exhausted","burnt out"], note:"burnt out = long-term, not one bad night"},
+  {name:"Sadness", words:["down","sad","miserable","devastated"], note:"devastated is a limit adjective"}
+ ]
+}
+};
+
+/* ============================================================
+   ENGINE
+   ============================================================ */
+const LV = ["A2","B1","B2","C1"];
+let cur = localStorage.getItem("u4ls_lv") || "A2";
+let store = {};
+try{ store = JSON.parse(localStorage.getItem("u4ls_store")||"{}"); }catch(e){ store={}; }
+function slot(){ store[cur] = store[cur] || {ans:{}, self:{}, plays:0, done:false}; return store[cur]; }
+function save(){ localStorage.setItem("u4ls_store", JSON.stringify(store)); localStorage.setItem("u4ls_lv", cur); }
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const norm = s => String(s).toLowerCase().replace(/[’']/g,"'").replace(/[^a-z0-9' ]/g," ").replace(/\s+/g," ").trim();
+/* real length of each script — never let the label drift from the audio */
+const wc = l => (DATA[l].script.map(t=>t.t).join(" ").match(/\S+/g)||[]).length;
+
+/* ---------- audio ----------
+   Primary: real ElevenLabs recordings (audio/listening/u4-<LEVEL>.mp3 + manifest.json).
+   Fallback: the browser's own voice, if the mp3 is missing or fails to load.        */
+let MANIFEST = null, audioEl = null, curTurn = -1;
+const mp3 = () => MANIFEST && MANIFEST[cur];
+const mmss = t => { t = Math.max(0, Math.round(t||0)); return Math.floor(t/60) + ":" + String(t%60).padStart(2,"0"); };
+
+/* ---------- speech (fallback) ---------- */
+let voices = [], vA = null, vB = null, rate = .92;
+let queue = [], qi = 0, playing = false, keepAlive = null;
+
+function loadVoices(){
+  const all = window.speechSynthesis ? (speechSynthesis.getVoices()||[]) : [];
+  const en  = all.filter(v=>/^en(-|_|$)/i.test(v.lang));
+  voices = en.length ? en : all;                     // fall back to every voice if no English one
+  const pick = pats => voices.find(v => pats.some(p => v.name.toLowerCase().includes(p)));
+  vA = pick(["libby","sonia","aria","google uk english female","hazel","zira","samantha"]) || voices[0] || null;
+  vB = pick(["ryan","guy","google uk english male","george","david","daniel"]) || voices.find(v=>v!==vA) || vA;
+  const sel = document.getElementById("vsel");
+  if(sel){
+    sel.innerHTML = voices.length
+      ? voices.map((v,i)=>`<option value="${i}">${esc(v.name.replace(/Microsoft |Google /,""))} · ${v.lang}</option>`).join("")
+      : `<option>system default</option>`;
+    if(voices.length) sel.value = Math.max(0, voices.indexOf(vA));
+  }
+  const nv = document.getElementById("novoice");
+  if(nv) nv.style.display = en.length ? "none" : "block";
+}
+if(window.speechSynthesis){ speechSynthesis.onvoiceschanged = loadVoices; }
+
+/* split long turns into sentences — Chrome truncates long utterances */
+function buildQueue(){
+  const q = [];
+  DATA[cur].script.forEach((t,ti)=>{
+    (t.t.match(/[^.!?]+[.!?]*/g)||[t.t]).forEach(s=>{
+      s = s.trim(); if(s) q.push({w:t.w, t:s, ti});
+    });
+  });
+  return q;
+}
+function speakNext(){
+  if(!playing) return;
+  if(qi >= queue.length){ stopAudio(true); return; }
+  const it = queue[qi];
+  const u = new SpeechSynthesisUtterance(it.t);
+  u.voice = it.w === "guest" ? vB : vA;
+  u.lang  = (u.voice && u.voice.lang) || "en-GB";
+  u.rate  = rate;
+  u.pitch = it.w === "guest" ? 1.06 : 0.96;
+  u.onend = ()=>{
+    qi++;
+    const gap = /[.!?]$/.test(it.t) && (queue[qi] && queue[qi].ti !== it.ti) ? 620 : 180;
+    setTimeout(speakNext, gap);
+  };
+  u.onerror = ()=>{ qi++; setTimeout(speakNext, 120); };
+  showNow(it);
+  speechSynthesis.speak(u);
+  drawPlayer();
+}
+function startAudio(){
+  const s = slot(), max = DATA[cur].plays;
+  if(s.plays >= max) return;
+  s.plays++; save();
+  playing = true;
+  if(mp3()){
+    curTurn = -1;
+    audioEl.currentTime = 0;
+    audioEl.play().catch(()=>{ /* autoplay blocked → user taps again */ });
+    drawPlayer(); return;
+  }
+  queue = buildQueue(); qi = 0;
+  speechSynthesis.cancel();
+  clearInterval(keepAlive);
+  keepAlive = setInterval(()=>{ if(playing && !speechSynthesis.paused){ speechSynthesis.pause(); speechSynthesis.resume(); } }, 9000);
+  speakNext(); drawPlayer();
+}
+function stopAudio(finished){
+  playing = false;
+  if(audioEl){ audioEl.pause(); if(!finished) audioEl.currentTime = 0; }
+  clearInterval(keepAlive);
+  if(window.speechSynthesis) speechSynthesis.cancel();
+  if(finished && !mp3()) qi = queue.length;
+  const n = document.getElementById("now"); if(n && finished) n.classList.remove("show");
+  drawPlayer();
+}
+function pauseAudio(){
+  if(!playing) return;
+  if(mp3()){ audioEl.paused ? audioEl.play() : audioEl.pause(); drawPlayer(); return; }
+  if(speechSynthesis.paused){ speechSynthesis.resume(); } else { speechSynthesis.pause(); }
+  drawPlayer();
+}
+function speakerName(w){ return w === "guest" ? "Dr Okonjo" : "Nadia (host)"; }
+function showNow(it){
+  const n = document.getElementById("now"); if(!n) return;
+  const two = DATA[cur].script.some(t=>t.w==="guest");
+  n.classList.add("show");
+  n.innerHTML = `<span class="who">${two ? speakerName(it.w) : "Nadia"}</span>` +
+                `<span style="opacity:.55">…listening…</span>`;
+}
+/* keep the "who is speaking" panel in sync with the recording */
+function syncTurn(){
+  const m = mp3(); if(!m || !audioEl) return;
+  const t = audioEl.currentTime;
+  const i = m.turns.findIndex(x => t >= x.start && t < x.end);
+  if(i !== curTurn){
+    curTurn = i;
+    const n = document.getElementById("now");
+    if(n && i >= 0){
+      const two = DATA[cur].script.some(x=>x.w==="guest");
+      n.classList.add("show");
+      n.innerHTML = `<span class="who">${two ? speakerName(m.turns[i].who) : "Nadia"} · part ${i+1} of ${m.turns.length}</span>` +
+                    `<span style="opacity:.55">…listening…</span>`;
+    }
+  }
+}
+
+/* ---------- tabs ---------- */
+function drawTabs(){
+  document.getElementById("tabs").innerHTML = LV.map(l=>{
+    const d = DATA[l], done = store[l] && store[l].done;
+    return `<button class="tab ${l===cur?'on':''} ${done?'done':''}" data-l="${l}">${d.label}<small>${d.sub} · ${wc(l)} words</small></button>`;
+  }).join("");
+  document.querySelectorAll(".tab").forEach(b=> b.onclick = ()=>{
+    stopAudio(); cur = b.dataset.l; save(); render(); window.scrollTo({top:0,behavior:"smooth"});
+  });
+}
+
+/* ---------- player ---------- */
+function drawPlayer(){
+  const d = DATA[cur], s = slot(), m = mp3();
+  const left = Math.max(0, d.plays - s.plays);
+  const pb = document.getElementById("pbig"), st = document.getElementById("pstop"),
+        pp = document.getElementById("ppause"), fl = document.getElementById("pfill"),
+        lf = document.getElementById("pleft"), tm = document.getElementById("ptime");
+  if(!pb) return;
+  const paused = m ? (audioEl && audioEl.paused) : (window.speechSynthesis && speechSynthesis.paused);
+  pb.textContent = playing ? "⏹" : "▶";
+  pb.disabled = !playing && left === 0;
+  pp.disabled = !playing;
+  pp.textContent = paused && playing ? "▶ Resume" : "⏸ Pause";
+  st.disabled = !playing;
+  if(m && audioEl){
+    const dur = audioEl.duration || m.duration || 0;
+    fl.style.width = dur ? Math.round(audioEl.currentTime/dur*100) + "%" : "0%";
+    if(tm) tm.textContent = `${mmss(audioEl.currentTime)} / ${mmss(dur)}`;
+  } else {
+    fl.style.width = queue.length ? Math.round(qi/queue.length*100) + "%" : "0%";
+    if(tm) tm.textContent = "";
+  }
+  lf.textContent = left ? `${left} listening${left>1?"s":""} left` : "no listenings left";
+}
+
+/* ---------- render ---------- */
+function render(){
+  drawTabs();
+  const d = DATA[cur], s = slot(), V = VOCAB[cur];
+  const two = d.script.some(t=>t.w==="guest");
+  let h = "";
+
+  /* player */
+  const m = mp3();
+  const voiceNames = m ? Object.values(m.voices||{}).join(" · ") : "";
+  h += `<div class="player">
+    <div class="ptitle">Audio · level ${d.label} · ${wc(cur)} words · ${two?"two speakers":"one speaker"} · ${d.mins}</div>
+    <h3>${esc(d.title)}</h3>
+    <p class="pdesc">${esc(d.desc)}</p>
+    ${m ? `<audio id="aud" preload="metadata" src="${esc(m.file)}"></audio>` : ""}
+    <div class="prow">
+      <button class="pbig" id="pbig">▶</button>
+      <button class="psmall" id="ppause">⏸ Pause</button>
+      <button class="psmall" id="pstop">⏹ Stop</button>
+      <div class="ptrack"><div class="pfill" id="pfill"></div></div>
+      <span id="ptime" style="font-size:.82rem; opacity:.9; font-variant-numeric:tabular-nums;"></span>
+    </div>
+    <div class="pmeta">
+      <span><b id="pleft">—</b></span>
+      ${m
+        ? `<span>🎙️ Recorded voices: <b>${esc(voiceNames)}</b></span>
+           <span style="opacity:.75">${mmss(m.duration)} of audio</span>`
+        : `<span>Speed
+            <select id="rsel">
+              <option value="0.8">Slow</option>
+              <option value="0.92" selected>Natural</option>
+              <option value="1">Faster</option>
+            </select></span>
+           <span>Voice <select id="vsel"></select></span>`}
+    </div>
+    <div class="now" id="now"></div>
+    <div class="warn">Like the real exam: <b>${d.plays} listening${d.plays>1?"s":""} only</b>, then the questions. Do not open the transcript first — it unlocks after you check your answers.</div>
+    ${m ? "" : `<div class="warn" id="novoice" style="display:none">⚠️ No English voice was found on this device, so the accent may sound wrong. Ask for an English (UK or US) voice to be installed, or open this page in <b>Chrome</b> or <b>Edge</b>.</div>`}
+    <div class="warn" id="audiofail" style="display:none">⚠️ The recording could not be loaded, so the browser voice is being used instead. Check your connection and reload.</div>
+  </div>`;
+
+  /* step 1 — target words + prediction */
+  h += `<section class="step"><h2>Step 1 — Before you listen</h2><h3>Words you are about to hear</h3>
+    <p class="hint">Every word below appears in this recording. Read them once — then listen for them.</p>
+    <div class="catlbl">Emotions (${V.emotions.length})</div>
+    <div class="chips">${V.emotions.map(w=>`<span class="chip">${esc(w)}</span>`).join("")}</div>
+    <div class="catlbl">Intensity adverbs (${V.adverbs.length})</div>
+    <div class="chips">${V.adverbs.map(w=>`<span class="chip adv">${esc(w)}</span>`).join("")}</div>
+    <div class="catlbl">Cause &amp; effect linkers (${V.linkers.length})</div>
+    <div class="chips">${V.linkers.map(w=>`<span class="chip link">${esc(w)}</span>`).join("")}</div>
+    <div class="catlbl">Mindset lexis (${V.lexis.length})</div>
+    <div class="chips">${V.lexis.map(w=>`<span class="chip link">${esc(w)}</span>`).join("")}</div>
+    <div class="q" style="margin-top:16px" data-b="pred"><p class="qt">${esc(d.predict.q)}</p>
+      ${d.predict.o.map((o,i)=>`<label class="opt ${s.ans.pred==i?'sel':''}" data-o="${i}">${esc(o)}</label>`).join("")}</div>
+  </section>`;
+
+  /* step 2 — main questions */
+  h += qblock("qs", d.qs, 2);
+  /* step 3 — extra (B2/C1) */
+  let n = 3;
+  if(d.extra){ h += qblock("extra", d.extra, n); n++; }
+
+  /* ladders */
+  h += `<section class="step" data-b="lad"><h2>Step ${n}</h2><h3>Intensity ladders</h3>
+    <p class="hint">Click the words in order, from the <b>weakest</b> to the <b>strongest</b>. Click a word again to remove it.</p>
+    ${d.ladders.map((L,li)=>{
+      const order = (s.ans["lad"+li]||[]);
+      const shuf = shuffle(L.words, li*7+3);
+      return `<div class="ladder" data-l="${li}"><h4>${esc(L.name)}</h4><div class="lh">${esc(L.note)}</div>
+        <div class="rungs">${shuf.map(w=>{
+          const p = order.indexOf(w);
+          return `<button class="rung ${p>=0?'pick':''}" data-w="${esc(w)}" data-pos="${p>=0?p+1:''}">${esc(w)}</button>`;
+        }).join("")}</div>
+        <div class="sol">Correct order: <b>${L.words.join(" → ")}</b></div></div>`;
+    }).join("")}
+    <div class="btns"><button class="act b-check" data-check="lad">Check ladders</button>
+      <button class="act b-clear" data-clearlad="1">Clear</button></div>
+    <div class="res" id="res-lad"></div>
+  </section>`;
+  n++;
+
+  /* transcript */
+  h += `<section class="step" data-b="tsc"><h2>Step ${n}</h2><h3>Transcript</h3>${tscInner()}</section>`;
+
+  /* final */
+  h += `<div class="final"><h3>Session score</h3><div class="big" id="fscore">—</div>
+    <p id="fmsg">Check every section to see your total.</p>
+    <div class="btns" style="justify-content:center">
+      <button class="act" onclick="window.print()">🖨️ Print / Save as PDF</button>
+      <button class="act b-clear" data-reset="1">Clear this level</button></div></div>`;
+
+  document.getElementById("main").innerHTML = h;
+  wire(); loadVoices(); drawPlayer(); updateTotal();
+}
+
+/* transcript body — locked until the listening questions have been checked */
+function tscInner(){
+  const d = DATA[cur], V = VOCAB[cur], two = d.script.some(t=>t.w==="guest");
+  if(!slot().self.unlocked)
+    return `<div class="locked"><span class="lk">🔒</span>The transcript unlocks when you have checked the listening questions.<br>Listen first — that is the whole point.</div>`;
+  return `<p class="hint">Read while you listen a final time. The <mark>highlighted</mark> words are your target vocabulary.</p>
+    <div class="tsc show">${d.script.map(t=>`<p>${two?`<span class="who">${t.w==="guest"?"Dr Okonjo":"Nadia"}</span>`:""}${hi(esc(t.t), V)}</p>`).join("")}</div>`;
+}
+
+/* highlight target vocab in the transcript */
+function hi(html, V){
+  const all = [].concat(V.emotions, V.adverbs, V.lexis, V.linkers)
+                .map(w=>w.replace(/ … /g," (.{0,18}?)"))
+                .filter(w=>!/\(/.test(w) || true)
+                .sort((a,b)=>b.length-a.length)
+                .map(w=>w.replace(/[.*+?^${}()|[\]\\]/g,"\\$&").replace(/\\\(\\\.\\\{0,18\\\}\\\?\\\)/g,"(?:.{0,18}?)"));
+  try{
+    const re = new RegExp("\\b(?:" + all.join("|") + ")\\b", "gi");
+    return html.replace(re, m=>`<mark>${m}</mark>`);
+  }catch(e){ return html; }
+}
+
+function shuffle(arr, seed){
+  const a = arr.slice();
+  let r = seed;
+  const rnd = ()=> (r = (r*9301 + 49297) % 233280) / 233280;
+  for(let i=a.length-1;i>0;i--){ const j = Math.floor(rnd()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
+  return a;
+}
+
+/* ---------- question blocks ---------- */
+function qblock(id, b, stepNo){
+  const s = slot();
+  let inner = "";
+
+  if(b.kind==="tf"){
+    inner = b.items.map((it,i)=>{
+      const v = s.ans[id+i];
+      return `<div class="tfrow" data-i="${i}"><div class="txt"><b>${i+1}.</b> ${esc(it.t)}<div class="fix">${esc(it.fix)}</div></div>
+        <div class="tfbtns"><button class="tfb ${v===true?'sel':''}" data-tf="T">T</button><button class="tfb ${v===false?'sel':''}" data-tf="F">F</button></div></div>`;
+    }).join("");
+  }
+  else if(b.kind==="gap"){
+    inner = b.items.map((it,i)=>
+      `<div class="gapline" data-i="${i}"><b>${i+1}.</b> ${esc(it.pre)}
+        <input type="text" data-k="${id}${i}" value="${esc(s.ans[id+i]||"")}" placeholder="…"> ${esc(it.post)}</div>`).join("");
+  }
+  else if(b.kind==="mcq"){
+    inner = b.items.map((it,i)=>
+      `<div class="q" data-i="${i}"><p class="qt"><span class="n">${i+1}.</span>${esc(it.q)}</p>
+       ${it.o.map((o,j)=>`<label class="opt ${s.ans[id+i]==j?'sel':''}" data-o="${j}">${esc(o)}</label>`).join("")}
+       <div class="model"><b>Why:</b> ${esc(it.why)}</div></div>`).join("");
+  }
+  else if(b.kind==="open"){
+    inner = b.items.map((it,i)=>
+      `<div class="q" data-i="${i}"><p class="qt"><span class="n">${i+1}.</span>${esc(it.q)}</p>
+       <textarea data-k="${id}${i}" style="min-height:90px" placeholder="Your answer…">${esc(s.ans[id+i]||"")}</textarea>
+       <div class="model"><b>Model answer:</b> ${esc(it.model)}</div>
+       <div class="selfmark">Mark yourself: <button class="smb" data-sm="1">✔ Got it</button><button class="smb" data-sm="0.5">± Partly</button><button class="smb" data-sm="0">✘ Missed it</button></div></div>`).join("");
+  }
+  else if(b.kind==="mix"){
+    inner = b.items.map((it,i)=>{
+      if(it.type==="mcq")
+        return `<div class="q" data-i="${i}" data-t="mcq"><p class="qt"><span class="n">${i+1}.</span>${esc(it.q)}</p>
+          ${it.o.map((o,j)=>`<label class="opt ${s.ans[id+i]==j?'sel':''}" data-o="${j}">${esc(o)}</label>`).join("")}
+          <div class="model"><b>Why:</b> ${esc(it.why)}</div></div>`;
+      return `<div class="q" data-i="${i}" data-t="short"><p class="qt"><span class="n">${i+1}.</span>${esc(it.q)}</p>
+        <textarea data-k="${id}${i}" placeholder="Your answer…">${esc(s.ans[id+i]||"")}</textarea>
+        <div class="model"><b>Model answer:</b> ${esc(it.model)}</div>
+        <div class="selfmark">Mark yourself: <button class="smb" data-sm="1">✔ Got it</button><button class="smb" data-sm="0.5">± Partly</button><button class="smb" data-sm="0">✘ Missed it</button></div></div>`;
+    }).join("");
+  }
+
+  return `<section class="step" data-b="${id}"><h2>Step ${stepNo}</h2><h3>${esc(b.title)}</h3>
+    <p class="hint">${esc(b.hint)}</p>${inner}
+    <div class="btns"><button class="act b-check" data-check="${id}">Check answers</button></div>
+    <div class="res" id="res-${id}"></div></section>`;
+}
+
+/* ---------- wiring ---------- */
+function wire(){
+  const s = slot();
+  document.getElementById("pbig").onclick = ()=> playing ? stopAudio() : startAudio();
+  document.getElementById("ppause").onclick = pauseAudio;
+  document.getElementById("pstop").onclick = ()=> stopAudio();
+  const rs = document.getElementById("rsel"), vs2 = document.getElementById("vsel");
+  if(rs) rs.onchange = e=>{ rate = +e.target.value; };
+  if(vs2) vs2.onchange = e=>{ vA = voices[+e.target.value] || vA; vB = voices.find(v=>v!==vA) || vA; };
+
+  audioEl = document.getElementById("aud");
+  if(audioEl){
+    audioEl.ontimeupdate = ()=>{ syncTurn(); drawPlayer(); };
+    audioEl.onended = ()=> stopAudio(true);
+    audioEl.onplay = ()=> drawPlayer();
+    audioEl.onpause = ()=> drawPlayer();
+    audioEl.onerror = ()=>{                       // recording missing → browser voice
+      delete MANIFEST[cur];
+      const w = document.getElementById("audiofail"); if(w) w.style.display = "block";
+      audioEl = null; loadVoices();
+    };
+  }
+
+  document.querySelectorAll("textarea[data-k], input[type=text][data-k]").forEach(el=>{
+    el.oninput = ()=>{ s.ans[el.dataset.k] = el.value; save(); };
+  });
+  document.querySelectorAll(".opt").forEach(el=>{
+    el.onclick = ()=>{
+      const q = el.closest(".q"), sec = el.closest("section"), b = q.dataset.b || (sec && sec.dataset.b) || "pred";
+      const key = (q.dataset.b === "pred" || b === "pred") ? "pred" : b + q.dataset.i;
+      s.ans[key] = +el.dataset.o; save();
+      q.querySelectorAll(".opt").forEach(o=>o.classList.remove("sel"));
+      el.classList.add("sel");
+    };
+  });
+  document.querySelectorAll(".tfb").forEach(el=>{
+    el.onclick = ()=>{
+      const row = el.closest(".tfrow"), b = row.closest("section").dataset.b;
+      s.ans[b + row.dataset.i] = (el.dataset.tf === "T"); save();
+      row.querySelectorAll(".tfb").forEach(x=>x.classList.remove("sel"));
+      el.classList.add("sel");
+    };
+  });
+  document.querySelectorAll(".smb").forEach(el=>{
+    el.onclick = ()=>{
+      const q = el.closest(".q"), b = q.closest("section").dataset.b;
+      s.self[b + q.dataset.i] = +el.dataset.sm; save();
+      q.querySelectorAll(".smb").forEach(x=>x.classList.remove("sel"));
+      el.classList.add("sel"); updateTotal();
+    };
+  });
+  document.querySelectorAll(".rung").forEach(el=>{
+    el.onclick = ()=>{
+      const lad = el.closest(".ladder"), li = lad.dataset.l, w = el.dataset.w;
+      const arr = s.ans["lad"+li] || [];
+      const at = arr.indexOf(w);
+      if(at >= 0) arr.splice(at,1); else arr.push(w);
+      s.ans["lad"+li] = arr; save();
+      lad.querySelectorAll(".rung").forEach(r=>{
+        const p = arr.indexOf(r.dataset.w);
+        r.classList.toggle("pick", p>=0);
+        r.classList.remove("ok","ko");
+        r.dataset.pos = p>=0 ? p+1 : "";
+      });
+      lad.querySelector(".sol").classList.remove("show");
+    };
+  });
+  document.querySelectorAll("[data-check]").forEach(b=> b.onclick = ()=> check(b.dataset.check));
+  document.querySelectorAll("[data-clearlad]").forEach(b=> b.onclick = ()=>{
+    DATA[cur].ladders.forEach((L,li)=> delete s.ans["lad"+li]);
+    delete s.self["_lad"]; save(); render();
+  });
+  document.querySelectorAll("[data-reset]").forEach(b=> b.onclick = ()=>{
+    if(confirm("Clear all your answers for level " + cur + " (including the listening count)?")){
+      delete store[cur]; save(); stopAudio(); render();
+    }
+  });
+  /* restore self-marks */
+  ["qs","extra"].forEach(b=>{
+    document.querySelectorAll(`section[data-b="${b}"] .q`).forEach(q=>{
+      const v = s.self[b + q.dataset.i];
+      if(v===undefined) return;
+      q.querySelectorAll(".model,.selfmark").forEach(m=>m.classList.add("show"));
+      q.querySelectorAll(".smb").forEach(x=> x.classList.toggle("sel", +x.dataset.sm === v));
+    });
+  });
+}
+
+/* ---------- checking ---------- */
+function check(id){
+  const d = DATA[cur], s = slot();
+  let got=0, tot=0;
+
+  if(id==="lad"){
+    d.ladders.forEach((L,li)=>{
+      const lad = document.querySelector(`.ladder[data-l="${li}"]`);
+      const arr = s.ans["lad"+li] || [];
+      let ok = 0;
+      lad.querySelectorAll(".rung").forEach(r=>{
+        const w = r.dataset.w, pos = arr.indexOf(w), right = L.words.indexOf(w);
+        r.classList.remove("ok","ko");
+        if(pos === right){ r.classList.add("ok"); ok++; }
+        else if(pos >= 0 || arr.length) r.classList.add("ko");
+      });
+      lad.querySelector(".sol").classList.add("show");
+      tot += L.words.length; got += ok;
+    });
+    s.self["_lad"] = got; s.self["_lad_tot"] = tot; save();
+    return showRes("lad", got, tot);
+  }
+
+  const b = id==="qs" ? d.qs : d.extra;
+  const sec = document.querySelector(`section[data-b="${id}"]`);
+
+  if(b.kind==="tf"){
+    b.items.forEach((it,i)=>{
+      tot++; const row = sec.querySelector(`.tfrow[data-i="${i}"]`);
+      row.classList.remove("ok","ko");
+      const v = s.ans[id+i];
+      if(v===it.a){ got++; row.classList.add("ok"); } else if(v!==undefined){ row.classList.add("ko"); }
+      row.querySelector(".fix").classList.add("show");
+    });
+    s.self["_"+id] = got; s.self["_"+id+"_tot"] = tot;
+  }
+  else if(b.kind==="gap"){
+    b.items.forEach((it,i)=>{
+      tot++; const inp = sec.querySelector(`input[data-k="${id}${i}"]`);
+      inp.classList.remove("ok","ko");
+      const v = norm(inp.value);
+      if(v && it.a.some(a=>norm(a)===v)){ got++; inp.classList.add("ok"); }
+      else { inp.classList.add("ko"); inp.value = it.a[0]; s.ans[id+i] = it.a[0]; }
+    });
+    s.self["_"+id] = got; s.self["_"+id+"_tot"] = tot;
+  }
+  else if(b.kind==="mcq"){
+    b.items.forEach((it,i)=>{
+      tot++; const q = sec.querySelector(`.q[data-i="${i}"]`);
+      q.querySelectorAll(".opt").forEach((o,j)=>{
+        o.classList.remove("ok","ko");
+        if(j===it.a) o.classList.add("ok");
+        else if(s.ans[id+i]==j) o.classList.add("ko");
+      });
+      q.querySelector(".model").classList.add("show");
+      if(s.ans[id+i]===it.a) got++;
+    });
+    s.self["_"+id] = got; s.self["_"+id+"_tot"] = tot;
+  }
+  else if(b.kind==="open"){
+    b.items.forEach((it,i)=>{
+      tot++; const q = sec.querySelector(`.q[data-i="${i}"]`);
+      if(s.self[id+i]===undefined) s.self[id+i] = 0;
+      got += s.self[id+i];
+      q.querySelectorAll(".model,.selfmark").forEach(m=>m.classList.add("show"));
+      q.querySelectorAll(".smb").forEach(x=> x.classList.toggle("sel", +x.dataset.sm === s.self[id+i]));
+    });
+  }
+  else if(b.kind==="mix"){
+    b.items.forEach((it,i)=>{
+      tot++; const q = sec.querySelector(`.q[data-i="${i}"]`);
+      if(it.type==="mcq"){
+        q.querySelectorAll(".opt").forEach((o,j)=>{
+          o.classList.remove("ok","ko");
+          if(j===it.a) o.classList.add("ok");
+          else if(s.ans[id+i]==j) o.classList.add("ko");
+        });
+        q.querySelector(".model").classList.add("show");
+        if(s.ans[id+i]===it.a){ got++; s.self[id+i] = 1; } else s.self[id+i] = 0;
+      } else {
+        const v = norm(s.ans[id+i]||"");
+        const hits = it.keys.filter(k=>v.includes(norm(k))).length;
+        if(s.self[id+i]===undefined) s.self[id+i] = (v.length>8 && hits>0) ? 1 : 0;
+        got += s.self[id+i];
+        q.querySelectorAll(".model,.selfmark").forEach(m=>m.classList.add("show"));
+        q.querySelectorAll(".smb").forEach(x=> x.classList.toggle("sel", +x.dataset.sm === s.self[id+i]));
+      }
+    });
+  }
+
+  if(id==="qs"){
+    s.self.unlocked = true;
+    const sec = document.querySelector('section[data-b="tsc"]');
+    if(sec) sec.innerHTML = `<h2>${sec.querySelector("h2").textContent}</h2><h3>Transcript</h3>` + tscInner();
+  }
+  save();
+  showRes(id, got, tot);
+}
+
+function showRes(id, got, tot){
+  const el = document.getElementById("res-"+id); if(!el) return;
+  const pc = tot ? got/tot : 0, g = Math.round(got*10)/10;
+  el.className = "res show " + (pc>=.8?"ok":pc>=.5?"mid":"ko");
+  el.textContent = pc>=.8 ? `Excellent — ${g} / ${tot}. Your ear is working.`
+                 : pc>=.5 ? `${g} / ${tot} — read the corrections, then listen once more with the transcript.`
+                 : `${g} / ${tot} — open the transcript and find each answer in the text. That is how you train the ear.`;
+  updateTotal();
+}
+
+function updateTotal(){
+  const d = DATA[cur], s = slot();
+  const ids = ["qs", d.extra?"extra":null, "lad"].filter(Boolean);
+  let got=0, tot=0, done=0;
+  ids.forEach(id=>{
+    const b = id==="lad" ? {items:d.ladders.flatMap(L=>L.words)} : (id==="qs"?d.qs:d.extra);
+    tot += id==="lad" ? d.ladders.reduce((a,L)=>a+L.words.length,0) : b.items.length;
+    if(b.kind==="open" || b.kind==="mix"){
+      let any=false, sum=0;
+      b.items.forEach((it,i)=>{ if(s.self[id+i]!==undefined){ sum += s.self[id+i]; any=true; } });
+      got += sum; if(any) done++;
+    } else if(s.self["_"+id]!==undefined){ got += s.self["_"+id]; done++; }
+  });
+  const fs = document.getElementById("fscore"), fm = document.getElementById("fmsg");
+  if(!fs) return;
+  if(!done){ fs.textContent="—"; fm.textContent="Check every section to see your total."; return; }
+  const p = tot ? Math.round(got/tot*100) : 0;
+  fs.textContent = p + "%";
+  fm.textContent = `${Math.round(got*10)/10} / ${tot} across the ${done} section${done>1?"s":""} you have checked · level ${d.label}`;
+  if(done === ids.length){ s.done = true; save(); drawTabs(); }
+}
+
+/* load the recordings manifest, then draw. Missing manifest = browser voice. */
+loadVoices();
+fetch("audio/listening/manifest.json", {cache:"no-store"})
+  .then(r => r.ok ? r.json() : null)
+  .then(m => { MANIFEST = m || {}; render(); })
+  .catch(() => { MANIFEST = {}; render(); });
+</script>
+</body>
+</html>
