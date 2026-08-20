@@ -62,7 +62,7 @@
 <meta name="google" content="notranslate">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js?v=18"></script>
-<script src="g2-u4-data.js?v=1"></script>
+<script src="g2-u4-data.js?v=2"></script>
 <script src="nis-nav.js?v=1"></script>
 </head>
 <body>
@@ -151,7 +151,7 @@ function step(){
     <div class="counter">${counter.length
       ? counter.map(ic=>`<span class="item">${ic}</span>`).join('')
       : '<span class="placeholder">Your kitchen counter is empty…</span>'}</div>
-    <div class="instruction">${st.say} <button class="speaker" onclick="G.say('${st.say.replace(/'/g,"\\'")}')">🔊</button></div>
+    <div class="instruction">${st.say} <button class="speaker" onclick="G.say('${st.say.replace(/'/g,"\\'")}',null,'step-${recipe.key}-${si+1}')">🔊</button></div>
     <div style="font-weight:800;color:var(--muted)">Touch what you need!</div>
     <div class="shelf">${shelf.map(w=>`
       <div class="item-card${counter.includes(G.ICO[w])&&!recipe.steps.slice(si).some(s=>s.need===w)?' gone':''}"
@@ -160,7 +160,7 @@ function step(){
       </div>`).join('')}
     </div>
     <div class="msg" id="msg"></div>`;
-  setTimeout(()=>G.say(st.say), 400);
+  setTimeout(()=>G.say(st.say, null, 'step-'+recipe.key+'-'+(si+1)), 400);
 }
 window.pick = (el)=>{
   const st=recipe.steps[si];
@@ -173,7 +173,7 @@ window.pick = (el)=>{
   }else{
     tries++; el.classList.add('ko'); G.buzz();
     document.getElementById('msg').textContent='🙈 Not that one… listen again!';
-    G.say(st.say);
+    G.say(st.say, null, 'step-'+recipe.key+'-'+(si+1));
     setTimeout(()=>el.classList.remove('ko'), 450);
     if(tries>=2){
       const okEl=[...document.querySelectorAll('.item-card')].find(p=>p.dataset.w===st.need);
@@ -187,7 +187,7 @@ function finish(){
   const dur=Math.round((Date.now()-t0)/1000);
   G.setBest('little-chef:'+recipe.key, pct);
   G.fanfare(); G.confetti(36);
-  G.say('You made '+recipe.name+'! Great job, chef!');
+  G.say('You made '+recipe.name+'! Great job, chef!', null, 'done-'+recipe.key);
   document.getElementById('stage').innerHTML=`
     <div class="end">
       <div class="trophy">${recipe.dish}</div>
