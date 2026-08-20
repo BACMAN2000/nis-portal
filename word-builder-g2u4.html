@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Spelling Chef — In the Kitchen · 2nd grade</title>
+<style>
+  :root{ --bg:#fff4f4; --card:#ffffff; --ink:#3a2a2a; --muted:#93777a;
+    --accent:#e64980; --accent-soft:#ffdeeb; --blue:#3b5bdb; --gold:#f5c518;
+    --good:#2f9e44; --good-soft:#d3f4dc; --bad:#e03131; --bad-soft:#ffe3e3; }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:'Segoe UI',system-ui,Arial,sans-serif; background:var(--bg); color:var(--ink); padding:18px; touch-action:manipulation;}
+  .topnav{position:sticky; top:0; z-index:30; background:#fff; display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+    padding:10px 18px; box-shadow:0 2px 10px rgba(70,30,40,.10); margin:-18px -18px 16px;}
+  .topnav img{height:32px; width:auto; display:block;}
+  .topnav .nav-sp{margin-left:auto;}
+  .navbtn{text-decoration:none; font-weight:700; font-size:.85rem; padding:8px 14px; border-radius:9px; white-space:nowrap;
+    background:var(--accent-soft); color:#a4114e; border:none; cursor:pointer;}
+  .navbtn.primary{background:var(--accent); color:#fff;}
+  header{max-width:900px; margin:0 auto 10px; text-align:center;}
+  header h1{font-size:1.6rem;}
+  header p{color:var(--muted); font-size:.95rem; margin-top:4px;}
+  .tabs{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin:14px auto;}
+  .tab{border:3px solid transparent; background:var(--card); color:var(--ink); padding:10px 18px; border-radius:24px;
+       font-weight:800; font-size:1rem; cursor:pointer; box-shadow:0 2px 6px rgba(70,30,40,.12);}
+  .tab.on{background:var(--accent); color:#fff;}
+  .tab small{display:block; font-weight:600; font-size:.68rem; color:var(--muted);}
+  .tab.on small{color:#ffdeeb;}
+  .tab .best{display:block; font-weight:600; font-size:.7rem; color:var(--good);}
+  .stage{max-width:820px; margin:0 auto; background:var(--card); border-radius:20px; padding:22px;
+         box-shadow:0 3px 14px rgba(70,30,40,.10); text-align:center;}
+  .progress{display:flex; gap:5px; justify-content:center; margin-bottom:10px;}
+  .dot{width:14px; height:14px; border-radius:50%; background:#f4dfe4;}
+  .dot.ok{background:var(--good);} .dot.half{background:var(--gold);} .dot.cur{outline:3px solid var(--accent);}
+  .bigico{font-size:4.6rem; line-height:1.1;}
+  .speaker{font-size:2.4rem; background:none; border:none; cursor:pointer; vertical-align:middle;}
+  .slots{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin:16px 0 6px;}
+  .slot{width:52px; height:58px; border-bottom:6px solid var(--accent-soft); border-radius:8px; background:#fff8fa;
+        display:flex; align-items:center; justify-content:center; font-weight:900; font-size:2rem; text-transform:uppercase;}
+  .slot.fill{border-color:var(--good); background:var(--good-soft); animation:pop .25s;}
+  .slot.space{border:none; background:none; width:22px;}
+  .tiles{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin:18px 0 6px;}
+  .tile{width:56px; height:60px; border-radius:12px; background:var(--accent-soft); border:none; cursor:pointer;
+        font-weight:900; font-size:1.7rem; text-transform:uppercase; color:#a4114e;
+        box-shadow:0 4px 0 #f3b9d2; -webkit-tap-highlight-color:transparent;}
+  .tile:active{transform:translateY(3px); box-shadow:0 1px 0 #f3b9d2;}
+  .tile.used{opacity:.25; pointer-events:none;}
+  .tile.ko{animation:shake .35s; background:var(--bad-soft); color:var(--bad);}
+  @keyframes pop{0%{transform:scale(.8);}100%{transform:scale(1);}}
+  @keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-7px);}75%{transform:translateX(7px);}}
+  .hintbtn{border:none; border-radius:12px; background:var(--gold); color:#fff; font-weight:800; font-size:1rem;
+           padding:10px 18px; cursor:pointer; margin-top:8px;}
+  .msg{min-height:1.5em; font-weight:800; font-size:1.1rem; margin-top:8px;}
+  .bigbtn{border:none; border-radius:16px; background:var(--blue); color:#fff; font-weight:800;
+          font-size:1.25rem; padding:16px 30px; cursor:pointer; box-shadow:0 4px 0 #2b46b3; margin-top:10px;}
+  .bigbtn:active{transform:translateY(3px); box-shadow:0 1px 0 #2b46b3;}
+  .end .trophy{font-size:4.5rem;}
+  .stars{font-size:1.8rem; letter-spacing:4px;}
+  footer{max-width:900px; margin:18px auto 0; text-align:center; color:var(--muted); font-size:.75rem;}
+  @media (max-width:480px){ body{padding:8px;} .topnav{margin:-8px -8px 12px; padding:8px 12px;} .stage{padding:14px;}
+    .slot{width:40px; height:48px; font-size:1.5rem;} .tile{width:46px; height:52px; font-size:1.4rem;} }
+</style>
+<meta name="google" content="notranslate">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+<script src="config.js?v=18"></script>
+<script src="g2-u4-data.js?v=1"></script>
+<script src="nis-nav.js?v=1"></script>
+</head>
+<body>
+<nav class="topnav">
+  <img src="assets/logo-h.svg" alt="Nordic International School" onerror="this.style.display='none'">
+  <span class="nav-sp"></span>
+  <a class="navbtn" href="activities.html">🎲 Actividades</a>
+  <a class="navbtn primary" href="./">🏫 Portal</a>
+</nav>
+<header>
+  <h1>👩‍🍳 Spelling Chef</h1>
+  <p>In the Kitchen · Unit 4 — Listen, look at the picture and build the word with the letters. 2nd grade · NIS English</p>
+</header>
+
+<div class="tabs" id="tabs"></div>
+<div class="stage" id="stage"></div>
+
+<footer>Unit 4 · In the Kitchen — 2nd grade Primary · Nordic International School</footer>
+
+<script>
+const G = window.G2U4;
+const ROUNDS = [
+  {key:'easy',   label:'🥚 Easy',   sub:'3–4 letters', words:['egg','ham','mix','cut','add','rice','milk','fish','meat','corn']},
+  {key:'medium', label:'🍞 Medium', sub:'5 letters',   words:['bread','apple','lemon','onion','pasta','plate','spoon','knife','glass','serve']},
+  {key:'hard',   label:'🍓 Hard',   sub:'long words',  words:['chicken','banana','carrot','cheese','yogurt','tomato','lettuce','squeeze','orange','strawberry']},
+];
+let round=null, order=[], qi=0, results=[], t0=0, misses=0, hinted=false, pos=0, target='';
+
+function drawTabs(){
+  document.getElementById('tabs').innerHTML = ROUNDS.map((r,i)=>{
+    const b=G.getBest('spelling:'+r.key);
+    return `<button class="tab${round===r?' on':''}" onclick="start(${i})">${r.label}<small>${r.sub}</small>`+
+      (b?`<span class="best">⭐ best ${b.pct}%</span>`:'')+`</button>`;
+  }).join('');
+}
+window.start = (i)=>{
+  round=ROUNDS[i];
+  order=G.shuffle(round.words).slice(0,10);
+  qi=0; results=[]; t0=Date.now();
+  drawTabs(); ask();
+};
+function progress(){
+  return '<div class="progress">'+order.map((_,i)=>{
+    const c=i===qi?' cur':'';
+    const r=results[i]==null?'':(results[i]===1?' ok':' half');
+    return '<div class="dot'+c+r+'"></div>';
+  }).join('')+'</div>';
+}
+function ask(){
+  if(qi>=order.length) return finish();
+  target=order[qi]; pos=0; misses=0; hinted=false;
+  const letters=target.replace(/ /g,'').split('');
+  /* fichas: las letras de la palabra + 2 letras trampa */
+  const decoys=[];
+  const ABC='abcdefghijklmnopqrstuvwxyz';
+  while(decoys.length<2){ const l=ABC[Math.floor(Math.random()*26)]; if(!letters.includes(l)&&!decoys.includes(l)) decoys.push(l); }
+  const tiles=G.shuffle(letters.concat(decoys));
+  document.getElementById('stage').innerHTML=`
+    ${progress()}
+    <div class="bigico">${G.ICO[target]||'🍽️'}</div>
+    <button class="speaker" onclick="G.say('${target}')">🔊</button>
+    <div class="slots">${target.split('').map(ch=>ch===' '
+      ? '<div class="slot space"></div>'
+      : '<div class="slot" data-ch="'+ch+'"></div>').join('')}</div>
+    <div class="tiles">${tiles.map((l,j)=>`<button class="tile" data-l="${l}" onclick="tap(this)">${l}</button>`).join('')}</div>
+    <button class="hintbtn" onclick="hint()">💡 Help me</button>
+    <div class="msg" id="msg"></div>`;
+  setTimeout(()=>G.say(target), 350);
+}
+function _letters(){ return target.replace(/ /g,'').split(''); }
+window.tap = (el)=>{
+  const need=_letters()[pos];
+  if(el.dataset.l===need){
+    el.classList.add('used');
+    fillNext();
+  }else{
+    misses++; el.classList.add('ko'); G.buzz();
+    document.getElementById('msg').textContent='🙈 Not that one — listen again!';
+    G.say(target);
+    setTimeout(()=>el.classList.remove('ko'), 380);
+  }
+};
+window.hint = ()=>{
+  hinted=true;
+  const need=_letters()[pos];
+  const tile=[...document.querySelectorAll('.tile')].find(t=>!t.classList.contains('used') && t.dataset.l===need);
+  if(tile){ tile.classList.add('used'); }
+  fillNext();
+};
+function fillNext(){
+  const slots=[...document.querySelectorAll('.slot')].filter(s=>!s.classList.contains('space'));
+  slots[pos].textContent=_letters()[pos];
+  slots[pos].classList.add('fill');
+  pos++;
+  document.getElementById('msg').textContent='';
+  if(pos>=_letters().length){
+    results[qi] = (misses===0 && !hinted) ? 1 : 0.5;
+    G.ding(); G.say(target);
+    document.getElementById('msg').textContent = results[qi]===1 ? '⭐ Perfect spelling!' : '👍 You built it!';
+    setTimeout(()=>{ qi++; ask(); }, 1100);
+  }
+}
+function finish(){
+  const stars=results.filter(r=>r===1).length, total=order.length;
+  const pct=Math.round(100*results.reduce((s,r)=>s+r,0)/total);
+  const dur=Math.round((Date.now()-t0)/1000);
+  G.setBest('spelling:'+round.key, pct);
+  G.fanfare(); G.confetti(30);
+  document.getElementById('stage').innerHTML=`
+    <div class="end">
+      <div class="trophy">${pct>=80?'🏆':pct>=50?'🎉':'💪'}</div>
+      <h2>${pct>=80?'Master chef speller!':pct>=50?'Well done!':'Good try!'}</h2>
+      <div class="stars">${'⭐'.repeat(stars)}${'☆'.repeat(total-stars)}</div>
+      <p style="margin:10px 0;color:var(--muted);font-weight:700">${stars} of ${total} perfect words · ${pct}%</p>
+      <button class="bigbtn" onclick="start(${ROUNDS.indexOf(round)})">🔁 Play again</button>
+    </div>`;
+  drawTabs();
+  G.NISACT.submit({activity:'g2u4-spelling-chef', title:'Spelling Chef — '+round.label.replace(/^[^ ]+ /,''),
+    level:'A1', score:stars, total:total, duration:dur});
+}
+document.getElementById('stage').innerHTML=`
+  <div style="padding:30px 10px">
+    <div style="font-size:4rem">👩‍🍳🔤</div>
+    <h2 style="margin:12px 0">Choose your level to start!</h2>
+    <p style="color:var(--muted);font-weight:700">Listen 🔊, look at the picture and touch the letters in order.</p>
+  </div>`;
+drawTabs();
+</script>
+</body>
+</html>

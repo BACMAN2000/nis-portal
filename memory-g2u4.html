@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Kitchen Memory — In the Kitchen · 2nd grade</title>
+<style>
+  :root{ --bg:#f3f0fb; --card:#ffffff; --ink:#2e2a3a; --muted:#7a7290;
+    --accent:#7048e8; --accent-soft:#e5dbff; --blue:#3b5bdb;
+    --good:#2f9e44; --good-soft:#d3f4dc; --bad:#e03131; }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:'Segoe UI',system-ui,Arial,sans-serif; background:var(--bg); color:var(--ink); padding:18px; touch-action:manipulation;}
+  .topnav{position:sticky; top:0; z-index:30; background:#fff; display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+    padding:10px 18px; box-shadow:0 2px 10px rgba(40,30,70,.10); margin:-18px -18px 16px;}
+  .topnav img{height:32px; width:auto; display:block;}
+  .topnav .nav-sp{margin-left:auto;}
+  .navbtn{text-decoration:none; font-weight:700; font-size:.85rem; padding:8px 14px; border-radius:9px; white-space:nowrap;
+    background:var(--accent-soft); color:#4c2fa8; border:none; cursor:pointer;}
+  .navbtn.primary{background:var(--accent); color:#fff;}
+  header{max-width:900px; margin:0 auto 10px; text-align:center;}
+  header h1{font-size:1.6rem;}
+  header p{color:var(--muted); font-size:.95rem; margin-top:4px;}
+  .tabs{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin:14px auto;}
+  .tab{border:3px solid transparent; background:var(--card); color:var(--ink); padding:10px 18px; border-radius:24px;
+       font-weight:800; font-size:1rem; cursor:pointer; box-shadow:0 2px 6px rgba(40,30,70,.12);}
+  .tab.on{background:var(--accent); color:#fff;}
+  .tab .best{display:block; font-weight:600; font-size:.7rem; color:var(--good);}
+  .tab.on .best{color:#e5dbff;}
+  .hud{display:flex; gap:16px; justify-content:center; font-weight:800; margin-bottom:12px; color:var(--muted);}
+  .board{display:grid; gap:10px; max-width:640px; margin:0 auto; grid-template-columns:repeat(4,1fr);}
+  .mcard{aspect-ratio:1/1; perspective:600px; cursor:pointer; -webkit-tap-highlight-color:transparent;}
+  .inner{position:relative; width:100%; height:100%; transition:transform .35s; transform-style:preserve-3d;}
+  .mcard.flip .inner{transform:rotateY(180deg);}
+  .face{position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden;
+        border-radius:14px; display:flex; align-items:center; justify-content:center; flex-direction:column;
+        box-shadow:0 2px 8px rgba(40,30,70,.14);}
+  .back{background:var(--accent); color:#fff; font-size:2rem;}
+  .front{background:#fff; transform:rotateY(180deg); border:3px solid var(--accent-soft); padding:4px;}
+  .front .ico{font-size:2.6rem; line-height:1.1;}
+  .front .w{font-weight:900; font-size:clamp(.7rem,3.4vw,1.05rem); text-align:center; word-break:break-word;}
+  .mcard.done .front{background:var(--good-soft); border-color:var(--good);}
+  .mcard.done{pointer-events:none;}
+  .stage{max-width:820px; margin:0 auto; background:var(--card); border-radius:20px; padding:22px;
+         box-shadow:0 3px 14px rgba(40,30,70,.10); text-align:center;}
+  .bigbtn{border:none; border-radius:16px; background:var(--blue); color:#fff; font-weight:800;
+          font-size:1.25rem; padding:16px 30px; cursor:pointer; box-shadow:0 4px 0 #2b46b3; margin-top:10px;}
+  .bigbtn:active{transform:translateY(3px); box-shadow:0 1px 0 #2b46b3;}
+  .end .trophy{font-size:4.5rem;}
+  footer{max-width:900px; margin:18px auto 0; text-align:center; color:var(--muted); font-size:.75rem;}
+  @media (max-width:480px){ body{padding:8px;} .topnav{margin:-8px -8px 12px; padding:8px 12px;} .stage{padding:12px;} .board{gap:7px;} }
+</style>
+<meta name="google" content="notranslate">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+<script src="config.js?v=18"></script>
+<script src="g2-u4-data.js?v=1"></script>
+<script src="nis-nav.js?v=1"></script>
+</head>
+<body>
+<nav class="topnav">
+  <img src="assets/logo-h.svg" alt="Nordic International School" onerror="this.style.display='none'">
+  <span class="nav-sp"></span>
+  <a class="navbtn" href="activities.html">🎲 Actividades</a>
+  <a class="navbtn primary" href="./">🏫 Portal</a>
+</nav>
+<header>
+  <h1>🃏 Kitchen Memory</h1>
+  <p>In the Kitchen · Unit 4 — Flip the cards and match the picture with its word. 2nd grade · NIS English</p>
+</header>
+
+<div class="tabs" id="tabs"></div>
+<div class="stage" id="stage"></div>
+
+<footer>Unit 4 · In the Kitchen — 2nd grade Primary · Nordic International School</footer>
+
+<script>
+const G = window.G2U4;
+const SETS = [
+  {key:'fruit',    label:'🍓 Fruit',     words:['apple','banana','lemon','orange','strawberry','blueberry']},
+  {key:'food',     label:'🍞 Food',      words:['bread','cheese','egg','milk','rice','pasta','chicken','carrot']},
+  {key:'more',     label:'🥩 More food', words:['tomato','corn','onion','fish','meat','ham','lettuce','yogurt']},
+  {key:'utensils', label:'🍴 Utensils',  words:['plate','spoon','knife','fork','bowl','glass']},
+];
+let set=null, first=null, lock=false, matched=0, moves=0, t0=0, timer=null;
+
+function drawTabs(){
+  document.getElementById('tabs').innerHTML = SETS.map((s,i)=>{
+    const b=G.getBest('memory:'+s.key);
+    return `<button class="tab${set===s?' on':''}" onclick="start(${i})">${s.label}`+
+      (b?`<span class="best">⭐ best ${b.pct}%</span>`:'')+`</button>`;
+  }).join('');
+}
+window.start = (i)=>{
+  set=SETS[i]; first=null; lock=false; matched=0; moves=0; t0=Date.now();
+  const cards=G.shuffle(set.words.flatMap(w=>[
+    {w, kind:'pic',  html:`<div class="ico">${G.ICO[w]}</div>`},
+    {w, kind:'word', html:`<div class="w">${w}</div>`},
+  ]));
+  drawTabs();
+  document.getElementById('stage').innerHTML=`
+    <div class="hud"><span>🃏 Pairs: <b id="pairs">0</b>/${set.words.length}</span>
+      <span>👆 Moves: <b id="moves">0</b></span><span>⏱ <b id="clock">0:00</b></span></div>
+    <div class="board" style="grid-template-columns:repeat(4,1fr)">${cards.map((c,j)=>`
+      <div class="mcard" data-w="${c.w}" data-kind="${c.kind}" onclick="flip(this)">
+        <div class="inner">
+          <div class="face back">👩‍🍳</div>
+          <div class="face front">${c.html}</div>
+        </div>
+      </div>`).join('')}
+    </div>`;
+  clearInterval(timer);
+  timer=setInterval(()=>{ const s=Math.round((Date.now()-t0)/1000);
+    const el=document.getElementById('clock');
+    if(el) el.textContent=Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); },1000);
+};
+window.flip = (el)=>{
+  if(lock || el.classList.contains('flip')) return;
+  el.classList.add('flip');
+  if(!first){ first=el; return; }
+  moves++; document.getElementById('moves').textContent=moves;
+  const a=first, b=el; first=null;
+  if(a.dataset.w===b.dataset.w && a.dataset.kind!==b.dataset.kind){
+    a.classList.add('done'); b.classList.add('done');
+    matched++; document.getElementById('pairs').textContent=matched;
+    G.ding(); G.say(a.dataset.w);
+    if(matched===set.words.length) setTimeout(finish, 700);
+  }else{
+    lock=true; G.buzz();
+    setTimeout(()=>{ a.classList.remove('flip'); b.classList.remove('flip'); lock=false; }, 900);
+  }
+};
+function finish(){
+  clearInterval(timer);
+  const total=set.words.length;
+  const dur=Math.round((Date.now()-t0)/1000);
+  /* % = eficiencia: mínimo de movimientos posible / movimientos usados. */
+  const pct=Math.min(100, Math.round(100*total/Math.max(moves,total)));
+  G.setBest('memory:'+set.key, pct);
+  G.fanfare(); G.confetti(30);
+  document.getElementById('stage').innerHTML=`
+    <div class="end">
+      <div class="trophy">${pct>=80?'🏆':pct>=55?'🎉':'💪'}</div>
+      <h2>${pct>=80?'Super memory!':pct>=55?'Well done!':'You did it!'}</h2>
+      <p style="margin:10px 0;color:var(--muted);font-weight:700">
+        ${total} pairs in ${moves} moves · ${Math.floor(dur/60)}m ${String(dur%60).padStart(2,'0')}s · ${pct}%</p>
+      <button class="bigbtn" onclick="start(${SETS.indexOf(set)})">🔁 Play again</button>
+    </div>`;
+  drawTabs();
+  G.NISACT.submit({activity:'g2u4-memory', title:'Kitchen Memory — '+set.label.replace(/^[^ ]+ /,''),
+    level:'A1', score:pct, total:100, duration:dur});
+}
+document.getElementById('stage').innerHTML=`
+  <div style="padding:30px 10px">
+    <div style="font-size:4rem">🃏🍓🥄</div>
+    <h2 style="margin:12px 0">Choose a group to start!</h2>
+    <p style="color:var(--muted);font-weight:700">Match each picture with its word. Fewer moves = more stars!</p>
+  </div>`;
+drawTabs();
+</script>
+</body>
+</html>

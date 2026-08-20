@@ -651,10 +651,13 @@ async function adminTeachers(){
     const _nodeChip=(key,label)=>`<label style="${chipCss}"><input type="checkbox" class="tg-node" value="${key}" ${(managed? managed.has(key): true)?'checked':''}> ${esc(label)}</label>`;
     // Unidades y semanas no se asignan al profesor por separado (heredan de
     // su Activities), así que quedan fuera de los chips generales.
-    const _gradeKeySet=new Set([...GRADE_ORDER.flatMap(g=>['english.classes.'+g,'english.classes.'+g+'.activities','english.classes.'+g+'.grammar']),'english.classes.g9.uoe1','english.classes.g9.writing',..._SUB_NODES.map(n=>n.key)]);
+    const _gradeKeySet=new Set([...ALL_GRADE_ORDER.flatMap(g=>['english.classes.'+g,'english.classes.'+g+'.activities','english.classes.'+g+'.grammar']),'english.classes.g9.uoe1','english.classes.g9.writing',..._SUB_NODES.map(n=>n.key)]);
     const generalChips=ACCESS_NODES.filter(n=>!_gradeKeySet.has(n.key)).map(n=>_nodeChip(n.key,n.label)).join('');
-    const gradeBlocks=GRADE_ORDER.map(g=>{
-      const items=[['english.classes.'+g,'Classes'],['english.classes.'+g+'.activities','🎲 Activities'],['english.classes.'+g+'.grammar','📝 Grammar']];
+    // Primaria (2.º–5.º) sin Grammar: en esa etapa la gramática vive dentro
+    // de las actividades, igual que en francés.
+    const gradeBlocks=ALL_GRADE_ORDER.map(g=>{
+      const items=[['english.classes.'+g,'Classes'],['english.classes.'+g+'.activities','🎲 Activities']];
+      if(!_isPrimaryGrade(g)) items.push(['english.classes.'+g+'.grammar','📝 Grammar']);
       if(g==='g9') items.push(['english.classes.g9.uoe1','🧩 Use of English P1'],['english.classes.g9.writing','✍️ Writing']);
       return `<div class="row" style="gap:6px;align-items:center;margin-top:5px;flex-wrap:wrap"><span class="muted" style="font-size:.8rem;min-width:84px">${GRADE_META[g][0]} ${GRADE_META[g][1]}</span>${items.map(it=>_nodeChip(it[0],it[1])).join('')}</div>`;
     }).join('');
@@ -1825,7 +1828,10 @@ function _isStudent(){ return !!(state.profile && state.profile.role==='student'
 /* ===== Fase 2: visibilidad por nodo (admin->grado->alumno) =====
    Defaults: nodos existentes ABIERTOS; nodos nuevos BLOQUEADOS hasta que el
    admin los habilite. La resolución es client-side (igual que Mocks). */
-const NODE_DEFAULT_LOCKED = new Set(['french','english.classes.g9.grammar']);
+/* 3.º–5.º de primaria nacen CERRADOS (aún sin contenido); 2.º nace abierto
+   porque la Unit 4 "In the Kitchen" ya está publicada. */
+const NODE_DEFAULT_LOCKED = new Set(['french','english.classes.g9.grammar',
+  'english.classes.g3','english.classes.g4','english.classes.g5']);
 function _nodeDefaultOpen(key){
   // Unidades y semanas: cada una decide su default con `locked` en
   // activities-data.js (así una semana futura puede nacer cerrada).
@@ -1951,14 +1957,23 @@ function _previewNeedsStudent(title, back){
       <b>👥 Alumnos → 👁️ Ver como</b> con un alumno concreto.</div>`;
 }
 /* Nodos gateables por el admin/profesor (Mocks va aparte; My Progress y Resultado final son datos propios). */
-const _GRADE_NODES = ['g6','g7','g8','g9','g10','g11'].flatMap(g=>{
+/* Primaria (2.º–5.º): sin `.grammar` — como en francés, la gramática de
+   primaria vive dentro de las actividades, no en página aparte. */
+const _PRIM_GRADE_NODES = ['g2','g3','g4','g5'].flatMap(g=>{
+  const lbl = {g2:'2nd',g3:'3rd',g4:'4th',g5:'5th'}[g];
+  return [
+    {key:'english.classes.'+g,               label:'🧒 Classes · '+lbl+' grade'},
+    {key:'english.classes.'+g+'.activities', label:'🧒 '+lbl+' · Activities'},
+  ];
+});
+const _GRADE_NODES = [..._PRIM_GRADE_NODES, ...['g6','g7','g8','g9','g10','g11'].flatMap(g=>{
   const lbl = {g6:'6th',g7:'7th',g8:'8th',g9:'9th',g10:'10th',g11:'11th'}[g];
   return [
     {key:'english.classes.'+g,            label:'Classes · '+lbl+' grade'},
     {key:'english.classes.'+g+'.activities', label:lbl+' · Activities'},
     {key:'english.classes.'+g+'.grammar',    label:lbl+' · Grammar'},
   ];
-});
+})];
 /* Los mismos nodos para francés (5.º–10.º). Sin `.grammar`: en francés la
    gramática vive dentro de las actividades de cada semana, no en página aparte. */
 const _FR_GRADE_NODES = ['g5','g6','g7','g8','g9','g10'].flatMap(g=>{
@@ -1976,7 +1991,7 @@ function _weekNode(grade,unitId,weekId,subject){ return _unitNode(grade,unitId,s
 /* La materia de una unidad: 'english' salvo que activities-fr-data.js la
    haya marcado como 'french'. Todo lo que ya existía cae en el default. */
 function _subjOf(u){ return (u && u.subject) || 'english'; }
-const _GRADE_LBL={g5:'5th',g6:'6th',g7:'7th',g8:'8th',g9:'9th',g10:'10th',g11:'11th'};
+const _GRADE_LBL={g2:'2nd',g3:'3rd',g4:'4th',g5:'5th',g6:'6th',g7:'7th',g8:'8th',g9:'9th',g10:'10th',g11:'11th'};
 /* En francés los grados se nombran a la francesa (5e, 6e…). Va aquí y no en
    FR_GRADE_META porque _UNIT_NODES se evalúa mucho antes que aquella. */
 const _FR_LBL={g5:'5e',g6:'6e',g7:'7e',g8:'8e',g9:'9e',g10:'10e'};
@@ -2126,12 +2141,25 @@ async function studentFinal(){
 }
 
 /* Metadatos de grados dentro de Classes y niveles de actividades por grado.
-   6/7/8 → A1–B2 · 9/10/11 → A1–C1 */
-const GRADE_META = { g6:['6️⃣','6th grade'], g7:['7️⃣','7th grade'], g8:['8️⃣','8th grade'],
+   Primary 2–5 → pre-A1/A1 · 6/7/8 → A1–B2 · 9/10/11 → A1–C1.
+   Classes se divide en DOS etapas: Primary (2.º–5.º) y Secondary (6.º–11.º). */
+const GRADE_META = { g2:['2️⃣','2nd grade'], g3:['3️⃣','3rd grade'], g4:['4️⃣','4th grade'],
+  g5:['5️⃣','5th grade'],
+  g6:['6️⃣','6th grade'], g7:['7️⃣','7th grade'], g8:['8️⃣','8th grade'],
   g9:['9️⃣','9th grade'], g10:['🔟','10th grade'], g11:['🎓','11th grade'] };
-const GRADE_LEVELS = { g6:'A1,A2,B1,B2', g7:'A1,A2,B1,B2', g8:'A1,A2,B1,B2',
+const GRADE_LEVELS = { g2:'A1', g3:'A1', g4:'A1,A2', g5:'A1,A2',
+  g6:'A1,A2,B1,B2', g7:'A1,A2,B1,B2', g8:'A1,A2,B1,B2',
   g9:'A1,A2,B1,B2,C1', g10:'A1,A2,B1,B2,C1', g11:'A1,A2,B1,B2,C1' };
+/* GRADE_ORDER sigue siendo SOLO secundaria: todo el código previo (accesos,
+   vistas) nació con 6.º–11.º y así no cambia de significado. */
+const PRIMARY_ORDER = ['g2','g3','g4','g5'];
 const GRADE_ORDER = ['g6','g7','g8','g9','g10','g11'];
+const ALL_GRADE_ORDER = [...PRIMARY_ORDER, ...GRADE_ORDER];
+function _isPrimaryGrade(k){ return PRIMARY_ORDER.indexOf(k)>=0; }
+const STAGE_META = {
+  primary:  {emoji:'🧒', title:'Primary',   desc:'2nd to 5th grade — games and activities for young learners.',   grades:PRIMARY_ORDER},
+  secondary:{emoji:'🎓', title:'Secondary', desc:'6th to 11th grade — grammar, activities and exam practice.', grades:GRADE_ORDER},
+};
 /* Francés va de 5.º a 10.º (inglés empieza en 6.º y llega a 11.º), y sus
    niveles del Marco son más bajos porque es segunda lengua extranjera. */
 const FR_GRADE_META  = { g5:['5️⃣','5e'], g6:['6️⃣','6e'], g7:['7️⃣','7e'],
@@ -2139,18 +2167,21 @@ const FR_GRADE_META  = { g5:['5️⃣','5e'], g6:['6️⃣','6e'], g7:['7️⃣'
 const FR_GRADE_ORDER = ['g5','g6','g7','g8','g9','g10'];
 const FR_GRADE_LEVEL = { g5:'A1.1', g6:'A1.2', g7:'A2.1', g8:'A2.2', g9:'A2.2', g10:'B1.1' };
 
-/* Vista de un grado dentro de Classes (→ Grammar + Activities) */
+/* Vista de un grado dentro de Classes (→ Grammar + Activities).
+   El "atrás" vuelve a la ETAPA del grado (Primary/Secondary). En primaria no
+   hay tarjeta de Grammar: la gramática va dentro de las actividades. */
 function studentGrade(key){
   _setNav('classes');
   const [emoji,label]=GRADE_META[key]||['🏫',key];
   const base='english.classes.'+key;
   const route='classes_'+key;
-  const back = _backBtn("window._nav('classes')",'Classes');
+  const stage=_isPrimaryGrade(key)?'primary':'secondary';
+  const back = _backBtn("window._nav('classes_"+stage+"')",STAGE_META[stage].title);
   $('#main').innerHTML=`${back}<h1>${emoji} ${label}</h1>
     <p class="muted" style="margin-top:-6px">${label} material.</p>
     <div class="grid cols-2" style="margin-top:12px">
-      ${nodeVisible(base+'.grammar') ? _skillCard('📝','Grammar','Grammar for '+label+': explanations and games by unit.',_withBack('grammar.html?grade='+key,route)) : _lockedCard('📝','Grammar','Grammar for '+label+'.')}
-      ${nodeVisible(base+'.activities') ? _hubCard('🎲','Activities','Games by unit and by level: crosswords, word searches and more.',"window._nav('classes_"+key+"_act')") : _lockedCard('🎲','Activities','Games and activities.')}
+      ${_isPrimaryGrade(key) ? '' : (nodeVisible(base+'.grammar') ? _skillCard('📝','Grammar','Grammar for '+label+': explanations and games by unit.',_withBack('grammar.html?grade='+key,route)) : _lockedCard('📝','Grammar','Grammar for '+label+'.'))}
+      ${nodeVisible(base+'.activities') ? _hubCard('🎲','Activities',_isPrimaryGrade(key)?'Games for each unit — with audio for young learners.':'Games by unit and by level: crosswords, word searches and more.',"window._nav('classes_"+key+"_act')") : _lockedCard('🎲','Activities','Games and activities.')}
       ${key==='g9' ? (nodeVisible('english.classes.g9.uoe1') ? _skillCard('🧩','Use of English · Part 1','Multiple-choice cloze B2 (Cambridge style): 8 gaps, options A–D, with correction and explanations.',_withBack('use-of-english-part1.html',route)) : _lockedCard('🧩','Use of English · Part 1','Cambridge-style B2 cloze.')) : ''}
       ${key==='g9' ? (nodeVisible('english.classes.g9.writing') ? _skillCard('✍️','Writing','Opinion essay (FCE Writing Part 1): 6 topics with guide phrases, a bank of linkers, word counter and checklist.',_withBack('writing.html?grade='+key,route)) : _lockedCard('✍️','Writing','Opinion essay · FCE Writing Part 1.')) : ''}
     </div>`;
@@ -2198,9 +2229,12 @@ function studentGradeActivities(key,focusUnit,subject){
       ${locked.map(u=>_lockedCard(u.icon,esc(u.title),esc(u.blurb||''))).join('')}
     </div>` : '';
   // Índice de saltos: la página es larga (una unidad puede traer 6 semanas).
+  // En PRIMARIA de inglés no hay práctica por nivel (es material de
+  // secundaria), así que tampoco su salto. El g5 de FRANCÉS sí la tiene.
+  const hasByLevel = isFr || !_isPrimaryGrade(key);
   const jump = units.length ? `<div style="display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 4px">
       ${units.map(u=>`<a class="btn sm ghost" href="#unit-${u.id}" style="text-decoration:none">${u.icon} ${esc(u.title)}</a>`).join('')}
-      <a class="btn sm ghost" href="#by-level" style="text-decoration:none">${isFr?'🎯 Par niveau':'🎯 By level'}</a>
+      ${hasByLevel?`<a class="btn sm ghost" href="#by-level" style="text-decoration:none">${isFr?'🎯 Par niveau':'🎯 By level'}</a>`:''}
     </div>` : '';
   // Candado POR SEMANA dentro de una unidad abierta: las cerradas se anuncian
   // en una línea (el alumno ve que hay más, pero no los ejercicios).
@@ -2235,6 +2269,16 @@ function studentGradeActivities(key,focusUnit,subject){
         ${_skillCard('🔎','Mots mêlés','Grilles de mots mêlés en français — 10 par niveau (A1–C1), avec la prononciation de chaque mot trouvé.',_withBack('wordsearches-fr.html?levels='+encodeURIComponent(lvParam),route))}
       </div>`;
     if(focusUnit) setTimeout(()=>{ const el=document.getElementById('unit-'+focusUnit); if(el) el.scrollIntoView({block:'start'}); },0);
+    return;
+  }
+  // PRIMARIA (inglés): solo las unidades — sin bloque "by level".
+  if(!hasByLevel){
+    $('#main').innerHTML=`${back}<h1>🎲 Activities · ${label}</h1>
+      <p class="muted" style="margin-top:-6px">Games for each unit — with audio for young learners.</p>
+      ${jump}
+      ${unitsBlock}
+      ${lockedBlock}`;
+    if(focusUnit){ const el=document.getElementById('unit-'+focusUnit); if(el) el.scrollIntoView({block:'start'}); }
     return;
   }
   $('#main').innerHTML=`${back}<h1>🎲 Activities · ${label}</h1>
@@ -2322,6 +2366,8 @@ function _navRender(k){
   if(m=/^fr_classes_(g\d+)$/.exec(k))    { studentFrenchGrade(m[1]);   return true; }
   if(k==='fr_classes')                   { studentFrenchClasses();     return true; }
   if(k==='fr_cefr')                      { studentFrenchCefr();        return true; }
+  if(k==='classes_primary')   { studentStage('primary');   return true; }
+  if(k==='classes_secondary') { studentStage('secondary'); return true; }
   if(m=/^classes_(g\d+)_unit_([a-z0-9]+)$/.exec(k)){ studentGradeUnit(m[1],m[2]); return true; }
   if(m=/^classes_(g\d+)_act$/.exec(k)){ studentGradeActivities(m[1]); return true; }
   if(m=/^classes_(g\d+)$/.exec(k))    { studentGrade(m[1]);           return true; }
@@ -2409,19 +2455,38 @@ function studentLibrary(){
     <div class="grid cols-2" style="margin-top:12px">${libTile}</div>`;
 }
 
-/* ---------- Classes: tarjetas por grado (6th–11th) ---------- */
+/* ---------- Classes: DOS etapas (Primary 2.º–5.º · Secondary 6.º–11.º) ----------
+   El alumno entra por su etapa y dentro están las tarjetas por grado. Las
+   tarjetas de etapa no llevan nodo propio: el candado sigue siendo por grado
+   (y english.classes gatea la sección entera, como siempre). */
 function studentClasses(){
   _setNav('classes');
   const back = _isStudent() ? _backBtn("window._nav('english')",'English') : '';
-  const cards = GRADE_ORDER.map(k=>{
-    const [emoji,label]=GRADE_META[k];
-    const node='english.classes.'+k;
-    return nodeVisible(node)
-      ? _hubCard(emoji,label,'Grammar and activities for '+label+'.',"window._nav('classes_"+k+"')")
-      : _lockedCard(emoji,label,'Grammar and activities for '+label+'.');
+  const cards = ['primary','secondary'].map(st=>{
+    const m=STAGE_META[st];
+    return _hubCard(m.emoji,m.title,m.desc,"window._nav('classes_"+st+"')");
   }).join('');
   $('#main').innerHTML=`${back}<h1>🏫 Classes</h1>
-    <p class="muted" style="margin-top:-6px">Class material by grade.</p>
+    <p class="muted" style="margin-top:-6px">Class material by stage and grade.</p>
+    <div class="grid cols-2" style="margin-top:12px">${cards}</div>`;
+}
+/* Una etapa: sus tarjetas por grado. */
+function studentStage(stage){
+  _setNav('classes');
+  const m=STAGE_META[stage]||STAGE_META.secondary;
+  const back = _backBtn("window._nav('classes')",'Classes');
+  const cards = m.grades.map(k=>{
+    const [emoji,label]=GRADE_META[k];
+    const node='english.classes.'+k;
+    const desc = _isPrimaryGrade(k)
+      ? 'Games and activities for '+label+'.'
+      : 'Grammar and activities for '+label+'.';
+    return nodeVisible(node)
+      ? _hubCard(emoji,label,desc,"window._nav('classes_"+k+"')")
+      : _lockedCard(emoji,label,desc);
+  }).join('');
+  $('#main').innerHTML=`${back}<h1>${m.emoji} ${m.title}</h1>
+    <p class="muted" style="margin-top:-6px">${m.desc}</p>
     <div class="grid cols-3" style="margin-top:12px">${cards}</div>`;
 }
 

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Little Chef — In the Kitchen · 2nd grade</title>
+<style>
+  :root{ --bg:#fffbea; --card:#ffffff; --ink:#3a332a; --muted:#8f8468;
+    --accent:#f08c00; --accent-soft:#ffec99; --blue:#3b5bdb;
+    --good:#2f9e44; --good-soft:#d3f4dc; --bad:#e03131; --bad-soft:#ffe3e3; }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:'Segoe UI',system-ui,Arial,sans-serif; background:var(--bg); color:var(--ink); padding:18px; touch-action:manipulation;}
+  .topnav{position:sticky; top:0; z-index:30; background:#fff; display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+    padding:10px 18px; box-shadow:0 2px 10px rgba(70,55,20,.10); margin:-18px -18px 16px;}
+  .topnav img{height:32px; width:auto; display:block;}
+  .topnav .nav-sp{margin-left:auto;}
+  .navbtn{text-decoration:none; font-weight:700; font-size:.85rem; padding:8px 14px; border-radius:9px; white-space:nowrap;
+    background:var(--accent-soft); color:#9a5b00; border:none; cursor:pointer;}
+  .navbtn.primary{background:var(--accent); color:#fff;}
+  header{max-width:900px; margin:0 auto 10px; text-align:center;}
+  header h1{font-size:1.6rem;}
+  header p{color:var(--muted); font-size:.95rem; margin-top:4px;}
+  .tabs{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin:14px auto;}
+  .tab{border:3px solid transparent; background:var(--card); color:var(--ink); padding:10px 18px; border-radius:24px;
+       font-weight:800; font-size:1rem; cursor:pointer; box-shadow:0 2px 6px rgba(70,55,20,.12);}
+  .tab.on{background:var(--accent); color:#fff;}
+  .tab .best{display:block; font-weight:600; font-size:.7rem; color:var(--good);}
+  .tab.on .best{color:#ffec99;}
+  .stage{max-width:860px; margin:0 auto; background:var(--card); border-radius:20px; padding:22px;
+         box-shadow:0 3px 14px rgba(70,55,20,.10); text-align:center;}
+  .stepbar{display:flex; gap:5px; justify-content:center; margin-bottom:12px;}
+  .sdot{width:16px; height:16px; border-radius:50%; background:#f2e9c8;}
+  .sdot.ok{background:var(--good);} .sdot.half{background:#f5c518;} .sdot.cur{outline:3px solid var(--accent);}
+  .counter{min-height:78px; background:linear-gradient(#fdf3d7,#f7e8bf); border-radius:16px; border:3px solid #eadaa4;
+           display:flex; align-items:center; justify-content:center; gap:6px; flex-wrap:wrap; padding:10px; margin-bottom:14px;}
+  .counter .item{font-size:2.4rem; animation:pop .35s;}
+  .counter .placeholder{color:#b9a96f; font-weight:800;}
+  .instruction{font-size:1.35rem; font-weight:900; margin:6px 0 2px; min-height:1.5em;}
+  .speaker{font-size:2.2rem; background:none; border:none; cursor:pointer; vertical-align:middle;}
+  .shelf{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; max-width:640px; margin:16px auto 4px;}
+  @media(max-width:520px){ .shelf{grid-template-columns:repeat(3,1fr);} }
+  .item-card{border:4px solid transparent; background:#fdf6e0; border-radius:16px; padding:12px 6px; cursor:pointer;
+             -webkit-tap-highlight-color:transparent; transition:.12s;}
+  .item-card .ico{font-size:2.6rem; line-height:1.15;}
+  .item-card .w{font-weight:800; font-size:.92rem; margin-top:4px;}
+  .item-card:active{transform:scale(.95);}
+  .item-card.ok{background:var(--good-soft); border-color:var(--good); animation:pop .35s;}
+  .item-card.ko{background:var(--bad-soft); border-color:var(--bad); animation:shake .4s;}
+  .item-card.gone{opacity:.35; pointer-events:none;}
+  @keyframes pop{0%{transform:scale(.8);}60%{transform:scale(1.08);}100%{transform:scale(1);}}
+  @keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-8px);}75%{transform:translateX(8px);}}
+  .msg{min-height:1.5em; font-weight:800; font-size:1.1rem; margin-top:8px;}
+  .bigbtn{border:none; border-radius:16px; background:var(--blue); color:#fff; font-weight:800;
+          font-size:1.25rem; padding:16px 30px; cursor:pointer; box-shadow:0 4px 0 #2b46b3; margin-top:10px;}
+  .bigbtn:active{transform:translateY(3px); box-shadow:0 1px 0 #2b46b3;}
+  .end .trophy{font-size:5rem;}
+  .stars{font-size:1.8rem; letter-spacing:4px;}
+  footer{max-width:900px; margin:18px auto 0; text-align:center; color:var(--muted); font-size:.75rem;}
+  @media (max-width:480px){ body{padding:8px;} .topnav{margin:-8px -8px 12px; padding:8px 12px;} .stage{padding:14px;}
+    .instruction{font-size:1.1rem;} }
+</style>
+<meta name="google" content="notranslate">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+<script src="config.js?v=18"></script>
+<script src="g2-u4-data.js?v=1"></script>
+<script src="nis-nav.js?v=1"></script>
+</head>
+<body>
+<nav class="topnav">
+  <img src="assets/logo-h.svg" alt="Nordic International School" onerror="this.style.display='none'">
+  <span class="nav-sp"></span>
+  <a class="navbtn" href="activities.html">🎲 Actividades</a>
+  <a class="navbtn primary" href="./">🏫 Portal</a>
+</nav>
+<header>
+  <h1>🧑‍🍳 Little Chef</h1>
+  <p>In the Kitchen · Unit 4 — Listen to each step and touch what the chef needs. 2nd grade · NIS English</p>
+</header>
+
+<div class="tabs" id="tabs"></div>
+<div class="stage" id="stage"></div>
+
+<footer>Unit 4 · In the Kitchen — 2nd grade Primary · Nordic International School</footer>
+
+<script>
+const G = window.G2U4;
+/* Cada receta: pasos con la instrucción (verbo de la unidad en contexto) y
+   el objeto que hay que tocar. `shelf` = lo que se ve en la estantería:
+   los objetos de la receta + distractores. */
+const RECIPES = [
+  {key:'sandwich', label:'🥪 Sandwich', dish:'🥪', name:'a ham and cheese sandwich',
+   steps:[
+     {say:'First, take the bread.',                    need:'bread'},
+     {say:'Cut the bread with the knife.',             need:'knife'},
+     {say:'Add the ham.',                              need:'ham'},
+     {say:'Now add the cheese.',                       need:'cheese'},
+     {say:'Add some lettuce.',                         need:'lettuce'},
+     {say:'Serve your sandwich on the plate!',         need:'plate'},
+   ],
+   extra:['fish','banana','spoon','glass']},
+  {key:'salad', label:'🍓 Fruit salad', dish:'🍇🍓🍌', name:'a yummy fruit salad',
+   steps:[
+     {say:'First, take a big bowl.',                   need:'bowl'},
+     {say:'Peel the banana and add it.',               need:'banana'},
+     {say:'Slice the apple.',                          need:'apple'},
+     {say:'Add the strawberries.',                     need:'strawberry'},
+     {say:'Add the blueberries.',                      need:'blueberry'},
+     {say:'Pour some yogurt on top.',                  need:'yogurt'},
+     {say:'Mix everything with the spoon!',            need:'spoon'},
+   ],
+   extra:['onion','chicken','fork','glass']},
+  {key:'lemonade', label:'🍋 Lemonade', dish:'🍋🥤', name:'fresh lemonade',
+   steps:[
+     {say:'First, take two lemons.',                   need:'lemon'},
+     {say:'Cut the lemons with the knife.',            need:'knife'},
+     {say:'Squeeze the lemons with the squeezer.',     need:'squeezer'},
+     {say:'Pour the juice into the glass.',            need:'glass'},
+     {say:'Add a strawberry on top.',                  need:'strawberry'},
+     {say:'Mix it with the spoon. Yummy!',             need:'spoon'},
+   ],
+   extra:['bread','egg','plate','carrot']},
+];
+let recipe=null, si=0, results=[], t0=0, tries=0, shelf=[], counter=[];
+
+function drawTabs(){
+  document.getElementById('tabs').innerHTML = RECIPES.map((r,i)=>{
+    const b=G.getBest('little-chef:'+r.key);
+    return `<button class="tab${recipe===r?' on':''}" onclick="start(${i})">${r.label}`+
+      (b?`<span class="best">⭐ best ${b.pct}%</span>`:'')+`</button>`;
+  }).join('');
+}
+window.start = (i)=>{
+  recipe=RECIPES[i]; si=0; results=[]; t0=Date.now(); counter=[];
+  const needed=[...new Set(recipe.steps.map(s=>s.need))];
+  shelf=G.shuffle(needed.concat(recipe.extra));
+  drawTabs(); step();
+};
+function stepbar(){
+  return '<div class="stepbar">'+recipe.steps.map((_,i)=>{
+    const c=i===si?' cur':'';
+    const r=results[i]==null?'':(results[i]===1?' ok':' half');
+    return '<div class="sdot'+c+r+'"></div>';
+  }).join('')+'</div>';
+}
+function step(){
+  if(si>=recipe.steps.length) return finish();
+  tries=0;
+  const st=recipe.steps[si];
+  document.getElementById('stage').innerHTML=`
+    ${stepbar()}
+    <div class="counter">${counter.length
+      ? counter.map(ic=>`<span class="item">${ic}</span>`).join('')
+      : '<span class="placeholder">Your kitchen counter is empty…</span>'}</div>
+    <div class="instruction">${st.say} <button class="speaker" onclick="G.say('${st.say.replace(/'/g,"\\'")}')">🔊</button></div>
+    <div style="font-weight:800;color:var(--muted)">Touch what you need!</div>
+    <div class="shelf">${shelf.map(w=>`
+      <div class="item-card${counter.includes(G.ICO[w])&&!recipe.steps.slice(si).some(s=>s.need===w)?' gone':''}"
+           data-w="${w}" onclick="pick(this)">
+        <div class="ico">${G.ICO[w]}</div><div class="w">${w}</div>
+      </div>`).join('')}
+    </div>
+    <div class="msg" id="msg"></div>`;
+  setTimeout(()=>G.say(st.say), 400);
+}
+window.pick = (el)=>{
+  const st=recipe.steps[si];
+  if(el.dataset.w===st.need){
+    el.classList.add('ok'); G.ding();
+    counter.push(G.ICO[st.need]);
+    results[si] = tries===0 ? 1 : 0.5;
+    document.getElementById('msg').textContent = tries===0 ? '⭐ Yes, chef!' : '👍 That\'s it!';
+    setTimeout(()=>{ si++; step(); }, 900);
+  }else{
+    tries++; el.classList.add('ko'); G.buzz();
+    document.getElementById('msg').textContent='🙈 Not that one… listen again!';
+    G.say(st.say);
+    setTimeout(()=>el.classList.remove('ko'), 450);
+    if(tries>=2){
+      const okEl=[...document.querySelectorAll('.item-card')].find(p=>p.dataset.w===st.need);
+      if(okEl) okEl.style.outline='4px dashed var(--good)';
+    }
+  }
+};
+function finish(){
+  const stars=results.filter(r=>r===1).length, total=recipe.steps.length;
+  const pct=Math.round(100*results.reduce((s,r)=>s+r,0)/total);
+  const dur=Math.round((Date.now()-t0)/1000);
+  G.setBest('little-chef:'+recipe.key, pct);
+  G.fanfare(); G.confetti(36);
+  G.say('You made '+recipe.name+'! Great job, chef!');
+  document.getElementById('stage').innerHTML=`
+    <div class="end">
+      <div class="trophy">${recipe.dish}</div>
+      <h2>You made ${recipe.name}!</h2>
+      <div class="stars">${'⭐'.repeat(stars)}${'☆'.repeat(total-stars)}</div>
+      <p style="margin:10px 0;color:var(--muted);font-weight:700">${stars} of ${total} perfect steps · ${pct}%</p>
+      <button class="bigbtn" onclick="start(${RECIPES.indexOf(recipe)})">🔁 Cook again</button>
+    </div>`;
+  drawTabs();
+  G.NISACT.submit({activity:'g2u4-little-chef', title:'Little Chef — '+recipe.label.replace(/^[^ ]+ /,''),
+    level:'A1', score:stars, total:total, duration:dur});
+}
+document.getElementById('stage').innerHTML=`
+  <div style="padding:30px 10px">
+    <div style="font-size:4rem">🧑‍🍳🥪🍋</div>
+    <h2 style="margin:12px 0">What do you want to cook?</h2>
+    <p style="color:var(--muted);font-weight:700">Listen to each step 🔊 and touch what the chef needs.</p>
+  </div>`;
+drawTabs();
+</script>
+</body>
+</html>
