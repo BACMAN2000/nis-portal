@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Listen &amp; Touch — In the Kitchen · 2nd grade</title>
+<style>
+  :root{ --bg:#fdf6ec; --card:#ffffff; --ink:#3a2e2a; --muted:#8a7a6e;
+    --accent:#ff8c42; --accent-soft:#ffe8d6; --blue:#3b5bdb;
+    --good:#2f9e44; --good-soft:#d3f4dc; --bad:#e03131; --bad-soft:#ffe3e3; }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:'Segoe UI',system-ui,Arial,sans-serif; background:var(--bg); color:var(--ink); padding:18px; touch-action:manipulation;}
+  .topnav{position:sticky; top:0; z-index:30; background:#fff; display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+    padding:10px 18px; box-shadow:0 2px 10px rgba(60,40,20,.10); margin:-18px -18px 16px;}
+  .topnav img{height:32px; width:auto; display:block;}
+  .topnav .nav-sp{margin-left:auto;}
+  .navbtn{text-decoration:none; font-weight:700; font-size:.85rem; padding:8px 14px; border-radius:9px; white-space:nowrap;
+    background:var(--accent-soft); color:#b25b1e; border:none; cursor:pointer;}
+  .navbtn.primary{background:var(--accent); color:#fff;}
+  header{max-width:900px; margin:0 auto 10px; text-align:center;}
+  header h1{font-size:1.6rem;}
+  header p{color:var(--muted); font-size:.95rem; margin-top:4px;}
+  .tabs{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin:14px auto;}
+  .tab{border:3px solid transparent; background:var(--card); color:var(--ink); padding:10px 18px; border-radius:24px;
+       font-weight:800; font-size:1rem; cursor:pointer; box-shadow:0 2px 6px rgba(60,40,20,.12);}
+  .tab.on{background:var(--accent); color:#fff;}
+  .tab .best{display:block; font-weight:600; font-size:.7rem; color:var(--good);}
+  .tab.on .best{color:#ffe8d6;}
+  .stage{max-width:900px; margin:0 auto; background:var(--card); border-radius:20px; padding:22px;
+         box-shadow:0 3px 14px rgba(60,40,20,.10); text-align:center;}
+  .bigbtn{border:none; border-radius:16px; background:var(--blue); color:#fff; font-weight:800;
+          font-size:1.25rem; padding:16px 30px; cursor:pointer; box-shadow:0 4px 0 #2b46b3;}
+  .bigbtn:active{transform:translateY(3px); box-shadow:0 1px 0 #2b46b3;}
+  .speaker{font-size:4.2rem; background:none; border:none; cursor:pointer; line-height:1; transition:.15s;}
+  .speaker:active{transform:scale(.9);}
+  .progress{display:flex; gap:5px; justify-content:center; margin:12px 0;}
+  .dot{width:16px; height:16px; border-radius:50%; background:#eee0d0;}
+  .dot.ok{background:var(--good);} .dot.half{background:#f5c518;} .dot.cur{outline:3px solid var(--accent);}
+  .cards{display:grid; grid-template-columns:repeat(2,minmax(120px,1fr)); gap:14px; max-width:560px; margin:18px auto;}
+  @media(min-width:640px){ .cards{grid-template-columns:repeat(4,1fr); max-width:760px;} }
+  .pick{border:4px solid transparent; background:var(--accent-soft); border-radius:18px; padding:16px 8px;
+        cursor:pointer; transition:.12s; -webkit-tap-highlight-color:transparent;}
+  .pick .ico{font-size:3.4rem; line-height:1.15;}
+  .pick .w{font-weight:800; font-size:1.05rem; margin-top:6px;}
+  .pick:active{transform:scale(.95);}
+  .pick.ok{background:var(--good-soft); border-color:var(--good); animation:pop .35s;}
+  .pick.ko{background:var(--bad-soft); border-color:var(--bad); animation:shake .4s;}
+  .pick.dim{opacity:.45; pointer-events:none;}
+  @keyframes pop{0%{transform:scale(.85);}60%{transform:scale(1.08);}100%{transform:scale(1);}}
+  @keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-8px);}75%{transform:translateX(8px);}}
+  .msg{min-height:1.6em; font-weight:800; font-size:1.15rem; margin-top:4px;}
+  .end .trophy{font-size:4.5rem;}
+  .end h2{font-size:1.7rem; margin:8px 0;}
+  .stars{font-size:2rem; letter-spacing:4px;}
+  footer{max-width:900px; margin:18px auto 0; text-align:center; color:var(--muted); font-size:.75rem;}
+  @media (max-width:480px){ body{padding:8px;} .topnav{margin:-8px -8px 12px; padding:8px 12px;} .stage{padding:14px;} }
+</style>
+<meta name="google" content="notranslate">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+<script src="config.js?v=18"></script>
+<script src="g2-u4-data.js?v=1"></script>
+<script src="nis-nav.js?v=1"></script>
+</head>
+<body>
+<nav class="topnav">
+  <img src="assets/logo-h.svg" alt="Nordic International School" onerror="this.style.display='none'">
+  <span class="nav-sp"></span>
+  <a class="navbtn" href="activities.html">🎲 Actividades</a>
+  <a class="navbtn primary" href="./">🏫 Portal</a>
+</nav>
+<header>
+  <h1>👂 Listen &amp; Touch</h1>
+  <p>In the Kitchen · Unit 4 — Listen to the word and touch the right picture. 2nd grade · NIS English</p>
+</header>
+
+<div class="tabs" id="tabs"></div>
+<div class="stage" id="stage"></div>
+
+<footer>Unit 4 · In the Kitchen — 2nd grade Primary · Nordic International School</footer>
+
+<script>
+const G = window.G2U4;
+const MODES = [
+  {key:'fruit',    label:'🍓 Fruit',    pool:['apple','banana','lemon','orange','strawberry','blueberry','tomato'].map(w=>({w,ico:G.ICO[w]}))},
+  {key:'food',     label:'🍞 Food',     pool:['bread','rice','pasta','cheese','egg','milk','yogurt','chicken','fish','meat','ham','corn','onion','carrot','lettuce'].map(w=>({w,ico:G.ICO[w]}))},
+  {key:'utensils', label:'🍴 Utensils', pool:G.UTENSILS},
+  {key:'actions',  label:'👩‍🍳 Actions',  pool:G.ACTIONS},
+  {key:'all',      label:'🌟 Everything', pool:G.ALL},
+];
+let mode=null, order=[], qi=0, results=[], t0=0, tries=0, done=false;
+
+function drawTabs(){
+  document.getElementById('tabs').innerHTML = MODES.map((m,i)=>{
+    const b=G.getBest('listen-touch:'+m.key);
+    return `<button class="tab${mode===m?' on':''}" onclick="start(${i})">${m.label}`+
+      (b?`<span class="best">⭐ best ${b.pct}%</span>`:'')+`</button>`;
+  }).join('');
+}
+window.start = (i)=>{
+  mode=MODES[i];
+  const n=Math.min(10, mode.pool.length);
+  order=G.shuffle(mode.pool).slice(0,n);
+  qi=0; results=[]; t0=Date.now(); done=false;
+  drawTabs(); ask();
+};
+function progress(){
+  return '<div class="progress">'+order.map((_,i)=>{
+    const c = i===qi?' cur':'';
+    const r = results[i]==null?'':(results[i]===1?' ok':' half');
+    return '<div class="dot'+c+r+'"></div>';
+  }).join('')+'</div>';
+}
+function ask(){
+  if(qi>=order.length) return finish();
+  tries=0;
+  const target=order[qi];
+  const decoys=G.shuffle(mode.pool.filter(x=>x.w!==target.w)).slice(0,3);
+  const opts=G.shuffle([target].concat(decoys));
+  document.getElementById('stage').innerHTML = `
+    ${progress()}
+    <button class="speaker" onclick="G.say('${target.w}')" title="Listen again">🔊</button>
+    <div class="muted" style="color:var(--muted);font-weight:700">Touch the speaker to listen again</div>
+    <div class="cards">${opts.map(o=>`
+      <div class="pick" data-w="${o.w}" onclick="answer(this,'${target.w}')">
+        <div class="ico">${o.ico}</div><div class="w">${o.w}</div>
+      </div>`).join('')}
+    </div>
+    <div class="msg" id="msg"></div>`;
+  setTimeout(()=>G.say(target.w), 350);
+}
+window.answer = (el,target)=>{
+  if(done) return;
+  const w=el.dataset.w;
+  if(w===target){
+    el.classList.add('ok');
+    results[qi] = tries===0 ? 1 : 0.5;
+    if(tries===0) G.ding(); else G.ding();
+    document.getElementById('msg').textContent = tries===0 ? '⭐ Great job!' : '👍 You got it!';
+    document.querySelectorAll('.pick').forEach(p=>{ if(p!==el) p.classList.add('dim'); });
+    setTimeout(()=>{ qi++; ask(); }, 1000);
+  }else{
+    tries++;
+    el.classList.add('ko');
+    G.buzz();
+    document.getElementById('msg').textContent='🙈 Try again! Listen: '+'🔊';
+    G.say(target);
+    setTimeout(()=>el.classList.remove('ko'), 450);
+    if(tries>=2){ // tras 2 fallos se ilumina la correcta para no frustrar
+      const okEl=[...document.querySelectorAll('.pick')].find(p=>p.dataset.w===target);
+      if(okEl){ okEl.style.outline='4px dashed var(--good)'; }
+    }
+  }
+};
+function finish(){
+  done=true;
+  const stars=results.filter(r=>r===1).length;
+  const score=stars, total=order.length;
+  const pct=Math.round(100*results.reduce((s,r)=>s+r,0)/total);
+  const dur=Math.round((Date.now()-t0)/1000);
+  G.setBest('listen-touch:'+mode.key, pct);
+  G.fanfare(); G.confetti(30);
+  document.getElementById('stage').innerHTML = `
+    <div class="end">
+      <div class="trophy">${pct>=80?'🏆':pct>=50?'🎉':'💪'}</div>
+      <h2>${pct>=80?'Amazing!':pct>=50?'Well done!':'Good try!'}</h2>
+      <div class="stars">${'⭐'.repeat(stars)}${'☆'.repeat(total-stars)}</div>
+      <p style="margin:10px 0;color:var(--muted);font-weight:700">${stars} of ${total} first-try stars · ${pct}%</p>
+      <button class="bigbtn" onclick="start(${MODES.indexOf(mode)})">🔁 Play again</button>
+    </div>`;
+  drawTabs();
+  G.NISACT.submit({activity:'g2u4-listen-touch', title:'Listen & Touch — '+mode.label.replace(/^[^ ]+ /,''),
+    level:'A1', score:score, total:total, duration:dur});
+}
+document.getElementById('stage').innerHTML = `
+  <div style="padding:30px 10px">
+    <div style="font-size:4rem">👂🍅🥄</div>
+    <h2 style="margin:12px 0">Choose a group to start!</h2>
+    <p style="color:var(--muted);font-weight:700">Listen to the word 🔊 and touch the right picture.</p>
+  </div>`;
+drawTabs();
+</script>
+</body>
+</html>

@@ -103,6 +103,34 @@
           ...U4_TOPICS.map((t,i)=>u4Week(t,i+1)),
         ],
       },
+      /* ===== PRIMARY · 2nd grade ===== */
+      {
+        id:'u4', grade:'g2', icon:'🧑‍🍳',
+        title:'Unit 4 — In the Kitchen',
+        blurb:'Cooking words: food, actions and utensils — 5 games with audio for little chefs.',
+        lead:'In the Kitchen · Grade 2. Every game says the words out loud — touch 🔊 to listen again.',
+        weeks: [
+          /* Semana única sin título: siempre visible dentro de la unidad
+             (mismo criterio que u3.w0); el candado fino es el de la unidad. */
+          { id:'w0', title:'', games:[
+            { href:'listen-touch-g2u4.html', icon:'👂', title:'Listen & Touch',
+              desc:'Listen to the word and touch the right picture. Fruit, food, utensils and actions.',
+              tags:['Audio','A1'] },
+            { href:'kitchen-sort-g2u4.html', icon:'🧺', title:'Kitchen Sort',
+              desc:'Action, food or utensil? Sort every word into the right basket.',
+              tags:['Audio','A1'] },
+            { href:'memory-g2u4.html', icon:'🃏', title:'Kitchen Memory',
+              desc:'Flip the cards and match each picture with its word. Four boards to play.',
+              tags:['A1'] },
+            { href:'word-builder-g2u4.html', icon:'🔤', title:'Spelling Chef',
+              desc:'Listen and build the word with the letter tiles. Easy, medium and hard words.',
+              tags:['Audio','A1'] },
+            { href:'recipe-builder-g2u4.html', icon:'🧑‍🍳', title:'Little Chef',
+              desc:'Follow the steps and cook a sandwich, a fruit salad or lemonade. Slice, pour, squeeze and mix!',
+              tags:['Audio','A1'] },
+          ]},
+        ],
+      },
     ],
   };
 
