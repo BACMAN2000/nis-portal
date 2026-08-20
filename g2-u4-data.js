@@ -43,10 +43,14 @@ window.G2U4 = (function(){
   const ALL = [].concat(ACTIONS, INGREDIENTS, UTENSILS);
   const ICO = {}; ALL.forEach(x=>ICO[x.w]=x.ico);
 
-  /* ---------- audio: TTS en-US, lento para niños ----------
-     Sin mp3 por ahora (ElevenLabs sin créditos): mismo criterio ttsOnly que
-     el francés. Cuando haya mp3, añadirlos en g2u4-audio/<palabra>.mp3 y
-     probar aquí antes del repliegue a speechSynthesis. */
+  /* ---------- audio ----------
+     Con HAS_MP3=true, `say()` reproduce g2u4-audio/<id>.mp3 (voz de niño,
+     ElevenLabs vía gen_g2u4_audio.py) y cae a speechSynthesis si el archivo
+     falla. Con false NI SIQUIERA lo intenta (no sondear 404, como el
+     francés). ids: palabras → 'w-<slug>' (automático); frases → id explícito
+     ('step-sandwich-1', 'done-salad'…). */
+  const HAS_MP3 = true;    // g2u4-audio/ generado 2026-08-20 (voz Emmaline, niña británica)
+  const AUDIO_BASE = 'g2u4-audio/';
   let _voice = null;
   function _pickVoice(){
     if(_voice) return _voice;
@@ -55,7 +59,7 @@ window.G2U4 = (function(){
     return _voice;
   }
   if(window.speechSynthesis) speechSynthesis.onvoiceschanged = ()=>{ _voice=null; _pickVoice(); };
-  function say(text, rate){
+  function _tts(text, rate){
     try{
       if(!window.speechSynthesis) return;
       speechSynthesis.cancel();
@@ -64,6 +68,23 @@ window.G2U4 = (function(){
       u.lang = 'en-US'; u.rate = rate || 0.85; u.pitch = 1.05;
       speechSynthesis.speak(u);
     }catch(e){}
+  }
+  const _slug = t => String(t).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+  let _playing = null;
+  function say(text, rate, id){
+    const key = id || (ICO[text] ? 'w-'+_slug(text) : null);
+    if(HAS_MP3 && key){
+      try{
+        if(_playing){ _playing.pause(); _playing=null; }
+        if(window.speechSynthesis) speechSynthesis.cancel();
+        const a = new Audio(AUDIO_BASE + key + '.mp3');
+        a.onerror = ()=>_tts(text, rate);
+        _playing = a;
+        a.play().catch(()=>_tts(text, rate));
+        return;
+      }catch(e){}
+    }
+    _tts(text, rate);
   }
 
   /* ---------- sonidos de acierto/fallo (WebAudio, sin archivos) ---------- */
