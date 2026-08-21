@@ -354,9 +354,9 @@ window.NISACT = (function () {
     _sb = window.supabase.createClient(NIS_CONFIG.SUPABASE_URL, NIS_CONFIG.SUPABASE_KEY); return _sb; }
   async function student(){ const c=client(); if(!c) return null;
     try{ const u=await c.auth.getUser(); if(!u||!u.data||!u.data.user) return null;
-      const p=await c.from('profiles').select('full_name,first_name,email').eq('id',u.data.user.id).maybeSingle();
+      const p=await c.from('profiles').select('full_name,first_name,email,role').eq('id',u.data.user.id).maybeSingle();
       const d=(p&&p.data)||{};
-      return {uid:u.data.user.id,email:u.data.user.email||d.email,full_name:d.full_name,first_name:d.first_name};
+      return {uid:u.data.user.id,email:u.data.user.email||d.email,full_name:d.full_name,first_name:d.first_name,role:d.role};
     }catch(e){ return null; } }
   async function submit(r){
     const s=await student(); if(!s) return {skipped:true};
@@ -370,7 +370,7 @@ window.NISACT = (function () {
     }catch(e){}
     return {sent:true};
   }
-  return {submit};
+  return {submit, student};
 })();
 
 /* ---------- progreso local + envío de resultados ---------- */
@@ -414,6 +414,7 @@ function render(){
   _stopAudio();
   backEl.style.display = view.screen==="chapters" ? "none" : "inline-block";
   if(view.screen==="chapters"){ crumbEl.innerHTML=""; return renderChapters(); }
+  if(view.screen==="teacher"){ return teacherView(); }
   if(view.screen==="info"){ crumbEl.innerHTML = view.info==='bio' ? 'Agatha Christie' : 'The characters'; return renderInfo(); }
   const c=CHAPTERS[view.chap];
   if(view.screen==="acts"){ crumbEl.innerHTML=`<b>Chapter ${c.n}</b> · ${c.title}`; return renderActs(); }
@@ -421,6 +422,7 @@ function render(){
   ACT_RENDER[view.act](c);
 }
 function back(){
+  if(view.screen==="teacher"){ view.screen="chapters"; view.chap=null; return render(); }
   if(view.screen==="act"){ view.screen="acts"; view.act=null; }
   else if(view.screen==="acts" || view.screen==="info"){ view.screen="chapters"; view.chap=null; view.info=null; }
   render();
@@ -1193,10 +1195,16 @@ function actListen(c){
     <div class="qnum">CHAPTER ${c.n} · LISTENING</div>
     <h2 style="color:var(--blue-d);margin:2px 0 8px">🎧 Listen first, then write</h2>
     <p class="muted" style="margin:0 0 12px">Step 1 — Listen to the chapter <b>without reading the text</b>. You can listen twice.</p>
-    <div class="rp-bar">
-      <button id="rpPlay" class="btn sm" onclick="rpListenToggle()">▶ Play the chapter</button>
-      <select id="rpRate" title="Speed"><option value="0.8">🐢 slower</option><option value="1" selected>1× normal</option><option value="1.15">⚡ faster</option></select>
-      <a class="rp-dl" href="${AUD_BASE}ch${c.n}.mp3" download>⬇ Download the audio (mp3)</a>
+    <div class="rp-player">
+      <div class="rp-ctl">
+        <button id="rpPlayBtn" class="cbtn" title="Play / Pause" onclick="rpListenToggle()">▶</button>
+        <button class="cbtn ghost" title="Stop" onclick="rpListenStop()">⏹</button>
+        <span class="time" id="rpTime">0:00 / 0:00</span>
+        <input type="range" class="rp-seek" id="rpSeek" min="0" max="1" step="0.1" value="0">
+        <select id="rpRate" title="Speed" onchange="rpListenRate(this.value)"><option value="0.8">🐢 slower</option><option value="1" selected>1× normal</option><option value="1.15">⚡ faster</option></select>
+        <a class="rp-dl" href="${AUD_BASE}ch${c.n}.mp3" download="ATTWN-${LVL}-chapter-${c.n}.mp3">⬇ mp3</a>
+      </div>
+      <div class="rp-hint" id="rpHint">🎧 Listen without reading the text below. Drag the blue dot to go back or forward.</div>
     </div>
     <p class="muted" style="margin:0 0 12px">Step 2 — Complete each sentence with the missing word. The definition helps you.</p>
     <div id="gapList">${items.map((it,i)=>`
@@ -1204,17 +1212,40 @@ function actListen(c){
         <div class="muted" style="font-size:12px;margin-top:5px">💡 ${it.hint}</div></div>`).join('')}
     <div style="display:flex;gap:10px;align-items:center;margin-top:12px">
       <button class="btn sm" onclick="gapCheck()">Check my answers</button><div id="gapOut"></div></div></div>`;
-  window.rpListenToggle=()=>{
-    const b=$('#rpPlay');
-    if(_aud||_ttsOn){ _stopAudio(); b.innerHTML='▶ Play the chapter'; return; }
-    const full=new Audio(AUD_BASE+'ch'+c.n+'.mp3'); full.playbackRate=_rate();
-    full.onended=()=>{ _aud=null; b.innerHTML='▶ Play the chapter'; };
-    full.onerror=()=>{ _aud=null; _ttsOn=true; // repliegue TTS: párrafo a párrafo
-      try{ speechSynthesis.cancel();
-        paras.forEach(p=>{ const u=new SpeechSynthesisUtterance(p); u.lang='en-GB'; u.rate=.95; speechSynthesis.speak(u); });
-      }catch(e){} };
-    _aud=full; b.innerHTML='⏸ Pause'; full.play().catch(()=>full.onerror());
+  let _lisSeeking=false;
+  const _lisPaint=()=>{
+    const b=$('#rpPlayBtn'), s=$('#rpSeek'), tl=$('#rpTime');
+    const playing=_aud && !_aud.paused && !_aud.ended;
+    if(b) b.innerHTML=playing?'⏸':'▶';
+    const t=_aud?_aud.currentTime:0, dur=(_aud&&isFinite(_aud.duration))?_aud.duration:0;
+    if(s && !_lisSeeking && dur){ s.max=Math.max(1,Math.round(dur*10)/10); s.value=t; s.style.setProperty('--pct',(t/dur*100)+'%'); }
+    if(tl) tl.textContent=RP.fmt(t)+' / '+RP.fmt(dur);
   };
+  window.rpListenRate=(v)=>{ if(_aud) _aud.playbackRate=parseFloat(v)||1; };
+  window.rpListenToggle=()=>{
+    if(_ttsOn){ _stopAudio(); _lisPaint(); return; }
+    if(_aud){ if(_aud.paused){ _aud.playbackRate=_rate(); _aud.play().catch(()=>{}); } else { _aud.pause(); } _lisPaint(); return; }
+    const full=new Audio(AUD_BASE+'ch'+c.n+'.mp3'); full.preload='metadata'; full.playbackRate=_rate();
+    full.ontimeupdate=_lisPaint; full.onended=_lisPaint; full.onloadedmetadata=_lisPaint; full.onplay=_lisPaint; full.onpause=_lisPaint;
+    full.onerror=()=>{ _aud=null; _ttsOn=true; const h=$('#rpHint'); if(h) h.textContent='⚠️ Recording not available — using the browser voice.';
+      try{ speechSynthesis.cancel();  // repliegue TTS: párrafo a párrafo
+        paras.forEach(p=>{ const u=new SpeechSynthesisUtterance(p); u.lang='en-GB'; u.rate=.95; speechSynthesis.speak(u); });
+      }catch(e){} const b=$('#rpPlayBtn'); if(b) b.innerHTML='⏸'; };
+    _aud=full; full.play().then(_lisPaint).catch(()=>full.onerror());
+  };
+  window.rpListenStop=()=>{
+    if(_aud){ _aud.pause(); try{ _aud.currentTime=0; }catch(e){} }
+    try{ speechSynthesis.cancel(); }catch(e){} _ttsOn=false;
+    const s=$('#rpSeek'); if(s){ s.value=0; s.style.setProperty('--pct','0%'); }
+    _lisPaint();
+  };
+  const sk=$('#rpSeek');
+  if(sk){
+    sk.addEventListener('input',()=>{ _lisSeeking=true;
+      sk.style.setProperty('--pct',(sk.value/(sk.max||1)*100)+'%');
+      const tl=$('#rpTime'); if(tl) tl.textContent=RP.fmt(parseFloat(sk.value))+' / '+RP.fmt((_aud&&isFinite(_aud.duration))?_aud.duration:0); });
+    sk.addEventListener('change',()=>{ _lisSeeking=false; if(_aud){ try{ _aud.currentTime=parseFloat(sk.value); }catch(e){} } });
+  }
   window.gapCheck=()=>{
     const norm=s=>String(s||'').toLowerCase().replace(/[^a-z]/g,'');
     let ok=0;
@@ -1679,6 +1710,106 @@ function renderChooser(){
     </div>
     <p class="muted" style="margin-top:14px;font-size:12.5px">💡 Not sure? Start at <b>B1</b>. You can change level at any time — your progress is saved separately at each level, and your 🔍 Detective's Notebook travels with you.</p>`;
 }
+
+/* ============================================================
+   PANEL DEL PROFESOR — claves de respuestas + planificación.
+   Visible solo para docentes/admin (según la sesión del Portal).
+   Todo se genera de ATTWN_DATA (nivel cargado) + los extras.
+   ============================================================ */
+const LEVEL_PLAN=[
+  {lvl:'A2', words:2706, hrs:'8–10 h', perCh:'50–55 min',
+   note:'Elementary. Frases cortas y vocabulario básico; audio más lento. Ideal para refuerzo o 6.º–7.º. Sugerencia: 1 capítulo por sesión de 50 min con las 3 actividades núcleo (Comprehension, True/False, Listening).'},
+  {lvl:'B1', words:3624, hrs:'10–12 h', perCh:'60–70 min',
+   note:'Intermedio — versión estándar de 9.º grado. Narrativa clara con audio completo. Sugerencia: leer + 4–5 actividades por capítulo; Writing como tarea para casa.'},
+  {lvl:'B2', words:4546, hrs:'12–15 h', perCh:'75–85 min',
+   note:'Intermedio-alto. Textos más densos y léxico ampliado; bueno para 10.º. Sugerencia: exigir las 13 actividades; Speed Quiz y Crossword como repaso de vocabulario.'},
+  {lvl:'C1', words:6299, hrs:'15–18 h', perCh:'90–100 min',
+   note:'Avanzado, cercano al original; ideal 11.º / preparación C1. Sugerencia: combinar con “Read the original” (C2) y escritura extendida.'}
+];
+function _tkChapter(c){
+  const comp=(c.comp||[]).map((q,i)=>`<li><b>${i+1}.</b> ${q[0]}<br><span style="color:#059669">✔ ${q[1][q[2]]}</span>${q[3]?`<br><span class="muted" style="font-size:12.5px">${q[3]}</span>`:''}</li>`).join('');
+  const tf=(c.tf||[]).map((t,i)=>`<li><b>${i+1}.</b> ${t[0]} — <b style="color:${t[1]?'#059669':'#dc2626'}">${t[1]?'TRUE':'FALSE'}</b>${t[2]?` <span class="muted" style="font-size:12.5px">${t[2]}</span>`:''}</li>`).join('');
+  const vocab=(c.vocab||[]).map(v=>`<li><b>${v[0]}</b> — ${v[1]}</li>`).join('');
+  const wr=(c.writing||[]).map((w,i)=>`<li><b>Task ${i+1}</b> <span class="muted">(${w.target})</span>: ${w.task}</li>`).join('');
+  const ev=EVENTS[c.n];
+  const order=ev?ev.ev.map(e=>`<li>${e}</li>`).join(''):'';
+  const keys=ev?ev.keys.join(' · '):'';
+  return `<details class="tk-ch"><summary><b>Chapter ${c.n}</b> · ${c.title}</summary>
+    <div class="tk-body">
+      <h4>❓ Comprehension <span class="muted">(mismas respuestas que ⚡ Speed Quiz)</span></h4><ol class="tk-list">${comp}</ol>
+      <h4>✅ True / False</h4><ol class="tk-list">${tf}</ol>
+      <h4>🔤 Vocabulario <span class="muted">— alimenta Multiple Choice · Crossword · Word Search · Hangman · Memory · Scramble</span></h4><ul class="tk-list">${vocab}</ul>
+      <h4>🎧 Listening (gap-fill)</h4><p class="muted" style="margin:0 0 4px">Los 6 huecos se generan del texto: la palabra que falta es siempre uno de los términos de vocabulario de arriba (o un nombre de personaje). Se eligen al azar en cada intento.</p>
+      <h4>📋 Summarize — orden correcto de los hechos</h4><ol class="tk-list">${order}</ol>
+      <p class="muted" style="margin:6px 0 0"><b>Palabras clave:</b> ${keys}</p>
+      <p class="muted" style="margin:4px 0 0"><b>Resumen modelo:</b> ${c.sum||'—'}</p>
+      <h4>✍️ Writing <span class="muted">— tareas abiertas (sin clave única)</span></h4><ul class="tk-list">${wr}</ul>
+    </div></details>`;
+}
+function teacherView(){
+  _stopAudio();
+  view={screen:'teacher',chap:null,act:null,info:null};
+  backEl.style.display='inline-block';
+  crumbEl.innerHTML='👩‍🏫 Panel del profesor';
+  const planRows=LEVEL_PLAN.map(p=>`<tr${p.lvl===LVL?' style="background:#eef4ff"':''}>
+    <td><b>${p.lvl}</b></td><td>${p.words.toLocaleString('es')}</td><td>${p.perCh}</td><td><b>${p.hrs}</b></td><td>${p.note}</td></tr>`).join('');
+  const byr=BOOK_WORDS.map(v=>`<li><b>${v[0]}</b> — ${v[1]}</li>`).join('');
+  const ww=WHOSWHO.map((w,i)=>`<li><b>${i+1}.</b> ${w[0]} <b style="color:#059669">→ ${w[1]}</b></li>`).join('');
+  const nums=BIO_NUMBERS.map(b=>`<li><b>${b[0]}</b> — ${b[1]}</li>`).join('');
+  const gram=GRAMMAR_PP.map((g,i)=>`<li><b>${i+1}.</b> ${g[0]}<br><span style="color:#059669">✔ ${g[1][g[2]]}</span> <span class="muted" style="font-size:12.5px">${g[3]}</span></li>`).join('');
+  const lvlPills=['a2','b1','b2','c1'].map(l=>l.toUpperCase()===LVL
+    ? `<span class="kw hit">${l.toUpperCase()}</span>`
+    : `<a class="kw" style="text-decoration:none" href="${_lvlLink(l)}">${l.toUpperCase()}</a>`).join('');
+  stage.innerHTML=`<style>
+    .tk h2{color:var(--blue-d);margin:0 0 4px}
+    .tk h3{color:var(--blue-d);margin:24px 0 8px;border-bottom:2px solid var(--line);padding-bottom:5px}
+    .tk h4{color:var(--blue-d);margin:14px 0 4px;font-size:14px}
+    .tk table{width:100%;border-collapse:collapse;font-size:13px;margin:8px 0}
+    .tk th,.tk td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+    .tk th{background:var(--blue-d);color:#fff;font-size:12px}
+    .tk-ch{border:1px solid var(--line);border-radius:10px;margin:8px 0;overflow:hidden}
+    .tk-ch summary{cursor:pointer;padding:10px 14px;background:#f1f5f9;font-size:15px;color:var(--blue-d);list-style:none}
+    .tk-ch summary::-webkit-details-marker{display:none}
+    .tk-ch summary::before{content:'▸ ';font-weight:700}
+    .tk-ch[open] summary::before{content:'▾ '}
+    .tk-body{padding:6px 16px 14px}
+    .tk-list{margin:2px 0 6px;padding-left:20px}
+    .tk-list li{margin-bottom:6px;line-height:1.5}
+    @media print{ header,.bar,.no-print{display:none!important} .tk-ch summary::before{content:''} .tk-body{display:block!important} }
+  </style>
+  <div class="tk panel">
+    <h2>👩‍🏫 Panel del profesor</h2>
+    <p class="muted">Claves de respuestas y planificación de <b>And Then There Were None</b>. Solo visible para docentes.</p>
+    <div class="no-print" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:10px 0 4px">
+      <button class="btn sm" onclick="window.print()">🖨️ Imprimir / PDF</button>
+      <button class="btn ghost sm" onclick="view={screen:'chapters',chap:null,act:null};render()">← Volver a la app</button>
+      <span class="muted" style="font-size:12.5px;margin-left:6px">Respuestas del nivel:</span> ${lvlPills}
+    </div>
+    <h3>📊 Detallado por nivel</h3>
+    <table><thead><tr><th>Nivel</th><th>N.º de palabras<br>(texto del reader)</th><th>Tiempo por<br>capítulo</th><th>Total<br>(todas las actividades)</th><th>Notas</th></tr></thead>
+    <tbody>${planRows}</tbody></table>
+    <p class="muted" style="font-size:12px">“N.º de palabras” = solo el texto del reader (10 capítulos). El total incluye leer + las 13 actividades por capítulo + los extras. Estimaciones para 9.º grado; ajústalas a tu grupo. (Fila resaltada = nivel abierto ahora, <b>${LVL}</b>.)</p>
+    <h3>🗝️ Claves por capítulo <span class="muted" style="font-size:13px;font-weight:400">— nivel ${LVL}</span></h3>
+    <p class="muted" style="font-size:12.5px">Toca un capítulo para desplegar sus respuestas.</p>
+    ${CHAPTERS.map(_tkChapter).join('')}
+    <h3>🎬 Extras (iguales en todos los niveles)</h3>
+    <h4>Before you read — 12 palabras</h4><ul class="tk-list">${byr}</ul>
+    <h4>Who is who?</h4><ol class="tk-list">${ww}</ol>
+    <h4>Agatha in numbers</h4><ul class="tk-list">${nums}</ul>
+    <h4>Grammar — Past perfect</h4><ol class="tk-list">${gram}</ol>
+  </div>`;
+  window.scrollTo(0,0);
+}
+function _mountTeacherBtn(){
+  if(document.getElementById('tkBtn')) return;
+  const b=document.createElement('button');
+  b.id='tkBtn'; b.textContent='👩‍🏫 Profesor';
+  b.title='Claves de respuestas y planificación (solo docentes)';
+  b.style.cssText='position:fixed;right:16px;bottom:16px;z-index:50;background:var(--blue-d);color:#fff;border:none;border-radius:30px;padding:11px 18px;font-family:inherit;font-weight:700;font-size:14px;cursor:pointer;box-shadow:0 6px 20px rgba(15,23,42,.3)';
+  b.onclick=teacherView;
+  document.body.appendChild(b);
+}
+(async()=>{ try{ const s=window.NISACT&&NISACT.student&&await NISACT.student(); if(s&&(s.role==='teacher'||s.role==='admin')) _mountTeacherBtn(); }catch(e){} })();
 
 /* ---------- dispatch ---------- */
 const ACT_RENDER={
