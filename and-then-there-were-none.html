@@ -149,7 +149,68 @@
   .toast{margin-top:8px; font-weight:700}
   .toast.ok{color:#059669} .toast.no{color:#dc2626}
   input,textarea,select,button{-webkit-user-select:auto; user-select:auto}
+  /* Read-along audio */
+  .rp-bar{display:flex; gap:10px; align-items:center; flex-wrap:wrap; background:#f1f5f9; border:1px solid var(--line);
+    border-radius:12px; padding:10px 12px; margin:0 0 16px}
+  .rp-bar .btn.sm{display:inline-flex; align-items:center; gap:6px}
+  .rp-bar select{font-family:inherit; font-weight:700; font-size:13px; color:var(--blue-d); border:1.5px solid var(--line);
+    border-radius:8px; padding:6px 8px; background:#fff}
+  .rp-dl{font-size:12.5px; font-weight:700; color:var(--blue-d); text-decoration:none; margin-left:auto}
+  .rp-dl:hover{text-decoration:underline}
+  .reading p.rp{position:relative; padding-left:34px; border-radius:10px; transition:background .25s}
+  .reading p.rp .pbtn{position:absolute; left:2px; top:2px; width:26px; height:26px; border:none; border-radius:50%;
+    background:#e2e8f0; color:var(--blue-d); font-size:12px; cursor:pointer; line-height:1}
+  .reading p.rp .pbtn:hover{background:#bfdbfe}
+  .reading p.rp.playing{background:#fef9c3}
+  .reading p.rp.playing .pbtn{background:var(--blue); color:#fff}
+  /* Soldier tracker */
+  .plate{background:linear-gradient(180deg,#0f2439,#1e3f66); border-radius:18px; padding:18px 16px 14px; color:#dbeafe;
+    text-align:center; margin:0 0 18px; box-shadow:0 10px 30px rgba(15,23,42,.25)}
+  .plate .rhyme{font-size:13px; font-style:italic; color:#93c5fd; margin-bottom:10px}
+  .plate .row-s{display:flex; justify-content:center; gap:6px; flex-wrap:wrap}
+  .soldier{width:34px; transition:.4s; position:relative}
+  .soldier svg{width:100%; height:auto; display:block}
+  .soldier .lbl{font-size:9px; font-weight:700; color:#93c5fd; text-align:center; margin-top:2px}
+  .soldier.gone{opacity:.22; filter:grayscale(1)}
+  .soldier.gone::after{content:"✖"; position:absolute; top:8px; left:0; right:0; color:#fca5a5; font-size:15px}
+  .plate .left-line{margin-top:8px; font-size:13px; font-weight:700; color:#fde68a}
+  /* Order the events */
+  .ord-item{display:flex; gap:10px; align-items:flex-start; border:1.5px solid var(--line); background:#f8fafc;
+    border-radius:11px; padding:11px 13px; margin:8px 0; cursor:pointer; font-size:14px; font-weight:600}
+  .ord-item:hover{border-color:#93c5fd}
+  .ord-item .n{min-width:26px; height:26px; border-radius:50%; background:#e2e8f0; color:var(--blue-d); font-weight:800;
+    display:flex; align-items:center; justify-content:center; font-size:13px}
+  .ord-item.picked{background:#eff6ff; border-color:#93c5fd}
+  .ord-item.picked .n{background:var(--blue); color:#fff}
+  .ord-item.good{background:#dcfce7; border-color:#4ade80}
+  .ord-item.bad{background:#fee2e2; border-color:#f87171}
+  /* Character medallions */
+  .char-grid{display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .char-card{background:#fff; border:1px solid var(--line); border-radius:16px; padding:16px; text-align:left;
+    box-shadow:0 8px 24px rgba(15,23,42,.08); border-top:4px solid #b8934a}
+  .char-card .med{width:56px; height:56px; border-radius:50%; background:radial-gradient(circle at 35% 30%,#2d5a8d,#12263f);
+    border:3px solid #b8934a; display:flex; align-items:center; justify-content:center; font-size:26px; float:left; margin:0 12px 4px 0}
+  .char-card h3{font-size:15px; color:var(--blue-d); margin:4px 0 1px}
+  .char-card .role{font-size:11px; font-weight:800; letter-spacing:.6px; color:#b8934a; text-transform:uppercase}
+  .char-card p{font-size:13px; color:#334155; margin:8px 0 0; clear:both}
+  .char-card .secret{margin-top:8px; font-size:12.5px; background:#fef2f2; border-left:3px solid #f87171; border-radius:6px;
+    padding:7px 9px; color:#7f1d1d; display:none}
+  .char-card.open .secret{display:block}
+  .char-card .reveal{margin-top:8px; background:#eef2f9; color:var(--blue-d); border:none; border-radius:8px; padding:6px 11px;
+    font-family:inherit; font-weight:700; font-size:12px; cursor:pointer}
+  /* Gap-fill */
+  .gap-item{border:1px solid var(--line); border-radius:12px; padding:13px 15px; margin-bottom:10px; background:#fff; font-size:14.5px}
+  .gap-item input{border:none; border-bottom:2px solid var(--blue); font-family:inherit; font-size:14.5px; font-weight:700;
+    color:var(--blue-d); width:130px; text-align:center; padding:2px 4px; background:#f8fafc}
+  .gap-item input:focus{outline:none; background:#eff6ff}
+  .gap-item input.ok{border-color:#4ade80; color:#065f46; background:#dcfce7}
+  .gap-item input.no{border-color:#f87171; color:#991b1b; background:#fee2e2}
+  .kw{display:inline-block; background:#eef2f9; color:var(--blue-d); font-weight:700; font-size:12px; border-radius:10px;
+    padding:3px 10px; margin:3px 4px 0 0; border:1px solid var(--line)}
+  .kw.hit{background:#dcfce7; color:#065f46; border-color:#86efac}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+<script src="config.js"></script>
 <script src="nis-nav.js?v=1"></script>
 </head>
 <body>
@@ -624,8 +685,56 @@ function goPortal(){ location.href="./"; }
 let view={screen:"chapters", chap:null, act:null};
 function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
 
+/* ---------- puente con el Portal (mismo patrón que grammar-lab) ---------- */
+window.NISACT = (function () {
+  let _sb = null;
+  function client(){ if(_sb) return _sb; if(!window.supabase||!window.NIS_CONFIG) return null;
+    _sb = window.supabase.createClient(NIS_CONFIG.SUPABASE_URL, NIS_CONFIG.SUPABASE_KEY); return _sb; }
+  async function student(){ const c=client(); if(!c) return null;
+    try{ const u=await c.auth.getUser(); if(!u||!u.data||!u.data.user) return null;
+      const p=await c.from('profiles').select('full_name,first_name,email').eq('id',u.data.user.id).maybeSingle();
+      const d=(p&&p.data)||{};
+      return {uid:u.data.user.id,email:u.data.user.email||d.email,full_name:d.full_name,first_name:d.first_name};
+    }catch(e){ return null; } }
+  async function submit(r){
+    const s=await student(); if(!s) return {skipped:true};
+    try{ await client().from('activity_attempts').insert({student_id:s.uid,activity:r.activity,title:r.title,
+      level:r.level,score:r.score,total:r.total,hints_used:r.hints||0,lives_left:r.lives||3,duration_sec:r.duration}); }catch(e){}
+    try{ const m=Math.floor(r.duration/60), sec=r.duration%60;
+      await fetch(NIS_CONFIG.WRITING_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body:JSON.stringify({skill:'Reader',name:s.full_name||s.first_name||'',email:s.email||'',level:r.level,
+          examTitle:r.title+' - Time '+m+'m '+String(sec).padStart(2,'0')+'s',
+          examType:r.activity,score:r.score,total:r.total,duration_min:Math.max(1,Math.round(r.duration/60))})});
+    }catch(e){}
+    return {sent:true};
+  }
+  return {submit};
+})();
+
+/* ---------- progreso local + envío de resultados ---------- */
+let _actT0=Date.now();
+function saveResult(actId,score,total,label){
+  const c = view.chap!=null ? CHAPTERS[view.chap] : null;
+  const pct = total? Math.round(score/total*100) : 0;
+  const key = 'attwn:best:'+(c?c.n:'x')+':'+actId;
+  try{ const b=JSON.parse(localStorage.getItem(key)||'null'); if(!b||pct>b.pct) localStorage.setItem(key,JSON.stringify({pct})); }catch(e){}
+  if(window.NISACT) NISACT.submit({
+    activity:'attwn-'+(c?('ch'+c.n):'extra')+'-'+actId,
+    title:'ATTWN '+(c?('Ch.'+c.n+' '+c.title):'')+' — '+(label||actId),
+    level:'B1', score, total, duration:Math.max(1,Math.round((Date.now()-_actT0)/1000))});
+  _actT0=Date.now();
+  return pct;
+}
+function bestPct(n,actId){ try{ const b=JSON.parse(localStorage.getItem('attwn:best:'+n+':'+actId)||'null'); return b?b.pct:null; }catch(e){ return null; } }
+/* Un capítulo se considera "resuelto" (su soldadito desaparece) con 3+
+   actividades al 70% o más — el mismo umbral en el hub y en las tarjetas. */
+const CORE_ACTS=['comprehension','truefalse','listen','summary','multiplechoice','speed'];
+function chapterDone(n){ return CORE_ACTS.filter(a=>{ const p=bestPct(n,a); return p!=null && p>=70; }).length>=3; }
+
 const ACTS=[
-  {id:"read",          ico:"📖", name:"Read the chapter", desc:"Read the story of this chapter (simplified, B1.2)."},
+  {id:"read",          ico:"📖", name:"Read along",       desc:"Read the chapter with audio: press play and follow the highlighted text."},
+  {id:"listen",        ico:"🎧", name:"Listening",        desc:"Listen first without reading, then complete the missing words."},
+  {id:"summary",       ico:"📋", name:"Summarize",        desc:"Put the events in order, then write your own summary."},
   {id:"comprehension", ico:"❓", name:"Comprehension",   desc:"8 questions about the chapter, with explanations."},
   {id:"truefalse",     ico:"✅", name:"True / False",     desc:"Decide if each statement is true or false."},
   {id:"multiplechoice",ico:"🔤", name:"Multiple Choice",  desc:"Choose the correct meaning of each word."},
@@ -640,6 +749,7 @@ const ACTS=[
 
 /* ---------- navigation ---------- */
 function render(){
+  _stopAudio();
   backEl.style.display = view.screen==="chapters" ? "none" : "inline-block";
   if(view.screen==="chapters"){ crumbEl.innerHTML=""; return renderChapters(); }
   if(view.screen==="info"){ crumbEl.innerHTML = view.info==='bio' ? 'Agatha Christie' : 'The characters'; return renderInfo(); }
@@ -657,29 +767,57 @@ function openChapter(i){ view.chap=i; view.screen="acts"; render(); }
 function openAct(id){ view.act=id; view.screen="act"; render(); }
 function openInfo(kind){ view.info=kind; view.screen="info"; render(); }
 
+function soldierSVG(){
+  return `<svg viewBox="0 0 34 52" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="17" cy="49" rx="12" ry="3" fill="#0b1c30"/>
+    <rect x="10" y="26" width="14" height="20" rx="5" fill="#e8edf5"/>
+    <rect x="12" y="27" width="10" height="9" rx="3" fill="#c8102e"/>
+    <circle cx="17" cy="17" r="8" fill="#f6e0c8"/>
+    <path d="M8 15 a9 9 0 0 1 18 0 l0 -3 a10 7 0 0 0 -18 0 z" fill="#0b1c30"/>
+    <rect x="7" y="7" width="20" height="6" rx="2" fill="#0b1c30"/>
+    <rect x="14" y="1" width="6" height="8" rx="2" fill="#c8102e"/>
+    <circle cx="14" cy="17" r="1.1" fill="#0b1c30"/><circle cx="20" cy="17" r="1.1" fill="#0b1c30"/>
+  </svg>`;
+}
 function renderChapters(){
+  const doneList=CHAPTERS.map(c=>chapterDone(c.n));
+  const left=10-doneList.filter(Boolean).length;
   stage.innerHTML=`
     <h1><span class="em">🏝️</span> And Then There Were None</h1>
-    <p class="lead">Agatha Christie · Black Cat Reading &amp; Training · Step Three · B1.2. Choose a chapter, then choose an activity — 10 activities per chapter.</p>
+    <p class="lead">Agatha Christie · Black Cat Reading &amp; Training · Step Three · B1.2. Choose a chapter, then choose an activity — 13 activities per chapter.</p>
+    <div class="plate">
+      <div class="rhyme">"Ten little soldier boys went out to dine…" — finish a chapter (3 activities at 70%+) and its soldier disappears.</div>
+      <div class="row-s">${CHAPTERS.map((c,i)=>`
+        <div class="soldier ${doneList[i]?'gone':''}" title="Chapter ${c.n} · ${c.title}${doneList[i]?' ✓ done':''}">${soldierSVG()}<div class="lbl">${c.n}</div></div>`).join('')}</div>
+      <div class="left-line">${left===0?'…and then there were none. You finished the whole novel! 🏆':'…and then there were '+(left===10?'ten':left)+'.'}</div>
+    </div>
     <div class="grid cols-2" style="margin-bottom:14px">
+      <div class="card" style="flex-direction:row;text-align:left;gap:14px;align-items:center" onclick="extraBeforeYouRead()">
+        <div class="ico" style="font-size:2.2rem">🎬</div>
+        <div><h2 style="margin:0">Before you read</h2><div class="desc">Predictions + the 12 key words of the novel, with audio.</div></div>
+      </div>
       <div class="card" style="flex-direction:row;text-align:left;gap:14px;align-items:center" onclick="openInfo('bio')">
         <div class="ico" style="font-size:2.2rem">✍️</div>
-        <div><h2 style="margin:0">Agatha Christie</h2><div class="desc">A short biography of the author.</div></div>
+        <div><h2 style="margin:0">Agatha Christie</h2><div class="desc">A short biography — then play "Agatha in numbers".</div></div>
       </div>
       <div class="card" style="flex-direction:row;text-align:left;gap:14px;align-items:center" onclick="openInfo('characters')">
         <div class="ico" style="font-size:2.2rem">🕵️</div>
-        <div><h2 style="margin:0">The characters</h2><div class="desc">Who is who on Soldier Island.</div></div>
+        <div><h2 style="margin:0">The characters</h2><div class="desc">Character files with their secrets, a Who-is-who quiz and writing tasks.</div></div>
+      </div>
+      <div class="card" style="flex-direction:row;text-align:left;gap:14px;align-items:center" onclick="extraGrammar()">
+        <div class="ico" style="font-size:2.2rem">🧭</div>
+        <div><h2 style="margin:0">Grammar</h2><div class="desc">Past perfect simple — explained with the story.</div></div>
       </div>
     </div>
     <h2 style="font-size:16px;color:var(--blue-d);margin:4px 0 10px">📚 Chapters</h2>
     <div class="grid cols-2">
       ${CHAPTERS.map((c,i)=>`
         <div class="card chap-card" onclick="openChapter(${i})">
-          <span class="num">CHAPTER ${c.n}</span>
+          <span class="num">CHAPTER ${c.n} ${doneList[i]?'<span style="color:#059669">✓ DONE</span>':''}</span>
           <h2>${c.title}</h2>
           <div class="desc">${c.sum}</div>
-          <span class="chip">${c.vocab.length} words · ${c.comp.length} questions</span>
-          <span class="act-tag">Comprehension · True/False · Writing · +7 games</span>
+          <span class="chip">🎧 audio · ${c.vocab.length} words · ${c.comp.length} questions</span>
+          <span class="act-tag">Read along · Listening · Summarize · Comprehension · +9 more</span>
         </div>`).join("")}
     </div>`;
 }
@@ -707,15 +845,32 @@ function renderInfo(){
       <div class="qnum">THE AUTHOR</div>
       <h2 style="color:var(--blue-d);margin:2px 0 12px">✍️ Agatha Christie (1890–1976)</h2>
       ${BIO.map(p=>`<p>${p}</p>`).join("")}
-      <div style="margin-top:16px"><button class="btn sm" onclick="openInfo('characters')">🕵️ Meet the characters →</button></div>
+      <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn sm" onclick="extraNumbers()">🔢 Play "Agatha in numbers"</button>
+        <button class="btn ghost sm" onclick="openInfo('characters')">🕵️ Meet the characters →</button></div>
     </div>`;
   } else {
-    stage.innerHTML=`<div class="panel reading">
-      <div class="qnum">THE NOVEL</div>
-      <h2 style="color:var(--blue-d);margin:2px 0 12px">🕵️ The characters</h2>
-      ${CHARACTERS.map(c=>`<p style="text-align:left;margin-bottom:12px"><b style="color:var(--blue-d)">${c[0]}</b><br>${c[1]}</p>`).join("")}
-      <div style="margin-top:8px"><button class="btn sm" onclick="back()">📚 Go to the chapters →</button></div>
-    </div>`;
+    stage.innerHTML=`
+      <div class="panel" style="margin-bottom:14px">
+        <div class="qnum">THE NOVEL</div>
+        <h2 style="color:var(--blue-d);margin:2px 0 6px">🕵️ Character files</h2>
+        <p class="muted" style="margin:0 0 4px">Ten guests, one island, and a secret behind every face. Open each file — then test yourself.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
+          <button class="btn sm" onclick="extraWhosWho()">❓ Who is who? (quiz)</button>
+          <button class="btn ghost sm" onclick="extraCharWriting()">✍️ Write about the characters</button>
+        </div>
+      </div>
+      <div class="char-grid">
+      ${CHARACTERS.map((c,i)=>`
+        <div class="char-card" id="cc${i}">
+          <div class="med">${CHAR_ICONS[i]}</div>
+          <h3>${c[0]}</h3><div class="role">${CHAR_ROLES[i]}</div>
+          <p>${c[1]}</p>
+          <button class="reveal" onclick="document.getElementById('cc${i}').classList.toggle('open');this.textContent=this.textContent.startsWith('🔍')?'🙈 Hide the accusation':'🔍 Reveal the accusation'">🔍 Reveal the accusation</button>
+          <div class="secret">⚠️ ${CHAR_SECRETS[i]}</div>
+        </div>`).join("")}
+      </div>
+      <div style="margin-top:14px"><button class="btn sm" onclick="back()">📚 Go to the chapters →</button></div>`;
   }
   window.scrollTo(0,0);
 }
@@ -741,6 +896,7 @@ function runQuiz(questions, opts){
   const speed=opts.speed, label=opts.label, replay=opts.replay;
   const qs=shuffle(questions);
   let i=0, score=0, timer=null; const PER=12;
+  _actT0=Date.now();
   function show(){
     if(i>=qs.length) return finish();
     const q=qs[i];
@@ -769,6 +925,7 @@ function runQuiz(questions, opts){
   window.qzNext=()=>{ i++; show(); };
   function finish(){
     const pct=Math.round(score/qs.length*100);
+    if(opts.saveId!==null) saveResult(opts.saveId||view.act||'quiz',score,qs.length,opts.saveName||label);
     const msg=pct>=80?"Excellent! 🌟":pct>=50?"Good job! 👍":"Keep practising! 💪";
     stage.innerHTML=`<div class="panel center">
       <p class="muted qnum">${label} · RESULT</p>
@@ -833,7 +990,7 @@ function actTrueFalse(c){
     answered++;
     $("#tfScore").textContent=`(${answered}/${items.length})`;
     if(answered===items.length){
-      const pct=Math.round(score/items.length*100);
+      const pct=saveResult('truefalse',score,items.length,'True / False');
       $("#tfDone").style.display="block";
       $("#tfDone").innerHTML=`<div class="score">${score}/${items.length}</div>
         <p style="font-weight:700;color:var(--blue-d)">${pct}%</p>
@@ -1192,10 +1349,16 @@ function actRead(c){
   const prev = idx>0 ? CHAPTERS[idx-1] : null;
   const next = idx<CHAPTERS.length-1 ? CHAPTERS[idx+1] : null;
   stage.innerHTML = `<div class="panel reading">
-    <div class="qnum">CHAPTER ${c.n} · READING</div>
+    <div class="qnum">CHAPTER ${c.n} · READ ALONG</div>
     <h2 style="color:var(--blue-d);margin:2px 0 2px">${c.title}</h2>
     <p class="muted" style="margin:0 0 14px;font-size:.85rem">Simplified version · about ${words} words · ~${Math.max(1,Math.round(words/90))} min</p>
-    ${paras.map(p=>`<p>${p}</p>`).join('')}
+    <div class="rp-bar">
+      <button id="rpPlay" class="btn sm" onclick="rpToggle()">▶ Play all</button>
+      <select id="rpRate" title="Speed" onchange="if(_aud)_aud.playbackRate=this.value"><option value="0.8">🐢 slower</option><option value="1" selected>1× normal</option><option value="1.15">⚡ faster</option></select>
+      <span class="muted" style="font-size:12px">🎧 Press ▶ on any paragraph and follow the highlight.</span>
+      <a class="rp-dl" href="${AUD_BASE}ch${c.n}.mp3" download="ATTWN-chapter-${c.n}.mp3">⬇ Download the audio</a>
+    </div>
+    ${paras.map((p,i)=>`<p class="rp"><button class="pbtn" onclick="rpPara(${i})" title="Play from here">▶</button>${p}</p>`).join('')}
     <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;align-items:center">
       ${prev?`<button class="btn ghost sm" onclick="openReadChapter(${idx-1})">← Ch. ${prev.n}</button>`:''}
       <button class="btn sm" onclick="openAct('comprehension')">Do the activities →</button>
@@ -1206,14 +1369,414 @@ function actRead(c){
 }
 window.openReadChapter=(i)=>{ view.chap=i; view.act='read'; view.screen='act'; render(); };
 
+/* ============================================================
+   READ ALONG — audio por párrafo (attwn-audio/chN-pM.mp3),
+   con repliegue a speechSynthesis si el mp3 no está.
+   ============================================================ */
+const AUD_BASE='attwn-audio/';
+let _aud=null, _audPara=-1, _audChain=false, _ttsOn=false;
+function _stopAudio(){
+  if(_aud){ _aud.pause(); _aud=null; }
+  try{ speechSynthesis.cancel(); }catch(e){}
+  _ttsOn=false; _audPara=-1; _audChain=false; _paintPara();
+  const b=$('#rpPlay'); if(b) b.innerHTML='▶ Play all';
+}
+function _paintPara(){
+  document.querySelectorAll('.reading p.rp').forEach((p,i)=>p.classList.toggle('playing',i===_audPara));
+  const cur=document.querySelector('.reading p.rp.playing');
+  if(cur){ const r=cur.getBoundingClientRect(); if(r.top<70||r.bottom>innerHeight-40) cur.scrollIntoView({behavior:'smooth',block:'center'}); }
+}
+function _rate(){ const s=$('#rpRate'); return s?parseFloat(s.value):1; }
+function playPara(i,chain){
+  const c=CHAPTERS[view.chap], paras=READINGS[c.n]||[];
+  if(i>=paras.length){ _stopAudio(); return; }
+  _stopAudio(); _audPara=i; _audChain=!!chain; _paintPara();
+  const b=$('#rpPlay'); if(b) b.innerHTML='⏸ Pause';
+  const a=new Audio(AUD_BASE+'ch'+c.n+'-p'+(i+1)+'.mp3');
+  a.playbackRate=_rate();
+  a.onended=()=>{ if(_audChain) playPara(i+1,true); else _stopAudio(); };
+  a.onerror=()=>{ // sin mp3: leer con la voz del navegador
+    _aud=null; _ttsOn=true;
+    try{ const u=new SpeechSynthesisUtterance(paras[i]); u.lang='en-GB'; u.rate=Math.max(.7,_rate()*.92);
+      const v=speechSynthesis.getVoices().find(v=>/^en[-_]GB/i.test(v.lang)); if(v) u.voice=v;
+      u.onend=()=>{ if(_ttsOn){ _ttsOn=false; if(_audChain) playPara(i+1,true); else _stopAudio(); } };
+      speechSynthesis.speak(u);
+    }catch(e){ _stopAudio(); }
+  };
+  _aud=a; a.play().catch(()=>a.onerror());
+}
+window.rpToggle=()=>{ if(_audPara>=0){ _stopAudio(); } else playPara(0,true); };
+window.rpPara=(i)=>{ if(_audPara===i){ _stopAudio(); } else playPara(i,true); };
+
+/* ============================================================
+   LISTENING — escucha sin leer y completa las palabras que faltan.
+   Los huecos se construyen con las palabras del vocabulario del
+   capítulo tal como aparecen en el retelling.
+   ============================================================ */
+function _gapItems(c){
+  const text=(READINGS[c.n]||[]).join(' ');
+  const sents=text.split(/(?<=[.!?…’”])\s+/);
+  const used=new Set(); const items=[];
+  const take=(word,hint)=>{
+    const re=new RegExp('\\b('+word+'s?)\\b','i');
+    const s=sents.find(s=>re.test(s) && s.split(/\s+/).length<=34 && !used.has(s));
+    if(!s) return false;
+    used.add(s);
+    const m=s.match(re);
+    items.push({sent:s.replace(re,'____'), answer:m[1], hint});
+    return true;
+  };
+  for(const v of shuffle(c.vocab)){
+    if(items.length>=6) break;
+    take(v[0].toLowerCase(), v[1]);
+  }
+  // Si el vocabulario no da para 6 huecos, completar con nombres de personajes.
+  const NAMES=['Vera','Lombard','Rogers','Wargrave','Armstrong','Blore','Marston','Macarthur','Brent','Narracott','Owen'];
+  for(const n of shuffle(NAMES)){
+    if(items.length>=6) break;
+    take(n, "a character's name");
+  }
+  return items;
+}
+function actListen(c){
+  _actT0=Date.now();
+  const items=_gapItems(c);
+  const paras=READINGS[c.n]||[];
+  stage.innerHTML=`<div class="panel">
+    <div class="qnum">CHAPTER ${c.n} · LISTENING</div>
+    <h2 style="color:var(--blue-d);margin:2px 0 8px">🎧 Listen first, then write</h2>
+    <p class="muted" style="margin:0 0 12px">Step 1 — Listen to the chapter <b>without reading the text</b>. You can listen twice.</p>
+    <div class="rp-bar">
+      <button id="rpPlay" class="btn sm" onclick="rpListenToggle()">▶ Play the chapter</button>
+      <select id="rpRate" title="Speed"><option value="0.8">🐢 slower</option><option value="1" selected>1× normal</option><option value="1.15">⚡ faster</option></select>
+      <a class="rp-dl" href="${AUD_BASE}ch${c.n}.mp3" download>⬇ Download the audio (mp3)</a>
+    </div>
+    <p class="muted" style="margin:0 0 12px">Step 2 — Complete each sentence with the missing word. The definition helps you.</p>
+    <div id="gapList">${items.map((it,i)=>`
+      <div class="gap-item" data-i="${i}">${i+1}. ${it.sent.replace('____',`<input type="text" autocomplete="off" autocapitalize="off" data-i="${i}">`)}
+        <div class="muted" style="font-size:12px;margin-top:5px">💡 ${it.hint}</div></div>`).join('')}
+    <div style="display:flex;gap:10px;align-items:center;margin-top:12px">
+      <button class="btn sm" onclick="gapCheck()">Check my answers</button><div id="gapOut"></div></div></div>`;
+  window.rpListenToggle=()=>{
+    const b=$('#rpPlay');
+    if(_aud||_ttsOn){ _stopAudio(); b.innerHTML='▶ Play the chapter'; return; }
+    const full=new Audio(AUD_BASE+'ch'+c.n+'.mp3'); full.playbackRate=_rate();
+    full.onended=()=>{ _aud=null; b.innerHTML='▶ Play the chapter'; };
+    full.onerror=()=>{ _aud=null; _ttsOn=true; // repliegue TTS: párrafo a párrafo
+      try{ speechSynthesis.cancel();
+        paras.forEach(p=>{ const u=new SpeechSynthesisUtterance(p); u.lang='en-GB'; u.rate=.95; speechSynthesis.speak(u); });
+      }catch(e){} };
+    _aud=full; b.innerHTML='⏸ Pause'; full.play().catch(()=>full.onerror());
+  };
+  window.gapCheck=()=>{
+    const norm=s=>String(s||'').toLowerCase().replace(/[^a-z]/g,'');
+    let ok=0;
+    items.forEach((it,i)=>{
+      const inp=stage.querySelector(`input[data-i="${i}"]`);
+      const good=norm(inp.value)===norm(it.answer);
+      inp.classList.toggle('ok',good); inp.classList.toggle('no',!good);
+      if(!good) inp.value=it.answer;
+      if(good) ok++;
+    });
+    const pct=saveResult('listen',ok,items.length,'Listening');
+    $('#gapOut').innerHTML=`<b style="color:var(--blue-d)">${ok}/${items.length} · ${pct}%</b>`;
+  };
+}
+
+/* ============================================================
+   SUMMARIZE — ordena los hechos y escribe tu propio resumen.
+   ============================================================ */
+const EVENTS={
+1:{ev:["Eight strangers receive invitations to Soldier Island from a host they have never met.",
+      "Fred Narracott takes the guests across the water by boat.",
+      "The servants, Mr and Mrs Rogers, explain that the Owens have not arrived.",
+      "Each guest finds an old rhyme about ten little soldiers framed in their bedroom.",
+      "Vera counts ten china soldiers on the dining-room table.",
+      "The strangers have dinner together, still wondering who their host is."],
+   keys:["island","invitation","boat","Rogers","rhyme","china soldiers"]},
+2:{ev:["The guests enjoy an excellent dinner and move to the sitting room for coffee.",
+      "A cold, loud voice suddenly speaks from nowhere.",
+      "The voice accuses all ten people in the house of causing a death.",
+      "Mrs Rogers faints and Dr Armstrong looks after her.",
+      "Lombard and Blore find a gramophone in the next room.",
+      "Rogers explains he only followed written instructions to play the record."],
+   keys:["dinner","voice","accuses","faints","gramophone","record"]},
+3:{ev:["One by one, the guests answer the accusations against them.",
+      "Blore admits that his real name is not Davis.",
+      "Judge Wargrave works out that U. N. Owen means ‘unknown’.",
+      "Anthony Marston fills his glass with whisky and drinks it.",
+      "Marston chokes and falls dead — there was cyanide in his glass.",
+      "Rogers counts the china soldiers: there are only nine."],
+   keys:["accusations","Davis","unknown","whisky","cyanide","nine"]},
+4:{ev:["In the morning, Mrs Rogers does not wake up: she has died in her sleep.",
+      "Vera notices there are only eight china soldiers left.",
+      "The guests wait for the boat, but it never comes.",
+      "The men search every rock and cave on the island.",
+      "They find nobody: there is no other person on Soldier Island.",
+      "General Macarthur says that none of them will ever leave the island."],
+   keys:["sleep","eight","boat","search","nobody","Macarthur"]},
+5:{ev:["General Macarthur does not come in for lunch.",
+      "Dr Armstrong finds the General dead by the stone seat.",
+      "Judge Wargrave gathers everyone in the sitting room.",
+      "The judge explains that the murderer must be one of them.",
+      "Vera realises the deaths are following the soldier rhyme.",
+      "From that moment, nobody in the house trusts anybody."],
+   keys:["lunch","dead","Wargrave","murderer","rhyme","trust"]},
+6:{ev:["A violent storm reaches the island: no boat can arrive now.",
+      "Rogers reports that only seven china soldiers are left.",
+      "The survivors lock away the drugs, the knives and the matches.",
+      "During the night, Lombard discovers that his revolver has gone.",
+      "Blore and Vera hear footsteps and doors in the dark house.",
+      "In the morning there is no fire, no tea and no sign of Rogers."],
+   keys:["storm","seven","locked","revolver","footsteps","Rogers"]},
+7:{ev:["The guests find Rogers dead in the washhouse, killed with an axe.",
+      "Vera laughs hysterically until Lombard stops her.",
+      "Six survivors prepare a strange breakfast for themselves.",
+      "During the meal, everyone talks about who they suspect.",
+      "Emily Brent says her conscience is perfectly clear about Beatrice Taylor.",
+      "Miss Brent stays alone in her chair by the window."],
+   keys:["axe","laughs","breakfast","suspicion","Beatrice","window"]},
+8:{ev:["Emily Brent is found dead in her chair, with a mark on her neck.",
+      "Dr Armstrong explains that something was injected — the bee was only decoration.",
+      "The five survivors search each other and lock everything dangerous away.",
+      "Lombard’s revolver mysteriously returns to his room.",
+      "Vera screams when cold seaweed touches her in the dark.",
+      "The others find Judge Wargrave dressed as a judge — shot in the forehead."],
+   keys:["bee","injected","search","revolver","seaweed","judge"]},
+9:{ev:["The four survivors sit together all night with the lamps burning.",
+      "In the morning, Dr Armstrong has disappeared.",
+      "Only three china soldiers stand on the glass plate.",
+      "The three survivors decide to stay outside, in the open.",
+      "Blore goes back to the house alone to fetch some food.",
+      "A marble clock in the shape of a bear crushes Blore on the terrace."],
+   keys:["night","Armstrong","three","outside","food","bear"]},
+10:{ev:["Vera and Lombard find Dr Armstrong’s body at the tide line.",
+      "Vera takes Lombard’s revolver and shoots him.",
+      "Feeling strangely peaceful, Vera walks back to the house.",
+      "In her room she finds a rope and one china soldier.",
+      "Vera hangs herself, exactly as the rhyme says.",
+      "Weeks later, a fishing boat finds Wargrave’s confession in a bottle."],
+   keys:["Armstrong","revolver","peace","rope","rhyme","confession"]}
+};
+function actSummary(c){
+  _actT0=Date.now();
+  const data=EVENTS[c.n]; const items=shuffle(data.ev.map((t,i)=>({t,ord:i})));
+  let picked=[];
+  function draw(){
+    stage.innerHTML=`<div class="panel">
+      <div class="qnum">CHAPTER ${c.n} · SUMMARIZE</div>
+      <h2 style="color:var(--blue-d);margin:2px 0 8px">📋 Step 1 — Put the events in order</h2>
+      <p class="muted" style="margin:0 0 10px">Tap the events in the order they happen in the chapter. Tap again to undo.</p>
+      <div id="ordList">${items.map((it,i)=>{
+        const pos=picked.indexOf(i);
+        return `<div class="ord-item ${pos>=0?'picked':''}" onclick="ordPick(${i})">
+          <span class="n">${pos>=0?pos+1:'·'}</span><span>${it.t}</span></div>`;}).join('')}</div>
+      <div style="display:flex;gap:10px;align-items:center;margin-top:10px">
+        <button class="btn sm" ${picked.length===items.length?'':'disabled'} onclick="ordCheck()">Check the order</button>
+        <button class="btn ghost sm" onclick="ordReset()">Reset</button><div id="ordOut"></div></div>
+      <div id="sumWrite"></div></div>`;
+  }
+  window.ordPick=(i)=>{ const p=picked.indexOf(i); if(p>=0) picked.splice(p,1); else picked.push(i); draw(); };
+  window.ordReset=()=>{ picked=[]; draw(); };
+  window.ordCheck=()=>{
+    let ok=0;
+    const boxes=stage.querySelectorAll('.ord-item');
+    picked.forEach((itemIdx,pos)=>{ const good=items[itemIdx].ord===pos; if(good) ok++;
+      boxes[itemIdx].classList.add(good?'good':'bad'); });
+    const pct=saveResult('summary',ok,items.length,'Summarize · order');
+    $('#ordOut').innerHTML=`<b style="color:var(--blue-d)">${ok}/${items.length} · ${pct}%</b>`;
+    $('#sumWrite').innerHTML=`
+      <h2 style="color:var(--blue-d);margin:22px 0 8px">✍️ Step 2 — Now write your own summary</h2>
+      <p class="muted" style="margin:0 0 8px">Write 40–60 words about Chapter ${c.n}. Try to use these key words:</p>
+      <div style="margin-bottom:10px">${data.keys.map(k=>`<span class="kw" data-k="${k.toLowerCase()}">${k}</span>`).join('')}</div>
+      <textarea class="wr" id="sumArea" style="min-height:140px" placeholder="In this chapter…"></textarea>
+      <div class="wr-count">Words: <b id="sumWc">0</b> · Key words used: <b id="sumKw">0/${data.keys.length}</b></div>
+      <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn sm" onclick="sumModel()">📖 Compare with a model summary</button></div>
+      <div id="sumModel"></div>`;
+    const area=$('#sumArea');
+    area.addEventListener('input',()=>{
+      const txt=area.value.toLowerCase();
+      $('#sumWc').textContent=(area.value.trim().match(/\S+/g)||[]).length;
+      let n=0;
+      stage.querySelectorAll('.kw').forEach(k=>{ const hit=txt.includes(k.dataset.k); k.classList.toggle('hit',hit); if(hit)n++; });
+      $('#sumKw').textContent=n+'/'+data.keys.length;
+    });
+    window.sumModel=()=>{ $('#sumModel').innerHTML=`<div class="explain" style="margin-top:10px"><b>Model summary:</b> ${c.sum}</div>`; };
+    window.scrollTo(0,document.body.scrollHeight);
+  };
+  draw();
+}
+
+/* ============================================================
+   EXTRAS del hub: Before you read · Quién es quién · Los números
+   de Agatha · Gramática (past perfect) · Escribir sobre personajes
+   ============================================================ */
+const BOOK_WORDS=[ // palabras clave que el libro presenta antes del capítulo 1
+  ["JUDGE","the person in court who decides how criminals must pay for their crimes"],
+  ["CARRIAGE","one of the sections of a train where passengers sit"],
+  ["RUMOUR","a story that many people repeat, although it may not be true"],
+  ["RETIRE","to stop working, usually because of your age"],
+  ["MYSTERIOUS","strange, secret and difficult to explain"],
+  ["INQUEST","an official investigation into why somebody died"],
+  ["ILLEGAL","against the law"],
+  ["SCULPTURE","a work of art made from stone, metal or wood"],
+  ["PRETEND","to behave as if something is true when it is not"],
+  ["ADMIRE","to respect or look at somebody with pleasure"],
+  ["GUILTY","feeling bad because you have done something wrong"],
+  ["PLATFORM","the place in a station where you get on or off a train"]
+];
+function sayWord(w){ try{ speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(w.toLowerCase()); u.lang='en-GB';
+  const v=speechSynthesis.getVoices().find(v=>/^en[-_]GB/i.test(v.lang)); if(v)u.voice=v; speechSynthesis.speak(u);}catch(e){} }
+function extraBeforeYouRead(){
+  view={screen:'info',info:'before',chap:null,act:null}; backEl.style.display='inline-block';
+  crumbEl.innerHTML='Before you read'; _actT0=Date.now();
+  const defs=BOOK_WORDS.map(v=>v[1]);
+  const qs=shuffle(BOOK_WORDS).map(v=>{
+    const wrong=shuffle(defs.filter(d=>d!==v[1])).slice(0,3);
+    return {q:`What does <b>${v[0]}</b> mean? <button class="btn ghost sm" style="padding:3px 9px" onclick="event.stopPropagation();sayWord('${v[0]}')">🔊</button>`,
+      opts:shuffle([{t:v[1],correct:true},...wrong.map(d=>({t:d,correct:false}))]), explain:`${v[0]} = ${v[1]}`};
+  });
+  stage.innerHTML=`<div class="panel">
+    <div class="qnum">BEFORE YOU READ</div>
+    <h2 style="color:var(--blue-d);margin:2px 0 8px">🎬 Get ready for the novel</h2>
+    <p class="muted">These twelve words appear again and again in the story. First think about the predictions, then practise the words.</p>
+    <div class="explain" style="margin:12px 0">
+      🔮 <b>Prediction — discuss or think:</b><br>
+      1. Ten people are invited to a lonely island by a host nobody has met. Why do you think they accept?<br>
+      2. The book is called <i>And Then There Were None</i>. What do you think will happen to the characters?<br>
+      3. Look at the characters page. Who looks trustworthy to you? Who doesn't?
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px">
+      ${BOOK_WORDS.map(w=>`<span class="kw" style="cursor:pointer" onclick="sayWord('${w[0]}')">🔊 ${w[0]}</span>`).join('')}
+    </div>
+    <button class="btn" onclick="_byrQuiz()">Practise the 12 words →</button></div>`;
+  window._byrQuiz=()=>runQuiz(qs,{speed:false,label:'BEFORE YOU READ',replay:'extraBeforeYouRead();_byrQuiz()',saveId:'beforeyouread',saveName:'Before you read'});
+}
+const WHOSWHO=[
+  ["Who is a retired judge with small, clever eyes?","Judge Wargrave"],
+  ["Who believes she has been hired as a secretary?","Vera Claythorne"],
+  ["Who brings a revolver to the island — just to be safe?","Philip Lombard"],
+  ["Who is a rich young man who drives far too fast?","Anthony Marston"],
+  ["Who arrives under the false name of ‘Davis’?","William Blore"],
+  ["Who is a very religious old lady with a clear conscience?","Emily Brent"],
+  ["Who hopes to meet old army friends on the island?","General Macarthur"],
+  ["Who is a famous London doctor with a secret in his past?","Dr Armstrong"],
+  ["Who are the servants who look after the house?","Mr and Mrs Rogers"],
+  ["Who takes the guests to the island in his boat?","Fred Narracott"],
+  ["Whose name, read aloud, sounds like ‘unknown’?","U. N. Owen"],
+  ["Who is haunted by the memory of a boy called Cyril?","Vera Claythorne"]
+];
+function extraWhosWho(){
+  const names=[...new Set(WHOSWHO.map(w=>w[1]))];
+  const qs=shuffle(WHOSWHO).map(w=>{
+    const wrong=shuffle(names.filter(n=>n!==w[1])).slice(0,3);
+    return {q:w[0], opts:shuffle([{t:w[1],correct:true},...wrong.map(n=>({t:n,correct:false}))]), explain:''};
+  });
+  _actT0=Date.now();
+  runQuiz(qs,{speed:false,label:'WHO IS WHO?',replay:'extraWhosWho()',saveId:'whoswho',saveName:'Who is who?'});
+}
+const BIO_NUMBERS=[
+  ["66","the number of detective novels Agatha Christie wrote"],
+  ["2 000 000 000","about how many copies of her books have been sold"],
+  ["11","the number of days she famously disappeared in 1926"],
+  ["100 000 000","copies sold of And Then There Were None — the best-selling crime novel ever"],
+  ["85","her age when she died in 1976"],
+  ["1920","the year her first novel introduced Hercule Poirot"],
+  ["1939","the year And Then There Were None was first published"],
+  ["1971","the year Queen Elizabeth II made her a Dame of the British Empire"]
+];
+function extraNumbers(){
+  const defs=BIO_NUMBERS.map(b=>b[1]);
+  const qs=shuffle(BIO_NUMBERS).map(b=>{
+    const wrong=shuffle(defs.filter(d=>d!==b[1])).slice(0,3);
+    return {q:`In Agatha Christie's life, what does the number <b>${b[0]}</b> refer to?`,
+      opts:shuffle([{t:b[1],correct:true},...wrong.map(d=>({t:d,correct:false}))]), explain:`${b[0]} → ${b[1]}`};
+  });
+  _actT0=Date.now();
+  runQuiz(qs,{speed:false,label:'AGATHA IN NUMBERS',replay:'extraNumbers()',saveId:'numbers',saveName:'Agatha in numbers'});
+}
+const GRAMMAR_PP=[
+  ["Vera was nervous because she ____ her host before.",["had never met","never meets","has never met","never met"],0,
+   "Past perfect (had + past participle): the 'not meeting' happened BEFORE she felt nervous."],
+  ["Wargrave read the letter that Constance ____ him.",["had sent","sends","has sent","was sending"],0,
+   "The sending happened before the reading — past perfect."],
+  ["Lombard took the job because he ____ for a long time.",["hadn't worked","doesn't work","hasn't worked","wasn't working"],0,
+   "Negative past perfect: hadn't + past participle."],
+  ["When the guests arrived, the Owens ____ yet.",["hadn't appeared","don't appear","haven't appeared","didn't appeared"],0,
+   "The guests' arrival is past simple; what happened (or not) before it is past perfect."],
+  ["Everyone knew about the island because it ____ in all the newspapers.",["had been","has been","is","was being"],0,
+   "First the newspapers wrote about it, then everyone knew — past perfect."],
+  ["Why ____ Isaac Morris ____ Lombard so little about the job?",["had · told","did · tell","has · told","does · tell"],0,
+   "Past perfect question: Why had + subject + past participle?"],
+  ["Dr Armstrong felt lucky: after that terrible affair he ____ drinking and worked hard.",["had stopped","stops","has stopped","stopping"],0,
+   "Stopping came before feeling lucky — past perfect."],
+  ["Blore smiled: the old sailor clearly ____ too much.",["had drunk","drinks","has drunk","drank"],0,
+   "The drinking happened before Blore's smile — past perfect."]
+];
+function extraGrammar(){
+  view={screen:'info',info:'grammar',chap:null,act:null}; backEl.style.display='inline-block';
+  crumbEl.innerHTML='Grammar · past perfect'; _actT0=Date.now();
+  stage.innerHTML=`<div class="panel">
+    <div class="qnum">GRAMMAR</div>
+    <h2 style="color:var(--blue-d);margin:2px 0 8px">🧭 Past perfect simple</h2>
+    <p style="margin:0 0 10px">We use the <b>past perfect</b> (had + past participle) for something that happened <b>before</b> another moment in the past.</p>
+    <div class="explain" style="margin-bottom:8px">➕ Lombard <b>thought</b> about the man who <b>had given</b> him the job.</div>
+    <div class="explain" style="margin-bottom:8px">➖ He needed money because he <b>hadn't worked</b> for a while.</div>
+    <div class="explain" style="margin-bottom:14px">❓ Why <b>had</b> Morris <b>told</b> him so little?</div>
+    <button class="btn" onclick="_ppQuiz()">Practise with the story →</button></div>`;
+  window._ppQuiz=()=>runQuiz(GRAMMAR_PP.map(g=>({q:g[0],opts:shuffle(g[1].map((t,i)=>({t,correct:i===g[2]}))),explain:g[3]})),
+    {speed:false,label:'PAST PERFECT',replay:'extraGrammar();_ppQuiz()',saveId:'grammar',saveName:'Past perfect'});
+}
+const CHAR_TASKS=[
+  {task:"Choose ONE character and describe them: who they are, why they come to the island, and what secret they carry. Do NOT say the name — your partner must guess who it is!",
+   target:"50–70 words",
+   tips:["Use the present simple to describe: He is… / She works as…","Use the past perfect for the secret: Years before, he had…","Finish with: Who is it?"],
+   starters:["This person is…","He/She comes to the island because…","Years before, he/she had…","Who is it?"]},
+  {task:"Compare TWO characters (for example Vera and Emily Brent, or Lombard and Blore). How are they similar? How are they different?",
+   target:"60–80 words",
+   tips:["Use comparatives: older than, more dangerous than…","Use linkers: both, however, while, whereas.","Give one example from the story for each person."],
+   starters:["Both … and … come to the island because…","However, … is much more…","While … feels guilty, … thinks…"]},
+  {task:"Which character do you trust most after Chapter 1, and which do you trust least? Explain why.",
+   target:"50–70 words",
+   tips:["Give reasons with because / since / as.","Use opinion phrases: In my opinion, I have the feeling that…","Mention something each character did or said."],
+   starters:["In my opinion, the most trustworthy person is…","I don't trust … at all, because…","At the station, he/she…"]},
+  {task:"Invent character number 11: a new guest invited to Soldier Island. Who are they, and what secret from their past made U. N. Owen choose them?",
+   target:"60–80 words",
+   tips:["Give them a name, a job and a reason to accept the invitation.","Use the past perfect for the secret event.","Keep the tone mysterious!"],
+   starters:["… had never expected an invitation like this.","Years before, he/she had…","Nobody at the inquest had suspected…"]}
+];
+function extraCharWriting(){
+  view={screen:'info',info:'charwriting',chap:null,act:null}; backEl.style.display='inline-block';
+  crumbEl.innerHTML='Write about the characters';
+  actWriting({writing:CHAR_TASKS});
+}
+
+/* ---------- retratos (SVG propio, estilo art déco) ---------- */
+const CHAR_ICONS=["⚖️","🏊","🧭","🩺","🕵️","🙏","🎖️","🏎️","🍽️","⛵"];
+const CHAR_ROLES=["Retired judge","Games mistress · 'secretary'","Soldier of fortune","London doctor","Ex-police inspector",
+  "Religious spinster","Retired general","Rich young driver","Butler & cook","Boatman · the unknown host"];
+const CHAR_SECRETS=[
+  "Accused of sending an innocent man, Edward Seton, to his death.",
+  "Accused of letting little Cyril swim to his death.",
+  "Accused of leaving twenty-one men to die in Africa.",
+  "Accused of operating on a patient after drinking — she died.",
+  "Accused of false evidence that killed a man in prison.",
+  "Accused of throwing out Beatrice Taylor, who killed herself.",
+  "Accused of sending his wife's lover to certain death in the war.",
+  "Accused of running over two young people with his car.",
+  "Accused of letting their old employer die — and inheriting her money.",
+  "Nobody has ever met him. Said aloud, his name means 'unknown'…"];
+
 /* ---------- dispatch ---------- */
 const ACT_RENDER={
-  read:actRead,
+  read:actRead, listen:actListen, summary:actSummary,
   comprehension:actComprehension, truefalse:actTrueFalse, multiplechoice:actMultipleChoice,
   speed:actSpeed, writing:actWriting, wordsearch:actWordSearch, crossword:actCrossword,
   hangman:actHangman, memory:actMemory, scramble:actScramble
 };
 render();
+
 </script>
 </body>
 </html>
