@@ -651,14 +651,14 @@ async function adminTeachers(){
     const _nodeChip=(key,label)=>`<label style="${chipCss}"><input type="checkbox" class="tg-node" value="${key}" ${(managed? managed.has(key): true)?'checked':''}> ${esc(label)}</label>`;
     // Unidades y semanas no se asignan al profesor por separado (heredan de
     // su Activities), así que quedan fuera de los chips generales.
-    const _gradeKeySet=new Set([...ALL_GRADE_ORDER.flatMap(g=>['english.classes.'+g,'english.classes.'+g+'.activities','english.classes.'+g+'.grammar']),'english.classes.g9.uoe1','english.classes.g9.writing',..._SUB_NODES.map(n=>n.key)]);
+    const _gradeKeySet=new Set([...ALL_GRADE_ORDER.flatMap(g=>['english.classes.'+g,'english.classes.'+g+'.activities','english.classes.'+g+'.grammar']),'english.classes.g9.uoe1','english.classes.g9.writing','english.classes.g9.reader',..._SUB_NODES.map(n=>n.key)]);
     const generalChips=ACCESS_NODES.filter(n=>!_gradeKeySet.has(n.key)).map(n=>_nodeChip(n.key,n.label)).join('');
     // Primaria (2.º–5.º) sin Grammar: en esa etapa la gramática vive dentro
     // de las actividades, igual que en francés.
     const gradeBlocks=ALL_GRADE_ORDER.map(g=>{
       const items=[['english.classes.'+g,'Classes'],['english.classes.'+g+'.activities','🎲 Activities']];
       if(!_isPrimaryGrade(g)) items.push(['english.classes.'+g+'.grammar','📝 Grammar']);
-      if(g==='g9') items.push(['english.classes.g9.uoe1','🧩 Use of English P1'],['english.classes.g9.writing','✍️ Writing']);
+      if(g==='g9') items.push(['english.classes.g9.uoe1','🧩 Use of English P1'],['english.classes.g9.writing','✍️ Writing'],['english.classes.g9.reader','🏝️ Reader ATTWN']);
       return `<div class="row" style="gap:6px;align-items:center;margin-top:5px;flex-wrap:wrap"><span class="muted" style="font-size:.8rem;min-width:84px">${GRADE_META[g][0]} ${GRADE_META[g][1]}</span>${items.map(it=>_nodeChip(it[0],it[1])).join('')}</div>`;
     }).join('');
     const pw=credmap[t.id]||'';
@@ -2044,6 +2044,7 @@ const ACCESS_NODES = [
   ..._SUB_NODES.map(n=>({key:n.key,label:n.label})),
   {key:'english.classes.g9.uoe1',       label:'9th · Use of English P1'},
   {key:'english.classes.g9.writing',    label:'9th · Writing'},
+  {key:'english.classes.g9.reader',     label:'9th · Reader (ATTWN)'},
   {key:'french',                        label:'French (toda la materia)'},
   {key:'french.crosswords',             label:'French · Crosswords'},
   {key:'french.wordsearch',             label:'French · Word Search'},
@@ -2184,6 +2185,7 @@ function studentGrade(key){
       ${nodeVisible(base+'.activities') ? _hubCard('🎲','Activities',_isPrimaryGrade(key)?'Games for each unit — with audio for young learners.':'Games by unit and by level: crosswords, word searches and more.',"window._nav('classes_"+key+"_act')") : _lockedCard('🎲','Activities','Games and activities.')}
       ${key==='g9' ? (nodeVisible('english.classes.g9.uoe1') ? _skillCard('🧩','Use of English · Part 1','Multiple-choice cloze B2 (Cambridge style): 8 gaps, options A–D, with correction and explanations.',_withBack('use-of-english-part1.html',route)) : _lockedCard('🧩','Use of English · Part 1','Cambridge-style B2 cloze.')) : ''}
       ${key==='g9' ? (nodeVisible('english.classes.g9.writing') ? _skillCard('✍️','Writing','Opinion essay (FCE Writing Part 1): 6 topics with guide phrases, a bank of linkers, word counter and checklist.',_withBack('writing.html?grade='+key,route)) : _lockedCard('✍️','Writing','Opinion essay · FCE Writing Part 1.')) : ''}
+      ${key==='g9' ? (nodeVisible('english.classes.g9.reader') ? _skillCard('🏝️','Reader · And Then There Were None','Agatha Christie (B1.2): read along with audio, listening, summaries, character files and games — chapter by chapter.',_withBack('and-then-there-were-none.html',route)) : _lockedCard('🏝️','Reader · And Then There Were None','Agatha Christie · interactive reader.')) : ''}
     </div>`;
 }
 /* Unidades del grado (Unit 3, Unit 4…) según activities-data.js.
