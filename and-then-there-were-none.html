@@ -161,8 +161,42 @@
   .reading p.rp .pbtn{position:absolute; left:2px; top:2px; width:26px; height:26px; border:none; border-radius:50%;
     background:#e2e8f0; color:var(--blue-d); font-size:12px; cursor:pointer; line-height:1}
   .reading p.rp .pbtn:hover{background:#bfdbfe}
-  .reading p.rp.playing{background:#fef9c3}
+  .reading p.rp.playing{background:#fefce8}
   .reading p.rp.playing .pbtn{background:var(--blue); color:#fff}
+  /* Palabra a palabra */
+  .reading .w{border-radius:4px; padding:0 1px}
+  .reading .w.hot{background:#fde047; box-shadow:0 0 0 2px #fde047}
+  .reading.rp-paused .w{cursor:pointer}
+  .reading.rp-paused .w:hover{background:#dbeafe}
+  /* Reproductor */
+  .rp-player{position:sticky; top:64px; z-index:5; background:#fff; border:1.5px solid var(--line); border-radius:14px;
+    padding:10px 14px; margin:0 0 16px; box-shadow:0 8px 22px rgba(15,23,42,.12)}
+  .rp-ctl{display:flex; gap:8px; align-items:center; flex-wrap:wrap}
+  .rp-ctl .cbtn{width:38px; height:38px; border:none; border-radius:50%; background:var(--blue); color:#fff; font-size:15px;
+    cursor:pointer; display:flex; align-items:center; justify-content:center; transition:.12s}
+  .rp-ctl .cbtn:hover{background:var(--blue-d)}
+  .rp-ctl .cbtn.ghost{background:#eef2f9; color:var(--blue-d)}
+  .rp-ctl .time{font-variant-numeric:tabular-nums; font-weight:700; font-size:12.5px; color:var(--blue-d); min-width:86px}
+  .rp-seek{flex:1; min-width:160px; -webkit-appearance:none; appearance:none; height:6px; border-radius:4px;
+    background:linear-gradient(to right, var(--blue) 0%, var(--blue) var(--pct,0%), #e2e8f0 var(--pct,0%), #e2e8f0 100%); cursor:pointer}
+  .rp-seek::-webkit-slider-thumb{-webkit-appearance:none; appearance:none; width:18px; height:18px; border-radius:50%;
+    background:var(--blue); border:3px solid #fff; box-shadow:0 1px 5px rgba(15,23,42,.4)}
+  .rp-seek::-moz-range-thumb{width:16px; height:16px; border-radius:50%; background:var(--blue); border:3px solid #fff;
+    box-shadow:0 1px 5px rgba(15,23,42,.4)}
+  .rp-hint{font-size:11.5px; color:var(--muted); margin-top:6px}
+  /* Diccionario */
+  .dict-veil{position:fixed; inset:0; background:rgba(15,23,42,.45); z-index:60; display:flex; align-items:flex-end; justify-content:center}
+  .dict-pop{background:#fff; border-radius:18px 18px 0 0; width:100%; max-width:560px; max-height:70vh; overflow:auto;
+    padding:18px 20px 24px; box-shadow:0 -12px 40px rgba(15,23,42,.35)}
+  .dict-pop h3{color:var(--blue-d); font-size:20px; margin:0}
+  .dict-pop .phon{color:#64748b; font-size:13px; font-weight:600}
+  .dict-pop .pos{display:inline-block; background:#eef2f9; color:var(--blue-d); font-weight:800; font-size:10.5px;
+    letter-spacing:.6px; text-transform:uppercase; border-radius:8px; padding:2px 8px; margin:10px 0 4px}
+  .dict-pop .def{font-size:14px; color:#1e293b; margin:2px 0}
+  .dict-pop .ex{font-size:13px; color:#475569; font-style:italic; margin:3px 0 0; padding-left:12px; border-left:3px solid #e2e8f0}
+  .dict-pop .story{background:#fefce8; border-left:3px solid #fde047; border-radius:8px; padding:8px 11px; font-size:13px;
+    color:#44403c; margin-top:12px}
+  @media(min-width:640px){ .dict-veil{align-items:center} .dict-pop{border-radius:18px} }
   /* Soldier tracker */
   .plate{background:linear-gradient(180deg,#0f2439,#1e3f66); border-radius:18px; padding:18px 16px 14px; color:#dbeafe;
     text-align:center; margin:0 0 18px; box-shadow:0 10px 30px rgba(15,23,42,.25)}
@@ -189,7 +223,13 @@
   .char-card{background:#fff; border:1px solid var(--line); border-radius:16px; padding:16px; text-align:left;
     box-shadow:0 8px 24px rgba(15,23,42,.08); border-top:4px solid #b8934a}
   .char-card .med{width:56px; height:56px; border-radius:50%; background:radial-gradient(circle at 35% 30%,#2d5a8d,#12263f);
-    border:3px solid #b8934a; display:flex; align-items:center; justify-content:center; font-size:26px; float:left; margin:0 12px 4px 0}
+    border:3px solid #b8934a; display:flex; align-items:center; justify-content:center; font-size:26px; float:left; margin:0 12px 4px 0;
+    overflow:hidden; flex:none}
+  .med img{width:100%; height:100%; object-fit:cover; filter:sepia(.3) contrast(1.08)}
+  .char-card:hover .med img{filter:none}
+  .cast-strip{width:100%; border-radius:12px; border:2px solid #b8934a; display:block; margin:12px 0 4px;
+    filter:sepia(.25); box-shadow:0 8px 24px rgba(0,0,0,.35)}
+  .img-credit{font-size:10.5px; color:#94a3b8; margin-top:8px}
   .char-card h3{font-size:15px; color:var(--blue-d); margin:4px 0 1px}
   .char-card .role{font-size:11px; font-weight:800; letter-spacing:.6px; color:#b8934a; text-transform:uppercase}
   .char-card p{font-size:13px; color:#334155; margin:8px 0 0; clear:both}
@@ -257,10 +297,14 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js"></script>
 <script>
-/* Nivel del reader (?level=a2|b1|c1) → carga su archivo de datos.
-   El motor es el mismo; solo cambian textos, vocabulario y ejercicios. */
-var ATTWN_LVL=(new URLSearchParams(location.search).get('level')||'b1').toLowerCase();
-if(['a2','b1','c1'].indexOf(ATTWN_LVL)<0) ATTWN_LVL='b1';
+/* Nivel del reader (?level=a2|b1|b2|c1|c2) → carga su archivo de datos.
+   Sin nivel: pantalla de selección. c2 = "Read the original" (usa los
+   datos C1 como capítulos de apoyo). El motor es el mismo para todos. */
+var _attwnRaw=(new URLSearchParams(location.search).get('level')||'').toLowerCase();
+window.ATTWN_CHOOSER = !_attwnRaw;
+window.ATTWN_C2 = (_attwnRaw==='c2');
+var ATTWN_LVL = window.ATTWN_C2 ? 'c1' : _attwnRaw;
+if(['a2','b1','b2','c1'].indexOf(ATTWN_LVL)<0) ATTWN_LVL='b1';
 document.write('<script src="attwn-data-'+ATTWN_LVL+'.js?v=1"><\/script>');
 </script>
 <script src="nis-nav.js?v=1"></script>
@@ -294,9 +338,11 @@ const $=(s,r=document)=>r.querySelector(s);
 const stage=$("#stage"), crumbEl=$("#crumb"), backEl=$("#backBtn");
 const LVL=(window.ATTWN_DATA&&ATTWN_DATA.level)||'B1';
 const LVLL=LVL.toLowerCase();
-document.getElementById('hdrSub').textContent='9TH GRADE · READER · '+LVL;
-document.title='And Then There Were None ('+LVL+') — Portal NIS';
+const SHOW_LVL=window.ATTWN_CHOOSER?'':(window.ATTWN_C2?'C2':LVL);
+document.getElementById('hdrSub').textContent='9TH GRADE · READER'+(SHOW_LVL?' · '+SHOW_LVL:'S');
+document.title='And Then There Were None'+(SHOW_LVL?' ('+SHOW_LVL+')':'')+' — Portal NIS';
 function _lvlLink(l){ const q=new URLSearchParams(location.search); q.set('level',l); return '?'+q.toString(); }
+function _chooserLink(){ const q=new URLSearchParams(location.search); q.delete('level'); const s=q.toString(); return location.pathname+(s?'?'+s:''); }
 function goPortal(){ location.href="./"; }
 let view={screen:"chapters", chap:null, act:null};
 function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
@@ -398,7 +444,7 @@ function soldierSVG(){
 function renderChapters(){
   const doneList=CHAPTERS.map(c=>chapterDone(c.n));
   const left=10-doneList.filter(Boolean).length;
-  const pills=['A2','B1','C1'].map(l=> l===LVL
+  const pills=['A2','B1','B2','C1','C2'].map(l=> (l===LVL && !window.ATTWN_C2)
     ? `<span class="kw hit" style="font-size:13px;padding:5px 14px">${l}</span>`
     : `<a class="kw" style="font-size:13px;padding:5px 14px;text-decoration:none" href="${_lvlLink(l.toLowerCase())}">${l}</a>`).join('');
   stage.innerHTML=`
@@ -491,13 +537,14 @@ function renderInfo(){
       <div class="char-grid">
       ${CHARACTERS.map((c,i)=>`
         <div class="char-card" id="cc${i}">
-          <div class="med">${CHAR_ICONS[i]}</div>
+          ${medHTML(CHAR_IMGS[i],CHAR_ICONS[i])}
           <h3>${c[0]}</h3><div class="role">${CHAR_ROLES[i]}</div>
           <p>${c[1]}</p>
           <button class="reveal" onclick="document.getElementById('cc${i}').classList.toggle('open');this.textContent=this.textContent.startsWith('🔍')?'🙈 Hide the accusation':'🔍 Reveal the accusation'">🔍 Reveal the accusation</button>
           <div class="secret">⚠️ ${CHAR_SECRETS[i]}</div>
         </div>`).join("")}
       </div>
+      <div class="img-credit">${IMG_CREDIT}</div>
       <div style="margin-top:14px"><button class="btn sm" onclick="back()">📚 Go to the chapters →</button></div>`;
   }
   window.scrollTo(0,0);
@@ -915,23 +962,36 @@ function actRead(c){
   const idx = CHAPTERS.findIndex(x=>x.n===c.n);
   const prev = idx>0 ? CHAPTERS[idx-1] : null;
   const next = idx<CHAPTERS.length-1 ? CHAPTERS[idx+1] : null;
-  stage.innerHTML = `<div class="panel reading">
+  const wordSpans=(p,i)=>p.split(/(\s+)/).map(tok=>
+    /\S/.test(tok) ? `<span class="w" data-p="${i}" onclick="wordDict(this)">${tok}</span>` : tok).join('');
+  stage.innerHTML = `<div class="panel reading rp-paused">
     <div class="qnum">CHAPTER ${c.n} · READ ALONG</div>
     <h2 style="color:var(--blue-d);margin:2px 0 2px">${c.title}</h2>
     <p class="muted" style="margin:0 0 14px;font-size:.85rem">Simplified version · about ${words} words · ~${Math.max(1,Math.round(words/90))} min</p>
-    <div class="rp-bar">
-      <button id="rpPlay" class="btn sm" onclick="rpToggle()">▶ Play all</button>
-      <select id="rpRate" title="Speed" onchange="if(_aud)_aud.playbackRate=this.value"><option value="0.8">🐢 slower</option><option value="1" selected>1× normal</option><option value="1.15">⚡ faster</option></select>
-      <span class="muted" style="font-size:12px">🎧 Press ▶ on any paragraph and follow the highlight.</span>
-      <a class="rp-dl" href="${AUD_BASE}ch${c.n}.mp3" download="ATTWN-${LVL}-chapter-${c.n}.mp3">⬇ Download the audio</a>
+    <div class="rp-player">
+      <div class="rp-ctl">
+        <button id="rpPlayBtn" class="cbtn" title="Play / Pause" onclick="RP.toggle()">▶</button>
+        <button class="cbtn ghost" title="Stop" onclick="RP.stop()">⏹</button>
+        <span class="time" id="rpTime">0:00 / 0:00</span>
+        <input type="range" class="rp-seek" id="rpSeek" min="0" max="1" step="0.1" value="0">
+        <select id="rpRate" title="Speed" onchange="RP.auds.forEach(a=>a.playbackRate=parseFloat(this.value))"><option value="0.8">🐢 slower</option><option value="1" selected>1×</option><option value="1.15">⚡ faster</option></select>
+        <a class="rp-dl" href="${AUD_BASE}ch${c.n}.mp3" download="ATTWN-${LVL}-chapter-${c.n}.mp3">⬇ mp3</a>
+      </div>
+      <div class="rp-hint" id="rpHint">🎧 Follow the yellow word as it reads. Drag the blue dot to go back or forward. ⏸ Pause and <b>tap any word you don’t understand</b> to see its meaning.</div>
     </div>
-    ${paras.map((p,i)=>`<p class="rp"><button class="pbtn" onclick="rpPara(${i})" title="Play from here">▶</button>${p}</p>`).join('')}
+    ${paras.map((p,i)=>`<p class="rp"><button class="pbtn" onclick="rpPara(${i})" title="Play from here">▶</button>${wordSpans(p,i)}</p>`).join('')}
     <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;align-items:center">
       ${prev?`<button class="btn ghost sm" onclick="openReadChapter(${idx-1})">← Ch. ${prev.n}</button>`:''}
       <button class="btn sm" onclick="openAct('comprehension')">Do the activities →</button>
       ${next?`<button class="btn ghost sm" onclick="openReadChapter(${idx+1})">Ch. ${next.n} →</button>`:''}
     </div>
   </div>`;
+  RP.init(c,paras);
+  const sk=$('#rpSeek');
+  sk.addEventListener('input',()=>{ RP.seeking=true;
+    sk.style.setProperty('--pct',(sk.value/(sk.max||1)*100)+'%');
+    const tl=$('#rpTime'); if(tl) tl.textContent=RP.fmt(parseFloat(sk.value))+' / '+RP.fmt(RP.total||0); });
+  sk.addEventListener('change',()=>{ RP.seeking=false; RP.seekTo(parseFloat(sk.value)); });
   window.scrollTo(0,0);
 }
 window.openReadChapter=(i)=>{ view.chap=i; view.act='read'; view.screen='act'; render(); };
@@ -941,39 +1001,159 @@ window.openReadChapter=(i)=>{ view.chap=i; view.act='read'; view.screen='act'; r
    con repliegue a speechSynthesis si el mp3 no está.
    ============================================================ */
 const AUD_BASE='attwn-audio/'+(LVL==='B1'?'':LVLL+'/');
-let _aud=null, _audPara=-1, _audChain=false, _ttsOn=false;
+let _aud=null, _ttsOn=false;   // audio suelto de la vista Listening
+function _rate(){ const s=$('#rpRate'); return s?parseFloat(s.value):1; }
 function _stopAudio(){
   if(_aud){ _aud.pause(); _aud=null; }
   try{ speechSynthesis.cancel(); }catch(e){}
-  _ttsOn=false; _audPara=-1; _audChain=false; _paintPara();
-  const b=$('#rpPlay'); if(b) b.innerHTML='▶ Play all';
+  _ttsOn=false;
+  if(window.RP) RP.destroy();
+  const veil=document.querySelector('.dict-veil'); if(veil) veil.remove();
 }
-function _paintPara(){
-  document.querySelectorAll('.reading p.rp').forEach((p,i)=>p.classList.toggle('playing',i===_audPara));
-  const cur=document.querySelector('.reading p.rp.playing');
-  if(cur){ const r=cur.getBoundingClientRect(); if(r.top<70||r.bottom>innerHeight-40) cur.scrollIntoView({behavior:'smooth',block:'center'}); }
+
+/* ---------- REPRODUCTOR del Read along ----------
+   Un Audio por párrafo + json de tiempos por palabra (WordBoundary de
+   edge-tts). Línea de progreso de TODO el capítulo con punto azul
+   arrastrable, ▶ ⏸ ⏹, y karaoke palabra a palabra. */
+window.RP={
+  auds:[], tims:[], durs:[], cum:[], total:0, cur:0, playing:false, tick:null, ready:false, seeking:false,
+  init(c,paras){
+    this.destroy();
+    this.auds=paras.map((_,i)=>{ const a=new Audio(); a.preload='metadata'; a.src=AUD_BASE+'ch'+c.n+'-p'+(i+1)+'.mp3'; return a; });
+    this.tims=paras.map(()=>null); this.durs=paras.map(()=>0); this.cur=0; this.playing=false; this.ready=false;
+    const metas=this.auds.map((a,i)=>new Promise(res=>{
+      a.addEventListener('loadedmetadata',()=>{ RP.durs[i]=a.duration||0; res(true); },{once:true});
+      a.addEventListener('error',()=>res(false),{once:true});
+      setTimeout(()=>res(false),8000);
+    }));
+    paras.forEach((_,i)=>{ fetch(AUD_BASE+'ch'+c.n+'-p'+(i+1)+'.json').then(r=>r.ok?r.json():null)
+      .then(j=>{ RP.tims[i]=j; RP.mapWords(i); }).catch(()=>{}); });
+    this.auds.forEach((a,i)=>{ a.onended=()=>{ if(i+1<RP.auds.length){ RP.cur=i+1; RP.auds[RP.cur].playbackRate=_rate(); RP.auds[RP.cur].currentTime=0; RP.auds[RP.cur].play(); RP.paint(); } else RP.stop(); }; });
+    Promise.all(metas).then(oks=>{
+      if(!oks.some(Boolean)){ const h=$('#rpHint'); if(h) h.textContent='⚠️ Audio not available on this device — ask your teacher.'; return; }
+      RP.cum=[]; let t=0; RP.durs.forEach(d=>{ RP.cum.push(t); t+=d; }); RP.total=t; RP.ready=true;
+      const s=$('#rpSeek'); if(s){ s.max=Math.max(1,Math.round(t*10)/10); s.step=0.1; }
+      RP.paint();
+    });
+  },
+  /* asigna a cada <span class=w> su tiempo de inicio (alineación 1:1 con
+     los WordBoundary; el TTS omite la puntuación suelta, así que se saltan
+     los tokens sin letras) */
+  mapWords(p){
+    const spans=[...document.querySelectorAll('.reading .w[data-p="'+p+'"]')];
+    const tim=this.tims[p]; if(!tim||!spans.length) return;
+    let k=0;
+    spans.forEach(sp=>{ if(!/[a-zA-Z0-9]/.test(sp.textContent)){ sp.dataset.t=''; return; }
+      if(k<tim.length){ sp.dataset.t=tim[k][0]; k++; } });
+  },
+  gt(){ return (this.cum[this.cur]||0)+(this.auds[this.cur]?this.auds[this.cur].currentTime:0); },
+  fmt(s){ s=Math.max(0,Math.round(s)); return Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); },
+  paint(){
+    const t=this.gt();
+    if(!this.seeking){ const s=$('#rpSeek'); if(s&&this.ready){ s.value=t; s.style.setProperty('--pct',(t/this.total*100)+'%'); } }
+    const tl=$('#rpTime'); if(tl) tl.textContent=this.fmt(t)+' / '+this.fmt(this.total||0);
+    document.querySelectorAll('.reading p.rp').forEach((p,i)=>p.classList.toggle('playing',i===this.cur&&(this.playing||t>0)));
+    const read=document.querySelector('.reading'); if(read) read.classList.toggle('rp-paused',!this.playing);
+    // karaoke: última palabra cuyo inicio <= tiempo local
+    const local=this.auds[this.cur]?this.auds[this.cur].currentTime:0;
+    let hot=null;
+    document.querySelectorAll('.reading .w.hot').forEach(w=>w.classList.remove('hot'));
+    if(this.playing){
+      const spans=[...document.querySelectorAll('.reading .w[data-p="'+this.cur+'"]')];
+      for(const sp of spans){ const st=parseFloat(sp.dataset.t); if(!isNaN(st)&&st<=local) hot=sp; }
+      if(hot){ hot.classList.add('hot');
+        const r=hot.getBoundingClientRect(); if(r.top<120||r.bottom>innerHeight-60) hot.scrollIntoView({behavior:'smooth',block:'center'}); }
+    }
+    const pb=$('#rpPlayBtn'); if(pb) pb.innerHTML=this.playing?'⏸':'▶';
+  },
+  play(){
+    if(!this.auds.length) return;
+    const a=this.auds[this.cur]; a.playbackRate=_rate();
+    a.play().then(()=>{ RP.playing=true;
+      if(!RP.tick) RP.tick=setInterval(()=>RP.paint(),200);
+      RP.paint();
+    }).catch(()=>{ const h=$('#rpHint'); if(h) h.textContent='⚠️ Audio not available — check your connection.'; });
+  },
+  pause(){ if(this.auds[this.cur]) this.auds[this.cur].pause(); this.playing=false; this.paint(); },
+  toggle(){ this.playing?this.pause():this.play(); },
+  stop(){
+    this.auds.forEach(a=>{ a.pause(); try{ a.currentTime=0; }catch(e){} });
+    this.cur=0; this.playing=false;
+    if(this.tick){ clearInterval(this.tick); this.tick=null; }
+    this.paint();
+    const s=$('#rpSeek'); if(s){ s.value=0; s.style.setProperty('--pct','0%'); }
+  },
+  seekTo(t){
+    if(!this.ready) return;
+    t=Math.min(Math.max(0,t),Math.max(0,this.total-0.2));
+    let k=0; while(k+1<this.cum.length && this.cum[k+1]<=t) k++;
+    const was=this.playing;
+    this.auds.forEach((a,i)=>{ if(i!==k){ a.pause(); try{ a.currentTime=0; }catch(e){} } });
+    this.cur=k;
+    const a=this.auds[k], local=t-this.cum[k];
+    const apply=()=>{ try{ a.currentTime=local; }catch(e){} };
+    apply();
+    // si el navegador aún no tiene datos en ese punto, reintentar al estar listo
+    if(Math.abs(a.currentTime-local)>0.8){
+      const fix=()=>{ if(Math.abs(a.currentTime-local)>0.8) apply(); };
+      a.addEventListener('canplay',fix,{once:true});
+      a.addEventListener('progress',fix,{once:true});
+    }
+    if(was) this.play(); else this.paint();
+  },
+  destroy(){
+    if(this.tick){ clearInterval(this.tick); this.tick=null; }
+    this.auds.forEach(a=>{ a.onended=null; a.pause(); a.src=''; });
+    this.auds=[]; this.playing=false; this.ready=false; this.cur=0;
+  }
+};
+window.rpPara=(i)=>{ if(RP.ready){ RP.seekTo((RP.cum[i]||0)+0.01); if(!RP.playing) RP.play(); } };
+
+/* ---------- diccionario al tocar una palabra (lectura en pausa) ---------- */
+function _storySentence(word,p){
+  const re=new RegExp('\\b'+word.replace(/[^a-zA-Z]/g,'')+'\\b','i');
+  const c=CHAPTERS[view.chap]; const paras=READINGS[c.n]||[];
+  const pool=(p!=null&&paras[p])?[paras[p],...paras]:paras;
+  for(const para of pool){ const s=para.split(/(?<=[.!?…’”])\s+/).find(s=>re.test(s)); if(s) return s; }
+  return null;
 }
-function _rate(){ const s=$('#rpRate'); return s?parseFloat(s.value):1; }
-function playPara(i,chain){
-  const c=CHAPTERS[view.chap], paras=READINGS[c.n]||[];
-  if(i>=paras.length){ _stopAudio(); return; }
-  _stopAudio(); _audPara=i; _audChain=!!chain; _paintPara();
-  const b=$('#rpPlay'); if(b) b.innerHTML='⏸ Pause';
-  const a=new Audio(AUD_BASE+'ch'+c.n+'-p'+(i+1)+'.mp3');
-  a.playbackRate=_rate();
-  a.onended=()=>{ if(_audChain) playPara(i+1,true); else _stopAudio(); };
-  a.onerror=()=>{ // sin mp3: leer con la voz del navegador
-    _aud=null; _ttsOn=true;
-    try{ const u=new SpeechSynthesisUtterance(paras[i]); u.lang='en-GB'; u.rate=Math.max(.7,_rate()*.92);
-      const v=speechSynthesis.getVoices().find(v=>/^en[-_]GB/i.test(v.lang)); if(v) u.voice=v;
-      u.onend=()=>{ if(_ttsOn){ _ttsOn=false; if(_audChain) playPara(i+1,true); else _stopAudio(); } };
-      speechSynthesis.speak(u);
-    }catch(e){ _stopAudio(); }
-  };
-  _aud=a; a.play().catch(()=>a.onerror());
-}
-window.rpToggle=()=>{ if(_audPara>=0){ _stopAudio(); } else playPara(0,true); };
-window.rpPara=(i)=>{ if(_audPara===i){ _stopAudio(); } else playPara(i,true); };
+window.wordDict=(el)=>{
+  if(RP.playing) return;               // solo con la lectura detenida
+  const raw=el.textContent.replace(/[^a-zA-Z’']/g,'').replace(/’|'/g,'');
+  if(!raw) return;
+  const word=raw.toLowerCase();
+  const p=parseInt(el.dataset.p);
+  const c=CHAPTERS[view.chap];
+  const local=(c.vocab.find(v=>v[0].toLowerCase()===word)||[])[1];
+  const story=_storySentence(word,p);
+  const veil=document.createElement('div'); veil.className='dict-veil';
+  veil.innerHTML=`<div class="dict-pop" onclick="event.stopPropagation()">
+    <div style="display:flex;gap:10px;align-items:center;justify-content:space-between">
+      <h3>${raw} <button class="btn ghost sm" style="padding:4px 10px" onclick="sayWord('${word}')">🔊</button></h3>
+      <button class="btn ghost sm" onclick="this.closest('.dict-veil').remove()">✕ Close</button>
+    </div>
+    <div class="phon" id="dictPhon"></div>
+    <div id="dictBody"><p class="muted" style="margin-top:10px">Looking it up…</p></div>
+    ${local?`<div class="pos">In this chapter’s word list</div><p class="def">${local}</p>`:''}
+    ${story?`<div class="story">📖 In the story: “${story}”</div>`:''}
+  </div>`;
+  veil.onclick=()=>veil.remove();
+  document.body.appendChild(veil);
+  fetch('https://api.dictionaryapi.dev/api/v2/entries/en/'+encodeURIComponent(word))
+    .then(r=>r.ok?r.json():Promise.reject())
+    .then(j=>{
+      const e=j[0]; const body=$('#dictBody'); if(!body) return;
+      const phon=e.phonetic||((e.phonetics||[]).find(p=>p.text)||{}).text||'';
+      const ph=$('#dictPhon'); if(ph) ph.textContent=phon;
+      body.innerHTML=(e.meanings||[]).slice(0,2).map(m=>{
+        const d=(m.definitions||[])[0]||{};
+        return `<div class="pos">${m.partOfSpeech||''}</div>
+          <p class="def">${d.definition||''}</p>
+          ${d.example?`<p class="ex">“${d.example}”</p>`:''}`;
+      }).join('')||'<p class="muted">No definition found.</p>';
+    })
+    .catch(()=>{ const body=$('#dictBody'); if(body) body.innerHTML=local?'':'<p class="muted">No dictionary entry found for this word — ask your teacher! 🙋</p>'; });
+};
 
 /* ============================================================
    LISTENING — escucha sin leer y completa las palabras que faltan.
@@ -1248,7 +1428,11 @@ function extraCharWriting(){
   actWriting({writing:CHAR_TASKS});
 }
 
-/* ---------- retratos (SVG propio, estilo art déco) ---------- */
+/* ---------- retratos: fotogramas de la película de 1945 (dominio
+   público, Wikimedia Commons) con repliegue a emoji ---------- */
+const CHAR_IMGS=['wargrave','vera','lombard','armstrong','blore','brent','macarthur','marston','rogers',null];
+const IMG_CREDIT='📷 Portraits: 1945 film adaptation and studio stills — public domain (Wikimedia Commons).';
+function medHTML(img,emoji){ return `<div class="med">${img?`<img src="attwn-img/${img}.jpg" alt="" onerror="this.replaceWith(document.createTextNode('${emoji}'))">`:emoji}</div>`; }
 const CHAR_ICONS=["⚖️","🏊","🧭","🩺","🕵️","🙏","🎖️","🏎️","🍽️","⛵"];
 const CHAR_ROLES=["Retired judge","Games mistress · 'secretary'","Soldier of fortune","London doctor","Ex-police inspector",
   "Religious spinster","Retired general","Rich young driver","Butler & cook","Boatman · the unknown host"];
@@ -1270,17 +1454,17 @@ const CHAR_SECRETS=[
    teoría del caso y acusación final con revelación.
    ============================================================ */
 const NB_SUSPECTS=[
-  // [nombre, rol, icono, capítulo(s) real(es) de muerte según los retellings]
-  ["Judge Lawrence Wargrave","Retired judge","⚖️",[8]],
-  ["Vera Claythorne","'Secretary'","🏊",[10]],
-  ["Philip Lombard","Soldier of fortune","🧭",[10]],
-  ["Dr Edward Armstrong","London doctor","🩺",[9,10]],
-  ["William Blore","Ex-police inspector","🕵️",[9]],
-  ["Emily Brent","Religious spinster","🙏",[8]],
-  ["General Macarthur","Retired general","🎖️",[5]],
-  ["Anthony Marston","Rich young driver","🏎️",[3]],
-  ["Thomas Rogers","The butler","🍽️",[7]],
-  ["Ethel Rogers","The cook","🍲",[4]]
+  // [nombre, rol, icono, capítulo(s) real(es) de muerte según los retellings, foto]
+  ["Judge Lawrence Wargrave","Retired judge","⚖️",[8],'wargrave'],
+  ["Vera Claythorne","'Secretary'","🏊",[10],'vera'],
+  ["Philip Lombard","Soldier of fortune","🧭",[10],'lombard'],
+  ["Dr Edward Armstrong","London doctor","🩺",[9,10],'armstrong'],
+  ["William Blore","Ex-police inspector","🕵️",[9],'blore'],
+  ["Emily Brent","Religious spinster","🙏",[8],'brent'],
+  ["General Macarthur","Retired general","🎖️",[5],'macarthur'],
+  ["Anthony Marston","Rich young driver","🏎️",[3],'marston'],
+  ["Thomas Rogers","The butler","🍽️",[7],'rogers'],
+  ["Ethel Rogers","The cook","🍲",[4],'ethel']
 ];
 const NB_KEY='attwn:nb';
 function nbLoad(){ try{ return JSON.parse(localStorage.getItem(NB_KEY)||'null')||{sus:{},theory:'',accused:'',solved:false}; }catch(e){ return {sus:{},theory:'',accused:'',solved:false}; } }
@@ -1301,7 +1485,7 @@ function extraNotebook(){
     <div class="sus-grid">
       ${NB_SUSPECTS.map((s,i)=>{ const d=nb.sus[i]||{}; return `
       <div class="sus-card ${d.st?'dead':''}" id="sc${i}">
-        <div class="top"><div class="med">${s[2]}</div>
+        <div class="top">${medHTML(s[4],s[2])}
           <div><h3>${s[0]}</h3><div class="role">${s[1]}</div></div></div>
         <select onchange="nbStatus(${i},this.value)">${deathOpts(d.st||'')}</select>
         <div class="lens">${[1,2,3,4,5].map(l=>`<button class="${(d.lvl||0)>=l?'on':''}" onclick="nbLens(${i},${l})">🔍</button>`).join('')}
@@ -1465,6 +1649,37 @@ function extraC2(){
   window.scrollTo(0,0);
 }
 
+/* ============================================================
+   SELECTOR DE NIVEL — pantalla inicial cuando no hay ?level=
+   ============================================================ */
+const CHOOSER_LEVELS=[
+  ['a2','🐣','A2','Elementary','Short chapters, easy words, slower audio. Start here if English still feels new.'],
+  ['b1','🏝️','B1','Intermediate','The standard 9th-grade version: clear narrative English with full audio.'],
+  ['b2','🚀','B2','Upper-intermediate','Richer prose, trickier questions and FCE-style writing tasks.'],
+  ['c1','🎓','C1','Advanced','A literary retelling: complex sentences, inference questions, CAE-style writing.'],
+  ['c2','🏆','C2','Proficiency','The final challenge: read Agatha Christie’s original novel, with a reading plan and analysis work.']
+];
+function renderChooser(){
+  backEl.style.display='none'; crumbEl.innerHTML='';
+  stage.innerHTML=`
+    <div class="plate" style="margin-bottom:18px">
+      <h1 style="color:#fde68a;margin:0 0 4px">🏝️ And Then There Were None</h1>
+      <div class="rhyme">Agatha Christie · the same mystery at five levels — same island, same suspects, your English.</div>
+      <img class="cast-strip" src="attwn-img/cast.jpg" alt="The guests of Soldier Island (1945 film)" onerror="this.remove()">
+      <div class="row-s" style="margin-top:6px">${CHAPTERS.map(c=>`<div class="soldier">${soldierSVG()}</div>`).join('')}</div>
+      <div class="img-credit" style="color:#7f9cc4">${IMG_CREDIT}</div>
+    </div>
+    <h2 style="font-size:16px;color:var(--blue-d);margin:0 0 10px">Choose your level and start:</h2>
+    <div class="grid cols-2">
+      ${CHOOSER_LEVELS.map(l=>`
+        <div class="card" style="flex-direction:row;text-align:left;gap:14px;align-items:center${l[0]==='c2'?';border-top:4px solid #b8934a':''}" onclick="location.href='${_lvlLink(l[0])}'">
+          <div class="ico" style="font-size:2.3rem">${l[1]}</div>
+          <div><h2 style="margin:0">${l[2]} · ${l[3]}</h2><div class="desc">${l[4]}</div></div>
+        </div>`).join('')}
+    </div>
+    <p class="muted" style="margin-top:14px;font-size:12.5px">💡 Not sure? Start at <b>B1</b>. You can change level at any time — your progress is saved separately at each level, and your 🔍 Detective's Notebook travels with you.</p>`;
+}
+
 /* ---------- dispatch ---------- */
 const ACT_RENDER={
   read:actRead, listen:actListen, summary:actSummary,
@@ -1472,7 +1687,9 @@ const ACT_RENDER={
   speed:actSpeed, writing:actWriting, wordsearch:actWordSearch, crossword:actCrossword,
   hangman:actHangman, memory:actMemory, scramble:actScramble
 };
-render();
+if(window.ATTWN_CHOOSER) renderChooser();
+else if(window.ATTWN_C2) extraC2();
+else render();
 
 </script>
 </body>
