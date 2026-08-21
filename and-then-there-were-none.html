@@ -208,6 +208,39 @@
   .kw{display:inline-block; background:#eef2f9; color:var(--blue-d); font-weight:700; font-size:12px; border-radius:10px;
     padding:3px 10px; margin:3px 4px 0 0; border:1px solid var(--line)}
   .kw.hit{background:#dcfce7; color:#065f46; border-color:#86efac}
+  /* Detective's notebook */
+  .nb-head{background:linear-gradient(135deg,#3b2f23,#1c1712); border-radius:18px; padding:20px 18px; color:#f5e9d0;
+    margin-bottom:16px; border:1px solid #6b5a41; box-shadow:0 10px 30px rgba(15,23,42,.3); position:relative; overflow:hidden}
+  .nb-head::after{content:"TOP SECRET"; position:absolute; top:14px; right:-34px; transform:rotate(35deg);
+    background:#b91c1c; color:#fff; font-weight:800; font-size:11px; letter-spacing:2px; padding:4px 40px; opacity:.9}
+  .nb-head h2{color:#f3d9a4; margin:0 0 4px; font-size:20px}
+  .nb-head p{font-size:13px; color:#d9c9a8; margin:0}
+  .sus-grid{display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+  .sus-card{background:#fffdf5; border:1px solid #e0d6bd; border-radius:14px; padding:13px 14px;
+    box-shadow:0 6px 18px rgba(15,23,42,.07)}
+  .sus-card.dead{background:#f4f4f5; filter:grayscale(.55)}
+  .sus-card .top{display:flex; gap:10px; align-items:center}
+  .sus-card .med{width:42px; height:42px; border-radius:50%; background:radial-gradient(circle at 35% 30%,#2d5a8d,#12263f);
+    border:2px solid #b8934a; display:flex; align-items:center; justify-content:center; font-size:20px; flex:none}
+  .sus-card h3{font-size:14px; color:var(--blue-d); margin:0}
+  .sus-card .role{font-size:10.5px; font-weight:800; letter-spacing:.5px; color:#b8934a; text-transform:uppercase}
+  .sus-card select{font-family:inherit; font-size:12px; font-weight:700; color:var(--blue-d); border:1.5px solid var(--line);
+    border-radius:8px; padding:5px 7px; background:#fff; margin-top:8px; width:100%}
+  .sus-card select.okd{border-color:#4ade80; background:#f0fdf4}
+  .sus-card select.bad{border-color:#f87171; background:#fef2f2}
+  .lens{display:flex; gap:2px; margin-top:8px}
+  .lens button{border:none; background:none; font-size:16px; cursor:pointer; opacity:.25; padding:1px 2px; filter:grayscale(1)}
+  .lens button.on{opacity:1; filter:none}
+  .sus-card textarea{width:100%; min-height:44px; border:1px dashed #d0c5a8; border-radius:8px; background:#fffef8;
+    font-family:inherit; font-size:12.5px; padding:7px 8px; margin-top:8px; resize:vertical; color:#44403c}
+  .sus-card textarea:focus{outline:2px solid #93c5fd}
+  .nb-verdict{background:#fff; border:2px solid #b8934a; border-radius:16px; padding:18px; margin-top:16px}
+  .nb-verdict h3{color:var(--blue-d); margin:0 0 8px; font-size:16px}
+  .nb-verdict select{font-family:inherit; font-weight:700; font-size:14px; color:var(--blue-d); border:1.5px solid var(--line);
+    border-radius:9px; padding:8px 10px; background:#fff}
+  .nb-reveal{border-radius:12px; padding:14px 16px; margin-top:12px; font-size:14px}
+  .nb-reveal.win{background:#0f2439; color:#fde68a; border:1px solid #b8934a}
+  .nb-reveal.lose{background:#fef2f2; color:#7f1d1d; border-left:4px solid #f87171}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js"></script>
@@ -808,6 +841,10 @@ function renderChapters(){
         <div class="ico" style="font-size:2.2rem">🧭</div>
         <div><h2 style="margin:0">Grammar</h2><div class="desc">Past perfect simple — explained with the story.</div></div>
       </div>
+      <div class="card" style="flex-direction:row;text-align:left;gap:14px;align-items:center;border-top:4px solid #b8934a" onclick="extraNotebook()">
+        <div class="ico" style="font-size:2.2rem">🔍</div>
+        <div><h2 style="margin:0">Detective's Notebook</h2><div class="desc">Track the suspects chapter by chapter, log the deaths… and make your final accusation.</div></div>
+      </div>
     </div>
     <h2 style="font-size:16px;color:var(--blue-d);margin:4px 0 10px">📚 Chapters</h2>
     <div class="grid cols-2">
@@ -879,6 +916,7 @@ function renderActs(){
   stage.innerHTML=`
     <h1>Chapter ${c.n} · ${c.title}</h1>
     <p class="lead">${c.sum}</p>
+    <div style="margin:0 0 12px"><button class="btn ghost sm" onclick="extraNotebook()">🔍 Update your Detective's Notebook</button></div>
     <div class="grid cols-3">
       ${ACTS.map(a=>`
         <div class="card" onclick="openAct('${a.id}')">
@@ -1767,6 +1805,112 @@ const CHAR_SECRETS=[
   "Accused of running over two young people with his car.",
   "Accused of letting their old employer die — and inheriting her money.",
   "Nobody has ever met him. Said aloud, his name means 'unknown'…"];
+
+/* ============================================================
+   DETECTIVE'S NOTEBOOK — tablero de sospechosos persistente:
+   estado (vivo/muerto + capítulo), nivel de sospecha, notas,
+   teoría del caso y acusación final con revelación.
+   ============================================================ */
+const NB_SUSPECTS=[
+  // [nombre, rol, icono, capítulo(s) real(es) de muerte según los retellings]
+  ["Judge Lawrence Wargrave","Retired judge","⚖️",[8]],
+  ["Vera Claythorne","'Secretary'","🏊",[10]],
+  ["Philip Lombard","Soldier of fortune","🧭",[10]],
+  ["Dr Edward Armstrong","London doctor","🩺",[9,10]],
+  ["William Blore","Ex-police inspector","🕵️",[9]],
+  ["Emily Brent","Religious spinster","🙏",[8]],
+  ["General Macarthur","Retired general","🎖️",[5]],
+  ["Anthony Marston","Rich young driver","🏎️",[3]],
+  ["Thomas Rogers","The butler","🍽️",[7]],
+  ["Ethel Rogers","The cook","🍲",[4]]
+];
+const NB_KEY='attwn:nb';
+function nbLoad(){ try{ return JSON.parse(localStorage.getItem(NB_KEY)||'null')||{sus:{},theory:'',accused:'',solved:false}; }catch(e){ return {sus:{},theory:'',accused:'',solved:false}; } }
+function nbSave(nb){ try{ localStorage.setItem(NB_KEY,JSON.stringify(nb)); }catch(e){} }
+function extraNotebook(){
+  view={screen:'info',info:'notebook',chap:null,act:null}; backEl.style.display='inline-block';
+  crumbEl.innerHTML="Detective's Notebook"; _actT0=Date.now();
+  const nb=nbLoad();
+  const deathOpts=(cur)=>['<option value="">❓ Alive / under suspicion</option>',
+    ...[3,4,5,6,7,8,9,10].map(n=>`<option value="${n}" ${String(cur)===String(n)?'selected':''}>☠️ Died — Chapter ${n}</option>`)].join('');
+  stage.innerHTML=`
+    <div class="nb-head">
+      <h2>🔍 Detective's Notebook</h2>
+      <p>Ten suspects. One killer among them. After each chapter, come back: mark who died and in which chapter,
+      raise or lower your suspicion (🔍 = a little, 🔍🔍🔍🔍🔍 = very suspicious), and write down your clues.
+      Your notebook is saved on this device.</p>
+    </div>
+    <div class="sus-grid">
+      ${NB_SUSPECTS.map((s,i)=>{ const d=nb.sus[i]||{}; return `
+      <div class="sus-card ${d.st?'dead':''}" id="sc${i}">
+        <div class="top"><div class="med">${s[2]}</div>
+          <div><h3>${s[0]}</h3><div class="role">${s[1]}</div></div></div>
+        <select onchange="nbStatus(${i},this.value)">${deathOpts(d.st||'')}</select>
+        <div class="lens">${[1,2,3,4,5].map(l=>`<button class="${(d.lvl||0)>=l?'on':''}" onclick="nbLens(${i},${l})">🔍</button>`).join('')}
+          <span class="muted" style="font-size:10.5px;align-self:center;margin-left:4px">suspicion</span></div>
+        <textarea placeholder="My clues about this person…" onchange="nbNote(${i},this.value)">${(d.note||'').replace(/</g,'&lt;')}</textarea>
+      </div>`;}).join('')}
+    </div>
+    <div style="display:flex;gap:10px;align-items:center;margin-top:14px;flex-wrap:wrap">
+      <button class="btn sm" onclick="nbCheckDeaths()">🕯️ Check my death list</button>
+      <div id="nbDeathOut" style="font-weight:700;color:var(--blue-d)"></div>
+    </div>
+    <div class="nb-verdict">
+      <h3>🧠 My theory of the case</h3>
+      <textarea class="wr" id="nbTheory" style="min-height:100px" placeholder="Who is doing this, and why? What evidence do I have so far…">${(nb.theory||'').replace(/</g,'&lt;')}</textarea>
+      <h3 style="margin-top:16px">⚡ The final accusation</h3>
+      <p class="muted" style="font-size:13px;margin:0 0 10px">⚠️ Only accuse when you have finished <b>Chapter 10</b> — the answer will be revealed!</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+        <select id="nbWho">
+          <option value="">— I accuse… —</option>
+          ${NB_SUSPECTS.map(s=>`<option ${nb.accused===s[0]?'selected':''}>${s[0]}</option>`).join('')}
+          <option ${nb.accused==='Fred Narracott'?'selected':''}>Fred Narracott</option>
+          <option ${nb.accused==='A stranger hiding on the island'?'selected':''}>A stranger hiding on the island</option>
+        </select>
+        <button class="btn sm" onclick="nbAccuse()">Point the finger 👉</button>
+      </div>
+      <div id="nbReveal">${nb.solved?_nbWinHTML():''}</div>
+    </div>`;
+  $('#nbTheory').addEventListener('change',e=>{ const n=nbLoad(); n.theory=e.target.value; nbSave(n); });
+  window.nbStatus=(i,v)=>{ const n=nbLoad(); (n.sus[i]=n.sus[i]||{}).st=v; nbSave(n);
+    document.getElementById('sc'+i).classList.toggle('dead',!!v); };
+  window.nbLens=(i,l)=>{ const n=nbLoad(); const d=(n.sus[i]=n.sus[i]||{}); d.lvl=(d.lvl===l?0:l); nbSave(n);
+    [...document.querySelectorAll('#sc'+i+' .lens button')].forEach((b,k)=>b.classList.toggle('on',(d.lvl||0)>=k+1)); };
+  window.nbNote=(i,v)=>{ const n=nbLoad(); (n.sus[i]=n.sus[i]||{}).note=v; nbSave(n); };
+  window.nbCheckDeaths=()=>{
+    const n=nbLoad(); let ok=0, marked=0;
+    NB_SUSPECTS.forEach((s,i)=>{
+      const sel=document.querySelector('#sc'+i+' select'); sel.classList.remove('okd','bad');
+      const v=(n.sus[i]||{}).st; if(!v) return;
+      marked++;
+      const good=s[3].includes(+v);
+      sel.classList.add(good?'okd':'bad');
+      if(good) ok++;
+    });
+    $('#nbDeathOut').textContent = marked===0 ? 'Mark at least one death first, detective.' :
+      `${ok}/${marked} correct${ok<marked?' — the red ones need another look…':' ✓'}`;
+    if(marked>=4) saveResult('notebook-deaths',ok,marked,"Notebook · death list");
+  };
+  window.nbAccuse=()=>{
+    const who=$('#nbWho').value;
+    if(!who){ $('#nbReveal').innerHTML='<div class="nb-reveal lose">Choose a suspect first.</div>'; return; }
+    if(!confirm('Have you really finished Chapter 10? The solution will be revealed. Continue?')) return;
+    const n=nbLoad(); n.accused=who;
+    const win = who==='Judge Lawrence Wargrave';
+    if(win){ n.solved=true; $('#nbReveal').innerHTML=_nbWinHTML(); }
+    else{ $('#nbReveal').innerHTML=`<div class="nb-reveal lose">❌ You accuse <b>${who}</b>… but the case falls apart:
+      the evidence doesn't fit. The killer is still free. Re-read your clues — especially Chapter 8 — and try again.</div>`; }
+    nbSave(n);
+    saveResult('notebook-accuse',win?1:0,1,'Notebook · final accusation');
+  };
+}
+function _nbWinHTML(){
+  return `<div class="nb-reveal win">🏆 <b>Case closed, detective!</b> It was <b>Judge Lawrence Wargrave</b>.
+  His 'death' in Chapter 8 was a trick: he persuaded Dr Armstrong to help him pretend — mud and red curtain
+  material on his forehead — and then pushed the doctor into the sea. With everyone believing the judge was dead,
+  nobody watched him. When Vera was gone, he arranged his own real death so the police would find only a mystery…
+  until a fishing boat pulled up his confession in a bottle. Justice — his kind of justice — was done.</div>`;
+}
 
 /* ---------- dispatch ---------- */
 const ACT_RENDER={
