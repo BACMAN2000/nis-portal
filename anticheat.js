@@ -33,6 +33,10 @@
   if (window.NISAntiCheat && window.NISAntiCheat.__ready) return;
 
   var SUPA_CDN = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4';
+  /* Secciones EXENTAS del control de honestidad, como '<n.º de grado><sección>'
+     (p. ej. '9A' = G9 sección A). Vaciar la lista para reactivar el control.
+     Pedido del usuario 2026-08-21: desactivado para todo 9A. */
+  var AC_EXEMPT_SECTIONS = ['9A'];
   var CFG = window.NIS_CONFIG || null;
   var sb = null;                 // cliente Supabase (si se logra cargar)
   var me = null;                 // { id, name, email, grade, guardian_name, guardian_phone }
@@ -105,13 +109,14 @@
     return sb.auth.getSession().then(function (r) {
       var u = r && r.data && r.data.session && r.data.session.user;
       if (!u) return null;
-      return sb.from('profiles').select('full_name,email,role,guardian_name,guardian_phone,grades(name)').eq('id', u.id).single()
+      return sb.from('profiles').select('full_name,email,role,section,guardian_name,guardian_phone,grades(name)').eq('id', u.id).single()
         .then(function (p) {
           var d = p.data || {};
           me = {
             id: u.id, email: d.email || u.email || '', role: d.role || 'student',
             name: d.full_name || u.email || '',
             grade: (d.grades && d.grades.name) || '',
+            section: d.section || '',
             guardian_name: d.guardian_name || '', guardian_phone: d.guardian_phone || ''
           };
           return me;
@@ -420,6 +425,14 @@
     ensureSupabase().then(function () { return loadMe(); }).then(function () {
       // Docentes y administradores quedan exentos (pueden revisar sin bloquearse).
       if (me && (me.role === 'teacher' || me.role === 'admin')) return;
+      // Secciones exentas ('9A' = n.º del grado + sección; ver AC_EXEMPT_SECTIONS arriba).
+      if (me && me.grade) {
+        var gnum = (String(me.grade).match(/\d+/) || [''])[0];
+        var tag = (gnum + String(me.section || '')).toUpperCase();
+        for (var x = 0; x < AC_EXEMPT_SECTIONS.length; x++) {
+          if (String(AC_EXEMPT_SECTIONS[x]).toUpperCase() === tag) return;
+        }
+      }
       // En superficies compartidas (el portal) solo actúa con un alumno logueado.
       if (opts.requireStudent && !me) return;
       loadLS();
