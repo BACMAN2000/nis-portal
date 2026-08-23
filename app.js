@@ -2487,8 +2487,20 @@ function studentStage(stage){
       ? _hubCard(emoji,label,desc,"window._nav('classes_"+k+"')")
       : _lockedCard(emoji,label,desc);
   }).join('');
+  /* Tarjeta YLE (Fun for Nordic) — solo en la etapa Primary */
+  const yle = stage==='primary' ? `
+    <div class="card" style="margin-top:16px;border-top:5px solid #3b6fb5">
+      <h2 style="margin:0 0 4px;color:var(--blue-d)">🧭 Fun for Nordic — Cambridge YLE</h2>
+      <div class="muted" style="font-size:.9rem;margin-bottom:12px">Interactive course to get ready for the Cambridge Young Learners exams: 150 units with audio, crosswords and exam tasks — with Pip, Luna and Kili!</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a href="https://bacman2000.github.io/nis-fun/engine/?level=starters" target="_blank" rel="noopener" class="btn" style="background:#d97d0d;color:#fff;text-decoration:none">🐧 Pre A1 · Starters</a>
+        <a href="https://bacman2000.github.io/nis-fun/engine/?level=movers" target="_blank" rel="noopener" class="btn" style="background:#2f9268;color:#fff;text-decoration:none">🐺 A1 · Movers</a>
+        <a href="https://bacman2000.github.io/nis-fun/engine/?level=flyers" target="_blank" rel="noopener" class="btn" style="background:#3b6fb5;color:#fff;text-decoration:none">🦅 A2 · Flyers</a>
+      </div>
+    </div>` : '';
   $('#main').innerHTML=`${back}<h1>${m.emoji} ${m.title}</h1>
     <p class="muted" style="margin-top:-6px">${m.desc}</p>
+    ${yle}
     <div class="grid cols-3" style="margin-top:12px">${cards}</div>`;
 }
 
