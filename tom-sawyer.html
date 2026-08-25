@@ -335,6 +335,7 @@ const ACTS=[
 
 /* ---------- navigation ---------- */
 function render(){
+  _syncHash();
   backEl.style.display = view.screen==="chapters" ? "none" : "inline-block";
   if(view.screen==="chapters"){ crumbEl.innerHTML=""; return renderChapters(); }
   const c=CHAPTERS[view.chap];
@@ -759,7 +760,33 @@ const ACT_RENDER={
   speed:actSpeed, hangman:actHangman, memory:actMemory, scramble:actScramble
 };
 
-render();
+/* Historial: la vista vive también en el hash (#c2, #c2-read…) para que el
+   botón "atrás" del navegador retroceda una vista en lugar de sacar al
+   alumno del reader (auditoría 2026-08-25). render() sincroniza el hash y
+   hashchange re-renderiza; _hashMute evita el doble render. */
+let _hashMute=false;
+function _routeHash(){
+  if(view.screen==="acts") return "c"+view.chap;
+  if(view.screen==="act")  return "c"+view.chap+"-"+view.act;
+  return "";
+}
+function _syncHash(){
+  const h=_routeHash(), cur=location.hash.replace(/^#/,"");
+  if(h===cur) return;
+  _hashMute=true; location.hash=h;
+}
+function _applyRoute(h){
+  let m;
+  if((m=/^c(\d+)-(\w+)$/.exec(h)) && CHAPTERS[+m[1]] && ACT_RENDER[m[2]]) view={screen:"act",chap:+m[1],act:m[2]};
+  else if((m=/^c(\d+)$/.exec(h)) && CHAPTERS[+m[1]]) view={screen:"acts",chap:+m[1],act:null};
+  else view={screen:"chapters",chap:null,act:null};
+  render();
+}
+window.addEventListener("hashchange",()=>{
+  if(_hashMute){ _hashMute=false; return; }
+  _applyRoute(location.hash.replace(/^#/,""));
+});
+_applyRoute(location.hash.replace(/^#/,""));
 </script>
 </body>
 </html>

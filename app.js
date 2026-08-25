@@ -2188,7 +2188,7 @@ function studentGrade(key){
       ${key==='g9' ? (nodeVisible('english.classes.g9.cambridge') ? _hubCard('🎓','Cambridge','B2 First (FCE): authentic Cambridge practice by skill. Start with Listening — real exam audio with a player and Parts 1–4 tasks.',"window._nav('classes_g9_cambridge')") : _lockedCard('🎓','Cambridge','Cambridge B2 First practice.')) : ''}
       ${key==='g9' ? (nodeVisible('english.classes.g9.uoe1') ? _skillCard('🧩','Use of English · Part 1','Multiple-choice cloze B2 (Cambridge style): 8 gaps, options A–D, with correction and explanations.',_withBack('use-of-english-part1.html',route)) : _lockedCard('🧩','Use of English · Part 1','Cambridge-style B2 cloze.')) : ''}
       ${key==='g9' ? (nodeVisible('english.classes.g9.writing') ? _skillCard('✍️','Writing','Opinion essay (FCE Writing Part 1): 6 topics with guide phrases, a bank of linkers, word counter and checklist.',_withBack('writing.html?grade='+key,route)) : _lockedCard('✍️','Writing','Opinion essay · FCE Writing Part 1.')) : ''}
-      ${key==='g9' ? (nodeVisible('english.classes.g9.reader') ? _skillCard('📚','Readers','And Then There Were None (Agatha Christie) at five levels — A2 · B1 · B2 · C1 · C2. Choose your level: read along with audio, listening, summaries, games and the Detective\'s Notebook.',_withBack('and-then-there-were-none.html',route)) : _lockedCard('📚','Readers','And Then There Were None · A2–C2.')) : ''}
+      ${key==='g9' ? (nodeVisible('english.classes.g9.reader') ? _hubCard('📚','Readers','Graded readers with activities for every chapter: And Then There Were None (A2–C2), The Importance of Being Earnest (B1.2) — and more on the way.',"window._nav('classes_g9_readers')") : _lockedCard('📚','Readers','Graded readers with activities.')) : ''}
     </div>`;
 }
 /* Cambridge (9.º): tarjeta madre con las destrezas del examen B2 First.
@@ -2203,6 +2203,23 @@ function studentGradeCambridge(key){
     <p class="muted" style="margin-top:-6px">Authentic Cambridge exam practice by skill.</p>
     <div class="grid cols-2" style="margin-top:12px">
       ${nodeVisible(base+'.listening') ? _skillCard('🎧','Listening','Authentic B2 First listening: 55 recordings by unit with a full audio player, and exam tasks (Parts 1–4) that mark themselves.',_withBack('cambridge-listening.html',route)) : _lockedCard('🎧','Listening','Cambridge B2 First listening.')}
+    </div>`;
+}
+/* Readers (9.º): tarjeta madre con los graded readers. La sección irá
+   creciendo, así que cada libro tiene su tarjeta propia (pedido 2026-08-25);
+   todos comparten el nodo english.classes.g9.reader ya concedido a los
+   profesores. Being Earnest se movió aquí desde Activities > Extra practice. */
+function studentGradeReaders(key){
+  _setNav('classes');
+  const route='classes_'+key+'_readers';
+  const back=_backBtn("window._nav('classes_"+key+"')","9th Grade");
+  const base='english.classes.'+key+'.reader';
+  if(!nodeVisible('english.classes.'+key) || !nodeVisible(base)){ _lockedView(back,'📚 Readers'); return; }
+  $('#main').innerHTML=`${back}<h1>📚 Readers</h1>
+    <p class="muted" style="margin-top:-6px">Graded readers with activities for every chapter.</p>
+    <div class="grid cols-2" style="margin-top:12px">
+      ${_skillCard('🏝️','And Then There Were None','Agatha Christie at five levels — A2 · B1 · B2 · C1 · C2. Choose your level: read along with audio, listening, summaries, games and the Detective\'s Notebook.',_withBack('and-then-there-were-none.html',route))}
+      ${_skillCard('🎩','The Importance of Being Earnest','Oscar Wilde (B1.2): 10 activities per chapter — comprehension, true/false, multiple choice, speed quiz, writing, word search, crossword, hangman, memory and scramble.',_withBack('being-earnest.html',route))}
     </div>`;
 }
 /* Unidades del grado (Unit 3, Unit 4…) según activities-data.js.
@@ -2308,7 +2325,6 @@ function studentGradeActivities(key,focusUnit,subject){
     <h2 id="by-level" style="margin:30px 0 8px">🎯 Extra practice by level</h2>
     <div class="grid cols-2" style="margin-top:12px">
       ${key==='g7' ? _skillCard('🚣','Reader · Tom Sawyer','The Adventures of Tom Sawyer (A2): 7 activities per chapter — word search, crossword, comprehension, speed quiz, hangman, memory and scramble.',_withBack('tom-sawyer.html',route)) : ''}
-      ${key==='g9' ? _skillCard('🎩','Reader · Being Earnest','The Importance of Being Earnest (B1.2): 10 activities per chapter — comprehension, true/false, multiple choice, speed quiz, writing, word search, crossword, hangman, memory and scramble.',_withBack('being-earnest.html',route)) : ''}
       ${_skillCard('🧩','Crosswords','10 themed crosswords per level — clues, lives and timer.',_withBack('crosswords.html?levels='+encodeURIComponent(lv),route))}
       ${_skillCard('🔎','Word Search','10 themed word searches per level.',_withBack('wordsearches.html?levels='+encodeURIComponent(lv),route))}
       ${_skillCard('🔢','Word Sudoku','Word sudoku: 9 puzzles per level ('+lv.split(',').join(' · ')+').',_withBack('word-sudoku.html?levels='+encodeURIComponent(lv),route))}
@@ -2390,6 +2406,7 @@ function _navRender(k){
   if(m=/^classes_(g\d+)_unit_([a-z0-9]+)$/.exec(k)){ studentGradeUnit(m[1],m[2]); return true; }
   if(m=/^classes_(g\d+)_act$/.exec(k)){ studentGradeActivities(m[1]); return true; }
   if(m=/^classes_(g\d+)_cambridge$/.exec(k)){ studentGradeCambridge(m[1]); return true; }
+  if(m=/^classes_(g\d+)_readers$/.exec(k)){ studentGradeReaders(m[1]); return true; }
   if(m=/^classes_(g\d+)$/.exec(k))    { studentGrade(m[1]);           return true; }
   const fn={english:()=>studentSubject('english'),french:()=>studentSubject('french'),general:studentGeneral,
     mocks:studentMocks,practice:studentPractice,library:studentLibrary,mun:studentMun,classes:studentClasses,
@@ -2511,9 +2528,9 @@ function studentStage(stage){
       <h2 style="margin:0 0 4px;color:var(--blue-d)">🧭 Fun for Nordic — Cambridge YLE</h2>
       <div class="muted" style="font-size:.9rem;margin-bottom:12px">Interactive course to get ready for the Cambridge Young Learners exams: 150 units with audio, crosswords and exam tasks — with Pip, Luna and Kili!</div>
       <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <a href="https://bacman2000.github.io/nis-fun/engine/?level=starters" target="_blank" rel="noopener" class="btn" style="background:#d97d0d;color:#fff;text-decoration:none">🐧 Pre A1 · Starters</a>
-        <a href="https://bacman2000.github.io/nis-fun/engine/?level=movers" target="_blank" rel="noopener" class="btn" style="background:#2f9268;color:#fff;text-decoration:none">🐺 A1 · Movers</a>
-        <a href="https://bacman2000.github.io/nis-fun/engine/?level=flyers" target="_blank" rel="noopener" class="btn" style="background:#3b6fb5;color:#fff;text-decoration:none">🦅 A2 · Flyers</a>
+        <a href="nis-fun/engine/?level=starters" target="_blank" rel="noopener" class="btn" style="background:#d97d0d;color:#fff;text-decoration:none">🐧 Pre A1 · Starters</a>
+        <a href="nis-fun/engine/?level=movers" target="_blank" rel="noopener" class="btn" style="background:#2f9268;color:#fff;text-decoration:none">🐺 A1 · Movers</a>
+        <a href="nis-fun/engine/?level=flyers" target="_blank" rel="noopener" class="btn" style="background:#3b6fb5;color:#fff;text-decoration:none">🦅 A2 · Flyers</a>
       </div>
     </div>` : '';
   $('#main').innerHTML=`${back}<h1>${m.emoji} ${m.title}</h1>

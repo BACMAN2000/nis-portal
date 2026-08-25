@@ -412,6 +412,7 @@ const ACTS=[
 /* ---------- navigation ---------- */
 function render(){
   _stopAudio();
+  _syncHash();
   backEl.style.display = view.screen==="chapters" ? "none" : "inline-block";
   if(view.screen==="chapters"){ crumbEl.innerHTML=""; return renderChapters(); }
   if(view.screen==="teacher"){ return teacherView(); }
@@ -1336,7 +1337,7 @@ const BOOK_WORDS=[ // palabras clave que el libro presenta antes del capítulo 1
 function sayWord(w){ try{ speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(w.toLowerCase()); u.lang='en-GB';
   const v=speechSynthesis.getVoices().find(v=>/^en[-_]GB/i.test(v.lang)); if(v)u.voice=v; speechSynthesis.speak(u);}catch(e){} }
 function extraBeforeYouRead(){
-  view={screen:'info',info:'before',chap:null,act:null}; backEl.style.display='inline-block';
+  view={screen:'info',info:'before',chap:null,act:null}; _syncHash(); backEl.style.display='inline-block';
   crumbEl.innerHTML='Before you read'; _actT0=Date.now();
   const defs=BOOK_WORDS.map(v=>v[1]);
   const qs=shuffle(BOOK_WORDS).map(v=>{
@@ -1422,7 +1423,7 @@ const GRAMMAR_PP=[
    "The drinking happened before Blore's smile — past perfect."]
 ];
 function extraGrammar(){
-  view={screen:'info',info:'grammar',chap:null,act:null}; backEl.style.display='inline-block';
+  view={screen:'info',info:'grammar',chap:null,act:null}; _syncHash(); backEl.style.display='inline-block';
   crumbEl.innerHTML='Grammar · past perfect'; _actT0=Date.now();
   stage.innerHTML=`<div class="panel">
     <div class="qnum">GRAMMAR</div>
@@ -1454,7 +1455,7 @@ const CHAR_TASKS=[
    starters:["… had never expected an invitation like this.","Years before, he/she had…","Nobody at the inquest had suspected…"]}
 ];
 function extraCharWriting(){
-  view={screen:'info',info:'charwriting',chap:null,act:null}; backEl.style.display='inline-block';
+  view={screen:'info',info:'charwriting',chap:null,act:null}; _syncHash(); backEl.style.display='inline-block';
   crumbEl.innerHTML='Write about the characters';
   actWriting({writing:CHAR_TASKS});
 }
@@ -1501,7 +1502,7 @@ const NB_KEY='attwn:nb';
 function nbLoad(){ try{ return JSON.parse(localStorage.getItem(NB_KEY)||'null')||{sus:{},theory:'',accused:'',solved:false}; }catch(e){ return {sus:{},theory:'',accused:'',solved:false}; } }
 function nbSave(nb){ try{ localStorage.setItem(NB_KEY,JSON.stringify(nb)); }catch(e){} }
 function extraNotebook(){
-  view={screen:'info',info:'notebook',chap:null,act:null}; backEl.style.display='inline-block';
+  view={screen:'info',info:'notebook',chap:null,act:null}; _syncHash(); backEl.style.display='inline-block';
   crumbEl.innerHTML="Detective's Notebook"; _actT0=Date.now();
   const nb=nbLoad();
   const deathOpts=(cur)=>['<option value="">❓ Alive / under suspicion</option>',
@@ -1818,9 +1819,46 @@ const ACT_RENDER={
   speed:actSpeed, writing:actWriting, wordsearch:actWordSearch, crossword:actCrossword,
   hangman:actHangman, memory:actMemory, scramble:actScramble
 };
+/* Historial: la vista vive también en el hash (#c2, #c2-read, #info-notebook…)
+   para que el botón "atrás" del navegador retroceda una vista en lugar de
+   sacar al alumno del reader (auditoría 2026-08-25). render() y las pantallas
+   extra sincronizan el hash; hashchange re-renderiza; _hashMute evita el
+   doble render. El chooser y el modo C2 son de una sola pantalla y quedan fuera. */
+let _hashMute=false;
+function _routeHash(){
+  if(view.screen==="acts") return "c"+view.chap;
+  if(view.screen==="act")  return "c"+view.chap+"-"+view.act;
+  if(view.screen==="info") return "info-"+(view.info||"bio");
+  if(view.screen==="teacher") return "teacher";
+  return "";
+}
+function _syncHash(){
+  const h=_routeHash(), cur=location.hash.replace(/^#/,"");
+  if(h===cur) return;
+  _hashMute=true; location.hash=h;
+}
+function _applyRoute(h){
+  let m;
+  if((m=/^c(\d+)-(\w+)$/.exec(h)) && CHAPTERS[+m[1]] && ACT_RENDER[m[2]]){ view={screen:"act",chap:+m[1],act:m[2]}; }
+  else if((m=/^c(\d+)$/.exec(h)) && CHAPTERS[+m[1]]){ view={screen:"acts",chap:+m[1],act:null}; }
+  else if((m=/^info-(\w+)$/.exec(h))){
+    const fn={before:extraBeforeYouRead,grammar:extraGrammar,charwriting:extraCharWriting,notebook:extraNotebook}[m[1]];
+    if(fn) return fn();
+    if(m[1]==="bio"||m[1]==="characters") view={screen:"info",info:m[1],chap:null,act:null};
+    else view={screen:"chapters",chap:null,act:null,info:null};
+  }
+  else if(h==="teacher"){ view={screen:"teacher",chap:null,act:null}; }
+  else view={screen:"chapters",chap:null,act:null,info:null};
+  render();
+}
+window.addEventListener("hashchange",()=>{
+  if(window.ATTWN_CHOOSER || window.ATTWN_C2) return;
+  if(_hashMute){ _hashMute=false; return; }
+  _applyRoute(location.hash.replace(/^#/,""));
+});
 if(window.ATTWN_CHOOSER) renderChooser();
 else if(window.ATTWN_C2) extraC2();
-else render();
+else _applyRoute(location.hash.replace(/^#/,""));
 
 </script>
 </body>
