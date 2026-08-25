@@ -651,14 +651,14 @@ async function adminTeachers(){
     const _nodeChip=(key,label)=>`<label style="${chipCss}"><input type="checkbox" class="tg-node" value="${key}" ${(managed? managed.has(key): true)?'checked':''}> ${esc(label)}</label>`;
     // Unidades y semanas no se asignan al profesor por separado (heredan de
     // su Activities), así que quedan fuera de los chips generales.
-    const _gradeKeySet=new Set([...ALL_GRADE_ORDER.flatMap(g=>['english.classes.'+g,'english.classes.'+g+'.activities','english.classes.'+g+'.grammar']),'english.classes.g9.uoe1','english.classes.g9.writing','english.classes.g9.reader',..._SUB_NODES.map(n=>n.key)]);
+    const _gradeKeySet=new Set([...ALL_GRADE_ORDER.flatMap(g=>['english.classes.'+g,'english.classes.'+g+'.activities','english.classes.'+g+'.grammar']),'english.classes.g9.cambridge','english.classes.g9.cambridge.listening','english.classes.g9.uoe1','english.classes.g9.writing','english.classes.g9.reader',..._SUB_NODES.map(n=>n.key)]);
     const generalChips=ACCESS_NODES.filter(n=>!_gradeKeySet.has(n.key)).map(n=>_nodeChip(n.key,n.label)).join('');
     // Primaria (2.º–5.º) sin Grammar: en esa etapa la gramática vive dentro
     // de las actividades, igual que en francés.
     const gradeBlocks=ALL_GRADE_ORDER.map(g=>{
       const items=[['english.classes.'+g,'Classes'],['english.classes.'+g+'.activities','🎲 Activities']];
       if(!_isPrimaryGrade(g)) items.push(['english.classes.'+g+'.grammar','📝 Grammar']);
-      if(g==='g9') items.push(['english.classes.g9.uoe1','🧩 Use of English P1'],['english.classes.g9.writing','✍️ Writing'],['english.classes.g9.reader','🏝️ Reader ATTWN']);
+      if(g==='g9') items.push(['english.classes.g9.cambridge','🎓 Cambridge'],['english.classes.g9.cambridge.listening','🎧 Cambridge Listening'],['english.classes.g9.uoe1','🧩 Use of English P1'],['english.classes.g9.writing','✍️ Writing'],['english.classes.g9.reader','🏝️ Reader ATTWN']);
       return `<div class="row" style="gap:6px;align-items:center;margin-top:5px;flex-wrap:wrap"><span class="muted" style="font-size:.8rem;min-width:84px">${GRADE_META[g][0]} ${GRADE_META[g][1]}</span>${items.map(it=>_nodeChip(it[0],it[1])).join('')}</div>`;
     }).join('');
     const pw=credmap[t.id]||'';
@@ -2042,6 +2042,8 @@ const ACCESS_NODES = [
   {key:'english.classes',               label:'Classes'},
   ..._GRADE_NODES,
   ..._SUB_NODES.map(n=>({key:n.key,label:n.label})),
+  {key:'english.classes.g9.cambridge',          label:'9th · Cambridge'},
+  {key:'english.classes.g9.cambridge.listening',label:'9th · Cambridge · Listening'},
   {key:'english.classes.g9.uoe1',       label:'9th · Use of English P1'},
   {key:'english.classes.g9.writing',    label:'9th · Writing'},
   {key:'english.classes.g9.reader',     label:'9th · Reader (ATTWN)'},
@@ -2183,9 +2185,24 @@ function studentGrade(key){
     <div class="grid cols-2" style="margin-top:12px">
       ${_isPrimaryGrade(key) ? '' : (nodeVisible(base+'.grammar') ? _skillCard('📝','Grammar','Grammar for '+label+': explanations and games by unit.',_withBack('grammar.html?grade='+key,route)) : _lockedCard('📝','Grammar','Grammar for '+label+'.'))}
       ${nodeVisible(base+'.activities') ? _hubCard('🎲','Activities',_isPrimaryGrade(key)?'Games for each unit — with audio for young learners.':'Games by unit and by level: crosswords, word searches and more.',"window._nav('classes_"+key+"_act')") : _lockedCard('🎲','Activities','Games and activities.')}
+      ${key==='g9' ? (nodeVisible('english.classes.g9.cambridge') ? _hubCard('🎓','Cambridge','B2 First (FCE): authentic Cambridge practice by skill. Start with Listening — real exam audio with a player and Parts 1–4 tasks.',"window._nav('classes_g9_cambridge')") : _lockedCard('🎓','Cambridge','Cambridge B2 First practice.')) : ''}
       ${key==='g9' ? (nodeVisible('english.classes.g9.uoe1') ? _skillCard('🧩','Use of English · Part 1','Multiple-choice cloze B2 (Cambridge style): 8 gaps, options A–D, with correction and explanations.',_withBack('use-of-english-part1.html',route)) : _lockedCard('🧩','Use of English · Part 1','Cambridge-style B2 cloze.')) : ''}
       ${key==='g9' ? (nodeVisible('english.classes.g9.writing') ? _skillCard('✍️','Writing','Opinion essay (FCE Writing Part 1): 6 topics with guide phrases, a bank of linkers, word counter and checklist.',_withBack('writing.html?grade='+key,route)) : _lockedCard('✍️','Writing','Opinion essay · FCE Writing Part 1.')) : ''}
       ${key==='g9' ? (nodeVisible('english.classes.g9.reader') ? _skillCard('📚','Readers','And Then There Were None (Agatha Christie) at five levels — A2 · B1 · B2 · C1 · C2. Choose your level: read along with audio, listening, summaries, games and the Detective\'s Notebook.',_withBack('and-then-there-were-none.html',route)) : _lockedCard('📚','Readers','And Then There Were None · A2–C2.')) : ''}
+    </div>`;
+}
+/* Cambridge (9.º): tarjeta madre con las destrezas del examen B2 First.
+   De momento, Listening (audios auténticos con reproductor y tareas Parts 1–4). */
+function studentGradeCambridge(key){
+  _setNav('classes');
+  const route='classes_'+key+'_cambridge';
+  const back=_backBtn("window._nav('classes_"+key+"')","9th Grade");
+  const base='english.classes.'+key+'.cambridge';
+  if(!nodeVisible('english.classes.'+key) || !nodeVisible(base)){ _lockedView(back,'🎓 Cambridge B2 First'); return; }
+  $('#main').innerHTML=`${back}<h1>🎓 Cambridge B2 First</h1>
+    <p class="muted" style="margin-top:-6px">Authentic Cambridge exam practice by skill.</p>
+    <div class="grid cols-2" style="margin-top:12px">
+      ${nodeVisible(base+'.listening') ? _skillCard('🎧','Listening','Authentic B2 First listening: 55 recordings by unit with a full audio player, and exam tasks (Parts 1–4) that mark themselves.',_withBack('cambridge-listening.html',route)) : _lockedCard('🎧','Listening','Cambridge B2 First listening.')}
     </div>`;
 }
 /* Unidades del grado (Unit 3, Unit 4…) según activities-data.js.
@@ -2372,6 +2389,7 @@ function _navRender(k){
   if(k==='classes_secondary') { studentStage('secondary'); return true; }
   if(m=/^classes_(g\d+)_unit_([a-z0-9]+)$/.exec(k)){ studentGradeUnit(m[1],m[2]); return true; }
   if(m=/^classes_(g\d+)_act$/.exec(k)){ studentGradeActivities(m[1]); return true; }
+  if(m=/^classes_(g\d+)_cambridge$/.exec(k)){ studentGradeCambridge(m[1]); return true; }
   if(m=/^classes_(g\d+)$/.exec(k))    { studentGrade(m[1]);           return true; }
   const fn={english:()=>studentSubject('english'),french:()=>studentSubject('french'),general:studentGeneral,
     mocks:studentMocks,practice:studentPractice,library:studentLibrary,mun:studentMun,classes:studentClasses,
