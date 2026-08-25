@@ -2188,7 +2188,7 @@ function studentGrade(key){
       ${key==='g9' ? (nodeVisible('english.classes.g9.cambridge') ? _hubCard('🎓','Cambridge','B2 First (FCE): authentic Cambridge practice by skill. Start with Listening — real exam audio with a player and Parts 1–4 tasks.',"window._nav('classes_g9_cambridge')") : _lockedCard('🎓','Cambridge','Cambridge B2 First practice.')) : ''}
       ${key==='g9' ? (nodeVisible('english.classes.g9.uoe1') ? _skillCard('🧩','Use of English · Part 1','Multiple-choice cloze B2 (Cambridge style): 8 gaps, options A–D, with correction and explanations.',_withBack('use-of-english-part1.html',route)) : _lockedCard('🧩','Use of English · Part 1','Cambridge-style B2 cloze.')) : ''}
       ${key==='g9' ? (nodeVisible('english.classes.g9.writing') ? _skillCard('✍️','Writing','Opinion essay (FCE Writing Part 1): 6 topics with guide phrases, a bank of linkers, word counter and checklist.',_withBack('writing.html?grade='+key,route)) : _lockedCard('✍️','Writing','Opinion essay · FCE Writing Part 1.')) : ''}
-      ${key==='g9' ? (nodeVisible('english.classes.g9.reader') ? _hubCard('📚','Readers','Graded readers with activities for every chapter: And Then There Were None (A2–C2), The Importance of Being Earnest (B1.2) — and more on the way.',"window._nav('classes_g9_readers')") : _lockedCard('📚','Readers','Graded readers with activities.')) : ''}
+      ${key==='g9' ? (nodeVisible('english.classes.g9.reader') ? _hubCard('📚','Readers','Graded readers with activities for every chapter: And Then There Were None (A2–C2), Being Earnest (B1.2), Tom Sawyer (A2) — and more on the way.',"window._nav('classes_g9_readers')") : _lockedCard('📚','Readers','Graded readers with activities.')) : ''}
     </div>`;
 }
 /* Cambridge (9.º): tarjeta madre con las destrezas del examen B2 First.
@@ -2220,6 +2220,7 @@ function studentGradeReaders(key){
     <div class="grid cols-2" style="margin-top:12px">
       ${_skillCard('🏝️','And Then There Were None','Agatha Christie at five levels — A2 · B1 · B2 · C1 · C2. Choose your level: read along with audio, listening, summaries, games and the Detective\'s Notebook.',_withBack('and-then-there-were-none.html',route))}
       ${_skillCard('🎩','The Importance of Being Earnest','Oscar Wilde (B1.2): 10 activities per chapter — comprehension, true/false, multiple choice, speed quiz, writing, word search, crossword, hangman, memory and scramble.',_withBack('being-earnest.html',route))}
+      ${_skillCard('🚣','The Adventures of Tom Sawyer','Mark Twain (A2): 7 activities per chapter — word search, crossword, comprehension, speed quiz, hangman, memory and scramble.',_withBack('tom-sawyer.html',route))}
     </div>`;
 }
 /* Unidades del grado (Unit 3, Unit 4…) según activities-data.js.
@@ -2324,7 +2325,6 @@ function studentGradeActivities(key,focusUnit,subject){
     ${lockedBlock}
     <h2 id="by-level" style="margin:30px 0 8px">🎯 Extra practice by level</h2>
     <div class="grid cols-2" style="margin-top:12px">
-      ${key==='g7' ? _skillCard('🚣','Reader · Tom Sawyer','The Adventures of Tom Sawyer (A2): 7 activities per chapter — word search, crossword, comprehension, speed quiz, hangman, memory and scramble.',_withBack('tom-sawyer.html',route)) : ''}
       ${_skillCard('🧩','Crosswords','10 themed crosswords per level — clues, lives and timer.',_withBack('crosswords.html?levels='+encodeURIComponent(lv),route))}
       ${_skillCard('🔎','Word Search','10 themed word searches per level.',_withBack('wordsearches.html?levels='+encodeURIComponent(lv),route))}
       ${_skillCard('🔢','Word Sudoku','Word sudoku: 9 puzzles per level ('+lv.split(',').join(' · ')+').',_withBack('word-sudoku.html?levels='+encodeURIComponent(lv),route))}
