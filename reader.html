@@ -1,0 +1,1621 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google" content="notranslate">
+<title>Reader — Portal NIS</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--blue:#2d5a8d; --blue-d:#1e3f66; --line:#e2e8f0; --ink:#0f172a; --muted:#475569}
+  *{box-sizing:border-box; margin:0; padding:0}
+  body{font:15px/1.55 "Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink); background:linear-gradient(180deg,#cdd3e6 0%,#f8fafc 60%,#fff 100%); min-height:100vh;
+    -webkit-touch-callout:none}
+  header{background:#fff; padding:12px 22px; display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+    box-shadow:0 4px 16px rgba(15,23,42,.06); position:sticky; top:0; z-index:10; border-bottom:1px solid var(--line)}
+  header img{display:block; height:38px; width:auto}
+  header .sub{color:#636465; font-size:13px; margin-left:auto; font-weight:700; letter-spacing:.3px}
+  .backbtn{cursor:pointer; text-decoration:none; background:var(--blue); color:#fff; border:none;
+    font-weight:700; font-size:13px; padding:8px 14px; border-radius:9px; white-space:nowrap; font-family:inherit}
+  .backbtn.ghost{background:#eef2f9; color:var(--blue-d)}
+  main{max-width:940px; margin:0 auto; padding:20px 16px 60px}
+  h1{font-size:22px; margin:0 0 4px; color:var(--ink)}
+  h1 .em{font-size:1.35em; vertical-align:-3px}
+  p.lead{color:var(--muted); margin:2px 0 16px}
+  .bar{display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:14px}
+  .crumb{color:var(--muted); font-size:13px; font-weight:600}
+  .crumb b{color:var(--blue-d)}
+  .grid{display:grid; gap:14px}
+  .cols-2{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+  .cols-3{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+  .card{background:#fff; border:1px solid var(--line); border-radius:16px; padding:22px 18px;
+    box-shadow:0 8px 24px rgba(15,23,42,.08); text-align:center; cursor:pointer; transition:.15s;
+    display:flex; flex-direction:column; align-items:center; gap:6px}
+  .card:hover{transform:translateY(-3px); border-color:#c7d6ec}
+  .card .ico{font-size:2.5rem; line-height:1}
+  .card h2{font-size:16px; margin:6px 0 2px; color:var(--blue)}
+  .card .desc{color:var(--muted); font-size:12.5px}
+  .chip{display:inline-block; background:#e7ecfd; color:var(--blue-d); font-weight:700; font-size:11px;
+    padding:3px 9px; border-radius:12px; margin-top:6px}
+  .chap-card{position:relative; text-align:left; align-items:stretch}
+  .chap-card .num{position:absolute; top:10px; left:12px; font-size:12px; font-weight:800; color:#94a3b8}
+  .chap-card h2{text-align:left; margin-top:2px}
+  .chap-card .desc{text-align:left}
+  .chap-card .act-tag{font-size:11px;color:#94a3b8;font-weight:600;margin-top:4px}
+  .btn{cursor:pointer; font-family:inherit; font-weight:700; font-size:14px; border:none; border-radius:10px;
+    padding:10px 18px; background:var(--blue); color:#fff; transition:.12s}
+  .btn:hover{background:var(--blue-d)}
+  .btn.ghost{background:#eef2f9; color:var(--blue-d)}
+  .btn.sm{padding:7px 13px; font-size:13px}
+  .btn:disabled{opacity:.5; cursor:not-allowed}
+  .panel{background:#fff; border:1px solid var(--line); border-radius:16px; padding:20px 18px;
+    box-shadow:0 8px 24px rgba(15,23,42,.08)}
+  .muted{color:var(--muted)} .center{text-align:center}
+  /* Word search */
+  .ws-wrap{display:flex; gap:22px; flex-wrap:wrap; align-items:flex-start}
+  table.ws{border-collapse:collapse; user-select:none; touch-action:none; margin:0 auto}
+  table.ws td{width:28px; height:28px; text-align:center; font-weight:700; font-size:14px; cursor:pointer;
+    border:1px solid #eef2f7; color:#334155}
+  table.ws td.sel{background:#bfdbfe}
+  table.ws td.found{background:#bbf7d0; color:#065f46}
+  .wordlist{min-width:160px; flex:1}
+  .wordlist li{list-style:none; padding:4px 2px; font-weight:600; border-bottom:1px solid #f1f5f9; font-size:13px}
+  .wordlist li.done{text-decoration:line-through; color:#94a3b8}
+  /* Crossword */
+  table.cw{border-collapse:collapse; margin:0 auto}
+  table.cw td{width:28px; height:28px; padding:0; border:1px solid #cbd5e1; position:relative}
+  table.cw td.blk{background:#0f172a; border-color:#0f172a}
+  table.cw td input{width:100%; height:100%; border:none; text-align:center; text-transform:uppercase;
+    font-family:inherit; font-weight:700; font-size:14px; color:var(--blue-d); background:transparent; padding:0}
+  table.cw td input:focus{outline:2px solid #93c5fd; background:#eff6ff}
+  table.cw td .qn{position:absolute; top:0; left:1px; font-size:8px; color:#64748b; font-weight:700}
+  td.ok input{background:#bbf7d0} td.bad input{background:#fecaca}
+  .clues{display:flex; gap:26px; flex-wrap:wrap; margin-top:6px}
+  .clues h3{font-size:13px; color:var(--blue-d); margin:0 0 4px}
+  .clues ol{margin:0; padding-left:20px; font-size:13px}
+  .clues li{margin-bottom:3px}
+  /* Memory */
+  .mem-grid{display:grid; gap:8px; grid-template-columns:repeat(4,1fr); max-width:660px; margin:0 auto}
+  .mtile{aspect-ratio:1/1.15; border-radius:12px; background:var(--blue); color:#fff; display:flex;
+    align-items:center; justify-content:center; text-align:center; padding:6px; font-weight:700; cursor:pointer;
+    font-size:12px; transition:.15s; border:2px solid transparent}
+  .mtile.def{background:#eef2f9; color:var(--blue-d); font-weight:600}
+  .mtile.down{background:#fff; color:#0f172a; border-color:#cbd5e1; cursor:default}
+  .mtile.matched{background:#dcfce7; color:#065f46; border-color:#86efac; cursor:default}
+  .mtile .face-back{font-size:1.6rem}
+  /* Quiz / MC / TF */
+  .opt{display:block; width:100%; text-align:left; background:#f8fafc; border:1.5px solid var(--line);
+    border-radius:11px; padding:12px 14px; margin:8px 0; cursor:pointer; font-family:inherit; font-size:14px;
+    font-weight:600; color:var(--ink); transition:.12s}
+  .opt:hover{border-color:#93c5fd}
+  .opt.correct{background:#dcfce7; border-color:#4ade80; color:#065f46}
+  .opt.wrong{background:#fee2e2; border-color:#f87171; color:#991b1b}
+  .opt:disabled{cursor:default}
+  .prog{height:8px; background:#e2e8f0; border-radius:6px; overflow:hidden; margin:4px 0 14px}
+  .prog span{display:block; height:100%; background:var(--blue); transition:width .3s}
+  .timerbar{height:10px; background:#e2e8f0; border-radius:6px; overflow:hidden; margin:8px 0 16px}
+  .timerbar span{display:block; height:100%; background:#f59e0b; transition:width .1s linear}
+  .qnum{font-size:12px; font-weight:700; color:#94a3b8; letter-spacing:.5px}
+  .qtext{font-size:17px; font-weight:700; margin:4px 0 10px}
+  .explain{background:#eff6ff; border-left:4px solid var(--blue); border-radius:8px; padding:10px 12px;
+    font-size:13px; color:#1e3a5f; margin-top:6px}
+  /* True / False */
+  .tf-item{border:1px solid var(--line); border-radius:12px; padding:14px 16px; margin-bottom:12px; background:#fff}
+  .tf-stmt{font-weight:600; margin-bottom:10px}
+  .tf-btns{display:flex; gap:10px}
+  .tf-btn{flex:1; padding:9px; border:1.5px solid var(--line); border-radius:9px; background:#f8fafc;
+    font-family:inherit; font-weight:700; cursor:pointer; color:var(--blue-d)}
+  .tf-btn:hover{border-color:#93c5fd}
+  .tf-btn.pick-correct{background:#dcfce7; border-color:#4ade80; color:#065f46}
+  .tf-btn.pick-wrong{background:#fee2e2; border-color:#f87171; color:#991b1b}
+  .tf-btn:disabled{cursor:default}
+  .tf-corr{margin-top:9px; font-size:13px}
+  /* Hangman */
+  .hm-wrap{display:flex; gap:26px; flex-wrap:wrap; align-items:flex-start; justify-content:center}
+  .hm-word{font-size:1.8rem; letter-spacing:8px; font-weight:800; color:var(--blue-d); margin:10px 0; min-height:2.1rem}
+  .keyb{display:grid; grid-template-columns:repeat(9,1fr); gap:6px; max-width:430px; margin:14px auto 0}
+  .key{padding:9px 0; border:none; border-radius:8px; background:#eef2f9; color:var(--blue-d); font-weight:700;
+    font-family:inherit; cursor:pointer; font-size:14px}
+  .key:hover{background:#dbe4f3}
+  .key.good{background:#bbf7d0; color:#065f46} .key.bad{background:#fecaca; color:#991b1b}
+  .key:disabled{opacity:.55; cursor:default}
+  /* Scramble */
+  .scram{font-size:1.6rem; letter-spacing:6px; font-weight:800; color:var(--blue); text-align:center; margin:10px 0}
+  .scram-in{font-size:1.15rem; text-align:center; text-transform:uppercase; letter-spacing:4px; font-weight:700;
+    padding:10px; border:2px solid var(--line); border-radius:10px; width:100%; max-width:320px; font-family:inherit;
+    color:var(--blue-d)}
+  /* Writing */
+  .wr-cols{display:grid; grid-template-columns:1.4fr 1fr; gap:18px; margin-top:12px}
+  .wr-cols aside{background:#f8fafc; border:1px solid var(--line); border-radius:12px; padding:14px}
+  .wr-cols aside h4{font-size:13px; color:var(--blue-d); margin:0 0 6px}
+  .wr-cols aside ul{margin:0 0 12px; padding-left:18px; font-size:12.5px; color:#334155}
+  .wr-cols aside li{margin-bottom:4px}
+  textarea.wr{width:100%; min-height:220px; border:1.5px solid var(--line); border-radius:12px; padding:12px;
+    font-family:inherit; font-size:14px; line-height:1.6; resize:vertical; color:var(--ink)}
+  textarea.wr:focus{outline:2px solid #93c5fd; border-color:#93c5fd}
+  .wr-count{margin-top:8px; font-size:13px; color:var(--muted)}
+  .wr-count b{color:var(--blue-d)} .wr-count .in{color:#059669} .wr-count .out{color:#d97706}
+  .checklist{margin-top:12px; font-size:13px}
+  .checklist label{display:flex; gap:8px; align-items:flex-start; margin-bottom:6px; cursor:pointer}
+  @media(max-width:640px){ .wr-cols{grid-template-columns:1fr} }
+  .reading{max-width:680px; margin:0 auto}
+  .reading p{font-size:16px; line-height:1.85; margin:0 0 14px; color:#1e293b; text-align:justify}
+  .reading p:first-of-type::first-letter{font-size:2.6em; font-weight:800; color:var(--blue); float:left; line-height:.9; padding:2px 8px 0 0}
+  .score{font-size:2.5rem; font-weight:800; color:var(--blue)}
+  .toast{margin-top:8px; font-weight:700}
+  .toast.ok{color:#059669} .toast.no{color:#dc2626}
+  input,textarea,select,button{-webkit-user-select:auto; user-select:auto}
+  /* Read-along audio */
+  .rp-bar{display:flex; gap:10px; align-items:center; flex-wrap:wrap; background:#f1f5f9; border:1px solid var(--line);
+    border-radius:12px; padding:10px 12px; margin:0 0 16px}
+  .rp-bar .btn.sm{display:inline-flex; align-items:center; gap:6px}
+  .rp-bar select{font-family:inherit; font-weight:700; font-size:13px; color:var(--blue-d); border:1.5px solid var(--line);
+    border-radius:8px; padding:6px 8px; background:#fff}
+  .rp-dl{font-size:12.5px; font-weight:700; color:var(--blue-d); text-decoration:none; margin-left:auto}
+  .rp-dl:hover{text-decoration:underline}
+  .reading p.rp{position:relative; padding-left:34px; border-radius:10px; transition:background .25s}
+  .reading p.rp .pbtn{position:absolute; left:2px; top:2px; width:26px; height:26px; border:none; border-radius:50%;
+    background:#e2e8f0; color:var(--blue-d); font-size:12px; cursor:pointer; line-height:1}
+  .reading p.rp .pbtn:hover{background:#bfdbfe}
+  .reading p.rp.playing{background:#fefce8}
+  .reading p.rp.playing .pbtn{background:var(--blue); color:#fff}
+  /* Palabra a palabra */
+  .reading .w{border-radius:4px; padding:0 1px}
+  .reading .w.hot{background:#fde047; box-shadow:0 0 0 2px #fde047}
+  .reading.rp-paused .w{cursor:pointer}
+  .reading.rp-paused .w:hover{background:#dbeafe}
+  /* Reproductor */
+  .rp-player{position:sticky; top:64px; z-index:5; background:#fff; border:1.5px solid var(--line); border-radius:14px;
+    padding:10px 14px; margin:0 0 16px; box-shadow:0 8px 22px rgba(15,23,42,.12)}
+  .rp-ctl{display:flex; gap:8px; align-items:center; flex-wrap:wrap}
+  .rp-ctl .cbtn{width:38px; height:38px; border:none; border-radius:50%; background:var(--blue); color:#fff; font-size:15px;
+    cursor:pointer; display:flex; align-items:center; justify-content:center; transition:.12s}
+  .rp-ctl .cbtn:hover{background:var(--blue-d)}
+  .rp-ctl .cbtn.ghost{background:#eef2f9; color:var(--blue-d)}
+  .rp-ctl .time{font-variant-numeric:tabular-nums; font-weight:700; font-size:12.5px; color:var(--blue-d); min-width:86px}
+  .rp-seek{flex:1; min-width:160px; -webkit-appearance:none; appearance:none; height:6px; border-radius:4px;
+    background:linear-gradient(to right, var(--blue) 0%, var(--blue) var(--pct,0%), #e2e8f0 var(--pct,0%), #e2e8f0 100%); cursor:pointer}
+  .rp-seek::-webkit-slider-thumb{-webkit-appearance:none; appearance:none; width:18px; height:18px; border-radius:50%;
+    background:var(--blue); border:3px solid #fff; box-shadow:0 1px 5px rgba(15,23,42,.4)}
+  .rp-seek::-moz-range-thumb{width:16px; height:16px; border-radius:50%; background:var(--blue); border:3px solid #fff;
+    box-shadow:0 1px 5px rgba(15,23,42,.4)}
+  .rp-hint{font-size:11.5px; color:var(--muted); margin-top:6px}
+  /* Diccionario */
+  .dict-veil{position:fixed; inset:0; background:rgba(15,23,42,.45); z-index:60; display:flex; align-items:flex-end; justify-content:center}
+  .dict-pop{background:#fff; border-radius:18px 18px 0 0; width:100%; max-width:560px; max-height:70vh; overflow:auto;
+    padding:18px 20px 24px; box-shadow:0 -12px 40px rgba(15,23,42,.35)}
+  .dict-pop h3{color:var(--blue-d); font-size:20px; margin:0}
+  .dict-pop .phon{color:#64748b; font-size:13px; font-weight:600}
+  .dict-pop .pos{display:inline-block; background:#eef2f9; color:var(--blue-d); font-weight:800; font-size:10.5px;
+    letter-spacing:.6px; text-transform:uppercase; border-radius:8px; padding:2px 8px; margin:10px 0 4px}
+  .dict-pop .def{font-size:14px; color:#1e293b; margin:2px 0}
+  .dict-pop .ex{font-size:13px; color:#475569; font-style:italic; margin:3px 0 0; padding-left:12px; border-left:3px solid #e2e8f0}
+  .dict-pop .story{background:#fefce8; border-left:3px solid #fde047; border-radius:8px; padding:8px 11px; font-size:13px;
+    color:#44403c; margin-top:12px}
+  @media(min-width:640px){ .dict-veil{align-items:center} .dict-pop{border-radius:18px} }
+  /* Soldier tracker */
+  .plate{background:linear-gradient(180deg,#0f2439,#1e3f66); border-radius:18px; padding:18px 16px 14px; color:#dbeafe;
+    text-align:center; margin:0 0 18px; box-shadow:0 10px 30px rgba(15,23,42,.25)}
+  .plate .rhyme{font-size:13px; font-style:italic; color:#93c5fd; margin-bottom:10px}
+  .plate .row-s{display:flex; justify-content:center; gap:6px; flex-wrap:wrap}
+  .soldier{width:34px; transition:.4s; position:relative}
+  .soldier svg{width:100%; height:auto; display:block}
+  .soldier .lbl{font-size:9px; font-weight:700; color:#93c5fd; text-align:center; margin-top:2px}
+  .soldier.gone{opacity:.22; filter:grayscale(1)}
+  .soldier.gone::after{content:"✖"; position:absolute; top:8px; left:0; right:0; color:#fca5a5; font-size:15px}
+  .plate .left-line{margin-top:8px; font-size:13px; font-weight:700; color:#fde68a}
+  /* Order the events */
+  .ord-item{display:flex; gap:10px; align-items:flex-start; border:1.5px solid var(--line); background:#f8fafc;
+    border-radius:11px; padding:11px 13px; margin:8px 0; cursor:pointer; font-size:14px; font-weight:600}
+  .ord-item:hover{border-color:#93c5fd}
+  .ord-item .n{min-width:26px; height:26px; border-radius:50%; background:#e2e8f0; color:var(--blue-d); font-weight:800;
+    display:flex; align-items:center; justify-content:center; font-size:13px}
+  .ord-item.picked{background:#eff6ff; border-color:#93c5fd}
+  .ord-item.picked .n{background:var(--blue); color:#fff}
+  .ord-item.good{background:#dcfce7; border-color:#4ade80}
+  .ord-item.bad{background:#fee2e2; border-color:#f87171}
+  /* Character medallions */
+  .char-grid{display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .char-card{background:#fff; border:1px solid var(--line); border-radius:16px; padding:16px; text-align:left;
+    box-shadow:0 8px 24px rgba(15,23,42,.08); border-top:4px solid #b8934a}
+  .char-card .med{width:56px; height:56px; border-radius:50%; background:radial-gradient(circle at 35% 30%,#2d5a8d,#12263f);
+    border:3px solid #b8934a; display:flex; align-items:center; justify-content:center; font-size:26px; float:left; margin:0 12px 4px 0;
+    overflow:hidden; flex:none}
+  .med img{width:100%; height:100%; object-fit:cover; filter:sepia(.3) contrast(1.08)}
+  .char-card:hover .med img{filter:none}
+  .cast-strip{width:100%; border-radius:12px; border:2px solid #b8934a; display:block; margin:12px 0 4px;
+    filter:sepia(.25); box-shadow:0 8px 24px rgba(0,0,0,.35)}
+  .img-credit{font-size:10.5px; color:#94a3b8; margin-top:8px}
+  .char-card h3{font-size:15px; color:var(--blue-d); margin:4px 0 1px}
+  .char-card .role{font-size:11px; font-weight:800; letter-spacing:.6px; color:#b8934a; text-transform:uppercase}
+  .char-card p{font-size:13px; color:#334155; margin:8px 0 0; clear:both}
+  .char-card .secret{margin-top:8px; font-size:12.5px; background:#fef2f2; border-left:3px solid #f87171; border-radius:6px;
+    padding:7px 9px; color:#7f1d1d; display:none}
+  .char-card.open .secret{display:block}
+  .char-card .reveal{margin-top:8px; background:#eef2f9; color:var(--blue-d); border:none; border-radius:8px; padding:6px 11px;
+    font-family:inherit; font-weight:700; font-size:12px; cursor:pointer}
+  /* Gap-fill */
+  .gap-item{border:1px solid var(--line); border-radius:12px; padding:13px 15px; margin-bottom:10px; background:#fff; font-size:14.5px}
+  .gap-item input{border:none; border-bottom:2px solid var(--blue); font-family:inherit; font-size:14.5px; font-weight:700;
+    color:var(--blue-d); width:130px; text-align:center; padding:2px 4px; background:#f8fafc}
+  .gap-item input:focus{outline:none; background:#eff6ff}
+  .gap-item input.ok{border-color:#4ade80; color:#065f46; background:#dcfce7}
+  .gap-item input.no{border-color:#f87171; color:#991b1b; background:#fee2e2}
+  .kw{display:inline-block; background:#eef2f9; color:var(--blue-d); font-weight:700; font-size:12px; border-radius:10px;
+    padding:3px 10px; margin:3px 4px 0 0; border:1px solid var(--line)}
+  .kw.hit{background:#dcfce7; color:#065f46; border-color:#86efac}
+  /* Detective's notebook */
+  .nb-head{background:linear-gradient(135deg,#3b2f23,#1c1712); border-radius:18px; padding:20px 18px; color:#f5e9d0;
+    margin-bottom:16px; border:1px solid #6b5a41; box-shadow:0 10px 30px rgba(15,23,42,.3); position:relative; overflow:hidden}
+  .nb-head::after{content:"TOP SECRET"; position:absolute; top:14px; right:-34px; transform:rotate(35deg);
+    background:#b91c1c; color:#fff; font-weight:800; font-size:11px; letter-spacing:2px; padding:4px 40px; opacity:.9}
+  .nb-head h2{color:#f3d9a4; margin:0 0 4px; font-size:20px}
+  .nb-head p{font-size:13px; color:#d9c9a8; margin:0}
+  .sus-grid{display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+  .sus-card{background:#fffdf5; border:1px solid #e0d6bd; border-radius:14px; padding:13px 14px;
+    box-shadow:0 6px 18px rgba(15,23,42,.07)}
+  .sus-card.dead{background:#f4f4f5; filter:grayscale(.55)}
+  .sus-card .top{display:flex; gap:10px; align-items:center}
+  .sus-card .med{width:42px; height:42px; border-radius:50%; background:radial-gradient(circle at 35% 30%,#2d5a8d,#12263f);
+    border:2px solid #b8934a; display:flex; align-items:center; justify-content:center; font-size:20px; flex:none}
+  .sus-card h3{font-size:14px; color:var(--blue-d); margin:0}
+  .sus-card .role{font-size:10.5px; font-weight:800; letter-spacing:.5px; color:#b8934a; text-transform:uppercase}
+  .sus-card select{font-family:inherit; font-size:12px; font-weight:700; color:var(--blue-d); border:1.5px solid var(--line);
+    border-radius:8px; padding:5px 7px; background:#fff; margin-top:8px; width:100%}
+  .sus-card select.okd{border-color:#4ade80; background:#f0fdf4}
+  .sus-card select.bad{border-color:#f87171; background:#fef2f2}
+  .lens{display:flex; gap:2px; margin-top:8px}
+  .lens button{border:none; background:none; font-size:16px; cursor:pointer; opacity:.25; padding:1px 2px; filter:grayscale(1)}
+  .lens button.on{opacity:1; filter:none}
+  .sus-card textarea{width:100%; min-height:44px; border:1px dashed #d0c5a8; border-radius:8px; background:#fffef8;
+    font-family:inherit; font-size:12.5px; padding:7px 8px; margin-top:8px; resize:vertical; color:#44403c}
+  .sus-card textarea:focus{outline:2px solid #93c5fd}
+  .nb-verdict{background:#fff; border:2px solid #b8934a; border-radius:16px; padding:18px; margin-top:16px}
+  .nb-verdict h3{color:var(--blue-d); margin:0 0 8px; font-size:16px}
+  .nb-verdict select{font-family:inherit; font-weight:700; font-size:14px; color:var(--blue-d); border:1.5px solid var(--line);
+    border-radius:9px; padding:8px 10px; background:#fff}
+  .nb-reveal{border-radius:12px; padding:14px 16px; margin-top:12px; font-size:14px}
+  .nb-reveal.win{background:#0f2439; color:#fde68a; border:1px solid #b8934a}
+  .nb-reveal.lose{background:#fef2f2; color:#7f1d1d; border-left:4px solid #f87171}
+  /* C2 · Read the original */
+  .c2-stage{border:1px solid var(--line); border-radius:14px; background:#fff; padding:14px 16px; margin-bottom:12px}
+  .c2-stage .hd{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+  .c2-stage .hd b{color:var(--blue-d)}
+  .c2-stage .map{font-size:11.5px; font-weight:700; color:#b8934a; letter-spacing:.4px; text-transform:uppercase}
+  .c2-stage ul{margin:8px 0 0; padding-left:20px; font-size:13.5px; color:#334155}
+  .c2-stage ul li{margin-bottom:5px}
+  .c2-stage label.done{margin-left:auto; display:flex; gap:6px; align-items:center; font-size:12.5px; font-weight:700;
+    color:var(--blue-d); cursor:pointer}
+  .c2-stage.readed{border-color:#86efac; background:#f0fdf4}
+  .c2-prog{height:10px; background:#e2e8f0; border-radius:6px; overflow:hidden; margin:6px 0 16px}
+  .c2-prog span{display:block; height:100%; background:#b8934a; transition:width .3s}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+<script src="config.js"></script>
+<script>
+/* Motor GENÉRICO de readers: reader.html?book=<id>&level=a2|b1|b2|c1|c2.
+   Textos y ejercicios en <book>-data-<lvl>.js; secciones propias del libro
+   (bio, personajes, C2, tema del tracker…) en <book>-extras.js.
+   Sin nivel: selector. c2 = Read the original (con los datos C1 detrás). */
+var _q=new URLSearchParams(location.search);
+var RDR_BOOKS={
+  earnest:{title:'The Importance of Being Earnest', by:'Oscar Wilde'},
+  tomsawyer:{title:'The Adventures of Tom Sawyer', by:'Mark Twain'}
+};
+var RDR_ID=(_q.get('book')||'earnest').toLowerCase();
+if(!RDR_BOOKS[RDR_ID]) RDR_ID='earnest';
+var _attwnRaw=(_q.get('level')||'').toLowerCase();
+window.ATTWN_CHOOSER = !_attwnRaw;
+window.ATTWN_C2 = (_attwnRaw==='c2');
+var ATTWN_LVL = window.ATTWN_C2 ? 'c1' : _attwnRaw;
+if(['a2','b1','b2','c1'].indexOf(ATTWN_LVL)<0) ATTWN_LVL='b1';
+document.write('<script src="'+RDR_ID+'-data-'+ATTWN_LVL+'.js?v=1"><\/script>');
+document.write('<script src="'+RDR_ID+'-extras.js?v=1"><\/script>');
+</script>
+<script src="nis-nav.js?v=1"></script>
+</head>
+<body>
+<header>
+  <img src="assets/logo-h.svg" alt="Nordic International School" onerror="this.style.display='none'">
+  <div class="sub" id="hdrSub">9TH GRADE &middot; READER</div>
+  <button class="backbtn" onclick="goPortal()">&#127979; Portal</button>
+</header>
+<main>
+  <div class="bar">
+    <button id="backBtn" class="backbtn ghost" style="display:none" onclick="back()">&larr; Back</button>
+    <div class="crumb" id="crumb"></div>
+  </div>
+  <div id="stage"></div>
+</main>
+
+<script>
+/* ============================================================
+   AND THEN THERE WERE NONE — Agatha Christie
+   Black Cat · Reading & Training · Step Three · B1.2
+   Chapter-by-chapter interactive activities (10 per chapter).
+   One dataset per chapter feeds every activity.
+   ============================================================ */
+
+const CHAPTERS = ATTWN_DATA.CHAPTERS;
+
+/* ---------- helpers ---------- */
+const $=(s,r=document)=>r.querySelector(s);
+const stage=$("#stage"), crumbEl=$("#crumb"), backEl=$("#backBtn");
+const LVL=(window.ATTWN_DATA&&ATTWN_DATA.level)||'B1';
+const LVLL=LVL.toLowerCase();
+const BOOK=RDR_BOOKS[RDR_ID];
+const EXTRAS=window.READER_EXTRAS||{};
+const THEME=EXTRAS.THEME||{emoji:'📖',rhyme:'',doneLine:'You finished the book! 🏆',leftWordSingular:'chapter',leftWordPlural:'chapters'};
+const SHOW_LVL=window.ATTWN_CHOOSER?'':(window.ATTWN_C2?'C2':LVL);
+document.getElementById('hdrSub').textContent='READER'+(SHOW_LVL?' · '+SHOW_LVL:'S');
+document.title=BOOK.title+(SHOW_LVL?' ('+SHOW_LVL+')':'')+' — Portal NIS';
+function _lvlLink(l){ const q=new URLSearchParams(location.search); q.set('level',l); return '?'+q.toString(); }
+function _chooserLink(){ const q=new URLSearchParams(location.search); q.delete('level'); const s=q.toString(); return location.pathname+(s?'?'+s:''); }
+function goPortal(){ location.href="./"; }
+let view={screen:"chapters", chap:null, act:null};
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+
+/* ---------- puente con el Portal (mismo patrón que grammar-lab) ---------- */
+window.NISACT = (function () {
+  let _sb = null;
+  function client(){ if(_sb) return _sb; if(!window.supabase||!window.NIS_CONFIG) return null;
+    _sb = window.supabase.createClient(NIS_CONFIG.SUPABASE_URL, NIS_CONFIG.SUPABASE_KEY); return _sb; }
+  async function student(){ const c=client(); if(!c) return null;
+    try{ const u=await c.auth.getUser(); if(!u||!u.data||!u.data.user) return null;
+      const p=await c.from('profiles').select('full_name,first_name,email,role').eq('id',u.data.user.id).maybeSingle();
+      const d=(p&&p.data)||{};
+      return {uid:u.data.user.id,email:u.data.user.email||d.email,full_name:d.full_name,first_name:d.first_name,role:d.role};
+    }catch(e){ return null; } }
+  async function submit(r){
+    const s=await student(); if(!s) return {skipped:true};
+    try{ await client().from('activity_attempts').insert({student_id:s.uid,activity:r.activity,title:r.title,
+      level:r.level,score:r.score,total:r.total,hints_used:r.hints||0,lives_left:r.lives||3,duration_sec:r.duration}); }catch(e){}
+    try{ const m=Math.floor(r.duration/60), sec=r.duration%60;
+      await fetch(NIS_CONFIG.WRITING_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body:JSON.stringify({skill:'Reader',name:s.full_name||s.first_name||'',email:s.email||'',level:r.level,
+          examTitle:r.title+' - Time '+m+'m '+String(sec).padStart(2,'0')+'s',
+          examType:r.activity,score:r.score,total:r.total,duration_min:Math.max(1,Math.round(r.duration/60))})});
+    }catch(e){}
+    return {sent:true};
+  }
+  return {submit, student};
+})();
+
+/* ---------- progreso local + envío de resultados ---------- */
+let _actT0=Date.now();
+function saveResult(actId,score,total,label){
+  const c = view.chap!=null ? CHAPTERS[view.chap] : null;
+  const pct = total? Math.round(score/total*100) : 0;
+  const key = 'rdr:'+RDR_ID+':'+LVL+':best:'+(c?c.n:'x')+':'+actId;
+  try{ const b=JSON.parse(localStorage.getItem(key)||'null'); if(!b||pct>b.pct) localStorage.setItem(key,JSON.stringify({pct})); }catch(e){}
+  if(window.NISACT) NISACT.submit({
+    activity:RDR_ID+'-'+LVLL+'-'+(c?('ch'+c.n):'extra')+'-'+actId,
+    title:RDR_ID.toUpperCase()+' '+LVL+' '+(c?('Ch.'+c.n+' '+c.title):'')+' — '+(label||actId),
+    level:LVL, score, total, duration:Math.max(1,Math.round((Date.now()-_actT0)/1000))});
+  _actT0=Date.now();
+  return pct;
+}
+function bestPct(n,actId){ try{ const b=JSON.parse(localStorage.getItem('rdr:'+RDR_ID+':'+LVL+':best:'+n+':'+actId)||'null'); return b?b.pct:null; }catch(e){ return null; } }
+/* Un capítulo se considera "resuelto" (su soldadito desaparece) con 3+
+   actividades al 70% o más — el mismo umbral en el hub y en las tarjetas. */
+const CORE_ACTS=['comprehension','truefalse','listen','summary','multiplechoice','speed'];
+function chapterDone(n){ return CORE_ACTS.filter(a=>{ const p=bestPct(n,a); return p!=null && p>=70; }).length>=3; }
+
+const ACTS=[
+  {id:"read",          ico:"📖", name:"Read along",       desc:"Read the chapter with audio: press play and follow the highlighted text."},
+  {id:"listen",        ico:"🎧", name:"Listening",        desc:"Listen first without reading, then complete the missing words."},
+  {id:"summary",       ico:"📋", name:"Summarize",        desc:"Put the events in order, then write your own summary."},
+  {id:"comprehension", ico:"❓", name:"Comprehension",   desc:"8 questions about the chapter, with explanations."},
+  {id:"truefalse",     ico:"✅", name:"True / False",     desc:"Decide if each statement is true or false."},
+  {id:"multiplechoice",ico:"🔤", name:"Multiple Choice",  desc:"Choose the correct meaning of each word."},
+  {id:"speed",         ico:"⚡", name:"Speed Quiz",       desc:"Answer against the clock — think fast!"},
+  {id:"writing",       ico:"✍️", name:"Writing",          desc:"Guided writing tasks with tips and useful language."},
+  {id:"wordsearch",    ico:"🔎", name:"Word Search",      desc:"Find the chapter words hidden in the grid."},
+  {id:"crossword",     ico:"🧩", name:"Crossword",        desc:"Use the definitions to complete the crossword."},
+  {id:"hangman",       ico:"🎯", name:"Hangman",          desc:"Guess the word letter by letter."},
+  {id:"memory",        ico:"🃏", name:"Memory Match",     desc:"Match each word with its definition."},
+  {id:"scramble",      ico:"🔠", name:"Word Scramble",    desc:"Put the mixed letters in the right order."}
+];
+
+/* ---------- navigation ---------- */
+function render(){
+  _stopAudio();
+  _syncHash();
+  backEl.style.display = view.screen==="chapters" ? "none" : "inline-block";
+  if(view.screen==="chapters"){ crumbEl.innerHTML=""; return renderChapters(); }
+  if(view.screen==="teacher"){ return teacherView(); }
+  if(view.screen==="info"){ crumbEl.innerHTML = view.info==='bio' ? BOOK.by : 'The characters'; return renderInfo(); }
+  const c=CHAPTERS[view.chap];
+  if(view.screen==="acts"){ crumbEl.innerHTML=`<b>Chapter ${c.n}</b> · ${c.title}`; return renderActs(); }
+  crumbEl.innerHTML=`<b>Chapter ${c.n}</b> · ${c.title} &nbsp;›&nbsp; ${ACTS.find(a=>a.id===view.act).name}`;
+  ACT_RENDER[view.act](c);
+}
+function back(){
+  if(view.screen==="teacher"){ view.screen="chapters"; view.chap=null; return render(); }
+  if(view.screen==="act"){ view.screen="acts"; view.act=null; }
+  else if(view.screen==="acts" || view.screen==="info"){ view.screen="chapters"; view.chap=null; view.info=null; }
+  render();
+}
+function openChapter(i){ view.chap=i; view.screen="acts"; render(); }
+function openAct(id){ view.act=id; view.screen="act"; render(); }
+function openInfo(kind){ view.info=kind; view.screen="info"; render(); }
+
+function soldierSVG(){
+  return `<div style="width:34px;height:44px;border-radius:10px;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:22px">${THEME.emoji}</div>`;
+}
+function renderChapters(){
+  const doneList=CHAPTERS.map(c=>chapterDone(c.n));
+  const left=10-doneList.filter(Boolean).length;
+  const pills=['A2','B1','B2','C1','C2'].map(l=> (l===LVL && !window.ATTWN_C2)
+    ? `<span class="kw hit" style="font-size:13px;padding:5px 14px">${l}</span>`
+    : `<a class="kw" style="font-size:13px;padding:5px 14px;text-decoration:none" href="${_lvlLink(l.toLowerCase())}">${l}</a>`).join('');
+  stage.innerHTML=`
+    <h1><span class="em">${THEME.emoji}</span> ${BOOK.title} <span class="chip" style="font-size:14px;vertical-align:6px">${LVL}</span></h1>
+    <p class="lead">${ATTWN_DATA.lead} — choose a chapter, then choose an activity: 13 per chapter.</p>
+    <div style="margin:0 0 14px;display:flex;gap:6px;align-items:center"><span class="muted" style="font-size:12.5px;font-weight:700">My level:</span>${pills}</div>
+    <div class="plate">
+      <div class="rhyme">${THEME.rhyme}</div>
+      <div class="row-s">${CHAPTERS.map((c,i)=>`
+        <div class="soldier ${doneList[i]?'gone':''}" title="Chapter ${c.n} · ${c.title}${doneList[i]?' ✓ done':''}">${soldierSVG()}<div class="lbl">${c.n}</div></div>`).join('')}</div>
+      <div class="left-line">${left===0?THEME.doneLine:left+' '+(left===1?THEME.leftWordSingular:THEME.leftWordPlural)+' to go…'}</div>
+    </div>
+    <div class="grid cols-2" style="margin-bottom:14px">
+      <div class="card" style="flex-direction:row;text-align:left;gap:14px;align-items:center" onclick="extraBeforeYouRead()">
+        <div class="ico" style="font-size:2.2rem">🎬</div>
+        <div><h2 style="margin:0">Before you read</h2><div class="desc">Predictions + the 12 key words of the novel, with audio.</div></div>
+      </div>
+      <div class="card" style="flex-direction:row;text-align:left;gap:14px;align-items:center" onclick="openInfo('bio')">
+        <div class="ico" style="font-size:2.2rem">✍️</div>
+        <div><h2 style="margin:0">${BOOK.by}</h2><div class="desc">A short biography — then play “The author in numbers”.</div></div>
+      </div>
+      <div class="card" style="flex-direction:row;text-align:left;gap:14px;align-items:center" onclick="openInfo('characters')">
+        <div class="ico" style="font-size:2.2rem">🕵️</div>
+        <div><h2 style="margin:0">The characters</h2><div class="desc">Character files with their secrets, a Who-is-who quiz and writing tasks.</div></div>
+      </div>
+      <div class="card" style="flex-direction:row;text-align:left;gap:14px;align-items:center" onclick="extraGrammar()">
+        <div class="ico" style="font-size:2.2rem">🧭</div>
+        <div><h2 style="margin:0">Grammar</h2><div class="desc">Past perfect simple — explained with the story.</div></div>
+      </div>
+      <div class="card" style="flex-direction:row;text-align:left;gap:14px;align-items:center;border-top:4px solid #1e3a5f" onclick="extraC2()">
+        <div class="ico" style="font-size:2.2rem">🏆</div>
+        <div><h2 style="margin:0">C2 · Read the original</h2><div class="desc">The final challenge: the unabridged original — reading plan, analysis questions and advanced writing.</div></div>
+      </div>
+    </div>
+    <h2 style="font-size:16px;color:var(--blue-d);margin:4px 0 10px">📚 Chapters</h2>
+    <div class="grid cols-2">
+      ${CHAPTERS.map((c,i)=>`
+        <div class="card chap-card" onclick="openChapter(${i})">
+          <span class="num">CHAPTER ${c.n} ${doneList[i]?'<span style="color:#059669">✓ DONE</span>':''}</span>
+          <h2>${c.title}</h2>
+          <div class="desc">${c.sum}</div>
+          <span class="chip">🎧 audio · ${c.vocab.length} words · ${c.comp.length} questions</span>
+          <span class="act-tag">Read along · Listening · Summarize · Comprehension · +9 more</span>
+        </div>`).join("")}
+    </div>`;
+}
+const CHARACTERS=EXTRAS.CHARACTERS||[];
+const BIO=EXTRAS.BIO||[];
+function renderInfo(){
+  if(view.info==='bio'){
+    stage.innerHTML=`<div class="panel reading">
+      <div class="qnum">THE AUTHOR</div>
+      <h2 style="color:var(--blue-d);margin:2px 0 12px">✍️ ${BOOK.by}</h2>
+      ${BIO.map(p=>`<p>${p}</p>`).join("")}
+      <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn sm" onclick="extraNumbers()">🔢 Play “The author in numbers”</button>
+        <button class="btn ghost sm" onclick="openInfo('characters')">🕵️ Meet the characters →</button></div>
+    </div>`;
+  } else {
+    stage.innerHTML=`
+      <div class="panel" style="margin-bottom:14px">
+        <div class="qnum">THE NOVEL</div>
+        <h2 style="color:var(--blue-d);margin:2px 0 6px">🕵️ Character files</h2>
+        <p class="muted" style="margin:0 0 4px">Every character in <i>${BOOK.title}</i> has something to hide. Open each file — then test yourself.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
+          <button class="btn sm" onclick="extraWhosWho()">❓ Who is who? (quiz)</button>
+          <button class="btn ghost sm" onclick="extraCharWriting()">✍️ Write about the characters</button>
+        </div>
+      </div>
+      <div class="char-grid">
+      ${CHARACTERS.map((c,i)=>`
+        <div class="char-card" id="cc${i}">
+          ${medHTML(CHAR_IMGS[i],CHAR_ICONS[i])}
+          <h3>${c[0]}</h3><div class="role">${CHAR_ROLES[i]}</div>
+          <p>${c[1]}</p>
+          <button class="reveal" onclick="document.getElementById('cc${i}').classList.toggle('open');this.textContent=this.textContent.startsWith('🔍')?'🙈 Hide the accusation':'🔍 Reveal the accusation'">🔍 Reveal the accusation</button>
+          <div class="secret">⚠️ ${CHAR_SECRETS[i]}</div>
+        </div>`).join("")}
+      </div>
+      <div class="img-credit">${IMG_CREDIT}</div>
+      <div style="margin-top:14px"><button class="btn sm" onclick="back()">📚 Go to the chapters →</button></div>`;
+  }
+  window.scrollTo(0,0);
+}
+function renderActs(){
+  const c=CHAPTERS[view.chap];
+  stage.innerHTML=`
+    <h1>Chapter ${c.n} · ${c.title}</h1>
+    <p class="lead">${c.sum}</p>
+    <div class="grid cols-3">
+      ${ACTS.map(a=>`
+        <div class="card" onclick="openAct('${a.id}')">
+          <div class="ico">${a.ico}</div>
+          <h2>${a.name}</h2>
+          <div class="desc">${a.desc}</div>
+        </div>`).join("")}
+    </div>`;
+}
+
+/* ============================================================
+   QUIZ ENGINE (Comprehension · Speed Quiz · Multiple Choice)
+   ============================================================ */
+function runQuiz(questions, opts){
+  const speed=opts.speed, label=opts.label, replay=opts.replay;
+  const qs=shuffle(questions);
+  let i=0, score=0, timer=null; const PER=12;
+  _actT0=Date.now();
+  function show(){
+    if(i>=qs.length) return finish();
+    const q=qs[i];
+    stage.innerHTML=`<div class="panel">
+      <div class="qnum">QUESTION ${i+1} / ${qs.length}${speed?" · ⚡ Speed":""}</div>
+      <div class="prog"><span style="width:${(i/qs.length)*100}%"></span></div>
+      ${speed?`<div class="timerbar"><span id="tb" style="width:100%"></span></div>`:""}
+      <div class="qtext">${q.q}</div>
+      <div id="opts">${q.opts.map((o,k)=>`<button class="opt" data-k="${k}" onclick="qzPick(${k})">${o.t}</button>`).join("")}</div>
+      <div id="fb"></div></div>`;
+    if(speed){ const t=PER*1000, bar=$("#tb"), t0=Date.now();
+      timer=setInterval(()=>{ const left=t-(Date.now()-t0); bar.style.width=Math.max(0,left/t*100)+"%";
+        if(left<=0){ clearInterval(timer); qzPick(-1); } },80); }
+  }
+  window.qzPick=(k)=>{
+    if(timer){ clearInterval(timer); timer=null; }
+    const q=qs[i], btns=[...stage.querySelectorAll(".opt")];
+    btns.forEach((b,idx)=>{ b.disabled=true; if(q.opts[idx].correct)b.classList.add("correct"); });
+    let correct=false;
+    if(k>=0){ correct=q.opts[k].correct; if(!correct)btns[k].classList.add("wrong"); }
+    if(correct) score++;
+    if(!speed){ $("#fb").innerHTML=`<div class="explain">${correct?"✅ Correct! ":"❌ "}${q.explain||""}</div>
+      <button class="btn sm" style="margin-top:12px" onclick="qzNext()">${i+1<qs.length?"Next →":"See results"}</button>`; }
+    else{ setTimeout(()=>{ i++; show(); }, 650); }
+  };
+  window.qzNext=()=>{ i++; show(); };
+  function finish(){
+    const pct=Math.round(score/qs.length*100);
+    if(opts.saveId!==null) saveResult(opts.saveId||view.act||'quiz',score,qs.length,opts.saveName||label);
+    const msg=pct>=80?"Excellent! 🌟":pct>=50?"Good job! 👍":"Keep practising! 💪";
+    stage.innerHTML=`<div class="panel center">
+      <p class="muted qnum">${label} · RESULT</p>
+      <div class="score">${score}/${qs.length}</div>
+      <p style="font-size:1.4rem;font-weight:700;color:var(--blue-d)">${pct}%</p>
+      <p class="muted" style="margin:6px 0 16px">${msg}</p>
+      <button class="btn sm" onclick="${replay}">Try again</button>
+      <button class="btn ghost sm" onclick="back()">Back to activities</button></div>`;
+  }
+  show();
+}
+function compQuestions(c){ return c.comp.map(q=>({q:q[0], opts:shuffle(q[1].map((t,i)=>({t,correct:i===q[2]}))), explain:q[3]})); }
+function actComprehension(c){ runQuiz(compQuestions(c), {speed:false, label:"COMPREHENSION", replay:"actComprehension(CHAPTERS[view.chap])"}); }
+function actSpeed(c){
+  stage.innerHTML=`<div class="panel center">
+    <div class="ico" style="font-size:3rem">⚡</div>
+    <h2 style="color:var(--blue-d);margin:6px 0">Speed Quiz</h2>
+    <p class="muted" style="max-width:420px;margin:0 auto 14px">You have <b>12 seconds</b> per question. Answer as fast as you can — the correct answer is shown after each one.</p>
+    <button class="btn" onclick="runQuiz(compQuestions(CHAPTERS[view.chap]),{speed:true,label:'SPEED QUIZ',replay:'actSpeed(CHAPTERS[view.chap])'})">Start ⚡</button>
+  </div>`;
+}
+function actMultipleChoice(c){
+  const defs=c.vocab.map(v=>v[1]);
+  const qs=shuffle(c.vocab).map(v=>{
+    const wrong=shuffle(defs.filter(d=>d!==v[1])).slice(0,3);
+    const opts=shuffle([{t:v[1],correct:true},...wrong.map(d=>({t:d,correct:false}))]);
+    return {q:`What does <b>${v[0]}</b> mean?`, opts, explain:`${v[0]} = ${v[1]}`};
+  });
+  runQuiz(qs, {speed:false, label:"MULTIPLE CHOICE", replay:"actMultipleChoice(CHAPTERS[view.chap])"});
+}
+
+/* ============================================================
+   TRUE / FALSE
+   ============================================================ */
+function actTrueFalse(c){
+  const items=shuffle(c.tf); let answered=0, score=0;
+  stage.innerHTML=`<div class="panel">
+    <p class="muted" style="margin-bottom:12px">Read each statement and choose <b>True</b> or <b>False</b>. <span id="tfScore"></span></p>
+    <div id="tfList">${items.map((it,idx)=>`
+      <div class="tf-item" data-i="${idx}">
+        <div class="tf-stmt">${idx+1}. ${it[0]}</div>
+        <div class="tf-btns">
+          <button class="tf-btn" onclick="tfPick(${idx},true)">✔ True</button>
+          <button class="tf-btn" onclick="tfPick(${idx},false)">✗ False</button>
+        </div>
+        <div class="tf-corr" style="display:none"></div>
+      </div>`).join("")}</div>
+    <div id="tfDone" class="center" style="margin-top:8px;display:none"></div>
+  </div>`;
+  window.tfPick=(idx,val)=>{
+    const it=items[idx]; const box=stage.querySelector(`.tf-item[data-i="${idx}"]`);
+    if(box.dataset.done) return; box.dataset.done="1";
+    const btns=box.querySelectorAll(".tf-btn"); btns.forEach(b=>b.disabled=true);
+    const correct = (val===it[1]);
+    if(correct) score++;
+    const picked = val ? btns[0] : btns[1];
+    picked.classList.add(correct?"pick-correct":"pick-wrong");
+    if(!correct){ (it[1]?btns[0]:btns[1]).classList.add("pick-correct"); }
+    const corr=box.querySelector(".tf-corr");
+    corr.style.display="block";
+    corr.innerHTML=`<span class="${correct?'toast ok':'toast no'}" style="margin:0">${correct?"✅ Correct.":"❌ It is "+(it[1]?"True":"False")+"."}</span> <span class="muted">${it[2]}</span>`;
+    answered++;
+    $("#tfScore").textContent=`(${answered}/${items.length})`;
+    if(answered===items.length){
+      const pct=saveResult('truefalse',score,items.length,'True / False');
+      $("#tfDone").style.display="block";
+      $("#tfDone").innerHTML=`<div class="score">${score}/${items.length}</div>
+        <p style="font-weight:700;color:var(--blue-d)">${pct}%</p>
+        <button class="btn sm" onclick="actTrueFalse(CHAPTERS[view.chap])">Try again</button>
+        <button class="btn ghost sm" onclick="back()">Back</button>`;
+    }
+  };
+}
+
+/* ============================================================
+   WRITING (guided tasks)
+   ============================================================ */
+function actWriting(c){
+  const tasks=c.writing; let idx=0;
+  const CHECK=["I answered the whole task","I wrote within the word count","I checked spelling and punctuation","I used linking words","I re-read my text"];
+  function parseTarget(t){ const m=t.match(/(\d+)\D+(\d+)/); return m?[+m[1],+m[2]]:[0,9999]; }
+  function show(){
+    const t=tasks[idx]; const [lo,hi]=parseTarget(t.target);
+    stage.innerHTML=`<div class="panel">
+      <div class="qnum">WRITING TASK ${idx+1} / ${tasks.length}</div>
+      <div class="qtext">${t.task}</div>
+      <p class="muted" style="margin-top:-4px">🎯 Target length: <b>${t.target}</b></p>
+      <div class="wr-cols">
+        <div>
+          <textarea class="wr" id="wrArea" placeholder="Write your answer here…"></textarea>
+          <div class="wr-count">Words: <b id="wc">0</b> <span id="wcHint"></span></div>
+          <div class="checklist"><b style="font-size:13px;color:var(--blue-d)">Self-check</b>
+            ${CHECK.map((x,i)=>`<label><input type="checkbox"> <span>${x}</span></label>`).join("")}
+          </div>
+        </div>
+        <aside>
+          <h4>💬 Useful language</h4>
+          <ul>${t.starters.map(s=>`<li>${s}</li>`).join("")}</ul>
+          <h4>💡 Tips</h4>
+          <ul>${t.tips.map(s=>`<li>${s}</li>`).join("")}</ul>
+        </aside>
+      </div>
+      <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+        ${idx>0?`<button class="btn ghost sm" onclick="wrGo(${idx-1})">← Previous task</button>`:""}
+        ${idx<tasks.length-1?`<button class="btn sm" onclick="wrGo(${idx+1})">Next task →</button>`:""}
+        <button class="btn ghost sm" onclick="wrCopy()">📋 Copy my text</button>
+        <span id="wrMsg" class="muted" style="font-size:13px"></span>
+      </div>
+    </div>`;
+    const area=$("#wrArea"), wc=$("#wc"), hint=$("#wcHint");
+    function count(){ const n=(area.value.trim().match(/\S+/g)||[]).length; wc.textContent=n;
+      if(n===0){ hint.textContent=""; hint.className=""; }
+      else if(n<lo){ hint.innerHTML=`<span class="out">— a bit short (${lo}–${hi})</span>`; }
+      else if(n>hi){ hint.innerHTML=`<span class="out">— a bit long (${lo}–${hi})</span>`; }
+      else{ hint.innerHTML=`<span class="in">✓ within target</span>`; } }
+    area.addEventListener("input",count); count();
+    window.wrCopy=()=>{ area.select(); try{ document.execCommand("copy"); $("#wrMsg").textContent="Copied ✓"; }catch(e){ $("#wrMsg").textContent="Select and copy manually."; } };
+  }
+  window.wrGo=(i)=>{ idx=i; show(); };
+  show();
+}
+
+/* ============================================================
+   WORD SEARCH
+   ============================================================ */
+function actWordSearch(c){
+  const words=c.vocab.map(v=>v[0]);
+  const maxLen=Math.max(...words.map(w=>w.length));
+  const N=Math.max(13, maxLen+1);
+  const grid=Array.from({length:N},()=>Array(N).fill(""));
+  const DIRS=[[0,1],[1,0],[1,1],[-1,1],[0,-1],[-1,0],[-1,-1],[1,-1]];
+  function tryPlace(w){
+    for(let att=0; att<500; att++){
+      const [dr,dc]=DIRS[Math.floor(Math.random()*DIRS.length)];
+      const r0=Math.floor(Math.random()*N), c0=Math.floor(Math.random()*N);
+      const rE=r0+dr*(w.length-1), cE=c0+dc*(w.length-1);
+      if(rE<0||rE>=N||cE<0||cE>=N) continue;
+      let ok=true;
+      for(let i=0;i<w.length;i++){ const ch=grid[r0+dr*i][c0+dc*i]; if(ch&&ch!==w[i]){ok=false;break;} }
+      if(!ok) continue;
+      for(let i=0;i<w.length;i++) grid[r0+dr*i][c0+dc*i]=w[i];
+      return true;
+    } return false;
+  }
+  const ok=[]; shuffle(words).forEach(w=>{ if(tryPlace(w)) ok.push(w); });
+  const A="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  for(let r=0;r<N;r++)for(let cc=0;cc<N;cc++)if(!grid[r][cc])grid[r][cc]=A[Math.floor(Math.random()*26)];
+  stage.innerHTML=`<div class="panel">
+    <p class="muted" style="margin-bottom:10px">Click and drag (or tap the first and last letter) to select a word. <b id="wsCount">0/${ok.length}</b> found.</p>
+    <div class="ws-wrap">
+      <table class="ws" id="wsGrid">${grid.map((row,r)=>`<tr>${row.map((ch,cc)=>`<td data-k="${r}_${cc}">${ch}</td>`).join("")}</tr>`).join("")}</table>
+      <ul class="wordlist" id="wsList">${ok.map(w=>`<li data-w="${w}">${w}</li>`).join("")}</ul>
+    </div>
+    <div id="wsDone" class="center" style="margin-top:14px;display:none">
+      <p class="toast ok">🎉 Great! You found all the words.</p>
+      <button class="btn ghost sm" onclick="actWordSearch(CHAPTERS[view.chap])">Play again</button>
+    </div></div>`;
+  const tbl=$("#wsGrid"); let start=null, selecting=false, curCells=[]; const found=new Set();
+  function cellsBetween(a,b){ const [r1,c1]=a.split("_").map(Number),[r2,c2]=b.split("_").map(Number);
+    if(!(r1===r2||c1===c2||Math.abs(r2-r1)===Math.abs(c2-c1))) return null;
+    const dr=Math.sign(r2-r1),dc=Math.sign(c2-c1), len=Math.max(Math.abs(r2-r1),Math.abs(c2-c1))+1;
+    const out=[]; for(let i=0;i<len;i++) out.push((r1+dr*i)+"_"+(c1+dc*i)); return out; }
+  function paint(cells){ tbl.querySelectorAll("td.sel").forEach(t=>t.classList.remove("sel"));
+    if(cells) cells.forEach(k=>{ const td=tbl.querySelector(`td[data-k="${k}"]`); if(td)td.classList.add("sel"); }); }
+  function letters(cells){ return cells.map(k=>tbl.querySelector(`td[data-k="${k}"]`).textContent).join(""); }
+  function commit(cells){ if(!cells) return; const str=letters(cells), rev=str.split("").reverse().join("");
+    const hit=ok.find(w=>(w===str||w===rev)&&!found.has(w));
+    if(hit){ found.add(hit); cells.forEach(k=>{ const td=tbl.querySelector(`td[data-k="${k}"]`); td.classList.remove("sel"); td.classList.add("found"); });
+      $(`#wsList li[data-w="${hit}"]`).classList.add("done"); $("#wsCount").textContent=found.size+"/"+ok.length;
+      if(found.size===ok.length)$("#wsDone").style.display="block"; } }
+  function keyFromEvent(e){ const t=(e.touches?document.elementFromPoint(e.touches[0].clientX,e.touches[0].clientY):e.target); return t&&t.dataset?t.dataset.k:null; }
+  function down(e){ const k=keyFromEvent(e); if(!k)return; selecting=true; start=k; curCells=[k]; paint(curCells); e.preventDefault(); }
+  function move(e){ if(!selecting)return; const k=keyFromEvent(e); if(!k)return; const cells=cellsBetween(start,k); if(cells){curCells=cells; paint(cells);} }
+  function up(){ if(!selecting)return; selecting=false; commit(curCells); paint(null); curCells=[]; }
+  tbl.addEventListener("mousedown",down); tbl.addEventListener("mousemove",move); document.addEventListener("mouseup",up);
+  tbl.addEventListener("touchstart",down,{passive:false}); tbl.addEventListener("touchmove",move,{passive:false}); document.addEventListener("touchend",up);
+}
+
+/* ============================================================
+   CROSSWORD
+   ============================================================ */
+function actCrossword(c){
+  const src=shuffle(c.vocab.filter(v=>/^[A-Z]+$/.test(v[0])&&v[0].length>=3&&v[0].length<=10))
+      .map(v=>({w:v[0],clue:v[1]})).sort((a,b)=>b.w.length-a.w.length);
+  const grid={}, placed=[]; const K=(r,cc)=>r+","+cc;
+  function canPlace(w,r,cc,dir){
+    for(let i=0;i<w.length;i++){ const rr=dir==="H"?r:r+i, ccc=dir==="H"?cc+i:cc, cur=grid[K(rr,ccc)];
+      if(cur&&cur!==w[i]) return false;
+      if(!cur){ if(dir==="H"){ if(grid[K(rr-1,ccc)]||grid[K(rr+1,ccc)])return false; } else{ if(grid[K(rr,ccc-1)]||grid[K(rr,ccc+1)])return false; } } }
+    if(dir==="H"){ if(grid[K(r,cc-1)]||grid[K(r,cc+w.length)])return false; } else{ if(grid[K(r-1,cc)]||grid[K(r+w.length,cc)])return false; }
+    return true;
+  }
+  function put(o){ for(let i=0;i<o.w.length;i++){ const rr=o.dir==="H"?o.r:o.r+i, cc=o.dir==="H"?o.c+i:o.c; grid[K(rr,cc)]=o.w[i]; } placed.push(o); }
+  if(!src.length){ stage.innerHTML=`<div class="panel">No words available.</div>`; return; }
+  put({w:src[0].w,clue:src[0].clue,r:0,c:0,dir:"H"});
+  for(let i=1;i<src.length;i++){ const wd=src[i]; let done=false;
+    for(const p of placed){ if(done)break;
+      for(let pi=0;pi<p.w.length&&!done;pi++)for(let wi=0;wi<wd.w.length&&!done;wi++){
+        if(p.w[pi]!==wd.w[wi])continue;
+        const pr=p.dir==="H"?p.r:p.r+pi, pc=p.dir==="H"?p.c+pi:p.c, dir=p.dir==="H"?"V":"H";
+        const r=dir==="H"?pr:pr-wi, cc=dir==="H"?pc-wi:pc;
+        if(canPlace(wd.w,r,cc,dir)){ put({w:wd.w,clue:wd.clue,r,c:cc,dir}); done=true; } } } }
+  const rs=Object.keys(grid).map(k=>+k.split(",")[0]), cs=Object.keys(grid).map(k=>+k.split(",")[1]);
+  const minR=Math.min(...rs),maxR=Math.max(...rs),minC=Math.min(...cs),maxC=Math.max(...cs);
+  const H=maxR-minR+1, W=maxC-minC+1; placed.forEach(p=>{ p.r-=minR; p.c-=minC; });
+  let num=0; const numAt={}, across=[], down=[], startsA={}, startsD={};
+  placed.forEach(p=>{ (p.dir==="H"?startsA:startsD)[p.r+","+p.c]=p; });
+  for(let r=0;r<H;r++)for(let cc=0;cc<W;cc++){ const isA=startsA[r+","+cc], isD=startsD[r+","+cc];
+    if(isA||isD){ num++; numAt[r+","+cc]=num;
+      if(isA) across.push({num,clue:isA.clue,ans:isA.w}); if(isD) down.push({num,clue:isD.clue,ans:isD.w}); } }
+  const cellId=(r,cc)=>"cw_"+r+"_"+cc;
+  let html='<div class="panel"><p class="muted" style="margin-bottom:10px">Read the definitions and type the words. Green = correct.</p><div style="overflow-x:auto"><table class="cw">';
+  for(let r=0;r<H;r++){ html+="<tr>";
+    for(let cc=0;cc<W;cc++){ const has=grid[K(r+minR,cc+minC)];
+      if(!has) html+='<td class="blk"></td>';
+      else{ const qn=numAt[r+","+cc]; html+=`<td>${qn?`<span class="qn">${qn}</span>`:""}<input id="${cellId(r,cc)}" maxlength="1" data-a="${has}" data-r="${r}" data-c="${cc}"></td>`; } }
+    html+="</tr>"; }
+  html+="</table></div><div class='clues'>";
+  html+='<div><h3>Across</h3><ol>'+across.map(a=>`<li value="${a.num}">${a.clue} <span class="muted">(${a.ans.length})</span></li>`).join("")+"</ol></div>";
+  html+='<div><h3>Down</h3><ol>'+down.map(a=>`<li value="${a.num}">${a.clue} <span class="muted">(${a.ans.length})</span></li>`).join("")+"</ol></div></div>";
+  html+=`<div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+    <button class="btn sm" onclick="cwCheck()">Check</button>
+    <button class="btn ghost sm" onclick="cwReveal()">Show answers</button>
+    <button class="btn ghost sm" onclick="actCrossword(CHAPTERS[view.chap])">New puzzle</button>
+    <span id="cwMsg" class="toast"></span></div></div>`;
+  stage.innerHTML=html;
+  const inputs=[...stage.querySelectorAll(".cw input")];
+  inputs.forEach(inp=>{
+    inp.addEventListener("input",()=>{ inp.value=inp.value.toUpperCase().replace(/[^A-Z]/g,""); inp.parentElement.classList.remove("ok","bad");
+      if(inp.value){ const r=+inp.dataset.r,cc=+inp.dataset.c; const nxt=stage.querySelector(`#${cellId(r,cc+1)}`)||stage.querySelector(`#${cellId(r+1,cc)}`); if(nxt)nxt.focus(); } });
+    inp.addEventListener("keydown",e=>{ if(e.key==="Backspace"&&!inp.value){ const r=+inp.dataset.r,cc=+inp.dataset.c; const prv=stage.querySelector(`#${cellId(r,cc-1)}`)||stage.querySelector(`#${cellId(r-1,cc)}`); if(prv)prv.focus(); } });
+  });
+  window.cwCheck=()=>{ let all=true,filled=true;
+    inputs.forEach(inp=>{ const td=inp.parentElement; td.classList.remove("ok","bad");
+      if(!inp.value){ filled=false; all=false; return; } if(inp.value===inp.dataset.a) td.classList.add("ok"); else{ td.classList.add("bad"); all=false; } });
+    const m=$("#cwMsg"); if(all){ m.textContent="🎉 Perfect! Crossword complete."; m.className="toast ok"; }
+    else if(!filled){ m.textContent="Some cells are still empty."; m.className="toast no"; }
+    else{ m.textContent="Some answers are wrong — keep trying!"; m.className="toast no"; } };
+  window.cwReveal=()=>{ inputs.forEach(inp=>{ inp.value=inp.dataset.a; inp.parentElement.classList.remove("bad"); inp.parentElement.classList.add("ok"); });
+    $("#cwMsg").textContent="Answers shown."; $("#cwMsg").className="toast"; };
+}
+
+/* ============================================================
+   HANGMAN
+   ============================================================ */
+function actHangman(c){
+  const words=shuffle(c.vocab); let idx=0, wins=0;
+  function play(){
+    if(idx>=words.length) return done();
+    const [word,clue]=words[idx]; let wrong=0; const MAX=6; const guessed=new Set();
+    function draw(){
+      const shown=word.split("").map(ch=>guessed.has(ch)?ch:"_").join(" ");
+      const solved=word.split("").every(ch=>guessed.has(ch)), dead=wrong>=MAX;
+      stage.innerHTML=`<div class="panel">
+        <div class="qnum">WORD ${idx+1} / ${words.length} · Lives: ${MAX-wrong}</div>
+        <div class="hm-wrap">
+          <div style="text-align:center">${hmSVG(wrong)}</div>
+          <div style="flex:1;min-width:240px">
+            <div class="explain" style="margin-top:0">💡 Clue: ${clue}</div>
+            <div class="hm-word">${shown}</div>
+            <div class="keyb">${"ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map(L=>{
+              const cls=guessed.has(L)?(word.includes(L)?"good":"bad"):"";
+              return `<button class="key ${cls}" ${guessed.has(L)||solved||dead?"disabled":""} onclick="hmGuess('${L}')">${L}</button>`; }).join("")}</div>
+            <div class="center" style="margin-top:14px">
+              ${solved?`<p class="toast ok">✅ Correct!</p><button class="btn sm" onclick="hmNext()">${idx+1<words.length?"Next word →":"See result"}</button>`:""}
+              ${dead&&!solved?`<p class="toast no">❌ The word was <b>${word}</b></p><button class="btn sm" onclick="hmNext()">${idx+1<words.length?"Next word →":"See result"}</button>`:""}
+            </div></div></div></div>`;
+      if(solved) wins++;
+    }
+    window.hmGuess=(L)=>{ if(guessed.has(L))return; guessed.add(L); if(!word.includes(L))wrong++; draw(); };
+    window.hmNext=()=>{ idx++; play(); };
+    draw();
+  }
+  function done(){ stage.innerHTML=`<div class="panel center">
+    <p class="muted qnum">HANGMAN · RESULT</p><div class="score">${wins}/${words.length}</div>
+    <p class="muted" style="margin:6px 0 16px">words guessed</p>
+    <button class="btn sm" onclick="actHangman(CHAPTERS[view.chap])">Play again</button>
+    <button class="btn ghost sm" onclick="back()">Back to activities</button></div>`; }
+  wins=0; idx=0; play();
+}
+function hmSVG(w){
+  const parts=['<line x1="70" y1="20" x2="70" y2="35" />','<circle cx="70" cy="45" r="10" />','<line x1="70" y1="55" x2="70" y2="85" />',
+    '<line x1="70" y1="62" x2="55" y2="75" />','<line x1="70" y1="62" x2="85" y2="75" />','<line x1="70" y1="85" x2="55" y2="100" /><line x1="70" y1="85" x2="85" y2="100" />'];
+  return `<svg width="130" height="130" viewBox="0 0 130 130" stroke="#334155" stroke-width="3" fill="none" stroke-linecap="round">
+    <line x1="15" y1="120" x2="60" y2="120"/><line x1="30" y1="120" x2="30" y2="20"/><line x1="30" y1="20" x2="70" y2="20"/>${parts.slice(0,w).join("")}</svg>`;
+}
+
+/* ============================================================
+   MEMORY MATCH
+   ============================================================ */
+function actMemory(c){
+  const pick=shuffle(c.vocab).slice(0,6); const tiles=[];
+  pick.forEach((v,i)=>{ tiles.push({pair:i,type:"w",txt:v[0]}); tiles.push({pair:i,type:"d",txt:v[1]}); });
+  const deck=shuffle(tiles); let first=null, lock=false, matched=0, moves=0;
+  stage.innerHTML=`<div class="panel">
+    <p class="muted" style="margin-bottom:10px">Flip two cards to match each <b>word</b> with its <b>definition</b>. <span id="mvCount">Moves: 0</span></p>
+    <div class="mem-grid" id="memGrid">${deck.map((t,i)=>`<div class="mtile down" data-i="${i}" onclick="memFlip(${i})"><span class="face-back">❓</span></div>`).join("")}</div>
+    <div id="memDone" class="center" style="margin-top:14px;display:none">
+      <p class="toast ok">🎉 All matched!</p><button class="btn ghost sm" onclick="actMemory(CHAPTERS[view.chap])">Play again</button></div></div>`;
+  function tileEl(i){ return stage.querySelector(`.mtile[data-i="${i}"]`); }
+  window.memFlip=(i)=>{
+    if(lock) return; const el=tileEl(i); if(!el.classList.contains("down")) return; const t=deck[i];
+    el.classList.remove("down"); if(t.type==="d")el.classList.add("def"); el.innerHTML=`<span>${t.txt}</span>`;
+    if(first===null){ first=i; return; } if(first===i) return;
+    moves++; $("#mvCount").textContent="Moves: "+moves; lock=true;
+    const a=deck[first], b=deck[i];
+    if(a.pair===b.pair && a.type!==b.type){
+      setTimeout(()=>{ [first,i].forEach(k=>{ const e=tileEl(k); e.classList.add("matched"); e.classList.remove("def"); e.onclick=null; });
+        first=null; lock=false; matched++; if(matched===pick.length)$("#memDone").style.display="block"; }, 380);
+    } else { setTimeout(()=>{ [first,i].forEach(k=>{ const e=tileEl(k); e.classList.add("down"); e.classList.remove("def"); e.innerHTML='<span class="face-back">❓</span>'; });
+        first=null; lock=false; }, 850); }
+  };
+}
+
+/* ============================================================
+   WORD SCRAMBLE
+   ============================================================ */
+function actScramble(c){
+  const words=shuffle(c.vocab); let idx=0, score=0, advanced=false;
+  function scrambleWord(w){ let s=w,g=0; while(s===w&&g<25){ s=shuffle(w.split("")).join(""); g++; } return s; }
+  function next(){ if(advanced)return; advanced=true; idx++; advanced=false; play(); }
+  function play(){
+    if(idx>=words.length) return done();
+    const [word,clue]=words[idx]; const mixed=scrambleWord(word);
+    stage.innerHTML=`<div class="panel center">
+      <div class="qnum">WORD ${idx+1} / ${words.length}</div>
+      <div class="explain" style="text-align:left">💡 Clue: ${clue}</div>
+      <div class="scram">${mixed.split("").join(" ")}</div>
+      <input id="scIn" class="scram-in" maxlength="${word.length}" autocomplete="off" placeholder="type here">
+      <div style="margin-top:14px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <button class="btn sm" onclick="scCheck()">Check</button>
+        <button class="btn ghost sm" onclick="scReveal()">Show</button></div>
+      <div id="scMsg" class="toast" style="margin-top:10px"></div></div>`;
+    const inp=$("#scIn"); inp.focus(); inp.addEventListener("keydown",e=>{ if(e.key==="Enter")scCheck(); });
+    window.scCheck=()=>{ const v=inp.value.toUpperCase().replace(/[^A-Z]/g,""); const m=$("#scMsg");
+      if(v===word){ score++; m.textContent="✅ Correct!"; m.className="toast ok"; inp.disabled=true; setTimeout(next,700); }
+      else{ m.textContent="❌ Try again"; m.className="toast no"; } };
+    window.scReveal=()=>{ inp.value=word; $("#scMsg").textContent="Answer: "+word; $("#scMsg").className="toast"; inp.disabled=true; setTimeout(next,900); };
+  }
+  function done(){ const pct=Math.round(score/words.length*100);
+    stage.innerHTML=`<div class="panel center">
+      <p class="muted qnum">WORD SCRAMBLE · RESULT</p><div class="score">${score}/${words.length}</div>
+      <p style="font-size:1.3rem;font-weight:700;color:var(--blue-d)">${pct}%</p>
+      <button class="btn sm" style="margin-top:12px" onclick="actScramble(CHAPTERS[view.chap])">Play again</button>
+      <button class="btn ghost sm" onclick="back()">Back to activities</button></div>`; }
+  score=0; idx=0; play();
+}
+
+/* ============================================================
+   READ THE CHAPTER
+   Simplified B1.2 retelling written for NIS (original text — NOT
+   the copyrighted Black Cat reader). One entry per chapter number.
+   ============================================================ */
+const READINGS = ATTWN_DATA.READINGS;
+function actRead(c){
+  const paras = READINGS[c.n] || [];
+  const words = paras.join(' ').split(/\s+/).filter(Boolean).length;
+  const idx = CHAPTERS.findIndex(x=>x.n===c.n);
+  const prev = idx>0 ? CHAPTERS[idx-1] : null;
+  const next = idx<CHAPTERS.length-1 ? CHAPTERS[idx+1] : null;
+  const wordSpans=(p,i)=>p.split(/(\s+)/).map(tok=>
+    /\S/.test(tok) ? `<span class="w" data-p="${i}" onclick="wordDict(this)">${tok}</span>` : tok).join('');
+  stage.innerHTML = `<div class="panel reading rp-paused">
+    <div class="qnum">CHAPTER ${c.n} · READ ALONG</div>
+    <h2 style="color:var(--blue-d);margin:2px 0 2px">${c.title}</h2>
+    <p class="muted" style="margin:0 0 14px;font-size:.85rem">Simplified version · about ${words} words · ~${Math.max(1,Math.round(words/90))} min</p>
+    <div class="rp-player">
+      <div class="rp-ctl">
+        <button id="rpPlayBtn" class="cbtn" title="Play / Pause" onclick="RP.toggle()">▶</button>
+        <button class="cbtn ghost" title="Stop" onclick="RP.stop()">⏹</button>
+        <span class="time" id="rpTime">0:00 / 0:00</span>
+        <input type="range" class="rp-seek" id="rpSeek" min="0" max="1" step="0.1" value="0">
+        <select id="rpRate" title="Speed" onchange="RP.auds.forEach(a=>a.playbackRate=parseFloat(this.value))"><option value="0.8">🐢 slower</option><option value="1" selected>1×</option><option value="1.15">⚡ faster</option></select>
+        <a class="rp-dl" href="${AUD_BASE}ch${c.n}.mp3" download="${RDR_ID.toUpperCase()}-${LVL}-chapter-${c.n}.mp3">⬇ mp3</a>
+      </div>
+      <div class="rp-hint" id="rpHint">🎧 Follow the yellow word as it reads. Drag the blue dot to go back or forward. ⏸ Pause and <b>tap any word you don’t understand</b> to see its meaning.</div>
+    </div>
+    ${paras.map((p,i)=>`<p class="rp"><button class="pbtn" onclick="rpPara(${i})" title="Play from here">▶</button>${wordSpans(p,i)}</p>`).join('')}
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;align-items:center">
+      ${prev?`<button class="btn ghost sm" onclick="openReadChapter(${idx-1})">← Ch. ${prev.n}</button>`:''}
+      <button class="btn sm" onclick="openAct('comprehension')">Do the activities →</button>
+      ${next?`<button class="btn ghost sm" onclick="openReadChapter(${idx+1})">Ch. ${next.n} →</button>`:''}
+    </div>
+  </div>`;
+  RP.init(c,paras);
+  const sk=$('#rpSeek');
+  sk.addEventListener('input',()=>{ RP.seeking=true;
+    sk.style.setProperty('--pct',(sk.value/(sk.max||1)*100)+'%');
+    const tl=$('#rpTime'); if(tl) tl.textContent=RP.fmt(parseFloat(sk.value))+' / '+RP.fmt(RP.total||0); });
+  sk.addEventListener('change',()=>{ RP.seeking=false; RP.seekTo(parseFloat(sk.value)); });
+  window.scrollTo(0,0);
+}
+window.openReadChapter=(i)=>{ view.chap=i; view.act='read'; view.screen='act'; render(); };
+
+/* ============================================================
+   READ ALONG — audio por párrafo (attwn-audio/chN-pM.mp3),
+   con repliegue a speechSynthesis si el mp3 no está.
+   ============================================================ */
+const AUD_BASE=RDR_ID+'-audio/'+LVLL+'/';
+let _aud=null, _ttsOn=false;   // audio suelto de la vista Listening
+function _rate(){ const s=$('#rpRate'); return s?parseFloat(s.value):1; }
+function _stopAudio(){
+  if(_aud){ _aud.pause(); _aud=null; }
+  try{ speechSynthesis.cancel(); }catch(e){}
+  _ttsOn=false;
+  if(window.RP) RP.destroy();
+  const veil=document.querySelector('.dict-veil'); if(veil) veil.remove();
+}
+
+/* ---------- REPRODUCTOR del Read along ----------
+   Un Audio por párrafo + json de tiempos por palabra (WordBoundary de
+   edge-tts). Línea de progreso de TODO el capítulo con punto azul
+   arrastrable, ▶ ⏸ ⏹, y karaoke palabra a palabra. */
+window.RP={
+  auds:[], tims:[], durs:[], cum:[], total:0, cur:0, playing:false, tick:null, ready:false, seeking:false,
+  init(c,paras){
+    this.destroy();
+    this.auds=paras.map((_,i)=>{ const a=new Audio(); a.preload='metadata'; a.src=AUD_BASE+'ch'+c.n+'-p'+(i+1)+'.mp3'; return a; });
+    this.tims=paras.map(()=>null); this.durs=paras.map(()=>0); this.cur=0; this.playing=false; this.ready=false;
+    const metas=this.auds.map((a,i)=>new Promise(res=>{
+      a.addEventListener('loadedmetadata',()=>{ RP.durs[i]=a.duration||0; res(true); },{once:true});
+      a.addEventListener('error',()=>res(false),{once:true});
+      setTimeout(()=>res(false),8000);
+    }));
+    paras.forEach((_,i)=>{ fetch(AUD_BASE+'ch'+c.n+'-p'+(i+1)+'.json').then(r=>r.ok?r.json():null)
+      .then(j=>{ RP.tims[i]=j; RP.mapWords(i); }).catch(()=>{}); });
+    this.auds.forEach((a,i)=>{ a.onended=()=>{ if(i+1<RP.auds.length){ RP.cur=i+1; RP.auds[RP.cur].playbackRate=_rate(); RP.auds[RP.cur].currentTime=0; RP.auds[RP.cur].play(); RP.paint(); } else RP.stop(); }; });
+    Promise.all(metas).then(oks=>{
+      if(!oks.some(Boolean)){ const h=$('#rpHint'); if(h) h.textContent='⚠️ Audio not available on this device — ask your teacher.'; return; }
+      RP.cum=[]; let t=0; RP.durs.forEach(d=>{ RP.cum.push(t); t+=d; }); RP.total=t; RP.ready=true;
+      const s=$('#rpSeek'); if(s){ s.max=Math.max(1,Math.round(t*10)/10); s.step=0.1; }
+      RP.paint();
+    });
+  },
+  /* asigna a cada <span class=w> su tiempo de inicio (alineación 1:1 con
+     los WordBoundary; el TTS omite la puntuación suelta, así que se saltan
+     los tokens sin letras) */
+  mapWords(p){
+    const spans=[...document.querySelectorAll('.reading .w[data-p="'+p+'"]')];
+    const tim=this.tims[p]; if(!tim||!spans.length) return;
+    let k=0;
+    spans.forEach(sp=>{ if(!/[a-zA-Z0-9]/.test(sp.textContent)){ sp.dataset.t=''; return; }
+      if(k<tim.length){ sp.dataset.t=tim[k][0]; k++; } });
+  },
+  gt(){ return (this.cum[this.cur]||0)+(this.auds[this.cur]?this.auds[this.cur].currentTime:0); },
+  fmt(s){ s=Math.max(0,Math.round(s)); return Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); },
+  paint(){
+    const t=this.gt();
+    if(!this.seeking){ const s=$('#rpSeek'); if(s&&this.ready){ s.value=t; s.style.setProperty('--pct',(t/this.total*100)+'%'); } }
+    const tl=$('#rpTime'); if(tl) tl.textContent=this.fmt(t)+' / '+this.fmt(this.total||0);
+    document.querySelectorAll('.reading p.rp').forEach((p,i)=>p.classList.toggle('playing',i===this.cur&&(this.playing||t>0)));
+    const read=document.querySelector('.reading'); if(read) read.classList.toggle('rp-paused',!this.playing);
+    // karaoke: última palabra cuyo inicio <= tiempo local
+    const local=this.auds[this.cur]?this.auds[this.cur].currentTime:0;
+    let hot=null;
+    document.querySelectorAll('.reading .w.hot').forEach(w=>w.classList.remove('hot'));
+    if(this.playing){
+      const spans=[...document.querySelectorAll('.reading .w[data-p="'+this.cur+'"]')];
+      for(const sp of spans){ const st=parseFloat(sp.dataset.t); if(!isNaN(st)&&st<=local) hot=sp; }
+      if(hot){ hot.classList.add('hot');
+        const r=hot.getBoundingClientRect(); if(r.top<120||r.bottom>innerHeight-60) hot.scrollIntoView({behavior:'smooth',block:'center'}); }
+    }
+    const pb=$('#rpPlayBtn'); if(pb) pb.innerHTML=this.playing?'⏸':'▶';
+  },
+  play(){
+    if(!this.auds.length) return;
+    const a=this.auds[this.cur]; a.playbackRate=_rate();
+    a.play().then(()=>{ RP.playing=true;
+      if(!RP.tick) RP.tick=setInterval(()=>RP.paint(),200);
+      RP.paint();
+    }).catch(()=>{ const h=$('#rpHint'); if(h) h.textContent='⚠️ Audio not available — check your connection.'; });
+  },
+  pause(){ if(this.auds[this.cur]) this.auds[this.cur].pause(); this.playing=false; this.paint(); },
+  toggle(){ this.playing?this.pause():this.play(); },
+  stop(){
+    this.auds.forEach(a=>{ a.pause(); try{ a.currentTime=0; }catch(e){} });
+    this.cur=0; this.playing=false;
+    if(this.tick){ clearInterval(this.tick); this.tick=null; }
+    this.paint();
+    const s=$('#rpSeek'); if(s){ s.value=0; s.style.setProperty('--pct','0%'); }
+  },
+  seekTo(t){
+    if(!this.ready) return;
+    t=Math.min(Math.max(0,t),Math.max(0,this.total-0.2));
+    let k=0; while(k+1<this.cum.length && this.cum[k+1]<=t) k++;
+    const was=this.playing;
+    this.auds.forEach((a,i)=>{ if(i!==k){ a.pause(); try{ a.currentTime=0; }catch(e){} } });
+    this.cur=k;
+    const a=this.auds[k], local=t-this.cum[k];
+    const apply=()=>{ try{ a.currentTime=local; }catch(e){} };
+    apply();
+    // si el navegador aún no tiene datos en ese punto, reintentar al estar listo
+    if(Math.abs(a.currentTime-local)>0.8){
+      const fix=()=>{ if(Math.abs(a.currentTime-local)>0.8) apply(); };
+      a.addEventListener('canplay',fix,{once:true});
+      a.addEventListener('progress',fix,{once:true});
+    }
+    if(was) this.play(); else this.paint();
+  },
+  destroy(){
+    if(this.tick){ clearInterval(this.tick); this.tick=null; }
+    this.auds.forEach(a=>{ a.onended=null; a.pause(); a.src=''; });
+    this.auds=[]; this.playing=false; this.ready=false; this.cur=0;
+  }
+};
+window.rpPara=(i)=>{ if(RP.ready){ RP.seekTo((RP.cum[i]||0)+0.01); if(!RP.playing) RP.play(); } };
+
+/* ---------- diccionario al tocar una palabra (lectura en pausa) ---------- */
+function _storySentence(word,p){
+  const re=new RegExp('\\b'+word.replace(/[^a-zA-Z]/g,'')+'\\b','i');
+  const c=CHAPTERS[view.chap]; const paras=READINGS[c.n]||[];
+  const pool=(p!=null&&paras[p])?[paras[p],...paras]:paras;
+  for(const para of pool){ const s=para.split(/(?<=[.!?…’”])\s+/).find(s=>re.test(s)); if(s) return s; }
+  return null;
+}
+window.wordDict=(el)=>{
+  if(RP.playing) return;               // solo con la lectura detenida
+  const raw=el.textContent.replace(/[^a-zA-Z’']/g,'').replace(/’|'/g,'');
+  if(!raw) return;
+  const word=raw.toLowerCase();
+  const p=parseInt(el.dataset.p);
+  const c=CHAPTERS[view.chap];
+  const local=(c.vocab.find(v=>v[0].toLowerCase()===word)||[])[1];
+  const story=_storySentence(word,p);
+  const veil=document.createElement('div'); veil.className='dict-veil';
+  veil.innerHTML=`<div class="dict-pop" onclick="event.stopPropagation()">
+    <div style="display:flex;gap:10px;align-items:center;justify-content:space-between">
+      <h3>${raw} <button class="btn ghost sm" style="padding:4px 10px" onclick="sayWord('${word}')">🔊</button></h3>
+      <button class="btn ghost sm" onclick="this.closest('.dict-veil').remove()">✕ Close</button>
+    </div>
+    <div class="phon" id="dictPhon"></div>
+    <div id="dictBody"><p class="muted" style="margin-top:10px">Looking it up…</p></div>
+    ${local?`<div class="pos">In this chapter’s word list</div><p class="def">${local}</p>`:''}
+    ${story?`<div class="story">📖 In the story: “${story}”</div>`:''}
+  </div>`;
+  veil.onclick=()=>veil.remove();
+  document.body.appendChild(veil);
+  fetch('https://api.dictionaryapi.dev/api/v2/entries/en/'+encodeURIComponent(word))
+    .then(r=>r.ok?r.json():Promise.reject())
+    .then(j=>{
+      const e=j[0]; const body=$('#dictBody'); if(!body) return;
+      const phon=e.phonetic||((e.phonetics||[]).find(p=>p.text)||{}).text||'';
+      const ph=$('#dictPhon'); if(ph) ph.textContent=phon;
+      body.innerHTML=(e.meanings||[]).slice(0,2).map(m=>{
+        const d=(m.definitions||[])[0]||{};
+        return `<div class="pos">${m.partOfSpeech||''}</div>
+          <p class="def">${d.definition||''}</p>
+          ${d.example?`<p class="ex">“${d.example}”</p>`:''}`;
+      }).join('')||'<p class="muted">No definition found.</p>';
+    })
+    .catch(()=>{ const body=$('#dictBody'); if(body) body.innerHTML=local?'':'<p class="muted">No dictionary entry found for this word — ask your teacher! 🙋</p>'; });
+};
+
+/* ============================================================
+   LISTENING — escucha sin leer y completa las palabras que faltan.
+   Los huecos se construyen con las palabras del vocabulario del
+   capítulo tal como aparecen en el retelling.
+   ============================================================ */
+function _gapItems(c){
+  const text=(READINGS[c.n]||[]).join(' ');
+  const sents=text.split(/(?<=[.!?…’”])\s+/);
+  const used=new Set(); const items=[];
+  const take=(word,hint)=>{
+    const re=new RegExp('\\b('+word+'s?)\\b','i');
+    const s=sents.find(s=>re.test(s) && s.split(/\s+/).length<=34 && !used.has(s));
+    if(!s) return false;
+    used.add(s);
+    const m=s.match(re);
+    items.push({sent:s.replace(re,'____'), answer:m[1], hint});
+    return true;
+  };
+  for(const v of shuffle(c.vocab)){
+    if(items.length>=6) break;
+    take(v[0].toLowerCase(), v[1]);
+  }
+  // Si el vocabulario no da para 6 huecos, completar con nombres de personajes.
+  const NAMES=[...new Set((EXTRAS.CHARACTERS||[]).flatMap(c=>String(c[0]).split(/\s+/)).filter(w=>/^[A-Z][a-z]{2,}$/.test(w)))];
+  for(const n of shuffle(NAMES)){
+    if(items.length>=6) break;
+    take(n, "a character's name");
+  }
+  return items;
+}
+function actListen(c){
+  _actT0=Date.now();
+  const items=_gapItems(c);
+  const paras=READINGS[c.n]||[];
+  stage.innerHTML=`<div class="panel">
+    <div class="qnum">CHAPTER ${c.n} · LISTENING</div>
+    <h2 style="color:var(--blue-d);margin:2px 0 8px">🎧 Listen first, then write</h2>
+    <p class="muted" style="margin:0 0 12px">Step 1 — Listen to the chapter <b>without reading the text</b>. You can listen twice.</p>
+    <div class="rp-player">
+      <div class="rp-ctl">
+        <button id="rpPlayBtn" class="cbtn" title="Play / Pause" onclick="rpListenToggle()">▶</button>
+        <button class="cbtn ghost" title="Stop" onclick="rpListenStop()">⏹</button>
+        <span class="time" id="rpTime">0:00 / 0:00</span>
+        <input type="range" class="rp-seek" id="rpSeek" min="0" max="1" step="0.1" value="0">
+        <select id="rpRate" title="Speed" onchange="rpListenRate(this.value)"><option value="0.8">🐢 slower</option><option value="1" selected>1× normal</option><option value="1.15">⚡ faster</option></select>
+        <a class="rp-dl" href="${AUD_BASE}ch${c.n}.mp3" download="${RDR_ID.toUpperCase()}-${LVL}-chapter-${c.n}.mp3">⬇ mp3</a>
+      </div>
+      <div class="rp-hint" id="rpHint">🎧 Listen without reading the text below. Drag the blue dot to go back or forward.</div>
+    </div>
+    <p class="muted" style="margin:0 0 12px">Step 2 — Complete each sentence with the missing word. The definition helps you.</p>
+    <div id="gapList">${items.map((it,i)=>`
+      <div class="gap-item" data-i="${i}">${i+1}. ${it.sent.replace('____',`<input type="text" autocomplete="off" autocapitalize="off" data-i="${i}">`)}
+        <div class="muted" style="font-size:12px;margin-top:5px">💡 ${it.hint}</div></div>`).join('')}
+    <div style="display:flex;gap:10px;align-items:center;margin-top:12px">
+      <button class="btn sm" onclick="gapCheck()">Check my answers</button><div id="gapOut"></div></div></div>`;
+  let _lisSeeking=false;
+  const _lisPaint=()=>{
+    const b=$('#rpPlayBtn'), s=$('#rpSeek'), tl=$('#rpTime');
+    const playing=_aud && !_aud.paused && !_aud.ended;
+    if(b) b.innerHTML=playing?'⏸':'▶';
+    const t=_aud?_aud.currentTime:0, dur=(_aud&&isFinite(_aud.duration))?_aud.duration:0;
+    if(s && !_lisSeeking && dur){ s.max=Math.max(1,Math.round(dur*10)/10); s.value=t; s.style.setProperty('--pct',(t/dur*100)+'%'); }
+    if(tl) tl.textContent=RP.fmt(t)+' / '+RP.fmt(dur);
+  };
+  window.rpListenRate=(v)=>{ if(_aud) _aud.playbackRate=parseFloat(v)||1; };
+  window.rpListenToggle=()=>{
+    if(_ttsOn){ _stopAudio(); _lisPaint(); return; }
+    if(_aud){ if(_aud.paused){ _aud.playbackRate=_rate(); _aud.play().catch(()=>{}); } else { _aud.pause(); } _lisPaint(); return; }
+    const full=new Audio(AUD_BASE+'ch'+c.n+'.mp3'); full.preload='metadata'; full.playbackRate=_rate();
+    full.ontimeupdate=_lisPaint; full.onended=_lisPaint; full.onloadedmetadata=_lisPaint; full.onplay=_lisPaint; full.onpause=_lisPaint;
+    full.onerror=()=>{ _aud=null; _ttsOn=true; const h=$('#rpHint'); if(h) h.textContent='⚠️ Recording not available — using the browser voice.';
+      try{ speechSynthesis.cancel();  // repliegue TTS: párrafo a párrafo
+        paras.forEach(p=>{ const u=new SpeechSynthesisUtterance(p); u.lang='en-GB'; u.rate=.95; speechSynthesis.speak(u); });
+      }catch(e){} const b=$('#rpPlayBtn'); if(b) b.innerHTML='⏸'; };
+    _aud=full; full.play().then(_lisPaint).catch(()=>full.onerror());
+  };
+  window.rpListenStop=()=>{
+    if(_aud){ _aud.pause(); try{ _aud.currentTime=0; }catch(e){} }
+    try{ speechSynthesis.cancel(); }catch(e){} _ttsOn=false;
+    const s=$('#rpSeek'); if(s){ s.value=0; s.style.setProperty('--pct','0%'); }
+    _lisPaint();
+  };
+  const sk=$('#rpSeek');
+  if(sk){
+    sk.addEventListener('input',()=>{ _lisSeeking=true;
+      sk.style.setProperty('--pct',(sk.value/(sk.max||1)*100)+'%');
+      const tl=$('#rpTime'); if(tl) tl.textContent=RP.fmt(parseFloat(sk.value))+' / '+RP.fmt((_aud&&isFinite(_aud.duration))?_aud.duration:0); });
+    sk.addEventListener('change',()=>{ _lisSeeking=false; if(_aud){ try{ _aud.currentTime=parseFloat(sk.value); }catch(e){} } });
+  }
+  window.gapCheck=()=>{
+    const norm=s=>String(s||'').toLowerCase().replace(/[^a-z]/g,'');
+    let ok=0;
+    items.forEach((it,i)=>{
+      const inp=stage.querySelector(`input[data-i="${i}"]`);
+      const good=norm(inp.value)===norm(it.answer);
+      inp.classList.toggle('ok',good); inp.classList.toggle('no',!good);
+      if(!good) inp.value=it.answer;
+      if(good) ok++;
+    });
+    const pct=saveResult('listen',ok,items.length,'Listening');
+    $('#gapOut').innerHTML=`<b style="color:var(--blue-d)">${ok}/${items.length} · ${pct}%</b>`;
+  };
+}
+
+/* ============================================================
+   SUMMARIZE — ordena los hechos y escribe tu propio resumen.
+   ============================================================ */
+const EVENTS = ATTWN_DATA.EVENTS;
+function actSummary(c){
+  _actT0=Date.now();
+  const data=EVENTS[c.n]; const items=shuffle(data.ev.map((t,i)=>({t,ord:i})));
+  let picked=[];
+  function draw(){
+    stage.innerHTML=`<div class="panel">
+      <div class="qnum">CHAPTER ${c.n} · SUMMARIZE</div>
+      <h2 style="color:var(--blue-d);margin:2px 0 8px">📋 Step 1 — Put the events in order</h2>
+      <p class="muted" style="margin:0 0 10px">Tap the events in the order they happen in the chapter. Tap again to undo.</p>
+      <div id="ordList">${items.map((it,i)=>{
+        const pos=picked.indexOf(i);
+        return `<div class="ord-item ${pos>=0?'picked':''}" onclick="ordPick(${i})">
+          <span class="n">${pos>=0?pos+1:'·'}</span><span>${it.t}</span></div>`;}).join('')}</div>
+      <div style="display:flex;gap:10px;align-items:center;margin-top:10px">
+        <button class="btn sm" ${picked.length===items.length?'':'disabled'} onclick="ordCheck()">Check the order</button>
+        <button class="btn ghost sm" onclick="ordReset()">Reset</button><div id="ordOut"></div></div>
+      <div id="sumWrite"></div></div>`;
+  }
+  window.ordPick=(i)=>{ const p=picked.indexOf(i); if(p>=0) picked.splice(p,1); else picked.push(i); draw(); };
+  window.ordReset=()=>{ picked=[]; draw(); };
+  window.ordCheck=()=>{
+    let ok=0;
+    const boxes=stage.querySelectorAll('.ord-item');
+    picked.forEach((itemIdx,pos)=>{ const good=items[itemIdx].ord===pos; if(good) ok++;
+      boxes[itemIdx].classList.add(good?'good':'bad'); });
+    const pct=saveResult('summary',ok,items.length,'Summarize · order');
+    $('#ordOut').innerHTML=`<b style="color:var(--blue-d)">${ok}/${items.length} · ${pct}%</b>`;
+    $('#sumWrite').innerHTML=`
+      <h2 style="color:var(--blue-d);margin:22px 0 8px">✍️ Step 2 — Now write your own summary</h2>
+      <p class="muted" style="margin:0 0 8px">Write 40–60 words about Chapter ${c.n}. Try to use these key words:</p>
+      <div style="margin-bottom:10px">${data.keys.map(k=>`<span class="kw" data-k="${k.toLowerCase()}">${k}</span>`).join('')}</div>
+      <textarea class="wr" id="sumArea" style="min-height:140px" placeholder="In this chapter…"></textarea>
+      <div class="wr-count">Words: <b id="sumWc">0</b> · Key words used: <b id="sumKw">0/${data.keys.length}</b></div>
+      <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn sm" onclick="sumModel()">📖 Compare with a model summary</button></div>
+      <div id="sumModel"></div>`;
+    const area=$('#sumArea');
+    area.addEventListener('input',()=>{
+      const txt=area.value.toLowerCase();
+      $('#sumWc').textContent=(area.value.trim().match(/\S+/g)||[]).length;
+      let n=0;
+      stage.querySelectorAll('.kw').forEach(k=>{ const hit=txt.includes(k.dataset.k); k.classList.toggle('hit',hit); if(hit)n++; });
+      $('#sumKw').textContent=n+'/'+data.keys.length;
+    });
+    window.sumModel=()=>{ $('#sumModel').innerHTML=`<div class="explain" style="margin-top:10px"><b>Model summary:</b> ${c.sum}</div>`; };
+    window.scrollTo(0,document.body.scrollHeight);
+  };
+  draw();
+}
+
+/* ============================================================
+   EXTRAS del hub: Before you read · Quién es quién · Los números
+   de Agatha · Gramática (past perfect) · Escribir sobre personajes
+   ============================================================ */
+const BOOK_WORDS=EXTRAS.BOOK_WORDS||[];
+function sayWord(w){ try{ speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(w.toLowerCase()); u.lang='en-GB';
+  const v=speechSynthesis.getVoices().find(v=>/^en[-_]GB/i.test(v.lang)); if(v)u.voice=v; speechSynthesis.speak(u);}catch(e){} }
+function extraBeforeYouRead(){
+  view={screen:'info',info:'before',chap:null,act:null}; _syncHash(); backEl.style.display='inline-block';
+  crumbEl.innerHTML='Before you read'; _actT0=Date.now();
+  const defs=BOOK_WORDS.map(v=>v[1]);
+  const qs=shuffle(BOOK_WORDS).map(v=>{
+    const wrong=shuffle(defs.filter(d=>d!==v[1])).slice(0,3);
+    return {q:`What does <b>${v[0]}</b> mean? <button class="btn ghost sm" style="padding:3px 9px" onclick="event.stopPropagation();sayWord('${v[0]}')">🔊</button>`,
+      opts:shuffle([{t:v[1],correct:true},...wrong.map(d=>({t:d,correct:false}))]), explain:`${v[0]} = ${v[1]}`};
+  });
+  stage.innerHTML=`<div class="panel">
+    <div class="qnum">BEFORE YOU READ</div>
+    <h2 style="color:var(--blue-d);margin:2px 0 8px">🎬 Get ready for the novel</h2>
+    <p class="muted">These twelve words appear again and again in the story. First think about the predictions, then practise the words.</p>
+    <div class="explain" style="margin:12px 0">
+      🔮 <b>Prediction — discuss or think:</b><br>
+      1. Look at the title, <i>${BOOK.title}</i>. What do you think the story will be about?<br>
+      2. Look at the characters page. Who looks interesting? Who might cause trouble?<br>
+      3. ${BOOK.by} wrote this story more than a century ago. What do you expect life to be like in it?
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px">
+      ${BOOK_WORDS.map(w=>`<span class="kw" style="cursor:pointer" onclick="sayWord('${w[0]}')">🔊 ${w[0]}</span>`).join('')}
+    </div>
+    <button class="btn" onclick="_byrQuiz()">Practise the 12 words →</button></div>`;
+  window._byrQuiz=()=>runQuiz(qs,{speed:false,label:'BEFORE YOU READ',replay:'extraBeforeYouRead();_byrQuiz()',saveId:'beforeyouread',saveName:'Before you read'});
+}
+const WHOSWHO=EXTRAS.WHOSWHO||[];
+function extraWhosWho(){
+  const names=[...new Set(WHOSWHO.map(w=>w[1]))];
+  const qs=shuffle(WHOSWHO).map(w=>{
+    const wrong=shuffle(names.filter(n=>n!==w[1])).slice(0,3);
+    return {q:w[0], opts:shuffle([{t:w[1],correct:true},...wrong.map(n=>({t:n,correct:false}))]), explain:''};
+  });
+  _actT0=Date.now();
+  runQuiz(qs,{speed:false,label:'WHO IS WHO?',replay:'extraWhosWho()',saveId:'whoswho',saveName:'Who is who?'});
+}
+const BIO_NUMBERS=EXTRAS.NUMBERS||[];
+function extraNumbers(){
+  const defs=BIO_NUMBERS.map(b=>b[1]);
+  const qs=shuffle(BIO_NUMBERS).map(b=>{
+    const wrong=shuffle(defs.filter(d=>d!==b[1])).slice(0,3);
+    return {q:`In the author's life and this book, what does the number <b>${b[0]}</b> refer to?`,
+      opts:shuffle([{t:b[1],correct:true},...wrong.map(d=>({t:d,correct:false}))]), explain:`${b[0]} → ${b[1]}`};
+  });
+  _actT0=Date.now();
+  runQuiz(qs,{speed:false,label:'THE AUTHOR IN NUMBERS',replay:'extraNumbers()',saveId:'numbers',saveName:'Author in numbers'});
+}
+const GRAMMAR_PP=(EXTRAS.GRAMMAR&&EXTRAS.GRAMMAR.items)||[];
+function extraGrammar(){
+  view={screen:'info',info:'grammar',chap:null,act:null}; _syncHash(); backEl.style.display='inline-block';
+  crumbEl.innerHTML='Grammar · '+((EXTRAS.GRAMMAR&&EXTRAS.GRAMMAR.title)||''); _actT0=Date.now();
+  stage.innerHTML=`<div class="panel">
+    <div class="qnum">GRAMMAR</div>
+    <h2 style="color:var(--blue-d);margin:2px 0 8px">🧭 ${(EXTRAS.GRAMMAR&&EXTRAS.GRAMMAR.title)||'Grammar'}</h2>
+    <p style="margin:0 0 10px">${(EXTRAS.GRAMMAR&&EXTRAS.GRAMMAR.intro)||''}</p>
+    ${((EXTRAS.GRAMMAR&&EXTRAS.GRAMMAR.examples)||[]).map(e=>`<div class="explain" style="margin-bottom:8px">${e}</div>`).join('')}
+    <div style="margin-bottom:6px"></div>
+    <h2 style="color:var(--blue-d);margin:2px 0 8px">🧭 Past perfect simple</h2>
+    <p style="margin:0 0 10px">We use the <b>past perfect</b> (had + past participle) for something that happened <b>before</b> another moment in the past.</p>
+    <div class="explain" style="margin-bottom:8px">➕ Lombard <b>thought</b> about the man who <b>had given</b> him the job.</div>
+    <div class="explain" style="margin-bottom:8px">➖ He needed money because he <b>hadn't worked</b> for a while.</div>
+    <div class="explain" style="margin-bottom:14px">❓ Why <b>had</b> Morris <b>told</b> him so little?</div>
+    <button class="btn" onclick="_ppQuiz()">Practise with the story →</button></div>`;
+  window._ppQuiz=()=>runQuiz(GRAMMAR_PP.map(g=>({q:g[0],opts:shuffle(g[1].map((t,i)=>({t,correct:i===g[2]}))),explain:g[3]})),
+    {speed:false,label:'GRAMMAR',replay:'extraGrammar();_ppQuiz()',saveId:'grammar',saveName:(EXTRAS.GRAMMAR&&EXTRAS.GRAMMAR.title)||'Grammar'});
+}
+const CHAR_TASKS=EXTRAS.CHAR_TASKS||[];
+function extraCharWriting(){
+  view={screen:'info',info:'charwriting',chap:null,act:null}; _syncHash(); backEl.style.display='inline-block';
+  crumbEl.innerHTML='Write about the characters';
+  actWriting({writing:CHAR_TASKS});
+}
+
+/* ---------- retratos: los define <book>-extras.js (con repliegue a emoji) ---------- */
+const CHAR_IMGS=EXTRAS.CHAR_IMGS||[];
+const IMG_CREDIT=EXTRAS.IMG_CREDIT||'';
+function medHTML(img,emoji){ return `<div class="med">${img?`<img src="${RDR_ID}-img/${img}.jpg" alt="" onerror="this.replaceWith(document.createTextNode('${emoji}'))">`:emoji}</div>`; }
+const CHAR_ICONS=EXTRAS.CHAR_ICONS||[];
+const CHAR_ROLES=EXTRAS.CHAR_ROLES||[];
+const CHAR_SECRETS=EXTRAS.CHAR_SECRETS||[];
+
+/* ============================================================
+   C2 · READ THE ORIGINAL — el reto es leer la novela íntegra
+   (el texto NO está en la app: se lee en el libro físico/e-book).
+   Aquí van el plan de lectura, preguntas de análisis y tareas C2.
+   ============================================================ */
+const C2_STAGES=(EXTRAS.C2&&EXTRAS.C2.stages)||[];
+const C2_TASKS=(EXTRAS.C2&&EXTRAS.C2.tasks)||[];
+const C2_KEY='rdr:'+RDR_ID+':c2:read';
+function _c2Read(){ try{ return new Set(JSON.parse(localStorage.getItem(C2_KEY)||'[]')); }catch(e){ return new Set(); } }
+function extraC2(){
+  view={screen:'info',info:'c2',chap:null,act:null}; backEl.style.display='inline-block';
+  crumbEl.innerHTML='C2 · Read the original';
+  const read=_c2Read();
+  stage.innerHTML=`
+    <div class="nb-head" style="background:linear-gradient(135deg,#1e3a5f,#0b1c30)">
+      <h2>🏆 C2 · Read the original</h2>
+      <p>${(EXTRAS.C2&&EXTRAS.C2.intro)||''}
+      <br>📖 <a href="${(EXTRAS.C2&&EXTRAS.C2.source)||'#'}" target="_blank" rel="noopener" style="color:#fde68a;font-weight:700">${(EXTRAS.C2&&EXTRAS.C2.sourceLabel)||'Read the original'}</a></p>
+    </div>
+    <h2 style="font-size:16px;color:var(--blue-d);margin:0 0 4px">📖 Reading plan — ${C2_STAGES.length} stages</h2>
+    <p class="muted" style="margin:0 0 6px">Each stage of the original maps to one chapter of the app version, so you can replay its activities as a checkpoint. Tick a stage when you finish reading it.</p>
+    <div class="c2-prog"><span style="width:${Math.round(read.size/Math.max(1,C2_STAGES.length)*100)}%"></span></div>
+    ${C2_STAGES.map((s,i)=>`
+      <div class="c2-stage ${read.has(i)?'readed':''}" id="c2s${i}">
+        <div class="hd"><b>Stage ${i+1} · ${s.focus}</b>
+          <span class="map">Original: ${s.orig} → app ch. ${s.app}</span>
+          <label class="done"><input type="checkbox" ${read.has(i)?'checked':''} onchange="c2Tick(${i},this.checked)"> I've read this</label>
+        </div>
+        <ul>${s.qs.map(q=>`<li>${q}</li>`).join('')}</ul>
+        <button class="btn ghost sm" style="margin-top:8px" onclick="openReadChapter(${s.app-1})">↺ Checkpoint: replay app chapter ${s.app}</button>
+      </div>`).join('')}
+    <h2 style="font-size:16px;color:var(--blue-d);margin:18px 0 8px">✍️ C2 writing tasks</h2>
+    <p class="muted" style="margin:0 0 10px">Four CPE-style tasks about the original. Use the guided editor:</p>
+    <button class="btn" onclick="c2Writing()">Open the writing tasks →</button>`;
+  window.c2Tick=(i,on)=>{ const r=_c2Read(); on?r.add(i):r.delete(i);
+    try{ localStorage.setItem(C2_KEY,JSON.stringify([...r])); }catch(e){}
+    document.getElementById('c2s'+i).classList.toggle('readed',on);
+    document.querySelector('.c2-prog span').style.width=Math.round(r.size/Math.max(1,C2_STAGES.length)*100)+'%';
+    if(r.size===C2_STAGES.length && on) alert('🏆 All stages read — you have finished the original. Now show it in your writing!'); };
+  window.c2Writing=()=>{ view={screen:'info',info:'c2w',chap:null,act:null}; backEl.style.display='inline-block';
+    crumbEl.innerHTML='C2 · writing'; actWriting({writing:C2_TASKS}); };
+  window.scrollTo(0,0);
+}
+
+/* ============================================================
+   SELECTOR DE NIVEL — pantalla inicial cuando no hay ?level=
+   ============================================================ */
+const CHOOSER_LEVELS=[
+  ['a2','🐣','A2','Elementary','Short chapters, easy words, slower audio. Start here if English still feels new.'],
+  ['b1','🏝️','B1','Intermediate','The standard 9th-grade version: clear narrative English with full audio.'],
+  ['b2','🚀','B2','Upper-intermediate','Richer prose, trickier questions and FCE-style writing tasks.'],
+  ['c1','🎓','C1','Advanced','A literary retelling: complex sentences, inference questions, CAE-style writing.'],
+  ['c2','🏆','C2','Proficiency','The final challenge: read the original by '+RDR_BOOKS[RDR_ID].by+' — free, with a reading plan and analysis work.']
+];
+function renderChooser(){
+  backEl.style.display='none'; crumbEl.innerHTML='';
+  stage.innerHTML=`
+    <div class="plate" style="margin-bottom:18px">
+      <h1 style="color:#fde68a;margin:0 0 4px">${THEME.emoji} ${BOOK.title}</h1>
+      <div class="rhyme">${BOOK.by} · the same story at five levels — your English chooses the challenge.</div>
+      <div class="row-s" style="margin-top:6px">${CHAPTERS.map(c=>`<div class="soldier">${soldierSVG()}</div>`).join('')}</div>
+    </div>
+    <h2 style="font-size:16px;color:var(--blue-d);margin:0 0 10px">Choose your level and start:</h2>
+    <div class="grid cols-2">
+      ${CHOOSER_LEVELS.map(l=>`
+        <div class="card" style="flex-direction:row;text-align:left;gap:14px;align-items:center${l[0]==='c2'?';border-top:4px solid #b8934a':''}" onclick="location.href='${_lvlLink(l[0])}'">
+          <div class="ico" style="font-size:2.3rem">${l[1]}</div>
+          <div><h2 style="margin:0">${l[2]} · ${l[3]}</h2><div class="desc">${l[4]}</div></div>
+        </div>`).join('')}
+    </div>
+    <h2 style="font-size:16px;color:var(--blue-d);margin:18px 0 10px">Assessment:</h2>
+    <div class="grid cols-2">
+      <div class="card" style="flex-direction:row;text-align:left;gap:14px;align-items:center;border-top:4px solid #b91c1c" onclick="location.href='attwn-exam.html'">
+        <div class="ico" style="font-size:2.3rem">📝</div>
+        <div><h2 style="margin:0">EXAMS</h2><div class="desc">One timed exam per chapter at each level (A2–C1), corrected automatically with feedback. Your teacher unlocks each exam.</div></div>
+      </div>
+    </div>
+    <p class="muted" style="margin-top:14px;font-size:12.5px">💡 Not sure? Start at <b>B1</b>. You can change level at any time — your progress is saved separately at each level.</p>`;
+}
+
+/* ============================================================
+   PANEL DEL PROFESOR — claves de respuestas + planificación.
+   Visible solo para docentes/admin (según la sesión del Portal).
+   Todo se genera de ATTWN_DATA (nivel cargado) + los extras.
+   ============================================================ */
+const LEVEL_PLAN=(()=>{ // genérico: palabras reales del nivel abierto, estimación para el resto
+  const words=Object.values(READINGS).flat().join(' ').split(/\s+/).filter(Boolean).length;
+  const base={A2:[.75,'Elementary. Frases cortas y vocabulario básico; audio más lento.'],
+              B1:[1,'Intermedio — versión estándar. Narrativa clara con audio completo.'],
+              B2:[1.25,'Intermedio-alto. Textos más densos y léxico ampliado.'],
+              C1:[1.7,'Avanzado. Prosa literaria; preguntas de inferencia y writing largo.']};
+  return ['A2','B1','B2','C1'].map(l=>{
+    const w=l===LVL? words : Math.round(words*(base[l][0]/(base[LVL]||base.B1)[0]));
+    const perMin=Math.round(w/CHAPTERS.length/110*10)+45;
+    const hrs=Math.max(6,Math.round((w/140 + CHAPTERS.length*13*2)/60));
+    return {lvl:l, words:w, perCh:'~'+perMin+' min', hrs:'~'+hrs+'–'+(hrs+2)+' h', note:base[l][1]+(l===LVL?'':' (estimado)')};
+  });
+})();
+function _tkChapter(c){
+  const comp=(c.comp||[]).map((q,i)=>`<li><b>${i+1}.</b> ${q[0]}<br><span style="color:#059669">✔ ${q[1][q[2]]}</span>${q[3]?`<br><span class="muted" style="font-size:12.5px">${q[3]}</span>`:''}</li>`).join('');
+  const tf=(c.tf||[]).map((t,i)=>`<li><b>${i+1}.</b> ${t[0]} — <b style="color:${t[1]?'#059669':'#dc2626'}">${t[1]?'TRUE':'FALSE'}</b>${t[2]?` <span class="muted" style="font-size:12.5px">${t[2]}</span>`:''}</li>`).join('');
+  const vocab=(c.vocab||[]).map(v=>`<li><b>${v[0]}</b> — ${v[1]}</li>`).join('');
+  const wr=(c.writing||[]).map((w,i)=>`<li><b>Task ${i+1}</b> <span class="muted">(${w.target})</span>: ${w.task}</li>`).join('');
+  const ev=EVENTS[c.n];
+  const order=ev?ev.ev.map(e=>`<li>${e}</li>`).join(''):'';
+  const keys=ev?ev.keys.join(' · '):'';
+  return `<details class="tk-ch"><summary><b>Chapter ${c.n}</b> · ${c.title}</summary>
+    <div class="tk-body">
+      <h4>❓ Comprehension <span class="muted">(mismas respuestas que ⚡ Speed Quiz)</span></h4><ol class="tk-list">${comp}</ol>
+      <h4>✅ True / False</h4><ol class="tk-list">${tf}</ol>
+      <h4>🔤 Vocabulario <span class="muted">— alimenta Multiple Choice · Crossword · Word Search · Hangman · Memory · Scramble</span></h4><ul class="tk-list">${vocab}</ul>
+      <h4>🎧 Listening (gap-fill)</h4><p class="muted" style="margin:0 0 4px">Los 6 huecos se generan del texto: la palabra que falta es siempre uno de los términos de vocabulario de arriba (o un nombre de personaje). Se eligen al azar en cada intento.</p>
+      <h4>📋 Summarize — orden correcto de los hechos</h4><ol class="tk-list">${order}</ol>
+      <p class="muted" style="margin:6px 0 0"><b>Palabras clave:</b> ${keys}</p>
+      <p class="muted" style="margin:4px 0 0"><b>Resumen modelo:</b> ${c.sum||'—'}</p>
+      <h4>✍️ Writing <span class="muted">— tareas abiertas (sin clave única)</span></h4><ul class="tk-list">${wr}</ul>
+    </div></details>`;
+}
+function teacherView(){
+  _stopAudio();
+  view={screen:'teacher',chap:null,act:null,info:null};
+  backEl.style.display='inline-block';
+  crumbEl.innerHTML='👩‍🏫 Panel del profesor';
+  const planRows=LEVEL_PLAN.map(p=>`<tr${p.lvl===LVL?' style="background:#eef4ff"':''}>
+    <td><b>${p.lvl}</b></td><td>${p.words.toLocaleString('es')}</td><td>${p.perCh}</td><td><b>${p.hrs}</b></td><td>${p.note}</td></tr>`).join('');
+  const byr=BOOK_WORDS.map(v=>`<li><b>${v[0]}</b> — ${v[1]}</li>`).join('');
+  const ww=WHOSWHO.map((w,i)=>`<li><b>${i+1}.</b> ${w[0]} <b style="color:#059669">→ ${w[1]}</b></li>`).join('');
+  const nums=BIO_NUMBERS.map(b=>`<li><b>${b[0]}</b> — ${b[1]}</li>`).join('');
+  const gram=GRAMMAR_PP.map((g,i)=>`<li><b>${i+1}.</b> ${g[0]}<br><span style="color:#059669">✔ ${g[1][g[2]]}</span> <span class="muted" style="font-size:12.5px">${g[3]}</span></li>`).join('');
+  const lvlPills=['a2','b1','b2','c1'].map(l=>l.toUpperCase()===LVL
+    ? `<span class="kw hit">${l.toUpperCase()}</span>`
+    : `<a class="kw" style="text-decoration:none" href="${_lvlLink(l)}">${l.toUpperCase()}</a>`).join('');
+  stage.innerHTML=`<style>
+    .tk h2{color:var(--blue-d);margin:0 0 4px}
+    .tk h3{color:var(--blue-d);margin:24px 0 8px;border-bottom:2px solid var(--line);padding-bottom:5px}
+    .tk h4{color:var(--blue-d);margin:14px 0 4px;font-size:14px}
+    .tk table{width:100%;border-collapse:collapse;font-size:13px;margin:8px 0}
+    .tk th,.tk td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+    .tk th{background:var(--blue-d);color:#fff;font-size:12px}
+    .tk-ch{border:1px solid var(--line);border-radius:10px;margin:8px 0;overflow:hidden}
+    .tk-ch summary{cursor:pointer;padding:10px 14px;background:#f1f5f9;font-size:15px;color:var(--blue-d);list-style:none}
+    .tk-ch summary::-webkit-details-marker{display:none}
+    .tk-ch summary::before{content:'▸ ';font-weight:700}
+    .tk-ch[open] summary::before{content:'▾ '}
+    .tk-body{padding:6px 16px 14px}
+    .tk-list{margin:2px 0 6px;padding-left:20px}
+    .tk-list li{margin-bottom:6px;line-height:1.5}
+    @media print{ header,.bar,.no-print{display:none!important} .tk-ch summary::before{content:''} .tk-body{display:block!important} }
+  </style>
+  <div class="tk panel">
+    <h2>👩‍🏫 Panel del profesor</h2>
+    <p class="muted">Claves de respuestas y planificación de <b>${BOOK.title}</b>. Solo visible para docentes.</p>
+    <div class="no-print" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:10px 0 4px">
+      <button class="btn sm" onclick="window.print()">🖨️ Imprimir / PDF</button>
+      <button class="btn ghost sm" onclick="view={screen:'chapters',chap:null,act:null};render()">← Volver a la app</button>
+      <span class="muted" style="font-size:12.5px;margin-left:6px">Respuestas del nivel:</span> ${lvlPills}
+    </div>
+    <h3>📊 Detallado por nivel</h3>
+    <table><thead><tr><th>Nivel</th><th>N.º de palabras<br>(texto del reader)</th><th>Tiempo por<br>capítulo</th><th>Total<br>(todas las actividades)</th><th>Notas</th></tr></thead>
+    <tbody>${planRows}</tbody></table>
+    <p class="muted" style="font-size:12px">“N.º de palabras” = solo el texto del reader (${CHAPTERS.length} capítulos). El total incluye leer + las 13 actividades por capítulo + los extras. Estimaciones para 9.º grado; ajústalas a tu grupo. (Fila resaltada = nivel abierto ahora, <b>${LVL}</b>.)</p>
+    <h3>🗝️ Claves por capítulo <span class="muted" style="font-size:13px;font-weight:400">— nivel ${LVL}</span></h3>
+    <p class="muted" style="font-size:12.5px">Toca un capítulo para desplegar sus respuestas.</p>
+    ${CHAPTERS.map(_tkChapter).join('')}
+    <h3>🎬 Extras (iguales en todos los niveles)</h3>
+    <h4>Before you read — 12 palabras</h4><ul class="tk-list">${byr}</ul>
+    <h4>Who is who?</h4><ol class="tk-list">${ww}</ol>
+    <h4>The author in numbers</h4><ul class="tk-list">${nums}</ul>
+    <h4>Grammar — ${(EXTRAS.GRAMMAR&&EXTRAS.GRAMMAR.title)||''}</h4><ol class="tk-list">${gram}</ol>
+  </div>`;
+  window.scrollTo(0,0);
+}
+function _mountTeacherBtn(){
+  if(document.getElementById('tkBtn')) return;
+  const b=document.createElement('button');
+  b.id='tkBtn'; b.textContent='👩‍🏫 Profesor';
+  b.title='Claves de respuestas y planificación (solo docentes)';
+  b.style.cssText='position:fixed;right:16px;bottom:16px;z-index:50;background:var(--blue-d);color:#fff;border:none;border-radius:30px;padding:11px 18px;font-family:inherit;font-weight:700;font-size:14px;cursor:pointer;box-shadow:0 6px 20px rgba(15,23,42,.3)';
+  b.onclick=teacherView;
+  document.body.appendChild(b);
+}
+(async()=>{ try{ const s=window.NISACT&&NISACT.student&&await NISACT.student(); if(s&&(s.role==='teacher'||s.role==='admin')) _mountTeacherBtn(); }catch(e){} })();
+
+/* ---------- dispatch ---------- */
+const ACT_RENDER={
+  read:actRead, listen:actListen, summary:actSummary,
+  comprehension:actComprehension, truefalse:actTrueFalse, multiplechoice:actMultipleChoice,
+  speed:actSpeed, writing:actWriting, wordsearch:actWordSearch, crossword:actCrossword,
+  hangman:actHangman, memory:actMemory, scramble:actScramble
+};
+/* Historial: la vista vive también en el hash (#c2, #c2-read, #info-notebook…)
+   para que el botón "atrás" del navegador retroceda una vista en lugar de
+   sacar al alumno del reader (auditoría 2026-08-25). render() y las pantallas
+   extra sincronizan el hash; hashchange re-renderiza; _hashMute evita el
+   doble render. El chooser y el modo C2 son de una sola pantalla y quedan fuera. */
+let _hashMute=false;
+function _routeHash(){
+  if(view.screen==="acts") return "c"+view.chap;
+  if(view.screen==="act")  return "c"+view.chap+"-"+view.act;
+  if(view.screen==="info") return "info-"+(view.info||"bio");
+  if(view.screen==="teacher") return "teacher";
+  return "";
+}
+function _syncHash(){
+  const h=_routeHash(), cur=location.hash.replace(/^#/,"");
+  if(h===cur) return;
+  _hashMute=true; location.hash=h;
+}
+function _applyRoute(h){
+  let m;
+  if((m=/^c(\d+)-(\w+)$/.exec(h)) && CHAPTERS[+m[1]] && ACT_RENDER[m[2]]){ view={screen:"act",chap:+m[1],act:m[2]}; }
+  else if((m=/^c(\d+)$/.exec(h)) && CHAPTERS[+m[1]]){ view={screen:"acts",chap:+m[1],act:null}; }
+  else if((m=/^info-(\w+)$/.exec(h))){
+    const fn={before:extraBeforeYouRead,grammar:extraGrammar,charwriting:extraCharWriting,notebook:extraNotebook}[m[1]];
+    if(fn) return fn();
+    if(m[1]==="bio"||m[1]==="characters") view={screen:"info",info:m[1],chap:null,act:null};
+    else view={screen:"chapters",chap:null,act:null,info:null};
+  }
+  else if(h==="teacher"){ view={screen:"teacher",chap:null,act:null}; }
+  else view={screen:"chapters",chap:null,act:null,info:null};
+  render();
+}
+window.addEventListener("hashchange",()=>{
+  if(window.ATTWN_CHOOSER || window.ATTWN_C2) return;
+  if(_hashMute){ _hashMute=false; return; }
+  _applyRoute(location.hash.replace(/^#/,""));
+});
+if(window.ATTWN_CHOOSER) renderChooser();
+else if(window.ATTWN_C2) extraC2();
+else _applyRoute(location.hash.replace(/^#/,""));
+
+</script>
+</body>
+</html>

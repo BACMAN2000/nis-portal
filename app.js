@@ -2219,8 +2219,8 @@ function studentGradeCambridge(key){
    nacen invisibles. */
 const READER_CARDS = {
   attwn:    ['🏝️','And Then There Were None','Agatha Christie at five levels — A2 · B1 · B2 · C1 · C2. Choose your level: read along with audio, listening, summaries, games and the Detective\'s Notebook.','and-then-there-were-none.html','And Then There Were None (A2–C2)'],
-  earnest:  ['🎩','The Importance of Being Earnest','Oscar Wilde (B1.2): 10 activities per chapter — comprehension, true/false, multiple choice, speed quiz, writing, word search, crossword, hangman, memory and scramble.','being-earnest.html','Being Earnest (B1.2)'],
-  tomsawyer:['🚣','The Adventures of Tom Sawyer','Mark Twain (A2): 7 activities per chapter — word search, crossword, comprehension, speed quiz, hangman, memory and scramble.','tom-sawyer.html','Tom Sawyer (A2)'],
+  earnest:  ['🎩','The Importance of Being Earnest','Oscar Wilde at five levels — A2 · B1 · B2 · C1 · C2. Read along with audio, listening, summaries, character files, games and chapter exams.','reader.html?book=earnest','Being Earnest (A2–C2)'],
+  tomsawyer:['🚣','The Adventures of Tom Sawyer','Mark Twain at five levels — A2 · B1 · B2 · C1 · C2. Read along with audio, listening, summaries, character files, games and chapter exams.','reader.html?book=tomsawyer','Tom Sawyer (A2–C2)'],
 };
 const READER_BOOKS = { g7:['tomsawyer'], g9:['attwn','earnest','tomsawyer'] };
 function studentGradeReaders(key){
