@@ -59,6 +59,16 @@
   .watch{margin-left:auto;color:var(--muted);font-size:.85rem;font-variant-numeric:tabular-nums}
   .count{font-size:.85rem;color:var(--muted)}
   .foot{text-align:center;color:var(--muted);font-size:.78rem;margin-top:10px}
+  /* Pill numerado + popup de opciones, copiados del Part 1 de reading-quiz.html
+     (mocks-cambridge) para que la interacción sea idéntica a los practice tests. */
+  .gap-pill{display:inline-flex;align-items:center;justify-content:center;background:#fff;color:#0f172a;border:1.5px solid #94a3b8;border-radius:6px;padding:0 10px;height:26px;min-width:26px;font-family:Montserrat,"Segoe UI",sans-serif;font-size:.92rem;font-weight:600;margin:0 3px;cursor:pointer;vertical-align:baseline;white-space:nowrap;transition:.12s}
+  .gap-pill:hover{border-color:var(--blue)}
+  .gap-pill.answered{background:var(--blue);color:#fff;border-color:var(--blue)}
+  .gap-popup{position:fixed;background:#0f172a;color:#fff;border-radius:10px;padding:5px;display:flex;flex-direction:row;gap:3px;box-shadow:0 12px 32px rgba(0,0,0,.45);z-index:3000;align-items:center;flex-wrap:wrap;max-width:520px}
+  .gap-popup button{background:#1e293b;color:#fff;border:none;padding:8px 14px;border-radius:6px;cursor:pointer;font-size:.92rem;font-family:Montserrat,"Segoe UI",sans-serif;font-weight:500;white-space:nowrap}
+  .gap-popup button:hover{background:var(--blue)}
+  .gap-popup .close-x{background:transparent;color:#94a3b8;padding:6px 8px;font-weight:700;border-right:1px solid #334155;border-radius:0;margin-right:2px}
+  .gap-popup .close-x:hover{background:transparent;color:#fff}
 </style>
   <meta name="google" content="notranslate">
   <script src="config.js?v=18"></script>
@@ -73,7 +83,7 @@
   </header>
   <div class="tabs" id="tabs"></div>
   <div class="card">
-    <div class="instr">For questions <b>1–8</b>, read the text and decide which answer (<b>A</b>, <b>B</b>, <b>C</b> or <b>D</b>) best fits each gap. There is an example at the beginning <b>(0)</b>.</div>
+    <div class="instr">For questions <b>1–8</b>, read the text and <b>click each number</b> to see the options; choose the word that best fits the gap. There is an example at the beginning <b>(0)</b>. When you have answered all the gaps, press <b>Check answers</b>.</div>
     <h2 class="title" id="title"></h2>
     <div class="passage" id="passage"></div>
     <div id="questions" style="margin-top:18px"></div>
@@ -169,43 +179,75 @@ function renderPassage(){
     return '<p>'+par.replace(/\((\d)\)/g,(m,n)=>{
       n=+n;
       if(n===0){ const ex=t.example; return `<span class="gap ex" title="example">(<span class="num">0</span>) ${ex.options[ex.answer]}</span>`; }
-      let cls='gap', content='<span class="num">'+n+'</span>…';
+      const qi=n-1, q=t.questions[qi], chosen=sel[qi];
       if(checked){
-        const q=t.questions[n-1], chosen=sel[n-1];
+        let cls='gap', content;
         if(chosen===q.answer){ cls+=' filled-ok'; content='<span class="num">'+n+'</span>'+q.options[q.answer]; }
         else { cls+=' filled-bad'; content='<span class="num">'+n+'</span>'+(chosen!=null?q.options[chosen]:'—'); }
+        return `<span class="${cls}">${content}</span>`;
       }
-      return `<span class="${cls}">${content}</span>`;
+      // Igual que Part 1 de los practice tests: el hueco es un pill numerado
+      // que abre el popup de opciones; al elegir, el pill muestra la palabra.
+      const label = chosen!=null ? n+' '+q.options[chosen] : n;
+      return `<button type="button" class="gap-pill${chosen!=null?' answered':''}" onclick="showGap(this,${qi})">${label}</button>`;
     })+'</p>';
   }).join('');
   $('passage').innerHTML=html;
 }
+/* Antes de verificar no hay lista de preguntas (las opciones viven en el
+   popup del pill); tras verificar se muestra la corrección con explicación. */
 function renderQuestions(){
+  if(!checked){ $('questions').innerHTML=''; return; }
   const t=TESTS[cur];
   $('questions').innerHTML=t.questions.map((q,qi)=>{
     const opts=q.options.map((w,oi)=>{
       let cls='opt';
-      if(checked){
-        if(oi===q.answer) cls+=' correct';
-        else if(sel[qi]===oi) cls+=' wrong';
-      } else if(sel[qi]===oi) cls+=' sel';
-      const click = checked ? '' : `onclick="pick(${qi},${oi})"`;
-      return `<div class="${cls}" ${click}><span class="ltr">${LET[oi]}</span><span>${w}</span></div>`;
+      if(oi===q.answer) cls+=' correct';
+      else if(sel[qi]===oi) cls+=' wrong';
+      return `<div class="${cls}"><span class="ltr">${LET[oi]}</span><span>${w}</span></div>`;
     }).join('');
     return `<div class="q">
       <div class="qrow"><span class="qnum">${qi+1}</span></div>
       <div class="opts">${opts}</div>
-      <div class="why${checked?' show':''}">${checked&&sel[qi]!==q.answer?'❌ ':'✓ '}<b>${LET[q.answer]} ${q.options[q.answer]}</b> — ${q.why}</div>
+      <div class="why show">${sel[qi]!==q.answer?'❌ ':'✓ '}<b>${LET[q.answer]} ${q.options[q.answer]}</b> — ${q.why}</div>
     </div>`;
   }).join('');
 }
+/* Popup de opciones, portado de window._showGap de reading-quiz.html. */
+window.showGap=function(btn,qi){
+  if(checked) return;
+  document.querySelectorAll('.gap-popup').forEach(p=>p.remove());
+  const opts=TESTS[cur].questions[qi].options;
+  const popup=document.createElement('div'); popup.className='gap-popup';
+  const x=document.createElement('button'); x.type='button'; x.className='close-x'; x.textContent='✕';
+  x.onclick=()=>popup.remove(); popup.appendChild(x);
+  opts.forEach((opt,j)=>{
+    const b=document.createElement('button'); b.type='button'; b.textContent=opt;
+    b.onclick=(ev)=>{ ev.stopPropagation(); sel[qi]=j; popup.remove(); renderPassage(); updateBar(); };
+    popup.appendChild(b);
+  });
+  document.body.appendChild(popup);
+  const rect=btn.getBoundingClientRect();
+  let left=rect.left, top=rect.bottom+6;
+  const pr=popup.getBoundingClientRect();
+  if(left+pr.width>window.innerWidth-10) left=Math.max(10,window.innerWidth-pr.width-10);
+  if(top+pr.height>window.innerHeight-10) top=Math.max(10,rect.top-pr.height-6);
+  popup.style.left=left+'px'; popup.style.top=top+'px';
+  setTimeout(()=>{
+    function onOutside(e){
+      if(!popup.contains(e.target)&&e.target!==btn){
+        popup.remove(); document.removeEventListener('mousedown',onOutside);
+      }
+    }
+    document.addEventListener('mousedown',onOutside);
+  },0);
+};
 function updateBar(){
   const answered=Object.keys(sel).length;
   $('count').textContent = checked ? '' : `${answered}/8 answered`;
   $('checkBtn').disabled = checked || answered<8;
   $('checkBtn').textContent = checked ? 'Checked' : 'Check answers';
 }
-window.pick=(qi,oi)=>{ if(checked)return; sel[qi]=oi; renderQuestions(); updateBar(); };
 window.go=(i)=>{ cur=i; sel={}; checked=false; buildTabs(); render(); startWatch(); };
 function render(){ $('title').textContent=TESTS[cur].title; renderPassage(); renderQuestions(); updateBar(); $('score').textContent=''; }
 
