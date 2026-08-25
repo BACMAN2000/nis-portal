@@ -651,14 +651,15 @@ async function adminTeachers(){
     const _nodeChip=(key,label)=>`<label style="${chipCss}"><input type="checkbox" class="tg-node" value="${key}" ${(managed? managed.has(key): true)?'checked':''}> ${esc(label)}</label>`;
     // Unidades y semanas no se asignan al profesor por separado (heredan de
     // su Activities), así que quedan fuera de los chips generales.
-    const _gradeKeySet=new Set([...ALL_GRADE_ORDER.flatMap(g=>['english.classes.'+g,'english.classes.'+g+'.activities','english.classes.'+g+'.grammar']),'english.classes.g9.cambridge','english.classes.g9.cambridge.listening','english.classes.g9.uoe1','english.classes.g9.writing','english.classes.g9.reader',..._SUB_NODES.map(n=>n.key)]);
+    const _gradeKeySet=new Set([...ALL_GRADE_ORDER.flatMap(g=>['english.classes.'+g,'english.classes.'+g+'.activities','english.classes.'+g+'.grammar']),'english.classes.g9.cambridge','english.classes.g9.cambridge.listening','english.classes.g9.uoe1','english.classes.g9.writing','english.classes.g9.reader','english.classes.g7.reader',..._SUB_NODES.map(n=>n.key)]);
     const generalChips=ACCESS_NODES.filter(n=>!_gradeKeySet.has(n.key)).map(n=>_nodeChip(n.key,n.label)).join('');
     // Primaria (2.º–5.º) sin Grammar: en esa etapa la gramática vive dentro
     // de las actividades, igual que en francés.
     const gradeBlocks=ALL_GRADE_ORDER.map(g=>{
       const items=[['english.classes.'+g,'Classes'],['english.classes.'+g+'.activities','🎲 Activities']];
       if(!_isPrimaryGrade(g)) items.push(['english.classes.'+g+'.grammar','📝 Grammar']);
-      if(g==='g9') items.push(['english.classes.g9.cambridge','🎓 Cambridge'],['english.classes.g9.cambridge.listening','🎧 Cambridge Listening'],['english.classes.g9.uoe1','🧩 Use of English P1'],['english.classes.g9.writing','✍️ Writing'],['english.classes.g9.reader','🏝️ Reader ATTWN']);
+      if(g==='g7') items.push(['english.classes.g7.reader','📚 Readers']);
+      if(g==='g9') items.push(['english.classes.g9.cambridge','🎓 Cambridge'],['english.classes.g9.cambridge.listening','🎧 Cambridge Listening'],['english.classes.g9.uoe1','🧩 Use of English P1'],['english.classes.g9.writing','✍️ Writing'],['english.classes.g9.reader','📚 Readers']);
       return `<div class="row" style="gap:6px;align-items:center;margin-top:5px;flex-wrap:wrap"><span class="muted" style="font-size:.8rem;min-width:84px">${GRADE_META[g][0]} ${GRADE_META[g][1]}</span>${items.map(it=>_nodeChip(it[0],it[1])).join('')}</div>`;
     }).join('');
     const pw=credmap[t.id]||'';
@@ -2046,7 +2047,8 @@ const ACCESS_NODES = [
   {key:'english.classes.g9.cambridge.listening',label:'9th · Cambridge · Listening'},
   {key:'english.classes.g9.uoe1',       label:'9th · Use of English P1'},
   {key:'english.classes.g9.writing',    label:'9th · Writing'},
-  {key:'english.classes.g9.reader',     label:'9th · Reader (ATTWN)'},
+  {key:'english.classes.g7.reader',     label:'7th · Readers'},
+  {key:'english.classes.g9.reader',     label:'9th · Readers'},
   {key:'french',                        label:'French (toda la materia)'},
   {key:'french.crosswords',             label:'French · Crosswords'},
   {key:'french.wordsearch',             label:'French · Word Search'},
@@ -2185,43 +2187,52 @@ function studentGrade(key){
     <div class="grid cols-2" style="margin-top:12px">
       ${_isPrimaryGrade(key) ? '' : (nodeVisible(base+'.grammar') ? _skillCard('📝','Grammar','Grammar for '+label+': explanations and games by unit.',_withBack('grammar.html?grade='+key,route)) : _lockedCard('📝','Grammar','Grammar for '+label+'.'))}
       ${nodeVisible(base+'.activities') ? _hubCard('🎲','Activities',_isPrimaryGrade(key)?'Games for each unit — with audio for young learners.':'Games by unit and by level: crosswords, word searches and more.',"window._nav('classes_"+key+"_act')") : _lockedCard('🎲','Activities','Games and activities.')}
-      ${key==='g9' ? (nodeVisible('english.classes.g9.cambridge') ? _hubCard('🎓','Cambridge','B2 First (FCE): authentic Cambridge practice by skill. Start with Listening — real exam audio with a player and Parts 1–4 tasks.',"window._nav('classes_g9_cambridge')") : _lockedCard('🎓','Cambridge','Cambridge B2 First practice.')) : ''}
-      ${key==='g9' ? (nodeVisible('english.classes.g9.uoe1') ? _skillCard('🧩','Use of English · Part 1','Multiple-choice cloze B2 (Cambridge style): 8 gaps, options A–D, with correction and explanations.',_withBack('use-of-english-part1.html',route)) : _lockedCard('🧩','Use of English · Part 1','Cambridge-style B2 cloze.')) : ''}
-      ${key==='g9' ? (nodeVisible('english.classes.g9.writing') ? _skillCard('✍️','Writing','Opinion essay (FCE Writing Part 1): 6 topics with guide phrases, a bank of linkers, word counter and checklist.',_withBack('writing.html?grade='+key,route)) : _lockedCard('✍️','Writing','Opinion essay · FCE Writing Part 1.')) : ''}
-      ${key==='g9' ? (nodeVisible('english.classes.g9.reader') ? _hubCard('📚','Readers','Graded readers with activities for every chapter: And Then There Were None (A2–C2), Being Earnest (B1.2), Tom Sawyer (A2) — and more on the way.',"window._nav('classes_g9_readers')") : _lockedCard('📚','Readers','Graded readers with activities.')) : ''}
+      ${key==='g9' ? (nodeVisible('english.classes.g9.cambridge') ? _hubCard('🎓','Cambridge','B2 First (FCE) practice by skill: Listening, Use of English, Reading and Writing.',"window._nav('classes_g9_cambridge')") : _lockedCard('🎓','Cambridge','Cambridge B2 First practice.')) : ''}
+      ${READER_BOOKS[key] ? (nodeVisible(base+'.reader') ? _hubCard('📚','Readers','Graded readers with activities for every chapter: '+READER_BOOKS[key].map(id=>READER_CARDS[id][4]).join(', ')+' — and more on the way.',"window._nav('classes_"+key+"_readers')") : _lockedCard('📚','Readers','Graded readers with activities.')) : ''}
     </div>`;
 }
-/* Cambridge (9.º): tarjeta madre con las destrezas del examen B2 First.
-   De momento, Listening (audios auténticos con reproductor y tareas Parts 1–4). */
+/* Cambridge (9.º): tarjeta madre con las destrezas del examen B2 First:
+   Listening, Use of English y Writing (movidas aquí desde la página del
+   grado, pedido 2026-08-25; conservan sus nodos g9.uoe1 / g9.writing para
+   no tocar los permisos de profesores) + Reading como "próximamente". */
 function studentGradeCambridge(key){
   _setNav('classes');
   const route='classes_'+key+'_cambridge';
-  const back=_backBtn("window._nav('classes_"+key+"')","9th Grade");
+  const back=_backBtn("window._nav('classes_"+key+"')",GRADE_META[key][1]);
   const base='english.classes.'+key+'.cambridge';
   if(!nodeVisible('english.classes.'+key) || !nodeVisible(base)){ _lockedView(back,'🎓 Cambridge B2 First'); return; }
   $('#main').innerHTML=`${back}<h1>🎓 Cambridge B2 First</h1>
     <p class="muted" style="margin-top:-6px">Authentic Cambridge exam practice by skill.</p>
     <div class="grid cols-2" style="margin-top:12px">
       ${nodeVisible(base+'.listening') ? _skillCard('🎧','Listening','Authentic B2 First listening: 55 recordings by unit with a full audio player, and exam tasks (Parts 1–4) that mark themselves.',_withBack('cambridge-listening.html',route)) : _lockedCard('🎧','Listening','Cambridge B2 First listening.')}
+      ${nodeVisible('english.classes.'+key+'.uoe1') ? _skillCard('🧩','Use of English','Part 1 · Multiple-choice cloze B2: 8 gaps, options A–D, with correction and explanations.',_withBack('use-of-english-part1.html',route)) : _lockedCard('🧩','Use of English','Cambridge-style B2 cloze.')}
+      ${_soonCard('📖','Reading','Cambridge B2 First reading tasks — coming soon.')}
+      ${nodeVisible('english.classes.'+key+'.writing') ? _skillCard('✍️','Writing','Opinion essay (FCE Writing Part 1): 6 topics with guide phrases, a bank of linkers, word counter and checklist.',_withBack('writing.html?grade='+key,route)) : _lockedCard('✍️','Writing','Opinion essay · FCE Writing Part 1.')}
     </div>`;
 }
-/* Readers (9.º): tarjeta madre con los graded readers. La sección irá
-   creciendo, así que cada libro tiene su tarjeta propia (pedido 2026-08-25);
-   todos comparten el nodo english.classes.g9.reader ya concedido a los
-   profesores. Being Earnest se movió aquí desde Activities > Extra practice. */
+/* Readers: tarjeta madre con los graded readers del grado (g7 y g9 hoy).
+   La sección irá creciendo: para añadir un libro basta sumarlo a
+   READER_CARDS y a la lista del grado en READER_BOOKS. Para estrenar el hub
+   en un grado NUEVO hay que crear el nodo english.classes.<g>.reader en
+   ACCESS_NODES, añadir su chip en adminTeachers y DÁRSELO POR SQL a los
+   profesores ya configurados (teacher_node_access) — los nodos nuevos les
+   nacen invisibles. */
+const READER_CARDS = {
+  attwn:    ['🏝️','And Then There Were None','Agatha Christie at five levels — A2 · B1 · B2 · C1 · C2. Choose your level: read along with audio, listening, summaries, games and the Detective\'s Notebook.','and-then-there-were-none.html','And Then There Were None (A2–C2)'],
+  earnest:  ['🎩','The Importance of Being Earnest','Oscar Wilde (B1.2): 10 activities per chapter — comprehension, true/false, multiple choice, speed quiz, writing, word search, crossword, hangman, memory and scramble.','being-earnest.html','Being Earnest (B1.2)'],
+  tomsawyer:['🚣','The Adventures of Tom Sawyer','Mark Twain (A2): 7 activities per chapter — word search, crossword, comprehension, speed quiz, hangman, memory and scramble.','tom-sawyer.html','Tom Sawyer (A2)'],
+};
+const READER_BOOKS = { g7:['tomsawyer'], g9:['attwn','earnest','tomsawyer'] };
 function studentGradeReaders(key){
   _setNav('classes');
   const route='classes_'+key+'_readers';
-  const back=_backBtn("window._nav('classes_"+key+"')","9th Grade");
+  const back=_backBtn("window._nav('classes_"+key+"')",GRADE_META[key][1]);
   const base='english.classes.'+key+'.reader';
   if(!nodeVisible('english.classes.'+key) || !nodeVisible(base)){ _lockedView(back,'📚 Readers'); return; }
+  const cards=(READER_BOOKS[key]||[]).map(id=>{ const b=READER_CARDS[id]; return _skillCard(b[0],b[1],b[2],_withBack(b[3],route)); }).join('');
   $('#main').innerHTML=`${back}<h1>📚 Readers</h1>
     <p class="muted" style="margin-top:-6px">Graded readers with activities for every chapter.</p>
-    <div class="grid cols-2" style="margin-top:12px">
-      ${_skillCard('🏝️','And Then There Were None','Agatha Christie at five levels — A2 · B1 · B2 · C1 · C2. Choose your level: read along with audio, listening, summaries, games and the Detective\'s Notebook.',_withBack('and-then-there-were-none.html',route))}
-      ${_skillCard('🎩','The Importance of Being Earnest','Oscar Wilde (B1.2): 10 activities per chapter — comprehension, true/false, multiple choice, speed quiz, writing, word search, crossword, hangman, memory and scramble.',_withBack('being-earnest.html',route))}
-      ${_skillCard('🚣','The Adventures of Tom Sawyer','Mark Twain (A2): 7 activities per chapter — word search, crossword, comprehension, speed quiz, hangman, memory and scramble.',_withBack('tom-sawyer.html',route))}
-    </div>`;
+    <div class="grid cols-2" style="margin-top:12px">${cards}</div>`;
 }
 /* Unidades del grado (Unit 3, Unit 4…) según activities-data.js.
    FILTRA POR MATERIA a propósito: desde que activities-fr-data.js mete las
