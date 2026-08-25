@@ -59,19 +59,38 @@
   .tprog span{ display:block; height:100%; background:var(--blue); transition:width 1s linear }
   .q{ background:#fff; border:1px solid var(--line); border-radius:14px; padding:16px 18px; margin-bottom:14px }
   .q .tag{ font-size:10.5px; font-weight:800; letter-spacing:.6px; color:var(--gold); text-transform:uppercase }
-  .q h3{ font-size:15px; margin:4px 0 10px }
+  .q h3{ font-size:15px; margin:4px 0 10px; line-height:1.5 }
   .opt{ display:block; width:100%; text-align:left; background:#f8fafc; border:1.5px solid var(--line); border-radius:11px;
     padding:11px 14px; margin:7px 0; cursor:pointer; font-family:inherit; font-size:14px; font-weight:600; color:var(--ink) }
   .opt:hover{ border-color:#93c5fd }
   .opt.sel{ background:#dbeafe; border-color:var(--blue) }
   .opt.correct{ background:#dcfce7; border-color:#4ade80; color:#065f46 }
   .opt.wrong{ background:#fee2e2; border-color:#f87171; color:#991b1b }
+  input.tin{ border:none; border-bottom:2.5px solid var(--blue); font-family:inherit; font-size:16px; font-weight:700;
+    color:var(--blue-d); width:200px; text-align:center; padding:6px; background:#f8fafc; border-radius:8px 8px 0 0 }
+  input.tin:focus{ outline:none; background:#eff6ff }
+  input.tin.correct{ border-color:#4ade80; background:#dcfce7; color:#065f46 }
+  input.tin.wrong{ border-color:#f87171; background:#fee2e2; color:#991b1b }
+  .aud-btn{ background:#eef2f9; color:var(--blue-d); border:none; border-radius:9px; padding:8px 14px;
+    font-family:inherit; font-weight:700; font-size:13px; cursor:pointer; margin:4px 0 10px }
+  .aud-btn:hover{ background:#dbe4f3 }
   .explain{ background:#eff6ff; border-left:4px solid var(--blue); border-radius:8px; padding:9px 12px; font-size:13px;
     color:#1e3a5f; margin-top:8px }
   .btn{ background:var(--blue); color:#fff; border:none; border-radius:11px; padding:12px 22px; font-family:inherit;
     font-weight:700; font-size:14.5px; cursor:pointer }
   .btn:hover{ background:var(--blue-d) }
   .btn.ghost{ background:#eef2f9; color:var(--blue-d) }
+  .btn:disabled{ opacity:.4; cursor:default }
+  /* paginador */
+  .pager{ display:flex; gap:14px; align-items:center; justify-content:space-between; margin:18px 0 }
+  .arrow{ width:54px; height:54px; border-radius:50%; border:none; background:var(--blue); color:#fff; font-size:22px;
+    cursor:pointer; box-shadow:0 6px 16px rgba(15,23,42,.2); flex:none }
+  .arrow:hover:not(:disabled){ background:var(--blue-d) }
+  .arrow:disabled{ background:#cbd5e1; box-shadow:none }
+  .pgdots{ flex:1; text-align:center; font-size:12.5px; font-weight:700; color:var(--muted) }
+  .pgdots .dot{ display:inline-block; width:9px; height:9px; border-radius:50%; background:#cbd5e1; margin:0 3px }
+  .pgdots .dot.now{ background:var(--blue) }
+  .pgdots .dot.done{ background:#86efac }
   .score{ font-size:2.6rem; font-weight:800; color:var(--blue) }
   .band{ font-size:1.3rem; font-weight:800; margin:6px 0 }
   .center{ text-align:center }
@@ -92,21 +111,47 @@
 <script>
 /* =====================================================================
    READER EXAMS — un examen autocorregible por capítulo y por nivel.
-   Las preguntas se ensamblan del banco del nivel (attwn-data-<lvl>.js):
-   8 comprensión + 6 true/false + 6 vocabulario = 20, con temporizador.
-   La dificultad la marca el propio nivel (textos y preguntas A2→C1).
+   Secciones (ensambladas del banco del nivel attwn-data-<lvl>.js):
+     A · Comprehension (8 MC)        B · True/False (6)
+     C · Vocabulary (6: MC, y en B2/C1 2 de ellas ESCRITAS)
+     D · Listening (4 huecos escritos con el audio del capítulo)
+     E · Story order (3 MC "what happened first?")
+     [solo Cap. 1] F · Author & characters (8 MC)
+   = 27 preguntas (35 en el examen 1). 25 min A2/B1 · 35 min B2/C1.
+   Se muestran DE DOS EN DOS con flechas ◀ ▶ y Submit al final.
    CANDADOS: tabla reader_exam_access (sin fila = BLOQUEADO para el
    alumno); docente/admin ven interruptores y siempre pueden entrar.
    ===================================================================== */
 const READERS=[{id:'attwn', icon:'🏝️', title:'And Then There Were None', by:'Agatha Christie',
   levels:['a2','b1','b2','c1'], chapters:10}];
-const LVL_META={a2:['🐣','A2 · Elementary',15], b1:['🏝️','B1 · Intermediate',15],
-                b2:['🚀','B2 · Upper-intermediate',20], c1:['🎓','C1 · Advanced',20]};
+const LVL_META={a2:['🐣','A2 · Elementary',25], b1:['🏝️','B1 · Intermediate',25],
+                b2:['🚀','B2 · Upper-intermediate',35], c1:['🎓','C1 · Advanced',35]};
 const $=s=>document.querySelector(s);
 const shuffle=a=>{ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; };
 const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+const norm=s=>String(s||'').toLowerCase().replace(/[^a-z]/g,'');
 
-let sb=null, me=null, locks={};       // locks['attwn:b1:ch3']=true → abierto
+/* Sección F del examen del CAPÍTULO 1: autor y personajes (todos los niveles). */
+const CH1_EXTRA=[
+  ['Author',"Who wrote <i>And Then There Were None</i>?",["Agatha Christie","Arthur Conan Doyle","Charles Dickens","Daphne du Maurier"],0,
+   "Agatha Christie (1890–1976), the best-selling novelist of all time."],
+  ['Author',"When was the novel first published?",["1919","1939","1959","1979"],1,
+   "It was first published in 1939."],
+  ['Author',"Which famous detective did Agatha Christie create?",["Sherlock Holmes","Hercule Poirot","Philip Marlowe","Father Brown"],1,
+   "Hercule Poirot, the clever Belgian detective — along with Miss Marple."],
+  ['Author',"Why is <i>And Then There Were None</i> special among crime novels?",["It was her first book","It is the best-selling crime novel of all time","It has no deaths","It was never finished"],1,
+   "With over 100 million copies sold, it is the best-selling crime novel in the world."],
+  ['Characters',"Who brings a revolver to Soldier Island — just to be safe?",["Dr Armstrong","Philip Lombard","Anthony Marston","General Macarthur"],1,
+   "Lombard, the soldier of fortune, was paid to come 'ready for trouble'."],
+  ['Characters',"Who believes she has been hired as a secretary?",["Emily Brent","Ethel Rogers","Vera Claythorne","Constance Culmington"],2,
+   "Vera Claythorne accepts a job as holiday secretary for Mrs Owen."],
+  ['Characters',"Who travels under the false name of ‘Davis’?",["William Blore","Judge Wargrave","Thomas Rogers","Fred Narracott"],0,
+   "Blore, the ex-police inspector, pretends to be a Mr Davis from South Africa."],
+  ['Characters',"Who are the servants who receive the guests at the house?",["Fred and Mary Narracott","Thomas and Ethel Rogers","Mr and Mrs Owen","Hugo and Beatrice"],1,
+   "Rogers the butler and his wife Ethel, the cook."]
+];
+
+let sb=null, me=null, locks={};
 const dataCache={};
 
 async function boot(){
@@ -127,6 +172,7 @@ async function boot(){
 const isStaff=()=>me && (me.role==='teacher'||me.role==='admin');
 const lockKey=(r,l,ch)=>r+':'+l+':ch'+ch;
 const isOpen=k=>!!locks[k];
+const audBase=lvl=>'attwn-audio/'+(lvl==='b1'?'':lvl+'/');
 
 function loadLevel(lvl){
   return new Promise((res,rej)=>{
@@ -141,8 +187,8 @@ function loadLevel(lvl){
 function viewReaders(){
   $('#main').innerHTML=`
     <div class="hero"><h1 style="color:#fde68a">📝 Reader Exams</h1>
-      <p>One exam per chapter, at your level. 20 questions · timed · corrected automatically with feedback.
-      ${isStaff()?'<b>Teacher mode:</b> use the switches to unlock each exam for students.':'Your teacher unlocks each exam when your class is ready.'}</p></div>
+      <p>One exam per chapter, at your level: comprehension, true/false, vocabulary, listening and story order —
+      corrected automatically with feedback. ${isStaff()?'<b>Teacher mode:</b> use the switches to unlock each exam for students.':'Your teacher unlocks each exam when your class is ready.'}</p></div>
     <div class="grid">
       ${READERS.map(r=>`<div class="card" onclick="viewLevels('${r.id}')">
         <div class="ico">${r.icon}</div><h2>${r.title}</h2>
@@ -156,13 +202,13 @@ window.viewLevels=(rid)=>{
   const r=READERS.find(x=>x.id===rid);
   $('#main').innerHTML=`
     <h1>${r.icon} ${r.title} — choose the exam level</h1>
-    <p class="lead">Take the exam at the level you are reading. Higher level = longer texts, harder questions, more time.</p>
+    <p class="lead">Take the exam at the level you are reading. Higher level = harder texts and questions, written answers, and more time.</p>
     <div class="grid">
       ${r.levels.map(l=>{ const m=LVL_META[l];
         const open=Array.from({length:r.chapters},(_,i)=>isOpen(lockKey(rid,l,i+1))).filter(Boolean).length;
         return `<div class="card" onclick="viewChapters('${rid}','${l}')">
           <div class="ico">${m[0]}</div><h2>${m[1]}</h2>
-          <div class="desc">${r.chapters} chapter exams · 20 questions · ${m[2]} minutes each</div>
+          <div class="desc">${r.chapters} chapter exams · 27 questions (35 in exam 1) · ${m[2]} minutes each</div>
           <span class="chip ${open? 'ok':''}">${open}/${r.chapters} unlocked</span></div>`; }).join('')}
     </div>
     <div style="margin-top:16px"><button class="btn ghost" onclick="viewReaders()">← Back</button></div>`;
@@ -176,7 +222,7 @@ window.viewChapters=async(rid,lvl)=>{
   const staff=isStaff();
   $('#main').innerHTML=`
     <h1>${m[0]} ${r.title} · ${m[1]}</h1>
-    <p class="lead">One exam per chapter — ${m[2]} minutes, 20 questions (comprehension + true/false + vocabulary), corrected automatically with feedback at the end.</p>
+    <p class="lead">One exam per chapter — ${m[2]} minutes: comprehension, true/false, vocabulary${lvl==='b2'||lvl==='c1'?' (with written answers)':''}, listening and story order. Two questions per screen; corrected automatically with feedback at the end.</p>
     ${staff?`<div class="note">👩‍🏫 <b>Teacher controls:</b> exams are created LOCKED. Flip a switch to open that chapter's exam for students, or use:
       <button class="btn ghost" style="padding:6px 12px;font-size:12px" onclick="lockAll('${rid}','${lvl}',true)">🔓 Unlock all</button>
       <button class="btn ghost" style="padding:6px 12px;font-size:12px" onclick="lockAll('${rid}','${lvl}',false)">🔒 Lock all</button></div>`:''}
@@ -215,78 +261,166 @@ window.lockAll=async(rid,lvl,open)=>{
   }catch(e){ alert('No se pudo guardar: '+(e.message||e)); }
 };
 
-/* ---------- el examen ---------- */
-let EX=null;
-function buildExam(data,ch){
-  const c=data.CHAPTERS[ch-1]; const qs=[];
-  c.comp.forEach(q=>qs.push({tag:'Comprehension', q:q[0],
-    opts:shuffle(q[1].map((t,i)=>({t,ok:i===q[2]}))), ex:q[3]}));
-  c.tf.forEach(t=>qs.push({tag:'True / False', q:t[0],
-    opts:[{t:'True',ok:t[1]===true},{t:'False',ok:t[1]===false}], ex:t[2]}));
-  shuffle(c.vocab).slice(0,6).forEach(v=>{
-    const wrong=shuffle(c.vocab.filter(x=>x[0]!==v[0])).slice(0,3).map(x=>x[1]);
-    qs.push({tag:'Vocabulary', q:'What does “'+v[0]+'” mean?',
-      opts:shuffle([{t:v[1],ok:true},...wrong.map(t=>({t,ok:false}))]), ex:v[0]+' = '+v[1]});
-  });
-  return shuffle(qs);
+/* ---------- construcción del examen ---------- */
+function gapItems(data,ch,lvl){
+  // 4 huecos de listening: una oración del retelling con una palabra del
+  // vocabulario borrada; guarda el nº de párrafo para reproducir SU audio.
+  const paras=data.READINGS[ch]||[]; const c=data.CHAPTERS[ch-1];
+  const items=[]; const used=new Set();
+  for(const v of shuffle(c.vocab)){
+    if(items.length>=4) break;
+    const w=v[0].toLowerCase(); const re=new RegExp('\\b('+w+'s?)\\b','i');
+    for(let p=0;p<paras.length;p++){
+      const s=paras[p].split(/(?<=[.!?…’”])\s+/).find(s=>re.test(s)&&s.split(/\s+/).length<=30&&!used.has(s));
+      if(s){ used.add(s); const m=s.match(re);
+        items.push({sent:s.replace(re,'______'), answer:m[1], para:p+1}); break; }
+    }
+  }
+  return items;
 }
+function buildExam(data,ch,lvl){
+  const c=data.CHAPTERS[ch-1]; const qs=[]; const hard=(lvl==='b2'||lvl==='c1');
+  // A · comprensión
+  c.comp.forEach(q=>qs.push({tag:'Comprehension', type:'mc', q:q[0],
+    opts:shuffle(q[1].map((t,i)=>({t,ok:i===q[2]}))), ex:q[3]}));
+  // B · true/false
+  c.tf.forEach(t=>qs.push({tag:'True / False', type:'mc', q:t[0],
+    opts:[{t:'True',ok:t[1]===true},{t:'False',ok:t[1]===false}], ex:t[2]}));
+  // C · vocabulario (en B2/C1, 2 de las 6 se ESCRIBEN)
+  const vv=shuffle(c.vocab).slice(0,6);
+  vv.forEach((v,i)=>{
+    if(hard && i<2){
+      qs.push({tag:'Vocabulary · write', type:'type', q:'Write the word: <i>'+esc(v[1])+'</i> (it starts with “'+v[0][0]+'”)',
+        answer:v[0], ex:v[0]+' = '+v[1]});
+    }else{
+      const wrong=shuffle(c.vocab.filter(x=>x[0]!==v[0])).slice(0,3).map(x=>x[1]);
+      qs.push({tag:'Vocabulary', type:'mc', q:'What does “'+v[0]+'” mean?',
+        opts:shuffle([{t:v[1],ok:true},...wrong.map(t=>({t,ok:false}))]), ex:v[0]+' = '+v[1]});
+    }
+  });
+  // D · listening (escribe la palabra que oyes)
+  gapItems(data,ch,lvl).forEach(g=>qs.push({tag:'Listening', type:'type',
+    q:'🎧 Listen to the paragraph and complete: <br><i>'+esc(g.sent)+'</i>',
+    audio:audBase(lvl)+'ch'+ch+'-p'+g.para+'.mp3', answer:g.answer,
+    ex:'The missing word was “'+g.answer+'”.'}));
+  // E · orden de la historia (¿qué pasó primero?)
+  const ev=(data.EVENTS[ch]||{}).ev||[];
+  for(let k=0;k<3 && ev.length>=3;k++){
+    const trio=shuffle(ev.map((t,i)=>({t,i}))).slice(0,3);
+    const first=trio.reduce((a,b)=>a.i<b.i?a:b);
+    qs.push({tag:'Story order', type:'mc', q:'Which of these happened FIRST in this chapter?',
+      opts:shuffle(trio.map(x=>({t:x.t,ok:x===first}))),
+      ex:'Order in the chapter: '+trio.slice().sort((a,b)=>a.i-b.i).map(x=>'“'+x.t.slice(0,40)+'…”').join(' → ')});
+  }
+  const exam=shuffle(qs);
+  // F · el examen del capítulo 1 añade autor y personajes (al final, fijas)
+  if(ch===1) CH1_EXTRA.forEach(x=>exam.push({tag:x[0], type:'mc', q:x[1],
+    opts:shuffle(x[2].map((t,i)=>({t,ok:i===x[3]}))), ex:x[4]}));
+  return exam;
+}
+
+/* ---------- el examen: 2 preguntas por pantalla, ◀ ▶, Submit al final ---------- */
+let EX=null, _qaud=null;
+function stopQAudio(){ if(_qaud){ _qaud.pause(); _qaud=null; } }
+window.playQAudio=(url,btn)=>{
+  if(_qaud){ stopQAudio(); btn.textContent='🔊 Play the audio'; return; }
+  _qaud=new Audio(url);
+  _qaud.onended=()=>{ _qaud=null; btn.textContent='🔊 Play the audio'; };
+  _qaud.onerror=()=>{ _qaud=null; btn.textContent='⚠️ Audio not available'; };
+  btn.textContent='⏸ Stop'; _qaud.play().catch(()=>_qaud&&_qaud.onerror());
+};
 window.startExam=async(rid,lvl,ch)=>{
   const data=await loadLevel(lvl);
   const k=lockKey(rid,lvl,ch);
   if(!isStaff() && !isOpen(k)){ alert('This exam is locked. Ask your teacher.'); return; }
   const c=data.CHAPTERS[ch-1]; const mins=LVL_META[lvl][2];
-  EX={rid,lvl,ch,title:c.title,qs:buildExam(data,ch),ans:{},t0:Date.now(),secs:mins*60,timer:null,done:false};
+  EX={rid,lvl,ch,title:c.title,qs:buildExam(data,ch,lvl),ans:{},page:0,t0:Date.now(),secs:mins*60,timer:null,done:false,previewLocked:isStaff()&&!isOpen(k)};
+  EX.pages=Math.ceil(EX.qs.length/2);
   $('#main').innerHTML=`
     <div class="exam-top">
       <b>${LVL_META[lvl][0]} ${LVL_META[lvl][1].split(' · ')[0]} · Ch. ${ch} — ${esc(c.title)}</b>
       <div class="tprog"><span id="tb" style="width:100%"></span></div>
       <span class="timer" id="tm">${mins}:00</span>
     </div>
-    <div class="note">📝 Answer all 20 questions, then press <b>Submit</b>. You will see your score and the correction with feedback at the end. ${isStaff()&&!isOpen(k)?'<b>(Teacher preview — still locked for students.)</b>':''}</div>
-    ${EX.qs.map((q,i)=>`<div class="q" id="q${i}">
-      <div class="tag">${q.tag} · ${i+1}/20</div>
-      <h3>${q.q}</h3>
-      ${q.opts.map((o,j)=>`<button class="opt" id="o${i}-${j}" onclick="pick(${i},${j})">${esc(o.t)}</button>`).join('')}
-      <div class="fb"></div>
-    </div>`).join('')}
-    <div class="center" style="margin:20px 0">
-      <span class="muted" id="left">0/20 answered</span><br><br>
-      <button class="btn" onclick="submitExam()">✅ Submit my exam</button>
-    </div>`;
+    <div id="exBody"></div>`;
   EX.timer=setInterval(()=>{
     EX.secs--; const m=Math.floor(EX.secs/60), s=EX.secs%60;
     const tm=$('#tm'); if(tm){ tm.textContent=m+':'+String(s).padStart(2,'0'); if(EX.secs<=60) tm.classList.add('low'); }
     const tb=$('#tb'); if(tb) tb.style.width=(EX.secs/(mins*60)*100)+'%';
     if(EX.secs<=0){ clearInterval(EX.timer); alert('⏰ Time is up! Your exam will be submitted now.'); submitExam(true); }
   },1000);
-  window.scrollTo(0,0);
+  renderPage();
 };
+function qHTML(q,i){
+  const a=EX.ans[i];
+  let body='';
+  if(q.type==='mc'){
+    body=q.opts.map((o,j)=>`<button class="opt ${a===j?'sel':''}" id="o${i}-${j}" onclick="pick(${i},${j})">${esc(o.t)}</button>`).join('');
+  }else{
+    body=`${q.audio?`<button class="aud-btn" onclick="playQAudio('${q.audio}',this)">🔊 Play the audio</button><br>`:''}
+      <input class="tin" id="t${i}" autocomplete="off" autocapitalize="off" placeholder="type your answer"
+        value="${a!=null?esc(a):''}" oninput="typed(${i},this.value)">`;
+  }
+  return `<div class="q" id="q${i}">
+    <div class="tag">${q.tag} · question ${i+1} of ${EX.qs.length}</div>
+    <h3>${q.q}</h3>${body}<div class="fb"></div></div>`;
+}
+function answeredCount(){ return EX.qs.filter((q,i)=>{ const a=EX.ans[i]; return q.type==='mc' ? a!=null : (a!=null&&String(a).trim()!==''); }).length; }
+function pageAnswered(p){ const i1=p*2, i2=Math.min(p*2+1,EX.qs.length-1);
+  return [i1,i2].filter((v,idx,arr)=>arr.indexOf(v)===idx).every(i=>{ const a=EX.ans[i]; return EX.qs[i].type==='mc'? a!=null : (a!=null&&String(a).trim()!==''); }); }
+function renderPage(){
+  stopQAudio();
+  const p=EX.page, i1=p*2, qs=EX.qs.slice(i1,i1+2);
+  const last=p===EX.pages-1;
+  $('#exBody').innerHTML=`
+    ${EX.previewLocked?'<div class="note">👩‍🏫 Teacher preview — this exam is still locked for students.</div>':''}
+    ${qs.map((q,off)=>qHTML(q,i1+off)).join('')}
+    <div class="pager">
+      <button class="arrow" onclick="goPage(-1)" ${p===0?'disabled':''} title="Previous">◀</button>
+      <div class="pgdots">
+        Screen ${p+1} / ${EX.pages} · <span id="ansN">${answeredCount()}</span>/${EX.qs.length} answered<br>
+        ${Array.from({length:EX.pages},(_,x)=>`<span class="dot ${x===p?'now':(pageAnswered(x)?'done':'')}"></span>`).join('')}
+      </div>
+      ${last?`<button class="btn" style="flex:none" onclick="submitExam()">✅ Submit</button>`
+           :`<button class="arrow" onclick="goPage(1)" title="Next">▶</button>`}
+    </div>`;
+  window.scrollTo(0,0);
+}
+window.goPage=(d)=>{ if(EX.done) return; EX.page=Math.min(Math.max(0,EX.page+d),EX.pages-1); renderPage(); };
 window.pick=(i,j)=>{
   if(EX.done) return;
   EX.ans[i]=j;
   EX.qs[i].opts.forEach((_,x)=>{ const b=$('#o'+i+'-'+x); if(b) b.classList.toggle('sel',x===j); });
-  const n=Object.keys(EX.ans).length; const L=$('#left'); if(L) L.textContent=n+'/20 answered';
+  const n=$('#ansN'); if(n) n.textContent=answeredCount();
 };
+window.typed=(i,v)=>{ if(EX.done) return; EX.ans[i]=v; const n=$('#ansN'); if(n) n.textContent=answeredCount(); };
+
 window.submitExam=async(force)=>{
   if(!EX||EX.done) return;
-  const n=Object.keys(EX.ans).length;
+  const n=answeredCount();
   if(!force && n<EX.qs.length && !confirm('You have answered '+n+'/'+EX.qs.length+'. Submit anyway?')) return;
-  EX.done=true; clearInterval(EX.timer);
+  EX.done=true; clearInterval(EX.timer); stopQAudio();
   let score=0;
-  EX.qs.forEach((q,i)=>{
-    const j=EX.ans[i]; const good=j!=null && q.opts[j].ok;
+  const review=EX.qs.map((q,i)=>{
+    const a=EX.ans[i]; let good=false, your='—';
+    if(q.type==='mc'){ good=a!=null&&q.opts[a].ok; your=a!=null?q.opts[a].t:'—'; }
+    else{ good=norm(a)===norm(q.answer); your=(a&&String(a).trim())||'—'; }
     if(good) score++;
-    q.opts.forEach((o,x)=>{ const b=$('#o'+i+'-'+x); if(!b) return; b.disabled=true;
-      if(o.ok) b.classList.add('correct');
-      if(x===j && !o.ok) b.classList.add('wrong'); });
-    const fb=document.querySelector('#q'+i+' .fb');
-    if(fb) fb.innerHTML=`<div class="explain">${good?'✅':'❌'} ${esc(q.ex||'')}</div>`;
+    let body='';
+    if(q.type==='mc'){
+      body=q.opts.map((o,j)=>`<button class="opt ${o.ok?'correct':(j===a?'wrong':'')}" disabled>${esc(o.t)}</button>`).join('');
+    }else{
+      body=`<input class="tin ${good?'correct':'wrong'}" value="${esc(good?q.answer:(your+'  →  '+q.answer))}" disabled>`;
+    }
+    return `<div class="q">
+      <div class="tag">${q.tag} · ${i+1}/${EX.qs.length}</div>
+      <h3>${q.q}</h3>${body}
+      <div class="explain">${good?'✅':'❌'} ${esc(q.ex||'')}</div></div>`;
   });
   const pct=Math.round(score/EX.qs.length*100);
   const band=pct>=90?['🏅 Grade A — Excellent!','#059669']:pct>=80?['🥈 Grade B — Very good','#0d9488']
            :pct>=70?['🥉 Grade C — Pass','#b45309']:['📖 Not yet — review the chapter and try again','#dc2626'];
   const dur=Math.max(1,Math.round((Date.now()-EX.t0)/1000));
-  // resultado al portal (activity_attempts + webhook), igual que los labs
   try{
     if(sb&&me&&me.uid){
       await sb.from('activity_attempts').insert({student_id:me.uid,activity:'attwn-exam-'+EX.lvl+'-ch'+EX.ch,
@@ -299,17 +433,18 @@ window.submitExam=async(force)=>{
           examType:'attwn-exam-'+EX.lvl+'-ch'+EX.ch,score,total:EX.qs.length,duration_min:Math.max(1,Math.round(dur/60))})});
     }
   }catch(e){}
-  const top=document.createElement('div');
-  top.className='q center';
-  top.innerHTML=`<div class="score">${score}/${EX.qs.length}</div>
-    <div class="band" style="color:${band[1]}">${band[0]}</div>
-    <p class="muted">${pct}% · Chapter ${EX.ch} · ${LVL_META[EX.lvl][1]}. Scroll down to review every question with feedback.</p>
-    <div style="margin-top:12px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-      <button class="btn ghost" onclick="viewChapters('${EX.rid}','${EX.lvl}')">← Other chapters</button>
-      <button class="btn" onclick="startExam('${EX.rid}','${EX.lvl}',${EX.ch})">🔄 Try again</button>
-    </div>`;
-  const main=$('#main'); main.insertBefore(top,main.children[1]);
-  document.querySelector('.center:last-child').style.display='none';
+  $('#exBody').innerHTML=`
+    <div class="q center">
+      <div class="score">${score}/${EX.qs.length}</div>
+      <div class="band" style="color:${band[1]}">${band[0]}</div>
+      <p class="muted">${pct}% · Chapter ${EX.ch} · ${LVL_META[EX.lvl][1]}. Below is the full correction with feedback.</p>
+      <div style="margin-top:12px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <button class="btn ghost" onclick="viewChapters('${EX.rid}','${EX.lvl}')">← Other chapters</button>
+        <button class="btn" onclick="startExam('${EX.rid}','${EX.lvl}',${EX.ch})">🔄 Try again</button>
+      </div>
+    </div>
+    ${review.join('')}
+    <div class="center" style="margin-top:14px"><button class="btn ghost" onclick="viewChapters('${EX.rid}','${EX.lvl}')">← Back to the chapters</button></div>`;
   window.scrollTo(0,0);
 };
 boot();
