@@ -122,8 +122,14 @@
    CANDADOS: tabla reader_exam_access (sin fila = BLOQUEADO para el
    alumno); docente/admin ven interruptores y siempre pueden entrar.
    ===================================================================== */
-const READERS=[{id:'attwn', icon:'🏝️', title:'And Then There Were None', by:'Agatha Christie',
-  levels:['a2','b1','b2','c1'], chapters:10}];
+const READERS=[
+  {id:'attwn', icon:'🏝️', title:'And Then There Were None', by:'Agatha Christie',
+   levels:['a2','b1','b2','c1'], chapters:10, prefix:'attwn-data-', legacyB1Audio:true},
+  {id:'earnest', icon:'🎩', title:'The Importance of Being Earnest', by:'Oscar Wilde',
+   levels:['a2','b1','b2','c1'], chapters:9, prefix:'earnest-data-', extras:'earnest-extras.js'},
+  {id:'tomsawyer', icon:'🚣', title:'The Adventures of Tom Sawyer', by:'Mark Twain',
+   levels:['a2','b1','b2','c1'], chapters:8, prefix:'tomsawyer-data-', extras:'tomsawyer-extras.js'}
+];
 const LVL_META={a2:['🐣','A2 · Elementary',25], b1:['🏝️','B1 · Intermediate',25],
                 b2:['🚀','B2 · Upper-intermediate',35], c1:['🎓','C1 · Advanced',35]};
 const $=s=>document.querySelector(s);
@@ -172,14 +178,28 @@ async function boot(){
 const isStaff=()=>me && (me.role==='teacher'||me.role==='admin');
 const lockKey=(r,l,ch)=>r+':'+l+':ch'+ch;
 const isOpen=k=>!!locks[k];
-const audBase=lvl=>'attwn-audio/'+(lvl==='b1'?'':lvl+'/');
+const bookOf=rid=>READERS.find(x=>x.id===rid);
+const audBase=(rid,lvl)=>{ const b=bookOf(rid);
+  return (b.legacyB1Audio&&lvl==='b1') ? rid+'-audio/' : rid+'-audio/'+lvl+'/'; };
 
-function loadLevel(lvl){
+function loadLevel(rid,lvl){
   return new Promise((res,rej)=>{
-    if(dataCache[lvl]) return res(dataCache[lvl]);
-    const s=document.createElement('script'); s.src='attwn-data-'+lvl+'.js?v=1';
-    s.onload=()=>{ dataCache[lvl]=window.ATTWN_DATA; res(dataCache[lvl]); };
+    const k=rid+':'+lvl;
+    if(dataCache[k]) return res(dataCache[k]);
+    const s=document.createElement('script'); s.src=bookOf(rid).prefix+lvl+'.js?v=1';
+    s.onload=()=>{ dataCache[k]=window.ATTWN_DATA; res(dataCache[k]); };
     s.onerror=rej; document.head.appendChild(s);
+  });
+}
+const extrasCache={};
+function loadCh1Extra(rid){
+  const b=bookOf(rid);
+  if(!b.extras) return Promise.resolve(CH1_EXTRA);          // attwn: banco propio
+  if(extrasCache[rid]) return Promise.resolve(extrasCache[rid]);
+  return new Promise(res=>{
+    const s=document.createElement('script'); s.src=b.extras+'?v=1';
+    s.onload=()=>{ extrasCache[rid]=(window.READER_EXTRAS&&window.READER_EXTRAS.EXAM_CH1)||[]; res(extrasCache[rid]); };
+    s.onerror=()=>res([]); document.head.appendChild(s);
   });
 }
 
@@ -217,7 +237,7 @@ window.viewLevels=(rid)=>{
 /* ---------- pantalla 3: capítulos + candados ---------- */
 window.viewChapters=async(rid,lvl)=>{
   $('#main').innerHTML='<p class="muted">Loading chapters…</p>';
-  const data=await loadLevel(lvl);
+  const data=await loadLevel(rid,lvl);
   const r=READERS.find(x=>x.id===rid); const m=LVL_META[lvl];
   const staff=isStaff();
   $('#main').innerHTML=`
@@ -262,7 +282,7 @@ window.lockAll=async(rid,lvl,open)=>{
 };
 
 /* ---------- construcción del examen ---------- */
-function gapItems(data,ch,lvl){
+function gapItems(data,ch){
   // 4 huecos de listening: una oración del retelling con una palabra del
   // vocabulario borrada; guarda el nº de párrafo para reproducir SU audio.
   const paras=data.READINGS[ch]||[]; const c=data.CHAPTERS[ch-1];
@@ -278,7 +298,7 @@ function gapItems(data,ch,lvl){
   }
   return items;
 }
-function buildExam(data,ch,lvl){
+function buildExam(data,ch,lvl,rid,ch1x){
   const c=data.CHAPTERS[ch-1]; const qs=[]; const hard=(lvl==='b2'||lvl==='c1');
   // A · comprensión
   c.comp.forEach(q=>qs.push({tag:'Comprehension', type:'mc', q:q[0],
@@ -299,9 +319,9 @@ function buildExam(data,ch,lvl){
     }
   });
   // D · listening (escribe la palabra que oyes)
-  gapItems(data,ch,lvl).forEach(g=>qs.push({tag:'Listening', type:'type',
+  gapItems(data,ch).forEach(g=>qs.push({tag:'Listening', type:'type',
     q:'🎧 Listen to the paragraph and complete: <br><i>'+esc(g.sent)+'</i>',
-    audio:audBase(lvl)+'ch'+ch+'-p'+g.para+'.mp3', answer:g.answer,
+    audio:audBase(rid,lvl)+'ch'+ch+'-p'+g.para+'.mp3', answer:g.answer,
     ex:'The missing word was “'+g.answer+'”.'}));
   // E · orden de la historia (¿qué pasó primero?)
   const ev=(data.EVENTS[ch]||{}).ev||[];
@@ -314,7 +334,7 @@ function buildExam(data,ch,lvl){
   }
   const exam=shuffle(qs);
   // F · el examen del capítulo 1 añade autor y personajes (al final, fijas)
-  if(ch===1) CH1_EXTRA.forEach(x=>exam.push({tag:x[0], type:'mc', q:x[1],
+  (ch1x||[]).forEach(x=>exam.push({tag:x[0], type:'mc', q:x[1],
     opts:shuffle(x[2].map((t,i)=>({t,ok:i===x[3]}))), ex:x[4]}));
   return exam;
 }
@@ -330,11 +350,12 @@ window.playQAudio=(url,btn)=>{
   btn.textContent='⏸ Stop'; _qaud.play().catch(()=>_qaud&&_qaud.onerror());
 };
 window.startExam=async(rid,lvl,ch)=>{
-  const data=await loadLevel(lvl);
+  const data=await loadLevel(rid,lvl);
   const k=lockKey(rid,lvl,ch);
   if(!isStaff() && !isOpen(k)){ alert('This exam is locked. Ask your teacher.'); return; }
+  const ch1x = ch===1 ? await loadCh1Extra(rid) : [];
   const c=data.CHAPTERS[ch-1]; const mins=LVL_META[lvl][2];
-  EX={rid,lvl,ch,title:c.title,qs:buildExam(data,ch,lvl),ans:{},page:0,t0:Date.now(),secs:mins*60,timer:null,done:false,previewLocked:isStaff()&&!isOpen(k)};
+  EX={rid,lvl,ch,title:c.title,qs:buildExam(data,ch,lvl,rid,ch1x),ans:{},page:0,t0:Date.now(),secs:mins*60,timer:null,done:false,previewLocked:isStaff()&&!isOpen(k)};
   EX.pages=Math.ceil(EX.qs.length/2);
   $('#main').innerHTML=`
     <div class="exam-top">
