@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google" content="notranslate">
+<title>Reader Exams — Portal NIS</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{ --blue:#1d6fb8; --blue-d:#154e7f; --ink:#0f172a; --muted:#64748b; --line:#e2e8f0; --gold:#b8934a }
+  *{ box-sizing:border-box; margin:0 }
+  body{ font-family:'Montserrat',system-ui,sans-serif; background:#f1f5f9; color:var(--ink); min-height:100vh }
+  header{ background:#fff; border-bottom:1px solid var(--line); padding:10px 18px; display:flex; gap:14px; align-items:center;
+    position:sticky; top:0; z-index:20 }
+  header img{ height:34px }
+  header .sub{ font-size:11px; font-weight:800; letter-spacing:1.5px; color:var(--muted) }
+  .backbtn{ margin-left:auto; background:#eef2f9; color:var(--blue-d); border:none; border-radius:9px; padding:8px 14px;
+    font-family:inherit; font-weight:700; cursor:pointer; font-size:13px }
+  .backbtn:hover{ background:#dbe4f3 }
+  main{ max-width:900px; margin:0 auto; padding:22px 16px 60px }
+  h1{ font-size:1.5rem; color:var(--blue-d) }
+  .lead{ color:var(--muted); font-size:14px; margin:6px 0 18px }
+  .grid{ display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)) }
+  .card{ background:#fff; border:1px solid var(--line); border-radius:16px; padding:18px; cursor:pointer;
+    box-shadow:0 6px 18px rgba(15,23,42,.06); transition:.15s; position:relative }
+  .card:hover{ transform:translateY(-2px); box-shadow:0 10px 26px rgba(15,23,42,.12); border-color:#93c5fd }
+  .card h2{ font-size:15.5px; color:var(--blue-d); margin:6px 0 4px }
+  .card .desc{ font-size:13px; color:var(--muted) }
+  .card .ico{ font-size:2rem }
+  .card.locked{ opacity:.62; cursor:default }
+  .card.locked:hover{ transform:none; border-color:var(--line) }
+  .chip{ display:inline-block; background:#eef2f9; color:var(--blue-d); font-weight:700; font-size:11.5px;
+    border-radius:9px; padding:3px 10px; margin-top:8px }
+  .chip.ok{ background:#dcfce7; color:#065f46 }
+  .chip.no{ background:#fee2e2; color:#991b1b }
+  .hero{ background:linear-gradient(135deg,#7f1d1d,#1c1712); color:#fde68a; border-radius:18px; padding:20px 18px;
+    margin-bottom:18px; position:relative; overflow:hidden; border:1px solid var(--gold) }
+  .hero::after{ content:"EXAM"; position:absolute; top:16px; right:-30px; transform:rotate(35deg); background:#b91c1c;
+    color:#fff; font-weight:800; font-size:11px; letter-spacing:2px; padding:4px 42px }
+  .hero p{ color:#e7d5ac; font-size:13px; margin-top:4px }
+  .note{ background:#fffbeb; border-left:4px solid #f59e0b; border-radius:10px; padding:10px 14px; font-size:13px;
+    color:#78350f; margin-bottom:16px }
+  /* interruptor del docente */
+  .tgl{ display:flex; gap:8px; align-items:center; margin-top:10px; font-size:12px; font-weight:700 }
+  .tgl button{ border:none; border-radius:20px; width:46px; height:24px; cursor:pointer; position:relative; transition:.2s; flex:none }
+  .tgl button::after{ content:""; position:absolute; top:3px; width:18px; height:18px; border-radius:50%; background:#fff; transition:.2s }
+  .tgl button.off{ background:#cbd5e1 } .tgl button.off::after{ left:3px }
+  .tgl button.on{ background:#16a34a } .tgl button.on::after{ left:25px }
+  /* examen */
+  .exam-top{ position:sticky; top:56px; z-index:10; background:#fff; border:1.5px solid var(--line); border-radius:14px;
+    padding:10px 16px; margin-bottom:16px; box-shadow:0 8px 20px rgba(15,23,42,.1); display:flex; gap:14px; align-items:center; flex-wrap:wrap }
+  .exam-top b{ color:var(--blue-d) }
+  .timer{ font-variant-numeric:tabular-nums; font-weight:800; font-size:17px; color:var(--blue-d) }
+  .timer.low{ color:#dc2626; animation:blink 1s infinite }
+  @keyframes blink{ 50%{ opacity:.45 } }
+  .tprog{ flex:1; min-width:120px; height:8px; background:#e2e8f0; border-radius:5px; overflow:hidden }
+  .tprog span{ display:block; height:100%; background:var(--blue); transition:width 1s linear }
+  .q{ background:#fff; border:1px solid var(--line); border-radius:14px; padding:16px 18px; margin-bottom:14px }
+  .q .tag{ font-size:10.5px; font-weight:800; letter-spacing:.6px; color:var(--gold); text-transform:uppercase }
+  .q h3{ font-size:15px; margin:4px 0 10px }
+  .opt{ display:block; width:100%; text-align:left; background:#f8fafc; border:1.5px solid var(--line); border-radius:11px;
+    padding:11px 14px; margin:7px 0; cursor:pointer; font-family:inherit; font-size:14px; font-weight:600; color:var(--ink) }
+  .opt:hover{ border-color:#93c5fd }
+  .opt.sel{ background:#dbeafe; border-color:var(--blue) }
+  .opt.correct{ background:#dcfce7; border-color:#4ade80; color:#065f46 }
+  .opt.wrong{ background:#fee2e2; border-color:#f87171; color:#991b1b }
+  .explain{ background:#eff6ff; border-left:4px solid var(--blue); border-radius:8px; padding:9px 12px; font-size:13px;
+    color:#1e3a5f; margin-top:8px }
+  .btn{ background:var(--blue); color:#fff; border:none; border-radius:11px; padding:12px 22px; font-family:inherit;
+    font-weight:700; font-size:14.5px; cursor:pointer }
+  .btn:hover{ background:var(--blue-d) }
+  .btn.ghost{ background:#eef2f9; color:var(--blue-d) }
+  .score{ font-size:2.6rem; font-weight:800; color:var(--blue) }
+  .band{ font-size:1.3rem; font-weight:800; margin:6px 0 }
+  .center{ text-align:center }
+  .muted{ color:var(--muted) }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+<script src="config.js"></script>
+<script src="nis-nav.js?v=1"></script>
+</head>
+<body>
+<header>
+  <img src="assets/logo-h.svg" alt="Nordic International School" onerror="this.style.display='none'">
+  <div class="sub">9TH GRADE · READER EXAMS</div>
+  <button class="backbtn" onclick="location.href='and-then-there-were-none.html'">🏝️ Readers</button>
+</header>
+<main id="main"><p class="muted">Loading…</p></main>
+
+<script>
+/* =====================================================================
+   READER EXAMS — un examen autocorregible por capítulo y por nivel.
+   Las preguntas se ensamblan del banco del nivel (attwn-data-<lvl>.js):
+   8 comprensión + 6 true/false + 6 vocabulario = 20, con temporizador.
+   La dificultad la marca el propio nivel (textos y preguntas A2→C1).
+   CANDADOS: tabla reader_exam_access (sin fila = BLOQUEADO para el
+   alumno); docente/admin ven interruptores y siempre pueden entrar.
+   ===================================================================== */
+const READERS=[{id:'attwn', icon:'🏝️', title:'And Then There Were None', by:'Agatha Christie',
+  levels:['a2','b1','b2','c1'], chapters:10}];
+const LVL_META={a2:['🐣','A2 · Elementary',15], b1:['🏝️','B1 · Intermediate',15],
+                b2:['🚀','B2 · Upper-intermediate',20], c1:['🎓','C1 · Advanced',20]};
+const $=s=>document.querySelector(s);
+const shuffle=a=>{ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; };
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+
+let sb=null, me=null, locks={};       // locks['attwn:b1:ch3']=true → abierto
+const dataCache={};
+
+async function boot(){
+  if(window.supabase && window.NIS_CONFIG){
+    sb=window.supabase.createClient(NIS_CONFIG.SUPABASE_URL,NIS_CONFIG.SUPABASE_KEY);
+    try{
+      const u=await sb.auth.getUser();
+      if(u&&u.data&&u.data.user){
+        const p=await sb.from('profiles').select('full_name,first_name,email,role').eq('id',u.data.user.id).maybeSingle();
+        me=Object.assign({uid:u.data.user.id,email:u.data.user.email},(p&&p.data)||{});
+      }
+      const l=await sb.from('reader_exam_access').select('key,unlocked');
+      (l.data||[]).forEach(r=>locks[r.key]=!!r.unlocked);
+    }catch(e){}
+  }
+  viewReaders();
+}
+const isStaff=()=>me && (me.role==='teacher'||me.role==='admin');
+const lockKey=(r,l,ch)=>r+':'+l+':ch'+ch;
+const isOpen=k=>!!locks[k];
+
+function loadLevel(lvl){
+  return new Promise((res,rej)=>{
+    if(dataCache[lvl]) return res(dataCache[lvl]);
+    const s=document.createElement('script'); s.src='attwn-data-'+lvl+'.js?v=1';
+    s.onload=()=>{ dataCache[lvl]=window.ATTWN_DATA; res(dataCache[lvl]); };
+    s.onerror=rej; document.head.appendChild(s);
+  });
+}
+
+/* ---------- pantalla 1: readers ---------- */
+function viewReaders(){
+  $('#main').innerHTML=`
+    <div class="hero"><h1 style="color:#fde68a">📝 Reader Exams</h1>
+      <p>One exam per chapter, at your level. 20 questions · timed · corrected automatically with feedback.
+      ${isStaff()?'<b>Teacher mode:</b> use the switches to unlock each exam for students.':'Your teacher unlocks each exam when your class is ready.'}</p></div>
+    <div class="grid">
+      ${READERS.map(r=>`<div class="card" onclick="viewLevels('${r.id}')">
+        <div class="ico">${r.icon}</div><h2>${r.title}</h2>
+        <div class="desc">${r.by} · ${r.chapters} chapter exams × 4 levels</div>
+        <span class="chip">A2 · B1 · B2 · C1</span></div>`).join('')}
+    </div>`;
+}
+
+/* ---------- pantalla 2: niveles ---------- */
+window.viewLevels=(rid)=>{
+  const r=READERS.find(x=>x.id===rid);
+  $('#main').innerHTML=`
+    <h1>${r.icon} ${r.title} — choose the exam level</h1>
+    <p class="lead">Take the exam at the level you are reading. Higher level = longer texts, harder questions, more time.</p>
+    <div class="grid">
+      ${r.levels.map(l=>{ const m=LVL_META[l];
+        const open=Array.from({length:r.chapters},(_,i)=>isOpen(lockKey(rid,l,i+1))).filter(Boolean).length;
+        return `<div class="card" onclick="viewChapters('${rid}','${l}')">
+          <div class="ico">${m[0]}</div><h2>${m[1]}</h2>
+          <div class="desc">${r.chapters} chapter exams · 20 questions · ${m[2]} minutes each</div>
+          <span class="chip ${open? 'ok':''}">${open}/${r.chapters} unlocked</span></div>`; }).join('')}
+    </div>
+    <div style="margin-top:16px"><button class="btn ghost" onclick="viewReaders()">← Back</button></div>`;
+};
+
+/* ---------- pantalla 3: capítulos + candados ---------- */
+window.viewChapters=async(rid,lvl)=>{
+  $('#main').innerHTML='<p class="muted">Loading chapters…</p>';
+  const data=await loadLevel(lvl);
+  const r=READERS.find(x=>x.id===rid); const m=LVL_META[lvl];
+  const staff=isStaff();
+  $('#main').innerHTML=`
+    <h1>${m[0]} ${r.title} · ${m[1]}</h1>
+    <p class="lead">One exam per chapter — ${m[2]} minutes, 20 questions (comprehension + true/false + vocabulary), corrected automatically with feedback at the end.</p>
+    ${staff?`<div class="note">👩‍🏫 <b>Teacher controls:</b> exams are created LOCKED. Flip a switch to open that chapter's exam for students, or use:
+      <button class="btn ghost" style="padding:6px 12px;font-size:12px" onclick="lockAll('${rid}','${lvl}',true)">🔓 Unlock all</button>
+      <button class="btn ghost" style="padding:6px 12px;font-size:12px" onclick="lockAll('${rid}','${lvl}',false)">🔒 Lock all</button></div>`:''}
+    <div class="grid" id="chGrid">
+      ${data.CHAPTERS.map(c=>{ const k=lockKey(rid,lvl,c.n); const open=isOpen(k);
+        const canEnter=staff||open;
+        return `<div class="card ${canEnter?'':'locked'}" id="cc-${c.n}" ${canEnter?`onclick="startExam('${rid}','${lvl}',${c.n})"`:''}>
+          <div class="ico">${open?'📝':'🔒'}</div>
+          <h2>Chapter ${c.n} · ${esc(c.title)}</h2>
+          <div class="desc">${esc(c.sum).slice(0,90)}…</div>
+          <span class="chip ${open?'ok':'no'}" id="st-${c.n}">${open?'✅ Open for students':'🔒 Locked for students'}</span>
+          ${staff?`<div class="tgl" onclick="event.stopPropagation()"><button class="${open?'on':'off'}" id="tg-${c.n}"
+              onclick="toggleLock('${k}',${c.n},this)"></button><span>${open?'students CAN take it':'hidden from students'}</span></div>`:''}
+        </div>`; }).join('')}
+    </div>
+    <div style="margin-top:16px"><button class="btn ghost" onclick="viewLevels('${rid}')">← Levels</button></div>`;
+};
+window.toggleLock=async(k,n,btn)=>{
+  const now=!isOpen(k);
+  btn.className=now?'on':'off';
+  try{
+    const r=await sb.from('reader_exam_access').upsert({key:k,unlocked:now,updated_at:new Date().toISOString()});
+    if(r.error) throw r.error;
+    locks[k]=now;
+    const st=$('#st-'+n); if(st){ st.className='chip '+(now?'ok':'no'); st.textContent=now?'✅ Open for students':'🔒 Locked for students'; }
+    btn.nextElementSibling.textContent=now?'students CAN take it':'hidden from students';
+  }catch(e){ btn.className=isOpen(k)?'on':'off'; alert('No se pudo guardar (¿sesión de docente activa?): '+(e.message||e)); }
+};
+window.lockAll=async(rid,lvl,open)=>{
+  const rows=Array.from({length:READERS.find(x=>x.id===rid).chapters},(_,i)=>({key:lockKey(rid,lvl,i+1),unlocked:open,updated_at:new Date().toISOString()}));
+  try{
+    const r=await sb.from('reader_exam_access').upsert(rows);
+    if(r.error) throw r.error;
+    rows.forEach(x=>locks[x.key]=open);
+    viewChapters(rid,lvl);
+  }catch(e){ alert('No se pudo guardar: '+(e.message||e)); }
+};
+
+/* ---------- el examen ---------- */
+let EX=null;
+function buildExam(data,ch){
+  const c=data.CHAPTERS[ch-1]; const qs=[];
+  c.comp.forEach(q=>qs.push({tag:'Comprehension', q:q[0],
+    opts:shuffle(q[1].map((t,i)=>({t,ok:i===q[2]}))), ex:q[3]}));
+  c.tf.forEach(t=>qs.push({tag:'True / False', q:t[0],
+    opts:[{t:'True',ok:t[1]===true},{t:'False',ok:t[1]===false}], ex:t[2]}));
+  shuffle(c.vocab).slice(0,6).forEach(v=>{
+    const wrong=shuffle(c.vocab.filter(x=>x[0]!==v[0])).slice(0,3).map(x=>x[1]);
+    qs.push({tag:'Vocabulary', q:'What does “'+v[0]+'” mean?',
+      opts:shuffle([{t:v[1],ok:true},...wrong.map(t=>({t,ok:false}))]), ex:v[0]+' = '+v[1]});
+  });
+  return shuffle(qs);
+}
+window.startExam=async(rid,lvl,ch)=>{
+  const data=await loadLevel(lvl);
+  const k=lockKey(rid,lvl,ch);
+  if(!isStaff() && !isOpen(k)){ alert('This exam is locked. Ask your teacher.'); return; }
+  const c=data.CHAPTERS[ch-1]; const mins=LVL_META[lvl][2];
+  EX={rid,lvl,ch,title:c.title,qs:buildExam(data,ch),ans:{},t0:Date.now(),secs:mins*60,timer:null,done:false};
+  $('#main').innerHTML=`
+    <div class="exam-top">
+      <b>${LVL_META[lvl][0]} ${LVL_META[lvl][1].split(' · ')[0]} · Ch. ${ch} — ${esc(c.title)}</b>
+      <div class="tprog"><span id="tb" style="width:100%"></span></div>
+      <span class="timer" id="tm">${mins}:00</span>
+    </div>
+    <div class="note">📝 Answer all 20 questions, then press <b>Submit</b>. You will see your score and the correction with feedback at the end. ${isStaff()&&!isOpen(k)?'<b>(Teacher preview — still locked for students.)</b>':''}</div>
+    ${EX.qs.map((q,i)=>`<div class="q" id="q${i}">
+      <div class="tag">${q.tag} · ${i+1}/20</div>
+      <h3>${q.q}</h3>
+      ${q.opts.map((o,j)=>`<button class="opt" id="o${i}-${j}" onclick="pick(${i},${j})">${esc(o.t)}</button>`).join('')}
+      <div class="fb"></div>
+    </div>`).join('')}
+    <div class="center" style="margin:20px 0">
+      <span class="muted" id="left">0/20 answered</span><br><br>
+      <button class="btn" onclick="submitExam()">✅ Submit my exam</button>
+    </div>`;
+  EX.timer=setInterval(()=>{
+    EX.secs--; const m=Math.floor(EX.secs/60), s=EX.secs%60;
+    const tm=$('#tm'); if(tm){ tm.textContent=m+':'+String(s).padStart(2,'0'); if(EX.secs<=60) tm.classList.add('low'); }
+    const tb=$('#tb'); if(tb) tb.style.width=(EX.secs/(mins*60)*100)+'%';
+    if(EX.secs<=0){ clearInterval(EX.timer); alert('⏰ Time is up! Your exam will be submitted now.'); submitExam(true); }
+  },1000);
+  window.scrollTo(0,0);
+};
+window.pick=(i,j)=>{
+  if(EX.done) return;
+  EX.ans[i]=j;
+  EX.qs[i].opts.forEach((_,x)=>{ const b=$('#o'+i+'-'+x); if(b) b.classList.toggle('sel',x===j); });
+  const n=Object.keys(EX.ans).length; const L=$('#left'); if(L) L.textContent=n+'/20 answered';
+};
+window.submitExam=async(force)=>{
+  if(!EX||EX.done) return;
+  const n=Object.keys(EX.ans).length;
+  if(!force && n<EX.qs.length && !confirm('You have answered '+n+'/'+EX.qs.length+'. Submit anyway?')) return;
+  EX.done=true; clearInterval(EX.timer);
+  let score=0;
+  EX.qs.forEach((q,i)=>{
+    const j=EX.ans[i]; const good=j!=null && q.opts[j].ok;
+    if(good) score++;
+    q.opts.forEach((o,x)=>{ const b=$('#o'+i+'-'+x); if(!b) return; b.disabled=true;
+      if(o.ok) b.classList.add('correct');
+      if(x===j && !o.ok) b.classList.add('wrong'); });
+    const fb=document.querySelector('#q'+i+' .fb');
+    if(fb) fb.innerHTML=`<div class="explain">${good?'✅':'❌'} ${esc(q.ex||'')}</div>`;
+  });
+  const pct=Math.round(score/EX.qs.length*100);
+  const band=pct>=90?['🏅 Grade A — Excellent!','#059669']:pct>=80?['🥈 Grade B — Very good','#0d9488']
+           :pct>=70?['🥉 Grade C — Pass','#b45309']:['📖 Not yet — review the chapter and try again','#dc2626'];
+  const dur=Math.max(1,Math.round((Date.now()-EX.t0)/1000));
+  // resultado al portal (activity_attempts + webhook), igual que los labs
+  try{
+    if(sb&&me&&me.uid){
+      await sb.from('activity_attempts').insert({student_id:me.uid,activity:'attwn-exam-'+EX.lvl+'-ch'+EX.ch,
+        title:'ATTWN EXAM '+EX.lvl.toUpperCase()+' · Ch.'+EX.ch+' '+EX.title,level:EX.lvl.toUpperCase(),
+        score,total:EX.qs.length,hints_used:0,lives_left:3,duration_sec:dur});
+      const mm=Math.floor(dur/60), ss=dur%60;
+      fetch(NIS_CONFIG.WRITING_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body:JSON.stringify({skill:'Reader Exam',name:me.full_name||me.first_name||'',email:me.email||'',
+          level:EX.lvl.toUpperCase(),examTitle:'ATTWN Exam '+EX.lvl.toUpperCase()+' Ch.'+EX.ch+' - Time '+mm+'m '+String(ss).padStart(2,'0')+'s',
+          examType:'attwn-exam-'+EX.lvl+'-ch'+EX.ch,score,total:EX.qs.length,duration_min:Math.max(1,Math.round(dur/60))})});
+    }
+  }catch(e){}
+  const top=document.createElement('div');
+  top.className='q center';
+  top.innerHTML=`<div class="score">${score}/${EX.qs.length}</div>
+    <div class="band" style="color:${band[1]}">${band[0]}</div>
+    <p class="muted">${pct}% · Chapter ${EX.ch} · ${LVL_META[EX.lvl][1]}. Scroll down to review every question with feedback.</p>
+    <div style="margin-top:12px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+      <button class="btn ghost" onclick="viewChapters('${EX.rid}','${EX.lvl}')">← Other chapters</button>
+      <button class="btn" onclick="startExam('${EX.rid}','${EX.lvl}',${EX.ch})">🔄 Try again</button>
+    </div>`;
+  const main=$('#main'); main.insertBefore(top,main.children[1]);
+  document.querySelector('.center:last-child').style.display='none';
+  window.scrollTo(0,0);
+};
+boot();
+</script>
+</body>
+</html>
