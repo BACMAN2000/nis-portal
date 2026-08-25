@@ -252,9 +252,18 @@ function render(){
   }
   window.scrollTo(0,0);
 }
-function openUnit(u){ curUnit=u; render(); }
-function goIndex(){ curUnit=null; render(); }
-render();
+/* La vista actual vive en el hash (#u0, #u1…): así el botón "atrás" del
+   navegador vuelve al índice de secciones en vez de sacar al alumno de la
+   página. La navegación interna solo escribe el hash; hashchange renderiza. */
+function openUnit(u){ location.hash='u'+u; }
+function goIndex(){ location.hash=''; }
+function applyRoute(){
+  const m=/^#u(\d+)$/.exec(location.hash);
+  curUnit = (m && XA.units.some(x=>x.unit===+m[1])) ? +m[1] : null;
+  render();
+}
+window.addEventListener('hashchange', applyRoute);
+applyRoute();
 </script>
 </body>
 </html>
