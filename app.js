@@ -382,6 +382,7 @@ async function renderAdmin(tab='users'){
     {key:'users',label:'👥 Alumnos'},
     {key:'results',label:'📝 Resultados'},
     {key:'final',label:'🎓 Resultado final'},
+    {key:'readers',label:'📖 Controles de lectura'},
     {key:'teachers',label:'👨‍🏫 Profesores'},
     {key:'honesty',label:'🛡️ Honestidad'},
     {key:'mocks',label:'🔓 Mocks'},
@@ -407,6 +408,7 @@ async function renderAdmin(tab='users'){
   if(tab==='stats') return adminStats();
   if(tab==='results') return adminResults();
   if(tab==='final') return cefrFinalPanel();
+  if(tab==='readers') return readerStatsPanel();
   if(tab==='teachers') return adminTeachers();
   if(tab==='honesty') return antiCheatPanel();
   if(tab==='mocks') return adminMocks();
@@ -1297,12 +1299,207 @@ function teacherAllowedGrades(){
   const acc = state.teacherAccess || { all_grades:true, grades:[] };
   return acc.all_grades ? GRADES : GRADES.filter(g => (acc.grades||[]).includes(g.id));
 }
+/* ============================================================
+   CONTROLES DE LECTURA — informe de los readers
+   Un solo cálculo para las dos vistas (profesor y alumno). Los intentos ya
+   viven en activity_attempts; lo que los distingue es la clave `activity`:
+     <obra>-exam-<nivel>-ch<N>    el control del capítulo (con nota)
+     <obra>-<nivel>-ch<N>-read    el rato de lectura con audio (sin nota)
+     <obra>-<nivel>-ch<N>-<act>   las otras 12 actividades del capítulo
+   La NOTA del capítulo es el mejor intento del control, como en el resto del
+   portal. La lectura y los ejercicios no mueven la nota: son la evidencia de
+   trabajo que se mira al lado. Nota de la obra = promedio de los capítulos
+   rendidos; nota general = promedio de las obras con nota.
+   ============================================================ */
+const READER_META={
+  attwn:    {icon:'🏝️', title:'And Then There Were None',        short:'ATTWN',      chapters:10},
+  earnest:  {icon:'🎩', title:'The Importance of Being Earnest', short:'Earnest',    chapters:9},
+  tomsawyer:{icon:'🚣', title:'The Adventures of Tom Sawyer',    short:'Tom Sawyer', chapters:8}
+};
+const _RDR_IDS=Object.keys(READER_META);
+const _RDR_EXAM_RX=/^([a-z]+)-exam-([a-z][0-9])-ch(\d+)$/;
+const _RDR_ACT_RX=/^([a-z]+)-([a-z][0-9])-ch(\d+)-(.+)$/;
+const _rdrOr=()=>_RDR_IDS.map(id=>'activity.like.'+id+'-*').join(',');
+function _rdrPct(s,t){ return (t&&s!=null)? Math.round(s/t*100) : null; }
+function _rdr20(p){ return (Math.round(p/5*10)/10).toFixed(1); }
+function _rdrMark(p){ return p==null ? '<span class="muted">—</span>'
+  : `<b>${p}%</b> <span class="muted" style="font-size:.78rem">${_rdr20(p)}/20</span>`; }
+function _rdrTime(s){ s=Math.round(s||0); if(!s) return '<span class="muted">—</span>';
+  const h=Math.floor(s/3600), m=Math.round((s%3600)/60);
+  return h ? h+'h '+String(m).padStart(2,'0')+'m' : (m? m+'m' : '&lt;1m'); }
+function _rdrAvg(list){ const v=(list||[]).filter(x=>x!=null); return v.length? Math.round(v.reduce((s,x)=>s+x,0)/v.length) : null; }
+
+/* Intentos de UN alumno → {obras → capítulos} + totales. */
+function readerReport(atts){
+  const books={};
+  (atts||[]).forEach(a=>{
+    const act=String(a.activity||''); let m, kind, id, lvl, ch, actId;
+    if((m=_RDR_EXAM_RX.exec(act))){ kind='exam'; id=m[1]; lvl=m[2]; ch=+m[3]; }
+    else if((m=_RDR_ACT_RX.exec(act))){ id=m[1]; lvl=m[2]; ch=+m[3]; actId=m[4]; kind=(actId==='read'?'read':'act'); }
+    else return;                                   // extras, juegos y todo lo demás no son controles
+    if(!READER_META[id]) return;
+    const b=books[id]||(books[id]={id, readSec:0, actSec:0, examSec:0, chapters:{}});
+    const c=b.chapters[ch]||(b.chapters[ch]={n:ch, best:null, tries:0, readSec:0, actSec:0, acts:{}, levels:{}, last:null});
+    const secs=a.duration_sec||0;
+    if(lvl) c.levels[lvl.toUpperCase()]=1;
+    if(kind==='exam'){
+      c.tries++; b.examSec+=secs;
+      const p=_rdrPct(a.score,a.total);
+      if(p!=null && (c.best==null || p>c.best)) c.best=p;
+      if(!c.last || String(a.submitted_at||'')>c.last) c.last=a.submitted_at;
+    }
+    else if(kind==='read'){ c.readSec+=secs; b.readSec+=secs; }
+    else { c.actSec+=secs; b.actSec+=secs; c.acts[actId]=(c.acts[actId]||0)+1; }
+  });
+  let readSec=0, actSec=0, examSec=0, tries=0;
+  Object.values(books).forEach(b=>{
+    const chs=Object.values(b.chapters);
+    b.grade=_rdrAvg(chs.map(c=>c.best));
+    b.done=chs.filter(c=>c.best!=null).length;
+    b.actsDone=chs.reduce((s,c)=>s+Object.keys(c.acts).length,0);
+    b.tries=chs.reduce((s,c)=>s+c.tries,0);
+    readSec+=b.readSec; actSec+=b.actSec; examSec+=b.examSec; tries+=b.tries;
+  });
+  return {books, overall:_rdrAvg(_RDR_IDS.map(id=>books[id]&&books[id].grade)), readSec, actSec, examSec, tries};
+}
+
+/* Desglose capítulo a capítulo de una obra: la misma tabla la usan el
+   profesor (detalle de un alumno) y el alumno (su libreta). `en` la pasa al
+   inglés, que es el idioma del portal del alumno. */
+function _rdrChapterTable(id,book,en){
+  const meta=READER_META[id];
+  const T = en
+    ? {ch:'Chapter',mark:'Control mark',tries:'Attempts',read:'⏱ Reading',ex:'⏱ Exercises',
+       exs:'Exercises',lvl:'Level',last:'Last control',none:'not taken yet',att:' attempt(s)',done:' taken'}
+    : {ch:'Capítulo',mark:'Nota del control',tries:'Intentos',read:'⏱ Lectura',ex:'⏱ Ejercicios',
+       exs:'Ejercicios',lvl:'Nivel',last:'Último control',none:'sin rendir',att:' intento(s)',done:' rendidos'};
+  const rows=Array.from({length:meta.chapters},(_,i)=>{
+    const c=(book&&book.chapters[i+1])||null;
+    const worked=c && (c.readSec||c.actSec||c.tries);
+    return `<tr${c&&c.best!=null?'':' style="background:#fcfdff"'}>
+      <td><b>Ch. ${i+1}</b></td>
+      <td>${c&&c.best!=null?_rdrMark(c.best):`<span class="muted">${T.none}</span>`}</td>
+      <td class="muted">${c&&c.tries?c.tries+T.att:'—'}</td>
+      <td>${c?_rdrTime(c.readSec):'<span class="muted">—</span>'}</td>
+      <td>${c?_rdrTime(c.actSec):'<span class="muted">—</span>'}</td>
+      <td class="muted">${c?Object.keys(c.acts).length+'/13':'—'}</td>
+      <td class="muted">${c&&Object.keys(c.levels).length?Object.keys(c.levels).sort().join(' · '):'—'}</td>
+      <td class="muted">${c&&c.last?new Date(c.last).toLocaleDateString():(worked?(en?'worked on':'trabajado'):'—')}</td>
+    </tr>`;
+  }).join('');
+  return `<div class="card" style="padding:0;overflow-x:auto"><table>
+    <thead><tr><th>${T.ch}</th><th>${T.mark}</th><th>${T.tries}</th><th>${T.read}</th><th>${T.ex}</th><th>${T.exs}</th><th>${T.lvl}</th><th>${T.last}</th></tr></thead>
+    <tbody>${rows}</tbody>
+    <tfoot><tr style="background:#f1f5f9"><td><b>${meta.icon} ${esc(meta.title)}</b></td>
+      <td>${_rdrMark(book?book.grade:null)}</td>
+      <td class="muted">${book?book.done:0}/${meta.chapters}${T.done}</td>
+      <td>${_rdrTime(book&&book.readSec)}</td>
+      <td>${_rdrTime(book&&book.actSec)}</td>
+      <td class="muted">${book?book.actsDone:0}</td><td></td><td></td></tr></tfoot>
+  </table></div>`;
+}
+
+let readerFilter={grade:'',section:'',book:'all'};
+window._setReaderFilter=(k,v)=>{ readerFilter[k]=v; readerStatsPanel(); };
+window._readerDetail=(id)=>readerStatsPanel(id);
+function _readerFilterBar(grades){
+  const lab=t=>`<label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">${t}</label>`;
+  const g=`<option value="">Todos los grados</option>`+grades.map(x=>`<option value="${x.id}" ${String(readerFilter.grade)===String(x.id)?'selected':''}>${x.name}</option>`).join('');
+  const s=`<option value="">Todas</option>`+['A','B'].map(x=>`<option value="${x}" ${readerFilter.section===x?'selected':''}>${x}</option>`).join('');
+  const b=`<option value="all" ${readerFilter.book==='all'?'selected':''}>Todas las obras</option>`
+    +_RDR_IDS.map(id=>`<option value="${id}" ${readerFilter.book===id?'selected':''}>${READER_META[id].icon} ${READER_META[id].title}</option>`).join('');
+  return `<div class="card" style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;padding:14px 16px;margin-bottom:10px">
+    <div>${lab('GRADO')}<select onchange="window._setReaderFilter('grade',this.value)" style="min-width:140px">${g}</select></div>
+    <div>${lab('SECCIÓN')}<select onchange="window._setReaderFilter('section',this.value)" style="min-width:100px">${s}</select></div>
+    <div>${lab('OBRA')}<select onchange="window._setReaderFilter('book',this.value)" style="min-width:250px">${b}</select></div>
+  </div>`;
+}
+/* Panel del profesor. `detailId` abre debajo el desglose de un alumno. */
+async function readerStatsPanel(detailId){
+  state._tab='readers';
+  $('#main').innerHTML=`<h1>📖 Controles de lectura</h1><p class="muted">Cargando…</p>`;
+  const grades=(state.profile&&state.profile.role==='admin')?GRADES:teacherAllowedGrades();
+  const gradeIds=new Set(grades.map(g=>String(g.id)));
+  const [{data:studs},{data:atts}]=await Promise.all([
+    sb.from('profiles').select('id,full_name,grade_id,section, grades(name)').eq('role','student'),
+    sb.from('activity_attempts').select('student_id,activity,score,total,duration_sec,submitted_at').or(_rdrOr()).limit(5000)
+  ]);
+  const byStu={};
+  (atts||[]).forEach(a=>{ (byStu[a.student_id]||(byStu[a.student_id]=[])).push(a); });
+  let list=(studs||[]).filter(p=>gradeIds.has(String(p.grade_id)));
+  if(readerFilter.grade)   list=list.filter(p=>String(p.grade_id)===String(readerFilter.grade));
+  if(readerFilter.section) list=list.filter(p=>p.section===readerFilter.section);
+  list.sort((a,b)=>(a.full_name||'').localeCompare(b.full_name||''));
+  const data=list.map(p=>({p, r:readerReport(byStu[p.id]||[])}));
+  const one=readerFilter.book!=='all' ? readerFilter.book : null;
+  const meta=one?READER_META[one]:null;
+  const gradeOf=d=> one ? (d.r.books[one]?d.r.books[one].grade:null) : d.r.overall;
+  const active=data.filter(d=>gradeOf(d)!=null);
+  const clase=_rdrAvg(data.map(gradeOf));
+  const sumRead=data.reduce((s,d)=>s+(one?(d.r.books[one]?d.r.books[one].readSec:0):d.r.readSec),0);
+  const sumAct =data.reduce((s,d)=>s+(one?(d.r.books[one]?d.r.books[one].actSec:0):d.r.actSec),0);
+  const stats=`<div class="grid cols-3" style="margin-bottom:12px">
+    <div class="stat"><div class="l">Nota ${one?'de la obra':'general'} (clase)</div><div class="n">${clase!=null?clase+'%':'—'}</div>
+      <div class="muted" style="font-size:.8rem">${clase!=null?_rdr20(clase)+'/20':'sin controles aún'}</div></div>
+    <div class="stat"><div class="l">Alumnos con nota</div><div class="n">${active.length}</div>
+      <div class="muted" style="font-size:.8rem">de ${data.length} en el filtro</div></div>
+    <div class="stat"><div class="l">Controles rendidos</div><div class="n">${data.reduce((s,d)=>s+(one?(d.r.books[one]?d.r.books[one].tries:0):d.r.tries),0)}</div>
+      <div class="muted" style="font-size:.8rem">intentos, se cuenta el mejor</div></div>
+    <div class="stat"><div class="l">⏱ Lectura con audio</div><div class="n" style="font-size:1.5rem">${_rdrTime(sumRead)}</div>
+      <div class="muted" style="font-size:.8rem">+ ${_rdrTime(sumAct)} en ejercicios</div></div>
+  </div>`;
+  const head = one
+    ? `<th>Alumno</th><th>Grado</th>${Array.from({length:meta.chapters},(_,i)=>`<th title="Capítulo ${i+1}">${i+1}</th>`).join('')}<th>Rendidos</th><th>Nota de la obra</th><th>⏱ Lectura</th><th>⏱ Ejercicios</th><th></th>`
+    : `<th>Alumno</th><th>Grado</th>${_RDR_IDS.map(id=>`<th>${READER_META[id].icon} ${READER_META[id].short}</th>`).join('')}<th>Nota general</th><th>⏱ Lectura</th><th>⏱ Ejercicios</th><th></th>`;
+  const rows=data.map(d=>{
+    const b=one?d.r.books[one]:null;
+    const cells = one
+      ? Array.from({length:meta.chapters},(_,i)=>{ const c=b&&b.chapters[i+1];
+          return `<td style="text-align:center">${c&&c.best!=null?`<b>${c.best}</b>`:'<span class="muted">·</span>'}</td>`; }).join('')
+        +`<td class="muted" style="text-align:center">${b?b.done:0}/${meta.chapters}</td><td>${_rdrMark(b?b.grade:null)}</td>`
+        +`<td>${_rdrTime(b&&b.readSec)}</td><td>${_rdrTime(b&&b.actSec)}</td>`
+      : _RDR_IDS.map(id=>{ const bk=d.r.books[id];
+          return `<td>${_rdrMark(bk?bk.grade:null)}${bk?` <span class="muted" style="font-size:.75rem">${bk.done}/${READER_META[id].chapters}</span>`:''}</td>`; }).join('')
+        +`<td>${_rdrMark(d.r.overall)}</td><td>${_rdrTime(d.r.readSec)}</td><td>${_rdrTime(d.r.actSec)}</td>`;
+    return `<tr><td><b>${esc(d.p.full_name||'')}</b></td>
+      <td><span class="badge grade">${esc(d.p.grades?.name||'—')}</span>${d.p.section?' <span class="badge">'+esc(d.p.section)+'</span>':''}</td>
+      ${cells}
+      <td><button class="btn sm ghost" onclick="window._readerDetail('${d.p.id}')">Detalle →</button></td></tr>`;
+  }).join('');
+  const detail=(()=>{
+    if(!detailId) return '';
+    const d=data.find(x=>String(x.p.id)===String(detailId));
+    if(!d) return '';
+    const books=_RDR_IDS.filter(id=>d.r.books[id]);
+    return `<div class="card"><div class="row" style="justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+        <h2 style="margin:0">${esc(d.p.full_name||'')} — capítulo a capítulo</h2>
+        <div>${_rdrMark(d.r.overall)} <span class="muted" style="font-size:.82rem">nota general</span></div>
+      </div>
+      <p class="muted" style="margin:4px 0 0;font-size:.85rem">⏱ ${_rdrTime(d.r.readSec)} de lectura con audio · ${_rdrTime(d.r.actSec)} de ejercicios · ${_rdrTime(d.r.examSec)} en los controles.</p></div>
+      ${books.length?books.map(id=>_rdrChapterTable(id,d.r.books[id])).join(''):'<div class="note info">Este alumno todavía no ha abierto ningún reader.</div>'}`;
+  })();
+  $('#main').innerHTML=`
+    <div class="row" style="justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:4px">
+      <h1 style="margin:0">📖 Controles de lectura</h1>
+    </div>
+    <p class="muted" style="margin-top:-6px">La nota de cada capítulo es su control (mejor intento). El tiempo de lectura con audio y el de los ejercicios se muestran al lado como evidencia de trabajo: no cambian la nota.</p>
+    ${_readerFilterBar(grades)}
+    ${stats}
+    <div class="card" style="padding:0;overflow-x:auto"><table>
+      <thead><tr>${head}</tr></thead>
+      <tbody>${rows||`<tr><td colspan="12" class="center muted">Sin alumnos para este filtro.</td></tr>`}</tbody>
+    </table>
+    <div class="muted" style="padding:8px 14px;font-size:.82rem">${data.length} alumno(s) · ${active.length} con nota${one?' en '+esc(meta.title):''}</div></div>
+    ${detail}`;
+}
+
 async function renderTeacher(tab){
   if(tab==='exams'){ window.location.assign(location.origin + '/mocks-cambridge/quizzes.html'); return; }
   const acc = state.teacherAccess || await loadTeacherAccess();
   const nav=[];
   if(acc.can_results) nav.push({key:'results',label:'📝 Resultados'});
   if(acc.can_results) nav.push({key:'final',label:'🎓 Resultado final'});
+  if(acc.can_results) nav.push({key:'readers',label:'📖 Controles de lectura'});
   if(acc.can_students) nav.push({key:'students',label:'👥 Alumnos'});
   if(acc.can_results||acc.can_students) nav.push({key:'honesty',label:'🛡️ Honestidad'});
   if(teacherAllowedGrades().length) nav.push({key:'practice',label:'🎯 Practice Tests'});
@@ -1324,6 +1521,7 @@ async function renderTeacher(tab){
   if(active==='games') return $('#main').innerHTML = gamesLabBody();
   if(active==='results') return teacherResults();
   if(active==='final') return cefrFinalPanel();
+  if(active==='readers') return readerStatsPanel();
   if(active==='students') return teacherStudents();
   if(active==='honesty') return antiCheatPanel();
   if(active==='practice') return practicePanel(teacherAllowedGrades());
@@ -2238,13 +2436,42 @@ const READER_CARDS = {
   tomsawyer:['🚣','The Adventures of Tom Sawyer','Mark Twain at five levels — A2 · B1 · B2 · C1 · C2. Read along with audio, listening, summaries, character files, games and chapter exams.','reader.html?book=tomsawyer','Tom Sawyer (A2–C2)'],
 };
 const READER_BOOKS = { g7:['tomsawyer'], g9:['attwn','earnest','tomsawyer'] };
+/* La misma cuenta que ve el profesor, pero solo con lo del propio alumno. */
+async function studentReaderReport(key){
+  _setNav('classes');
+  const back=_backBtn("window._nav('classes_"+key+"_readers')",'Readers');
+  const p=state.profile;
+  if(!p.id) return _previewNeedsStudent('📊 My reading report', back);
+  $('#main').innerHTML=`${back}<h1>📊 My reading report</h1><p class="muted">Loading…</p>`;
+  const { data:atts } = await sb.from('activity_attempts')
+    .select('activity,score,total,duration_sec,submitted_at').eq('student_id',p.id).or(_rdrOr()).limit(2000);
+  const r=readerReport(atts);
+  const mine=(READER_BOOKS[key]||_RDR_IDS).filter(id=>READER_META[id]);
+  const cards=mine.map(id=>{
+    const b=r.books[id], meta=READER_META[id];
+    return `<h2 style="font-size:16px;color:var(--blue-d);margin:18px 0 8px">${meta.icon} ${esc(meta.title)}</h2>
+      ${_rdrChapterTable(id,b,true)}`;
+  }).join('');
+  $('#main').innerHTML=`${back}<h1>📊 My reading report</h1>
+    <p class="muted" style="margin-top:-6px">Your mark for each chapter is your <b>chapter control</b> — your best attempt counts. Reading time and exercises don't change the mark: they show your teacher how much work you put in.</p>
+    <div class="grid cols-3" style="margin-bottom:6px">
+      <div class="stat"><div class="l">Overall mark</div><div class="n">${r.overall!=null?r.overall+'%':'—'}</div>
+        <div class="muted" style="font-size:.8rem">${r.overall!=null?_rdr20(r.overall)+'/20 · average of your books':'no chapter control taken yet'}</div></div>
+      <div class="stat"><div class="l">⏱ Reading with audio</div><div class="n" style="font-size:1.5rem">${_rdrTime(r.readSec)}</div>
+        <div class="muted" style="font-size:.8rem">time spent in “Read along”</div></div>
+      <div class="stat"><div class="l">⏱ Exercises</div><div class="n" style="font-size:1.5rem">${_rdrTime(r.actSec)}</div>
+        <div class="muted" style="font-size:.8rem">the 12 activities of each chapter</div></div>
+    </div>
+    ${cards}`;
+}
 function studentGradeReaders(key){
   _setNav('classes');
   const route='classes_'+key+'_readers';
   const back=_backBtn("window._nav('classes_"+key+"')",GRADE_META[key][1]);
   const base='english.classes.'+key+'.reader';
   if(!nodeVisible('english.classes.'+key) || !nodeVisible(base)){ _lockedView(back,'📚 Readers'); return; }
-  const cards=(READER_BOOKS[key]||[]).map(id=>{ const b=READER_CARDS[id]; return _skillCard(b[0],b[1],b[2],_withBack(b[3],route)); }).join('');
+  const cards=(READER_BOOKS[key]||[]).map(id=>{ const b=READER_CARDS[id]; return _skillCard(b[0],b[1],b[2],_withBack(b[3],route)); }).join('')
+    + _hubCard('📊','My reading report','Your mark for every chapter control, your reading time and your overall mark.',"window._nav('classes_"+key+"_readers_report')");
   $('#main').innerHTML=`${back}<h1>📚 Readers</h1>
     <p class="muted" style="margin-top:-6px">Graded readers with activities for every chapter.</p>
     <div class="grid cols-2" style="margin-top:12px">${cards}</div>`;
@@ -2432,6 +2659,7 @@ function _navRender(k){
   if(m=/^classes_(g\d+)_unit_([a-z0-9]+)$/.exec(k)){ studentGradeUnit(m[1],m[2]); return true; }
   if(m=/^classes_(g\d+)_act$/.exec(k)){ studentGradeActivities(m[1]); return true; }
   if(m=/^classes_(g\d+)_cambridge$/.exec(k)){ studentGradeCambridge(m[1]); return true; }
+  if(m=/^classes_(g\d+)_readers_report$/.exec(k)){ studentReaderReport(m[1]); return true; }
   if(m=/^classes_(g\d+)_readers$/.exec(k)){ studentGradeReaders(m[1]); return true; }
   if(m=/^classes_(g\d+)$/.exec(k))    { studentGrade(m[1]);           return true; }
   const fn={english:()=>studentSubject('english'),french:()=>studentSubject('french'),general:studentGeneral,

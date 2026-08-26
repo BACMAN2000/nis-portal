@@ -250,7 +250,7 @@ rep("“N.º de palabras” = solo el texto del reader (10 capítulos).",
     "“N.º de palabras” = solo el texto del reader (${CHAPTERS.length} capítulos).")
 
 # ---- candados de examen: la clave de reader_exam_access lleva el id del libro ----
-rep("const RDR_EXAM_ID='attwn';", "const RDR_EXAM_ID=RDR_ID;")
+rep("const RDR_BOOK_ID='attwn';", "const RDR_BOOK_ID=RDR_ID;")
 
 (ROOT / "reader.html").write_text(src, encoding="utf-8")
 print(f"reader.html generado con {n_rep} transformaciones, {len(src)} chars")

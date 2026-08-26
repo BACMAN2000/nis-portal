@@ -445,14 +445,14 @@ window.submitExam=async(force)=>{
   const dur=Math.max(1,Math.round((Date.now()-EX.t0)/1000));
   try{
     if(sb&&me&&me.uid){
-      await sb.from('activity_attempts').insert({student_id:me.uid,activity:'attwn-exam-'+EX.lvl+'-ch'+EX.ch,
-        title:'ATTWN EXAM '+EX.lvl.toUpperCase()+' · Ch.'+EX.ch+' '+EX.title,level:EX.lvl.toUpperCase(),
+      await sb.from('activity_attempts').insert({student_id:me.uid,activity:EX.rid+'-exam-'+EX.lvl+'-ch'+EX.ch,
+        title:bookOf(EX.rid).title+' — EXAM '+EX.lvl.toUpperCase()+' · Ch.'+EX.ch+' '+EX.title,level:EX.lvl.toUpperCase(),
         score,total:EX.qs.length,hints_used:0,lives_left:3,duration_sec:dur});
       const mm=Math.floor(dur/60), ss=dur%60;
       fetch(NIS_CONFIG.WRITING_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
         body:JSON.stringify({skill:'Reader Exam',name:me.full_name||me.first_name||'',email:me.email||'',
-          level:EX.lvl.toUpperCase(),examTitle:'ATTWN Exam '+EX.lvl.toUpperCase()+' Ch.'+EX.ch+' - Time '+mm+'m '+String(ss).padStart(2,'0')+'s',
-          examType:'attwn-exam-'+EX.lvl+'-ch'+EX.ch,score,total:EX.qs.length,duration_min:Math.max(1,Math.round(dur/60))})});
+          level:EX.lvl.toUpperCase(),examTitle:bookOf(EX.rid).title+' Exam '+EX.lvl.toUpperCase()+' Ch.'+EX.ch+' - Time '+mm+'m '+String(ss).padStart(2,'0')+'s',
+          examType:EX.rid+'-exam-'+EX.lvl+'-ch'+EX.ch,score,total:EX.qs.length,duration_min:Math.max(1,Math.round(dur/60))})});
     }
   }catch(e){}
   $('#exBody').innerHTML=`

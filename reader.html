@@ -374,8 +374,11 @@ window.NISACT = (function () {
     }catch(e){ return null; } }
   async function submit(r){
     const s=await student(); if(!s) return {skipped:true};
+    /* r.sheet===false: solo la base. Lo usan los registros de tiempo, que no
+       tienen nota y llenarían la hoja del profesor de filas vacías. */
     try{ await client().from('activity_attempts').insert({student_id:s.uid,activity:r.activity,title:r.title,
       level:r.level,score:r.score,total:r.total,hints_used:r.hints||0,lives_left:r.lives||3,duration_sec:r.duration}); }catch(e){}
+    if(r.sheet===false) return {sent:true};
     try{ const m=Math.floor(r.duration/60), sec=r.duration%60;
       await fetch(NIS_CONFIG.WRITING_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
         body:JSON.stringify({skill:'Reader',name:s.full_name||s.first_name||'',email:s.email||'',level:r.level,
@@ -415,9 +418,9 @@ function chapterDone(n){ return CORE_ACTS.filter(a=>{ const p=bestPct(n,a); retu
    Se cierra en TODOS los niveles del libro — cambiar de nivel es un clic — y
    el profesor lo sigue viendo todo. El último estado leído queda en
    localStorage para que cerrar sesión no sea la salida fácil. */
-const RDR_EXAM_ID=RDR_ID;
+const RDR_BOOK_ID=RDR_ID;
 const EXAM_POLL_MS=45000;
-const EXAM_CACHE_KEY='rdr:examopen:'+RDR_EXAM_ID;
+const EXAM_CACHE_KEY='rdr:examopen:'+RDR_BOOK_ID;
 function _examCacheRead(){
   try{ const c=JSON.parse(localStorage.getItem(EXAM_CACHE_KEY)||'null');
     if(c && Date.now()-c.t < 12*3600*1000) return new Set(c.ns); }catch(e){}
@@ -443,7 +446,7 @@ async function fetchExamLocks(){
     if(r.error) return false;
     rows=r.data||[];
   }catch(e){ return false; }
-  const re=new RegExp('^'+RDR_EXAM_ID+':[a-z0-9]+:ch(\\d+)$');
+  const re=new RegExp('^'+RDR_BOOK_ID+':[a-z0-9]+:ch(\\d+)$');
   const now=new Set();
   rows.forEach(r=>{ const m=re.exec(String(r.key||'')); if(m && r.unlocked) now.add(+m[1]); });
   const changed = now.size!==EXAM_OPEN.size || [...now].some(x=>!EXAM_OPEN.has(x));
@@ -475,6 +478,27 @@ async function examLockLoop(){
   setTimeout(examLockLoop, EXAM_POLL_MS);
 }
 
+/* ---------- tiempo dedicado a la lectura con audio ----------
+   "Read along" no tiene puntaje, así que nunca dejaba rastro: el informe de
+   controles no podía decir cuánto leyó cada alumno. Se registra el rato que
+   pasa en esa pantalla como un intento sin nota (solo duration_sec). */
+let _readT0=null, _readCh=null;
+function _readFlush(){
+  if(_readT0==null || !_readCh) return;
+  const secs=Math.min(2700,Math.round((Date.now()-_readT0)/1000));   // tope 45 min por pestaña olvidada
+  const c=_readCh; _readT0=null; _readCh=null;
+  if(secs<20) return;                                               // pasar de largo no es leer
+  if(window.NISACT) NISACT.submit({activity:RDR_BOOK_ID+'-'+LVLL+'-ch'+c.n+'-read',
+    title:RDR_BOOK_ID.toUpperCase()+' '+LVL+' Ch.'+c.n+' '+c.title+' — Read along',
+    level:LVL, score:null, total:null, duration:secs, sheet:false});
+}
+function _readStart(c){ _readFlush(); _readT0=Date.now(); _readCh=c; }
+document.addEventListener('visibilitychange',()=>{
+  if(document.hidden) _readFlush();
+  else if(view.screen==='act' && view.act==='read' && view.chap!=null) _readStart(CHAPTERS[view.chap]);
+});
+window.addEventListener('pagehide',_readFlush);
+
 const ACTS=[
   {id:"read",          ico:"📖", name:"Read along",       desc:"Read the chapter with audio: press play and follow the highlighted text."},
   {id:"listen",        ico:"🎧", name:"Listening",        desc:"Listen first without reading, then complete the missing words."},
@@ -498,6 +522,7 @@ function render(){
      abierto (hash, botón, checkpoint) vuelve a la lista de capítulos. */
   if(view.chap!=null && CHAPTERS[view.chap] && chapterLocked(CHAPTERS[view.chap].n))
     view={screen:"chapters",chap:null,act:null,info:null};
+  if(!(view.screen==="act" && view.act==="read")) _readFlush();
   _syncHash();
   backEl.style.display = view.screen==="chapters" ? "none" : "inline-block";
   if(view.screen==="chapters"){ crumbEl.innerHTML=""; return renderChapters(); }
@@ -1049,6 +1074,7 @@ function actRead(c){
     </div>
   </div>`;
   RP.init(c,paras);
+  _readStart(c);
   const sk=$('#rpSeek');
   sk.addEventListener('input',()=>{ RP.seeking=true;
     sk.style.setProperty('--pct',(sk.value/(sk.max||1)*100)+'%');
