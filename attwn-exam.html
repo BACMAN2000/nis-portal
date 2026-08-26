@@ -230,12 +230,10 @@ function accFor(key,chain){
   return {unlocked, extra, from};
 }
 const isOpen=k=>accFor(k,scopeChain(myScope())).unlocked;
-/* El alcance sobre el que trabaja el profesor ahora mismo. */
-let SCOPE='all';
-const scopeLabel=sc=>{ const m=/^g(\d+)(?:-(.+))?$/.exec(sc||'');
-  if(!m) return 'todos los grados';
-  const g=(GRADES.find(x=>String(x.id)===m[1])||{}).name||('G'+m[1]);
-  return m[2] ? g+' · '+m[2] : g+' (todo el grado)'; };
+/* Alcance con el que se mira esta app: el alumno, el suyo; el profesor, el
+   estado general — quién lo tiene abierto salón por salón se ve (y se cambia)
+   en el Portal → Controles de lectura, que es el único sitio que manda. */
+const viewChain=()=> isStaff() ? ['all'] : scopeChain(myScope());
 const bookOf=rid=>READERS.find(x=>x.id===rid);
 const audBase=(rid,lvl)=>{ const b=bookOf(rid);
   return (b.legacyB1Audio&&lvl==='b1') ? rid+'-audio/' : rid+'-audio/'+lvl+'/'; };
@@ -323,7 +321,7 @@ window.viewLevels=(rid,fromHash)=>{
     <p class="lead">Take the exam at the level you are reading. Higher level = harder texts and questions, written answers, and more time.</p>
     <div class="grid">
       ${r.levels.map(l=>{ const m=LVL_META[l];
-        const _ch=scopeChain(isStaff()?SCOPE:myScope());
+        const _ch=viewChain();
         const open=Array.from({length:r.chapters},(_,i)=>accFor(lockKey(rid,l,i+1),_ch).unlocked).filter(Boolean).length;
         return `<div class="card" onclick="viewChapters('${rid}','${l}')">
           <div class="ico">${m[0]}</div><h2>${m[1]}</h2>
@@ -334,107 +332,35 @@ window.viewLevels=(rid,fromHash)=>{
 };
 
 /* ---------- pantalla 3: capítulos + candados ---------- */
-function scopeBar(rid,lvl){
-  const m=/^g(\d+)(?:-(.+))?$/.exec(SCOPE)||[];
-  const gSel=`<option value="">Todos los grados</option>`+GRADES.map(g=>`<option value="${g.id}" ${m[1]===String(g.id)?'selected':''}>${esc(g.name)}</option>`).join('');
-  const secSel=`<option value="">Todo el grado</option>`+['A','B'].map(x=>`<option value="${x}" ${m[2]===x?'selected':''}>Salón ${x}</option>`).join('');
-  return `<div class="scopebar">
-    <div><label>ABRIR / CERRAR PARA</label>
-      <select onchange="window._setScope('grade',this.value,'${rid}','${lvl}')">${gSel}</select></div>
-    <div><label>SALÓN</label>
-      <select ${m[1]?'':'disabled'} onchange="window._setScope('section',this.value,'${rid}','${lvl}')">${secSel}</select></div>
-    <div style="font-size:12.5px;color:#475569;padding-bottom:7px">
-      Estás cambiando <b>${esc(scopeLabel(SCOPE))}</b> · año <b>${SCHOOL_YEAR}</b>. Lo que abras aquí solo lo ven esos alumnos;
-      un salón manda sobre su grado, y el grado sobre “todos”. Cada año escolar arranca con todo cerrado.</div>
-  </div>`;
-}
-window._setScope=(part,val,rid,lvl)=>{
-  const m=/^g(\d+)(?:-(.+))?$/.exec(SCOPE)||[];
-  let g = part==='grade' ? val : (m[1]||'');
-  let sec = part==='section' ? val : (part==='grade' ? '' : (m[2]||''));
-  SCOPE = !g ? 'all' : (sec ? 'g'+g+'-'+sec : 'g'+g);
-  viewChapters(rid,lvl);
-};
 window.viewChapters=async(rid,lvl,fromHash)=>{
   if(!fromHash) _setHash(rid+'/'+lvl);
   $('#main').innerHTML='<p class="muted">Loading chapters…</p>';
   const data=await loadLevel(rid,lvl);
   const r=READERS.find(x=>x.id===rid); const m=LVL_META[lvl];
   const staff=isStaff();
-  const chain=staff?scopeChain(SCOPE):scopeChain(myScope());
+  const chain=viewChain();
   $('#main').innerHTML=`
     <h1>${m[0]} ${r.title} · ${m[1]}</h1>
     <p class="lead">One exam per chapter — ${m[2]} minutes: comprehension, true/false, vocabulary${lvl==='b2'||lvl==='c1'?' (with written answers)':''}, listening and story order. Two questions per screen; corrected automatically with feedback at the end.</p>
-    ${staff?`<div class="note">👩‍🏫 <b>Teacher controls:</b> exams are created LOCKED. Flip a switch to open that chapter's exam, or use the buttons below.
-      <br>🔒 Opening an exam also <b>closes that chapter in the reader</b> — those students can't read the text or its activities while the exam is open. Lock it again and the reading comes back.
-      <br>⏱ <b>+ minutos:</b> si al salón se le acaba el tiempo y no termina, súbelo aquí — a quien esté rindiendo se le amplía el cronómetro en menos de 20 segundos, sin salir del examen.
-      <div style="margin-top:8px">
-      <button class="btn ghost" style="padding:6px 12px;font-size:12px" onclick="lockAll('${rid}','${lvl}',true)">🔓 Unlock all</button>
-      <button class="btn ghost" style="padding:6px 12px;font-size:12px" onclick="lockAll('${rid}','${lvl}',false)">🔒 Lock all</button></div></div>`:''}
-    ${staff?scopeBar(rid,lvl):''}
+    ${staff?`<div class="note">👩‍🏫 <b>Modo profesor:</b> puedes entrar a cualquier capítulo para revisar el examen, aunque esté cerrado para los alumnos.
+      Lo que ves abajo es el estado <b>general</b>; abrir o cerrar por grado y salón, y dar minutos extra, se hace en un solo sitio:
+      <a href="./#readers" style="font-weight:700;color:var(--blue-d)">Portal → 📖 Controles de lectura</a>.</div>`:''}
     ${noSessionNote()}
     <div class="grid" id="chGrid">
       ${data.CHAPTERS.map(c=>{ const k=lockKey(rid,lvl,c.n); const a=accFor(k,chain);
         const open=a.unlocked, canEnter=staff||open;
-        const own=a.from===(staff?SCOPE:myScope());
         return `<div class="card ${canEnter?'':'locked'}" id="cc-${c.n}" ${canEnter?`onclick="startExam('${rid}','${lvl}',${c.n})"`:''}>
           <div class="ico">${open?'📝':'🔒'}</div>
           <h2>Chapter ${c.n} · ${esc(c.title)}</h2>
           <div class="desc">${esc(c.sum).slice(0,90)}…</div>
           <span class="chip ${open?'ok':'no'}" id="st-${c.n}">${open?'✅ Open for students':'🔒 Locked for students'}</span>
-          ${staff?`<div class="tgl" onclick="event.stopPropagation()"><button class="${open?'on':'off'}" id="tg-${c.n}"
-              onclick="toggleLock('${k}',${c.n},this,'${rid}','${lvl}')"></button><span>${open?'students CAN take it':'hidden from students'}</span></div>
-            ${a.from&&!own?`<span class="inherit">heredado de ${esc(scopeLabel(a.from))}</span>`:''}
-            <div class="xtime" onclick="event.stopPropagation()">
-              <span>⏱ ${a.extra?`<b>+${a.extra} min</b>`:'sin tiempo extra'}</span>
-              <button onclick="addTime('${k}',5,'${rid}','${lvl}')">+5</button>
-              <button onclick="addTime('${k}',10,'${rid}','${lvl}')">+10</button>
-              ${a.extra?`<button onclick="addTime('${k}',0,'${rid}','${lvl}')">quitar</button>`:''}
-            </div>`:''}
+          ${staff&&a.extra?`<span class="inherit">⏱ +${a.extra} min de tiempo extra</span>`:''}
         </div>`; }).join('')}
     </div>
     <div style="margin-top:16px"><button class="btn ghost" onclick="viewLevels('${rid}')">← Levels</button></div>`;
 };
-/* Todas las escrituras llevan el alcance elegido: nunca se pisa lo de otro salón. */
-function _accRow(k){ return ACC.find(x=>x.key===k && x.scope===SCOPE); }
-window.toggleLock=async(k,n,btn,rid,lvl)=>{
-  /* Invierte lo que el profesor TIENE DELANTE (que puede venir heredado del
-     grado o de 'todos'), no la fila propia del alcance: si el salón hereda
-     'abierto' y no tiene fila, un clic debe cerrarlo para ese salón. */
-  const cur=_accRow(k), eff=accFor(k,scopeChain(SCOPE)).unlocked, now=!eff;
-  btn.className=now?'on':'off';
-  try{
-    const row={key:k,scope:SCOPE,school_year:SCHOOL_YEAR,unlocked:now,extra_min:(cur&&cur.extra_min)||0,updated_at:new Date().toISOString()};
-    const r=await sb.from('reader_exam_access').upsert(row);
-    if(r.error) throw r.error;
-    await reloadAccess();
-    viewChapters(rid,lvl);
-  }catch(e){ btn.className=eff?'on':'off'; alert('No se pudo guardar (¿sesión de docente activa?): '+(e.message||e)); }
-};
-window.lockAll=async(rid,lvl,open)=>{
-  const rows=Array.from({length:READERS.find(x=>x.id===rid).chapters},(_,i)=>{
-    const k=lockKey(rid,lvl,i+1), cur=ACC.find(x=>x.key===k&&x.scope===SCOPE);
-    return {key:k,scope:SCOPE,school_year:SCHOOL_YEAR,unlocked:open,extra_min:(cur&&cur.extra_min)||0,updated_at:new Date().toISOString()};
-  });
-  try{
-    const r=await sb.from('reader_exam_access').upsert(rows);
-    if(r.error) throw r.error;
-    await reloadAccess();
-    viewChapters(rid,lvl);
-  }catch(e){ alert('No se pudo guardar: '+(e.message||e)); }
-};
-/* mins=0 quita el extra; si no, suma sobre lo que ya tenga ese alcance. */
-window.addTime=async(k,mins,rid,lvl)=>{
-  const cur=_accRow(k);
-  const val = mins===0 ? 0 : Math.min(180, ((cur&&cur.extra_min)||0)+mins);
-  try{
-    const row={key:k,scope:SCOPE,school_year:SCHOOL_YEAR,unlocked:!!(cur&&cur.unlocked),extra_min:val,updated_at:new Date().toISOString()};
-    const r=await sb.from('reader_exam_access').upsert(row);
-    if(r.error) throw r.error;
-    await reloadAccess();
-    viewChapters(rid,lvl);
-  }catch(e){ alert('No se pudo guardar el tiempo extra: '+(e.message||e)); }
-};
+/* Aquí ya no se escribe nada: abrir, cerrar y dar minutos extra se hace en
+   el Portal → Controles de lectura, que es la única fuente de verdad. */
 
 /* ---------- construcción del examen ---------- */
 function gapItems(data,ch){
@@ -511,7 +437,7 @@ window.startExam=async(rid,lvl,ch,fromHash)=>{
   if(!isStaff() && !isOpen(k)){ alert('This exam is locked. Ask your teacher.'); return; }
   const ch1x = ch===1 ? await loadCh1Extra(rid) : [];
   const c=data.CHAPTERS[ch-1]; const mins=LVL_META[lvl][2];
-  const myChain=scopeChain(isStaff()?SCOPE:myScope());
+  const myChain=viewChain();
   const extra0=accFor(k,myChain).extra;
   EX={rid,lvl,ch,title:c.title,qs:buildExam(data,ch,lvl,rid,ch1x),ans:{},page:0,t0:Date.now(),
       secs:(mins+extra0)*60,total:(mins+extra0)*60,extra:extra0,chain:myChain,lockKey:k,
