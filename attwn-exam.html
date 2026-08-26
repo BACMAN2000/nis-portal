@@ -178,6 +178,23 @@ let sb=null, me=null, ACC=[], GRADES=[];
    son otros alumnos, así que cada año tiene sus propias filas y nace cerrado.
    En Perú el año escolar cae dentro del año calendario, así que basta con él. */
 const SCHOOL_YEAR=new Date().getFullYear();
+/* Reloj del servidor: la ventana de un control no puede depender del reloj del
+   alumno, que se puede atrasar. Se pide una vez y se guarda el desfase. */
+let _clockSkew=0;
+async function syncClock(){
+  try{ const { data } = await sb.rpc('server_now');
+    if(data) _clockSkew=new Date(data).getTime()-Date.now(); }catch(e){}
+}
+const nowMs=()=>Date.now()+_clockSkew;
+/* Una fila cuenta como abierta si el interruptor está puesto Y estamos dentro
+   de su ventana (si la tiene). */
+function rowOpen(r){
+  if(!r || !r.unlocked) return false;
+  const t=nowMs();
+  if(r.opens_at  && new Date(r.opens_at).getTime()  >  t) return false;
+  if(r.closes_at && new Date(r.closes_at).getTime() <= t) return false;
+  return true;
+}
 const dataCache={};
 
 async function boot(){
@@ -189,6 +206,7 @@ async function boot(){
         const p=await sb.from('profiles').select('full_name,first_name,email,role,grade_id,section').eq('id',u.data.user.id).maybeSingle();
         me=Object.assign({uid:u.data.user.id,email:u.data.user.email},(p&&p.data)||{});
       }
+      await syncClock();
       await reloadAccess();
       if(isStaff()){ const g=await sb.from('grades').select('id,name').order('id'); GRADES=g.data||[]; }
     }catch(e){}
@@ -196,7 +214,7 @@ async function boot(){
   _applyHash();
 }
 async function reloadAccess(){
-  const l=await sb.from('reader_exam_access').select('key,scope,unlocked,extra_min').eq('school_year',SCHOOL_YEAR);
+  const l=await sb.from('reader_exam_access').select('key,scope,unlocked,extra_min,opens_at,closes_at').eq('school_year',SCHOOL_YEAR);
   if(!l.error) ACC=l.data||[];
   return ACC;
 }
@@ -218,22 +236,28 @@ function myScope(){
   if(g==null) return 'all';
   return sec ? 'g'+g+'-'+sec : 'g'+g;
 }
+/* Lo del propio alumno manda sobre lo de su salón: así se le puede abrir una
+   recuperación o darle minutos extra sin tocar al resto. */
+function myChainFull(){
+  const c=scopeChain(myScope());
+  return me&&me.uid ? ['u:'+me.uid].concat(c) : c;
+}
 /* Estado efectivo de una clave para una cadena de alcances. */
 function accFor(key,chain){
-  let unlocked=false, extra=0, from=null;
+  let unlocked=false, extra=0, from=null, until=null;
   chain.forEach(sc=>{
     const r=ACC.find(x=>x.key===key && x.scope===sc);
     if(!r) return;
-    if(from===null){ unlocked=!!r.unlocked; from=sc; }
+    if(from===null){ unlocked=rowOpen(r); from=sc; until=r.closes_at||null; }
     extra=Math.max(extra, r.extra_min||0);
   });
-  return {unlocked, extra, from};
+  return {unlocked, extra, from, until};
 }
 const isOpen=k=>accFor(k,scopeChain(myScope())).unlocked;
 /* Alcance con el que se mira esta app: el alumno, el suyo; el profesor, el
    estado general — quién lo tiene abierto salón por salón se ve (y se cambia)
    en el Portal → Controles de lectura, que es el único sitio que manda. */
-const viewChain=()=> isStaff() ? ['all'] : scopeChain(myScope());
+const viewChain=()=> isStaff() ? ['all'] : myChainFull();
 const bookOf=rid=>READERS.find(x=>x.id===rid);
 const audBase=(rid,lvl)=>{ const b=bookOf(rid);
   return (b.legacyB1Audio&&lvl==='b1') ? rid+'-audio/' : rid+'-audio/'+lvl+'/'; };
@@ -354,6 +378,7 @@ window.viewChapters=async(rid,lvl,fromHash)=>{
           <h2>Chapter ${c.n} · ${esc(c.title)}</h2>
           <div class="desc">${esc(c.sum).slice(0,90)}…</div>
           <span class="chip ${open?'ok':'no'}" id="st-${c.n}">${open?'✅ Open for students':'🔒 Locked for students'}</span>
+          ${open&&a.until?`<span class="inherit">🕒 abierto hasta las ${new Date(a.until).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})}</span>`:''}
           ${staff&&a.extra?`<span class="inherit">⏱ +${a.extra} min de tiempo extra</span>`:''}
         </div>`; }).join('')}
     </div>
@@ -462,7 +487,7 @@ window.startExam=async(rid,lvl,ch,fromHash)=>{
   EX.poll=setInterval(async()=>{
     if(EX.done||!sb) return;
     try{
-      const q=await sb.from('reader_exam_access').select('key,scope,unlocked,extra_min').eq('key',EX.lockKey).eq('school_year',SCHOOL_YEAR);
+      const q=await sb.from('reader_exam_access').select('key,scope,unlocked,extra_min,opens_at,closes_at').eq('key',EX.lockKey).eq('school_year',SCHOOL_YEAR);
       if(q.error||!q.data) return;
       q.data.forEach(row=>{ const i=ACC.findIndex(x=>x.key===row.key&&x.scope===row.scope);
         if(i<0) ACC.push(row); else ACC[i]=row; });

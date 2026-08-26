@@ -1404,7 +1404,33 @@ const SCHOOL_YEAR_NOW=new Date().getFullYear();
 const _attYear=a=>{ try{ return new Date(a.submitted_at).getFullYear(); }catch(e){ return null; } };
 let readerFilter={grade:'',section:'',book:'all',year:SCHOOL_YEAR_NOW};
 const RDR_LEVELS=['a2','b1','b2','c1'];      // una celda vale por los cuatro
-let readerTab='stats', examCtl={book:null};
+let readerTab='stats', examCtl={book:null, until:''};
+/* La hora de cierre se mide con el reloj del SERVIDOR: si dependiera del
+   navegador, atrasarlo dejaría el control abierto. */
+let _rdrSkew=0;
+async function _rdrSyncClock(){
+  try{ const { data } = await sb.rpc('server_now');
+    if(data) _rdrSkew=new Date(data).getTime()-Date.now(); }catch(e){}
+}
+const _rdrNow=()=>Date.now()+_rdrSkew;
+function _rdrRowOpen(r){
+  if(!r || !r.unlocked) return false;
+  const t=_rdrNow();
+  if(r.opens_at  && new Date(r.opens_at).getTime()  >  t) return false;
+  if(r.closes_at && new Date(r.closes_at).getTime() <= t) return false;
+  return true;
+}
+/* 'HH:MM' → hoy a esa hora; si ya pasó, mañana (una evaluación que se abre a
+   las 8:00 para el día siguiente es lo normal a última hora de la tarde). */
+function _rdrUntilISO(hhmm){
+  if(!hhmm) return null;
+  const m=/^(\d{1,2}):(\d{2})$/.exec(hhmm.trim()); if(!m) return null;
+  const d=new Date(_rdrNow());
+  d.setHours(+m[1],+m[2],0,0);
+  if(d.getTime()<=_rdrNow()) d.setDate(d.getDate()+1);
+  return d.toISOString();
+}
+const _rdrHM=iso=>{ try{ return new Date(iso).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}); }catch(e){ return ''; } };
 window._setReaderTab=(t)=>{ readerTab=t; readerStatsPanel(); };
 function _readerTabs(){
   const b=(k,l)=>`<button class="btn sm ${readerTab===k?'':'ghost'}" onclick="window._setReaderTab('${k}')">${l}</button>`;
@@ -1419,15 +1445,44 @@ function _rdrScopeChain(sc){
   return m[2] ? ['g'+m[1]+'-'+m[2],'g'+m[1],'all'] : ['g'+m[1],'all'];
 }
 function _rdrAccFor(rows,key,chain){
-  let unlocked=false, extra=0, from=null;
+  let unlocked=false, extra=0, from=null, until=null;
   chain.forEach(sc=>{ const r=rows.find(x=>x.key===key && x.scope===sc);
     if(!r) return;
-    if(from===null){ unlocked=!!r.unlocked; from=sc; }
+    if(from===null){ unlocked=_rdrRowOpen(r); from=sc; until=r.closes_at||null; }
     extra=Math.max(extra, r.extra_min||0); });
-  return {unlocked, extra, from};
+  return {unlocked, extra, from, until};
 }
 window._setReaderFilter=(k,v)=>{ readerFilter[k]=v; readerStatsPanel(); };
 window._readerDetail=(id)=>readerStatsPanel(id);
+/* Reglas propias de UN alumno: mandan sobre las de su salón. */
+window._stuCtl=async(studentId,what)=>{
+  const book=($('#rdrStuBook')||{}).value||_RDR_IDS[0];
+  const ch=+(($('#rdrStuCh')||{}).value||1);
+  const scope='u:'+studentId, now=new Date().toISOString();
+  try{
+    if(what==='clear'){
+      const r=await sb.from('reader_exam_access').delete().eq('school_year',SCHOOL_YEAR_NOW).eq('scope',scope)
+        .in('key',RDR_LEVELS.map(l=>book+':'+l+':ch'+ch));
+      if(r.error) throw r.error;
+    }else{
+      const { data } = await sb.from('reader_exam_access').select('key,unlocked,extra_min')
+        .eq('school_year',SCHOOL_YEAR_NOW).eq('scope',scope).in('key',RDR_LEVELS.map(l=>book+':'+l+':ch'+ch));
+      const prev=(data||[]);
+      const base=prev.reduce((m,r)=>Math.max(m,r.extra_min||0),0);
+      const rows=RDR_LEVELS.map(l=>{ const p=prev.find(x=>x.key===book+':'+l+':ch'+ch);
+        return {key:book+':'+l+':ch'+ch, scope, school_year:SCHOOL_YEAR_NOW,
+          unlocked: what==='open' ? true : (what==='close' ? false : !!(p&&p.unlocked)),
+          extra_min: what==='plus5' ? Math.min(180,base+5) : ((p&&p.extra_min)||0),
+          updated_at:now}; });
+      const r=await sb.from('reader_exam_access').upsert(rows);
+      if(r.error) throw r.error;
+    }
+    alert('Hecho: '+READER_META[book].short+' · Ch. '+ch+' — '+
+      (what==='open'?'abierto solo para este alumno':what==='close'?'cerrado solo para él':
+       what==='plus5'?'+5 minutos solo para él':'se quitaron sus reglas propias'));
+    readerStatsPanel(studentId);
+  }catch(e){ alert('No se pudo guardar: '+(e.message||e)); }
+};
 function _readerFilterBar(grades,years){
   const lab=t=>`<label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">${t}</label>`;
   const g=`<option value="">Todos los grados</option>`+grades.map(x=>`<option value="${x.id}" ${String(readerFilter.grade)===String(x.id)?'selected':''}>${x.name}</option>`).join('');
@@ -1452,6 +1507,7 @@ async function readerControlPanel(){
   const isAdmin=state.profile&&state.profile.role==='admin';
   const grades=isAdmin?GRADES:teacherAllowedGrades();
   const gset=new Set(grades.map(g=>String(g.id)));
+  await _rdrSyncClock();
   await loadReaderAssignments();
   const books=_RDR_IDS.filter(id=>(READER_ASSIGN||[]).some(r=>gset.has(String(r.grade_id))&&r.book_id===id));
   if(!books.length){
@@ -1464,7 +1520,7 @@ async function readerControlPanel(){
   const meta=READER_META[book];
   const [{data:studs},{data:acc}]=await Promise.all([
     sb.from('profiles').select('grade_id,section, grades(name)').eq('role','student'),
-    sb.from('reader_exam_access').select('key,scope,unlocked,extra_min').eq('school_year',SCHOOL_YEAR_NOW)
+    sb.from('reader_exam_access').select('key,scope,unlocked,extra_min,opens_at,closes_at').eq('school_year',SCHOOL_YEAR_NOW)
   ]);
   const rows=(acc||[]).filter(r=>String(r.key||'').indexOf(book+':')===0);
   const rooms={};
@@ -1477,12 +1533,13 @@ async function readerControlPanel(){
   /* Estado de una celda: cuántos de los 4 niveles están abiertos. */
   const cell=(ch,scope)=>{
     const chain=_rdrScopeChain(scope);
-    let open=0, own=0, extra=0, from=null;
+    let open=0, own=0, extra=0, from=null, until=null;
     RDR_LEVELS.forEach(l=>{ const a=_rdrAccFor(rows,book+':'+l+':ch'+ch,chain);
       if(a.unlocked) open++;
       if(a.from===scope) own++;
-      extra=Math.max(extra,a.extra); if(a.from&&!from) from=a.from; });
-    return {open, own, extra, from, all:open===RDR_LEVELS.length, none:open===0};
+      extra=Math.max(extra,a.extra); if(a.from&&!from) from=a.from;
+      if(a.until&&!until) until=a.until; });
+    return {open, own, extra, from, until, all:open===RDR_LEVELS.length, none:open===0};
   };
   const bookTabs=books.map(id=>`<button class="btn sm ${id===book?'':'ghost'}" onclick="window._setCtlBook('${id}')">${READER_META[id].icon} ${esc(READER_META[id].short)}</button>`).join(' ');
   const head=`<th style="min-width:120px">Capítulo</th>`+cols.map(c=>`<th style="text-align:center">${esc(c.label)}${c.n?`<div class="muted" style="font-weight:400;font-size:.7rem">${c.n} alumnos</div>`:''}</th>`).join('')+`<th></th>`;
@@ -1495,7 +1552,7 @@ async function readerControlPanel(){
       return `<td style="text-align:center">
         <button class="btn sm ${cls}" style="padding:5px 10px;min-width:96px" title="${heredado?'Heredado de '+esc(st.from):'Los cuatro niveles a la vez'}"
           onclick="window._ctlToggle(${ch},'${c.scope}',${st.all?'false':'true'})">${txt}</button>
-        <div class="muted" style="font-size:.7rem;margin-top:3px">${heredado?'heredado':(st.extra?'+'+st.extra+' min':'&nbsp;')}</div>
+        <div class="muted" style="font-size:.7rem;margin-top:3px">${st.all&&st.until?'🕒 hasta '+_rdrHM(st.until):(heredado?'heredado':(st.extra?'+'+st.extra+' min':'&nbsp;'))}</div>
         ${st.all?`<div style="margin-top:2px"><button class="btn sm ghost" style="padding:2px 7px;font-size:.68rem" onclick="window._ctlTime(${ch},'${c.scope}',5)">+5</button>${st.extra?` <button class="btn sm ghost" style="padding:2px 7px;font-size:.68rem" onclick="window._ctlTime(${ch},'${c.scope}',0)">✕</button>`:''}</div>`:''}
       </td>`; }).join('');
     return `<tr><td><b>Ch. ${ch}</b></td>${tds}
@@ -1505,12 +1562,19 @@ async function readerControlPanel(){
   $('#main').innerHTML=`<h1>📖 Controles de lectura</h1>${_readerTabs()}
     <p class="muted" style="margin-top:-6px">Abre el control de un capítulo para un salón: <b>una celda vale por los cuatro niveles</b> (cada alumno rinde en el suyo).
       Mientras el control está abierto, ese capítulo <b>no se puede leer</b> para esos alumnos. Un salón manda sobre su grado, y el grado sobre “Todos”. Año <b>${SCHOOL_YEAR_NOW}</b>.</p>
-    <div class="row" style="gap:8px;margin:0 0 12px">${bookTabs}</div>
+    <div class="row" style="gap:8px;margin:0 0 12px;align-items:center">${bookTabs}
+      <span style="margin-left:auto;font-size:12.5px;color:#475569">Cerrar automáticamente a las
+        <input type="time" value="${esc(examCtl.until||'')}" onchange="window._setCtlUntil(this.value)"
+               style="font-family:inherit;font-size:13px;padding:5px 7px;border:1.5px solid var(--line);border-radius:8px">
+        ${examCtl.until?`<button class="btn sm ghost" style="padding:3px 9px;font-size:.72rem" onclick="window._setCtlUntil('')">sin hora</button>`:''}
+      </span></div>
+    ${examCtl.until?`<div class="note info" style="margin:0 0 12px">🕒 Lo que abras ahora se cerrará solo a las <b>${esc(examCtl.until)}</b> y la lectura volverá sin que tengas que acordarte. Deja el campo vacío para abrir sin hora de cierre.</div>`:''}
     <div class="card" style="padding:0;overflow-x:auto"><table>
       <thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>
     <p class="muted" style="font-size:.82rem;margin-top:8px">⏱ <b>+5</b> añade minutos a quien esté rindiendo ese control: el cronómetro crece solo en menos de 20 segundos, sin sacarlo del examen. Solo llega a tiempo si se da antes de que el reloj llegue a cero.</p>`;
 }
 window._setCtlBook=(id)=>{ examCtl.book=id; readerControlPanel(); };
+window._setCtlUntil=(v)=>{ examCtl.until=v||''; readerControlPanel(); };
 async function _ctlWrite(rowsToWrite){
   try{
     const r=await sb.from('reader_exam_access').upsert(rowsToWrite);
@@ -1519,12 +1583,14 @@ async function _ctlWrite(rowsToWrite){
   }catch(e){ alert('No se pudo guardar: '+(e.message||e)); }
 }
 window._ctlToggle=(ch,scope,open)=>{
-  const now=new Date().toISOString();
-  _ctlWrite(RDR_LEVELS.map(l=>({key:examCtl.book+':'+l+':ch'+ch,scope,school_year:SCHOOL_YEAR_NOW,unlocked:!!open,updated_at:now})));
+  const now=new Date().toISOString(), until=open?_rdrUntilISO(examCtl.until):null;
+  _ctlWrite(RDR_LEVELS.map(l=>({key:examCtl.book+':'+l+':ch'+ch,scope,school_year:SCHOOL_YEAR_NOW,
+    unlocked:!!open,closes_at:until,updated_at:now})));
 };
 window._ctlRow=(ch,open)=>{
-  const now=new Date().toISOString();
-  _ctlWrite(RDR_LEVELS.map(l=>({key:examCtl.book+':'+l+':ch'+ch,scope:'all',school_year:SCHOOL_YEAR_NOW,unlocked:!!open,updated_at:now})));
+  const now=new Date().toISOString(), until=open?_rdrUntilISO(examCtl.until):null;
+  _ctlWrite(RDR_LEVELS.map(l=>({key:examCtl.book+':'+l+':ch'+ch,scope:'all',school_year:SCHOOL_YEAR_NOW,
+    unlocked:!!open,closes_at:until,updated_at:now})));
 };
 window._ctlTime=async(ch,scope,mins)=>{
   const { data } = await sb.from('reader_exam_access').select('key,scope,unlocked,extra_min')
@@ -1603,7 +1669,22 @@ async function readerStatsPanel(detailId){
         <h2 style="margin:0">${esc(d.p.full_name||'')} — capítulo a capítulo</h2>
         <div>${_rdrMark(d.r.overall)} <span class="muted" style="font-size:.82rem">nota general</span></div>
       </div>
-      <p class="muted" style="margin:4px 0 0;font-size:.85rem">⏱ ${_rdrTime(d.r.readSec)} de lectura con audio · ${_rdrTime(d.r.actSec)} de ejercicios · ${_rdrTime(d.r.examSec)} en los controles.</p></div>
+      <p class="muted" style="margin:4px 0 0;font-size:.85rem">⏱ ${_rdrTime(d.r.readSec)} de lectura con audio · ${_rdrTime(d.r.actSec)} de ejercicios · ${_rdrTime(d.r.examSec)} en los controles.</p>
+      <div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--line);font-size:12.5px;color:#475569">
+        <b>Solo para ${esc((d.p.full_name||'').split(' ')[0])}:</b> abrirle un control que su salón tiene cerrado (recuperación) o darle minutos extra.
+        <div class="row" style="gap:6px;margin-top:6px;align-items:center;flex-wrap:wrap">
+          <select id="rdrStuBook" style="font-family:inherit;font-size:12.5px;padding:5px 7px;border:1.5px solid var(--line);border-radius:8px">
+            ${_RDR_IDS.map(id=>`<option value="${id}">${READER_META[id].icon} ${esc(READER_META[id].short)}</option>`).join('')}
+          </select>
+          <select id="rdrStuCh" style="font-family:inherit;font-size:12.5px;padding:5px 7px;border:1.5px solid var(--line);border-radius:8px">
+            ${Array.from({length:10},(_,i)=>`<option value="${i+1}">Ch. ${i+1}</option>`).join('')}
+          </select>
+          <button class="btn sm" onclick="window._stuCtl('${d.p.id}','open')">🔓 abrirle el control</button>
+          <button class="btn sm ghost" onclick="window._stuCtl('${d.p.id}','close')">🔒 cerrárselo</button>
+          <button class="btn sm ghost" onclick="window._stuCtl('${d.p.id}','plus5')">⏱ +5 min</button>
+          <button class="btn sm ghost" onclick="window._stuCtl('${d.p.id}','clear')">✕ quitar lo suyo</button>
+        </div>
+      </div></div>
       ${books.length?books.map(id=>_rdrChapterTable(id,d.r.books[id])).join(''):'<div class="note info">Este alumno todavía no ha abierto ningún reader.</div>'}`;
   })();
   $('#main').innerHTML=`
