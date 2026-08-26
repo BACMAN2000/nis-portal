@@ -108,13 +108,14 @@
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js"></script>
-<script src="nis-nav.js?v=1"></script>
+<script src="nis-nav.js?v=2"></script>
 </head>
 <body>
 <header>
   <img src="assets/logo-h.svg" alt="Nordic International School" onerror="this.style.display='none'">
   <div class="sub">9TH GRADE · READER EXAMS</div>
-  <button class="backbtn" onclick="location.href='and-then-there-were-none.html'">🏝️ Readers</button>
+  <button class="backbtn ghost" style="margin-right:8px" onclick="location.href='and-then-there-were-none.html'">🏝️ Readers</button>
+  <button class="backbtn" onclick="location.href='./'">🏫 Portal</button>
 </header>
 <main id="main"><p class="muted">Loading…</p></main>
 
@@ -188,7 +189,7 @@ async function boot(){
       if(isStaff()){ const g=await sb.from('grades').select('id,name').order('id'); GRADES=g.data||[]; }
     }catch(e){}
   }
-  viewReaders();
+  _applyHash();
 }
 async function reloadAccess(){
   const l=await sb.from('reader_exam_access').select('key,scope,unlocked,extra_min');
@@ -256,8 +257,46 @@ function loadCh1Extra(rid){
   });
 }
 
+/* ---------- navegación interna ----------
+   Las cuatro pantallas viven en el hash (#attwn, #attwn/b1, #attwn/b1/ch3),
+   así el ◀ Back y el botón del navegador retroceden UNA pantalla en vez de
+   sacar al alumno de la app. Solo desde la lista de obras se sale al portal
+   (para eso está el botón 🏫 Portal, que siempre sale). */
+let _hashMute=false;
+function _setHash(h){
+  if(('#'+h)===location.hash) return;
+  _hashMute=true; location.hash=h;
+}
+function _applyHash(){
+  const h=(location.hash||'').replace(/^#/,'');
+  let m;
+  if((m=/^([a-z]+)\/([a-z0-9]+)\/ch(\d+)$/.exec(h)) && bookOf(m[1])) return startExam(m[1],m[2],+m[3],true);
+  if((m=/^([a-z]+)\/([a-z0-9]+)$/.exec(h)) && bookOf(m[1]))          return viewChapters(m[1],m[2],true);
+  if((m=/^([a-z]+)$/.exec(h)) && bookOf(m[1]))                        return viewLevels(m[1],true);
+  return viewReaders(true);
+}
+window.addEventListener('hashchange',()=>{
+  if(_hashMute){ _hashMute=false; return; }
+  if(EX && !EX.done && !confirm('¿Salir del examen? Tus respuestas de esta pantalla se perderán.')){
+    _setHash(EX.rid+'/'+EX.lvl+'/ch'+EX.ch); return;
+  }
+  if(EX && EX.timer){ clearInterval(EX.timer); clearInterval(EX.poll); EX=null; }
+  _applyHash();
+});
+/* El ◀ Back de la cabecera: una pantalla atrás; en la primera, al portal. */
+if(window.NISNAV && NISNAV.setBackHandler) NISNAV.setBackHandler(function(){
+  const h=(location.hash||'').replace(/^#/,'');
+  if(!h) return false;                       // lista de obras → que salga al portal
+  const parts=h.split('/');
+  parts.pop();
+  _setHash(parts.join('/'));
+  _applyHash();
+  return true;
+});
+
 /* ---------- pantalla 1: readers ---------- */
-function viewReaders(){
+function viewReaders(fromHash){
+  if(!fromHash) _setHash('');
   $('#main').innerHTML=`
     <div class="hero"><h1 style="color:#fde68a">📝 Reader Exams</h1>
       <p>One exam per chapter, at your level: comprehension, true/false, vocabulary, listening and story order —
@@ -272,7 +311,8 @@ function viewReaders(){
 }
 
 /* ---------- pantalla 2: niveles ---------- */
-window.viewLevels=(rid)=>{
+window.viewLevels=(rid,fromHash)=>{
+  if(!fromHash) _setHash(rid);
   const r=READERS.find(x=>x.id===rid);
   $('#main').innerHTML=`
     <h1>${r.icon} ${r.title} — choose the exam level</h1>
@@ -311,7 +351,8 @@ window._setScope=(part,val,rid,lvl)=>{
   SCOPE = !g ? 'all' : (sec ? 'g'+g+'-'+sec : 'g'+g);
   viewChapters(rid,lvl);
 };
-window.viewChapters=async(rid,lvl)=>{
+window.viewChapters=async(rid,lvl,fromHash)=>{
+  if(!fromHash) _setHash(rid+'/'+lvl);
   $('#main').innerHTML='<p class="muted">Loading chapters…</p>';
   const data=await loadLevel(rid,lvl);
   const r=READERS.find(x=>x.id===rid); const m=LVL_META[lvl];
@@ -459,7 +500,8 @@ window.playQAudio=(url,btn)=>{
   _qaud.onerror=()=>{ _qaud=null; btn.textContent='⚠️ Audio not available'; };
   btn.textContent='⏸ Stop'; _qaud.play().catch(()=>_qaud&&_qaud.onerror());
 };
-window.startExam=async(rid,lvl,ch)=>{
+window.startExam=async(rid,lvl,ch,fromHash)=>{
+  if(!fromHash) _setHash(rid+'/'+lvl+'/ch'+ch);
   const data=await loadLevel(rid,lvl);
   const k=lockKey(rid,lvl,ch);
   if(!isStaff() && !isOpen(k)){ alert('This exam is locked. Ask your teacher.'); return; }
