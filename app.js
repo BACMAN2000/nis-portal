@@ -1465,6 +1465,21 @@ async function teacherResults(){
     </table>
     <div id="resCount" data-noun="resultado(s)" class="muted" style="padding:8px 14px;font-size:.82rem">${list.length} resultado(s)</div></div>`;
 }
+/* -- Barra de filtro por grado (pestaña Alumnos del profesor) ------- */
+let teacherFilter = { grade:'' };
+function gradeFilterBar(onChangeFn, gradeList){
+  const list = gradeList || teacherAllowedGrades();
+  const opts = `<option value="">Todos los grados</option>`
+    + list.map(g=>`<option value="${g.id}" ${String(teacherFilter.grade)===String(g.id)?'selected':''}>${g.name}</option>`).join('');
+  return `<div class="card" style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;padding:14px 16px;margin-bottom:10px">
+    <div>
+      <label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">GRADO</label>
+      <select onchange="${onChangeFn}(this.value)" style="min-width:140px">${opts}</select>
+    </div>
+    ${teacherFilter.grade ? `<button class="btn sm ghost" style="align-self:flex-end" onclick="${onChangeFn}('')">✕ Limpiar</button>` : ''}
+  </div>`;
+}
+window._setTeacherGrade = (v)=>{ teacherFilter.grade = v; teacherStudents(); };
 async function teacherStudents(){
   state._tab='students';
   const { data } = await sb.from('profiles').select('*, grades(name)').eq('role','student');
