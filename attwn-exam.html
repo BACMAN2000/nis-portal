@@ -244,6 +244,7 @@ window.viewChapters=async(rid,lvl)=>{
     <h1>${m[0]} ${r.title} · ${m[1]}</h1>
     <p class="lead">One exam per chapter — ${m[2]} minutes: comprehension, true/false, vocabulary${lvl==='b2'||lvl==='c1'?' (with written answers)':''}, listening and story order. Two questions per screen; corrected automatically with feedback at the end.</p>
     ${staff?`<div class="note">👩‍🏫 <b>Teacher controls:</b> exams are created LOCKED. Flip a switch to open that chapter's exam for students, or use:
+      <br>🔒 Opening an exam also <b>closes that chapter in the reader</b> — students can't read the text or its activities while the exam is open. Lock it again and the reading comes back.<br>
       <button class="btn ghost" style="padding:6px 12px;font-size:12px" onclick="lockAll('${rid}','${lvl}',true)">🔓 Unlock all</button>
       <button class="btn ghost" style="padding:6px 12px;font-size:12px" onclick="lockAll('${rid}','${lvl}',false)">🔒 Lock all</button></div>`:''}
     <div class="grid" id="chGrid">
