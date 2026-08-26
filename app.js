@@ -171,6 +171,7 @@ async function init(){
 async function loadProfile(){
   const { data, error } = await sb.from('profiles').select('*, grades(name)').eq('id', state.session.user.id).single();
   state.profile = error ? null : data;
+  await loadReaderAssignments();          // qué lee cada salón este año
 }
 function route(){
   if(!state.session){ return renderAuth(); }
@@ -2411,7 +2412,7 @@ function studentGrade(key){
       ${_isPrimaryGrade(key) ? '' : (nodeVisible(base+'.grammar') ? _skillCard('📝','Grammar','Grammar for '+label+': explanations and games by unit.',_withBack('grammar.html?grade='+key,route)) : _lockedCard('📝','Grammar','Grammar for '+label+'.'))}
       ${nodeVisible(base+'.activities') ? _hubCard('🎲','Activities',_isPrimaryGrade(key)?'Games for each unit — with audio for young learners.':'Games by unit and by level: crosswords, word searches and more.',"window._nav('classes_"+key+"_act')") : _lockedCard('🎲','Activities','Games and activities.')}
       ${key==='g9' ? (nodeVisible('english.classes.g9.cambridge') ? _hubCard('🎓','Cambridge','B2 First (FCE) practice by skill: Listening, Use of English, Reading and Writing.',"window._nav('classes_g9_cambridge')") : _lockedCard('🎓','Cambridge','Cambridge B2 First practice.')) : ''}
-      ${READER_BOOKS[key] ? (nodeVisible(base+'.reader') ? _hubCard('📚','Readers','Graded readers with activities for every chapter: '+READER_BOOKS[key].map(id=>READER_CARDS[id][4]).join(', ')+' — and more on the way.',"window._nav('classes_"+key+"_readers')") : _lockedCard('📚','Readers','Graded readers with activities.')) : ''}
+      ${readerBooksFor(key).length ? (nodeVisible(base+'.reader') ? _hubCard('📚','Readers','Graded readers with activities for every chapter: '+readerBooksFor(key).map(id=>READER_CARDS[id][4]).join(', ')+'.',"window._nav('classes_"+key+"_readers')") : _lockedCard('📚','Readers','Graded readers with activities.')) : ''}
     </div>`;
 }
 /* Cambridge (9.º): tarjeta madre con las destrezas del examen B2 First:
@@ -2445,7 +2446,31 @@ const READER_CARDS = {
   earnest:  ['🎩','The Importance of Being Earnest','Oscar Wilde at five levels — A2 · B1 · B2 · C1 · C2. Read along with audio, listening, summaries, character files, games and chapter exams.','reader.html?book=earnest','Being Earnest (A2–C2)'],
   tomsawyer:['🚣','The Adventures of Tom Sawyer','Mark Twain at five levels — A2 · B1 · B2 · C1 · C2. Read along with audio, listening, summaries, character files, games and chapter exams.','reader.html?book=tomsawyer','Tom Sawyer (A2–C2)'],
 };
+/* Qué reader lee cada salón lo decide el profesor en Library y vive en
+   reader_assignments, por AÑO ESCOLAR: en 2027 vuelve a elegir sin arrastrar
+   lo de este año. Este reparto queda solo como red: si la consulta falla, el
+   alumno no se queda sin sus libros. */
 const READER_BOOKS = { g7:['tomsawyer'], g9:['attwn','earnest','tomsawyer'] };
+let READER_ASSIGN=null;
+async function loadReaderAssignments(){
+  try{
+    const { data, error } = await sb.from('reader_assignments')
+      .select('grade_id,section,book_id').eq('school_year',SCHOOL_YEAR_NOW);
+    if(!error) READER_ASSIGN=data||[];
+  }catch(e){}
+  return READER_ASSIGN;
+}
+const _gradeIdOf=key=>+String(key||'').replace(/^g/,'');
+/* Al alumno le tocan los libros de SU salón (y los del grado entero, section='');
+   el profesor ve todo lo asignado a ese grado. */
+function readerBooksFor(key,section){
+  if(!READER_ASSIGN) return READER_BOOKS[key]||[];
+  const gid=_gradeIdOf(key), stu=_isStudent();
+  const sec=String(section!=null?section:((state.profile&&state.profile.section)||'')).trim();
+  const ids=new Set(READER_ASSIGN.filter(r=>+r.grade_id===gid &&
+      (!stu || String(r.section||'')==='' || String(r.section)===sec)).map(r=>r.book_id));
+  return _RDR_IDS.filter(id=>ids.has(id));
+}
 /* La misma cuenta que ve el profesor, pero solo con lo del propio alumno. */
 async function studentReaderReport(key){
   _setNav('classes');
@@ -2456,7 +2481,7 @@ async function studentReaderReport(key){
   const { data:atts } = await sb.from('activity_attempts')
     .select('activity,score,total,duration_sec,submitted_at').eq('student_id',p.id).or(_rdrOr()).limit(2000);
   const r=readerReport((atts||[]).filter(a=>_attYear(a)===SCHOOL_YEAR_NOW));
-  const mine=(READER_BOOKS[key]||_RDR_IDS).filter(id=>READER_META[id]);
+  const mine=(readerBooksFor(key).length?readerBooksFor(key):_RDR_IDS).filter(id=>READER_META[id]);
   const cards=mine.map(id=>{
     const b=r.books[id], meta=READER_META[id];
     return `<h2 style="font-size:16px;color:var(--blue-d);margin:18px 0 8px">${meta.icon} ${esc(meta.title)}</h2>
@@ -2481,7 +2506,7 @@ function studentGradeReaders(key){
   const base='english.classes.'+key+'.reader';
   if(!nodeVisible('english.classes.'+key) || !nodeVisible(base)){ _lockedView(back,'📚 Readers'); return; }
   const cards=_skillCard('📝','Reader Exams','One timed exam per chapter of each book, at your level — your teacher opens them when your class is ready.',_withBack('attwn-exam.html',route))
-    + (READER_BOOKS[key]||[]).map(id=>{ const b=READER_CARDS[id]; return _skillCard(b[0],b[1],b[2],_withBack(b[3],route)); }).join('')
+    + readerBooksFor(key).map(id=>{ const b=READER_CARDS[id]; return _skillCard(b[0],b[1],b[2],_withBack(b[3],route)); }).join('')
     + _hubCard('📊','My reading report','Your mark for every chapter control, your reading time and your overall mark.',"window._nav('classes_"+key+"_readers_report')");
   $('#main').innerHTML=`${back}<h1>📚 Readers</h1>
     <p class="muted" style="margin-top:-6px">Graded readers with activities for every chapter.</p>
@@ -2744,7 +2769,7 @@ function studentPractice(){
 }
 
 /* ---------- Library ---------- */
-function studentLibrary(){
+async function studentLibrary(){
   _setNav('library');
   // LIBRARY_URL aún apunta a un OPAC local (127.0.0.1) que no es público.
   // Hasta tener una URL pública, el tile se muestra como "Próximamente"
@@ -2752,10 +2777,67 @@ function studentLibrary(){
   const libTile = (LIBRARY_URL && !/^https?:\/\/(127\.0\.0\.1|localhost)/.test(LIBRARY_URL))
     ? _skillCard('📚','Open the Library','Search books, check availability and your loans.',LIBRARY_URL)
     : _soonCard('📚','Library','Online catalogue (OPAC): soon you\'ll be able to search books and see your loans.');
-  $('#main').innerHTML=`<h1>📚 Library</h1>
-    <p class="muted" style="margin-top:-6px">NIS Library — online catalogue (OPAC).</p>
-    <div class="grid cols-2" style="margin-top:12px">${libTile}</div>`;
+  const staff = state.profile && (state.profile.role==='teacher'||state.profile.role==='admin');
+  const back = _isStudent() ? _backBtn("window._nav('english')",'English') : '';
+  $('#main').innerHTML=`${back}<h1>📚 Library</h1><p class="muted">Cargando…</p>`;
+  await loadReaderAssignments();
+  const cat=_RDR_IDS.map(id=>{ const m=READER_META[id], c=READER_CARDS[id];
+    const mine=!_isStudent() || readerBooksFor('g'+((state.profile&&state.profile.grade_id)||0)).indexOf(id)>=0;
+    return `<div class="card" style="text-align:left;padding:20px 18px;${mine?'':'opacity:.6'}">
+      <div style="font-size:2.6rem;line-height:1">${m.icon}</div>
+      <h2 style="margin:8px 0 2px;color:var(--blue-d)">${esc(m.title)}</h2>
+      <div class="muted" style="font-size:.85rem;margin-bottom:8px">${esc(c[2].split('—')[0].trim())} · ${m.chapters} chapters · A2–C2</div>
+      ${mine?`<a class="btn sm" style="text-decoration:none" href="${c[3]}">Open the reader →</a>`
+            :'<span class="muted" style="font-size:.8rem">Not assigned to your class this year.</span>'}
+    </div>`; }).join('');
+  const panel = staff ? await _assignPanel() : '';
+  $('#main').innerHTML=`${back}<h1>📚 Library</h1>
+    <p class="muted" style="margin-top:-6px">Los readers del colegio${staff?' — y qué lee cada salón este año':''}.</p>
+    <h2 style="font-size:16px;color:var(--blue-d);margin:16px 0 10px">📖 Readers</h2>
+    <div class="grid cols-3">${cat}</div>
+    ${panel}
+    <h2 style="font-size:16px;color:var(--blue-d);margin:22px 0 10px">🔎 Catálogo (OPAC)</h2>
+    <div class="grid cols-2">${libTile}</div>`;
 }
+/* Asignación del año: filas = salones reales, columnas = readers. */
+async function _assignPanel(){
+  const grades=(state.profile&&state.profile.role==='admin')?GRADES:teacherAllowedGrades();
+  const ok=new Set(grades.map(g=>String(g.id)));
+  const { data:studs } = await sb.from('profiles').select('grade_id,section, grades(name)').eq('role','student');
+  const rooms={};
+  (studs||[]).forEach(p=>{ if(p.grade_id==null||!ok.has(String(p.grade_id))) return;
+    const sec=String(p.section||'').trim();
+    const k=p.grade_id+'|'+sec;
+    (rooms[k]||(rooms[k]={gid:p.grade_id,sec,name:(p.grades&&p.grades.name)||('G'+p.grade_id),n:0})).n++; });
+  const list=Object.values(rooms).sort((a,b)=>a.gid-b.gid||a.sec.localeCompare(b.sec));
+  if(!list.length) return '';
+  const has=(gid,sec,id)=>(READER_ASSIGN||[]).some(r=>+r.grade_id===gid && String(r.section||'')===sec && r.book_id===id);
+  const rows=list.map(r=>`<tr>
+    <td><b>${esc(r.name)}${r.sec?' · '+esc(r.sec):''}</b> <span class="muted" style="font-size:.8rem">${r.n} alumnos</span></td>
+    ${_RDR_IDS.map(id=>{ const on=has(r.gid,r.sec,id);
+      return `<td style="text-align:center"><button class="btn sm ${on?'':'ghost'}" style="padding:5px 12px"
+        onclick="window._assignBook(${r.gid},'${esc(r.sec)}','${id}',${!on})">${on?'✓ asignado':'asignar'}</button></td>`; }).join('')}
+  </tr>`).join('');
+  return `<h2 style="font-size:16px;color:var(--blue-d);margin:22px 0 8px">🗂️ Qué lee cada salón — año ${SCHOOL_YEAR_NOW}</h2>
+    <p class="muted" style="margin:0 0 10px;font-size:.85rem">Cada año se elige de nuevo: lo de ${SCHOOL_YEAR_NOW} no se arrastra a ${SCHOOL_YEAR_NOW+1}, porque en cada grado habrá otros alumnos. El alumno solo ve en <b>Classes → Readers</b> los libros marcados aquí para su salón.</p>
+    <div class="card" style="padding:0;overflow-x:auto"><table>
+      <thead><tr><th>Salón</th>${_RDR_IDS.map(id=>`<th style="text-align:center">${READER_META[id].icon} ${esc(READER_META[id].short)}</th>`).join('')}</tr></thead>
+      <tbody>${rows}</tbody></table></div>`;
+}
+window._assignBook=async(gid,sec,bookId,on)=>{
+  try{
+    if(on){
+      const r=await sb.from('reader_assignments').insert({school_year:SCHOOL_YEAR_NOW,grade_id:gid,section:sec,book_id:bookId});
+      if(r.error) throw r.error;
+    }else{
+      const r=await sb.from('reader_assignments').delete()
+        .eq('school_year',SCHOOL_YEAR_NOW).eq('grade_id',gid).eq('section',sec).eq('book_id',bookId);
+      if(r.error) throw r.error;
+    }
+    READER_ASSIGN=null; await loadReaderAssignments();
+    studentLibrary();
+  }catch(e){ alert('No se pudo guardar la asignación: '+(e.message||e)); }
+};
 
 /* ---------- Classes: DOS etapas (Primary 2.º–5.º · Secondary 6.º–11.º) ----------
    El alumno entra por su etapa y dentro están las tarjetas por grado. Las
