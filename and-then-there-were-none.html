@@ -444,6 +444,10 @@ async function fetchExamLocks(){
 /* Si el alumno ya estaba dentro de un capítulo que acaba de cerrarse se le
    devuelve a la lista; si está en la lista, basta con repintarla. */
 function enforceExamLocks(announce){
+  /* El chooser de niveles y el modo C2 son de una sola pantalla y no tocan
+     `view` (se queda en 'chapters'): repintar aquí los borraría — y con el
+     chooser se iría la tarjeta EXAMS, que solo está ahí. */
+  if(window.ATTWN_CHOOSER || window.ATTWN_C2) return;
   const c = view.chap!=null ? CHAPTERS[view.chap] : null;
   if(c && chapterLocked(c.n)){
     view={screen:'chapters',chap:null,act:null,info:null};
