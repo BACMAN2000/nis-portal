@@ -421,6 +421,14 @@ function chapterDone(n){ return CORE_ACTS.filter(a=>{ const p=bestPct(n,a); retu
    localStorage para que cerrar sesión no sea la salida fácil. */
 const RDR_BOOK_ID=RDR_ID;
 const RDR_SCHOOL_YEAR=new Date().getFullYear();   // los candados son del año en curso
+let _rdrSkew=0;                                   // desfase con el reloj del servidor
+function _rdrRowOpen(r){
+  if(!r || !r.unlocked) return false;
+  const t=Date.now()+_rdrSkew;
+  if(r.opens_at  && new Date(r.opens_at).getTime()  >  t) return false;
+  if(r.closes_at && new Date(r.closes_at).getTime() <= t) return false;
+  return true;
+}
 const EXAM_POLL_MS=45000;
 const EXAM_CACHE_KEY='rdr:examopen:'+RDR_BOOK_ID;   // por navegador: es de un solo alumno
 function _examCacheRead(){
@@ -436,8 +444,8 @@ let EXAM_OPEN=_examCacheRead(), IS_STAFF=false, ME=null;
    Al alumno le manda la fila más específica que le aplique. */
 function _myScopeChain(){
   const g=ME&&ME.grade_id, sec=ME&&String(ME.section||'').trim();
-  if(g==null) return ['all'];
-  return sec ? ['g'+g+'-'+sec,'g'+g,'all'] : ['g'+g,'all'];
+  const base = g==null ? ['all'] : (sec ? ['g'+g+'-'+sec,'g'+g,'all'] : ['g'+g,'all']);
+  return ME&&ME.uid ? ['u:'+ME.uid].concat(base) : base;
 }
 function chapterLocked(n){ return !IS_STAFF && EXAM_OPEN.has(n); }
 function examLockMsg(n){ return 'Chapter '+n+' is closed while its exam is open. The reading comes back when your teacher closes the exam.'; }
@@ -451,7 +459,9 @@ async function fetchExamLocks(){
        el último estado conocido para que cerrar sesión no abra la lectura. */
     const ss=await c.auth.getSession();
     if(!ss || !ss.data || !ss.data.session) return false;
-    const r=await c.from('reader_exam_access').select('key,scope,unlocked').eq('school_year',RDR_SCHOOL_YEAR);
+    try{ const t=await c.rpc('server_now');
+      if(t&&t.data) _rdrSkew=new Date(t.data).getTime()-Date.now(); }catch(e){}
+    const r=await c.from('reader_exam_access').select('key,scope,unlocked,opens_at,closes_at').eq('school_year',RDR_SCHOOL_YEAR);
     if(r.error) return false;
     rows=r.data||[];
   }catch(e){ return false; }
@@ -460,7 +470,7 @@ async function fetchExamLocks(){
   const byKey={};
   rows.forEach(r=>{ const m=re.exec(String(r.key||'')); if(!m) return;
     const e=byKey[r.key]||(byKey[r.key]={n:+m[1],scopes:{}});
-    e.scopes[r.scope||'all']=!!r.unlocked; });
+    e.scopes[r.scope||'all']=_rdrRowOpen(r); });
   const now=new Set();
   Object.keys(byKey).forEach(k=>{ const e=byKey[k];
     for(const sc of chain){ if(sc in e.scopes){ if(e.scopes[sc]) now.add(e.n); break; } } });
