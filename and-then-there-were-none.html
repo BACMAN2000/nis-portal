@@ -408,6 +408,7 @@ function chapterDone(n){ return CORE_ACTS.filter(a=>{ const p=bestPct(n,a); retu
    el profesor lo sigue viendo todo. El último estado leído queda en
    localStorage para que cerrar sesión no sea la salida fácil. */
 const RDR_BOOK_ID='attwn';
+const RDR_SCHOOL_YEAR=new Date().getFullYear();   // los candados son del año en curso
 const EXAM_POLL_MS=45000;
 const EXAM_CACHE_KEY='rdr:examopen:'+RDR_BOOK_ID;   // por navegador: es de un solo alumno
 function _examCacheRead(){
@@ -438,7 +439,7 @@ async function fetchExamLocks(){
        el último estado conocido para que cerrar sesión no abra la lectura. */
     const ss=await c.auth.getSession();
     if(!ss || !ss.data || !ss.data.session) return false;
-    const r=await c.from('reader_exam_access').select('key,scope,unlocked');
+    const r=await c.from('reader_exam_access').select('key,scope,unlocked').eq('school_year',RDR_SCHOOL_YEAR);
     if(r.error) return false;
     rows=r.data||[];
   }catch(e){ return false; }

@@ -1399,16 +1399,20 @@ function _rdrChapterTable(id,book,en){
   </table></div>`;
 }
 
-let readerFilter={grade:'',section:'',book:'all'};
+const SCHOOL_YEAR_NOW=new Date().getFullYear();
+const _attYear=a=>{ try{ return new Date(a.submitted_at).getFullYear(); }catch(e){ return null; } };
+let readerFilter={grade:'',section:'',book:'all',year:SCHOOL_YEAR_NOW};
 window._setReaderFilter=(k,v)=>{ readerFilter[k]=v; readerStatsPanel(); };
 window._readerDetail=(id)=>readerStatsPanel(id);
-function _readerFilterBar(grades){
+function _readerFilterBar(grades,years){
   const lab=t=>`<label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">${t}</label>`;
   const g=`<option value="">Todos los grados</option>`+grades.map(x=>`<option value="${x.id}" ${String(readerFilter.grade)===String(x.id)?'selected':''}>${x.name}</option>`).join('');
   const s=`<option value="">Todas</option>`+['A','B'].map(x=>`<option value="${x}" ${readerFilter.section===x?'selected':''}>${x}</option>`).join('');
   const b=`<option value="all" ${readerFilter.book==='all'?'selected':''}>Todas las obras</option>`
     +_RDR_IDS.map(id=>`<option value="${id}" ${readerFilter.book===id?'selected':''}>${READER_META[id].icon} ${READER_META[id].title}</option>`).join('');
+  const y=(years&&years.length?years:[SCHOOL_YEAR_NOW]).map(v=>`<option value="${v}" ${String(readerFilter.year)===String(v)?'selected':''}>${v}${v===SCHOOL_YEAR_NOW?' (en curso)':''}</option>`).join('');
   return `<div class="card" style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;padding:14px 16px;margin-bottom:10px">
+    <div>${lab('AÑO ESCOLAR')}<select onchange="window._setReaderFilter('year',this.value)" style="min-width:120px">${y}</select></div>
     <div>${lab('GRADO')}<select onchange="window._setReaderFilter('grade',this.value)" style="min-width:140px">${g}</select></div>
     <div>${lab('SECCIÓN')}<select onchange="window._setReaderFilter('section',this.value)" style="min-width:100px">${s}</select></div>
     <div>${lab('OBRA')}<select onchange="window._setReaderFilter('book',this.value)" style="min-width:250px">${b}</select></div>
@@ -1424,8 +1428,12 @@ async function readerStatsPanel(detailId){
     sb.from('profiles').select('id,full_name,grade_id,section, grades(name)').eq('role','student'),
     sb.from('activity_attempts').select('student_id,activity,score,total,duration_sec,submitted_at').or(_rdrOr()).limit(5000)
   ]);
+  /* Los años que existen en los datos, para poder mirar atrás: los alumnos de
+     un grado cambian cada año, así que las notas se leen año por año. */
+  const years=[...new Set([...(atts||[]).map(_attYear).filter(Boolean), SCHOOL_YEAR_NOW])].sort((a,b)=>b-a);
+  const ofYear=(atts||[]).filter(a=>_attYear(a)===+readerFilter.year);
   const byStu={};
-  (atts||[]).forEach(a=>{ (byStu[a.student_id]||(byStu[a.student_id]=[])).push(a); });
+  ofYear.forEach(a=>{ (byStu[a.student_id]||(byStu[a.student_id]=[])).push(a); });
   let list=(studs||[]).filter(p=>gradeIds.has(String(p.grade_id)));
   if(readerFilter.grade)   list=list.filter(p=>String(p.grade_id)===String(readerFilter.grade));
   if(readerFilter.section) list=list.filter(p=>p.section===readerFilter.section);
@@ -1483,8 +1491,9 @@ async function readerStatsPanel(detailId){
       <h1 style="margin:0">📖 Controles de lectura</h1>
       <a class="btn sm ghost" href="attwn-exam.html" style="text-decoration:none">🔓 Abrir / cerrar controles →</a>
     </div>
-    <p class="muted" style="margin-top:-6px">La nota de cada capítulo es su control (mejor intento). El tiempo de lectura con audio y el de los ejercicios se muestran al lado como evidencia de trabajo: no cambian la nota.</p>
-    ${_readerFilterBar(grades)}
+    <p class="muted" style="margin-top:-6px">La nota de cada capítulo es su control (mejor intento). El tiempo de lectura con audio y el de los ejercicios se muestran al lado como evidencia de trabajo: no cambian la nota.
+      Se muestra el año escolar <b>${esc(readerFilter.year)}</b>: cada año son alumnos distintos en cada grado, así que las notas no se mezclan.</p>
+    ${_readerFilterBar(grades,years)}
     ${stats}
     <div class="card" style="padding:0;overflow-x:auto"><table>
       <thead><tr>${head}</tr></thead>
@@ -2446,7 +2455,7 @@ async function studentReaderReport(key){
   $('#main').innerHTML=`${back}<h1>📊 My reading report</h1><p class="muted">Loading…</p>`;
   const { data:atts } = await sb.from('activity_attempts')
     .select('activity,score,total,duration_sec,submitted_at').eq('student_id',p.id).or(_rdrOr()).limit(2000);
-  const r=readerReport(atts);
+  const r=readerReport((atts||[]).filter(a=>_attYear(a)===SCHOOL_YEAR_NOW));
   const mine=(READER_BOOKS[key]||_RDR_IDS).filter(id=>READER_META[id]);
   const cards=mine.map(id=>{
     const b=r.books[id], meta=READER_META[id];

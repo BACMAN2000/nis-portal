@@ -174,6 +174,10 @@ const CH1_EXTRA=[
    específica que le aplique; el tiempo extra es el MAYOR de las que le
    apliquen, para que un +10 al grado no lo pise un salón sin extra. */
 let sb=null, me=null, ACC=[], GRADES=[];
+/* Año escolar en curso. El alcance ('g9-B') es posicional: en 2027 ese salón
+   son otros alumnos, así que cada año tiene sus propias filas y nace cerrado.
+   En Perú el año escolar cae dentro del año calendario, así que basta con él. */
+const SCHOOL_YEAR=new Date().getFullYear();
 const dataCache={};
 
 async function boot(){
@@ -192,7 +196,7 @@ async function boot(){
   _applyHash();
 }
 async function reloadAccess(){
-  const l=await sb.from('reader_exam_access').select('key,scope,unlocked,extra_min');
+  const l=await sb.from('reader_exam_access').select('key,scope,unlocked,extra_min').eq('school_year',SCHOOL_YEAR);
   if(!l.error) ACC=l.data||[];
   return ACC;
 }
@@ -340,8 +344,8 @@ function scopeBar(rid,lvl){
     <div><label>SALÓN</label>
       <select ${m[1]?'':'disabled'} onchange="window._setScope('section',this.value,'${rid}','${lvl}')">${secSel}</select></div>
     <div style="font-size:12.5px;color:#475569;padding-bottom:7px">
-      Estás cambiando <b>${esc(scopeLabel(SCOPE))}</b>. Lo que abras aquí solo lo ven esos alumnos;
-      un salón manda sobre su grado, y el grado sobre “todos”.</div>
+      Estás cambiando <b>${esc(scopeLabel(SCOPE))}</b> · año <b>${SCHOOL_YEAR}</b>. Lo que abras aquí solo lo ven esos alumnos;
+      un salón manda sobre su grado, y el grado sobre “todos”. Cada año escolar arranca con todo cerrado.</div>
   </div>`;
 }
 window._setScope=(part,val,rid,lvl)=>{
@@ -400,7 +404,7 @@ window.toggleLock=async(k,n,btn,rid,lvl)=>{
   const cur=_accRow(k), eff=accFor(k,scopeChain(SCOPE)).unlocked, now=!eff;
   btn.className=now?'on':'off';
   try{
-    const row={key:k,scope:SCOPE,unlocked:now,extra_min:(cur&&cur.extra_min)||0,updated_at:new Date().toISOString()};
+    const row={key:k,scope:SCOPE,school_year:SCHOOL_YEAR,unlocked:now,extra_min:(cur&&cur.extra_min)||0,updated_at:new Date().toISOString()};
     const r=await sb.from('reader_exam_access').upsert(row);
     if(r.error) throw r.error;
     await reloadAccess();
@@ -410,7 +414,7 @@ window.toggleLock=async(k,n,btn,rid,lvl)=>{
 window.lockAll=async(rid,lvl,open)=>{
   const rows=Array.from({length:READERS.find(x=>x.id===rid).chapters},(_,i)=>{
     const k=lockKey(rid,lvl,i+1), cur=ACC.find(x=>x.key===k&&x.scope===SCOPE);
-    return {key:k,scope:SCOPE,unlocked:open,extra_min:(cur&&cur.extra_min)||0,updated_at:new Date().toISOString()};
+    return {key:k,scope:SCOPE,school_year:SCHOOL_YEAR,unlocked:open,extra_min:(cur&&cur.extra_min)||0,updated_at:new Date().toISOString()};
   });
   try{
     const r=await sb.from('reader_exam_access').upsert(rows);
@@ -424,7 +428,7 @@ window.addTime=async(k,mins,rid,lvl)=>{
   const cur=_accRow(k);
   const val = mins===0 ? 0 : Math.min(180, ((cur&&cur.extra_min)||0)+mins);
   try{
-    const row={key:k,scope:SCOPE,unlocked:!!(cur&&cur.unlocked),extra_min:val,updated_at:new Date().toISOString()};
+    const row={key:k,scope:SCOPE,school_year:SCHOOL_YEAR,unlocked:!!(cur&&cur.unlocked),extra_min:val,updated_at:new Date().toISOString()};
     const r=await sb.from('reader_exam_access').upsert(row);
     if(r.error) throw r.error;
     await reloadAccess();
@@ -532,7 +536,7 @@ window.startExam=async(rid,lvl,ch,fromHash)=>{
   EX.poll=setInterval(async()=>{
     if(EX.done||!sb) return;
     try{
-      const q=await sb.from('reader_exam_access').select('key,scope,unlocked,extra_min').eq('key',EX.lockKey);
+      const q=await sb.from('reader_exam_access').select('key,scope,unlocked,extra_min').eq('key',EX.lockKey).eq('school_year',SCHOOL_YEAR);
       if(q.error||!q.data) return;
       q.data.forEach(row=>{ const i=ACC.findIndex(x=>x.key===row.key&&x.scope===row.scope);
         if(i<0) ACC.push(row); else ACC[i]=row; });
