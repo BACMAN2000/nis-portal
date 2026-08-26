@@ -196,6 +196,11 @@ async function reloadAccess(){
   return ACC;
 }
 const isStaff=()=>me && (me.role==='teacher'||me.role==='admin');
+/* Sin sesión, RLS no devuelve ninguna fila y todos los examenes saldrian
+   cerrados sin explicar por que: el alumno cree que su profesor no los abrio. */
+const noSessionNote=()=>me?'':`<div class="note" style="background:#fef2f2;border-color:#fca5a5;color:#7f1d1d">
+  ⚠️ <b>You are not signed in.</b> Your exams can only be checked when you are signed in to the Portal.
+  <a href="./" style="color:#b91c1c;font-weight:700">Sign in here</a> and come back — otherwise every chapter looks locked.</div>`;
 const lockKey=(r,l,ch)=>r+':'+l+':ch'+ch;
 /* Alcances que le aplican a alguien, del más específico al más general. */
 function scopeChain(sc){
@@ -257,6 +262,7 @@ function viewReaders(){
     <div class="hero"><h1 style="color:#fde68a">📝 Reader Exams</h1>
       <p>One exam per chapter, at your level: comprehension, true/false, vocabulary, listening and story order —
       corrected automatically with feedback. ${isStaff()?'<b>Teacher mode:</b> use the switches to unlock each exam for students.':'Your teacher unlocks each exam when your class is ready.'}</p></div>
+    ${noSessionNote()}
     <div class="grid">
       ${READERS.map(r=>`<div class="card" onclick="viewLevels('${r.id}')">
         <div class="ico">${r.icon}</div><h2>${r.title}</h2>
@@ -321,6 +327,7 @@ window.viewChapters=async(rid,lvl)=>{
       <button class="btn ghost" style="padding:6px 12px;font-size:12px" onclick="lockAll('${rid}','${lvl}',true)">🔓 Unlock all</button>
       <button class="btn ghost" style="padding:6px 12px;font-size:12px" onclick="lockAll('${rid}','${lvl}',false)">🔒 Lock all</button></div></div>`:''}
     ${staff?scopeBar(rid,lvl):''}
+    ${noSessionNote()}
     <div class="grid" id="chGrid">
       ${data.CHAPTERS.map(c=>{ const k=lockKey(rid,lvl,c.n); const a=accFor(k,chain);
         const open=a.unlocked, canEnter=staff||open;
