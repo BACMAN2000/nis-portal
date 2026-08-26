@@ -2471,7 +2471,8 @@ function studentGradeReaders(key){
   const back=_backBtn("window._nav('classes_"+key+"')",GRADE_META[key][1]);
   const base='english.classes.'+key+'.reader';
   if(!nodeVisible('english.classes.'+key) || !nodeVisible(base)){ _lockedView(back,'📚 Readers'); return; }
-  const cards=(READER_BOOKS[key]||[]).map(id=>{ const b=READER_CARDS[id]; return _skillCard(b[0],b[1],b[2],_withBack(b[3],route)); }).join('')
+  const cards=_skillCard('📝','Reader Exams','One timed exam per chapter of each book, at your level — your teacher opens them when your class is ready.',_withBack('attwn-exam.html',route))
+    + (READER_BOOKS[key]||[]).map(id=>{ const b=READER_CARDS[id]; return _skillCard(b[0],b[1],b[2],_withBack(b[3],route)); }).join('')
     + _hubCard('📊','My reading report','Your mark for every chapter control, your reading time and your overall mark.',"window._nav('classes_"+key+"_readers_report')");
   $('#main').innerHTML=`${back}<h1>📚 Readers</h1>
     <p class="muted" style="margin-top:-6px">Graded readers with activities for every chapter.</p>
