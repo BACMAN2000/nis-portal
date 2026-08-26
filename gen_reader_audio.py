@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Audio de los readers GENÉRICOS (earnest, tomsawyer) + tiempos por palabra.
+Audio de los readers GENÉRICOS (earnest, tomsawyer, princepauper) + tiempos por palabra.
 
 Uso:  python gen_reader_audio.py <libro> <nivel>
       python gen_reader_audio.py earnest b1
@@ -19,7 +19,8 @@ from pathlib import Path
 import edge_tts
 
 ROOT   = Path(__file__).parent
-VOICES = {"earnest": "en-GB-ThomasNeural", "tomsawyer": "en-US-ChristopherNeural"}
+VOICES = {"earnest": "en-GB-ThomasNeural", "tomsawyer": "en-US-ChristopherNeural",
+          "princepauper": "en-GB-RyanNeural"}
 RATES  = {"a2": "-15%", "b1": "-8%", "b2": "-6%", "c1": "-4%"}
 
 def load_readings(book, level):
