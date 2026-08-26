@@ -46,6 +46,8 @@
   .chap-card h2{text-align:left; margin-top:2px}
   .chap-card .desc{text-align:left}
   .chap-card .act-tag{font-size:11px;color:#94a3b8;font-weight:600;margin-top:4px}
+  .chap-card.locked{opacity:.62; cursor:default; background:#f8fafc}
+  .chap-card.locked:hover{transform:none; border-color:var(--line)}
   .btn{cursor:pointer; font-family:inherit; font-weight:700; font-size:14px; border:none; border-radius:10px;
     padding:10px 18px; background:var(--blue); color:#fff; transition:.12s}
   .btn:hover{background:var(--blue-d)}
@@ -382,7 +384,7 @@ window.NISACT = (function () {
     }catch(e){}
     return {sent:true};
   }
-  return {submit, student};
+  return {submit, student, client};
 })();
 
 /* ---------- progreso local + envío de resultados ---------- */
@@ -405,6 +407,74 @@ function bestPct(n,actId){ try{ const b=JSON.parse(localStorage.getItem('rdr:'+R
 const CORE_ACTS=['comprehension','truefalse','listen','summary','multiplechoice','speed'];
 function chapterDone(n){ return CORE_ACTS.filter(a=>{ const p=bestPct(n,a); return p!=null && p>=70; }).length>=3; }
 
+/* ---------- candados de examen: la lectura se cierra mientras corre el examen ----------
+   Cuando el profesor abre el examen de un capítulo en Reader Exams (tabla
+   reader_exam_access, clave <libro>:<nivel>:ch<N>), ese capítulo se cierra
+   aquí: nadie lee el texto ni sus 13 actividades mientras rinde. Al cerrar el
+   examen la lectura vuelve sola, sin tocar nada más.
+   Se cierra en TODOS los niveles del libro — cambiar de nivel es un clic — y
+   el profesor lo sigue viendo todo. El último estado leído queda en
+   localStorage para que cerrar sesión no sea la salida fácil. */
+const RDR_EXAM_ID=RDR_ID;
+const EXAM_POLL_MS=45000;
+const EXAM_CACHE_KEY='rdr:examopen:'+RDR_EXAM_ID;
+function _examCacheRead(){
+  try{ const c=JSON.parse(localStorage.getItem(EXAM_CACHE_KEY)||'null');
+    if(c && Date.now()-c.t < 12*3600*1000) return new Set(c.ns); }catch(e){}
+  return new Set();
+}
+function _examCacheWrite(s){
+  try{ localStorage.setItem(EXAM_CACHE_KEY,JSON.stringify({t:Date.now(),ns:[...s]})); }catch(e){}
+}
+let EXAM_OPEN=_examCacheRead(), IS_STAFF=false;
+function chapterLocked(n){ return !IS_STAFF && EXAM_OPEN.has(n); }
+function examLockMsg(n){ return 'Chapter '+n+' is closed while its exam is open. The reading comes back when your teacher closes the exam.'; }
+/* Devuelve true si la lista de capítulos con examen abierto cambió. */
+async function fetchExamLocks(){
+  const c=window.NISACT&&NISACT.client&&NISACT.client(); if(!c) return false;
+  let rows;
+  try{
+    /* RLS solo deja leer la tabla a usuarios con sesión: sin ella la respuesta
+       llega vacía, que NO es lo mismo que "no hay examen abierto". Se conserva
+       el último estado conocido para que cerrar sesión no abra la lectura. */
+    const ss=await c.auth.getSession();
+    if(!ss || !ss.data || !ss.data.session) return false;
+    const r=await c.from('reader_exam_access').select('key,unlocked');
+    if(r.error) return false;
+    rows=r.data||[];
+  }catch(e){ return false; }
+  const re=new RegExp('^'+RDR_EXAM_ID+':[a-z0-9]+:ch(\\d+)$');
+  const now=new Set();
+  rows.forEach(r=>{ const m=re.exec(String(r.key||'')); if(m && r.unlocked) now.add(+m[1]); });
+  const changed = now.size!==EXAM_OPEN.size || [...now].some(x=>!EXAM_OPEN.has(x));
+  EXAM_OPEN=now; _examCacheWrite(now);
+  return changed;
+}
+/* Si el alumno ya estaba dentro de un capítulo que acaba de cerrarse se le
+   devuelve a la lista; si está en la lista, basta con repintarla. */
+function enforceExamLocks(announce){
+  const c = view.chap!=null ? CHAPTERS[view.chap] : null;
+  if(c && chapterLocked(c.n)){
+    view={screen:'chapters',chap:null,act:null,info:null};
+    render();
+    if(announce) alert('📝 '+examLockMsg(c.n));
+    return;
+  }
+  if(view.screen==='chapters') render();
+}
+function examLockBanner(){
+  const ns=[...EXAM_OPEN].filter(x=>CHAPTERS.some(c=>c.n===x)).sort((a,b)=>a-b);
+  if(!ns.length) return '';
+  const one=ns.length===1, list=(one?'Chapter ':'Chapters ')+ns.join(', ');
+  return `<div style="background:#fff7ed;border:1px solid #fdba74;border-radius:12px;padding:10px 14px;margin:0 0 12px;font-size:13px;color:#7c2d12">${IS_STAFF
+    ? `👩‍🏫 <b>Exam open.</b> ${list} ${one?'is':'are'} closed for students while ${one?'its exam is':'their exams are'} open — you still see everything.`
+    : `📝 <b>Exam time.</b> ${list} ${one?'is':'are'} closed while ${one?'its exam is':'their exams are'} open. The reading comes back as soon as your teacher closes the exam.`}</div>`;
+}
+async function examLockLoop(){
+  if(await fetchExamLocks()) enforceExamLocks(true);
+  setTimeout(examLockLoop, EXAM_POLL_MS);
+}
+
 const ACTS=[
   {id:"read",          ico:"📖", name:"Read along",       desc:"Read the chapter with audio: press play and follow the highlighted text."},
   {id:"listen",        ico:"🎧", name:"Listening",        desc:"Listen first without reading, then complete the missing words."},
@@ -424,6 +494,10 @@ const ACTS=[
 /* ---------- navigation ---------- */
 function render(){
   _stopAudio();
+  /* Candado de examen: cualquier camino hacia un capítulo con el examen
+     abierto (hash, botón, checkpoint) vuelve a la lista de capítulos. */
+  if(view.chap!=null && CHAPTERS[view.chap] && chapterLocked(CHAPTERS[view.chap].n))
+    view={screen:"chapters",chap:null,act:null,info:null};
   _syncHash();
   backEl.style.display = view.screen==="chapters" ? "none" : "inline-block";
   if(view.screen==="chapters"){ crumbEl.innerHTML=""; return renderChapters(); }
@@ -440,7 +514,9 @@ function back(){
   else if(view.screen==="acts" || view.screen==="info"){ view.screen="chapters"; view.chap=null; view.info=null; }
   render();
 }
-function openChapter(i){ view.chap=i; view.screen="acts"; render(); }
+function openChapter(i){ const c=CHAPTERS[i];
+  if(c && chapterLocked(c.n)){ alert('🔒 '+examLockMsg(c.n)); return; }
+  view.chap=i; view.screen="acts"; render(); }
 function openAct(id){ view.act=id; view.screen="act"; render(); }
 function openInfo(kind){ view.info=kind; view.screen="info"; render(); }
 
@@ -485,16 +561,17 @@ function renderChapters(){
         <div><h2 style="margin:0">C2 · Read the original</h2><div class="desc">The final challenge: the unabridged original — reading plan, analysis questions and advanced writing.</div></div>
       </div>
     </div>
+    ${examLockBanner()}
     <h2 style="font-size:16px;color:var(--blue-d);margin:4px 0 10px">📚 Chapters</h2>
     <div class="grid cols-2">
-      ${CHAPTERS.map((c,i)=>`
-        <div class="card chap-card" onclick="openChapter(${i})">
-          <span class="num">CHAPTER ${c.n} ${doneList[i]?'<span style="color:#059669">✓ DONE</span>':''}</span>
-          <h2>${c.title}</h2>
-          <div class="desc">${c.sum}</div>
-          <span class="chip">🎧 audio · ${c.vocab.length} words · ${c.comp.length} questions</span>
-          <span class="act-tag">Read along · Listening · Summarize · Comprehension · +9 more</span>
-        </div>`).join("")}
+      ${CHAPTERS.map((c,i)=>{ const lk=chapterLocked(c.n); return `
+        <div class="card chap-card${lk?' locked':''}"${lk?'':` onclick="openChapter(${i})"`}>
+          <span class="num">CHAPTER ${c.n} ${lk?'<span style="color:#b45309">🔒 EXAM</span>':(doneList[i]?'<span style="color:#059669">✓ DONE</span>':'')}</span>
+          <h2>${lk?'🔒 ':''}${c.title}</h2>
+          <div class="desc">${lk?'Its exam is open: the reading and its 13 activities are closed until your teacher finishes.':c.sum}</div>
+          ${lk?'':`<span class="chip">🎧 audio · ${c.vocab.length} words · ${c.comp.length} questions</span>
+          <span class="act-tag">Read along · Listening · Summarize · Comprehension · +9 more</span>`}
+        </div>`;}).join("")}
     </div>`;
 }
 const CHARACTERS=EXTRAS.CHARACTERS||[];
@@ -979,7 +1056,9 @@ function actRead(c){
   sk.addEventListener('change',()=>{ RP.seeking=false; RP.seekTo(parseFloat(sk.value)); });
   window.scrollTo(0,0);
 }
-window.openReadChapter=(i)=>{ view.chap=i; view.act='read'; view.screen='act'; render(); };
+window.openReadChapter=(i)=>{ const c=CHAPTERS[i];
+  if(c && chapterLocked(c.n)){ alert('🔒 '+examLockMsg(c.n)); return; }
+  view.chap=i; view.act='read'; view.screen='act'; render(); };
 
 /* ============================================================
    READ ALONG — audio por párrafo (attwn-audio/chN-pM.mp3),
@@ -1566,7 +1645,14 @@ function _mountTeacherBtn(){
   b.onclick=teacherView;
   document.body.appendChild(b);
 }
-(async()=>{ try{ const s=window.NISACT&&NISACT.student&&await NISACT.student(); if(s&&(s.role==='teacher'||s.role==='admin')) _mountTeacherBtn(); }catch(e){} })();
+(async()=>{
+  try{ const s=window.NISACT&&NISACT.student&&await NISACT.student();
+    if(s&&(s.role==='teacher'||s.role==='admin')){ IS_STAFF=true; _mountTeacherBtn(); }
+  }catch(e){}
+  await fetchExamLocks();
+  enforceExamLocks(false);
+  setTimeout(examLockLoop, EXAM_POLL_MS);
+})();
 
 /* ---------- dispatch ---------- */
 const ACT_RENDER={
@@ -1595,8 +1681,8 @@ function _syncHash(){
 }
 function _applyRoute(h){
   let m;
-  if((m=/^c(\d+)-(\w+)$/.exec(h)) && CHAPTERS[+m[1]] && ACT_RENDER[m[2]]){ view={screen:"act",chap:+m[1],act:m[2]}; }
-  else if((m=/^c(\d+)$/.exec(h)) && CHAPTERS[+m[1]]){ view={screen:"acts",chap:+m[1],act:null}; }
+  if((m=/^c(\d+)-(\w+)$/.exec(h)) && CHAPTERS[+m[1]] && ACT_RENDER[m[2]] && !chapterLocked(CHAPTERS[+m[1]].n)){ view={screen:"act",chap:+m[1],act:m[2]}; }
+  else if((m=/^c(\d+)$/.exec(h)) && CHAPTERS[+m[1]] && !chapterLocked(CHAPTERS[+m[1]].n)){ view={screen:"acts",chap:+m[1],act:null}; }
   else if((m=/^info-(\w+)$/.exec(h))){
     const fn={before:extraBeforeYouRead,grammar:extraGrammar,charwriting:extraCharWriting,notebook:extraNotebook}[m[1]];
     if(fn) return fn();
