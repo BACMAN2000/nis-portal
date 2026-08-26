@@ -43,7 +43,8 @@ span("""/* Nivel del reader (?level=a2|b1|b2|c1|c2) → carga su archivo de dato
 var _q=new URLSearchParams(location.search);
 var RDR_BOOKS={
   earnest:{title:'The Importance of Being Earnest', by:'Oscar Wilde'},
-  tomsawyer:{title:'The Adventures of Tom Sawyer', by:'Mark Twain'}
+  tomsawyer:{title:'The Adventures of Tom Sawyer', by:'Mark Twain'},
+  princepauper:{title:'The Prince and the Pauper', by:'Mark Twain'}
 };
 var RDR_ID=(_q.get('book')||'earnest').toLowerCase();
 if(!RDR_BOOKS[RDR_ID]) RDR_ID='earnest';
@@ -53,7 +54,8 @@ window.ATTWN_C2 = (_attwnRaw==='c2');
 var ATTWN_LVL = window.ATTWN_C2 ? 'c1' : _attwnRaw;
 if(['a2','b1','b2','c1'].indexOf(ATTWN_LVL)<0) ATTWN_LVL='b1';
 document.write('<script src="'+RDR_ID+'-data-'+ATTWN_LVL+'.js?v=1"><\\/script>');
-document.write('<script src="'+RDR_ID+'-extras.js?v=1"><\\/script>');""")
+document.write('<script src="'+RDR_ID+'-extras.js?v=1"><\\/script>');
+if(window.ATTWN_C2) document.write('<script src="'+RDR_ID+'-original.js?v=1" onerror="window.READER_ORIGINAL=null"><\/script>');""")
 
 # ---- consts de nivel + libro ----
 rep("""const LVL=(window.ATTWN_DATA&&ATTWN_DATA.level)||'B1';
@@ -251,6 +253,111 @@ rep("“N.º de palabras” = solo el texto del reader (10 capítulos).",
 
 # ---- candados de examen: la clave de reader_exam_access lleva el id del libro ----
 rep("const RDR_BOOK_ID='attwn';", "const RDR_BOOK_ID=RDR_ID;")
+
+# ============================================================
+#  AMPLIACIÓN 2026-08-26 — actividades nuevas e ilustraciones
+#  Salen del reader Black Cat de The Prince and the Pauper. Cada
+#  tarjeta aparece solo si el capítulo trae sus datos, así que los
+#  libros antiguos siguen mostrando exactamente las 13 de siempre.
+# ============================================================
+
+# ---- catálogo: 8 actividades nuevas, condicionadas a que haya datos ----
+rep("""  {id:"scramble",      ico:"🔠", name:"Word Scramble",    desc:"Put the mixed letters in the right order."}
+];""",
+"""  {id:"scramble",      ico:"🔠", name:"Word Scramble",    desc:"Put the mixed letters in the right order."},
+  {id:"rightwrong",    ico:"🅰️", name:"Right or Wrong",   desc:"Right, Wrong — or doesn’t the text say? Cambridge A2 Key style.",
+   need:c=>(c.rw||[]).length},
+  {id:"halves",        ico:"🔗", name:"Sentence Halves",  desc:"Match the beginning of each sentence with its ending.",
+   need:c=>(c.halves||[]).length},
+  {id:"oddoneout",     ico:"🚫", name:"Odd One Out",      desc:"Find the word that doesn’t belong — and say why.",
+   need:c=>(c.odd||[]).length},
+  {id:"gapfill",       ico:"📝", name:"Gap Fill",         desc:"Complete the sentences with the words in the box.",
+   need:c=>((c.gaps||{}).items||[]).length},
+  {id:"wordform",      ico:"🔁", name:"Word Formation",   desc:"Nouns and adjectives from the same family.",
+   need:c=>(c.wordform||[]).length},
+  {id:"opposites",     ico:"↔️", name:"Opposites",        desc:"Match each word with its opposite.",
+   need:c=>(c.opposites||[]).length},
+  {id:"picsummary",    ico:"🧩", name:"Picture Summary",  desc:"Put the pictures of the chapter in the right order.",
+   need:c=>(((window.READER_EXTRAS||{}).ILLUS||{})[c.n]||[]).length>=3},
+  {id:"readingpics",   ico:"🖼️", name:"Reading Pictures", desc:"Look at the illustration and answer the questions.",
+   need:c=>!!(((window.READER_EXTRAS||{}).PICS||{})[c.n])},
+  {id:"think",         ico:"🌸", name:"Values & Feelings",desc:"What is this chapter really about? Think and choose.",
+   need:c=>!!c.think}
+];""")
+
+# ---- renderActs: filtrar por `need` ----
+rep("""      ${ACTS.map(a=>`
+        <div class="card" onclick="openAct('${a.id}')">""",
+"""      ${ACTS.filter(a=>!a.need||a.need(c)).map(a=>`
+        <div class="card" onclick="openAct('${a.id}')">""")
+
+# ---- despachador ----
+rep("""  hangman:actHangman, memory:actMemory, scramble:actScramble
+};""",
+"""  hangman:actHangman, memory:actMemory, scramble:actScramble,
+  rightwrong:actRightWrong, halves:actHalves, oddoneout:actOddOneOut,
+  gapfill:actGapFill, wordform:actWordForm, opposites:actOpposites,
+  picsummary:actPicSummary, readingpics:actReadingPics, think:actThink
+};""")
+
+# ---- la etiqueta de las tarjetas de capítulo cuenta las reales ----
+rep("""          <span class="act-tag">Read along · Listening · Summarize · Comprehension · +9 more</span>`}""",
+"""          <span class="act-tag">Read along · Listening · Summarize · Comprehension · +${ACTS.filter(a=>!a.need||a.need(c)).length-4} more</span>`}""")
+
+# ---- Read along: láminas del libro intercaladas entre los párrafos ----
+rep("""    ${paras.map((p,i)=>`<p class="rp"><button class="pbtn" onclick="rpPara(${i})" title="Play from here">▶</button>${wordSpans(p,i)}</p>`).join('')}""",
+"""    ${paras.map((p,i)=> (/^§\s/.test(p)
+          ? `<h3 class="rp-chap">${p.replace(/^§\s*/,'')}</h3>`
+          : /^«/.test(p)
+          ? `<p class="rp rp-bridge">${p}</p>`
+          : `<p class="rp"><button class="pbtn" onclick="rpPara(${i})" title="Play from here">▶</button>${wordSpans(p,i)}</p>`)
+        + (((EXTRAS.ILLUS||{})[c.n]||[]).filter(f=>f.after===i).map(f=>
+            `<figure class="rdr-fig"><img src="${RDR_ID}-img/${f.img}.jpg" alt="" loading="lazy"
+               onerror="this.closest('figure').remove()"><figcaption>${f.cap}</figcaption></figure>`).join(''))
+      ).join('')}
+    ${((EXTRAS.ILLUS||{})[c.n]||[]).length?`<div class="img-credit" style="margin-top:10px">${IMG_CREDIT}</div>`:''}""")
+
+# ---- estilo de las láminas ----
+rep("  .rp-hint{font-size:11.5px; color:var(--muted); margin-top:6px}",
+"""  .rp-hint{font-size:11.5px; color:var(--muted); margin-top:6px}
+  .rdr-fig{margin:18px auto; max-width:560px; text-align:center}
+  .rdr-fig img{width:100%; border-radius:12px; background:#fff; box-shadow:0 2px 10px rgba(15,23,42,.10)}
+  .rdr-fig figcaption{font-size:12px; color:var(--muted); margin-top:6px; font-style:italic}
+  .rp-chap{font-size:15px; color:var(--blue-d); margin:26px 0 10px; padding-bottom:6px;
+           border-bottom:1px solid #e2e8f0; letter-spacing:.02em; text-transform:uppercase}
+  .rp-bridge{font-style:italic; color:var(--muted); background:#f8fafc;
+             border-left:3px solid #cbd5e1; padding:10px 14px; border-radius:0 8px 8px 0}""")
+
+# ---- tarjetas nuevas en la portada del libro (solo si el libro las trae) ----
+rep("""      <div class="card" style="flex-direction:row;text-align:left;gap:14px;align-items:center;border-top:4px solid #1e3a5f" onclick="extraC2()">""",
+"""      ${(EXTRAS.KEY&&EXTRAS.KEY.part1)?`
+      <div class="card" style="flex-direction:row;text-align:left;gap:14px;align-items:center;border-top:4px solid #e11d63" onclick="extraKeyPrep()">
+        <div class="ico" style="font-size:2.2rem">🎓</div>
+        <div><h2 style="margin:0">Cambridge A2 Key</h2><div class="desc">The six Reading &amp; Writing parts of the real exam, with the world of this book.</div></div>
+      </div>`:''}
+      ${(EXTRAS.TRINITY&&EXTRAS.TRINITY.length)?`
+      <div class="card" style="flex-direction:row;text-align:left;gap:14px;align-items:center" onclick="extraTrinity()">
+        <div class="ico" style="font-size:2.2rem">🗣️</div>
+        <div><h2 style="margin:0">Trinity · Speaking</h2><div class="desc">Speaking topics that come out of the story, for pairs and for the class.</div></div>
+      </div>`:''}
+      ${(EXTRAS.SURF&&EXTRAS.SURF.length)?`
+      <div class="card" style="flex-direction:row;text-align:left;gap:14px;align-items:center" onclick="extraSurf()">
+        <div class="ico" style="font-size:2.2rem">🌐</div>
+        <div><h2 style="margin:0">Surf the net</h2><div class="desc">Research the real places and history behind the story.</div></div>
+      </div>`:''}
+      <div class="card" style="flex-direction:row;text-align:left;gap:14px;align-items:center;border-top:4px solid #1e3a5f" onclick="extraC2()">""")
+
+# ---- restos hardcodeados de ATTWN (10 capítulos / 13 actividades / su gramática) ----
+rep("  const left=10-doneList.filter(Boolean).length;",
+    "  const left=CHAPTERS.length-doneList.filter(Boolean).length;")
+rep("""    <p class="lead">${ATTWN_DATA.lead} — choose a chapter, then choose an activity: 13 per chapter.</p>""",
+    """    <p class="lead">${ATTWN_DATA.lead} — choose a chapter, then choose an activity.</p>""")
+rep("""        <div><h2 style="margin:0">Grammar</h2><div class="desc">Past perfect simple — explained with the story.</div></div>""",
+    """        <div><h2 style="margin:0">Grammar</h2><div class="desc">${(EXTRAS.GRAMMAR&&EXTRAS.GRAMMAR.title)||'Grammar'} — explained with the story.</div></div>""")
+
+# ---- bloque JS de las actividades nuevas ----
+extra_js = (ROOT / "_reader_extra_acts.js").read_text(encoding="utf-8")
+rep("""const ACT_RENDER={""", extra_js + "\nconst ACT_RENDER={")
 
 (ROOT / "reader.html").write_text(src, encoding="utf-8")
 print(f"reader.html generado con {n_rep} transformaciones, {len(src)} chars")
