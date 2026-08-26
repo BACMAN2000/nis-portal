@@ -49,8 +49,14 @@
   function target(){ return fromParam() || fromReferrer() || PORTAL; }
   function abs(u){ try{ return new URL(u, location.href).href; }catch(_){ return ''; } }
 
+  /* Una página con pantallas internas registra aquí su propio "atrás":
+     si devuelve true se queda el clic (retrocedió una pantalla); si devuelve
+     false ya está en su primera pantalla y toca salir al portal. */
+  var _inner = null;
+
   function go(ev){
     if(ev) ev.preventDefault();
+    if(_inner){ try{ if(_inner() === true) return; }catch(_){} }
     var t = target(), ref = fromReferrer();
     // Si el destino ES la página anterior, usa el historial: restaura scroll
     // y el estado ya renderizado del portal (bfcache) en vez de recargarlo.
@@ -116,5 +122,6 @@
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mount);
   else mount();
 
-  window.NISNAV = { target: target, back: go };
+  window.NISNAV = { target: target, back: go,
+    setBackHandler: function(fn){ _inner = (typeof fn === 'function') ? fn : null; } };
 })();
