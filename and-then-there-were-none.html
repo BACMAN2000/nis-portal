@@ -356,9 +356,10 @@ window.NISACT = (function () {
     _sb = window.supabase.createClient(NIS_CONFIG.SUPABASE_URL, NIS_CONFIG.SUPABASE_KEY); return _sb; }
   async function student(){ const c=client(); if(!c) return null;
     try{ const u=await c.auth.getUser(); if(!u||!u.data||!u.data.user) return null;
-      const p=await c.from('profiles').select('full_name,first_name,email,role').eq('id',u.data.user.id).maybeSingle();
+      const p=await c.from('profiles').select('full_name,first_name,email,role,grade_id,section').eq('id',u.data.user.id).maybeSingle();
       const d=(p&&p.data)||{};
-      return {uid:u.data.user.id,email:u.data.user.email||d.email,full_name:d.full_name,first_name:d.first_name,role:d.role};
+      return {uid:u.data.user.id,email:u.data.user.email||d.email,full_name:d.full_name,first_name:d.first_name,
+              role:d.role,grade_id:d.grade_id,section:d.section};
     }catch(e){ return null; } }
   async function submit(r){
     const s=await student(); if(!s) return {skipped:true};
@@ -408,7 +409,7 @@ function chapterDone(n){ return CORE_ACTS.filter(a=>{ const p=bestPct(n,a); retu
    localStorage para que cerrar sesión no sea la salida fácil. */
 const RDR_BOOK_ID='attwn';
 const EXAM_POLL_MS=45000;
-const EXAM_CACHE_KEY='rdr:examopen:'+RDR_BOOK_ID;
+const EXAM_CACHE_KEY='rdr:examopen:'+RDR_BOOK_ID;   // por navegador: es de un solo alumno
 function _examCacheRead(){
   try{ const c=JSON.parse(localStorage.getItem(EXAM_CACHE_KEY)||'null');
     if(c && Date.now()-c.t < 12*3600*1000) return new Set(c.ns); }catch(e){}
@@ -417,7 +418,14 @@ function _examCacheRead(){
 function _examCacheWrite(s){
   try{ localStorage.setItem(EXAM_CACHE_KEY,JSON.stringify({t:Date.now(),ns:[...s]})); }catch(e){}
 }
-let EXAM_OPEN=_examCacheRead(), IS_STAFF=false;
+let EXAM_OPEN=_examCacheRead(), IS_STAFF=false, ME=null;
+/* Los controles se abren por alcance: 'all', 'g9' (grado) o 'g9-B' (salón).
+   Al alumno le manda la fila más específica que le aplique. */
+function _myScopeChain(){
+  const g=ME&&ME.grade_id, sec=ME&&String(ME.section||'').trim();
+  if(g==null) return ['all'];
+  return sec ? ['g'+g+'-'+sec,'g'+g,'all'] : ['g'+g,'all'];
+}
 function chapterLocked(n){ return !IS_STAFF && EXAM_OPEN.has(n); }
 function examLockMsg(n){ return 'Chapter '+n+' is closed while its exam is open. The reading comes back when your teacher closes the exam.'; }
 /* Devuelve true si la lista de capítulos con examen abierto cambió. */
@@ -430,13 +438,19 @@ async function fetchExamLocks(){
        el último estado conocido para que cerrar sesión no abra la lectura. */
     const ss=await c.auth.getSession();
     if(!ss || !ss.data || !ss.data.session) return false;
-    const r=await c.from('reader_exam_access').select('key,unlocked');
+    const r=await c.from('reader_exam_access').select('key,scope,unlocked');
     if(r.error) return false;
     rows=r.data||[];
   }catch(e){ return false; }
   const re=new RegExp('^'+RDR_BOOK_ID+':[a-z0-9]+:ch(\\d+)$');
+  const chain=_myScopeChain();
+  const byKey={};
+  rows.forEach(r=>{ const m=re.exec(String(r.key||'')); if(!m) return;
+    const e=byKey[r.key]||(byKey[r.key]={n:+m[1],scopes:{}});
+    e.scopes[r.scope||'all']=!!r.unlocked; });
   const now=new Set();
-  rows.forEach(r=>{ const m=re.exec(String(r.key||'')); if(m && r.unlocked) now.add(+m[1]); });
+  Object.keys(byKey).forEach(k=>{ const e=byKey[k];
+    for(const sc of chain){ if(sc in e.scopes){ if(e.scopes[sc]) now.add(e.n); break; } } });
   const changed = now.size!==EXAM_OPEN.size || [...now].some(x=>!EXAM_OPEN.has(x));
   EXAM_OPEN=now; _examCacheWrite(now);
   return changed;
@@ -1928,6 +1942,7 @@ function _mountTeacherBtn(){
 }
 (async()=>{
   try{ const s=window.NISACT&&NISACT.student&&await NISACT.student();
+    ME=s||null;
     if(s&&(s.role==='teacher'||s.role==='admin')){ IS_STAFF=true; _mountTeacherBtn(); }
   }catch(e){}
   await fetchExamLocks();

@@ -1481,6 +1481,7 @@ async function readerStatsPanel(detailId){
   $('#main').innerHTML=`
     <div class="row" style="justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:4px">
       <h1 style="margin:0">📖 Controles de lectura</h1>
+      <a class="btn sm ghost" href="attwn-exam.html" style="text-decoration:none">🔓 Abrir / cerrar controles →</a>
     </div>
     <p class="muted" style="margin-top:-6px">La nota de cada capítulo es su control (mejor intento). El tiempo de lectura con audio y el de los ejercicios se muestran al lado como evidencia de trabajo: no cambian la nota.</p>
     ${_readerFilterBar(grades)}
