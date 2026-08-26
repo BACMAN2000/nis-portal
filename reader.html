@@ -314,7 +314,8 @@ var _q=new URLSearchParams(location.search);
 var RDR_BOOKS={
   earnest:{title:'The Importance of Being Earnest', by:'Oscar Wilde'},
   tomsawyer:{title:'The Adventures of Tom Sawyer', by:'Mark Twain'},
-  princepauper:{title:'The Prince and the Pauper', by:'Mark Twain'}
+  princepauper:{title:'The Prince and the Pauper', by:'Mark Twain'},
+  treasureisland:{title:'Treasure Island', by:'Robert Louis Stevenson'}
 };
 var RDR_ID=(_q.get('book')||'earnest').toLowerCase();
 if(!RDR_BOOKS[RDR_ID]) RDR_ID='earnest';
@@ -351,6 +352,17 @@ if(window.ATTWN_C2) document.write('<script src="'+RDR_ID+'-original.js?v=1" one
    One dataset per chapter feeds every activity.
    ============================================================ */
 
+if(!window.ATTWN_DATA){
+  document.getElementById('stage').innerHTML =
+    '<div class="panel"><div class="qnum">LEVEL NOT AVAILABLE</div>'+
+    '<h2 style="color:var(--blue-d);margin:2px 0 8px">This level isn\u2019t ready yet</h2>'+
+    '<p>The text for this level of the book is still being prepared. '+
+    'The other levels are working \u2014 choose one of them.</p>'+
+    '<div style="margin-top:14px"><a class="btn sm" href="?'+
+    (new URLSearchParams({book:(new URLSearchParams(location.search)).get('book')||''}))+
+    '">\u2190 Choose another level</a></div></div>';
+  throw new Error('reader: falta el archivo de datos de este nivel');
+}
 const CHAPTERS = ATTWN_DATA.CHAPTERS;
 
 /* ---------- helpers ---------- */

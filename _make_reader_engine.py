@@ -44,7 +44,8 @@ var _q=new URLSearchParams(location.search);
 var RDR_BOOKS={
   earnest:{title:'The Importance of Being Earnest', by:'Oscar Wilde'},
   tomsawyer:{title:'The Adventures of Tom Sawyer', by:'Mark Twain'},
-  princepauper:{title:'The Prince and the Pauper', by:'Mark Twain'}
+  princepauper:{title:'The Prince and the Pauper', by:'Mark Twain'},
+  treasureisland:{title:'Treasure Island', by:'Robert Louis Stevenson'}
 };
 var RDR_ID=(_q.get('book')||'earnest').toLowerCase();
 if(!RDR_BOOKS[RDR_ID]) RDR_ID='earnest';
