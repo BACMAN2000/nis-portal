@@ -1316,7 +1316,8 @@ const READER_META={
   attwn:    {icon:'🏝️', title:'And Then There Were None',        short:'ATTWN',      chapters:10},
   earnest:  {icon:'🎩', title:'The Importance of Being Earnest', short:'Earnest',    chapters:9},
   tomsawyer:{icon:'🚣', title:'The Adventures of Tom Sawyer',    short:'Tom Sawyer', chapters:8},
-  princepauper:{icon:'👑', title:'The Prince and the Pauper',   short:'Prince & Pauper', chapters:8}
+  princepauper:{icon:'👑', title:'The Prince and the Pauper',   short:'Prince & Pauper', chapters:8},
+  treasureisland:{icon:'🏴‍☠️', title:'Treasure Island',           short:'Treasure Island', chapters:11}
 };
 const _RDR_IDS=Object.keys(READER_META);
 const _RDR_EXAM_RX=/^([a-z]+)-exam-([a-z][0-9])-ch(\d+)$/;
@@ -2648,12 +2649,13 @@ const READER_CARDS = {
   earnest:  ['🎩','The Importance of Being Earnest','Oscar Wilde at five levels — A2 · B1 · B2 · C1 · C2. Read along with audio, listening, summaries, character files, games and chapter exams.','reader.html?book=earnest','Being Earnest (A2–C2)'],
   tomsawyer:['🚣','The Adventures of Tom Sawyer','Mark Twain at five levels — A2 · B1 · B2 · C1 · C2. Read along with audio, listening, summaries, character files, games and chapter exams.','reader.html?book=tomsawyer','Tom Sawyer (A2–C2)'],
   princepauper:['👑','The Prince and the Pauper','Mark Twain at five levels — A2 · B1 · B2 · C1 · C2. Read along with the original 1881 engravings, plus Cambridge A2 Key practice, Trinity speaking topics, 20 activities per chapter and chapter exams.','reader.html?book=princepauper','The Prince and the Pauper (A2–C2)'],
+  treasureisland:['🏴‍☠️','Treasure Island','Robert Louis Stevenson at five levels — A2 · B1 · B2 · C1 · C2. Eleven parts with the 1915 engravings, Cambridge PET practice, Trinity speaking topics and chapter exams.','reader.html?book=treasureisland','Treasure Island (A2–C2)'],
 };
 /* Qué reader lee cada salón lo decide el profesor en Library y vive en
    reader_assignments, por AÑO ESCOLAR: en 2027 vuelve a elegir sin arrastrar
    lo de este año. Este reparto queda solo como red: si la consulta falla, el
    alumno no se queda sin sus libros. */
-const READER_BOOKS = { g7:['tomsawyer','princepauper'], g9:['attwn','earnest','tomsawyer','princepauper'] };
+const READER_BOOKS = { g7:['tomsawyer','princepauper','treasureisland'], g9:['attwn','earnest','tomsawyer','princepauper','treasureisland'] };
 let READER_ASSIGN=null;
 async function loadReaderAssignments(){
   try{
