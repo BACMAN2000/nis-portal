@@ -543,6 +543,11 @@ function render(){
     view={screen:"chapters",chap:null,act:null,info:null};
   if(!(view.screen==="act" && view.act==="read")) _readFlush();
   _syncHash();
+  /* Cada navegación real (capítulo, actividad, volver) empieza arriba: si no,
+     se hereda el scroll de la pantalla anterior y la siguiente aparece por la
+     mitad. Se compara la ruta para no saltar en los repintados internos. */
+  const _rt=_routeHash();
+  if(_rt!==_lastRoute){ _lastRoute=_rt; window.scrollTo(0,0); }
   backEl.style.display = view.screen==="chapters" ? "none" : "inline-block";
   if(view.screen==="chapters"){ crumbEl.innerHTML=""; return renderChapters(); }
   if(view.screen==="teacher"){ return teacherView(); }
@@ -1779,6 +1784,30 @@ const C2_TASKS=[
 ];
 const C2_KEY='attwn:c2:read';
 function _c2Read(){ try{ return new Set(JSON.parse(localStorage.getItem(C2_KEY)||'[]')); }catch(e){ return new Set(); } }
+/* ---------- C2 · leer el texto original dentro de la app ---------- */
+function c2Original(unit){
+  const chs=(window.READER_ORIGINAL||{})[unit]||[];
+  if(!chs.length){ alert('El texto original de esta etapa no está disponible.'); return; }
+  view={screen:'info',info:'c2o',chap:null,act:null}; backEl.style.display='inline-block';
+  crumbEl.innerHTML='C2 · the original text';
+  const words=chs.reduce((n,c)=>n+c.paras.join(' ').split(/\s+/).length,0);
+  stage.innerHTML=`<div class="panel reading">
+    <div class="qnum">THE ORIGINAL TEXT · STAGE ${unit}</div>
+    <h2 style="color:var(--blue-d);margin:2px 0 2px">${BOOK.title}</h2>
+    <p class="muted" style="margin:0 0 16px;font-size:.85rem">${BOOK.by}, unabridged ·
+       ${chs.length} chapter${chs.length>1?'s':''} · ${words.toLocaleString()} words ·
+       ~${Math.max(1,Math.round(words/220))} min</p>
+    ${chs.map(c=>`<h3 class="rp-chap">${c.roman}. ${c.title}</h3>`+
+       c.paras.map(p=>`<p class="rp" style="padding-left:0">${p}</p>`).join('')).join('')}
+    <div style="display:flex;gap:10px;margin-top:20px;flex-wrap:wrap">
+      ${unit>1?`<button class="btn ghost sm" onclick="c2Original(${unit-1})">\u2190 Stage ${unit-1}</button>`:''}
+      <button class="btn ghost sm" onclick="extraC2()">\u2190 Back to the reading plan</button>
+      ${window.READER_ORIGINAL[unit+1]?`<button class="btn sm" onclick="c2Original(${unit+1})">Stage ${unit+1} \u2192</button>`:''}
+    </div>
+  </div>`;
+  window.scrollTo(0,0);
+}
+
 function extraC2(){
   view={screen:'info',info:'c2',chap:null,act:null}; backEl.style.display='inline-block';
   crumbEl.innerHTML='C2 · Read the original';
@@ -1792,6 +1821,7 @@ function extraC2(){
       (HarperCollins, ISBN 978-0-00-713683-4). Then come back here for the analysis work —
       and keep using your 🔍 Detective's Notebook as you read.</p>
     </div>
+    ${window.READER_ORIGINAL?`<div class="explain" style="margin:0 0 14px">✅ <b>The complete text is included in this app</b> — every stage below opens the author’s own words, unabridged. No internet needed.</div>`:''}
     <h2 style="font-size:16px;color:var(--blue-d);margin:0 0 4px">📖 Reading plan — 10 stages</h2>
     <p class="muted" style="margin:0 0 6px">Each stage of the original maps to one chapter of the app version, so you can replay its activities as a checkpoint. Tick a stage when you finish reading it.</p>
     <div class="c2-prog"><span style="width:${read.size*10}%"></span></div>
@@ -1802,7 +1832,10 @@ function extraC2(){
           <label class="done"><input type="checkbox" ${read.has(i)?'checked':''} onchange="c2Tick(${i},this.checked)"> I've read this</label>
         </div>
         <ul>${s.qs.map(q=>`<li>${q}</li>`).join('')}</ul>
-        <button class="btn ghost sm" style="margin-top:8px" onclick="openReadChapter(${s.app-1})">↺ Checkpoint: replay app chapter ${s.app}</button>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+          ${(window.READER_ORIGINAL&&window.READER_ORIGINAL[s.app])?`<button class="btn sm" onclick="c2Original(${s.app})">📖 Read it here — the original text</button>`:''}
+          <button class="btn ghost sm" onclick="openReadChapter(${s.app-1})">↺ Checkpoint: replay app chapter ${s.app}</button>
+        </div>
       </div>`).join('')}
     <h2 style="font-size:16px;color:var(--blue-d);margin:18px 0 8px">✍️ C2 writing tasks</h2>
     <p class="muted" style="margin:0 0 10px">Four CPE-style tasks about the original. Use the guided editor:</p>
@@ -1968,7 +2001,7 @@ const ACT_RENDER={
    sacar al alumno del reader (auditoría 2026-08-25). render() y las pantallas
    extra sincronizan el hash; hashchange re-renderiza; _hashMute evita el
    doble render. El chooser y el modo C2 son de una sola pantalla y quedan fuera. */
-let _hashMute=false;
+let _hashMute=false, _lastRoute=null;
 function _routeHash(){
   if(view.screen==="acts") return "c"+view.chap;
   if(view.screen==="act")  return "c"+view.chap+"-"+view.act;
