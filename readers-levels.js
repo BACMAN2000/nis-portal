@@ -12,5 +12,5 @@ window.READER_LEVELS = {
   earnest: ['a2', 'b1', 'b2', 'c1', 'c2'],
   princepauper: ['a2', 'b1', 'b2', 'c1', 'c2'],
   tomsawyer: ['a2', 'b1', 'b2', 'c1', 'c2'],
-  treasureisland: ['a2', 'b1', 'c1', 'c2']
+  treasureisland: ['a2', 'b1', 'b2', 'c1', 'c2']
 };
