@@ -1,0 +1,3093 @@
+{
+ "grados": [
+  {
+   "grado": "G2",
+   "nivel": "starters",
+   "nota": "Cambridge Starters",
+   "cefr": "Pre-A1→A1",
+   "examen": "Cambridge Starters",
+   "unidadesCurso": 45,
+   "tiposCurso": [
+    "crossword",
+    "exam_task",
+    "gap_text",
+    "listening",
+    "match_words",
+    "pairwork",
+    "spot_diff"
+   ],
+   "temas": [
+    "All About Me",
+    "My Home & Family",
+    "Animals & Pets",
+    "My Town",
+    "Food & Health",
+    "Hobbies & Play"
+   ],
+   "unidades": [
+    {
+     "n": 1,
+     "tema": "All About Me",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Short vowels review: CVC words",
+        "Beginning blends: bl, cl, fl, gl",
+        "Word families: -at, -an, -ap"
+       ],
+       "estado": "en el portal",
+       "detalle": "Phonics Studio (/phonics/)"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Appearance: tall, short, thin, curly/straight hair, eyes colour",
+        "Age & personal info",
+        "Numbers 1–20, ordinal numbers 1st–10th"
+       ],
+       "estado": "a medias",
+       "detalle": "sin cubrir: Age & personal info · Numbers 1–20, ordinal numbers 1st–10th"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Read and match: description to picture",
+        "Find specific information in a short text"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: crossword, exam_task, gap_text, match_words"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "My Body",
+        "(Oxford Reading Tree Level 3)",
+        "Appearance & self-description"
+       ],
+       "estado": "FALTA",
+       "detalle": "los readers del portal empiezan en A2; este grado no llega"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Simple descriptions of people (identity cards)"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: exam_task, gap_text"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Self-description card: 30–50 words",
+        "Draw and label: what I look like"
+       ],
+       "estado": "cubierto",
+       "detalle": "45 unidades con tarea de escribir"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Draw myself → fill sentence frames",
+        "Copy corrected draft from board"
+       ],
+       "estado": "cubierto",
+       "detalle": "45 unidades con tarea de escribir"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "TO BE: all forms (am, is, are, was, were – intro)",
+        "Have/has got: I have got blue eyes",
+        "Adjectives of appearance"
+       ],
+       "estado": "a medias",
+       "detalle": "sin cubrir: TO BE: all forms (am, is, are, was, were – i"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Draw a face: how do I feel about my English?",
+        "Exit ticket: say one new word I learned"
+       ],
+       "estado": "cubierto",
+       "detalle": "cada unidad acaba con su self-check"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Listen and identify: appearance descriptions",
+        "Fill-in: numbers in short dialogues",
+        "True/False: Is she tall? Yes/No"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: listening"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Introduce myself: name, age, appearance",
+        "Describe a friend from a picture",
+        "Pair work: Guess who? game"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: pairwork, spot_diff"
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "tema": "My Home & Family",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Digraphs: sh, ch, th, wh",
+        "CVC + digraph words: shop, chin, that",
+        "Rhyming pairs game"
+       ],
+       "estado": "en el portal",
+       "detalle": "Phonics Studio (/phonics/)"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Rooms: bedroom, kitchen, bathroom, living room",
+        "Furniture: bed, sofa, table, chair, lamp, wardrobe",
+        "Prepositions: in, on, under, next to"
+       ],
+       "estado": "a medias",
+       "detalle": "sin cubrir: Prepositions: in, on, under, next to"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Read and label: rooms in a house picture",
+        "Answer simple questions about a text"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: crossword, exam_task, gap_text, match_words"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "A Mouse Called Wolf",
+        "(D. King-Smith)",
+        "Ch. 1–3: home & rooms setting"
+       ],
+       "estado": "FALTA",
+       "detalle": "los readers del portal empiezan en A2; este grado no llega"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Short illustrated texts about homes and rooms"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: exam_task, gap_text"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "House description: 40–60 words",
+        "Label furniture in a room drawing"
+       ],
+       "estado": "cubierto",
+       "detalle": "45 unidades con tarea de escribir"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Room drawing → label → write 3 sentences",
+        "Word bank + sentence frames"
+       ],
+       "estado": "cubierto",
+       "detalle": "45 unidades con tarea de escribir"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Prepositions of place: in, on, under, next to",
+        "There is / There are (introduction)",
+        "Singular/plural nouns – regular"
+       ],
+       "estado": "a medias",
+       "detalle": "sin cubrir: Prepositions of place: in, on, under, next t · Singular/plural nouns – regular"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Thumbs up/side/down: Did I understand the text?",
+        "My favourite room – share with a partner"
+       ],
+       "estado": "cubierto",
+       "detalle": "cada unidad acaba con su self-check"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Listen and find: rooms and objects in a picture",
+        "Short dialogue: Where is the cat? It's on the sofa",
+        "Follow spoken instructions to draw furniture"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: listening"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Describe my home: rooms and furniture",
+        "Pair work: Spot the difference – two rooms",
+        "Role-play: Show me your house (drawing)"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: pairwork, spot_diff"
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "tema": "Animals & Pets",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Long vowel sounds: a_e, i_e, o_e",
+        "Magic 'e' rule: cap→cape, pin→pine",
+        "Read-aloud: animal name chants"
+       ],
+       "estado": "en el portal",
+       "detalle": "Phonics Studio (/phonics/)"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Pets & wild animals: rabbit, hamster, parrot, snake, lion, elephant, giraffe",
+        "Describing: big, small, fast, slow, scary, friendly"
+       ],
+       "estado": "cubierto",
+       "detalle": "2 de 2 puntos"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Read and match: animal fact to animal",
+        "True/False: short animal descriptions"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: crossword, exam_task, gap_text, match_words"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Dear Zoo",
+        "(R. Campbell)",
+        "Animals – extended read & retell"
+       ],
+       "estado": "FALTA",
+       "detalle": "los readers del portal empiezan en A2; este grado no llega"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Animal fact cards: short sentences"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: exam_task, gap_text"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Animal description: 50–70 words",
+        "It has… It can… It eats…"
+       ],
+       "estado": "cubierto",
+       "detalle": "45 unidades con tarea de escribir"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Animal fact web → draft 4 sentences",
+        "Peer share: is everything clear?"
+       ],
+       "estado": "cubierto",
+       "detalle": "45 unidades con tarea de escribir"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Can / can't: ability",
+        "Present Simple 3rd person: It lives, It eats",
+        "Adjectives of description: big, fast, friendly"
+       ],
+       "estado": "cubierto",
+       "detalle": "3 de 3 puntos"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Self-assess: Can I describe an animal? ✓/✗",
+        "Share: why do I like my animal?"
+       ],
+       "estado": "cubierto",
+       "detalle": "cada unidad acaba con su self-check"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Listen and match: animal to description",
+        "Identify animals in short conversations",
+        "Starters-style task: listen and colour"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: listening"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Describe an animal: It has… It can… It eats…",
+        "Pair work: Animal guessing game (20 questions style)",
+        "Present my favourite animal"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: pairwork, spot_diff"
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "tema": "My Town",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Consonant blends: st, sp, sn, sm",
+        "Word building with blends",
+        "Town vocabulary pronunciation"
+       ],
+       "estado": "en el portal",
+       "detalle": "Phonics Studio (/phonics/)"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Places in town: park, school, hospital, supermarket, library, cinema, bus stop",
+        "Transport: bus, car, bike, train, taxi"
+       ],
+       "estado": "cubierto",
+       "detalle": "2 de 2 puntos"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Read a simple map and find places",
+        "Follow written directions to a location"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: crossword, exam_task, gap_text, match_words"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Topsy and Tim: Go to the Dentist",
+        "(J. & G. Adamson)",
+        "Town & health connection"
+       ],
+       "estado": "FALTA",
+       "detalle": "los readers del portal empiezan en A2; este grado no llega"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Simple maps with labelled places in town"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: exam_task, gap_text"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Simple postcard from a place in town: 50–70 words"
+       ],
+       "estado": "cubierto",
+       "detalle": "45 unidades con tarea de escribir"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Simple outline: Where? What to do there?",
+        "Draft postcard using sentence frames"
+       ],
+       "estado": "cubierto",
+       "detalle": "45 unidades con tarea de escribir"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Prepositions of place + movement: in, on, near, at",
+        "Wh- questions: Where is…? How do I get to…?",
+        "Imperatives for directions: Turn left, Go straight"
+       ],
+       "estado": "a medias",
+       "detalle": "sin cubrir: Prepositions of place + movement: in, on, ne"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Smiley-face self-assessment: directions task",
+        "Reflect: What was difficult?"
+       ],
+       "estado": "cubierto",
+       "detalle": "cada unidad acaba con su self-check"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Listen and identify: places in town on a map",
+        "Short dialogue: asking for directions",
+        "Listening gap-fill: transport vocabulary"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: listening"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Ask for and give directions in town",
+        "Role-play: at the bus stop, at the park",
+        "Pair work: Map reading dialogue"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: pairwork, spot_diff"
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "tema": "Food & Health",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Long vowels: ee, ea, oo",
+        "Food words: eat, cheese, food, soon",
+        "Vowel sorting activity"
+       ],
+       "estado": "en el portal",
+       "detalle": "Phonics Studio (/phonics/)"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Food groups: fruit, vegetables, dairy, meat, bread",
+        "Healthy vs unhealthy",
+        "Body: headache, stomachache, cold, toothache"
+       ],
+       "estado": "a medias",
+       "detalle": "sin cubrir: Healthy vs unhealthy"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Read and identify: healthy or unhealthy food",
+        "Find information in a simple health leaflet"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: crossword, exam_task, gap_text, match_words"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Eat Your Peas",
+        "(K. Gray)",
+        "Food & healthy habits – discussion"
+       ],
+       "estado": "FALTA",
+       "detalle": "los readers del portal empiezan en A2; este grado no llega"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Short texts about healthy habits & food choices"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: exam_task, gap_text"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Healthy eating poster: 5 bullet points",
+        "Sentences: I should / I shouldn't eat…"
+       ],
+       "estado": "cubierto",
+       "detalle": "45 unidades con tarea de escribir"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Brainstorm healthy/unhealthy foods (two columns)",
+        "Draft 5 sentences with should/shouldn't"
+       ],
+       "estado": "cubierto",
+       "detalle": "45 unidades con tarea de escribir"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Should / shouldn't (health advice – intro)",
+        "Countable & uncountable nouns: food",
+        "Some / any (intro)"
+       ],
+       "estado": "a medias",
+       "detalle": "sin cubrir: Should / shouldn't (health advice – intro) · Some / any (intro)"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "2 stars & 1 wish: healthy eating paragraph",
+        "Peer share: one healthy tip"
+       ],
+       "estado": "cubierto",
+       "detalle": "cada unidad acaba con su self-check"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Listen and match: health problem to advice",
+        "Short story: at the doctor's surgery",
+        "Identify foods in a shopping dialogue"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: listening"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Talk about healthy habits: I eat… I drink…",
+        "Role-play: at the doctor's (I have a headache)",
+        "Survey: What do you eat for breakfast?"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: pairwork, spot_diff"
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "tema": "Hobbies & Play",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Review: all blends & digraphs",
+        "Sentence stress: I like playing football",
+        "End-of-year phonics game"
+       ],
+       "estado": "en el portal",
+       "detalle": "Phonics Studio (/phonics/)"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Sports & games: football, swimming, cycling, tennis, basketball",
+        "Toys: doll, puzzle, video game, ball",
+        "Frequency: every day, on Saturdays"
+       ],
+       "estado": "a medias",
+       "detalle": "sin cubrir: Frequency: every day, on Saturdays"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Read and match: hobby to person",
+        "Identify frequency words in a short text"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: crossword, exam_task, gap_text, match_words"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Horrid Henry's Football Fiend",
+        "(F. Simon) – Adapted",
+        "Hobbies & sports"
+       ],
+       "estado": "FALTA",
+       "detalle": "los readers del portal empiezan en A2; este grado no llega"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Short illustrated texts about hobbies & sports"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: exam_task, gap_text"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Hobby paragraph: 60–80 words",
+        "My favourite hobby is… I like it because…"
+       ],
+       "estado": "cubierto",
+       "detalle": "45 unidades con tarea de escribir"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Mind map: my hobby → draft paragraph",
+        "Self-check: Does it make sense?"
+       ],
+       "estado": "cubierto",
+       "detalle": "45 unidades con tarea de escribir"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Present Simple: like + -ing (hobbies)",
+        "Adverbs of frequency: always, usually, sometimes, never",
+        "Question: Do you like…? Yes, I do / No, I don't"
+       ],
+       "estado": "a medias",
+       "detalle": "sin cubrir: Adverbs of frequency: always, usually, somet"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "End-of-term portfolio: favourite piece",
+        "Oral: What have I learned this year?"
+       ],
+       "estado": "cubierto",
+       "detalle": "cada unidad acaba con su self-check"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Listen and tick: sports in a timetable",
+        "Short dialogue: after school activities",
+        "Starters-style: listen and draw"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: listening"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Talk about hobbies: I like playing…",
+        "Pair work: What do you do on Saturdays?",
+        "Short presentation: My favourite sport"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: pairwork, spot_diff"
+      }
+     ]
+    }
+   ],
+   "resumen": {
+    "cubierto": 45,
+    "en el portal": 6,
+    "a medias": 9,
+    "FALTA": 6
+   },
+   "recursos": [
+    {
+     "nombre": "Phonics Studio",
+     "enlace": "/phonics/"
+    },
+    {
+     "nombre": "Pronunciation Coach",
+     "enlace": "/pronunciation-coach/"
+    }
+   ]
+  },
+  {
+   "grado": "G3",
+   "nivel": "starters",
+   "nota": "prep de Movers, consolida A1",
+   "cefr": "A1",
+   "examen": "— (Pre-Movers prep)",
+   "unidadesCurso": 45,
+   "tiposCurso": [
+    "crossword",
+    "exam_task",
+    "gap_text",
+    "listening",
+    "match_words",
+    "pairwork",
+    "spot_diff"
+   ],
+   "temas": [
+    "School Life",
+    "Daily Routines",
+    "Weather & Seasons",
+    "Nature & Animals",
+    "Feelings & Health",
+    "My Community"
+   ],
+   "unidades": [
+    {
+     "n": 1,
+     "tema": "School Life",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Vowel digraphs: ai, ay (rain, play)",
+        "Word stress: 2-syllable school words",
+        "Chant: What do you do at school?"
+       ],
+       "estado": "en el portal",
+       "detalle": "Phonics Studio (/phonics/)"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "School subjects: Maths, Science, Art, PE, English, Music, History",
+        "Opinions: favourite, difficult, easy, boring, interesting",
+        "School equipment: ruler, calculator, compass, scissors"
+       ],
+       "estado": "a medias",
+       "detalle": "sin cubrir: School subjects: Maths, Science, Art, PE, En · Opinions: favourite, difficult, easy, boring"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Find specific information in a timetable",
+        "Understand simple opinion sentences"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: crossword, exam_task, gap_text, match_words"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Flat Stanley",
+        "(J. Brown) Ch. 1–3",
+        "School setting & daily life"
+       ],
+       "estado": "FALTA",
+       "detalle": "los readers del portal empiezan en A2; este grado no llega"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "School timetables & simple news board texts"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: exam_task, gap_text"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "My school timetable description: 60–80 words",
+        "Opinion sentences: I like… because…"
+       ],
+       "estado": "cubierto",
+       "detalle": "45 unidades con tarea de escribir"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Brainstorm subjects → rank → explain with 'because'",
+        "Draft using sentence frames"
+       ],
+       "estado": "cubierto",
+       "detalle": "45 unidades con tarea de escribir"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Present Simple (all persons): I go, she goes, we play",
+        "Adverbs of frequency: always, usually, sometimes, never",
+        "Wh- questions: What time do you…? What is your favourite…?"
+       ],
+       "estado": "a medias",
+       "detalle": "sin cubrir: Adverbs of frequency: always, usually, somet"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Can-do checklist: school language",
+        "Draw: What is your favourite subject? Why?"
+       ],
+       "estado": "cubierto",
+       "detalle": "cada unidad acaba con su self-check"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Identify school subjects in a timetable dialogue",
+        "Fill-in: What time does PE start?",
+        "True/False: short school announcement"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: listening"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Talk about favourite subjects and why",
+        "Pair work: Compare timetables",
+        "Role-play: school counsellor interview"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: pairwork, spot_diff"
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "tema": "Daily Routines",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Vowel digraphs: oa, ow (boat, snow)",
+        "Rhythm in time expressions",
+        "Chant: Every morning I…"
+       ],
+       "estado": "en el portal",
+       "detalle": "Phonics Studio (/phonics/)"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Daily routine actions: wake up, get dressed, have breakfast, go to school, do homework",
+        "Time: o'clock, half past, quarter to/past",
+        "Sequence words: first, then, next, after that, finally"
+       ],
+       "estado": "a medias",
+       "detalle": "sin cubrir: Time: o'clock, half past, quarter to/past"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Sequence events using time connectors",
+        "Answer WH-questions about a routine text"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: crossword, exam_task, gap_text, match_words"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Diary of a Wimpy Kid",
+        "(adapted/graphic version)",
+        "School routines & feelings"
+       ],
+       "estado": "FALTA",
+       "detalle": "los readers del portal empiezan en A2; este grado no llega"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Illustrated daily routine schedules"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: exam_task, gap_text"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Daily routine paragraph: 80–100 words",
+        "Using sequencing words correctly"
+       ],
+       "estado": "cubierto",
+       "detalle": "45 unidades con tarea de escribir"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Time chart (wake up→bed) → sequence words → draft",
+        "Peer check: Are the times correct?"
+       ],
+       "estado": "cubierto",
+       "detalle": "45 unidades con tarea de escribir"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Present Simple: routines & habits (full review)",
+        "Prepositions of time: at, in, on + times/days",
+        "Sequence words: first, then, next, finally"
+       ],
+       "estado": "a medias",
+       "detalle": "sin cubrir: Prepositions of time: at, in, on + times/day · Sequence words: first, then, next, finally"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Learning journal: my routine in English",
+        "Reflect: What helped me sequence events?"
+       ],
+       "estado": "cubierto",
+       "detalle": "cada unidad acaba con su self-check"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Sequence events in a daily routine audio",
+        "Fill-in: times in a routine text",
+        "Match person to routine (3 speakers)"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: listening"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Describe my daily routine (5+ sentences)",
+        "Pair work: Morning routine comparison",
+        "Role-play: TV interview about routines"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: pairwork, spot_diff"
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "tema": "Weather & Seasons",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Vowel digraphs: ou, ow (cloud, cow)",
+        "Weather word pronunciation",
+        "Rhyming weather poem"
+       ],
+       "estado": "en el portal",
+       "detalle": "Phonics Studio (/phonics/)"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Weather: sunny, cloudy, rainy, windy, snowy, foggy, stormy",
+        "Seasons: spring, summer, autumn, winter",
+        "Clothing for weather: umbrella, raincoat, boots, scarf, sunglasses"
+       ],
+       "estado": "a medias",
+       "detalle": "sin cubrir: Seasons: spring, summer, autumn, winter"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Identify main idea in a weather report",
+        "Match clothes to seasons from a text"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: crossword, exam_task, gap_text, match_words"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Winnie the Witch",
+        "(V. Thomas)",
+        "Weather & seasons – whole class read"
+       ],
+       "estado": "FALTA",
+       "detalle": "los readers del portal empiezan en A2; este grado no llega"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Short weather reports & season descriptions"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: exam_task, gap_text"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Weather report for a week: 70–90 words",
+        "Simple forecast with clothing advice"
+       ],
+       "estado": "cubierto",
+       "detalle": "45 unidades con tarea de escribir"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Observe weather → record → draft forecast",
+        "Add clothing advice using 'should'"
+       ],
+       "estado": "cubierto",
+       "detalle": "45 unidades con tarea de escribir"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "TO BE: weather expressions (It is sunny)",
+        "Should/shouldn't (advice – intro)",
+        "Conjunctions: and, but, because"
+       ],
+       "estado": "a medias",
+       "detalle": "sin cubrir: Should/shouldn't (advice – intro) · Conjunctions: and, but, because"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Weather diary: record & reflect for 1 week",
+        "What season do you prefer? Why?"
+       ],
+       "estado": "cubierto",
+       "detalle": "cada unidad acaba con su self-check"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Identify weather in a short forecast",
+        "Listen and tick: clothes for the season",
+        "Short story: Winnie the Witch – weather changes"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: listening"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Describe today's weather & appropriate clothing",
+        "Pair work: Weather forecast presentation",
+        "Group: Design a 4-seasons poster"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: pairwork, spot_diff"
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "tema": "Nature & Animals",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Consonant clusters: str, spr, thr",
+        "Animal name pronunciation: giraffe, penguin",
+        "Chant: In the jungle…"
+       ],
+       "estado": "en el portal",
+       "detalle": "Phonics Studio (/phonics/)"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Wild animals: penguin, crocodile, giraffe, flamingo, eagle, whale, shark, bear",
+        "Habitats: jungle, ocean, desert, rainforest, Arctic, savanna",
+        "Verbs: hunt, swim, fly, roar, hibernate"
+       ],
+       "estado": "a medias",
+       "detalle": "sin cubrir: Habitats: jungle, ocean, desert, rainforest,"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Identify key facts in an animal fact file",
+        "Match animal names to habitat descriptions"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: crossword, exam_task, gap_text, match_words"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Magic Tree House #1:",
+        "Dinosaurs Before Dark",
+        "(M.P. Osborne) Ch. 1–5"
+       ],
+       "estado": "FALTA",
+       "detalle": "los readers del portal empiezan en A2; este grado no llega"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Animal fact files & habitat descriptions"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: exam_task, gap_text"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Animal fact file: 80–100 words",
+        "Include: habitat, food, size, special ability"
+       ],
+       "estado": "cubierto",
+       "detalle": "45 unidades con tarea de escribir"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Research one animal → fill fact card → draft text",
+        "Cite source: from the book/video"
+       ],
+       "estado": "cubierto",
+       "detalle": "45 unidades con tarea de escribir"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "There is / There are (singular & plural)",
+        "Some / any with plural nouns",
+        "Comparatives: bigger than, faster than (intro)"
+       ],
+       "estado": "a medias",
+       "detalle": "sin cubrir: Some / any with plural nouns · Comparatives: bigger than, faster than (intr"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Animal project self-assessment",
+        "What did I find most interesting?"
+       ],
+       "estado": "cubierto",
+       "detalle": "cada unidad acaba con su self-check"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Key facts in a nature documentary extract",
+        "Match animal to habitat",
+        "Identify animal actions from a short description"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: listening"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Describe a wild animal: size, habitat, diet",
+        "Pair work: Animal classification game",
+        "Oral report: endangered animal (2 min)"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: pairwork, spot_diff"
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "tema": "Feelings & Health",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Silent letters: kn, wr (know, write)",
+        "Emotion word stress: hap-py, an-gry",
+        "Pronunciation of health vocabulary"
+       ],
+       "estado": "en el portal",
+       "detalle": "Phonics Studio (/phonics/)"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Emotions: excited, nervous, bored, proud, upset, confused, scared, surprised",
+        "Health: ill, temperature, rest, medicine, appointment",
+        "Verb: feel – I feel happy/sick"
+       ],
+       "estado": "a medias",
+       "detalle": "sin cubrir: Health: ill, temperature, rest, medicine, ap"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Understand character emotions in a story",
+        "Find information in a simple health text"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: crossword, exam_task, gap_text, match_words"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "The Invisible String",
+        "(P. Karst)",
+        "Feelings & emotional wellbeing"
+       ],
+       "estado": "FALTA",
+       "detalle": "los readers del portal empiezan en A2; este grado no llega"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Simple texts on emotions & health at school"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: exam_task, gap_text"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Diary entry about a feeling: 80–100 words",
+        "Today I feel… because…"
+       ],
+       "estado": "cubierto",
+       "detalle": "45 unidades con tarea de escribir"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Emotion journal prompt → draft diary entry",
+        "Self-check: Did I explain why I feel this?"
+       ],
+       "estado": "cubierto",
+       "detalle": "45 unidades con tarea de escribir"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Verb 'feel' + adjective: I feel happy/sick",
+        "Past Simple TO BE: was/were (introduction)",
+        "Simple question: Were you ill yesterday?"
+       ],
+       "estado": "a medias",
+       "detalle": "sin cubrir: Verb 'feel' + adjective: I feel happy/sick"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Feelings journal reflection",
+        "Reflect: How do I manage stress at school?"
+       ],
+       "estado": "cubierto",
+       "detalle": "cada unidad acaba con su self-check"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Identify feelings from dialogues",
+        "Short story: character's emotions sequence",
+        "Listening: at the doctor – problem & advice"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: listening"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Express feelings about classroom situations",
+        "Pair work: How do you feel when…?",
+        "Role-play: speaking to a school counsellor"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: pairwork, spot_diff"
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "tema": "My Community",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Review: all vowel digraphs & clusters",
+        "Sentence stress & rhythm review",
+        "End-of-year phonics quiz"
+       ],
+       "estado": "en el portal",
+       "detalle": "Phonics Studio (/phonics/)"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Community helpers: doctor, teacher, firefighter, police officer, baker, librarian, vet",
+        "Places: fire station, post office, bakery, community centre, vet's clinic",
+        "Verbs: help, protect, serve, bake, heal"
+       ],
+       "estado": "a medias",
+       "detalle": "sin cubrir: Places: fire station, post office, bakery, c · Verbs: help, protect, serve, bake, heal"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Identify what a community helper does",
+        "Match helper to place of work in a text"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: crossword, exam_task, gap_text, match_words"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "The Lorax",
+        "(Dr. Seuss)",
+        "Community & environment connection"
+       ],
+       "estado": "FALTA",
+       "detalle": "los readers del portal empiezan en A2; este grado no llega"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Illustrated texts about community helpers"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: exam_task, gap_text"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Community helper profile: 90–110 words",
+        "Name, job, place of work, why important"
+       ],
+       "estado": "cubierto",
+       "detalle": "45 unidades con tarea de escribir"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Interview a helper (role-play) → note key facts → draft profile",
+        "Peer review: missing info?"
+       ],
+       "estado": "cubierto",
+       "detalle": "45 unidades con tarea de escribir"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Present Simple: he/she + helping verbs",
+        "Articles: a/an/the (expanded use)",
+        "Conjunction: so (I was tired, so I rested)"
+       ],
+       "estado": "a medias",
+       "detalle": "sin cubrir: Articles: a/an/the (expanded use) · Conjunction: so (I was tired, so I rested)"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "End-of-term reflection: 3 things I learned",
+        "Peer appreciation: Say something nice!"
+       ],
+       "estado": "cubierto",
+       "detalle": "cada unidad acaba con su self-check"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Identify community helpers in descriptions",
+        "Match helper to place of work",
+        "Short text: what does a firefighter do?"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: listening"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Describe a community helper's job",
+        "Pair work: Thank a community helper",
+        "Group presentation: Our Community Helpers"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: pairwork, spot_diff"
+      }
+     ]
+    }
+   ],
+   "resumen": {
+    "cubierto": 42,
+    "en el portal": 6,
+    "a medias": 12,
+    "FALTA": 6
+   },
+   "recursos": [
+    {
+     "nombre": "Phonics Studio",
+     "enlace": "/phonics/"
+    },
+    {
+     "nombre": "Pronunciation Coach",
+     "enlace": "/pronunciation-coach/"
+    }
+   ]
+  },
+  {
+   "grado": "G4",
+   "nivel": "movers",
+   "nota": "Cambridge Movers",
+   "cefr": "A1→A2",
+   "examen": "Cambridge Movers",
+   "unidadesCurso": 50,
+   "tiposCurso": [
+    "crossword",
+    "exam_task",
+    "gap_text",
+    "listening",
+    "match_words",
+    "pairwork",
+    "spot_diff"
+   ],
+   "temas": [
+    "Around Town",
+    "School & Learning",
+    "Wild Animals & Nature",
+    "Sports & Health",
+    "Holidays & Travel",
+    "My Future"
+   ],
+   "unidades": [
+    {
+     "n": 1,
+     "tema": "Around Town",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Word stress: 2-syllable nouns (TAXi, MARket)",
+        "Consonant clusters: pl, pr, tr, gr",
+        "Chant: Around my town"
+       ],
+       "estado": "en el portal",
+       "detalle": "Phonics Studio (/phonics/)"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Places: market, bookshop, sports centre, museum, restaurant, bank, chemist",
+        "Transport: underground, ferry, tram, scooter",
+        "Directions: turn left/right, straight ahead, at the corner"
+       ],
+       "estado": "a medias",
+       "detalle": "sin cubrir: Transport: underground, ferry, tram, scooter"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Follow a written route on a map",
+        "Scan for specific information in a guide"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: crossword, exam_task, gap_text, match_words"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Charlotte's Web",
+        "(E.B. White – simplified)",
+        "Ch. 1–6: town & farm setting"
+       ],
+       "estado": "FALTA",
+       "detalle": "los readers del portal empiezan en A2; este grado no llega"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Town maps and simple transport guides"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: exam_task, gap_text"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Directions text: how to get from A to B (80–110 words)",
+        "Simple map with labels"
+       ],
+       "estado": "cubierto",
+       "detalle": "50 unidades con tarea de escribir · Virtual Writing Tutor"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Plan route on blank map → write directions step by step",
+        "Peer check: Can you follow my directions?"
+       ],
+       "estado": "cubierto",
+       "detalle": "50 unidades con tarea de escribir · Virtual Writing Tutor"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Prepositions of movement: along, past, over, through",
+        "Imperatives for directions",
+        "Wh- questions: How do I get to…? How far is it?"
+       ],
+       "estado": "cubierto",
+       "detalle": "3 de 3 puntos"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Exit ticket: 3 new direction phrases I learned",
+        "Self-assess: Can I give clear directions?"
+       ],
+       "estado": "cubierto",
+       "detalle": "cada unidad acaba con su self-check"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Listen and follow a route on a map",
+        "Key info in a transport announcement",
+        "Movers-style: listen and draw/write"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: listening"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Give directions to places on a map",
+        "Role-play: tourist and local guide",
+        "Pair work: plan a route across town"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: pairwork, spot_diff"
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "tema": "School & Learning",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Intonation: listing items (I like maths, art AND music)",
+        "3-syllable word stress: cal-CU-la-tor",
+        "Rhythm in comparative sentences"
+       ],
+       "estado": "en el portal",
+       "detalle": "Phonics Studio (/phonics/)"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "School subjects (extended): geography, biology, chemistry, drama",
+        "Learning actions: revise, take notes, hand in, concentrate",
+        "Opinions with reasons: I find… easy because…"
+       ],
+       "estado": "a medias",
+       "detalle": "sin cubrir: Opinions with reasons: I find… easy because…"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Find information in a school schedule",
+        "Identify opinion and reason in a text"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: crossword, exam_task, gap_text, match_words"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Diary of a Wimpy Kid",
+        "(J. Kinney – adapted)",
+        "School life & learning"
+       ],
+       "estado": "FALTA",
+       "detalle": "los readers del portal empiezan en A2; este grado no llega"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "School newsletters & simple informational articles"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: exam_task, gap_text"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Opinion essay (agree/disagree – simple): 100–130 words",
+        "Is school too difficult?"
+       ],
+       "estado": "cubierto",
+       "detalle": "50 unidades con tarea de escribir · Virtual Writing Tutor"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "T-chart (easy/hard subjects + reasons) → draft opinion",
+        "Connect sentences with because/so"
+       ],
+       "estado": "cubierto",
+       "detalle": "50 unidades con tarea de escribir · Virtual Writing Tutor"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Comparative & superlative adjectives (full forms)",
+        "As… as / not as… as (equality comparisons)",
+        "Opinion language: I think, I believe, In my opinion"
+       ],
+       "estado": "a medias",
+       "detalle": "sin cubrir: As… as / not as… as (equality comparisons) · Opinion language: I think, I believe, In my "
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Learning log: school subject opinions",
+        "Reflect: What learning strategy helps me most?"
+       ],
+       "estado": "cubierto",
+       "detalle": "cada unidad acaba con su self-check"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Listen to a school radio programme – fill in the timetable",
+        "Identify subjects and times",
+        "True/False: school day descriptions"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: listening"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Discuss school subjects: which is hardest? easiest?",
+        "Pair work: school advice interview",
+        "Group: design the perfect school timetable"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: pairwork, spot_diff"
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "tema": "Wild Animals & Nature",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Diphthongs: /eɪ/ whale, /aɪ/ lion, /ɔɪ/ boy",
+        "Animal name pronunciation drill",
+        "Jungle chant: animals in rhythm"
+       ],
+       "estado": "en el portal",
+       "detalle": "Phonics Studio (/phonics/)"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Wild animals: cheetah, gorilla, anaconda, toucan, polar bear, platypus",
+        "Environment: endangered, extinct, protect, climate",
+        "Food chain: predator, prey, herbivore, carnivore"
+       ],
+       "estado": "a medias",
+       "detalle": "sin cubrir: Environment: endangered, extinct, protect, c · Food chain: predator, prey, herbivore, carni"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Identify key facts about endangered animals",
+        "Understand cause and effect (basic)"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: crossword, exam_task, gap_text, match_words"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "The BFG",
+        "(R. Dahl – adapted Level 2)",
+        "Animal & nature themes"
+       ],
+       "estado": "FALTA",
+       "detalle": "los readers del portal empiezan en A2; este grado no llega"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Animal conservation leaflets & fact files"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: exam_task, gap_text"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Animal conservation leaflet: 100–130 words",
+        "Problem → Why it matters → What we can do"
+       ],
+       "estado": "cubierto",
+       "detalle": "50 unidades con tarea de escribir · Virtual Writing Tutor"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Animal fact web → threat/action diagram → draft leaflet",
+        "Focus: problem → solution structure"
+       ],
+       "estado": "cubierto",
+       "detalle": "50 unidades con tarea de escribir · Virtual Writing Tutor"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Present Continuous (actions happening now)",
+        "Present Simple vs Present Continuous contrast (intro)",
+        "Must / mustn't (obligation & prohibition)"
+       ],
+       "estado": "cubierto",
+       "detalle": "3 de 3 puntos"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Animal project self-evaluation",
+        "Reflect: Why is conservation important to me?"
+       ],
+       "estado": "cubierto",
+       "detalle": "cada unidad acaba con su self-check"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Key facts in a nature programme extract",
+        "Identify endangered animals mentioned",
+        "Match animal to food (carnivore/herbivore)"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: listening"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Describe a wild animal: appearance, habitat, diet, threats",
+        "Pair work: conservationist debate (save this animal!)",
+        "Group: make an Endangered Animals poster (oral)"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: pairwork, spot_diff"
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "tema": "Sports & Health",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Word stress in sports: FOOT-ball, gym-NAS-tics",
+        "Intonation: giving advice (You should…)",
+        "Health chant with imperatives"
+       ],
+       "estado": "en el portal",
+       "detalle": "Phonics Studio (/phonics/)"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Sports: gymnastics, volleyball, athletics, martial arts, rowing, skiing",
+        "Body & fitness: muscles, warm up, stretch, stamina",
+        "Health problems: broken arm, sprained ankle, allergy"
+       ],
+       "estado": "a medias",
+       "detalle": "sin cubrir: Sports: gymnastics, volleyball, athletics, m · Health problems: broken arm, sprained ankle,"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Find information in a sports schedule",
+        "Distinguish fact from opinion in a short text"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: crossword, exam_task, gap_text, match_words"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Danny the Champion of the World",
+        "(R. Dahl – adapted)",
+        "Ch. 1–5: sports & adventure"
+       ],
+       "estado": "FALTA",
+       "detalle": "los readers del portal empiezan en A2; este grado no llega"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Sports magazines & simple fitness guides"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: exam_task, gap_text"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Health & fitness advice article: 110–140 words",
+        "Using should/must/don't"
+       ],
+       "estado": "cubierto",
+       "detalle": "50 unidades con tarea de escribir · Virtual Writing Tutor"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Brainstorm sports → rank by health benefit → draft article",
+        "Add advice sentences"
+       ],
+       "estado": "cubierto",
+       "detalle": "50 unidades con tarea de escribir · Virtual Writing Tutor"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Modal verbs: should/shouldn't, must, have to",
+        "Imperatives: affirmative & negative (health advice)",
+        "Countable/uncountable nouns with health vocabulary"
+       ],
+       "estado": "cubierto",
+       "detalle": "3 de 3 puntos"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Can-do checklist: health & sports language",
+        "Reflect: What sport would I like to try?"
+       ],
+       "estado": "cubierto",
+       "detalle": "cada unidad acaba con su self-check"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Listen to a sports commentary – identify sports",
+        "Health advice dialogue: fill in the problem",
+        "Movers-style: listen and tick"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: listening"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Recommend a sport and explain why",
+        "Role-play: sports coach & athlete",
+        "Pair debate: team sports vs individual sports"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: pairwork, spot_diff"
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "tema": "Holidays & Travel",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Sentence stress in past tense narratives",
+        "Weak forms: was /wəz/, were /wə/",
+        "Vacation story read-aloud rhythm"
+       ],
+       "estado": "en el portal",
+       "detalle": "Phonics Studio (/phonics/)"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Holiday vocabulary: beach, mountains, camping, sightseeing, souvenir, sunscreen",
+        "Weather experiences: freezing, boiling, humid, mild",
+        "Past activities: swam, visited, took, bought, ate"
+       ],
+       "estado": "a medias",
+       "detalle": "sin cubrir: Holiday vocabulary: beach, mountains, campin"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Sequence events in a holiday narrative",
+        "Identify past time expressions in a text"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: crossword, exam_task, gap_text, match_words"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Around the World in 80 Days",
+        "(J. Verne – Oxford Bookworms 2)",
+        "Holiday & travel narrative"
+       ],
+       "estado": "FALTA",
+       "detalle": "los readers del portal empiezan en A2; este grado no llega"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Holiday brochures & postcards"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: exam_task, gap_text"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Holiday recount: 120–150 words (Past Simple)",
+        "Where, when, what I did, highlight"
+       ],
+       "estado": "cubierto",
+       "detalle": "50 unidades con tarea de escribir · Virtual Writing Tutor"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Past Simple time chart (when? where? what?) → draft recount",
+        "Connectors: first, then, after, finally"
+       ],
+       "estado": "cubierto",
+       "detalle": "50 unidades con tarea de escribir · Virtual Writing Tutor"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Past Simple: regular & irregular verbs (full conjugation)",
+        "Past Simple: questions (Did you…?) & negatives (didn't)",
+        "Time expressions: yesterday, last week, in 2023, ago"
+       ],
+       "estado": "cubierto",
+       "detalle": "3 de 3 puntos"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Holiday recount peer review (2 stars, 1 wish)",
+        "Reflect: What was the best part of my recount?"
+       ],
+       "estado": "cubierto",
+       "detalle": "cada unidad acaba con su self-check"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Listen to a holiday story: sequence the events",
+        "Identify places visited and activities done",
+        "Fill in: Where did they go? What did they do?"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: listening"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Tell the story of my last holiday (Past Simple)",
+        "Pair work: Holiday photo description (imaginary)",
+        "Class survey: where did you go last holiday?"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: pairwork, spot_diff"
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "tema": "My Future",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Intonation: future sentences (I'm GOING to…)",
+        "Stress: I WILL be a doctor",
+        "Review: all phonics patterns G1–G4"
+       ],
+       "estado": "en el portal",
+       "detalle": "Phonics Studio (/phonics/)"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Jobs & future: engineer, scientist, artist, athlete, entrepreneur, programmer",
+        "Ambitions: I want to be…, I'd like to…",
+        "Future plans: I'm going to study…"
+       ],
+       "estado": "FALTA",
+       "detalle": "ninguno de los 3 puntos"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Identify main idea and details in an article",
+        "Match heading to paragraph (intro)"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: crossword, exam_task, gap_text, match_words"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "My Brilliant Career",
+        "(adapted) OR",
+        "Real-life Young Achievers",
+        "(graded non-fiction)"
+       ],
+       "estado": "FALTA",
+       "detalle": "los readers del portal empiezan en A2; este grado no llega"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Short articles about young achievers & careers"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: exam_task, gap_text"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Future ambitions paragraph: 120–150 words",
+        "I want to be… because… I am going to…"
+       ],
+       "estado": "cubierto",
+       "detalle": "50 unidades con tarea de escribir · Virtual Writing Tutor"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Goal-setting timeline → draft ambitions paragraph",
+        "Self-check: verb forms (going to / will / want to)"
+       ],
+       "estado": "cubierto",
+       "detalle": "50 unidades con tarea de escribir · Virtual Writing Tutor"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Going to: plans & intentions",
+        "Will: predictions & spontaneous decisions (intro)",
+        "Want to / would like to: ambitions"
+       ],
+       "estado": "a medias",
+       "detalle": "sin cubrir: Will: predictions & spontaneous decisions (i"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "End-of-year portfolio reflection",
+        "Future goals: What will I do in Grade 5?"
+       ],
+       "estado": "cubierto",
+       "detalle": "cada unidad acaba con su self-check"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Listen to interviews about future jobs",
+        "Fill-in: name, ambition, reason",
+        "Short podcast: famous young achievers"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: listening"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Talk about future job ambitions",
+        "Pair work: dream job interview",
+        "Group: Future Careers Fair presentations"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: pairwork, spot_diff"
+      }
+     ]
+    }
+   ],
+   "resumen": {
+    "cubierto": 46,
+    "en el portal": 6,
+    "a medias": 7,
+    "FALTA": 7
+   },
+   "recursos": [
+    {
+     "nombre": "Phonics Studio",
+     "enlace": "/phonics/"
+    },
+    {
+     "nombre": "Pronunciation Coach",
+     "enlace": "/pronunciation-coach/"
+    },
+    {
+     "nombre": "Virtual Writing Tutor",
+     "enlace": "/writing-tutor.html"
+    }
+   ]
+  },
+  {
+   "grado": "G5",
+   "nivel": "flyers",
+   "nota": "Cambridge Flyers",
+   "cefr": "A2",
+   "examen": "Cambridge Flyers",
+   "unidadesCurso": 55,
+   "tiposCurso": [
+    "crossword",
+    "exam_task",
+    "gap_text",
+    "listening",
+    "match_words",
+    "pairwork",
+    "spot_diff"
+   ],
+   "temas": [
+    "Personal Identity",
+    "Everyday Life & Habits",
+    "The Natural World",
+    "People & Cultures",
+    "Health & Wellbeing",
+    "Adventures & Experiences"
+   ],
+   "unidades": [
+    {
+     "n": 1,
+     "tema": "Personal Identity",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Sentence stress: I LOVE reading but I HATE maths",
+        "Intonation: questions vs. statements (contrast)",
+        "Personality word stress: pa-TIENT, am-BI-tious"
+       ],
+       "estado": "en el portal",
+       "detalle": "Phonics Studio (/phonics/)"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Personality adjectives: patient, ambitious, creative, stubborn, generous, reliable",
+        "Values: honesty, respect, responsibility, empathy",
+        "Collocations: make friends, take risks, face challenges"
+       ],
+       "estado": "a medias",
+       "detalle": "sin cubrir: Personality adjectives: patient, ambitious,  · Values: honesty, respect, responsibility, em"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Identify character traits supported by evidence",
+        "Infer meaning of unknown words from context"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: crossword, exam_task, gap_text, match_words"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Wonder",
+        "(R.J. Palacio – adapted)",
+        "Ordinary – Christopher",
+        "Personality & identity focus"
+       ],
+       "estado": "en el portal",
+       "detalle": "Readers del portal (/reader.html)"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Magazine profiles and personality interviews"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: exam_task, gap_text"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Personality profile: 150–200 words",
+        "Describe someone's character with examples"
+       ],
+       "estado": "cubierto",
+       "detalle": "55 unidades con tarea de escribir · Virtual Writing Tutor"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Character web → trait + example → draft profile",
+        "Connect paragraphs with furthermore/however"
+       ],
+       "estado": "cubierto",
+       "detalle": "55 unidades con tarea de escribir · Virtual Writing Tutor"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Present Perfect: ever, never, already, just, yet (full use)",
+        "Present Perfect vs. Past Simple (clear contrast)",
+        "For / since with time expressions"
+       ],
+       "estado": "cubierto",
+       "detalle": "3 de 3 puntos"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Personality self-assessment: which traits do I have?",
+        "Reflect: What trait do I want to develop?"
+       ],
+       "estado": "cubierto",
+       "detalle": "cada unidad acaba con su self-check"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Identify personality traits in a character interview",
+        "Fill-in: values mentioned in a talk",
+        "Flyers-style: listen and tick personality traits"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: listening"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Describe my personality and values",
+        "Pair work: Are you a risk-taker? Discussion",
+        "Oral: My role model and their personality"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: pairwork, spot_diff"
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "tema": "Everyday Life & Habits",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Weak forms in everyday speech: have /həv/, can /kən/",
+        "Connected speech: I usedto /juːstə/ play",
+        "Chant: My Daily Habits"
+       ],
+       "estado": "en el portal",
+       "detalle": "Phonics Studio (/phonics/)"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Habits & routines (extended): exercise, meditate, volunteer, recycle, budget",
+        "Time management: deadline, schedule, priority, procrastinate",
+        "Adverbs: regularly, occasionally, hardly ever"
+       ],
+       "estado": "a medias",
+       "detalle": "sin cubrir: Habits & routines (extended): exercise, medi"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Distinguish main idea from supporting details",
+        "Identify purpose and audience of a text"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: crossword, exam_task, gap_text, match_words"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "The Curious Incident of the Dog",
+        "in the Night-time",
+        "(Haddon – adapted extract)",
+        "Habits & perspective"
+       ],
+       "estado": "en el portal",
+       "detalle": "Readers del portal (/reader.html)"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Informational texts on lifestyle and habit research"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: exam_task, gap_text"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Comparative paragraph: my habits vs. ideal habits (150–200 words)"
+       ],
+       "estado": "cubierto",
+       "detalle": "55 unidades con tarea de escribir · Virtual Writing Tutor"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Survey data → my habits chart → draft comparison",
+        "Use: whereas, while, on the other hand"
+       ],
+       "estado": "cubierto",
+       "detalle": "55 unidades con tarea de escribir · Virtual Writing Tutor"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Used to + infinitive: past habits vs. now",
+        "Present Simple vs. used to (contrast)",
+        "Adverbs of frequency: still, no longer, used to"
+       ],
+       "estado": "cubierto",
+       "detalle": "3 de 3 puntos"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Habit tracker review: Did I meet my goal this week?",
+        "Reflect: What habit change was hardest?"
+       ],
+       "estado": "cubierto",
+       "detalle": "cada unidad acaba con su self-check"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Main idea in a talk about habits",
+        "Fill-in: habits mentioned + frequency",
+        "Identify the speaker's advice"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: listening"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Compare habits: mine vs. a partner's",
+        "Debate: Is technology changing our habits?",
+        "Group survey: healthy vs. unhealthy habits"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: pairwork, spot_diff"
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "tema": "The Natural World",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Word stress in compound nouns: RAINforest, SEAbottom",
+        "Diphthongs in nature words: /aɪ/ wildlife",
+        "Environment vocabulary pronunciation drill"
+       ],
+       "estado": "en el portal",
+       "detalle": "Phonics Studio (/phonics/)"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Environment: deforestation, pollution, drought, flood, biodiversity, ecosystem",
+        "Climate action: renewable energy, carbon footprint, solar panel",
+        "Collocations: protect the environment, reduce waste"
+       ],
+       "estado": "a medias",
+       "detalle": "sin cubrir: Climate action: renewable energy, carbon foo · Collocations: protect the environment, reduc"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Understand cause and effect in an article",
+        "Scan for specific information (statistics, facts)"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: crossword, exam_task, gap_text, match_words"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Our Planet",
+        "(BBC book tie-in) OR",
+        "The Boy Who Harnessed the Wind",
+        "(W. Kamkwamba – YA version)"
+       ],
+       "estado": "en el portal",
+       "detalle": "Readers del portal (/reader.html)"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Environmental news articles and reports"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: exam_task, gap_text"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Problem-solution essay: an environmental issue (170–220 words)"
+       ],
+       "estado": "cubierto",
+       "detalle": "55 unidades con tarea de escribir · Virtual Writing Tutor"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Problem-solution graphic organiser → draft essay",
+        "Evidence sentence: According to… / Research shows…"
+       ],
+       "estado": "cubierto",
+       "detalle": "55 unidades con tarea de escribir · Virtual Writing Tutor"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Will for predictions: Scientists believe it will…",
+        "First Conditional (full form): If…, will…",
+        "Unless / as long as (intro)"
+       ],
+       "estado": "a medias",
+       "detalle": "sin cubrir: Will for predictions: Scientists believe it  · Unless / as long as (intro)"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Environmental pledge: What will I do differently?",
+        "Reflect: How did research help my writing?"
+       ],
+       "estado": "cubierto",
+       "detalle": "cada unidad acaba con su self-check"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Key facts in an environmental documentary",
+        "Identify problems and proposed solutions",
+        "Note-taking: 3 environmental facts"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: listening"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Present an environmental problem and solution",
+        "Pair debate: What is the biggest eco-threat?",
+        "Group: Green School campaign pitch"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: pairwork, spot_diff"
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "tema": "People & Cultures",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Intonation for contrast: In Peru they…, but in Japan…",
+        "Word stress in cultural words: tra-DI-tion, fes-TI-val",
+        "Rhythm in cross-cultural comparison sentences"
+       ],
+       "estado": "en el portal",
+       "detalle": "Phonics Studio (/phonics/)"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Cultural vocabulary: tradition, custom, ceremony, ancestor, heritage, festival",
+        "Global issues: migration, human rights, social justice",
+        "Adjectives: diverse, multicultural, indigenous, vibrant"
+       ],
+       "estado": "a medias",
+       "detalle": "sin cubrir: Global issues: migration, human rights, soci · Adjectives: diverse, multicultural, indigeno"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Compare two texts: similarities and differences",
+        "Identify author's viewpoint"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: crossword, exam_task, gap_text, match_words"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Esperanza Rising",
+        "(P.M. Ryan – adapted)",
+        "Cultures & migration",
+        "Ch. 1–6"
+       ],
+       "estado": "en el portal",
+       "detalle": "Readers del portal (/reader.html)"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Cultural comparison articles and travel features"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: exam_task, gap_text"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Cultural comparison article: two traditions (180–230 words)"
+       ],
+       "estado": "cubierto",
+       "detalle": "55 unidades con tarea de escribir · Virtual Writing Tutor"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Venn diagram (two cultures) → draft article",
+        "Formal connectors: similarly, in contrast, however"
+       ],
+       "estado": "cubierto",
+       "detalle": "55 unidades con tarea de escribir · Virtual Writing Tutor"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Comparative & superlative: irregular forms",
+        "Connectors of contrast: whereas, while, although, despite",
+        "Relative clauses: who, which, that, where (defining – intro)"
+       ],
+       "estado": "a medias",
+       "detalle": "sin cubrir: Connectors of contrast: whereas, while, alth"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Cultural reflection: What did I learn about another culture?",
+        "Reflect: Did anything surprise me?"
+       ],
+       "estado": "cubierto",
+       "detalle": "cada unidad acaba con su self-check"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Identify cultural practices in a travel podcast",
+        "Compare two cultures based on audio",
+        "Flyers-style: multiple choice (cultural text)"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: listening"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Compare two cultural traditions",
+        "Socratic seminar: Are all traditions worth keeping?",
+        "Group: World Culture Festival role-play"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: pairwork, spot_diff"
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "tema": "Health & Wellbeing",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Intonation for advice: You SHOULD rest; you SHOULDN'T eat that",
+        "Healthcare vocabulary pronunciation",
+        "Connected speech: What's the matter? /wɒtsðəˈmætə/"
+       ],
+       "estado": "en el portal",
+       "detalle": "Phonics Studio (/phonics/)"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Health & medicine: vaccination, symptoms, diagnosis, prescription, allergy, first aid",
+        "Mental health: stress, anxiety, wellbeing, resilience, therapy",
+        "Lifestyle: balanced diet, exercise routine, sleep hygiene"
+       ],
+       "estado": "a medias",
+       "detalle": "sin cubrir: Mental health: stress, anxiety, wellbeing, r"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Understand implied advice and recommendations",
+        "Evaluate the logic of a health claim (basic)"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: crossword, exam_task, gap_text, match_words"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "The Crossover",
+        "(K. Alexander)",
+        "Health, family & wellbeing",
+        "(selected chapters)"
+       ],
+       "estado": "en el portal",
+       "detalle": "Readers del portal (/reader.html)"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Health advice articles and well-being blogs"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: exam_task, gap_text"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Health advice blog post: 180–230 words",
+        "Direct address: You should / Why not try…"
+       ],
+       "estado": "cubierto",
+       "detalle": "55 unidades con tarea de escribir · Virtual Writing Tutor"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Advice structure: Problem → Cause → Advice → Result",
+        "Peer check: Is the advice convincing?"
+       ],
+       "estado": "cubierto",
+       "detalle": "55 unidades con tarea de escribir · Virtual Writing Tutor"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Modal verbs: should, ought to, might, could (advice/possibility)",
+        "Passive Voice: Present Simple intro (Rice is grown in Asia)",
+        "Gerund vs. infinitive: enjoy + -ing / want + to (intro)"
+       ],
+       "estado": "cubierto",
+       "detalle": "3 de 3 puntos"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Well-being journal: How am I feeling this term?",
+        "Reflect: What keeps me balanced?"
+       ],
+       "estado": "cubierto",
+       "detalle": "cada unidad acaba con su self-check"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Key details in a medical consultation",
+        "Identify health advice given",
+        "Distinguish symptoms from causes"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: listening"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Give and respond to health advice",
+        "Role-play: pharmacist and patient",
+        "Group: Well-being tips for teenagers"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: pairwork, spot_diff"
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "tema": "Adventures & Experiences",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Fluency practice: retell a story without hesitation",
+        "Review: all phonics patterns Grades 1–5",
+        "Flyers-style speaking: long-turn practice"
+       ],
+       "estado": "en el portal",
+       "detalle": "Phonics Studio (/phonics/)"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Adventure & travel: expedition, backpacking, cruise, safari, pilgrimage",
+        "Past narratives: realised, discovered, overcame, survived",
+        "Emotional vocabulary: breathtaking, terrifying, unforgettable, rewarding"
+       ],
+       "estado": "a medias",
+       "detalle": "sin cubrir: Emotional vocabulary: breathtaking, terrifyi"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Analyse narrative structure: orientation, crisis, resolution",
+        "Personal response with basic textual reference"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: crossword, exam_task, gap_text, match_words"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Into the Wild",
+        "(J. Krakauer – adapted)",
+        "OR Percy Jackson #1",
+        "(R. Riordan) full read"
+       ],
+       "estado": "en el portal",
+       "detalle": "Readers del portal (/reader.html)"
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Adventure travel narratives and memoirs (extracts)"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: exam_task, gap_text"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Adventure narrative: 200–260 words",
+        "Past Simple/Continuous + vivid adjectives"
+       ],
+       "estado": "cubierto",
+       "detalle": "55 unidades con tarea de escribir · Virtual Writing Tutor"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Adventure planning sheet (5 Ws) → draft narrative",
+        "Self-edit: vivid verbs, sensory detail, time expressions"
+       ],
+       "estado": "cubierto",
+       "detalle": "55 unidades con tarea de escribir · Virtual Writing Tutor"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Past Simple + Past Continuous: while/when",
+        "Past Perfect: introduction (I had already…)",
+        "Narrative connectors: eventually, meanwhile, suddenly, as a result"
+       ],
+       "estado": "a medias",
+       "detalle": "sin cubrir: Narrative connectors: eventually, meanwhile,"
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "End-of-year portfolio reflection: My best 3 pieces",
+        "Letter to future Grade 6 self"
+       ],
+       "estado": "cubierto",
+       "detalle": "cada unidad acaba con su self-check"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Sequence events in a travel adventure story",
+        "Identify emotions in a narrative audio",
+        "Flyers-style: listen and order pictures"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: listening"
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Narrate a real or imagined adventure (3–4 min)",
+        "Pair work: Travel photo story",
+        "Group: Amazing Journeys oral presentation"
+       ],
+       "estado": "cubierto",
+       "detalle": "en el curso: pairwork, spot_diff"
+      }
+     ]
+    }
+   ],
+   "resumen": {
+    "cubierto": 45,
+    "en el portal": 12,
+    "a medias": 9,
+    "FALTA": 0
+   },
+   "recursos": [
+    {
+     "nombre": "Phonics Studio",
+     "enlace": "/phonics/"
+    },
+    {
+     "nombre": "Readers del portal",
+     "enlace": "/reader.html"
+    },
+    {
+     "nombre": "Pronunciation Coach",
+     "enlace": "/pronunciation-coach/"
+    },
+    {
+     "nombre": "Virtual Writing Tutor",
+     "enlace": "/writing-tutor.html"
+    }
+   ]
+  }
+ ]
+}
