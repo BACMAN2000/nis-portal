@@ -410,6 +410,7 @@ async function renderAdmin(tab='users'){
   if(tab==='results') return adminResults();
   if(tab==='final') return cefrFinalPanel();
   if(tab==='readers') return readerStatsPanel();
+  if(tab==='funnordic') return funNordicPanel();
   if(tab==='teachers') return adminTeachers();
   if(tab==='honesty') return antiCheatPanel();
   if(tab==='mocks') return adminMocks();
@@ -1707,6 +1708,92 @@ async function readerStatsPanel(detailId){
     ${detail}`;
 }
 
+
+/* ---------------------------------------------------------------
+   Fun for Nordic — lo que entregan los alumnos
+   Escritura, grabaciones de voz y el repaso final de cada unidad,
+   para que el profesor las oiga y las califique.
+---------------------------------------------------------------- */
+async function funNordicPanel(){
+  const main = $('#main');
+  main.innerHTML = '<div class="card"><p class="muted">Cargando entregas…</p></div>';
+
+  const { data, error } = await sb
+    .from('fun_submissions')
+    .select('id,student_id,level,unit,activity_code,kind,payload,audio_path,duration_sec,score,feedback,reviewed_at,created_at')
+    .order('created_at', { ascending: false })
+    .limit(400);
+
+  if (error){
+    main.innerHTML = `<div class="card"><p class="err">No pude leer las entregas: ${esc(error.message)}</p></div>`;
+    return;
+  }
+  if (!data || !data.length){
+    main.innerHTML = `<div class="card"><h2>🧸 Fun for Nordic</h2>
+      <p class="muted">Todavía no hay entregas. Aparecerán aquí en cuanto los alumnos
+      escriban o graben en el curso.</p></div>`;
+    return;
+  }
+
+  // nombres de los alumnos, en una sola consulta
+  const ids = [...new Set(data.map(r => r.student_id))];
+  const { data: gente } = await sb.from('profiles').select('id,full_name,grade_id,section').in('id', ids);
+  const quien = Object.fromEntries((gente||[]).map(p => [p.id, p]));
+
+  const ICONO = { writing:'✍️', speaking:'🎙️', selfcheck:'✅' };
+  const NIVEL = { starters:'Starters', movers:'Movers', flyers:'Flyers' };
+
+  const fila = r => {
+    const p = quien[r.student_id] || {};
+    const nombre = p.full_name || '(alumno)';
+    const grado = p.grade_id ? `${p.grade_id}º${p.section||''}` : '';
+    const cuerpo = r.kind === 'speaking'
+      ? `<button class="btn small" onclick="funOirAudio('${esc(r.audio_path||'')}', this)">▶ Escuchar</button>
+         ${r.duration_sec ? `<span class="muted"> ${r.duration_sec}s</span>` : ''}`
+      : r.kind === 'selfcheck'
+        ? `<span class="muted">${((r.payload||{}).puede||[]).length} / ${(r.payload||{}).total||0} marcadas</span>`
+        : `<span>${esc(((r.payload||{}).respuestas||[]).join(' · ')).slice(0,140)}</span>`;
+    return `<tr>
+      <td>${esc(nombre)} <span class="muted">${grado}</span></td>
+      <td>${NIVEL[r.level]||r.level} · U${r.unit} · ${esc(r.activity_code)}</td>
+      <td>${ICONO[r.kind]||''} ${r.kind}</td>
+      <td>${cuerpo}</td>
+      <td><input type="number" min="0" max="10" value="${r.score==null?'':r.score}"
+            style="width:4rem" onchange="funCalificar('${r.id}', this.value, null)"></td>
+      <td><input type="text" placeholder="comentario" value="${esc(r.feedback||'')}"
+            onchange="funCalificar('${r.id}', null, this.value)"></td>
+      <td class="muted">${r.reviewed_at ? '✔' : '—'}</td>
+    </tr>`;
+  };
+
+  main.innerHTML = `<div class="card">
+    <h2>🧸 Fun for Nordic — entregas de los alumnos</h2>
+    <p class="muted">Lo que escriben y lo que graban, lo más reciente primero.
+      Pon una nota de 0 a 10 y un comentario; se guarda solo.</p>
+    <div style="overflow-x:auto"><table class="tbl">
+      <thead><tr><th>Alumno</th><th>Unidad</th><th>Tipo</th><th>Entrega</th>
+        <th>Nota</th><th>Comentario</th><th>Visto</th></tr></thead>
+      <tbody>${data.map(fila).join('')}</tbody></table></div></div>`;
+}
+
+/* Los audios están en un bucket privado: se pide un enlace temporal. */
+window.funOirAudio = async function(ruta, boton){
+  if (!ruta) return;
+  const { data, error } = await sb.storage.from('fun-speaking').createSignedUrl(ruta, 3600);
+  if (error || !data){ boton.textContent = 'No disponible'; return; }
+  const a = document.createElement('audio');
+  a.controls = true; a.src = data.signedUrl; a.style.maxWidth = '15rem';
+  boton.replaceWith(a);
+  a.play().catch(()=>{});
+};
+
+window.funCalificar = async function(id, nota, comentario){
+  const cambio = { reviewed_at: new Date().toISOString(), reviewed_by: (state.profile && state.profile.id) || null };
+  if (nota !== null && nota !== '') cambio.score = Number(nota);
+  if (comentario !== null) cambio.feedback = comentario;
+  await sb.from('fun_submissions').update(cambio).eq('id', id);
+};
+
 async function renderTeacher(tab){
   if(tab==='exams'){ window.location.assign(location.origin + '/mocks-cambridge/quizzes.html'); return; }
   const acc = state.teacherAccess || await loadTeacherAccess();
@@ -1714,6 +1801,7 @@ async function renderTeacher(tab){
   if(acc.can_results) nav.push({key:'results',label:'📝 Resultados'});
   if(acc.can_results) nav.push({key:'final',label:'🎓 Resultado final'});
   if(acc.can_results) nav.push({key:'readers',label:'📖 Controles de lectura'});
+  if(acc.can_results) nav.push({key:'funnordic',label:'🧸 Fun for Nordic'});
   if(acc.can_students) nav.push({key:'students',label:'👥 Alumnos'});
   if(acc.can_results||acc.can_students) nav.push({key:'honesty',label:'🛡️ Honestidad'});
   if(teacherAllowedGrades().length) nav.push({key:'practice',label:'🎯 Practice Tests'});
