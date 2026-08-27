@@ -170,6 +170,59 @@
   .reading .w.hot{background:#fde047; box-shadow:0 0 0 2px #fde047}
   .reading.rp-paused .w{cursor:pointer}
   .reading.rp-paused .w:hover{background:#dbeafe}
+
+  /* ---------- MODO LIBRO ----------------------------------------------------
+     El mismo texto, paginado como un libro de doble pagina. No se vuelve a
+     pintar nada: se envuelve el flujo que ya existe (#bkFlow) en columnas CSS y
+     se desplaza de dos en dos, asi que los <span class="w"> siguen siendo los
+     mismos nodos y el diccionario y el karaoke del audio funcionan igual.
+     Fuera del modo libro estas reglas no aplican y la lectura queda como estaba. */
+  .bk-stage{position:relative; perspective:1800px; margin:14px 0 0}
+  .bk-view{position:relative; overflow:hidden; margin:0 auto; border-radius:12px; padding:26px 30px 48px;
+    background:linear-gradient(90deg,#fffdf6,#fffefb 12%,#fffefb 88%,#fffdf6);
+    box-shadow:0 18px 40px -26px rgba(15,23,42,.55), inset 0 0 70px rgba(146,110,40,.05);
+    border:1px solid #ece3cf}
+  .bk-view.two::after{content:''; position:absolute; top:0; bottom:0; left:50%; width:30px;
+    transform:translateX(-50%); pointer-events:none;
+    background:linear-gradient(90deg,rgba(120,90,40,0),rgba(120,90,40,.13),rgba(120,90,40,0))}
+  /* el clon de la hoja lleva la MISMA clase (sin id), asi las columnas cortan igual */
+  .bk-on .bk-flow{column-gap:var(--bk-gap); column-fill:auto; height:var(--bk-ph);
+    width:var(--bk-fw); column-width:var(--bk-pw); transition:transform .34s ease}
+  .bk-on .bk-flow p.rp{padding-left:0; text-align:justify; hyphens:auto}
+  .bk-on .bk-flow p.rp .pbtn{display:none}          /* el play por parrafo estorba en la pagina */
+  .bk-on .bk-flow figure, .bk-on .bk-flow h3{break-inside:avoid}
+  .bk-on .bk-flow figure img{max-height:38vh; width:auto; max-width:100%}
+  /* hoja que se voltea */
+  .bk-pane{position:relative; overflow:hidden}
+  .bk-leaf{position:absolute; top:0; width:var(--bk-pw); height:var(--bk-ph); z-index:6; display:none;
+    transform-style:preserve-3d; transform-origin:left center; pointer-events:none}
+  .bk-leaf.on{display:block}
+  .bk-leaf .face{position:absolute; inset:0; overflow:hidden; backface-visibility:hidden;
+    background:linear-gradient(90deg,#fffefb,#fffdf6); box-shadow:0 0 30px -8px rgba(15,23,42,.45)}
+  .bk-leaf .face.back{transform:rotateY(180deg)}
+  .bk-leaf .clip{position:absolute; inset:0; overflow:hidden}
+  /* esquinas: se tocan para pasar la hoja */
+  /* La esquina es solo la PISTA VISUAL. El toque lo resuelve el listener del pane,
+     que deja pasar la palabra: leyendo sin audio, tocar una palabra del rincon debe
+     abrir su significado, no pasar la hoja. */
+  .bk-corner{position:absolute; bottom:0; height:48px; width:34%; z-index:7; cursor:pointer;
+    display:flex; align-items:center; font-size:22px; color:#8a6d3b; opacity:.5; transition:opacity .15s, background .15s;
+    transition:background .18s}
+  .bk-corner.next{right:0; border-radius:0 0 12px 0; justify-content:flex-end; padding-right:14px;
+    background:linear-gradient(315deg,rgba(146,110,40,.16),rgba(146,110,40,0) 62%)}
+  .bk-corner.prev{left:0; border-radius:0 0 0 12px; justify-content:flex-start; padding-left:14px;
+    background:linear-gradient(45deg,rgba(146,110,40,.16),rgba(146,110,40,0) 62%)}
+  .bk-corner:hover, .bk-corner.lit{opacity:1; background-color:rgba(146,110,40,.10)}
+  .bk-corner.off{display:none}
+  .bk-foot{display:flex; align-items:center; justify-content:center; gap:14px; margin-top:10px;
+    font-size:13px; color:var(--slate); font-weight:600}
+  .bk-foot .pg{background:#fff; border:1px solid var(--line); border-radius:999px; padding:4px 12px}
+  .bk-tip{text-align:center; font-size:12.5px; color:var(--slate); margin-top:6px}
+  /* el reproductor es sticky y en modo libro se montaba sobre las paginas */
+  .bk-on .rp-player{position:static}
+  @media (max-width:700px){ .bk-tip{font-size:12px}
+    /* en columna estrecha el justificado abre huecos enormes entre palabras */
+    .bk-on .bk-flow p.rp{text-align:left; hyphens:auto} }
   /* Reproductor */
   .rp-player{position:sticky; top:64px; z-index:5; background:#fff; border:1.5px solid var(--line); border-radius:14px;
     padding:10px 14px; margin:0 0 16px; box-shadow:0 8px 22px rgba(15,23,42,.12)}
@@ -1119,6 +1172,7 @@ function actRead(c){
   stage.innerHTML = `<div class="panel reading rp-paused">
     <div class="qnum">CHAPTER ${c.n} · READ ALONG</div>
     <h2 style="color:var(--blue-d);margin:2px 0 2px">${c.title}</h2>
+    <button class="btn ghost sm" id="bkBtn" style="margin:0 0 12px" onclick="BK.toggle()">📖 Read it like a book</button>
     <p class="muted" style="margin:0 0 14px;font-size:.85rem">Simplified version · about ${words} words · ~${Math.max(1,Math.round(words/90))} min</p>
     <div class="rp-player">
       <div class="rp-ctl">
@@ -1131,7 +1185,7 @@ function actRead(c){
       </div>
       <div class="rp-hint" id="rpHint">🎧 Follow the yellow word as it reads. Drag the blue dot to go back or forward. ⏸ Pause and <b>tap any word you don’t understand</b> to see its meaning.</div>
     </div>
-    ${paras.map((p,i)=>`<p class="rp"><button class="pbtn" onclick="rpPara(${i})" title="Play from here">▶</button>${wordSpans(p,i)}</p>`).join('')}
+    <div id="bkFlow" class="bk-flow">${paras.map((p,i)=>`<p class="rp"><button class="pbtn" onclick="rpPara(${i})" title="Play from here">▶</button>${wordSpans(p,i)}</p>`).join('')}</div>
     <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;align-items:center">
       ${prev?`<button class="btn ghost sm" onclick="openReadChapter(${idx-1})">← Ch. ${prev.n}</button>`:''}
       <button class="btn sm" onclick="openAct('comprehension')">Do the activities →</button>
@@ -1146,7 +1200,211 @@ function actRead(c){
     const tl=$('#rpTime'); if(tl) tl.textContent=RP.fmt(parseFloat(sk.value))+' / '+RP.fmt(RP.total||0); });
   sk.addEventListener('change',()=>{ RP.seeking=false; RP.seekTo(parseFloat(sk.value)); });
   window.scrollTo(0,0);
+  BK.on=false;
+  try{ if(localStorage.getItem('rdr_book')==='1') BK.enable(); }catch(e){}
 }
+
+/* ============================================================
+   MODO LIBRO — el mismo capitulo leido como un libro: doble pagina,
+   se toca la esquina y la hoja se voltea.
+
+   No vuelve a pintar el texto: envuelve el flujo que ya existe
+   (#bkFlow) en columnas CSS y lo desplaza de dos en dos. Como los
+   nodos son los mismos, siguen funcionando el diccionario al tocar
+   una palabra y el karaoke del audio; ademas, mientras narra, la
+   pagina pasa sola cuando la voz llega al final (ver RP.paint).
+   La hoja que gira es un clon del flujo recortado a la pagina que
+   toca, con la MISMA clase .bk-flow, para que las columnas corten
+   exactamente igual que en la pagina de debajo.
+   ============================================================ */
+const BK = {
+  on:false, sp:0, pages:1, spreads:1, ppp:2, pw:0, ph:0, gap:34, anim:false,
+  get flow(){ return document.getElementById('bkFlow'); },
+  toggle(){ this.on ? this.off() : this.enable(); },
+
+  enable(){
+    const flow=this.flow; if(!flow || this.on) return;
+    const panel=flow.closest('.reading'); if(!panel) return;
+    const stage=document.createElement('div'); stage.className='bk-stage';
+    const view=document.createElement('div'); view.className='bk-view'; view.id='bkView';
+    flow.parentNode.insertBefore(stage, flow);
+    const pane=document.createElement('div'); pane.className='bk-pane'; pane.id='bkPane';
+    stage.appendChild(view); view.appendChild(pane); pane.appendChild(flow);
+    stage.insertAdjacentHTML('beforeend',
+      '<div class="bk-leaf" id="bkLeaf"><div class="face front"><div class="clip"></div></div>'+
+      '<div class="face back"><div class="clip"></div></div></div>'+
+      '');
+    view.insertAdjacentHTML('beforeend',
+      '<div class="bk-corner prev" id="bkPrev" title="Previous page">‹</div>'+
+      '<div class="bk-corner next" id="bkNext" title="Next page">›</div>');
+    document.getElementById('bkPrev').onclick=()=>BK.prev();
+    document.getElementById('bkNext').onclick=()=>BK.next();
+    stage.insertAdjacentHTML('afterend',
+      '<div class="bk-foot" id="bkFoot"><span class="pg" id="bkPg"></span></div>'+
+      '<div class="bk-tip" id="bkTip">Tap the corner of the page to turn it — or use ← →. '+
+      'Tap any word to see what it means.</div>');
+    panel.classList.add('bk-on');
+    this.on=true; try{ localStorage.setItem('rdr_book','1'); }catch(e){}
+    const b=document.getElementById('bkBtn'); if(b) b.textContent='\u{1F4DC} Back to scrolling';
+    this._taps(pane);
+    this.sp=0; this.layout(); this.apply(false);
+    if(!this._keys){ this._keys=e=>{ if(!BK.on) return;
+        if(e.key==='ArrowRight'||e.key==='PageDown'){ e.preventDefault(); BK.next(); }
+        if(e.key==='ArrowLeft' ||e.key==='PageUp'  ){ e.preventDefault(); BK.prev(); } };
+      document.addEventListener('keydown', this._keys); }
+    if(!this._rez){ this._rez=()=>{ if(BK.on){ BK.layout(); BK.apply(false); } };
+      addEventListener('resize', this._rez); }
+    this._swipe(view);
+  },
+
+  off(){
+    const flow=this.flow, stage=flow&&flow.closest('.bk-stage'), panel=flow&&flow.closest('.reading');
+    if(stage){
+      stage.parentNode.insertBefore(flow, stage);   // sale de .bk-pane
+      ['bkFoot','bkTip'].forEach(id=>{ const el=document.getElementById(id); if(el) el.remove(); });
+      stage.remove();
+    }
+    if(panel) panel.classList.remove('bk-on');
+    if(flow){ flow.style.transform=''; flow.style.transition=''; }
+    this.on=false; try{ localStorage.setItem('rdr_book','0'); }catch(e){}
+    const b=document.getElementById('bkBtn'); if(b) b.textContent='\u{1F4D6} Read it like a book';
+  },
+
+  layout(){
+    const flow=this.flow, view=document.getElementById('bkView'); if(!flow||!view) return;
+    const panel=flow.closest('.reading');
+    // Se mide el contenedor del panel: el panel encoge para ajustarse a la vista que
+    // dimensionamos aqui, asi que medirlo a el realimentaba y siempre daba 1 pagina.
+    const pcs=getComputedStyle(panel), outer=panel.parentElement;
+    const box=Math.max(280, (outer?outer.clientWidth:innerWidth)
+      - (parseFloat(pcs.paddingLeft)||0) - (parseFloat(pcs.paddingRight)||0) - 4);
+    const padX=60, avail=Math.max(260, box-padX);
+    this.ppp = avail < 660 ? 1 : 2;              // en movil, una sola pagina
+    this.gap = this.ppp===2 ? 34 : 0;
+    this.ph  = Math.max(380, Math.min(innerHeight-230, 720));
+    this.pw  = Math.floor((avail - this.gap*(this.ppp-1))/this.ppp);
+    const fw = this.pw*this.ppp + this.gap*(this.ppp-1);
+    view.style.width=(fw+padX)+'px'; view.style.height=(this.ph+74)+'px';
+    const pane=document.getElementById('bkPane');
+    if(pane){ pane.style.width=fw+'px'; pane.style.height=this.ph+'px'; }
+    view.classList.toggle('two', this.ppp===2);
+    flow.style.setProperty('--bk-pw', this.pw+'px');
+    flow.style.setProperty('--bk-gap', this.gap+'px');
+    flow.style.setProperty('--bk-ph', this.ph+'px');
+    flow.style.setProperty('--bk-fw', fw+'px');
+    this.count();
+    if(this.sp > this.spreads-1) this.sp = Math.max(0, this.spreads-1);
+  },
+
+  count(){
+    const flow=this.flow; if(!flow) return;
+    this.pages   = Math.max(1, Math.round(flow.scrollWidth/(this.pw+this.gap)));
+    this.spreads = Math.max(1, Math.ceil(this.pages/this.ppp));
+  },
+
+  apply(anim){
+    const flow=this.flow; if(!flow) return;
+    if(!anim){ flow.style.transition='none'; }
+    flow.style.transform='translateX('+(-(this.pw+this.gap)*this.ppp*this.sp)+'px)';
+    if(!anim){ void flow.offsetWidth; flow.style.transition=''; }
+    this.count();
+    const pg=document.getElementById('bkPg');
+    if(pg){ const a=this.sp*this.ppp+1, b=Math.min(this.pages, a+this.ppp-1);
+      pg.textContent = (b>a ? 'Pages '+a+'–'+b : 'Page '+a) + ' of ' + this.pages; }
+    const pv=document.getElementById('bkPrev'), nx=document.getElementById('bkNext');
+    if(pv) pv.classList.toggle('off', this.sp<=0);
+    if(nx) nx.classList.toggle('off', this.sp>=this.spreads-1);
+  },
+
+  _face(face, col){
+    const clip=face.querySelector('.clip'); if(!clip) return;
+    clip.innerHTML='';
+    const c=this.flow.cloneNode(true);
+    c.removeAttribute('id'); c.style.transition='none';
+    c.style.transform='translateX('+(-(this.pw+this.gap)*col)+'px)';
+    clip.appendChild(c);
+  },
+
+  next(){ if(!this.anim && this.sp < this.spreads-1) this._turn(1); },
+  prev(){ if(!this.anim && this.sp > 0) this._turn(-1); },
+
+  _turn(dir){
+    const leaf=document.getElementById('bkLeaf'), view=document.getElementById('bkView');
+    if(!leaf||!view){ this.sp+=dir; this.apply(true); return; }
+    const cs=getComputedStyle(view), padL=parseFloat(cs.paddingLeft)||0, padT=parseFloat(cs.paddingTop)||0;
+    const front=leaf.querySelector('.face.front'), back=leaf.querySelector('.face.back');
+    const base=view.offsetLeft+padL;
+    if(dir>0){                                   // pasar hoja: gira sobre el lomo
+      leaf.style.left=(base + (this.ppp===2 ? this.pw+this.gap : 0))+'px';
+      leaf.style.transformOrigin='left center';
+      this._face(front, this.sp*this.ppp + (this.ppp-1));      // derecha actual
+      this._face(back,  (this.sp+1)*this.ppp);                 // izquierda nueva
+    } else {                                     // volver: la hoja vuelve del lomo
+      leaf.style.left=base+'px';
+      leaf.style.transformOrigin='right center';
+      this._face(front, this.sp*this.ppp);                     // izquierda actual
+      this._face(back,  (this.sp-1)*this.ppp + (this.ppp-1));  // derecha anterior
+    }
+    leaf.style.width=this.pw+'px'; leaf.style.height=this.ph+'px';
+    leaf.style.top=(view.offsetTop+padT)+'px';
+    leaf.style.transition='none'; leaf.style.transform='rotateY(0deg)';
+    leaf.classList.add('on'); void leaf.offsetWidth;
+    this.anim=true;
+    leaf.style.transition='transform .55s cubic-bezier(.28,.06,.2,1)';
+    leaf.style.transform='rotateY('+(dir>0?-180:180)+'deg)';
+    // a mitad de giro la hoja tapa la otra pagina: ese es el momento de mover el texto
+    setTimeout(()=>{ this.sp+=dir; this.apply(false); }, 260);
+    setTimeout(()=>{ leaf.classList.remove('on'); leaf.style.transition='none';
+      leaf.style.transform='rotateY(0deg)';
+      leaf.querySelectorAll('.clip').forEach(c=>c.innerHTML='');
+      this.anim=false; }, 580);
+  },
+
+  /* Lleva a la vista la pagina donde esta ese nodo (lo usa el karaoke). */
+  reveal(el){
+    if(!this.on || this.anim || !el) return;
+    const flow=this.flow; if(!flow) return;
+    const fx=el.getBoundingClientRect().left - flow.getBoundingClientRect().left;
+    const col=Math.floor(fx/(this.pw+this.gap)+0.002);
+    const sp=Math.max(0, Math.min(this.spreads-1, Math.floor(col/this.ppp)));
+    if(sp!==this.sp){ this.sp=sp; this.apply(true); }
+  },
+
+  /* Toque sobre la hoja. La PALABRA manda: leyendo sin audio, tocar una palabra
+     del rincon tiene que abrir su significado, no pasar la pagina. Si no hay
+     palabra debajo, la esquina derecha avanza y la izquierda retrocede. */
+  _taps(pane){
+    if(!pane || pane._bkTaps) return; pane._bkTaps=true;
+    const zone=e=>{
+      const r=pane.getBoundingClientRect();
+      const x=(e.clientX-r.left)/r.width, y=(e.clientY-r.top)/r.height;
+      if(y<0.58) return 0;                       // solo la franja de abajo = esquina
+      if(x>0.74) return 1;
+      if(x<0.26) return -1;
+      return 0;
+    };
+    const lit=d=>{ const n=document.getElementById('bkNext'), p=document.getElementById('bkPrev');
+      if(n) n.classList.toggle('lit', d>0); if(p) p.classList.toggle('lit', d<0);
+      pane.style.cursor = d ? 'pointer' : ''; };
+    pane.addEventListener('click', e=>{
+      if(!BK.on) return;
+      if(e.target.closest('.w,button,a,input,select,figure')) return;
+      const d=zone(e); if(d>0) BK.next(); else if(d<0) BK.prev();
+    });
+    pane.addEventListener('mousemove', e=>{ if(BK.on) lit(zone(e)); });
+    pane.addEventListener('mouseleave', ()=>lit(0));
+  },
+
+  _swipe(el){
+    let x0=null;
+    el.addEventListener('touchstart',e=>{ x0=e.touches[0].clientX; },{passive:true});
+    el.addEventListener('touchend',e=>{
+      if(x0==null) return; const dx=e.changedTouches[0].clientX-x0; x0=null;
+      if(Math.abs(dx)>45){ dx<0 ? BK.next() : BK.prev(); } },{passive:true});
+  }
+};
+window.BK=BK;
+
 window.openReadChapter=(i)=>{ const c=CHAPTERS[i];
   if(c && chapterLocked(c.n)){ alert('🔒 '+examLockMsg(c.n)); return; }
   view.chap=i; view.act='read'; view.screen='act'; render(); };
@@ -1217,7 +1475,8 @@ window.RP={
       const spans=[...document.querySelectorAll('.reading .w[data-p="'+this.cur+'"]')];
       for(const sp of spans){ const st=parseFloat(sp.dataset.t); if(!isNaN(st)&&st<=local) hot=sp; }
       if(hot){ hot.classList.add('hot');
-        const r=hot.getBoundingClientRect(); if(r.top<120||r.bottom>innerHeight-60) hot.scrollIntoView({behavior:'smooth',block:'center'}); }
+        if(window.BK && BK.on){ BK.reveal(hot); }   // en modo libro la pagina pasa sola
+        else { const r=hot.getBoundingClientRect(); if(r.top<120||r.bottom>innerHeight-60) hot.scrollIntoView({behavior:'smooth',block:'center'}); } }
     }
     const pb=$('#rpPlayBtn'); if(pb) pb.innerHTML=this.playing?'⏸':'▶';
   },

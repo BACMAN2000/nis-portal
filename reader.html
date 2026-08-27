@@ -178,7 +178,7 @@
      mismos nodos y el diccionario y el karaoke del audio funcionan igual.
      Fuera del modo libro estas reglas no aplican y la lectura queda como estaba. */
   .bk-stage{position:relative; perspective:1800px; margin:14px 0 0}
-  .bk-view{position:relative; overflow:hidden; margin:0 auto; border-radius:12px; padding:26px 30px;
+  .bk-view{position:relative; overflow:hidden; margin:0 auto; border-radius:12px; padding:26px 30px 48px;
     background:linear-gradient(90deg,#fffdf6,#fffefb 12%,#fffefb 88%,#fffdf6);
     box-shadow:0 18px 40px -26px rgba(15,23,42,.55), inset 0 0 70px rgba(146,110,40,.05);
     border:1px solid #ece3cf}
@@ -205,13 +205,14 @@
   /* La esquina es solo la PISTA VISUAL. El toque lo resuelve el listener del pane,
      que deja pasar la palabra: leyendo sin audio, tocar una palabra del rincon debe
      abrir su significado, no pasar la hoja. */
-  .bk-corner{position:absolute; bottom:0; width:26%; height:42%; z-index:3; pointer-events:none;
+  .bk-corner{position:absolute; bottom:0; height:48px; width:34%; z-index:7; cursor:pointer;
+    display:flex; align-items:center; font-size:22px; color:#8a6d3b; opacity:.5; transition:opacity .15s, background .15s;
     transition:background .18s}
-  .bk-corner.next{right:0; border-radius:0 0 12px 0;
+  .bk-corner.next{right:0; border-radius:0 0 12px 0; justify-content:flex-end; padding-right:14px;
     background:linear-gradient(315deg,rgba(146,110,40,.16),rgba(146,110,40,0) 62%)}
-  .bk-corner.prev{left:0; border-radius:0 0 0 12px;
+  .bk-corner.prev{left:0; border-radius:0 0 0 12px; justify-content:flex-start; padding-left:14px;
     background:linear-gradient(45deg,rgba(146,110,40,.16),rgba(146,110,40,0) 62%)}
-  .bk-corner.lit{background-color:rgba(146,110,40,.10)}
+  .bk-corner:hover, .bk-corner.lit{opacity:1; background-color:rgba(146,110,40,.10)}
   .bk-corner.off{display:none}
   .bk-foot{display:flex; align-items:center; justify-content:center; gap:14px; margin-top:10px;
     font-size:13px; color:var(--slate); font-weight:600}
@@ -1267,9 +1268,11 @@ const BK = {
       '<div class="bk-leaf" id="bkLeaf"><div class="face front"><div class="clip"></div></div>'+
       '<div class="face back"><div class="clip"></div></div></div>'+
       '');
-    pane.insertAdjacentHTML('beforeend',
-      '<div class="bk-corner prev" id="bkPrev"></div>'+
-      '<div class="bk-corner next" id="bkNext"></div>');
+    view.insertAdjacentHTML('beforeend',
+      '<div class="bk-corner prev" id="bkPrev" title="Previous page">‹</div>'+
+      '<div class="bk-corner next" id="bkNext" title="Next page">›</div>');
+    document.getElementById('bkPrev').onclick=()=>BK.prev();
+    document.getElementById('bkNext').onclick=()=>BK.next();
     stage.insertAdjacentHTML('afterend',
       '<div class="bk-foot" id="bkFoot"><span class="pg" id="bkPg"></span></div>'+
       '<div class="bk-tip" id="bkTip">Tap the corner of the page to turn it — or use ← →. '+
@@ -1315,7 +1318,7 @@ const BK = {
     this.ph  = Math.max(380, Math.min(innerHeight-230, 720));
     this.pw  = Math.floor((avail - this.gap*(this.ppp-1))/this.ppp);
     const fw = this.pw*this.ppp + this.gap*(this.ppp-1);
-    view.style.width=(fw+padX)+'px'; view.style.height=(this.ph+52)+'px';
+    view.style.width=(fw+padX)+'px'; view.style.height=(this.ph+74)+'px';
     const pane=document.getElementById('bkPane');
     if(pane){ pane.style.width=fw+'px'; pane.style.height=this.ph+'px'; }
     view.classList.toggle('two', this.ppp===2);
