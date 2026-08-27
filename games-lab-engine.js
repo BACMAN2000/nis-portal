@@ -157,6 +157,11 @@ var GL = (function () {
     cleanup();
     var ss = document.querySelectorAll('.screen');
     for (var i = 0; i < ss.length; i++) ss[i].classList.toggle('on', ss[i].id === id);
+    // La carcasa de cada sitio necesita saber en qué pantalla estamos para poder
+    // recoger su cabecera mientras se juega (en portátiles el botón Next se iba
+    // fuera de la ventana). El motor solo publica el estado; qué se esconde lo
+    // decide el CSS de cada web.
+    document.body.setAttribute('data-screen', id);
     window.scrollTo(0, 0);
   }
   function browse() { renderChrome(); renderGrid(); show('s-browse'); }
