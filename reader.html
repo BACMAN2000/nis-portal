@@ -202,13 +202,16 @@
   .bk-leaf .face.back{transform:rotateY(180deg)}
   .bk-leaf .clip{position:absolute; inset:0; overflow:hidden}
   /* esquinas: se tocan para pasar la hoja */
-  .bk-corner{position:absolute; bottom:0; width:22%; height:38%; z-index:7; cursor:pointer;
+  /* La esquina es solo la PISTA VISUAL. El toque lo resuelve el listener del pane,
+     que deja pasar la palabra: leyendo sin audio, tocar una palabra del rincon debe
+     abrir su significado, no pasar la hoja. */
+  .bk-corner{position:absolute; bottom:0; width:26%; height:42%; z-index:3; pointer-events:none;
     transition:background .18s}
   .bk-corner.next{right:0; border-radius:0 0 12px 0;
     background:linear-gradient(315deg,rgba(146,110,40,.16),rgba(146,110,40,0) 62%)}
   .bk-corner.prev{left:0; border-radius:0 0 0 12px;
     background:linear-gradient(45deg,rgba(146,110,40,.16),rgba(146,110,40,0) 62%)}
-  .bk-corner:hover{background-color:rgba(146,110,40,.07)}
+  .bk-corner.lit{background-color:rgba(146,110,40,.10)}
   .bk-corner.off{display:none}
   .bk-foot{display:flex; align-items:center; justify-content:center; gap:14px; margin-top:10px;
     font-size:13px; color:var(--slate); font-weight:600}
@@ -1263,8 +1266,10 @@ const BK = {
     stage.insertAdjacentHTML('beforeend',
       '<div class="bk-leaf" id="bkLeaf"><div class="face front"><div class="clip"></div></div>'+
       '<div class="face back"><div class="clip"></div></div></div>'+
-      '<div class="bk-corner prev" id="bkPrev" title="Previous page"></div>'+
-      '<div class="bk-corner next" id="bkNext" title="Next page"></div>');
+      '');
+    pane.insertAdjacentHTML('beforeend',
+      '<div class="bk-corner prev" id="bkPrev"></div>'+
+      '<div class="bk-corner next" id="bkNext"></div>');
     stage.insertAdjacentHTML('afterend',
       '<div class="bk-foot" id="bkFoot"><span class="pg" id="bkPg"></span></div>'+
       '<div class="bk-tip" id="bkTip">Tap the corner of the page to turn it — or use ← →. '+
@@ -1272,8 +1277,7 @@ const BK = {
     panel.classList.add('bk-on');
     this.on=true; try{ localStorage.setItem('rdr_book','1'); }catch(e){}
     const b=document.getElementById('bkBtn'); if(b) b.textContent='\u{1F4DC} Back to scrolling';
-    document.getElementById('bkPrev').onclick=()=>BK.prev();
-    document.getElementById('bkNext').onclick=()=>BK.next();
+    this._taps(pane);
     this.sp=0; this.layout(); this.apply(false);
     if(!this._keys){ this._keys=e=>{ if(!BK.on) return;
         if(e.key==='ArrowRight'||e.key==='PageDown'){ e.preventDefault(); BK.next(); }
@@ -1395,6 +1399,31 @@ const BK = {
     const col=Math.floor(fx/(this.pw+this.gap)+0.002);
     const sp=Math.max(0, Math.min(this.spreads-1, Math.floor(col/this.ppp)));
     if(sp!==this.sp){ this.sp=sp; this.apply(true); }
+  },
+
+  /* Toque sobre la hoja. La PALABRA manda: leyendo sin audio, tocar una palabra
+     del rincon tiene que abrir su significado, no pasar la pagina. Si no hay
+     palabra debajo, la esquina derecha avanza y la izquierda retrocede. */
+  _taps(pane){
+    if(!pane || pane._bkTaps) return; pane._bkTaps=true;
+    const zone=e=>{
+      const r=pane.getBoundingClientRect();
+      const x=(e.clientX-r.left)/r.width, y=(e.clientY-r.top)/r.height;
+      if(y<0.58) return 0;                       // solo la franja de abajo = esquina
+      if(x>0.74) return 1;
+      if(x<0.26) return -1;
+      return 0;
+    };
+    const lit=d=>{ const n=document.getElementById('bkNext'), p=document.getElementById('bkPrev');
+      if(n) n.classList.toggle('lit', d>0); if(p) p.classList.toggle('lit', d<0);
+      pane.style.cursor = d ? 'pointer' : ''; };
+    pane.addEventListener('click', e=>{
+      if(!BK.on) return;
+      if(e.target.closest('.w,button,a,input,select,figure')) return;
+      const d=zone(e); if(d>0) BK.next(); else if(d<0) BK.prev();
+    });
+    pane.addEventListener('mousemove', e=>{ if(BK.on) lit(zone(e)); });
+    pane.addEventListener('mouseleave', ()=>lit(0));
   },
 
   _swipe(el){
