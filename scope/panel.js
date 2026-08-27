@@ -27,7 +27,7 @@
   .sq-g{background:var(--surface2,#eef2f7);border:1.5px solid transparent;border-radius:999px;
     padding:.35rem .9rem;cursor:pointer;font-weight:700;color:inherit;font:inherit}
   .sq-g.on{background:var(--accent,#d97d0d);color:#fff;border-color:var(--accent,#d97d0d)}
-  .sq-g.prim{border-color:var(--accent,#d97d0d)}
+  .sq-g.prim{border-color:var(--accent,#d97d0d)}   /* los de primaria, con material propio */
   .sq-ficha{display:flex;flex-wrap:wrap;gap:.5rem 1.6rem;margin:.2rem 0 .9rem}
   .sq-ficha div{min-width:9rem}
   .sq-ficha b{display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;
@@ -69,7 +69,11 @@
   .sq-cal th,.sq-cal td{text-align:left;padding:.4rem .6rem;border-bottom:1px solid var(--line,#dde3ea);
     vertical-align:top}
   .sq-cal th{font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;opacity:.6}
-  .sq-cal tr.hito{background:#fdf6e8}`;
+  .sq-cal tr.hito{background:#fdf6e8}
+  .sq-cuantas{margin-left:auto;font-size:.78rem;font-weight:700;opacity:.6}
+  .sq-curso{background:var(--surface2,#f4f7fa);border-radius:10px;padding:.5rem .8rem;
+    margin:.2rem 0 .6rem}
+  .sq-curso a{font-weight:800;text-decoration:none;border-bottom:2px solid currentColor}`;
 
   /* ---------- carga ---------- */
   async function carga() {
@@ -163,9 +167,19 @@
             </div>`;
           }).join('')}
         </div>`).join('');
+      // que unidades del curso se dan para este tema: es lo que el
+      // profesor necesita saber para planificar la semana
+      const dc = (au && au.delCurso) || [];
+      const nivel = a ? a.nivel : '';
+      const cuales = dc.length ? `<p class="sq-det sq-curso">
+        En clase se dan las unidades
+        ${dc.map(n => `<a href="nis-fun/engine/index.html?level=${esc(nivel)}&unit=${n}"
+           target="_blank">${n}</a>`).join(', ')}
+        de Fun for Nordic ${esc(nivel)}.</p>` : '';
       return `<details class="sq-u">
-        <summary><span class="sq-n">${u.n}</span> ${esc(u.tema)}</summary>
-        <div class="sq-cuerpo">${cuerpo}</div></details>`;
+        <summary><span class="sq-n">${u.n}</span> ${esc(u.tema)}
+          ${dc.length ? `<span class="sq-cuantas">${dc.length} unidades</span>` : ''}</summary>
+        <div class="sq-cuerpo">${cuales}${cuerpo}</div></details>`;
     }).join('');
   }
 
@@ -184,7 +198,7 @@
   function pinta() {
     const main = document.getElementById('main');
     const g = gradoActivo;
-    const primaria = new Set(['G2', 'G3', 'G4', 'G5']);
+    const primaria = new Set(['G1', 'G2', 'G3', 'G4', 'G5']);
     const botones = (DATOS.pathway || []).map(p =>
       `<button class="sq-g${p.grado === g ? ' on' : ''}${primaria.has(p.grado) ? ' prim' : ''}"
         data-g="${p.grado}" type="button">${p.grado}</button>`).join('');
@@ -222,7 +236,7 @@
       return;
     }
     // se abre en el primer grado de primaria, que es por donde se empieza
-    if (!gradoActivo) gradoActivo = grado('G2') ? 'G2' : (DATOS.pathway[0] || {}).grado;
+    if (!gradoActivo) gradoActivo = grado('G1') ? 'G1' : (DATOS.pathway[0] || {}).grado;
     pinta();
   };
 })();
