@@ -353,6 +353,7 @@
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js"></script>
+<script src="readers-levels.js?v=1"></script>
 <script>
 /* Nivel del reader (?level=a2|b1|b2|c1|c2) → carga su archivo de datos.
    Sin nivel: pantalla de selección. c2 = "Read the original" (usa los
@@ -2213,6 +2214,9 @@ function extraC2(){
 /* ============================================================
    SELECTOR DE NIVEL — pantalla inicial cuando no hay ?level=
    ============================================================ */
+/* Los niveles que este libro ofrece de verdad — mismo criterio que en
+ * reader.html. readers-levels.js lo genera _check_readers_audio.py mirando
+ * el disco: un nivel entra solo si tiene su texto y todo su audio. */
 const CHOOSER_LEVELS=[
   ['a2','🐣','A2','Elementary','Short chapters, easy words, slower audio. Start here if English still feels new.'],
   ['b1','🏝️','B1','Intermediate','The standard 9th-grade version: clear narrative English with full audio.'],
@@ -2220,19 +2224,26 @@ const CHOOSER_LEVELS=[
   ['c1','🎓','C1','Advanced','A literary retelling: complex sentences, inference questions, CAE-style writing.'],
   ['c2','🏆','C2','Proficiency','The final challenge: read Agatha Christie’s original novel, with a reading plan and analysis work.']
 ];
+const NIVELES_DE_ESTE_LIBRO = (function(){
+  var id = (typeof RDR_ID !== 'undefined') ? RDR_ID : 'attwn';
+  var hay = (window.READER_LEVELS || {})[id];
+  if (!hay || !hay.length) return CHOOSER_LEVELS;
+  return CHOOSER_LEVELS.filter(function(l){ return hay.indexOf(l[0]) >= 0; });
+})();
+
 function renderChooser(){
   backEl.style.display='none'; crumbEl.innerHTML='';
   stage.innerHTML=`
     <div class="plate" style="margin-bottom:18px">
       <h1 style="color:#fde68a;margin:0 0 4px">🏝️ And Then There Were None</h1>
-      <div class="rhyme">Agatha Christie · the same mystery at five levels — same island, same suspects, your English.</div>
+      <div class="rhyme">Agatha Christie · the same mystery at ${NIVELES_DE_ESTE_LIBRO.length} levels — same island, same suspects, your English.</div>
       <img class="cast-strip" src="attwn-img/cast.jpg" alt="The guests of Soldier Island (1945 film)" onerror="this.remove()">
       <div class="row-s" style="margin-top:6px">${CHAPTERS.map(c=>`<div class="soldier">${soldierSVG()}</div>`).join('')}</div>
       <div class="img-credit" style="color:#7f9cc4">${IMG_CREDIT}</div>
     </div>
     <h2 style="font-size:16px;color:var(--blue-d);margin:0 0 10px">Choose your level and start:</h2>
     <div class="grid cols-2">
-      ${CHOOSER_LEVELS.map(l=>`
+      ${NIVELES_DE_ESTE_LIBRO.map(l=>`
         <div class="card" style="flex-direction:row;text-align:left;gap:14px;align-items:center${l[0]==='c2'?';border-top:4px solid #b8934a':''}" onclick="location.href='${_lvlLink(l[0])}'">
           <div class="ico" style="font-size:2.3rem">${l[1]}</div>
           <div><h2 style="margin:0">${l[2]} · ${l[3]}</h2><div class="desc">${l[4]}</div></div>

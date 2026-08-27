@@ -4,12 +4,11 @@ puede ofrecer de verdad.
 
 Regla del proyecto: lo que esta en vivo tiene que estar entero. No puede
 haber un nivel que el alumno elige y se encuentra vacio o mudo — que es lo
-que pasaba con el read-along de Treasure Island (solo sonaba en A2) y con
-el C2 de los libros que no traen el texto original.
+que pasaba con el read-along de Treasure Island, que solo sonaba en A2.
 
 Un nivel se considera listo cuando tiene:
   a2/b1/b2/c1   su <libro>-data-<nivel>.js  Y todo el audio del read-along
-  c2            su <libro>-original.js (ese nivel es leer el original)
+  c2            siempre — ver abajo
 
 Con --escribe deja el resultado en readers-levels.js, que es lo que el
 lector usa para pintar el selector: asi no se ofrece nunca un nivel que no
@@ -83,22 +82,34 @@ def completo(libro, nivel):
 
 
 def niveles_reales():
-    """Que puede ofrecer cada libro hoy."""
+    """Que puede ofrecer cada libro hoy.
+
+    El C2 va aparte y SIEMPRE entra. No es un nivel de lectura como los
+    otros: es la pantalla de plan de lectura del original, y esta escrita
+    para funcionar sin el texto dentro de la app — la linea del "texto
+    incluido" es condicional y c2Original() tolera que no haya nada. En
+    Earnest, sin -original.js, esa pantalla renderiza 4.500 caracteres de
+    plan perfectamente utiles.
+
+    Solo princepauper y treasureisland traen ademas el texto integrado; en
+    los demas el plan remite al original, que es de dominio publico. En
+    ATTWN eso es deliberado: Christie sigue con derechos."""
     out = {}
     for libro in LIBROS:
         ls = [n for n in NIVELES if completo(libro, n)]
-        if os.path.exists(os.path.join(AQUI, "%s-original.js" % libro)):
-            ls.append("c2")
+        ls.append("c2")
         out[libro] = ls
     return out
 
 
 CABECERA = """/* Que niveles ofrece cada reader — generado por _check_readers_audio.py.
  *
- * No se escribe a mano: un nivel solo entra aqui si tiene su texto Y todo
- * el audio del read-along. Asi el alumno no puede elegir un nivel que
- * luego esta vacio o mudo, que es lo que pasaba con el B2 de Treasure
- * Island y con el C2 de los libros que no traen el texto original.
+ * No se escribe a mano: a2/b1/b2/c1 entran solo si tienen su texto Y todo
+ * el audio del read-along, para que el alumno no pueda elegir un nivel que
+ * luego esta vacio o mudo — como pasaba con el B2 de Treasure Island.
+ *
+ * El C2 entra siempre: no es un nivel de lectura sino la pantalla de plan
+ * del original, escrita para funcionar sin el texto dentro de la app.
  */
 window.READER_LEVELS = {
 """
