@@ -1774,9 +1774,21 @@ function actListen(c){
     if(_aud){ if(_aud.paused){ _aud.playbackRate=_rate(); _aud.play().catch(()=>{}); } else { _aud.pause(); } _lisPaint(); return; }
     const full=new Audio(AUD_BASE+'ch'+c.n+'.mp3'); full.preload='metadata'; full.playbackRate=_rate();
     full.ontimeupdate=_lisPaint; full.onended=_lisPaint; full.onloadedmetadata=_lisPaint; full.onplay=_lisPaint; full.onpause=_lisPaint;
-    full.onerror=()=>{ _aud=null; _ttsOn=true; const h=$('#rpHint'); if(h) h.textContent='⚠️ Recording not available — using the browser voice.';
+    full.onerror=()=>{ _aud=null;
+      /* Repliegue a la voz del navegador SOLO si hay una inglesa instalada.
+         En los equipos del colegio las unicas voces son castellanas, y leer
+         a Stevenson con acento espanol suena peor que no leerlo: el alumno
+         cree que la app esta rota. Sin voz inglesa se dice lo que pasa. */
+      const ingl=(()=>{ try{ return speechSynthesis.getVoices().filter(v=>/^en/i.test(v.lang)); }catch(e){ return []; } })();
+      const h=$('#rpHint');
+      if(!ingl.length){ _ttsOn=false;
+        if(h) h.textContent='⚠️ Audio not available right now — check your connection and try again.';
+        const b=$('#rpPlayBtn'); if(b) b.innerHTML='▶'; return; }
+      _ttsOn=true;
+      if(h) h.textContent='⚠️ Recording not available — using the browser voice.';
       try{ speechSynthesis.cancel();  // repliegue TTS: párrafo a párrafo
-        paras.forEach(p=>{ const u=new SpeechSynthesisUtterance(p); u.lang='en-GB'; u.rate=.95; speechSynthesis.speak(u); });
+        paras.forEach(p=>{ const u=new SpeechSynthesisUtterance(p); u.lang='en-GB'; u.rate=.95;
+          u.voice=ingl.find(v=>/en[-_]GB/i.test(v.lang))||ingl[0]; speechSynthesis.speak(u); });
       }catch(e){} const b=$('#rpPlayBtn'); if(b) b.innerHTML='⏸'; };
     _aud=full; full.play().then(_lisPaint).catch(()=>full.onerror());
   };
