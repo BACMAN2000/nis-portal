@@ -178,7 +178,7 @@
      mismos nodos y el diccionario y el karaoke del audio funcionan igual.
      Fuera del modo libro estas reglas no aplican y la lectura queda como estaba. */
   .bk-stage{position:relative; perspective:1800px; margin:14px 0 0}
-  .bk-view{position:relative; overflow:hidden; margin:0 auto; border-radius:12px; padding:26px 30px 48px;
+  .bk-view{position:relative; overflow:hidden; margin:0 auto; border-radius:12px; padding:48px 30px;
     background:linear-gradient(90deg,#fffdf6,#fffefb 12%,#fffefb 88%,#fffdf6);
     box-shadow:0 18px 40px -26px rgba(15,23,42,.55), inset 0 0 70px rgba(146,110,40,.05);
     border:1px solid #ece3cf}
@@ -213,7 +213,9 @@
   .bk-corner.prev{left:0; border-radius:0 0 0 12px; justify-content:flex-start; padding-left:14px;
     background:linear-gradient(45deg,rgba(146,110,40,.16),rgba(146,110,40,0) 62%)}
   .bk-corner:hover, .bk-corner.lit{opacity:1; background-color:rgba(146,110,40,.10)}
+  .bk-corner.top{top:0; bottom:auto}
   .bk-corner.off{display:none}
+  .bk-leaf.grab{transition:none !important}
   .bk-foot{display:flex; align-items:center; justify-content:center; gap:14px; margin-top:10px;
     font-size:13px; color:var(--slate); font-weight:600}
   .bk-foot .pg{background:#fff; border:1px solid var(--line); border-radius:999px; padding:4px 12px}
@@ -1234,11 +1236,12 @@ const BK = {
       '<div class="bk-leaf" id="bkLeaf"><div class="face front"><div class="clip"></div></div>'+
       '<div class="face back"><div class="clip"></div></div></div>'+
       '');
+    // cuatro esquinas: arriba y abajo, a cada lado. Se tocan para pasar la hoja
+    // y se arrastran para llevarla con el dedo.
     view.insertAdjacentHTML('beforeend',
-      '<div class="bk-corner prev" id="bkPrev" title="Previous page">‹</div>'+
-      '<div class="bk-corner next" id="bkNext" title="Next page">›</div>');
-    document.getElementById('bkPrev').onclick=()=>BK.prev();
-    document.getElementById('bkNext').onclick=()=>BK.next();
+      '<div class="bk-corner prev top">‹</div><div class="bk-corner next top">›</div>'+
+      '<div class="bk-corner prev">‹</div><div class="bk-corner next">›</div>');
+    this._grab(view);
     stage.insertAdjacentHTML('afterend',
       '<div class="bk-foot" id="bkFoot"><span class="pg" id="bkPg"></span></div>'+
       '<div class="bk-tip" id="bkTip">Tap the corner of the page to turn it — or use ← →. '+
@@ -1311,9 +1314,8 @@ const BK = {
     const pg=document.getElementById('bkPg');
     if(pg){ const a=this.sp*this.ppp+1, b=Math.min(this.pages, a+this.ppp-1);
       pg.textContent = (b>a ? 'Pages '+a+'–'+b : 'Page '+a) + ' of ' + this.pages; }
-    const pv=document.getElementById('bkPrev'), nx=document.getElementById('bkNext');
-    if(pv) pv.classList.toggle('off', this.sp<=0);
-    if(nx) nx.classList.toggle('off', this.sp>=this.spreads-1);
+    document.querySelectorAll('.bk-corner.prev').forEach(el=>el.classList.toggle('off', this.sp<=0));
+    document.querySelectorAll('.bk-corner.next').forEach(el=>el.classList.toggle('off', this.sp>=this.spreads-1));
   },
 
   _face(face, col){
@@ -1328,9 +1330,11 @@ const BK = {
   next(){ if(!this.anim && this.sp < this.spreads-1) this._turn(1); },
   prev(){ if(!this.anim && this.sp > 0) this._turn(-1); },
 
-  _turn(dir){
+  /* Monta la hoja con sus dos caras y la deja sin girar, lista para moverse.
+     Es el paso comun del toque (gira sola) y del arrastre (sigue al dedo). */
+  _prepare(dir){
     const leaf=document.getElementById('bkLeaf'), view=document.getElementById('bkView');
-    if(!leaf||!view){ this.sp+=dir; this.apply(true); return; }
+    if(!leaf||!view) return null;
     const cs=getComputedStyle(view), padL=parseFloat(cs.paddingLeft)||0, padT=parseFloat(cs.paddingTop)||0;
     const front=leaf.querySelector('.face.front'), back=leaf.querySelector('.face.back');
     const base=view.offsetLeft+padL;
@@ -1348,16 +1352,100 @@ const BK = {
     leaf.style.width=this.pw+'px'; leaf.style.height=this.ph+'px';
     leaf.style.top=(view.offsetTop+padT)+'px';
     leaf.style.transition='none'; leaf.style.transform='rotateY(0deg)';
-    leaf.classList.add('on'); void leaf.offsetWidth;
-    this.anim=true;
-    leaf.style.transition='transform .55s cubic-bezier(.28,.06,.2,1)';
-    leaf.style.transform='rotateY('+(dir>0?-180:180)+'deg)';
-    // a mitad de giro la hoja tapa la otra pagina: ese es el momento de mover el texto
-    setTimeout(()=>{ this.sp+=dir; this.apply(false); }, 260);
-    setTimeout(()=>{ leaf.classList.remove('on'); leaf.style.transition='none';
-      leaf.style.transform='rotateY(0deg)';
+    leaf.classList.add('on'); leaf.classList.add('grab'); void leaf.offsetWidth;
+    this.turn={dir:dir, base:this.sp, past:false};
+    return leaf;
+  },
+
+  /* Angulo en curso, lo va marcando el dedo. Al cruzar los 90 grados la hoja
+     tapa la otra pagina: ese es el momento exacto de cambiar el texto de debajo,
+     igual que en un libro de verdad. */
+  _angle(a){
+    const leaf=document.getElementById('bkLeaf'); if(!leaf||!this.turn) return;
+    leaf.style.transform='rotateY('+a+'deg)';
+    const past=Math.abs(a)>90;
+    if(past!==this.turn.past){
+      this.turn.past=past;
+      this.sp=this.turn.base + (past ? this.turn.dir : 0);
+      this.apply(false);
+    }
+  },
+
+  /* Suelta la hoja: la termina de pasar o la devuelve a su sitio. */
+  _finish(commit){
+    const leaf=document.getElementById('bkLeaf'); if(!leaf||!this.turn) return;
+    const t=this.turn, end = commit ? (t.dir>0?-180:180) : 0;
+    this.anim=true; leaf.classList.remove('grab');
+    leaf.style.transition='transform .42s cubic-bezier(.28,.06,.2,1)';
+    leaf.style.transform='rotateY('+end+'deg)';
+    if(commit) this._sfx();
+    setTimeout(()=>{ this.sp=t.base + (commit ? t.dir : 0); this.apply(false); }, 200);
+    setTimeout(()=>{
+      leaf.classList.remove('on'); leaf.style.transition='none'; leaf.style.transform='rotateY(0deg)';
       leaf.querySelectorAll('.clip').forEach(c=>c.innerHTML='');
-      this.anim=false; }, 580);
+      this.anim=false; this.turn=null; }, 450);
+  },
+
+  _turn(dir){
+    if(!this._prepare(dir)){ this.sp+=dir; this.apply(true); return; }
+    this._finish(true);
+  },
+
+  /* Arrastrar la esquina: la hoja sigue al dedo y se queda donde la sueltes.
+     Un toque limpio (sin mover) la pasa entera. */
+  _grab(view){
+    if(!view || view._bkGrab) return; view._bkGrab=true;
+    let st=null;
+    const dirOf=e=>{ const el=e.target.closest && e.target.closest('.bk-corner');
+      return el ? (el.classList.contains('next') ? 1 : -1) : 0; };
+    view.addEventListener('pointerdown', e=>{
+      if(!BK.on || BK.anim) return;
+      const dir=dirOf(e); if(!dir) return;
+      if(dir>0 && BK.sp>=BK.spreads-1) return;
+      if(dir<0 && BK.sp<=0) return;
+      if(!BK._prepare(dir)) return;
+      st={dir:dir, x0:e.clientX, t0:Date.now(), a:0, moved:false};
+      try{ view.setPointerCapture(e.pointerId); }catch(_){}
+      e.preventDefault();
+    });
+    view.addEventListener('pointermove', e=>{
+      if(!st) return;
+      const dx=e.clientX-st.x0;
+      if(Math.abs(dx)>3) st.moved=true;
+      let a=(dx/Math.max(140,BK.pw))*180;
+      a = st.dir>0 ? Math.max(-180, Math.min(0, a)) : Math.min(180, Math.max(0, a));
+      st.a=a; BK._angle(a);
+    });
+    const soltar=()=>{
+      if(!st) return;
+      const dt=Date.now()-st.t0, a=st.a;
+      // sin mover = toque, pasa la hoja. Arrastrando, manda donde la soltaste,
+      // salvo que sea un golpe rapido: entonces cuenta la intencion.
+      const commit = !st.moved ? true : (Math.abs(a)>90 || (dt<280 && Math.abs(a)>16));
+      st=null; BK._finish(commit);
+    };
+    view.addEventListener('pointerup', soltar);
+    view.addEventListener('pointercancel', soltar);
+  },
+
+  /* Sonido de hoja: un golpe de ruido corto y filtrado, sintetizado al vuelo.
+     No hace falta ningun archivo y suena sin conexion. Callado mientras narra
+     el audio, para no pisar la voz. */
+  _sfx(){
+    try{
+      if(window.RP && RP.playing) return;
+      const AC=window.AudioContext||window.webkitAudioContext; if(!AC) return;
+      this._ac = this._ac || new AC();
+      const ac=this._ac; if(ac.state==='suspended') ac.resume();
+      const dur=.26, n=Math.floor(ac.sampleRate*dur);
+      const buf=ac.createBuffer(1,n,ac.sampleRate), d=buf.getChannelData(0);
+      for(let i=0;i<n;i++){ const t=i/n;
+        d[i]=(Math.random()*2-1)*Math.pow(1-t,2.4)*(0.2+0.8*Math.sin(Math.PI*t)); }
+      const src=ac.createBufferSource(); src.buffer=buf;
+      const f=ac.createBiquadFilter(); f.type='bandpass'; f.frequency.value=1800; f.Q.value=.6;
+      const g=ac.createGain(); g.gain.value=.085;
+      src.connect(f); f.connect(g); g.connect(ac.destination); src.start();
+    }catch(e){}
   },
 
   /* Lleva a la vista la pagina donde esta ese nodo (lo usa el karaoke). */
@@ -1383,8 +1471,9 @@ const BK = {
       if(x<0.26) return -1;
       return 0;
     };
-    const lit=d=>{ const n=document.getElementById('bkNext'), p=document.getElementById('bkPrev');
-      if(n) n.classList.toggle('lit', d>0); if(p) p.classList.toggle('lit', d<0);
+    const lit=d=>{
+      document.querySelectorAll('.bk-corner.next').forEach(el=>el.classList.toggle('lit', d>0));
+      document.querySelectorAll('.bk-corner.prev').forEach(el=>el.classList.toggle('lit', d<0));
       pane.style.cursor = d ? 'pointer' : ''; };
     pane.addEventListener('click', e=>{
       if(!BK.on) return;
@@ -1397,7 +1486,8 @@ const BK = {
 
   _swipe(el){
     let x0=null;
-    el.addEventListener('touchstart',e=>{ x0=e.touches[0].clientX; },{passive:true});
+    el.addEventListener('touchstart',e=>{                  // si empieza en la esquina, manda el arrastre
+      x0 = (e.target.closest && e.target.closest('.bk-corner')) ? null : e.touches[0].clientX; },{passive:true});
     el.addEventListener('touchend',e=>{
       if(x0==null) return; const dx=e.changedTouches[0].clientX-x0; x0=null;
       if(Math.abs(dx)>45){ dx<0 ? BK.next() : BK.prev(); } },{passive:true});
