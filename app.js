@@ -1546,6 +1546,12 @@ async function readerControlPanel(){
     return {open, own, extra, from, until, all:open===RDR_LEVELS.length, none:open===0};
   };
   const bookTabs=books.map(id=>`<button class="btn sm ${id===book?'':'ghost'}" onclick="window._setCtlBook('${id}')">${READER_META[id].icon} ${esc(READER_META[id].short)}</button>`).join(' ');
+  // Los que no lee ningun salon tuyo se ensenan igual, apagados: si no,
+  // parece que el reader no existe y se acaba buscando donde no esta.
+  const sinAsignar=_RDR_IDS.filter(id=>!books.includes(id));
+  const avisoLibros=sinAsignar.length?`<p class="muted" style="margin:6px 0 0;font-size:.85rem">
+    Sin asignar a tus salones: ${sinAsignar.map(id=>`${READER_META[id].icon} ${esc(READER_META[id].short)}`).join(' · ')}.
+    Se asignan en <b>📚 Library → Qué lee cada salón</b>; hasta entonces no aparecen aquí.</p>`:'';
   const head=`<th style="min-width:120px">Capítulo</th>`+cols.map(c=>`<th style="text-align:center">${esc(c.label)}${c.n?`<div class="muted" style="font-weight:400;font-size:.7rem">${c.n} alumnos</div>`:''}</th>`).join('')+`<th></th>`;
   const body=Array.from({length:meta.chapters},(_,i)=>{
     const ch=i+1;
@@ -1566,12 +1572,12 @@ async function readerControlPanel(){
   $('#main').innerHTML=`<h1>📖 Controles de lectura</h1>${_readerTabs()}
     <p class="muted" style="margin-top:-6px">Abre el control de un capítulo para un salón: <b>una celda vale por los cuatro niveles</b> (cada alumno rinde en el suyo).
       Mientras el control está abierto, ese capítulo <b>no se puede leer</b> para esos alumnos. Un salón manda sobre su grado, y el grado sobre “Todos”. Año <b>${SCHOOL_YEAR_NOW}</b>.</p>
-    <div class="row" style="gap:8px;margin:0 0 12px;align-items:center">${bookTabs}
+    <div class="row" style="gap:8px;margin:0 0 4px;align-items:center">${bookTabs}
       <span style="margin-left:auto;font-size:12.5px;color:#475569">Cerrar automáticamente a las
         <input type="time" value="${esc(examCtl.until||'')}" onchange="window._setCtlUntil(this.value)"
                style="font-family:inherit;font-size:13px;padding:5px 7px;border:1.5px solid var(--line);border-radius:8px">
         ${examCtl.until?`<button class="btn sm ghost" style="padding:3px 9px;font-size:.72rem" onclick="window._setCtlUntil('')">sin hora</button>`:''}
-      </span></div>
+      </span></div>${avisoLibros}
     ${examCtl.until?`<div class="note info" style="margin:0 0 12px">🕒 Lo que abras ahora se cerrará solo a las <b>${esc(examCtl.until)}</b> y la lectura volverá sin que tengas que acordarte. Deja el campo vacío para abrir sin hora de cierre.</div>`:''}
     <div class="card" style="padding:0;overflow-x:auto"><table>
       <thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>

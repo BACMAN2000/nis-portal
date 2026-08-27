@@ -79,12 +79,12 @@
   async function carga() {
     if (DATOS) return true;
     try {
-      const r = await fetch('scope/scope-2026.json?v=1');
+      const r = await fetch('scope/scope-2026.json', {cache: 'no-cache'});
       if (!r.ok) return false;
       DATOS = await r.json();
     } catch (e) { return false; }
     try {
-      const a = await fetch('scope/auditoria-primaria.json?v=1');
+      const a = await fetch('scope/auditoria-primaria.json', {cache: 'no-cache'});
       if (a.ok) AUDIT = await a.json();
     } catch (e) { AUDIT = null; }
     return true;
