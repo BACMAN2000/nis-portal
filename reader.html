@@ -360,6 +360,7 @@
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js"></script>
+<script src="readers-levels.js?v=1"></script>
 <script>
 /* Motor GENÉRICO de readers: reader.html?book=<id>&level=a2|b1|b2|c1|c2.
    Textos y ejercicios en <book>-data-<lvl>.js; secciones propias del libro
@@ -379,6 +380,16 @@ window.ATTWN_CHOOSER = !_attwnRaw;
 window.ATTWN_C2 = (_attwnRaw==='c2');
 var ATTWN_LVL = window.ATTWN_C2 ? 'c1' : _attwnRaw;
 if(['a2','b1','b2','c1'].indexOf(ATTWN_LVL)<0) ATTWN_LVL='b1';
+// Y si ese nivel no existe para ESTE libro, se cae al primero que si —
+// por el selector ya no se puede llegar, pero por la URL si, y la pagina
+// se quedaba en blanco al pedir un -data- que no esta.
+(function(){
+  var hay = (window.READER_LEVELS||{})[RDR_ID];
+  if (hay && hay.length && hay.indexOf(ATTWN_LVL) < 0){
+    var alt = hay.filter(function(x){ return x !== 'c2'; });
+    ATTWN_LVL = alt.length ? (alt.indexOf('b1')>=0 ? 'b1' : alt[0]) : 'b1';
+  }
+})();
 document.write('<script src="'+RDR_ID+'-data-'+ATTWN_LVL+'.js?v=1"><\/script>');
 document.write('<script src="'+RDR_ID+'-extras.js?v=1"><\/script>');
 if(window.ATTWN_C2) document.write('<script src="'+RDR_ID+'-original.js?v=1" onerror="window.READER_ORIGINAL=null"><\/script>');
@@ -2020,23 +2031,36 @@ const CHOOSER_LEVELS=[
   ['c1','🎓','C1','Advanced','A literary retelling: complex sentences, inference questions, CAE-style writing.'],
   ['c2','🏆','C2','Proficiency','The final challenge: read the original by '+RDR_BOOKS[RDR_ID].by+' — free, with a reading plan and analysis work.']
 ];
+/* Los niveles que este libro ofrece de verdad.
+ *
+ * readers-levels.js lo genera _check_readers_audio.py mirando el disco: un
+ * nivel solo entra si tiene su texto y todo el audio del read-along. Antes
+ * se ofrecian los cinco a todos los libros y el alumno podia elegir uno
+ * vacio — el B2 de Treasure Island — o mudo. Si el fichero no esta, se
+ * ofrecen todos, que es como estaba antes. */
+const NIVELES_DE_ESTE_LIBRO = (function(){
+  const hay = (window.READER_LEVELS || {})[RDR_ID];
+  if (!hay || !hay.length) return CHOOSER_LEVELS;
+  return CHOOSER_LEVELS.filter(l => hay.includes(l[0]));
+})();
+
 function renderChooser(){
   backEl.style.display='none'; crumbEl.innerHTML='';
   stage.innerHTML=`
     <div class="plate" style="margin-bottom:18px">
       <h1 style="color:#fde68a;margin:0 0 4px">${THEME.emoji} ${BOOK.title}</h1>
-      <div class="rhyme">${BOOK.by} · the same story at five levels — your English chooses the challenge.</div>
+      <div class="rhyme">${BOOK.by} · the same story at ${NIVELES_DE_ESTE_LIBRO.length} levels — your English chooses the challenge.</div>
       <div class="row-s" style="margin-top:6px">${CHAPTERS.map(c=>`<div class="soldier">${soldierSVG()}</div>`).join('')}</div>
     </div>
     <h2 style="font-size:16px;color:var(--blue-d);margin:0 0 10px">Choose your level and start:</h2>
     <div class="grid cols-2">
-      ${CHOOSER_LEVELS.map(l=>`
+      ${NIVELES_DE_ESTE_LIBRO.map(l=>`
         <div class="card" style="flex-direction:row;text-align:left;gap:14px;align-items:center${l[0]==='c2'?';border-top:4px solid #b8934a':''}" onclick="location.href='${_lvlLink(l[0])}'">
           <div class="ico" style="font-size:2.3rem">${l[1]}</div>
           <div><h2 style="margin:0">${l[2]} · ${l[3]}</h2><div class="desc">${l[4]}</div></div>
         </div>`).join('')}
     </div>
-    <p class="muted" style="margin-top:14px;font-size:12.5px">💡 Not sure? Start at <b>B1</b>. You can change level at any time — your progress is saved separately at each level.</p>`;
+    <p class="muted" style="margin-top:14px;font-size:12.5px">💡 Not sure? Start at <b>${(NIVELES_DE_ESTE_LIBRO.find(l=>l[0]==='b1')||NIVELES_DE_ESTE_LIBRO[0])[2]}</b>. You can change level at any time — your progress is saved separately at each level.</p>`;
 }
 
 /* ============================================================
