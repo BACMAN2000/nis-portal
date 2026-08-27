@@ -412,6 +412,7 @@ async function renderAdmin(tab='users'){
   if(tab==='readers') return readerStatsPanel();
   if(tab==='funnordic') return funNordicPanel();
   if(tab==='scope') return scopePanel();
+  if(tab==='littlereaders') return littleReadersPanel();
   if(tab==='teachers') return adminTeachers();
   if(tab==='honesty') return antiCheatPanel();
   if(tab==='mocks') return adminMocks();
@@ -1717,6 +1718,59 @@ async function readerStatsPanel(detailId){
 
 
 /* ---------------------------------------------------------------
+   Nordic Little Readers — los cuentos de primaria.
+   Los readers del portal empiezan en A2 y no sirven de G1 a G4.
+   Estos son cuentos propios de Pre-A1/A1 con los personajes del
+   curso; viven en nis-fun/readers y aqui solo se listan.
+----------------------------------------------------------------- */
+async function littleReadersPanel(){
+  const main=$('#main');
+  main.innerHTML='<div class="card"><p class="muted">Cargando los cuentos…</p></div>';
+  let libros=[];
+  try{
+    const r=await fetch('nis-fun/readers/data/index.json',{cache:'no-cache'});
+    if(r.ok) libros=(await r.json()).libros||[];
+  }catch(e){}
+  if(!libros.length){
+    main.innerHTML=`<div class="card"><h1>🧒 Nordic Little Readers</h1>
+      <p class="err">No pude leer la lista de cuentos.</p></div>`;
+    return;
+  }
+  const porGrado={};
+  libros.forEach(l=>(porGrado[l.grado]=porGrado[l.grado]||[]).push(l));
+  const bloques=Object.keys(porGrado).sort().map(g=>`
+    <h2 style="font-size:15px;color:var(--blue-d);margin:20px 0 8px">${esc(g)} · ${esc(porGrado[g][0].nivel)}</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px">
+      ${porGrado[g].map(l=>`
+        <a href="nis-fun/readers/?id=${esc(l.id)}" target="_blank"
+           style="text-decoration:none;color:inherit;border:1px solid var(--line);border-radius:14px;
+                  overflow:hidden;background:#fff;display:block">
+          <img src="nis-fun/readers/${esc(l.portada)}" alt=""
+               style="width:100%;aspect-ratio:16/10;object-fit:cover;display:block"
+               onerror="this.style.display='none'">
+          <div style="padding:10px 12px 12px">
+            <b style="font-size:15px">${esc(l.titulo)}</b>
+            <div class="muted" style="font-size:.85rem">${esc(l.objetivo)}</div>
+            <div style="font-size:.78rem;font-weight:700;color:var(--blue-d);margin-top:5px">
+              ${l.paginas} páginas</div>
+          </div></a>`).join('')}
+    </div>`).join('');
+
+  main.innerHTML=`<div class="card">
+    <h1>🧒 Nordic Little Readers</h1>
+    <p class="muted">Cuentos de Pre-A1 y A1 para primaria, con los personajes de Fun for Nordic.
+      Cada uno son ocho páginas con dibujo y audio, y una actividad al final.
+      Los readers de <b>📖 Library</b> (Tom Sawyer, Treasure Island…) empiezan en A2 y
+      son para los grados de arriba.</p>
+    ${bloques}
+    <p class="muted" style="margin-top:18px;font-size:.85rem">Los títulos que pide el
+      Scope &amp; Sequence para estos grados (The Very Hungry Caterpillar, Dear Zoo,
+      Flat Stanley…) tienen copyright y siguen siendo lectura de biblioteca en papel:
+      estos cuentos cubren el mismo objetivo con material propio del colegio.</p>
+  </div>`;
+}
+
+/* ---------------------------------------------------------------
    Fun for Nordic — lo que entregan los alumnos
    Escritura, grabaciones de voz y el repaso final de cada unidad,
    para que el profesor las oiga y las califique.
@@ -1816,6 +1870,7 @@ async function renderTeacher(tab){
   const _canClasses = !_tn.has || _tn.set.has('english.classes') || [..._tn.set].some(k=>k.indexOf('english.classes.')===0);
   if(_canClasses) nav.push({key:'classes',label:'🏫 Classes'});
   if(!nav.length) nav.push({key:'none',label:'— sin accesos —'});
+  nav.push({key:'littlereaders',label:'🧒 Little Readers'});
   nav.push({key:'scope',label:'📚 Scope & Sequence'});
   nav.push({key:'exams',label:'🎧 Exámenes'});
   nav.push({key:'mun',label:'🌐 MUN Academy'});
