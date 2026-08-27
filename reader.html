@@ -193,6 +193,7 @@
   .bk-on .bk-flow figure, .bk-on .bk-flow h3{break-inside:avoid}
   .bk-on .bk-flow figure img{max-height:38vh; width:auto; max-width:100%}
   /* hoja que se voltea */
+  .bk-pane{position:relative; overflow:hidden}
   .bk-leaf{position:absolute; top:0; width:var(--bk-pw); height:var(--bk-ph); z-index:6; display:none;
     transform-style:preserve-3d; transform-origin:left center; pointer-events:none}
   .bk-leaf.on{display:block}
@@ -1253,7 +1254,8 @@ const BK = {
     const stage=document.createElement('div'); stage.className='bk-stage';
     const view=document.createElement('div'); view.className='bk-view'; view.id='bkView';
     flow.parentNode.insertBefore(stage, flow);
-    stage.appendChild(view); view.appendChild(flow);
+    const pane=document.createElement('div'); pane.className='bk-pane'; pane.id='bkPane';
+    stage.appendChild(view); view.appendChild(pane); pane.appendChild(flow);
     stage.insertAdjacentHTML('beforeend',
       '<div class="bk-leaf" id="bkLeaf"><div class="face front"><div class="clip"></div></div>'+
       '<div class="face back"><div class="clip"></div></div></div>'+
@@ -1281,7 +1283,7 @@ const BK = {
   off(){
     const flow=this.flow, stage=flow&&flow.closest('.bk-stage'), panel=flow&&flow.closest('.reading');
     if(stage){
-      stage.parentNode.insertBefore(flow, stage);
+      stage.parentNode.insertBefore(flow, stage);   // sale de .bk-pane
       ['bkFoot','bkTip'].forEach(id=>{ const el=document.getElementById(id); if(el) el.remove(); });
       stage.remove();
     }
@@ -1294,13 +1296,20 @@ const BK = {
   layout(){
     const flow=this.flow, view=document.getElementById('bkView'); if(!flow||!view) return;
     const panel=flow.closest('.reading');
-    const padX=60, avail=Math.max(260, panel.clientWidth-36-padX);
+    // Se mide el contenedor del panel: el panel encoge para ajustarse a la vista que
+    // dimensionamos aqui, asi que medirlo a el realimentaba y siempre daba 1 pagina.
+    const pcs=getComputedStyle(panel), outer=panel.parentElement;
+    const box=Math.max(280, (outer?outer.clientWidth:innerWidth)
+      - (parseFloat(pcs.paddingLeft)||0) - (parseFloat(pcs.paddingRight)||0) - 4);
+    const padX=60, avail=Math.max(260, box-padX);
     this.ppp = avail < 660 ? 1 : 2;              // en movil, una sola pagina
     this.gap = this.ppp===2 ? 34 : 0;
     this.ph  = Math.max(380, Math.min(innerHeight-230, 720));
     this.pw  = Math.floor((avail - this.gap*(this.ppp-1))/this.ppp);
     const fw = this.pw*this.ppp + this.gap*(this.ppp-1);
     view.style.width=(fw+padX)+'px'; view.style.height=(this.ph+52)+'px';
+    const pane=document.getElementById('bkPane');
+    if(pane){ pane.style.width=fw+'px'; pane.style.height=this.ph+'px'; }
     view.classList.toggle('two', this.ppp===2);
     flow.style.setProperty('--bk-pw', this.pw+'px');
     flow.style.setProperty('--bk-gap', this.gap+'px');
