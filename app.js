@@ -411,6 +411,7 @@ async function renderAdmin(tab='users'){
   if(tab==='final') return cefrFinalPanel();
   if(tab==='readers') return readerStatsPanel();
   if(tab==='funnordic') return funNordicPanel();
+  if(tab==='scope') return scopePanel();
   if(tab==='teachers') return adminTeachers();
   if(tab==='honesty') return antiCheatPanel();
   if(tab==='mocks') return adminMocks();
@@ -1809,6 +1810,7 @@ async function renderTeacher(tab){
   const _canClasses = !_tn.has || _tn.set.has('english.classes') || [..._tn.set].some(k=>k.indexOf('english.classes.')===0);
   if(_canClasses) nav.push({key:'classes',label:'🏫 Classes'});
   if(!nav.length) nav.push({key:'none',label:'— sin accesos —'});
+  nav.push({key:'scope',label:'📚 Scope & Sequence'});
   nav.push({key:'exams',label:'🎧 Exámenes'});
   nav.push({key:'mun',label:'🌐 MUN Academy'});
   nav.push({key:'livequiz',label:'🎮 NIShoot Live'});

@@ -1,0 +1,7026 @@
+{
+ "origen": "NIS_English_Master_SS_2026.xlsx",
+ "pathway": [
+  {
+   "grado": "G1",
+   "edad": "6",
+   "cefr": "Pre-A1",
+   "examen": "— (Pre-Starters prep)",
+   "minedu": "III",
+   "gramatica": "To be, have got, can, present simple, like + noun, imperatives",
+   "escritura": "10–25 (labels)",
+   "lectura": "picture books (20–50 w/page)"
+  },
+  {
+   "grado": "G2",
+   "edad": "7",
+   "cefr": "Pre-A1→A1",
+   "examen": "Cambridge Starters",
+   "minedu": "III",
+   "gramatica": "Present simple/continuous, can, have got, like+ing, there is/are",
+   "escritura": "20–40 (sentence-level)",
+   "lectura": "30–60"
+  },
+  {
+   "grado": "G3",
+   "edad": "8",
+   "cefr": "A1",
+   "examen": "— (Pre-Movers prep)",
+   "minedu": "IV",
+   "gramatica": "SVA, present continuous, comp/superlative, must/have to/could",
+   "escritura": "40–70",
+   "lectura": "60–100"
+  },
+  {
+   "grado": "G4",
+   "edad": "9",
+   "cefr": "A1→A2",
+   "examen": "Cambridge Movers",
+   "minedu": "IV",
+   "gramatica": "Past simple reg/irreg, verb+inf/+ing, infinitive of purpose, relatives (who/which/where)",
+   "escritura": "60–100",
+   "lectura": "100–150"
+  },
+  {
+   "grado": "G5",
+   "edad": "10",
+   "cefr": "A2",
+   "examen": "Cambridge Flyers",
+   "minedu": "V",
+   "gramatica": "Past continuous, present perfect (intro), going to/will, might/should, tag Qs, zero conditional",
+   "escritura": "100–150",
+   "lectura": "150–250"
+  },
+  {
+   "grado": "G6",
+   "edad": "11",
+   "cefr": "A2→B1",
+   "examen": "Cambridge A2 Key (KET)",
+   "minedu": "V",
+   "gramatica": "Present perfect (full), full modals, passive (pres/past simple), gerunds, 1st conditional",
+   "escritura": "100–180 (+ KET 25w email / 35w story)",
+   "lectura": "200–300"
+  },
+  {
+   "grado": "G7",
+   "edad": "12",
+   "cefr": "B1",
+   "examen": "— (KET+ / PET bridge)",
+   "minedu": "VI",
+   "gramatica": "Past perfect, conditionals 0-1-2, reported speech (statements), phrasal verbs, modal passive",
+   "escritura": "180–250 (+ PET 100w)",
+   "lectura": "300–450"
+  },
+  {
+   "grado": "G8",
+   "edad": "13",
+   "cefr": "B1+",
+   "examen": "Cambridge B1 Preliminary (PET)",
+   "minedu": "VI",
+   "gramatica": "Causative, reported speech (Qs/commands), word formation, all modals, so/nor auxiliaries",
+   "escritura": "200–260 (PET 100w exam)",
+   "lectura": "450–600"
+  },
+  {
+   "grado": "G9",
+   "edad": "14",
+   "cefr": "B1+→B2",
+   "examen": "Cambridge B2 First (FCE)",
+   "minedu": "VII",
+   "gramatica": "Conditional 3 + mixed, passive all tenses, past modals, advanced relatives, wish/if only",
+   "escritura": "250–380 (FCE 140–190w)",
+   "lectura": "700–1000"
+  },
+  {
+   "grado": "G10",
+   "edad": "15",
+   "cefr": "B2+",
+   "examen": "— (FCE consolidation / CAE bridge)",
+   "minedu": "VII",
+   "gramatica": "Subjunctive, complex relatives, participle clauses, inversion (intro), cleft (intro)",
+   "escritura": "300–430 (incl. CV/cover letter)",
+   "lectura": "1000–1300"
+  },
+  {
+   "grado": "G11",
+   "edad": "16",
+   "cefr": "C1",
+   "examen": "Cambridge C1 Advanced (CAE)",
+   "minedu": "VII",
+   "gramatica": "Inversion, cleft, discourse markers, impersonal passive, nominalisation, mixed conditionals",
+   "escritura": "220–260 (CAE exam) / 350–500 classroom",
+   "lectura": "1300–1500+"
+  }
+ ],
+ "benchmarks": [
+  {
+   "grado": "G1",
+   "etiqueta": "G1 / Pre-Starters",
+   "listening": "Follow classroom instructions; identify familiar words in songs and short spoken sentences.",
+   "speaking": "Greet; say name, age, colours; name objects; answer yes/no questions.",
+   "reading": "Recognise all 26 letters; match words to pictures (family, food, animals, body).",
+   "writing": "Write own name; trace and copy words; label pictures (3–5 words).",
+   "lengua": "~150 productive words; Verb to be, can, like + noun, imperatives, this/that."
+  },
+  {
+   "grado": "G2",
+   "etiqueta": "G2 / Starters",
+   "listening": "Understand short simple dialogues about family, school, animals, food (Cambridge Starters Listening parts 1–4).",
+   "speaking": "Answer picture-prompted questions; describe a picture in simple sentences.",
+   "reading": "Read 2–3-sentence texts; match pictures to words and short captions.",
+   "writing": "Copy words and complete short sentences (Starters Reading/Writing parts).",
+   "lengua": "~450 words (Starters wordlist); Present simple, present continuous (limited), there is/are, like + -ing."
+  },
+  {
+   "grado": "G3",
+   "etiqueta": "G3 / Pre-Movers",
+   "listening": "Understand short dialogues with more vocabulary; identify main information in simple announcements.",
+   "speaking": "Describe routines, favourites, community helpers; give short opinions.",
+   "reading": "Read short paragraphs; answer simple comprehension Qs; find specific info.",
+   "writing": "Write short paragraph about self/family/routine (40–70 words).",
+   "lengua": "~800 words; All basic tenses start; must/have to/could; SVA; superlatives."
+  },
+  {
+   "grado": "G4",
+   "etiqueta": "G4 / Movers",
+   "listening": "Understand longer dialogues (Movers parts 1–5); identify specific info in spoken texts.",
+   "speaking": "Describe places, objects, past events; role-play simple situations.",
+   "reading": "Read and sequence short stories; locate information in signs, notices.",
+   "writing": "Write a note/message of 30–40 words (Movers Writing part); classroom paragraphs 60–100w.",
+   "lengua": "~1350 words (Movers wordlist); Past simple, relatives, infinitive of purpose, have to."
+  },
+  {
+   "grado": "G5",
+   "etiqueta": "G5 / Flyers",
+   "listening": "Understand dialogues and short stories (Flyers parts 1–5); infer mood from intonation.",
+   "speaking": "Narrate stories with past/present/future; express preferences with reasons.",
+   "reading": "Read and understand short stories (80–250 words); find main idea and detail.",
+   "writing": "Writing Part 3: 20–25-word picture story (Flyers); classroom pieces 100–150w.",
+   "lengua": "~2500 words (Flyers wordlist); Present perfect intro, tag Qs, 0th conditional, be going to."
+  },
+  {
+   "grado": "G6",
+   "etiqueta": "G6 / KET",
+   "listening": "Follow dialogues and announcements (KET Listening parts 1–5); 25-minute exam.",
+   "speaking": "KET Speaking: 2 parts, 8–10 min; interview + collaborative task.",
+   "reading": "Understand signs, notices, emails, short articles (KET Reading parts 1–5).",
+   "writing": "KET Writing: 25-word email (Part 6) + 35-word picture-based story (Part 7).",
+   "lengua": "~1500 words (KET list); All basic tenses + present perfect, full modals."
+  },
+  {
+   "grado": "G7",
+   "etiqueta": "G7 / KET+ bridge",
+   "listening": "Follow longer dialogues (3–5 min) at B1 level; identify speakers' attitudes.",
+   "speaking": "Sustain 3-minute discussions on familiar topics; reach agreement in pairs.",
+   "reading": "Read articles, reports, narratives up to 450 words; infer meaning.",
+   "writing": "Produce 100–150w emails, articles; basic report format.",
+   "lengua": "~2200 words; past perfect, conditionals 0-1-2, reported speech (statements)."
+  },
+  {
+   "grado": "G8",
+   "etiqueta": "G8 / PET",
+   "listening": "PET Listening: 4 parts, 30 min; multiple choice, gap fill, note-taking.",
+   "speaking": "PET Speaking: 4 parts, 10–12 min; individual + paired collaborative.",
+   "reading": "PET Reading: 6 parts; gapped text, multi-matching, multiple-choice cloze.",
+   "writing": "PET Writing: Part 1 email ~100w; Part 2 article OR story ~100w.",
+   "lengua": "~3200 words (PET list); all tenses mastered, all conditionals, passive, reported."
+  },
+  {
+   "grado": "G9",
+   "etiqueta": "G9 / FCE",
+   "listening": "FCE Listening: 4 parts, 40 min; monologues, interviews, multi-task.",
+   "speaking": "FCE Speaking: 4 parts, 14 min; interview, picture comparison, discussion.",
+   "reading": "FCE Reading/Use of English: 7 parts, 75 min.",
+   "writing": "FCE Writing: Part 1 essay 140–190w compulsory; Part 2 one of article/email/letter/report/review 140–190w.",
+   "lengua": "~4500 words; cond. 3 + mixed, passive all tenses, past modals, complex relatives."
+  },
+  {
+   "grado": "G10",
+   "etiqueta": "G10 / FCE consolidation",
+   "listening": "Comprehension of extended discourse; academic lecture excerpts.",
+   "speaking": "Presentations 5–7 min; Q&A; justifying opinions with evidence.",
+   "reading": "Newspapers, op-eds, literary extracts (4000+ words).",
+   "writing": "Persuasive / argumentative essays 400–500w; CV + cover letter.",
+   "lengua": "~5000 words; subjunctive, participle clauses, inversion (intro), cleft (intro)."
+  },
+  {
+   "grado": "G11",
+   "etiqueta": "G11 / CAE",
+   "listening": "CAE Listening: 4 parts, 40 min; complex attitudes, inference.",
+   "speaking": "CAE Speaking: 4 parts, 15 min; interview, long turn, collaborative, discussion.",
+   "reading": "CAE Reading/UoE: 8 parts, 90 min; multi-matching, cross-text.",
+   "writing": "CAE Writing: Part 1 essay 220–260w; Part 2 one of letter/email, proposal, report, review 220–260w.",
+   "lengua": "~5500–6000 words; inversion, cleft, nominalisation, impersonal passive, hedging."
+  }
+ ],
+ "calendario": [
+  {
+   "mes": "Mar",
+   "hito": "Diagnostic CEFR",
+   "grados": "G1–G11",
+   "actividad": "Placement test + CEFR baseline to identify prep needs",
+   "horas": "2 per grade",
+   "responsable": "Coord.",
+   "kpi": "100% completion"
+  },
+  {
+   "mes": "Mar–Apr",
+   "hito": "Pre-Mock 1 prep",
+   "grados": "G2, G4, G5, G6, G8, G9, G11",
+   "actividad": "Foundation + exam skills + familiarisation with formats",
+   "horas": "6 h/wk/grade",
+   "responsable": "Teachers",
+   "kpi": "Prep plan signed · past-paper exposure"
+  },
+  {
+   "mes": "MAY",
+   "hito": "🎯 MOCK EXAM 1",
+   "grados": "G2/G4/G5/G6/G8/G9/G11",
+   "actividad": "First mock: YLE + KET + PET + FCE + CAE — FULL OFFICIAL TIMING",
+   "horas": "Full exam",
+   "responsable": "Teachers + Coord.",
+   "kpi": "Baseline score/grade established"
+  },
+  {
+   "mes": "Jun",
+   "hito": "Mock 1 analysis + re-prioritise",
+   "grados": "All exam grades",
+   "actividad": "Analyse results · identify weak skills · adjust teaching plan",
+   "horas": "1 wk analysis",
+   "responsable": "Coord.",
+   "kpi": "Individual action plan/student"
+  },
+  {
+   "mes": "Jun–Jul",
+   "hito": "Intensive prep (post Mock 1)",
+   "grados": "All exam grades",
+   "actividad": "Target weak skills · past papers · timing practice · vocabulary push",
+   "horas": "10 h/wk/grade",
+   "responsable": "Teachers",
+   "kpi": "Past paper bank built · weekly progress"
+  },
+  {
+   "mes": "Aug–Sep",
+   "hito": "Consolidation + speaking clinics",
+   "grados": "All exam grades",
+   "actividad": "Speaking practice intensification · writing drills · listening in exam format",
+   "horas": "8 h/wk/grade",
+   "responsable": "Teachers",
+   "kpi": "≥75% readiness mid-score"
+  },
+  {
+   "mes": "OCT",
+   "hito": "🎯 MOCK EXAM 2",
+   "grados": "G2/G4/G5/G6/G8/G9/G11",
+   "actividad": "Second mock: final rehearsal under official conditions",
+   "horas": "Full exam",
+   "responsable": "Coord.",
+   "kpi": "≥80% mock avg"
+  },
+  {
+   "mes": "Oct–Nov",
+   "hito": "Final prep + Cambridge enrolment",
+   "grados": "All exam grades",
+   "actividad": "Last-mile revision · enrol through Cambridge centre · parent briefing",
+   "horas": "6 h/wk",
+   "responsable": "Coord.",
+   "kpi": "100% enrolled by mid-Nov"
+  },
+  {
+   "mes": "DEC 2",
+   "hito": "🎯 OFFICIAL CAMBRIDGE EXAMS",
+   "grados": "G2/G4/G5/G6/G8/G9/G11",
+   "actividad": "Cambridge official exam day — all papers (speaking may be scheduled ±1 week)",
+   "horas": "Exam day",
+   "responsable": "Cambridge + Coord.",
+   "kpi": "≥80% pass rate target"
+  },
+  {
+   "mes": "Dec (post-exam)",
+   "hito": "Results + report + 2027 planning",
+   "grados": "All",
+   "actividad": "Results analysis · individual student reports · parent communication · next-year plan",
+   "horas": "2 weeks",
+   "responsable": "Coord.",
+   "kpi": "Published by Dec 20"
+  }
+ ],
+ "grados": [
+  {
+   "grado": "G1",
+   "cefr": "Pre-A1",
+   "unidades": [
+    {
+     "n": 1,
+     "tema": "Hello World!",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Letter names A–Z",
+        "Alphabet song & chants",
+        "Initial sounds: /a/ apple, /b/ ball"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Greetings: hello, goodbye, good morning",
+        "Numbers 1–10",
+        "Colours: red, blue, green, yellow, orange"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Recognise and name letters A–Z",
+        "Match uppercase to lowercase letters"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Chicka Chicka Boom Boom",
+        "(B. Martin Jr. & J. Archambault)",
+        "Alphabet focus – shared reading"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Alphabet posters & letter-sound cards"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Name card: write my name & draw myself",
+        "Label: colour the letters of my name"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Draw myself → teacher scribes name",
+        "Trace letters of my name"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Verb TO BE: I am, You are, He/She is",
+        "Subject pronouns: I, you, he, she, it",
+        "Article: a / an (introduction)",
+        "▸ Bloom: Remember"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Sticker chart: I can say my name ✓",
+        "Draw how I feel today (happy/sad face)",
+        "Graduate Profile: Communicator"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Follow classroom instructions (stand up, sit down)",
+        "Identify letters in the alphabet song",
+        "Point to colours in picture cards"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Say hello, goodbye & my name",
+        "Count objects 1–10 with teacher",
+        "Name colours in the classroom",
+        "ATL Communication: oral expression"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "tema": "My Classroom",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Short vowel sounds: /æ/ /ɛ/ /ɪ/",
+        "CVC words: cat, bed, sit",
+        "Rhyming word families"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Classroom objects: book, pen, pencil, ruler, bag, chair, table, board",
+        "Instructions: sit down, stand up, open, close"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Match word to picture: classroom objects",
+        "Read simple labels around the room"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "We're Going on a Bear Hunt",
+        "(M. Rosen)",
+        "Classroom objects & action words"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Labelled classroom picture dictionaries"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Label a classroom picture (5–6 words)",
+        "Copy 2 simple sentences with support"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Look at picture → circle object → copy word",
+        "Use word bank for labelling"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "TO BE questions: Is this a…? Yes/No",
+        "Demonstrative: this / that",
+        "Singular nouns with articles",
+        "▸ Bloom: Remember–Understand"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Thumbs up/down: Did I learn new words?",
+        "Draw my favourite classroom object",
+        "Graduate Profile: Inquirer"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Identify classroom objects from teacher's description",
+        "Listen and point: Simon Says body game",
+        "Short chant: What is this?"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Name classroom objects (What is this? It's a…)",
+        "Ask & answer: Have you got a pencil?",
+        "Choral drill: classroom instructions",
+        "ATL Social: turn-taking in pairs"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "tema": "My Body",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Short vowels: /ɒ/ /ʌ/",
+        "CVC words: dog, cup",
+        "Sound discrimination games"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Body parts: head, eyes, ears, nose, mouth, hands, arms, legs, feet",
+        "Adjectives: big, small, tall, short"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Match word to picture: body parts",
+        "Read and point: 3-word phrases"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Head, Body, Legs",
+        "(W. Pitzer)",
+        "Body parts – read-aloud & point"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Illustrated body-part posters & flashcard sets"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Label body parts on a drawing (6 words)",
+        "Copy: I have two eyes and one nose"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Draw a body → teacher guides labelling",
+        "Trace and copy body-part words"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "TO BE: I have (body parts)",
+        "Adjectives: big, small, long, short",
+        "Basic adjective + noun order",
+        "▸ Bloom: Understand"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Self-assess with smiley face scale",
+        "Share one new word I learned today",
+        "Graduate Profile: Reflective"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Identify body parts in a song (Head, Shoulders)",
+        "Listen and draw: teacher dictates body",
+        "True/False: simple sentences about a picture"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Sing & point: Head, Shoulders, Knees & Toes",
+        "Describe a face (big eyes, small nose)",
+        "Pair work: Draw and describe a monster",
+        "ATL Communication: following instructions"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "tema": "Farm Animals",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Consonant sounds: /f/ /v/ /th/",
+        "Initial & final sounds in words",
+        "Phonics chants with animals"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Farm animals: cow, pig, horse, sheep, hen, dog, cat, duck",
+        "Sounds & actions: moo, oink, neigh"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Match animal name to picture",
+        "Recognise sight words: is, a, the, and"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Click Clack Moo",
+        "(D. Cronin)",
+        "Farm animals – picture walk & retell"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Farm animal picture books & flashcards"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Label farm animals (5 words)",
+        "Copy & draw: My favourite animal is a ___"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Draw a farm → copy animal names from board",
+        "Sequence picture cards: story retell"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Can (positive): The cow can moo",
+        "Plural nouns (regular): cats, dogs",
+        "Conjunction: and",
+        "▸ Bloom: Understand"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Draw my favourite animal + copy its name",
+        "Share with a partner: my animal",
+        "Graduate Profile: Caring"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Identify farm animals by sound",
+        "Listen and colour: animal pictures",
+        "Short story: Old MacDonald – identify animals mentioned"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Name farm animals and their sounds",
+        "Role-play: farmer and animals",
+        "Chant: Old MacDonald Had a Farm",
+        "ATL Social: collaborative chanting"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "tema": "My Family",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Blending CVC words",
+        "Initial sounds: family vocabulary",
+        "Beginning sound sorting"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Family members: mum, dad, sister, brother, grandma, grandpa",
+        "Adjectives: old, young, happy, kind"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Match family word to picture",
+        "Read simple sentences: This is my dad"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "The Family Book",
+        "(T. Parr)",
+        "Family members – shared reading"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Simple illustrated family-tree diagrams"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Fill-in family tree labels",
+        "Copy: This is my ___ . He/She is ___"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Draw my family → use sentence frame",
+        "Match family word to picture before writing"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Possessive adjectives: my, your, his, her",
+        "TO BE: She is my grandma",
+        "Numbers as adjectives: two sisters",
+        "▸ Bloom: Understand–Apply"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Draw my family & share with the class",
+        "Exit ticket: say one sentence about family",
+        "Graduate Profile: Open-minded"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Identify family members in a short description",
+        "Listen and circle: family photo task",
+        "Who is it? Short riddles about family"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Introduce my family (This is my mum)",
+        "Describe family members (She is tall)",
+        "Pair work: My family photo presentation",
+        "ATL Communication: presenting about self"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "tema": "Food & Fun",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Review: all short vowels",
+        "Word-picture matching",
+        "End-of-year phonic chant"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Food: apple, banana, bread, milk, egg, cake, water, juice",
+        "Like/don't like: I like…, I don't like…"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Read and match: food pictures and words",
+        "Complete: I like ___ (word bank provided)"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "The Very Hungry Caterpillar",
+        "(E. Carle)",
+        "Food vocabulary – sequence & retell"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Illustrated food charts & simple menus"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Draw & label: My plate (3–4 foods)",
+        "Copy: I like ___ . I don't like ___"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Draw my plate → select food words from bank",
+        "Complete sentence frame with a food word"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Like + noun: I like apples",
+        "Don't like + noun: I don't like milk",
+        "Full simple sentence: subject + verb + object",
+        "▸ Bloom: Apply"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "End-of-year portfolio: my 6 drawings",
+        "Oral sharing: my favourite unit",
+        "Graduate Profile: Balanced"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Identify food items from short dialogues",
+        "Listen and tick: like/don't like survey",
+        "Short story: The Very Hungry Caterpillar – name the foods"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Say what I like and don't like",
+        "Order food in a classroom café role-play",
+        "Song: Fruit Salad (The Wiggles)",
+        "ATL Self-management: speaking in front of class"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "grado": "G2",
+   "cefr": "Pre-A1→A1",
+   "unidades": [
+    {
+     "n": 1,
+     "tema": "All About Me",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Short vowels review: CVC words",
+        "Beginning blends: bl, cl, fl, gl",
+        "Word families: -at, -an, -ap"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Appearance: tall, short, thin, curly/straight hair, eyes colour",
+        "Age & personal info",
+        "Numbers 1–20, ordinal numbers 1st–10th"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Read and match: description to picture",
+        "Find specific information in a short text"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "My Body",
+        "(Oxford Reading Tree Level 3)",
+        "Appearance & self-description"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Simple descriptions of people (identity cards)"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Self-description card: 30–50 words",
+        "Draw and label: what I look like"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Draw myself → fill sentence frames",
+        "Copy corrected draft from board"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "TO BE: all forms (am, is, are, was, were – intro)",
+        "Have/has got: I have got blue eyes",
+        "Adjectives of appearance",
+        "▸ Bloom: Remember–Understand"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Draw a face: how do I feel about my English?",
+        "Exit ticket: say one new word I learned",
+        "Graduate Profile: Communicator"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Listen and identify: appearance descriptions",
+        "Fill-in: numbers in short dialogues",
+        "True/False: Is she tall? Yes/No"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Introduce myself: name, age, appearance",
+        "Describe a friend from a picture",
+        "Pair work: Guess who? game",
+        "ATL Communication: speaking about self"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "tema": "My Home & Family",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Digraphs: sh, ch, th, wh",
+        "CVC + digraph words: shop, chin, that",
+        "Rhyming pairs game"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Rooms: bedroom, kitchen, bathroom, living room",
+        "Furniture: bed, sofa, table, chair, lamp, wardrobe",
+        "Prepositions: in, on, under, next to"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Read and label: rooms in a house picture",
+        "Answer simple questions about a text"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "A Mouse Called Wolf",
+        "(D. King-Smith)",
+        "Ch. 1–3: home & rooms setting"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Short illustrated texts about homes and rooms"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "House description: 40–60 words",
+        "Label furniture in a room drawing"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Room drawing → label → write 3 sentences",
+        "Word bank + sentence frames"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Prepositions of place: in, on, under, next to",
+        "There is / There are (introduction)",
+        "Singular/plural nouns – regular",
+        "▸ Bloom: Understand"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Thumbs up/side/down: Did I understand the text?",
+        "My favourite room – share with a partner",
+        "Graduate Profile: Open-minded"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Listen and find: rooms and objects in a picture",
+        "Short dialogue: Where is the cat? It's on the sofa",
+        "Follow spoken instructions to draw furniture"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Describe my home: rooms and furniture",
+        "Pair work: Spot the difference – two rooms",
+        "Role-play: Show me your house (drawing)",
+        "ATL Social: collaborative game"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "tema": "Animals & Pets",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Long vowel sounds: a_e, i_e, o_e",
+        "Magic 'e' rule: cap→cape, pin→pine",
+        "Read-aloud: animal name chants"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Pets & wild animals: rabbit, hamster, parrot, snake, lion, elephant, giraffe",
+        "Describing: big, small, fast, slow, scary, friendly"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Read and match: animal fact to animal",
+        "True/False: short animal descriptions"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Dear Zoo",
+        "(R. Campbell)",
+        "Animals – extended read & retell"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Animal fact cards: short sentences"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Animal description: 50–70 words",
+        "It has… It can… It eats…"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Animal fact web → draft 4 sentences",
+        "Peer share: is everything clear?"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Can / can't: ability",
+        "Present Simple 3rd person: It lives, It eats",
+        "Adjectives of description: big, fast, friendly",
+        "▸ Bloom: Understand–Apply"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Self-assess: Can I describe an animal? ✓/✗",
+        "Share: why do I like my animal?",
+        "Graduate Profile: Caring"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Listen and match: animal to description",
+        "Identify animals in short conversations",
+        "Starters-style task: listen and colour"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Describe an animal: It has… It can… It eats…",
+        "Pair work: Animal guessing game (20 questions style)",
+        "Present my favourite animal",
+        "ATL Communication: describing"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "tema": "My Town",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Consonant blends: st, sp, sn, sm",
+        "Word building with blends",
+        "Town vocabulary pronunciation"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Places in town: park, school, hospital, supermarket, library, cinema, bus stop",
+        "Transport: bus, car, bike, train, taxi"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Read a simple map and find places",
+        "Follow written directions to a location"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Topsy and Tim: Go to the Dentist",
+        "(J. & G. Adamson)",
+        "Town & health connection"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Simple maps with labelled places in town"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Simple postcard from a place in town: 50–70 words"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Simple outline: Where? What to do there?",
+        "Draft postcard using sentence frames"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Prepositions of place + movement: in, on, near, at",
+        "Wh- questions: Where is…? How do I get to…?",
+        "Imperatives for directions: Turn left, Go straight",
+        "▸ Bloom: Apply"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Smiley-face self-assessment: directions task",
+        "Reflect: What was difficult?",
+        "Graduate Profile: Knowledgeable"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Listen and identify: places in town on a map",
+        "Short dialogue: asking for directions",
+        "Listening gap-fill: transport vocabulary"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Ask for and give directions in town",
+        "Role-play: at the bus stop, at the park",
+        "Pair work: Map reading dialogue",
+        "ATL Communication: functional language"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "tema": "Food & Health",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Long vowels: ee, ea, oo",
+        "Food words: eat, cheese, food, soon",
+        "Vowel sorting activity"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Food groups: fruit, vegetables, dairy, meat, bread",
+        "Healthy vs unhealthy",
+        "Body: headache, stomachache, cold, toothache"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Read and identify: healthy or unhealthy food",
+        "Find information in a simple health leaflet"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Eat Your Peas",
+        "(K. Gray)",
+        "Food & healthy habits – discussion"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Short texts about healthy habits & food choices"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Healthy eating poster: 5 bullet points",
+        "Sentences: I should / I shouldn't eat…"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Brainstorm healthy/unhealthy foods (two columns)",
+        "Draft 5 sentences with should/shouldn't"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Should / shouldn't (health advice – intro)",
+        "Countable & uncountable nouns: food",
+        "Some / any (intro)",
+        "▸ Bloom: Apply"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "2 stars & 1 wish: healthy eating paragraph",
+        "Peer share: one healthy tip",
+        "Graduate Profile: Balanced"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Listen and match: health problem to advice",
+        "Short story: at the doctor's surgery",
+        "Identify foods in a shopping dialogue"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Talk about healthy habits: I eat… I drink…",
+        "Role-play: at the doctor's (I have a headache)",
+        "Survey: What do you eat for breakfast?",
+        "ATL Social: active listening"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "tema": "Hobbies & Play",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Review: all blends & digraphs",
+        "Sentence stress: I like playing football",
+        "End-of-year phonics game"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Sports & games: football, swimming, cycling, tennis, basketball",
+        "Toys: doll, puzzle, video game, ball",
+        "Frequency: every day, on Saturdays"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Read and match: hobby to person",
+        "Identify frequency words in a short text"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Horrid Henry's Football Fiend",
+        "(F. Simon) – Adapted",
+        "Hobbies & sports"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Short illustrated texts about hobbies & sports"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Hobby paragraph: 60–80 words",
+        "My favourite hobby is… I like it because…"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Mind map: my hobby → draft paragraph",
+        "Self-check: Does it make sense?"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Present Simple: like + -ing (hobbies)",
+        "Adverbs of frequency: always, usually, sometimes, never",
+        "Question: Do you like…? Yes, I do / No, I don't",
+        "▸ Bloom: Apply"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "End-of-term portfolio: favourite piece",
+        "Oral: What have I learned this year?",
+        "Graduate Profile: Reflective"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Listen and tick: sports in a timetable",
+        "Short dialogue: after school activities",
+        "Starters-style: listen and draw"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Talk about hobbies: I like playing…",
+        "Pair work: What do you do on Saturdays?",
+        "Short presentation: My favourite sport",
+        "ATL Self-management: structured speaking"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "grado": "G3",
+   "cefr": "A1",
+   "unidades": [
+    {
+     "n": 1,
+     "tema": "School Life",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Vowel digraphs: ai, ay (rain, play)",
+        "Word stress: 2-syllable school words",
+        "Chant: What do you do at school?"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "School subjects: Maths, Science, Art, PE, English, Music, History",
+        "Opinions: favourite, difficult, easy, boring, interesting",
+        "School equipment: ruler, calculator, compass, scissors"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Find specific information in a timetable",
+        "Understand simple opinion sentences"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Flat Stanley",
+        "(J. Brown) Ch. 1–3",
+        "School setting & daily life"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "School timetables & simple news board texts"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "My school timetable description: 60–80 words",
+        "Opinion sentences: I like… because…"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Brainstorm subjects → rank → explain with 'because'",
+        "Draft using sentence frames"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Present Simple (all persons): I go, she goes, we play",
+        "Adverbs of frequency: always, usually, sometimes, never",
+        "Wh- questions: What time do you…? What is your favourite…?",
+        "▸ Bloom: Remember–Apply"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Can-do checklist: school language",
+        "Draw: What is your favourite subject? Why?",
+        "Graduate Profile: Knowledgeable"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Identify school subjects in a timetable dialogue",
+        "Fill-in: What time does PE start?",
+        "True/False: short school announcement"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Talk about favourite subjects and why",
+        "Pair work: Compare timetables",
+        "Role-play: school counsellor interview",
+        "ATL Communication: expressing opinions"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "tema": "Daily Routines",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Vowel digraphs: oa, ow (boat, snow)",
+        "Rhythm in time expressions",
+        "Chant: Every morning I…"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Daily routine actions: wake up, get dressed, have breakfast, go to school, do homework",
+        "Time: o'clock, half past, quarter to/past",
+        "Sequence words: first, then, next, after that, finally"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Sequence events using time connectors",
+        "Answer WH-questions about a routine text"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Diary of a Wimpy Kid",
+        "(adapted/graphic version)",
+        "School routines & feelings"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Illustrated daily routine schedules"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Daily routine paragraph: 80–100 words",
+        "Using sequencing words correctly"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Time chart (wake up→bed) → sequence words → draft",
+        "Peer check: Are the times correct?"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Present Simple: routines & habits (full review)",
+        "Prepositions of time: at, in, on + times/days",
+        "Sequence words: first, then, next, finally",
+        "▸ Bloom: Apply"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Learning journal: my routine in English",
+        "Reflect: What helped me sequence events?",
+        "Graduate Profile: Reflective"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Sequence events in a daily routine audio",
+        "Fill-in: times in a routine text",
+        "Match person to routine (3 speakers)"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Describe my daily routine (5+ sentences)",
+        "Pair work: Morning routine comparison",
+        "Role-play: TV interview about routines",
+        "ATL Communication: sequencing ideas"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "tema": "Weather & Seasons",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Vowel digraphs: ou, ow (cloud, cow)",
+        "Weather word pronunciation",
+        "Rhyming weather poem"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Weather: sunny, cloudy, rainy, windy, snowy, foggy, stormy",
+        "Seasons: spring, summer, autumn, winter",
+        "Clothing for weather: umbrella, raincoat, boots, scarf, sunglasses"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Identify main idea in a weather report",
+        "Match clothes to seasons from a text"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Winnie the Witch",
+        "(V. Thomas)",
+        "Weather & seasons – whole class read"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Short weather reports & season descriptions"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Weather report for a week: 70–90 words",
+        "Simple forecast with clothing advice"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Observe weather → record → draft forecast",
+        "Add clothing advice using 'should'"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "TO BE: weather expressions (It is sunny)",
+        "Should/shouldn't (advice – intro)",
+        "Conjunctions: and, but, because",
+        "▸ Bloom: Apply"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Weather diary: record & reflect for 1 week",
+        "What season do you prefer? Why?",
+        "Graduate Profile: Inquirer"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Identify weather in a short forecast",
+        "Listen and tick: clothes for the season",
+        "Short story: Winnie the Witch – weather changes"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Describe today's weather & appropriate clothing",
+        "Pair work: Weather forecast presentation",
+        "Group: Design a 4-seasons poster",
+        "ATL Research: collect weather data"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "tema": "Nature & Animals",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Consonant clusters: str, spr, thr",
+        "Animal name pronunciation: giraffe, penguin",
+        "Chant: In the jungle…"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Wild animals: penguin, crocodile, giraffe, flamingo, eagle, whale, shark, bear",
+        "Habitats: jungle, ocean, desert, rainforest, Arctic, savanna",
+        "Verbs: hunt, swim, fly, roar, hibernate"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Identify key facts in an animal fact file",
+        "Match animal names to habitat descriptions"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Magic Tree House #1:",
+        "Dinosaurs Before Dark",
+        "(M.P. Osborne) Ch. 1–5"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Animal fact files & habitat descriptions"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Animal fact file: 80–100 words",
+        "Include: habitat, food, size, special ability"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Research one animal → fill fact card → draft text",
+        "Cite source: from the book/video"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "There is / There are (singular & plural)",
+        "Some / any with plural nouns",
+        "Comparatives: bigger than, faster than (intro)",
+        "▸ Bloom: Apply"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Animal project self-assessment",
+        "What did I find most interesting?",
+        "Graduate Profile: Knowledgeable"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Key facts in a nature documentary extract",
+        "Match animal to habitat",
+        "Identify animal actions from a short description"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Describe a wild animal: size, habitat, diet",
+        "Pair work: Animal classification game",
+        "Oral report: endangered animal (2 min)",
+        "ATL Research: find and share facts"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "tema": "Feelings & Health",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Silent letters: kn, wr (know, write)",
+        "Emotion word stress: hap-py, an-gry",
+        "Pronunciation of health vocabulary"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Emotions: excited, nervous, bored, proud, upset, confused, scared, surprised",
+        "Health: ill, temperature, rest, medicine, appointment",
+        "Verb: feel – I feel happy/sick"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Understand character emotions in a story",
+        "Find information in a simple health text"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "The Invisible String",
+        "(P. Karst)",
+        "Feelings & emotional wellbeing"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Simple texts on emotions & health at school"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Diary entry about a feeling: 80–100 words",
+        "Today I feel… because…"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Emotion journal prompt → draft diary entry",
+        "Self-check: Did I explain why I feel this?"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Verb 'feel' + adjective: I feel happy/sick",
+        "Past Simple TO BE: was/were (introduction)",
+        "Simple question: Were you ill yesterday?",
+        "▸ Bloom: Understand–Apply"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Feelings journal reflection",
+        "Reflect: How do I manage stress at school?",
+        "Graduate Profile: Caring"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Identify feelings from dialogues",
+        "Short story: character's emotions sequence",
+        "Listening: at the doctor – problem & advice"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Express feelings about classroom situations",
+        "Pair work: How do you feel when…?",
+        "Role-play: speaking to a school counsellor",
+        "ATL Social: empathy in conversation"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "tema": "My Community",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Review: all vowel digraphs & clusters",
+        "Sentence stress & rhythm review",
+        "End-of-year phonics quiz"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Community helpers: doctor, teacher, firefighter, police officer, baker, librarian, vet",
+        "Places: fire station, post office, bakery, community centre, vet's clinic",
+        "Verbs: help, protect, serve, bake, heal"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Identify what a community helper does",
+        "Match helper to place of work in a text"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "The Lorax",
+        "(Dr. Seuss)",
+        "Community & environment connection"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Illustrated texts about community helpers"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Community helper profile: 90–110 words",
+        "Name, job, place of work, why important"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Interview a helper (role-play) → note key facts → draft profile",
+        "Peer review: missing info?"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Present Simple: he/she + helping verbs",
+        "Articles: a/an/the (expanded use)",
+        "Conjunction: so (I was tired, so I rested)",
+        "▸ Bloom: Apply"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "End-of-term reflection: 3 things I learned",
+        "Peer appreciation: Say something nice!",
+        "Graduate Profile: Open-minded"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Identify community helpers in descriptions",
+        "Match helper to place of work",
+        "Short text: what does a firefighter do?"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Describe a community helper's job",
+        "Pair work: Thank a community helper",
+        "Group presentation: Our Community Helpers",
+        "ATL Communication: structured presentation"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "grado": "G4",
+   "cefr": "A1→A2",
+   "unidades": [
+    {
+     "n": 1,
+     "tema": "Around Town",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Word stress: 2-syllable nouns (TAXi, MARket)",
+        "Consonant clusters: pl, pr, tr, gr",
+        "Chant: Around my town"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Places: market, bookshop, sports centre, museum, restaurant, bank, chemist",
+        "Transport: underground, ferry, tram, scooter",
+        "Directions: turn left/right, straight ahead, at the corner"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Follow a written route on a map",
+        "Scan for specific information in a guide"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Charlotte's Web",
+        "(E.B. White – simplified)",
+        "Ch. 1–6: town & farm setting"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Town maps and simple transport guides"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Directions text: how to get from A to B (80–110 words)",
+        "Simple map with labels"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Plan route on blank map → write directions step by step",
+        "Peer check: Can you follow my directions?"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Prepositions of movement: along, past, over, through",
+        "Imperatives for directions",
+        "Wh- questions: How do I get to…? How far is it?",
+        "▸ Bloom: Apply"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Exit ticket: 3 new direction phrases I learned",
+        "Self-assess: Can I give clear directions?",
+        "Graduate Profile: Communicator"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Listen and follow a route on a map",
+        "Key info in a transport announcement",
+        "Movers-style: listen and draw/write"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Give directions to places on a map",
+        "Role-play: tourist and local guide",
+        "Pair work: plan a route across town",
+        "ATL Communication: functional language"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "tema": "School & Learning",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Intonation: listing items (I like maths, art AND music)",
+        "3-syllable word stress: cal-CU-la-tor",
+        "Rhythm in comparative sentences"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "School subjects (extended): geography, biology, chemistry, drama",
+        "Learning actions: revise, take notes, hand in, concentrate",
+        "Opinions with reasons: I find… easy because…"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Find information in a school schedule",
+        "Identify opinion and reason in a text"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Diary of a Wimpy Kid",
+        "(J. Kinney – adapted)",
+        "School life & learning"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "School newsletters & simple informational articles"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Opinion essay (agree/disagree – simple): 100–130 words",
+        "Is school too difficult?"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "T-chart (easy/hard subjects + reasons) → draft opinion",
+        "Connect sentences with because/so"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Comparative & superlative adjectives (full forms)",
+        "As… as / not as… as (equality comparisons)",
+        "Opinion language: I think, I believe, In my opinion",
+        "▸ Bloom: Apply–Analyse"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Learning log: school subject opinions",
+        "Reflect: What learning strategy helps me most?",
+        "Graduate Profile: Reflective"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Listen to a school radio programme – fill in the timetable",
+        "Identify subjects and times",
+        "True/False: school day descriptions"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Discuss school subjects: which is hardest? easiest?",
+        "Pair work: school advice interview",
+        "Group: design the perfect school timetable",
+        "ATL Thinking: evaluating & comparing"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "tema": "Wild Animals & Nature",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Diphthongs: /eɪ/ whale, /aɪ/ lion, /ɔɪ/ boy",
+        "Animal name pronunciation drill",
+        "Jungle chant: animals in rhythm"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Wild animals: cheetah, gorilla, anaconda, toucan, polar bear, platypus",
+        "Environment: endangered, extinct, protect, climate",
+        "Food chain: predator, prey, herbivore, carnivore"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Identify key facts about endangered animals",
+        "Understand cause and effect (basic)"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "The BFG",
+        "(R. Dahl – adapted Level 2)",
+        "Animal & nature themes"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Animal conservation leaflets & fact files"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Animal conservation leaflet: 100–130 words",
+        "Problem → Why it matters → What we can do"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Animal fact web → threat/action diagram → draft leaflet",
+        "Focus: problem → solution structure"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Present Continuous (actions happening now)",
+        "Present Simple vs Present Continuous contrast (intro)",
+        "Must / mustn't (obligation & prohibition)",
+        "▸ Bloom: Apply"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Animal project self-evaluation",
+        "Reflect: Why is conservation important to me?",
+        "Graduate Profile: Principled"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Key facts in a nature programme extract",
+        "Identify endangered animals mentioned",
+        "Match animal to food (carnivore/herbivore)"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Describe a wild animal: appearance, habitat, diet, threats",
+        "Pair work: conservationist debate (save this animal!)",
+        "Group: make an Endangered Animals poster (oral)",
+        "ATL Research: present evidence"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "tema": "Sports & Health",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Word stress in sports: FOOT-ball, gym-NAS-tics",
+        "Intonation: giving advice (You should…)",
+        "Health chant with imperatives"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Sports: gymnastics, volleyball, athletics, martial arts, rowing, skiing",
+        "Body & fitness: muscles, warm up, stretch, stamina",
+        "Health problems: broken arm, sprained ankle, allergy"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Find information in a sports schedule",
+        "Distinguish fact from opinion in a short text"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Danny the Champion of the World",
+        "(R. Dahl – adapted)",
+        "Ch. 1–5: sports & adventure"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Sports magazines & simple fitness guides"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Health & fitness advice article: 110–140 words",
+        "Using should/must/don't"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Brainstorm sports → rank by health benefit → draft article",
+        "Add advice sentences"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Modal verbs: should/shouldn't, must, have to",
+        "Imperatives: affirmative & negative (health advice)",
+        "Countable/uncountable nouns with health vocabulary",
+        "▸ Bloom: Apply–Evaluate"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Can-do checklist: health & sports language",
+        "Reflect: What sport would I like to try?",
+        "Graduate Profile: Risk-taker"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Listen to a sports commentary – identify sports",
+        "Health advice dialogue: fill in the problem",
+        "Movers-style: listen and tick"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Recommend a sport and explain why",
+        "Role-play: sports coach & athlete",
+        "Pair debate: team sports vs individual sports",
+        "ATL Thinking: arguing a position"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "tema": "Holidays & Travel",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Sentence stress in past tense narratives",
+        "Weak forms: was /wəz/, were /wə/",
+        "Vacation story read-aloud rhythm"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Holiday vocabulary: beach, mountains, camping, sightseeing, souvenir, sunscreen",
+        "Weather experiences: freezing, boiling, humid, mild",
+        "Past activities: swam, visited, took, bought, ate"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Sequence events in a holiday narrative",
+        "Identify past time expressions in a text"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Around the World in 80 Days",
+        "(J. Verne – Oxford Bookworms 2)",
+        "Holiday & travel narrative"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Holiday brochures & postcards"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Holiday recount: 120–150 words (Past Simple)",
+        "Where, when, what I did, highlight"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Past Simple time chart (when? where? what?) → draft recount",
+        "Connectors: first, then, after, finally"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Past Simple: regular & irregular verbs (full conjugation)",
+        "Past Simple: questions (Did you…?) & negatives (didn't)",
+        "Time expressions: yesterday, last week, in 2023, ago",
+        "▸ Bloom: Apply"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Holiday recount peer review (2 stars, 1 wish)",
+        "Reflect: What was the best part of my recount?",
+        "Graduate Profile: Communicator"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Listen to a holiday story: sequence the events",
+        "Identify places visited and activities done",
+        "Fill in: Where did they go? What did they do?"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Tell the story of my last holiday (Past Simple)",
+        "Pair work: Holiday photo description (imaginary)",
+        "Class survey: where did you go last holiday?",
+        "ATL Communication: narrative speaking"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "tema": "My Future",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Intonation: future sentences (I'm GOING to…)",
+        "Stress: I WILL be a doctor",
+        "Review: all phonics patterns G1–G4"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Jobs & future: engineer, scientist, artist, athlete, entrepreneur, programmer",
+        "Ambitions: I want to be…, I'd like to…",
+        "Future plans: I'm going to study…"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Identify main idea and details in an article",
+        "Match heading to paragraph (intro)"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "My Brilliant Career",
+        "(adapted) OR",
+        "Real-life Young Achievers",
+        "(graded non-fiction)"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Short articles about young achievers & careers"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Future ambitions paragraph: 120–150 words",
+        "I want to be… because… I am going to…"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Goal-setting timeline → draft ambitions paragraph",
+        "Self-check: verb forms (going to / will / want to)"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Going to: plans & intentions",
+        "Will: predictions & spontaneous decisions (intro)",
+        "Want to / would like to: ambitions",
+        "▸ Bloom: Apply–Evaluate"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "End-of-year portfolio reflection",
+        "Future goals: What will I do in Grade 5?",
+        "Graduate Profile: Balanced"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Listen to interviews about future jobs",
+        "Fill-in: name, ambition, reason",
+        "Short podcast: famous young achievers"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Talk about future job ambitions",
+        "Pair work: dream job interview",
+        "Group: Future Careers Fair presentations",
+        "ATL Communication: persuasive speaking"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "grado": "G5",
+   "cefr": "A2",
+   "unidades": [
+    {
+     "n": 1,
+     "tema": "Personal Identity",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Sentence stress: I LOVE reading but I HATE maths",
+        "Intonation: questions vs. statements (contrast)",
+        "Personality word stress: pa-TIENT, am-BI-tious"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Personality adjectives: patient, ambitious, creative, stubborn, generous, reliable",
+        "Values: honesty, respect, responsibility, empathy",
+        "Collocations: make friends, take risks, face challenges"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Identify character traits supported by evidence",
+        "Infer meaning of unknown words from context"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Wonder",
+        "(R.J. Palacio – adapted)",
+        "Ordinary – Christopher",
+        "Personality & identity focus"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Magazine profiles and personality interviews"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Personality profile: 150–200 words",
+        "Describe someone's character with examples"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Character web → trait + example → draft profile",
+        "Connect paragraphs with furthermore/however"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Present Perfect: ever, never, already, just, yet (full use)",
+        "Present Perfect vs. Past Simple (clear contrast)",
+        "For / since with time expressions",
+        "▸ Bloom: Apply–Analyse"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Personality self-assessment: which traits do I have?",
+        "Reflect: What trait do I want to develop?",
+        "Graduate Profile: Thinker"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Identify personality traits in a character interview",
+        "Fill-in: values mentioned in a talk",
+        "Flyers-style: listen and tick personality traits"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Describe my personality and values",
+        "Pair work: Are you a risk-taker? Discussion",
+        "Oral: My role model and their personality",
+        "ATL Communication: describe abstract ideas"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "tema": "Everyday Life & Habits",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Weak forms in everyday speech: have /həv/, can /kən/",
+        "Connected speech: I usedto /juːstə/ play",
+        "Chant: My Daily Habits"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Habits & routines (extended): exercise, meditate, volunteer, recycle, budget",
+        "Time management: deadline, schedule, priority, procrastinate",
+        "Adverbs: regularly, occasionally, hardly ever"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Distinguish main idea from supporting details",
+        "Identify purpose and audience of a text"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "The Curious Incident of the Dog",
+        "in the Night-time",
+        "(Haddon – adapted extract)",
+        "Habits & perspective"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Informational texts on lifestyle and habit research"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Comparative paragraph: my habits vs. ideal habits (150–200 words)"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Survey data → my habits chart → draft comparison",
+        "Use: whereas, while, on the other hand"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Used to + infinitive: past habits vs. now",
+        "Present Simple vs. used to (contrast)",
+        "Adverbs of frequency: still, no longer, used to",
+        "▸ Bloom: Apply–Analyse"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Habit tracker review: Did I meet my goal this week?",
+        "Reflect: What habit change was hardest?",
+        "Graduate Profile: Self-management (ATL)"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Main idea in a talk about habits",
+        "Fill-in: habits mentioned + frequency",
+        "Identify the speaker's advice"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Compare habits: mine vs. a partner's",
+        "Debate: Is technology changing our habits?",
+        "Group survey: healthy vs. unhealthy habits",
+        "ATL Research: gather and present data"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "tema": "The Natural World",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Word stress in compound nouns: RAINforest, SEAbottom",
+        "Diphthongs in nature words: /aɪ/ wildlife",
+        "Environment vocabulary pronunciation drill"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Environment: deforestation, pollution, drought, flood, biodiversity, ecosystem",
+        "Climate action: renewable energy, carbon footprint, solar panel",
+        "Collocations: protect the environment, reduce waste"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Understand cause and effect in an article",
+        "Scan for specific information (statistics, facts)"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Our Planet",
+        "(BBC book tie-in) OR",
+        "The Boy Who Harnessed the Wind",
+        "(W. Kamkwamba – YA version)"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Environmental news articles and reports"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Problem-solution essay: an environmental issue (170–220 words)"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Problem-solution graphic organiser → draft essay",
+        "Evidence sentence: According to… / Research shows…"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Will for predictions: Scientists believe it will…",
+        "First Conditional (full form): If…, will…",
+        "Unless / as long as (intro)",
+        "▸ Bloom: Apply–Evaluate"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Environmental pledge: What will I do differently?",
+        "Reflect: How did research help my writing?",
+        "Graduate Profile: Principled"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Key facts in an environmental documentary",
+        "Identify problems and proposed solutions",
+        "Note-taking: 3 environmental facts"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Present an environmental problem and solution",
+        "Pair debate: What is the biggest eco-threat?",
+        "Group: Green School campaign pitch",
+        "ATL Thinking: problem-solution reasoning"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "tema": "People & Cultures",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Intonation for contrast: In Peru they…, but in Japan…",
+        "Word stress in cultural words: tra-DI-tion, fes-TI-val",
+        "Rhythm in cross-cultural comparison sentences"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Cultural vocabulary: tradition, custom, ceremony, ancestor, heritage, festival",
+        "Global issues: migration, human rights, social justice",
+        "Adjectives: diverse, multicultural, indigenous, vibrant"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Compare two texts: similarities and differences",
+        "Identify author's viewpoint"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Esperanza Rising",
+        "(P.M. Ryan – adapted)",
+        "Cultures & migration",
+        "Ch. 1–6"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Cultural comparison articles and travel features"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Cultural comparison article: two traditions (180–230 words)"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Venn diagram (two cultures) → draft article",
+        "Formal connectors: similarly, in contrast, however"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Comparative & superlative: irregular forms",
+        "Connectors of contrast: whereas, while, although, despite",
+        "Relative clauses: who, which, that, where (defining – intro)",
+        "▸ Bloom: Analyse"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Cultural reflection: What did I learn about another culture?",
+        "Reflect: Did anything surprise me?",
+        "Graduate Profile: Open-minded"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Identify cultural practices in a travel podcast",
+        "Compare two cultures based on audio",
+        "Flyers-style: multiple choice (cultural text)"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Compare two cultural traditions",
+        "Socratic seminar: Are all traditions worth keeping?",
+        "Group: World Culture Festival role-play",
+        "ATL Social: cross-cultural dialogue"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "tema": "Health & Wellbeing",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Intonation for advice: You SHOULD rest; you SHOULDN'T eat that",
+        "Healthcare vocabulary pronunciation",
+        "Connected speech: What's the matter? /wɒtsðəˈmætə/"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Health & medicine: vaccination, symptoms, diagnosis, prescription, allergy, first aid",
+        "Mental health: stress, anxiety, wellbeing, resilience, therapy",
+        "Lifestyle: balanced diet, exercise routine, sleep hygiene"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Understand implied advice and recommendations",
+        "Evaluate the logic of a health claim (basic)"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "The Crossover",
+        "(K. Alexander)",
+        "Health, family & wellbeing",
+        "(selected chapters)"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Health advice articles and well-being blogs"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Health advice blog post: 180–230 words",
+        "Direct address: You should / Why not try…"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Advice structure: Problem → Cause → Advice → Result",
+        "Peer check: Is the advice convincing?"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Modal verbs: should, ought to, might, could (advice/possibility)",
+        "Passive Voice: Present Simple intro (Rice is grown in Asia)",
+        "Gerund vs. infinitive: enjoy + -ing / want + to (intro)",
+        "▸ Bloom: Analyse–Evaluate"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Well-being journal: How am I feeling this term?",
+        "Reflect: What keeps me balanced?",
+        "Graduate Profile: Balanced"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Key details in a medical consultation",
+        "Identify health advice given",
+        "Distinguish symptoms from causes"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Give and respond to health advice",
+        "Role-play: pharmacist and patient",
+        "Group: Well-being tips for teenagers",
+        "ATL Communication: persuasive register"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "tema": "Adventures & Experiences",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Fluency practice: retell a story without hesitation",
+        "Review: all phonics patterns Grades 1–5",
+        "Flyers-style speaking: long-turn practice"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Adventure & travel: expedition, backpacking, cruise, safari, pilgrimage",
+        "Past narratives: realised, discovered, overcame, survived",
+        "Emotional vocabulary: breathtaking, terrifying, unforgettable, rewarding"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Analyse narrative structure: orientation, crisis, resolution",
+        "Personal response with basic textual reference"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Into the Wild",
+        "(J. Krakauer – adapted)",
+        "OR Percy Jackson #1",
+        "(R. Riordan) full read"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Adventure travel narratives and memoirs (extracts)"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Adventure narrative: 200–260 words",
+        "Past Simple/Continuous + vivid adjectives"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Adventure planning sheet (5 Ws) → draft narrative",
+        "Self-edit: vivid verbs, sensory detail, time expressions"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Past Simple + Past Continuous: while/when",
+        "Past Perfect: introduction (I had already…)",
+        "Narrative connectors: eventually, meanwhile, suddenly, as a result",
+        "▸ Bloom: Evaluate–Create"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "End-of-year portfolio reflection: My best 3 pieces",
+        "Letter to future Grade 6 self",
+        "Graduate Profile: Reflective + ALL attributes reviewed"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Sequence events in a travel adventure story",
+        "Identify emotions in a narrative audio",
+        "Flyers-style: listen and order pictures"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Narrate a real or imagined adventure (3–4 min)",
+        "Pair work: Travel photo story",
+        "Group: Amazing Journeys oral presentation",
+        "ATL Communication: extended narrative"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "grado": "G6",
+   "cefr": "A2→B1",
+   "unidades": [
+    {
+     "n": 1,
+     "tema": "Hello World! Greetings & Me",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Sound-letter correspondence",
+        "Short vowels & alphabet chants"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Classroom objects & instructions",
+        "Greetings & farewells",
+        "Numbers 1–20, colours & shapes"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Identify characters & basic facts",
+        "Match images to text descriptions"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "The Secret Garden",
+        "(F.H. Burnett)",
+        "Black Cat A1",
+        "Ch. 1–5"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Short identity cards & name labels"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Personal profile: 40–60 words",
+        "Simple sentences about myself"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Word webs & brainstorming",
+        "Sentence frames for scaffolding"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Verb TO BE (am/is/are)",
+        "Subject pronouns & possessives",
+        "Basic orthographic conventions",
+        "▸ Bloom: Remember–Understand"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Exit ticket: 3 sentences about myself",
+        "Self-assess: Am I meeting my goal?",
+        "Graduate Profile: Communicator"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Identify speaker & topic in short dialogues",
+        "Fill-in-the-blank: numbers & colours"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Greet, introduce yourself & say farewell",
+        "Pair work: spell name, age & country",
+        "ATL Communication: oral expression"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "tema": "My Family & Friends",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Word stress: 2-syllable words",
+        "Chants with family vocabulary"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Family members & relationships",
+        "Physical descriptions",
+        "Numbers 20–100"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Identify characters' feelings & motives",
+        "Simple character descriptions"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "The Secret Garden",
+        "Ch. 6–end",
+        "+ class book discussion"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Short descriptive paragraphs",
+        "about family members"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Family description: 60–80 words",
+        "Expressing opinions with basic reasons"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Mind maps for family vocabulary",
+        "Sentence combining with 'and/but'"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Have/has got – Possessive 's",
+        "Indefinite & definite articles",
+        "Adjectives of description",
+        "▸ Bloom: Understand–Apply"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "2 stars & 1 wish (peer evaluation)",
+        "Reflect: Did I describe clearly?",
+        "Graduate Profile: Open-minded"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Key details in family descriptions",
+        "Short announcements: school events"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Describe family members & appearance",
+        "Pair work: guess-who game",
+        "ATL Social: collaborative dialogue"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "tema": "My Daily Routine",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Consonant blends & digraphs",
+        "Rhythm in daily-routine chants"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Daily routines & time expressions",
+        "Days, months & seasons",
+        "Sequencing words (first, then, finally)"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Sequence events in a routine text",
+        "Find key details in schedules"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "The Wonderful",
+        "Wizard of Oz",
+        "(L.F. Baum)",
+        "Black Cat A1",
+        "Ch. 1–8"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Simple schedules & timetables"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Diary entry: 80–110 words",
+        "Sequenced daily routine paragraph"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Simple outline: beginning/middle/end",
+        "Using sequencing words"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Present Simple: habits & routines",
+        "Adverbs of frequency (always–never)",
+        "Prepositions of time (at/on/in)",
+        "▸ Bloom: Apply"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Learning journal entry",
+        "Self-assess using success criteria",
+        "Graduate Profile: Reflective"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Sequence events in daily-routine extracts",
+        "Fill-in-the-blank: times & schedules"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Role-play: daily routine interview",
+        "Pair work: timetable exchange",
+        "ATL Communication: asking questions"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "tema": "Food & Healthy Habits",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Long vowel sounds",
+        "Stress in food vocabulary"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Food, drinks & meals",
+        "Healthy vs. unhealthy choices",
+        "Containers & quantities"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Identify main idea in a food text",
+        "Distinguish fact from opinion (basic)"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "The Wonderful",
+        "Wizard of Oz",
+        "Ch. 9–end"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Simple menus & short recipes"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Informal letter to pen pal: 110–150 words",
+        "Describing food preferences"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Drafting with topic sentences",
+        "Connectors: and, but, because, so"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Countable/uncountable nouns",
+        "Some/any – How much/many",
+        "Imperatives (affirmative & negative)",
+        "▸ Bloom: Apply"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Portfolio entry: best piece + reason why",
+        "Peer feedback on draft letter",
+        "Graduate Profile: Principled"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Key points in food-ordering dialogues",
+        "Short cooking instructions"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Order food in a café (scripted role-play)",
+        "Pair work: healthy meal debate",
+        "ATL Social: respectful turn-taking"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "tema": "My Neighbourhood & Places",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Intonation: questions vs. statements",
+        "Stress in directions & places"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Places in town & transport",
+        "Prepositions of place",
+        "Simple directions vocabulary"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Locate specific info on maps",
+        "Follow step-by-step written directions"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "The Prince and",
+        "the Pauper",
+        "(M. Twain)",
+        "Black Cat A2",
+        "Ch. 1–8"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Simple maps & town descriptions"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Simple neighbourhood report: 130–160 words"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Peer feedback: 2 stars & 1 wish",
+        "Checking capitals & full stops"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "There is/There are",
+        "Prepositions of place",
+        "Present Continuous – introduction",
+        "▸ Bloom: Apply–Analyse"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Metacognitive prompt: What helped me learn?",
+        "Self-assessment rubric (vocabulary use)",
+        "Graduate Profile: Knowledgeable"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Follow directions on a map (audio)",
+        "Key info in travel announcements"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Give & follow simple directions",
+        "Pair work: describe neighbourhood",
+        "ATL Self-management: clear delivery"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "tema": "Free Time & Hobbies",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Storytelling intonation & rhythm",
+        "Review: chants, stress & intonation"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Sports, hobbies & leisure",
+        "Frequency expressions",
+        "Sports equipment & venues"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Personal response to illustrated texts",
+        "Identify rhyme & rhythm in poems"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "The Prince and",
+        "the Pauper",
+        "Ch. 9–end",
+        "+ comparative discussion"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Short illustrated poems about hobbies"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Narrative paragraph (recount): 150–200 words",
+        "Past weekend story"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Self-editing checklist",
+        "Final draft & portfolio submission"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Can/can't for ability",
+        "Like/love/hate + -ing",
+        "Let's… / Why don't we…? (suggestions)",
+        "▸ Bloom: Apply–Evaluate"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "End-of-term portfolio reflection",
+        "Semaphore self-assessment (R/A/G)",
+        "Graduate Profile: Inquirer"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Main idea in hobby-related stories",
+        "Fill-in-the-blank: sports commentary"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Short oral presentation: my hobby (2–3 min)",
+        "Pair survey: free-time activities",
+        "TEDTalk-style talk with visuals"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "grado": "G7",
+   "cefr": "B1",
+   "unidades": [
+    {
+     "n": 1,
+     "tema": "Cultures of the World",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Sentence stress & rhythm in greetings",
+        "Word stress: 3-syllable words"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Countries, nationalities & languages",
+        "Continents & cultural objects",
+        "Numbers 1,000–1,000,000"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Identify key facts in informational texts",
+        "Distinguish main idea from detail"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "The Adventures of",
+        "Tom Sawyer",
+        "(M. Twain)",
+        "Vicens Vives A2",
+        "Ch. 1–10"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Short informational fact files (countries)"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Descriptive paragraph: 100–130 words",
+        "A country or city I know"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Brainstorming & simple outlines",
+        "Topic sentence practice"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Past Simple: regular verbs (-ed spelling)",
+        "Past Simple: verb TO BE (was/were)",
+        "Time expressions: yesterday, last week, ago",
+        "▸ Bloom: Remember–Apply"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Exit ticket: What did I discover today?",
+        "Self-assess: vocabulary retention",
+        "Graduate Profile: Inquirer"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Key facts in short cultural podcasts",
+        "Fill-in-the-blank: nationalities & capitals"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Talk about countries & cultures",
+        "Pair work: quiz on nationalities",
+        "ATL Communication: presenting facts"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "tema": "School & Learning",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Intonation: listing & adding information",
+        "Stress in comparative sentences"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "School subjects & learning verbs",
+        "School places & equipment",
+        "Opinion phrases: I think, I believe…"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Identify purpose and audience",
+        "Main idea & detail in school texts"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "The Adventures of",
+        "Tom Sawyer",
+        "Ch. 11–end"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "School notices & simple timetables"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Informal email to pen pal: 130–170 words",
+        "Talking about school life"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Mind maps for generating ideas",
+        "Drafting: topic + support sentences"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Past Simple: irregular verbs",
+        "Past Simple: negatives (didn't) & questions (Did…?)",
+        "Used to (past habits – introduction)",
+        "▸ Bloom: Apply"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Learning journal: school topic reflection",
+        "Peer feedback on email draft",
+        "Graduate Profile: Communicator"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Key info in school announcements",
+        "Fill-in-the-blank: timetables"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Discuss school subjects: like/dislike & why",
+        "Role-play: school enrolment",
+        "ATL Social: respectful disagreement"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "tema": "Adventures & Travel",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Connected speech: contractions & linking",
+        "Rhythm in past-tense narratives"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Travel & holiday vocabulary",
+        "Means of transport & weather",
+        "Sequencing words (previously, later)"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Sequence events in travel narratives",
+        "Scan for specific information"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Great Expectations",
+        "(C. Dickens)",
+        "Vicens Vives A2",
+        "Ch. 1–15"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Travel blog posts & short articles"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Travel postcard & short recount: 150–200 words"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Outlining with beginning/middle/end",
+        "Sequencing: first, then, after that"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Present Perfect: introduction (have/has + pp)",
+        "Present Perfect vs. Past Simple (overview)",
+        "Time expressions: already, just, yet, ever, never",
+        "▸ Bloom: Apply–Analyse"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Reflective prompt: What surprised me?",
+        "Self-assess grammar accuracy",
+        "Graduate Profile: Open-minded"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Sequence events in a travel story",
+        "Key details in weather forecasts"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Plan an imaginary trip (pair/group work)",
+        "Scripted role-play: at the airport",
+        "ATL Communication: persuasive talk"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "tema": "Technology & Media",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Weak forms (was/were/had)",
+        "Stress in technology vocabulary"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Digital devices & internet actions",
+        "Social media & TV genres",
+        "Verbs: upload, stream, post, hack"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Fact vs. opinion in media texts",
+        "Predict meaning from context"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Great Expectations",
+        "Ch. 16–end",
+        "+ class book discussion"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Simple informational texts on technology"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Opinion paragraph: 170–220 words",
+        "For or against technology"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Connecting ideas: however, although, because",
+        "Draft + peer checklist"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Comparative & superlative adjectives",
+        "As…as / not as…as (equality)",
+        "Quantifiers: a lot of, a few, a little",
+        "▸ Bloom: Apply–Analyse"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Portfolio entry: opinion paragraph + commentary",
+        "Peer review using success criteria",
+        "Graduate Profile: Thinker"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Main idea in tech discussions",
+        "Fill-in-the-blank: social media dialogue"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Informal presentation: my tech habits",
+        "Debate: is technology good or bad?",
+        "ATL Thinking: arguing a position"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "tema": "Nature & Environment",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Intonation: surprise & enthusiasm",
+        "Nature vocabulary pronunciation"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Wild & domestic animals",
+        "Habitats & ecosystems",
+        "Environmental adjectives"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Compare information across two texts",
+        "Identify persuasive language"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Treasure Island",
+        "(R.L. Stevenson)",
+        "Vicens Vives A2/B1",
+        "Part 1"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Nature fact files & descriptive articles"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Comparative paragraph: 200–250 words",
+        "Two animals or habitats"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "PEEL paragraph structure (intro)",
+        "Peer review: ideas & vocabulary"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Modal verbs: should/shouldn't, must/mustn't",
+        "Have to / don't have to (obligation)",
+        "Infinitive of purpose (I go… to…)",
+        "▸ Bloom: Apply–Evaluate"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Two stars & a wish (nature project)",
+        "Self-assess: research skills used",
+        "Graduate Profile: Knowledgeable"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Key facts in nature documentaries",
+        "Identify opinions about environment"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Compare two animals (pair debate)",
+        "Oral report: endangered species",
+        "ATL Research: citing evidence"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "tema": "Future Plans & Ambitions",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Sentence rhythm in future sentences",
+        "Review: stress, intonation & linking"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Jobs & professions",
+        "Personal ambitions & goals",
+        "Future time expressions"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Characters' opinions & future intentions",
+        "Personal response to opinion texts"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Treasure Island",
+        "Part 2–end",
+        "+ comparative discussion"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Short interviews & opinion texts on careers"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Future plans paragraph: 200–250 words",
+        "My career in 10 years"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Self-editing: grammar & spelling",
+        "Portfolio entry: best piece"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Going to (future plans & intentions)",
+        "Will (predictions & spontaneous decisions)",
+        "Present Continuous for future arrangements",
+        "▸ Bloom: Apply–Evaluate"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "End-of-term portfolio reflection",
+        "Semaphore: R/A/G self-assessment",
+        "Graduate Profile: Reflective"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Main points in career-advice podcasts",
+        "Fill-in-the-blank: future plans"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Short presentation: my future career",
+        "Pair work: interview simulation",
+        "ATL Self-management: structured talk"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "grado": "G8",
+   "cefr": "B1+",
+   "unidades": [
+    {
+     "n": 1,
+     "tema": "Identity & Lifestyle",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Word stress: 3-4 syllable words",
+        "Intonation patterns in complex sentences"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Personality & lifestyle adjectives",
+        "Social media & self-image",
+        "Collocations with personality"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Identify main idea & supporting details",
+        "Infer meaning from context"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Call of the Wild",
+        "(J. London)",
+        "Black Cat",
+        "Ch. 1–3"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Profiles & magazine interviews"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Descriptive profile: 180–220 words",
+        "Describing someone I admire"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Outline: main idea + 2 supporting details",
+        "Drafting topic & concluding sentences"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Present Simple vs. Present Continuous (contrast)",
+        "State verbs (know, love, seem…)",
+        "Defining relative clauses (who/which/that/where)",
+        "▸ Bloom: Apply–Analyse"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Learning journal: identity & lifestyle unit",
+        "Self-assess: vocabulary in writing",
+        "Graduate Profile: Thinker"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Listening for gist & detail in interviews",
+        "Identify character traits from speech"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Describe a person: character & lifestyle",
+        "Pair discussion: ideal role model",
+        "ATL Communication: detailed description"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "tema": "Media & Entertainment",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Weak forms & elision in natural speech",
+        "Rhythm in narrative texts"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Entertainment genres & reviews",
+        "Reaction verbs: enjoy, can't stand, find…",
+        "Media vocabulary: stream, broadcast"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Understand tone, purpose & audience in reviews",
+        "Distinguish fact from opinion"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Call of the Wild",
+        "Ch. 4–end",
+        "+ class book discussion"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Film, music & book reviews"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Film or book review: 200–250 words",
+        "Opinion + recommendation"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Using connectors: however, although, despite",
+        "Draft + peer checklist (review)"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Past Simple vs. Past Continuous (contrast)",
+        "When/while with past tenses",
+        "Used to (past habits & states)",
+        "▸ Bloom: Apply–Analyse"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Peer review: film/book review",
+        "Reflect: Did I give a clear opinion?",
+        "Graduate Profile: Communicator"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Key information in radio reviews",
+        "Opinions in entertainment discussions"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Recommend a film/book/series (pair)",
+        "Class survey: entertainment habits",
+        "ATL Social: active listening"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "tema": "Health & Wellbeing",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Connected speech: assimilation",
+        "Pronunciation of modal verbs"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Body parts & health conditions",
+        "At the doctor/pharmacy",
+        "Health advice collocations"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Identify fact vs. opinion in advice texts",
+        "Understand implied meaning (inference)"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Gulliver's Travels",
+        "(J. Swift)",
+        "Black Cat",
+        "Parts 1–2"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Health advice articles & leaflets"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Health advice leaflet: 200–250 words",
+        "Using modal verbs for advice"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "PEEL paragraph model (Point/Evidence/Explain/Link)",
+        "Peer feedback: clarity & logic"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Modal verbs: should/shouldn't, must/mustn't",
+        "Have to / don't have to (obligation)",
+        "Need to / needn't (necessity)",
+        "▸ Bloom: Apply–Evaluate"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Exit ticket: 1 thing learned, 1 question",
+        "Self-assess: modal verb accuracy",
+        "Graduate Profile: Caring"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Listen to a doctor-patient dialogue",
+        "Fill-in-the-blank: health advice podcast"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Role-play: doctor-patient consultation",
+        "Give and ask for health advice",
+        "ATL Communication: register awareness"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "tema": "Society & Change",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Silent letters & irregular spellings",
+        "Word stress: adjectives vs. nouns"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Social issues & community values",
+        "Volunteering & activism vocabulary",
+        "Abstract nouns: justice, equality"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Identify argument & counter-argument",
+        "Evaluate strength of evidence (basic)"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Gulliver's Travels",
+        "Parts 3–4",
+        "+ satire discussion"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Opinion articles on social issues"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Opinion paragraph on social issue: 230–280 words"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Thesis statement practice",
+        "Argument outline: for & against"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Present Perfect: all uses",
+        "Present Perfect vs. Past Simple (full contrast)",
+        "For/since, just/already/yet",
+        "▸ Bloom: Analyse–Evaluate"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Portfolio entry: opinion piece + commentary",
+        "Peer evaluation using IB criteria",
+        "Graduate Profile: Principled"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Main argument in social-issue discussions",
+        "Identify speakers' attitudes"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Group discussion: volunteering vs. activism",
+        "Debate: social media – help or harm?",
+        "ATL Thinking: analysing perspectives"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "tema": "Our Planet",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Intonation for attitude & emphasis",
+        "Pronunciation in formal vs. informal speech"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Environmental problems & solutions",
+        "Climate change vocabulary",
+        "Eco-actions: recycle, reduce, reuse"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Scan & skim for specific information",
+        "Understand cause and effect in articles"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "The Giver",
+        "(L. Lowry)",
+        "Clarion Books",
+        "Ch. 1–12"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Environmental news reports & infographics"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Informative text on eco-problem: 250–300 words"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Writing with evidence: paraphrasing sources",
+        "Peer review: argument coherence"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Passive Voice: Present & Past Simple",
+        "Passive: Present Perfect",
+        "By + agent in passive structures",
+        "▸ Bloom: Analyse–Evaluate"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Concept map: environmental issues",
+        "Self-assess research skills used",
+        "Graduate Profile: Open-minded"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Main ideas in environmental documentaries",
+        "Specific details: statistics & facts"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Debate: Is enough being done for the planet?",
+        "Oral report: an environmental issue",
+        "ATL Research: using evidence in argument"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "tema": "Stories & Narratives",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Fluency through drama & role-play",
+        "Review: connected speech & intonation"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Literary genres & story elements",
+        "Narrative adjectives: gripping, chilling",
+        "Emotional vocabulary"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Analyse narrative structure: plot & conflict",
+        "Personal response with textual evidence"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "The Giver",
+        "Ch. 13–end",
+        "+ dystopia comparative essay"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Short story extracts & chapter openings"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Short narrative story: 280–350 words",
+        "Using narrative tenses"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Self-editing: narrative consistency",
+        "Final draft + portfolio reflection"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Reported Speech: statements (say/tell)",
+        "Tense backshift in reported speech",
+        "Narrative tenses: Past Simple/Continuous/Perfect",
+        "▸ Bloom: Evaluate–Create"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "End-of-term portfolio reflection",
+        "Metacognitive prompt: How have I improved?",
+        "Graduate Profile: Reflective"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Narrative point of view in radio stories",
+        "Identify sequence of past events"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Tell a short story using narrative tenses",
+        "Group storytelling challenge",
+        "ATL Self-management: structured narrative"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "grado": "G9",
+   "cefr": "B1+→B2",
+   "unidades": [
+    {
+     "n": 1,
+     "tema": "Identity & Society",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Stress & rhythm in complex sentences",
+        "Intonation: nuance & emphasis"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Social issues: rights, diversity, inequality",
+        "Abstract nouns: justice, freedom",
+        "Formal opinion language"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Identify argument & counter-argument",
+        "Evaluate strength of evidence"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "The Importance of",
+        "Being Earnest",
+        "(O. Wilde)",
+        "Vicens Vives B1.2",
+        "Acts 1–2"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Opinion articles & newspaper editorials"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Opinion paragraph: 250–300 words",
+        "Structured argument with evidence"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Thesis statement & argument outline",
+        "PEEL paragraph model (full use)"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Present Perfect Simple vs. Past Simple (nuanced)",
+        "Present Perfect Continuous (how long…?)",
+        "For/since with extended contexts",
+        "▸ Bloom: Analyse"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Concept map: social issue + my stance",
+        "Self-assess: argument strength",
+        "Graduate Profile: Inquirer"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Main argument in talks on social topics",
+        "Identify speakers' attitudes & bias"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Structured discussion: express & justify opinions",
+        "Pair work: social issues debate",
+        "ATL Thinking: reasoning & evidence"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "tema": "Science & Innovation",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Discourse intonation: listing & contrasting",
+        "Pronunciation of passive structures"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Scientific vocabulary: discoveries & research",
+        "Space & universe",
+        "Academic verbs: analyse, hypothesise"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Understand technical vocabulary in context",
+        "Distinguish fact from hypothesis"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "The Importance of",
+        "Being Earnest",
+        "Act 3 + drama analysis",
+        "+ class discussion"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Science magazine articles & abstracts"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Informative report on a discovery: 270–320 words"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Integrating factual evidence",
+        "Citing sources: basic referencing"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Passive Voice: all tenses (full range)",
+        "Passive + modal verbs (should be done…)",
+        "By + agent – advanced use",
+        "Nominalisation intro: discover→discovery",
+        "▸ Bloom: Analyse–Evaluate"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Learning journal: science discovery unit",
+        "Peer feedback: presentation delivery",
+        "Graduate Profile: Knowledgeable"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Key details in science podcasts",
+        "Note-taking from academic content"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Short academic presentation: a discovery",
+        "Group research project presentation",
+        "ATL Research: citing sources orally"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "tema": "Global Cultures",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Emphatic stress for meaning change",
+        "Features of formal speech"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Cultural traditions & celebrations",
+        "Customs, taboos & rituals",
+        "Adjectives: vibrant, unique, sacred"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Compare perspectives & cultural viewpoints",
+        "Identify author's purpose"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "And Then There",
+        "Were None",
+        "(A. Christie)",
+        "Vicens Vives B1.2",
+        "Ch. 1–8"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Travel & cultural comparison articles"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Cultural description & comparison: 280–330 words"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Discourse markers: however, whereas, despite",
+        "Linking contrast & concession"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Modal verbs of deduction: must/can't/might",
+        "First Conditional + unless/as long as",
+        "Adverbial clauses of contrast: although, despite",
+        "▸ Bloom: Analyse–Evaluate"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Reflective prompt: What challenged me?",
+        "Self-assess: cultural sensitivity",
+        "Graduate Profile: Open-minded"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Specific information in cultural interviews",
+        "Compare perspectives across speakers"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Compare & contrast cultural traditions",
+        "Socratic seminar: cultural differences",
+        "ATL Social: perspective-taking"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "tema": "Future Scenarios",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Connected speech: assimilation & elision",
+        "Pronunciation in conditional sentences"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Future technology & predictions",
+        "Adverbs of probability (certainly, possibly)",
+        "Synonyms & antonyms (C1 prep)"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Understand hypothetical language",
+        "Analyse speculative reasoning in texts"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "And Then There",
+        "Were None",
+        "Ch. 9–end",
+        "+ mystery genre essay"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Speculative & futuristic texts"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Prediction essay 'The World in 2050': 300–350 words"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Speculative language: might, could, may",
+        "Hedging in writing (introduction)"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Second Conditional: extended use",
+        "Will/won't for predictions (evidence-based)",
+        "Future time clauses (when/once/before + present)",
+        "▸ Bloom: Evaluate"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Portfolio entry: prediction essay + commentary",
+        "Peer review using evaluation criteria",
+        "Graduate Profile: Principled"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Opinions & reasons in panel discussions",
+        "Evaluate credibility of speakers"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Debate: future tech – benefits vs. risks",
+        "Pair work: prediction challenge",
+        "ATL Thinking: hypothetical reasoning"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "tema": "Literature & Power",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Prosody in narrative & storytelling",
+        "Intonation for suspense & climax"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Literary genres & narrative elements",
+        "Emotional & sensory vocabulary",
+        "Collocations: plot, character, theme"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Analyse narrative techniques (structure, voice)",
+        "Personal response with textual evidence"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "The Time Machine",
+        "(H.G. Wells)",
+        "Vicens Vives B1.2",
+        "Ch. 1–6"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Short story extracts & novel chapters"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Short story (narrative tenses): 320–380 words"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Narrative cohesion: time expressions",
+        "Revising for consistent tense use"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Narrative tenses: Past Simple, Past Continuous, Past Perfect",
+        "Past Perfect Continuous (had been + -ing)",
+        "Sequence adverbs: eventually, meanwhile, suddenly",
+        "▸ Bloom: Evaluate–Create"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Story self-assessment: narrative craft",
+        "Metacognitive: What literary choices did I make?",
+        "Graduate Profile: Thinker"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Narrative point of view in literary extracts",
+        "Infer character motivation from audio"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Oral narrative: real or imagined story",
+        "Group: collaborative storytelling",
+        "ATL Communication: narrative delivery"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "tema": "Justice & Ethics",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Fluency & delivery for academic debate",
+        "Review: prosody & discourse intonation"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Global problems & solutions",
+        "NGOs & international organisations",
+        "Formal debate vocabulary"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Evaluate logic & coherence of arguments",
+        "Critical reading: identify bias & fallacy"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "The Time Machine",
+        "Ch. 7–end",
+        "+ comparative essay (3 novels)"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Argumentative essays & formal articles"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "For-and-against essay: 320–380 words",
+        "Global issue + balanced argument"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Self-editing for register & style",
+        "Portfolio: evidence of progress"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Third Conditional (hypothetical past)",
+        "Wish / If only + past simple/perfect",
+        "Contrast & concession: whereas, nevertheless",
+        "▸ Bloom: Evaluate–Create"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "End-of-term portfolio reflection",
+        "Semaphore R/A/G (grammar progress)",
+        "Graduate Profile: Reflective"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Speakers' positions in formal debates",
+        "Distinguish fact from speculation"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Formal debate: a global issue (structured)",
+        "Point–Evidence–Explanation model",
+        "ATL All 5 skills: synthesis debate"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "grado": "G10",
+   "cefr": "B2+",
+   "unidades": [
+    {
+     "n": 1,
+     "tema": "Self & Personal Development",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Stress in nominalised forms",
+        "(e.g. PROtest vs. proTEST)"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Personal development & soft skills",
+        "Growth mindset vocabulary",
+        "Collocations: make progress, build resilience"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Inference & implied meaning in complex texts",
+        "Synthesise ideas across paragraphs"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Oliver Twist",
+        "(C. Dickens)",
+        "Penguin Group",
+        "Ch. 1–15"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Long-form articles on personal development"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Personal statement: 300–360 words",
+        "School / university application"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Thesis-driven outline",
+        "Introduction: hook + context + thesis"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Present Perfect Simple vs. Continuous (contrast)",
+        "Gerunds & infinitives: stop/remember/try",
+        "Perfect infinitive (to have done)",
+        "▸ Bloom: Analyse–Evaluate"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Learning journal: personal development",
+        "Self-assess: academic writing quality",
+        "Graduate Profile: Thinker"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Identify speaker's purpose in TED talks",
+        "Note-taking: main ideas & examples"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Discuss personal goals & growth mindset",
+        "Oral reflection: strengths & areas to improve",
+        "ATL Self-management: goal-setting talk"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "tema": "Media Power & Responsibility",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Intonation for hedging & uncertainty",
+        "Prosody in academic register"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Media literacy: bias, algorithm, clickbait",
+        "Journalism vocabulary",
+        "Hedging language: apparently, it seems…"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Identify bias, viewpoint & rhetorical devices",
+        "Evaluate credibility of sources"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Oliver Twist",
+        "Ch. 16–end",
+        "+ Victorian society discussion"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "News reports, opinion columns & editorials"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Balanced news report: 320–380 words",
+        "Objective + attributed quotes"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Integrating quotations & paraphrase",
+        "In-text citation practice (MLA/APA intro)"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Reported Speech: all structures",
+        "Reporting verbs + patterns (admit, warn, insist)",
+        "Inversion after negative adverbials (Never have I…)",
+        "▸ Bloom: Analyse–Evaluate"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Portfolio entry: news report + reflection",
+        "Peer review: bias-check checklist",
+        "Graduate Profile: Communicator"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Evaluate bias in news broadcasts",
+        "Distinguish claim from fact"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Analyse & debate a media topic",
+        "Group: media bias investigation",
+        "ATL Thinking: critical media analysis"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "tema": "Science, Ethics & Progress",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Chunking & pausing in presentations",
+        "Pace for effect in formal speech"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Innovation, research & methodology",
+        "Bioethics vocabulary",
+        "Academic Word List (AWL) – Set 1"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Understand technical & academic texts",
+        "Annotate for key argument & evidence"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Animal Farm",
+        "(G. Orwell)",
+        "Signet Classic",
+        "Ch. 1–5"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Academic articles: science & ethics"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Formal research report: 350–420 words",
+        "Science or ethical issue"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Cohesion: linking devices & transitions",
+        "Paragraph unity & development"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Passive: advanced tenses",
+        "Passive + modals (should be done…)",
+        "Causative have/get (have sth done)",
+        "▸ Bloom: Evaluate"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Annotated bibliography entry",
+        "Self-assess: research depth",
+        "Graduate Profile: Inquirer"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Note-taking from academic lectures",
+        "Identify hedged claims vs. facts"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Present a research summary (5 min)",
+        "Academic register: hedging language",
+        "ATL Research: synthesis presentation"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "tema": "Art, Culture & Expression",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Accent awareness: World Englishes",
+        "Variation in formal/informal delivery"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Social change, diversity & arts vocabulary",
+        "Critical language: argue, claim, challenge",
+        "AWL – Set 2"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Evaluate argument structure in essays",
+        "Identify concession & refutation"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Animal Farm",
+        "Ch. 6–end",
+        "+ allegory & political essay"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Formal essays & cultural feature articles"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Discursive essay (agree/disagree): 360–430 words"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Concession + refutation model",
+        "Peer review: argument & style"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Relative clauses: defining & non-defining",
+        "Relative clauses with prepositions (…in which)",
+        "Participle clauses (reduced relative)",
+        "▸ Bloom: Evaluate–Create"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Essay peer review using IB criteria",
+        "Metacognitive: How did I build my argument?",
+        "Graduate Profile: Principled"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Understand nuanced opinions in discussions",
+        "Infer speaker's values"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Formal discussion: art, culture, society",
+        "Present & defend a cultural argument",
+        "ATL Communication: academic discourse"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "tema": "Sustainability & Action",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Prosody in persuasion & rhetoric",
+        "Emphasis techniques in public speaking"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Ecology & sustainability vocabulary",
+        "Environmental collocations",
+        "Formal connectors: consequently, thereby"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Synthesise information from multiple sources",
+        "Write annotated bibliography (intro)"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Fahrenheit 451",
+        "(R. Bradbury)",
+        "Simon & Schuster",
+        "Pt. 1–2"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Long-form environmental policy reports"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Persuasive essay: 370–440 words",
+        "Environmental call to action"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Revising for persuasive effect",
+        "Tone, diction & formal register"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Conditionals 2 & 3 (full range)",
+        "Mixed Conditionals (all types)",
+        "Wish/If only/It's time/Would rather",
+        "▸ Bloom: Evaluate–Create"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Peer debate evaluation form",
+        "Self-assess: persuasive techniques used",
+        "Graduate Profile: Caring"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Gist & detail in documentary extracts",
+        "Evaluate argument logic"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Persuasive debate: environmental policies",
+        "Point-counterpoint structured format",
+        "ATL Thinking: evaluate & argue"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "tema": "Language, Career & Communication",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Fluency strategies for extended speech",
+        "B2+ exam speaking: long turn"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Career & professional communication",
+        "Workplace vocabulary & collocations",
+        "Formal vs. informal register"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Understand genre conventions in professional docs",
+        "Adapt reading strategy to text type"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Fahrenheit 451",
+        "Pt. 3 + end",
+        "+ dystopia comparative essay"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Job adverts, CVs & cover letters"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "CV + formal cover letter",
+        "(professional communication format)"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Proofreading checklist",
+        "Final edit + portfolio submission"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Future forms: will, going to, present continuous",
+        "Future Perfect & Future Continuous",
+        "Formal register: nominalisation & impersonal structures",
+        "▸ Bloom: Evaluate–Create"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "End-of-year portfolio reflection",
+        "Career project self-assessment",
+        "Graduate Profile: Reflective"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Interpret formality in professional interviews",
+        "Oral strategies: agreeing/challenging"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Mock job interview + career presentation",
+        "Professional communication strategies",
+        "ATL All 5: integration project"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "grado": "G11",
+   "cefr": "C1",
+   "unidades": [
+    {
+     "n": 1,
+     "tema": "Language, Power & Meaning",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Phonological features of academic discourse",
+        "Pace & pausing for rhetorical effect"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Rhetoric & persuasion: ethos, pathos, logos",
+        "C1 AWL: Set 3 (50 academic words)",
+        "Register & style variation (formal/informal)"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Analyse rhetorical devices & argument structure",
+        "Evaluate persuasive techniques"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Moby Dick",
+        "(H. Melville)",
+        "Penguin Random House",
+        "Ch. 1–40"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Complex argumentative texts & speeches"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Argumentative academic essay: 450–550 words",
+        "Thesis-driven with counterargument"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Thesis + multi-paragraph argument structure",
+        "Introduction: hook, context, thesis, map"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Advanced noun phrases & pre/post-modification",
+        "Nominalisation (convert → conversion)",
+        "Fronting for emphasis",
+        "▸ Bloom: Evaluate–Create"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Essay self-assessment rubric (IB criteria)",
+        "Metacognitive: How did I construct my argument?",
+        "Graduate Profile: Thinker"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Identify rhetorical strategies in speeches",
+        "Note-taking: argument structure"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Deliver a persuasive speech (5–7 min)",
+        "Q&A session: defend position",
+        "ATL Communication: rhetoric & argumentation"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "tema": "Literature, Arts & Critical Analysis",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Intonation in literary analysis & critique",
+        "Emphasis & prominence in argument"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Literary analysis: theme, motif, symbolism",
+        "Critical vocabulary: subvert, ambiguous, ironic",
+        "C1 AWL: Set 4"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Literary analysis: theme, motif, symbol, irony",
+        "Compare authorial perspectives"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Moby Dick",
+        "Ch. 41–end",
+        "+ symbolism & thematic essay"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Literary extracts & critical academic essays"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Literary analysis essay: 450–550 words",
+        "Textual evidence + critical commentary"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Integrating textual evidence: PEE/PEEL",
+        "Avoiding plagiarism: citation practice"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Inversion for emphasis (Not only…, Rarely…)",
+        "Cleft sentences (It is/was… that…; What… is)",
+        "Abstract noun clauses (The fact that…)",
+        "▸ Bloom: Evaluate–Create"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Literary analysis peer review",
+        "Reflect: How do texts shape our identity?",
+        "Graduate Profile: Inquirer"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Critical listening: identify fallacies & bias",
+        "Infer unstated assumptions"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Literary analysis presentation (5 min)",
+        "Academic register: hedging & distancing",
+        "ATL Thinking: literary critique"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "tema": "Science, Research & Ethical Debate",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Prosody in formal academic presentations",
+        "Stress for contrastive analysis"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Academic methodology: hypothesis, peer review",
+        "Bioethics vocabulary (advanced)",
+        "C1 AWL: Set 5"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Evaluate credibility & methodology of sources",
+        "Synthesize across multiple academic texts"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "The Boys Who",
+        "Challenged Hitler",
+        "(P. Hoose)",
+        "Farrar, Straus & Giroux",
+        "Pt. 1–2"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Research abstracts & science policy papers"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Research essay with citations: 500–600 words",
+        "MLA/APA format + bibliography"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Hedging & academic distancing language",
+        "Impersonal structures in academic writing"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Mixed Conditionals (all combinations)",
+        "Wish/If only (all forms)",
+        "Hedging: It is possible that…/This may suggest…",
+        "Passive reporting: It is claimed that…/X is said to…",
+        "▸ Bloom: Evaluate–Create"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Research portfolio: source evaluation log",
+        "Self-assess: academic integrity & rigour",
+        "Graduate Profile: Principled"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Evaluate evidence quality in academic talks",
+        "Note-taking: research methodology"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Formal debate: ethical dilemma",
+        "Point-Counterpoint-Synthesis model",
+        "ATL Research: academic sourcing"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "tema": "Global Economy & Business",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Delivery strategies for public speaking",
+        "Managing pace, pitch & pause (C1)"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Economics & business: globalisation, GDP",
+        "Entrepreneurship vocabulary",
+        "C1 AWL: Set 6"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Understand implicit meaning in business texts",
+        "Critically evaluate economic reasoning"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "The Boys Who",
+        "Challenged Hitler",
+        "Pt. 3–end",
+        "+ historical context discussion"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Business reports & economic analyses"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Formal business report: 450–550 words",
+        "Executive summary + recommendations"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Executive summary writing",
+        "Formal recommendations language"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Advanced passive: passive infinitive (to be done)",
+        "Passive -ing (being discussed)",
+        "Causative have/get – all patterns",
+        "Concession: despite, even though, whereas, while",
+        "▸ Bloom: Create"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Business report peer feedback",
+        "Metacognitive: What professional skills did I use?",
+        "Graduate Profile: Communicator"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Understand complex business communication",
+        "Infer attitude & stance"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Business proposal presentation (5–6 min)",
+        "Negotiation role-play",
+        "ATL Social: professional communication"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "tema": "Politics, Society & Global Citizenship",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "Fluency & spontaneity in debate",
+        "Self-monitoring pronunciation (C1)"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "Political science: governance, sovereignty",
+        "Social movements vocabulary",
+        "C1 AWL: Set 7"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "Analyse political discourse & ideological stance",
+        "Identify linguistic manipulation"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Lord of the Flies",
+        "(W. Golding)",
+        "Penguin Books",
+        "Ch. 1–6"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "Political speeches & policy documents"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "Opinion article for publication: 450–550 words",
+        "Editorial style + rhetorical devices"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Revising for style, cohesion & impact",
+        "Using varied sentence structures (C1)"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "Advanced modal meanings (deduction/criticism):",
+        "must have, can't have, should have, ought to have",
+        "Parallel structures in formal writing",
+        "Complex question tags & echo questions",
+        "▸ Bloom: Create"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "Political speech self-evaluation",
+        "Reflect: My role as a global citizen",
+        "Graduate Profile: Open-minded & Caring"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "Analyse political speeches: rhetoric & intent",
+        "Detect persuasive techniques"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "Political opinion speech (5 min) + Q&A",
+        "Mock UN debate or parliamentary debate",
+        "ATL Thinking: political analysis"
+       ]
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "tema": "C1 Mastery & IB Diploma Exam",
+     "bloques": [
+      {
+       "seccion": "Phonics",
+       "bloque": "Phonics",
+       "puntos": [
+        "C1 fluency strategies: repair & reformulation",
+        "Review: all prosodic features"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Vocabulary Development",
+       "puntos": [
+        "C1 vocabulary review: AWL full set",
+        "Idioms & figurative language",
+        "Phrasal verbs in academic contexts"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Skills",
+       "puntos": [
+        "C1 exam strategies: time management,",
+        "dealing with unfamiliar vocabulary,",
+        "identifying gist vs. detail"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Reading Plan",
+       "puntos": [
+        "Lord of the Flies",
+        "Ch. 7–12",
+        "+ comparative essay (2 novels)",
+        "+ C1 exam practice"
+       ]
+      },
+      {
+       "seccion": "Reading & Vocab",
+       "bloque": "Textual Comprehension",
+       "puntos": [
+        "C1 exam texts: gapped text, multiple choice,",
+        "matching headings, cross-text multiple choice"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Text Types (Writing)",
+       "puntos": [
+        "C1 exam writing (all task types):",
+        "Essay, report, proposal, formal letter",
+        "(350–500 words, timed conditions)"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Idea Development & Process",
+       "puntos": [
+        "Final editing: error correction strategies",
+        "C1 exam writing: time management tips"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Language Conventions (Writing)",
+       "puntos": [
+        "C1 grammar review:",
+        "Word formation (prefixes/suffixes)",
+        "Key word transformation (FCE/CAE style)",
+        "Ellipsis & substitution",
+        "Open cloze & error correction strategies",
+        "▸ Bloom: Evaluate–Create"
+       ]
+      },
+      {
+       "seccion": "Writing",
+       "bloque": "Writing Reflection",
+       "puntos": [
+        "C1 exam readiness self-assessment (4 skills)",
+        "Year-end portfolio: 5 pieces + extended reflection",
+        "Graduate Profile: ALL 10 ATTRIBUTES reviewed"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Listening Skills",
+       "puntos": [
+        "C1 exam listening: all task types",
+        "(multiple choice, matching, completion)"
+       ]
+      },
+      {
+       "seccion": "Listening & Speaking",
+       "bloque": "Speaking Skills",
+       "puntos": [
+        "C1 exam speaking: long turn + discussion",
+        "All 5 ATL skills: IB Diploma readiness",
+        "Final oral performance portfolio"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
