@@ -267,6 +267,14 @@ var GL = (function () {
     if (i === it.ci) G.score++;
     if (it.ex) $('expl').classList.add('show');
     $('next').classList.add('show');
+    // Cuando el ejercicio es mas alto que la ventana, el boton de siguiente se
+    // queda fijo abajo y taparia la explicacion de la respuesta. La traemos a la
+    // vista con el hueco que reserva su scroll-margin-bottom; si ya se ve entera
+    // (el caso normal), 'nearest' no mueve nada.
+    var exEl = $('expl');
+    if (exEl && exEl.classList.contains('show') && exEl.scrollIntoView) {
+      exEl.scrollIntoView({ block: 'nearest' });
+    }
   }
   function nextQ() {
     G.idx++;
