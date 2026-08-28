@@ -29,6 +29,14 @@ Write-Host "destino: $dst"
 robocopy $src $dst /E /XD ".git" "book-builder" "tools" /XF ".gitignore" "README.md" "*.log" /NFL /NDL /NJH /NJS /R:1 /W:1 | Out-Null
 if($LASTEXITCODE -ge 8){ Write-Error "robocopy fallo (codigo $LASTEXITCODE)"; exit 1 }
 
+# De book-builder si viajan los PDF: son el libro que el profesor imprime y
+# se descargan desde nis.cohasset.pe. Lo que se queda fuera es la
+# herramienta (book.html y el script), que no se sirve a nadie. Sin esta
+# segunda pasada los PDF se congelaban: la carpeta entraba en la exclusion
+# y la copia del portal se quedo cinco horas por detras del origen.
+robocopy (Join-Path $src "book-builder") (Join-Path $dst "book-builder") "*.pdf" /NFL /NDL /NJH /NJS /R:1 /W:1 | Out-Null
+if($LASTEXITCODE -ge 8){ Write-Error "robocopy de los PDF fallo (codigo $LASTEXITCODE)"; exit 1 }
+
 $n  = (Get-ChildItem $dst -Recurse -File | Measure-Object).Count
 $mb = (Get-ChildItem $dst -Recurse -File | Measure-Object Length -Sum).Sum / 1MB
 Write-Host ("OK - {0} archivos, {1:N1} MB" -f $n, $mb)
