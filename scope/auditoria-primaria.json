@@ -48,8 +48,8 @@
         "Numbers 1–10",
         "Colours: red, blue, green, yellow, orange"
        ],
-       "estado": "a medias",
-       "detalle": "sin cubrir: Numbers 1–10"
+       "estado": "cubierto",
+       "detalle": "3 de 3 puntos"
       },
       {
        "seccion": "Reading & Vocab",
@@ -69,8 +69,8 @@
         "(B. Martin Jr. & J. Archambault)",
         "Alphabet focus – shared reading"
        ],
-       "estado": "FALTA",
-       "detalle": "los readers del portal empiezan en A2; este grado no llega"
+       "estado": "en el portal",
+       "detalle": "Nordic Little Readers (/nis-fun/readers/)"
       },
       {
        "seccion": "Reading & Vocab",
@@ -195,8 +195,8 @@
         "(M. Rosen)",
         "Classroom objects & action words"
        ],
-       "estado": "FALTA",
-       "detalle": "los readers del portal empiezan en A2; este grado no llega"
+       "estado": "en el portal",
+       "detalle": "Nordic Little Readers (/nis-fun/readers/)"
       },
       {
        "seccion": "Reading & Vocab",
@@ -321,8 +321,8 @@
         "(W. Pitzer)",
         "Body parts – read-aloud & point"
        ],
-       "estado": "FALTA",
-       "detalle": "los readers del portal empiezan en A2; este grado no llega"
+       "estado": "en el portal",
+       "detalle": "Nordic Little Readers (/nis-fun/readers/)"
       },
       {
        "seccion": "Reading & Vocab",
@@ -447,8 +447,8 @@
         "(D. Cronin)",
         "Farm animals – picture walk & retell"
        ],
-       "estado": "FALTA",
-       "detalle": "los readers del portal empiezan en A2; este grado no llega"
+       "estado": "en el portal",
+       "detalle": "Nordic Little Readers (/nis-fun/readers/)"
       },
       {
        "seccion": "Reading & Vocab",
@@ -573,8 +573,8 @@
         "(T. Parr)",
         "Family members – shared reading"
        ],
-       "estado": "FALTA",
-       "detalle": "los readers del portal empiezan en A2; este grado no llega"
+       "estado": "en el portal",
+       "detalle": "Nordic Little Readers (/nis-fun/readers/)"
       },
       {
        "seccion": "Reading & Vocab",
@@ -678,8 +678,8 @@
         "Food: apple, banana, bread, milk, egg, cake, water, juice",
         "Like/don't like: I like…, I don't like…"
        ],
-       "estado": "a medias",
-       "detalle": "sin cubrir: Like/don't like: I like…, I don't like…"
+       "estado": "cubierto",
+       "detalle": "2 de 2 puntos"
       },
       {
        "seccion": "Reading & Vocab",
@@ -699,8 +699,8 @@
         "(E. Carle)",
         "Food vocabulary – sequence & retell"
        ],
-       "estado": "FALTA",
-       "detalle": "los readers del portal empiezan en A2; este grado no llega"
+       "estado": "en el portal",
+       "detalle": "Nordic Little Readers (/nis-fun/readers/)"
       },
       {
        "seccion": "Reading & Vocab",
@@ -784,15 +784,19 @@
     }
    ],
    "resumen": {
-    "cubierto": 52,
-    "en el portal": 6,
-    "a medias": 2,
-    "FALTA": 6
+    "cubierto": 54,
+    "en el portal": 12,
+    "a medias": 0,
+    "FALTA": 0
    },
    "recursos": [
     {
      "nombre": "Phonics Studio",
      "enlace": "/phonics/"
+    },
+    {
+     "nombre": "Nordic Little Readers",
+     "enlace": "/nis-fun/readers/"
     },
     {
      "nombre": "Pronunciation Coach",
@@ -848,8 +852,8 @@
         "Age & personal info",
         "Numbers 1–20, ordinal numbers 1st–10th"
        ],
-       "estado": "a medias",
-       "detalle": "sin cubrir: Age & personal info · Numbers 1–20, ordinal numbers 1st–10th"
+       "estado": "cubierto",
+       "detalle": "3 de 3 puntos"
       },
       {
        "seccion": "Reading & Vocab",
@@ -869,8 +873,8 @@
         "(Oxford Reading Tree Level 3)",
         "Appearance & self-description"
        ],
-       "estado": "FALTA",
-       "detalle": "los readers del portal empiezan en A2; este grado no llega"
+       "estado": "en el portal",
+       "detalle": "Nordic Little Readers (/nis-fun/readers/)"
       },
       {
        "seccion": "Reading & Vocab",
@@ -996,8 +1000,8 @@
         "(D. King-Smith)",
         "Ch. 1–3: home & rooms setting"
        ],
-       "estado": "FALTA",
-       "detalle": "los readers del portal empiezan en A2; este grado no llega"
+       "estado": "en el portal",
+       "detalle": "Nordic Little Readers (/nis-fun/readers/)"
       },
       {
        "seccion": "Reading & Vocab",
@@ -1121,8 +1125,8 @@
         "(R. Campbell)",
         "Animals – extended read & retell"
        ],
-       "estado": "FALTA",
-       "detalle": "los readers del portal empiezan en A2; este grado no llega"
+       "estado": "en el portal",
+       "detalle": "Nordic Little Readers (/nis-fun/readers/)"
       },
       {
        "seccion": "Reading & Vocab",
@@ -1247,8 +1251,8 @@
         "(J. & G. Adamson)",
         "Town & health connection"
        ],
-       "estado": "FALTA",
-       "detalle": "los readers del portal empiezan en A2; este grado no llega"
+       "estado": "en el portal",
+       "detalle": "Nordic Little Readers (/nis-fun/readers/)"
       },
       {
        "seccion": "Reading & Vocab",
@@ -1351,8 +1355,8 @@
         "Healthy vs unhealthy",
         "Body: headache, stomachache, cold, toothache"
        ],
-       "estado": "a medias",
-       "detalle": "sin cubrir: Healthy vs unhealthy"
+       "estado": "cubierto",
+       "detalle": "3 de 3 puntos"
       },
       {
        "seccion": "Reading & Vocab",
@@ -1372,8 +1376,8 @@
         "(K. Gray)",
         "Food & healthy habits – discussion"
        ],
-       "estado": "FALTA",
-       "detalle": "los readers del portal empiezan en A2; este grado no llega"
+       "estado": "en el portal",
+       "detalle": "Nordic Little Readers (/nis-fun/readers/)"
       },
       {
        "seccion": "Reading & Vocab",
@@ -1499,8 +1503,8 @@
         "(F. Simon) – Adapted",
         "Hobbies & sports"
        ],
-       "estado": "FALTA",
-       "detalle": "los readers del portal empiezan en A2; este grado no llega"
+       "estado": "en el portal",
+       "detalle": "Nordic Little Readers (/nis-fun/readers/)"
       },
       {
        "seccion": "Reading & Vocab",
@@ -1583,15 +1587,19 @@
     }
    ],
    "resumen": {
-    "cubierto": 52,
-    "en el portal": 6,
-    "a medias": 2,
-    "FALTA": 6
+    "cubierto": 54,
+    "en el portal": 12,
+    "a medias": 0,
+    "FALTA": 0
    },
    "recursos": [
     {
      "nombre": "Phonics Studio",
      "enlace": "/phonics/"
+    },
+    {
+     "nombre": "Nordic Little Readers",
+     "enlace": "/nis-fun/readers/"
     },
     {
      "nombre": "Pronunciation Coach",
@@ -1668,8 +1676,8 @@
         "(J. Brown) Ch. 1–3",
         "School setting & daily life"
        ],
-       "estado": "FALTA",
-       "detalle": "los readers del portal empiezan en A2; este grado no llega"
+       "estado": "en el portal",
+       "detalle": "Nordic Little Readers (/nis-fun/readers/)"
       },
       {
        "seccion": "Reading & Vocab",
@@ -1796,8 +1804,8 @@
         "(adapted/graphic version)",
         "School routines & feelings"
        ],
-       "estado": "FALTA",
-       "detalle": "los readers del portal empiezan en A2; este grado no llega"
+       "estado": "en el portal",
+       "detalle": "Nordic Little Readers (/nis-fun/readers/)"
       },
       {
        "seccion": "Reading & Vocab",
@@ -1924,8 +1932,8 @@
         "(V. Thomas)",
         "Weather & seasons – whole class read"
        ],
-       "estado": "FALTA",
-       "detalle": "los readers del portal empiezan en A2; este grado no llega"
+       "estado": "en el portal",
+       "detalle": "Nordic Little Readers (/nis-fun/readers/)"
       },
       {
        "seccion": "Reading & Vocab",
@@ -2051,8 +2059,8 @@
         "Dinosaurs Before Dark",
         "(M.P. Osborne) Ch. 1–5"
        ],
-       "estado": "FALTA",
-       "detalle": "los readers del portal empiezan en A2; este grado no llega"
+       "estado": "en el portal",
+       "detalle": "Nordic Little Readers (/nis-fun/readers/)"
       },
       {
        "seccion": "Reading & Vocab",
@@ -2178,8 +2186,8 @@
         "(P. Karst)",
         "Feelings & emotional wellbeing"
        ],
-       "estado": "FALTA",
-       "detalle": "los readers del portal empiezan en A2; este grado no llega"
+       "estado": "en el portal",
+       "detalle": "Nordic Little Readers (/nis-fun/readers/)"
       },
       {
        "seccion": "Reading & Vocab",
@@ -2305,8 +2313,8 @@
         "(Dr. Seuss)",
         "Community & environment connection"
        ],
-       "estado": "FALTA",
-       "detalle": "los readers del portal empiezan en A2; este grado no llega"
+       "estado": "en el portal",
+       "detalle": "Nordic Little Readers (/nis-fun/readers/)"
       },
       {
        "seccion": "Reading & Vocab",
@@ -2391,14 +2399,18 @@
    ],
    "resumen": {
     "cubierto": 54,
-    "en el portal": 6,
+    "en el portal": 12,
     "a medias": 0,
-    "FALTA": 6
+    "FALTA": 0
    },
    "recursos": [
     {
      "nombre": "Phonics Studio",
      "enlace": "/phonics/"
+    },
+    {
+     "nombre": "Nordic Little Readers",
+     "enlace": "/nis-fun/readers/"
     },
     {
      "nombre": "Pronunciation Coach",
@@ -2475,8 +2487,8 @@
         "(E.B. White – simplified)",
         "Ch. 1–6: town & farm setting"
        ],
-       "estado": "FALTA",
-       "detalle": "los readers del portal empiezan en A2; este grado no llega"
+       "estado": "en el portal",
+       "detalle": "Nordic Little Readers (/nis-fun/readers/)"
       },
       {
        "seccion": "Reading & Vocab",
@@ -2602,8 +2614,8 @@
         "(J. Kinney – adapted)",
         "School life & learning"
        ],
-       "estado": "FALTA",
-       "detalle": "los readers del portal empiezan en A2; este grado no llega"
+       "estado": "en el portal",
+       "detalle": "Nordic Little Readers (/nis-fun/readers/)"
       },
       {
        "seccion": "Reading & Vocab",
@@ -2729,8 +2741,8 @@
         "(R. Dahl – adapted Level 2)",
         "Animal & nature themes"
        ],
-       "estado": "FALTA",
-       "detalle": "los readers del portal empiezan en A2; este grado no llega"
+       "estado": "en el portal",
+       "detalle": "Nordic Little Readers (/nis-fun/readers/)"
       },
       {
        "seccion": "Reading & Vocab",
@@ -2856,8 +2868,8 @@
         "(R. Dahl – adapted)",
         "Ch. 1–5: sports & adventure"
        ],
-       "estado": "FALTA",
-       "detalle": "los readers del portal empiezan en A2; este grado no llega"
+       "estado": "en el portal",
+       "detalle": "Nordic Little Readers (/nis-fun/readers/)"
       },
       {
        "seccion": "Reading & Vocab",
@@ -2983,8 +2995,8 @@
         "(J. Verne – Oxford Bookworms 2)",
         "Holiday & travel narrative"
        ],
-       "estado": "FALTA",
-       "detalle": "los readers del portal empiezan en A2; este grado no llega"
+       "estado": "en el portal",
+       "detalle": "Nordic Little Readers (/nis-fun/readers/)"
       },
       {
        "seccion": "Reading & Vocab",
@@ -3089,8 +3101,8 @@
         "Ambitions: I want to be…, I'd like to…",
         "Future plans: I'm going to study…"
        ],
-       "estado": "a medias",
-       "detalle": "sin cubrir: Ambitions: I want to be…, I'd like to… · Future plans: I'm going to study…"
+       "estado": "cubierto",
+       "detalle": "3 de 3 puntos"
       },
       {
        "seccion": "Reading & Vocab",
@@ -3111,8 +3123,8 @@
         "Real-life Young Achievers",
         "(graded non-fiction)"
        ],
-       "estado": "FALTA",
-       "detalle": "los readers del portal empiezan en A2; este grado no llega"
+       "estado": "en el portal",
+       "detalle": "Nordic Little Readers (/nis-fun/readers/)"
       },
       {
        "seccion": "Reading & Vocab",
@@ -3196,15 +3208,19 @@
     }
    ],
    "resumen": {
-    "cubierto": 53,
-    "en el portal": 6,
-    "a medias": 1,
-    "FALTA": 6
+    "cubierto": 54,
+    "en el portal": 12,
+    "a medias": 0,
+    "FALTA": 0
    },
    "recursos": [
     {
      "nombre": "Phonics Studio",
      "enlace": "/phonics/"
+    },
+    {
+     "nombre": "Nordic Little Readers",
+     "enlace": "/nis-fun/readers/"
     },
     {
      "nombre": "Pronunciation Coach",
@@ -4052,6 +4068,10 @@
     {
      "nombre": "Readers del portal",
      "enlace": "/reader.html"
+    },
+    {
+     "nombre": "Nordic Little Readers",
+     "enlace": "/nis-fun/readers/"
     },
     {
      "nombre": "Pronunciation Coach",
