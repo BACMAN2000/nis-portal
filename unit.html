@@ -94,6 +94,8 @@ table.rub.plain td.lvl{width:9%;font-weight:700;color:var(--blue-d)}
 .entrega .btn.small{padding:7px 14px;font-size:.8rem}
 .slide-chip{display:inline-block;border:1px solid #f0c987;color:#8a5a12;background:#fffaf0;border-radius:6px;padding:3px 9px;font-size:.75rem;font-weight:700;text-decoration:none}
 .slide-chip:hover{background:#f7e2bd}
+.on-chip{display:inline-block;border:1px solid var(--blue);color:#fff;background:var(--blue);border-radius:6px;padding:3px 10px;font-size:.75rem;font-weight:700;text-decoration:none;transition:.12s}
+.on-chip:hover{background:var(--blue-dd);border-color:var(--blue-dd)}
 .doc-chip{display:inline-block;border:1px solid #7c9a4e;color:#4a6b1f;background:#f4f9ec;border-radius:6px;padding:3px 9px;font-size:.75rem;font-weight:700;text-decoration:none;transition:.12s}
 .doc-chip:hover{background:#7c9a4e;color:#fff}
 .ses-row .grupo{display:inline-flex;align-items:center;gap:5px}
@@ -280,7 +282,10 @@ function pinta(){
     </div>
   </div>`;
 
-  $('#rub').addEventListener('click', clicRubrica);
+  /* Sin rubrica no hay #rub: la unidad de 4.o no la trae y aqui reventaba,
+     dejando el resto de la pagina sin cablear. */
+  const rubEl = $('#rub');
+  if(rubEl) rubEl.addEventListener('click', clicRubrica);
   U.deliverables.forEach(cablea);
   cableaArchivo('notebook');
 }
@@ -458,9 +463,17 @@ let _mat = null;
 const RE_WS = /^u(\d+)w(\d+)s(\d+)-worksheet-([a-z0-9]+)\.(pdf|docx)$/i;
 const RE_SL = /^u(\d+)w(\d+)s(\d+)-slides\.pptx$/i;
 
+let _digitales = new Set();
+
 async function cargaMateriales(){
   _mat = {};
   if(!sb || !me) return;
+  /* Fichas que ya se pueden resolver dentro del portal. */
+  try{
+    const { data } = await sb.from('worksheets').select('week,session,level')
+      .eq('grade',GRADE).eq('unit',UNIT);
+    (data||[]).forEach(w => _digitales.add(w.week+'s'+w.session+'-'+w.level));
+  }catch(_){}
   const base = GRADE + '/u' + UNIT + '/';
   const idx  = ((window.CLASS_FILES||{})[GRADE]||{})['u'+UNIT] || {weeks:{}};
   const semanas = (U.sequence||[]).map(w=>w.n);
@@ -500,6 +513,8 @@ function sesionesSemana(n){
   const filas = ss.map(x=>{
     const niveles = ['A2','B1','B2','C1'].filter(l=>x.ws[l] && x.ws[l].pdf)
       .map(l=>`<a class="lvl-chip" href="#" onclick="return abreArchivo('${base}${esc(x.ws[l].pdf)}',this)">${l}</a>`).join('');
+    const online = ['A2','B1','B2','C1'].filter(l=>_digitales.has(n+'s'+x.s+'-'+l))
+      .map(l=>`<a class="on-chip" href="worksheet.html?grade=${GRADE}&unit=${UNIT}&week=${n}&session=${x.s}&level=${l}">${l}</a>`).join('');
     const edit = ['A2','B1','B2','C1'].filter(l=>x.ws[l] && x.ws[l].docx)
       .map(l=>`<a class="doc-chip" href="#" onclick="return abreArchivo('${base}${esc(x.ws[l].docx)}',this)">${l}</a>`).join('');
     const ver = (x.deck && x.pages)
@@ -508,11 +523,12 @@ function sesionesSemana(n){
        visor y no se lleva el fichero. */
     const pptx = (esProfe && x.pptx)
       ? `<a class="slide-chip" href="#" onclick="return abreArchivo('${base}${esc(x.pptx)}',this)">&#128202; .pptx</a>` : '';
-    if(!niveles && !ver && !edit && !pptx) return '';
+    if(!niveles && !ver && !edit && !pptx && !online) return '';
     const hito = 'w' + n + 's' + x.s;
     return `<div class="ses-row">
         <b>S${x.s} · ${esc(x.title||('Session '+x.s))}</b>${ver}
-        ${niveles?`<span class="grupo"><i>Worksheet</i>${niveles}</span>`:''}
+        ${online?`<span class="grupo"><i>Solve online</i>${online}</span>`:''}
+        ${niveles?`<span class="grupo"><i>PDF</i>${niveles}</span>`:''}
         ${edit?`<span class="grupo"><i>Editable</i>${edit}</span>`:''}${pptx}
         <a class="hand-chip" id="hand-${hito}" href="#" onclick="return abreEntrega('${hito}')">&#8593; Hand in</a>
       </div>
