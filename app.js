@@ -661,7 +661,7 @@ async function adminTeachers(){
     const _nodeChip=(key,label)=>`<label style="${chipCss}"><input type="checkbox" class="tg-node" value="${key}" ${(managed? managed.has(key): true)?'checked':''}> ${esc(label)}</label>`;
     // Unidades y semanas no se asignan al profesor por separado (heredan de
     // su Activities), así que quedan fuera de los chips generales.
-    const _gradeKeySet=new Set([...ALL_GRADE_ORDER.flatMap(g=>['english.classes.'+g,'english.classes.'+g+'.activities','english.classes.'+g+'.grammar']),'english.classes.g9.cambridge','english.classes.g9.cambridge.listening','english.classes.g9.uoe1','english.classes.g9.writing','english.classes.g9.unit5','english.classes.g9.reader','english.classes.g7.reader',..._SUB_NODES.map(n=>n.key)]);
+    const _gradeKeySet=new Set([...ALL_GRADE_ORDER.flatMap(g=>['english.classes.'+g,'english.classes.'+g+'.activities','english.classes.'+g+'.grammar']),'english.classes.g9.cambridge','english.classes.g9.cambridge.listening','english.classes.g9.uoe1','english.classes.g9.writing','english.classes.g9.unit5','english.classes.g6.units','english.classes.g9.reader','english.classes.g7.reader',..._SUB_NODES.map(n=>n.key)]);
     const generalChips=ACCESS_NODES.filter(n=>!_gradeKeySet.has(n.key)).map(n=>_nodeChip(n.key,n.label)).join('');
     // Primaria (2.º–5.º) sin Grammar: en esa etapa la gramática vive dentro
     // de las actividades, igual que en francés.
@@ -669,6 +669,7 @@ async function adminTeachers(){
       const items=[['english.classes.'+g,'Classes'],['english.classes.'+g+'.activities','🎲 Activities']];
       if(!_isPrimaryGrade(g)) items.push(['english.classes.'+g+'.grammar','📝 Grammar']);
       if(g==='g7') items.push(['english.classes.g7.reader','📚 Readers']);
+      if(g==='g6') items.push(['english.classes.g6.units','🎯 Units']);
       if(g==='g9') items.push(['english.classes.g9.cambridge','🎓 Cambridge'],['english.classes.g9.cambridge.listening','🎧 Cambridge Listening'],['english.classes.g9.uoe1','🧩 Use of English P1'],['english.classes.g9.writing','✍️ Writing'],['english.classes.g9.unit5','🎯 Unit 5'],['english.classes.g9.reader','📚 Readers']);
       return `<div class="row" style="gap:6px;align-items:center;margin-top:5px;flex-wrap:wrap"><span class="muted" style="font-size:.8rem;min-width:84px">${GRADE_META[g][0]} ${GRADE_META[g][1]}</span>${items.map(it=>_nodeChip(it[0],it[1])).join('')}</div>`;
     }).join('');
@@ -2632,6 +2633,7 @@ const ACCESS_NODES = [
   {key:'english.classes.g9.uoe1',       label:'9th · Use of English P1'},
   {key:'english.classes.g9.writing',    label:'9th · Writing'},
   {key:'english.classes.g9.unit5',      label:'9th · Unit 5 (product)'},
+  {key:'english.classes.g6.units',      label:'6th · Units (products)'},
   {key:'english.classes.g7.reader',     label:'7th · Readers'},
   {key:'english.classes.g9.reader',     label:'9th · Readers'},
   {key:'french',                        label:'French (toda la materia)'},
@@ -2770,7 +2772,7 @@ function studentGrade(key){
   $('#main').innerHTML=`${back}<h1>${emoji} ${label}</h1>
     <p class="muted" style="margin-top:-6px">${label} material.</p>
     <div class="grid cols-2" style="margin-top:12px">
-      ${unitPlansFor(key).length ? (nodeVisible(base+'.unit5') ? _hubCard('🎯','Units','Your units this year: the final product, the rubric from day one, and the week-by-week practice that feeds it.',"window._nav('classes_"+key+"_units')") : _lockedCard('🎯','Units','Your units and their final products.')) : ''}
+      ${unitPlansFor(key).length ? (nodeVisible(unitsNode(key)) ? _hubCard('🎯','Units','Your units this year: the final product, the rubric from day one, and the week-by-week practice that feeds it.',"window._nav('classes_"+key+"_units')") : _lockedCard('🎯','Units','Your units and their final products.')) : ''}
       ${_isPrimaryGrade(key) ? '' : (nodeVisible(base+'.grammar') ? _skillCard('📝','Grammar','Grammar for '+label+': explanations and games by unit.',_withBack('grammar.html?grade='+key,route)) : _lockedCard('📝','Grammar','Grammar for '+label+'.'))}
       ${nodeVisible(base+'.activities') ? _hubCard('🎲','Activities',_isPrimaryGrade(key)?'Games for each unit — with audio for young learners.':'Games by unit and by level: crosswords, word searches and more.',"window._nav('classes_"+key+"_act')") : _lockedCard('🎲','Activities','Games and activities.')}
       ${key==='g9' ? (nodeVisible('english.classes.g9.cambridge') ? _hubCard('🎓','Cambridge','B2 First (FCE) practice by skill: Listening, Use of English, Reading and Writing.',"window._nav('classes_g9_cambridge')") : _lockedCard('🎓','Cambridge','Cambridge B2 First practice.')) : ''}
@@ -4112,6 +4114,11 @@ window.unitCriterio = async function(id, crit, valor){
    unidad (unit.html). Los datos salen de unit-plans.js, que es copia
    del planner de Toddle: si una unidad no está ahí, no se ofrece.
 ---------------------------------------------------------------- */
+/* La clave del nodo de Units: 9.º conserva la suya (english.classes.g9.unit5),
+   que ya esta dada a los profesores; los grados nuevos usan .units. */
+function unitsNode(grade){
+  return 'english.classes.'+grade+(grade==='g9' ? '.unit5' : '.units');
+}
 function unitPlansFor(grade){
   const p = (window.UNIT_PLANS||{})[grade];
   return (p && p.units) ? p.units : [];
@@ -4121,7 +4128,7 @@ function studentGradeUnits(key){
   const route = 'classes_'+key+'_units';
   const back  = _backBtn("window._nav('classes_"+key+"')", GRADE_META[key][1]);
   const base  = 'english.classes.'+key;
-  if(!nodeVisible(base) || !nodeVisible(base+'.unit5')){ _lockedView(back,'🎯 Units'); return; }
+  if(!nodeVisible(base) || !nodeVisible(unitsNode(key))){ _lockedView(back,'🎯 Units'); return; }
   const plan  = (window.UNIT_PLANS||{})[key];
   const units = unitPlansFor(key);
   if(!units.length){ _lockedView(back,'🎯 Units'); return; }

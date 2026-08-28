@@ -24,6 +24,94 @@
  *                lo que el alumno entrega; kind es la clave en unit_submissions
  */
 window.UNIT_PLANS = {
+
+  g6: {
+    label: 'Grade 6',
+    units: [
+
+/* ------------------------------------------------- 6.o U4 */
+{
+  n:4,
+  title:'Heroes Among Us — The Power of Life Choices',
+  weeks:6,
+  stepWord:'Step',
+  bigq:'How do the choices we make today shape our character and our community tomorrow?',
+  situation:'You are looking for role models, and it is easy to find them in superheroes or influencers. This unit sends you somewhere else: to the lives of real, ordinary people who got past huge personal, social or physical obstacles and made an extraordinary difference. Key concepts: identity and connections.',
+  audience:'Your Hero Profile is a finished booklet, made to be read by someone else — not a worksheet you fill in and forget.',
+  criteria:[
+    {n:1, text:'Literal comprehension — I pull out dates, names, places and life milestones from a biography.'},
+    {n:2, text:'Inference — I work out what someone was like inside from what they actually did.'},
+    {n:3, text:'I use the past simple (regular and irregular) with few mistakes when I describe past events.'},
+    {n:4, text:'I link my sentences with chronological connectors (first, next, then, finally) and with because, but and so.'},
+    {n:5, text:'I produce a cohesive 3-paragraph biography: early life — achievements and obstacles — legacy and my opinion.'},
+    {n:6, text:'I read passages aloud with the right phrasing, pauses and pacing.'},
+    {n:7, text:'I share a short, structured spoken summary and opinion of the hero I chose.'}
+  ],
+  sequence:[
+    {n:1,title:'Traits: what you see and what you are',desc:'Sorting physical traits (tall, brown hair) from internal character traits (brave, determined) with visual sorting tasks.'},
+    {n:2,title:'Rebuilding a timeline',desc:'Unscrambling the chronological story of a real figure using sequence cards: first, next, then, finally.'},
+    {n:3,title:'Cause and effect',desc:'Reading short stories of struggle — Frida Kahlo, Louis Braille — and colour-coding the link between the obstacle and the heroic response with but, because and so.'},
+    {n:4,title:'Finding the facts yourself',desc:'Safe-search data extraction: locked-down pages, specific data points, and your Hero ID Card.',give:'Your Hero ID Card, complete.'}
+  ],
+  words:['brave','creative','patient','determined','kind','hardworking','honest','curious','resilient','disciplined','was born','grew up','studied','discovered','improved','first, next, then, finally','because','so','but'],
+  deliverables:[
+    {kind:'report', type:'text', icon:'&#128221;', title:'Three-paragraph biography',
+     desc:'Early life — achievements and obstacles — legacy and what you think. One paragraph each.',
+     spec:'3 paragraphs · past simple',
+     checklist:[
+       {k:'past', t:'I write in the past simple', re:'\\b(was|were|had|went|made|became|wrote|built|fought|studied|lived|started|created|discovered|helped)\\b'},
+       {k:'seq', t:'I use chronological connectors', re:'(first|next|then|after that|finally|later in life|at the age of)'},
+       {k:'cause', t:'I show cause and effect with because, so or but', re:'\\b(because|so|but)\\b'},
+       {k:'traits', t:'I name internal character traits, not just looks', re:'(brave|determined|resilient|patient|honest|curious|disciplined|kind|hardworking|creative)'},
+       {k:'opinion', t:'I say what I think about my hero', re:'(i think|in my opinion|i believe|for me|i admire)'}
+     ]},
+    {kind:'presentation', type:'file', icon:'&#128218;', title:'Hero Profile booklet + your spoken summary',
+     desc:'Upload your finished booklet (export it as PDF or images), or record the short spoken summary of your hero.',
+     spec:'Booklet · plus a short talk'}
+  ]
+},
+
+/* ------------------------------------------------- 6.o U5 */
+{
+  n:5,
+  title:'Tech in My Life: Pros and Cons',
+  weeks:5,
+  bigq:'How does technology help and harm us in our personal lives?',
+  situation:'Technology is everywhere in your day. In this unit you stop and look at it: what the devices and tools you use actually do to your routines, your health and your habits — and you learn to say it in English, first in sentences, then in paragraphs, then in a report.',
+  audience:'Your class. The mini-poster is there so somebody can follow your talk, and the report is written to be read.',
+  criteria:[
+    {n:1, text:'Speaking & listening — I give a simple, personal opinion about technology in short clear sentences, with at least one reason or example, and I listen for the main idea and two details.'},
+    {n:2, text:'Reading — I find key information in short texts and I can tell whether a text is for or against technology.'},
+    {n:3, text:'Writing — I write a short opinion paragraph (6–8 sentences) with a topic sentence, at least one reason and a conclusion, using because, but and also.'}
+  ],
+  sequence:[
+    {n:1,title:'Introduction and vocabulary',desc:'Naming the technologies you personally use and describing one pro and one con in simple sentences.',give:'One pro and one con, in your own words.'},
+    {n:2,title:'Reading and organising ideas',desc:'Pulling pros and cons out of short texts and putting them in order.',give:'Your pros-and-cons chart.'},
+    {n:3,title:'From sentences to paragraphs',desc:'Turning a list of sentences into a connected paragraph with basic connectors.',give:'Your first full paragraph.'},
+    {n:4,title:'Drafting the report',desc:'How a report is built, and your first draft of one.',give:'The draft of your report.'},
+    {n:5,title:'Final products',desc:'Finishing the report and presenting the mini-poster.',give:'The final report and the poster talk.'}
+  ],
+  words:['technology','useful','harmful','advantage','disadvantage','save time','fun','distraction','screen time','health','learning','family','friends','because','but','also'],
+  deliverables:[
+    {kind:'report', type:'text', icon:'&#128221;', title:'Report on technology in your life',
+     desc:'At least two personal pros and two cons. Topic sentence, your reasons, and a conclusion.',
+     spec:'6–8 sentences minimum', range:[80,200],
+     checklist:[
+       {k:'pros', t:'I give at least two good things about technology', re:'(help|useful|save time|fun|learn|easier)'},
+       {k:'cons', t:'I give at least two problems', re:'(harm|distract|screen time|health|addicted|waste)'},
+       {k:'connect', t:'I use because, but and also', re:'\\b(because|but|also)\\b'},
+       {k:'example', t:'I give an example from my own life', re:'(i use|my|when i|every day)'},
+       {k:'concl', t:'I finish with what I think', re:'(in conclusion|to sum up|i think|in my opinion)'}
+     ]},
+    {kind:'presentation', type:'file', icon:'&#128506;', title:'Mini-poster and your talk',
+     desc:'Photograph your mini-poster and record your one-to-two-minute presentation.',
+     spec:'1–2 minutes'}
+  ]
+}
+
+    ]
+  },
+
   g9: {
     label: 'Grade 9',
     cefr: 'B1+ → B2 (Cambridge B2 First)',
