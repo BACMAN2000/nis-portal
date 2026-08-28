@@ -92,6 +92,8 @@ table.rub.plain td.lvl{width:9%;font-weight:700;color:var(--blue-d)}
 .entrega input[type=url]{flex:1 1 240px;border:1px solid var(--line);border-radius:8px;padding:7px 10px;font-family:inherit;font-size:.83rem}
 .entrega .o{font-size:.75rem;color:var(--grey);text-transform:uppercase;letter-spacing:.05em;font-weight:700}
 .entrega .btn.small{padding:7px 14px;font-size:.8rem}
+.slide-chip{display:inline-block;border:1px solid #f0c987;color:#8a5a12;background:#fffaf0;border-radius:6px;padding:3px 9px;font-size:.75rem;font-weight:700;text-decoration:none}
+.slide-chip:hover{background:#f7e2bd}
 .doc-chip{display:inline-block;border:1px solid #7c9a4e;color:#4a6b1f;background:#f4f9ec;border-radius:6px;padding:3px 9px;font-size:.75rem;font-weight:700;text-decoration:none;transition:.12s}
 .doc-chip:hover{background:#7c9a4e;color:#fff}
 .ses-row .grupo{display:inline-flex;align-items:center;gap:5px}
@@ -454,6 +456,7 @@ window.abreArchivo = async function(ruta, el){
    diapositivas ya convertidas a imagen. */
 let _mat = null;
 const RE_WS = /^u(\d+)w(\d+)s(\d+)-worksheet-([a-z0-9]+)\.(pdf|docx)$/i;
+const RE_SL = /^u(\d+)w(\d+)s(\d+)-slides\.pptx$/i;
 
 async function cargaMateriales(){
   _mat = {};
@@ -467,6 +470,12 @@ async function cargaMateriales(){
     const arch = (listas[k] && listas[k].data) || [];
     const ses = {};
     arch.forEach(f=>{
+      const sl = RE_SL.exec(f.name||'');
+      if(sl){
+        const sn2 = parseInt(sl[3],10);
+        (ses[sn2] || (ses[sn2] = {s:sn2, ws:{}})).pptx = 'w'+n+'/'+f.name;
+        return;
+      }
       const m = RE_WS.exec(f.name||'');
       if(!m) return;
       const sn = parseInt(m[3],10), lvl = m[4].toUpperCase(), ext = m[5].toLowerCase();
@@ -495,12 +504,16 @@ function sesionesSemana(n){
       .map(l=>`<a class="doc-chip" href="#" onclick="return abreArchivo('${base}${esc(x.ws[l].docx)}',this)">${l}</a>`).join('');
     const ver = (x.deck && x.pages)
       ? `<a class="deck-chip" href="#" onclick="return verClase('${base}${esc(x.deck)}',${x.pages},'S${x.s} · ${esc(x.title||('Session '+x.s)).replace(/'/g,"\'")}')">&#9654; View class</a>` : '';
-    if(!niveles && !ver && !edit) return '';
+    /* El .pptx vuelve, pero solo para el docente: el alumno ve la clase en el
+       visor y no se lleva el fichero. */
+    const pptx = (esProfe && x.pptx)
+      ? `<a class="slide-chip" href="#" onclick="return abreArchivo('${base}${esc(x.pptx)}',this)">&#128202; .pptx</a>` : '';
+    if(!niveles && !ver && !edit && !pptx) return '';
     const hito = 'w' + n + 's' + x.s;
     return `<div class="ses-row">
         <b>S${x.s} · ${esc(x.title||('Session '+x.s))}</b>${ver}
         ${niveles?`<span class="grupo"><i>Worksheet</i>${niveles}</span>`:''}
-        ${edit?`<span class="grupo"><i>Editable</i>${edit}</span>`:''}
+        ${edit?`<span class="grupo"><i>Editable</i>${edit}</span>`:''}${pptx}
         <a class="hand-chip" id="hand-${hito}" href="#" onclick="return abreEntrega('${hito}')">&#8593; Hand in</a>
       </div>
       <div class="entrega" id="box-${hito}" style="display:none">
