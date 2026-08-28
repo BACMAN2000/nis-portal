@@ -25,6 +25,165 @@
  */
 window.UNIT_PLANS = {
 
+  /* ===== PRIMARIA ===== En primaria solo hay U4 planificada; la U5 no existe
+     todavia en Toddle, asi que no se ofrece. */
+  g2: {
+    label: 'Grade 2',
+    units: [
+{
+  n:4,
+  title:'From Ingredients to Recipes',
+  weeks:5,
+  bigq:'How can we use English to create and share a nutritious recipe that others can follow?',
+  situation:'Food gives us energy to learn, play and grow, and every family cooks following steps. In this unit you explore nutritious food, what people eat every day, and how a recipe is written — until you can write one of your own that somebody else could actually follow.',
+  audience:'Whoever cooks your recipe. If they cannot follow your steps, the recipe does not work — that is the test.',
+  criteria:[
+    {n:1, text:'I name and sort nutritious foods, ingredients and cooking actions.'},
+    {n:2, text:'I use the present simple to talk about habits and daily routines.'},
+    {n:3, text:'I ask and answer What, Who and Where questions about food and recipes.'},
+    {n:4, text:'I follow and understand the steps of a recipe.'},
+    {n:5, text:'I use imperative verbs and sequencing words to give clear instructions.'},
+    {n:6, text:'I write a recipe with its ingredients, its utensils and its steps.'}
+  ],
+  sequence:[],
+  words:['fruits','vegetables','grains','proteins','drinks','cooking utensils','first','then','after','finally','cut','mix','pour','wash','peel','What','Who','Where'],
+  deliverables:[
+    {kind:'report', type:'text', icon:'&#129380;', title:'Your recipe',
+     desc:'A nutritious recipe with three parts: the ingredients, the utensils you need, and the steps in order.',
+     spec:'Ingredients + utensils + steps',
+     checklist:[
+       {k:'ingr', t:'I list my ingredients', re:'(ingredient|you need|cup|spoon|gram)'},
+       {k:'seq', t:'I put the steps in order with first, then, after, finally', re:'(first|then|after|finally|next)'},
+       {k:'verbs', t:'I use cooking action words', re:'(cut|mix|pour|wash|peel|add|put|cook|stir)'},
+       {k:'healthy', t:'My recipe uses nutritious food', re:'(fruit|vegetable|water|milk|bread|rice|chicken|egg|salad)'}
+     ]},
+    {kind:'presentation', type:'file', icon:'&#127908;', title:'Present your recipe',
+     desc:'Record yourself reading your recipe out loud, or take a photo of the dish you made.',
+     spec:'Speak or show'}
+  ]
+}
+    ]
+  },
+
+  g3: {
+    label: 'Grade 3',
+    units: [
+{
+  n:4,
+  title:'Discovering the Animal Kingdom',
+  weeks:6,
+  stepWord:'Step',
+  bigq:'What makes an animal fit its habitat — and how do we explain that to somebody else?',
+  situation:'You explore animals, where they live, who hunts them and who they hunt, and you compare them in English. You get ready for the zoo trip by writing your own interview questions, you interview a zookeeper, and afterwards you tell what happened — first out loud, then in writing.',
+  audience:'The class, when you present your habitat. They have to understand your animal without having seen it.',
+  criteria:[
+    {n:1, text:'Speaking — I use clues like intonation and key words to work out what is meant, I explain what I think and why, I use connectors, and I ask and answer questions about the topic.'},
+    {n:2, text:'Reading — I say what the characters do, I use pictures and titles to guess what a text is about, and I back my opinion with a reason or something I already knew.'},
+    {n:3, text:'Writing — I know why I am writing and who for, I organise my ideas before I start, I keep them connected and in order (beginning, middle and end), and I support my opinion with a reason.'}
+  ],
+  sequence:[
+    {n:1,title:'Describing animals',desc:'The words you need to say what an animal is like.'},
+    {n:2,title:'Comparing them',desc:'Comparative and superlative adjectives: bigger, the fastest, more dangerous.'},
+    {n:3,title:'Habitats and ecosystems',desc:'Where animals live, and who eats whom: habitat, predator, prey.'},
+    {n:4,title:'Preparing the interview',desc:'Writing the questions you will actually ask the zookeeper.',give:'Your interview questions.'},
+    {n:5,title:'The zookeeper interview',desc:'Writing it up with commas and quotation marks, the way dialogue is written.',give:'Your written interview.'},
+    {n:6,title:'Telling the trip and presenting',desc:'Recounting the field trip with temporal words, and presenting your interview script.',give:'Your habitat and your presentation.'}
+  ],
+  words:['habitat','predator','prey','ecosystem','bigger','the fastest','more dangerous','First','Then','After that','What','Why','How'],
+  deliverables:[
+    {kind:'report', type:'text', icon:'&#128221;', title:'Your interview script',
+     desc:'The questions you asked the zookeeper and the answers you got, written as dialogue.',
+     spec:'With commas and quotation marks',
+     checklist:[
+       {k:'quest', t:'I ask What, Why or How questions', re:'(what|why|how)'},
+       {k:'punct', t:'I use quotation marks for what people say', re:'(\\"|\\u201c)'},
+       {k:'animal', t:'I use habitat, predator or prey', re:'(habitat|predator|prey)'},
+       {k:'compare', t:'I compare two animals', re:'(bigger|smaller|faster|the most|than)'}
+     ]},
+    {kind:'presentation', type:'file', icon:'&#127968;', title:'Your 3D habitat',
+     desc:'Photograph or film the diorama your group built — the habitat, the food, the predators, the prey — and present it in English.',
+     spec:'Diorama + spoken presentation'}
+  ]
+}
+    ]
+  },
+
+  /* 4.o: el planner tiene la situacion y el producto, pero los criterios y la
+     secuencia estan sin rellenar en Toddle. Se muestra lo que hay. */
+  g4: {
+    label: 'Grade 4',
+    units: [
+{
+  n:4,
+  title:'Your Guide to Exploring Ica',
+  weeks:5,
+  bigq:'How can we create a guide that helps future fourth graders prepare for and enjoy their study trip to Ica?',
+  situation:'Every year fourth grade travels to Ica to discover Peru’s geography, history and culture. For many of you it is the first school trip outside Lima, and the first without your parents — so you arrive with questions: what do I pack, what will we do, how do I stay safe? The answers you find become the guide for whoever travels next.',
+  audience:'The fourth graders who will travel next year. They will actually use your guide — which is why it has to be clear.',
+  criteria:[],
+  sequence:[],
+  words:['instructions','information','opinion','recommend','pack','safety','geography','history','culture','observe','first','then','finally'],
+  deliverables:[
+    {kind:'report', type:'text', icon:'&#128220;', title:'Your section of the guide',
+     desc:'Three kinds of text in one: instructions so they can get ready and travel responsibly, information about the places you visited, and your opinion recommending what you enjoyed most.',
+     spec:'Instructions + information + opinion',
+     checklist:[
+       {k:'instr', t:'I give instructions they can follow', re:'(first|then|after that|finally|remember to|do not forget)'},
+       {k:'info', t:'I describe a real place from the trip', re:'(huacachina|nazca|ica|dunes|oasis|museum|desert|lines)'},
+       {k:'opinion', t:'I recommend something and say why', re:'(i recommend|my favourite|i loved|because|the best)'},
+       {k:'audience', t:'I write to next year’s students, not to my teacher', re:'(you |your )'}
+     ]},
+    {kind:'presentation', type:'file', icon:'&#128247;', title:'Photos and your talk',
+     desc:'Add the photos or drawings of the places, and record yourself telling them what they cannot miss.',
+     spec:'Photos + spoken recommendation'}
+  ]
+}
+    ]
+  },
+
+  g5: {
+    label: 'Grade 5',
+    units: [
+{
+  n:4,
+  title:'Reading Like Writers',
+  weeks:6,
+  bigq:'How do readers become writers by observing, reading and exploring the world around them?',
+  situation:'This term you travel to Cajamarca and you read The Lost City. In both you are doing the same thing: watching how a story is built. You look at how the author makes characters, places and adventures, and you collect what you see — words, details, ideas — in a Writer’s Notebook that will feed the stories you write in Unit 5.',
+  audience:'Your future self as a writer: everything you collect now is what you will write with next unit.',
+  criteria:[
+    {n:1, text:'Speaking — I catch the main ideas and the details of what I hear, I express my ideas clearly, I take part in conversations and I respond to what others say.'},
+    {n:2, text:'Reading — I predict from titles and pictures, I find explicit information, I recognise main ideas and details, I give my opinion using my own experience, and I compare characters, settings and events.'},
+    {n:3, text:'Writing — I organise my ideas logically, develop them with details, use descriptive vocabulary and adjectives, revise for coherence, and check that my text fits its purpose and its reader.'}
+  ],
+  sequence:[
+    {n:1,title:'Meet the story',desc:'Predicting, connecting with what you already know, and stepping into The Lost City.',give:'Your first notebook entries.'},
+    {n:2,title:'Interesting characters and amazing settings',desc:'How the author builds a person and a place you can see in your head.',give:'A setting described with your senses.'},
+    {n:3,title:'Powerful words',desc:'Collecting descriptive vocabulary and strong verbs — the ones worth stealing.',give:'Your word collection.'},
+    {n:4,title:'Observing Cajamarca',desc:'The trip as fieldwork: observing, asking, noting what you would otherwise forget.',give:'Your observations from the trip.'},
+    {n:5,title:'Reading like a writer',desc:'Going back to the book to see how the author did what you now want to do.',give:'Your reflections on the author’s craft.'},
+    {n:6,title:'The Writer’s Notebook',desc:'Putting it together: vocabulary, observations, sketches and ideas ready for Unit 5.',give:'The finished notebook.'}
+  ],
+  words:['exploration','adventure','archaeology','ancient civilizations','landscapes','historical places','descriptive adjectives','powerful verbs','senses vocabulary','past simple','past continuous','there was','there were','and, but, because, so, then, after that, finally'],
+  deliverables:[
+    {kind:'report', type:'text', icon:'&#128214;', title:'Your Writer’s Notebook',
+     desc:'Observations, descriptive vocabulary, reflections and ideas — from the book and from Cajamarca. Not a finished story: the raw material for one.',
+     spec:'Collected across the unit',
+     checklist:[
+       {k:'senses', t:'I use sensory language — what I saw, heard, smelled', re:'(saw|heard|smell|felt|sounded|looked like)'},
+       {k:'adj', t:'I collect descriptive adjectives and powerful verbs', re:'(ancient|enormous|silent|dusty|glowing|rushed|whispered|crumbled)'},
+       {k:'past', t:'I write about what happened in the past', re:'\\b(was|were|had|went|saw|found|walked|climbed)\\b'},
+       {k:'link', t:'I link my ideas with connectors', re:'(and|but|because|so|then|after that|finally)'},
+       {k:'trip', t:'I include something I observed myself', re:'(cajamarca|trip|we visited|i noticed|when we)'}
+     ]},
+    {kind:'presentation', type:'file', icon:'&#128247;', title:'Your notebook pages',
+     desc:'Photograph the pages of your handwritten notebook — the sketches and the crossings-out are part of the work.',
+     spec:'Photos of the real notebook'}
+  ]
+},
+    ]
+  },
+
   g6: {
     label: 'Grade 6',
     units: [

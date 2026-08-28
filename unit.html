@@ -157,7 +157,7 @@ textarea:focus{outline:none;border-color:var(--blue)}
 <script src="config.js"></script>
 <script src="activities-data.js?v=12"></script>
 <script src="class-files.js?v=2"></script>
-<script src="unit-plans.js?v=4"></script>
+<script src="unit-plans.js?v=5"></script>
 <script src="nis-nav.js?v=2"></script>
 <script>
 /* Motor del hub de unidad. Los datos vienen de unit-plans.js, que es una copia
@@ -190,7 +190,11 @@ if(!U){
 }
 
 function pinta(){
-  const conNiveles = U.criteria.some(c=>c.levels);
+  /* No todos los planners de Toddle estan completos: hay unidades sin rubrica
+     o sin secuencia. Se ensena lo que hay y no se inventa lo que falta. */
+  const hayCrit = (U.criteria||[]).length > 0;
+  const haySeq  = (U.sequence||[]).length > 0;
+  const conNiveles = (U.criteria||[]).some(c=>c.levels);
   const rubrica = conNiveles
     ? `<table class="rub desc"><thead><tr><th>Criterion</th>${NIVELES.map(l=>`<th>${l}</th>`).join('')}</tr></thead>
        <tbody>${U.criteria.map(c=>`<tr><td class="crit">${c.n}. ${esc(c.text)}</td>
@@ -198,6 +202,28 @@ function pinta(){
     : `<table class="rub plain"><thead><tr><th>What your teacher will look for</th>${NIVELES.map(l=>`<th>${l}</th>`).join('')}</tr></thead>
        <tbody>${U.criteria.map(c=>`<tr><td class="crit">${c.n}. ${esc(c.text)}</td>
          ${NIVELES.map(l=>`<td class="lvl" data-c="${c.n}" data-l="${l}">${l}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+
+  const BLOQUE_RUBRICA = `
+  <div class="sec-title"><h2>&#128207; How you will be assessed</h2><span class="hint">You can see this from day one. Click the level you think you are at.</span></div>
+  <div class="card">
+    <div class="rub-wrap" id="rub">${rubrica}</div>
+    <p class="legend"><b>C</b> starting out · <b>B</b> in progress · <b>A</b> expected level · <b>AD</b> outstanding.
+      Your self-assessment is saved and your teacher sees it next to your work — it is not your grade.</p>
+    <div class="row"><span class="state" id="selfState"></span></div>
+  </div>`;
+
+  const BLOQUE_SEMANAS = `
+  <div class="sec-title"><h2>&#128197; Your ${U.sequence.length} ${U.stepWord?(U.stepWord+'s'):'weeks'}</h2><span class="hint">Each one hands a piece to the final product — and brings the practice you need for it.</span></div>
+  <div class="card">${U.sequence.map(w=>`<div class="week">
+      <div class="n">${(U.stepWord?U.stepWord[0]:'W')}${w.n}</div>
+      <div style="flex:1">
+        <h3>${esc(w.title)}</h3><p>${esc(w.desc)}</p>
+        ${w.give?`<div class="give">You hand in: ${esc(w.give)}</div>`:''}
+        ${sesionesSemana(w.n)}
+        ${juegosSemana(w.n)}
+      </div>
+    </div>`).join('')}
+    ${juegosSueltos()}</div>`;
 
   $('#app').innerHTML = `
   <div class="hero">
@@ -218,26 +244,8 @@ function pinta(){
   </div>
   <div class="card aud" style="margin-top:14px"><b>Who is this for?</b> ${esc(U.audience)}</div>
 
-  <div class="sec-title"><h2>&#128207; How you will be assessed</h2><span class="hint">You can see this from day one. Click the level you think you are at.</span></div>
-  <div class="card">
-    <div class="rub-wrap" id="rub">${rubrica}</div>
-    <p class="legend"><b>C</b> starting out · <b>B</b> in progress · <b>A</b> expected level · <b>AD</b> outstanding.
-      Your self-assessment is saved and your teacher sees it next to your work — it is not your grade.</p>
-    <div class="row"><span class="state" id="selfState"></span></div>
-  </div>
-
-  <div class="sec-title"><h2>&#128197; Your ${U.sequence.length} ${U.stepWord?(U.stepWord+'s'):'weeks'}</h2><span class="hint">Each week hands one piece to the final product — and brings the practice you need for it.</span></div>
-  <div class="card">${U.sequence.map(w=>`<div class="week">
-      <div class="n">${(U.stepWord?U.stepWord[0]:'W')}${w.n}</div>
-      <div style="flex:1">
-        <h3>${esc(w.title)}</h3><p>${esc(w.desc)}</p>
-        ${w.give?`<div class="give">You hand in: ${esc(w.give)}</div>`:''}
-        ${sesionesSemana(w.n)}
-        ${juegosSemana(w.n)}
-      </div>
-    </div>`).join('')}
-    ${juegosSueltos()}</div>
-
+  ${hayCrit ? BLOQUE_RUBRICA : ""}
+  ${haySeq ? BLOQUE_SEMANAS : ""}
   <div class="sec-title"><h2>&#128292; Word bank</h2><span class="hint">The language this unit is built on.</span></div>
   <div class="card"><div class="words">${U.words.map(w=>`<span>${esc(w)}</span>`).join('')}</div></div>
 
