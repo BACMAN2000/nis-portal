@@ -50,7 +50,11 @@ def sube(ruta_local, destino, key, forzar):
         return 'subido'
     except urllib.error.HTTPError as e:
         cuerpo = e.read().decode('utf-8', 'replace')
-        if e.code == 409 and not forzar:
+        # Storage marca el duplicado unas veces con 409 y otras con 400, y el
+        # texto cambia entre versiones. Un archivo que ya esta NO es un fallo:
+        # asi el script se puede relanzar tantas veces como haga falta.
+        dup = ('already exists' in cuerpo.lower() or 'duplicate' in cuerpo.lower())
+        if dup and not forzar:
             return 'ya estaba'
         return 'ERROR %s: %s' % (e.code, cuerpo[:160])
     except Exception as e:
@@ -91,7 +95,7 @@ def main():
         print('No existe %s — corre antes el exportador.' % BASE)
         return 1
 
-    total = ok = 0
+    total = ok = ya = fallos = 0
     for dirpath, _dirs, files in os.walk(BASE):
         for f in sorted(files):
             if os.path.splitext(f)[1].lower() not in TIPOS:
@@ -101,13 +105,20 @@ def main():
             total += 1
             r = sube(local, destino, key, forzar)
             if r.startswith('ERROR'):
+                fallos += 1
                 print('  %s -> %s' % (destino, r))
+            elif r == 'ya estaba':
+                ya += 1
             else:
                 ok += 1
-                if total % 20 == 0:
-                    print('  %d/%d…' % (ok, total))
-    print('Listo: %d de %d archivos en el bucket %s.' % (ok, total, BUCKET))
-    return 0 if ok == total else 2
+            if total % 50 == 0:
+                print('  %d/%d revisados (subidos %d, ya estaban %d)' % (total, total, ok, ya))
+    print('')
+    print('Resumen: %d subidos ahora, %d ya estaban, %d con error, de %d archivos.'
+          % (ok, ya, fallos, total))
+    if not fallos:
+        print('Todo en su sitio en el bucket %s.' % BUCKET)
+    return 0 if not fallos else 2
 
 
 if __name__ == '__main__':
