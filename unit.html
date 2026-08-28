@@ -84,6 +84,18 @@ table.rub.plain td.lvl{width:9%;font-weight:700;color:var(--blue-d)}
 #visor:fullscreen img{max-width:100vw;max-height:88vh;border-radius:0;box-shadow:none}
 #visor:fullscreen .barra{margin-top:10px}
 #visor:fullscreen .aviso{opacity:.55}
+.hand-chip{display:inline-block;border:1px solid var(--blue-d);color:#fff;background:var(--blue-d);border-radius:6px;padding:3px 10px;font-size:.75rem;font-weight:700;text-decoration:none}
+.hand-chip:hover{background:var(--blue-dd)}
+.hand-chip.done{background:#eefaf0;color:#166534;border-color:#86c79b}
+.entrega{display:none;gap:8px;align-items:center;flex-wrap:wrap;padding:10px 0 12px 4px;border-bottom:1px dotted var(--line)}
+.entrega.on{display:flex}
+.entrega input[type=url]{flex:1 1 240px;border:1px solid var(--line);border-radius:8px;padding:7px 10px;font-family:inherit;font-size:.83rem}
+.entrega .o{font-size:.75rem;color:var(--grey);text-transform:uppercase;letter-spacing:.05em;font-weight:700}
+.entrega .btn.small{padding:7px 14px;font-size:.8rem}
+.doc-chip{display:inline-block;border:1px solid #7c9a4e;color:#4a6b1f;background:#f4f9ec;border-radius:6px;padding:3px 9px;font-size:.75rem;font-weight:700;text-decoration:none;transition:.12s}
+.doc-chip:hover{background:#7c9a4e;color:#fff}
+.ses-row .grupo{display:inline-flex;align-items:center;gap:5px}
+.ses-row .grupo i{font-style:normal;font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;color:var(--grey);font-weight:700}
 .acts{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
 .act{display:inline-flex;align-items:center;gap:5px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px 11px;font-size:.78rem;font-weight:600;color:var(--blue-d);text-decoration:none;transition:.12s}
 .act:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
@@ -305,10 +317,62 @@ function juegosSueltos(){
    cuatro niveles (A2-C1) y las diapositivas del profesor. Van dentro de la
    SEMANA que les toca, no en un cajon aparte. Las diapositivas solo se
    ensenan a quien es profesor. */
-let esProfe = false, hayMateriales = false, hayClases = false;
+let esProfe = false;
 /* Los materiales viven en el bucket privado class-files: el enlace se firma
    en el momento y caduca. El alumno solo puede abrir las fichas; las
    diapositivas las bloquea la propia politica del bucket. */
+/* Entrega por ficha. El producto final de la unidad va con milestone
+   'final'; cada ficha va con el suyo, 'w1s1'. Se admite archivo (el .docx
+   que han rellenado, una foto o un PDF) o un enlace de Google Docs, porque
+   muchos alumnos trabajan ahi y no pueden editar un PDF. */
+let _entregas = {};
+
+window.abreEntrega = function(hito){
+  const b = $('#box-'+hito);
+  if(b) b.classList.toggle('on');
+  return false;
+};
+
+function pintaEntregas(){
+  Object.keys(_entregas).forEach(h=>{
+    const chip = $('#hand-'+h), r = _entregas[h];
+    if(!chip) return;
+    chip.classList.add('done');
+    const nota = (r.score!=null) ? (' · ' + r.score + '/10') : '';
+    chip.innerHTML = '✓ Handed in' + nota;
+    if(r.feedback) chip.title = r.feedback;
+    const u = $('#u-'+h);
+    if(u && r.payload && r.payload.link) u.value = r.payload.link;
+  });
+}
+
+window.mandaEntrega = async function(hito){
+  const est = $('#e-'+hito), f = $('#f-'+hito), url = ($('#u-'+hito).value||'').trim();
+  const archivo = f && f.files && f.files[0];
+  if(!archivo && !url){ est.textContent='Choose a file or paste a link first.'; est.className='state err'; return; }
+  if(url && !/^https?:\/\//i.test(url)){ est.textContent='That link does not look right.'; est.className='state err'; return; }
+  est.textContent='Sending…'; est.className='state';
+  let ruta = null;
+  if(archivo){
+    if(archivo.size > 52428800){ est.textContent='That file is over 50 MB.'; est.className='state err'; return; }
+    const ext = (archivo.name.split('.').pop()||'bin').toLowerCase();
+    ruta = me.id + '/' + GRADE + '-u' + UNIT + '-' + hito + '.' + ext;
+    const up = await sb.storage.from('unit-products')
+      .upload(ruta, archivo, {upsert:true, contentType: archivo.type || 'application/octet-stream'});
+    if(up.error){ est.textContent='Upload failed: '+up.error.message; est.className='state err'; return; }
+  }
+  const fila = {student_id:me.id, grade:GRADE, unit:UNIT, milestone:hito, kind:'worksheet',
+                payload:{link:url||null, name:archivo?archivo.name:null, handed_at:new Date().toISOString()},
+                updated_at:new Date().toISOString()};
+  if(ruta) fila.file_path = ruta;
+  const {error} = await sb.from('unit_submissions')
+    .upsert(fila,{onConflict:'student_id,grade,unit,milestone,kind'});
+  if(error){ est.textContent='Could not save: '+error.message; est.className='state err'; return; }
+  est.textContent='Handed in ✓'; est.className='state ok';
+  _entregas[hito] = fila;
+  pintaEntregas();
+};
+
 /* Visor de clase. Las diapositivas se sirven como imagenes firmadas: se ven
    pero el fichero de PowerPoint no se entrega. Ojo: en la web no se puede
    impedir del todo que alguien guarde una imagen; lo que se evita es que se
@@ -376,21 +440,71 @@ window.abreArchivo = async function(ruta, el){
   window.open(data.signedUrl, '_blank', 'noopener');
   return false;
 };
+/* Los materiales se DESCUBREN listando el bucket, no leyendo una lista
+   escrita a mano: en cuanto un profesor sube una ficha, aparece sola. El
+   indice class-files.js se usa solo para los titulos de sesion y para las
+   diapositivas ya convertidas a imagen. */
+let _mat = null;
+const RE_WS = /^u(\d+)w(\d+)s(\d+)-worksheet-([a-z0-9]+)\.(pdf|docx)$/i;
+
+async function cargaMateriales(){
+  _mat = {};
+  if(!sb || !me) return;
+  const base = GRADE + '/u' + UNIT + '/';
+  const idx  = ((window.CLASS_FILES||{})[GRADE]||{})['u'+UNIT] || {weeks:{}};
+  const semanas = (U.sequence||[]).map(w=>w.n);
+  const listas = await Promise.all(semanas.map(n =>
+    sb.storage.from('class-files').list(base+'w'+n, {limit:400}).catch(()=>({data:null}))));
+  semanas.forEach((n,k)=>{
+    const arch = (listas[k] && listas[k].data) || [];
+    const ses = {};
+    arch.forEach(f=>{
+      const m = RE_WS.exec(f.name||'');
+      if(!m) return;
+      const sn = parseInt(m[3],10), lvl = m[4].toUpperCase(), ext = m[5].toLowerCase();
+      const d = ses[sn] || (ses[sn] = {s:sn, ws:{}});
+      (d.ws[lvl] || (d.ws[lvl] = {}))[ext] = 'w'+n+'/'+f.name;
+    });
+    /* titulo y diapositivas: del indice, que es donde viven */
+    ((idx.weeks||{})[n]||[]).forEach(x=>{
+      const d = ses[x.s] || (ses[x.s] = {s:x.s, ws:{}});
+      d.title = x.title; d.deck = x.deck; d.pages = x.pages;
+    });
+    const filas = Object.keys(ses).map(k2=>ses[k2]).sort((a,b)=>a.s-b.s);
+    if(filas.length) _mat[n] = filas;
+  });
+}
+
 function sesionesSemana(n){
-  const cf = (window.CLASS_FILES||{})[GRADE];
-  const u  = cf && cf['u'+UNIT];
-  const ss = u && u.weeks && u.weeks[n];
-  if(!ss || !ss.length || !me || !hayMateriales) return '';
+  const u = ((window.CLASS_FILES||{})[GRADE]||{})['u'+UNIT];
+  const base = GRADE + '/u' + UNIT + '/';
+  const ss = _mat && _mat[n];
+  if(!ss || !ss.length || !me) return '';
   const filas = ss.map(x=>{
-    const niveles = ['A2','B1','B2','C1'].filter(l=>x.ws && x.ws[l])
-      .map(l=>`<a class="lvl-chip" href="#" onclick="return abreArchivo('${u.base}${esc(x.ws[l])}',this)">${l}</a>`).join('');
-    const ver = (x.deck && x.pages && hayClases)
-      ? `<a class="deck-chip" href="#" onclick="return verClase('${u.base}${esc(x.deck)}',${x.pages},'S${x.s} · ${esc(x.title).replace(/'/g,"\'")}')">&#9654; View class</a>` : '';
-    if(!niveles && !ver) return '';
-    return `<div class="ses-row"><b>S${x.s} · ${esc(x.title)}</b>${ver}${niveles}</div>`;
+    const niveles = ['A2','B1','B2','C1'].filter(l=>x.ws[l] && x.ws[l].pdf)
+      .map(l=>`<a class="lvl-chip" href="#" onclick="return abreArchivo('${base}${esc(x.ws[l].pdf)}',this)">${l}</a>`).join('');
+    const edit = ['A2','B1','B2','C1'].filter(l=>x.ws[l] && x.ws[l].docx)
+      .map(l=>`<a class="doc-chip" href="#" onclick="return abreArchivo('${base}${esc(x.ws[l].docx)}',this)">${l}</a>`).join('');
+    const ver = (x.deck && x.pages)
+      ? `<a class="deck-chip" href="#" onclick="return verClase('${base}${esc(x.deck)}',${x.pages},'S${x.s} · ${esc(x.title||('Session '+x.s)).replace(/'/g,"\'")}')">&#9654; View class</a>` : '';
+    if(!niveles && !ver && !edit) return '';
+    const hito = 'w' + n + 's' + x.s;
+    return `<div class="ses-row">
+        <b>S${x.s} · ${esc(x.title||('Session '+x.s))}</b>${ver}
+        ${niveles?`<span class="grupo"><i>Worksheet</i>${niveles}</span>`:''}
+        ${edit?`<span class="grupo"><i>Editable</i>${edit}</span>`:''}
+        <a class="hand-chip" id="hand-${hito}" href="#" onclick="return abreEntrega('${hito}')">&#8593; Hand in</a>
+      </div>
+      <div class="entrega" id="box-${hito}" style="display:none">
+        <input type="file" id="f-${hito}" accept=".pdf,.docx,.doc,image/png,image/jpeg">
+        <span class="o">or</span>
+        <input type="url" id="u-${hito}" placeholder="paste a Google Docs link">
+        <button class="btn small" onclick="mandaEntrega('${hito}')">Send</button>
+        <span class="state" id="e-${hito}"></span>
+      </div>`;
   }).join('');
   if(!filas) return '';
-  return `<div class="ses"><h4>Worksheets by level — pick yours</h4>${filas}</div>`;
+  return `<div class="ses"><h4>Class materials — choose your level</h4>${filas}</div>`;
 }
 
 function bloqueTexto(d){
@@ -452,31 +566,21 @@ async function conectar(){
       esProfe = (rol === 'admin' || rol === 'teacher');
     }
   }catch(_){ esProfe=false; }
-  /* Nada a medias en vivo: se firma UNA ficha de muestra y, si el bucket no
-     la tiene, el apartado de materiales no se ofrece siquiera. */
-  try{
-    const cf=(window.CLASS_FILES||{})[GRADE], u=cf&&cf['u'+UNIT];
-    const w1=u&&u.weeks&&u.weeks[Object.keys(u.weeks)[0]];
-    const muestra=w1&&w1[0]&&w1[0].ws&&(w1[0].ws.A2||w1[0].ws.B1);
-    if(muestra){
-      const r=await sb.storage.from('class-files').createSignedUrl(u.base+muestra,60);
-      hayMateriales = !!(r && r.data && !r.error);
-    }
-    const mazo = w1 && w1[0] && w1[0].deck;
-    if(mazo){
-      const r2=await sb.storage.from('class-files').createSignedUrl(u.base+mazo+'01.png',60);
-      hayClases = !!(r2 && r2.data && !r2.error);
-    }
-  }catch(_){ hayMateriales=false; }
+  /* Nada a medias en vivo: la lista sale del bucket, asi que si un material
+     no esta subido sencillamente no se ofrece. */
+  await cargaMateriales();
 }
 
 async function arrancaSesion(){
   if(!me){ $('#gate').style.display='block'; U.deliverables.forEach(d=>{ if(d.type==='text') cuenta(d); }); return; }
   $('#handin').style.display='block';
   const {data}=await sb.from('unit_submissions')
-    .select('kind,payload,file_path,score,criteria,feedback')
-    .eq('student_id',me.id).eq('grade',GRADE).eq('unit',UNIT).eq('milestone',MILESTONE);
-  (data||[]).forEach(r=>{
+    .select('kind,milestone,payload,file_path,score,criteria,feedback')
+    .eq('student_id',me.id).eq('grade',GRADE).eq('unit',UNIT);
+  /* Las entregas de ficha llevan milestone 'w1s1'; las del producto, 'final'. */
+  (data||[]).filter(r=>r.milestone!==MILESTONE).forEach(r=>{ _entregas[r.milestone]=r; });
+  pintaEntregas();
+  (data||[]).filter(r=>r.milestone===MILESTONE).forEach(r=>{
     if(r.kind==='selfassess'){ self_=(r.payload&&r.payload.levels)||{}; pintaSelf(); return; }
     const st=$('#st-'+r.kind);
     const ta=$('#t-'+r.kind);
