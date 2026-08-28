@@ -1869,6 +1869,7 @@ async function renderTeacher(tab){
   if(acc.can_results) nav.push({key:'readers',label:'📖 Controles de lectura'});
   if(acc.can_results) nav.push({key:'funnordic',label:'🧸 Fun for Nordic'});
   if(acc.can_results) nav.push({key:'unitprod',label:'🎯 Productos de unidad'});
+  if(acc.can_results) nav.push({key:'materiales',label:'📄 Materiales de clase'});
   if(acc.can_students) nav.push({key:'students',label:'👥 Alumnos'});
   if(acc.can_results||acc.can_students) nav.push({key:'honesty',label:'🛡️ Honestidad'});
   if(teacherAllowedGrades().length) nav.push({key:'practice',label:'🎯 Practice Tests'});
@@ -1895,6 +1896,7 @@ async function renderTeacher(tab){
   if(active==='readers') return readerStatsPanel();
   if(active==='students') return teacherStudents();
   if(active==='unitprod') return unitProductsPanel();
+  if(active==='materiales') return materialesPanel();
   if(active==='honesty') return antiCheatPanel();
   if(active==='practice') return practicePanel(teacherAllowedGrades());
   if(active==='classes') return studentClasses();
@@ -4009,8 +4011,11 @@ async function unitProductsPanel(){
   const quien = Object.fromEntries((gente||[]).map(p=>[p.id,p]));
 
   // Una fila por alumno: junta su informe, su presentación y su autoevaluación.
+  /* Las entregas de ficha llevan milestone 'w1s1'; el producto final, 'final'.
+     Van en dos tablas distintas porque se corrigen distinto. */
+  const fichas = data.filter(r=>r.kind==='worksheet');
   const porAlumno = {};
-  data.forEach(r=>{
+  data.filter(r=>r.kind!=='worksheet').forEach(r=>{
     const k = r.student_id+'|'+r.grade+'|'+r.unit;
     (porAlumno[k] = porAlumno[k] || {alumno:r.student_id, grade:r.grade, unit:r.unit})[r.kind] = r;
   });
@@ -4073,7 +4078,7 @@ async function unitProductsPanel(){
       <tbody>${filas.map(fila).join('')}</tbody></table></div>
     <p class="muted" style="font-size:.8rem;margin-top:12px">↖ = el nivel que el propio alumno se puso.</p>
   </div>
-  <div class="card" id="unitTexto" style="display:none"></div>`;
+  <div class="card" id="unitTexto" style="display:none"></div>${fichasTabla(fichas, quien)}`;
 }
 
 window.unitVerTexto = function(id){
@@ -4143,4 +4148,147 @@ function studentGradeUnits(key){
           esc(u.deliverables.map(d=>d.title).join(' · '))+' — '+u.weeks+' weeks.',
           _withBack('unit.html?grade='+key+'&unit='+u.n,route))).join('')}
     </div>`;
+}
+
+/* ---------------------------------------------------------------
+   📄 Materiales de clase — el profesor sube sus propias fichas y
+   diapositivas desde el portal, sin claves ni scripts.
+
+   La ruta se deduce del NOMBRE del archivo, que ya lo dice todo:
+     u4w1s1-worksheet-a2.pdf   → g9/u4/w1/u4w1s1-worksheet-a2.pdf
+     u4w1s1-worksheet-a2.docx  → la versión editable del alumno
+     u4w1s1-slides.pptx        → la presentación del profesor
+   Así se pueden arrastrar los 96 archivos de una unidad de una vez.
+---------------------------------------------------------------- */
+const MAT_RE = /^u(\d+)w(\d+)s(\d+)-(worksheet-(a2|b1|b2|c1)|slides)\.(pdf|docx|pptx)$/i;
+
+function materialesPanel(){
+  const grados = ALL_GRADE_ORDER.map(g=>`<option value="${g}">${GRADE_META[g][1]}</option>`).join('');
+  $('#main').innerHTML = `<div class="card">
+    <h2>📄 Materiales de clase</h2>
+    <p class="muted">Sube aquí las fichas del alumno y las diapositivas. <b>El nombre del archivo
+      decide dónde va</b>, así que puedes arrastrar la carpeta entera de una unidad de golpe.</p>
+
+    <div class="row" style="gap:10px;align-items:center;margin:14px 0">
+      <label>Grado <select id="matGrado" style="margin-left:6px">${grados}</select></label>
+      <span class="muted" style="font-size:.85rem">La unidad, la semana y la sesión salen del nombre.</span>
+    </div>
+
+    <label for="matFiles" style="display:block;border:2px dashed var(--lila);border-radius:12px;
+        padding:26px;text-align:center;cursor:pointer;color:var(--grey)">
+      <input type="file" id="matFiles" multiple accept=".pdf,.docx,.pptx" style="display:none">
+      📎 <b>Elige los archivos</b> — o arrástralos aquí
+    </label>
+
+    <div class="row"><span class="state" id="matEstado"></span></div>
+    <div id="matLista" style="margin-top:14px"></div>
+
+    <details style="margin-top:18px">
+      <summary style="cursor:pointer;font-weight:600;color:var(--blue-d)">Cómo se deben llamar los archivos</summary>
+      <div style="font-size:.86rem;color:var(--grey);margin-top:10px;line-height:1.8">
+        <code>u4w1s1-worksheet-a2.pdf</code> — ficha del alumno, unidad 4, semana 1, sesión 1, nivel A2<br>
+        <code>u4w1s1-worksheet-a2.docx</code> — la misma ficha en Word, para que la puedan editar<br>
+        <code>u4w1s1-slides.pptx</code> — las diapositivas de esa sesión<br>
+        Los niveles válidos son <b>a2, b1, b2, c1</b>. Lo que no siga este patrón se queda sin subir y te lo digo.
+      </div>
+    </details>
+  </div>`;
+
+  const inp = $('#matFiles'), lbl = inp.parentNode;
+  inp.addEventListener('change', e => matSube(e.target.files));
+  ['dragover','dragenter'].forEach(ev => lbl.addEventListener(ev, e => {
+    e.preventDefault(); lbl.style.borderColor = 'var(--blue)';
+  }));
+  ['dragleave','drop'].forEach(ev => lbl.addEventListener(ev, e => {
+    e.preventDefault(); lbl.style.borderColor = 'var(--lila)';
+  }));
+  lbl.addEventListener('drop', e => matSube(e.dataTransfer.files));
+}
+
+async function matSube(files){
+  if(!files || !files.length) return;
+  const grado = $('#matGrado').value;
+  const est = $('#matEstado'), lista = $('#matLista');
+  const filas = [];
+  let ok = 0, mal = 0;
+
+  est.textContent = `Subiendo ${files.length} archivo(s)…`;
+  est.className = 'state';
+
+  for(let i = 0; i < files.length; i++){
+    const f = files[i];
+    const m = MAT_RE.exec(f.name);
+    if(!m){
+      mal++;
+      filas.push(`<tr><td>${esc(f.name)}</td><td class="err">El nombre no sigue el patrón — no se sube</td></tr>`);
+      continue;
+    }
+    const unidad = parseInt(m[1],10), semana = parseInt(m[2],10);
+    const ruta = `${grado}/u${unidad}/w${semana}/${f.name.toLowerCase()}`;
+    const { error } = await sb.storage.from('class-files')
+      .upload(ruta, f, { upsert:true, contentType: f.type || 'application/octet-stream' });
+    if(error){
+      mal++;
+      filas.push(`<tr><td>${esc(f.name)}</td><td class="err">${esc(error.message)}</td></tr>`);
+    } else {
+      ok++;
+      filas.push(`<tr><td>${esc(f.name)}</td><td class="muted">→ ${esc(ruta)}</td></tr>`);
+    }
+    est.textContent = `${i+1} de ${files.length}…`;
+  }
+
+  est.textContent = `${ok} subido(s)${mal ? `, ${mal} sin subir` : ''}.`;
+  est.className = mal ? 'state err' : 'state ok';
+  lista.innerHTML = `<div style="overflow-x:auto"><table class="tbl">
+    <thead><tr><th>Archivo</th><th>Dónde ha ido</th></tr></thead>
+    <tbody>${filas.join('')}</tbody></table></div>
+    <p class="muted" style="font-size:.82rem;margin-top:10px">Las fichas aparecen en el hub de la unidad
+      en cuanto se suben, sin tocar nada más. Las diapositivas hay que convertirlas a imagen aparte
+      (<code>tools/exporta_slides_png.ps1</code>) para que los alumnos las puedan ver sin descargarlas.</p>`;
+}
+
+/* Fichas entregadas, ordenadas por sesión: es la corrección del día a día,
+   distinta de la del producto final de la unidad. El alumno entrega el
+   archivo que rellenó o un enlace de Google Docs, porque muchos trabajan ahí
+   y un PDF no se puede editar. */
+function fichasTabla(fichas, quien){
+  if(!fichas || !fichas.length) return '';
+  const orden = f => {
+    const m = /^w(\d+)s(\d+)$/.exec(f.milestone || '');
+    return m ? (+m[1]) * 100 + (+m[2]) : 9999;
+  };
+  fichas.sort((a,b) => orden(a) - orden(b)
+    || String((quien[a.student_id]||{}).full_name||'').localeCompare(String((quien[b.student_id]||{}).full_name||'')));
+
+  const fila = r => {
+    const p = quien[r.student_id] || {};
+    const m = /^w(\d+)s(\d+)$/.exec(r.milestone || '');
+    const donde = m ? ('Semana ' + m[1] + ' · Sesión ' + m[2]) : esc(r.milestone || '');
+    const link = r.payload && r.payload.link;
+    const nombre = (r.payload && r.payload.name) || 'Ver archivo';
+    const entrega = link
+      ? `<a href="${esc(link)}" target="_blank" rel="noopener">🔗 Google Docs</a>`
+      : (r.file_path
+          ? `<button class="btn small" onclick="unitVerArchivo('${esc(r.file_path)}',this)">📎 ${esc(nombre)}</button>`
+          : '<span class="muted">—</span>');
+    return `<tr>
+      <td>${esc(p.full_name || '(alumno)')} <span class="muted">${p.grade_id ? p.grade_id + 'º' + (p.section || '') : ''}</span></td>
+      <td class="muted">${esc(r.grade)} · U${r.unit} · ${donde}</td>
+      <td>${entrega}</td>
+      <td><input type="number" min="0" max="20" value="${r.score != null ? r.score : ''}" style="width:4rem"
+            onchange="unitCalificar('${r.id}', this.value, null)"></td>
+      <td><input type="text" placeholder="comentario" value="${esc(r.feedback || '')}"
+            onchange="unitCalificar('${r.id}', null, this.value)"></td>
+      <td class="muted">${r.reviewed_at ? '✔' : '—'}</td>
+    </tr>`;
+  };
+
+  return `<div class="card">
+    <h2>📄 Fichas entregadas</h2>
+    <p class="muted">Lo que entregan sesión a sesión: el archivo que rellenaron o el enlace de
+      Google Docs. Pon la nota y el comentario y el alumno lo ve en su unidad.</p>
+    <div style="overflow-x:auto"><table class="tbl">
+      <thead><tr><th>Alumno</th><th>Dónde</th><th>Entrega</th><th>Nota</th><th>Comentario</th><th>Visto</th></tr></thead>
+      <tbody>${fichas.map(fila).join('')}</tbody></table></div>
+  </div>`;
 }
