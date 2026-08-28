@@ -42,6 +42,7 @@ def sube(ruta_local, destino, key, forzar):
         '%s/storage/v1/object/%s/%s' % (URL, BUCKET, destino),
         data=datos, method='POST',
         headers={'Authorization': 'Bearer ' + key,
+                 'apikey': key,
                  'Content-Type': tipo,
                  'x-upsert': 'true' if forzar else 'false'})
     try:
@@ -62,6 +63,30 @@ def main():
         print('Falta SUPABASE_SERVICE_KEY. Mira la cabecera de este archivo.')
         return 1
     forzar = '--forzar' in sys.argv
+
+    # Comprobar la clave antes de intentar 120 subidas: si no es la de
+    # servicio, la politica del bucket la rechaza y solo veriamos 120 errores.
+    if key.startswith('sb_publishable_') or key.startswith('sbp_'):
+        print('Esa es la clave PUBLICA. Hace falta la de servicio (service_role o sb_secret_).')
+        return 1
+    try:
+        req = urllib.request.Request('%s/storage/v1/bucket/%s' % (URL, BUCKET),
+                                     headers={'Authorization': 'Bearer ' + key, 'apikey': key})
+        urllib.request.urlopen(req, timeout=30).read()
+        print('Clave aceptada. Subiendo a %s...' % BUCKET)
+    except urllib.error.HTTPError as e:
+        print('La clave no sirve para escribir en Storage (HTTP %s).' % e.code)
+        print(e.read().decode('utf-8', 'replace')[:300])
+        print('')
+        print('Tiene que ser la clave de SERVICIO del proyecto NIS:')
+        print('  Supabase -> Project Settings -> API Keys')
+        print('  - "service_role" (empieza por eyJ...), en Legacy API keys, o')
+        print('  - una Secret key (empieza por sb_secret_).')
+        print('NO sirve la anon / publishable, que es la que ya usa el portal.')
+        return 1
+    except Exception as e:
+        print('No pude contactar con Supabase: %s' % e)
+        return 1
     if not os.path.isdir(BASE):
         print('No existe %s — corre antes el exportador.' % BASE)
         return 1
