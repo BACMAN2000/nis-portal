@@ -384,6 +384,8 @@ async function renderAdmin(tab='users'){
     {key:'results',label:'📝 Resultados'},
     {key:'final',label:'🎓 Resultado final'},
     {key:'readers',label:'📖 Controles de lectura'},
+    {key:'unitprod',label:'🎯 Productos de unidad'},
+    {key:'materiales',label:'📄 Materiales de clase'},
     {key:'teachers',label:'👨‍🏫 Profesores'},
     {key:'honesty',label:'🛡️ Honestidad'},
     {key:'mocks',label:'🔓 Mocks'},
@@ -410,6 +412,8 @@ async function renderAdmin(tab='users'){
   if(tab==='phonics') return $('#main').innerHTML = phonicsPanel();
   if(tab==='coach') return $('#main').innerHTML = coachPanel();
   if(tab==='overview') return adminOverview();
+  if(tab==='unitprod') return unitProductsPanel();
+  if(tab==='materiales') return materialesPanel();
   if(tab==='stats') return adminStats();
   if(tab==='results') return adminResults();
   if(tab==='final') return cefrFinalPanel();
