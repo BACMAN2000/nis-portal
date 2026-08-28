@@ -3231,9 +3231,9 @@ function studentStage(stage){
       <h2 style="margin:0 0 4px;color:var(--blue-d)">🧭 Fun for Nordic — Cambridge YLE</h2>
       <div class="muted" style="font-size:.9rem;margin-bottom:12px">Interactive course to get ready for the Cambridge Young Learners exams: 150 units with audio, crosswords and exam tasks — with Pip, Luna and Kili!</div>
       <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <a href="nis-fun/engine/?level=starters" target="_blank" rel="noopener" class="btn" style="background:#d97d0d;color:#fff;text-decoration:none">🐧 Pre A1 · Starters</a>
-        <a href="nis-fun/engine/?level=movers" target="_blank" rel="noopener" class="btn" style="background:#2f9268;color:#fff;text-decoration:none">🐺 A1 · Movers</a>
-        <a href="nis-fun/engine/?level=flyers" target="_blank" rel="noopener" class="btn" style="background:#3b6fb5;color:#fff;text-decoration:none">🦅 A2 · Flyers</a>
+        <a href="${_withBack('nis-fun/engine/?level=starters','classes_primary')}" target="_blank" rel="noopener" class="btn" style="background:#d97d0d;color:#fff;text-decoration:none">🐧 Pre A1 · Starters</a>
+        <a href="${_withBack('nis-fun/engine/?level=movers','classes_primary')}" target="_blank" rel="noopener" class="btn" style="background:#2f9268;color:#fff;text-decoration:none">🐺 A1 · Movers</a>
+        <a href="${_withBack('nis-fun/engine/?level=flyers','classes_primary')}" target="_blank" rel="noopener" class="btn" style="background:#3b6fb5;color:#fff;text-decoration:none">🦅 A2 · Flyers</a>
       </div>
     </div>` : '';
   $('#main').innerHTML=`${back}<h1>${m.emoji} ${m.title}</h1>
