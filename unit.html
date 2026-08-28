@@ -90,14 +90,12 @@ table.rub.plain td.lvl{width:9%;font-weight:700;color:var(--blue-d)}
 .entrega{display:none;gap:8px;align-items:center;flex-wrap:wrap;padding:10px 0 12px 4px;border-bottom:1px dotted var(--line)}
 .entrega.on{display:flex}
 .entrega input[type=url]{flex:1 1 240px;border:1px solid var(--line);border-radius:8px;padding:7px 10px;font-family:inherit;font-size:.83rem}
+.fbtn{display:inline-block;border:1px solid var(--blue);color:var(--blue-d);background:#fff;border-radius:8px;padding:7px 14px;font-size:.82rem;font-weight:600;cursor:pointer}
+.fbtn:hover{background:var(--blue);color:#fff}
 .entrega .o{font-size:.75rem;color:var(--grey);text-transform:uppercase;letter-spacing:.05em;font-weight:700}
 .entrega .btn.small{padding:7px 14px;font-size:.8rem}
-.slide-chip{display:inline-block;border:1px solid #f0c987;color:#8a5a12;background:#fffaf0;border-radius:6px;padding:3px 9px;font-size:.75rem;font-weight:700;text-decoration:none}
-.slide-chip:hover{background:#f7e2bd}
 .on-chip{display:inline-block;border:1px solid var(--blue);color:#fff;background:var(--blue);border-radius:6px;padding:3px 10px;font-size:.75rem;font-weight:700;text-decoration:none;transition:.12s}
 .on-chip:hover{background:var(--blue-dd);border-color:var(--blue-dd)}
-.doc-chip{display:inline-block;border:1px solid #7c9a4e;color:#4a6b1f;background:#f4f9ec;border-radius:6px;padding:3px 9px;font-size:.75rem;font-weight:700;text-decoration:none;transition:.12s}
-.doc-chip:hover{background:#7c9a4e;color:#fff}
 .ses-row .grupo{display:inline-flex;align-items:center;gap:5px}
 .ses-row .grupo i{font-style:normal;font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;color:var(--grey);font-weight:700}
 .acts{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
@@ -511,31 +509,28 @@ function sesionesSemana(n){
   const ss = _mat && _mat[n];
   if(!ss || !ss.length || !me) return '';
   const filas = ss.map(x=>{
-    const niveles = ['A2','B1','B2','C1'].filter(l=>x.ws[l] && x.ws[l].pdf)
+    /* El PDF se queda solo para el profesor: sirve para imprimir a quien no
+       tenga dispositivo. El alumno resuelve la ficha en el portal. */
+    const niveles = !esProfe ? '' : ['A2','B1','B2','C1'].filter(l=>x.ws[l] && x.ws[l].pdf)
       .map(l=>`<a class="lvl-chip" href="#" onclick="return abreArchivo('${base}${esc(x.ws[l].pdf)}',this)">${l}</a>`).join('');
     const online = ['A2','B1','B2','C1'].filter(l=>_digitales.has(n+'s'+x.s+'-'+l))
       .map(l=>`<a class="on-chip" href="worksheet.html?grade=${GRADE}&unit=${UNIT}&week=${n}&session=${x.s}&level=${l}">${l}</a>`).join('');
-    const edit = ['A2','B1','B2','C1'].filter(l=>x.ws[l] && x.ws[l].docx)
-      .map(l=>`<a class="doc-chip" href="#" onclick="return abreArchivo('${base}${esc(x.ws[l].docx)}',this)">${l}</a>`).join('');
     const ver = (x.deck && x.pages)
       ? `<a class="deck-chip" href="#" onclick="return verClase('${base}${esc(x.deck)}',${x.pages},'S${x.s} · ${esc(x.title||('Session '+x.s)).replace(/'/g,"\'")}')">&#9654; View class</a>` : '';
-    /* El .pptx vuelve, pero solo para el docente: el alumno ve la clase en el
-       visor y no se lleva el fichero. */
-    const pptx = (esProfe && x.pptx)
-      ? `<a class="slide-chip" href="#" onclick="return abreArchivo('${base}${esc(x.pptx)}',this)">&#128202; .pptx</a>` : '';
-    if(!niveles && !ver && !edit && !pptx && !online) return '';
+    if(!niveles && !ver && !online) return '';
     const hito = 'w' + n + 's' + x.s;
     return `<div class="ses-row">
         <b>S${x.s} · ${esc(x.title||('Session '+x.s))}</b>${ver}
         ${online?`<span class="grupo"><i>Solve online</i>${online}</span>`:''}
-        ${niveles?`<span class="grupo"><i>PDF</i>${niveles}</span>`:''}
-        ${edit?`<span class="grupo"><i>Editable</i>${edit}</span>`:''}${pptx}
+        ${niveles?`<span class="grupo"><i>PDF to print</i>${niveles}</span>`:''}
         <a class="hand-chip" id="hand-${hito}" href="#" onclick="return abreEntrega('${hito}')">&#8593; Hand in</a>
       </div>
-      <div class="entrega" id="box-${hito}" style="display:none">
-        <input type="file" id="f-${hito}" accept=".pdf,.docx,.doc,image/png,image/jpeg">
+      <div class="entrega" id="box-${hito}">
+        <label class="fbtn" for="f-${hito}">&#128206; Choose a file from your computer</label>
+        <input type="file" id="f-${hito}" style="display:none"
+          accept=".pdf,.docx,.doc,.odt,image/png,image/jpeg,audio/*,video/*">
         <span class="o">or</span>
-        <input type="url" id="u-${hito}" placeholder="paste a Google Docs link">
+        <input type="url" id="u-${hito}" placeholder="paste a link from Drive or Google Docs">
         <button class="btn small" onclick="mandaEntrega('${hito}')">Send</button>
         <span class="state" id="e-${hito}"></span>
       </div>`;
