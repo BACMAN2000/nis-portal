@@ -52,6 +52,20 @@ def recorre():
                     continue
                 n = int(wdir[1:])
                 sesiones = {}
+                # Diapositivas exportadas a imagenes: w<N>/slides/<sesion>/NN.png
+                sdir = os.path.join(wpath, 'slides')
+                if os.path.isdir(sdir):
+                    for mazo in sorted(os.listdir(sdir)):
+                        m = re.match(r'^u(\d+)w(\d+)s(\d+)$', mazo, re.I)
+                        if not m:
+                            continue
+                        pngs = sorted(x for x in os.listdir(os.path.join(sdir, mazo))
+                                      if x.lower().endswith('.png'))
+                        if pngs:
+                            sn = int(m.group(3))
+                            d = sesiones.setdefault(sn, {'s': sn, 'ws': {}, 'slides': None})
+                            d['deck'] = wdir + '/slides/' + mazo + '/'
+                            d['pages'] = len(pngs)
                 for f in sorted(os.listdir(wpath)):
                     m = RE_WS.match(f)
                     if m:
@@ -91,7 +105,10 @@ def main():
                   for w in u['weeks'].values() for x in w)
     total_s = sum(1 for g in datos.values() for u in g.values()
                   for w in u['weeks'].values() for x in w if x['slides'])
-    print('class-files.js: %d fichas, %d juegos de diapositivas' % (total_f, total_s))
+    total_p = sum(x.get('pages', 0) for g in datos.values() for u in g.values()
+                  for w in u['weeks'].values() for x in w)
+    print('class-files.js: %d fichas, %d presentaciones, %d diapositivas en imagen'
+          % (total_f, total_s, total_p))
     for g, us in sorted(datos.items()):
         for u, d in sorted(us.items()):
             print('  %s/%s: %d semanas' % (g, u, len(d['weeks'])))

@@ -10,6 +10,8 @@ window.CLASS_FILES = {
    "weeks": {
     "1": [
      {
+      "deck": "w1/slides/u4w1s1/",
+      "pages": 18,
       "s": 1,
       "slides": "w1/u4w1s1-slides.pptx",
       "title": "Top 5 Things That Stress Out a 9th Grader",
@@ -21,6 +23,8 @@ window.CLASS_FILES = {
       }
      },
      {
+      "deck": "w1/slides/u4w1s2/",
+      "pages": 24,
       "s": 2,
       "slides": "w1/u4w1s2-slides.pptx",
       "title": "The Day I Stopped Pretending I Was Fine",
@@ -32,6 +36,8 @@ window.CLASS_FILES = {
       }
      },
      {
+      "deck": "w1/slides/u4w1s3/",
+      "pages": 12,
       "s": 3,
       "slides": "w1/u4w1s3-slides.pptx",
       "title": "Emotion Vocabulary Consolidation & TED Listening",
@@ -43,6 +49,8 @@ window.CLASS_FILES = {
       }
      },
      {
+      "deck": "w1/slides/u4w1s4/",
+      "pages": 13,
       "s": 4,
       "slides": "w1/u4w1s4-slides.pptx",
       "title": "FCE Listening Part 1 Strategy Primer",
@@ -56,6 +64,8 @@ window.CLASS_FILES = {
     ],
     "2": [
      {
+      "deck": "w2/slides/u4w2s1/",
+      "pages": 20,
       "s": 1,
       "slides": "w2/u4w2s1-slides.pptx",
       "title": "Verb + Gerund vs Verb + Infinitive",
@@ -67,6 +77,8 @@ window.CLASS_FILES = {
       }
      },
      {
+      "deck": "w2/slides/u4w2s2/",
+      "pages": 20,
       "s": 2,
       "slides": "w2/u4w2s2-slides.pptx",
       "title": "Tricky Verbs (stop, remember, try, forget)",
@@ -78,6 +90,8 @@ window.CLASS_FILES = {
       }
      },
      {
+      "deck": "w2/slides/u4w2s3/",
+      "pages": 12,
       "s": 3,
       "slides": "w2/u4w2s3-slides.pptx",
       "title": "FORMATIVE 3 Quiz (Gerunds-Infinitives + Emotion Vocabulary)",
@@ -89,6 +103,8 @@ window.CLASS_FILES = {
       }
      },
      {
+      "deck": "w2/slides/u4w2s4/",
+      "pages": 12,
       "s": 4,
       "slides": "w2/u4w2s4-slides.pptx",
       "title": "FCE Reading & UoE Part 2 Open Cloze",
@@ -102,6 +118,8 @@ window.CLASS_FILES = {
     ],
     "3": [
      {
+      "deck": "w3/slides/u4w3s1/",
+      "pages": 18,
       "s": 1,
       "slides": "w3/u4w3s1-slides.pptx",
       "title": "Modals of Advice - Degrees of Strength",
@@ -113,6 +131,8 @@ window.CLASS_FILES = {
       }
      },
      {
+      "deck": "w3/slides/u4w3s2/",
+      "pages": 19,
       "s": 2,
       "slides": "w3/u4w3s2-slides.pptx",
       "title": "Writing an Advice Column Response",
@@ -124,6 +144,8 @@ window.CLASS_FILES = {
       }
      },
      {
+      "deck": "w3/slides/u4w3s3/",
+      "pages": 15,
       "s": 3,
       "slides": "w3/u4w3s3-slides.pptx",
       "title": "Speculation Modals (might, may, could, must)",
@@ -135,6 +157,8 @@ window.CLASS_FILES = {
       }
      },
      {
+      "deck": "w3/slides/u4w3s4/",
+      "pages": 14,
       "s": 4,
       "slides": "w3/u4w3s4-slides.pptx",
       "title": "FCE Reading & UoE Part 6 Gapped Text",
@@ -148,6 +172,8 @@ window.CLASS_FILES = {
     ],
     "4": [
      {
+      "deck": "w4/slides/u4w4s1/",
+      "pages": 19,
       "s": 1,
       "slides": "w4/u4w4s1-slides.pptx",
       "title": "Why Teenagers Need More Sleep Than Anyone Else",
@@ -159,6 +185,8 @@ window.CLASS_FILES = {
       }
      },
      {
+      "deck": "w4/slides/u4w4s2/",
+      "pages": 15,
       "s": 2,
       "slides": "w4/u4w4s2-slides.pptx",
       "title": "The Sleep Doctor's Top 5 Tips (Podcast + Speculation)",
@@ -170,6 +198,8 @@ window.CLASS_FILES = {
       }
      },
      {
+      "deck": "w4/slides/u4w4s3/",
+      "pages": 11,
       "s": 3,
       "slides": "w4/u4w4s3-slides.pptx",
       "title": "FORMATIVE 4 Quiz (Modals of Advice + Wellbeing Listening)",
@@ -181,6 +211,8 @@ window.CLASS_FILES = {
       }
      },
      {
+      "deck": "w4/slides/u4w4s4/",
+      "pages": 14,
       "s": 4,
       "slides": "w4/u4w4s4-slides.pptx",
       "title": "FCE Speaking Part 2 Long Turn",
@@ -194,6 +226,8 @@ window.CLASS_FILES = {
     ],
     "5": [
      {
+      "deck": "w5/slides/u4w5s1/",
+      "pages": 18,
       "s": 1,
       "slides": "w5/u4w5s1-slides.pptx",
       "title": "Anatomy of a Great Magazine Article",
@@ -205,6 +239,8 @@ window.CLASS_FILES = {
       }
      },
      {
+      "deck": "w5/slides/u4w5s2/",
+      "pages": 18,
       "s": 2,
       "slides": "w5/u4w5s2-slides.pptx",
       "title": "Drafting the Magazine Article (Timed)",
@@ -216,6 +252,8 @@ window.CLASS_FILES = {
       }
      },
      {
+      "deck": "w5/slides/u4w5s3/",
+      "pages": 12,
       "s": 3,
       "slides": "w5/u4w5s3-slides.pptx",
       "title": "Peer Review + Targeted Revision",
@@ -227,6 +265,8 @@ window.CLASS_FILES = {
       }
      },
      {
+      "deck": "w5/slides/u4w5s4/",
+      "pages": 12,
       "s": 4,
       "slides": "w5/u4w5s4-slides.pptx",
       "title": "FCE Writing Part 2 - Genre Choice + Rubric Self-Assessment",
@@ -240,6 +280,8 @@ window.CLASS_FILES = {
     ],
     "6": [
      {
+      "deck": "w6/slides/u4w6s1/",
+      "pages": 28,
       "s": 1,
       "slides": "w6/u4w6s1-slides.pptx",
       "title": "SUMMATIVE LAUNCH - The Wellbeing Issue Brief",
@@ -251,6 +293,8 @@ window.CLASS_FILES = {
       }
      },
      {
+      "deck": "w6/slides/u4w6s2/",
+      "pages": 22,
       "s": 2,
       "slides": "w6/u4w6s2-slides.pptx",
       "title": "SUMMATIVE PRODUCTION - Article + Podcast Scripting",
@@ -262,6 +306,8 @@ window.CLASS_FILES = {
       }
      },
      {
+      "deck": "w6/slides/u4w6s3/",
+      "pages": 12,
       "s": 3,
       "slides": "w6/u4w6s3-slides.pptx",
       "title": "SUMMATIVE SHOWCASE - The Wellbeing Issue Launch",
@@ -273,6 +319,8 @@ window.CLASS_FILES = {
       }
      },
      {
+      "deck": "w6/slides/u4w6s4/",
+      "pages": 13,
       "s": 4,
       "slides": "w6/u4w6s4-slides.pptx",
       "title": "FCE Prep - Wish If Only + Quantifiers",
