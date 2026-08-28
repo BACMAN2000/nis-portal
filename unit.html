@@ -61,6 +61,15 @@ table.rub.plain td.lvl{width:9%;font-weight:700;color:var(--blue-d)}
 .week .give{margin-top:7px;font-size:.78rem;font-weight:700;color:var(--blue-d)}
 .words{display:flex;flex-wrap:wrap;gap:8px}
 .words span{background:#eef4fb;color:var(--blue-dd);border:1px solid var(--line);border-radius:999px;padding:6px 13px;font-size:.83rem;font-weight:600}
+.ses{margin-top:12px;border-left:3px solid var(--lila);padding-left:12px}
+.ses h4{margin:0 0 8px;font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--grey);font-weight:700}
+.ses-row{display:flex;flex-wrap:wrap;align-items:center;gap:7px;padding:6px 0;border-bottom:1px dotted var(--line)}
+.ses-row:last-child{border-bottom:none}
+.ses-row b{font-size:.83rem;color:var(--blue-dd);flex:1 1 210px;font-weight:600}
+.lvl-chip{display:inline-block;border:1px solid var(--blue);color:var(--blue-d);background:#fff;border-radius:6px;padding:3px 9px;font-size:.75rem;font-weight:700;text-decoration:none;transition:.12s}
+.lvl-chip:hover{background:var(--blue);color:#fff}
+.slide-chip{display:inline-block;border:1px solid #f0c987;color:#8a5a12;background:#fffaf0;border-radius:6px;padding:3px 9px;font-size:.75rem;font-weight:700;text-decoration:none}
+.slide-chip:hover{background:#f7e2bd}
 .acts{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
 .act{display:inline-flex;align-items:center;gap:5px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px 11px;font-size:.78rem;font-weight:600;color:var(--blue-d);text-decoration:none;transition:.12s}
 .act:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
@@ -106,7 +115,8 @@ textarea:focus{outline:none;border-color:var(--blue)}
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js"></script>
 <script src="activities-data.js?v=12"></script>
-<script src="unit-plans.js?v=2"></script>
+<script src="class-files.js?v=1"></script>
+<script src="unit-plans.js?v=3"></script>
 <script src="nis-nav.js?v=2"></script>
 <script>
 /* Motor del hub de unidad. Los datos vienen de unit-plans.js, que es una copia
@@ -181,6 +191,7 @@ function pinta(){
       <div style="flex:1">
         <h3>${esc(w.title)}</h3><p>${esc(w.desc)}</p>
         ${w.give?`<div class="give">You hand in: ${esc(w.give)}</div>`:''}
+        ${sesionesSemana(w.n)}
         ${juegosSemana(w.n)}
       </div>
     </div>`).join('')}
@@ -221,7 +232,6 @@ function pinta(){
   $('#rub').addEventListener('click', clicRubrica);
   U.deliverables.forEach(cablea);
   cableaArchivo('notebook');
-  arrancaSesion();
 }
 
 /* Las actividades del portal ya están etiquetadas por unidad y semana en
@@ -262,6 +272,40 @@ function juegosSueltos(){
       ${chips(w0.games)}</div></div>`;
 }
 
+/* Las clases de 9.o tienen materiales por sesion: la ficha del alumno en
+   cuatro niveles (A2-C1) y las diapositivas del profesor. Van dentro de la
+   SEMANA que les toca, no en un cajon aparte. Las diapositivas solo se
+   ensenan a quien es profesor. */
+let esProfe = false, hayMateriales = false;
+/* Los materiales viven en el bucket privado class-files: el enlace se firma
+   en el momento y caduca. El alumno solo puede abrir las fichas; las
+   diapositivas las bloquea la propia politica del bucket. */
+window.abreArchivo = async function(ruta, el){
+  if(!sb || !me) return false;
+  const antes = el.textContent; el.textContent = '…';
+  const { data, error } = await sb.storage.from('class-files').createSignedUrl(ruta, 3600);
+  el.textContent = antes;
+  if(error || !data){ el.textContent = '×'; el.title = (error && error.message) || 'No disponible'; return false; }
+  window.open(data.signedUrl, '_blank', 'noopener');
+  return false;
+};
+function sesionesSemana(n){
+  const cf = (window.CLASS_FILES||{})[GRADE];
+  const u  = cf && cf['u'+UNIT];
+  const ss = u && u.weeks && u.weeks[n];
+  if(!ss || !ss.length || !me || !hayMateriales) return '';
+  const filas = ss.map(x=>{
+    const niveles = ['A2','B1','B2','C1'].filter(l=>x.ws && x.ws[l])
+      .map(l=>`<a class="lvl-chip" href="#" onclick="return abreArchivo('${u.base}${esc(x.ws[l])}',this)">${l}</a>`).join('');
+    const sl = (esProfe && x.slides)
+      ? `<a class="slide-chip" href="#" onclick="return abreArchivo('${u.base}${esc(x.slides)}',this)">&#128202; Slides</a>` : '';
+    if(!niveles && !sl) return '';
+    return `<div class="ses-row"><b>S${x.s} · ${esc(x.title)}</b>${niveles}${sl}</div>`;
+  }).join('');
+  if(!filas) return '';
+  return `<div class="ses"><h4>Worksheets by level — pick yours</h4>${filas}</div>`;
+}
+
 function bloqueTexto(d){
   return `<div class="card">
     <h3 style="color:var(--blue-dd);font-size:1rem">${d.icon} ${esc(d.title)}</h3>
@@ -297,7 +341,9 @@ function bloqueArchivo(d){
 /* ---------------- sesion y guardado ---------------- */
 let sb=null, me=null, self_={};
 
-async function arrancaSesion(){
+/* Primero se conecta (para saber quien mira y si ve las diapositivas),
+   luego se pinta, y solo despues se traen las entregas. */
+async function conectar(){
   try{
     const cfg=window.NIS_CONFIG;
     if(cfg && window.supabase && window.supabase.createClient){
@@ -306,6 +352,23 @@ async function arrancaSesion(){
       me=data&&data.session?data.session.user:null;
     }
   }catch(_){ me=null; }
+  if(!me) return;
+  try{ const t=await sb.from('teacher_access').select('can_results').eq('profile_id',me.id).maybeSingle();
+       esProfe = !!(t && t.data && t.data.can_results); }catch(_){ esProfe=false; }
+  /* Nada a medias en vivo: se firma UNA ficha de muestra y, si el bucket no
+     la tiene, el apartado de materiales no se ofrece siquiera. */
+  try{
+    const cf=(window.CLASS_FILES||{})[GRADE], u=cf&&cf['u'+UNIT];
+    const w1=u&&u.weeks&&u.weeks[Object.keys(u.weeks)[0]];
+    const muestra=w1&&w1[0]&&w1[0].ws&&(w1[0].ws.A2||w1[0].ws.B1);
+    if(muestra){
+      const r=await sb.storage.from('class-files').createSignedUrl(u.base+muestra,60);
+      hayMateriales = !!(r && r.data && !r.error);
+    }
+  }catch(_){ hayMateriales=false; }
+}
+
+async function arrancaSesion(){
   if(!me){ $('#gate').style.display='block'; U.deliverables.forEach(d=>{ if(d.type==='text') cuenta(d); }); return; }
   $('#handin').style.display='block';
   const {data}=await sb.from('unit_submissions')
@@ -443,7 +506,7 @@ function cableaArchivo(kind){
 }
 
 /* Todo declarado: ahora si se puede pintar. */
-if(U) pinta();
+if(U) (async function(){ await conectar(); pinta(); await arrancaSesion(); })();
 </script>
 </body>
 </html>

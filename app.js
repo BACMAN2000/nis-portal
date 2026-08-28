@@ -661,7 +661,7 @@ async function adminTeachers(){
     const _nodeChip=(key,label)=>`<label style="${chipCss}"><input type="checkbox" class="tg-node" value="${key}" ${(managed? managed.has(key): true)?'checked':''}> ${esc(label)}</label>`;
     // Unidades y semanas no se asignan al profesor por separado (heredan de
     // su Activities), así que quedan fuera de los chips generales.
-    const _gradeKeySet=new Set([...ALL_GRADE_ORDER.flatMap(g=>['english.classes.'+g,'english.classes.'+g+'.activities','english.classes.'+g+'.grammar']),'english.classes.g9.cambridge','english.classes.g9.cambridge.listening','english.classes.g9.uoe1','english.classes.g9.writing','english.classes.g9.unit5','english.classes.g6.units','english.classes.g9.reader','english.classes.g7.reader',..._SUB_NODES.map(n=>n.key)]);
+    const _gradeKeySet=new Set([...ALL_GRADE_ORDER.flatMap(g=>['english.classes.'+g,'english.classes.'+g+'.activities','english.classes.'+g+'.grammar']),'english.classes.g9.cambridge','english.classes.g9.cambridge.listening','english.classes.g9.uoe1','english.classes.g9.writing','english.classes.g9.unit5','english.classes.g6.units','english.classes.g7.units','english.classes.g8.units','english.classes.g9.reader','english.classes.g7.reader',..._SUB_NODES.map(n=>n.key)]);
     const generalChips=ACCESS_NODES.filter(n=>!_gradeKeySet.has(n.key)).map(n=>_nodeChip(n.key,n.label)).join('');
     // Primaria (2.º–5.º) sin Grammar: en esa etapa la gramática vive dentro
     // de las actividades, igual que en francés.
@@ -669,7 +669,7 @@ async function adminTeachers(){
       const items=[['english.classes.'+g,'Classes'],['english.classes.'+g+'.activities','🎲 Activities']];
       if(!_isPrimaryGrade(g)) items.push(['english.classes.'+g+'.grammar','📝 Grammar']);
       if(g==='g7') items.push(['english.classes.g7.reader','📚 Readers']);
-      if(g==='g6') items.push(['english.classes.g6.units','🎯 Units']);
+      if(g==='g6'||g==='g7'||g==='g8') items.push(['english.classes.'+g+'.units','🎯 Units']);
       if(g==='g9') items.push(['english.classes.g9.cambridge','🎓 Cambridge'],['english.classes.g9.cambridge.listening','🎧 Cambridge Listening'],['english.classes.g9.uoe1','🧩 Use of English P1'],['english.classes.g9.writing','✍️ Writing'],['english.classes.g9.unit5','🎯 Unit 5'],['english.classes.g9.reader','📚 Readers']);
       return `<div class="row" style="gap:6px;align-items:center;margin-top:5px;flex-wrap:wrap"><span class="muted" style="font-size:.8rem;min-width:84px">${GRADE_META[g][0]} ${GRADE_META[g][1]}</span>${items.map(it=>_nodeChip(it[0],it[1])).join('')}</div>`;
     }).join('');
@@ -2634,6 +2634,8 @@ const ACCESS_NODES = [
   {key:'english.classes.g9.writing',    label:'9th · Writing'},
   {key:'english.classes.g9.unit5',      label:'9th · Unit 5 (product)'},
   {key:'english.classes.g6.units',      label:'6th · Units (products)'},
+  {key:'english.classes.g7.units',      label:'7th · Units (products)'},
+  {key:'english.classes.g8.units',      label:'8th · Units (products)'},
   {key:'english.classes.g7.reader',     label:'7th · Readers'},
   {key:'english.classes.g9.reader',     label:'9th · Readers'},
   {key:'french',                        label:'French (toda la materia)'},

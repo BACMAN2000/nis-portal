@@ -19,3 +19,8 @@ phonics/tools/.env
 
 # Python del generador de juegos franceses
 __pycache__/
+
+# Materiales de clase: van al bucket privado class-files de Supabase,
+# no al repo (es publico y son materiales del colegio).
+# Se regeneran con tools/exporta_u4.ps1 y se suben con tools/sube_class_files.py
+classes/
