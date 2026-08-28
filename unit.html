@@ -68,8 +68,6 @@ table.rub.plain td.lvl{width:9%;font-weight:700;color:var(--blue-d)}
 .ses-row b{font-size:.83rem;color:var(--blue-dd);flex:1 1 210px;font-weight:600}
 .lvl-chip{display:inline-block;border:1px solid var(--blue);color:var(--blue-d);background:#fff;border-radius:6px;padding:3px 9px;font-size:.75rem;font-weight:700;text-decoration:none;transition:.12s}
 .lvl-chip:hover{background:var(--blue);color:#fff}
-.slide-chip{display:inline-block;border:1px solid #f0c987;color:#8a5a12;background:#fffaf0;border-radius:6px;padding:3px 9px;font-size:.75rem;font-weight:700;text-decoration:none}
-.slide-chip:hover{background:#f7e2bd}
 .deck-chip{display:inline-block;border:1px solid var(--celeste);color:#12657f;background:#eefaff;border-radius:6px;padding:3px 9px;font-size:.75rem;font-weight:700;text-decoration:none}
 .deck-chip:hover{background:var(--celeste);color:#fff}
 #visor{position:fixed;inset:0;background:rgba(15,25,40,.94);z-index:9999;display:none;flex-direction:column;align-items:center;justify-content:center}
@@ -82,6 +80,10 @@ table.rub.plain td.lvl{width:9%;font-weight:700;color:var(--blue-d)}
 #visor .titulo{position:absolute;top:16px;left:20px;right:70px;color:#fff;font-size:.9rem;font-weight:700;opacity:.9}
 #visor .cerrar{position:absolute;top:12px;right:16px;font-size:1.1rem;padding:6px 14px}
 #visor .aviso{color:#a9cdf0;font-size:.75rem;margin-top:10px}
+#visor:fullscreen{background:#0b1220}
+#visor:fullscreen img{max-width:100vw;max-height:88vh;border-radius:0;box-shadow:none}
+#visor:fullscreen .barra{margin-top:10px}
+#visor:fullscreen .aviso{opacity:.55}
 .acts{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
 .act{display:inline-flex;align-items:center;gap:5px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px 11px;font-size:.78rem;font-weight:600;color:var(--blue-d);text-decoration:none;transition:.12s}
 .act:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
@@ -134,8 +136,9 @@ textarea:focus{outline:none;border-color:var(--blue)}
     <button id="visorPrev" onclick="pasaClase(-1)">&#8592; Prev</button>
     <span id="visorPos"></span>
     <button id="visorNext" onclick="pasaClase(1)">Next &#8594;</button>
+    <button id="visorFull" onclick="pantallaClase()">&#9974; Full screen</button>
   </div>
-  <div class="aviso">Use the arrow keys. Press Esc to close.</div>
+  <div class="aviso">Arrow keys to move · F for full screen · Esc to close</div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
@@ -340,12 +343,27 @@ window.pasaClase = function(d){
   _clase.i = Math.max(0, Math.min(n-1, _clase.i + d));
   muestraClase();
 };
-window.cierraClase = function(){ $('#visor').classList.remove('on'); $('#visorImg').src=''; };
+window.cierraClase = function(){
+  if(document.fullscreenElement){ document.exitFullscreen().catch(()=>{}); }
+  $('#visor').classList.remove('on'); $('#visorImg').src='';
+};
+/* Pantalla completa para proyectar: el visor entero pasa a ocupar el monitor,
+   y el mismo boton devuelve a la ventana. */
+window.pantallaClase = function(){
+  const v = $('#visor');
+  if(document.fullscreenElement){ document.exitFullscreen().catch(()=>{}); }
+  else { (v.requestFullscreen ? v.requestFullscreen() : Promise.reject()).catch(()=>{}); }
+};
+document.addEventListener('fullscreenchange', ()=>{
+  const b = $('#visorFull');
+  if(b) b.innerHTML = document.fullscreenElement ? '⤵ Exit full screen' : '⛶ Full screen';
+});
 document.addEventListener('keydown', e=>{
   if(!$('#visor').classList.contains('on')) return;
   if(e.key==='Escape'){ cierraClase(); }
   else if(e.key==='ArrowRight'||e.key===' '){ e.preventDefault(); pasaClase(1); }
   else if(e.key==='ArrowLeft'){ e.preventDefault(); pasaClase(-1); }
+  else if(e.key==='f'||e.key==='F'){ e.preventDefault(); pantallaClase(); }
 });
 $('#visor').addEventListener('click', e=>{ if(e.target.id==='visor') cierraClase(); });
 
@@ -367,11 +385,9 @@ function sesionesSemana(n){
     const niveles = ['A2','B1','B2','C1'].filter(l=>x.ws && x.ws[l])
       .map(l=>`<a class="lvl-chip" href="#" onclick="return abreArchivo('${u.base}${esc(x.ws[l])}',this)">${l}</a>`).join('');
     const ver = (x.deck && x.pages && hayClases)
-      ? `<a class="deck-chip" href="#" onclick="return verClase('${u.base}${esc(x.deck)}',${x.pages},'S${x.s} · ${esc(x.title).replace(/'/g,"\'")}')">&#9654; Ver la clase</a>` : '';
-    const sl = (esProfe && x.slides)
-      ? `<a class="slide-chip" href="#" onclick="return abreArchivo('${u.base}${esc(x.slides)}',this)">&#128202; .pptx</a>` : '';
-    if(!niveles && !sl && !ver) return '';
-    return `<div class="ses-row"><b>S${x.s} · ${esc(x.title)}</b>${ver}${niveles}${sl}</div>`;
+      ? `<a class="deck-chip" href="#" onclick="return verClase('${u.base}${esc(x.deck)}',${x.pages},'S${x.s} · ${esc(x.title).replace(/'/g,"\'")}')">&#9654; View class</a>` : '';
+    if(!niveles && !ver) return '';
+    return `<div class="ses-row"><b>S${x.s} · ${esc(x.title)}</b>${ver}${niveles}</div>`;
   }).join('');
   if(!filas) return '';
   return `<div class="ses"><h4>Worksheets by level — pick yours</h4>${filas}</div>`;
