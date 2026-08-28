@@ -396,6 +396,10 @@ async function renderAdmin(tab='users'){
     {key:'games',label:'🎲 Games Lab'},
     {key:'classes',label:'🏫 Classes'},
     {key:'library',label:'📚 Library'},
+    // La secuencia tambien en el menu del admin: el panel ya existia y
+    // respondia, pero solo estaba enlazado desde el menu del profesor, asi
+    // que desde coordinacion no habia por donde entrar.
+    {key:'scope',label:'📚 Scope & Sequence'},
   ], tab, `<div class="center muted">Cargando…</div>`);
   bindNav(renderAdmin);
   if(tab==='mun') return $('#main').innerHTML = munBody();
