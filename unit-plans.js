@@ -31,6 +31,7 @@ window.UNIT_PLANS = {
     label: 'Grade 2',
     units: [
 {
+  cover:{icon:'🍎', from:'#1f5e3a', to:'#63b06a'},
   n:4,
   title:'From Ingredients to Recipes',
   weeks:5,
@@ -69,6 +70,7 @@ window.UNIT_PLANS = {
     label: 'Grade 3',
     units: [
 {
+  cover:{icon:'🦁', from:'#1d4d3b', to:'#4e9d6b'},
   n:4,
   title:'Discovering the Animal Kingdom',
   weeks:6,
@@ -114,6 +116,7 @@ window.UNIT_PLANS = {
     label: 'Grade 4',
     units: [
 {
+  cover:{icon:'🏜', from:'#8a5a1e', to:'#d9a441'},
   n:4,
   title:'Your Guide to Exploring Ica',
   weeks:5,
@@ -145,6 +148,7 @@ window.UNIT_PLANS = {
     label: 'Grade 5',
     units: [
 {
+  cover:{icon:'📖', from:'#23407a', to:'#5b8ed6'},
   n:4,
   title:'Reading Like Writers',
   weeks:6,
@@ -190,6 +194,7 @@ window.UNIT_PLANS = {
 
 /* ------------------------------------------------- 6.o U4 */
 {
+  cover:{icon:'🏅', from:'#7a5310', to:'#d4a03a'},
   n:4,
   title:'Heroes Among Us — The Power of Life Choices',
   weeks:6,
@@ -232,6 +237,7 @@ window.UNIT_PLANS = {
 
 /* ------------------------------------------------- 6.o U5 */
 {
+  cover:{icon:'📱', from:'#125b6b', to:'#3fa8c4'},
   n:5,
   title:'Tech in My Life: Pros and Cons',
   weeks:5,
@@ -277,6 +283,7 @@ window.UNIT_PLANS = {
 
 /* ------------------------------------------------- 7.o U4 */
 {
+  cover:{icon:'⚖', from:'#3f4756', to:'#8b93a6'},
   n:4,
   title:'The Architecture of Order: From Written Laws to Unspoken Truths',
   weeks:5,
@@ -314,6 +321,7 @@ window.UNIT_PLANS = {
 
 /* ------------------------------------------------- 7.o U5 */
 {
+  cover:{icon:'🌐', from:'#12556b', to:'#3f9fc4'},
   n:5,
   title:'Tech in Our World: Help or Harm?',
   weeks:5,
@@ -361,6 +369,7 @@ window.UNIT_PLANS = {
 
 /* ------------------------------------------------- 8.o U4 */
 {
+  cover:{icon:'📕', from:'#5c2230', to:'#a5566a'},
   n:4,
   title:'Finding Our Voice Through Literature and Argument',
   weeks:6,
@@ -412,6 +421,7 @@ window.UNIT_PLANS = {
 
 /* ---------------------------------------------------------------- U1 */
 {
+  cover:{icon:'🔍', from:'#2a1f4e', to:'#6a5ba8'},
   n:1,
   title:'Mystery and Secrets: Investigating the Unknown',
   weeks:6,
@@ -450,6 +460,7 @@ window.UNIT_PLANS = {
 
 /* ---------------------------------------------------------------- U2 */
 {
+  cover:{icon:'🔬', from:'#123a5c', to:'#3f86bb'},
   n:2,
   title:'Voices Shaping Our World',
   weeks:6,
@@ -489,6 +500,7 @@ window.UNIT_PLANS = {
 
 /* ---------------------------------------------------------------- U3 */
 {
+  cover:{icon:'📲', from:'#3b1f5c', to:'#8158b8'},
   n:3,
   title:'Scrolling Identities — Who Are We Online?',
   weeks:6,
@@ -534,6 +546,7 @@ window.UNIT_PLANS = {
 
 /* ---------------------------------------------------------------- U4 */
 {
+  cover:{icon:'🧠', from:'#14524b', to:'#3f9c8f'},
   n:4,
   title:'Mind Over Matter — The Wellbeing Generation',
   weeks:6,
@@ -609,6 +622,7 @@ window.UNIT_PLANS = {
 
 /* ---------------------------------------------------------------- U5 */
 {
+  cover:{icon:'⚡', from:'#6b3a12', to:'#c9772f'},
   n:5,
   title:'The Double-Edged Sword: Technology, Society and the Environment',
   weeks:5,
@@ -662,6 +676,7 @@ window.UNIT_PLANS = {
 
 /* ---------------------------------------------------------------- U6 */
 {
+  cover:{icon:'🚀', from:'#1e2b6b', to:'#5566c4'},
   n:6,
   title:'Future Visions',
   weeks:5,
@@ -710,6 +725,7 @@ window.UNIT_PLANS = {
     label: 'Grade 10',
     units: [
 {
+  cover:{icon:'🎙', from:'#6b1d2a', to:'#bf5162'},
   n:4,
   title:'Crafting Complex Arguments and Expressive Presentations',
   weeks:6,
@@ -755,6 +771,7 @@ window.UNIT_PLANS = {
     label: 'Grade 11',
     units: [
 {
+  cover:{icon:'🌍', from:'#0f4f4a', to:'#3a9c92'},
   n:4,
   title:'Rhetorical Mastery and Global Discourse',
   weeks:5,
