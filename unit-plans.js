@@ -112,6 +112,140 @@ window.UNIT_PLANS = {
     ]
   },
 
+  g7: {
+    label: 'Grade 7',
+    units: [
+
+/* ------------------------------------------------- 7.o U4 */
+{
+  n:4,
+  title:'The Architecture of Order: From Written Laws to Unspoken Truths',
+  weeks:5,
+  stepWord:'Phase',
+  bigq:'What has more power over how we behave: the laws we write down, or the unspoken rules we choose to follow?',
+  situation:'Every day you move through an invisible network of guidelines. You stop at red lights, you raise your hand in class, you wear certain clothes to fit in. Some of those are official laws written in books; others are unwritten rules passed down through culture and peer pressure. Here you become a social architect: you analyse real rules, debate whether they work, and then build your own society.',
+  audience:'Your classmates, who have to live inside the world you invent — and discover for themselves that what is unsaid often has more power than what is written down.',
+  criteria:[
+    {n:1, text:'Reading — I find the main ideas and the arguments in texts about rules and laws, and I work out why characters in a story act as they do.'},
+    {n:2, text:'Writing — I write a structured set of rules with must and should, and a short scene with a clear cause and effect when a rule is broken.'},
+    {n:3, text:'Speaking — I state a clear opinion in a structured debate, answer a classmate with turn-taking phrases (“I agree, but…”), and use intonation to make my view clear.'}
+  ],
+  sequence:[
+    {n:1,title:'Deconstruct — real rules',desc:'Real-world inquiry into everyday regulations: school, games, traffic. Why does society work at all?',give:'Your vocabulary of order, built from real rules.'},
+    {n:2,title:'Argue — debate',desc:'Small-group structured debates on which rules work and why others fail.',give:'Your position, defended out loud.'},
+    {n:3,title:'Create — fantasy laws',desc:'Designing the foundation of an original world and drafting its written legal code.',give:'The three chief written laws of your world.'},
+    {n:4,title:'Apply — the unspoken twist',desc:'Adding unspoken cultural customs to your world and exploring them through a short narrative.',give:'Your narrative snapshot.'}
+  ],
+  words:['authority','citizen','consequence','custom','norm','taboo','tradition','punishment','regulation','enforce','forbid','prohibit','rebel','penalise','acceptable','mandatory','unwritten','invisible','subtle','must','should'],
+  deliverables:[
+    {kind:'report', type:'text', icon:'&#128220;', title:'Narrative snapshot',
+     desc:'A scene or dialogue where a character accidentally breaks one of your society’s unspoken rules — and pays for it socially: isolation, public judgement or plain confusion.',
+     spec:'200–250 words', range:[200,250],
+     checklist:[
+       {k:'break', t:'Someone breaks an unspoken rule — not a written one', re:'(unwritten|unspoken|custom|taboo|nobody told|everyone knew)'},
+       {k:'cause', t:'The consequence follows clearly from what they did', re:'\\b(because|so|therefore|as a result|which meant)\\b'},
+       {k:'social', t:'The consequence is social, not legal', re:'(stared|silence|laughed|ignored|ashamed|judged|alone|whisper)'},
+       {k:'scene', t:'It reads as a scene, with dialogue or detail', re:'(“|\\bsaid\\b|\\basked\\b|\\breplied\\b)'}
+     ]},
+    {kind:'presentation', type:'file', icon:'&#127963;', title:'Legislative portfolio',
+     desc:'The poster with the three chief written laws of your invented world and a paragraph justifying why each one exists. Photograph it or upload the file.',
+     spec:'3 laws · with justification'}
+  ]
+},
+
+/* ------------------------------------------------- 7.o U5 */
+{
+  n:5,
+  title:'Tech in Our World: Help or Harm?',
+  weeks:5,
+  bigq:'How does technology affect society positively and negatively?',
+  situation:'You hear mixed messages all the time: technology keeps people connected, helps them learn and work — and at the same time it distracts, misinforms and replaces face-to-face contact. Here you are a community member and a young thinker: you gather perspectives, read and listen to arguments, and learn to organise your ideas clearly.',
+  audience:'Your class, in a real debate. The report is written so somebody who disagrees with you still has to take it seriously.',
+  criteria:[
+    {n:1, text:'Speaking & listening — I take part in discussions with clear ideas and reasons, I ask and answer, I take turns properly, and I can tell facts from opinions in what I hear.'},
+    {n:2, text:'Reading — I find the main idea, the supporting details and the writer’s opinion, and I notice tone and bias across different texts.'},
+    {n:3, text:'Writing — I write an organised opinion text (200–250 words) with an introduction, two developed body paragraphs with evidence, and a conclusion, using however, on the other hand and in addition.'}
+  ],
+  sequence:[
+    {n:1,title:'Introduction and vocabulary',desc:'What role technology plays in society, and the language of pros and cons.',give:'Your first ideas, expressed simply.'},
+    {n:2,title:'Reading and identifying arguments',desc:'Recognising arguments, main ideas and supporting details in short texts.',give:'One argument for and one against, from a real text.'},
+    {n:3,title:'Writing foundations',desc:'Coherence and cohesion: making connectors do the work.',give:'A connected paragraph, not a list.'},
+    {n:4,title:'Practice and oral debate',desc:'Expressing pros and cons out loud, and gathering the content for the final report.',give:'Your part in the class debate.'},
+    {n:5,title:'Final writing and presentation',desc:'The opinion report, written and presented.',give:'The report and your presentation.'}
+  ],
+  words:['society','community','communication','information','connection','isolation','influence','social media','education','cooperation','responsibility','privacy','security','innovation','however','on the other hand','in addition'],
+  deliverables:[
+    {kind:'report', type:'text', icon:'&#128221;', title:'Report on technology and society',
+     desc:'Introduction, two developed body paragraphs with evidence, and a conclusion — about the effects at the level of society, not just your own screen.',
+     spec:'200–250 words', range:[200,250],
+     checklist:[
+       {k:'intro', t:'My introduction says what the report is about', re:'.{150,}'},
+       {k:'two', t:'I develop two separate arguments', re:'(firstly|first of all|secondly|another|in addition)'},
+       {k:'evidence', t:'I support them with evidence or examples', re:'(for example|for instance|according to|research|study|survey)'},
+       {k:'connect', t:'I use however, on the other hand or in addition', re:'(however|on the other hand|in addition|nevertheless)'},
+       {k:'social', t:'I write about society, not only about me', re:'(society|community|people|schools|families|everyone)'},
+       {k:'concl', t:'I close with a conclusion', re:'(in conclusion|to sum up|overall|to conclude)'}
+     ]},
+    {kind:'presentation', type:'file', icon:'&#128483;', title:'Class debate',
+     desc:'Record your turn in the debate: your position, your evidence and your answer to somebody who disagrees.',
+     spec:'Live debate · recorded'}
+  ]
+}
+
+    ]
+  },
+
+  /* 8.o solo tiene planificada la U4 en Toddle: no hay U5, asi que no se ofrece. */
+  g8: {
+    label: 'Grade 8',
+    units: [
+
+/* ------------------------------------------------- 8.o U4 */
+{
+  n:4,
+  title:'Finding Our Voice Through Literature and Argument',
+  weeks:6,
+  bigq:'How can literature help us understand different perspectives and express our own ideas clearly?',
+  situation:'Books show you worlds very different from your own, and then send you back to look at this one. Reading The Giver you meet freedom, equality, memory, responsibility and individuality — and you compare Jonas’s community with yours, learning to defend an opinion with evidence from the text instead of just asserting it.',
+  audience:'The Literary Symposium: you present your argument to your classmates and answer their questions. Your essay has to survive being asked about.',
+  criteria:[
+    {n:1, text:'Speaking — I use intonation to carry meaning and emotion, I organise a clear presentation, I keep eye contact and I present with confidence.'},
+    {n:2, text:'Reading — I identify plot, setting and main characters, I infer their motives from what they do and say, and I back my reading with textual evidence.'},
+    {n:3, text:'Writing — I write a clear thesis, develop a coherent argument with enough evidence, organise introduction, body and conclusion, and revise my drafts.'},
+    {n:4, text:'Accuracy — I use colons and semicolons correctly and I proofread my spelling.'}
+  ],
+  sequence:[
+    {n:1,title:'The power of communication',desc:'Intonation patterns and expressing meaning out loud. The Giver begins.',give:'A 1-minute oral presentation — and your Reading Journal opens.'},
+    {n:2,title:'Understanding characters',desc:'Listening for main ideas, speaking with confidence, and reading characters critically (chapters 2–4).',give:'Your Character Profile: the trait, and the evidence for it.'},
+    {n:3,title:'Exploring themes',desc:'Character development and theme analysis; collecting textual evidence and using it to back an opinion.',give:'Your Theme Tracker — quote, theme, why it matters. This is your evidence bank.'},
+    {n:4,title:'Building strong arguments',desc:'What makes an argument strong, and the grammar that holds it together: colons, semicolons and cohesive devices.',give:'Your Argument Planner and one argumentative paragraph, peer-reviewed.'},
+    {n:5,title:'Writing and refining',desc:'Choosing your question, thesis, outline, drafting and revision. The Giver finishes.',give:'The final essay, revised and submitted.'},
+    {n:6,title:'Literary Symposium',desc:'Presenting your ideas, defending them under questioning, and reflecting on what literature let you see.',give:'Your presentation, the Theme Tracker, the Reading Journal and your self-reflection.'}
+  ],
+  words:['thesis statement','argument','evidence','counterargument','refutation','theme','perspective','character','claim','intonation','persuasion','collaboration','reflection','colon','semicolon','The Giver'],
+  deliverables:[
+    {kind:'report', type:'text', icon:'&#128221;', title:'Argumentative essay',
+     desc:'Your opinion on one theme from chapters 1–7 of The Giver: thesis, reasons, evidence from the novel, and an explanation of how that evidence supports you. Choose one of the four essay questions.',
+     spec:'300–350 words', range:[300,350],
+     checklist:[
+       {k:'thesis', t:'I state a clear thesis in the introduction', re:'.{200,}'},
+       {k:'quote', t:'I bring evidence from the novel', re:'(“|"|jonas|the giver|the community|chapter)'},
+       {k:'explain', t:'I explain how the evidence supports my point', re:'(this shows|this suggests|which means|this proves|because of this)'},
+       {k:'punct', t:'I use a colon or a semicolon correctly', re:'[;:]'},
+       {k:'concl', t:'I close with a conclusion', re:'(in conclusion|to conclude|ultimately|overall)'}
+     ]},
+    {kind:'presentation', type:'file', icon:'&#127908;', title:'Literary Symposium',
+     desc:'Three to four minutes: your thesis, your strongest evidence, your conclusion — and then you answer one or two questions from the floor.',
+     spec:'3–4 minutes · with Q&A'},
+    {kind:'reflection', type:'text', icon:'&#128173;', title:'Self-reflection',
+     desc:'Which theme turned out to be the strongest, how Jonas changed, and what reading him changed in you.',
+     spec:'Around 100 words', range:[80,160]}
+  ]
+}
+
+    ]
+  },
+
   g9: {
     label: 'Grade 9',
     cefr: 'B1+ → B2 (Cambridge B2 First)',
