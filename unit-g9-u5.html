@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unit 5 · The Double-Edged Sword — Grade 9 · Nordic International School</title>
+<link rel="icon" href="assets/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#4987c6; --blue-d:#2f5f93; --blue-dd:#244c77;
+  --bg:#f2f3ff; --white:#fff; --grey:#636465; --line:#e3e5f3;
+  --lila:#d1d2ea; --celeste:#76cbe5;
+  --good:#16a34a; --warn:#f59e0b; --bad:#dc2626;
+  --ink:#2b2c33; --r:16px; --r-sm:10px;
+  --shadow:0 10px 30px rgba(36,76,119,.10);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:'Montserrat',system-ui,Segoe UI,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5}
+h1,h2,h3{line-height:1.2;margin:0 0 .4em;font-weight:700}
+a{color:var(--blue-d)}
+header{display:flex;align-items:center;gap:14px;background:var(--blue);padding:12px 22px;color:#fff;box-shadow:var(--shadow)}
+header img{height:34px;width:auto;display:block}
+header .spacer{flex:1}
+header a.back{background:rgba(255,255,255,.16);color:#fff;border:none;padding:8px 14px;border-radius:var(--r-sm);font-weight:600;font-size:.9rem;display:inline-flex;align-items:center;gap:7px;text-decoration:none}
+header a.back:hover{background:rgba(255,255,255,.28)}
+.wrap{max-width:1020px;margin:0 auto;padding:22px 18px 70px}
+.hero{background:linear-gradient(135deg,var(--blue-dd),var(--blue));color:#fff;border-radius:var(--r);padding:24px 26px;margin-bottom:20px;box-shadow:var(--shadow)}
+.hero .eyebrow{font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:#a9cdf0;font-weight:700;margin:0 0 8px}
+.hero h1{color:#fff;font-size:1.6rem;font-weight:800;margin:0}
+.hero .bigq{margin:14px 0 0;padding:12px 15px;background:rgba(255,255,255,.12);border-left:4px solid var(--celeste);border-radius:0 var(--r-sm) var(--r-sm) 0;font-size:1rem;font-weight:600}
+.hero .meta{margin:12px 0 0;color:#dbe8f6;font-size:.84rem}
+.card{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;margin-bottom:16px;box-shadow:var(--shadow)}
+.sec-title{display:flex;align-items:baseline;gap:10px;margin:26px 0 12px;flex-wrap:wrap}
+.sec-title h2{font-size:1.15rem;color:var(--blue-dd);margin:0}
+.sec-title .hint{font-size:.82rem;color:var(--grey)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.prod{background:var(--white);border:2px solid var(--blue);border-radius:var(--r);padding:18px 20px;box-shadow:var(--shadow)}
+.prod .ico{font-size:2.1rem;line-height:1}
+.prod h3{margin:8px 0 4px;color:var(--blue-dd);font-size:1.02rem}
+.prod p{margin:0;font-size:.88rem;color:var(--grey)}
+.prod .spec{margin-top:10px;font-size:.78rem;font-weight:700;color:var(--blue-d);background:#eef4fb;display:inline-block;padding:4px 10px;border-radius:999px}
+.aud{font-size:.86rem;color:var(--grey)}
+table.rub{width:100%;border-collapse:collapse;font-size:.82rem}
+table.rub th,table.rub td{border:1px solid var(--line);padding:9px 10px;vertical-align:top;text-align:left}
+table.rub th{background:#eef4fb;color:var(--blue-dd);font-weight:700;font-size:.76rem;text-transform:uppercase;letter-spacing:.04em}
+table.rub td.crit{background:#fafbff;font-weight:600;color:var(--ink);width:22%}
+table.rub td.lvl{cursor:pointer;transition:.12s}
+table.rub td.lvl:hover{background:#f4f8fd}
+table.rub td.lvl.on{background:#dff0e0;box-shadow:inset 0 0 0 2px var(--good)}
+.rub-wrap{overflow-x:auto}
+.legend{font-size:.78rem;color:var(--grey);margin-top:10px}
+.week{display:flex;gap:14px;padding:14px 0;border-bottom:1px dashed var(--line)}
+.week:last-child{border-bottom:none}
+.week .n{flex:0 0 46px;height:46px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.95rem}
+.week h3{margin:2px 0 3px;font-size:.98rem;color:var(--blue-dd)}
+.week p{margin:0;font-size:.86rem;color:var(--grey)}
+.week .give{margin-top:7px;font-size:.78rem;font-weight:700;color:var(--blue-d)}
+.words{display:flex;flex-wrap:wrap;gap:8px}
+.words span{background:#eef4fb;color:var(--blue-dd);border:1px solid var(--line);border-radius:999px;padding:6px 13px;font-size:.83rem;font-weight:600}
+.tool{display:flex;align-items:center;gap:12px;background:var(--white);border:1px solid var(--line);border-radius:var(--r-sm);padding:12px 14px;text-decoration:none;color:inherit;transition:.15s}
+.tool:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.tool .ico{font-size:1.6rem}
+.tool b{display:block;color:var(--blue-dd);font-size:.92rem}
+.tool small{color:var(--grey);font-size:.79rem}
+textarea{width:100%;min-height:230px;border:1px solid var(--line);border-radius:var(--r-sm);padding:12px 14px;font-family:inherit;font-size:.92rem;line-height:1.6;resize:vertical;color:var(--ink)}
+textarea:focus{outline:none;border-color:var(--blue)}
+.counter{font-size:.82rem;font-weight:700;margin-top:8px}
+.counter.ok{color:var(--good)} .counter.near{color:var(--warn)} .counter.off{color:var(--grey)}
+.btn{background:var(--blue);color:#fff;border:none;border-radius:var(--r-sm);padding:10px 18px;font:600 .9rem/1 inherit;cursor:pointer;font-family:inherit}
+.btn:hover{background:var(--blue-d)}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:12px}
+.state{font-size:.83rem;color:var(--grey)}
+.state.ok{color:var(--good);font-weight:700}
+.state.err{color:var(--bad);font-weight:700}
+.note{background:#fff8e6;border:1px solid #f5dea0;border-radius:var(--r-sm);padding:12px 14px;font-size:.85rem;color:#7a5b12}
+.fb{background:#eef7ee;border:1px solid #cbe6cd;border-radius:var(--r-sm);padding:14px 16px;margin-top:14px}
+.fb h4{margin:0 0 6px;color:#1c6b23;font-size:.92rem}
+.fb p{margin:0;font-size:.88rem;color:#2f4f31}
+.drop{display:block;border:2px dashed var(--lila);border-radius:var(--r-sm);padding:20px;text-align:center;color:var(--grey);font-size:.87rem;cursor:pointer}
+.drop input{display:none}
+.checklist{list-style:none;padding:0;margin:14px 0 0}
+.checklist li{padding:7px 0 7px 28px;position:relative;font-size:.87rem;border-bottom:1px dashed var(--line)}
+.checklist li:last-child{border-bottom:none}
+.checklist li::before{content:'\2610';position:absolute;left:4px;top:6px;font-size:1rem;color:var(--blue)}
+.checklist li.done::before{content:'\2611';color:var(--good)}
+@media(max-width:560px){.hero h1{font-size:1.3rem}.wrap{padding:16px 13px 60px}.card{padding:16px 15px}}
+</style>
+</head>
+<body>
+<header>
+  <img src="assets/logo-white-h.svg" alt="Nordic International School" onerror="this.onerror=null;this.src='assets/logo-h.svg'">
+  <div class="spacer"></div>
+  <a class="back" href="./" id="backBtn"><span>&#8592;</span> Portal</a>
+</header>
+
+<div class="wrap">
+
+  <div class="hero">
+    <p class="eyebrow">Grade 9 · English · Unit 5</p>
+    <h1>The Double-Edged Sword: Technology, Society and the Environment</h1>
+    <div class="bigq">Big question — What are the pros and cons of technology at both personal and social levels, and what environmental damage is caused by AI?</div>
+    <p class="meta">5 weeks · You are a critical researcher and advocate. You will analyse articles, debates and reports, compare arguments, and produce your own written and spoken contribution.</p>
+  </div>
+
+  <div class="sec-title"><h2>&#127919; What you will produce</h2><span class="hint">This is the point of the unit — everything else feeds it.</span></div>
+  <div class="grid2">
+    <div class="prod">
+      <div class="ico">&#128221;</div>
+      <h3>An analytical report</h3>
+      <p>Pros and cons of technology, including its environmental cost. A clear thesis, arguments backed by evidence, and at least one counterargument.</p>
+      <div class="spec">300–350 words · formal register</div>
+    </div>
+    <div class="prod">
+      <div class="ico">&#127908;</div>
+      <h3>An oral presentation</h3>
+      <p>Present your findings on AI and technology's impact, defend your position and answer questions from the floor.</p>
+      <div class="spec">Speak from notes, not from a script</div>
+    </div>
+  </div>
+  <div class="card aud" style="margin-top:14px">
+    <b>Who is this for?</b> Not only your teacher. You are writing and speaking as an informed citizen taking a position in a real debate that is happening right now — the same debate governments, companies and scientists are having about AI, energy and e-waste.
+  </div>
+
+  <div class="sec-title"><h2>&#128207; How you will be assessed</h2><span class="hint">You can see this from day one. Click the level you think you are at.</span></div>
+  <div class="card">
+    <div class="rub-wrap"><table class="rub" id="rub"></table></div>
+    <p class="legend"><b>C</b> starting out · <b>B</b> in progress · <b>A</b> expected level · <b>AD</b> outstanding. Your self-assessment is saved and your teacher sees it next to your work — it is not your grade.</p>
+    <div class="row"><span class="state" id="selfState"></span></div>
+  </div>
+
+  <div class="sec-title"><h2>&#128197; Your five weeks</h2><span class="hint">Each week hands one piece to the final product.</span></div>
+  <div class="card" id="weeks"></div>
+
+  <div class="sec-title"><h2>&#128292; Word bank</h2><span class="hint">Use these in the report and in the presentation.</span></div>
+  <div class="card"><div class="words" id="words"></div></div>
+
+  <div class="sec-title"><h2>&#129520; Tools you already have</h2><span class="hint">Open them in the portal, then come back here to hand in.</span></div>
+  <div class="card">
+    <div class="grid2">
+      <a class="tool" href="writing.html?grade=g9"><span class="ico">&#9997;</span><span><b>Writing · opinion essay</b><small>Guide phrases, a bank of linkers, word counter and checklist.</small></span></a>
+      <a class="tool" href="use-of-english-part1.html"><span class="ico">&#129513;</span><span><b>Use of English</b><small>Multiple-choice cloze — the academic vocabulary you need.</small></span></a>
+      <a class="tool" href="grammar.html?grade=g9"><span class="ico">&#128221;</span><span><b>Grammar</b><small>Connectors and structures for argumentation.</small></span></a>
+      <a class="tool" href="games-lab.html"><span class="ico">&#127918;</span><span><b>Games Lab</b><small>Vocabulary practice.</small></span></a>
+    </div>
+  </div>
+
+  <div class="sec-title"><h2>&#128228; Hand in your work</h2><span class="hint">Your draft saves itself. Hand it in when you are ready.</span></div>
+
+  <div class="card" id="gate" style="display:none">
+    <div class="note">You are not signed in, so nothing on this page can be saved. Open this unit from the portal (English → Classes → Grade 9) after signing in, and your work will save by itself.</div>
+  </div>
+
+  <div id="handin" style="display:none">
+    <div class="card">
+      <h3 style="color:var(--blue-dd);font-size:1rem">&#128221; Analytical report</h3>
+      <p style="font-size:.86rem;color:var(--grey);margin:0 0 10px">Thesis → arguments with evidence → at least one counterargument → conclusion.</p>
+      <div class="note" style="margin-bottom:12px"><b>Draft it in your notebook first.</b> Planning, crossing out and rewriting by hand is part of the work — the screen is for the final version, for the checklist and for handing in. If your teacher asks for the handwritten draft, photograph your notebook pages below.</div>
+      <textarea id="report" placeholder="Type your final version here…"></textarea>
+      <div class="counter off" id="wc">0 words</div>
+      <ul class="checklist" id="chk">
+        <li data-k="thesis">My first paragraph states my thesis clearly</li>
+        <li data-k="evidence">Every argument is supported with evidence or an example</li>
+        <li data-k="counter">I include at least one counterargument</li>
+        <li data-k="linkers">I use advanced connectors (nevertheless, moreover, in contrast)</li>
+        <li data-k="env">I mention the environmental cost of AI (energy, carbon footprint or e-waste)</li>
+        <li data-k="length">My report is between 300 and 350 words</li>
+      </ul>
+      <div class="row">
+        <button class="btn" id="sendReport">Hand in report</button>
+        <span class="state" id="reportState"></span>
+      </div>
+      <label class="drop" for="nbfile" id="nbLbl" style="margin-top:14px;padding:14px">
+        <input type="file" id="nbfile" accept="image/png,image/jpeg,application/pdf">
+        &#128211; <b>Photograph your notebook draft</b> — optional, images or PDF
+      </label>
+      <div class="row"><span class="state" id="nbState"></span></div>
+      <div class="fb" id="reportFb" style="display:none"><h4>Your teacher's feedback</h4><p id="reportFbTxt"></p></div>
+    </div>
+
+    <div class="card">
+      <h3 style="color:var(--blue-dd);font-size:1rem">&#127908; Oral presentation</h3>
+      <p style="font-size:.86rem;color:var(--grey);margin:0 0 12px">Record your presentation, or upload the slides or video you used. Audio, video, PDF or images — up to 50 MB.</p>
+      <div class="row" style="margin:0 0 12px">
+        <button class="btn" id="recBtn">&#9679; Record</button>
+        <span class="state" id="recState"></span>
+      </div>
+      <audio id="preview" controls style="display:none;width:100%;margin-bottom:12px"></audio>
+      <label class="drop" for="file" id="dropLbl">
+        <input type="file" id="file" accept="audio/*,video/*,application/pdf,image/png,image/jpeg,.docx">
+        &#128206; <b>Choose a file</b> — or drag it here
+      </label>
+      <div class="row"><span class="state" id="fileState"></span></div>
+      <div class="fb" id="presFb" style="display:none"><h4>Your teacher's feedback</h4><p id="presFbTxt"></p></div>
+    </div>
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+<script src="config.js"></script>
+<script src="nis-nav.js?v=2"></script>
+<script>
+/* Hub de la Unidad 5 de 9.o — el contenido sale del planner de Toddle
+   (Meaningful Situation, Assessment criteria, Teaching Methodology y
+   Authentic evidence). La pagina no inventa la unidad: la ejecuta.
+   Las entregas van a unit_submissions y al bucket unit-products, con el
+   mismo patron que Fun for Nordic (nis-fun/engine/backend.js). */
+
+const GRADE='g9', UNIT=5, MILESTONE='final';
+
+/* Los 3 criterios de evaluacion de Toddle, reescritos en lenguaje de alumno
+   y abiertos en los cuatro niveles del Curriculo Nacional (C/B/A/AD). */
+const RUBRIC=[
+  {n:1, title:'Speaking & listening — present and defend a viewpoint',
+   levels:{
+     C:'I give an opinion but I struggle to explain why, and I read from my notes.',
+     B:'I present my viewpoint with some examples. I answer questions, though not always spontaneously.',
+     A:'I organise my ideas logically, use topic vocabulary, give examples and respond to others respectfully and spontaneously.',
+     AD:'I defend my position persuasively, take counterarguments on live, and judge how reliable or biased what others claim is.'}},
+  {n:2, title:'Reading — analyse how a text argues',
+   levels:{
+     C:'I understand what a text is about, but not the position the writer takes.',
+     B:'I identify the main thesis and some of the details that support it.',
+     A:'I identify thesis, evidence, tone and bias, and I pull out evidence I can use in my own work.',
+     AD:'I compare how different texts present the same issue and explain why they differ.'}},
+  {n:3, title:'Writing — produce a structured analytical report',
+   levels:{
+     C:'I write about the topic, but with no clear thesis and no structure.',
+     B:'I have a thesis and some arguments, but the evidence or the connectors are thin.',
+     A:'Clear thesis, logical organisation, arguments backed by evidence, at least one counterargument, formal style and advanced connectors.',
+     AD:'My argument is nuanced: I anticipate objections, and my vocabulary and grammar are precise throughout.'}}
+];
+const NIVELES=['C','B','A','AD'];
+
+/* Las cinco semanas del planner, con lo que cada una entrega al producto. */
+const WEEKS=[
+  {n:1,t:'Introduction to pros and cons of technology',
+     d:'Identify and categorise the pros and cons of technology at three levels: personal, social and environmental.',
+     g:'You hand in: a short spoken and written reflection using the unit vocabulary.'},
+  {n:2,t:'Gathering evidence and structuring arguments',
+     d:'Learn to structure an argument, tell a strong point from a weak one, and present it out loud with clarity.',
+     g:'You hand in: three arguments with the evidence that supports each one.'},
+  {n:3,t:'Writing analytical paragraphs',
+     d:'Build short analytical paragraphs using evidence from the readings on the environmental impact of AI, linked with connectors.',
+     g:'You hand in: two analytical paragraphs — the core of your report.'},
+  {n:4,t:'From paragraphs to reports and debates',
+     d:'Expand from single paragraphs to a short report of two or three paragraphs, and take part in a structured debate using evidence.',
+     g:'You hand in: the first full draft of your report.'},
+  {n:5,t:'Finalising and presenting reports',
+     d:'Revise and finalise the report, present your findings orally and reflect on your learning.',
+     g:'You hand in: the final report and the presentation — the two products of this unit.'}
+];
+
+const WORDS=['artificial intelligence','algorithm','data','efficiency','productivity','inequality','ethics','sustainability','environment','energy consumption','carbon footprint','e-waste','progress','responsibility','consequences'];
+
+const $=s=>document.querySelector(s);
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+$('#weeks').innerHTML=WEEKS.map(w=>'<div class="week"><div class="n">W'+w.n+'</div>'
+  +'<div><h3>'+esc(w.t)+'</h3><p>'+esc(w.d)+'</p><div class="give">'+esc(w.g)+'</div></div></div>').join('');
+$('#words').innerHTML=WORDS.map(w=>'<span>'+esc(w)+'</span>').join('');
+$('#rub').innerHTML='<thead><tr><th>Criterion</th>'+NIVELES.map(l=>'<th>'+l+'</th>').join('')+'</tr></thead><tbody>'
+  +RUBRIC.map(c=>'<tr><td class="crit">'+c.n+'. '+esc(c.title)+'</td>'
+    +NIVELES.map(l=>'<td class="lvl" data-c="'+c.n+'" data-l="'+l+'">'+esc(c.levels[l])+'</td>').join('')+'</tr>').join('')
+  +'</tbody>';
+
+let sb=null, me=null;
+async function arranca(){
+  try{
+    const cfg=window.NIS_CONFIG;
+    if(!cfg||!window.supabase||!window.supabase.createClient) return null;
+    sb=window.supabase.createClient(cfg.SUPABASE_URL,cfg.SUPABASE_KEY);
+    const {data}=await sb.auth.getSession();
+    me=data&&data.session?data.session.user:null;
+    return me;
+  }catch(_){ return null; }
+}
+
+async function guarda(kind,payload,extra){
+  if(!sb||!me) return {ok:false,motivo:'no session'};
+  const fila=Object.assign({student_id:me.id,grade:GRADE,unit:UNIT,milestone:MILESTONE,kind:kind,
+    payload:payload||{},updated_at:new Date().toISOString()},extra||{});
+  const {error}=await sb.from('unit_submissions').upsert(fila,{onConflict:'student_id,grade,unit,milestone,kind'});
+  return error?{ok:false,motivo:error.message}:{ok:true};
+}
+
+/* --- autoevaluacion sobre la rubrica --- */
+let self_={};
+function pintaSelf(){
+  document.querySelectorAll('#rub td.lvl').forEach(td=>{
+    td.classList.toggle('on', self_[td.dataset.c]===td.dataset.l);
+  });
+}
+$('#rub').addEventListener('click',async e=>{
+  const td=e.target.closest('td.lvl'); if(!td||!me) return;
+  if(self_[td.dataset.c]===td.dataset.l) delete self_[td.dataset.c];
+  else self_[td.dataset.c]=td.dataset.l;
+  pintaSelf();
+  const r=await guarda('selfassess',{levels:self_});
+  $('#selfState').textContent = r.ok?'Saved':'Could not save: '+r.motivo;
+  $('#selfState').className = r.ok?'state ok':'state err';
+});
+
+/* --- informe: contador, checklist viva y autoguardado --- */
+function cuentaPalabras(t){ return (t.trim().match(/\S+/g)||[]).length; }
+function pintaContador(){
+  const n=cuentaPalabras($('#report').value);
+  const el=$('#wc');
+  el.textContent=n+' word'+(n===1?'':'s')+' · target 300–350';
+  el.className='counter '+(n>=300&&n<=350?'ok':(n>=250&&n<400?'near':'off'));
+  const t=$('#report').value.toLowerCase();
+  const marca=(k,cond)=>{ const li=document.querySelector('#chk li[data-k="'+k+'"]'); if(li) li.classList.toggle('done',!!cond); };
+  marca('length', n>=300&&n<=350);
+  marca('linkers', /(nevertheless|moreover|in contrast|furthermore|on the other hand)/.test(t));
+  marca('counter', /(however|although|critics|opponents|on the other hand|some argue)/.test(t));
+  marca('env', /(carbon|e-waste|energy consumption|emissions|environmental)/.test(t));
+  marca('evidence', /(for example|for instance|according to|research|study|data show)/.test(t));
+  marca('thesis', n>40);
+}
+let tGuardado=null;
+function autosave(){
+  clearTimeout(tGuardado);
+  $('#reportState').textContent='Saving…'; $('#reportState').className='state';
+  tGuardado=setTimeout(async()=>{
+    const r=await guarda('report',{text:$('#report').value,words:cuentaPalabras($('#report').value),draft:true});
+    $('#reportState').textContent=r.ok?'Draft saved':'Not saved: '+r.motivo;
+    $('#reportState').className=r.ok?'state ok':'state err';
+  },1200);
+}
+$('#report').addEventListener('input',()=>{ pintaContador(); if(me) autosave(); });
+
+$('#sendReport').addEventListener('click',async()=>{
+  const n=cuentaPalabras($('#report').value);
+  if(n<50){ $('#reportState').textContent='Your report is still too short to hand in.'; $('#reportState').className='state err'; return; }
+  $('#sendReport').disabled=true;
+  const r=await guarda('report',{text:$('#report').value,words:n,draft:false,handed_at:new Date().toISOString()});
+  $('#sendReport').disabled=false;
+  $('#reportState').textContent=r.ok?'Handed in — you can still edit it and hand it in again.':'Could not hand in: '+r.motivo;
+  $('#reportState').className=r.ok?'state ok':'state err';
+});
+
+/* --- presentacion: grabadora o archivo --- */
+let rec=null, trozos=[], grabando=false;
+$('#recBtn').addEventListener('click',async()=>{
+  if(grabando){ rec.stop(); return; }
+  try{
+    const stream=await navigator.mediaDevices.getUserMedia({audio:true});
+    trozos=[]; rec=new MediaRecorder(stream);
+    rec.ondataavailable=e=>{ if(e.data.size) trozos.push(e.data); };
+    rec.onstop=async()=>{
+      stream.getTracks().forEach(t=>t.stop());
+      grabando=false; $('#recBtn').innerHTML='&#9679; Record';
+      const blob=new Blob(trozos,{type:rec.mimeType||'audio/webm'});
+      $('#preview').src=URL.createObjectURL(blob); $('#preview').style.display='block';
+      await sube(blob,(blob.type||'').indexOf('ogg')>=0?'ogg':'webm',$('#recState'));
+    };
+    rec.start(); grabando=true; $('#recBtn').innerHTML='&#9632; Stop';
+    $('#recState').textContent='Recording…'; $('#recState').className='state';
+  }catch(_){
+    $('#recState').textContent='I could not use the microphone. Upload a file instead.';
+    $('#recState').className='state err';
+  }
+});
+
+const EXT={'audio/webm':'webm','audio/ogg':'ogg','audio/mpeg':'mp3','audio/mp4':'m4a','audio/wav':'wav',
+  'video/webm':'webm','video/mp4':'mp4','application/pdf':'pdf','image/png':'png','image/jpeg':'jpg',
+  'application/vnd.openxmlformats-officedocument.wordprocessingml.document':'docx'};
+
+async function sube(blob,ext,estado,kind){
+  kind=kind||'presentation';
+  if(!sb||!me){ estado.textContent='Sign in from the portal to upload.'; estado.className='state err'; return; }
+  estado.textContent='Uploading…'; estado.className='state';
+  const ruta=me.id+'/'+GRADE+'-u'+UNIT+'-'+kind+'.'+ext;
+  const up=await sb.storage.from('unit-products').upload(ruta,blob,{upsert:true,contentType:blob.type||'application/octet-stream'});
+  if(up.error){ estado.textContent='Upload failed: '+up.error.message; estado.className='state err'; return; }
+  const r=await guarda(kind,{mime:blob.type,size:blob.size},{file_path:ruta});
+  estado.textContent=r.ok?'Uploaded — your teacher can see it now.':'Uploaded, but not registered: '+r.motivo;
+  estado.className=r.ok?'state ok':'state err';
+}
+
+async function desdeArchivo(f,estado,kind){
+  if(!f) return;
+  if(f.size>52428800){ estado.textContent='That file is over 50 MB.'; estado.className='state err'; return; }
+  const ext=EXT[f.type]||(f.name.split('.').pop()||'bin').toLowerCase();
+  await sube(f,ext,estado,kind);
+}
+$('#file').addEventListener('change',e=>desdeArchivo(e.target.files&&e.target.files[0],$('#fileState')));
+$('#nbfile').addEventListener('change',e=>desdeArchivo(e.target.files&&e.target.files[0],$('#nbState'),'notebook'));
+['dragover','dragenter'].forEach(ev=>$('#dropLbl').addEventListener(ev,e=>{e.preventDefault();$('#dropLbl').style.borderColor='var(--blue)';}));
+['dragleave','drop'].forEach(ev=>$('#dropLbl').addEventListener(ev,e=>{e.preventDefault();$('#dropLbl').style.borderColor='var(--lila)';}));
+$('#dropLbl').addEventListener('drop',e=>desdeArchivo(e.dataTransfer.files&&e.dataTransfer.files[0],$('#fileState')));
+
+/* --- arranque: trae lo que el alumno ya tenia --- */
+(async function(){
+  await arranca();
+  if(!me){ $('#gate').style.display='block'; pintaContador(); return; }
+  $('#handin').style.display='block';
+  const {data}=await sb.from('unit_submissions')
+    .select('kind,payload,file_path,score,criteria,feedback,reviewed_at')
+    .eq('student_id',me.id).eq('grade',GRADE).eq('unit',UNIT).eq('milestone',MILESTONE);
+  (data||[]).forEach(r=>{
+    if(r.kind==='selfassess'){ self_=(r.payload&&r.payload.levels)||{}; pintaSelf(); }
+    if(r.kind==='report'){
+      $('#report').value=(r.payload&&r.payload.text)||'';
+      if(r.payload&&r.payload.draft===false){ $('#reportState').textContent='Handed in'; $('#reportState').className='state ok'; }
+      if(r.feedback){ $('#reportFb').style.display='block';
+        $('#reportFbTxt').textContent=(r.score!=null?('Mark: '+r.score+'/10 — '):'')+r.feedback; }
+    }
+    if(r.kind==='notebook'){
+      $('#nbState').textContent='Notebook draft uploaded — you can replace it.'; $('#nbState').className='state ok';
+    }
+    if(r.kind==='presentation'){
+      $('#fileState').textContent='Already uploaded — you can replace it.'; $('#fileState').className='state ok';
+      if(r.feedback){ $('#presFb').style.display='block';
+        $('#presFbTxt').textContent=(r.score!=null?('Mark: '+r.score+'/10 — '):'')+r.feedback; }
+    }
+  });
+  pintaContador();
+})();
+</script>
+</body>
+</html>

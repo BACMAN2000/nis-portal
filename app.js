@@ -661,7 +661,7 @@ async function adminTeachers(){
     const _nodeChip=(key,label)=>`<label style="${chipCss}"><input type="checkbox" class="tg-node" value="${key}" ${(managed? managed.has(key): true)?'checked':''}> ${esc(label)}</label>`;
     // Unidades y semanas no se asignan al profesor por separado (heredan de
     // su Activities), así que quedan fuera de los chips generales.
-    const _gradeKeySet=new Set([...ALL_GRADE_ORDER.flatMap(g=>['english.classes.'+g,'english.classes.'+g+'.activities','english.classes.'+g+'.grammar']),'english.classes.g9.cambridge','english.classes.g9.cambridge.listening','english.classes.g9.uoe1','english.classes.g9.writing','english.classes.g9.reader','english.classes.g7.reader',..._SUB_NODES.map(n=>n.key)]);
+    const _gradeKeySet=new Set([...ALL_GRADE_ORDER.flatMap(g=>['english.classes.'+g,'english.classes.'+g+'.activities','english.classes.'+g+'.grammar']),'english.classes.g9.cambridge','english.classes.g9.cambridge.listening','english.classes.g9.uoe1','english.classes.g9.writing','english.classes.g9.unit5','english.classes.g9.reader','english.classes.g7.reader',..._SUB_NODES.map(n=>n.key)]);
     const generalChips=ACCESS_NODES.filter(n=>!_gradeKeySet.has(n.key)).map(n=>_nodeChip(n.key,n.label)).join('');
     // Primaria (2.º–5.º) sin Grammar: en esa etapa la gramática vive dentro
     // de las actividades, igual que en francés.
@@ -669,7 +669,7 @@ async function adminTeachers(){
       const items=[['english.classes.'+g,'Classes'],['english.classes.'+g+'.activities','🎲 Activities']];
       if(!_isPrimaryGrade(g)) items.push(['english.classes.'+g+'.grammar','📝 Grammar']);
       if(g==='g7') items.push(['english.classes.g7.reader','📚 Readers']);
-      if(g==='g9') items.push(['english.classes.g9.cambridge','🎓 Cambridge'],['english.classes.g9.cambridge.listening','🎧 Cambridge Listening'],['english.classes.g9.uoe1','🧩 Use of English P1'],['english.classes.g9.writing','✍️ Writing'],['english.classes.g9.reader','📚 Readers']);
+      if(g==='g9') items.push(['english.classes.g9.cambridge','🎓 Cambridge'],['english.classes.g9.cambridge.listening','🎧 Cambridge Listening'],['english.classes.g9.uoe1','🧩 Use of English P1'],['english.classes.g9.writing','✍️ Writing'],['english.classes.g9.unit5','🎯 Unit 5'],['english.classes.g9.reader','📚 Readers']);
       return `<div class="row" style="gap:6px;align-items:center;margin-top:5px;flex-wrap:wrap"><span class="muted" style="font-size:.8rem;min-width:84px">${GRADE_META[g][0]} ${GRADE_META[g][1]}</span>${items.map(it=>_nodeChip(it[0],it[1])).join('')}</div>`;
     }).join('');
     const pw=credmap[t.id]||'';
@@ -1867,6 +1867,7 @@ async function renderTeacher(tab){
   if(acc.can_results) nav.push({key:'final',label:'🎓 Resultado final'});
   if(acc.can_results) nav.push({key:'readers',label:'📖 Controles de lectura'});
   if(acc.can_results) nav.push({key:'funnordic',label:'🧸 Fun for Nordic'});
+  if(acc.can_results) nav.push({key:'unitprod',label:'🎯 Productos de unidad'});
   if(acc.can_students) nav.push({key:'students',label:'👥 Alumnos'});
   if(acc.can_results||acc.can_students) nav.push({key:'honesty',label:'🛡️ Honestidad'});
   if(teacherAllowedGrades().length) nav.push({key:'practice',label:'🎯 Practice Tests'});
@@ -1892,6 +1893,7 @@ async function renderTeacher(tab){
   if(active==='final') return cefrFinalPanel();
   if(active==='readers') return readerStatsPanel();
   if(active==='students') return teacherStudents();
+  if(active==='unitprod') return unitProductsPanel();
   if(active==='honesty') return antiCheatPanel();
   if(active==='practice') return practicePanel(teacherAllowedGrades());
   if(active==='classes') return studentClasses();
@@ -2629,6 +2631,7 @@ const ACCESS_NODES = [
   {key:'english.classes.g9.cambridge.listening',label:'9th · Cambridge · Listening'},
   {key:'english.classes.g9.uoe1',       label:'9th · Use of English P1'},
   {key:'english.classes.g9.writing',    label:'9th · Writing'},
+  {key:'english.classes.g9.unit5',      label:'9th · Unit 5 (product)'},
   {key:'english.classes.g7.reader',     label:'7th · Readers'},
   {key:'english.classes.g9.reader',     label:'9th · Readers'},
   {key:'french',                        label:'French (toda la materia)'},
@@ -2767,6 +2770,7 @@ function studentGrade(key){
   $('#main').innerHTML=`${back}<h1>${emoji} ${label}</h1>
     <p class="muted" style="margin-top:-6px">${label} material.</p>
     <div class="grid cols-2" style="margin-top:12px">
+      ${key==='g9' ? (nodeVisible(base+'.unit5') ? _skillCard('🎯','Unit 5 · The Double-Edged Sword','Technology, society and the environment. Your product: an analytical report and an oral presentation — with the rubric visible from day one.',_withBack('unit-g9-u5.html',route)) : _lockedCard('🎯','Unit 5','Your unit product.')) : ''}
       ${_isPrimaryGrade(key) ? '' : (nodeVisible(base+'.grammar') ? _skillCard('📝','Grammar','Grammar for '+label+': explanations and games by unit.',_withBack('grammar.html?grade='+key,route)) : _lockedCard('📝','Grammar','Grammar for '+label+'.'))}
       ${nodeVisible(base+'.activities') ? _hubCard('🎲','Activities',_isPrimaryGrade(key)?'Games for each unit — with audio for young learners.':'Games by unit and by level: crosswords, word searches and more.',"window._nav('classes_"+key+"_act')") : _lockedCard('🎲','Activities','Games and activities.')}
       ${key==='g9' ? (nodeVisible('english.classes.g9.cambridge') ? _hubCard('🎓','Cambridge','B2 First (FCE) practice by skill: Listening, Use of English, Reading and Writing.',"window._nav('classes_g9_cambridge')") : _lockedCard('🎓','Cambridge','Cambridge B2 First practice.')) : ''}
@@ -3961,4 +3965,143 @@ window.studentReportPDF = async (studentId, lang)=>{
     pdf.save(fname);
   }catch(e){ alert('No se pudo generar el PDF: '+(e&&e.message||e)); }
   finally{ host.remove(); }
+};
+
+/* ---------------------------------------------------------------
+   🎯 Productos de unidad — lo que el alumno entrega en el hub de la
+   unidad (unit-g9-u5.html). Sustituye al "promedio de mock" como
+   primera lectura del profesor: manda el avance POR CRITERIO de la
+   rúbrica de Toddle, y la nota queda debajo.
+---------------------------------------------------------------- */
+const UNIT_CRIT = { '1':'Speaking & listening', '2':'Reading', '3':'Writing' };
+const UNIT_LVL  = ['C','B','A','AD'];
+
+async function unitProductsPanel(){
+  const main = $('#main');
+  main.innerHTML = '<div class="card"><p class="muted">Cargando entregas…</p></div>';
+
+  const { data, error } = await sb
+    .from('unit_submissions')
+    .select('id,student_id,grade,unit,milestone,kind,payload,file_path,score,criteria,feedback,reviewed_at,created_at')
+    .order('created_at', { ascending:false })
+    .limit(500);
+
+  if (error){
+    main.innerHTML = `<div class="card"><p class="err">No pude leer las entregas: ${esc(error.message)}</p></div>`;
+    return;
+  }
+  if (!data || !data.length){
+    main.innerHTML = `<div class="card"><h2>🎯 Productos de unidad</h2>
+      <p class="muted">Todavía no hay entregas. Aparecerán aquí en cuanto los alumnos
+      escriban o suban su producto en el hub de la unidad.</p></div>`;
+    return;
+  }
+
+  const ids = [...new Set(data.map(r=>r.student_id))];
+  const { data: gente } = await sb.from('profiles').select('id,full_name,grade_id,section').in('id', ids);
+  const quien = Object.fromEntries((gente||[]).map(p=>[p.id,p]));
+
+  // Una fila por alumno: junta su informe, su presentación y su autoevaluación.
+  const porAlumno = {};
+  data.forEach(r=>{
+    const k = r.student_id+'|'+r.grade+'|'+r.unit;
+    (porAlumno[k] = porAlumno[k] || {alumno:r.student_id, grade:r.grade, unit:r.unit})[r.kind] = r;
+  });
+  const filas = Object.values(porAlumno);
+
+  // Avance por criterio: cuántos alumnos hay en cada nivel. Es lo que el
+  // profesor mira primero y lo que se lleva a coordinación.
+  const conteo = {'1':{},'2':{},'3':{}};
+  filas.forEach(f=>{
+    const c = (f.report && f.report.criteria) || (f.presentation && f.presentation.criteria) || null;
+    if(!c) return;
+    Object.keys(UNIT_CRIT).forEach(k=>{ if(c[k]) conteo[k][c[k]] = (conteo[k][c[k]]||0)+1; });
+  });
+  const COLOR = {AD:'#dcfce7', A:'#e0f2fe', B:'#fef9c3', C:'#fee2e2'};
+  const barra = k => UNIT_LVL.map(l=>
+    `<span class="badge" style="background:${COLOR[l]};margin-right:4px">${l}: ${conteo[k][l]||0}</span>`).join('');
+
+  const sel = (id, crit, valor) => `<select onchange="unitCriterio('${id}','${crit}',this.value)" style="font-size:.8rem">
+      <option value=""${valor?'':' selected'}>—</option>
+      ${UNIT_LVL.map(l=>`<option value="${l}"${valor===l?' selected':''}>${l}</option>`).join('')}
+    </select>`;
+
+  const fila = f => {
+    const p = quien[f.alumno]||{};
+    const rep = f.report, pres = f.presentation, self = f.selfassess, nb = f.notebook;
+    const base = rep || pres;                       // dónde se guarda la calificación
+    const crit = (base && base.criteria) || {};
+    const selfL = (self && self.payload && self.payload.levels) || {};
+    const pal = rep && rep.payload ? (rep.payload.words||0) : 0;
+    const entregado = !!(rep && rep.payload && rep.payload.draft===false);
+    return `<tr>
+      <td>${esc(p.full_name||'(alumno)')} <span class="muted">${p.grade_id?p.grade_id+'º'+(p.section||''):''}</span></td>
+      <td class="muted">${esc(f.grade)} · U${f.unit}</td>
+      <td>${rep ? `<button class="btn small" onclick="unitVerTexto('${rep.id}')">📄 ${pal} pal.</button>
+              <span class="badge" style="background:${entregado?'#dcfce7':'#fef9c3'}">${entregado?'entregado':'borrador'}</span>`
+            : '<span class="muted">—</span>'}</td>
+      <td>${pres && pres.file_path ? `<button class="btn small" onclick="unitVerArchivo('${esc(pres.file_path)}',this)">▶ Ver</button>` : '<span class="muted">—</span>'}</td>
+      <td>${nb && nb.file_path ? `<button class="btn small" onclick="unitVerArchivo('${esc(nb.file_path)}',this)">📓 Ver</button>` : '<span class="muted">—</span>'}</td>
+      ${Object.keys(UNIT_CRIT).map(k=>`<td style="white-space:nowrap">${base?sel(base.id,k,crit[k]):'—'}
+          ${selfL[k]?`<span class="muted" style="font-size:.72rem" title="lo que se puso el alumno">↖${selfL[k]}</span>`:''}</td>`).join('')}
+      <td><input type="number" min="0" max="10" value="${base&&base.score!=null?base.score:''}" style="width:4rem"
+            ${base?`onchange="unitCalificar('${base.id}',this.value,null)"`:'disabled'}></td>
+      <td><input type="text" placeholder="comentario" value="${esc((base&&base.feedback)||'')}"
+            ${base?`onchange="unitCalificar('${base.id}',null,this.value)"`:'disabled'}></td>
+    </tr>`;
+  };
+
+  window._unitTextos = Object.fromEntries(data.filter(r=>r.kind==='report').map(r=>[r.id,(r.payload&&r.payload.text)||'']));
+
+  main.innerHTML = `<div class="card">
+    <h2>🎯 Productos de unidad</h2>
+    <p class="muted">Lo que los alumnos producen, no lo que aciertan. Primero el avance
+      por criterio de la rúbrica; la nota es lo de abajo.</p>
+    <div style="display:grid;gap:8px;margin:14px 0 18px">
+      ${Object.keys(UNIT_CRIT).map(k=>`<div><b style="font-size:.85rem">${k}. ${UNIT_CRIT[k]}</b><br>${barra(k)}</div>`).join('')}
+    </div>
+    <div style="overflow-x:auto"><table class="tbl">
+      <thead><tr><th>Alumno</th><th>Unidad</th><th>Informe</th><th>Presentación</th><th>Cuaderno</th>
+        <th>C1</th><th>C2</th><th>C3</th><th>Nota</th><th>Comentario</th></tr></thead>
+      <tbody>${filas.map(fila).join('')}</tbody></table></div>
+    <p class="muted" style="font-size:.8rem;margin-top:12px">↖ = el nivel que el propio alumno se puso.</p>
+  </div>
+  <div class="card" id="unitTexto" style="display:none"></div>`;
+}
+
+window.unitVerTexto = function(id){
+  const caja = $('#unitTexto');
+  caja.style.display='block';
+  caja.innerHTML = `<h3>📄 Informe del alumno</h3>
+    <div style="white-space:pre-wrap;font-size:.9rem;line-height:1.6">${esc(window._unitTextos[id]||'(vacío)')}</div>`;
+  caja.scrollIntoView({behavior:'smooth',block:'start'});
+};
+
+/* El bucket es privado: se pide un enlace temporal, como en Fun for Nordic. */
+window.unitVerArchivo = async function(ruta, boton){
+  if(!ruta) return;
+  const { data, error } = await sb.storage.from('unit-products').createSignedUrl(ruta, 3600);
+  if(error || !data){ boton.textContent='No disponible'; return; }
+  const ext = (ruta.split('.').pop()||'').toLowerCase();
+  if(['webm','ogg','mp3','m4a','wav'].indexOf(ext)>=0){
+    const a=document.createElement('audio'); a.controls=true; a.src=data.signedUrl; a.style.maxWidth='15rem';
+    boton.replaceWith(a); a.play().catch(()=>{});
+  } else {
+    window.open(data.signedUrl,'_blank','noopener');
+  }
+};
+
+window.unitCalificar = async function(id, nota, comentario){
+  const cambio = { reviewed_at:new Date().toISOString(), reviewed_by:(state.profile&&state.profile.id)||null };
+  if(nota !== null && nota !== '') cambio.score = Number(nota);
+  if(comentario !== null) cambio.feedback = comentario;
+  await sb.from('unit_submissions').update(cambio).eq('id', id);
+};
+
+window.unitCriterio = async function(id, crit, valor){
+  const { data } = await sb.from('unit_submissions').select('criteria').eq('id',id).single();
+  const c = (data && data.criteria) || {};
+  if(valor) c[crit] = valor; else delete c[crit];
+  await sb.from('unit_submissions').update({ criteria:c, reviewed_at:new Date().toISOString(),
+    reviewed_by:(state.profile&&state.profile.id)||null }).eq('id', id);
 };
