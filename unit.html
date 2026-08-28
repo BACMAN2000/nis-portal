@@ -106,7 +106,7 @@ textarea:focus{outline:none;border-color:var(--blue)}
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js"></script>
 <script src="activities-data.js?v=12"></script>
-<script src="unit-plans.js?v=1"></script>
+<script src="unit-plans.js?v=2"></script>
 <script src="nis-nav.js?v=2"></script>
 <script>
 /* Motor del hub de unidad. Los datos vienen de unit-plans.js, que es una copia
@@ -175,12 +175,12 @@ function pinta(){
     <div class="row"><span class="state" id="selfState"></span></div>
   </div>
 
-  <div class="sec-title"><h2>&#128197; Your ${U.sequence.length} weeks</h2><span class="hint">Each week hands one piece to the final product — and brings the practice you need for it.</span></div>
+  <div class="sec-title"><h2>&#128197; Your ${U.sequence.length} ${U.stepWord?(U.stepWord+'s'):'weeks'}</h2><span class="hint">Each week hands one piece to the final product — and brings the practice you need for it.</span></div>
   <div class="card">${U.sequence.map(w=>`<div class="week">
-      <div class="n">W${w.n}</div>
+      <div class="n">${(U.stepWord?U.stepWord[0]:'W')}${w.n}</div>
       <div style="flex:1">
         <h3>${esc(w.title)}</h3><p>${esc(w.desc)}</p>
-        <div class="give">You hand in: ${esc(w.give)}</div>
+        ${w.give?`<div class="give">You hand in: ${esc(w.give)}</div>`:''}
         ${juegosSemana(w.n)}
       </div>
     </div>`).join('')}
