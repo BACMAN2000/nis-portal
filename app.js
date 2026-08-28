@@ -385,6 +385,7 @@ async function renderAdmin(tab='users'){
     {key:'final',label:'🎓 Resultado final'},
     {key:'readers',label:'📖 Controles de lectura'},
     {key:'unitprod',label:'🎯 Productos de unidad'},
+    {key:'corregir',label:'✅ Corregir fichas'},
     {key:'materiales',label:'📄 Materiales de clase'},
     {key:'teachers',label:'👨‍🏫 Profesores'},
     {key:'honesty',label:'🛡️ Honestidad'},
@@ -414,6 +415,7 @@ async function renderAdmin(tab='users'){
   if(tab==='overview') return adminOverview();
   if(tab==='unitprod') return unitProductsPanel();
   if(tab==='materiales') return materialesPanel();
+  if(tab==='corregir') return corregirPanel();
   if(tab==='stats') return adminStats();
   if(tab==='results') return adminResults();
   if(tab==='final') return cefrFinalPanel();
@@ -1873,6 +1875,7 @@ async function renderTeacher(tab){
   if(acc.can_results) nav.push({key:'readers',label:'📖 Controles de lectura'});
   if(acc.can_results) nav.push({key:'funnordic',label:'🧸 Fun for Nordic'});
   if(acc.can_results) nav.push({key:'unitprod',label:'🎯 Productos de unidad'});
+  if(acc.can_results) nav.push({key:'corregir',label:'✅ Corregir fichas'});
   if(acc.can_results) nav.push({key:'materiales',label:'📄 Materiales de clase'});
   if(acc.can_students) nav.push({key:'students',label:'👥 Alumnos'});
   if(acc.can_results||acc.can_students) nav.push({key:'honesty',label:'🛡️ Honestidad'});
@@ -1901,6 +1904,7 @@ async function renderTeacher(tab){
   if(active==='students') return teacherStudents();
   if(active==='unitprod') return unitProductsPanel();
   if(active==='materiales') return materialesPanel();
+  if(active==='corregir') return corregirPanel();
   if(active==='honesty') return antiCheatPanel();
   if(active==='practice') return practicePanel(teacherAllowedGrades());
   if(active==='classes') return studentClasses();
@@ -4372,4 +4376,234 @@ window.unitVerFicha = function(id){
     <p class="muted">${Object.keys(a).length} campos respondidos.</p>
     <div style="overflow-x:auto"><table class="tbl"><tbody>${filas}</tbody></table></div>`;
   caja.scrollIntoView({behavior:'smooth', block:'start'});
+};
+
+/* ---------------------------------------------------------------
+   ✅ Corregir fichas — la rúbrica y la corrección, en una pantalla.
+
+   La rúbrica se define POR SESIÓN y vale para los cuatro niveles: el
+   criterio es el mismo, lo que cambia es la exigencia. Se guarda en la
+   propia ficha (worksheets.rubric).
+
+   Corregir es: eliges sesión, ves quién entregó, abres a un alumno y
+   tienes sus respuestas a la izquierda y la rúbrica a la derecha. Pones
+   puntos, y "Guardar y siguiente" te lleva al siguiente sin volver atrás.
+---------------------------------------------------------------- */
+let _corr = { grade:'g9', unit:4, week:1, session:1, fichas:[], entregas:[], i:0, rubric:[] };
+
+async function corregirPanel(){
+  $('#main').innerHTML = `<div class="card"><p class="muted">Cargando…</p></div>`;
+  await corrCarga();
+}
+
+function corrSelector(){
+  const semanas = [1,2,3,4,5,6].map(w=>`<option value="${w}" ${w===_corr.week?'selected':''}>Semana ${w}</option>`).join('');
+  const sesiones = [1,2,3,4].map(s=>`<option value="${s}" ${s===_corr.session?'selected':''}>Sesión ${s}</option>`).join('');
+  const grados = ALL_GRADE_ORDER.map(g=>`<option value="${g}" ${g===_corr.grade?'selected':''}>${GRADE_META[g][1]}</option>`).join('');
+  return `<div class="row" style="gap:10px;flex-wrap:wrap">
+    <select id="cGrado">${grados}</select>
+    <select id="cUnidad">${[1,2,3,4,5,6].map(u=>`<option value="${u}" ${u===_corr.unit?'selected':''}>Unidad ${u}</option>`).join('')}</select>
+    <select id="cSemana">${semanas}</select>
+    <select id="cSesion">${sesiones}</select>
+    <button class="btn small" onclick="corrCarga()">Ver</button>
+  </div>`;
+}
+
+async function corrCarga(){
+  const sel = id => { const e=$(id); return e ? e.value : null; };
+  if($('#cGrado')){
+    _corr.grade   = sel('#cGrado');
+    _corr.unit    = parseInt(sel('#cUnidad'),10);
+    _corr.week    = parseInt(sel('#cSemana'),10);
+    _corr.session = parseInt(sel('#cSesion'),10);
+  }
+  const hito = 'w'+_corr.week+'s'+_corr.session;
+
+  const { data: fichas } = await sb.from('worksheets')
+    .select('id,level,title,rubric')
+    .eq('grade',_corr.grade).eq('unit',_corr.unit)
+    .eq('week',_corr.week).eq('session',_corr.session).order('level');
+  _corr.fichas = fichas || [];
+  _corr.rubric = (fichas && fichas[0] && fichas[0].rubric) || [];
+
+  const { data: ent } = await sb.from('v_entregas_ficha')
+    .select('*').eq('grade',_corr.grade).eq('unit',_corr.unit).eq('milestone',hito)
+    .order('full_name');
+  _corr.entregas = ent || [];
+  _corr.i = 0;
+  corrPinta();
+}
+
+function corrPinta(){
+  const titulo = (_corr.fichas[0] && _corr.fichas[0].title) || '(sin ficha digital para esta sesión)';
+  const n = _corr.entregas.length;
+  const sinCorregir = _corr.entregas.filter(e=>e.score==null).length;
+
+  $('#main').innerHTML = `
+    <div class="card">
+      <h2>✅ Corregir fichas</h2>
+      <p class="muted">${esc(titulo)}</p>
+      ${corrSelector()}
+      <p class="muted" style="margin-top:12px">
+        ${n} entrega(s) · <b>${sinCorregir} sin corregir</b> ·
+        ${_corr.fichas.length} nivel(es) digitalizado(s)</p>
+    </div>
+
+    <div class="card">
+      <h3 style="font-size:1rem;color:var(--blue-d)">📏 Rúbrica de esta práctica</h3>
+      <p class="muted">Vale para los cuatro niveles de la sesión. La nota se suma sola.</p>
+      <div id="cRub"></div>
+      <div class="row">
+        <button class="btn small" onclick="corrAddCrit()">+ Criterio</button>
+        <button class="btn small ghost" onclick="corrGuardaRubrica()">Guardar rúbrica</button>
+        <span class="state" id="cRubEstado"></span>
+      </div>
+    </div>
+
+    ${n ? `<div class="card" id="cCorreccion"></div>` : `
+    <div class="card"><p class="muted">Todavía no hay entregas de esta sesión.</p></div>`}`;
+
+  corrPintaRubrica();
+  if(n) corrAlumno(0);
+}
+
+function corrPintaRubrica(){
+  const r = _corr.rubric;
+  $('#cRub').innerHTML = r.length ? `<table class="tbl" style="margin-top:10px">
+      <thead><tr><th>Criterio</th><th style="width:90px">Máx.</th><th style="width:40px"></th></tr></thead>
+      <tbody>${r.map((c,i)=>`<tr>
+        <td><input type="text" value="${esc(c.c||'')}" style="width:100%"
+              onchange="_corr.rubric[${i}].c=this.value"></td>
+        <td><input type="number" min="1" max="20" value="${c.max||4}" style="width:4.5rem"
+              onchange="_corr.rubric[${i}].max=Number(this.value)"></td>
+        <td><button class="btn small ghost" onclick="corrDelCrit(${i})">✕</button></td>
+      </tr>`).join('')}</tbody></table>`
+    : `<p class="muted" style="margin-top:10px">Sin rúbrica todavía. Añade criterios y guárdalos:
+       aparecerán al corregir a cada alumno.</p>`;
+}
+
+window.corrAddCrit = function(){
+  _corr.rubric.push({ c:'', max:4 });
+  corrPintaRubrica();
+};
+window.corrDelCrit = function(i){
+  _corr.rubric.splice(i,1);
+  corrPintaRubrica();
+};
+
+window.corrGuardaRubrica = async function(){
+  const est = $('#cRubEstado');
+  const limpia = _corr.rubric.filter(c => (c.c||'').trim());
+  est.textContent = 'Guardando…'; est.className = 'state';
+  const { error } = await sb.from('worksheets').update({ rubric: limpia })
+    .eq('grade',_corr.grade).eq('unit',_corr.unit)
+    .eq('week',_corr.week).eq('session',_corr.session);
+  est.textContent = error ? ('No se guardó: '+error.message)
+    : `Guardada para los ${_corr.fichas.length} niveles.`;
+  est.className = error ? 'state err' : 'state ok';
+  if(!error){ _corr.rubric = limpia; corrPintaRubrica(); corrAlumno(_corr.i); }
+};
+
+/* ---------- corrección de un alumno ---------- */
+window.corrAlumno = async function(i){
+  if(!_corr.entregas.length) return;
+  _corr.i = Math.max(0, Math.min(_corr.entregas.length-1, i));
+  const e = _corr.entregas[_corr.i];
+
+  const { data: sub } = await sb.from('unit_submissions')
+    .select('payload').eq('id', e.id).maybeSingle();
+  const resp = (sub && sub.payload && sub.payload.answers) || {};
+  const claves = Object.keys(resp).filter(k => resp[k] !== '' && resp[k] !== false);
+
+  const puntos = e.criteria || {};
+  const rub = _corr.rubric;
+  const maxTotal = rub.reduce((a,c)=>a+(c.max||0),0);
+
+  $('#cCorreccion').innerHTML = `
+    <div class="row" style="justify-content:space-between;align-items:center">
+      <div>
+        <h3 style="margin:0;font-size:1.05rem;color:var(--blue-dd)">${esc(e.full_name)}</h3>
+        <span class="muted" style="font-size:.85rem">Nivel ${esc(e.level||'—')} ·
+          ${e.respondidos} campos respondidos ·
+          ${e.draft===false ? 'entregada' : 'borrador'}</span>
+      </div>
+      <div class="muted" style="font-size:.85rem">${_corr.i+1} de ${_corr.entregas.length}</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 320px;gap:18px;margin-top:14px" id="cGrid">
+      <div style="max-height:60vh;overflow:auto;border:1px solid var(--line);border-radius:10px;padding:12px">
+        ${claves.length ? `<table class="tbl"><tbody>${claves.map(k=>`<tr>
+            <td class="muted" style="white-space:nowrap;vertical-align:top">${esc(k)}</td>
+            <td>${resp[k]===true ? '✔' : esc(String(resp[k]))}</td></tr>`).join('')}</tbody></table>`
+          : '<p class="muted">No respondió nada.</p>'}
+      </div>
+      <div>
+        ${rub.length ? rub.map((c,j)=>`
+          <div style="margin-bottom:12px">
+            <div style="font-size:.85rem;font-weight:600">${esc(c.c)}</div>
+            <div class="row" style="gap:5px;margin-top:5px">
+              ${Array.from({length:(c.max||4)+1},(_,p)=>`
+                <button class="btn small ${puntos[j]===p?'':'ghost'}"
+                  style="padding:5px 10px;min-width:34px"
+                  onclick="corrPunto(${j},${p})">${p}</button>`).join('')}
+            </div>
+          </div>`).join('')
+        : '<p class="muted">Define la rúbrica arriba para poder puntuar por criterio.</p>'}
+
+        <div style="border-top:1px solid var(--line);padding-top:10px;margin-top:10px">
+          <div class="row" style="justify-content:space-between">
+            <b style="font-size:.9rem">Nota</b>
+            <span id="cTotal" style="font-weight:800;color:var(--blue-dd)">
+              ${corrTotal(puntos)}${maxTotal?(' / '+maxTotal):''}</span>
+          </div>
+          <input type="text" id="cComent" placeholder="Comentario para el alumno"
+            value="${esc(e.feedback||'')}" style="width:100%;margin-top:8px;padding:8px;
+            border:1px solid var(--line);border-radius:8px;font-family:inherit;font-size:.85rem">
+          <div class="row" style="margin-top:10px;gap:8px">
+            <button class="btn" onclick="corrGuarda(true)">Guardar y siguiente</button>
+            <button class="btn small ghost" onclick="corrGuarda(false)">Solo guardar</button>
+          </div>
+          <div class="row"><span class="state" id="cEstado"></span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top:14px;gap:6px;flex-wrap:wrap">
+      ${_corr.entregas.map((x,j)=>`<button class="btn small ${j===_corr.i?'':'ghost'}"
+        style="padding:5px 9px;font-size:.78rem" onclick="corrAlumno(${j})">
+        ${esc((x.full_name||'').split(' ')[0])}${x.score!=null?' ✓':''}</button>`).join('')}
+    </div>`;
+};
+
+function corrTotal(p){
+  return Object.keys(p||{}).reduce((a,k)=>a+(Number(p[k])||0),0);
+}
+
+window.corrPunto = function(j, p){
+  const e = _corr.entregas[_corr.i];
+  e.criteria = e.criteria || {};
+  e.criteria[j] = (e.criteria[j] === p) ? undefined : p;
+  if(e.criteria[j] === undefined) delete e.criteria[j];
+  corrAlumno(_corr.i);
+};
+
+window.corrGuarda = async function(siguiente){
+  const e = _corr.entregas[_corr.i];
+  const est = $('#cEstado');
+  est.textContent = 'Guardando…'; est.className = 'state';
+  const total = corrTotal(e.criteria);
+  const { error } = await sb.from('unit_submissions').update({
+    criteria: e.criteria || {},
+    score: Object.keys(e.criteria||{}).length ? total : null,
+    feedback: $('#cComent').value || null,
+    reviewed_at: new Date().toISOString(),
+    reviewed_by: (state.profile && state.profile.id) || null
+  }).eq('id', e.id);
+  if(error){ est.textContent = 'No se guardó: '+error.message; est.className='state err'; return; }
+  e.score = Object.keys(e.criteria||{}).length ? total : null;
+  e.feedback = $('#cComent').value || null;
+  e.reviewed_at = new Date().toISOString();
+  est.textContent = 'Guardado'; est.className = 'state ok';
+  if(siguiente && _corr.i < _corr.entregas.length-1) corrAlumno(_corr.i+1);
+  else corrAlumno(_corr.i);
 };
