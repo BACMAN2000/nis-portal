@@ -544,5 +544,101 @@ window.UNIT_PLANS = {
 }
 
     ]
+  },
+
+  /* 10.o y 11.o tienen planificada la U4; no hay U5 en Toddle. */
+  g10: {
+    label: 'Grade 10',
+    units: [
+{
+  n:4,
+  title:'Crafting Complex Arguments and Expressive Presentations',
+  weeks:6,
+  bigq:'How can we communicate complex ideas and arguments effectively enough to influence and inform very different audiences?',
+  situation:'You are part of “Youth Voices for Change”, a school initiative that pushes young people to take on the issues that matter and make others care about them. You are preparing for a regional debate and podcast competition, reading Animal Farm along the way to see how power, propaganda and persuasion actually work.',
+  audience:'A regional debate and podcast competition — people who do not know you and will judge whether your argument stands up.',
+  criteria:[
+    {n:1, text:'Delivery — I use tone, gesture and expression to carry attitude, and I hold the audience with eye contact and pacing.'},
+    {n:2, text:'Argument — I build clear, evidence-based arguments and rebuttals, and I use ethos, pathos and logos deliberately.'},
+    {n:3, text:'Response — I take opposing viewpoints seriously and answer them respectfully during the debate.'},
+    {n:4, text:'Scripting — I research and script the podcast with advanced structures and cohesive devices so it reads clearly out loud.'},
+    {n:5, text:'Precision — I improve across drafts and I control advanced punctuation: colons, semicolons and dashes.'}
+  ],
+  sequence:[
+    {n:1,title:'Expressing emotions and presentation skills',desc:'Tone, body language and persuasive vocabulary. The basic shape of an argument: claim, support, counterclaim.',give:'A short presentation, delivered rather than read.'},
+    {n:2,title:'Animal Farm ch. 5–6 and debate preparation',desc:'Power, propaganda and persuasive technique in the novel — and then in your own debate topic.',give:'Your topic, your arguments and your counterarguments.'},
+    {n:3,title:'Argument writing and debate planning',desc:'From speaking to writing: analysing strong argumentative writing and planning the debate.',give:'Your essay on a complex societal issue.'},
+    {n:4,title:'Drafting and language precision',desc:'Revision, peer feedback, and advanced punctuation applied to real drafts.',give:'A revised draft, with the punctuation working for you.'},
+    {n:5,title:'Finalising and coherence',desc:'Polishing the arguments and rehearsing the debate.',give:'Your final script.'},
+    {n:6,title:'Presentations and assessment',desc:'The debate itself, and the comprehensive exam.',give:'The debate, and your podcast episode.'}
+  ],
+  words:['claim','support','counterclaim','rebuttal','ethos','pathos','logos','propaganda','rhetoric','cohesive devices','colon','semicolon','dash','Animal Farm'],
+  deliverables:[
+    {kind:'report', type:'text', icon:'&#128221;', title:'Argumentative essay',
+     desc:'Your position on a complex societal issue, argued with evidence and with the counterargument taken seriously.',
+     spec:'Formal register · advanced punctuation',
+     checklist:[
+       {k:'claim', t:'My claim is stated clearly', re:'.{250,}'},
+       {k:'evidence', t:'I support it with evidence', re:'(for example|for instance|according to|research|evidence|study)'},
+       {k:'counter', t:'I answer the strongest objection', re:'(however|although|critics|opponents|some argue|on the other hand)'},
+       {k:'rhetoric', t:'I use rhetorical strategy on purpose', re:'(imagine|consider|we must|surely|what if)'},
+       {k:'punct', t:'I use a colon, semicolon or dash correctly', re:'[;:—]'}
+     ]},
+    {kind:'presentation', type:'file', icon:'&#127908;', title:'Debate and podcast',
+     desc:'Record your debate turn or your podcast episode on the issue you chose.',
+     spec:'Debate · podcast episode'}
+  ]
+}
+    ]
+  },
+
+  g11: {
+    label: 'Grade 11',
+    units: [
+{
+  n:4,
+  title:'Rhetorical Mastery and Global Discourse',
+  weeks:5,
+  stepWord:'Step',
+  bigq:'How can we use rhetorical strategies, evidence and effective communication to persuade others about important global issues?',
+  situation:'You have been invited to an international Youth Conference. Young people from many countries are there to discuss global issues and propose change. Your voice counts: you have to present a well-supported position, persuade the room, and answer perspectives that are not yours.',
+  audience:'The conference floor: your classmates act as delegates, and they will question you.',
+  criteria:[
+    {n:1, text:'Delivery — I use tone, pitch, volume, gesture and eye contact so the emotion matches the argument.'},
+    {n:2, text:'Rhetoric — I build evidence-based arguments and strong rebuttals, and I use ethos, pathos and logos.'},
+    {n:3, text:'Reading — I analyse complex texts, judge whether a source is credible and relevant, and synthesise across several.'},
+    {n:4, text:'Writing — I improve clarity and persuasiveness draft by draft, taking feedback in, and I control advanced punctuation and connectors.'}
+  ],
+  sequence:[
+    {n:1,title:'Read and analyse',desc:'Complex texts through the Reading Plan: main ideas, detail, vocabulary, perspectives and evidence.'},
+    {n:2,title:'Cambridge practice',desc:'Reading, Use of English, writing, listening and speaking, with targeted practice and feedback.'},
+    {n:3,title:'Evaluate and synthesise',desc:'Judging the credibility and relevance of what you find, and pulling several sources into one position.'},
+    {n:4,title:'Build and organise',desc:'Claims, reasons, evidence and rebuttals, organised with academic vocabulary and connectors.',give:'Your position and the evidence behind it.'},
+    {n:5,title:'Apply language and rhetoric',desc:'Grammar, advanced punctuation, transitions, and ethos, pathos and logos where they do work.'},
+    {n:6,title:'Draft, revise and edit',desc:'Drafts improved with teacher and peer feedback: coherence, accuracy, vocabulary, persuasive effect.',give:'Your revised script.'},
+    {n:7,title:'Rehearse',desc:'Tone, pitch, volume, gesture, eye contact and audience awareness — out loud, repeatedly.'},
+    {n:8,title:'Present and reflect',desc:'The Youth Conference: you deliver, you answer questions, and you reflect on how you communicated.',give:'The presentation and your reflection.'}
+  ],
+  words:['ethos','pathos','logos','rebuttal','claim','evidence','credibility','synthesis','global issue','delegate','transition','semicolon','colon','dash'],
+  deliverables:[
+    {kind:'report', type:'text', icon:'&#128221;', title:'Position script',
+     desc:'The written position you will defend at the conference: the issue, your stance, the evidence, and your answer to the strongest opposing view.',
+     spec:'Academic register',
+     checklist:[
+       {k:'position', t:'My position on the global issue is unmistakable', re:'.{250,}'},
+       {k:'evidence', t:'I bring credible evidence and say where it comes from', re:'(according to|report|data|research|study|un |unesco|who )'},
+       {k:'opposing', t:'I take on an opposing perspective', re:'(however|critics|opponents|some argue|it could be said|admittedly)'},
+       {k:'appeal', t:'I use ethos, pathos or logos deliberately', re:'(imagine|consider|we must|as a young person|the evidence shows)'},
+       {k:'punct', t:'My advanced punctuation is doing work', re:'[;:—]'}
+     ]},
+    {kind:'presentation', type:'file', icon:'&#127760;', title:'Conference presentation',
+     desc:'Four to five minutes in pairs with a visual aid, and then the questions from the floor.',
+     spec:'4–5 minutes · in pairs · with visual aid'},
+    {kind:'reflection', type:'text', icon:'&#128173;', title:'Reflection',
+     desc:'How you communicated, what landed, and what you would change.',
+     spec:'Around 100 words', range:[80,160]}
+  ]
+}
+    ]
   }
 };
