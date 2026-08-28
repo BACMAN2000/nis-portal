@@ -143,6 +143,7 @@ function pinta(){
       <span class="nivel">Level ${esc(ficha.level)}</span>
     </div>
     <div class="fb" id="fb" style="display:none"><h4>Your teacher's feedback</h4><p id="fbt"></p></div>
+    ${rubricaHTML()}
     <div class="card">${b}</div>`;
 
   $('#app').addEventListener('input', e => {
@@ -160,6 +161,21 @@ function pinta(){
     autoguarda();
   });
   $('#barra').style.display = 'flex';
+}
+
+/* La rubrica se le ensena al alumno ANTES de resolver, no despues de la
+   nota: saber con que se le va a medir es parte de la tarea. */
+function rubricaHTML(){
+  const r = ficha.rubric;
+  if(!r || !r.length) return '';
+  const total = r.reduce((a,c)=>a+(c.max||0),0);
+  return `<div class="card">
+    <h3 style="font-size:.95rem;color:var(--blue-dd);margin:0 0 4px">&#128207; How this is marked</h3>
+    <p class="p" style="color:var(--grey);margin:0 0 10px">${total} points in total.</p>
+    <table class="f"><tbody>${r.map(c=>`<tr>
+      <td class="fija">${esc(c.c)}</td>
+      <td class="fija" style="width:70px;text-align:center;font-weight:700;color:var(--blue-d)">${c.max}</td>
+    </tr>`).join('')}</tbody></table></div>`;
 }
 
 function tabla(bl){
