@@ -2770,7 +2770,7 @@ function studentGrade(key){
   $('#main').innerHTML=`${back}<h1>${emoji} ${label}</h1>
     <p class="muted" style="margin-top:-6px">${label} material.</p>
     <div class="grid cols-2" style="margin-top:12px">
-      ${key==='g9' ? (nodeVisible(base+'.unit5') ? _skillCard('🎯','Unit 5 · The Double-Edged Sword','Technology, society and the environment. Your product: an analytical report and an oral presentation — with the rubric visible from day one.',_withBack('unit-g9-u5.html',route)) : _lockedCard('🎯','Unit 5','Your unit product.')) : ''}
+      ${unitPlansFor(key).length ? (nodeVisible(base+'.unit5') ? _hubCard('🎯','Units','Your units this year: the final product, the rubric from day one, and the week-by-week practice that feeds it.',"window._nav('classes_"+key+"_units')") : _lockedCard('🎯','Units','Your units and their final products.')) : ''}
       ${_isPrimaryGrade(key) ? '' : (nodeVisible(base+'.grammar') ? _skillCard('📝','Grammar','Grammar for '+label+': explanations and games by unit.',_withBack('grammar.html?grade='+key,route)) : _lockedCard('📝','Grammar','Grammar for '+label+'.'))}
       ${nodeVisible(base+'.activities') ? _hubCard('🎲','Activities',_isPrimaryGrade(key)?'Games for each unit — with audio for young learners.':'Games by unit and by level: crosswords, word searches and more.',"window._nav('classes_"+key+"_act')") : _lockedCard('🎲','Activities','Games and activities.')}
       ${key==='g9' ? (nodeVisible('english.classes.g9.cambridge') ? _hubCard('🎓','Cambridge','B2 First (FCE) practice by skill: Listening, Use of English, Reading and Writing.',"window._nav('classes_g9_cambridge')") : _lockedCard('🎓','Cambridge','Cambridge B2 First practice.')) : ''}
@@ -3058,6 +3058,7 @@ function _navRender(k){
   if(k==='classes_secondary') { studentStage('secondary'); return true; }
   if(m=/^classes_(g\d+)_unit_([a-z0-9]+)$/.exec(k)){ studentGradeUnit(m[1],m[2]); return true; }
   if(m=/^classes_(g\d+)_act$/.exec(k)){ studentGradeActivities(m[1]); return true; }
+  if(m=/^classes_(g\d+)_units$/.exec(k)){ studentGradeUnits(m[1]); return true; }
   if(m=/^classes_(g\d+)_cambridge$/.exec(k)){ studentGradeCambridge(m[1]); return true; }
   if(m=/^classes_(g\d+)_readers_report$/.exec(k)){ studentReaderReport(m[1]); return true; }
   if(m=/^classes_(g\d+)_readers$/.exec(k)){ studentGradeReaders(m[1]); return true; }
@@ -4105,3 +4106,30 @@ window.unitCriterio = async function(id, crit, valor){
   await sb.from('unit_submissions').update({ criteria:c, reviewed_at:new Date().toISOString(),
     reviewed_by:(state.profile&&state.profile.id)||null }).eq('id', id);
 };
+
+/* ---------------------------------------------------------------
+   🎯 Unidades del grado — la tarjeta madre que abre el hub de cada
+   unidad (unit.html). Los datos salen de unit-plans.js, que es copia
+   del planner de Toddle: si una unidad no está ahí, no se ofrece.
+---------------------------------------------------------------- */
+function unitPlansFor(grade){
+  const p = (window.UNIT_PLANS||{})[grade];
+  return (p && p.units) ? p.units : [];
+}
+function studentGradeUnits(key){
+  _setNav('classes');
+  const route = 'classes_'+key+'_units';
+  const back  = _backBtn("window._nav('classes_"+key+"')", GRADE_META[key][1]);
+  const base  = 'english.classes.'+key;
+  if(!nodeVisible(base) || !nodeVisible(base+'.unit5')){ _lockedView(back,'🎯 Units'); return; }
+  const plan  = (window.UNIT_PLANS||{})[key];
+  const units = unitPlansFor(key);
+  if(!units.length){ _lockedView(back,'🎯 Units'); return; }
+  $('#main').innerHTML = `${back}<h1>🎯 Units</h1>
+    <p class="muted" style="margin-top:-6px">${esc(plan.label)}${plan.cefr?' · '+esc(plan.cefr):''} — each unit ends in something you make, not in a test.</p>
+    <div class="grid cols-2" style="margin-top:12px">
+      ${units.map(u=>_skillCard('📘','Unit '+u.n+' · '+esc(u.title),
+          esc(u.deliverables.map(d=>d.title).join(' · '))+' — '+u.weeks+' weeks.',
+          _withBack('unit.html?grade='+key+'&unit='+u.n,route))).join('')}
+    </div>`;
+}
