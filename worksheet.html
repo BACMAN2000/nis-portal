@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Worksheet · Nordic International School</title>
+<link rel="icon" href="assets/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#4987c6; --blue-d:#2f5f93; --blue-dd:#244c77;
+  --bg:#f2f3ff; --white:#fff; --grey:#636465; --line:#e3e5f3;
+  --lila:#d1d2ea; --celeste:#76cbe5;
+  --good:#16a34a; --warn:#f59e0b; --bad:#dc2626;
+  --ink:#2b2c33; --r:16px; --r-sm:10px;
+  --shadow:0 10px 30px rgba(36,76,119,.10);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:'Montserrat',system-ui,Segoe UI,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}
+h1,h2,h3{line-height:1.2;margin:0 0 .4em;font-weight:700}
+header{display:flex;align-items:center;gap:14px;background:var(--blue);padding:12px 22px;color:#fff;box-shadow:var(--shadow);position:sticky;top:0;z-index:20}
+header img{height:32px;width:auto;display:block}
+header .spacer{flex:1}
+header a.back{background:rgba(255,255,255,.16);color:#fff;padding:8px 14px;border-radius:var(--r-sm);font-weight:600;font-size:.9rem;text-decoration:none}
+header a.back:hover{background:rgba(255,255,255,.28)}
+header .guardado{font-size:.8rem;color:#dbe8f6;font-weight:600}
+.wrap{max-width:900px;margin:0 auto;padding:22px 18px 90px}
+.hero{background:linear-gradient(135deg,var(--blue-dd),var(--blue));color:#fff;border-radius:var(--r);padding:20px 24px;margin-bottom:18px;box-shadow:var(--shadow)}
+.hero .eyebrow{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:#a9cdf0;font-weight:700;margin:0 0 6px}
+.hero h1{color:#fff;font-size:1.35rem;font-weight:800;margin:0}
+.hero .meta{margin:8px 0 0;color:#dbe8f6;font-size:.82rem}
+.hero .nivel{display:inline-block;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:3px 12px;font-size:.75rem;font-weight:700;margin-top:10px}
+.card{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;margin-bottom:14px;box-shadow:var(--shadow)}
+.act{margin:26px 0 10px;padding:10px 14px;background:#eef4fb;border-left:4px solid var(--blue);border-radius:0 var(--r-sm) var(--r-sm) 0;font-weight:700;color:var(--blue-dd);font-size:.98rem}
+h3.h{font-size:.98rem;color:var(--blue-dd);margin:18px 0 4px}
+p.p{margin:6px 0;font-size:.92rem}
+.note{background:#fff8e6;border:1px solid #f5dea0;border-radius:var(--r-sm);padding:12px 14px;font-size:.87rem;color:#7a5b12;margin:12px 0}
+.goals{list-style:none;padding:0;margin:12px 0}
+.goals li{padding:8px 0 8px 30px;position:relative;font-size:.9rem;cursor:pointer;border-bottom:1px dashed var(--line)}
+.goals li:last-child{border-bottom:none}
+.goals li::before{content:'☐';position:absolute;left:4px;top:7px;font-size:1.1rem;color:var(--blue)}
+.goals li.on::before{content:'☑';color:var(--good)}
+.bank{display:flex;flex-wrap:wrap;gap:7px;background:#f7faff;border:1px dashed var(--lila);border-radius:var(--r-sm);padding:12px;margin:12px 0}
+.bank b{width:100%;font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:var(--grey)}
+.bank span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.83rem;font-weight:600;color:var(--blue-dd)}
+textarea{width:100%;border:1px solid var(--line);border-radius:var(--r-sm);padding:12px 14px;font-family:inherit;font-size:.93rem;line-height:1.7;resize:vertical;color:var(--ink);background:#fcfdff}
+textarea:focus{outline:none;border-color:var(--blue);background:#fff}
+input.hueco{border:none;border-bottom:2px solid var(--blue);background:#f7faff;font-family:inherit;font-size:.92rem;padding:2px 6px;min-width:90px;color:var(--ink)}
+input.hueco:focus{outline:none;background:#fff;border-bottom-color:var(--blue-dd)}
+table.f{width:100%;border-collapse:collapse;margin:12px 0;font-size:.88rem}
+table.f th{background:#eef4fb;color:var(--blue-dd);text-align:left;padding:9px 10px;border:1px solid var(--line);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+table.f td{border:1px solid var(--line);padding:0;vertical-align:middle}
+table.f td.fija{padding:9px 10px;background:#fafbff}
+table.f input{width:100%;border:none;background:transparent;padding:9px 10px;font-family:inherit;font-size:.88rem;color:var(--ink)}
+table.f input:focus{outline:2px solid var(--blue);outline-offset:-2px;background:#fff}
+.barra{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);padding:12px 18px;display:flex;align-items:center;gap:14px;justify-content:center;box-shadow:0 -6px 24px rgba(36,76,119,.08);z-index:30}
+.btn{background:var(--blue);color:#fff;border:none;border-radius:var(--r-sm);padding:11px 22px;font:700 .92rem/1 inherit;cursor:pointer;font-family:inherit}
+.btn:hover{background:var(--blue-d)}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.btn.ghost{background:#fff;color:var(--blue-d);border:1px solid var(--line)}
+.state{font-size:.85rem;color:var(--grey)}
+.state.ok{color:var(--good);font-weight:700}
+.state.err{color:var(--bad);font-weight:700}
+.fb{background:#eef7ee;border:1px solid #cbe6cd;border-radius:var(--r-sm);padding:14px 16px;margin:14px 0}
+.fb h4{margin:0 0 6px;color:#1c6b23;font-size:.92rem}
+.aviso{background:#fff8e6;border:1px solid #f5dea0;border-radius:var(--r-sm);padding:14px 16px;font-size:.88rem;color:#7a5b12}
+@media(max-width:560px){.wrap{padding:16px 13px 90px}.card{padding:16px 15px}.hero h1{font-size:1.15rem}}
+</style>
+</head>
+<body>
+<header>
+  <img src="assets/logo-white-h.svg" alt="Nordic International School" onerror="this.onerror=null;this.src='assets/logo-h.svg'">
+  <div class="spacer"></div>
+  <span class="guardado" id="guardado"></span>
+  <a class="back" href="./" id="backBtn">&#8592; Back</a>
+</header>
+
+<div class="wrap" id="app"><div class="card"><p class="state">Loading…</p></div></div>
+
+<div class="barra" id="barra" style="display:none">
+  <span class="state" id="estado"></span>
+  <button class="btn" id="enviar">Submit worksheet</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+<script src="config.js"></script>
+<script src="nis-nav.js?v=2"></script>
+<script>
+/* Ficha digital: el alumno la resuelve aqui dentro y le da a enviar. No hay
+   que bajarse el PDF (que no se puede editar) ni salir a Word o Google Docs.
+   La ficha viene de la tabla worksheets, ya estructurada por
+   tools/digitaliza_fichas.py a partir del .docx del profesor. Las respuestas
+   van a unit_submissions con kind='worksheet' y milestone 'w1s1', igual que
+   cualquier otra entrega, para que el profesor las corrija en el mismo sitio. */
+
+const Q = new URLSearchParams(location.search);
+const GRADE = (Q.get('grade')||'g9').toLowerCase();
+const UNIT  = parseInt(Q.get('unit')||'0',10);
+const WEEK  = parseInt(Q.get('week')||'0',10);
+const SES   = parseInt(Q.get('session')||'0',10);
+const LEVEL = (Q.get('level')||'').toUpperCase();
+const HITO  = 'w' + WEEK + 's' + SES;
+
+const $  = s => document.querySelector(s);
+const esc = s => String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+let sb=null, me=null, ficha=null, resp={}, entregado=false;
+
+/* Un parrafo puede traer huecos dentro: "1 (weakest) ____ 2 ____". Cada hueco
+   se vuelve un campo, numerado por su posicion, para poder guardarlo. */
+function conHuecos(texto, idBase){
+  let i = 0;
+  return esc(texto).replace(/_{3,}/g, () => {
+    i++;
+    const id = idBase + '_' + i;
+    return `<input class="hueco" data-campo="${id}" value="${esc(resp[id]||'')}">`;
+  });
+}
+
+function pinta(){
+  const b = ficha.blocks.map((bl, k) => {
+    switch(bl.t){
+      case 'activity': return `<div class="act">${esc(bl.text)}</div>`;
+      case 'h':        return `<h3 class="h">${conHuecos(bl.text, 'h'+k)}</h3>`;
+      case 'p':        return `<p class="p">${conHuecos(bl.text, 'p'+k)}</p>`;
+      case 'note':     return `<div class="note">${conHuecos(bl.text, 'n'+k)}</div>`;
+      case 'goals':    return `<ul class="goals">${bl.items.map((it,j)=>
+                          `<li data-meta="g${k}_${j}" class="${resp['g'+k+'_'+j]?'on':''}">${esc(it)}</li>`).join('')}</ul>`;
+      case 'bank':     return `<div class="bank"><b>Word bank</b>${bl.items.map(x=>`<span>${esc(x)}</span>`).join('')}</div>`;
+      case 'write':    return `<textarea data-campo="${bl.id}" rows="${bl.lines||3}"
+                          placeholder="Write your answer here…">${esc(resp[bl.id]||'')}</textarea>`;
+      case 'table':    return tabla(bl);
+      default:         return '';
+    }
+  }).join('');
+
+  $('#app').innerHTML = `
+    <div class="hero">
+      <p class="eyebrow">${esc(ficha.meta||'')}</p>
+      <h1>${esc(ficha.title||'Worksheet')}</h1>
+      <p class="meta">Week ${ficha.week} · Session ${ficha.session}</p>
+      <span class="nivel">Level ${esc(ficha.level)}</span>
+    </div>
+    <div class="fb" id="fb" style="display:none"><h4>Your teacher's feedback</h4><p id="fbt"></p></div>
+    <div class="card">${b}</div>`;
+
+  $('#app').addEventListener('input', e => {
+    const c = e.target.dataset.campo;
+    if(!c) return;
+    resp[c] = e.target.value;
+    autoguarda();
+  });
+  $('#app').addEventListener('click', e => {
+    const li = e.target.closest('li[data-meta]');
+    if(!li) return;
+    const c = li.dataset.meta;
+    resp[c] = !resp[c];
+    li.classList.toggle('on', !!resp[c]);
+    autoguarda();
+  });
+  $('#barra').style.display = 'flex';
+}
+
+function tabla(bl){
+  const th = bl.head.map(h=>`<th>${esc(h)}</th>`).join('');
+  const tr = bl.rows.map((fila,i)=>'<tr>' + fila.map((celda,j)=>{
+    /* Una celda que ya trae texto es enunciado; una vacia es para responder. */
+    if(celda && celda.trim()) return `<td class="fija">${esc(celda)}</td>`;
+    const id = bl.id + '_' + i + '_' + j;
+    return `<td><input data-campo="${id}" value="${esc(resp[id]||'')}"></td>`;
+  }).join('') + '</tr>').join('');
+  return `<table class="f"><thead><tr>${th}</tr></thead><tbody>${tr}</tbody></table>`;
+}
+
+/* ---------- guardado ---------- */
+let tGuardar = null;
+function autoguarda(){
+  clearTimeout(tGuardar);
+  $('#guardado').textContent = 'Saving…';
+  tGuardar = setTimeout(async ()=>{
+    const r = await guarda(false);
+    $('#guardado').textContent = r ? 'Saved' : 'Not saved';
+  }, 1200);
+}
+
+async function guarda(final){
+  if(!sb || !me) return false;
+  const fila = {
+    student_id: me.id, grade: GRADE, unit: UNIT, milestone: HITO, kind: 'worksheet',
+    payload: { level: LEVEL, code: ficha.code, title: ficha.title,
+               answers: resp, draft: !final,
+               handed_at: final ? new Date().toISOString() : null },
+    updated_at: new Date().toISOString()
+  };
+  const { error } = await sb.from('unit_submissions')
+    .upsert(fila, { onConflict: 'student_id,grade,unit,milestone,kind' });
+  return !error;
+}
+
+/* ---------- arranque ---------- */
+(async function(){
+  try{
+    const cfg = window.NIS_CONFIG;
+    sb = window.supabase.createClient(cfg.SUPABASE_URL, cfg.SUPABASE_KEY);
+    const { data } = await sb.auth.getSession();
+    me = data && data.session ? data.session.user : null;
+  }catch(_){ me = null; }
+
+  if(!me){
+    $('#app').innerHTML = `<div class="card"><div class="aviso">You are not signed in.
+      Open this worksheet from the portal so your answers can be saved.</div></div>`;
+    return;
+  }
+
+  const { data: fs } = await sb.from('worksheets').select('*')
+    .eq('grade',GRADE).eq('unit',UNIT).eq('week',WEEK).eq('session',SES).eq('level',LEVEL).limit(1);
+  ficha = fs && fs[0];
+  if(!ficha){
+    $('#app').innerHTML = `<div class="card"><div class="aviso">This worksheet is not available
+      in digital form yet. Ask your teacher, or use the PDF from the unit page.</div></div>`;
+    return;
+  }
+  document.title = (ficha.title || 'Worksheet') + ' · ' + ficha.level;
+
+  const { data: prev } = await sb.from('unit_submissions')
+    .select('payload,score,feedback')
+    .eq('student_id',me.id).eq('grade',GRADE).eq('unit',UNIT)
+    .eq('milestone',HITO).eq('kind','worksheet').maybeSingle();
+  if(prev && prev.payload){
+    resp = prev.payload.answers || {};
+    entregado = prev.payload.draft === false;
+  }
+
+  pinta();
+
+  if(prev && prev.feedback){
+    $('#fb').style.display = 'block';
+    $('#fbt').textContent = (prev.score!=null ? ('Mark: '+prev.score+' — ') : '') + prev.feedback;
+  }
+  if(entregado){
+    $('#estado').textContent = 'Handed in — you can still change it and submit again.';
+    $('#estado').className = 'state ok';
+  }
+
+  $('#enviar').addEventListener('click', async ()=>{
+    const hechos = Object.keys(resp).filter(k => resp[k] && String(resp[k]).trim()).length;
+    if(!hechos){
+      $('#estado').textContent = 'Answer something first.';
+      $('#estado').className = 'state err';
+      return;
+    }
+    $('#enviar').disabled = true;
+    const ok = await guarda(true);
+    $('#enviar').disabled = false;
+    $('#estado').textContent = ok
+      ? 'Handed in ✓ — your teacher can see it now.'
+      : 'Could not submit. Try again.';
+    $('#estado').className = ok ? 'state ok' : 'state err';
+  });
+})();
+</script>
+</body>
+</html>

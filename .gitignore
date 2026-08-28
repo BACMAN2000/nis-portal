@@ -24,3 +24,4 @@ __pycache__/
 # no al repo (es publico y son materiales del colegio).
 # Se regeneran con tools/exporta_u4.ps1 y se suben con tools/sube_class_files.py
 classes/
+worksheets-digital.json

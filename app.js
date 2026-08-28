@@ -4072,6 +4072,7 @@ async function unitProductsPanel(){
   };
 
   window._unitTextos = Object.fromEntries(data.filter(r=>r.kind==='report').map(r=>[r.id,(r.payload&&r.payload.text)||'']));
+  window._unitFichas = Object.fromEntries(fichas.map(r=>[r.id,r]));
 
   main.innerHTML = `<div class="card">
     <h2>🎯 Productos de unidad</h2>
@@ -4189,6 +4190,16 @@ function materialesPanel(){
     </label>
 
     <div class="row"><span class="state" id="matEstado"></span></div>
+
+    <h3 style="margin-top:24px;font-size:1rem;color:var(--blue-d)">Fichas digitales</h3>
+    <p class="muted">Para que el alumno la resuelva <b>dentro del portal</b>, sin bajarse nada.
+      Genera el archivo con <code>python tools/digitaliza_fichas.py</code> y suéltalo aquí.</p>
+    <label for="matJson" style="display:block;border:2px dashed #cbe0c9;border-radius:12px;
+        padding:18px;text-align:center;cursor:pointer;color:var(--grey)">
+      <input type="file" id="matJson" accept=".json" style="display:none">
+      🧩 <b>Importar fichas digitalizadas</b> (worksheets-digital.json)
+    </label>
+    <div class="row"><span class="state" id="matJsonEstado"></span></div>
     <div id="matLista" style="margin-top:14px"></div>
 
     <details style="margin-top:18px">
@@ -4202,6 +4213,7 @@ function materialesPanel(){
     </details>
   </div>`;
 
+  $('#matJson').addEventListener('change', e => matImporta(e.target.files[0]));
   const inp = $('#matFiles'), lbl = inp.parentNode;
   inp.addEventListener('change', e => matSube(e.target.files));
   ['dragover','dragenter'].forEach(ev => lbl.addEventListener(ev, e => {
@@ -4274,7 +4286,11 @@ function fichasTabla(fichas, quien){
     const donde = m ? ('Semana ' + m[1] + ' · Sesión ' + m[2]) : esc(r.milestone || '');
     const link = r.payload && r.payload.link;
     const nombre = (r.payload && r.payload.name) || 'Ver archivo';
-    const entrega = link
+    const digital = r.payload && r.payload.answers;
+    const nresp = digital ? Object.keys(r.payload.answers).length : 0;
+    const entrega = digital
+      ? '<button class="btn small" onclick="unitVerFicha(&quot;' + r.id + '&quot;)">🧩 ' + nresp + ' respuestas</button>'
+      : link
       ? `<a href="${esc(link)}" target="_blank" rel="noopener">🔗 Google Docs</a>`
       : (r.file_path
           ? `<button class="btn small" onclick="unitVerArchivo('${esc(r.file_path)}',this)">📎 ${esc(nombre)}</button>`
@@ -4300,3 +4316,60 @@ function fichasTabla(fichas, quien){
       <tbody>${fichas.map(fila).join('')}</tbody></table></div>
   </div>`;
 }
+
+/* Importa las fichas ya digitalizadas a la tabla worksheets. El archivo lo
+   genera tools/digitaliza_fichas.py leyendo los .docx; aquí solo se vuelca,
+   en lotes para no mandar medio mega en una sola petición. */
+async function matImporta(file){
+  if(!file) return;
+  const est = $('#matJsonEstado');
+  est.textContent = 'Leyendo…'; est.className = 'state';
+  let fichas;
+  try {
+    fichas = JSON.parse(await file.text());
+    if(!Array.isArray(fichas) || !fichas.length) throw new Error('el archivo no trae fichas');
+  } catch(e){
+    est.textContent = 'No pude leerlo: ' + e.message; est.className = 'state err'; return;
+  }
+
+  const filas = fichas.map(f => ({
+    grade: f.grade, unit: f.unit, week: f.week, session: f.session,
+    level: f.level, code: f.code, title: f.title || null, meta: f.meta || null,
+    blocks: f.blocks, created_by: (state.profile && state.profile.id) || null,
+    updated_at: new Date().toISOString()
+  }));
+
+  let ok = 0, fallos = 0, ultimo = '';
+  for(let i = 0; i < filas.length; i += 12){
+    const lote = filas.slice(i, i + 12);
+    const { error } = await sb.from('worksheets')
+      .upsert(lote, { onConflict: 'grade,unit,week,session,level' });
+    if(error){ fallos += lote.length; ultimo = error.message; }
+    else ok += lote.length;
+    est.textContent = `${Math.min(i + 12, filas.length)} de ${filas.length}…`;
+  }
+  est.textContent = fallos
+    ? `${ok} importadas, ${fallos} con error (${ultimo})`
+    : `${ok} fichas digitales importadas. Ya se pueden resolver en el portal.`;
+  est.className = fallos ? 'state err' : 'state ok';
+}
+
+/* Abre lo que el alumno escribio en una ficha digital. Se guardan como
+   {campo: valor}, asi que se muestran en orden con su identificador: basta
+   para corregir sin tener que abrir nada. */
+window._unitFichas = {};
+window.unitVerFicha = function(id){
+  const r = window._unitFichas[id];
+  const caja = $('#unitTexto');
+  if(!r){ return; }
+  const a = (r.payload && r.payload.answers) || {};
+  const filas = Object.keys(a).filter(k => a[k] !== '' && a[k] !== false)
+    .map(k => `<tr><td class="muted" style="white-space:nowrap">${esc(k)}</td>
+                   <td>${a[k] === true ? '✔' : esc(String(a[k]))}</td></tr>`).join('');
+  caja.style.display = 'block';
+  caja.innerHTML = `<h3>🧩 ${esc((r.payload && r.payload.title) || 'Ficha')} —
+      nivel ${esc((r.payload && r.payload.level) || '')}</h3>
+    <p class="muted">${Object.keys(a).length} campos respondidos.</p>
+    <div style="overflow-x:auto"><table class="tbl"><tbody>${filas}</tbody></table></div>`;
+  caja.scrollIntoView({behavior:'smooth', block:'start'});
+};
