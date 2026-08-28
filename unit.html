@@ -70,6 +70,18 @@ table.rub.plain td.lvl{width:9%;font-weight:700;color:var(--blue-d)}
 .lvl-chip:hover{background:var(--blue);color:#fff}
 .slide-chip{display:inline-block;border:1px solid #f0c987;color:#8a5a12;background:#fffaf0;border-radius:6px;padding:3px 9px;font-size:.75rem;font-weight:700;text-decoration:none}
 .slide-chip:hover{background:#f7e2bd}
+.deck-chip{display:inline-block;border:1px solid var(--celeste);color:#12657f;background:#eefaff;border-radius:6px;padding:3px 9px;font-size:.75rem;font-weight:700;text-decoration:none}
+.deck-chip:hover{background:var(--celeste);color:#fff}
+#visor{position:fixed;inset:0;background:rgba(15,25,40,.94);z-index:9999;display:none;flex-direction:column;align-items:center;justify-content:center}
+#visor.on{display:flex}
+#visor img{max-width:94vw;max-height:80vh;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.5);background:#fff;-webkit-user-select:none;user-select:none;-webkit-user-drag:none}
+#visor .barra{display:flex;align-items:center;gap:16px;margin-top:16px;color:#fff;font-size:.9rem;font-weight:600}
+#visor button{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:8px;padding:8px 16px;font:600 .9rem/1 inherit;cursor:pointer;font-family:inherit}
+#visor button:hover{background:rgba(255,255,255,.3)}
+#visor button[disabled]{opacity:.35;cursor:default}
+#visor .titulo{position:absolute;top:16px;left:20px;right:70px;color:#fff;font-size:.9rem;font-weight:700;opacity:.9}
+#visor .cerrar{position:absolute;top:12px;right:16px;font-size:1.1rem;padding:6px 14px}
+#visor .aviso{color:#a9cdf0;font-size:.75rem;margin-top:10px}
 .acts{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
 .act{display:inline-flex;align-items:center;gap:5px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px 11px;font-size:.78rem;font-weight:600;color:var(--blue-d);text-decoration:none;transition:.12s}
 .act:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
@@ -112,10 +124,24 @@ textarea:focus{outline:none;border-color:var(--blue)}
 
 <div class="wrap" id="app"></div>
 
+<!-- Visor de clase: el alumno ve las diapositivas como imagenes; el .pptx
+     no sale del bucket y solo lo abre el profesor. -->
+<div id="visor" oncontextmenu="return false">
+  <div class="titulo" id="visorTitulo"></div>
+  <button class="cerrar" onclick="cierraClase()">&#10005; Close</button>
+  <img id="visorImg" alt="" draggable="false">
+  <div class="barra">
+    <button id="visorPrev" onclick="pasaClase(-1)">&#8592; Prev</button>
+    <span id="visorPos"></span>
+    <button id="visorNext" onclick="pasaClase(1)">Next &#8594;</button>
+  </div>
+  <div class="aviso">Use the arrow keys. Press Esc to close.</div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js"></script>
 <script src="activities-data.js?v=12"></script>
-<script src="class-files.js?v=1"></script>
+<script src="class-files.js?v=2"></script>
 <script src="unit-plans.js?v=4"></script>
 <script src="nis-nav.js?v=2"></script>
 <script>
@@ -276,10 +302,53 @@ function juegosSueltos(){
    cuatro niveles (A2-C1) y las diapositivas del profesor. Van dentro de la
    SEMANA que les toca, no en un cajon aparte. Las diapositivas solo se
    ensenan a quien es profesor. */
-let esProfe = false, hayMateriales = false;
+let esProfe = false, hayMateriales = false, hayClases = false;
 /* Los materiales viven en el bucket privado class-files: el enlace se firma
    en el momento y caduca. El alumno solo puede abrir las fichas; las
    diapositivas las bloquea la propia politica del bucket. */
+/* Visor de clase. Las diapositivas se sirven como imagenes firmadas: se ven
+   pero el fichero de PowerPoint no se entrega. Ojo: en la web no se puede
+   impedir del todo que alguien guarde una imagen; lo que se evita es que se
+   lleven el .pptx editable. */
+let _clase = { urls: [], i: 0, titulo: '' };
+
+window.verClase = async function(base, paginas, titulo){
+  if(!sb || !me) return false;
+  const rutas = [];
+  for(let i=1; i<=paginas; i++) rutas.push(base + String(i).padStart(2,'0') + '.png');
+  $('#visorTitulo').textContent = titulo + ' — loading…';
+  $('#visor').classList.add('on');
+  const { data, error } = await sb.storage.from('class-files').createSignedUrls(rutas, 7200);
+  if(error || !data){ $('#visorTitulo').textContent = 'This class could not be opened.'; return false; }
+  _clase = { urls: data.map(d=>d.signedUrl), i: 0, titulo: titulo };
+  $('#visorTitulo').textContent = titulo;
+  muestraClase();
+  return false;
+};
+
+function muestraClase(){
+  const n = _clase.urls.length;
+  if(!n) return;
+  $('#visorImg').src = _clase.urls[_clase.i];
+  $('#visorPos').textContent = (_clase.i+1) + ' / ' + n;
+  $('#visorPrev').disabled = _clase.i === 0;
+  $('#visorNext').disabled = _clase.i === n-1;
+  if(_clase.i+1 < n){ const p = new Image(); p.src = _clase.urls[_clase.i+1]; }
+}
+window.pasaClase = function(d){
+  const n = _clase.urls.length;
+  _clase.i = Math.max(0, Math.min(n-1, _clase.i + d));
+  muestraClase();
+};
+window.cierraClase = function(){ $('#visor').classList.remove('on'); $('#visorImg').src=''; };
+document.addEventListener('keydown', e=>{
+  if(!$('#visor').classList.contains('on')) return;
+  if(e.key==='Escape'){ cierraClase(); }
+  else if(e.key==='ArrowRight'||e.key===' '){ e.preventDefault(); pasaClase(1); }
+  else if(e.key==='ArrowLeft'){ e.preventDefault(); pasaClase(-1); }
+});
+$('#visor').addEventListener('click', e=>{ if(e.target.id==='visor') cierraClase(); });
+
 window.abreArchivo = async function(ruta, el){
   if(!sb || !me) return false;
   const antes = el.textContent; el.textContent = '…';
@@ -297,10 +366,12 @@ function sesionesSemana(n){
   const filas = ss.map(x=>{
     const niveles = ['A2','B1','B2','C1'].filter(l=>x.ws && x.ws[l])
       .map(l=>`<a class="lvl-chip" href="#" onclick="return abreArchivo('${u.base}${esc(x.ws[l])}',this)">${l}</a>`).join('');
+    const ver = (x.deck && x.pages && hayClases)
+      ? `<a class="deck-chip" href="#" onclick="return verClase('${u.base}${esc(x.deck)}',${x.pages},'S${x.s} · ${esc(x.title).replace(/'/g,"\'")}')">&#9654; Ver la clase</a>` : '';
     const sl = (esProfe && x.slides)
-      ? `<a class="slide-chip" href="#" onclick="return abreArchivo('${u.base}${esc(x.slides)}',this)">&#128202; Slides</a>` : '';
-    if(!niveles && !sl) return '';
-    return `<div class="ses-row"><b>S${x.s} · ${esc(x.title)}</b>${niveles}${sl}</div>`;
+      ? `<a class="slide-chip" href="#" onclick="return abreArchivo('${u.base}${esc(x.slides)}',this)">&#128202; .pptx</a>` : '';
+    if(!niveles && !sl && !ver) return '';
+    return `<div class="ses-row"><b>S${x.s} · ${esc(x.title)}</b>${ver}${niveles}${sl}</div>`;
   }).join('');
   if(!filas) return '';
   return `<div class="ses"><h4>Worksheets by level — pick yours</h4>${filas}</div>`;
@@ -374,6 +445,11 @@ async function conectar(){
     if(muestra){
       const r=await sb.storage.from('class-files').createSignedUrl(u.base+muestra,60);
       hayMateriales = !!(r && r.data && !r.error);
+    }
+    const mazo = w1 && w1[0] && w1[0].deck;
+    if(mazo){
+      const r2=await sb.storage.from('class-files').createSignedUrl(u.base+mazo+'01.png',60);
+      hayClases = !!(r2 && r2.data && !r2.error);
     }
   }catch(_){ hayMateriales=false; }
 }
