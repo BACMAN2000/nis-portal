@@ -18,9 +18,16 @@ reaplicarlos en un entorno nuevo. Aplicar en orden por nombre de archivo.
 
 ## Pendientes (configuración de Supabase Auth — no es SQL)
 
-- Activar **Leaked Password Protection** (Auth → Policies). **Sigue pendiente**: es
-  un ajuste del panel, no SQL, y solo lo puede hacer el dueño de la cuenta.
-- Considerar **desactivar el registro público** si el alta debe ser solo por admin.
+- **Leaked Password Protection: BLOQUEADO POR PLAN.** Comprobado en el panel el
+  2026-08-29: el interruptor está en Authentication → Sign In / Providers →
+  Email, y dice *«Only available on Pro plan and above»*. El proyecto está en
+  **Free**. No es un descuido: no se puede activar sin subir de plan.
+- ~~Desactivar el registro público~~ — **hecho el 2026-08-29**. Ver abajo.
+- Opcional y gratis: subir la **longitud mínima de contraseña** de 6 a 8 (el
+  propio panel lo recomienda). Ojo con los flujos que validan a 6.
+- NO activar «Require current password when updating» ni «Secure password
+  change» sin tocar antes `app.js`: `saveMyPassword` no pide la contraseña
+  actual, así que romperían el cambio de clave del alumno.
 - ~~Mover la extensión `unaccent` fuera de `public`~~ — hecho el 2026-08-29.
 - ~~Contraseñas en texto plano en `student_credentials` / `visible_password`~~ —
   cerrado el 2026-08-29: la tabla se borró y la función dejó de escribirlas.
@@ -35,3 +42,12 @@ llaman, y sin `EXECUTE` un resultado vacío se convertiría en un error.
 Las RPC `admin_*`, `grade_writing`, `set_student_access` y `upsert_speaking` son
 ejecutables por `authenticated` **a propósito** — las llaman admins y profesores
 con sesión, y cada una comprueba el rol en su cuerpo.
+
+## Ajustes de Auth cambiados desde el panel (no son SQL)
+
+| Fecha | Ajuste | De → a | Por qué |
+|-------|--------|--------|---------|
+| 2026-08-29 | **Allow new users to sign up** | ON → **OFF** | El alta pública llevaba rota desde el 13-jul por el bug de `handle_new_user`. Al arreglarla el mismo día **revivió**: cualquiera con el enlace podía crearse una cuenta de alumno en el portal del colegio. Se cierra; las altas las hace un admin desde *Nuevo usuario*, que vuelve a funcionar. Verificado contra `/auth/v1/signup`: responde `signup_disabled`. |
+
+El rol nunca fue el riesgo — `handle_new_user` fuerza `student` salvo que haya
+un admin autenticado — pero una cuenta sin aprobar entra igualmente al portal.
