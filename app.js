@@ -191,6 +191,8 @@ async function init(){
     const { data, error } = await withTimeout(sb.auth.getSession(), STARTUP_TIMEOUT_MS, 'SESSION_TIMEOUT');
     if(error) throw error;
     state.session = data && data.session ? data.session : null;
+    const recoveryMode = (()=>{ try{return new URLSearchParams(location.search).get('recovery')==='1';}catch(_){return false;} })();
+    if(recoveryMode && state.session){ renderRecoveryPassword(); return; }
     if(state.session) await withTimeout(loadProfile(), STARTUP_TIMEOUT_MS, 'PROFILE_TIMEOUT');
     route();
   }catch(e){
@@ -210,6 +212,7 @@ function subscribeAuthChanges(){
       setTimeout(async ()=>{
         const uid = (session && session.user) ? session.user.id : null;
         state.session = session;
+        if(evt==='PASSWORD_RECOVERY'){ renderRecoveryPassword(); return; }
         if(evt==='TOKEN_REFRESHED' || evt==='USER_UPDATED') return;
         if(uid===lastUid && (uid===null || state.profile)) return;
         lastUid = uid;
@@ -334,6 +337,7 @@ function renderAuth(mode='login'){
   if(mode==='login'){
     $('#toSignup').onclick=()=>renderAuth('signup');
     $('#loginBtn').onclick=doLogin;
+    if($('#forgotPw')) $('#forgotPw').onclick=(e)=>{ e.preventDefault(); renderForgotPassword(); };
     // Enter key submits the login form
     ['li_email','li_pw'].forEach(id=>{ const el=$('#'+id); if(el) el.addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); doLogin(); } }); });
     // Si ya recordamos el correo, salta directo a la contraseña.
@@ -354,6 +358,7 @@ function loginForm(){
       <button type="button" id="li_eye" onclick="window._toggleLoginPw()" title="Mostrar / ocultar contraseña"
         style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:1.15rem;line-height:1;padding:0;color:var(--muted)">👁</button>
     </div>
+    <div style="text-align:right;margin-top:8px"><a id="forgotPw" href="#" style="font-size:.9rem">¿Olvidaste tu contraseña?</a></div>
     <label style="display:flex;align-items:center;gap:8px;margin-top:10px;font-weight:400;cursor:pointer">
       <input type="checkbox" id="li_remember" ${savedEmail?'checked':''} style="width:auto;margin:0"> Recordar mi correo
     </label>
@@ -366,6 +371,90 @@ window._toggleLoginPw=()=>{
   if(btn) btn.textContent = hidden ? '🙈' : '👁';   // 🙈 = visible (clic para ocultar)
   inp.focus();
 };
+function renderForgotPassword(){
+  document.body.innerHTML = `<div class="auth-wrap"><div class="auth-card">
+    <img class="logo" src="assets/logo-h.svg" alt="Nordic">
+    <h1>Recuperar contraseña</h1>
+    <p class="sub">Te enviaremos un enlace seguro para crear una nueva contraseña.</p>
+    <div id="msg"></div>
+    <label>Correo</label>
+    <input id="fp_email" type="email" autocomplete="email" placeholder="tucorreo@nordic-school.edu.pe">
+    <div style="margin-top:16px"><button class="btn" id="fp_btn" style="width:100%">Enviar enlace</button></div>
+    <div class="auth-switch"><a id="fp_back">← Volver a iniciar sesión</a></div>
+  </div></div>`;
+  const saved=(()=>{ try{return localStorage.getItem('nis_remember_email')||'';}catch(_){return '';} })();
+  if($('#fp_email')) $('#fp_email').value=saved;
+  $('#fp_back').onclick=()=>renderAuth('login');
+  $('#fp_btn').onclick=sendPasswordResetEmail;
+  $('#fp_email').addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); sendPasswordResetEmail(); } });
+  $('#fp_email').focus();
+}
+
+async function sendPasswordResetEmail(){
+  const email=(($('#fp_email')||{}).value||'').trim();
+  const btn=$('#fp_btn');
+  if(!email) return msg('err','Ingresa tu correo.');
+  if(btn){ btn.disabled=true; btn.textContent='Enviando…'; }
+  try{
+    const redirectTo = `${location.origin}${location.pathname}?recovery=1`;
+    const { error } = await withTimeout(
+      sb.auth.resetPasswordForEmail(email,{ redirectTo }),
+      STARTUP_TIMEOUT_MS,
+      'PASSWORD_RESET_EMAIL_TIMEOUT'
+    );
+    if(error) throw error;
+    msg('ok','Si ese correo está registrado, recibirás un enlace para crear una nueva contraseña. Revisa también Spam o Correo no deseado.');
+  }catch(e){
+    const text=(e&&e.message)?e.message:'No se pudo enviar el correo de recuperación.';
+    msg('err',text);
+  }finally{
+    if(btn){ btn.disabled=false; btn.textContent='Enviar enlace'; }
+  }
+}
+
+function renderRecoveryPassword(){
+  document.body.innerHTML = `<div class="auth-wrap"><div class="auth-card">
+    <img class="logo" src="assets/logo-h.svg" alt="Nordic">
+    <h1>Nueva contraseña</h1>
+    <p class="sub">Crea una contraseña que puedas recordar.</p>
+    <div id="msg"></div>
+    <label>Nueva contraseña</label>
+    <input id="rp_pw1" type="password" autocomplete="new-password" placeholder="Mínimo 8 caracteres">
+    <label>Repite la nueva contraseña</label>
+    <input id="rp_pw2" type="password" autocomplete="new-password" placeholder="Repite la contraseña">
+    <div style="margin-top:16px"><button class="btn" id="rp_btn" style="width:100%">Guardar nueva contraseña</button></div>
+  </div></div>`;
+  $('#rp_btn').onclick=saveRecoveredPassword;
+  ['rp_pw1','rp_pw2'].forEach(id=>$('#'+id).addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); saveRecoveredPassword(); } }));
+  $('#rp_pw1').focus();
+}
+
+async function saveRecoveredPassword(){
+  const pw1=(($('#rp_pw1')||{}).value||'').trim();
+  const pw2=(($('#rp_pw2')||{}).value||'').trim();
+  const btn=$('#rp_btn');
+  if(pw1.length<8) return msg('err','La contraseña debe tener al menos 8 caracteres.');
+  if(pw1!==pw2) return msg('err','Las contraseñas no coinciden.');
+  if(btn){ btn.disabled=true; btn.textContent='Guardando…'; }
+  try{
+    const { error } = await withTimeout(sb.auth.updateUser({password:pw1}), STARTUP_TIMEOUT_MS, 'PASSWORD_RECOVERY_UPDATE_TIMEOUT');
+    if(error) throw error;
+    try{ history.replaceState(null,'',location.pathname); }catch(_){ }
+    msg('ok','Contraseña actualizada correctamente. Ya puedes iniciar sesión con tu nueva contraseña.');
+    const card=document.querySelector('.auth-card');
+    if(card){
+      const go=document.createElement('button');
+      go.className='btn ghost'; go.style.width='100%'; go.style.marginTop='10px'; go.textContent='Ir a iniciar sesión';
+      go.onclick=async()=>{ try{ await sb.auth.signOut(); }catch(_){ } state.session=null; state.profile=null; renderAuth('login'); };
+      card.appendChild(go);
+    }
+  }catch(e){
+    const text=(e&&e.message)?e.message:'No se pudo actualizar la contraseña.';
+    msg('err',text);
+    if(btn){ btn.disabled=false; btn.textContent='Guardar nueva contraseña'; }
+  }
+}
+
 function signupForm(){
   return `
     <div class="field-2">
