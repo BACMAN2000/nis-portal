@@ -191,8 +191,6 @@ async function init(){
     const { data, error } = await withTimeout(sb.auth.getSession(), STARTUP_TIMEOUT_MS, 'SESSION_TIMEOUT');
     if(error) throw error;
     state.session = data && data.session ? data.session : null;
-    const recoveryMode = (()=>{ try{return new URLSearchParams(location.search).get('recovery')==='1';}catch(_){return false;} })();
-    if(recoveryMode && state.session){ renderRecoveryPassword(); return; }
     if(state.session) await withTimeout(loadProfile(), STARTUP_TIMEOUT_MS, 'PROFILE_TIMEOUT');
     route();
   }catch(e){
@@ -212,7 +210,6 @@ function subscribeAuthChanges(){
       setTimeout(async ()=>{
         const uid = (session && session.user) ? session.user.id : null;
         state.session = session;
-        if(evt==='PASSWORD_RECOVERY'){ renderRecoveryPassword(); return; }
         if(evt==='TOKEN_REFRESHED' || evt==='USER_UPDATED') return;
         if(uid===lastUid && (uid===null || state.profile)) return;
         lastUid = uid;
@@ -337,7 +334,6 @@ function renderAuth(mode='login'){
   if(mode==='login'){
     $('#toSignup').onclick=()=>renderAuth('signup');
     $('#loginBtn').onclick=doLogin;
-    if($('#forgotPw')) $('#forgotPw').onclick=(e)=>{ e.preventDefault(); renderForgotPassword(); };
     // Enter key submits the login form
     ['li_email','li_pw'].forEach(id=>{ const el=$('#'+id); if(el) el.addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); doLogin(); } }); });
     // Si ya recordamos el correo, salta directo a la contraseña.
@@ -358,7 +354,6 @@ function loginForm(){
       <button type="button" id="li_eye" onclick="window._toggleLoginPw()" title="Mostrar / ocultar contraseña"
         style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:1.15rem;line-height:1;padding:0;color:var(--muted)">👁</button>
     </div>
-    <div style="text-align:right;margin-top:8px"><a id="forgotPw" href="#" style="font-size:.9rem">¿Olvidaste tu contraseña?</a></div>
     <label style="display:flex;align-items:center;gap:8px;margin-top:10px;font-weight:400;cursor:pointer">
       <input type="checkbox" id="li_remember" ${savedEmail?'checked':''} style="width:auto;margin:0"> Recordar mi correo
     </label>
@@ -371,90 +366,6 @@ window._toggleLoginPw=()=>{
   if(btn) btn.textContent = hidden ? '🙈' : '👁';   // 🙈 = visible (clic para ocultar)
   inp.focus();
 };
-function renderForgotPassword(){
-  document.body.innerHTML = `<div class="auth-wrap"><div class="auth-card">
-    <img class="logo" src="assets/logo-h.svg" alt="Nordic">
-    <h1>Recuperar contraseña</h1>
-    <p class="sub">Te enviaremos un enlace seguro para crear una nueva contraseña.</p>
-    <div id="msg"></div>
-    <label>Correo</label>
-    <input id="fp_email" type="email" autocomplete="email" placeholder="tucorreo@nordic-school.edu.pe">
-    <div style="margin-top:16px"><button class="btn" id="fp_btn" style="width:100%">Enviar enlace</button></div>
-    <div class="auth-switch"><a id="fp_back">← Volver a iniciar sesión</a></div>
-  </div></div>`;
-  const saved=(()=>{ try{return localStorage.getItem('nis_remember_email')||'';}catch(_){return '';} })();
-  if($('#fp_email')) $('#fp_email').value=saved;
-  $('#fp_back').onclick=()=>renderAuth('login');
-  $('#fp_btn').onclick=sendPasswordResetEmail;
-  $('#fp_email').addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); sendPasswordResetEmail(); } });
-  $('#fp_email').focus();
-}
-
-async function sendPasswordResetEmail(){
-  const email=(($('#fp_email')||{}).value||'').trim();
-  const btn=$('#fp_btn');
-  if(!email) return msg('err','Ingresa tu correo.');
-  if(btn){ btn.disabled=true; btn.textContent='Enviando…'; }
-  try{
-    const redirectTo = `${location.origin}${location.pathname}?recovery=1`;
-    const { error } = await withTimeout(
-      sb.auth.resetPasswordForEmail(email,{ redirectTo }),
-      STARTUP_TIMEOUT_MS,
-      'PASSWORD_RESET_EMAIL_TIMEOUT'
-    );
-    if(error) throw error;
-    msg('ok','Si ese correo está registrado, recibirás un enlace para crear una nueva contraseña. Revisa también Spam o Correo no deseado.');
-  }catch(e){
-    const text=(e&&e.message)?e.message:'No se pudo enviar el correo de recuperación.';
-    msg('err',text);
-  }finally{
-    if(btn){ btn.disabled=false; btn.textContent='Enviar enlace'; }
-  }
-}
-
-function renderRecoveryPassword(){
-  document.body.innerHTML = `<div class="auth-wrap"><div class="auth-card">
-    <img class="logo" src="assets/logo-h.svg" alt="Nordic">
-    <h1>Nueva contraseña</h1>
-    <p class="sub">Crea una contraseña que puedas recordar.</p>
-    <div id="msg"></div>
-    <label>Nueva contraseña</label>
-    <input id="rp_pw1" type="password" autocomplete="new-password" placeholder="Mínimo 8 caracteres">
-    <label>Repite la nueva contraseña</label>
-    <input id="rp_pw2" type="password" autocomplete="new-password" placeholder="Repite la contraseña">
-    <div style="margin-top:16px"><button class="btn" id="rp_btn" style="width:100%">Guardar nueva contraseña</button></div>
-  </div></div>`;
-  $('#rp_btn').onclick=saveRecoveredPassword;
-  ['rp_pw1','rp_pw2'].forEach(id=>$('#'+id).addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); saveRecoveredPassword(); } }));
-  $('#rp_pw1').focus();
-}
-
-async function saveRecoveredPassword(){
-  const pw1=(($('#rp_pw1')||{}).value||'').trim();
-  const pw2=(($('#rp_pw2')||{}).value||'').trim();
-  const btn=$('#rp_btn');
-  if(pw1.length<8) return msg('err','La contraseña debe tener al menos 8 caracteres.');
-  if(pw1!==pw2) return msg('err','Las contraseñas no coinciden.');
-  if(btn){ btn.disabled=true; btn.textContent='Guardando…'; }
-  try{
-    const { error } = await withTimeout(sb.auth.updateUser({password:pw1}), STARTUP_TIMEOUT_MS, 'PASSWORD_RECOVERY_UPDATE_TIMEOUT');
-    if(error) throw error;
-    try{ history.replaceState(null,'',location.pathname); }catch(_){ }
-    msg('ok','Contraseña actualizada correctamente. Ya puedes iniciar sesión con tu nueva contraseña.');
-    const card=document.querySelector('.auth-card');
-    if(card){
-      const go=document.createElement('button');
-      go.className='btn ghost'; go.style.width='100%'; go.style.marginTop='10px'; go.textContent='Ir a iniciar sesión';
-      go.onclick=async()=>{ try{ await sb.auth.signOut(); }catch(_){ } state.session=null; state.profile=null; renderAuth('login'); };
-      card.appendChild(go);
-    }
-  }catch(e){
-    const text=(e&&e.message)?e.message:'No se pudo actualizar la contraseña.';
-    msg('err',text);
-    if(btn){ btn.disabled=false; btn.textContent='Guardar nueva contraseña'; }
-  }
-}
-
 function signupForm(){
   return `
     <div class="field-2">
@@ -539,7 +450,6 @@ async function renderAdmin(tab='users'){
     {key:'readers',label:'📖 Controles de lectura'},
     {key:'unitprod',label:'🎯 Productos de unidad'},
     {key:'corregir',label:'✅ Corregir fichas'},
-    {key:'tiempo',label:'⏱️ Tiempo de pantalla'},
     {key:'materiales',label:'📄 Materiales de clase'},
     {key:'teachers',label:'👨‍🏫 Profesores'},
     {key:'honesty',label:'🛡️ Honestidad'},
@@ -570,7 +480,6 @@ async function renderAdmin(tab='users'){
   if(tab==='unitprod') return unitProductsPanel();
   if(tab==='materiales') return materialesPanel();
   if(tab==='corregir') return corregirPanel();
-  if(tab==='tiempo') return tiempoPantallaPanel();
   if(tab==='stats') return adminStats();
   if(tab==='results') return adminResults();
   if(tab==='final') return cefrFinalPanel();
@@ -2096,7 +2005,6 @@ async function renderTeacher(tab){
   if(acc.can_results) nav.push({key:'funnordic',label:'🧸 Fun for Nordic'});
   if(acc.can_results) nav.push({key:'unitprod',label:'🎯 Productos de unidad'});
   if(acc.can_results) nav.push({key:'corregir',label:'✅ Corregir fichas'});
-  if(acc.can_results) nav.push({key:'tiempo',label:'⏱️ Tiempo de pantalla'});
   if(acc.can_results) nav.push({key:'materiales',label:'📄 Materiales de clase'});
   if(acc.can_students) nav.push({key:'students',label:'👥 Alumnos'});
   if(acc.can_results||acc.can_students) nav.push({key:'honesty',label:'🛡️ Honestidad'});
@@ -2126,7 +2034,6 @@ async function renderTeacher(tab){
   if(active==='unitprod') return unitProductsPanel();
   if(active==='materiales') return materialesPanel();
   if(active==='corregir') return corregirPanel();
-  if(active==='tiempo') return tiempoPantallaPanel();
   if(active==='honesty') return antiCheatPanel();
   if(active==='practice') return practicePanel(teacherAllowedGrades());
   if(active==='classes') return studentClasses();
@@ -4931,157 +4838,3 @@ window._guardaPw = async function(id){
   msg.style.color = 'var(--good)';
   inp.value = '';
 };
-
-/* ---------------------------------------------------------------
-   ⏱️ Tiempo de pantalla — el dato que dirección pidió.
-
-   Nace de la preocupación por el uso de tablets. La idea es convertir
-   esa preocupación en un número que el colegio mire y sobre el que
-   acuerde un techo, en vez de discutir percepciones.
-
-   Honestidad del dato, dicha también en pantalla: mide el tiempo
-   REGISTRADO en actividades, exámenes, grabaciones y entregas. No mide
-   tener la página abierta sin hacer nada. Es un suelo, no el total.
----------------------------------------------------------------- */
-let _tp = { semanas: 8, grado: '', filas: [] };
-
-async function tiempoPantallaPanel(){
-  $('#main').innerHTML = '<div class="card"><p class="muted">Calculando…</p></div>';
-  await tpCarga();
-}
-
-async function tpCarga(){
-  if($('#tpGrado')){
-    _tp.grado   = $('#tpGrado').value;
-    _tp.semanas = parseInt($('#tpSemanas').value, 10);
-  }
-  const desde = new Date();
-  desde.setDate(desde.getDate() - _tp.semanas * 7);
-
-  let q = sb.from('v_tiempo_pantalla').select('*')
-    .gte('semana', desde.toISOString().slice(0,10));
-  if(_tp.grado) q = q.eq('grade_id', Number(_tp.grado));
-  const { data, error } = await q;
-  if(error){
-    $('#main').innerHTML = `<div class="card"><p class="err">No pude leerlo: ${esc(error.message)}</p></div>`;
-    return;
-  }
-  _tp.filas = data || [];
-  tpPinta();
-}
-
-function tpPinta(){
-  const filas = _tp.filas;
-  const semanas = [...new Set(filas.map(f => f.semana))].sort().slice(-_tp.semanas);
-
-  /* por alumno y semana */
-  const porAlumno = {};
-  filas.forEach(f => {
-    const a = porAlumno[f.student_id] || (porAlumno[f.student_id] =
-      { nombre: f.full_name, grado: f.grade_id, seccion: f.section, sem: {}, total: 0, acotadas: 0 });
-    a.sem[f.semana] = (a.sem[f.semana] || 0) + Number(f.minutos);
-    a.total += Number(f.minutos);
-    a.acotadas += (f.sesiones_acotadas || 0);
-  });
-  const alumnos = Object.values(porAlumno).sort((x,y) => y.total - x.total);
-
-  /* medias del grupo, por semana */
-  const medias = semanas.map(s => {
-    const v = alumnos.map(a => a.sem[s] || 0).filter(x => x > 0);
-    return v.length ? Math.round(v.reduce((a,b)=>a+b,0) / v.length) : 0;
-  });
-  const mediaGlobal = medias.filter(Boolean).length
-    ? Math.round(medias.filter(Boolean).reduce((a,b)=>a+b,0) / medias.filter(Boolean).length) : 0;
-  const pico = alumnos.length ? Math.round(Math.max(...alumnos.map(a => Math.max(0, ...Object.values(a.sem))))) : 0;
-  const acotadas = alumnos.reduce((a,b) => a + b.acotadas, 0);
-
-  /* por tipo de uso */
-  const porTipo = {};
-  filas.forEach(f => porTipo[f.tipo] = (porTipo[f.tipo] || 0) + Number(f.minutos));
-  const totalTipo = Object.values(porTipo).reduce((a,b)=>a+b,0) || 1;
-
-  const grados = ALL_GRADE_ORDER.map(g =>
-    `<option value="${GRADE_META[g][1].replace(/\D/g,'')}" ${_tp.grado===GRADE_META[g][1].replace(/\D/g,'')?'selected':''}>${GRADE_META[g][1]}</option>`).join('');
-
-  const cab = semanas.map(s => `<th style="text-align:center">${s.slice(5)}</th>`).join('');
-  const cuerpo = alumnos.slice(0, 60).map(a => `<tr>
-      <td>${esc(a.nombre)} <span class="muted">${a.grado||''}º${a.seccion||''}</span></td>
-      ${semanas.map(s => {
-        const m = Math.round(a.sem[s] || 0);
-        const color = m === 0 ? 'var(--muted)' : (m > 120 ? '#b45309' : 'var(--ink)');
-        return `<td style="text-align:center;color:${color}">${m || '·'}</td>`;
-      }).join('')}
-      <td style="text-align:center;font-weight:700">${Math.round(a.total)}</td>
-    </tr>`).join('');
-
-  $('#main').innerHTML = `
-  <div class="card">
-    <h2>⏱️ Tiempo de pantalla</h2>
-    <p class="muted">Minutos por alumno y semana. Sirve para acordar un techo con dirección
-      y comprobar si se respeta, en vez de discutirlo de oídas.</p>
-
-    <div class="row" style="gap:10px;margin:12px 0">
-      <select id="tpGrado"><option value="">Todos los grados</option>${grados}</select>
-      <select id="tpSemanas">
-        ${[4,8,12,20].map(n=>`<option value="${n}" ${n===_tp.semanas?'selected':''}>Últimas ${n} semanas</option>`).join('')}
-      </select>
-      <button class="btn small" onclick="tpCarga()">Ver</button>
-    </div>
-
-    <div class="grid cols-3" style="gap:12px;margin-top:6px">
-      <div class="card center" style="margin:0;padding:16px">
-        <div style="font-size:2rem;font-weight:800;color:var(--blue-dd)">${mediaGlobal}</div>
-        <div class="muted" style="font-size:.82rem">minutos por alumno y semana<br>(media)</div>
-      </div>
-      <div class="card center" style="margin:0;padding:16px">
-        <div style="font-size:2rem;font-weight:800;color:${pico>120?'#b45309':'var(--blue-dd)'}">${pico}</div>
-        <div class="muted" style="font-size:.82rem">la semana más alta<br>de un solo alumno</div>
-      </div>
-      <div class="card center" style="margin:0;padding:16px">
-        <div style="font-size:2rem;font-weight:800;color:var(--blue-dd)">${alumnos.length}</div>
-        <div class="muted" style="font-size:.82rem">alumnos con<br>actividad registrada</div>
-      </div>
-    </div>
-
-    <div style="margin-top:16px">
-      <b style="font-size:.86rem">En qué se va el tiempo</b>
-      <div style="display:flex;height:26px;border-radius:8px;overflow:hidden;margin-top:8px;border:1px solid var(--line)">
-        ${Object.keys(porTipo).sort((a,b)=>porTipo[b]-porTipo[a]).map((t,i) => {
-          const pct = (porTipo[t]/totalTipo*100);
-          const col = ['#4987c6','#76cbe5','#7c9a4e','#d4a03a'][i%4];
-          return `<div title="${t}: ${Math.round(porTipo[t])} min" style="width:${pct}%;background:${col}"></div>`;
-        }).join('')}
-      </div>
-      <div class="row" style="gap:14px;margin-top:7px;font-size:.8rem">
-        ${Object.keys(porTipo).sort((a,b)=>porTipo[b]-porTipo[a]).map((t,i) => {
-          const col = ['#4987c6','#76cbe5','#7c9a4e','#d4a03a'][i%4];
-          return `<span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:${col}"></span>
-            ${esc(t)} · ${Math.round(porTipo[t]/totalTipo*100)}%</span>`;
-        }).join('')}
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <h3 style="font-size:1rem;color:var(--blue-d)">Minutos por alumno y semana</h3>
-    <p class="muted" style="font-size:.82rem">En ámbar, las semanas por encima de 120 minutos.</p>
-    <div style="overflow-x:auto"><table class="tbl">
-      <thead><tr><th>Alumno</th>${cab}<th style="text-align:center">Total</th></tr></thead>
-      <tbody>${cuerpo || '<tr><td colspan="9" class="muted">Sin actividad en el periodo.</td></tr>'}</tbody>
-    </table></div>
-    ${alumnos.length > 60 ? `<p class="muted" style="font-size:.8rem">Se muestran los 60 de mayor uso, de ${alumnos.length}.</p>` : ''}
-  </div>
-
-  <div class="card">
-    <h3 style="font-size:1rem;color:var(--blue-d)">Qué mide y qué no</h3>
-    <p class="muted" style="font-size:.85rem;line-height:1.7">
-      Suma el tiempo <b>registrado</b> en actividades, exámenes, grabaciones y entregas.
-      <b>No</b> cuenta tener la página abierta sin hacer nada, así que es un <b>suelo</b>:
-      el tiempo real es algo mayor. Como suelo ya sirve — si este número fuera alto,
-      el real lo sería más.<br>
-      Cada sesión se limita a 120 minutos porque algunas quedan abiertas y devuelven
-      duraciones imposibles (hay un examen registrado con 4114 minutos). En este periodo
-      se acotaron <b>${acotadas}</b> sesión(es); conviene revisarlas si son muchas.
-    </p>
-  </div>`;
-}

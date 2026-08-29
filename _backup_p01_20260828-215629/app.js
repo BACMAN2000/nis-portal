@@ -191,8 +191,6 @@ async function init(){
     const { data, error } = await withTimeout(sb.auth.getSession(), STARTUP_TIMEOUT_MS, 'SESSION_TIMEOUT');
     if(error) throw error;
     state.session = data && data.session ? data.session : null;
-    const recoveryMode = (()=>{ try{return new URLSearchParams(location.search).get('recovery')==='1';}catch(_){return false;} })();
-    if(recoveryMode && state.session){ renderRecoveryPassword(); return; }
     if(state.session) await withTimeout(loadProfile(), STARTUP_TIMEOUT_MS, 'PROFILE_TIMEOUT');
     route();
   }catch(e){
@@ -212,7 +210,6 @@ function subscribeAuthChanges(){
       setTimeout(async ()=>{
         const uid = (session && session.user) ? session.user.id : null;
         state.session = session;
-        if(evt==='PASSWORD_RECOVERY'){ renderRecoveryPassword(); return; }
         if(evt==='TOKEN_REFRESHED' || evt==='USER_UPDATED') return;
         if(uid===lastUid && (uid===null || state.profile)) return;
         lastUid = uid;
@@ -337,7 +334,6 @@ function renderAuth(mode='login'){
   if(mode==='login'){
     $('#toSignup').onclick=()=>renderAuth('signup');
     $('#loginBtn').onclick=doLogin;
-    if($('#forgotPw')) $('#forgotPw').onclick=(e)=>{ e.preventDefault(); renderForgotPassword(); };
     // Enter key submits the login form
     ['li_email','li_pw'].forEach(id=>{ const el=$('#'+id); if(el) el.addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); doLogin(); } }); });
     // Si ya recordamos el correo, salta directo a la contraseña.
@@ -358,7 +354,6 @@ function loginForm(){
       <button type="button" id="li_eye" onclick="window._toggleLoginPw()" title="Mostrar / ocultar contraseña"
         style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:1.15rem;line-height:1;padding:0;color:var(--muted)">👁</button>
     </div>
-    <div style="text-align:right;margin-top:8px"><a id="forgotPw" href="#" style="font-size:.9rem">¿Olvidaste tu contraseña?</a></div>
     <label style="display:flex;align-items:center;gap:8px;margin-top:10px;font-weight:400;cursor:pointer">
       <input type="checkbox" id="li_remember" ${savedEmail?'checked':''} style="width:auto;margin:0"> Recordar mi correo
     </label>
@@ -371,90 +366,6 @@ window._toggleLoginPw=()=>{
   if(btn) btn.textContent = hidden ? '🙈' : '👁';   // 🙈 = visible (clic para ocultar)
   inp.focus();
 };
-function renderForgotPassword(){
-  document.body.innerHTML = `<div class="auth-wrap"><div class="auth-card">
-    <img class="logo" src="assets/logo-h.svg" alt="Nordic">
-    <h1>Recuperar contraseña</h1>
-    <p class="sub">Te enviaremos un enlace seguro para crear una nueva contraseña.</p>
-    <div id="msg"></div>
-    <label>Correo</label>
-    <input id="fp_email" type="email" autocomplete="email" placeholder="tucorreo@nordic-school.edu.pe">
-    <div style="margin-top:16px"><button class="btn" id="fp_btn" style="width:100%">Enviar enlace</button></div>
-    <div class="auth-switch"><a id="fp_back">← Volver a iniciar sesión</a></div>
-  </div></div>`;
-  const saved=(()=>{ try{return localStorage.getItem('nis_remember_email')||'';}catch(_){return '';} })();
-  if($('#fp_email')) $('#fp_email').value=saved;
-  $('#fp_back').onclick=()=>renderAuth('login');
-  $('#fp_btn').onclick=sendPasswordResetEmail;
-  $('#fp_email').addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); sendPasswordResetEmail(); } });
-  $('#fp_email').focus();
-}
-
-async function sendPasswordResetEmail(){
-  const email=(($('#fp_email')||{}).value||'').trim();
-  const btn=$('#fp_btn');
-  if(!email) return msg('err','Ingresa tu correo.');
-  if(btn){ btn.disabled=true; btn.textContent='Enviando…'; }
-  try{
-    const redirectTo = `${location.origin}${location.pathname}?recovery=1`;
-    const { error } = await withTimeout(
-      sb.auth.resetPasswordForEmail(email,{ redirectTo }),
-      STARTUP_TIMEOUT_MS,
-      'PASSWORD_RESET_EMAIL_TIMEOUT'
-    );
-    if(error) throw error;
-    msg('ok','Si ese correo está registrado, recibirás un enlace para crear una nueva contraseña. Revisa también Spam o Correo no deseado.');
-  }catch(e){
-    const text=(e&&e.message)?e.message:'No se pudo enviar el correo de recuperación.';
-    msg('err',text);
-  }finally{
-    if(btn){ btn.disabled=false; btn.textContent='Enviar enlace'; }
-  }
-}
-
-function renderRecoveryPassword(){
-  document.body.innerHTML = `<div class="auth-wrap"><div class="auth-card">
-    <img class="logo" src="assets/logo-h.svg" alt="Nordic">
-    <h1>Nueva contraseña</h1>
-    <p class="sub">Crea una contraseña que puedas recordar.</p>
-    <div id="msg"></div>
-    <label>Nueva contraseña</label>
-    <input id="rp_pw1" type="password" autocomplete="new-password" placeholder="Mínimo 8 caracteres">
-    <label>Repite la nueva contraseña</label>
-    <input id="rp_pw2" type="password" autocomplete="new-password" placeholder="Repite la contraseña">
-    <div style="margin-top:16px"><button class="btn" id="rp_btn" style="width:100%">Guardar nueva contraseña</button></div>
-  </div></div>`;
-  $('#rp_btn').onclick=saveRecoveredPassword;
-  ['rp_pw1','rp_pw2'].forEach(id=>$('#'+id).addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); saveRecoveredPassword(); } }));
-  $('#rp_pw1').focus();
-}
-
-async function saveRecoveredPassword(){
-  const pw1=(($('#rp_pw1')||{}).value||'').trim();
-  const pw2=(($('#rp_pw2')||{}).value||'').trim();
-  const btn=$('#rp_btn');
-  if(pw1.length<8) return msg('err','La contraseña debe tener al menos 8 caracteres.');
-  if(pw1!==pw2) return msg('err','Las contraseñas no coinciden.');
-  if(btn){ btn.disabled=true; btn.textContent='Guardando…'; }
-  try{
-    const { error } = await withTimeout(sb.auth.updateUser({password:pw1}), STARTUP_TIMEOUT_MS, 'PASSWORD_RECOVERY_UPDATE_TIMEOUT');
-    if(error) throw error;
-    try{ history.replaceState(null,'',location.pathname); }catch(_){ }
-    msg('ok','Contraseña actualizada correctamente. Ya puedes iniciar sesión con tu nueva contraseña.');
-    const card=document.querySelector('.auth-card');
-    if(card){
-      const go=document.createElement('button');
-      go.className='btn ghost'; go.style.width='100%'; go.style.marginTop='10px'; go.textContent='Ir a iniciar sesión';
-      go.onclick=async()=>{ try{ await sb.auth.signOut(); }catch(_){ } state.session=null; state.profile=null; renderAuth('login'); };
-      card.appendChild(go);
-    }
-  }catch(e){
-    const text=(e&&e.message)?e.message:'No se pudo actualizar la contraseña.';
-    msg('err',text);
-    if(btn){ btn.disabled=false; btn.textContent='Guardar nueva contraseña'; }
-  }
-}
-
 function signupForm(){
   return `
     <div class="field-2">
@@ -539,7 +450,6 @@ async function renderAdmin(tab='users'){
     {key:'readers',label:'📖 Controles de lectura'},
     {key:'unitprod',label:'🎯 Productos de unidad'},
     {key:'corregir',label:'✅ Corregir fichas'},
-    {key:'tiempo',label:'⏱️ Tiempo de pantalla'},
     {key:'materiales',label:'📄 Materiales de clase'},
     {key:'teachers',label:'👨‍🏫 Profesores'},
     {key:'honesty',label:'🛡️ Honestidad'},
@@ -570,7 +480,6 @@ async function renderAdmin(tab='users'){
   if(tab==='unitprod') return unitProductsPanel();
   if(tab==='materiales') return materialesPanel();
   if(tab==='corregir') return corregirPanel();
-  if(tab==='tiempo') return tiempoPantallaPanel();
   if(tab==='stats') return adminStats();
   if(tab==='results') return adminResults();
   if(tab==='final') return cefrFinalPanel();
@@ -1040,7 +949,7 @@ async function adminUsers(){
       <td><span class="badge lvl">${esc(p.cefr_level||'—')}</span></td>
       <td><span class="badge ${p.role==='student'?'':'on'}">${esc(p.role)}</span></td>
       <td><span class="badge ${suspended?'off':'on'}">${suspended?'Suspendido':'Activo'}</span></td>
-      <td style="white-space:nowrap">${p.role==='student'?`<button class="btn sm ghost" onclick="window._previewStudent('${p.id}','${esc((p.full_name||p.email||'').replace(/'/g,'’'))}')" title="Ver el portal tal como lo ve este alumno">👁️ Ver como</button> <button class="btn sm ghost" onclick="window._openStudentAccess('${p.id}',${p.grade_id||'null'},'${esc((p.full_name||p.email||'').replace(/'/g,'’'))}')">🔧 Accesos</button> <button class="btn sm ghost" onclick="window.resetStudentPassword('${p.id}','${esc((p.full_name||p.email||'').replace(/'/g,'’'))}','${esc((p.email||'').replace(/'/g,'’'))}')" title="Asignar una contraseña temporal nueva">🔑 Restablecer</button> `:''}<button class="btn sm ghost" onclick="editUser('${p.id}')">Editar</button> ${toggleBtn} <button class="btn sm danger" onclick="deleteUser('${p.id}','user')">Eliminar</button></td>
+      <td style="white-space:nowrap">${p.role==='student'?`<button class="btn sm ghost" onclick="window._previewStudent('${p.id}','${esc((p.full_name||p.email||'').replace(/'/g,'’'))}')" title="Ver el portal tal como lo ve este alumno">👁️ Ver como</button> <button class="btn sm ghost" onclick="window._openStudentAccess('${p.id}',${p.grade_id||'null'},'${esc((p.full_name||p.email||'').replace(/'/g,'’'))}')">🔧 Accesos</button> `:''}<button class="btn sm ghost" onclick="editUser('${p.id}')">Editar</button> ${toggleBtn} <button class="btn sm danger" onclick="deleteUser('${p.id}','user')">Eliminar</button></td>
     </tr>`;}).join('');
   $('#main').innerHTML=`<div class="row" style="justify-content:space-between;align-items:center"><h1>Alumnos</h1>
       <button class="btn sm" onclick="adminNewUser()">+ Nuevo</button></div>
@@ -1052,94 +961,11 @@ async function adminUsers(){
       <div class="muted" style="padding-bottom:11px">${list.length} usuario(s)</div>
     </div>
     <div class="card" style="padding:0;overflow-x:auto">
-      <table><thead><tr><th>Nombre</th><th>Grado</th><th>Año</th><th>Nivel</th><th>Rol</th><th>Estado</th><th></th></tr></thead>
-      <tbody>${rows||'<tr><td colspan="7" class="center muted">No hay usuarios con ese filtro.</td></tr>'}</tbody></table>
+      <table><thead><tr><th>Nombre</th><th>Grado</th><th>Año</th><th>Nivel</th><th>Rol</th><th>Contraseña</th><th>Estado</th><th></th></tr></thead>
+      <tbody>${rows||'<tr><td colspan="8" class="center muted">No hay usuarios con ese filtro.</td></tr>'}</tbody></table>
     </div>`;
 }
 window._setUserFilter = (k,v)=>{ userFilter[k]=v; adminUsers(); };
-
-/* Contraseña temporal para alumnos.
-   La clave solo existe en memoria durante este flujo: se envía a Auth mediante
-   admin_set_password y NO se persiste una copia visible o recuperable. */
-function _generateTemporaryPassword(){
-  const alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789';
-  const symbols = '!@#$%';
-  const bytes = new Uint32Array(11);
-  if(window.crypto && window.crypto.getRandomValues) window.crypto.getRandomValues(bytes);
-  else for(let i=0;i<bytes.length;i++) bytes[i] = Math.floor(Math.random()*0xFFFFFFFF);
-  let out = 'Nis-';
-  for(let i=0;i<8;i++) out += alphabet[bytes[i] % alphabet.length];
-  out += symbols[bytes[8] % symbols.length];
-  out += String(bytes[9] % 10);
-  out += String(bytes[10] % 10);
-  return out;
-}
-
-window.resetStudentPassword = function(id, name, email){
-  const suggested = _generateTemporaryPassword();
-  $('#main').innerHTML=`<button class="btn sm ghost" onclick="adminUsers()">← Volver a Alumnos</button>
-    <div class="card" style="max-width:620px">
-      <h2>🔑 Restablecer contraseña</h2>
-      <p><b>${esc(name||'Alumno')}</b></p>
-      <p class="muted" style="margin-top:-8px">${esc(email||'')}</p>
-      <div class="note">Esta acción reemplaza la contraseña anterior. La nueva clave se mostrará aquí para que puedas copiarla y entregársela al alumno. NIS no conservará una copia visible.</div>
-      <label>Nueva contraseña temporal</label>
-      <div class="row" style="gap:8px;align-items:center">
-        <input id="rp_pw" type="text" autocomplete="off" value="${esc(suggested)}" style="flex:1;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-weight:700;letter-spacing:.4px">
-        <button class="btn sm ghost" type="button" onclick="window.regenerateStudentPassword()">↻ Generar otra</button>
-      </div>
-      <p class="muted" style="font-size:.82rem">Puedes usar la sugerida o escribir otra. Mínimo 8 caracteres recomendado.</p>
-      <div id="rp_msg"></div>
-      <div class="row" style="margin-top:14px;gap:8px">
-        <button id="rp_save" class="btn" onclick="window.saveStudentPassword('${id}')">Cambiar contraseña</button>
-        <button class="btn ghost" onclick="adminUsers()">Cancelar</button>
-      </div>
-    </div>`;
-  const input=$('#rp_pw'); if(input){ input.focus(); input.select(); }
-};
-
-window.regenerateStudentPassword = function(){
-  const input=$('#rp_pw');
-  if(!input) return;
-  input.value=_generateTemporaryPassword();
-  input.focus(); input.select();
-};
-
-window.saveStudentPassword = async function(id){
-  const input=$('#rp_pw'), msg=$('#rp_msg'), btn=$('#rp_save');
-  const pw=(input && input.value || '').trim();
-  if(pw.length<8){ msg.innerHTML='<div class="note err">Usa al menos 8 caracteres para la contraseña temporal.</div>'; return; }
-  if(btn){ btn.disabled=true; btn.textContent='Cambiando…'; }
-  msg.innerHTML='<div class="note">Actualizando la contraseña…</div>';
-  const r=await sb.rpc('admin_set_password',{p_id:id,p_password:pw});
-  if(r.error){
-    msg.innerHTML=`<div class="note err">${esc(r.error.message)}</div>`;
-    if(btn){ btn.disabled=false; btn.textContent='Cambiar contraseña'; }
-    return;
-  }
-  // Mantenerla visible solo en esta pantalla para poder entregársela al alumno.
-  input.readOnly=true;
-  msg.innerHTML=`<div class="note ok"><b>Contraseña cambiada.</b> La contraseña anterior ya no funciona.<br>
-    <div class="row" style="margin-top:10px;gap:8px;align-items:center;flex-wrap:wrap">
-      <code id="rp_result" style="font-size:1.05rem;font-weight:800;user-select:all">${esc(pw)}</code>
-      <button class="btn sm" onclick="window.copyTemporaryPassword()">📋 Copiar</button>
-    </div>
-    <div class="muted" style="margin-top:8px">Al salir de esta pantalla NIS no volverá a mostrar esta clave.</div></div>`;
-  if(btn) btn.style.display='none';
-};
-
-window.copyTemporaryPassword = async function(){
-  const el=$('#rp_result'); if(!el) return;
-  const text=el.textContent||'';
-  try{
-    await navigator.clipboard.writeText(text);
-    const old=el.nextElementSibling;
-    if(old){ old.textContent='✓ Copiada'; setTimeout(()=>{ old.textContent='📋 Copiar'; },1600); }
-  }catch(_){
-    const range=document.createRange(); range.selectNodeContents(el);
-    const sel=window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
-  }
-};
 window.adminNewUser = ()=>{
   $('#main').innerHTML=`<button class="btn sm ghost" onclick="adminUsers()">← Volver</button>
     <div class="card" style="max-width:600px"><h2>Nuevo usuario</h2>
@@ -1186,7 +1012,7 @@ window.editUser = async (id)=>{
         <div><label>Año académico</label><select id="e_year">${yearOptions(p.academic_year||2026)}</select></div>
         <div><label>Estado</label><select id="e_active"><option value="true" ${p.active?'selected':''}>Activo</option><option value="false" ${!p.active?'selected':''}>Inactivo</option></select></div>
       </div>
-      <label>Restablecer contraseña de acceso (opcional)</label><input id="e_pw" type="password" autocomplete="new-password" placeholder="dejar vacío para no cambiar · mín. 6 caracteres">
+      <label>Reestablecer contraseña de acceso (opcional)</label><input id="e_pw" type="password" autocomplete="new-password" placeholder="dejar vacío para no cambiar · mín. 6 caracteres">
       <div id="emsg"></div>
       <div class="row" style="margin-top:14px"><button class="btn" onclick="saveUser('${id}')">Guardar</button></div>
     </div>`;
@@ -2096,7 +1922,6 @@ async function renderTeacher(tab){
   if(acc.can_results) nav.push({key:'funnordic',label:'🧸 Fun for Nordic'});
   if(acc.can_results) nav.push({key:'unitprod',label:'🎯 Productos de unidad'});
   if(acc.can_results) nav.push({key:'corregir',label:'✅ Corregir fichas'});
-  if(acc.can_results) nav.push({key:'tiempo',label:'⏱️ Tiempo de pantalla'});
   if(acc.can_results) nav.push({key:'materiales',label:'📄 Materiales de clase'});
   if(acc.can_students) nav.push({key:'students',label:'👥 Alumnos'});
   if(acc.can_results||acc.can_students) nav.push({key:'honesty',label:'🛡️ Honestidad'});
@@ -2126,7 +1951,6 @@ async function renderTeacher(tab){
   if(active==='unitprod') return unitProductsPanel();
   if(active==='materiales') return materialesPanel();
   if(active==='corregir') return corregirPanel();
-  if(active==='tiempo') return tiempoPantallaPanel();
   if(active==='honesty') return antiCheatPanel();
   if(active==='practice') return practicePanel(teacherAllowedGrades());
   if(active==='classes') return studentClasses();
@@ -2580,7 +2404,6 @@ async function renderStudent(initial){
     {key:'french',label:'🇫🇷 French'},
     {key:'general',label:'🗂️ General'},
     {key:'results',label:'📊 My Progress'},
-    {key:'account',label:'👤 Mi cuenta'},
   ], initial||'home', `<div class="center muted">Loading…</div>`);
   // Toda la navegación pasa por window._nav para que la ruta quede en el hash
   // (deep links desde las páginas de actividades + "atrás" del navegador).
@@ -2599,78 +2422,6 @@ async function renderStudent(initial){
 function _setNav(k){ document.querySelectorAll('[data-nav]').forEach(e=>e.classList.toggle('active',e.dataset.nav===k)); }
 function studentPhonics(){ _setNav('phonics'); $('#main').innerHTML = phonicsPanel(); }
 function studentCoach(){ _setNav('coach'); $('#main').innerHTML = coachPanel(); }
-
-/* ---------- Student account / password ----------
-   Uses the authenticated user's own Supabase session. No password is stored
-   in profiles, metadata or any public table. In admin preview mode this flow
-   is deliberately blocked so an admin can never change their own password
-   while impersonating a student. */
-function studentAccount(){
-  _setNav('account');
-  const p=state.profile||{};
-  const sessionUid=state.session && state.session.user ? state.session.user.id : null;
-  const ownAccount=!_isPreview() && !!sessionUid && !!p.id && sessionUid===p.id;
-  if(!ownAccount){
-    $('#main').innerHTML=`<h1>👤 Mi cuenta</h1>
-      <div class="card" style="max-width:680px">
-        <div class="note info"><b>Cambio de contraseña no disponible en vista previa.</b><br>Sal de "Ver como" e inicia sesión con la cuenta del alumno para cambiar su contraseña.</div>
-      </div>`;
-    return;
-  }
-  $('#main').innerHTML=`<h1>👤 Mi cuenta</h1>
-    <div class="card" style="max-width:680px">
-      <h2>🔐 Cambiar contraseña</h2>
-      <p class="muted">Elige una contraseña que puedas recordar. La nueva contraseña reemplazará inmediatamente a la anterior.</p>
-      <label>Nueva contraseña</label>
-      <div class="row" style="gap:8px;align-items:center">
-        <input id="my_pw1" type="password" autocomplete="new-password" placeholder="Mínimo 8 caracteres" style="flex:1">
-        <button class="btn sm ghost" type="button" onclick="window.toggleMyPassword('my_pw1',this)">Mostrar</button>
-      </div>
-      <label>Repite la nueva contraseña</label>
-      <div class="row" style="gap:8px;align-items:center">
-        <input id="my_pw2" type="password" autocomplete="new-password" placeholder="Repite la contraseña" style="flex:1">
-        <button class="btn sm ghost" type="button" onclick="window.toggleMyPassword('my_pw2',this)">Mostrar</button>
-      </div>
-      <div class="muted" style="font-size:.84rem;margin-top:8px">Consejo: usa una frase corta que recuerdes, combinando letras y números. No compartas tu contraseña.</div>
-      <div id="my_pw_msg" style="margin-top:12px"></div>
-      <button id="my_pw_save" class="btn" type="button" onclick="window.saveMyPassword()" style="margin-top:12px">Guardar nueva contraseña</button>
-    </div>`;
-  const first=$('#my_pw1'); if(first) first.focus();
-}
-
-window.toggleMyPassword=function(id,btn){
-  const input=$('#'+id); if(!input) return;
-  const show=input.type==='password';
-  input.type=show?'text':'password';
-  if(btn) btn.textContent=show?'Ocultar':'Mostrar';
-};
-
-window.saveMyPassword=async function(){
-  const p=state.profile||{};
-  const sessionUid=state.session && state.session.user ? state.session.user.id : null;
-  const msg=$('#my_pw_msg'), btn=$('#my_pw_save');
-  if(_isPreview() || !sessionUid || !p.id || sessionUid!==p.id){
-    if(msg) msg.innerHTML='<div class="note err">Por seguridad, solo puedes cambiar la contraseña de tu propia cuenta.</div>';
-    return;
-  }
-  const pw1=(($('#my_pw1')||{}).value||'').trim();
-  const pw2=(($('#my_pw2')||{}).value||'').trim();
-  if(pw1.length<8){ if(msg) msg.innerHTML='<div class="note err">La contraseña debe tener al menos 8 caracteres.</div>'; return; }
-  if(pw1!==pw2){ if(msg) msg.innerHTML='<div class="note err">Las dos contraseñas no coinciden.</div>'; return; }
-  if(btn){ btn.disabled=true; btn.textContent='Guardando…'; }
-  if(msg) msg.innerHTML='<div class="note">Actualizando tu contraseña…</div>';
-  try{
-    const { error } = await withTimeout(sb.auth.updateUser({password:pw1}), STARTUP_TIMEOUT_MS, 'PASSWORD_UPDATE_TIMEOUT');
-    if(error) throw error;
-    const a=$('#my_pw1'), b=$('#my_pw2'); if(a) a.value=''; if(b) b.value='';
-    if(msg) msg.innerHTML='<div class="note ok"><b>Contraseña actualizada correctamente.</b><br>Desde ahora usa tu nueva contraseña para iniciar sesión.</div>';
-  }catch(e){
-    const text=(e && e.message) ? e.message : 'No se pudo cambiar la contraseña.';
-    if(msg) msg.innerHTML=`<div class="note err">${esc(text)}</div>`;
-  }finally{
-    if(btn){ btn.disabled=false; btn.textContent='Guardar nueva contraseña'; }
-  }
-};
 
 /* ---------- Student dashboard (hub) ---------- */
 function _hubCard(emoji,title,desc,onclick,extra){
@@ -3381,7 +3132,7 @@ function _navRender(k){
   const fn={english:()=>studentSubject('english'),french:()=>studentSubject('french'),general:studentGeneral,
     mocks:studentMocks,practice:studentPractice,library:studentLibrary,mun:studentMun,classes:studentClasses,
     phonics:studentPhonics,coach:studentCoach,results:studentResults,nishoot:studentNishoot,games:studentGames,
-    final:studentFinal,account:studentAccount,home:studentHub}[k];
+    final:studentFinal,home:studentHub}[k];
   if(fn){ fn(); return true; }
   return false;
 }
@@ -4906,8 +4657,11 @@ window.corrGuarda = async function(siguiente){
 /* ---------------------------------------------------------------
    🔑 Resetear la contraseña de un profesor desde su tarjeta.
 
-   La RPC admin_set_password cambia la contraseña real en Auth.
-   La nueva clave no se guarda en una tabla visible ni recuperable.
+   La RPC admin_set_password ya existía y se usaba solo desde el editor
+   de la tabla de usuarios; en el panel de Profesores no había forma de
+   llegar a ella, que es justo donde el admin va a buscarla. Al cambiarla
+   se actualiza también la copia visible, para que el ojo deje de decir
+   "(sin contraseña)".
 ---------------------------------------------------------------- */
 window._resetPw = function(id){
   const caja = document.getElementById('pw-box-' + id);
@@ -4931,157 +4685,3 @@ window._guardaPw = async function(id){
   msg.style.color = 'var(--good)';
   inp.value = '';
 };
-
-/* ---------------------------------------------------------------
-   ⏱️ Tiempo de pantalla — el dato que dirección pidió.
-
-   Nace de la preocupación por el uso de tablets. La idea es convertir
-   esa preocupación en un número que el colegio mire y sobre el que
-   acuerde un techo, en vez de discutir percepciones.
-
-   Honestidad del dato, dicha también en pantalla: mide el tiempo
-   REGISTRADO en actividades, exámenes, grabaciones y entregas. No mide
-   tener la página abierta sin hacer nada. Es un suelo, no el total.
----------------------------------------------------------------- */
-let _tp = { semanas: 8, grado: '', filas: [] };
-
-async function tiempoPantallaPanel(){
-  $('#main').innerHTML = '<div class="card"><p class="muted">Calculando…</p></div>';
-  await tpCarga();
-}
-
-async function tpCarga(){
-  if($('#tpGrado')){
-    _tp.grado   = $('#tpGrado').value;
-    _tp.semanas = parseInt($('#tpSemanas').value, 10);
-  }
-  const desde = new Date();
-  desde.setDate(desde.getDate() - _tp.semanas * 7);
-
-  let q = sb.from('v_tiempo_pantalla').select('*')
-    .gte('semana', desde.toISOString().slice(0,10));
-  if(_tp.grado) q = q.eq('grade_id', Number(_tp.grado));
-  const { data, error } = await q;
-  if(error){
-    $('#main').innerHTML = `<div class="card"><p class="err">No pude leerlo: ${esc(error.message)}</p></div>`;
-    return;
-  }
-  _tp.filas = data || [];
-  tpPinta();
-}
-
-function tpPinta(){
-  const filas = _tp.filas;
-  const semanas = [...new Set(filas.map(f => f.semana))].sort().slice(-_tp.semanas);
-
-  /* por alumno y semana */
-  const porAlumno = {};
-  filas.forEach(f => {
-    const a = porAlumno[f.student_id] || (porAlumno[f.student_id] =
-      { nombre: f.full_name, grado: f.grade_id, seccion: f.section, sem: {}, total: 0, acotadas: 0 });
-    a.sem[f.semana] = (a.sem[f.semana] || 0) + Number(f.minutos);
-    a.total += Number(f.minutos);
-    a.acotadas += (f.sesiones_acotadas || 0);
-  });
-  const alumnos = Object.values(porAlumno).sort((x,y) => y.total - x.total);
-
-  /* medias del grupo, por semana */
-  const medias = semanas.map(s => {
-    const v = alumnos.map(a => a.sem[s] || 0).filter(x => x > 0);
-    return v.length ? Math.round(v.reduce((a,b)=>a+b,0) / v.length) : 0;
-  });
-  const mediaGlobal = medias.filter(Boolean).length
-    ? Math.round(medias.filter(Boolean).reduce((a,b)=>a+b,0) / medias.filter(Boolean).length) : 0;
-  const pico = alumnos.length ? Math.round(Math.max(...alumnos.map(a => Math.max(0, ...Object.values(a.sem))))) : 0;
-  const acotadas = alumnos.reduce((a,b) => a + b.acotadas, 0);
-
-  /* por tipo de uso */
-  const porTipo = {};
-  filas.forEach(f => porTipo[f.tipo] = (porTipo[f.tipo] || 0) + Number(f.minutos));
-  const totalTipo = Object.values(porTipo).reduce((a,b)=>a+b,0) || 1;
-
-  const grados = ALL_GRADE_ORDER.map(g =>
-    `<option value="${GRADE_META[g][1].replace(/\D/g,'')}" ${_tp.grado===GRADE_META[g][1].replace(/\D/g,'')?'selected':''}>${GRADE_META[g][1]}</option>`).join('');
-
-  const cab = semanas.map(s => `<th style="text-align:center">${s.slice(5)}</th>`).join('');
-  const cuerpo = alumnos.slice(0, 60).map(a => `<tr>
-      <td>${esc(a.nombre)} <span class="muted">${a.grado||''}º${a.seccion||''}</span></td>
-      ${semanas.map(s => {
-        const m = Math.round(a.sem[s] || 0);
-        const color = m === 0 ? 'var(--muted)' : (m > 120 ? '#b45309' : 'var(--ink)');
-        return `<td style="text-align:center;color:${color}">${m || '·'}</td>`;
-      }).join('')}
-      <td style="text-align:center;font-weight:700">${Math.round(a.total)}</td>
-    </tr>`).join('');
-
-  $('#main').innerHTML = `
-  <div class="card">
-    <h2>⏱️ Tiempo de pantalla</h2>
-    <p class="muted">Minutos por alumno y semana. Sirve para acordar un techo con dirección
-      y comprobar si se respeta, en vez de discutirlo de oídas.</p>
-
-    <div class="row" style="gap:10px;margin:12px 0">
-      <select id="tpGrado"><option value="">Todos los grados</option>${grados}</select>
-      <select id="tpSemanas">
-        ${[4,8,12,20].map(n=>`<option value="${n}" ${n===_tp.semanas?'selected':''}>Últimas ${n} semanas</option>`).join('')}
-      </select>
-      <button class="btn small" onclick="tpCarga()">Ver</button>
-    </div>
-
-    <div class="grid cols-3" style="gap:12px;margin-top:6px">
-      <div class="card center" style="margin:0;padding:16px">
-        <div style="font-size:2rem;font-weight:800;color:var(--blue-dd)">${mediaGlobal}</div>
-        <div class="muted" style="font-size:.82rem">minutos por alumno y semana<br>(media)</div>
-      </div>
-      <div class="card center" style="margin:0;padding:16px">
-        <div style="font-size:2rem;font-weight:800;color:${pico>120?'#b45309':'var(--blue-dd)'}">${pico}</div>
-        <div class="muted" style="font-size:.82rem">la semana más alta<br>de un solo alumno</div>
-      </div>
-      <div class="card center" style="margin:0;padding:16px">
-        <div style="font-size:2rem;font-weight:800;color:var(--blue-dd)">${alumnos.length}</div>
-        <div class="muted" style="font-size:.82rem">alumnos con<br>actividad registrada</div>
-      </div>
-    </div>
-
-    <div style="margin-top:16px">
-      <b style="font-size:.86rem">En qué se va el tiempo</b>
-      <div style="display:flex;height:26px;border-radius:8px;overflow:hidden;margin-top:8px;border:1px solid var(--line)">
-        ${Object.keys(porTipo).sort((a,b)=>porTipo[b]-porTipo[a]).map((t,i) => {
-          const pct = (porTipo[t]/totalTipo*100);
-          const col = ['#4987c6','#76cbe5','#7c9a4e','#d4a03a'][i%4];
-          return `<div title="${t}: ${Math.round(porTipo[t])} min" style="width:${pct}%;background:${col}"></div>`;
-        }).join('')}
-      </div>
-      <div class="row" style="gap:14px;margin-top:7px;font-size:.8rem">
-        ${Object.keys(porTipo).sort((a,b)=>porTipo[b]-porTipo[a]).map((t,i) => {
-          const col = ['#4987c6','#76cbe5','#7c9a4e','#d4a03a'][i%4];
-          return `<span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:${col}"></span>
-            ${esc(t)} · ${Math.round(porTipo[t]/totalTipo*100)}%</span>`;
-        }).join('')}
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <h3 style="font-size:1rem;color:var(--blue-d)">Minutos por alumno y semana</h3>
-    <p class="muted" style="font-size:.82rem">En ámbar, las semanas por encima de 120 minutos.</p>
-    <div style="overflow-x:auto"><table class="tbl">
-      <thead><tr><th>Alumno</th>${cab}<th style="text-align:center">Total</th></tr></thead>
-      <tbody>${cuerpo || '<tr><td colspan="9" class="muted">Sin actividad en el periodo.</td></tr>'}</tbody>
-    </table></div>
-    ${alumnos.length > 60 ? `<p class="muted" style="font-size:.8rem">Se muestran los 60 de mayor uso, de ${alumnos.length}.</p>` : ''}
-  </div>
-
-  <div class="card">
-    <h3 style="font-size:1rem;color:var(--blue-d)">Qué mide y qué no</h3>
-    <p class="muted" style="font-size:.85rem;line-height:1.7">
-      Suma el tiempo <b>registrado</b> en actividades, exámenes, grabaciones y entregas.
-      <b>No</b> cuenta tener la página abierta sin hacer nada, así que es un <b>suelo</b>:
-      el tiempo real es algo mayor. Como suelo ya sirve — si este número fuera alto,
-      el real lo sería más.<br>
-      Cada sesión se limita a 120 minutos porque algunas quedan abiertas y devuelven
-      duraciones imposibles (hay un examen registrado con 4114 minutos). En este periodo
-      se acotaron <b>${acotadas}</b> sesión(es); conviene revisarlas si son muchas.
-    </p>
-  </div>`;
-}
