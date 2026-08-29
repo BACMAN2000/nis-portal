@@ -194,10 +194,55 @@ window.BANNER = (function () {
     .lh-elenco{gap:0}
     .lh-tit{max-width:72%}
   }
+
+  /* Portada cinematografica: el video cubre toda la tarjeta. Los nombres
+     flotan sobre el borde inferior como controles de voz compactos. */
+  .lh-filmframe{position:relative;aspect-ratio:16/9;overflow:hidden;background:#10233a}
+  .lh-film,.lh-filmposter{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+  .lh-filmposter{z-index:0}.lh-film{z-index:1}
+  .lh-filmshade{position:absolute;inset:0;z-index:2;pointer-events:none;
+    background:linear-gradient(180deg,rgba(5,17,31,.64) 0%,rgba(5,17,31,.12) 42%,rgba(5,17,31,.35) 100%)}
+  .lh-filmcopy{position:absolute;left:4%;top:6%;z-index:3;color:#fff;text-align:left;
+    text-shadow:0 3px 18px rgba(3,12,24,.72)}
+  .lh-filmcopy h1{margin:0;font-family:"Baloo 2",sans-serif;
+    font-size:clamp(1.25rem,3vw,2.15rem);line-height:1.08}
+  .lh-filmcopy p{margin:.25rem 0 0;font-family:"Baloo 2",sans-serif;font-weight:800;
+    font-size:clamp(.78rem,1.8vw,1.2rem);letter-spacing:.09em;text-transform:uppercase}
+  .lh-live{position:absolute;right:3%;top:5%;z-index:3;display:flex;align-items:center;gap:.35rem;
+    background:rgba(5,17,31,.66);color:#fff;border:1px solid rgba(255,255,255,.24);
+    border-radius:999px;padding:.32rem .7rem;font-size:.76rem;font-weight:700}
+  .lh-live::before{content:"";width:.5rem;height:.5rem;border-radius:50%;background:#63e2aa;
+    box-shadow:0 0 0 0 rgba(99,226,170,.65);animation:lhlive 1.8s infinite}
+  @keyframes lhlive{70%{box-shadow:0 0 0 .45rem rgba(99,226,170,0)}}
+  .lh-controls{position:absolute;left:0;right:0;bottom:0;z-index:4;display:flex;align-items:center;
+    gap:.5rem;padding:.75rem .85rem;overflow-x:auto;scrollbar-width:thin;
+    background:linear-gradient(180deg,rgba(4,15,28,0),rgba(4,15,28,.82) 28%);
+    backdrop-filter:blur(2px)}
+  .lh-hint{flex:none;color:#fff;font-size:.82rem;font-weight:800;margin:0 .25rem 0 .1rem;
+    white-space:nowrap;text-shadow:0 2px 8px rgba(0,0,0,.65)}
+  .lh-persona{flex:none;display:flex;align-items:center;gap:.42rem;min-height:44px;
+    border:1px solid rgba(255,255,255,.7);border-radius:999px;background:rgba(255,255,255,.88);color:#1b2b3d;
+    padding:.28rem .7rem .28rem .3rem;font-family:"Baloo 2",sans-serif;font-weight:800;
+    transition:transform .15s ease,border-color .15s ease,background .15s ease}
+  .lh-persona:hover,.lh-persona:focus-visible{border-color:var(--accent);background:#fff;
+    transform:translateY(-2px);outline:none}
+  .lh-persona img{width:34px;height:34px;object-fit:contain;border-radius:50%;background:#fff}
+  .lh-persona .lh-sound{font-size:.78rem;color:var(--accent)}
+  .lh-persona.dice{animation:lhchip .65s ease-out}
+  @keyframes lhchip{35%{transform:translateY(-3px) scale(1.05)}70%{transform:scale(.98)}}
+  @media (max-width:640px){
+    .lh-filmcopy{left:4.5%;top:7%}
+    .lh-live{right:2.5%;top:4%;font-size:.68rem;padding:.25rem .55rem}
+    .lh-controls{padding:.55rem .6rem;gap:.4rem}
+    .lh-hint{display:none}
+    .lh-persona{min-height:42px;padding:.2rem .55rem .2rem .25rem;font-size:.9rem}
+    .lh-persona img{width:32px;height:32px}
+  }
   @media (prefers-reduced-motion:reduce){
     .lh-ola,.lh-luz,.lh-foco,.lh-nube,.lh-ave,.lh-aurora,.lh-titila,.lh-rielar,
-    .lh-nino.saluda .lh-globo,.lh-nino img{animation:none}
+    .lh-nino.saluda .lh-globo,.lh-nino img,.lh-live::before{animation:none}
     .lh-nino.saluda .lh-globo{opacity:1;transform:translateX(-50%) scale(1)}
+    .lh-persona{transition:none}
   }`;
 
   /* ---- piezas del dibujo ---------------------------------------------- */
@@ -634,50 +679,33 @@ window.BANNER = (function () {
   /* ---- la pantalla ----------------------------------------------------- */
 
   function html(idx, nivel) {
-    const c = HORA[nivel] || HORA.starters;
-    const anfitrion = ANFITRION[nivel] || (idx.kids || [])[0];
     const kids = idx.kids || [];
-
-    // Los ninos no van en fila plana: los del centro pisan mas adelante
-    // (mas grandes y mas abajo) y los de los extremos quedan detras, algo
-    // mas pequenos y apagados por la distancia.
-    const plano = i => {
-      const centro = (kids.length - 1) / 2;
-      const d = Math.abs(i - centro) / (centro || 1);          // 0 centro, 1 extremo
-      return `--esc:${(1.05 - d * .14).toFixed(3)};--fondo:${(d * 10).toFixed(1)}px;` +
-             `--sat:${(1 - d * .12).toFixed(2)};--bri:${(1 - d * .07).toFixed(2)};` +
-             `--delay:${(-i * .7).toFixed(1)}s`;
-    };
-
-    const ninos = kids.map((k, i) => `
-      <button class="lh-nino${k === anfitrion ? ' saluda' : ''}" data-quien="${k}"
-              type="button" style="${plano(i)}"
-              aria-label="Listen to ${k[0].toUpperCase() + k.slice(1)}">
-        <span class="lh-globo">${k === anfitrion ? 'Hello!!' : 'Hi!'}</span>
-        <img src="../assets/characters/${nivel}/${k}/fullbody.png?v=${window.ART_V || ''}" alt=""
-             onerror="this.onerror=null;this.src='../assets/characters/${nivel}/${k}/pose-01.png?v=${window.ART_V || ''}'">
-      </button>`).join('');
+    const personas = [...kids, idx.mascot];
+    const controles = personas.map(k => {
+      const nombre = k[0].toUpperCase() + k.slice(1);
+      return `<button class="lh-persona" data-quien="${k}" type="button"
+                aria-label="Listen to ${nombre}">
+          <img src="../assets/characters/${nivel}/${k}/pose-01.png?v=${window.ART_V || ''}"
+               alt="" onerror="this.onerror=null;this.src=this.src.replace('.png','.svg')">
+          <span>${nombre}</span><span class="lh-sound" aria-hidden="true">🔊</span>
+        </button>`;
+    }).join('');
+    const castPoster = `../assets/videos/posters/${nivel}-cast.jpg?v=${window.ART_V || ''}`;
+    const castVideo = `../assets/videos/${nivel}-cast.mp4?v=${window.ART_V || ''}`;
 
     return `<style>${CSS}</style>
-      <div class="lh" data-nivel="${nivel}">
-        ${fondo(nivel)}
-        ${CON_LAMINA.has(nivel) ? `<img class="lh-lamina" src="${LAMINA(nivel)}" alt=""
-             onerror="this.remove()">` : ''}
-        <div class="lh-capa" style="color:${c.texto}">
-          <div class="lh-tit" style="text-shadow:${c.sombraTexto}">
+      <div class="lh lh-cinematic" data-nivel="${nivel}">
+        <div class="lh-filmframe">
+          <img class="lh-filmposter" src="${castPoster}" alt="${idx.cast} at Nordic International School">
+          <video class="lh-film" muted playsinline preload="metadata" aria-hidden="true"
+                 poster="${castPoster}"><source src="${castVideo}" type="video/mp4"></video>
+          <div class="lh-filmshade"></div>
+          <div class="lh-filmcopy">
             <h1>${idx.name}</h1>
             <p class="lh-cast">${idx.cast}</p>
           </div>
-          <div class="lh-elenco">
-            ${ninos}
-            <button class="lh-nino mascota" data-quien="${idx.mascot}" type="button"
-                    style="--esc:1;--fondo:6px"
-                    aria-label="${idx.mascot[0].toUpperCase() + idx.mascot.slice(1)}">
-              <span class="lh-globo">Hello!</span>
-              <img src="../assets/characters/${nivel}/${idx.mascot}/fullbody.png?v=${window.ART_V || ''}" alt=""
-                   onerror="this.onerror=null;this.src='../assets/characters/${nivel}/${idx.mascot}/pose-01.png?v=${window.ART_V || ''}'">
-            </button>
-          </div>
+          <span class="lh-live">The adventure is moving</span>
+          <div class="lh-controls"><p class="lh-hint">Meet the characters:</p>${controles}</div>
         </div>
       </div>`;
   }
@@ -688,7 +716,17 @@ window.BANNER = (function () {
     if (!caja) return;
     const nivel = caja.dataset.nivel;
     let sonando = null;
-    caja.querySelectorAll('.lh-nino').forEach(b => {
+    const film = caja.querySelector('.lh-film');
+    const inicio = 2.35;
+    if (film && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        !(navigator.connection && navigator.connection.saveData)) {
+      const saltarIntro = () => { if(film.currentTime < inicio) film.currentTime = inicio; };
+      if (film.readyState >= 1) saltarIntro();
+      else film.addEventListener('loadedmetadata', saltarIntro, {once:true});
+      film.addEventListener('ended', () => { film.currentTime = inicio; film.play().catch(()=>{}); });
+      film.play().catch(()=>{});
+    }
+    caja.querySelectorAll('.lh-persona').forEach(b => {
       b.onclick = () => {
         const quien = b.dataset.quien;
         b.classList.remove('dice');
