@@ -4298,7 +4298,7 @@ async function unitProductsPanel(){
 
   const { data, error } = await sb
     .from('unit_submissions')
-    .select('id,student_id,grade,unit,milestone,kind,payload,file_path,score,criteria,feedback,reviewed_at,created_at')
+    .select('id,student_id,grade,unit,milestone,kind,payload,file_path,score,criteria,feedback,reviewed_at,created_at,shared')
     .order('created_at', { ascending:false })
     .limit(500);
 
@@ -4367,6 +4367,8 @@ async function unitProductsPanel(){
             ${base?`onchange="unitCalificar('${base.id}',this.value,null)"`:'disabled'}></td>
       <td><input type="text" placeholder="comentario" value="${esc((base&&base.feedback)||'')}"
             ${base?`onchange="unitCalificar('${base.id}',null,this.value)"`:'disabled'}></td>
+      <td style="text-align:center">${base?`<input type="checkbox" ${base.shared?'checked':''}
+            onchange="unitExhibe('${base.id}',this.checked)" title="Mostrar en la galería de la unidad">`:''}</td>
     </tr>`;
   };
 
@@ -4382,7 +4384,7 @@ async function unitProductsPanel(){
     </div>
     <div style="overflow-x:auto"><table class="tbl">
       <thead><tr><th>Alumno</th><th>Unidad</th><th>Informe</th><th>Presentación</th><th>Cuaderno</th>
-        <th>C1</th><th>C2</th><th>C3</th><th>Nota</th><th>Comentario</th></tr></thead>
+        <th>C1</th><th>C2</th><th>C3</th><th>Nota</th><th>Comentario</th><th>Exhibir</th></tr></thead>
       <tbody>${filas.map(fila).join('')}</tbody></table></div>
     <p class="muted" style="font-size:.8rem;margin-top:12px">↖ = el nivel que el propio alumno se puso.</p>
   </div>
@@ -5085,3 +5087,12 @@ function tpPinta(){
     </p>
   </div>`;
 }
+
+/* El profesor decide qué trabajo se ve en la galería de la unidad. Nunca el
+   alumno: son trabajos de menores y la política del bucket y el trigger lo
+   impiden aunque alguien lo intente desde la consola. */
+window.unitExhibe = async function(id, si){
+  const { error } = await sb.from('unit_submissions')
+    .update({ shared: !!si }).eq('id', id);
+  if(error) alert('No se pudo cambiar: ' + error.message);
+};
