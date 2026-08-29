@@ -949,7 +949,7 @@ async function adminUsers(){
       <td><span class="badge lvl">${esc(p.cefr_level||'—')}</span></td>
       <td><span class="badge ${p.role==='student'?'':'on'}">${esc(p.role)}</span></td>
       <td><span class="badge ${suspended?'off':'on'}">${suspended?'Suspendido':'Activo'}</span></td>
-      <td style="white-space:nowrap">${p.role==='student'?`<button class="btn sm ghost" onclick="window._previewStudent('${p.id}','${esc((p.full_name||p.email||'').replace(/'/g,'’'))}')" title="Ver el portal tal como lo ve este alumno">👁️ Ver como</button> <button class="btn sm ghost" onclick="window._openStudentAccess('${p.id}',${p.grade_id||'null'},'${esc((p.full_name||p.email||'').replace(/'/g,'’'))}')">🔧 Accesos</button> `:''}<button class="btn sm ghost" onclick="editUser('${p.id}')">Editar</button> ${toggleBtn} <button class="btn sm danger" onclick="deleteUser('${p.id}','user')">Eliminar</button></td>
+      <td style="white-space:nowrap">${p.role==='student'?`<button class="btn sm ghost" onclick="window._previewStudent('${p.id}','${esc((p.full_name||p.email||'').replace(/'/g,'’'))}')" title="Ver el portal tal como lo ve este alumno">👁️ Ver como</button> <button class="btn sm ghost" onclick="window._openStudentAccess('${p.id}',${p.grade_id||'null'},'${esc((p.full_name||p.email||'').replace(/'/g,'’'))}')">🔧 Accesos</button> <button class="btn sm ghost" onclick="window.resetStudentPassword('${p.id}','${esc((p.full_name||p.email||'').replace(/'/g,'’'))}','${esc((p.email||'').replace(/'/g,'’'))}')" title="Asignar una contraseña temporal nueva">🔑 Restablecer</button> `:''}<button class="btn sm ghost" onclick="editUser('${p.id}')">Editar</button> ${toggleBtn} <button class="btn sm danger" onclick="deleteUser('${p.id}','user')">Eliminar</button></td>
     </tr>`;}).join('');
   $('#main').innerHTML=`<div class="row" style="justify-content:space-between;align-items:center"><h1>Alumnos</h1>
       <button class="btn sm" onclick="adminNewUser()">+ Nuevo</button></div>
@@ -961,11 +961,94 @@ async function adminUsers(){
       <div class="muted" style="padding-bottom:11px">${list.length} usuario(s)</div>
     </div>
     <div class="card" style="padding:0;overflow-x:auto">
-      <table><thead><tr><th>Nombre</th><th>Grado</th><th>Año</th><th>Nivel</th><th>Rol</th><th>Contraseña</th><th>Estado</th><th></th></tr></thead>
-      <tbody>${rows||'<tr><td colspan="8" class="center muted">No hay usuarios con ese filtro.</td></tr>'}</tbody></table>
+      <table><thead><tr><th>Nombre</th><th>Grado</th><th>Año</th><th>Nivel</th><th>Rol</th><th>Estado</th><th></th></tr></thead>
+      <tbody>${rows||'<tr><td colspan="7" class="center muted">No hay usuarios con ese filtro.</td></tr>'}</tbody></table>
     </div>`;
 }
 window._setUserFilter = (k,v)=>{ userFilter[k]=v; adminUsers(); };
+
+/* Contraseña temporal para alumnos.
+   La clave solo existe en memoria durante este flujo: se envía a Auth mediante
+   admin_set_password y NO se persiste una copia visible o recuperable. */
+function _generateTemporaryPassword(){
+  const alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789';
+  const symbols = '!@#$%';
+  const bytes = new Uint32Array(11);
+  if(window.crypto && window.crypto.getRandomValues) window.crypto.getRandomValues(bytes);
+  else for(let i=0;i<bytes.length;i++) bytes[i] = Math.floor(Math.random()*0xFFFFFFFF);
+  let out = 'Nis-';
+  for(let i=0;i<8;i++) out += alphabet[bytes[i] % alphabet.length];
+  out += symbols[bytes[8] % symbols.length];
+  out += String(bytes[9] % 10);
+  out += String(bytes[10] % 10);
+  return out;
+}
+
+window.resetStudentPassword = function(id, name, email){
+  const suggested = _generateTemporaryPassword();
+  $('#main').innerHTML=`<button class="btn sm ghost" onclick="adminUsers()">← Volver a Alumnos</button>
+    <div class="card" style="max-width:620px">
+      <h2>🔑 Restablecer contraseña</h2>
+      <p><b>${esc(name||'Alumno')}</b></p>
+      <p class="muted" style="margin-top:-8px">${esc(email||'')}</p>
+      <div class="note">Esta acción reemplaza la contraseña anterior. La nueva clave se mostrará aquí para que puedas copiarla y entregársela al alumno. NIS no conservará una copia visible.</div>
+      <label>Nueva contraseña temporal</label>
+      <div class="row" style="gap:8px;align-items:center">
+        <input id="rp_pw" type="text" autocomplete="off" value="${esc(suggested)}" style="flex:1;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-weight:700;letter-spacing:.4px">
+        <button class="btn sm ghost" type="button" onclick="window.regenerateStudentPassword()">↻ Generar otra</button>
+      </div>
+      <p class="muted" style="font-size:.82rem">Puedes usar la sugerida o escribir otra. Mínimo 8 caracteres recomendado.</p>
+      <div id="rp_msg"></div>
+      <div class="row" style="margin-top:14px;gap:8px">
+        <button id="rp_save" class="btn" onclick="window.saveStudentPassword('${id}')">Cambiar contraseña</button>
+        <button class="btn ghost" onclick="adminUsers()">Cancelar</button>
+      </div>
+    </div>`;
+  const input=$('#rp_pw'); if(input){ input.focus(); input.select(); }
+};
+
+window.regenerateStudentPassword = function(){
+  const input=$('#rp_pw');
+  if(!input) return;
+  input.value=_generateTemporaryPassword();
+  input.focus(); input.select();
+};
+
+window.saveStudentPassword = async function(id){
+  const input=$('#rp_pw'), msg=$('#rp_msg'), btn=$('#rp_save');
+  const pw=(input && input.value || '').trim();
+  if(pw.length<8){ msg.innerHTML='<div class="note err">Usa al menos 8 caracteres para la contraseña temporal.</div>'; return; }
+  if(btn){ btn.disabled=true; btn.textContent='Cambiando…'; }
+  msg.innerHTML='<div class="note">Actualizando la contraseña…</div>';
+  const r=await sb.rpc('admin_set_password',{p_id:id,p_password:pw});
+  if(r.error){
+    msg.innerHTML=`<div class="note err">${esc(r.error.message)}</div>`;
+    if(btn){ btn.disabled=false; btn.textContent='Cambiar contraseña'; }
+    return;
+  }
+  // Mantenerla visible solo en esta pantalla para poder entregársela al alumno.
+  input.readOnly=true;
+  msg.innerHTML=`<div class="note ok"><b>Contraseña cambiada.</b> La contraseña anterior ya no funciona.<br>
+    <div class="row" style="margin-top:10px;gap:8px;align-items:center;flex-wrap:wrap">
+      <code id="rp_result" style="font-size:1.05rem;font-weight:800;user-select:all">${esc(pw)}</code>
+      <button class="btn sm" onclick="window.copyTemporaryPassword()">📋 Copiar</button>
+    </div>
+    <div class="muted" style="margin-top:8px">Al salir de esta pantalla NIS no volverá a mostrar esta clave.</div></div>`;
+  if(btn) btn.style.display='none';
+};
+
+window.copyTemporaryPassword = async function(){
+  const el=$('#rp_result'); if(!el) return;
+  const text=el.textContent||'';
+  try{
+    await navigator.clipboard.writeText(text);
+    const old=el.nextElementSibling;
+    if(old){ old.textContent='✓ Copiada'; setTimeout(()=>{ old.textContent='📋 Copiar'; },1600); }
+  }catch(_){
+    const range=document.createRange(); range.selectNodeContents(el);
+    const sel=window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
+  }
+};
 window.adminNewUser = ()=>{
   $('#main').innerHTML=`<button class="btn sm ghost" onclick="adminUsers()">← Volver</button>
     <div class="card" style="max-width:600px"><h2>Nuevo usuario</h2>
@@ -1012,7 +1095,7 @@ window.editUser = async (id)=>{
         <div><label>Año académico</label><select id="e_year">${yearOptions(p.academic_year||2026)}</select></div>
         <div><label>Estado</label><select id="e_active"><option value="true" ${p.active?'selected':''}>Activo</option><option value="false" ${!p.active?'selected':''}>Inactivo</option></select></div>
       </div>
-      <label>Reestablecer contraseña de acceso (opcional)</label><input id="e_pw" type="password" autocomplete="new-password" placeholder="dejar vacío para no cambiar · mín. 6 caracteres">
+      <label>Restablecer contraseña de acceso (opcional)</label><input id="e_pw" type="password" autocomplete="new-password" placeholder="dejar vacío para no cambiar · mín. 6 caracteres">
       <div id="emsg"></div>
       <div class="row" style="margin-top:14px"><button class="btn" onclick="saveUser('${id}')">Guardar</button></div>
     </div>`;
@@ -4657,11 +4740,8 @@ window.corrGuarda = async function(siguiente){
 /* ---------------------------------------------------------------
    🔑 Resetear la contraseña de un profesor desde su tarjeta.
 
-   La RPC admin_set_password ya existía y se usaba solo desde el editor
-   de la tabla de usuarios; en el panel de Profesores no había forma de
-   llegar a ella, que es justo donde el admin va a buscarla. Al cambiarla
-   se actualiza también la copia visible, para que el ojo deje de decir
-   "(sin contraseña)".
+   La RPC admin_set_password cambia la contraseña real en Auth.
+   La nueva clave no se guarda en una tabla visible ni recuperable.
 ---------------------------------------------------------------- */
 window._resetPw = function(id){
   const caja = document.getElementById('pw-box-' + id);
