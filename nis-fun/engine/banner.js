@@ -131,9 +131,23 @@ window.BANNER = (function () {
     background:radial-gradient(50% 50% at 50% 50%,rgba(22,28,20,.45),rgba(22,28,20,0) 70%);
     pointer-events:none}
   .lh-nino img{height:calc(clamp(88px,19.5vw,200px) * var(--esc,1));width:auto;display:block;
-    filter:drop-shadow(0 10px 12px rgba(12,26,44,.30)) saturate(var(--sat,1)) brightness(var(--bri,1))}
+    filter:drop-shadow(0 10px 12px rgba(12,26,44,.30)) saturate(var(--sat,1)) brightness(var(--bri,1));
+    transform-origin:50% 100%;animation:lhrespira 3.8s ease-in-out infinite;
+    animation-delay:var(--delay,0s)}
   .lh-nino:hover{transform:translateY(calc(var(--fondo,0px) - 7px))}
-  .lh-nino.mascota img{height:calc(clamp(62px,13.5vw,138px) * var(--esc,1))}
+  .lh-nino.mascota img{height:calc(clamp(62px,13.5vw,138px) * var(--esc,1));
+    animation-name:lhmascota;animation-duration:2.8s}
+
+  /* Movimiento de reposo: no cambia las poses ni hace bailar a los ninos.
+     Respirar y cambiar ligeramente el peso evita que parezcan recortes
+     congelados encima de un mar que si esta vivo. */
+  @keyframes lhrespira{
+    0%,100%{transform:translateY(0) rotate(-.25deg) scale(1)}
+    50%{transform:translateY(-5px) rotate(.25deg) scale(1.008)} }
+  @keyframes lhmascota{
+    0%,100%{transform:translateY(0) rotate(-1deg)}
+    46%{transform:translateY(-8px) rotate(1.2deg)}
+    58%{transform:translateY(-6px) rotate(.4deg)} }
 
   /* el bocadillo: el del anfitrion aparece solo, los demas al pulsar */
   .lh-globo{position:absolute;left:50%;bottom:calc(100% - 6px);transform:translateX(-50%) scale(.6);
@@ -182,7 +196,7 @@ window.BANNER = (function () {
   }
   @media (prefers-reduced-motion:reduce){
     .lh-ola,.lh-luz,.lh-foco,.lh-nube,.lh-ave,.lh-aurora,.lh-titila,.lh-rielar,
-    .lh-nino.saluda .lh-globo{animation:none}
+    .lh-nino.saluda .lh-globo,.lh-nino img{animation:none}
     .lh-nino.saluda .lh-globo{opacity:1;transform:translateX(-50%) scale(1)}
   }`;
 
@@ -631,7 +645,8 @@ window.BANNER = (function () {
       const centro = (kids.length - 1) / 2;
       const d = Math.abs(i - centro) / (centro || 1);          // 0 centro, 1 extremo
       return `--esc:${(1.05 - d * .14).toFixed(3)};--fondo:${(d * 10).toFixed(1)}px;` +
-             `--sat:${(1 - d * .12).toFixed(2)};--bri:${(1 - d * .07).toFixed(2)}`;
+             `--sat:${(1 - d * .12).toFixed(2)};--bri:${(1 - d * .07).toFixed(2)};` +
+             `--delay:${(-i * .7).toFixed(1)}s`;
     };
 
     const ninos = kids.map((k, i) => `
