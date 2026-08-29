@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Workbook · Nordic International School</title>
+<link rel="icon" href="assets/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#4987c6; --blue-d:#2f5f93; --blue-dd:#244c77;
+  --bg:#f2f3ff; --white:#fff; --grey:#636465; --line:#e3e5f3;
+  --lila:#d1d2ea; --celeste:#76cbe5; --ink:#2b2c33;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:'Montserrat',system-ui,Segoe UI,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5}
+h1,h2,h3{line-height:1.2;margin:0 0 .4em;font-weight:700}
+header{display:flex;align-items:center;gap:14px;background:var(--blue);padding:12px 22px;color:#fff}
+header img{height:32px}
+header .spacer{flex:1}
+header a,header button{background:rgba(255,255,255,.16);color:#fff;border:1px solid rgba(255,255,255,.3);
+  padding:8px 14px;border-radius:10px;font:600 .88rem/1 inherit;font-family:inherit;text-decoration:none;cursor:pointer}
+header a:hover,header button:hover{background:rgba(255,255,255,.3)}
+.wrap{max-width:860px;margin:0 auto;padding:20px 18px 60px}
+
+/* Cada tarea es una hoja: en pantalla se ve como papel, y al imprimir es papel. */
+.hoja{background:#fff;border:1px solid var(--line);border-radius:12px;padding:34px 38px;margin-bottom:20px;
+  box-shadow:0 8px 24px rgba(36,76,119,.08);min-height:auto}
+.hoja .cinta{font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;color:var(--blue-d);font-weight:800}
+.hoja h2{font-size:1.3rem;color:var(--blue-dd);margin:6px 0 2px}
+.hoja .foco{color:var(--grey);font-size:.9rem;margin:0 0 18px}
+.bloque{margin:18px 0}
+.bloque h3{font-size:.74rem;text-transform:uppercase;letter-spacing:.09em;color:var(--grey);margin:0 0 7px}
+.consigna{background:#eef4fb;border-left:4px solid var(--blue);border-radius:0 10px 10px 0;padding:14px 16px;
+  font-size:1rem;font-weight:600;color:var(--blue-dd)}
+.apoyo{display:flex;flex-wrap:wrap;gap:7px}
+.apoyo span{background:#f7faff;border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:.83rem;font-weight:600;color:var(--blue-dd)}
+.exito{list-style:none;padding:0;margin:0}
+.exito li{padding:7px 0 7px 26px;position:relative;font-size:.88rem;border-bottom:1px dashed var(--line)}
+.exito li:last-child{border-bottom:none}
+.exito li::before{content:'☐';position:absolute;left:2px;top:6px;color:var(--blue);font-size:1rem}
+.renglones{margin-top:8px}
+.renglones div{border-bottom:1px solid #d8dded;height:30px}
+.portada{background:linear-gradient(135deg,var(--blue-dd),var(--blue));color:#fff}
+.portada h1{color:#fff;font-size:1.7rem;margin:8px 0 0}
+.portada .bigq{margin:16px 0 0;padding:14px 16px;background:rgba(255,255,255,.13);border-left:4px solid var(--celeste);
+  border-radius:0 10px 10px 0;font-size:1.02rem;font-weight:600}
+.portada p{color:#dbe8f6;font-size:.9rem}
+.portada .nombre{margin-top:26px;border-top:1px solid rgba(255,255,255,.35);padding-top:14px;color:#dbe8f6;font-size:.88rem}
+
+@media print{
+  header,.noimprimir{display:none !important}
+  body{background:#fff}
+  .wrap{max-width:none;padding:0}
+  .hoja{border:none;border-radius:0;box-shadow:none;margin:0;padding:26mm 20mm;
+    page-break-after:always;break-after:page;min-height:auto}
+  .hoja:last-child{page-break-after:auto}
+  .portada{background:#fff !important;color:var(--ink) !important}
+  .portada h1,.portada .cinta{color:var(--blue-dd) !important}
+  .portada p,.portada .nombre{color:var(--grey) !important}
+  .portada .bigq{background:#eef4fb !important;color:var(--blue-dd) !important}
+  @page{margin:0}
+}
+</style>
+</head>
+<body>
+<header class="noimprimir">
+  <img src="assets/logo-white-h.svg" alt="Nordic International School" onerror="this.onerror=null;this.src='assets/logo-h.svg'">
+  <div class="spacer"></div>
+  <button onclick="window.print()">🖨️ Print</button>
+  <a href="./" id="backBtn">&#8592; Back</a>
+</header>
+
+<div class="wrap" id="app"><p>Loading…</p></div>
+
+<script src="unit-plans.js?v=6"></script>
+<script src="nis-nav.js?v=2"></script>
+<script>
+/* Cuaderno de trabajo de la unidad, para imprimir.
+ *
+ * Dirección dijo que el workbook era demasiado sencillo y que no se producía
+ * tanto como en los cuadernos. Este va al revés que un cuadernillo de huecos:
+ * UNA TAREA POR PÁGINA, y cada página trae lo que hace falta para producir —
+ * la consigna abierta, el lenguaje de apoyo, el criterio de éxito visible y
+ * sitio para escribir a mano. Nada de seis ejercicios de respuesta única.
+ *
+ * El contenido no se inventa: sale del planner de la unidad (unit-plans.js),
+ * o sea de lo que el profesor escribió en Toddle.
+ */
+const Q = new URLSearchParams(location.search);
+const GRADE = (Q.get('grade')||'g9').toLowerCase();
+const UNIT  = parseInt(Q.get('unit')||'0',10);
+
+const esc = s => String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const PLAN = (window.UNIT_PLANS||{})[GRADE];
+const U = PLAN ? (PLAN.units||[]).filter(u=>u.n===UNIT)[0] : null;
+
+function renglones(n){
+  return '<div class="renglones">' + Array.from({length:n}, () => '<div></div>').join('') + '</div>';
+}
+
+/* El vocabulario de la unidad se reparte entre las tareas para que cada página
+   lleve el suyo y no una lista intimidante de treinta palabras. */
+function apoyoDe(i, total){
+  const w = U.words || [];
+  if(!w.length) return '';
+  const porTarea = Math.max(3, Math.ceil(w.length / Math.max(total,1)));
+  const trozo = w.slice(i * porTarea, (i+1) * porTarea);
+  const usar = trozo.length ? trozo : w.slice(0, porTarea);
+  return `<div class="bloque"><h3>Language you can use</h3>
+    <div class="apoyo">${usar.map(x=>`<span>${esc(x)}</span>`).join('')}</div></div>`;
+}
+
+/* Los criterios se reparten igual: en cada tarea, el que toca mirar. */
+function exitoDe(i){
+  const c = U.criteria || [];
+  if(!c.length) return '';
+  const elegidos = c.length <= 3 ? c : [c[i % c.length], c[(i+1) % c.length]];
+  return `<div class="bloque"><h3>You've done it when…</h3>
+    <ul class="exito">${elegidos.map(x=>{
+      const t = x.levels ? (x.levels.A || x.text) : x.text;
+      return `<li>${esc(t)}</li>`;
+    }).join('')}</ul></div>`;
+}
+
+if(!U){
+  document.getElementById('app').innerHTML =
+    '<div class="hoja"><h2>That unit is not here yet</h2><p class="foco">Go back to the portal and pick a unit.</p></div>';
+} else {
+  document.title = 'Workbook · Unit ' + U.n + ' · ' + U.title;
+  const pasos = U.sequence || [];
+  const palabra = U.stepWord || 'Week';
+
+  const portada = `<div class="hoja portada">
+    <div class="cinta" style="color:#a9cdf0">${esc(PLAN.label)} · English · Unit ${U.n}</div>
+    <h1>${esc(U.title)}</h1>
+    <div class="bigq">${esc(U.bigq)}</div>
+    <p style="margin-top:18px"><b style="color:#fff">What you will produce:</b><br>
+      ${(U.deliverables||[]).map(d=>esc(d.title) + (d.spec?` — ${esc(d.spec)}`:'')).join('<br>')}</p>
+    <p><b style="color:#fff">Who it is for:</b><br>${esc(U.audience||'')}</p>
+    <div class="nombre">Name: ______________________________   Class: __________   Started: __________</div>
+  </div>`;
+
+  const hojas = pasos.map((p, i) => `<div class="hoja">
+      <div class="cinta">${esc(palabra)} ${p.n} · Task ${i+1} of ${pasos.length}</div>
+      <h2>${esc(p.title)}</h2>
+      <p class="foco">${esc(p.desc)}</p>
+
+      <div class="bloque">
+        <h3>Your task</h3>
+        <div class="consigna">${esc(p.give || ('Work on: ' + p.title))}</div>
+      </div>
+
+      ${apoyoDe(i, pasos.length)}
+      ${exitoDe(i)}
+
+      <div class="bloque">
+        <h3>Write it here — draft first, cross things out, change your mind</h3>
+        ${renglones(11)}
+      </div>
+    </div>`).join('');
+
+  const cierre = `<div class="hoja">
+      <div class="cinta">Before you hand in</div>
+      <h2>Check your own work</h2>
+      <p class="foco">Read what you wrote as if somebody else had written it.</p>
+      <div class="bloque"><h3>The full rubric for this unit</h3>
+        <ul class="exito">${(U.criteria||[]).map(c=>`<li>${esc(c.text)}</li>`).join('')}</ul></div>
+      <div class="bloque"><h3>What I changed after reading it again</h3>${renglones(6)}</div>
+    </div>`;
+
+  document.getElementById('app').innerHTML = portada + hojas + cierre;
+}
+</script>
+</body>
+</html>
