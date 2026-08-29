@@ -19,8 +19,19 @@ if(/\.github\.io$/i.test(location.hostname)){
     --line:#d7e1e9; --accent:#3b6fb5; --ok:#2f9268; --bad:#cc4b3d; --star:#e0a91f;
   }
   *{box-sizing:border-box}
+  html{min-width:0;overflow-x:hidden}
   body{margin:0;background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;font-size:1.04rem;line-height:1.5}
   main{max-width:64rem;margin:0 auto;padding:1rem 1rem 5rem}
+  .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;
+    margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;
+    white-space:nowrap!important;border:0!important}
+  .app-loading{min-height:70vh;display:grid;place-items:center;text-align:center;color:var(--soft)}
+  .app-loading span{display:block;width:2.4rem;height:2.4rem;margin:0 auto .8rem;
+    border:.3rem solid var(--line);border-top-color:var(--accent);border-radius:50%;
+    animation:loading-spin .8s linear infinite}
+  .app-loading strong{display:block;font-family:"Baloo 2";font-size:1.15rem;color:var(--ink)}
+  @keyframes loading-spin{to{transform:rotate(360deg)}}
+  @media (prefers-reduced-motion:reduce){.app-loading span{animation:none;border-top-color:var(--line)}}
 
   /* ---------- navegacion pantalla a pantalla ---------- */
   .scr{position:relative;min-height:calc(100vh - 3rem);display:flex;flex-direction:column;
@@ -159,11 +170,42 @@ if(/\.github\.io$/i.test(location.hostname)){
     background:var(--line)}
   .scr-dot.on{background:var(--accent);transform:scale(1.25)}
 
+  .course-status{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.75rem 1rem;
+    align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:16px;
+    padding:1rem 1.1rem;text-align:left;box-shadow:0 8px 24px rgba(20,40,70,.08)}
+  .course-status h3{margin:0;font-size:1.15rem;color:var(--ink)}
+  .course-status p{margin:.15rem 0 0;color:var(--soft);font-size:.94rem}
+  .course-status .continue{grid-column:2;grid-row:1 / span 2;display:inline-flex;
+    align-items:center;justify-content:center;gap:.35rem;background:var(--accent);color:#fff;
+    border-radius:999px;padding:.7rem 1.1rem;text-decoration:none;font-family:"Baloo 2";
+    font-weight:800;white-space:nowrap;min-height:44px}
+  .course-meter{grid-column:1 / -1;height:.65rem;border-radius:999px;background:var(--surface2);
+    overflow:hidden}
+  .course-meter span{display:block;height:100%;width:var(--progress);background:var(--accent);
+    border-radius:inherit;transition:width .25s ease}
+  .intro-skip{background:transparent;color:var(--accent);border:1px solid var(--line);
+    border-radius:999px;min-height:44px}
+
   @media (max-width:760px){
     .scr{padding:0 .6rem}
-    .scr-nav{bottom:1rem;top:auto;transform:none}
-    .scr-next{right:1rem} .scr-prev{left:1rem}
+    main{padding:.6rem .65rem 6.5rem;max-width:100%}
+    .scr{min-height:100dvh;padding:0;max-width:100%}
+    .scr-top{margin:.2rem 0 .6rem;min-height:2.8rem}
+    .scr-body{min-height:auto;width:100%;overflow:visible}
+    .scr-body > *{margin-block:.4rem}
+    .scr-centro{gap:.7rem;max-width:100%}
+    .scr-nav{bottom:.75rem;top:auto;transform:none;min-height:48px;z-index:20}
+    .scr-next{right:.75rem;max-width:calc(100vw - 5rem)} .scr-prev{left:.75rem;width:48px;padding:0;justify-content:center}
+    .scr-dots{margin:1rem 4rem .4rem;gap:.5rem}
+    .scr-dot{width:.8rem;height:.8rem;min-width:.8rem;min-height:.8rem}
     .band-grande img{height:120px}
+    .scr-escena{max-height:44dvh;width:100%;object-fit:contain}
+    .scr-video{max-height:50dvh}
+    .course-status{grid-template-columns:1fr;text-align:center;padding:.9rem}
+    .course-status .continue{grid-column:1;grid-row:auto;width:100%}
+    .course-meter{grid-column:1}
+    .units{grid-template-columns:1fr;gap:.7rem;width:100%}
+    a.ucard{padding:.8rem .9rem}
   }
 
   /* ---------- grabadora de voz ---------- */
@@ -302,6 +344,11 @@ if(/\.github\.io$/i.test(location.hostname)){
   a.ucard:hover{border-color:var(--accent)}
   a.ucard .n{font-family:"Baloo 2";font-weight:800;color:var(--accent);font-size:1.3rem}
   a.ucard .stars{color:var(--star);font-size:1.05rem}
+  a.ucard .unit-progress{display:flex;align-items:center;justify-content:space-between;
+    gap:.7rem;margin-top:.45rem;color:var(--soft);font-size:.82rem}
+  a.ucard .unit-meter{height:.45rem;background:var(--surface2);border-radius:999px;
+    overflow:hidden;flex:1}
+  a.ucard .unit-meter span{display:block;height:100%;background:var(--accent);border-radius:inherit}
   /* celebration */
   #cele{position:fixed;inset:0;background:rgba(27,43,61,.55);display:none;align-items:center;justify-content:center;z-index:9}
   #cele.on{display:flex}
@@ -388,6 +435,17 @@ if(/\.github\.io$/i.test(location.hostname)){
   .lvcard b{font-family:"Baloo 2";font-size:1.25rem;color:var(--lv)}
   .lvcard .exam{font-size:.8rem;text-transform:uppercase;letter-spacing:.07em;color:var(--soft);font-weight:700}
   .lvcard .cast{font-size:.9rem;color:var(--soft)}
+  @media (max-width:560px){
+    .hub h1{font-size:1.75rem}
+    .campus-banner{margin-bottom:1rem}
+    .campus-banner img{height:10rem;object-fit:cover}
+    .lvcards{gap:.8rem}
+    .lvcard{display:grid;grid-template-columns:6.5rem 1fr;grid-template-rows:auto auto auto;
+      text-align:left;padding:.8rem;gap:.05rem .8rem;min-height:0}
+    .lvcard img{grid-row:1 / span 3;height:6.5rem;width:6.5rem;object-fit:contain;margin:0}
+    .lvcard b{font-size:1.1rem;align-self:end}
+    .lvcard .exam,.lvcard .cast{grid-column:2}
+  }
 </style>
 </head>
 <body>
@@ -409,7 +467,9 @@ if(/\.github\.io$/i.test(location.hostname)){
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="../../config.js"></script>
 <script src="backend.js?v=1"></script>
-<main id="app">Loading…</main>
+<main id="app"><div class="app-loading" role="status" aria-live="polite">
+  <div><span aria-hidden="true"></span><strong>Preparing your course…</strong>
+    <small>Loading activities and illustrations.</small></div></div></main>
 <div id="cele"><div class="box"><img id="cele-img" alt=""><h2>Well done!</h2><p id="cele-msg"></p><button onclick="document.getElementById('cele').classList.remove('on')">OK</button></div></div>
 <script>
 const qs = new URLSearchParams(location.search);
@@ -522,6 +582,29 @@ async function hub(){
   app.classList.add('hub');
   const mascota = idx.mascot[0].toUpperCase() + idx.mascot.slice(1);
   const unidades = DEMO ? idx.units.slice(0,2) : idx.units;
+  const progreso = unidades.map(u => {
+    const p = store.get(u.n);
+    return { unit:u, done:Math.min(4, p.done ? Object.keys(p.done).length : 0) };
+  });
+  const totalHechas = progreso.reduce((sum, p) => sum + p.done, 0);
+  const totalPasos = Math.max(1, unidades.length * 4);
+  const porcentaje = Math.round(totalHechas * 100 / totalPasos);
+  const ultima = Number(localStorage.getItem(`nisfun-${LEVEL}-lastUnit`));
+  const ultimaPendiente = progreso.find(p => p.unit.n === ultima && p.done < 4);
+  const siguiente = ultimaPendiente || progreso.find(p => p.done < 4) || progreso[progreso.length - 1];
+  const terminadas = progreso.filter(p => p.done >= 4).length;
+  const introKey = `nisfun-${LEVEL}-intro-seen`;
+  const introVista = localStorage.getItem(introKey) === '1';
+
+  const estadoCurso = `<section class="course-status" aria-label="Course progress">
+    <div><h3>${totalHechas ? `Continue Unit ${siguiente.unit.n}` : 'Start your first unit'}</h3>
+      <p>${terminadas} of ${unidades.length} units completed · ${porcentaje}% overall</p></div>
+    <a class="continue" href="${Q(`?level=${LEVEL}&unit=${siguiente.unit.n}`)}">
+      ${totalHechas ? 'Continue learning' : 'Start learning'} <span aria-hidden="true">›</span></a>
+    <div class="course-meter" role="progressbar" aria-label="Overall course progress"
+      aria-valuemin="0" aria-valuemax="100" aria-valuenow="${porcentaje}">
+      <span style="--progress:${porcentaje}%"></span></div>
+  </section>`;
 
   // Las unidades se reparten en tandas para que quepan de una ojeada; con
   // pocas no tiene sentido partirlas.
@@ -532,11 +615,15 @@ async function hub(){
 
   const tarjeta = u => {
     const p = store.get(u.n);
-    const hechas = p.done ? Object.keys(p.done).length : 0;
+    const hechas = Math.min(4, p.done ? Object.keys(p.done).length : 0);
+    const pct = hechas * 25;
     return `<a class="ucard" href="${Q(`?level=${LEVEL}&unit=${u.n}`)}">
       <span class="n">${u.n}</span> <b>${u.title}</b><br>
       <small>${u.topic}</small><br>
-      <span class="stars">${'★'.repeat(hechas)}${'☆'.repeat(Math.max(0,4-hechas))}</span></a>`;
+      <span class="stars" aria-hidden="true">${'★'.repeat(hechas)}${'☆'.repeat(4-hechas)}</span>
+      <span class="sr-only">${hechas} of 4 activities completed.</span>
+      <span class="unit-progress"><span class="unit-meter" aria-hidden="true"><span style="width:${pct}%"></span></span>
+        <span>${hechas}/4</span></span></a>`;
   };
 
   const pantallas = [
@@ -544,11 +631,20 @@ async function hub(){
       etiquetaSiguiente: `Meet ${mascota}`,
       html: `<div class="scr-centro">
         ${BANNER.html(idx, LEVEL)}
+        ${estadoCurso}
         ${DEMO ? `<div class="demoflag">Demonstration — this preview covers the first two units.
            The full course has ${idx.units.length} units.</div>` : ''}
-        <p class="scr-pie">Tap a friend to hear them. Press <b>Next</b> to start.</p>
+        <p class="scr-pie">Tap a friend to hear them, or explore the short introduction.</p>
+        <button class="intro-skip" type="button">Skip introduction and see all units</button>
       </div>`,
-      alMostrar(el){ BANNER.vivo(el); } },
+      alMostrar(el){
+        BANNER.vivo(el);
+        const skip = el.querySelector('.intro-skip');
+        if (skip) skip.onclick = () => {
+          localStorage.setItem(introKey, '1');
+          SCREENS.ir(4);
+        };
+      } },
     { titulo: `Meet ${mascota} — your guide!`,
       etiquetaSiguiente: 'Meet the characters',
       html: `<div class="scr-centro">
@@ -600,12 +696,15 @@ async function hub(){
       : 'Units',
     etiquetaSiguiente: 'More units',
     html: `<div class="scr-centro">
-      <div class="units">${tanda.map(tarjeta).join('')}</div></div>`
+      ${k === 0 ? estadoCurso : ''}
+      <div class="units">${tanda.map(tarjeta).join('')}</div></div>`,
+    alMostrar(){ localStorage.setItem(introKey, '1'); }
   }));
 
   SCREENS.montar(app, pantallas, {
     arriba: { href: Q('?'), texto: 'Fun for Nordic' },
     portal: PORTAL,
+    inicio: introVista ? 4 : 0,
   });
 }
 
@@ -753,6 +852,7 @@ function sceneFor(ud){
 }
 async function unit(){
   UD = await j(`../content/${LEVEL}/unit-${String(UNIT).padStart(2,'0')}.json`);
+  try { localStorage.setItem(`nisfun-${LEVEL}-lastUnit`, String(UNIT)); } catch(e) {}
   PROG = store.get(UD.number); PROG.done = PROG.done || {};
   document.title = `Unit ${UD.number} · ${UD.title}`;
   // el JSON las guarda en el orden en que se escribieron (F antes que E);
