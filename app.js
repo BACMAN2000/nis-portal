@@ -2487,6 +2487,7 @@ async function renderStudent(initial){
     {key:'french',label:'🇫🇷 French'},
     {key:'general',label:'🗂️ General'},
     {key:'results',label:'📊 My Progress'},
+    {key:'account',label:'👤 Mi cuenta'},
   ], initial||'home', `<div class="center muted">Loading…</div>`);
   // Toda la navegación pasa por window._nav para que la ruta quede en el hash
   // (deep links desde las páginas de actividades + "atrás" del navegador).
@@ -2505,6 +2506,78 @@ async function renderStudent(initial){
 function _setNav(k){ document.querySelectorAll('[data-nav]').forEach(e=>e.classList.toggle('active',e.dataset.nav===k)); }
 function studentPhonics(){ _setNav('phonics'); $('#main').innerHTML = phonicsPanel(); }
 function studentCoach(){ _setNav('coach'); $('#main').innerHTML = coachPanel(); }
+
+/* ---------- Student account / password ----------
+   Uses the authenticated user's own Supabase session. No password is stored
+   in profiles, metadata or any public table. In admin preview mode this flow
+   is deliberately blocked so an admin can never change their own password
+   while impersonating a student. */
+function studentAccount(){
+  _setNav('account');
+  const p=state.profile||{};
+  const sessionUid=state.session && state.session.user ? state.session.user.id : null;
+  const ownAccount=!_isPreview() && !!sessionUid && !!p.id && sessionUid===p.id;
+  if(!ownAccount){
+    $('#main').innerHTML=`<h1>👤 Mi cuenta</h1>
+      <div class="card" style="max-width:680px">
+        <div class="note info"><b>Cambio de contraseña no disponible en vista previa.</b><br>Sal de "Ver como" e inicia sesión con la cuenta del alumno para cambiar su contraseña.</div>
+      </div>`;
+    return;
+  }
+  $('#main').innerHTML=`<h1>👤 Mi cuenta</h1>
+    <div class="card" style="max-width:680px">
+      <h2>🔐 Cambiar contraseña</h2>
+      <p class="muted">Elige una contraseña que puedas recordar. La nueva contraseña reemplazará inmediatamente a la anterior.</p>
+      <label>Nueva contraseña</label>
+      <div class="row" style="gap:8px;align-items:center">
+        <input id="my_pw1" type="password" autocomplete="new-password" placeholder="Mínimo 8 caracteres" style="flex:1">
+        <button class="btn sm ghost" type="button" onclick="window.toggleMyPassword('my_pw1',this)">Mostrar</button>
+      </div>
+      <label>Repite la nueva contraseña</label>
+      <div class="row" style="gap:8px;align-items:center">
+        <input id="my_pw2" type="password" autocomplete="new-password" placeholder="Repite la contraseña" style="flex:1">
+        <button class="btn sm ghost" type="button" onclick="window.toggleMyPassword('my_pw2',this)">Mostrar</button>
+      </div>
+      <div class="muted" style="font-size:.84rem;margin-top:8px">Consejo: usa una frase corta que recuerdes, combinando letras y números. No compartas tu contraseña.</div>
+      <div id="my_pw_msg" style="margin-top:12px"></div>
+      <button id="my_pw_save" class="btn" type="button" onclick="window.saveMyPassword()" style="margin-top:12px">Guardar nueva contraseña</button>
+    </div>`;
+  const first=$('#my_pw1'); if(first) first.focus();
+}
+
+window.toggleMyPassword=function(id,btn){
+  const input=$('#'+id); if(!input) return;
+  const show=input.type==='password';
+  input.type=show?'text':'password';
+  if(btn) btn.textContent=show?'Ocultar':'Mostrar';
+};
+
+window.saveMyPassword=async function(){
+  const p=state.profile||{};
+  const sessionUid=state.session && state.session.user ? state.session.user.id : null;
+  const msg=$('#my_pw_msg'), btn=$('#my_pw_save');
+  if(_isPreview() || !sessionUid || !p.id || sessionUid!==p.id){
+    if(msg) msg.innerHTML='<div class="note err">Por seguridad, solo puedes cambiar la contraseña de tu propia cuenta.</div>';
+    return;
+  }
+  const pw1=(($('#my_pw1')||{}).value||'').trim();
+  const pw2=(($('#my_pw2')||{}).value||'').trim();
+  if(pw1.length<8){ if(msg) msg.innerHTML='<div class="note err">La contraseña debe tener al menos 8 caracteres.</div>'; return; }
+  if(pw1!==pw2){ if(msg) msg.innerHTML='<div class="note err">Las dos contraseñas no coinciden.</div>'; return; }
+  if(btn){ btn.disabled=true; btn.textContent='Guardando…'; }
+  if(msg) msg.innerHTML='<div class="note">Actualizando tu contraseña…</div>';
+  try{
+    const { error } = await withTimeout(sb.auth.updateUser({password:pw1}), STARTUP_TIMEOUT_MS, 'PASSWORD_UPDATE_TIMEOUT');
+    if(error) throw error;
+    const a=$('#my_pw1'), b=$('#my_pw2'); if(a) a.value=''; if(b) b.value='';
+    if(msg) msg.innerHTML='<div class="note ok"><b>Contraseña actualizada correctamente.</b><br>Desde ahora usa tu nueva contraseña para iniciar sesión.</div>';
+  }catch(e){
+    const text=(e && e.message) ? e.message : 'No se pudo cambiar la contraseña.';
+    if(msg) msg.innerHTML=`<div class="note err">${esc(text)}</div>`;
+  }finally{
+    if(btn){ btn.disabled=false; btn.textContent='Guardar nueva contraseña'; }
+  }
+};
 
 /* ---------- Student dashboard (hub) ---------- */
 function _hubCard(emoji,title,desc,onclick,extra){
@@ -3215,7 +3288,7 @@ function _navRender(k){
   const fn={english:()=>studentSubject('english'),french:()=>studentSubject('french'),general:studentGeneral,
     mocks:studentMocks,practice:studentPractice,library:studentLibrary,mun:studentMun,classes:studentClasses,
     phonics:studentPhonics,coach:studentCoach,results:studentResults,nishoot:studentNishoot,games:studentGames,
-    final:studentFinal,home:studentHub}[k];
+    final:studentFinal,account:studentAccount,home:studentHub}[k];
   if(fn){ fn(); return true; }
   return false;
 }
