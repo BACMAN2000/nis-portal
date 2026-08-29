@@ -195,8 +195,8 @@ window.BANNER = (function () {
     .lh-tit{max-width:72%}
   }
 
-  /* Portada cinematografica: el video cubre toda la tarjeta. Los nombres
-     flotan sobre el borde inferior como controles de voz compactos. */
+  /* Portada cinematografica: el video 3D cubre toda la tarjeta y presenta
+     al elenco sin recortes ni controles superpuestos. */
   .lh-filmframe{position:relative;aspect-ratio:16/9;overflow:hidden;background:#10233a}
   .lh-film,.lh-filmposter{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
   .lh-filmposter{z-index:0}.lh-film{z-index:1}
@@ -214,35 +214,14 @@ window.BANNER = (function () {
   .lh-live::before{content:"";width:.5rem;height:.5rem;border-radius:50%;background:#63e2aa;
     box-shadow:0 0 0 0 rgba(99,226,170,.65);animation:lhlive 1.8s infinite}
   @keyframes lhlive{70%{box-shadow:0 0 0 .45rem rgba(99,226,170,0)}}
-  .lh-controls{position:absolute;left:0;right:0;bottom:0;z-index:4;display:flex;align-items:center;
-    gap:.5rem;padding:.75rem .85rem;overflow-x:auto;scrollbar-width:thin;
-    background:linear-gradient(180deg,rgba(4,15,28,0),rgba(4,15,28,.82) 28%);
-    backdrop-filter:blur(2px)}
-  .lh-hint{flex:none;color:#fff;font-size:.82rem;font-weight:800;margin:0 .25rem 0 .1rem;
-    white-space:nowrap;text-shadow:0 2px 8px rgba(0,0,0,.65)}
-  .lh-persona{flex:none;display:flex;align-items:center;gap:.42rem;min-height:44px;
-    border:1px solid rgba(255,255,255,.7);border-radius:999px;background:rgba(255,255,255,.88);color:#1b2b3d;
-    padding:.28rem .7rem .28rem .3rem;font-family:"Baloo 2",sans-serif;font-weight:800;
-    transition:transform .15s ease,border-color .15s ease,background .15s ease}
-  .lh-persona:hover,.lh-persona:focus-visible{border-color:var(--accent);background:#fff;
-    transform:translateY(-2px);outline:none}
-  .lh-persona img{width:34px;height:34px;object-fit:contain;border-radius:50%;background:#fff}
-  .lh-persona .lh-sound{font-size:.78rem;color:var(--accent)}
-  .lh-persona.dice{animation:lhchip .65s ease-out}
-  @keyframes lhchip{35%{transform:translateY(-3px) scale(1.05)}70%{transform:scale(.98)}}
   @media (max-width:640px){
     .lh-filmcopy{left:4.5%;top:7%}
     .lh-live{right:2.5%;top:4%;font-size:.68rem;padding:.25rem .55rem}
-    .lh-controls{padding:.55rem .6rem;gap:.4rem}
-    .lh-hint{display:none}
-    .lh-persona{min-height:42px;padding:.2rem .55rem .2rem .25rem;font-size:.9rem}
-    .lh-persona img{width:32px;height:32px}
   }
   @media (prefers-reduced-motion:reduce){
     .lh-ola,.lh-luz,.lh-foco,.lh-nube,.lh-ave,.lh-aurora,.lh-titila,.lh-rielar,
     .lh-nino.saluda .lh-globo,.lh-nino img,.lh-live::before{animation:none}
     .lh-nino.saluda .lh-globo{opacity:1;transform:translateX(-50%) scale(1)}
-    .lh-persona{transition:none}
   }`;
 
   /* ---- piezas del dibujo ---------------------------------------------- */
@@ -679,17 +658,6 @@ window.BANNER = (function () {
   /* ---- la pantalla ----------------------------------------------------- */
 
   function html(idx, nivel) {
-    const kids = idx.kids || [];
-    const personas = [...kids, idx.mascot];
-    const controles = personas.map(k => {
-      const nombre = k[0].toUpperCase() + k.slice(1);
-      return `<button class="lh-persona" data-quien="${k}" type="button"
-                aria-label="Listen to ${nombre}">
-          <img src="../assets/characters/${nivel}/${k}/pose-01.png?v=${window.ART_V || ''}"
-               alt="" onerror="this.onerror=null;this.src=this.src.replace('.png','.svg')">
-          <span>${nombre}</span><span class="lh-sound" aria-hidden="true">🔊</span>
-        </button>`;
-    }).join('');
     const castPoster = `../assets/videos/posters/${nivel}-cast.jpg?v=${window.ART_V || ''}`;
     const castVideo = `../assets/videos/${nivel}-cast.mp4?v=${window.ART_V || ''}`;
 
@@ -704,8 +672,7 @@ window.BANNER = (function () {
             <h1>${idx.name}</h1>
             <p class="lh-cast">${idx.cast}</p>
           </div>
-          <span class="lh-live">The adventure is moving</span>
-          <div class="lh-controls"><p class="lh-hint">Meet the characters:</p>${controles}</div>
+          <span class="lh-live">Meet the characters in motion</span>
         </div>
       </div>`;
   }
@@ -715,7 +682,6 @@ window.BANNER = (function () {
     const caja = el.querySelector('.lh');
     if (!caja) return;
     const nivel = caja.dataset.nivel;
-    let sonando = null;
     const film = caja.querySelector('.lh-film');
     const inicio = 2.35;
     if (film && !matchMedia('(prefers-reduced-motion: reduce)').matches &&
@@ -726,23 +692,6 @@ window.BANNER = (function () {
       film.addEventListener('ended', () => { film.currentTime = inicio; film.play().catch(()=>{}); });
       film.play().catch(()=>{});
     }
-    caja.querySelectorAll('.lh-persona').forEach(b => {
-      b.onclick = () => {
-        const quien = b.dataset.quien;
-        b.classList.remove('dice');
-        void b.offsetWidth;                       // reinicia la animacion
-        b.classList.add('dice');
-        if (sonando) { sonando.pause(); sonando = null; }
-        const nombre = quien[0].toUpperCase() + quien.slice(1);
-        const a = new Audio(`../audio/cast/${nivel}-${quien}.mp3`);
-        const deRespaldo = () => {
-          if (window.SAY) SAY.frase(`Hello! I am ${nombre}!`);
-        };
-        a.onerror = deRespaldo;
-        a.play().catch(deRespaldo);
-        sonando = a;
-      };
-    });
   }
 
   return { html, vivo };
