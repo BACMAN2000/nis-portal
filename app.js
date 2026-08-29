@@ -118,60 +118,125 @@ function partsBreakdownCard(list){
 }
 
 /* ---------- boot ---------- */
-// Watchdog: never get stuck on the initial "Cargando…" splash.
-setTimeout(()=>{ try{ if(/Cargando Portal NIS/.test((document.getElementById('app')||{}).innerHTML||'')) renderAuth(); }catch(_){ } }, 7000);
-// Safety net: if a panel stays on the bare "Cargando…" too long (stalled query),
-// surface a manual retry instead of leaving the user stuck forever.
+const STARTUP_TIMEOUT_MS = 12000;
+let authSubscription = null;
+
+function withTimeout(promise, ms=STARTUP_TIMEOUT_MS, code='TIMEOUT'){
+  let timer;
+  const timeout = new Promise((_, reject)=>{
+    timer = setTimeout(()=>{
+      const err = new Error(code);
+      err.code = code;
+      reject(err);
+    }, ms);
+  });
+  return Promise.race([promise, timeout]).finally(()=>clearTimeout(timer));
+}
+
+function renderStartupError(error){
+  console.error('Portal NIS startup error', error);
+  const root = document.getElementById('app');
+  if(!root) return;
+  const offline = navigator && navigator.onLine === false;
+  const detail = offline
+    ? 'Parece que no hay conexión a Internet.'
+    : 'No fue posible iniciar el portal. La sesión o los datos tardaron demasiado en responder.';
+  root.innerHTML = `<div class="auth-wrap"><div class="auth-card center">
+    <h1>Portal NIS</h1>
+    <p class="sub">${detail}</p>
+    <div class="row" style="justify-content:center;gap:8px;flex-wrap:wrap">
+      <button class="btn" onclick="location.reload()">↻ Reintentar</button>
+      <button class="btn ghost" onclick="window.nisSafeLogout()">Cerrar sesión</button>
+    </div>
+    <p class="muted" style="font-size:.8rem;margin-top:12px">Código: ${esc(error && (error.code||error.message) || 'STARTUP_ERROR')}</p>
+  </div></div>`;
+}
+
+window.nisSafeLogout = async ()=>{
+  try{ if(sb) await withTimeout(sb.auth.signOut(), 5000, 'SIGNOUT_TIMEOUT'); }catch(_){ }
+  state.session=null; state.profile=null;
+  try{ history.replaceState(null,'',location.pathname); }catch(_){ }
+  renderAuth();
+};
+
+// Safety net for a stalled panel after startup. Startup itself is handled by
+// explicit timeout/error states below, so users are never left on a spinner.
 setTimeout(()=>{ try{
   const m=document.getElementById('main');
   if(m && (m.textContent||'').trim()==='Cargando…'){
-    m.innerHTML='<div class="center muted" style="padding:24px">No se pudo cargar.<br><button class="btn" style="margin-top:10px" onclick="location.reload()">↻ Reintentar</button></div>';
+    m.innerHTML='<div class="center muted" style="padding:24px">No se pudo cargar este módulo.<br><button class="btn" style="margin-top:10px" onclick="location.reload()">↻ Reintentar</button></div>';
   }
-}catch(_){ } }, 12000);
+}catch(_){ } }, 15000);
+
 init();
 async function init(){
-  if(!sb) return;
-  // Came from "Cerrar sesión": force sign-out and show the login screen.
+  if(!sb){
+    renderStartupError(Object.assign(new Error('SUPABASE_NOT_AVAILABLE'),{code:'SUPABASE_NOT_AVAILABLE'}));
+    return;
+  }
+
   try{
     const params = new URLSearchParams(location.search);
     if(params.get('logout')==='1'){
-      try{ await sb.auth.signOut(); }catch(_){}
-      try{ history.replaceState(null,'',location.pathname); }catch(_){}
+      try{ await withTimeout(sb.auth.signOut(), 5000, 'SIGNOUT_TIMEOUT'); }catch(_){ }
+      try{ history.replaceState(null,'',location.pathname); }catch(_){ }
       state.session=null; state.profile=null;
       renderAuth();
+      subscribeAuthChanges();
       return;
     }
   }catch(_){ }
+
   try{
-    const { data } = await sb.auth.getSession();
-    state.session = data.session;
-    if(state.session){ await loadProfile(); }
+    const { data, error } = await withTimeout(sb.auth.getSession(), STARTUP_TIMEOUT_MS, 'SESSION_TIMEOUT');
+    if(error) throw error;
+    state.session = data && data.session ? data.session : null;
+    if(state.session) await withTimeout(loadProfile(), STARTUP_TIMEOUT_MS, 'PROFILE_TIMEOUT');
     route();
-  }catch(e){ console.error('init failed', e); try{ renderAuth(); }catch(_){ } }
-  // supabase-js holds an internal auth lock while this callback runs; doing DB
-  // queries (loadProfile/route) synchronously inside it can deadlock the very
-  // first load against the initial token refresh → app stuck on "Cargando…"
-  // until a manual reload. Defer the work so the lock is released first, and
-  // skip redundant re-routes (init() already handled the initial session).
+  }catch(e){
+    state.session=null;
+    state.profile=null;
+    renderStartupError(e);
+  } finally {
+    subscribeAuthChanges();
+  }
+}
+
+function subscribeAuthChanges(){
+  if(!sb || authSubscription) return;
   try{
     let lastUid = (state.session && state.session.user) ? state.session.user.id : null;
-    sb.auth.onAuthStateChange((evt, session)=>{
+    const result = sb.auth.onAuthStateChange((evt, session)=>{
       setTimeout(async ()=>{
-        state.session = session;
         const uid = (session && session.user) ? session.user.id : null;
-        if(evt==='TOKEN_REFRESHED' || evt==='USER_UPDATED') return;   // token housekeeping, no UI change
-        if(uid===lastUid && (uid===null || state.profile)) return;    // already routed by init()
+        state.session = session;
+        if(evt==='TOKEN_REFRESHED' || evt==='USER_UPDATED') return;
+        if(uid===lastUid && (uid===null || state.profile)) return;
         lastUid = uid;
-        if(session){ try{ await loadProfile(); }catch(_){ state.profile=null; } } else { state.profile=null; }
-        route();
+        try{
+          if(session) await withTimeout(loadProfile(), STARTUP_TIMEOUT_MS, 'PROFILE_TIMEOUT');
+          else state.profile=null;
+          route();
+        }catch(e){
+          state.profile=null;
+          renderStartupError(e);
+        }
       }, 0);
     });
-  }catch(_){ }
+    authSubscription = result && result.data ? result.data.subscription : true;
+  }catch(e){ console.error('auth subscription failed', e); }
 }
+
 async function loadProfile(){
-  const { data, error } = await sb.from('profiles').select('*, grades(name)').eq('id', state.session.user.id).single();
-  state.profile = error ? null : data;
-  await loadReaderAssignments();          // qué lee cada salón este año
+  if(!state.session || !state.session.user) throw Object.assign(new Error('NO_SESSION'),{code:'NO_SESSION'});
+  const { data, error } = await sb.from('profiles').select('*, grades(name)').eq('id', state.session.user.id).maybeSingle();
+  if(error) throw error;
+  // A newly-created Auth account may legitimately exist before an admin/profile
+  // row is ready. Preserve the existing 'Casi listo' flow for that case.
+  if(!data){ state.profile=null; return; }
+  state.profile = data;
+  try{ await withTimeout(loadReaderAssignments(), 8000, 'READER_ASSIGNMENTS_TIMEOUT'); }
+  catch(e){ console.warn('Reader assignments unavailable during startup', e); }
 }
 function route(){
   if(!state.session){ return renderAuth(); }
@@ -351,8 +416,7 @@ async function doSignup(){
   const meta={ first_name:v('su_first'), last_name:v('su_last'), full_name:v('su_first')+' '+v('su_last'),
     document_id:v('su_doc'), birthdate:v('su_bd'), phone:v('su_phone'),
     guardian_name:v('su_guard'), guardian_phone:v('su_gphone'),
-    grade_id:$('#su_grade').value, section:v('su_section'), cefr_level:$('#su_level').value,
-    visible_password:pw };
+    grade_id:$('#su_grade').value, section:v('su_section'), cefr_level:$('#su_level').value };
   const { data, error } = await sb.auth.signUp({ email, password:pw, options:{ data:meta } });
   if(error) return msg('err', error.message);
   if(data.session){ msg('ok','¡Cuenta creada! Entrando…'); }
@@ -654,11 +718,6 @@ async function adminTeachers(){
   const { data:tna } = await sb.from('teacher_node_access').select('profile_id,node_key,allowed');
   const tnaMap={}; (tna||[]).forEach(r=>{ const m=tnaMap[r.profile_id]=tnaMap[r.profile_id]||new Set(); if(r.allowed) m.add(r.node_key); });
   const teachers=profs||[];
-  // Fetch stored passwords for all teachers
-  const { data:creds } = teachers.length
-    ? await sb.from('student_credentials').select('profile_id,password').in('profile_id', teachers.map(t=>t.id))
-    : { data:[] };
-  const credmap={}; (creds||[]).forEach(c=>credmap[c.profile_id]=c.password||'');
   const chipCss="display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);border-radius:8px;padding:4px 9px;font-size:.85rem";
   const cards=teachers.map(t=>{
     const a=amap[t.id]||{can_results:true,can_students:false,all_grades:true,grades:[]};
@@ -679,7 +738,6 @@ async function adminTeachers(){
       if(g==='g9') items.push(['english.classes.g9.cambridge','🎓 Cambridge'],['english.classes.g9.cambridge.listening','🎧 Cambridge Listening'],['english.classes.g9.uoe1','🧩 Use of English P1'],['english.classes.g9.writing','✍️ Writing'],['english.classes.g9.unit5','🎯 Unit 5'],['english.classes.g9.reader','📚 Readers']);
       return `<div class="row" style="gap:6px;align-items:center;margin-top:5px;flex-wrap:wrap"><span class="muted" style="font-size:.8rem;min-width:84px">${GRADE_META[g][0]} ${GRADE_META[g][1]}</span>${items.map(it=>_nodeChip(it[0],it[1])).join('')}</div>`;
     }).join('');
-    const pw=credmap[t.id]||'';
     const suspended = t.active===false;
     return `<div class="card" data-tid="${t.id}" style="${suspended?'opacity:.6':''}">
       <div class="row" style="justify-content:space-between;align-items:flex-start">
@@ -687,16 +745,12 @@ async function adminTeachers(){
         <div style="text-align:right">
           <span class="muted" style="font-size:.82rem;display:block">${esc(t.email||'')}</span>
           <span style="display:inline-flex;align-items:center;gap:5px;margin-top:3px">
-            <span class="muted" style="font-size:.8rem">Contraseña:</span>
-            <span id="pw-dot-${t.id}" style="font-size:.82rem;letter-spacing:2px;color:var(--muted)">●●●●●●</span>
-            <span id="pw-val-${t.id}" style="display:none;font-family:monospace;font-size:.82rem">${esc(pw||'(sin contraseña)')}</span>
-            <button onclick="window._togglePw('${t.id}')" id="pw-btn-${t.id}" title="Mostrar/ocultar contraseña"
-              style="background:none;border:none;cursor:pointer;font-size:.9rem;padding:2px;line-height:1;color:var(--muted)">👁</button>
-            <button onclick="window._resetPw('${t.id}')" title="Poner una contraseña nueva"
-              style="background:none;border:none;cursor:pointer;font-size:.9rem;padding:2px;line-height:1;color:var(--muted)">🔑</button>
+            <span class="muted" style="font-size:.8rem">Acceso:</span>
+            <button onclick="window._resetPw('${t.id}')" title="Asignar una contraseña nueva"
+              style="background:none;border:none;cursor:pointer;font-size:.9rem;padding:2px;line-height:1;color:var(--muted)">🔑 Cambiar contraseña</button>
           </span>
           <span id="pw-box-${t.id}" style="display:none;margin-top:6px;gap:6px;align-items:center;justify-content:flex-end">
-            <input id="pw-new-${t.id}" type="text" placeholder="Nueva contraseña (mín. 6)"
+            <input id="pw-new-${t.id}" type="password" placeholder="Nueva contraseña (mín. 6)"
               style="padding:5px 8px;border:1px solid var(--line);border-radius:7px;font-size:.82rem;width:190px">
             <button class="btn small" onclick="window._guardaPw('${t.id}')">Guardar</button>
             <span id="pw-msg-${t.id}" style="font-size:.78rem"></span>
@@ -726,13 +780,6 @@ async function adminTeachers(){
     <div class="note">Asigna qué puede ver cada profesor. Por defecto: <b>Resultados</b> de <b>todos los grados</b>. Desmarca "Todos los grados" para limitarlo a grados específicos.</div>
     ${cards}${emptyMsg}`;
 }
-window._togglePw=(id)=>{
-  const dot=$('#pw-dot-'+id), val=$('#pw-val-'+id), btn=$('#pw-btn-'+id);
-  const showing=dot.style.display==='none';
-  dot.style.display=showing?'':'none';
-  val.style.display=showing?'none':'';
-  if(btn) btn.textContent=showing?'👁':'🙈';
-};
 window.adminNewTeacher=()=>{
   $('#main').innerHTML=`<button class="btn sm ghost" onclick="adminTeachers()">← Volver a Profesores</button>
     <div class="card" style="max-width:560px;margin-top:12px"><h2 style="margin-top:0">Agregar Profesor</h2>
@@ -901,7 +948,6 @@ async function adminUsers(){
       <td>${p.academic_year||2026}</td>
       <td><span class="badge lvl">${esc(p.cefr_level||'—')}</span></td>
       <td><span class="badge ${p.role==='student'?'':'on'}">${esc(p.role)}</span></td>
-      <td class="pwcell"><span class="pw" data-pw="•••••••">•••••••</span> <button class="eye" title="Ver/ocultar" onclick="togglePw('${p.id}',this)">👁</button></td>
       <td><span class="badge ${suspended?'off':'on'}">${suspended?'Suspendido':'Activo'}</span></td>
       <td style="white-space:nowrap">${p.role==='student'?`<button class="btn sm ghost" onclick="window._previewStudent('${p.id}','${esc((p.full_name||p.email||'').replace(/'/g,'’'))}')" title="Ver el portal tal como lo ve este alumno">👁️ Ver como</button> <button class="btn sm ghost" onclick="window._openStudentAccess('${p.id}',${p.grade_id||'null'},'${esc((p.full_name||p.email||'').replace(/'/g,'’'))}')">🔧 Accesos</button> `:''}<button class="btn sm ghost" onclick="editUser('${p.id}')">Editar</button> ${toggleBtn} <button class="btn sm danger" onclick="deleteUser('${p.id}','user')">Eliminar</button></td>
     </tr>`;}).join('');
@@ -920,20 +966,13 @@ async function adminUsers(){
     </div>`;
 }
 window._setUserFilter = (k,v)=>{ userFilter[k]=v; adminUsers(); };
-window.togglePw = async (id, btn)=>{
-  const span = btn.closest('.pwcell').querySelector('.pw');
-  if(span.dataset.shown==='1'){ span.textContent='•••••••'; span.dataset.shown='0'; return; }
-  const { data } = await sb.from('student_credentials').select('password').eq('profile_id',id).maybeSingle();
-  span.textContent = data?.password || '(no guardada)';
-  span.dataset.shown='1';
-};
 window.adminNewUser = ()=>{
   $('#main').innerHTML=`<button class="btn sm ghost" onclick="adminUsers()">← Volver</button>
     <div class="card" style="max-width:600px"><h2>Nuevo usuario</h2>
     <div class="field-2"><div><label>Nombres</label><input id="n_first"></div><div><label>Apellidos</label><input id="n_last"></div></div>
     <label>Correo</label><input id="n_email" type="email" placeholder="nombre.apellido@nordic-school.edu.pe">
     <div class="field-2"><div><label>Rol</label><select id="n_role"><option value="student">student</option><option value="teacher">teacher</option><option value="admin">admin</option></select></div>
-      <div><label>Contraseña</label><input id="n_pw" placeholder="visible para el admin"></div></div>
+      <div><label>Contraseña</label><input id="n_pw" type="password" autocomplete="new-password" placeholder="mín. 6 caracteres"></div></div>
     <div class="field-2"><div><label>Grado</label><select id="n_grade"><option value="">—</option>${GRADES.map(g=>`<option value="${g.id}">${g.name}</option>`).join('')}</select></div>
       <div><label>Sección</label><input id="n_section"></div></div>
     <div class="field-2"><div><label>Nivel</label><select id="n_level"><option value="">—</option>${LEVELS.map(l=>`<option>${l}</option>`).join('')}</select></div>
@@ -973,7 +1012,7 @@ window.editUser = async (id)=>{
         <div><label>Año académico</label><select id="e_year">${yearOptions(p.academic_year||2026)}</select></div>
         <div><label>Estado</label><select id="e_active"><option value="true" ${p.active?'selected':''}>Activo</option><option value="false" ${!p.active?'selected':''}>Inactivo</option></select></div>
       </div>
-      <label>Reestablecer contraseña de acceso (opcional)</label><input id="e_pw" placeholder="dejar vacío para no cambiar · mín. 6 caracteres">
+      <label>Reestablecer contraseña de acceso (opcional)</label><input id="e_pw" type="password" autocomplete="new-password" placeholder="dejar vacío para no cambiar · mín. 6 caracteres">
       <div id="emsg"></div>
       <div class="row" style="margin-top:14px"><button class="btn" onclick="saveUser('${id}')">Guardar</button></div>
     </div>`;
@@ -990,7 +1029,6 @@ window.saveUser = async (id)=>{
     // Cambia la contraseña REAL de Auth (no solo la visible), para que el usuario pueda entrar.
     const r = await sb.rpc('admin_set_password',{p_id:id,p_password:pw});
     pwErr = r.error;
-    if(!pwErr){ await sb.from('student_credentials').upsert({profile_id:id,password:pw,updated_at:new Date().toISOString()}); }
   }
   const err = error||pwErr;
   $('#emsg').innerHTML = err?`<div class="note err">${esc(err.message)}</div>`:`<div class="note ok">Guardado.${pw?' Contraseña actualizada — el usuario ya puede entrar con la nueva.':''}</div>`;
@@ -4643,12 +4681,6 @@ window._guardaPw = async function(id){
   const r = await sb.rpc('admin_set_password', { p_id: id, p_password: pw });
   if(r.error){ msg.textContent = r.error.message; msg.style.color = 'var(--bad)'; return; }
 
-  /* La copia visible es la que el admin le dicta al profesor cuando la olvida. */
-  await sb.from('student_credentials')
-    .upsert({ profile_id: id, password: pw, updated_at: new Date().toISOString() });
-
-  const val = document.getElementById('pw-val-' + id);
-  if(val) val.textContent = pw;
   msg.textContent = 'Cambiada ✓ ya puede entrar con ella';
   msg.style.color = 'var(--good)';
   inp.value = '';
