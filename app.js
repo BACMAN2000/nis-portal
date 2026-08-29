@@ -692,6 +692,14 @@ async function adminTeachers(){
             <span id="pw-val-${t.id}" style="display:none;font-family:monospace;font-size:.82rem">${esc(pw||'(sin contraseña)')}</span>
             <button onclick="window._togglePw('${t.id}')" id="pw-btn-${t.id}" title="Mostrar/ocultar contraseña"
               style="background:none;border:none;cursor:pointer;font-size:.9rem;padding:2px;line-height:1;color:var(--muted)">👁</button>
+            <button onclick="window._resetPw('${t.id}')" title="Poner una contraseña nueva"
+              style="background:none;border:none;cursor:pointer;font-size:.9rem;padding:2px;line-height:1;color:var(--muted)">🔑</button>
+          </span>
+          <span id="pw-box-${t.id}" style="display:none;margin-top:6px;gap:6px;align-items:center;justify-content:flex-end">
+            <input id="pw-new-${t.id}" type="text" placeholder="Nueva contraseña (mín. 6)"
+              style="padding:5px 8px;border:1px solid var(--line);border-radius:7px;font-size:.82rem;width:190px">
+            <button class="btn small" onclick="window._guardaPw('${t.id}')">Guardar</button>
+            <span id="pw-msg-${t.id}" style="font-size:.78rem"></span>
           </span>
         </div>
       </div>
@@ -4606,4 +4614,42 @@ window.corrGuarda = async function(siguiente){
   est.textContent = 'Guardado'; est.className = 'state ok';
   if(siguiente && _corr.i < _corr.entregas.length-1) corrAlumno(_corr.i+1);
   else corrAlumno(_corr.i);
+};
+
+/* ---------------------------------------------------------------
+   🔑 Resetear la contraseña de un profesor desde su tarjeta.
+
+   La RPC admin_set_password ya existía y se usaba solo desde el editor
+   de la tabla de usuarios; en el panel de Profesores no había forma de
+   llegar a ella, que es justo donde el admin va a buscarla. Al cambiarla
+   se actualiza también la copia visible, para que el ojo deje de decir
+   "(sin contraseña)".
+---------------------------------------------------------------- */
+window._resetPw = function(id){
+  const caja = document.getElementById('pw-box-' + id);
+  if(!caja) return;
+  const abierta = caja.style.display !== 'none';
+  caja.style.display = abierta ? 'none' : 'inline-flex';
+  if(!abierta){ const i = document.getElementById('pw-new-' + id); if(i) i.focus(); }
+};
+
+window._guardaPw = async function(id){
+  const inp = document.getElementById('pw-new-' + id);
+  const msg = document.getElementById('pw-msg-' + id);
+  const pw  = (inp.value || '').trim();
+  if(pw.length < 6){ msg.textContent = 'Mínimo 6 caracteres'; msg.style.color = 'var(--bad)'; return; }
+  msg.textContent = 'Guardando…'; msg.style.color = 'var(--muted)';
+
+  const r = await sb.rpc('admin_set_password', { p_id: id, p_password: pw });
+  if(r.error){ msg.textContent = r.error.message; msg.style.color = 'var(--bad)'; return; }
+
+  /* La copia visible es la que el admin le dicta al profesor cuando la olvida. */
+  await sb.from('student_credentials')
+    .upsert({ profile_id: id, password: pw, updated_at: new Date().toISOString() });
+
+  const val = document.getElementById('pw-val-' + id);
+  if(val) val.textContent = pw;
+  msg.textContent = 'Cambiada ✓ ya puede entrar con ella';
+  msg.style.color = 'var(--good)';
+  inp.value = '';
 };
