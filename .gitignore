@@ -25,3 +25,6 @@ __pycache__/
 # Se regeneran con tools/exporta_u4.ps1 y se suben con tools/sube_class_files.py
 classes/
 worksheets-digital.json
+
+# Respaldos que deja otra sesion antes de editar: quedan en disco, no en el repo.
+_backup_*/
