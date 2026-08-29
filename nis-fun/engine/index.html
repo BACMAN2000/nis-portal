@@ -428,23 +428,50 @@ if(/\.github\.io$/i.test(location.hostname)){
   .guide h2{text-align:center}
   /* portada de niveles */
   .lvcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.2rem}
-  .lvcard{display:flex;flex-direction:column;align-items:center;gap:.3rem;text-decoration:none;color:var(--ink);
-    background:var(--surface);border:1px solid var(--line);border-top:6px solid var(--lv);border-radius:16px;padding:1.4rem 1rem 1.2rem}
-  .lvcard:hover{border-color:var(--lv)}
-  .lvcard img{height:180px;margin-bottom:.4rem}
-  .lvcard b{font-family:"Baloo 2";font-size:1.25rem;color:var(--lv)}
+  .lvcard{display:block;text-decoration:none;color:var(--ink);background:var(--surface);
+    border:1px solid var(--line);border-top:6px solid var(--lv);border-radius:18px;
+    overflow:hidden;box-shadow:0 10px 28px rgba(20,40,70,.10);
+    transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+  .lvcard:hover,.lvcard:focus-visible{border-color:var(--lv);transform:translateY(-6px);
+    box-shadow:0 18px 38px rgba(20,40,70,.18);outline:none}
+  .lvmedia{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--surface2)}
+  .lvmedia video,.lvmedia .lvfallback{position:absolute;inset:0;width:100%;height:100%;
+    object-fit:cover;display:block;transition:transform .5s ease,filter .3s ease}
+  .lvmedia .lvfallback{z-index:0}
+  .lvmedia video{z-index:1}
+  .lvcard:hover .lvmedia video,.lvcard:focus-visible .lvmedia video{transform:scale(1.035)}
+  .lvshade{position:absolute;inset:auto 0 0;z-index:2;height:48%;pointer-events:none;
+    background:linear-gradient(to top,rgba(8,20,36,.68),rgba(8,20,36,0))}
+  .lvbadge{position:absolute;left:.75rem;top:.7rem;z-index:3;background:rgba(255,255,255,.92);
+    color:var(--lv);border-radius:999px;padding:.25rem .65rem;font-family:"Baloo 2";
+    font-size:.78rem;font-weight:800;box-shadow:0 3px 12px rgba(20,40,70,.18)}
+  .lvplaying{position:absolute;right:.7rem;top:.7rem;z-index:3;display:flex;align-items:center;
+    gap:.28rem;background:rgba(8,20,36,.65);color:#fff;border-radius:999px;padding:.27rem .58rem;
+    font-size:.7rem;font-weight:700;opacity:0;transition:opacity .2s ease}
+  .lvcard.is-playing .lvplaying{opacity:1}
+  .lvpulse{width:.45rem;height:.45rem;background:#66e5ae;border-radius:50%;
+    box-shadow:0 0 0 0 rgba(102,229,174,.6);animation:lvpulse 1.8s infinite}
+  @keyframes lvpulse{70%{box-shadow:0 0 0 .4rem rgba(102,229,174,0)}100%{box-shadow:0 0 0 0 rgba(102,229,174,0)}}
+  .lvinfo{padding:.9rem 1rem 1rem;display:grid;gap:.14rem}
+  .lvcard b{font-family:"Baloo 2";font-size:1.25rem;color:var(--lv);line-height:1.2}
   .lvcard .exam{font-size:.8rem;text-transform:uppercase;letter-spacing:.07em;color:var(--soft);font-weight:700}
   .lvcard .cast{font-size:.9rem;color:var(--soft)}
+  .lvcta{display:flex;align-items:center;justify-content:space-between;margin-top:.55rem;
+    color:var(--lv);font-family:"Baloo 2";font-weight:800}
   @media (max-width:560px){
     .hub h1{font-size:1.75rem}
     .campus-banner{margin-bottom:1rem}
     .campus-banner img{height:10rem;object-fit:cover}
     .lvcards{gap:.8rem}
-    .lvcard{display:grid;grid-template-columns:6.5rem 1fr;grid-template-rows:auto auto auto;
-      text-align:left;padding:.8rem;gap:.05rem .8rem;min-height:0}
-    .lvcard img{grid-row:1 / span 3;height:6.5rem;width:6.5rem;object-fit:contain;margin:0}
-    .lvcard b{font-size:1.1rem;align-self:end}
-    .lvcard .exam,.lvcard .cast{grid-column:2}
+    .lvcard{border-radius:16px}
+    .lvinfo{padding:.75rem .85rem .85rem}
+    .lvcard b{font-size:1.15rem}
+    .lvcta{margin-top:.35rem}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .lvcard,.lvmedia video{transition:none}
+    .lvcard:hover,.lvcard:focus-visible{transform:none}
+    .lvpulse{animation:none}
   }
 </style>
 </head>
@@ -460,7 +487,7 @@ if(/\.github\.io$/i.test(location.hostname)){
 <script src="vocab-art.js?v=1"></script>
 <script src="orientacion.js?v=1"></script>
 <script src="screens.js?v=4"></script>
-<script src="banner.js?v=4"></script>
+<script src="banner.js?v=5"></script>
 <script src="magicbox.js?v=4"></script>
 <script src="recorder.js?v=1"></script>
 <!-- el curso comparte dominio y sesion con el portal -->
@@ -566,13 +593,56 @@ async function levels(){
     <p style="color:var(--soft);margin:0 0 1.4rem">Cambridge Young Learners · Nordic International School</p>
     <div class="campus-banner"><img src="../assets/scenes/main-building.jpg?v=${ART_V}" alt="Nordic campus"></div>
     <div class="lvcards">${data.levels.map(l=>`
-      <a class="lvcard" href="${Q(`?level=${l.id}`)}" style="--lv:${l.color}">
-        <img src="../assets/characters/${l.id}/${l.mascot}/pose-01.png?v=${ART_V}"
-             onerror="this.onerror=null;this.src=this.src.replace('.png','.svg')" alt="">
-        <b>${l.name}</b>
-        <span class="exam">${l.exam}</span>
-        <span class="cast">${l.cast}</span>
+      <a class="lvcard" href="${Q(`?level=${l.id}`)}" style="--lv:${l.color}"
+         aria-label="Open ${l.name}, ${l.exam}">
+        <div class="lvmedia">
+          <img class="lvfallback" src="../assets/videos/posters/${l.mascot}-intro.jpg?v=${VIDEO_V}"
+               alt="${l.mascot[0].toUpperCase()+l.mascot.slice(1)} invites you to explore ${l.name}">
+          <video muted playsinline preload="metadata"
+                 poster="../assets/videos/posters/${l.mascot}-intro.jpg?v=${VIDEO_V}"
+                 data-level-preview aria-hidden="true">
+            <source src="../assets/videos/${l.mascot}-intro.mp4?v=${VIDEO_V}" type="video/mp4">
+          </video>
+          <span class="lvbadge">${l.exam}</span>
+          <span class="lvplaying"><span class="lvpulse"></span> Adventure playing</span>
+          <span class="lvshade"></span>
+        </div>
+        <span class="lvinfo">
+          <b>${l.name}</b>
+          <span class="cast">${l.cast}</span>
+          <span class="lvcta">Enter the adventure <span aria-hidden="true">›</span></span>
+        </span>
       </a>`).join('')}</div>`;
+  levelPreviews(app);
+}
+
+/* Las tres portadas usan los mismos videos de las mascotas que presentan el
+   curso. Solo se reproduce una tarjeta cuando esta realmente en pantalla:
+   mantiene la portada viva sin descargar tres videos completos en un movil. */
+function levelPreviews(root){
+  const videos = [...root.querySelectorAll('[data-level-preview]')];
+  if(!videos.length || matchMedia('(prefers-reduced-motion: reduce)').matches ||
+     (navigator.connection && navigator.connection.saveData)) return;
+  const LOOP_START = 2.35; // omite el splash de marca al repetir la miniatura
+  videos.forEach(v => {
+    v.addEventListener('loadedmetadata', () => { if(v.currentTime < LOOP_START) v.currentTime = LOOP_START; }, {once:true});
+    v.addEventListener('ended', () => {
+      if(v.dataset.visible === '1') { v.currentTime = LOOP_START; v.play().catch(()=>{}); }
+    });
+  });
+  const change = (v, visible) => {
+    const card = v.closest('.lvcard');
+    v.dataset.visible = visible ? '1' : '0';
+    if(visible) {
+      if(v.readyState >= 1 && v.currentTime < LOOP_START) v.currentTime = LOOP_START;
+      v.play().then(()=>card.classList.add('is-playing')).catch(()=>{});
+    } else { v.pause(); card.classList.remove('is-playing'); }
+  };
+  if('IntersectionObserver' in window){
+    const observer = new IntersectionObserver(entries => entries.forEach(e =>
+      change(e.target, e.isIntersecting && e.intersectionRatio >= .35)), {threshold:[0,.35]});
+    videos.forEach(v => observer.observe(v));
+  } else videos.forEach(v => change(v, true));
 }
 
 /* ---------------- HUB ---------------- */
