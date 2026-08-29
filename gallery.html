@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unit gallery · Nordic International School</title>
+<link rel="icon" href="assets/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#4987c6; --blue-d:#2f5f93; --blue-dd:#244c77;
+  --bg:#f2f3ff; --white:#fff; --grey:#636465; --line:#e3e5f3;
+  --lila:#d1d2ea; --celeste:#76cbe5; --good:#16a34a;
+  --ink:#2b2c33; --r:16px; --r-sm:10px;
+  --shadow:0 10px 30px rgba(36,76,119,.10);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:'Montserrat',system-ui,Segoe UI,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}
+h1,h2,h3{line-height:1.2;margin:0 0 .4em;font-weight:700}
+header{display:flex;align-items:center;gap:14px;background:var(--blue);padding:12px 22px;color:#fff;box-shadow:var(--shadow)}
+header img{height:32px;width:auto;display:block}
+header .spacer{flex:1}
+header a.back{background:rgba(255,255,255,.16);color:#fff;padding:8px 14px;border-radius:var(--r-sm);font-weight:600;font-size:.9rem;text-decoration:none}
+header a.back:hover{background:rgba(255,255,255,.28)}
+.wrap{max-width:1060px;margin:0 auto;padding:22px 18px 70px}
+.hero{background:linear-gradient(135deg,var(--blue-dd),var(--blue));color:#fff;border-radius:var(--r);padding:24px 26px;margin-bottom:20px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero h1{color:#fff;font-size:1.5rem;margin:0}
+.hero p{margin:8px 0 0;color:#dbe8f6;font-size:.88rem}
+.hero .motivo{position:absolute;right:-8px;bottom:-30px;font-size:8rem;opacity:.16;pointer-events:none}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.obra{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.obra .autor{font-weight:700;color:var(--blue-dd);font-size:.95rem}
+.obra .tipo{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--grey);font-weight:700;margin-top:2px}
+.obra .cuerpo{margin-top:12px;font-size:.88rem;white-space:pre-wrap;max-height:230px;overflow:auto;
+  background:#fbfcff;border:1px solid var(--line);border-radius:var(--r-sm);padding:12px;line-height:1.65}
+.obra audio{width:100%;margin-top:12px}
+.obra .btn{margin-top:12px;align-self:flex-start}
+.btn{background:var(--blue);color:#fff;border:none;border-radius:var(--r-sm);padding:9px 16px;font:600 .85rem/1 inherit;cursor:pointer;font-family:inherit;text-decoration:none;display:inline-block}
+.btn:hover{background:var(--blue-d)}
+.vacio{background:var(--white);border:1px dashed var(--lila);border-radius:var(--r);padding:34px;text-align:center;color:var(--grey)}
+.nota{background:#fff8e6;border:1px solid #f5dea0;border-radius:var(--r-sm);padding:14px 16px;font-size:.86rem;color:#7a5b12;margin-bottom:18px}
+</style>
+</head>
+<body>
+<header>
+  <img src="assets/logo-white-h.svg" alt="Nordic International School" onerror="this.onerror=null;this.src='assets/logo-h.svg'">
+  <div class="spacer"></div>
+  <a class="back" href="./" id="backBtn">&#8592; Back</a>
+</header>
+
+<div class="wrap" id="app"><p>Loading…</p></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+<script src="config.js"></script>
+<script src="unit-plans.js?v=6"></script>
+<script src="nis-nav.js?v=2"></script>
+<script>
+/* Galeria de la unidad: los productos que el PROFESOR eligio exhibir.
+   Un producto final sin audiencia no es un producto final; esto le da una,
+   pero puertas adentro -- son trabajos de menores, hace falta sesion para
+   entrar y es el profesor quien decide que se muestra, nunca el alumno. */
+
+const Q = new URLSearchParams(location.search);
+const GRADE = (Q.get('grade')||'g9').toLowerCase();
+const UNIT  = parseInt(Q.get('unit')||'0',10);
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+const PLAN = (window.UNIT_PLANS||{})[GRADE];
+const U = PLAN ? (PLAN.units||[]).filter(u=>u.n===UNIT)[0] : null;
+
+const NOMBRE = { report:'Written product', presentation:'Spoken product',
+                 reflection:'Reflection', notebook:'Notebook', worksheet:'Worksheet' };
+
+let sb=null, me=null;
+
+(async function(){
+  try{
+    const cfg = window.NIS_CONFIG;
+    sb = window.supabase.createClient(cfg.SUPABASE_URL, cfg.SUPABASE_KEY);
+    const { data } = await sb.auth.getSession();
+    me = data && data.session ? data.session.user : null;
+  }catch(_){ me = null; }
+
+  if(!me){
+    $('#app').innerHTML = `<div class="vacio">Sign in from the portal to see the gallery.</div>`;
+    return;
+  }
+
+  const { data: obras } = await sb.from('unit_submissions')
+    .select('id,student_id,kind,milestone,payload,file_path,score')
+    .eq('grade',GRADE).eq('unit',UNIT).eq('shared',true)
+    .order('updated_at',{ascending:false});
+
+  const ids = [...new Set((obras||[]).map(o=>o.student_id))];
+  let quien = {};
+  if(ids.length){
+    const { data: gente } = await sb.from('profiles').select('id,full_name,section').in('id',ids);
+    quien = Object.fromEntries((gente||[]).map(p=>[p.id,p]));
+  }
+
+  const titulo = U ? U.title : ('Unit ' + UNIT);
+  const motivo = U && U.cover ? U.cover.icon : '✨';
+  const fondo  = U && U.cover ? `background:linear-gradient(135deg,${U.cover.from},${U.cover.to})` : '';
+
+  $('#app').innerHTML = `
+    <div class="hero" style="${fondo}">
+      <span class="motivo">${motivo}</span>
+      <h1>${esc(titulo)}</h1>
+      <p>What this class made. Chosen by your teacher.</p>
+    </div>
+    ${(obras||[]).length ? '' : `<div class="vacio">Nothing on show yet.<br>
+      Your teacher decides which work goes up here.</div>`}
+    <div class="grid" id="grid"></div>`;
+
+  const grid = $('#grid');
+  (obras||[]).forEach(o => {
+    const p = quien[o.student_id] || {};
+    const texto = o.payload && o.payload.text;
+    const el = document.createElement('div');
+    el.className = 'obra';
+    el.innerHTML = `
+      <div class="autor">${esc(p.full_name || 'Student')} ${p.section?`<span style="font-weight:400;color:var(--grey)">· ${esc(p.section)}</span>`:''}</div>
+      <div class="tipo">${esc(NOMBRE[o.kind] || o.kind)}</div>
+      ${texto ? `<div class="cuerpo">${esc(texto)}</div>` : ''}
+      ${o.file_path ? `<button class="btn" data-ruta="${esc(o.file_path)}">&#9654; Open</button>` : ''}`;
+    grid.appendChild(el);
+  });
+
+  /* Los archivos viven en un bucket privado: se firma el enlace al pedirlo. */
+  grid.addEventListener('click', async e => {
+    const b = e.target.closest('button[data-ruta]');
+    if(!b) return;
+    b.textContent = 'Opening…';
+    const { data, error } = await sb.storage.from('unit-products')
+      .createSignedUrl(b.dataset.ruta, 3600);
+    if(error || !data){ b.textContent = 'Not available'; return; }
+    const ext = (b.dataset.ruta.split('.').pop()||'').toLowerCase();
+    if(['webm','ogg','mp3','m4a','wav'].indexOf(ext) >= 0){
+      const a = document.createElement('audio');
+      a.controls = true; a.src = data.signedUrl;
+      b.replaceWith(a);
+    } else {
+      window.open(data.signedUrl,'_blank','noopener');
+      b.textContent = '▶ Open';
+    }
+  });
+})();
+</script>
+</body>
+</html>
