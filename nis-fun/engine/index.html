@@ -487,7 +487,7 @@ if(/\.github\.io$/i.test(location.hostname)){
 <script src="vocab-art.js?v=1"></script>
 <script src="orientacion.js?v=1"></script>
 <script src="screens.js?v=4"></script>
-<script src="banner.js?v=6"></script>
+<script src="banner.js?v=7"></script>
 <script src="magicbox.js?v=4"></script>
 <script src="recorder.js?v=1"></script>
 <!-- el curso comparte dominio y sesion con el portal -->
@@ -704,7 +704,7 @@ async function hub(){
         ${estadoCurso}
         ${DEMO ? `<div class="demoflag">Demonstration — this preview covers the first two units.
            The full course has ${idx.units.length} units.</div>` : ''}
-        <p class="scr-pie">Tap a friend to hear them, or explore the short introduction.</p>
+        <p class="scr-pie">Meet the characters in 3D, then continue with your guide.</p>
         <button class="intro-skip" type="button">Skip introduction and see all units</button>
       </div>`,
       alMostrar(el){
@@ -712,11 +712,11 @@ async function hub(){
         const skip = el.querySelector('.intro-skip');
         if (skip) skip.onclick = () => {
           localStorage.setItem(introKey, '1');
-          SCREENS.ir(4);
+          SCREENS.ir(3);
         };
       } },
     { titulo: `Meet ${mascota} — your guide!`,
-      etiquetaSiguiente: 'Meet the characters',
+      etiquetaSiguiente: 'Story time',
       html: `<div class="scr-centro">
         <video class="scr-video" controls preload="metadata"
           src="../assets/videos/${idx.mascot}-intro.mp4?v=${VIDEO_V}"
@@ -728,27 +728,6 @@ async function hub(){
              “${(MASCOTA[idx.mascot]||{}).dice||''}”</p>
         </div>
       </div>` },
-    { titulo: `Meet the characters — ${idx.cast}!`,
-      etiquetaSiguiente: 'Units',
-      html: `<div class="scr-centro">
-        <video class="scr-video" controls preload="metadata"
-          src="../assets/videos/${LEVEL}-cast.mp4?v=${VIDEO_V}"
-          poster="../assets/videos/posters/${LEVEL}-cast.jpg?v=${VIDEO_V}"
-          onerror="this.hidden=true"></video>
-        <div class="quienes">${(idx.kids||[]).map(k=>`
-          <button class="quien" data-quien="${k}" type="button">
-            <img src="../assets/characters/${LEVEL}/${k}/fullbody.png?v=${ART_V}" alt=""
-                 onerror="this.onerror=null;this.src='../assets/characters/${LEVEL}/${k}/pose-01.png?v=${ART_V}'">
-            <span>${k[0].toUpperCase()+k.slice(1)}</span></button>`).join('')}
-        </div>
-        <p class="scr-pie">Tap a friend to hear their name.</p>
-      </div>`,
-      alMostrar(el){
-        el.querySelectorAll('.quien').forEach(b => b.onclick = () => {
-          new Audio(`../audio/cast/${LEVEL}-${b.dataset.quien}.mp3`).play().catch(()=>{});
-          b.classList.remove('dice'); void b.offsetWidth; b.classList.add('dice');
-        });
-      } },
   ];
 
   // Los cuentos del nivel, si los hay. Se comprueba al vuelo: Starters ya
@@ -774,7 +753,7 @@ async function hub(){
   SCREENS.montar(app, pantallas, {
     arriba: { href: Q('?'), texto: 'Fun for Nordic' },
     portal: PORTAL,
-    inicio: introVista ? 4 : 0,
+    inicio: introVista ? 3 : 0,
   });
 }
 
