@@ -208,19 +208,20 @@ window.BANNER = (function () {
     font-size:clamp(1.25rem,3vw,2.15rem);line-height:1.08}
   .lh-filmcopy p{margin:.25rem 0 0;font-family:"Baloo 2",sans-serif;font-weight:800;
     font-size:clamp(.78rem,1.8vw,1.2rem);letter-spacing:.09em;text-transform:uppercase}
-  .lh-live{position:absolute;right:3%;top:5%;z-index:3;display:flex;align-items:center;gap:.35rem;
+  .lh-sound-toggle{position:absolute;right:3%;top:5%;z-index:3;display:flex;align-items:center;gap:.35rem;
     background:rgba(5,17,31,.66);color:#fff;border:1px solid rgba(255,255,255,.24);
-    border-radius:999px;padding:.32rem .7rem;font-size:.76rem;font-weight:700}
-  .lh-live::before{content:"";width:.5rem;height:.5rem;border-radius:50%;background:#63e2aa;
-    box-shadow:0 0 0 0 rgba(99,226,170,.65);animation:lhlive 1.8s infinite}
-  @keyframes lhlive{70%{box-shadow:0 0 0 .45rem rgba(99,226,170,0)}}
+    border-radius:999px;padding:.4rem .72rem;font:700 .76rem/1.1 inherit;cursor:pointer;
+    box-shadow:0 4px 14px rgba(3,12,24,.28);transition:background .15s ease,transform .15s ease}
+  .lh-sound-toggle:hover,.lh-sound-toggle:focus-visible{background:rgba(5,17,31,.88);
+    transform:translateY(-1px);outline:2px solid rgba(255,255,255,.92);outline-offset:2px}
+  .lh-sound-toggle[aria-pressed="true"]{background:rgba(16,126,88,.88)}
   @media (max-width:640px){
     .lh-filmcopy{left:4.5%;top:7%}
-    .lh-live{right:2.5%;top:4%;font-size:.68rem;padding:.25rem .55rem}
+    .lh-sound-toggle{right:2.5%;top:4%;font-size:.68rem;padding:.34rem .56rem}
   }
   @media (prefers-reduced-motion:reduce){
     .lh-ola,.lh-luz,.lh-foco,.lh-nube,.lh-ave,.lh-aurora,.lh-titila,.lh-rielar,
-    .lh-nino.saluda .lh-globo,.lh-nino img,.lh-live::before{animation:none}
+    .lh-nino.saluda .lh-globo,.lh-nino img{animation:none}
     .lh-nino.saluda .lh-globo{opacity:1;transform:translateX(-50%) scale(1)}
   }`;
 
@@ -672,7 +673,8 @@ window.BANNER = (function () {
             <h1>${idx.name}</h1>
             <p class="lh-cast">${idx.cast}</p>
           </div>
-          <span class="lh-live">Meet the characters in motion</span>
+          <button class="lh-sound-toggle" type="button" aria-pressed="false"
+                  aria-label="Play this video with sound">🔊 Play with sound</button>
         </div>
       </div>`;
   }
@@ -692,6 +694,16 @@ window.BANNER = (function () {
       film.addEventListener('ended', () => { film.currentTime = inicio; film.play().catch(()=>{}); });
       film.play().catch(()=>{});
     }
+    const sonido = caja.querySelector('.lh-sound-toggle');
+    if (film && sonido) sonido.onclick = () => {
+      const activar = film.muted;
+      film.muted = !activar;
+      sonido.setAttribute('aria-pressed', activar ? 'true' : 'false');
+      sonido.setAttribute('aria-label', activar ? 'Mute this video' : 'Play this video with sound');
+      sonido.textContent = activar ? '🔇 Mute' : '🔊 Play with sound';
+      if (activar) film.currentTime = 0;
+      film.play().catch(()=>{});
+    };
   }
 
   return { html, vivo };
