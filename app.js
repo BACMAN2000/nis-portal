@@ -3089,6 +3089,7 @@ function studentGrade(key){
       ${_isPrimaryGrade(key) ? '' : (nodeVisible(base+'.grammar') ? _skillCard('📝','Grammar','Grammar for '+label+': explanations and games by unit.',_withBack('grammar.html?grade='+key,route)) : _lockedCard('📝','Grammar','Grammar for '+label+'.'))}
       ${nodeVisible(base+'.activities') ? _hubCard('🎲','Activities',_isPrimaryGrade(key)?'Games for each unit — with audio for young learners.':'Games by unit and by level: crosswords, word searches and more.',"window._nav('classes_"+key+"_act')") : _lockedCard('🎲','Activities','Games and activities.')}
       ${key==='g9' ? (nodeVisible('english.classes.g9.cambridge') ? _hubCard('🎓','Cambridge','B2 First (FCE) practice by skill: Listening, Use of English, Reading and Writing.',"window._nav('classes_g9_cambridge')") : _lockedCard('🎓','Cambridge','Cambridge B2 First practice.')) : ''}
+      ${key==='g5' ? _hubCard('🦅','Cambridge Flyers','The A2 Flyers picture tasks, sorted by the unit you are working on: label the people, tick the right picture, match people to pictures and write the picture story.',"window._nav('classes_g5_flyers')") : ''}
       ${readerBooksFor(key).length ? (nodeVisible(base+'.reader') ? _hubCard('📚','Readers','Graded readers with activities for every chapter: '+readerBooksFor(key).map(id=>READER_CARDS[id][4]).join(', ')+'.',"window._nav('classes_"+key+"_readers')") : _lockedCard('📚','Readers','Graded readers with activities.')) : ''}
     </div>`;
 }
@@ -3096,6 +3097,80 @@ function studentGrade(key){
    Listening, Use of English y Writing (movidas aquí desde la página del
    grado, pedido 2026-08-25; conservan sus nodos g9.uoe1 / g9.writing para
    no tocar los permisos de profesores) + Reading como "próximamente". */
+/* ---------- 5.º · Cambridge Flyers dentro de la clase ----------
+   Silvia dijo que la plataforma estaba demasiado orientada al examen, y la
+   respuesta no es esconder el examen: es enseñar a qué unidad del curso
+   pertenece cada tarea. Esta página va al revés que un simulacro — entra por
+   la UNIDAD del Scope & Sequence de 5.º y, dentro, dice qué parte del Flyers
+   se practica ahí. El reparto sale de nis-fun/content/flyers/exam-map.json,
+   que genera tools/gen_visual_flyers.py; si una unidad no tiene tareas
+   visuales, no se inventa: se dice.                                        */
+const FLYERS_TIPO = {
+  label_people:   ['🧍','Listen and label the people'],
+  picture_mc:     ['🖼️','Listen and tick the right picture'],
+  match_pictures: ['🔗','Match each person to a picture'],
+  picture_story:  ['✍️','Write the picture story (20–25 words)'],
+};
+
+async function studentGradeFlyers(key){
+  _setNav('classes');
+  const route='classes_'+key+'_flyers';
+  const back=_backBtn("window._nav('classes_"+key+"')",GRADE_META[key][1]);
+  if(!nodeVisible('english.classes.'+key)){ _lockedView(back,'🦅 Cambridge Flyers'); return; }
+  $('#main').innerHTML=`${back}<h1>🦅 Cambridge Flyers</h1><p class="muted">Loading…</p>`;
+
+  let mapa=null;
+  try{
+    const r=await fetch('nis-fun/content/flyers/exam-map.json',{cache:'no-cache'});
+    if(r.ok) mapa=await r.json();
+  }catch(_){}
+  if(!mapa){
+    $('#main').innerHTML=`${back}<h1>🦅 Cambridge Flyers</h1>
+      <div class="card"><p class="muted">The unit map is not available right now.
+      You can still open the course from Classes → Primary.</p></div>`;
+    return;
+  }
+
+  const secciones = mapa.temas.map(t=>{
+    const filas = t.unidades.map(n=>{
+      const u = mapa.unidades[String(n)];
+      if(!u) return '';
+      const chips = (u.visuales||[]).map(v=>{
+        const meta = FLYERS_TIPO[v.tipo] || ['•', v.tipo];
+        return `<span class="chip" title="${esc(v.paper)} Part ${v.part}">${meta[0]} ${esc(meta[1])}</span>`;
+      }).join('');
+      const foco = u.foco && u.foco.paper ? `${esc(u.foco.paper)} · Part ${u.foco.part}` : '';
+      return `<tr>
+        <td style="white-space:nowrap"><a href="${_withBack('nis-fun/engine/?level=flyers&unit='+n, route)}"
+             target="_blank" rel="noopener"><b>Unit ${n}</b></a></td>
+        <td>${esc(u.titulo)}${foco?`<div class="muted" style="font-size:.8rem">${foco}</div>`:''}</td>
+        <td>${chips || '<span class="muted" style="font-size:.85rem">no picture tasks in this unit</span>'}</td>
+      </tr>`;
+    }).join('');
+    return `<div class="card">
+      <h2 style="margin:0 0 2px;color:var(--blue-d);font-size:1.05rem">Unit ${t.n} · ${esc(t.nombre)}</h2>
+      <div class="muted" style="font-size:.85rem;margin-bottom:10px">
+        The Flyers units your class works on during this unit.</div>
+      <div style="overflow-x:auto"><table class="tbl"><tbody>${filas}</tbody></table></div>
+    </div>`;
+  }).join('');
+
+  const conVisuales = Object.values(mapa.unidades).filter(u=>(u.visuales||[]).length).length;
+  const totalTareas = Object.values(mapa.unidades).reduce((a,u)=>a+(u.visuales||[]).length,0);
+
+  $('#main').innerHTML=`${back}<h1>🦅 Cambridge Flyers</h1>
+    <p class="muted" style="margin-top:-6px">A2 Flyers exam tasks, sorted by the unit of your year — not as a separate exam course.</p>
+    <div class="card" style="border-top:5px solid #3b6fb5">
+      <p style="margin:0 0 8px">The picture tasks use <b>our own characters and our own places</b>:
+        Ingrid, Diego, Maya, Oliver and Kili, plus your classmates, around the school.
+        The task <i>type</i> is the Cambridge one; the drawings are ours.</p>
+      <p class="muted" style="font-size:.85rem;margin:0">
+        ${totalTareas} picture tasks across ${conVisuales} of the ${Object.keys(mapa.unidades).length} Flyers units.
+        Every unit has the picture story; the listening picture tasks are in the units
+        whose words can be drawn — in a grammar unit a picture would not add anything.</p>
+    </div>
+    ${secciones}`;
+}
 function studentGradeCambridge(key){
   _setNav('classes');
   const route='classes_'+key+'_cambridge';
@@ -3374,6 +3449,7 @@ function _navRender(k){
   if(m=/^classes_(g\d+)_unit_([a-z0-9]+)$/.exec(k)){ studentGradeUnit(m[1],m[2]); return true; }
   if(m=/^classes_(g\d+)_act$/.exec(k)){ studentGradeActivities(m[1]); return true; }
   if(m=/^classes_(g\d+)_units$/.exec(k)){ studentGradeUnits(m[1]); return true; }
+  if(m=/^classes_(g\d+)_flyers$/.exec(k)){ studentGradeFlyers(m[1]); return true; }
   if(m=/^classes_(g\d+)_cambridge$/.exec(k)){ studentGradeCambridge(m[1]); return true; }
   if(m=/^classes_(g\d+)_readers_report$/.exec(k)){ studentReaderReport(m[1]); return true; }
   if(m=/^classes_(g\d+)_readers$/.exec(k)){ studentGradeReaders(m[1]); return true; }

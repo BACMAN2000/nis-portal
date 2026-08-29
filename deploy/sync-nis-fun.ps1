@@ -1,3 +1,4 @@
+param([switch]$Force)
 # Sincroniza YLE Fun for Nordic (repo nis-fun) DENTRO de este repo.
 #
 # Por que: los alumnos no deben ver bacman2000.github.io en la barra de
@@ -13,11 +14,43 @@
 #
 # OJO: /E copia y sobrescribe, pero NO borra lo que ya no exista en origen. Si
 # borras un archivo en nis-fun, borralo tambien aqui a mano.
+#
+# OJO 2 (29-ago-2026): esto copia A CIEGAS. Ese dia la copia del portal iba 235
+# lineas POR DELANTE del repo origen -- alguien habia editado aqui directamente
+# los ajustes de movil, el estado de carga y la accesibilidad, sin pasarlos a
+# nis-fun. Correr el script tal cual se los habria llevado por delante. Por eso
+# ahora se compara antes y hace falta -Force para pisar algo que difiera.
 
 $src = Join-Path (Split-Path (Split-Path $PSScriptRoot -Parent) -Parent) 'nis-fun'
 $dst = Join-Path (Split-Path $PSScriptRoot -Parent) 'nis-fun'
 
 if(-not (Test-Path $src)){ Write-Error "No encuentro el repo origen en $src"; exit 1 }
+
+# Los archivos que alguien podria haber editado SOLO aqui. Si el destino difiere
+# del origen, se para: puede que la copia buena sea esta.
+$vigilados = @('engine\index.html','engineanner.js','engine\screens.js','index.html')
+$distintos = @()
+foreach($f in $vigilados){
+  $a = Join-Path $src $f; $b = Join-Path $dst $f
+  if((Test-Path $a) -and (Test-Path $b)){
+    $ha = (Get-FileHash $a -Algorithm SHA256).Hash
+    $hb = (Get-FileHash $b -Algorithm SHA256).Hash
+    if($ha -ne $hb){ $distintos += $f }
+  }
+}
+if($distintos.Count -and -not $Force){
+  Write-Host ""
+  Write-Warning "Estos archivos DIFIEREN entre el origen y la copia del portal:"
+  $distintos | ForEach-Object { Write-Host "    $_" }
+  Write-Host ""
+  Write-Host "No copio nada. Mira el diff antes: puede que la version buena sea la"
+  Write-Host "del portal y copiar encima la borre."
+  Write-Host ""
+  Write-Host "  diff (Get-Content \"$src\engine\index.html\") (Get-Content \"$dst\engine\index.html\")"
+  Write-Host ""
+  Write-Host "Cuando estes seguro de que el origen es el bueno:  -Force"
+  exit 1
+}
 
 Write-Host "origen : $src"
 Write-Host "destino: $dst"
