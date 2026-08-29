@@ -1,3 +1,13 @@
+-- ⚠️ NO REAPLICAR TAL CUAL (nota del 2026-08-29).
+-- Este archivo tiene DOS defectos que se corrigieron despues:
+--   1. Inserta en una columna 'level' que en profiles no existe (es cefr_level).
+--      Rompio el alta de usuarios desde el 2026-07-13 hasta el 2026-08-29.
+--   2. Escribe en student_credentials, que guardaba contraseñas en texto plano
+--      y ya no existe.
+-- La version buena de handle_new_user esta en
+-- 2026-08-29_04_arreglar_handle_new_user_columna_cefr_level.sql.
+-- Se conserva por trazabilidad.
+
 -- Applied to PROD (Supabase project kjrppibltkbflvxmiyib) on 2026-07-13.
 -- CRITICAL FIX — privilege escalation via signup metadata.
 --
