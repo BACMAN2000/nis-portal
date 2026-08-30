@@ -4570,11 +4570,12 @@ function materialesPanel(){
 
     <h3 style="margin-top:24px;font-size:1rem;color:var(--blue-d)">Fichas digitales</h3>
     <p class="muted">Para que el alumno la resuelva <b>dentro del portal</b>, sin bajarse nada.
-      Genera el archivo con <code>python tools/digitaliza_fichas.py</code> y suéltalo aquí.</p>
+      Suelta aquí tus fichas en <b>Word</b> y el portal las convierte: te enseña lo que ha
+      entendido de cada una y tú decides si se publica.</p>
     <label for="matJson" style="display:block;border:2px dashed #cbe0c9;border-radius:12px;
         padding:18px;text-align:center;cursor:pointer;color:var(--grey)">
-      <input type="file" id="matJson" accept=".json" style="display:none">
-      🧩 <b>Importar fichas digitalizadas</b> (worksheets-digital.json)
+      <input type="file" id="matJson" multiple accept=".docx,.json" style="display:none">
+      🧩 <b>Digitalizar fichas</b> — elige tus <code>.docx</code>, o arrástralos aquí
     </label>
     <div class="row"><span class="state" id="matJsonEstado"></span></div>
     <div id="matLista" style="margin-top:14px"></div>
@@ -4590,7 +4591,15 @@ function materialesPanel(){
     </details>
   </div>`;
 
-  $('#matJson').addEventListener('change', e => matImporta(e.target.files[0]));
+  const jinp = $('#matJson'), jlbl = jinp.parentNode;
+  jinp.addEventListener('change', e => matDigitaliza(e.target.files));
+  ['dragover','dragenter'].forEach(ev => jlbl.addEventListener(ev, e => {
+    e.preventDefault(); jlbl.style.borderColor = 'var(--good)';
+  }));
+  ['dragleave','drop'].forEach(ev => jlbl.addEventListener(ev, e => {
+    e.preventDefault(); jlbl.style.borderColor = '#cbe0c9';
+  }));
+  jlbl.addEventListener('drop', e => matDigitaliza(e.dataTransfer.files));
   const inp = $('#matFiles'), lbl = inp.parentNode;
   inp.addEventListener('change', e => matSube(e.target.files));
   ['dragover','dragenter'].forEach(ev => lbl.addEventListener(ev, e => {
@@ -4697,6 +4706,337 @@ function fichasTabla(fichas, quien){
 /* Importa las fichas ya digitalizadas a la tabla worksheets. El archivo lo
    genera tools/digitaliza_fichas.py leyendo los .docx; aquí solo se vuelca,
    en lotes para no mandar medio mega en una sola petición. */
+/* ---------------------------------------------------------------
+   🧩 Digitalizar fichas .docx DENTRO del portal
+
+   Antes esto solo lo podía hacer un administrador: había que correr
+   tools/digitaliza_fichas.py en una máquina concreta, generar un JSON y
+   subirlo. El profesor dependía de otra persona para algo que es suyo.
+
+   Aquí se hace lo mismo en el navegador del profesor. La conversión no
+   necesita permisos especiales — solo leer un archivo que él ya tiene — y la
+   escritura va con SU sesión: las políticas de la tabla worksheets ya dejan
+   escribir a profesores y administradores. No hace falta ninguna clave de
+   servicio, que era el verdadero motivo por el que esto no estaba hecho.
+
+   Un .docx es un ZIP con XML dentro. Se abre a mano, sin librerías: el
+   navegador ya sabe descomprimir (DecompressionStream) y leer XML.
+   ---------------------------------------------------------------- */
+
+/* ---- 1. Sacar word/document.xml de un .docx ---------------------------- */
+
+/* Lector de ZIP mínimo. Solo busca UN archivo, que es lo único que hace falta.
+   Se recorre el directorio central (al final del ZIP) en vez de ir saltando
+   por las cabeceras locales: es donde el formato garantiza los tamaños. */
+async function _zipLee(buf, queArchivo){
+  const dv = new DataView(buf), n = buf.byteLength;
+  // El final del directorio central lleva un comentario opcional, así que se
+  // busca su firma hacia atrás en vez de asumir que está en el último byte.
+  let fin = -1;
+  for(let i = n - 22; i >= Math.max(0, n - 65558); i--){
+    if(dv.getUint32(i, true) === 0x06054b50){ fin = i; break; }
+  }
+  if(fin < 0) throw new Error('no parece un .docx (no encuentro el índice del ZIP)');
+
+  let pos = dv.getUint32(fin + 16, true);
+  const cuantos = dv.getUint16(fin + 10, true);
+  const nombres = new TextDecoder();
+
+  for(let k = 0; k < cuantos; k++){
+    if(dv.getUint32(pos, true) !== 0x02014b50) break;
+    const metodo   = dv.getUint16(pos + 10, true);
+    const compSize = dv.getUint32(pos + 20, true);
+    const lenNom   = dv.getUint16(pos + 28, true);
+    const lenExtra = dv.getUint16(pos + 30, true);
+    const lenCom   = dv.getUint16(pos + 32, true);
+    const offLocal = dv.getUint32(pos + 42, true);
+    const nombre   = nombres.decode(new Uint8Array(buf, pos + 46, lenNom));
+
+    if(nombre === queArchivo){
+      // La cabecera local repite el nombre y los extras, y sus longitudes NO
+      // tienen por qué coincidir con las del directorio central: los datos
+      // empiezan después de las de ESTA cabecera.
+      const lNom = dv.getUint16(offLocal + 26, true);
+      const lExt = dv.getUint16(offLocal + 28, true);
+      const ini  = offLocal + 30 + lNom + lExt;
+      const datos = new Uint8Array(buf, ini, compSize);
+      if(metodo === 0) return new TextDecoder('utf-8').decode(datos);
+      if(metodo !== 8) throw new Error('el .docx usa una compresión que no sé leer');
+      if(typeof DecompressionStream === 'undefined')
+        throw new Error('este navegador no puede descomprimir; ábrelo en Chrome o Edge actualizados');
+      const flujo = new Blob([datos]).stream().pipeThrough(new DecompressionStream('deflate-raw'));
+      return await new Response(flujo).text();
+    }
+    pos += 46 + lenNom + lenExtra + lenCom;
+  }
+  throw new Error('el archivo no lleva ' + queArchivo + ' — ¿es un .docx de verdad?');
+}
+
+/* ---- 2. Del XML de Word a los bloques de la ficha ---------------------- */
+/* Mismo criterio que tools/digitaliza_fichas.py, y con las mismas dos
+   trampas ya resueltas; si se cambia aquí, hay que cambiarlo allí. */
+
+const _RE_PARA  = /<w:p[ >][\s\S]*?<\/w:p>/g;
+// Trampa 1: <w:t[^>]*> también casa con <w:tcPr>, y entonces se cuela el XML
+// crudo como si fuera texto del alumno. Hay que exigir '>' o un espacio.
+const _RE_TEXTO = /<w:t(?:\s[^>]*)?>([\s\S]*?)<\/w:t>/g;
+const _RE_TABLA = /<w:tbl>[\s\S]*?<\/w:tbl>/g;
+const _RE_FILA  = /<w:tr[ >][\s\S]*?<\/w:tr>/g;
+const _RE_CELDA = /<w:tc>[\s\S]*?<\/w:tc>/g;
+const _RE_LINEA = /^[_\s.]{12,}$/;
+const _RE_ACT   = /^(activity|task|step)\s/i;
+
+function _desescapa(t){
+  return t.replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>')
+          .replace(/&quot;/g,'"').replace(/&apos;/g,"'");
+}
+function _textoDe(frag){
+  let out = '', m;
+  _RE_TEXTO.lastIndex = 0;
+  while((m = _RE_TEXTO.exec(frag)) !== null) out += m[1];
+  return _desescapa(out).trim();
+}
+// Trampa 2: casi todos los párrafos de estas fichas llevan algún <w:b/> suelto,
+// así que solo con eso la ficha entera salía como titulares. Se pide además
+// que sea corto: una instrucción larga en negrita sigue siendo instrucción.
+function _esTitular(frag, txt){
+  if(frag.indexOf('<w:b/>') < 0 && frag.indexOf('<w:b ') < 0) return false;
+  return txt.length <= 80;
+}
+function _trocea(xml){
+  const piezas = [];
+  let pos = 0, m;
+  _RE_TABLA.lastIndex = 0;
+  while((m = _RE_TABLA.exec(xml)) !== null){
+    const antes = xml.slice(pos, m.index);
+    let p; _RE_PARA.lastIndex = 0;
+    while((p = _RE_PARA.exec(antes)) !== null) piezas.push(['p', p[0]]);
+    piezas.push(['tbl', m[0]]);
+    pos = m.index + m[0].length;
+  }
+  const resto = xml.slice(pos);
+  let p; _RE_PARA.lastIndex = 0;
+  while((p = _RE_PARA.exec(resto)) !== null) piezas.push(['p', p[0]]);
+  return piezas;
+}
+function _leeTabla(frag){
+  const filas = []; let fr;
+  _RE_FILA.lastIndex = 0;
+  while((fr = _RE_FILA.exec(frag)) !== null){
+    const celdas = []; let c;
+    _RE_CELDA.lastIndex = 0;
+    while((c = _RE_CELDA.exec(fr[0])) !== null) celdas.push(_textoDe(c[0]));
+    if(celdas.length) filas.push(celdas);
+  }
+  return filas;
+}
+
+function docxABloques(xml){
+  const bloques = [];
+  let objetivos = [], lineas = 0, nCampo = 0, titulo = '', meta = '';
+
+  const cierraLineas = () => {
+    if(!lineas) return;
+    nCampo++;
+    bloques.push({t:'write', id:'w'+nCampo, lines: Math.min(lineas, 12)});
+    lineas = 0;
+  };
+
+  for(const [tipo, frag] of _trocea(xml)){
+    if(tipo === 'tbl'){
+      cierraLineas();
+      const filas = _leeTabla(frag);
+      if(!filas.length) continue;
+      if(filas.length === 1 && filas[0].length === 1){
+        const caja = filas[0][0];
+        if(caja.indexOf('☐') >= 0 || caja.indexOf('□') >= 0){
+          const items = caja.split(/[☐□]/).map(x=>x.trim()).filter(Boolean);
+          // El primer trozo suele ser el rótulo del recuadro ("Today I will…",
+          // "Mini self-check") y no un objetivo con casilla: va antes del primer
+          // ☐. Se descarta si no termina en punto y hay algo detrás. En el
+          // script de Python esto es un items.pop(0) cuyo resultado no se usa
+          // -- parece código muerto y no lo es: lo que importa es que quita.
+          if(items.length > 1 && !items[0].endsWith('.')) items.shift();
+          if(items.length) bloques.push({t:'goals', items});
+          continue;
+        }
+        if(caja.toLowerCase().indexOf('word bank') === 0){
+          const resto = caja.slice(9).replace(/^[\s:]+/,'');
+          bloques.push({t:'bank', items: resto.split(/[·|,]/).map(x=>x.trim()).filter(Boolean)});
+          continue;
+        }
+        bloques.push({t:'note', text: caja});
+        continue;
+      }
+      nCampo++;
+      bloques.push({t:'table', id:'t'+nCampo, head: filas[0], rows: filas.slice(1)});
+      continue;
+    }
+
+    const txt = _textoDe(frag);
+    if(!txt) continue;
+
+    if(_RE_LINEA.test(txt)){ lineas++; continue; }   // varias seguidas = un campo
+    cierraLineas();
+
+    if(txt[0] === '☐' || txt[0] === '□'){
+      objetivos.push(txt.replace(/^[☐□\s]+/,'').trim());
+      continue;
+    }
+    if(objetivos.length){ bloques.push({t:'goals', items: objetivos}); objetivos = []; }
+
+    const b = _esTitular(frag, txt);
+    if(!titulo && _esTitular(frag, txt.slice(0,80)) && txt.toUpperCase().indexOf('STUDENT WORKSHEET') < 0){
+      titulo = txt; continue;
+    }
+    if(!meta && (txt.indexOf('·') >= 0 || txt.indexOf('|') >= 0) && !b){ meta = txt; continue; }
+    if(txt.toLowerCase().indexOf('name:') === 0) continue;      // el portal ya sabe quién es
+    if(txt.toUpperCase().indexOf('STUDENT WORKSHEET') >= 0) continue;
+
+    if(_RE_ACT.test(txt))                                  bloques.push({t:'activity', text: txt});
+    else if(txt.toLowerCase().indexOf('word bank') === 0)  bloques.push({t:'bankhead', text: txt});
+    else if(b)                                             bloques.push({t:'h', text: txt});
+    else                                                   bloques.push({t:'p', text: txt});
+  }
+
+  cierraLineas();
+  if(objetivos.length) bloques.push({t:'goals', items: objetivos});
+  return {titulo, meta, bloques};
+}
+
+/* ---- 3. El nombre del archivo dice dónde va ---------------------------- */
+const _RE_FICHA = /^u(\d+)w(\d+)s(\d+)-worksheet-([a-z0-9]+)\.docx$/i;
+
+/* ---- 4. El flujo completo, con lo que ve el profesor ------------------- */
+async function matDigitaliza(files){
+  const est = $('#matJsonEstado');
+  const lista = Array.from(files || []);
+  if(!lista.length) return;
+
+  const grado = $('#matGrado').value;
+  const docx = lista.filter(f => /\.docx$/i.test(f.name));
+  const json = lista.filter(f => /\.json$/i.test(f.name));
+
+  // El JSON que generaba el script sigue valiendo: quien ya lo tenga no pierde
+  // el camino viejo por haber estrenado el nuevo.
+  if(json.length && !docx.length) return matImporta(json[0]);
+
+  est.className = 'state';
+  const fichas = [], malos = [];
+
+  for(let i = 0; i < docx.length; i++){
+    const f = docx[i];
+    est.textContent = `Leyendo ${i+1} de ${docx.length}: ${f.name}…`;
+    const m = _RE_FICHA.exec(f.name);
+    if(!m){ malos.push(f.name + ' — el nombre no sigue el patrón uNwNsN-worksheet-nivel.docx'); continue; }
+    try{
+      const xml = await _zipLee(await f.arrayBuffer(), 'word/document.xml');
+      const {titulo, meta, bloques} = docxABloques(xml);
+      const campos = bloques.filter(b => b.t === 'write' || b.t === 'table').length;
+      // Una ficha sin ningún campo que rellenar no es una ficha digital: es un
+      // documento de lectura. Se avisa en vez de publicar algo que el alumno
+      // abre y no puede responder.
+      if(!campos){ malos.push(f.name + ' — no encontré nada que el alumno pueda rellenar'); continue; }
+      fichas.push({
+        grade: grado, unit: +m[1], week: +m[2], session: +m[3], level: m[4].toUpperCase(),
+        code: `u${+m[1]}w${+m[2]}s${+m[3]}`, title: titulo || null, meta: meta || null,
+        blocks: bloques, campos, archivo: f.name
+      });
+    }catch(e){ malos.push(f.name + ' — ' + e.message); }
+  }
+
+  if(!fichas.length){
+    est.className = 'state err';
+    est.innerHTML = 'No pude digitalizar ninguna.<br>' + malos.map(esc).join('<br>');
+    return;
+  }
+
+  // Antes de escribir nada, se enseña lo que se ha entendido. Publicar a ciegas
+  // una ficha mal leída la ve el alumno antes que el profesor.
+  window._matPrevias = fichas;
+  const filas = fichas.map((f,i) => `<tr>
+      <td><b>${esc(f.code)}</b> <span class="badge lvl">${esc(f.level)}</span></td>
+      <td>${esc(f.title || '(sin título)')}</td>
+      <td style="text-align:center">${f.blocks.length}</td>
+      <td style="text-align:center"><b>${f.campos}</b></td>
+      <td><button class="btn sm ghost" onclick="matVistaPrevia(${i})">👁 Ver</button></td>
+    </tr>`).join('');
+  est.className = 'state ok';
+  est.textContent = `${fichas.length} ficha(s) leídas. Revísalas y publica.`;
+  $('#matLista').innerHTML = `
+    <div class="card" style="margin-top:12px">
+      <h3 style="margin-top:0;font-size:1rem;color:var(--blue-d)">Esto es lo que he entendido</h3>
+      <div style="overflow-x:auto"><table class="tbl">
+        <thead><tr><th>Ficha</th><th>Título</th><th style="text-align:center">Bloques</th>
+          <th style="text-align:center">Campos</th><th></th></tr></thead>
+        <tbody>${filas}</tbody></table></div>
+      ${malos.length ? `<div class="note err" style="margin-top:12px">No pude con ${malos.length}:<br>
+        ${malos.map(esc).join('<br>')}</div>` : ''}
+      <div id="matPrev" style="display:none;margin-top:14px"></div>
+      <div class="row" style="margin-top:14px;gap:10px">
+        <button class="btn" onclick="matPublica()">Publicar ${fichas.length} ficha(s) en ${esc(GRADE_META[grado][1])}</button>
+        <button class="btn ghost" onclick="$('#matLista').innerHTML='';$('#matJsonEstado').textContent='';">Cancelar</button>
+      </div>
+    </div>`;
+}
+
+/* Lo que verá el alumno, con los campos marcados. Sin esto el profesor
+   publica confiando, y la confianza no es una comprobación. */
+window.matVistaPrevia = function(i){
+  const f = window._matPrevias[i], caja = $('#matPrev');
+  const pinta = b => {
+    if(b.t === 'h')        return `<h4 style="margin:12px 0 4px;color:var(--blue-dd)">${esc(b.text)}</h4>`;
+    if(b.t === 'activity') return `<div style="margin:12px 0 4px;font-weight:700;color:var(--blue-d)">${esc(b.text)}</div>`;
+    if(b.t === 'p')        return `<p style="margin:4px 0">${esc(b.text)}</p>`;
+    if(b.t === 'note')     return `<div class="note" style="margin:8px 0">${esc(b.text)}</div>`;
+    if(b.t === 'bankhead') return `<div style="margin:10px 0 2px;font-weight:600">${esc(b.text)}</div>`;
+    if(b.t === 'bank')     return `<div class="row" style="gap:6px;flex-wrap:wrap;margin:6px 0">
+        ${b.items.map(x=>`<span class="badge">${esc(x)}</span>`).join('')}</div>`;
+    if(b.t === 'goals')    return `<ul style="margin:8px 0">${b.items.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`;
+    if(b.t === 'write')    return `<div style="margin:8px 0;padding:8px 10px;border:2px dashed var(--blue);
+        border-radius:8px;color:var(--blue-d);font-size:.85rem">✍️ campo de escritura · ${b.lines} línea(s)</div>`;
+    if(b.t === 'table')    return `<div style="overflow-x:auto;margin:8px 0"><table class="tbl">
+        <thead><tr>${b.head.map(h=>`<th>${esc(h)}</th>`).join('')}</tr></thead>
+        <tbody>${b.rows.map(r=>`<tr>${r.map(c=>c
+          ? `<td>${esc(c)}</td>`
+          : '<td style="background:#eef4fb;color:var(--blue-d);font-size:.8rem">se rellena</td>').join('')}</tr>`).join('')}
+        </tbody></table></div>`;
+    return '';
+  };
+  caja.style.display = 'block';
+  caja.innerHTML = `<div style="border:1px solid var(--line);border-radius:12px;padding:16px;background:#fff">
+    <div class="muted" style="font-size:.8rem">${esc(f.archivo)}</div>
+    <h3 style="margin:2px 0 2px">${esc(f.title || '(sin título)')}</h3>
+    ${f.meta ? `<div class="muted" style="font-size:.85rem;margin-bottom:8px">${esc(f.meta)}</div>` : ''}
+    ${f.blocks.map(pinta).join('')}</div>`;
+  caja.scrollIntoView({behavior:'smooth', block:'nearest'});
+};
+
+window.matPublica = async function(){
+  const fichas = window._matPrevias || [];
+  if(!fichas.length) return;
+  const est = $('#matJsonEstado');
+  est.className = 'state'; est.textContent = 'Publicando…';
+  const filas = fichas.map(f => ({
+    grade: f.grade, unit: f.unit, week: f.week, session: f.session, level: f.level,
+    code: f.code, title: f.title, meta: f.meta, blocks: f.blocks,
+    created_by: (state.profile && state.profile.id) || null,
+    updated_at: new Date().toISOString()
+  }));
+  let ok = 0, fallos = 0, ultimo = '';
+  for(let i = 0; i < filas.length; i += 12){
+    const lote = filas.slice(i, i + 12);
+    const { error } = await sb.from('worksheets')
+      .upsert(lote, { onConflict: 'grade,unit,week,session,level' });
+    if(error){ fallos += lote.length; ultimo = error.message; } else ok += lote.length;
+  }
+  est.className = fallos ? 'state err' : 'state ok';
+  est.textContent = fallos
+    ? `${ok} publicadas, ${fallos} con error (${ultimo})`
+    : `${ok} ficha(s) publicadas. Ya se pueden resolver en el portal.`;
+  if(!fallos) $('#matLista').innerHTML = '';
+};
+
 async function matImporta(file){
   if(!file) return;
   const est = $('#matJsonEstado');
