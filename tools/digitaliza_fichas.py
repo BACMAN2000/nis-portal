@@ -110,6 +110,10 @@ def convierte(ruta):
                 caja = filas[0][0]
                 if '☐' in caja or '□' in caja:
                     items = [x.strip() for x in re.split(u'[☐□]', caja) if x.strip()]
+                    # OJO: lo que importa de esta linea es el pop, no el valor.
+                    # Quita el rotulo del recuadro ("Today I will...") para que no
+                    # salga como un objetivo mas. Parece codigo muerto y no lo es;
+                    # el mismo criterio esta replicado en app.js (docxABloques).
                     cab = items.pop(0) if items and not items[0].endswith('.') and len(items) > 1 else None
                     if items:
                         bloques.append({'t': 'goals', 'items': items})
