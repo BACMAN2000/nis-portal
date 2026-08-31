@@ -486,6 +486,14 @@ document.addEventListener('keydown', e=>{
   else if(e.key==='f'||e.key==='F'){ e.preventDefault(); pantallaClase(); }
 });
 $('#visor').addEventListener('click', e=>{ if(e.target.id==='visor') cierraClase(); });
+/* Un solo oyente para todos los "View class": las semanas se repintan y los
+   chips van y vienen, asi que se escucha en el documento. */
+document.addEventListener('click', e=>{
+  const a = e.target.closest && e.target.closest('.deck-chip[data-deck]');
+  if(!a) return;
+  e.preventDefault();
+  verClase(a.dataset.deck, parseInt(a.dataset.pages,10)||0, a.dataset.titulo||'');
+});
 
 window.abreArchivo = async function(ruta, el){
   if(!sb || !me) return false;
@@ -558,8 +566,13 @@ function sesionesSemana(n){
       .map(l=>`<a class="lvl-chip" href="#" onclick="return abreArchivo('${base}${esc(x.ws[l].pdf)}',this)">${l}</a>`).join('');
     const online = ['A2','B1','B2','C1'].filter(l=>_digitales.has(n+'s'+x.s+'-'+l))
       .map(l=>`<a class="on-chip" href="worksheet.html?grade=${GRADE}&unit=${UNIT}&week=${n}&session=${x.s}&level=${l}">${l}</a>`).join('');
+    /* Los datos van en atributos, no dentro de un onclick. Con el titulo
+       metido en el onclick, una sesion como "The Sleep Doctor's Top 5 Tips"
+       cerraba el texto en el apostrofe y el clic no hacia nada: el .replace
+       que pretendia escaparlo era `"\'"`, que en JavaScript es solo `'`. */
     const ver = (x.deck && x.pages)
-      ? `<a class="deck-chip" href="#" onclick="return verClase('${base}${esc(x.deck)}',${x.pages},'S${x.s} · ${esc(x.title||('Session '+x.s)).replace(/'/g,"\'")}')">&#9654; View class</a>` : '';
+      ? `<a class="deck-chip" href="#" data-deck="${esc(base + x.deck)}" data-pages="${x.pages}"
+           data-titulo="S${x.s} · ${esc(x.title||('Session '+x.s))}">&#9654; View class</a>` : '';
     if(!niveles && !ver && !online) return '';
     const hito = 'w' + n + 's' + x.s;
     return `<div class="ses-row">
