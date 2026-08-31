@@ -174,7 +174,7 @@ textarea:focus{outline:none;border-color:var(--blue)}
 <script src="config.js"></script>
 <script src="activities-data.js?v=12"></script>
 <script src="class-files.js?v=2"></script>
-<script src="unit-plans.js?v=6"></script>
+<script src="unit-plans.js?v=7"></script>
 <script src="nis-nav.js?v=2"></script>
 <script>
 /* Motor del hub de unidad. Los datos vienen de unit-plans.js, que es una copia
@@ -252,7 +252,9 @@ function pinta(){
     ${juegosSueltos()}</div>`;
 
   $('#app').innerHTML = `
-  <div class="hero" id="hero" style="${U.cover?`background:linear-gradient(135deg,${U.cover.from},${U.cover.to})`:''}">
+  <div class="hero" id="hero" style="${U.cover?(U.cover.image
+      ? `background-image:linear-gradient(90deg,rgba(12,24,45,.84),rgba(12,24,45,.28)),url('${U.cover.image}');background-size:cover;background-position:center`
+      : `background:linear-gradient(135deg,${U.cover.from},${U.cover.to})`):''}">
     ${U.cover?`<span class="motivo">${U.cover.icon}</span>`:''}
     <p class="eyebrow">${esc(PLAN.label)} · English · Unit ${U.n}</p>
     <h1>${esc(U.title)}</h1>

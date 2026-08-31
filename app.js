@@ -4550,6 +4550,21 @@ function unitPlansFor(grade){
   const p = (window.UNIT_PLANS||{})[grade];
   return (p && p.units) ? p.units : [];
 }
+function _unitPlanCard(u,route,grade){
+  const href=_withBack('unit.html?grade='+grade+'&unit='+u.n,route);
+  const image=u.cover&&u.cover.image;
+  const visual=image
+    ? `<img src="${esc(image)}" alt="" loading="lazy" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block">`
+    : `<div style="font-size:3.4rem;line-height:1;padding:30px 18px 8px">${(u.cover&&u.cover.icon)||'📘'}</div>`;
+  return `<a class="card" href="${href}" style="text-decoration:none;color:inherit;display:block;padding:0;margin-bottom:0;overflow:hidden;transition:.15s"
+      onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform=''">
+      ${visual}
+      <div style="padding:18px">
+        <h2 style="margin:0 0 6px;color:var(--blue-d)">Unit ${u.n} · ${esc(u.title)}</h2>
+        <div class="muted" style="font-size:.85rem">${esc(u.deliverables.map(d=>d.title).join(' · '))} — ${u.weeks} weeks.</div>
+      </div>
+    </a>`;
+}
 function studentGradeUnits(key){
   _setNav('classes');
   const route = 'classes_'+key+'_units';
@@ -4562,9 +4577,7 @@ function studentGradeUnits(key){
   $('#main').innerHTML = `${back}<h1>🎯 Units</h1>
     <p class="muted" style="margin-top:-6px">${esc(plan.label)}${plan.cefr?' · '+esc(plan.cefr):''} — each unit ends in something you make, not in a test.</p>
     <div class="grid cols-2" style="margin-top:12px">
-      ${units.map(u=>_skillCard('📘','Unit '+u.n+' · '+esc(u.title),
-          esc(u.deliverables.map(d=>d.title).join(' · '))+' — '+u.weeks+' weeks.',
-          _withBack('unit.html?grade='+key+'&unit='+u.n,route))).join('')}
+      ${units.map(u=>_unitPlanCard(u,route,key)).join('')}
     </div>`;
 }
 
