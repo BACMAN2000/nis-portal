@@ -421,7 +421,7 @@ window.UNIT_PLANS = {
 
 /* ---------------------------------------------------------------- U1 */
 {
-  cover:{icon:'🔍', from:'#2a1f4e', to:'#6a5ba8'},
+  cover:{icon:'🔍', from:'#2a1f4e', to:'#6a5ba8', image:'assets/unit-covers/g9-u1-mystery.png'},
   n:1,
   title:'Mystery and Secrets: Investigating the Unknown',
   weeks:6,
@@ -460,7 +460,7 @@ window.UNIT_PLANS = {
 
 /* ---------------------------------------------------------------- U2 */
 {
-  cover:{icon:'🔬', from:'#123a5c', to:'#3f86bb'},
+  cover:{icon:'🔬', from:'#123a5c', to:'#3f86bb', image:'assets/unit-covers/g9-u2-voices.png'},
   n:2,
   title:'Voices Shaping Our World',
   weeks:6,
@@ -500,7 +500,7 @@ window.UNIT_PLANS = {
 
 /* ---------------------------------------------------------------- U3 */
 {
-  cover:{icon:'📲', from:'#3b1f5c', to:'#8158b8'},
+  cover:{icon:'📲', from:'#3b1f5c', to:'#8158b8', image:'assets/unit-covers/g9-u3-identities.png'},
   n:3,
   title:'Scrolling Identities — Who Are We Online?',
   weeks:6,
@@ -546,7 +546,7 @@ window.UNIT_PLANS = {
 
 /* ---------------------------------------------------------------- U4 */
 {
-  cover:{icon:'🧠', from:'#14524b', to:'#3f9c8f'},
+  cover:{icon:'🧠', from:'#14524b', to:'#3f9c8f', image:'assets/unit-covers/g9-u4-wellbeing.png'},
   n:4,
   title:'Mind Over Matter — The Wellbeing Generation',
   weeks:6,
@@ -622,7 +622,7 @@ window.UNIT_PLANS = {
 
 /* ---------------------------------------------------------------- U5 */
 {
-  cover:{icon:'⚡', from:'#6b3a12', to:'#c9772f'},
+  cover:{icon:'⚡', from:'#6b3a12', to:'#c9772f', image:'assets/unit-covers/g9-u5-technology.png'},
   n:5,
   title:'The Double-Edged Sword: Technology, Society and the Environment',
   weeks:5,
@@ -676,7 +676,7 @@ window.UNIT_PLANS = {
 
 /* ---------------------------------------------------------------- U6 */
 {
-  cover:{icon:'🚀', from:'#1e2b6b', to:'#5566c4'},
+  cover:{icon:'🚀', from:'#1e2b6b', to:'#5566c4', image:'assets/unit-covers/g9-u6-future.png'},
   n:6,
   title:'Future Visions',
   weeks:5,
