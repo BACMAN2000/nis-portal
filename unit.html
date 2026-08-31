@@ -149,7 +149,22 @@ textarea:focus{outline:none;border-color:var(--blue)}
 .checklist li:last-child{border-bottom:none}
 .checklist li::before{content:'\2610';position:absolute;left:4px;top:6px;font-size:1rem;color:var(--blue)}
 .checklist li.done::before{content:'\2611';color:var(--good)}
-@media(max-width:560px){.hero h1{font-size:1.3rem}.wrap{padding:16px 13px 60px}.card{padding:16px 15px}}
+.unit-screen{display:none;min-height:calc(100vh - 178px);align-content:start;animation:screenIn .24s ease}
+.unit-screen.on{display:block}
+.unit-screen .screen-kicker{text-align:center;color:var(--blue-d);font-size:.76rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin:0 0 12px}
+.unit-screen .week{border-bottom:none;padding:4px 0}
+.unit-screen .week .n{flex:0 0 54px;height:54px;font-size:1.05rem}
+.unit-screen .week h3{font-size:1.12rem}
+.unit-nav{position:sticky;bottom:12px;z-index:40;display:grid;grid-template-columns:52px minmax(0,1fr) 52px;align-items:center;gap:12px;max-width:520px;margin:22px auto 0;padding:9px 12px;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:999px;box-shadow:0 12px 34px rgba(36,76,119,.22);backdrop-filter:blur(12px)}
+.unit-nav button{width:44px;height:44px;border:0;border-radius:50%;background:var(--blue);color:#fff;font:800 1.35rem/1 inherit;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.unit-nav button:hover{background:var(--blue-d);transform:scale(1.04)}
+.unit-nav button:disabled{opacity:.28;cursor:default;transform:none}
+.unit-nav .where{text-align:center;min-width:0}
+.unit-nav .where b{display:block;color:var(--blue-dd);font-size:.82rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.unit-nav .where span{display:block;color:var(--grey);font-size:.7rem;font-weight:600;margin-top:1px}
+@keyframes screenIn{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:none}}
+@media(max-width:560px){.hero h1{font-size:1.3rem}.wrap{padding:16px 13px 90px}.card{padding:16px 15px}.unit-screen{min-height:calc(100vh - 160px)}.unit-nav{bottom:8px;grid-template-columns:46px minmax(0,1fr) 46px;padding:7px 9px}.unit-nav button{width:40px;height:40px}.unit-screen .week{display:block}.unit-screen .week .n{margin-bottom:12px}}
+@media(prefers-reduced-motion:reduce){.unit-screen{animation:none}.unit-nav button{transition:none}}
 </style>
 </head>
 <body>
@@ -244,20 +259,23 @@ function pinta(){
     <div class="row"><span class="state" id="selfState"></span></div>
   </div>`;
 
-  const BLOQUE_SEMANAS = `
-  <div class="sec-title"><h2>&#128197; Your ${U.sequence.length} ${U.stepWord?(U.stepWord+'s'):'weeks'}</h2><span class="hint">Each one hands a piece to the final product — and brings the practice you need for it.</span></div>
-  <div class="card">${U.sequence.map(w=>`<div class="week">
-      <div class="n">${(U.stepWord?U.stepWord[0]:'W')}${w.n}</div>
-      <div style="flex:1">
-        <h3>${esc(w.title)}</h3><p>${esc(w.desc)}</p>
-        ${w.give?`<div class="give">You hand in: ${esc(w.give)}</div>`:''}
-        ${sesionesSemana(w.n)}
-        ${juegosSemana(w.n)}
-      </div>
-    </div>`).join('')}
-    ${juegosSueltos()}</div>`;
+  const weekWord=U.stepWord||'Week';
+  const looseGames=juegosSueltos();
+  const weekScreens=haySeq ? U.sequence.map((w,i)=>({
+    label:`${weekWord} ${w.n} · ${w.title}`,
+    html:`<p class="screen-kicker">Your ${U.sequence.length} ${U.stepWord?(U.stepWord+'s'):'weeks'} · ${weekWord} ${w.n} of ${U.sequence.length}</p>
+      <div class="card"><div class="week">
+        <div class="n">${(U.stepWord?U.stepWord[0]:'W')}${w.n}</div>
+        <div style="flex:1">
+          <h3>${esc(w.title)}</h3><p>${esc(w.desc)}</p>
+          ${w.give?`<div class="give">You hand in: ${esc(w.give)}</div>`:''}
+          ${sesionesSemana(w.n)}
+          ${juegosSemana(w.n)}
+        </div>
+      </div>${i===U.sequence.length-1?looseGames:''}</div>`
+  })) : [];
 
-  $('#app').innerHTML = `
+  const overview={label:'Unit overview · What you will produce',html:`
   <div class="hero" id="hero" style="${U.cover?(U.cover.image
       ? `background-image:linear-gradient(90deg,rgba(12,24,45,.84),rgba(12,24,45,.28)),url('${U.cover.image}');background-size:cover;background-position:center`
       : `background:linear-gradient(135deg,${U.cover.from},${U.cover.to})`):''}">
@@ -283,40 +301,54 @@ function pinta(){
       <a class="deck-chip" style="padding:6px 14px;font-size:.82rem;margin-left:6px"
         href="workbook.html?grade=${GRADE}&unit=${UNIT}">&#128213; Printable workbook</a></div>
   </div>
+  `};
 
-  ${hayCrit ? BLOQUE_RUBRICA : ""}
-  ${haySeq ? BLOQUE_SEMANAS : ""}
-  <div class="sec-title"><h2>&#128292; Word bank</h2><span class="hint">The language this unit is built on.</span></div>
-  <div class="card"><div class="words">${U.words.map(w=>`<span>${esc(w)}</span>`).join('')}</div></div>
+  const assessment={label:'How you will be assessed',html:hayCrit?BLOQUE_RUBRICA:''};
+  const resources={label:'Word bank · Tools',html:`
+    <div class="sec-title"><h2>&#128292; Word bank</h2><span class="hint">The language this unit is built on.</span></div>
+    <div class="card"><div class="words">${(U.words||[]).map(w=>`<span>${esc(w)}</span>`).join('')}</div></div>
 
-  <div class="sec-title"><h2>&#129520; Tools you already have</h2><span class="hint">Open them in the portal, then come back here to hand in.</span></div>
-  <div class="card"><div class="grid2">
-    <a class="tool" href="writing.html?grade=${esc(GRADE)}"><span class="ico">&#9997;</span><span><b>Writing</b><small>Guide phrases, a bank of linkers, word counter and checklist.</small></span></a>
-    <a class="tool" href="grammar.html?grade=${esc(GRADE)}"><span class="ico">&#128221;</span><span><b>Grammar</b><small>Explanations and games by unit.</small></span></a>
-    <a class="tool" href="use-of-english-part1.html"><span class="ico">&#129513;</span><span><b>Use of English</b><small>Multiple-choice cloze — vocabulary in context.</small></span></a>
-    <a class="tool" href="games-lab.html"><span class="ico">&#127918;</span><span><b>Games Lab</b><small>Vocabulary practice.</small></span></a>
-  </div></div>
+    <div class="sec-title"><h2>&#129520; Tools you already have</h2><span class="hint">Open them in the portal, then come back here to hand in.</span></div>
+    <div class="card"><div class="grid2">
+      <a class="tool" href="writing.html?grade=${esc(GRADE)}"><span class="ico">&#9997;</span><span><b>Writing</b><small>Guide phrases, a bank of linkers, word counter and checklist.</small></span></a>
+      <a class="tool" href="grammar.html?grade=${esc(GRADE)}"><span class="ico">&#128221;</span><span><b>Grammar</b><small>Explanations and games by unit.</small></span></a>
+      <a class="tool" href="use-of-english-part1.html"><span class="ico">&#129513;</span><span><b>Use of English</b><small>Multiple-choice cloze — vocabulary in context.</small></span></a>
+      <a class="tool" href="games-lab.html"><span class="ico">&#127918;</span><span><b>Games Lab</b><small>Vocabulary practice.</small></span></a>
+    </div></div>`};
 
-  <div class="sec-title"><h2>&#128228; Hand in your work</h2><span class="hint">Your draft saves itself. Hand it in when you are ready.</span></div>
+  const handin={label:'Hand in your work',html:`
+    <div class="sec-title"><h2>&#128228; Hand in your work</h2><span class="hint">Your draft saves itself. Hand it in when you are ready.</span></div>
 
-  <div class="card" id="gate" style="display:none">
-    <div class="note">You are not signed in, so nothing on this page can be saved. Open this unit from the portal
-      (English → Classes → ${esc(PLAN.label)}) after signing in, and your work will save by itself.</div>
-  </div>
-
-  <div id="handin" style="display:none">
-    ${U.deliverables.map(d => d.type==='text' ? bloqueTexto(d) : bloqueArchivo(d)).join('')}
-    <div class="card">
-      <h3 style="color:var(--blue-dd);font-size:1rem">&#128211; Your notebook</h3>
-      <div class="note" style="margin-bottom:12px"><b>Draft it in your notebook first.</b> Planning, crossing out and rewriting
-        by hand is part of the work — the screen is for the final version, for the checklist and for handing in.</div>
-      <label class="drop" for="f-notebook" id="lbl-notebook" style="padding:14px">
-        <input type="file" id="f-notebook" accept="image/png,image/jpeg,application/pdf">
-        &#128247; <b>Photograph your notebook pages</b> — images or PDF
-      </label>
-      <div class="row"><span class="state" id="st-notebook"></span></div>
+    <div class="card" id="gate" style="display:none">
+      <div class="note">You are not signed in, so nothing on this page can be saved. Open this unit from the portal
+        (English → Classes → ${esc(PLAN.label)}) after signing in, and your work will save by itself.</div>
     </div>
-  </div>`;
+
+    <div id="handin" style="display:none">
+      ${U.deliverables.map(d => d.type==='text' ? bloqueTexto(d) : bloqueArchivo(d)).join('')}
+      <div class="card">
+        <h3 style="color:var(--blue-dd);font-size:1rem">&#128211; Your notebook</h3>
+        <div class="note" style="margin-bottom:12px"><b>Draft it in your notebook first.</b> Planning, crossing out and rewriting
+          by hand is part of the work — the screen is for the final version, for the checklist and for handing in.</div>
+        <label class="drop" for="f-notebook" id="lbl-notebook" style="padding:14px">
+          <input type="file" id="f-notebook" accept="image/png,image/jpeg,application/pdf">
+          &#128247; <b>Photograph your notebook pages</b> — images or PDF
+        </label>
+        <div class="row"><span class="state" id="st-notebook"></span></div>
+      </div>
+    </div>`};
+
+  const screens=[overview, ...(hayCrit?[assessment]:[]), ...weekScreens, resources, handin];
+
+  $('#app').innerHTML = `
+    <div id="unitScreens">
+      ${screens.map((s,i)=>`<section class="unit-screen${i===0?' on':''}" data-label="${esc(s.label)}" aria-hidden="${i===0?'false':'true'}">${s.html}</section>`).join('')}
+    </div>
+    <nav class="unit-nav" aria-label="Unit sections">
+      <button type="button" id="unitPrev" aria-label="Previous section" title="Previous">&#8592;</button>
+      <div class="where" aria-live="polite"><b id="unitWhere"></b><span id="unitPos"></span></div>
+      <button type="button" id="unitNext" aria-label="Next section" title="Next">&#8594;</button>
+    </nav>`;
 
   /* Sin rubrica no hay #rub: la unidad de 4.o no la trae y aqui reventaba,
      dejando el resto de la pagina sin cablear. */
@@ -329,7 +361,48 @@ function pinta(){
   if(rubEl) rubEl.addEventListener('click', clicRubrica);
   U.deliverables.forEach(cablea);
   cableaArchivo('notebook');
+  initUnitScreens();
 }
+
+let unitScreenIndex=0;
+function initUnitScreens(){
+  const screens=[...document.querySelectorAll('.unit-screen')];
+  const prev=$('#unitPrev'), next=$('#unitNext');
+  if(!screens.length || !prev || !next) return;
+  const show=(n,focusNav)=>{
+    unitScreenIndex=Math.max(0,Math.min(screens.length-1,n));
+    screens.forEach((screen,i)=>{
+      const active=i===unitScreenIndex;
+      screen.classList.toggle('on',active);
+      screen.setAttribute('aria-hidden',active?'false':'true');
+    });
+    prev.disabled=unitScreenIndex===0;
+    next.disabled=unitScreenIndex===screens.length-1;
+    $('#unitWhere').textContent=screens[unitScreenIndex].dataset.label||'Unit';
+    $('#unitPos').textContent=(unitScreenIndex+1)+' of '+screens.length;
+    window.scrollTo({top:0,behavior:focusNav?'smooth':'auto'});
+  };
+  window.moveUnitScreen=dir=>show(unitScreenIndex+dir,true);
+  prev.onclick=()=>window.moveUnitScreen(-1);
+  next.onclick=()=>window.moveUnitScreen(1);
+  let touchX=null;
+  $('#unitScreens').addEventListener('touchstart',e=>{ touchX=e.touches[0].clientX; },{passive:true});
+  $('#unitScreens').addEventListener('touchend',e=>{
+    if(touchX==null) return;
+    const dx=e.changedTouches[0].clientX-touchX;
+    touchX=null;
+    if(Math.abs(dx)>70) window.moveUnitScreen(dx<0?1:-1);
+  },{passive:true});
+  show(0,false);
+}
+
+document.addEventListener('keydown',e=>{
+  if(!window.moveUnitScreen || $('#visor').classList.contains('on')) return;
+  const tag=(e.target&&e.target.tagName||'').toLowerCase();
+  if(['input','textarea','select','button'].includes(tag) || e.target.isContentEditable) return;
+  if(e.key==='ArrowLeft'){ e.preventDefault(); window.moveUnitScreen(-1); }
+  if(e.key==='ArrowRight'){ e.preventDefault(); window.moveUnitScreen(1); }
+});
 
 /* Las actividades del portal ya están etiquetadas por unidad y semana en
    activities-data.js, y sus semanas coinciden con las del planner. En vez de
