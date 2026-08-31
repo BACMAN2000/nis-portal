@@ -568,8 +568,6 @@ document.addEventListener('click', e=>{
     verClase(a.dataset.deck, parseInt(a.dataset.pages,10)||0, a.dataset.titulo||'');
     return;
   }
-  const p = e.target.closest && e.target.closest('.ppt-chip[data-ruta]');
-  if(p){ e.preventDefault(); abreArchivo(p.dataset.ruta, p); }
 });
 
 window.abreArchivo = async function(ruta, el){
@@ -587,7 +585,6 @@ window.abreArchivo = async function(ruta, el){
    diapositivas ya convertidas a imagen. */
 let _mat = null;
 const RE_WS = /^u(\d+)w(\d+)s(\d+)-worksheet-([a-z0-9]+)\.(pdf|docx)$/i;
-const RE_SL = /^u(\d+)w(\d+)s(\d+)-slides\.pptx$/i;
 
 let _digitales = new Set();
 
@@ -609,12 +606,6 @@ async function cargaMateriales(){
     const arch = (listas[k] && listas[k].data) || [];
     const ses = {};
     arch.forEach(f=>{
-      const sl = RE_SL.exec(f.name||'');
-      if(sl){
-        const sn2 = parseInt(sl[3],10);
-        (ses[sn2] || (ses[sn2] = {s:sn2, ws:{}})).pptx = 'w'+n+'/'+f.name;
-        return;
-      }
       const m = RE_WS.exec(f.name||'');
       if(!m) return;
       const sn = parseInt(m[3],10), lvl = m[4].toUpperCase(), ext = m[5].toLowerCase();
@@ -650,20 +641,12 @@ function sesionesSemana(n){
     const ver = (x.deck && x.pages)
       ? `<a class="deck-chip" href="#" data-deck="${esc(base + x.deck)}" data-pages="${x.pages}"
            data-titulo="S${x.s} · ${esc(x.title||('Session '+x.s))}">&#9654; View class</a>` : '';
-    /* El PowerPoint editable, solo para docentes: el alumno ve las
-       diapositivas en el visor y la politica del bucket ni siquiera le deja
-       firmar el .pptx. El dato ya se recogia del bucket pero no se pintaba,
-       asi que no habia por donde bajarlo. */
-    const ppt = (esProfe && x.pptx)
-      ? `<a class="lvl-chip ppt-chip" href="#" data-ruta="${esc(base + x.pptx)}"
-           title="Download the editable PowerPoint">&#8681; .pptx</a>` : '';
-    if(!niveles && !ver && !online && !ppt) return '';
+    if(!niveles && !ver && !online) return '';
     const hito = 'w' + n + 's' + x.s;
     return `<div class="ses-row">
         <b>S${x.s} · ${esc(x.title||('Session '+x.s))}</b>${ver}
         ${online?`<span class="grupo"><i>Solve online</i>${online}</span>`:''}
         ${niveles?`<span class="grupo"><i>PDF to print</i>${niveles}</span>`:''}
-        ${ppt?`<span class="grupo"><i>Slides</i>${ppt}</span>`:''}
         <a class="hand-chip" id="hand-${hito}" href="#" onclick="return abreEntrega('${hito}')">&#8593; Hand in</a>
       </div>
       <div class="entrega" id="box-${hito}">
