@@ -274,16 +274,68 @@ function header(){
     <button class="logout" onclick="logout()">Salir</button>
   </div>`+_previewBar();
 }
+/* La barra lateral admite GRUPOS: {group:'Personas', icon:'👥', items:[…]}.
+   El admin llego a tener 23 entradas seguidas y encontrar una era leerlas
+   todas. Un item suelto se sigue pasando tal cual (Resumen, y la vista del
+   alumno, que no tiene grupos).
+   Se abre el grupo donde esta la pestana activa; lo demas, como lo dejo el
+   usuario la ultima vez. En movil la barra es una fila con scroll y el
+   acordeon no aplica: alli se ven todos (ver brand.css). */
+const NAV_ABIERTOS = 'nis_nav_open';
+function navAbiertos(){
+  try { return JSON.parse(localStorage.getItem(NAV_ABIERTOS)||'{}') || {}; } catch(e){ return {}; }
+}
+function navGuardaAbierto(nombre, abierto){
+  const o = navAbiertos(); o[nombre] = abierto;
+  try { localStorage.setItem(NAV_ABIERTOS, JSON.stringify(o)); } catch(e){}
+}
+function navItemHTML(n, activeKey){
+  return n.href
+    ? `<a class="nav-item" href="${n.href}" target="_blank" rel="noopener">${n.label}</a>`
+    : `<div class="nav-item ${n.key===activeKey?'active':''}" data-nav="${n.key}" tabindex="0" role="button">${n.label}</div>`;
+}
+function navHTML(navItems, activeKey){
+  const abiertos = navAbiertos();
+  return navItems.map(n => {
+    if(!n.items) return navItemHTML(n, activeKey);
+    const tieneActivo = n.items.some(i => i.key===activeKey);
+    const abierto = tieneActivo || abiertos[n.group]===true;
+    return `<div class="nav-group">
+      <button class="nav-head ${abierto?'open':''}" data-group="${esc(n.group)}"
+        aria-expanded="${abierto?'true':'false'}" type="button">
+        <span>${n.icon||''} ${esc(n.group)}</span><span class="fl">›</span></button>
+      <div class="nav-sub"${abierto?'':' hidden'}>${n.items.map(i=>navItemHTML(i, activeKey)).join('')}</div>
+    </div>`;
+  }).join('');
+}
+/* Las claves de todas las pestanas, con grupos o sin ellos. */
+function navKeys(navItems){
+  return navItems.reduce((a,n)=> a.concat(n.items ? n.items.map(i=>i.key) : [n.key]), []);
+}
 function shell(navItems, activeKey, body){
   return header()+`<div class="shell">
-    <nav class="sidebar">${navItems.map(n=> n.href ? `<a class="nav-item" href="${n.href}" target="_blank" rel="noopener">${n.label}</a>` : `<div class="nav-item ${n.key===activeKey?'active':''}" data-nav="${n.key}" tabindex="0" role="button">${n.label}</div>`).join('')}</nav>
+    <nav class="sidebar">${navHTML(navItems, activeKey)}</nav>
     <main class="main" id="main">${body}</main>
   </div>`;
 }
-function bindNav(handler){ document.querySelectorAll('[data-nav]').forEach(e=>{
-  e.onclick=()=>handler(e.dataset.nav);
-  e.onkeydown=(ev)=>{ if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); handler(e.dataset.nav); } };
-}); }
+function bindNav(handler){
+  document.querySelectorAll('[data-nav]').forEach(e=>{
+    e.onclick=()=>handler(e.dataset.nav);
+    e.onkeydown=(ev)=>{ if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); handler(e.dataset.nav); } };
+  });
+  // abrir y cerrar un grupo no repinta la pagina: seria perder lo que se este
+  // mirando en el panel de la derecha
+  document.querySelectorAll('.nav-head').forEach(h=>{
+    h.onclick=()=>{
+      const sub = h.parentElement.querySelector('.nav-sub');
+      const abrir = sub.hidden;
+      sub.hidden = !abrir;
+      h.classList.toggle('open', abrir);
+      h.setAttribute('aria-expanded', abrir?'true':'false');
+      navGuardaAbierto(h.dataset.group, abrir);
+    };
+  });
+}
 function munBody(){ return `<iframe src="mun-academy.html" title="MUN Academy" style="width:100%;height:82vh;min-height:560px;border:0;border-radius:12px;display:block;background:#fff"></iframe>`; }
 function liveQuizBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
@@ -530,33 +582,48 @@ function renderSuspended(){
 
 /* ===================== ADMIN ===================== */
 async function renderAdmin(tab='users'){
+  /* Agrupado por lo que se va a HACER, no por lo que es cada cosa: primero
+     quien existe, luego lo que hay que corregir (el trabajo diario), lo que
+     solo se consulta, lo que se ensena, lo que el alumno usa y, al final, lo
+     que se abre y se cierra. Resumen queda fuera: es la portada.
+     La secuencia (scope) esta tambien aqui y no solo en el menu del profesor:
+     desde coordinacion no habia por donde entrar. */
   document.body.innerHTML = shell([
     {key:'overview',label:'📊 Resumen'},
-    {key:'stats',label:'📈 Estadísticas'},
-    {key:'users',label:'👥 Usuarios'},
-    {key:'results',label:'📝 Resultados'},
-    {key:'final',label:'🎓 Resultado final'},
-    {key:'readers',label:'📖 Controles de lectura'},
-    {key:'unitprod',label:'🎯 Productos de unidad'},
-    {key:'corregir',label:'✅ Corregir fichas'},
-    {key:'tiempo',label:'⏱️ Tiempo de pantalla'},
-    {key:'materiales',label:'📄 Materiales de clase'},
-    {key:'teachers',label:'👨‍🏫 Profesores'},
-    {key:'honesty',label:'🛡️ Honestidad'},
-    {key:'mocks',label:'🔓 Mocks'},
-    {key:'practice',label:'🎯 Practice Tests'},
-    {key:'access',label:'🔐 Accesos'},
-    {key:'phonics',label:'🔤 Phonics'},
-    {key:'coach',label:'🎙️ Pronunciación'},
-    {key:'mun',label:'🌐 MUN Academy'},
-    {key:'livequiz',label:'🎮 NIShoot Live'},
-    {key:'games',label:'🎲 Games Lab'},
-    {key:'classes',label:'🏫 Classes'},
-    {key:'library',label:'📚 Library'},
-    // La secuencia tambien en el menu del admin: el panel ya existia y
-    // respondia, pero solo estaba enlazado desde el menu del profesor, asi
-    // que desde coordinacion no habia por donde entrar.
-    {key:'scope',label:'📚 Scope & Sequence'},
+    {group:'Personas', icon:'👥', items:[
+      {key:'users',label:'👥 Usuarios'},
+      {key:'teachers',label:'👨‍🏫 Profesores'},
+    ]},
+    {group:'Corrección', icon:'✅', items:[
+      {key:'unitprod',label:'🎯 Productos de unidad'},
+      {key:'corregir',label:'✅ Corregir fichas'},
+    ]},
+    {group:'Seguimiento', icon:'📈', items:[
+      {key:'stats',label:'📈 Estadísticas'},
+      {key:'results',label:'📝 Resultados'},
+      {key:'final',label:'🎓 Resultado final'},
+      {key:'readers',label:'📖 Controles de lectura'},
+      {key:'tiempo',label:'⏱️ Tiempo de pantalla'},
+      {key:'honesty',label:'🛡️ Honestidad'},
+    ]},
+    {group:'Enseñanza', icon:'🏫', items:[
+      {key:'classes',label:'🏫 Classes'},
+      {key:'scope',label:'📚 Scope & Sequence'},
+      {key:'materiales',label:'📄 Materiales de clase'},
+      {key:'library',label:'📚 Library'},
+    ]},
+    {group:'Actividades', icon:'🎮', items:[
+      {key:'games',label:'🎲 Games Lab'},
+      {key:'livequiz',label:'🎮 NIShoot Live'},
+      {key:'mun',label:'🌐 MUN Academy'},
+      {key:'phonics',label:'🔤 Phonics'},
+      {key:'coach',label:'🎙️ Pronunciación'},
+    ]},
+    {group:'Permisos', icon:'🔐', items:[
+      {key:'access',label:'🔐 Accesos'},
+      {key:'mocks',label:'🔓 Mocks'},
+      {key:'practice',label:'🎯 Practice Tests'},
+    ]},
   ], tab, `<div class="center muted">Cargando…</div>`);
   bindNav(renderAdmin);
   if(tab==='mun') return $('#main').innerHTML = munBody();
@@ -2117,31 +2184,49 @@ window.funCalificar = async function(id, nota, comentario){
 async function renderTeacher(tab){
   if(tab==='exams'){ window.location.assign(location.origin + '/mocks-cambridge/quizzes.html'); return; }
   const acc = state.teacherAccess || await loadTeacherAccess();
-  const nav=[];
-  if(acc.can_results) nav.push({key:'results',label:'📝 Resultados'});
-  if(acc.can_results) nav.push({key:'final',label:'🎓 Resultado final'});
-  if(acc.can_results) nav.push({key:'readers',label:'📖 Controles de lectura'});
-  if(acc.can_results) nav.push({key:'funnordic',label:'🧸 Fun for Nordic'});
-  if(acc.can_results) nav.push({key:'unitprod',label:'🎯 Productos de unidad'});
-  if(acc.can_results) nav.push({key:'corregir',label:'✅ Corregir fichas'});
-  if(acc.can_results) nav.push({key:'tiempo',label:'⏱️ Tiempo de pantalla'});
-  if(acc.can_results) nav.push({key:'materiales',label:'📄 Materiales de clase'});
-  if(acc.can_students) nav.push({key:'students',label:'👥 Alumnos'});
-  if(acc.can_results||acc.can_students) nav.push({key:'honesty',label:'🛡️ Honestidad'});
-  if(teacherAllowedGrades().length) nav.push({key:'practice',label:'🎯 Practice Tests'});
   const _tn = state.teacherNodes||{has:false,set:new Set()};
   const _canClasses = !_tn.has || _tn.set.has('english.classes') || [..._tn.set].some(k=>k.indexOf('english.classes.')===0);
-  if(_canClasses) nav.push({key:'classes',label:'🏫 Classes'});
-  if(!nav.length) nav.push({key:'none',label:'— sin accesos —'});
-  nav.push({key:'littlereaders',label:'🧒 Little Readers'});
-  nav.push({key:'scope',label:'📚 Scope & Sequence'});
-  nav.push({key:'exams',label:'🎧 Exámenes'});
-  nav.push({key:'mun',label:'🌐 MUN Academy'});
-  nav.push({key:'livequiz',label:'🎮 NIShoot Live'});
-  nav.push({key:'games',label:'🎲 Games Lab'});
-  nav.push({key:'phonics',label:'🔤 Phonics'});
-  nav.push({key:'coach',label:'🎙️ Pronunciación'});
-  const active = (tab && nav.some(n=>n.key===tab)) ? tab : nav[0].key;
+
+  /* Los mismos grupos que ve el admin, para que los dos paneles se lean
+     igual. Un grupo que se queda sin pestanas (porque el profesor no tiene
+     ese acceso) no se pinta. Alumnos va suelto arriba: es por donde entra
+     casi siempre. */
+  const suelto = [], correccion = [], seguimiento = [], ensenanza = [], examenes = [];
+  if(acc.can_students) suelto.push({key:'students',label:'👥 Alumnos'});
+  if(acc.can_results){
+    correccion.push({key:'unitprod',label:'🎯 Productos de unidad'});
+    correccion.push({key:'corregir',label:'✅ Corregir fichas'});
+    correccion.push({key:'readers',label:'📖 Controles de lectura'});
+    correccion.push({key:'funnordic',label:'🧸 Fun for Nordic'});
+    seguimiento.push({key:'results',label:'📝 Resultados'});
+    seguimiento.push({key:'final',label:'🎓 Resultado final'});
+    seguimiento.push({key:'tiempo',label:'⏱️ Tiempo de pantalla'});
+    ensenanza.push({key:'materiales',label:'📄 Materiales de clase'});
+  }
+  if(acc.can_results||acc.can_students) seguimiento.push({key:'honesty',label:'🛡️ Honestidad'});
+  if(_canClasses) ensenanza.unshift({key:'classes',label:'🏫 Classes'});
+  ensenanza.push({key:'scope',label:'📚 Scope & Sequence'});
+  ensenanza.push({key:'littlereaders',label:'🧒 Little Readers'});
+  examenes.push({key:'exams',label:'🎧 Exámenes'});
+  if(teacherAllowedGrades().length) examenes.push({key:'practice',label:'🎯 Practice Tests'});
+
+  const nav = [];
+  if(suelto.length) nav.push(...suelto);
+  else if(!acc.can_results) nav.push({key:'none',label:'— sin accesos —'});
+  const grupo = (g,ic,items)=>{ if(items.length) nav.push({group:g, icon:ic, items:items}); };
+  grupo('Corrección','✅',correccion);
+  grupo('Seguimiento','📈',seguimiento);
+  grupo('Enseñanza','🏫',ensenanza);
+  grupo('Actividades','🎮',[
+    {key:'games',label:'🎲 Games Lab'},
+    {key:'livequiz',label:'🎮 NIShoot Live'},
+    {key:'mun',label:'🌐 MUN Academy'},
+    {key:'phonics',label:'🔤 Phonics'},
+    {key:'coach',label:'🎙️ Pronunciación'},
+  ]);
+  grupo('Exámenes','🎧',examenes);
+  const claves = navKeys(nav);
+  const active = (tab && claves.indexOf(tab)>=0) ? tab : claves[0];
   document.body.innerHTML = shell(nav, active, `<div class="center muted">Cargando…</div>`);
   bindNav(renderTeacher);
   if(active==='mun') return $('#main').innerHTML = munBody();
