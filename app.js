@@ -4638,8 +4638,12 @@ function unitPlansFor(grade){
 function _unitPlanCard(u,route,grade){
   const href=_withBack('unit.html?grade='+grade+'&unit='+u.n,route);
   const image=u.cover&&u.cover.image;
+  const gradeLabel=(GRADE_META[grade]&&GRADE_META[grade][1])||grade;
   const visual=image
-    ? `<img src="${esc(image)}" alt="" loading="lazy" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block">`
+    ? `<div style="position:relative">
+         <img src="${esc(image)}" alt="${esc(gradeLabel+' · Unit '+u.n+' · '+u.title)}" loading="lazy" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block">
+         <span class="badge" style="position:absolute;left:12px;bottom:12px;background:rgba(12,24,45,.82);color:#fff;border:1px solid rgba(255,255,255,.45);backdrop-filter:blur(5px)">${esc(gradeLabel)} · Unit ${u.n}</span>
+       </div>`
     : `<div style="font-size:3.4rem;line-height:1;padding:30px 18px 8px">${(u.cover&&u.cover.icon)||'📘'}</div>`;
   return `<a class="card" href="${href}" style="text-decoration:none;color:inherit;display:block;padding:0;margin-bottom:0;overflow:hidden;transition:.15s"
       onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform=''">
