@@ -51,6 +51,9 @@ header a.back:hover{background:rgba(255,255,255,.28)}
 table.rub{width:100%;border-collapse:collapse;font-size:.82rem}
 table.rub th,table.rub td{border:1px solid var(--line);padding:9px 10px;vertical-align:top;text-align:left}
 table.rub th{background:#eef4fb;color:var(--blue-dd);font-weight:700;font-size:.76rem;text-transform:uppercase;letter-spacing:.04em}
+/* la letra va centrada sobre su columna: pegada a la izquierda no se leia
+   como la cabecera de esa columna sino como el principio del descriptor */
+table.rub th:not(:first-child){text-align:center;font-size:.92rem;letter-spacing:.02em}
 table.rub td.crit{background:#fafbff;font-weight:600;color:var(--ink)}
 table.rub td.lvl{cursor:pointer;transition:.12s;text-align:center}
 table.rub td.lvl:hover{background:#f4f8fd}
