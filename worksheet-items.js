@@ -49,6 +49,7 @@ window.WSITEMS = (function () {
      su propio campo de respuesta. */
   var RE_TITULO = /^\s*(?:activity|task|step|part|section)\s*\d+\s*[·.)\-–—]\s/i;
   var RE_PREG   = /\?\s*$/;
+  var RE_PREG_IMP = /^\s*(?:name|list|give|state)\b.*\.\s*$/i;
   var RE_HABLA  = /\b(discuss|in pairs|with (?:your|a) partner|to your partner|role[\s-]?play|say it aloud|read aloud|out loud|talk about|ask each other)\b/i;
   var RE_MARCA  = /\b(tick|check|mark|circle|choose|select|underline)\b/i;
   var RE_ESCRIBE= /\b(write|answer|complete|explain|describe|list|note|rewrite|give|state|fill)\b/i;
@@ -80,6 +81,10 @@ window.WSITEMS = (function () {
       if (vale) res.push({ raw: m[0], at: m.index, opts: op });
     }
     return res;
+  }
+
+  function esPreguntaRespuesta(txt) {
+    return RE_PREG.test(txt) || RE_PREG_IMP.test(txt);
   }
 
   function pistas(txt) {
@@ -265,11 +270,11 @@ window.WSITEMS = (function () {
       }
 
       /* --- preguntas --- */
-      if (RE_PREG.test(txt) && !RE_TITULO.test(txt) && !esLectura(txt) && txt.length > 12) {
+      if (esPreguntaRespuesta(txt) && !RE_TITULO.test(txt) && !esLectura(txt) && txt.length > 12) {
         var preg = [], k3 = i;
         while (k3 < blocks.length && esTexto(blocks[k3])) {
           var t3 = texto(blocks[k3]);
-          if (!RE_PREG.test(t3) || RE_TITULO.test(t3) || esLectura(t3) || RE_HUECO.test(t3)) break;
+          if (!esPreguntaRespuesta(t3) || RE_TITULO.test(t3) || esLectura(t3) || RE_HUECO.test(t3)) break;
           preg.push(t3);
           k3++;
         }
@@ -331,7 +336,7 @@ window.WSITEMS = (function () {
           /[:.]$/.test(txt) && !RE_TITULO.test(txt)) {
         var des = blocks[i + 1];
         var cubierto = des && (des.t === 'write' || des.t === 'table' || des.t === 'note' ||
-                              (esTexto(des) && (RE_HUECO.test(texto(des)) || RE_PREG.test(texto(des)) ||
+                              (esTexto(des) && (RE_HUECO.test(texto(des)) || esPreguntaRespuesta(texto(des)) ||
                                                 RE_TICK.test(texto(des)) || RE_OPCION.test(texto(des)) ||
                                                 pistas(texto(des)).length)));
         out.push(tal(b, i));
