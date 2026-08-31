@@ -563,9 +563,13 @@ $('#visor').addEventListener('click', e=>{ if(e.target.id==='visor') cierraClase
    chips van y vienen, asi que se escucha en el documento. */
 document.addEventListener('click', e=>{
   const a = e.target.closest && e.target.closest('.deck-chip[data-deck]');
-  if(!a) return;
-  e.preventDefault();
-  verClase(a.dataset.deck, parseInt(a.dataset.pages,10)||0, a.dataset.titulo||'');
+  if(a){
+    e.preventDefault();
+    verClase(a.dataset.deck, parseInt(a.dataset.pages,10)||0, a.dataset.titulo||'');
+    return;
+  }
+  const p = e.target.closest && e.target.closest('.ppt-chip[data-ruta]');
+  if(p){ e.preventDefault(); abreArchivo(p.dataset.ruta, p); }
 });
 
 window.abreArchivo = async function(ruta, el){
@@ -646,12 +650,20 @@ function sesionesSemana(n){
     const ver = (x.deck && x.pages)
       ? `<a class="deck-chip" href="#" data-deck="${esc(base + x.deck)}" data-pages="${x.pages}"
            data-titulo="S${x.s} · ${esc(x.title||('Session '+x.s))}">&#9654; View class</a>` : '';
-    if(!niveles && !ver && !online) return '';
+    /* El PowerPoint editable, solo para docentes: el alumno ve las
+       diapositivas en el visor y la politica del bucket ni siquiera le deja
+       firmar el .pptx. El dato ya se recogia del bucket pero no se pintaba,
+       asi que no habia por donde bajarlo. */
+    const ppt = (esProfe && x.pptx)
+      ? `<a class="lvl-chip ppt-chip" href="#" data-ruta="${esc(base + x.pptx)}"
+           title="Download the editable PowerPoint">&#8681; .pptx</a>` : '';
+    if(!niveles && !ver && !online && !ppt) return '';
     const hito = 'w' + n + 's' + x.s;
     return `<div class="ses-row">
         <b>S${x.s} · ${esc(x.title||('Session '+x.s))}</b>${ver}
         ${online?`<span class="grupo"><i>Solve online</i>${online}</span>`:''}
         ${niveles?`<span class="grupo"><i>PDF to print</i>${niveles}</span>`:''}
+        ${ppt?`<span class="grupo"><i>Slides</i>${ppt}</span>`:''}
         <a class="hand-chip" id="hand-${hito}" href="#" onclick="return abreEntrega('${hito}')">&#8593; Hand in</a>
       </div>
       <div class="entrega" id="box-${hito}">
