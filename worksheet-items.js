@@ -40,6 +40,7 @@ window.WSITEMS = (function () {
      grafias: T/F, True / False y True or False. */
   var RE_TF     = /[\s(\[]*\bT\s*(?:\/|or)\s*F\b[\s)\].:;\-–—]*/i;
   var RE_TF2    = /[\s(\[]*\btrue\s*(?:\/|or|\s)\s*false\b[\s)\].:;\-–—]*/i;
+  var RE_TFNG   = /\s*\bT\s*\/\s*F\s*\/\s*NG\b\s*[.?:;\-–—]*\s*$/i;
   var RE_TICK   = /^\s*(?:\[\s*[xX✓]?\s*\]|\(\s*[xX✓]?\s*\)|[☐□])\s*/;
   var RE_OPCION = /^\s*([a-eA-E])\s*[).]\s+(.+)$/;
   var RE_HUECO  = /_{3,}/;
@@ -123,7 +124,7 @@ window.WSITEMS = (function () {
   /* Devuelve {items, labels}: items para pintar, labels {id: enunciado} para
      que el profesor lea cada respuesta con su pregunta al lado. */
   function prepara(blocks) {
-    var out = [], labels = {}, consigna = '', i = 0, traeTabla = false;
+    var out = [], labels = {}, consigna = '', i = 0, traeTabla = false, modoTFNG = false;
     blocks = blocks || [];
 
     function texto(b) { return limpia(b && (b.text || '')); }
@@ -135,6 +136,17 @@ window.WSITEMS = (function () {
 
     while (i < blocks.length) {
       var b = blocks[i], txt = texto(b);
+
+      /* Un titulo numerado abre una actividad nueva. La actividad TF/NG
+         conserva su modo hasta el siguiente titulo numerado. */
+      if (b.t === 'h' && /^\s*\d+\s*[·.)\-–—]/.test(txt)) {
+        modoTFNG = /true\s*\/\s*false\s*\/\s*not\s+given/i.test(txt);
+      }
+      if (b.t === 'h' && /^\s*\d+\s*·/.test(txt)) {
+        out.push(tal(b, i));
+        consigna = txt;
+        traeTabla = false; i++; continue;
+      }
 
       /* --- listas de casillas dentro de una nota (los self-check) --- */
       if (b.t === 'note' && /\[\s*[xX✓]?\s*\]|[☐□]/.test(txt)) {
@@ -153,12 +165,23 @@ window.WSITEMS = (function () {
       if (b.t === 'table') { traeTabla = true; out.push(tal(b, i)); i++; continue; }
       if (!esTexto(b) || !txt) { out.push(tal(b, i)); i++; continue; }
 
-      /* --- verdadero / falso --- */
-      if (RE_TF.test(txt) || RE_TF2.test(txt)) {
+      /* La consigna de T/F/NG no es un ejercicio ni contiene tres huecos.
+         Se muestra una sola vez, con la notacion exacta que usara el alumno. */
+      if (modoTFNG && b.t === 'p' && /\bwrite\b/i.test(txt) &&
+          /\b(?:not given|article does not say|\bNG\b)/i.test(txt)) {
+        out.push({ t: b.t, text: 'Write T, F or NG.', _k: i });
+        consigna = 'Write T, F or NG.';
+        traeTabla = false; i++; continue;
+      }
+
+      /* --- verdadero / falso / no aparece --- */
+      if (RE_TFNG.test(txt) || RE_TF.test(txt) || RE_TF2.test(txt)) {
         var idt = 'tf' + i;
-        var enunciado = limpia(txt.replace(RE_TF, '').replace(RE_TF2, ''));
+        var esTFNG = RE_TFNG.test(txt) || modoTFNG;
+        var enunciado = limpia(txt.replace(RE_TFNG, '').replace(RE_TF, '').replace(RE_TF2, ''));
         labels[idt] = enunciado;
-        out.push({ t: 'tf', id: idt, text: enunciado, _k: i });
+        out.push({ t: 'tf', id: idt, text: enunciado,
+                   options: esTFNG ? ['T', 'F', 'NG'] : ['T', 'F'], _k: i });
         traeTabla = false; i++; continue;
       }
 
@@ -252,6 +275,27 @@ window.WSITEMS = (function () {
         }
         var hablado = RE_HABLA.test(consigna) && !RE_ESCRIBE.test(consigna);
         var marcar  = RE_MARCA.test(consigna) && !RE_ESCRIBE.test(consigna) && preg.length >= 2;
+
+        /* Una pregunta de gist seguida por su cuadro de escritura ya tiene
+           respuesta. Se conserva ese unico cuadro y no se agrega "Your answer". */
+        var cuadroUnico = preg.length === 1 && blocks[k3] && blocks[k3].t === 'write';
+        if (cuadroUnico) {
+          out.push(tal(blocks[i], i));
+          out.push(tal(blocks[k3], k3));
+          labels[blocks[k3].id] = preg[0];
+          traeTabla = false; i = k3 + 1; continue;
+        }
+
+        /* En preguntas de opcion, la respuesta son los botones a/b/c que
+           vienen inmediatamente despues de la consigna, no un campo extra. */
+        var buscaOpc = k3;
+        while (buscaOpc < blocks.length && esTexto(blocks[buscaOpc]) &&
+               !RE_OPCION.test(texto(blocks[buscaOpc])) && buscaOpc < k3 + 3) buscaOpc++;
+        if (preg.length === 1 && buscaOpc < blocks.length && RE_OPCION.test(texto(blocks[buscaOpc]))) {
+          out.push(tal(blocks[i], i));
+          consigna = preg[0];
+          traeTabla = false; i = k3; continue;
+        }
 
         if (hablado) {                                  // se contesta en voz alta
           for (var q = 0; q < preg.length; q++) out.push(tal(blocks[i + q], i + q));
