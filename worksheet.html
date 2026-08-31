@@ -122,7 +122,7 @@ table.f input:focus{outline:2px solid var(--blue);outline-offset:-2px;background
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js"></script>
 <script src="nis-nav.js?v=2"></script>
-<script src="worksheet-items.js?v=3"></script>
+<script src="worksheet-items.js?v=4"></script>
 <script>
 /* Ficha digital: el alumno la resuelve aqui dentro y le da a enviar. No hay
    que bajarse el PDF (que no se puede editar) ni salir a Word o Google Docs.
@@ -324,10 +324,11 @@ function rubricaHTML(){
    era texto, sin nada que marcar. */
 function trueFalse(bl){
   const v = resp[bl.id] || '';
+  const opciones = bl.options || ['T','F'];
+  const nombres = {T:'T', F:'F', NG:'NG'};
   return `<div class="q"><span class="txt">${esc(bl.text)}</span>
     <span class="tfb">
-      <button type="button" data-set="${bl.id}" data-val="T" class="${v==='T'?'on':''}">True</button>
-      <button type="button" data-set="${bl.id}" data-val="F" class="${v==='F'?'on':''}">False</button>
+      ${opciones.map(o=>`<button type="button" data-set="${bl.id}" data-val="${o}" class="${v===o?'on':''}">${nombres[o]||esc(o)}</button>`).join('')}
     </span></div>`;
 }
 
