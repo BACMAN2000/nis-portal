@@ -722,7 +722,7 @@ function bloqueArchivo(d){
 }
 
 /* ---------------- sesion y guardado ---------------- */
-let sb=null, me=null, self_={};
+let sb=null, me=null, self_={}, viewerProfile=null;
 
 /* Primero se conecta (para saber quien mira y si ve las diapositivas),
    luego se pinta, y solo despues se traen las entregas. */
@@ -741,10 +741,11 @@ async function conectar(){
      propias diapositivas. */
   try{
     const t = await sb.from('teacher_access').select('can_results').eq('profile_id',me.id).maybeSingle();
+    const pr = await sb.from('profiles').select('role,grade_id').eq('id',me.id).maybeSingle();
+    viewerProfile=pr&&pr.data;
     esProfe = !!(t && t.data && t.data.can_results);
     if(!esProfe){
-      const pr = await sb.from('profiles').select('role').eq('id',me.id).maybeSingle();
-      const rol = pr && pr.data && pr.data.role;
+      const rol = viewerProfile && viewerProfile.role;
       esProfe = (rol === 'admin' || rol === 'teacher');
     }
   }catch(_){ esProfe=false; }
@@ -762,6 +763,27 @@ async function conectar(){
       if(r.data) _portada = r.data.signedUrl;
     }
   }catch(_){}
+}
+
+async function puedeAbrirUnidad(){
+  if(!me || esProfe) return true;
+  if(!viewerProfile || viewerProfile.grade_id==null) return false;
+  const key='english.classes.'+GRADE+'.units.u'+UNIT;
+  try{
+    const {data,error}=await sb.from('node_access').select('unlocked')
+      .eq('grade_id',viewerProfile.grade_id).eq('node_key',key).maybeSingle();
+    if(error) return false;
+    if(data) return !!data.unlocked;
+  }catch(_){ return false; }
+  return !(GRADE==='g9' && UNIT>4);
+}
+
+function pintaUnidadBloqueada(){
+  $('#app').innerHTML=`<div class="card center" style="max-width:620px;margin:50px auto">
+    <div style="font-size:3rem">🔒</div><h2>This unit is not open yet</h2>
+    <p class="muted">Your teacher will activate Unit ${UNIT} when your class is ready.</p>
+    <a class="btn" href="./#classes_${GRADE}_units" style="display:inline-block;text-decoration:none;margin-top:10px">← Back to units</a>
+  </div>`;
 }
 
 async function arrancaSesion(){
@@ -905,7 +927,7 @@ function cableaArchivo(kind){
 }
 
 /* Todo declarado: ahora si se puede pintar. */
-if(U) (async function(){ await conectar(); pinta(); await arrancaSesion(); })();
+if(U) (async function(){ await conectar(); if(!(await puedeAbrirUnidad())){pintaUnidadBloqueada();return;} pinta(); await arrancaSesion(); })();
 </script>
 </body>
 </html>
