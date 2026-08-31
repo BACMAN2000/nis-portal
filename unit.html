@@ -59,6 +59,15 @@ table.rub.desc td.crit{width:22%}
 table.rub.plain td.lvl{width:9%;font-weight:700;color:var(--blue-d)}
 .rub-wrap{overflow-x:auto}
 .legend{font-size:.78rem;color:var(--grey);margin-top:10px}
+/* que significa cada letra, en el mismo orden que las columnas */
+.escala{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:6px}
+.escala li{display:flex;align-items:center;gap:9px;font-size:.82rem;color:var(--ink)}
+.escala .lv{flex:none;min-width:2.2rem;text-align:center;border-radius:6px;padding:2px 7px;
+  font-weight:800;font-size:.76rem;color:#1f2937}
+.escala .lv.ad{background:#dcfce7}
+.escala .lv.a{background:#e0f2fe}
+.escala .lv.b{background:#fef9c3}
+.escala .lv.c{background:#fee2e2}
 .week{display:flex;gap:14px;padding:14px 0;border-bottom:1px dashed var(--line)}
 .week:last-child{border-bottom:none}
 .week .n{flex:0 0 46px;height:46px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.95rem}
@@ -178,7 +187,10 @@ const Q = new URLSearchParams(location.search);
 const GRADE = (Q.get('grade')||'g9').toLowerCase();
 const UNIT  = parseInt(Q.get('unit')||'0',10);
 const MILESTONE = 'final';
-const NIVELES = ['C','B','A','AD'];
+/* De mayor a menor: lo primero que se lee es adonde se quiere llegar, no el
+   nivel mas bajo. El orden manda en las columnas de la rubrica y en la escala
+   que se explica debajo. */
+const NIVELES = ['AD','A','B','C'];
 
 const $  = s => document.querySelector(s);
 const $$ = s => document.querySelectorAll(s);
@@ -215,8 +227,14 @@ function pinta(){
   <div class="sec-title"><h2>&#128207; How you will be assessed</h2><span class="hint">You can see this from day one. Click the level you think you are at.</span></div>
   <div class="card">
     <div class="rub-wrap" id="rub">${rubrica}</div>
-    <p class="legend"><b>C</b> starting out · <b>B</b> in progress · <b>A</b> expected level · <b>AD</b> outstanding.
-      Your self-assessment is saved and your teacher sees it next to your work — it is not your grade.</p>
+    <ul class="escala">
+      <li><span class="lv ad">AD</span><b>Outstanding</b> — you go further than the unit asked.</li>
+      <li><span class="lv a">A</span><b>Expected</b> — you are where this unit wants you to be.</li>
+      <li><span class="lv b">B</span><b>In progress</b> — nearly there, still with some help.</li>
+      <li><span class="lv c">C</span><b>Starting out</b> — you are at the beginning of this criterion.</li>
+    </ul>
+    <p class="legend">Your self-assessment is saved and your teacher sees it next to your
+      work — it is not your grade.</p>
     <div class="row"><span class="state" id="selfState"></span></div>
   </div>`;
 
