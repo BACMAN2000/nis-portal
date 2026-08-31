@@ -122,7 +122,7 @@ table.f input:focus{outline:2px solid var(--blue);outline-offset:-2px;background
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js"></script>
 <script src="nis-nav.js?v=2"></script>
-<script src="worksheet-items.js?v=2"></script>
+<script src="worksheet-items.js?v=3"></script>
 <script>
 /* Ficha digital: el alumno la resuelve aqui dentro y le da a enviar. No hay
    que bajarse el PDF (que no se puede editar) ni salir a Word o Google Docs.
@@ -151,7 +151,7 @@ let wsIndex=0;
    huecos "____" y alternativas "(getting / to get)", que la ficha manda
    rodear con un circulo. Cada una se vuelve un campo, numerado por su
    posicion en el parrafo para que el identificador no cambie. */
-function conControles(texto, idBase, kBloque){
+function conControles(texto, idBase, kBloque, conPistas){
   let i = 0, a = 0;
   const alts = window.WSITEMS ? WSITEMS.alternativas(texto) : [];
   let html = esc(texto).replace(/_{3,}/g, () => {
@@ -167,15 +167,21 @@ function conControles(texto, idBase, kBloque){
       `</select>`;
     html = html.replace(esc(alt.raw), sel);
   });
+  const cues = conPistas && window.WSITEMS ? WSITEMS.pistas(texto) : [];
+  cues.forEach((cue,n) => {
+    const id='b'+kBloque+'_cue'+(n+1);
+    const input=`(<input class="hueco" data-campo="${id}" value="${esc(resp[id]||'')}" placeholder="${esc(cue.word)}">)`;
+    html=html.replace(esc(cue.raw),input);
+  });
   return html;
 }
 
 function bloqueHTML(bl, k){
     switch(bl.t){
       case 'activity': return `<div class="act">${esc(bl.text)}</div>`;
-      case 'h':        return `<h3 class="h">${conControles(bl.text, 'h'+k, k)}</h3>`;
-      case 'p':        return `<p class="p">${conControles(bl.text, 'p'+k, k)}</p>`;
-      case 'note':     return `<div class="note">${conControles(bl.text, 'n'+k, k)}</div>`;
+      case 'h':        return `<h3 class="h">${conControles(bl.text, 'h'+k, k, bl.cues)}</h3>`;
+      case 'p':        return `<p class="p">${conControles(bl.text, 'p'+k, k, bl.cues)}</p>`;
+      case 'note':     return `<div class="note">${conControles(bl.text, 'n'+k, k, bl.cues)}</div>`;
       case 'goals':    return `<ul class="goals">${bl.items.map((it,j)=>
                           `<li data-meta="g${k}_${j}" class="${resp['g'+k+'_'+j]?'on':''}">${esc(it)}</li>`).join('')}</ul>`;
       case 'bank':     return `<div class="bank"><b>Word bank</b>${bl.items.map(x=>`<span>${esc(x)}</span>`).join('')}</div>`;
