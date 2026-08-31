@@ -327,7 +327,8 @@ window.WSITEMS = (function () {
       }
 
       /* --- consigna que pide escribir y se queda sin sitio --- */
-      if (RE_ESCRIBE.test(txt) && !RE_HABLA.test(txt) && /[:.]$/.test(txt) && !RE_TITULO.test(txt)) {
+      if (RE_ESCRIBE.test(txt) && !RE_HABLA.test(txt) && !esLectura(txt) &&
+          /[:.]$/.test(txt) && !RE_TITULO.test(txt)) {
         var des = blocks[i + 1];
         var cubierto = des && (des.t === 'write' || des.t === 'table' || des.t === 'note' ||
                               (esTexto(des) && (RE_HUECO.test(texto(des)) || RE_PREG.test(texto(des)) ||
