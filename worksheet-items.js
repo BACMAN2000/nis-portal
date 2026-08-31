@@ -43,6 +43,7 @@ window.WSITEMS = (function () {
   var RE_TICK   = /^\s*(?:\[\s*[xX✓]?\s*\]|\(\s*[xX✓]?\s*\)|[☐□])\s*/;
   var RE_OPCION = /^\s*([a-eA-E])\s*[).]\s+(.+)$/;
   var RE_HUECO  = /_{3,}/;
+  var RE_CUE    = /\(\s*([A-Za-z][A-Za-z' -]{0,24})\s*\)/g;
   /* No tratar "1. Why...?" como titulo: es una pregunta numerada y necesita
      su propio campo de respuesta. */
   var RE_TITULO = /^\s*(?:activity|task|step|part|section)\s*\d+\s*[·.)\-–—]\s/i;
@@ -76,6 +77,15 @@ window.WSITEMS = (function () {
         return /[A-Za-z]/.test(o) && !/^\d+$/.test(o) && o.length <= 32;
       }) && !/\d\s*[-–]\s*\d/.test(m[0]);
       if (vale) res.push({ raw: m[0], at: m.index, opts: op });
+    }
+    return res;
+  }
+
+  function pistas(txt) {
+    var res = [], m;
+    RE_CUE.lastIndex = 0;
+    while ((m = RE_CUE.exec(txt))) {
+      if (!/\bor\b/i.test(m[1]) && !/\d/.test(m[1])) res.push({raw:m[0],word:limpia(m[1])});
     }
     return res;
   }
@@ -221,6 +231,16 @@ window.WSITEMS = (function () {
         traeTabla = false; i++; continue;
       }
 
+      /* Pistas de transformacion como "refused (take)" o "mind (not use)".
+         En las fichas avanzadas venian sin guion bajo, pero la consigna pide
+         completar la forma verbal, asi que necesitan una casilla. */
+      var cue = pistas(txt);
+      if (cue.length && (RE_ESCRIBE.test(consigna) || /\b(?:gerund|infinitive|verb form|correct form)\b/i.test(consigna))) {
+        var bc = tal(b, i); bc.cues = cue;
+        for (var ac = 0; ac < cue.length; ac++) labels['b' + i + '_cue' + (ac + 1)] = txt;
+        out.push(bc); traeTabla = false; i++; continue;
+      }
+
       /* --- preguntas --- */
       if (RE_PREG.test(txt) && !RE_TITULO.test(txt) && !esLectura(txt) && txt.length > 12) {
         var preg = [], k3 = i;
@@ -267,7 +287,8 @@ window.WSITEMS = (function () {
         var des = blocks[i + 1];
         var cubierto = des && (des.t === 'write' || des.t === 'table' || des.t === 'note' ||
                               (esTexto(des) && (RE_HUECO.test(texto(des)) || RE_PREG.test(texto(des)) ||
-                                                RE_TICK.test(texto(des)) || RE_OPCION.test(texto(des)))));
+                                                RE_TICK.test(texto(des)) || RE_OPCION.test(texto(des)) ||
+                                                pistas(texto(des)).length)));
         out.push(tal(b, i));
         consigna = txt;
         if (!cubierto) {
@@ -278,7 +299,7 @@ window.WSITEMS = (function () {
         traeTabla = false; i++; continue;
       }
 
-      if (esConsigna(txt) || txt.length < 160) consigna = txt;
+      if (esConsigna(txt)) consigna = txt;
       out.push(tal(b, i));
       traeTabla = false;
       i++;
@@ -299,5 +320,5 @@ window.WSITEMS = (function () {
     return { items: out, labels: labels };
   }
 
-  return { prepara: prepara, alternativas: alternativas };
+  return { prepara: prepara, alternativas: alternativas, pistas: pistas };
 })();
