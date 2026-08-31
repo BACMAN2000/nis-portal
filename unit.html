@@ -155,6 +155,11 @@ textarea:focus{outline:none;border-color:var(--blue)}
 .unit-screen .week{border-bottom:none;padding:4px 0}
 .unit-screen .week .n{flex:0 0 54px;height:54px;font-size:1.05rem}
 .unit-screen .week h3{font-size:1.12rem}
+.week-menu{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.week-jump{display:flex;align-items:center;gap:13px;width:100%;padding:15px;text-align:left;background:#fff;border:1px solid var(--line);border-radius:var(--r-sm);color:var(--ink);font:inherit;cursor:pointer}
+.week-jump:hover,.week-jump:focus-visible{border-color:var(--blue);background:#f4f8fd;outline:none}
+.week-jump .num{display:grid;place-items:center;flex:0 0 42px;height:42px;border-radius:50%;background:var(--blue);color:#fff;font-weight:800}
+.week-jump b{display:block;color:var(--blue-dd);font-size:.9rem}.week-jump small{display:block;color:var(--grey);margin-top:2px}
 .unit-nav{position:sticky;bottom:12px;z-index:40;display:grid;grid-template-columns:52px minmax(0,1fr) 52px;align-items:center;gap:12px;max-width:520px;margin:22px auto 0;padding:9px 12px;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:999px;box-shadow:0 12px 34px rgba(36,76,119,.22);backdrop-filter:blur(12px)}
 .unit-nav button{width:44px;height:44px;border:0;border-radius:50%;background:var(--blue);color:#fff;font:800 1.35rem/1 inherit;cursor:pointer;display:flex;align-items:center;justify-content:center}
 .unit-nav button:hover{background:var(--blue-d);transform:scale(1.04)}
@@ -163,7 +168,7 @@ textarea:focus{outline:none;border-color:var(--blue)}
 .unit-nav .where b{display:block;color:var(--blue-dd);font-size:.82rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .unit-nav .where span{display:block;color:var(--grey);font-size:.7rem;font-weight:600;margin-top:1px}
 @keyframes screenIn{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:none}}
-@media(max-width:560px){.hero h1{font-size:1.3rem}.wrap{padding:16px 13px 90px}.card{padding:16px 15px}.unit-screen{min-height:calc(100vh - 160px)}.unit-nav{bottom:8px;grid-template-columns:46px minmax(0,1fr) 46px;padding:7px 9px}.unit-nav button{width:40px;height:40px}.unit-screen .week{display:block}.unit-screen .week .n{margin-bottom:12px}}
+@media(max-width:560px){.hero h1{font-size:1.3rem}.wrap{padding:16px 13px 90px}.card{padding:16px 15px}.unit-screen{min-height:calc(100vh - 160px)}.unit-nav{bottom:8px;grid-template-columns:46px minmax(0,1fr) 46px;padding:7px 9px}.unit-nav button{width:40px;height:40px}.unit-screen .week{display:block}.unit-screen .week .n{margin-bottom:12px}.week-menu{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.unit-screen{animation:none}.unit-nav button{transition:none}}
 </style>
 </head>
@@ -263,6 +268,7 @@ function pinta(){
   const looseGames=juegosSueltos();
   const weekScreens=haySeq ? U.sequence.map((w,i)=>({
     label:`${weekWord} ${w.n} · ${w.title}`,
+    kind:'week',week:w.n,
     html:`<p class="screen-kicker">Your ${U.sequence.length} ${U.stepWord?(U.stepWord+'s'):'weeks'} · ${weekWord} ${w.n} of ${U.sequence.length}</p>
       <div class="card"><div class="week">
         <div class="n">${(U.stepWord?U.stepWord[0]:'W')}${w.n}</div>
@@ -274,6 +280,14 @@ function pinta(){
         </div>
       </div>${i===U.sequence.length-1?looseGames:''}</div>`
   })) : [];
+
+  const weeksMenu={label:`${weekWord}s · Choose a week`,kind:'weeks',html:`
+    <div class="sec-title"><h2>&#128197; Choose a ${weekWord.toLowerCase()}</h2><span class="hint">Jump directly to any week.</span></div>
+    <div class="card"><div class="week-menu">${(U.sequence||[]).map(w=>`
+      <button type="button" class="week-jump" data-week-jump="${w.n}">
+        <span class="num">${(U.stepWord?U.stepWord[0]:'W')}${w.n}</span>
+        <span><b>${esc(w.title)}</b><small>${esc(w.desc)}</small></span>
+      </button>`).join('')}</div></div>`};
 
   const overview={label:'Unit overview · What you will produce',html:`
   <div class="hero" id="hero" style="${U.cover?(U.cover.image
@@ -338,11 +352,11 @@ function pinta(){
       </div>
     </div>`};
 
-  const screens=[overview, ...(hayCrit?[assessment]:[]), ...weekScreens, resources, handin];
+  const screens=[overview, ...(hayCrit?[assessment]:[]), ...(haySeq?[weeksMenu]:[]), ...weekScreens, resources, handin];
 
   $('#app').innerHTML = `
     <div id="unitScreens">
-      ${screens.map((s,i)=>`<section class="unit-screen${i===0?' on':''}" data-label="${esc(s.label)}" aria-hidden="${i===0?'false':'true'}">${s.html}</section>`).join('')}
+      ${screens.map((s,i)=>`<section class="unit-screen${i===0?' on':''}" data-label="${esc(s.label)}" data-kind="${s.kind||'section'}"${s.week?` data-week="${s.week}"`:''} aria-hidden="${i===0?'false':'true'}">${s.html}</section>`).join('')}
     </div>
     <nav class="unit-nav" aria-label="Unit sections">
       <button type="button" id="unitPrev" aria-label="Previous section" title="Previous">&#8592;</button>
@@ -380,11 +394,23 @@ function initUnitScreens(){
     next.disabled=unitScreenIndex===screens.length-1;
     $('#unitWhere').textContent=screens[unitScreenIndex].dataset.label||'Unit';
     $('#unitPos').textContent=(unitScreenIndex+1)+' of '+screens.length;
+    const back=$('#backBtn');
+    if(back) back.innerHTML=screens[unitScreenIndex].dataset.kind==='week'?'<span>&#8592;</span> Weeks':'<span>&#8592;</span> Portal';
     window.scrollTo({top:0,behavior:focusNav?'smooth':'auto'});
   };
   window.moveUnitScreen=dir=>show(unitScreenIndex+dir,true);
+  const weeksIndex=screens.findIndex(s=>s.dataset.kind==='weeks');
+  window.showWeeksMenu=()=>show(weeksIndex>=0?weeksIndex:0,true);
   prev.onclick=()=>window.moveUnitScreen(-1);
   next.onclick=()=>window.moveUnitScreen(1);
+  $('#backBtn').onclick=e=>{
+    if(screens[unitScreenIndex].dataset.kind!=='week') return;
+    e.preventDefault(); window.showWeeksMenu();
+  };
+  document.querySelectorAll('[data-week-jump]').forEach(b=>b.onclick=()=>{
+    const at=screens.findIndex(s=>s.dataset.week===b.dataset.weekJump);
+    if(at>=0) show(at,true);
+  });
   let touchX=null;
   $('#unitScreens').addEventListener('touchstart',e=>{ touchX=e.touches[0].clientX; },{passive:true});
   $('#unitScreens').addEventListener('touchend',e=>{
@@ -393,7 +419,7 @@ function initUnitScreens(){
     touchX=null;
     if(Math.abs(dx)>70) window.moveUnitScreen(dx<0?1:-1);
   },{passive:true});
-  show(0,false);
+  show(Q.get('section')==='weeks' && weeksIndex>=0 ? weeksIndex : 0,false);
 }
 
 document.addEventListener('keydown',e=>{

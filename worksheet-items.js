@@ -36,12 +36,16 @@
  */
 window.WSITEMS = (function () {
 
-  var RE_TF     = /[\s(\[]*\bT\s*\/\s*F\b[\s)\].]*$/i;
-  var RE_TF2    = /[\s(\[]*\btrue\s*\/\s*false\b[\s)\].]*$/i;
+  /* Las fichas usan el selector antes o despues del enunciado y con varias
+     grafias: T/F, True / False y True or False. */
+  var RE_TF     = /[\s(\[]*\bT\s*(?:\/|or)\s*F\b[\s)\].:;\-–—]*/i;
+  var RE_TF2    = /[\s(\[]*\btrue\s*(?:\/|or|\s)\s*false\b[\s)\].:;\-–—]*/i;
   var RE_TICK   = /^\s*(?:\[\s*[xX✓]?\s*\]|\(\s*[xX✓]?\s*\)|[☐□])\s*/;
   var RE_OPCION = /^\s*([a-eA-E])\s*[).]\s+(.+)$/;
   var RE_HUECO  = /_{3,}/;
-  var RE_TITULO = /^\s*(?:activity|task|step|part|section)?\s*\d+\s*[·.)\-–—]\s/i;
+  /* No tratar "1. Why...?" como titulo: es una pregunta numerada y necesita
+     su propio campo de respuesta. */
+  var RE_TITULO = /^\s*(?:activity|task|step|part|section)\s*\d+\s*[·.)\-–—]\s/i;
   var RE_PREG   = /\?\s*$/;
   var RE_HABLA  = /\b(discuss|in pairs|with (?:your|a) partner|to your partner|role[\s-]?play|say it aloud|read aloud|out loud|talk about|ask each other)\b/i;
   var RE_MARCA  = /\b(tick|check|mark|circle|choose|select|underline)\b/i;
