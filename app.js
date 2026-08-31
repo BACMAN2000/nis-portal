@@ -31,7 +31,7 @@ const CLASSES_LINKS = {
 
 let state = { session:null, profile:null };
 let resultsBranch = 'mock'; // 'mock' | 'practice'
-let userFilter = { grade:'', year:'', role:'' };
+let userFilter = { grade:'', year:'', role:'', section:'' };
 
 /* ---------- analysis helpers ---------- */
 function yearOptions(sel){ const cur=new Date().getFullYear(); let o=''; for(let y=2026;y<=Math.max(cur+1,2027);y++){ o+=`<option ${String(sel)===String(y)?'selected':''}>${y}</option>`; } return o; }
@@ -533,7 +533,7 @@ async function renderAdmin(tab='users'){
   document.body.innerHTML = shell([
     {key:'overview',label:'📊 Resumen'},
     {key:'stats',label:'📈 Estadísticas'},
-    {key:'users',label:'👥 Alumnos'},
+    {key:'users',label:'👥 Usuarios'},
     {key:'results',label:'📝 Resultados'},
     {key:'final',label:'🎓 Resultado final'},
     {key:'readers',label:'📖 Controles de lectura'},
@@ -607,7 +607,7 @@ async function adminAccess(){
       <button class="btn sm" onclick="window._previewGrade(document.getElementById('pv_grade').value)">👁️ Ver el portal como alumno</button>
       <div class="muted" style="padding-bottom:11px;flex:1;min-width:240px">Abre el portal con los ojos de un alumno de ese grado —
         con sus candados— para verificar lo que acabas de marcar. Para un alumno concreto (con sus excepciones),
-        usa <b>👥 Alumnos → 👁️ Ver como</b>.</div>
+        usa <b>👥 Usuarios → 👁️ Ver como</b>.</div>
     </div>
     <div class="note">Marca qué actividades ve cada <b>grado</b>. Lo nuevo (French, Grammar) nace bloqueado; el resto, abierto. Las <b>unidades</b> (<code>…activities.u4</code>) y sus <b>semanas</b> (<code>…activities.u4.w3</code>) se abren o cierran una a una: cerrar una unidad la oculta entera de <b>Activities</b>; cerrar una semana deja el resto de la unidad como está. Para excepciones de un alumno, el profesor las ajusta en <b>Alumnos</b>. Los <b>Mocks</b> se gestionan en su pestaña 🔓 Mocks.</div>
     <div class="card" style="padding:0;overflow-x:auto"><table>
@@ -1022,12 +1022,31 @@ async function adminUsers(){
   if(!years.includes(2026)) years.push(2026);
   if(!years.includes(new Date().getFullYear())) years.push(new Date().getFullYear());
   years.sort((a,b)=>a-b);
-  const fg=userFilter.grade, fy=userFilter.year, fr=userFilter.role, showInactive=!!userFilter.showInactive;
+  const fg=userFilter.grade, fy=userFilter.year, fr=userFilter.role, fs=userFilter.section, showInactive=!!userFilter.showInactive;
   const suspendedCount = all.filter(p=>p.active===false).length;
-  const list = all.filter(p=> (!fg||String(p.grade_id)===String(fg)) && (!fy||String(p.academic_year||2026)===String(fy)) && (!fr||p.role===fr) && (showInactive || p.active!==false) );
+  const secciones = [...new Set(all.map(p=>(p.section||'').trim()).filter(Boolean))].sort();
+
+  /* Aquí no están solo los alumnos: están los profesores, los administradores
+     y las cuentas de demostración. El tipo se elige con los botones de arriba;
+     "Demo" no es un rol, es la marca profiles.is_demo. */
+  const esTipo = (p, t) => t==='demo' ? p.is_demo===true : p.role===t;
+  const pasaResto = p => (!fg||String(p.grade_id)===String(fg))
+      && (!fy||String(p.academic_year||2026)===String(fy))
+      && (!fs||(p.section||'').trim()===fs)
+      && (showInactive || p.active!==false);
+  const list = all.filter(p => pasaResto(p) && (!fr || esTipo(p, fr)));
+
+  const TIPOS = [['','Todos','👥'],['student','Alumnos','🎒'],['teacher','Profesores','👨‍🏫'],
+                 ['admin','Admins','🛡️'],['demo','Demos','🧪']];
+  const botonesTipo = TIPOS.map(([v,l,ic])=>{
+    const n = all.filter(p => pasaResto(p) && (!v || esTipo(p, v))).length;
+    return `<button class="btn sm ${fr===v?'':'ghost'}" onclick="window._setUserFilter('role','${v}')"
+      title="Ver solo ${l.toLowerCase()}">${ic} ${l} <b>${n}</b></button>`;
+  }).join(' ');
+
   const gradeOpts = `<option value="">Todos los grados</option>`+GRADES.map(g=>`<option value="${g.id}" ${String(fg)===String(g.id)?'selected':''}>${g.name}</option>`).join('');
   const yearOpts = `<option value="">Todos los años</option>`+years.map(y=>`<option value="${y}" ${String(fy)===String(y)?'selected':''}>${y}</option>`).join('');
-  const roleOpts = `<option value="">Todos los roles</option>`+[['student','Alumnos'],['teacher','Profesores'],['admin','Admins']].map(([v,l])=>`<option value="${v}" ${fr===v?'selected':''}>${l}</option>`).join('');
+  const seccionOpts = `<option value="">Todas las secciones</option>`+secciones.map(s=>`<option value="${esc(s)}" ${fs===s?'selected':''}>Sección ${esc(s)}</option>`).join('');
   const rows=list.map(p=>{
     const suspended = p.active===false;
     const toggleBtn = suspended
@@ -1038,18 +1057,22 @@ async function adminUsers(){
       <td><span class="badge grade">${esc(p.grades?.name||'—')}</span> ${p.section?esc(p.section):''}</td>
       <td>${p.academic_year||2026}</td>
       <td><span class="badge lvl">${esc(p.cefr_level||'—')}</span></td>
-      <td><span class="badge ${p.role==='student'?'':'on'}">${esc(p.role)}</span></td>
+      <td><span class="badge ${p.role==='student'?'':'on'}">${esc(p.role)}</span>${p.is_demo?' <span class="badge" title="Cuenta de demostración">🧪 demo</span>':''}</td>
       <td><span class="badge ${suspended?'off':'on'}">${suspended?'Suspendido':'Activo'}</span></td>
       <td style="white-space:nowrap">${p.role==='student'?`<button class="btn sm ghost" onclick="window._previewStudent('${p.id}','${esc((p.full_name||p.email||'').replace(/'/g,'’'))}')" title="Ver el portal tal como lo ve este alumno">👁️ Ver como</button> <button class="btn sm ghost" onclick="window._openStudentAccess('${p.id}',${p.grade_id||'null'},'${esc((p.full_name||p.email||'').replace(/'/g,'’'))}')">🔧 Accesos</button> <button class="btn sm ghost" onclick="window.resetStudentPassword('${p.id}','${esc((p.full_name||p.email||'').replace(/'/g,'’'))}','${esc((p.email||'').replace(/'/g,'’'))}')" title="Asignar una contraseña temporal nueva">🔑 Restablecer</button> `:''}<button class="btn sm ghost" onclick="editUser('${p.id}')">Editar</button> ${toggleBtn} <button class="btn sm danger" onclick="deleteUser('${p.id}','user')">Eliminar</button></td>
     </tr>`;}).join('');
-  $('#main').innerHTML=`<div class="row" style="justify-content:space-between;align-items:center"><h1>Alumnos</h1>
+  $('#main').innerHTML=`<div class="row" style="justify-content:space-between;align-items:center"><h1>Usuarios</h1>
       <button class="btn sm" onclick="adminNewUser()">+ Nuevo</button></div>
-    <div class="card" style="display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end">
-      <div><label>Grado</label><select onchange="window._setUserFilter('grade',this.value)" style="min-width:170px">${gradeOpts}</select></div>
-      <div><label>Año académico</label><select onchange="window._setUserFilter('year',this.value)" style="min-width:150px">${yearOpts}</select></div>
-      <div><label>Rol</label><select onchange="window._setUserFilter('role',this.value)" style="min-width:150px">${roleOpts}</select></div>
-      <label style="display:flex;align-items:center;gap:7px;font-weight:500;margin:0 0 10px"><input type="checkbox" ${showInactive?'checked':''} onchange="window._setUserFilter('showInactive',this.checked)" style="width:auto"> Mostrar suspendidos${suspendedCount?` (${suspendedCount})`:''}</label>
-      <div class="muted" style="padding-bottom:11px">${list.length} usuario(s)</div>
+    <div class="card">
+      <div class="row" style="gap:6px;flex-wrap:wrap;margin-bottom:14px">${botonesTipo}</div>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end">
+        <div><label>Grado</label><select onchange="window._setUserFilter('grade',this.value)" style="min-width:170px">${gradeOpts}</select></div>
+        <div><label>Sección</label><select onchange="window._setUserFilter('section',this.value)" style="min-width:150px">${seccionOpts}</select></div>
+        <div><label>Año académico</label><select onchange="window._setUserFilter('year',this.value)" style="min-width:150px">${yearOpts}</select></div>
+        <label style="display:flex;align-items:center;gap:7px;font-weight:500;margin:0 0 10px"><input type="checkbox" ${showInactive?'checked':''} onchange="window._setUserFilter('showInactive',this.checked)" style="width:auto"> Mostrar suspendidos${suspendedCount?` (${suspendedCount})`:''}</label>
+        <div class="muted" style="padding-bottom:11px">${list.length} usuario(s)</div>
+        ${(fr||fg||fy||fs) ? `<button class="btn sm ghost" style="margin-bottom:8px" onclick="window._limpiaUserFiltro()">Quitar filtros</button>` : ''}
+      </div>
     </div>
     <div class="card" style="padding:0;overflow-x:auto">
       <table><thead><tr><th>Nombre</th><th>Grado</th><th>Año</th><th>Nivel</th><th>Rol</th><th>Estado</th><th></th></tr></thead>
@@ -1057,6 +1080,8 @@ async function adminUsers(){
     </div>`;
 }
 window._setUserFilter = (k,v)=>{ userFilter[k]=v; adminUsers(); };
+window._limpiaUserFiltro = ()=>{ userFilter = { grade:'', year:'', role:'', section:'',
+  showInactive:userFilter.showInactive }; adminUsers(); };
 
 /* Contraseña temporal para alumnos.
    La clave solo existe en memoria durante este flujo: se envía a Auth mediante
@@ -1077,7 +1102,7 @@ function _generateTemporaryPassword(){
 
 window.resetStudentPassword = function(id, name, email){
   const suggested = _generateTemporaryPassword();
-  $('#main').innerHTML=`<button class="btn sm ghost" onclick="adminUsers()">← Volver a Alumnos</button>
+  $('#main').innerHTML=`<button class="btn sm ghost" onclick="adminUsers()">← Volver a Usuarios</button>
     <div class="card" style="max-width:620px">
       <h2>🔑 Restablecer contraseña</h2>
       <p><b>${esc(name||'Alumno')}</b></p>
@@ -1186,6 +1211,9 @@ window.editUser = async (id)=>{
         <div><label>Año académico</label><select id="e_year">${yearOptions(p.academic_year||2026)}</select></div>
         <div><label>Estado</label><select id="e_active"><option value="true" ${p.active?'selected':''}>Activo</option><option value="false" ${!p.active?'selected':''}>Inactivo</option></select></div>
       </div>
+      <label style="display:flex;align-items:center;gap:8px;font-weight:500">
+        <input type="checkbox" id="e_demo" ${p.is_demo?'checked':''} style="width:auto">
+        🧪 Cuenta de demostración (no es un alumno ni un profesor real del colegio)</label>
       <label>Restablecer contraseña de acceso (opcional)</label><input id="e_pw" type="password" autocomplete="new-password" placeholder="dejar vacío para no cambiar · mín. 6 caracteres">
       <div id="emsg"></div>
       <div class="row" style="margin-top:14px"><button class="btn" onclick="saveUser('${id}')">Guardar</button></div>
@@ -1194,7 +1222,7 @@ window.editUser = async (id)=>{
 window.saveUser = async (id)=>{
   const upd={ grade_id:+$('#e_grade').value, section:$('#e_section').value.trim()||null,
     cefr_level:$('#e_level').value||null, role:$('#e_role').value, active:$('#e_active').value==='true',
-    academic_year:+($('#e_year').value||2026) };
+    academic_year:+($('#e_year').value||2026), is_demo:$('#e_demo').checked };
   const { error } = await sb.from('profiles').update(upd).eq('id',id);
   const pw=$('#e_pw').value.trim();
   let pwErr=null;
@@ -2319,7 +2347,7 @@ window._openStudentAccess = async (sid, gradeId, name)=>{
       <td style="text-align:center" class="muted">${base?'Habilitado':'Bloqueado'}</td>
       <td style="text-align:center"><input type="checkbox" ${eff?'checked':''} onchange="window._setStudentAccess('${sid}','${n.key}',this.checked,this)"></td></tr>`;
   }).join('');
-  $('#main').innerHTML=`<button class="btn sm ghost" onclick="${isAdmin?'adminUsers':'teacherStudents'}()">← Volver a Alumnos</button>
+  $('#main').innerHTML=`<button class="btn sm ghost" onclick="${isAdmin?'adminUsers':'teacherStudents'}()">← Volver a ${isAdmin?'Usuarios':'Alumnos'}</button>
     <h1 style="margin-top:8px">Accesos — ${esc(name)}</h1>
     <div class="note">Activa o bloquea actividades para este alumno. Por defecto hereda lo del grado; aquí defines la excepción.</div>
     <div class="card" style="padding:0;overflow-x:auto"><table>
@@ -2845,7 +2873,7 @@ function _previewNeedsStudent(title, back){
   $('#main').innerHTML=`${back||''}<h1>${title}</h1>
     <div class="note">Esta vista es el historial personal de un alumno, así que en la
       <b>vista por grado</b> no hay datos que mostrar. Sal de la vista y entra desde
-      <b>👥 Alumnos → 👁️ Ver como</b> con un alumno concreto.</div>`;
+      <b>👥 Usuarios → 👁️ Ver como</b> con un alumno concreto.</div>`;
 }
 /* Nodos gateables por el admin/profesor (Mocks va aparte; My Progress y Resultado final son datos propios). */
 /* Primaria (2.º–5.º): sin `.grammar` — como en francés, la gramática de
