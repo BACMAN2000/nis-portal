@@ -4366,7 +4366,9 @@ window.studentReportPDF = async (studentId, lang)=>{
    rúbrica de Toddle, y la nota queda debajo.
 ---------------------------------------------------------------- */
 const UNIT_CRIT = { '1':'Speaking & listening', '2':'Reading', '3':'Writing' };
-const UNIT_LVL  = ['C','B','A','AD'];
+/* De mayor a menor, igual que en el hub del alumno (unit.html): primero
+   adonde se quiere llegar. */
+const UNIT_LVL  = ['AD','A','B','C'];
 
 async function unitProductsPanel(){
   const main = $('#main');
@@ -4455,9 +4457,11 @@ async function unitProductsPanel(){
     <h2>🎯 Productos de unidad</h2>
     <p class="muted">Lo que los alumnos producen, no lo que aciertan. Primero el avance
       por criterio de la rúbrica; la nota es lo de abajo.</p>
-    <div style="display:grid;gap:8px;margin:14px 0 18px">
+    <div style="display:grid;gap:8px;margin:14px 0 10px">
       ${Object.keys(UNIT_CRIT).map(k=>`<div><b style="font-size:.85rem">${k}. ${UNIT_CRIT[k]}</b><br>${barra(k)}</div>`).join('')}
     </div>
+    <p class="muted" style="font-size:.8rem;margin:0 0 18px">
+      <b>AD</b> logro destacado · <b>A</b> logro esperado · <b>B</b> en proceso · <b>C</b> en inicio.</p>
     <div style="overflow-x:auto"><table class="tbl">
       <thead><tr><th>Alumno</th><th>Unidad</th><th>Informe</th><th>Presentación</th><th>Cuaderno</th>
         <th>C1</th><th>C2</th><th>C3</th><th>Nota</th><th>Comentario</th><th>Exhibir</th></tr></thead>
@@ -5226,7 +5230,21 @@ window.corrAlumno = async function(i){
   const { data: sub } = await sb.from('unit_submissions')
     .select('payload').eq('id', e.id).maybeSingle();
   const resp = (sub && sub.payload && sub.payload.answers) || {};
-  const claves = Object.keys(resp).filter(k => resp[k] !== '' && resp[k] !== false);
+
+  /* Junto a cada respuesta, su enunciado. Con la clave tecnica sola ("tf12: F")
+     no habia forma de corregir sin abrir la ficha en otra pestana. El orden es
+     el de la ficha, no el orden en que el alumno fue contestando. */
+  const fAl = _corr.fichas.find(f => f.level === e.level) || _corr.fichas[0];
+  const etiquetas = (window.WSITEMS && fAl && fAl.blocks)
+    ? WSITEMS.prepara(fAl.blocks).labels : {};
+  const orden = Object.keys(etiquetas);
+  const claves = Object.keys(resp)
+    .filter(k => resp[k] !== '' && resp[k] !== false && resp[k] != null)
+    .sort((a,b) => {
+      const ia = orden.indexOf(a), ib = orden.indexOf(b);
+      return (ia<0?9999:ia) - (ib<0?9999:ib);
+    });
+  const valor = v => v === true ? '✔' : (v === 'T' ? 'True' : (v === 'F' ? 'False' : String(v)));
 
   const puntos = e.criteria || {};
   const rub = _corr.rubric;
@@ -5246,8 +5264,10 @@ window.corrAlumno = async function(i){
     <div style="display:grid;grid-template-columns:1fr 320px;gap:18px;margin-top:14px" id="cGrid">
       <div style="max-height:60vh;overflow:auto;border:1px solid var(--line);border-radius:10px;padding:12px">
         ${claves.length ? `<table class="tbl"><tbody>${claves.map(k=>`<tr>
-            <td class="muted" style="white-space:nowrap;vertical-align:top">${esc(k)}</td>
-            <td>${resp[k]===true ? '✔' : esc(String(resp[k]))}</td></tr>`).join('')}</tbody></table>`
+            <td style="vertical-align:top;max-width:22rem">
+              <span style="font-size:.85rem">${esc(etiquetas[k] || k)}</span>
+              ${etiquetas[k] ? `<span class="muted" style="font-size:.7rem"> · ${esc(k)}</span>` : ''}</td>
+            <td style="font-weight:600">${esc(valor(resp[k]))}</td></tr>`).join('')}</tbody></table>`
           : '<p class="muted">No respondió nada.</p>'}
       </div>
       <div>

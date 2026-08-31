@@ -48,6 +48,30 @@ textarea{width:100%;border:1px solid var(--line);border-radius:var(--r-sm);paddi
 textarea:focus{outline:none;border-color:var(--blue);background:#fff}
 input.hueco{border:none;border-bottom:2px solid var(--blue);background:#f7faff;font-family:inherit;font-size:.92rem;padding:2px 6px;min-width:90px;color:var(--ink)}
 input.hueco:focus{outline:none;background:#fff;border-bottom-color:var(--blue-dd)}
+select.alt{border:1px solid var(--blue);border-radius:999px;background:#f7faff;font-family:inherit;
+  font-size:.88rem;padding:2px 8px;color:var(--blue-dd);font-weight:600}
+select.alt:focus{outline:none;background:#fff}
+/* verdadero/falso, casillas y opciones: lo que la ficha manda marcar */
+.q{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px dashed var(--line)}
+.q:last-child{border-bottom:none}
+.q .txt{flex:1;font-size:.92rem}
+.tfb{display:flex;gap:6px;flex:none}
+.tfb button{border:1px solid var(--line);background:#fff;border-radius:999px;min-width:42px;
+  padding:5px 12px;font:700 .85rem/1 inherit;color:var(--grey);cursor:pointer}
+.tfb button.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.opt{display:flex;align-items:flex-start;gap:9px;padding:8px 10px;border:1px solid var(--line);
+  border-radius:var(--r-sm);margin:6px 0;cursor:pointer;background:#fff;font-size:.9rem}
+.opt:hover{border-color:var(--blue);background:#f7faff}
+.opt.on{border-color:var(--blue);background:#eef4fb}
+.opt .marca{width:20px;height:20px;border:2px solid var(--line);border-radius:50%;flex:none;
+  display:grid;place-items:center;font-size:.7rem;color:#fff;font-weight:700;margin-top:1px}
+.opt.cuad .marca{border-radius:5px}
+.opt.on .marca{background:var(--blue);border-color:var(--blue)}
+.opt .letra{font-weight:700;color:var(--blue-d);flex:none}
+input.corta{width:100%;border:1px solid var(--line);border-radius:var(--r-sm);padding:9px 12px;
+  font-family:inherit;font-size:.92rem;background:#fcfdff;color:var(--ink);margin:2px 0 10px}
+input.corta:focus{outline:none;border-color:var(--blue);background:#fff}
+.pregunta{font-size:.92rem;margin:10px 0 4px;font-weight:600;color:var(--blue-dd)}
 table.f{width:100%;border-collapse:collapse;margin:12px 0;font-size:.88rem}
 table.f th{background:#eef4fb;color:var(--blue-dd);text-align:left;padding:9px 10px;border:1px solid var(--line);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
 table.f td{border:1px solid var(--line);padding:0;vertical-align:middle}
@@ -86,6 +110,7 @@ table.f input:focus{outline:2px solid var(--blue);outline-offset:-2px;background
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js"></script>
 <script src="nis-nav.js?v=2"></script>
+<script src="worksheet-items.js?v=1"></script>
 <script>
 /* Ficha digital: el alumno la resuelve aqui dentro y le da a enviar. No hay
    que bajarse el PDF (que no se puede editar) ni salir a Word o Google Docs.
@@ -107,30 +132,55 @@ const esc = s => String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&l
 
 let sb=null, me=null, ficha=null, resp={}, entregado=false;
 
-/* Un parrafo puede traer huecos dentro: "1 (weakest) ____ 2 ____". Cada hueco
-   se vuelve un campo, numerado por su posicion, para poder guardarlo. */
-function conHuecos(texto, idBase){
-  let i = 0;
-  return esc(texto).replace(/_{3,}/g, () => {
+/* Un parrafo puede traer dos cosas que se responden dentro del propio texto:
+   huecos "____" y alternativas "(getting / to get)", que la ficha manda
+   rodear con un circulo. Cada una se vuelve un campo, numerado por su
+   posicion en el parrafo para que el identificador no cambie. */
+function conControles(texto, idBase, kBloque){
+  let i = 0, a = 0;
+  const alts = window.WSITEMS ? WSITEMS.alternativas(texto) : [];
+  let html = esc(texto).replace(/_{3,}/g, () => {
     i++;
     const id = idBase + '_' + i;
     return `<input class="hueco" data-campo="${id}" value="${esc(resp[id]||'')}">`;
   });
+  alts.forEach(alt => {
+    a++;
+    const id = 'b' + kBloque + '_alt' + a;
+    const sel = `<select class="alt" data-campo="${id}"><option value=""></option>` +
+      alt.opts.map(o => `<option${resp[id]===o?' selected':''}>${esc(o)}</option>`).join('') +
+      `</select>`;
+    html = html.replace(esc(alt.raw), sel);
+  });
+  return html;
 }
 
 function pinta(){
-  const b = ficha.blocks.map((bl, k) => {
+  /* WSITEMS convierte los bloques en cosas que se pueden responder: el
+     verdadero/falso, las opciones y las preguntas sueltas llegaban como texto
+     plano y el alumno no tenia donde contestar. */
+  /* Si el navegador sirve un worksheet.html viejo de su cache y no llega a
+     cargar worksheet-items.js, la ficha se pinta como antes en vez de
+     quedarse en blanco. */
+  const preparado = window.WSITEMS ? WSITEMS.prepara(ficha.blocks)
+                                   : { items: ficha.blocks, labels: {} };
+  const b = preparado.items.map((bl, n) => {
+    const k = (bl._k != null) ? bl._k : n;
     switch(bl.t){
       case 'activity': return `<div class="act">${esc(bl.text)}</div>`;
-      case 'h':        return `<h3 class="h">${conHuecos(bl.text, 'h'+k)}</h3>`;
-      case 'p':        return `<p class="p">${conHuecos(bl.text, 'p'+k)}</p>`;
-      case 'note':     return `<div class="note">${conHuecos(bl.text, 'n'+k)}</div>`;
+      case 'h':        return `<h3 class="h">${conControles(bl.text, 'h'+k, k)}</h3>`;
+      case 'p':        return `<p class="p">${conControles(bl.text, 'p'+k, k)}</p>`;
+      case 'note':     return `<div class="note">${conControles(bl.text, 'n'+k, k)}</div>`;
       case 'goals':    return `<ul class="goals">${bl.items.map((it,j)=>
                           `<li data-meta="g${k}_${j}" class="${resp['g'+k+'_'+j]?'on':''}">${esc(it)}</li>`).join('')}</ul>`;
       case 'bank':     return `<div class="bank"><b>Word bank</b>${bl.items.map(x=>`<span>${esc(x)}</span>`).join('')}</div>`;
       case 'write':    return `<textarea data-campo="${bl.id}" rows="${bl.lines||3}"
                           placeholder="Write your answer here…">${esc(resp[bl.id]||'')}</textarea>`;
       case 'table':    return tabla(bl);
+      case 'tf':       return trueFalse(bl);
+      case 'checks':   return casillas(bl);
+      case 'choice':   return opciones(bl);
+      case 'short':    return corta(bl);
       default:         return '';
     }
   }).join('');
@@ -154,13 +204,47 @@ function pinta(){
   });
   $('#app').addEventListener('click', e => {
     const li = e.target.closest('li[data-meta]');
-    if(!li) return;
-    const c = li.dataset.meta;
-    resp[c] = !resp[c];
-    li.classList.toggle('on', !!resp[c]);
-    autoguarda();
+    if(li){
+      const c = li.dataset.meta;
+      resp[c] = !resp[c];
+      li.classList.toggle('on', !!resp[c]);
+      autoguarda();
+      return;
+    }
+    // True/False y opcion unica: volver a pulsar lo elegido lo desmarca
+    const bt = e.target.closest('[data-set],[data-pick]');
+    if(bt){
+      const id = bt.dataset.set || bt.dataset.pick;
+      resp[id] = (resp[id] === bt.dataset.val) ? '' : bt.dataset.val;
+      refresca(id);
+      autoguarda();
+      return;
+    }
+    const ck = e.target.closest('[data-check]');
+    if(ck){
+      const id = ck.dataset.check;
+      resp[id] = !resp[id];
+      refresca(id);
+      autoguarda();
+    }
   });
   $('#barra').style.display = 'flex';
+}
+
+/* Se repinta solo el control pulsado. Rehacer la ficha entera con innerHTML
+   quitaria el foco y devolveria el scroll al sitio equivocado. */
+function refresca(id){
+  document.querySelectorAll(`[data-set="${id}"],[data-pick="${id}"]`).forEach(b => {
+    const on = resp[id] === b.dataset.val;
+    b.classList.toggle('on', on);
+    const m = b.querySelector('.marca');
+    if(m) m.textContent = on ? '✓' : '';
+  });
+  document.querySelectorAll(`[data-check="${id}"]`).forEach(b => {
+    b.classList.toggle('on', !!resp[id]);
+    const m = b.querySelector('.marca');
+    if(m) m.textContent = resp[id] ? '✓' : '';
+  });
 }
 
 /* La rubrica se le ensena al alumno ANTES de resolver, no despues de la
@@ -176,6 +260,45 @@ function rubricaHTML(){
       <td class="fija">${esc(c.c)}</td>
       <td class="fija" style="width:70px;text-align:center;font-weight:700;color:var(--blue-d)">${c.max}</td>
     </tr>`).join('')}</tbody></table></div>`;
+}
+
+/* Verdadero o falso: la ficha lo escribe como "... T / F" y hasta ahora eso
+   era texto, sin nada que marcar. */
+function trueFalse(bl){
+  const v = resp[bl.id] || '';
+  return `<div class="q"><span class="txt">${esc(bl.text)}</span>
+    <span class="tfb">
+      <button type="button" data-set="${bl.id}" data-val="T" class="${v==='T'?'on':''}">True</button>
+      <button type="button" data-set="${bl.id}" data-val="F" class="${v==='F'?'on':''}">False</button>
+    </span></div>`;
+}
+
+/* Casillas: "tick the ideas you expect", los self-check y las listas de
+   preguntas que la ficha manda marcar, no contestar. */
+function casillas(bl){
+  const cab = bl.head ? `<p class="p" style="font-weight:600;margin:0 0 4px">${esc(bl.head)}</p>` : '';
+  const lista = bl.items.map(it => `<label class="opt cuad ${resp[it.id]?'on':''}" data-check="${it.id}">
+      <span class="marca">${resp[it.id]?'✓':''}</span><span>${esc(it.text)}</span></label>`).join('');
+  return bl.nota ? `<div class="note">${cab}${lista}</div>` : cab + lista;
+}
+
+/* Opciones a) b) c). Casi siempre es una sola ("Circle ONE"); si la consigna
+   pide varias, se marcan varias. */
+function opciones(bl){
+  return bl.opts.map(o => {
+    const puesto = bl.multi ? !!resp[bl.id + '_' + o.v] : (resp[bl.id] === o.v);
+    const attr = bl.multi ? `data-check="${bl.id}_${o.v}"` : `data-pick="${bl.id}" data-val="${o.v}"`;
+    return `<label class="opt ${bl.multi?'cuad ':''}${puesto?'on':''}" ${attr}>
+      <span class="marca">${puesto?'✓':''}</span>
+      <span class="letra">${esc(o.v)})</span><span>${esc(o.text)}</span></label>`;
+  }).join('');
+}
+
+/* Pregunta suelta: su renglon, del ancho de la ficha. */
+function corta(bl){
+  const preg = bl.text ? `<p class="pregunta">${esc(bl.text)}</p>` : '';
+  return `${preg}<input class="corta" data-campo="${bl.id}" value="${esc(resp[bl.id]||'')}"
+     placeholder="Your answer…">`;
 }
 
 function tabla(bl){
