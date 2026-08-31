@@ -31,7 +31,7 @@ window.UNIT_PLANS = {
     label: 'Grade 2',
     units: [
 {
-  cover:{icon:'🍎', from:'#1f5e3a', to:'#63b06a'},
+  cover:{icon:'🍎', from:'#1f5e3a', to:'#63b06a', image:'assets/unit-covers/g2-u4-recipes.png'},
   n:4,
   title:'From Ingredients to Recipes',
   weeks:5,
@@ -70,7 +70,7 @@ window.UNIT_PLANS = {
     label: 'Grade 3',
     units: [
 {
-  cover:{icon:'🦁', from:'#1d4d3b', to:'#4e9d6b'},
+  cover:{icon:'🦁', from:'#1d4d3b', to:'#4e9d6b', image:'assets/unit-covers/g3-u4-animals.png'},
   n:4,
   title:'Discovering the Animal Kingdom',
   weeks:6,
@@ -116,7 +116,7 @@ window.UNIT_PLANS = {
     label: 'Grade 4',
     units: [
 {
-  cover:{icon:'🏜', from:'#8a5a1e', to:'#d9a441'},
+  cover:{icon:'🏜', from:'#8a5a1e', to:'#d9a441', image:'assets/unit-covers/g4-u4-ica.png'},
   n:4,
   title:'Your Guide to Exploring Ica',
   weeks:5,
@@ -148,7 +148,7 @@ window.UNIT_PLANS = {
     label: 'Grade 5',
     units: [
 {
-  cover:{icon:'📖', from:'#23407a', to:'#5b8ed6'},
+  cover:{icon:'📖', from:'#23407a', to:'#5b8ed6', image:'assets/unit-covers/g5-u4-writers.png'},
   n:4,
   title:'Reading Like Writers',
   weeks:6,
@@ -194,7 +194,7 @@ window.UNIT_PLANS = {
 
 /* ------------------------------------------------- 6.o U4 */
 {
-  cover:{icon:'🏅', from:'#7a5310', to:'#d4a03a'},
+  cover:{icon:'🏅', from:'#7a5310', to:'#d4a03a', image:'assets/unit-covers/g6-u4-heroes.png'},
   n:4,
   title:'Heroes Among Us — The Power of Life Choices',
   weeks:6,
@@ -237,7 +237,7 @@ window.UNIT_PLANS = {
 
 /* ------------------------------------------------- 6.o U5 */
 {
-  cover:{icon:'📱', from:'#125b6b', to:'#3fa8c4'},
+  cover:{icon:'📱', from:'#125b6b', to:'#3fa8c4', image:'assets/unit-covers/g6-u5-tech-life.png'},
   n:5,
   title:'Tech in My Life: Pros and Cons',
   weeks:5,
@@ -283,7 +283,7 @@ window.UNIT_PLANS = {
 
 /* ------------------------------------------------- 7.o U4 */
 {
-  cover:{icon:'⚖', from:'#3f4756', to:'#8b93a6'},
+  cover:{icon:'⚖', from:'#3f4756', to:'#8b93a6', image:'assets/unit-covers/g7-u4-order.png'},
   n:4,
   title:'The Architecture of Order: From Written Laws to Unspoken Truths',
   weeks:5,
@@ -321,7 +321,7 @@ window.UNIT_PLANS = {
 
 /* ------------------------------------------------- 7.o U5 */
 {
-  cover:{icon:'🌐', from:'#12556b', to:'#3f9fc4'},
+  cover:{icon:'🌐', from:'#12556b', to:'#3f9fc4', image:'assets/unit-covers/g7-u5-tech-world.png'},
   n:5,
   title:'Tech in Our World: Help or Harm?',
   weeks:5,
@@ -369,7 +369,7 @@ window.UNIT_PLANS = {
 
 /* ------------------------------------------------- 8.o U4 */
 {
-  cover:{icon:'📕', from:'#5c2230', to:'#a5566a'},
+  cover:{icon:'📕', from:'#5c2230', to:'#a5566a', image:'assets/unit-covers/g8-u4-voice.png'},
   n:4,
   title:'Finding Our Voice Through Literature and Argument',
   weeks:6,
@@ -725,7 +725,7 @@ window.UNIT_PLANS = {
     label: 'Grade 10',
     units: [
 {
-  cover:{icon:'🎙', from:'#6b1d2a', to:'#bf5162'},
+  cover:{icon:'🎙', from:'#6b1d2a', to:'#bf5162', image:'assets/unit-covers/g10-u4-arguments.png'},
   n:4,
   title:'Crafting Complex Arguments and Expressive Presentations',
   weeks:6,
@@ -771,7 +771,7 @@ window.UNIT_PLANS = {
     label: 'Grade 11',
     units: [
 {
-  cover:{icon:'🌍', from:'#0f4f4a', to:'#3a9c92'},
+  cover:{icon:'🌍', from:'#0f4f4a', to:'#3a9c92', image:'assets/unit-covers/g11-u4-discourse.png'},
   n:4,
   title:'Rhetorical Mastery and Global Discourse',
   weeks:5,
