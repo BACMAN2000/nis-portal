@@ -620,6 +620,7 @@ async function renderAdmin(tab='users'){
       {key:'coach',label:'🎙️ Pronunciación'},
     ]},
     {group:'Permisos', icon:'🔐', items:[
+      {key:'unitaccess',label:'📚 Activar unidades'},
       {key:'access',label:'🔐 Accesos'},
       {key:'mocks',label:'🔓 Mocks'},
       {key:'practice',label:'🎯 Practice Tests'},
@@ -649,6 +650,7 @@ async function renderAdmin(tab='users'){
   if(tab==='honesty') return antiCheatPanel();
   if(tab==='mocks') return adminMocks();
   if(tab==='practice') return practicePanel(GRADES);
+  if(tab==='unitaccess') return unitAccessPanel(GRADES);
   if(tab==='access') return adminAccess();
   return adminUsers();
 }
@@ -680,6 +682,40 @@ async function adminAccess(){
     <div class="card" style="padding:0;overflow-x:auto"><table>
       <thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table></div>`;
 }
+
+/* 📚 Unidades académicas — control simple para admin y docentes. Se guarda en
+   node_access, igual que los demás candados por grado. */
+async function unitAccessPanel(grades){
+  const allowed=grades||[];
+  const {data,error}=await sb.from('node_access').select('grade_id,node_key,unlocked');
+  if(error){ $('#main').innerHTML=`<div class="note err">${esc(error.message)}</div>`; return; }
+  const map={}; (data||[]).forEach(r=>{(map[r.grade_id]=map[r.grade_id]||{})[r.node_key]=r.unlocked;});
+  const sections=allowed.map(g=>{
+    const gradeKey='g'+g.id, plans=unitPlansFor(gradeKey);
+    if(!plans.length) return '';
+    return `<div class="card"><h2 style="margin:0 0 12px">${esc(g.name)} · Unidades</h2>
+      <div class="grid cols-3">${plans.map(u=>{
+        const key=_academicUnitNode(gradeKey,u.n);
+        const has=map[g.id]&&Object.prototype.hasOwnProperty.call(map[g.id],key);
+        const on=has?map[g.id][key]:_academicUnitDefault(gradeKey,u.n);
+        return `<label class="card" style="margin:0;padding:16px;cursor:pointer;border-color:${on?'#86c59a':'var(--line)'}">
+          <div style="display:flex;align-items:center;gap:11px">
+            <input type="checkbox" ${on?'checked':''} onchange="window._toggleAcademicUnit(${g.id},'${key}',this.checked,this)">
+            <span><b>Unidad ${u.n} · ${esc(u.title)}</b><small class="muted" style="display:block;margin-top:3px">${on?'Activa para alumnos':'Bloqueada para alumnos'}</small></span>
+          </div></label>`;
+      }).join('')}</div></div>`;
+  }).join('');
+  $('#main').innerHTML=`<h1>📚 Activar unidades</h1>
+    <div class="note">Las unidades bloqueadas <b>siguen apareciendo</b> al alumno, pero no se pueden abrir. Actívalas cuando el grado llegue a esa parte del curso.</div>
+    ${sections||'<div class="card muted">No tienes grados con unidades asignadas.</div>'}`;
+}
+window._toggleAcademicUnit=async(g,key,to,el)=>{
+  el.disabled=true;
+  const {error}=await sb.from('node_access').upsert({grade_id:g,node_key:key,unlocked:to,updated_at:new Date().toISOString(),updated_by:(state.session&&state.session.user&&state.session.user.id)||null},{onConflict:'grade_id,node_key'});
+  el.disabled=false;
+  if(error){alert('No se pudo guardar: '+error.message);el.checked=!to;return;}
+  unitAccessPanel(state.profile&&state.profile.role==='admin'?GRADES:teacherAllowedGrades());
+};
 window._toggleNode=async(g,key,to,el)=>{
   el.disabled=true;
   const { error } = await sb.from('node_access').upsert({grade_id:g,node_key:key,unlocked:to,updated_at:new Date().toISOString(),updated_by:(state.session&&state.session.user&&state.session.user.id)||null},{onConflict:'grade_id,node_key'});
@@ -2205,6 +2241,7 @@ async function renderTeacher(tab){
   }
   if(acc.can_results||acc.can_students) seguimiento.push({key:'honesty',label:'🛡️ Honestidad'});
   if(_canClasses) ensenanza.unshift({key:'classes',label:'🏫 Classes'});
+  if(teacherAllowedGrades().length) ensenanza.push({key:'unitaccess',label:'📚 Activar unidades'});
   ensenanza.push({key:'scope',label:'📚 Scope & Sequence'});
   ensenanza.push({key:'littlereaders',label:'🧒 Little Readers'});
   examenes.push({key:'exams',label:'🎧 Exámenes'});
@@ -2242,6 +2279,7 @@ async function renderTeacher(tab){
   if(active==='tiempo') return tiempoPantallaPanel();
   if(active==='honesty') return antiCheatPanel();
   if(active==='practice') return practicePanel(teacherAllowedGrades());
+  if(active==='unitaccess') return unitAccessPanel(teacherAllowedGrades());
   if(active==='classes') return studentClasses();
   if(active==='phonics'){ $('#main').innerHTML = phonicsPanel(); return; }
   if(active==='coach'){ $('#main').innerHTML = coachPanel(); return; }
@@ -2992,6 +3030,8 @@ const _FR_GRADE_NODES = ['g5','g6','g7','g8','g9','g10'].flatMap(g=>{
    o una semana la hace gateable sola. */
 function _unitNode(grade,unitId,subject){ return (subject||'english')+'.classes.'+grade+'.activities.'+unitId; }
 function _weekNode(grade,unitId,weekId,subject){ return _unitNode(grade,unitId,subject)+'.'+weekId; }
+function _academicUnitNode(grade,n){ return 'english.classes.'+grade+'.units.u'+n; }
+function _academicUnitDefault(grade,n){ return !(grade==='g9' && Number(n)>4); }
 /* La materia de una unidad: 'english' salvo que activities-fr-data.js la
    haya marcado como 'french'. Todo lo que ya existía cae en el default. */
 function _subjOf(u){ return (u && u.subject) || 'english'; }
@@ -3034,9 +3074,17 @@ const _WEEK_NODES = (function(){
   }));
   return out;
 })();
+const _PLAN_UNIT_NODES=(function(){
+  const out=[];
+  Object.keys(window.UNIT_PLANS||{}).forEach(g=>unitPlansFor(g).forEach(u=>out.push({
+    key:_academicUnitNode(g,u.n),label:_gradeLbl(g,'english')+' · Unit '+u.n+' · '+u.title,
+    grade:g,parent:unitsNode(g),locked:!_academicUnitDefault(g,u.n)
+  })));
+  return out;
+})();
 /* Unidades y semanas comparten tratamiento: default propio (`locked`) y, para
    el profesor, herencia del Activities del que cuelgan. */
-const _SUB_NODES  = [..._UNIT_NODES, ..._WEEK_NODES];
+const _SUB_NODES  = [..._UNIT_NODES, ..._WEEK_NODES, ..._PLAN_UNIT_NODES];
 const _SUB_BY_KEY = (function(){ const m={}; _SUB_NODES.forEach(n=>m[n.key]=n); return m; })();
 const _GATE_PARENT= (function(){ const m={}; _SUB_NODES.forEach(n=>m[n.key]=n.parent); return m; })();
 const ACCESS_NODES = [
@@ -3045,7 +3093,7 @@ const ACCESS_NODES = [
   {key:'english.phonics',               label:'Phonics'},
   {key:'english.classes',               label:'Classes'},
   ..._GRADE_NODES,
-  ..._SUB_NODES.map(n=>({key:n.key,label:n.label})),
+  ...[..._UNIT_NODES,..._WEEK_NODES].map(n=>({key:n.key,label:n.label})),
   {key:'english.classes.g9.cambridge',          label:'9th · Cambridge'},
   {key:'english.classes.g9.cambridge.listening',label:'9th · Cambridge · Listening'},
   {key:'english.classes.g9.uoe1',       label:'9th · Use of English P1'},
@@ -4635,7 +4683,7 @@ function unitPlansFor(grade){
   const p = (window.UNIT_PLANS||{})[grade];
   return (p && p.units) ? p.units : [];
 }
-function _unitPlanCard(u,route,grade){
+function _unitPlanCard(u,route,grade,open){
   const href=_withBack('unit.html?grade='+grade+'&unit='+u.n,route);
   const image=u.cover&&u.cover.image;
   const gradeLabel=(GRADE_META[grade]&&GRADE_META[grade][1])||grade;
@@ -4645,13 +4693,15 @@ function _unitPlanCard(u,route,grade){
          <span class="badge" style="position:absolute;left:12px;bottom:12px;background:rgba(12,24,45,.82);color:#fff;border:1px solid rgba(255,255,255,.45);backdrop-filter:blur(5px)">${esc(gradeLabel)} · Unit ${u.n}</span>
        </div>`
     : `<div style="font-size:3.4rem;line-height:1;padding:30px 18px 8px">${(u.cover&&u.cover.icon)||'📘'}</div>`;
-  return `<a class="card" href="${href}" style="text-decoration:none;color:inherit;display:block;padding:0;margin-bottom:0;overflow:hidden;transition:.15s"
-      onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform=''">
-      ${visual}
-      <div style="padding:18px">
+  const body=`${visual}<div style="padding:18px">
         <h2 style="margin:0 0 6px;color:var(--blue-d)">Unit ${u.n} · ${esc(u.title)}</h2>
         <div class="muted" style="font-size:.85rem">${esc(u.deliverables.map(d=>d.title).join(' · '))} — ${u.weeks} weeks.</div>
-      </div>
+        ${open?'':'<div class="badge" style="background:#fee2e2;color:#991b1b;margin-top:10px">🔒 Your teacher will unlock this unit</div>'}
+      </div>`;
+  if(!open) return `<div class="card" style="display:block;padding:0;margin-bottom:0;overflow:hidden;opacity:.72">${body}</div>`;
+  return `<a class="card" href="${href}" style="text-decoration:none;color:inherit;display:block;padding:0;margin-bottom:0;overflow:hidden;transition:.15s"
+      onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform=''">
+      ${body}
     </a>`;
 }
 function studentGradeUnits(key){
@@ -4666,7 +4716,7 @@ function studentGradeUnits(key){
   $('#main').innerHTML = `${back}<h1>🎯 Units</h1>
     <p class="muted" style="margin-top:-6px">${esc(plan.label)}${plan.cefr?' · '+esc(plan.cefr):''} — each unit ends in something you make, not in a test.</p>
     <div class="grid cols-2" style="margin-top:12px">
-      ${units.map(u=>_unitPlanCard(u,route,key)).join('')}
+      ${units.map(u=>_unitPlanCard(u,route,key,nodeVisible(_academicUnitNode(key,u.n)))).join('')}
     </div>`;
 }
 
