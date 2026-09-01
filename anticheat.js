@@ -37,6 +37,14 @@
      (p. ej. '9A' = G9 sección A). Vaciar la lista para reactivar el control.
      Pedido del usuario 2026-08-21: desactivado para todo 9A. */
   var AC_EXEMPT_SECTIONS = ['9A'];
+  /* INTERRUPTOR GENERAL del sistema de vidas.
+     En false NADIE pierde vidas ni queda bloqueado, y los alumnos que ya
+     estaban bloqueados vuelven a entrar (el bloqueo se recalcula en cada
+     carga, no se guarda como sancion permanente). Los incidentes ya
+     registrados se conservan en la BD para el panel de Honestidad.
+     Pedido del usuario 2026-09-01: vidas EN PAUSA.
+     Poner en true para reactivar el control. */
+  var AC_ENABLED = false;
   var CFG = window.NIS_CONFIG || null;
   var sb = null;                 // cliente Supabase (si se logra cargar)
   var me = null;                 // { id, name, email, grade, guardian_name, guardian_phone }
@@ -425,6 +433,9 @@
     ensureSupabase().then(function () { return loadMe(); }).then(function () {
       // Docentes y administradores quedan exentos (pueden revisar sin bloquearse).
       if (me && (me.role === 'teacher' || me.role === 'admin')) return;
+      // Sistema de vidas en pausa (ver AC_ENABLED arriba). Se sale DESPUES de
+      // loadMe() para que getStudent() siga identificando al alumno.
+      if (!AC_ENABLED) return;
       // Secciones exentas ('9A' = n.º del grado + sección; ver AC_EXEMPT_SECTIONS arriba).
       if (me && me.grade) {
         var gnum = (String(me.grade).match(/\d+/) || [''])[0];
