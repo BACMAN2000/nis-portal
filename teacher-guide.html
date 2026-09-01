@@ -117,7 +117,7 @@ td.sem{font-weight:800;color:var(--blue-d);white-space:nowrap;width:52px}
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js"></script>
-<script src="unit-plans.js?v=11"></script>
+<script src="unit-plans.js?v=12"></script>
 <script src="nis-nav.js?v=2"></script>
 <script>
 /* Guia del profesor de la unidad, para imprimir.
@@ -142,7 +142,7 @@ const U = PLAN ? (PLAN.units||[]).filter(u=>u.n===UNIT)[0] : null;
 const NIVEL_ACOPLE = {1:'Paralelo — mismo tema, cada área entrega lo suyo',
                       2:'Producto compartido — una entrega, una nota',
                       3:'Fusionado — planner interdisciplinario completo'};
-const AREA_NOMBRE = {science:'Science', math:'Math', social:'Social Studies',
+const AREA_NOMBRE = {science:'Science', math:'Math', social:'Social Studies', english:'English',
                      comunicacion:'Comunicación', ict:'ICT', art:'Creative Arts',
                      globalperspectives:'Global Perspectives', pe:'PE', music:'Music'};
 const EXAMEN = {starters:'Pre A1 Starters', movers:'A1 Movers', flyers:'A2 Flyers',
@@ -236,9 +236,12 @@ function semanas(){
   for(let i=0;i<n;i++){
     const s = seq[i] || {};
     const c = CICLO[i] || CICLO[CICLO.length-1];
+    const cruce = s.across ? `<div style="margin-top:8px;display:flex;flex-direction:column;gap:3px">
+        ${Object.keys(s.across).map(a=>`<div style="font-size:.82rem"><b style="color:var(--blue-d)">${esc(AREA_NOMBRE[a]||a)}:</b> <span style="color:var(--grey)">${esc(s.across[a])}</span></div>`).join('')}
+      </div>` : '';
     filas.push(`<tr>
       <td class="sem">W${i+1}</td>
-      <td><b>${esc(s.title||c[0])}</b><br><span style="color:var(--grey)">${esc(s.desc||c[1])}</span></td>
+      <td><b>${esc(s.title||c[0])}</b><br><span style="color:var(--grey)">${esc(s.desc||c[1])}</span>${cruce}</td>
       <td>${esc(s.give||'—')}</td>
       <td style="color:var(--blue-d)">${esc(c[0])}</td>
     </tr>`);
@@ -246,7 +249,7 @@ function semanas(){
   return `<section class="hoja">
     <div class="cinta">Conducción</div>
     <h2>Semana a semana</h2>
-    <p class="foco">La columna de la derecha es la fase del ciclo, que es la misma en todas las unidades: el alumno siempre sabe en qué punto está.</p>
+    <p class="foco">La columna de la derecha es la fase del ciclo, que es la misma en todas las unidades: el alumno siempre sabe en qué punto está. Cuando la semana declara qué aporta cada área, aparece debajo del título.</p>
     <table><thead><tr><th></th><th>Qué se hace</th><th>Qué entrega el alumno</th><th>Fase</th></tr></thead>
     <tbody>${filas.join('')}</tbody></table>
     ${n<6?`<div class="bloque"><div class="aviso"><b>Esta unidad no tiene semana 6.</b> El calendario no la da, así que cierra en la semana ${n} con la entrega y <b>sin defensa oral ante audiencia</b>. El Speaking se evalúa en las unidades que sí la tienen.</div></div>`:''}
