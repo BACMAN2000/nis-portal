@@ -46,6 +46,7 @@
   @media(max-width:480px){body{padding:8px}.grid{gap:6px}.front .emoji{font-size:1.7rem}.front .word{font-size:.62rem}}
 </style>
 <script src="nis-nav.js?v=2"></script>
+<script src="activity-save.js?v=2"></script>
 </head>
 <body>
 <header>
@@ -164,6 +165,7 @@ function finish(){
   var rec=moves+'|'+elapsed;
   var bestTxt='';
   if(!prev || moves<(+prev.split('|')[0])){localStorage.setItem(bk,rec);bestTxt=' New best!';}
+  if(window.NIS_WORK) NIS_WORK.touch();
   var b=document.getElementById('banner');
   b.innerHTML='🎉 Well done! You matched all '+total+' pairs in '+fmt(elapsed)+' with '+moves+' moves.'+bestTxt;
   b.className='banner show';
@@ -183,6 +185,18 @@ function sendScore(){
     else{done2('','');}}catch(e){done2('','');}
 }
 load();
+/* ---- Guardado y entrega (barra Save / Submit) --------------------------
+   Las mejores marcas del memory vivian en este navegador y en ninguno
+   mas. Ahora acompanan al alumno y el profesor las ve. */
+if(window.NIS_WORK) NIS_WORK.attach(Object.assign(
+  NIS_WORK.ficha(),
+  NIS_WORK.porPrefijo('nis_mem_best_', {
+    title: document.title,
+    vacio: 'Finish a game first — then you can hand it in.',
+    after: function(){ if(typeof load === "function") load(); }
+  })
+));
+
 </script>
 </body>
 </html>

@@ -74,6 +74,7 @@
   <script src="config.js?v=18"></script>
   <script src="anticheat.js?v=8" data-activity="use-of-english-part1"></script>
 <script src="nis-nav.js?v=2"></script>
+<script src="activity-save.js?v=2"></script>
 </head>
 <body>
 <div class="wrap">
@@ -223,7 +224,8 @@ window.showGap=function(btn,qi){
   x.onclick=()=>popup.remove(); popup.appendChild(x);
   opts.forEach((opt,j)=>{
     const b=document.createElement('button'); b.type='button'; b.textContent=opt;
-    b.onclick=(ev)=>{ ev.stopPropagation(); sel[qi]=j; popup.remove(); renderPassage(); updateBar(); };
+    b.onclick=(ev)=>{ ev.stopPropagation(); sel[qi]=j; popup.remove(); renderPassage(); updateBar();
+      if(window.NIS_WORK) NIS_WORK.touch(); };
     popup.appendChild(b);
   });
   document.body.appendChild(popup);
@@ -248,7 +250,10 @@ function updateBar(){
   $('checkBtn').disabled = checked || answered<8;
   $('checkBtn').textContent = checked ? 'Checked' : 'Check answers';
 }
-window.go=(i)=>{ cur=i; sel={}; checked=false; buildTabs(); render(); startWatch(); };
+window.go=(i)=>{ if(typeof uoeLee === 'function') uoeLee();
+  cur=i; const g=UOE['Test '+(i+1)];
+  sel = g ? Object.assign({}, g.sel||{}) : {}; checked = g ? !!g.checked : false;
+  buildTabs(); render(); startWatch(); if(g && typeof g.secs==='number') secs=g.secs; };
 function render(){ $('title').textContent=TESTS[cur].title; renderPassage(); renderQuestions(); updateBar(); $('score').textContent=''; }
 
 $('checkBtn').onclick=()=>{
@@ -259,9 +264,47 @@ $('checkBtn').onclick=()=>{
   const pct=Math.round(n/8*100);
   $('score').innerHTML=`Score: ${n}/8 <span class="pct">(${pct}%)</span>`;
   renderPassage(); renderQuestions(); updateBar();
+  if(window.NIS_WORK) NIS_WORK.touch();
   window.scrollTo({top:0,behavior:'smooth'});
 };
 $('resetBtn').onclick=()=>{ sel={}; checked=false; render(); startWatch(); };
+
+/* ---- Guardado y entrega (barra Save / Submit) --------------------------
+   Ocho huecos por test y ninguna forma de volver a ellos: cerrar la pestana
+   obligaba a rehacerlos. Se guardan las respuestas de cada test. */
+const UOE = {};
+function uoeLee(){
+  UOE['Test ' + (cur + 1)] = { sel:Object.assign({}, sel), checked:checked, secs:secs };
+  return UOE;
+}
+if(window.NIS_WORK) NIS_WORK.attach(Object.assign(NIS_WORK.ficha(), {
+  title: document.title,
+  read:  function(){ return { store: uoeLee(), test: cur }; },
+  write: function(d){
+    const p = (d && d.store) || {};
+    Object.keys(p).forEach(function(k){ UOE[k] = p[k]; });
+    if(d && typeof d.test === 'number' && TESTS[d.test]) cur = d.test;
+  },
+  after: function(){
+    const g = UOE['Test ' + (cur + 1)];
+    if(g){ sel = Object.assign({}, g.sel || {}); checked = !!g.checked; }
+    buildTabs(); render();
+    if(g && typeof g.secs === 'number') secs = g.secs;
+  },
+  count: function(d){
+    const p = (d && d.store) || {};
+    return Object.keys(p).reduce(function(n,k){
+      return n + Object.keys((p[k] || {}).sel || {}).length; }, 0);
+  },
+  answers: function(d){
+    const p = (d && d.store) || {}, out = {};
+    Object.keys(p).forEach(function(k){
+      const x = p[k] || {}, n = Object.keys(x.sel || {}).length;
+      out[k] = n + '/8 answered' + (x.checked ? ' / checked' : '');
+    });
+    return out;
+  }
+}));
 
 buildTabs(); render(); startWatch();
 </script>

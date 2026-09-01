@@ -94,6 +94,7 @@
   .lab td{border:1px solid var(--line);padding:5px 7px;vertical-align:top}
 </style>
 <script src="nis-nav.js?v=2"></script>
+<script src="activity-save.js?v=2"></script>
 </head>
 <body>
 <header>
@@ -484,7 +485,8 @@ function assemble(){
   return out.trim();
 }
 function saveDraft(){ try{ var d=TYPES[type]; var secs=d.sections.map(function(s,i){return document.getElementById('ta'+i).value;});
-  localStorage.setItem(draftKey(),JSON.stringify({prompt:document.getElementById('promptBox').value,secs:secs,t:Date.now()})); showSaved(); }catch(e){} }
+  localStorage.setItem(draftKey(),JSON.stringify({prompt:document.getElementById('promptBox').value,secs:secs,t:Date.now()})); showSaved();
+  if(window.NIS_WORK) NIS_WORK.touch(); }catch(e){} }
 function loadDraft(){ try{ return JSON.parse(localStorage.getItem(draftKey())||'{}'); }catch(e){ return {}; } }
 function showSaved(){ var d=loadDraft(); document.getElementById('saved').textContent=d.t?("Draft auto-saved "+new Date(d.t).toLocaleTimeString()):"Your work auto-saves in this browser."; }
 function msg(t,cls){ var m=document.getElementById('msg'); m.textContent=t; m.className='msg '+cls; setTimeout(function(){m.className='msg';},4000); }
@@ -505,6 +507,52 @@ function sendTeacher(){
       var name=(p&&p.data&&p.data.full_name)||''; var email=u.data.user.email||(p&&p.data&&p.data.email)||''; done(name,email); }); } else { done('',''); } }, function(){ done('',''); }); }
     else { done('',''); } }catch(e){ done('',''); }
 }
+/* ---- Guardado y entrega (barra Save / Submit) --------------------------
+   El tutor de escritura guardaba el borrador en localStorage: en otro equipo
+   el alumno se encontraba la hoja en blanco, y el profesor no veia nada.
+   Ahora los borradores (uno por tipo de texto y nivel) viajan con su cuenta
+   y se pueden entregar. */
+var WT_PREF = 'nis_wt_';
+function wtLee(){
+  var out = {};
+  try{
+    Object.keys(localStorage).forEach(function(k){
+      if(k.indexOf(WT_PREF) !== 0) return;
+      try{ out[k.slice(WT_PREF.length)] = JSON.parse(localStorage.getItem(k) || '{}'); }catch(e){}
+    });
+  }catch(e){}
+  return out;
+}
+function wtPalabras(d){
+  var t = [(d && d.prompt) || ''].concat(((d && d.secs) || [])).join(' ');
+  return (t.match(/\S+/g) || []).length;
+}
+if(window.NIS_WORK) NIS_WORK.attach(Object.assign(NIS_WORK.ficha(), {
+  title: document.title,
+  read:  function(){ return { store: wtLee(), tipo: type, nivel: level }; },
+  write: function(d){
+    var p = (d && d.store) || {};
+    try{ Object.keys(p).forEach(function(k){
+      localStorage.setItem(WT_PREF + k, JSON.stringify(p[k]));
+    }); }catch(e){}
+    if(d && d.tipo && TYPES[d.tipo]) type = d.tipo;
+    if(d && d.nivel) level = d.nivel;
+  },
+  after: function(){ render(); },
+  count: function(d){
+    var p = (d && d.store) || {};
+    return Object.keys(p).reduce(function(n,k){ return n + wtPalabras(p[k]); }, 0);
+  },
+  answers: function(d){
+    var p = (d && d.store) || {}, out = {};
+    Object.keys(p).forEach(function(k){
+      var n = wtPalabras(p[k]);
+      if(n) out[k.replace(/_/g, ' / ')] = n + ' words';
+    });
+    return out;
+  }
+}));
+
 render(); buildCheck();
 </script>
 </body>
