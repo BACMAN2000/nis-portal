@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Teacher guide · Nordic International School</title>
+<link rel="icon" href="assets/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#4987c6; --blue-d:#2f5f93; --blue-dd:#244c77;
+  --bg:#f2f3ff; --white:#fff; --grey:#636465; --line:#e3e5f3;
+  --lila:#d1d2ea; --celeste:#76cbe5; --ink:#2b2c33;
+  --amber:#9a5c15; --amber-bg:#fdf6ec; --amber-line:#e6c894;
+  --green:#2f6046; --green-bg:#edf5f0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:'Montserrat',system-ui,Segoe UI,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5}
+h1,h2,h3{line-height:1.2;margin:0 0 .4em;font-weight:700}
+header{display:flex;align-items:center;gap:14px;background:var(--blue);padding:12px 22px;color:#fff}
+header img{height:32px}
+header .spacer{flex:1}
+header a,header button{background:rgba(255,255,255,.16);color:#fff;border:1px solid rgba(255,255,255,.3);
+  padding:8px 14px;border-radius:10px;font:600 .88rem/1 inherit;font-family:inherit;text-decoration:none;cursor:pointer}
+header a:hover,header button:hover{background:rgba(255,255,255,.3)}
+.wrap{max-width:900px;margin:0 auto;padding:20px 18px 60px}
+
+.hoja{background:#fff;border:1px solid var(--line);border-radius:12px;padding:32px 36px;margin-bottom:20px;
+  box-shadow:0 8px 24px rgba(36,76,119,.08)}
+.hoja .cinta{font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;color:var(--blue-d);font-weight:800}
+.hoja h2{font-size:1.28rem;color:var(--blue-dd);margin:6px 0 2px}
+.hoja .foco{color:var(--grey);font-size:.9rem;margin:0 0 16px}
+.bloque{margin:20px 0}
+.bloque h3{font-size:.74rem;text-transform:uppercase;letter-spacing:.09em;color:var(--grey);margin:0 0 8px}
+.bloque p{margin:0;font-size:.93rem}
+
+.portada{background:linear-gradient(135deg,var(--blue-dd),var(--blue));color:#fff}
+.portada h1{color:#fff;font-size:1.7rem;margin:8px 0 0}
+.portada .bigq{margin:16px 0 0;padding:14px 16px;background:rgba(255,255,255,.13);border-left:4px solid var(--celeste);
+  border-radius:0 10px 10px 0;font-size:1.02rem;font-weight:600}
+.portada p{color:#dbe8f6;font-size:.9rem;margin:0}
+.portada .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.portada .meta span{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:999px;
+  padding:5px 13px;font-size:.8rem;font-weight:600}
+
+/* fichas de datos */
+.datos{display:grid;gap:12px}
+@media(min-width:640px){ .datos{grid-template-columns:1fr 1fr} }
+.dato{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:#fbfcff}
+.dato h4{margin:0 0 6px;font-size:.72rem;text-transform:uppercase;letter-spacing:.09em;color:var(--grey)}
+.dato p{margin:0;font-size:.9rem}
+.dato.exam{background:#f4f8fc;border-color:#c4d9ea}
+.dato.reader{background:var(--amber-bg);border-color:var(--amber-line)}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.chips span{background:#f7faff;border:1px solid var(--line);border-radius:999px;padding:4px 11px;font-size:.79rem;font-weight:600;color:var(--blue-dd)}
+.chips.gram span{background:#f6f2ea;border-color:var(--amber-line);color:var(--amber)}
+.chips.extra span{background:#fff;border-style:dashed;color:var(--grey)}
+
+table{border-collapse:collapse;width:100%;font-size:.86rem;margin-top:6px}
+th,td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+thead th{background:#f4f6fd;color:var(--blue-dd);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;
+  border-bottom:2px solid var(--lila)}
+td.sem{font-weight:800;color:var(--blue-d);white-space:nowrap;width:52px}
+
+.rub td:first-child{width:120px;font-weight:700;color:var(--blue-dd)}
+.rub .nivel{font-weight:800;color:var(--blue);width:46px}
+
+.check{list-style:none;padding:0;margin:6px 0 0}
+.check li{padding:6px 0 6px 24px;position:relative;font-size:.86rem;border-bottom:1px dashed var(--line)}
+.check li:last-child{border-bottom:none}
+.check li::before{content:'☐';position:absolute;left:2px;top:5px;color:var(--blue)}
+
+.aviso{background:var(--amber-bg);border-left:4px solid var(--amber);border-radius:0 10px 10px 0;padding:13px 16px;font-size:.89rem}
+.aviso b{color:var(--amber)}
+.ok{background:var(--green-bg);border-left:4px solid var(--green);border-radius:0 10px 10px 0;padding:13px 16px;font-size:.89rem}
+.ok b{color:var(--green)}
+
+.reparto{display:grid;gap:10px}
+@media(min-width:640px){ .reparto{grid-template-columns:1fr 1fr} }
+.reparto div{border:1px solid var(--line);border-radius:10px;padding:13px 15px;font-size:.87rem}
+.reparto .pant{background:#f4f8fc;border-top:3px solid var(--blue)}
+.reparto .cuad{background:var(--amber-bg);border-top:3px solid var(--amber)}
+.reparto h4{margin:0 0 6px;font-size:.72rem;text-transform:uppercase;letter-spacing:.09em}
+.reparto .pant h4{color:var(--blue-d)} .reparto .cuad h4{color:var(--amber)}
+
+.renglones{margin-top:8px}
+.renglones div{border-bottom:1px solid #d8dded;height:28px}
+.pie{font-size:.78rem;color:var(--grey);margin-top:10px}
+
+@media print{
+  header,.noimprimir{display:none !important}
+  body{background:#fff}
+  .wrap{max-width:none;padding:0}
+  .hoja{border:none;border-radius:0;box-shadow:none;margin:0;padding:20mm 16mm;
+    page-break-after:always;break-after:page}
+  .hoja:last-child{page-break-after:auto}
+  .portada{background:#fff !important;color:var(--ink) !important}
+  .portada h1,.portada .cinta{color:var(--blue-dd) !important}
+  .portada p{color:var(--grey) !important}
+  .portada .bigq{background:#eef4fb !important;color:var(--blue-dd) !important;border-left-color:var(--blue) !important}
+  .portada .meta span{background:#eef4fb !important;border-color:var(--lila) !important;color:var(--blue-dd) !important}
+  @page{margin:0}
+}
+</style>
+</head>
+<body>
+<header class="noimprimir">
+  <img src="assets/logo-white-h.svg" alt="Nordic International School" onerror="this.onerror=null;this.src='assets/logo-h.svg'">
+  <div class="spacer"></div>
+  <button onclick="window.print()">🖨️ Print</button>
+  <a href="./" id="backBtn">&#8592; Back</a>
+</header>
+
+<div class="wrap" id="app"><p>Loading…</p></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+<script src="config.js"></script>
+<script src="unit-plans.js?v=9"></script>
+<script src="nis-nav.js?v=2"></script>
+<script>
+/* Guia del profesor de la unidad, para imprimir.
+ *
+ * Es la contraparte de workbook.html: mismo planner, distinto lector. El
+ * alumno recibe la consigna y el sitio para escribir; el profesor recibe lo
+ * que necesita para conducir la unidad y lo que el alumno no ve — la cobertura
+ * del examen, la obra del trimestre, las areas acopladas, la rubrica entera
+ * con sus niveles, los criterios que el corrector automatico revisa, y el
+ * reparto entre pantalla y cuaderno.
+ *
+ * No inventa nada: todo sale de unit-plans.js, que a su vez sale de Toddle.
+ */
+const Q = new URLSearchParams(location.search);
+const GRADE = (Q.get('grade')||'g9').toLowerCase();
+const UNIT  = parseInt(Q.get('unit')||'0',10);
+
+const esc = s => String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const PLAN = (window.UNIT_PLANS||{})[GRADE];
+const U = PLAN ? (PLAN.units||[]).filter(u=>u.n===UNIT)[0] : null;
+
+const NIVEL_ACOPLE = {1:'Paralelo — mismo tema, cada área entrega lo suyo',
+                      2:'Producto compartido — una entrega, una nota',
+                      3:'Fusionado — planner interdisciplinario completo'};
+const AREA_NOMBRE = {science:'Science', math:'Math', social:'Social Studies',
+                     comunicacion:'Comunicación', ict:'ICT', art:'Creative Arts',
+                     globalperspectives:'Global Perspectives', pe:'PE', music:'Music'};
+const EXAMEN = {starters:'Pre A1 Starters', movers:'A1 Movers', flyers:'A2 Flyers',
+                a2key:'A2 Key', b1preliminary:'B1 Preliminary', b2first:'B2 First', c1advanced:'C1 Advanced'};
+
+/* El ciclo de la unidad. La semana 6 solo existe donde el calendario la da. */
+const CICLO = [
+  ['Lanzamiento','Situación significativa, big question, equipos. La rúbrica se enseña hoy, no al final.',
+   'Ver el estímulo y leer la rúbrica (~15 min)','Primeras preguntas y lluvia de ideas del equipo'],
+  ['Investigación','Fuentes, lectura de la obra, datos. Es la semana con más pantalla, y está justificada.',
+   'Leer y escuchar fuentes, buscar, verificar','Notas de lectura y organizador gráfico, a mano'],
+  ['Construcción','El trabajo del área: el experimento, el cálculo, la fuente, el prototipo.',
+   'Language lab de la unidad (~20 min)','Laboratorio, taller, medición, cuaderno'],
+  ['Borrador','La semana de producción. Es la de MENOS pantalla del ciclo.',
+   'Solo la foto del cuaderno como evidencia','El borrador entero, con tachones'],
+  ['Final y entrega','Corrección contra la rúbrica, reescritura y entrega.',
+   'Corrector automático y grabadora para ensayar','La reescritura a mano'],
+  ['Producto y audiencia','Exposición ante audiencia real y galería.',
+   'Publicar en la galería','La defensa, presencial']
+];
+
+function chips(cls, arr){
+  if(!arr || !arr.length) return '';
+  return `<div class="chips ${cls}">${arr.map(x=>`<span>${esc(x)}</span>`).join('')}</div>`;
+}
+
+function portada(){
+  const prod = (U.deliverables||[]).map(d=>esc(d.title)+(d.spec?' — '+esc(d.spec):'')).join(' · ');
+  return `<section class="hoja portada">
+    <div class="cinta">Guía del profesor · ${esc((PLAN.label||GRADE).toUpperCase())} · Unidad ${U.n}</div>
+    <h1>${esc(U.title)}</h1>
+    <div class="bigq">${esc(U.bigq||'')}</div>
+    <div class="meta">
+      <span>${U.weeks||5} semanas</span>
+      ${U.exam&&U.exam.target?`<span>${esc(EXAMEN[U.exam.target]||U.exam.target)}</span>`:''}
+      ${U.reader&&U.reader.title?`<span>📖 ${esc(U.reader.title)}</span>`:''}
+      ${(U.areas||[]).map(a=>`<span>${esc(AREA_NOMBRE[a.area]||a.area)} · nivel ${a.level}</span>`).join('')}
+      ${U.toddle&&U.toddle.unitId?`<span>Toddle ${esc(U.toddle.unitId)}</span>`:''}
+    </div>
+    <div class="bloque"><h3 style="color:#dbe8f6">Situación significativa</h3><p style="color:#eaf2fb">${esc(U.situation||'')}</p></div>
+    <div class="bloque"><h3 style="color:#dbe8f6">Audiencia del producto</h3><p style="color:#eaf2fb">${esc(U.audience||'')}</p></div>
+    <div class="bloque"><h3 style="color:#dbe8f6">Se entrega</h3><p style="color:#eaf2fb">${prod||'—'}</p></div>
+  </section>`;
+}
+
+function cobertura(){
+  const e = U.exam, r = U.reader;
+  let av = '';
+  if(r && !r.title) av = `<div class="aviso"><b>Sin obra asignada.</b> ${esc(r.note||'Este trimestre no tiene obra en inglés.')}</div>`;
+  else if(r && r.inPortal === false) av = `<div class="aviso"><b>La obra no tiene reader en el portal.</b> Se lee en papel, en la edición del plan lector.${r.note?' '+esc(r.note):''}</div>`;
+  else if(r) av = `<div class="ok"><b>Reader disponible en el portal</b>${r.level?' — se entra en nivel '+esc(r.level.toUpperCase()):''}.</div>`;
+
+  return `<section class="hoja">
+    <div class="cinta">Antes de empezar</div>
+    <h2>Qué cubre esta unidad</h2>
+    <p class="foco">Las seis unidades del grado tienen que cubrir entre todas la wordlist y la gramática del examen. Esta se lleva lo siguiente.</p>
+    <div class="datos">
+      <div class="dato exam">
+        <h4>Vocabulario del examen — bloques temáticos</h4>
+        ${e&&e.themes?chips('', e.themes):'<p>Sin asignar todavía.</p>'}
+      </div>
+      <div class="dato exam">
+        <h4>Gramática del examen</h4>
+        ${e&&e.grammar?chips('gram', e.grammar):'<p>Sin asignar todavía.</p>'}
+      </div>
+      <div class="dato">
+        <h4>Léxico propio de la unidad — fuera de la wordlist</h4>
+        ${e&&e.extra?chips('extra', e.extra):'<p>—</p>'}
+        <p class="pie">Se enseña igual, pero no cuenta para la cobertura del examen.</p>
+      </div>
+      <div class="dato reader">
+        <h4>Obra del trimestre</h4>
+        <p>${r&&r.title?'<b>'+esc(r.title)+'</b>'+(r.series?'<br>'+esc(r.series):''):'—'}</p>
+      </div>
+    </div>
+    <div class="bloque">${av}</div>
+    <div class="bloque">
+      <h3>Áreas acopladas a este proyecto</h3>
+      <table><thead><tr><th>Área</th><th>Nivel de acoplamiento</th></tr></thead><tbody>
+      ${(U.areas||[]).length ? (U.areas||[]).map(a=>`<tr><td><b>${esc(AREA_NOMBRE[a.area]||a.area)}</b></td><td>${esc(NIVEL_ACOPLE[a.level]||a.level)}</td></tr>`).join('')
+        : '<tr><td colspan="2">Ninguna declarada. La unidad corre solo en inglés.</td></tr>'}
+      </tbody></table>
+    </div>
+  </section>`;
+}
+
+function semanas(){
+  const seq = U.sequence||[];
+  const n = U.weeks || seq.length || 5;
+  const filas = [];
+  for(let i=0;i<n;i++){
+    const s = seq[i] || {};
+    const c = CICLO[i] || CICLO[CICLO.length-1];
+    filas.push(`<tr>
+      <td class="sem">W${i+1}</td>
+      <td><b>${esc(s.title||c[0])}</b><br><span style="color:var(--grey)">${esc(s.desc||c[1])}</span></td>
+      <td>${esc(s.give||'—')}</td>
+      <td style="color:var(--blue-d)">${esc(c[0])}</td>
+    </tr>`);
+  }
+  return `<section class="hoja">
+    <div class="cinta">Conducción</div>
+    <h2>Semana a semana</h2>
+    <p class="foco">La columna de la derecha es la fase del ciclo, que es la misma en todas las unidades: el alumno siempre sabe en qué punto está.</p>
+    <table><thead><tr><th></th><th>Qué se hace</th><th>Qué entrega el alumno</th><th>Fase</th></tr></thead>
+    <tbody>${filas.join('')}</tbody></table>
+    ${n<6?`<div class="bloque"><div class="aviso"><b>Esta unidad no tiene semana 6.</b> El calendario no la da, así que cierra en la semana ${n} con la entrega y <b>sin defensa oral ante audiencia</b>. El Speaking se evalúa en las unidades que sí la tienen.</div></div>`:''}
+  </section>`;
+}
+
+function reparto(){
+  const n = U.weeks || 5;
+  const filas = [];
+  for(let i=0;i<n;i++){
+    const c = CICLO[i] || CICLO[CICLO.length-1];
+    filas.push(`<tr><td class="sem">W${i+1}</td><td>${esc(c[2])}</td><td>${esc(c[3])}</td></tr>`);
+  }
+  return `<section class="hoja">
+    <div class="cinta">Acuerdo con dirección</div>
+    <h2>Pantalla y cuaderno</h2>
+    <p class="foco">La regla: la pantalla solo hace lo que el papel no puede — grabar voz, dar feedback inmediato, buscar y verificar, guardar evidencia y publicar. Todo lo demás es cuaderno.</p>
+    <table><thead><tr><th></th><th>Pantalla</th><th>Cuaderno y aula</th></tr></thead><tbody>${filas.join('')}</tbody></table>
+    <div class="bloque"><div class="ok"><b>La semana del borrador es la de menos pantalla del ciclo.</b> Es donde se produce, y se produce a mano.</div></div>
+  </section>`;
+}
+
+function rubrica(){
+  const c = U.criteria||[];
+  const conNiveles = c.some(x=>x.levels);
+  let cuerpo;
+  if(conNiveles){
+    cuerpo = c.map(x=>{
+      if(!x.levels) return `<tr><td>${esc(x.text)}</td><td colspan="2">Sin descriptores. El alumno se sitúa en AD · A · B · C.</td></tr>`;
+      return ['AD','A','B','C'].map((k,j)=>`<tr>
+        ${j===0?`<td rowspan="4">${esc(x.text)}</td>`:''}
+        <td class="nivel">${k}</td><td>${esc(x.levels[k]||'—')}</td></tr>`).join('');
+    }).join('');
+    cuerpo = `<table class="rub"><thead><tr><th>Criterio</th><th>Nivel</th><th>Descriptor</th></tr></thead><tbody>${cuerpo}</tbody></table>`;
+  } else {
+    cuerpo = `<table class="rub"><thead><tr><th>N.º</th><th>Criterio</th></tr></thead><tbody>
+      ${c.map(x=>`<tr><td class="nivel">${x.n}</td><td>${esc(x.text)}</td></tr>`).join('')}
+      </tbody></table>
+      <div class="bloque"><div class="aviso"><b>Sin descriptores por nivel.</b> El criterio va tal cual y el alumno se sitúa en AD · A · B · C. No se inventan descriptores: si hacen falta, se escriben en Toddle y bajan solos.</div></div>`;
+  }
+  return `<section class="hoja">
+    <div class="cinta">Evaluación</div>
+    <h2>La rúbrica completa</h2>
+    <p class="foco">Es la misma que el alumno ve desde la semana 1 en su cuaderno de trabajo. La escala va de mayor a menor: AD · A · B · C.</p>
+    ${cuerpo}
+    <div class="bloque"><div class="ok"><b>Una nota por producto.</b> Si la unidad tiene áreas acopladas en nivel 2 o 3, esta rúbrica lleva además el bloque de la otra área y la nota es única. El bloque de lengua se guarda aparte como evidencia de nivel, no como nota.</div></div>
+  </section>`;
+}
+
+function entregables(){
+  return `<section class="hoja">
+    <div class="cinta">Corrección</div>
+    <h2>Qué se entrega y qué revisa el corrector</h2>
+    <p class="foco">La primera pasada la hace el portal contra estos criterios. La segunda, y la nota, son del profesor.</p>
+    ${(U.deliverables||[]).map(d=>`
+      <div class="bloque">
+        <h3>${esc(d.title)}${d.spec?' · '+esc(d.spec):''}</h3>
+        <p style="font-size:.9rem;color:var(--grey);margin-bottom:6px">${esc(d.desc||'')}</p>
+        ${d.checklist&&d.checklist.length?`<ul class="check">${d.checklist.map(k=>`<li>${esc(k.t)}</li>`).join('')}</ul>`
+          :`<p style="font-size:.86rem;color:var(--grey)">Entrega de archivo — la revisa el profesor, no el corrector.</p>`}
+      </div>`).join('')}
+    ${U.words&&U.words.length?`<div class="bloque"><h3>Banco de lengua de la unidad</h3>${chips('',U.words)}
+      <p class="pie">Se reparte solo entre las tareas del cuaderno del alumno: cada semana lleva el trozo que le toca.</p></div>`:''}
+  </section>`;
+}
+
+function cierre(){
+  return `<section class="hoja">
+    <div class="cinta">Al terminar</div>
+    <h2>Evaluación de la unidad</h2>
+    <p class="foco">Los dos campos que el formato de proyecto del colegio ya pide. Lo que se escriba aquí es lo que decide si la unidad se repite igual el año que viene.</p>
+    <div class="bloque"><h3>Qué funcionó</h3><div class="renglones">${'<div></div>'.repeat(6)}</div></div>
+    <div class="bloque"><h3>Qué no funcionó</h3><div class="renglones">${'<div></div>'.repeat(6)}</div></div>
+    <div class="bloque"><h3>Qué cambiar para 2027</h3><div class="renglones">${'<div></div>'.repeat(6)}</div></div>
+    ${U.toddle?`<p class="pie">Unidad tomada de Toddle${U.toddle.unitId?' · '+esc(U.toddle.unitId):''}. Si cambia allí, hay que actualizarla en <code>unit-plans.js</code>; no se edita a mano en el portal.</p>`:''}
+  </section>`;
+}
+
+/* ---------------- solo personal del colegio ----------------
+   Esta guia lleva la rubrica completa con sus descriptores, la cobertura del
+   examen y los criterios que revisa el corrector: es material del profesor,
+   no del alumno. Mismo criterio que unit.html — docente = can_results en
+   teacher_access, o perfil admin/teacher.
+
+   Fail-closed a proposito: si no hay sesion, si la consulta falla o si el rol
+   no se puede confirmar, NO se pinta nada. Es preferible que un profesor
+   tenga que volver a entrar a que un alumno vea la guia. */
+async function esPersonal(){
+  try{
+    const cfg = window.NIS_CONFIG;
+    if(!(cfg && window.supabase && window.supabase.createClient)) return false;
+    const sb = window.supabase.createClient(cfg.SUPABASE_URL, cfg.SUPABASE_KEY);
+    const {data} = await sb.auth.getSession();
+    const me = data && data.session ? data.session.user : null;
+    if(!me) return false;
+    const t = await sb.from('teacher_access').select('can_results').eq('profile_id',me.id).maybeSingle();
+    if(t && t.data && t.data.can_results) return true;
+    const pr = await sb.from('profiles').select('role').eq('id',me.id).maybeSingle();
+    const rol = pr && pr.data ? pr.data.role : null;
+    return rol==='admin' || rol==='teacher';
+  }catch(_){ return false; }
+}
+function pintaCerrado(msg){
+  document.getElementById('app').innerHTML =
+    `<div class="hoja" style="text-align:center;padding:52px 38px">
+      <div style="font-size:3.2rem;line-height:1">🔒</div>
+      <h2 style="margin:14px 0 6px">${esc(msg)}</h2>
+      <p class="foco">Esta guía es material del profesor. Entra al portal con tu cuenta docente.</p>
+      <a href="./" style="display:inline-block;background:var(--blue);color:#fff;text-decoration:none;
+         padding:10px 18px;border-radius:10px;font-weight:600;font-size:.9rem">← Volver al portal</a>
+    </div>`;
+}
+
+(async function(){
+  if(!(await esPersonal())){ pintaCerrado('Solo para profesores'); return; }
+  if(!U){ pintaCerrado('Esa unidad todavía no está'); return; }
+  document.title = `Teacher guide · ${PLAN.label} · Unit ${U.n} · ${U.title}`;
+  document.getElementById('app').innerHTML =
+    portada() + cobertura() + semanas() + reparto() + rubrica() + entregables() + cierre();
+})();
+</script>
+</body>
+</html>

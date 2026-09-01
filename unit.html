@@ -200,7 +200,7 @@ textarea:focus{outline:none;border-color:var(--blue)}
 <script src="config.js"></script>
 <script src="activities-data.js?v=12"></script>
 <script src="class-files.js?v=2"></script>
-<script src="unit-plans.js?v=8"></script>
+<script src="unit-plans.js?v=9"></script>
 <script src="nis-nav.js?v=2"></script>
 <script>
 /* Motor del hub de unidad. Los datos vienen de unit-plans.js, que es una copia
@@ -299,6 +299,16 @@ function pinta(){
     <div class="bigq">Big question — ${esc(U.bigq)}</div>
     <p class="meta">${U.weeks} weeks · ${esc(U.situation)}</p>
   </div>
+  ${esProfe?`<div style="display:flex;gap:10px;flex-wrap:wrap;margin:-6px 0 18px">
+    <a href="teacher-guide.html?grade=${encodeURIComponent(GRADE)}&unit=${U.n}" target="_blank" rel="noopener"
+       style="background:#eef4fb;border:1px solid #cfe0f0;color:#244c77;text-decoration:none;
+              padding:9px 15px;border-radius:10px;font-weight:600;font-size:.86rem">
+      &#128218; Teacher guide &mdash; print</a>
+    <a href="workbook.html?grade=${encodeURIComponent(GRADE)}&unit=${U.n}" target="_blank" rel="noopener"
+       style="background:#fdf6ec;border:1px solid #e6c894;color:#9a5c15;text-decoration:none;
+              padding:9px 15px;border-radius:10px;font-weight:600;font-size:.86rem">
+      &#9999;&#65039; Student workbook &mdash; print</a>
+  </div>`:''}
 
   <div class="sec-title"><h2>&#127919; What you will produce</h2><span class="hint">This is the point of the unit — everything else feeds it.</span></div>
   <div class="grid2">
@@ -766,16 +776,25 @@ async function conectar(){
 }
 
 async function puedeAbrirUnidad(){
-  if(!me || esProfe) return true;
-  if(!viewerProfile || viewerProfile.grade_id==null) return false;
+  if(esProfe) return true;                       // profesor y admin: siempre
+  /* Las unidades del PILOTO 2027 no se abren sin sesion: a esta pagina se
+     llega escribiendo la URL, y un filtro en el listado no es un permiso.
+     Las demas se comportan como siempre (el aviso de "no has iniciado
+     sesion" ya avisa de que nada se guarda). */
+  if(!me) return !esUnidadPiloto();
   const key='english.classes.'+GRADE+'.units.u'+UNIT;
   try{
+    /* La excepcion por alumno manda sobre la habilitacion del grado. */
+    const al=await sb.from('student_access').select('unlocked')
+      .eq('student_id',me.id).eq('node_key',key).maybeSingle();
+    if(al && al.data) return !!al.data.unlocked;
+    if(!viewerProfile || viewerProfile.grade_id==null) return false;
     const {data,error}=await sb.from('node_access').select('unlocked')
       .eq('grade_id',viewerProfile.grade_id).eq('node_key',key).maybeSingle();
     if(error) return false;
     if(data) return !!data.unlocked;
   }catch(_){ return false; }
-  return !(GRADE==='g9' && UNIT>4);
+  return !esUnidadPiloto();                      // sin fila: el piloto nace cerrado
 }
 
 function pintaUnidadBloqueada(){
@@ -925,6 +944,19 @@ function cableaArchivo(kind){
     }
   });
 }
+
+/* ---------------- candado de la unidad ----------------
+   El listado del portal ya filtra las unidades cerradas, pero a esta pagina
+   se llega tambien escribiendo la URL. Aqui se vuelve a comprobar: un filtro
+   en el listado no es un permiso.
+
+   Fail-closed: sin sesion, sin grado conocido o si la consulta falla, la
+   unidad del piloto NO se pinta. Profesores y admin pasan siempre (esProfe
+   ya distingue por teacher_access o por profiles.role). */
+const UNIT_PILOT = new Set([
+  'g2.u5','g2.u6','g3.u5','g3.u6','g4.u5','g4.u6','g5.u5','g5.u6','g9.u5','g9.u6'
+]);
+function esUnidadPiloto(){ return UNIT_PILOT.has(GRADE+'.u'+UNIT); }
 
 /* Todo declarado: ahora si se puede pintar. */
 if(U) (async function(){ await conectar(); if(!(await puedeAbrirUnidad())){pintaUnidadBloqueada();return;} pinta(); await arrancaSesion(); })();
