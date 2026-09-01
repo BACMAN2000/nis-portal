@@ -5562,11 +5562,36 @@ window.unitVerFicha = function(id){
    tienes sus respuestas a la izquierda y la rúbrica a la derecha. Pones
    puntos, y "Guardar y siguiente" te lleva al siguiente sin volver atrás.
 ---------------------------------------------------------------- */
-let _corr = { grade:'g9', unit:4, week:1, session:1, fichas:[], entregas:[], i:0, rubric:[] };
+let _corr = { grade:'g9', unit:4, week:1, session:1, fichas:[], entregas:[], i:0, rubric:[], modo:'sesion' };
 
 async function corregirPanel(){
   $('#main').innerHTML = `<div class="card"><p class="muted">Cargando…</p></div>`;
+  if(_corr.modo === 'escritas') return corrEscritasPanel();
   await corrCarga();
+}
+
+window.corrModo = function(m){ _corr.modo = m; corregirPanel(); };
+
+function corrTabs(){
+  return `<div class="row" style="gap:8px;margin-bottom:12px">
+    <button class="btn small ${_corr.modo !== 'escritas' ? '' : 'ghost'}" onclick="corrModo('sesion')">📄 Por sesión</button>
+    <button class="btn small ${_corr.modo === 'escritas' ? '' : 'ghost'}" onclick="corrModo('escritas')">✍️ Producciones escritas</button>
+  </div>`;
+}
+
+async function corrEscritasPanel(){
+  $('#main').innerHTML = `
+    <div class="card">
+      ${corrTabs()}
+      <h2>✍️ Producciones escritas</h2>
+      <p class="muted">El texto entero a la izquierda y la rúbrica a la derecha, con una propuesta
+        automática de nota que sale de lo que la propia rúbrica pide. Nada le llega al alumno
+        hasta que pulses <b>Guardar y enviar</b>.</p>
+      <div id="eCab"></div>
+    </div>
+    <div class="card" id="eLista"><p class="muted">Cargando…</p></div>
+    <div id="eCorr"></div>`;
+  await escCarga();
 }
 
 function corrSelector(){
@@ -5592,8 +5617,11 @@ async function corrCarga(){
   }
   const hito = 'w'+_corr.week+'s'+_corr.session;
 
+  /* `blocks` hace falta para poner el ENUNCIADO junto a cada respuesta: sin
+     el, WSITEMS.prepara() recibia undefined y el profesor solo veia la clave
+     tecnica ("tf12: F"). */
   const { data: fichas } = await sb.from('worksheets')
-    .select('id,level,title,rubric')
+    .select('id,level,title,rubric,blocks')
     .eq('grade',_corr.grade).eq('unit',_corr.unit)
     .eq('week',_corr.week).eq('session',_corr.session).order('level');
   _corr.fichas = fichas || [];
@@ -5614,6 +5642,7 @@ function corrPinta(){
 
   $('#main').innerHTML = `
     <div class="card">
+      ${corrTabs()}
       <h2>✅ Corregir fichas</h2>
       <p class="muted">${esc(titulo)}</p>
       ${corrSelector()}
@@ -5711,7 +5740,7 @@ window.corrAlumno = async function(i){
       <div>
         <h3 style="margin:0;font-size:1.05rem;color:var(--blue-dd)">${esc(e.full_name)}</h3>
         <span class="muted" style="font-size:.85rem">Nivel ${esc(e.level||'—')} ·
-          ${e.respondidos} campos respondidos ·
+          ${claves.length} campo(s) respondido(s) ·
           ${e.draft===false ? 'entregada' : 'borrador'}</span>
       </div>
       <div class="muted" style="font-size:.85rem">${_corr.i+1} de ${_corr.entregas.length}</div>
@@ -5795,6 +5824,418 @@ window.corrGuarda = async function(siguiente){
   est.textContent = 'Guardado'; est.className = 'state ok';
   if(siguiente && _corr.i < _corr.entregas.length-1) corrAlumno(_corr.i+1);
   else corrAlumno(_corr.i);
+};
+
+
+/* ---------------------------------------------------------------
+   ✍️ PRODUCCIONES ESCRITAS — corregir el texto, no los huecos
+
+   Corregir fichas servía para respuestas cortas: una tabla de clave y
+   valor. Un texto de 160 palabras metido en una celda no se puede leer, y
+   mucho menos corregir. Aquí el texto se lee entero y al lado va la
+   rúbrica con una PROPUESTA automática.
+
+   Qué significa "automática": la propia rúbrica dice lo que es medible
+   ("40-60 words", "with a cause-and-effect linker"), así que se lee el
+   criterio que escribió el docente y se comprueba lo que se puede
+   comprobar — extensión, conectores, párrafos, variedad léxica, cuánto de
+   la ficha completó. Lo que NO se puede medir así (si la idea es buena, si
+   el registro es el adecuado) se dice claramente y lo pone el docente. Es
+   una corrección previa que ahorra trabajo, no un juicio sobre el texto.
+
+   Nada llega al alumno hasta que el docente pulsa Guardar y ENVIAR: hasta
+   entonces la propuesta vive en la pantalla y, si se guarda, en criteria,
+   que el alumno no ve. score y feedback, que sí ve, solo se escriben al
+   enviar.
+---------------------------------------------------------------- */
+const ESC_CONECTORES = {
+  causa:     ['because','since','as a result','therefore','so','due to','thanks to',
+              'that is why','consequently','thus','hence','owing to','lead to',
+              'leads to','led to','cause','causes','caused','this is why'],
+  contraste: ['however','although','though','even though','whereas','while',
+              'on the other hand','in contrast','nevertheless','despite','in spite of','but'],
+  adicion:   ['moreover','furthermore','in addition','besides','also','what is more','as well as'],
+  ejemplo:   ['for example','for instance','such as','to illustrate']
+};
+
+function escBusca(texto, lista){
+  const t = String(texto || '');
+  return lista.filter(function(l){
+    const patron = l.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    return new RegExp('(^|[^a-zA-Z])' + patron + '([^a-zA-Z]|$)', 'i').test(t);
+  });
+}
+
+/* Todo lo medible del texto, en un solo sitio. */
+function escAnaliza(texto){
+  const t = String(texto || '').trim();
+  const palabras = t.match(/[A-Za-zÀ-ÿ']+/g) || [];
+  const n = palabras.length;
+  const bajas = palabras.map(function(w){ return w.toLowerCase(); });
+  const distintas = new Set(bajas);
+  const frases = t.split(/[.!?]+(?:\s|$)/).map(function(x){ return x.trim(); })
+                  .filter(function(x){ return x.length > 1; });
+  const parrafos = t ? (t.split(/\n\s*\n/).filter(function(p){ return p.trim(); }).length || 1) : 0;
+  const veces = {};
+  bajas.forEach(function(w){ if(w.length >= 4) veces[w] = (veces[w] || 0) + 1; });
+  const repetidas = Object.keys(veces).filter(function(w){ return veces[w] >= 4; })
+    .sort(function(a,b){ return veces[b] - veces[a]; }).slice(0, 4);
+  const con = {};
+  Object.keys(ESC_CONECTORES).forEach(function(k){ con[k] = escBusca(t, ESC_CONECTORES[k]); });
+  return {
+    texto: t, palabras: n, distintas: distintas.size,
+    variedad: n ? distintas.size / n : 0,
+    frases: frases.length,
+    mediaFrase: frases.length ? Math.round(n / frases.length) : 0,
+    parrafos: parrafos, repetidas: repetidas, conectores: con,
+    totalConectores: Object.keys(con).reduce(function(a,k){ return a + con[k].length; }, 0)
+  };
+}
+
+/* Propuesta para UN criterio: puntos sugeridos y por qué. Devuelve p:null
+   cuando el criterio no es de los que se pueden medir. */
+function escPropone(crit, an, ctx){
+  const c = (crit.c || '').toLowerCase();
+  const max = crit.max || 4;
+  const nivel = function(frac){ return Math.max(0, Math.min(max, Math.round(max * frac))); };
+
+  /* 1. Extensión: el rango suele estar escrito en el propio criterio. */
+  const m = c.match(/(\d+)\s*(?:-|–|—|to|a)\s*(\d+)\s*(?:words|palabras)/);
+  if(m){
+    const lo = +m[1], hi = +m[2], n = an.palabras;
+    const datos = { lo:lo, hi:hi, n:n };
+    if(n >= lo && n <= hi) return { p:max, tipo:'extension', datos:datos, r:n + ' palabras, dentro de ' + lo + '–' + hi + '.' };
+    if(n >= lo * 0.8 && n <= hi * 1.25)
+      return { p:Math.max(0, max - 1), tipo:'extension', datos:datos, r:n + ' palabras, cerca de ' + lo + '–' + hi + '.' };
+    return { p:nivel(n < lo ? (n / lo) * 0.6 : 0.5), tipo:'extension', datos:datos,
+             r:n + ' palabras, ' + (n < lo ? 'por debajo' : 'por encima') + ' de ' + lo + '–' + hi + '.' };
+  }
+  if(/\b(words|palabras|length|extensi)/.test(c))
+    return { p:null, r:'El criterio habla de extensión pero no dice el rango. Escríbelo en la rúbrica ("40-60 words") y se calcula solo.' };
+
+  /* 2. Conectores. El criterio suele decir de qué tipo. */
+  if(/link|connector|conector|cause|efecto|effect/.test(c)){
+    const quiere = /cause|efecto|effect/.test(c) ? 'causa' : null;
+    const hallados = quiere ? an.conectores[quiere]
+      : Object.keys(an.conectores).reduce(function(a,k){ return a.concat(an.conectores[k]); }, []);
+    if(hallados.length)
+      return { p:max, r:'Usa ' + hallados.slice(0,3).map(function(x){ return '"' + x + '"'; }).join(', ') + '.' };
+    return { p:0, r:'No se ve ningún conector' + (quiere ? ' de causa-efecto' : '') + '.' };
+  }
+
+  /* 3. Cuánto de la ficha completó. */
+  if(/task completion|completion|finished|complet|tareas/.test(c)){
+    if(!ctx || !ctx.campos) return { p:null, r:'No sé cuántos campos tenía la ficha.' };
+    const frac = ctx.respondidos / ctx.campos;
+    return { p:nivel(frac), r:ctx.respondidos + ' de ' + ctx.campos + ' campos (' + Math.round(frac * 100) + '%).' };
+  }
+
+  /* 4. Vocabulario. Con banco de palabras se mide de verdad; sin él solo se
+        puede mirar la variedad, y eso hay que decirlo. */
+  if(/vocab|adjetiv|adjective|word choice|lexic/.test(c)){
+    if(ctx && ctx.banco && ctx.banco.length){
+      const usadas = escBusca(an.texto, ctx.banco);
+      const frac = usadas.length / ctx.banco.length;
+      return { p:nivel(Math.min(1, frac * 2)),
+               r:'Usa ' + usadas.length + ' de las ' + ctx.banco.length + ' del banco' +
+                 (usadas.length ? ' (' + usadas.slice(0,4).join(', ') + ')' : '') + '.' };
+    }
+    /* La variedad lexica de un texto de diez palabras siempre sale altisima:
+       no dice nada. Por debajo de 20 palabras no se propone nada. */
+    if(an.palabras < 20)
+      return { p:null, r:'Solo ' + an.palabras + ' palabras: demasiado corto para medir el vocabulario.' };
+    const v = an.variedad;
+    const p = v >= 0.58 ? max : (v >= 0.48 ? Math.max(0, max - 1) : Math.max(0, max - 2));
+    return { p:p, r:'La ficha no trae banco de palabras: solo se mide variedad (' +
+             Math.round(v * 100) + '% distintas' +
+             (an.repetidas.length ? '; repite "' + an.repetidas.slice(0,2).join('", "') + '"' : '') +
+             '). Confírmalo tú.' };
+  }
+
+  /* 5. Organización y párrafos. */
+  if(/organi|structure|estructura|paragraph|párrafo|parrafo|coheren/.test(c)){
+    if(an.parrafos >= 2 && an.totalConectores >= 2)
+      return { p:max, r:an.parrafos + ' párrafos y ' + an.totalConectores + ' conectores.' };
+    if(an.parrafos >= 2 || an.totalConectores >= 1)
+      return { p:Math.max(0, max - 1), r:an.parrafos + ' párrafo(s), ' + an.totalConectores + ' conector(es).' };
+    return { p:Math.max(0, max - 2), r:'Un solo bloque de texto y casi sin conectores.' };
+  }
+
+  /* 6. Lo que no se puede medir así. */
+  return { p:null, r:'Esto no se mide automáticamente — lo valoras tú.' };
+}
+
+/* Borrador del comentario para el alumno. En inglés, que es la lengua de la
+   clase, y sin adjetivar el texto: hechos que el alumno puede usar. */
+function escBorrador(an, props){
+  const l = [];
+  l.push('You wrote ' + an.palabras + ' words in ' + an.frases + ' sentence(s).');
+  /* El rango sale del criterio marcado como 'extension', NO de buscar la
+     palabra "palabras" en los motivos: el de vocabulario dice "banco de
+     palabras" y se colaba entero, en castellano, en el texto del alumno. */
+  const ext = props.filter(function(x){ return x && x.tipo === 'extension'; })[0];
+  if(ext && ext.datos){
+    const d = ext.datos;
+    l.push(d.n >= d.lo && d.n <= d.hi
+      ? 'That is inside the ' + d.lo + '-' + d.hi + ' word range.'
+      : 'The task asked for ' + d.lo + '-' + d.hi + ' words, so ' +
+        (d.n < d.lo ? 'add a little more.' : 'try to be more concise.'));
+  }
+  const cs = Object.keys(an.conectores).filter(function(k){ return an.conectores[k].length; });
+  if(cs.length) l.push('Linkers you used: ' +
+    cs.map(function(k){ return an.conectores[k].slice(0,3).join(', '); }).join('; ') + '.');
+  else l.push('Try to join your ideas with linkers (because, however, for example).');
+  if(an.repetidas.length) l.push('You repeat "' + an.repetidas.slice(0,2).join('", "') +
+    '" — try a synonym at least once.');
+  if(an.mediaFrase > 28) l.push('Some sentences are very long (' + an.mediaFrase +
+    ' words on average). Split the longest one in two.');
+  if(an.parrafos < 2 && an.palabras > 90) l.push('Split the text into two paragraphs.');
+  return l.join(' ');
+}
+
+/* ---------- pantalla ---------- */
+let _esc = { grade:'g9', unit:4, filas:[], i:-1, actual:null, props:[], puntos:{} };
+
+/* Un texto cuenta como produccion escrita si la ficha lo declaro como bloque
+   `write`, y si no hay ficha (las actividades sueltas no la tienen) por su
+   tamano: 25 palabras es mas de lo que cabe en un hueco. */
+function escTextos(payload, ficha){
+  const resp = (payload && payload.answers) || {};
+  const ids = ficha && Array.isArray(ficha.blocks)
+    ? ficha.blocks.filter(function(b){ return b && b.t === 'write'; }).map(function(b){ return b.id; })
+    : null;
+  return Object.keys(resp).filter(function(k){
+    const v = resp[k];
+    if(typeof v !== 'string') return false;
+    if(ids && ids.indexOf(k) >= 0) return true;
+    return (v.trim().match(/\S+/g) || []).length >= 25;
+  }).map(function(k){ return { campo:k, texto:resp[k] }; });
+}
+
+async function escCarga(){
+  const sel = function(id){ const e = $(id); return e ? e.value : null; };
+  if($('#eGrado')){ _esc.grade = sel('#eGrado'); _esc.unit = parseInt(sel('#eUnidad'), 10); }
+
+  /* Todo lo entregado de esa unidad, venga de la ficha de la sesion o de una
+     actividad suelta: para el docente son la misma cosa, texto que corregir. */
+  const { data, error } = await sb.from('unit_submissions')
+    .select('id,student_id,grade,unit,milestone,payload,score,criteria,feedback,reviewed_at,updated_at')
+    .eq('grade', _esc.grade).eq('unit', _esc.unit).eq('kind', 'worksheet')
+    .order('updated_at', { ascending:false }).limit(600);
+  if(error){
+    $('#eLista').innerHTML = `<p class="err">No pude leerlo: ${esc(error.message)}</p>`;
+    return;
+  }
+  const ids = [...new Set((data || []).map(function(r){ return r.student_id; }))];
+  const { data: gente } = await sb.from('profiles').select('id,full_name,grade_id,section').in('id', ids);
+  const quien = Object.fromEntries((gente || []).map(function(p){ return [p.id, p]; }));
+
+  const { data: fichas } = await sb.from('worksheets')
+    .select('level,week,session,title,rubric,blocks').eq('grade', _esc.grade).eq('unit', _esc.unit);
+  _esc.fichas = fichas || [];
+
+  _esc.filas = [];
+  (data || []).forEach(function(r){
+    const m = /^w(\d+)s(\d+)$/.exec(r.milestone || '');
+    const ficha = m ? (_esc.fichas.find(function(f){
+      return f.week === +m[1] && f.session === +m[2] && f.level === (r.payload && r.payload.level);
+    }) || null) : null;
+    escTextos(r.payload, ficha).forEach(function(t){
+      _esc.filas.push({
+        id:r.id, campo:t.campo, texto:t.texto, fila:r, ficha:ficha,
+        nombre:(quien[r.student_id] || {}).full_name || '(alumno)',
+        grado:(quien[r.student_id] || {}).grade_id, seccion:(quien[r.student_id] || {}).section,
+        donde:(r.payload && r.payload.title) || r.milestone,
+        palabras:(String(t.texto).match(/\S+/g) || []).length
+      });
+    });
+  });
+  _esc.filas.sort(function(a,b){
+    return (a.reviewed_at ? 1 : 0) - (b.reviewed_at ? 1 : 0) ||
+           String(a.nombre).localeCompare(String(b.nombre));
+  });
+  escPinta();
+}
+
+function escPinta(){
+  const sinCorregir = _esc.filas.filter(function(f){ return !f.fila.reviewed_at; }).length;
+  const grados = ALL_GRADE_ORDER.map(function(g){
+    return `<option value="${g}" ${g === _esc.grade ? 'selected' : ''}>${GRADE_META[g][1]}</option>`; }).join('');
+  const unidades = [1,2,3,4,5,6].map(function(u){
+    return `<option value="${u}" ${u === _esc.unit ? 'selected' : ''}>Unidad ${u}</option>`; }).join('');
+
+  $('#eCab').innerHTML = `
+    <div class="row" style="gap:10px;flex-wrap:wrap">
+      <select id="eGrado">${grados}</select>
+      <select id="eUnidad">${unidades}</select>
+      <button class="btn small" onclick="escCarga()">Ver</button>
+    </div>
+    <p class="muted" style="margin-top:10px">${_esc.filas.length} producción(es) ·
+      <b>${sinCorregir} sin enviar</b>. Se listan los textos largos de la unidad,
+      vengan de la ficha de la sesión o de una actividad suelta.</p>`;
+
+  $('#eLista').innerHTML = _esc.filas.length ? `<div style="overflow-x:auto"><table class="tbl">
+      <thead><tr><th>Alumno</th><th>Dónde</th><th style="text-align:center">Palabras</th>
+        <th style="text-align:center">Estado</th><th></th></tr></thead>
+      <tbody>${_esc.filas.map(function(f, j){
+        const est = f.fila.reviewed_at
+          ? '<span class="badge" style="background:#dcfce7">enviado' + (f.fila.score != null ? ' · ' + f.fila.score : '') + '</span>'
+          : (f.fila.criteria && Object.keys(f.fila.criteria).length
+              ? '<span class="badge" style="background:#fef9c3">guardado sin enviar</span>'
+              : '<span class="badge" style="background:#fee2e2">sin corregir</span>');
+        return `<tr>
+          <td>${esc(f.nombre)} <span class="muted">${f.grado || ''}º${f.seccion || ''}</span></td>
+          <td class="muted">${esc(f.donde)} <span style="font-size:.75rem">· ${esc(f.campo)}</span></td>
+          <td style="text-align:center">${f.palabras}</td>
+          <td style="text-align:center">${est}</td>
+          <td><button class="btn small" onclick="escAbre(${j})">Corregir</button></td></tr>`;
+      }).join('')}</tbody></table></div>`
+    : '<p class="muted">No hay producciones escritas en esta unidad todavía.</p>';
+
+  if(_esc.i >= 0 && _esc.filas[_esc.i]) escAbre(_esc.i, true);
+  else $('#eCorr').innerHTML = '';
+}
+
+window.escAbre = function(j, silencioso){
+  const f = _esc.filas[j];
+  if(!f) return;
+  _esc.i = j;
+  _esc.actual = f;
+
+  const an = escAnaliza(f.texto);
+  const rub = (f.ficha && f.ficha.rubric) || [];
+  const resp = (f.fila.payload && f.fila.payload.answers) || {};
+  const respondidos = Object.keys(resp).filter(function(k){
+    return resp[k] !== '' && resp[k] !== false && resp[k] != null; }).length;
+  const banco = (f.ficha && Array.isArray(f.ficha.blocks))
+    ? f.ficha.blocks.filter(function(b){ return b && b.t === 'bank'; })
+        .reduce(function(a,b){ return a.concat(b.items || []); }, [])
+    : [];
+  const ctx = { campos:Object.keys(resp).length, respondidos:respondidos, banco:banco };
+
+  _esc.props = rub.map(function(c){ return escPropone(c, an, ctx); });
+  /* Si ya se habia corregido, mandan los puntos guardados; si no, la propuesta. */
+  const guardados = f.fila.criteria || {};
+  _esc.puntos = {};
+  rub.forEach(function(c, k){
+    if(guardados[k] != null) _esc.puntos[k] = guardados[k];
+    else if(_esc.props[k] && _esc.props[k].p != null) _esc.puntos[k] = _esc.props[k].p;
+  });
+
+  const maxTotal = rub.reduce(function(a,c){ return a + (c.max || 0); }, 0);
+  const borrador = f.fila.feedback ||
+    (f.fila.payload && f.fila.payload.review && f.fila.payload.review.borrador) ||
+    escBorrador(an, _esc.props);
+
+  $('#eCorr').innerHTML = `
+    <div class="card">
+      <div class="row" style="justify-content:space-between;align-items:baseline">
+        <h3 style="margin:0;font-size:1.05rem;color:var(--blue-dd)">${esc(f.nombre)}</h3>
+        <span class="muted" style="font-size:.85rem">${esc(f.donde)} · campo ${esc(f.campo)} ·
+          ${_esc.i + 1} de ${_esc.filas.length}</span>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 360px;gap:18px;margin-top:14px" id="eGrid">
+        <div>
+          <div style="white-space:pre-wrap;line-height:1.75;font-size:.95rem;border:1px solid var(--line);
+                      border-radius:10px;padding:16px;max-height:56vh;overflow:auto;background:#fcfdff">${esc(f.texto)}</div>
+          <p class="muted" style="font-size:.8rem;margin-top:8px">
+            ${an.palabras} palabras · ${an.frases} frases (${an.mediaFrase} palabras de media) ·
+            ${an.parrafos} párrafo(s) · ${Math.round(an.variedad * 100)}% de palabras distintas ·
+            ${an.totalConectores} conector(es)${an.repetidas.length ? ' · repite: ' + esc(an.repetidas.join(', ')) : ''}</p>
+        </div>
+
+        <div>
+          ${rub.length ? `<div class="badge" style="background:#e7ecfd;color:#2d5a8d;margin-bottom:8px">
+              🤖 Propuesta automática — revísala antes de enviar</div>` : ''}
+          ${rub.length ? rub.map(function(c, k){
+            const pr = _esc.props[k] || {};
+            return `<div style="margin-bottom:12px">
+              <div style="font-size:.85rem;font-weight:600">${esc(c.c)}</div>
+              <div class="row" style="gap:5px;margin-top:5px;flex-wrap:wrap">
+                ${Array.from({length:(c.max || 4) + 1}, function(_, p){
+                  const puesto = _esc.puntos[k] === p;
+                  const sugerido = pr.p === p;
+                  return `<button class="btn small ${puesto ? '' : 'ghost'}"
+                    style="padding:5px 10px;min-width:34px;${sugerido && !puesto ? 'border-color:#3b5bdb;color:#3b5bdb' : ''}"
+                    onclick="escPunto(${k},${p})">${p}</button>`; }).join('')}
+              </div>
+              <div class="muted" style="font-size:.76rem;margin-top:4px">${esc(pr.r || '')}</div>
+            </div>`; }).join('')
+          : '<p class="muted">Esta práctica no tiene rúbrica. Defínela en «Corregir fichas» y aquí se puntúa sola.</p>'}
+
+          <div style="border-top:1px solid var(--line);padding-top:10px;margin-top:10px">
+            <div class="row" style="justify-content:space-between">
+              <b style="font-size:.9rem">Nota</b>
+              <span style="font-weight:800;color:var(--blue-dd)" id="eTotal">${escTotal()}${maxTotal ? (' / ' + maxTotal) : ''}</span>
+            </div>
+            <textarea id="eComent" rows="5" style="width:100%;margin-top:8px;padding:9px;
+              border:1px solid var(--line);border-radius:8px;font-family:inherit;font-size:.85rem;
+              line-height:1.6">${esc(borrador)}</textarea>
+            <p class="muted" style="font-size:.75rem;margin:4px 0 0">
+              El alumno no ve nada hasta que pulses <b>Guardar y enviar</b>.</p>
+            <div class="row" style="margin-top:10px;gap:8px;flex-wrap:wrap">
+              <button class="btn" onclick="escGuarda(true)">📨 Guardar y enviar</button>
+              <button class="btn small ghost" onclick="escGuarda(false)">Guardar sin enviar</button>
+              <button class="btn small ghost" onclick="escAbre(${Math.min(_esc.i + 1, _esc.filas.length - 1)})">Siguiente ▸</button>
+            </div>
+            <div class="row"><span class="state" id="eEstado"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>`;
+
+  if(!silencioso) $('#eCorr').scrollIntoView({ behavior:'smooth', block:'start' });
+};
+
+function escTotal(){
+  return Object.keys(_esc.puntos).reduce(function(a,k){ return a + (Number(_esc.puntos[k]) || 0); }, 0);
+}
+
+window.escPunto = function(k, p){
+  if(_esc.puntos[k] === p) delete _esc.puntos[k];
+  else _esc.puntos[k] = p;
+  escAbre(_esc.i, true);
+};
+
+window.escGuarda = async function(enviar){
+  const f = _esc.actual;
+  if(!f) return;
+  const est = $('#eEstado');
+  est.textContent = 'Guardando…'; est.className = 'state';
+  const comentario = ($('#eComent').value || '').trim();
+  const hayPuntos = Object.keys(_esc.puntos).length > 0;
+
+  const cambio = {
+    criteria: _esc.puntos,
+    reviewed_by: (state.profile && state.profile.id) || null
+  };
+  if(enviar){
+    /* Solo al ENVIAR se escriben las dos columnas que el alumno lee. */
+    cambio.score = hayPuntos ? escTotal() : null;
+    cambio.feedback = comentario || null;
+    cambio.reviewed_at = new Date().toISOString();
+  } else {
+    /* Sin enviar: el borrador se queda en el payload, y score/feedback
+       intactos para que al alumno no le llegue media correccion. */
+    const p = Object.assign({}, f.fila.payload || {});
+    p.review = Object.assign({}, p.review || {}, { borrador:comentario });
+    cambio.payload = p;
+  }
+
+  const { error } = await sb.from('unit_submissions').update(cambio).eq('id', f.id);
+  if(error){ est.textContent = 'No se guardó: ' + error.message; est.className = 'state err'; return; }
+
+  f.fila.criteria = _esc.puntos;
+  if(enviar){
+    f.fila.score = cambio.score; f.fila.feedback = cambio.feedback;
+    f.fila.reviewed_at = cambio.reviewed_at;
+  } else {
+    f.fila.payload = cambio.payload;
+  }
+  est.textContent = enviar ? 'Enviado ✓ — el alumno ya lo ve.' : 'Guardado (todavía no le llega).';
+  est.className = 'state ok';
+  escPinta();
 };
 
 /* ---------------------------------------------------------------

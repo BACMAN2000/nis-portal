@@ -63,10 +63,10 @@ function arrancaReloj(){
     if(document.visibilityState === 'hidden') return;
     segAqui++;
     /* Cada dos minutos se sube el rato acumulado, aunque el alumno no haya
-       tocado nada: leer el texto tambien es trabajar. No se crea fila por
-       quien solo abre y cierra — solo se anota tiempo de lo que ya tiene
-       algo dentro o ya existia en la cuenta. */
-    if(segAqui % 120 === 0 && (hayFila || cuenta(O.read() || {}))){
+       tocado nada: leer el texto TAMBIEN es trabajar, y en un reading o un
+       listening es LA tarea. Quien solo abre y cierra no genera fila: hacen
+       falta dos minutos con la pagina delante, que ya no es un rebote. */
+    if(segAqui % 120 === 0 && (hayFila || segAqui >= 120 || cuenta(O.read() || {}))){
       sucio = true;
       programa();
     }
