@@ -102,6 +102,11 @@ window.UNIT_PLANS = {
   sequence:[
     {n:1,title:'Where light comes from',desc:'The sun, heat and the wind. New words for the things that give us light. Choosing what your show will be about.',
      give:'Your question for the test, and your guess.',
+     across:{
+       science:'Sources of energy: the sun, heat and the wind. Stating a research question and a prediction.',
+       math:'Counting to 999 and the properties of addition, to record what the tests will produce.',
+       social:'Equity: boys and girls can do the same jobs — who holds the torch and who narrates rotates.',
+       english:'Starters listening: everyday objects and simple actions, and the words for light.'},
      sessions:[{s:1,title:'What gives us light?',view:[
        'Enter the dark room. Only a torch. What can you see, what has disappeared?',
        'Sort the cards: things that GIVE light (sun, torch, fire) and things that only RECEIVE it.',
@@ -114,6 +119,11 @@ window.UNIT_PLANS = {
                help:'Sentence frame: "What happens if I move the ____?"'}}},
     {n:2,title:'Saying what is happening',desc:'The present continuous, so you can narrate the show while it happens: the shadow is growing, the puppet is walking.',
      give:'Five sentences in the present continuous about your puppet.',
+     across:{
+       science:'Energy and light in everyday life.',
+       math:'Times tables (2, 3, 4, 5 and 10), for counting the repetitions of the test.',
+       comunicacion:'La noticia como texto instructivo: dar un paso a la vez, tambien en castellano.',
+       english:'Starters speaking: present continuous to narrate what is happening as it happens.'},
      sessions:[{s:1,title:'It is happening now',view:[
        'One student moves the puppet; the rest narrate out loud what IS HAPPENING.',
        'Board: The shadow is growing. The puppet is walking. The light is moving.',
@@ -126,6 +136,10 @@ window.UNIT_PLANS = {
                help:'Model: "The shadow is getting bigger because the torch is coming closer."'}}},
     {n:3,title:'Testing the shadow',desc:'The experiment: near and far, big and small. Lab rules — we look, we do not touch the bulb.',
      give:'Your results, written and counted.',
+     across:{
+       science:'Following instructions to carry out an investigation. Laboratory safety: we look, we do not touch.',
+       math:'Introduction to division (halves) and combined operations, to split the measurements.',
+       english:'Short simple stories: listening for the key action.'},
      sessions:[{s:1,title:'Near, far, bigger, smaller',view:[
        'Rules first: the torch is hot, we hold it by the handle.',
        'Measure the shadow with the torch near, in the middle, far. Three times each.',
@@ -138,6 +152,11 @@ window.UNIT_PLANS = {
                help:'Model: "The shadow is bigger when the torch is near."'}}},
     {n:4,title:'Reading about light',desc:'A short text about colours and shadows. Finding the answers inside it, and drawing the bar chart of your results.',
      give:'Your answers and your bar chart.',
+     across:{
+       science:'Light as a form of energy: colour, shadow and illumination.',
+       math:'Statistics: bar charts, horizontal and vertical, and pictographs with a scale up to 10.',
+       comunicacion:'Partes de un cuento: principio, nudo y desenlace — la forma de la funcion.',
+       english:'Starters reading: friendly letters and descriptions, and brainstorming before writing.'},
      sessions:[{s:1,title:'Read it and chart it',view:[
        'Read the text together. Underline the three words you already know from the unit.',
        'Answer four questions: what, where, why, how.',
@@ -150,6 +169,11 @@ window.UNIT_PLANS = {
                help:'Reminder of what a chart needs: a title, and a label on each bar.'}}},
     {n:5,title:'The show for Nursery',desc:'Building the theatre with Art, rehearsing the narration and performing it for the little ones.',
      give:'The show, and your written explanation.',
+     across:{
+       science:'What the test showed, and why the shadow changes size.',
+       math:'Tally charts and reading a picture graph with a scale.',
+       social:'Sense of belonging: the little ones are part of the school too.',
+       english:'Starters writing: short narratives, present continuous and basic conjunctions.'},
      sessions:[{s:1,title:'Curtain up',view:[
        'Last rehearsal: narrate while you move, without reading.',
        'Nursery comes in. Two shows, so everybody performs.',
@@ -217,6 +241,10 @@ window.UNIT_PLANS = {
   sequence:[
     {n:1,title:'Push or pull?',desc:'Sorting the movements of the classroom: what we push, what we pull, what falls on its own.',
      give:'Your sorting chart, and your team.',
+     across:{
+       science:'Motion, forces and gravity: movement produced by pushing and pulling.',
+       math:'Counting to 999 and place value, to write down the distances.',
+       english:'Starters listening, and the introduction of the past simple.'},
      sessions:[{s:1,title:'Nothing moves on its own',view:[
        'Tour of the classroom: name ten movements and say push or pull.',
        'The odd one out: a dropped pencil. Nobody pushed it — so what did?',
@@ -229,6 +257,10 @@ window.UNIT_PLANS = {
                help:'Frame: "I push the ____." / "I pull the ____."'}}},
     {n:2,title:'It happened yesterday',desc:'The past simple, because the race will already have happened when you tell it.',
      give:'Five sentences in the past about your first test.',
+     across:{
+       science:'What produces movement and what stops it.',
+       math:'Addition up to three digits, with and without trading.',
+       english:'Starters speaking: simple conversations about what you did.'},
      sessions:[{s:1,title:'Pushed, pulled, moved, stopped',view:[
        'Do the action, then say it in the past: I push → I pushed.',
        'Board with the four verbs of the unit and their past.',
@@ -241,6 +273,11 @@ window.UNIT_PLANS = {
                help:'Model: "I pushed the car and it moved to the door."'}}},
     {n:3,title:'Building it',desc:'The vehicle, with Art. Then the first test on a smooth floor and on a rough one.',
      give:'Your vehicle and your first results.',
+     across:{
+       science:'Following instructions in an investigation, and laboratory safety.',
+       math:'Subtraction up to three digits: the difference between the two surfaces.',
+       comunicacion:'Cuentos — borrador: contar en orden lo que paso, tambien en castellano.',
+       english:'Past simple in dialogues about what you did today.'},
      sessions:[{s:1,title:'Wheels and ramps',view:[
        'Materials on the table. Rule: it has to roll, not slide.',
        'Build, test, change one thing, test again.',
@@ -253,6 +290,10 @@ window.UNIT_PLANS = {
                help:'Frame: "It went ____ cm on the ____ floor."'}}},
     {n:4,title:'Reading a story of movement',desc:'A short story where something moves. Who is in it, where it happens, what happened first.',
      give:'Your answers about the story.',
+     across:{
+       science:'Effect of the surface on movement. Gravity and falling objects.',
+       math:'Counting in 2s, 3s, 4s, 5s and 10s.',
+       english:'Starters reading: describing characters, settings and events with details.'},
      sessions:[{s:1,title:'Who, where, what happened',view:[
        'Read the story aloud, stopping to predict.',
        'Three columns: characters, place, what happened.',
@@ -265,6 +306,10 @@ window.UNIT_PLANS = {
                help:'Write in the past.'}}},
     {n:5,title:'Writing the race',desc:'Your own account of the test: what you built, what you did, what happened on each floor and why.',
      give:'The draft in your notebook.',
+     across:{
+       science:'Why one surface holds the vehicle back more than the other.',
+       math:'Fractions: half the ramp, a quarter of the distance.',
+       english:'Starters writing: narratives and graphic organisers to sequence ideas.'},
           sessions:[{s:1,title:'Draft it, cross it out',view:[
        'Model on the board: one account written badly, and we fix it together.',
        'Everybody writes their draft in the notebook. Crossing out is allowed — it is expected.',
@@ -277,6 +322,11 @@ window.UNIT_PLANS = {
                help:'Use because at least once, and two order words.'}}},
     {n:6,title:'Race day',desc:'The final version, the race in the hall and the explanation to the families.',
      give:'The finished text and the race.',
+     across:{
+       science:'Explaining the result of the race with what you learned about friction.',
+       math:'Times tables and combined operations to total the results.',
+       social:'Sense of belonging: your family sees what this class built.',
+       english:'Friendly letters and narratives: telling it in order, in the past.'},
      sessions:[{s:1,title:'The hall, the ramp, the families',view:[
        'Set up the ramp. Each team announces its vehicle in one sentence.',
        'The race, measured. Every result on the big chart.',
@@ -388,6 +438,11 @@ window.UNIT_PLANS = {
   sequence:[
     {n:1,title:'What is out there',desc:'The Sun at the centre, the planets, the dwarf planets. Reading an informative text and taking the key words out of it.',
      give:'Your fact file on one body of the solar system.',
+     across:{
+       science:'Elements of the solar system: the Sun at the centre, planets and dwarf planets.',
+       math:'Combined operations, for the distances of the fact file.',
+       social:'The Earth as part of the world. The sundial and telling the time by the Sun.',
+       english:'Informative text about the planets: main idea and details, and the vocabulary orbit, gravity, rotate.'},
      sessions:[{s:1,title:'The solar system, in order',view:[
        'The scale rope across the playground: how far Neptune really is.',
        'Read the informative text. Underline: orbit, rotate, revolve, gravity.',
@@ -400,6 +455,11 @@ window.UNIT_PLANS = {
                help:'Reminder: use the present simple for things that are always true.'}}},
     {n:2,title:'Day, night and the seasons',desc:'Rotation and revolution. What always happens, and what is happening right now.',
      give:'Six sentences: three present simple, three present continuous.',
+     across:{
+       science:'Rotation (day and night) and revolution (the seasons).',
+       math:'Fractions: a quarter of a turn, half an orbit.',
+       social:'Years, decades, past-present-future, and how ancient cultures read the sky.',
+       english:'Present simple versus present continuous: what always happens and what is happening now.'},
      sessions:[{s:1,title:'Always, or right now?',view:[
        'With a torch and a globe: one turn = one day. One lap = one year.',
        'Two columns on the board: ALWAYS (the Earth rotates) / NOW (the Earth is rotating).',
@@ -412,6 +472,11 @@ window.UNIT_PLANS = {
                help:'Model: "The Earth rotates every 24 hours." / "The Earth is rotating right now."'}}},
     {n:3,title:'The Moon and the tides',desc:'Moon phases and tides. Predicting what will happen next.',
      give:'Your predictions, written with will.',
+     across:{
+       science:'Moon phases and tides.',
+       math:'Reading the tide chart and its numbers.',
+       social:'Natural disasters linked to the Earth’s systems, and environmental responsibility.',
+       english:'Future with will: making predictions and justifying them.'},
      sessions:[{s:1,title:'What happens next?',view:[
        'The phases with a ball and a lamp: it is the same Moon, we see it differently.',
        'The tide chart: what do you predict for tomorrow?',
@@ -424,6 +489,11 @@ window.UNIT_PLANS = {
                help:'Frame: "I think that… will… because…"'}}},
     {n:4,title:'Going to space',desc:'Space missions, the jobs behind them and what a mission costs. Planning yours.',
      give:'Your mission plan with its budget.',
+     across:{
+       science:'Space missions and the basic idea of gravity.',
+       math:'The mission budget: adding, comparing and staying under a limit.',
+       social:'Jobs in space exploration, and deciding as a team what the mission is for.',
+       english:'Going to, and will versus going to. Writing a short informative text.'},
      sessions:[{s:1,title:'Who goes and what it costs',view:[
        'The jobs on a real mission: not only astronauts.',
        'Your team plans a mission: where, why, who goes, what you take.',
@@ -436,6 +506,11 @@ window.UNIT_PLANS = {
                help:'Use because and so.'}}},
     {n:5,title:'The exhibition',desc:'Building the model, writing the explanation and rehearsing until it can be said without reading.',
      give:'The model, the explanation and your talk to visitors.',
+     across:{
+       science:'Designing the model, applying the inquiry process and collecting data.',
+       math:'Checking the scale of your model against the real figures.',
+       social:'Teamwork norms, public speaking, respectful listening and civic behaviour at the exhibition.',
+       english:'Writing an informative explanation with linking words, and rehearsing it out loud.'},
      sessions:[{s:1,title:'Standing next to your model',view:[
        'Final assembly and check: does the model actually move?',
        'Rehearsal in pairs: explain it in 60 seconds without the card.',
@@ -503,6 +578,11 @@ window.UNIT_PLANS = {
   sequence:[
     {n:1,title:'Somebody who did it',desc:'Reading about a child who reached a goal: what helped them and what got in the way.',
      give:'Main idea and three supporting details.',
+     across:{
+       science:'How habits affect performance: sleep, food, study time.',
+       math:'Decimals, to read the data you are about to collect.',
+       social:'Personal growth and goals. Self-regulation, strengths and areas to improve.',
+       english:'Reading narrative nonfiction: a child reaching a goal. Main idea and supporting details.'},
      sessions:[{s:1,title:'How did they manage it?',view:[
        'Read the true story. Stop at the moment they nearly gave up.',
        'Three columns: what they wanted, what stopped them, what they did.',
@@ -515,6 +595,11 @@ window.UNIT_PLANS = {
                help:'Frame: "The main idea is… I know because…"'}}},
     {n:2,title:'This year I learned',desc:'Looking back at the year and writing it down properly, in the past tense.',
      give:'A 100-word reflection paragraph.',
+     across:{
+       science:'Tracking one habit for a week: sleep, or reading time.',
+       math:'Recording the daily data of your habit.',
+       social:'Responsibility in learning, and reviewing the classroom agreements.',
+       english:'A 100-word reflection paragraph in the past tense, with linking words.'},
      sessions:[{s:1,title:'March to now',view:[
        'Your March notebook next to today’s. What has changed?',
        'Past simple: learned, practised, started, managed.',
@@ -527,6 +612,11 @@ window.UNIT_PLANS = {
                help:'Past simple throughout, and linking words.'}}},
     {n:3,title:'What the data says',desc:'A week tracking one habit. Now the numbers, not the feeling.',
      give:'Your week of data, and what it shows.',
+     across:{
+       science:'Designing a healthy routine plan to reach the goal.',
+       math:'Total, best day and worst day of your week of data.',
+       social:'Children’s rights and responsibilities. Autonomy, and saying no to what gets in the way.',
+       english:'Describing what the data shows, without exaggerating it.'},
      sessions:[{s:1,title:'Seven days of evidence',view:[
        'Everybody brings their week. Nobody hides the bad days.',
        'With Maths: total, best day, worst day.',
@@ -539,6 +629,11 @@ window.UNIT_PLANS = {
                help:'Frame: "The data shows that… because…"'}}},
     {n:4,title:'Next year I will',desc:'Setting the goal. Will and going to, and saying no to what gets in the way.',
      give:'Your goal, written twice: with will and with going to.',
+     across:{
+       science:'What resources your goal needs.',
+       math:'Basic budget planning for a small personal goal.',
+       social:'Decision making: what you give up when you choose a goal.',
+       english:'Future forms: will and going to, and the difference between them.'},
      sessions:[{s:1,title:'A goal you can keep',view:[
        'Two goals on the board, one impossible and one real. Which is which, and why?',
        'Rule: if you cannot say when and how often, it is not a goal.',
@@ -551,6 +646,11 @@ window.UNIT_PLANS = {
                help:'It must say when and how often.'}}},
     {n:5,title:'Why it matters',desc:'Opinion writing: why your goal is important, and what you will need for it.',
      give:'Your opinion paragraph and your plan of resources.',
+     across:{
+       science:'A healthy routine mini poster.',
+       math:'What the goal costs in time, and whether it fits in a week.',
+       social:'Final reflection: rights and responsibilities in what you set out to do.',
+       english:'Opinion writing: why my goal is important, with but, so and because.'},
      sessions:[{s:1,title:'Convince yourself first',view:[
        'A goal you cannot justify does not survive February.',
        'Write why it matters, using but, so and because.',
@@ -563,6 +663,11 @@ window.UNIT_PLANS = {
                help:'Two paragraphs: why, and what it needs.'}}},
     {n:6,title:'Saying it to your family',desc:'The final text and the two-to-three-minute presentation at the meeting.',
      give:'The presentation and the finished plan.',
+     across:{
+       science:'The routine plan, finished and doable.',
+       math:'The weekly plan with its real numbers.',
+       social:'Oral presentation to the family: two to three minutes, and answering a question.',
+       english:'Editing punctuation and capitalisation before handing it over.'},
      sessions:[{s:1,title:'The meeting',view:[
        'Last rehearsal in pairs, timed.',
        'Families come in. Each student presents their goal.',
@@ -1031,6 +1136,12 @@ window.UNIT_PLANS = {
   sequence:[
     {n:1,title:'Reading the world, reading the map',desc:'Starting Exploring Our World. Cartographic tools and elements: what a map must have to be usable.',
      give:'Your first map of the area, with its key.',
+     across:{
+       science:'The atmosphere: what it is made of and what changes it.',
+       math:'Deepening decimal operations, for the data you will collect.',
+       social:'Cartographic tools: what a map needs to be usable.',
+       comunicacion:'Palabras homonimas: la misma palabra, distinto sentido — tambien en los datos.',
+       english:'Book: Exploring Our World. Reading for information.'},
      sessions:[{s:1,title:'A map without a key is a drawing',view:[
        'Two maps of the same place, one usable and one not. What is missing?',
        'The four elements: title, key, scale, orientation.',
@@ -1043,6 +1154,12 @@ window.UNIT_PLANS = {
                help:'Choose the symbols yourself and justify two of them.'}}},
     {n:2,title:'The air above us',desc:'The atmosphere: its layers and what changes it. Different viewpoints on the same problem.',
      give:'Two opposing viewpoints, written down.',
+     across:{
+       science:'The atmosphere and what alters it locally.',
+       math:'Multi-step decimal word problems.',
+       social:'Cartographic elements: key, scale, orientation.',
+       comunicacion:'Palabras paronimas: parecidas y distintas, cuidado al citar.',
+       english:'Analysing detailed texts for their main ideas, and different viewpoints.'},
      sessions:[{s:1,title:'Two people, one problem',view:[
        'Read two texts that disagree about the same issue.',
        'What does each one want? What does each one leave out?',
@@ -1055,6 +1172,12 @@ window.UNIT_PLANS = {
                help:'Use however or although at least once.'}}},
     {n:3,title:'The water around us',desc:'The hydrosphere, rivers and lakes. Types of map and what each is good for.',
      give:'Your data map.',
+     across:{
+       science:'The hydrosphere: where our water is and where it goes.',
+       math:'Percent: what it means and how it is represented.',
+       social:'Types of map, and which one answers which question.',
+       comunicacion:'Adverbios: precisar como, cuando y cuanto.',
+       english:'Different viewpoints and personal opinion: saying what you think and why.'},
      sessions:[{s:1,title:'Putting the data on the map',view:[
        'Three types of map for the same area: which one for which question?',
        'Where does our water come from and where does it go? Trace it.',
@@ -1067,6 +1190,12 @@ window.UNIT_PLANS = {
                help:'The reader must understand it without you explaining.'}}},
     {n:4,title:'Where the evidence comes from',desc:'Primary and secondary sources. Turning what you found into percentages.',
      give:'Your sources, classified, and your figures.',
+     across:{
+       science:'Primary and secondary sources in science.',
+       math:'Fraction, decimal and percent conversions.',
+       social:'Rivers and lakes of our region.',
+       comunicacion:'Preposiciones y conjunciones: unir ideas sin perder el hilo.',
+       english:'Developing a thesis statement for an opinion text.'},
      sessions:[{s:1,title:'Who says so, and how do they know?',view:[
        'Sort your sources: measured by us / told by somebody else.',
        'Two sources that disagree. Which one do you trust for this?',
@@ -1079,6 +1208,11 @@ window.UNIT_PLANS = {
                help:'Say what each source lets you claim — and what it does not.'}}},
     {n:5,title:'Taking a position',desc:'The thesis statement and the report. Ecosystems and what depends on this.',
      give:'The finished report.',
+     across:{
+       science:'Ecosystems: what depends on this water and this air.',
+       math:'Percent word problems: discount, tax and interest — what the change would cost.',
+       social:'Ecosystems and the responsibility over them.',
+       english:'Thesis statements, and identifying the main points of a short talk.'},
      sessions:[{s:1,title:'Say it in the first line',view:[
        'Three openings on the board: which one makes you keep reading?',
        'Your thesis statement in one sentence. Rewrite it three times.',
@@ -1146,6 +1280,12 @@ window.UNIT_PLANS = {
   sequence:[
     {n:1,title:'Free or not free?',desc:'Renewable and non-renewable resources; free goods and economic goods. Choosing yours.',
      give:'Your resource, and why you chose it.',
+     across:{
+       science:'Universe origins — running in parallel: it does not feed this project and is not forced into it.',
+       math:'Area of polygons: measuring the surfaces the resource is used on.',
+       social:'Emotions, and what makes us decide to change something.',
+       comunicacion:'La oracion y sus clases: construir la frase que convence.',
+       english:'Analysing detailed texts for their main ideas.'},
      sessions:[{s:1,title:'Who pays for the air?',view:[
        'The air is free. The water is not. Where exactly is the line?',
        'Free goods and economic goods, with examples from the school.',
@@ -1158,6 +1298,12 @@ window.UNIT_PLANS = {
                help:'Frame: "We chose ____ because the school…"'}}},
     {n:2,title:'How persuasion works',desc:'Analysing persuasive texts: what makes one convincing and another one annoying.',
      give:'Three techniques you are going to use.',
+     across:{
+       science:'Universe origins (parallel).',
+       math:'3D shapes: prisms and pyramids, for the containers you are measuring.',
+       social:'Customs and citizenship: what the school already does and what it could do.',
+       comunicacion:'El sujeto: quien hace la accion en tu campana.',
+       english:'Discussions and persuasive speech: what makes a text convincing.'},
      sessions:[{s:1,title:'Convincing or annoying?',view:[
        'Three real campaigns. Which works, which irritates, and why.',
        'The techniques: a figure that surprises, a direct ask, a consequence.',
@@ -1170,6 +1316,12 @@ window.UNIT_PLANS = {
                help:'Be specific: which sentence and why.'}}},
     {n:3,title:'What it really costs',desc:'Measuring the real use of your resource in the school. Data analysis.',
      give:'Your data and what it shows.',
+     across:{
+       science:'Formation of stars and the solar system (parallel).',
+       math:'Nets, faces, edges and vertices; recording the measurement round.',
+       social:'Renewable and non-renewable resources.',
+       comunicacion:'El predicado: decir con precision que ocurre.',
+       english:'Reporting what you measured, without exaggerating it.'},
      sessions:[{s:1,title:'Counting what nobody counts',view:[
        'Design the measurement: where, when, how often, who.',
        'Take the data around the school. Two days.',
@@ -1182,6 +1334,12 @@ window.UNIT_PLANS = {
                help:'The figure has to be true and it has to be yours.'}}},
     {n:4,title:'The savings plan',desc:'Turning the data into a plan with numbers. What is likely to work and what is not.',
      give:'Your savings plan.',
+     across:{
+       science:'Formation of stars and the solar system (parallel).',
+       math:'Circles and circumference; the calculation of the saving.',
+       social:'Free goods versus economic goods: what is paid for and by whom.',
+       comunicacion:'Sentido literal y figurado: la imagen que se queda en la cabeza.',
+       english:'Should and the first conditional: what would happen if we changed it.'},
      sessions:[{s:1,title:'From the number to the plan',view:[
        'If we changed this one thing, how much would we save? Work it out.',
        'Probability with Maths: what is likely to happen if nothing changes?',
@@ -1194,6 +1352,12 @@ window.UNIT_PLANS = {
                help:'Use the first conditional.'}}},
     {n:5,title:'Writing the campaign',desc:'Drafting the persuasive text in your notebook. Feedback and rewriting.',
      give:'The final text.',
+     across:{
+       science:'Planetary movements (parallel).',
+       math:'Probability, theoretical and experimental: what is likely if nothing changes.',
+       social:'The importance of saving.',
+       comunicacion:'Guion y raya: los signos del dialogo y del inciso.',
+       english:'Drafting, feedback and rewriting the persuasive text.'},
           sessions:[{s:1,title:'Draft, feedback, rewrite',view:[
        'Draft in the notebook, with the three techniques you chose.',
        'Read it to a team that is NOT convinced. Let them object.',
@@ -1206,6 +1370,12 @@ window.UNIT_PLANS = {
                help:'Should, the first conditional, and one direct ask.'}}},
     {n:6,title:'Convincing them',desc:'The speech, in front of the school.',
      give:'The campaign and the speech.',
+     across:{
+       science:'Planetary movements (parallel).',
+       math:'Data analysis and integrated problem solving on your own figures.',
+       social:'Making a savings plan that the school could actually adopt.',
+       comunicacion:'Diferencia entre haber y a ver: revisar antes de publicar.',
+       english:'Delivering a persuasive speech to an audience that can walk away.'},
      sessions:[{s:1,title:'Three minutes in the hall',view:[
        'Timed rehearsal. Over three minutes, cut.',
        'The showing. Each team presents its campaign.',
@@ -1822,6 +1992,10 @@ window.UNIT_PLANS = {
   sequence:[
     {n:1,title:'The brief',desc:'The leadership team explains what policy they have to write and what they are missing. Teams form and each one takes one question of the audit. The rubric is on the table from today.',
      give:'Your audit question and the team’s plan — what you will measure and how.',
+     across:{
+       science:'Framing a measurable question and the variables behind it.',
+       english:'Reading the brief and turning it into an audit question.',
+       ict:'What can be logged in this school: devices, accounts, storage, consumption.'},
      sessions:[
        {s:1,title:'The brief from the leadership team',view:[
          'A member of the leadership team explains, for ten minutes, what policy they have to write and what data they do not have.',
@@ -1844,6 +2018,10 @@ window.UNIT_PLANS = {
              help:'Their brief is on the wall: quote it.'}}},
     {n:2,title:'What is already known',desc:'Reading the research on the energy and water cost of AI, and starting The Time Machine. Telling a solid source from a loud one.',
      give:'Three sources, classified, with what each one lets you claim.',
+     across:{
+       science:'Evaluating scientific evidence: what a study measures and what it concludes.',
+       english:'Reading to evaluate reliability and bias. The Time Machine, chapter one.',
+       ict:'Where the energy and water figures of a data centre come from.'},
      sessions:[
        {s:1,title:'What the research says about AI and energy',view:[
          'Read two sources with opposite conclusions about the cost of AI.',
@@ -1866,6 +2044,10 @@ window.UNIT_PLANS = {
              help:'A source that proves everything usually proves nothing.'}}},
     {n:3,title:'Measuring this building',desc:'The audit itself, with Science and ICT: screen minutes, devices, energy, what gets thrown away. Real numbers from NIS.',
      give:'Your dataset and the method you followed.',
+     across:{
+       science:'Measurement protocol and control of variables during the audit.',
+       english:'Describing the method in the passive, so it can be repeated.',
+       ict:'Collecting and cleaning the school’s data. Averages per student and per room.'},
      sessions:[
        {s:1,title:'Measuring this building',view:[
          'Out into the school with Science and ICT: devices, screen minutes, consumption, what gets thrown away.',
@@ -1888,6 +2070,10 @@ window.UNIT_PLANS = {
              help:'Say where a better instrument would be needed and why.'}}},
     {n:4,title:'From data to a recommendation',desc:'Turning numbers into something somebody can decide on. Drafting the proposal in the notebook.',
      give:'The draft of the proposal, handwritten.',
+     across:{
+       science:'From data to a defensible claim, and what the data does not support.',
+       english:'Proposal register, concession and hedging: recommending without overclaiming.',
+       ict:'Presenting the figures so a non-technical reader understands them.'},
      sessions:[
        {s:1,title:'From data to a decision',view:[
          'A number is not a recommendation. Turning one into the other.',
@@ -1910,6 +2096,10 @@ window.UNIT_PLANS = {
              help:'Hedging: may, might, tends to — claim only what your data supports.'}}},
     {n:5,title:'Facing the leadership team',desc:'Final version, and the defence in front of the people who will write the policy.',
      give:'The proposal handed in and the defence.',
+     across:{
+       science:'Limitations of the measurement, stated openly.',
+       english:'B2 First Writing Part 2 (proposal) and Speaking Parts 3-4: defending it live.',
+       ict:'The final version of the figures and their visualisation for the panel.'},
      sessions:[
        {s:1,title:'Final version',view:[
          'Feedback against the rubric, criterion by criterion.',
@@ -1989,6 +2179,10 @@ window.UNIT_PLANS = {
   sequence:[
     {n:1,title:'Choosing the system',desc:'Movement, food, work or learning. What that system looks like today at NIS and in Lima, with numbers.',
      give:'Your system, and its present state in five facts.',
+     across:{
+       english:'Reading for facts, and distinguishing a fact from an opinion.',
+       art:'Visual references: how a future has been imagined before.',
+       globalperspectives:'Characterising a system today, with evidence and not with impressions.'},
      sessions:[
        {s:1,title:'Choosing your system',view:[
          'Four systems on the board: how we move, how we eat, how we work, how we learn.',
@@ -2006,6 +2200,10 @@ window.UNIT_PLANS = {
              help:'Name at least two forces in conflict.'}}},
     {n:2,title:'Reading the future',desc:'The Time Machine and today’s projections side by side. What a trend is and where it breaks.',
      give:'Three trends and the evidence behind each one.',
+     across:{
+       english:'The Time Machine and today’s projections. Speculation: could, might, is likely to.',
+       art:'The visual language of a projection: what an image can claim.',
+       globalperspectives:'What a trend is, where it comes from and when it breaks.'},
      sessions:[
        {s:1,title:'The Time Machine and the projections',view:[
          'Wells travels to the year 802,701. What does he get right and what does he invent?',
@@ -2023,6 +2221,10 @@ window.UNIT_PLANS = {
              help:'Say which of the three you would bet on, and what it would cost you to be wrong.'}}},
     {n:3,title:'Building the vision',desc:'From trend to scenario. What has to be true for your 2040 to happen, and what it would cost.',
      give:'Your scenario with its conditions and its price.',
+     across:{
+       english:'Second conditional and future perfect: by 2040 we will have…',
+       art:'Choosing what of the vision is better seen than explained.',
+       globalperspectives:'Building a scenario: conditions, cost and who pays.'},
      sessions:[
        {s:1,title:'From trend to scenario',view:[
          'Your 2040 in one paragraph. Not a fantasy and not a catastrophe.',
@@ -2040,6 +2242,10 @@ window.UNIT_PLANS = {
              help:'The strongest visions are the ones that admit what they sacrifice.'}}},
     {n:4,title:'Making it visible',desc:'With Creative Arts: the piece that carries the vision at the exhibition — a model, an image, an object.',
      give:'The visual, and the draft of the argument in your notebook.',
+     across:{
+       english:'Writing an argument that works with the visual instead of repeating it.',
+       art:'Building the piece that carries the argument at the stand.',
+       globalperspectives:'The trade-off of your vision, named out loud.'},
      sessions:[
        {s:1,title:'Making it visible',view:[
          'With Creative Arts: what object carries your vision at a stand?',
@@ -2057,6 +2263,10 @@ window.UNIT_PLANS = {
              help:'What is easier to see than to explain?'}}},
     {n:5,title:'Sharpening the argument',desc:'Feedback against the rubric, rewriting, and rehearsing what to say when somebody disagrees.',
      give:'The final text.',
+     across:{
+       english:'Rewriting to integrate the objection into the argument.',
+       art:'Final adjustments to the piece after the feedback.',
+       globalperspectives:'Standing up to the objection of somebody who does not share your future.'},
      sessions:[
        {s:1,title:'Sharpening it',view:[
          'Feedback against the rubric, criterion by criterion.',
@@ -2074,6 +2284,10 @@ window.UNIT_PLANS = {
              help:'If it does not survive, change the argument — not the objection.'}}},
     {n:6,title:'The exhibition',desc:'NIS 2040 opens. Families walk through and you defend your future to whoever stops.',
      give:'The stand, the piece and your defence.',
+     across:{
+       english:'Speaking Parts 3-4: holding a conversation with somebody who disagrees.',
+       art:'Setting up the stand at the NIS 2040 exhibition.',
+       globalperspectives:'Defending a position in public, and conceding well when the objection is good.'},
      sessions:[
        {s:1,title:'NIS 2040 opens',view:[
          'Set up the stands. Each team decides who welcomes and who explains.',
