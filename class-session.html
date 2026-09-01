@@ -84,7 +84,7 @@ ol.pasos li::before{content:counter(p);position:absolute;left:0;top:12px;width:3
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js"></script>
-<script src="unit-plans.js?v=13"></script>
+<script src="unit-plans.js?v=14"></script>
 <script src="nis-nav.js?v=2"></script>
 <script>
 /* Dos vistas de la misma semana, generadas del planner:
@@ -102,11 +102,17 @@ const GRADE = (Q.get('grade')||'g9').toLowerCase();
 const UNIT  = parseInt(Q.get('unit')||'0',10);
 const WEEK  = parseInt(Q.get('week')||'1',10);
 const LEVEL = Q.get('level')||'';
+const SESS  = parseInt(Q.get('session')||'0',10);
 
 const esc = s => String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const PLAN = (window.UNIT_PLANS||{})[GRADE];
 const U = PLAN ? (PLAN.units||[]).filter(u=>u.n===UNIT)[0] : null;
 const W = U ? (U.sequence||[]).filter(w=>w.n===WEEK)[0] : null;
+/* La ficha vive en la SESION (u4w1s1-worksheet-a2), con la semana como
+   respaldo para las unidades que aun no estan desglosadas. */
+const SES = W ? (W.sessions||[]).filter(x=>x.s===SESS)[0] : null;
+function nivelesDe(){ return (SES && SES.levels) || W.levels || null; }
+function fichaDe(l){ const n=nivelesDe(); return n ? n[l] : null; }
 
 const NOMBRE_AREA = {science:'Science', math:'Math', social:'Social Studies',
                      english:'English', comunicacion:'Comunicación', ict:'ICT',
@@ -164,7 +170,7 @@ function cerrado(t,d){
 }
 
 function portada(sub){
-  const ses=(W.sessions||[])[0];
+  const ses=SES||(W.sessions||[])[0];
   return `<section class="hoja portada">
     <div class="cinta">${esc((PLAN.label||GRADE))} · Unit ${esc(String(U.label||U.n))} · Week ${W.n}</div>
     <h1>${esc(W.title)}</h1>
@@ -184,15 +190,15 @@ function vistaClase(){
     <section class="hoja">
       <div class="cinta">Sesión ${s.s}</div>
       <h2>${esc(s.title)}</h2>
-      <p class="foco">${esc(W.desc||'')}</p>
+      <p class="foco">${esc(s.objective||W.desc||'')}</p>
       <div class="bloque"><h3>Cómo va la sesión</h3>
         <ol class="pasos">${(s.view||[]).map(p=>`<li>${esc(p)}</li>`).join('')}</ol></div>
       ${W.across?`<div class="bloque"><h3>Qué aporta cada área esta semana</h3>
         <ul class="exito">${Object.keys(W.across).map(a=>`<li><b>${esc(NOMBRE_AREA[a]||a)}:</b> ${esc(W.across[a])}</li>`).join('')}</ul></div>`:''}
       <div class="bloque"><h3>Al terminar, el alumno entrega</h3>
         <div class="consigna">${esc(W.give||'')}</div></div>
-      ${W.levels?`<div class="bloque"><h3>La ficha, por nivel</h3><div class="otros">
-        ${Object.keys(W.levels).map(l=>`<a href="class-session.html?grade=${esc(GRADE)}&unit=${U.n}&week=${W.n}&level=${encodeURIComponent(l)}">${esc(l)}</a>`).join('')}
+      ${(s.levels||W.levels)?`<div class="bloque"><h3>La ficha de esta sesión, por nivel</h3><div class="otros">
+        ${Object.keys(s.levels||W.levels).map(l=>`<a href="class-session.html?grade=${esc(GRADE)}&unit=${U.n}&week=${W.n}&session=${s.s}&level=${encodeURIComponent(l)}">${esc(l)}</a>`).join('')}
       </div></div>`:''}
       ${U.words&&U.words.length?`<div class="bloque"><h3>Lengua de la unidad</h3>
         <div class="apoyo">${U.words.slice(0,14).map(w=>`<span>${esc(w)}</span>`).join('')}</div></div>`:''}
@@ -201,20 +207,21 @@ function vistaClase(){
 
 /* ---------------- LA FICHA DEL ALUMNO, por nivel ---------------- */
 function vistaFicha(){
-  const L = (W.levels||{})[LEVEL];
+  const L = fichaDe(LEVEL);
   if(!L) return `<div class="hoja"><h2>Ese nivel no existe en esta semana</h2>
-    <p class="foco">Los niveles de esta semana son: ${Object.keys(W.levels||{}).join(', ')||'ninguno'}.</p></div>`;
-  const otros = Object.keys(W.levels).map(l=>
-    `<a class="${l===LEVEL?'on':''}" href="class-session.html?grade=${esc(GRADE)}&unit=${U.n}&week=${W.n}&level=${encodeURIComponent(l)}">${esc(l)}</a>`).join('');
+    <p class="foco">Los niveles disponibles son: ${Object.keys(nivelesDe()||{}).join(', ')||'ninguno'}.</p></div>`;
+  const otros = Object.keys(nivelesDe()).map(l=>
+    `<a class="${l===LEVEL?'on':''}" href="class-session.html?grade=${esc(GRADE)}&unit=${U.n}&week=${W.n}${SESS?'&session='+SESS:''}&level=${encodeURIComponent(l)}">${esc(l)}</a>`).join('');
   const crit = (U.criteria||[]).slice(0, 2).map(c=>{
     const t = c.levels ? (c.levels.A||c.text) : c.text; return `<li>${esc(t)}</li>`;
   }).join('');
-  return portada('Worksheet · '+LEVEL) + `
+  return portada('Worksheet · '+LEVEL+(SES?' · S'+SES.s:'')) + `
     <section class="hoja">
       <div class="cinta noimprimir">Nivel</div>
       <div class="otros noimprimir" style="margin-bottom:18px">${otros}</div>
-      <div class="cinta">Week ${W.n} · ${esc(LEVEL)}</div>
-      <h2>${esc(W.title)}</h2>
+      <div class="cinta">Week ${W.n}${SES?' · Session '+SES.s:''} · ${esc(LEVEL)}</div>
+      <h2>${esc(SES?SES.title:W.title)}</h2>
+      ${SES&&SES.objective?`<p class="foco">${esc(SES.objective)}</p>`:''}
       <div class="bloque"><h3>Your task</h3><div class="consigna">${esc(L.task)}</div></div>
       ${L.help?`<div class="bloque"><h3>Help you can use</h3>
         <div class="ayuda"><b>Support:</b> ${esc(L.help)}</div></div>`:''}
