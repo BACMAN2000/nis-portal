@@ -1885,7 +1885,7 @@ const _rdrHM=iso=>{ try{ return new Date(iso).toLocaleTimeString([], {hour:'2-di
 window._setReaderTab=(t)=>{ readerTab=t; readerStatsPanel(); };
 function _readerTabs(){
   const b=(k,l)=>`<button class="btn sm ${readerTab===k?'':'ghost'}" onclick="window._setReaderTab('${k}')">${l}</button>`;
-  return `<div class="row" style="gap:8px;margin:0 0 14px">${b('stats','📊 Notas y tiempos')}${b('control','🔓 Abrir / cerrar controles')}</div>`;
+  return `<div class="row" style="gap:8px;margin:0 0 14px">${b('stats','📊 Notas y tiempos')}${b('tiempo','⏱️ Tiempo de lectura')}${b('control','🔓 Abrir / cerrar controles')}</div>`;
 }
 /* Estado efectivo de una clave para una cadena de alcances (la fila más
    específica manda; el tiempo extra es el mayor). Mismo criterio que la app
@@ -2061,9 +2061,113 @@ window._ctlTime=async(ch,scope,mins)=>{
             unlocked:!!(p&&p.unlocked),extra_min:val,updated_at:now}; }));
 };
 
+/* Lunes de la semana de una fecha, en ISO corto. Sirve para agrupar por semana
+   igual que hace el panel de tiempo de pantalla. */
+function _rdrLunes(iso){
+  const d=new Date(iso); const dia=(d.getDay()+6)%7;          // 0 = lunes
+  d.setDate(d.getDate()-dia); d.setHours(0,0,0,0);
+  return d.toISOString().slice(0,10);
+}
+/* ⏱ Tiempo de lectura — cuanto rato pasa cada alumno LEYENDO. Solo cuenta la
+   pantalla "Read along": es la unica que registra tiempo de lectura (actividad
+   `<obra>-<nivel>-ch<n>-read`, sin nota). Los ejercicios y el examen tienen su
+   propio duration_sec, pero eso es resolver, no leer, y va en su columna. */
+async function readerTimePanel(){
+  state._tab='readers';
+  $('#main').innerHTML=`<h1>📖 Controles de lectura</h1>${_readerTabs()}<p class="muted">Cargando…</p>`;
+  const grades=(state.profile&&state.profile.role==='admin')?GRADES:teacherAllowedGrades();
+  const gradeIds=new Set(grades.map(g=>String(g.id)));
+  const [{data:studs},{data:atts}]=await Promise.all([
+    sb.from('profiles').select('id,full_name,grade_id,section, grades(name)').eq('role','student'),
+    sb.from('activity_attempts').select('student_id,activity,duration_sec,submitted_at').or(_rdrOr()).limit(5000)
+  ]);
+  const years=[...new Set([...(atts||[]).map(_attYear).filter(Boolean), SCHOOL_YEAR_NOW])].sort((a,b)=>b-a);
+
+  /* intentos de lectura del año elegido, por alumno */
+  const porAlumno={};
+  (atts||[]).forEach(a=>{
+    if(_attYear(a)!==+readerFilter.year) return;
+    const m=_RDR_ACT_RX.exec(String(a.activity||''));
+    if(!m || m[4]!=='read') return;                     // solo "Read along"
+    const obra=m[1]; if(!READER_META[obra]) return;
+    if(readerFilter.book!=='all' && obra!==readerFilter.book) return;
+    const r=porAlumno[a.student_id]||(porAlumno[a.student_id]={secs:0,sem:{},caps:new Set(),obras:new Set(),ult:null,sesiones:0});
+    const secs=a.duration_sec||0;
+    r.secs+=secs; r.sesiones++;
+    r.sem[_rdrLunes(a.submitted_at)]=(r.sem[_rdrLunes(a.submitted_at)]||0)+secs;
+    r.caps.add(obra+'-'+m[3]); r.obras.add(obra);
+    if(!r.ult || a.submitted_at>r.ult) r.ult=a.submitted_at;
+  });
+
+  let list=(studs||[]).filter(p=>gradeIds.has(String(p.grade_id)));
+  if(readerFilter.grade)   list=list.filter(p=>String(p.grade_id)===String(readerFilter.grade));
+  if(readerFilter.section) list=list.filter(p=>p.section===readerFilter.section);
+  const data=list.map(p=>({p, r:porAlumno[p.id]||{secs:0,sem:{},caps:new Set(),obras:new Set(),ult:null,sesiones:0}}))
+                 .sort((a,b)=> b.r.secs-a.r.secs || (a.p.full_name||'').localeCompare(b.p.full_name||''));
+
+  /* las 6 ultimas semanas con actividad, o las 6 ultimas del calendario */
+  let semanas=[...new Set(Object.values(porAlumno).flatMap(r=>Object.keys(r.sem)))].sort().slice(-6);
+  if(!semanas.length){ const h=new Date(); semanas=[_rdrLunes(h.toISOString())]; }
+
+  const leen=data.filter(d=>d.r.secs>0);
+  const cero=data.length-leen.length;
+  const totalSec=data.reduce((s,d)=>s+d.r.secs,0);
+  const mediaSec=leen.length?Math.round(totalSec/leen.length):0;
+  const capsTotal=new Set(data.flatMap(d=>[...d.r.caps])).size;
+  const tope=Math.max(1,...data.map(d=>d.r.secs));
+
+  const stats=`<div class="grid cols-3" style="margin-bottom:12px">
+    <div class="stat"><div class="l">⏱ Total leído</div><div class="n" style="font-size:1.5rem">${_rdrTime(totalSec)}</div>
+      <div class="muted" style="font-size:.8rem">${leen.length} de ${data.length} alumnos han leído</div></div>
+    <div class="stat"><div class="l">Media por alumno que lee</div><div class="n" style="font-size:1.5rem">${_rdrTime(mediaSec)}</div>
+      <div class="muted" style="font-size:.8rem">no cuenta a los que están a cero</div></div>
+    <div class="stat"><div class="l">Sin leer nada</div><div class="n">${cero}</div>
+      <div class="muted" style="font-size:.8rem">${capsTotal} capítulo(s) abiertos en total</div></div>
+  </div>`;
+
+  const cab=semanas.map(s=>`<th style="text-align:center" title="Semana del ${s}">${s.slice(5).replace('-','/')}</th>`).join('');
+  const filas=data.map(d=>{
+    const pct=Math.round(d.r.secs/tope*100);
+    const barra=d.r.secs
+      ? `<div style="display:flex;align-items:center;gap:8px">
+           <div style="flex:1;min-width:60px;height:8px;background:var(--bg);border-radius:6px;overflow:hidden">
+             <div style="width:${pct}%;height:100%;background:var(--blue)"></div></div>
+           <b style="white-space:nowrap">${_rdrTime(d.r.secs)}</b></div>`
+      : '<span class="muted">— sin leer</span>';
+    return `<tr${d.r.secs?'':' style="opacity:.6"'}>
+      <td><b>${esc(d.p.full_name||'')}</b></td>
+      <td><span class="badge grade">${esc(d.p.grades?.name||'—')}</span>${d.p.section?' <span class="badge">'+esc(d.p.section)+'</span>':''}</td>
+      ${semanas.map(s=>{ const sec=d.r.sem[s]||0, m=Math.round(sec/60);
+        // menos de un minuto no es cero: se ve '<1' para no confundirlo con no leer
+        const txt = m ? m : (sec ? '&lt;1' : '·');
+        return `<td style="text-align:center${m?'':';color:var(--muted)'}">${txt}</td>`; }).join('')}
+      <td style="min-width:150px">${barra}</td>
+      <td style="text-align:center">${d.r.caps.size||'<span class="muted">·</span>'}</td>
+      <td class="muted" style="font-size:.82rem;white-space:nowrap">${d.r.ult?new Date(d.r.ult).toLocaleDateString():'—'}</td>
+    </tr>`;
+  }).join('');
+
+  const aviso = totalSec ? '' : `<div class="note warn" style="margin-top:12px">Nadie del filtro ha usado
+    todavía <b>📖 Read along</b>, que es la única pantalla que mide lectura. Si los alumnos entran directo
+    a las actividades o al control, leen en papel o en otra pestaña, aquí saldrá cero aunque estén
+    trabajando la obra: míralo junto a <b>📊 Notas y tiempos</b>.</div>`;
+
+  $('#main').innerHTML=`<h1>📖 Controles de lectura</h1>${_readerTabs()}
+    ${_readerFilterBar(grades,years)}
+    ${stats}
+    <div class="note">Minutos en <b>Read along</b>, la lectura con audio. No se cuentan los ejercicios ni
+      el control (eso es resolver, no leer) ni las visitas de menos de 20 segundos, y una pestaña olvidada
+      corta a los 45 minutos. El registro empezó el <b>25 de agosto de 2026</b>: antes de esa fecha no hay
+      datos de nadie.</div>
+    ${aviso}
+    <div class="card" style="padding:0;overflow-x:auto;margin-top:12px"><table>
+      <thead><tr><th>Alumno</th><th>Grado</th>${cab}<th>Total leído</th><th title="Capítulos distintos abiertos">Caps.</th><th>Última vez</th></tr></thead>
+      <tbody>${filas||'<tr><td colspan="9" class="muted">Sin alumnos en el filtro.</td></tr>'}</tbody></table></div>`;
+}
 async function readerStatsPanel(detailId){
   state._tab='readers';
   if(readerTab==='control') return readerControlPanel();
+  if(readerTab==='tiempo') return readerTimePanel();
   $('#main').innerHTML=`<h1>📖 Controles de lectura</h1><p class="muted">Cargando…</p>`;
   const grades=(state.profile&&state.profile.role==='admin')?GRADES:teacherAllowedGrades();
   const gradeIds=new Set(grades.map(g=>String(g.id)));
