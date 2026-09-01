@@ -62,7 +62,98 @@ window.UNIT_PLANS = {
      desc:'Record yourself reading your recipe out loud, or take a photo of the dish you made.',
      spec:'Speak or show'}
   ]
-}
+},
+
+/* ------------------------------------------------- 2.o U5 (piloto 2026) */
+{
+  cover:{icon:'🔦', from:'#7a4a10', to:'#e0a83a'},
+  n:5,
+  title:'Light, Shadows and Energy',
+  weeks:5,
+  bigq:'Where does light come from, and what happens when something gets in its way?',
+  situation:'Every day you turn on a lamp, you stand in the sun, you see your shadow get long in the afternoon. In this unit you find out where energy comes from — the sun, heat, the wind — and what light does when it meets an object. You ask a question, you guess the answer, you test it, and you show what you found out.',
+  audience:'The other Grade 2 class. They have to be able to repeat your experiment just by looking at your poster.',
+  reader:{title:'The Thought Task', series:'Oxford Dolphin Readers', term:3, inPortal:false},
+  exam:{target:'starters', themes:['Colours','The home','Weather','The world around us'],
+        grammar:['present continuous','can / can\'t','adjectives','prepositions of place'],
+        extra:['light','shadow','energy','sun','heat','wind','torch','bright','dark']},
+  areas:[{area:'science', level:2},{area:'math', level:2},{area:'social', level:1}],
+  criteria:[
+    {n:1, text:'I listen to short instructions and stories and I understand what to do.'},
+    {n:2, text:'I say what is happening right now using the present continuous.'},
+    {n:3, text:'I read a short text and find the answer to a question about it.'},
+    {n:4, text:'I write short sentences describing what I saw in my experiment.'},
+    {n:5, text:'I ask a question, say what I think will happen, and then say what really happened.'}
+  ],
+  sequence:[
+    {n:1,title:'Where does energy come from?',desc:'The sun, heat and the wind. New words for things that give us light and energy.',give:'Your question for the experiment, and your guess.'},
+    {n:2,title:'Talking about light',desc:'Saying what is happening right now: the lamp is shining, the shadow is moving.',give:'Five sentences in the present continuous.'},
+    {n:3,title:'Testing it',desc:'The experiment with the torch and the objects. Lab rules: we look, we do not touch the bulb.',give:'What you saw, written down.'},
+    {n:4,title:'Reading about light',desc:'A short text about colours, shadows and light. Finding the answers inside it.',give:'Your answers, and three new words.'},
+    {n:5,title:'Showing what you found',desc:'Counting the results and drawing the bar chart. Writing the poster.',give:'The finished poster with its chart.'}
+  ],
+  words:['sun','heat','wind','light','energy','shadow','bright','dark','torch','colour','long','short','is shining','is moving','I think','it will'],
+  deliverables:[
+    {kind:'report', type:'text', icon:'&#9728;', title:'My light experiment',
+     desc:'What you wanted to find out, what you thought would happen, what you did and what really happened.',
+     spec:'40–60 words', range:[40,60],
+     checklist:[
+       {k:'question', t:'I write my question', re:'\\?'},
+       {k:'guess', t:'I say what I thought would happen', re:'(i think|i thought|will|going to)'},
+       {k:'now', t:'I use the present continuous', re:'(is|are) [a-z]+ing'},
+       {k:'words', t:'I use the words of the unit', re:'(light|shadow|sun|energy|bright|dark)'}
+     ]},
+    {kind:'presentation', type:'file', icon:'&#128202;', title:'The poster with your bar chart',
+     desc:'Your drawing of the experiment and the bar chart with the results. Photograph it and upload it.',
+     spec:'A photo of the poster you made by hand'}
+  ]
+},
+
+/* ------------------------------------------------- 2.o U6 (piloto 2026) */
+{
+  cover:{icon:'🚗', from:'#12496b', to:'#4aa3c9'},
+  n:6,
+  title:'Push, Pull and Go',
+  weeks:6,
+  bigq:'What makes things move, and what makes them stop?',
+  situation:'You push a door, you pull a drawer, you drop a pencil and it falls. Nothing moves on its own. In this unit you build something that moves, you test it on different surfaces, and then you tell the story of what happened — in the past, because it already happened.',
+  audience:'Your families, at the end-of-year showing. You explain your toy and you tell them what you found out.',
+  reader:{title:null, term:3, inPortal:false, note:'Grade 2 has two English books for three terms. This unit has no set book — see the plan lector gap.'},
+  exam:{target:'starters', themes:['Toys','Transport','The world around us','School'],
+        grammar:['past simple','prepositions of place','there is / there are','and, but, because'],
+        extra:['push','pull','fall','fast','slow','smooth','rough','wheel','ramp','gravity']},
+  areas:[{area:'science', level:2},{area:'math', level:1},{area:'comunicacion', level:1}],
+  criteria:[
+    {n:1, text:'I listen to a short story and I say what happened in it.'},
+    {n:2, text:'I talk about what I did, using the past simple.'},
+    {n:3, text:'I read a short story and describe the characters and where it happens.'},
+    {n:4, text:'I write a short story or a letter about what happened, in order.'},
+    {n:5, text:'I explain what made my toy move faster or slower.'}
+  ],
+  sequence:[
+    {n:1,title:'Push or pull?',desc:'Sorting movements: what we push, what we pull, what falls on its own.',give:'Your sorting chart.'},
+    {n:2,title:'It happened yesterday',desc:'The past simple: I pushed, it moved, it stopped. Telling what we did.',give:'Five sentences about your test.'},
+    {n:3,title:'Building the toy',desc:'Making something that moves, and testing it on a smooth and a rough surface.',give:'Your toy and your results.'},
+    {n:4,title:'Reading a story of movement',desc:'A short story: who is in it, where it happens, what happened first and next.',give:'Your answers about the story.'},
+    {n:5,title:'Writing what happened',desc:'Your own short story or letter about your toy, in order, with connectors.',give:'The draft in your notebook.'},
+    {n:6,title:'Showing it',desc:'The final version and the demonstration to your families.',give:'The finished text and the demonstration.'}
+  ],
+  words:['push','pull','move','stop','fall','fast','slow','smooth','rough','wheel','ramp','pushed','pulled','moved','stopped','first','then','after that'],
+  deliverables:[
+    {kind:'story', type:'text', icon:'&#128666;', title:'The story of my toy',
+     desc:'What you built, what you did to it, what happened on each surface and why you think that happened.',
+     spec:'50–80 words', range:[50,80],
+     checklist:[
+       {k:'past', t:'I write in the past simple', re:'\\b(pushed|pulled|moved|stopped|was|were|fell|went)\\b'},
+       {k:'order', t:'I put things in order', re:'(first|then|after that|finally|next)'},
+       {k:'why', t:'I explain why', re:'because'},
+       {k:'words', t:'I use the words of the unit', re:'(push|pull|fast|slow|smooth|rough|wheel|ramp)'}
+     ]},
+    {kind:'presentation', type:'file', icon:'&#128247;', title:'Your toy and your notebook',
+     desc:'A photo of the toy you built and of the notebook page where you wrote your results.',
+     spec:'Photos of the real thing'}
+  ]
+},
     ]
   },
 
@@ -106,7 +197,100 @@ window.UNIT_PLANS = {
      desc:'Photograph or film the diorama your group built — the habitat, the food, the predators, the prey — and present it in English.',
      spec:'Diorama + spoken presentation'}
   ]
-}
+},
+
+/* ------------------------------------------------- 3.o U5 (piloto 2026) */
+{
+  cover:{icon:'🪐', from:'#1b2a63', to:'#5566c4'},
+  n:5,
+  title:'Our Place in Space',
+  weeks:5,
+  bigq:'How does the Earth move, and how do we explain it to somebody who has never thought about it?',
+  situation:'The Sun rises, the Moon changes shape, the seasons come round again. All of it happens because things are moving — and nobody can see it from here. Ancient cultures watched the sky and worked a lot of it out. In this unit you do the same: you observe, you build a model, and you explain it to visitors at an exhibition.',
+  audience:'The visitors at the Grade 3 exhibition. They will not read a report — they will stand in front of your model and listen to you.',
+  reader:{title:'A Shadow on the Park', series:'Oxford Dolphin Readers', term:3, inPortal:false},
+  exam:{target:'movers', themes:['The world around us','Time','Work','School'],
+        grammar:['present simple vs present continuous','future: will','future: going to','linking words: and, but, because, so'],
+        extra:['orbit','rotate','revolve','gravity','solar system','planet','moon phase','tide','mission','telescope']},
+  areas:[{area:'science', level:3},{area:'social', level:2},{area:'math', level:1}],
+  criteria:[
+    {n:1, text:'I understand an informative text about the solar system and I find the main idea and the details.'},
+    {n:2, text:'I tell the difference between what always happens and what is happening now.'},
+    {n:3, text:'I make predictions using will and going to.'},
+    {n:4, text:'I write a short informative text that explains how something works, using linking words.'},
+    {n:5, text:'I explain my model out loud to a visitor, clearly and politely.'}
+  ],
+  sequence:[
+    {n:1,title:'What is out there',desc:'The Sun at the centre, the planets, the dwarf planets. Reading an informative text and pulling out the key words.',give:'Your fact file on one planet.'},
+    {n:2,title:'Day, night and the seasons',desc:'Rotation and revolution. What always happens, and what is happening right now.',give:'Six sentences: three present simple, three present continuous.'},
+    {n:3,title:'The Moon and the tides',desc:'Moon phases and tides. Predicting what will happen next.',give:'Your predictions, written with will.'},
+    {n:4,title:'Going to space',desc:'Space missions, the jobs involved, and what a mission costs. Planning yours.',give:'Your mission plan with its budget.'},
+    {n:5,title:'The exhibition',desc:'Building the model, writing the explanation and rehearsing out loud.',give:'The model, the explanation and your talk.'}
+  ],
+  words:['orbit','rotate','revolve','gravity','solar system','planet','moon','phase','tide','season','day','night','mission','will','going to','because','so','first','next'],
+  deliverables:[
+    {kind:'report', type:'text', icon:'&#127756;', title:'How it works',
+     desc:'A short informative text explaining what your model shows: what moves, how it moves and why that produces what we see from Earth.',
+     spec:'80–120 words', range:[80,120],
+     checklist:[
+       {k:'main', t:'I say clearly what my model explains', re:'(model|shows|explains)'},
+       {k:'present', t:'I use the present simple for things that always happen', re:'\\b(rotates|revolves|orbits|takes|happens|moves)\\b'},
+       {k:'future', t:'I make a prediction with will or going to', re:'(will|going to)'},
+       {k:'link', t:'I link my ideas', re:'(because|so|and|but|then|that is why)'},
+       {k:'vocab', t:'I use the words of the unit', re:'(orbit|rotat|revolv|gravity|phase|tide|solar system)'}
+     ]},
+    {kind:'presentation', type:'file', icon:'&#128301;', title:'Your model and your talk',
+     desc:'A photo of the model you built and, if you can, a recording of you explaining it to a visitor.',
+     spec:'Photo, and audio if possible'}
+  ]
+},
+
+/* ------------------------------------------------- 3.o U6 (piloto 2026) */
+{
+  cover:{icon:'🎯', from:'#14563e', to:'#4fae7c'},
+  n:6,
+  title:'This Year I Learned, Next Year I Will',
+  weeks:6,
+  bigq:'What did I actually get better at this year, and what am I going to do about next year?',
+  situation:'A year is long and it is easy to forget how much has changed. In this unit you look back with evidence, not just memory: you read about somebody who reached a goal, you track one of your own habits for a week, and you use what the data tells you to set a goal you can actually keep.',
+  audience:'Yourself, next year — and your family, who hear you present it.',
+  reader:{title:'Camouflage', series:'Oxford Dolphin Readers', term:3, inPortal:false},
+  exam:{target:'movers', themes:['School','Health','Time','Sports and leisure'],
+        grammar:['past simple','future: will','future: going to','conjunctions: but, so, because'],
+        extra:['goal','effort','challenge','habit','routine','progress','improve','plan','budget']},
+  areas:[{area:'social', level:2},{area:'science', level:2},{area:'math', level:1}],
+  criteria:[
+    {n:1, text:'I read a true story about somebody reaching a goal and I find the main idea and the details.'},
+    {n:2, text:'I write about what I did this year, using the past tense correctly.'},
+    {n:3, text:'I write about what I am going to do, using will and going to.'},
+    {n:4, text:'I give an opinion and say why, using but, so and because.'},
+    {n:5, text:'I present my goal out loud for two or three minutes.'}
+  ],
+  sequence:[
+    {n:1,title:'Somebody who did it',desc:'Reading about a child who reached a goal. What helped them, what got in the way.',give:'Main idea and three supporting details.'},
+    {n:2,title:'This year I learned',desc:'Looking back and writing it down in the past tense.',give:'A 100-word reflection paragraph.'},
+    {n:3,title:'Next year I will',desc:'Setting a goal. Will and going to. Saying no to what gets in the way.',give:'Your goal, written twice: with will and with going to.'},
+    {n:4,title:'Why it matters',desc:'Opinion writing: why your goal is important. What it will cost and what you need.',give:'Your opinion paragraph and your resource list.'},
+    {n:5,title:'The plan',desc:'Turning the goal into a weekly routine, using the habit you tracked.',give:'Your healthy routine plan.'},
+    {n:6,title:'Saying it out loud',desc:'The final text and a two-to-three-minute presentation.',give:'The presentation and the finished plan.'}
+  ],
+  words:['goal','effort','challenge','habit','routine','progress','improve','plan','learned','practised','will','going to','but','so','because','I think'],
+  deliverables:[
+    {kind:'report', type:'text', icon:'&#128221;', title:'This year I learned, next year I will',
+     desc:'Two paragraphs: what you learned this year with an example, and what you are going to do next year and why it matters.',
+     spec:'about 100 words each', range:[150,260],
+     checklist:[
+       {k:'past', t:'I write about this year in the past', re:'\\b(learned|learnt|practised|practiced|was|were|got|started|finished)\\b'},
+       {k:'future', t:'I write about next year with will or going to', re:'(will|going to)'},
+       {k:'conj', t:'I use but, so and because', re:'(but|so|because)'},
+       {k:'why', t:'I explain why my goal matters to me', re:'(important|matters|help|better|improve)'},
+       {k:'data', t:'I mention what my habit tracking showed', re:'(week|days|hours|minutes|tracked|every day)'}
+     ]},
+    {kind:'presentation', type:'file', icon:'&#127908;', title:'Your goal presentation',
+     desc:'Two or three minutes explaining your goal and your plan. Record it or upload your mini poster.',
+     spec:'2–3 minutes'}
+  ]
+},
     ]
   },
 
@@ -140,7 +324,100 @@ window.UNIT_PLANS = {
      desc:'Add the photos or drawings of the places, and record yourself telling them what they cannot miss.',
      spec:'Photos + spoken recommendation'}
   ]
-}
+},
+
+/* ------------------------------------------------- 4.o U5 (piloto 2026) */
+{
+  cover:{icon:'⚙️', from:'#5a2f6b', to:'#a473c4'},
+  n:5,
+  title:'May the Force Move You',
+  weeks:5,
+  bigq:'What makes an object move the way it does, and how do we measure it accurately enough to prove it?',
+  situation:'A ball rolls further on the corridor than on the grass. Everybody knows that. Proving it is another matter: you need a fair test, a ruler and numbers with decimals. In this unit you investigate one type of force, you measure carefully, and you write up what you found so that somebody else could check it.',
+  audience:'Grade 5, who will repeat your test. If your measurements are not precise, their results will not match yours — and that is the test of your report.',
+  reader:{title:'Nasreddin Ten Stories', series:'Vicens Vives', term:3, inPortal:false},
+  exam:{target:'movers', themes:['The world around us','Transport','Sports and leisure','Materials'],
+        grammar:['comparatives and superlatives','past simple','adverbs of manner','because / so'],
+        extra:['force','friction','gravity','push','pull','distance','measure','decimal','average','fair test']},
+  areas:[{area:'science', level:2},{area:'math', level:2}],
+  criteria:[
+    {n:1, text:'I listen to instructions for an investigation and carry them out correctly.'},
+    {n:2, text:'I compare results using comparatives and superlatives.'},
+    {n:3, text:'I read an informative text about forces and pull out the information I need.'},
+    {n:4, text:'I write up an investigation: what I did, what I measured and what I found.'},
+    {n:5, text:'I record and compare measurements with decimals accurately.'}
+  ],
+  sequence:[
+    {n:1,title:'What is a force?',desc:'Pushes, pulls and the forces we cannot see. Choosing what you will investigate.',give:'Your research question and your prediction.'},
+    {n:2,title:'Types of forces',desc:'Friction and gravity. Designing a fair test — one thing changes, everything else stays the same.',give:'Your test design.'},
+    {n:3,title:'Measuring properly',desc:'Running the test and recording distances with decimals. Comparing and ordering the results.',give:'Your table of measurements.'},
+    {n:4,title:'What the numbers say',desc:'Adding and subtracting your decimals, finding the difference, saying which was furthest.',give:'Your comparison, written in sentences.'},
+    {n:5,title:'The write-up',desc:'The full report: question, method, results, conclusion.',give:'The finished investigation report.'}
+  ],
+  words:['force','friction','gravity','push','pull','distance','measure','decimal','average','fair test','further','furthest','faster','fastest','than','because','so'],
+  deliverables:[
+    {kind:'report', type:'text', icon:'&#128207;', title:'Investigation report',
+     desc:'Your question, your prediction, what you did, your measurements and what you concluded from them.',
+     spec:'120–160 words', range:[120,160],
+     checklist:[
+       {k:'question', t:'I state my research question', re:'\\?'},
+       {k:'method', t:'I describe what I did so somebody could repeat it', re:'(i measured|we measured|i rolled|i placed|each time|three times)'},
+       {k:'numbers', t:'I include measurements with decimals', re:'[0-9]+\\.[0-9]'},
+       {k:'compare', t:'I compare results with comparatives', re:'(further|furthest|faster|fastest|longer|longest|than|more)'},
+       {k:'because', t:'I explain the result', re:'(because|so|this shows|this means)'}
+     ]},
+    {kind:'presentation', type:'file', icon:'&#128202;', title:'Your results table',
+     desc:'A photo of the table of measurements from your notebook, with all the readings, not just the good ones.',
+     spec:'Photo of the notebook page'}
+  ]
+},
+
+/* ------------------------------------------------- 4.o U6 (piloto 2026) */
+{
+  cover:{icon:'🌍', from:'#0f5b52', to:'#4bb3a2'},
+  n:6,
+  title:'Incredible Earth: Water, Weather and What We Have',
+  weeks:6,
+  bigq:'Where does our water come from, and what would happen if we used it as though it would never run out?',
+  situation:'Water goes round: it evaporates, it forms clouds, it falls, it runs to the sea and it starts again. On the way it becomes something we use — and something that can run out. In this unit you read Incredible Earth, you measure the weather yourself for two weeks, and you build a guide that tells people where our water comes from and what it costs.',
+  audience:'The school. Your guide goes on the wall where everybody passes, so it has to be readable in thirty seconds.',
+  reader:{title:'Incredible Earth', series:'Oxford Dolphin Readers', term:3, inPortal:false},
+  exam:{target:'movers', themes:['The world around us','Weather','Materials','The home'],
+        grammar:['present simple for processes','sequencers: first, then, next, finally','quantifiers: some, many, a lot of','comparatives'],
+        extra:['water cycle','evaporation','condensation','precipitation','natural resource','renewable','climate','weather','rainfall','thermometer']},
+  areas:[{area:'science', level:2},{area:'math', level:2},{area:'social', level:1}],
+  criteria:[
+    {n:1, text:'I understand a documentary text about the Earth and I identify its main ideas.'},
+    {n:2, text:'I explain a process in order, using sequencers.'},
+    {n:3, text:'I read Incredible Earth and connect what it says to what I measured.'},
+    {n:4, text:'I write an informative guide for a reader who is not in my class.'},
+    {n:5, text:'I record weather data and express results as fractions and percentages.'}
+  ],
+  sequence:[
+    {n:1,title:'What we have',desc:'Natural resources: what runs out and what does not. Starting Incredible Earth.',give:'Your list of resources, sorted.'},
+    {n:2,title:'The water cycle',desc:'Evaporation, condensation, precipitation. Explaining the process in order.',give:'The cycle explained in your own words.'},
+    {n:3,title:'Climate and weather',desc:'The difference between the two — and why it matters. Starting the measurements.',give:'Your first week of readings.'},
+    {n:4,title:'Measuring it',desc:'Instruments and what they measure. Turning your readings into fractions and percentages.',give:'Your data, as fractions and percentages.'},
+    {n:5,title:'Writing the guide',desc:'Drafting the guide for somebody who has not read the book or seen your data.',give:'The draft in your notebook.'},
+    {n:6,title:'On the wall',desc:'The final guide, checked and put up where the school can read it.',give:'The published guide.'}
+  ],
+  words:['water cycle','evaporation','condensation','precipitation','natural resource','renewable','climate','weather','rainfall','temperature','thermometer','first','then','next','finally','some','many','a lot of'],
+  deliverables:[
+    {kind:'report', type:'text', icon:'&#127758;', title:'Our water guide',
+     desc:'Where our water comes from, how the cycle works, what your measurements showed and one thing the reader should do differently.',
+     spec:'150–200 words', range:[150,200],
+     checklist:[
+       {k:'process', t:'I explain the water cycle in order', re:'(first|then|next|finally|after that)'},
+       {k:'terms', t:'I use the words of the cycle', re:'(evaporat|condens|precipitat|cloud|vapour|vapor)'},
+       {k:'data', t:'I include my own measurements', re:'([0-9]+ ?(mm|%|degrees|ºC)|per cent|percent)'},
+       {k:'resource', t:'I say whether it is renewable and why that matters', re:'(renewable|run out|limited|save|waste)'},
+       {k:'reader', t:'I tell the reader something to do', re:'(you can|you should|do not|don’t|remember to|try to)'}
+     ]},
+    {kind:'presentation', type:'file', icon:'&#127777;', title:'Your weather log',
+     desc:'A photo of the two weeks of readings from your notebook, and of the finished guide on the wall.',
+     spec:'Photos of the log and the guide'}
+  ]
+},
     ]
   },
 
@@ -183,6 +460,100 @@ window.UNIT_PLANS = {
     {kind:'presentation', type:'file', icon:'&#128247;', title:'Your notebook pages',
      desc:'Photograph the pages of your handwritten notebook — the sketches and the crossings-out are part of the work.',
      spec:'Photos of the real notebook'}
+  ]
+},
+
+/* ------------------------------------------------- 5.o U5 (piloto 2026) */
+{
+  cover:{icon:'🗺️', from:'#0d4f6b', to:'#4aa8c9'},
+  n:5,
+  title:'The Air and the Water of Our Region',
+  weeks:5,
+  bigq:'What is the air and the water around us really like, and what should be done about it?',
+  situation:'You read Exploring Our World and you learn how the atmosphere and the hydrosphere work anywhere on the planet. Then you look out of the window. In this unit you map your own area, you find real data about its air or its water, you tell a primary source from a secondary one, and you take a position — with evidence, not with feelings.',
+  audience:'Whoever can do something about it: the school, the district, the families. A report nobody can act on is not finished.',
+  reader:{title:'Exploring Our World', series:'Oxford Dolphin Readers', term:3, inPortal:false,
+          note:'Already set for this unit in the Annual Plan (U5 W1).'},
+  exam:{target:'flyers', themes:['The world around us','Weather','Places and directions','Health'],
+        grammar:['present simple for facts','comparatives and superlatives','because / however / although','opinion phrases: I think, in my opinion'],
+        extra:['atmosphere','hydrosphere','ecosystem','map','scale','river','lake','watershed','primary source','secondary source','pollution']},
+  areas:[{area:'social', level:2},{area:'science', level:2},{area:'math', level:2}],
+  criteria:[
+    {n:1, text:'Listening — I identify the main points and the specific details of a short talk or presentation.'},
+    {n:2, text:'Reading — I analyse a detailed text for its main ideas, and I tell a primary source from a secondary one.'},
+    {n:3, text:'Speaking — I give my point of view and I recognise that other people hold different ones.'},
+    {n:4, text:'Writing — I develop a thesis statement for an opinion text and support it with evidence.'},
+    {n:5, text:'I read and build maps using the right cartographic elements, and I express data as percentages.'}
+  ],
+  sequence:[
+    {n:1,title:'Reading the world, reading the map',desc:'Starting Exploring Our World. Cartographic tools and elements: what a map has to have to be usable.',give:'Your first map of the area, with its key.'},
+    {n:2,title:'The air above us',desc:'The atmosphere: its layers and what changes it. Different viewpoints on the same problem.',give:'Two opposing viewpoints, written down.'},
+    {n:3,title:'The water around us',desc:'The hydrosphere, rivers and lakes. Types of map and what each one is good for.',give:'Your data map.'},
+    {n:4,title:'Where the evidence comes from',desc:'Primary and secondary sources. Turning what you found into percentages.',give:'Your sources, classified, and your figures.'},
+    {n:5,title:'Taking a position',desc:'The thesis statement and the report. Ecosystems and what depends on this.',give:'The finished report.'}
+  ],
+  words:['atmosphere','hydrosphere','ecosystem','map','key','scale','river','lake','watershed','primary source','secondary source','pollution','percentage','evidence','viewpoint','I think','in my opinion','because','however','although'],
+  deliverables:[
+    {kind:'report', type:'text', icon:'&#128506;', title:'Report on our air or our water',
+     desc:'Your map, your data as percentages, where the data came from, and your position on what should be done.',
+     spec:'200–250 words', range:[200,250],
+     checklist:[
+       {k:'thesis', t:'I state my position clearly in the first paragraph', re:'(i think|in my opinion|should|must|the problem is)'},
+       {k:'data', t:'I include figures, with percentages', re:'([0-9]+ ?%|per cent|percent)'},
+       {k:'source', t:'I say where my information came from', re:'(source|according to|we measured|i measured|interview|survey|website)'},
+       {k:'other', t:'I mention a different point of view', re:'(however|although|some people|others think|on the other hand)'},
+       {k:'vocab', t:'I use the words of the unit', re:'(atmosphere|hydrosphere|ecosystem|river|lake|pollution|watershed)'}
+     ]},
+    {kind:'presentation', type:'file', icon:'&#128506;', title:'Your map',
+     desc:'The map you drew by hand, with its key, its scale and the data marked on it.',
+     spec:'Photo of the hand-drawn map'}
+  ]
+},
+
+/* ------------------------------------------------- 5.o U6 (piloto 2026) */
+{
+  cover:{icon:'💰', from:'#6b4a0d', to:'#d1a13a'},
+  n:6,
+  title:'Worth Saving',
+  weeks:6,
+  bigq:'What is worth saving — and can you convince anybody else of it?',
+  situation:'Some things are free and endless, like the air; others are not, and we pay for them. This unit is about telling the two apart and doing something about it. You choose one resource, you find out what it really costs, you build a savings plan with your own data, and then you have to persuade a room full of people who did not ask to be persuaded.',
+  audience:'The whole school at the end-of-year showing. You have three minutes and they can walk away.',
+  reader:{title:null, term:3, inPortal:false, note:'Grade 5 has two English books for three terms and both are already used (U2 and U5). This is the plan lector gap to resolve for 2027.'},
+  exam:{target:'flyers', themes:['The home','The world around us','Work','School'],
+        grammar:['should / shouldn\'t','first conditional','persuasive imperatives','because / that is why'],
+        extra:['renewable','non-renewable','free goods','economic goods','saving','budget','probability','data','waste','campaign']},
+  areas:[{area:'social', level:2},{area:'math', level:2},{area:'science', level:1}],
+  criteria:[
+    {n:1, text:'Speaking — I take part in a discussion, I defend my idea and I listen to the ones I disagree with.'},
+    {n:2, text:'Reading — I analyse detailed texts for their main ideas and for the argument behind them.'},
+    {n:3, text:'Writing — I write to persuade: I give reasons, I use evidence and I tell the reader what to do.'},
+    {n:4, text:'Speaking — I deliver a persuasive speech that holds the attention of people who are not obliged to listen.'},
+    {n:5, text:'I use my own data — including probability — to support what I claim.'}
+  ],
+  sequence:[
+    {n:1,title:'Free or not free?',desc:'Renewable and non-renewable resources; free goods and economic goods. Choosing yours.',give:'Your resource, and why you chose it.'},
+    {n:2,title:'How persuasion works',desc:'Analysing persuasive texts: what makes one convincing and another one annoying.',give:'Three techniques you are going to steal.'},
+    {n:3,title:'What it really costs',desc:'Measuring the real use of your resource in school. Data analysis.',give:'Your data and what it shows.'},
+    {n:4,title:'The savings plan',desc:'Turning the data into a plan with numbers. What is likely to work and what is not.',give:'Your savings plan.'},
+    {n:5,title:'Writing the campaign',desc:'Drafting the persuasive text in your notebook. Feedback and rewriting.',give:'The final text.'},
+    {n:6,title:'Convincing them',desc:'The speech, in front of the school.',give:'The campaign and the speech.'}
+  ],
+  words:['renewable','non-renewable','free goods','economic goods','saving','budget','probability','data','waste','campaign','should','shouldn\'t','if we','we will','that is why','imagine'],
+  deliverables:[
+    {kind:'campaign', type:'text', icon:'&#128227;', title:'Your campaign',
+     desc:'What you want people to change, why it matters, what your data shows and exactly what you are asking them to do.',
+     spec:'200–250 words', range:[200,250],
+     checklist:[
+       {k:'ask', t:'I say exactly what I want people to do', re:'(should|let’s|let us|start|stop|turn off|use less|switch)'},
+       {k:'data', t:'I use my own data', re:'([0-9]+ ?(%|litres|liters|kg|hours|times)|per cent|percent|we counted|we measured)'},
+       {k:'if', t:'I say what will happen if we do it', re:'(if we|if you|we will|it will|then we)'},
+       {k:'why', t:'I give reasons', re:'(because|that is why|this means|so that)'},
+       {k:'vocab', t:'I use the words of the unit', re:'(renewable|non-renewable|resource|saving|waste|budget)'}
+     ]},
+    {kind:'presentation', type:'file', icon:'&#127908;', title:'Your speech and your plan',
+     desc:'A recording of your three-minute speech, and a photo of the savings plan with your data.',
+     spec:'3 minutes, plus the plan'}
   ]
 },
     ]
@@ -629,6 +1000,13 @@ window.UNIT_PLANS = {
   bigq:'What are the pros and cons of technology at both personal and social levels, and what environmental damage is caused by AI?',
   situation:'Technology sits at the centre of today’s biggest opportunities and problems — from misinformation to the environmental cost of artificial intelligence. You act as a critical researcher and advocate: you analyse articles, debates and reports, compare arguments, and produce your own written and spoken contribution.',
   audience:'Not only your teacher. You are writing and speaking as an informed citizen taking a position in a real debate — the same one governments, companies and scientists are having about AI, energy and e-waste.',
+  reader:{title:'The Time Machine', series:'Vicens Vives, Reading & Training Step Three B1.2', term:3, inPortal:false,
+          note:'Set for Grade 9 in the Plan Lector. No reader built for it yet in the portal — the natural sixth one, and it fits Unit 6 exactly.'},
+  exam:{target:'b2first', themes:['technology','environment','society','ethics'],
+        grammar:['advanced connectors: nevertheless, moreover, in contrast','passive voice for processes','concession: although, despite','hedging: may, might, tends to'],
+        extra:['artificial intelligence','algorithm','carbon footprint','e-waste','energy consumption','sustainability','inequality']},
+  areas:[{area:'science', level:1},{area:'ict', level:1}],
+  toddle:{unitId:'348012545363172489', subject:'English', grade:9},
   criteria:[
     {n:1, text:'Speaking & listening — present and defend a viewpoint.',
      levels:{
@@ -683,6 +1061,12 @@ window.UNIT_PLANS = {
   bigq:'What kind of future do we want to create, and what can we learn from the present to build it?',
   situation:'You hear warnings about the future all the time — pollution, artificial intelligence, overpopulation — but you rarely get to imagine your own vision of what the future could look like. In this final unit you analyse different ideas about the future, evaluate arguments, and present your own report on possible futures for humanity, society or the planet.',
   audience:'The Future Forum: the class exchanges visions and reflections, and you have to make yours stand up to the others.',
+  reader:{title:'The Time Machine', series:'Vicens Vives, Reading & Training Step Three B1.2', term:3, inPortal:false,
+          note:'The book of the term. Unit 6 is Future Visions — it is the same subject.'},
+  exam:{target:'b2first', themes:['future','innovation','society','environment'],
+        grammar:['future forms: will, going to, future perfect','second conditional','speculation: could, might, is likely to','discourse markers for essays']},
+  areas:[{area:'globalperspectives', level:1}],
+  toddle:{subject:'English', grade:9},
   criteria:[
     {n:1, text:'Expresses clear ideas with logical organisation, in persuasive and formal language.'},
     {n:2, text:'Identifies central themes and arguments, notes key evidence and the author’s purpose, and compares viewpoints accurately.'},

@@ -74,7 +74,9 @@ header a:hover,header button:hover{background:rgba(255,255,255,.3)}
 
 <div class="wrap" id="app"><p>Loading…</p></div>
 
-<script src="unit-plans.js?v=6"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+<script src="config.js"></script>
+<script src="unit-plans.js?v=9"></script>
 <script src="nis-nav.js?v=2"></script>
 <script>
 /* Cuaderno de trabajo de la unidad, para imprimir.
@@ -124,9 +126,48 @@ function exitoDe(i){
     }).join('')}</ul></div>`;
 }
 
+/* Mismo candado que unit.html: si la unidad del piloto no esta abierta para
+   este alumno, tampoco se le entrega su cuaderno. Profesores y admin pasan.
+   Fail-closed: sin sesion o con la consulta caida, no se pinta. */
+const UNIT_PILOT = new Set([
+  'g2.u5','g2.u6','g3.u5','g3.u6','g4.u5','g4.u6','g5.u5','g5.u6','g9.u5','g9.u6'
+]);
+async function puedeVerlo(){
+  if(!UNIT_PILOT.has(GRADE+'.u'+UNIT)) return true;
+  try{
+    const cfg = window.NIS_CONFIG;
+    if(!(cfg && window.supabase && window.supabase.createClient)) return false;
+    const sb = window.supabase.createClient(cfg.SUPABASE_URL, cfg.SUPABASE_KEY);
+    const {data} = await sb.auth.getSession();
+    const me = data && data.session ? data.session.user : null;
+    if(!me) return false;
+    const t = await sb.from('teacher_access').select('can_results').eq('profile_id',me.id).maybeSingle();
+    if(t && t.data && t.data.can_results) return true;
+    const pr = await sb.from('profiles').select('role,grade_id').eq('id',me.id).maybeSingle();
+    const rol = pr && pr.data ? pr.data.role : null;
+    if(rol==='admin' || rol==='teacher') return true;
+    const key = 'english.classes.'+GRADE+'.units.u'+UNIT;
+    const al = await sb.from('student_access').select('unlocked')
+      .eq('student_id',me.id).eq('node_key',key).maybeSingle();
+    if(al && al.data) return !!al.data.unlocked;
+    const gid = pr && pr.data ? pr.data.grade_id : null;
+    if(gid==null) return false;
+    const gr = await sb.from('node_access').select('unlocked')
+      .eq('grade_id',gid).eq('node_key',key).maybeSingle();
+    return !!(gr && gr.data && gr.data.unlocked);
+  }catch(_){ return false; }
+}
+
+/* El render espera al candado: nada se pinta antes de saber si puede verse. */
+(async function(){
 if(!U){
   document.getElementById('app').innerHTML =
     '<div class="hoja"><h2>That unit is not here yet</h2><p class="foco">Go back to the portal and pick a unit.</p></div>';
+} else if(!(await puedeVerlo())){
+  document.getElementById('app').innerHTML =
+    '<div class="hoja" style="text-align:center;padding:52px 38px"><div style="font-size:3.2rem;line-height:1">&#128274;</div>'
+    + '<h2 style="margin:14px 0 6px">This unit is not open yet</h2>'
+    + '<p class="foco">Your teacher will unlock it when the unit starts.</p></div>';
 } else {
   document.title = 'Workbook · Unit ' + U.n + ' · ' + U.title;
   const pasos = U.sequence || [];
@@ -172,6 +213,7 @@ if(!U){
 
   document.getElementById('app').innerHTML = portada + hojas + cierre;
 }
+})();
 </script>
 </body>
 </html>

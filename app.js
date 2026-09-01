@@ -2874,6 +2874,21 @@ function _isStudent(){ return !!(state.profile && state.profile.role==='student'
    porque la Unit 4 "In the Kitchen" ya está publicada. */
 const NODE_DEFAULT_LOCKED = new Set(['french','english.classes.g9.grammar',
   'english.classes.g3','english.classes.g4','english.classes.g5']);
+/* Unidades del PILOTO 2027 — el modelo nuevo: un producto por unidad con una
+   sola nota, la cobertura Cambridge repartida dentro del proyecto y la obra
+   del trimestre. Nacen CERRADAS para el alumno: el piloto lo conducen el
+   profesor y el admin, que las ven siempre. Se abren desde 🔐 Accesos una a
+   una cuando el colegio lo decida.
+   La clave ya existía en node_access (english.classes.g9.units.u5, en false)
+   pero NADIE la miraba: el listado pintaba todas las unidades del grado, así
+   que el candado estaba puesto y la puerta abierta. */
+const UNIT_PILOT = new Set([
+  'english.classes.g2.units.u5','english.classes.g2.units.u6',
+  'english.classes.g3.units.u5','english.classes.g3.units.u6',
+  'english.classes.g4.units.u5','english.classes.g4.units.u6',
+  'english.classes.g5.units.u5','english.classes.g5.units.u6',
+  'english.classes.g9.units.u5','english.classes.g9.units.u6',
+]);
 function _nodeDefaultOpen(key){
   // Unidades y semanas: cada una decide su default con `locked` en
   // activities-data.js (así una semana futura puede nacer cerrada).
@@ -3031,7 +3046,12 @@ const _FR_GRADE_NODES = ['g5','g6','g7','g8','g9','g10'].flatMap(g=>{
 function _unitNode(grade,unitId,subject){ return (subject||'english')+'.classes.'+grade+'.activities.'+unitId; }
 function _weekNode(grade,unitId,weekId,subject){ return _unitNode(grade,unitId,subject)+'.'+weekId; }
 function _academicUnitNode(grade,n){ return 'english.classes.'+grade+'.units.u'+n; }
-function _academicUnitDefault(grade,n){ return !(grade==='g9' && Number(n)>4); }
+/* Las unidades del PILOTO 2027 nacen cerradas para el alumno; las conducen
+   profesor y admin, que las ven siempre. Se abren desde el panel de Accesos
+   cuando el colegio lo decida. Antes esto era `grade==='g9' && n>4`, que solo
+   contemplaba 9.o; el piloto llego tambien a primaria, asi que la lista es
+   ahora explicita (UNIT_PILOT). */
+function _academicUnitDefault(grade,n){ return !UNIT_PILOT.has(_academicUnitNode(grade,n)); }
 /* La materia de una unidad: 'english' salvo que activities-fr-data.js la
    haya marcado como 'french'. Todo lo que ya existía cae en el default. */
 function _subjOf(u){ return (u && u.subject) || 'english'; }
@@ -4711,7 +4731,17 @@ function studentGradeUnits(key){
   const base  = 'english.classes.'+key;
   if(!nodeVisible(base) || !nodeVisible(unitsNode(key))){ _lockedView(back,'🎯 Units'); return; }
   const plan  = (window.UNIT_PLANS||{})[key];
-  const units = unitPlansFor(key);
+  /* Candado fino por unidad: el alumno solo ve las que su grado tiene
+     abiertas. Las del piloto 2027 nacen cerradas, así que profesor y admin
+     las conducen sin que aparezcan en el portal del alumno. */
+  /* Las unidades del piloto no se le enseñan al alumno ni con candado: si no
+     están abiertas para él, no existen en su portal. Las demás unidades
+     cerradas sí se pintan bloqueadas, que es lo normal para una unidad del
+     año que el profesor todavía no ha abierto. */
+  const units = unitPlansFor(key).filter(u=>{
+    const k=_academicUnitNode(key,u.n);
+    return !UNIT_PILOT.has(k) || nodeVisible(k);
+  });
   if(!units.length){ _lockedView(back,'🎯 Units'); return; }
   $('#main').innerHTML = `${back}<h1>🎯 Units</h1>
     <p class="muted" style="margin-top:-6px">${esc(plan.label)}${plan.cefr?' · '+esc(plan.cefr):''} — each unit ends in something you make, not in a test.</p>
