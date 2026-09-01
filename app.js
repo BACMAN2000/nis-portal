@@ -701,7 +701,7 @@ async function unitAccessPanel(grades){
         return `<label class="card" style="margin:0;padding:16px;cursor:pointer;border-color:${on?'#86c59a':'var(--line)'}">
           <div style="display:flex;align-items:center;gap:11px">
             <input type="checkbox" ${on?'checked':''} onchange="window._toggleAcademicUnit(${g.id},'${key}',this.checked,this)">
-            <span><b>Unidad ${u.n} · ${esc(u.title)}</b><small class="muted" style="display:block;margin-top:3px">${on?'Activa para alumnos':'Bloqueada para alumnos'}</small></span>
+            <span><b>Unidad ${esc(String(u.label||u.n))} · ${esc(u.title)}</b><small class="muted" style="display:block;margin-top:3px">${on?'Activa para alumnos':'Bloqueada para alumnos'}</small></span>
           </div></label>`;
       }).join('')}</div></div>`;
   }).join('');
@@ -2887,7 +2887,7 @@ const UNIT_PILOT = new Set([
   'english.classes.g3.units.u5','english.classes.g3.units.u6',
   'english.classes.g4.units.u5','english.classes.g4.units.u6',
   'english.classes.g5.units.u5','english.classes.g5.units.u6',
-  'english.classes.g9.units.u5','english.classes.g9.units.u6',
+  'english.classes.g9.units.u105','english.classes.g9.units.u106',
 ]);
 function _nodeDefaultOpen(key){
   // Unidades y semanas: cada una decide su default con `locked` en
@@ -3051,7 +3051,10 @@ function _academicUnitNode(grade,n){ return 'english.classes.'+grade+'.units.u'+
    cuando el colegio lo decida. Antes esto era `grade==='g9' && n>4`, que solo
    contemplaba 9.o; el piloto llego tambien a primaria, asi que la lista es
    ahora explicita (UNIT_PILOT). */
-function _academicUnitDefault(grade,n){ return !UNIT_PILOT.has(_academicUnitNode(grade,n)); }
+function _academicUnitDefault(grade,n){
+  if(UNIT_PILOT.has(_academicUnitNode(grade,n))) return false;   // piloto 2027
+  return !(grade==='g9' && Number(n)>4);                          // regla previa de 9.o
+}
 /* La materia de una unidad: 'english' salvo que activities-fr-data.js la
    haya marcado como 'french'. Todo lo que ya existía cae en el default. */
 function _subjOf(u){ return (u && u.subject) || 'english'; }
@@ -3097,7 +3100,7 @@ const _WEEK_NODES = (function(){
 const _PLAN_UNIT_NODES=(function(){
   const out=[];
   Object.keys(window.UNIT_PLANS||{}).forEach(g=>unitPlansFor(g).forEach(u=>out.push({
-    key:_academicUnitNode(g,u.n),label:_gradeLbl(g,'english')+' · Unit '+u.n+' · '+u.title,
+    key:_academicUnitNode(g,u.n),label:_gradeLbl(g,'english')+' · Unit '+(u.label||u.n)+' · '+u.title,
     grade:g,parent:unitsNode(g),locked:!_academicUnitDefault(g,u.n)
   })));
   return out;
@@ -4710,11 +4713,11 @@ function _unitPlanCard(u,route,grade,open){
   const visual=image
     ? `<div style="position:relative">
          <img src="${esc(image)}" alt="${esc(gradeLabel+' · Unit '+u.n+' · '+u.title)}" loading="lazy" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block">
-         <span class="badge" style="position:absolute;left:12px;bottom:12px;background:rgba(12,24,45,.82);color:#fff;border:1px solid rgba(255,255,255,.45);backdrop-filter:blur(5px)">${esc(gradeLabel)} · Unit ${u.n}</span>
+         <span class="badge" style="position:absolute;left:12px;bottom:12px;background:rgba(12,24,45,.82);color:#fff;border:1px solid rgba(255,255,255,.45);backdrop-filter:blur(5px)">${esc(gradeLabel)} · Unit ${esc(String(u.label||u.n))}</span>
        </div>`
     : `<div style="font-size:3.4rem;line-height:1;padding:30px 18px 8px">${(u.cover&&u.cover.icon)||'📘'}</div>`;
   const body=`${visual}<div style="padding:18px">
-        <h2 style="margin:0 0 6px;color:var(--blue-d)">Unit ${u.n} · ${esc(u.title)}</h2>
+        <h2 style="margin:0 0 6px;color:var(--blue-d)">Unit ${esc(String(u.label||u.n))} · ${esc(u.title)}</h2>${u.pilot?`<div class="badge" style="background:#ede9fe;color:#5b21b6;margin-bottom:6px">🧪 Piloto 2027 · no visible para alumnos</div>`:''}
         <div class="muted" style="font-size:.85rem">${esc(u.deliverables.map(d=>d.title).join(' · '))} — ${u.weeks} weeks.</div>
         ${open?'':'<div class="badge" style="background:#fee2e2;color:#991b1b;margin-top:10px">🔒 Your teacher will unlock this unit</div>'}
       </div>`;
