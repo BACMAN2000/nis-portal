@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Info Cambridge · Portal NIS</title>
+<link rel="icon" href="assets/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--blue:#4987c6;--blue-d:#2d5a8d;--blue-dd:#244c77;--ink:#1f2a37;--muted:#6b7280;
+        --line:#e3e8ef;--bg:#f7faff;--good:#16a34a;--gold:#f59e0b;--bad:#dc2626}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Montserrat,system-ui,Segoe UI,sans-serif;color:var(--ink);
+       background:#eef3f9;line-height:1.55}
+  .wrap{max-width:1040px;margin:0 auto;padding:18px 16px 70px}
+  header.top{background:var(--blue-d);color:#fff;border-radius:16px;padding:18px 22px;margin-bottom:16px;
+             display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  header.top h1{margin:0 0 2px;font-size:1.3rem}
+  header.top p{margin:0;opacity:.85;font-size:.85rem;max-width:62ch}
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+  .tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 18px;cursor:pointer;
+       font-weight:600;color:var(--blue-d);font-size:.9rem;font-family:inherit}
+  .tab.on{background:var(--blue);border-color:var(--blue);color:#fff}
+  .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin-bottom:16px;
+        box-shadow:0 1px 3px rgba(20,40,80,.05)}
+  .card h2{margin:0 0 2px;font-size:1.08rem;color:var(--blue-d)}
+  .card h3{margin:18px 0 6px;font-size:.95rem;color:var(--blue-d)}
+  .lead{color:var(--muted);font-size:.88rem;margin:0 0 14px}
+  .exam-h{display:flex;align-items:center;gap:12px;flex-wrap:wrap;border-left:5px solid var(--blue);
+          padding-left:12px;margin-bottom:12px}
+  .exam-h .em{font-size:1.7rem;line-height:1}
+  .exam-h .nm{font-size:1.1rem;font-weight:800;color:var(--blue-d)}
+  .pill{display:inline-block;border-radius:999px;padding:3px 11px;font-size:.74rem;font-weight:700;
+        background:var(--bg);color:var(--blue-dd);border:1px solid var(--line)}
+  .pill.cefr{background:var(--blue-d);color:#fff;border-color:var(--blue-d)}
+  .pill.who{background:#fff7ea;color:#92600a;border-color:#f3dcb4}
+  table{width:100%;border-collapse:collapse;font-size:.88rem}
+  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-size:.74rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-weight:700}
+  tbody tr:last-child td{border-bottom:none}
+  .num{text-align:center;white-space:nowrap}
+  .scroll{overflow-x:auto}
+  .links{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+  .links a{border:1px solid var(--blue);color:var(--blue-d);background:#fff;border-radius:10px;
+           padding:7px 13px;font-size:.85rem;font-weight:600;text-decoration:none}
+  .links a:hover{background:var(--blue);color:#fff}
+  .note{background:var(--bg);border-left:4px solid var(--blue);padding:11px 14px;border-radius:8px;
+        font-size:.85rem;color:#33415a;margin:14px 0 0}
+  .note.warn{background:#fff7ea;border-left-color:var(--gold);color:#6b4a08}
+  /* Escala Cambridge: barras posicionadas sobre una regla de 100 a 230 */
+  .scale{position:relative;margin:26px 0 8px;padding-left:118px}
+  .scale-row{position:relative;height:38px}
+  .scale-row .lbl{position:absolute;left:-118px;top:8px;width:110px;text-align:right;font-size:.82rem;
+                  font-weight:700;color:var(--blue-d)}
+  .scale-row .bar{position:absolute;top:6px;height:24px;border-radius:6px;color:#fff;font-size:.74rem;
+                  font-weight:700;display:flex;align-items:center;justify-content:space-between;padding:0 8px}
+  .ticks{position:relative;height:22px;border-top:1px solid var(--line);margin-left:118px}
+  .ticks span{position:absolute;top:4px;transform:translateX(-50%);font-size:.72rem;color:var(--muted)}
+  @media(max-width:700px){
+    .scale{padding-left:0}
+    .scale-row{height:auto;margin-bottom:14px;position:static}
+    .scale-row .lbl{position:static;width:auto;text-align:left;margin-bottom:3px}
+    .scale-row .bar{position:static;width:auto!important;left:auto!important}
+    .ticks{display:none}
+  }
+  footer.src{color:var(--muted);font-size:.78rem;text-align:center;margin-top:26px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <img src="assets/logo-white-h.svg" alt="Nordic International School" style="height:34px" onerror="this.style.display='none'">
+    <div>
+      <h1>📘 Info Cambridge</h1>
+      <p>Qué es cada examen, cuántas partes tiene, cuánto dura, cómo se puntúa en la Escala
+         Cambridge y qué grado del NIS apunta a cuál.</p>
+    </div>
+  </header>
+
+  <div class="tabs" id="tabs"></div>
+  <div id="view"></div>
+
+  <footer class="src">Formatos, tiempos y bandas según los handbooks oficiales de Cambridge English
+    (versiones <i>for Schools</i> donde existen). Antes de una convocatoria confírmalo en
+    cambridgeenglish.org: Cambridge revisa los formatos cada cierto tiempo.</footer>
+</div>
+
+<script>
+/* ─────────────────────────────────────────────────────────────────────
+   Los examenes. `scale` es el tramo en la Escala Cambridge; los YLE
+   (Starters / Movers / Flyers) no llevan escala: se informan en escudos.
+   `portal` son las apps del propio portal que preparan ese examen.
+   ───────────────────────────────────────────────────────────────────── */
+const EXAMS = [
+  { id:'starters', em:'🐧', name:'Pre A1 Starters', cefr:'Pre A1', color:'#d97d0d',
+    who:'G1 · G2', scale:null,
+    idea:'El primer examen de la vida del alumno: colores, dibujos y frases muy cortas. No se aprueba ni se reprueba; todos reciben escudos.',
+    papers:[
+      ['Listening','≈20 min','4','20','1–5 escudos'],
+      ['Reading &amp; Writing','20 min','5','25','1–5 escudos'],
+      ['Speaking','3–5 min','4','—','1–5 escudos']],
+    portal:[['🐧 Fun for Nordic 1 — 45 unidades','nis-fun/engine/?level=starters']] },
+
+  { id:'movers', em:'🐺', name:'A1 Movers', cefr:'A1', color:'#2f9268',
+    who:'G3 · G4', scale:null,
+    idea:'Ya hay textos cortos que leer y una historia que contar en Speaking. Sigue siendo un examen sin nota de aprobado.',
+    papers:[
+      ['Listening','≈25 min','5','25','1–5 escudos'],
+      ['Reading &amp; Writing','30 min','6','35','1–5 escudos'],
+      ['Speaking','5–7 min','4','—','1–5 escudos']],
+    portal:[['🐺 Fun for Nordic 2 — 50 unidades','nis-fun/engine/?level=movers']] },
+
+  { id:'flyers', em:'🦅', name:'A2 Flyers', cefr:'A2', color:'#3b6fb5',
+    who:'G5', scale:null,
+    idea:'El mismo nivel que A2 Key, pero con formato infantil. Es el puente natural hacia los examenes de secundaria.',
+    papers:[
+      ['Listening','≈25 min','5','25','1–5 escudos'],
+      ['Reading &amp; Writing','40 min','7','44','1–5 escudos'],
+      ['Speaking','7–9 min','4','—','1–5 escudos']],
+    portal:[['🦅 Fun for Nordic 3 — 55 unidades','nis-fun/engine/?level=flyers']] },
+
+  { id:'ket', em:'🔑', name:'A2 Key for Schools', cefr:'A2', color:'#3f9dc4',
+    who:'G6 · G7', scale:[100,150],
+    idea:'El primer examen con certificado: ingles cotidiano por escrito y hablado. El Writing va <b>dentro</b> del paper de Reading, no aparte.',
+    papers:[
+      ['Reading and Writing','60 min','7','32','50%'],
+      ['Listening','≈30 min','5','25','25%'],
+      ['Speaking','8–10 min por pareja','2','—','25%']],
+    bands:[['A','140–150','Certificado de nivel B1'],['B','133–139','Certificado de nivel A2'],
+           ['C','120–132','Certificado de nivel A2'],['—','100–119','Se informa nivel A1']],
+    portal:[['📖 Reading &amp; UoE (Practice)','mocks-cambridge/reading-quiz.html?branch=practice'],
+            ['🎧 Listening (Practice)','mocks-cambridge/listening-quiz.html?branch=practice'],
+            ['✍️ Writing (Practice)','mocks-cambridge/writing-quiz.html?branch=practice']] },
+
+  { id:'pet', em:'📗', name:'B1 Preliminary for Schools', cefr:'B1', color:'#4987c6',
+    who:'G8', scale:[120,170],
+    idea:'Cuatro papers independientes con el mismo peso. Aqui el Writing ya se califica aparte, con rubrica.',
+    papers:[
+      ['Reading','45 min','6','32','25%'],
+      ['Writing','45 min','2','—','25%'],
+      ['Listening','≈30 min','4','25','25%'],
+      ['Speaking','12–17 min por pareja','4','—','25%']],
+    bands:[['A','160–170','Certificado de nivel B2'],['B','153–159','Certificado de nivel B1'],
+           ['C','140–152','Certificado de nivel B1'],['—','120–139','Se informa nivel A2']],
+    portal:[['📖 Reading &amp; UoE (Practice)','mocks-cambridge/reading-quiz.html?branch=practice'],
+            ['🎧 Listening (Practice)','mocks-cambridge/listening-quiz.html?branch=practice'],
+            ['✍️ Writing (Practice)','mocks-cambridge/writing-quiz.html?branch=practice']] },
+
+  { id:'fce', em:'🎓', name:'B2 First for Schools', cefr:'B2', color:'#2d5a8d',
+    who:'G9 · G10', scale:[140,190],
+    idea:'El examen de referencia del colegio. Son 4 papers pero <b>5 notas</b>: el paper de Reading and Use of English da dos calificaciones separadas, y cada una de las cinco pesa 20%.',
+    papers:[
+      ['Reading and Use of English','75 min','7','52','40% (Reading 20% + UoE 20%)'],
+      ['Writing','80 min','2','—','20%'],
+      ['Listening','≈40 min','4','30','20%'],
+      ['Speaking','14 min por pareja','4','—','20%']],
+    bands:[['A','180–190','Certificado de nivel C1'],['B','173–179','Certificado de nivel B2'],
+           ['C','160–172','Certificado de nivel B2'],['—','140–159','Se informa nivel B1']],
+    portal:[['🧩 Use of English · Part 1','use-of-english-part1.html'],
+            ['🎧 Cambridge Listening (55 audios)','cambridge-listening.html'],
+            ['✍️ Opinion essay (Writing Part 1)','writing.html?grade=g9'],
+            ['📖 Reading &amp; UoE (Practice)','mocks-cambridge/reading-quiz.html?branch=practice']] },
+
+  { id:'cae', em:'🏆', name:'C1 Advanced', cefr:'C1', color:'#7c6fd2',
+    who:'G11', scale:[160,210],
+    idea:'El mismo esquema que B2 First, pero mas largo y mas denso: 8 partes en Reading and Use of English y textos de nivel universitario.',
+    papers:[
+      ['Reading and Use of English','90 min','8','56','40% (Reading 20% + UoE 20%)'],
+      ['Writing','90 min','2','—','20%'],
+      ['Listening','≈40 min','4','30','20%'],
+      ['Speaking','15 min por pareja','4','—','20%']],
+    bands:[['A','200–210','Certificado de nivel C2'],['B','193–199','Certificado de nivel C1'],
+           ['C','180–192','Certificado de nivel C1'],['—','160–179','Se informa nivel B2']],
+    portal:[['📖 Reading &amp; UoE (Practice)','mocks-cambridge/reading-quiz.html?branch=practice'],
+            ['🎧 Listening (Practice)','mocks-cambridge/listening-quiz.html?branch=practice']] },
+
+  { id:'cpe', em:'👑', name:'C2 Proficiency', cefr:'C2', color:'#b3548f',
+    who:'Fuera de la ruta del colegio', scale:[180,230],
+    idea:'El techo de la escala. Hoy no esta en el plan del NIS; va aqui para ubicar la escala completa y para el alumno que lo rinde por su cuenta.',
+    papers:[
+      ['Reading and Use of English','90 min','7','53','40% (Reading 20% + UoE 20%)'],
+      ['Writing','90 min','2','—','20%'],
+      ['Listening','≈40 min','4','30','20%'],
+      ['Speaking','16 min por pareja','3','—','20%']],
+    bands:[['A','220–230','Certificado de nivel C2'],['B','213–219','Certificado de nivel C2'],
+           ['C','200–212','Certificado de nivel C2'],['—','180–199','Se informa nivel C1']],
+    portal:[] }
+];
+
+/* Grado -> examen objetivo. G1–G5 sale del reparto de Fun for Nordic
+   (nis-fun/content/scope-map.json); G6–G11 son los objetivos que el propio
+   portal usa en 🎓 Resultado final para marcar ▼ / ✓. */
+const RUTA = [
+  ['G1','starters','Fun for Nordic 1 · Pip'], ['G2','starters','Fun for Nordic 1 · Pip'],
+  ['G3','movers','Fun for Nordic 2 · Luna'],  ['G4','movers','Fun for Nordic 2 · Luna'],
+  ['G5','flyers','Fun for Nordic 3 · Kili'],
+  ['G6','ket','Mocks y Practice Tests · nivel A2'], ['G7','ket','Mocks y Practice Tests · nivel A2'],
+  ['G8','pet','Mocks y Practice Tests · nivel B1'],
+  ['G9','fce','Mocks, Practice, Use of English y Cambridge Listening'],
+  ['G10','fce','Mocks y Practice Tests · nivel B2'],
+  ['G11','cae','Mocks y Practice Tests · nivel C1']
+];
+
+const byId = Object.fromEntries(EXAMS.map(e=>[e.id,e]));
+const TABS = [['niveles','📚 Los exámenes'],['escala','📐 Escala Cambridge'],
+              ['nis','🏫 En el NIS'],['nota','🧮 Cómo se califica']];
+let cur = 'niveles';
+
+const el = id => document.getElementById(id);
+
+function drawTabs(){
+  el('tabs').innerHTML = TABS.map(([k,l])=>
+    `<button class="tab${k===cur?' on':''}" data-t="${k}">${l}</button>`).join('');
+  el('tabs').querySelectorAll('[data-t]').forEach(b=>{ b.onclick = ()=>{ cur=b.dataset.t; draw(); }; });
+}
+
+function examCard(e){
+  const filas = e.papers.map(p=>`<tr><td><b>${p[0]}</b></td><td>${p[1]}</td>
+    <td class="num">${p[2]}</td><td class="num">${p[3]}</td><td>${p[4]}</td></tr>`).join('');
+  const bandas = e.bands
+    ? `<h3>Bandas del resultado</h3><div class="scroll"><table>
+        <thead><tr><th>Grado</th><th>Escala Cambridge</th><th>Qué certifica</th></tr></thead>
+        <tbody>${e.bands.map(b=>`<tr><td><b>${b[0]}</b></td><td class="num">${b[1]}</td><td>${b[2]}</td></tr>`).join('')}</tbody>
+      </table></div>`
+    : `<div class="note">Los exámenes <b>Young Learners</b> no se aprueban ni se reprueban: el
+        resultado son <b>escudos</b>, de 1 a 5 por paper (máximo 15). Cinco escudos en un paper
+        significan que el alumno respondió bien casi todo.</div>`;
+  const links = e.portal.length
+    ? `<div class="links">${e.portal.map(([l,h])=>`<a href="${h}" target="_blank" rel="noopener">${l} ↗</a>`).join('')}</div>`
+    : '';
+  return `<div class="card">
+    <div class="exam-h" style="border-left-color:${e.color}">
+      <span class="em">${e.em}</span>
+      <span class="nm">${e.name}</span>
+      <span class="pill cefr" style="background:${e.color};border-color:${e.color}">${e.cefr}</span>
+      <span class="pill who">${e.who}</span>
+      ${e.scale?`<span class="pill">Escala ${e.scale[0]}–${e.scale[1]}</span>`:`<span class="pill">Escudos 1–5</span>`}
+    </div>
+    <p class="lead">${e.idea}</p>
+    <div class="scroll"><table>
+      <thead><tr><th>Paper</th><th>Duración</th><th>Partes</th><th>Preguntas</th><th>Peso</th></tr></thead>
+      <tbody>${filas}</tbody></table></div>
+    ${bandas}
+    ${links}
+  </div>`;
+}
+
+function vistaNiveles(){
+  return `<div class="card"><h2>La escalera Cambridge</h2>
+      <p class="lead" style="margin-bottom:0">De Pre A1 a C2. Los tres primeros son los
+      <b>Young Learners</b> (YLE) de primaria; del A2 Key en adelante son los exámenes de secundaria,
+      que sí dan certificado con nota. Cada examen cubre dos niveles del MCER: apruebas el tuyo y, si
+      sacas mucho, certificas el de arriba.</p></div>`
+    + EXAMS.map(examCard).join('');
+}
+
+function vistaEscala(){
+  const LO=100, HI=230, R=HI-LO;
+  const filas = EXAMS.filter(e=>e.scale).map(e=>{
+    const [a,b]=e.scale, left=(a-LO)/R*100, w=(b-a)/R*100;
+    return `<div class="scale-row">
+      <div class="lbl">${e.em} ${e.cefr}</div>
+      <div class="bar" style="left:${left}%;width:${w}%;background:${e.color}"><span>${a}</span><span>${b}</span></div>
+    </div>`;
+  }).join('');
+  const ticks = [100,120,140,160,180,200,220].map(t=>
+    `<span style="left:${(t-LO)/R*100}%">${t}</span>`).join('');
+  return `<div class="card">
+    <h2>📐 La Escala Cambridge</h2>
+    <p class="lead">Una sola regla de puntos para todos los exámenes. Cada examen cubre un tramo, y
+      los tramos se solapan: por eso 160 es a la vez la nota máxima informable de B1 Preliminary y el
+      mínimo aprobatorio de B2 First. El certificado sale del tramo donde caiga el promedio de las
+      destrezas.</p>
+    <div class="scale">${filas}</div>
+    <div class="ticks">${ticks}</div>
+    <div class="note">Los YLE (Starters, Movers, Flyers) no aparecen aquí: su resultado son escudos
+      de 1 a 5 por paper, no un puntaje de escala.</div>
+  </div>
+  <div class="card">
+    <h2>Qué nota certifica qué</h2>
+    <p class="lead">Todas las bandas de los exámenes con certificado, en una sola tabla.</p>
+    <div class="scroll"><table>
+      <thead><tr><th>Examen</th><th>Grado A</th><th>Grado B</th><th>Grado C</th><th>Por debajo</th></tr></thead>
+      <tbody>${EXAMS.filter(e=>e.bands).map(e=>`<tr>
+        <td><b>${e.em} ${e.name}</b></td>
+        <td class="num">${e.bands[0][1]}</td><td class="num">${e.bands[1][1]}</td>
+        <td class="num">${e.bands[2][1]}</td>
+        <td class="num">${e.bands[3][1]} <span class="pill">${e.bands[3][2].replace('Se informa nivel ','')}</span></td>
+      </tr>`).join('')}</tbody></table></div>
+    <div class="note">El grado A del examen de abajo equivale al nivel del examen de arriba. Un alumno
+      de G8 que saca 160+ en B1 Preliminary ya está certificando B2, y conviene moverlo al material de
+      B2 First.</div>
+  </div>`;
+}
+
+function vistaNis(){
+  const filas = RUTA.map(([g,ex,app])=>{
+    const e = byId[ex];
+    return `<tr><td><b>${g}</b></td>
+      <td>${e.em} ${e.name} <span class="pill cefr" style="background:${e.color};border-color:${e.color}">${e.cefr}</span></td>
+      <td>${app}</td></tr>`;
+  }).join('');
+  return `<div class="card">
+    <h2>🏫 Qué examen le toca a cada grado</h2>
+    <p class="lead">De G1 a G5 el objetivo lo marca el reparto de <b>Fun for Nordic</b>; de G6 a G11 es
+      el nivel objetivo que el portal usa en <b>🎓 Resultado final</b> para marcar ▼ (por debajo) o
+      ✓ (lo cumple).</p>
+    <div class="scroll"><table>
+      <thead><tr><th>Grado</th><th>Examen objetivo</th><th>Con qué se prepara en el portal</th></tr></thead>
+      <tbody>${filas}</tbody></table></div>
+    <div class="note warn"><b>Mocks vs. Practice Tests.</b> Los <b>Mocks</b> son los exámenes oficiales
+      del colegio y están <b>bloqueados por defecto</b>: el admin los abre por grado el día que se
+      rinden. Los <b>Practice Tests</b> están <b>abiertos por defecto</b> para práctica libre, y los
+      bloquea el admin o el profesor del grado cuando quiere reservarlos para clase. Profesores y
+      administradores siempre pueden abrirlos, aunque el grado esté bloqueado.</div>
+  </div>
+  <div class="card">
+    <h2>Las apps de Cambridge del portal</h2>
+    <div class="scroll"><table>
+      <thead><tr><th>App</th><th>Nivel</th><th>Qué hace</th></tr></thead><tbody>
+      <tr><td><b>🔓 Mocks</b></td><td>A2 · B1 · B2 · C1</td>
+        <td>Examen completo por destreza (Reading &amp; UoE, Listening, Writing). Guarda el intento y
+            alimenta 📝 Resultados y 🎓 Resultado final.</td></tr>
+      <tr><td><b>🎯 Practice Tests</b></td><td>A2 · B1 · B2 · C1</td>
+        <td>El mismo motor que los Mocks, con tres prácticas por nivel. También guarda intentos.</td></tr>
+      <tr><td><b>🧸 Fun for Nordic</b></td><td>Pre A1 · A1 · A2</td>
+        <td>Curso YLE de 150 unidades con audio, juegos y tareas de examen. Sus entregas de writing y
+            speaking se califican en la pestaña 🧸 Fun for Nordic.</td></tr>
+      <tr><td><b>🧩 Use of English</b></td><td>B2</td>
+        <td>Multiple-choice cloze (First, Part 1) con explicación de cada respuesta. Se corrige sola en
+            el navegador y <b>no</b> guarda intentos.</td></tr>
+      <tr><td><b>🎧 Cambridge Listening</b></td><td>B2</td>
+        <td>55 audios por unidad más las tareas de examen (Partes 1–4), en Classes ▸ 9.º ▸ Cambridge.</td></tr>
+    </tbody></table></div>
+  </div>`;
+}
+
+function vistaNota(){
+  return `<div class="card">
+    <h2>🧮 Cómo convierte el portal un % en nivel</h2>
+    <p class="lead">Los quizzes del portal devuelven un porcentaje; 🎓 Resultado final lo lleva a la
+      Escala Cambridge y de ahí al nivel MCER.</p>
+    <ul style="font-size:.9rem;padding-left:20px;margin:0">
+      <li>Se toma el <b>mejor intento aprobado (≥50%)</b> de cada destreza; si ninguno aprueba, el de
+          mayor porcentaje.</li>
+      <li>Aprobar con ≈60% cae justo en el <b>límite del nivel</b>; por debajo, baja de banda.</li>
+      <li>El <b>resultado final</b> es el promedio de las destrezas evaluadas. Si aún faltan destrezas,
+          sale marcado como <span class="pill">prov.</span></li>
+      <li><b>Writing</b> y <b>Speaking</b> se califican a mano con la rúbrica Cambridge (0–5 por
+          descriptor), igual que en el examen real.</li>
+      <li>En <b>A2</b> el Writing va dentro de Reading &amp; Use of English (así es el examen A2 Key),
+          así que no cuenta como destreza aparte.</li>
+    </ul>
+    <div class="note">En el examen real la idea es la misma: se promedian las notas de escala de cada
+      destreza. En B2 First y C1 Advanced son <b>cinco</b> notas (Reading, Use of English, Writing,
+      Listening y Speaking), no cuatro.</div>
+  </div>
+  <div class="card">
+    <h2>Las preguntas que salen siempre</h2>
+    <h3>¿Se puede fallar una destreza y aun así certificar?</h3>
+    <p class="lead" style="margin-bottom:0">Sí. Cambridge promedia; no hay nota mínima por destreza.
+      Un Listening flojo se compensa con Reading y Use of English altos, y por eso conviene mirar el
+      perfil por destreza en 📝 Resultados y no solo el número final.</p>
+    <h3>¿El certificado caduca?</h3>
+    <p class="lead" style="margin-bottom:0">No. Los certificados de Cambridge no tienen fecha de
+      vencimiento. Otra cosa es que muchas universidades pidan que sea reciente (dos años suele ser lo
+      habitual).</p>
+    <h3>¿Cuánto tarda el resultado oficial?</h3>
+    <p class="lead" style="margin-bottom:0">Entre dos y tres semanas para el Statement of Results en
+      línea, y unas semanas más para el certificado físico.</p>
+    <h3>¿Y si el alumno queda por debajo del examen que rindió?</h3>
+    <p class="lead" style="margin-bottom:0">Cambridge igual informa el nivel de abajo en el Statement
+      of Results (por ejemplo, 140–159 en B2 First se informa como B1), pero solo emite certificado de
+      ese nivel inferior en A2 Key y B1 Preliminary.</p>
+  </div>`;
+}
+
+function draw(){
+  drawTabs();
+  el('view').innerHTML =
+      cur==='escala' ? vistaEscala()
+    : cur==='nis'    ? vistaNis()
+    : cur==='nota'   ? vistaNota()
+    :                  vistaNiveles();
+  window.scrollTo(0,0);
+}
+draw();
+</script>
+</body>
+</html>

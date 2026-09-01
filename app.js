@@ -349,6 +349,23 @@ function gamesLabBody(){ return `
     <a class="btn" href="games-lab.html?v=3" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
   </div>
   <iframe src="games-lab.html?v=3" title="English Games Lab" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#eef1f8"></iframe>`; }
+/* 🧩 Use of English — la app B2 (First, Part 1: multiple-choice cloze). Es la
+   misma que ve el alumno en Classes > 9.º > Cambridge; aqui el admin la revisa.
+   Se corrige sola en el navegador y no guarda intentos en Supabase. */
+function useOfEnglishBody(){ return `
+  <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
+    <div class="muted" style="flex:1;min-width:220px">Multiple-choice cloze de <b>B2 First</b> (Reading &amp; Use of English, Part 1): textos con 8 huecos y opciones A–D, con corrección y explicación de cada respuesta. Se corrige sola en el navegador y <b>no</b> guarda intentos, así que no aparece en 📝 Resultados.</div>
+    <a class="btn" href="use-of-english-part1.html" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Abrir en pantalla completa ↗</a>
+  </div>
+  <iframe src="use-of-english-part1.html" title="Use of English · Part 1" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#eef3f9"></iframe>`; }
+/* 📘 Info Cambridge — ficha de los examenes (papers, tiempos, escala) y que grado
+   del NIS apunta a cual, con el enlace a la app del portal que le toca. */
+function cambridgeInfoBody(){ return `
+  <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
+    <div class="muted" style="flex:1;min-width:220px">Qué es cada examen Cambridge, cuántas partes tiene, cuánto dura, cómo se puntúa en la Escala Cambridge y qué grado del NIS apunta a cuál.</div>
+    <a class="btn" href="cambridge-info.html?v=1" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Abrir en pantalla completa ↗</a>
+  </div>
+  <iframe src="cambridge-info.html?v=1" title="Info Cambridge" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#eef3f9"></iframe>`; }
 function studentMun(){ document.querySelectorAll('[data-nav]').forEach(e=>e.classList.toggle('active',e.dataset.nav==='mun')); $('#main').innerHTML = munBody(); }
 /* Student view: join a live NIShoot game (opens straight on the Join screen). */
 function nishootJoinBody(){ return `
@@ -612,6 +629,16 @@ async function renderAdmin(tab='users'){
       {key:'materiales',label:'📄 Materiales de clase'},
       {key:'library',label:'📚 Library'},
     ]},
+    // Todo lo de Cambridge junto: los dos candados (Mocks / Practice, que antes
+    // vivian en Permisos) y las apps del examen. Fun for Nordic ya tenia panel
+    // pero solo colgaba del menu del profesor, asi que el admin no lo veia.
+    {group:'Cambridge', icon:'🎓', items:[
+      {key:'mocks',label:'🔓 Mocks'},
+      {key:'practice',label:'🎯 Practice Tests'},
+      {key:'funnordic',label:'🧸 Fun for Nordic'},
+      {key:'uoe',label:'🧩 Use of English'},
+      {key:'cambridgeinfo',label:'📘 Info Cambridge'},
+    ]},
     {group:'Actividades', icon:'🎮', items:[
       {key:'games',label:'🎲 Games Lab'},
       {key:'livequiz',label:'🎮 NIShoot Live'},
@@ -622,8 +649,6 @@ async function renderAdmin(tab='users'){
     {group:'Permisos', icon:'🔐', items:[
       {key:'unitaccess',label:'📚 Activar unidades'},
       {key:'access',label:'🔐 Accesos'},
-      {key:'mocks',label:'🔓 Mocks'},
-      {key:'practice',label:'🎯 Practice Tests'},
     ]},
   ], tab, `<div class="center muted">Cargando…</div>`);
   bindNav(renderAdmin);
@@ -648,6 +673,8 @@ async function renderAdmin(tab='users'){
   if(tab==='littlereaders') return littleReadersPanel();
   if(tab==='teachers') return adminTeachers();
   if(tab==='honesty') return antiCheatPanel();
+  if(tab==='uoe') return $('#main').innerHTML = useOfEnglishBody();
+  if(tab==='cambridgeinfo') return $('#main').innerHTML = cambridgeInfoBody();
   if(tab==='mocks') return adminMocks();
   if(tab==='practice') return practicePanel(GRADES);
   if(tab==='unitaccess') return unitAccessPanel(GRADES);
