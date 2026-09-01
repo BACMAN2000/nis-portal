@@ -313,6 +313,17 @@ function arranca(){
     .then(function(s){
       me = s && s.data && s.data.session ? s.data.session.user : null;
       if(!me){ sinSesion(); return null; }
+      if(!O.auto) return null;
+      /* Antes de preguntar por la fila hay que saber de que grado es: la
+         clave de la entrega lo lleva dentro. */
+      return sb.from('profiles').select('grade_id').eq('id', me.id).maybeSingle()
+        .then(function(r){
+          const g = r && r.data && r.data.grade_id;
+          if(g) O.grade = 'g' + g;
+        }, function(){});
+    })
+    .then(function(){
+      if(!me) return null;
       return sb.from('unit_submissions')
         .select('payload,score,feedback,updated_at')
         .eq('student_id', me.id).eq('grade', O.grade).eq('unit', O.unit)
@@ -435,12 +446,47 @@ function ficha(){
   if(m) return { slug:f, grade:'g9', unit:+m[2], week:+m[3] };
   m = /^(.+)-u(\d+)(?:-by-level)?$/.exec(f);            // ingles: por nivel
   if(m) return { slug:f, grade:'g9', unit:+m[2], week:null };
-  return { slug:f, grade:'g9', unit:0, week:null };
+  /* Practica libre por nivel MCER (crosswords, wordsearches, word wheel…):
+     no cuelga de ninguna unidad NI de ningun grado — la usa quien quiera.
+     El grado se toma del propio alumno al conectar; ponerlo aqui seria
+     inventarselo. */
+  return { slug:f, grade:'g9', unit:0, week:null, auto:true };
+}
+
+/* Atajo para las paginas que YA guardaban en localStorage bajo un prefijo
+   (mejores marcas, borradores): sincroniza esas claves con la cuenta sin
+   tener que entender su motor. Lo que se guarda sigue siendo suyo; aqui solo
+   deja de vivir en un unico navegador. */
+function porPrefijo(pref, extra){
+  return Object.assign({
+    read: function(){
+      var out = {};
+      try{
+        Object.keys(localStorage).forEach(function(k){
+          if(k.indexOf(pref) === 0) out[k.slice(pref.length)] = localStorage.getItem(k);
+        });
+      }catch(e){}
+      return { store: out };
+    },
+    write: function(d){
+      var p = (d && d.store) || {};
+      try{ Object.keys(p).forEach(function(k){ localStorage.setItem(pref + k, p[k]); }); }catch(e){}
+    },
+    count: function(d){ return Object.keys(((d || {}).store) || {}).length; },
+    answers: function(d){
+      var p = (d && d.store) || {}, out = {};
+      Object.keys(p).forEach(function(k){ out[k.replace(/_/g, ' / ')] = String(p[k]); });
+      return out;
+    }
+  }, extra || {});
 }
 
 window.NIS_WORK = {
   /* De que actividad es esta pagina, deducido del nombre del archivo. */
   ficha: ficha,
+
+  /* Adaptador para paginas que ya usaban localStorage con un prefijo. */
+  porPrefijo: porPrefijo,
 
   /* Lo llama el save() de la página en cada tecla: marca sucio y programa
      la subida. No sube en cada pulsación — eso sería una petición por letra. */

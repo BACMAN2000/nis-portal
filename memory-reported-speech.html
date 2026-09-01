@@ -58,6 +58,7 @@
   <script src="config.js?v=18"></script>
   <script src="anticheat.js?v=8" data-activity="memory-reported-speech"></script>
 <script src="nis-nav.js?v=2"></script>
+<script src="activity-save.js?v=2"></script>
 </head>
 <body>
 <nav class="topnav">
@@ -173,8 +174,33 @@ function win(){
   const b=document.getElementById('banner');
   b.innerHTML=`🎉 All matched in ${fmt(elapsed)} with ${moves} moves! <br><span style="font-weight:600;font-size:.85rem">Saved to My Progress (if you\'re signed in).</span>`;
   b.classList.add('show');
+  RES['Best'] = (!RES['Best'] || moves < RES['Best'].moves)
+    ? { score:PAIRS.length, total:PAIRS.length, moves:moves, duration:elapsed } : RES['Best'];
+  if(window.NIS_WORK) NIS_WORK.touch();
   if(window.NISACT) NISACT.submit({activity:'memory-reported-speech', title:'Memory — Reported Speech', level:'g9', score:PAIRS.length, total:PAIRS.length, lives:3, duration:Math.max(1,elapsed), moves:moves});
 }
+/* ---- Guardado y entrega (barra Save / Submit) --------------------------
+   Es una partida: no hay medias tintas que reanudar, lo que se pierde al
+   cerrar es el resultado. Se guarda ese. */
+const RES = {};
+function resumen(x){
+  const t = Math.max(0, Math.round(x.duration || 0));
+  return (x.score || 0) + '/' + (x.total || 0) + ' pairs / ' + (x.moves || 0) + ' moves / ' +
+         String(Math.floor(t/60)).padStart(2,'0') + ':' + String(t%60).padStart(2,'0');
+}
+if(window.NIS_WORK) NIS_WORK.attach(Object.assign(NIS_WORK.ficha(), {
+  title: document.title,
+  vacio: 'Finish a game first — then you can hand it in.',
+  read:  function(){ return { store: RES }; },
+  write: function(d){ const p = (d && d.store) || {};
+                      Object.keys(p).forEach(function(k){ RES[k] = p[k]; }); },
+  after: function(){},
+  count: function(d){ return Object.keys((d && d.store) || {}).length; },
+  answers: function(d){ const p = (d && d.store) || {}, out = {};
+                        Object.keys(p).forEach(function(k){ out[k] = resumen(p[k] || {}); });
+                        return out; }
+}));
+
 newGame();
 </script>
 </body>

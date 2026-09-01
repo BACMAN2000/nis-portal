@@ -50,6 +50,7 @@
   <script src="config.js?v=18"></script>
   <script src="anticheat.js?v=8" data-activity="wordsearches"></script>
 <script src="nis-nav.js?v=2"></script>
+<script src="activity-save.js?v=2"></script>
 </head>
 <body>
 <header>
@@ -113,9 +114,9 @@ function drawStatus(){ const h=document.getElementById('hearts'),w=document.getE
   h.textContent='❤️'.repeat(lives)+'🤍'.repeat(Math.max(0,5-lives)); w.textContent='⏱ '+fmtT(elapsed); }
 function startWatch(){ clearInterval(timerInt); if(staff()||completed){drawStatus();return;} timerInt=setInterval(()=>{elapsed++;drawStatus();},1000); drawStatus(); }
 function buildLevels(){ const L=document.getElementById('levels'); L.innerHTML='';
-  LEVELS.forEach(lv=>{const b=document.createElement('button');b.className='lv'+(lv===level?' on':'');b.textContent=lv;b.onclick=()=>{level=lv;pidx=0;load();};L.appendChild(b);}); }
+  LEVELS.forEach(lv=>{const b=document.createElement('button');b.className='lv'+(lv===level?' on':'');b.textContent=lv;b.onclick=()=>{progLee();level=lv;pidx=0;load();};L.appendChild(b);}); }
 function buildPuzzles(){ const P=document.getElementById('puzzles'); P.innerHTML='';
-  DATA[level].forEach((p,i)=>{const b=document.createElement('button');b.className='pz'+(i===pidx?' on':'');b.innerHTML=`${i+1}<small>${p.theme}</small>`;b.onclick=()=>{pidx=i;load();};P.appendChild(b);}); }
+  DATA[level].forEach((p,i)=>{const b=document.createElement('button');b.className='pz'+(i===pidx?' on':'');b.innerHTML=`${i+1}<small>${p.theme}</small>`;b.onclick=()=>{progLee();pidx=i;load();};P.appendChild(b);}); }
 function load(){
   const d=cur(); cellEls={};selStart=null;selCells=[];found={};completed=false;lives=5;elapsed=0;hintsUsed=0;
   document.getElementById('banner').classList.remove('show');
@@ -138,6 +139,7 @@ function load(){
   const wl=document.getElementById('wlist'); wl.innerHTML='';
   for(const w of d.words.slice().sort((a,b)=>a.word.localeCompare(b.word))){ const chip=document.createElement('div'); chip.className='wchip'; chip.id='chip_'+w.word; chip.textContent=w.word; wl.appendChild(chip); }
   buildLevels(); buildPuzzles(); updateScore(); startWatch();
+  progPinta();
   if(staff()) revealAll();
 }
 function lineCells(a,b){ const dr=Math.sign(b[0]-a[0]),dc=Math.sign(b[1]-a[1]);
@@ -149,6 +151,7 @@ function updateSel(r,c){ const cellsL=lineCells(selStart,[r,c]); document.queryS
 function endSel(){ if(!selStart)return; const d=cur(); const s=selCells.map(([r,c])=>d.grid[r][c]).join('');
   for(const w of d.words){ if(!found[w.word]&&(s===w.word||s===[...w.word].reverse().join(''))){ found[w.word]=true; paint(w,d.words.indexOf(w)); const chip=document.getElementById('chip_'+w.word); if(chip)chip.classList.add('found'); break; } }
   document.querySelectorAll('.cell.sel').forEach(e=>e.classList.remove('sel')); selStart=null; selCells=[]; updateScore();
+  if(window.NIS_WORK) NIS_WORK.touch();
   if(d.words.every(w=>found[w.word])&&!completed) onComplete(); }
 function paint(w,i){ const col=`var(${PALETTE[i%PALETTE.length]})`; for(const [r,c] of w.cells){ const el=cellEls[r+'_'+c]; el.classList.add('found'); el.style.background=col; } }
 function updateScore(){ const d=cur(); const n=d.words.filter(w=>found[w.word]).length;
@@ -166,6 +169,65 @@ function hint(){ if(completed||staff())return; const d=cur(); const left=d.words
 function resetLevel(){ load(); }
 function revealAll(){ const d=cur(); d.words.forEach((w,i)=>{ found[w.word]=true; paint(w,i); const chip=document.getElementById('chip_'+w.word); if(chip)chip.classList.add('found'); });
   clearInterval(timerInt); updateScore(); const b=document.getElementById('banner'); b.textContent='✅ Solved view (teacher/admin).'; b.classList.add('show'); drawStatus(); }
+
+/* ---- Guardado y entrega (barra Save / Submit) --------------------------
+   Practica libre por nivel: se guarda por nivel Y por sopa (A2#3), porque
+   aqui hay diez de cada nivel. load() vacia `found` y no repinta, asi que la
+   restauracion tiene que volver a colorear la rejilla y las fichas. */
+const PROG = {};
+function progClave(){ return level + '#' + pidx; }
+function progLee(){
+  PROG[progClave()] = { found:Object.keys(found), lives:lives, elapsed:elapsed,
+                        hints:hintsUsed, done:!!completed, total:cur().words.length };
+  return PROG;
+}
+function progPinta(){
+  const p = PROG[progClave()];
+  if(!p) return;
+  const d = cur();
+  found = {};
+  (p.found || []).forEach(function(w){ found[w] = true; });
+  d.words.forEach(function(w,i){
+    if(!found[w.word]) return;
+    paint(w, i);
+    const chip = document.getElementById('chip_' + w.word);
+    if(chip) chip.classList.add('found');
+  });
+  if(typeof p.lives === 'number') lives = p.lives;
+  if(typeof p.elapsed === 'number') elapsed = p.elapsed;
+  if(typeof p.hints === 'number') hintsUsed = p.hints;
+  /* completed ANTES de nada: reabrir una sopa acabada no puede volver a
+     mandarla por correo. */
+  if(p.done) completed = true;
+  drawStatus();
+  updateScore();
+}
+if(window.NIS_WORK) NIS_WORK.attach(Object.assign(NIS_WORK.ficha(), {
+  title: document.title,
+  read:  function(){ return { store: progLee(), level: level, pidx: pidx }; },
+  write: function(d){
+    const p = (d && d.store) || {};
+    Object.keys(p).forEach(function(k){ PROG[k] = p[k]; });
+    if(d && d.level && DATA[d.level]) level = d.level;
+    if(d && typeof d.pidx === 'number' && DATA[level] && DATA[level][d.pidx]) pidx = d.pidx;
+  },
+  after: function(){ load(); },
+  count: function(d){
+    const p = (d && d.store) || {};
+    return Object.keys(p).reduce(function(n,k){ return n + ((p[k] || {}).found || []).length; }, 0);
+  },
+  answers: function(d){
+    const p = (d && d.store) || {}, out = {};
+    Object.keys(p).forEach(function(k){
+      const x = p[k] || {}, par = k.split('#'), t = DATA[par[0]] && DATA[par[0]][+par[1]];
+      out[par[0] + ' / ' + (t ? t.theme : ('#' + (+par[1] + 1)))] =
+        (x.found || []).length + '/' + (x.total || 0) + ' words / ' + fmtT(x.elapsed || 0) +
+        ' / hints ' + (x.hints || 0) + ' / lives ' + (x.lives || 0) + (x.done ? ' / finished' : '');
+    });
+    return out;
+  }
+}));
+
 window.NISACT.onReady(()=>{ document.getElementById('staffnote').style.display=staff()?'block':'none'; load(); });
 setTimeout(()=>{ if(!document.getElementById('grid').children.length) load(); },1500);
 </script>

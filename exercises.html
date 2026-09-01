@@ -45,6 +45,7 @@
   @media(max-width:480px){body{padding:8px}}
 </style>
 <script src="nis-nav.js?v=2"></script>
+<script src="activity-save.js?v=2"></script>
 </head>
 <body>
 <header>
@@ -240,7 +241,8 @@ function onAnswer(e){
 function finish(){
   var pct=Math.round(score/items.length*100);
   var best=+(localStorage.getItem(key())||0);
-  if(pct>best){ localStorage.setItem(key(),pct); document.getElementById('best').textContent='Best: '+pct+'%'; }
+  if(pct>best){ localStorage.setItem(key(),pct); document.getElementById('best').textContent='Best: '+pct+'%';
+                if(window.NIS_WORK) NIS_WORK.touch(); }
   var d=document.getElementById('done');
   var emoji=pct>=80?'\u{1F389}':pct>=60?'\u{1F44D}':'\u{1F4AA}';
   var note=pct>=80?'Excellent!':pct>=60?'Good job!':'Keep practising!';
@@ -265,6 +267,19 @@ function sendScore(){
     else { done('',''); } }catch(e){ done('',''); }
 }
 render();
+/* ---- Guardado y entrega (barra Save / Submit) --------------------------
+   Los ejercicios se barajan al azar en cada tanda, asi que no hay una
+   "mitad" que reanudar: lo que se guarda es la mejor marca de cada
+   categoria y nivel, que es lo que la pagina ya guardaba. */
+if(window.NIS_WORK) NIS_WORK.attach(Object.assign(
+  NIS_WORK.ficha(),
+  NIS_WORK.porPrefijo('nis_ex_best_', {
+    title: document.title,
+    vacio: 'Finish a set first — then you can hand it in.',
+    after: function(){ if(typeof render === "function") render(); }
+  })
+));
+
 </script>
 </body>
 </html>

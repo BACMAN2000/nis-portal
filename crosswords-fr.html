@@ -54,6 +54,7 @@
   <script src="config.js?v=18"></script>
   <script src="anticheat.js?v=8" data-activity="crosswords"></script>
 <script src="nis-nav.js?v=2"></script>
+<script src="activity-save.js?v=2"></script>
 </head>
 <body>
 <header>
@@ -132,11 +133,11 @@ function drawStatus(){
 function startWatch(){ clearInterval(timerInt); if(staff()||completed){drawStatus();return;} timerInt=setInterval(()=>{elapsed++;drawStatus();},1000); drawStatus(); }
 function buildLevels(){
   const L=document.getElementById('levels'); L.innerHTML='';
-  LEVELS.forEach(lv=>{ const b=document.createElement('button'); b.className='lv'+(lv===level?' on':''); b.textContent=lv; b.onclick=()=>{level=lv;pidx=0;load();}; L.appendChild(b); });
+  LEVELS.forEach(lv=>{ const b=document.createElement('button'); b.className='lv'+(lv===level?' on':''); b.textContent=lv; b.onclick=()=>{progLee();level=lv;pidx=0;load();}; L.appendChild(b); });
 }
 function buildPuzzles(){
   const P=document.getElementById('puzzles'); P.innerHTML='';
-  DATA[level].forEach((p,i)=>{ const b=document.createElement('button'); b.className='pz'+(i===pidx?' on':''); b.innerHTML=`${i+1}<small>${p.theme}</small>`; b.onclick=()=>{pidx=i;load();}; P.appendChild(b); });
+  DATA[level].forEach((p,i)=>{ const b=document.createElement('button'); b.className='pz'+(i===pidx?' on':''); b.innerHTML=`${i+1}<small>${p.theme}</small>`; b.onclick=()=>{progLee();pidx=i;load();}; P.appendChild(b); });
 }
 function key(r,c){return r+'_'+c;}
 function load(){
@@ -173,6 +174,7 @@ function load(){
     el.innerHTML=`<b>${w.num}.</b> ${w.clue} <span style="color:var(--muted)">(${w.word.length})</span>`;
     el.onclick=()=>{setEntry(w);focusCell(w.row,w.col);}; (w.dir==='across'?al:dl).appendChild(el); }
   buildLevels(); buildPuzzles(); updateScore(); startWatch();
+  progPinta();
   if(staff()) revealAll();
 }
 function entryCells(w){ const dr=w.dir==='down'?1:0,dc=w.dir==='across'?1:0,out=[]; for(let i=0;i<w.word.length;i++)out.push(key(w.row+dr*i,w.col+dc*i)); return out; }
@@ -196,6 +198,7 @@ function wordSolved(w){ return entryCells(w).every(k=>cells[k].querySelector('in
 function liveCheck(){ let solved=0;
   for(const w of entries){ const ok=wordSolved(w); const el=document.getElementById('clue_'+w.num+'_'+w.dir); if(el)el.classList.toggle('solved',ok); if(ok){ solved++; var _kk=w.num+'_'+w.dir; if(!_spoken.has(_kk)){ _spoken.add(_kk); try{speakFR(w);}catch(_){} } } }
   updateScore(solved);
+  if(window.NIS_WORK) NIS_WORK.touch();
   if(solved===entries.length&&!completed){ onComplete(); }
 }
 function onComplete(){
@@ -220,6 +223,63 @@ function hintLetter(){ if(completed||staff())return;
 }
 function clearGrid(){ for(const k in cells){const inp=cells[k].querySelector('input');inp.value='';cells[k].classList.remove('ok','ko');} document.getElementById('banner').classList.remove('show'); liveCheck(); }
 function revealAll(){ for(const k in cells){const inp=cells[k].querySelector('input');inp.value=sol[k];cells[k].classList.add('ok');} entries.forEach(w=>{const el=document.getElementById('clue_'+w.num+'_'+w.dir);if(el)el.classList.add('solved');}); clearInterval(timerInt); updateScore(entries.length); const b=document.getElementById('banner'); b.textContent='✅ Vue corrigée (prof/admin).'; b.classList.add('show'); drawStatus(); }
+
+/* ---- Guardado y entrega (barra Save / Submit) --------------------------
+   Practica libre por nivel: el crucigrama a medias no vivia en ningun sitio.
+   Se guarda por nivel Y por crucigrama (A2#3), porque aqui hay diez de cada
+   nivel y no tres dias. */
+const PROG = {};
+function progClave(){ return level + '#' + pidx; }
+function progLee(){
+  const l = {};
+  Object.keys(cells).forEach(k => { const v = cells[k].querySelector('input').value; if(v) l[k] = v; });
+  PROG[progClave()] = { letters:l, lives:lives, elapsed:elapsed, hints:hintsUsed,
+                        done:!!completed, solved:entries.filter(wordSolved).length,
+                        total:entries.length };
+  return PROG;
+}
+function progPinta(){
+  const p = PROG[progClave()];
+  if(!p) return;
+  Object.keys(p.letters || {}).forEach(k => {
+    if(cells[k]) cells[k].querySelector('input').value = p.letters[k];
+  });
+  if(typeof p.lives === 'number') lives = p.lives;
+  if(typeof p.elapsed === 'number') elapsed = p.elapsed;
+  if(typeof p.hints === 'number') hintsUsed = p.hints;
+  /* completed ANTES de liveCheck: si no, reabrir uno resuelto lo daria por
+     recien terminado y volveria a mandarlo por correo. */
+  if(p.done) completed = true;
+  drawStatus();
+  liveCheck();
+}
+if(window.NIS_WORK) NIS_WORK.attach(Object.assign(NIS_WORK.ficha(), {
+  title: document.title,
+  read:  function(){ return { store: progLee(), level: level, pidx: pidx }; },
+  write: function(d){
+    const p = (d && d.store) || {};
+    Object.keys(p).forEach(function(k){ PROG[k] = p[k]; });
+    if(d && d.level && DATA[d.level]) level = d.level;
+    if(d && typeof d.pidx === 'number' && DATA[level] && DATA[level][d.pidx]) pidx = d.pidx;
+  },
+  after: function(){ load(); },
+  count: function(d){
+    const p = (d && d.store) || {};
+    return Object.keys(p).reduce(function(n,k){
+      return n + Object.keys((p[k] || {}).letters || {}).length; }, 0);
+  },
+  answers: function(d){
+    const p = (d && d.store) || {}, out = {};
+    Object.keys(p).forEach(function(k){
+      const x = p[k] || {}, par = k.split('#'), t = DATA[par[0]] && DATA[par[0]][+par[1]];
+      out[par[0] + ' / ' + (t ? t.theme : ('#' + (+par[1] + 1)))] =
+        (x.solved || 0) + '/' + (x.total || 0) + ' words / ' + fmtT(x.elapsed || 0) +
+        ' / hints ' + (x.hints || 0) + ' / lives ' + (x.lives || 0) + (x.done ? ' / finished' : '');
+    });
+    return out;
+  }
+}));
+
 window.NISACT.onReady(()=>{ document.getElementById('staffnote').style.display=staff()?'block':'none'; load(); });
 setTimeout(()=>{ if(!document.getElementById('grid').children.length) load(); },1500);
 
