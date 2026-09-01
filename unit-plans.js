@@ -107,16 +107,44 @@ window.UNIT_PLANS = {
        math:'Counting to 999 and the properties of addition, to record what the tests will produce.',
        social:'Equity: boys and girls can do the same jobs — who holds the torch and who narrates rotates.',
        english:'Starters listening: everyday objects and simple actions, and the words for light.'},
-     sessions:[{s:1,title:'What gives us light?',view:[
-       'Enter the dark room. Only a torch. What can you see, what has disappeared?',
-       'Sort the cards: things that GIVE light (sun, torch, fire) and things that only RECEIVE it.',
-       'New words on the board: light, energy, sun, heat, wind, bright, dark.',
-       'Each team writes its question for the shadow test: "What happens if…?"']}],
-     levels:{
-       'Support':{task:'Match each picture to its word: sun, torch, shadow, dark, bright. Then finish the sentence: "The sun gives us ____."',
-                  help:'Word bank with pictures. The sentence is started for you.'},
-       'Core':{task:'Sort six things into GIVES light / RECEIVES light, and write your test question.',
-               help:'Sentence frame: "What happens if I move the ____?"'}}},
+     sessions:[
+      {s:1,title:'Into the dark room',
+       objective:'Notice that without light there is nothing to see.',
+       view:[
+         'Go into the darkened room. Only one torch. What can you see and what has disappeared?',
+         'Turn the torch on and off three times. What comes back each time?',
+         'Word wall: light, dark, bright, shadow.',
+         'Everyone draws what they saw with the torch on and with it off.'],
+       levels:{
+         'Support':{task:'Match five pictures with their word: sun, torch, shadow, dark, bright.',
+               help:'Pictures with the word underneath.'},
+         'Core':{task:'Draw the two moments and label them with three words of the unit.',
+               help:'Word bank on the board.'}}},
+      {s:2,title:'Where energy comes from',
+       objective:'Name the things that give us light and energy.',
+       view:[
+         'Cards on the floor: things that GIVE light and things that only receive it.',
+         'The sun, heat, the wind. Which of the three do we feel today?',
+         'The odd one out: the moon. Does it give light or receive it?',
+         'Sort your own cards in pairs and explain one to your partner.'],
+       levels:{
+         'Support':{task:'Sort six cards into GIVES / RECEIVES and finish: "The sun gives us ____."',
+               help:'Cards with pictures and the sentence started.'},
+         'Core':{task:'Sort your cards and write two sentences with gives and receives.',
+               help:'Model: "The torch gives light. The wall receives it."'}}},
+      {s:3,title:'Our question for the show',
+       objective:'Ask something you can actually test.',
+       view:[
+         'Three questions on the board. Which one can we answer with a torch?',
+         'The rule: we have to be able to look and see the answer.',
+         'Each team writes its question: "What happens if I move the torch?"',
+         'Guess before testing. Everyone writes their guess and signs it.'],
+       levels:{
+         'Support':{task:'Choose your question from two options and circle your guess.',
+               help:'Two questions and two possible guesses.'},
+         'Core':{task:'Write your own question and your guess, saying why you think so.',
+               help:'Frame: "I think ____ because ____."'}}}
+     ]},
     {n:2,title:'Saying what is happening',desc:'The present continuous, so you can narrate the show while it happens: the shadow is growing, the puppet is walking.',
      give:'Five sentences in the present continuous about your puppet.',
      across:{
@@ -124,32 +152,88 @@ window.UNIT_PLANS = {
        math:'Times tables (2, 3, 4, 5 and 10), for counting the repetitions of the test.',
        comunicacion:'La noticia como texto instructivo: dar un paso a la vez, tambien en castellano.',
        english:'Starters speaking: present continuous to narrate what is happening as it happens.'},
-     sessions:[{s:1,title:'It is happening now',view:[
-       'One student moves the puppet; the rest narrate out loud what IS HAPPENING.',
-       'Board: The shadow is growing. The puppet is walking. The light is moving.',
-       'Pairs: one moves, one narrates. Then swap.',
-       'Write down the five best sentences — they are the script of your show.']}],
-     levels:{
-       'Support':{task:'Complete five sentences with the verb given: The shadow ____ (grow). The puppet ____ (walk).',
-                  help:'The verb is given in brackets and the -ing ending is on the board.'},
-       'Core':{task:'Write five sentences of your own describing what happens in your show.',
-               help:'Model: "The shadow is getting bigger because the torch is coming closer."'}}},
+     sessions:[
+      {s:1,title:'It is happening now',
+       objective:'Say what is happening while it happens.',
+       view:[
+         'One child moves the puppet; everyone else narrates out loud.',
+         'On the board: The shadow is growing. The puppet is walking.',
+         'Freeze game: when the teacher claps, say what IS happening.',
+         'Write down the two best sentences of the class.'],
+       levels:{
+         'Support':{task:'Complete five sentences with the verb given: The shadow ____ (grow).',
+               help:'Verbs in brackets and the -ing ending on the board.'},
+         'Core':{task:'Write five sentences of your own about what your puppet is doing.',
+               help:'Model: "The shadow is getting bigger."'}}},
+      {s:2,title:'The script of the show',
+       objective:'Put your sentences in the order of the story.',
+       view:[
+         'Read three sentences in the wrong order. Does the story work?',
+         'Order them together. What has to happen first?',
+         'Each team puts its five sentences in order.',
+         'Read them out while your partner moves the puppet.'],
+       levels:{
+         'Support':{task:'Order the five sentences given and copy them out in order.',
+               help:'Sentence strips to cut and arrange.'},
+         'Core':{task:'Put your five sentences in order and add one at the end.',
+               help:'It has to be the ending of the show.'}}},
+      {s:3,title:'Saying it out loud',
+       objective:'Narrate without reading, looking at the audience.',
+       view:[
+         'Rehearse in pairs: one moves, one narrates. Then swap.',
+         'Rule: eyes on the puppet, not on the paper.',
+         'Record one team and listen back. What is understood and what is not?',
+         'Say what you will practise at home.'],
+       levels:{
+         'Support':{task:'Practise your two favourite sentences until you can say them without reading.',
+               help:'Your two sentences, in large print.'},
+         'Core':{task:'Rehearse the whole narration and mark the sentence that comes out worst.',
+               help:'Practise that one twice more.'}}}
+     ]},
     {n:3,title:'Testing the shadow',desc:'The experiment: near and far, big and small. Lab rules — we look, we do not touch the bulb.',
      give:'Your results, written and counted.',
      across:{
        science:'Following instructions to carry out an investigation. Laboratory safety: we look, we do not touch.',
        math:'Introduction to division (halves) and combined operations, to split the measurements.',
        english:'Short simple stories: listening for the key action.'},
-     sessions:[{s:1,title:'Near, far, bigger, smaller',view:[
-       'Rules first: the torch is hot, we hold it by the handle.',
-       'Measure the shadow with the torch near, in the middle, far. Three times each.',
-       'Write every result in the table — also the ones that look wrong.',
-       'What do the numbers say? Say it out loud before writing it.']}],
-     levels:{
-       'Support':{task:'Fill in the results table and circle: the shadow is BIGGER / SMALLER when the torch is near.',
-                  help:'The table is already drawn, with the three positions.'},
-       'Core':{task:'Fill in your table and write one sentence with "bigger/smaller… than" comparing two positions.',
-               help:'Model: "The shadow is bigger when the torch is near."'}}},
+     sessions:[
+      {s:1,title:'Lab rules',
+       objective:'Work safely with light and heat.',
+       view:[
+         'The torch gets hot. We hold it by the handle, always.',
+         'Three rules, agreed by the class and written on the board.',
+         'What do we do if something falls? We do not pick up glass.',
+         'Everyone signs the rules.'],
+       levels:{
+         'Support':{task:'Circle the safe action in four pictures.',
+               help:'Pairs of pictures, one safe and one not.'},
+         'Core':{task:'Write the three class rules in your own words.',
+               help:'Frame: "We always ____. We never ____."'}}},
+      {s:2,title:'Near, far, bigger, smaller',
+       objective:'Measure the shadow in three positions.',
+       view:[
+         'Torch near, in the middle, far. Measure the shadow each time.',
+         'Three tries in each position. All of them go in the table.',
+         'What changes, and what did we keep the same?',
+         'The number that looks wrong stays in. We mark it, we do not rub it out.'],
+       levels:{
+         'Support':{task:'Complete the results table with your nine measurements.',
+               help:'Table drawn, with the three positions.'},
+         'Core':{task:'Complete your table and circle the biggest and the smallest shadow.',
+               help:'Say in one sentence which position gave which.'}}},
+      {s:3,title:'What the numbers say',
+       objective:'Read your own results.',
+       view:[
+         'Look at your table. Where was the shadow biggest?',
+         'Bigger and smaller: compare two positions out loud.',
+         'Was your guess from last week right? Open it and check.',
+         'Being wrong is fine if you can say what really happened.'],
+       levels:{
+         'Support':{task:'Circle BIGGER or SMALLER in three sentences about your results.',
+               help:'Sentences with the two options.'},
+         'Core':{task:'Write two sentences comparing two positions, with your numbers.',
+               help:'Model: "The shadow is bigger when the torch is near."'}}}
+     ]},
     {n:4,title:'Reading about light',desc:'A short text about colours and shadows. Finding the answers inside it, and drawing the bar chart of your results.',
      give:'Your answers and your bar chart.',
      across:{
@@ -157,16 +241,44 @@ window.UNIT_PLANS = {
        math:'Statistics: bar charts, horizontal and vertical, and pictographs with a scale up to 10.',
        comunicacion:'Partes de un cuento: principio, nudo y desenlace — la forma de la funcion.',
        english:'Starters reading: friendly letters and descriptions, and brainstorming before writing.'},
-     sessions:[{s:1,title:'Read it and chart it',view:[
-       'Read the text together. Underline the three words you already know from the unit.',
-       'Answer four questions: what, where, why, how.',
-       'Turn the results table into a bar chart — one bar per position.',
-       'Which bar is the tallest? Say why.']}],
-     levels:{
-       'Support':{task:'Answer the four questions choosing from two options, and colour the bar chart that is already drawn.',
-                  help:'Multiple choice, and the chart has its axes ready.'},
-       'Core':{task:'Answer the four questions in full sentences and draw your own bar chart.',
-               help:'Reminder of what a chart needs: a title, and a label on each bar.'}}},
+     sessions:[
+      {s:1,title:'Reading about light',
+       objective:'Find the answers inside a text.',
+       view:[
+         'Read the short text together, stopping at the words we already know.',
+         'Underline three words of the unit.',
+         'Four questions: what, where, why, how.',
+         'Where exactly in the text is each answer? Point to it.'],
+       levels:{
+         'Support':{task:'Answer the four questions choosing from two options.',
+               help:'The text with the answers highlighted.'},
+         'Core':{task:'Answer the four questions in full sentences.',
+               help:'Point to the line where you found each one.'}}},
+      {s:2,title:'Our bar chart',
+       objective:'Turn the results into a chart.',
+       view:[
+         'Count how many measurements went in each group.',
+         'One bar per position. The tallest bar is the biggest shadow.',
+         'A chart needs a title and a label on each bar.',
+         'Compare charts between teams: are they the same?'],
+       levels:{
+         'Support':{task:'Colour in the bar chart that is already drawn and write its title.',
+               help:'Chart with axes and labels ready.'},
+         'Core':{task:'Draw your own bar chart with title and labels.',
+               help:'Reminder of the three things a chart needs.'}}},
+      {s:3,title:'Writing what we found',
+       objective:'Write it so a grown-up understands it.',
+       view:[
+         'Model on the board: an explanation written badly. Fix it together.',
+         'Everyone writes their draft in the notebook. Crossings-out allowed.',
+         'Read it to your partner: do they understand what you did?',
+         'Mark one thing to change tomorrow.'],
+       levels:{
+         'Support':{task:'Write your explanation with the frame: "My question was… I thought… What happened was…"',
+               help:'The three openings printed.'},
+         'Core':{task:'Write your explanation including why you think it happened.',
+               help:'Use because at least once.'}}}
+     ]},
     {n:5,title:'The show for Nursery',desc:'Building the theatre with Art, rehearsing the narration and performing it for the little ones.',
      give:'The show, and your written explanation.',
      across:{
@@ -174,16 +286,44 @@ window.UNIT_PLANS = {
        math:'Tally charts and reading a picture graph with a scale.',
        social:'Sense of belonging: the little ones are part of the school too.',
        english:'Starters writing: short narratives, present continuous and basic conjunctions.'},
-     sessions:[{s:1,title:'Curtain up',view:[
-       'Last rehearsal: narrate while you move, without reading.',
-       'Nursery comes in. Two shows, so everybody performs.',
-       'Afterwards, one of them asks you a question. Answer it.',
-       'Back in class: write what you found out, now that you have explained it to somebody.']}],
-     levels:{
-       'Support':{task:'Write your explanation with the frame: "My question was… I thought… What happened was…"',
-                  help:'The three openings are printed; you finish them.'},
-       'Core':{task:'Write your explanation — question, guess, what happened, and why you think so.',
-               help:'Use "because" at least once.'}}}
+     sessions:[
+      {s:1,title:'Building the theatre',
+       objective:'Make the thing the little ones will watch.',
+       view:[
+         'With Art: the frame, the sheet and the puppets.',
+         'Test it with the torch. Is the shadow sharp?',
+         'Fix what does not work. Move the torch, not the sheet.',
+         'Leave it ready for tomorrow.'],
+       levels:{
+         'Support':{task:'Draw your theatre and label three parts.',
+               help:'Labels given.'},
+         'Core':{task:'Draw your theatre and write what you had to fix.',
+               help:'Frame: "It did not work because… so we…"'}}},
+      {s:2,title:'Dress rehearsal',
+       objective:'Narrate while you move, without reading.',
+       view:[
+         'Full run, timed. Two minutes per team.',
+         'The audience is the other half of the class, and they may ask.',
+         'Feedback: one thing that worked and one to fix.',
+         'Second run with the fix.'],
+       levels:{
+         'Support':{task:'Practise your part until you can do it without the paper.',
+               help:'Your sentences in large print.'},
+         'Core':{task:'Rehearse and write the one thing you will improve for tomorrow.',
+               help:'Be specific.'}}},
+      {s:3,title:'The show for Nursery',
+       objective:'Explain it to somebody younger than you.',
+       view:[
+         'Nursery comes in. Two shows so everybody performs.',
+         'After the show, one of them asks a question. Answer it.',
+         'Back in class: was it easy to explain? What did they not understand?',
+         'Finish your written explanation now that you have taught it.'],
+       levels:{
+         'Support':{task:'Copy your corrected explanation neatly.',
+               help:'Your text with the corrections marked.'},
+         'Core':{task:'Write the final version and add what a Nursery child asked you.',
+               help:'And how you answered.'}}}
+     ]}
   ],
   words:['sun','heat','wind','light','energy','shadow','bright','dark','torch','colour','bigger','smaller','near','far','is shining','is moving','is growing','I think','because'],
   deliverables:[
@@ -245,32 +385,88 @@ window.UNIT_PLANS = {
        science:'Motion, forces and gravity: movement produced by pushing and pulling.',
        math:'Counting to 999 and place value, to write down the distances.',
        english:'Starters listening, and the introduction of the past simple.'},
-     sessions:[{s:1,title:'Nothing moves on its own',view:[
-       'Tour of the classroom: name ten movements and say push or pull.',
-       'The odd one out: a dropped pencil. Nobody pushed it — so what did?',
-       'Word wall: push, pull, fall, fast, slow.',
-       'Teams and the challenge: build something that goes down a ramp.']}],
-     levels:{
-       'Support':{task:'Sort eight pictures into PUSH and PULL. Circle the one that falls on its own.',
-                  help:'Pictures with the word underneath.'},
-       'Core':{task:'Sort eight actions and write two of your own, one push and one pull.',
-               help:'Frame: "I push the ____." / "I pull the ____."'}}},
+     sessions:[
+      {s:1,title:'Push, pull, or neither',
+       objective:'Sort the movements of the room.',
+       view:[
+         'Tour of the classroom: name ten movements out loud.',
+         'Push or pull? Two columns on the board.',
+         'The odd one: a dropped pencil. Nobody pushed it. So what did?',
+         'Word wall: push, pull, fall, fast, slow.'],
+       levels:{
+         'Support':{task:'Sort eight pictures into PUSH and PULL and circle the one that falls.',
+               help:'Pictures with the word underneath.'},
+         'Core':{task:'Sort them and write two movements of your own, one push and one pull.',
+               help:'Frame: "I push the ____."'}}},
+      {s:2,title:'The challenge',
+       objective:'Understand what you have to build and for whom.',
+       view:[
+         'The ramp goes up in the hall. On race day your family will be watching.',
+         'Rule: it has to roll, not slide.',
+         'Teams and jobs: who builds, who measures, who writes.',
+         'First sketch of your vehicle.'],
+       levels:{
+         'Support':{task:'Draw your vehicle and label three parts.',
+               help:'Labels given: wheel, body, front.'},
+         'Core':{task:'Draw your vehicle and write what you will use to build it.',
+               help:'List of materials.'}}},
+      {s:3,title:'What makes it go further',
+       objective:'Guess before you build.',
+       view:[
+         'Two vehicles down the same ramp. Why did one go further?',
+         'Smooth and rough: feel both surfaces with your hand.',
+         'Everyone writes a guess and signs it.',
+         'We will open the guesses in week 3.'],
+       levels:{
+         'Support':{task:'Circle your guess: it will go further on the SMOOTH / ROUGH floor.',
+               help:'Two options and the two words.'},
+         'Core':{task:'Write your guess and say why you think so.',
+               help:'Frame: "I think ____ because ____."'}}}
+     ]},
     {n:2,title:'It happened yesterday',desc:'The past simple, because the race will already have happened when you tell it.',
      give:'Five sentences in the past about your first test.',
      across:{
        science:'What produces movement and what stops it.',
        math:'Addition up to three digits, with and without trading.',
        english:'Starters speaking: simple conversations about what you did.'},
-     sessions:[{s:1,title:'Pushed, pulled, moved, stopped',view:[
-       'Do the action, then say it in the past: I push → I pushed.',
-       'Board with the four verbs of the unit and their past.',
-       'Test the vehicle once, and immediately narrate it in the past.',
-       'Write the five sentences.']}],
-     levels:{
-       'Support':{task:'Complete five sentences with the past given: I ____ (push) the car. It ____ (move).',
-                  help:'The verbs are in brackets and the past forms are on the board.'},
-       'Core':{task:'Write five sentences in the past about what you did and what happened.',
-               help:'Model: "I pushed the car and it moved to the door."'}}},
+     sessions:[
+      {s:1,title:'It happened yesterday',
+       objective:'Talk about what you did, in the past.',
+       view:[
+         'Do the action, then say it in the past: I push → I pushed.',
+         'Four verbs on the board with their past: push, pull, move, stop.',
+         'Chain game: each child adds one past sentence.',
+         'Write the four verbs in your notebook.'],
+       levels:{
+         'Support':{task:'Complete five sentences with the past given in brackets.',
+               help:'The verbs and their past on the board.'},
+         'Core':{task:'Write five sentences in the past about something you did today.',
+               help:'Use three of the four verbs.'}}},
+      {s:2,title:'Numbers we can trust',
+       objective:'Write down distances properly.',
+       view:[
+         'Two children measure the same thing and get different numbers. Why?',
+         'Rule: measure from the same starting line, always.',
+         'Practise measuring three things in the room.',
+         'Everything gets written down, also the odd result.'],
+       levels:{
+         'Support':{task:'Measure three things and write the numbers in the table.',
+               help:'Table ready with the units.'},
+         'Core':{task:'Measure three things and write which is longest.',
+               help:'Use "longer than".'}}},
+      {s:3,title:'First test',
+       objective:'Try it and write what happened.',
+       view:[
+         'First run down the ramp. Measure how far it went.',
+         'Immediately, narrate it in the past: "I pushed it and it moved."',
+         'Three tries. All of them go in the table.',
+         'What would you change before the race?'],
+       levels:{
+         'Support':{task:'Complete the table with your three tries and circle the best.',
+               help:'Table with three rows.'},
+         'Core':{task:'Complete your table and write two sentences in the past about the test.',
+               help:'Model: "I pushed the car and it moved to the door."'}}}
+     ]},
     {n:3,title:'Building it',desc:'The vehicle, with Art. Then the first test on a smooth floor and on a rough one.',
      give:'Your vehicle and your first results.',
      across:{
@@ -278,48 +474,132 @@ window.UNIT_PLANS = {
        math:'Subtraction up to three digits: the difference between the two surfaces.',
        comunicacion:'Cuentos — borrador: contar en orden lo que paso, tambien en castellano.',
        english:'Past simple in dialogues about what you did today.'},
-     sessions:[{s:1,title:'Wheels and ramps',view:[
-       'Materials on the table. Rule: it has to roll, not slide.',
-       'Build, test, change one thing, test again.',
-       'Two surfaces: the corridor and the mat. Measure both.',
-       'Which went further? Write the number, not "a lot".']}],
-     levels:{
-       'Support':{task:'Draw your vehicle, label three parts, and write the two distances in the table.',
-                  help:'The table and the labels are ready.'},
-       'Core':{task:'Draw and label your vehicle and write which surface was better, with the numbers.',
+     sessions:[
+      {s:1,title:'Smooth or rough',
+       objective:'Test the same vehicle on two surfaces.',
+       view:[
+         'Same vehicle, same ramp, same push. Only the floor changes.',
+         'Three tries on the corridor and three on the mat.',
+         'Measure and write. Nothing gets rubbed out.',
+         'Open the guesses from week 1. Who was right?'],
+       levels:{
+         'Support':{task:'Complete the table with the two surfaces and circle the longer one.',
+               help:'Table with the two columns.'},
+         'Core':{task:'Complete your table and write which surface was better, with the numbers.',
                help:'Frame: "It went ____ cm on the ____ floor."'}}},
+      {s:2,title:'Why the floor matters',
+       objective:'Explain the result.',
+       view:[
+         'Rub your hands on the table and on the mat. Which one holds you back?',
+         'The word for that: friction, though we can just say the floor holds it back.',
+         'So why did the smooth floor win?',
+         'Say it out loud before writing it.'],
+       levels:{
+         'Support':{task:'Circle the right answer in three sentences about your test.',
+               help:'Two options each.'},
+         'Core':{task:'Write why one floor was better, using because.',
+               help:'Model: "It went further because the floor was smooth."'}}},
+      {s:3,title:'Fixing the vehicle',
+       objective:'Change one thing and test again.',
+       view:[
+         'Each team changes ONE thing: wheels, weight or the front.',
+         'Test again with the same ramp.',
+         'Better or worse? Write the new number next to the old one.',
+         'Was the change worth it?'],
+       levels:{
+         'Support':{task:'Write what you changed and the new number.',
+               help:'Two boxes: before and after.'},
+         'Core':{task:'Write what you changed, the two numbers and whether it was worth it.',
+               help:'Use "better than" or "worse than".'}}}
+     ]},
     {n:4,title:'Reading a story of movement',desc:'A short story where something moves. Who is in it, where it happens, what happened first.',
      give:'Your answers about the story.',
      across:{
        science:'Effect of the surface on movement. Gravity and falling objects.',
        math:'Counting in 2s, 3s, 4s, 5s and 10s.',
        english:'Starters reading: describing characters, settings and events with details.'},
-     sessions:[{s:1,title:'Who, where, what happened',view:[
-       'Read the story aloud, stopping to predict.',
-       'Three columns: characters, place, what happened.',
-       'Order four pictures from the story: first, then, after that, finally.',
-       'One sentence: what would have happened if the floor had been rough?']}],
-     levels:{
-       'Support':{task:'Order the four pictures and match each one with first / then / after that / finally.',
-                  help:'The four words are on cards.'},
-       'Core':{task:'Retell the story in four sentences using the four order words.',
+     sessions:[
+      {s:1,title:'A story where something moves',
+       objective:'Read and find the order.',
+       view:[
+         'Read the story aloud, stopping to guess what comes next.',
+         'Who is in it, where it happens, what happened.',
+         'Four pictures to put in order: first, then, after that, finally.',
+         'What would have happened on a rough floor?'],
+       levels:{
+         'Support':{task:'Order the four pictures and match them with the four order words.',
+               help:'Word cards.'},
+         'Core':{task:'Retell the story in four sentences using the four order words.',
                help:'Write in the past.'}}},
+      {s:2,title:'Describing what you see',
+       objective:'Say who, where and how.',
+       view:[
+         'Describe the character of the story: what is he like?',
+         'Describe the place. Three things you can see.',
+         'Adjectives on the board: fast, slow, big, small, smooth, rough.',
+         'Describe your own vehicle to somebody who cannot see it.'],
+       levels:{
+         'Support':{task:'Complete the description with the adjectives given.',
+               help:'Adjectives in a box.'},
+         'Core':{task:'Write four sentences describing your vehicle.',
+               help:'At least two adjectives.'}}},
+      {s:3,title:'Planning my account',
+       objective:'Decide what to tell and in what order.',
+       view:[
+         'What has to go in: what I built, what I did, what happened, why.',
+         'Order them with the four order words.',
+         'Plan it in the notebook before writing it.',
+         'Read your plan to your partner.'],
+       levels:{
+         'Support':{task:'Number the four parts in the order you will write them.',
+               help:'Parts on cards.'},
+         'Core':{task:'Write your plan in four lines, one per part.',
+               help:'One line each, no more.'}}}
+     ]},
     {n:5,title:'Writing the race',desc:'Your own account of the test: what you built, what you did, what happened on each floor and why.',
      give:'The draft in your notebook.',
      across:{
        science:'Why one surface holds the vehicle back more than the other.',
        math:'Fractions: half the ramp, a quarter of the distance.',
        english:'Starters writing: narratives and graphic organisers to sequence ideas.'},
-          sessions:[{s:1,title:'Draft it, cross it out',view:[
-       'Model on the board: one account written badly, and we fix it together.',
-       'Everybody writes their draft in the notebook. Crossing out is allowed — it is expected.',
-       'Read it to your partner: do they understand what you did?',
-       'Mark the one thing you will change tomorrow.']}],
-     levels:{
-       'Support':{task:'Write your account with the frame: "I built… I pushed… It went… because…"',
-                  help:'The four openings are printed.'},
-       'Core':{task:'Write your account in order, in the past, explaining why one floor was better.',
-               help:'Use because at least once, and two order words.'}}},
+          sessions:[
+      {s:1,title:'Drafting the account',
+       objective:'Write it in the past, in order.',
+       view:[
+         'Model on the board: an account written badly. Fix it together.',
+         'Everyone drafts in the notebook. Crossings-out are expected.',
+         'Halfway: read your first two sentences to a partner.',
+         'Finish the draft.'],
+       levels:{
+         'Support':{task:'Write your account with the frame: "I built… I pushed… It went… because…"',
+               help:'The four openings printed.'},
+         'Core':{task:'Write your account in order, in the past, with your real numbers.',
+               help:'Two order words and one because.'}}},
+      {s:2,title:'Making it better',
+       objective:'Improve it with what your partner did not understand.',
+       view:[
+         'Swap notebooks. Mark what you did not understand.',
+         'Three common problems: no order, no numbers, no why.',
+         'Correct yours with what was marked.',
+         'Read the corrected version out loud.'],
+       levels:{
+         'Support':{task:'Correct the three things marked in your text.',
+               help:'Your text with the marks.'},
+         'Core':{task:'Rewrite your account fixing what your partner did not understand.',
+               help:'Say what you changed.'}}},
+      {s:3,title:'The final version',
+       objective:'Leave it ready for your family to read.',
+       view:[
+         'Last read: capital letters, full stops, and the numbers.',
+         'Copy it out neatly for race day.',
+         'Practise reading it out loud in twenty seconds.',
+         'Leave it with your vehicle.'],
+       levels:{
+         'Support':{task:'Copy your account neatly and practise reading it.',
+               help:'Your corrected text.'},
+         'Core':{task:'Produce the final version and rehearse explaining it without reading.',
+               help:'Your family will ask you.'}}}
+     ]},
     {n:6,title:'Race day',desc:'The final version, the race in the hall and the explanation to the families.',
      give:'The finished text and the race.',
      across:{
@@ -327,16 +607,44 @@ window.UNIT_PLANS = {
        math:'Times tables and combined operations to total the results.',
        social:'Sense of belonging: your family sees what this class built.',
        english:'Friendly letters and narratives: telling it in order, in the past.'},
-     sessions:[{s:1,title:'The hall, the ramp, the families',view:[
-       'Set up the ramp. Each team announces its vehicle in one sentence.',
-       'The race, measured. Every result on the big chart.',
-       'Each team explains to a family why theirs went that far.',
-       'Back in class: was your explanation right? Add one line.']}],
-     levels:{
-       'Support':{task:'Copy your corrected account neatly and read it out to a family.',
-                  help:'Your text from last week with the corrections marked.'},
-       'Core':{task:'Write the final version including the real result of race day.',
-               help:'Add the actual distance and whether it matched what you expected.'}}}
+     sessions:[
+      {s:1,title:'Setting up the hall',
+       objective:'Get the race ready.',
+       view:[
+         'Set up the ramp and the measuring line.',
+         'Each team announces its vehicle in one sentence.',
+         'Rules of the race, agreed: same ramp, same push, three tries.',
+         'Last check of the vehicles.'],
+       levels:{
+         'Support':{task:'Practise your announcement sentence.',
+               help:'Frame: "This is ____ and it has ____."'},
+         'Core':{task:'Write your announcement and practise saying it clearly.',
+               help:'One sentence, no more.'}}},
+      {s:2,title:'Race day',
+       objective:'Run the race and record the results.',
+       view:[
+         'The race, measured. Three tries per team.',
+         'Every result goes on the big class chart.',
+         'Explain to a family why yours went that far.',
+         'Answer their question.'],
+       levels:{
+         'Support':{task:'Write your race result in the table and circle the best try.',
+               help:'Table on the wall.'},
+         'Core':{task:'Write your result and explain to a family why yours went that far.',
+               help:'Use because.'}}},
+      {s:3,title:'What we learned',
+       objective:'Close the loop.',
+       view:[
+         'Look at the class chart. Which vehicle won and why?',
+         'Was our explanation right?',
+         'Add one line to your account with the real race result.',
+         'One thing you would do differently.'],
+       levels:{
+         'Support':{task:'Add the race result to your account and circle if your guess was right.',
+               help:'Your text.'},
+         'Core':{task:'Add the real result and write what you would do differently next time.',
+               help:'Be specific.'}}}
+     ]}
   ],
   words:['push','pull','move','stop','fall','fast','slow','smooth','rough','wheel','ramp','pushed','pulled','moved','stopped','further','first','then','after that','because'],
   deliverables:[
@@ -443,16 +751,44 @@ window.UNIT_PLANS = {
        math:'Combined operations, for the distances of the fact file.',
        social:'The Earth as part of the world. The sundial and telling the time by the Sun.',
        english:'Informative text about the planets: main idea and details, and the vocabulary orbit, gravity, rotate.'},
-     sessions:[{s:1,title:'The solar system, in order',view:[
-       'The scale rope across the playground: how far Neptune really is.',
-       'Read the informative text. Underline: orbit, rotate, revolve, gravity.',
-       'Each team takes one planet or moon and fills in its fact file.',
-       'What will your model show? Decide today.']}],
-     levels:{
-       'Support':{task:'Complete the fact file with the data given: name, size, position, one curious fact.',
-                  help:'The text with the answers highlighted, and the fact file already laid out.'},
-       'Core':{task:'Write the fact file finding the data yourself and add why your body matters.',
-               help:'Reminder: use the present simple for things that are always true.'}}},
+     sessions:[
+      {s:1,title:'How far is far',
+       objective:'Get a sense of the size of the solar system.',
+       view:[
+         'The scale rope across the playground. Where does Neptune end up?',
+         'The Sun at the centre, and everything turning around it.',
+         'Words for the wall: orbit, rotate, revolve, gravity.',
+         'Which body will your team take?'],
+       levels:{
+         'Support':{task:'Label the diagram of the solar system with the names given.',
+               help:'Diagram to label.'},
+         'Core':{task:'Draw the solar system in order and label the four key words.',
+               help:'From memory if you can.'}}},
+      {s:2,title:'Reading about your planet',
+       objective:'Get information out of an informative text.',
+       view:[
+         'Read the text about the planets. What kind of text is this?',
+         'Main idea first, details afterwards. Where is each?',
+         'Underline the words of the unit that appear.',
+         'Fill in the fact file of your body.'],
+       levels:{
+         'Support':{task:'Complete the fact file with the data given: name, size, position, one fact.',
+               help:'Text with data highlighted.'},
+         'Core':{task:'Write your fact file finding the data yourself and add why it matters.',
+               help:'Present simple for what is always true.'}}},
+      {s:3,title:'Deciding the model',
+       objective:'Choose what your model will show.',
+       view:[
+         'Three models on the table. What does each one explain?',
+         'A model that shows everything shows nothing. Choose ONE movement.',
+         'Sketch it: what moves, what stays still.',
+         'What will you need to build it?'],
+       levels:{
+         'Support':{task:'Choose your model from three options and list what you need.',
+               help:'Three options and a materials list.'},
+         'Core':{task:'Sketch your model and write what movement it will show.',
+               help:'One sentence, clear.'}}}
+     ]},
     {n:2,title:'Day, night and the seasons',desc:'Rotation and revolution. What always happens, and what is happening right now.',
      give:'Six sentences: three present simple, three present continuous.',
      across:{
@@ -460,16 +796,44 @@ window.UNIT_PLANS = {
        math:'Fractions: a quarter of a turn, half an orbit.',
        social:'Years, decades, past-present-future, and how ancient cultures read the sky.',
        english:'Present simple versus present continuous: what always happens and what is happening now.'},
-     sessions:[{s:1,title:'Always, or right now?',view:[
-       'With a torch and a globe: one turn = one day. One lap = one year.',
-       'Two columns on the board: ALWAYS (the Earth rotates) / NOW (the Earth is rotating).',
-       'Everybody writes three of each about what they can see.',
-       'Why is it winter here and summer there? Say it before writing it.']}],
-     levels:{
-       'Support':{task:'Sort six sentences into ALWAYS / NOW and complete three with the right form.',
-                  help:'The verbs are given.'},
-       'Core':{task:'Write six sentences of your own, three of each, about rotation and revolution.',
-               help:'Model: "The Earth rotates every 24 hours." / "The Earth is rotating right now."'}}},
+     sessions:[
+      {s:1,title:'Day and night',
+       objective:'Explain rotation with a torch and a globe.',
+       view:[
+         'Torch and globe: one turn, one day. Where is it night now?',
+         'Rotation: the Earth turns on itself.',
+         'Everyone tries it with their partner.',
+         'Explain it out loud without the globe.'],
+       levels:{
+         'Support':{task:'Complete three sentences about day and night with the words given.',
+               help:'Words in a box.'},
+         'Core':{task:'Explain in three sentences why we have day and night.',
+               help:'Present simple.'}}},
+      {s:2,title:'The seasons',
+       objective:'Explain revolution.',
+       view:[
+         'One lap around the Sun, one year. Why is it not the same all year?',
+         'The tilt. Show it with the globe.',
+         'Why is it winter here and summer there?',
+         'Say it before writing it.'],
+       levels:{
+         'Support':{task:'Match each season with its picture and complete two sentences.',
+               help:'Pictures and sentences.'},
+         'Core':{task:'Explain why the seasons change, in three sentences.',
+               help:'Use because.'}}},
+      {s:3,title:'Always or right now',
+       objective:'Tell present simple from present continuous.',
+       view:[
+         'Two columns: ALWAYS (the Earth rotates) / NOW (the Earth is rotating).',
+         'Sort ten sentences between the two.',
+         'Write three of each about what you can see.',
+         'Trap: which of the two do we use to explain a model?'],
+       levels:{
+         'Support':{task:'Sort six sentences into ALWAYS / NOW and complete three.',
+               help:'Verbs given.'},
+         'Core':{task:'Write six sentences of your own, three of each.',
+               help:'About rotation and revolution.'}}}
+     ]},
     {n:3,title:'The Moon and the tides',desc:'Moon phases and tides. Predicting what will happen next.',
      give:'Your predictions, written with will.',
      across:{
@@ -477,16 +841,44 @@ window.UNIT_PLANS = {
        math:'Reading the tide chart and its numbers.',
        social:'Natural disasters linked to the Earth’s systems, and environmental responsibility.',
        english:'Future with will: making predictions and justifying them.'},
-     sessions:[{s:1,title:'What happens next?',view:[
-       'The phases with a ball and a lamp: it is the same Moon, we see it differently.',
-       'The tide chart: what do you predict for tomorrow?',
-       'Board: will for a prediction, going to for what you can already see coming.',
-       'Write three predictions and sign them. We will check them at the exhibition.']}],
-     levels:{
-       'Support':{task:'Complete three predictions: "Tomorrow the Moon will ____." Choose from the options.',
-                  help:'Options given and the phases in order on a strip.'},
-       'Core':{task:'Write three predictions of your own with will, and explain one with because.',
+     sessions:[
+      {s:1,title:'The Moon changes shape',
+       objective:'Understand the phases.',
+       view:[
+         'Ball and lamp: it is the same Moon, we see it differently.',
+         'The eight phases, in order.',
+         'What phase is it tonight? Look it up.',
+         'Draw the phases in order.'],
+       levels:{
+         'Support':{task:'Order the phases and label four of them.',
+               help:'Phase cards.'},
+         'Core':{task:'Draw the phases in order and explain why we see them differently.',
+               help:'Because.'}}},
+      {s:2,title:'Tides',
+       objective:'Connect the Moon with the sea.',
+       view:[
+         'The Moon pulls the water. Demonstration with the magnet.',
+         'The tide chart of the coast. What does it show?',
+         'What do you predict for tomorrow?',
+         'Predictions signed. We check them at the exhibition.'],
+       levels:{
+         'Support':{task:'Complete three predictions choosing from the options.',
+               help:'Options given.'},
+         'Core':{task:'Write three predictions with will and justify one.',
                help:'Frame: "I think that… will… because…"'}}},
+      {s:3,title:'Saying what will happen',
+       objective:'Use will for predictions.',
+       view:[
+         'Will for what we think, going to for what we can already see coming.',
+         'Ten situations: which of the two?',
+         'Write your predictions about your model.',
+         'Read one out. Does the class agree?'],
+       levels:{
+         'Support':{task:'Complete five predictions with will.',
+               help:'Sentences started.'},
+         'Core':{task:'Write five predictions and mark which are will and which going to.',
+               help:'And say why.'}}}
+     ]},
     {n:4,title:'Going to space',desc:'Space missions, the jobs behind them and what a mission costs. Planning yours.',
      give:'Your mission plan with its budget.',
      across:{
@@ -494,16 +886,44 @@ window.UNIT_PLANS = {
        math:'The mission budget: adding, comparing and staying under a limit.',
        social:'Jobs in space exploration, and deciding as a team what the mission is for.',
        english:'Going to, and will versus going to. Writing a short informative text.'},
-     sessions:[{s:1,title:'Who goes and what it costs',view:[
-       'The jobs on a real mission: not only astronauts.',
-       'Your team plans a mission: where, why, who goes, what you take.',
-       'The budget, with Maths: you have a limit and you cannot pass it.',
-       'Present the plan in one minute to another team, who may object.']}],
-     levels:{
-       'Support':{task:'Complete the mission plan choosing from the options, and add up the budget.',
-                  help:'Prices given and the additions started.'},
-       'Core':{task:'Write your mission plan and justify two decisions in the budget.',
-               help:'Use because and so.'}}},
+     sessions:[
+      {s:1,title:'Who goes to space',
+       objective:'Discover the jobs behind a mission.',
+       view:[
+         'Not only astronauts: engineers, doctors, cooks, programmers.',
+         'Which of these jobs would you want?',
+         'Every mission needs a team. What is yours?',
+         'Assign the jobs in your team.'],
+       levels:{
+         'Support':{task:'Match five jobs with what they do on a mission.',
+               help:'Cards to match.'},
+         'Core':{task:'Choose your job and write what you would do on the mission.',
+               help:'Three sentences.'}}},
+      {s:2,title:'What a mission costs',
+       objective:'Plan with a real budget.',
+       view:[
+         'You have a limit and you cannot go over it.',
+         'Prices on the board: rocket, food, fuel, suits.',
+         'With Maths: add up and decide what to leave out.',
+         'What did you sacrifice, and why?'],
+       levels:{
+         'Support':{task:'Complete the budget with the prices given and add it up.',
+               help:'Additions started.'},
+         'Core':{task:'Build your budget and justify two decisions.',
+               help:'Because and so.'}}},
+      {s:3,title:'Presenting the mission',
+       objective:'Explain a plan in one minute.',
+       view:[
+         'One minute per team. Where, why, who and how much.',
+         'The other team may object.',
+         'Answer the objection.',
+         'Correct your plan with what came up.'],
+       levels:{
+         'Support':{task:'Present your plan with the four points on your card.',
+               help:'Card with the four points.'},
+         'Core':{task:'Present your plan and answer one objection.',
+               help:'Prepare the likely one.'}}}
+     ]},
     {n:5,title:'The exhibition',desc:'Building the model, writing the explanation and rehearsing until it can be said without reading.',
      give:'The model, the explanation and your talk to visitors.',
      across:{
@@ -511,16 +931,44 @@ window.UNIT_PLANS = {
        math:'Checking the scale of your model against the real figures.',
        social:'Teamwork norms, public speaking, respectful listening and civic behaviour at the exhibition.',
        english:'Writing an informative explanation with linking words, and rehearsing it out loud.'},
-     sessions:[{s:1,title:'Standing next to your model',view:[
-       'Final assembly and check: does the model actually move?',
-       'Rehearsal in pairs: explain it in 60 seconds without the card.',
-       'The exhibition opens. Take turns: one explains, one welcomes.',
-       'Note down the best question a visitor asked you.']}],
-     levels:{
-       'Support':{task:'Write your explanation with the frame: "This model shows… It works like this… That is why…"',
-                  help:'The three openings printed, plus your word bank.'},
-       'Core':{task:'Write your explanation in your own words, with linking words and one prediction.',
-               help:'It has to work read aloud to a visitor: read it out before handing it in.'}}}
+     sessions:[
+      {s:1,title:'Building the model',
+       objective:'Make it actually move.',
+       view:[
+         'Assemble it. Rule: it has to move, not just look nice.',
+         'Test it. Does it show what you wanted?',
+         'Fix what does not work.',
+         'Leave it ready to explain.'],
+       levels:{
+         'Support':{task:'Build your model and label its parts.',
+               help:'Labels given.'},
+         'Core':{task:'Build your model and write what you had to change.',
+               help:'And why.'}}},
+      {s:2,title:'Writing the explanation',
+       objective:'Explain a process so it can be followed.',
+       view:[
+         'What it shows, how it works, why we see what we see.',
+         'Linking words: first, then, because, so, that is why.',
+         'Draft in the notebook.',
+         'Read it to a partner: do they understand it?'],
+       levels:{
+         'Support':{task:'Write your explanation with the frame: "This model shows… It works like this… That is why…"',
+               help:'Three openings printed.'},
+         'Core':{task:'Write your explanation in your own words with linking words.',
+               help:'80–120 words.'}}},
+      {s:3,title:'The exhibition',
+       objective:'Explain it to a visitor who is not your teacher.',
+       view:[
+         'Set up the stands. Who welcomes and who explains?',
+         'Rehearse in 60 seconds without the card.',
+         'The exhibition opens. Take turns.',
+         'Note the best question a visitor asked you.'],
+       levels:{
+         'Support':{task:'Explain your model using your card, and note one question.',
+               help:'Your card.'},
+         'Core':{task:'Explain without reading and answer a question you had not prepared.',
+               help:'Note it down afterwards.'}}}
+     ]}
   ],
   words:['orbit','rotate','revolve','gravity','solar system','planet','moon','phase','tide','season','day','night','mission','will','going to','because','so','first','next','that is why'],
   deliverables:[
@@ -583,16 +1031,44 @@ window.UNIT_PLANS = {
        math:'Decimals, to read the data you are about to collect.',
        social:'Personal growth and goals. Self-regulation, strengths and areas to improve.',
        english:'Reading narrative nonfiction: a child reaching a goal. Main idea and supporting details.'},
-     sessions:[{s:1,title:'How did they manage it?',view:[
-       'Read the true story. Stop at the moment they nearly gave up.',
-       'Three columns: what they wanted, what stopped them, what they did.',
-       'New words: goal, effort, challenge, progress.',
-       'Which habit are you going to track this week? Choose it now.']}],
-     levels:{
-       'Support':{task:'Answer four questions about the story choosing from two options, and copy the main idea.',
-                  help:'The text with the key sentences highlighted.'},
-       'Core':{task:'Write the main idea in your own words and three details that support it.',
+     sessions:[
+      {s:1,title:'Somebody who did it',
+       objective:'Read about a child who reached a goal.',
+       view:[
+         'Read the true story, stopping where they nearly gave up.',
+         'What did they want, what stopped them, what did they do?',
+         'Words: goal, effort, challenge, progress.',
+         'Which of the three columns is the hardest in real life?'],
+       levels:{
+         'Support':{task:'Answer four questions choosing from two options and copy the main idea.',
+               help:'Text with key sentences highlighted.'},
+         'Core':{task:'Write the main idea in your own words and three details.',
                help:'Frame: "The main idea is… I know because…"'}}},
+      {s:2,title:'What is a good goal',
+       objective:'Tell a keepable goal from an impossible one.',
+       view:[
+         'Two goals on the board: one real, one impossible. Which is which?',
+         'The rule: if you cannot say when and how often, it is not a goal.',
+         'Five goals to judge: keepable or not?',
+         'Start thinking about yours.'],
+       levels:{
+         'Support':{task:'Mark five goals as keepable or not, and say why for one.',
+               help:'Goals listed.'},
+         'Core':{task:'Rewrite two impossible goals so they become keepable.',
+               help:'Add when and how often.'}}},
+      {s:3,title:'Choosing my habit',
+       objective:'Decide what you will track for a week.',
+       view:[
+         'What can be counted: hours of sleep, minutes of reading, glasses of water.',
+         'It has to be countable, and it has to be yours.',
+         'Design your tracking sheet.',
+         'First reading, today.'],
+       levels:{
+         'Support':{task:'Choose your habit from four options and complete the sheet.',
+               help:'Four options and the sheet drawn.'},
+         'Core':{task:'Choose your habit and design your own sheet.',
+               help:'It must have seven days and a unit.'}}}
+     ]},
     {n:2,title:'This year I learned',desc:'Looking back at the year and writing it down properly, in the past tense.',
      give:'A 100-word reflection paragraph.',
      across:{
@@ -600,16 +1076,44 @@ window.UNIT_PLANS = {
        math:'Recording the daily data of your habit.',
        social:'Responsibility in learning, and reviewing the classroom agreements.',
        english:'A 100-word reflection paragraph in the past tense, with linking words.'},
-     sessions:[{s:1,title:'March to now',view:[
-       'Your March notebook next to today’s. What has changed?',
-       'Past simple: learned, practised, started, managed.',
-       'Write the paragraph. One concrete example is worth more than three adjectives.',
-       'Read one out loud, anonymously. What made it good?']}],
-     levels:{
-       'Support':{task:'Complete the paragraph: "This year I learned ____. For example, ____. It was hard because ____."',
-                  help:'Three openings and a bank of past verbs.'},
-       'Core':{task:'Write your 100-word paragraph with at least one specific example.',
-               help:'Past simple throughout, and linking words.'}}},
+     sessions:[
+      {s:1,title:'Looking back at the year',
+       objective:'Remember with evidence, not with feeling.',
+       view:[
+         'Your March notebook next to today’s. What has changed?',
+         'Not "I did well": one concrete example.',
+         'Past simple: learned, practised, started, managed.',
+         'Say your example out loud to a partner.'],
+       levels:{
+         'Support':{task:'Complete three sentences about the year with the past verbs given.',
+               help:'Verbs in a box.'},
+         'Core':{task:'Write three things you learned, each with an example.',
+               help:'Past simple throughout.'}}},
+      {s:2,title:'Writing the reflection',
+       objective:'Write 100 words that say something.',
+       view:[
+         'Two reflections on the board: one empty, one specific. What is the difference?',
+         'Linking words: and, because, also, but.',
+         'Write your paragraph in the notebook.',
+         'Read one out anonymously. What made it good?'],
+       levels:{
+         'Support':{task:'Complete the paragraph: "This year I learned ____. For example ____. It was hard because ____."',
+               help:'Three openings.'},
+         'Core':{task:'Write your 100-word paragraph with at least one example.',
+               help:'Past simple and linking words.'}}},
+      {s:3,title:'Checking my tracking',
+       objective:'Make sure the week of data is usable.',
+       view:[
+         'Show your sheet. Any day missing?',
+         'A gap is not a zero. Mark it as a gap.',
+         'Are we all measuring the same way?',
+         'Finish the week today.'],
+       levels:{
+         'Support':{task:'Complete the missing days of your sheet and mark the gaps.',
+               help:'Your sheet.'},
+         'Core':{task:'Complete your sheet and write how you measured, so it could be repeated.',
+               help:'Two sentences.'}}}
+     ]},
     {n:3,title:'What the data says',desc:'A week tracking one habit. Now the numbers, not the feeling.',
      give:'Your week of data, and what it shows.',
      across:{
@@ -617,16 +1121,44 @@ window.UNIT_PLANS = {
        math:'Total, best day and worst day of your week of data.',
        social:'Children’s rights and responsibilities. Autonomy, and saying no to what gets in the way.',
        english:'Describing what the data shows, without exaggerating it.'},
-     sessions:[{s:1,title:'Seven days of evidence',view:[
-       'Everybody brings their week. Nobody hides the bad days.',
-       'With Maths: total, best day, worst day.',
-       'What surprised you? Say it before writing it.',
-       'What would you change if next week had to be better?']}],
-     levels:{
-       'Support':{task:'Complete your table of seven days and circle the best and worst day.',
-                  help:'Table drawn, with the days of the week.'},
-       'Core':{task:'Complete your table, work out the total and write two things the data shows.',
-               help:'Frame: "The data shows that… because…"'}}},
+     sessions:[
+      {s:1,title:'Reading my week',
+       objective:'Look at the data you collected.',
+       view:[
+         'Everyone brings their week. Nobody hides the bad days.',
+         'Total, best day, worst day.',
+         'What surprised you?',
+         'What would you change if next week had to be better?'],
+       levels:{
+         'Support':{task:'Complete your table of seven days and circle the best and worst.',
+               help:'Table with the days.'},
+         'Core':{task:'Complete your table, work out the total and write two things it shows.',
+               help:'Frame: "The data shows that…"'}}},
+      {s:2,title:'What the numbers do not say',
+       objective:'Read data honestly.',
+       view:[
+         'A very good day does not make a good week.',
+         'Average: what is the normal day like for you?',
+         'What does your data NOT tell you?',
+         'Say one thing your data proves and one it does not.'],
+       levels:{
+         'Support':{task:'Work out your average and circle whether it is high or low for you.',
+               help:'Operation set out.'},
+         'Core':{task:'Work out your average and write one thing your data does not tell you.',
+               help:'Be honest.'}}},
+      {s:3,title:'From the data to the plan',
+       objective:'Use the evidence to decide.',
+       view:[
+         'Design a healthy routine that starts from what your data showed.',
+         'If your data says you read on two days, do not plan for seven.',
+         'Write your routine.',
+         'Test it against a real week.'],
+       levels:{
+         'Support':{task:'Complete the routine with the options given.',
+               help:'Weekly grid.'},
+         'Core':{task:'Design your routine starting from your data and say why.',
+               help:'Frame: "Because my data shows… I will…"'}}}
+     ]},
     {n:4,title:'Next year I will',desc:'Setting the goal. Will and going to, and saying no to what gets in the way.',
      give:'Your goal, written twice: with will and with going to.',
      across:{
@@ -634,16 +1166,44 @@ window.UNIT_PLANS = {
        math:'Basic budget planning for a small personal goal.',
        social:'Decision making: what you give up when you choose a goal.',
        english:'Future forms: will and going to, and the difference between them.'},
-     sessions:[{s:1,title:'A goal you can keep',view:[
-       'Two goals on the board, one impossible and one real. Which is which, and why?',
-       'Rule: if you cannot say when and how often, it is not a goal.',
-       'Write yours with will, then with going to. They are not the same.',
-       'Swap with a partner: is theirs keepable?']}],
-     levels:{
-       'Support':{task:'Complete: "Next year I will ____. I am going to ____ every ____."',
-                  help:'The frames and a list of possible goals.'},
-       'Core':{task:'Write your goal in both forms and explain why you chose it, with because.',
-               help:'It must say when and how often.'}}},
+     sessions:[
+      {s:1,title:'Next year I will',
+       objective:'Set a goal in the future.',
+       view:[
+         'Will and going to. They are not the same.',
+         'Write yours in both forms.',
+         'The test: when and how often?',
+         'Swap with a partner: is theirs keepable?'],
+       levels:{
+         'Support':{task:'Complete: "Next year I will ____. I am going to ____ every ____."',
+               help:'Frames and a list of goals.'},
+         'Core':{task:'Write your goal in both forms and explain why you chose it.',
+               help:'With because.'}}},
+      {s:2,title:'Saying no',
+       objective:'Recognise what will get in the way.',
+       view:[
+         'What is going to stop you? Be honest.',
+         'Rights and responsibilities: choosing is also giving something up.',
+         'Peer pressure: what do you do when your friends say otherwise?',
+         'Write the obstacle and what you will do about it.'],
+       levels:{
+         'Support':{task:'Match three obstacles with three solutions.',
+               help:'Cards to match.'},
+         'Core':{task:'Write your biggest obstacle and your plan for it.',
+               help:'Frame: "When ____, I will ____."'}}},
+      {s:3,title:'The routine plan',
+       objective:'Turn the goal into a week.',
+       view:[
+         'A goal with no routine does not survive February.',
+         'Design your week: which days, how long.',
+         'With Maths: does it fit in a real week?',
+         'Test it against your data from week 2.'],
+       levels:{
+         'Support':{task:'Complete your weekly routine with the options given.',
+               help:'Weekly grid.'},
+         'Core':{task:'Design your routine plan and check it against your data.',
+               help:'Does it fit? If not, change it.'}}}
+     ]},
     {n:5,title:'Why it matters',desc:'Opinion writing: why your goal is important, and what you will need for it.',
      give:'Your opinion paragraph and your plan of resources.',
      across:{
@@ -651,16 +1211,44 @@ window.UNIT_PLANS = {
        math:'What the goal costs in time, and whether it fits in a week.',
        social:'Final reflection: rights and responsibilities in what you set out to do.',
        english:'Opinion writing: why my goal is important, with but, so and because.'},
-     sessions:[{s:1,title:'Convince yourself first',view:[
-       'A goal you cannot justify does not survive February.',
-       'Write why it matters, using but, so and because.',
-       'With Maths: what does it cost — time, money, help from somebody?',
-       'Rehearse the first two sentences out loud.']}],
-     levels:{
-       'Support':{task:'Complete the opinion paragraph with the three conjunctions given.',
-                  help:'but / so / because are printed where they go.'},
-       'Core':{task:'Write why your goal matters and what you will need, using the three conjunctions.',
-               help:'Two paragraphs: why, and what it needs.'}}},
+     sessions:[
+      {s:1,title:'Why my goal matters',
+       objective:'Give reasons for an opinion.',
+       view:[
+         'A goal you cannot justify does not last.',
+         'But, so and because: three ways to give a reason.',
+         'Write why yours matters.',
+         'Read the first two sentences out loud.'],
+       levels:{
+         'Support':{task:'Complete the opinion paragraph with the three conjunctions.',
+               help:'Conjunctions placed.'},
+         'Core':{task:'Write why your goal matters using the three conjunctions.',
+               help:'One paragraph.'}}},
+      {s:2,title:'What I will need',
+       objective:'Work out what it costs.',
+       view:[
+         'Time, money, help from somebody. What does yours need?',
+         'Basic budget for a small personal goal.',
+         'What can you get and what not?',
+         'Adjust the plan if it does not fit.'],
+       levels:{
+         'Support':{task:'Complete the resources list and add up the cost.',
+               help:'List and prices.'},
+         'Core':{task:'Write what you need and adjust your plan if it does not fit.',
+               help:'Say what you adjusted.'}}},
+      {s:3,title:'Editing my text',
+       objective:'Leave it correct before handing it over.',
+       view:[
+         'Capital letters, full stops, question marks.',
+         'Read it aloud: where do you run out of breath? There goes a full stop.',
+         'Correct in pairs.',
+         'Copy out the corrected version.'],
+       levels:{
+         'Support':{task:'Correct the ten mistakes marked in your text.',
+               help:'Your text with the marks.'},
+         'Core':{task:'Correct your text and explain two of your corrections.',
+               help:'Which rule applies.'}}}
+     ]},
     {n:6,title:'Saying it to your family',desc:'The final text and the two-to-three-minute presentation at the meeting.',
      give:'The presentation and the finished plan.',
      across:{
@@ -668,16 +1256,44 @@ window.UNIT_PLANS = {
        math:'The weekly plan with its real numbers.',
        social:'Oral presentation to the family: two to three minutes, and answering a question.',
        english:'Editing punctuation and capitalisation before handing it over.'},
-     sessions:[{s:1,title:'The meeting',view:[
-       'Last rehearsal in pairs, timed.',
-       'Families come in. Each student presents their goal.',
-       'The family asks one question. Answer it.',
-       'The plan stays with them: they are the ones who will remind you.']}],
-     levels:{
-       'Support':{task:'Copy your final plan neatly and practise reading the first two sentences without looking.',
-                  help:'Your text with the corrections marked.'},
-       'Core':{task:'Write the final version of your plan, ready to hand to your family.',
-               help:'It has to be understood by somebody who was not in class.'}}}
+     sessions:[
+      {s:1,title:'Preparing the presentation',
+       objective:'Get ready to say it out loud.',
+       view:[
+         'Two to three minutes. What goes in and what does not?',
+         'Structure: what I learned, my goal, my plan, why it matters.',
+         'Make your cards, with key words only.',
+         'First rehearsal in pairs.'],
+       levels:{
+         'Support':{task:'Make four cards with the key words of each part.',
+               help:'Structure given.'},
+         'Core':{task:'Prepare your cards and rehearse the opening without reading.',
+               help:'The first fifteen seconds matter most.'}}},
+      {s:2,title:'Rehearsing',
+       objective:'Say it without reading, looking up.',
+       view:[
+         'Timed rehearsal. Over three minutes, cut.',
+         'Your partner asks you one question. Answer it.',
+         'Mark the part that comes out worst.',
+         'Rehearse that part twice more.'],
+       levels:{
+         'Support':{task:'Rehearse with your cards and mark the hardest part.',
+               help:'Your cards.'},
+         'Core':{task:'Rehearse and prepare an answer to the likely question.',
+               help:'Which one will your family ask?'}}},
+      {s:3,title:'The family meeting',
+       objective:'Present your goal to the people who will remind you of it.',
+       view:[
+         'Families come in. Each student presents.',
+         'The family asks one question. Answer it.',
+         'The plan stays with them.',
+         'Back in class: how did it go, and what would you change?'],
+       levels:{
+         'Support':{task:'Present using your cards and hand over your plan.',
+               help:'Your cards and your plan.'},
+         'Core':{task:'Present without reading, answer the question and note what you would change.',
+               help:'Be specific.'}}}
+     ]}
   ],
   words:['goal','effort','challenge','habit','routine','progress','improve','plan','learned','practised','will','going to','but','so','because','every','I think'],
   deliverables:[
@@ -786,16 +1402,44 @@ window.UNIT_PLANS = {
        math:'Improper fractions and mixed numbers: reading the measurements you are about to take.',
        english:'Expository text: how an informative text is built, and the question that opens it.',
        social:'Inventions in the history of mankind: which ones tamed a force (the wheel, the pulley, the lever).'},
-     sessions:[{s:1,title:'The forces in this room',view:[
-       'Ten movements around the room: name the force in each one.',
-       'The invisible ones: friction and gravity. Demonstration with the ramp.',
-       'Each team writes its question: "Does ____ go further on ____ than on ____?"',
-       'Prediction signed and dated. We will check it in week 4.']}],
-     levels:{
-       'Support':{task:'Choose your question from three options and write your prediction with the frame given.',
-                  help:'Three questions ready and the frame "I predict that… because…"'},
-       'Core':{task:'Write your own research question and your prediction, justified.',
-               help:'The question must name one thing that changes and one that stays the same.'}}},
+     sessions:[
+      {s:1,title:'The forces in this room',
+       objective:'Name the forces that move things.',
+       view:[
+         'Ten movements around the room: which force is behind each one?',
+         'Pushes and pulls, and the two you cannot see: friction and gravity.',
+         'Demonstration with the ramp: what holds the ball back?',
+         'Words for the wall: force, friction, gravity, distance.'],
+       levels:{
+         'Support':{task:'Match five movements with their force and label the diagram.',
+               help:'Diagram and word cards.'},
+         'Core':{task:'Sort ten movements by force and explain the two invisible ones.',
+               help:'Frame: "Friction is the force that…"'}}},
+      {s:2,title:'What Grade 5 will need',
+       objective:'Understand who the report is for.',
+       view:[
+         'Grade 5 repeats your investigation next month, without you there.',
+         'Read a badly written method and try to follow it. What is missing?',
+         'That is exactly what your report must not do.',
+         'What would they need to know?'],
+       levels:{
+         'Support':{task:'Mark the three things missing from the method you were given.',
+               help:'Method with the gaps.'},
+         'Core':{task:'Write the three things a report needs so somebody can repeat it.',
+               help:'From what you could not follow.'}}},
+      {s:3,title:'Our question and our prediction',
+       objective:'Ask something measurable and commit to an answer.',
+       view:[
+         'Six questions: which can be measured with a ramp and a ruler?',
+         'The rule: a number has to come out at the end.',
+         'Each team writes its question and its prediction.',
+         'Signed and dated. We open them in week 4.'],
+       levels:{
+         'Support':{task:'Choose your question from three options and write your prediction.',
+               help:'Frame: "I predict that… because…"'},
+         'Core':{task:'Write your own question and justify your prediction.',
+               help:'Say what changes and what stays the same.'}}}
+     ]},
     {n:2,title:'Designing a fair test',desc:'Friction and gravity. One thing changes, everything else stays the same.',
      give:'Your test design, with what stays fixed.',
      across:{
@@ -803,16 +1447,44 @@ window.UNIT_PLANS = {
        math:'Decimals: reading and writing to three places, so the design says what will be measured.',
        english:'Linking words to explain a method: because, therefore, since, for example.',
        social:'Historical sources: what a source is, and why an invention is documented before it is believed.'},
-     sessions:[{s:1,title:'What makes a test fair',view:[
-       'An unfair test done on purpose. Spot the four mistakes.',
-       'Two columns: what I change / what I keep the same.',
-       'Design yours and pass it to another team to look for holes.',
-       'Correct it with what they found.']}],
-     levels:{
-       'Support':{task:'Complete the design table: what changes, what stays the same, what I measure.',
-                  help:'Table with the three columns and examples in the first row.'},
-       'Core':{task:'Write your design and list three things you will keep the same, and why each one matters.',
-               help:'If you cannot say why it matters, it probably does not.'}}},
+     sessions:[
+      {s:1,title:'What makes a test fair',
+       objective:'Spot an unfair test.',
+       view:[
+         'An unfair test done on purpose. Find the four mistakes.',
+         'One thing changes, everything else stays the same.',
+         'Two columns: what I change / what I keep the same.',
+         'Which of the two is the longer list? It should be.'],
+       levels:{
+         'Support':{task:'Mark the four mistakes in the test and complete the two columns.',
+               help:'Test described and columns started.'},
+         'Core':{task:'Explain why the test was unfair and write your two columns.',
+               help:'At least three things kept the same.'}}},
+      {s:2,title:'Designing ours',
+       objective:'Write a plan somebody else could follow.',
+       view:[
+         'What, where, when, how many tries, with what instrument.',
+         'Anything vague gets a red mark.',
+         'Write your design in the notebook.',
+         'How many tries are enough? Decide and justify.'],
+       levels:{
+         'Support':{task:'Complete the design table: what changes, what stays, what I measure.',
+               help:'Table with examples.'},
+         'Core':{task:'Write your design and say why you keep three things the same.',
+               help:'Each one with its reason.'}}},
+      {s:3,title:'The design under attack',
+       objective:'Fix it before it meets the floor.',
+       view:[
+         'Swap designs. Find three holes in the other team’s.',
+         'Read out the best hole. Fatal or fixable?',
+         'Correct yours.',
+         'Hand in the corrected design.'],
+       levels:{
+         'Support':{task:'Mark three problems in the design you received and fix one in yours.',
+               help:'Checklist of common problems.'},
+         'Core':{task:'Write the critique you gave and the change you made.',
+               help:'Frame: "They pointed out… so now we…"'}}}
+     ]},
     {n:3,title:'Measuring properly',desc:'Running the test and recording distances with decimals. Comparing and ordering the results.',
      give:'Your table of measurements, complete.',
      across:{
@@ -820,16 +1492,44 @@ window.UNIT_PLANS = {
        math:'Comparing and ordering decimals; rounding to one place.',
        english:'Inflected endings -ed and -ing: what I measured, what was moving.',
        social:'Primary and secondary sources: what we measured ourselves and what we were told.'},
-     sessions:[{s:1,title:'Three attempts each, no cheating',view:[
-       'Three attempts per surface. All of them go in the table, including the bad ones.',
-       'Decimals with Maths: reading, writing and ordering to two places.',
-       'Order the results from smallest to largest.',
-       'Is there a reading that does not fit? Do not delete it — mark it.']}],
-     levels:{
-       'Support':{task:'Complete the table with your six measurements and circle the longest.',
-                  help:'Table ready, with the units already written in.'},
-       'Core':{task:'Complete your table, order the six results and work out the average of each surface.',
-               help:'Two decimal places throughout, and never without the unit.'}}},
+     sessions:[
+      {s:1,title:'Measuring with decimals',
+       objective:'Read and write numbers to two places.',
+       view:[
+         'Two children measure the same thing and disagree. Why?',
+         'Decimals: read, write and compare to two places.',
+         'Practise with five real measurements.',
+         'The unit always goes with the number.'],
+       levels:{
+         'Support':{task:'Write five measurements with their unit and order them.',
+               help:'Measurements given.'},
+         'Core':{task:'Measure five things and order them from smallest to largest.',
+               help:'Two decimal places.'}}},
+      {s:2,title:'Running the test',
+       objective:'Take the data of the investigation.',
+       view:[
+         'Same ramp, same starting line, same push. Three tries per surface.',
+         'Everything goes in the table, including the odd one.',
+         'Roles: who releases, who measures, who writes.',
+         'Nothing gets rubbed out.'],
+       levels:{
+         'Support':{task:'Complete the table with your six measurements.',
+               help:'Table with units.'},
+         'Core':{task:'Complete your table and note the conditions of each try.',
+               help:'Which surface, which try.'}}},
+      {s:3,title:'Cleaning the data',
+       objective:'Deal with the reading that does not fit.',
+       view:[
+         'Look at your table. Is there a number that does not fit?',
+         'An outlier is investigated, not deleted. What happened in that try?',
+         'Average of the three tries per surface.',
+         'Which number will go in the report?'],
+       levels:{
+         'Support':{task:'Circle the odd reading and work out the average of each surface.',
+               help:'Operations set out.'},
+         'Core':{task:'Work out the averages and explain what happened in the odd try.',
+               help:'And whether you keep it.'}}}
+     ]},
     {n:4,title:'What the numbers say',desc:'Adding and subtracting your decimals, finding the difference, saying which went furthest — and whether your prediction was right.',
      give:'Your comparison, written in sentences.',
      across:{
@@ -837,16 +1537,44 @@ window.UNIT_PLANS = {
        math:'Adding and subtracting decimals: the exact difference between the two surfaces.',
        english:'Comparatives and superlatives, and homophones that trip you up in a report (their/there, its/it’s).',
        social:'Identifying reliable sources: which of the ones you found would you cite, and why.'},
-     sessions:[{s:1,title:'The difference, in numbers',view:[
-       'Subtract: how much further exactly? Not "a lot".',
-       'Comparatives and superlatives on the board: further, furthest, faster, fastest.',
-       'Open the prediction from week 1. Were you right?',
-       'Being wrong is a result too — as long as you explain it.']}],
-     levels:{
-       'Support':{task:'Complete four sentences with the comparative given and your numbers.',
-                  help:'"The car went ____ on the ____ floor than on the ____ floor."'},
-       'Core':{task:'Write four sentences comparing your results, with the exact difference, and say whether your prediction held.',
-               help:'Use because at least once.'}}},
+     sessions:[
+      {s:1,title:'The exact difference',
+       objective:'Subtract to say how much more.',
+       view:[
+         'Not "a lot": how many centimetres exactly?',
+         'Adding and subtracting decimals with your data.',
+         'Work out the difference between the two surfaces.',
+         'Check it with your partner.'],
+       levels:{
+         'Support':{task:'Work out the difference between your two averages.',
+               help:'Subtraction set out.'},
+         'Core':{task:'Work out the difference and express it also as a comparison.',
+               help:'"It went ____ cm further."'}}},
+      {s:2,title:'Saying it with comparatives',
+       objective:'Compare properly.',
+       view:[
+         'Further, furthest, faster, fastest. Which for two, which for three?',
+         'Ten sentences to correct.',
+         'Write four comparing your results.',
+         'Every comparison needs its number.'],
+       levels:{
+         'Support':{task:'Complete four sentences with the comparative and your numbers.',
+               help:'Sentences started.'},
+         'Core':{task:'Write four comparisons of your own with the exact figures.',
+               help:'Use than at least twice.'}}},
+      {s:3,title:'Was the prediction right',
+       objective:'Open week 1 and check.',
+       view:[
+         'Open your prediction. Were you right?',
+         'Being wrong is a result, as long as you explain it.',
+         'Why do you think it came out that way?',
+         'Write your conclusion in two sentences.'],
+       levels:{
+         'Support':{task:'Circle whether your prediction was right and complete the conclusion.',
+               help:'Frame given.'},
+         'Core':{task:'Write your conclusion explaining the result with because.',
+               help:'Two or three sentences.'}}}
+     ]},
     {n:5,title:'The write-up for Grade 5',desc:'The full report: question, method, results, conclusion — written so another class can repeat it.',
      give:'The finished investigation report.',
      across:{
@@ -854,16 +1582,44 @@ window.UNIT_PLANS = {
        math:'Multiplying and dividing decimals; equations to express the relationship you found.',
        english:'Informative/explanatory text: introduce the topic, group the information, use linking words and close it.',
        social:'Your report becomes a source for Grade 5: what makes a source usable by somebody else.'},
-     sessions:[{s:1,title:'Would they get the same?',view:[
-       'Swap reports with another team and try to follow theirs, literally.',
-       'Mark every point where you had to guess something.',
-       'Correct yours with what they could not follow.',
-       'Hand it in: Grade 5 gets it next month.']}],
-     levels:{
-       'Support':{task:'Write your report using the four headings given: Question, What I did, Results, What I found.',
-                  help:'The four headings printed, with a starter line each.'},
-       'Core':{task:'Write your report so another class could repeat it exactly, with your table included.',
-               help:'Test: give it to somebody who was not there and watch where they stop.'}}}
+     sessions:[
+      {s:1,title:'Structuring the report',
+       objective:'Learn the shape of an informative text.',
+       view:[
+         'Four parts: question, method, results, conclusion.',
+         'Introduce the topic, group the information, link it, close it.',
+         'Linking words: because, therefore, since, for example.',
+         'Plan your report in four lines.'],
+       levels:{
+         'Support':{task:'Number the four parts in order and write one line for each.',
+               help:'Parts on cards.'},
+         'Core':{task:'Plan your report in four lines and choose your linking words.',
+               help:'One per part.'}}},
+      {s:2,title:'Drafting it',
+       objective:'Write it by hand, for Grade 5.',
+       view:[
+         'Draft in the notebook. Crossings-out expected.',
+         'Halfway: read your method to a partner. Could they follow it?',
+         'Fix what they could not.',
+         'Finish the draft.'],
+       levels:{
+         'Support':{task:'Write your report with the four headings given.',
+               help:'Headings with a starter line.'},
+         'Core':{task:'Write your report so another class could repeat it.',
+               help:'120–160 words, with your table.'}}},
+      {s:3,title:'The test of the report',
+       objective:'Give it to somebody who was not there.',
+       view:[
+         'Swap reports and try to follow the other one, literally.',
+         'Mark every point where you had to guess.',
+         'Correct yours with what they marked.',
+         'Hand it in. Grade 5 gets it next month.'],
+       levels:{
+         'Support':{task:'Correct the three points marked in your report.',
+               help:'Your report with the marks.'},
+         'Core':{task:'Rewrite what could not be followed and say what you clarified.',
+               help:'Be specific.'}}}
+     ]}
   ],
   words:['force','friction','gravity','push','pull','distance','measure','decimal','average','fair test','further','furthest','faster','fastest','than','because','so','carefully','exactly'],
   deliverables:[
@@ -939,16 +1695,44 @@ window.UNIT_PLANS = {
        math:'Angles, and reading the diagrams of the book.',
        english:'Argumentative text: reading one and spotting what it wants you to do.',
        social:'Efficient use of resources, and responsible consumption.'},
-     sessions:[{s:1,title:'Runs out or not?',view:[
-       'Twenty cards of resources. Sort: renewable / non-renewable / not sure.',
-       'The "not sure" pile is the interesting one. Why is it hard?',
-       'Start Incredible Earth: read the first chapter together.',
-       'Choose the resource your guide will be about.']}],
-     levels:{
-       'Support':{task:'Sort ten resources into the two columns and write two examples of each.',
-                  help:'Cards with pictures and the two columns headed.'},
-       'Core':{task:'Sort them and explain why two of them were hard to classify.',
+     sessions:[
+      {s:1,title:'Runs out or not',
+       objective:'Sort what we have.',
+       view:[
+         'Twenty resource cards: renewable, non-renewable, not sure.',
+         'The "not sure" pile is the interesting one. Why is it hard?',
+         'Water: which pile does it go in?',
+         'Choose the resource your guide will be about.'],
+       levels:{
+         'Support':{task:'Sort ten resources into the two columns.',
+               help:'Cards with pictures.'},
+         'Core':{task:'Sort them and explain why two were hard to classify.',
                help:'Frame: "____ is difficult because…"'}}},
+      {s:2,title:'Starting Incredible Earth',
+       objective:'Read a documentary text for information.',
+       view:[
+         'First chapter, read together. What kind of text is this?',
+         'It is not a story: it informs. Where is the information?',
+         'Underline three facts you did not know.',
+         'Ten minutes of silent reading.'],
+       levels:{
+         'Support':{task:'Answer four questions about the chapter choosing from two options.',
+               help:'Text with data highlighted.'},
+         'Core':{task:'Write three facts from the chapter with the page where you found them.',
+               help:'In your own words.'}}},
+      {s:3,title:'Who the guide is for',
+       objective:'Understand a reader who is walking past.',
+       view:[
+         'Two real corridor posters. Which one gets read?',
+         'Thirty seconds is all you have.',
+         'The main idea goes in the first line, not at the end.',
+         'What must your guide have?'],
+       levels:{
+         'Support':{task:'Mark which of the two posters works and copy its first line.',
+               help:'Two posters.'},
+         'Core':{task:'Explain why one poster works and list three things yours needs.',
+               help:'Be specific.'}}}
+     ]},
     {n:2,title:'The water cycle',desc:'Evaporation, condensation, precipitation. Explaining a process in order.',
      give:'The cycle explained in your own words.',
      across:{
@@ -956,16 +1740,44 @@ window.UNIT_PLANS = {
        math:'Properties of squares and rectangles: the diagram of the cycle, drawn to fit.',
        english:'Present simple for processes and sequencers: first, then, next, finally.',
        social:'Cartography: where the water of our region comes from, on the map.'},
-     sessions:[{s:1,title:'Round and round',view:[
-       'The cycle in a bag on the window: watch it for a week.',
-       'The three words, with the action: evaporation, condensation, precipitation.',
-       'Sequencers: first, then, next, finally.',
-       'Explain it to your partner without looking at the diagram.']}],
-     levels:{
-       'Support':{task:'Label the diagram and complete the explanation with the four sequencers.',
-                  help:'Diagram to label, sequencers given in a box.'},
-       'Core':{task:'Explain the cycle in your own words, in order, without a diagram.',
-               help:'Present simple: water evaporates, vapour rises, it condenses.'}}},
+     sessions:[
+      {s:1,title:'Where water goes',
+       objective:'Follow the cycle.',
+       view:[
+         'The bag on the window: watch what happens for a week.',
+         'Evaporation, condensation, precipitation, and back again.',
+         'Draw the cycle with arrows.',
+         'Which step happens in our region and which does not?'],
+       levels:{
+         'Support':{task:'Label the diagram of the cycle with the three words.',
+               help:'Diagram to label.'},
+         'Core':{task:'Draw the cycle from memory and label the three processes.',
+               help:'With arrows in the right direction.'}}},
+      {s:2,title:'Explaining a process',
+       objective:'Say it in order.',
+       view:[
+         'Sequencers: first, then, next, finally.',
+         'Present simple for what always happens: water evaporates.',
+         'Explain the cycle to your partner without the diagram.',
+         'Write it in four sentences.'],
+       levels:{
+         'Support':{task:'Complete the explanation with the four sequencers.',
+               help:'Sequencers in a box.'},
+         'Core':{task:'Explain the cycle in your own words, in order.',
+               help:'Present simple throughout.'}}},
+      {s:3,title:'Where our water comes from',
+       objective:'Put it on the map.',
+       view:[
+         'Where does the water of this school come from?',
+         'Trace the route on the map of the region.',
+         'How far does it travel before it reaches the tap?',
+         'Mark it on your map.'],
+       levels:{
+         'Support':{task:'Complete the map with the route given.',
+               help:'Base map with the points.'},
+         'Core':{task:'Trace the route on your map and write how far it travels.',
+               help:'With the figure.'}}}
+     ]},
     {n:3,title:'Climate and weather',desc:'The difference between the two, and why it matters. Starting your own readings.',
      give:'Your first week of readings.',
      across:{
@@ -973,16 +1785,44 @@ window.UNIT_PLANS = {
        math:'Area and perimeter: the surface that collects the rain you are measuring.',
        english:'Expository text: reading Incredible Earth for information, not for a story.',
        social:'Factors that influence weather and landscape in Peru: the Humboldt and El Niño currents, the mountain range.'},
-     sessions:[{s:1,title:'Today is not the climate',view:[
-       'Weather = today. Climate = many years. The classic confusion.',
-       'Set up the instruments: thermometer and rain gauge.',
-       'Rota: who reads, when, and where it gets written down.',
-       'First reading, all together, so everybody measures the same way.']}],
-     levels:{
-       'Support':{task:'Complete the weather log for five days with the readings taken.',
-                  help:'Log with the days and the units printed.'},
-       'Core':{task:'Complete your log and write one sentence comparing two days.',
-               help:'Use a comparative and the real figures.'}}},
+     sessions:[
+      {s:1,title:'Weather is not climate',
+       objective:'Tell the two apart.',
+       view:[
+         'Weather is today. Climate is many years. The classic confusion.',
+         'Ten statements: weather or climate?',
+         'Which of the two can we measure in two weeks?',
+         'Only the weather. Say why.'],
+       levels:{
+         'Support':{task:'Sort ten statements into WEATHER and CLIMATE.',
+               help:'Statement cards.'},
+         'Core':{task:'Sort them and explain the difference in two sentences.',
+               help:'With an example of each.'}}},
+      {s:2,title:'Setting up the instruments',
+       objective:'Prepare to measure.',
+       view:[
+         'Thermometer and rain gauge. What does each one measure?',
+         'Where do we put them, and why not in the sun?',
+         'Rota: who reads, when, where it gets written.',
+         'First reading, all together.'],
+       levels:{
+         'Support':{task:'Complete the log for the first day with the readings taken.',
+               help:'Log with days and units.'},
+         'Core':{task:'Take the first reading and write the protocol you will follow.',
+               help:'So anybody could do it.'}}},
+      {s:3,title:'Why our weather is like this',
+       objective:'Understand the factors.',
+       view:[
+         'The Humboldt current, El Niño, the mountain range.',
+         'Why is Lima like this and the mountains different?',
+         'Which of the three explains most of our weather?',
+         'Connect it to your readings.'],
+       levels:{
+         'Support':{task:'Match the three factors with their effect.',
+               help:'Cards to match.'},
+         'Core':{task:'Explain how one factor affects the weather here.',
+               help:'With because.'}}}
+     ]},
     {n:4,title:'Measuring it',desc:'Instruments and what they measure. Turning your readings into fractions and percentages.',
      give:'Your data, as fractions and percentages.',
      across:{
@@ -990,16 +1830,44 @@ window.UNIT_PLANS = {
        math:'Probability as a fraction and as a percentage; the four operations on your readings.',
        english:'Opinion piece: stating a point of view and supporting it with reasons.',
        social:'Ecosystems, nature reserves and biodiversity: what depends on this water.'},
-     sessions:[{s:1,title:'From the log to the number',view:[
-       'Second week complete. Everybody’s data on the board.',
-       'With Maths: how many days out of ten did it rain? As a fraction, then as a percentage.',
-       'The trap: a very wet day does not make a wet week.',
-       'Which figure is going in your guide? Only one — choose the one that says most.']}],
-     levels:{
-       'Support':{task:'Write your data as a fraction and turn two of them into percentages.',
-                  help:'Worked example and the conversions started.'},
-       'Core':{task:'Turn your data into percentages and choose the figure for your guide, saying why.',
-               help:'Justify why that figure and not another.'}}},
+     sessions:[
+      {s:1,title:'Reading the instruments',
+       objective:'Take the second week of data.',
+       view:[
+         'Second week complete. Everybody’s data on the board.',
+         'Any missing days? A gap is not a zero.',
+         'Are we all reading the same way?',
+         'Finish the log.'],
+       levels:{
+         'Support':{task:'Complete your log for the two weeks.',
+               help:'Log with the days.'},
+         'Core':{task:'Complete your log and note any day that was different.',
+               help:'And why.'}}},
+      {s:2,title:'From the log to the number',
+       objective:'Turn readings into fractions and percentages.',
+       view:[
+         'How many days out of ten did it rain? As a fraction.',
+         'And as a percentage. With Maths.',
+         'The trap: one very wet day does not make a wet fortnight.',
+         'Which figure says most?'],
+       levels:{
+         'Support':{task:'Write your data as a fraction and convert two to percentages.',
+               help:'Worked example.'},
+         'Core':{task:'Convert your data to percentages and choose the figure for your guide.',
+               help:'Say why that one.'}}},
+      {s:3,title:'What depends on this water',
+       objective:'Connect it to the ecosystem.',
+       view:[
+         'Nature reserves and biodiversity: what lives on this water?',
+         'What happens if it runs short?',
+         'Efficient use of resources: what does the school do today?',
+         'What could it do differently?'],
+       levels:{
+         'Support':{task:'Match three living things with what they need from the water.',
+               help:'Cards to match.'},
+         'Core':{task:'Write what depends on this water and one thing the school could change.',
+               help:'Be specific.'}}}
+     ]},
     {n:5,title:'Writing the guide',desc:'Drafting it for somebody who has not read the book or seen your data.',
      give:'The draft in your notebook.',
      across:{
@@ -1007,16 +1875,44 @@ window.UNIT_PLANS = {
        math:'Choosing the figure that carries the argument, and checking it.',
        english:'Opinion writing: topic, opinion, reasons in order, linking words, concluding statement.',
        social:'Citizenship responsibilities: what you can ask of the person reading your guide.'},
-     sessions:[{s:1,title:'Thirty seconds',view:[
-       'Two real corridor posters: which one gets read and why?',
-       'Rule: the main idea in the first line, not at the end.',
-       'Draft it in the notebook. Cross out everything that is not needed.',
-       'Time a partner reading it. Over thirty seconds, cut more.']}],
-     levels:{
-       'Support':{task:'Write your guide with the four headings given, one sentence each.',
-                  help:'Headings: Where it comes from / How it works / What we measured / What you can do.'},
-       'Core':{task:'Write your guide so it reads in thirty seconds, with your figure and one thing to do.',
-               help:'If it does not fit on one side, it is too long.'}}},
+     sessions:[
+      {s:1,title:'Stating an opinion',
+       objective:'Give a point of view with reasons.',
+       view:[
+         'An opinion with no reason is just a shout.',
+         'Because, therefore, since, for example.',
+         'State your opinion about the resource in one sentence.',
+         'Add two reasons, ordered.'],
+       levels:{
+         'Support':{task:'Complete the opinion with the connectors given.',
+               help:'Connectors placed.'},
+         'Core':{task:'Write your opinion with two ordered reasons.',
+               help:'Using three connectors.'}}},
+      {s:2,title:'Drafting the guide',
+       objective:'Write it to be read in thirty seconds.',
+       view:[
+         'The main idea first. Cut everything that is not needed.',
+         'Your figure, and one thing you ask of the reader.',
+         'Draft in the notebook.',
+         'Time a partner reading it. Over thirty seconds, cut more.'],
+       levels:{
+         'Support':{task:'Write your guide with the four headings given, one sentence each.',
+               help:'Headings printed.'},
+         'Core':{task:'Write your guide so it reads in thirty seconds.',
+               help:'150–200 words maximum.'}}},
+      {s:3,title:'The closing statement',
+       objective:'Finish so it stays with the reader.',
+       view:[
+         'How do you close a text that asks for something?',
+         'Three endings on the board. Which one works?',
+         'Write yours.',
+         'Read the ending out loud.'],
+       levels:{
+         'Support':{task:'Choose your closing from three options and copy it.',
+               help:'Three endings.'},
+         'Core':{task:'Write your own closing statement.',
+               help:'It must ask for one specific thing.'}}}
+     ]},
     {n:6,title:'On the wall',desc:'The final guide, checked and put up where the school can read it.',
      give:'The published guide.',
      across:{
@@ -1024,16 +1920,44 @@ window.UNIT_PLANS = {
        math:'The final check of every figure and unit on the guide.',
        english:'Revising for clarity: reading your own text as if somebody else had written it.',
        social:'Responsible use of public spaces: the guide goes up where the whole school passes.'},
-     sessions:[{s:1,title:'Up it goes',view:[
-       'Final proofread in pairs: spelling, figures, units.',
-       'Put them up in the corridor.',
-       'Watch: do people stop? For how long?',
-       'One line in the notebook: what would you change now that you have seen people read it?']}],
-     levels:{
-       'Support':{task:'Copy your corrected guide neatly onto the final card.',
-                  help:'Your draft with the corrections marked.'},
-       'Core':{task:'Produce the final guide and write what you would change after seeing it read.',
-               help:'Be specific: what exactly, and why.'}}}
+     sessions:[
+      {s:1,title:'Correcting the guide',
+       objective:'Leave it right before it goes up.',
+       view:[
+         'Proofread in pairs: spelling, figures, units.',
+         'Every number against your log.',
+         'One wrong figure and the whole guide loses credit.',
+         'Corrected version.'],
+       levels:{
+         'Support':{task:'Correct the mistakes marked and check your three figures.',
+               help:'Your text with marks.'},
+         'Core':{task:'Proofread your guide and verify every figure against your log.',
+               help:'Checklist of four things.'}}},
+      {s:2,title:'Producing the final guide',
+       objective:'Make the thing that goes on the wall.',
+       view:[
+         'Layout: what goes big and what goes small.',
+         'Your chart, if it helps.',
+         'Produce the final version on the card.',
+         'Last check before it goes up.'],
+       levels:{
+         'Support':{task:'Copy your guide neatly onto the final card.',
+               help:'Your corrected text.'},
+         'Core':{task:'Produce your final guide with its layout and its chart.',
+               help:'It has to work from two metres away.'}}},
+      {s:3,title:'On the wall',
+       objective:'Put it up and watch what happens.',
+       view:[
+         'Put the guides up in the corridor.',
+         'Watch: do people stop? For how long?',
+         'Ask one person what they understood.',
+         'What would you change now that you have seen it read?'],
+       levels:{
+         'Support':{task:'Put your guide up and write what one person told you.',
+               help:'One sentence.'},
+         'Core':{task:'Write what you would change after seeing people read it.',
+               help:'Be specific: what and why.'}}}
+     ]}
   ],
   words:['water cycle','evaporation','condensation','precipitation','natural resource','renewable','climate','weather','rainfall','temperature','thermometer','first','then','next','finally','some','many','a lot of','per cent'],
   deliverables:[
@@ -1142,16 +2066,44 @@ window.UNIT_PLANS = {
        social:'Cartographic tools: what a map needs to be usable.',
        comunicacion:'Palabras homonimas: la misma palabra, distinto sentido — tambien en los datos.',
        english:'Book: Exploring Our World. Reading for information.'},
-     sessions:[{s:1,title:'A map without a key is a drawing',view:[
-       'Two maps of the same place, one usable and one not. What is missing?',
-       'The four elements: title, key, scale, orientation.',
-       'Start Exploring Our World: the first chapter, and the words to keep.',
-       'Draw your first map of the school’s surroundings.']}],
-     levels:{
-       'Support':{task:'Complete the map that is started: add key, scale and title.',
-                  help:'Base map printed, symbols given.'},
-       'Core':{task:'Draw your own map of the area with the four elements.',
-               help:'Choose the symbols yourself and justify two of them.'}}},
+     sessions:[
+      {s:1,title:'Starting Exploring Our World',
+       objective:'Read for information about the planet.',
+       view:[
+         'First chapter. How the atmosphere and the hydrosphere work anywhere.',
+         'Vocabulary: atmosphere, hydrosphere, ecosystem.',
+         'What of this happens here, outside the window?',
+         'Ten minutes of silent reading.'],
+       levels:{
+         'Support':{task:'Answer four questions about the chapter and copy three key words.',
+               help:'Text with words highlighted.'},
+         'Core':{task:'Summarise the chapter in three sentences with the key words.',
+               help:'In your own words.'}}},
+      {s:2,title:'A map without a key is a drawing',
+       objective:'Learn what a map needs.',
+       view:[
+         'Two maps of the same place: one usable, one not. What is missing?',
+         'Title, key, scale, orientation.',
+         'Cartographic tools: what each one is for.',
+         'Sketch your first map of the area.'],
+       levels:{
+         'Support':{task:'Complete the map that is started: key, scale and title.',
+               help:'Base map and symbols.'},
+         'Core':{task:'Draw your own map of the area with the four elements.',
+               help:'Choose your own symbols.'}}},
+      {s:3,title:'Choosing air or water',
+       objective:'Decide what your report will be about.',
+       view:[
+         'Two problems, one report. You cannot do both.',
+         'What can we actually find data about?',
+         'Each team chooses and justifies.',
+         'What will you need to find out?'],
+       levels:{
+         'Support':{task:'Choose your topic and complete the plan with the options given.',
+               help:'Plan template.'},
+         'Core':{task:'Choose your topic and justify it, saying what data you will need.',
+               help:'Two reasons.'}}}
+     ]},
     {n:2,title:'The air above us',desc:'The atmosphere: its layers and what changes it. Different viewpoints on the same problem.',
      give:'Two opposing viewpoints, written down.',
      across:{
@@ -1160,16 +2112,44 @@ window.UNIT_PLANS = {
        social:'Cartographic elements: key, scale, orientation.',
        comunicacion:'Palabras paronimas: parecidas y distintas, cuidado al citar.',
        english:'Analysing detailed texts for their main ideas, and different viewpoints.'},
-     sessions:[{s:1,title:'Two people, one problem',view:[
-       'Read two texts that disagree about the same issue.',
-       'What does each one want? What does each one leave out?',
-       'Board: however, although, on the other hand.',
-       'Write both viewpoints fairly — including the one you do not hold.']}],
-     levels:{
-       'Support':{task:'Complete the two viewpoints with the sentences given, and join them with however.',
-                  help:'Sentences to sort into two columns.'},
-       'Core':{task:'Write both viewpoints in your own words and say which convinces you, and why.',
-               help:'Use however or although at least once.'}}},
+     sessions:[
+      {s:1,title:'The air above us',
+       objective:'Understand the atmosphere.',
+       view:[
+         'Layers, and what changes them.',
+         'What alters the air here, in this district?',
+         'Read a short text and pull out the causes.',
+         'Which of them can we see?'],
+       levels:{
+         'Support':{task:'Label the layers and complete two sentences about what alters the air.',
+               help:'Diagram and sentences.'},
+         'Core':{task:'Explain what alters the air in our district, with three causes.',
+               help:'From the text and from what you see.'}}},
+      {s:2,title:'Two people, one problem',
+       objective:'Read opposing viewpoints.',
+       view:[
+         'Two texts that disagree about the same issue.',
+         'What does each want? What does each leave out?',
+         'However, although, on the other hand.',
+         'Neither is lying. They are looking at different things.'],
+       levels:{
+         'Support':{task:'Sort the sentences into the two viewpoints and join two with however.',
+               help:'Sentences to sort.'},
+         'Core':{task:'Write both viewpoints in your own words and say which convinces you.',
+               help:'Using however or although.'}}},
+      {s:3,title:'My own viewpoint',
+       objective:'Say what you think and why.',
+       view:[
+         'Personal opinion: I think, in my opinion.',
+         'An opinion without evidence is a feeling.',
+         'What do you think about your problem, and what supports it?',
+         'Write it in three sentences.'],
+       levels:{
+         'Support':{task:'Complete your opinion with the frames given.',
+               help:'Frames and connectors.'},
+         'Core':{task:'Write your opinion with two reasons and one piece of evidence.',
+               help:'Even if it is provisional.'}}}
+     ]},
     {n:3,title:'The water around us',desc:'The hydrosphere, rivers and lakes. Types of map and what each is good for.',
      give:'Your data map.',
      across:{
@@ -1178,16 +2158,44 @@ window.UNIT_PLANS = {
        social:'Types of map, and which one answers which question.',
        comunicacion:'Adverbios: precisar como, cuando y cuanto.',
        english:'Different viewpoints and personal opinion: saying what you think and why.'},
-     sessions:[{s:1,title:'Putting the data on the map',view:[
-       'Three types of map for the same area: which one for which question?',
-       'Where does our water come from and where does it go? Trace it.',
-       'Put the data you already have onto the map.',
-       'Look at it: does the problem show up on its own?']}],
-     levels:{
-       'Support':{task:'Place the five data points on the map using the symbols given.',
-                  help:'Map with the positions marked and the data listed.'},
-       'Core':{task:'Build your data map choosing how to represent each figure.',
-               help:'The reader must understand it without you explaining.'}}},
+     sessions:[
+      {s:1,title:'The water around us',
+       objective:'Understand the hydrosphere.',
+       view:[
+         'Where the water of our region is and where it goes.',
+         'Rivers and lakes: name the ones nearest to us.',
+         'What happens to the water after we use it?',
+         'Trace it on the map.'],
+       levels:{
+         'Support':{task:'Complete the diagram of the hydrosphere with the words given.',
+               help:'Diagram to label.'},
+         'Core':{task:'Explain where our water comes from and where it goes.',
+               help:'With the names of the rivers.'}}},
+      {s:2,title:'Types of map',
+       objective:'Choose the right map for the question.',
+       view:[
+         'Three maps of the same area: physical, political, thematic.',
+         'Which answers which question?',
+         'Which do you need for your report?',
+         'Start your data map.'],
+       levels:{
+         'Support':{task:'Match three maps with three questions.',
+               help:'Maps and questions.'},
+         'Core':{task:'Choose your type of map and justify it.',
+               help:'Which question does it answer?'}}},
+      {s:3,title:'Putting data on the map',
+       objective:'Make the problem visible.',
+       view:[
+         'Data on a map says more than data in a list.',
+         'Choose how to represent each figure.',
+         'Place your data.',
+         'Look at it: does the problem show up on its own?'],
+       levels:{
+         'Support':{task:'Place the five data points using the symbols given.',
+               help:'Map with positions.'},
+         'Core':{task:'Build your data map choosing how to represent each figure.',
+               help:'Without you explaining it.'}}}
+     ]},
     {n:4,title:'Where the evidence comes from',desc:'Primary and secondary sources. Turning what you found into percentages.',
      give:'Your sources, classified, and your figures.',
      across:{
@@ -1196,16 +2204,44 @@ window.UNIT_PLANS = {
        social:'Rivers and lakes of our region.',
        comunicacion:'Preposiciones y conjunciones: unir ideas sin perder el hilo.',
        english:'Developing a thesis statement for an opinion text.'},
-     sessions:[{s:1,title:'Who says so, and how do they know?',view:[
-       'Sort your sources: measured by us / told by somebody else.',
-       'Two sources that disagree. Which one do you trust for this?',
-       'With Maths: fraction to decimal to percentage.',
-       'Choose the two figures that will go in the report.']}],
-     levels:{
-       'Support':{task:'Sort six sources into primary and secondary and convert two fractions to percentages.',
-                  help:'Sources listed and the conversion worked once.'},
-       'Core':{task:'Classify your sources, justify one choice, and convert your data to percentages.',
-               help:'Say what each source lets you claim — and what it does not.'}}},
+     sessions:[
+      {s:1,title:'Where the evidence comes from',
+       objective:'Tell primary from secondary sources.',
+       view:[
+         'What we measured ourselves, and what somebody told us.',
+         'Sort your sources.',
+         'Two sources that disagree: which do you trust for this?',
+         'Say what each one lets you claim.'],
+       levels:{
+         'Support':{task:'Sort six sources into primary and secondary.',
+               help:'Sources listed.'},
+         'Core':{task:'Classify your sources and justify one choice.',
+               help:'What does each let you claim?'}}},
+      {s:2,title:'From data to percentage',
+       objective:'Convert your figures.',
+       view:[
+         'Fraction, decimal, percentage: the same number three ways.',
+         'Convert your data with Maths.',
+         'Which conversion makes the problem clearest?',
+         'Choose the two figures for the report.'],
+       levels:{
+         'Support':{task:'Convert three fractions to percentages.',
+               help:'Conversion worked once.'},
+         'Core':{task:'Convert your data and choose your two figures, saying why.',
+               help:'And what each one shows.'}}},
+      {s:3,title:'What it would cost to change it',
+       objective:'Put a number on the solution.',
+       view:[
+         'Percent problems: discount, tax, interest.',
+         'What would it cost to fix what you found?',
+         'And what does it cost to do nothing?',
+         'That comparison goes in the report.'],
+       levels:{
+         'Support':{task:'Work out the cost with the prices given.',
+               help:'Operations set out.'},
+         'Core':{task:'Work out what the change would cost and compare it with doing nothing.',
+               help:'With figures.'}}}
+     ]},
     {n:5,title:'Taking a position',desc:'The thesis statement and the report. Ecosystems and what depends on this.',
      give:'The finished report.',
      across:{
@@ -1213,16 +2249,44 @@ window.UNIT_PLANS = {
        math:'Percent word problems: discount, tax and interest — what the change would cost.',
        social:'Ecosystems and the responsibility over them.',
        english:'Thesis statements, and identifying the main points of a short talk.'},
-     sessions:[{s:1,title:'Say it in the first line',view:[
-       'Three openings on the board: which one makes you keep reading?',
-       'Your thesis statement in one sentence. Rewrite it three times.',
-       'Draft the report in your notebook, with your map beside it.',
-       'Read the first line to a partner: do they know what you think?']}],
-     levels:{
-       'Support':{task:'Write your report with the frame: "I think that… The data shows… However… That is why…"',
-                  help:'The four openings printed, plus your figures.'},
-       'Core':{task:'Write your report with your own thesis, your data and one opposing viewpoint.',
-               help:'It has to be readable by somebody who can act on it.'}}}
+     sessions:[
+      {s:1,title:'The thesis statement',
+       objective:'Say it in the first line.',
+       view:[
+         'Three openings on the board. Which makes you keep reading?',
+         'Your position in one sentence. Rewrite it three times.',
+         'Read the first line to a partner: do they know what you think?',
+         'Choose the best of your three.'],
+       levels:{
+         'Support':{task:'Choose your thesis from three options and copy it.',
+               help:'Three theses.'},
+         'Core':{task:'Write your thesis three times and choose the best, saying why.',
+               help:'It must be arguable.'}}},
+      {s:2,title:'Drafting the report',
+       objective:'Write it for somebody who can act.',
+       view:[
+         'Structure: position, evidence, other viewpoint, what should be done.',
+         'Draft in the notebook, with your map beside it.',
+         'Halfway: does your evidence really support your position?',
+         'Finish the draft.'],
+       levels:{
+         'Support':{task:'Write your report with the frame: "I think… The data shows… However… That is why…"',
+               help:'Four openings.'},
+         'Core':{task:'Write your report with your thesis, your data and one opposing viewpoint.',
+               help:'200–250 words.'}}},
+      {s:3,title:'Handing it over',
+       objective:'Leave it ready for whoever receives it.',
+       view:[
+         'Feedback against the rubric, criterion by criterion.',
+         'Rewrite the weakest paragraph.',
+         'Check every figure against your map.',
+         'Hand in: report and map together.'],
+       levels:{
+         'Support':{task:'Correct what was marked and check your figures.',
+               help:'Your text with marks.'},
+         'Core':{task:'Rewrite your weakest paragraph and say what you improved.',
+               help:'Against which criterion.'}}}
+     ]}
   ],
   words:['atmosphere','hydrosphere','ecosystem','map','key','scale','river','lake','watershed','primary source','secondary source','pollution','percentage','evidence','viewpoint','I think','in my opinion','because','however','although'],
   deliverables:[
@@ -1286,16 +2350,44 @@ window.UNIT_PLANS = {
        social:'Emotions, and what makes us decide to change something.',
        comunicacion:'La oracion y sus clases: construir la frase que convence.',
        english:'Analysing detailed texts for their main ideas.'},
-     sessions:[{s:1,title:'Who pays for the air?',view:[
-       'The air is free. The water is not. Where exactly is the line?',
-       'Free goods and economic goods, with examples from the school.',
-       'Each team picks a resource that the school actually uses.',
-       'Why yours? Say it in one sentence.']}],
-     levels:{
-       'Support':{task:'Sort eight things into free goods and economic goods and choose your resource.',
-                  help:'Cards and the two columns headed.'},
-       'Core':{task:'Sort them, explain one difficult case and justify your choice of resource.',
-               help:'Frame: "We chose ____ because the school…"'}}},
+     sessions:[
+      {s:1,title:'Who pays for the air',
+       objective:'Tell free goods from economic goods.',
+       view:[
+         'The air is free. The water is not. Where is the line?',
+         'Free goods and economic goods, with examples from the school.',
+         'Which of the two is easier to waste? Why?',
+         'Sort ten things.'],
+       levels:{
+         'Support':{task:'Sort ten things into free goods and economic goods.',
+               help:'Cards and columns.'},
+         'Core':{task:'Sort them and explain one difficult case.',
+               help:'Frame: "____ is difficult because…"'}}},
+      {s:2,title:'Renewable or not',
+       objective:'Understand what runs out.',
+       view:[
+         'Renewable does not mean unlimited. Explain the difference.',
+         'Which resources does this school use most?',
+         'Which of them worries you?',
+         'Choose yours.'],
+       levels:{
+         'Support':{task:'Sort eight resources and circle the one you will work on.',
+               help:'Cards.'},
+         'Core':{task:'Choose your resource and justify it with what the school uses.',
+               help:'Two reasons.'}}},
+      {s:3,title:'What the school does today',
+       objective:'Look before proposing.',
+       view:[
+         'Walk round: where is your resource used?',
+         'Take note of what you see, without judging yet.',
+         'Who decides about that resource?',
+         'Who would have to change something?'],
+       levels:{
+         'Support':{task:'Complete the observation sheet with what you saw.',
+               help:'Sheet with three columns.'},
+         'Core':{task:'Write what you observed and who would have to change it.',
+               help:'Be specific.'}}}
+     ]},
     {n:2,title:'How persuasion works',desc:'Analysing persuasive texts: what makes one convincing and another one annoying.',
      give:'Three techniques you are going to use.',
      across:{
@@ -1304,16 +2396,44 @@ window.UNIT_PLANS = {
        social:'Customs and citizenship: what the school already does and what it could do.',
        comunicacion:'El sujeto: quien hace la accion en tu campana.',
        english:'Discussions and persuasive speech: what makes a text convincing.'},
-     sessions:[{s:1,title:'Convincing or annoying?',view:[
-       'Three real campaigns. Which works, which irritates, and why.',
-       'The techniques: a figure that surprises, a direct ask, a consequence.',
-       'What NOT to do: blaming the reader.',
-       'Choose the three techniques your campaign will use.']}],
-     levels:{
-       'Support':{task:'Match each campaign with its technique and copy the sentence that convinces you most.',
-                  help:'Techniques named and campaigns printed.'},
-       'Core':{task:'Analyse the three campaigns and explain why one fails.',
-               help:'Be specific: which sentence and why.'}}},
+     sessions:[
+      {s:1,title:'Convincing or annoying',
+       objective:'Analyse real campaigns.',
+       view:[
+         'Three campaigns. Which works, which irritates, and why.',
+         'The techniques: a surprising figure, a direct ask, a consequence.',
+         'What NOT to do: blame the reader.',
+         'Which technique will you steal?'],
+       levels:{
+         'Support':{task:'Match each campaign with its technique and copy the best sentence.',
+               help:'Campaigns printed.'},
+         'Core':{task:'Analyse the three and explain why one fails.',
+               help:'Which sentence exactly.'}}},
+      {s:2,title:'Reading a persuasive text',
+       objective:'Find the argument inside it.',
+       view:[
+         'Read a persuasive text and mark: claim, reason, evidence.',
+         'What does it want you to do?',
+         'Where is it weakest?',
+         'Would you do what it asks? Why?'],
+       levels:{
+         'Support':{task:'Mark the three parts in the text given.',
+               help:'Text with the parts to find.'},
+         'Core':{task:'Analyse the text and say where the argument is weakest.',
+               help:'And how you would fix it.'}}},
+      {s:3,title:'Planning the measurement',
+       objective:'Decide what you will count.',
+       view:[
+         'What can be counted in this school in two days?',
+         'Where, when, how often, who.',
+         'Design your measurement round.',
+         'Test it once today.'],
+       levels:{
+         'Support':{task:'Complete the measurement plan with the options given.',
+               help:'Plan template.'},
+         'Core':{task:'Design your measurement round and say what could go wrong.',
+               help:'And your plan B.'}}}
+     ]},
     {n:3,title:'What it really costs',desc:'Measuring the real use of your resource in the school. Data analysis.',
      give:'Your data and what it shows.',
      across:{
@@ -1322,16 +2442,44 @@ window.UNIT_PLANS = {
        social:'Renewable and non-renewable resources.',
        comunicacion:'El predicado: decir con precision que ocurre.',
        english:'Reporting what you measured, without exaggerating it.'},
-     sessions:[{s:1,title:'Counting what nobody counts',view:[
-       'Design the measurement: where, when, how often, who.',
-       'Take the data around the school. Two days.',
-       'With Maths: total, average, and the surprising figure.',
-       'Which figure would make somebody stop? That is the one for the campaign.']}],
-     levels:{
-       'Support':{task:'Complete the measurement table and circle the most surprising figure.',
-                  help:'Table designed and the round to do it in.'},
-       'Core':{task:'Take your data, work out total and average, and choose your campaign figure with a reason.',
-               help:'The figure has to be true and it has to be yours.'}}},
+     sessions:[
+      {s:1,title:'Counting what nobody counts',
+       objective:'Take the data of the school.',
+       view:[
+         'Out on the round. Two days of data.',
+         'Everything written down at the moment.',
+         'Something will surprise you. Do not smooth it.',
+         'All the data onto the shared sheet.'],
+       levels:{
+         'Support':{task:'Complete your measurement table.',
+               help:'Table with columns.'},
+         'Core':{task:'Complete your table and note the conditions of each reading.',
+               help:'Time and place.'}}},
+      {s:2,title:'Reading our own data',
+       objective:'Work out what it means.',
+       view:[
+         'Total, average, and the surprising figure.',
+         'Per student, per classroom, per week.',
+         'Which figure would make somebody stop?',
+         'That is the one for the campaign.'],
+       levels:{
+         'Support':{task:'Work out the total and average of your data.',
+               help:'Operations set out.'},
+         'Core':{task:'Work out your figures and choose your campaign number, with a reason.',
+               help:'It has to be true and yours.'}}},
+      {s:3,title:'What is likely to happen',
+       objective:'Use probability.',
+       view:[
+         'Theoretical and experimental probability.',
+         'If nothing changes, what is likely in a year?',
+         'Work it out with your data.',
+         'Is that a good enough reason to change?'],
+       levels:{
+         'Support':{task:'Complete the probability calculation with the model given.',
+               help:'Worked example.'},
+         'Core':{task:'Work out what is likely in a year if nothing changes.',
+               help:'With the figure.'}}}
+     ]},
     {n:4,title:'The savings plan',desc:'Turning the data into a plan with numbers. What is likely to work and what is not.',
      give:'Your savings plan.',
      across:{
@@ -1340,16 +2488,44 @@ window.UNIT_PLANS = {
        social:'Free goods versus economic goods: what is paid for and by whom.',
        comunicacion:'Sentido literal y figurado: la imagen que se queda en la cabeza.',
        english:'Should and the first conditional: what would happen if we changed it.'},
-     sessions:[{s:1,title:'From the number to the plan',view:[
-       'If we changed this one thing, how much would we save? Work it out.',
-       'Probability with Maths: what is likely to happen if nothing changes?',
-       'Rule: the plan must be doable by the people in this school.',
-       'Test it on another team: would they do it?']}],
-     levels:{
-       'Support':{task:'Complete the savings plan with the three steps given and work out the saving.',
-                  help:'Steps and the calculation started.'},
-       'Core':{task:'Write your plan with its saving worked out and say what is likely if nothing changes.',
-               help:'Use the first conditional.'}}},
+     sessions:[
+      {s:1,title:'Designing the saving',
+       objective:'Turn data into a plan.',
+       view:[
+         'If we changed this one thing, how much would we save?',
+         'Work it out with real numbers.',
+         'The plan has to be doable by the people in this school.',
+         'Write your three steps.'],
+       levels:{
+         'Support':{task:'Complete the savings plan with the three steps given.',
+               help:'Steps and calculation.'},
+         'Core':{task:'Design your plan and work out the saving.',
+               help:'With the figures.'}}},
+      {s:2,title:'Would they actually do it',
+       objective:'Test the plan on somebody else.',
+       view:[
+         'Present your plan to another team. Would they do it?',
+         'What do they object to?',
+         'Fix the step they would not follow.',
+         'A plan nobody follows is not a plan.'],
+       levels:{
+         'Support':{task:'Note the objection you received and fix one step.',
+               help:'Your plan.'},
+         'Core':{task:'Rewrite the step that was objected to and say why it is better.',
+               help:'Be specific.'}}},
+      {s:3,title:'Should and if',
+       objective:'Learn the language of persuading.',
+       view:[
+         'Should and shouldn’t: what we ought to do.',
+         'First conditional: if we do this, that will happen.',
+         'Write four sentences about your plan.',
+         'Two with should, two with if.'],
+       levels:{
+         'Support':{task:'Complete four sentences with should and if.',
+               help:'Sentences started.'},
+         'Core':{task:'Write four sentences of your own about your plan.',
+               help:'Two of each type.'}}}
+     ]},
     {n:5,title:'Writing the campaign',desc:'Drafting the persuasive text in your notebook. Feedback and rewriting.',
      give:'The final text.',
      across:{
@@ -1358,16 +2534,44 @@ window.UNIT_PLANS = {
        social:'The importance of saving.',
        comunicacion:'Guion y raya: los signos del dialogo y del inciso.',
        english:'Drafting, feedback and rewriting the persuasive text.'},
-          sessions:[{s:1,title:'Draft, feedback, rewrite',view:[
-       'Draft in the notebook, with the three techniques you chose.',
-       'Read it to a team that is NOT convinced. Let them object.',
-       'Rewrite answering the objection you got.',
-       'Rehearse the first fifteen seconds: that is where they decide to stay.']}],
-     levels:{
-       'Support':{task:'Write your campaign with the frame: "Did you know that…? That is why… If we… we will…"',
-                  help:'The three openings and your figure.'},
-       'Core':{task:'Write your campaign with your three techniques and an answer to one objection.',
-               help:'Should, the first conditional, and one direct ask.'}}},
+          sessions:[
+      {s:1,title:'Drafting the campaign',
+       objective:'Write it with your three techniques.',
+       view:[
+         'Your figure, your ask, your consequence.',
+         'The first fifteen seconds decide whether they stay.',
+         'Draft in the notebook.',
+         'Read your opening to a partner.'],
+       levels:{
+         'Support':{task:'Write your campaign with the frame: "Did you know…? That is why… If we…"',
+               help:'Three openings.'},
+         'Core':{task:'Write your campaign with your three techniques.',
+               help:'200–250 words.'}}},
+      {s:2,title:'Facing the unconvinced',
+       objective:'Answer an objection.',
+       view:[
+         'Read your campaign to a team that is NOT convinced.',
+         'Let them object. Note the one you could not answer.',
+         'Rewrite answering it.',
+         'An answered objection makes the campaign stronger.'],
+       levels:{
+         'Support':{task:'Note the objection and add one sentence answering it.',
+               help:'Your text.'},
+         'Core':{task:'Rewrite integrating the objection into your argument.',
+               help:'Not as an appendix.'}}},
+      {s:3,title:'The final version',
+       objective:'Leave it ready to be said out loud.',
+       view:[
+         'Feedback against the rubric.',
+         'Check that every figure is yours and is right.',
+         'Final version.',
+         'Rehearse the first fifteen seconds.'],
+       levels:{
+         'Support':{task:'Correct what was marked and rehearse your opening.',
+               help:'Your text with marks.'},
+         'Core':{task:'Produce the final version and rehearse the opening without reading.',
+               help:'Timed.'}}}
+     ]},
     {n:6,title:'Convincing them',desc:'The speech, in front of the school.',
      give:'The campaign and the speech.',
      across:{
@@ -1376,16 +2580,44 @@ window.UNIT_PLANS = {
        social:'Making a savings plan that the school could actually adopt.',
        comunicacion:'Diferencia entre haber y a ver: revisar antes de publicar.',
        english:'Delivering a persuasive speech to an audience that can walk away.'},
-     sessions:[{s:1,title:'Three minutes in the hall',view:[
-       'Timed rehearsal. Over three minutes, cut.',
-       'The showing. Each team presents its campaign.',
-       'Count: how many people stayed to the end?',
-       'One line in the notebook: what worked and what did not.']}],
-     levels:{
-       'Support':{task:'Copy your final campaign and rehearse the first fifteen seconds without reading.',
-                  help:'Your text with the corrections marked.'},
-       'Core':{task:'Produce the final campaign and write what you would change after presenting it.',
-               help:'Be specific about what you saw in the hall.'}}}
+     sessions:[
+      {s:1,title:'Rehearsing the speech',
+       objective:'Three minutes, without reading.',
+       view:[
+         'Timed rehearsal. Over three minutes, cut.',
+         'Eyes up, not on the paper.',
+         'Your partner asks one question. Answer it.',
+         'Mark the part that comes out worst.'],
+       levels:{
+         'Support':{task:'Rehearse with your cards and mark the hardest part.',
+               help:'Cards with key words.'},
+         'Core':{task:'Rehearse the whole speech and prepare an answer to one question.',
+               help:'The likely one.'}}},
+      {s:2,title:'The showing',
+       objective:'Convince a hall that can walk away.',
+       view:[
+         'Each team presents its campaign.',
+         'Count how many people stayed to the end.',
+         'Somebody asks something. Answer it.',
+         'Note the best question.'],
+       levels:{
+         'Support':{task:'Present your campaign with your cards.',
+               help:'Your cards.'},
+         'Core':{task:'Present without reading and answer a question from the floor.',
+               help:'Note it afterwards.'}}},
+      {s:3,title:'What worked',
+       objective:'Close the loop.',
+       view:[
+         'How many stayed? What did they ask most?',
+         'Which campaign convinced the school, and why?',
+         'Will the school actually change anything?',
+         'Write what worked and what did not.'],
+       levels:{
+         'Support':{task:'Complete the reflection: what worked, what did not.',
+               help:'Two openings.'},
+         'Core':{task:'Write what you would change after presenting it.',
+               help:'Be specific about what you saw.'}}}
+     ]}
   ],
   words:['renewable','non-renewable','free goods','economic goods','saving','budget','probability','data','waste','campaign','should','shouldn\u2019t','if we','we will','that is why','did you know'],
   deliverables:[
@@ -2414,20 +3646,71 @@ window.UNIT_PLANS = {
        art:'Visual references: how a future has been imagined before.',
        globalperspectives:'Characterising a system today, with evidence and not with impressions.'},
      sessions:[
-       {s:1,title:'Choosing your system',view:[
+      {s:1,title:'Four systems',
+       objective:'Choose the system your team will argue about.',
+       view:[
          'Four systems on the board: how we move, how we eat, how we work, how we learn.',
-         'Each team takes one and finds five facts about it TODAY, in Lima, with numbers.',
-         'A fact is not an opinion. Filter what you bring.',
-         'What of this will not exist in 2040? First guess.']}],
-     levels:{
-       'A2':{task:'Write five facts about your system today, with a number in each one.',
-             help:'Table with five rows and where to look.'},
-       'B1':{task:'Write five facts with their source and one thing that surprised you.',
-             help:'Frame: "According to ____, today…"'},
-       'B2':{task:'Present the state of your system today and identify the tension inside it.',
-             help:'A system under tension is one that has to change.'},
-       'C1':{task:'Characterise your system today and explain which forces are pulling it in each direction.',
-             help:'Name at least two forces in conflict.'}}},
+         'Each one is already changing. Where can you see it in Lima?',
+         'Teams form and claim one system each.',
+         'First question: what would you change about yours if you could?'],
+       levels:{
+         'A2':{task:'Choose your system and write three things you know about it today.',
+               help:'Three sentences started.'},
+         'B1':{task:'Choose your system and explain why it matters to you.',
+               help:'Frame: "I chose… because…"'},
+         'B2':{task:'Choose your system and identify what is already changing in it.',
+               help:'With one example.'},
+         'C1':{task:'Choose your system and say what tension inside it forces it to change.',
+               help:'Name the two forces.'}}},
+      {s:2,title:'Fact or opinion',
+       objective:'Build on evidence, not on impressions.',
+       view:[
+         'Ten statements about the future. Which are facts and which opinions?',
+         'A projection is neither: it is a fact plus an assumption.',
+         'Where do the figures about your system come from?',
+         'Bring five facts, with their source.'],
+       levels:{
+         'A2':{task:'Sort ten statements into fact and opinion.',
+               help:'Statements listed.'},
+         'B1':{task:'Sort them and rewrite two opinions as checkable facts.',
+               help:'Say what you would check.'},
+         'B2':{task:'Explain the difference between a fact, an opinion and a projection.',
+               help:'With an example of each.'},
+         'C1':{task:'Take a projection about your system and name the assumption inside it.',
+               help:'What has to hold for it to be true?'}}},
+      {s:3,title:'The state of play',
+       objective:'Describe your system today, with numbers.',
+       view:[
+         'Five facts about your system today, in Lima, with figures.',
+         'Not "a lot of people": how many, and according to whom.',
+         'Compare with another country if you can.',
+         'File your five facts.'],
+       levels:{
+         'A2':{task:'Complete the fact sheet with the data given.',
+               help:'Sheet with five rows.'},
+         'B1':{task:'Write five facts with their source.',
+               help:'Each one with a number.'},
+         'B2':{task:'Present the state of your system today and what surprised you.',
+               help:'And why it surprised you.'},
+         'C1':{task:'Characterise your system today and say which figure is least reliable.',
+               help:'And why.'}}},
+      {s:4,title:'Visual references',
+       objective:'See how the future has been imagined before.',
+       view:[
+         'With Creative Arts: five images of the future from different decades.',
+         'What did each one get right, and what does it say about its own time?',
+         'A picture of the future is always a picture of the present.',
+         'Which visual language will you use?'],
+       levels:{
+         'A2':{task:'Match five images with their decade and choose your favourite.',
+               help:'Images and dates.'},
+         'B1':{task:'Describe two images and say what each got right.',
+               help:'Two sentences each.'},
+         'B2':{task:'Analyse what one image reveals about the time that produced it.',
+               help:'Be specific.'},
+         'C1':{task:'Analyse two images and explain what your own will reveal about 2026.',
+               help:'Unavoidably.'}}}
+     ]},
     {n:2,title:'Reading the future',desc:'The Time Machine and today’s projections side by side. What a trend is and where it breaks.',
      give:'Three trends and the evidence behind each one.',
      across:{
@@ -2435,20 +3718,71 @@ window.UNIT_PLANS = {
        art:'The visual language of a projection: what an image can claim.',
        globalperspectives:'What a trend is, where it comes from and when it breaks.'},
      sessions:[
-       {s:1,title:'The Time Machine and the projections',view:[
-         'Wells travels to the year 802,701. What does he get right and what does he invent?',
-         'A trend is a line that continues. Where does a line break?',
-         'Three real projections about your system. What does each assume?',
-         'Choose your three trends and write down the evidence behind each.']}],
-     levels:{
-       'A2':{task:'Complete three trends with the frame: "More and more people are ____."',
-             help:'Frames and a bank of trends.'},
-       'B1':{task:'Describe three trends of your system with the evidence for each.',
-             help:'Useful: is increasing, is likely to, by 2040.'},
-       'B2':{task:'Describe three trends and say which is most likely to break, and why.',
-             help:'What would have to happen for the line to bend?'},
-       'C1':{task:'Analyse three trends distinguishing what is likely from what is merely possible.',
-             help:'Say which of the three you would bet on, and what it would cost you to be wrong.'}}},
+      {s:1,title:'The Time Machine',
+       objective:'Read Wells imagining a future out of his own present.',
+       view:[
+         'Wells writes in 1895 about the year 802,701.',
+         'What does he get right about how technology changes a society?',
+         'And what does he simply invent?',
+         'Silent reading. This is the book of the term.'],
+       levels:{
+         'A2':{task:'Answer five comprehension questions about the chapter.',
+               help:'Two options each.'},
+         'B1':{task:'Answer and write what Wells assumes about progress.',
+               help:'Frame: "Wells thinks that…"'},
+         'B2':{task:'Explain what Wells gets right and what he invents, with evidence.',
+               help:'Quote once.'},
+         'C1':{task:'Explain what Wells assumes and whether we still assume it.',
+               help:'Connect it to today.'}}},
+      {s:2,title:'What a trend is',
+       objective:'Tell a trend from a wish.',
+       view:[
+         'A line that continues. Three real graphs of your system.',
+         'Where does a line break? Find a historical example.',
+         'A trend that everybody repeats is not necessarily true.',
+         'Choose your three trends.'],
+       levels:{
+         'A2':{task:'Complete three trends: "More and more people are ____."',
+               help:'Frames and a trend bank.'},
+         'B1':{task:'Describe three trends of your system with the evidence for each.',
+               help:'Is increasing, is likely to.'},
+         'B2':{task:'Describe three trends and say which is most likely to break.',
+               help:'And what would break it.'},
+         'C1':{task:'Analyse three trends distinguishing likely from merely possible.',
+               help:'Say which you would bet on.'}}},
+      {s:3,title:'Speculating properly',
+       objective:'Use the language of what is not certain.',
+       view:[
+         'Could, might, is likely to, will probably.',
+         'Which of them commits you most?',
+         'Rewrite five over-confident statements.',
+         'Claiming less can persuade more.'],
+       levels:{
+         'A2':{task:'Complete five sentences with could, might or will.',
+               help:'Sentences started.'},
+         'B1':{task:'Rewrite five statements using speculation language.',
+               help:'Three different forms.'},
+         'B2':{task:'Rewrite them and explain why the hedged version is stronger.',
+               help:'With an example.'},
+         'C1':{task:'Write five claims about 2040 calibrated to your evidence.',
+               help:'Each with its degree of certainty.'}}},
+      {s:4,title:'Filing the evidence',
+       objective:'Leave the research usable.',
+       view:[
+         'Everything the team has: facts, trends, sources.',
+         'What can you claim with this, and what not?',
+         'The gap is where your vision goes.',
+         'File it before you start imagining.'],
+       levels:{
+         'A2':{task:'Complete the evidence file with what you found.',
+               help:'File template.'},
+         'B1':{task:'File your evidence saying what each source supports.',
+               help:'Three sources.'},
+         'B2':{task:'File it and identify the gap your vision will fill.',
+               help:'Be specific.'},
+         'C1':{task:'File it and say what your vision cannot claim on this evidence.',
+               help:'Know your ceiling.'}}}
+     ]},
     {n:3,title:'Building the vision',desc:'From trend to scenario. What has to be true for your 2040 to happen, and what it would cost.',
      give:'Your scenario with its conditions and its price.',
      across:{
@@ -2456,20 +3790,71 @@ window.UNIT_PLANS = {
        art:'Choosing what of the vision is better seen than explained.',
        globalperspectives:'Building a scenario: conditions, cost and who pays.'},
      sessions:[
-       {s:1,title:'From trend to scenario',view:[
-         'Your 2040 in one paragraph. Not a fantasy and not a catastrophe.',
-         'What has to be true for it to happen? List the conditions.',
-         'And what does it cost, and who pays? A future with no cost is not a future.',
-         'Second conditional on the board: if we changed…, we would…']}],
-     levels:{
-       'A2':{task:'Write your 2040 in five sentences using will and going to.',
-             help:'Frames with the future forms.'},
-       'B1':{task:'Describe your scenario and the three conditions it needs.',
-             help:'Frame: "This will only happen if…"'},
-       'B2':{task:'Describe the scenario, its conditions and its cost, saying who pays.',
-             help:'Second conditional and future perfect: "by 2040 we will have…"'},
-       'C1':{task:'Build the scenario naming the trade-off and defending that it is worth paying.',
-             help:'The strongest visions are the ones that admit what they sacrifice.'}}},
+      {s:1,title:'From trend to scenario',
+       objective:'Build a future that follows from the present.',
+       view:[
+         'Your 2040 in one paragraph. Not a fantasy, not a catastrophe.',
+         'It has to follow from your three trends.',
+         'Write the first version.',
+         'Read it out: does it sound possible?'],
+       levels:{
+         'A2':{task:'Write your 2040 in five sentences with will and going to.',
+               help:'Frames.'},
+         'B1':{task:'Describe your scenario in a paragraph, based on your trends.',
+               help:'Future forms.'},
+         'B2':{task:'Describe your scenario and connect each part to a trend.',
+               help:'Explicitly.'},
+         'C1':{task:'Build the scenario and say which trend it depends on most.',
+               help:'Its weakest point.'}}},
+      {s:2,title:'What has to be true',
+       objective:'Name the conditions.',
+       view:[
+         'Your 2040 needs things to happen first. Which?',
+         'Second conditional: if we changed X, we would get Y.',
+         'List three conditions.',
+         'Which is the hardest?'],
+       levels:{
+         'A2':{task:'Complete three conditions with the frame given.',
+               help:'Frame: "This will only happen if…"'},
+         'B1':{task:'Write your three conditions using the second conditional.',
+               help:'And order them by difficulty.'},
+         'B2':{task:'Write the conditions and explain which is least likely.',
+               help:'And why.'},
+         'C1':{task:'Write the conditions and what would have to change for the hardest to hold.',
+               help:'Concretely.'}}},
+      {s:3,title:'What it costs and who pays',
+       objective:'Name the trade-off.',
+       view:[
+         'A future with no cost is not a future, it is an advert.',
+         'What does yours cost? In money, in time, in freedom?',
+         'And who pays it? Not always the same people who benefit.',
+         'Write your trade-off.'],
+       levels:{
+         'A2':{task:'Complete: "My future costs ____ and ____ would pay for it."',
+               help:'Frame and options.'},
+         'B1':{task:'Write what your future costs and who pays.',
+               help:'Two sentences.'},
+         'B2':{task:'Explain the trade-off and defend that it is worth paying.',
+               help:'With a reason.'},
+         'C1':{task:'Name the trade-off and answer somebody who refuses to pay it.',
+               help:'Their objection is legitimate.'}}},
+      {s:4,title:'Testing the scenario',
+       objective:'Let another team attack it.',
+       view:[
+         'Swap scenarios. Find the weakest point of theirs.',
+         'The best attack: "that assumes that…, and it is not true."',
+         'Note the attack you could not answer.',
+         'Fix your scenario.'],
+       levels:{
+         'A2':{task:'Note the objection and fix one part of your scenario.',
+               help:'Your text.'},
+         'B1':{task:'Write the objection you received and how you fixed it.',
+               help:'Frame: "They said… so now…"'},
+         'B2':{task:'Integrate the objection into your scenario.',
+               help:'Not as an appendix.'},
+         'C1':{task:'Answer the objection and say under what conditions it would be right.',
+               help:'Concede exactly.'}}}
+     ]},
     {n:4,title:'Making it visible',desc:'With Creative Arts: the piece that carries the vision at the exhibition — a model, an image, an object.',
      give:'The visual, and the draft of the argument in your notebook.',
      across:{
@@ -2477,20 +3862,71 @@ window.UNIT_PLANS = {
        art:'Building the piece that carries the argument at the stand.',
        globalperspectives:'The trade-off of your vision, named out loud.'},
      sessions:[
-       {s:1,title:'Making it visible',view:[
-         'With Creative Arts: what object carries your vision at a stand?',
-         'It is not decoration — it has to say something the text does not.',
-         'Build it, and write the argument in your notebook beside it.',
-         'Test: show it to somebody without speaking. What do they understand?']}],
-     levels:{
-       'A2':{task:'Write the text of your stand in six sentences and label your visual.',
-             help:'Structure of the six sentences given.'},
-       'B1':{task:'Write the argument of your stand with the vision, the evidence and what it costs.',
-             help:'It has to be read in two minutes.'},
-       'B2':{task:'Write the argument so that it works with your visual, not repeating it.',
-             help:'If the text says the same as the object, one of the two is unnecessary.'},
-       'C1':{task:'Write the argument and design how the visual carries the part that words do worst.',
-             help:'What is easier to see than to explain?'}}},
+      {s:1,title:'What the object has to say',
+       objective:'Decide what the visual carries.',
+       view:[
+         'With Creative Arts: what is easier to see than to explain?',
+         'The piece is not decoration: it says what the text says worst.',
+         'Sketch three options.',
+         'Choose one and say why.'],
+       levels:{
+         'A2':{task:'Choose your visual from three options and label it.',
+               help:'Three sketches.'},
+         'B1':{task:'Sketch your piece and write what it will say.',
+               help:'One sentence.'},
+         'B2':{task:'Design your piece so it says what the text cannot.',
+               help:'Explain the division.'},
+         'C1':{task:'Design it and explain why this idea is better seen than read.',
+               help:'Be specific.'}}},
+      {s:2,title:'Building it',
+       objective:'Make the piece for the stand.',
+       view:[
+         'Materials on the table. Two sessions to build.',
+         'Test: show it to somebody without speaking. What do they understand?',
+         'Fix what was misread.',
+         'Leave it half-built for tomorrow.'],
+       levels:{
+         'A2':{task:'Build your piece following your sketch.',
+               help:'Your sketch.'},
+         'B1':{task:'Build your piece and note what a classmate understood.',
+               help:'And what they did not.'},
+         'B2':{task:'Build it and adjust what was misread.',
+               help:'Say what you changed.'},
+         'C1':{task:'Build it and justify one design decision.',
+               help:'Why that and not the alternative.'}}},
+      {s:3,title:'Drafting the argument',
+       objective:'Write the case for your 2040.',
+       view:[
+         'Structure: vision, what it is built on, what it costs, who pays.',
+         'It has to be read in two minutes at a stand.',
+         'Draft in the notebook.',
+         'Read the first line out loud.'],
+       levels:{
+         'A2':{task:'Write your argument in six sentences with the frames given.',
+               help:'Six openings.'},
+         'B1':{task:'Write your argument with the four parts.',
+               help:'280–330 words.'},
+         'B2':{task:'Write it so it works WITH your visual, not repeating it.',
+               help:'Divide the work.'},
+         'C1':{task:'Write it anchoring every claim about 2040 in something measurable today.',
+               help:'Every one.'}}},
+      {s:4,title:'Text and object together',
+       objective:'Check that the two work as one.',
+       view:[
+         'Put the text next to the piece. Do they repeat each other?',
+         'If they do, one of the two is unnecessary.',
+         'Adjust the text, not the piece.',
+         'Hand in the draft and the piece.'],
+       levels:{
+         'A2':{task:'Check your text and your piece and mark what repeats.',
+               help:'Both together.'},
+         'B1':{task:'Adjust your text so it does not repeat the visual.',
+               help:'Say what you cut.'},
+         'B2':{task:'Adjust both so each carries a different part.',
+               help:'Explain the division.'},
+         'C1':{task:'Adjust them and explain what the visitor understands from each.',
+               help:'Separately.'}}}
+     ]},
     {n:5,title:'Sharpening the argument',desc:'Feedback against the rubric, rewriting, and rehearsing what to say when somebody disagrees.',
      give:'The final text.',
      across:{
@@ -2498,20 +3934,71 @@ window.UNIT_PLANS = {
        art:'Final adjustments to the piece after the feedback.',
        globalperspectives:'Standing up to the objection of somebody who does not share your future.'},
      sessions:[
-       {s:1,title:'Sharpening it',view:[
-         'Feedback against the rubric, criterion by criterion.',
-         'The objection round: another team attacks your future. Take notes.',
-         'Rewrite answering the best objection you received.',
-         'Rehearse the first fifteen seconds. That is where a visitor decides to stay.']}],
-     levels:{
-       'A2':{task:'Correct your text with the marks received and rehearse the opening aloud.',
-             help:'Your text with the corrections marked.'},
-       'B1':{task:'Rewrite your text answering one objection you received.',
-             help:'However, although, on the other hand.'},
-       'B2':{task:'Rewrite integrating the objection into your argument, not as an appendix.',
-             help:'A well-answered objection makes the argument stronger.'},
-       'C1':{task:'Rewrite so that the argument survives the hardest objection you were given.',
-             help:'If it does not survive, change the argument — not the objection.'}}},
+      {s:1,title:'Feedback against the rubric',
+       objective:'Improve it with the criteria in front of you.',
+       view:[
+         'The rubric on the table. Assess a partner’s text against criterion 1.',
+         'Not "I liked it": which level, and what is missing to move up.',
+         'Twenty minutes of silent rewriting.',
+         'Mark what you changed.'],
+       levels:{
+         'A2':{task:'Mark your level on the rubric and correct one thing.',
+               help:'Rubric as a checklist.'},
+         'B1':{task:'Assess against two criteria and rewrite your weakest part.',
+               help:'Say the level.'},
+         'B2':{task:'Assess against the three criteria and justify each change.',
+               help:'No change at random.'},
+         'C1':{task:'Assess, rewrite, and say which criterion you will not reach.',
+               help:'And why.'}}},
+      {s:2,title:'The objection round',
+       objective:'Defend it against somebody who disagrees.',
+       view:[
+         'Each team defends its 2040. The others attack.',
+         'Rule: attack the argument, not the team.',
+         'Note the best objection you received.',
+         'Is it fatal or fixable?'],
+       levels:{
+         'A2':{task:'Note the objection received and write one answer.',
+               help:'Frame given.'},
+         'B1':{task:'Write the objection and your answer to it.',
+               help:'However, although.'},
+         'B2':{task:'Rewrite integrating the objection into the argument.',
+               help:'Making it stronger.'},
+         'C1':{task:'Rewrite so the argument survives the hardest objection.',
+               help:'If it does not, change the argument.'}}},
+      {s:3,title:'The final version',
+       objective:'Close the text.',
+       view:[
+         'Read it aloud once before touching it.',
+         'Every claim about 2040: what supports it?',
+         'Check figures and sources.',
+         'Final version.'],
+       levels:{
+         'A2':{task:'Copy your corrected text and check your three figures.',
+               help:'Your text with marks.'},
+         'B1':{task:'Produce the final version and verify every figure.',
+               help:'Checklist.'},
+         'B2':{task:'Produce it and check every claim has its evidence.',
+               help:'Underline them.'},
+         'C1':{task:'Produce it and check no claim goes beyond your evidence.',
+               help:'The commonest error.'}}},
+      {s:4,title:'Rehearsing the stand',
+       objective:'Prepare to talk to strangers.',
+       view:[
+         'Fifteen seconds to make somebody stop. Rehearse them.',
+         'It is not explained the same to a child as to an adult.',
+         'Rehearse both versions.',
+         'Prepare the question of the sceptic.'],
+       levels:{
+         'A2':{task:'Prepare four cards with the key words of your stand.',
+               help:'Structure given.'},
+         'B1':{task:'Rehearse your explanation and prepare two likely questions.',
+               help:'The two.'},
+         'B2':{task:'Rehearse two versions, for a child and for an adult.',
+               help:'Same content.'},
+         'C1':{task:'Rehearse and prepare the answer to somebody who does not share your future.',
+               help:'Their objection is reasonable.'}}}
+     ]},
     {n:6,title:'The exhibition',desc:'NIS 2040 opens. Families walk through and you defend your future to whoever stops.',
      give:'The stand, the piece and your defence.',
      across:{
@@ -2519,20 +4006,71 @@ window.UNIT_PLANS = {
        art:'Setting up the stand at the NIS 2040 exhibition.',
        globalperspectives:'Defending a position in public, and conceding well when the objection is good.'},
      sessions:[
-       {s:1,title:'NIS 2040 opens',view:[
-         'Set up the stands. Each team decides who welcomes and who explains.',
+      {s:1,title:'Setting up NIS 2040',
+       objective:'Get the exhibition ready.',
+       view:[
+         'Set up the stands. Who welcomes and who explains?',
+         'Last check: does the piece hold, is the text readable?',
+         'Walk through the other stands as a visitor.',
+         'What makes you stop at one and not another?'],
+       levels:{
+         'A2':{task:'Set up your stand and practise your opening.',
+               help:'Your cards.'},
+         'B1':{task:'Set up and note what makes you stop at another stand.',
+               help:'One thing.'},
+         'B2':{task:'Set up and adjust your opening with what you saw.',
+               help:'Say what you changed.'},
+         'C1':{task:'Set up and prepare how you will adapt to who arrives.',
+               help:'Two versions.'}}},
+      {s:2,title:'The exhibition',
+       objective:'Defend your future to whoever stops.',
+       view:[
          'Families walk through. Nobody is obliged to stop.',
-         'Defend your future to whoever does stop, including the sceptic.',
-         'Count: how many stopped, and what did they ask most often?']}],
-     levels:{
-       'A2':{task:'Present your stand using your six sentences, without reading.',
-             help:'Cards with the key words only.'},
-       'B1':{task:'Present your vision and answer questions from visitors.',
-             help:'Three likely questions, prepared.'},
-       'B2':{task:'Present, defend and adapt the explanation to who is in front of you.',
-             help:'It is not explained the same to a child as to an adult.'},
-       'C1':{task:'Hold the argument with a visitor who disagrees, without losing the thread or the courtesy.',
-             help:'The aim is not to win: it is that they leave thinking.'}}}
+         'Take turns: one welcomes, one explains.',
+         'Somebody disagrees. Hold the argument, without losing courtesy.',
+         'Count how many stopped and what they asked most.'],
+       levels:{
+         'A2':{task:'Present your stand with your cards.',
+               help:'Your cards.'},
+         'B1':{task:'Present and answer visitors’ questions.',
+               help:'Your two prepared ones.'},
+         'B2':{task:'Present, adapt to who is in front of you and answer an unexpected question.',
+               help:'Note it.'},
+         'C1':{task:'Hold the argument with somebody who disagrees, and concede if they are right.',
+               help:'Say why.'}}},
+      {s:3,title:'What they took away',
+       objective:'Find out what actually landed.',
+       view:[
+         'What did visitors remember? Ask three of them.',
+         'What they remember is not always what you said.',
+         'Which part of your stand worked?',
+         'And which was ignored?'],
+       levels:{
+         'A2':{task:'Ask two visitors what they remember and write it down.',
+               help:'Two answers.'},
+         'B1':{task:'Write what three visitors took away and compare it with what you wanted.',
+               help:'The difference.'},
+         'B2':{task:'Analyse the gap between what you said and what they understood.',
+               help:'And why.'},
+         'C1':{task:'Analyse it and say what you would change in the piece or in the text.',
+               help:'Be specific.'}}},
+      {s:4,title:'Closing the year',
+       objective:'Look back at the two units.',
+       view:[
+         'Two projects: an audit and a vision. What did each demand of you?',
+         'Which was harder, and why?',
+         'What do you know now that you did not in October?',
+         'Final reflection, written.'],
+       levels:{
+         'A2':{task:'Complete the reflection with the three openings given.',
+               help:'Openings printed.'},
+         'B1':{task:'Write your reflection on the two projects.',
+               help:'What each demanded.'},
+         'B2':{task:'Write it including what you learned from an objection you received.',
+               help:'Before and after.'},
+         'C1':{task:'Write it and say what you would do differently in a third project.',
+               help:'Concretely.'}}}
+     ]}
   ],
   words:['vision','scenario','trend','projection','consequence','trade-off','sustainable','automation','plausible','far-fetched','by 2040','will have','is likely to','could','might','if we','unless','whereas','on balance'],
   deliverables:[
