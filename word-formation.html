@@ -100,6 +100,7 @@
   @media(max-width:520px){.matchwrap{gap:8px}.mitem{font-size:13px;padding:9px 8px}}
 </style>
 <script src="nis-nav.js?v=2"></script>
+<script src="activity-save.js?v=3"></script>
 </head>
 <body>
 <header>
@@ -356,6 +357,7 @@ const tagFor = l => `<span class="tag ${l.toLowerCase()}">${l}</span>`;
 const posLabel = {noun:'noun',adj:'adjective',verb:'verb',adv:'adverb'};
 
 function render(){
+  if(window.NIS_WORK) NIS_WORK.touch();
   if(state.i>=state.total){ return renderResult(); }
   if(state.mode==='build') return renderBuild();
   if(state.mode==='choice') return renderChoice();
@@ -557,6 +559,28 @@ document.querySelectorAll('#modeGroup .mode').forEach(b=>b.onclick=()=>{
   document.querySelectorAll('#modeGroup .mode').forEach(x=>x.classList.remove('on'));
   b.classList.add('on'); state.mode=b.dataset.mode; startRound();
 });
+
+/* ---- Guardado y entrega (barra Save / Submit) --------------------------
+   Esta practica no guardaba nada en ningun sitio: al cerrar la pestana
+   desaparecia la tanda entera. Se guarda el estado completo, asi que al
+   volver se sigue por la misma pregunta. */
+if(window.NIS_WORK) NIS_WORK.attach(Object.assign(NIS_WORK.ficha(), {
+  title: document.title,
+  vacio: 'Answer something first — then you can hand it in.',
+  read:  function(){ return { store: state }; },
+  write: function(d){
+    var p = (d && d.store) || {};
+    if(p && typeof p === 'object' && Array.isArray(p.queue)) state = p;
+  },
+  after: function(){ render(); },
+  count: function(d){ return ((d && d.store) || {}).i || 0; },
+  answers: function(d){
+    var x = (d && d.store) || {};
+    return { 'Word formation': (x.score || 0) + ' points / ' + (x.i || 0) + ' of ' +
+             (x.total || (x.queue || []).length) + ' / best streak ' + (x.best || 0) +
+             ' / ' + (x.lvl || '') + ' / ' + (x.mode || '') };
+  }
+}));
 
 startRound();
 /* build v2 */

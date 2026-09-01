@@ -457,7 +457,33 @@ function ficha(){
    (mejores marcas, borradores): sincroniza esas claves con la cuenta sin
    tener que entender su motor. Lo que se guarda sigue siendo suyo; aqui solo
    deja de vivir en un unico navegador. */
+/* Se avisa sola cuando la pagina escribe bajo su prefijo: asi estas paginas
+   no necesitan que se les meta un NIS_WORK.touch() dentro del motor. Se
+   envuelve setItem una sola vez y sin cambiar lo que hace. */
+var _lsEnvuelto = false, _lsPrefijos = [];
+function vigilaLocalStorage(pref){
+  _lsPrefijos.push(pref);
+  if(_lsEnvuelto) return;
+  try{
+    var original = localStorage.setItem.bind(localStorage);
+    localStorage.setItem = function(k, v){
+      var r = original(k, v);
+      try{
+        for(var i = 0; i < _lsPrefijos.length; i++){
+          if(String(k).indexOf(_lsPrefijos[i]) === 0){
+            if(window.NIS_WORK) window.NIS_WORK.touch();
+            break;
+          }
+        }
+      }catch(e){}
+      return r;
+    };
+    _lsEnvuelto = true;
+  }catch(e){}
+}
+
 function porPrefijo(pref, extra){
+  vigilaLocalStorage(pref);
   return Object.assign({
     read: function(){
       var out = {};
@@ -481,12 +507,55 @@ function porPrefijo(pref, extra){
   }, extra || {});
 }
 
+function porResultados(extra){
+  var RES = {};
+  function engancha(){
+    if(!window.NISACT || typeof window.NISACT.submit !== 'function' || window.NISACT.__nisw) return;
+    var original = window.NISACT.submit;
+    window.NISACT.submit = function(o){
+      try{
+        var k = (o && (o.title || o.level)) || 'Resultado';
+        RES[k] = { score:o.score, total:o.total, duration:o.duration, lives:o.lives };
+        if(window.NIS_WORK) window.NIS_WORK.touch();
+      }catch(e){}
+      return original.apply(this, arguments);
+    };
+    window.NISACT.__nisw = true;
+  }
+  engancha();
+  /* Algunas paginas declaran NISACT despues; se reintenta una vez. */
+  setTimeout(engancha, 0);
+  return Object.assign({
+    vacio: 'Finish a round first — then you can hand it in.',
+    read:  function(){ return { store: RES }; },
+    write: function(d){ var p = (d && d.store) || {};
+                        Object.keys(p).forEach(function(k){ RES[k] = p[k]; }); },
+    after: function(){},
+    count: function(d){ return Object.keys(((d || {}).store) || {}).length; },
+    answers: function(d){
+      var p = (d && d.store) || {}, out = {};
+      Object.keys(p).forEach(function(k){
+        var x = p[k] || {}, t = Math.max(0, Math.round(x.duration || 0));
+        out[k] = (x.score || 0) + '/' + (x.total || 0) + ' / ' +
+                 String(Math.floor(t/60)).padStart(2,'0') + ':' + String(t%60).padStart(2,'0');
+      });
+      return out;
+    }
+  }, extra || {});
+}
+
 window.NIS_WORK = {
   /* De que actividad es esta pagina, deducido del nombre del archivo. */
   ficha: ficha,
 
   /* Adaptador para paginas que ya usaban localStorage con un prefijo. */
   porPrefijo: porPrefijo,
+
+  /* Adaptador para paginas que no guardan NADA y solo reportan el resultado
+     a activity_attempts al terminar (backshifting, reported speech lab…).
+     Se envuelve ese reporte en vez de tocar su motor: cada resultado que
+     mandan queda tambien en la cuenta del alumno y se puede entregar. */
+  porResultados: porResultados,
 
   /* Lo llama el save() de la página en cada tecla: marca sucio y programa
      la subida. No sube en cada pulsación — eso sería una petición por letra. */

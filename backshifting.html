@@ -101,6 +101,7 @@
   <script src="config.js?v=18"></script>
   <script src="anticheat.js?v=8" data-activity="backshifting"></script>
 <script src="nis-nav.js?v=2"></script>
+<script src="activity-save.js?v=3"></script>
 </head>
 <body>
 <nav class="topnav">
@@ -402,6 +403,15 @@ function render(){
   if(tab==='learn') renderLearn(); else if(tab==='match') renderMatch(); else if(tab==='drill') renderDrill(); else renderWhack();
 }
 render();
+/* ---- Guardado y entrega (barra Save / Submit) --------------------------
+   Esta pagina no guardaba nada: solo mandaba el resultado al terminar. Se
+   envuelve ese envio para que el resultado quede tambien en la cuenta del
+   alumno y se pueda entregar, sin tocar su motor. */
+if(window.NIS_WORK) NIS_WORK.attach(Object.assign(
+  NIS_WORK.ficha(),
+  NIS_WORK.porResultados({ title: document.title })
+));
+
 </script>
 </body>
 </html>
