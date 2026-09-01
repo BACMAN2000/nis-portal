@@ -200,7 +200,7 @@ textarea:focus{outline:none;border-color:var(--blue)}
 <script src="config.js"></script>
 <script src="activities-data.js?v=12"></script>
 <script src="class-files.js?v=2"></script>
-<script src="unit-plans.js?v=9"></script>
+<script src="unit-plans.js?v=10"></script>
 <script src="nis-nav.js?v=2"></script>
 <script>
 /* Motor del hub de unidad. Los datos vienen de unit-plans.js, que es una copia
@@ -231,7 +231,7 @@ if(!U){
     <p class="muted">The unit hubs are being added grade by grade, straight from the
     school's planner. <a href="./">Go back to the portal</a>.</p></div>`;
 } else {
-  document.title = 'Unit '+U.n+' · '+U.title+' — Nordic International School';
+  document.title = 'Unit '+(U.label||U.n)+' · '+U.title+' — Nordic International School';
   // pinta() se llama al final del script: usa `sb`/`me`, que se declaran abajo.
 }
 
@@ -294,7 +294,7 @@ function pinta(){
       ? `background-image:linear-gradient(90deg,rgba(12,24,45,.84),rgba(12,24,45,.28)),url('${U.cover.image}');background-size:cover;background-position:center`
       : `background:linear-gradient(135deg,${U.cover.from},${U.cover.to})`):''}">
     ${U.cover?`<span class="motivo">${U.cover.icon}</span>`:''}
-    <p class="eyebrow">${esc(PLAN.label)} · English · Unit ${U.n}</p>
+    <p class="eyebrow">${esc(PLAN.label)} · English · Unit ${esc(String(U.label||U.n))}</p>
     <h1>${esc(U.title)}</h1>
     <div class="bigq">Big question — ${esc(U.bigq)}</div>
     <p class="meta">${U.weeks} weeks · ${esc(U.situation)}</p>
@@ -954,7 +954,7 @@ function cableaArchivo(kind){
    unidad del piloto NO se pinta. Profesores y admin pasan siempre (esProfe
    ya distingue por teacher_access o por profiles.role). */
 const UNIT_PILOT = new Set([
-  'g2.u5','g2.u6','g3.u5','g3.u6','g4.u5','g4.u6','g5.u5','g5.u6','g9.u5','g9.u6'
+  'g2.u5','g2.u6','g3.u5','g3.u6','g4.u5','g4.u6','g5.u5','g5.u6','g9.u105','g9.u106'
 ]);
 function esUnidadPiloto(){ return UNIT_PILOT.has(GRADE+'.u'+UNIT); }
 

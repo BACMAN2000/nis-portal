@@ -117,7 +117,7 @@ td.sem{font-weight:800;color:var(--blue-d);white-space:nowrap;width:52px}
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js"></script>
-<script src="unit-plans.js?v=9"></script>
+<script src="unit-plans.js?v=10"></script>
 <script src="nis-nav.js?v=2"></script>
 <script>
 /* Guia del profesor de la unidad, para imprimir.
@@ -172,7 +172,7 @@ function chips(cls, arr){
 function portada(){
   const prod = (U.deliverables||[]).map(d=>esc(d.title)+(d.spec?' — '+esc(d.spec):'')).join(' · ');
   return `<section class="hoja portada">
-    <div class="cinta">Guía del profesor · ${esc((PLAN.label||GRADE).toUpperCase())} · Unidad ${U.n}</div>
+    <div class="cinta">Guía del profesor · ${esc((PLAN.label||GRADE).toUpperCase())} · Unidad ${esc(String(U.label||U.n))}</div>
     <h1>${esc(U.title)}</h1>
     <div class="bigq">${esc(U.bigq||'')}</div>
     <div class="meta">
@@ -363,7 +363,7 @@ function pintaCerrado(msg){
 (async function(){
   if(!(await esPersonal())){ pintaCerrado('Solo para profesores'); return; }
   if(!U){ pintaCerrado('Esa unidad todavía no está'); return; }
-  document.title = `Teacher guide · ${PLAN.label} · Unit ${U.n} · ${U.title}`;
+  document.title = `Teacher guide · ${PLAN.label} · Unit ${U.label||U.n} · ${U.title}`;
   document.getElementById('app').innerHTML =
     portada() + cobertura() + semanas() + reparto() + rubrica() + entregables() + cierre();
 })();

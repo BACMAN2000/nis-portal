@@ -76,7 +76,7 @@ header a:hover,header button:hover{background:rgba(255,255,255,.3)}
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js"></script>
-<script src="unit-plans.js?v=9"></script>
+<script src="unit-plans.js?v=10"></script>
 <script src="nis-nav.js?v=2"></script>
 <script>
 /* Cuaderno de trabajo de la unidad, para imprimir.
@@ -130,7 +130,7 @@ function exitoDe(i){
    este alumno, tampoco se le entrega su cuaderno. Profesores y admin pasan.
    Fail-closed: sin sesion o con la consulta caida, no se pinta. */
 const UNIT_PILOT = new Set([
-  'g2.u5','g2.u6','g3.u5','g3.u6','g4.u5','g4.u6','g5.u5','g5.u6','g9.u5','g9.u6'
+  'g2.u5','g2.u6','g3.u5','g3.u6','g4.u5','g4.u6','g5.u5','g5.u6','g9.u105','g9.u106'
 ]);
 async function puedeVerlo(){
   if(!UNIT_PILOT.has(GRADE+'.u'+UNIT)) return true;
@@ -169,12 +169,12 @@ if(!U){
     + '<h2 style="margin:14px 0 6px">This unit is not open yet</h2>'
     + '<p class="foco">Your teacher will unlock it when the unit starts.</p></div>';
 } else {
-  document.title = 'Workbook · Unit ' + U.n + ' · ' + U.title;
+  document.title = 'Workbook · Unit ' + (U.label||U.n) + ' · ' + U.title;
   const pasos = U.sequence || [];
   const palabra = U.stepWord || 'Week';
 
   const portada = `<div class="hoja portada">
-    <div class="cinta" style="color:#a9cdf0">${esc(PLAN.label)} · English · Unit ${U.n}</div>
+    <div class="cinta" style="color:#a9cdf0">${esc(PLAN.label)} · English · Unit ${esc(String(U.label||U.n))}</div>
     <h1>${esc(U.title)}</h1>
     <div class="bigq">${esc(U.bigq)}</div>
     <p style="margin-top:18px"><b style="color:#fff">What you will produce:</b><br>

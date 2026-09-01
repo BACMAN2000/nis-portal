@@ -68,6 +68,7 @@ window.UNIT_PLANS = {
 {
   cover:{icon:'🔦', from:'#7a4a10', to:'#e0a83a'},
   n:5,
+  label:'5 · piloto', pilot:true,
   title:'Light, Shadows and Energy',
   weeks:5,
   bigq:'Where does light come from, and what happens when something gets in its way?',
@@ -113,6 +114,7 @@ window.UNIT_PLANS = {
 {
   cover:{icon:'🚗', from:'#12496b', to:'#4aa3c9'},
   n:6,
+  label:'6 · piloto', pilot:true,
   title:'Push, Pull and Go',
   weeks:6,
   bigq:'What makes things move, and what makes them stop?',
@@ -203,6 +205,7 @@ window.UNIT_PLANS = {
 {
   cover:{icon:'🪐', from:'#1b2a63', to:'#5566c4'},
   n:5,
+  label:'5 · piloto', pilot:true,
   title:'Our Place in Space',
   weeks:5,
   bigq:'How does the Earth move, and how do we explain it to somebody who has never thought about it?',
@@ -249,6 +252,7 @@ window.UNIT_PLANS = {
 {
   cover:{icon:'🎯', from:'#14563e', to:'#4fae7c'},
   n:6,
+  label:'6 · piloto', pilot:true,
   title:'This Year I Learned, Next Year I Will',
   weeks:6,
   bigq:'What did I actually get better at this year, and what am I going to do about next year?',
@@ -330,6 +334,7 @@ window.UNIT_PLANS = {
 {
   cover:{icon:'⚙️', from:'#5a2f6b', to:'#a473c4'},
   n:5,
+  label:'5 · piloto', pilot:true,
   title:'May the Force Move You',
   weeks:5,
   bigq:'What makes an object move the way it does, and how do we measure it accurately enough to prove it?',
@@ -376,6 +381,7 @@ window.UNIT_PLANS = {
 {
   cover:{icon:'🌍', from:'#0f5b52', to:'#4bb3a2'},
   n:6,
+  label:'6 · piloto', pilot:true,
   title:'Incredible Earth: Water, Weather and What We Have',
   weeks:6,
   bigq:'Where does our water come from, and what would happen if we used it as though it would never run out?',
@@ -467,6 +473,7 @@ window.UNIT_PLANS = {
 {
   cover:{icon:'🗺️', from:'#0d4f6b', to:'#4aa8c9'},
   n:5,
+  label:'5 · piloto', pilot:true,
   title:'The Air and the Water of Our Region',
   weeks:5,
   bigq:'What is the air and the water around us really like, and what should be done about it?',
@@ -514,6 +521,7 @@ window.UNIT_PLANS = {
 {
   cover:{icon:'💰', from:'#6b4a0d', to:'#d1a13a'},
   n:6,
+  label:'6 · piloto', pilot:true,
   title:'Worth Saving',
   weeks:6,
   bigq:'What is worth saving — and can you convince anybody else of it?',
@@ -1000,13 +1008,6 @@ window.UNIT_PLANS = {
   bigq:'What are the pros and cons of technology at both personal and social levels, and what environmental damage is caused by AI?',
   situation:'Technology sits at the centre of today’s biggest opportunities and problems — from misinformation to the environmental cost of artificial intelligence. You act as a critical researcher and advocate: you analyse articles, debates and reports, compare arguments, and produce your own written and spoken contribution.',
   audience:'Not only your teacher. You are writing and speaking as an informed citizen taking a position in a real debate — the same one governments, companies and scientists are having about AI, energy and e-waste.',
-  reader:{title:'The Time Machine', series:'Vicens Vives, Reading & Training Step Three B1.2', term:3, inPortal:false,
-          note:'Set for Grade 9 in the Plan Lector. No reader built for it yet in the portal — the natural sixth one, and it fits Unit 6 exactly.'},
-  exam:{target:'b2first', themes:['technology','environment','society','ethics'],
-        grammar:['advanced connectors: nevertheless, moreover, in contrast','passive voice for processes','concession: although, despite','hedging: may, might, tends to'],
-        extra:['artificial intelligence','algorithm','carbon footprint','e-waste','energy consumption','sustainability','inequality']},
-  areas:[{area:'science', level:1},{area:'ict', level:1}],
-  toddle:{unitId:'348012545363172489', subject:'English', grade:9},
   criteria:[
     {n:1, text:'Speaking & listening — present and defend a viewpoint.',
      levels:{
@@ -1061,12 +1062,6 @@ window.UNIT_PLANS = {
   bigq:'What kind of future do we want to create, and what can we learn from the present to build it?',
   situation:'You hear warnings about the future all the time — pollution, artificial intelligence, overpopulation — but you rarely get to imagine your own vision of what the future could look like. In this final unit you analyse different ideas about the future, evaluate arguments, and present your own report on possible futures for humanity, society or the planet.',
   audience:'The Future Forum: the class exchanges visions and reflections, and you have to make yours stand up to the others.',
-  reader:{title:'The Time Machine', series:'Vicens Vives, Reading & Training Step Three B1.2', term:3, inPortal:false,
-          note:'The book of the term. Unit 6 is Future Visions — it is the same subject.'},
-  exam:{target:'b2first', themes:['future','innovation','society','environment'],
-        grammar:['future forms: will, going to, future perfect','second conditional','speculation: could, might, is likely to','discourse markers for essays']},
-  areas:[{area:'globalperspectives', level:1}],
-  toddle:{subject:'English', grade:9},
   criteria:[
     {n:1, text:'Expresses clear ideas with logical organisation, in persuasive and formal language.'},
     {n:2, text:'Identifies central themes and arguments, notes key evidence and the author’s purpose, and compares viewpoints accurately.'},
@@ -1100,7 +1095,156 @@ window.UNIT_PLANS = {
      spec:'Around 100 words', range:[80,140]}
   ]
 }
+,
 
+/* ============================================================ PILOTO 2027
+   Unidades 5 y 6 PILOTO de 9.o. No sustituyen a las unidades 5 y 6
+   planificadas, que siguen intactas arriba tal como estan en Toddle: son
+   unidades APARTE, con el mismo contenido curricular y otra forma de
+   trabajarlo. Van cerradas al alumno; las conducen profesor y admin.
+
+   Que las hace un proyecto y no una unidad con actividades:
+     · hay un CLIENTE fuera del aula que recibe el producto y decide algo,
+     · el producto existe fuera del colegio y no es un examen,
+     · cada semana entrega una PIEZA del producto, no un tema visto,
+     · dos areas comparten el producto y la nota (nivel 2),
+     · la rubrica esta a la vista desde la semana 1,
+     · lo que se practica de Cambridge es lo que el producto exige.
+   El numero interno (105/106) evita chocar con la unidad planificada; lo
+   que se muestra es `label`. -------------------------------------------- */
+{
+  cover:{icon:'🔌', from:'#123f4f', to:'#3f9bb0'},
+  n:105,
+  label:'5 · piloto', pilot:true,
+  title:'Does Our School Run on Data?',
+  weeks:5,
+  bigq:'What does artificial intelligence really cost our school — and what should we do about it?',
+  situation:'The school runs on screens: tablets in class, an AI assistant here, a cloud folder there. All of it costs energy, water and money somewhere, and nobody at NIS has ever measured it. The leadership team has to write a policy on how AI and screens are used next year, and they do not have the data. You are going to get it for them. You audit what really happens in this building, you compare it with what the research says, and you hand them a proposal they can act on — or reject, if you have not argued it well enough.',
+  audience:'The leadership team of NIS. They will read your proposal to write next year’s policy, and they will ask you questions you have not rehearsed.',
+  reader:{title:'The Time Machine', series:'Vicens Vives · Reading & Training Step Three B1.2', term:3, inPortal:false,
+          note:'Obra del trimestre en el Plan Lector de 9.o. Todavía sin reader en el portal: se lee en papel.'},
+  exam:{target:'b2first',
+        themes:['technology','environment','society','ethics','education'],
+        grammar:['proposal register: I would recommend, it is advisable to','passive for processes','concession: although, despite, even though','hedging: may, might, tends to','advanced connectors: nevertheless, moreover, in contrast'],
+        extra:['artificial intelligence','algorithm','data centre','energy consumption','carbon footprint','e-waste','screen time','policy','trade-off','evidence']},
+  areas:[{area:'science', level:2},{area:'ict', level:2}],
+  criteria:[
+    {n:1, text:'Proposal — write something the leadership team can act on.',
+     levels:{
+       C:'I describe the problem but I do not ask for anything specific.',
+       B:'I make a recommendation, but the reader has to guess what to do first.',
+       A:'Clear recommendations in proposal register, ordered, each one justified with my evidence.',
+       AD:'I anticipate the objection the leadership team will actually raise, and I answer it before they ask.'}},
+    {n:2, text:'Evidence — use your own data, not only what the internet says.',
+     levels:{
+       C:'I quote articles; I have not measured anything myself.',
+       B:'I have some data of my own but I do not say how I got it.',
+       A:'My own measurements, the method explained, and the published research used to put them in context.',
+       AD:'I say what my data cannot prove, and where a better measurement would be needed.'}},
+    {n:3, text:'Defence — hold your position in front of people who can say no.',
+     levels:{
+       C:'I read my proposal out loud.',
+       B:'I present it and answer easy questions.',
+       A:'I speak from notes, take questions I did not expect, and build on what my teammates say.',
+       AD:'I change my mind out loud when the objection is good, and say why — without losing the argument.'}}
+  ],
+  sequence:[
+    {n:1,title:'The brief',desc:'The leadership team explains what policy they have to write and what they are missing. Teams form and each one takes one question of the audit. The rubric is on the table from today.',
+     give:'Your audit question and the team’s plan — what you will measure and how.'},
+    {n:2,title:'What is already known',desc:'Reading the research on the energy and water cost of AI, and starting The Time Machine. Telling a solid source from a loud one.',
+     give:'Three sources, classified, with what each one lets you claim.'},
+    {n:3,title:'Measuring this building',desc:'The audit itself, with Science and ICT: screen minutes, devices, energy, what gets thrown away. Real numbers from NIS.',
+     give:'Your dataset and the method you followed.'},
+    {n:4,title:'From data to a recommendation',desc:'Turning numbers into something somebody can decide on. Drafting the proposal in the notebook.',
+     give:'The draft of the proposal, handwritten.'},
+    {n:5,title:'Facing the leadership team',desc:'Final version, and the defence in front of the people who will write the policy.',
+     give:'The proposal handed in and the defence.'}
+  ],
+  words:['artificial intelligence','algorithm','data centre','energy consumption','carbon footprint','e-waste','screen time','policy','trade-off','evidence','I would recommend','it is advisable to','although','despite','nevertheless','moreover','in contrast','tends to','may','might'],
+  deliverables:[
+    {kind:'report', type:'text', icon:'&#128203;', title:'Proposal to the leadership team',
+     desc:'What you measured, what it means, and what you are asking NIS to do next year. Written to be acted on, not to be marked.',
+     spec:'300–350 words · proposal register', range:[300,350],
+     checklist:[
+       {k:'ask', t:'I make a specific recommendation, not a general complaint', re:'(i would recommend|we recommend|it is advisable|the school should|we propose)'},
+       {k:'own', t:'I use data we measured ourselves at NIS', re:'(we measured|we counted|our data|we recorded|at nis|in our school)'},
+       {k:'numbers', t:'There are real figures in it', re:'[0-9]+ ?(%|kwh|minutes|hours|devices|litres|liters|kg)'},
+       {k:'source', t:'I bring in published research as well', re:'(according to|research|study|report|source)'},
+       {k:'counter', t:'I answer the objection they will raise', re:'(however|although|despite|some may argue|it could be objected|even though)'},
+       {k:'register', t:'I write in proposal register, not as an essay', re:'(recommend|advisable|should be|we suggest|first step)'}
+     ]},
+    {kind:'presentation', type:'file', icon:'&#127908;', title:'Defence before the panel',
+     desc:'Present the audit and defend the recommendation in front of the leadership team. Notes, not a script — they will interrupt.',
+     spec:'6 minutes plus questions'}
+  ]
+},
+{
+  cover:{icon:'🔭', from:'#2a1f66', to:'#6e63c6'},
+  n:106,
+  label:'6 · piloto', pilot:true,
+  title:'NIS 2040',
+  weeks:6,
+  bigq:'What kind of future is worth arguing for — and can you make somebody believe it?',
+  situation:'Everybody has heard the warnings: the climate, the machines, the jobs that will not exist. Almost nobody is asked what they would actually build instead. Your team takes one system — how we move, how we eat, how we work, how we learn — and builds a defensible vision of it in 2040: not a fantasy, and not a catastrophe either. Something you can hold up with evidence in front of a room full of families at the end of the year.',
+  audience:'The families and the school at the closing exhibition. They did not come to be taught — they came to see, and they can walk away.',
+  reader:{title:'The Time Machine', series:'Vicens Vives · Reading & Training Step Three B1.2', term:3, inPortal:false,
+          note:'La misma obra del trimestre. Aquí encaja de lleno: es exactamente el ejercicio de imaginar un futuro y defenderlo.'},
+  exam:{target:'b2first',
+        themes:['future','innovation','society','environment','work'],
+        grammar:['future forms: will, going to, future perfect','second conditional','speculation: could, might, is likely to','discourse markers for argument'],
+        extra:['vision','scenario','trend','projection','consequence','trade-off','sustainable','automation','plausible','far-fetched']},
+  areas:[{area:'globalperspectives', level:2},{area:'art', level:1}],
+  criteria:[
+    {n:1, text:'Vision — argue for a future, do not just describe one.',
+     levels:{
+       C:'I describe what might happen, with no position of my own.',
+       B:'I take a position, but the reasons are general.',
+       A:'A clear vision, built from present evidence, with the trade-offs named.',
+       AD:'I defend a future that costs something, and I say who pays for it.'}},
+    {n:2, text:'Evidence — start from what is happening now.',
+     levels:{
+       C:'My future is invented from scratch.',
+       B:'I mention one or two present trends.',
+       A:'Every claim about 2040 is anchored in something measurable today.',
+       AD:'I distinguish what is likely from what is merely possible, and say which is which.'}},
+    {n:3, text:'Holding the room — speak to people who owe you nothing.',
+     levels:{
+       C:'I recite what I wrote.',
+       B:'I present clearly to people who are listening politely.',
+       A:'I hold attention, use my visual, and answer what I am asked.',
+       AD:'People stop to listen who were walking past.'}}
+  ],
+  sequence:[
+    {n:1,title:'Choosing the system',desc:'Movement, food, work or learning. What that system looks like today at NIS and in Lima, with numbers.',
+     give:'Your system, and its present state in five facts.'},
+    {n:2,title:'Reading the future',desc:'The Time Machine and today’s projections side by side. What a trend is and where it breaks.',
+     give:'Three trends and the evidence behind each one.'},
+    {n:3,title:'Building the vision',desc:'From trend to scenario. What has to be true for your 2040 to happen, and what it would cost.',
+     give:'Your scenario with its conditions and its price.'},
+    {n:4,title:'Making it visible',desc:'With Creative Arts: the piece that carries the vision at the exhibition — a model, an image, an object.',
+     give:'The visual, and the draft of the argument in your notebook.'},
+    {n:5,title:'Sharpening the argument',desc:'Feedback against the rubric, rewriting, and rehearsing what to say when somebody disagrees.',
+     give:'The final text.'},
+    {n:6,title:'The exhibition',desc:'NIS 2040 opens. Families walk through and you defend your future to whoever stops.',
+     give:'The stand, the piece and your defence.'}
+  ],
+  words:['vision','scenario','trend','projection','consequence','trade-off','sustainable','automation','plausible','far-fetched','by 2040','will have','is likely to','could','might','if we','unless','whereas','on balance'],
+  deliverables:[
+    {kind:'report', type:'text', icon:'&#128220;', title:'The case for your 2040',
+     desc:'The vision, what it is built on, what it would cost and who pays. Written so that a family standing at your stand can read it in two minutes.',
+     spec:'280–330 words', range:[280,330],
+     checklist:[
+       {k:'position', t:'I argue for a future, I do not only describe it', re:'(should|must|worth|i argue|we believe|the case for)'},
+       {k:'today', t:'I anchor it in something measurable today', re:'(today|currently|at present|in 2026|already|right now)'},
+       {k:'future', t:'I use future forms properly', re:'(will have|by 2040|is likely to|could|might|going to)'},
+       {k:'cost', t:'I say what it costs and who pays', re:'(cost|pay|price|trade-off|expensive|invest)'},
+       {k:'cond', t:'I use conditionals to weigh alternatives', re:'(if we|unless|would|otherwise)'}
+     ]},
+    {kind:'presentation', type:'file', icon:'&#127912;', title:'Your stand at NIS 2040',
+     desc:'The visual piece and a recording of your defence at the exhibition.',
+     spec:'The piece, plus 3 minutes of defence'}
+  ]
+},
     ]
   },
 
