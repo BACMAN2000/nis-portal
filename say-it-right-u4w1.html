@@ -84,6 +84,7 @@
   <script src="config.js?v=18"></script>
   <script src="anticheat.js?v=8" data-activity="say-it-right-u4w1"></script>
 <script src="nis-nav.js?v=2"></script>
+<script src="activity-save.js?v=1"></script>
 </head>
 <body>
 <nav class="topnav">
@@ -385,6 +386,8 @@ function finish(){
   if(win){
     const wasDone = done[level];
     done[level] = true;
+    RES[level] = { score:hits, total:queue.length, pct:a, duration:elapsed };
+    if(window.NIS_WORK) NIS_WORK.touch();
     b.className = 'banner show';
     b.innerHTML = '🏆 ¡Robo-Noob derrotado! ' + hits + '/' + queue.length + ' palabras · ' + a + '% de precision media.' +
                   '<br>Tu resultado fue guardado en My Results y enviado a tu correo.';
@@ -405,6 +408,38 @@ function finish(){
 $('hearBtn').onclick = hear;
 $('micBtn').onclick = listen;
 $('skipBtn').onclick = skip;
+
+
+/* ---- Guardado y entrega (barra Save / Submit) --------------------------
+   Este juego es una PARTIDA, no una ficha: no tiene sentido "reanudarla" a
+   medias. Lo que se pierde al cerrar la pestana es el resultado, y eso es lo
+   que se guarda aqui — uno por dia — para que el alumno lo tenga desde
+   cualquier equipo y pueda entregarselo al profesor.
+
+   Identico en los 42 motores de esta familia, clones franceses incluidos. */
+const RES = {};
+function resumen(x){
+  const t = Math.max(0, Math.round(x.duration || 0));
+  const reloj = String(Math.floor(t/60)).padStart(2,'0') + ':' + String(t%60).padStart(2,'0');
+  return (x.score || 0) + '/' + (x.total || 0) + ' words / ' + (x.pct || 0) + '% accuracy / ' + reloj;
+}
+if(window.NIS_WORK) NIS_WORK.attach(Object.assign(NIS_WORK.ficha(), {
+  title: document.title,
+  vacio: 'Finish a round first — then you can hand it in.',
+  read:  function(){ return { store: RES, level: level }; },
+  write: function(d){
+    const p = (d && d.store) || {};
+    Object.keys(p).forEach(k => { if(DATA[k]){ RES[k] = p[k]; done[k] = true; } });
+    if(d && d.level && DATA[d.level]) level = d.level;
+  },
+  after: function(){ buildTabs(); },
+  count: function(d){ return Object.keys((d && d.store) || {}).length; },
+  answers: function(d){
+    const p = (d && d.store) || {}, out = {};
+    Object.keys(p).forEach(k => { out[(DATA[k] && DATA[k].label) || k] = resumen(p[k] || {}); });
+    return out;
+  }
+}));
 
 load();
 </script>

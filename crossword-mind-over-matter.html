@@ -74,6 +74,7 @@
   <script src="config.js?v=18"></script>
   <script src="anticheat.js?v=8" data-activity="crossword-digital-footprint"></script>
 <script src="nis-nav.js?v=2"></script>
+<script src="activity-save.js?v=1"></script>
 </head>
 <body>
 <nav class="topnav">
@@ -168,7 +169,7 @@ function buildTabs(){
     const b = document.createElement('button');
     b.className = 'tab' + (k===level?' on':'') + (done[k]?' done':'');
     b.innerHTML = `${DATA[k].label}<small>${DATA[k].sub}</small>`;
-    b.onclick = () => { level = k; load(); };
+    b.onclick = () => { progLee(); level = k; load(); };
     t.appendChild(b);
   }
 }
@@ -235,6 +236,7 @@ function load(){
     (w.dir==='across'?al:dl).appendChild(el);
   }
   buildTabs();
+  progPinta();
   updateScore();
 }
 
@@ -300,6 +302,7 @@ function liveCheck(){
     if (ok) solved++;
   }
   updateScore(solved);
+  if(window.NIS_WORK) NIS_WORK.touch();
   if (solved === entries.length){
     if(!done[level]){
       done[level] = true;
@@ -361,6 +364,65 @@ function clearGrid(){
   document.getElementById('banner').classList.remove('show');
   liveCheck();
 }
+/* ---- Guardado y entrega (barra Save / Submit) --------------------------
+   La rejilla a medias vivia solo en la pantalla: cerrar la pestana obligaba
+   a rehacer el crucigrama entero, y el profesor no veia nada hasta que el
+   nivel se terminaba. Aqui se guarda el avance de cada dia y se entrega
+   cuando el alumno quiera.
+
+   El bloque es IDENTICO en los 44 motores de crucigrama, incluidos los
+   clones franceses que emite gen_fr_u4.py: nada va escrito a mano. El
+   nombre del archivo dice de que actividad se trata y document.title dice
+   como se llama en su idioma. */
+const PROG = {};
+function progLee(){
+  const l = {};
+  Object.keys(cells).forEach(k => { const v = cells[k].querySelector('input').value; if(v) l[k] = v; });
+  PROG[level] = { letters:l, lives:lives, elapsed:elapsed, hints:hintsUsed,
+                  done:!!done[level], solved:entries.filter(wordSolved).length,
+                  total:entries.length };
+  return PROG;
+}
+function progPinta(){
+  const p = PROG[level];
+  if(!p) return;
+  Object.keys(p.letters || {}).forEach(k => {
+    if(cells[k]) cells[k].querySelector('input').value = p.letters[k];
+  });
+  if(typeof p.lives === 'number') lives = p.lives;
+  if(typeof p.elapsed === 'number') elapsed = p.elapsed;
+  if(typeof p.hints === 'number') hintsUsed = p.hints;
+  drawStatus();
+  liveCheck();
+}
+if(window.NIS_WORK) NIS_WORK.attach(Object.assign(NIS_WORK.ficha(), {
+  title: document.title,
+  read:  function(){ return { store: progLee(), level: level }; },
+  write: function(d){
+    const p = (d && d.store) || {};
+    /* done[] se restaura ANTES de repintar: si no, liveCheck creeria que el
+       nivel se acaba de terminar y volveria a mandar el resultado por correo
+       cada vez que el alumno abre el crucigrama. */
+    Object.keys(p).forEach(k => { if(DATA[k]){ PROG[k] = p[k]; if(p[k].done) done[k] = true; } });
+    if(d && d.level && DATA[d.level]) level = d.level;
+  },
+  after: function(){ load(); },
+  count: function(d){
+    const p = (d && d.store) || {};
+    return Object.keys(p).reduce((n,k) => n + Object.keys((p[k]||{}).letters || {}).length, 0);
+  },
+  answers: function(d){
+    const p = (d && d.store) || {}, out = {};
+    Object.keys(p).forEach(k => {
+      const x = p[k] || {};
+      out[(DATA[k] && DATA[k].label) || k] =
+        (x.solved || 0) + '/' + (x.total || 0) + ' words / ' + fmtT(x.elapsed || 0) +
+        ' / hints ' + (x.hints || 0) + ' / lives ' + (x.lives || 0) + (x.done ? ' / finished' : '');
+    });
+    return out;
+  }
+}));
+
 load();
 </script>
 </body>
