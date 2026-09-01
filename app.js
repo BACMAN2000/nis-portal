@@ -384,6 +384,33 @@ function funCursoBody(nivel){
   </div>
   <iframe src="${url}" title="${esc(c.curso)}" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#fff"></iframe>`;
 }
+/* 🧸 Fun for Nordic dentro de Cambridge: es la rama YLE del examen (los tres
+   primeros peldanos de la escalera). El curso se da en Ensenanza y las entregas
+   se corrigen en Correccion, asi que aqui va la puerta a las dos cosas y no una
+   tercera copia del panel — la misma pestana en dos grupos rompe el resaltado
+   del menu, porque los dos items compartirian data-nav. `render` es el nombre
+   de la funcion que repinta el menu: renderAdmin o renderTeacher. */
+function funYleBody(render){
+  const tarjeta = (nivel,tab) => {
+    const c = FUN_CURSOS[nivel];
+    return _hubCard(c.em, c.curso, `${c.examen} · ${c.grados}<br>${c.unidades} unidades`,
+      `${render}('${tab}')`);
+  };
+  return `<h1>🧸 Fun for Nordic — Cambridge Young Learners</h1>
+    <p class="muted" style="margin-top:-6px">Los tres primeros peldaños de la escalera Cambridge:
+      Pre A1 Starters, A1 Movers y A2 Flyers. 150 unidades con audio, juegos y tareas de examen.
+      El formato de cada examen está en <b>📘 Info Cambridge</b>.</p>
+    <div class="grid cols-3">
+      ${tarjeta('starters','funstarters')}${tarjeta('movers','funmovers')}${tarjeta('flyers','funflyers')}
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h2 style="margin:0 0 4px;color:var(--blue-d)">✅ Corregir lo que entregan</h2>
+      <div class="muted" style="font-size:.88rem;margin-bottom:12px">Lo que los alumnos escriben y
+        graban en los tres niveles, para ponerles nota y comentario. Es la misma pestaña que hay en
+        <b>✅ Corrección</b>.</div>
+      <button class="btn" onclick="${render}('funnordic')">🧸 Ver las entregas</button>
+    </div>`;
+}
 function studentMun(){ document.querySelectorAll('[data-nav]').forEach(e=>e.classList.toggle('active',e.dataset.nav==='mun')); $('#main').innerHTML = munBody(); }
 /* Student view: join a live NIShoot game (opens straight on the Join screen). */
 function nishootJoinBody(){ return `
@@ -654,12 +681,14 @@ async function renderAdmin(tab='users'){
       {key:'library',label:'📚 Library'},
     ]},
     // Todo lo del examen junto: los dos candados (Mocks / Practice, que antes
-    // vivian en Permisos) y las apps de Cambridge. Fun for Nordic NO esta aqui
-    // a proposito: el curso vive en Ensenanza y sus entregas en Correccion,
-    // que es donde el profesor las va a buscar.
+    // vivian en Permisos) y las apps de Cambridge. Fun for Nordic entra como la
+    // rama YLE (`funyle`), que es un indice a los tres cursos de Ensenanza y a
+    // las entregas de Correccion — NO la misma clave repetida, que dejaria dos
+    // items del menu resaltados a la vez.
     {group:'Cambridge', icon:'🎓', items:[
       {key:'mocks',label:'🔓 Mocks'},
       {key:'practice',label:'🎯 Practice Tests'},
+      {key:'funyle',label:'🧸 Fun for Nordic'},
       {key:'uoe',label:'🧩 Use of English'},
       {key:'cambridgeinfo',label:'📘 Info Cambridge'},
     ]},
@@ -693,6 +722,7 @@ async function renderAdmin(tab='users'){
   if(tab==='final') return cefrFinalPanel();
   if(tab==='readers') return readerStatsPanel();
   if(tab==='funnordic') return funNordicPanel();
+  if(tab==='funyle') return $('#main').innerHTML = funYleBody('renderAdmin');
   if(tab==='funstarters') return $('#main').innerHTML = funCursoBody('starters');
   if(tab==='funmovers') return $('#main').innerHTML = funCursoBody('movers');
   if(tab==='funflyers') return $('#main').innerHTML = funCursoBody('flyers');
@@ -2325,6 +2355,7 @@ async function renderTeacher(tab){
   ensenanza.push({key:'littlereaders',label:'🧒 Little Readers'});
   examenes.push({key:'exams',label:'🎧 Exámenes'});
   if(teacherAllowedGrades().length) examenes.push({key:'practice',label:'🎯 Practice Tests'});
+  examenes.push({key:'funyle',label:'🧸 Fun for Nordic'});
   examenes.push({key:'uoe',label:'🧩 Use of English'});
   examenes.push({key:'cambridgeinfo',label:'📘 Info Cambridge'});
 
@@ -2369,6 +2400,7 @@ async function renderTeacher(tab){
   if(active==='funnordic') return funNordicPanel();
   if(active==='scope') return scopePanel();
   if(active==='littlereaders') return littleReadersPanel();
+  if(active==='funyle') return $('#main').innerHTML = funYleBody('renderTeacher');
   if(active==='funstarters') return $('#main').innerHTML = funCursoBody('starters');
   if(active==='funmovers') return $('#main').innerHTML = funCursoBody('movers');
   if(active==='funflyers') return $('#main').innerHTML = funCursoBody('flyers');
