@@ -84,7 +84,7 @@ ol.pasos li::before{content:counter(p);position:absolute;left:0;top:12px;width:3
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js"></script>
-<script src="unit-plans.js?v=11"></script>
+<script src="unit-plans.js?v=12"></script>
 <script src="nis-nav.js?v=2"></script>
 <script>
 /* Dos vistas de la misma semana, generadas del planner:
@@ -108,6 +108,9 @@ const PLAN = (window.UNIT_PLANS||{})[GRADE];
 const U = PLAN ? (PLAN.units||[]).filter(u=>u.n===UNIT)[0] : null;
 const W = U ? (U.sequence||[]).filter(w=>w.n===WEEK)[0] : null;
 
+const NOMBRE_AREA = {science:'Science', math:'Math', social:'Social Studies',
+                     english:'English', comunicacion:'Comunicación', ict:'ICT',
+                     art:'Creative Arts', globalperspectives:'Global Perspectives'};
 const UNIT_PILOT = new Set([
   'g2.u5','g2.u6','g3.u5','g3.u6','g4.u5','g4.u6','g5.u5','g5.u6','g9.u105','g9.u106'
 ]);
@@ -184,6 +187,8 @@ function vistaClase(){
       <p class="foco">${esc(W.desc||'')}</p>
       <div class="bloque"><h3>Cómo va la sesión</h3>
         <ol class="pasos">${(s.view||[]).map(p=>`<li>${esc(p)}</li>`).join('')}</ol></div>
+      ${W.across?`<div class="bloque"><h3>Qué aporta cada área esta semana</h3>
+        <ul class="exito">${Object.keys(W.across).map(a=>`<li><b>${esc(NOMBRE_AREA[a]||a)}:</b> ${esc(W.across[a])}</li>`).join('')}</ul></div>`:''}
       <div class="bloque"><h3>Al terminar, el alumno entrega</h3>
         <div class="consigna">${esc(W.give||'')}</div></div>
       ${W.levels?`<div class="bloque"><h3>La ficha, por nivel</h3><div class="otros">

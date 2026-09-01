@@ -265,7 +265,7 @@ window.UNIT_PLANS = {
                help:'Write in the past.'}}},
     {n:5,title:'Writing the race',desc:'Your own account of the test: what you built, what you did, what happened on each floor and why.',
      give:'The draft in your notebook.',
-     sessions:[{s:1,title:'Draft it, cross it out',view:[
+          sessions:[{s:1,title:'Draft it, cross it out',view:[
        'Model on the board: one account written badly, and we fix it together.',
        'Everybody writes their draft in the notebook. Crossing out is allowed — it is expected.',
        'Read it to your partner: do they understand what you did?',
@@ -638,9 +638,9 @@ window.UNIT_PLANS = {
   client:'Grade 5 · they repeat your investigation',
   reader:{title:'Nasreddin Ten Stories', series:'Vicens Vives', term:3, inPortal:false},
   exam:{target:'movers', themes:['The world around us','Transport','Sports and leisure','Materials'],
-        grammar:['comparatives and superlatives','past simple','adverbs of manner','because / so'],
+        grammar:['comparatives and superlatives','past simple','adverbs of manner','linking words: because, therefore, since, for example'],
         extra:['force','friction','gravity','push','pull','distance','measure','decimal','average','fair test']},
-  areas:[{area:'science', level:2},{area:'math', level:2}],
+  areas:[{area:'science', level:2},{area:'math', level:2},{area:'social', level:1}],
   criteria:[
     {n:1, text:'Method — write it so somebody else can repeat it.',
      levels:{
@@ -659,11 +659,28 @@ window.UNIT_PLANS = {
        C:'I say one went further.',
        B:'I compare the two with a comparative.',
        A:'I compare with figures and explain the result with because.',
-       AD:'I say what my test does NOT prove.'}}
+       AD:'I say what my test does NOT prove.'}},
+    {n:4, text:'Writing — an informative text that actually informs.',
+     levels:{
+       C:'I write what happened with no structure.',
+       B:'I introduce the topic but the information is not grouped.',
+       A:'I introduce the topic, group the information and link it with because, therefore, since, for example.',
+       AD:'I close with a conclusion that says what the reader should take away.'}},
+    {n:5, text:'Sources — know where your information comes from.',
+     levels:{
+       C:'I do not say where the data came from.',
+       B:'I say we measured it, or that I read it somewhere.',
+       A:'I tell a primary source from a secondary one and I say which is which.',
+       AD:'I explain why one source is more reliable than another for this claim.'}}
   ],
   sequence:[
     {n:1,title:'What is a force?',desc:'Pushes, pulls and the forces you cannot see. Choosing what you will investigate.',
      give:'Your research question and your prediction.',
+     across:{
+       science:'Pushes, pulls and the forces you cannot see. Choosing the force to investigate.',
+       math:'Improper fractions and mixed numbers: reading the measurements you are about to take.',
+       english:'Expository text: how an informative text is built, and the question that opens it.',
+       social:'Inventions in the history of mankind: which ones tamed a force (the wheel, the pulley, the lever).'},
      sessions:[{s:1,title:'The forces in this room',view:[
        'Ten movements around the room: name the force in each one.',
        'The invisible ones: friction and gravity. Demonstration with the ramp.',
@@ -676,6 +693,11 @@ window.UNIT_PLANS = {
                help:'The question must name one thing that changes and one that stays the same.'}}},
     {n:2,title:'Designing a fair test',desc:'Friction and gravity. One thing changes, everything else stays the same.',
      give:'Your test design, with what stays fixed.',
+     across:{
+       science:'Friction and gravity. Designing a fair test.',
+       math:'Decimals: reading and writing to three places, so the design says what will be measured.',
+       english:'Linking words to explain a method: because, therefore, since, for example.',
+       social:'Historical sources: what a source is, and why an invention is documented before it is believed.'},
      sessions:[{s:1,title:'What makes a test fair',view:[
        'An unfair test done on purpose. Spot the four mistakes.',
        'Two columns: what I change / what I keep the same.',
@@ -688,6 +710,11 @@ window.UNIT_PLANS = {
                help:'If you cannot say why it matters, it probably does not.'}}},
     {n:3,title:'Measuring properly',desc:'Running the test and recording distances with decimals. Comparing and ordering the results.',
      give:'Your table of measurements, complete.',
+     across:{
+       science:'Running the test with the protocol agreed.',
+       math:'Comparing and ordering decimals; rounding to one place.',
+       english:'Inflected endings -ed and -ing: what I measured, what was moving.',
+       social:'Primary and secondary sources: what we measured ourselves and what we were told.'},
      sessions:[{s:1,title:'Three attempts each, no cheating',view:[
        'Three attempts per surface. All of them go in the table, including the bad ones.',
        'Decimals with Maths: reading, writing and ordering to two places.',
@@ -700,6 +727,11 @@ window.UNIT_PLANS = {
                help:'Two decimal places throughout, and never without the unit.'}}},
     {n:4,title:'What the numbers say',desc:'Adding and subtracting your decimals, finding the difference, saying which went furthest — and whether your prediction was right.',
      give:'Your comparison, written in sentences.',
+     across:{
+       science:'What the result means and whether the prediction held.',
+       math:'Adding and subtracting decimals: the exact difference between the two surfaces.',
+       english:'Comparatives and superlatives, and homophones that trip you up in a report (their/there, its/it’s).',
+       social:'Identifying reliable sources: which of the ones you found would you cite, and why.'},
      sessions:[{s:1,title:'The difference, in numbers',view:[
        'Subtract: how much further exactly? Not "a lot".',
        'Comparatives and superlatives on the board: further, furthest, faster, fastest.',
@@ -712,6 +744,11 @@ window.UNIT_PLANS = {
                help:'Use because at least once.'}}},
     {n:5,title:'The write-up for Grade 5',desc:'The full report: question, method, results, conclusion — written so another class can repeat it.',
      give:'The finished investigation report.',
+     across:{
+       science:'The conclusion, and what the test does not prove.',
+       math:'Multiplying and dividing decimals; equations to express the relationship you found.',
+       english:'Informative/explanatory text: introduce the topic, group the information, use linking words and close it.',
+       social:'Your report becomes a source for Grade 5: what makes a source usable by somebody else.'},
      sessions:[{s:1,title:'Would they get the same?',view:[
        'Swap reports with another team and try to follow theirs, literally.',
        'Mark every point where you had to guess something.',
@@ -754,7 +791,7 @@ window.UNIT_PLANS = {
   reader:{title:'Incredible Earth', series:'Oxford Dolphin Readers', term:3, inPortal:false,
           note:'Encaja de lleno con la unidad: recursos naturales, ciclo del agua y clima.'},
   exam:{target:'movers', themes:['The world around us','Weather','Materials','The home'],
-        grammar:['present simple for processes','sequencers: first, then, next, finally','quantifiers: some, many, a lot of','comparatives'],
+        grammar:['present simple for processes','sequencers: first, then, next, finally','quantifiers: some, many, a lot of','opinion + reason: I think… because…, therefore, since, for example'],
         extra:['water cycle','evaporation','condensation','precipitation','natural resource','renewable','climate','weather','rainfall','thermometer']},
   areas:[{area:'science', level:2},{area:'math', level:2},{area:'social', level:1}],
   criteria:[
@@ -775,11 +812,28 @@ window.UNIT_PLANS = {
        C:'I write everything I know.',
        B:'I write a lot and the important part is buried.',
        A:'The main idea is visible at once and the guide can be read in thirty seconds.',
-       AD:'I ask the reader to do one specific thing, and it is doable.'}}
+       AD:'I ask the reader to do one specific thing, and it is doable.'}},
+    {n:4, text:'Opinion — hold a point of view with reasons.',
+     levels:{
+       C:'I say what happens without saying what I think.',
+       B:'I give my opinion but the reasons are thin.',
+       A:'I state my opinion, give ordered reasons and link them with because, therefore, since.',
+       AD:'I close with a conclusion, and my reasons come from my own data.'}},
+    {n:5, text:'Geography — explain why our weather is what it is.',
+     levels:{
+       C:'I say it rains or it does not.',
+       B:'I name one factor that affects our weather.',
+       A:'I explain how the currents and the mountain range shape the weather and the landscape here.',
+       AD:'I connect that to why our water is a limited resource.'}}
   ],
   sequence:[
     {n:1,title:'What we have',desc:'Natural resources: what runs out and what does not. Starting Incredible Earth.',
      give:'Your list of resources, sorted.',
+     across:{
+       science:'Natural resources: what runs out and what does not.',
+       math:'Angles, and reading the diagrams of the book.',
+       english:'Argumentative text: reading one and spotting what it wants you to do.',
+       social:'Efficient use of resources, and responsible consumption.'},
      sessions:[{s:1,title:'Runs out or not?',view:[
        'Twenty cards of resources. Sort: renewable / non-renewable / not sure.',
        'The "not sure" pile is the interesting one. Why is it hard?',
@@ -792,6 +846,11 @@ window.UNIT_PLANS = {
                help:'Frame: "____ is difficult because…"'}}},
     {n:2,title:'The water cycle',desc:'Evaporation, condensation, precipitation. Explaining a process in order.',
      give:'The cycle explained in your own words.',
+     across:{
+       science:'Evaporation, condensation and precipitation.',
+       math:'Properties of squares and rectangles: the diagram of the cycle, drawn to fit.',
+       english:'Present simple for processes and sequencers: first, then, next, finally.',
+       social:'Cartography: where the water of our region comes from, on the map.'},
      sessions:[{s:1,title:'Round and round',view:[
        'The cycle in a bag on the window: watch it for a week.',
        'The three words, with the action: evaporation, condensation, precipitation.',
@@ -804,6 +863,11 @@ window.UNIT_PLANS = {
                help:'Present simple: water evaporates, vapour rises, it condenses.'}}},
     {n:3,title:'Climate and weather',desc:'The difference between the two, and why it matters. Starting your own readings.',
      give:'Your first week of readings.',
+     across:{
+       science:'Climate and weather: the difference, and why it is confused.',
+       math:'Area and perimeter: the surface that collects the rain you are measuring.',
+       english:'Expository text: reading Incredible Earth for information, not for a story.',
+       social:'Factors that influence weather and landscape in Peru: the Humboldt and El Niño currents, the mountain range.'},
      sessions:[{s:1,title:'Today is not the climate',view:[
        'Weather = today. Climate = many years. The classic confusion.',
        'Set up the instruments: thermometer and rain gauge.',
@@ -816,6 +880,11 @@ window.UNIT_PLANS = {
                help:'Use a comparative and the real figures.'}}},
     {n:4,title:'Measuring it',desc:'Instruments and what they measure. Turning your readings into fractions and percentages.',
      give:'Your data, as fractions and percentages.',
+     across:{
+       science:'Instruments and what each one measures.',
+       math:'Probability as a fraction and as a percentage; the four operations on your readings.',
+       english:'Opinion piece: stating a point of view and supporting it with reasons.',
+       social:'Ecosystems, nature reserves and biodiversity: what depends on this water.'},
      sessions:[{s:1,title:'From the log to the number',view:[
        'Second week complete. Everybody’s data on the board.',
        'With Maths: how many days out of ten did it rain? As a fraction, then as a percentage.',
@@ -828,6 +897,11 @@ window.UNIT_PLANS = {
                help:'Justify why that figure and not another.'}}},
     {n:5,title:'Writing the guide',desc:'Drafting it for somebody who has not read the book or seen your data.',
      give:'The draft in your notebook.',
+     across:{
+       science:'What your two weeks of data say about our water.',
+       math:'Choosing the figure that carries the argument, and checking it.',
+       english:'Opinion writing: topic, opinion, reasons in order, linking words, concluding statement.',
+       social:'Citizenship responsibilities: what you can ask of the person reading your guide.'},
      sessions:[{s:1,title:'Thirty seconds',view:[
        'Two real corridor posters: which one gets read and why?',
        'Rule: the main idea in the first line, not at the end.',
@@ -840,6 +914,11 @@ window.UNIT_PLANS = {
                help:'If it does not fit on one side, it is too long.'}}},
     {n:6,title:'On the wall',desc:'The final guide, checked and put up where the school can read it.',
      give:'The published guide.',
+     across:{
+       science:'The cycle and the resource, explained for somebody who has not studied them.',
+       math:'The final check of every figure and unit on the guide.',
+       english:'Revising for clarity: reading your own text as if somebody else had written it.',
+       social:'Responsible use of public spaces: the guide goes up where the whole school passes.'},
      sessions:[{s:1,title:'Up it goes',view:[
        'Final proofread in pairs: spelling, figures, units.',
        'Put them up in the corridor.',
