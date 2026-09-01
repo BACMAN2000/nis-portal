@@ -132,6 +132,7 @@
   }
 </style>
 <script src="nis-nav.js?v=2"></script>
+<script src="activity-save.js?v=3"></script>
 </head>
 <body>
 <header>
@@ -364,7 +365,8 @@ function topic(){ return TOPICS.find(t=>t.id===topicId); }
 function storeKey(){ return 'nis_opinion_'+topicId+'_'+level; }
 function load(){ try{data=JSON.parse(localStorage.getItem(storeKey())||'{}')||{};}catch(e){data={};} }
 function save(){ try{localStorage.setItem(storeKey(),JSON.stringify(data));}catch(e){}
-  document.getElementById('saved').textContent='✓ saved '+new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}); }
+  document.getElementById('saved').textContent='✓ saved '+new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+  if(window.NIS_WORK) NIS_WORK.touch(); }
 
 /* block definitions (titles for body1/body2 come from the topic's notes) */
 function blocks(){
@@ -567,6 +569,20 @@ if(window.NISAntiCheat){
     onLock:()=>{ document.querySelectorAll('textarea,button,input,select').forEach(el=>{ el.disabled=true; }); }
   });
 }
+/* ---- Guardado y entrega (barra Save / Submit) --------------------------
+   Aqui el alumno ESCRIBE un ensayo entero. Se guardaba en localStorage:
+   en otro equipo se encontraba la hoja en blanco, y para entregarlo habia
+   que copiarlo a mano a otra caja. Ahora el borrador de cada tema y nivel
+   viaja con su cuenta y se entrega desde aqui. */
+if(window.NIS_WORK) NIS_WORK.attach(Object.assign(
+  NIS_WORK.ficha(),
+  NIS_WORK.porPrefijo('nis_opinion_', {
+    title: document.title,
+    vacio: 'Write something first — then you can hand it in.',
+    after: function(){ if(typeof render === "function") render(); }
+  })
+));
+
 </script>
 </body>
 </html>

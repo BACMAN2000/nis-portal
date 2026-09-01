@@ -395,6 +395,7 @@ document.write('<script src="'+RDR_ID+'-extras.js?v=1"><\/script>');
 if(window.ATTWN_C2) document.write('<script src="'+RDR_ID+'-original.js?v=1" onerror="window.READER_ORIGINAL=null"><\/script>');
 </script>
 <script src="nis-nav.js?v=2"></script>
+<script src="activity-save.js?v=3"></script>
 </head>
 <body>
 <header>
@@ -2603,6 +2604,18 @@ window.addEventListener("hashchange",()=>{
 if(window.ATTWN_CHOOSER) renderChooser();
 else if(window.ATTWN_C2) extraC2();
 else _applyRoute(location.hash.replace(/^#/,""));
+
+/* ---- Guardado y entrega (barra Save / Submit) --------------------------
+   El lector guardaba en este navegador lo leido, las marcas de cada
+   actividad y lo escrito en el cuaderno. Cambiar de equipo lo borraba todo. */
+if(window.NIS_WORK) NIS_WORK.attach(Object.assign(
+  NIS_WORK.ficha(),
+  NIS_WORK.porPrefijo('rdr:', {
+    title: document.title,
+    vacio: 'Do an activity first — then you can hand it in.',
+    after: function(){ try{ location.reload(); }catch(e){} }
+  })
+));
 
 </script>
 </body>

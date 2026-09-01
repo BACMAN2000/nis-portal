@@ -207,6 +207,7 @@ footer a{color:var(--blue-d);font-weight:700}
 }
 </style>
 <script src="nis-nav.js?v=2"></script>
+<script src="activity-save.js?v=3"></script>
 </head>
 <body>
 <nav class="topnav">
@@ -274,7 +275,8 @@ function popCombo(t){ const c=$('combo'); c.textContent=t; c.classList.remove('p
 /* mejor marca por juego, en el navegador del alumno */
 function bestKey(g){ return 'glab:'+T.id+':'+g.key; }
 function getBest(g){ try{ return JSON.parse(localStorage.getItem(bestKey(g))||'null'); }catch(e){ return null; } }
-function setBest(g,pct){ const b=getBest(g); if(!b||pct>b.pct){ try{ localStorage.setItem(bestKey(g),JSON.stringify({pct:pct})); }catch(e){} } }
+function setBest(g,pct){ const b=getBest(g); if(!b||pct>b.pct){ try{ localStorage.setItem(bestKey(g),JSON.stringify({pct:pct})); }catch(e){}
+    if(window.NIS_WORK) NIS_WORK.touch(); } }
 
 /* ---------- tema activo ---------- */
 const QS    = new URLSearchParams(location.search);
@@ -601,6 +603,18 @@ if(!T){
 } else {
   boot();
 }
+/* ---- Guardado y entrega (barra Save / Submit) --------------------------
+   Las mejores marcas del laboratorio de gramatica vivian en este
+   navegador. Ahora acompanan al alumno y el profesor las ve. */
+if(window.NIS_WORK) NIS_WORK.attach(Object.assign(
+  NIS_WORK.ficha(),
+  NIS_WORK.porPrefijo('glab:', {
+    title: document.title,
+    vacio: 'Finish an exercise first — then you can hand it in.',
+    after: function(){ if(typeof render === "function") render(); }
+  })
+));
+
 </script>
 </body>
 </html>

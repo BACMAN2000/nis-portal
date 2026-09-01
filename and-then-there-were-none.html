@@ -366,6 +366,7 @@ if(['a2','b1','b2','c1'].indexOf(ATTWN_LVL)<0) ATTWN_LVL='b1';
 document.write('<script src="attwn-data-'+ATTWN_LVL+'.js?v=1"><\/script>');
 </script>
 <script src="nis-nav.js?v=2"></script>
+<script src="activity-save.js?v=3"></script>
 </head>
 <body>
 <header>
@@ -2419,6 +2420,18 @@ window.addEventListener("hashchange",()=>{
 if(window.ATTWN_CHOOSER) renderChooser();
 else if(window.ATTWN_C2) extraC2();
 else _applyRoute(location.hash.replace(/^#/,""));
+
+/* ---- Guardado y entrega (barra Save / Submit) --------------------------
+   Igual que el lector general: el avance, las marcas y el cuaderno del
+   alumno dejan de vivir en un solo navegador. */
+if(window.NIS_WORK) NIS_WORK.attach(Object.assign(
+  NIS_WORK.ficha(),
+  NIS_WORK.porPrefijo('attwn:', {
+    title: document.title,
+    vacio: 'Do an activity first — then you can hand it in.',
+    after: function(){ try{ location.reload(); }catch(e){} }
+  })
+));
 
 </script>
 </body>
