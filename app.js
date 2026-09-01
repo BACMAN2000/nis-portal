@@ -5837,7 +5837,7 @@ window._guardaPw = async function(id){
    REGISTRADO en actividades, exámenes, grabaciones y entregas. No mide
    tener la página abierta sin hacer nada. Es un suelo, no el total.
 ---------------------------------------------------------------- */
-let _tp = { semanas: 8, grado: '', filas: [] };
+let _tp = { semanas: 8, grado: '', filas: [], act: [] };
 
 async function tiempoPantallaPanel(){
   $('#main').innerHTML = '<div class="card"><p class="muted">Calculando…</p></div>';
@@ -5861,7 +5861,38 @@ async function tpCarga(){
     return;
   }
   _tp.filas = data || [];
+  /* Las actividades se leen aparte: el panel sumaba minutos pero no decia
+     CUANTAS actividades habia hecho cada alumno, que es lo primero que se
+     pregunta el que mira esto. */
+  const act = await sb.from('unit_submissions')
+    .select('student_id,milestone,payload,duration_sec,updated_at')
+    .like('milestone', 'a:%').limit(5000);
+  _tp.act = (act && act.data) || [];
   tpPinta();
+}
+
+/* Cuantos niveles/rondas ha dado por terminados el alumno dentro de una
+   actividad. Cada familia guarda su "done" donde le viene bien — {D1:{done}},
+   {done:{D1:true}}, {done:{w0l1:true}} — asi que se busca la marca, no una
+   forma concreta. */
+function tpHechos(payload){
+  let n = 0;
+  const mira = v => {
+    if(!v || typeof v !== 'object') return;
+    if(Array.isArray(v)){ v.forEach(mira); return; }
+    /* Los juegos de partida (invaders, voice battle, say it right, los de
+       primaria) no marcan `done`: guardan el resultado, y guardar un
+       resultado ES haber terminado la partida. */
+    if(typeof v.score === 'number' && typeof v.total === 'number' && !v.letters && !v.ans){ n++; return; }
+    Object.keys(v).forEach(k => {
+      if(k === 'done'){
+        if(v[k] === true) n++;
+        else if(v[k] && typeof v[k] === 'object') n += Object.values(v[k]).filter(Boolean).length;
+      } else mira(v[k]);
+    });
+  };
+  mira(payload && payload.state);
+  return n;
 }
 
 function tpPinta(){
@@ -5893,6 +5924,32 @@ function tpPinta(){
   const porTipo = {};
   filas.forEach(f => porTipo[f.tipo] = (porTipo[f.tipo] || 0) + Number(f.minutos));
   const totalTipo = Object.values(porTipo).reduce((a,b)=>a+b,0) || 1;
+
+  /* Actividades por alumno. Se filtra por el mismo grado que la tabla de
+     minutos para que las dos hablen del mismo grupo. */
+  const nombres = {};
+  filas.forEach(f => { nombres[f.student_id] = { nombre:f.full_name, grado:f.grade_id, seccion:f.section }; });
+  const porAct = {};
+  (_tp.act || []).forEach(r => {
+    const quien = nombres[r.student_id];
+    if(!quien) return;                       // otro grado, u otro rol: fuera
+    const a = porAct[r.student_id] || (porAct[r.student_id] =
+      Object.assign({ act:0, registros:0, hechos:0, entregadas:0, seg:0 }, quien));
+    a.act++;
+    a.registros  += Object.keys((r.payload && r.payload.answers) || {}).length;
+    a.hechos     += tpHechos(r.payload);
+    a.entregadas += (r.payload && r.payload.draft === false) ? 1 : 0;
+    a.seg        += Number(r.duration_sec || 0);
+  });
+  const listaAct = Object.values(porAct).sort((x,y) => y.hechos - x.hechos || y.act - x.act);
+  const cuerpoAct = listaAct.slice(0, 60).map(a => `<tr>
+      <td>${esc(a.nombre)} <span class="muted">${a.grado||''}º${a.seccion||''}</span></td>
+      <td style="text-align:center">${a.act}</td>
+      <td style="text-align:center">${a.registros}</td>
+      <td style="text-align:center;font-weight:700;color:${a.hechos?'#2f9e44':'var(--muted)'}">${a.hechos||'·'}</td>
+      <td style="text-align:center">${a.entregadas||'·'}</td>
+      <td style="text-align:center">${Math.round(a.seg/60) || '·'}</td>
+    </tr>`).join('');
 
   const grados = ALL_GRADE_ORDER.map(g =>
     `<option value="${GRADE_META[g][1].replace(/\D/g,'')}" ${_tp.grado===GRADE_META[g][1].replace(/\D/g,'')?'selected':''}>${GRADE_META[g][1]}</option>`).join('');
@@ -5967,12 +6024,28 @@ function tpPinta(){
   </div>
 
   <div class="card">
+    <h3 style="font-size:1rem;color:var(--blue-d)">Actividades por alumno</h3>
+    <p class="muted" style="font-size:.82rem">Lo que cada uno ha abierto, terminado y entregado
+      desde que las actividades guardan solas — y el rato que les ha dedicado, incluido el de
+      las que dejó a medias.</p>
+    <div style="overflow-x:auto"><table class="tbl">
+      <thead><tr><th>Alumno</th>
+        <th style="text-align:center">Actividades</th>
+        <th style="text-align:center">Días/rondas<br>con trabajo</th>
+        <th style="text-align:center">Terminados</th>
+        <th style="text-align:center">Entregadas</th>
+        <th style="text-align:center">Minutos</th></tr></thead>
+      <tbody>${cuerpoAct || '<tr><td colspan="6" class="muted">Todavía nadie ha guardado una actividad.</td></tr>'}</tbody>
+    </table></div>
+  </div>
+
+  <div class="card">
     <h3 style="font-size:1rem;color:var(--blue-d)">Qué mide y qué no</h3>
     <p class="muted" style="font-size:.85rem;line-height:1.7">
       Suma el tiempo <b>registrado</b> en actividades, exámenes, grabaciones y entregas.
-      <b>No</b> cuenta tener la página abierta sin hacer nada, así que es un <b>suelo</b>:
-      el tiempo real es algo mayor. Como suelo ya sirve — si este número fuera alto,
-      el real lo sería más.<br>
+      En las actividades que guardan solas se cuenta el rato con la pestaña <b>a la vista</b>,
+      terminen o no; en lo demás, solo lo que quedó registrado al acabar, así que ahí sigue
+      siendo un <b>suelo</b>: el tiempo real es algo mayor.<br>
       Cada sesión se limita a 120 minutos porque algunas quedan abiertas y devuelven
       duraciones imposibles (hay un examen registrado con 4114 minutos). En este periodo
       se acotaron <b>${acotadas}</b> sesión(es); conviene revisarlas si son muchas.

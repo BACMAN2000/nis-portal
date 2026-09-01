@@ -371,6 +371,9 @@ body{
   </div>
 </div></div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+<script src="config.js?v=18"></script>
+<script src="activity-save.js?v=1"></script>
 <script>
 "use strict";
 
@@ -574,7 +577,8 @@ const ADMIN_PIN="2026";   // change this to whatever you want the teacher PIN to
 const SAVE="wheelcefr_v1";   // separate from the Unit 4 game's progress
 let S={coins:0,done:{},sound:true,admin:false};
 try{const raw=localStorage.getItem(SAVE); if(raw) S=Object.assign(S,JSON.parse(raw));}catch(e){}
-function save(){try{localStorage.setItem(SAVE,JSON.stringify(S));}catch(e){}}
+function save(){ try{ localStorage.setItem(SAVE,JSON.stringify(S)); }catch(e){}
+                 if(window.NIS_WORK) NIS_WORK.touch(); }
 function lid(w,l){return "w"+w+"l"+l;}
 
 const $=function(id){return document.getElementById(id);};
@@ -1057,6 +1061,31 @@ document.querySelectorAll("[data-close]").forEach(function(b){
 window.addEventListener("resize",function(){ if(G && $("game").classList.contains("active")) fitGrid(); });
 
 $("btnSound").textContent=S.sound?"🔊":"🔇";
+/* ---- Guardado y entrega (barra Save / Submit) --------------------------
+   La rueda ya guardaba el avance, pero solo en este navegador: en el equipo
+   de al lado el alumno volvia a empezar de cero. Ahora el mismo estado (las
+   monedas y los niveles resueltos) viaja con su cuenta y se puede entregar.
+   El modo admin NO se guarda: es un interruptor de esta pantalla. */
+if(window.NIS_WORK) NIS_WORK.attach(Object.assign(NIS_WORK.ficha(), {
+  title: document.title,
+  vacio: 'Finish a level first — then you can hand it in.',
+  read:  function(){ return { store: { coins:S.coins, done:S.done, sound:S.sound } }; },
+  write: function(d){
+    const p = (d && d.store) || {};
+    if(typeof p.coins === 'number') S.coins = p.coins;
+    if(p.done) S.done = Object.assign(S.done || {}, p.done);
+    if(typeof p.sound === 'boolean') S.sound = p.sound;
+  },
+  after: function(){ paintCoins(); paintHome(); },
+  count: function(d){ return Object.keys((((d || {}).store) || {}).done || {}).length; },
+  answers: function(d){
+    const p = (d && d.store) || {};
+    const hechos = Object.keys(p.done || {}).filter(function(k){ return p.done[k]; });
+    const out = { 'Levels completed': hechos.length, 'Coins': p.coins || 0 };
+    if(hechos.length) out['Which ones'] = hechos.sort().join(', ');
+    return out;
+  }
+}));
 paintHome();
 </script>
 </body>

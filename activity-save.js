@@ -46,6 +46,35 @@ var cfg = null, sb = null, me = null;
 var sucio = false, tGuarda = null, entregado = false, arrancado = false;
 var respaldo = null;               // copia local previa a un restore (para deshacer)
 var handedAt = null;               // fecha de la entrega, si ya la hubo
+
+/* Tiempo de uso. El panel de Tiempo de pantalla suma unit_submissions.duration_sec,
+   pero hasta ahora una actividad solo declaraba tiempo cuando se TERMINABA (via
+   activity_attempts): quien trabajaba media hora sin acabar figuraba con cero.
+   Aqui se cuenta el rato que la actividad esta de verdad delante — pestana
+   visible — y se acumula entre sesiones, que es lo que el profesor quiere ver. */
+var hayFila = false;               // ya existe la fila en la cuenta
+var segBase = 0;                   // lo que ya venia acumulado en la cuenta
+var segAqui = 0;                   // lo de esta sesion
+var relojInt = null;
+
+function arrancaReloj(){
+  if(relojInt) return;
+  relojInt = setInterval(function(){
+    if(document.visibilityState === 'hidden') return;
+    segAqui++;
+    /* Cada dos minutos se sube el rato acumulado, aunque el alumno no haya
+       tocado nada: leer el texto tambien es trabajar. No se crea fila por
+       quien solo abre y cierra — solo se anota tiempo de lo que ya tiene
+       algo dentro o ya existia en la cuenta. */
+    if(segAqui % 120 === 0 && (hayFila || cuenta(O.read() || {}))){
+      sucio = true;
+      programa();
+    }
+  }, 1000);
+}
+/* duration_sec es smallint: pasarse de 32767 haria fallar la fila entera y el
+   alumno dejaria de guardar sin saber por que. */
+function segundos(){ return Math.min(32000, segBase + segAqui); }
 var O = null;                      // opciones de attach()
 
 /* ---------- utilidades ---------- */
@@ -190,9 +219,11 @@ function fila(final){
       level: estado.level || null,
       answers: aplana(estado),     // lo que ve el profesor
       state: estado,               // lo que se le devuelve al alumno
+      seconds: segundos(),
       draft: !final,
       handed_at: final ? new Date().toISOString() : null
     },
+    duration_sec: segundos(),      // lo lee v_tiempo_pantalla
     updated_at: new Date().toISOString()
   };
 }
@@ -212,6 +243,7 @@ function sube(final){
     .then(function(r){
       if(r.error) return { ok:false, motivo:r.error.message };
       if(final){ entregado = true; handedAt = f.payload.handed_at; }
+      hayFila = true;
       sucio = false;
       selloLocal();
       return { ok:true };
@@ -313,6 +345,8 @@ function conSesion(prev){
   if(prev && prev.payload){
     entregado = prev.payload.draft === false;
     handedAt  = prev.payload.handed_at || null;
+    segBase   = Number(prev.payload.seconds) || 0;
+    hayFila   = true;
     var estado = prev.payload.state;
     if(estado){ estado._updated_at = prev.updated_at; restaurado = reconcilia(estado); }
     feedback(prev);
@@ -340,6 +374,7 @@ function conSesion(prev){
 
   bSave.disabled = bSend.disabled = false;
   arrancado = true;
+  arrancaReloj();
 
   bSave.onclick = function(){
     clearTimeout(tGuarda);
@@ -364,12 +399,13 @@ function conSesion(prev){
 
   /* Salir de la pestaña no puede costar lo último que escribió: si queda
      algo pendiente, se sube ya, sin esperar a que venza el temporizador. */
+  const alSalir = function(){
+    if(sucio || (hayFila && segAqui > 5)){ clearTimeout(tGuarda); sube(false); }
+  };
   document.addEventListener('visibilitychange', function(){
-    if(document.visibilityState === 'hidden' && sucio){ clearTimeout(tGuarda); sube(false); }
+    if(document.visibilityState === 'hidden') alSalir();
   });
-  window.addEventListener('pagehide', function(){
-    if(sucio){ clearTimeout(tGuarda); sube(false); }
-  });
+  window.addEventListener('pagehide', alSalir);
 }
 
 /* Actividades cuyo NOMBRE no dice a que unidad pertenecen. El resto se
