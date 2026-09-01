@@ -5120,9 +5120,14 @@ function fichasTabla(fichas, quien){
     const p = quien[r.student_id] || {};
     const m = /^w(\d+)s(\d+)$/.exec(r.milestone || '');
     const act = /^a:/.test(r.milestone || '');
+    /* El título de la actividad ya suele decir su semana ("Unit 4 · Week 1
+       Crossword…", "Mots croisés — FR · 7e · Semaine 3"): anteponerla otra vez
+       solo alarga la celda. Se pone delante únicamente si falta. */
+    const tituloAct = esc((r.payload && r.payload.title) || (r.milestone || '').slice(2));
+    const semanaAct = (r.payload && r.payload.week && !/(week|semaine|semana)\s*\d/i.test(tituloAct))
+      ? 'Semana ' + r.payload.week + ' · ' : '';
     const donde = m ? ('Semana ' + m[1] + ' · Sesión ' + m[2])
-      : act ? ((r.payload && r.payload.week ? 'Semana ' + r.payload.week + ' · ' : '') +
-               esc((r.payload && r.payload.title) || r.milestone.slice(2)))
+      : act ? (semanaAct + tituloAct)
       : esc(r.milestone || '');
     const link = r.payload && r.payload.link;
     const nombre = (r.payload && r.payload.name) || 'Ver archivo';
