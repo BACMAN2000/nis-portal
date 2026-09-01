@@ -189,6 +189,9 @@
   If you hear no sound: check the volume, and use <b>Chrome</b> or <b>Edge</b> (Firefox voices are limited).
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+<script src="config.js?v=18"></script>
+<script src="activity-save.js?v=1"></script>
 <script>
 /* ============================================================
    TARGET VOCABULARY — every level's script is built to contain
@@ -413,7 +416,8 @@ let cur = localStorage.getItem("u4ls_lv") || "A2";
 let store = {};
 try{ store = JSON.parse(localStorage.getItem("u4ls_store")||"{}"); }catch(e){ store={}; }
 function slot(){ store[cur] = store[cur] || {ans:{}, self:{}, plays:0, done:false}; return store[cur]; }
-function save(){ localStorage.setItem("u4ls_store", JSON.stringify(store)); localStorage.setItem("u4ls_lv", cur); }
+function save(){ localStorage.setItem("u4ls_store", JSON.stringify(store)); localStorage.setItem("u4ls_lv", cur);
+                 if(window.NIS_WORK) NIS_WORK.touch(); }
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const norm = s => String(s).toLowerCase().replace(/[’']/g,"'").replace(/[^a-z0-9' ]/g," ").replace(/\s+/g," ").trim();
 /* real length of each script — never let the label drift from the audio */
@@ -966,10 +970,23 @@ function updateTotal(){
 
 /* load the recordings manifest, then draw. Missing manifest = browser voice. */
 loadVoices();
+/* El guardado se engancha DESPUES del primer render: si restaura una copia
+   de la cuenta tiene que repintar sobre una pagina ya dibujada. */
+function arrancaGuardado(){
+  if(!window.NIS_WORK) return;
+  NIS_WORK.attach(Object.assign(NIS_WORK.ficha(), {
+    title:'Listening — The Wellbeing Podcast',
+    storeKey:'u4ls_store',
+    read:  function(){ return { store: store, level: cur }; },
+    write: function(d){ store = d.store || {};
+                        if(d.level && LV.indexOf(d.level) >= 0) cur = d.level; },
+    after: function(){ drawTabs(); render(); }
+  }));
+}
 fetch("audio/listening/manifest.json", {cache:"no-store"})
   .then(r => r.ok ? r.json() : null)
-  .then(m => { MANIFEST = m || {}; render(); })
-  .catch(() => { MANIFEST = {}; render(); });
+  .then(m => { MANIFEST = m || {}; render(); arrancaGuardado(); })
+  .catch(() => { MANIFEST = {}; render(); arrancaGuardado(); });
 </script>
 </body>
 </html>

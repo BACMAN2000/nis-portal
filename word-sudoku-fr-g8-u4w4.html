@@ -67,6 +67,7 @@
   <script src="config.js?v=18"></script>
   <script src="anticheat.js?v=8" data-activity="word-sudoku-u4w1"></script>
 <script src="nis-nav.js?v=2"></script>
+<script src="activity-save.js?v=1"></script>
 </head>
 <body>
 <nav class="topnav">
@@ -180,21 +181,31 @@ function buildPuzzles(){
   const words=LEVELS[level].words;
   document.getElementById('puzzles').innerHTML=words.map((w,i)=>`<button class="pz ${i===pIdx?'on':''} ${done[level+'#'+i]?'done':''}" title="${w}" onclick="setPuzzle(${i})">${i+1}</button>`).join('');
 }
-function setLevel(l){ level=l; pIdx=0; newPuzzle(); }
-function setPuzzle(i){ pIdx=i; newPuzzle(); }
+function setLevel(l){ sudLee(); level=l; pIdx=0; newPuzzle(); }
+function setPuzzle(i){ sudLee(); pIdx=i; newPuzzle(); }
 
 function newPuzzle(){
   const cfg=LEVELS[level]; N=cfg.n; BR=cfg.br; BC=cfg.bc; const word=cfg.words[pIdx]; LETTERS=word.split('');
+  /* Si este sudoku ya estaba empezado, se recupera TAL CUAL: volver a
+     generarlo dejaria las letras del alumno sobre otro tablero. */
+  const gd = (typeof SUD !== 'undefined') ? SUD[level + '#' + pIdx] : null;
+  if(gd && Array.isArray(gd.sol) && gd.sol.length === N){
+    SOL=gd.sol.map(f=>f.slice());
+    given=gd.given.map(f=>f.slice());
+    val=gd.val.map(f=>f.slice());
+    sel=null; elapsed=gd.elapsed||0; hints=gd.hints||0;
+  } else {
   SOL=genSolved(N,BR,BC);
   given=digHoles(SOL,N,cfg.clues);
   val=Array.from({length:N},()=>Array(N).fill(0));
   for(let r=0;r<N;r++) for(let c=0;c<N;c++) if(given[r][c]) val[r][c]=SOL[r][c];
   sel=null; elapsed=0; hints=0;
+  }
   document.getElementById('banner').classList.remove('show');
   document.getElementById('theme').innerHTML=`Word ${pIdx+1}/${cfg.words.length}: <b>${word}</b> <span style="color:var(--muted)">· ${cfg.topic} · ${N}×${N}</span>`;
   buildLevels(); buildPuzzles(); renderGrid(); renderPad();
   clearInterval(timer); timer=setInterval(()=>{ elapsed++; document.getElementById('watch').textContent=fmt(elapsed); },1000);
-  document.getElementById('watch').textContent='00:00';
+  document.getElementById('watch').textContent=fmt(elapsed);
 }
 function fmt(s){ return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0'); }
 
@@ -245,6 +256,7 @@ function afterChange(){
   document.querySelectorAll('.cell.bad').forEach(e=>e.classList.remove('bad'));
   document.getElementById('banner').classList.remove('show');
   paintSel(); updateFill(); checkWin();
+  if(window.NIS_WORK) NIS_WORK.touch();
 }
 function conflicts(){
   const bad=Array.from({length:N},()=>Array(N).fill(false));
@@ -286,12 +298,15 @@ function isComplete(){
 function checkWin(){
   if(!isComplete()) return;
   const word=LEVELS[level].words[pIdx];
-  clearInterval(timer); done[level+'#'+pIdx]=true; buildLevels(); buildPuzzles();
+  clearInterval(timer);
+  /* Reabrir un sudoku ya resuelto no puede volver a mandarlo por correo. */
+  const yaEstaba=!!done[level+'#'+pIdx];
+  done[level+'#'+pIdx]=true; buildLevels(); buildPuzzles();
   const b=document.getElementById('banner');
   b.style.background=''; b.style.color='';
   b.innerHTML=`🎉 Solved <b>${word}</b> (${level} · word ${pIdx+1}/${LEVELS[level].words.length}) in ${fmt(elapsed)}${hints?(' · '+hints+' hints'):''}! <br><span style="font-weight:600;font-size:.85rem">Saved to My Progress (if signed in). Try another word!</span>`;
   b.classList.add('show');
-  if(window.NISACT) NISACT.submit({activity:'word-sudoku', title:'Word Sudoku FR 8e S4 — '+word, level:level, score:1, total:1, hints:hints, duration:Math.max(1,elapsed)});
+  if(window.NISACT && !yaEstaba) NISACT.submit({activity:'word-sudoku', title:'Word Sudoku FR 8e S4 — '+word, level:level, score:1, total:1, hints:hints, duration:Math.max(1,elapsed)});
 }
 function checkPuzzle(){
   markConflicts(); // reveal red on current duplicates — only when the student asks
@@ -327,6 +342,54 @@ document.addEventListener('keydown',e=>{
   if(LETTERS.includes(k)){ place(k); e.preventDefault(); }
 });
 window.addEventListener('resize',()=>{ if(N) renderGrid(); });
+
+/* ---- Guardado y entrega (barra Save / Submit) --------------------------
+   Cada sudoku se genera al azar, asi que no basta con guardar las letras del
+   alumno: si al volver se generara otro tablero, lo escrito no encajaria en
+   ninguna casilla. Se guarda el tablero entero (solucion, pistas y lo puesto)
+   por nivel y palabra.
+
+   Identico en los 42 motores de word sudoku, clones franceses incluidos. */
+const SUD = {};
+function sudLee(){
+  if(N) SUD[level + '#' + pIdx] = { sol:SOL, given:given, val:val, elapsed:elapsed,
+                                    hints:hints, done:!!done[level + '#' + pIdx] };
+  return SUD;
+}
+if(window.NIS_WORK) NIS_WORK.attach(Object.assign(NIS_WORK.ficha(), {
+  title: document.title,
+  read:  function(){ return { store: sudLee(), level: level, pIdx: pIdx }; },
+  write: function(d){
+    const p = (d && d.store) || {};
+    Object.keys(p).forEach(k => { SUD[k] = p[k]; if(p[k] && p[k].done) done[k] = true; });
+    if(d && d.level && LEVELS[d.level]) level = d.level;
+    if(d && typeof d.pIdx === 'number' && LEVELS[level] && LEVELS[level].words[d.pIdx]) pIdx = d.pIdx;
+  },
+  after: function(){ newPuzzle(); },
+  count: function(d){
+    const p = (d && d.store) || {};
+    return Object.keys(p).reduce(function(n,k){
+      const v = (p[k] || {}).val || [];
+      return n + v.reduce(function(m,f){ return m + f.filter(Boolean).length; }, 0);
+    }, 0);
+  },
+  answers: function(d){
+    const p = (d && d.store) || {}, out = {};
+    Object.keys(p).forEach(k => {
+      const x = p[k] || {}, par = k.split('#'), cfg = LEVELS[par[0]];
+      const palabra = cfg && cfg.words[+par[1]];
+      let puestas = 0, huecos = 0;
+      (x.val || []).forEach((f,r) => f.forEach((v,c) => {
+        if(x.given && x.given[r] && x.given[r][c]) return;
+        huecos++; if(v) puestas++;
+      }));
+      out[par[0] + ' / ' + (palabra || ('word ' + (+par[1] + 1)))] =
+        puestas + '/' + huecos + ' filled / ' + fmt(x.elapsed || 0) +
+        ' / hints ' + (x.hints || 0) + (x.done ? ' / solved' : '');
+    });
+    return out;
+  }
+}));
 
 newPuzzle();
 </script>

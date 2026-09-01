@@ -172,6 +172,9 @@
   Tip: use <b>Ctrl+P</b> to print or save your completed worksheet as a PDF for your teacher.
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+<script src="config.js?v=18"></script>
+<script src="activity-save.js?v=1"></script>
 <script>
 /* ============================================================
    GLOSSARY — shared entries; each level uses a subset
@@ -450,7 +453,8 @@ let cur = localStorage.getItem("u4rd_lv") || "A2";
 let store = {};
 try{ store = JSON.parse(localStorage.getItem("u4rd_store")||"{}"); }catch(e){ store={}; }
 function slot(){ store[cur] = store[cur] || {ans:{}, self:{}, done:false}; return store[cur]; }
-function save(){ localStorage.setItem("u4rd_store", JSON.stringify(store)); localStorage.setItem("u4rd_lv", cur); }
+function save(){ localStorage.setItem("u4rd_store", JSON.stringify(store)); localStorage.setItem("u4rd_lv", cur);
+                 if(window.NIS_WORK) NIS_WORK.touch(); }
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const norm = s => String(s).toLowerCase().replace(/[’']/g,"'").replace(/[^a-z0-9' ]/g," ").replace(/\s+/g," ").trim();
 
@@ -861,6 +865,17 @@ function updateBar(){
 }
 
 render();
+
+/* Save / Submit del portal: lo que el alumno escribe deja de vivir solo en
+   este navegador y se entrega desde aqui, sin copiarlo a otra caja. */
+if(window.NIS_WORK) NIS_WORK.attach(Object.assign(NIS_WORK.ficha(), {
+  title:'Reading — The Day I Stopped Pretending I Was Fine',
+  storeKey:'u4rd_store',
+  read:  function(){ return { store: store, level: cur }; },
+  write: function(d){ store = d.store || {};
+                      if(d.level && LV.indexOf(d.level) >= 0) cur = d.level; },
+  after: function(){ drawTabs(); render(); }
+}));
 </script>
 </body>
 </html>

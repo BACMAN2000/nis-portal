@@ -68,6 +68,7 @@
   <script src="config.js?v=18"></script>
   <script src="anticheat.js?v=8" data-activity="wordsearch-digital-footprint"></script>
 <script src="nis-nav.js?v=2"></script>
+<script src="activity-save.js?v=1"></script>
 </head>
 <body>
 <nav class="topnav">
@@ -312,6 +313,7 @@ function paint(w, i){
   }
 }
 function updateScore(){
+  if(window.NIS_WORK) NIS_WORK.touch();
   const d=DATA[level];
   const n=d.words.filter(w=>found[w.word]).length;
   document.getElementById('count').textContent=`(${n}/${d.words.length})`;
@@ -345,6 +347,52 @@ function resetLevel(){
   for (const k in cellEls){ cellEls[k].style.background=''; cellEls[k].classList.remove('found'); }
   load();
 }
+/* ---- Guardado y entrega (barra Save / Submit) --------------------------
+   La sopa a medias se perdia al cerrar la pestana. Este motor ya guardaba
+   todo por nivel (foundState / livesState / hintsState / elapsedState), asi
+   que aqui solo hace falta llevarselo a la cuenta del alumno y devolverselo
+   cuando vuelva, este donde este.
+
+   Identico en los 44 motores de sopa de letras, clones franceses incluidos:
+   la actividad se deduce del nombre del archivo. */
+if(window.NIS_WORK) NIS_WORK.attach(Object.assign(NIS_WORK.ficha(), {
+  title: document.title,
+  read: function(){
+    return { store: { found:foundState, lives:livesState, hints:hintsState,
+                      elapsed:elapsedState, done:Object.assign({}, done) }, level: level };
+  },
+  write: function(d){
+    const p = (d && d.store) || {};
+    /* done[] primero: si no, load() creeria que el nivel se acaba de
+       terminar y volveria a mandar el resultado por correo al abrirlo. */
+    Object.keys(p.done    || {}).forEach(k => { if(p.done[k]) done[k] = true; });
+    Object.keys(p.found   || {}).forEach(k => { foundState[k]   = p.found[k]; });
+    Object.keys(p.lives   || {}).forEach(k => { livesState[k]   = p.lives[k]; });
+    Object.keys(p.hints   || {}).forEach(k => { hintsState[k]   = p.hints[k]; });
+    Object.keys(p.elapsed || {}).forEach(k => { elapsedState[k] = p.elapsed[k]; });
+    if(d && d.level && DATA[d.level]) level = d.level;
+  },
+  after: function(){ load(); },
+  count: function(d){
+    const f = ((d && d.store) || {}).found || {};
+    return Object.keys(f).reduce((n,k) => n + Object.keys(f[k] || {}).length, 0);
+  },
+  answers: function(d){
+    const p = (d && d.store) || {}, out = {};
+    Object.keys(DATA).forEach(k => {
+      const n = Object.keys((p.found || {})[k] || {}).length;
+      const t = (p.elapsed || {})[k] || 0;
+      if(!n && !t) return;
+      const v = (p.lives || {})[k];
+      out[(DATA[k] && DATA[k].label) || k] =
+        n + '/' + DATA[k].words.length + ' words / ' + fmtT(t) +
+        ' / hints ' + ((p.hints || {})[k] || 0) + ' / lives ' + (v == null ? 5 : v) +
+        (((p.done || {})[k]) ? ' / finished' : '');
+    });
+    return out;
+  }
+}));
+
 load();
 </script>
 </body>

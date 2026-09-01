@@ -160,6 +160,9 @@
   Use <b>Ctrl+P</b> to print or save your completed work as a PDF for your teacher.
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+<script src="config.js?v=18"></script>
+<script src="activity-save.js?v=1"></script>
 <script>
 /* ============================================================
    MODULE A — verb + gerund vs verb + to-infinitive  (W2S1)
@@ -367,7 +370,8 @@ let store = {};
 try{ store = JSON.parse(localStorage.getItem("u4gl_store")||"{}"); }catch(e){ store={}; }
 function slot(){ store[cur] = store[cur] || {ans:{}, self:{}}; return store[cur]; }
 function save(){ localStorage.setItem("u4gl_store", JSON.stringify(store));
-                 localStorage.setItem("u4gl_lv", cur); localStorage.setItem("u4gl_mod", mod); }
+                 localStorage.setItem("u4gl_lv", cur); localStorage.setItem("u4gl_mod", mod);
+                 if(window.NIS_WORK) NIS_WORK.touch(); }
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const norm = s => String(s).toLowerCase().replace(/[’']/g,"'").replace(/\s+/g," ").trim();
 
@@ -600,6 +604,19 @@ function updateTotal(){
 }
 
 render();
+
+/* Save / Submit del portal. Aqui viaja tambien el modulo (a/b): volver y
+   encontrarse en el otro ejercicio seria perder el sitio. */
+if(window.NIS_WORK) NIS_WORK.attach(Object.assign(NIS_WORK.ficha(), {
+  week:2,
+  title:'Grammar Practice by Level — Habits That Shape Us',
+  storeKey:'u4gl_store',
+  read:  function(){ return { store: store, level: cur, mod: mod }; },
+  write: function(d){ store = d.store || {};
+                      if(d.level && LV.indexOf(d.level) >= 0) cur = d.level;
+                      if(d.mod === 'a' || d.mod === 'b') mod = d.mod; },
+  after: function(){ drawTabs(); render(); }
+}));
 </script>
 </body>
 </html>

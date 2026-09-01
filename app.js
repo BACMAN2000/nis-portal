@@ -5103,9 +5103,15 @@ async function matSube(files){
    y un PDF no se puede editar. */
 function fichasTabla(fichas, quien){
   if(!fichas || !fichas.length) return '';
+  /* Las fichas de sesión llevan milestone 'w1s1'; las actividades sueltas
+     (reading, listening, grammar lab) llevan 'a:<actividad>' y dicen su
+     semana en el payload. Se ordenan dentro de su semana, después de las
+     sesiones, para que el profesor lea la semana entera de corrido. */
   const orden = f => {
     const m = /^w(\d+)s(\d+)$/.exec(f.milestone || '');
-    return m ? (+m[1]) * 100 + (+m[2]) : 9999;
+    if (m) return (+m[1]) * 100 + (+m[2]);
+    const w = f.payload && f.payload.week;
+    return w ? (+w) * 100 + 50 : 9999;
   };
   fichas.sort((a,b) => orden(a) - orden(b)
     || String((quien[a.student_id]||{}).full_name||'').localeCompare(String((quien[b.student_id]||{}).full_name||'')));
@@ -5113,7 +5119,11 @@ function fichasTabla(fichas, quien){
   const fila = r => {
     const p = quien[r.student_id] || {};
     const m = /^w(\d+)s(\d+)$/.exec(r.milestone || '');
-    const donde = m ? ('Semana ' + m[1] + ' · Sesión ' + m[2]) : esc(r.milestone || '');
+    const act = /^a:/.test(r.milestone || '');
+    const donde = m ? ('Semana ' + m[1] + ' · Sesión ' + m[2])
+      : act ? ((r.payload && r.payload.week ? 'Semana ' + r.payload.week + ' · ' : '') +
+               esc((r.payload && r.payload.title) || r.milestone.slice(2)))
+      : esc(r.milestone || '');
     const link = r.payload && r.payload.link;
     const nombre = (r.payload && r.payload.name) || 'Ver archivo';
     const digital = r.payload && r.payload.answers;
@@ -5139,8 +5149,9 @@ function fichasTabla(fichas, quien){
 
   return `<div class="card">
     <h2>📄 Fichas entregadas</h2>
-    <p class="muted">Lo que entregan sesión a sesión: el archivo que rellenaron o el enlace de
-      Google Docs. Pon la nota y el comentario y el alumno lo ve en su unidad.</p>
+    <p class="muted">Lo que entregan sesión a sesión: el archivo que rellenaron, el enlace de
+      Google Docs o la actividad que resolvieron en el portal (reading, listening, grammar lab).
+      Pon la nota y el comentario y el alumno lo ve en la propia actividad.</p>
     <div style="overflow-x:auto"><table class="tbl">
       <thead><tr><th>Alumno</th><th>Dónde</th><th>Entrega</th><th>Nota</th><th>Comentario</th><th>Visto</th></tr></thead>
       <tbody>${fichas.map(fila).join('')}</tbody></table></div>
