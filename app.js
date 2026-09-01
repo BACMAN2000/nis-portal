@@ -6046,7 +6046,8 @@ async function escCarga(){
         nombre:(quien[r.student_id] || {}).full_name || '(alumno)',
         grado:(quien[r.student_id] || {}).grade_id, seccion:(quien[r.student_id] || {}).section,
         donde:(r.payload && r.payload.title) || r.milestone,
-        palabras:(String(t.texto).match(/\S+/g) || []).length
+        /* Mismo contador que el analisis: si no, el numero cambia al abrir. */
+        palabras:(String(t.texto).match(/[A-Za-zÀ-ÿ']+/g) || []).length
       });
     });
   });
@@ -6111,7 +6112,15 @@ window.escAbre = function(j, silencioso){
     ? f.ficha.blocks.filter(function(b){ return b && b.t === 'bank'; })
         .reduce(function(a,b){ return a.concat(b.items || []); }, [])
     : [];
-  const ctx = { campos:Object.keys(resp).length, respondidos:respondidos, banco:banco };
+  /* Cuantos campos TENIA la ficha, no cuantos trae el payload: el payload
+     solo guarda los que el alumno toco, asi que usarlo de denominador daba
+     "1 de 3 (33%)" a quien habia dejado 18 sin abrir. */
+  let campos = 0;
+  if(f.ficha && Array.isArray(f.ficha.blocks) && window.WSITEMS){
+    try{ campos = Object.keys(WSITEMS.prepara(f.ficha.blocks).labels || {}).length; }catch(e){}
+  }
+  if(!campos) campos = Object.keys(resp).length;
+  const ctx = { campos:campos, respondidos:respondidos, banco:banco };
 
   _esc.props = rub.map(function(c){ return escPropone(c, an, ctx); });
   /* Si ya se habia corregido, mandan los puntos guardados; si no, la propuesta. */
