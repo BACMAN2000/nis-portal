@@ -6027,8 +6027,8 @@ async function escCarga(){
   /* Todo lo entregado de esa unidad, venga de la ficha de la sesion o de una
      actividad suelta: para el docente son la misma cosa, texto que corregir. */
   const { data, error } = await sb.from('unit_submissions')
-    .select('id,student_id,grade,unit,milestone,payload,score,criteria,feedback,reviewed_at,updated_at')
-    .eq('grade', _esc.grade).eq('unit', _esc.unit).eq('kind', 'worksheet')
+    .select('id,student_id,grade,unit,milestone,kind,payload,score,criteria,feedback,reviewed_at,updated_at')
+    .eq('grade', _esc.grade).eq('unit', _esc.unit).in('kind', ['worksheet','report'])
     .order('updated_at', { ascending:false }).limit(600);
   if(error){
     $('#eLista').innerHTML = `<p class="err">No pude leerlo: ${esc(error.message)}</p>`;
@@ -6048,12 +6048,19 @@ async function escCarga(){
     const ficha = m ? (_esc.fichas.find(function(f){
       return f.week === +m[1] && f.session === +m[2] && f.level === (r.payload && r.payload.level);
     }) || null) : null;
-    escTextos(r.payload, ficha).forEach(function(t){
+    /* El producto final de la unidad (kind 'report') guarda su texto en
+       payload.text, no en answers: es una redaccion sola, no una ficha. Para
+       quien corrige es lo mismo — texto que leer y puntuar. */
+    const textos = (r.kind === 'report')
+      ? ((r.payload && r.payload.text || '').trim() ? [{ campo:'texto', texto:r.payload.text }] : [])
+      : escTextos(r.payload, ficha);
+    textos.forEach(function(t){
       _esc.filas.push({
         id:r.id, campo:t.campo, texto:t.texto, fila:r, ficha:ficha,
         nombre:(quien[r.student_id] || {}).full_name || '(alumno)',
         grado:(quien[r.student_id] || {}).grade_id, seccion:(quien[r.student_id] || {}).section,
-        donde:(r.payload && r.payload.title) || r.milestone,
+        donde:(r.kind === 'report') ? 'Producto final de la unidad'
+              : ((r.payload && r.payload.title) || r.milestone),
         /* Mismo contador que el analisis: si no, el numero cambia al abrir. */
         palabras:(String(t.texto).match(/[A-Za-zÀ-ÿ']+/g) || []).length
       });
