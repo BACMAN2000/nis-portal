@@ -200,7 +200,7 @@ textarea:focus{outline:none;border-color:var(--blue)}
 <script src="config.js"></script>
 <script src="activities-data.js?v=12"></script>
 <script src="class-files.js?v=2"></script>
-<script src="unit-plans.js?v=10"></script>
+<script src="unit-plans.js?v=11"></script>
 <script src="nis-nav.js?v=2"></script>
 <script>
 /* Motor del hub de unidad. Los datos vienen de unit-plans.js, que es una copia
@@ -658,10 +658,43 @@ async function cargaMateriales(){
   });
 }
 
+/* Las unidades del piloto no tienen materiales subidos al bucket: sus
+   sesiones y sus fichas por nivel salen del planner y se generan al vuelo en
+   class-session.html. El guion de clase es del profesor; la ficha, del
+   alumno, y en el nivel que le toque. */
+function sesionesDelPlanner(n){
+  const w = (U.sequence||[]).filter(x=>x.n===n)[0];
+  if(!w || !(w.sessions||[]).length) return '';
+  const url = (extra) => `class-session.html?grade=${GRADE}&unit=${UNIT}&week=${n}${extra||''}`;
+  const niveles = w.levels ? Object.keys(w.levels).map(l=>
+      `<a class="on-chip" href="${url('&level='+encodeURIComponent(l))}">${esc(l)}</a>`).join('') : '';
+  const filas = (w.sessions||[]).map(x=>{
+    const ver = esProfe ? `<a class="deck-chip" href="${url()}">&#9654; View class</a>` : '';
+    const hito = 'w' + n + 's' + x.s;
+    return `<div class="ses-row">
+        <b>S${x.s} · ${esc(x.title||('Session '+x.s))}</b>${ver}
+        ${niveles?`<span class="grupo"><i>Worksheet</i>${niveles}</span>`:''}
+        <a class="hand-chip" id="hand-${hito}" href="#" onclick="return abreEntrega('${hito}')">&#8593; Hand in</a>
+      </div>
+      <div class="entrega" id="box-${hito}">
+        <label class="fbtn" for="f-${hito}">&#128206; Choose a file from your computer</label>
+        <input type="file" id="f-${hito}" style="display:none"
+          accept=".pdf,.docx,.doc,.odt,image/png,image/jpeg,audio/*,video/*">
+        <span class="o">or</span>
+        <input type="url" id="u-${hito}" placeholder="paste a link from Drive or Google Docs">
+        <button class="btn small" onclick="mandaEntrega('${hito}')">Send</button>
+        <span class="state" id="e-${hito}"></span>
+      </div>`;
+  }).join('');
+  return `<div class="ses"><h4>Class materials — choose your level</h4>${filas}</div>`;
+}
+
 function sesionesSemana(n){
   const u = ((window.CLASS_FILES||{})[GRADE]||{})['u'+UNIT];
   const base = GRADE + '/u' + UNIT + '/';
   const ss = _mat && _mat[n];
+  /* Sin materiales en el bucket, se ofrece lo que el planner ya declara. */
+  if((!ss || !ss.length) && me) return sesionesDelPlanner(n);
   if(!ss || !ss.length || !me) return '';
   const filas = ss.map(x=>{
     /* El PDF se queda solo para el profesor: sirve para imprimir a quien no
