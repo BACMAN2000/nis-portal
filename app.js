@@ -366,6 +366,24 @@ function cambridgeInfoBody(){ return `
     <a class="btn" href="cambridge-info.html?v=1" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Abrir en pantalla completa ↗</a>
   </div>
   <iframe src="cambridge-info.html?v=1" title="Info Cambridge" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#eef3f9"></iframe>`; }
+/* Los tres cursos de Fun for Nordic (YLE). El motor es UNO solo — nis-fun/engine —
+   y el nivel va en la URL; aqui se embebe igual que Games Lab o Phonics para que
+   el profesor lo vea sin salir del portal. Datos de nis-fun/content/levels.json. */
+const FUN_CURSOS = {
+  starters:{em:'🐧',curso:'Fun for Nordic 1',examen:'Pre A1 Starters',unidades:45,color:'#d97d0d',grados:'G1 · G2',cast:'The Lighthouse Explorers'},
+  movers:  {em:'🐺',curso:'Fun for Nordic 2',examen:'A1 Movers',      unidades:50,color:'#2f9268',grados:'G3 · G4',cast:'The Fjord Club'},
+  flyers:  {em:'🦅',curso:'Fun for Nordic 3',examen:'A2 Flyers',      unidades:55,color:'#3b6fb5',grados:'G5',     cast:'The Aurora Expedition'},
+};
+function funCursoBody(nivel){
+  const c = FUN_CURSOS[nivel] || FUN_CURSOS.starters;
+  const url = `nis-fun/engine/?level=${nivel}`;
+  return `
+  <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
+    <div class="muted" style="flex:1;min-width:220px"><b>${c.curso}</b> — ${c.unidades} unidades con audio, juegos y tareas de examen para preparar <b>${c.examen}</b> (${c.grados} · ${c.cast}). Es el mismo curso que abre el alumno; lo que escriba y grabe aparece en <b>✅ Corrección → 🧸 Fun for Nordic</b>.</div>
+    <a class="btn" href="${url}" target="_blank" rel="noopener" style="background:${c.color};text-decoration:none">${c.em} Abrir en pantalla completa ↗</a>
+  </div>
+  <iframe src="${url}" title="${esc(c.curso)}" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#fff"></iframe>`;
+}
 function studentMun(){ document.querySelectorAll('[data-nav]').forEach(e=>e.classList.toggle('active',e.dataset.nav==='mun')); $('#main').innerHTML = munBody(); }
 /* Student view: join a live NIShoot game (opens straight on the Join screen). */
 function nishootJoinBody(){ return `
@@ -614,6 +632,7 @@ async function renderAdmin(tab='users'){
     {group:'Corrección', icon:'✅', items:[
       {key:'unitprod',label:'🎯 Productos de unidad'},
       {key:'corregir',label:'✅ Corregir fichas'},
+      {key:'funnordic',label:'🧸 Fun for Nordic'},
     ]},
     {group:'Seguimiento', icon:'📈', items:[
       {key:'stats',label:'📈 Estadísticas'},
@@ -626,16 +645,21 @@ async function renderAdmin(tab='users'){
     {group:'Enseñanza', icon:'🏫', items:[
       {key:'classes',label:'🏫 Classes'},
       {key:'scope',label:'📚 Scope & Sequence'},
+      // Los tres cursos de primaria: son las clases de G1–G5, asi que van aqui
+      // y no en Cambridge, aunque preparen los examenes YLE.
+      {key:'funstarters',label:'🐧 Starters'},
+      {key:'funmovers',label:'🐺 Movers'},
+      {key:'funflyers',label:'🦅 Flyers'},
       {key:'materiales',label:'📄 Materiales de clase'},
       {key:'library',label:'📚 Library'},
     ]},
-    // Todo lo de Cambridge junto: los dos candados (Mocks / Practice, que antes
-    // vivian en Permisos) y las apps del examen. Fun for Nordic ya tenia panel
-    // pero solo colgaba del menu del profesor, asi que el admin no lo veia.
+    // Todo lo del examen junto: los dos candados (Mocks / Practice, que antes
+    // vivian en Permisos) y las apps de Cambridge. Fun for Nordic NO esta aqui
+    // a proposito: el curso vive en Ensenanza y sus entregas en Correccion,
+    // que es donde el profesor las va a buscar.
     {group:'Cambridge', icon:'🎓', items:[
       {key:'mocks',label:'🔓 Mocks'},
       {key:'practice',label:'🎯 Practice Tests'},
-      {key:'funnordic',label:'🧸 Fun for Nordic'},
       {key:'uoe',label:'🧩 Use of English'},
       {key:'cambridgeinfo',label:'📘 Info Cambridge'},
     ]},
@@ -669,6 +693,9 @@ async function renderAdmin(tab='users'){
   if(tab==='final') return cefrFinalPanel();
   if(tab==='readers') return readerStatsPanel();
   if(tab==='funnordic') return funNordicPanel();
+  if(tab==='funstarters') return $('#main').innerHTML = funCursoBody('starters');
+  if(tab==='funmovers') return $('#main').innerHTML = funCursoBody('movers');
+  if(tab==='funflyers') return $('#main').innerHTML = funCursoBody('flyers');
   if(tab==='scope') return scopePanel();
   if(tab==='littlereaders') return littleReadersPanel();
   if(tab==='teachers') return adminTeachers();
@@ -2164,24 +2191,47 @@ async function littleReadersPanel(){
    Escritura, grabaciones de voz y el repaso final de cada unidad,
    para que el profesor las oiga y las califique.
 ---------------------------------------------------------------- */
+/* Filtro por nivel de las entregas. Vive fuera de la funcion para que no se
+   pierda al repintar el panel tras calificar. */
+let funFiltro = '';
+window._funFiltro = n => { funFiltro = (funFiltro===n ? '' : n); funNordicPanel(); };
+
 async function funNordicPanel(){
   const main = $('#main');
   main.innerHTML = '<div class="card"><p class="muted">Cargando entregas…</p></div>';
 
-  const { data, error } = await sb
-    .from('fun_submissions')
-    .select('id,student_id,level,unit,activity_code,kind,payload,audio_path,duration_sec,score,feedback,reviewed_at,created_at')
-    .order('created_at', { ascending: false })
-    .limit(400);
+  const NIVELES = ['starters','movers','flyers'];
+  const COLS = 'id,student_id,level,unit,activity_code,kind,payload,audio_path,duration_sec,score,feedback,reviewed_at,created_at';
+  let q = sb.from('fun_submissions').select(COLS).order('created_at', { ascending: false }).limit(400);
+  if (funFiltro) q = q.eq('level', funFiltro);
+  // el filtro acota la consulta (hay tope de 400), pero las cuentas de las
+  // pastillas se piden aparte para que sigan siendo del total de cada nivel
+  const [res, ...cuentas] = await Promise.all([
+    q,
+    ...NIVELES.map(n => sb.from('fun_submissions').select('id', { count:'exact', head:true }).eq('level', n))
+  ]);
+  const { data, error } = res;
+  const nPorNivel = Object.fromEntries(NIVELES.map((n,i)=>[n, cuentas[i].count||0]));
+  const total = NIVELES.reduce((a,n)=>a+nPorNivel[n], 0);
 
-  if (error){
-    main.innerHTML = `<div class="card"><p class="err">No pude leer las entregas: ${esc(error.message)}</p></div>`;
-    return;
-  }
+  const pastilla = (val,label,n) => `<button class="btn sm ${funFiltro===val?'':'ghost'}"
+      onclick="window._funFiltro('${val}')">${label} <b>${n}</b></button>`;
+  const chips = `<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+      ${pastilla('','🧸 Todos',total)}
+      ${NIVELES.map(n=>pastilla(n, FUN_CURSOS[n].em+' '+n[0].toUpperCase()+n.slice(1), nPorNivel[n])).join('')}
+    </div>`;
+
+  const marco = cuerpo => `<div class="card">
+    <h2>🧸 Fun for Nordic — entregas de los alumnos</h2>
+    <p class="muted">Lo que escriben y lo que graban en Starters, Movers y Flyers, lo más
+      reciente primero. Pon una nota de 0 a 10 y un comentario; se guarda solo.</p>
+    ${chips}${cuerpo}</div>`;
+
+  if (error){ main.innerHTML = marco(`<p class="err">No pude leer las entregas: ${esc(error.message)}</p>`); return; }
   if (!data || !data.length){
-    main.innerHTML = `<div class="card"><h2>🧸 Fun for Nordic</h2>
-      <p class="muted">Todavía no hay entregas. Aparecerán aquí en cuanto los alumnos
-      escriban o graben en el curso.</p></div>`;
+    main.innerHTML = marco(`<p class="muted">${funFiltro
+      ? 'Todavía no hay entregas de <b>'+esc(FUN_CURSOS[funFiltro].curso)+'</b>.'
+      : 'Todavía no hay entregas. Aparecerán aquí en cuanto los alumnos escriban o graben en el curso.'}</p>`);
     return;
   }
 
@@ -2216,14 +2266,10 @@ async function funNordicPanel(){
     </tr>`;
   };
 
-  main.innerHTML = `<div class="card">
-    <h2>🧸 Fun for Nordic — entregas de los alumnos</h2>
-    <p class="muted">Lo que escriben y lo que graban, lo más reciente primero.
-      Pon una nota de 0 a 10 y un comentario; se guarda solo.</p>
-    <div style="overflow-x:auto"><table class="tbl">
+  main.innerHTML = marco(`<div style="overflow-x:auto"><table class="tbl">
       <thead><tr><th>Alumno</th><th>Unidad</th><th>Tipo</th><th>Entrega</th>
         <th>Nota</th><th>Comentario</th><th>Visto</th></tr></thead>
-      <tbody>${data.map(fila).join('')}</tbody></table></div></div>`;
+      <tbody>${data.map(fila).join('')}</tbody></table></div>`);
 }
 
 /* Los audios están en un bucket privado: se pide un enlace temporal. */
@@ -2270,9 +2316,17 @@ async function renderTeacher(tab){
   if(_canClasses) ensenanza.unshift({key:'classes',label:'🏫 Classes'});
   if(teacherAllowedGrades().length) ensenanza.push({key:'unitaccess',label:'📚 Activar unidades'});
   ensenanza.push({key:'scope',label:'📚 Scope & Sequence'});
+  /* Los tres cursos de primaria (Fun for Nordic). Van sin candado, como Little
+     Readers: son material de consulta, no datos de alumnos. Sus entregas se
+     corrigen en Correccion > Fun for Nordic. */
+  ensenanza.push({key:'funstarters',label:'🐧 Starters'});
+  ensenanza.push({key:'funmovers',label:'🐺 Movers'});
+  ensenanza.push({key:'funflyers',label:'🦅 Flyers'});
   ensenanza.push({key:'littlereaders',label:'🧒 Little Readers'});
   examenes.push({key:'exams',label:'🎧 Exámenes'});
   if(teacherAllowedGrades().length) examenes.push({key:'practice',label:'🎯 Practice Tests'});
+  examenes.push({key:'uoe',label:'🧩 Use of English'});
+  examenes.push({key:'cambridgeinfo',label:'📘 Info Cambridge'});
 
   const nav = [];
   if(suelto.length) nav.push(...suelto);
@@ -2310,6 +2364,16 @@ async function renderTeacher(tab){
   if(active==='classes') return studentClasses();
   if(active==='phonics'){ $('#main').innerHTML = phonicsPanel(); return; }
   if(active==='coach'){ $('#main').innerHTML = coachPanel(); return; }
+  // Estas tres estaban en el menu pero sin handler: el profesor las clicaba y
+  // le salia el mensaje de "sin accesos".
+  if(active==='funnordic') return funNordicPanel();
+  if(active==='scope') return scopePanel();
+  if(active==='littlereaders') return littleReadersPanel();
+  if(active==='funstarters') return $('#main').innerHTML = funCursoBody('starters');
+  if(active==='funmovers') return $('#main').innerHTML = funCursoBody('movers');
+  if(active==='funflyers') return $('#main').innerHTML = funCursoBody('flyers');
+  if(active==='uoe') return $('#main').innerHTML = useOfEnglishBody();
+  if(active==='cambridgeinfo') return $('#main').innerHTML = cambridgeInfoBody();
   $('#main').innerHTML = `<div class="card">El administrador aún no te ha asignado accesos. Escríbele para que te habilite <b>Resultados</b> o <b>Alumnos</b>.</div>`;
 }
 /* ── Shared results filter bar (admin + teacher) ────────────────────── */
