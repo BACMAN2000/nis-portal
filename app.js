@@ -5587,6 +5587,14 @@ async function corrEscritasPanel(){
       <p class="muted">El texto entero a la izquierda y la rúbrica a la derecha, con una propuesta
         automática de nota que sale de lo que la propia rúbrica pide. Nada le llega al alumno
         hasta que pulses <b>Guardar y enviar</b>.</p>
+      <style>
+        /* minmax(0,1fr): sin el, la columna del texto no puede encoger y la
+           pantalla se va de ancho. Y por debajo de 1100px no caben dos
+           columnas: la rubrica baja debajo del texto. */
+        #eGrid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;margin-top:14px}
+        #eGrid > div{min-width:0}
+        @media (max-width:1100px){ #eGrid{grid-template-columns:minmax(0,1fr)} }
+      </style>
       <div id="eCab"></div>
     </div>
     <div class="card" id="eLista"><p class="muted">Cargando…</p></div>
@@ -6144,8 +6152,8 @@ window.escAbre = function(j, silencioso){
           ${_esc.i + 1} de ${_esc.filas.length}</span>
       </div>
 
-      <div style="display:grid;grid-template-columns:1fr 360px;gap:18px;margin-top:14px" id="eGrid">
-        <div>
+      <div id="eGrid">
+        <div style="min-width:0">
           <div style="white-space:pre-wrap;line-height:1.75;font-size:.95rem;border:1px solid var(--line);
                       border-radius:10px;padding:16px;max-height:56vh;overflow:auto;background:#fcfdff">${esc(f.texto)}</div>
           <p class="muted" style="font-size:.8rem;margin-top:8px">
