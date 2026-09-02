@@ -660,7 +660,8 @@ window.BANNER = (function () {
 
   function html(idx, nivel) {
     const castPoster = `../assets/videos/posters/${nivel}-cast.jpg?v=${window.ART_V || ''}`;
-    const castVideo = `../assets/videos/${nivel}-cast.mp4?v=${window.ART_V || ''}`;
+    const sufijo = window.LANG === 'fr' ? '-fr' : '';
+    const castVideo = `../assets/videos/${nivel}-cast${sufijo}.mp4?v=${window.VIDEO_V || window.ART_V || ''}`;
 
     return `<style>${CSS}</style>
       <div class="lh lh-cinematic" data-nivel="${nivel}">
