@@ -1,7 +1,6 @@
 {
  "id": "starters-fr-01",
  "level": "starters",
- "lang": "fr",
  "number": 1,
  "title": "Les couleurs et les jouets",
  "topic": "les jouets",
@@ -105,7 +104,7 @@
      },
      {
       "left": "la nuit",
-      "right": "noir"
+      "right": "noire"
      }
     ]
    }
@@ -120,7 +119,7 @@
    ],
    "audio": "starters/u01-c.mp3",
    "data": {
-    "voice_note": "Voix : Freya (curieuse, douce) et Nico (blagueur).",
+    "voice_note": "Voces: Freya (curiosa, dulce) y Nico (bromista).",
     "script": "Nico : Freya, qu'est-ce qu'il y a dans ta boîte à jouets ? … Freya : Regarde ! C'est mon ballon. Il est rouge. … Nico : Et ça, qu'est-ce que c'est ? … Freya : C'est mon cerf-volant. Il est jaune et très grand ! … Nico : Tu as combien de voitures ? … Freya : J'ai trois voitures. Une, deux, trois ! … Nico : Et lui, c'est qui ? … Freya : C'est mon nounours. Il est marron. Il s'appelle Max. … Nico : Et… c'est quoi, ce truc noir et blanc ? … Freya : Ça, ce n'est pas un jouet ! C'est Pip ! Il dort encore dans ma boîte !",
     "questions": [
      {
@@ -179,7 +178,7 @@
      {
       "sentence": "Une banane est …",
       "options": [
-       "bleue",
+       "bleu",
        "rouge",
        "jaune"
       ],
@@ -198,7 +197,7 @@
       "sentence": "Une grenouille est …",
       "options": [
        "orange",
-       "verte",
+       "vert",
        "noire"
       ],
       "answer": 1
@@ -322,17 +321,16 @@
    "au revoir"
   ],
   "gramatica": [
-   "Le verbe ÊTRE : je suis, tu es, il/elle est",
-   "Un / une : le genre du nom"
+   "Le verbe ÊTRE : je suis, tu es, il/elle est"
   ],
   "pendiente": {
    "vocabulario": [
-    "bonjour",
-    "salut",
-    "au revoir"
+    "hello",
+    "goodbye",
+    "good morning"
    ]
   },
-  "nota": "Equivalencia provisional del Scope & Sequence de inglés. El de Francés no está cargado todavía: confirmar con el colegio antes de darlo por oficial."
+  "nota": "Equivalencia provisional del Scope & Sequence de ingles. El de Frances no esta cargado todavia: confirmar con el colegio antes de darlo por oficial."
  },
  "wordlist_extra": [
   "bonjour",
@@ -349,5 +347,6 @@
   "huit",
   "neuf",
   "dix"
- ]
+ ],
+ "lang": "fr"
 }

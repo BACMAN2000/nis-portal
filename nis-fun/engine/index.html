@@ -665,6 +665,7 @@ const CDIR = LANG === 'fr' ? '../content-fr' : '../content';
    compartir carpeta haria sonar la voz inglesa en la clase de frances. */
 const ADIR = LANG === 'fr' ? '../audio/fr' : '../audio';
 const T = (en, fr) => (LANG === 'fr' ? fr : en);
+window.LANG = LANG;   // backend.js lo necesita para separar las entregas por idioma
 /* Nombre de archivo del dibujo. Se calcula sobre la clave canonica (inglesa),
    no sobre la palabra que lee el alumno: 'cerf-volant' y 'kite' comparten el
    mismo kite.png. Traducir el curso no duplica ni un solo dibujo. */
@@ -1694,7 +1695,16 @@ function wirePictureWords(){
 }
 
 function complete(code, msg){
-  if(!PROG.done[code]){ PROG.done[code]=true; store.set(UD.number, PROG); }
+  if(!PROG.done[code]){
+    PROG.done[code]=true; store.set(UD.number, PROG);
+    // Que quede en la cuenta, no solo en este navegador: es lo unico que
+    // permite al profesor ver cuanto se trabaja de verdad en cada unidad.
+    if (window.BACKEND) BACKEND.progreso(
+      {nivel: LEVEL, unidad: UD.number, codigo: code},
+      {hechas: Object.keys(PROG.done).length,
+       total: (UD.activities||[]).length,
+       titulo: UD.title || ''});
+  }
   // lo que escribio queda guardado para que el profesor lo revise
   if (window.BACKEND) {
     const caja = document.getElementById('body-'+code);
