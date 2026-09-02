@@ -13,6 +13,11 @@
  ],
  "units": [
   {
+   "n": 6,
+   "title": "La nourriture que j'adore",
+   "topic": "nourriture"
+  },
+  {
    "n": 8,
    "title": "Ma maison, ma chambre",
    "topic": "maison"
@@ -21,6 +26,21 @@
    "n": 15,
    "title": "La journée du sport",
    "topic": "sports"
+  },
+  {
+   "n": 21,
+   "title": "Où est le chat ?",
+   "topic": "les prépositions"
+  },
+  {
+   "n": 22,
+   "title": "Les gens que je connais",
+   "topic": "décrire les personnes"
+  },
+  {
+   "n": 27,
+   "title": "La sortie scolaire",
+   "topic": "le passé composé"
   },
   {
    "n": 28,
@@ -36,6 +56,16 @@
    "n": 32,
    "title": "Des nombres partout",
    "topic": "les nombres jusqu'à 100"
+  },
+  {
+   "n": 33,
+   "title": "Dire l'heure",
+   "topic": "heure"
+  },
+  {
+   "n": 45,
+   "title": "La fête d'anniversaire",
+   "topic": "les fêtes"
   },
   {
    "n": 48,
