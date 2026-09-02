@@ -741,8 +741,13 @@ if (COLORS[LEVEL]) document.documentElement.style.setProperty('--accent', COLORS
 const CHAR = (slug, pose) => `../assets/characters/${LEVEL}/${slug}/pose-${String(pose).padStart(2,'0')}.png?v=${ART_V}`;
 // si no existe el PNG (arte 3D), cae al SVG plano provisional
 const FB = `onerror="this.onerror=null;this.src=this.src.replace('.png','.svg')"`;
+/* Prefijo de lo que se guarda en el navegador. Lleva el idioma porque el
+   curso frances es otro curso: sus unidades hechas, su ultima unidad y su
+   presentacion no son las del ingles. El ingles se queda con el prefijo de
+   siempre — cambiarselo borraria el avance de quien ya esta dentro. */
+const LPFX = LANG === 'fr' ? 'nisfun-fr' : 'nisfun';
 const store = {
-  key: (u)=>`nisfun-${LEVEL}-u${u}`,
+  key: (u)=>`${LPFX}-${LEVEL}-u${u}`,
   get(u){ try{return JSON.parse(localStorage.getItem(this.key(u))||'{}')}catch(e){return{}} },
   set(u,d){ localStorage.setItem(this.key(u), JSON.stringify(d)) }
 };
@@ -843,11 +848,11 @@ async function hub(){
   const totalHechas = progreso.reduce((sum, p) => sum + p.done, 0);
   const totalPasos = Math.max(1, unidades.length * 4);
   const porcentaje = Math.round(totalHechas * 100 / totalPasos);
-  const ultima = Number(localStorage.getItem(`nisfun-${LEVEL}-lastUnit`));
+  const ultima = Number(localStorage.getItem(`${LPFX}-${LEVEL}-lastUnit`));
   const ultimaPendiente = progreso.find(p => p.unit.n === ultima && p.done < 4);
   const siguiente = ultimaPendiente || progreso.find(p => p.done < 4) || progreso[progreso.length - 1];
   const terminadas = progreso.filter(p => p.done >= 4).length;
-  const introKey = `nisfun-${LEVEL}-intro-seen`;
+  const introKey = `${LPFX}-${LEVEL}-intro-seen`;
   const introVista = localStorage.getItem(introKey) === '1';
 
   const estadoCurso = `<section class="course-status" aria-label="${T('Course progress','Progression du cours')}">
@@ -1126,7 +1131,7 @@ function sceneFor(ud){
 }
 async function unit(){
   UD = await j(`${CDIR}/${LEVEL}/unit-${String(UNIT).padStart(2,'0')}.json`);
-  try { localStorage.setItem(`nisfun-${LEVEL}-lastUnit`, String(UNIT)); } catch(e) {}
+  try { localStorage.setItem(`${LPFX}-${LEVEL}-lastUnit`, String(UNIT)); } catch(e) {}
   PROG = store.get(UD.number); PROG.done = PROG.done || {};
   document.title = `${T("Unit","Unité")} ${UD.number} · ${UD.title}`;
   // el JSON las guarda en el orden en que se escribieron (F antes que E);
@@ -1291,7 +1296,7 @@ async function unit(){
 /* ---- repaso final: el alumno marca lo que ya sabe hacer ---- */
 function pintaSelfCheck(el, digital){
   if (!el) return;
-  const clave = `nisfun-sc-${LEVEL}-u${UD.number}`;
+  const clave = `${LPFX}-sc-${LEVEL}-u${UD.number}`;
   let marcado = {};
   try { marcado = JSON.parse(localStorage.getItem(clave) || '{}'); } catch(e){}
 
