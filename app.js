@@ -433,6 +433,28 @@ async function frIndice(){
   }
   return _FR_INDICE;
 }
+/* Los libros en PDF de un nivel frances.
+ *
+ * Los tres se generan del mismo contenido que ve el alumno en pantalla
+ * (book-builder/book.html?lang=fr), asi que dicen exactamente lo mismo.
+ * `conClave` en false deja fuera el corregido: al alumno no se le dan las
+ * respuestas.
+ */
+const FR_LIBROS_N = { starters: 1, movers: 2, flyers: 3 };
+function frLibros(nivel, conClave){
+  const n = FR_LIBROS_N[nivel];
+  if (!n) return '';
+  const libro = (suf, em, txt) =>
+    // se abre en una pestana en vez de descargarse: el libro del alumno
+    // pesa 24 MB y casi siempre lo que se quiere es mirarlo o imprimirlo
+    `<a class="btn" target="_blank" rel="noopener"
+        href="nis-fun/book-builder/FunForNordic${n}-FR-${suf}.pdf"
+        style="background:#fff;border:1px solid var(--line);color:var(--ink);text-decoration:none">${em} ${txt}</a>`;
+  return libro('SB', '\u{1F4D8}', "Livre de l'\u00e9l\u00e8ve")
+       + libro('WB', '\u{1F4DD}', "Cahier d'exercices")
+       + (conClave ? libro('TeachersKey', '\u{1F511}', 'Corrig\u00e9 du professeur') : '');
+}
+
 function funFrCursoBody(nivel){
   const c = FUN_FR[nivel] || FUN_FR.starters;
   const url = `nis-fun/engine/?level=${nivel}&lang=fr`;
@@ -442,6 +464,9 @@ function funFrCursoBody(nivel){
       Mismo curso, mismos dibujos y mismas l\u00e1minas que la versi\u00f3n inglesa, con el texto y las voces en franc\u00e9s.
       Lo que el alumno escriba y grabe aparece en <b>\u{1F1EB}\u{1F1F7} Fran\u00e7ais \u2192 M\u00e9tricas</b>.</div>
     <a class="btn" href="${url}" target="_blank" rel="noopener" style="background:${c.color};text-decoration:none">${c.em} Abrir en pantalla completa \u2197</a>
+  </div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px">
+    <span class="muted" style="font-size:.85rem">Para imprimir:</span>${frLibros(nivel, true)}
   </div>
   <iframe src="${url}" title="${esc(c.curso)}" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#fff"></iframe>`;
 }
@@ -462,6 +487,15 @@ async function funFrBody(render){
       Hoy hay <b>${total} de 150 unidades</b> listas; el resto aparece aqu\u00ed solo cuando est\u00e1 completo.</p>
     <div class="grid cols-3">
       ${tarjeta('starters','frstarters')}${tarjeta('movers','frmovers')}${tarjeta('flyers','frflyers')}
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h2 style="margin:0 0 4px;color:var(--blue-d)">\u{1F4DA} Los libros en PDF</h2>
+      <div class="muted" style="font-size:.88rem;margin-bottom:12px">Los mismos tres libros de cada nivel que en
+        ingl\u00e9s, con la misma maqueta y los mismos dibujos. Salen del mismo contenido que el curso en pantalla,
+        as\u00ed que dicen exactamente lo mismo.</div>
+      ${['starters','movers','flyers'].map(n => `<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:10px">
+        <span style="min-width:150px;font-weight:600;color:${FUN_FR[n].color}">${FUN_FR[n].em} ${FUN_FR[n].curso}</span>
+        ${frLibros(n, true)}</div>`).join('')}
     </div>
     <div class="card" style="margin-top:16px">
       <h2 style="margin:0 0 4px;color:var(--blue-d)">\u{1F4CA} C\u00f3mo se est\u00e1 usando</h2>
@@ -4220,7 +4254,11 @@ function studentStage(stage){
       <h2 style="margin:0 0 4px;color:var(--blue-d)">🇫🇷 Fun for Nordic — Français</h2>
       <div class="muted" style="font-size:.9rem;margin-bottom:12px">Le même cours, en français : les mêmes
         personnages, les mêmes dessins et des voix françaises. Ouvre une unité et c'est parti !</div>
-      <div style="display:flex;gap:10px;flex-wrap:wrap">${botones}</div></div>`;
+      <div style="display:flex;gap:10px;flex-wrap:wrap">${botones}</div>
+      <div class="muted" style="font-size:.85rem;margin:14px 0 6px">\u{1F4DA} Tes livres \u00e0 imprimer :</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">${
+        ['starters','movers','flyers'].filter(n => (idx[n]||0) > 0).map(n => frLibros(n, false)).join('')
+      }</div></div>`;
   });
 }
 
