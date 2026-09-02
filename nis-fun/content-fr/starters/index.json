@@ -18,6 +18,11 @@
    "topic": "les jouets"
   },
   {
+   "n": 2,
+   "title": "Ma famille",
+   "topic": "famille"
+  },
+  {
    "n": 3,
    "title": "Au zoo",
    "topic": "animaux"
@@ -36,6 +41,16 @@
    "n": 10,
    "title": "Ma maison",
    "topic": "maison"
+  },
+  {
+   "n": 11,
+   "title": "Dans ma chambre",
+   "topic": "chambre"
+  },
+  {
+   "n": 13,
+   "title": "Les fruits, c'est bon",
+   "topic": "fruit"
   },
   {
    "n": 14,
@@ -88,6 +103,11 @@
    "topic": "dans / sur / sous"
   },
   {
+   "n": 26,
+   "title": "Dans la classe",
+   "topic": "les actions de l'école"
+  },
+  {
    "n": 27,
    "title": "Les sports que je fais",
    "topic": "sports"
@@ -136,6 +156,16 @@
    "n": 40,
    "title": "L'alphabet",
    "topic": "lettres"
+  },
+  {
+   "n": 42,
+   "title": "Il est, elle est",
+   "topic": "il / elle"
+  },
+  {
+   "n": 43,
+   "title": "Celui-ci et celui-là",
+   "topic": "ce / cette"
   },
   {
    "n": 44,
