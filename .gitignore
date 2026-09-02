@@ -28,3 +28,5 @@ worksheets-digital.json
 
 # Respaldos que deja otra sesion antes de editar: quedan en disco, no en el repo.
 _backup_*/
+# temporales del generador de audio (fragmentos antes de pegarlos con ffmpeg)
+nis-fun/audio/**/*.mp3.partes/
