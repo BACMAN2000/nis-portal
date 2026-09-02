@@ -43,6 +43,11 @@
    "topic": "animaux de la ferme"
   },
   {
+   "n": 11,
+   "title": "Au bord du lac",
+   "topic": "nature"
+  },
+  {
    "n": 13,
    "title": "Les règles de la classe",
    "topic": "devoir / ne pas devoir"
@@ -51,6 +56,16 @@
    "n": 15,
    "title": "La journée du sport",
    "topic": "sports"
+  },
+  {
+   "n": 16,
+   "title": "Ma semaine",
+   "topic": "les jours de la semaine"
+  },
+  {
+   "n": 19,
+   "title": "Le bus pour l'école",
+   "topic": "transport"
   },
   {
    "n": 21,
@@ -93,9 +108,19 @@
    "topic": "heure"
   },
   {
+   "n": 39,
+   "title": "Un bon appétit",
+   "topic": "les quantités"
+  },
+  {
    "n": 45,
    "title": "La fête d'anniversaire",
    "topic": "les fêtes"
+  },
+  {
+   "n": 47,
+   "title": "L'album photo",
+   "topic": "le passé + la famille"
   },
   {
    "n": 48,
