@@ -33,9 +33,19 @@
    "topic": "les nombres"
   },
   {
+   "n": 5,
+   "title": "Mes affaires d'école",
+   "topic": "école"
+  },
+  {
    "n": 6,
    "title": "Des couleurs partout",
    "topic": "couleurs"
+  },
+  {
+   "n": 8,
+   "title": "Mon visage",
+   "topic": "visage"
   },
   {
    "n": 10,
@@ -46,6 +56,11 @@
    "n": 11,
    "title": "Dans ma chambre",
    "topic": "chambre"
+  },
+  {
+   "n": 12,
+   "title": "La nourriture que j'aime",
+   "topic": "nourriture"
   },
   {
    "n": 13,
@@ -98,6 +113,11 @@
    "topic": "pouvoir"
   },
   {
+   "n": 24,
+   "title": "Cours et joue",
+   "topic": "les verbes d'action"
+  },
+  {
    "n": 25,
    "title": "Le jeu de la boîte à jouets",
    "topic": "dans / sur / sous"
@@ -138,6 +158,11 @@
    "topic": "petit-déjeuner"
   },
   {
+   "n": 35,
+   "title": "Ma boîte à goûter",
+   "topic": "déjeuner"
+  },
+  {
    "n": 36,
    "title": "Le gâteau d'anniversaire",
    "topic": "anniversaire"
@@ -146,6 +171,11 @@
    "n": 37,
    "title": "La tête et les mains",
    "topic": "actions du corps"
+  },
+  {
+   "n": 38,
+   "title": "Les animaux savent…",
+   "topic": "les animaux + savoir"
   },
   {
    "n": 39,
