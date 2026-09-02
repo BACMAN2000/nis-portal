@@ -374,6 +374,37 @@ const FUN_CURSOS = {
   movers:  {em:'🐺',curso:'Fun for Nordic 2',examen:'A1 Movers',      unidades:50,color:'#2f9268',grados:'G3 · G4',cast:'The Fjord Club'},
   flyers:  {em:'🦅',curso:'Fun for Nordic 3',examen:'A2 Flyers',      unidades:55,color:'#3b6fb5',grados:'G5',     cast:'The Aurora Expedition'},
 };
+/* Los libros en PDF de un nivel, en el idioma que sea.
+ *
+ * Los tres se generan del mismo contenido que ve el alumno en pantalla
+ * (book-builder/book.html, con ?lang=fr para el frances), asi que dicen
+ * exactamente lo mismo que el curso. Lo unico que cambia entre idiomas es
+ * el sufijo del archivo y el nombre del libro.
+ *
+ * `conClave` en false deja fuera el corregido: al alumno no se le dan las
+ * respuestas, ni en ingles ni en frances.
+ */
+const FUN_LIBROS_N = { starters: 1, movers: 2, flyers: 3 };
+const FUN_LIBROS_TXT = {
+  en: { marca: '',    sb: "Student's Book", wb: 'Workbook',           key: "Teacher's Key" },
+  fr: { marca: '-FR', sb: "Livre de l'\u00e9l\u00e8ve", wb: "Cahier d'exercices",
+        key: 'Corrig\u00e9 du professeur' },
+};
+function funLibros(nivel, lang, conClave){
+  const n = FUN_LIBROS_N[nivel];
+  const t = FUN_LIBROS_TXT[lang] || FUN_LIBROS_TXT.en;
+  if (!n) return '';
+  const libro = (suf, em, txt) =>
+    // se abre en una pestana en vez de descargarse: el libro del alumno
+    // pesa 24 MB y casi siempre lo que se quiere es mirarlo o imprimirlo
+    `<a class="btn" target="_blank" rel="noopener"
+        href="nis-fun/book-builder/FunForNordic${n}${t.marca}-${suf}.pdf"
+        style="background:#fff;border:1px solid var(--line);color:var(--ink);text-decoration:none">${em} ${txt}</a>`;
+  return libro('SB', '\u{1F4D8}', t.sb)
+       + libro('WB', '\u{1F4DD}', t.wb)
+       + (conClave ? libro('TeachersKey', '\u{1F511}', t.key) : '');
+}
+
 function funCursoBody(nivel){
   const c = FUN_CURSOS[nivel] || FUN_CURSOS.starters;
   const url = `nis-fun/engine/?level=${nivel}`;
@@ -381,6 +412,9 @@ function funCursoBody(nivel){
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
     <div class="muted" style="flex:1;min-width:220px"><b>${c.curso}</b> — ${c.unidades} unidades con audio, juegos y tareas de examen para preparar <b>${c.examen}</b> (${c.grados} · ${c.cast}). Es el mismo curso que abre el alumno; lo que escriba y grabe aparece en <b>✅ Corrección → 🧸 Fun for Nordic</b>.</div>
     <a class="btn" href="${url}" target="_blank" rel="noopener" style="background:${c.color};text-decoration:none">${c.em} Abrir en pantalla completa ↗</a>
+  </div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px">
+    <span class="muted" style="font-size:.85rem">Para imprimir:</span>${funLibros(nivel, 'en', true)}
   </div>
   <iframe src="${url}" title="${esc(c.curso)}" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#fff"></iframe>`;
 }
@@ -402,6 +436,15 @@ function funYleBody(render){
       El formato de cada examen está en <b>📘 Info Cambridge</b>.</p>
     <div class="grid cols-3">
       ${tarjeta('starters','funstarters')}${tarjeta('movers','funmovers')}${tarjeta('flyers','funflyers')}
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h2 style="margin:0 0 4px;color:var(--blue-d)">📚 Los libros en PDF</h2>
+      <div class="muted" style="font-size:.88rem;margin-bottom:12px">El libro del alumno, el cuaderno de casa
+        y el corregido de cada nivel. Salen del mismo contenido que el curso en pantalla, así que dicen
+        exactamente lo mismo.</div>
+      ${['starters','movers','flyers'].map(n => `<div style="margin-bottom:14px">
+        <div style="font-weight:600;margin-bottom:6px;color:${FUN_CURSOS[n].color}">${FUN_CURSOS[n].em} ${FUN_CURSOS[n].curso}</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">${funLibros(n, 'en', true)}</div></div>`).join('')}
     </div>
     <div class="card" style="margin-top:16px">
       <h2 style="margin:0 0 4px;color:var(--blue-d)">✅ Corregir lo que entregan</h2>
@@ -433,27 +476,6 @@ async function frIndice(){
   }
   return _FR_INDICE;
 }
-/* Los libros en PDF de un nivel frances.
- *
- * Los tres se generan del mismo contenido que ve el alumno en pantalla
- * (book-builder/book.html?lang=fr), asi que dicen exactamente lo mismo.
- * `conClave` en false deja fuera el corregido: al alumno no se le dan las
- * respuestas.
- */
-const FR_LIBROS_N = { starters: 1, movers: 2, flyers: 3 };
-function frLibros(nivel, conClave){
-  const n = FR_LIBROS_N[nivel];
-  if (!n) return '';
-  const libro = (suf, em, txt) =>
-    // se abre en una pestana en vez de descargarse: el libro del alumno
-    // pesa 24 MB y casi siempre lo que se quiere es mirarlo o imprimirlo
-    `<a class="btn" target="_blank" rel="noopener"
-        href="nis-fun/book-builder/FunForNordic${n}-FR-${suf}.pdf"
-        style="background:#fff;border:1px solid var(--line);color:var(--ink);text-decoration:none">${em} ${txt}</a>`;
-  return libro('SB', '\u{1F4D8}', "Livre de l'\u00e9l\u00e8ve")
-       + libro('WB', '\u{1F4DD}', "Cahier d'exercices")
-       + (conClave ? libro('TeachersKey', '\u{1F511}', 'Corrig\u00e9 du professeur') : '');
-}
 
 function funFrCursoBody(nivel){
   const c = FUN_FR[nivel] || FUN_FR.starters;
@@ -466,7 +488,7 @@ function funFrCursoBody(nivel){
     <a class="btn" href="${url}" target="_blank" rel="noopener" style="background:${c.color};text-decoration:none">${c.em} Abrir en pantalla completa \u2197</a>
   </div>
   <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px">
-    <span class="muted" style="font-size:.85rem">Para imprimir:</span>${frLibros(nivel, true)}
+    <span class="muted" style="font-size:.85rem">Para imprimir:</span>${funLibros(nivel, 'fr', true)}
   </div>
   <iframe src="${url}" title="${esc(c.curso)}" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#fff"></iframe>`;
 }
@@ -493,9 +515,9 @@ async function funFrBody(render){
       <div class="muted" style="font-size:.88rem;margin-bottom:12px">Los mismos tres libros de cada nivel que en
         ingl\u00e9s, con la misma maqueta y los mismos dibujos. Salen del mismo contenido que el curso en pantalla,
         as\u00ed que dicen exactamente lo mismo.</div>
-      ${['starters','movers','flyers'].map(n => `<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:10px">
-        <span style="min-width:150px;font-weight:600;color:${FUN_FR[n].color}">${FUN_FR[n].em} ${FUN_FR[n].curso}</span>
-        ${frLibros(n, true)}</div>`).join('')}
+      ${['starters','movers','flyers'].map(n => `<div style="margin-bottom:14px">
+        <div style="font-weight:600;margin-bottom:6px;color:${FUN_FR[n].color}">${FUN_FR[n].em} ${FUN_FR[n].curso}</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">${funLibros(n, 'fr', true)}</div></div>`).join('')}
     </div>
     <div class="card" style="margin-top:16px">
       <h2 style="margin:0 0 4px;color:var(--blue-d)">\u{1F4CA} C\u00f3mo se est\u00e1 usando</h2>
@@ -4234,6 +4256,10 @@ function studentStage(stage){
         <a href="${_withBack('nis-fun/engine/?level=movers','classes_primary')}" target="_blank" rel="noopener" class="btn" style="background:#2f9268;color:#fff;text-decoration:none">🐺 A1 · Movers</a>
         <a href="${_withBack('nis-fun/engine/?level=flyers','classes_primary')}" target="_blank" rel="noopener" class="btn" style="background:#3b6fb5;color:#fff;text-decoration:none">🦅 A2 · Flyers</a>
       </div>
+      <div class="muted" style="font-size:.85rem;margin:14px 0 6px">📚 Your books to print:</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">${
+        ['starters','movers','flyers'].map(n => funLibros(n, 'en', false)).join('')
+      }</div>
     </div>` : '';
   $('#main').innerHTML=`${back}<h1>${m.emoji} ${m.title}</h1>
     <p class="muted" style="margin-top:-6px">${m.desc}</p>
@@ -4257,7 +4283,7 @@ function studentStage(stage){
       <div style="display:flex;gap:10px;flex-wrap:wrap">${botones}</div>
       <div class="muted" style="font-size:.85rem;margin:14px 0 6px">\u{1F4DA} Tes livres \u00e0 imprimer :</div>
       <div style="display:flex;gap:8px;flex-wrap:wrap">${
-        ['starters','movers','flyers'].filter(n => (idx[n]||0) > 0).map(n => frLibros(n, false)).join('')
+        ['starters','movers','flyers'].filter(n => (idx[n]||0) > 0).map(n => funLibros(n, 'fr', false)).join('')
       }</div></div>`;
   });
 }
