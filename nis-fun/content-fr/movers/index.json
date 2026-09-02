@@ -73,9 +73,19 @@
    "topic": "les jours de la semaine"
   },
   {
+   "n": 18,
+   "title": "Habillé pour l'hiver",
+   "topic": "les vêtements et le temps"
+  },
+  {
    "n": 19,
    "title": "Le bus pour l'école",
    "topic": "transport"
+  },
+  {
+   "n": 20,
+   "title": "Dans la ville",
+   "topic": "lieux"
   },
   {
    "n": 21,
@@ -88,9 +98,19 @@
    "topic": "décrire les personnes"
   },
   {
+   "n": 23,
+   "title": "Le village de mes grands-parents",
+   "topic": "la campagne"
+  },
+  {
    "n": 24,
    "title": "Aider à la maison",
    "topic": "tâches ménagères"
+  },
+  {
+   "n": 25,
+   "title": "Je suis malade !",
+   "topic": "santé"
   },
   {
    "n": 26,
@@ -136,6 +156,11 @@
    "n": 41,
    "title": "Dans la jungle",
    "topic": "animaux sauvages"
+  },
+  {
+   "n": 43,
+   "title": "Le jeu du trésor",
+   "topic": "indications"
   },
   {
    "n": 45,
