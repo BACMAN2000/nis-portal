@@ -13,6 +13,21 @@
  ],
  "units": [
   {
+   "n": 3,
+   "title": "Hier à la fête foraine",
+   "topic": "le passé composé"
+  },
+  {
+   "n": 4,
+   "title": "Mon matin chargé",
+   "topic": "la routine du matin"
+  },
+  {
+   "n": 5,
+   "title": "Les vêtements de la semaine",
+   "topic": "vêtements"
+  },
+  {
    "n": 6,
    "title": "La nourriture que j'adore",
    "topic": "nourriture"
@@ -21,6 +36,16 @@
    "n": 8,
    "title": "Ma maison, ma chambre",
    "topic": "maison"
+  },
+  {
+   "n": 10,
+   "title": "Une journée à la ferme",
+   "topic": "animaux de la ferme"
+  },
+  {
+   "n": 13,
+   "title": "Les règles de la classe",
+   "topic": "devoir / ne pas devoir"
   },
   {
    "n": 15,
@@ -36,6 +61,11 @@
    "n": 22,
    "title": "Les gens que je connais",
    "topic": "décrire les personnes"
+  },
+  {
+   "n": 24,
+   "title": "Aider à la maison",
+   "topic": "tâches ménagères"
   },
   {
    "n": 27,
