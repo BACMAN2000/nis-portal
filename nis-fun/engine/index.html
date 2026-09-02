@@ -782,10 +782,10 @@ async function j(path){
 /* ---------------- PORTADA: los 3 niveles ---------------- */
 async function levels(){
   const data = await j(CDIR + '/levels.json');
-  document.title = 'Fun for Nordic';
+  document.title = T('Fun for Nordic', 'Cap sur le français');
   app.innerHTML = `
     ${PORTAL ? `<p class="crumb" style="margin:.6rem 0 0"><a href="${PORTAL}">‹ ${T('Portal','Portail')}</a></p>` : ''}
-    <h1 style="font-size:2.2rem;margin:.6rem 0 .2rem">Fun for Nordic</h1>
+    <h1 style="font-size:2.2rem;margin:.6rem 0 .2rem">${T('Fun for Nordic', 'Cap sur le français')}</h1>
     <p style="color:var(--soft);margin:0 0 1.4rem">${T("Cambridge Young Learners", "Français · niveaux A1-A2")} · Nordic International School</p>
     <div class="campus-banner"><img src="../assets/scenes/main-building.jpg?v=${ART_V}" alt="${T('Nordic campus','Le campus Nordic')}"></div>
     <div class="lvcards">${data.levels.map(l=>`
@@ -962,7 +962,7 @@ async function hub(){
   }));
 
   SCREENS.montar(app, pantallas, {
-    arriba: { href: Q('?'), texto: 'Fun for Nordic' },
+    arriba: { href: Q('?'), texto: T('Fun for Nordic', 'Cap sur le français') },
     portal: PORTAL,
     inicio: introVista ? 3 : 0,
   });
