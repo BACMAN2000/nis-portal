@@ -671,6 +671,10 @@ async function renderAdmin(tab='users'){
     ]},
     {group:'Enseñanza', icon:'🏫', items:[
       {key:'classes',label:'🏫 Classes'},
+      // French vivia SOLO en el hub del alumno, y el admin nunca pasa por ese
+      // hub (route() lo manda a renderAdmin): la materia entera quedaba sin
+      // puerta de entrada, aunque sus candados si estuvieran en 🔐 Accesos.
+      {key:'french',label:'🇫🇷 French'},
       {key:'scope',label:'📚 Scope & Sequence'},
       // Los tres cursos de primaria: son las clases de G1–G5, asi que van aqui
       // y no en Cambridge, aunque preparen los examenes YLE.
@@ -709,6 +713,7 @@ async function renderAdmin(tab='users'){
   if(tab==='livequiz') return $('#main').innerHTML = liveQuizBody();
   if(tab==='games') return $('#main').innerHTML = gamesLabBody();
   if(tab==='classes') return studentClasses();
+  if(tab==='french') return studentSubject('french');
   if(tab==='library') return studentLibrary();
   if(tab==='phonics') return $('#main').innerHTML = phonicsPanel();
   if(tab==='coach') return $('#main').innerHTML = coachPanel();
@@ -2429,6 +2434,7 @@ async function renderTeacher(tab){
   const acc = state.teacherAccess || await loadTeacherAccess();
   const _tn = state.teacherNodes||{has:false,set:new Set()};
   const _canClasses = !_tn.has || _tn.set.has('english.classes') || [..._tn.set].some(k=>k.indexOf('english.classes.')===0);
+  const _canFrench  = !_tn.has || [..._tn.set].some(k=>k==='french' || k.indexOf('french.')===0);
 
   /* Los mismos grupos que ve el admin, para que los dos paneles se lean
      igual. Un grupo que se queda sin pestanas (porque el profesor no tiene
@@ -2448,6 +2454,8 @@ async function renderTeacher(tab){
   }
   if(acc.can_results||acc.can_students) seguimiento.push({key:'honesty',label:'🛡️ Honestidad'});
   if(_canClasses) ensenanza.unshift({key:'classes',label:'🏫 Classes'});
+  // French va pegado a Classes: es la otra materia, no un extra del final.
+  if(_canFrench) ensenanza.splice(_canClasses?1:0, 0, {key:'french',label:'🇫🇷 French'});
   if(teacherAllowedGrades().length) ensenanza.push({key:'unitaccess',label:'📚 Activar unidades'});
   ensenanza.push({key:'scope',label:'📚 Scope & Sequence'});
   /* Los tres cursos de primaria (Fun for Nordic). Van sin candado, como Little
@@ -2497,6 +2505,7 @@ async function renderTeacher(tab){
   if(active==='practice') return practicePanel(teacherAllowedGrades());
   if(active==='unitaccess') return unitAccessPanel(teacherAllowedGrades());
   if(active==='classes') return studentClasses();
+  if(active==='french') return studentSubject('french');
   if(active==='phonics'){ $('#main').innerHTML = phonicsPanel(); return; }
   if(active==='coach'){ $('#main').innerHTML = coachPanel(); return; }
   // Estas tres estaban en el menu pero sin handler: el profesor las clicaba y
@@ -3379,7 +3388,7 @@ function studentSubject(key){
     // Dos vías distintas y no mezclables: Classes va POR GRADO (el temario que
     // se está dando) y CEFR va POR NIVEL del Marco (A1–C2, entrenamiento libre).
     const _cefrOn = nodeVisible('french.crosswords') || nodeVisible('french.wordsearch');
-    $('#main').innerHTML = `${_backBtn("window._nav('home')",'Inicio')}<h1>🇫🇷 French</h1>
+    $('#main').innerHTML = `${_isStudent()?_backBtn("window._nav('home')",'Inicio'):''}<h1>🇫🇷 French</h1>
       <p class="muted" style="margin-top:-6px">El material de clase va por grado; los juegos de vocabulario, por nivel del Marco Común Europeo.</p>
       <div class="grid cols-2" style="margin-top:12px">
         ${nodeVisible('french.classes') ? _hubCard('🏫','Classes','Le matériel de chaque grade : les jeux de l’unité, semaine par semaine.',"window._nav('fr_classes')") : _lockedCard('🏫','Classes','Material de clase de francés por grado.')}
@@ -3394,7 +3403,7 @@ function studentSubject(key){
     if(a.node && !nodeVisible(a.node)) return _lockedCard(a.emoji,a.title,a.desc);
     return _hubCard(a.emoji,a.title,a.desc,`window._nav('${a.nav}')`);
   }).join('');
-  $('#main').innerHTML = `${_backBtn("window._nav('home')",'Home')}<h1>${title}</h1>
+  $('#main').innerHTML = `${_isStudent()?_backBtn("window._nav('home')",'Home'):''}<h1>${title}</h1>
     <p class="muted" style="margin-top:-6px">${isEn?'Your English areas.':'Próximamente — iremos habilitando el francés poco a poco.'}</p>
     <div class="grid cols-3" style="margin-top:12px">${cards}</div>`;
 }
@@ -3882,8 +3891,12 @@ window._nav=(k)=>{
   _navRender(k);
 };
 window.addEventListener('hashchange',()=>{
-  if(!_isStudent()) return;                                  // admin/teacher no usan rutas por hash
   const k=(location.hash||'').replace(/^#/,'');
+  // Admin y profesor navegan por el menu lateral; el hash solo les sirve para
+  // moverse DENTRO de una vista de contenido (Classes, French...). Si la ruta
+  // no existe no se toca nada: mandarlos al hub del alumno les borraria el
+  // panel que estan mirando.
+  if(!_isStudent()){ _navRender(k); return; }
   if(!_navRender(k)) studentHub();
 });
 /* Enlaces que SALEN del portal (juegos, hubs sueltos): llevan ?back=./#ruta
