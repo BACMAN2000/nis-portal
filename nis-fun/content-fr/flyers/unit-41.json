@@ -270,8 +270,8 @@
      "nombre": "Adventures & Experiences"
     },
     "destreza": "Writing",
-    "puede": "Writing Part 3: 20–25-word picture story (Flyers); classroom pieces 100–150w.",
-    "clase": "Flyers-style: 20-25-word picture story (Writing Part 3)",
+    "puede": "Écrire une histoire en images de 20 à 25 mots ; textes de classe de 100 à 150 mots.",
+    "clase": "Type examen : histoire en images de 20 à 25 mots (production écrite)",
     "examen_parte": {
      "paper": "Reading & Writing",
      "part": 7
@@ -290,7 +290,7 @@
       ],
       "word": "",
       "hint": "Diego / à la fête foraine",
-      "model": "One morning Diego is at the funfair."
+      "model": "Un matin Diego est à la fête foraine."
      },
      {
       "n": 2,
@@ -307,7 +307,7 @@
       ],
       "word": "",
       "hint": "Diego / rencontrer / Maya",
-      "model": "Then Diego meets Maya at the maze."
+      "model": "Ensuite Diego rencontre Maya au labyrinthe."
      },
      {
       "n": 3,
@@ -324,15 +324,15 @@
       ],
       "word": "",
       "hint": "au belvédère / content",
-      "model": "At the viewpoint they are very happy together."
+      "model": "Au belvédère ils sont très contents ensemble."
      }
     ],
     "min_words": 20,
     "max_words": 25,
-    "model": "One morning Diego is at the funfair. Then Diego meets Maya at the maze. At the viewpoint they are very happy together.",
+    "model": "Un matin Diego est à la fête foraine. Ensuite Diego rencontre Maya au labyrinthe. Au belvédère ils sont très contents ensemble.",
     "words": [],
     "support": {
-     "grammar": "comparatives + than (deep review)",
+     "grammar": "les comparatifs + que (bilan)",
      "words": [
       "moderne",
       "ancien",
@@ -361,8 +361,8 @@
      "nombre": "Adventures & Experiences"
     },
     "destreza": "Listening",
-    "puede": "Understand dialogues and short stories (Flyers parts 1–5); infer mood from intonation.",
-    "clase": "Flyers-style: listen and tick the right picture",
+    "puede": "Comprendre des dialogues et des histoires courtes ; deviner l'humeur d'après l'intonation.",
+    "clase": "Type examen : écouter et cocher la bonne image",
     "examen_parte": {
      "paper": "Listening",
      "part": 4
@@ -534,8 +534,8 @@
      "nombre": "Adventures & Experiences"
     },
     "destreza": "Listening",
-    "puede": "Understand dialogues and short stories (Flyers parts 1–5); infer mood from intonation.",
-    "clase": "Flyers-style: listen and label the people in the picture",
+    "puede": "Comprendre des dialogues et des histoires courtes ; deviner l'humeur d'après l'intonation.",
+    "clase": "Type examen : écouter et écrire le prénom de chaque personne de l'image",
     "examen_parte": {
      "paper": "Listening",
      "part": 1
@@ -544,41 +544,41 @@
    "audio": "flyers/u41-g.mp3",
    "data": {
     "scene": "mirador",
-    "place": "the viewpoint",
+    "place": "le belvédère",
     "people": [
      {
       "slug": "diego",
       "name": "Diego",
       "clue": "le garçon au t-shirt rouge avec un microphone",
-      "action": "is asking questions with his microphone",
+      "action": "pose des questions avec son microphone",
       "pose": 7
      },
      {
       "slug": "maya",
       "name": "Maya",
       "clue": "la fille au t-shirt vert avec une loupe",
-      "action": "is looking at something very small",
+      "action": "observe quelque chose de tout petit",
       "pose": 7
      },
      {
       "slug": "bruno",
       "name": "Bruno",
       "clue": "le garçon aux cheveux bruns bouclés et au t-shirt vert",
-      "action": "is running after the ball",
+      "action": "court après le ballon",
       "pose": 7
      },
      {
       "slug": "aiko",
       "name": "Aiko",
       "clue": "la fille aux longs cheveux noirs raides et au t-shirt orange",
-      "action": "is reading a book",
+      "action": "lit un livre",
       "pose": 7
      },
      {
       "slug": "lia",
       "name": "Lia",
       "clue": "la fille aux nattes noires et au t-shirt violet",
-      "action": "is jumping with a skipping rope",
+      "action": "saute à la corde",
       "pose": 7
      }
     ],

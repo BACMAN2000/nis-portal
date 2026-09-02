@@ -270,8 +270,8 @@
      "nombre": "Personal Identity"
     },
     "destreza": "Writing",
-    "puede": "Writing Part 3: 20–25-word picture story (Flyers); classroom pieces 100–150w.",
-    "clase": "Flyers-style: 20-25-word picture story (Writing Part 3)",
+    "puede": "Écrire une histoire en images de 20 à 25 mots ; textes de classe de 100 à 150 mots.",
+    "clase": "Type examen : histoire en images de 20 à 25 mots (production écrite)",
     "examen_parte": {
      "paper": "Reading & Writing",
      "part": 7
@@ -290,7 +290,7 @@
       ],
       "word": "",
       "hint": "Diego / dans la cour de l'école",
-      "model": "One morning Diego is at the school courtyard."
+      "model": "Un matin Diego est dans la cour de l'école."
      },
      {
       "n": 2,
@@ -307,7 +307,7 @@
       ],
       "word": "",
       "hint": "Diego / rencontrer / Maya",
-      "model": "Then Diego meets Maya at the school entrance."
+      "model": "Ensuite Diego rencontre Maya à l'entrée de l'école."
      },
      {
       "n": 3,
@@ -324,15 +324,15 @@
       ],
       "word": "",
       "hint": "dans la classe / content",
-      "model": "In the classroom they are very happy together."
+      "model": "Dans la classe ils sont très contents ensemble."
      }
     ],
     "min_words": 20,
     "max_words": 25,
-    "model": "One morning Diego is at the school courtyard. Then Diego meets Maya at the school entrance. In the classroom they are very happy together.",
+    "model": "Un matin Diego est dans la cour de l'école. Ensuite Diego rencontre Maya à l'entrée de l'école. Dans la classe ils sont très contents ensemble.",
     "words": [],
     "support": {
-     "grammar": "telephone phrases + can / could",
+     "grammar": "les formules au téléphone + pouvoir",
      "words": [
       "appel",
       "message",
@@ -361,8 +361,8 @@
      "nombre": "Personal Identity"
     },
     "destreza": "Listening",
-    "puede": "Understand dialogues and short stories (Flyers parts 1–5); infer mood from intonation.",
-    "clase": "Flyers-style: listen and label the people in the picture",
+    "puede": "Comprendre des dialogues et des histoires courtes ; deviner l'humeur d'après l'intonation.",
+    "clase": "Type examen : écouter et écrire le prénom de chaque personne de l'image",
     "examen_parte": {
      "paper": "Listening",
      "part": 1
@@ -371,41 +371,41 @@
    "audio": "flyers/u42-g.mp3",
    "data": {
     "scene": "library",
-    "place": "the library",
+    "place": "la bibliothèque",
     "people": [
      {
       "slug": "kili",
       "name": "Kili",
       "clue": "le grand oiseau noir avec un collier blanc",
-      "action": "is carrying a letter",
+      "action": "porte une lettre",
       "pose": 3
      },
      {
       "slug": "diego",
       "name": "Diego",
       "clue": "le garçon au t-shirt rouge avec un microphone",
-      "action": "is asking questions with his microphone",
+      "action": "pose des questions avec son microphone",
       "pose": 7
      },
      {
       "slug": "bruno",
       "name": "Bruno",
       "clue": "le garçon aux cheveux bruns bouclés et au t-shirt vert",
-      "action": "is running after the ball",
+      "action": "court après le ballon",
       "pose": 7
      },
      {
       "slug": "tino",
       "name": "Tino",
       "clue": "le garçon aux cheveux très courts et au t-shirt blanc et vert",
-      "action": "is playing hockey",
+      "action": "joue au hockey",
       "pose": 7
      },
      {
       "slug": "vega",
       "name": "Mr Vega",
       "clue": "l'homme à la chemise bleue",
-      "action": "is showing the way to the sports centre",
+      "action": "montre le chemin du centre sportif",
       "figura": "father"
      }
     ],

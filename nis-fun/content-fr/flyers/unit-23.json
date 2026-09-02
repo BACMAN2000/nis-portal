@@ -247,8 +247,8 @@
      "nombre": "The Natural World"
     },
     "destreza": "Listening",
-    "puede": "Understand dialogues and short stories (Flyers parts 1–5); infer mood from intonation.",
-    "clase": "Flyers-style: listen and tick the right picture",
+    "puede": "Comprendre des dialogues et des histoires courtes ; deviner l'humeur d'après l'intonation.",
+    "clase": "Type examen : écouter et cocher la bonne image",
     "examen_parte": {
      "paper": "Listening",
      "part": 4
@@ -374,8 +374,8 @@
      "nombre": "The Natural World"
     },
     "destreza": "Listening",
-    "puede": "Understand dialogues and short stories (Flyers parts 1–5); infer mood from intonation.",
-    "clase": "Flyers-style: listen and match each person to a picture",
+    "puede": "Comprendre des dialogues et des histoires courtes ; deviner l'humeur d'après l'intonation.",
+    "clase": "Type examen : écouter et associer chaque personne à une image",
     "examen_parte": {
      "paper": "Listening",
      "part": 3
@@ -480,8 +480,8 @@
      "nombre": "The Natural World"
     },
     "destreza": "Writing",
-    "puede": "Writing Part 3: 20–25-word picture story (Flyers); classroom pieces 100–150w.",
-    "clase": "Flyers-style: 20-25-word picture story (Writing Part 3)",
+    "puede": "Écrire une histoire en images de 20 à 25 mots ; textes de classe de 100 à 150 mots.",
+    "clase": "Type examen : histoire en images de 20 à 25 mots (production écrite)",
     "examen_parte": {
      "paper": "Reading & Writing",
      "part": 7
@@ -500,7 +500,7 @@
       ],
       "word": "planète",
       "hint": "Oliver / apporte / une planète",
-      "model": "Oliver brings a planet at the school garden."
+      "model": "Oliver apporte une planète au jardin de l'école."
      },
      {
       "n": 2,
@@ -517,7 +517,7 @@
       ],
       "word": "terre",
       "hint": "Maya / apporter / une terre",
-      "model": "Then Maya brings an earth."
+      "model": "Ensuite Maya apporte une terre."
      },
      {
       "n": 3,
@@ -534,19 +534,19 @@
       ],
       "word": "vaisseau spatial",
       "hint": "maintenant / un vaisseau spatial / content",
-      "model": "Now they have got a spaceship too, and both are happy."
+      "model": "Maintenant ils ont aussi un vaisseau spatial, et tous les deux sont contents."
      }
     ],
     "min_words": 20,
     "max_words": 25,
-    "model": "Oliver brings a planet at the school garden. Then Maya brings an earth. Now they have got a spaceship too, and both are happy.",
+    "model": "Oliver apporte une planète au jardin de l'école. Ensuite Maya apporte une terre. Maintenant ils ont aussi un vaisseau spatial, et tous les deux sont contents.",
     "words": [
      "planète",
      "terre",
      "vaisseau spatial"
     ],
     "support": {
-     "grammar": "What + adjective + noun! (exclamations)",
+     "grammar": "Quel + adjectif + nom ! (l'exclamation)",
      "words": [
       "planète",
       "lune",
@@ -575,8 +575,8 @@
      "nombre": "The Natural World"
     },
     "destreza": "Listening",
-    "puede": "Understand dialogues and short stories (Flyers parts 1–5); infer mood from intonation.",
-    "clase": "Flyers-style: listen and label the people in the picture",
+    "puede": "Comprendre des dialogues et des histoires courtes ; deviner l'humeur d'après l'intonation.",
+    "clase": "Type examen : écouter et écrire le prénom de chaque personne de l'image",
     "examen_parte": {
      "paper": "Listening",
      "part": 1
@@ -585,41 +585,41 @@
    "audio": "flyers/u23-g.mp3",
    "data": {
     "scene": "labyrinth",
-    "place": "the maze",
+    "place": "le labyrinthe",
     "people": [
      {
       "slug": "oliver",
       "name": "Oliver",
       "clue": "le garçon aux cheveux roux et au t-shirt jaune",
-      "action": "is singing",
+      "action": "chante",
       "pose": 7
      },
      {
       "slug": "maya",
       "name": "Maya",
       "clue": "la fille au t-shirt vert avec une loupe",
-      "action": "is looking at something very small",
+      "action": "observe quelque chose de tout petit",
       "pose": 7
      },
      {
       "slug": "diego",
       "name": "Diego",
       "clue": "le garçon au t-shirt rouge avec un microphone",
-      "action": "is asking questions with his microphone",
+      "action": "pose des questions avec son microphone",
       "pose": 7
      },
      {
       "slug": "lia",
       "name": "Lia",
       "clue": "la fille aux nattes noires et au t-shirt violet",
-      "action": "is jumping with a skipping rope",
+      "action": "saute à la corde",
       "pose": 7
      },
      {
       "slug": "aiko",
       "name": "Aiko",
       "clue": "la fille aux longs cheveux noirs raides et au t-shirt orange",
-      "action": "is reading a book",
+      "action": "lit un livre",
       "pose": 7
      }
     ],

@@ -648,7 +648,7 @@ if(/\.github\.io$/i.test(location.hostname)){
 <script src="backend.js?v=1"></script>
 <main id="app"><div class="app-loading" role="status" aria-live="polite">
   <div><span aria-hidden="true"></span><strong>Preparing your course…</strong>
-    <small>Loading activities and illustrations.</small></div></div></main>
+    <small id="splash-sub">Loading activities and illustrations.</small></div></div></main>
 <div id="cele"><div class="box"><img id="cele-img" alt=""><h2 id="cele-h2">Well done!</h2><p id="cele-msg"></p><button onclick="document.getElementById('cele').classList.remove('on')">OK</button></div></div>
 <script>
 const qs = new URLSearchParams(location.search);
@@ -672,6 +672,12 @@ window.LANG = LANG;   // backend.js lo necesita para separar las entregas por id
 const slugArte = k => String((window.VOCAB_ART && VOCAB_ART.base(k)) || k)
   .toLowerCase().replace(/'/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 if (LANG === 'fr') { const h = document.getElementById('cele-h2'); if (h) h.textContent = 'Bravo !'; }
+if (LANG === 'fr') {
+  const sp = document.getElementById('splash-sub');
+  if (sp) sp.textContent = 'Chargement des activités et des illustrations.';
+  const t = document.querySelector('#splash h2, .splash h2, #splash strong');
+  if (t && /Preparing/i.test(t.textContent)) t.textContent = 'Préparation du cours…';
+}
 const app = document.getElementById('app');
 const COLORS = { starters:'#d97d0d', movers:'#2f9268', flyers:'#3b6fb5' };
 // Escapa el texto que va dentro de un atributo (las palabras del wordlist
@@ -984,16 +990,16 @@ async function pintaCuentos(el, nivel){
   if (!el) return;
   let libros = [];
   try {
-    const r = await fetch('../readers/data/index.json', {cache: 'no-cache'});
+    const r = await fetch(`../readers/data${LANG === 'fr' ? '-fr' : ''}/index.json`, {cache: 'no-cache'});
     if (r.ok) libros = (await r.json()).libros || [];
   } catch(e){}
   const mios = libros.filter(l => (CUENTOS_DE[nivel] || []).includes(l.grado));
   if (!mios.length){
-    el.innerHTML = `<p class="scr-pie">The stories for this level are on their way.</p>`;
+    el.innerHTML = `<p class="scr-pie">${T("The stories for this level are on their way.","Les histoires de ce niveau arrivent bientôt.")}</p>`;
     return;
   }
   el.innerHTML = `<div class="cuentos">${mios.map(l => `
-    <a class="cuento" href="../readers/?id=${esc(l.id)}">
+    <a class="cuento" href="../readers/?id=${esc(l.id)}${LANG === 'fr' ? '&lang=fr' : ''}">
       <img src="../readers/${esc(l.portada)}" alt="" onerror="this.remove()">
       <b>${esc(l.titulo)}</b>
       <small>${esc(l.objetivo)}</small>
@@ -1197,7 +1203,7 @@ async function unit(){
             </div>
             <div class="sp-bar"><div class="sp-fill"></div></div>
             <div class="sp-pie"><span class="sp-parte"></span><span class="sp-reloj"></span></div>
-            <p class="sp-tip">Tap any sentence to hear that part again.</p>
+            <p class="sp-tip">${T("Tap any sentence to hear that part again.","Touche une phrase pour la réécouter.")}</p>
           </div>
         </div>
       </div>`,
@@ -2134,7 +2140,7 @@ picture_story(act, el){
         aria-label="Your story"></textarea>
       <div class="vis-contador">0 words</div>
     </div>
-    <div class="checkrow"><button class="chk">I have finished</button>
+    <div class="checkrow"><button class="chk">${T("I have finished","J'ai fini")}</button>
       <button class="reveal" type="button">👁 See one possible story</button>
       <span class="score"></span></div>`;
 

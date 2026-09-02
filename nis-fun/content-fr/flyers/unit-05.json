@@ -271,8 +271,8 @@
      "nombre": "The Natural World"
     },
     "destreza": "Listening",
-    "puede": "Understand dialogues and short stories (Flyers parts 1–5); infer mood from intonation.",
-    "clase": "Flyers-style: listen and tick the right picture",
+    "puede": "Comprendre des dialogues et des histoires courtes ; deviner l'humeur d'après l'intonation.",
+    "clase": "Type examen : écouter et cocher la bonne image",
     "examen_parte": {
      "paper": "Listening",
      "part": 4
@@ -398,8 +398,8 @@
      "nombre": "The Natural World"
     },
     "destreza": "Listening",
-    "puede": "Understand dialogues and short stories (Flyers parts 1–5); infer mood from intonation.",
-    "clase": "Flyers-style: listen and match each person to a picture",
+    "puede": "Comprendre des dialogues et des histoires courtes ; deviner l'humeur d'après l'intonation.",
+    "clase": "Type examen : écouter et associer chaque personne à une image",
     "examen_parte": {
      "paper": "Listening",
      "part": 3
@@ -504,8 +504,8 @@
      "nombre": "The Natural World"
     },
     "destreza": "Writing",
-    "puede": "Writing Part 3: 20–25-word picture story (Flyers); classroom pieces 100–150w.",
-    "clase": "Flyers-style: 20-25-word picture story (Writing Part 3)",
+    "puede": "Écrire une histoire en images de 20 à 25 mots ; textes de classe de 100 à 150 mots.",
+    "clase": "Type examen : histoire en images de 20 à 25 mots (production écrite)",
     "examen_parte": {
      "paper": "Reading & Writing",
      "part": 7
@@ -524,7 +524,7 @@
       ],
       "word": "art",
       "hint": "Ingrid / apporte / des arts plastiques",
-      "model": "Ingrid brings an art at the school garden."
+      "model": "Ingrid apporte des arts plastiques au jardin de l'école."
      },
      {
       "n": 2,
@@ -541,7 +541,7 @@
       ],
       "word": "maths",
       "hint": "Diego / apporter / des maths",
-      "model": "Then Diego brings some maths."
+      "model": "Ensuite Diego apporte des maths."
      },
      {
       "n": 3,
@@ -558,19 +558,19 @@
       ],
       "word": "sport",
       "hint": "maintenant / un sport / content",
-      "model": "Now they have got a sport too, and both are happy."
+      "model": "Maintenant ils ont aussi un sport, et tous les deux sont contents."
      }
     ],
     "min_words": 20,
     "max_words": 25,
-    "model": "Ingrid brings an art at the school garden. Then Diego brings some maths. Now they have got a sport too, and both are happy.",
+    "model": "Ingrid apporte des arts plastiques au jardin de l'école. Ensuite Diego apporte des maths. Maintenant ils ont aussi un sport, et tous les deux sont contents.",
     "words": [
      "art",
      "maths",
      "sport"
     ],
     "support": {
-     "grammar": "present simple + school subjects",
+     "grammar": "le présent + les matières",
      "words": [
       "maths",
       "sciences",
@@ -599,8 +599,8 @@
      "nombre": "The Natural World"
     },
     "destreza": "Listening",
-    "puede": "Understand dialogues and short stories (Flyers parts 1–5); infer mood from intonation.",
-    "clase": "Flyers-style: listen and label the people in the picture",
+    "puede": "Comprendre des dialogues et des histoires courtes ; deviner l'humeur d'après l'intonation.",
+    "clase": "Type examen : écouter et écrire le prénom de chaque personne de l'image",
     "examen_parte": {
      "paper": "Listening",
      "part": 1
@@ -609,41 +609,41 @@
    "audio": "flyers/u05-g.mp3",
    "data": {
     "scene": "mirador",
-    "place": "the viewpoint",
+    "place": "le belvédère",
     "people": [
      {
       "slug": "ingrid",
       "name": "Ingrid",
       "clue": "la fille aux cheveux blonds et à la veste bleu foncé",
-      "action": "is reading the plan for the day",
+      "action": "lit le programme de la journée",
       "pose": 7
      },
      {
       "slug": "diego",
       "name": "Diego",
       "clue": "le garçon au t-shirt rouge avec un microphone",
-      "action": "is asking questions with his microphone",
+      "action": "pose des questions avec son microphone",
       "pose": 7
      },
      {
       "slug": "kili",
       "name": "Kili",
       "clue": "le grand oiseau noir avec un collier blanc",
-      "action": "is carrying a letter",
+      "action": "porte une lettre",
       "pose": 3
      },
      {
       "slug": "bruno",
       "name": "Bruno",
       "clue": "le garçon aux cheveux bruns bouclés et au t-shirt vert",
-      "action": "is running after the ball",
+      "action": "court après le ballon",
       "pose": 7
      },
      {
       "slug": "samu",
       "name": "Samu",
       "clue": "le garçon aux cheveux blonds courts avec un sac à dos",
-      "action": "is waving",
+      "action": "fait signe",
       "pose": 7
      }
     ],

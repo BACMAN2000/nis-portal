@@ -247,8 +247,8 @@
      "nombre": "Everyday Life & Habits"
     },
     "destreza": "Listening",
-    "puede": "Understand dialogues and short stories (Flyers parts 1–5); infer mood from intonation.",
-    "clase": "Flyers-style: listen and tick the right picture",
+    "puede": "Comprendre des dialogues et des histoires courtes ; deviner l'humeur d'après l'intonation.",
+    "clase": "Type examen : écouter et cocher la bonne image",
     "examen_parte": {
      "paper": "Listening",
      "part": 4
@@ -374,8 +374,8 @@
      "nombre": "Everyday Life & Habits"
     },
     "destreza": "Listening",
-    "puede": "Understand dialogues and short stories (Flyers parts 1–5); infer mood from intonation.",
-    "clase": "Flyers-style: listen and match each person to a picture",
+    "puede": "Comprendre des dialogues et des histoires courtes ; deviner l'humeur d'après l'intonation.",
+    "clase": "Type examen : écouter et associer chaque personne à une image",
     "examen_parte": {
      "paper": "Listening",
      "part": 3
@@ -480,8 +480,8 @@
      "nombre": "Everyday Life & Habits"
     },
     "destreza": "Writing",
-    "puede": "Writing Part 3: 20–25-word picture story (Flyers); classroom pieces 100–150w.",
-    "clase": "Flyers-style: 20-25-word picture story (Writing Part 3)",
+    "puede": "Écrire une histoire en images de 20 à 25 mots ; textes de classe de 100 à 150 mots.",
+    "clase": "Type examen : histoire en images de 20 à 25 mots (production écrite)",
     "examen_parte": {
      "paper": "Reading & Writing",
      "part": 7
@@ -500,7 +500,7 @@
       ],
       "word": "miel",
       "hint": "Diego / prend / un miel",
-      "model": "Diego takes a honey in the main building."
+      "model": "Diego prend un miel dans le bâtiment principal."
      },
      {
       "n": 2,
@@ -517,7 +517,7 @@
       ],
       "word": "beurre",
       "hint": "Maya / apporter / un beurre",
-      "model": "Then Maya brings a butter."
+      "model": "Ensuite Maya apporte un beurre."
      },
      {
       "n": 3,
@@ -534,19 +534,19 @@
       ],
       "word": "goûter",
       "hint": "maintenant / un goûter / content",
-      "model": "Now they have got a snack too, and both are happy."
+      "model": "Maintenant ils ont aussi un goûter, et tous les deux sont contents."
      }
     ],
     "min_words": 20,
     "max_words": 25,
-    "model": "Diego takes a honey in the main building. Then Maya brings a butter. Now they have got a snack too, and both are happy.",
+    "model": "Diego prend un miel dans le bâtiment principal. Ensuite Maya apporte un beurre. Maintenant ils ont aussi un goûter, et tous les deux sont contents.",
     "words": [
      "miel",
      "beurre",
      "goûter"
     ],
     "support": {
-     "grammar": "countable / uncountable",
+     "grammar": "le partitif : du / de la / des",
      "words": [
       "beurre",
       "céréales",
@@ -575,8 +575,8 @@
      "nombre": "Everyday Life & Habits"
     },
     "destreza": "Listening",
-    "puede": "Understand dialogues and short stories (Flyers parts 1–5); infer mood from intonation.",
-    "clase": "Flyers-style: listen and label the people in the picture",
+    "puede": "Comprendre des dialogues et des histoires courtes ; deviner l'humeur d'après l'intonation.",
+    "clase": "Type examen : écouter et écrire le prénom de chaque personne de l'image",
     "examen_parte": {
      "paper": "Listening",
      "part": 1
@@ -585,41 +585,41 @@
    "audio": "flyers/u07-g.mp3",
    "data": {
     "scene": "picnic-garden",
-    "place": "the picnic garden",
+    "place": "le jardin du pique-nique",
     "people": [
      {
       "slug": "diego",
       "name": "Diego",
       "clue": "le garçon au t-shirt rouge avec un microphone",
-      "action": "is asking questions with his microphone",
+      "action": "pose des questions avec son microphone",
       "pose": 7
      },
      {
       "slug": "maya",
       "name": "Maya",
       "clue": "la fille au t-shirt vert avec une loupe",
-      "action": "is looking at something very small",
+      "action": "observe quelque chose de tout petit",
       "pose": 7
      },
      {
       "slug": "samu",
       "name": "Samu",
       "clue": "le garçon aux cheveux blonds courts avec un sac à dos",
-      "action": "is waving",
+      "action": "fait signe",
       "pose": 7
      },
      {
       "slug": "iris",
       "name": "Iris",
       "clue": "la fille à la queue-de-cheval rousse et aux taches de rousseur",
-      "action": "is drawing with chalk on the ground",
+      "action": "dessine à la craie par terre",
       "pose": 7
      },
      {
       "slug": "lia",
       "name": "Lia",
       "clue": "la fille aux nattes noires et au t-shirt violet",
-      "action": "is jumping with a skipping rope",
+      "action": "saute à la corde",
       "pose": 7
      }
     ],
