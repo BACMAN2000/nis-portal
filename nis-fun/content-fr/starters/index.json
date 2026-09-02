@@ -1,0 +1,21 @@
+{
+ "level": "starters",
+ "lang": "fr",
+ "name": "Fun for Nordic 1 · Français",
+ "cast": "Les Explorateurs du Phare",
+ "color": "#d97d0d",
+ "mascot": "pip",
+ "kids": [
+  "freya",
+  "nico",
+  "astrid",
+  "tomas"
+ ],
+ "units": [
+  {
+   "n": 1,
+   "title": "Les couleurs et les jouets",
+   "topic": "les jouets"
+  }
+ ]
+}
