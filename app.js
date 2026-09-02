@@ -639,9 +639,9 @@ function funYleBody(render){
    Lo unico que se separa de verdad es el audio (las voces) y las entregas,
    que llevan el idioma en la fila para no pisar las del curso ingles. */
 const FUN_FR = {
-  starters:{em:'\u{1F427}',curso:'Les Explorateurs', nivel:'Pr\u00e9-A1 \u00b7 d\u00e9butants', color:'#d97d0d',grados:'G1 \u00b7 G2',cast:'Les Explorateurs du Phare'},
-  movers:  {em:'\u{1F43A}',curso:'Les Aventuriers',  nivel:'A1 \u00b7 en route',      color:'#2f9268',grados:'G3 \u00b7 G4',cast:'Le Club du Fjord'},
-  flyers:  {em:'\u{1F985}',curso:'Les Navigateurs',  nivel:'A2 \u00b7 exploration',   color:'#3b6fb5',grados:'G5',    cast:"L'Exp\u00e9dition Aurore"},
+  starters:{em:'\u{1F427}',curso:'Cap sur le fran\u00e7ais 1', nivel:'Pr\u00e9-A1 \u00b7 d\u00e9butants', color:'#d97d0d',grados:'G1 \u00b7 G2',cast:'Les Explorateurs du Phare'},
+  movers:  {em:'\u{1F43A}',curso:'Cap sur le fran\u00e7ais 2', nivel:'A1 \u00b7 en route',      color:'#2f9268',grados:'G3 \u00b7 G4',cast:'Le Club du Fjord'},
+  flyers:  {em:'\u{1F985}',curso:'Cap sur le fran\u00e7ais 3', nivel:'A2 \u00b7 exploration',   color:'#3b6fb5',grados:'G5',    cast:"L'Exp\u00e9dition Aurore"},
 };
 let _FR_INDICE = null;          // cuantas unidades hay de verdad en cada nivel
 async function frIndice(){
@@ -663,7 +663,7 @@ function funFrCursoBody(nivel){
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
     <div class="muted" style="flex:1;min-width:220px"><b>${c.curso}</b> \u2014 ${c.nivel} (${c.grados} \u00b7 ${c.cast}).
       Mismo curso, mismos dibujos y mismas l\u00e1minas que la versi\u00f3n inglesa, con el texto y las voces en franc\u00e9s.
-      Lo que el alumno escriba y grabe aparece en <b>\u{1F1EB}\u{1F1F7} Fran\u00e7ais \u2192 M\u00e9tricas</b>.</div>
+      Lo que el alumno escriba y grabe aparece en <b>\u{1F1EB}\u{1F1F7} Cap sur le fran\u00e7ais \u2192 M\u00e9tricas</b>.</div>
     <a class="btn" href="${url}" target="_blank" rel="noopener" style="background:${c.color};text-decoration:none">${c.em} Abrir en pantalla completa \u2197</a>
   </div>
   <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px">
@@ -682,7 +682,7 @@ async function funFrBody(render){
       `${render}('${tab}')`);
   };
   const total = Object.values(idx).reduce((a,b)=>a+b,0);
-  return `<h1>\u{1F1EB}\u{1F1F7} Fran\u00e7ais \u2014 Fun for Nordic</h1>
+  return `<h1>\u{1F1EB}\u{1F1F7} Cap sur le fran\u00e7ais</h1>
     <p class="muted" style="margin-top:-6px">El curso de primaria en franc\u00e9s: el mismo motor, los mismos
       personajes y los mismos dibujos, con el texto adaptado y las voces grabadas en franc\u00e9s.
       Hoy hay <b>${total} de 150 unidades</b> listas; el resto aparece aqu\u00ed solo cuando est\u00e1 completo.</p>
@@ -708,7 +708,7 @@ async function funFrBody(render){
 /* Metricas del curso frances. Sale de v_fun_metricas y v_fun_unidades, que
    agrupan por idioma: aqui nunca se mezcla con lo que hacen en ingles. */
 async function funFrMetricas(){
-  $('#main').innerHTML = `<h1>\u{1F4CA} Fran\u00e7ais \u00b7 m\u00e9tricas</h1><p class="muted">Cargando\u2026</p>`;
+  $('#main').innerHTML = `<h1>\u{1F4CA} Cap sur le fran\u00e7ais \u00b7 m\u00e9tricas</h1><p class="muted">Cargando\u2026</p>`;
   const [alu, uds] = await Promise.all([
     sb.from('v_fun_metricas').select('*').eq('lang','fr').order('ultima',{ascending:false}),
     sb.from('v_fun_unidades').select('*').eq('lang','fr').order('unit',{ascending:true}),
@@ -742,7 +742,7 @@ async function funFrMetricas(){
       <td style="text-align:center">${r.entregas||0}</td>
       <td style="text-align:center">${min(r.segundos)}</td>
     </tr>`).join('');
-  $('#main').innerHTML = `<h1>\u{1F4CA} Fran\u00e7ais \u00b7 m\u00e9tricas</h1>
+  $('#main').innerHTML = `<h1>\u{1F4CA} Cap sur le fran\u00e7ais \u00b7 m\u00e9tricas</h1>
     <p class="muted" style="margin-top:-6px">Solo el curso franc\u00e9s. Las entregas llevan el idioma dentro,
       as\u00ed que lo de ingl\u00e9s no entra en estos n\u00fameros.</p>
     <div class="grid cols-3" style="margin-bottom:16px">
@@ -1039,7 +1039,7 @@ async function renderAdmin(tab='users'){
       {key:'funstarters',label:'🐧 Starters'},
       {key:'funmovers',label:'🐺 Movers'},
       {key:'funflyers',label:'🦅 Flyers'},
-      {key:'fr',label:'🇫🇷 Français'},
+      {key:'fr',label:'🇫🇷 Cap sur le français'},
       {key:'funaccess',label:'🔐 Unidades por grado'},
       {key:'materiales',label:'📄 Materiales de clase'},
       {key:'library',label:'📚 Library'},
@@ -2927,7 +2927,7 @@ async function renderTeacher(tab){
   ensenanza.push({key:'funstarters',label:'🐧 Starters'});
   ensenanza.push({key:'funmovers',label:'🐺 Movers'});
   ensenanza.push({key:'funflyers',label:'🦅 Flyers'});
-  ensenanza.push({key:'fr',label:'🇫🇷 Français'});
+  ensenanza.push({key:'fr',label:'🇫🇷 Cap sur le français'});
   if(teacherAllowedGrades().length) ensenanza.push({key:'funaccess',label:'🔐 Unidades por grado'});
   ensenanza.push({key:'littlereaders',label:'🧒 Little Readers'});
   examenes.push({key:'exams',label:'🎧 Exámenes'});
@@ -4558,7 +4558,7 @@ function studentStage(stage){
     }).join('');
     if (!botones) return;   // sin unidades listas no se ofrece nada
     caja.innerHTML = `<div class="card" style="margin-top:16px;border-top:5px solid #2f9268">
-      <h2 style="margin:0 0 4px;color:var(--blue-d)">🇫🇷 Fun for Nordic — Français</h2>
+      <h2 style="margin:0 0 4px;color:var(--blue-d)">🇫🇷 Cap sur le français</h2>
       <div class="muted" style="font-size:.9rem;margin-bottom:12px">Le même cours, en français : les mêmes
         personnages, les mêmes dessins et des voix françaises. Ouvre une unité et c'est parti !</div>
       <div style="display:flex;gap:10px;flex-wrap:wrap">${botones}</div>
