@@ -699,7 +699,8 @@ window.BANNER = (function () {
       const activar = film.muted;
       film.muted = !activar;
       sonido.setAttribute('aria-pressed', activar ? 'true' : 'false');
-      sonido.setAttribute('aria-label', activar ? 'Mute this video' : 'Play this video with sound');
+      sonido.setAttribute('aria-label', activar ? T('Mute this video','Couper le son de la vidéo')
+                                                : T('Play this video with sound','Lire la vidéo avec le son'));
       sonido.textContent = activar ? T('🔇 Mute','🔇 Couper le son') : T('🔊 Play with sound','🔊 Activer le son');
       if (activar) film.currentTime = 0;
       film.play().catch(()=>{});
