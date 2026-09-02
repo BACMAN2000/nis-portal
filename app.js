@@ -2230,8 +2230,37 @@ function _rdrChapterTable(id,book,en){
 
 const SCHOOL_YEAR_NOW=new Date().getFullYear();
 const _attYear=a=>{ try{ return new Date(a.submitted_at).getFullYear(); }catch(e){ return null; } };
-let readerFilter={grade:'',section:'',book:'all',year:SCHOOL_YEAR_NOW};
+/* Un salon lee UNA obra por TRIMESTRE. Por eso el filtro va Anio -> Trimestre
+   -> Grado -> Seccion: con esos cuatro la obra ya esta decidida (9.o en el 2.o
+   trimestre es "And Then There Were None" y nada mas), y no hay que elegirla a
+   mano. `term:null` = aun sin decidir; se rellena con el ultimo trimestre que
+   tenga lecturas asignadas. */
+const RDR_TERMS=[1,2,3];
+const _rdrTermLab=t=>t+'.º trimestre';
+let readerFilter={grade:'',section:'',term:null,year:SCHOOL_YEAR_NOW};
 const RDR_LEVELS=['a2','b1','b2','c1'];      // una celda vale por los cuatro
+function _rdrDefaultTerm(year){
+  const ts=(READER_ASSIGN||[]).filter(r=>+r.school_year===+year).map(r=>+r.term);
+  return ts.length?Math.max(...ts):2;
+}
+/* La(s) obra(s) que caen dentro del filtro. Con grado elegido es una sola: la
+   que ese salon lee ese trimestre. Sin grado pueden ser varias (cada grado lee
+   la suya) y entonces la pantalla vuelve al resumen por obra. */
+function _rdrFilterBooks(grades){
+  const ok=new Set((grades||[]).map(g=>String(g.id)));
+  const sec=String(readerFilter.section||'');
+  const ids=new Set((READER_ASSIGN||[]).filter(r=>
+      +r.school_year===+readerFilter.year && +r.term===+readerFilter.term &&
+      ok.has(String(r.grade_id)) &&
+      (!readerFilter.grade || String(r.grade_id)===String(readerFilter.grade)) &&
+      (!sec || String(r.section||'')==='' || String(r.section)===sec)).map(r=>r.book_id));
+  return _RDR_IDS.filter(id=>ids.has(id));
+}
+/* De que obra es un intento: sirve para quedarse solo con lo del trimestre. */
+function _rdrBookOfAtt(a){
+  const act=String((a&&a.activity)||''), m=_RDR_EXAM_RX.exec(act)||_RDR_ACT_RX.exec(act);
+  return (m&&READER_META[m[1]])?m[1]:null;
+}
 let readerTab='stats', examCtl={book:null, until:''};
 /* La hora de cierre se mide con el reloj del SERVIDOR: si dependiera del
    navegador, atrasarlo dejaría el control abierto. */
@@ -2280,7 +2309,7 @@ function _rdrAccFor(rows,key,chain){
     extra=Math.max(extra, r.extra_min||0); });
   return {unlocked, extra, from, until};
 }
-window._setReaderFilter=(k,v)=>{ readerFilter[k]=v; readerStatsPanel(); };
+window._setReaderFilter=(k,v)=>{ readerFilter[k]=(k==='term'?+v:v); readerStatsPanel(); };
 window._readerDetail=(id)=>readerStatsPanel(id);
 /* Reglas propias de UN alumno: mandan sobre las de su salón. */
 window._stuCtl=async(studentId,what)=>{
@@ -2311,18 +2340,23 @@ window._stuCtl=async(studentId,what)=>{
     readerStatsPanel(studentId);
   }catch(e){ alert('No se pudo guardar: '+(e.message||e)); }
 };
-function _readerFilterBar(grades,years){
+function _readerFilterBar(grades,years,books){
   const lab=t=>`<label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">${t}</label>`;
+  const y=(years&&years.length?years:[SCHOOL_YEAR_NOW]).map(v=>`<option value="${v}" ${String(readerFilter.year)===String(v)?'selected':''}>${v}${v===SCHOOL_YEAR_NOW?' (en curso)':''}</option>`).join('');
+  const t=RDR_TERMS.map(v=>`<option value="${v}" ${+readerFilter.term===v?'selected':''}>${_rdrTermLab(v)}</option>`).join('');
   const g=`<option value="">Todos los grados</option>`+grades.map(x=>`<option value="${x.id}" ${String(readerFilter.grade)===String(x.id)?'selected':''}>${x.name}</option>`).join('');
   const s=`<option value="">Todas</option>`+['A','B'].map(x=>`<option value="${x}" ${readerFilter.section===x?'selected':''}>${x}</option>`).join('');
-  const b=`<option value="all" ${readerFilter.book==='all'?'selected':''}>Todas las obras</option>`
-    +_RDR_IDS.map(id=>`<option value="${id}" ${readerFilter.book===id?'selected':''}>${READER_META[id].icon} ${READER_META[id].title}</option>`).join('');
-  const y=(years&&years.length?years:[SCHOOL_YEAR_NOW]).map(v=>`<option value="${v}" ${String(readerFilter.year)===String(v)?'selected':''}>${v}${v===SCHOOL_YEAR_NOW?' (en curso)':''}</option>`).join('');
+  /* La obra ya no se elige: la decide el trimestre. Se enseña para que quede
+     claro de qué libro son las notas que hay debajo. */
+  const obra=(books&&books.length)
+    ? books.map(id=>`<b>${READER_META[id].icon} ${esc(READER_META[id].title)}</b>`).join(' · ')
+    : '<span class="muted">sin obra asignada a este trimestre</span>';
   return `<div class="card" style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;padding:14px 16px;margin-bottom:10px">
     <div>${lab('AÑO ESCOLAR')}<select onchange="window._setReaderFilter('year',this.value)" style="min-width:120px">${y}</select></div>
+    <div>${lab('TRIMESTRE')}<select onchange="window._setReaderFilter('term',this.value)" style="min-width:150px">${t}</select></div>
     <div>${lab('GRADO')}<select onchange="window._setReaderFilter('grade',this.value)" style="min-width:140px">${g}</select></div>
     <div>${lab('SECCIÓN')}<select onchange="window._setReaderFilter('section',this.value)" style="min-width:100px">${s}</select></div>
-    <div>${lab('OBRA')}<select onchange="window._setReaderFilter('book',this.value)" style="min-width:250px">${b}</select></div>
+    <div style="margin-left:auto;text-align:right;min-width:230px">${lab('OBRA DEL TRIMESTRE')}<div style="font-size:.92rem;padding-top:4px">${obra}</div></div>
   </div>`;
 }
 /* Panel del profesor. `detailId` abre debajo el desglose de un alumno. */
@@ -2337,10 +2371,15 @@ async function readerControlPanel(){
   const gset=new Set(grades.map(g=>String(g.id)));
   await _rdrSyncClock();
   await loadReaderAssignments();
-  const books=_RDR_IDS.filter(id=>(READER_ASSIGN||[]).some(r=>gset.has(String(r.grade_id))&&r.book_id===id));
+  if(!readerFilter.term) readerFilter.term=_rdrDefaultTerm(SCHOOL_YEAR_NOW);
+  const term=+readerFilter.term;
+  const books=_RDR_IDS.filter(id=>(READER_ASSIGN||[]).some(r=>+r.school_year===SCHOOL_YEAR_NOW&&+r.term===term&&gset.has(String(r.grade_id))&&r.book_id===id));
+  const termTabs=`<span class="muted" style="font-size:.78rem;font-weight:700">TRIMESTRE</span> `
+    +RDR_TERMS.map(t=>`<button class="btn sm ${t===term?'':'ghost'}" onclick="window._setReaderFilter('term',${t})">${t}.º</button>`).join(' ');
   if(!books.length){
     $('#main').innerHTML=`<h1>📖 Controles de lectura</h1>${_readerTabs()}
-      <div class="note info">Ningún reader asignado todavía a tus grados. Elige qué lee cada salón en <b>📚 Library</b>.</div>`;
+      <div class="row" style="gap:6px;margin:0 0 10px;align-items:center">${termTabs}</div>
+      <div class="note info">Ningún reader asignado al <b>${_rdrTermLab(term)}</b> en tus grados.  Cada salón lee <b>una obra por trimestre</b>; se eligen en <b>📚 Library → Qué lee cada salón</b>.</div>`;
     return;
   }
   const book=(examCtl.book&&books.indexOf(examCtl.book)>=0)?examCtl.book:books[0];
@@ -2353,7 +2392,7 @@ async function readerControlPanel(){
   const rows=(acc||[]).filter(r=>String(r.key||'').indexOf(book+':')===0);
   const rooms={};
   (studs||[]).forEach(p=>{ if(p.grade_id==null||!gset.has(String(p.grade_id))) return;
-    if(!(READER_ASSIGN||[]).some(r=>+r.grade_id===+p.grade_id&&r.book_id===book)) return;   // ese grado no lee este libro
+    if(!(READER_ASSIGN||[]).some(r=>+r.school_year===SCHOOL_YEAR_NOW&&+r.term===term&&+r.grade_id===+p.grade_id&&r.book_id===book)) return;   // no lee este libro este trimestre
     const sec=String(p.section||'').trim(), k=p.grade_id+'|'+sec;
     (rooms[k]||(rooms[k]={gid:p.grade_id,sec,scope:'g'+p.grade_id+(sec?'-'+sec:''),
       label:((p.grades&&p.grades.name)||('G'+p.grade_id))+(sec?' · '+sec:''),n:0})).n++; });
@@ -2374,7 +2413,7 @@ async function readerControlPanel(){
   // parece que el reader no existe y se acaba buscando donde no esta.
   const sinAsignar=_RDR_IDS.filter(id=>!books.includes(id));
   const avisoLibros=sinAsignar.length?`<p class="muted" style="margin:6px 0 0;font-size:.85rem">
-    Sin asignar a tus salones: ${sinAsignar.map(id=>`${READER_META[id].icon} ${esc(READER_META[id].short)}`).join(' · ')}.
+    Fuera del ${_rdrTermLab(term)} en tus salones: ${sinAsignar.map(id=>`${READER_META[id].icon} ${esc(READER_META[id].short)}`).join(' · ')}.
     Se asignan en <b>📚 Library → Qué lee cada salón</b>; hasta entonces no aparecen aquí.</p>`:'';
   const head=`<th style="min-width:120px">Capítulo</th>`+cols.map(c=>`<th style="text-align:center">${esc(c.label)}${c.n?`<div class="muted" style="font-weight:400;font-size:.7rem">${c.n} alumnos</div>`:''}</th>`).join('')+`<th></th>`;
   const body=Array.from({length:meta.chapters},(_,i)=>{
@@ -2395,7 +2434,8 @@ async function readerControlPanel(){
   }).join('');
   $('#main').innerHTML=`<h1>📖 Controles de lectura</h1>${_readerTabs()}
     <p class="muted" style="margin-top:-6px">Abre el control de un capítulo para un salón: <b>una celda vale por los cuatro niveles</b> (cada alumno rinde en el suyo).
-      Mientras el control está abierto, ese capítulo <b>no se puede leer</b> para esos alumnos. Un salón manda sobre su grado, y el grado sobre “Todos”. Año <b>${SCHOOL_YEAR_NOW}</b>.</p>
+      Mientras el control está abierto, ese capítulo <b>no se puede leer</b> para esos alumnos. Un salón manda sobre su grado, y el grado sobre “Todos”. Año <b>${SCHOOL_YEAR_NOW}</b> · <b>${_rdrTermLab(term)}</b>.</p>
+    <div class="row" style="gap:6px;margin:0 0 8px;align-items:center">${termTabs}</div>
     <div class="row" style="gap:8px;margin:0 0 4px;align-items:center">${bookTabs}
       <span style="margin-left:auto;font-size:12.5px;color:#475569">Cerrar automáticamente a las
         <input type="time" value="${esc(examCtl.until||'')}" onchange="window._setCtlUntil(this.value)"
@@ -2458,16 +2498,19 @@ async function readerTimePanel(){
     sb.from('profiles').select('id,full_name,grade_id,section, grades(name)').eq('role','student'),
     sb.from('activity_attempts').select('student_id,activity,duration_sec,submitted_at').or(_rdrOr()).limit(5000)
   ]);
+  await loadReaderAssignments();
   const years=[...new Set([...(atts||[]).map(_attYear).filter(Boolean), SCHOOL_YEAR_NOW])].sort((a,b)=>b-a);
 
   /* intentos de lectura del año elegido, por alumno */
+  if(!readerFilter.term) readerFilter.term=_rdrDefaultTerm(readerFilter.year);
+  const books=_rdrFilterBooks(grades), bset=new Set(books);
   const porAlumno={};
   (atts||[]).forEach(a=>{
     if(_attYear(a)!==+readerFilter.year) return;
     const m=_RDR_ACT_RX.exec(String(a.activity||''));
     if(!m || m[4]!=='read') return;                     // solo "Read along"
     const obra=m[1]; if(!READER_META[obra]) return;
-    if(readerFilter.book!=='all' && obra!==readerFilter.book) return;
+    if(!bset.has(obra)) return;                         // solo la obra del trimestre
     const r=porAlumno[a.student_id]||(porAlumno[a.student_id]={secs:0,sem:{},caps:new Set(),obras:new Set(),ult:null,sesiones:0});
     const secs=a.duration_sec||0;
     r.secs+=secs; r.sesiones++;
@@ -2530,7 +2573,7 @@ async function readerTimePanel(){
     trabajando la obra: míralo junto a <b>📊 Notas y tiempos</b>.</div>`;
 
   $('#main').innerHTML=`<h1>📖 Controles de lectura</h1>${_readerTabs()}
-    ${_readerFilterBar(grades,years)}
+    ${_readerFilterBar(grades,years,books)}
     ${stats}
     <div class="note">Minutos en <b>Read along</b>, la lectura con audio. No se cuentan los ejercicios ni
       el control (eso es resolver, no leer) ni las visitas de menos de 20 segundos, y una pestaña olvidada
@@ -2552,10 +2595,30 @@ async function readerStatsPanel(detailId){
     sb.from('profiles').select('id,full_name,grade_id,section, grades(name)').eq('role','student'),
     sb.from('activity_attempts').select('student_id,activity,score,total,duration_sec,submitted_at').or(_rdrOr()).limit(5000)
   ]);
+  await loadReaderAssignments();
   /* Los años que existen en los datos, para poder mirar atrás: los alumnos de
      un grado cambian cada año, así que las notas se leen año por año. */
   const years=[...new Set([...(atts||[]).map(_attYear).filter(Boolean), SCHOOL_YEAR_NOW])].sort((a,b)=>b-a);
-  const ofYear=(atts||[]).filter(a=>_attYear(a)===+readerFilter.year);
+  if(!readerFilter.term) readerFilter.term=_rdrDefaultTerm(readerFilter.year);
+  /* El trimestre manda sobre todo lo demás: solo entran los intentos de la obra
+     que se lee en él, así que la nota, el tiempo de lectura y los ejercicios son
+     los de ese trimestre y no se mezclan con los de la obra anterior. */
+  const books=_rdrFilterBooks(grades), bset=new Set(books);
+  const one=books.length===1?books[0]:null;      // lo normal: un salón, una obra
+  const meta=one?READER_META[one]:null;
+  const cab=`<div class="row" style="justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:4px">
+      <h1 style="margin:0">📖 Controles de lectura</h1>
+      <a class="btn sm ghost" href="attwn-exam.html" style="text-decoration:none">🔓 Abrir / cerrar controles →</a>
+    </div>
+    ${_readerTabs()}`;
+  if(!books.length){
+    $('#main').innerHTML=`${cab}
+      ${_readerFilterBar(grades,years,books)}
+      <div class="note info">Ningún salón de este filtro tiene obra asignada al <b>${_rdrTermLab(readerFilter.term)}</b> de ${esc(readerFilter.year)}.
+        Cada salón lee <b>una obra por trimestre</b>: se eligen en <b>📚 Library → Qué lee cada salón</b>.</div>`;
+    return;
+  }
+  const ofYear=(atts||[]).filter(a=>_attYear(a)===+readerFilter.year && bset.has(_rdrBookOfAtt(a)));
   const byStu={};
   ofYear.forEach(a=>{ (byStu[a.student_id]||(byStu[a.student_id]=[])).push(a); });
   let list=(studs||[]).filter(p=>gradeIds.has(String(p.grade_id)));
@@ -2563,15 +2626,13 @@ async function readerStatsPanel(detailId){
   if(readerFilter.section) list=list.filter(p=>p.section===readerFilter.section);
   list.sort((a,b)=>(a.full_name||'').localeCompare(b.full_name||''));
   const data=list.map(p=>({p, r:readerReport(byStu[p.id]||[])}));
-  const one=readerFilter.book!=='all' ? readerFilter.book : null;
-  const meta=one?READER_META[one]:null;
   const gradeOf=d=> one ? (d.r.books[one]?d.r.books[one].grade:null) : d.r.overall;
   const active=data.filter(d=>gradeOf(d)!=null);
   const clase=_rdrAvg(data.map(gradeOf));
   const sumRead=data.reduce((s,d)=>s+(one?(d.r.books[one]?d.r.books[one].readSec:0):d.r.readSec),0);
   const sumAct =data.reduce((s,d)=>s+(one?(d.r.books[one]?d.r.books[one].actSec:0):d.r.actSec),0);
   const stats=`<div class="grid cols-3" style="margin-bottom:12px">
-    <div class="stat"><div class="l">Nota ${one?'de la obra':'general'} (clase)</div><div class="n">${clase!=null?clase+'%':'—'}</div>
+    <div class="stat"><div class="l">Nota final de la clase</div><div class="n">${clase!=null?clase+'%':'—'}</div>
       <div class="muted" style="font-size:.8rem">${clase!=null?_rdr20(clase)+'/20':'sin controles aún'}</div></div>
     <div class="stat"><div class="l">Alumnos con nota</div><div class="n">${active.length}</div>
       <div class="muted" style="font-size:.8rem">de ${data.length} en el filtro</div></div>
@@ -2581,8 +2642,8 @@ async function readerStatsPanel(detailId){
       <div class="muted" style="font-size:.8rem">+ ${_rdrTime(sumAct)} en ejercicios</div></div>
   </div>`;
   const head = one
-    ? `<th>Alumno</th><th>Grado</th>${Array.from({length:meta.chapters},(_,i)=>`<th title="Capítulo ${i+1}">${i+1}</th>`).join('')}<th>Rendidos</th><th>Nota de la obra</th><th>⏱ Lectura</th><th>⏱ Ejercicios</th><th></th>`
-    : `<th>Alumno</th><th>Grado</th>${_RDR_IDS.map(id=>`<th>${READER_META[id].icon} ${READER_META[id].short}</th>`).join('')}<th>Nota general</th><th>⏱ Lectura</th><th>⏱ Ejercicios</th><th></th>`;
+    ? `<th>Alumno</th><th>Grado</th>${Array.from({length:meta.chapters},(_,i)=>`<th title="Capítulo ${i+1}">${i+1}</th>`).join('')}<th>Rendidos</th><th title="Promedio de los capítulos rendidos">Nota final</th><th>⏱ Lectura</th><th>⏱ Ejercicios</th><th></th>`
+    : `<th>Alumno</th><th>Grado</th>${books.map(id=>`<th>${READER_META[id].icon} ${READER_META[id].short}</th>`).join('')}<th>Nota final</th><th>⏱ Lectura</th><th>⏱ Ejercicios</th><th></th>`;
   const rows=data.map(d=>{
     const b=one?d.r.books[one]:null;
     const cells = one
@@ -2590,7 +2651,7 @@ async function readerStatsPanel(detailId){
           return `<td style="text-align:center">${c&&c.best!=null?`<b>${c.best}</b>`:'<span class="muted">·</span>'}</td>`; }).join('')
         +`<td class="muted" style="text-align:center">${b?b.done:0}/${meta.chapters}</td><td>${_rdrMark(b?b.grade:null)}</td>`
         +`<td>${_rdrTime(b&&b.readSec)}</td><td>${_rdrTime(b&&b.actSec)}</td>`
-      : _RDR_IDS.map(id=>{ const bk=d.r.books[id];
+      : books.map(id=>{ const bk=d.r.books[id];
           return `<td>${_rdrMark(bk?bk.grade:null)}${bk?` <span class="muted" style="font-size:.75rem">${bk.done}/${READER_META[id].chapters}</span>`:''}</td>`; }).join('')
         +`<td>${_rdrMark(d.r.overall)}</td><td>${_rdrTime(d.r.readSec)}</td><td>${_rdrTime(d.r.actSec)}</td>`;
     return `<tr><td><b>${esc(d.p.full_name||'')}</b></td>
@@ -2598,24 +2659,58 @@ async function readerStatsPanel(detailId){
       ${cells}
       <td><button class="btn sm ghost" onclick="window._readerDetail('${d.p.id}')">Detalle →</button></td></tr>`;
   }).join('');
+  /* La obra del trimestre, capítulo a capítulo: qué saca la clase en cada
+     control y cuántos lo han rendido. La NOTA FINAL es el promedio de los
+     capítulos AVANZADOS: los que todavía no se han rendido no bajan la nota. */
+  const chapterTable=(()=>{
+    if(!one) return '';
+    const chs=Array.from({length:meta.chapters},(_,i)=>{
+      const n=i+1, cs=data.map(d=>{ const b=d.r.books[one]; return b?b.chapters[n]:null; });
+      const notas=cs.map(c=>c?c.best:null).filter(v=>v!=null);
+      return {n, avg:_rdrAvg(notas), done:notas.length,
+              readSec:cs.reduce((s,c)=>s+((c&&c.readSec)||0),0),
+              actSec: cs.reduce((s,c)=>s+((c&&c.actSec)||0),0),
+              tries:  cs.reduce((s,c)=>s+((c&&c.tries)||0),0)};
+    });
+    const avanzados=chs.filter(c=>c.done).length;
+    const filas=chs.map(c=>`<tr${c.done?'':' style="opacity:.55"'}>
+      <td><b>Ch. ${c.n}</b></td>
+      <td>${_rdrMark(c.avg)}</td>
+      <td style="text-align:center">${c.done?c.done+' de '+data.length:'<span class="muted">sin rendir</span>'}</td>
+      <td class="muted" style="text-align:center">${c.tries||'—'}</td>
+      <td>${_rdrTime(c.readSec)}</td>
+      <td>${_rdrTime(c.actSec)}</td></tr>`).join('');
+    return `<h2 style="font-size:16px;color:var(--blue-d);margin:20px 0 8px">${meta.icon} ${esc(meta.title)} — capítulo a capítulo</h2>
+      <p class="muted" style="margin:0 0 8px;font-size:.85rem">Nota media de la clase en cada control. La <b>nota final</b> es el promedio de los
+        <b>${avanzados} capítulo(s) avanzados</b> de los ${meta.chapters} de la obra: los que aún no se han rendido no cuentan.</p>
+      <div class="card" style="padding:0;overflow-x:auto"><table>
+        <thead><tr><th style="min-width:110px">Capítulo</th><th>Nota media de la clase</th><th>Rendido por</th><th title="Intentos, se cuenta el mejor">Intentos</th><th>⏱ Lectura</th><th>⏱ Ejercicios</th></tr></thead>
+        <tbody>${filas}</tbody>
+        <tfoot><tr style="background:#f1f5f9"><td><b>Nota final</b></td>
+          <td>${_rdrMark(clase)}</td>
+          <td class="muted" style="text-align:center">${avanzados}/${meta.chapters} capítulos</td>
+          <td class="muted" style="text-align:center">${chs.reduce((s,c)=>s+c.tries,0)}</td>
+          <td>${_rdrTime(sumRead)}</td><td>${_rdrTime(sumAct)}</td></tr></tfoot>
+      </table></div>`;
+  })();
   const detail=(()=>{
     if(!detailId) return '';
     const d=data.find(x=>String(x.p.id)===String(detailId));
     if(!d) return '';
-    const books=_RDR_IDS.filter(id=>d.r.books[id]);
+    const bks=books.filter(id=>d.r.books[id]);
     return `<div class="card"><div class="row" style="justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
         <h2 style="margin:0">${esc(d.p.full_name||'')} — capítulo a capítulo</h2>
-        <div>${_rdrMark(d.r.overall)} <span class="muted" style="font-size:.82rem">nota general</span></div>
+        <div>${_rdrMark(gradeOf(d))} <span class="muted" style="font-size:.82rem">nota final del trimestre</span></div>
       </div>
       <p class="muted" style="margin:4px 0 0;font-size:.85rem">⏱ ${_rdrTime(d.r.readSec)} de lectura con audio · ${_rdrTime(d.r.actSec)} de ejercicios · ${_rdrTime(d.r.examSec)} en los controles.</p>
       <div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--line);font-size:12.5px;color:#475569">
         <b>Solo para ${esc((d.p.full_name||'').split(' ')[0])}:</b> abrirle un control que su salón tiene cerrado (recuperación) o darle minutos extra.
         <div class="row" style="gap:6px;margin-top:6px;align-items:center;flex-wrap:wrap">
           <select id="rdrStuBook" style="font-family:inherit;font-size:12.5px;padding:5px 7px;border:1.5px solid var(--line);border-radius:8px">
-            ${_RDR_IDS.map(id=>`<option value="${id}">${READER_META[id].icon} ${esc(READER_META[id].short)}</option>`).join('')}
+            ${books.map(id=>`<option value="${id}">${READER_META[id].icon} ${esc(READER_META[id].short)}</option>`).join('')}
           </select>
           <select id="rdrStuCh" style="font-family:inherit;font-size:12.5px;padding:5px 7px;border:1.5px solid var(--line);border-radius:8px">
-            ${Array.from({length:10},(_,i)=>`<option value="${i+1}">Ch. ${i+1}</option>`).join('')}
+            ${Array.from({length:one?meta.chapters:10},(_,i)=>`<option value="${i+1}">Ch. ${i+1}</option>`).join('')}
           </select>
           <button class="btn sm" onclick="window._stuCtl('${d.p.id}','open')">🔓 abrirle el control</button>
           <button class="btn sm ghost" onclick="window._stuCtl('${d.p.id}','close')">🔒 cerrárselo</button>
@@ -2623,23 +2718,19 @@ async function readerStatsPanel(detailId){
           <button class="btn sm ghost" onclick="window._stuCtl('${d.p.id}','clear')">✕ quitar lo suyo</button>
         </div>
       </div></div>
-      ${books.length?books.map(id=>_rdrChapterTable(id,d.r.books[id])).join(''):'<div class="note info">Este alumno todavía no ha abierto ningún reader.</div>'}`;
+      ${bks.length?bks.map(id=>_rdrChapterTable(id,d.r.books[id])).join(''):'<div class="note info">Este alumno todavía no ha abierto la obra del trimestre.</div>'}`;
   })();
-  $('#main').innerHTML=`
-    <div class="row" style="justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:4px">
-      <h1 style="margin:0">📖 Controles de lectura</h1>
-      <a class="btn sm ghost" href="attwn-exam.html" style="text-decoration:none">🔓 Abrir / cerrar controles →</a>
-    </div>
-    ${_readerTabs()}
-    <p class="muted" style="margin-top:-6px">La nota de cada capítulo es su control (mejor intento). El tiempo de lectura con audio y el de los ejercicios se muestran al lado como evidencia de trabajo: no cambian la nota.
-      Se muestra el año escolar <b>${esc(readerFilter.year)}</b>: cada año son alumnos distintos en cada grado, así que las notas no se mezclan.</p>
-    ${_readerFilterBar(grades,years)}
+  $('#main').innerHTML=`${cab}
+    <p class="muted" style="margin-top:-6px">La nota de cada capítulo es su control (mejor intento) y la <b>nota final es el promedio de los capítulos avanzados</b>. El tiempo de lectura con audio y el de los ejercicios se muestran al lado como evidencia de trabajo: no cambian la nota.
+      Se ve el <b>${_rdrTermLab(readerFilter.term)}</b> del año escolar <b>${esc(readerFilter.year)}</b>${one?` — ${meta.icon} <b>${esc(meta.title)}</b>, la obra que toca ese trimestre`:''}.</p>
+    ${_readerFilterBar(grades,years,books)}
     ${stats}
     <div class="card" style="padding:0;overflow-x:auto"><table>
       <thead><tr>${head}</tr></thead>
       <tbody>${rows||`<tr><td colspan="12" class="center muted">Sin alumnos para este filtro.</td></tr>`}</tbody>
     </table>
     <div class="muted" style="padding:8px 14px;font-size:.82rem">${data.length} alumno(s) · ${active.length} con nota${one?' en '+esc(meta.title):''}</div></div>
+    ${chapterTable}
     ${detail}`;
 }
 
@@ -4001,15 +4092,15 @@ const READER_CARDS = {
   treasureisland:['🏴‍☠️','Treasure Island','Robert Louis Stevenson at five levels — A2 · B1 · B2 · C1 · C2. Eleven parts with the 1915 engravings, Cambridge PET practice, Trinity speaking topics and chapter exams.','reader.html?book=treasureisland','Treasure Island (A2–C2)'],
 };
 /* Qué reader lee cada salón lo decide el profesor en Library y vive en
-   reader_assignments, por AÑO ESCOLAR: en 2027 vuelve a elegir sin arrastrar
-   lo de este año. Este reparto queda solo como red: si la consulta falla, el
-   alumno no se queda sin sus libros. */
+   reader_assignments, por AÑO ESCOLAR y TRIMESTRE — una obra por trimestre:
+   en 2027 vuelve a elegir sin arrastrar lo de este año. Este reparto queda
+   solo como red: si la consulta falla, el alumno no se queda sin sus libros. */
 const READER_BOOKS = { g7:['tomsawyer','princepauper','treasureisland'], g9:['attwn','earnest','tomsawyer','princepauper','treasureisland'] };
 let READER_ASSIGN=null;
 async function loadReaderAssignments(){
   try{
     const { data, error } = await sb.from('reader_assignments')
-      .select('grade_id,section,book_id').eq('school_year',SCHOOL_YEAR_NOW);
+      .select('school_year,grade_id,section,book_id,term');
     if(!error) READER_ASSIGN=data||[];
   }catch(e){}
   return READER_ASSIGN;
@@ -4021,7 +4112,7 @@ function readerBooksFor(key,section){
   if(!READER_ASSIGN) return READER_BOOKS[key]||[];
   const gid=_gradeIdOf(key), stu=_isStudent();
   const sec=String(section!=null?section:((state.profile&&state.profile.section)||'')).trim();
-  const ids=new Set(READER_ASSIGN.filter(r=>+r.grade_id===gid &&
+  const ids=new Set(READER_ASSIGN.filter(r=>+r.school_year===SCHOOL_YEAR_NOW && +r.grade_id===gid &&
       (!stu || String(r.section||'')==='' || String(r.section)===sec)).map(r=>r.book_id));
   return _RDR_IDS.filter(id=>ids.has(id));
 }
@@ -4035,10 +4126,17 @@ async function studentReaderReport(key){
   const { data:atts } = await sb.from('activity_attempts')
     .select('activity,score,total,duration_sec,submitted_at').eq('student_id',p.id).or(_rdrOr()).limit(2000);
   const r=readerReport((atts||[]).filter(a=>_attYear(a)===SCHOOL_YEAR_NOW));
-  const mine=(readerBooksFor(key).length?readerBooksFor(key):_RDR_IDS).filter(id=>READER_META[id]);
+  /* Un libro por trimestre: se ordenan como se leyeron y cada uno lleva su
+     trimestre delante, para que el alumno sepa cual es el de ahora. */
+  const _gid=_gradeIdOf(key), _sec=String((p&&p.section)||'').trim();
+  const termOf=id=>{ const x=(READER_ASSIGN||[]).find(v=>+v.school_year===SCHOOL_YEAR_NOW &&
+      +v.grade_id===_gid && v.book_id===id && (String(v.section||'')==='' || String(v.section)===_sec));
+    return x?+x.term:null; };
+  const mine=(readerBooksFor(key).length?readerBooksFor(key):_RDR_IDS).filter(id=>READER_META[id])
+    .sort((a,b)=>(termOf(a)||9)-(termOf(b)||9));
   const cards=mine.map(id=>{
-    const b=r.books[id], meta=READER_META[id];
-    return `<h2 style="font-size:16px;color:var(--blue-d);margin:18px 0 8px">${meta.icon} ${esc(meta.title)}</h2>
+    const b=r.books[id], meta=READER_META[id], t=termOf(id);
+    return `<h2 style="font-size:16px;color:var(--blue-d);margin:18px 0 8px">${t?`<span class="muted">Term ${t}</span> · `:''}${meta.icon} ${esc(meta.title)}</h2>
       ${_rdrChapterTable(id,b,true)}`;
   }).join('');
   $('#main').innerHTML=`${back}<h1>📊 My reading report</h1>
@@ -4359,7 +4457,9 @@ async function studentLibrary(){
     <h2 style="font-size:16px;color:var(--blue-d);margin:22px 0 10px">🔎 Catálogo (OPAC)</h2>
     <div class="grid cols-2">${libTile}</div>`;
 }
-/* Asignación del año: filas = salones reales, columnas = readers. */
+/* Asignación del año: filas = salones reales, columnas = los tres trimestres.
+   Cada salón lee UNA obra por trimestre, así que cada celda es una elección y
+   no una casilla: elegir otra obra sustituye a la anterior. */
 async function _assignPanel(){
   const grades=(state.profile&&state.profile.role==='admin')?GRADES:teacherAllowedGrades();
   const ok=new Set(grades.map(g=>String(g.id)));
@@ -4371,27 +4471,32 @@ async function _assignPanel(){
     (rooms[k]||(rooms[k]={gid:p.grade_id,sec,name:(p.grades&&p.grades.name)||('G'+p.grade_id),n:0})).n++; });
   const list=Object.values(rooms).sort((a,b)=>a.gid-b.gid||a.sec.localeCompare(b.sec));
   if(!list.length) return '';
-  const has=(gid,sec,id)=>(READER_ASSIGN||[]).some(r=>+r.grade_id===gid && String(r.section||'')===sec && r.book_id===id);
+  const libro=(gid,sec,term)=>{ const r=(READER_ASSIGN||[]).find(x=>+x.school_year===SCHOOL_YEAR_NOW &&
+      +x.grade_id===gid && String(x.section||'')===sec && +x.term===term); return r?r.book_id:''; };
   const rows=list.map(r=>`<tr>
     <td><b>${esc(r.name)}${r.sec?' · '+esc(r.sec):''}</b> <span class="muted" style="font-size:.8rem">${r.n} alumnos</span></td>
-    ${_RDR_IDS.map(id=>{ const on=has(r.gid,r.sec,id);
-      return `<td style="text-align:center"><button class="btn sm ${on?'':'ghost'}" style="padding:5px 12px"
-        onclick="window._assignBook(${r.gid},'${esc(r.sec)}','${id}',${!on})">${on?'✓ asignado':'asignar'}</button></td>`; }).join('')}
+    ${RDR_TERMS.map(t=>{ const cur=libro(r.gid,r.sec,t);
+      return `<td style="text-align:center"><select onchange="window._assignTerm(${r.gid},'${esc(r.sec)}',${t},this.value)"
+        style="font-family:inherit;font-size:12.5px;padding:5px 7px;border:1.5px solid var(--line);border-radius:8px;max-width:200px">
+        <option value="">— sin asignar —</option>
+        ${_RDR_IDS.map(id=>`<option value="${id}" ${cur===id?'selected':''}>${READER_META[id].icon} ${esc(READER_META[id].short)}</option>`).join('')}
+      </select></td>`; }).join('')}
   </tr>`).join('');
   return `<h2 style="font-size:16px;color:var(--blue-d);margin:22px 0 8px">🗂️ Qué lee cada salón — año ${SCHOOL_YEAR_NOW}</h2>
-    <p class="muted" style="margin:0 0 10px;font-size:.85rem">Cada año se elige de nuevo: lo de ${SCHOOL_YEAR_NOW} no se arrastra a ${SCHOOL_YEAR_NOW+1}, porque en cada grado habrá otros alumnos. El alumno solo ve en <b>Classes → Readers</b> los libros marcados aquí para su salón.</p>
+    <p class="muted" style="margin:0 0 10px;font-size:.85rem"><b>Una obra por trimestre</b>: elegir otra sustituye a la que estaba. Cada año se elige de nuevo — lo de ${SCHOOL_YEAR_NOW} no se arrastra a ${SCHOOL_YEAR_NOW+1}, porque en cada grado habrá otros alumnos. El alumno solo ve en <b>Classes → Readers</b> los libros marcados aquí para su salón, y <b>📖 Controles de lectura</b> lee de esta misma tabla para saber qué obra toca cada trimestre.</p>
     <div class="card" style="padding:0;overflow-x:auto"><table>
-      <thead><tr><th>Salón</th>${_RDR_IDS.map(id=>`<th style="text-align:center">${READER_META[id].icon} ${esc(READER_META[id].short)}</th>`).join('')}</tr></thead>
+      <thead><tr><th>Salón</th>${RDR_TERMS.map(t=>`<th style="text-align:center">${_rdrTermLab(t)}</th>`).join('')}</tr></thead>
       <tbody>${rows}</tbody></table></div>`;
 }
-window._assignBook=async(gid,sec,bookId,on)=>{
+/* Cambiar la obra de un trimestre: se borra la que hubiera (la regla es una
+   por trimestre) y se guarda la nueva. Valor vacío = dejar el trimestre libre. */
+window._assignTerm=async(gid,sec,term,bookId)=>{
   try{
-    if(on){
-      const r=await sb.from('reader_assignments').insert({school_year:SCHOOL_YEAR_NOW,grade_id:gid,section:sec,book_id:bookId});
-      if(r.error) throw r.error;
-    }else{
-      const r=await sb.from('reader_assignments').delete()
-        .eq('school_year',SCHOOL_YEAR_NOW).eq('grade_id',gid).eq('section',sec).eq('book_id',bookId);
+    const del=await sb.from('reader_assignments').delete()
+      .eq('school_year',SCHOOL_YEAR_NOW).eq('grade_id',gid).eq('section',sec).eq('term',term);
+    if(del.error) throw del.error;
+    if(bookId){
+      const r=await sb.from('reader_assignments').insert({school_year:SCHOOL_YEAR_NOW,grade_id:gid,section:sec,term,book_id:bookId});
       if(r.error) throw r.error;
     }
     READER_ASSIGN=null; await loadReaderAssignments();
