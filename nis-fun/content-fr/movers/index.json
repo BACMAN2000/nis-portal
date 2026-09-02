@@ -13,6 +13,11 @@
  ],
  "units": [
   {
+   "n": 1,
+   "title": "Nos amis les animaux",
+   "topic": "animaux"
+  },
+  {
    "n": 3,
    "title": "Hier à la fête foraine",
    "topic": "le passé composé"
@@ -43,6 +48,11 @@
    "topic": "maison"
   },
   {
+   "n": 9,
+   "title": "Dans le jardin",
+   "topic": "jardin"
+  },
+  {
    "n": 10,
    "title": "Une journée à la ferme",
    "topic": "animaux de la ferme"
@@ -71,6 +81,11 @@
    "n": 16,
    "title": "Ma semaine",
    "topic": "les jours de la semaine"
+  },
+  {
+   "n": 17,
+   "title": "Le pique-nique",
+   "topic": "à manger et à boire"
   },
   {
    "n": 18,
@@ -153,9 +168,19 @@
    "topic": "les quantités"
   },
   {
+   "n": 40,
+   "title": "Mon animal préféré",
+   "topic": "savoir + descriptions"
+  },
+  {
    "n": 41,
    "title": "Dans la jungle",
    "topic": "animaux sauvages"
+  },
+  {
+   "n": 42,
+   "title": "Sous la mer",
+   "topic": "les animaux marins"
   },
   {
    "n": 43,
