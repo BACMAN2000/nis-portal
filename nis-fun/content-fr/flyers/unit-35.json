@@ -247,8 +247,8 @@
      "nombre": "Personal Identity"
     },
     "destreza": "Listening",
-    "puede": "Understand dialogues and short stories (Flyers parts 1–5); infer mood from intonation.",
-    "clase": "Flyers-style: listen and tick the right picture",
+    "puede": "Comprendre des dialogues et des histoires courtes ; deviner l'humeur d'après l'intonation.",
+    "clase": "Type examen : écouter et cocher la bonne image",
     "examen_parte": {
      "paper": "Listening",
      "part": 4
@@ -336,8 +336,8 @@
      "nombre": "Personal Identity"
     },
     "destreza": "Writing",
-    "puede": "Writing Part 3: 20–25-word picture story (Flyers); classroom pieces 100–150w.",
-    "clase": "Flyers-style: 20-25-word picture story (Writing Part 3)",
+    "puede": "Écrire une histoire en images de 20 à 25 mots ; textes de classe de 100 à 150 mots.",
+    "clase": "Type examen : histoire en images de 20 à 25 mots (production écrite)",
     "examen_parte": {
      "paper": "Reading & Writing",
      "part": 7
@@ -356,7 +356,7 @@
       ],
       "word": "fier",
       "hint": "Oliver / être / fier",
-      "model": "Oliver is proud in the library."
+      "model": "Oliver est fier à la bibliothèque."
      },
      {
       "n": 2,
@@ -373,7 +373,7 @@
       ],
       "word": "fâché",
       "hint": "Maya / parler à / Oliver / fâché",
-      "model": "Maya talks to Oliver because he looks angry."
+      "model": "Maya parle à Oliver parce qu'il a l'air fâché."
      },
      {
       "n": 3,
@@ -390,19 +390,19 @@
       ],
       "word": "content",
       "hint": "maintenant / tous les deux / contents",
-      "model": "Now they are both happy and they smile."
+      "model": "Maintenant ils sont tous les deux contents et ils sourient."
      }
     ],
     "min_words": 20,
     "max_words": 25,
-    "model": "Oliver is proud in the library. Maya talks to Oliver because he looks angry. Now they are both happy and they smile.",
+    "model": "Oliver est fier à la bibliothèque. Maya parle à Oliver parce qu'il a l'air fâché. Maintenant ils sont tous les deux contents et ils sourient.",
     "words": [
      "fier",
      "fâché",
      "content"
     ],
     "support": {
-     "grammar": "when + present simple",
+     "grammar": "quand + présent",
      "words": [
       "content",
       "triste",
@@ -431,8 +431,8 @@
      "nombre": "Personal Identity"
     },
     "destreza": "Listening",
-    "puede": "Understand dialogues and short stories (Flyers parts 1–5); infer mood from intonation.",
-    "clase": "Flyers-style: listen and label the people in the picture",
+    "puede": "Comprendre des dialogues et des histoires courtes ; deviner l'humeur d'après l'intonation.",
+    "clase": "Type examen : écouter et écrire le prénom de chaque personne de l'image",
     "examen_parte": {
      "paper": "Listening",
      "part": 1
@@ -441,41 +441,41 @@
    "audio": "flyers/u35-g.mp3",
    "data": {
     "scene": "campus-hex",
-    "place": "the school courtyard",
+    "place": "la cour de l'école",
     "people": [
      {
       "slug": "oliver",
       "name": "Oliver",
       "clue": "le garçon aux cheveux roux et au t-shirt jaune",
-      "action": "is singing",
+      "action": "chante",
       "pose": 7
      },
      {
       "slug": "kili",
       "name": "Kili",
       "clue": "le grand oiseau noir avec un collier blanc",
-      "action": "is carrying a letter",
+      "action": "porte une lettre",
       "pose": 3
      },
      {
       "slug": "maya",
       "name": "Maya",
       "clue": "la fille au t-shirt vert avec une loupe",
-      "action": "is looking at something very small",
+      "action": "observe quelque chose de tout petit",
       "pose": 7
      },
      {
       "slug": "tino",
       "name": "Tino",
       "clue": "le garçon aux cheveux très courts et au t-shirt blanc et vert",
-      "action": "is playing hockey",
+      "action": "joue au hockey",
       "pose": 7
      },
      {
       "slug": "ingrid",
       "name": "Ingrid",
       "clue": "la fille aux cheveux blonds et à la veste bleu foncé",
-      "action": "is reading the plan for the day",
+      "action": "lit le programme de la journée",
       "pose": 7
      }
     ],

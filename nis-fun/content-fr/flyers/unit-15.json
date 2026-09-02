@@ -247,8 +247,8 @@
      "nombre": "Health & Wellbeing"
     },
     "destreza": "Listening",
-    "puede": "Understand dialogues and short stories (Flyers parts 1–5); infer mood from intonation.",
-    "clase": "Flyers-style: listen and tick the right picture",
+    "puede": "Comprendre des dialogues et des histoires courtes ; deviner l'humeur d'après l'intonation.",
+    "clase": "Type examen : écouter et cocher la bonne image",
     "examen_parte": {
      "paper": "Listening",
      "part": 4
@@ -374,8 +374,8 @@
      "nombre": "Health & Wellbeing"
     },
     "destreza": "Listening",
-    "puede": "Understand dialogues and short stories (Flyers parts 1–5); infer mood from intonation.",
-    "clase": "Flyers-style: listen and match each person to a picture",
+    "puede": "Comprendre des dialogues et des histoires courtes ; deviner l'humeur d'après l'intonation.",
+    "clase": "Type examen : écouter et associer chaque personne à une image",
     "examen_parte": {
      "paper": "Listening",
      "part": 3
@@ -480,8 +480,8 @@
      "nombre": "Health & Wellbeing"
     },
     "destreza": "Writing",
-    "puede": "Writing Part 3: 20–25-word picture story (Flyers); classroom pieces 100–150w.",
-    "clase": "Flyers-style: 20-25-word picture story (Writing Part 3)",
+    "puede": "Écrire une histoire en images de 20 à 25 mots ; textes de classe de 100 à 150 mots.",
+    "clase": "Type examen : histoire en images de 20 à 25 mots (production écrite)",
     "examen_parte": {
      "paper": "Reading & Writing",
      "part": 7
@@ -500,7 +500,7 @@
       ],
       "word": "golf",
       "hint": "Diego / montre / un golf",
-      "model": "Diego shows a golf at the picnic garden."
+      "model": "Diego montre un golf au jardin du pique-nique."
      },
      {
       "n": 2,
@@ -517,7 +517,7 @@
       ],
       "word": "luge",
       "hint": "Oliver / apporter / une luge",
-      "model": "Then Oliver brings a sledging."
+      "model": "Ensuite Oliver apporte une luge."
      },
      {
       "n": 3,
@@ -534,19 +534,19 @@
       ],
       "word": "équipe",
       "hint": "maintenant / une équipe / content",
-      "model": "Now they have got a team too, and both are happy."
+      "model": "Maintenant ils ont aussi une équipe, et tous les deux sont contents."
      }
     ],
     "min_words": 20,
     "max_words": 25,
-    "model": "Diego shows a golf at the picnic garden. Then Oliver brings a sledging. Now they have got a team too, and both are happy.",
+    "model": "Diego montre un golf au jardin du pique-nique. Ensuite Oliver apporte une luge. Maintenant ils ont aussi une équipe, et tous les deux sont contents.",
     "words": [
      "golf",
      "luge",
      "équipe"
     ],
     "support": {
-     "grammar": "play / go / do + sport",
+     "grammar": "jouer à / faire de + sport",
      "words": [
       "volley",
       "patinage",
@@ -575,8 +575,8 @@
      "nombre": "Health & Wellbeing"
     },
     "destreza": "Listening",
-    "puede": "Understand dialogues and short stories (Flyers parts 1–5); infer mood from intonation.",
-    "clase": "Flyers-style: listen and label the people in the picture",
+    "puede": "Comprendre des dialogues et des histoires courtes ; deviner l'humeur d'après l'intonation.",
+    "clase": "Type examen : écouter et écrire le prénom de chaque personne de l'image",
     "examen_parte": {
      "paper": "Listening",
      "part": 1
@@ -585,41 +585,41 @@
    "audio": "flyers/u15-g.mp3",
    "data": {
     "scene": "track",
-    "place": "the running track",
+    "place": "la piste de course",
     "people": [
      {
       "slug": "diego",
       "name": "Diego",
       "clue": "le garçon au t-shirt rouge avec un microphone",
-      "action": "is asking questions with his microphone",
+      "action": "pose des questions avec son microphone",
       "pose": 7
      },
      {
       "slug": "oliver",
       "name": "Oliver",
       "clue": "le garçon aux cheveux roux et au t-shirt jaune",
-      "action": "is singing",
+      "action": "chante",
       "pose": 7
      },
      {
       "slug": "samu",
       "name": "Samu",
       "clue": "le garçon aux cheveux blonds courts avec un sac à dos",
-      "action": "is waving",
+      "action": "fait signe",
       "pose": 7
      },
      {
       "slug": "bruno",
       "name": "Bruno",
       "clue": "le garçon aux cheveux bruns bouclés et au t-shirt vert",
-      "action": "is running after the ball",
+      "action": "court après le ballon",
       "pose": 7
      },
      {
       "slug": "vega",
       "name": "Mr Vega",
       "clue": "l'homme à la chemise bleue",
-      "action": "is showing the way to the sports centre",
+      "action": "montre le chemin du centre sportif",
       "figura": "father"
      }
     ],

@@ -247,8 +247,8 @@
      "nombre": "People & Cultures"
     },
     "destreza": "Writing",
-    "puede": "Writing Part 3: 20–25-word picture story (Flyers); classroom pieces 100–150w.",
-    "clase": "Flyers-style: 20-25-word picture story (Writing Part 3)",
+    "puede": "Écrire une histoire en images de 20 à 25 mots ; textes de classe de 100 à 150 mots.",
+    "clase": "Type examen : histoire en images de 20 à 25 mots (production écrite)",
     "examen_parte": {
      "paper": "Reading & Writing",
      "part": 7
@@ -267,7 +267,7 @@
       ],
       "word": "",
       "hint": "Ingrid / devant l'école",
-      "model": "One morning Ingrid is at the front of the school."
+      "model": "Un matin Ingrid est devant l'école."
      },
      {
       "n": 2,
@@ -284,7 +284,7 @@
       ],
       "word": "",
       "hint": "Ingrid / rencontrer / Oliver",
-      "model": "Then Ingrid meets Oliver at the amphitheatre."
+      "model": "Ensuite Ingrid rencontre Oliver à l'amphithéâtre."
      },
      {
       "n": 3,
@@ -301,15 +301,15 @@
       ],
       "word": "",
       "hint": "à la fête foraine / content",
-      "model": "At the funfair they are very happy together."
+      "model": "À la fête foraine ils sont très contents ensemble."
      }
     ],
     "min_words": 20,
     "max_words": 25,
-    "model": "One morning Ingrid is at the front of the school. Then Ingrid meets Oliver at the amphitheatre. At the funfair they are very happy together.",
+    "model": "Un matin Ingrid est devant l'école. Ensuite Ingrid rencontre Oliver à l'amphithéâtre. À la fête foraine ils sont très contents ensemble.",
     "words": [],
     "support": {
-     "grammar": "general vocabulary review",
+     "grammar": "bilan de vocabulaire général",
      "words": [
       "dictionnaire",
       "orthographe",
@@ -338,8 +338,8 @@
      "nombre": "People & Cultures"
     },
     "destreza": "Listening",
-    "puede": "Understand dialogues and short stories (Flyers parts 1–5); infer mood from intonation.",
-    "clase": "Flyers-style: listen and label the people in the picture",
+    "puede": "Comprendre des dialogues et des histoires courtes ; deviner l'humeur d'après l'intonation.",
+    "clase": "Type examen : écouter et écrire le prénom de chaque personne de l'image",
     "examen_parte": {
      "paper": "Listening",
      "part": 1
@@ -348,41 +348,41 @@
    "audio": "flyers/u52-g.mp3",
    "data": {
     "scene": "amphitheater",
-    "place": "the amphitheatre",
+    "place": "l'amphithéâtre",
     "people": [
      {
       "slug": "ingrid",
       "name": "Ingrid",
       "clue": "la fille aux cheveux blonds et à la veste bleu foncé",
-      "action": "is reading the plan for the day",
+      "action": "lit le programme de la journée",
       "pose": 7
      },
      {
       "slug": "oliver",
       "name": "Oliver",
       "clue": "le garçon aux cheveux roux et au t-shirt jaune",
-      "action": "is singing",
+      "action": "chante",
       "pose": 7
      },
      {
       "slug": "samu",
       "name": "Samu",
       "clue": "le garçon aux cheveux blonds courts avec un sac à dos",
-      "action": "is waving",
+      "action": "fait signe",
       "pose": 7
      },
      {
       "slug": "bruno",
       "name": "Bruno",
       "clue": "le garçon aux cheveux bruns bouclés et au t-shirt vert",
-      "action": "is running after the ball",
+      "action": "court après le ballon",
       "pose": 7
      },
      {
       "slug": "tino",
       "name": "Tino",
       "clue": "le garçon aux cheveux très courts et au t-shirt blanc et vert",
-      "action": "is playing hockey",
+      "action": "joue au hockey",
       "pose": 7
      }
     ],

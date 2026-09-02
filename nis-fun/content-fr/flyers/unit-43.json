@@ -247,8 +247,8 @@
      "nombre": "Everyday Life & Habits"
     },
     "destreza": "Listening",
-    "puede": "Understand dialogues and short stories (Flyers parts 1–5); infer mood from intonation.",
-    "clase": "Flyers-style: listen and tick the right picture",
+    "puede": "Comprendre des dialogues et des histoires courtes ; deviner l'humeur d'après l'intonation.",
+    "clase": "Type examen : écouter et cocher la bonne image",
     "examen_parte": {
      "paper": "Listening",
      "part": 4
@@ -355,8 +355,8 @@
      "nombre": "Everyday Life & Habits"
     },
     "destreza": "Listening",
-    "puede": "Understand dialogues and short stories (Flyers parts 1–5); infer mood from intonation.",
-    "clase": "Flyers-style: listen and match each person to a picture",
+    "puede": "Comprendre des dialogues et des histoires courtes ; deviner l'humeur d'après l'intonation.",
+    "clase": "Type examen : écouter et associer chaque personne à une image",
     "examen_parte": {
      "paper": "Listening",
      "part": 3
@@ -455,8 +455,8 @@
      "nombre": "Everyday Life & Habits"
     },
     "destreza": "Writing",
-    "puede": "Writing Part 3: 20–25-word picture story (Flyers); classroom pieces 100–150w.",
-    "clase": "Flyers-style: 20-25-word picture story (Writing Part 3)",
+    "puede": "Écrire une histoire en images de 20 à 25 mots ; textes de classe de 100 à 150 mots.",
+    "clase": "Type examen : histoire en images de 20 à 25 mots (production écrite)",
     "examen_parte": {
      "paper": "Reading & Writing",
      "part": 7
@@ -475,7 +475,7 @@
       ],
       "word": "phare",
       "hint": "Ingrid / prend / un phare",
-      "model": "Ingrid takes a lighthouse in the main building."
+      "model": "Ingrid prend un phare dans le bâtiment principal."
      },
      {
       "n": 2,
@@ -492,7 +492,7 @@
       ],
       "word": "tente",
       "hint": "Maya / apporter / une tente",
-      "model": "Then Maya brings a tent."
+      "model": "Ensuite Maya apporte une tente."
      },
      {
       "n": 3,
@@ -509,19 +509,19 @@
       ],
       "word": "valise",
       "hint": "maintenant / une valise / content",
-      "model": "Now they have got a suitcase too, and both are happy."
+      "model": "Maintenant ils ont aussi une valise, et tous les deux sont contents."
      }
     ],
     "min_words": 20,
     "max_words": 25,
-    "model": "Ingrid takes a lighthouse in the main building. Then Maya brings a tent. Now they have got a suitcase too, and both are happy.",
+    "model": "Ingrid prend un phare dans le bâtiment principal. Ensuite Maya apporte une tente. Maintenant ils ont aussi une valise, et tous les deux sont contents.",
     "words": [
      "phare",
      "tente",
      "valise"
     ],
     "support": {
-     "grammar": "going to + planes",
+     "grammar": "le futur proche : je vais + infinitif",
      "words": [
       "hôtel",
       "tente",
@@ -550,8 +550,8 @@
      "nombre": "Everyday Life & Habits"
     },
     "destreza": "Listening",
-    "puede": "Understand dialogues and short stories (Flyers parts 1–5); infer mood from intonation.",
-    "clase": "Flyers-style: listen and label the people in the picture",
+    "puede": "Comprendre des dialogues et des histoires courtes ; deviner l'humeur d'après l'intonation.",
+    "clase": "Type examen : écouter et écrire le prénom de chaque personne de l'image",
     "examen_parte": {
      "paper": "Listening",
      "part": 1
@@ -560,41 +560,41 @@
    "audio": "flyers/u43-g.mp3",
    "data": {
     "scene": "main-building",
-    "place": "the main building",
+    "place": "le bâtiment principal",
     "people": [
      {
       "slug": "ingrid",
       "name": "Ingrid",
       "clue": "la fille aux cheveux blonds et à la veste bleu foncé",
-      "action": "is reading the plan for the day",
+      "action": "lit le programme de la journée",
       "pose": 7
      },
      {
       "slug": "maya",
       "name": "Maya",
       "clue": "la fille au t-shirt vert avec une loupe",
-      "action": "is looking at something very small",
+      "action": "observe quelque chose de tout petit",
       "pose": 7
      },
      {
       "slug": "diego",
       "name": "Diego",
       "clue": "le garçon au t-shirt rouge avec un microphone",
-      "action": "is asking questions with his microphone",
+      "action": "pose des questions avec son microphone",
       "pose": 7
      },
      {
       "slug": "lia",
       "name": "Lia",
       "clue": "la fille aux nattes noires et au t-shirt violet",
-      "action": "is jumping with a skipping rope",
+      "action": "saute à la corde",
       "pose": 7
      },
      {
       "slug": "samu",
       "name": "Samu",
       "clue": "le garçon aux cheveux blonds courts avec un sac à dos",
-      "action": "is waving",
+      "action": "fait signe",
       "pose": 7
      }
     ],

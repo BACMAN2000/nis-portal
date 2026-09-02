@@ -369,8 +369,8 @@
      "nombre": "Adventures & Experiences"
     },
     "destreza": "Writing",
-    "puede": "Writing Part 3: 20–25-word picture story (Flyers); classroom pieces 100–150w.",
-    "clase": "Flyers-style: 20-25-word picture story (Writing Part 3)",
+    "puede": "Écrire une histoire en images de 20 à 25 mots ; textes de classe de 100 à 150 mots.",
+    "clase": "Type examen : histoire en images de 20 à 25 mots (production écrite)",
     "examen_parte": {
      "paper": "Reading & Writing",
      "part": 7
@@ -389,7 +389,7 @@
       ],
       "word": "",
       "hint": "Oliver / au belvédère",
-      "model": "One morning Oliver is at the viewpoint."
+      "model": "Un matin Oliver est au belvédère."
      },
      {
       "n": 2,
@@ -406,7 +406,7 @@
       ],
       "word": "",
       "hint": "Oliver / rencontrer / Diego",
-      "model": "Then Oliver meets Diego at the maze."
+      "model": "Ensuite Oliver rencontre Diego au labyrinthe."
      },
      {
       "n": 3,
@@ -423,15 +423,15 @@
       ],
       "word": "",
       "hint": "dans la cuisine du phare / content",
-      "model": "In the lighthouse kitchen they are very happy together."
+      "model": "Dans la cuisine du phare ils sont très contents ensemble."
      }
     ],
     "min_words": 20,
     "max_words": 25,
-    "model": "One morning Oliver is at the viewpoint. Then Oliver meets Diego at the maze. In the lighthouse kitchen they are very happy together.",
+    "model": "Un matin Oliver est au belvédère. Ensuite Oliver rencontre Diego au labyrinthe. Dans la cuisine du phare ils sont très contents ensemble.",
     "words": [],
     "support": {
-     "grammar": "present perfect: just / already / yet",
+     "grammar": "le passé composé : déjà / vient de / pas encore",
      "words": [
       "oublier",
       "oublié",
@@ -460,8 +460,8 @@
      "nombre": "Adventures & Experiences"
     },
     "destreza": "Listening",
-    "puede": "Understand dialogues and short stories (Flyers parts 1–5); infer mood from intonation.",
-    "clase": "Flyers-style: listen and label the people in the picture",
+    "puede": "Comprendre des dialogues et des histoires courtes ; deviner l'humeur d'après l'intonation.",
+    "clase": "Type examen : écouter et écrire le prénom de chaque personne de l'image",
     "examen_parte": {
      "paper": "Listening",
      "part": 1
@@ -470,41 +470,41 @@
    "audio": "flyers/u03-h.mp3",
    "data": {
     "scene": "labyrinth",
-    "place": "the maze",
+    "place": "le labyrinthe",
     "people": [
      {
       "slug": "oliver",
       "name": "Oliver",
       "clue": "le garçon aux cheveux roux et au t-shirt jaune",
-      "action": "is singing",
+      "action": "chante",
       "pose": 7
      },
      {
       "slug": "kili",
       "name": "Kili",
       "clue": "le grand oiseau noir avec un collier blanc",
-      "action": "is carrying a letter",
+      "action": "porte une lettre",
       "pose": 3
      },
      {
       "slug": "samu",
       "name": "Samu",
       "clue": "le garçon aux cheveux blonds courts avec un sac à dos",
-      "action": "is waving",
+      "action": "fait signe",
       "pose": 7
      },
      {
       "slug": "diego",
       "name": "Diego",
       "clue": "le garçon au t-shirt rouge avec un microphone",
-      "action": "is asking questions with his microphone",
+      "action": "pose des questions avec son microphone",
       "pose": 7
      },
      {
       "slug": "vega",
       "name": "Mr Vega",
       "clue": "l'homme à la chemise bleue",
-      "action": "is showing the way to the sports centre",
+      "action": "montre le chemin du centre sportif",
       "figura": "father"
      }
     ],

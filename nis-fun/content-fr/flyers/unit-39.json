@@ -271,8 +271,8 @@
      "nombre": "Adventures & Experiences"
     },
     "destreza": "Listening",
-    "puede": "Understand dialogues and short stories (Flyers parts 1–5); infer mood from intonation.",
-    "clase": "Flyers-style: listen and tick the right picture",
+    "puede": "Comprendre des dialogues et des histoires courtes ; deviner l'humeur d'après l'intonation.",
+    "clase": "Type examen : écouter et cocher la bonne image",
     "examen_parte": {
      "paper": "Listening",
      "part": 4
@@ -379,8 +379,8 @@
      "nombre": "Adventures & Experiences"
     },
     "destreza": "Listening",
-    "puede": "Understand dialogues and short stories (Flyers parts 1–5); infer mood from intonation.",
-    "clase": "Flyers-style: listen and match each person to a picture",
+    "puede": "Comprendre des dialogues et des histoires courtes ; deviner l'humeur d'après l'intonation.",
+    "clase": "Type examen : écouter et associer chaque personne à une image",
     "examen_parte": {
      "paper": "Listening",
      "part": 3
@@ -479,8 +479,8 @@
      "nombre": "Adventures & Experiences"
     },
     "destreza": "Writing",
-    "puede": "Writing Part 3: 20–25-word picture story (Flyers); classroom pieces 100–150w.",
-    "clase": "Flyers-style: 20-25-word picture story (Writing Part 3)",
+    "puede": "Écrire une histoire en images de 20 à 25 mots ; textes de classe de 100 à 150 mots.",
+    "clase": "Type examen : histoire en images de 20 à 25 mots (production écrite)",
     "examen_parte": {
      "paper": "Reading & Writing",
      "part": 7
@@ -499,7 +499,7 @@
       ],
       "word": "explorateur",
       "hint": "Maya / montre / un explorateur",
-      "model": "Maya shows an explorer at the maze."
+      "model": "Maya montre un explorateur au labyrinthe."
      },
      {
       "n": 2,
@@ -516,7 +516,7 @@
       ],
       "word": "montagne",
       "hint": "Ingrid / apporter / une montagne",
-      "model": "Then Ingrid brings a mountain."
+      "model": "Ensuite Ingrid apporte une montagne."
      },
      {
       "n": 3,
@@ -533,19 +533,19 @@
       ],
       "word": "carte",
       "hint": "maintenant / une carte / content",
-      "model": "Now they have got a map too, and both are happy."
+      "model": "Maintenant ils ont aussi une carte, et tous les deux sont contents."
      }
     ],
     "min_words": 20,
     "max_words": 25,
-    "model": "Maya shows an explorer at the maze. Then Ingrid brings a mountain. Now they have got a map too, and both are happy.",
+    "model": "Maya montre un explorateur au labyrinthe. Ensuite Ingrid apporte une montagne. Maintenant ils ont aussi une carte, et tous les deux sont contents.",
     "words": [
      "explorateur",
      "montagne",
      "carte"
     ],
     "support": {
-     "grammar": "past simple in biographies",
+     "grammar": "le passé composé dans les biographies",
      "words": [
       "explorateur",
       "voyage",
@@ -574,8 +574,8 @@
      "nombre": "Adventures & Experiences"
     },
     "destreza": "Listening",
-    "puede": "Understand dialogues and short stories (Flyers parts 1–5); infer mood from intonation.",
-    "clase": "Flyers-style: listen and label the people in the picture",
+    "puede": "Comprendre des dialogues et des histoires courtes ; deviner l'humeur d'après l'intonation.",
+    "clase": "Type examen : écouter et écrire le prénom de chaque personne de l'image",
     "examen_parte": {
      "paper": "Listening",
      "part": 1
@@ -584,41 +584,41 @@
    "audio": "flyers/u39-g.mp3",
    "data": {
     "scene": "funfair",
-    "place": "the funfair",
+    "place": "la fête foraine",
     "people": [
      {
       "slug": "maya",
       "name": "Maya",
       "clue": "la fille au t-shirt vert avec une loupe",
-      "action": "is looking at something very small",
+      "action": "observe quelque chose de tout petit",
       "pose": 7
      },
      {
       "slug": "ingrid",
       "name": "Ingrid",
       "clue": "la fille aux cheveux blonds et à la veste bleu foncé",
-      "action": "is reading the plan for the day",
+      "action": "lit le programme de la journée",
       "pose": 7
      },
      {
       "slug": "lia",
       "name": "Lia",
       "clue": "la fille aux nattes noires et au t-shirt violet",
-      "action": "is jumping with a skipping rope",
+      "action": "saute à la corde",
       "pose": 7
      },
      {
       "slug": "bruno",
       "name": "Bruno",
       "clue": "le garçon aux cheveux bruns bouclés et au t-shirt vert",
-      "action": "is running after the ball",
+      "action": "court après le ballon",
       "pose": 7
      },
      {
       "slug": "vega",
       "name": "Mr Vega",
       "clue": "l'homme à la chemise bleue",
-      "action": "is showing the way to the sports centre",
+      "action": "montre le chemin du centre sportif",
       "figura": "father"
      }
     ],

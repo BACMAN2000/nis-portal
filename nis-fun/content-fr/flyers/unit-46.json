@@ -270,8 +270,8 @@
      "nombre": "Health & Wellbeing"
     },
     "destreza": "Listening",
-    "puede": "Understand dialogues and short stories (Flyers parts 1–5); infer mood from intonation.",
-    "clase": "Flyers-style: listen and tick the right picture",
+    "puede": "Comprendre des dialogues et des histoires courtes ; deviner l'humeur d'après l'intonation.",
+    "clase": "Type examen : écouter et cocher la bonne image",
     "examen_parte": {
      "paper": "Listening",
      "part": 4
@@ -397,8 +397,8 @@
      "nombre": "Health & Wellbeing"
     },
     "destreza": "Listening",
-    "puede": "Understand dialogues and short stories (Flyers parts 1–5); infer mood from intonation.",
-    "clase": "Flyers-style: listen and match each person to a picture",
+    "puede": "Comprendre des dialogues et des histoires courtes ; deviner l'humeur d'après l'intonation.",
+    "clase": "Type examen : écouter et associer chaque personne à une image",
     "examen_parte": {
      "paper": "Listening",
      "part": 3
@@ -503,8 +503,8 @@
      "nombre": "Health & Wellbeing"
     },
     "destreza": "Writing",
-    "puede": "Writing Part 3: 20–25-word picture story (Flyers); classroom pieces 100–150w.",
-    "clase": "Flyers-style: 20-25-word picture story (Writing Part 3)",
+    "puede": "Écrire une histoire en images de 20 à 25 mots ; textes de classe de 100 à 150 mots.",
+    "clase": "Type examen : histoire en images de 20 à 25 mots (production écrite)",
     "examen_parte": {
      "paper": "Reading & Writing",
      "part": 7
@@ -523,7 +523,7 @@
       ],
       "word": "agriculteur",
       "hint": "Maya / donne / un agriculteur",
-      "model": "Maya gives a farmer at the hockey pitch."
+      "model": "Maya donne un agriculteur au terrain de hockey."
      },
      {
       "n": 2,
@@ -540,7 +540,7 @@
       ],
       "word": "écrivain",
       "hint": "Oliver / apporter / un écrivain",
-      "model": "Then Oliver brings a writer."
+      "model": "Ensuite Oliver apporte un écrivain."
      },
      {
       "n": 3,
@@ -557,19 +557,19 @@
       ],
       "word": "inventeur",
       "hint": "maintenant / un inventeur / content",
-      "model": "Now they have got an inventor too, and both are happy."
+      "model": "Maintenant ils ont aussi un inventeur, et tous les deux sont contents."
      }
     ],
     "min_words": 20,
     "max_words": 25,
-    "model": "Maya gives a farmer at the hockey pitch. Then Oliver brings a writer. Now they have got an inventor too, and both are happy.",
+    "model": "Maya donne un agriculteur au terrain de hockey. Ensuite Oliver apporte un écrivain. Maintenant ils ont aussi un inventeur, et tous les deux sont contents.",
     "words": [
      "agriculteur",
      "écrivain",
      "inventeur"
     ],
     "support": {
-     "grammar": "might / may (posibilidad)",
+     "grammar": "peut-être (la possibilité)",
      "words": [
       "peut-être",
       "peut",
@@ -598,8 +598,8 @@
      "nombre": "Health & Wellbeing"
     },
     "destreza": "Listening",
-    "puede": "Understand dialogues and short stories (Flyers parts 1–5); infer mood from intonation.",
-    "clase": "Flyers-style: listen and label the people in the picture",
+    "puede": "Comprendre des dialogues et des histoires courtes ; deviner l'humeur d'après l'intonation.",
+    "clase": "Type examen : écouter et écrire le prénom de chaque personne de l'image",
     "examen_parte": {
      "paper": "Listening",
      "part": 1
@@ -608,41 +608,41 @@
    "audio": "flyers/u46-g.mp3",
    "data": {
     "scene": "track",
-    "place": "the running track",
+    "place": "la piste de course",
     "people": [
      {
       "slug": "maya",
       "name": "Maya",
       "clue": "la fille au t-shirt vert avec une loupe",
-      "action": "is looking at something very small",
+      "action": "observe quelque chose de tout petit",
       "pose": 7
      },
      {
       "slug": "oliver",
       "name": "Oliver",
       "clue": "le garçon aux cheveux roux et au t-shirt jaune",
-      "action": "is singing",
+      "action": "chante",
       "pose": 7
      },
      {
       "slug": "tino",
       "name": "Tino",
       "clue": "le garçon aux cheveux très courts et au t-shirt blanc et vert",
-      "action": "is playing hockey",
+      "action": "joue au hockey",
       "pose": 7
      },
      {
       "slug": "lia",
       "name": "Lia",
       "clue": "la fille aux nattes noires et au t-shirt violet",
-      "action": "is jumping with a skipping rope",
+      "action": "saute à la corde",
       "pose": 7
      },
      {
       "slug": "bruno",
       "name": "Bruno",
       "clue": "le garçon aux cheveux bruns bouclés et au t-shirt vert",
-      "action": "is running after the ball",
+      "action": "court après le ballon",
       "pose": 7
      }
     ],
