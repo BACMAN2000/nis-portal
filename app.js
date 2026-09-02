@@ -1908,8 +1908,14 @@ const _RDR_ACT_RX=/^([a-z]+)-([a-z][0-9])-ch(\d+)-(.+)$/;
 const _rdrOr=()=>_RDR_IDS.map(id=>'activity.like.'+id+'-*').join(',');
 function _rdrPct(s,t){ return (t&&s!=null)? Math.round(s/t*100) : null; }
 function _rdr20(p){ return (Math.round(p/5*10)/10).toFixed(1); }
-function _rdrMark(p){ return p==null ? '<span class="muted">—</span>'
-  : `<b>${p}%</b> <span class="muted" style="font-size:.78rem">${_rdr20(p)}/20</span>`; }
+/* Escala del colegio (MINEDU): AD · A · B · C, de mayor a menor — NO la A/B/C
+   anglosajona. Mismos cortes que la banda del examen (attwn-exam.html), para
+   que el alumno y el profesor lean exactamente la misma letra. */
+function _rdrLvl(p){ return p>=90?'AD':p>=70?'A':p>=55?'B':'C'; }
+const _RDR_LVL_COL={AD:'#059669',A:'#0d9488',B:'#b45309',C:'#dc2626'};
+function _rdrMark(p){ if(p==null) return '<span class="muted">—</span>';
+  const L=_rdrLvl(p);
+  return `<b style="color:${_RDR_LVL_COL[L]}">${L}</b> <b>${p}%</b> <span class="muted" style="font-size:.78rem">${_rdr20(p)}/20</span>`; }
 function _rdrTime(s){ s=Math.round(s||0); if(!s) return '<span class="muted">—</span>';
   const h=Math.floor(s/3600), m=Math.round((s%3600)/60);
   return h ? h+'h '+String(m).padStart(2,'0')+'m' : (m? m+'m' : '&lt;1m'); }

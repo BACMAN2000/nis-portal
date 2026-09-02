@@ -306,7 +306,7 @@ window.addEventListener('hashchange',()=>{
   if(EX && !EX.done && !confirm('¿Salir del examen? Tus respuestas de esta pantalla se perderán.')){
     _setHash(EX.rid+'/'+EX.lvl+'/ch'+EX.ch); return;
   }
-  if(EX && EX.timer){ clearInterval(EX.timer); clearInterval(EX.poll); EX=null; }
+  if(EX){ clearInterval(EX.timer); clearInterval(EX.poll); clearInterval(EX.gracia); EX=null; }
   _applyHash();
 });
 /* El ◀ Back de la cabecera: una pantalla atrás; en la primera, al portal. */
@@ -389,17 +389,48 @@ window.viewChapters=async(rid,lvl,fromHash)=>{
 
 /* ---------- construcción del examen ---------- */
 function gapItems(data,ch){
-  // 4 huecos de listening: una oración del retelling con una palabra del
-  // vocabulario borrada; guarda el nº de párrafo para reproducir SU audio.
+  // 4 huecos de listening: una oración del retelling con una palabra borrada;
+  // guarda el nº de párrafo para reproducir SU audio.
+  //
+  // SIEMPRE 4. La nota es score/total, así que un capítulo que daba 2 huecos
+  // hacía que cada pregunta valiera más que en el de al lado, y el mismo
+  // alumno al reintentar podía recibir otro total. Tres pasadas cada vez menos
+  // exigentes con el largo de la frase y, si el vocabulario no alcanza (en B1
+  // los capítulos 3, 5 y 10 solo tienen 3 de sus 12 palabras dentro del
+  // texto), se completa con una palabra de contenido de la propia frase: la
+  // pregunta se ve igual y el audio sigue siendo el del párrafo.
   const paras=data.READINGS[ch]||[]; const c=data.CHAPTERS[ch-1];
-  const items=[]; const used=new Set();
-  for(const v of shuffle(c.vocab)){
-    if(items.length>=4) break;
-    const w=v[0].toLowerCase(); const re=new RegExp('\\b('+w+'s?)\\b','i');
-    for(let p=0;p<paras.length;p++){
-      const s=paras[p].split(/(?<=[.!?…’”])\s+/).find(s=>re.test(s)&&s.split(/\s+/).length<=30&&!used.has(s));
-      if(s){ used.add(s); const m=s.match(re);
-        items.push({sent:s.replace(re,'______'), answer:m[1], para:p+1}); break; }
+  const items=[]; const used=new Set(), dichas=new Set();
+  const frases=p=>paras[p].split(/(?<=[.!?…’”])\s+/);
+  const vocab=shuffle(c.vocab);
+  const pasada=(maxPal)=>{
+    for(const v of vocab){
+      if(items.length>=4) return;
+      if(dichas.has(v[0])) continue;                 // una palabra, un hueco
+      const w=v[0].toLowerCase(); const re=new RegExp('\\b('+w+'s?)\\b','i');
+      for(let p=0;p<paras.length;p++){
+        const s=frases(p).find(s=>re.test(s)&&s.split(/\s+/).length<=maxPal&&!used.has(s));
+        if(s){ used.add(s); dichas.add(v[0]); const m=s.match(re);
+          items.push({sent:s.replace(re,'______'), answer:m[1], para:p+1}); break; }
+      }
+    }
+  };
+  pasada(30); pasada(45); pasada(Infinity);
+  /* Relleno cuando el vocabulario del capítulo no da para cuatro. Se borra una
+     palabra de contenido (5+ letras, no de relleno y que salga UNA sola vez en
+     la frase, para no dejarla visible al lado del hueco). */
+  const VACIAS=new Set(['about','after','again','because','before','being','below','between','could','every','first','other','should','their','there','these','those','through','under','until','where','which','while','would','still','never','always','something','nothing','anyone','someone','everyone']);
+  for(let p=0;p<paras.length && items.length<4;p++){
+    for(const s of frases(p)){
+      if(items.length>=4) break;
+      const n=s.split(/\s+/).length; if(used.has(s)||n<6||n>30) continue;
+      const cand=(s.match(/\b[A-Za-z]{5,}\b/g)||[]).filter(x=>
+        !VACIAS.has(x.toLowerCase()) && !dichas.has(x.toUpperCase()) &&
+        (s.match(new RegExp('\\b'+x+'\\b','g'))||[]).length===1);
+      if(!cand.length) continue;
+      const w=cand[Math.floor(Math.random()*cand.length)];
+      used.add(s); dichas.add(w.toUpperCase());
+      items.push({sent:s.replace(new RegExp('\\b'+w+'\\b'),'______'), answer:w, para:p+1});
     }
   }
   return items;
@@ -466,7 +497,7 @@ window.startExam=async(rid,lvl,ch,fromHash)=>{
   const extra0=accFor(k,myChain).extra;
   EX={rid,lvl,ch,title:c.title,qs:buildExam(data,ch,lvl,rid,ch1x),ans:{},page:0,t0:Date.now(),
       secs:(mins+extra0)*60,total:(mins+extra0)*60,extra:extra0,chain:myChain,lockKey:k,
-      timer:null,poll:null,done:false,previewLocked:isStaff()&&!isOpen(k)};
+      timer:null,poll:null,gracia:null,done:false,previewLocked:isStaff()&&!isOpen(k)};
   EX.pages=Math.ceil(EX.qs.length/2);
   $('#main').innerHTML=`
     <div class="exam-top">
@@ -475,33 +506,78 @@ window.startExam=async(rid,lvl,ch,fromHash)=>{
       <span class="timer" id="tm">${mins+extra0}:00</span>
     </div>
     <div id="exBody"></div>`;
+  arrancarReloj();
+  /* Tiempo extra en caliente: si el profesor sube los minutos mientras el
+     alumno rinde, el cronómetro crece solo — y ahora también DESPUÉS de que
+     el reloj llegue a cero, mientras dure la gracia. */
+  EX.poll=setInterval(revisarExtra,20000);
+  renderPage();
+};
+
+/* El tick del cronómetro, aparte para poder reanudarlo si el tiempo extra
+   llega cuando el reloj ya estaba en cero. */
+function arrancarReloj(){
+  if(EX && EX.timer) clearInterval(EX.timer);
   EX.timer=setInterval(()=>{
+    if(!EX||EX.done) return;
     EX.secs--; const m=Math.floor(EX.secs/60), s=EX.secs%60;
     const tm=$('#tm'); if(tm){ tm.textContent=m+':'+String(s).padStart(2,'0'); tm.classList.toggle('low',EX.secs<=60); }
     const tb=$('#tb'); if(tb) tb.style.width=Math.max(0,EX.secs/EX.total*100)+'%';
-    if(EX.secs<=0){ clearInterval(EX.timer); clearInterval(EX.poll); alert('⏰ Time is up! Your exam will be submitted now.'); submitExam(true); }
+    if(EX.secs<=0) seAcaboElTiempo();
   },1000);
-  /* Tiempo extra en caliente: si el profesor sube los minutos mientras el
-     alumno rinde, el cronómetro crece solo. Llega a tiempo si lo da ANTES de
-     que el reloj llegue a cero — después el examen ya se entregó. */
-  EX.poll=setInterval(async()=>{
-    if(EX.done||!sb) return;
-    try{
-      const q=await sb.from('reader_exam_access').select('key,scope,unlocked,extra_min,opens_at,closes_at').eq('key',EX.lockKey).eq('school_year',SCHOOL_YEAR);
-      if(q.error||!q.data) return;
-      q.data.forEach(row=>{ const i=ACC.findIndex(x=>x.key===row.key&&x.scope===row.scope);
-        if(i<0) ACC.push(row); else ACC[i]=row; });
-      const now=accFor(EX.lockKey,EX.chain).extra;
-      if(now>EX.extra){
-        const add=now-EX.extra; EX.extra=now; EX.secs+=add*60; EX.total+=add*60;
-        const b=$('#exBody'); if(b) b.insertAdjacentHTML('afterbegin',
-          `<div class="note" id="xtn">⏱ Your teacher gave you <b>+${add} minute(s)</b>. Keep going!</div>`);
-        setTimeout(()=>{ const el=$('#xtn'); if(el) el.remove(); },8000);
-      }
-    }catch(e){}
-  },20000);
-  renderPage();
-};
+}
+/* Se acabó el tiempo. NO se entrega en el acto, y sobre todo NO con un
+   alert(): el alert congela la página entera, así que el +5 del profesor no
+   llegaba nunca y el alumno se quedaba con un modal encima del examen que al
+   aceptar lo entregaba. Ahora el aviso va DENTRO de la página, se pregunta por
+   tiempo extra cada 3 s (en vez de cada 20) y solo se entrega si en esos
+   segundos no llega nada. */
+const GRACIA_SEG=45;
+function seAcaboElTiempo(){
+  if(!EX||EX.done||EX.gracia) return;
+  clearInterval(EX.timer); EX.timer=null; EX.secs=0;
+  const tm=$('#tm'); if(tm){ tm.textContent='0:00'; tm.classList.add('low'); }
+  const tb=$('#tb'); if(tb) tb.style.width='0%';
+  clearInterval(EX.poll); EX.poll=setInterval(revisarExtra,3000);
+  let quedan=GRACIA_SEG;
+  const texto=()=>'⏰ <b>Time is up.</b> Everything you have answered is saved. '
+    +'If your teacher gives you more time it will appear here on its own — '
+    +'otherwise the exam is sent in <b>'+quedan+'s</b>.';
+  const b=$('#exBody');
+  if(b && !$('#tup')) b.insertAdjacentHTML('afterbegin','<div class="note" id="tup">'+texto()+'</div>');
+  EX.gracia=setInterval(()=>{
+    if(!EX||EX.done){ clearInterval(EX.gracia); EX.gracia=null; return; }
+    quedan--;
+    const el=$('#tup'); if(el) el.innerHTML=texto();
+    if(quedan<=0){ clearInterval(EX.gracia); EX.gracia=null; submitExam(true); }
+  },1000);
+}
+/* Llegó tiempo extra con el reloj ya en cero: se quita el aviso y el examen
+   sigue donde estaba, sin recargar ni perder ninguna respuesta. */
+function reanudarExamen(){
+  if(EX.gracia){ clearInterval(EX.gracia); EX.gracia=null; }
+  const el=$('#tup'); if(el) el.remove();
+  clearInterval(EX.poll); EX.poll=setInterval(revisarExtra,20000);
+  if(!EX.timer) arrancarReloj();
+}
+async function revisarExtra(){
+  if(!EX||EX.done||!sb) return;
+  try{
+    const q=await sb.from('reader_exam_access').select('key,scope,unlocked,extra_min,opens_at,closes_at').eq('key',EX.lockKey).eq('school_year',SCHOOL_YEAR);
+    if(q.error||!q.data) return;
+    q.data.forEach(row=>{ const i=ACC.findIndex(x=>x.key===row.key&&x.scope===row.scope);
+      if(i<0) ACC.push(row); else ACC[i]=row; });
+    const now=accFor(EX.lockKey,EX.chain).extra;
+    if(now>EX.extra){
+      const add=now-EX.extra; EX.extra=now; EX.secs+=add*60; EX.total+=add*60;
+      if(!EX.timer) reanudarExamen();
+      const b=$('#exBody');
+      if(b) b.insertAdjacentHTML('afterbegin',
+        '<div class="note" id="xtn">⏱ Your teacher gave you <b>+'+add+' minute(s)</b>. Keep going!</div>');
+      setTimeout(()=>{ const el=$('#xtn'); if(el) el.remove(); },8000);
+    }
+  }catch(e){}
+}
 function qHTML(q,i){
   const a=EX.ans[i];
   let body='';
@@ -550,7 +626,7 @@ window.submitExam=async(force)=>{
   if(!EX||EX.done) return;
   const n=answeredCount();
   if(!force && n<EX.qs.length && !confirm('You have answered '+n+'/'+EX.qs.length+'. Submit anyway?')) return;
-  EX.done=true; clearInterval(EX.timer); stopQAudio();
+  EX.done=true; clearInterval(EX.timer); clearInterval(EX.gracia); EX.gracia=null; stopQAudio();
   let score=0;
   const review=EX.qs.map((q,i)=>{
     const a=EX.ans[i]; let good=false, your='—';
@@ -569,8 +645,12 @@ window.submitExam=async(force)=>{
       <div class="explain">${good?'✅':'❌'} ${esc(q.ex||'')}</div></div>`;
   });
   const pct=Math.round(score/EX.qs.length*100);
-  const band=pct>=90?['🏅 Grade A — Excellent!','#059669']:pct>=80?['🥈 Grade B — Very good','#0d9488']
-           :pct>=70?['🥉 Grade C — Pass','#b45309']:['📖 Not yet — review the chapter and try again','#dc2626'];
+  /* Escala del colegio (MINEDU), de mayor a menor: AD · A · B · C. NO es la
+     A/B/C anglosajona: aqui la C es lo mas bajo, no un aprobado. Los mismos
+     descriptores que el alumno ya ve en su cuaderno de unidad (unit.html). */
+  const band=pct>=90?['🏅 AD — Outstanding','#059669']:pct>=70?['✅ A — Expected','#0d9488']
+           :pct>=55?['📗 B — In progress','#b45309']
+           :['📖 C — Starting out. Review the chapter and try again.','#dc2626'];
   clearInterval(EX.poll);
   const dur=Math.max(1,Math.round((Date.now()-EX.t0)/1000));
   try{
