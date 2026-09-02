@@ -59,7 +59,7 @@ window.REC = (function () {
           <span class="rec-tiempo">0:00</span>
           <audio class="rec-audio" controls hidden></audio>
         </div>
-        <p class="rec-nota">${T('Record yourself comparing the two pictures. You can listen to it and record again. Your teacher will be able to hear it.','Enregistre-toi en comparant les deux images. Tu peux te réécouter et recommencer. Ton professeur pourra t'écouter.')}</p>
+        <p class="rec-nota">${T('Record yourself comparing the two pictures. You can listen to it and record again. Your teacher will be able to hear it.',"Enregistre-toi en comparant les deux images. Tu peux te réécouter et recommencer. Ton professeur pourra t’écouter.")}</p>
         <p class="rec-estado" role="status"></p>
       </div>`;
 
@@ -108,7 +108,7 @@ window.REC = (function () {
         if (window.REC_SUBIR) {
           try {
             await window.REC_SUBIR(blob, Object.assign({ id }, info));
-            estado.textContent = T('Saved. Your teacher can hear it now.','Enregistré. Ton professeur peut l'écouter.');
+            estado.textContent = T('Saved. Your teacher can hear it now.',"Enregistré. Ton professeur peut l’écouter.");
           } catch (e) {
             estado.textContent = T('Saved on this device. It will be sent when you are online.','Gardé sur cet appareil. Il partira quand tu seras connecté.');
           }
