@@ -411,6 +411,129 @@ function funYleBody(render){
       <button class="btn" onclick="${render}('funnordic')">🧸 Ver las entregas</button>
     </div>`;
 }
+/* ===== Francais - el mismo curso, en frances ==============================
+   No hay un segundo motor ni una segunda copia de los dibujos: el curso
+   frances es el mismo `nis-fun/engine` con ?lang=fr, que lee de content-fr.
+   Lo unico que se separa de verdad es el audio (las voces) y las entregas,
+   que llevan el idioma en la fila para no pisar las del curso ingles. */
+const FUN_FR = {
+  starters:{em:'\u{1F427}',curso:'Les Explorateurs', nivel:'Pr\u00e9-A1 \u00b7 d\u00e9butants', color:'#d97d0d',grados:'G1 \u00b7 G2',cast:'Les Explorateurs du Phare'},
+  movers:  {em:'\u{1F43A}',curso:'Les Aventuriers',  nivel:'A1 \u00b7 en route',      color:'#2f9268',grados:'G3 \u00b7 G4',cast:'Le Club du Fjord'},
+  flyers:  {em:'\u{1F985}',curso:'Les Navigateurs',  nivel:'A2 \u00b7 exploration',   color:'#3b6fb5',grados:'G5',    cast:"L'Exp\u00e9dition Aurore"},
+};
+let _FR_INDICE = null;          // cuantas unidades hay de verdad en cada nivel
+async function frIndice(){
+  if (_FR_INDICE) return _FR_INDICE;
+  _FR_INDICE = {};
+  for (const n of ['starters','movers','flyers']) {
+    try {
+      const r = await fetch(`nis-fun/content-fr/${n}/index.json`, {cache:'no-cache'});
+      _FR_INDICE[n] = r.ok ? ((await r.json()).units || []).length : 0;
+    } catch(e) { _FR_INDICE[n] = 0; }
+  }
+  return _FR_INDICE;
+}
+function funFrCursoBody(nivel){
+  const c = FUN_FR[nivel] || FUN_FR.starters;
+  const url = `nis-fun/engine/?level=${nivel}&lang=fr`;
+  return `
+  <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
+    <div class="muted" style="flex:1;min-width:220px"><b>${c.curso}</b> \u2014 ${c.nivel} (${c.grados} \u00b7 ${c.cast}).
+      Mismo curso, mismos dibujos y mismas l\u00e1minas que la versi\u00f3n inglesa, con el texto y las voces en franc\u00e9s.
+      Lo que el alumno escriba y grabe aparece en <b>\u{1F1EB}\u{1F1F7} Fran\u00e7ais \u2192 M\u00e9tricas</b>.</div>
+    <a class="btn" href="${url}" target="_blank" rel="noopener" style="background:${c.color};text-decoration:none">${c.em} Abrir en pantalla completa \u2197</a>
+  </div>
+  <iframe src="${url}" title="${esc(c.curso)}" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#fff"></iframe>`;
+}
+/* Hub del curso frances. Las unidades que anuncia NO son un numero escrito a
+   mano: se leen del indice que genera el propio contenido, asi que mientras se
+   traduce el resto la cifra sube sola y nunca promete lo que no existe. */
+async function funFrBody(render){
+  const idx = await frIndice();
+  const tarjeta = (nivel,tab) => {
+    const c = FUN_FR[nivel], n = idx[nivel] || 0;
+    return _hubCard(c.em, c.curso, `${c.nivel} \u00b7 ${c.grados}<br>${n} ${n===1?'unidad lista':'unidades listas'}`,
+      `${render}('${tab}')`);
+  };
+  const total = Object.values(idx).reduce((a,b)=>a+b,0);
+  return `<h1>\u{1F1EB}\u{1F1F7} Fran\u00e7ais \u2014 Fun for Nordic</h1>
+    <p class="muted" style="margin-top:-6px">El curso de primaria en franc\u00e9s: el mismo motor, los mismos
+      personajes y los mismos dibujos, con el texto adaptado y las voces grabadas en franc\u00e9s.
+      Hoy hay <b>${total} de 150 unidades</b> listas; el resto aparece aqu\u00ed solo cuando est\u00e1 completo.</p>
+    <div class="grid cols-3">
+      ${tarjeta('starters','frstarters')}${tarjeta('movers','frmovers')}${tarjeta('flyers','frflyers')}
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h2 style="margin:0 0 4px;color:var(--blue-d)">\u{1F4CA} C\u00f3mo se est\u00e1 usando</h2>
+      <div class="muted" style="font-size:.88rem;margin-bottom:12px">Alumnos, unidades, actividades y minutos
+        del curso franc\u00e9s, separados del ingl\u00e9s. Es lo que responde a \u00ab\u00bfesto se usa de verdad?\u00bb.</div>
+      <button class="btn" onclick="${render}('frmetricas')">\u{1F4CA} Ver m\u00e9tricas</button>
+    </div>`;
+}
+/* Metricas del curso frances. Sale de v_fun_metricas y v_fun_unidades, que
+   agrupan por idioma: aqui nunca se mezcla con lo que hacen en ingles. */
+async function funFrMetricas(){
+  $('#main').innerHTML = `<h1>\u{1F4CA} Fran\u00e7ais \u00b7 m\u00e9tricas</h1><p class="muted">Cargando\u2026</p>`;
+  const [alu, uds] = await Promise.all([
+    sb.from('v_fun_metricas').select('*').eq('lang','fr').order('ultima',{ascending:false}),
+    sb.from('v_fun_unidades').select('*').eq('lang','fr').order('unit',{ascending:true}),
+  ]);
+  const A = alu.data || [], U = uds.data || [];
+  const min = x => Math.round((x||0)/60);
+  const totalAlumnos = new Set(A.map(r=>r.student_id)).size;
+  const totalAct = A.reduce((a,r)=>a+(r.actividades||0),0);
+  const totalMin = min(A.reduce((a,r)=>a+(r.segundos||0),0));
+  const totalEsc = A.reduce((a,r)=>a+(r.escritas||0),0);
+  const totalGrab = A.reduce((a,r)=>a+(r.grabaciones||0),0);
+  const kpi = (n,t) => `<div class="card" style="text-align:center;padding:14px">
+      <div style="font-size:1.9rem;font-weight:800;color:var(--blue-d)">${n}</div>
+      <div class="muted" style="font-size:.82rem">${t}</div></div>`;
+  const filas = A.map(r => `<tr>
+      <td>${esc(r.full_name||'\u2014')}</td>
+      <td>${esc(r.grade_id||'')}${r.section?' '+esc(r.section):''}</td>
+      <td>${esc(FUN_FR[r.level]?FUN_FR[r.level].curso:r.level)}</td>
+      <td style="text-align:center">${r.unidades||0}</td>
+      <td style="text-align:center">${r.actividades||0}</td>
+      <td style="text-align:center">${r.escritas||0}</td>
+      <td style="text-align:center">${r.grabaciones||0}</td>
+      <td style="text-align:center">${min(r.segundos)}</td>
+      <td style="text-align:center">${r.corregidas||0}${r.nota_media!=null?' \u00b7 '+r.nota_media:''}</td>
+      <td class="muted" style="font-size:.82rem">${r.ultima?new Date(r.ultima).toLocaleDateString():'\u2014'}</td>
+    </tr>`).join('');
+  const porUnidad = U.map(r => `<tr>
+      <td>${esc(FUN_FR[r.level]?FUN_FR[r.level].curso:r.level)}</td>
+      <td style="text-align:center">${r.unit}</td>
+      <td style="text-align:center">${r.alumnos||0}</td>
+      <td style="text-align:center">${r.entregas||0}</td>
+      <td style="text-align:center">${min(r.segundos)}</td>
+    </tr>`).join('');
+  $('#main').innerHTML = `<h1>\u{1F4CA} Fran\u00e7ais \u00b7 m\u00e9tricas</h1>
+    <p class="muted" style="margin-top:-6px">Solo el curso franc\u00e9s. Las entregas llevan el idioma dentro,
+      as\u00ed que lo de ingl\u00e9s no entra en estos n\u00fameros.</p>
+    <div class="grid cols-3" style="margin-bottom:16px">
+      ${kpi(totalAlumnos,'alumnos que lo han abierto')}
+      ${kpi(totalAct,'actividades hechas')}
+      ${kpi(totalMin+' min','tiempo dedicado')}
+      ${kpi(totalEsc,'producciones escritas')}
+      ${kpi(totalGrab,'grabaciones de voz')}
+      ${kpi(U.length,'unidades con actividad')}
+    </div>
+    <div class="card">
+      <h2 style="margin:0 0 10px">Por alumno</h2>
+      ${A.length ? `<div style="overflow-x:auto"><table class="tbl"><thead><tr>
+        <th>Alumno</th><th>Grado</th><th>Nivel</th><th>Unidades</th><th>Actividades</th>
+        <th>Escritas</th><th>Grabaciones</th><th>Minutos</th><th>Corregidas \u00b7 nota</th><th>\u00daltima vez</th>
+        </tr></thead><tbody>${filas}</tbody></table></div>`
+      : `<p class="muted">Todav\u00eda no hay actividad en el curso franc\u00e9s. Aparecer\u00e1 aqu\u00ed en cuanto un alumno abra una unidad.</p>`}
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h2 style="margin:0 0 10px">Por unidad</h2>
+      ${U.length ? `<div style="overflow-x:auto"><table class="tbl"><thead><tr>
+        <th>Nivel</th><th>Unidad</th><th>Alumnos</th><th>Entregas</th><th>Minutos</th>
+        </tr></thead><tbody>${porUnidad}</tbody></table></div>`
+      : `<p class="muted">Sin datos por unidad todav\u00eda.</p>`}
+    </div>`;
+}
 function studentMun(){ document.querySelectorAll('[data-nav]').forEach(e=>e.classList.toggle('active',e.dataset.nav==='mun')); $('#main').innerHTML = munBody(); }
 /* Student view: join a live NIShoot game (opens straight on the Join screen). */
 function nishootJoinBody(){ return `
@@ -681,6 +804,7 @@ async function renderAdmin(tab='users'){
       {key:'funstarters',label:'🐧 Starters'},
       {key:'funmovers',label:'🐺 Movers'},
       {key:'funflyers',label:'🦅 Flyers'},
+      {key:'fr',label:'🇫🇷 Français'},
       {key:'materiales',label:'📄 Materiales de clase'},
       {key:'library',label:'📚 Library'},
     ]},
@@ -728,6 +852,11 @@ async function renderAdmin(tab='users'){
   if(tab==='readers') return readerStatsPanel();
   if(tab==='funnordic') return funNordicPanel();
   if(tab==='funyle') return $('#main').innerHTML = funYleBody('renderAdmin');
+  if(tab==='fr') return funFrBody('renderAdmin').then(h => $('#main').innerHTML = h);
+  if(tab==='frstarters') return $('#main').innerHTML = funFrCursoBody('starters');
+  if(tab==='frmovers') return $('#main').innerHTML = funFrCursoBody('movers');
+  if(tab==='frflyers') return $('#main').innerHTML = funFrCursoBody('flyers');
+  if(tab==='frmetricas') return funFrMetricas();
   if(tab==='funstarters') return $('#main').innerHTML = funCursoBody('starters');
   if(tab==='funmovers') return $('#main').innerHTML = funCursoBody('movers');
   if(tab==='funflyers') return $('#main').innerHTML = funCursoBody('flyers');
@@ -2464,6 +2593,7 @@ async function renderTeacher(tab){
   ensenanza.push({key:'funstarters',label:'🐧 Starters'});
   ensenanza.push({key:'funmovers',label:'🐺 Movers'});
   ensenanza.push({key:'funflyers',label:'🦅 Flyers'});
+  ensenanza.push({key:'fr',label:'🇫🇷 Français'});
   ensenanza.push({key:'littlereaders',label:'🧒 Little Readers'});
   examenes.push({key:'exams',label:'🎧 Exámenes'});
   if(teacherAllowedGrades().length) examenes.push({key:'practice',label:'🎯 Practice Tests'});
@@ -2510,6 +2640,11 @@ async function renderTeacher(tab){
   if(active==='coach'){ $('#main').innerHTML = coachPanel(); return; }
   // Estas tres estaban en el menu pero sin handler: el profesor las clicaba y
   // le salia el mensaje de "sin accesos".
+  if(active==='fr') return funFrBody('renderTeacher').then(h => $('#main').innerHTML = h);
+  if(active==='frstarters') return $('#main').innerHTML = funFrCursoBody('starters');
+  if(active==='frmovers') return $('#main').innerHTML = funFrCursoBody('movers');
+  if(active==='frflyers') return $('#main').innerHTML = funFrCursoBody('flyers');
+  if(active==='frmetricas') return funFrMetricas();
   if(active==='funnordic') return funNordicPanel();
   if(active==='scope') return scopePanel();
   if(active==='littlereaders') return littleReadersPanel();
@@ -4063,7 +4198,24 @@ function studentStage(stage){
   $('#main').innerHTML=`${back}<h1>${m.emoji} ${m.title}</h1>
     <p class="muted" style="margin-top:-6px">${m.desc}</p>
     ${yle}
+    <div id="fr-card"></div>
     <div class="grid cols-3" style="margin-top:12px">${cards}</div>`;
+  if (stage==='primary') frIndice().then(idx => {
+    const caja = document.getElementById('fr-card');
+    if (!caja) return;
+    const botones = ['starters','movers','flyers'].filter(n => (idx[n]||0) > 0).map(n => {
+      const c = FUN_FR[n];
+      return `<a href="${_withBack('nis-fun/engine/?level='+n+'&lang=fr','classes_primary')}"
+                 target="_blank" rel="noopener" class="btn"
+                 style="background:${c.color};color:#fff;text-decoration:none">${c.em} ${c.curso}</a>`;
+    }).join('');
+    if (!botones) return;   // sin unidades listas no se ofrece nada
+    caja.innerHTML = `<div class="card" style="margin-top:16px;border-top:5px solid #2f9268">
+      <h2 style="margin:0 0 4px;color:var(--blue-d)">🇫🇷 Fun for Nordic — Français</h2>
+      <div class="muted" style="font-size:.9rem;margin-bottom:12px">Le même cours, en français : les mêmes
+        personnages, les mêmes dessins et des voix françaises. Ouvre une unité et c'est parti !</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">${botones}</div></div>`;
+  });
 }
 
 /* ---------- My Progress: historial completo del alumno (mocks, practice y actividades) ---------- */
