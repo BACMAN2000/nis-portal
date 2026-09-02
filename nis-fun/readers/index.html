@@ -150,14 +150,15 @@ const DATA = LANG === 'fr' ? 'data-fr' : 'data';
 const AUDIO = LANG === 'fr' ? 'audio-fr' : 'audio';
 const T = (en, fr) => (LANG === 'fr' ? fr : en);
 const Q = extra => (LANG === 'fr' ? (extra ? extra + '&lang=fr' : '?lang=fr') : (extra || './'));
-if (LANG === 'fr'){
-  document.documentElement.lang = 'fr';
-  document.title = 'Petits Lecteurs Nordic';
-  document.getElementById('tit').textContent = 'Petits Lecteurs Nordic';
-  document.getElementById('volver').textContent = '\u2039 La bibliothèque';
-  document.getElementById('home').textContent = 'Accueil \u203a';
-  app.innerHTML = '<p class="muted">Chargement…</p>';
-}
+/* Los rotulos que van escritos en el HTML, para que la pagina diga algo
+   antes de que corra nada. Se reescriben aqui los cinco juntos: asi se
+   traducen en un solo sitio y la auditoria los ve pasar por T(). */
+document.documentElement.lang = LANG;
+document.title = T('Nordic Little Readers', 'Petits Lecteurs Nordic');
+document.getElementById('tit').textContent = T('Nordic Little Readers', 'Petits Lecteurs Nordic');
+document.getElementById('volver').textContent = T('‹ Bookshelf', '‹ La bibliothèque');
+document.getElementById('home').textContent = T('Home ›', 'Accueil ›');
+app.innerHTML = `<p class="muted">${T('Loading…', 'Chargement…')}</p>`;
 document.getElementById('volver').href = LANG === 'fr' ? './?lang=fr' : './';
 
 const esc = t => String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;')
