@@ -640,7 +640,7 @@ if(/\.github\.io$/i.test(location.hostname)){
 <script src="vocab-art.js?v=3"></script>
 <script src="orientacion.js?v=1"></script>
 <script src="screens.js?v=6"></script>
-<script src="banner.js?v=10"></script>
+<script src="banner.js?v=11"></script>
 <script src="magicbox.js?v=6"></script>
 <script src="recorder.js?v=3"></script>
 <!-- el curso comparte dominio y sesion con el portal -->
@@ -731,7 +731,12 @@ const PORTAL = (() => {
 })();
 // El servidor cachea los mp4 4 horas y la ruta no cambia al reemplazarlos:
 // subir esta fecha obliga al navegador a volver a bajarlos.
-const VIDEO_V = '2026-08-25-marca';
+const VIDEO_V = '2026-09-02-fr';
+/* Los videos SI se separan por idioma, como el audio: el mismo mp4 doblado
+   al frances vive al lado con el sufijo -fr. El poster no, que es una
+   imagen y no tiene idioma. */
+const VSUF = LANG === 'fr' ? '-fr' : '';
+window.VIDEO_V = VIDEO_V;   // banner.js lo usa para su propio ?v=
 if (COLORS[LEVEL]) document.documentElement.style.setProperty('--accent', COLORS[LEVEL]);
 const CHAR = (slug, pose) => `../assets/characters/${LEVEL}/${slug}/pose-${String(pose).padStart(2,'0')}.png?v=${ART_V}`;
 // si no existe el PNG (arte 3D), cae al SVG plano provisional
@@ -780,7 +785,7 @@ async function levels(){
           <video muted playsinline preload="metadata"
                  poster="../assets/videos/posters/${l.mascot}-intro.jpg?v=${VIDEO_V}"
                  data-level-preview aria-hidden="true">
-            <source src="../assets/videos/${l.mascot}-intro.mp4?v=${VIDEO_V}" type="video/mp4">
+            <source src="../assets/videos/${l.mascot}-intro${VSUF}.mp4?v=${VIDEO_V}" type="video/mp4">
           </video>
           <span class="lvbadge">${l.exam}</span>
           <span class="lvplaying"><span class="lvpulse"></span> ${T('Adventure playing',"L'aventure est en cours")}</span>
@@ -898,7 +903,7 @@ async function hub(){
       etiquetaSiguiente: T('Story time','Le coin lecture'),
       html: `<div class="scr-centro">
         <video class="scr-video" controls preload="metadata"
-          src="../assets/videos/${idx.mascot}-intro.mp4?v=${VIDEO_V}"
+          src="../assets/videos/${idx.mascot}-intro${VSUF}.mp4?v=${VIDEO_V}"
           poster="../assets/videos/posters/${idx.mascot}-intro.jpg?v=${VIDEO_V}"
           onerror="this.closest('.scr-centro').querySelector('.ficha').hidden=true"></video>
         <div class="ficha">
