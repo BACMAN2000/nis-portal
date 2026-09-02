@@ -18,6 +18,11 @@
    "topic": "animaux"
   },
   {
+   "n": 2,
+   "title": "Quel temps fait-il ?",
+   "topic": "météo"
+  },
+  {
    "n": 3,
    "title": "Hier à la fête foraine",
    "topic": "le passé composé"
@@ -158,6 +163,11 @@
    "topic": "les comparatifs"
   },
   {
+   "n": 31,
+   "title": "Le meilleur de la classe",
+   "topic": "les superlatifs"
+  },
+  {
    "n": 32,
    "title": "Des nombres partout",
    "topic": "les nombres jusqu'à 100"
@@ -168,9 +178,19 @@
    "topic": "heure"
   },
   {
+   "n": 34,
+   "title": "Le temps aujourd'hui",
+   "topic": "le temps et les saisons"
+  },
+  {
    "n": 35,
    "title": "À qui sont ces jouets ?",
    "topic": "les possessifs"
+  },
+  {
+   "n": 36,
+   "title": "Je vais…",
+   "topic": "le futur proche"
   },
   {
    "n": 37,
@@ -208,9 +228,19 @@
    "topic": "indications"
   },
   {
+   "n": 44,
+   "title": "Une lettre à une amie",
+   "topic": "en train d'écrire"
+  },
+  {
    "n": 45,
    "title": "La fête d'anniversaire",
    "topic": "les fêtes"
+  },
+  {
+   "n": 46,
+   "title": "Au café",
+   "topic": "commander à manger"
   },
   {
    "n": 47,
@@ -221,6 +251,11 @@
    "n": 48,
    "title": "Jeux de mots",
    "topic": "bilan de vocabulaire"
+  },
+  {
+   "n": 49,
+   "title": "Conseils pour le jour de l'examen",
+   "topic": "entraînement à l'examen"
   },
   {
    "n": 50,
