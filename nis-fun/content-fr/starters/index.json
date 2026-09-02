@@ -43,9 +43,19 @@
    "topic": "couleurs"
   },
   {
+   "n": 7,
+   "title": "Mon corps",
+   "topic": "corps"
+  },
+  {
    "n": 8,
    "title": "Mon visage",
    "topic": "visage"
+  },
+  {
+   "n": 9,
+   "title": "Les vêtements que je porte",
+   "topic": "vêtements"
   },
   {
    "n": 10,
@@ -71,6 +81,11 @@
    "n": 14,
    "title": "Les boissons",
    "topic": "boissons"
+  },
+  {
+   "n": 15,
+   "title": "Les animaux à la maison",
+   "topic": "animaux de compagnie"
   },
   {
    "n": 16,
@@ -131,6 +146,16 @@
    "n": 27,
    "title": "Les sports que je fais",
    "topic": "sports"
+  },
+  {
+   "n": 28,
+   "title": "Le parc",
+   "topic": "cour de récréation"
+  },
+  {
+   "n": 29,
+   "title": "La rue",
+   "topic": "rue"
   },
   {
    "n": 30,
