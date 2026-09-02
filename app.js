@@ -385,6 +385,10 @@ const FUN_CURSOS = {
  * respuestas, ni en ingles ni en frances.
  */
 const FUN_LIBROS_N = { starters: 1, movers: 2, flyers: 3 };
+/* Cloudflare cachea los PDF siete dias y la ruta no cambia al
+   recompilarlos: sin esto el servidor tiene el libro nuevo y el borde sigue
+   sirviendo el viejo. SUBIR ESTA FECHA cada vez que se recompilen. */
+const FUN_LIBROS_V = '2026-09-02';
 const FUN_LIBROS_TXT = {
   en: { marca: '',    sb: "Student's Book", wb: 'Workbook',           key: "Teacher's Key" },
   fr: { marca: '-FR', sb: "Livre de l'\u00e9l\u00e8ve", wb: "Cahier d'exercices",
@@ -398,7 +402,7 @@ function funLibros(nivel, lang, conClave){
     // se abre en una pestana en vez de descargarse: el libro del alumno
     // pesa 24 MB y casi siempre lo que se quiere es mirarlo o imprimirlo
     `<a class="btn" target="_blank" rel="noopener"
-        href="nis-fun/book-builder/FunForNordic${n}${t.marca}-${suf}.pdf"
+        href="nis-fun/book-builder/FunForNordic${n}${t.marca}-${suf}.pdf?v=${FUN_LIBROS_V}"
         style="background:#fff;border:1px solid var(--line);color:var(--ink);text-decoration:none">${em} ${txt}</a>`;
   return libro('SB', '\u{1F4D8}', t.sb)
        + libro('WB', '\u{1F4DD}', t.wb)
