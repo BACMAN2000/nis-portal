@@ -33,6 +33,11 @@
    "topic": "nourriture"
   },
   {
+   "n": 7,
+   "title": "Au marché",
+   "topic": "les fruits et les légumes"
+  },
+  {
    "n": 8,
    "title": "Ma maison, ma chambre",
    "topic": "maison"
@@ -51,6 +56,11 @@
    "n": 13,
    "title": "Les règles de la classe",
    "topic": "devoir / ne pas devoir"
+  },
+  {
+   "n": 14,
+   "title": "Après l'école",
+   "topic": "le temps libre"
   },
   {
    "n": 15,
@@ -83,6 +93,11 @@
    "topic": "tâches ménagères"
   },
   {
+   "n": 26,
+   "title": "Chez le médecin",
+   "topic": "santé"
+  },
+  {
    "n": 27,
    "title": "La sortie scolaire",
    "topic": "le passé composé"
@@ -108,9 +123,19 @@
    "topic": "heure"
   },
   {
+   "n": 35,
+   "title": "À qui sont ces jouets ?",
+   "topic": "les possessifs"
+  },
+  {
    "n": 39,
    "title": "Un bon appétit",
    "topic": "les quantités"
+  },
+  {
+   "n": 41,
+   "title": "Dans la jungle",
+   "topic": "animaux sauvages"
   },
   {
    "n": 45,
