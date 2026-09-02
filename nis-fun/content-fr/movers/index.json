@@ -1,0 +1,51 @@
+{
+ "level": "movers",
+ "lang": "fr",
+ "name": "Les Aventuriers - Fun for Nordic 2",
+ "cast": "Le Club du Fjord",
+ "color": "#2f9268",
+ "mascot": "luna",
+ "kids": [
+  "erik",
+  "valentina",
+  "sofia",
+  "mateo"
+ ],
+ "units": [
+  {
+   "n": 8,
+   "title": "Ma maison, ma chambre",
+   "topic": "maison"
+  },
+  {
+   "n": 15,
+   "title": "La journée du sport",
+   "topic": "sports"
+  },
+  {
+   "n": 28,
+   "title": "L'aventure d'hier",
+   "topic": "les passés irréguliers"
+  },
+  {
+   "n": 30,
+   "title": "Plus grand et plus petit",
+   "topic": "les comparatifs"
+  },
+  {
+   "n": 32,
+   "title": "Des nombres partout",
+   "topic": "les nombres jusqu'à 100"
+  },
+  {
+   "n": 48,
+   "title": "Jeux de mots",
+   "topic": "bilan de vocabulaire"
+  },
+  {
+   "n": 50,
+   "title": "La remise des diplômes du Club du Fjord",
+   "topic": "bilan et fête"
+  }
+ ]
+}
