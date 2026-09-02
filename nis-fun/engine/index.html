@@ -641,7 +641,7 @@ if(/\.github\.io$/i.test(location.hostname)){
 <script src="orientacion.js?v=1"></script>
 <script src="screens.js?v=6"></script>
 <script src="banner.js?v=10"></script>
-<script src="magicbox.js?v=4"></script>
+<script src="magicbox.js?v=6"></script>
 <script src="recorder.js?v=2"></script>
 <!-- el curso comparte dominio y sesion con el portal -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
@@ -869,7 +869,7 @@ async function hub(){
       <span class="n">${u.n}</span> <b>${u.title}</b><br>
       <small>${u.topic}</small><br>
       <span class="stars" aria-hidden="true">${'★'.repeat(hechas)}${'☆'.repeat(4-hechas)}</span>
-      <span class="sr-only">${hechas} of 4 activities completed.</span>
+      <span class="sr-only">${T(`${hechas} of 4 activities completed.`, `${hechas} activités sur 4 terminées.`)}</span>
       <span class="unit-progress"><span class="unit-meter" aria-hidden="true"><span style="width:${pct}%"></span></span>
         <span>${hechas}/4</span></span></a>`;
   };
@@ -1328,9 +1328,11 @@ function pintaSelfCheck(el, digital){
     picture_story:  T('I can look at three pictures and write the story in 20-25 words.',
                       "Je sais regarder trois images et écrire l'histoire en 20-25 mots."),
   };
+  // Sin repetir: dos actividades del mismo tipo son la misma frase, y
+  // verla dos veces en la lista parece un fallo de la pagina.
   digital.forEach(a => {
     const t = PUEDO_POR_TIPO[a.type];
-    if (t) puedo.push(t);
+    if (t && !puedo.includes(t)) puedo.push(t);
   });
 
   el.innerHTML = `
@@ -1348,7 +1350,7 @@ function pintaSelfCheck(el, digital){
 
   const cuenta = () => {
     const n = el.querySelectorAll('input:checked').length;
-    el.querySelector('.sc-cuenta').textContent = `${n} / ${puedo.length} — well done!`;
+    el.querySelector('.sc-cuenta').textContent = T(`${n} / ${puedo.length} — well done!`, `${n} / ${puedo.length} — bravo !`);
   };
   el.querySelectorAll('input').forEach(c => c.onchange = () => {
     marcado[c.dataset.i] = c.checked;
@@ -2168,7 +2170,7 @@ picture_story(act, el){
     <div class="vis-historia">
       <textarea placeholder="Write the story here — ${min} to ${max} words."
         aria-label="${T('Your story','Ton histoire')}"></textarea>
-      <div class="vis-contador">0 words</div>
+      <div class="vis-contador">${T('0 words','0 mot')}</div>
     </div>
     <div class="checkrow"><button class="chk">${T("I have finished","J'ai fini")}</button>
       <button class="reveal" type="button">👁 ${T('See one possible story','Voir une histoire possible')}</button>
