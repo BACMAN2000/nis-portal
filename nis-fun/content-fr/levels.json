@@ -1,0 +1,28 @@
+{
+ "levels": [
+  {
+   "id": "starters",
+   "name": "Fun for Nordic 1",
+   "exam": "Pré-A1 · débutants",
+   "cast": "Les Explorateurs du Phare",
+   "mascot": "pip",
+   "color": "#d97d0d"
+  },
+  {
+   "id": "movers",
+   "name": "Fun for Nordic 2",
+   "exam": "A1 · en route",
+   "cast": "Le Club du Fjord",
+   "mascot": "luna",
+   "color": "#2f9268"
+  },
+  {
+   "id": "flyers",
+   "name": "Fun for Nordic 3",
+   "exam": "A2 · exploration",
+   "cast": "L'Expédition Aurore",
+   "mascot": "kili",
+   "color": "#3b6fb5"
+  }
+ ]
+}
