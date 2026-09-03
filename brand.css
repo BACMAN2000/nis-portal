@@ -126,3 +126,65 @@ tr:hover td{background:#fafbff}
 /* Accesibilidad: foco visible para navegación con teclado */
 .nav-item:focus-visible,.card[role=button]:focus-visible,a.card:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
 button:focus-visible{outline:3px solid var(--blue-d);outline-offset:2px}
+
+/* ===== Cambridge · tarjetas YLE / MAIN SUITE =====
+   Es la misma tarjeta doble de cohasset.pe/cambridge-portal, con los dibujos
+   3D de cambridge-icons.js (archivo compartido entre las dos webs). */
+.cam-branches{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.cam-branch{position:relative;background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px 24px 20px;cursor:pointer;transition:transform .18s,box-shadow .25s,border-color .2s;overflow:hidden;width:100%;text-align:left;font-family:inherit;color:inherit;display:block;box-shadow:var(--shadow)}
+.cam-branch:hover{transform:translateY(-3px);box-shadow:0 22px 44px -22px rgba(36,76,119,.35)}
+.cam-branch:focus-visible{outline:3px solid var(--blue-d);outline-offset:2px}
+.cam-branch.active{border-color:var(--accent,var(--blue))}
+.cam-branch[disabled]{cursor:default;opacity:.7}
+.cam-branch[disabled]:hover{transform:none;box-shadow:var(--shadow)}
+.cam-branch .cam-ico{width:96px;height:96px;display:block;margin-bottom:10px}
+.cam-branch h2{font-weight:800;font-size:1.5rem;margin:0;color:var(--ink)}
+.cam-branch .cam-tag{font-size:.74rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--grey);margin-top:2px}
+.cam-branch p{color:var(--grey);font-size:.9rem;margin:10px 0 0}
+.cam-branch .cam-chev{position:absolute;top:18px;right:22px;color:var(--grey);transition:transform .25s;font-size:1.4rem;line-height:1}
+.cam-branch.active .cam-chev{transform:rotate(180deg)}
+.cam-levels-inline{font-size:.78rem;color:var(--grey);margin-top:12px;display:flex;flex-wrap:wrap;gap:6px}
+.cam-levels-inline span{background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:3px 9px}
+.cam-panel{overflow:hidden;max-height:0;opacity:0;transition:max-height .4s ease,opacity .3s;margin-top:0}
+.cam-panel.open{max-height:2400px;opacity:1;margin-top:18px}
+.cam-panel-inner{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px 22px;box-shadow:var(--shadow)}
+.cam-panel-inner h3{font-weight:700;font-size:1.05rem;display:flex;align-items:center;gap:9px;margin:0 0 14px}
+.cam-panel-inner h3 .cam-bar{width:6px;height:22px;border-radius:3px}
+.cam-tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
+.cam-tile{position:relative;border:1.5px solid var(--line);border-radius:14px;padding:16px;text-decoration:none;color:var(--ink);display:flex;flex-direction:column;gap:6px;transition:.16s;background:#fff}
+.cam-tile:hover{transform:translateY(-2px);border-color:var(--blue);box-shadow:0 14px 28px -18px rgba(36,76,119,.45)}
+.cam-tile .cam-ico{width:56px;height:56px}
+.cam-tile .cam-name{font-weight:700;font-size:1.02rem;line-height:1.15;color:var(--ink)}
+.cam-tile .cam-cefr{font-size:.76rem;color:var(--grey);font-weight:600}
+.cam-tile .cam-desc{font-size:.78rem;color:var(--grey);margin-top:2px}
+.cam-tile .cam-badge{position:absolute;top:10px;right:10px;font-size:.62rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:999px}
+.cam-badge.ready{background:#DCFCE7;color:#166534}
+.cam-badge.locked{background:#fee2e2;color:#991b1b}
+.cam-tile.locked{opacity:.6;cursor:default}
+.cam-tile.locked:hover{transform:none;border-color:var(--line);box-shadow:none}
+.cam-practice{display:block;text-decoration:none;color:#fff;margin-top:22px;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--blue),var(--blue-dd) 70%);border-radius:20px;padding:24px 26px;box-shadow:0 18px 40px -20px rgba(36,76,119,.65);transition:transform .18s,box-shadow .25s}
+.cam-practice:hover{transform:translateY(-3px)}
+.cam-practice .cam-pwrap{position:relative;z-index:1;display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.cam-practice .cam-ico{width:84px;height:84px;flex-shrink:0}
+.cam-practice .cam-ptxt{flex:1;min-width:220px}
+.cam-practice .cam-kicker{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#dbe8f6}
+.cam-practice h2{font-weight:800;font-size:1.45rem;color:#fff;margin:2px 0 0}
+.cam-practice p{color:#fff;font-size:.92rem;margin:8px 0 0;max-width:62ch}
+.cam-practice .cam-skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.cam-practice .cam-skills span{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:999px;padding:4px 12px;font-size:.78rem;font-weight:600}
+.cam-practice .cam-cta{display:inline-flex;align-items:center;gap:9px;background:#fff;color:var(--blue-dd);font-weight:700;border-radius:12px;padding:11px 20px;font-size:.92rem;flex-shrink:0;white-space:nowrap}
+/* Aviso del plan de estudio (lo que el admin/profesor escribio para el grado o el alumno) */
+.cam-plan{background:#fffbeb;border:1px solid #fde68a;border-left:5px solid #f59e0b;border-radius:var(--r-sm);padding:12px 16px;margin:0 0 16px;font-size:.92rem}
+.cam-plan b{color:#92400e}
+/* 📋 Plan de estudio (admin): matriz grado × material */
+.plan-grid{width:100%;border-collapse:separate;border-spacing:0;font-size:.86rem}
+.plan-grid th,.plan-grid td{padding:8px 8px;border-bottom:1px solid var(--line);text-align:center;vertical-align:middle}
+.plan-grid th:first-child,.plan-grid td:first-child{text-align:left;white-space:nowrap;position:sticky;left:0;background:#fff;z-index:1}
+.plan-grid thead th{font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;color:var(--grey);background:#f8f9ff;position:sticky;top:0;z-index:2}
+.plan-grid th.plan-track{color:#fff;letter-spacing:.06em}
+.plan-grid td input[type=checkbox]{width:18px;height:18px;accent-color:var(--blue-d);cursor:pointer}
+.plan-grid td.plan-off{background:#fff5f5}
+.plan-grid tr:hover td{background:#f5f8ff}
+.plan-grid tr:hover td:first-child{background:#f5f8ff}
+.plan-note{width:100%;min-height:54px;border:1px solid var(--line);border-radius:var(--r-sm);padding:8px 10px;font:inherit;font-size:.86rem;resize:vertical}
+.epi-tag{display:inline-block;background:#ede9fe;color:#5b21b6;border-radius:999px;padding:2px 9px;font-size:.72rem;font-weight:700;letter-spacing:.04em}

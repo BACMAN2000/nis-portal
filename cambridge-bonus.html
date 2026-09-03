@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B2 First · Extra Bonus — Exam Practice · Nordic International School</title>
+<link rel="icon" href="assets/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0F172A; --s8:#1E293B; --s6:#475569; --s5:#64748B; --s4:#94A3B8; --line:#E2E8F0; --line2:#EEF2F7; --canvas:#F6F7FB;
+    --violet:#7C3AED; --v7:#6D28D9; --v3:#C4B5FD; --v50:#F3EEFF;
+    --em:#10B981; --em50:#ECFDF5; --rose:#F43F5E; --rose50:#FFF1F3; --amber:#F59E0B; --amber50:#FFFBEB;
+    --read:#4f46e5; --read50:#EEF2FF; --list:#0891b2; --list50:#ECFEFF; --writ:#9d174d; --spk:#B45309;
+    --display:'Montserrat',system-ui,sans-serif; --body:'Montserrat',system-ui,sans-serif;
+    --shadow:0 10px 30px -12px rgba(76,29,149,.25); --shadow-lg:0 30px 60px -20px rgba(76,29,149,.35);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--body);background:var(--canvas);color:var(--ink);min-height:100vh;line-height:1.55;-webkit-font-smoothing:antialiased}
+  .hero{position:relative;background:linear-gradient(135deg,#1b1233,#2b1d54 55%,#3a2470);color:#fff;padding:30px 24px 34px;overflow:hidden}
+  .hero::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1px);background-size:20px 20px;opacity:.6}
+  .hero .wrap{max-width:1000px;margin:0 auto;position:relative;z-index:1}
+  .crumb{display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+  .crumb a{color:#C7D2FE;text-decoration:none;font-size:.82rem;font-weight:600;border:1px solid rgba(255,255,255,.22);padding:6px 12px;border-radius:9px}
+  .hero .pill{display:inline-flex;align-items:center;gap:8px;background:rgba(245,158,11,.22);border:1px solid rgba(245,158,11,.5);color:#FCD34D;font-weight:800;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;padding:5px 12px;border-radius:999px;margin-bottom:12px}
+  .hero h1{font-family:var(--display);font-weight:800;font-size:clamp(1.7rem,4.5vw,2.5rem);letter-spacing:-.02em;line-height:1.05}
+  .hero p{color:#D6CCF5;margin-top:9px;font-size:.98rem;max-width:66ch}
+  main{max-width:1000px;margin:0 auto;padding:26px 20px 100px}
+  .note{background:#fff;border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:12px;padding:13px 15px;font-size:.85rem;color:var(--s6);line-height:1.55;margin-bottom:22px}
+  .note b{color:var(--ink)}
+  /* paper cards */
+  .papers{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:34px}
+  .paper{position:relative;background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 18px 16px;text-decoration:none;color:var(--ink);transition:.16s;display:block;border-top:4px solid var(--c)}
+  .paper:hover{transform:translateY(-3px);box-shadow:0 18px 36px -22px rgba(15,23,42,.32)}
+  .paper .pico{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;font-size:1.25rem;color:#fff;background:var(--c);margin-bottom:11px}
+  .paper h3{font-family:var(--display);font-weight:800;font-size:1.06rem;line-height:1.12}
+  .paper .meta{font-size:.76rem;color:var(--s5);font-weight:600;margin-top:3px}
+  .paper p{font-size:.8rem;color:var(--s6);margin-top:8px}
+  .paper .tag{position:absolute;top:14px;right:14px;font-size:.6rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:3px 8px;border-radius:999px}
+  .tag.full{background:#DCFCE7;color:#166534}.tag.link{background:#EEF2FF;color:#4338CA}
+  /* sections */
+  .sec{scroll-margin-top:14px;margin-bottom:38px}
+  .sec-h{display:flex;align-items:center;gap:12px;margin:0 0 6px}
+  .sec-h .si{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;color:#fff;font-size:1.2rem;background:var(--c);flex:none}
+  .sec-h h2{font-family:var(--display);font-weight:800;font-size:1.4rem;letter-spacing:-.01em}
+  .sec-h .fmt{font-size:.76rem;color:var(--s5);font-weight:600}
+  .sec-lead{font-size:.88rem;color:var(--s6);margin:4px 0 16px;line-height:1.55;max-width:80ch}
+  /* exercise card */
+  .ex{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px 22px;margin-bottom:18px;box-shadow:0 1px 3px rgba(15,23,42,.05);position:relative}
+  .ex-kick{font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--em);display:flex;align-items:center;gap:8px;margin-bottom:9px}
+  .ex-kick .dot{width:9px;height:9px;border-radius:3px;background:var(--em)}
+  .ex-badge{font-size:.66rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:var(--list50);color:#0E7490;margin-left:auto}
+  .ex-title{font-family:var(--display);font-weight:700;font-size:1.18rem;letter-spacing:-.01em}
+  .ex-task{font-size:.85rem;color:var(--s6);margin:5px 0 13px;line-height:1.5}
+  .ex-task i{color:var(--list)}
+  audio{width:100%;height:42px;margin:4px 0 14px}
+  /* matching legend */
+  .legend{background:var(--canvas);border:1px dashed var(--line);border-radius:12px;padding:13px 15px;margin-bottom:14px;font-size:.88rem}
+  .legend b.lh{font-family:var(--display);color:var(--v7);display:block;margin-bottom:7px}
+  .legend ul{list-style:none;display:grid;gap:6px}
+  .legend li{display:flex;gap:9px}.legend li .lk{font-weight:800;color:var(--v7);flex:none;width:18px}
+  /* question rows */
+  .q{border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-top:12px;transition:.2s}
+  .q.ok{border-color:#A7F3D0;background:var(--em50)} .q.bad{border-color:#FBC9D2;background:var(--rose50)}
+  .q-top{display:flex;align-items:flex-start;gap:10px;margin-bottom:11px}
+  .q-no{width:26px;height:26px;border-radius:8px;background:var(--violet);color:#fff;font-weight:700;font-size:.8rem;display:grid;place-items:center;flex:none;font-family:var(--display);margin-top:1px}
+  .q-prompt{font-size:.94rem;color:var(--ink);font-weight:600}
+  .q-ctx{font-size:.8rem;color:var(--s5);font-weight:500;display:block;margin-bottom:2px}
+  .opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+  .opts.matchcols{grid-template-columns:repeat(auto-fit,minmax(110px,1fr))}
+  .opt{display:flex;align-items:center;gap:9px;border:1.5px solid var(--line);background:#fff;border-radius:11px;padding:9px 12px;cursor:pointer;font-size:.9rem;font-weight:500;transition:transform .12s,border-color .15s,background .15s;text-align:left;color:var(--s8)}
+  .opt:hover{border-color:var(--v3);transform:translateY(-1px)}
+  .opt .key{width:22px;height:22px;border-radius:6px;background:var(--line2);color:var(--s5);font-weight:700;font-size:.74rem;display:grid;place-items:center;flex:none;font-family:var(--display)}
+  .opt.sel{border-color:var(--violet);background:var(--v50)} .opt.sel .key{background:var(--violet);color:#fff}
+  .opt.correct{border-color:var(--em);background:var(--em50)} .opt.correct .key{background:var(--em);color:#fff}
+  .opt.wrong{border-color:var(--rose);background:var(--rose50)} .opt.wrong .key{background:var(--rose);color:#fff}
+  .opt[disabled]{cursor:default}
+  .fb{margin-top:10px;font-size:.84rem;display:none;align-items:flex-start;gap:8px}
+  .q.rev .fb{display:flex}.fb.ok{color:#047857}.fb.bad{color:#be123c}
+  /* fill rows */
+  .fillrow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;border:1px solid var(--line);border-radius:13px;padding:13px 15px;margin-top:11px;font-size:.95rem;color:var(--s8);transition:.2s}
+  .fillrow.ok{border-color:#A7F3D0;background:var(--em50)} .fillrow.bad{border-color:#FBC9D2;background:var(--rose50)}
+  .fillrow .fn{width:24px;height:24px;border-radius:7px;background:var(--violet);color:#fff;font-weight:700;font-size:.74rem;display:grid;place-items:center;flex:none;font-family:var(--display)}
+  .fin{border:1.5px solid var(--v3);border-radius:9px;padding:6px 10px;font-family:var(--body);font-size:.92rem;min-width:130px;color:var(--v7);font-weight:600}
+  .fin:focus{border-color:var(--violet);outline:none;box-shadow:0 0 0 3px rgba(124,58,237,.3)}
+  .opt:focus-visible{outline:3px solid var(--violet);outline-offset:2px}
+  .fsol{flex-basis:100%;font-size:.82rem;color:var(--s5);display:none;margin-left:30px}
+  .fillrow.rev .fsol{display:block}
+  /* actions */
+  .acts{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:18px}
+  .btn{font-family:var(--body);font-weight:600;font-size:.92rem;border:none;border-radius:12px;padding:12px 20px;cursor:pointer;display:inline-flex;align-items:center;gap:9px;transition:transform .12s,box-shadow .2s}
+  .btn:active{transform:translateY(1px)}
+  .btn-p{background:linear-gradient(135deg,var(--violet),#9333EA);color:#fff;box-shadow:var(--shadow)}
+  .btn-p:hover{box-shadow:var(--shadow-lg)} .btn-p[disabled]{opacity:.45;cursor:not-allowed;box-shadow:none}
+  .btn-g{background:#fff;border:1.5px solid var(--line);color:var(--s6)} .btn-g:hover{border-color:var(--v3);color:var(--v7)}
+  .live{margin-left:auto;font-size:.84rem;color:var(--s5)} .live b{font-family:var(--display);color:var(--ink);font-size:1.02rem}
+  .result{display:none;align-items:center;gap:18px;background:linear-gradient(135deg,var(--v50),#fff);border:1px solid var(--v3);border-radius:18px;padding:18px 20px;margin-top:16px;animation:pop .5s cubic-bezier(.3,1.4,.5,1)}
+  .result.show{display:flex}
+  @keyframes pop{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
+  .ring{--p:0;width:74px;height:74px;border-radius:50%;flex:none;display:grid;place-items:center;background:conic-gradient(var(--em) calc(var(--p)*1%),var(--line) 0)}
+  .ring span{width:57px;height:57px;border-radius:50%;background:#fff;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:1.05rem;color:var(--ink)}
+  .result h3{font-family:var(--display);font-size:1.15rem;margin-bottom:2px} .result p{font-size:.88rem;color:var(--s6)}
+  /* link-out cards */
+  .links{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+  .lk{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--line);border-radius:13px;padding:14px;text-decoration:none;color:var(--ink);background:#fff;transition:.15s}
+  .lk:hover{transform:translateY(-2px);box-shadow:0 14px 28px -20px rgba(15,23,42,.3);border-color:var(--c)}
+  .lk .li{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;color:#fff;font-size:1.05rem;background:var(--c);flex:none}
+  .lk h4{font-family:var(--display);font-weight:700;font-size:.98rem;margin-bottom:2px} .lk p{font-size:.78rem;color:var(--s5)}
+  .confetti{position:fixed;inset:0;pointer-events:none;z-index:50;overflow:hidden}
+  .confetti i{position:absolute;top:-12px;width:9px;height:14px;opacity:.9;animation:fall linear forwards}
+  @keyframes fall{to{transform:translateY(105vh) rotate(620deg);opacity:1}}
+  @media (prefers-reduced-motion: reduce){
+    .confetti{display:none!important}
+    .result{animation:none!important}
+    .float-badge{animation:none!important}
+  }
+  .ico{display:inline-block;font-style:normal;line-height:1;font-size:1em}
+</style>
+</head>
+<body>
+<div class="confetti" id="confetti"></div>
+
+  <header class="hero"><div class="wrap">
+    <div class="crumb">
+      <a href="./#/cambridge"><span class="ico" aria-hidden="true">←</span> Cambridge</a>
+      <a href="./#/cambridge"><span class="ico" aria-hidden="true">⭐</span> B2 First course</a>
+      <span style="color:#C7A8FF;font-size:.82rem"><span class="ico" aria-hidden="true">🎁</span> Extra Bonus</span>
+    </div>
+    <span class="pill"><span class="ico" aria-hidden="true">🎁</span> Extra Bonus</span>
+    <h1>Interactive Exam Practice — New Format</h1>
+    <p>A full set of real B2 First (FCE) exam tasks across the four papers — <b style="color:#fff">Reading &amp; Use of English, Listening, Writing and Speaking</b> — turned into interactive questions with authentic audio, instant marking and feedback.</p>
+  </div></header>
+
+  <main>
+    <div class="note">
+      <b>How to use this.</b> Pick a paper below. For <b>Listening</b>, play the authentic recording (you may play it twice, like in the real exam), answer the questions, then tap <b>Check answers</b> for instant marking and feedback. The other papers link to the matching practice modules in your course. Audio &amp; tasks: <i>Ready for First</i> (Macmillan) — for enrolled students.
+    </div>
+
+    <!-- paper cards -->
+    <div class="papers">
+      <a class="paper" style="--c:var(--read)" href="#reading">
+        <span class="tag link">Practice</span>
+        <div class="pico"><span class="ico" aria-hidden="true">📚</span></div>
+        <h3>Reading &amp; Use of English</h3>
+        <div class="meta">Parts 1–7 · 75 min</div>
+        <p>Multiple choice, open & key-word cloze, word formation, gapped text, multiple matching.</p>
+      </a>
+      <a class="paper" style="--c:var(--list)" href="#listening">
+        <span class="tag full">Interactive</span>
+        <div class="pico"><span class="ico" aria-hidden="true">🎧</span></div>
+        <h3>Listening</h3>
+        <div class="meta">Parts 1–4 · 7 tasks</div>
+        <p>Authentic recordings + interactive questions for all four listening parts, with marking.</p>
+      </a>
+      <a class="paper" style="--c:var(--writ)" href="#writing">
+        <span class="tag link">Practice</span>
+        <div class="pico"><span class="ico" aria-hidden="true">✒️</span></div>
+        <h3>Writing</h3>
+        <div class="meta">Parts 1–2 · 80 min</div>
+        <p>Compulsory essay + a choice of article, email/letter, report or review.</p>
+      </a>
+      <a class="paper" style="--c:var(--spk)" href="#speaking">
+        <span class="tag link">Practice</span>
+        <div class="pico"><span class="ico" aria-hidden="true">💬</span></div>
+        <h3>Speaking</h3>
+        <div class="meta">Parts 1–4 · 14 min</div>
+        <p>Interview, long turn with photos, collaborative task and discussion.</p>
+      </a>
+    </div>
+
+    <!-- LISTENING (flagship, interactive) -->
+    <section class="sec" id="listening" style="--c:var(--list)">
+      <div class="sec-h"><div class="si"><span class="ico" aria-hidden="true">🎧</span></div>
+        <div><h2>Listening</h2><div class="fmt">4 parts · 50 questions · authentic audio · heard twice</div></div></div>
+      <p class="sec-lead">Each task below follows the current Cambridge exam model. Play the recording (twice if you like), answer, then <b>Check answers</b> for instant marking and an explanation of every item.</p>
+      <div id="listening-parts"></div>
+    </section>
+
+    <!-- READING & USE OF ENGLISH -->
+    <section class="sec" id="reading" style="--c:var(--read)">
+      <div class="sec-h"><div class="si"><span class="ico" aria-hidden="true">📚</span></div>
+        <div><h2>Reading &amp; Use of English</h2><div class="fmt">7 parts · 52 questions · 75 minutes</div></div></div>
+      <p class="sec-lead">Parts 1–4 test grammar and vocabulary (multiple-choice cloze, open cloze, word formation, key-word transformation). Parts 5–7 test reading. Practise each in your course modules:</p>
+      <div class="links">
+        <a class="lk" style="--c:var(--read)" href="./#/cambridge"><div class="li"><span class="ico" aria-hidden="true">✨</span></div><div><h4>Use of English · Parts 1–4</h4><p>Cloze, word formation & key-word transformations with instant checking.</p></div></a>
+        <a class="lk" style="--c:var(--read)" href="./#/cambridge"><div class="li"><span class="ico" aria-hidden="true">📖</span></div><div><h4>Reading · Parts 5–7</h4><p>Multiple choice, gapped text and multiple matching passages.</p></div></a>
+        <a class="lk" style="--c:var(--read)" href="use-of-english-part1.html"><div class="li"><span class="ico" aria-hidden="true">✅</span></div><div><h4>Grammar Practice</h4><p>28 topics · 224 items to sharpen the language tested in Parts 1–4.</p></div></a>
+      </div>
+    </section>
+
+    <!-- WRITING -->
+    <section class="sec" id="writing" style="--c:var(--writ)">
+      <div class="sec-h"><div class="si"><span class="ico" aria-hidden="true">✒️</span></div>
+        <div><h2>Writing</h2><div class="fmt">2 parts · 80 minutes</div></div></div>
+      <p class="sec-lead">Part 1 is a compulsory <b>essay</b> (140–190 words). Part 2 offers a choice of an article, email/letter, report or review (140–190 words). Plan, write and self-check against the Cambridge band descriptors:</p>
+      <div class="links">
+        <a class="lk" style="--c:var(--writ)" href="./#/cambridge"><div class="li"><span class="ico" aria-hidden="true">🖋️</span></div><div><h4>Writing module</h4><p>Model tasks, useful language and structure for every Part 2 text type.</p></div></a>
+        <a class="lk" style="--c:var(--writ)" href="writing.html"><div class="li"><span class="ico" aria-hidden="true">🪶</span></div><div><h4>Guided writing lessons</h4><p>Step-by-step writing practice inside the 20-unit course.</p></div></a>
+      </div>
+    </section>
+
+    <!-- SPEAKING -->
+    <section class="sec" id="speaking" style="--c:var(--spk)">
+      <div class="sec-h"><div class="si"><span class="ico" aria-hidden="true">💬</span></div>
+        <div><h2>Speaking</h2><div class="fmt">4 parts · 14 minutes · in pairs</div></div></div>
+      <p class="sec-lead">Part 1 — interview. Part 2 — long turn: compare two photographs for one minute. Part 3 — collaborative task: discuss and decide with your partner. Part 4 — discussion. Hear examiner-style recordings and rehearse the format:</p>
+      <div class="links">
+        <a class="lk" style="--c:var(--spk)" href="cambridge-listening.html"><div class="li"><span class="ico" aria-hidden="true">🎤</span></div><div><h4>Speaking & Listening recordings</h4><p>Authentic interview, long-turn and collaborative-task audio with transcripts.</p></div></a>
+      </div>
+    </section>
+  </main>
+
+<script>
+  const AUDIO = 'https://lpwaahwxjvogcbkrklzz.supabase.co/storage/v1/object/public/course-audio/fce/bonus/';
+
+  // ============================================================
+  // Authentic B2 First Listening tasks (from the APP source folder),
+  // transformed into interactive questions. Answers were derived from the
+  // authentic recordings. Format mirrors the current Cambridge exam model.
+  // ============================================================
+  const LISTENING = [
+    // ---- PART 1 — Multiple choice (set A) ----
+    { part:1, kind:'mc', title:'Part 1 · Multiple choice — eight situations (A)', audio:'Part1_1.mp3',
+      task:'You will hear people talking in eight different situations. For questions 1–8, choose the best answer (A, B or C).',
+      items:[
+        {ctx:'You hear two people talking about a friend of theirs.', q:'What does the woman say about the friend?',
+         opts:['He talks a lot about his lifestyle.','He leads a comfortable lifestyle.','He may change his lifestyle.'], ans:2,
+         exp:'She says she “wouldn’t be surprised if he got rid of everything” and “might settle down one day” — i.e. change his lifestyle.'},
+        {ctx:'You overhear a man talking to a friend on his phone.', q:'Why is he phoning?',
+         opts:['to persuade his friend to do something','to ask for some information','to change an arrangement'], ans:1,
+         exp:'He asks what the Pilates class “was like, what sort of things you did” — he wants information.'},
+        {ctx:'You hear a woman talking about her family’s financial situation.', q:'What is she going to do?',
+         opts:['ask someone to help her','try to sell something','look for a new job'], ans:1,
+         exp:'“There’s nothing for it but to put my car on the market.” She rejects borrowing from her parents.'},
+        {ctx:'You hear a man talking about his job.', q:'Who is the man?',
+         opts:['a hotel manager','a hotel receptionist','a hotel doorman'], ans:2,
+         exp:'“I’m the first person they see before they go into the hotel… cold standing outside on the steps.” — a doorman.'},
+        {ctx:'You hear two people talking about the value of their time spent living abroad.', q:'What do they agree about?',
+         opts:['It has helped them develop their personality.','It has made them appreciate their own country.','It has given them better job prospects.'], ans:0,
+         exp:'They both speak of having “grown as individuals… more open-minded”. The job-prospects idea is not shared.'},
+        {ctx:'You hear a man talking on the radio.', q:'What is he doing?',
+         opts:['reviewing a product','advertising a product','reading a news report'], ans:0,
+         exp:'He judges the self-help book: “He’s lying… you’d be wasting your money.” — a (negative) review.'},
+        {ctx:'You hear two people talking about the village they both live in.', q:'What does the woman think of the village?',
+         opts:['People are not always very friendly.','Some of the roads are dangerous.','There are not enough children.'], ans:1,
+         exp:'“I get a bit nervous about the traffic… some drivers just don’t slow down.” — the roads worry her.'},
+        {ctx:'You hear a man talking about a country in which he once lived.', q:'What surprised him about the people?',
+         opts:['The importance they give to clothes.','The type of food they eat.','Their attitude to work.'], ans:0,
+         exp:'“What I hadn’t anticipated was their way of dressing… colour, style, fashion, it all mattered.”'},
+      ]},
+    // ---- PART 1 — Multiple choice (set B) ----
+    { part:1, kind:'mc', title:'Part 1 · Multiple choice — eight situations (B)', audio:'Part1_2.mp3',
+      task:'You will hear people talking in eight different situations. For questions 1–8, choose the best answer (A, B or C).',
+      items:[
+        {ctx:'You hear a man talking to a friend about a TV series he is watching.', q:'The man is impressed with',
+         opts:['the soundtrack.','the acting.','the plot.'], ans:2,
+         exp:'“The writers have done a great job with the storyline… draws you in.” He criticises the script and the modern songs.'},
+        {ctx:'You hear a woman reviewing a book on the radio.', q:'What type of book is it?',
+         opts:['an autobiography','a historical novel','a travel guide'], ans:0,
+         exp:'“The first volume of Grey’s Memoirs… the story of a life” — a memoir / autobiography.'},
+        {ctx:'You hear two friends talking about a film they have just seen.', q:'What did they both find disappointing about it?',
+         opts:['It wasn’t as enjoyable as the first film in the series.','The pace of the film was too slow at one point.','The comedy scenes were not very funny.'], ans:1,
+         exp:'Both mention the pace: “the pace dropped a bit halfway” / “could have speeded up the action in the middle”.'},
+        {ctx:'You hear a man telling a woman about a storytelling course he attended.', q:'What does he say about the course?',
+         opts:['It was better than he had expected.','It will be useful for his work.','It helped to build his confidence.'], ans:2,
+         exp:'“It gave me the courage I needed, and the self-belief, to stand up and speak in front of people.”'},
+        {ctx:'You overhear a woman calling a bookshop.', q:'Why is she calling?',
+         opts:['to make a complaint','to make a suggestion','to apologise'], ans:1,
+         exp:'She plays the problem down (“no need to apologise”) and suggests they “check the rest of your stock or talk to the publishers”.'},
+        {ctx:'You hear a man talking to a friend about a story writing competition he won.', q:'What did he feel nervous about?',
+         opts:['being interviewed about his success','reading out his story on live radio','receiving his prize from a famous person'], ans:0,
+         exp:'The live chat show worried him — “talking about yourself in front of millions” was harder than reading on the radio.'},
+        {ctx:'You hear two friends talking about an actor in a play they have just seen.', q:'What do they agree about him?',
+         opts:['He looked too young for the part.','He did not always speak clearly.','He moved around unnaturally.'], ans:1,
+         exp:'Both had “trouble understanding him” — “he mumbled a lot”. His movements were praised as authentic.'},
+        {ctx:'You hear part of a talk by a writer.', q:'What is she doing?',
+         opts:['encouraging the audience to read to their children','explaining the importance of a past event','promoting a new book she has written'], ans:1,
+         exp:'She recounts the day a writer visited her school and she “was hooked” — a past event that shaped her life.'},
+      ]},
+    // ---- PART 2 — Sentence completion (RoboCup) ----
+    { part:2, kind:'fill', title:'Part 2 · Sentence completion — RoboCup', audio:'Part2_2.mp3',
+      task:'You will hear an Australian student called Paul giving a talk about RoboCup. For questions 1–10, complete the sentences with a word or short phrase.',
+      items:[
+        {pre:'RoboCup was held for the first time in', post:'in 1997.', answer:'Japan', accept:['japan']},
+        {pre:'The categories in the children’s competition are Soccer, OnStage and', post:'.', answer:'Rescue', accept:['rescue']},
+        {pre:'Paul says he didn’t watch any videos of teams performing a', post:'in the OnStage event.', answer:'magic show', accept:['magic show','a magic show','magic']},
+        {pre:'Paul’s favourite video of an OnStage performance featured a robot dressed as a', post:'.', answer:'penguin', accept:['penguin']},
+        {pre:'Team members are interviewed about their involvement in the design and', post:'of their robots.', answer:'programming', accept:['programming']},
+        {pre:'The maximum total time each team can spend on the stage is', post:'minutes.', answer:'six', accept:['six','6']},
+        {pre:'Paul was impressed that the robots in RoboCupSoccer are all', post:'.', answer:'autonomous', accept:['autonomous']},
+        {pre:'Paul says that all of the robot soccer teams he watched lacked a good', post:'.', answer:'defence', accept:['defence','defense','solid defence','solid defense']},
+        {pre:'In RoboCup@Home, designers have to communicate with their robots by using their', post:'.', answer:'voice', accept:['voice']},
+        {pre:'Paul watched robots fetch objects from the', post:'and give them to their designer.', answer:'kitchen', accept:['kitchen','the kitchen']},
+      ]},
+    // ---- PART 2 — Sentence completion (Vocational college) ----
+    { part:2, kind:'fill', title:'Part 2 · Sentence completion — Vocational courses', audio:'Part2_3.mp3',
+      task:'You will hear a man called Mike Swift talking about the vocational courses at his college. For questions 1–10, complete the sentences with a word or short phrase.',
+      items:[
+        {pre:'There are currently', post:'different faculties at Mike’s college.', answer:'five', accept:['five','5']},
+        {pre:'Mike says that the', post:'studio in the Creative Skills faculty is unique for a college in the area.', answer:'television', accept:['television','tv','television (tv)']},
+        {pre:'Mike is particularly impressed that one former student is already working as a', post:'.', answer:'radio producer', accept:['radio producer','producer']},
+        {pre:'Increasing numbers of people are enrolling on courses in the', post:'Department.', answer:'Events', accept:['events','event']},
+        {pre:'Both the ability to work in an organised manner and good', post:'skills are important in a variety of jobs.', answer:'team management', accept:['team management','teamwork','team-management']},
+        {pre:'Some courses at Mike’s college include a period of', post:'.', answer:'work experience', accept:['work experience']},
+        {pre:'Most information technology courses are offered by the', post:'faculty.', answer:'Business', accept:['business']},
+        {pre:'Applicants for the computer games development course need high marks in', post:', as well as passes in other exams.', answer:'maths', accept:['maths','math','mathematics']},
+        {pre:'Guidance on what to study is available in the', post:'section of the college website.', answer:'study options', accept:['study options']},
+        {pre:'The', post:'courses at Mike’s college normally last five months.', answer:'evening', accept:['evening','evening courses']},
+      ]},
+    // ---- PART 3 — Multiple matching (clothes) ----
+    { part:3, kind:'match', title:'Part 3 · Multiple matching — what people wear', audio:'Part3_1.mp3',
+      task:'You will hear five people talking about the clothes they wear. For questions 1–5, choose from the list (A–H) what each speaker says. Use the letters once; there are three extra letters.',
+      options:['I tend to wear the same clothes all the time.','I don’t really care what clothes I wear.','I refuse to wear designer clothes.','I’m careful to check the origin of the clothes I buy.','I generally wear second-hand clothes.','I only throw clothes away when absolutely necessary.','I buy quality clothes that are guaranteed to last.','I wear clothes that give me self-confidence.'],
+      items:[
+        {prompt:'Speaker 1', ans:4, exp:'“I get most of what I wear from charity shops.” — second-hand clothes (E).'},
+        {prompt:'Speaker 2', ans:1, exp:'“I’m not the kind of person who spends time worrying about what to put on.” — doesn’t care (B).'},
+        {prompt:'Speaker 3', ans:3, exp:'“I only buy from companies that sell ethical clothing… I get that information online.” — checks the origin (D).'},
+        {prompt:'Speaker 4', ans:7, exp:'“They have to make me feel good… any feelings of insecurity disappear as soon as I put it on.” — self-confidence (H).'},
+        {prompt:'Speaker 5', ans:5, exp:'“I only [get rid of an item] when I can’t justify hanging on to it… falling apart.” — only when necessary (F).'},
+      ]},
+    // ---- PART 3 — Multiple matching (school changes) ----
+    { part:3, kind:'match', title:'Part 3 · Multiple matching — changes at school', audio:'Part3_2.mp3',
+      task:'You will hear five secondary-school teachers talking about changes at their schools. For questions 1–5, choose from the list (A–H) what each speaker says. Use the letters once; there are three extra letters.',
+      options:['The change has resulted in a number of new problems.','Too many changes have been introduced.','The change is insufficient to solve a problem.','We should have been consulted about the change.','The change is being made for selfish reasons.','Most parents support the change.','The change has brought unexpected benefits.','Most of the teachers feel the change is unnecessary.'],
+      items:[
+        {prompt:'Speaker 1', ans:4, exp:'“Another of the head’s schemes to get publicity for herself… her own interests at heart.” — selfish reasons (E).'},
+        {prompt:'Speaker 2', ans:3, exp:'“He makes changes without finding out what anyone else thinks… he could have let us have some say.” — should have been consulted (D).'},
+        {prompt:'Speaker 3', ans:7, exp:'“It’s a waste of time… and I know the majority of my colleagues feel the same.” — teachers feel it’s unnecessary (H).'},
+        {prompt:'Speaker 4', ans:2, exp:'“Splitting up the troublemakers is a step in the right direction, but it doesn’t go far enough.” — insufficient (C).'},
+        {prompt:'Speaker 5', ans:0, exp:'The new room is worse: bad acoustics, must shout, sun sends kids to sleep — new problems (A).'},
+      ]},
+    // ---- PART 4 — Multiple choice (unusual sports) ----
+    { part:4, kind:'mc', title:'Part 4 · Multiple choice — unusual sports', audio:'Part4_1.mp3',
+      task:'You will hear a radio interview with Mike Taylor about unusual sports. For questions 1–7, choose the best answer (A, B or C).',
+      items:[
+        {q:'When Mike saw a chess boxing match, he was surprised by',
+         opts:['how skilled the competitors were at both parts of the sport.','how much fun the competitors were having.','how aggressive the competitors were.'], ans:0,
+         exp:'“I was amazed by their level of skill in each of these two very different disciplines.”'},
+        {q:'Having read about octopushing, Mike finds it difficult to believe that',
+         opts:['players do not have to hold their breath for long intervals.','a high level of fitness is not required to play it.','it is an exciting sport to watch.'], ans:1,
+         exp:'“You don’t have to be very fit to play. But I’m not convinced — it seems physically very demanding.”'},
+        {q:'What impresses Mike most about the competitors in sport stacking?',
+         opts:['their fitness','their speed','their age'], ans:1,
+         exp:'“You’ll appreciate just how fast they are. It’s quite staggering.”'},
+        {q:'What is Mike’s criticism of some of the unusual sports?',
+         opts:['They are far too dangerous.','They should not be called sports.','They are difficult to take seriously.'], ans:2,
+         exp:'“Not because they’re tough or dangerous… I just find them a bit ridiculous… rather silly.”'},
+        {q:'What do we learn about the organisers of toe wrestling?',
+         opts:['They apply what they learn from international competitions.','They have arranged a number of events in schools.','They made a request which was rejected.'], ans:2,
+         exp:'“Organisers applied for toe wrestling to become an Olympic sport… the application wasn’t accepted.”'},
+        {q:'How does Mike feel about the human triumphs in the Man Versus Horse Marathon?',
+         opts:['They are very surprising.','They deserve more recognition.','They are unlikely to be repeated.'], ans:1,
+         exp:'“It seems unfair the human victories aren’t mentioned with famous achievements. These people are heroes.”'},
+        {q:'Why did Mike give up running?',
+         opts:['He was injured.','He lost interest.','He had no time.'], ans:0,
+         exp:'“I damaged my knee when I was skiing and had to stop.”'},
+      ]},
+  ];
+
+  /* ---------------- render ---------------- */
+  const PART_NAME = {1:'Part 1 · Multiple choice',2:'Part 2 · Sentence completion',3:'Part 3 · Multiple matching',4:'Part 4 · Multiple choice'};
+  const esc = s => String(s==null?'':s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+  const ST = {};   // idx -> { sel:{n:i}, revealed:bool }
+
+  function audioEl(file){ return `<audio controls preload="none"><source src="${AUDIO}${encodeURIComponent(file)}" type="audio/mpeg">Your browser does not support audio.</audio>`; }
+
+  function render(){
+    const root = document.getElementById('listening-parts');
+    root.innerHTML = LISTENING.map((ex,idx)=>{
+      ST[idx] = {sel:{}, revealed:false};
+      const total = ex.items.length;
+      let body = '';
+      if(ex.kind==='match'){
+        body += `<div class="legend"><b class="lh">Options</b><ul>`+
+          ex.options.map((o,j)=>`<li><span class="lk">${'ABCDEFGH'[j]}</span><span>${esc(o)}</span></li>`).join('')+`</ul></div>`;
+      }
+      if(ex.kind==='fill'){
+        body += ex.items.map((it,i)=>{
+          const n=i+1;
+          return `<div class="fillrow" id="row-${idx}-${i}"><span class="fn">${n}</span>
+            <span>${esc(it.pre)}</span>
+            <input class="fin" id="in-${idx}-${i}" aria-label="Respuesta del hueco ${n}" autocomplete="off" spellcheck="false">
+            <span>${esc(it.post)}</span>
+            <span class="fsol" id="sol-${idx}-${i}"></span></div>`;
+        }).join('');
+      } else {
+        const keys = ex.kind==='match' ? 'ABCDEFGH' : 'ABC';
+        const optsList = ex.kind==='match' ? ex.options : null;
+        body += ex.items.map((it,i)=>{
+          const n=i+1;
+          const opts = ex.kind==='match' ? optsList : it.opts;
+          const ctx = it.ctx ? `<span class="q-ctx">${esc(it.ctx)}</span>` : '';
+          const prompt = it.q ? esc(it.q) : esc(it.prompt);
+          const optsHtml = opts.map((o,j)=>`<button class="opt" aria-pressed="false" aria-label="${esc(keys[j]+': '+o)}" onclick="sel(${idx},${n},${j})"><span class="key" aria-hidden="true">${keys[j]}</span>${ex.kind==='match'?keys[j]:esc(o)}</button>`).join('');
+          return `<div class="q" id="q-${idx}-${n}"><div class="q-top"><span class="q-no">${n}</span><span class="q-prompt">${ctx}${prompt}</span></div>
+            <div class="opts${ex.kind==='match'?' matchcols':''}">${optsHtml}</div>
+            <div class="fb"><span class="fi">💡</span><span class="ft"></span></div></div>`;
+        }).join('');
+      }
+      const checkFn = ex.kind==='fill' ? `checkFill(${idx})` : `checkMc(${idx})`;
+      return `<div class="ex" id="ex-${idx}">
+        <div class="ex-kick"><span class="dot"></span>Interactive practice<span class="ex-badge">${esc(PART_NAME[ex.part])}</span></div>
+        <div class="ex-title">${esc(ex.title)}</div>
+        <div class="ex-task"><span class="ico" aria-hidden="true">ℹ️</span> ${esc(ex.task)}</div>
+        ${audioEl(ex.audio)}
+        ${body}
+        <div class="acts">
+          <button class="btn btn-p" id="chk-${idx}" disabled title="Answer all ${total} questions to check" onclick="${checkFn}">Check answers <span class="ico" aria-hidden="true">✓</span></button>
+          <button class="btn btn-g" onclick="reset(${idx})">Reset</button>
+          <div class="live">Answered <b id="ans-${idx}">0</b>/${total}<span id="hint-${idx}"></span></div>
+        </div>
+        <div class="result" id="res-${idx}" role="status" aria-live="polite"><div class="ring" id="ring-${idx}"><span id="ringtxt-${idx}">0/${total}</span></div>
+          <div><h3 id="rest-${idx}"></h3><p id="resm-${idx}"></p></div></div>
+      </div>`;
+    }).join('');
+  }
+
+  /* ---- MC / matching selection ---- */
+  function sel(idx,n,j){
+    if(ST[idx].revealed) return;
+    document.querySelectorAll(`#q-${idx}-${n} .opt`).forEach(o=>{o.classList.remove('sel');o.setAttribute('aria-pressed','false');});
+    const chosen=document.querySelectorAll(`#q-${idx}-${n} .opt`)[j];
+    chosen.classList.add('sel'); chosen.setAttribute('aria-pressed','true');
+    ST[idx].sel[n]=j;
+    updateCount(idx);
+  }
+  function updateCount(idx){
+    const ex=LISTENING[idx];
+    let n;
+    if(ex.kind==='fill'){ n=0; ex.items.forEach((it,i)=>{ if(document.getElementById(`in-${idx}-${i}`).value.trim()) n++; }); }
+    else n=Object.keys(ST[idx].sel).length;
+    document.getElementById(`ans-${idx}`).textContent=n;
+    const chk=document.getElementById(`chk-${idx}`); if(chk) chk.disabled = n<ex.items.length || ST[idx].revealed;
+    const remaining=ex.items.length-n;
+    const hint=document.getElementById(`hint-${idx}`);
+    if(hint) hint.textContent = (remaining>0 && !ST[idx].revealed) ? ` · responde ${remaining} más para corregir` : '';
+  }
+  document.addEventListener('input',e=>{ const m=e.target.id&&e.target.id.match(/^in-(\d+)-/); if(m) updateCount(+m[1]); });
+
+  /* ---- check MC / matching ---- */
+  function checkMc(idx){
+    const ex=LISTENING[idx]; ST[idx].revealed=true; let correct=0;
+    const keys = ex.kind==='match' ? 'ABCDEFGH' : 'ABC';
+    ex.items.forEach((it,i)=>{ const n=i+1, selJ=ST[idx].sel[n], q=document.getElementById(`q-${idx}-${n}`);
+      const optEls=document.querySelectorAll(`#q-${idx}-${n} .opt`);
+      optEls.forEach((o,oi)=>{ o.setAttribute('disabled',''); o.classList.remove('sel');
+        if(oi===it.ans)o.classList.add('correct'); else if(oi===selJ)o.classList.add('wrong'); });
+      const ok = selJ===it.ans; if(ok) correct++;
+      q.classList.add(ok?'ok':'bad','rev');
+      const fb=q.querySelector('.fb'); fb.classList.add(ok?'ok':'bad');
+      q.querySelector('.fi').textContent = ok?'✓':'✕';
+      const optText = ex.kind==='match' ? '' : ` (${esc(it.opts[it.ans])})`;
+      q.querySelector('.ft').innerHTML = (ok?'<b>Correct!</b> ':`<b>Answer: ${keys[it.ans]}${optText}.</b> `)+esc(it.exp||'');
+    });
+    showResult(idx, correct, ex.items.length);
+  }
+
+  /* ---- check fill ---- */
+  function norm(s){ return (s||'').toLowerCase().trim().replace(/[.,;!?]$/,'').replace(/\s+/g,' '); }
+  function checkFill(idx){
+    const ex=LISTENING[idx]; ST[idx].revealed=true; let correct=0;
+    ex.items.forEach((it,i)=>{ const inp=document.getElementById(`in-${idx}-${i}`), row=document.getElementById(`row-${idx}-${i}`), sol=document.getElementById(`sol-${idx}-${i}`);
+      const val=norm(inp.value);
+      const accepted=(it.accept&&it.accept.length?it.accept:[it.answer]).map(norm);
+      const ok = val!=='' && accepted.includes(val);
+      if(ok) correct++;
+      inp.disabled=true; row.classList.add(ok?'ok':'bad','rev');
+      inp.style.color=ok?'#047857':'#be123c'; inp.style.borderColor=ok?'#10B981':'#F43F5E';
+      sol.innerHTML = ok?`<b>✓ Correct</b>`:`<b>Answer:</b> ${esc(it.answer)}`;
+    });
+    showResult(idx, correct, ex.items.length);
+  }
+
+  /* ---- result ---- */
+  function showResult(idx,correct,total){
+    const pct=Math.round(correct/total*100);
+    document.getElementById(`ring-${idx}`).style.setProperty('--p',pct);
+    document.getElementById(`ringtxt-${idx}`).textContent=correct+'/'+total;
+    const t=document.getElementById(`rest-${idx}`), m=document.getElementById(`resm-${idx}`);
+    if(correct===total){t.textContent='Perfect! 🎯';m.textContent='Full marks — that’s a strong B2 listening performance.';}
+    else if(correct>=Math.ceil(total*0.7)){t.textContent='Well done! 🎉';m.textContent='Good level. Read the feedback on the items you missed.';}
+    else if(correct>=Math.ceil(total*0.5)){t.textContent='Good attempt 💪';m.textContent='On the right track — study the explanations and replay the audio.';}
+    else {t.textContent='Keep practising 📚';m.textContent='Listen again with the question paper and use the feedback.';}
+    document.getElementById(`res-${idx}`).classList.add('show');
+    const chk=document.getElementById(`chk-${idx}`); if(chk) chk.disabled=true;
+    if(correct>=Math.ceil(total*0.7)) confetti();
+    document.getElementById(`res-${idx}`).scrollIntoView({behavior:'smooth',block:'center'});
+  }
+
+  /* ---- reset ---- */
+  function reset(idx){
+    const ex=LISTENING[idx]; ST[idx]={sel:{},revealed:false};
+    const card=document.getElementById(`ex-${idx}`);
+    card.querySelectorAll('.opt').forEach(o=>{o.disabled=false;o.className='opt';});
+    card.querySelectorAll('.q').forEach(q=>q.className='q');
+    card.querySelectorAll('.fin').forEach(i=>{i.disabled=false;i.value='';i.style.color='';i.style.borderColor='';});
+    card.querySelectorAll('.fillrow').forEach(r=>r.className='fillrow');
+    card.querySelectorAll('.fsol').forEach(s=>s.innerHTML='');
+    document.getElementById(`res-${idx}`).classList.remove('show');
+    document.getElementById(`ans-${idx}`).textContent='0';
+    document.getElementById(`chk-${idx}`).disabled=true;
+  }
+
+  /* ---- confetti ---- */
+  function confetti(){ try{ if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return; }catch(_){}
+    const c=document.getElementById('confetti'); const cols=['#7C3AED','#A855F7','#34D399','#F59E0B','#F43F5E','#C4B5FD'];
+    for(let i=0;i<60;i++){const p=document.createElement('i');p.style.left=Math.random()*100+'vw';p.style.background=cols[i%cols.length];
+      p.style.animationDuration=(2+Math.random()*2)+'s';p.style.animationDelay=(Math.random()*.6)+'s';p.style.transform=`rotate(${Math.random()*360}deg)`;
+      if(Math.random()>.5)p.style.borderRadius='50%';c.appendChild(p);setTimeout(()=>p.remove(),4200);}}
+
+  render();
+</script>
+<script src="nis-nav.js?v=2"></script>
+<script src="activity-save.js?v=4"></script>
+<script>
+/* Los siete ejercicios extra guardaban solo en la pagina. Se recogen las
+   respuestas de los campos para que viajen con la cuenta del alumno. */
+(function(){
+  var G = {};
+  function id(el){ return el.id || el.name || el.dataset.name || ""; }
+  function lee(){
+    document.querySelectorAll("input,select,textarea").forEach(function(el){
+      var k = id(el); if(!k) return;
+      if(el.type === "radio" || el.type === "checkbox"){ if(el.checked) G[k] = el.value || "on"; }
+      else if(el.value !== "") G[k] = el.value;
+    });
+  }
+  function repon(){
+    document.querySelectorAll("input,select,textarea").forEach(function(el){
+      var k = id(el), v = G[k]; if(!k || v == null) return;
+      if(el.type === "radio" || el.type === "checkbox") el.checked = (el.value ? el.value === v : true);
+      else el.value = v;
+    });
+  }
+  ["input","change"].forEach(function(ev){
+    document.addEventListener(ev, function(){ lee(); if(window.NIS_WORK) NIS_WORK.touch(); });
+  });
+  if(window.NIS_WORK) NIS_WORK.attach(Object.assign(NIS_WORK.ficha(), {
+    title: "B2 First — Extra Bonus",
+    read:  function(){ lee(); return { store: G }; },
+    write: function(d){ var p=(d&&d.store)||{}; Object.keys(p).forEach(function(k){ G[k]=p[k]; }); },
+    after: repon,
+    count: function(d){ return Object.keys(((d||{}).store)||{}).length; },
+    answers: function(d){ var p=(d&&d.store)||{}, o={}; Object.keys(p).forEach(function(k){ o[k]=String(p[k]); }); return o; }
+  }));
+})();
+</script>
+</body>
+</html>
