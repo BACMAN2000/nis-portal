@@ -182,6 +182,21 @@
   .speaking-prompt { background:#e0f2fe; border-left:4px solid #0284c7; padding:12px 16px;
                      border-radius:6px; margin:10px 0; }
   .no-audio{background:#fff7ed;border-left:3px solid #f59e0b;color:#7c2d12;padding:9px 12px;border-radius:8px;font-size:.86rem;margin:6px 0}
+  /* Una pantalla por parte, con flechas. La barra queda pegada abajo. */
+  .screen{display:none}
+  .screen.active{display:block;animation:scrin .22s ease-out}
+  @keyframes scrin{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:none}}
+  .scr-nav{position:sticky;bottom:70px;display:flex;justify-content:space-between;align-items:center;gap:12px;margin:14px 0 6px;padding:10px 12px;background:rgba(255,255,255,.94);backdrop-filter:blur(6px);border:1px solid var(--border);border-radius:14px;box-shadow:0 8px 24px rgba(15,23,42,.10);z-index:5}
+  .scr-btn{display:inline-flex;align-items:center;gap:8px;border:none;border-radius:999px;padding:12px 20px;font:inherit;font-weight:700;font-size:1rem;cursor:pointer;background:#2563eb;color:#fff;box-shadow:0 6px 16px rgba(37,99,235,.35);white-space:nowrap}
+  .scr-btn:hover:not(:disabled){transform:translateY(-1px)}
+  .scr-btn:disabled{background:#cbd5e1;color:#64748b;box-shadow:none;cursor:default}
+  .scr-btn .arr{font-size:1.5rem;line-height:1}
+  .scr-prog{text-align:center;font-weight:700;color:#475569;font-size:.9rem}
+  .scr-dots{display:flex;gap:6px;justify-content:center;margin-top:6px}
+  .scr-dots i{width:10px;height:10px;border-radius:50%;background:#cbd5e1;cursor:pointer}
+  .scr-dots i.on{background:#2563eb}
+  .scr-dots i.done{background:#86efac}
+  @media (max-width:600px){.scr-btn{padding:10px 14px;font-size:.9rem}.scr-prog{font-size:.8rem}}
 </style>
 </head>
 <body>
@@ -506,6 +521,7 @@ function render() {
   else                               { html = renderSpeaking(t);   checkBtn.classList.remove('hidden'); }
   document.getElementById('content').innerHTML = html;
   document.getElementById('scoreBox').innerHTML = '';
+  setupScreens();
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
@@ -556,6 +572,46 @@ function checkAnswers() {
   const pct = total? Math.round(100*correct/total) : 0;
   box.innerHTML = `<div class="score ${pct<60?'low':''}">Score: ${correct} / ${total} (${pct}%)</div>`;
 }
+
+/* ---- Una pantalla por parte: flechas <- -> (y las teclas del teclado) ----
+   Antes el paper entero salia en una sola pagina larga. Ahora cada parte es
+   una pantalla y se avanza con las flechas; las respuestas de todas las
+   pantallas siguen en el DOM, asi que "Check my answers" corrige el paper
+   completo. Al cambiar de pantalla se pausa el audio de la que se deja. */
+let screenIdx = 0;
+function setupScreens() {
+  const c = document.getElementById('content');
+  const cards = Array.from(c.children).filter(el => el.classList && el.classList.contains('card'));
+  if (cards.length < 2) return;
+  cards.forEach((card, i) => {
+    const sec = document.createElement('section'); sec.className = 'screen'; sec.dataset.idx = i;
+    card.parentNode.insertBefore(sec, card); sec.appendChild(card);
+  });
+  const nav = document.createElement('div'); nav.className = 'scr-nav'; nav.id = 'scrNav';
+  nav.innerHTML = `<button class="scr-btn" id="scrPrev" onclick="goScreen(screenIdx-1)"><span class="arr">&#8249;</span> Back</button>
+    <div><div class="scr-prog" id="scrProg"></div><div class="scr-dots" id="scrDots">${cards.map((_, i) => `<i onclick="goScreen(${i})" title="Part ${i+1}"></i>`).join('')}</div></div>
+    <button class="scr-btn" id="scrNext" onclick="goScreen(screenIdx+1)">Next <span class="arr">&#8250;</span></button>`;
+  c.appendChild(nav);
+  screenIdx = 0; goScreen(0);
+}
+function goScreen(i) {
+  const secs = document.querySelectorAll('#content .screen'); if (!secs.length) return;
+  i = Math.max(0, Math.min(secs.length - 1, i)); screenIdx = i;
+  secs.forEach((s, k) => s.classList.toggle('active', k === i));
+  const title = ((secs[i].querySelector('.part-title') || {}).textContent || ('Part ' + (i + 1))).trim();
+  const prog = document.getElementById('scrProg'); if (prog) prog.textContent = `${i + 1} / ${secs.length} \u00b7 ${title}`;
+  document.querySelectorAll('#scrDots i').forEach((d, k) => { d.classList.toggle('on', k === i); d.classList.toggle('done', k < i); });
+  const prev = document.getElementById('scrPrev'), next = document.getElementById('scrNext');
+  if (prev) prev.disabled = (i === 0);
+  if (next) { next.disabled = (i === secs.length - 1); next.innerHTML = (i === secs.length - 1) ? 'Last part \u2713' : 'Next <span class="arr">&#8250;</span>'; }
+  document.querySelectorAll('#content audio').forEach(a => { if (!secs[i].contains(a)) a.pause(); });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+document.addEventListener('keydown', e => {
+  if (e.target && /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) return;
+  if (e.key === 'ArrowRight') goScreen(screenIdx + 1);
+  if (e.key === 'ArrowLeft') goScreen(screenIdx - 1);
+});
 
 // ---- init ----
 function toggleSidebar(collapse) {
