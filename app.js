@@ -1050,6 +1050,8 @@ async function renderAdmin(tab='users'){
     // las entregas de Correccion — NO la misma clave repetida, que dejaria dos
     // items del menu resaltados a la vez.
     {group:'Cambridge', icon:'🎓', items:[
+      {key:'cambridgehub',label:'🎓 YLE + Main Suite'},
+      {key:'studyplan',label:'📋 Plan de estudio'},
       {key:'mocks',label:'🔓 Mocks'},
       {key:'practice',label:'🎯 Practice Tests'},
       {key:'funyle',label:'🧸 Fun for Nordic'},
@@ -1103,6 +1105,8 @@ async function renderAdmin(tab='users'){
   if(tab==='honesty') return antiCheatPanel();
   if(tab==='uoe') return $('#main').innerHTML = useOfEnglishBody();
   if(tab==='cambridgeinfo') return $('#main').innerHTML = cambridgeInfoBody();
+  if(tab==='cambridgehub') return studentCambridgePortal();
+  if(tab==='studyplan') return studyPlanPanel();
   if(tab==='mocks') return adminMocks();
   if(tab==='practice') return practicePanel(GRADES);
   if(tab==='unitaccess') return unitAccessPanel(GRADES);
@@ -2930,6 +2934,7 @@ async function renderTeacher(tab){
   ensenanza.push({key:'fr',label:'🇫🇷 Cap sur le français'});
   if(teacherAllowedGrades().length) ensenanza.push({key:'funaccess',label:'🔐 Unidades por grado'});
   ensenanza.push({key:'littlereaders',label:'🧒 Little Readers'});
+  examenes.push({key:'cambridgehub',label:'🎓 YLE + Main Suite'});
   examenes.push({key:'exams',label:'🎧 Exámenes'});
   if(teacherAllowedGrades().length) examenes.push({key:'practice',label:'🎯 Practice Tests'});
   examenes.push({key:'funyle',label:'🧸 Fun for Nordic'});
@@ -2988,6 +2993,7 @@ async function renderTeacher(tab){
   if(active==='funstarters') return $('#main').innerHTML = funCursoBody('starters');
   if(active==='funmovers') return $('#main').innerHTML = funCursoBody('movers');
   if(active==='funflyers') return $('#main').innerHTML = funCursoBody('flyers');
+  if(active==='cambridgehub') return studentCambridgePortal();
   if(active==='uoe') return $('#main').innerHTML = useOfEnglishBody();
   if(active==='cambridgeinfo') return $('#main').innerHTML = cambridgeInfoBody();
   $('#main').innerHTML = `<div class="card">El administrador aún no te ha asignado accesos. Escríbele para que te habilite <b>Resultados</b> o <b>Alumnos</b>.</div>`;
@@ -3560,6 +3566,7 @@ function studentHub(){
    Las áreas de English se reflejan en French (placeholder hasta alimentarlas). */
 const ENGLISH_AREAS = [
   {emoji:'🎙️', title:'Pronunciation', desc:'Listen to each sound, watch the tongue and airflow, and practise.', nav:'coach',    node:'english.pronunciation'},
+  {emoji:'🎓', icon:'main', title:'Cambridge', desc:'YLE and Main Suite: the official Cambridge route from Pre-A1 to C2, with practice tests.', nav:'cambridge', node:'english.cambridge'},
   {emoji:'🎓', title:'Mocks',         desc:'Official MOCK 1 and MOCK 2 exams by skill.',        nav:'mocks'},
   {emoji:'🎮', title:'NIShoot Live',  desc:"Join your class's live game: enter with the PIN.",    nav:'nishoot'},
   {emoji:'🎲', title:'Games Lab',     desc:'7 games per topic for grammar, vocabulary, phrasal verbs and idioms (A1–C1).', nav:'games'},
@@ -3817,11 +3824,426 @@ const _PLAN_UNIT_NODES=(function(){
 const _SUB_NODES  = [..._UNIT_NODES, ..._WEEK_NODES, ..._PLAN_UNIT_NODES];
 const _SUB_BY_KEY = (function(){ const m={}; _SUB_NODES.forEach(n=>m[n.key]=n); return m; })();
 const _GATE_PARENT= (function(){ const m={}; _SUB_NODES.forEach(n=>m[n.key]=n.parent); return m; })();
+/* ===================== CAMBRIDGE · YLE + MAIN SUITE =====================
+   La misma tarjeta doble de cohasset.pe/cambridge-portal.html, servida aquí
+   con lo que NIS ya tenía (Fun for Nordic, Listening B2, Use of English,
+   Writing, Practice Tests) y con lo que se trajo de Cohasset tal cual se
+   comparten los demás cursos: una copia en este repo, servida desde este
+   origen — cambridge-level.html + cambridge-data/ (KET…CPE),
+   flyers-practice.html y cambridge-bonus.html (su audio sale del mismo bucket
+   de Supabase que el Listening B2). Los dibujos salen de cambridge-icons.js,
+   que es UN archivo copiado igual a las dos webs.
+
+   Cada rama y cada nivel es un nodo de acceso (english.cambridge.<rama>.<nivel>)
+   para que el admin decida por grado o por alumno qué ve cada uno, desde
+   📋 Plan de estudio. Nacen ABIERTOS, como el resto de nodos que ya existían:
+   el panel trae un reparto sugerido que se aplica con un botón, no solo. */
+const CAMBRIDGE_TRACKS = {
+  yle: {
+    node:'english.cambridge.yle', icon:'yle', color:'#F59E0B',
+    title:'YLE', tag:'Young Learners English', panelTitle:'Young Learners English (YLE)',
+    desc:'Exams for children, with playful reading, listening and speaking tasks.',
+    levels:[
+      {key:'starters',    icon:'starters', name:'Starters', cefr:'Pre-A1 · YLE', short:'Starters',
+       desc:'First contact with English — Fun for Nordic 1, with audio, games and exam tasks.', href:'nis-fun/engine/?level=starters'},
+      {key:'movers',      icon:'movers',   name:'Movers',   cefr:'A1 · YLE', short:'Movers',
+       desc:'Move on with simple sentences — Fun for Nordic 2.', href:'nis-fun/engine/?level=movers'},
+      {key:'flyers',      icon:'flyers',   name:'Flyers',   cefr:'A2 · YLE', short:'Flyers',
+       desc:'The A2 Flyers course — Fun for Nordic 3, unit by unit.', href:'nis-fun/engine/?level=flyers'},
+      {key:'flyerstests', icon:'practice', name:'Flyers Practice Tests', cefr:'A2 · 10 tests', short:'Flyers Tests',
+       desc:'Ten full Flyers practice tests: Reading & Writing, Listening and Speaking, with answer keys.', href:'flyers-practice.html'},
+    ]},
+  main: {
+    node:'english.cambridge.main', icon:'main', color:'#7C3AED',
+    title:'MAIN SUITE', tag:'Cambridge General English', panelTitle:'Cambridge Main Suite',
+    desc:'The main certification route, from A2 to C2.',
+    levels:[
+      {key:'ket', icon:'ket', name:'A2 Key',         cefr:'A2 · KET', short:'KET',
+       desc:'Basic level: everyday words and phrases. 3 papers (Reading & Writing, Listening, Speaking).', href:'cambridge-level.html?level=ket'},
+      {key:'pet', icon:'pet', name:'B1 Preliminary', cefr:'B1 · PET', short:'PET',
+       desc:'Intermediate: work, study and travel. 3 papers (Reading & Writing, Listening, Speaking).', href:'cambridge-level.html?level=pet'},
+      {key:'fce', icon:'fce', name:'B2 First',       cefr:'B2 · FCE', short:'FCE',
+       desc:'Upper-intermediate, the most requested. 4 papers (Reading & Use of English, Writing, Listening, Speaking).', href:'cambridge-level.html?level=fce'},
+      {key:'cae', icon:'cae', name:'C1 Advanced',    cefr:'C1 · CAE', short:'CAE',
+       desc:'Advanced level for university and professional work. Longer, more complex texts.', href:'cambridge-level.html?level=cae'},
+      {key:'cpe', icon:'cpe', name:'C2 Proficiency', cefr:'C2 · CPE', short:'CPE',
+       desc:'The highest level, close to an educated native speaker. Sophisticated language.', href:'cambridge-level.html?level=cpe'},
+      {key:'listening', icon:'listening', name:'B2 First · Listening', cefr:'B2 · Authentic audio', short:'B2 Listening',
+       desc:'55 real exam-style recordings by unit with a full player, and tasks (Parts 1–4) that mark themselves.', href:'cambridge-listening.html'},
+      {key:'uoe', icon:'uoe', name:'B2 First · Use of English', cefr:'B2 · Part 1', short:'B2 UoE',
+       desc:'Multiple-choice cloze: 8 gaps, options A–D, with correction and explanations.', href:'use-of-english-part1.html'},
+      {key:'writing', icon:'writing', name:'B2 First · Writing', cefr:'B2 · Essay', short:'B2 Writing',
+       desc:'Opinion essay (Writing Part 1): 6 topics, linkers bank, word counter and checklist.', href:'writing.html'},
+      {key:'bonus', icon:'bonus', name:'FCE Bonus', cefr:'B2 · Extra practice', short:'FCE Bonus',
+       desc:'7 extra interactive exercises: Use of English, reading, listening and writing.', href:'cambridge-bonus.html'},
+    ]},
+};
+/* Practice Test reutiliza el nodo y el candado que ya existían (english.practice
+   + practice_access): un solo interruptor para la misma cosa. */
+const CAMBRIDGE_PRACTICE_NODE = 'english.practice';
+Object.keys(CAMBRIDGE_TRACKS).forEach(bk => {
+  CAMBRIDGE_TRACKS[bk].levels.forEach(l => { l.node = CAMBRIDGE_TRACKS[bk].node + '.' + l.key; });
+});
+/* Nodos que se suman a ACCESS_NODES (van a 🔐 Accesos, a los chips del
+   profesor y al editor por alumno sin tocar nada más). */
+const _CAMBRIDGE_NODES = [
+  {key:'english.cambridge', label:'Cambridge (YLE + Main Suite)'},
+  ...Object.keys(CAMBRIDGE_TRACKS).flatMap(bk => {
+    const b = CAMBRIDGE_TRACKS[bk];
+    return [{key:b.node, label:'Cambridge · ' + b.title},
+            ...b.levels.map(l => ({key:l.node, label:'Cambridge · ' + b.title + ' · ' + l.name}))];
+  }),
+];
+/* Reparto sugerido por grado: sale de GRADE_LEVELS (el nivel del Marco que
+   trabaja cada grado) y de FUN_REPARTO (qué Fun for Nordic hace cada grado
+   de primaria). Es una PROPUESTA: el botón del panel la aplica, y lo que no
+   está en la lista de un grado se cierra para ese grado. */
+const CAMBRIDGE_REPARTO = {
+  1:  ['yle.starters'],
+  2:  ['yle.starters'],
+  3:  ['yle.movers'],
+  4:  ['yle.movers','yle.flyers'],
+  5:  ['yle.flyers','yle.flyerstests','main.ket'],
+  6:  ['main.ket','main.pet'],
+  7:  ['main.pet','main.fce','main.listening','main.uoe','main.writing','main.bonus'],
+  8:  ['main.pet','main.fce','main.listening','main.uoe','main.writing','main.bonus'],
+  9:  ['main.fce','main.listening','main.uoe','main.writing','main.bonus','main.cae'],
+  10: ['main.fce','main.listening','main.uoe','main.writing','main.bonus','main.cae'],
+  11: ['main.fce','main.listening','main.uoe','main.writing','main.bonus','main.cae','main.cpe'],
+};
+function _camIco(key, size){ return (typeof camIcon === 'function') ? camIcon(key, size) : ''; }
+
+/* Lo que el admin/profesor escribió para el grado y para el alumno (tabla
+   study_plans). El alumno lo ve arriba del hub; sin nota no se pinta nada. */
+async function cambridgePlanNotes(){
+  const p = state.profile; if(!p) return [];
+  const ors = [];
+  if(p.grade_id != null) ors.push(`ref.eq.g:${p.grade_id}`);
+  if(p.id) ors.push(`ref.eq.s:${p.id}`);
+  if(!ors.length) return [];
+  try{
+    const { data } = await sb.from('study_plans').select('scope,ref,note,updated_at').eq('area','cambridge').or(ors.join(','));
+    return (data || []).filter(r => (r.note || '').trim());
+  }catch(e){ return []; }
+}
+
+async function studentCambridgePortal(){
+  _setNav(_isStudent() ? 'english' : 'cambridgehub');
+  const back = _isStudent() ? _backBtn("window._nav('english')", 'English') : '';
+  if(!nodeVisible('english.cambridge')){ _lockedView(back, '🎓 Cambridge English'); return; }
+  const route = 'cambridge';
+  const branch = (bk) => {
+    const b = CAMBRIDGE_TRACKS[bk], on = nodeVisible(b.node);
+    const chips = b.levels.map(l => `<span>${esc(l.short)}</span>`).join('');
+    return `<button type="button" class="cam-branch ${bk}" id="cam-br-${bk}" style="--accent:${b.color}"
+        aria-expanded="false" aria-controls="cam-panel-${bk}" onclick="window._camToggle('${bk}')" ${on ? '' : 'disabled'}>
+      <span class="cam-chev" aria-hidden="true">⌄</span>
+      ${_camIco(b.icon, 96)}
+      <h2>${b.title}</h2>
+      <div class="cam-tag">${b.tag}</div>
+      <p>${b.desc}</p>
+      <div class="cam-levels-inline">${chips}</div>
+      ${on ? '' : '<div class="badge" style="background:#fee2e2;color:#991b1b;margin-top:12px">🔒 Your teacher will unlock this</div>'}
+    </button>`;
+  };
+  const tile = (l) => {
+    const on = nodeVisible(l.node);
+    const inner = `${on ? '<span class="cam-badge ready">Available</span>' : '<span class="cam-badge locked">🔒 Locked</span>'}
+      ${_camIco(l.icon, 56)}<div class="cam-name">${esc(l.name)}</div><div class="cam-cefr">${esc(l.cefr)}</div><div class="cam-desc">${esc(l.desc)}</div>`;
+    return on ? `<a class="cam-tile" href="${_withBack(l.href, route)}">${inner}</a>`
+              : `<div class="cam-tile locked" aria-disabled="true">${inner}</div>`;
+  };
+  const panel = (bk) => {
+    const b = CAMBRIDGE_TRACKS[bk];
+    if(!nodeVisible(b.node)) return '';
+    return `<div class="cam-panel" id="cam-panel-${bk}"><div class="cam-panel-inner">
+      <h3><span class="cam-bar" style="background:${b.color}"></span>${b.panelTitle}</h3>
+      <div class="cam-tiles">${b.levels.map(tile).join('')}</div>
+    </div></div>`;
+  };
+  const practice = nodeVisible(CAMBRIDGE_PRACTICE_NODE) ? `
+    <a class="cam-practice" href="${QUIZ_URL}quizzes.html">
+      <div class="cam-pwrap">
+        ${_camIco('practice', 84)}
+        <div class="cam-ptxt">
+          <div class="cam-kicker">⚡ Practice Test</div>
+          <h2>Cambridge mock exams · Practice Test</h2>
+          <p>Exam-style <b>Reading</b>, <b>Listening</b> and <b>Writing</b> practice in the official Cambridge format, with a timer, real parts and automatic marking.</p>
+          <div class="cam-skills"><span>📖 Reading</span><span>🎧 Listening</span><span>✍️ Writing</span></div>
+        </div>
+        <span class="cam-cta">Open Practice Test →</span>
+      </div>
+    </a>` : '';
+  $('#main').innerHTML = `${back}<h1>🎓 Cambridge English</h1>
+    <p class="muted" style="margin-top:-6px">Choose your route: <b>Young Learners</b> for children (Pre-A1 to A2) or <b>Main Suite</b> for the general exam (A2 to C2). Click a card to see its levels.</p>
+    <div id="cam-plan-notes"></div>
+    <div class="cam-branches">${branch('yle')}${branch('main')}</div>
+    ${practice}
+    ${panel('yle')}${panel('main')}
+    <p class="muted center" style="font-size:.8rem;margin-top:22px">ℹ️ Each Main Suite level opens its <b>exam guide and practice tests</b>. For timed Reading, Listening and Writing mocks, use <b>Practice Test</b>.</p>`;
+  // Se abre la rama que le toca: primaria entra por YLE, secundaria por Main Suite.
+  const p = state.profile, prim = p && p.grade_id != null && Number(p.grade_id) <= 5;
+  const first = prim ? 'yle' : 'main', other = prim ? 'main' : 'yle';
+  window._camToggle(nodeVisible(CAMBRIDGE_TRACKS[first].node) ? first : other);
+  // Las instrucciones del plan llegan después: no retrasan la pantalla.
+  cambridgePlanNotes().then(notas => {
+    const box = $('#cam-plan-notes'); if(!box || !notas.length) return;
+    const grado = notas.find(n => n.scope === 'grade'), mio = notas.find(n => n.scope === 'student');
+    const bloque = (t, n) => `<div class="cam-plan"><b>${t}</b> ${esc(n.note).replace(/\n/g,'<br>')}</div>`;
+    box.innerHTML = (mio ? bloque('📌 Your plan:', mio) : '') + (grado && !mio ? bloque('📌 This term:', grado) : '');
+  });
+}
+window._camToggle = (which) => {
+  ['yle','main'].forEach(k => {
+    const br = document.getElementById('cam-br-' + k), pn = document.getElementById('cam-panel-' + k);
+    if(!br) return;
+    if(k === which && pn){
+      const abrir = !pn.classList.contains('open');
+      pn.classList.toggle('open', abrir); br.classList.toggle('active', abrir); br.setAttribute('aria-expanded', abrir ? 'true' : 'false');
+    } else { if(pn) pn.classList.remove('open'); br.classList.remove('active'); br.setAttribute('aria-expanded', 'false'); }
+  });
+};
+
+/* ===================== 📋 PLAN DE ESTUDIO (admin) =====================
+   Qué parte de Cambridge estudia cada grado y, para los alumnos con plan
+   individual (EPI), qué estudia cada uno. No inventa una tabla nueva para
+   los candados: escribe en node_access (grado) y student_access (alumno),
+   que es lo que ya lee nodeVisible(); lo único nuevo es la marca
+   profiles.individual_plan y las instrucciones en study_plans. */
+const _PLAN_COLS = Object.keys(CAMBRIDGE_TRACKS).flatMap(bk =>
+  CAMBRIDGE_TRACKS[bk].levels.map(l => ({ bk, node:l.node, short:l.short, name:l.name })));
+let _planTab = 'grades', _planStudent = null, _planFiltro = '';
+
+async function studyPlanPanel(){
+  state._tab = 'studyplan';
+  const tabs = `<div class="row" style="gap:8px;margin-bottom:12px;flex-wrap:wrap">
+      <button class="btn sm ${_planTab==='grades'?'':'ghost'}" onclick="window._planGo('grades')">🏫 Por grado</button>
+      <button class="btn sm ${_planTab==='epi'?'':'ghost'}" onclick="window._planGo('epi')">🧑‍🎓 Alumnos con plan individual (EPI)</button>
+      <span style="flex:1"></span>
+      <button class="btn sm ghost" onclick="studentCambridgePortal()">👁️ Ver la tarjeta Cambridge</button>
+    </div>`;
+  $('#main').innerHTML = `<h1>📋 Plan de estudio — Cambridge</h1>
+    <div class="note">Aquí se decide <b>qué parte de YLE y Main Suite ve cada grado</b> y, abajo, qué ve <b>cada alumno con plan individual (EPI)</b>. Una casilla marcada = ese material se ofrece; sin marcar = candado. Lo que no se ha tocado nunca está abierto, como el resto de accesos. Las instrucciones que escribas aparecen al alumno arriba de su tarjeta Cambridge.</div>
+    ${tabs}<div id="plan-body"><div class="center muted">Cargando…</div></div>`;
+  if(_planTab === 'grades') await _planGrades(); else await _planEpi();
+}
+window._planGo = (t) => { _planTab = t; studyPlanPanel(); };
+
+async function _planGrades(){
+  const [na, pa, sp] = await Promise.all([
+    sb.from('node_access').select('grade_id,node_key,unlocked'),
+    sb.from('practice_access').select('grade_id,unlocked'),
+    sb.from('study_plans').select('ref,note').eq('area','cambridge').eq('scope','grade'),
+  ]);
+  const err = na.error || pa.error || sp.error;
+  if(err){ $('#plan-body').innerHTML = `<div class="note err">${esc(err.message)}</div>`; return; }
+  const map = {}; (na.data||[]).forEach(r => { (map[r.grade_id] = map[r.grade_id] || {})[r.node_key] = r.unlocked; });
+  const prac = {}; (pa.data||[]).forEach(r => prac[r.grade_id] = r.unlocked);
+  const notas = {}; (sp.data||[]).forEach(r => notas[r.ref] = r.note || '');
+  const on = (g, k) => Object.prototype.hasOwnProperty.call(map[g]||{}, k) ? !!map[g][k] : _nodeDefaultOpen(k);
+  const chk = (g, k) => `<td class="${on(g,k)?'':'plan-off'}"><input type="checkbox" ${on(g,k)?'checked':''} title="${esc(k)}"
+      onchange="window._planSetNode(${g},'${k}',this.checked,this)"></td>`;
+  const head1 = `<tr><th rowspan="2">Grado</th><th rowspan="2" title="Interruptor general de la tarjeta">🎓<br>Cambridge</th>`
+    + Object.keys(CAMBRIDGE_TRACKS).map(bk => { const b = CAMBRIDGE_TRACKS[bk];
+        return `<th class="plan-track" colspan="${b.levels.length + 1}" style="background:${b.color}">${b.title}</th>`; }).join('')
+    + `<th rowspan="2">🎯<br>Practice</th><th rowspan="2" style="min-width:260px">Instrucciones para el grado</th></tr>`;
+  const head2 = `<tr>` + Object.keys(CAMBRIDGE_TRACKS).map(bk => { const b = CAMBRIDGE_TRACKS[bk];
+        return `<th title="Toda la rama">Rama</th>` + b.levels.map(l => `<th>${esc(l.short)}</th>`).join(''); }).join('') + `</tr>`;
+  const rows = GRADES.map(g => {
+    const pOn = Object.prototype.hasOwnProperty.call(prac, g.id) ? !!prac[g.id] : true;
+    const ref = 'g:' + g.id;
+    return `<tr data-g="${g.id}"><td><b>${g.name}</b></td>${chk(g.id,'english.cambridge')}`
+      + Object.keys(CAMBRIDGE_TRACKS).map(bk => { const b = CAMBRIDGE_TRACKS[bk];
+          return chk(g.id, b.node) + b.levels.map(l => chk(g.id, l.node)).join(''); }).join('')
+      + `<td class="${pOn?'':'plan-off'}"><input type="checkbox" ${pOn?'checked':''} onchange="window._planSetPractice(${g.id},this.checked,this)"></td>`
+      + `<td style="text-align:left"><textarea class="plan-note" data-ref="${ref}" placeholder="Ej.: Este bimestre: Movers unidades 1–10 y Flyers Tests 1–3.">${esc(notas[ref]||'')}</textarea>
+           <div class="row" style="gap:6px;margin-top:4px;align-items:center"><button class="btn sm" onclick="window._planNoteSave('grade','${ref}',${g.id},null,this)">Guardar</button><span class="muted plan-note-st" style="font-size:.78rem"></span></div></td></tr>`;
+  }).join('');
+  $('#plan-body').innerHTML = `
+    <div class="row" style="gap:8px;margin-bottom:10px;flex-wrap:wrap;align-items:center">
+      <button class="btn sm" onclick="window._planReparto()">✨ Aplicar reparto sugerido</button>
+      <button class="btn sm ghost" onclick="window._planAbrirTodo()">🔓 Abrir todo</button>
+      <span class="muted" style="font-size:.82rem">El reparto sugerido sigue el nivel del Marco de cada grado (G1–G2 Starters · G3–G4 Movers · G5 Flyers + KET · G6 KET/PET · G7–G8 PET/FCE · G9–G11 FCE/CAE, y CPE solo en G11). Se puede corregir casilla a casilla después.</span>
+    </div>
+    <div class="card" style="padding:0;overflow:auto;max-height:70vh"><table class="plan-grid"><thead>${head1}${head2}</thead><tbody>${rows}</tbody></table></div>`;
+}
+window._planSetNode = async (gradeId, key, to, el) => {
+  el.disabled = true;
+  const { error } = await sb.from('node_access').upsert(
+    { grade_id:gradeId, node_key:key, unlocked:to, updated_at:new Date().toISOString(),
+      updated_by:(state.session&&state.session.user&&state.session.user.id)||null },
+    { onConflict:'grade_id,node_key' });
+  el.disabled = false;
+  if(error){ alert('No se pudo guardar: ' + error.message); el.checked = !to; return; }
+  el.closest('td').classList.toggle('plan-off', !to);
+};
+window._planSetPractice = async (gradeId, to, el) => {
+  el.disabled = true;
+  const { error } = await sb.from('practice_access').upsert(
+    { grade_id:gradeId, unlocked:to, updated_at:new Date().toISOString(),
+      updated_by:(state.session&&state.session.user&&state.session.user.id)||null }, { onConflict:'grade_id' });
+  el.disabled = false;
+  if(error){ alert('No se pudo guardar: ' + error.message); el.checked = !to; return; }
+  el.closest('td').classList.toggle('plan-off', !to);
+};
+window._planNoteSave = async (scope, ref, gradeId, studentId, btn) => {
+  const ta = btn.closest('td, .plan-note-wrap').querySelector('.plan-note');
+  const st = btn.parentElement.querySelector('.plan-note-st');
+  btn.disabled = true; if(st) st.textContent = '…';
+  const { error } = await sb.from('study_plans').upsert(
+    { area:'cambridge', scope, ref, grade_id:gradeId, student_id:studentId, note:ta.value.trim(),
+      updated_at:new Date().toISOString(), updated_by:(state.session&&state.session.user&&state.session.user.id)||null },
+    { onConflict:'area,ref' });
+  btn.disabled = false;
+  if(error){ if(st) st.textContent = ''; alert('No se pudo guardar: ' + error.message); return; }
+  if(st){ st.textContent = '✓ Guardado'; setTimeout(() => { st.textContent = ''; }, 2500); }
+};
+/* Filas que escribe el reparto sugerido para un grado: abre lo listado y
+   cierra el resto (incluidas las ramas sin nada dentro). */
+function _planFilasReparto(gradeId){
+  const abiertos = new Set((CAMBRIDGE_REPARTO[gradeId] || []).map(s => 'english.cambridge.' + s));
+  const filas = [];
+  Object.keys(CAMBRIDGE_TRACKS).forEach(bk => {
+    const b = CAMBRIDGE_TRACKS[bk];
+    const algo = b.levels.some(l => abiertos.has(l.node));
+    filas.push({ node_key:b.node, unlocked:algo });
+    b.levels.forEach(l => filas.push({ node_key:l.node, unlocked:abiertos.has(l.node) }));
+  });
+  filas.push({ node_key:'english.cambridge', unlocked:filas.some(f => f.unlocked) });
+  return filas;
+}
+window._planReparto = async () => {
+  const lineas = GRADES.map(g => {
+    const abre = _planFilasReparto(g.id).filter(f => f.unlocked && !/^english\.cambridge(\.yle|\.main)?$/.test(f.node_key))
+      .map(f => (_PLAN_COLS.find(c => c.node === f.node_key) || {}).short || f.node_key);
+    return `${g.name} → ${abre.length ? abre.join(', ') : '(nada)'}`;
+  });
+  if(!confirm('Se va a escribir esto para TODOS los grados (lo que no aparece en un grado se cierra para ese grado):\n\n' + lineas.join('\n') + '\n\nDespués se ajusta casilla a casilla. ¿Seguir?')) return;
+  const ahora = new Date().toISOString(), uid = (state.session&&state.session.user&&state.session.user.id)||null;
+  const rows = GRADES.flatMap(g => _planFilasReparto(g.id).map(f => ({ grade_id:g.id, node_key:f.node_key, unlocked:f.unlocked, updated_at:ahora, updated_by:uid })));
+  const { error } = await sb.from('node_access').upsert(rows, { onConflict:'grade_id,node_key' });
+  if(error){ alert('No se pudo aplicar: ' + error.message); return; }
+  studyPlanPanel();
+};
+window._planAbrirTodo = async () => {
+  if(!confirm('Se abre TODO el material Cambridge para todos los grados (las excepciones por alumno se conservan). ¿Seguir?')) return;
+  const ahora = new Date().toISOString(), uid = (state.session&&state.session.user&&state.session.user.id)||null;
+  const keys = ['english.cambridge', ..._CAMBRIDGE_NODES.map(n => n.key)];
+  const rows = GRADES.flatMap(g => [...new Set(keys)].map(k => ({ grade_id:g.id, node_key:k, unlocked:true, updated_at:ahora, updated_by:uid })));
+  const { error } = await sb.from('node_access').upsert(rows, { onConflict:'grade_id,node_key' });
+  if(error){ alert('No se pudo aplicar: ' + error.message); return; }
+  studyPlanPanel();
+};
+
+/* ---- Alumnos con plan individual (EPI) ---- */
+async function _planEpi(){
+  const { data:profs, error } = await sb.from('profiles')
+    .select('id,full_name,email,grade_id,section,individual_plan,active,grades(name)').eq('role','student');
+  if(error){ $('#plan-body').innerHTML = `<div class="note err">${esc(error.message)}</div>`; return; }
+  const all = (profs||[]).filter(p => p.active !== false).sort((a,b) => (a.full_name||'').localeCompare(b.full_name||''));
+  const epi = all.filter(p => p.individual_plan === true);
+  const f = _planFiltro.trim().toLowerCase();
+  const candidatos = f ? all.filter(p => !p.individual_plan && ((p.full_name||'') + ' ' + (p.email||'')).toLowerCase().includes(f)).slice(0, 12) : [];
+  const fila = (p) => `<tr class="${_planStudent===p.id?'sel':''}">
+      <td><b>${esc(p.full_name||p.email)}</b> <span class="epi-tag">EPI</span></td>
+      <td><span class="badge grade">${esc(p.grades?.name||'—')}</span> ${p.section?esc(p.section):''}</td>
+      <td><button class="btn sm ${_planStudent===p.id?'':'ghost'}" onclick="window._planOpenStudent('${p.id}')">🔧 Su plan</button>
+          <button class="btn sm ghost" onclick="window._planEpiFlag('${p.id}',false)">✕ Quitar</button></td></tr>`;
+  $('#plan-body').innerHTML = `
+    <div class="grid cols-2" style="align-items:start">
+      <div class="card" style="margin:0">
+        <h2 style="font-size:1.05rem;margin:0 0 8px">Alumnos con plan individual</h2>
+        <p class="muted" style="font-size:.84rem;margin:0 0 10px">Un alumno EPI hereda lo de su grado y aquí se le define su excepción: qué abre y qué no, y sus instrucciones.</p>
+        <div style="overflow-x:auto"><table><tbody>${epi.map(fila).join('') || '<tr><td class="muted center" colspan="3">Todavía no hay alumnos marcados. Búscalo a la derecha y márcalo.</td></tr>'}</tbody></table></div>
+      </div>
+      <div class="card" style="margin:0">
+        <h2 style="font-size:1.05rem;margin:0 0 8px">➕ Marcar un alumno como EPI</h2>
+        <input type="search" value="${esc(_planFiltro)}" placeholder="Nombre o correo del alumno…" style="width:100%;padding:9px 12px;border:1px solid var(--line);border-radius:var(--r-sm);font:inherit"
+               oninput="window._planBuscar(this.value)">
+        <div id="plan-cands" style="margin-top:8px">${candidatos.map(p => `<div class="row" style="justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--line)">
+            <span>${esc(p.full_name||p.email)} <span class="muted" style="font-size:.8rem">· ${esc(p.grades?.name||'—')}${p.section?' '+esc(p.section):''}</span></span>
+            <button class="btn sm" onclick="window._planEpiFlag('${p.id}',true)">Marcar EPI</button></div>`).join('')
+          || (f ? '<div class="muted" style="font-size:.84rem">Sin resultados (o ya está marcado).</div>' : '')}</div>
+      </div>
+    </div>
+    <div id="plan-student" style="margin-top:16px"></div>`;
+  if(_planStudent && epi.some(p => p.id === _planStudent)) _planStudentEditor(epi.find(p => p.id === _planStudent));
+}
+let _planBuscaT = null;
+window._planBuscar = (v) => { _planFiltro = v; clearTimeout(_planBuscaT); _planBuscaT = setTimeout(() => {
+  // Solo se repinta la lista de candidatos, para no perder el foco del buscador.
+  const inp = document.activeElement; _planEpi().then(() => { const i = $('#plan-body input[type=search]'); if(i && inp && inp.type === 'search'){ i.focus(); i.setSelectionRange(i.value.length, i.value.length); } });
+}, 250); };
+window._planEpiFlag = async (sid, to) => {
+  if(!to && !confirm('El alumno vuelve al plan de su grado. Sus excepciones de Cambridge y sus instrucciones se borran. ¿Quitar?')) return;
+  const { error } = await sb.from('profiles').update({ individual_plan:to }).eq('id', sid);
+  if(error){ alert('No se pudo guardar: ' + error.message); return; }
+  if(!to){
+    const keys = ['english.cambridge', ..._CAMBRIDGE_NODES.map(n => n.key)];
+    await sb.from('student_access').delete().eq('student_id', sid).in('node_key', keys);
+    await sb.from('study_plans').delete().eq('area','cambridge').eq('ref','s:' + sid);
+    if(_planStudent === sid) _planStudent = null;
+  } else { _planStudent = sid; _planFiltro = ''; }
+  _planEpi();
+};
+window._planOpenStudent = (sid) => { _planStudent = sid; _planEpi(); };
+
+async function _planStudentEditor(p){
+  const box = $('#plan-student'); if(!box) return;
+  box.innerHTML = `<div class="center muted">Cargando…</div>`;
+  const [na, sa, sp] = await Promise.all([
+    p.grade_id != null ? sb.from('node_access').select('node_key,unlocked').eq('grade_id', p.grade_id) : Promise.resolve({data:[]}),
+    sb.from('student_access').select('node_key,unlocked').eq('student_id', p.id),
+    sb.from('study_plans').select('note').eq('area','cambridge').eq('ref','s:' + p.id).maybeSingle(),
+  ]);
+  const gm = {}; (na.data||[]).forEach(r => gm[r.node_key] = r.unlocked);
+  const sm = {}; (sa.data||[]).forEach(r => sm[r.node_key] = r.unlocked);
+  const gradeOn = k => Object.prototype.hasOwnProperty.call(gm, k) ? !!gm[k] : _nodeDefaultOpen(k);
+  const eff = k => Object.prototype.hasOwnProperty.call(sm, k) ? !!sm[k] : gradeOn(k);
+  const celda = (k) => `<td class="${eff(k)?'':'plan-off'}" title="${esc(k)}">
+      <input type="checkbox" ${eff(k)?'checked':''} onchange="window._planSetStudent('${p.id}','${k}',this.checked,this)">
+      <div class="muted" style="font-size:.66rem;margin-top:2px">${gradeOn(k)?'grado ✓':'grado ✕'}${Object.prototype.hasOwnProperty.call(sm,k)?' · excep.':''}</div></td>`;
+  const head1 = `<tr><th rowspan="2">🎓<br>Cambridge</th>` + Object.keys(CAMBRIDGE_TRACKS).map(bk => { const b = CAMBRIDGE_TRACKS[bk];
+      return `<th class="plan-track" colspan="${b.levels.length + 1}" style="background:${b.color}">${b.title}</th>`; }).join('') + `</tr>`;
+  const head2 = `<tr>` + Object.keys(CAMBRIDGE_TRACKS).map(bk => { const b = CAMBRIDGE_TRACKS[bk];
+      return `<th>Rama</th>` + b.levels.map(l => `<th>${esc(l.short)}</th>`).join(''); }).join('') + `</tr>`;
+  const row = `<tr>${celda('english.cambridge')}` + Object.keys(CAMBRIDGE_TRACKS).map(bk => { const b = CAMBRIDGE_TRACKS[bk];
+      return celda(b.node) + b.levels.map(l => celda(l.node)).join(''); }).join('') + `</tr>`;
+  box.innerHTML = `<div class="card" style="border-top:5px solid #7c3aed">
+    <div class="row" style="justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px">
+      <div><h2 style="margin:0;font-size:1.1rem">${esc(p.full_name||p.email)} <span class="epi-tag">EPI</span></h2>
+        <div class="muted" style="font-size:.84rem">${esc(p.grades?.name||'—')}${p.section?' · '+esc(p.section):''} · hereda lo del grado; cada casilla que toques aquí es su excepción.</div></div>
+      <button class="btn sm ghost" onclick="window._planQuitarExcepciones('${p.id}')">↺ Volver a lo del grado</button>
+    </div>
+    <div style="overflow:auto;margin-top:10px"><table class="plan-grid"><thead>${head1}${head2}</thead><tbody>${row}</tbody></table></div>
+    <div class="plan-note-wrap" style="margin-top:12px">
+      <label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:4px;color:var(--grey)">INSTRUCCIONES PARA ESTE ALUMNO (las ve arriba de su tarjeta Cambridge)</label>
+      <textarea class="plan-note" placeholder="Ej.: Trabaja Movers unidades 5–12 y haz el Flyers Test 1 esta semana. Ignora el Main Suite por ahora.">${esc((sp.data&&sp.data.note)||'')}</textarea>
+      <div class="row" style="gap:6px;margin-top:4px;align-items:center"><button class="btn sm" onclick="window._planNoteSave('student','s:${p.id}',null,'${p.id}',this)">Guardar</button><span class="muted plan-note-st" style="font-size:.78rem"></span></div>
+    </div></div>`;
+}
+window._planSetStudent = async (sid, key, to, el) => {
+  el.disabled = true;
+  const { error } = await sb.rpc('set_student_access', { p_student:sid, p_node:key, p_unlocked:to });
+  el.disabled = false;
+  if(error){ alert('No se pudo guardar: ' + error.message); el.checked = !to; return; }
+  el.closest('td').classList.toggle('plan-off', !to);
+  const hint = el.nextElementSibling; if(hint && hint.textContent.indexOf('excep.') < 0) hint.textContent += ' · excep.';
+};
+window._planQuitarExcepciones = async (sid) => {
+  if(!confirm('Se borran las excepciones de Cambridge de este alumno: vuelve a ver exactamente lo de su grado. ¿Seguir?')) return;
+  const keys = ['english.cambridge', ..._CAMBRIDGE_NODES.map(n => n.key)];
+  const { error } = await sb.from('student_access').delete().eq('student_id', sid).in('node_key', keys);
+  if(error){ alert('No se pudo: ' + error.message); return; }
+  _planEpi();
+};
+
 const ACCESS_NODES = [
   {key:'english.pronunciation',         label:'Pronunciation'},
   {key:'english.practice',              label:'Practice Tests'},
   {key:'english.phonics',               label:'Phonics'},
   {key:'english.classes',               label:'Classes'},
+  ..._CAMBRIDGE_NODES,
   ..._GRADE_NODES,
   ...[..._UNIT_NODES,..._WEEK_NODES].map(n=>({key:n.key,label:n.label})),
   {key:'english.classes.g9.cambridge',          label:'9th · Cambridge'},
@@ -3871,8 +4293,10 @@ function studentSubject(key){
   const areas = isEn ? ENGLISH_AREAS : ENGLISH_AREAS.filter(a=>!a.englishOnly);
   const cards = areas.map(a=>{
     if(!isEn) return _soonCard(a.emoji,a.title,a.desc);
-    if(a.node && !nodeVisible(a.node)) return _lockedCard(a.emoji,a.title,a.desc);
-    return _hubCard(a.emoji,a.title,a.desc,`window._nav('${a.nav}')`);
+    // Cambridge trae su dibujo 3D (cambridge-icons.js) en lugar de emoji.
+    const em = (a.icon && typeof camIcon==='function') ? camIcon(a.icon,72) : a.emoji;
+    if(a.node && !nodeVisible(a.node)) return _lockedCard(em,a.title,a.desc);
+    return _hubCard(em,a.title,a.desc,`window._nav('${a.nav}')`);
   }).join('');
   $('#main').innerHTML = `${_isStudent()?_backBtn("window._nav('home')",'Home'):''}<h1>${title}</h1>
     <p class="muted" style="margin-top:-6px">${isEn?'Your English areas.':'Próximamente — iremos habilitando el francés poco a poco.'}</p>
@@ -4353,7 +4777,7 @@ function _navRender(k){
   if(m=/^classes_(g\d+)_readers$/.exec(k)){ studentGradeReaders(m[1]); return true; }
   if(m=/^classes_(g\d+)$/.exec(k))    { studentGrade(m[1]);           return true; }
   const fn={english:()=>studentSubject('english'),french:()=>studentSubject('french'),general:studentGeneral,
-    mocks:studentMocks,practice:studentPractice,library:studentLibrary,mun:studentMun,classes:studentClasses,
+    mocks:studentMocks,practice:studentPractice,cambridge:studentCambridgePortal,library:studentLibrary,mun:studentMun,classes:studentClasses,
     phonics:studentPhonics,coach:studentCoach,results:studentResults,nishoot:studentNishoot,games:studentGames,
     final:studentFinal,account:studentAccount,home:studentHub}[k];
   if(fn){ fn(); return true; }
