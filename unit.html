@@ -843,7 +843,7 @@ async function arrancaSesion(){
   if(!me){ $('#gate').style.display='block'; U.deliverables.forEach(d=>{ if(d.type==='text') cuenta(d); }); return; }
   $('#handin').style.display='block';
   const {data}=await sb.from('unit_submissions')
-    .select('kind,milestone,payload,file_path,score,criteria,feedback')
+    .select('kind,milestone,payload,file_path,score,criteria,feedback,updated_at')
     .eq('student_id',me.id).eq('grade',GRADE).eq('unit',UNIT);
   /* Las entregas de ficha llevan milestone 'w1s1'; las del producto, 'final'. */
   (data||[]).filter(r=>r.milestone!==MILESTONE).forEach(r=>{ _entregas[r.milestone]=r; });
@@ -859,7 +859,33 @@ async function arrancaSesion(){
         $('#fbt-'+r.kind).textContent=(r.score!=null?('Mark: '+r.score+'/10 — '):'')+r.feedback; }
     }
   });
+  recuperaLocales(data||[]);
   U.deliverables.forEach(d=>{ if(d.type==='text') cuenta(d); });
+}
+
+/* Lo que quedo escrito en este equipo y no llego a subir (se cayo la red, se
+   cerro el portatil de golpe) gana si es mas nuevo que lo que hay en la
+   cuenta. No se pisa nada a ciegas: se compara con la fecha de la fila, y si
+   la cuenta va por delante — el alumno siguio en otro equipo — la copia
+   local se queda quieta. */
+function recuperaLocales(filas){
+  U.deliverables.forEach(d=>{
+    if(d.type!=='text') return;
+    const ta=$('#t-'+d.kind); if(!ta) return;
+    const loc=leeLocal(d.kind);
+    if(!loc || !loc.text || loc.text===ta.value) return;
+    const fila=filas.filter(r=>r.milestone===MILESTONE && r.kind===d.kind)[0];
+    /* Comparar las fechas como TEXTO mentiria: aqui se escribe '…123Z' y
+       PostgREST devuelve '…123456+00:00'. Se comparan como fechas. */
+    const tLoc=Date.parse(loc.at), tFila=fila?Date.parse(fila.updated_at):NaN;
+    if(!isNaN(tLoc) && !isNaN(tFila) && tLoc<=tFila) return;
+    ta.value=loc.text;
+    const st=$('#st-'+d.kind);
+    if(st){ st.textContent='Recovered from this computer — saving it to your account…';
+            st.className='state'; }
+    const s=_txt[d.kind]; if(s) s.sucio=true;
+    subeBorrador(d.kind);
+  });
 }
 
 async function guarda(kind,payload,extra){
@@ -900,26 +926,84 @@ function cuenta(d){
   }
 }
 
+/* ---------------- red de seguridad del borrador ----------------
+   El articulo se escribia SOLO contra Supabase: sin copia en el equipo, sin
+   volcado al cerrar la pestana y sin reintento si la subida fallaba. Un
+   alumno podia escribir sus 190 palabras, leer "Not saved" y perderlas al
+   cerrar. Ahora cada tecla deja copia en este navegador — sincrona, no
+   depende de la red —, lo pendiente se sube al ocultar o cerrar la pestana,
+   y una subida fallida se reintenta sola hasta que entra. */
+const _txt = {};   // kind -> {ta, st, sucio, timer, reint, espera}
+
+/* La clave lleva el id del alumno dentro: en la sala de computo dos alumnos
+   comparten maquina, y el borrador de uno no puede aparecerle al siguiente. */
+function claveLocal(kind){
+  return 'nis_borrador_'+(me?me.id:'anon')+'_'+GRADE+'_u'+UNIT+'_'+kind;
+}
+function guardaLocal(kind,texto){
+  try{ localStorage.setItem(claveLocal(kind),
+       JSON.stringify({text:texto,at:new Date().toISOString()})); }catch(e){}
+}
+function leeLocal(kind){
+  try{ return JSON.parse(localStorage.getItem(claveLocal(kind))||'null'); }catch(e){ return null; }
+}
+function hayPendientes(){ return Object.keys(_txt).some(k=>_txt[k].sucio); }
+
+/* Sube el borrador. Si falla NO se rinde: el alumno ya dejo de escribir y
+   ninguna tecla va a volver a disparar el guardado, asi que se reintenta
+   con esperas crecientes hasta que la red vuelva. */
+async function subeBorrador(kind){
+  const s=_txt[kind]; if(!s||!me) return;
+  clearTimeout(s.timer); clearTimeout(s.reint);
+  const texto=s.ta.value;
+  const r=await guarda(kind,{text:texto,words:palabras(texto),draft:true});
+  if(r.ok){
+    if(s.ta.value===texto) s.sucio=false;
+    s.espera=0;
+    s.st.textContent='Draft saved'; s.st.className='state ok';
+    return;
+  }
+  s.espera=Math.min((s.espera||2000)*2,30000);
+  s.st.textContent='Saved on this computer — reconnecting…';
+  s.st.className='state err';
+  s.reint=setTimeout(()=>subeBorrador(kind),s.espera);
+}
+
+/* Cerrar la pestana, bloquear la tablet o cambiar de app no puede costar lo
+   ultimo que escribio: lo pendiente sube ya, sin esperar al temporizador. */
+function vuelcaTodo(){
+  Object.keys(_txt).forEach(k=>{ if(_txt[k].sucio) subeBorrador(k); });
+}
+document.addEventListener('visibilitychange',()=>{
+  if(document.visibilityState==='hidden') vuelcaTodo();
+});
+window.addEventListener('pagehide',vuelcaTodo);
+window.addEventListener('beforeunload',e=>{
+  if(!hayPendientes()) return;      // en uso normal nunca queda nada pendiente
+  e.preventDefault(); e.returnValue='';
+});
+
 function cablea(d){
   if(d.type!=='text'){ cableaArchivo(d.kind); return; }
   const ta=$('#t-'+d.kind), st=$('#st-'+d.kind);
-  let t=null;
+  const s=_txt[d.kind]={ta:ta,st:st,sucio:false,timer:null,reint:null,espera:0};
   ta.addEventListener('input',()=>{
     cuenta(d);
+    guardaLocal(d.kind,ta.value);          // primero lo que no puede fallar
     if(!me) return;
-    clearTimeout(t); st.textContent='Saving…'; st.className='state';
-    t=setTimeout(async()=>{
-      const r=await guarda(d.kind,{text:ta.value,words:palabras(ta.value),draft:true});
-      st.textContent=r.ok?'Draft saved':'Not saved: '+r.motivo;
-      st.className=r.ok?'state ok':'state err';
-    },1200);
+    s.sucio=true;
+    clearTimeout(s.timer); clearTimeout(s.reint);
+    st.textContent='Saving…'; st.className='state';
+    s.timer=setTimeout(()=>subeBorrador(d.kind),1200);
   });
   $('#send-'+d.kind).addEventListener('click',async()=>{
     const n=palabras(ta.value);
     if(n<30){ st.textContent='This is still too short to hand in.'; st.className='state err'; return; }
+    clearTimeout(s.timer); clearTimeout(s.reint);
     $('#send-'+d.kind).disabled=true;
     const r=await guarda(d.kind,{text:ta.value,words:n,draft:false,handed_at:new Date().toISOString()});
     $('#send-'+d.kind).disabled=false;
+    if(r.ok) s.sucio=false;
     st.textContent=r.ok?'Handed in — you can still edit it and hand it in again.':'Could not hand in: '+r.motivo;
     st.className=r.ok?'state ok':'state err';
   });
