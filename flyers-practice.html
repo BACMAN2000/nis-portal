@@ -452,8 +452,8 @@ function renderListening(t) {
   if (L.p1) {
     const people = L.p1.people || [];
     const sel = i => `<select data-name="lis_p1_${i}"><option value="">— choose —</option>${people.map(p=>`<option value="${esc(p)}">${esc(p)}</option>`).join('')}</select>`;
-    html += card(1, 'Listen and draw lines', 'Look at the picture. Listen and match each name to the right person.',
-      `${img('L1','Part 1 picture')}<p class="lis-scene">${esc(L.p1.scene||'')}</p>
+    html += card(1, 'Listen and draw lines', 'Look at the picture. Listen and draw a line from each name to the right person with the pencil, then choose the person below.',
+      `${img('L1','Part 1 picture').replace('<img ','<img data-paint="L1" ')}<p class="lis-scene">${esc(L.p1.scene||'')}</p>
        <div class="item lis-ex"><label><b>${esc(L.p1.example_name||'Example')}</b> <span class="muted">(example)</span></label><span class="muted">see the picture</span></div>
        ${(L.p1.names||[]).map((nm,i)=>`<div class="item"><label><b>${esc(nm)}</b></label>${sel(i)}</div>`).join('')}`);
   }
@@ -480,8 +480,8 @@ function renderListening(t) {
   }
   // Part 5 — colorear y escribir
   if (L.p5) {
-    html += card(5, 'Listen and colour and write', 'Look at the picture. Listen and write what you have to do (object + colour, or the word to write).',
-      `${img('L5','Part 5 picture')}<p class="lis-scene">${esc(L.p5.scene||'')}</p>
+    html += card(5, 'Listen and colour and write', 'Listen. Colour the things with the colours you hear and write the words on the picture. Then note what you did below (object + colour, or the word).',
+      `${img('L5','Part 5 picture').replace('<img ','<img data-paint="L5" ')}<p class="lis-scene">${esc(L.p5.scene||'')}</p>
        <div class="item lis-ex"><label><span class="muted">Example:</span></label><span class="lis-example">${esc(L.p5.example||'')}</span></div>
        ${(L.p5.items||[]).map((it,i)=>`<div class="item"><label>${i+1}.</label>${input('lis_p5_'+i,'e.g. pig pink')}</div>`).join('')}`);
   }
@@ -591,8 +591,27 @@ function render() {
   document.getElementById('content').innerHTML = html;
   document.getElementById('scoreBox').innerHTML = '';
   setupScreens();
+  if(window.attachPaint) attachPaint();
   window.scrollTo({top:0,behavior:'smooth'});
 }
+/* ---- Pintar sobre las laminas (paint-layer.js) ----
+   Part 1: trazar las lineas de nombre a persona (lapiz). Part 5: colorear y
+   escribir sobre el dibujo. Los trazos se guardan por test y lamina. */
+var PAINT = window.PAINT = {};
+function paintKey(id){ return (currentTest+1) + '#' + id; }
+function attachPaint(){
+  if(!window.PaintLayer) return;
+  document.querySelectorAll('#content img[data-paint]').forEach(function(im){
+    if(im.__pl) return;
+    var id = im.dataset.paint, k = paintKey(id);
+    PaintLayer.attach(im, {
+      tools: id === 'L1' ? ['pencil','eraser','text'] : ['pencil','brush','pen','eraser','text'],
+      initial: PAINT[k],
+      onChange: function(d){ PAINT[k] = d; if(window.paintSave) paintSave(); }
+    });
+  });
+}
+
 
 function checkAnswers() {
   const t = TESTS[currentTest];
@@ -721,6 +740,7 @@ init();
 </script>
 <script src="nis-nav.js?v=2"></script>
 <script src="activity-save.js?v=4"></script>
+<script src="paint-layer.js?v=1"></script>
 <script>
 /* La app de Cohasset no guardaba nada: al cambiar de test o cerrar la
    pestana se perdia todo lo escrito. Aqui las respuestas se leen de los
@@ -743,6 +763,7 @@ init();
       if(el.type === "radio") el.checked = (el.value === v); else el.value = v;
     });
   }
+  window.paintSave = function(){ if(window.NIS_WORK) NIS_WORK.touch(); };
   document.addEventListener("input", function(e){
     if(!e.target.closest("#content")) return;
     leeDOM(); if(window.NIS_WORK) NIS_WORK.touch();
@@ -755,13 +776,16 @@ init();
   new MutationObserver(reponDOM).observe(document.getElementById("content"), {childList:true});
   if(window.NIS_WORK) NIS_WORK.attach(Object.assign(NIS_WORK.ficha(), {
     title: "A2 Flyers — Practice Tests",
-    read:  function(){ leeDOM(); return { store: GUARDA }; },
-    write: function(d){ var p=(d&&d.store)||{}; Object.keys(p).forEach(function(k){ GUARDA[k]=p[k]; }); },
-    after: reponDOM,
-    count: function(d){ return Object.keys(((d||{}).store)||{}).length; },
+    read:  function(){ leeDOM(); return { store: GUARDA, paint: PAINT }; },
+    write: function(d){ var p=(d&&d.store)||{}; Object.keys(p).forEach(function(k){ GUARDA[k]=p[k]; }); var q=(d&&d.paint)||{}; Object.keys(q).forEach(function(k){ PAINT[k]=q[k]; }); },
+    after: function(){ reponDOM(); document.querySelectorAll('#content img[data-paint]').forEach(function(im){ if(im.__pl) im.__pl.setData(PAINT[paintKey(im.dataset.paint)]); }); },
+    count: function(d){ return Object.keys(((d||{}).store)||{}).length + Object.keys(((d||{}).paint)||{}).length; },
     answers: function(d){
       var p=(d&&d.store)||{}, out={};
       Object.keys(p).forEach(function(k){ out["Test " + k.replace(/#/g, " / ")] = String(p[k]); });
+      var q=(d&&d.paint)||{};
+      Object.keys(q).forEach(function(k){ var o=(q[k]&&q[k].ops)||[]; if(!o.length) return; var w=o.filter(function(x){return x.t==='text';}).length;
+        out["Test " + k.replace(/#/g, " / listening / picture ")] = (o.length-w) + " strokes" + (w ? ", " + w + " words: " + o.filter(function(x){return x.t==='text';}).map(function(x){return x.txt;}).join(', ') : ''); });
       return out;
     }
   }));

@@ -349,6 +349,16 @@ function gamesLabBody(){ return `
     <a class="btn" href="games-lab.html?v=3" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
   </div>
   <iframe src="games-lab.html?v=3" title="English Games Lab" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#eef1f8"></iframe>`; }
+/* 📝 Pizarra — hoja de cuaderno proyectable (triple renglón, doble raya,
+   rayado, cuadriculado o en blanco) donde el profesor escribe la muestra que
+   los alumnos copian. Vive en pizarra.html, sin sesión: lo que se escribe se
+   guarda en el navegador del profesor, no en la cuenta de nadie. */
+function pizarraBody(){ return `
+  <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
+    <div class="muted" style="flex:1;min-width:220px">Escribe como en el cuaderno del alumno y proyéctalo: papel triple renglón, doble raya, rayado, cuadriculado o en blanco; varias letras escolares, tamaño, colores, imágenes y dibujo a mano. Lo escrito se queda guardado en este navegador.</div>
+    <a class="btn" href="pizarra.html?v=1" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Abrir en pantalla completa ↗</a>
+  </div>
+  <iframe src="pizarra.html?v=1" title="Pizarra" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#2b2f3a"></iframe>`; }
 /* 🧩 Use of English — la app B2 (First, Part 1: multiple-choice cloze). Es la
    misma que ve el alumno en Classes > 9.º > Cambridge; aqui el admin la revisa.
    Se corrige sola en el navegador y no guarda intentos en Supabase. */
@@ -1042,6 +1052,7 @@ async function renderAdmin(tab='users'){
       {key:'fr',label:'🇫🇷 Cap sur le français'},
       {key:'funaccess',label:'🔐 Unidades por grado'},
       {key:'materiales',label:'📄 Materiales de clase'},
+      {key:'pizarra',label:'📝 Pizarra'},
       {key:'library',label:'📚 Library'},
     ]},
     // Todo lo del examen junto: los dos candados (Mocks / Practice, que antes
@@ -1104,6 +1115,7 @@ async function renderAdmin(tab='users'){
   if(tab==='teachers') return adminTeachers();
   if(tab==='honesty') return antiCheatPanel();
   if(tab==='uoe') return $('#main').innerHTML = useOfEnglishBody();
+  if(tab==='pizarra') return $('#main').innerHTML = pizarraBody();
   if(tab==='cambridgeinfo') return $('#main').innerHTML = cambridgeInfoBody();
   if(tab==='cambridgehub') return studentCambridgePortal();
   if(tab==='studyplan') return studyPlanPanel();
@@ -2934,6 +2946,7 @@ async function renderTeacher(tab){
   ensenanza.push({key:'fr',label:'🇫🇷 Cap sur le français'});
   if(teacherAllowedGrades().length) ensenanza.push({key:'funaccess',label:'🔐 Unidades por grado'});
   ensenanza.push({key:'littlereaders',label:'🧒 Little Readers'});
+  ensenanza.push({key:'pizarra',label:'📝 Pizarra'});
   examenes.push({key:'cambridgehub',label:'🎓 YLE + Main Suite'});
   examenes.push({key:'exams',label:'🎧 Exámenes'});
   if(teacherAllowedGrades().length) examenes.push({key:'practice',label:'🎯 Practice Tests'});
@@ -2995,6 +3008,7 @@ async function renderTeacher(tab){
   if(active==='funflyers') return $('#main').innerHTML = funCursoBody('flyers');
   if(active==='cambridgehub') return studentCambridgePortal();
   if(active==='uoe') return $('#main').innerHTML = useOfEnglishBody();
+  if(active==='pizarra') return $('#main').innerHTML = pizarraBody();
   if(active==='cambridgeinfo') return $('#main').innerHTML = cambridgeInfoBody();
   $('#main').innerHTML = `<div class="card">El administrador aún no te ha asignado accesos. Escríbele para que te habilite <b>Resultados</b> o <b>Alumnos</b>.</div>`;
 }
