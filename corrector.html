@@ -47,6 +47,13 @@
   .ficha{margin-top:8px;padding:8px 10px;background:var(--bg,#f2f3ff);border-radius:8px;font-size:13px}
   .ficha .ipa{font-family:ui-monospace,Consolas,monospace;color:var(--blue-dd,#244c77)}
   .cuenta{font-weight:700}
+  .aviso.revisar{border-left-color:var(--celeste,#76cbe5)}
+  .cx-sug{margin-top:6px;display:flex;gap:6px;flex-wrap:wrap;align-items:center;
+          font-size:12px;color:var(--grey,#636465)}
+  .cx-fix{background:var(--white,#fff);border:1px solid var(--blue,#4987c6);
+          color:var(--blue-dd,#244c77);border-radius:999px;padding:3px 10px;
+          font:600 13px ui-monospace,Consolas,monospace;cursor:pointer}
+  .cx-fix:hover{background:var(--blue,#4987c6);color:#fff}
 </style>
 </head>
 <body>
@@ -65,6 +72,9 @@
         <option value="uk">británico</option>
         <option value="us">americano</option>
       </select>
+    </label>
+    <label style="font-size:13px;display:flex;align-items:center;gap:5px" title="then/than, form/from, were/where…">
+      <input type="checkbox" id="confundibles"> palabras que se confunden
     </label>
     <span class="estado" id="estado">cargando diccionario…</span>
   </div>
@@ -85,17 +95,19 @@
 
 <script>
 /* ------------------------------------------------------------------ datos */
-const V = '2';
-let PAL = null, REGLAS = null, LEX = null;
+const V = '3';
+let PAL = null, CORE = null, REGLAS = null, LEX = null;
 const $ = s => document.querySelector(s);
 
 async function cargar(){
   try{
-    const [w, r] = await Promise.all([
+    const [w, r, c] = await Promise.all([
       fetch('lexicon/words.txt?v='+V).then(x=>x.text()),
       fetch('lexicon/rules.json?v='+V).then(x=>x.json()),
+      fetch('lexicon/core.txt?v='+V).then(x=>x.text()).catch(()=>''),
     ]);
     PAL = new Set(w.split(/\r?\n/).filter(Boolean));
+    CORE = new Set(c.split(/\r?\n/).filter(Boolean));
     REGLAS = r;
     REGLAS.gramatica = r.gramatica.map(g=>({re:new RegExp(g.re,'gi'), msg:g.msg}));
     REGLAS.us2uk = {};
@@ -114,11 +126,27 @@ cargar();
 const SUF = [['s',['']],['es',['','e']],['ies',['y']],['ing',['','e']],
              ['ed',['','e']],['ied',['y']],['er',['','e']],['est',['','e']],['ly',['']]];
 
+/* ¿La raíz termina en consonante-vocal-consonante? Ese patrón dobla la
+   consonante ante -ing y -ed: begin -> beginning. Sin comprobarlo, 'begining'
+   se acepta como 'begin'+'ing' y el error pasa sin aviso. Sólo afecta a lo que
+   no está en el diccionario, así que 'opening' —que sí está— no se toca. */
+const VOC = new Set(['a','e','i','o','u']);
+function pideDoblar(raiz){
+  if(raiz.length < 3) return false;
+  const a = raiz[raiz.length-3], b = raiz[raiz.length-2], c = raiz[raiz.length-1];
+  return !VOC.has(a) && VOC.has(b) && !VOC.has(c) && !'wxy'.includes(c);
+}
+
 function flexion(w){
   for(const [suf,bases] of SUF){
     if(w.endsWith(suf) && w.length > suf.length+2){
       const raiz = w.slice(0, -suf.length);
-      for(const e of bases) if(PAL.has(raiz+e)) return true;
+      for(const e of bases){
+        if(PAL.has(raiz+e)){
+          if((suf==='ing'||suf==='ed') && e==='' && pideDoblar(raiz)) continue;
+          return true;
+        }
+      }
       if(raiz.length>2 && raiz[raiz.length-1]===raiz[raiz.length-2]
          && PAL.has(raiz.slice(0,-1))) return true;
     }
@@ -166,13 +194,22 @@ function sugerir(w){
     const d = dist(w,c,tope);
     if(d<=tope) out.push([d,c]);
   }
-  return out.sort((a,b)=>a[0]-b[0]||a[1].length-b[1].length).slice(0,3).map(x=>x[1]);
+  /* Orden: primero lo más parecido; luego lo que se enseña en nuestros cursos
+     antes que un apellido raro del diccionario ('library' antes que 'libbey');
+     luego lo que empieza igual que lo escrito, que es la mejor pista de todas
+     ('geting' -> 'getting', no 'feting'); y a igualdad, lo más corto. */
+  const pref = c => { let i=0; while(i<c.length && i<w.length && c[i]===w[i]) i++; return i; };
+  return out.sort((a,b)=> a[0]-b[0]
+                       || (CORE.has(b[1])?1:0)-(CORE.has(a[1])?1:0)
+                       || pref(b[1])-pref(a[1])
+                       || a[1].length-b[1].length)
+            .slice(0,3).map(x=>x[1]);
 }
 
 /* ------------------------------------------------------------- revisión */
 const TOKEN = /[A-Za-z][A-Za-z'’-]*/g;
 
-function revisar(texto, variantePedida){
+function revisar(texto, variantePedida, verConfundibles){
   const avisos = [];
   const palabras = [];
   let m;
@@ -182,13 +219,21 @@ function revisar(texto, variantePedida){
   // 1. ortografía
   for(const [w,pos] of palabras){
     const low = w.toLowerCase().replace(/^['’-]+|['’-]+$/g,'');
-    if(!low || low.length<=2 || conocida(low)) continue;
+    if(!low) continue;
+    /* Faltas que el diccionario da por buenas: 'wich' existe, así que ningún
+       corrector la marca, pero en una ficha es casi seguro 'which'. */
+    if(REGLAS.typos[low]){
+      avisos.push({tipo:'ortografia', palabra:w, pos, sug:[REGLAS.typos[low].split(' ')[0]],
+                   msg:'seguramente querías «'+REGLAS.typos[low]+'»'});
+      continue;
+    }
+    if(low.length<=2 || conocida(low)) continue;
     const antes = texto.slice(Math.max(0,pos-2),pos).trim();
     if(w[0]===w[0].toUpperCase() && w[0]!==w[0].toLowerCase()
        && pos>0 && !['.','!','?',''].includes(antes)) continue;  // nombre propio
     const sug = sugerir(low);
-    avisos.push({tipo:'ortografia', palabra:w, pos,
-      msg:'no existe en inglés' + (sug.length ? ' — ¿quisiste decir '+sug.join(', ')+'?'
+    avisos.push({tipo:'ortografia', palabra:w, pos, sug,
+      msg:'no existe en inglés' + (sug.length ? ''
           : ' (revísala: no está en el diccionario ni en nuestro léxico)')});
   }
 
@@ -225,6 +270,20 @@ function revisar(texto, variantePedida){
     let x;
     while((x = g.re.exec(texto))) avisos.push({tipo:'uso', palabra:x[0], pos:x.index, msg:g.msg});
   }
+
+  /* 4. pares que se confunden. Sólo si se pide: 'then', 'form' y 'were' son
+     correctas y se escriben a diario, así que avisar siempre sería ruido. */
+  if(verConfundibles){
+    const ya = new Set();
+    for(const [w,pos] of palabras){
+      const low = w.toLowerCase();
+      if(REGLAS.confundibles[low] && !ya.has(low)){
+        ya.add(low);
+        avisos.push({tipo:'revisar', palabra:w, pos,
+                     msg:'¿o querías '+REGLAS.confundibles[low]+'?'});
+      }
+    }
+  }
   return avisos;
 }
 
@@ -249,7 +308,23 @@ function pinta(texto, avisos){
   $('#volver').style.display='inline-block';
 }
 
-const NOMBRE = {ortografia:'ortografía', variante:'variante', uso:'uso'};
+const NOMBRE = {ortografia:'ortografía', variante:'variante', uso:'uso',
+                revisar:'revisar'};
+
+/* Sustituye la palabra en el texto y vuelve a revisar. Se recalcula todo en
+   vez de ir moviendo posiciones a mano: cambiar una palabra desplaza las
+   marcas siguientes, y arrastrar ese cálculo es de donde salen los errores. */
+function aplicar(aviso, correcta){
+  const t = window._ultimo;
+  if(t.substr(aviso.pos, aviso.palabra.length) !== aviso.palabra) return;
+  // se respeta la mayúscula inicial de lo que había
+  const may = aviso.palabra[0] === aviso.palabra[0].toUpperCase()
+              && aviso.palabra[0] !== aviso.palabra[0].toLowerCase();
+  const nueva = may ? correcta[0].toUpperCase()+correcta.slice(1) : correcta;
+  window._ultimo = t.slice(0, aviso.pos) + nueva + t.slice(aviso.pos + aviso.palabra.length);
+  $('#texto').value = window._ultimo;
+  $('#revisar').click();
+}
 
 function mostrar(avisos){
   const r = $('#resultado');
@@ -258,14 +333,26 @@ function mostrar(avisos){
                   '<small>El texto no tiene errores de los que este corrector detecta.</small></div>';
     return;
   }
-  const orden = {ortografia:0, variante:1, uso:2};
+  const orden = {ortografia:0, variante:1, uso:2, revisar:3};
   avisos.sort((a,b)=>orden[a.tipo]-orden[b.tipo]);
   const n = avisos.length;
   r.innerHTML = '<p style="margin:0 0 10px"><span class="cuenta">'+n+'</span> '+
                 (n===1?'observación':'observaciones')+'</p>' +
-    avisos.map(a=>'<div class="aviso '+a.tipo+'" data-m="'+(a.marca??'')+'">'+
+    avisos.map((a,i)=>'<div class="aviso '+a.tipo+'" data-m="'+(a.marca??'')+'" data-i="'+i+'">'+
       '<span class="tag">'+NOMBRE[a.tipo]+'</span><b>'+escapa(a.palabra)+'</b>'+
-      '<div class="msg">'+escapa(a.msg)+'</div></div>').join('');
+      '<div class="msg">'+escapa(a.msg)+'</div>'+
+      ((a.sug&&a.sug.length)
+        ? '<div class="cx-sug">Cambiar por: '+a.sug.map(s=>
+            '<button class="cx-fix" data-s="'+escapa(s)+'">'+escapa(s)+'</button>').join('')+'</div>'
+        : '')+
+      '</div>').join('');
+
+  r.querySelectorAll('.cx-fix').forEach(b=>{
+    b.onclick = ev => {
+      ev.stopPropagation();
+      aplicar(avisos[+b.closest('.aviso').dataset.i], b.dataset.s);
+    };
+  });
 
   r.querySelectorAll('.aviso').forEach(el=>{
     el.onclick = ()=>{
@@ -316,7 +403,7 @@ $('#revisar').onclick = ()=>{
   if(!texto.trim()) return;
   $('#estado').textContent = 'revisando…';
   setTimeout(()=>{
-    const avisos = revisar(texto, $('#variante').value);
+    const avisos = revisar(texto, $('#variante').value, $('#confundibles').checked);
     pinta(texto, avisos);
     mostrar(avisos);
     $('#estado').textContent = PAL.size.toLocaleString('es')+' palabras cargadas';
