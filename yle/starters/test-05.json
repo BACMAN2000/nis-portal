@@ -265,7 +265,7 @@
     "p2": {
       "type": "yes_no",
       "image": "R2",
-      "scene": "A beach: a woman is reading a book under a big umbrella, two boys are playing football on the sand, a girl is sitting in a small boat, a dog is running next to the sea and there are three shells on the towel.",
+      "scene": "A beach: a woman is reading a book under a big umbrella, two boys are playing football on the sand, a girl is sitting in a small boat, a dog is running next to the sea, there are shells on a towel and a bag next to the woman.",
       "example": {
         "s": "The woman is reading a book.",
         "key": "yes"
@@ -284,7 +284,7 @@
           "key": "no"
         },
         {
-          "s": "There are three shells on the towel.",
+          "s": "There is a bag next to the woman.",
           "key": "yes"
         },
         {
@@ -457,69 +457,75 @@
           "say": "Put the ball on the towel.",
           "card": "ball",
           "zone": {
-            "x": 8,
+            "x": 24,
             "y": 62,
-            "w": 30,
-            "h": 30
+            "w": 28,
+            "h": 18
           }
         },
         {
           "say": "Put the fish in the boat.",
           "card": "fish",
           "zone": {
-            "x": 62,
-            "y": 44,
-            "w": 34,
-            "h": 30
+            "x": 67,
+            "y": 50,
+            "w": 27,
+            "h": 22
           }
         },
         {
           "say": "Put the apple under the umbrella.",
           "card": "apple",
           "zone": {
-            "x": 26,
-            "y": 36,
-            "w": 28,
+            "x": 8,
+            "y": 52,
+            "w": 36,
             "h": 30
           }
         }
       ],
       "zones": {
         "boat": {
-          "x": 62,
-          "y": 44,
-          "w": 34,
-          "h": 30
+          "x": 67,
+          "y": 52,
+          "w": 26,
+          "h": 18
         },
         "crab": {
-          "x": 44,
-          "y": 76,
+          "x": 52,
+          "y": 77,
           "w": 18,
-          "h": 20
+          "h": 17
         },
         "umbrella": {
-          "x": 22,
-          "y": 6,
-          "w": 36,
-          "h": 40
+          "x": 7,
+          "y": 12,
+          "w": 34,
+          "h": 58
         },
         "towel": {
-          "x": 8,
-          "y": 62,
-          "w": 30,
-          "h": 30
+          "x": 24,
+          "y": 65,
+          "w": 27,
+          "h": 14
         },
         "bucket": {
-          "x": 70,
-          "y": 74,
-          "w": 16,
-          "h": 22
+          "x": 71,
+          "y": 70,
+          "w": 14,
+          "h": 26
         },
         "sun": {
-          "x": 76,
-          "y": 2,
-          "w": 20,
-          "h": 22
+          "x": 84,
+          "y": 0,
+          "w": 16,
+          "h": 27
+        },
+        "sea": {
+          "x": 0,
+          "y": 45,
+          "w": 100,
+          "h": 21
         }
       }
     },
