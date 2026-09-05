@@ -101,7 +101,7 @@ a.arc .tag{position:absolute;top:14px;right:14px;font-size:.7rem;font-weight:700
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js"></script>
-<script src="project-arcs.js?v=2"></script>
+<script src="project-arcs.js?v=3"></script>
 <script>
 const $ = s => document.querySelector(s);
 const P = new URLSearchParams(location.search);
@@ -294,6 +294,12 @@ function pintaArco(k, a){
   /* El mapa de semanas: la parte que de verdad hace falta. */
   h += `<div class="sec-title"><h2>Week by week</h2>
     <span class="hint">el proyecto arriba, y debajo lo que cada área da esa misma semana según el plan anual</span></div>`;
+
+  /* Cuando el plan anual del grado carga menos áreas de las que el proyecto
+     usa, se dice antes de que el lector lo note y crea que falta la mitad. */
+  if(a.notaPlan){
+    h += `<p class="pnote" style="margin:0 0 10px">${esc(a.notaPlan)}</p>`;
+  }
 
   if(planError){
     h += `<div class="warnbox" style="margin-bottom:12px"><h4>No se pudo leer el plan anual</h4>

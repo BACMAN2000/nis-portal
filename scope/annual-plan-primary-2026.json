@@ -1,5 +1,5 @@
 {
- "fuente": "Annual Plan Primary 2026.xlsx + Primary Calendar 2026.xlsx (Drive del colegio)",
+ "fuente": "Annual Plan Primary 2026.xlsx + EY_Assessment Criteria_G1.xlsx (hoja Annual Plan) + Primary Calendar 2026.xlsx (Drive del colegio)",
  "generado_por": "tools/extrae_annual_plan.py",
  "calendario": [
   {
@@ -3947,6 +3947,521 @@
         ],
         "pe": [
          "Juegos reducidos y minipartidos"
+        ]
+       }
+      }
+     ],
+     "fuera_de_calendario": []
+    }
+   ]
+  },
+  "g1": {
+   "grado": 1,
+   "periodos": [
+    {
+     "periodo": 1,
+     "unidad": 1,
+     "trimestre": 1,
+     "inicio": "2026-03-09",
+     "fin": "2026-04-17",
+     "semanas": [
+      {
+       "n": 1,
+       "areas": {
+        "comunicacion": [
+         "Nombres propios y comunes /Palabras con m - p / Lectura lliva \"Hallytosis\" / Visita a la biblioteca"
+        ],
+        "math": [
+         "Counting and comparing",
+         "Ten frame"
+        ],
+        "english": [
+         "Key routines and functional phrases"
+        ],
+        "music": [
+         "Elementos musicales: Repaso de pulso y ritmo",
+         "Ritmo: Ejecución de patrones rítmicos simples con percusión corporal",
+         "Conciencia auditiva: Discriminación de intensidad y tempo"
+        ],
+        "pe": [
+         "- Control corporal en desplazamientos variados",
+         "- Actividades motrices para el cuidado del cuerpo",
+         "- Juegos cooperativos con reglas simples"
+        ]
+       }
+      },
+      {
+       "n": 2,
+       "areas": {
+        "comunicacion": [
+         "Adjetivos calificativos / Palabras l - s /  Anecdotario / Mayúsculas y minúsculas"
+        ],
+        "math": [
+         "always 6",
+         "Right and left, up-down."
+        ],
+        "english": [
+         "Sound Awareness: Environmental sounds"
+        ],
+        "music": [
+         "Lectoescritura musical inicial: Introducción a figuras rítmicas básicas",
+         "Pulso: Lectura y ejecución de patrones rítmicos simples",
+         "Coordinación rítmica: Interpretación grupal con percusión corporal e instrumentos no melódicos."
+        ],
+        "pe": [
+         "- Equilibrio estático y dinámico",
+         "- Desarrollo de la resistencia mediante juegos activos",
+         "- Juegos de persecución y oposición controlada"
+        ]
+       }
+      },
+      {
+       "n": 3,
+       "areas": {
+        "comunicacion": [
+         "El punto final / palabras  d - n / Visita a la biblioteca /  textos descriptivos"
+        ],
+        "math": [
+         "Series using pictures and numbers",
+         "Sorting by 1 or 2 attributes (given and own).",
+         "Comparing using :<,=,>"
+        ],
+        "english": [
+         "Onomatopoeias in Context – Using onomatopoeias in complete sentences"
+        ],
+        "music": [
+         "Exploración instrumental: Introducción a la flauta dulce (postura, normas de uso, respiración)",
+         "Técnica: Producción de sonido controlado en la flauta",
+         "Pulso: Ejecución de pulso constante en una nota"
+        ],
+        "pe": [
+         "- Combinación de habilidades motrices básicas",
+         "- Fuerza básica a través de movimientos funcionales",
+         "- Roles y funciones en juegos grupales"
+        ]
+       }
+      },
+      {
+       "n": 4,
+       "areas": {
+        "comunicacion": [
+         "Género y número / palabras f - t  /  Describimo mi jueguete favorito"
+        ],
+        "math": [
+         "Ordinal numbers and positions: up to 10 (naming positions).",
+         "neighbouring numbers"
+        ],
+        "english": [
+         "Rhyming Words: Recognizing rhymes in longer songs, poems, and stories"
+        ],
+        "music": [
+         "Técnica: Digitación básica (si)",
+         "Ritmo: Ejecución de patrones rítmicos simples aplicados a una nota",
+         "Lectura musical: Asociación de figura rítmica con ejecución instrumental"
+        ],
+        "pe": [
+         "- Expresión corporal y movimientos rítmicos",
+         "- Flexibilidad y movilidad corporal en rutinas motrices",
+         "- Estrategias básicas para juegos colectivos"
+        ]
+       }
+      },
+      {
+       "n": 5,
+       "areas": {
+        "comunicacion": [
+         "Palabras con r / rimas de palabras  / segmentación silábica palabras frecuentes / Mi cuaderno descriptivo"
+        ],
+        "math": [
+         "Concepts of whole – part",
+         "Number bonds",
+         "starting from 5"
+        ],
+        "english": [
+         "Beginning & Ending Sounds: Initial sound in words"
+        ],
+        "music": [
+         "Técnica: Incorporación de segunda nota (la)",
+         "Lectura melódica inicial: Secuencias con si-la",
+         "Interpretación grupal: Ejecución colectiva siguiendo indicaciones del docente"
+        ],
+        "pe": [
+         "- Juegos de fuerza y resistencia básica",
+         "- Higiene corporal antes y después de la actividad física",
+         "- Comunicación y trabajo en equipo en actividades motrices"
+        ]
+       }
+      },
+      {
+       "n": 6,
+       "areas": {
+        "comunicacion": [
+         "Liva \" El tigre que vino a cenar\" / Repaso de las letras / MI cuaderno descriptivo"
+        ],
+        "math": [
+         "number decompositions, strategy",
+         "Number Wall",
+         "number house"
+        ],
+        "english": [
+         "Letter recognition & phonic awereness: upper/lowercase letters / Distinguises letter sounds"
+        ],
+        "music": [
+         "Integración musical: Pulso, ritmo y secuencia melódica",
+         "Interpretación: Ejecución guiada de pieza cortwa con 2 notas.",
+         "Presentación: Participación en pequeña muestra gurpal en aula"
+        ],
+        "pe": [
+         "- Orientación espacial y lateralidad                             2.- Postura y respiración durante el ejercicio físico",
+         "- Respeto de normas y resolución de conflictos en el juego"
+        ]
+       }
+      }
+     ],
+     "fuera_de_calendario": []
+    },
+    {
+     "periodo": 2,
+     "unidad": 2,
+     "trimestre": 1,
+     "inicio": "2026-04-20",
+     "fin": "2026-05-29",
+     "semanas": [
+      {
+       "n": 1,
+       "areas": {
+        "comunicacion": [
+         "palabras con b - v / conectores de secuencia / visita de la biblioteca"
+        ],
+        "math": [
+         "Stories to count",
+         "Counting on and backwards",
+         "writing: numbers up to 100. (written form)"
+        ],
+        "english": [
+         "Basic and expanded descriptions: noun (Upper/Lowercase)"
+        ]
+       }
+      },
+      {
+       "n": 2,
+       "areas": {
+        "comunicacion": [
+         "Palabras con j - g / SIgnos de interrogación / Adivinanzas"
+        ],
+        "math": [
+         "Telling number stories.",
+         "Making 10"
+        ],
+        "english": [
+         "Personal pronouns: I, he, she)"
+        ]
+       }
+      },
+      {
+       "n": 3,
+       "areas": {
+        "comunicacion": [
+         "Palabras con c - k / Liva estela luna / campo semantico"
+        ],
+        "math": [
+         "Addition up to 20"
+        ],
+        "english": [
+         "Make simple predictions using familiar phrases"
+        ]
+       }
+      },
+      {
+       "n": 4,
+       "areas": {
+        "comunicacion": [
+         "Palabras frecuentes/ visita a la biblioteca / estructura de la adivinanzas / oraciones incompletas"
+        ],
+        "math": [
+         "Addition up to 20",
+         "Number bonds"
+        ],
+        "english": [
+         "Identifies cause and effect (because)"
+        ]
+       }
+      },
+      {
+       "n": 5,
+       "areas": {
+        "comunicacion": [
+         "Creamos nuestra adivinanza / palabras con ch /  escritura espontanea  ( paisaje)"
+        ],
+        "math": [
+         "Counting on ...",
+         "Add 6 and 1",
+         "6+1",
+         "Add 7 and 2",
+         "7+2"
+        ],
+        "english": [
+         "Basic and expanded descriptions: Adjectives"
+        ]
+       }
+      }
+     ],
+     "fuera_de_calendario": [
+      {
+       "comunicacion": [
+        "Adivinanzas expuestas /  Plan lector /  Palabras con z"
+       ],
+       "math": [
+        "Double facts to 10"
+       ],
+       "english": [
+        "Identifies images and matches them to written words"
+       ]
+      }
+     ]
+    },
+    {
+     "periodo": 3,
+     "unidad": 3,
+     "trimestre": 2,
+     "inicio": "2026-06-01",
+     "fin": "2026-07-10",
+     "semanas": [
+      {
+       "n": 1,
+       "areas": {
+        "comunicacion": [
+         "Plan Lector / palabras con LL - L / Signos de exclamación"
+        ],
+        "math": [
+         "Strategies"
+        ],
+        "english": [
+         "Structure with verbs in present simple: I like/see/hear"
+        ]
+       }
+      },
+      {
+       "n": 2,
+       "areas": {
+        "math": [
+         "Subtraction"
+        ],
+        "english": [
+         "Print awareness: Identifies cover, title parts of a book"
+        ]
+       }
+      },
+      {
+       "n": 3,
+       "areas": {
+        "math": [
+         "Number line",
+         "Addition and subtraction"
+        ],
+        "english": [
+         "Wh-questions (what, who, where)"
+        ]
+       }
+      },
+      {
+       "n": 4,
+       "areas": {
+        "math": [
+         "The number house"
+        ],
+        "english": [
+         "Answer questions related to listened text or story"
+        ]
+       }
+      },
+      {
+       "n": 5,
+       "areas": {
+        "math": [
+         "Ordinal numbers and positions"
+        ],
+        "english": [
+         "Distinguishes between letter, words and sentences."
+        ]
+       }
+      },
+      {
+       "n": 6,
+       "areas": {
+        "math": [
+         "Right and left, up-down,"
+        ],
+        "english": [
+         "Writes or represents understanding of the text through tracing and drawings."
+        ]
+       }
+      }
+     ],
+     "fuera_de_calendario": []
+    },
+    {
+     "periodo": 4,
+     "unidad": 4,
+     "trimestre": 2,
+     "inicio": "2026-08-04",
+     "fin": "2026-09-11",
+     "semanas": [
+      {
+       "n": 1,
+       "areas": {
+        "english": [
+         "Final sounds (-ck, -nd, -st)"
+        ]
+       }
+      },
+      {
+       "n": 2,
+       "areas": {
+        "english": [
+         "Prepositions of place"
+        ]
+       }
+      },
+      {
+       "n": 3,
+       "areas": {
+        "english": [
+         "Identifies images and matches them to written word"
+        ]
+       }
+      },
+      {
+       "n": 4,
+       "areas": {
+        "english": [
+         "Personal pronouns: (you, we, they)"
+        ]
+       }
+      },
+      {
+       "n": 5,
+       "areas": {
+        "english": [
+         "Possesive (mine, yours his, her)"
+        ]
+       }
+      },
+      {
+       "n": 6,
+       "areas": {}
+      }
+     ],
+     "fuera_de_calendario": []
+    },
+    {
+     "periodo": 5,
+     "unidad": 5,
+     "trimestre": 3,
+     "inicio": "2026-09-14",
+     "fin": "2026-10-23",
+     "semanas": [
+      {
+       "n": 1,
+       "areas": {
+        "english": [
+         "Present simple with common vebs"
+        ]
+       }
+      },
+      {
+       "n": 2,
+       "areas": {
+        "english": [
+         "Verb \"can\": Expressing abilities"
+        ]
+       }
+      },
+      {
+       "n": 3,
+       "areas": {
+        "english": [
+         "Verb \"can\": Expressing permissions"
+        ]
+       }
+      },
+      {
+       "n": 4,
+       "areas": {
+        "english": [
+         "Sentence expansion & word order awareness"
+        ]
+       }
+      },
+      {
+       "n": 5,
+       "areas": {
+        "english": [
+         "Early sentence formation"
+        ]
+       }
+      }
+     ],
+     "fuera_de_calendario": [
+      {
+       "english": [
+        "Recognizes familiar words, high-frequency words and cvc words in context"
+       ]
+      }
+     ]
+    },
+    {
+     "periodo": 6,
+     "unidad": 6,
+     "trimestre": 3,
+     "inicio": "2026-10-26",
+     "fin": "2026-12-04",
+     "semanas": [
+      {
+       "n": 1,
+       "areas": {
+        "english": [
+         "Verb to be (am, is, are)"
+        ]
+       }
+      },
+      {
+       "n": 2,
+       "areas": {
+        "english": [
+         "Personal pronouns (I, you, we, etc)"
+        ]
+       }
+      },
+      {
+       "n": 3,
+       "areas": {
+        "english": [
+         "Noun- Adjectives"
+        ]
+       }
+      },
+      {
+       "n": 4,
+       "areas": {
+        "english": [
+         "Negative structures"
+        ]
+       }
+      },
+      {
+       "n": 5,
+       "areas": {
+        "english": [
+         "Sentence expansion & word order"
+        ]
+       }
+      },
+      {
+       "n": 6,
+       "areas": {
+        "english": [
+         "Early sentence formation"
         ]
        }
       }

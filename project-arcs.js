@@ -12,8 +12,10 @@
  *     "Primary Calendar 2026.xlsx": P1=6, P2=5, P3=6, P4=6, P5=5, P6=6 = 34.
  *   - El contenido por semana y por area NO esta aqui: se lee en vivo de
  *     scope/annual-plan-primary-2026.json, que es el volcado literal de
- *     "Annual Plan Primary 2026.xlsx". Si coordinacion cambia el Excel, se
- *     vuelve a correr tools/extrae_annual_plan.py y esta pagina cambia sola.
+ *     "Annual Plan Primary 2026.xlsx" y, para 1.o, de la hoja "Annual Plan"
+ *     que vive dentro de "EY_Assessment Criteria_G1.xlsx". Si coordinacion
+ *     cambia cualquiera de los dos, se vuelve a correr
+ *     tools/extrae_annual_plan.py y esta pagina cambia sola.
  *   - Los campos de planificacion (situacion significativa, pregunta esencial,
  *     competencias, evidencias, evaluacion, diferenciacion) siguen la
  *     plantilla oficial del colegio: "Project Planner Template.docx" y el
@@ -42,6 +44,310 @@
  *   revisar           lo que falta o esta en duda, en claro
  */
 window.PROJECT_ARCS = {
+
+/* ==================================================================== 1.o
+   1.o es distinto a los demas: su equipo YA tiene escritos los proyectos
+   leccion a leccion (Project 1..4.docx, en Early Years / Grade 1 / 8. Planning),
+   con objetivo, competencia CNEB, recursos y las tres partes de la sesion. Lo
+   que sigue NO propone semanas: las transcribe. Lo unico del portal es el
+   titulo del arco, la pregunta esencial y la narrativa que lo une.
+
+   Y su plan anual no esta en el Excel de primaria: vive dentro de
+   "EY_Assessment Criteria_G1.xlsx", hoja "Annual Plan", con Comunicacion,
+   Math, English y (solo en P1) Music y PE. Science y Social NO estan en esa
+   hoja para 1.o — estan en los propios Project.docx. Por eso el mapa de
+   semanas de 1.o ensena menos areas que el de 2.o a 5.o: es el plan, no un
+   fallo de la pagina. */
+
+'g1.t1': {
+  grade:'g1', label:'Grade 1', trimestre:1, periodos:[1,2], semanas:11,
+  inicio:'2026-03-09', fin:'2026-05-29',
+  cover:{icon:'🐞', from:'#5c3a10', to:'#c9a227'},
+  titulo:'This place is not only mine',
+  subtitulo:'Quien soy, donde vivo, y quien mas vive aqui',
+  autoria:'Las once semanas estan transcritas de "Project 1_.docx" y "Project 2.docx", escritos '+
+    'por el equipo de 1.o con objetivo, competencia CNEB, recursos y las tres partes de cada '+
+    'sesion. El portal solo pone el titulo del arco, la pregunta esencial y la narrativa que une '+
+    'los dos periodos.',
+  notaPlan:'El plan anual de 1.o solo carga Comunicacion, Math, English y (en P1) Music y PE. '+
+    'Science y Social viven en los propios Project.docx, no en esa hoja.',
+  areaEje:'social', areasArticuladas:['science','comunicacion','math','english'],
+  situacion:'P1 y P2 hacen la misma pregunta con dos sujetos distintos. En P1 el nino se mira a '+
+    'si mismo: su cara, sus huellas, su DNI, como ha cambiado, de donde viene su apellido, como '+
+    'ha cambiado su distrito y su colegio, quien vive a su alrededor y que necesita ese sitio — y '+
+    'termina en un paseo de exploracion, un video para pedir un cambio y una carta de '+
+    'agradecimiento. En P2 la misma mirada se posa en otro habitante del colegio: los insectos. '+
+    'Se les observa, se les clasifica, se descubre para que sirven y que les hacemos nosotros, se '+
+    'acuerda un protocolo de aula y se construye un prototipo con material reciclado que se '+
+    'explica en video. Es un solo aprendizaje: mirar de cerca lo que ya estaba ahi.',
+  preguntaEsencial:'Who lives in this place with me, and how do we look after it?',
+  narrativa:'Nobody in the world has your fingerprints. Nobody has your face. This term you are '+
+    'going to find out what makes you you, where you come from, and who lives around you. And '+
+    'then you are going to look very closely at somebody who has been living in this school the '+
+    'whole time and nobody ever asked about: the insects. At the end you make a video for the '+
+    'whole school about who lives here and what they need.',
+  orientadoras:{
+    social:'Quien soy, de donde vengo y quien vive a mi alrededor?',
+    science:'Como es por dentro y por fuera un ser vivo, y que necesita para vivir?',
+    comunicacion:'Como cuento a otro lo que descubri?',
+    math:'Como cuento, comparo y ordeno lo que voy encontrando?',
+    english:'Can I name what I see and say how it is?'
+  },
+  competencias:[
+    {area:'social', nombre:'Construye su identidad',
+     capacidades:['Se valora a si mismo','Autorregula sus emociones','Reflexiona y argumenta eticamente']},
+    {area:'social', nombre:'Construye interpretaciones historicas',
+     capacidades:['Comprende el tiempo historico — ordena hechos en el tiempo',
+                  'Elabora explicaciones sobre procesos historicos — describe cambios al comparar el presente y el pasado']},
+    {area:'social', nombre:'Convive y participa democraticamente en la busqueda del bien comun',
+     capacidades:['Construye normas y asume acuerdos y leyes',
+                  'Participa en acciones que promueven el bienestar comun']},
+    {area:'social', nombre:'Gestiona responsablemente el espacio y el ambiente',
+     capacidades:['Maneja fuentes de informacion para comprender el espacio geografico',
+                  'Genera acciones para conservar el ambiente local y global — reconoce un problema de su entorno y busca una solucion']},
+    {area:'science', nombre:'Indaga mediante metodos cientificos para construir sus conocimientos',
+     capacidades:['Problematiza situaciones — realiza preguntas basadas en la exploracion a traves de los sentidos',
+                  'Genera y registra datos o informacion','Analiza datos e informacion — relaciona datos e informacion',
+                  'Evalua y comunica — expresa sus hallazgos y dificultades']},
+    {area:'science', nombre:'Disena y construye soluciones tecnologicas para resolver problemas de su entorno',
+     capacidades:['Determina una alternativa de solucion tecnologica',
+                  'Disena la alternativa — describe como implementar la solucion',
+                  'Implementa y valida — realiza ajustes en el proceso de construccion',
+                  'Evalua y comunica el funcionamiento y los impactos de su alternativa']}
+  ],
+  producto:{
+    titulo:'Who lives here — the video',
+    audiencia:'El colegio entero, que ve el video; y la persona de la comunidad que recibe la '+
+      'carta de agradecimiento.',
+    descripcion:'Un video de la clase que ensena quien vive en este sitio — las personas y los '+
+      'insectos —, que necesita cada uno, y una cosa que los ninos construyeron para ayudar.',
+    incluye:['Mi autorretrato y mis huellas','Mi linea de tiempo: como he cambiado',
+             'La entrevista a alguien de la comunidad','La carta de agradecimiento',
+             'Mi registro de insectos del colegio','El prototipo de material reciclado y su poster',
+             'El video final']
+  },
+  fases:[
+    {n:1, periodo:1, semana:1, fase:'Yo', foco:'Nobody else is me',
+     hace:'Autorretrato delante del espejo mirando la forma de los ojos y el tono de piel. '+
+       'Huellas dactilares con tampon y lupa, y para que sirve un DNI — con el DNI de clase se '+
+       'vota el nombre oficial del aula. Que emociones traigo a 1.o. Mural de piezas de puzle.',
+     evidencia:'Self-portrait + classroom mural'},
+    {n:2, periodo:1, semana:2, fase:'Yo', foco:'I have changed, and my body works',
+     hace:'Fotos de antes y de ahora, linea de tiempo y medir cuanto he crecido. Que puedo hacer '+
+       'ahora que antes no podia. Experimento de por donde viaja la comida. Experimento de para '+
+       'que sirven los pulmones.', evidencia:'Growth timeline'},
+    {n:3, periodo:1, semana:3, fase:'De donde vengo', foco:'Where I come from',
+     hace:'Tradiciones y juegos de la familia, de antes y de ahora. De donde viene mi apellido. '+
+       'Donde vivo, con Google Maps y los sitios que reconozco del barrio. Como ha cambiado mi '+
+       'colegio y que podemos hacer para cuidarlo.', evidencia:'Family and district card'},
+    {n:4, periodo:1, semana:4, fase:'Quien esta a mi lado', foco:'Who is around me',
+     hace:'La diferencia entre un derecho y una responsabilidad. El arbol del circulo de '+
+       'confianza de mi familia y que hace cada uno. Entrevista sencilla a alguien de la '+
+       'comunidad del colegio.', evidencia:'Circle of trust + interview'},
+    {n:5, periodo:1, semana:5, fase:'Que necesita este sitio', foco:'What this place needs',
+     hace:'Paseo de exploracion por el colegio: que hay aqui que haya que proteger. De los '+
+       'problemas que vimos sale un video para pedir que cambie algo. Que necesita el aula para '+
+       'estar en orden. Carta de agradecimiento a alguien de la comunidad.',
+     evidencia:'Awareness video + thank-you letter'},
+    {n:6, periodo:1, semana:6, fase:'Que necesita este sitio', foco:'Living together',
+     hace:'Reto de cooperacion en equipo (torre de papel, puzle o cuento entre todos). La cesta '+
+       'de las palabras magicas. Autorretrato en 3D como cierre. Salida a la playa con yoga y '+
+       'atencion plena.', evidencia:'3D self-portrait'},
+    {n:7, periodo:2, semana:1, fase:'Alguien mas vive aqui', foco:'Somebody else lives here',
+     hace:'Arranca P2. Se observan los insectos del aula y del colegio: cuando aparecen, donde y '+
+       'cada cuanto. Paseo de observacion. Que creemos ya y que nos preguntamos. Mitos y hechos: '+
+       'que es una idea y que es una prueba.', evidencia:'Insect record'},
+    {n:8, periodo:2, semana:2, fase:'Alguien mas vive aqui', foco:'How they are made',
+     hace:'Partes del cuerpo, como se mueven y de que tamano son, y para que sirve cada parte. '+
+       'Que comen y con que boca. Donde viven y como se agrupan.', evidencia:'Labelled diagram'},
+    {n:9, periodo:2, semana:3, fase:'Que hacen y que les hacemos', foco:'What they do for us',
+     hace:'Para que sirven: polinizacion, descomposicion, cadenas alimentarias — y que pasaria si '+
+       'desaparecieran. Como les afecta lo que hacemos con la comida, la limpieza y los '+
+       'materiales. Estrategias para cuidarlos, en carteles y dibujos.',
+     evidencia:'Care poster'},
+    {n:10, periodo:2, semana:4, fase:'Construir', foco:'What do we do when one appears',
+     hace:'Situaciones reales de aula con un insecto y que respuestas caben. Se acuerda un '+
+       'protocolo de clase. Se elige el problema y cada mesa negocia y disena UN prototipo.',
+     evidencia:'Class protocol + team blueprint'},
+    {n:11, periodo:2, semana:5, fase:'Construir', foco:'Building the solution',
+     hace:'Se construye el prototipo con material reciclado siguiendo el plano del equipo. Se '+
+       'mejora con lo que dicen los demas y se hace el poster de como funciona. Presentacion oral '+
+       'y grabacion del video para la comunidad.', evidencia:'Prototype + video'}
+  ],
+  evaluacion:[
+    {criterio:'Me miro y me cuento',
+     descriptor:'Dice que le hace unico y como ha cambiado, y lo apoya en algo que observo o midio.'},
+    {criterio:'Observo de verdad',
+     descriptor:'Registra lo que ve cuando lo ve, y distingue lo que observo de lo que creia.'},
+    {criterio:'Cuido lo que esta a mi alrededor',
+     descriptor:'Reconoce un problema del colegio y propone algo que su clase puede hacer.'},
+    {criterio:'Construyo y lo explico',
+     descriptor:'Su prototipo responde al problema que eligio y sabe decir como funciona.'}
+  ],
+  diferenciacion:[
+    'Todo lo del proyecto se puede entregar dibujado y etiquetado, hablado o escrito.',
+    'La entrevista y la carta se pueden dictar; lo que se evalua es a quien va y que pide.',
+    'En el video, quien no quiera salir puede grabar la voz o sostener el cartel.'
+  ],
+  sad:{titulo:'Student Achievement Day #1',
+    muestra:'El nino ensena su autorretrato del principio y el de 3D del final, y cuenta que '+
+      'descubrio en medio. Y ensena su registro de insectos: lo que creia y lo que vio.'},
+  unidades:[],
+  revisar:['La salida a la playa de la semana 6 y el paseo de exploracion de la 5 necesitan '+
+           'autorizacion de familias con antelacion.',
+           'El video de P2 se graba en la semana 5: si el material reciclado no esta pedido en la '+
+           'semana 3, no hay prototipo que grabar.']
+},
+
+'g1.t2': {
+  grade:'g1', label:'Grade 1', trimestre:2, periodos:[3,4], semanas:12,
+  inicio:'2026-06-01', fin:'2026-09-11',
+  cover:{icon:'🏔️', from:'#6b3410', to:'#d98b3a'},
+  titulo:'Coast, mountains and jungle',
+  subtitulo:'Lo que la tierra decide: lo que tiembla, lo que crece y lo que construimos',
+  autoria:'Las doce semanas estan transcritas de "Project 3.docx" y "Project 4.docx", escritos '+
+    'por el equipo de 1.o. El portal solo pone el titulo del arco, la pregunta esencial y la '+
+    'narrativa que une los dos periodos.',
+  notaPlan:'El plan anual de 1.o solo carga Comunicacion, Math e English en P3, y solo English '+
+    'en P4. El contenido de Science y Social de este arco esta en los propios Project.docx.',
+  areaEje:'science', areasArticuladas:['social','math','comunicacion','english'],
+  situacion:'Los dos periodos comparten un mismo eje que el propio plan escribe dos veces: las '+
+    'tres regiones del Peru. En P3, la costa, la sierra y la selva explican por que en cada sitio '+
+    'ocurre un desastre distinto, y de ahi se pasa a como se construye para aguantarlo — con el '+
+    'experimento de las columnas y una ciudad colaborativa levantada por la clase. En P4, esas '+
+    'mismas tres regiones explican por que cada fruta y cada verdura crece donde crece, y de ahi '+
+    'sale el viaje del alimento hasta el colegio: el frio del transporte, el mercado mayorista, '+
+    'la tienda del barrio, la balanza y las monedas. Un mismo aprendizaje: la tierra donde vives '+
+    'decide cosas de tu vida.',
+  preguntaEsencial:'Our country has three very different lands. What does that change for us?',
+  narrativa:'Peru is not one place, it is three: the coast, the mountains and the jungle. In each '+
+    'one the ground moves differently, it rains differently, and different things grow. First you '+
+    'are going to find out why, and build a city that can stand up to it. Then you are going to '+
+    'follow a tomato all the way from the field to your lunchbox — and find out how many people '+
+    'it takes.',
+  orientadoras:{
+    science:'Por que en cada region pasa una cosa distinta? Que necesita una planta y que hace un desastre?',
+    social:'Quien nos protege y quien nos alimenta, y como llega hasta aqui?',
+    math:'Como ordeno en el tiempo, como me ubico y como pago y peso?',
+    comunicacion:'Como cuento lo que investigue para que otro lo entienda?',
+    english:'Can I say where things are and what they are like?'
+  },
+  competencias:[
+    {area:'science', nombre:'Explica el mundo fisico basandose en conocimientos sobre los seres vivos, materia y energia, biodiversidad, Tierra y universo',
+     capacidades:['Comprende y usa conocimientos — explica la relacion entre la Tierra, sus componentes y movimientos con los seres que la habitan',
+                  'Comprende y usa conocimientos — explica la relacion entre la estructura de los seres vivos con sus funciones y su desarrollo',
+                  'Evalua las implicancias del saber y del quehacer cientifico y tecnologico']},
+    {area:'science', nombre:'Indaga mediante metodos cientificos para construir sus conocimientos',
+     capacidades:['Problematiza situaciones — sugiere respuestas basadas en la exploracion',
+                  'Disena estrategias — selecciona opciones organizadas para realizar un experimento',
+                  'Genera y registra datos o informacion','Evalua y comunica — expresa sus hallazgos y dificultades']},
+    {area:'science', nombre:'Disena y construye soluciones tecnologicas para resolver problemas de su entorno',
+     capacidades:['Determina una alternativa de solucion tecnologica',
+                  'Disena la alternativa — describe como implementar la solucion',
+                  'Implementa y valida alternativas de solucion tecnologica']},
+    {area:'social', nombre:'Gestiona responsablemente el espacio y el ambiente',
+     capacidades:['Maneja fuentes de informacion — utiliza puntos de referencia para ubicarse y representar su espacio',
+                  'Comprende las relaciones entre los elementos naturales y sociales',
+                  'Genera acciones para conservar el ambiente local y global']},
+    {area:'social', nombre:'Gestiona responsablemente los recursos economicos',
+     capacidades:['Comprende las relaciones entre los elementos del sistema economico y financiero — reconoce por que las personas e instituciones realizan actividades economicas',
+                  'Toma decisiones economicas y financieras']},
+    {area:'social', nombre:'Construye interpretaciones historicas',
+     capacidades:['Comprende el tiempo historico — ordena hechos en el tiempo',
+                  'Interpreta criticamente fuentes diversas']}
+  ],
+  producto:{
+    titulo:'The city that stands, and the Food Scientists Fair',
+    audiencia:'En P3, la clase y el colegio, que recorren la ciudad colaborativa. En P4, las '+
+      'familias, que visitan las estaciones de la feria.',
+    descripcion:'Una ciudad construida entre todos con estructuras que aguantan y con sus zonas '+
+      'seguras senalizadas; y una feria en la que cada nino atiende su estacion sobre el viaje '+
+      'del alimento y prepara una lonchera equilibrada.',
+    incluye:['Mi linea de tiempo de desastres en el Peru','El plan de seguridad de mi aula',
+             'El experimento de las columnas','Mi estructura de la ciudad colaborativa',
+             'Mi registro de germinacion','El mapa de que crece en cada region',
+             'La guia de higiene en diptico','Mi estacion de la feria y la lonchera equilibrada']
+  },
+  fases:[
+    {n:1, periodo:3, semana:1, fase:'Lo que tiembla', foco:'A phenomenon or a disaster?',
+     hace:'La diferencia entre un fenomeno natural y un desastre, con ejemplos reales del Peru. '+
+       'Que desastres han ocurrido aqui y como afectaron a la gente. Linea de tiempo colectiva '+
+       'con pasado y presente. Esta semana cae el Student Achievement Day.',
+     evidencia:'Class timeline'},
+    {n:2, periodo:3, semana:2, fase:'Lo que tiembla', foco:'Three very different lands',
+     hace:'Sitios del Peru que hemos visitado. El clima y el paisaje de la costa, la sierra y la '+
+       'selva. Como la geografia decide que desastre ocurre en cada region. Investigacion en '+
+       'libros, textos informativos y carteles.', evidencia:'Region file'},
+    {n:3, periodo:3, semana:3, fase:'Lo que tiembla', foco:'Before, during and after',
+     hace:'Que hacer antes, durante y despues. Que materiales y recursos hacen falta. Que hacen '+
+       'las brigadas del colegio y la gente de la comunidad. Se organizan y comunican las '+
+       'recomendaciones.', evidencia:'Safety recommendations'},
+    {n:4, periodo:3, semana:4, fase:'Lo que construimos', foco:'Building so it stands',
+     hace:'Que infraestructuras hay en el Peru y como el clima y la geografia deciden su diseno. '+
+       'Zonas seguras, rutas de evacuacion y senales del colegio. Experimento: para que sirven '+
+       'las columnas — se predice, se observa y se compara. Se disena y construye una estructura '+
+       'para la ciudad colaborativa.', evidencia:'The collaborative city'},
+    {n:5, periodo:3, semana:5, fase:'Lo que construimos', foco:'What we can prevent',
+     hace:'Semana con dos feriados. Causas y prevencion de huaicos e incendios forestales, '+
+       'separando lo natural de lo que hacemos nosotros. Origen, causas y prevencion de sismos, '+
+       'tsunamis e inundaciones, con simulaciones sencillas.', evidencia:'Cause and prevention cards'},
+    {n:6, periodo:3, semana:6, fase:'Lo que construimos', foco:'Show what you learned',
+     hace:'Cierre de P3: se organiza la evidencia del proyecto y se elige la que mejor muestra lo '+
+       'aprendido. Se responde a una situacion de emergencia real. Reflexion sobre como han '+
+       'cambiado las propias ideas.', evidencia:'Portfolio + drill'},
+    {n:7, periodo:4, semana:1, fase:'Lo que crece', foco:'Where food starts',
+     hace:'Arranca P4. De donde vienen las plantas: germinacion y que necesita una planta (sol, '+
+       'agua, tierra y aire). Partes de la planta sobre alimentos reales y cuales se comen. '+
+       'Ciclo de vida de una fruta y de una verdura: la fruta lleva semillas dentro.',
+     evidencia:'Germination log'},
+    {n:8, periodo:4, semana:2, fase:'Lo que crece', foco:'Who grows it, and where',
+     hace:'Que hace un agricultor y con que herramientas. Donde crece cada cosa: en el arbol, en '+
+       'la mata o bajo tierra. Como se sabe que ya esta para cosechar. Y otra vez las tres '+
+       'regiones: por que cada fruta crece donde crece.', evidencia:'Region-and-crop map'},
+    {n:9, periodo:4, semana:3, fase:'El viaje', foco:'The journey to my school',
+     hace:'Del campo al colegio: la cadena de frio y el embalaje para que no se eche a perder. El '+
+       'mercado mayorista, donde llega lo de la costa, la sierra y la selva. El tendero del '+
+       'barrio. Feria de compraventa con monedas y balanza.', evidencia:'Market role-play'},
+    {n:10, periodo:4, semana:4, fase:'El viaje', foco:'Before I eat it',
+     hace:'Observar con los sentidos: color, forma, textura, olor. Por que hay que lavar y '+
+       'desinfectar, y como se hace en casa. Guia visual en diptico.',
+     evidencia:'Hygiene diptych'},
+    {n:11, periodo:4, semana:5, fase:'Lo que me da', foco:'What it does inside me',
+     hace:'Clasificar por origen: animal, vegetal o mineral. Para que sirven las vitaminas, con '+
+       'el juego de los superpoderes. Alimentos que dan energia y alimentos que protegen: equipo '+
+       'Energia contra equipo Escudo. Por que el cuerpo necesita agua.',
+     evidencia:'Energy / shield sort'},
+    {n:12, periodo:4, semana:6, fase:'Lo que me da', foco:'Food Scientists Fair',
+     hace:'Visita al mercado, sabiendo ya que mirar y como participar en una compra. Prototipos '+
+       'de papel de cosas que mejorarian alguna etapa del viaje del alimento. Se prepara la '+
+       'estacion y se ensaya. Feria: cada nino explica lo suyo y arma una lonchera equilibrada.',
+     evidencia:'Fair + balanced lunchbox'}
+  ],
+  evaluacion:[
+    {criterio:'Relaciono el sitio con lo que pasa',
+     descriptor:'Dice que ocurre en la costa, la sierra o la selva y por que ahi y no en otra parte.'},
+    {criterio:'Pruebo antes de afirmar',
+     descriptor:'Predice, observa y compara — y cuenta lo que salio aunque no fuera lo que esperaba.'},
+    {criterio:'Construyo algo que se sostiene',
+     descriptor:'Su estructura se mantiene de pie y sabe decir que le puso para conseguirlo.'},
+    {criterio:'Explico un viaje completo',
+     descriptor:'Cuenta el camino del alimento desde el campo hasta su lonchera nombrando a quien interviene.'}
+  ],
+  diferenciacion:[
+    'La linea de tiempo y el mapa admiten dibujo con etiquetas, recorte o texto.',
+    'En la ciudad colaborativa cada equipo elige la dificultad de su estructura.',
+    'La estacion de la feria se puede atender en pareja.'
+  ],
+  sad:{titulo:'Student Achievement Day #2',
+    muestra:'El nino ensena su estructura y su registro de germinacion, y explica una cosa que '+
+      'creia al principio y que resulto no ser asi.'},
+  unidades:[],
+  revisar:['La visita al mercado de la semana 12 y la ciudad colaborativa de la 4 necesitan '+
+           'materiales pedidos con antelacion y autorizacion de familias.',
+           'Project 3 marca dos lecciones como "Feriado" en su semana 5: son el 29 y el 30 de '+
+           'junio (San Pedro y San Pablo, y Dia del Maestro). Si el calendario cambia, esa semana '+
+           'recupera dos sesiones.']
+},
 
 /* ==================================================================== 2.o */
 
@@ -1398,8 +1704,11 @@ window.PROJECT_ARCS_SUELTOS = [
    motivo:'P6 de 5.o junta origen del universo y formacion de estrellas en Science con emociones, '+
      'ciudadania y plan de ahorro en Social. Son dos unidades legitimas y sin relacion; forzarlas '+
      'en un proyecto seria inventarla.'},
-  {grade:'g1', periodos:[1,2,3,4,5,6], titulo:'1.o grado',
-   motivo:'1.o pertenece a Early Years y no aparece en el "Annual Plan Primary 2026". Hasta que '+
-     'coordinacion cargue su matriz semana por semana, no hay con que construir un arco: lo que '+
-     'saliera seria inventado.'}
+  {grade:'g1', periodos:[5,6], titulo:'P5 y P6 de 1.o, sin escribir todavia',
+   motivo:'Las carpetas P5 y P6 de "Grade 1 / 8. Planning" estan vacias: no hay Project 5 ni '+
+     'Project 6. Y en la hoja "Annual Plan" de 1.o esos dos periodos solo cargan English '+
+     '(present simple, can, verb to be, pronombres, formacion de frases). Con eso se puede '+
+     'planificar la clase de ingles, pero no un proyecto interdisciplinario de once semanas. '+
+     'Cuando el equipo de 1.o escriba los dos Project.docx, se transcriben igual que los cuatro '+
+     'primeros.'}
 ];
