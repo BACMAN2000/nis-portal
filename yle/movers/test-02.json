@@ -1,0 +1,406 @@
+{
+  "level": "movers",
+  "number": 2,
+  "theme": "At the sports centre",
+  "listening": {
+    "p1": {
+      "type": "draw_lines",
+      "image": "L1",
+      "scene": "A sports centre with a swimming pool, a football field and a café. Six people are doing different things.",
+      "names": ["Vicky", "Peter", "Daisy", "Jim", "Julia", "Fred", "Charlie"],
+      "people": [
+        {"id": "A", "desc": "a girl jumping into the swimming pool"},
+        {"id": "B", "desc": "a boy with a bandage on his leg sitting on a bench"},
+        {"id": "C", "desc": "a woman with a whistle teaching football"},
+        {"id": "D", "desc": "a boy carrying a big bag with a tennis racket"},
+        {"id": "E", "desc": "a girl drinking a milkshake at the café"},
+        {"id": "F", "desc": "a man cleaning the floor with a mop"}
+      ],
+      "example": {"name": "Vicky", "person": "A"},
+      "items": [
+        {"name": "Peter", "person": "B"},
+        {"name": "Daisy", "person": "C"},
+        {"name": "Jim", "person": "D"},
+        {"name": "Julia", "person": "E"},
+        {"name": "Fred", "person": "F"}
+      ]
+    },
+    "p2": {
+      "type": "note_taking",
+      "heading": "Swimming club",
+      "example": {"q": "Day of the swimming club:", "a": "Tuesday"},
+      "items": [
+        {"q": "Teacher's name: Mr …", "a": "Best"},
+        {"q": "Class starts at:", "a": "4.30"},
+        {"q": "Number of children in the class:", "a": "15"},
+        {"q": "Must bring a:", "a": "towel"},
+        {"q": "After the class, drink in the:", "a": "café"}
+      ]
+    },
+    "p3": {
+      "type": "match_letters",
+      "intro": "Jack is telling his grandmother which sport each of his friends does on Saturdays. Which sport does each friend do?",
+      "pictures": [
+        {"letter": "A", "word": "swimming", "emoji": "🏊"},
+        {"letter": "B", "word": "football", "emoji": "⚽"},
+        {"letter": "C", "word": "tennis", "emoji": "🎾"},
+        {"letter": "D", "word": "basketball", "emoji": "🏀"},
+        {"letter": "E", "word": "table tennis", "emoji": "🏓"},
+        {"letter": "F", "word": "riding a horse", "emoji": "🏇"},
+        {"letter": "G", "word": "skating", "emoji": "⛸️"},
+        {"letter": "H", "word": "badminton", "emoji": "🏸"}
+      ],
+      "example": {"who": "Sally", "letter": "A"},
+      "items": [
+        {"who": "Tom", "letter": "D"},
+        {"who": "Lily", "letter": "F"},
+        {"who": "Paul", "letter": "C"},
+        {"who": "Anna", "letter": "G"},
+        {"who": "Ben", "letter": "H"}
+      ]
+    },
+    "p4": {
+      "type": "mc_pictures",
+      "example": {"q": "What is Mary going to do this afternoon?", "pics": [{"word": "swimming", "emoji": "🏊"}, {"word": "basketball", "emoji": "🏀"}, {"word": "skating", "emoji": "⛸️"}], "options": ["go swimming", "play basketball", "go skating"], "key": "C"},
+      "items": [
+        {"q": "What does Jim need for his class?", "pics": ["ball", "hat", "shoes"], "options": ["a ball", "a hat", "trainers"], "key": "C"},
+        {"q": "Where is Grandpa now?", "pics": ["garden", "kitchen", "bathroom"], "options": ["in the garden", "in the kitchen", "in the bathroom"], "key": "A"},
+        {"q": "What did Daisy have for lunch?", "pics": ["sandwich", "soup", "pasta"], "options": ["a sandwich", "soup", "pasta"], "key": "B"},
+        {"q": "What is the weather like at the beach?", "pics": [{"word": "sunny", "emoji": "☀️"}, {"word": "windy", "emoji": "🌬️"}, {"word": "rainy", "emoji": "🌧️"}], "options": ["sunny", "windy", "rainy"], "key": "B"},
+        {"q": "Which animal did Sam see at the farm?", "pics": ["goat", "cow", "sheep"], "options": ["a goat", "a cow", "a sheep"], "key": "A"}
+      ]
+    },
+    "p5": {
+      "type": "colour_write",
+      "image": "L5",
+      "scene": "A playground next to a school. There is a slide, a big ball, a boy on a bike, a girl with a balloon, a bird on the wall, a bag under the tree and a sign on the gate with a blank space.",
+      "example": {"what": "the ball", "where": "next to the slide", "colour": "red"},
+      "items": [
+        {"what": "the bird", "where": "on the wall", "colour": "blue"},
+        {"what": "the girl's balloon", "where": "", "colour": "yellow"},
+        {"what": "the bag", "where": "under the tree", "colour": "green"},
+        {"what": "the sign", "where": "on the gate", "write": "PARK"},
+        {"what": "the boy's bike", "where": "", "colour": "orange"}
+      ]
+    }
+  },
+  "rw": {
+    "p1": {
+      "type": "definitions_copy",
+      "words": ["a swimming pool", "a coat", "a bat", "a helmet", "a tennis racket", "a towel", "a sports centre", "a whale"],
+      "pics": {"a swimming pool": "🏊", "a coat": "🧥", "a bat": "🦇", "a helmet": "⛑️", "a tennis racket": "🎾", "a towel": "🧻", "a sports centre": "🏟️", "a whale": "🐋"},
+      "example": {"def": "You can swim in this place. It is full of water.", "word": "a swimming pool"},
+      "items": [
+        {"def": "You wear this on your head when you ride a bike, so you are safe.", "word": "a helmet"},
+        {"def": "This animal flies at night and sleeps in the day.", "word": "a bat"},
+        {"def": "You hold this in your hand to hit the ball in a game.", "word": "a tennis racket"},
+        {"def": "You use this to dry your body after swimming.", "word": "a towel"},
+        {"def": "People go to this big place to do lots of different sports.", "word": "a sports centre"}
+      ]
+    },
+    "p2": {
+      "type": "dialogue_mc3",
+      "speakerA": "Coach",
+      "speakerB": "Charlie",
+      "example": {"a": "Hello, Charlie. Do you want to play in the football team?", "options": ["Yes, I'd love to!", "Yes, I played.", "Yes, it's mine."], "key": "A"},
+      "items": [
+        {"a": "How old are you?", "options": ["I'm fine, thanks.", "I'm nine.", "I'm at school."], "key": "B"},
+        {"a": "Have you got any football boots?", "options": ["No, I haven't.", "No, I didn't.", "No, they aren't."], "key": "A"},
+        {"a": "We practise on Wednesdays at four o'clock.", "options": ["That's all right. I can come.", "That's mine.", "That's a good ball."], "key": "A"},
+        {"a": "Which team do you like best?", "options": ["I like it better.", "The Blue Tigers!", "I don't like teams."], "key": "B"},
+        {"a": "Can your mum bring you to the sports centre?", "options": ["Yes, she does.", "Yes, she can.", "Yes, she is."], "key": "B"},
+        {"a": "See you on Wednesday, then!", "options": ["Great. Bye!", "Yes, I saw you.", "Wednesday is a day."], "key": "A"}
+      ]
+    },
+    "p3": {
+      "type": "gapped_text_title",
+      "words": ["hospital", "helmet", "slowly", "fell", "afraid", "careful", "race", "brave", "tired"],
+      "text": "Last month, Peter and his friends had a bike __(0)__ in the park. Peter wanted to win. He didn't put on his __(1)__ because he was in a hurry. He rode very fast, but near the lake he __(2)__ off his bike and hurt his leg. Peter's dad took him to the __(3)__. The doctor looked at his leg and said, 'You must ride more __(4)__ and always wear your helmet.' Peter didn't cry. 'You are very __(5)__,' the doctor said. Now Peter always wears his helmet, and he never rides fast near the lake!",
+      "example": "race",
+      "key": ["helmet", "fell", "hospital", "slowly", "brave"],
+      "title_choices": ["Peter's new bike", "The bike race", "A day at the lake"],
+      "title_key": "B"
+    },
+    "p4": {
+      "type": "mc_cloze",
+      "title": "Whales",
+      "text": "Whales are the biggest animals __(0)__ the world. They live in the sea, but they are not fish. A whale __(1)__ to come up to the top of the water to breathe. Baby whales drink milk __(2)__ their mothers, like other baby animals. Whales can swim __(3)__ long way. Some whales travel thousands of kilometres every year to find warm water. Whales 'sing' to talk to __(4)__ other. People __(5)__ go out in boats to watch whales jump and play.",
+      "example": {"options": ["in", "at", "on"], "key": "A"},
+      "items": [
+        {"options": ["have", "has", "having"], "key": "B"},
+        {"options": ["from", "of", "by"], "key": "A"},
+        {"options": ["the", "an", "a"], "key": "C"},
+        {"options": ["each", "every", "all"], "key": "A"},
+        {"options": ["like", "likes", "liked"], "key": "A"}
+      ]
+    },
+    "p5": {
+      "type": "story_completion",
+      "title": "The swimming competition",
+      "image": "R5",
+      "parts": [
+        {"text": "Jim loved swimming. Every Saturday he went to the sports centre with his older sister, Lucy, who was a very good swimmer. One day, the swimming teacher, Mrs Hill, said, 'There is a competition next Saturday. Would you like to swim in it, Jim?' Jim was afraid, but Lucy said, 'You can do it!'",
+         "examples": [{"s": "Jim went to the sports centre ___.", "a": "every Saturday"}, {"s": "Jim's sister, Lucy, was a very good ___.", "a": "swimmer"}],
+         "items": [{"s": "The swimming teacher was called ___.", "a": ["Mrs Hill", "Hill"]}, {"s": "The competition was on the next ___.", "a": ["Saturday"]}]},
+        {"text": "All week, Jim practised in the pool. Lucy helped him. 'Kick your legs faster,' she said. On Saturday, lots of parents came to watch. Jim's mum and dad sat at the front. Jim was in the race with five other children.",
+         "items": [{"s": "Lucy told Jim to kick his ___ faster.", "a": ["legs"]}, {"s": "Jim's parents sat ___ to watch.", "a": ["at the front", "front"]}, {"s": "There were ___ children in Jim's race.", "a": ["six", "6"]}]},
+        {"text": "The race started. Jim swam as fast as he could. He didn't win, but he came third and got a small cup. 'I'm so happy,' Jim said. 'Next year I'm going to win!' Lucy laughed and gave him a big hug.",
+         "items": [{"s": "In the race, Jim came ___.", "a": ["third", "3rd"]}, {"s": "Jim got a small ___.", "a": ["cup"]}]}
+      ]
+    },
+    "p6": {
+      "type": "productive_writing",
+      "image": "R6",
+      "scene": "A sports centre: a boy is playing table tennis, two girls are playing badminton, a man is drinking water on a bench, a woman is carrying a big blue bag, a small boy is bouncing a basketball, and there is a clock on the wall.",
+      "examples": [{"s": "The boy is playing table ___.", "a": "tennis"}, {"q": "What is the man doing?", "a": "drinking water"}],
+      "complete": [
+        {"s": "The two girls are playing ___.", "a": ["badminton"]},
+        {"s": "The woman is carrying a big ___ bag.", "a": ["blue"]}
+      ],
+      "answer": [
+        {"q": "What is the small boy doing?", "model": "He is bouncing a basketball. / He is playing basketball."},
+        {"q": "Where is the clock?", "model": "It is on the wall."}
+      ],
+      "write": {"n": 2, "model": ["The man is sitting on a bench.", "There are lots of children at the sports centre."]}
+    }
+  },
+  "speaking": {
+    "p1": {
+      "type": "find_differences",
+      "image": "S1",
+      "scene": "Two pictures of the same swimming pool. Left: the examiner's picture. Right: your picture.",
+      "examiner": "Look at the two pictures. Here there are two children in the pool, but here there are three children. What other differences can you see?",
+      "differences": [
+        "In your picture the ball is red, but in my picture it is blue.",
+        "In your picture the girl has got a towel, but in my picture she has got a book.",
+        "In your picture there is a dog next to the pool, but in my picture there is a cat.",
+        "In your picture the man is wearing a hat, but in my picture he isn't.",
+        "In your picture the clock says two o'clock, but in my picture it says three o'clock."
+      ]
+    },
+    "p2": {
+      "type": "picture_sequence",
+      "title": "Daisy's football match",
+      "image": "S2",
+      "examiner_open": "These pictures show a story. It's called 'Daisy's football match'. Look at the pictures first. Daisy is at the sports centre with her team. It's the day of the big match and she is putting on her boots. Now you tell the story.",
+      "frames": [
+        "Daisy is at the sports centre with her team. It's the day of the big match and she is putting on her football boots.",
+        "The match starts. Daisy runs fast, but she falls down and hurts her knee. Her friends stop and help her.",
+        "The coach puts a bandage on her knee. Daisy wants to play again, so she goes back to the field.",
+        "Daisy kicks the ball and scores a goal! Her team wins and everybody is very happy."
+      ]
+    },
+    "p3": {
+      "type": "odd_one_out",
+      "sets": [
+        {"pics": [{"word": "football", "emoji": "⚽"}, {"word": "tennis", "emoji": "🎾"}, {"word": "basketball", "emoji": "🏀"}, "apple"], "odd": 3, "reason": "You don't play with an apple. You eat it."},
+        {"pics": ["horse", "cow", "sheep", "bus"], "odd": 3, "reason": "A bus isn't an animal. You travel in it."},
+        {"pics": [{"word": "towel", "emoji": "🧻"}, "milk", "water", "juice"], "odd": 0, "reason": "You can't drink a towel. You dry yourself with it."},
+        {"pics": ["kite", "bike", "ball", "bed"], "odd": 3, "reason": "You don't play with a bed. You sleep in it."}
+      ]
+    },
+    "p4": {
+      "type": "personal_questions",
+      "topic": "sports",
+      "questions": [
+        {"q": "What sports do you do?", "model": "I play football and I swim."},
+        {"q": "Where do you do sport?", "model": "At school and in the park."},
+        {"q": "Who do you play with?", "model": "With my friends and my cousin."},
+        {"q": "What sport did you do last week?", "model": "I played basketball on Wednesday."},
+        {"q": "Tell me about your favourite sport.", "model": "My favourite sport is swimming. I go to the pool on Saturdays."}
+      ]
+    }
+  },
+  "audio": {
+    "p1": [
+      ["R", "Part One. Look at the picture. Listen and look. There is one example."],
+      ["pause", 3],
+      ["Fch", "Look, Mum, this is the new sports centre. It's got a swimming pool!"],
+      ["F", "Who's the girl jumping into the pool?"],
+      ["Fch", "That's Vicky. She's the best swimmer in my class."],
+      ["F", "She's very brave!"],
+      ["pause", 3],
+      ["R", "Can you see the line? This is an example. Now you listen and draw lines."],
+      ["pause", 3],
+      ["R", "One."],
+      ["F", "Who's the boy sitting on the bench? He's got a bandage on his leg."],
+      ["Fch", "That's Peter. He fell off his bike last week, so he can't play football today."],
+      ["F", "Poor Peter!"],
+      ["pause", 5],
+      ["R", "Two."],
+      ["Fch", "Can you see the woman with the whistle? She's teaching the children football."],
+      ["F", "Is she a teacher?"],
+      ["Fch", "Yes, that's Daisy. She's the football coach. Everybody likes her."],
+      ["pause", 5],
+      ["R", "Three."],
+      ["F", "And who's that boy? He's carrying a very big bag."],
+      ["Fch", "That's Jim. He's got his tennis racket in the bag. He plays tennis every Saturday."],
+      ["F", "He plays a lot!"],
+      ["pause", 5],
+      ["R", "Four."],
+      ["F", "Look at the girl in the café. What's she drinking?"],
+      ["Fch", "A milkshake. That's Julia. She always has a milkshake after swimming."],
+      ["F", "Mmm, I'd like one too!"],
+      ["pause", 5],
+      ["R", "Five."],
+      ["Fch", "And that's Fred, with the mop. He cleans the floor near the pool every afternoon."],
+      ["F", "The floor is very wet. He's got a lot of work!"],
+      ["Fch", "Yes, but he's always happy."],
+      ["pause", 5],
+      ["R", "Now listen to Part One again."]
+    ],
+    "p2": [
+      ["R", "Part Two. Listen and look. There is one example."],
+      ["pause", 3],
+      ["M", "Hello. Do you want to come to the swimming club?"],
+      ["Fch", "Yes, please! Which day is it?"],
+      ["M", "It's on Tuesdays."],
+      ["Fch", "Tuesday. Great, I can come!"],
+      ["pause", 3],
+      ["R", "Can you see the answer? Now you listen and write."],
+      ["pause", 3],
+      ["R", "One."],
+      ["Fch", "Who's the teacher?"],
+      ["M", "His name's Mr Best. B-E-S-T."],
+      ["Fch", "Mr Best. Is he nice?"],
+      ["M", "Yes, all the children like him."],
+      ["pause", 8],
+      ["R", "Two."],
+      ["Fch", "What time does the class start?"],
+      ["M", "At half past four. Four thirty."],
+      ["Fch", "Four thirty. And when does it finish?"],
+      ["M", "At half past five."],
+      ["pause", 8],
+      ["R", "Three."],
+      ["Fch", "How many children are in the class?"],
+      ["M", "There are fifteen children now. Sixteen with you!"],
+      ["Fch", "Fifteen. That's a big class."],
+      ["pause", 8],
+      ["R", "Four."],
+      ["Fch", "What do I need to bring?"],
+      ["M", "Your swimming things and a towel. A big towel."],
+      ["Fch", "A towel. OK. I've got a blue one."],
+      ["pause", 8],
+      ["R", "Five."],
+      ["Fch", "Can we have a drink after the class?"],
+      ["M", "Yes, you can go to the café. It's next to the pool."],
+      ["Fch", "The café. Brilliant! I love milkshakes."],
+      ["pause", 8],
+      ["R", "Now listen to Part Two again."]
+    ],
+    "p3": [
+      ["R", "Part Three. Listen and look. There is one example."],
+      ["pause", 3],
+      ["R", "Jack is telling his grandmother which sport each of his friends does on Saturdays. Which sport does each friend do?"],
+      ["pause", 3],
+      ["F", "Jack, what do your friends do on Saturdays?"],
+      ["Mch", "Well, Sally goes to the pool. She swims for an hour every Saturday morning. She's really fast!"],
+      ["pause", 3],
+      ["R", "Can you see the letter A? Now you listen and write a letter in each box."],
+      ["pause", 3],
+      ["F", "And Tom? Does he play football?"],
+      ["Mch", "No, Grandma. Tom is very tall, so he plays basketball. His team is called the Red Stars."],
+      ["F", "Basketball. That's a good sport for a tall boy!"],
+      ["pause", 3],
+      ["Mch", "Lily doesn't go to the sports centre. She goes to a farm."],
+      ["F", "A farm? What does she do there?"],
+      ["Mch", "She rides a horse. A big brown one called Star. She loves it."],
+      ["pause", 3],
+      ["F", "What about Paul?"],
+      ["Mch", "Paul plays tennis with his dad. They play in the park when it's sunny."],
+      ["F", "And when it rains?"],
+      ["Mch", "Then they play inside, at the sports centre."],
+      ["pause", 3],
+      ["Mch", "Anna does something different. She goes skating!"],
+      ["F", "On the ice?"],
+      ["Mch", "Yes! She's got new white skates. She wants to skate in a competition one day."],
+      ["pause", 3],
+      ["F", "And your friend Ben?"],
+      ["Mch", "Ben plays badminton with his sister. It's like tennis, but the ball has got feathers and it's very light."],
+      ["F", "Badminton! I played that when I was a girl."],
+      ["pause", 3],
+      ["R", "Now listen to Part Three again."]
+    ],
+    "p4": [
+      ["R", "Part Four. Look at the pictures. Listen and look. There is one example."],
+      ["pause", 3],
+      ["R", "What is Mary going to do this afternoon?"],
+      ["M", "Are you going swimming this afternoon, Mary?"],
+      ["Fch", "No, Dad. The pool is closed today. I'm going skating with Anna."],
+      ["M", "Not basketball?"],
+      ["Fch", "No, that's tomorrow."],
+      ["pause", 3],
+      ["R", "Can you see the tick? Now you listen and tick the box."],
+      ["pause", 3],
+      ["R", "One. What does Jim need for his class?"],
+      ["F", "Jim, have you got everything for your sports class? Your ball?"],
+      ["Mch", "The teacher has got the balls, Mum. But I need my trainers. I can't find them!"],
+      ["F", "They're under your bed. And take a hat, it's sunny."],
+      ["Mch", "I don't need a hat, we play inside."],
+      ["pause", 3],
+      ["R", "Two. Where is Grandpa now?"],
+      ["Fch", "Where's Grandpa? Is he in the kitchen?"],
+      ["F", "No, he isn't. He's in the garden. He's cutting the grass."],
+      ["Fch", "Oh. I thought he was in the bathroom."],
+      ["F", "No, he had his bath this morning."],
+      ["pause", 3],
+      ["R", "Three. What did Daisy have for lunch?"],
+      ["M", "Did you have a sandwich for lunch, Daisy?"],
+      ["Fch", "No, Dad. I had some soup. It was very hot."],
+      ["M", "Not pasta? You love pasta."],
+      ["Fch", "There wasn't any pasta today."],
+      ["pause", 3],
+      ["R", "Four. What is the weather like at the beach?"],
+      ["Fch", "Hi, Grandma! We're at the beach."],
+      ["F", "Is it sunny there?"],
+      ["Fch", "No, it isn't. It's very windy. My hat flew away! But it isn't raining."],
+      ["F", "Oh dear! Hold on to your things."],
+      ["pause", 3],
+      ["R", "Five. Which animal did Sam see at the farm?"],
+      ["F", "Did you see the cows at the farm, Sam?"],
+      ["Mch", "No, the cows were in the field, very far away. And the sheep were sleeping. But I saw a goat! It ate my sandwich!"],
+      ["F", "A goat! That's funny."],
+      ["pause", 3],
+      ["R", "Now listen to Part Four again."]
+    ],
+    "p5": [
+      ["R", "Part Five. Look at the picture. Listen and look. There is one example."],
+      ["pause", 3],
+      ["F", "This is a picture of a playground. Can you see the ball next to the slide?"],
+      ["Mch", "Yes, it's a big ball."],
+      ["F", "Colour it red, please."],
+      ["Mch", "OK. A red ball."],
+      ["pause", 3],
+      ["R", "Can you see the red ball? This is an example. Now you listen and colour and write."],
+      ["pause", 3],
+      ["R", "One."],
+      ["F", "Now, can you see the bird? It's on the wall."],
+      ["Mch", "Yes! Can I colour it blue?"],
+      ["F", "Yes, blue is a good colour for the bird."],
+      ["pause", 10],
+      ["R", "Two."],
+      ["Mch", "There's a girl with a balloon. Can I colour the balloon?"],
+      ["F", "Yes. Colour the balloon yellow."],
+      ["Mch", "A yellow balloon. OK!"],
+      ["pause", 10],
+      ["R", "Three."],
+      ["F", "Can you see the bag under the tree?"],
+      ["Mch", "Yes, next to the bench?"],
+      ["F", "That's right. Colour the bag green."],
+      ["Mch", "Green. Finished!"],
+      ["pause", 10],
+      ["R", "Four."],
+      ["Mch", "Can I write something now?"],
+      ["F", "Yes. There's a sign on the gate. Write the word 'park' on it. P-A-R-K."],
+      ["Mch", "Park. P-A-R-K. Done!"],
+      ["pause", 10],
+      ["R", "Five."],
+      ["F", "And now the boy's bike. Can you see it?"],
+      ["Mch", "Yes. Can I colour it purple?"],
+      ["F", "No, colour the bike orange, please."],
+      ["Mch", "OK, orange. That's a nice bike!"],
+      ["pause", 10],
+      ["R", "Now listen to Part Five again."]
+    ]
+  }
+}
