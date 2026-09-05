@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pizarra · NIS</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Edu+SA+Beginner:wght@400;700&family=Edu+QLD+Beginner:wght@400;700&family=Edu+NSW+ACT+Foundation:wght@400;700&family=Edu+VIC+WA+NT+Beginner:wght@400;700&family=Edu+TAS+Beginner:wght@400;700&family=Schoolbell&family=Patrick+Hand&family=Kalam:wght@400;700&family=Caveat:wght@400;700&family=Comic+Neue:wght@400;700&family=Andika:wght@400;700&family=ABeeZee&family=Lexend:wght@400;700&family=Nunito:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* =========================================================================
+   Pizarra de escritura — una hoja de cuaderno en la pantalla grande.
+   El profesor escribe la muestra (triple renglón, doble raya, rayado,
+   cuadriculado, en blanco) y los alumnos la ven y la copian.
+   ========================================================================= */
+:root{--bg:#2b2f3a;--bar:#1a1d26;--ink:#e6e9f2;--muted:#9aa3b5;--acc:#5b8def;--line:#3a4050;--sheet-w:1600px;--sheet-h:900px}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--ink);font-family:'Gotham','Segoe UI',system-ui,sans-serif;font-size:14px;display:flex;flex-direction:column;overflow:hidden}
+button,select,input{font:inherit}
+/* ---- barra ---- */
+#bar{background:var(--bar);border-bottom:1px solid var(--line);padding:6px 10px;display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;flex:none;position:relative;z-index:20}
+#bar.oculta{display:none}
+.g{display:flex;align-items:center;gap:4px;padding-right:10px;border-right:1px solid var(--line)}
+.g:last-child{border-right:0}
+.g .t{font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin-right:2px}
+#bar button,#bar select,#bar input[type=number]{background:#2a2f3d;color:var(--ink);border:1px solid #444b5e;border-radius:8px;height:32px;padding:0 9px;cursor:pointer;line-height:1}
+#bar button:hover{background:#354059}
+#bar button.on{background:var(--acc);border-color:var(--acc);color:#fff}
+#bar button.icon{min-width:34px;padding:0 6px;font-size:1.05rem}
+#bar input[type=number]{width:64px;cursor:text}
+#bar input[type=range]{width:90px;accent-color:var(--acc)}
+#bar input[type=color]{width:34px;height:32px;border:1px solid #444b5e;border-radius:8px;background:#2a2f3d;padding:2px;cursor:pointer}
+.sw{width:22px;height:22px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px #000;cursor:pointer;padding:0!important;min-width:0!important}
+.sw.on{box-shadow:0 0 0 3px var(--acc)}
+.pop{position:absolute;top:100%;left:0;background:#232735;border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:none;flex-direction:column;gap:8px;min-width:260px;box-shadow:0 12px 30px rgba(0,0,0,.45);z-index:30}
+.pop.open{display:flex}
+.pop label{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:.85rem}
+.pop .fila{display:flex;gap:6px;flex-wrap:wrap}
+.pop .fila button{height:30px}
+.gp{position:relative}
+/* ---- escenario ---- */
+#stage{flex:1;overflow:auto;display:flex;align-items:flex-start;justify-content:center;padding:18px}
+#frame{position:relative;flex:none}
+#sheet{position:absolute;left:0;top:0;width:var(--sheet-w);height:var(--sheet-h);background:#fff;transform-origin:0 0;box-shadow:0 10px 40px rgba(0,0,0,.5);overflow:hidden;border-radius:4px}
+#paperbg{position:absolute;inset:0;pointer-events:none}
+#marginline{position:absolute;top:0;bottom:0;width:2px;background:#e57373;pointer-events:none;display:none}
+#text{position:absolute;inset:0;padding:0 40px 40px 60px;outline:none;white-space:pre-wrap;word-wrap:break-word;color:#1a1a1a;caret-color:#1a1a1a;overflow:hidden}
+#text:empty:before{content:attr(data-ph);color:#c9ced8;pointer-events:none}
+#text img{max-width:100%}
+#imgs{position:absolute;inset:0;pointer-events:none}
+.imgbox{position:absolute;pointer-events:auto;cursor:move;outline:2px solid transparent;user-select:none}
+.imgbox img{display:block;width:100%;height:auto;pointer-events:none}
+.imgbox.sel{outline-color:var(--acc)}
+.imgbox .rs{position:absolute;right:-8px;bottom:-8px;width:18px;height:18px;background:var(--acc);border:2px solid #fff;border-radius:50%;cursor:nwse-resize;display:none}
+.imgbox .del{position:absolute;right:-10px;top:-12px;width:24px;height:24px;border-radius:50%;background:#e53935;color:#fff;border:2px solid #fff;font-size:13px;line-height:1;display:none;cursor:pointer;padding:0}
+.imgbox.sel .rs,.imgbox.sel .del{display:block}
+#draw{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;touch-action:none}
+body.mode-draw #draw{pointer-events:auto;cursor:crosshair}
+body.mode-draw #text{pointer-events:none}
+body.mode-pointer #sheet{cursor:none}
+#laser{position:absolute;width:26px;height:26px;border-radius:50%;background:radial-gradient(#ff5252 0 40%,rgba(255,82,82,.35) 41% 70%,transparent 71%);pointer-events:none;display:none;transform:translate(-50%,-50%);z-index:9}
+#pages{position:fixed;right:16px;bottom:14px;background:rgba(26,29,38,.92);border:1px solid var(--line);border-radius:999px;padding:5px 8px;display:flex;align-items:center;gap:6px;z-index:15}
+#pages button{background:#2a2f3d;color:var(--ink);border:1px solid #444b5e;border-radius:999px;height:30px;min-width:30px;padding:0 8px;cursor:pointer}
+#pages span{font-size:.85rem;min-width:44px;text-align:center}
+#toast{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);background:#111;color:#fff;padding:8px 14px;border-radius:999px;font-size:.85rem;opacity:0;transition:opacity .25s;pointer-events:none;z-index:40}
+#toast.show{opacity:.95}
+#tip{position:fixed;left:14px;bottom:14px;font-size:.78rem;color:var(--muted);z-index:15}
+kbd{background:#3a4050;border-radius:4px;padding:1px 5px;font-family:inherit;font-size:.75rem}
+@media print{
+  body{background:#fff;overflow:visible;display:block}
+  #bar,#pages,#tip,#toast,#laser{display:none!important}
+  #stage{padding:0;overflow:visible;display:block}
+  #frame{width:auto!important;height:auto!important}
+  #sheet{position:relative;transform:none!important;box-shadow:none;border-radius:0;page-break-after:always}
+  .imgbox{outline:none}
+}
+</style>
+</head>
+<body>
+<div id="bar">
+  <div class="g gp">
+    <span class="t">Papel</span>
+    <select id="paper" title="Tipo de papel">
+      <option value="triple">Triple renglón</option>
+      <option value="double">Doble raya</option>
+      <option value="single">Rayado</option>
+      <option value="grid">Cuadriculado</option>
+      <option value="blank">En blanco</option>
+    </select>
+    <button id="bPaper" title="Ajustes del papel">⚙️</button>
+    <div class="pop" id="popPaper">
+      <label>Formato <select id="format"><option value="wide">Pantalla 16:9</option><option value="a4l">A4 horizontal</option><option value="a4p">A4 vertical</option></select></label>
+      <label>Interlineado <span><input type="range" id="pitch" min="40" max="200" step="2"> <b id="pitchV"></b></span></label>
+      <label>Altura del renglón <span><input type="range" id="ruled" min="35" max="90" step="1"> <b id="ruledV"></b>%</span></label>
+      <label>Color de líneas <select id="lineColor"><option value="#7aa7ff">Azul</option><option value="#9aa3b5">Gris</option><option value="#8fd19e">Verde</option><option value="#f4a7a7">Rojo claro</option><option value="#333">Negro</option></select></label>
+      <label>Margen rojo <input type="checkbox" id="margin" checked></label>
+      <label>Línea central punteada <input type="checkbox" id="dashed" checked></label>
+    </div>
+  </div>
+  <div class="g gp">
+    <span class="t">Letra</span>
+    <select id="font" title="Tipo de letra"></select>
+    <button class="icon" id="szMinus" title="Más pequeña">−</button>
+    <input type="number" id="size" min="12" max="220" step="2" title="Tamaño en px">
+    <button class="icon" id="szPlus" title="Más grande">+</button>
+    <button id="fit" title="Tamaño que encaja en los renglones">↕ A renglón</button>
+    <input type="color" id="color" value="#1a1a1a" title="Color de la letra">
+    <button id="model" title="Gris claro para calcar">Modelo gris</button>
+    <button class="icon" id="bold" title="Negrita (Ctrl+B)"><b>B</b></button>
+    <button class="icon" id="italic" title="Cursiva (Ctrl+I)"><i>I</i></button>
+    <button class="icon" id="under" title="Subrayado (Ctrl+U)"><u>U</u></button>
+    <button class="icon" id="hl" title="Resaltar amarillo">🖍️</button>
+    <button class="icon" id="alL" title="Alinear a la izquierda">⯇</button>
+    <button class="icon" id="alC" title="Centrar">☰</button>
+    <button id="bText" title="Más ajustes de texto">⚙️</button>
+    <div class="pop" id="popText">
+      <label>Ajuste vertical <span><input type="range" id="offset" min="-60" max="60" step="1"> <b id="offsetV"></b>px</span></label>
+      <label>Sangría izquierda <span><input type="range" id="indent" min="20" max="240" step="4"> <b id="indentV"></b>px</span></label>
+      <label>Espacio entre letras <span><input type="range" id="spacing" min="0" max="12" step="1"> <b id="spacingV"></b>px</span></label>
+      <div class="fila"><button id="clearFmt">Quitar formato</button><button id="upper">MAYÚSCULAS</button><button id="lower">minúsculas</button></div>
+    </div>
+  </div>
+  <div class="g">
+    <span class="t">Insertar</span>
+    <button id="bImg" title="Imagen desde el equipo (o pega con Ctrl+V)">🖼️ Imagen</button>
+    <input type="file" id="fileImg" accept="image/*" hidden>
+    <button id="bDate" title="Escribe la fecha de hoy">📅</button>
+    <button id="bLine" title="Línea de separación">―</button>
+  </div>
+  <div class="g gp">
+    <span class="t">Dibujar</span>
+    <button id="mPen" title="Lápiz">✏️</button>
+    <button id="mHi" title="Resaltador">🖍️</button>
+    <button id="mEr" title="Borrador">🧽</button>
+    <span id="dcols"></span>
+    <input type="range" id="dsize" min="2" max="40" step="1" value="5" title="Grosor">
+    <button class="icon" id="dUndo" title="Deshacer trazo">↶</button>
+    <button class="icon" id="dClear" title="Borrar todo el dibujo">🗑️</button>
+  </div>
+  <div class="g">
+    <button id="mPtr" title="Puntero láser (Esc para salir)">🔴 Puntero</button>
+    <button id="bFull" title="Pantalla completa (F)">⛶</button>
+    <button id="bHide" title="Ocultar la barra (H)">👁️</button>
+    <button id="bZoom" title="Ajustar a la ventana">⤢</button>
+  </div>
+  <div class="g">
+    <span class="t">Hoja</span>
+    <button id="bNew" title="Nueva hoja en blanco (borra el texto de esta)">🆕</button>
+    <button id="bSave" title="Guardar como archivo .pizarra.json">💾</button>
+    <button id="bOpen" title="Abrir un archivo guardado">📂</button>
+    <input type="file" id="fileOpen" accept=".json,application/json" hidden>
+    <button id="bPng" title="Descargar la hoja como imagen PNG">🖼️ PNG</button>
+    <button id="bPrint" title="Imprimir (o guardar en PDF)">🖨️</button>
+  </div>
+</div>
+
+<div id="stage">
+  <div id="frame">
+    <div id="sheet">
+      <div id="paperbg"></div>
+      <div id="marginline"></div>
+      <div id="text" contenteditable="true" spellcheck="false" data-ph="Escribe aquí…"></div>
+      <div id="imgs"></div>
+      <canvas id="draw"></canvas>
+      <div id="laser"></div>
+    </div>
+  </div>
+</div>
+<div id="pages"><button id="pPrev" title="Hoja anterior">◀</button><span id="pNum">1 / 1</span><button id="pNext" title="Hoja siguiente">▶</button><button id="pAdd" title="Añadir hoja">＋</button><button id="pDup" title="Duplicar hoja">⧉</button><button id="pDel" title="Eliminar hoja">🗑️</button></div>
+<div id="tip"><kbd>H</kbd> barra · <kbd>F</kbd> pantalla completa · <kbd>Esc</kbd> salir de dibujar/puntero · <kbd>Ctrl</kbd>+<kbd>V</kbd> pega una imagen</div>
+<div id="toast"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+(function(){
+'use strict';
+var $ = function(s){ return document.querySelector(s); };
+var FONTS = [
+  ['Edu SA Beginner','Escolar cursiva (SA)'], ['Edu QLD Beginner','Escolar cursiva (QLD)'], ['Edu NSW ACT Foundation','Escolar Foundation (NSW)'],
+  ['Edu VIC WA NT Beginner','Escolar (VIC)'], ['Edu TAS Beginner','Escolar (TAS)'], ['Andika','Andika (lectoescritura)'], ['ABeeZee','ABeeZee (infantil)'],
+  ['Comic Neue','Comic Neue'], ['Schoolbell','Schoolbell'], ['Patrick Hand','Patrick Hand'], ['Kalam','Kalam'], ['Caveat','Caveat'],
+  ['Lexend','Lexend (dislexia)'], ['Nunito','Nunito'], ['Open Sans','Open Sans'], ['Gotham','Gotham (NIS)'],
+  ['Arial','Arial'], ['Verdana','Verdana'], ['Segoe Print','Segoe Print'], ['Segoe Script','Segoe Script'], ['Comic Sans MS','Comic Sans'], ['Times New Roman','Times New Roman'], ['Georgia','Georgia']
+];
+var DCOLS = ['#1a1a1a','#e53935','#1e88e5','#43a047','#fb8c00','#8e24aa'];
+var FORMATS = {wide:[1600,900], a4l:[1123,794], a4p:[794,1123]};
+var KEY = 'nis_pizarra_v1';
+
+/* ---- estado ---- */
+var S = {
+  paper:'triple', format:'wide', pitch:96, ruled:66, lineColor:'#7aa7ff', margin:true, dashed:true,
+  font:'Edu SA Beginner', size:56, color:'#1a1a1a', offset:0, indent:60, spacing:0,
+  pages:[{html:'', ops:[], imgs:[]}], cur:0
+};
+try { var g = JSON.parse(localStorage.getItem(KEY) || 'null'); if(g && g.pages) S = Object.assign(S, g); } catch(e){}
+
+var sheet = $('#sheet'), paper = $('#paperbg'), text = $('#text'), imgs = $('#imgs'), cv = $('#draw'), ctx = cv.getContext('2d');
+var W = 1600, H = 900, k = 1;
+var mode = 'text';          // text | draw | pointer
+var dtool = 'pen', dcol = DCOLS[0], dsize = 5, drawing = null;
+var tSave = null;
+
+function page(){ return S.pages[S.cur]; }
+function toast(m){ var t = $('#toast'); t.textContent = m; t.classList.add('show'); clearTimeout(toast._t); toast._t = setTimeout(function(){ t.classList.remove('show'); }, 1800); }
+function save(){ clearTimeout(tSave); tSave = setTimeout(function(){ page().html = text.innerHTML; try { localStorage.setItem(KEY, JSON.stringify(S)); } catch(e){ toast('No cabe en el navegador: guarda como archivo'); } }, 400); }
+
+/* ---- papel ---- */
+function svgPaper(){
+  var P = S.pitch, R = Math.round(P * S.ruled / 100), c = S.lineColor, e = encodeURIComponent;
+  var l = function(y, dash, w){ return '<line x1="0" y1="' + y + '" x2="4000" y2="' + y + '" stroke="' + c + '" stroke-width="' + (w||2) + '"' + (dash ? ' stroke-dasharray="10 8"' : '') + '/>'; };
+  var body = '';
+  if(S.paper === 'single') body = l(R);
+  if(S.paper === 'double') body = l(R - Math.round(R*.5)) + l(R);
+  if(S.paper === 'triple') body = l(0) + l(Math.round(R/2), S.dashed) + l(R);
+  if(S.paper === 'grid'){
+    var g = Math.max(20, Math.round(P/2));
+    return 'url("data:image/svg+xml,' + e('<svg xmlns="http://www.w3.org/2000/svg" width="' + g + '" height="' + g + '"><path d="M ' + g + ' 0 L 0 0 0 ' + g + '" fill="none" stroke="' + c + '" stroke-width="1.5"/></svg>') + '")';
+  }
+  if(!body) return 'none';
+  return 'url("data:image/svg+xml,' + e('<svg xmlns="http://www.w3.org/2000/svg" width="4000" height="' + P + '">' + body + '</svg>') + '")';
+}
+function pintaPapel(){
+  var f = FORMATS[S.format]; W = f[0]; H = f[1];
+  sheet.style.setProperty('--sheet-w', W + 'px'); sheet.style.setProperty('--sheet-h', H + 'px');
+  sheet.style.width = W + 'px'; sheet.style.height = H + 'px';
+  var top = S.paper === 'grid' ? 0 : 40;
+  paper.style.backgroundImage = svgPaper();
+  paper.style.backgroundRepeat = S.paper === 'grid' ? 'repeat' : 'repeat-y';
+  paper.style.backgroundPosition = '0 ' + top + 'px';
+  paper.style.backgroundSize = S.paper === 'grid' ? '' : '100% ' + S.pitch + 'px';
+  $('#marginline').style.display = (S.margin && S.paper !== 'blank' && S.paper !== 'grid') ? 'block' : 'none';
+  $('#marginline').style.left = (S.indent - 14) + 'px';
+  // el texto se apoya en la línea de abajo del renglón: se calcula dónde cae la
+  // base de la letra dentro de la caja de línea y se compensa con el relleno
+  var P = S.pitch, R = Math.round(P * S.ruled / 100), fs = S.size;
+  var base = P/2 + 0.3 * fs;                          // base de la letra dentro de la caja
+  var pad = (S.paper === 'blank' || S.paper === 'grid') ? 40 : top + R - base;
+  text.style.paddingTop = Math.round(pad + S.offset) + 'px';
+  text.style.paddingLeft = S.indent + 'px';
+  text.style.lineHeight = P + 'px';
+  // las cursivas escolares (Edu …) no traen tildes ni eñe: esas letras caen
+  // en Andika, que es redonda y completa, en vez de en la serif del sistema
+  text.style.fontFamily = '"' + S.font + '", "Andika", "Comic Neue", sans-serif';
+  text.style.fontSize = fs + 'px';
+  text.style.color = S.color; text.style.caretColor = S.color;
+  text.style.letterSpacing = S.spacing + 'px';
+  cv.width = W; cv.height = H;
+  repinta(); zoomFit(); ui();
+}
+function zoomFit(){
+  var st = $('#stage'); var kw = (st.clientWidth - 36) / W, kh = (st.clientHeight - 36) / H;
+  k = Math.max(.15, Math.min(kw, kh));
+  sheet.style.transform = 'scale(' + k + ')';
+  $('#frame').style.width = Math.round(W * k) + 'px'; $('#frame').style.height = Math.round(H * k) + 'px';
+}
+window.addEventListener('resize', zoomFit);
+
+/* ---- controles ---- */
+var fsel = $('#font');
+FONTS.forEach(function(f){ var o = document.createElement('option'); o.value = f[0]; o.textContent = f[1]; o.style.fontFamily = '"' + f[0] + '"'; fsel.appendChild(o); });
+function ui(){
+  $('#paper').value = S.paper; $('#format').value = S.format;
+  $('#pitch').value = S.pitch; $('#pitchV').textContent = S.pitch + 'px';
+  $('#ruled').value = S.ruled; $('#ruledV').textContent = S.ruled;
+  $('#lineColor').value = S.lineColor; $('#margin').checked = S.margin; $('#dashed').checked = S.dashed;
+  fsel.value = S.font; $('#size').value = S.size; $('#color').value = S.color;
+  $('#offset').value = S.offset; $('#offsetV').textContent = S.offset;
+  $('#indent').value = S.indent; $('#indentV').textContent = S.indent;
+  $('#spacing').value = S.spacing; $('#spacingV').textContent = S.spacing;
+  $('#pNum').textContent = (S.cur + 1) + ' / ' + S.pages.length;
+  $('#mPen').classList.toggle('on', mode === 'draw' && dtool === 'pen');
+  $('#mHi').classList.toggle('on', mode === 'draw' && dtool === 'hi');
+  $('#mEr').classList.toggle('on', mode === 'draw' && dtool === 'er');
+  $('#mPtr').classList.toggle('on', mode === 'pointer');
+  document.body.className = 'mode-' + mode;
+  document.querySelectorAll('#dcols .sw').forEach(function(b){ b.classList.toggle('on', b.dataset.c === dcol); });
+}
+function set(kk, v){ S[kk] = v; pintaPapel(); save(); }
+$('#paper').onchange = function(){ set('paper', this.value); };
+$('#format').onchange = function(){ set('format', this.value); };
+$('#pitch').oninput = function(){ set('pitch', +this.value); };
+$('#ruled').oninput = function(){ set('ruled', +this.value); };
+$('#lineColor').onchange = function(){ set('lineColor', this.value); };
+$('#margin').onchange = function(){ set('margin', this.checked); };
+$('#dashed').onchange = function(){ set('dashed', this.checked); };
+fsel.onchange = function(){ set('font', this.value); };
+$('#size').onchange = function(){ set('size', Math.max(12, Math.min(220, +this.value || 48))); };
+$('#szMinus').onclick = function(){ set('size', Math.max(12, S.size - 4)); };
+$('#szPlus').onclick = function(){ set('size', Math.min(220, S.size + 4)); };
+$('#fit').onclick = function(){ var R = S.pitch * S.ruled / 100; set('size', Math.round(R * 1.15)); S.offset = 0; pintaPapel(); toast('Tamaño ajustado al renglón'); };
+$('#color').oninput = function(){ set('color', this.value); };
+$('#model').onclick = function(){ set('color', S.color === '#c4c9d4' ? '#1a1a1a' : '#c4c9d4'); };
+$('#offset').oninput = function(){ set('offset', +this.value); };
+$('#indent').oninput = function(){ set('indent', +this.value); };
+$('#spacing').oninput = function(){ set('spacing', +this.value); };
+function cmd(c, v){ text.focus(); document.execCommand(c, false, v); save(); }
+$('#bold').onclick = function(){ cmd('bold'); };
+$('#italic').onclick = function(){ cmd('italic'); };
+$('#under').onclick = function(){ cmd('underline'); };
+$('#hl').onclick = function(){ cmd('hiliteColor', '#fff59d'); };
+$('#alL').onclick = function(){ cmd('justifyLeft'); };
+$('#alC').onclick = function(){ cmd('justifyCenter'); };
+$('#clearFmt').onclick = function(){ cmd('removeFormat'); };
+$('#upper').onclick = function(){ transforma(function(t){ return t.toUpperCase(); }); };
+$('#lower').onclick = function(){ transforma(function(t){ return t.toLowerCase(); }); };
+function transforma(fn){
+  var sel = window.getSelection();
+  if(sel && sel.rangeCount && !sel.isCollapsed && text.contains(sel.anchorNode)){ cmd('insertText', fn(sel.toString())); return; }
+  text.textContent = fn(text.textContent); save();
+}
+$('#bDate').onclick = function(){ var d = new Date(); var dias = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado']; var meses = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre']; cmd('insertText', dias[d.getDay()] + ', ' + d.getDate() + ' de ' + meses[d.getMonth()] + ' de ' + d.getFullYear()); };
+$('#bLine').onclick = function(){ cmd('insertHTML', '<div>――――――――――――――――</div>'); };
+['bPaper','bText'].forEach(function(id){
+  var pop = $('#' + (id === 'bPaper' ? 'popPaper' : 'popText'));
+  $('#' + id).onclick = function(e){ e.stopPropagation(); var abre = !pop.classList.contains('open'); document.querySelectorAll('.pop').forEach(function(p){ p.classList.remove('open'); }); pop.classList.toggle('open', abre); };
+  pop.onclick = function(e){ e.stopPropagation(); };
+});
+document.addEventListener('click', function(){ document.querySelectorAll('.pop').forEach(function(p){ p.classList.remove('open'); }); });
+text.addEventListener('input', save);
+text.addEventListener('paste', function(e){
+  var items = (e.clipboardData || {}).items || [];
+  for(var i = 0; i < items.length; i++){
+    if(items[i].type.indexOf('image') === 0){ e.preventDefault(); leeImagen(items[i].getAsFile()); return; }
+  }
+  // texto plano: sin los estilos del sitio de donde venga
+  e.preventDefault(); var t = (e.clipboardData || window.clipboardData).getData('text/plain'); document.execCommand('insertText', false, t);
+});
+
+/* ---- imágenes flotantes ---- */
+$('#bImg').onclick = function(){ $('#fileImg').click(); };
+$('#fileImg').onchange = function(){ if(this.files[0]) leeImagen(this.files[0]); this.value = ''; };
+sheet.addEventListener('dragover', function(e){ e.preventDefault(); });
+sheet.addEventListener('drop', function(e){ e.preventDefault(); var f = e.dataTransfer.files && e.dataTransfer.files[0]; if(f && f.type.indexOf('image') === 0) leeImagen(f); });
+function leeImagen(file){
+  var r = new FileReader();
+  r.onload = function(){
+    var im = new Image();
+    im.onload = function(){
+      // se reduce para que el guardado no reviente el navegador
+      var max = 1200, kk = Math.min(1, max / Math.max(im.width, im.height));
+      var c = document.createElement('canvas'); c.width = Math.round(im.width * kk); c.height = Math.round(im.height * kk);
+      c.getContext('2d').drawImage(im, 0, 0, c.width, c.height);
+      var w = Math.min(W * .4, c.width);
+      page().imgs.push({src: c.toDataURL('image/jpeg', .85), x: Math.round(W * .55), y: 80, w: Math.round(w)});
+      pintaImgs(); save(); toast('Imagen insertada: arrástrala o cámbiale el tamaño desde la esquina');
+    };
+    im.src = r.result;
+  };
+  r.readAsDataURL(file);
+}
+function pintaImgs(){
+  imgs.innerHTML = '';
+  page().imgs.forEach(function(o, i){
+    var d = document.createElement('div'); d.className = 'imgbox'; d.style.left = o.x + 'px'; d.style.top = o.y + 'px'; d.style.width = o.w + 'px';
+    d.innerHTML = '<img src="' + o.src + '" alt=""><button class="del" title="Quitar">✕</button><div class="rs"></div>';
+    imgs.appendChild(d);
+    d.querySelector('.del').onclick = function(e){ e.stopPropagation(); page().imgs.splice(i, 1); pintaImgs(); save(); };
+    d.addEventListener('pointerdown', function(e){
+      if(e.target.classList.contains('del')) return;
+      e.preventDefault(); e.stopPropagation();
+      document.querySelectorAll('.imgbox').forEach(function(b){ b.classList.remove('sel'); }); d.classList.add('sel');
+      var rs = e.target.classList.contains('rs'), x0 = e.clientX, y0 = e.clientY, ox = o.x, oy = o.y, ow = o.w;
+      d.setPointerCapture(e.pointerId);
+      d.onpointermove = function(ev){
+        var dx = (ev.clientX - x0) / k, dy = (ev.clientY - y0) / k;
+        if(rs){ o.w = Math.max(60, Math.round(ow + dx)); d.style.width = o.w + 'px'; }
+        else { o.x = Math.round(ox + dx); o.y = Math.round(oy + dy); d.style.left = o.x + 'px'; d.style.top = o.y + 'px'; }
+      };
+      d.onpointerup = d.onpointercancel = function(){ d.onpointermove = null; save(); };
+    });
+  });
+}
+sheet.addEventListener('pointerdown', function(e){ if(!e.target.closest('.imgbox')) document.querySelectorAll('.imgbox').forEach(function(b){ b.classList.remove('sel'); }); });
+
+/* ---- dibujo a mano ---- */
+var dc = $('#dcols');
+DCOLS.forEach(function(c){ var b = document.createElement('button'); b.className = 'sw'; b.style.background = c; b.dataset.c = c; b.title = c; b.onclick = function(){ dcol = c; if(dtool === 'er') dtool = 'pen'; setMode('draw'); }; dc.appendChild(b); });
+$('#dsize').oninput = function(){ dsize = +this.value; };
+$('#mPen').onclick = function(){ dtool = 'pen'; setMode(mode === 'draw' && dtool === 'pen' ? 'draw' : 'draw'); };
+$('#mHi').onclick = function(){ dtool = 'hi'; setMode('draw'); };
+$('#mEr').onclick = function(){ dtool = 'er'; setMode('draw'); };
+$('#mPtr').onclick = function(){ setMode(mode === 'pointer' ? 'text' : 'pointer'); };
+function setMode(m){ mode = m; if(m !== 'pointer') $('#laser').style.display = 'none'; if(m === 'text') text.focus(); ui(); }
+function trazo(o){
+  ctx.globalCompositeOperation = o.t === 'er' ? 'destination-out' : (o.t === 'hi' ? 'multiply' : 'source-over');
+  ctx.globalAlpha = o.t === 'hi' ? .45 : 1; ctx.strokeStyle = o.c; ctx.lineWidth = o.s; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  var p = o.p; ctx.beginPath(); ctx.moveTo(p[0], p[1]);
+  if(p.length < 4) ctx.lineTo(p[0] + .1, p[1]);
+  for(var i = 2; i < p.length; i += 2) ctx.lineTo(p[i], p[i+1]);
+  ctx.stroke();
+}
+function repinta(){ ctx.setTransform(1,0,0,1,0,0); ctx.clearRect(0,0,W,H); page().ops.forEach(trazo); if(drawing) trazo(drawing); ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = 1; }
+function xy(e){ var r = cv.getBoundingClientRect(); return [Math.round((e.clientX - r.left) / k), Math.round((e.clientY - r.top) / k)]; }
+cv.addEventListener('pointerdown', function(e){ if(mode !== 'draw') return; e.preventDefault(); cv.setPointerCapture(e.pointerId); var q = xy(e); drawing = {t:dtool, c:dcol, s: dtool === 'hi' ? dsize * 4 : (dtool === 'er' ? dsize * 4 : dsize), p:[q[0], q[1]]}; repinta(); });
+cv.addEventListener('pointermove', function(e){
+  if(mode === 'pointer'){ var r = sheet.getBoundingClientRect(); var L = $('#laser'); L.style.display = 'block'; L.style.left = ((e.clientX - r.left) / k) + 'px'; L.style.top = ((e.clientY - r.top) / k) + 'px'; return; }
+  if(!drawing) return; var q = xy(e), p = drawing.p; if(Math.abs(q[0] - p[p.length-2]) + Math.abs(q[1] - p[p.length-1]) < 2) return; p.push(q[0], q[1]); repinta();
+});
+sheet.addEventListener('pointermove', function(e){ if(mode !== 'pointer') return; var r = sheet.getBoundingClientRect(); var L = $('#laser'); L.style.display = 'block'; L.style.left = ((e.clientX - r.left) / k) + 'px'; L.style.top = ((e.clientY - r.top) / k) + 'px'; });
+function suelta(){ if(!drawing) return; page().ops.push(drawing); drawing = null; repinta(); save(); }
+cv.addEventListener('pointerup', suelta); cv.addEventListener('pointercancel', suelta);
+$('#dUndo').onclick = function(){ page().ops.pop(); repinta(); save(); };
+$('#dClear').onclick = function(){ if(page().ops.length && confirm('¿Borrar todo el dibujo de esta hoja?')){ page().ops = []; repinta(); save(); } };
+
+/* ---- hojas ---- */
+function muestra(i){
+  page().html = text.innerHTML; S.cur = Math.max(0, Math.min(S.pages.length - 1, i));
+  text.innerHTML = page().html || ''; pintaImgs(); repinta(); ui(); save();
+}
+$('#pPrev').onclick = function(){ muestra(S.cur - 1); };
+$('#pNext').onclick = function(){ muestra(S.cur + 1); };
+$('#pAdd').onclick = function(){ page().html = text.innerHTML; S.pages.splice(S.cur + 1, 0, {html:'', ops:[], imgs:[]}); muestra(S.cur + 1); toast('Hoja nueva'); };
+$('#pDup').onclick = function(){ page().html = text.innerHTML; S.pages.splice(S.cur + 1, 0, JSON.parse(JSON.stringify(page()))); muestra(S.cur + 1); toast('Hoja duplicada'); };
+$('#pDel').onclick = function(){ if(S.pages.length === 1){ $('#bNew').click(); return; } if(!confirm('¿Eliminar esta hoja?')) return; S.pages.splice(S.cur, 1); S.cur = Math.min(S.cur, S.pages.length - 1); text.innerHTML = page().html || ''; pintaImgs(); repinta(); ui(); save(); };
+$('#bNew').onclick = function(){ if((text.textContent.trim() || page().ops.length || page().imgs.length) && !confirm('¿Vaciar esta hoja?')) return; S.pages[S.cur] = {html:'', ops:[], imgs:[]}; text.innerHTML = ''; pintaImgs(); repinta(); save(); text.focus(); };
+
+/* ---- archivo / imagen / impresión ---- */
+$('#bSave').onclick = function(){
+  page().html = text.innerHTML;
+  var blob = new Blob([JSON.stringify(S)], {type:'application/json'});
+  var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'pizarra-' + new Date().toISOString().slice(0,10) + '.pizarra.json'; a.click();
+  setTimeout(function(){ URL.revokeObjectURL(a.href); }, 2000); toast('Archivo guardado en Descargas');
+};
+$('#bOpen').onclick = function(){ $('#fileOpen').click(); };
+$('#fileOpen').onchange = function(){
+  var f = this.files[0]; if(!f) return; var r = new FileReader();
+  r.onload = function(){ try { var g = JSON.parse(r.result); if(!g.pages) throw 0; S = Object.assign(S, g); S.cur = 0; text.innerHTML = page().html || ''; pintaImgs(); pintaPapel(); save(); toast('Archivo abierto'); } catch(e){ toast('Ese archivo no es una pizarra'); } };
+  r.readAsText(f); this.value = '';
+};
+$('#bPng').onclick = function(){
+  if(!window.html2canvas){ toast('Sin conexión no se puede exportar; usa Imprimir'); return; }
+  document.querySelectorAll('.imgbox').forEach(function(b){ b.classList.remove('sel'); });
+  var k0 = k; sheet.style.transform = 'none';
+  html2canvas(sheet, {backgroundColor:'#fff', scale: 1, useCORS: true}).then(function(c){
+    sheet.style.transform = 'scale(' + k0 + ')';
+    var a = document.createElement('a'); a.href = c.toDataURL('image/png'); a.download = 'pizarra-hoja-' + (S.cur + 1) + '.png'; a.click(); toast('PNG en Descargas');
+  }).catch(function(){ sheet.style.transform = 'scale(' + k0 + ')'; toast('No se pudo exportar; usa Imprimir'); });
+};
+$('#bPrint').onclick = function(){ window.print(); };
+
+/* ---- pantalla ---- */
+$('#bFull').onclick = function(){ if(document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen().catch(function(){ toast('Tu navegador no deja pantalla completa aquí: ábrela con el botón ↗ del portal'); }); };
+$('#bHide').onclick = function(){ $('#bar').classList.toggle('oculta'); setTimeout(zoomFit, 0); };
+$('#bZoom').onclick = zoomFit;
+document.addEventListener('fullscreenchange', function(){ setTimeout(zoomFit, 60); });
+document.addEventListener('keydown', function(e){
+  var enTexto = document.activeElement === text || /INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName);
+  if(e.key === 'Escape'){ if(mode !== 'text') setMode('text'); document.querySelectorAll('.pop').forEach(function(p){ p.classList.remove('open'); }); if($('#bar').classList.contains('oculta')){ $('#bar').classList.remove('oculta'); zoomFit(); } return; }
+  if(enTexto) return;
+  if(e.key === 'h' || e.key === 'H'){ $('#bHide').click(); }
+  if(e.key === 'f' || e.key === 'F'){ $('#bFull').click(); }
+  if(e.key === 'ArrowRight' || e.key === 'PageDown'){ muestra(S.cur + 1); }
+  if(e.key === 'ArrowLeft' || e.key === 'PageUp'){ muestra(S.cur - 1); }
+});
+
+/* ---- arranque ---- */
+text.innerHTML = page().html || '';
+pintaImgs(); pintaPapel();
+if(document.fonts && document.fonts.ready) document.fonts.ready.then(pintaPapel);
+})();
+</script>
+</body>
+</html>
