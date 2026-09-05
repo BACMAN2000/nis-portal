@@ -76,6 +76,12 @@ table.rub td.crit{background:#fafbff;font-weight:600;width:32%}
 .badge.own{background:#FFFBEB;color:#B45309}
 .warnbox{background:#FFFBEB;border:1px solid #FDE68A;border-radius:var(--r-sm);padding:13px 15px;font-size:.87rem}
 .warnbox h4{margin:0 0 6px;color:#92400E;font-size:.9rem}
+.toddle{background:#F5F3FF;border:1px solid #DDD6FE;border-radius:var(--r-sm);padding:14px 16px;margin-bottom:16px}
+.toddle h4{margin:0 0 8px;color:#5B21B6;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}
+.toddle ul{margin:0;padding-left:1.1em;font-size:.9rem}
+.toddle li{margin:.25em 0}
+.toddle .per{display:inline-block;min-width:26px;font-weight:800;color:#5B21B6}
+.toddle .tipo{font-size:.76rem;color:var(--grey)}
 .srcbox{background:#F8FAFC;border:1px solid var(--line);border-radius:var(--r-sm);padding:13px 15px;font-size:.82rem;color:var(--grey)}
 .arcs{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
 a.arc{display:block;text-decoration:none;color:#fff;border-radius:var(--r);padding:20px;box-shadow:var(--shadow);min-height:150px;position:relative;overflow:hidden}
@@ -101,7 +107,7 @@ a.arc .tag{position:absolute;top:14px;right:14px;font-size:.7rem;font-weight:700
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js"></script>
-<script src="project-arcs.js?v=3"></script>
+<script src="project-arcs.js?v=4"></script>
 <script>
 const $ = s => document.querySelector(s);
 const P = new URLSearchParams(location.search);
@@ -261,6 +267,19 @@ function pintaArco(k, a){
     h += `<div class="card" style="border-left:5px solid var(--good)">
       <span class="badge src">Documento del colegio</span>
       <p style="margin:8px 0 0;font-size:.9rem">${esc(a.autoria)}</p></div>`;
+  }
+
+  /* Como se llama esto en Toddle. Va arriba porque es el nombre que el
+     profesor tiene delante cuando planifica: si el portal lo llama de otra
+     manera, lo primero que hay que ver es la equivalencia. */
+  if((a.toddle||[]).length){
+    h += `<div class="toddle"><h4>En Toddle, el planificador del colegio</h4>
+      <ul>${a.toddle.map(t=>`<li><span class="per">P${t.periodo}</span> ${esc(t.nombre)}
+        <span class="tipo">· ${esc(t.tipo)} · ${t.semanas} semanas · ${esc(t.area)}</span></li>`).join('')}</ul></div>`;
+  } else if(a.toddle){
+    h += `<div class="toddle"><h4>En Toddle, el planificador del colegio</h4>
+      <p style="margin:0;font-size:.9rem">Este trimestre no tiene ningún proyecto dado de alta.
+      Lo que sigue se apoya solo en el plan anual en Excel.</p></div>`;
   }
 
   /* La narrativa es lo primero que ve el alumno. */

@@ -20,6 +20,11 @@
  *     competencias, evidencias, evaluacion, diferenciacion) siguen la
  *     plantilla oficial del colegio: "Project Planner Template.docx" y el
  *     master plan de 5.o "Projects 4 & 5.docx".
+ *   - El campo `toddle` trae el NOMBRE REAL con el que el proyecto de ese
+ *     periodo esta dado de alta en Toddle, el planificador oficial del
+ *     colegio. Comprobado el 5-sep-2026 en Planning insights > Manage units:
+ *     221 unidades en Primary y 303 en Secondary. Donde el arco y Toddle no
+ *     coinciden manda Toddle, y el desajuste se dice en `revisar`.
  *
  * LO QUE ESTE ARCHIVO SI ANADE, y hay que revisar con coordinacion: el titulo
  * del proyecto, la pregunta esencial, la narrativa para el alumno, el producto
@@ -192,8 +197,11 @@ window.PROJECT_ARCS = {
   sad:{titulo:'Student Achievement Day #1',
     muestra:'El nino ensena su autorretrato del principio y el de 3D del final, y cuenta que '+
       'descubrio en medio. Y ensena su registro de insectos: lo que creia y lo que vio.'},
+  toddle:[],
   unidades:[],
-  revisar:['La salida a la playa de la semana 6 y el paseo de exploracion de la 5 necesitan '+
+  revisar:['1.o NO esta en Toddle: la plataforma solo tiene Primary (grados 2 a 5) y Secondary '+
+           '(6 a 11). El planificador de 1.o vive solo en los Project.docx de Drive.',
+           'La salida a la playa de la semana 6 y el paseo de exploracion de la 5 necesitan '+
            'autorizacion de familias con antelacion.',
            'El video de P2 se graba en la semana 5: si el material reciclado no esta pedido en la '+
            'semana 3, no hay prototipo que grabar.']
@@ -341,8 +349,11 @@ window.PROJECT_ARCS = {
   sad:{titulo:'Student Achievement Day #2',
     muestra:'El nino ensena su estructura y su registro de germinacion, y explica una cosa que '+
       'creia al principio y que resulto no ser asi.'},
+  toddle:[],
   unidades:[],
-  revisar:['La visita al mercado de la semana 12 y la ciudad colaborativa de la 4 necesitan '+
+  revisar:['1.o NO esta en Toddle: la plataforma solo tiene Primary (grados 2 a 5) y Secondary '+
+           '(6 a 11). El planificador de 1.o vive solo en los Project.docx de Drive.',
+           'La visita al mercado de la semana 12 y la ciudad colaborativa de la 4 necesitan '+
            'materiales pedidos con antelacion y autorizacion de familias.',
            'Project 3 marca dos lecciones como "Feriado" en su semana 5: son el 29 y el 30 de '+
            'junio (San Pedro y San Pablo, y Dia del Maestro). Si el calendario cambia, esa semana '+
@@ -472,8 +483,14 @@ window.PROJECT_ARCS = {
     muestra:'El nino ensena su tabla, su grafico y su carta, y cuenta en una frase que le '+
       'respondieron. La pregunta que se le hace delante de la familia es la misma que se le hizo '+
       'todo el trimestre: "que evidencia tienes?"'},
+  toddle:[{periodo:1, nombre:'P1 - Community Voices', tipo:'IDU', semanas:5, area:'STEAM +2'},
+          {periodo:2, nombre:'P2 - Living Changes: My Story, Our World and Life Cycles', tipo:'IDU', semanas:5, area:'Social Studies +1'}],
   unidades:[],
-  revisar:['El destinatario de la carta lo decide el tutor: tiene que ser alguien que de verdad '+
+  revisar:['En Toddle este trimestre son DOS proyectos con nombre propio, no uno: «Community '+
+           'Voices» y «Living Changes: My Story, Our World and Life Cycles». El arco los junta; '+
+           'si coordinacion prefiere mantenerlos separados, esto se queda solo como vista de '+
+           'trimestre.',
+           'El destinatario de la carta lo decide el tutor: tiene que ser alguien que de verdad '+
            'pueda responder, o el producto pierde su sentido.',
            'Art, Music y Drama no tienen contenido cargado en el plan anual de 2.o; si lo tienen '+
            'en su propia programacion, hay que engancharlo aqui.']
@@ -598,8 +615,17 @@ window.PROJECT_ARCS = {
   sad:{titulo:'Student Achievement Day #2',
     muestra:'El nino trae su pagina de la guia y explica como decidio a que grupo pertenece su '+
       'ser vivo. No se le pide que recite la clasificacion: se le pide que justifique la suya.'},
+  toddle:[{periodo:3, nombre:'P3 - Peru: Our Home', tipo:'IDU', semanas:5, area:'Social Studies +1'},
+          {periodo:4, nombre:'P4 - Growing, Changing and Learning', tipo:'IDU', semanas:5, area:'Social Studies'},
+          {periodo:4, nombre:'P4 - Growing, Changing & Learning', tipo:'IDU', semanas:6, area:'Science'}],
   unidades:[],
-  revisar:['Si el colegio no tiene personal disponible para las entrevistas, sirve una visita '+
+  revisar:['OJO: en Toddle, P3 de 2.o es «Peru: Our Home» y P4 «Growing, Changing and '+
+           'Learning». Esta guia de campo del colegio NO es lo que dice el planificador. Hay '+
+           'que decidir cual manda antes de usar el arco.',
+           'P4 esta dado de alta DOS VECES en Toddle: «Growing, Changing and Learning» (Social, '+
+           '5 semanas) y «Growing, Changing & Learning» (Science, 6 semanas). Mismo proyecto, '+
+           'dos fichas y dos duraciones.',
+           'Si el colegio no tiene personal disponible para las entrevistas, sirve una visita '+
            'del jardinero o del personal de limpieza a la clase; lo que no sirve es inventar el oficio.',
            'La salida al patio de la semana 1 necesita lupas: hay que pedirlas en P2, no en junio.']
 },
@@ -698,9 +724,14 @@ window.PROJECT_ARCS = {
   sad:{titulo:'Student Achievement Day #3',
     muestra:'El nino ensena su registro de la prueba y hace la demostracion en pequeno. Se le '+
       'pregunta que cambiaria si lo repitiera.'},
+  toddle:[{periodo:5, nombre:'P5 - Matter Around Us: Little Scientists, Big Changes', tipo:'unidad de area', semanas:6, area:'Social Studies'}],
   unidades:[{n:5, titulo:'The Shadow Show'},{n:6, titulo:'Things that move'}],
   revisar:['Este arco ya esta ejecutado como dos unidades del portal (U5 y U6). El arco solo '+
-           'declara que son un mismo proyecto de once semanas.']
+           'declara que son un mismo proyecto de once semanas.',
+           'En Toddle, P5 de 2.o es «Matter Around Us: Little Scientists, Big Changes» y NO es '+
+           'interdisciplinario: esta como unidad de Social Studies. Y P6 no existe en Toddle '+
+           'para ningun grado de primaria. Lo que este arco pone en P5 y P6 sale del plan anual '+
+           'en Excel, no del planificador.']
 },
 
 /* ==================================================================== 3.o */
@@ -824,8 +855,12 @@ window.PROJECT_ARCS = {
   sad:{titulo:'Student Achievement Day #1',
     muestra:'El nino ensena su tabla de frecuencias y el grafico del dia de la venta, y explica '+
       'una decision que el equipo cambio por lo que decian los datos.'},
+  toddle:[{periodo:1, nombre:'P1 - My Vote, My Voice', tipo:'IDU', semanas:5, area:'Social Studies +1'},
+          {periodo:2, nombre:'P2 - The Power of Food (We are Against Anemia)', tipo:'IDU', semanas:5, area:'Social Studies +1'}],
   unidades:[],
-  revisar:['La venta en el recreo necesita permiso y un dia concreto en el calendario: sin fecha '+
+  revisar:['Coincide con Toddle: P1 es «My Vote, My Voice» y P2 «The Power of Food (We are '+
+           'Against Anemia)». Delante del profesor valen esos nombres, no los nuestros.',
+           'La venta en el recreo necesita permiso y un dia concreto en el calendario: sin fecha '+
            'el arco se queda en simulacro y pierde justamente lo que lo hace real.',
            'Manipulacion de alimentos: hay que acordar con administracion que se puede vender.']
 },
@@ -950,8 +985,12 @@ window.PROJECT_ARCS = {
   sad:{titulo:'Student Achievement Day #2',
     muestra:'El nino trae su maqueta y su linea de tiempo y explica que aprendio en el viaje que '+
       'no sabia antes de ir.'},
+  toddle:[{periodo:3, nombre:'P3 - Passport Through Peru', tipo:'IDU', semanas:5, area:'Social Studies +1'},
+          {periodo:4, nombre:'P4 - Guardians of Our Ecosystems', tipo:'IDU', semanas:6, area:'Social Studies +1'}],
   unidades:[],
-  revisar:['El viaje de estudios de 3.o esta en P4 W2 del calendario (agosto). Si se mueve, se '+
+  revisar:['Coincide con Toddle: P3 es «Passport Through Peru» y P4 «Guardians of Our '+
+           'Ecosystems». Es el arco mejor respaldado de los trece.',
+           'El viaje de estudios de 3.o esta en P4 W2 del calendario (agosto). Si se mueve, se '+
            'mueven las fases 8 y 9, no todo el arco.',
            'La asignacion de regiones por equipo la hace el tutor en la semana 1; conviene que '+
            'ninguna region se repita para que el mural de la clase cubra el pais.']
@@ -1071,8 +1110,12 @@ window.PROJECT_ARCS = {
   sad:{titulo:'Student Achievement Day #3',
     muestra:'El nino ensena las dos cosas juntas: el modelo del cielo y su registro personal, y '+
       'explica que tienen en comun. Ese es el aprendizaje del trimestre, no el sistema solar.'},
+  toddle:[],
   unidades:[{n:5, titulo:'Unidad 5 del portal'},{n:6, titulo:'Unidad 6 del portal'}],
-  revisar:['El habito que se registra tiene que ser del nino, no de la familia, y no puede ser '+
+  revisar:['En Toddle NO hay ningun proyecto de 3.o para P5 ni P6: el planificador de 3.o llega '+
+           'hasta «Guardians of Our Ecosystems». Este arco se sostiene solo sobre el plan anual '+
+           'en Excel.',
+           'El habito que se registra tiene que ser del nino, no de la familia, y no puede ser '+
            'peso ni comida: es un registro de aula y no una medida corporal.',
            'El plan anual de 3.o escribe SEIS semanas en P5 y el calendario solo da cinco. La '+
            'semana que sobra es justo la de la exhibicion; aqui va junta con el diseno del '+
@@ -1196,8 +1239,14 @@ window.PROJECT_ARCS = {
   sad:{titulo:'Student Achievement Day #1',
     muestra:'El nino ensena su grafico y el acuerdo firmado por la clase, y explica que argumento '+
       'convencio a los demas y por que.'},
+  toddle:[{periodo:1, nombre:'P1 - Making Choices', tipo:'unidad de area', semanas:6, area:'Social Studies'},
+          {periodo:1, nombre:'U1 - Life on Earth', tipo:'unidad de area', semanas:6, area:'Science'},
+          {periodo:2, nombre:'P2 - Asking Questions, Researching Answers', tipo:'unidad de area', semanas:6, area:'Science'}],
   unidades:[],
-  revisar:['El acuerdo tiene fecha de revision: si nadie lo comprueba en P3, el producto se cae y '+
+  revisar:['4.o NO tiene NINGUNA unidad interdisciplinaria en Toddle: sus 23 unidades son de '+
+           'area, aunque algunas se llamen «P1» o «P2». Este arco propone un cruce que en 4.o '+
+           'todavia no esta declarado, y por eso es el que mas hay que validar con el grado.',
+           'El acuerdo tiene fecha de revision: si nadie lo comprueba en P3, el producto se cae y '+
            'el aprendizaje civico se pierde. Conviene fijar la revision en el hub de la unidad.']
 },
 
@@ -1317,8 +1366,17 @@ window.PROJECT_ARCS = {
   sad:{titulo:'Student Achievement Day #2',
     muestra:'El nino ensena su grafico de lineas y explica una semana en la que el dato bajo. Se '+
       'valora que sepa explicar la bajada, no que la linea suba.'},
+  toddle:[{periodo:3, nombre:'P.3 "Peru to the World"', tipo:'unidad de area', semanas:5, area:'Social Studies'},
+          {periodo:3, nombre:'U3 - Ecosystems of Peru', tipo:'unidad de area', semanas:4, area:'Science'},
+          {periodo:4, nombre:'U.4 Sustainable Ica: History, Economy and Environment', tipo:'unidad de area', semanas:5, area:'Social Studies'},
+          {periodo:4, nombre:'U4 - Your Guide to Exploring Ica', tipo:'unidad de area', semanas:5, area:'English'},
+          {periodo:4, nombre:'P.4 Math "Fractions and Chance: Making Fair Decisions"', tipo:'unidad de area', semanas:5, area:'Math'}],
   unidades:[],
-  revisar:['El contenido de P4 en Science es desarrollo humano y pubertad y lo imparte el area '+
+  revisar:['DESAJUSTE GRANDE: en Toddle, el P4 de 4.o gira entero alrededor del viaje a ICA '+
+           '(«Sustainable Ica», «Your Guide to Exploring Ica», «Fractions and Chance»). Este '+
+           'arco de medida no recoge nada de eso. Antes de usarlo hay que rehacerlo sobre Ica o '+
+           'retirarlo.',
+           'El contenido de P4 en Science es desarrollo humano y pubertad y lo imparte el area '+
            'con su propio enfoque. El arco NO mide cuerpos: el dato personal que se registra es '+
            'rendimiento en PE, elegido por el nino. Esto no es un detalle de estilo, es la '+
            'condicion para que el proyecto sea aceptable.',
@@ -1435,8 +1493,12 @@ window.PROJECT_ARCS = {
   sad:{titulo:'Student Achievement Day #3',
     muestra:'El nino ensena su instrumento y su registro, y dice el pronostico que hizo y si '+
       'acerto. Un pronostico fallado bien explicado vale mas que uno acertado por suerte.'},
+  toddle:[{periodo:5, nombre:'U5 - Science · U5 - English · U5 - Social Studies · U5 - Math', tipo:'plantilla vacia', semanas:5, area:'las cuatro areas'}],
   unidades:[],
-  revisar:['La estacion necesita un sitio del colegio donde se pueda dejar el instrumento entre '+
+  revisar:['En Toddle, las cuatro unidades U5 de 4.o existen pero estan VACIAS: sin experiencias '+
+           'de aprendizaje ni evaluaciones. Son plantillas reservadas. P6 no existe. Este arco '+
+           'se sostiene solo sobre el plan anual en Excel.',
+           'La estacion necesita un sitio del colegio donde se pueda dejar el instrumento entre '+
            'clase y clase. Hay que pedirlo antes de P5, no en la semana 4.']
 },
 
@@ -1564,8 +1626,13 @@ window.PROJECT_ARCS = {
   sad:{titulo:'Student Achievement Day #1',
     muestra:'El alumno ensena su hipotesis original al lado de su conclusion y explica en que se '+
       'equivoco. Eso es lo que se le pide: no acertar, sino saber que le dijeron los datos.'},
+  toddle:[{periodo:1, nombre:'Project 1: Building our 5th Grade Territory!', tipo:'IDU', semanas:5, area:'Social Studies'},
+          {periodo:2, nombre:'PROJECT 2 - Life Systems: Everything is Connected', tipo:'IDU', semanas:5, area:'Social Studies +1'}],
   unidades:[],
-  revisar:['Pesar o contar la basura del colegio necesita permiso y guantes. Si no se puede, el '+
+  revisar:['El titulo sale de Toddle: «Project 1: Building our 5th Grade Territory!». Pero alli '+
+           'ese proyecto ocupa SOLO P1; P2 es otro con nombre propio, «Life Systems: Everything '+
+           'is Connected». El arco los junta.',
+           'Pesar o contar la basura del colegio necesita permiso y guantes. Si no se puede, el '+
            'conteo se limita al aula y se dice que es una muestra, no el colegio entero.',
            'El plan de 5.o marca "Solo son 5 semanitas" en P2: el arco ya cuenta 5, no 6.']
 },
@@ -1681,8 +1748,13 @@ window.PROJECT_ARCS = {
   sad:{titulo:'Student Achievement Day #2',
     muestra:'"My Scientific Journey": lo que sabia antes, lo que descubrio durante el viaje, las '+
       'evidencias recogidas y su nueva pregunta de investigacion.'},
+  toddle:[{periodo:4, nombre:'UNITS 4 & 5 - Discovering Sustainable Communities Through Science', tipo:'unidad de area', semanas:11, area:'Science'},
+          {periodo:5, nombre:'UNITS 4 & 5 - Discovering Sustainable Communities Through Science', tipo:'unidad de area', semanas:11, area:'Science'}],
   unidades:[{n:5, titulo:'Unidad 5 del portal'}],
-  revisar:['Este arco cruza el corte de trimestre: P4 cierra el 2.o y P5 abre el 3.o. Las notas '+
+  revisar:['Confirmado en Toddle: esta dado de alta como UNA sola unidad de once semanas, '+
+           '«UNITS 4 & 5 - Discovering Sustainable Communities Through Science». Es el unico '+
+           'proyecto del colegio que ya cruza dos periodos, y por eso es el modelo del resto.',
+           'Este arco cruza el corte de trimestre: P4 cierra el 2.o y P5 abre el 3.o. Las notas '+
            'del 2.o trimestre se ponen con el Research Proposal, no con el Science Fair.',
            'El Science Fair de la semana 11 tiene que estar en el calendario del colegio; hoy el '+
            'calendario solo marca "Shark tank? STEAM DAY?" con interrogante.']
@@ -1695,7 +1767,7 @@ window.PROJECT_ARCS = {
    claro: media programacion presentada como proyecto ensena menos que decir
    que ese periodo va suelto. */
 window.PROJECT_ARCS_SUELTOS = [
-  {grade:'g5', periodos:[3], titulo:'Peruvian History',
+  {grade:'g5', periodos:[3], titulo:'Peruvian History  ·  en Toddle: Project 3 - Peru\u2019s Heritage Through Food',
    motivo:'5.o dedica P3 a la historia del Peru (derechos del consumidor, publicidad, siglos y '+
      'epocas, Virreinato, Independencia) mientras Science va por cadenas troficas y fotosintesis. '+
      'No hay un cruce que aguante once semanas, y el arco del grado empieza en P4 con el viaje a '+
