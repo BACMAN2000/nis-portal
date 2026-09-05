@@ -1,0 +1,55 @@
+-- Aplicado en PROD (proyecto Supabase kjrppibltkbflvxmiyib) el 2026-09-05.
+-- 🔴 ALTA — un profesor sin permisos podia sobrescribir las notas de todos.
+--
+-- Salio revisando los 75 avisos de `multiple_permissive_policies`, que en
+-- realidad son 8 solapamientos (el linter los multiplica por rol y accion).
+-- Mirando las cuatro politicas de UPDATE de unit_submissions aparecio esto:
+--
+--   unit_sub_profesor_exhibe:  teacher_access.can_results
+--                           OR profiles.role IN ('admin','teacher')
+--
+-- El segundo OR es el problema. Existe para que el profesor pueda marcar una
+-- entrega como exhibida en la galeria (app.js: .update({shared}).eq('id',id)),
+-- pero una politica de UPDATE **no distingue columnas**: da permiso sobre la
+-- fila entera, incluidas nota, criterios y comentario.
+--
+-- Y no basta con que la lectura este cerrada. Un UPDATE con valor constante,
+-- sin WHERE ni RETURNING, no necesita leer, asi que la RLS de SELECT no lo
+-- frena. Comprobado simulando la sesion de un profesor SIN fila en
+-- teacher_access (Postgres 'authenticated' + claims del JWT, en transaccion
+-- abortada):
+--
+--   select  ->  0 entregas       (no ve ninguna)
+--   update  -> 83 entregas       (las sobrescribe todas)
+--
+-- Es alcanzable desde PostgREST: un PATCH a /rest/v1/unit_submissions con
+-- `Prefer: return=minimal` y un cuerpo de valores constantes.
+--
+-- La politica sobra: quien debe escribir ya esta cubierto.
+--   admin                          -> unit_sub_admin_califica  (is_admin())
+--   profesor con can_results       -> unit_sub_profesor_califica
+--   profesor sin teacher_access    -> no debe escribir; hoy ni siquiera ve
+--
+-- Consecuencia buscada: un profesor con fila en teacher_access pero
+-- can_results = false dejaria de poder marcar 'shared'. Hoy no hay ninguno
+-- (los cuatro lo tienen a true). Si algun dia hace falta ese caso, la forma
+-- correcta es una RPC que toque solo esa columna, no una politica de fila.
+
+drop policy if exists unit_sub_profesor_exhibe on public.unit_submissions;
+
+-- Verificado, contando filas que cada rol puede modificar a ciegas
+-- (`update ... set updated_at = now()` sin WHERE, en transaccion abortada):
+--
+--                          antes   despues
+--   admin                     83        83
+--   profesor con can_results  83        83
+--   profesor SIN acceso       83         0   <-- el agujero
+--   alumno                     0         0
+--
+-- De paso baja el solapamiento de UPDATE en esta tabla de 4 politicas a 3.
+--
+-- PENDIENTE, del mismo patron pero menos grave: `worksheets` (96 filas) y
+-- `reader_exam_access` (72) tambien dejan escribir a cualquier rol teacher sin
+-- exigir teacher_access. Ahi es defendible —son material y permisos de clase,
+-- no notas de alumnos— pero conviene decidirlo, no heredarlo. `fun_submissions`
+-- ya lo hace bien: exige teacher_access y da 0.

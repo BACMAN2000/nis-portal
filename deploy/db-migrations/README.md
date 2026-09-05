@@ -17,6 +17,7 @@ reaplicarlos en un entorno nuevo. Aplicar en orden por nombre de archivo.
 | 2026-09-05 | `2026-09-05_01_vistas_fun_a_invoker_y_entregas_otra_vez.sql` | 🔴 Crítica | `v_fun_metricas` y `v_fun_unidades` nacieron SECURITY DEFINER y legibles por `anon` (nombre, grado, sección y nota **sin sesión**), y `v_entregas_ficha` **volvió a ser DEFINER**: un `CREATE OR REPLACE VIEW` posterior se llevó el `security_invoker` que puso la migración del 29-ago. |
 | 2026-08-29 | `2026-08-29_04_arreglar_handle_new_user_columna_cefr_level.sql` | 🔴 Crítica | **El alta de usuarios estaba rota desde el 13-jul**: el trigger insertaba en una columna `level` inexistente. Ninguna cuenta creada en 60 días. |
 | 2026-09-05 | `2026-09-05_02_rendimiento_rls_auth_uid_y_fks.sql` | 🟡 Rendimiento | 39 políticas evaluaban `auth.uid()` una vez **por fila**; ahora va envuelta en subconsulta y se evalúa una vez por consulta. Más 8 índices en claves foráneas que no los tenían. No cambia quién ve qué: comprobado con la misma foto por rol antes y después. |
+| 2026-09-05 | `2026-09-05_03_unit_submissions_escritura_sin_ambito.sql` | 🔴 Alta | Un profesor **sin** fila en `teacher_access` no veía ninguna entrega pero podía **sobrescribir las 83** con un UPDATE de valor constante (sin WHERE ni RETURNING no hace falta leer). La política `unit_sub_profesor_exhibe` daba UPDATE de fila entera por tener rol `teacher`. |
 
 ## Pendientes (configuración de Supabase Auth — no es SQL)
 
