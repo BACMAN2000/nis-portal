@@ -85,7 +85,7 @@
 
 <script>
 /* ------------------------------------------------------------------ datos */
-const V = '1';
+const V = '2';
 let PAL = null, REGLAS = null, LEX = null;
 const $ = s => document.querySelector(s);
 
@@ -292,9 +292,20 @@ async function ficha(w, el){
   if(!e) return;
   const d = document.createElement('div');
   d.className='ficha';
-  d.innerHTML = (e.uk?'<span class="ipa">UK '+escapa(e.uk)+'</span> ':'') +
+  /* El nombre del mp3 sólo viaja en el JSON cuando lleva hash; el resto se
+     calcula aquí con la misma regex que usó el generador. */
+  const archivo = e.a || w.replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+  d.innerHTML = '<button class="btn sec cx-oir" title="Oír la palabra">🔊</button> ' +
+                (e.uk?'<span class="ipa">UK '+escapa(e.uk)+'</span> ':'') +
                 (e.us?'<span class="ipa">US '+escapa(e.us)+'</span>':'') +
                 (e.d?'<div>'+e.d.map(escapa).join(' · ')+'</div>':'');
+  const boton = d.querySelector('.cx-oir');
+  boton.onclick = ev => {
+    ev.stopPropagation();
+    const a = new Audio('lexicon-audio/uk/'+archivo+'.mp3');
+    a.onerror = ()=>{ boton.textContent='🔇'; boton.title='no hay audio de esta palabra'; };
+    a.play().catch(()=>{});
+  };
   el.appendChild(d);
 }
 
