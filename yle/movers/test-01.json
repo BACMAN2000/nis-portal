@@ -1,0 +1,1483 @@
+{
+  "level": "movers",
+  "number": 1,
+  "theme": "A day in the countryside",
+  "listening": {
+    "p1": {
+      "type": "draw_lines",
+      "image": "L1",
+      "scene": "A picnic in the park by a lake. Six people are doing different things near the big tree, the blanket and the water.",
+      "names": [
+        "Kim",
+        "Nick",
+        "Paul",
+        "Mary",
+        "Ben",
+        "Jane",
+        "Sally"
+      ],
+      "people": [
+        {
+          "id": "A",
+          "desc": "a girl with glasses reading a map"
+        },
+        {
+          "id": "B",
+          "desc": "a boy carrying a big bag of apples"
+        },
+        {
+          "id": "C",
+          "desc": "a man with a hat playing the guitar under the tree"
+        },
+        {
+          "id": "D",
+          "desc": "a woman taking photos with a camera"
+        },
+        {
+          "id": "E",
+          "desc": "a boy flying a kite near the lake"
+        },
+        {
+          "id": "F",
+          "desc": "a girl sitting on the blanket with a puppy"
+        }
+      ],
+      "example": {
+        "name": "Kim",
+        "person": "A"
+      },
+      "items": [
+        {
+          "name": "Nick",
+          "person": "B"
+        },
+        {
+          "name": "Paul",
+          "person": "C"
+        },
+        {
+          "name": "Mary",
+          "person": "D"
+        },
+        {
+          "name": "Ben",
+          "person": "E"
+        },
+        {
+          "name": "Jane",
+          "person": "F"
+        }
+      ]
+    },
+    "p2": {
+      "type": "note_taking",
+      "heading": "Going to the farm",
+      "example": {
+        "q": "Going to the farm by:",
+        "a": "bus"
+      },
+      "items": [
+        {
+          "q": "Name of the farm: Green …",
+          "a": "Lake"
+        },
+        {
+          "q": "Number of animals on the farm:",
+          "a": "46"
+        },
+        {
+          "q": "Children can give food to the:",
+          "a": "goats"
+        },
+        {
+          "q": "Picnic next to the:",
+          "a": "river"
+        },
+        {
+          "q": "Everybody must bring a:",
+          "a": "hat"
+        }
+      ]
+    },
+    "p3": {
+      "type": "match_letters",
+      "intro": "Mr Green is telling Jim about the people in his family and their favourite hobbies. What is each person's favourite hobby?",
+      "pictures": [
+        {
+          "letter": "A",
+          "word": "cooking",
+          "emoji": "🍳"
+        },
+        {
+          "letter": "B",
+          "word": "fishing",
+          "emoji": "🎣"
+        },
+        {
+          "letter": "C",
+          "word": "playing the guitar",
+          "emoji": "🎸"
+        },
+        {
+          "letter": "D",
+          "word": "swimming",
+          "emoji": "🏊"
+        },
+        {
+          "letter": "E",
+          "word": "reading",
+          "emoji": "📖"
+        },
+        {
+          "letter": "F",
+          "word": "riding a bike",
+          "emoji": "🚲"
+        },
+        {
+          "letter": "G",
+          "word": "taking photos",
+          "emoji": "📷"
+        },
+        {
+          "letter": "H",
+          "word": "dancing",
+          "emoji": "💃"
+        }
+      ],
+      "example": {
+        "who": "his sister",
+        "letter": "H"
+      },
+      "items": [
+        {
+          "who": "his grandmother",
+          "letter": "A"
+        },
+        {
+          "who": "his uncle",
+          "letter": "B"
+        },
+        {
+          "who": "his daughter",
+          "letter": "D"
+        },
+        {
+          "who": "his brother",
+          "letter": "F"
+        },
+        {
+          "who": "his cousin",
+          "letter": "G"
+        }
+      ]
+    },
+    "p4": {
+      "type": "mc_pictures",
+      "example": {
+        "q": "What does Fred want for lunch?",
+        "pics": [
+          "cake",
+          "pizza",
+          "sandwich"
+        ],
+        "options": [
+          "cake",
+          "pizza",
+          "a sandwich"
+        ],
+        "key": "B"
+      },
+      "items": [
+        {
+          "q": "What is Vicky wearing today?",
+          "pics": [
+            "dress",
+            "jacket",
+            "t-shirt"
+          ],
+          "options": [
+            "a dress",
+            "a jacket",
+            "a T-shirt"
+          ],
+          "key": "C"
+        },
+        {
+          "q": "What did Anna see at the zoo?",
+          "pics": [
+            "kangaroo",
+            "panda",
+            "dolphin"
+          ],
+          "options": [
+            "a kangaroo",
+            "a panda",
+            "a dolphin"
+          ],
+          "key": "A"
+        },
+        {
+          "q": "What is Jack doing now?",
+          "pics": [
+            {
+              "word": "cooking",
+              "emoji": "🍳"
+            },
+            {
+              "word": "sleeping",
+              "emoji": "😴"
+            },
+            {
+              "word": "reading",
+              "emoji": "📖"
+            }
+          ],
+          "options": [
+            "cooking",
+            "sleeping",
+            "reading"
+          ],
+          "key": "B"
+        },
+        {
+          "q": "How did Sam go to school this morning?",
+          "pics": [
+            "bus",
+            "bike",
+            "car"
+          ],
+          "options": [
+            "by bus",
+            "by bike",
+            "by car"
+          ],
+          "key": "B"
+        },
+        {
+          "q": "What did Mum buy at the shop?",
+          "pics": [
+            "carrot",
+            "potato",
+            "onion"
+          ],
+          "options": [
+            "carrots",
+            "potatoes",
+            "onions"
+          ],
+          "key": "C"
+        }
+      ]
+    },
+    "p5": {
+      "type": "colour_write",
+      "image": "L5",
+      "scene": "A picnic by a lake in the mountains. There is a tent, a big rock with a towel on it, a boy holding a fish, a girl with a kite, a dog with a ball, a boat on the lake and clouds above the tent.",
+      "example": {
+        "what": "the towel",
+        "where": "on the rock",
+        "colour": "orange"
+      },
+      "items": [
+        {
+          "what": "the boat",
+          "where": "on the lake",
+          "colour": "green"
+        },
+        {
+          "what": "the cloud",
+          "where": "above the tent",
+          "colour": "grey"
+        },
+        {
+          "what": "the fish",
+          "where": "in the boy's hand",
+          "colour": "purple"
+        },
+        {
+          "what": "the kite",
+          "where": "",
+          "write": "SUNNY"
+        },
+        {
+          "what": "the dog's ball",
+          "where": "next to the tent",
+          "colour": "brown"
+        }
+      ]
+    }
+  },
+  "rw": {
+    "p1": {
+      "type": "definitions_copy",
+      "words": [
+        "a farmer",
+        "a hospital",
+        "a bus",
+        "soup",
+        "a river",
+        "a lorry",
+        "a library",
+        "a mountain"
+      ],
+      "pics": {
+        "a farmer": "👨‍🌾",
+        "a hospital": "🏥",
+        "a bus": "🚌",
+        "soup": "🍲",
+        "a river": "🏞️",
+        "a library": "📚",
+        "a mountain": "⛰️",
+        "a lorry": "🚚"
+      },
+      "example": {
+        "def": "This is very high and people like to climb it.",
+        "word": "a mountain"
+      },
+      "items": [
+        {
+          "def": "This person works outside and grows vegetables and fruit.",
+          "word": "a farmer"
+        },
+        {
+          "def": "You go to this place when you are ill and you have to stay in bed.",
+          "word": "a hospital"
+        },
+        {
+          "def": "Lots of people can go to school or to work in this.",
+          "word": "a bus"
+        },
+        {
+          "def": "You eat this hot food with a spoon.",
+          "word": "soup"
+        },
+        {
+          "def": "You can find hundreds of books in this quiet place and read them there.",
+          "word": "a library"
+        }
+      ]
+    },
+    "p2": {
+      "type": "dialogue_mc3",
+      "speakerA": "Lily",
+      "speakerB": "Uncle Fred",
+      "example": {
+        "a": "Where did you go on Saturday, Uncle Fred?",
+        "options": [
+          "I went to the countryside.",
+          "I'm going by car.",
+          "I don't like Saturdays."
+        ],
+        "key": "A"
+      },
+      "items": [
+        {
+          "a": "Did you take your camera?",
+          "options": [
+            "Yes, I took lots of photos.",
+            "Yes, so do I.",
+            "Yes, that's mine."
+          ],
+          "key": "A"
+        },
+        {
+          "a": "What was the weather like?",
+          "options": [
+            "It's a sunny place.",
+            "It was cold and windy.",
+            "I like sunny weather."
+          ],
+          "key": "B"
+        },
+        {
+          "a": "Were there many animals?",
+          "options": [
+            "No, they weren't.",
+            "No, there weren't.",
+            "No, I wasn't."
+          ],
+          "key": "B"
+        },
+        {
+          "a": "I'd like to go there with you one day.",
+          "options": [
+            "That's a good idea!",
+            "That's fine, thanks.",
+            "That's my favourite."
+          ],
+          "key": "A"
+        },
+        {
+          "a": "Can we go next weekend?",
+          "options": [
+            "Yes, I can.",
+            "Let's ask your mum.",
+            "I went last week."
+          ],
+          "key": "B"
+        },
+        {
+          "a": "Shall I bring some sandwiches?",
+          "options": [
+            "Yes, they're great.",
+            "Yes, please do!",
+            "Yes, I brought them."
+          ],
+          "key": "B"
+        }
+      ]
+    },
+    "p3": {
+      "type": "gapped_text_title",
+      "words": [
+        "forest",
+        "boat",
+        "waterfall",
+        "quietly",
+        "tired",
+        "clever",
+        "carried",
+        "jumped",
+        "picnic"
+      ],
+      "text": "Last Sunday, Ben's class went for a walk in the __(0)__. Their teacher, Mr Hall, walked in front. 'Walk __(1)__,' he said. 'Then we can see the animals.' After an hour, they came to a river. There was an old wooden __(2)__ on the water. 'Don't go in it!' said Mr Hall. On the other side, the children heard a loud noise. It was a big __(3)__! The water fell down from the rocks into a small lake. The children sat on the rocks and ate their __(4)__. Ben found a small frog. It __(5)__ from his hand into the water and everybody laughed.",
+      "example": "forest",
+      "key": [
+        "quietly",
+        "boat",
+        "waterfall",
+        "picnic",
+        "jumped"
+      ],
+      "title_choices": [
+        "A day at the beach",
+        "Ben's day in the forest",
+        "The old boat"
+      ],
+      "title_key": "B"
+    },
+    "p4": {
+      "type": "mc_cloze",
+      "title": "Parrots",
+      "text": "Parrots are birds __(0)__ live in hot countries. They have got strong mouths and they __(1)__ eating fruit and vegetables. Many parrots are green, __(2)__ some are red, blue or yellow. Parrots are very clever. Some of them can say words and __(3)__ like people! A parrot can live for a very long time. Some live __(4)__ than sixty years. Parrots like to live __(5)__ their families and lots of other parrots.",
+      "example": {
+        "options": [
+          "which",
+          "who",
+          "what"
+        ],
+        "key": "A"
+      },
+      "items": [
+        {
+          "options": [
+            "likes",
+            "like",
+            "liking"
+          ],
+          "key": "B"
+        },
+        {
+          "options": [
+            "but",
+            "because",
+            "so"
+          ],
+          "key": "A"
+        },
+        {
+          "options": [
+            "talking",
+            "talked",
+            "talk"
+          ],
+          "key": "C"
+        },
+        {
+          "options": [
+            "long",
+            "longer",
+            "longest"
+          ],
+          "key": "B"
+        },
+        {
+          "options": [
+            "at",
+            "with",
+            "for"
+          ],
+          "key": "B"
+        }
+      ]
+    },
+    "p5": {
+      "type": "story_completion",
+      "title": "Daisy and the lost puppy",
+      "image": "R5",
+      "parts": [
+        {
+          "text": "Daisy lived in a small village near a big forest. Every morning, before school, she walked with her dog Rex along the road to the farm. Last Tuesday, it was raining and the road was very wet.",
+          "examples": [
+            {
+              "s": "Daisy's village was near a big ___.",
+              "a": "forest"
+            },
+            {
+              "s": "Daisy walked with Rex ___ every morning.",
+              "a": "to the farm"
+            }
+          ],
+          "items": [
+            {
+              "s": "Last Tuesday the weather was ___.",
+              "a": [
+                "rainy",
+                "wet",
+                "raining"
+              ]
+            },
+            {
+              "s": "The ___ was very wet.",
+              "a": [
+                "road"
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Suddenly, Rex stopped and started to bark. Daisy looked under a big rock and saw a small brown puppy. It was cold and afraid. 'Oh, poor puppy!' said Daisy. She picked it up and put it inside her coat.",
+          "items": [
+            {
+              "s": "Rex stopped and began to ___.",
+              "a": [
+                "bark"
+              ]
+            },
+            {
+              "s": "The puppy was hiding under a big ___.",
+              "a": [
+                "rock"
+              ]
+            },
+            {
+              "s": "Daisy put the puppy inside her ___ because it was cold.",
+              "a": [
+                "coat"
+              ]
+            }
+          ]
+        },
+        {
+          "text": "At the farm, the farmer's wife, Mrs Field, was looking for something. 'That's Brownie, our new puppy!' she said. 'He ran away this morning. Thank you, Daisy!' She gave Daisy a big bag of apples and Rex got some meat. Daisy was late for school, but she was very happy.",
+          "items": [
+            {
+              "s": "The puppy's name was ___.",
+              "a": [
+                "Brownie"
+              ]
+            },
+            {
+              "s": "Mrs Field gave Daisy a bag of ___.",
+              "a": [
+                "apples"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "p6": {
+      "type": "productive_writing",
+      "image": "R6",
+      "scene": "A park: a boy is flying a red kite, a girl is eating an ice cream on a seat, a man is reading a book under a tree, two dogs (one black, one white) are playing with a ball, a woman is pushing a pram with a baby, there are big trees and a lake with three ducks.",
+      "examples": [
+        {
+          "s": "The boy is flying a red ___.",
+          "a": "kite"
+        },
+        {
+          "q": "What is the girl eating?",
+          "a": "an ice cream"
+        }
+      ],
+      "complete": [
+        {
+          "s": "The man under the tree is reading a ___.",
+          "a": [
+            "book"
+          ]
+        },
+        {
+          "s": "One dog is black and the other dog is ___.",
+          "a": [
+            "white"
+          ]
+        }
+      ],
+      "answer": [
+        {
+          "q": "What is the woman pushing?",
+          "model": "She is pushing a pram with a baby (in it)."
+        },
+        {
+          "q": "Where are the ducks?",
+          "model": "They are on the lake. / They are in the water."
+        }
+      ],
+      "write": {
+        "n": 2,
+        "model": [
+          "Two dogs are playing with a ball on the grass.",
+          "There are some big trees in the park."
+        ]
+      }
+    }
+  },
+  "speaking": {
+    "p1": {
+      "type": "find_differences",
+      "image": "S1",
+      "scene": "Two pictures of the same kitchen. Left: the examiner's picture. Right: your picture.",
+      "examiner": "Look at the two pictures. Here the clock says three o'clock, but here it says four o'clock. What other differences can you see?",
+      "differences": [
+        "In your picture the cat is on the chair, but in my picture it is under the table.",
+        "In your picture there are two cups on the table, but in my picture there are three cups.",
+        "In your picture the window is open, but in my picture it is closed.",
+        "In your picture the boy has got a blue T-shirt, but in my picture it is green.",
+        "In your picture there is a bowl of apples, but in my picture there is a bowl of bananas."
+      ]
+    },
+    "p2": {
+      "type": "picture_sequence",
+      "title": "Sam and the kite",
+      "image": "S2",
+      "examiner_open": "These pictures show a story. It's called 'Sam and the kite'. Look at the pictures first. Sam is in the park with his new kite. It's a windy day and he is very happy. Now you tell the story.",
+      "frames": [
+        "Sam is in the park with his new red kite. It's very windy and the kite flies high in the sky.",
+        "Suddenly the wind is too strong. The string breaks and the kite flies away over the trees.",
+        "Sam runs after the kite. He finds it in a big tree, but it's too high. He is sad.",
+        "A tall man with a ladder helps Sam. He gets the kite down and Sam says 'Thank you!'"
+      ]
+    },
+    "p3": {
+      "type": "odd_one_out",
+      "sets": [
+        {
+          "pics": [
+            "bus",
+            "car",
+            "train",
+            "book"
+          ],
+          "odd": 3,
+          "reason": "You don't travel in a book. You read it."
+        },
+        {
+          "pics": [
+            "cat",
+            "chair",
+            "dog",
+            "rabbit"
+          ],
+          "odd": 1,
+          "reason": "A chair isn't an animal. You sit on it."
+        },
+        {
+          "pics": [
+            "t-shirt",
+            "jacket",
+            "dress",
+            "pizza"
+          ],
+          "odd": 3,
+          "reason": "You can't wear a pizza. You eat it."
+        },
+        {
+          "pics": [
+            "sandwich",
+            "pencil",
+            "pen",
+            "crayon"
+          ],
+          "odd": 0,
+          "reason": "You don't write with a sandwich. You eat it."
+        }
+      ]
+    },
+    "p4": {
+      "type": "personal_questions",
+      "topic": "your weekend",
+      "questions": [
+        {
+          "q": "What do you do at the weekend?",
+          "model": "I play football and I visit my grandparents."
+        },
+        {
+          "q": "Who do you play with?",
+          "model": "I play with my brother and my friends."
+        },
+        {
+          "q": "What did you do last weekend?",
+          "model": "I went to the park and I watched a film."
+        },
+        {
+          "q": "Do you like going to the countryside? Why?",
+          "model": "Yes, because I like animals and the fresh air."
+        },
+        {
+          "q": "Tell me about your favourite place.",
+          "model": "My favourite place is the beach. I swim and I play with the sand."
+        }
+      ]
+    }
+  },
+  "audio": {
+    "p1": [
+      [
+        "R",
+        "Part One. Look at the picture. Listen and look. There is one example."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "Mch",
+        "Look at this photo, Grandma. It's our picnic in the park last Sunday."
+      ],
+      [
+        "F",
+        "What a lovely day! Who's the girl with glasses? She's reading a map."
+      ],
+      [
+        "Mch",
+        "That's Kim. She wanted to walk to the waterfall."
+      ],
+      [
+        "F",
+        "She looks very clever!"
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Can you see the line? This is an example. Now you listen and draw lines."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "One."
+      ],
+      [
+        "F",
+        "And who's the boy carrying that big bag?"
+      ],
+      [
+        "Mch",
+        "That's Nick. The bag is full of apples. He picked them at the farm."
+      ],
+      [
+        "F",
+        "He's very strong!"
+      ],
+      [
+        "pause",
+        5
+      ],
+      [
+        "R",
+        "Two."
+      ],
+      [
+        "F",
+        "Is that man playing the guitar?"
+      ],
+      [
+        "Mch",
+        "Yes, under the tree. That's Paul, Kim's dad. He's wearing a hat because it was very sunny."
+      ],
+      [
+        "F",
+        "He plays very well."
+      ],
+      [
+        "pause",
+        5
+      ],
+      [
+        "R",
+        "Three."
+      ],
+      [
+        "Mch",
+        "Can you see the woman with the camera?"
+      ],
+      [
+        "F",
+        "The one taking photos of the lake?"
+      ],
+      [
+        "Mch",
+        "Yes. That's Mary, my teacher. She took hundreds of photos!"
+      ],
+      [
+        "pause",
+        5
+      ],
+      [
+        "R",
+        "Four."
+      ],
+      [
+        "F",
+        "Look at that boy near the water. What's he doing?"
+      ],
+      [
+        "Mch",
+        "He's flying his kite. That's Ben. It was a windy day, so the kite went very high."
+      ],
+      [
+        "F",
+        "Oh yes! I can see it."
+      ],
+      [
+        "pause",
+        5
+      ],
+      [
+        "R",
+        "Five."
+      ],
+      [
+        "F",
+        "And the girl on the blanket? She's got a puppy!"
+      ],
+      [
+        "Mch",
+        "That's Jane. The puppy is called Rex. He's only two months old."
+      ],
+      [
+        "F",
+        "He's so sweet!"
+      ],
+      [
+        "pause",
+        5
+      ],
+      [
+        "R",
+        "Now listen to Part One again."
+      ]
+    ],
+    "p2": [
+      [
+        "R",
+        "Part Two. Listen and look. There is one example."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "F",
+        "Listen, children. Next Friday we're going to the farm."
+      ],
+      [
+        "Mch",
+        "Great, Miss Green! Are we going by train?"
+      ],
+      [
+        "F",
+        "No, we're going by bus. It leaves at nine o'clock."
+      ],
+      [
+        "Mch",
+        "By bus. OK!"
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Can you see the answer? Now you listen and write."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "One."
+      ],
+      [
+        "Mch",
+        "What's the farm called, Miss Green?"
+      ],
+      [
+        "F",
+        "It's called Green Lake Farm."
+      ],
+      [
+        "Mch",
+        "Green what?"
+      ],
+      [
+        "F",
+        "Lake. L-A-K-E. There's a big lake next to it."
+      ],
+      [
+        "Mch",
+        "L-A-K-E. OK."
+      ],
+      [
+        "pause",
+        8
+      ],
+      [
+        "R",
+        "Two."
+      ],
+      [
+        "Mch",
+        "Are there lots of animals at the farm?"
+      ],
+      [
+        "F",
+        "Yes. The farmer says there are forty-six animals: cows, sheep, goats and horses."
+      ],
+      [
+        "Mch",
+        "Forty-six! That's a lot."
+      ],
+      [
+        "F",
+        "Yes, and they all need food every day."
+      ],
+      [
+        "pause",
+        8
+      ],
+      [
+        "R",
+        "Three."
+      ],
+      [
+        "Mch",
+        "Can we give food to the cows?"
+      ],
+      [
+        "F",
+        "No, the cows are too big. But we can give food to the goats. They love carrots."
+      ],
+      [
+        "Mch",
+        "The goats. Brilliant!"
+      ],
+      [
+        "pause",
+        8
+      ],
+      [
+        "R",
+        "Four."
+      ],
+      [
+        "Mch",
+        "Where are we going to have our picnic?"
+      ],
+      [
+        "F",
+        "Next to the river. There are some tables under the trees there."
+      ],
+      [
+        "Mch",
+        "Next to the river. Can we swim?"
+      ],
+      [
+        "F",
+        "No, the water is too cold!"
+      ],
+      [
+        "pause",
+        8
+      ],
+      [
+        "R",
+        "Five."
+      ],
+      [
+        "Mch",
+        "What do we need to bring?"
+      ],
+      [
+        "F",
+        "Your lunch and a hat. It's going to be very sunny."
+      ],
+      [
+        "Mch",
+        "A hat. OK, I've got a big blue one."
+      ],
+      [
+        "F",
+        "Perfect."
+      ],
+      [
+        "pause",
+        8
+      ],
+      [
+        "R",
+        "Now listen to Part Two again."
+      ]
+    ],
+    "p3": [
+      [
+        "R",
+        "Part Three. Listen and look. There is one example."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Mr Green is telling Jim about the people in his family and their favourite hobbies. What is each person's favourite hobby?"
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "Mch",
+        "Hello, Mr Green. Is that your sister in the photo?"
+      ],
+      [
+        "M",
+        "Yes, that's my sister. She loves dancing. She goes to a dance class every Saturday evening and she never stops moving!"
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Can you see the letter H? Now you listen and write a letter in each box."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "Mch",
+        "And who's the old lady?"
+      ],
+      [
+        "M",
+        "That's my grandmother. She's eighty-two, but she still makes dinner for all the family every Sunday. Cooking is her favourite hobby. Her soup is the best in the world!"
+      ],
+      [
+        "Mch",
+        "Mmm, I love soup."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "M",
+        "This is my uncle. He lives next to a river and he goes there every morning with his boat."
+      ],
+      [
+        "Mch",
+        "Does he catch a lot of fish?"
+      ],
+      [
+        "M",
+        "Sometimes! Fishing is the thing he likes most. He can sit quietly for hours."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "Mch",
+        "Is that girl your daughter?"
+      ],
+      [
+        "M",
+        "Yes, she's ten. She goes to the pool three times a week. She can swim really fast, on her front and on her back. She wants to be a swimming teacher."
+      ],
+      [
+        "Mch",
+        "Wow!"
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "M",
+        "And here's my brother. He's got a new bike and he rides it in the mountains every weekend."
+      ],
+      [
+        "Mch",
+        "Isn't that difficult?"
+      ],
+      [
+        "M",
+        "Yes, but he loves it. Riding his bike is his favourite thing in the world."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "Mch",
+        "And who's this?"
+      ],
+      [
+        "M",
+        "That's my cousin. He's always got his camera with him. He takes photos of birds, flowers, the lake… everything! Taking photos is his hobby."
+      ],
+      [
+        "Mch",
+        "They're beautiful photos."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Now listen to Part Three again."
+      ]
+    ],
+    "p4": [
+      [
+        "R",
+        "Part Four. Look at the pictures. Listen and look. There is one example."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "What does Fred want for lunch?"
+      ],
+      [
+        "F",
+        "Fred, what would you like for lunch? A sandwich?"
+      ],
+      [
+        "Mch",
+        "No thanks, Mum. Can I have some pizza?"
+      ],
+      [
+        "F",
+        "Pizza again! All right. And a piece of cake after."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Can you see the tick? Now you listen and tick the box."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "One. What is Vicky wearing today?"
+      ],
+      [
+        "Mch",
+        "Vicky, are you wearing your new dress to the party?"
+      ],
+      [
+        "Fch",
+        "No, it's too hot for a dress. I'm wearing my yellow T-shirt."
+      ],
+      [
+        "Mch",
+        "And your jacket?"
+      ],
+      [
+        "Fch",
+        "No! It's summer!"
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Two. What did Anna see at the zoo?"
+      ],
+      [
+        "M",
+        "Did you see the pandas at the zoo, Anna?"
+      ],
+      [
+        "Fch",
+        "No, Dad. The pandas were sleeping. But I saw a kangaroo! It was jumping."
+      ],
+      [
+        "M",
+        "And the dolphins?"
+      ],
+      [
+        "Fch",
+        "There aren't any dolphins at that zoo."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Three. What is Jack doing now?"
+      ],
+      [
+        "F",
+        "Where's Jack? Is he reading in his room?"
+      ],
+      [
+        "M",
+        "No, he's sleeping. He was very tired after football."
+      ],
+      [
+        "F",
+        "Sleeping? But it's only six o'clock! I'm cooking his dinner."
+      ],
+      [
+        "M",
+        "Let him sleep for an hour."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Four. How did Sam go to school this morning?"
+      ],
+      [
+        "F",
+        "Did you go to school by bus this morning, Sam?"
+      ],
+      [
+        "Mch",
+        "No, Mum. The bus was late, so I went by bike."
+      ],
+      [
+        "F",
+        "By bike? Dad wanted to take you in the car."
+      ],
+      [
+        "Mch",
+        "I know, but I was quicker!"
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Five. What did Mum buy at the shop?"
+      ],
+      [
+        "Mch",
+        "Mum, did you buy carrots for the soup?"
+      ],
+      [
+        "F",
+        "No, they didn't have any. And there weren't any potatoes."
+      ],
+      [
+        "Mch",
+        "So what did you buy?"
+      ],
+      [
+        "F",
+        "Onions. Lots of onions!"
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Now listen to Part Four again."
+      ]
+    ],
+    "p5": [
+      [
+        "R",
+        "Part Five. Look at the picture. Listen and look. There is one example."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "M",
+        "Can you colour this picture of the picnic by the lake?"
+      ],
+      [
+        "Fch",
+        "Yes! Can I colour the towel on the rock?"
+      ],
+      [
+        "M",
+        "Good idea. Colour it orange."
+      ],
+      [
+        "Fch",
+        "OK, the towel is orange."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Can you see the orange towel? This is an example. Now you listen and colour and write."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "One."
+      ],
+      [
+        "M",
+        "Now, can you see the boat on the lake?"
+      ],
+      [
+        "Fch",
+        "Yes, the small one near the boy."
+      ],
+      [
+        "M",
+        "Colour it green, please."
+      ],
+      [
+        "Fch",
+        "A green boat. OK!"
+      ],
+      [
+        "pause",
+        10
+      ],
+      [
+        "R",
+        "Two."
+      ],
+      [
+        "Fch",
+        "Can I colour a cloud now?"
+      ],
+      [
+        "M",
+        "Yes. Colour the cloud above the tent. Make it grey, like a rainy cloud."
+      ],
+      [
+        "Fch",
+        "Grey. That's a good idea."
+      ],
+      [
+        "pause",
+        10
+      ],
+      [
+        "R",
+        "Three."
+      ],
+      [
+        "M",
+        "Look at the boy. He's got a fish in his hand!"
+      ],
+      [
+        "Fch",
+        "Shall I colour the fish?"
+      ],
+      [
+        "M",
+        "Yes, please. Colour it purple."
+      ],
+      [
+        "Fch",
+        "A purple fish! That's funny."
+      ],
+      [
+        "pause",
+        10
+      ],
+      [
+        "R",
+        "Four."
+      ],
+      [
+        "Fch",
+        "Can I do some writing too?"
+      ],
+      [
+        "M",
+        "Yes. Can you see the girl's kite? Write the word 'sunny' on it. S-U-N-N-Y."
+      ],
+      [
+        "Fch",
+        "Sunny. On the kite. OK!"
+      ],
+      [
+        "pause",
+        10
+      ],
+      [
+        "R",
+        "Five."
+      ],
+      [
+        "M",
+        "And now the dog's ball. Can you see it next to the tent?"
+      ],
+      [
+        "Fch",
+        "Yes. Can I colour it red?"
+      ],
+      [
+        "M",
+        "No, colour it brown, please."
+      ],
+      [
+        "Fch",
+        "OK, brown. Finished!"
+      ],
+      [
+        "M",
+        "Well done!"
+      ],
+      [
+        "pause",
+        10
+      ],
+      [
+        "R",
+        "Now listen to Part Five again."
+      ]
+    ]
+  }
+}

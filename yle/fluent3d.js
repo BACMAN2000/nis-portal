@@ -14,8 +14,8 @@ function pic3d(emoji, size){
   const tw = `https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/${cps}.svg`;
   const p = FLUENT3D[emoji];
   const s = size || 72;
-  if(p) return `<img src="${FLUENT_CDN}${encodeURI(p)}" alt="${emoji}" loading="lazy" width="${s}" height="${s}" onerror="this.onerror=function(){this.outerHTML='<span class=\'emoji\'>${emoji}</span>'};this.src='${tw}'">`;
-  return `<img src="${tw}" alt="${emoji}" loading="lazy" width="${s}" height="${s}" onerror="this.outerHTML='<span class=\'emoji\'>${emoji}</span>';">`;
+  if(p) return `<img src="${FLUENT_CDN}${encodeURI(p)}" alt="${emoji}" loading="lazy" width="${s}" height="${s}" onerror="this.onerror=function(){this.outerHTML='<span class=\\'emoji\\'>${emoji}</span>'};this.src='${tw}'">`;
+  return `<img src="${tw}" alt="${emoji}" loading="lazy" width="${s}" height="${s}" onerror="this.outerHTML='<span class=\\'emoji\\'>${emoji}</span>';">`;
 }
 function wordEmoji(w){
   const k = String(w).toLowerCase().replace(/^a |^an |^the /,'').replace(/[.,;]/g,'').trim();
