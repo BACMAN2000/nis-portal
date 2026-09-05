@@ -359,6 +359,18 @@ function pizarraBody(){ return `
     <a class="btn" href="pizarra.html?v=2" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Abrir en pantalla completa ↗</a>
   </div>
   <iframe src="pizarra.html?v=2" title="Pizarra" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#2b2f3a"></iframe>`; }
+/* ✍️ Corrector de material — revisa la ficha ANTES de publicarla: ortografía,
+   mezcla de inglés británico y americano, y los calcos del hispanohablante
+   ("explain me", "discuss about", "I have 12 years") que ningún corrector
+   normal marca, porque son palabras bien escritas. Vive en corrector.html y
+   trabaja entero en el navegador contra el léxico propio: lo que el profesor
+   escribe no se manda a ningún sitio. */
+function correctorBody(){ return `
+  <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
+    <div class="muted" style="flex:1;min-width:220px">Pega una ficha, un examen o un worksheet y compruébalo antes de publicarlo. Se revisa en tu navegador: el texto no sale de esta pantalla.</div>
+    <a class="btn" href="corrector.html?v=1" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Abrir en pantalla completa ↗</a>
+  </div>
+  <iframe src="corrector.html?v=1" title="Corrector de material" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#f2f3ff"></iframe>`; }
 /* 🧩 Use of English — la app B2 (First, Part 1: multiple-choice cloze). Es la
    misma que ve el alumno en Classes > 9.º > Cambridge; aqui el admin la revisa.
    Se corrige sola en el navegador y no guarda intentos en Supabase. */
@@ -1053,6 +1065,7 @@ async function renderAdmin(tab='users'){
       {key:'funaccess',label:'🔐 Unidades por grado'},
       {key:'materiales',label:'📄 Materiales de clase'},
       {key:'pizarra',label:'📝 Pizarra'},
+      {key:'corrector',label:'✍️ Corrector de material'},
       {key:'library',label:'📚 Library'},
     ]},
     // Todo lo del examen junto: los dos candados (Mocks / Practice, que antes
@@ -1118,6 +1131,7 @@ async function renderAdmin(tab='users'){
   if(tab==='honesty') return antiCheatPanel();
   if(tab==='uoe') return $('#main').innerHTML = useOfEnglishBody();
   if(tab==='pizarra') return $('#main').innerHTML = pizarraBody();
+  if(tab==='corrector') return $('#main').innerHTML = correctorBody();
   if(tab==='cambridgeinfo') return $('#main').innerHTML = cambridgeInfoBody();
   if(tab==='cambridgehub') return studentCambridgePortal();
   if(tab==='studyplan') return studyPlanPanel();
@@ -2949,6 +2963,7 @@ async function renderTeacher(tab){
   if(teacherAllowedGrades().length) ensenanza.push({key:'funaccess',label:'🔐 Unidades por grado'});
   ensenanza.push({key:'littlereaders',label:'🧒 Little Readers'});
   ensenanza.push({key:'pizarra',label:'📝 Pizarra'});
+  ensenanza.push({key:'corrector',label:'✍️ Corrector de material'});
   examenes.push({key:'cambridgehub',label:'🎓 YLE + Main Suite'});
   if(teacherAllowedGrades().length) examenes.push({key:'yle',label:'🛡️ Panel YLE'});
   examenes.push({key:'exams',label:'🎧 Exámenes'});
@@ -3013,6 +3028,7 @@ async function renderTeacher(tab){
   if(active==='cambridgehub') return studentCambridgePortal();
   if(active==='uoe') return $('#main').innerHTML = useOfEnglishBody();
   if(active==='pizarra') return $('#main').innerHTML = pizarraBody();
+  if(active==='corrector') return $('#main').innerHTML = correctorBody();
   if(active==='cambridgeinfo') return $('#main').innerHTML = cambridgeInfoBody();
   $('#main').innerHTML = `<div class="card">El administrador aún no te ha asignado accesos. Escríbele para que te habilite <b>Resultados</b> o <b>Alumnos</b>.</div>`;
 }

@@ -1,0 +1,4 @@
+# El diccionario del corrector se parte por \n en el navegador: si Windows lo
+# guarda con CRLF, cada palabra arrastra un retorno de carro y deja de
+# reconocerse hasta 'the'.
+lexicon/words.txt text eol=lf
