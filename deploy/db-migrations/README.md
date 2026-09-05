@@ -18,6 +18,7 @@ reaplicarlos en un entorno nuevo. Aplicar en orden por nombre de archivo.
 | 2026-08-29 | `2026-08-29_04_arreglar_handle_new_user_columna_cefr_level.sql` | 🔴 Crítica | **El alta de usuarios estaba rota desde el 13-jul**: el trigger insertaba en una columna `level` inexistente. Ninguna cuenta creada en 60 días. |
 | 2026-09-05 | `2026-09-05_02_rendimiento_rls_auth_uid_y_fks.sql` | 🟡 Rendimiento | 39 políticas evaluaban `auth.uid()` una vez **por fila**; ahora va envuelta en subconsulta y se evalúa una vez por consulta. Más 8 índices en claves foráneas que no los tenían. No cambia quién ve qué: comprobado con la misma foto por rol antes y después. |
 | 2026-09-05 | `2026-09-05_03_unit_submissions_escritura_sin_ambito.sql` | 🔴 Alta | Un profesor **sin** fila en `teacher_access` no veía ninguna entrega pero podía **sobrescribir las 83** con un UPDATE de valor constante (sin WHERE ni RETURNING no hace falta leer). La política `unit_sub_profesor_exhibe` daba UPDATE de fila entera por tener rol `teacher`. |
+| 2026-09-05 | `2026-09-05_04_worksheets_y_reader_exam_exigen_teacher_access.sql` | 🟠 Media | Mismo patrón que la anterior en las dos tablas que quedaban: un profesor sin grados asignados podía modificar las 96 fichas y los 72 permisos de examen. Ahora exigen fila en `teacher_access`, conservando `is_admin()` porque los admin no están en esa tabla. |
 
 ## Pendientes (configuración de Supabase Auth — no es SQL)
 
