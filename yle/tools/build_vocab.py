@@ -38,6 +38,7 @@ RENOMBRA = {
 # palabra: [emoji o None (= mapa de fluent3d), tema, ejemplo, español]
 STARTERS = {
  "a lot of": ["💬","expressions","There are a lot of fish in the sea.","muchos, muchas"],
+ "about": ["💬","expressions","This book is about animals.","sobre, acerca de"],
  "alex": ["🧒","names","Alex is seven years old.","Alex (nombre de niño o niña)"],
  "alice": ["👧","names","Alice has got a red bag.","Alice (nombre de niña)"],
  "alien": ["👽","world","The alien is green and has got three eyes.","extraterrestre"],
@@ -264,6 +265,7 @@ MOVERS = {
 
 FLYERS = {
  "a few": ["💬","expressions","I've got a few coins in my pocket.","unos pocos"],
+ "a.m.": ["⏰","time","School starts at eight a.m.","de la mañana (antes del mediodía)"],
  "actor": ["🎭","work","My uncle is an actor.","actor"],
  "anywhere": ["🗺️","expressions","I can't find my glove anywhere.","en ningún sitio; en cualquier sitio"],
  "at the moment": ["⏱️","time","I'm doing my homework at the moment.","en este momento"],
@@ -290,12 +292,14 @@ FLYERS = {
  "disappear": ["🫥","actions","The rabbit disappeared into the hat!","desaparecer"],
  "eagle": ["🦅","animals","An eagle is flying over the mountains.","águila"],
  "emma": ["👧","names","Emma is learning to ski.","Emma (nombre de niña)"],
+ "engine": ["⚙️","transport","The train engine is very big.","motor; locomotora"],
  "environment": ["🌱","world","We must look after the environment.","medio ambiente"],
  "exit": ["🚪","places","The exit is next to the shop.","salida"],
  "extinct": ["🦕","world","Dinosaurs are extinct.","extinto"],
  "factory": ["🏭","places","My father works in a factory.","fábrica"],
  "fall over": ["🤸","actions","I fell over on the ice.","caerse"],
  "fetch": ["🐕","actions","The dog can fetch the ball.","ir a buscar, traer"],
+ "file": ["📁","tech","Open the file on the computer.","archivo"],
  "fire fighter": ["🧑‍🚒","work","The fire fighter climbed the ladder.","bombero"],
  "fire station": ["🚒","places","The fire station is on this road.","estación de bomberos"],
  "foggy": ["🌫️","world","It's foggy this morning.","con niebla"],
@@ -342,6 +346,7 @@ FLYERS = {
  "octopus": ["🐙","animals","An octopus has got eight arms.","pulpo"],
  "office": ["🏢","work","Mum works in an office.","oficina"],
  "online": ["🌐","tech","We play games online.","en línea"],
+ "p.m.": ["⏰","time","The film starts at eight p.m.","de la tarde, de la noche"],
  "passenger": ["🧳","transport","The passengers are getting on the train.","pasajero"],
  "photographer": ["📷","work","The photographer took our picture.","fotógrafo"],
  "piece": ["🍰","food","Can I have a piece of cake?","trozo, pedazo"],
@@ -434,7 +439,7 @@ def build(level):
         if w not in d: continue
         e, t, ex, es = d[w]
         assert t in THEMES, (w, t)
-        mostrar = titulo(w) if t in ('names', 'time') and w not in ("o'clock", 'zero', 'soon', 'end', 'at the moment', 'in a minute') else w
+        mostrar = titulo(w) if t in ('names', 'time') and w not in ("o'clock", 'zero', 'soon', 'end', 'at the moment', 'in a minute', 'a.m.', 'p.m.') else w
         row = {'w': mostrar, 'k': w, 'e': e, 't': t, 'ex': ex, 'es': es, 's': slug(w)}
         if e in GENERIC or t in ('names', 'expressions'): row['p'] = False
         out.append(row)
