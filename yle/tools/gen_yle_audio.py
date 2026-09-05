@@ -104,7 +104,7 @@ def silencio(seg):
 
 
 def monta(evs, out, voces):
-    lista = os.path.join(CACHE, '_lista.txt')
+    lista = os.path.join(CACHE, '_lista_%s.txt' % os.path.basename(out).replace('.mp3', ''))
     with open(lista, 'w', encoding='utf-8') as f:
         for e in evs:
             p = seg_path(e[1], e[2], voces) if e[0] == 'say' else silencio(e[1])

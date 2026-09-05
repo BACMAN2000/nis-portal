@@ -112,6 +112,7 @@ def vocabulario(level):
     for l in ORDEN[:ORDEN.index(level) + 1]:
         for w in WL[l]:
             for forma in expande(w):
+                forma = forma.replace('’', "'")   # o’clock -> o'clock
                 v.add(forma)
                 v.update(forma.split())   # 'ice cream' permite tambien 'ice' y 'cream'
     return v | EXTRA
@@ -131,6 +132,7 @@ def bases(lw):
     for b in list(out):                      # running -> run, bigger -> big
         if len(b) > 2 and b[-1] == b[-2]:
             out.add(b[:-1])
+    out.add(lw + 's'); out.add(lw + 'es')    # la lista trae 'boots', el texto dice 'boot'
     return out
 
 def textos_rw(t):
