@@ -3623,6 +3623,11 @@ const ENGLISH_AREAS = [
   // -- pero a cinco clics: English > Classes > etapa > grado > Units > unidad.
   // Lo que ordena el curso tiene que verse antes que lo que lo mide.
   {emoji:'🎯', title:'My unit',       desc:'Your project this term: the big question, what you will produce, and how it is marked.', nav:'myunit', node:'english.classes'},
+  // Y el proyecto del trimestre justo detras: la unidad es una parte de el.
+  // Silvia pregunto donde estaban los proyectos y la respuesta honesta era
+  // que existian pero no se veian. Once semanas de trabajo no pueden vivir
+  // dentro de una pagina de unidad a la que se llega por cinco clics.
+  {emoji:'🧩', title:'My project',    desc:'The interdisciplinary project of this term: eleven weeks, and every subject pulling the same way.', nav:'projects', node:'english.classes', when:_verProyectos},
   {emoji:'🎙️', title:'Pronunciation', desc:'Listen to each sound, watch the tongue and airflow, and practise.', nav:'coach',    node:'english.pronunciation'},
   {emoji:'🎓', icon:'main', title:'Cambridge', desc:'YLE and Main Suite: the official Cambridge route from Pre-A1 to C2, with practice tests.', nav:'cambridge', node:'english.cambridge'},
   {emoji:'🎓', title:'Mocks',         desc:'Official MOCK 1 and MOCK 2 exams by skill.',        nav:'mocks'},
@@ -4352,7 +4357,8 @@ function studentSubject(key){
     return;
   }
   const title = isEn ? '🇬🇧 English' : '🇫🇷 French';
-  const areas = isEn ? ENGLISH_AREAS : ENGLISH_AREAS.filter(a=>!a.englishOnly);
+  const areas = (isEn ? ENGLISH_AREAS : ENGLISH_AREAS.filter(a=>!a.englishOnly))
+    .filter(a=>!a.when || a.when());
   const cards = areas.map(a=>{
     if(!isEn) return _soonCard(a.emoji,a.title,a.desc);
     // Cambridge trae su dibujo 3D (cambridge-icons.js) en lugar de emoji.
@@ -4462,6 +4468,7 @@ function studentGrade(key){
   $('#main').innerHTML=`${back}<h1>${emoji} ${label}</h1>
     <p class="muted" style="margin-top:-6px">${label} material.</p>
     <div class="grid cols-2" style="margin-top:12px">
+      ${arcsFor(key).length ? _hubCard('🧩','Project','The interdisciplinary project of the term: the essential question, the eleven-week map and what every subject contributes.',"location.href='"+_withBack('project.html?arc='+(arcoActual(key)||arcsFor(key)[0][0]),route)+"'") : ''}
       ${unitPlansFor(key).length ? (nodeVisible(unitsNode(key)) ? _hubCard('🎯','Units','Your units this year: the final product, the rubric from day one, and the week-by-week practice that feeds it.',"window._nav('classes_"+key+"_units')") : _lockedCard('🎯','Units','Your units and their final products.')) : ''}
       ${_isPrimaryGrade(key) ? '' : (nodeVisible(base+'.grammar') ? _skillCard('📝','Grammar','Grammar for '+label+': explanations and games by unit.',_withBack('grammar.html?grade='+key,route)) : _lockedCard('📝','Grammar','Grammar for '+label+'.'))}
       ${nodeVisible(base+'.activities') ? _hubCard('🎲','Activities',_isPrimaryGrade(key)?'Games for each unit — with audio for young learners.':'Games by unit and by level: crosswords, word searches and more.',"window._nav('classes_"+key+"_act')") : _lockedCard('🎲','Activities','Games and activities.')}
@@ -4840,6 +4847,7 @@ function _navRender(k){
   if(k==='fr_classes')                   { studentFrenchClasses();     return true; }
   if(k==='fr_cefr')                      { studentFrenchCefr();        return true; }
   if(k==='myunit')            { irAMiUnidad();              return true; }
+  if(k==='projects')          { irAMisProyectos();          return true; }
   if(k==='classes_primary')   { studentStage('primary');   return true; }
   if(k==='classes_secondary') { studentStage('secondary'); return true; }
   if(m=/^classes_(g\d+)_unit_([a-z0-9]+)$/.exec(k)){ studentGradeUnit(m[1],m[2]); return true; }
@@ -5977,6 +5985,41 @@ window.unitCriterio = async function(id, crit, valor){
 function unitsNode(grade){
   return 'english.classes.'+grade+(grade==='g9' ? '.unit5' : '.units');
 }
+/* ---------- Arcos de proyecto (project-arcs.js) ----------
+   Un arco es el proyecto interdisciplinario del trimestre: once o doce
+   semanas sobre dos periodos seguidos del calendario. El colegio ya llama
+   "Project" a cada periodo; el arco declara que dos de ellos son uno solo.
+   La pagina es project.html y el contenido por area lo lee del volcado del
+   Annual Plan, no de aqui. */
+function arcsFor(grade){
+  const A = window.PROJECT_ARCS || {};
+  return Object.keys(A).filter(k=>A[k].grade===grade)
+    .sort((x,y)=>A[x].periodos[0]-A[y].periodos[0]).map(k=>[k,A[k]]);
+}
+/* El arco que esta corriendo hoy. Si estamos entre trimestres no hay ninguno
+   y se devuelve null: mejor el indice del grado que abrir uno que ya cerro. */
+function arcoActual(grade){
+  const hoy = new Date().toISOString().slice(0,10);
+  const par = arcsFor(grade).filter(([,a])=>a.inicio<=hoy && hoy<=a.fin);
+  return par.length ? par[0][0] : null;
+}
+function _miGradoKey(){ const p=state.profile||{}; return p.grade_id ? 'g'+p.grade_id : null; }
+/* La tarjeta solo aparece si hay algo detras: alumno de un grado con arco, o
+   profesor y admin, que ven el indice completo. */
+function _verProyectos(){
+  if(!_isStudent()) return Object.keys(window.PROJECT_ARCS||{}).length>0;
+  const k=_miGradoKey(); return !!(k && arcsFor(k).length);
+}
+function irAMisProyectos(){
+  const key=_miGradoKey();
+  if(_isStudent() && key){
+    const hoy = arcoActual(key);
+    location.href = _withBack(hoy ? 'project.html?arc='+hoy : 'project.html?grade='+key, 'projects');
+    return;
+  }
+  location.href = _withBack(key && arcsFor(key).length ? 'project.html?grade='+key : 'project.html', 'projects');
+}
+
 function unitPlansFor(grade){
   const p = (window.UNIT_PLANS||{})[grade];
   return (p && p.units) ? p.units : [];
