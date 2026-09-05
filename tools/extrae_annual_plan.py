@@ -6,7 +6,11 @@ Cada hoja es un grado y la matriz es fila = semana, columna = area. Este
 script NO interpreta nada: copia el texto tal cual esta escrito, y le pega
 el numero de periodo y las semanas reales del Primary Calendar 2026.
 
-Uso:  python tools/extrae_annual_plan.py <ruta al xlsx> [salida.json]
+1.o no esta en ese Excel: su matriz vive dentro de "EY_Assessment Criteria_G1.xlsx"
+(hoja "Annual Plan"), porque 1.o pertenece a Early Years. Se pasa como segundo
+argumento y sale en el mismo JSON.
+
+Uso:  python tools/extrae_annual_plan.py <Annual Plan Primary.xlsx> [EY_Criteria_G1.xlsx] [salida.json]
 """
 import json, re, sys, unicodedata
 from pathlib import Path
@@ -29,7 +33,7 @@ AREAS = {
     'tutoria': 'tutoria', 'math': 'math', 'english': 'english',
     'social': 'social', 'comunicacion': 'comunicacion', 'science': 'science',
     'art': 'art', 'music': 'music', 'drama': 'drama', 'pe': 'pe',
-    'spiritual history': 'spiritual',
+    'spiritual history': 'spiritual', 'sh': 'spiritual',
 }
 
 def norm(s):
@@ -51,11 +55,11 @@ def limpia(v):
             out.append(t)
     return out
 
-def cabecera(ws):
-    """Fila 2: devuelve {columna -> area}. La columna sin titulo hereda la
-    anterior (2.o tiene una segunda columna de Math sin cabecera)."""
+def cabecera(ws, fila=2):
+    """Fila de cabecera: devuelve {columna -> area}. La columna sin titulo
+    hereda la anterior (2.o tiene una segunda columna de Math sin cabecera)."""
     cols, ultima = {}, None
-    for c in ws[2]:
+    for c in ws[fila]:
         t = norm(c.value or '')
         if t in AREAS:
             cols[c.column] = AREAS[t]
@@ -64,13 +68,13 @@ def cabecera(ws):
             cols[c.column] = ultima
     return cols
 
-def hoja(ws):
-    cols = cabecera(ws)
+def hoja(ws, cab=2, grado_fijo=None):
+    cols = cabecera(ws, cab)
     if not cols:
         return None
     grado = re.search(r'\d+', ws.title)
     filas, unidad = [], None
-    for fila in ws.iter_rows(min_row=3):
+    for fila in ws.iter_rows(min_row=cab + 1):
         celdas = {c.column: c.value for c in fila}
         # columna B: marca de unidad (U1..U6)
         u = re.search(r'U(\d)', str(celdas.get(2) or ''))
@@ -90,15 +94,28 @@ def hoja(ws):
                 if linea not in contenido[area]:
                     contenido[area].append(linea)
         filas.append(dict(unidad=unidad, semana=semana, areas=contenido))
+    if grado_fijo is not None:
+        return grado_fijo, filas
     return int(grado.group()) if grado else None, filas
 
+def hojas(argv):
+    """(hoja, fila de cabecera, grado forzado) de cada Excel de entrada."""
+    for ws in openpyxl.load_workbook(Path(argv[0]), data_only=True).worksheets:
+        yield ws, 2, None
+    if len(argv) > 1 and argv[1].lower().endswith('.xlsx'):
+        wb1 = openpyxl.load_workbook(Path(argv[1]), data_only=True)
+        if 'Annual Plan' in wb1.sheetnames:
+            # la hoja se llama "Annual Plan" a secas y su cabecera va en la
+            # fila 1, no en la 2 como las de primaria
+            yield wb1['Annual Plan'], 1, 1
+
 def main():
-    origen = Path(sys.argv[1])
-    destino = Path(sys.argv[2]) if len(sys.argv) > 2 else Path('scope/annual-plan-primary-2026.json')
-    wb = openpyxl.load_workbook(origen, data_only=True)
+    argv = [a for a in sys.argv[1:] if a.lower().endswith('.xlsx')]
+    salidas = [a for a in sys.argv[1:] if a.lower().endswith('.json')]
+    destino = Path(salidas[0]) if salidas else Path('scope/annual-plan-primary-2026.json')
     grados = {}
-    for ws in wb.worksheets:
-        r = hoja(ws)
+    for ws, cab, gfijo in hojas(argv):
+        r = hoja(ws, cab, gfijo)
         if not r or not r[0]:
             continue
         grado, filas = r
@@ -117,14 +134,15 @@ def main():
                                  fuera_de_calendario=[x['areas'] for x in sobra]))
         grados['g%d' % grado] = dict(grado=grado, periodos=periodos)
     salida = dict(
-        fuente='Annual Plan Primary 2026.xlsx + Primary Calendar 2026.xlsx (Drive del colegio)',
+        fuente='Annual Plan Primary 2026.xlsx + EY_Assessment Criteria_G1.xlsx (hoja Annual Plan)'
+               ' + Primary Calendar 2026.xlsx (Drive del colegio)',
         generado_por='tools/extrae_annual_plan.py',
         calendario=PERIODOS,
         grados=grados,
     )
     destino.parent.mkdir(parents=True, exist_ok=True)
     destino.write_text(json.dumps(salida, ensure_ascii=False, indent=1), encoding='utf-8')
-    for k, v in grados.items():
+    for k, v in sorted(grados.items(), key=lambda kv: kv[1]['grado']):
         con = sum(1 for p in v['periodos'] for s in p['semanas'] if s['areas'])
         tot = sum(len(p['semanas']) for p in v['periodos'])
         areas = sorted({a for p in v['periodos'] for s in p['semanas'] for a in s['areas']})
