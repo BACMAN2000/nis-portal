@@ -50,22 +50,95 @@ def cuenta(parte):
     if parte.get('type') in ('story_writing',) or 'p1' in parte: return 1
     return 0
 
+# parentesis que solo aclaran el sentido y no forman parte de la palabra:
+# 'catch (e.g. a bus)', 'letter (as in mail)', 'stage (theatre)', 'fish (s + pl)'
+ACLARA = re.compile(r'^(as in|e\.g\.|i\.e\.|for |s \+ pl|music|computer|theatre|football|ride|as sports|car; bike|title)', re.I)
+
+def parentesis(e):
+    """Primer parentesis de la entrada, contando anidados: en
+    'candy (UK sweet(s))' devuelve (inicio, fin, 'UK sweet(s)')."""
+    i = e.find('(')
+    if i < 0: return None
+    hondo = 0
+    for j in range(i, len(e)):
+        if e[j] == '(': hondo += 1
+        elif e[j] == ')':
+            hondo -= 1
+            if hondo == 0: return i, j + 1, e[i + 1:j].strip()
+    return None
+
+def expande(entrada):
+    """Las formas en que una entrada oficial puede aparecer en un texto.
+
+    'apartment (UK flat)'  -> apartment, flat        (variante US/UK)
+    'teddy (bear)'         -> teddy, teddy bear      (parte opcional)
+    'sweet(s)' 'blond(e)'  -> sweet, sweets / blond, blonde
+    'man/men'              -> man, men
+    'city/town centre'     -> city centre, town centre
+    'letter (as in mail)'  -> letter                 (solo aclara)
+    """
+    e = entrada.strip()
+    formas = set()
+    p = parentesis(e)
+    if p:
+        ini, fin, dentro = p
+        if ini > 0 and e[ini - 1] != ' ':   # pegado a la palabra: sweet(s), blond(e), chemist('s)
+            return expande(e[:ini] + e[fin:]) | expande(e[:ini] + dentro + e[fin:])
+        def con(x):   # la entrada con el parentesis sustituido por x
+            return re.sub(r'\s+', ' ', e[:ini] + ' ' + x + ' ' + e[fin:]).strip()
+        formas |= expande(con(''))
+        if re.match(r'^(US|UK)\s+', dentro, re.I):        # variante del otro ingles
+            # la variante sustituye a las palabras que nombra, que son las que van
+            # justo antes: 'apartment (UK flat)' -> flat, 'film (US movie) star' ->
+            # movie star, 'fire engine (US fire truck)' -> fire truck
+            otra = re.sub(r'^(US|UK)\s+', '', dentro, flags=re.I)
+            antes = e[:ini].split()
+            corta = len(otra.split())
+            formas |= expande(' '.join(antes[:-corta] + [otra]) + e[fin:])
+        elif not ACLARA.match(dentro):                     # parte opcional: teddy (bear)
+            formas |= expande(con(dentro))
+        return formas
+    # alternativas dentro de una palabra: man/men, city/town centre
+    tok = e.split()
+    for i, t in enumerate(tok):
+        if '/' in t:
+            for alt in t.split('/'):
+                formas |= expande(' '.join(tok[:i] + [alt] + tok[i + 1:]))
+            return formas
+    return {e.lower()} if e else set()
+
 def vocabulario(level):
     v = set()
     for l in ORDEN[:ORDEN.index(level) + 1]:
         for w in WL[l]:
-            for parte in re.split(r'\s*/\s*', w): v.add(re.sub(r'\s*\(.*?\)', '', parte).strip().lower())
+            for forma in expande(w):
+                v.add(forma)
+                v.update(forma.split())   # 'ice cream' permite tambien 'ice' y 'cream'
     return v | EXTRA
 
 def palabras(texto):
-    return re.findall(r"[A-Za-z][A-Za-z'’]*", texto or '')
+    return re.findall(r"[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ'’]*", texto or '')   # con acentos: café
+
+def bases(lw):
+    """Formas de las que puede venir una palabra flexionada."""
+    out = {lw}
+    for suf, rep in (('ies', 'y'), ('ies', 'ie'), ('es', ''), ('es', 'e'), ('s', ''),
+                     ('ed', ''), ('ed', 'e'), ('ing', ''), ('ing', 'e'),
+                     ('er', ''), ('er', 'e'), ('est', ''), ('est', 'e'), ('ly', ''),
+                     ("'s", ''), ('’s', '')):
+        if lw.endswith(suf) and len(lw) - len(suf) >= 2:
+            out.add(lw[:-len(suf)] + rep)
+    for b in list(out):                      # running -> run, bigger -> big
+        if len(b) > 2 and b[-1] == b[-2]:
+            out.add(b[:-1])
+    return out
 
 def textos_rw(t):
     out = []
     def rec(x):
         if isinstance(x, str): out.append(x)
         elif isinstance(x, list): [rec(i) for i in x]
-        elif isinstance(x, dict): [rec(v) for k, v in x.items() if k not in ('type', 'image', 'images', 'id', 'person', 'card', 'target', 'zone', 'zones')]
+        elif isinstance(x, dict): [rec(v) for k, v in x.items() if k not in ('type', 'image', 'images', 'id', 'person', 'card', 'target', 'zone', 'zones', 'scene')]
     rec(t.get('rw', {})); rec(t.get('listening', {}))
     return out
 
@@ -89,10 +162,7 @@ def valida(tests, level, strict=False):
                 lw = w.lower().strip("'’")
                 lw = lw.replace('’', "'")
                 if len(lw) <= 1 or lw in vocab or w[0].isupper() or lw.isdigit() or lw == 'ex': continue
-                # formas flexionadas simples de palabras de la lista
-                base = re.sub(r"(ies|es|s|ed|ing|er|est|ly|'s|’s)$", '', lw)
-                if base in vocab or base + 'e' in vocab or (base.endswith('i') and base[:-1] + 'y' in vocab): continue
-                if len(base) > 2 and base[-1] == base[-2] and base[:-1] in vocab: continue   # running -> run
+                if bases(lw) & vocab: continue   # formas flexionadas de palabras de la lista
                 fuera[lw] = fuera.get(lw, 0) + 1
         if fuera:
             avisos += len(fuera)
