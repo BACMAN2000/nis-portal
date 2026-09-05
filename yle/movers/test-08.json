@@ -1,0 +1,1485 @@
+{
+  "level": "movers",
+  "number": 8,
+  "theme": "On the farm",
+  "listening": {
+    "p1": {
+      "type": "draw_lines",
+      "image": "L1",
+      "scene": "A farm in the morning: a field with cows and sheep, a small house with a red door, a tractor next to a tree and a river behind the field. Six people are working or playing on the farm.",
+      "names": [
+        "Lucy",
+        "Sam",
+        "Clare",
+        "Mark",
+        "Daisy",
+        "Fred",
+        "Pat"
+      ],
+      "people": [
+        {
+          "id": "A",
+          "desc": "a girl giving grass to a brown cow"
+        },
+        {
+          "id": "B",
+          "desc": "a boy sitting on the tractor"
+        },
+        {
+          "id": "C",
+          "desc": "a woman carrying a box of eggs"
+        },
+        {
+          "id": "D",
+          "desc": "a man with a black and white dog next to the sheep"
+        },
+        {
+          "id": "E",
+          "desc": "a girl catching a fish in the river"
+        },
+        {
+          "id": "F",
+          "desc": "a boy cleaning a small blue boat"
+        }
+      ],
+      "example": {
+        "name": "Lucy",
+        "person": "A"
+      },
+      "items": [
+        {
+          "name": "Sam",
+          "person": "B"
+        },
+        {
+          "name": "Clare",
+          "person": "C"
+        },
+        {
+          "name": "Mark",
+          "person": "D"
+        },
+        {
+          "name": "Daisy",
+          "person": "E"
+        },
+        {
+          "name": "Fred",
+          "person": "F"
+        }
+      ]
+    },
+    "p2": {
+      "type": "note_taking",
+      "heading": "A week on Grandpa's farm",
+      "example": {
+        "q": "Name of the farm:",
+        "a": "Green"
+      },
+      "items": [
+        {
+          "q": "Number of cows:",
+          "a": "35"
+        },
+        {
+          "q": "Name of the farm dog:",
+          "a": "Rocky"
+        },
+        {
+          "q": "Get up in the morning at:",
+          "a": "6"
+        },
+        {
+          "q": "Give the horses some:",
+          "a": "water"
+        },
+        {
+          "q": "You can swim in the:",
+          "a": "river"
+        }
+      ]
+    },
+    "p3": {
+      "type": "match_letters",
+      "intro": "Sam is telling his teacher about the animals on his grandfather's farm. Where is each animal?",
+      "pictures": [
+        {
+          "letter": "A",
+          "word": "in the field",
+          "emoji": "🌱"
+        },
+        {
+          "letter": "B",
+          "word": "in the river",
+          "emoji": "🏞️"
+        },
+        {
+          "letter": "C",
+          "word": "on the roof",
+          "emoji": "🏠"
+        },
+        {
+          "letter": "D",
+          "word": "under the tree",
+          "emoji": "🌳"
+        },
+        {
+          "letter": "E",
+          "word": "in the house",
+          "emoji": "🚪"
+        },
+        {
+          "letter": "F",
+          "word": "next to the tractor",
+          "emoji": "🚜"
+        },
+        {
+          "letter": "G",
+          "word": "behind the door",
+          "emoji": "🔑"
+        },
+        {
+          "letter": "H",
+          "word": "on the grass",
+          "emoji": "🌿"
+        }
+      ],
+      "example": {
+        "who": "the cows",
+        "letter": "A"
+      },
+      "items": [
+        {
+          "who": "the horse",
+          "letter": "D"
+        },
+        {
+          "who": "the ducks",
+          "letter": "B"
+        },
+        {
+          "who": "the cat",
+          "letter": "C"
+        },
+        {
+          "who": "the dog",
+          "letter": "F"
+        },
+        {
+          "who": "the mouse",
+          "letter": "G"
+        }
+      ]
+    },
+    "p4": {
+      "type": "mc_pictures",
+      "example": {
+        "q": "What did Clare see first on the farm?",
+        "pics": [
+          {
+            "word": "a horse",
+            "emoji": "🐴"
+          },
+          {
+            "word": "a cow",
+            "emoji": "🐮"
+          },
+          {
+            "word": "a duck",
+            "emoji": "🦆"
+          }
+        ],
+        "options": [
+          "a horse",
+          "a cow",
+          "a duck"
+        ],
+        "key": "C"
+      },
+      "items": [
+        {
+          "q": "Which animal is Mark's favourite?",
+          "pics": [
+            "goat",
+            "sheep",
+            "horse"
+          ],
+          "options": [
+            "the goats",
+            "the sheep",
+            "the horses"
+          ],
+          "key": "C"
+        },
+        {
+          "q": "What is in the box?",
+          "pics": [
+            "egg",
+            "apple",
+            "potato"
+          ],
+          "options": [
+            "eggs",
+            "apples",
+            "potatoes"
+          ],
+          "key": "A"
+        },
+        {
+          "q": "Where are the children going now?",
+          "pics": [
+            {
+              "word": "to the river",
+              "emoji": "🏞️"
+            },
+            {
+              "word": "to the field",
+              "emoji": "🌱"
+            },
+            {
+              "word": "to the village",
+              "emoji": "🏘️"
+            }
+          ],
+          "options": [
+            "to the river",
+            "to the field",
+            "to the village"
+          ],
+          "key": "A"
+        },
+        {
+          "q": "What does Grandpa drive?",
+          "pics": [
+            {
+              "word": "a tractor",
+              "emoji": "🚜"
+            },
+            {
+              "word": "a lorry",
+              "emoji": "🚚"
+            },
+            {
+              "word": "a car",
+              "emoji": "🚗"
+            }
+          ],
+          "options": [
+            "a tractor",
+            "a lorry",
+            "a car"
+          ],
+          "key": "A"
+        },
+        {
+          "q": "What did the children have for breakfast?",
+          "pics": [
+            {
+              "word": "milk",
+              "emoji": "🥛"
+            },
+            {
+              "word": "bread",
+              "emoji": "🍞"
+            },
+            {
+              "word": "cheese",
+              "emoji": "🧀"
+            }
+          ],
+          "options": [
+            "milk",
+            "bread",
+            "cheese"
+          ],
+          "key": "B"
+        }
+      ]
+    },
+    "p5": {
+      "type": "colour_write",
+      "image": "L5",
+      "scene": "A farm garden: a horse next to a small tree, a cat on the wall, a duck in the water, a bike behind the house, a bird in the tree and a wooden board next to the door with nothing written on it.",
+      "example": {
+        "what": "the horse",
+        "where": "next to the tree",
+        "colour": "brown"
+      },
+      "items": [
+        {
+          "what": "the cat",
+          "where": "on the wall",
+          "colour": "black"
+        },
+        {
+          "what": "the duck",
+          "where": "in the water",
+          "colour": "yellow"
+        },
+        {
+          "what": "the bike",
+          "where": "behind the house",
+          "colour": "green"
+        },
+        {
+          "what": "the board",
+          "where": "next to the door",
+          "write": "FARM"
+        },
+        {
+          "what": "the bird",
+          "where": "in the tree",
+          "colour": "blue"
+        }
+      ]
+    }
+  },
+  "rw": {
+    "p1": {
+      "type": "definitions_copy",
+      "words": [
+        "a farmer",
+        "a field",
+        "a tractor",
+        "a river",
+        "grass",
+        "a village",
+        "a goat",
+        "a sheep"
+      ],
+      "pics": {
+        "a farmer": "🧑‍🌾",
+        "a field": "🌱",
+        "a tractor": "🚜",
+        "a river": "🏞️",
+        "grass": "🌿",
+        "a village": "🏘️",
+        "a goat": "🐐",
+        "a sheep": "🐑"
+      },
+      "example": {
+        "def": "This person works on a farm with animals and vegetables.",
+        "word": "a farmer"
+      },
+      "items": [
+        {
+          "def": "The farmer drives this to work in the fields. It is big and slow.",
+          "word": "a tractor"
+        },
+        {
+          "def": "Water goes down this to the sea. Fish live in it.",
+          "word": "a river"
+        },
+        {
+          "def": "This white farm animal is smaller than a cow and it eats grass.",
+          "word": "a sheep"
+        },
+        {
+          "def": "This is green and it grows on the ground. Cows and horses eat it.",
+          "word": "grass"
+        },
+        {
+          "def": "This place is smaller than a town. There are not many houses.",
+          "word": "a village"
+        }
+      ]
+    },
+    "p2": {
+      "type": "dialogue_mc3",
+      "speakerA": "Grandpa",
+      "speakerB": "Sam",
+      "example": {
+        "a": "Would you like to help me on the farm today?",
+        "options": [
+          "Yes, I'd love to.",
+          "Yes, I helped.",
+          "Yes, it's a farm."
+        ],
+        "key": "A"
+      },
+      "items": [
+        {
+          "a": "Can you give the horses some water?",
+          "options": [
+            "The horse is big.",
+            "OK, Grandpa.",
+            "I gave water."
+          ],
+          "key": "B"
+        },
+        {
+          "a": "How many eggs are there in the box?",
+          "options": [
+            "Twelve.",
+            "In the box.",
+            "They're white."
+          ],
+          "key": "A"
+        },
+        {
+          "a": "Be careful. That goat isn't very friendly!",
+          "options": [
+            "It's a goat.",
+            "I'm not careful.",
+            "Don't worry, I know."
+          ],
+          "key": "C"
+        },
+        {
+          "a": "What are you going to do this afternoon?",
+          "options": [
+            "I did the fields.",
+            "I'm going to swim in the river.",
+            "This afternoon is good."
+          ],
+          "key": "B"
+        },
+        {
+          "a": "Don't go near the water! I must be with you.",
+          "options": [
+            "No, I won't.",
+            "No, I don't go.",
+            "Yes, it's water."
+          ],
+          "key": "A"
+        },
+        {
+          "a": "Good boy. Now, have you got your boots?",
+          "options": [
+            "They're my boots.",
+            "Yes, here they are.",
+            "Yes, I boot."
+          ],
+          "key": "B"
+        }
+      ]
+    },
+    "p3": {
+      "type": "gapped_text_title",
+      "words": [
+        "farm",
+        "mouse",
+        "cheese",
+        "kitchen",
+        "cat",
+        "afraid",
+        "bread",
+        "night",
+        "quietly"
+      ],
+      "text": "Clare's grandfather has got a small __(0)__ near a river. Last week, Clare was in the __(1)__ with her grandmother when she saw something grey and very small. It was a little __(2)__! It ran __(3)__ under the table with some __(4)__ in its mouth. Clare's grandmother wasn't __(5)__ of it. 'That's Pip,' she said. 'He lives in the wall and he helps me: he eats all the old bread.'",
+      "example": "farm",
+      "key": [
+        "kitchen",
+        "mouse",
+        "quietly",
+        "cheese",
+        "afraid"
+      ],
+      "title_choices": [
+        "The mouse in the kitchen",
+        "Clare's new bike",
+        "The river behind the house"
+      ],
+      "title_key": "A"
+    },
+    "p4": {
+      "type": "mc_cloze",
+      "title": "Cows",
+      "text": "Cows are big animals __(0)__ live on farms in every country. They eat grass and they drink a lot of water. Farmers get milk __(1)__ their cows in the morning and in the afternoon. We make butter and cheese __(2)__ this milk. A baby cow can walk __(3)__ it is very young, and it goes with its mother. Cows are quiet animals and they __(4)__ got very good ears, so they know you are there before they __(5)__ you.",
+      "example": {
+        "options": [
+          "which",
+          "who",
+          "where"
+        ],
+        "key": "A"
+      },
+      "items": [
+        {
+          "options": [
+            "from",
+            "of",
+            "at"
+          ],
+          "key": "A"
+        },
+        {
+          "options": [
+            "for",
+            "with",
+            "on"
+          ],
+          "key": "B"
+        },
+        {
+          "options": [
+            "when",
+            "what",
+            "why"
+          ],
+          "key": "A"
+        },
+        {
+          "options": [
+            "has",
+            "have",
+            "having"
+          ],
+          "key": "B"
+        },
+        {
+          "options": [
+            "see",
+            "sees",
+            "seeing"
+          ],
+          "key": "A"
+        }
+      ]
+    },
+    "p5": {
+      "type": "story_completion",
+      "title": "The duck in the boot",
+      "image": "R5",
+      "parts": [
+        {
+          "text": "Every year, Daisy goes to her uncle's farm in the countryside. She loves the animals, but her favourite is a small white duck. The duck goes with Daisy all day, and Daisy calls her Snowy.",
+          "examples": [
+            {
+              "s": "Daisy goes to her ___ farm.",
+              "a": "uncle's"
+            },
+            {
+              "s": "Her favourite animal is a small white ___.",
+              "a": "duck"
+            }
+          ],
+          "items": [
+            {
+              "s": "The duck goes with Daisy all ___.",
+              "a": [
+                "day"
+              ]
+            },
+            {
+              "s": "Daisy calls the duck ___.",
+              "a": [
+                "Snowy"
+              ]
+            }
+          ]
+        },
+        {
+          "text": "One morning, Daisy couldn't find Snowy. She looked in the field, next to the river and behind the tractor, but the duck wasn't there. Then Daisy heard a funny noise in the house. It came from the kitchen.",
+          "items": [
+            {
+              "s": "Daisy looked next to the ___ and behind the tractor.",
+              "a": [
+                "river"
+              ]
+            },
+            {
+              "s": "Then she heard a funny ___ in the house.",
+              "a": [
+                "noise"
+              ]
+            },
+            {
+              "s": "The noise came from the ___.",
+              "a": [
+                "kitchen"
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Snowy was inside one of Uncle Fred's big boots! She was sleeping and she didn't want to come out. Now Snowy sleeps in that boot every night, and Uncle Fred wears his old shoes.",
+          "items": [
+            {
+              "s": "Snowy was inside one of Uncle Fred's ___.",
+              "a": [
+                "boots",
+                "big boots"
+              ]
+            },
+            {
+              "s": "Now Uncle Fred wears his old ___.",
+              "a": [
+                "shoes"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "p6": {
+      "type": "productive_writing",
+      "image": "R6",
+      "scene": "A farm in the afternoon: a farmer is driving a red tractor, a girl is giving water to two horses, a boy is running after a duck, a dog is sleeping under a tree, three cows are eating grass in the field and a bird is on the roof of the house.",
+      "examples": [
+        {
+          "s": "The farmer is driving a red ___.",
+          "a": "tractor"
+        },
+        {
+          "q": "What is the girl doing?",
+          "a": "giving water to the horses"
+        }
+      ],
+      "complete": [
+        {
+          "s": "The boy is running after a ___.",
+          "a": [
+            "duck"
+          ]
+        },
+        {
+          "s": "The dog is sleeping under a ___.",
+          "a": [
+            "tree"
+          ]
+        }
+      ],
+      "answer": [
+        {
+          "q": "How many cows are there?",
+          "model": "There are three (cows)."
+        },
+        {
+          "q": "Where is the bird?",
+          "model": "It is on the roof (of the house)."
+        }
+      ],
+      "write": {
+        "n": 2,
+        "model": [
+          "The cows are eating grass in the field.",
+          "It is a beautiful day on the farm."
+        ]
+      }
+    }
+  },
+  "speaking": {
+    "p1": {
+      "type": "find_differences",
+      "image": "S1",
+      "scene": "Two pictures of the same farm garden. Left: the examiner's picture. Right: your picture.",
+      "examiner": "Look at the two pictures. Here the cat is on the wall, but here the cat is under the tree. What other differences can you see?",
+      "differences": [
+        "In your picture there are four ducks, but in my picture there are two.",
+        "In your picture the horse is brown, but in my picture it is white.",
+        "In your picture the bike is behind the house, but in my picture it is next to the door.",
+        "In your picture the girl is carrying eggs, but in my picture she is carrying water.",
+        "In your picture the tractor is green, but in my picture it is red."
+      ]
+    },
+    "p2": {
+      "type": "picture_sequence",
+      "title": "The lost sheep",
+      "image": "S2",
+      "examiner_open": "These pictures show a story. It's called 'The lost sheep'. Look at the pictures first. Sam and his grandfather are counting the sheep in the field, and one sheep isn't there. Now you tell the story.",
+      "frames": [
+        "Sam and his grandfather are counting the sheep in the field. One sheep isn't there and they are worried.",
+        "Sam and the dog look for the sheep. They walk next to the river and behind the trees.",
+        "The dog stops and starts to bark. The sheep is in the water and it can't get out!",
+        "Sam and his grandfather help the sheep to come out of the river. The sheep is happy and Sam gives the dog a big dinner."
+      ]
+    },
+    "p3": {
+      "type": "odd_one_out",
+      "sets": [
+        {
+          "pics": [
+            "cow",
+            "sheep",
+            "horse",
+            "tractor"
+          ],
+          "odd": 3,
+          "reason": "A tractor isn't an animal. The farmer drives it."
+        },
+        {
+          "pics": [
+            {
+              "word": "grass",
+              "emoji": "🌿"
+            },
+            {
+              "word": "tree",
+              "emoji": "🌳"
+            },
+            {
+              "word": "flower",
+              "emoji": "🌼"
+            },
+            {
+              "word": "boot",
+              "emoji": "🥾"
+            }
+          ],
+          "odd": 3,
+          "reason": "A boot doesn't grow in the ground. You wear it."
+        },
+        {
+          "pics": [
+            "duck",
+            "fish",
+            "frog",
+            "cat"
+          ],
+          "odd": 3,
+          "reason": "A cat doesn't like water. The others do."
+        },
+        {
+          "pics": [
+            "field",
+            "river",
+            "village",
+            "kitchen"
+          ],
+          "odd": 3,
+          "reason": "A kitchen is inside a house. The others are outside."
+        }
+      ]
+    },
+    "p4": {
+      "type": "personal_questions",
+      "topic": "animals and the countryside",
+      "questions": [
+        {
+          "q": "Have you got a pet at home?",
+          "model": "Yes, I've got a small dog."
+        },
+        {
+          "q": "Which farm animal do you like best? Why?",
+          "model": "Horses, because they can run very fast."
+        },
+        {
+          "q": "Do you like the countryside or the town?",
+          "model": "I like the countryside because it is quiet."
+        },
+        {
+          "q": "What can you see from your window?",
+          "model": "I can see a big tree and some birds."
+        },
+        {
+          "q": "Tell me about a day in the countryside.",
+          "model": "Last year I went to a farm with my class. We saw cows and we ate under a tree."
+        }
+      ]
+    }
+  },
+  "audio": {
+    "p1": [
+      [
+        "R",
+        "Part One. Look at the picture. Listen and look. There is one example."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "Mch",
+        "Grandpa, look at this picture of your farm!"
+      ],
+      [
+        "M",
+        "Ha! That's a good one. Who's the girl with the brown cow?"
+      ],
+      [
+        "Mch",
+        "That's Lucy. She's giving grass to it. She isn't afraid of the cows."
+      ],
+      [
+        "M",
+        "She's a good farmer."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Can you see the line? This is an example. Now you listen and draw lines."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "One."
+      ],
+      [
+        "M",
+        "And who's the boy on the tractor?"
+      ],
+      [
+        "Mch",
+        "That's me! I'm Sam. I sit on it, but I can't drive it. I'm too young."
+      ],
+      [
+        "M",
+        "You can drive it when you're older."
+      ],
+      [
+        "pause",
+        5
+      ],
+      [
+        "R",
+        "Two."
+      ],
+      [
+        "M",
+        "Who's the woman with the box?"
+      ],
+      [
+        "Mch",
+        "That's my sister Clare. There are eggs in the box. Twelve!"
+      ],
+      [
+        "M",
+        "She must walk very slowly, then."
+      ],
+      [
+        "pause",
+        5
+      ],
+      [
+        "R",
+        "Three."
+      ],
+      [
+        "Mch",
+        "Can you see the man with the black and white dog?"
+      ],
+      [
+        "M",
+        "Yes, next to the sheep. Is that your father?"
+      ],
+      [
+        "Mch",
+        "No, that's my uncle Mark. The sheep listen to his dog."
+      ],
+      [
+        "pause",
+        5
+      ],
+      [
+        "R",
+        "Four."
+      ],
+      [
+        "M",
+        "And that girl in the river? What's she doing?"
+      ],
+      [
+        "Mch",
+        "That's Daisy. She's catching a fish. She catches one every afternoon."
+      ],
+      [
+        "M",
+        "Fish for dinner!"
+      ],
+      [
+        "pause",
+        5
+      ],
+      [
+        "R",
+        "Five."
+      ],
+      [
+        "Mch",
+        "And that boy is cleaning the little blue boat."
+      ],
+      [
+        "M",
+        "Who's that?"
+      ],
+      [
+        "Mch",
+        "Fred. We go on the river in that boat when the water is quiet."
+      ],
+      [
+        "pause",
+        5
+      ],
+      [
+        "R",
+        "Now listen to Part One again."
+      ]
+    ],
+    "p2": [
+      [
+        "R",
+        "Part Two. Listen and look. There is one example."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "Fch",
+        "Grandpa, what's the name of your farm?"
+      ],
+      [
+        "M",
+        "Green Farm. G-R-E-E-N. Because everything here is green!"
+      ],
+      [
+        "Fch",
+        "Green Farm. I like it."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Can you see the answer? Now you listen and write."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "One."
+      ],
+      [
+        "Fch",
+        "How many cows have you got?"
+      ],
+      [
+        "M",
+        "Thirty-five now. We had thirty last year."
+      ],
+      [
+        "Fch",
+        "Thirty-five! Have they all got names?"
+      ],
+      [
+        "M",
+        "Of course not!"
+      ],
+      [
+        "pause",
+        8
+      ],
+      [
+        "R",
+        "Two."
+      ],
+      [
+        "Fch",
+        "And what's the dog called?"
+      ],
+      [
+        "M",
+        "Rocky. R-O-C-K-Y. He works with the sheep."
+      ],
+      [
+        "Fch",
+        "Rocky. He's beautiful."
+      ],
+      [
+        "pause",
+        8
+      ],
+      [
+        "R",
+        "Three."
+      ],
+      [
+        "Fch",
+        "What time must I get up?"
+      ],
+      [
+        "M",
+        "At six. The animals are hungry very early."
+      ],
+      [
+        "Fch",
+        "Six o'clock! That's early for me."
+      ],
+      [
+        "pause",
+        8
+      ],
+      [
+        "R",
+        "Four."
+      ],
+      [
+        "M",
+        "Your first job is the horses. Give them some water, please."
+      ],
+      [
+        "Fch",
+        "Water, not food?"
+      ],
+      [
+        "M",
+        "I give them their food. You give them water."
+      ],
+      [
+        "pause",
+        8
+      ],
+      [
+        "R",
+        "Five."
+      ],
+      [
+        "Fch",
+        "Can I swim here?"
+      ],
+      [
+        "M",
+        "Yes, you can swim in the river, but you must be with me. It's cold!"
+      ],
+      [
+        "Fch",
+        "In the river. Fantastic!"
+      ],
+      [
+        "pause",
+        8
+      ],
+      [
+        "R",
+        "Now listen to Part Two again."
+      ]
+    ],
+    "p3": [
+      [
+        "R",
+        "Part Three. Listen and look. There is one example."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Sam is telling his teacher about the animals on his grandfather's farm. Where is each animal?"
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "F",
+        "Sam, where are the cows on your grandfather's farm?"
+      ],
+      [
+        "Mch",
+        "They're in the big field all day. They eat and eat."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Can you see the letter A? Now you listen and write a letter in each box."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "F",
+        "And the horse?"
+      ],
+      [
+        "Mch",
+        "The horse is under the tree because it's very hot today. It likes the cool grass there."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "F",
+        "Have you got ducks?"
+      ],
+      [
+        "Mch",
+        "Yes, five. They're in the river. They swim all day and come back at night."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "F",
+        "What about the cat?"
+      ],
+      [
+        "Mch",
+        "My cat is on the roof! She goes up when the dog is in the garden."
+      ],
+      [
+        "F",
+        "Poor cat!"
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "F",
+        "And where's the dog now?"
+      ],
+      [
+        "Mch",
+        "Next to the tractor. He sleeps there because it's his favourite place."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "F",
+        "Have you got mice on the farm?"
+      ],
+      [
+        "Mch",
+        "One! There's a mouse behind the door in the kitchen. My grandmother gives it bread."
+      ],
+      [
+        "F",
+        "That's very kind."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Now listen to Part Three again."
+      ]
+    ],
+    "p4": [
+      [
+        "R",
+        "Part Four. Look at the pictures. Listen and look. There is one example."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "What did Clare see first on the farm?"
+      ],
+      [
+        "F",
+        "Clare, what did you see first? A horse?"
+      ],
+      [
+        "Fch",
+        "No, a duck! It was next to the car when we arrived."
+      ],
+      [
+        "F",
+        "And the cows?"
+      ],
+      [
+        "Fch",
+        "We saw them after, in the field."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Can you see the tick? Now you listen and tick the box."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "One. Which animal is Mark's favourite?"
+      ],
+      [
+        "Fch",
+        "Do you like the goats, Uncle Mark?"
+      ],
+      [
+        "M",
+        "They're funny, but the horses are my favourite. I ride one every morning."
+      ],
+      [
+        "Fch",
+        "And the sheep?"
+      ],
+      [
+        "M",
+        "The sheep are the dog's favourite!"
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Two. What is in the box?"
+      ],
+      [
+        "Mch",
+        "Careful with that box! Are there apples in it?"
+      ],
+      [
+        "F",
+        "No, eggs. Twelve eggs from this morning."
+      ],
+      [
+        "Mch",
+        "The potatoes are in the other box, then."
+      ],
+      [
+        "F",
+        "That's right."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Three. Where are the children going now?"
+      ],
+      [
+        "Fch",
+        "Are we going to the village this afternoon?"
+      ],
+      [
+        "M",
+        "No, first we're going to the river. You can swim there."
+      ],
+      [
+        "Fch",
+        "And the field?"
+      ],
+      [
+        "M",
+        "Later, with the dog."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Four. What does Grandpa drive?"
+      ],
+      [
+        "Mch",
+        "Has Grandpa got a lorry?"
+      ],
+      [
+        "F",
+        "No, he's got an old green tractor. He drives it every day."
+      ],
+      [
+        "Mch",
+        "And the car?"
+      ],
+      [
+        "F",
+        "That's Grandma's."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Five. What did the children have for breakfast?"
+      ],
+      [
+        "M",
+        "Did you have cheese for breakfast?"
+      ],
+      [
+        "Fch",
+        "No, we had bread with butter. It was hot and very good."
+      ],
+      [
+        "M",
+        "And milk?"
+      ],
+      [
+        "Fch",
+        "No, we drank water."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Now listen to Part Four again."
+      ]
+    ],
+    "p5": [
+      [
+        "R",
+        "Part Five. Look at the picture. Listen and look. There is one example."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "M",
+        "Here's a picture of a farm garden. Can you see the horse next to the tree?"
+      ],
+      [
+        "Fch",
+        "Yes, the big horse."
+      ],
+      [
+        "M",
+        "Colour it brown, please."
+      ],
+      [
+        "Fch",
+        "A brown horse. OK."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Can you see the brown horse? This is an example. Now you listen and colour and write."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "One."
+      ],
+      [
+        "M",
+        "Now, can you see the cat on the wall?"
+      ],
+      [
+        "Fch",
+        "Yes, it's sleeping."
+      ],
+      [
+        "M",
+        "Colour it black, please."
+      ],
+      [
+        "Fch",
+        "A black cat. Done."
+      ],
+      [
+        "pause",
+        10
+      ],
+      [
+        "R",
+        "Two."
+      ],
+      [
+        "Fch",
+        "There's a duck in the water. Can I colour it?"
+      ],
+      [
+        "M",
+        "Yes. Make it yellow."
+      ],
+      [
+        "Fch",
+        "A yellow duck! Like a baby duck."
+      ],
+      [
+        "pause",
+        10
+      ],
+      [
+        "R",
+        "Three."
+      ],
+      [
+        "M",
+        "Can you see the bike behind the house?"
+      ],
+      [
+        "Fch",
+        "Yes, it's very old."
+      ],
+      [
+        "M",
+        "Colour it green, please."
+      ],
+      [
+        "Fch",
+        "A green bike. Finished."
+      ],
+      [
+        "pause",
+        10
+      ],
+      [
+        "R",
+        "Four."
+      ],
+      [
+        "Fch",
+        "Can I write something now?"
+      ],
+      [
+        "M",
+        "Yes. There's a wooden board next to the door with nothing on it. Write the word 'farm'. F-A-R-M."
+      ],
+      [
+        "Fch",
+        "Farm. F-A-R-M. Done!"
+      ],
+      [
+        "pause",
+        10
+      ],
+      [
+        "R",
+        "Five."
+      ],
+      [
+        "M",
+        "And now the bird in the tree. Colour it blue, please."
+      ],
+      [
+        "Fch",
+        "A blue bird. Finished!"
+      ],
+      [
+        "M",
+        "Well done. That's a lovely farm."
+      ],
+      [
+        "pause",
+        10
+      ],
+      [
+        "R",
+        "Now listen to Part Five again."
+      ]
+    ]
+  }
+}

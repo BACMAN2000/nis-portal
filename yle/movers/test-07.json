@@ -1,0 +1,1464 @@
+{
+  "level": "movers",
+  "number": 7,
+  "theme": "A day at school",
+  "listening": {
+    "p1": {
+      "type": "draw_lines",
+      "image": "L1",
+      "scene": "A school at break: a classroom with a big window and, outside, a playground with a tree and a football goal. Six children and one teacher are doing different things.",
+      "names": [
+        "Jane",
+        "Nick",
+        "Kim",
+        "Paul",
+        "Zoe",
+        "Matt",
+        "Sue"
+      ],
+      "people": [
+        {
+          "id": "A",
+          "desc": "a girl reading a book under the tree"
+        },
+        {
+          "id": "B",
+          "desc": "a boy playing football in the playground"
+        },
+        {
+          "id": "C",
+          "desc": "a woman writing on the board in the classroom"
+        },
+        {
+          "id": "D",
+          "desc": "a girl painting a picture of a horse"
+        },
+        {
+          "id": "E",
+          "desc": "a boy eating a sandwich at a table"
+        },
+        {
+          "id": "F",
+          "desc": "a girl carrying five books to the library"
+        }
+      ],
+      "example": {
+        "name": "Jane",
+        "person": "A"
+      },
+      "items": [
+        {
+          "name": "Nick",
+          "person": "B"
+        },
+        {
+          "name": "Kim",
+          "person": "C"
+        },
+        {
+          "name": "Paul",
+          "person": "D"
+        },
+        {
+          "name": "Zoe",
+          "person": "E"
+        },
+        {
+          "name": "Matt",
+          "person": "F"
+        }
+      ]
+    },
+    "p2": {
+      "type": "note_taking",
+      "heading": "The school trip",
+      "example": {
+        "q": "Day of the trip:",
+        "a": "Friday"
+      },
+      "items": [
+        {
+          "q": "Name of the teacher:",
+          "a": "Green"
+        },
+        {
+          "q": "Number of children going:",
+          "a": "28"
+        },
+        {
+          "q": "Bring some food and a bottle of:",
+          "a": "water"
+        },
+        {
+          "q": "Be at the school at:",
+          "a": "8"
+        },
+        {
+          "q": "You must wear your:",
+          "a": "boots"
+        }
+      ]
+    },
+    "p3": {
+      "type": "match_letters",
+      "intro": "Kim is talking about what her friends do after school. What does each child do?",
+      "pictures": [
+        {
+          "letter": "A",
+          "word": "playing the guitar",
+          "emoji": "🎸"
+        },
+        {
+          "letter": "B",
+          "word": "swimming",
+          "emoji": "🏊"
+        },
+        {
+          "letter": "C",
+          "word": "painting",
+          "emoji": "🎨"
+        },
+        {
+          "letter": "D",
+          "word": "playing football",
+          "emoji": "⚽"
+        },
+        {
+          "letter": "E",
+          "word": "doing homework",
+          "emoji": "📚"
+        },
+        {
+          "letter": "F",
+          "word": "dancing",
+          "emoji": "💃"
+        },
+        {
+          "letter": "G",
+          "word": "riding a bike",
+          "emoji": "🚲"
+        },
+        {
+          "letter": "H",
+          "word": "reading",
+          "emoji": "📖"
+        }
+      ],
+      "example": {
+        "who": "Kim",
+        "letter": "C"
+      },
+      "items": [
+        {
+          "who": "Nick",
+          "letter": "D"
+        },
+        {
+          "who": "Zoe",
+          "letter": "B"
+        },
+        {
+          "who": "Paul",
+          "letter": "A"
+        },
+        {
+          "who": "Jane",
+          "letter": "H"
+        },
+        {
+          "who": "Matt",
+          "letter": "G"
+        }
+      ]
+    },
+    "p4": {
+      "type": "mc_pictures",
+      "example": {
+        "q": "What has Sue got in her school bag?",
+        "pics": [
+          {
+            "word": "a book",
+            "emoji": "📘"
+          },
+          {
+            "word": "a ruler",
+            "emoji": "📏"
+          },
+          {
+            "word": "a pencil",
+            "emoji": "✏️"
+          }
+        ],
+        "options": [
+          "a book",
+          "a ruler",
+          "a pencil"
+        ],
+        "key": "B"
+      },
+      "items": [
+        {
+          "q": "Where is the teacher now?",
+          "pics": [
+            {
+              "word": "in the classroom",
+              "emoji": "🏫"
+            },
+            {
+              "word": "in the library",
+              "emoji": "📚"
+            },
+            {
+              "word": "in the playground",
+              "emoji": "🛝"
+            }
+          ],
+          "options": [
+            "in the classroom",
+            "in the library",
+            "in the playground"
+          ],
+          "key": "B"
+        },
+        {
+          "q": "What is Matt drawing?",
+          "pics": [
+            "horse",
+            "dog",
+            "bird"
+          ],
+          "options": [
+            "a horse",
+            "a dog",
+            "a bird"
+          ],
+          "key": "C"
+        },
+        {
+          "q": "What did the children have for lunch?",
+          "pics": [
+            "pasta",
+            "soup",
+            "chicken"
+          ],
+          "options": [
+            "pasta",
+            "soup",
+            "chicken"
+          ],
+          "key": "A"
+        },
+        {
+          "q": "When is the music lesson?",
+          "pics": [
+            {
+              "word": "Monday",
+              "emoji": "1️⃣"
+            },
+            {
+              "word": "Tuesday",
+              "emoji": "2️⃣"
+            },
+            {
+              "word": "Thursday",
+              "emoji": "4️⃣"
+            }
+          ],
+          "options": [
+            "on Monday",
+            "on Tuesday",
+            "on Thursday"
+          ],
+          "key": "C"
+        },
+        {
+          "q": "How does Zoe go to school?",
+          "pics": [
+            "bus",
+            "bike",
+            "car"
+          ],
+          "options": [
+            "by bus",
+            "by bike",
+            "by car"
+          ],
+          "key": "B"
+        }
+      ]
+    },
+    "p5": {
+      "type": "colour_write",
+      "image": "L5",
+      "scene": "A classroom: a clock on the wall, a bag under a desk, a plant next to the window, a picture of a boat on the wall, a ball in a box behind the door and a big board with nothing written on it.",
+      "example": {
+        "what": "the clock",
+        "where": "on the wall",
+        "colour": "red"
+      },
+      "items": [
+        {
+          "what": "the bag",
+          "where": "under the desk",
+          "colour": "green"
+        },
+        {
+          "what": "the plant",
+          "where": "next to the window",
+          "colour": "orange"
+        },
+        {
+          "what": "the boat",
+          "where": "in the picture",
+          "colour": "blue"
+        },
+        {
+          "what": "the board",
+          "where": "on the wall",
+          "write": "CLASS"
+        },
+        {
+          "what": "the ball",
+          "where": "in the box",
+          "colour": "purple"
+        }
+      ]
+    }
+  },
+  "rw": {
+    "p1": {
+      "type": "definitions_copy",
+      "words": [
+        "a teacher",
+        "a desk",
+        "a pencil",
+        "a ruler",
+        "a playground",
+        "a library",
+        "a rubber",
+        "a lesson"
+      ],
+      "pics": {
+        "a teacher": "🧑‍🏫",
+        "a desk": "🪑",
+        "a pencil": "✏️",
+        "a ruler": "📏",
+        "a playground": "🛝",
+        "a library": "📚",
+        "a rubber": "🧽",
+        "a lesson": "📖"
+      },
+      "example": {
+        "def": "This person helps children to learn new things at school.",
+        "word": "a teacher"
+      },
+      "items": [
+        {
+          "def": "You write and draw with this. It is long and thin.",
+          "word": "a pencil"
+        },
+        {
+          "def": "Children run and play games in this part of the school.",
+          "word": "a playground"
+        },
+        {
+          "def": "You make lines with this. It is long and it has got numbers on it.",
+          "word": "a ruler"
+        },
+        {
+          "def": "There are a lot of books in this room. You can take one home.",
+          "word": "a library"
+        },
+        {
+          "def": "You sit at this in the classroom and put your books on it.",
+          "word": "a desk"
+        }
+      ]
+    },
+    "p2": {
+      "type": "dialogue_mc3",
+      "speakerA": "Miss Green",
+      "speakerB": "Nick",
+      "example": {
+        "a": "Good morning, Nick. How are you today?",
+        "options": [
+          "I'm fine, thank you.",
+          "I'm nine years.",
+          "It's morning."
+        ],
+        "key": "A"
+      },
+      "items": [
+        {
+          "a": "Where is your homework?",
+          "options": [
+            "It's in my bag.",
+            "I'm doing homework.",
+            "It's homework."
+          ],
+          "key": "A"
+        },
+        {
+          "a": "Can you write your name on the board?",
+          "options": [
+            "It's my name.",
+            "Yes, I can.",
+            "I wrote a board."
+          ],
+          "key": "B"
+        },
+        {
+          "a": "Have you got a pencil?",
+          "options": [
+            "Yes, I have.",
+            "Yes, I do.",
+            "Yes, it is."
+          ],
+          "key": "A"
+        },
+        {
+          "a": "What did you do in the music lesson?",
+          "options": [
+            "We sing.",
+            "We are singing.",
+            "We sang a new song."
+          ],
+          "key": "C"
+        },
+        {
+          "a": "Would you like to read to the class?",
+          "options": [
+            "Yes, please.",
+            "Yes, I read.",
+            "Yes, it's a class."
+          ],
+          "key": "A"
+        },
+        {
+          "a": "See you on Monday, Nick.",
+          "options": [
+            "Goodbye, Miss Green.",
+            "I saw you.",
+            "It's Monday."
+          ],
+          "key": "A"
+        }
+      ]
+    },
+    "p3": {
+      "type": "gapped_text_title",
+      "words": [
+        "school",
+        "library",
+        "found",
+        "clock",
+        "quiet",
+        "rain",
+        "books",
+        "under",
+        "happy"
+      ],
+      "text": "Zoe loves her __(0)__, but she doesn't like Wednesdays because there is no sport. Last Wednesday it started to __(1)__, so the children couldn't go outside at break. 'Let's go to the __(2)__,' said Zoe's teacher. Zoe looked at all the __(3)__ on the tables. Then she __(4)__ a big book about horses with beautiful pictures in it. She read it in a __(5)__ place next to the window. Now Zoe likes Wednesdays too.",
+      "example": "school",
+      "key": [
+        "rain",
+        "library",
+        "books",
+        "found",
+        "quiet"
+      ],
+      "title_choices": [
+        "Zoe's best Wednesday",
+        "The new sports teacher",
+        "Zoe's horse"
+      ],
+      "title_key": "A"
+    },
+    "p4": {
+      "type": "mc_cloze",
+      "title": "Schools around the world",
+      "text": "Children go to school in every country, but schools are different in every country. In some places children __(0)__ blue and white clothes, and in some places they wear what they like. Most children start school __(1)__ they are five or six years old. In hot countries, lessons sometimes start __(2)__ seven o'clock in the morning, when it is cool. Some children live near a big river, so they go to school __(3)__ boat! In every school, children learn __(4)__ read and write and they play with __(5)__ friends.",
+      "example": {
+        "options": [
+          "wear",
+          "wears",
+          "wearing"
+        ],
+        "key": "A"
+      },
+      "items": [
+        {
+          "options": [
+            "when",
+            "what",
+            "who"
+          ],
+          "key": "A"
+        },
+        {
+          "options": [
+            "in",
+            "at",
+            "on"
+          ],
+          "key": "B"
+        },
+        {
+          "options": [
+            "by",
+            "with",
+            "from"
+          ],
+          "key": "A"
+        },
+        {
+          "options": [
+            "to",
+            "for",
+            "of"
+          ],
+          "key": "A"
+        },
+        {
+          "options": [
+            "they",
+            "them",
+            "their"
+          ],
+          "key": "C"
+        }
+      ]
+    },
+    "p5": {
+      "type": "story_completion",
+      "title": "The school picnic",
+      "image": "R5",
+      "parts": [
+        {
+          "text": "On the last day of school, Miss Green took the children to the park for a picnic. Every child brought something to eat. Nick brought a big cake and Kim brought twenty sandwiches for all the class.",
+          "examples": [
+            {
+              "s": "Miss Green took the children to the ___.",
+              "a": "park"
+            },
+            {
+              "s": "They went there for a ___.",
+              "a": "picnic"
+            }
+          ],
+          "items": [
+            {
+              "s": "Nick brought a big ___.",
+              "a": [
+                "cake"
+              ]
+            },
+            {
+              "s": "Kim brought ___ sandwiches.",
+              "a": [
+                "twenty",
+                "20"
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The children put the food on a red blanket under a tree. Then they played football. Nobody looked at the food, and a big brown dog came and took the cake! It ran to the river with the cake in its mouth.",
+          "items": [
+            {
+              "s": "They put the food on a red ___.",
+              "a": [
+                "blanket"
+              ]
+            },
+            {
+              "s": "A big brown ___ took the cake.",
+              "a": [
+                "dog"
+              ]
+            },
+            {
+              "s": "It ran to the ___.",
+              "a": [
+                "river"
+              ]
+            }
+          ]
+        },
+        {
+          "text": "The children were sad, but Miss Green smiled. She opened her bag and there were twenty-five little cakes inside! 'I make cakes every Sunday,' she said. It was the best picnic of the year.",
+          "items": [
+            {
+              "s": "There were twenty-five little cakes in Miss Green's ___.",
+              "a": [
+                "bag"
+              ]
+            },
+            {
+              "s": "Miss Green makes cakes every ___.",
+              "a": [
+                "Sunday"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "p6": {
+      "type": "productive_writing",
+      "image": "R6",
+      "scene": "A school playground at break: a boy is kicking a football, two girls are jumping with a rope, a teacher is drinking a cup of tea, a small girl is eating an apple under a tree, a bird is on the wall and there are three bikes next to the door.",
+      "examples": [
+        {
+          "s": "The boy is kicking a ___.",
+          "a": "football"
+        },
+        {
+          "q": "What are the two girls doing?",
+          "a": "jumping"
+        }
+      ],
+      "complete": [
+        {
+          "s": "The teacher is drinking a cup of ___.",
+          "a": [
+            "tea"
+          ]
+        },
+        {
+          "s": "The small girl is eating an ___.",
+          "a": [
+            "apple"
+          ]
+        }
+      ],
+      "answer": [
+        {
+          "q": "Where is the bird?",
+          "model": "It is on the wall."
+        },
+        {
+          "q": "How many bikes are there?",
+          "model": "There are three (bikes)."
+        }
+      ],
+      "write": {
+        "n": 2,
+        "model": [
+          "The children are playing in the playground.",
+          "There is a big tree next to the wall."
+        ]
+      }
+    }
+  },
+  "speaking": {
+    "p1": {
+      "type": "find_differences",
+      "image": "S1",
+      "scene": "Two pictures of the same classroom. Left: the examiner's picture. Right: your picture.",
+      "examiner": "Look at the two pictures. Here the teacher is writing on the board, but here she is reading a book. What other differences can you see?",
+      "differences": [
+        "In your picture there are four children, but in my picture there are three.",
+        "In your picture the bag is on the desk, but in my picture it is under the desk.",
+        "In your picture the window is open, but in my picture it is closed.",
+        "In your picture the clock says three o'clock, but in my picture it says two o'clock.",
+        "In your picture there is a plant next to the door, but in my picture there is a box."
+      ]
+    },
+    "p2": {
+      "type": "picture_sequence",
+      "title": "Nick's homework",
+      "image": "S2",
+      "examiner_open": "These pictures show a story. It's called 'Nick's homework'. Look at the pictures first. Nick is doing his homework at his desk when his friends come to the window. Now you tell the story.",
+      "frames": [
+        "Nick is doing his homework at his desk. His friends come to the window and ask him to play football.",
+        "Nick goes out to play with his friends. They play football in the park and Nick is very happy.",
+        "It is late. Nick comes home and looks at his desk. His homework isn't finished and he is worried.",
+        "Nick gets up early in the morning and finishes his homework before school. His teacher is happy with him."
+      ]
+    },
+    "p3": {
+      "type": "odd_one_out",
+      "sets": [
+        {
+          "pics": [
+            "pencil",
+            "pen",
+            "ruler",
+            "banana"
+          ],
+          "odd": 3,
+          "reason": "You don't write with a banana. You eat it."
+        },
+        {
+          "pics": [
+            {
+              "word": "classroom",
+              "emoji": "🏫"
+            },
+            {
+              "word": "library",
+              "emoji": "📚"
+            },
+            {
+              "word": "playground",
+              "emoji": "🛝"
+            },
+            {
+              "word": "kitchen",
+              "emoji": "🍳"
+            }
+          ],
+          "odd": 3,
+          "reason": "A kitchen is in a house, not in a school."
+        },
+        {
+          "pics": [
+            "book",
+            "desk",
+            "board",
+            "cow"
+          ],
+          "odd": 3,
+          "reason": "A cow isn't in the classroom. It lives on a farm."
+        },
+        {
+          "pics": [
+            "football",
+            "tennis",
+            "swimming",
+            "sleeping"
+          ],
+          "odd": 3,
+          "reason": "Sleeping isn't a sport. You do it at night."
+        }
+      ]
+    },
+    "p4": {
+      "type": "personal_questions",
+      "topic": "your school",
+      "questions": [
+        {
+          "q": "How do you go to school?",
+          "model": "I go by bus with my sister."
+        },
+        {
+          "q": "What is your favourite lesson? Why?",
+          "model": "Music, because I like singing."
+        },
+        {
+          "q": "What do you do at break?",
+          "model": "I play football with my friends."
+        },
+        {
+          "q": "Have you got a lot of homework?",
+          "model": "Yes, I do my homework after dinner."
+        },
+        {
+          "q": "Tell me about your classroom.",
+          "model": "My classroom is big. There are twenty desks and a lot of pictures on the wall."
+        }
+      ]
+    }
+  },
+  "audio": {
+    "p1": [
+      [
+        "R",
+        "Part One. Look at the picture. Listen and look. There is one example."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "Fch",
+        "Look, Dad. This is my school at break."
+      ],
+      [
+        "M",
+        "Who's the girl under the tree? She's got a book."
+      ],
+      [
+        "Fch",
+        "That's Jane. She reads every day at break."
+      ],
+      [
+        "M",
+        "She likes books, then."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Can you see the line? This is an example. Now you listen and draw lines."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "One."
+      ],
+      [
+        "M",
+        "And who's that boy in the playground? He's playing football."
+      ],
+      [
+        "Fch",
+        "That's Nick. He plays football every break. He never stops!"
+      ],
+      [
+        "M",
+        "He's a good player."
+      ],
+      [
+        "pause",
+        5
+      ],
+      [
+        "R",
+        "Two."
+      ],
+      [
+        "M",
+        "Who's the woman writing on the board?"
+      ],
+      [
+        "Fch",
+        "That's Kim. She's a new teacher and she's very funny."
+      ],
+      [
+        "M",
+        "What is she writing?"
+      ],
+      [
+        "Fch",
+        "Our homework for Monday."
+      ],
+      [
+        "pause",
+        5
+      ],
+      [
+        "R",
+        "Three."
+      ],
+      [
+        "Fch",
+        "Can you see the boy with the paints?"
+      ],
+      [
+        "M",
+        "Yes. He's painting an animal. Is it a horse?"
+      ],
+      [
+        "Fch",
+        "Yes! That's Paul. He paints horses every day."
+      ],
+      [
+        "pause",
+        5
+      ],
+      [
+        "R",
+        "Four."
+      ],
+      [
+        "M",
+        "And the girl at the table with the sandwich?"
+      ],
+      [
+        "Fch",
+        "That's Zoe. She's always hungry. She eats her lunch at break!"
+      ],
+      [
+        "M",
+        "Oh dear!"
+      ],
+      [
+        "pause",
+        5
+      ],
+      [
+        "R",
+        "Five."
+      ],
+      [
+        "Fch",
+        "And that boy is carrying five books to the library."
+      ],
+      [
+        "M",
+        "Five! What's his name?"
+      ],
+      [
+        "Fch",
+        "Matt. He helps the teacher every day."
+      ],
+      [
+        "pause",
+        5
+      ],
+      [
+        "R",
+        "Now listen to Part One again."
+      ]
+    ],
+    "p2": [
+      [
+        "R",
+        "Part Two. Listen and look. There is one example."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "Mch",
+        "Mum, we've got a school trip next week!"
+      ],
+      [
+        "F",
+        "That's nice. Which day? Monday?"
+      ],
+      [
+        "Mch",
+        "No, Friday. All day."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Can you see the answer? Now you listen and write."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "One."
+      ],
+      [
+        "F",
+        "Which teacher is going with you?"
+      ],
+      [
+        "Mch",
+        "Miss Green. G-R-E-E-N."
+      ],
+      [
+        "F",
+        "Oh, I like Miss Green. She's very kind."
+      ],
+      [
+        "pause",
+        8
+      ],
+      [
+        "R",
+        "Two."
+      ],
+      [
+        "F",
+        "How many children are going?"
+      ],
+      [
+        "Mch",
+        "Twenty-eight. All my class and some children from the other class."
+      ],
+      [
+        "F",
+        "Twenty-eight! That's a big bus."
+      ],
+      [
+        "pause",
+        8
+      ],
+      [
+        "R",
+        "Three."
+      ],
+      [
+        "Mch",
+        "We must bring some food."
+      ],
+      [
+        "F",
+        "And a drink?"
+      ],
+      [
+        "Mch",
+        "Yes, a bottle of water. Not juice, because the teacher says water is better."
+      ],
+      [
+        "pause",
+        8
+      ],
+      [
+        "R",
+        "Four."
+      ],
+      [
+        "F",
+        "When do you start? Nine o'clock?"
+      ],
+      [
+        "Mch",
+        "No, we must be at the school at eight. The bus can't wait."
+      ],
+      [
+        "F",
+        "Eight o'clock! We must get up early."
+      ],
+      [
+        "pause",
+        8
+      ],
+      [
+        "R",
+        "Five."
+      ],
+      [
+        "F",
+        "Do you need your sports shoes?"
+      ],
+      [
+        "Mch",
+        "No, Miss Green says we must wear our boots, because we're going to walk in the countryside."
+      ],
+      [
+        "F",
+        "Boots. They're in the cupboard."
+      ],
+      [
+        "pause",
+        8
+      ],
+      [
+        "R",
+        "Now listen to Part Two again."
+      ]
+    ],
+    "p3": [
+      [
+        "R",
+        "Part Three. Listen and look. There is one example."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Kim is talking about what her friends do after school. What does each child do?"
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "M",
+        "Kim, what do you do after school?"
+      ],
+      [
+        "Fch",
+        "I paint. I've got paints in my bedroom and I paint every afternoon."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Can you see the letter C? Now you listen and write a letter in each box."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "M",
+        "And what about Nick?"
+      ],
+      [
+        "Fch",
+        "Nick plays football. He's in a school team and they play in the park."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "M",
+        "Does Zoe paint with you?"
+      ],
+      [
+        "Fch",
+        "No, Zoe goes swimming. She's very fast in the water."
+      ],
+      [
+        "M",
+        "That's good."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "M",
+        "What does Paul do?"
+      ],
+      [
+        "Fch",
+        "He plays the guitar. His brother teaches him and now he plays very well."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "M",
+        "And Jane?"
+      ],
+      [
+        "Fch",
+        "Jane reads. Books, books and more books! She reads two books every week."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "M",
+        "Last one. Matt?"
+      ],
+      [
+        "Fch",
+        "Matt rides his bike. He goes to the park with his dog and rides for two hours."
+      ],
+      [
+        "M",
+        "You've all got something to do!"
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Now listen to Part Three again."
+      ]
+    ],
+    "p4": [
+      [
+        "R",
+        "Part Four. Look at the pictures. Listen and look. There is one example."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "What has Sue got in her school bag?"
+      ],
+      [
+        "Fch",
+        "Have you got a pencil, Sue? I can't find mine."
+      ],
+      [
+        "Fch",
+        "No, sorry. I've only got a ruler in my bag today."
+      ],
+      [
+        "Fch",
+        "No book?"
+      ],
+      [
+        "Fch",
+        "No, my books are in the classroom."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Can you see the tick? Now you listen and tick the box."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "One. Where is the teacher now?"
+      ],
+      [
+        "Mch",
+        "Is Miss Green in the classroom?"
+      ],
+      [
+        "Fch",
+        "No, she isn't. She's in the library with the new books."
+      ],
+      [
+        "Mch",
+        "Not in the playground?"
+      ],
+      [
+        "Fch",
+        "No, it's raining!"
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Two. What is Matt drawing?"
+      ],
+      [
+        "F",
+        "That's a nice picture, Matt. Is it a dog?"
+      ],
+      [
+        "Mch",
+        "No, Miss Green. It's a bird. Look, it's got two big wings."
+      ],
+      [
+        "F",
+        "Of course! It's beautiful."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Three. What did the children have for lunch?"
+      ],
+      [
+        "M",
+        "Did you have soup for lunch today?"
+      ],
+      [
+        "Fch",
+        "No, Dad. We had pasta with tomatoes. We have chicken on Thursdays."
+      ],
+      [
+        "M",
+        "Pasta! My favourite."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Four. When is the music lesson?"
+      ],
+      [
+        "Fch",
+        "Have we got music on Monday?"
+      ],
+      [
+        "Mch",
+        "No, on Monday we've got sport. Music is on Thursday."
+      ],
+      [
+        "Fch",
+        "Thursday. And on Tuesday?"
+      ],
+      [
+        "Mch",
+        "Nothing! We paint."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Five. How does Zoe go to school?"
+      ],
+      [
+        "M",
+        "Zoe, does your mother take you to school in the car?"
+      ],
+      [
+        "Fch",
+        "No, I go on my bike. My brother goes by bus, but I like my bike."
+      ],
+      [
+        "M",
+        "It's a good way to start the day."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Now listen to Part Four again."
+      ]
+    ],
+    "p5": [
+      [
+        "R",
+        "Part Five. Look at the picture. Listen and look. There is one example."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "M",
+        "Here's a picture of a classroom. Can you see the clock on the wall?"
+      ],
+      [
+        "Fch",
+        "Yes, next to the door."
+      ],
+      [
+        "M",
+        "Colour it red, please."
+      ],
+      [
+        "Fch",
+        "A red clock. OK."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Can you see the red clock? This is an example. Now you listen and colour and write."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "One."
+      ],
+      [
+        "M",
+        "Now, can you see the bag under the desk?"
+      ],
+      [
+        "Fch",
+        "Yes, the school bag."
+      ],
+      [
+        "M",
+        "Colour it green, please."
+      ],
+      [
+        "Fch",
+        "A green bag. Finished."
+      ],
+      [
+        "pause",
+        10
+      ],
+      [
+        "R",
+        "Two."
+      ],
+      [
+        "Fch",
+        "There's a plant next to the window. Can I colour it?"
+      ],
+      [
+        "M",
+        "Yes, but not green. Colour it orange!"
+      ],
+      [
+        "Fch",
+        "An orange plant! That's funny."
+      ],
+      [
+        "pause",
+        10
+      ],
+      [
+        "R",
+        "Three."
+      ],
+      [
+        "M",
+        "Can you see the picture on the wall? There's a boat in it."
+      ],
+      [
+        "Fch",
+        "Yes, a little boat."
+      ],
+      [
+        "M",
+        "Colour the boat blue, please."
+      ],
+      [
+        "Fch",
+        "A blue boat. Done."
+      ],
+      [
+        "pause",
+        10
+      ],
+      [
+        "R",
+        "Four."
+      ],
+      [
+        "Fch",
+        "Can I write something now?"
+      ],
+      [
+        "M",
+        "Yes. There's a big board on the wall with nothing on it. Write the word 'class'. C-L-A-S-S."
+      ],
+      [
+        "Fch",
+        "Class. C-L-A-S-S. Finished!"
+      ],
+      [
+        "pause",
+        10
+      ],
+      [
+        "R",
+        "Five."
+      ],
+      [
+        "M",
+        "And now the ball in the box in the corner. Colour it purple, please."
+      ],
+      [
+        "Fch",
+        "A purple ball. That's a funny classroom now!"
+      ],
+      [
+        "M",
+        "Well done."
+      ],
+      [
+        "pause",
+        10
+      ],
+      [
+        "R",
+        "Now listen to Part Five again."
+      ]
+    ]
+  }
+}

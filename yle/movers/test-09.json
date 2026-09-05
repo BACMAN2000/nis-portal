@@ -1,0 +1,1490 @@
+{
+  "level": "movers",
+  "number": 9,
+  "theme": "Weather and clothes",
+  "listening": {
+    "p1": {
+      "type": "draw_lines",
+      "image": "L1",
+      "scene": "A park on a windy day with black clouds in the sky. Six people are wearing different clothes: some are running to the trees because it is starting to rain.",
+      "names": [
+        "Vicky",
+        "Tom",
+        "Jill",
+        "Hugo",
+        "Sue",
+        "Nick",
+        "Kim"
+      ],
+      "people": [
+        {
+          "id": "A",
+          "desc": "a girl in a red coat with a big bag"
+        },
+        {
+          "id": "B",
+          "desc": "a boy in a green hat and long trousers"
+        },
+        {
+          "id": "C",
+          "desc": "a woman in a long blue dress under a tree"
+        },
+        {
+          "id": "D",
+          "desc": "a man with a black jacket and big boots"
+        },
+        {
+          "id": "E",
+          "desc": "a girl in shorts and a white T-shirt running"
+        },
+        {
+          "id": "F",
+          "desc": "a boy with a yellow scarf and a dog"
+        }
+      ],
+      "example": {
+        "name": "Vicky",
+        "person": "A"
+      },
+      "items": [
+        {
+          "name": "Tom",
+          "person": "B"
+        },
+        {
+          "name": "Jill",
+          "person": "C"
+        },
+        {
+          "name": "Hugo",
+          "person": "D"
+        },
+        {
+          "name": "Sue",
+          "person": "E"
+        },
+        {
+          "name": "Nick",
+          "person": "F"
+        }
+      ]
+    },
+    "p2": {
+      "type": "note_taking",
+      "heading": "A day at the beach",
+      "example": {
+        "q": "Day of the trip:",
+        "a": "Sunday"
+      },
+      "items": [
+        {
+          "q": "Name of the beach:",
+          "a": "Sandy"
+        },
+        {
+          "q": "The weather is going to be:",
+          "a": "hot"
+        },
+        {
+          "q": "Number of towels to take:",
+          "a": "4"
+        },
+        {
+          "q": "Take your:",
+          "a": "hat"
+        },
+        {
+          "q": "Come home before:",
+          "a": "7"
+        }
+      ]
+    },
+    "p3": {
+      "type": "match_letters",
+      "intro": "Jill is telling her father what her friends are wearing today. What is each child wearing?",
+      "pictures": [
+        {
+          "letter": "A",
+          "word": "a red coat",
+          "emoji": "🧥"
+        },
+        {
+          "letter": "B",
+          "word": "boots",
+          "emoji": "🥾"
+        },
+        {
+          "letter": "C",
+          "word": "a hat",
+          "emoji": "🧢"
+        },
+        {
+          "letter": "D",
+          "word": "a scarf",
+          "emoji": "🧣"
+        },
+        {
+          "letter": "E",
+          "word": "shorts",
+          "emoji": "🩳"
+        },
+        {
+          "letter": "F",
+          "word": "a skirt",
+          "emoji": "👗"
+        },
+        {
+          "letter": "G",
+          "word": "a jumper",
+          "emoji": "🧶"
+        },
+        {
+          "letter": "H",
+          "word": "glasses",
+          "emoji": "👓"
+        }
+      ],
+      "example": {
+        "who": "Jill",
+        "letter": "F"
+      },
+      "items": [
+        {
+          "who": "Tom",
+          "letter": "B"
+        },
+        {
+          "who": "Sue",
+          "letter": "E"
+        },
+        {
+          "who": "Nick",
+          "letter": "D"
+        },
+        {
+          "who": "Kim",
+          "letter": "C"
+        },
+        {
+          "who": "Hugo",
+          "letter": "A"
+        }
+      ]
+    },
+    "p4": {
+      "type": "mc_pictures",
+      "example": {
+        "q": "What is the weather like today?",
+        "pics": [
+          {
+            "word": "sunny",
+            "emoji": "☀️"
+          },
+          {
+            "word": "rain",
+            "emoji": "🌧️"
+          },
+          {
+            "word": "cloudy",
+            "emoji": "☁️"
+          }
+        ],
+        "options": [
+          "sunny",
+          "rain",
+          "cloudy"
+        ],
+        "key": "C"
+      },
+      "items": [
+        {
+          "q": "What is Tom going to wear?",
+          "pics": [
+            {
+              "word": "a coat",
+              "emoji": "🧥"
+            },
+            {
+              "word": "a jacket",
+              "emoji": "👔"
+            },
+            {
+              "word": "a shirt",
+              "emoji": "👕"
+            }
+          ],
+          "options": [
+            "a coat",
+            "a jacket",
+            "a shirt"
+          ],
+          "key": "A"
+        },
+        {
+          "q": "Where are Sue's shoes?",
+          "pics": [
+            {
+              "word": "under the bed",
+              "emoji": "🛏️"
+            },
+            {
+              "word": "in the cupboard",
+              "emoji": "🚪"
+            },
+            {
+              "word": "next to the door",
+              "emoji": "🔑"
+            }
+          ],
+          "options": [
+            "under the bed",
+            "in the cupboard",
+            "next to the door"
+          ],
+          "key": "C"
+        },
+        {
+          "q": "What did the children do in the rain?",
+          "pics": [
+            {
+              "word": "played football",
+              "emoji": "⚽"
+            },
+            {
+              "word": "watched TV",
+              "emoji": "📺"
+            },
+            {
+              "word": "painted",
+              "emoji": "🎨"
+            }
+          ],
+          "options": [
+            "played football",
+            "watched TV",
+            "painted"
+          ],
+          "key": "C"
+        },
+        {
+          "q": "Which is Kim's new hat?",
+          "pics": [
+            {
+              "word": "with flowers",
+              "emoji": "🌼"
+            },
+            {
+              "word": "with stars",
+              "emoji": "⭐"
+            },
+            {
+              "word": "with a bird",
+              "emoji": "🐦"
+            }
+          ],
+          "options": [
+            "the hat with flowers",
+            "the hat with stars",
+            "the hat with a bird"
+          ],
+          "key": "B"
+        },
+        {
+          "q": "What is Grandma doing now?",
+          "pics": [
+            {
+              "word": "reading",
+              "emoji": "📖"
+            },
+            {
+              "word": "cooking",
+              "emoji": "🍳"
+            },
+            {
+              "word": "sleeping",
+              "emoji": "😴"
+            }
+          ],
+          "options": [
+            "reading",
+            "cooking",
+            "sleeping"
+          ],
+          "key": "A"
+        }
+      ]
+    },
+    "p5": {
+      "type": "colour_write",
+      "image": "L5",
+      "scene": "A bedroom before a trip: a coat on the bed, a hat on a chair, two boots under the desk, a scarf on the door, a bag next to the window and a small board on the wall with nothing written on it.",
+      "example": {
+        "what": "the coat",
+        "where": "on the bed",
+        "colour": "red"
+      },
+      "items": [
+        {
+          "what": "the hat",
+          "where": "on the chair",
+          "colour": "green"
+        },
+        {
+          "what": "the boots",
+          "where": "under the desk",
+          "colour": "brown"
+        },
+        {
+          "what": "the scarf",
+          "where": "on the door",
+          "colour": "purple"
+        },
+        {
+          "what": "the board",
+          "where": "on the wall",
+          "write": "RAIN"
+        },
+        {
+          "what": "the bag",
+          "where": "next to the window",
+          "colour": "blue"
+        }
+      ]
+    }
+  },
+  "rw": {
+    "p1": {
+      "type": "definitions_copy",
+      "words": [
+        "a scarf",
+        "boots",
+        "a coat",
+        "the sky",
+        "a cloud",
+        "the wind",
+        "shorts",
+        "the sun"
+      ],
+      "pics": {
+        "a scarf": "🧣",
+        "boots": "🥾",
+        "a coat": "🧥",
+        "the sky": "🌌",
+        "a cloud": "☁️",
+        "the wind": "💨",
+        "shorts": "🩳",
+        "the sun": "☀️"
+      },
+      "example": {
+        "def": "You wear this on your neck when it is cold.",
+        "word": "a scarf"
+      },
+      "items": [
+        {
+          "def": "You put these on your feet when you walk in the rain or on a farm.",
+          "word": "boots"
+        },
+        {
+          "def": "This is white or grey and it lives in the sky. Rain comes from it.",
+          "word": "a cloud"
+        },
+        {
+          "def": "You wear this when it is very cold outside. It is big and long.",
+          "word": "a coat"
+        },
+        {
+          "def": "You can't see this, but it moves the trees and your hair.",
+          "word": "the wind"
+        },
+        {
+          "def": "This is very hot and yellow. You can see it in the sky on a beautiful day.",
+          "word": "the sun"
+        }
+      ]
+    },
+    "p2": {
+      "type": "dialogue_mc3",
+      "speakerA": "Mum",
+      "speakerB": "Jill",
+      "example": {
+        "a": "Are you coming, Jill? We must go now.",
+        "options": [
+          "Yes, I'm coming!",
+          "Yes, I come.",
+          "Yes, it's a bag."
+        ],
+        "key": "A"
+      },
+      "items": [
+        {
+          "a": "It's very cold. Where's your coat?",
+          "options": [
+            "It's a coat.",
+            "It's on my bed.",
+            "I coated it."
+          ],
+          "key": "B"
+        },
+        {
+          "a": "Take your boots too. It's going to rain.",
+          "options": [
+            "OK, I'll take it.",
+            "It rained a lot.",
+            "Yes, they're boots."
+          ],
+          "key": "A"
+        },
+        {
+          "a": "Why are you wearing shorts?",
+          "options": [
+            "They're shorts.",
+            "Because I'm hot.",
+            "I wore shorts."
+          ],
+          "key": "B"
+        },
+        {
+          "a": "Look at those black clouds!",
+          "options": [
+            "Let's run home!",
+            "I like black.",
+            "They're clouds."
+          ],
+          "key": "A"
+        },
+        {
+          "a": "Are your shoes wet?",
+          "options": [
+            "Yes, they are.",
+            "Yes, they do.",
+            "Yes, it is."
+          ],
+          "key": "A"
+        },
+        {
+          "a": "Then put them in the kitchen.",
+          "options": [
+            "Good idea, Mum.",
+            "I put it.",
+            "It's a shoe."
+          ],
+          "key": "A"
+        }
+      ]
+    },
+    "p3": {
+      "type": "gapped_text_title",
+      "words": [
+        "beach",
+        "rain",
+        "sun",
+        "hat",
+        "wet",
+        "sandwiches",
+        "played",
+        "car",
+        "laughed"
+      ],
+      "text": "Last Sunday, Hugo's family went to the __(0)__. In the morning there was a lot of __(1)__ in the sky and all the family was hot. Hugo's father put a big __(2)__ on his head and slept under a tree. After lunch, black clouds came and it started to __(3)__. Everybody ran to the __(4)__ with the bags and the towels. They were very __(5)__, but they ate their sandwiches inside the car and Hugo's mother said it was the best day of the year.",
+      "example": "beach",
+      "key": [
+        "sun",
+        "hat",
+        "rain",
+        "car",
+        "wet"
+      ],
+      "title_choices": [
+        "A wet day at the beach",
+        "Hugo's new boat",
+        "The football game"
+      ],
+      "title_key": "A"
+    },
+    "p4": {
+      "type": "mc_cloze",
+      "title": "Rain",
+      "text": "Rain is water __(0)__ falls from the clouds. Plants and animals need it, and so do we: we drink water and we wash __(1)__ it. In some countries it rains nearly every day, and in some countries it __(2)__ rains. When it is very cold, the rain is white and cold, and children __(3)__ play with it. After the rain, you can sometimes see a rainbow in the sky. It __(4)__ got seven colours and it is one of the __(5)__ things in the world.",
+      "example": {
+        "options": [
+          "which",
+          "who",
+          "when"
+        ],
+        "key": "A"
+      },
+      "items": [
+        {
+          "options": [
+            "with",
+            "of",
+            "for"
+          ],
+          "key": "A"
+        },
+        {
+          "options": [
+            "always",
+            "never",
+            "often"
+          ],
+          "key": "B"
+        },
+        {
+          "options": [
+            "can",
+            "must",
+            "are"
+          ],
+          "key": "A"
+        },
+        {
+          "options": [
+            "has",
+            "have",
+            "having"
+          ],
+          "key": "A"
+        },
+        {
+          "options": [
+            "beautiful",
+            "more beautiful",
+            "most beautiful"
+          ],
+          "key": "C"
+        }
+      ]
+    },
+    "p5": {
+      "type": "story_completion",
+      "title": "The wind and the hat",
+      "image": "R5",
+      "parts": [
+        {
+          "text": "It was Kim's birthday and her grandmother gave her a beautiful hat. It was white with little blue stars on it. Kim loved it and she wore it every day, at school and in the park.",
+          "examples": [
+            {
+              "s": "Kim's grandmother gave her a ___.",
+              "a": "hat"
+            },
+            {
+              "s": "The hat was white with blue ___ on it.",
+              "a": "stars"
+            }
+          ],
+          "items": [
+            {
+              "s": "It was Kim's ___.",
+              "a": [
+                "birthday"
+              ]
+            },
+            {
+              "s": "She wore the hat at school and in the ___.",
+              "a": [
+                "park"
+              ]
+            }
+          ]
+        },
+        {
+          "text": "One windy afternoon, Kim was walking next to the river with her brother. Suddenly the wind took the hat off her head! It went up into a big tree and Kim started to cry.",
+          "items": [
+            {
+              "s": "Kim was walking next to the ___ with her brother.",
+              "a": [
+                "river"
+              ]
+            },
+            {
+              "s": "The ___ took the hat off her head.",
+              "a": [
+                "wind"
+              ]
+            },
+            {
+              "s": "The hat went up into a big ___.",
+              "a": [
+                "tree"
+              ]
+            }
+          ]
+        },
+        {
+          "text": "Kim's brother is very good at climbing. He went up the tree slowly and got the hat. Then he saw three little eggs in the tree, so he came down very quietly. 'Don’t tell the children at school,' said Kim. 'This is our tree now.'",
+          "items": [
+            {
+              "s": "Kim's brother went up the ___ and got the hat.",
+              "a": [
+                "tree"
+              ]
+            },
+            {
+              "s": "He saw three little ___ in the tree.",
+              "a": [
+                "eggs"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "p6": {
+      "type": "productive_writing",
+      "image": "R6",
+      "scene": "A rainy street: a woman in a green coat is walking a dog, a boy in red boots is jumping in the water, a girl in a yellow coat is running to the bus, a man is closing a window, a cat is under a car and there are black clouds in the sky.",
+      "examples": [
+        {
+          "s": "The woman is wearing a green ___.",
+          "a": "coat"
+        },
+        {
+          "q": "What is the boy in red boots doing?",
+          "a": "jumping in the water"
+        }
+      ],
+      "complete": [
+        {
+          "s": "The girl in the yellow coat is running to the ___.",
+          "a": [
+            "bus"
+          ]
+        },
+        {
+          "s": "The man is closing a ___.",
+          "a": [
+            "window"
+          ]
+        }
+      ],
+      "answer": [
+        {
+          "q": "Where is the cat?",
+          "model": "It is under a car."
+        },
+        {
+          "q": "What is the weather like?",
+          "model": "It is raining. / It is wet and cloudy."
+        }
+      ],
+      "write": {
+        "n": 2,
+        "model": [
+          "The people in the street are wet.",
+          "The clouds are very black today."
+        ]
+      }
+    }
+  },
+  "speaking": {
+    "p1": {
+      "type": "find_differences",
+      "image": "S1",
+      "scene": "Two pictures of the same park on a windy day. Left: the examiner's picture. Right: your picture.",
+      "examiner": "Look at the two pictures. Here the girl is wearing a red coat, but here she is wearing a blue coat. What other differences can you see?",
+      "differences": [
+        "In your picture the boy has got a ball, but in my picture he has got a dog.",
+        "In your picture there are three clouds, but in my picture there are five.",
+        "In your picture the dog is running, but in my picture it is sleeping.",
+        "In your picture the man is wearing boots, but in my picture he is wearing shoes.",
+        "In your picture there is a bird in the tree, but in my picture the tree is empty."
+      ]
+    },
+    "p2": {
+      "type": "picture_sequence",
+      "title": "A cold day",
+      "image": "S2",
+      "examiner_open": "These pictures show a story. It's called 'A cold day'. Look at the pictures first. Tom looks out of the window and it is a very cold morning. Now you tell the story.",
+      "frames": [
+        "Tom looks out of the window. It is very cold and there is water on the ground.",
+        "Tom puts on his coat, his scarf and his boots. His mother gives him his gloves too.",
+        "Tom is walking to school when he sees a little cat next to a wall. The cat is cold and wet.",
+        "Tom takes the cat home. Now the cat is sleeping in the kitchen with Tom's scarf."
+      ]
+    },
+    "p3": {
+      "type": "odd_one_out",
+      "sets": [
+        {
+          "pics": [
+            "coat",
+            "scarf",
+            "hat",
+            "chair"
+          ],
+          "odd": 3,
+          "reason": "You don't wear a chair. You sit on it."
+        },
+        {
+          "pics": [
+            {
+              "word": "sun",
+              "emoji": "☀️"
+            },
+            {
+              "word": "cloud",
+              "emoji": "☁️"
+            },
+            {
+              "word": "wind",
+              "emoji": "💨"
+            },
+            {
+              "word": "table",
+              "emoji": "🍽️"
+            }
+          ],
+          "odd": 3,
+          "reason": "A table isn't weather. It's in your house."
+        },
+        {
+          "pics": [
+            "boots",
+            "shoes",
+            "socks",
+            "glasses"
+          ],
+          "odd": 3,
+          "reason": "You wear glasses on your face, not on your feet."
+        },
+        {
+          "pics": [
+            "hot",
+            "cold",
+            "wet",
+            "happy"
+          ],
+          "odd": 3,
+          "reason": "Happy is about you, not about the weather."
+        }
+      ]
+    },
+    "p4": {
+      "type": "personal_questions",
+      "topic": "the weather and your clothes",
+      "questions": [
+        {
+          "q": "What is the weather like today?",
+          "model": "It is sunny and hot."
+        },
+        {
+          "q": "What do you wear when it is cold?",
+          "model": "I wear a coat, a scarf and boots."
+        },
+        {
+          "q": "Do you like the rain? Why?",
+          "model": "Yes, because I can jump in the water."
+        },
+        {
+          "q": "What is your favourite jacket like?",
+          "model": "It is blue and it has got a big pocket."
+        },
+        {
+          "q": "Tell me about a very hot day.",
+          "model": "Last year we went to the beach. It was very hot and we swam all day."
+        }
+      ]
+    }
+  },
+  "audio": {
+    "p1": [
+      [
+        "R",
+        "Part One. Look at the picture. Listen and look. There is one example."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "Fch",
+        "Look at this photo, Dad. It was very windy in the park."
+      ],
+      [
+        "M",
+        "I can see! Who's the girl in the red coat?"
+      ],
+      [
+        "Fch",
+        "That's Vicky. She’s got a big bag because it started to rain."
+      ],
+      [
+        "M",
+        "A good idea."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Can you see the line? This is an example. Now you listen and draw lines."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "One."
+      ],
+      [
+        "M",
+        "And who's the boy in the green hat?"
+      ],
+      [
+        "Fch",
+        "That's Tom. He's wearing long trousers because he's always cold."
+      ],
+      [
+        "M",
+        "Always!"
+      ],
+      [
+        "pause",
+        5
+      ],
+      [
+        "R",
+        "Two."
+      ],
+      [
+        "M",
+        "Who's the woman under the tree? She's got a long dress."
+      ],
+      [
+        "Fch",
+        "That's Jill's mother. The dress is blue. It's her favourite."
+      ],
+      [
+        "M",
+        "It's beautiful."
+      ],
+      [
+        "pause",
+        5
+      ],
+      [
+        "R",
+        "Three."
+      ],
+      [
+        "Fch",
+        "Can you see the man with the black jacket?"
+      ],
+      [
+        "M",
+        "The man with the big boots?"
+      ],
+      [
+        "Fch",
+        "Yes, that's Hugo. He works in the park, so he wears boots every day."
+      ],
+      [
+        "pause",
+        5
+      ],
+      [
+        "R",
+        "Four."
+      ],
+      [
+        "M",
+        "And that girl is running. She's wearing shorts!"
+      ],
+      [
+        "Fch",
+        "That's Sue. She never wears a coat. She says she's never cold."
+      ],
+      [
+        "M",
+        "Oh dear!"
+      ],
+      [
+        "pause",
+        5
+      ],
+      [
+        "R",
+        "Five."
+      ],
+      [
+        "Fch",
+        "And that boy has got a yellow scarf and a dog."
+      ],
+      [
+        "M",
+        "What's his name?"
+      ],
+      [
+        "Fch",
+        "Nick. His grandmother made the scarf for him."
+      ],
+      [
+        "pause",
+        5
+      ],
+      [
+        "R",
+        "Now listen to Part One again."
+      ]
+    ],
+    "p2": [
+      [
+        "R",
+        "Part Two. Listen and look. There is one example."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "Fch",
+        "Mum, when are we going to the beach? On Saturday?"
+      ],
+      [
+        "F",
+        "No, on Sunday. Your father works on Saturday."
+      ],
+      [
+        "Fch",
+        "Sunday. Good!"
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Can you see the answer? Now you listen and write."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "One."
+      ],
+      [
+        "Fch",
+        "Which beach are we going to?"
+      ],
+      [
+        "F",
+        "Sandy Beach. S-A-N-D-Y. It's the one with the little boats."
+      ],
+      [
+        "Fch",
+        "Sandy Beach! I love that one."
+      ],
+      [
+        "pause",
+        8
+      ],
+      [
+        "R",
+        "Two."
+      ],
+      [
+        "Fch",
+        "Is it going to rain?"
+      ],
+      [
+        "F",
+        "No, it's going to be hot. Very hot!"
+      ],
+      [
+        "Fch",
+        "Hot. Then I can swim."
+      ],
+      [
+        "pause",
+        8
+      ],
+      [
+        "R",
+        "Three."
+      ],
+      [
+        "F",
+        "Can you take the towels, please?"
+      ],
+      [
+        "Fch",
+        "How many? Three?"
+      ],
+      [
+        "F",
+        "Four. One for every person."
+      ],
+      [
+        "Fch",
+        "Four towels. They're in the bathroom."
+      ],
+      [
+        "pause",
+        8
+      ],
+      [
+        "R",
+        "Four."
+      ],
+      [
+        "F",
+        "And don't forget your hat!"
+      ],
+      [
+        "Fch",
+        "My hat? But I've got my glasses."
+      ],
+      [
+        "F",
+        "Glasses and a hat. The sun is very strong at the beach."
+      ],
+      [
+        "pause",
+        8
+      ],
+      [
+        "R",
+        "Five."
+      ],
+      [
+        "Fch",
+        "What time must we come home?"
+      ],
+      [
+        "F",
+        "Before seven. Grandma is coming for dinner."
+      ],
+      [
+        "Fch",
+        "Before seven. OK, Mum."
+      ],
+      [
+        "pause",
+        8
+      ],
+      [
+        "R",
+        "Now listen to Part Two again."
+      ]
+    ],
+    "p3": [
+      [
+        "R",
+        "Part Three. Listen and look. There is one example."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Jill is telling her father what her friends are wearing today. What is each child wearing?"
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "M",
+        "Jill, what are you wearing today?"
+      ],
+      [
+        "Fch",
+        "My new skirt. The green one with the flowers."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Can you see the letter F? Now you listen and write a letter in each box."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "M",
+        "And Tom?"
+      ],
+      [
+        "Fch",
+        "Tom's wearing his boots because he wants to jump in the water."
+      ],
+      [
+        "M",
+        "Ha ha! Boots for the rain."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "M",
+        "What about Sue?"
+      ],
+      [
+        "Fch",
+        "Sue's wearing shorts! In this weather! She's never cold."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "M",
+        "And Nick? Has he got his coat?"
+      ],
+      [
+        "Fch",
+        "He's wearing his scarf, the yellow one. His grandmother made it."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "M",
+        "Is Kim there?"
+      ],
+      [
+        "Fch",
+        "Yes, and she's wearing her new hat. It's white with blue stars."
+      ],
+      [
+        "M",
+        "That sounds nice."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "M",
+        "Last one. Hugo?"
+      ],
+      [
+        "Fch",
+        "Hugo's wearing a red coat. It's very big and it was his brother's."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Now listen to Part Three again."
+      ]
+    ],
+    "p4": [
+      [
+        "R",
+        "Part Four. Look at the pictures. Listen and look. There is one example."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "What is the weather like today?"
+      ],
+      [
+        "Mch",
+        "Is it sunny today, Mum? Can we go out?"
+      ],
+      [
+        "F",
+        "It isn't sunny, but it isn't raining. There are a lot of clouds."
+      ],
+      [
+        "Mch",
+        "Cloudy. That's OK for football."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Can you see the tick? Now you listen and tick the box."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "One. What is Tom going to wear?"
+      ],
+      [
+        "F",
+        "Tom, take your jacket. It's cold outside."
+      ],
+      [
+        "Mch",
+        "My jacket isn't warm. I'm going to wear my big coat."
+      ],
+      [
+        "F",
+        "Good. And a shirt under it."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Two. Where are Sue's shoes?"
+      ],
+      [
+        "Fch",
+        "Mum, are my shoes under the bed?"
+      ],
+      [
+        "F",
+        "No, I put them next to the door because they were wet."
+      ],
+      [
+        "Fch",
+        "Not in the cupboard?"
+      ],
+      [
+        "F",
+        "No, next to the door."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Three. What did the children do in the rain?"
+      ],
+      [
+        "M",
+        "What did you do yesterday? Did you watch TV?"
+      ],
+      [
+        "Fch",
+        "No, we couldn't play football because of the rain, so we painted pictures."
+      ],
+      [
+        "M",
+        "That's a good idea."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Four. Which is Kim's new hat?"
+      ],
+      [
+        "Mch",
+        "Is your new hat the one with the flowers?"
+      ],
+      [
+        "Fch",
+        "No, that's my old one. My new hat has got little stars on it."
+      ],
+      [
+        "Mch",
+        "And the hat with the bird?"
+      ],
+      [
+        "Fch",
+        "That's my sister's."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Five. What is Grandma doing now?"
+      ],
+      [
+        "Fch",
+        "Is Grandma sleeping?"
+      ],
+      [
+        "F",
+        "No, she's reading her book next to the window."
+      ],
+      [
+        "Fch",
+        "Is she going to cook dinner?"
+      ],
+      [
+        "F",
+        "Later. Now she's reading."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Now listen to Part Four again."
+      ]
+    ],
+    "p5": [
+      [
+        "R",
+        "Part Five. Look at the picture. Listen and look. There is one example."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "M",
+        "Here's a picture of a bedroom before a trip. Can you see the coat on the bed?"
+      ],
+      [
+        "Fch",
+        "Yes, the big coat."
+      ],
+      [
+        "M",
+        "Colour it red, please."
+      ],
+      [
+        "Fch",
+        "A red coat. OK."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "Can you see the red coat? This is an example. Now you listen and colour and write."
+      ],
+      [
+        "pause",
+        3
+      ],
+      [
+        "R",
+        "One."
+      ],
+      [
+        "M",
+        "Now, can you see the hat on the chair?"
+      ],
+      [
+        "Fch",
+        "Yes, it's a big hat."
+      ],
+      [
+        "M",
+        "Colour it green, please."
+      ],
+      [
+        "Fch",
+        "A green hat. Done."
+      ],
+      [
+        "pause",
+        10
+      ],
+      [
+        "R",
+        "Two."
+      ],
+      [
+        "Fch",
+        "There are two boots under the desk. Can I colour them?"
+      ],
+      [
+        "M",
+        "Yes. Make them brown."
+      ],
+      [
+        "Fch",
+        "Brown boots. Like my boots at home."
+      ],
+      [
+        "pause",
+        10
+      ],
+      [
+        "R",
+        "Three."
+      ],
+      [
+        "M",
+        "Can you see the scarf on the door?"
+      ],
+      [
+        "Fch",
+        "Yes, it's very long."
+      ],
+      [
+        "M",
+        "Colour it purple, please."
+      ],
+      [
+        "Fch",
+        "A purple scarf. Finished."
+      ],
+      [
+        "pause",
+        10
+      ],
+      [
+        "R",
+        "Four."
+      ],
+      [
+        "Fch",
+        "Can I write something now?"
+      ],
+      [
+        "M",
+        "Yes. There's a small board on the wall with nothing on it. Write the word 'rain'. R-A-I-N."
+      ],
+      [
+        "Fch",
+        "Rain. R-A-I-N. Done!"
+      ],
+      [
+        "pause",
+        10
+      ],
+      [
+        "R",
+        "Five."
+      ],
+      [
+        "M",
+        "And now the bag next to the window. Colour it blue, please."
+      ],
+      [
+        "Fch",
+        "A blue bag. Finished!"
+      ],
+      [
+        "M",
+        "Well done. Now you're ready for the trip."
+      ],
+      [
+        "pause",
+        10
+      ],
+      [
+        "R",
+        "Now listen to Part Five again."
+      ]
+    ]
+  }
+}
