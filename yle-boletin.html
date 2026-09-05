@@ -113,8 +113,8 @@ function speakingShields(p){
 
 function load(){
   var token = qs.get('t');
-  var p = token ? sb.rpc('yle_boletin', {p_token: token}) : sb.auth.getUser().then(function(u){
-    if(!(u && u.data && u.data.user)) return {data: {error: 'signin'}};
+  var p = token ? sb.rpc('yle_boletin', {p_token: token}) : sb.auth.getSession().then(function(u){
+    if(!(u && u.data && u.data.session && u.data.session.user)) return {data: {error: 'signin'}};
     return sb.rpc('yle_boletin_student', {p_student: STUDENT, p_level: qs.get('level') || 'starters'});
   });
   return Promise.all([json('yle/specs.json').catch(function(){ return null; }), p]).then(function(r){
@@ -185,8 +185,9 @@ function bindTeacher(){
   $('#mkLink').onclick = function(){
     var btn = this; btn.disabled = true;
     var token = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random()).replace(/-/g, '');
-    sb.auth.getUser().then(function(u){
-      return sb.from('yle_family_links').insert({token: token, student_id: STUDENT, level: LEVEL, created_by: u.data.user.id});
+    sb.auth.getSession().then(function(u){
+      var uid = u && u.data && u.data.session && u.data.session.user && u.data.session.user.id;
+      return sb.from('yle_family_links').insert({token: token, student_id: STUDENT, level: LEVEL, created_by: uid});
     }).then(function(r){
       if(r.error){ $('#linkMsg').textContent = 'No se pudo crear el enlace: ' + r.error.message; btn.disabled = false; return; }
       var url = location.origin + location.pathname + '?t=' + token;
