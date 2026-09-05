@@ -1,0 +1,212 @@
+[
+ {
+  "level": "movers",
+  "test": 6,
+  "id": "L1",
+  "archivo": "test_06_L1.jpg",
+  "prompt": "Wide 16:9 scene for a children's English exam. A busy street market on a sunny morning: fruit and vegetable tables, a bread table, a flower table and a small café at the end. Six people are buying fruit and vegetables. The six people are clearly separated so a child can point at each one: A: a girl holding a big red apple next to the fruit table; B: a boy carrying a box of potatoes; C: a woman with bread and cakes at her table; D: a man buying flowers for his mother; E: a girl drinking orange juice at the café; F: a boy buying carrots from the man at the vegetable table. Each person is drawn full body, doing their action clearly. Children's book illustration, friendly cartoon style, clean thick outlines, flat bright colours, white background, no text, no letters, no words anywhere in the image."
+ },
+ {
+  "level": "movers",
+  "test": 6,
+  "id": "L5",
+  "archivo": "test_06_L5.jpg",
+  "prompt": "Black and white line drawing for children to colour, 4:3. A market table with fruit and vegetables: a box of apples, a big bag of potatoes under the table, three carrots on the table, a bird on the roof of the table, a cat next to the box and a small board with nothing written on it. Everything is drawn with thick black outlines and NO colour at all, so a child can colour it: the bag of potatoes under the table, the bird on the roof, the cat next to the box, the carrots on the table, the board on the table, the box with the apples in it. The board or sign is completely empty, with room to write one word. No text anywhere."
+ },
+ {
+  "level": "movers",
+  "test": 6,
+  "id": "R5",
+  "archivo": "test_06_R5.jpg",
+  "prompt": "One horizontal strip with 3 numbered pictures in a row, left to right, telling the story \"The bag of potatoes\": 1) Bill's grandfather had a small farm outside the town. Every Saturday he took his vegetables to the market. | 2) One Saturday morning it was very windy. Bill put a big bag of potatoes on the table, but the bag was old and it broke. | 3) The children in the street helped Bill. They picked up all the potatoes and put them in boxes.. Same characters and same clothes in every picture. Children's book illustration, friendly cartoon style, clean thick outlines, flat bright colours, white background, no text, no letters, no words anywhere in the image."
+ },
+ {
+  "level": "movers",
+  "test": 6,
+  "id": "R6",
+  "archivo": "test_06_R6.jpg",
+  "prompt": "Wide scene for a children's writing task, 4:3. A market in the morning: a woman is putting fruit on a table, a boy is eating a banana, a man is putting bread in a bag, a girl is carrying a big box of flowers, a dog is sleeping under a table and a bird is on the roof of the café. Everything is easy to see and to name. Children's book illustration, friendly cartoon style, clean thick outlines, flat bright colours, white background, no text, no letters, no words anywhere in the image."
+ },
+ {
+  "level": "movers",
+  "test": 6,
+  "id": "S1",
+  "archivo": "test_06_S1.jpg",
+  "prompt": "Two almost identical pictures side by side, left and right, with a thin line between them. Two pictures of the same market table. Left: the examiner's picture. Right: your picture. The pictures are the same EXCEPT for these differences, which must be obvious: - In your picture there are five oranges, but in my picture there are three. - In your picture the bag is on the table, but in my picture it is under the table. - In your picture the boy is drinking, but in my picture he is eating. - In your picture the dog is black, but in my picture it is white. - In your picture there are flowers next to the box, but in my picture there is bread. (the LEFT picture is \"my picture\" and the RIGHT one is \"your picture\"). Children's book illustration, friendly cartoon style, clean thick outlines, flat bright colours, white background, no text, no letters, no words anywhere in the image."
+ },
+ {
+  "level": "movers",
+  "test": 6,
+  "id": "S2",
+  "archivo": "test_06_S2.jpg",
+  "prompt": "Four pictures in a 2x2 grid, numbered 1 to 4, telling the story \"Sally goes shopping\": 1) Sally's mother tells her to buy apples, bread and cheese. Sally takes a bag and goes out. | 2) At the market Sally buys apples, bread and cheese. The woman at the table helps her. | 3) Sally is walking home, but the bag is old and it breaks. All the apples fall in the street. | 4) A man helps Sally to pick up the apples. He gives her a new bag and Sally says thank you.. Same characters and same clothes in the four pictures. Children's book illustration, friendly cartoon style, clean thick outlines, flat bright colours, white background, no text, no letters, no words anywhere in the image."
+ },
+ {
+  "level": "movers",
+  "test": 7,
+  "id": "L1",
+  "archivo": "test_07_L1.jpg",
+  "prompt": "Wide 16:9 scene for a children's English exam. A school at break: a classroom with a big window and, outside, a playground with a tree and a football goal. Six children and one teacher are doing different things. The six people are clearly separated so a child can point at each one: A: a girl reading a book under the tree; B: a boy playing football in the playground; C: a woman writing on the board in the classroom; D: a girl painting a picture of a horse; E: a boy eating a sandwich at a table; F: a girl carrying five books to the library. Each person is drawn full body, doing their action clearly. Children's book illustration, friendly cartoon style, clean thick outlines, flat bright colours, white background, no text, no letters, no words anywhere in the image."
+ },
+ {
+  "level": "movers",
+  "test": 7,
+  "id": "L5",
+  "archivo": "test_07_L5.jpg",
+  "prompt": "Black and white line drawing for children to colour, 4:3. A classroom: a clock on the wall, a bag under a desk, a plant next to the window, a picture of a boat on the wall, a ball in a box behind the door and a big board with nothing written on it. Everything is drawn with thick black outlines and NO colour at all, so a child can colour it: the clock on the wall, the bag under the desk, the plant next to the window, the boat in the picture, the board on the wall, the ball in the box. The board or sign is completely empty, with room to write one word. No text anywhere."
+ },
+ {
+  "level": "movers",
+  "test": 7,
+  "id": "R5",
+  "archivo": "test_07_R5.jpg",
+  "prompt": "One horizontal strip with 3 numbered pictures in a row, left to right, telling the story \"The school picnic\": 1) On the last day of school, Miss Green took the children to the park for a picnic. Every child brought something to eat. | 2) The children put the food on a red blanket under a tree. Then they played football. | 3) The children were sad, but Miss Green smiled. She opened her bag and there were twenty-five little cakes inside!. Same characters and same clothes in every picture. Children's book illustration, friendly cartoon style, clean thick outlines, flat bright colours, white background, no text, no letters, no words anywhere in the image."
+ },
+ {
+  "level": "movers",
+  "test": 7,
+  "id": "R6",
+  "archivo": "test_07_R6.jpg",
+  "prompt": "Wide scene for a children's writing task, 4:3. A school playground at break: a boy is kicking a football, two girls are jumping with a rope, a teacher is drinking a cup of tea, a small girl is eating an apple under a tree, a bird is on the wall and there are three bikes next to the door. Everything is easy to see and to name. Children's book illustration, friendly cartoon style, clean thick outlines, flat bright colours, white background, no text, no letters, no words anywhere in the image."
+ },
+ {
+  "level": "movers",
+  "test": 7,
+  "id": "S1",
+  "archivo": "test_07_S1.jpg",
+  "prompt": "Two almost identical pictures side by side, left and right, with a thin line between them. Two pictures of the same classroom. Left: the examiner's picture. Right: your picture. The pictures are the same EXCEPT for these differences, which must be obvious: - In your picture there are four children, but in my picture there are three. - In your picture the bag is on the desk, but in my picture it is under the desk. - In your picture the window is open, but in my picture it is closed. - In your picture the clock says three o'clock, but in my picture it says two o'clock. - In your picture there is a plant next to the door, but in my picture there is a box. (the LEFT picture is \"my picture\" and the RIGHT one is \"your picture\"). Children's book illustration, friendly cartoon style, clean thick outlines, flat bright colours, white background, no text, no letters, no words anywhere in the image."
+ },
+ {
+  "level": "movers",
+  "test": 7,
+  "id": "S2",
+  "archivo": "test_07_S2.jpg",
+  "prompt": "Four pictures in a 2x2 grid, numbered 1 to 4, telling the story \"Nick's homework\": 1) Nick is doing his homework at his desk. His friends come to the window and ask him to play football. | 2) Nick goes out to play with his friends. They play football in the park and Nick is very happy. | 3) It is late. Nick comes home and looks at his desk. His homework isn't finished and he is worried. | 4) Nick gets up early in the morning and finishes his homework before school. His teacher is happy with him.. Same characters and same clothes in the four pictures. Children's book illustration, friendly cartoon style, clean thick outlines, flat bright colours, white background, no text, no letters, no words anywhere in the image."
+ },
+ {
+  "level": "movers",
+  "test": 8,
+  "id": "L1",
+  "archivo": "test_08_L1.jpg",
+  "prompt": "Wide 16:9 scene for a children's English exam. A farm in the morning: a field with cows and sheep, a small house with a red door, a tractor next to a tree and a river behind the field. Six people are working or playing on the farm. The six people are clearly separated so a child can point at each one: A: a girl giving grass to a brown cow; B: a boy sitting on the tractor; C: a woman carrying a box of eggs; D: a man with a black and white dog next to the sheep; E: a girl catching a fish in the river; F: a boy cleaning a small blue boat. Each person is drawn full body, doing their action clearly. Children's book illustration, friendly cartoon style, clean thick outlines, flat bright colours, white background, no text, no letters, no words anywhere in the image."
+ },
+ {
+  "level": "movers",
+  "test": 8,
+  "id": "L5",
+  "archivo": "test_08_L5.jpg",
+  "prompt": "Black and white line drawing for children to colour, 4:3. A farm garden: a horse next to a small tree, a cat on the wall, a duck in the water, a bike behind the house, a bird in the tree and a wooden board next to the door with nothing written on it. Everything is drawn with thick black outlines and NO colour at all, so a child can colour it: the horse next to the tree, the cat on the wall, the duck in the water, the bike behind the house, the board next to the door, the bird in the tree. The board or sign is completely empty, with room to write one word. No text anywhere."
+ },
+ {
+  "level": "movers",
+  "test": 8,
+  "id": "R5",
+  "archivo": "test_08_R5.jpg",
+  "prompt": "One horizontal strip with 3 numbered pictures in a row, left to right, telling the story \"The duck in the boot\": 1) Every year, Daisy goes to her uncle's farm in the countryside. She loves the animals, but her favourite is a small white duck. | 2) One morning, Daisy couldn't find Snowy. She looked in the field, next to the river and behind the tractor, but the duck wasn't there. | 3) Snowy was inside one of Uncle Fred's big boots! She was sleeping and she didn't want to come out.. Same characters and same clothes in every picture. Children's book illustration, friendly cartoon style, clean thick outlines, flat bright colours, white background, no text, no letters, no words anywhere in the image."
+ },
+ {
+  "level": "movers",
+  "test": 8,
+  "id": "R6",
+  "archivo": "test_08_R6.jpg",
+  "prompt": "Wide scene for a children's writing task, 4:3. A farm in the afternoon: a farmer is driving a red tractor, a girl is giving water to two horses, a boy is running after a duck, a dog is sleeping under a tree, three cows are eating grass in the field and a bird is on the roof of the house. Everything is easy to see and to name. Children's book illustration, friendly cartoon style, clean thick outlines, flat bright colours, white background, no text, no letters, no words anywhere in the image."
+ },
+ {
+  "level": "movers",
+  "test": 8,
+  "id": "S1",
+  "archivo": "test_08_S1.jpg",
+  "prompt": "Two almost identical pictures side by side, left and right, with a thin line between them. Two pictures of the same farm garden. Left: the examiner's picture. Right: your picture. The pictures are the same EXCEPT for these differences, which must be obvious: - In your picture there are four ducks, but in my picture there are two. - In your picture the horse is brown, but in my picture it is white. - In your picture the bike is behind the house, but in my picture it is next to the door. - In your picture the girl is carrying eggs, but in my picture she is carrying water. - In your picture the tractor is green, but in my picture it is red. (the LEFT picture is \"my picture\" and the RIGHT one is \"your picture\"). Children's book illustration, friendly cartoon style, clean thick outlines, flat bright colours, white background, no text, no letters, no words anywhere in the image."
+ },
+ {
+  "level": "movers",
+  "test": 8,
+  "id": "S2",
+  "archivo": "test_08_S2.jpg",
+  "prompt": "Four pictures in a 2x2 grid, numbered 1 to 4, telling the story \"The lost sheep\": 1) Sam and his grandfather are counting the sheep in the field. One sheep isn't there and they are worried. | 2) Sam and the dog look for the sheep. They walk next to the river and behind the trees. | 3) The dog stops and starts to bark. The sheep is in the water and it can't get out! | 4) Sam and his grandfather help the sheep to come out of the river. The sheep is happy and Sam gives the dog a big dinner.. Same characters and same clothes in the four pictures. Children's book illustration, friendly cartoon style, clean thick outlines, flat bright colours, white background, no text, no letters, no words anywhere in the image."
+ },
+ {
+  "level": "movers",
+  "test": 9,
+  "id": "L1",
+  "archivo": "test_09_L1.jpg",
+  "prompt": "Wide 16:9 scene for a children's English exam. A park on a windy day with black clouds in the sky. Six people are wearing different clothes: some are running to the trees because it is starting to rain. The six people are clearly separated so a child can point at each one: A: a girl in a red coat with a big bag; B: a boy in a green hat and long trousers; C: a woman in a long blue dress under a tree; D: a man with a black jacket and big boots; E: a girl in shorts and a white T-shirt running; F: a boy with a yellow scarf and a dog. Each person is drawn full body, doing their action clearly. Children's book illustration, friendly cartoon style, clean thick outlines, flat bright colours, white background, no text, no letters, no words anywhere in the image."
+ },
+ {
+  "level": "movers",
+  "test": 9,
+  "id": "L5",
+  "archivo": "test_09_L5.jpg",
+  "prompt": "Black and white line drawing for children to colour, 4:3. A bedroom before a trip: a coat on the bed, a hat on a chair, two boots under the desk, a scarf on the door, a bag next to the window and a small board on the wall with nothing written on it. Everything is drawn with thick black outlines and NO colour at all, so a child can colour it: the coat on the bed, the hat on the chair, the boots under the desk, the scarf on the door, the board on the wall, the bag next to the window. The board or sign is completely empty, with room to write one word. No text anywhere."
+ },
+ {
+  "level": "movers",
+  "test": 9,
+  "id": "R5",
+  "archivo": "test_09_R5.jpg",
+  "prompt": "One horizontal strip with 3 numbered pictures in a row, left to right, telling the story \"The wind and the hat\": 1) It was Kim's birthday and her grandmother gave her a beautiful hat. It was white with little blue stars on it. | 2) One windy afternoon, Kim was walking next to the river with her brother. Suddenly the wind took the hat off her head! | 3) Kim's brother is very good at climbing. He went up the tree slowly and got the hat.. Same characters and same clothes in every picture. Children's book illustration, friendly cartoon style, clean thick outlines, flat bright colours, white background, no text, no letters, no words anywhere in the image."
+ },
+ {
+  "level": "movers",
+  "test": 9,
+  "id": "R6",
+  "archivo": "test_09_R6.jpg",
+  "prompt": "Wide scene for a children's writing task, 4:3. A rainy street: a woman in a green coat is walking a dog, a boy in red boots is jumping in the water, a girl in a yellow coat is running to the bus, a man is closing a window, a cat is under a car and there are black clouds in the sky. Everything is easy to see and to name. Children's book illustration, friendly cartoon style, clean thick outlines, flat bright colours, white background, no text, no letters, no words anywhere in the image."
+ },
+ {
+  "level": "movers",
+  "test": 9,
+  "id": "S1",
+  "archivo": "test_09_S1.jpg",
+  "prompt": "Two almost identical pictures side by side, left and right, with a thin line between them. Two pictures of the same park on a windy day. Left: the examiner's picture. Right: your picture. The pictures are the same EXCEPT for these differences, which must be obvious: - In your picture the boy has got a ball, but in my picture he has got a dog. - In your picture there are three clouds, but in my picture there are five. - In your picture the dog is running, but in my picture it is sleeping. - In your picture the man is wearing boots, but in my picture he is wearing shoes. - In your picture there is a bird in the tree, but in my picture the tree is empty. (the LEFT picture is \"my picture\" and the RIGHT one is \"your picture\"). Children's book illustration, friendly cartoon style, clean thick outlines, flat bright colours, white background, no text, no letters, no words anywhere in the image."
+ },
+ {
+  "level": "movers",
+  "test": 9,
+  "id": "S2",
+  "archivo": "test_09_S2.jpg",
+  "prompt": "Four pictures in a 2x2 grid, numbered 1 to 4, telling the story \"A cold day\": 1) Tom looks out of the window. It is very cold and there is water on the ground. | 2) Tom puts on his coat, his scarf and his boots. His mother gives him his gloves too. | 3) Tom is walking to school when he sees a little cat next to a wall. The cat is cold and wet. | 4) Tom takes the cat home. Now the cat is sleeping in the kitchen with Tom's scarf.. Same characters and same clothes in the four pictures. Children's book illustration, friendly cartoon style, clean thick outlines, flat bright colours, white background, no text, no letters, no words anywhere in the image."
+ },
+ {
+  "level": "movers",
+  "test": 10,
+  "id": "L1",
+  "archivo": "test_10_L1.jpg",
+  "prompt": "Wide 16:9 scene for a children's English exam. A big park on Saturday afternoon: a football goal, a small lake with ducks, trees and tables for picnics. Six children are doing different things in their free time. The six people are clearly separated so a child can point at each one: A: a girl riding a bike with a red bag; B: a boy playing the guitar under a tree; C: a girl painting a picture of the lake; D: a boy taking a photo of the ducks; E: a girl reading a comic on the grass; F: a boy playing football with two friends. Each person is drawn full body, doing their action clearly. Children's book illustration, friendly cartoon style, clean thick outlines, flat bright colours, white background, no text, no letters, no words anywhere in the image."
+ },
+ {
+  "level": "movers",
+  "test": 10,
+  "id": "L5",
+  "archivo": "test_10_L5.jpg",
+  "prompt": "Black and white line drawing for children to colour, 4:3. A child's bedroom with hobbies: a guitar next to the bed, a football under the desk, a camera on the desk, a comic on the floor, a bike behind the door and a board on the wall with nothing written on it. Everything is drawn with thick black outlines and NO colour at all, so a child can colour it: the guitar next to the bed, the football under the desk, the camera on the desk, the comic on the floor, the board on the wall, the bike behind the door. The board or sign is completely empty, with room to write one word. No text anywhere."
+ },
+ {
+  "level": "movers",
+  "test": 10,
+  "id": "R5",
+  "archivo": "test_10_R5.jpg",
+  "prompt": "One horizontal strip with 3 numbered pictures in a row, left to right, telling the story \"The old guitar\": 1) One wet afternoon, Ben was helping his grandmother in her house. In a cupboard behind some boxes, he found an old guitar. | 2) 'That was your grandfather's guitar,' said his grandmother. 'He played it every evening when we were young.' She gave the guitar to Ben. | 3) Now Ben practises every day after school. Last week he played a song for his grandmother and she started to cry, but she wasn't sad.. Same characters and same clothes in every picture. Children's book illustration, friendly cartoon style, clean thick outlines, flat bright colours, white background, no text, no letters, no words anywhere in the image."
+ },
+ {
+  "level": "movers",
+  "test": 10,
+  "id": "R6",
+  "archivo": "test_10_R6.jpg",
+  "prompt": "Wide scene for a children's writing task, 4:3. A park on Saturday: two boys are playing football, a girl is riding a bike, a man is taking a photo of the lake, a woman is reading a book under a tree, a dog is running after a ball and three ducks are swimming in the water. Everything is easy to see and to name. Children's book illustration, friendly cartoon style, clean thick outlines, flat bright colours, white background, no text, no letters, no words anywhere in the image."
+ },
+ {
+  "level": "movers",
+  "test": 10,
+  "id": "S1",
+  "archivo": "test_10_S1.jpg",
+  "prompt": "Two almost identical pictures side by side, left and right, with a thin line between them. Two pictures of the same bedroom. Left: the examiner's picture. Right: your picture. The pictures are the same EXCEPT for these differences, which must be obvious: - In your picture there are two footballs, but in my picture there is one. - In your picture the camera is on the desk, but in my picture it is on the chair. - In your picture the boy is reading a comic, but in my picture he is sleeping. - In your picture the bike is green, but in my picture it is red. - In your picture there is a photo on the wall, but in my picture there is a clock. (the LEFT picture is \"my picture\" and the RIGHT one is \"your picture\"). Children's book illustration, friendly cartoon style, clean thick outlines, flat bright colours, white background, no text, no letters, no words anywhere in the image."
+ },
+ {
+  "level": "movers",
+  "test": 10,
+  "id": "S2",
+  "archivo": "test_10_S2.jpg",
+  "prompt": "Four pictures in a 2x2 grid, numbered 1 to 4, telling the story \"Lucy's football game\": 1) Lucy wants to play football with the boys in the park, but they say no because she is a girl. | 2) Lucy practises next to the wall every afternoon. She kicks the ball again and again. | 3) One day, a boy is ill and the group needs one more player. They ask Lucy to play with them. | 4) Lucy plays very well and she gets two goals. Now she plays with the group every Saturday.. Same characters and same clothes in the four pictures. Children's book illustration, friendly cartoon style, clean thick outlines, flat bright colours, white background, no text, no letters, no words anywhere in the image."
+ }
+]
