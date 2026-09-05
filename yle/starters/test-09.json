@@ -1,0 +1,1074 @@
+{
+ "level": "starters",
+ "number": 9,
+ "theme": "My clothes",
+ "listening": {
+  "p1": {
+   "type": "draw_lines",
+   "image": "L1",
+   "scene": "A bedroom where six children are getting dressed. Each child is wearing different, easy-to-see clothes: a red jacket, a blue hat, a green dress, a pink skirt, yellow shorts and purple boots.",
+   "names": [
+    "Tom",
+    "Ben",
+    "Sue",
+    "Kim",
+    "Dan",
+    "Lucy",
+    "Sam"
+   ],
+   "people": [
+    {
+     "id": "A",
+     "desc": "a boy wearing a red jacket"
+    },
+    {
+     "id": "B",
+     "desc": "a boy wearing a blue hat"
+    },
+    {
+     "id": "C",
+     "desc": "a girl wearing a green dress"
+    },
+    {
+     "id": "D",
+     "desc": "a girl wearing a pink skirt"
+    },
+    {
+     "id": "E",
+     "desc": "a boy wearing yellow shorts"
+    },
+    {
+     "id": "F",
+     "desc": "a girl wearing purple boots"
+    }
+   ],
+   "example": {
+    "name": "Tom",
+    "person": "A"
+   },
+   "items": [
+    {
+     "name": "Ben",
+     "person": "B"
+    },
+    {
+     "name": "Sue",
+     "person": "C"
+    },
+    {
+     "name": "Kim",
+     "person": "D"
+    },
+    {
+     "name": "Dan",
+     "person": "E"
+    },
+    {
+     "name": "Lucy",
+     "person": "F"
+    }
+   ]
+  },
+  "p2": {
+   "type": "note_taking",
+   "heading": "Ben's clothes",
+   "example": {
+    "q": "What is the boy's name?",
+    "a": "Ben"
+   },
+   "items": [
+    {
+     "q": "How old is Ben?",
+     "a": "8"
+    },
+    {
+     "q": "How many hats has Ben got?",
+     "a": "6"
+    },
+    {
+     "q": "What is Ben's sister's name?",
+     "a": "Kim"
+    },
+    {
+     "q": "How many bags has Ben got?",
+     "a": "4"
+    },
+    {
+     "q": "What is Ben's friend's name?",
+     "a": "Sue"
+    }
+   ]
+  },
+  "p3": {
+   "type": "mc_pictures",
+   "example": {
+    "q": "What is Ben wearing on his head?",
+    "pics": [
+     "hat",
+     "glasses",
+     "bag"
+    ],
+    "options": [
+     "a hat",
+     "glasses",
+     "a bag"
+    ],
+    "key": "A"
+   },
+   "items": [
+    {
+     "q": "What is Sue wearing?",
+     "pics": [
+      "dress",
+      "skirt",
+      "jacket"
+     ],
+     "options": [
+      "a dress",
+      "a skirt",
+      "a jacket"
+     ],
+     "key": "A"
+    },
+    {
+     "q": "What is on Kim's feet?",
+     "pics": [
+      "shoe",
+      "boots",
+      "sock"
+     ],
+     "options": [
+      "shoes",
+      "boots",
+      "socks"
+     ],
+     "key": "B"
+    },
+    {
+     "q": "What is Dan wearing?",
+     "pics": [
+      "shorts",
+      "trousers",
+      "dress"
+     ],
+     "options": [
+      "shorts",
+      "trousers",
+      "a dress"
+     ],
+     "key": "A"
+    },
+    {
+     "q": "What has Lucy got?",
+     "pics": [
+      "bag",
+      "watch",
+      "glasses"
+     ],
+     "options": [
+      "a bag",
+      "a watch",
+      "glasses"
+     ],
+     "key": "A"
+    },
+    {
+     "q": "How many hats can you see?",
+     "pics": [
+      {
+       "word": "hat",
+       "n": 2
+      },
+      {
+       "word": "hat",
+       "n": 6
+      },
+      {
+       "word": "hat",
+       "n": 9
+      }
+     ],
+     "options": [
+      "two",
+      "six",
+      "nine"
+     ],
+     "key": "B"
+    }
+   ]
+  },
+  "p4": {
+   "type": "colour",
+   "image": "L4",
+   "object": "hat",
+   "scene": "A bedroom with a bed, a chair, a table, a box and a bag. There are seven hats: on the bed, on the chair, on the table, in the bag, on the box, next to the shoe and on the girl's head.",
+   "example": {
+    "where": "on the bed",
+    "colour": "blue"
+   },
+   "items": [
+    {
+     "where": "on the chair",
+     "colour": "red"
+    },
+    {
+     "where": "on the table",
+     "colour": "green"
+    },
+    {
+     "where": "in the bag",
+     "colour": "yellow"
+    },
+    {
+     "where": "on the box",
+     "colour": "orange"
+    },
+    {
+     "where": "next to the shoe",
+     "colour": "purple"
+    }
+   ]
+  }
+ },
+ "rw": {
+  "p1": {
+   "type": "tick_cross",
+   "example": {
+    "word": "hat",
+    "sentence": "This is a hat.",
+    "key": true
+   },
+   "items": [
+    {
+     "word": "dress",
+     "sentence": "This is a dress.",
+     "key": true
+    },
+    {
+     "word": "shoe",
+     "sentence": "This is a bag.",
+     "key": false
+    },
+    {
+     "word": "jacket",
+     "sentence": "This is a jacket.",
+     "key": true
+    },
+    {
+     "word": "boots",
+     "sentence": "These are shoes.",
+     "key": false
+    },
+    {
+     "word": "bag",
+     "sentence": "This is a bag.",
+     "key": true
+    }
+   ]
+  },
+  "p2": {
+   "type": "yes_no",
+   "image": "R2",
+   "scene": "A bedroom: a girl is wearing a green dress, a boy is putting on a red jacket, there is a blue hat on the bed, two shoes are under the chair, a bag is on the table and some socks are on the floor.",
+   "example": {
+    "s": "The girl is wearing a dress.",
+    "key": "yes"
+   },
+   "items": [
+    {
+     "s": "The boy is wearing a hat.",
+     "key": "no"
+    },
+    {
+     "s": "There is a hat on the bed.",
+     "key": "yes"
+    },
+    {
+     "s": "The bag is on the table.",
+     "key": "yes"
+    },
+    {
+     "s": "The dress is red.",
+     "key": "no"
+    },
+    {
+     "s": "The shoes are under the chair.",
+     "key": "yes"
+    }
+   ]
+  },
+  "p3": {
+   "type": "unscramble",
+   "example": {
+    "word": "hat",
+    "letters": [
+     "t",
+     "h",
+     "a"
+    ]
+   },
+   "items": [
+    {
+     "word": "shoe",
+     "letters": [
+      "e",
+      "s",
+      "h",
+      "o"
+     ]
+    },
+    {
+     "word": "dress",
+     "letters": [
+      "r",
+      "d",
+      "e",
+      "s",
+      "s"
+     ]
+    },
+    {
+     "word": "bag",
+     "letters": [
+      "g",
+      "a",
+      "b"
+     ]
+    },
+    {
+     "word": "skirt",
+     "letters": [
+      "t",
+      "s",
+      "k",
+      "i",
+      "r"
+     ]
+    },
+    {
+     "word": "shirt",
+     "letters": [
+      "h",
+      "s",
+      "i",
+      "r",
+      "t"
+     ]
+    }
+   ]
+  },
+  "p4": {
+   "type": "mc_cloze_copy",
+   "image": "R4",
+   "title": "Getting dressed",
+   "text": "In the morning I get my __(0)__. I put on my green __(1)__ and my blue __(2)__. My hat is on the __(3)__. I have got new red __(4)__ on my feet. Now I look very __(5)__!",
+   "words": [
+    "clothes",
+    "dress",
+    "jacket",
+    "bed",
+    "shoes",
+    "nice",
+    "school",
+    "run"
+   ],
+   "example": "clothes",
+   "key": [
+    "dress",
+    "jacket",
+    "bed",
+    "shoes",
+    "nice"
+   ]
+  },
+  "p5": {
+   "type": "story_one_word",
+   "title": "Anna gets dressed",
+   "image": "R5",
+   "parts": [
+    {
+     "text": "It is morning. Anna gets up and looks at her clothes. She puts on a green dress and her favourite red shoes.",
+     "example": {
+      "q": "What colour is Anna's dress?",
+      "a": "green"
+     },
+     "items": [
+      {
+       "q": "What colour are Anna's shoes?",
+       "a": "red"
+      },
+      {
+       "q": "When does Anna get up?",
+       "a": "morning"
+      }
+     ]
+    },
+    {
+     "text": "Anna puts on a blue jacket and a hat. Her brother Ben wants his hat too.",
+     "items": [
+      {
+       "q": "What colour is Anna's jacket?",
+       "a": "blue"
+      },
+      {
+       "q": "What is Anna's brother's name?",
+       "a": "Ben"
+      }
+     ]
+    },
+    {
+     "text": "Now Anna and Ben have their clothes on. They put on their bags and go to school. 'Goodbye, Mum!' they say.",
+     "items": [
+      {
+       "q": "Where do Anna and Ben go?",
+       "a": "school"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "speaking": {
+  "p1": {
+   "type": "scene_cards",
+   "image": "S1",
+   "scene": "A bedroom scene: a bed with a hat on it, a chair, a small table, an open box, a bag on the floor and a pair of shoes.",
+   "point": [
+    {
+     "say": "Look at the picture. Where is the hat?",
+     "target": "hat"
+    },
+    {
+     "say": "Where is the bag?",
+     "target": "bag"
+    },
+    {
+     "say": "Where are the shoes?",
+     "target": "shoes"
+    }
+   ],
+   "cards": [
+    "dress",
+    "jacket",
+    "shoe",
+    "shirt",
+    "book",
+    "ball",
+    "skirt",
+    "hat"
+   ],
+   "place": [
+    {
+     "say": "Put the dress on the bed.",
+     "card": "dress",
+     "zone": {
+      "x": 30,
+      "y": 40,
+      "w": 30,
+      "h": 22
+     }
+    },
+    {
+     "say": "Put the jacket on the chair.",
+     "card": "jacket",
+     "zone": {
+      "x": 8,
+      "y": 48,
+      "w": 24,
+      "h": 32
+     }
+    },
+    {
+     "say": "Put the shirt in the box.",
+     "card": "shirt",
+     "zone": {
+      "x": 62,
+      "y": 52,
+      "w": 26,
+      "h": 24
+     }
+    }
+   ],
+   "zones": {
+    "hat": {
+     "x": 34,
+     "y": 34,
+     "w": 20,
+     "h": 18
+    },
+    "bag": {
+     "x": 60,
+     "y": 74,
+     "w": 22,
+     "h": 22
+    },
+    "shoes": {
+     "x": 24,
+     "y": 78,
+     "w": 26,
+     "h": 16
+    },
+    "bed": {
+     "x": 24,
+     "y": 34,
+     "w": 42,
+     "h": 34
+    },
+    "chair": {
+     "x": 6,
+     "y": 46,
+     "w": 24,
+     "h": 38
+    },
+    "box": {
+     "x": 62,
+     "y": 52,
+     "w": 28,
+     "h": 26
+    },
+    "table": {
+     "x": 66,
+     "y": 40,
+     "w": 26,
+     "h": 18
+    }
+   }
+  },
+  "p2": {
+   "type": "scene_questions",
+   "questions": [
+    {
+     "q": "What's this?",
+     "hint": "point to the hat",
+     "model": "It's a hat."
+    },
+    {
+     "q": "What colour is the bag?",
+     "model": "It's red."
+    },
+    {
+     "q": "How many shoes are there?",
+     "model": "Two."
+    },
+    {
+     "q": "Tell me about the dress.",
+     "model": "It's green. It's nice."
+    }
+   ]
+  },
+  "p3": {
+   "type": "card_questions",
+   "questions": [
+    {
+     "card": "dress",
+     "q": "What's this?",
+     "model": "A dress."
+    },
+    {
+     "card": "dress",
+     "q": "What colour is it?",
+     "model": "It's blue."
+    },
+    {
+     "card": "jacket",
+     "q": "What's this?",
+     "model": "A jacket."
+    },
+    {
+     "card": "jacket",
+     "q": "Have you got a jacket?",
+     "model": "Yes, I have. / No, I haven't."
+    },
+    {
+     "card": "hat",
+     "q": "What's this?",
+     "model": "A hat."
+    },
+    {
+     "card": "hat",
+     "q": "Do you wear a hat?",
+     "model": "Yes, I do."
+    }
+   ]
+  },
+  "p4": {
+   "type": "personal_questions",
+   "questions": [
+    {
+     "q": "What's your name?",
+     "model": "My name's …"
+    },
+    {
+     "q": "How old are you?",
+     "model": "I'm seven."
+    },
+    {
+     "q": "What are you wearing today?",
+     "model": "A T-shirt and jeans."
+    },
+    {
+     "q": "What colour is your favourite hat?",
+     "model": "It's red."
+    },
+    {
+     "q": "Have you got new shoes?",
+     "model": "Yes, I have."
+    }
+   ]
+  }
+ },
+ "audio": {
+  "p1": [
+   [
+    "R",
+    "Part One. Look at the picture. Listen and look. There is one example."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "F",
+    "Look at all the children in their nice clothes!"
+   ],
+   [
+    "Mch",
+    "Who's the boy in the red jacket?"
+   ],
+   [
+    "F",
+    "That's Tom. He loves his red jacket."
+   ],
+   [
+    "Mch",
+    "Tom. OK."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "R",
+    "Can you see the line? This is an example. Now you listen and draw lines."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "Mch",
+    "Can you see the boy in the blue hat?"
+   ],
+   [
+    "F",
+    "Yes. Is that Ben?"
+   ],
+   [
+    "Mch",
+    "Yes, that's Ben. His hat is blue."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "F",
+    "Look at the girl in the green dress. Who's that?"
+   ],
+   [
+    "Mch",
+    "That's Sue. Her dress is very nice."
+   ],
+   [
+    "F",
+    "Sue. OK."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "Mch",
+    "Who's the girl in the pink skirt?"
+   ],
+   [
+    "F",
+    "That's Kim. She likes pink."
+   ],
+   [
+    "Mch",
+    "Kim. OK."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "F",
+    "Can you see the boy in the yellow shorts?"
+   ],
+   [
+    "Mch",
+    "Yes. What's his name?"
+   ],
+   [
+    "F",
+    "That's Dan. His shorts are yellow."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "Mch",
+    "And who's the girl in the purple boots?"
+   ],
+   [
+    "F",
+    "That's Lucy. Her boots are new."
+   ],
+   [
+    "Mch",
+    "Lucy. OK."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "R",
+    "Now listen again."
+   ]
+  ],
+  "p2": [
+   [
+    "R",
+    "Part Two. Listen and write a name or a number. There are two examples."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "M",
+    "Hello! What's your name?"
+   ],
+   [
+    "Mch",
+    "My name's Ben."
+   ],
+   [
+    "M",
+    "Ben. And how old are you?"
+   ],
+   [
+    "Mch",
+    "I'm eight."
+   ],
+   [
+    "M",
+    "Eight. OK."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "R",
+    "Can you see the answers? Now you listen and write a name or a number."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "M",
+    "How many hats have you got, Ben?"
+   ],
+   [
+    "Mch",
+    "I've got six hats!"
+   ],
+   [
+    "M",
+    "Six hats. Wow."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "M",
+    "Who is that girl?"
+   ],
+   [
+    "Mch",
+    "That's my sister, Kim. K-I-M."
+   ],
+   [
+    "M",
+    "Kim. She's got a pink skirt."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "M",
+    "How many bags have you got?"
+   ],
+   [
+    "Mch",
+    "I've got four bags."
+   ],
+   [
+    "M",
+    "Four bags. Great."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "M",
+    "And who is your friend?"
+   ],
+   [
+    "Mch",
+    "My friend is Sue. S-U-E."
+   ],
+   [
+    "M",
+    "Sue. She's got a green dress."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "R",
+    "Now listen again."
+   ]
+  ],
+  "p3": [
+   [
+    "R",
+    "Part Three. Listen and tick the box. There is one example."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "F",
+    "What is Ben wearing on his head?"
+   ],
+   [
+    "Mch",
+    "I'm wearing a hat. It's blue."
+   ],
+   [
+    "F",
+    "A hat. OK."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "R",
+    "Can you see the tick? Now you listen and tick the box."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "F",
+    "What is Sue wearing?"
+   ],
+   [
+    "Fch",
+    "Sue is wearing a green dress."
+   ],
+   [
+    "F",
+    "A dress. Nice."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "F",
+    "What is on Kim's feet?"
+   ],
+   [
+    "Fch",
+    "Kim has got purple boots on her feet."
+   ],
+   [
+    "F",
+    "Boots. OK."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "F",
+    "What is Dan wearing?"
+   ],
+   [
+    "Fch",
+    "Dan is wearing yellow shorts."
+   ],
+   [
+    "F",
+    "Shorts. Good."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "F",
+    "What has Lucy got?"
+   ],
+   [
+    "Fch",
+    "Lucy has got a red bag."
+   ],
+   [
+    "F",
+    "A bag. OK."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "F",
+    "How many hats can you see?"
+   ],
+   [
+    "Fch",
+    "I can see six hats."
+   ],
+   [
+    "F",
+    "Six hats. Well done."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "R",
+    "Now listen again."
+   ]
+  ],
+  "p4": [
+   [
+    "R",
+    "Part Four. Listen and colour. There is one example."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "M",
+    "Can you see the hat on the bed?"
+   ],
+   [
+    "Fch",
+    "Yes, I can."
+   ],
+   [
+    "M",
+    "Colour that hat blue."
+   ],
+   [
+    "Fch",
+    "A blue hat. OK."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "R",
+    "Can you see the blue hat? Now you listen and colour."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "M",
+    "Can you see the hat on the chair?"
+   ],
+   [
+    "Fch",
+    "Yes."
+   ],
+   [
+    "M",
+    "Colour that hat red."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "M",
+    "Now find the hat on the table. Colour it green."
+   ],
+   [
+    "Fch",
+    "A green hat. OK."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "M",
+    "Can you see the hat in the bag? Colour it yellow."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "M",
+    "Now colour the hat on the box orange."
+   ],
+   [
+    "Fch",
+    "An orange hat."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "M",
+    "And the hat next to the shoe? Colour it purple."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "R",
+    "Now listen again."
+   ]
+  ]
+ },
+ "marks": {
+  "listening": 20,
+  "rw": 25
+ }
+}
