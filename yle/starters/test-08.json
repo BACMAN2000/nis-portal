@@ -1,0 +1,1072 @@
+{
+ "level": "starters",
+ "number": 8,
+ "theme": "My toys",
+ "listening": {
+  "p1": {
+   "type": "draw_lines",
+   "image": "L1",
+   "scene": "A playroom with a box of toys, a table and a rug. Six children are playing with different toys: one with a robot, one with a toy car, one with a doll, one with a kite, one with a board game and one with a teddy bear.",
+   "names": [
+    "Tom",
+    "Ben",
+    "Sue",
+    "Kim",
+    "Dan",
+    "Lucy",
+    "Sam"
+   ],
+   "people": [
+    {
+     "id": "A",
+     "desc": "a boy holding a robot"
+    },
+    {
+     "id": "B",
+     "desc": "a boy playing with a toy car"
+    },
+    {
+     "id": "C",
+     "desc": "a girl holding a doll"
+    },
+    {
+     "id": "D",
+     "desc": "a girl with a kite"
+    },
+    {
+     "id": "E",
+     "desc": "a boy playing a board game"
+    },
+    {
+     "id": "F",
+     "desc": "a girl holding a teddy bear"
+    }
+   ],
+   "example": {
+    "name": "Tom",
+    "person": "A"
+   },
+   "items": [
+    {
+     "name": "Ben",
+     "person": "B"
+    },
+    {
+     "name": "Sue",
+     "person": "C"
+    },
+    {
+     "name": "Kim",
+     "person": "D"
+    },
+    {
+     "name": "Dan",
+     "person": "E"
+    },
+    {
+     "name": "Lucy",
+     "person": "F"
+    }
+   ]
+  },
+  "p2": {
+   "type": "note_taking",
+   "heading": "Ben's toys",
+   "example": {
+    "q": "What is the boy's name?",
+    "a": "Ben"
+   },
+   "items": [
+    {
+     "q": "How old is Ben?",
+     "a": "7"
+    },
+    {
+     "q": "How many toy cars has Ben got?",
+     "a": "9"
+    },
+    {
+     "q": "What is Ben's sister's name?",
+     "a": "Kim"
+    },
+    {
+     "q": "How many robots has Ben got?",
+     "a": "3"
+    },
+    {
+     "q": "What is Ben's friend's name?",
+     "a": "Dan"
+    }
+   ]
+  },
+  "p3": {
+   "type": "mc_pictures",
+   "example": {
+    "q": "What has Ben got?",
+    "pics": [
+     "car",
+     "robot",
+     "ball"
+    ],
+    "options": [
+     "a car",
+     "a robot",
+     "a ball"
+    ],
+    "key": "B"
+   },
+   "items": [
+    {
+     "q": "What has Kim got?",
+     "pics": [
+      "kite",
+      "ball",
+      "balloon"
+     ],
+     "options": [
+      "a kite",
+      "a ball",
+      "a balloon"
+     ],
+     "key": "A"
+    },
+    {
+     "q": "What is Sue playing with?",
+     "pics": [
+      "doll",
+      "robot",
+      "car"
+     ],
+     "options": [
+      "a doll",
+      "a robot",
+      "a car"
+     ],
+     "key": "A"
+    },
+    {
+     "q": "What is on the table?",
+     "pics": [
+      "train",
+      "boat",
+      "plane"
+     ],
+     "options": [
+      "a train",
+      "a boat",
+      "a plane"
+     ],
+     "key": "A"
+    },
+    {
+     "q": "What is Lucy's toy?",
+     "pics": [
+      "bear",
+      "monster",
+      "alien"
+     ],
+     "options": [
+      "a bear",
+      "a monster",
+      "an alien"
+     ],
+     "key": "A"
+    },
+    {
+     "q": "How many toy cars can you see?",
+     "pics": [
+      {
+       "word": "car",
+       "n": 2
+      },
+      {
+       "word": "car",
+       "n": 5
+      },
+      {
+       "word": "car",
+       "n": 8
+      }
+     ],
+     "options": [
+      "two",
+      "five",
+      "eight"
+     ],
+     "key": "B"
+    }
+   ]
+  },
+  "p4": {
+   "type": "colour",
+   "image": "L4",
+   "object": "car",
+   "scene": "A playroom with a table, a big toy box, a chair and a rug. There are seven toy cars: on the table, under the table, in the box, next to the doll, in the girl's hand, next to the bear and on the chair.",
+   "example": {
+    "where": "on the table",
+    "colour": "blue"
+   },
+   "items": [
+    {
+     "where": "under the table",
+     "colour": "red"
+    },
+    {
+     "where": "in the box",
+     "colour": "green"
+    },
+    {
+     "where": "next to the doll",
+     "colour": "yellow"
+    },
+    {
+     "where": "in the girl's hand",
+     "colour": "orange"
+    },
+    {
+     "where": "next to the bear",
+     "colour": "purple"
+    }
+   ]
+  }
+ },
+ "rw": {
+  "p1": {
+   "type": "tick_cross",
+   "example": {
+    "word": "ball",
+    "sentence": "This is a ball.",
+    "key": true
+   },
+   "items": [
+    {
+     "word": "robot",
+     "sentence": "This is a robot.",
+     "key": true
+    },
+    {
+     "word": "car",
+     "sentence": "This is a boat.",
+     "key": false
+    },
+    {
+     "word": "kite",
+     "sentence": "This is a kite.",
+     "key": true
+    },
+    {
+     "word": "doll",
+     "sentence": "This is a bear.",
+     "key": false
+    },
+    {
+     "word": "train",
+     "sentence": "This is a train.",
+     "key": true
+    }
+   ]
+  },
+  "p2": {
+   "type": "yes_no",
+   "image": "R2",
+   "scene": "A playroom: a boy is playing with a toy car on the rug, a girl is holding a doll, a big toy box is full of toys, a robot is on the table, two kites are on the wall and a teddy bear is sitting on a chair.",
+   "example": {
+    "s": "The boy is playing with a car.",
+    "key": "yes"
+   },
+   "items": [
+    {
+     "s": "The girl is holding a robot.",
+     "key": "no"
+    },
+    {
+     "s": "There is a robot on the table.",
+     "key": "yes"
+    },
+    {
+     "s": "The teddy bear is on the chair.",
+     "key": "yes"
+    },
+    {
+     "s": "The robot is on the chair.",
+     "key": "no"
+    },
+    {
+     "s": "There are two kites on the wall.",
+     "key": "yes"
+    }
+   ]
+  },
+  "p3": {
+   "type": "unscramble",
+   "example": {
+    "word": "toy",
+    "letters": [
+     "y",
+     "t",
+     "o"
+    ]
+   },
+   "items": [
+    {
+     "word": "ball",
+     "letters": [
+      "l",
+      "b",
+      "a",
+      "l"
+     ]
+    },
+    {
+     "word": "doll",
+     "letters": [
+      "l",
+      "d",
+      "o",
+      "l"
+     ]
+    },
+    {
+     "word": "car",
+     "letters": [
+      "r",
+      "c",
+      "a"
+     ]
+    },
+    {
+     "word": "kite",
+     "letters": [
+      "k",
+      "i",
+      "t",
+      "e"
+     ]
+    },
+    {
+     "word": "robot",
+     "letters": [
+      "b",
+      "o",
+      "r",
+      "o",
+      "t"
+     ]
+    }
+   ]
+  },
+  "p4": {
+   "type": "mc_cloze_copy",
+   "image": "R4",
+   "title": "My toys",
+   "text": "I have got lots of __(0)__ in my room. My favourite toy is a big red __(1)__. It can walk and talk! I have got nine small __(2)__ cars too. My sister Kim likes to play with her __(3)__. We play a __(4)__ game on the rug. Playing with toys is very __(5)__.",
+   "words": [
+    "toys",
+    "robot",
+    "toy",
+    "doll",
+    "board",
+    "fun",
+    "school",
+    "run"
+   ],
+   "example": "toys",
+   "key": [
+    "robot",
+    "toy",
+    "doll",
+    "board",
+    "fun"
+   ]
+  },
+  "p5": {
+   "type": "story_one_word",
+   "title": "Ben's toys",
+   "image": "R5",
+   "parts": [
+    {
+     "text": "Ben is in his room. He has got lots of toys in a big blue box. His favourite toy is a red robot. It can walk and talk.",
+     "example": {
+      "q": "Where is Ben?",
+      "a": "room"
+     },
+     "items": [
+      {
+       "q": "What colour is the box?",
+       "a": "blue"
+      },
+      {
+       "q": "What is Ben's favourite toy?",
+       "a": "robot"
+      }
+     ]
+    },
+    {
+     "text": "Ben's sister Kim comes to play. She takes a doll and a small toy car. They play a board game on the rug.",
+     "items": [
+      {
+       "q": "What does Kim take?",
+       "a": "doll"
+      },
+      {
+       "q": "Where do they play the game?",
+       "a": "rug"
+      }
+     ]
+    },
+    {
+     "text": "Now it is night. Ben puts his toys in the box. His teddy bear sits on the bed. 'Goodnight, toys!' says Ben.",
+     "items": [
+      {
+       "q": "Where does Ben put his toys?",
+       "a": "box"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "speaking": {
+  "p1": {
+   "type": "scene_cards",
+   "image": "S1",
+   "scene": "A playroom scene: a big toy box in the middle, a small table, a chair, a rug on the floor, a robot and a red ball.",
+   "point": [
+    {
+     "say": "Look at the picture. Where is the toy box?",
+     "target": "box"
+    },
+    {
+     "say": "Where is the robot?",
+     "target": "robot"
+    },
+    {
+     "say": "Where is the ball?",
+     "target": "ball"
+    }
+   ],
+   "cards": [
+    "car",
+    "doll",
+    "kite",
+    "bear",
+    "book",
+    "train",
+    "plane",
+    "dog"
+   ],
+   "place": [
+    {
+     "say": "Put the car on the table.",
+     "card": "car",
+     "zone": {
+      "x": 30,
+      "y": 46,
+      "w": 24,
+      "h": 18
+     }
+    },
+    {
+     "say": "Put the doll on the chair.",
+     "card": "doll",
+     "zone": {
+      "x": 8,
+      "y": 50,
+      "w": 24,
+      "h": 34
+     }
+    },
+    {
+     "say": "Put the plane in the box.",
+     "card": "plane",
+     "zone": {
+      "x": 40,
+      "y": 34,
+      "w": 28,
+      "h": 26
+     }
+    }
+   ],
+   "zones": {
+    "box": {
+     "x": 38,
+     "y": 32,
+     "w": 32,
+     "h": 34
+    },
+    "robot": {
+     "x": 72,
+     "y": 40,
+     "w": 18,
+     "h": 34
+    },
+    "ball": {
+     "x": 54,
+     "y": 74,
+     "w": 16,
+     "h": 16
+    },
+    "table": {
+     "x": 24,
+     "y": 44,
+     "w": 30,
+     "h": 24
+    },
+    "chair": {
+     "x": 6,
+     "y": 48,
+     "w": 24,
+     "h": 40
+    },
+    "rug": {
+     "x": 20,
+     "y": 74,
+     "w": 60,
+     "h": 22
+    },
+    "window": {
+     "x": 78,
+     "y": 6,
+     "w": 18,
+     "h": 30
+    }
+   }
+  },
+  "p2": {
+   "type": "scene_questions",
+   "questions": [
+    {
+     "q": "What's this?",
+     "hint": "point to the robot",
+     "model": "It's a robot."
+    },
+    {
+     "q": "What colour is the ball?",
+     "model": "It's red."
+    },
+    {
+     "q": "How many toys are in the box?",
+     "model": "Lots."
+    },
+    {
+     "q": "Tell me about the robot.",
+     "model": "It's big. It's blue."
+    }
+   ]
+  },
+  "p3": {
+   "type": "card_questions",
+   "questions": [
+    {
+     "card": "car",
+     "q": "What's this?",
+     "model": "A car."
+    },
+    {
+     "card": "car",
+     "q": "What colour is it?",
+     "model": "It's red."
+    },
+    {
+     "card": "kite",
+     "q": "What's this?",
+     "model": "A kite."
+    },
+    {
+     "card": "kite",
+     "q": "Have you got a kite?",
+     "model": "Yes, I have. / No, I haven't."
+    },
+    {
+     "card": "bear",
+     "q": "What's this?",
+     "model": "A teddy bear."
+    },
+    {
+     "card": "bear",
+     "q": "Do you like teddy bears?",
+     "model": "Yes, I do."
+    }
+   ]
+  },
+  "p4": {
+   "type": "personal_questions",
+   "questions": [
+    {
+     "q": "What's your name?",
+     "model": "My name's …"
+    },
+    {
+     "q": "How old are you?",
+     "model": "I'm seven."
+    },
+    {
+     "q": "What is your favourite toy?",
+     "model": "My robot."
+    },
+    {
+     "q": "Have you got a ball?",
+     "model": "Yes, I have."
+    },
+    {
+     "q": "Who do you play with?",
+     "model": "My sister."
+    }
+   ]
+  }
+ },
+ "audio": {
+  "p1": [
+   [
+    "R",
+    "Part One. Look at the picture. Listen and look. There is one example."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "F",
+    "Look at the children and their toys!"
+   ],
+   [
+    "Mch",
+    "Who's the boy with the robot?"
+   ],
+   [
+    "F",
+    "That's Tom. His robot can walk."
+   ],
+   [
+    "Mch",
+    "Tom. OK."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "R",
+    "Can you see the line? This is an example. Now you listen and draw lines."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "Mch",
+    "Can you see the boy with the toy car?"
+   ],
+   [
+    "F",
+    "Yes. Is that Ben?"
+   ],
+   [
+    "Mch",
+    "Yes, that's Ben. He loves cars."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "F",
+    "Look at the girl with the doll. Who's that?"
+   ],
+   [
+    "Mch",
+    "That's Sue. Her doll is nice."
+   ],
+   [
+    "F",
+    "Sue. OK."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "Mch",
+    "Who's the girl with the kite?"
+   ],
+   [
+    "F",
+    "That's Kim. Her kite is red and yellow."
+   ],
+   [
+    "Mch",
+    "Kim. OK."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "F",
+    "Can you see the boy playing a board game?"
+   ],
+   [
+    "Mch",
+    "Yes. What's his name?"
+   ],
+   [
+    "F",
+    "That's Dan. He likes games."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "Mch",
+    "And who's the girl with the teddy bear?"
+   ],
+   [
+    "F",
+    "That's Lucy. She loves her bear."
+   ],
+   [
+    "Mch",
+    "Lucy. OK."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "R",
+    "Now listen again."
+   ]
+  ],
+  "p2": [
+   [
+    "R",
+    "Part Two. Listen and write a name or a number. There are two examples."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "M",
+    "Hello! What's your name?"
+   ],
+   [
+    "Mch",
+    "My name's Ben."
+   ],
+   [
+    "M",
+    "Ben. And how old are you?"
+   ],
+   [
+    "Mch",
+    "I'm seven."
+   ],
+   [
+    "M",
+    "Seven. OK."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "R",
+    "Can you see the answers? Now you listen and write a name or a number."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "M",
+    "How many toy cars have you got, Ben?"
+   ],
+   [
+    "Mch",
+    "I've got nine toy cars!"
+   ],
+   [
+    "M",
+    "Nine cars. Wow."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "M",
+    "Who is that girl?"
+   ],
+   [
+    "Mch",
+    "That's my sister, Kim. K-I-M."
+   ],
+   [
+    "M",
+    "Kim. She's got a kite."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "M",
+    "How many robots have you got?"
+   ],
+   [
+    "Mch",
+    "I've got three robots."
+   ],
+   [
+    "M",
+    "Three robots. Great."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "M",
+    "And who is your friend?"
+   ],
+   [
+    "Mch",
+    "My friend is Dan. D-A-N."
+   ],
+   [
+    "M",
+    "Dan. He likes board games."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "R",
+    "Now listen again."
+   ]
+  ],
+  "p3": [
+   [
+    "R",
+    "Part Three. Listen and tick the box. There is one example."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "F",
+    "What has Ben got?"
+   ],
+   [
+    "Mch",
+    "I've got a robot. It can talk!"
+   ],
+   [
+    "F",
+    "A robot. OK."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "R",
+    "Can you see the tick? Now you listen and tick the box."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "F",
+    "What has Kim got?"
+   ],
+   [
+    "Fch",
+    "Kim has got a red kite."
+   ],
+   [
+    "F",
+    "A kite. Nice."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "F",
+    "What is Sue playing with?"
+   ],
+   [
+    "Fch",
+    "Sue is playing with her doll."
+   ],
+   [
+    "F",
+    "A doll. OK."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "F",
+    "What is on the table?"
+   ],
+   [
+    "Fch",
+    "There is a toy train on the table."
+   ],
+   [
+    "F",
+    "A train. Good."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "F",
+    "What is Lucy's toy?"
+   ],
+   [
+    "Fch",
+    "Lucy has got a teddy bear."
+   ],
+   [
+    "F",
+    "A bear. OK."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "F",
+    "How many toy cars can you see?"
+   ],
+   [
+    "Fch",
+    "I can see five toy cars."
+   ],
+   [
+    "F",
+    "Five cars. Well done."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "R",
+    "Now listen again."
+   ]
+  ],
+  "p4": [
+   [
+    "R",
+    "Part Four. Listen and colour. There is one example."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "M",
+    "Can you see the toy car on the table?"
+   ],
+   [
+    "Fch",
+    "Yes, I can."
+   ],
+   [
+    "M",
+    "Colour that car blue."
+   ],
+   [
+    "Fch",
+    "A blue car. OK."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "R",
+    "Can you see the blue car? Now you listen and colour."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "M",
+    "Can you see the car under the table?"
+   ],
+   [
+    "Fch",
+    "Yes."
+   ],
+   [
+    "M",
+    "Colour that car red."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "M",
+    "Now find the car in the box. Colour it green."
+   ],
+   [
+    "Fch",
+    "A green car. OK."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "M",
+    "Can you see the car next to the doll? Colour it yellow."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "M",
+    "Now colour the car in the girl's hand orange."
+   ],
+   [
+    "Fch",
+    "An orange car."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "M",
+    "And the car next to the bear? Colour it purple."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "R",
+    "Now listen again."
+   ]
+  ]
+ },
+ "marks": {
+  "listening": 20,
+  "rw": 25
+ }
+}
