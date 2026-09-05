@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boletín YLE · Nordic International School</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="brand.css?v=21">
+<style>
+/* =========================================================================
+   Boletín YLE para la familia (Ruta YLE 2026, Fase 3). Solo NIS.
+   Dos puertas: ?t=TOKEN (enlace de familia, sin cuenta, vía rpc yle_boletin)
+   y ?student=UUID&level=starters (profesor/admin/alumno con sesión, vía
+   rpc yle_boletin_student). El profesor crea el enlace desde aquí mismo y lo
+   manda por WhatsApp o lo imprime. Los escudos son estimación del colegio.
+   ========================================================================= */
+:root{--navy:#0d1d33;--blue:#1e3a8a;--sky:#eef3fb;--ink:#1e293b;--muted:#64748b;--border:#d9deea;--ok:#2f8f5b;--bad:#b53a3a;--st:#e08a2a;--mv:#238f85;--fl:#6a54c9;--gold:#d29a1f}
+*{box-sizing:border-box}
+body{margin:0;background:#f7f8fb;color:var(--ink);font-family:'Gotham','Segoe UI',system-ui,sans-serif;line-height:1.5}
+header.top{background:var(--navy);color:#fff;padding:10px 18px 10px 118px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+header.top img{height:36px}
+header.top h1{margin:0;font-size:1.15rem}
+header.top .sub{font-size:.8rem;opacity:.8}
+header.top .right{margin-left:auto;display:flex;gap:10px;align-items:center}
+.btn{border:0;background:var(--blue);color:#fff;border-radius:10px;padding:9px 16px;font:inherit;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block}
+.btn.sec{background:#fff;color:var(--blue);border:1.5px solid var(--blue)}
+.btn.wa{background:#25d366}
+.page{max-width:860px;margin:22px auto;padding:0 16px}
+.card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px 22px;margin-bottom:16px}
+h2{font-size:1.2rem;margin:0 0 10px}
+h3{font-size:1rem;margin:12px 0 6px}
+.head{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.head .who{font-size:1.5rem;font-weight:800}
+.lvl{border-radius:999px;padding:5px 14px;color:#fff;font-weight:700}
+.starters{background:var(--st)}.movers{background:var(--mv)}.flyers{background:var(--fl)}
+.papers{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:10px 0}
+.paper{background:var(--sky);border-radius:12px;padding:12px 14px}
+.paper b{display:block;font-size:1rem}
+.paper .n{font-size:.85rem;color:var(--muted)}
+.shields{display:inline-flex;gap:3px;vertical-align:middle;margin:6px 0}
+.shields i{width:22px;height:26px;display:inline-grid;place-items:center;font-style:normal;font-size:.72rem;font-weight:800;color:#9aa3b5;background:#e2e6ef;clip-path:polygon(50% 0,100% 12%,100% 60%,50% 100%,0 60%,0 12%)}
+.shields i.on{background:var(--gold);color:#3b2a05}
+.total{font-size:1.1rem;margin-top:6px}
+.warn{background:#fff3d6;border-radius:12px;padding:10px 14px;margin:10px 0;font-size:.92rem}
+.note{background:var(--sky);border-radius:12px;padding:10px 14px;margin:10px 0}
+.err{background:#f8e1e1;border-radius:12px;padding:12px 14px}
+ul.cando{margin:6px 0;padding-left:20px}
+ul.cando li{margin:3px 0}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.tip{border-left:4px solid var(--gold);padding:6px 12px;margin:8px 0;background:#fffbf0;border-radius:0 10px 10px 0}
+.tip b{display:block}
+.muted{color:var(--muted)}.small{font-size:.85rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+th,td{border-bottom:1px solid var(--border);padding:7px 6px;text-align:left;vertical-align:top}
+th{font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+.teacher{border:2px dashed var(--blue);background:#f4f7ff}
+.teacher input{font:inherit;width:100%;border:1.5px solid var(--border);border-radius:9px;padding:8px 10px}
+.stars{font-size:1.2rem;letter-spacing:1px}
+@media print{header.top,.noprint{display:none!important}body{background:#fff}.card{border:0;padding:0 0 14px;break-inside:avoid}.page{margin:0;max-width:none}}
+</style>
+</head>
+<body>
+<header class="top">
+  <img src="assets/logo-white-h.svg" alt="" onerror="this.remove()">
+  <div><h1>Boletín Cambridge Young Learners</h1><div class="sub" id="hSub">Nordic International School · Programa YLE</div></div>
+  <div class="right noprint"><button class="btn sec" onclick="window.print()">🖨️ Imprimir / PDF</button><a href="yle-guia-familia.html" class="btn sec">📘 Guía para la familia</a></div>
+</header>
+<div class="page" id="page"><div class="card">Cargando el boletín…</div></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+<script src="config.js"></script>
+<script>
+(function(){
+'use strict';
+var $ = function(s, r){ return (r || document).querySelector(s); };
+var esc = function(s){ return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); };
+var qs = new URLSearchParams(location.search);
+var NAMES = {starters: 'Pre A1 Starters', movers: 'A1 Movers', flyers: 'A2 Flyers'};
+var PAPER = {listening: 'Listening', rw: 'Reading & Writing', speaking: 'Speaking'};
+var PAPER_ES = {listening: 'escuchar', rw: 'leer y escribir', speaking: 'hablar'};
+var sb = supabase.createClient(NIS_CONFIG.SUPABASE_URL, NIS_CONFIG.SUPABASE_KEY);
+var SPECS = null, D = null, LEVEL = null, TEACHER = false, STUDENT = qs.get('student');
+
+/* Lo que «ya puede hacer» por nivel: las descripciones oficiales del Handbook 2024, en español. */
+var CANDO = {
+  starters: {ls: ['Entiende las letras del alfabeto inglés cuando las oye.', 'Entiende instrucciones sencillas dichas con frases cortas.', 'Entiende preguntas sencillas sobre sí mismo: nombre, edad, cosas favoritas, rutina.', 'Entiende descripciones muy sencillas de personas (nombre, edad, aspecto, qué hacen) y de objetos (cuántos, color, tamaño, dónde están).', 'Nombra personas y cosas conocidas: familia, animales, objetos del colegio y de casa.', 'Describe objetos y animales de forma básica y responde con una palabra o con sí/no.'],
+             rw: ['Lee y entiende frases sencillas, incluidas preguntas.', 'Sigue cuentos muy cortos escritos con lenguaje muy simple.', 'Escribe las letras del alfabeto y su nombre.', 'Copia palabras, frases y oraciones cortas, y deletrea correctamente palabras muy sencillas.']},
+  movers: {ls: ['Entiende diálogos muy sencillos sobre temas conocidos con ayuda de dibujos.', 'Entiende descripciones muy sencillas de personas y objetos.', 'Expresa acuerdo o desacuerdo con frases cortas.', 'Responde a preguntas sobre temas conocidos con frases sencillas.', 'Describe objetos, dibujos y acciones, y cuenta una historia muy simple con ayuda de dibujos.', 'Pregunta cómo está alguien y hace preguntas sencillas sobre hábitos y gustos.'],
+           rw: ['Entiende carteles y avisos sencillos.', 'Lee y entiende textos cortos con información y cuentos cortos, con ayuda de dibujos.', 'Escribe frases y oraciones cortas sobre dibujos y temas conocidos.', 'Escribe oraciones sencillas con datos personales y sobre lo que le gusta y no le gusta.']},
+  flyers: {ls: ['Entiende instrucciones de más de una oración.', 'Entiende descripciones sencillas de objetos, personas y hechos.', 'Entiende conversaciones sencillas sobre temas cotidianos.', 'Hace preguntas básicas sobre temas cotidianos.', 'Cuenta historias cortas y sencillas a partir de dibujos o de sus propias ideas.', 'Describe objetos, dibujos y acciones, y habla brevemente de cosas que hizo en el pasado.'],
+           rw: ['Entiende descripciones escritas sencillas de objetos, personas y hechos.', 'Entiende cuentos cortos con tiempos del pasado.', 'Lee y entiende textos cortos aunque no conozca alguna palabra.', 'Une frases con conectores como and, because y then.', 'Escribe descripciones sencillas y un cuento corto a partir de dibujos o de sus propias ideas.']}
+};
+/* Qué practicar en casa cuando una parte flojea (nivel/paper/parte). */
+var TIPS = {
+  starters: {listening: {p1: 'Unir nombres con personas: describan juntos una foto (quién lleva el sombrero rojo, quién está sentado).', p2: 'Deletrear nombres y decir números del 1 al 20: jueguen a deletrear los nombres de la familia.', p3: 'Elegir el dibujo correcto entre tres: pídale que le cuente qué hay en cada dibujo antes de elegir.', p4: 'Colorear lo que se oye: practiquen colores y posiciones (under, next to, in) con objetos de casa.'},
+             rw: {p1: 'Verdadero o falso con dibujos: lea frases cortas y pregúntele si son ciertas para el dibujo.', p2: 'Responder yes o no sobre una escena: describan una lámina con frases muy cortas.', p3: 'Ordenar letras para formar una palabra: el entrenador de vocabulario tiene el modo «Spell it».', p4: 'Elegir y copiar la palabra que falta: copiar palabras con cuidado, letra por letra.', p5: 'Contestar con una palabra sobre una historia en tres dibujos: pídale que cuente qué pasa en cada dibujo.'},
+             speaking: {p1: 'Señalar y colocar tarjetas en una escena: «Where is the…? Put the… on the…».', p2: 'Preguntas sobre la escena: «What is this? What colour is it?».', p3: 'Preguntas sobre las tarjetas: nombrar objetos y decir una cosa de cada uno.', p4: 'Preguntas personales: nombre, edad, familia, colegio, comida favorita.'}},
+  movers: {listening: {p1: 'Unir nombres con personas de una escena: describir qué hace cada persona.', p2: 'Completar un formulario con palabras y números hasta 100: dictarle datos sencillos.', p3: 'Unir personas con dibujos A–H: escuchar y buscar el detalle que decide.', p4: 'Elegir entre tres dibujos: escuchar la conversación completa antes de decidir.', p5: 'Colorear y escribir una palabra en la lámina: colores, posiciones y una palabra corta.'},
+           rw: {p1: 'Copiar la palabra que responde a una definición: jueguen a «¿Qué es? Es un animal que…».', p2: 'Elegir la respuesta en un diálogo corto: practicar preguntas y respuestas cotidianas.', p3: 'Completar una historia con las palabras dadas y elegir el título: leer cuentos cortos juntos.', p4: 'Texto con tres opciones por hueco: leer textos informativos cortos (animales, lugares).', p5: 'Completar frases sobre una historia: contar la historia con sus palabras después de leerla.', p6: 'Escribir frases sobre un dibujo: describir un dibujo con dos o tres oraciones completas.'},
+           speaking: {p1: 'Encontrar diferencias entre dos dibujos: «In this picture the… is…, but here…».', p2: 'Contar una historia en dibujos: una frase por dibujo, en orden.', p3: 'Decir cuál sobra y por qué: agrupar objetos de casa por lo que tienen en común.', p4: 'Preguntas personales: colegio, familia, tiempo libre, fin de semana.'}},
+  flyers: {listening: {p1: 'Unir nombres con personas: describir con detalle (ropa, acción, lugar).', p2: 'Completar notas con palabras y números: escuchar y anotar datos.', p3: 'Unir con dibujos A–H: atender al detalle que diferencia dos opciones.', p4: 'Elegir entre tres dibujos: escuchar la conversación entera.', p5: 'Colorear y escribir: colores, posiciones y una palabra en la lámina.'},
+           rw: {p1: 'Definiciones y palabras: el entrenador de vocabulario, modo «Learn».', p2: 'Elegir la réplica en un diálogo: practicar conversaciones cotidianas.', p3: 'Texto con huecos y título: leer cuentos cortos y resumirlos.', p4: 'Texto informativo con tres opciones: leer textos cortos sobre ciencia, animales, lugares.', p5: 'Completar frases sobre una historia: contar la historia con sus palabras.', p6: 'Huecos sin opciones (un diario o un correo): escribir pequeños mensajes en inglés.', p7: 'Escribir una historia de 20 palabras a partir de tres dibujos: inventar historias juntos.'},
+           speaking: {p1: 'Encontrar diferencias: describir dos dibujos parecidos.', p2: 'Preguntar y responder con tarjetas de información: hacer preguntas con What, Where, When, How many.', p3: 'Contar una historia en dibujos: usar el pasado (went, saw, was).', p4: 'Preguntas personales: hablar de lo que hizo el fin de semana o en vacaciones.'}}
+};
+function shields(n){ var h = '<span class="shields">'; for(var i = 1; i <= 5; i++) h += '<i class="' + (i <= (n || 0) ? 'on' : '') + '">' + i + '</i>'; return h + '</span>'; }
+function fecha(s){ if(!s) return ''; var d = new Date(s); return d.toLocaleDateString('es-PE', {day: 'numeric', month: 'long', year: 'numeric'}); }
+function json(u){ return fetch(u, {cache: 'no-cache'}).then(function(r){ return r.json(); }); }
+function speakingShields(p){
+  // media de las tres escalas 0–5 del profesor si las hay; si no, la estimación del intento
+  var c = p && p.criteria; if(c && c.teacher_total != null && c.teacher_max){ return Math.max(1, Math.min(5, Math.round(5 * c.teacher_total / c.teacher_max))); }
+  return p && (p.best_shields || p.last_shields) || null;
+}
+
+function load(){
+  var token = qs.get('t');
+  var p = token ? sb.rpc('yle_boletin', {p_token: token}) : sb.auth.getUser().then(function(u){
+    if(!(u && u.data && u.data.user)) return {data: {error: 'signin'}};
+    return sb.rpc('yle_boletin_student', {p_student: STUDENT, p_level: qs.get('level') || 'starters'});
+  });
+  return Promise.all([json('yle/specs.json').catch(function(){ return null; }), p]).then(function(r){
+    SPECS = r[0]; var res = r[1]; D = res.data;
+    if(res.error) throw new Error(res.error.message);
+    if(!D || D.error){ var e = D && D.error;
+      $('#page').innerHTML = '<div class="card err">' + (e === 'expired' ? 'Este enlace ya caducó. Pida al colegio uno nuevo.' : e === 'not_found' ? 'No encontramos este boletín. Revise el enlace.' : e === 'signin' ? 'Para ver este boletín hay que entrar al portal.' : e === 'forbidden' ? 'No tiene permiso para ver este boletín.' : 'No se pudo cargar el boletín.') + '</div>'; return; }
+    LEVEL = D.level; TEACHER = !!(D.guardian || D.full_name);
+    render();
+  }).catch(function(e){ $('#page').innerHTML = '<div class="card err">No se pudo cargar el boletín (' + esc(e.message) + ').</div>'; });
+}
+
+function render(){
+  var s = D.student || {}, P = D.papers || {}, spec = SPECS && SPECS.levels && SPECS.levels[LEVEL];
+  var L = P.listening, R = P.rw, S = P.speaking;
+  var shL = L && (L.best_shields || L.last_shields), shR = R && (R.best_shields || R.last_shields), shS = speakingShields(S);
+  var total = (shL || 0) + (shR || 0) + (shS || 0), tests = D.tests_done || 0;
+  var lastAt = [L, R, S].filter(Boolean).map(function(x){ return x.last_at; }).sort().pop();
+  var st = D.settings || {}, examDate = st['exam_date_' + LEVEL] || st.exam_date, examNote = st['exam_note_' + LEVEL] || st.exam_note;
+  $('#hSub').textContent = 'Nordic International School · ' + NAMES[LEVEL] + ' · ' + fecha(D.generated_at);
+  var paperBox = function(key, p, sh){
+    return '<div class="paper"><b>' + PAPER[key] + '</b><span class="n">' + PAPER_ES[key] + '</span>' + shields(sh) +
+      '<div class="small">' + (p ? (key === 'speaking' ? (S && S.criteria && S.criteria.teacher_max ? 'Evaluado por el profesor con las escalas oficiales' : (S && S.attempts ? S.attempts + ' práctica(s) grabadas · pendiente de evaluar' : 'Sin práctica todavía')) : p.tests + ' test(s) · mejor resultado ' + (p.best_pct != null ? p.best_pct + ' %' : '—') + (p.exam_mode ? ' · incluye modo examen' : '')) : 'Sin práctica todavía') + '</div></div>';
+  };
+  var cando = CANDO[LEVEL] || {ls: [], rw: []};
+  // partes más flojas: agregado de todos los intentos
+  var partes = (D.parts || []).map(function(x){ return {paper: x.paper, part: x.part, pct: x.total ? Math.round(100 * x.score / x.total) : null}; }).filter(function(x){ return x.pct != null; }).sort(function(a, b){ return a.pct - b.pct; });
+  var flojas = partes.filter(function(x){ return x.pct < 75; }).slice(0, 3);
+  var tips = flojas.map(function(x){ var t = TIPS[LEVEL] && TIPS[LEVEL][x.paper] && TIPS[LEVEL][x.paper][x.part]; return t ? '<div class="tip"><b>' + PAPER[x.paper] + ' · Parte ' + x.part.replace('p', '') + ' (' + x.pct + ' % de aciertos)</b>' + esc(t) + '</div>' : ''; }).join('');
+  var vocab = D.vocab || {mastered: 0, seen: 0};
+  var fb = S && S.feedback ? '<div class="note"><b>Comentario del profesor sobre el Speaking:</b> ' + esc(S.feedback) + '</div>' : '';
+  var fmt = spec ? '<table><thead><tr><th>Parte</th><th>Duración</th><th>Preguntas</th></tr></thead><tbody>' +
+      '<tr><td>Listening</td><td>≈ ' + spec.listening.minutes + ' min</td><td>' + spec.listening.items + ' en ' + spec.listening.parts.length + ' partes</td></tr>' +
+      '<tr><td>Reading &amp; Writing</td><td>' + spec.rw.minutes + ' min</td><td>' + spec.rw.items + ' en ' + spec.rw.parts.length + ' partes</td></tr>' +
+      '<tr><td>Speaking</td><td>' + (spec.speaking && spec.speaking.minutes ? [].concat(spec.speaking.minutes).join('–') + ' min' : 'unos minutos') + '</td><td>conversación con un examinador, ' + (spec.speaking && spec.speaking.parts ? spec.speaking.parts.length : 4) + ' partes</td></tr></tbody></table>' : '';
+  var teacherBox = TEACHER ? teacherPanel() : '';
+  $('#page').innerHTML = teacherBox +
+    '<div class="card"><div class="head"><div class="who">' + esc(TEACHER && D.full_name ? D.full_name : s.first_name || 'Alumno') + '</div><span class="lvl ' + LEVEL + '">' + NAMES[LEVEL] + '</span><span class="muted">' + esc(s.grade || '') + '</span></div>' +
+      '<p>Este boletín resume cómo va ' + esc(s.first_name || 'su hijo/a') + ' en la preparación del examen <b>' + NAMES[LEVEL] + '</b> de Cambridge, a partir de los tests de práctica hechos en la plataforma del colegio' + (lastAt ? ' (último: ' + fecha(lastAt) + ')' : '') + '.</p></div>' +
+    '<div class="card"><h2>Escudos estimados</h2>' +
+      '<div class="papers">' + paperBox('listening', L, shL) + paperBox('rw', R, shR) + paperBox('speaking', S, shS) + '</div>' +
+      '<div class="total"><b>' + total + ' de 15 escudos</b> <span class="muted small">· estimación de Nordic a partir de ' + tests + ' test' + (tests === 1 ? '' : 's') + ' de práctica · ' + fecha(D.generated_at) + '</span></div>' +
+      '<div class="warn">⚠️ Es una <b>estimación del colegio</b>, no un resultado de Cambridge. En el examen real, cada parte recibe de 1 a 5 escudos y todos los niños reciben certificado: no se aprueba ni se desaprueba.</div>' + fb + '</div>' +
+    '<div class="card"><h2>Qué ya puede hacer en ' + NAMES[LEVEL] + '</h2><p class="small muted">Descripciones oficiales de Cambridge para este nivel. Son la meta del nivel: lo que un niño que lo termina bien es capaz de hacer.</p>' +
+      '<div class="two"><div><h3>🎧🗣️ Escuchar y hablar</h3><ul class="cando">' + cando.ls.map(function(x){ return '<li>' + esc(x) + '</li>'; }).join('') + '</ul></div>' +
+      '<div><h3>📖✍️ Leer y escribir</h3><ul class="cando">' + cando.rw.map(function(x){ return '<li>' + esc(x) + '</li>'; }).join('') + '</ul></div></div></div>' +
+    '<div class="card"><h2>Qué practicar en casa</h2>' +
+      (tips || (partes.length ? '<p>Las partes practicadas van bien (75 % o más de aciertos). Lo mejor ahora es seguir con los tests completos en modo examen y el vocabulario.</p>' : '<p>Todavía no hay tests de práctica registrados. El primer paso es hacer un test completo en la plataforma.</p>')) +
+      '<div class="tip"><b>Vocabulario de la lista oficial 2025</b>Palabras nuevas dominadas en el entrenador: <b>' + (vocab.mastered || 0) + '</b>' + (vocab.seen ? ' (ha practicado ' + vocab.seen + ')' : '') + '. Cinco minutos al día con el entrenador de vocabulario fijan las palabras que el examen usa.</div>' +
+      '<p class="small muted">Cómo ayudar sin saber inglés, y qué esperar el día del examen: <a href="yle-guia-familia.html">Guía para la familia</a>.</p></div>' +
+    '<div class="card"><h2>El examen</h2>' +
+      '<p><b>Fecha:</b> ' + (examDate ? esc(examDate) : 'por confirmar por el colegio') + (examNote ? ' · ' + esc(examNote) : '') + '</p>' + fmt +
+      '<p class="small muted" style="margin-top:8px">Los resultados oficiales llegan al colegio unas semanas después del examen; el certificado en papel, más tarde.</p></div>' +
+    '<p class="small muted">Nordic International School · Programa Cambridge Young Learners. Boletín generado el ' + fecha(D.generated_at) + (D.link && D.link.expires_at ? ' · este enlace caduca el ' + fecha(D.link.expires_at) : '') + '.</p>';
+  if(TEACHER) bindTeacher();
+}
+
+/* ---------- caja del profesor: enlace de familia y WhatsApp ---------- */
+function teacherPanel(){
+  var g = D.guardian || {};
+  return '<div class="card teacher noprint"><h2>Para el profesor</h2>' +
+    '<p class="small">Apoderado: <b>' + esc(g.name || '—') + '</b> · teléfono: <b>' + esc(g.phone || '—') + '</b>. El enlace abre este boletín sin cuenta, solo con su dirección, y caduca a los 60 días.</p>' +
+    '<p><button class="btn" id="mkLink">🔗 Crear enlace para la familia</button> <button class="btn sec" onclick="window.print()">🖨️ Imprimir / guardar PDF</button></p>' +
+    '<div id="linkBox" class="hidden"><input id="linkUrl" readonly> <p style="margin:8px 0 0"><button class="btn sec" id="copyLink">📋 Copiar</button> <a class="btn wa" id="waLink" target="_blank" rel="noopener">💬 Enviar por WhatsApp</a></p></div>' +
+    '<div id="linkMsg" class="small muted"></div></div>';
+}
+function bindTeacher(){
+  $('#mkLink').onclick = function(){
+    var btn = this; btn.disabled = true;
+    var token = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random()).replace(/-/g, '');
+    sb.auth.getUser().then(function(u){
+      return sb.from('yle_family_links').insert({token: token, student_id: STUDENT, level: LEVEL, created_by: u.data.user.id});
+    }).then(function(r){
+      if(r.error){ $('#linkMsg').textContent = 'No se pudo crear el enlace: ' + r.error.message; btn.disabled = false; return; }
+      var url = location.origin + location.pathname + '?t=' + token;
+      $('#linkBox').classList.remove('hidden'); $('#linkUrl').value = url;
+      var name = (D.student && D.student.first_name) || '';
+      var txt = 'Hola. Le compartimos el boletín Cambridge ' + NAMES[LEVEL] + ' de ' + name + ' con su avance en los tests de práctica: ' + url + ' (el enlace caduca en 60 días).';
+      var phone = String((D.guardian && D.guardian.phone) || '').replace(/\D/g, ''); if(phone.length === 9) phone = '51' + phone;
+      $('#waLink').href = 'https://wa.me/' + (phone || '') + '?text=' + encodeURIComponent(txt);
+      $('#linkMsg').textContent = 'Enlace creado. Cópielo o mándelo por WhatsApp' + (phone ? ' al ' + phone : ' (sin teléfono del apoderado: elija el contacto al abrir WhatsApp)') + '.';
+      btn.disabled = false;
+    });
+  };
+  $('#copyLink').onclick = function(){ var i = $('#linkUrl'); i.select(); try { navigator.clipboard.writeText(i.value); $('#linkMsg').textContent = 'Copiado ✓'; } catch(e){ document.execCommand('copy'); } };
+}
+load();
+})();
+</script>
+<style>.hidden{display:none!important}</style>
+</body>
+</html>

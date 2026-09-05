@@ -7,6 +7,8 @@
                       láminas coloreadas) y el formulario con las escalas oficiales
      · Acceso       — qué nivel y hasta qué test ve cada grado (tabla yle_access; sin fila = todo abierto)
      · Simulacro    — sesión de aula: el profesor la abre, pone el audio una sola vez y ve los resultados llegar
+     · Coordinación — (solo admin) tablero por grado con la distribución de escudos, exportación CSV y fecha del examen
+   Por grado enlaza el boletín de cada alumno (yle-boletin.html), que el profesor imprime o manda como enlace de familia.
    Depende de app.js: sb, state, esc, $, GRADES. Los datos vienen de yle_attempts (RLS por grado del profesor).
    ========================================================================= */
 (function(){
@@ -56,13 +58,13 @@ const CSS = `<style id="yle-panel-css">
 .yle-audio audio{width:100%;max-width:520px;display:block;margin:4px 0}
 </style>`;
 
-window.ylePanel = async function(grades){
-  V.grades = grades || (window.GRADES || []);
+window.ylePanel = async function(grades, opts){
+  V.grades = grades || (window.GRADES || []); if(opts && typeof opts.admin === 'boolean') V.admin = opts.admin;
   if(!V.grade || !V.grades.some(g => g.id === V.grade)) V.grade = V.grades.length ? V.grades[0].id : null;
   await specs();
   if(!document.getElementById('yle-panel-css')) document.head.insertAdjacentHTML('beforeend', CSS);
   clearInterval(pollTimer);
-  const vistas = [['grado', '📊 Por grado'], ['cola', '✅ Corrección'], ['acceso', '🔐 Acceso'], ['simulacro', '🏫 Simulacro']];
+  const vistas = [['grado', '📊 Por grado'], ['cola', '✅ Corrección'], ['acceso', '🔐 Acceso'], ['simulacro', '🏫 Simulacro']].concat(V.admin ? [['coord', '📈 Coordinación']] : []);
   const cab = `<h1>🛡️ Panel YLE</h1>
     <div class="note">Los practice tests de Cambridge Young Learners de cada grado: quién los hizo, cómo le fue parte por parte, qué queda por corregir y qué tests puede abrir cada grado. Los escudos son la <b>estimación del colegio</b>, no un resultado de Cambridge.</div>
     <div class="yle-pills">${vistas.map(v => `<button class="${v[0] === V.view ? 'on' : ''}" onclick="window._yleVista('${v[0]}')">${v[1]}</button>`).join('')}</div>
@@ -72,7 +74,8 @@ window.ylePanel = async function(grades){
     if(V.view === 'grado') await vistaGrado();
     else if(V.view === 'cola') await vistaCola();
     else if(V.view === 'acceso') await vistaAcceso();
-    else await vistaSimulacro();
+    else if(V.view === 'simulacro') await vistaSimulacro();
+    else await vistaCoord();
   } catch(e){ $('#yleBody').innerHTML = `<div class="note err">${esc(e.message || String(e))}</div>`; }
 };
 window._yleVista = v => { V.view = v; window.ylePanel(V.grades); };
@@ -143,10 +146,10 @@ async function vistaGrado(){
      <div class="muted" style="font-size:.9rem">${alumnos.length} alumnos · ${conIntentos} con tests hechos · ${filas.reduce((n, f) => n + f.pend, 0)} intentos por corregir</div>
      ${spec ? `<h3 style="margin:12px 0 4px">Dónde flojea la clase (aciertos por parte, todos los intentos)</h3>
      <div style="overflow-x:auto"><table class="yle-heat"><thead><tr><th></th>${Array.from({length: maxParts}, (_, i) => '<th>Part ' + (i + 1) + '</th>').join('')}</tr></thead><tbody>${heat}</tbody></table></div>` : ''}</div>
-     <div class="card" style="padding:0;overflow-x:auto"><table><thead><tr><th>Alumno</th><th>Tests hechos</th><th>Media</th><th>Listening</th><th>R&amp;W</th><th>Speaking</th><th>Parte más floja</th><th>Por corregir</th></tr></thead><tbody>` +
+     <div class="card" style="padding:0;overflow-x:auto"><table><thead><tr><th>Alumno</th><th>Tests hechos</th><th>Media</th><th>Listening</th><th>R&amp;W</th><th>Speaking</th><th>Parte más floja</th><th>Por corregir</th><th>Boletín</th></tr></thead><tbody>` +
      filas.map(f => `<tr><td><b>${esc(nombre(f.al))}</b></td><td>${f.hechos}</td><td>${f.media == null ? '<span class="muted">—</span>' : '<b>' + f.media + ' %</b>'}</td>` +
        `<td>${f.ult.listening ? escudos(f.ult.listening) : '—'}</td><td>${f.ult.rw ? escudos(f.ult.rw) : '—'}</td><td>${f.ult.speaking ? escudos(f.ult.speaking) : '—'}</td>` +
-       `<td>${f.floja ? esc(nombreParte(f.floja.k)) + ' (' + f.floja.p + ' %)' : '<span class="muted">—</span>'}</td><td>${f.pend ? '<span class="badge off">' + f.pend + '</span>' : ''}</td></tr>`).join('') +
+       `<td>${f.floja ? esc(nombreParte(f.floja.k)) + ' (' + f.floja.p + ' %)' : '<span class="muted">—</span>'}</td><td>${f.pend ? '<span class="badge off">' + f.pend + '</span>' : ''}</td><td><a class="btn sm ghost" href="yle-boletin.html?student=${f.al.id}&level=${V.level}" target="_blank" rel="noopener" title="Boletín para la familia">📄</a></td></tr>`).join('') +
      `</tbody></table></div>` +
      `<p class="muted" style="font-size:.85rem">Media = promedio del mejor intento de cada test y paper. Los escudos son los del último intento. "Parte más floja" suma todos sus intentos, parte por parte.</p>`;
 }
@@ -213,6 +216,76 @@ window._yleGuardar = async function(id, paper){
   const msg = box.querySelector('[data-msg]');
   if(error){ msg.textContent = 'No se pudo guardar: ' + error.message; btn.disabled = false; return; }
   msg.textContent = 'Guardado ✓'; setTimeout(() => box.remove(), 700);
+};
+
+
+/* ---------- Coordinación (admin): tablero por grado, exportación y fecha del examen ---------- */
+async function vistaCoord(){
+  const spec = SPECS && SPECS.levels[V.level];
+  const [{data: alumnos, error: e1}, {data: intentos, error: e2}, {data: ajustes}, {data: vocab}] = await Promise.all([
+    sb.from('profiles').select('id, full_name, first_name, last_name, grade_id, is_demo, active').eq('role', 'student'),
+    sb.from('yle_attempts').select('student_id, test, paper, mode, score, total, shields_est, criteria, reviewed_at, audio_path, created_at').eq('level', V.level).order('created_at', {ascending: false}).limit(5000),
+    sb.from('yle_settings').select('key, value'),
+    sb.from('yle_vocab_progress').select('student_id, ok').eq('level', V.level).gte('ok', 3)
+  ]);
+  if(e1) throw e1; if(e2) throw e2;
+  const set = {}; (ajustes || []).forEach(r => set[r.key] = r.value || '');
+  const vocabPor = {}; (vocab || []).forEach(r => vocabPor[r.student_id] = (vocabPor[r.student_id] || 0) + 1);
+  const porAlumno = {};
+  (intentos || []).forEach(a => {
+    const x = porAlumno[a.student_id] = porAlumno[a.student_id] || {tests: new Set(), best: {}, sh: {}, exam: false, pend: 0, last: null, sp: null};
+    if(!x.last) x.last = a.created_at;
+    if(pendiente(a)) x.pend++;
+    if(a.mode === 'exam') x.exam = true;
+    if(a.paper === 'speaking'){ x.tests.add(a.test); if(a.reviewed_at && a.criteria && a.criteria.teacher_max){ const v = Math.max(1, Math.min(5, Math.round(5 * (a.criteria.teacher_total || 0) / a.criteria.teacher_max))); x.sp = Math.max(x.sp || 0, v); } return; }
+    if(a.score == null) return;
+    x.tests.add(a.test);
+    const p = pct(a.score, a.total); if(p != null && (x.best[a.paper] == null || p > x.best[a.paper])) x.best[a.paper] = p;
+    if(a.shields_est && (x.sh[a.paper] == null || a.shields_est > x.sh[a.paper])) x.sh[a.paper] = a.shields_est;
+  });
+  const reales = (alumnos || []).filter(a => a.active !== false && !a.is_demo);
+  const filas = V.grades.map(g => {
+    const als = reales.filter(a => a.grade_id === g.id); if(!als.length) return null;
+    const con = als.filter(a => porAlumno[a.id] && porAlumno[a.id].tests.size);
+    const dist = {listening: [0, 0, 0, 0, 0], rw: [0, 0, 0, 0, 0]};
+    let listos = 0, examen = 0, pend = 0, testsTot = 0;
+    con.forEach(a => { const x = porAlumno[a.id]; testsTot += x.tests.size; if(x.exam) examen++; pend += x.pend;
+      ['listening', 'rw'].forEach(p => { if(x.sh[p]) dist[p][x.sh[p] - 1]++; });
+      if((x.sh.listening || 0) >= 3 && (x.sh.rw || 0) >= 3) listos++; });
+    const barra = p => dist[p].map((n, i) => `<span class="yle-dist" title="${n} con ${i + 1} escudo(s)"><i style="height:${con.length ? Math.max(2, Math.round(28 * n / con.length)) : 2}px"></i><small>${i + 1}</small></span>`).join('');
+    return {g, n: als.length, con: con.length, testsMed: con.length ? (testsTot / con.length).toFixed(1) : '—', listos, examen, pend, barraL: barra('listening'), barraR: barra('rw')};
+  }).filter(Boolean);
+  const totalAl = filas.reduce((n, f) => n + f.n, 0), totalCon = filas.reduce((n, f) => n + f.con, 0);
+  const fechaKey = 'exam_date_' + V.level, notaKey = 'exam_note_' + V.level;
+  $('#yleBody').innerHTML = `<div class="yle-bar"><label>Nivel <select onchange="window._yleNivel(this.value)">${Object.keys(NIV).map(l => `<option value="${l}"${l === V.level ? ' selected' : ''}>${NIV[l]}</option>`).join('')}</select></label>
+      <button class="btn sm" onclick="window._yleCsv()">⬇️ Exportar CSV (Excel)</button></div>
+    <div class="card"><h2 style="margin:0 0 6px">${NIV[V.level]} · todos los grados</h2>
+      <div class="muted" style="font-size:.9rem">${totalAl} alumnos reales (sin cuentas demo) · ${totalCon} con tests hechos · «listos» = al menos 3 escudos estimados en Listening y en Reading &amp; Writing</div>
+      <div style="overflow-x:auto;margin-top:10px"><table><thead><tr><th>Grado</th><th>Alumnos</th><th>Con tests</th><th>Tests por alumno</th><th>Escudos Listening (1→5)</th><th>Escudos R&amp;W (1→5)</th><th>Listos</th><th>Modo examen</th><th>Por corregir</th></tr></thead><tbody>
+      ${filas.map(f => `<tr><td><b>${esc(f.g.name)}</b></td><td>${f.n}</td><td>${f.con} <span class="muted">(${f.n ? Math.round(100 * f.con / f.n) : 0} %)</span></td><td>${f.testsMed}</td><td><div class="yle-hist">${f.barraL}</div></td><td><div class="yle-hist">${f.barraR}</div></td><td>${f.listos} <span class="muted">(${f.con ? Math.round(100 * f.listos / f.con) : 0} % de los que practican)</span></td><td>${f.examen}</td><td>${f.pend ? '<span class="badge off">' + f.pend + '</span>' : '—'}</td></tr>`).join('') || '<tr><td colspan="9" class="muted">Ningún grado tiene alumnos activos.</td></tr>'}
+      </tbody></table></div></div>
+    <div class="card"><h2 style="margin:0 0 6px">Fecha del examen oficial · ${NIV[V.level]}</h2>
+      <p class="muted" style="font-size:.9rem;margin:0 0 8px">Sale en el boletín de cada familia. Si se deja vacía, el boletín dice «por confirmar por el colegio».</p>
+      <div class="yle-form"><label>Fecha (texto libre)<input id="yleFecha" value="${esc(set[fechaKey] || '')}" placeholder="p. ej. sábado 21 de noviembre de 2026, 9:00"></label>
+      <label>Nota para la familia<input id="yleNota" value="${esc(set[notaKey] || '')}" placeholder="p. ej. en el colegio; el Speaking es el mismo día por la tarde"></label></div>
+      <button class="btn sm" onclick="window._yleAjustes('${fechaKey}','${notaKey}')">Guardar</button> <span id="yleAjMsg" class="muted" style="font-size:.85rem"></span></div>`;
+  if(!document.getElementById('yle-coord-css')) document.head.insertAdjacentHTML('beforeend', '<style id="yle-coord-css">.yle-hist{display:flex;gap:4px;align-items:flex-end;height:44px}.yle-dist{display:flex;flex-direction:column;align-items:center;gap:2px}.yle-dist i{display:block;width:14px;background:#d29a1f;border-radius:3px 3px 0 0}.yle-dist small{font-size:.65rem;color:var(--muted,#64748b)}</style>');
+  // CSV: una fila por alumno con tests
+  const csvFilas = [];
+  V.grades.forEach(g => reales.filter(a => a.grade_id === g.id).forEach(a => { const x = porAlumno[a.id]; if(!x || !x.tests.size) return;
+    csvFilas.push([g.name, nombre(a), NIV[V.level], x.tests.size, x.best.listening ?? '', x.sh.listening ?? '', x.best.rw ?? '', x.sh.rw ?? '', x.sp ?? '', x.exam ? 'sí' : 'no', vocabPor[a.id] || 0, x.pend, x.last ? fecha(x.last) : '']); }));
+  window._yleCsv = () => {
+    const head = ['Grado', 'Alumno', 'Nivel', 'Tests hechos', 'Listening mejor %', 'Listening escudos est.', 'R&W mejor %', 'R&W escudos est.', 'Speaking escudos (profesor)', 'Modo examen', 'Palabras 2025 dominadas', 'Por corregir', 'Último intento'];
+    const q = v => '"' + String(v ?? '').replace(/"/g, '""') + '"';
+    const csv = '\ufeff' + [head].concat(csvFilas).map(r => r.map(q).join(';')).join('\r\n');
+    const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([csv], {type: 'text/csv;charset=utf-8'})); a.download = 'yle_' + V.level + '_' + new Date().toISOString().slice(0, 10) + '.csv'; document.body.appendChild(a); a.click(); a.remove();
+  };
+}
+window._yleAjustes = async function(fk, nk){
+  const uid = (state.session && state.session.user && state.session.user.id) || null, now = new Date().toISOString();
+  const rows = [{key: fk, value: $('#yleFecha').value.trim(), updated_at: now, updated_by: uid}, {key: nk, value: $('#yleNota').value.trim(), updated_at: now, updated_by: uid}];
+  const {error} = await sb.from('yle_settings').upsert(rows, {onConflict: 'key'});
+  $('#yleAjMsg').textContent = error ? 'No se pudo guardar: ' + error.message : 'Guardado ✓';
 };
 
 /* ---------- Acceso ---------- */

@@ -111,6 +111,15 @@ details.key{margin-top:10px} details.key summary{cursor:pointer;font-weight:700;
 .sent input[type=text]{border:1.5px solid var(--border);border-radius:9px;padding:6px 10px;font:inherit;min-width:150px;margin:0 4px}
 textarea.free{width:100%;max-width:820px;min-height:64px;border:1.5px solid var(--border);border-radius:10px;padding:8px 10px;font:inherit;display:block;margin:4px 0 10px}
 .hidden{display:none!important}
+.path .shrow{display:flex;gap:18px;flex-wrap:wrap;margin:8px 0;font-weight:600;align-items:center}
+.path .next{background:#fffbf0;border-left:4px solid #d29a1f;padding:8px 12px;border-radius:0 10px 10px 0;margin:10px 0}
+.ptable{border-collapse:collapse;width:100%;margin:10px 0}
+.ptable th,.ptable td{border-bottom:1px solid var(--border);padding:7px 6px;text-align:left;vertical-align:middle}
+.ptable th{font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+.ptable td.ok{color:var(--ok);font-weight:700}.ptable td.todo{color:#b9c0cf;font-size:1.2rem}
+.btn.sm{padding:5px 10px;font-size:.85rem}
+.print-only{display:none}
+@media print{header.top,aside,.tabs,.noprint{display:none!important}.wrap{display:block}.print-only{display:block}body{background:#fff}}
 .welcome .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:12px 0}
 .welcome .tilew{background:var(--sky);border-radius:12px;padding:12px}
 .welcome .tilew b{display:block;font-size:1.3rem}
@@ -127,6 +136,9 @@ textarea.free{width:100%;max-width:820px;min-height:64px;border:1.5px solid var(
   <aside>
     <h2>Practice tests</h2>
     <div id="picker"></div>
+    <h2 style="margin-top:14px">My path</h2>
+    <button class="tbtn" id="btnPath"><b>⭐ My path</b><small>stars, shields and your next step</small></button>
+    <a class="tbtn" id="lnkVocab" href="yle-vocab.html" style="text-decoration:none;color:inherit"><b>📚 Word trainer</b><small>the 2025 word list</small></a>
     <h2 style="margin-top:14px">Level</h2>
     <div id="levels"></div>
   </aside>
@@ -185,6 +197,8 @@ function init(){
     return nisGate().then(function(){
       $('#picker').innerHTML = INDEX.length ? INDEX.map(function(t, i){ var lk = LOCKED[t.number]; return '<button class="tbtn" data-i="' + i + '"' + (lk ? ' disabled style="opacity:.5"' : '') + '><b>' + (lk ? '🔒 ' : '') + 'Test ' + t.number + '</b><small>' + esc(t.theme) + '</small></button>'; }).join('') : '<p class="small">No tests published for this level yet.</p>';
       $$('#picker .tbtn').forEach(function(b){ b.onclick = function(){ openTest(+b.dataset.i); }; });
+      $('#btnPath').onclick = showPath; $('#lnkVocab').href = 'yle-vocab.html?level=' + LEVEL;
+      if(qs.get('path') === '1') showPath();
       if(SESSION){ mode = 'exam'; var si = INDEX.findIndex(function(t){ return t.number === SESSION.test; }); if(si >= 0){ json('yle/' + LEVEL + '/test-' + String(SESSION.test).padStart(2, '0') + '.json').then(function(t){ T = t; cur = si; tab = SESSION.paper; screen = 0; $$('#picker .tbtn').forEach(function(b, k){ b.classList.toggle('on', k === si); }); render(); startTimer(); }); return; } }
       render();
       var want = +(qs.get('test') || 0); if(want && INDEX.some(function(t){ return t.number === want && !LOCKED[t.number]; })) openTest(INDEX.findIndex(function(t){ return t.number === want; }));
@@ -209,9 +223,78 @@ function nisGate(){
 function openTest(i){
   json('yle/' + LEVEL + '/test-' + String(INDEX[i].number).padStart(2, '0') + '.json').then(function(t){
     T = t; cur = i; tab = 'overview'; screen = 0;
-    $$('#picker .tbtn').forEach(function(b, k){ b.classList.toggle('on', k === i); });
+    $$('#picker .tbtn').forEach(function(b, k){ b.classList.toggle('on', k === i); }); var bp = $('#btnPath'); if(bp) bp.classList.remove('on');
     render();
   });
+}
+
+
+/* ---------- My path: estrellas por paper, escudos estimados, siguiente paso y vocabulario ---------- */
+function showPath(){
+  T = null; cur = -1; tab = 'overview';
+  $$('#picker .tbtn').forEach(function(b){ b.classList.remove('on'); }); $('#btnPath').classList.add('on');
+  $('#tabs').innerHTML = ''; $('#content').innerHTML = '<div class="card">Loading your path…</div>';
+  pathData().then(renderPath).catch(function(e){ $('#content').innerHTML = '<div class="card">Could not load your path (' + esc(e.message) + ').</div>'; });
+}
+function pathData(){
+  var out = {attempts: [], vocab: {done: 0, total: 0}, account: false};
+  var vt = json('yle/vocab/' + LEVEL + '.json').then(function(d){ out.vocab.total = (d.words || []).length; }).catch(function(){});
+  var c = client();
+  var acc = c ? c.auth.getUser().then(function(u){ var user = u && u.data && u.data.user; if(!user) return;
+      return Promise.all([
+        c.from('yle_attempts').select('test, paper, mode, score, total, parts, shields_est, criteria, feedback, reviewed_at, audio_path, created_at').eq('student_id', user.id).eq('level', LEVEL).order('created_at', {ascending: false}),
+        c.from('yle_vocab_progress').select('word, ok').eq('student_id', user.id).eq('level', LEVEL)
+      ]).then(function(r){ out.account = true; out.attempts = (r[0] && r[0].data) || []; out.vocab.done = ((r[1] && r[1].data) || []).filter(function(x){ return x.ok >= 3; }).length; });
+    }).catch(function(){}) : Promise.resolve();
+  return Promise.all([vt, acc]).then(function(){
+    if(!out.account){
+      Object.keys(STORE).forEach(function(k){ var m = /^(\d+)#(listening|rw)#result$/.exec(k); if(!m) return; var r = STORE[k], t = INDEX[+m[1] - 1]; if(!r || !t) return;
+        out.attempts.push({test: t.number, paper: m[2], mode: r.mode || 'practice', score: r.score, total: r.total, parts: r.parts || {}, shields_est: r.shields, created_at: r.at}); });
+      try { var v = JSON.parse(localStorage.getItem('yle_vocab_' + LEVEL) || '{}') || {}; out.vocab.done = Object.keys(v).filter(function(w){ return v[w] && v[w].ok >= 3; }).length; } catch(e){}
+    }
+    return out;
+  });
+}
+function shieldsMini(n){ var h = '<span class="shields">'; for(var i = 1; i <= 5; i++) h += '<span class="shield' + (i <= (n || 0) ? '' : ' off') + '">' + i + '</span>'; return h + '</span>'; }
+function renderPath(d){
+  var A = d.attempts, byTest = {}, best = {listening: null, rw: null, speaking: null}, parts = {}, fb = [];
+  var PN = {listening: 'Listening', rw: 'Reading & Writing', speaking: 'Speaking'};
+  A.forEach(function(a){
+    var t = byTest[a.test] = byTest[a.test] || {listening: null, rw: null, speaking: 0, spRev: null};
+    if(a.feedback) fb.push(a);
+    if(a.paper === 'speaking'){ t.speaking++; if(a.reviewed_at && a.criteria && a.criteria.teacher_max){ var sh = Math.max(1, Math.min(5, Math.round(5 * (a.criteria.teacher_total || 0) / a.criteria.teacher_max))); t.spRev = t.spRev || sh; if(!best.speaking || sh > best.speaking) best.speaking = sh; } return; }
+    if(a.score == null) return;
+    var p = a.total ? Math.round(100 * a.score / a.total) : null;
+    if(p != null && (!t[a.paper] || p > t[a.paper].pct)) t[a.paper] = {pct: p, sh: a.shields_est || band(p), mode: a.mode};
+    if(a.shields_est && (!best[a.paper] || a.shields_est > best[a.paper])) best[a.paper] = a.shields_est;
+    Object.keys(a.parts || {}).forEach(function(pk){ var r = a.parts[pk]; if(!r || !r.total) return; var kk = a.paper + '/' + pk; parts[kk] = parts[kk] || [0, 0]; parts[kk][0] += r.score; parts[kk][1] += r.total; });
+  });
+  var stars = 0;
+  var rows = INDEX.map(function(t){ var x = byTest[t.number] || {}; stars += (x.listening ? 1 : 0) + (x.rw ? 1 : 0) + (x.speaking ? 1 : 0);
+    var cell = function(r){ return r ? '<td class="ok">⭐ ' + r.pct + ' %' + (r.mode === 'exam' ? ' <small>exam</small>' : '') + '</td>' : '<td class="todo">☆</td>'; };
+    return '<tr><td><b>Test ' + t.number + '</b><br><small>' + esc(t.theme) + '</small></td>' + cell(x.listening) + cell(x.rw) +
+      '<td class="' + (x.speaking ? 'ok' : 'todo') + '">' + (x.speaking ? '⭐ ' + (x.spRev ? 'graded ' + x.spRev + '/5' : x.speaking + ' recorded') : '☆') + '</td>' +
+      '<td class="noprint">' + (LOCKED[t.number] ? '🔒' : '<button class="btn sec sm" data-open="' + t.number + '">Open</button>') + '</td></tr>'; });
+  var maxStars = INDEX.length * 3, total = (best.listening || 0) + (best.rw || 0) + (best.speaking || 0);
+  var weak = null; Object.keys(parts).forEach(function(kk){ var p = Math.round(100 * parts[kk][0] / parts[kk][1]); if(weak == null || p < weak.p) weak = {k: kk, p: p}; });
+  var next;
+  if(!A.length) next = 'Start with <b>Test 1</b>: do the Listening paper first, then Reading & Writing, then record your Speaking.';
+  else if(weak && weak.p < 75){ var pp = weak.k.split('/'), sp = SPECS.levels[LEVEL][pp[0]] && SPECS.levels[LEVEL][pp[0]].parts[+pp[1].slice(1) - 1];
+    next = 'Your weakest part is <b>' + PN[pp[0]] + ' Part ' + pp[1].slice(1) + '</b>' + (sp ? ' (' + esc(sp.task) + ')' : '') + ' — ' + weak.p + ' % right. Practise it again in a test you have not finished, then try that paper in <b>exam mode</b>.'; }
+  else { var undone = INDEX.filter(function(t){ var x = byTest[t.number] || {}; return !LOCKED[t.number] && !(x.listening && x.rw && x.speaking); })[0];
+    next = undone ? 'You are doing well! Next: <b>Test ' + undone.number + '</b> — get all three stars.' : 'All your tests are done. Try them again in <b>exam mode</b> and keep training the words.'; }
+  var vp = d.vocab.total ? Math.round(100 * d.vocab.done / d.vocab.total) : 0;
+  $('#content').innerHTML = '<div class="card welcome path"><h3>⭐ My path to ' + NAMES[LEVEL] + '</h3>' +
+    '<div class="grid"><div class="tilew"><b>' + stars + ' / ' + maxStars + '</b>stars · one for each paper you finish</div><div class="tilew"><b>' + total + ' / 15</b>estimated shields · your best so far</div><div class="tilew"><b>' + d.vocab.done + ' / ' + d.vocab.total + '</b>new words you know · ' + vp + ' %</div></div>' +
+    '<div class="shrow"><span>Listening ' + shieldsMini(best.listening) + '</span><span>Reading &amp; Writing ' + shieldsMini(best.rw) + '</span><span>Speaking ' + (best.speaking ? shieldsMini(best.speaking) : '<small class="small">your teacher grades it</small>') + '</span></div>' +
+    '<div class="next">👉 <b>Next step:</b> ' + next + '</div>' +
+    '<table class="ptable"><thead><tr><th>Test</th><th>Listening</th><th>Reading &amp; Writing</th><th>Speaking</th><th class="noprint"></th></tr></thead><tbody>' + rows.join('') + '</tbody></table>' +
+    '<p class="noprint"><a class="btn" href="yle-vocab.html?level=' + LEVEL + '" style="text-decoration:none">📚 Word trainer</a> <button class="btn sec" id="printPath">🖨️ Print my stars chart</button> <a class="btn sec" href="yle-guia-familia.html" style="text-decoration:none">👪 Guide for my family</a></p>' +
+    (fb.length ? '<h3>From your teacher</h3>' + fb.slice(0, 3).map(function(a){ return '<div class="score">Test ' + a.test + ' · ' + PN[a.paper] + ': ' + esc(a.feedback) + '</div>'; }).join('') : '') +
+    '<p class="small">' + (d.account ? 'Saved in your account.' : 'This is what is saved on this device' + (window.NIS_CONFIG ? '; open the tests from the portal to keep your path in your account.' : '.')) + ' Shields are your school\'s estimate from practice, not a Cambridge result.</p>' +
+    '<div class="print-only"><p>Name: ______________________ &nbsp; Date: ______________ &nbsp; Family signature: ______________________</p></div></div>';
+  $$('#content [data-open]').forEach(function(b){ b.onclick = function(){ var i = INDEX.findIndex(function(t){ return t.number === +b.dataset.open; }); if(i >= 0) openTest(i); }; });
+  $('#printPath').onclick = function(){ window.print(); };
 }
 
 /* ---------- render ---------- */
@@ -230,7 +313,7 @@ function render(){
 }
 function welcome(){
   var s = SPECS ? SPECS.levels[LEVEL] : null;
-  return '<div class="card welcome"><h3>' + NAMES[LEVEL] + ' — practice tests</h3><p class="instr">Pick a test on the left. Each test has the three papers of the real exam, with the same parts, the same number of questions and the official timing.</p>' +
+  return '<div class="card welcome"><h3>' + NAMES[LEVEL] + ' — practice tests</h3><p class="instr">Pick a test on the left. Each test has the three papers of the real exam, with the same parts, the same number of questions and the official timing. Press <b>⭐ My path</b> to see your stars, shields and what to practise next.</p>' +
     (s ? '<div class="grid"><div class="tilew"><b>' + s.listening.items + '</b>Listening questions · ' + s.listening.parts.length + ' parts · ~' + s.listening.minutes + ' min</div><div class="tilew"><b>' + s.rw.items + '</b>Reading & Writing · ' + s.rw.parts.length + ' parts · ' + s.rw.minutes + ' min</div><div class="tilew"><b>' + s.speaking.parts.length + '</b>Speaking parts · ' + s.speaking.minutes[0] + '–' + s.speaking.minutes[1] + ' min</div></div>' : '') +
     '<p class="small">Results in the real exam are <b>shields</b>: 1 to 5 for each paper, 15 in total. Everybody gets a certificate. The shields shown here are an estimate made by your school from your practice, not a Cambridge result.</p></div>';
 }
