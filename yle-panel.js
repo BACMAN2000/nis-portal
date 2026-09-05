@@ -222,6 +222,7 @@ async function vistaAcceso(){
   const map = {}; (data || []).forEach(r => map[r.grade_id + '/' + r.level] = r);
   const idx = {}; for(const l of Object.keys(NIV)) idx[l] = await indice(l);
   const filas = V.grades.map(g => `<tr data-g="${g.id}"><td><b>${esc(g.name)}</b></td>` + Object.keys(NIV).map(l => { const r = map[g.id + '/' + l]; const on = r ? r.unlocked : true; const mx = r ? r.max_test : 99; const n = idx[l].length;
+    if(!n) return `<td><span class="muted" style="font-size:.85rem">aún no en el motor YLE</span></td>`;
     return `<td style="white-space:nowrap"><label><input type="checkbox" data-l="${l}" data-k="unlocked"${on ? ' checked' : ''}> abierto</label> <select data-l="${l}" data-k="max_test"><option value="99"${mx >= 99 ? ' selected' : ''}>todos (${n})</option>${idx[l].map(t => `<option value="${t.number}"${mx === t.number ? ' selected' : ''}>hasta el test ${t.number}</option>`).join('')}<option value="0"${mx === 0 ? ' selected' : ''}>ninguno</option></select>${r ? '' : ' <span class="muted" style="font-size:.8rem">sin regla</span>'}</td>`; }).join('') +
     `<td><button class="btn sm" onclick="window._yleAccesoGuardar(this)">Guardar</button></td></tr>`).join('');
   $('#yleBody').innerHTML = `<div class="note">Qué practice tests YLE puede abrir cada grado. <b>Sin regla, un grado ve todos los tests de los niveles que le tocan</b> (el reparto del hub Cambridge). Con una fila guardada, manda la fila: cerrado oculta el nivel; "hasta el test N" deja los siguientes con candado.</div>
@@ -230,7 +231,7 @@ async function vistaAcceso(){
 window._yleAccesoGuardar = async function(btn){
   const tr = btn.closest('tr'); const g = Number(tr.dataset.g); btn.disabled = true; btn.textContent = '…';
   const uid = (state.session && state.session.user && state.session.user.id) || null;
-  const filas = Object.keys(NIV).map(l => ({grade_id: g, level: l, unlocked: tr.querySelector(`[data-l="${l}"][data-k="unlocked"]`).checked, max_test: Number(tr.querySelector(`[data-l="${l}"][data-k="max_test"]`).value), updated_at: new Date().toISOString(), updated_by: uid}));
+  const filas = Object.keys(NIV).filter(l => tr.querySelector(`[data-l="${l}"][data-k="unlocked"]`)).map(l => ({grade_id: g, level: l, unlocked: tr.querySelector(`[data-l="${l}"][data-k="unlocked"]`).checked, max_test: Number(tr.querySelector(`[data-l="${l}"][data-k="max_test"]`).value), updated_at: new Date().toISOString(), updated_by: uid}));
   const {error} = await sb.from('yle_access').upsert(filas, {onConflict: 'grade_id,level'});
   if(error) alert('No se pudo guardar: ' + error.message);
   window.ylePanel(V.grades);
