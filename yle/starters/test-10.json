@@ -1,0 +1,1074 @@
+{
+ "level": "starters",
+ "number": 10,
+ "theme": "In the garden",
+ "listening": {
+  "p1": {
+   "type": "draw_lines",
+   "image": "L1",
+   "scene": "A lovely garden with a big tree, lots of flowers and a small bird. Six children are playing: one is flying a kite, one is riding a bike, one is holding a cat, one is picking a flower, one is playing with a ball and one is running with a dog.",
+   "names": [
+    "Tom",
+    "Ben",
+    "Sue",
+    "Kim",
+    "Dan",
+    "Lucy",
+    "Sam"
+   ],
+   "people": [
+    {
+     "id": "A",
+     "desc": "a boy flying a kite"
+    },
+    {
+     "id": "B",
+     "desc": "a boy riding a bike"
+    },
+    {
+     "id": "C",
+     "desc": "a girl holding a cat"
+    },
+    {
+     "id": "D",
+     "desc": "a girl picking a flower"
+    },
+    {
+     "id": "E",
+     "desc": "a boy playing with a ball"
+    },
+    {
+     "id": "F",
+     "desc": "a girl running with a dog"
+    }
+   ],
+   "example": {
+    "name": "Tom",
+    "person": "A"
+   },
+   "items": [
+    {
+     "name": "Ben",
+     "person": "B"
+    },
+    {
+     "name": "Sue",
+     "person": "C"
+    },
+    {
+     "name": "Kim",
+     "person": "D"
+    },
+    {
+     "name": "Dan",
+     "person": "E"
+    },
+    {
+     "name": "Lucy",
+     "person": "F"
+    }
+   ]
+  },
+  "p2": {
+   "type": "note_taking",
+   "heading": "In the garden",
+   "example": {
+    "q": "What is the boy's name?",
+    "a": "Ben"
+   },
+   "items": [
+    {
+     "q": "How old is Ben?",
+     "a": "7"
+    },
+    {
+     "q": "How many flowers can Ben see?",
+     "a": "9"
+    },
+    {
+     "q": "What is Ben's cat's name?",
+     "a": "Kim"
+    },
+    {
+     "q": "How many birds are there?",
+     "a": "3"
+    },
+    {
+     "q": "What is Ben's sister's name?",
+     "a": "Sue"
+    }
+   ]
+  },
+  "p3": {
+   "type": "mc_pictures",
+   "example": {
+    "q": "What can Ben see in the tree?",
+    "pics": [
+     "bird",
+     "cat",
+     "frog"
+    ],
+    "options": [
+     "a bird",
+     "a cat",
+     "a frog"
+    ],
+    "key": "A"
+   },
+   "items": [
+    {
+     "q": "What is Sue holding?",
+     "pics": [
+      "cat",
+      "dog",
+      "ball"
+     ],
+     "options": [
+      "a cat",
+      "a dog",
+      "a ball"
+     ],
+     "key": "A"
+    },
+    {
+     "q": "What is Kim picking?",
+     "pics": [
+      "flower",
+      "apple",
+      "tree"
+     ],
+     "options": [
+      "a flower",
+      "an apple",
+      "a tree"
+     ],
+     "key": "A"
+    },
+    {
+     "q": "What is Dan playing with?",
+     "pics": [
+      "ball",
+      "kite",
+      "bike"
+     ],
+     "options": [
+      "a ball",
+      "a kite",
+      "a bike"
+     ],
+     "key": "A"
+    },
+    {
+     "q": "What can Lucy see next to the water?",
+     "pics": [
+      "frog",
+      "bird",
+      "cat"
+     ],
+     "options": [
+      "a frog",
+      "a bird",
+      "a cat"
+     ],
+     "key": "A"
+    },
+    {
+     "q": "How many flowers can you see?",
+     "pics": [
+      {
+       "word": "flower",
+       "n": 3
+      },
+      {
+       "word": "flower",
+       "n": 6
+      },
+      {
+       "word": "flower",
+       "n": 9
+      }
+     ],
+     "options": [
+      "three",
+      "six",
+      "nine"
+     ],
+     "key": "B"
+    }
+   ]
+  },
+  "p4": {
+   "type": "colour",
+   "image": "L4",
+   "object": "flower",
+   "scene": "A garden with the sun, a big tree, a cat, a dog, a bird and a small bike. There are seven flowers: next to the tree, next to the cat, under the tree, next to the bird, in the girl's hand, next to the dog and next to the bike.",
+   "example": {
+    "where": "next to the tree",
+    "colour": "blue"
+   },
+   "items": [
+    {
+     "where": "next to the cat",
+     "colour": "red"
+    },
+    {
+     "where": "under the tree",
+     "colour": "green"
+    },
+    {
+     "where": "next to the bird",
+     "colour": "yellow"
+    },
+    {
+     "where": "in the girl's hand",
+     "colour": "orange"
+    },
+    {
+     "where": "next to the dog",
+     "colour": "purple"
+    }
+   ]
+  }
+ },
+ "rw": {
+  "p1": {
+   "type": "tick_cross",
+   "example": {
+    "word": "flower",
+    "sentence": "This is a flower.",
+    "key": true
+   },
+   "items": [
+    {
+     "word": "bird",
+     "sentence": "This is a bird.",
+     "key": true
+    },
+    {
+     "word": "cat",
+     "sentence": "This is a dog.",
+     "key": false
+    },
+    {
+     "word": "tree",
+     "sentence": "This is a tree.",
+     "key": true
+    },
+    {
+     "word": "frog",
+     "sentence": "This is a fish.",
+     "key": false
+    },
+    {
+     "word": "flower",
+     "sentence": "This is a flower.",
+     "key": true
+    }
+   ]
+  },
+  "p2": {
+   "type": "yes_no",
+   "image": "R2",
+   "scene": "A garden: a boy is riding a bike, a girl is holding a black cat, a small bird is sitting in a big tree, a dog is running in the garden, there are red and yellow flowers next to the tree and a green frog is next to the water.",
+   "example": {
+    "s": "The boy is riding a bike.",
+    "key": "yes"
+   },
+   "items": [
+    {
+     "s": "The girl is holding a dog.",
+     "key": "no"
+    },
+    {
+     "s": "There is a bird in the tree.",
+     "key": "yes"
+    },
+    {
+     "s": "The frog is green.",
+     "key": "yes"
+    },
+    {
+     "s": "The cat is white.",
+     "key": "no"
+    },
+    {
+     "s": "There are flowers next to the tree.",
+     "key": "yes"
+    }
+   ]
+  },
+  "p3": {
+   "type": "unscramble",
+   "example": {
+    "word": "tree",
+    "letters": [
+     "e",
+     "t",
+     "r",
+     "e"
+    ]
+   },
+   "items": [
+    {
+     "word": "bird",
+     "letters": [
+      "d",
+      "b",
+      "i",
+      "r"
+     ]
+    },
+    {
+     "word": "frog",
+     "letters": [
+      "g",
+      "f",
+      "r",
+      "o"
+     ]
+    },
+    {
+     "word": "cat",
+     "letters": [
+      "t",
+      "c",
+      "a"
+     ]
+    },
+    {
+     "word": "ball",
+     "letters": [
+      "l",
+      "b",
+      "a",
+      "l"
+     ]
+    },
+    {
+     "word": "flower",
+     "letters": [
+      "w",
+      "o",
+      "l",
+      "f",
+      "e",
+      "r"
+     ]
+    }
+   ]
+  },
+  "p4": {
+   "type": "mc_cloze_copy",
+   "image": "R4",
+   "title": "My garden",
+   "text": "I love my __(0)__. There is a big green __(1)__ with a small __(2)__ in it. Lots of red and yellow __(3)__ are next to the tree. My __(4)__ likes to run in the garden. The garden is very __(5)__!",
+   "words": [
+    "garden",
+    "tree",
+    "bird",
+    "flowers",
+    "dog",
+    "nice",
+    "school",
+    "run"
+   ],
+   "example": "garden",
+   "key": [
+    "tree",
+    "bird",
+    "flowers",
+    "dog",
+    "nice"
+   ]
+  },
+  "p5": {
+   "type": "story_one_word",
+   "title": "A day in the garden",
+   "image": "R5",
+   "parts": [
+    {
+     "text": "It is a nice day. Anna is in her garden. She has got a big tree and lots of flowers. Her cat Kim is under the tree.",
+     "example": {
+      "q": "Where is Anna?",
+      "a": "garden"
+     },
+     "items": [
+      {
+       "q": "What is the cat's name?",
+       "a": "Kim"
+      },
+      {
+       "q": "Where is the cat?",
+       "a": "tree"
+      }
+     ]
+    },
+    {
+     "text": "Anna sees a small bird in the tree. She gives it some water. A green frog jumps next to her. 'Hello, frog!' says Anna.",
+     "items": [
+      {
+       "q": "What does Anna give the bird?",
+       "a": "water"
+      },
+      {
+       "q": "What colour is the frog?",
+       "a": "green"
+      }
+     ]
+    },
+    {
+     "text": "Now Anna picks three red flowers for her mum. Her dog Ben runs in the garden. What a lovely day in the garden!",
+     "items": [
+      {
+       "q": "How many flowers does Anna pick?",
+       "a": "three"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "speaking": {
+  "p1": {
+   "type": "scene_cards",
+   "image": "S1",
+   "scene": "A garden scene: a big tree, some colourful flowers, a small bird on the grass, a cat, a red ball and the sun in the sky.",
+   "point": [
+    {
+     "say": "Look at the picture. Where is the tree?",
+     "target": "tree"
+    },
+    {
+     "say": "Where is the cat?",
+     "target": "cat"
+    },
+    {
+     "say": "Where is the ball?",
+     "target": "ball"
+    }
+   ],
+   "cards": [
+    "bird",
+    "dog",
+    "flower",
+    "kite",
+    "book",
+    "apple",
+    "bike",
+    "frog"
+   ],
+   "place": [
+    {
+     "say": "Put the dog next to the tree.",
+     "card": "dog",
+     "zone": {
+      "x": 10,
+      "y": 54,
+      "w": 26,
+      "h": 30
+     }
+    },
+    {
+     "say": "Put the bird in the tree.",
+     "card": "bird",
+     "zone": {
+      "x": 12,
+      "y": 14,
+      "w": 30,
+      "h": 28
+     }
+    },
+    {
+     "say": "Put the apple under the tree.",
+     "card": "apple",
+     "zone": {
+      "x": 14,
+      "y": 58,
+      "w": 24,
+      "h": 20
+     }
+    }
+   ],
+   "zones": {
+    "tree": {
+     "x": 8,
+     "y": 8,
+     "w": 36,
+     "h": 62
+    },
+    "cat": {
+     "x": 58,
+     "y": 70,
+     "w": 22,
+     "h": 22
+    },
+    "ball": {
+     "x": 40,
+     "y": 78,
+     "w": 16,
+     "h": 16
+    },
+    "flowers": {
+     "x": 30,
+     "y": 72,
+     "w": 24,
+     "h": 16
+    },
+    "bird": {
+     "x": 60,
+     "y": 78,
+     "w": 16,
+     "h": 14
+    },
+    "sun": {
+     "x": 82,
+     "y": 2,
+     "w": 16,
+     "h": 24
+    },
+    "grass": {
+     "x": 0,
+     "y": 70,
+     "w": 100,
+     "h": 28
+    }
+   }
+  },
+  "p2": {
+   "type": "scene_questions",
+   "questions": [
+    {
+     "q": "What's this?",
+     "hint": "point to the tree",
+     "model": "It's a tree."
+    },
+    {
+     "q": "What colour are the flowers?",
+     "model": "They're red and yellow."
+    },
+    {
+     "q": "How many birds are there?",
+     "model": "One."
+    },
+    {
+     "q": "Tell me about the cat.",
+     "model": "It's black. It's small."
+    }
+   ]
+  },
+  "p3": {
+   "type": "card_questions",
+   "questions": [
+    {
+     "card": "bird",
+     "q": "What's this?",
+     "model": "A bird."
+    },
+    {
+     "card": "bird",
+     "q": "What colour is it?",
+     "model": "It's brown."
+    },
+    {
+     "card": "dog",
+     "q": "What's this?",
+     "model": "A dog."
+    },
+    {
+     "card": "dog",
+     "q": "Have you got a dog?",
+     "model": "Yes, I have. / No, I haven't."
+    },
+    {
+     "card": "flower",
+     "q": "What's this?",
+     "model": "A flower."
+    },
+    {
+     "card": "flower",
+     "q": "Do you like flowers?",
+     "model": "Yes, I do."
+    }
+   ]
+  },
+  "p4": {
+   "type": "personal_questions",
+   "questions": [
+    {
+     "q": "What's your name?",
+     "model": "My name's …"
+    },
+    {
+     "q": "How old are you?",
+     "model": "I'm seven."
+    },
+    {
+     "q": "Have you got a garden?",
+     "model": "Yes, I have."
+    },
+    {
+     "q": "What animals do you like?",
+     "model": "I like cats."
+    },
+    {
+     "q": "What do you do in the garden?",
+     "model": "I play with a ball."
+    }
+   ]
+  }
+ },
+ "audio": {
+  "p1": [
+   [
+    "R",
+    "Part One. Look at the picture. Listen and look. There is one example."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "F",
+    "What a lovely garden! Look at all the children."
+   ],
+   [
+    "Mch",
+    "Who's the boy with the kite?"
+   ],
+   [
+    "F",
+    "That's Tom. His kite is red."
+   ],
+   [
+    "Mch",
+    "Tom. OK."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "R",
+    "Can you see the line? This is an example. Now you listen and draw lines."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "Mch",
+    "Can you see the boy on the bike?"
+   ],
+   [
+    "F",
+    "Yes. Is that Ben?"
+   ],
+   [
+    "Mch",
+    "Yes, that's Ben. He's got a green bike."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "F",
+    "Look at the girl with the cat. Who's that?"
+   ],
+   [
+    "Mch",
+    "That's Sue. Her cat is black."
+   ],
+   [
+    "F",
+    "Sue. OK."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "Mch",
+    "Who's the girl picking a flower?"
+   ],
+   [
+    "F",
+    "That's Kim. She loves flowers."
+   ],
+   [
+    "Mch",
+    "Kim. OK."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "F",
+    "Can you see the boy with the ball?"
+   ],
+   [
+    "Mch",
+    "Yes. What's his name?"
+   ],
+   [
+    "F",
+    "That's Dan. He likes playing ball."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "Mch",
+    "And who's the girl running with the dog?"
+   ],
+   [
+    "F",
+    "That's Lucy. Her dog is brown."
+   ],
+   [
+    "Mch",
+    "Lucy. OK."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "R",
+    "Now listen again."
+   ]
+  ],
+  "p2": [
+   [
+    "R",
+    "Part Two. Listen and write a name or a number. There are two examples."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "M",
+    "Hello! What's your name?"
+   ],
+   [
+    "Mch",
+    "My name's Ben."
+   ],
+   [
+    "M",
+    "Ben. And how old are you?"
+   ],
+   [
+    "Mch",
+    "I'm seven."
+   ],
+   [
+    "M",
+    "Seven. OK."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "R",
+    "Can you see the answers? Now you listen and write a name or a number."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "M",
+    "How many flowers can you see, Ben?"
+   ],
+   [
+    "Mch",
+    "I can see nine flowers!"
+   ],
+   [
+    "M",
+    "Nine flowers. Lovely."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "M",
+    "Have you got a cat?"
+   ],
+   [
+    "Mch",
+    "Yes, her name is Kim. K-I-M."
+   ],
+   [
+    "M",
+    "Kim. What a nice cat."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "M",
+    "How many birds can you see?"
+   ],
+   [
+    "Mch",
+    "I can see three birds in the tree."
+   ],
+   [
+    "M",
+    "Three birds. Good."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "M",
+    "And who is that girl?"
+   ],
+   [
+    "Mch",
+    "That's my sister, Sue. S-U-E."
+   ],
+   [
+    "M",
+    "Sue. She's got a flower."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "R",
+    "Now listen again."
+   ]
+  ],
+  "p3": [
+   [
+    "R",
+    "Part Three. Listen and tick the box. There is one example."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "F",
+    "What can Ben see in the tree?"
+   ],
+   [
+    "Mch",
+    "I can see a little bird in the tree."
+   ],
+   [
+    "F",
+    "A bird. OK."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "R",
+    "Can you see the tick? Now you listen and tick the box."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "F",
+    "What is Sue holding?"
+   ],
+   [
+    "Fch",
+    "Sue is holding a black cat."
+   ],
+   [
+    "F",
+    "A cat. Nice."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "F",
+    "What is Kim smelling?"
+   ],
+   [
+    "Fch",
+    "Kim is picking a flower."
+   ],
+   [
+    "F",
+    "A flower. OK."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "F",
+    "What is Dan playing with?"
+   ],
+   [
+    "Fch",
+    "Dan is playing with a ball."
+   ],
+   [
+    "F",
+    "A ball. Good."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "F",
+    "What can Lucy see next to the water?"
+   ],
+   [
+    "Fch",
+    "Lucy can see a green frog next to the water."
+   ],
+   [
+    "F",
+    "A frog. OK."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "F",
+    "How many flowers can you see?"
+   ],
+   [
+    "Fch",
+    "I can see six flowers."
+   ],
+   [
+    "F",
+    "Six flowers. Well done."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "R",
+    "Now listen again."
+   ]
+  ],
+  "p4": [
+   [
+    "R",
+    "Part Four. Listen and colour. There is one example."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "M",
+    "Can you see the flower next to the tree?"
+   ],
+   [
+    "Fch",
+    "Yes, I can."
+   ],
+   [
+    "M",
+    "Colour that flower blue."
+   ],
+   [
+    "Fch",
+    "A blue flower. OK."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "R",
+    "Can you see the blue flower? Now you listen and colour."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "M",
+    "Can you see the flower next to the cat?"
+   ],
+   [
+    "Fch",
+    "Yes."
+   ],
+   [
+    "M",
+    "Colour that flower red."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "M",
+    "Now find the flower under the tree. Colour it green."
+   ],
+   [
+    "Fch",
+    "A green flower. OK."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "M",
+    "Can you see the flower next to the bird? Colour it yellow."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "M",
+    "Now colour the flower in the girl's hand orange."
+   ],
+   [
+    "Fch",
+    "An orange flower."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "M",
+    "And the flower next to the dog? Colour it purple."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "R",
+    "Now listen again."
+   ]
+  ]
+ },
+ "marks": {
+  "listening": 20,
+  "rw": 25
+ }
+}
