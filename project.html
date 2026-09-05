@@ -419,10 +419,13 @@ function pintaArco(k, a){
   document.title = a.titulo + ' · ' + a.label + ' · NIS';
 }
 
-(async function(){
-  const vuelta = P.get('back');
-  if(vuelta) $('#back').href = vuelta;
-  await Promise.all([cargaPlan(), conectar()]);
+/* Se pinta en cuanto esta el plan anual, sin esperar a Supabase: averiguar
+   quien mira puede tardar segundos (getSession renueva el token contra la
+   red) y la pagina no depende de eso para su mitad de alumno. Cuando se sabe
+   que quien mira es profesor, se repinta con la parte docente. Es la misma
+   leccion del arranque de unit.html: no dejar la pantalla en "Loading" por
+   una consulta que puede no volver. */
+function pinta(){
   if(!ARC){ pintaIndice(); return; }
   const a = ARCS[ARC];
   if(!a){
@@ -433,6 +436,15 @@ function pintaArco(k, a){
     return;
   }
   pintaArco(ARC, a);
+}
+
+(async function(){
+  const vuelta = P.get('back');
+  if(vuelta) $('#back').href = vuelta;
+  await cargaPlan();
+  pinta();
+  await conectar();
+  if(esProfe) pinta();          // ahora si, con la parte del profesor
 })();
 </script>
 </body>
