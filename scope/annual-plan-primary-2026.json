@@ -1,0 +1,3959 @@
+{
+ "fuente": "Annual Plan Primary 2026.xlsx + Primary Calendar 2026.xlsx (Drive del colegio)",
+ "generado_por": "tools/extrae_annual_plan.py",
+ "calendario": [
+  {
+   "p": 1,
+   "unidad": 1,
+   "trimestre": 1,
+   "semanas": 6,
+   "inicio": "2026-03-09",
+   "fin": "2026-04-17"
+  },
+  {
+   "p": 2,
+   "unidad": 2,
+   "trimestre": 1,
+   "semanas": 5,
+   "inicio": "2026-04-20",
+   "fin": "2026-05-29"
+  },
+  {
+   "p": 3,
+   "unidad": 3,
+   "trimestre": 2,
+   "semanas": 6,
+   "inicio": "2026-06-01",
+   "fin": "2026-07-10"
+  },
+  {
+   "p": 4,
+   "unidad": 4,
+   "trimestre": 2,
+   "semanas": 6,
+   "inicio": "2026-08-04",
+   "fin": "2026-09-11"
+  },
+  {
+   "p": 5,
+   "unidad": 5,
+   "trimestre": 3,
+   "semanas": 5,
+   "inicio": "2026-09-14",
+   "fin": "2026-10-23"
+  },
+  {
+   "p": 6,
+   "unidad": 6,
+   "trimestre": 3,
+   "semanas": 6,
+   "inicio": "2026-10-26",
+   "fin": "2026-12-04"
+  }
+ ],
+ "grados": {
+  "g2": {
+   "grado": 2,
+   "periodos": [
+    {
+     "periodo": 1,
+     "unidad": 1,
+     "trimestre": 1,
+     "inicio": "2026-03-09",
+     "fin": "2026-04-17",
+     "semanas": [
+      {
+       "n": 1,
+       "areas": {
+        "math": [
+         "Counting numbers up to 999 (100 chart). Place value",
+         "Ordering numbers from the least to the greatest and vice versa.",
+         "Rounding to the nearest ten.",
+         "-Place value (formas de representar el número de diferentes formas)",
+         "comparación"
+        ],
+        "english": [
+         "CVC words:",
+         "Initial sounds",
+         "Middle sounds",
+         "Ending sounds",
+         "Classroom phrases and Simple instructions (everyday)"
+        ],
+        "social": [
+         "About me (traditions, ways of speaking, food, music)",
+         "Differences among classmates?"
+        ],
+        "comunicacion": [
+         "Nombres propios y comunes",
+         "(Tuti frutti)"
+        ],
+        "science": [
+         "Recognizing and outlying a research question (predictions)",
+         "Types of pollution:",
+         "air pollution",
+         "water pollution"
+        ],
+        "pe": [
+         "- Control corporal en desplazamientos variados",
+         "- Actividades motrices para el cuidado del cuerpo",
+         "- Juegos cooperativos con reglas simples"
+        ]
+       }
+      },
+      {
+       "n": 2,
+       "areas": {
+        "tutoria": [
+         "International Happiness Day!",
+         "Down Syndrome Day"
+        ],
+        "math": [
+         "Rounding to the nearest ten.",
+         "one hundred chart (100)",
+         "8H + 1T + 3O",
+         "Time (calendar): months, year, relationship between hour, day, week, month and year (morning routines).",
+         "Odd and even numbers"
+        ],
+        "english": [
+         "Word family house (-at, ot, etc)",
+         "Blended sounds (ccvc - lvs)",
+         "Classroom phrases and Simple instructions (everyday)"
+        ],
+        "social": [
+         "Boundaries and personal safety (agreements)",
+         "Situations that make me feel safe or in danger.",
+         "Things that make me feel good or bad (explaination)"
+        ],
+        "comunicacion": [
+         "Adjetivos calificativos/ Pronombres personales"
+        ],
+        "science": [
+         "Recognizing and outlying a research question (predictions)",
+         "Types of pollution:",
+         "land pollution",
+         "sound pollution"
+        ],
+        "pe": [
+         "- Equilibrio estático y dinámico",
+         "- Desarrollo de la resistencia mediante juegos activos",
+         "- Juegos de persecución y oposición controlada"
+        ]
+       }
+      },
+      {
+       "n": 3,
+       "areas": {
+        "math": [
+         "Spatial relationships: right and left, up and down.",
+         "Ordered pairs.",
+         "Positions and location on the grid (up, right and left).",
+         "Patterns  (2 a más criterios and sequence (gráfico)"
+        ],
+        "english": [
+         "Rhymes",
+         "Syllable segmentation",
+         "Classroom phrases and Simple instructions (everyday)"
+        ],
+        "social": [
+         "Rules of Coexistence for Sharing",
+         "Structure and rules",
+         "Good manners"
+        ],
+        "comunicacion": [
+         "Frases y oraciones cortas"
+        ],
+        "science": [
+         "Simple reduce–reuse–recycle practices"
+        ],
+        "pe": [
+         "- Combinación de habilidades motrices básicas",
+         "- Fuerza básica a través de movimientos funcionales",
+         "- Roles y funciones en juegos grupales"
+        ]
+       }
+      },
+      {
+       "n": 4,
+       "areas": {
+        "tutoria": [
+         "International Autism Awareness Day",
+         "Easter Holiday"
+        ],
+        "math": [
+         "Spatial relationships: right and left, up and down.",
+         "Ordered pairs.",
+         "Positions and location on the grid (up, right and left)."
+        ],
+        "english": [
+         "Identify sight words",
+         "Use of sight words in short sentences.",
+         "Classroom phrases and Simple instructions (everyday)"
+        ],
+        "social": [
+         "Quality of life",
+         "Actions that take care of the place where I live and my school, and that change those spaces.",
+         "Actions that improve and harm the space"
+        ],
+        "comunicacion": [
+         "Uso de la RR - R /  QU / Liva stelaluna"
+        ],
+        "science": [
+         "Observing experiments and following simple instructions to carry out simple investigations suggested by teacher.",
+         "Registering and comparing results in a logbook."
+        ],
+        "pe": [
+         "- Expresión corporal y movimientos rítmicos",
+         "- Flexibilidad y movilidad corporal en rutinas motrices",
+         "- Estrategias básicas para juegos colectivos"
+        ]
+       }
+      },
+      {
+       "n": 5,
+       "areas": {
+        "math": [
+         "Statistics:",
+         "Bar graphs (horizontal and vertical).",
+         "Pictographs (scale up to 10).",
+         "Tally charts."
+        ],
+        "english": [
+         "Introduction to basic vocabulary related to adjectives and simple actions.",
+         "Classroom phrases and Simple instructions (everyday)"
+        ],
+        "social": [
+         "Quality of life",
+         "Actions that take care of the place where I live and my school, and that change those spaces.",
+         "Actions that improve and harm the space"
+        ],
+        "comunicacion": [
+         "Signos de exclamación e interrogación"
+        ],
+        "science": [
+         "Observing experiments and following simple instructions to carry out simple investigations suggested by teacher.",
+         "Registering and comparing results in a logbook."
+        ],
+        "pe": [
+         "- Juegos de fuerza y resistencia básica",
+         "- Higiene corporal antes y después de la actividad física",
+         "- Comunicación y trabajo en equipo en actividades motrices"
+        ]
+       }
+      },
+      {
+       "n": 6,
+       "areas": {
+        "math": [
+         "Review",
+         "estrategia de analogía (10 + 2 , 30 + 3, etc), combinación para obtener un número",
+         "Statistics:",
+         "Bar graphs (horizontal and vertical).",
+         "Pictographs (scale up to 10).",
+         "Tally charts."
+        ],
+        "english": [
+         "Introduction to basic vocabulary related to adjectives and simple actions.",
+         "Classroom phrases and Simple instructions (everyday)"
+        ],
+        "social": [
+         "Quality of life",
+         "Actions that take care of the place where I live and my school, and that change those spaces.",
+         "Actions that improve and harm the space"
+        ],
+        "comunicacion": [
+         "Adivinanza"
+        ],
+        "science": [
+         "Expresing and communicating findings."
+        ],
+        "pe": [
+         "- Orientación espacial y lateralidad                             2.- Postura y respiración durante el ejercicio físico",
+         "- Respeto de normas y resolución de conflictos en el juego"
+        ]
+       }
+      }
+     ],
+     "fuera_de_calendario": []
+    },
+    {
+     "periodo": 2,
+     "unidad": 2,
+     "trimestre": 1,
+     "inicio": "2026-04-20",
+     "fin": "2026-05-29",
+     "semanas": [
+      {
+       "n": 1,
+       "areas": {
+        "tutoria": [
+         "Día de la tierra",
+         "Book Day"
+        ],
+        "math": [
+         "Counting numbers up to 999 (100 chart).",
+         "Reading and writing whole numbers up to 3-digit numbers applying the place value concept."
+        ],
+        "english": [
+         "Listening games to recognize common words.",
+         "Introduction to basic vocabulary related to everyday objects, family members, and simple actions."
+        ],
+        "social": [
+         "My Personal Story\": What things have changed in your life? (before and now)",
+         "Personal sequence of events: when I was younger / now."
+        ],
+        "comunicacion": [
+         "Campo semántico / esquema de ishikawa"
+        ],
+        "science": [
+         "Recognizing and outlying a research question (predictions)",
+         "Life cycle in humans:",
+         "birth, growth, maturity, reproduction, death"
+        ],
+        "pe": [
+         "-Control corporal en posiciones básicas gimnásticas.",
+         "-Calentamiento corporal antes de la práctica gimnástica.",
+         "-Trabajo cooperativo en secuencias gimnásticas grupales"
+        ]
+       }
+      },
+      {
+       "n": 2,
+       "areas": {
+        "tutoria": [
+         "Psychologists Day!",
+         "Labor Day (holiday)"
+        ],
+        "math": [
+         "Counting by 2s, 3s, 4s, 5s and 10s",
+         "Telling time: hour, half hour and quarter hour"
+        ],
+        "english": [
+         "Listening games to recognize common words.",
+         "Introduction to basic vocabulary related to everyday objects, family members, and simple actions."
+        ],
+        "social": [
+         "My Personal Story\": What things have changed in your life? (before and now)",
+         "Personal sequence of events: when I was younger / now.",
+         "Time Line"
+        ],
+        "comunicacion": [
+         "Partes de una carta"
+        ],
+        "science": [
+         "Recognizing and outlying a research question (predictions)",
+         "Life cycle in humans:",
+         "birth, growth, maturity, reproduction, death"
+        ],
+        "pe": [
+         "-Equilibrio estático y dinámico en ejercicios gimnásticos.",
+         "-Flexibilidad y movilidad articular en gimnasia básica.",
+         "-Apoyo y ayuda mutua en ejercicios con compañeros"
+        ]
+       }
+      },
+      {
+       "n": 3,
+       "areas": {
+        "tutoria": [
+         "Mother's Day celebration"
+        ],
+        "math": [
+         "Meaning of addition and subtraction."
+        ],
+        "english": [
+         "Make predictions analyzing front cover and title.",
+         "Retell stories with details.",
+         "Describe characters, settings, events with details."
+        ],
+        "social": [
+         "Images of their daily life (actual and old photos), Old objects (clothing, toys, tools), Interviews (grandparents, neighbors, parents)"
+        ],
+        "comunicacion": [
+         "El punto final y punto aparte"
+        ],
+        "science": [
+         "Observing experiments and following simple instructions to carry out simple investigations suggested by teacher.",
+         "Registering and comparing results in a logbook."
+        ],
+        "pe": [
+         "-Rodamientos y apoyos básicos en el suelo.",
+         "-Fortalecimiento corporal con ejercicios gimnásticos.",
+         "-Construcción de figuras corporales en equipo"
+        ]
+       }
+      },
+      {
+       "n": 4,
+       "areas": {
+        "tutoria": [
+         "Math Day"
+        ],
+        "math": [
+         "Lines: line segment, curves, parallel lines and spirals.",
+         "Semicircle and quarter circle."
+        ],
+        "english": [
+         "Introduction to descriptions using familiar vocabulary.",
+         "Write short narratives (sentences).",
+         "Use illustrations, details for description.",
+         "Subject-verb agreement."
+        ],
+        "social": [
+         "Time Line",
+         "Images of their daily life (actual and old photos), Old objects (clothing, toys, tools), Interviews (grandparents, neighbors, parents)"
+        ],
+        "comunicacion": [
+         "Liva / El misterio del pollo en la batea"
+        ],
+        "science": [
+         "Observing experiments and following simple instructions to carry out simple investigations suggested by teacher.",
+         "Registering and comparing results in a logbook."
+        ],
+        "pe": [
+         "-Saltos y aterrizajes con control corporal.",
+         "-Respiración y relajación después de la actividad física.",
+         "-Coordinación grupal en desplazamientos gimnásticos"
+        ]
+       }
+      },
+      {
+       "n": 5,
+       "areas": {
+        "math": [
+         "Symmetry and congruence of figures.",
+         "Plane shapes: square, triangle, rectangle, circle, oval and rhombus (sides and vertices; copy on grid)."
+        ],
+        "english": [
+         "Introduction to descriptions using familiar vocabulary.",
+         "Write short narratives (sentences).",
+         "Subject-verb agreement."
+        ],
+        "social": [
+         "What elements I see in my surroundings (natural and social)."
+        ],
+        "comunicacion": [
+         "La carta - borrador"
+        ],
+        "science": [
+         "Expresing and communicating findings."
+        ],
+        "pe": [
+         "-Secuencias gimnásticas individuales combinadas.",
+         "-Higiene y cuidado del cuerpo en la práctica gimnástica.",
+         "-Respeto de normas y seguridad en la gimnasia"
+        ]
+       }
+      }
+     ],
+     "fuera_de_calendario": [
+      {
+       "pe": [
+        "-Expresión corporal en movimientos gimnásticos.                                  2.-Postura adecuada y prevención de lesiones.                                                   3.-Creación colectiva de pequeñas rutinas gimnásticas"
+       ]
+      }
+     ]
+    },
+    {
+     "periodo": 3,
+     "unidad": 3,
+     "trimestre": 2,
+     "inicio": "2026-06-01",
+     "fin": "2026-07-10",
+     "semanas": [
+      {
+       "n": 1,
+       "areas": {
+        "tutoria": [
+         "Peruvians Flag's Day internal",
+         "Student Achievement Day"
+        ],
+        "math": [
+         "Counting numbers up to 999 (100 chart).",
+         "Addition and subtraction up to 3-digit numbers (trading and without trading).",
+         "Bills and coins (addition and subtraction up to 200, 1-step word problems, exchange)."
+        ],
+        "english": [
+         "Pre A1 STARTERS activities: Listening",
+         "Comparative words (shorter, larger, louder, etc).",
+         "Understanding the characters and actions involved in the listening."
+        ],
+        "social": [
+         "How I express my culture",
+         "What makes me feel proud.",
+         "Ways to ask for help and when it is important"
+        ],
+        "comunicacion": [
+         "Uso de la G y J/ C - Z / H"
+        ],
+        "science": [
+         "Recognizing and outlying a research question (predictions).",
+         "Animal Kingdom: Vertebrates and Invertebrates and their main characteristics"
+        ],
+        "pe": [
+         "-Técnicas básicas de carrera y control postural",
+         "-Calentamiento antes de las actividades atléticas",
+         "-Juegos de relevos y cooperación en carreras"
+        ]
+       }
+      },
+      {
+       "n": 2,
+       "areas": {
+        "math": [
+         "Counting numbers up to 999 (100 chart).",
+         "Addition and subtraction up to 3-digit numbers (trading and without trading).",
+         "Bills and coins (addition and subtraction up to 200, 1-step word problems, exchange).",
+         "Bills and coins (addition and subtraction up to 200, 1-step word problems, exchange)",
+         "Patrones aditivos con números de dos cifras."
+        ],
+        "english": [
+         "Pre A1 STARTERS activities: Speaking",
+         "Simple dialogues about daily activities (school routine, favorite foods).",
+         "Using of simple action words (make small sentences)."
+        ],
+        "social": [
+         "How I express my culture",
+         "What makes me feel proud.",
+         "Ways to ask for help and when it is important",
+         "My Cultural Expressions”: What we do \"\"as a family\"\" Traditions at home, School traditions. Which traditions would you like to change, and which ones would you like to continue practicing? What I enjoy about my family culture?\""
+        ],
+        "comunicacion": [
+         "La coma enumerativa"
+        ],
+        "science": [
+         "Recognizing and outlying a research question (predictions)",
+         "Comparison between vertebrates and invertebrates",
+         "External parts of the body of animals and their functions (body coverings)"
+        ],
+        "pe": [
+         "-Saltos básicos con impulso y caída controlada",
+         "-Resistencia básica mediante juegos de carrera",
+         "-Organización de equipos para pruebas atléticas recreativas"
+        ]
+       }
+      },
+      {
+       "n": 3,
+       "areas": {
+        "tutoria": [
+         "Father's Day Celebration"
+        ],
+        "math": [
+         "Parts of a whole: halves and quarters (concrete material, manipulatives – 3rd Grade).",
+         "Comparing and ordering fractions with the same denominator (>, <, =) – pictorial.",
+         "Properties of addition (commutative – flipped operations)."
+        ],
+        "english": [
+         "Simple dialogues about daily activities (school routine, favorite foods).",
+         "Using of simple action words (make small sentences)."
+        ],
+        "social": [
+         "The places where I am and act.",
+         "Jobs in my community (neighborhood and school) and what they are for (needs).",
+         "Institutions that provide those services and the relationship between work – needs – quality of life."
+        ],
+        "comunicacion": [
+         "Anecdotario"
+        ],
+        "science": [
+         "(about animals)",
+         "Observing experiments and following simple instructions to carry out simple investigations suggested by teacher.",
+         "Laboratory safety measures (labcoat, gloves, googles).",
+         "Registering and comparing results in a logbook.",
+         "Expresing and communicating findings."
+        ],
+        "pe": [
+         "-Lanzamientos iniciales con diferentes objetos",
+         "-Fuerza básica aplicada a saltos y lanzamientos",
+         "-Respeto de turnos y normas en competencias amistosas"
+        ]
+       }
+      },
+      {
+       "n": 4,
+       "areas": {
+        "math": [
+         "Properties of solid shapes: faces, edges and vertices.",
+         "Solid shapes: sphere, cube, cuboid/rectangular prism, cylinder, cone and pyramid.",
+         "r",
+         "Puntos cardinales",
+         "Àngulos",
+         "Lines: line segment, curves, parallel lines and spirals.",
+         "Semicircle and quarter circle."
+        ],
+        "english": [
+         "Pre A1 STARTERS activities: Reading",
+         "Reading short narratives (story, texts, etc).",
+         "Basic conjunction (periods, question marks)."
+        ],
+        "social": [
+         "Front / back, under / over, beside, inside / outside, near / far, right / left.",
+         "Identification and movement using reference points."
+        ],
+        "comunicacion": [
+         "El verbo / diagrama de venn"
+        ],
+        "science": [
+         "Recognizing and outlying a research question (predictions).",
+         "Plant Kingdom: Flowering plants and non-flowering plants"
+        ],
+        "pe": [
+         "-Coordinación de brazos y piernas en desplazamientos",
+         "-Importancia de la hidratación en la actividad física",
+         "-Apoyo y ánimo entre compañeros durante las pruebas"
+        ]
+       }
+      },
+      {
+       "n": 5,
+       "areas": {
+        "math": [
+         "Flat and curved surfaces of solid objects.",
+         "Patterns of solid shapes using 1 or 2 attributes",
+         "Gràfico de barras verticales y horizontales"
+        ],
+        "english": [
+         "Pre A1 STARTERS activities: Writing",
+         "Writing short narratives (story, texts, etc).",
+         "Making sentences using comparatives.",
+         "Basic conjunction in sentences (periods, question marks)."
+        ],
+        "social": [
+         "Front / back, under / over, beside, inside / outside, near / far, right / left.",
+         "Identification and movement using reference points."
+        ],
+        "comunicacion": [
+         "Plan lector"
+        ],
+        "science": [
+         "Recognizing and outlying a research question (predictions).",
+         "Parts of the plant and their general functions"
+        ],
+        "pe": [
+         "-Secuencias motrices combinadas (correr, saltar, lanzar)",
+         "-Respiración y recuperación después del esfuerzo",
+         "-Estrategias simples en juegos de carrera por equipos"
+        ]
+       }
+      },
+      {
+       "n": 6,
+       "areas": {
+        "tutoria": [
+         "Fiestas Patrias Celebration"
+        ],
+        "math": [
+         "Probability: certain, likely and impossible."
+        ],
+        "english": [
+         "Writing short narratives (story, texts, etc).",
+         "Making sentences using comparatives.",
+         "Using basic conjunction in sentences (periods, question marks)."
+        ],
+        "social": [
+         "My Cultural Expressions”: What we do \"\"as a family\"\" Traditions at home, School traditions. Which traditions would you like to change, and which ones would you like to continue practicing? What I enjoy about my family culture?\""
+        ],
+        "comunicacion": [
+         "Anecdotario - Presentación"
+        ],
+        "science": [
+         "(about plants)",
+         "Observing experiments and following simple instructions to carry out simple investigations suggested by teacher.",
+         "Registering and comparing results in a logbook.",
+         "Expresing and communicating findings."
+        ],
+        "pe": [
+         "-Ritmo y control corporal en pruebas atléticas recreativas.                              2.-Cuidado del cuerpo y prevención de lesiones en el atletismo.                                                3.-Participación responsable en mini-eventos atléticos escolares"
+        ]
+       }
+      }
+     ],
+     "fuera_de_calendario": []
+    },
+    {
+     "periodo": 4,
+     "unidad": 4,
+     "trimestre": 2,
+     "inicio": "2026-08-04",
+     "fin": "2026-09-11",
+     "semanas": [
+      {
+       "n": 1,
+       "areas": {
+        "math": [
+         "Properties of addition (commutative – flipped operations).",
+         "Concept of width and length.",
+         "Metric units of length: cm and m (comparing and estimating)."
+        ],
+        "english": [
+         "Pre A1 STARTERS activities: Listening",
+         "Personal experiences using present simple",
+         "Understanding the characters and actions.",
+         "Vocabulary related to everyday objects, family members, and actions."
+        ],
+        "social": [
+         "Strategies to calm myself and ask for help",
+         "Situations that make me feel safe or in danger",
+         "Rules of Coexistence for Sharing: turns to speak, ask questions respectfully - study trip",
+         "Taking care of my belongings and materials, and cleanliness."
+        ],
+        "comunicacion": [
+         "Uso de la LL - Y / K / Ñ"
+        ],
+        "science": [
+         "Recognizing and outlying a research question (predictions).",
+         "Life cycle in animals and plants:",
+         "birth, growth, maturity, reproduction & death"
+        ],
+        "pe": [
+         "-Golpes básicos de antebrazo con balón liviano",
+         "-Calentamiento específico para juegos predeportivos de vóley",
+         "-Trabajo en equipo en juegos predeportivos de vóley"
+        ]
+       }
+      },
+      {
+       "n": 2,
+       "areas": {
+        "tutoria": [
+         "Study Trip 2nd & 3rd grade"
+        ],
+        "math": [
+         "Concept of width and length.",
+         "Metric units of length: cm and m (comparing and estimating).",
+         "Metric units of mass: kg and g (comparing).",
+         "Metric units of capacity: l and cups."
+        ],
+        "english": [
+         "Pre A1 STARTERS activities: Speaking",
+         "Personal experiences using present simple",
+         "Simple conversations about daily activities"
+        ],
+        "social": [
+         "Jobs in my community (neighborhood and school) and what they are for (needs).",
+         "Goods and services in my daily life.",
+         "Practicing savings in my daily life."
+        ],
+        "comunicacion": [
+         "La coma enumerativa / plan lector"
+        ],
+        "science": [
+         "\"Recognizing and outlying a research question (predictions).",
+         "Interactions between living beings:",
+         "carnivore, herbivore, omnivore"
+        ],
+        "pe": [
+         "-Coordinación óculo-manual en lanzamientos y recepciones",
+         "-Resistencia básica mediante juegos continuos con balón",
+         "-Respeto de turnos y normas básicas del juego"
+        ]
+       }
+      },
+      {
+       "n": 3,
+       "areas": {
+        "tutoria": [
+         "Día de la niñez"
+        ],
+        "math": [
+         "Metric units of mass: kg and g (comparing).",
+         "Metric units of capacity: l and cups."
+        ],
+        "english": [
+         "Personal experiences using present simple",
+         "Simple conversations about daily activities"
+        ],
+        "social": [
+         "Institutions that provide those services and the relationship between work – needs – quality of life."
+        ],
+        "comunicacion": [
+         "Tema de expositivos / conectores de secuencia"
+        ],
+        "science": [
+         "Observing experiments and following simple instructions to carry out simple investigations suggested by teacher.",
+         "Laboratory safety measures (labcoat, gloves, googles).",
+         "Registering and comparing results in a logbook.",
+         "Expresing and communicating findings."
+        ],
+        "pe": [
+         "-Desplazamientos laterales y frontales en el campo de juego",
+         "-Fuerza básica en empujes y golpes controlados",
+         "-Comunicación y cooperación en pases grupales"
+        ]
+       }
+      },
+      {
+       "n": 4,
+       "areas": {
+        "math": [
+         "Introduction to multiplication in relation to addition."
+        ],
+        "english": [
+         "Pre A1 STARTERS activities: Reading",
+         "Describe characters, settings, events with details.",
+         "Answer questions on general and key details.",
+         "Determine main topics and elaborate on details (stories)."
+        ],
+        "social": [
+         "Institutions that provide those services and the relationship between work – needs – quality of life."
+        ],
+        "comunicacion": [
+         "Texto instructivo / partes"
+        ],
+        "science": [
+         "\"Recognizing and outlying a research question (predictions).",
+         "Types of materials (wood, plastic, glass, etc)"
+        ],
+        "pe": [
+         "-Control corporal en posiciones básicas del vóley",
+         "-Movilidad articular y prevención de lesiones en brazos y piernas",
+         "-Organización de roles en mini-partidos adaptados"
+        ]
+       }
+      },
+      {
+       "n": 5,
+       "areas": {
+        "math": [
+         "multiplication in relation to addition."
+        ],
+        "english": [
+         "Pre A1 STARTERS activities: Writing",
+         "Present Continuous sentences.",
+         "Write letters or descriptions using familiar vocabulary."
+        ],
+        "social": [
+         "Sequences of events in my daily life"
+        ],
+        "comunicacion": [
+         "Palabras compuestas"
+        ],
+        "science": [
+         "\"Recognizing and outlying a research question (predictions).",
+         "Properties of matter (hard, soft, flexible, rigid, heavy, light)",
+         "Interaction with light (transparent, translucent, opaque)"
+        ],
+        "pe": [
+         "-Secuencias motrices combinadas (desplazarse y golpear)",
+         "-Hidratación y cuidado corporal durante la práctica deportiva",
+         "-Estrategias simples para mantener el balón en juego"
+        ]
+       }
+      },
+      {
+       "n": 6,
+       "areas": {
+        "math": [
+         "Counting by 2s, 3s, 4s, 5s and 10s",
+         "Parts of a whole: halves and quarters (concrete material, manipulatives – 3rd Grade).",
+         "Comparing and ordering fractions with the same denominator (>, <, =) – pictorial."
+        ],
+        "english": [
+         "Present Continuous sentences.",
+         "Write letters or descriptions using familiar vocabulary.",
+         "Use illustrations, details for description."
+        ],
+        "social": [
+         "Simultaneous actions at home and school: while I..."
+        ],
+        "comunicacion": [
+         "Exposición - tema de expertos"
+        ],
+        "science": [
+         "Observing experiments and following simple instructions to carry out simple investigations suggested by teacher.",
+         "Laboratory safety measures (labcoat, gloves, googles).",
+         "Registering and comparing results in a logbook.",
+         "Expresing and communicating findings."
+        ],
+        "pe": [
+         "-Orientación espacial en mini-campos de vóley.                                                                                 2.-Postura adecuada y control respiratorio en la actividad física.                                                        3.-Juego limpio y resolución pacífica de conflictos"
+        ]
+       }
+      }
+     ],
+     "fuera_de_calendario": []
+    },
+    {
+     "periodo": 5,
+     "unidad": 5,
+     "trimestre": 3,
+     "inicio": "2026-09-14",
+     "fin": "2026-10-23",
+     "semanas": [
+      {
+       "n": 1,
+       "areas": {
+        "math": [
+         "Counting numbers up to 999 (100 chart).",
+         "Properties of addition (commutative – flipped operations).",
+         "Symmetry and congruence of figures."
+        ],
+        "english": [
+         "Pre A1 STARTERS activities: Listening",
+         "Basic vocabulary related to everyday objects, family members, and simple actions.",
+         "Short, simple stories."
+        ],
+        "social": [
+         "Equity: Boys and girls can do the same activities",
+         "Gestiona responsablemente el ambiente y el espacio",
+         "Actions that improve and harm the space.",
+         "Environmental problems that affect me. Causes and consequences.",
+         "Dangerous situations in the places where I am.",
+         "Natural hazards and human‑induced hazards.",
+         "What I do in the face of danger (Disaster Risk Management Plan). Evacuation signs.",
+         "Gestiona responsablemente los recursos económicos",
+         "Our enterprises with impact (small actions)."
+        ],
+        "comunicacion": [
+         "Uso de la gue - gui /"
+        ],
+        "science": [
+         "Recognizing and outlying a research question (predictions).",
+         "Energy and Light in Everyday Life",
+         "Introduction to energy sources:",
+         "sun, heat, wind, etc."
+        ],
+        "pe": [
+         "-Conducción básica del balón con ambos pies",
+         "-Calentamiento previo a juegos predeportivos de fútbol",
+         "-Trabajo en equipo en juegos predeportivos de fútbol"
+        ]
+       }
+      },
+      {
+       "n": 2,
+       "areas": {
+        "tutoria": [
+         "International Peace Day"
+        ],
+        "math": [
+         "Multiplication tables (2, 3, 4, 5 and 10)."
+        ],
+        "english": [
+         "Pre A1 STARTERS activities: Speaking",
+         "Key characters and actions on listenings.",
+         "Practice conversational phrases."
+        ],
+        "comunicacion": [
+         "Noticia ( texto instructivo)"
+        ],
+        "science": [
+         "Recognizing and outlying a research question (predictions).",
+         "Energy and Light in Everyday Life",
+         "Introduction to energy sources:",
+         "sun, heat, wind, etc."
+        ],
+        "pe": [
+         "-Control y dominio del balón en desplazamiento",
+         "-Resistencia básica mediante juegos continuos con balón",
+         "-Respeto de normas básicas y turnos de juego"
+        ]
+       }
+      },
+      {
+       "n": 3,
+       "areas": {
+        "tutoria": [
+         "Sports Day",
+         "(Inauguración)"
+        ],
+        "math": [
+         "Introduction to division (halves).",
+         "Combined operations."
+        ],
+        "english": [
+         "Short, simple stories.",
+         "Key characters and actions on listenings.",
+         "Practice conversational phrases."
+        ],
+        "science": [
+         "Observing experiments and following simple instructions to carry out simple investigations suggested by teacher.",
+         "Laboratory safety measures (labcoat, gloves, googles).",
+         "Registering and comparing results in a logbook.",
+         "Expresing and communicating findings."
+        ],
+        "pe": [
+         "-Pases cortos con precisión",
+         "-Fuerza básica en desplazamientos y golpeos",
+         "-Cooperación en pases grupales"
+        ]
+       }
+      },
+      {
+       "n": 4,
+       "areas": {
+        "math": [
+         "Symmetry and congruence of figures."
+        ],
+        "english": [
+         "Pre A1 STARTERS activities: Reading",
+         "Friendly letters and descriptions using familiar vocabulary.",
+         "Introduction to brainstorming."
+        ],
+        "comunicacion": [
+         "Partes de un cuento"
+        ],
+        "science": [
+         "Recognizing and outlying a research question (predictions).",
+         "Light as a form of energy",
+         "Effect of light on the body and the environment:",
+         "color, shadows, illumination"
+        ],
+        "pe": [
+         "-Recepción y parada del balón con diferentes partes del pie",
+         "-Movilidad articular y prevención de lesiones",
+         "-Ocupación de espacios en el campo de juego"
+        ]
+       }
+      },
+      {
+       "n": 5,
+       "areas": {
+        "tutoria": [
+         "Inclusive Education Day"
+        ],
+        "math": [
+         "Statistics:",
+         "Bar graphs (horizontal and vertical).",
+         "Pictographs (scale up to 10)."
+        ],
+        "english": [
+         "Pre A1 STARTERS activities: Writing",
+         "Short letters and narratives.",
+         "Present Continuous sentences.",
+         "Basic conjunction (commas, exclamation marks)."
+        ],
+        "science": [
+         "Recognizing and outlying a research question (predictions).",
+         "Energy and Light in Everyday Life",
+         "Introduction to energy sources:",
+         "sun, heat, wind, etc."
+        ],
+        "pe": [
+         "-Cambios de dirección y velocidad con balón)",
+         "-Hidratación y cuidado corporal durante la actividad física",
+         "-Estrategias simples de ataque y defensa"
+        ]
+       }
+      }
+     ],
+     "fuera_de_calendario": [
+      {
+       "math": [
+        "Tally charts.",
+        "Make and read picture graphs with scale."
+       ],
+       "english": [
+        "Present Continuous sentences.",
+        "Basic conjunction (commas, exclamation marks)."
+       ],
+       "science": [
+        "Observing experiments and following simple instructions to carry out simple investigations suggested by teacher.",
+        "Laboratory safety measures (labcoat, gloves, googles).",
+        "Registering and comparing results in a logbook.",
+        "Expresing and communicating findings."
+       ],
+       "pe": [
+        "-Secuencias motrices combinadas (conducir, pasar y recibir.                                                             2.-Respiración y recuperación después del esfuerzo.                                                                        3.-Juego limpio y resolución de conflictos durante el juego"
+       ]
+      }
+     ]
+    },
+    {
+     "periodo": 6,
+     "unidad": 6,
+     "trimestre": 3,
+     "inicio": "2026-10-26",
+     "fin": "2026-12-04",
+     "semanas": [
+      {
+       "n": 1,
+       "areas": {
+        "tutoria": [
+         "Magic Book and Creole Day"
+        ],
+        "math": [
+         "Counting numbers up to 999 (100 chart).",
+         "Reading and writing whole numbers up to 3-digit numbers applying the place value concept."
+        ],
+        "english": [
+         "Pre A1 STARTERS activities: Listening",
+         "Introduction of past simple",
+         "Basic vocabulary related to everyday objects, family members, and simple actions."
+        ],
+        "science": [
+         "Recognizing and outlying a research question (predictions).",
+         "Motion, Forces, and Gravity",
+         "Production of movement in bodies by: pulling & pushing"
+        ],
+        "pe": [
+         "-Pase y recepción básica con balón de mano",
+         "-Bote básico con control y coordinación",
+         "-Calentamiento específico para juegos de balonmano",
+         "-Trabajo en equipo adaptados"
+        ]
+       }
+      },
+      {
+       "n": 2,
+       "areas": {
+        "math": [
+         "Addition up to 3-digit numbers (trading and without trading)."
+        ],
+        "english": [
+         "Pre A1 STARTERS activities: Speaking",
+         "Simple conversations",
+         "Short, simple stories.",
+         "Key characters and actions."
+        ],
+        "science": [
+         "Recognizing and outlying a research question (predictions).",
+         "Motion, Forces, and Gravity",
+         "Production of movement in bodies by: pulling & pushing"
+        ],
+        "pe": [
+         "-Desplazamientos con bote controlado",
+         "-Pase de pecho y recepción en movimiento",
+         "-Resistencia básica mediante juegos continuos",
+         "-Respeto de normas básicas del juego"
+        ]
+       }
+      },
+      {
+       "n": 3,
+       "areas": {
+        "tutoria": [
+         "Día de la biblioteca?"
+        ],
+        "math": [
+         "subtraction up to 3-digit numbers (trading and without trading)."
+        ],
+        "english": [
+         "Past simple (practicing sentences)",
+         "Dialogues about daily activities (could be in past)."
+        ],
+        "comunicacion": [
+         "Cuentos -borrador"
+        ],
+        "science": [
+         "Observing experiments and following simple instructions to carry out simple investigations suggested by teacher.",
+         "Laboratory safety measures (labcoat, gloves, googles).",
+         "Registering and comparing results in a logbook.",
+         "Expresing and communicating findings."
+        ],
+        "pe": [
+         "-Lanzamientos a portería con precisión",
+         "-Lanzamiento al aro con técnica inicial",
+         "-Fuerza básica en lanzamientos y desplazamientos",
+         "-Ocupación de espacios en ataque y defensa"
+        ]
+       }
+      },
+      {
+       "n": 4,
+       "areas": {
+        "tutoria": [
+         "Creative Arts Show"
+        ],
+        "math": [
+         "Counting by 2s, 3s, 4s, 5s and 10s"
+        ],
+        "english": [
+         "Pre A1 STARTERS activities: Reading",
+         "Describe characters, settings, events with details.",
+         "Answer questions on general and key details.",
+         "Determine main topics and elaborate on details."
+        ],
+        "science": [
+         "Recognizing and outlying a research question (predictions).",
+         "Effect of the surface on the movement of objects",
+         "Gravity and objects falling"
+        ],
+        "pe": [
+         "-Coordinación óculo-manual en movimiento",
+         "-Desplazamientos laterales y frontales con balón",
+         "-Movilidad articular de brazos y hombros",
+         "-Estrategias simples para anotar goles"
+        ]
+       }
+      },
+      {
+       "n": 5,
+       "areas": {
+        "math": [
+         "fractions"
+        ],
+        "english": [
+         "Pre A1 STARTERS activities: Writing",
+         "Friendly letters and descriptions using familiar vocabulary.",
+         "Writing different types of narratives.",
+         "Graphic organizers to sequence ideas"
+        ],
+        "science": [
+         "Recognizing and outlying a research question (predictions).",
+         "Effect of the surface on the movement of objects",
+         "Gravity and objects falling"
+        ],
+        "pe": [
+         "-Cambios de dirección y ritmo con balón",
+         "-Cambios de ritmo y dirección en el juego",
+         "-Hidratación y cuidado corporal durante el juego",
+         "-Cooperación y comunicación en pases grupales"
+        ]
+       }
+      },
+      {
+       "n": 6,
+       "areas": {
+        "math": [
+         "Multiplication tables (2, 3, 4, 5 and 10).",
+         "Combined operations."
+        ],
+        "english": [
+         "Friendly letters and descriptions using familiar vocabulary.",
+         "Writing different types of narratives.",
+         "Graphic organizers to sequence ideas"
+        ],
+        "science": [
+         "Observing experiments and following simple instructions to carry out simple investigations suggested by teacher.",
+         "Laboratory safety measures (labcoat, gloves, googles).",
+         "Registering and comparing results in a logbook.",
+         "Expresing and communicating findings."
+        ],
+        "pe": [
+         "-Secuencias combinadas (bote, pase y lanzamiento)",
+         "-Secuencias combinadas (bote, pase y lanzamiento).                                                           3.-Respiración y recuperación después del esfuerzo.                                                             4.-Juego limpio y resolución de conflictos"
+        ]
+       }
+      }
+     ],
+     "fuera_de_calendario": []
+    }
+   ]
+  },
+  "g3": {
+   "grado": 3,
+   "periodos": [
+    {
+     "periodo": 1,
+     "unidad": 1,
+     "trimestre": 1,
+     "inicio": "2026-03-09",
+     "fin": "2026-04-17",
+     "semanas": [
+      {
+       "n": 1,
+       "areas": {
+        "tutoria": [
+         "Mindfulness",
+         "Class jobs cada 2 semanas",
+         "Lectura del horario",
+         "Metas personales semanales"
+        ],
+        "math": [
+         "Numbers through 9999",
+         "(Place value) 9999. Ways to represent numbers. Standard form, written form, base ten, place value"
+        ],
+        "english": [
+         "L1: English Presdentify CVC/Sight words",
+         "L2:Review Present Simple /Corners",
+         "L3. review Past Tense- Game Snakes and Laders"
+        ],
+        "social": [
+         "My city",
+         "Lima districts",
+         "Peru and its organization"
+        ],
+        "comunicacion": [
+         "Adjtivos calificativos",
+         "Genéro y número",
+         "Acuerdos del aula / biblioteca"
+        ],
+        "science": [
+         "Inquiry process",
+         "investigación de campo sobre organización geográfica de perú/lima ¿crees que en nordic se sabe que....?"
+        ],
+        "pe": [
+         "- Control corporal en desplazamientos variados",
+         "- Actividades motrices para el cuidado del cuerpo",
+         "- Juegos cooperativos con reglas simples"
+        ]
+       }
+      },
+      {
+       "n": 2,
+       "areas": {
+        "tutoria": [
+         "International Happiness Day!",
+         "Down Syndrome Day",
+         "Mindfulness",
+         "Lectura del horario",
+         "Metas personales semanales"
+        ],
+        "math": [
+         "Comparing numbers 9999: Which is 1, 10, 100, 1000 more or less than.",
+         "Rounding to the nearest 10, 100, 1000",
+         "Odd and Even numbers"
+        ],
+        "english": [
+         "Routines /verbs",
+         "Present Simple tense",
+         "Present Simple Tense",
+         "*diagnostica de inglés"
+        ],
+        "social": [
+         "Planos and croquis",
+         "Municipal authorities: District where the children live",
+         "Participates in assemblies",
+         "Electoral process"
+        ],
+        "comunicacion": [
+         "Campo semántico",
+         "Sinonimo",
+         "Uso de la c y q",
+         "Mi biografía"
+        ],
+        "science": [
+         "Human systems: skeleton, muscular, digestive, respiratory, circulatory"
+        ],
+        "pe": [
+         "- Equilibrio estático y dinámico",
+         "- Desarrollo de la resistencia mediante juegos activos",
+         "- Juegos de persecución y oposición controlada"
+        ]
+       }
+      },
+      {
+       "n": 3,
+       "areas": {
+        "tutoria": [
+         "International Autism Awareness Day",
+         "Mindfulness",
+         "Class jobs cada 2 semanas",
+         "Lectura del horario",
+         "Metas personales semanales"
+        ],
+        "math": [
+         "Patterns:“Repetition patterns based on sound.",
+         "Patterns: with two and three perceptual criteria. Give examples. Analyze them.",
+         "Patterns : create their own patterns /Argues"
+        ],
+        "english": [
+         "Past tense",
+         "Conjunctions (but, and)",
+         "Wh questions",
+         "adverbs of frequency"
+        ],
+        "social": [
+         "Local problems in their community (district, school)",
+         "Boundaries and personal safety"
+        ],
+        "comunicacion": [
+         "Liva - El misterio del pollo en la batea",
+         "Mi autobiografía boceto",
+         "Antonimo",
+         "Uso de la LL - Y"
+        ],
+        "science": [
+         "Human systems: choose one, a threat and a way to take care of it",
+         "Inquiry process (investigation skills): identifying problems"
+        ],
+        "pe": [
+         "- Combinación de habilidades motrices básicas",
+         "- Fuerza básica a través de movimientos funcionales",
+         "- Roles y funciones en juegos grupales"
+        ]
+       }
+      },
+      {
+       "n": 4,
+       "areas": {
+        "tutoria": [
+         "Easter Holiday",
+         "Mindfulness",
+         "Lectura del horario",
+         "Metas personales semanales"
+        ],
+        "math": [
+         "Intro to statistic",
+         "Data organization in a frequency table",
+         "Interview: Organiza data in a frecuency table.",
+         "Have conclusion and take descisions base on the frequency table.",
+         "Create your own questions (interview) take notes in a frequency table. Have conclusions. What do you need this information for?"
+        ],
+        "english": [
+         "Interview about routines  to a teachers/ask about healthy habits.",
+         "RAZ PLUS",
+         "3 Reading a routines /Assign homework"
+        ],
+        "social": [
+         "Campaing budget",
+         "Participates in assemblies"
+        ],
+        "comunicacion": [
+         "Diagrama de ishikawa",
+         "Borrador de mi autobiografía",
+         "Uso de la que - qui"
+        ],
+        "science": [
+         "Inquiry process: proposing solutions"
+        ],
+        "pe": [
+         "- Expresión corporal y movimientos rítmicos",
+         "- Flexibilidad y movilidad corporal en rutinas motrices",
+         "- Estrategias básicas para juegos colectivos"
+        ]
+       }
+      },
+      {
+       "n": 5,
+       "areas": {
+        "tutoria": [
+         "Mindfulness",
+         "Lectura del horario",
+         "Class jobs cada 2 semanas",
+         "Metas personales semanales"
+        ],
+        "math": [
+         "Bar graphs",
+         "Conclusions base on the project"
+        ],
+        "english": [
+         "Analyzing the text /routine).",
+         "Start with the graphic organizer.",
+         "Movers: Listening /Speaking"
+        ],
+        "social": [
+         "Campaing",
+         "Express opinions in group conversations"
+        ],
+        "comunicacion": [
+         "Presentación de mi autobiografía",
+         "Arbol de problemas",
+         "Sinonimos y Antonimos",
+         "LIVA - Un perro muy raro"
+        ],
+        "science": [
+         "Plan of a solution put into practice."
+        ],
+        "pe": [
+         "- Juegos de fuerza y resistencia básica",
+         "- Higiene corporal antes y después de la actividad física",
+         "- Comunicación y trabajo en equipo en actividades motrices"
+        ]
+       }
+      },
+      {
+       "n": 6,
+       "areas": {
+        "tutoria": [
+         "Mindfulness",
+         "Lectura del horario",
+         "Metas personales semanales"
+        ],
+        "english": [
+         "Connectors /Draft",
+         "Draft and check",
+         "Peer editing",
+         "Spelling"
+        ],
+        "social": [
+         "Elections",
+         "Listen to classmates opinions"
+        ],
+        "comunicacion": [
+         "Publicamos nuestra autobiografía",
+         "Uso de la H",
+         "Escritura espontanea"
+        ],
+        "science": [
+         "Plan of a solution put into practice and present"
+        ],
+        "pe": [
+         "- Orientación espacial y lateralidad                             2.- Postura y respiración durante el ejercicio físico",
+         "- Respeto de normas y resolución de conflictos en el juego"
+        ]
+       }
+      }
+     ],
+     "fuera_de_calendario": []
+    },
+    {
+     "periodo": 2,
+     "unidad": 2,
+     "trimestre": 1,
+     "inicio": "2026-04-20",
+     "fin": "2026-05-29",
+     "semanas": [
+      {
+       "n": 1,
+       "areas": {
+        "tutoria": [
+         "Día de la tierra",
+         "Book Day"
+        ],
+        "math": [
+         "Addition 4 digits",
+         "Additions with bills and coins"
+        ],
+        "english": [
+         "Countable / uncountable nouns",
+         "There is / There are",
+         "Present Simple (affirmative and negative)",
+         "Present Simple (questions)"
+        ],
+        "social": [
+         "Needs and wants REVIEW",
+         "Budget basics"
+        ],
+        "comunicacion": [
+         "Sustantivos - clasificación / clases",
+         "Uso de la gue - gue"
+        ],
+        "science": [
+         "Balanced diet",
+         "Food groups",
+         "Food pyramid"
+        ],
+        "pe": [
+         "-Control corporal en posiciones básicas gimnásticas.",
+         "-Calentamiento corporal antes de la práctica gimnástica.",
+         "-Trabajo cooperativo en secuencias gimnásticas grupales"
+        ]
+       }
+      },
+      {
+       "n": 2,
+       "areas": {
+        "tutoria": [
+         "Psychologists Day!",
+         "Labor Day (holiday)"
+        ],
+        "math": [
+         "Subtractions"
+        ],
+        "english": [
+         "Main idea in nonfiction text (food origins)",
+         "Adverbs of frequency 2",
+         "Opinion language (I think… because…)",
+         "Listening"
+        ],
+        "social": [
+         "Process of productions and transformation of natural resources."
+        ],
+        "comunicacion": [
+         "Comics"
+        ],
+        "science": [
+         "Natural vs Processed food",
+         "Perishable / non-perishable",
+         "Energy / body-building / protective food"
+        ],
+        "pe": [
+         "-Equilibrio estático y dinámico en ejercicios gimnásticos.",
+         "-Flexibilidad y movilidad articular en gimnasia básica.",
+         "-Apoyo y ayuda mutua en ejercicios con compañeros"
+        ]
+       }
+      },
+      {
+       "n": 3,
+       "areas": {
+        "tutoria": [
+         "Mother's Day celebration"
+        ],
+        "math": [
+         "Mixed operations word problems"
+        ],
+        "english": [
+         "Linking words (because, so, and)",
+         "Writing opinion paragraph (mental map)",
+         "Writing opinion paragraph (modeling)",
+         "Writing  opinion paragraph about a healthy snack 1 draft"
+        ],
+        "social": [
+         "Business plan (healthy snack stand)",
+         "Costs and necessary resources"
+        ],
+        "comunicacion": [
+         "sonidos onomatopeyicos"
+        ],
+        "science": [
+         "Effects of poor diet",
+         "Designing a healthy snack plan"
+        ],
+        "pe": [
+         "-Rodamientos y apoyos básicos en el suelo.",
+         "-Fortalecimiento corporal con ejercicios gimnásticos.",
+         "-Construcción de figuras corporales en equipo"
+        ]
+       }
+      },
+      {
+       "n": 4,
+       "areas": {
+        "tutoria": [
+         "Math Day"
+        ],
+        "math": [
+         "Review Elementos de la geometría. Rectas paralelas y perpendiculares.",
+         "Angles."
+        ],
+        "english": [
+         "Present continuous (all persons 1)",
+         "Present continuous (all persons 2)",
+         "Listening and Speaking",
+         "SVA revision"
+        ],
+        "social": [
+         "Recess sell"
+        ],
+        "comunicacion": [
+         "Sinonimos/ antonimos"
+        ],
+        "science": [
+         "Applying solution (lunchbox snack proposal)"
+        ],
+        "pe": [
+         "-Saltos y aterrizajes con control corporal.",
+         "-Respiración y relajación después de la actividad física.",
+         "-Coordinación grupal en desplazamientos gimnásticos"
+        ]
+       }
+      },
+      {
+       "n": 5,
+       "areas": {
+        "math": [
+         "Equivalences"
+        ],
+        "english": [
+         "Opinion writing final draft"
+        ],
+        "social": [
+         "Present healthy snack business plan"
+        ],
+        "comunicacion": [
+         "Plan lector"
+        ],
+        "science": [
+         "Analisis de data",
+         "Graph results"
+        ],
+        "pe": [
+         "-Secuencias gimnásticas individuales combinadas.",
+         "-Higiene y cuidado del cuerpo en la práctica gimnástica.",
+         "-Respeto de normas y seguridad en la gimnasia"
+        ]
+       }
+      }
+     ],
+     "fuera_de_calendario": []
+    },
+    {
+     "periodo": 3,
+     "unidad": 3,
+     "trimestre": 2,
+     "inicio": "2026-06-01",
+     "fin": "2026-07-10",
+     "semanas": [
+      {
+       "n": 1,
+       "areas": {
+        "tutoria": [
+         "Peruvians Flag's Day internal",
+         "Student Achievement Day"
+        ],
+        "math": [
+         "Multiplicación",
+         "Arrays",
+         "Repeated addition"
+        ],
+        "english": [
+         "L1: Vocabulary: Furniture and Household Objects",
+         "L2: Speaking and Listening: Using Prepositions of Place to Describe Rooms",
+         "L3: Reading: Introduction to Informative Texts about Peru's Regions",
+         "L4: Reading Comprehension: Identifying Central Idea and Supporting Details"
+        ],
+        "social": [
+         "24 regions of Peru",
+         "Landscapes of Peru",
+         "Tourist places"
+        ],
+        "comunicacion": [
+         "leyendas"
+        ],
+        "science": [
+         "Land regions",
+         "Natural resources"
+        ],
+        "pe": [
+         "-Técnicas básicas de carrera y control postural",
+         "-Calentamiento antes de las actividades atléticas",
+         "-Juegos de relevos y cooperación en carreras"
+        ]
+       }
+      },
+      {
+       "n": 2,
+       "areas": {
+        "math": [
+         "Multiplicación word problems using arrays"
+        ],
+        "english": [
+         "L1: Introduction to Past Simple with Regular Verbs",
+         "L2: Listening and Speaking: Talking about Past Events",
+         "L3: Reading: Identifying the Sequence of Events in a Historical Text",
+         "L4: Writing: Sequencing Events Using Past Simple Verbs and Time Connectors"
+        ],
+        "social": [
+         "Years & decades",
+         "BCE / CE",
+         "Description of historical events"
+        ],
+        "comunicacion": [
+         "mitos"
+        ],
+        "science": [
+         "Renewable vs non-renewable resources"
+        ],
+        "pe": [
+         "-Saltos básicos con impulso y caída controlada",
+         "-Resistencia básica mediante juegos de carrera",
+         "-Organización de equipos para pruebas atléticas recreativas"
+        ]
+       }
+      },
+      {
+       "n": 3,
+       "areas": {
+        "tutoria": [
+         "Father's Day Celebration"
+        ],
+        "math": [
+         "Multiplicación y división : operaciones opuestas",
+         "Fact families. Continue working with arrays."
+        ],
+        "english": [
+         "L1: Key Vocabulary for Peru’s Economic Activities",
+         "L2: Identifying Text Features (Title, Introduction, Facts, Details, Conclusion)",
+         "L3: Reading Comprehension: Answering Questions About the Text",
+         "L4: Report speaking time (Agriculture, Fishing, Mining, Textiles)"
+        ],
+        "social": [
+         "National symbols",
+         "History of flags"
+        ],
+        "comunicacion": [
+         "ficción histórica"
+        ],
+        "science": [
+         "Process of production & transformation of natural resources"
+        ],
+        "pe": [
+         "-Lanzamientos iniciales con diferentes objetos",
+         "-Fuerza básica aplicada a saltos y lanzamientos",
+         "-Respeto de turnos y normas en competencias amistosas"
+        ]
+       }
+      },
+      {
+       "n": 4,
+       "areas": {
+        "math": [
+         "Multiplying by zero, Ones, tens and hundreds (strategy and short cut) Analogy",
+         "Properties of multiplication"
+        ],
+        "english": [
+         "L1: Reading: Natural Resources in the Coast, Highlands, and Jungle",
+         "L2: Listening: How People Use Natural Resources in Peru",
+         "L3: Speaking: Comparing Resources Across Peru's Regions",
+         "L4: Writing: Adding Resource Information to the Informative Text"
+        ],
+        "social": [
+         "Main economic activities",
+         "Budget (national scale intro)"
+        ],
+        "science": [
+         "Mining, fishing, agriculture, textile (impact)"
+        ],
+        "pe": [
+         "-Coordinación de brazos y piernas en desplazamientos",
+         "-Importancia de la hidratación en la actividad física",
+         "-Apoyo y ánimo entre compañeros durante las pruebas"
+        ]
+       }
+      },
+      {
+       "n": 5,
+       "areas": {
+        "math": [
+         "Review tables of 2, 5, 10"
+        ],
+        "english": [
+         "L1: Reading: Environmental Problems in Peru's Regions",
+         "L2: Listening: Actions to Protect Natural Resources",
+         "L3: Speaking: Discussing Problems and Giving Suggestions",
+         "L4: Writing: Problem and Solution Paragraphs Using Can and Should"
+        ],
+        "social": [
+         "Eco-sustainability initiatives. Strategies to reduce pollution."
+        ],
+        "science": [
+         "Environmental problems by region"
+        ],
+        "pe": [
+         "-Secuencias motrices combinadas (correr, saltar, lanzar)",
+         "-Respiración y recuperación después del esfuerzo",
+         "-Estrategias simples en juegos de carrera por equipos"
+        ]
+       }
+      },
+      {
+       "n": 6,
+       "areas": {
+        "tutoria": [
+         "Fiestas Patrias Celebration"
+        ],
+        "math": [
+         "Polígonos",
+         "Triángulos"
+        ],
+        "english": [
+         "L1: Revising Content and Organization",
+         "L2: Editing Grammar, Vocabulary, Capitalization, and Punctuation",
+         "L3: Practicing an Oral Presentation with Visual Support",
+         "L4: Final Presentation: Economic Activities in Peru"
+        ],
+        "social": [
+         "Research project by groups (region assigned)",
+         "Graphs + timeline + economic activity explanation"
+        ],
+        "science": [
+         "Research project by groups (region assigned)",
+         "Graphs + timeline + economic activity explanation"
+        ],
+        "pe": [
+         "-Ritmo y control corporal en pruebas atléticas recreativas.                              2.-Cuidado del cuerpo y prevención de lesiones en el atletismo.                                                3.-Participación responsable en mini-eventos atléticos escolares"
+        ]
+       }
+      }
+     ],
+     "fuera_de_calendario": []
+    },
+    {
+     "periodo": 4,
+     "unidad": 4,
+     "trimestre": 2,
+     "inicio": "2026-08-04",
+     "fin": "2026-09-11",
+     "semanas": [
+      {
+       "n": 1,
+       "areas": {
+        "math": [
+         "Resuelve problemas de cantidad",
+         "Multiplos de un número",
+         "División exacta",
+         "División de dos cifras en el dividendo y una cifra en el divisor"
+        ],
+        "english": [
+         "Comparative & superlative adjectives",
+         "Describing animals",
+         "Vocabulary: habitat, predator, prey",
+         "READING"
+        ],
+        "social": [
+         "Environmental protection rules",
+         "Responsible tourism",
+         "Rules & agreements for field trip",
+         "Self-regulation & safety",
+         "Prepare interview questions before trip"
+        ],
+        "science": [
+         "Ecosystems (forest focus)",
+         "Living vs non-living components",
+         "Animal classification (vertebrates/invertebrates)",
+         "Habitats"
+        ],
+        "pe": [
+         "-Golpes básicos de antebrazo con balón liviano",
+         "-Calentamiento específico para juegos predeportivos de vóley",
+         "-Trabajo en equipo en juegos predeportivos de vóley"
+        ]
+       }
+      },
+      {
+       "n": 2,
+       "areas": {
+        "tutoria": [
+         "Study Trip 2nd & 3rd grade"
+        ],
+        "math": [
+         "Resuelve problemas de localización y movimiento",
+         "Plano cartesiano/Cardinal points"
+        ],
+        "english": [
+         "Speaking in complete sentences",
+         "Short oral recount after trip day",
+         "Raz plus animals",
+         "READING"
+        ],
+        "social": [
+         "Boundaries & personal safety",
+         "Cooperation in public spaces",
+         "Reflection discussion circles"
+        ],
+        "science": [
+         "Zoo animals vs wild animals",
+         "Conservation and endangered species"
+        ],
+        "pe": [
+         "-Coordinación óculo-manual en lanzamientos y recepciones",
+         "-Resistencia básica mediante juegos continuos con balón",
+         "-Respeto de turnos y normas básicas del juego"
+        ]
+       }
+      },
+      {
+       "n": 3,
+       "areas": {
+        "tutoria": [
+         "Día de la niñez"
+        ],
+        "math": [
+         "Resuelve problemas de localización y movimiento",
+         "Cuadrilateros",
+         "Perímetro"
+        ],
+        "english": [
+         "Character feelings and motives",
+         "Question formation (what, why, how)",
+         "Writing descriptive paragraphs  and informativbe texts",
+         "Use commas & quotation marks",
+         "READING"
+        ],
+        "social": [
+         "Environmental responsibility",
+         "Conservartion strategies"
+        ],
+        "science": [
+         "Food chains",
+         "Human impact on ecosystems",
+         "Conservation strategies"
+        ],
+        "pe": [
+         "-Desplazamientos laterales y frontales en el campo de juego",
+         "-Fuerza básica en empujes y golpes controlados",
+         "-Comunicación y cooperación en pases grupales"
+        ]
+       }
+      },
+      {
+       "n": 4,
+       "areas": {
+        "math": [
+         "Resuelve probleas de incertidumbre y data",
+         "Pictogramas"
+        ],
+        "english": [
+         "Informative paragraph about ecosystem",
+         "Use linking words"
+        ],
+        "social": [
+         "Conservation strategies"
+        ],
+        "science": [
+         "Natural disasters affecting ecosystems",
+         "Forest vs jungle vs other Peruvian landscapes (connection to Proyecto 3)"
+        ],
+        "pe": [
+         "-Control corporal en posiciones básicas del vóley",
+         "-Movilidad articular y prevención de lesiones en brazos y piernas",
+         "-Organización de roles en mini-partidos adaptados"
+        ]
+       }
+      },
+      {
+       "n": 5,
+       "areas": {
+        "math": [
+         "Resuelve problemas de equivalencia y cambio",
+         "Patrones aditivos y multiplucativos",
+         "Resuelve problemas de localización y movimiento",
+         "Construcción del habitat"
+        ],
+        "english": [
+         "Oral rehearsal"
+        ],
+        "social": [
+         "Civic responsibility",
+         "Participates in assemblies (proposal discussion)"
+        ],
+        "science": [
+         "Design conservation proposal",
+         "Build small model (habitat box / ecosystem model)"
+        ],
+        "pe": [
+         "-Secuencias motrices combinadas (desplazarse y golpear)",
+         "-Hidratación y cuidado corporal durante la práctica deportiva",
+         "-Estrategias simples para mantener el balón en juego"
+        ]
+       }
+      },
+      {
+       "n": 6,
+       "areas": {}
+      }
+     ],
+     "fuera_de_calendario": []
+    },
+    {
+     "periodo": 5,
+     "unidad": 5,
+     "trimestre": 3,
+     "inicio": "2026-09-14",
+     "fin": "2026-10-23",
+     "semanas": [
+      {
+       "n": 1,
+       "areas": {
+        "math": [
+         "Operaciones Combinadas"
+        ],
+        "english": [
+         "Informative text about planets",
+         "Identify main idea & details",
+         "Vocabulary (orbit, gravity, rotate)"
+        ],
+        "social": [
+         "The Earth as part of the world",
+         "Sundial (connection with Sun)",
+         "Telling time review (movement of Earth)"
+        ],
+        "science": [
+         "Elements of the Solar System",
+         "Sun as the center",
+         "Planets and dwarf planets"
+        ],
+        "pe": [
+         "-Conducción básica del balón con ambos pies",
+         "-Calentamiento previo a juegos predeportivos de fútbol",
+         "-Trabajo en equipo en juegos predeportivos de fútbol"
+        ]
+       }
+      },
+      {
+       "n": 2,
+       "areas": {
+        "tutoria": [
+         "International Peace Day"
+        ],
+        "math": [
+         "Fracciones"
+        ],
+        "english": [
+         "Present Simple vs Continuous",
+         "Describing ongoing experiments"
+        ],
+        "social": [
+         "Years, decades, past-present-future (review connection to time cycles)",
+         "Historical understanding of astronomy (ancient cultures observing the sky)"
+        ],
+        "science": [
+         "Earth rotation (day & night)",
+         "Earth revolution (seasons)"
+        ],
+        "pe": [
+         "-Control y dominio del balón en desplazamiento",
+         "-Resistencia básica mediante juegos continuos con balón",
+         "-Respeto de normas básicas y turnos de juego"
+        ]
+       }
+      },
+      {
+       "n": 3,
+       "areas": {
+        "tutoria": [
+         "Sports Day (Inauguración)"
+        ],
+        "english": [
+         "Future “will”",
+         "Making predictions"
+        ],
+        "social": [
+         "Natural disasters related to Earth systems",
+         "Environmental responsibility",
+         "Why caring for Earth matters"
+        ],
+        "science": [
+         "Moon phases",
+         "Tides"
+        ],
+        "pe": [
+         "-Pases cortos con precisión",
+         "-Fuerza básica en desplazamientos y golpeos",
+         "-Cooperación en pases grupales"
+        ]
+       }
+      },
+      {
+       "n": 4,
+       "areas": {
+        "english": [
+         "Future “going to”",
+         "Will vs Going to",
+         "Writing short informative text"
+        ],
+        "social": [
+         "Professions related to space exploration",
+         "Budget for a mission (intro simulation)"
+        ],
+        "science": [
+         "Space missions",
+         "Basic concept of gravity (simple)"
+        ],
+        "pe": [
+         "-Recepción y parada del balón con diferentes partes del pie",
+         "-Movilidad articular y prevención de lesiones",
+         "-Ocupación de espacios en el campo de juego"
+        ]
+       }
+      },
+      {
+       "n": 5,
+       "areas": {
+        "tutoria": [
+         "Inclusive Education Day"
+        ],
+        "english": [
+         "Writing informative explanation (how it works)",
+         "Linking words",
+         "Oral rehearsal"
+        ],
+        "social": [
+         "Teamwork norms",
+         "Participates in assemblies",
+         "Responsible decision making in groups"
+        ],
+        "science": [
+         "Design experiment/model",
+         "Apply inquiry process",
+         "Collect data"
+        ],
+        "pe": [
+         "-Cambios de dirección y velocidad con balón)",
+         "-Hidratación y cuidado corporal durante la actividad física",
+         "-Estrategias simples de ataque y defensa"
+        ]
+       }
+      }
+     ],
+     "fuera_de_calendario": [
+      {
+       "english": [
+        "Reflection: Why is Earth important?"
+       ],
+       "social": [
+        "Public speaking",
+        "Respectful listening",
+        "Civic behavior in public exhibition"
+       ],
+       "science": [
+        "Experiment or model (solar system, gravity demo, rotation model, etc.)",
+        "Scientific explanation"
+       ],
+       "pe": [
+        "-Secuencias motrices combinadas (conducir, pasar y recibir.                                                             2.-Respiración y recuperación después del esfuerzo.                                                                        3.-Juego limpio y resolución de conflictos durante el juego"
+       ]
+      }
+     ]
+    },
+    {
+     "periodo": 6,
+     "unidad": 6,
+     "trimestre": 3,
+     "inicio": "2026-10-26",
+     "fin": "2026-12-04",
+     "semanas": [
+      {
+       "n": 1,
+       "areas": {
+        "tutoria": [
+         "Magic Book and Día de la canción criolla"
+        ],
+        "math": [
+         "Decimales?"
+        ],
+        "english": [
+         "Reading comprehension (narrative nonfiction: a child achieving a goal)",
+         "Identify main idea and supporting details",
+         "Vocabulary: goals, improve, practice, effort"
+        ],
+        "social": [
+         "Growth and personal goals",
+         "Self-regulation reflection",
+         "Strengths and areas to improve"
+        ],
+        "science": [
+         "Reflection: how habits affect performance (sleep, nutrition, study habits)"
+        ],
+        "pe": [
+         "-Pase y recepción básica con balón de mano",
+         "-Bote básico con control y coordinación",
+         "-Calentamiento específico para juegos de balonmano",
+         "-Trabajo en equipo adaptados"
+        ]
+       }
+      },
+      {
+       "n": 2,
+       "areas": {
+        "english": [
+         "Write short reflection paragraph (100 words):",
+         "“This year I learned…”",
+         "Use past tense correctly",
+         "Linking words (and, because, also)"
+        ],
+        "social": [
+         "Responsibility in learning",
+         "Classroom agreements review"
+        ],
+        "science": [
+         "Simple data reflection:",
+         "Track one personal habit for a week (sleep, reading time)"
+        ],
+        "pe": [
+         "-Desplazamientos con bote controlado",
+         "-Pase de pecho y recepción en movimiento",
+         "-Resistencia básica mediante juegos continuos",
+         "-Respeto de normas básicas del juego"
+        ]
+       }
+      },
+      {
+       "n": 3,
+       "areas": {
+        "tutoria": [
+         "Día de la biblioteca?"
+        ],
+        "english": [
+         "Future forms: will / going to",
+         "Write goal-setting paragraph:",
+         "“Next year I will…”",
+         "Vocabulary expansion (effort, challenge, improve, responsibility)"
+        ],
+        "social": [
+         "Children rights and responsibilities (review)",
+         "Autonomy",
+         "Importance of saying “no” (peer pressure & goals)"
+        ],
+        "science": [
+         "Designing a “Healthy routine plan” to reach goals"
+        ],
+        "pe": [
+         "-Lanzamientos a portería con precisión",
+         "-Lanzamiento al aro con técnica inicial",
+         "-Fuerza básica en lanzamientos y desplazamientos",
+         "-Ocupación de espacios en ataque y defensa"
+        ]
+       }
+      },
+      {
+       "n": 4,
+       "areas": {
+        "tutoria": [
+         "Creative Arts Show"
+        ],
+        "english": [
+         "Opinion writing:",
+         "“Why my goal is important”",
+         "Use conjunctions (but, so, because)",
+         "Edit punctuation & capitalization"
+        ],
+        "social": [
+         "Basic budget planning (small personal goal project)",
+         "Decision making"
+        ],
+        "science": [
+         "Materials and resources review",
+         "What resources do I need for my goal?"
+        ],
+        "pe": [
+         "-Coordinación óculo-manual en movimiento",
+         "-Desplazamientos laterales y frontales con balón",
+         "-Movilidad articular de brazos y hombros",
+         "-Estrategias simples para anotar goles"
+        ]
+       }
+      },
+      {
+       "n": 5,
+       "areas": {
+        "english": [
+         "Personal growth timeline",
+         "Rights & responsibilities reflection"
+        ],
+        "social": [
+         "Final reflection text",
+         "Goal paragraph",
+         "Oral presentation (2–3 minutes)"
+        ],
+        "science": [
+         "Healthy routine mini poster"
+        ],
+        "pe": [
+         "-Cambios de dirección y ritmo con balón",
+         "-Cambios de ritmo y dirección en el juego",
+         "-Hidratación y cuidado corporal durante el juego",
+         "-Cooperación y comunicación en pases grupales"
+        ]
+       }
+      },
+      {
+       "n": 6,
+       "areas": {
+        "pe": [
+         "-Secuencias combinadas (bote, pase y lanzamiento)",
+         "-Secuencias combinadas (bote, pase y lanzamiento).                                                           3.-Respiración y recuperación después del esfuerzo.                                                             4.-Juego limpio y resolución de conflictos"
+        ]
+       }
+      }
+     ],
+     "fuera_de_calendario": []
+    }
+   ]
+  },
+  "g4": {
+   "grado": 4,
+   "periodos": [
+    {
+     "periodo": 1,
+     "unidad": 1,
+     "trimestre": 1,
+     "inicio": "2026-03-09",
+     "fin": "2026-04-17",
+     "semanas": [
+      {
+       "n": 1,
+       "areas": {
+        "math": [
+         "Numbers through 99999 Place Value"
+        ],
+        "english": [
+         "Opinion Text"
+        ],
+        "social": [
+         "Democracy and Citizen Participation"
+        ],
+        "comunicacion": [
+         "Uso del punto (punto seguido y punto aparte)",
+         "La anécdota y su estructura"
+        ],
+        "science": [
+         "Living and Non-Living beings"
+        ],
+        "pe": [
+         "Control y Pase"
+        ]
+       }
+      },
+      {
+       "n": 2,
+       "areas": {
+        "math": [
+         "Comparing numbers 99999 Which is 1, 10, 100, 1000, 10000 more or less than."
+        ],
+        "english": [
+         "Present Simple"
+        ],
+        "social": [
+         "Rules, Agreements, and Democratic Coexistence"
+        ],
+        "comunicacion": [
+         "La coma",
+         "La coherencia en los textos"
+        ],
+        "science": [
+         "Nutrition, Metabolism, Excretion"
+        ],
+        "pe": [
+         "Conducción y Dribling"
+        ]
+       }
+      },
+      {
+       "n": 3,
+       "areas": {
+        "math": [
+         "Survey, opened and closed questions."
+        ],
+        "social": [
+         "Listen to classmates opinions."
+        ],
+        "comunicacion": [
+         "Sustantivo: concepto y clases",
+         "cohesión y concordancia."
+        ],
+        "science": [
+         "Sensitivity, Homeostasis"
+        ],
+        "pe": [
+         "Remate"
+        ]
+       }
+      },
+      {
+       "n": 4,
+       "areas": {
+        "math": [
+         "Rounding numbers up to thousands 100 000",
+         "Rounding a whole number to the nearest ten or hundred."
+        ],
+        "social": [
+         "Participates in assemblies."
+        ],
+        "comunicacion": [
+         "Sustantivo: concepto y clases",
+         "Uso de conectores narrativos."
+        ],
+        "science": [
+         "Growth and Reproduction"
+        ],
+        "pe": [
+         "Funcionamiento Colectivo"
+        ]
+       }
+      },
+      {
+       "n": 5,
+       "areas": {
+        "math": [
+         "Part - whole bar model to represent an addition and subtraction with 4 digit numbers.",
+         "Properties of Addition: Commutative and Associative"
+        ],
+        "social": [
+         "Express opinions in group conversations."
+        ],
+        "comunicacion": [
+         "Género y número del sustantivo",
+         "Técnicas de expresión oral"
+        ],
+        "science": [
+         "Heredity"
+        ],
+        "pe": [
+         "Juego Integrado"
+        ]
+       }
+      },
+      {
+       "n": 6,
+       "areas": {
+        "math": [
+         "Two step word problems involving addition and subtraction"
+        ],
+        "social": [
+         "Participation, Commitment, and Democratic Reflection"
+        ],
+        "comunicacion": [
+         "Uso de B y V",
+         "Escritura final de una anécdota personal y presentación oral coherente, clara y expresiva"
+        ],
+        "science": [
+         "Reflection"
+        ],
+        "pe": [
+         "Torneo y Evaluación Final"
+        ]
+       }
+      }
+     ],
+     "fuera_de_calendario": []
+    },
+    {
+     "periodo": 2,
+     "unidad": 2,
+     "trimestre": 1,
+     "inicio": "2026-04-20",
+     "fin": "2026-05-29",
+     "semanas": [
+      {
+       "n": 1,
+       "areas": {
+        "math": [
+         "Lines",
+         "Intersecting, perpendicular and parallel , point,"
+        ],
+        "english": [
+         "Narrative Text"
+        ],
+        "comunicacion": [
+         "Adjetivo: concepto y clases"
+        ],
+        "science": [
+         "Nervous System"
+        ],
+        "pe": [
+         "Familiarizacion de futsal"
+        ]
+       }
+      },
+      {
+       "n": 2,
+       "areas": {
+        "math": [
+         "Singapore area decomposition",
+         "Properties of Multiplication (commutative and distributive)",
+         "Multiplication with one digit in the multiplier (2nd factor)"
+        ],
+        "comunicacion": [
+         "Adjetivo: concepto y clases"
+        ],
+        "science": [
+         "Immune System"
+        ],
+        "pe": [
+         "Control y pase"
+        ]
+       }
+      },
+      {
+       "n": 3,
+       "areas": {
+        "math": [
+         "Division: inverse operations"
+        ],
+        "comunicacion": [
+         "Grados del adjetivo"
+        ],
+        "science": [
+         "Urinary System"
+        ],
+        "pe": [
+         "Conducción"
+        ]
+       }
+      },
+      {
+       "n": 4,
+       "areas": {
+        "math": [
+         "Equivalences"
+        ],
+        "comunicacion": [
+         "Pronombres personales"
+        ],
+        "pe": [
+         "Definición"
+        ]
+       }
+      },
+      {
+       "n": 5,
+       "areas": {
+        "math": [
+         "3 step word-problems about multiplication and division"
+        ],
+        "comunicacion": [
+         "Uso de la H"
+        ],
+        "science": [
+         "Healthy Habits"
+        ],
+        "pe": [
+         "Dribling"
+        ]
+       }
+      }
+     ],
+     "fuera_de_calendario": [
+      {
+       "pe": [
+        "Rotación por puestos"
+       ]
+      }
+     ]
+    },
+    {
+     "periodo": 3,
+     "unidad": 3,
+     "trimestre": 2,
+     "inicio": "2026-06-01",
+     "fin": "2026-07-10",
+     "semanas": [
+      {
+       "n": 1,
+       "areas": {
+        "math": [
+         "Divide up to hundreds (by 2 digit numbers)"
+        ],
+        "english": [
+         "Informative Text"
+        ],
+        "comunicacion": [
+         "El verbo: características"
+        ],
+        "science": [
+         "States of Matter"
+        ],
+        "pe": [
+         "Familiarización de atletismo"
+        ]
+       }
+      },
+      {
+       "n": 2,
+       "areas": {
+        "math": [
+         "Divide up to thousands ( by 1 digit number)"
+        ],
+        "comunicacion": [
+         "Clases de verbos"
+        ],
+        "science": [
+         "Properties of matter and measurement"
+        ],
+        "pe": [
+         "Tecnica basica de carera (Velocidad)"
+        ]
+       }
+      },
+      {
+       "n": 3,
+       "areas": {
+        "math": [
+         "Multiples and Factors",
+         "Multiplicative and Additive Patterns"
+        ],
+        "comunicacion": [
+         "Conjugación verbal"
+        ],
+        "science": [
+         "Size, mass, volume, temperature, density"
+        ],
+        "pe": [
+         "Resistencia en pista"
+        ]
+       }
+      },
+      {
+       "n": 4,
+       "areas": {
+        "math": [
+         "Measurement"
+        ],
+        "comunicacion": [
+         "Prefijos y sufijos (relación con verbos y sustantivos)"
+        ],
+        "pe": [
+         "Relevos"
+        ]
+       }
+      },
+      {
+       "n": 5,
+       "areas": {
+        "math": [
+         "Measurement"
+        ],
+        "comunicacion": [
+         "Prefijos y sufijos (relación con verbos y sustantivos)"
+        ],
+        "pe": [
+         "Saltos en atletismo"
+        ]
+       }
+      },
+      {
+       "n": 6,
+       "areas": {
+        "math": [
+         "2D :  properties of squares and rectangles"
+        ],
+        "comunicacion": [
+         "Uso de LL y Y"
+        ],
+        "pe": [
+         "Carreras con obstáculos"
+        ]
+       }
+      }
+     ],
+     "fuera_de_calendario": []
+    },
+    {
+     "periodo": 4,
+     "unidad": 4,
+     "trimestre": 2,
+     "inicio": "2026-08-04",
+     "fin": "2026-09-11",
+     "semanas": [
+      {
+       "n": 1,
+       "areas": {
+        "math": [
+         "Bar graph and Line graph"
+        ],
+        "comunicacion": [
+         "Determinantes: concepto y tipos"
+        ],
+        "science": [
+         "Puberty"
+        ],
+        "pe": [
+         "Iniciación al Basquetbol"
+        ]
+       }
+      },
+      {
+       "n": 2,
+       "areas": {
+        "math": [
+         "Mixed operations"
+        ],
+        "comunicacion": [
+         "Determinantes: concepto y tipos"
+        ],
+        "science": [
+         "Menstrual Cycle"
+        ],
+        "pe": [
+         "Manejo de balón (dribling)"
+        ]
+       }
+      },
+      {
+       "n": 3,
+       "areas": {
+        "math": [
+         "Addition (two or three like fractions with a sum more than 1 whole)"
+        ],
+        "social": [
+         "Viaje"
+        ],
+        "comunicacion": [
+         "Palabras polisémicas"
+        ],
+        "science": [
+         "Reproduction"
+        ],
+        "pe": [
+         "Pases y recepción"
+        ]
+       }
+      },
+      {
+       "n": 4,
+       "areas": {
+        "math": [
+         "Subtraction (one or two fractions from a whole number)"
+        ],
+        "comunicacion": [
+         "Las comillas"
+        ],
+        "science": [
+         "Human Development"
+        ],
+        "pe": [
+         "Lanzamientos al aro"
+        ]
+       }
+      },
+      {
+       "n": 5,
+       "areas": {
+        "math": [
+         "Multiply a fraction and a whole number"
+        ],
+        "comunicacion": [
+         "Verbos con H"
+        ],
+        "pe": [
+         "Desplazamientos defensivos"
+        ]
+       }
+      },
+      {
+       "n": 6,
+       "areas": {
+        "math": [
+         "Convert a measurement (length, mass, volume) from a larger unit of measure involving a fraction or a mixed number to a smaller unit)"
+        ],
+        "comunicacion": [
+         "Puntos suspensivos"
+        ],
+        "pe": [
+         "Juego reducidos"
+        ]
+       }
+      }
+     ],
+     "fuera_de_calendario": []
+    },
+    {
+     "periodo": 5,
+     "unidad": 5,
+     "trimestre": 3,
+     "inicio": "2026-09-14",
+     "fin": "2026-10-23",
+     "semanas": [
+      {
+       "n": 1,
+       "areas": {
+        "math": [
+         "Improper fractions conversion to Mixed numbers",
+         "Equivalent fractions"
+        ],
+        "comunicacion": [
+         "La sílaba",
+         "Tipos de sílaba"
+        ],
+        "science": [
+         "Forces"
+        ],
+        "pe": [
+         "Iniciación al voley"
+        ]
+       }
+      },
+      {
+       "n": 2,
+       "areas": {
+        "math": [
+         "Decimals",
+         "Reading, writing a decimal up to 3 decimal places",
+         "Express a decimal up to 3 decimal places as a fraction or mixed number"
+        ],
+        "comunicacion": [
+         "Tildación: palabras agudas"
+        ],
+        "science": [
+         "Types of forces"
+        ],
+        "pe": [
+         "Golpe de antebrazos"
+        ]
+       }
+      },
+      {
+       "n": 3,
+       "areas": {
+        "math": [
+         "Compare and order whole numbers, decimals and fractions.",
+         "Round a decimal to the nearest whole or to 1 decimal place"
+        ],
+        "comunicacion": [
+         "Tildación: palabras agudas"
+        ],
+        "pe": [
+         "Voleo o toque de dedos"
+        ]
+       }
+      },
+      {
+       "n": 4,
+       "areas": {
+        "math": [
+         "Addition and subtraction of decimals up to 2 decimal places"
+        ],
+        "comunicacion": [
+         "Tildación: palabras graves"
+        ],
+        "science": [
+         "Energy"
+        ],
+        "pe": [
+         "Saque básico"
+        ]
+       }
+      },
+      {
+       "n": 5,
+       "areas": {
+        "math": [
+         "Multiply and divide decimals up to 2 decimal places by 1 digit whole number"
+        ],
+        "comunicacion": [
+         "Tildación: palabras graves"
+        ],
+        "pe": [
+         "Desplazamientos y posiciones en cancha"
+        ]
+       }
+      }
+     ],
+     "fuera_de_calendario": [
+      {
+       "math": [
+        "\"Equations"
+       ],
+       "comunicacion": [
+        "Tildación: palabras esdrújulas"
+       ],
+       "science": [
+        "Planets in the solar system"
+       ],
+       "pe": [
+        "Juego reducido"
+       ]
+      }
+     ]
+    },
+    {
+     "periodo": 6,
+     "unidad": 6,
+     "trimestre": 3,
+     "inicio": "2026-10-26",
+     "fin": "2026-12-04",
+     "semanas": [
+      {
+       "n": 1,
+       "areas": {
+        "math": [
+         "Angles"
+        ],
+        "comunicacion": [
+         "Hiato"
+        ],
+        "science": [
+         "Natural resources"
+        ],
+        "pe": [
+         "Familiarización Balonmano"
+        ]
+       }
+      },
+      {
+       "n": 2,
+       "areas": {
+        "math": [
+         "2D :  properties of squares and rectangles"
+        ],
+        "comunicacion": [
+         "Diptongo y triptongo"
+        ],
+        "science": [
+         "Water Cycle"
+        ],
+        "pe": [
+         "Manejo y control del balón"
+        ]
+       }
+      },
+      {
+       "n": 3,
+       "areas": {
+        "math": [
+         "Area and Perimeter"
+        ],
+        "comunicacion": [
+         "La oración: concepto, clases"
+        ],
+        "science": [
+         "Climate and weather"
+        ],
+        "pe": [
+         "Pases y recepciones"
+        ]
+       }
+      },
+      {
+       "n": 4,
+       "areas": {
+        "math": [
+         "Probability as a fraction and as a percentage\""
+        ],
+        "comunicacion": [
+         "Sujeto"
+        ],
+        "science": [
+         "Instruments to measure"
+        ],
+        "pe": [
+         "Lanzamientos a portería"
+        ]
+       }
+      },
+      {
+       "n": 5,
+       "areas": {
+        "math": [
+         "Four operations"
+        ],
+        "comunicacion": [
+         "Predicado"
+        ],
+        "pe": [
+         "Desplazamientos ofensivos y defensivos"
+        ]
+       }
+      },
+      {
+       "n": 6,
+       "areas": {
+        "math": [
+         "Four operations"
+        ],
+        "comunicacion": [
+         "Análisis oraciones"
+        ],
+        "pe": [
+         "Juegos reducidos y minipartidos"
+        ]
+       }
+      }
+     ],
+     "fuera_de_calendario": []
+    }
+   ]
+  },
+  "g5": {
+   "grado": 5,
+   "periodos": [
+    {
+     "periodo": 1,
+     "unidad": 1,
+     "trimestre": 1,
+     "inicio": "2026-03-09",
+     "fin": "2026-04-17",
+     "semanas": [
+      {
+       "n": 1,
+       "areas": {
+        "math": [
+         "Place value, comparing and ordering numbers up to 999999"
+        ],
+        "english": [
+         "Review of verb tenses"
+        ],
+        "social": [
+         "Classroom agreements"
+        ],
+        "comunicacion": [
+         "Diccionario y abreviaturas",
+         "El cuento policial"
+        ],
+        "science": [
+         "What makes up matter (small particles, atoms and subatomic particles)"
+        ],
+        "pe": [
+         "Control y Pase"
+        ]
+       }
+      },
+      {
+       "n": 2,
+       "areas": {
+        "tutoria": [
+         "Happiness Day",
+         "Down Syndrome"
+        ],
+        "math": [
+         "Whole numbers rounding and estimation"
+        ],
+        "english": [
+         "Review of verb tenses",
+         "Introduction to prepositions, pronouns and interjections"
+        ],
+        "social": [
+         "Personal description"
+        ],
+        "comunicacion": [
+         "Tipos de puntos",
+         "El cuento de terror"
+        ],
+        "science": [
+         "Research question, Types of variables (dependent & independent), Hypothesis formulation"
+        ],
+        "pe": [
+         "Conducción y Dribling"
+        ]
+       }
+      },
+      {
+       "n": 3,
+       "areas": {
+        "math": [
+         "Powers of 10 (multiplication/division - 10/100/1000)"
+        ],
+        "english": [
+         "Analyze detailed texts for main ideas."
+        ],
+        "social": [
+         "Self-regulation"
+        ],
+        "comunicacion": [
+         "La coma",
+         "El cuento urbano realista"
+        ],
+        "science": [
+         "Physical changes (types of mixtures, states of matter - forces of repulsion and cohesion)"
+        ],
+        "pe": [
+         "Remate"
+        ]
+       }
+      },
+      {
+       "n": 4,
+       "areas": {
+        "tutoria": [
+         "Autism Awareness",
+         "Easter (Holiday)"
+        ],
+        "math": [
+         "Addition & subtraction (strategies and estimation)"
+        ],
+        "english": [
+         "Introduction to synonyms and antonyms."
+        ],
+        "social": [
+         "Rules of our community / Equality-Respect to others"
+        ],
+        "comunicacion": [
+         "Las comillas",
+         "El cuento fantástico"
+        ],
+        "science": [
+         "Physical changes (types of mixtures, states of matter - forces of repulsion and cohesion)"
+        ],
+        "pe": [
+         "Funcionamiento Colectivo"
+        ]
+       }
+      },
+      {
+       "n": 5,
+       "areas": {
+        "math": [
+         "Multiplication & division (strategies and estimation)"
+        ],
+        "english": [
+         "Instructive texts"
+        ],
+        "social": [
+         "Conflicts"
+        ],
+        "comunicacion": [
+         "Puntos suspensivos",
+         "Fábulas de esopo"
+        ],
+        "science": [
+         "Chemical changes (reversible and irreversible reactions)"
+        ],
+        "pe": [
+         "Juego Integrado"
+        ]
+       }
+      },
+      {
+       "n": 6,
+       "areas": {
+        "math": [
+         "Additive & multiplicative patterns, constants"
+        ],
+        "english": [
+         "Prefixes (re-, un-, dis-, mis-, pre-, ex-, non-, in-, fore-, uni-, bi-, tri-)"
+        ],
+        "social": [
+         "Territorial Issues"
+        ],
+        "comunicacion": [
+         "Uso de j - g",
+         "Analisis de crítico del tipo de cuento de mi preferencia"
+        ],
+        "science": [
+         "Chemical changes (reversible and irreversible reactions)"
+        ],
+        "pe": [
+         "Torneo y Evaluación Final"
+        ]
+       }
+      }
+     ],
+     "fuera_de_calendario": []
+    },
+    {
+     "periodo": 2,
+     "unidad": 2,
+     "trimestre": 1,
+     "inicio": "2026-04-20",
+     "fin": "2026-05-29",
+     "semanas": [
+      {
+       "n": 1,
+       "areas": {
+        "tutoria": [
+         "Earth Day",
+         "Book Day"
+        ],
+        "math": [
+         "Lines, angles and basic geometry language (dot, line, line segment, ray, parallel lines, intersecting lines, perpendicular lines)"
+        ],
+        "english": [
+         "Book: The lost city"
+        ],
+        "social": [
+         "Importance of Geography"
+        ],
+        "comunicacion": [
+         "Sustantivos, clases y genero y numero de sustantivos"
+        ],
+        "science": [
+         "Living organisms kingdoms"
+        ],
+        "pe": [
+         "Familiarizacion de futsal"
+        ]
+       }
+      },
+      {
+       "n": 2,
+       "areas": {
+        "tutoria": [
+         "Psychologists Day",
+         "Labor Day (Holiday)"
+        ],
+        "math": [
+         "Properties of operations & mixed operations"
+        ],
+        "english": [
+         "Narrative  texts(200-250 words)",
+         "Coherence, vocabulary use, and overall communicative effectiveness."
+        ],
+        "social": [
+         "Geography concepts #1"
+        ],
+        "comunicacion": [
+         "Sustantivos, clases y genero y numero de sustantivos"
+        ],
+        "science": [
+         "Human impacts on the planet health: Environmental problems and management, Waste management (Landfills, Recycling centers)"
+        ],
+        "pe": [
+         "Control y pase"
+        ]
+       }
+      },
+      {
+       "n": 3,
+       "areas": {
+        "tutoria": [
+         "Mother's Day"
+        ],
+        "math": [
+         "Multi-step word problems",
+         "Equations with one variable"
+        ],
+        "english": [
+         "Narrative  texts(200-250 words)",
+         "Coherence, vocabulary use, and overall communicative effectiveness."
+        ],
+        "social": [
+         "Geography concepts #2"
+        ],
+        "comunicacion": [
+         "Adjetivos, clases y grados"
+        ],
+        "science": [
+         "Human impacts on the planet health:Pollution, Deforestation and habitat loss, Predation"
+        ],
+        "pe": [
+         "Conducción"
+        ]
+       }
+      },
+      {
+       "n": 4,
+       "areas": {
+        "tutoria": [
+         "Math Day"
+        ],
+        "math": [
+         "Data collection: open/closed questions & bar graphs/line graphs/line plots"
+        ],
+        "english": [
+         "Author's choices.",
+         "Narrative  texts(200-250 words)",
+         "Coherence, vocabulary use, and overall communicative effectiveness."
+        ],
+        "social": [
+         "Economic Process"
+        ],
+        "comunicacion": [
+         "Adjetivos, clases y grados"
+        ],
+        "science": [
+         "Defense mechanisms of living things"
+        ],
+        "pe": [
+         "Dribling y definición"
+        ]
+       }
+      },
+      {
+       "n": 5,
+       "areas": {
+        "math": [
+         "Triangles & quadrilaterals (classification)"
+        ],
+        "english": [
+         "Suffixes (-y, -ly, -ily, -er, -est, -ness, -ful, -less)"
+        ],
+        "social": [
+         "Economic Roles",
+         "Private, Personal, Public Property"
+        ],
+        "comunicacion": [
+         "Uso de g y diéresis"
+        ],
+        "science": [
+         "Defense mechanisms of living things",
+         "Research question, Types of variables (dependent & independent), Hypothesis formulation"
+        ],
+        "pe": [
+         "Rotación por puestos"
+        ]
+       }
+      }
+     ],
+     "fuera_de_calendario": [
+      {
+       "social": [
+        "Solo son 5 semanitas :) xd"
+       ]
+      }
+     ]
+    },
+    {
+     "periodo": 3,
+     "unidad": 3,
+     "trimestre": 2,
+     "inicio": "2026-06-01",
+     "fin": "2026-07-10",
+     "semanas": [
+      {
+       "n": 1,
+       "areas": {
+        "tutoria": [
+         "Peruvian Flag Day"
+        ],
+        "math": [
+         "Factors, multiples & divisibility"
+        ],
+        "english": [
+         "Homophones"
+        ],
+        "social": [
+         "Consumer rights"
+        ],
+        "comunicacion": [
+         "Tildación palabras agudas"
+        ],
+        "science": [
+         "Food chains and trophic levels"
+        ],
+        "pe": [
+         "Familiarización de atletismo pista"
+        ]
+       }
+      },
+      {
+       "n": 2,
+       "areas": {
+        "math": [
+         "Prime numbers, prime factorization, LCM & GCF"
+        ],
+        "english": [
+         "Introduction of Present Perfect Tense"
+        ],
+        "social": [
+         "Advertising"
+        ],
+        "comunicacion": [
+         "Tildación palabras graves"
+        ],
+        "science": [
+         "Role of living things in the habitat (niche)"
+        ],
+        "pe": [
+         "Tecnica basica de carera (Velocidad)"
+        ]
+       }
+      },
+      {
+       "n": 3,
+       "areas": {
+        "tutoria": [
+         "Father's Day"
+        ],
+        "math": [
+         "Fractions: comparing, ordering & simplifying"
+        ],
+        "english": [
+         "Introduction of Present Perfect Tense"
+        ],
+        "social": [
+         "Centuries, stages, epochs, decades"
+        ],
+        "comunicacion": [
+         "Tildación palabras esdrújulas"
+        ],
+        "science": [
+         "Pollination and seed dsipersal,"
+        ],
+        "pe": [
+         "Resistencia en pista"
+        ]
+       }
+      },
+      {
+       "n": 4,
+       "areas": {
+        "math": [
+         "Adding & subtracting fractions and mixed numbers"
+        ],
+        "english": [
+         "Discussions, Persuasive speech",
+         "announcements"
+        ],
+        "social": [
+         "Viceroyalty / Comparison to modern times"
+        ],
+        "comunicacion": [
+         "Tildación palabras sobresdrújulas"
+        ],
+        "science": [
+         "photosynthesis"
+        ],
+        "pe": [
+         "Relevos"
+        ]
+       }
+      },
+      {
+       "n": 5,
+       "areas": {
+        "math": [
+         "Multiplying & dividing fractions and mixed numbers"
+        ],
+        "english": [
+         "Implied details, conclusions.",
+         "Summarize paragraphs effectively."
+        ],
+        "social": [
+         "Viceroyalty / Man-Woman participation"
+        ],
+        "comunicacion": [
+         "Acentuación en diptongos y hiatos"
+        ],
+        "science": [
+         "photosynthesis"
+        ],
+        "pe": [
+         "Saltos en atletismo"
+        ]
+       }
+      },
+      {
+       "n": 6,
+       "areas": {
+        "tutoria": [
+         "Fiestas Patrias"
+        ],
+        "math": [
+         "Multi-step word problems with fractions"
+        ],
+        "english": [
+         "Implied details, conclusions.",
+         "Summarize paragraphs effectively."
+        ],
+        "social": [
+         "Viceroyalty / Independence Day"
+        ],
+        "comunicacion": [
+         "Uso de la h"
+        ],
+        "science": [
+         "Vertebrates and Invertebrates"
+        ],
+        "pe": [
+         "Carreras con obstáculos"
+        ]
+       }
+      }
+     ],
+     "fuera_de_calendario": []
+    },
+    {
+     "periodo": 4,
+     "unidad": 4,
+     "trimestre": 2,
+     "inicio": "2026-08-04",
+     "fin": "2026-09-11",
+     "semanas": [
+      {
+       "n": 1,
+       "areas": {
+        "tutoria": [
+         "Nordic Day"
+        ],
+        "math": [
+         "Decimals: reading, ordering, rounding & estimation"
+        ],
+        "english": [
+         "Homographs"
+        ],
+        "social": [
+         "Natural Elements"
+        ],
+        "comunicacion": [
+         "Determinantes: artículos demostrativos"
+        ],
+        "science": [
+         "Water cycle"
+        ],
+        "pe": [
+         "Iniciación al Basquetbol"
+        ]
+       }
+      },
+      {
+       "n": 2,
+       "areas": {
+        "math": [
+         "Decimal operations (+ / -) & real-life problems"
+        ],
+        "english": [
+         "Simple Researching and note-taking to build content for writing."
+        ],
+        "social": [
+         "Social Elements"
+        ],
+        "comunicacion": [
+         "Determinantes: artículos posesivos"
+        ],
+        "science": [
+         "The lithosphere"
+        ],
+        "pe": [
+         "Manejo de balón (dribling)"
+        ]
+       }
+      },
+      {
+       "n": 3,
+       "areas": {
+        "tutoria": [
+         "Día de la niñez",
+         "Study Trip (19-21 Aug)"
+        ],
+        "math": [
+         "Metric system: length, mass & volume (conversion)"
+        ],
+        "english": [
+         "Informational texts"
+        ],
+        "social": [
+         "Weather"
+        ],
+        "comunicacion": [
+         "Determinantes numerales e indefinidos"
+        ],
+        "science": [
+         "The lithosphere"
+        ],
+        "pe": [
+         "Pases y recepción"
+        ]
+       }
+      },
+      {
+       "n": 4,
+       "areas": {
+        "tutoria": [
+         "St. Rose of Lima"
+        ],
+        "math": [
+         "Introduction to probability (fractions & percentages)"
+        ],
+        "english": [
+         "Informational texts"
+        ],
+        "social": [
+         "Types of government"
+        ],
+        "comunicacion": [
+         "Determinantes indefinidos"
+        ],
+        "science": [
+         "Energy"
+        ],
+        "pe": [
+         "Lanzamientos al aro"
+        ]
+       }
+      },
+      {
+       "n": 5,
+       "areas": {
+        "math": [
+         "Perimeter, area & data interpretation (mean, mode, range)"
+        ],
+        "english": [
+         "Informative Speech"
+        ],
+        "social": [
+         "Right - Wrong Actions"
+        ],
+        "comunicacion": [
+         "Palabras sinónimas"
+        ],
+        "science": [
+         "Energy sources",
+         "Fossil fuels",
+         "Basic renewable energy sources"
+        ],
+        "pe": [
+         "Desplazamientos defensivos"
+        ]
+       }
+      },
+      {
+       "n": 6,
+       "areas": {
+        "math": [
+         "Cartesian plane & line graphs"
+        ],
+        "english": [
+         "Groups presentations",
+         "Speaking clearly in complete sentence"
+        ],
+        "social": [
+         "Migrations"
+        ],
+        "comunicacion": [
+         "Palabras antónimas"
+        ],
+        "science": [
+         "Identifying a graph and its main parts (axis, values, data)",
+         "Presenting and intepreting data in pie charts and bar graphs."
+        ],
+        "pe": [
+         "Juego reducidos"
+        ]
+       }
+      }
+     ],
+     "fuera_de_calendario": []
+    },
+    {
+     "periodo": 5,
+     "unidad": 5,
+     "trimestre": 3,
+     "inicio": "2026-09-14",
+     "fin": "2026-10-23",
+     "semanas": [
+      {
+       "n": 1,
+       "areas": {
+        "math": [
+         "Deepening decimal operations (× / ÷)"
+        ],
+        "english": [
+         "Book: Exploring our world"
+        ],
+        "social": [
+         "Cartographic Tools"
+        ],
+        "comunicacion": [
+         "Palabras homónimas"
+        ],
+        "science": [
+         "The atmosphere"
+        ],
+        "pe": [
+         "Iniciación al voley"
+        ]
+       }
+      },
+      {
+       "n": 2,
+       "areas": {
+        "tutoria": [
+         "Peace Day"
+        ],
+        "math": [
+         "Multi-step decimal word problems"
+        ],
+        "english": [
+         "Analyze detailed texts for main ideas."
+        ],
+        "social": [
+         "Cartographic Elements"
+        ],
+        "comunicacion": [
+         "Palabras parónimas"
+        ],
+        "science": [
+         "The atmosphere"
+        ],
+        "pe": [
+         "Golpe de antebrazos"
+        ]
+       }
+      },
+      {
+       "n": 3,
+       "areas": {
+        "tutoria": [
+         "Sports Day (30 Set - 2 Oct)"
+        ],
+        "math": [
+         "Percent: meaning and representation"
+        ],
+        "english": [
+         "\"Different viewpoints.",
+         "Personal opinion.\""
+        ],
+        "social": [
+         "Types of Map"
+        ],
+        "comunicacion": [
+         "Adverbios"
+        ],
+        "science": [
+         "The hydrosphere"
+        ],
+        "pe": [
+         "Voleo o toque de dedos"
+        ]
+       }
+      },
+      {
+       "n": 4,
+       "areas": {
+        "math": [
+         "Fraction–decimal–percent conversions"
+        ],
+        "english": [
+         "Developing thesis statements for opinion texts."
+        ],
+        "social": [
+         "Rivers and Lakes"
+        ],
+        "comunicacion": [
+         "Preposiciones y conjunciones"
+        ],
+        "science": [
+         "The hydrosphere"
+        ],
+        "pe": [
+         "Saque básico"
+        ]
+       }
+      },
+      {
+       "n": 5,
+       "areas": {
+        "tutoria": [
+         "Inclusive Education Day"
+        ],
+        "math": [
+         "Percent word problems (discount, tax, interest)"
+        ],
+        "english": [
+         "Developing thesis statements for opinion texts.",
+         "Identifying main points and specific details in short talks or presentations."
+        ],
+        "social": [
+         "Ecosystems"
+        ],
+        "comunicacion": [
+         "Uso de ll y la y"
+        ],
+        "science": [
+         "primary and secondary sources."
+        ],
+        "pe": [
+         "Desplazamientos y posiciones en cancha"
+        ]
+       }
+      }
+     ],
+     "fuera_de_calendario": [
+      {
+       "tutoria": [
+        "STEAM Day?"
+       ],
+       "math": [
+        "Patterns & equations with increased complexity"
+       ],
+       "english": [
+        "Review of verb tenses"
+       ],
+       "social": [
+        "Ecosystems"
+       ],
+       "comunicacion": [
+        "Uso de hay, ahí y ¡ay!"
+       ],
+       "science": [
+        "primary and secondary sources."
+       ],
+       "pe": [
+        "Juego reducido"
+       ]
+      }
+     ]
+    },
+    {
+     "periodo": 6,
+     "unidad": 6,
+     "trimestre": 3,
+     "inicio": "2026-10-26",
+     "fin": "2026-12-04",
+     "semanas": [
+      {
+       "n": 1,
+       "areas": {
+        "tutoria": [
+         "Magic Day / Día Criollo"
+        ],
+        "math": [
+         "Area of polygons (triangle, parallelogram, rhombus)"
+        ],
+        "english": [
+         "Analyze detailed texts for main ideas."
+        ],
+        "social": [
+         "Emotions"
+        ],
+        "comunicacion": [
+         "la oración y sus clase"
+        ],
+        "science": [
+         "Universe origins"
+        ],
+        "pe": [
+         "Familiarización Balonmano"
+        ]
+       }
+      },
+      {
+       "n": 2,
+       "areas": {
+        "math": [
+         "3D shapes: prisms, pyramids & polyhedra"
+        ],
+        "english": [
+         "Discussions, Persuasive speech"
+        ],
+        "social": [
+         "Customs / Citizenship"
+        ],
+        "comunicacion": [
+         "Sujeto"
+        ],
+        "science": [
+         "Universe origins"
+        ],
+        "art": [
+         "sujeto"
+        ],
+        "pe": [
+         "Manejo y control del balón"
+        ]
+       }
+      },
+      {
+       "n": 3,
+       "areas": {
+        "math": [
+         "Nets, faces, edges & vertices"
+        ],
+        "social": [
+         "Renewable and non-renewable resources"
+        ],
+        "comunicacion": [
+         "predicado"
+        ],
+        "science": [
+         "Formation of stars and solar system"
+        ],
+        "pe": [
+         "Pases y recepciones"
+        ]
+       }
+      },
+      {
+       "n": 4,
+       "areas": {
+        "tutoria": [
+         "Creative Arts Show"
+        ],
+        "math": [
+         "Circles & circumference (introductory concepts)"
+        ],
+        "social": [
+         "Free goods vs economic goods"
+        ],
+        "comunicacion": [
+         "Sentido literal y sentido figurado"
+        ],
+        "science": [
+         "Formation of stars and solar system"
+        ],
+        "pe": [
+         "Lanzamientos a portería"
+        ]
+       }
+      },
+      {
+       "n": 5,
+       "areas": {
+        "math": [
+         "Probability: theoretical vs experimental"
+        ],
+        "social": [
+         "Importance of savings"
+        ],
+        "comunicacion": [
+         "Guión y raya"
+        ],
+        "science": [
+         "Planetary movements"
+        ],
+        "pe": [
+         "Desplazamientos ofensivos y defensivos"
+        ]
+       }
+      },
+      {
+       "n": 6,
+       "areas": {
+        "math": [
+         "Data analysis & integrated problem solving"
+        ],
+        "social": [
+         "Making a savings plan"
+        ],
+        "comunicacion": [
+         "Diferencia entre haber y a ver"
+        ],
+        "science": [
+         "Planetary movements"
+        ],
+        "pe": [
+         "Juegos reducidos y minipartidos"
+        ]
+       }
+      }
+     ],
+     "fuera_de_calendario": []
+    }
+   ]
+  }
+ }
+}
