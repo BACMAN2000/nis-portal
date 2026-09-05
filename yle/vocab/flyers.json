@@ -33,6 +33,16 @@
 "p": false
 },
 {
+"w": "a.m.",
+"k": "a.m.",
+"e": "⏰",
+"t": "time",
+"ex": "School starts at eight a.m.",
+"es": "de la mañana (antes del mediodía)",
+"s": "a_m",
+"p": false
+},
+{
 "w": "actor",
 "k": "actor",
 "e": "🎭",
@@ -276,6 +286,15 @@
 "p": false
 },
 {
+"w": "engine",
+"k": "engine",
+"e": "⚙️",
+"t": "transport",
+"ex": "The train engine is very big.",
+"es": "motor; locomotora",
+"s": "engine"
+},
+{
 "w": "environment",
 "k": "environment",
 "e": "🌱",
@@ -328,6 +347,15 @@
 "ex": "The dog can fetch the ball.",
 "es": "ir a buscar, traer",
 "s": "fetch"
+},
+{
+"w": "file",
+"k": "file",
+"e": "📁",
+"t": "tech",
+"ex": "Open the file on the computer.",
+"es": "archivo",
+"s": "file"
 },
 {
 "w": "fire fighter",
@@ -757,6 +785,16 @@
 "ex": "We play games online.",
 "es": "en línea",
 "s": "online"
+},
+{
+"w": "p.m.",
+"k": "p.m.",
+"e": "⏰",
+"t": "time",
+"ex": "The film starts at eight p.m.",
+"es": "de la tarde, de la noche",
+"s": "p_m",
+"p": false
 },
 {
 "w": "passenger",
