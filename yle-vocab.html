@@ -137,7 +137,7 @@ function boldWord(ex, w){ var base = w.w.split(' (')[0].split(' / ')[0]; var re 
 var cur = null;
 function play(w, ex){
   if(cur){ try { cur.pause(); } catch(e){} }
-  var a = new Audio(AUD + w.s + (ex ? '_ex' : '') + '.mp3?v=2'); cur = a;   /* v2 = voz Libby (5-sep-2026) */
+  var a = new Audio(AUD + w.s + (ex ? '_ex' : '') + '.mp3?v=3'); cur = a;   /* v3 = voz Libby con el ritmo por nivel (5-sep-2026) */
   a.onerror = function(){ speak(ex ? w.ex : w.w.split(' (')[0].split(' / ')[0]); };
   a.play().catch(function(){ speak(ex ? w.ex : w.w); });
 }

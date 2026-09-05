@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 """Audio del entrenador de vocabulario YLE: por cada palabra de yle/vocab/<level>.json
-dos mp3 con la misma voz de examinadora de los tests (Edge TTS, en-GB Libby a -6%,
-igual que el reparto del audio de examen desde el 5-sep-2026; antes era Sonia con
-el ritmo estirado por nivel, que sonaba tensa):
+dos mp3 con la voz de examinadora de los tests (Edge TTS, en-GB Libby desde el
+5-sep-2026; antes era Sonia con el ritmo muy estirado, que sonaba tensa). El ritmo
+sube con la edad: -12% en Starters, -9% en Movers, -6% en Flyers, que es el del
+examen.
     yle-audio/vocab/<level>/<slug>.mp3      la palabra sola
     yle-audio/vocab/<level>/<slug>_ex.mp3   la frase de ejemplo
 Solo genera lo que falta (para relanzar sin coste); con --force rehace todo, que es
@@ -18,7 +19,7 @@ import edge_tts
 AQUI = os.path.dirname(os.path.abspath(__file__))
 RAIZ = os.path.dirname(os.path.dirname(AQUI))
 VOICE = 'en-GB-LibbyNeural'
-RATE = {'starters': '-6%', 'movers': '-6%', 'flyers': '-6%'}
+RATE = {'starters': '-12%', 'movers': '-9%', 'flyers': '-6%'}
 PAR = 6
 FORCE = '--force' in sys.argv
 
