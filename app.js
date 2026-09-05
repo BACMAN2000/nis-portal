@@ -3563,11 +3563,44 @@ function _hubCard(emoji,title,desc,onclick,extra){
     <div class="muted" style="font-size:.85rem">${desc}</div>${extra||''}
   </div>`;
 }
+/* La unidad en curso, en la portada.
+   Un menu que la nombre ya es mejor que nada, pero lo que hace que la
+   plataforma se LEA como un curso por proyectos es que al entrar veas en que
+   proyecto estas: la pregunta que lo abre y lo que vas a producir. La nota de
+   examen no ocupa este sitio -- tiene el suyo en My Progress. */
+function _bandaMiUnidad(){
+  const p = state.profile || {};
+  if(!_isStudent() || !p.grade_id) return '';
+  const key = 'g' + p.grade_id;
+  const plan = (window.UNIT_PLANS || {})[key];
+  if(!plan || !plan.units || !plan.units.length) return '';
+  if(!nodeVisible('english.classes.' + key) || !nodeVisible(unitsNode(key))) return '';
+
+  // La unidad en curso es la ULTIMA que su grado tiene abierta: las cerradas
+  // son las que todavia no ha empezado.
+  const abiertas = plan.units.filter(u => nodeVisible(_academicUnitNode(key, u.n)));
+  const u = abiertas.length ? abiertas[abiertas.length - 1] : null;
+  if(!u) return '';
+
+  const producto = (u.deliverables && u.deliverables[0]) || null;
+  return `<div class="card" style="margin-top:14px;border-top:5px solid var(--blue);
+      background:linear-gradient(135deg,#f7faff,#eef4fb)">
+    <div class="muted" style="font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;font-weight:700">
+      Your unit right now · Unit ${esc(String(u.n))}</div>
+    <h2 style="margin:4px 0 6px;color:var(--blue-dd)">${esc(u.title)}</h2>
+    ${u.bigq ? `<p style="margin:0 0 10px;font-size:1.02rem;color:var(--blue-d)"><b>${esc(u.bigq)}</b></p>` : ''}
+    ${producto ? `<p class="muted" style="margin:0 0 12px;font-size:.9rem">
+      What you will produce: <b>${esc(producto.title)}</b>${producto.spec ? ' — ' + esc(producto.spec) : ''}</p>` : ''}
+    <button class="btn" onclick="window._nav('classes_${key}_units')">Open my unit</button>
+  </div>`;
+}
+
 function studentHub(){
   _setNav('home');
   const p=state.profile;
   $('#main').innerHTML=`<h1>Hi, ${esc(p.first_name||p.full_name||'')} 👋</h1>
     <p class="muted" style="margin-top:-6px">${esc(p.grades?.name||'')} ${p.section?'· '+esc(p.section):''} · Level ${esc(p.cefr_level||'not set')} — What would you like to do today?</p>
+    ${_bandaMiUnidad()}
     <h2 style="margin:18px 0 8px">Subjects</h2>
     <div class="grid cols-3">
       ${_hubCard('🇬🇧','English','Pronunciation, Mocks, Classes and more.',"window._nav('english')")}
@@ -3583,6 +3616,13 @@ function studentHub(){
 /* ---------- Jerarquía de contenido: Materia → Área → Grado → Actividad ----------
    Las áreas de English se reflejan en French (placeholder hasta alimentarlas). */
 const ENGLISH_AREAS = [
+  // Va la PRIMERA a proposito. Direccion dijo que la plataforma se leia como
+  // un simulador de examenes, y tenia razon leyendo esta pantalla: de diez
+  // tarjetas cuatro eran de examen y la palabra "unidad" no aparecia en
+  // ninguna. El proyecto existia -- con su pregunta, su producto y su rubrica
+  // -- pero a cinco clics: English > Classes > etapa > grado > Units > unidad.
+  // Lo que ordena el curso tiene que verse antes que lo que lo mide.
+  {emoji:'🎯', title:'My unit',       desc:'Your project this term: the big question, what you will produce, and how it is marked.', nav:'myunit', node:'english.classes'},
   {emoji:'🎙️', title:'Pronunciation', desc:'Listen to each sound, watch the tongue and airflow, and practise.', nav:'coach',    node:'english.pronunciation'},
   {emoji:'🎓', icon:'main', title:'Cambridge', desc:'YLE and Main Suite: the official Cambridge route from Pre-A1 to C2, with practice tests.', nav:'cambridge', node:'english.cambridge'},
   {emoji:'🎓', title:'Mocks',         desc:'Official MOCK 1 and MOCK 2 exams by skill.',        nav:'mocks'},
@@ -4778,6 +4818,17 @@ function studentFrenchGrade(key){
         : _lockedCard('🎲','Activités','Les jeux de l’unité.')}
     </div>`;
 }
+/* Al alumno se le lleva DIRECTO a las unidades de SU grado: no tiene por que
+   saber en que etapa esta ni elegir entre once grados para encontrar el suyo.
+   Al profesor y al admin, que trabajan con varios, se les deja el selector. */
+function irAMiUnidad(){
+  const p = state.profile || {};
+  const key = p.grade_id ? 'g' + p.grade_id : null;
+  if(_isStudent() && key && unitPlansFor(key).length) return studentGradeUnits(key);
+  if(key && unitPlansFor(key).length) return studentGradeUnits(key);
+  return studentClasses();
+}
+
 /* Pinta una vista. Devuelve true si la clave era una ruta conocida. */
 function _navRender(k){
   let m;
@@ -4788,6 +4839,7 @@ function _navRender(k){
   if(m=/^fr_classes_(g\d+)$/.exec(k))    { studentFrenchGrade(m[1]);   return true; }
   if(k==='fr_classes')                   { studentFrenchClasses();     return true; }
   if(k==='fr_cefr')                      { studentFrenchCefr();        return true; }
+  if(k==='myunit')            { irAMiUnidad();              return true; }
   if(k==='classes_primary')   { studentStage('primary');   return true; }
   if(k==='classes_secondary') { studentStage('secondary'); return true; }
   if(m=/^classes_(g\d+)_unit_([a-z0-9]+)$/.exec(k)){ studentGradeUnit(m[1],m[2]); return true; }
