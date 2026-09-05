@@ -34,7 +34,7 @@ Write-Host "destino: $dst"
 #   apps-script   - codigo de Google Apps Script, no se sirve
 #   A2 Level.txt  - CLAVE de ElevenLabs, nunca debe publicarse
 #   *.log         - basura de servidores locales
-robocopy $src $dst /E /XD ".git" "tools" "apps-script" /XF "A2 Level.txt" "*.log" ".gitignore" "README.md" /NFL /NDL /NJH /NJS /R:1 /W:1 | Out-Null
+robocopy $src $dst /E /XD ".git" "tools" "apps-script" /XF "A2 Level.txt" "elevenlabs-key.txt" "*.log" ".gitignore" "README.md" /NFL /NDL /NJH /NJS /R:1 /W:1 | Out-Null
 if($LASTEXITCODE -ge 8){ Write-Error "robocopy fallo (codigo $LASTEXITCODE)"; exit 1 }
 
 # Red de seguridad: que no se cuele la clave de ElevenLabs pase lo que pase.

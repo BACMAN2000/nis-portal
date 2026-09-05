@@ -30,3 +30,12 @@ worksheets-digital.json
 _backup_*/
 # temporales del generador de audio (fragmentos antes de pegarlos con ffmpeg)
 nis-fun/audio/**/*.mp3.partes/
+
+# La clave de ElevenLabs se colo aqui el 27-ago-2026 dentro de mocks-cambridge,
+# que se copia con robocopy y por eso ignora el .gitignore del repo de origen.
+# Este repo es PUBLICO: las reglas van tambien aqui.
+elevenlabs-key.txt
+*.key
+*apikey*
+*api_key*
+*api-key*
