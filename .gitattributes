@@ -2,3 +2,4 @@
 # guarda con CRLF, cada palabra arrastra un retorno de carro y deja de
 # reconocerse hasta 'the'.
 lexicon/words.txt text eol=lf
+lexicon/core.txt text eol=lf
