@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YLE Word Trainer · Nordic International School</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="brand.css?v=21">
+<style>
+/* =========================================================================
+   Entrenador de vocabulario YLE (Ruta YLE 2026, Fase 3).
+   Las palabras de la lista oficial 2025 que no salen en Fun for Nordic, con
+   dibujo, audio y frase de ejemplo: yle/vocab/<level>.json. Cuatro modos:
+   Learn (tarjetas), Pick the picture, Spell it y Listen & type. El progreso
+   por palabra va a la cuenta (yle_vocab_progress) en NIS y al navegador en
+   Cohasset; una palabra está «dominada» con tres aciertos.
+   ========================================================================= */
+:root{--navy:#0d1d33;--blue:#1e3a8a;--sky:#eef3fb;--ink:#1e293b;--muted:#64748b;--border:#d9deea;--ok:#2f8f5b;--bad:#b53a3a;--st:#e08a2a;--mv:#238f85;--fl:#6a54c9;--gold:#d29a1f}
+*{box-sizing:border-box}
+body{margin:0;background:#f7f8fb;color:var(--ink);font-family:'Gotham','Segoe UI',system-ui,sans-serif}
+header.top{background:var(--navy);color:#fff;padding:10px 18px 10px 118px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+header.top img{height:36px}
+header.top h1{margin:0;font-size:1.15rem}
+header.top .sub{font-size:.8rem;opacity:.8}
+header.top .right{margin-left:auto;display:flex;gap:10px;align-items:center}
+.lv{border-radius:999px;padding:4px 12px;font-weight:700;font-size:.85rem;background:#fff;color:var(--navy)}
+.lv.starters{background:var(--st);color:#fff}.lv.movers{background:var(--mv);color:#fff}.lv.flyers{background:var(--fl);color:#fff}
+.wrap{display:grid;grid-template-columns:250px 1fr;gap:18px;max-width:1180px;margin:18px auto;padding:0 16px}
+aside{background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px;align-self:start;position:sticky;top:12px}
+aside h2{font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:0 0 8px}
+.tbtn{display:flex;justify-content:space-between;align-items:center;gap:8px;width:100%;text-align:left;border:1.5px solid var(--border);background:#fff;border-radius:10px;padding:8px 10px;margin:0 0 6px;font:inherit;font-size:.9rem;cursor:pointer}
+.tbtn.on{border-color:var(--blue);background:var(--sky)}
+.tbtn small{color:var(--muted);font-size:.75rem;white-space:nowrap}
+.tbtn .done{color:var(--ok);font-weight:700}
+main{min-width:0}
+.card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px 18px;margin-bottom:14px}
+.card h3{margin:0 0 8px;font-size:1.05rem}
+.btn{border:0;background:var(--blue);color:#fff;border-radius:10px;padding:9px 16px;font:inherit;font-weight:700;cursor:pointer}
+.btn.sec{background:#fff;color:var(--blue);border:1.5px solid var(--blue)}
+.btn.ok{background:var(--ok)} .btn:disabled{opacity:.5;cursor:default}
+.small{font-size:.82rem;color:var(--muted)}
+.modes{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 0}
+.modes button{border:1.5px solid var(--border);background:#fff;border-radius:999px;padding:8px 14px;font:inherit;font-weight:700;cursor:pointer}
+.modes button.on{border-color:var(--blue);background:var(--sky)}
+.bar{height:12px;background:#e8ecf4;border-radius:999px;overflow:hidden;margin:8px 0}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),#f3c766);border-radius:999px;transition:width .4s}
+.stars{font-size:1.3rem;letter-spacing:2px}
+.flash{text-align:center;padding:10px 0}
+.flash .pic{height:170px;display:flex;align-items:center;justify-content:center}
+.flash .pic img{max-height:160px}
+.flash .emoji{font-size:120px;line-height:1}
+.flash .word{font-size:2rem;font-weight:800;margin:6px 0 2px}
+.flash .ex{font-size:1.1rem;margin:8px auto;max-width:560px}
+.flash .ex b{color:var(--blue)}
+.flash .es{color:var(--muted);font-style:italic}
+.spk{border:1.5px solid var(--border);background:#fff;border-radius:999px;padding:6px 12px;font:inherit;cursor:pointer;margin:2px}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:12px 0}
+.opt{border:2px solid var(--border);border-radius:14px;background:#fff;padding:12px 6px;text-align:center;cursor:pointer;min-height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font:inherit}
+.opt img{max-height:96px}.opt .emoji{font-size:72px;line-height:1}
+.opt.ok{border-color:var(--ok);background:#e3f3ea}.opt.bad{border-color:var(--bad);background:#f8e1e1}
+.opt:disabled{cursor:default}
+.tiles{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin:10px 0}
+.tile{width:44px;height:48px;border:2px solid var(--border);border-radius:10px;background:#fff;font:inherit;font-size:1.3rem;font-weight:800;cursor:pointer;text-transform:lowercase}
+.tile:disabled{opacity:.25;cursor:default}
+.answer{min-height:52px;border:2px dashed var(--border);border-radius:12px;display:flex;gap:6px;align-items:center;justify-content:center;padding:6px;font-size:1.5rem;font-weight:800;letter-spacing:2px;margin:8px auto;max-width:560px}
+.answer.ok{border-color:var(--ok);background:#e3f3ea}.answer.bad{border-color:var(--bad);background:#f8e1e1}
+.answer .gap{width:14px}
+input.typed{font:inherit;font-size:1.4rem;font-weight:700;border:2px solid var(--border);border-radius:12px;padding:10px 14px;width:100%;max-width:420px;text-align:center}
+input.typed.ok{border-color:var(--ok);background:#e3f3ea}input.typed.bad{border-color:var(--bad);background:#f8e1e1}
+.round{display:flex;justify-content:space-between;align-items:center;font-size:.85rem;color:var(--muted)}
+.fb{min-height:28px;font-weight:700;margin-top:6px}
+.fb.ok{color:var(--ok)}.fb.bad{color:var(--bad)}
+.result{text-align:center;padding:16px}
+.result .big{font-size:2.4rem;font-weight:800}
+.hidden{display:none!important}
+@media (max-width:820px){.wrap{grid-template-columns:1fr}aside{position:static}}
+</style>
+</head>
+<body>
+<header class="top">
+  <img src="assets/logo-white-h.svg" alt="" onerror="this.remove()">
+  <div><h1>YLE Word Trainer</h1><div class="sub" id="hSub">Cambridge Young Learners · the 2025 word list</div></div>
+  <div class="right"><span class="lv" id="hLv">Starters</span><a id="backTests" href="yle-practice.html" class="btn sec" style="text-decoration:none">◀ Practice tests</a></div>
+</header>
+<div class="wrap">
+  <aside>
+    <h2>Topics</h2>
+    <div id="themes"></div>
+    <h2 style="margin-top:14px">Level</h2>
+    <div id="levels"></div>
+  </aside>
+  <main>
+    <div class="card" id="top"></div>
+    <div id="content"></div>
+  </main>
+</div>
+
+<!-- NIS-ONLY -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+<script src="config.js"></script>
+<script src="nis-nav.js?v=2"></script>
+<!-- /NIS-ONLY -->
+<script src="yle/fluent3d.js?v=2"></script>
+<script>
+(function(){
+'use strict';
+var $ = function(s, r){ return (r || document).querySelector(s); };
+var $$ = function(s, r){ return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+var esc = function(s){ return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); };
+var norm = function(s){ return String(s == null ? '' : s).trim().toLowerCase().replace(/[.,;:!?'"’()]/g, '').replace(/\s+/g, ' '); };
+var ART = window.YLE_ART || {};
+var qs = new URLSearchParams(location.search);
+var LEVEL = ['starters', 'movers', 'flyers'].indexOf(qs.get('level')) >= 0 ? qs.get('level') : 'starters';
+var NAMES = {starters: 'Pre A1 Starters', movers: 'A1 Movers', flyers: 'A2 Flyers'};
+var AUD = 'yle-audio/vocab/' + LEVEL + '/';
+var MODES = [['learn', '📖 Learn'], ['pick', '🖼️ Pick the picture'], ['spell', '🔤 Spell it'], ['listen', '🎧 Listen & type']];
+var DATA = null, WORDS = [], THEMES = {};
+var theme = qs.get('topic') || 'all', mode = ['learn', 'pick', 'spell', 'listen'].indexOf(qs.get('mode')) >= 0 ? qs.get('mode') : 'learn';
+var PROG = {};                         // clave -> {ok, seen}
+var MASTER = 3;                        // aciertos para «dominada»
+var sb = null, USER = null;
+var game = null;                       // estado de la ronda en curso
+var t0 = Date.now();
+
+function client(){ if(sb) return sb; if(!window.supabase || !window.NIS_CONFIG) return null; sb = supabase.createClient(NIS_CONFIG.SUPABASE_URL, NIS_CONFIG.SUPABASE_KEY); return sb; }
+function json(u){ return fetch(u, {cache: 'no-cache'}).then(function(r){ if(!r.ok) throw new Error(u); return r.json(); }); }
+function shuffle(a){ a = a.slice(); for(var i = a.length - 1; i > 0; i--){ var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function emojiOf(w){ return w.e || (ART.wordEmoji ? ART.wordEmoji(w.k) : null); }
+function picOf(w, size){ var e = emojiOf(w); if(!e) return '<span class="emoji" style="font-size:' + Math.round(size * .7) + 'px">🔤</span>'; return ART.pic3d ? ART.pic3d(e, size).replace(' loading="lazy"', '') : '<span class="emoji" style="font-size:' + Math.round(size * .8) + 'px">' + e + '</span>'; }
+function hasPic(w){ return w.p !== false && !!emojiOf(w); }
+function prog(w){ return PROG[w.k] || {ok: 0, seen: 0}; }
+function mastered(w){ return prog(w).ok >= MASTER; }
+function pool(){ return theme === 'all' ? WORDS : WORDS.filter(function(w){ return w.t === theme; }); }
+function boldWord(ex, w){ var base = w.w.split(' (')[0].split(' / ')[0]; var re = new RegExp('(' + base.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/s$/, '') + '\\w*)', 'i'); return esc(ex).replace(re, '<b>$1</b>'); }
+
+/* ---------- audio: mp3 propio, y si no carga, la voz del navegador ---------- */
+var cur = null;
+function play(w, ex){
+  if(cur){ try { cur.pause(); } catch(e){} }
+  var a = new Audio(AUD + w.s + (ex ? '_ex' : '') + '.mp3'); cur = a;
+  a.onerror = function(){ speak(ex ? w.ex : w.w.split(' (')[0].split(' / ')[0]); };
+  a.play().catch(function(){ speak(ex ? w.ex : w.w); });
+}
+function speak(t){ try { var u = new SpeechSynthesisUtterance(t); u.lang = 'en-GB'; u.rate = .85; speechSynthesis.cancel(); speechSynthesis.speak(u); } catch(e){} }
+
+/* ---------- progreso: navegador siempre; cuenta del alumno en NIS ---------- */
+function loadLocal(){ try { PROG = JSON.parse(localStorage.getItem('yle_vocab_' + LEVEL) || '{}') || {}; } catch(e){ PROG = {}; } }
+function saveLocal(){ try { localStorage.setItem('yle_vocab_' + LEVEL, JSON.stringify(PROG)); } catch(e){} }
+function loadAccount(){
+  var c = client(); if(!c) return Promise.resolve();
+  return c.auth.getUser().then(function(u){ USER = u && u.data && u.data.user; if(!USER) return;
+    return c.from('yle_vocab_progress').select('word, ok, seen').eq('student_id', USER.id).eq('level', LEVEL).then(function(r){
+      (r.data || []).forEach(function(row){ var p = PROG[row.word] || {ok: 0, seen: 0}; PROG[row.word] = {ok: Math.max(p.ok, row.ok), seen: Math.max(p.seen, row.seen)}; });
+      saveLocal();
+    });
+  }).catch(function(){});
+}
+var pendUp = {};
+function bump(w, correct){
+  var p = PROG[w.k] || {ok: 0, seen: 0}; p.seen++; if(correct) p.ok++; PROG[w.k] = p; saveLocal(); paintThemes(); paintTop();
+  if(USER && sb){ pendUp[w.k] = p; clearTimeout(bump._t); bump._t = setTimeout(flush, 800); }
+}
+function flush(){
+  var rows = Object.keys(pendUp).map(function(k){ return {student_id: USER.id, level: LEVEL, word: k, ok: pendUp[k].ok, seen: pendUp[k].seen, updated_at: new Date().toISOString()}; });
+  pendUp = {}; if(!rows.length) return;
+  sb.from('yle_vocab_progress').upsert(rows, {onConflict: 'student_id,level,word'}).then(function(r){ if(r.error) console.warn(r.error.message); });
+}
+function saveRound(modeKey, score, total){
+  if(!USER || !sb) return;
+  var label = MODES.filter(function(m){ return m[0] === modeKey; })[0][1].replace(/^\S+\s/, '');
+  sb.from('activity_attempts').insert({student_id: USER.id, activity: 'yle-vocab:' + LEVEL + ':' + modeKey, title: 'YLE Word Trainer · ' + NAMES[LEVEL] + ' · ' + label, level: LEVEL, score: score, total: total, duration_sec: Math.min(32000, Math.round((Date.now() - t0) / 1000)), submitted_at: new Date().toISOString()}).then(function(r){ if(r.error) console.warn(r.error.message); t0 = Date.now(); });
+}
+
+/* ---------- pantalla ---------- */
+function init(){
+  $('#hSub').textContent = 'Cambridge Young Learners · ' + NAMES[LEVEL] + ' · the 2025 word list';
+  $('#hLv').textContent = LEVEL.charAt(0).toUpperCase() + LEVEL.slice(1); $('#hLv').className = 'lv ' + LEVEL;
+  $('#backTests').href = 'yle-practice.html?level=' + LEVEL;
+  $('#levels').innerHTML = ['starters', 'movers', 'flyers'].map(function(l){ return '<a class="tbtn' + (l === LEVEL ? ' on' : '') + '" href="?level=' + l + '" style="text-decoration:none;color:inherit"><b>' + NAMES[l] + '</b></a>'; }).join('');
+  loadLocal();
+  json('yle/vocab/' + LEVEL + '.json').then(function(d){
+    DATA = d; WORDS = d.words; THEMES = d.themes;
+    if(theme !== 'all' && !THEMES[theme]) theme = 'all';
+    return loadAccount();
+  }).then(function(){ paintThemes(); paintTop(); render(); })
+  .catch(function(e){ $('#content').innerHTML = '<div class="card">Could not load the words (' + esc(e.message) + ').</div>'; });
+}
+function paintThemes(){
+  var keys = Object.keys(THEMES).filter(function(t){ return WORDS.some(function(w){ return w.t === t; }); });
+  var row = function(k, label, ws){ var m = ws.filter(mastered).length; return '<button class="tbtn' + (k === theme ? ' on' : '') + '" data-t="' + k + '"><span>' + label + '</span><small' + (m === ws.length && ws.length ? ' class="done"' : '') + '>' + m + '/' + ws.length + '</small></button>'; };
+  $('#themes').innerHTML = row('all', '⭐ All words', WORDS) + keys.map(function(k){ return row(k, THEMES[k], WORDS.filter(function(w){ return w.t === k; })); }).join('');
+  $$('#themes .tbtn').forEach(function(b){ b.onclick = function(){ theme = b.dataset.t; game = null; paintThemes(); paintTop(); render(); }; });
+}
+function paintTop(){
+  var ws = pool(), m = ws.filter(mastered).length, pc = ws.length ? Math.round(100 * m / ws.length) : 0;
+  var label = theme === 'all' ? 'All words' : THEMES[theme];
+  $('#top').innerHTML = '<h3>' + esc(NAMES[LEVEL]) + ' · ' + esc(label) + '</h3>' +
+    '<div><b>You know ' + m + ' of ' + ws.length + ' words</b> <span class="small">(a word is yours after ' + MASTER + ' correct answers)</span></div>' +
+    '<div class="bar"><i style="width:' + pc + '%"></i></div>' +
+    '<div class="modes">' + MODES.map(function(x){ return '<button class="' + (x[0] === mode ? 'on' : '') + '" data-m="' + x[0] + '">' + x[1] + '</button>'; }).join('') + '</div>' +
+    (USER ? '' : '<p class="small" style="margin:8px 0 0">Your progress is saved on this device' + (window.NIS_CONFIG ? '; open the trainer from the portal to keep it in your account' : '') + '.</p>');
+  $$('#top .modes button').forEach(function(b){ b.onclick = function(){ mode = b.dataset.m; game = null; paintTop(); render(); }; });
+}
+function render(){
+  var ws = pool();
+  if(!ws.length){ $('#content').innerHTML = '<div class="card">No words in this topic yet.</div>'; return; }
+  if(mode === 'learn') return learn(ws);
+  if(mode === 'pick') return pick(ws);
+  if(mode === 'spell') return spell(ws);
+  return listen(ws);
+}
+/* orden de estudio: primero las que no se saben, mezcladas */
+function queue(ws){ var a = shuffle(ws.filter(function(w){ return !mastered(w); })), b = shuffle(ws.filter(mastered)); return a.concat(b); }
+
+/* ---------- Learn: tarjetas ---------- */
+function learn(ws){
+  if(!game || game.mode !== 'learn'){ game = {mode: 'learn', q: queue(ws), i: 0}; }
+  var w = game.q[game.i % game.q.length]; var p = prog(w);
+  $('#content').innerHTML = '<div class="card flash">' +
+    '<div class="round"><span>Card ' + (game.i % game.q.length + 1) + ' of ' + game.q.length + '</span><span>' + (mastered(w) ? '⭐ You know this one' : '✓ ' + p.ok + ' of ' + MASTER) + '</span></div>' +
+    '<div class="pic">' + picOf(w, 150) + '</div>' +
+    '<div class="word">' + esc(w.w) + '</div>' +
+    '<div><button class="spk" data-say="w">🔊 Word</button><button class="spk" data-say="ex">🔊 Sentence</button></div>' +
+    '<p class="ex">' + boldWord(w.ex, w) + '</p>' +
+    '<p class="es hidden" id="es">🇪🇸 ' + esc(w.es) + '</p><p><button class="spk" id="showEs">Show in Spanish</button></p>' +
+    '<p style="margin-top:14px"><button class="btn ok" id="know">I know it ✓</button> <button class="btn sec" id="next">Next →</button></p>' +
+    '<p class="small">Say the word out loud, then the sentence. Press <b>I know it</b> when you can say it without looking.</p></div>';
+  $$('#content .spk[data-say]').forEach(function(b){ b.onclick = function(){ play(w, b.dataset.say === 'ex'); }; });
+  $('#showEs').onclick = function(){ $('#es').classList.toggle('hidden'); };
+  $('#know').onclick = function(){ bump(w, true); game.i++; learn(ws); };
+  $('#next').onclick = function(){ bump(w, false); game.i++; learn(ws); };
+  play(w, false);
+}
+
+/* ---------- rondas de 10 ---------- */
+function newGame(kind, ws, filter){
+  var cand = ws.filter(filter); if(cand.length < 4) cand = WORDS.filter(filter);
+  var q = queue(cand).slice(0, 10);
+  game = {mode: kind, q: q, i: 0, score: 0, cand: cand};
+  t0 = Date.now();
+  return game;
+}
+function header(kind){ return '<div class="round"><span>Question ' + (game.i + 1) + ' of ' + game.q.length + '</span><span>Score ' + game.score + '</span></div>'; }
+function finish(ws){
+  var s = game.score, n = game.q.length, st = s >= 9 ? 3 : s >= 7 ? 2 : s >= 5 ? 1 : 0;
+  saveRound(game.mode, s, n);
+  $('#content').innerHTML = '<div class="card result"><div class="big">' + s + ' / ' + n + '</div><div class="stars">' + '⭐'.repeat(st) + '☆'.repeat(3 - st) + '</div>' +
+    '<p>' + (st === 3 ? 'Brilliant! You know these words.' : st >= 1 ? 'Good work! Play again to get all the stars.' : 'Keep going — try the Learn cards first, then play again.') + '</p>' +
+    '<p><button class="btn" id="again">Play again</button> <button class="btn sec" id="toLearn">📖 Learn cards</button></p></div>';
+  var m = game.mode; game = null;
+  $('#again').onclick = function(){ mode = m; render(); };
+  $('#toLearn').onclick = function(){ mode = 'learn'; paintTop(); render(); };
+}
+
+/* ---------- Pick the picture ---------- */
+function pick(ws){
+  if(!game || game.mode !== 'pick') newGame('pick', ws, hasPic);
+  if(game.q.length < 4){ $('#content').innerHTML = '<div class="card">This topic has no pictures to choose from. Try <b>Spell it</b> or <b>Listen &amp; type</b>.</div>'; return; }
+  if(game.i >= game.q.length) return finish(ws);
+  var w = game.q[game.i];
+  var others = shuffle(game.cand.filter(function(x){ return x.k !== w.k && emojiOf(x) !== emojiOf(w); })).slice(0, 3);
+  var opts = shuffle([w].concat(others));
+  $('#content').innerHTML = '<div class="card">' + header() + '<div class="flash"><div class="word">' + esc(w.w) + '</div><button class="spk" id="say">🔊 Listen</button></div>' +
+    '<div class="opts">' + opts.map(function(o, i){ return '<button class="opt" data-i="' + i + '">' + picOf(o, 96) + '</button>'; }).join('') + '</div><div class="fb" id="fb"></div></div>';
+  $('#say').onclick = function(){ play(w, false); };
+  $$('#content .opt').forEach(function(b){ b.onclick = function(){
+    var o = opts[+b.dataset.i], ok = o.k === w.k;
+    $$('#content .opt').forEach(function(x){ x.disabled = true; if(opts[+x.dataset.i].k === w.k) x.classList.add('ok'); });
+    if(!ok) b.classList.add('bad');
+    $('#fb').className = 'fb ' + (ok ? 'ok' : 'bad'); $('#fb').textContent = ok ? '✓ Yes! ' + w.w : '✗ That is «' + o.w + '». This is ' + w.w + '.';
+    if(ok) game.score++; bump(w, ok); game.i++;
+    setTimeout(function(){ if(game && game.mode === 'pick') pick(ws); }, ok ? 900 : 1800);
+  }; });
+  play(w, false);
+}
+
+/* ---------- Spell it: fichas de letras, como Starters R&W Part 3 ---------- */
+function spellable(w){ return /^[a-z][a-z ]*$/.test(w.k) && w.k.replace(/ /g, '').length <= 14; }
+function spell(ws){
+  if(!game || game.mode !== 'spell') newGame('spell', ws, spellable);
+  if(game.i >= game.q.length) return finish(ws);
+  var w = game.q[game.i], target = w.k, letters = shuffle(target.replace(/ /g, '').split(''));
+  game.typed = [];
+  $('#content').innerHTML = '<div class="card">' + header() + '<div class="flash"><div class="pic">' + picOf(w, 120) + '</div>' +
+    '<button class="spk" id="say">🔊 Listen</button> <span class="small">' + (w.t === 'names' ? 'a name' : esc(THEMES[w.t] || '')) + (target.indexOf(' ') > 0 ? ' · ' + target.split(' ').length + ' words' : '') + '</span></div>' +
+    '<div class="answer" id="ans"></div>' +
+    '<div class="tiles" id="tiles">' + letters.map(function(l, i){ return '<button class="tile" data-i="' + i + '">' + l + '</button>'; }).join('') + '</div>' +
+    '<div style="text-align:center"><button class="spk" id="undo">⌫ Undo</button> <button class="btn" id="check">Check</button></div><div class="fb" id="fb" style="text-align:center"></div></div>';
+  var paintAns = function(){ var s = game.typed.map(function(t){ return t.l; }).join(''), out = '', p = 0; for(var i = 0; i < target.length; i++){ if(target[i] === ' '){ out += '<span class="gap"></span>'; continue; } out += p < s.length ? esc(s[p]) : '<span style="opacity:.25">_</span>'; p++; } $('#ans').innerHTML = out; };
+  paintAns();
+  $('#say').onclick = function(){ play(w, false); };
+  $$('#tiles .tile').forEach(function(b){ b.onclick = function(){ if(game.typed.length >= target.replace(/ /g, '').length) return; game.typed.push({l: b.textContent, i: +b.dataset.i}); b.disabled = true; paintAns(); }; });
+  $('#undo').onclick = function(){ var t = game.typed.pop(); if(t){ $('#tiles .tile[data-i="' + t.i + '"]').disabled = false; paintAns(); } };
+  $('#check').onclick = function(){
+    var s = game.typed.map(function(t){ return t.l; }).join(''), ok = s === target.replace(/ /g, '');
+    $('#ans').classList.add(ok ? 'ok' : 'bad'); $('#fb').className = 'fb ' + (ok ? 'ok' : 'bad'); $('#fb').textContent = ok ? '✓ ' + w.w : '✗ It is spelt: ' + target;
+    $('#check').disabled = true; if(ok) game.score++; bump(w, ok); game.i++;
+    setTimeout(function(){ if(game && game.mode === 'spell') spell(ws); }, ok ? 900 : 2200);
+  };
+  play(w, false);
+}
+
+/* ---------- Listen & type ---------- */
+function listen(ws){
+  if(!game || game.mode !== 'listen') newGame('listen', ws, function(){ return true; });
+  if(game.i >= game.q.length) return finish(ws);
+  var w = game.q[game.i];
+  $('#content').innerHTML = '<div class="card">' + header() + '<div class="flash"><div class="pic">' + (hasPic(w) ? picOf(w, 110) : '<span class="emoji" style="font-size:70px">🎧</span>') + '</div>' +
+    '<button class="spk" id="say">🔊 Listen again</button> <button class="spk" id="sayEx">🔊 In a sentence</button>' +
+    '<p><input class="typed" id="typed" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Type the word"></p>' +
+    '<p><button class="btn" id="check">Check</button></p><div class="fb" id="fb"></div></div></div>';
+  var inp = $('#typed'); try { inp.focus({preventScroll: true}); } catch(e){ inp.focus(); }
+  $('#say').onclick = function(){ play(w, false); }; $('#sayEx').onclick = function(){ play(w, true); };
+  var check = function(){
+    var ok = norm(inp.value) === norm(w.k) || norm(inp.value) === norm(w.w.split(' (')[0]);
+    inp.classList.add(ok ? 'ok' : 'bad'); $('#fb').className = 'fb ' + (ok ? 'ok' : 'bad'); $('#fb').textContent = ok ? '✓ ' + w.w : '✗ The word is: ' + w.w;
+    $('#check').disabled = true; inp.disabled = true; if(ok) game.score++; bump(w, ok); game.i++;
+    setTimeout(function(){ if(game && game.mode === 'listen') listen(ws); }, ok ? 900 : 2200);
+  };
+  $('#check').onclick = check; inp.onkeydown = function(e){ if(e.key === 'Enter' && !inp.disabled) check(); };
+  play(w, false);
+}
+
+init();
+})();
+</script>
+</body>
+</html>

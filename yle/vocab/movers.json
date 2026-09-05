@@ -1,0 +1,1008 @@
+{
+"level": "movers",
+"themes": {
+"names": "🧒 Names",
+"animals": "🐾 Animals",
+"food": "🍎 Food & drink",
+"home": "🏠 At home",
+"school": "🏫 School",
+"sports": "⚽ Sports & hobbies",
+"places": "🏙️ Places",
+"family": "👪 Family & people",
+"body": "🩺 Body & health",
+"transport": "🚌 Transport",
+"world": "🌍 The world",
+"time": "🕒 Time & numbers",
+"expressions": "💬 Useful phrases",
+"describing": "🎨 Describing words",
+"actions": "🏃 Action words",
+"tech": "💻 Technology",
+"clothes": "👕 Clothes",
+"work": "💼 Jobs & work",
+"music": "🎵 Music"
+},
+"words": [
+{
+"w": "afraid",
+"k": "afraid",
+"e": "😨",
+"t": "describing",
+"ex": "I'm afraid of spiders.",
+"es": "asustado; tener miedo",
+"s": "afraid"
+},
+{
+"w": "all right",
+"k": "all right",
+"e": "💬",
+"t": "expressions",
+"ex": "Are you all right? Yes, I'm fine.",
+"es": "bien, de acuerdo",
+"s": "all_right",
+"p": false
+},
+{
+"w": "app",
+"k": "app",
+"e": "📲",
+"t": "tech",
+"ex": "This app is for learning English.",
+"es": "aplicación",
+"s": "app"
+},
+{
+"w": "awake",
+"k": "awake",
+"e": "👀",
+"t": "describing",
+"ex": "The baby is awake.",
+"es": "despierto",
+"s": "awake"
+},
+{
+"w": "bad",
+"k": "bad",
+"e": "👎",
+"t": "describing",
+"ex": "That was a bad idea.",
+"es": "malo",
+"s": "bad"
+},
+{
+"w": "badly",
+"k": "badly",
+"e": "😬",
+"t": "describing",
+"ex": "He played badly today.",
+"es": "mal",
+"s": "badly"
+},
+{
+"w": "basement",
+"k": "basement",
+"e": "🪜",
+"t": "home",
+"ex": "Our bikes are in the basement.",
+"es": "sótano",
+"s": "basement"
+},
+{
+"w": "be called",
+"k": "be called",
+"e": "💬",
+"t": "expressions",
+"ex": "My dog is called Max.",
+"es": "llamarse",
+"s": "be_called",
+"p": false
+},
+{
+"w": "brave",
+"k": "brave",
+"e": "🦸",
+"t": "describing",
+"ex": "The firefighter is very brave.",
+"es": "valiente",
+"s": "brave"
+},
+{
+"w": "break",
+"k": "break",
+"e": "💥",
+"t": "actions",
+"ex": "Don't break the window!",
+"es": "romper",
+"s": "break"
+},
+{
+"w": "brilliant",
+"k": "brilliant",
+"e": "🌟",
+"t": "expressions",
+"ex": "Brilliant! You did it!",
+"es": "genial, brillante",
+"s": "brilliant",
+"p": false
+},
+{
+"w": "building",
+"k": "building",
+"e": "🏢",
+"t": "places",
+"ex": "That building is very tall.",
+"es": "edificio",
+"s": "building"
+},
+{
+"w": "bus station",
+"k": "bus station",
+"e": "🚏",
+"t": "places",
+"ex": "We waited at the bus station.",
+"es": "estación de autobuses",
+"s": "bus_station"
+},
+{
+"w": "bus stop",
+"k": "bus stop",
+"e": "🚏",
+"t": "places",
+"ex": "The bus stop is near my house.",
+"es": "paradero, parada de autobús",
+"s": "bus_stop"
+},
+{
+"w": "cage",
+"k": "cage",
+"e": "🐹",
+"t": "animals",
+"ex": "The rabbit is in its cage.",
+"es": "jaula",
+"s": "cage"
+},
+{
+"w": "car park",
+"k": "car park",
+"e": "🅿️",
+"t": "places",
+"ex": "Dad parked in the car park.",
+"es": "estacionamiento",
+"s": "car_park"
+},
+{
+"w": "cd",
+"k": "cd",
+"e": "💿",
+"t": "tech",
+"ex": "Grandma listens to music on a CD.",
+"es": "CD",
+"s": "cd"
+},
+{
+"w": "Charlie",
+"k": "charlie",
+"e": "👦",
+"t": "names",
+"ex": "Charlie is my cousin.",
+"es": "Charlie (nombre de niño)",
+"s": "charlie",
+"p": false
+},
+{
+"w": "circus",
+"k": "circus",
+"e": "🎪",
+"t": "places",
+"ex": "We went to the circus on Saturday.",
+"es": "circo",
+"s": "circus"
+},
+{
+"w": "Clare",
+"k": "clare",
+"e": "👧",
+"t": "names",
+"ex": "Clare is good at swimming.",
+"es": "Clare (nombre de niña)",
+"s": "clare",
+"p": false
+},
+{
+"w": "coffee",
+"k": "coffee",
+"e": null,
+"t": "food",
+"ex": "Mum drinks coffee in the morning.",
+"es": "café",
+"s": "coffee"
+},
+{
+"w": "come on",
+"k": "come on",
+"e": "💬",
+"t": "expressions",
+"ex": "Come on! We're late!",
+"es": "¡vamos!, ¡venga!",
+"s": "come_on",
+"p": false
+},
+{
+"w": "comic",
+"k": "comic",
+"e": "📰",
+"t": "school",
+"ex": "I read a comic every week.",
+"es": "cómic, historieta",
+"s": "comic"
+},
+{
+"w": "comic book",
+"k": "comic book",
+"e": "📚",
+"t": "school",
+"ex": "This comic book is funny.",
+"es": "libro de cómics",
+"s": "comic_book"
+},
+{
+"w": "country",
+"k": "country",
+"e": "🌍",
+"t": "world",
+"ex": "Peru is a big country.",
+"es": "país",
+"s": "country"
+},
+{
+"w": "Daisy",
+"k": "daisy",
+"e": "👧",
+"t": "names",
+"ex": "Daisy is wearing a yellow dress.",
+"es": "Daisy (nombre de niña)",
+"s": "daisy",
+"p": false
+},
+{
+"w": "daughter",
+"k": "daughter",
+"e": "👧",
+"t": "family",
+"ex": "Mrs Brown has got one daughter.",
+"es": "hija",
+"s": "daughter",
+"p": false
+},
+{
+"w": "difference",
+"k": "difference",
+"e": "🔍",
+"t": "school",
+"ex": "Find the differences between the two pictures.",
+"es": "diferencia",
+"s": "difference"
+},
+{
+"w": "downstairs",
+"k": "downstairs",
+"e": "⬇️",
+"t": "home",
+"ex": "The kitchen is downstairs.",
+"es": "abajo, en el piso de abajo",
+"s": "downstairs"
+},
+{
+"w": "dress up",
+"k": "dress up",
+"e": "🎭",
+"t": "actions",
+"ex": "We dressed up as pirates.",
+"es": "disfrazarse",
+"s": "dress_up"
+},
+{
+"w": "drive",
+"k": "drive",
+"e": "🚗",
+"t": "actions",
+"ex": "My dad drives a red car.",
+"es": "conducir, manejar",
+"s": "drive"
+},
+{
+"w": "drop",
+"k": "drop",
+"e": "💧",
+"t": "actions",
+"ex": "Don't drop the glass!",
+"es": "dejar caer",
+"s": "drop"
+},
+{
+"w": "dvd",
+"k": "dvd",
+"e": "📀",
+"t": "tech",
+"ex": "Let's watch a DVD tonight.",
+"es": "DVD",
+"s": "dvd"
+},
+{
+"w": "e-book",
+"k": "e-book",
+"e": "📱",
+"t": "tech",
+"ex": "I read an e-book on the tablet.",
+"es": "libro electrónico",
+"s": "e_book"
+},
+{
+"w": "earache",
+"k": "earache",
+"e": "🤕",
+"t": "body",
+"ex": "Jim has got earache.",
+"es": "dolor de oído",
+"s": "earache"
+},
+{
+"w": "email",
+"k": "email",
+"e": "📧",
+"t": "tech",
+"ex": "Grandpa sent me an email.",
+"es": "correo electrónico",
+"s": "email"
+},
+{
+"w": "excuse me",
+"k": "excuse me",
+"e": "💬",
+"t": "expressions",
+"ex": "Excuse me, where is the station?",
+"es": "disculpe, perdón",
+"s": "excuse_me",
+"p": false
+},
+{
+"w": "fair",
+"k": "fair",
+"e": "🎡",
+"t": "places",
+"ex": "There is a fair in the park today.",
+"es": "feria",
+"s": "fair"
+},
+{
+"w": "farmer",
+"k": "farmer",
+"e": null,
+"t": "work",
+"ex": "The farmer is feeding the cows.",
+"es": "granjero",
+"s": "farmer"
+},
+{
+"w": "fat",
+"k": "fat",
+"e": "🐷",
+"t": "describing",
+"ex": "The cat is very fat.",
+"es": "gordo",
+"s": "fat"
+},
+{
+"w": "fine",
+"k": "fine",
+"e": "👍",
+"t": "expressions",
+"ex": "How are you? I'm fine, thanks.",
+"es": "bien",
+"s": "fine",
+"p": false
+},
+{
+"w": "fix",
+"k": "fix",
+"e": "🔧",
+"t": "actions",
+"ex": "Dad can fix my bike.",
+"es": "arreglar",
+"s": "fix"
+},
+{
+"w": "Fred",
+"k": "fred",
+"e": "👦",
+"t": "names",
+"ex": "Fred has got a new kite.",
+"es": "Fred (nombre de niño)",
+"s": "fred",
+"p": false
+},
+{
+"w": "frightened",
+"k": "frightened",
+"e": "😱",
+"t": "describing",
+"ex": "The children were frightened of the storm.",
+"es": "asustado",
+"s": "frightened"
+},
+{
+"w": "get off",
+"k": "get off",
+"e": "🚌",
+"t": "actions",
+"ex": "We get off the bus at the school.",
+"es": "bajarse (del bus)",
+"s": "get_off"
+},
+{
+"w": "get undressed",
+"k": "get undressed",
+"e": "🩳",
+"t": "actions",
+"ex": "Get undressed and put on your pyjamas.",
+"es": "desvestirse",
+"s": "get_undressed"
+},
+{
+"w": "go shopping",
+"k": "go shopping",
+"e": "🛍️",
+"t": "actions",
+"ex": "We go shopping on Saturdays.",
+"es": "ir de compras",
+"s": "go_shopping"
+},
+{
+"w": "granddaughter",
+"k": "granddaughter",
+"e": "👧",
+"t": "family",
+"ex": "Grandma is with her granddaughter.",
+"es": "nieta",
+"s": "granddaughter",
+"p": false
+},
+{
+"w": "grandparent",
+"k": "grandparent",
+"e": "👴",
+"t": "family",
+"ex": "My grandparents live in the countryside.",
+"es": "abuelo, abuela",
+"s": "grandparent"
+},
+{
+"w": "grandson",
+"k": "grandson",
+"e": "👦",
+"t": "family",
+"ex": "Grandpa is playing with his grandson.",
+"es": "nieto",
+"s": "grandson",
+"p": false
+},
+{
+"w": "ground",
+"k": "ground",
+"e": "🟤",
+"t": "world",
+"ex": "The ball is on the ground.",
+"es": "suelo, tierra",
+"s": "ground"
+},
+{
+"w": "grown-up",
+"k": "grown-up",
+"e": "🧑",
+"t": "family",
+"ex": "Grown-ups drink coffee.",
+"es": "adulto, persona mayor",
+"s": "grown_up"
+},
+{
+"w": "helmet",
+"k": "helmet",
+"e": null,
+"t": "clothes",
+"ex": "Wear a helmet on your bike.",
+"es": "casco",
+"s": "helmet"
+},
+{
+"w": "how often",
+"k": "how often",
+"e": "🗓️",
+"t": "expressions",
+"ex": "How often do you play tennis?",
+"es": "con qué frecuencia",
+"s": "how_often",
+"p": false
+},
+{
+"w": "hurt",
+"k": "hurt",
+"e": "🤕",
+"t": "body",
+"ex": "I fell and hurt my knee.",
+"es": "doler; hacerse daño",
+"s": "hurt"
+},
+{
+"w": "ice skates",
+"k": "ice skates",
+"e": "⛸️",
+"t": "sports",
+"ex": "I got new ice skates for my birthday.",
+"es": "patines de hielo",
+"s": "ice_skates"
+},
+{
+"w": "ice skating",
+"k": "ice skating",
+"e": "⛸️",
+"t": "sports",
+"ex": "We went ice skating in winter.",
+"es": "patinaje sobre hielo",
+"s": "ice_skating"
+},
+{
+"w": "internet",
+"k": "internet",
+"e": "🌐",
+"t": "tech",
+"ex": "I look for pictures on the internet.",
+"es": "internet",
+"s": "internet"
+},
+{
+"w": "Jack",
+"k": "jack",
+"e": "👦",
+"t": "names",
+"ex": "Jack is climbing the tree.",
+"es": "Jack (nombre de niño)",
+"s": "jack",
+"p": false
+},
+{
+"w": "Jane",
+"k": "jane",
+"e": "👧",
+"t": "names",
+"ex": "Jane is cooking with her mum.",
+"es": "Jane (nombre de niña)",
+"s": "jane",
+"p": false
+},
+{
+"w": "Jim",
+"k": "jim",
+"e": "👦",
+"t": "names",
+"ex": "Jim has got a toothache.",
+"es": "Jim (nombre de niño)",
+"s": "jim",
+"p": false
+},
+{
+"w": "Julia",
+"k": "julia",
+"e": "👧",
+"t": "names",
+"ex": "Julia is riding a horse.",
+"es": "Julia (nombre de niña)",
+"s": "julia",
+"p": false
+},
+{
+"w": "laptop",
+"k": "laptop",
+"e": "💻",
+"t": "tech",
+"ex": "Mum works on her laptop.",
+"es": "laptop, portátil",
+"s": "laptop"
+},
+{
+"w": "Lily",
+"k": "lily",
+"e": "👧",
+"t": "names",
+"ex": "Lily is at the circus.",
+"es": "Lily (nombre de niña)",
+"s": "lily",
+"p": false
+},
+{
+"w": "lose",
+"k": "lose",
+"e": "😢",
+"t": "actions",
+"ex": "Don't lose your keys!",
+"es": "perder",
+"s": "lose"
+},
+{
+"w": "Mary",
+"k": "mary",
+"e": "👧",
+"t": "names",
+"ex": "Mary is younger than me.",
+"es": "Mary (nombre de niña)",
+"s": "mary",
+"p": false
+},
+{
+"w": "model",
+"k": "model",
+"e": "🚢",
+"t": "sports",
+"ex": "Peter makes model planes.",
+"es": "maqueta, modelo",
+"s": "model"
+},
+{
+"w": "moon",
+"k": "moon",
+"e": null,
+"t": "world",
+"ex": "The moon is bright tonight.",
+"es": "luna",
+"s": "moon"
+},
+{
+"w": "moustache",
+"k": "moustache",
+"e": "👨",
+"t": "body",
+"ex": "My uncle has got a moustache.",
+"es": "bigote",
+"s": "moustache"
+},
+{
+"w": "naughty",
+"k": "naughty",
+"e": "😈",
+"t": "describing",
+"ex": "The naughty dog ate my sandwich!",
+"es": "travieso",
+"s": "naughty"
+},
+{
+"w": "net",
+"k": "net",
+"e": "🥅",
+"t": "sports",
+"ex": "The ball is in the net!",
+"es": "red",
+"s": "net"
+},
+{
+"w": "noodles",
+"k": "noodles",
+"e": "🍜",
+"t": "food",
+"ex": "I love noodles with vegetables.",
+"es": "fideos",
+"s": "noodles"
+},
+{
+"w": "o'clock",
+"k": "o'clock",
+"e": "🕔",
+"t": "time",
+"ex": "School starts at eight o'clock.",
+"es": "en punto",
+"s": "o_clock"
+},
+{
+"w": "parent",
+"k": "parent",
+"e": "👪",
+"t": "family",
+"ex": "My parents are teachers.",
+"es": "padre, madre",
+"s": "parent"
+},
+{
+"w": "Paul",
+"k": "paul",
+"e": "👦",
+"t": "names",
+"ex": "Paul is a good singer.",
+"es": "Paul (nombre de niño)",
+"s": "paul",
+"p": false
+},
+{
+"w": "Peter",
+"k": "peter",
+"e": "👦",
+"t": "names",
+"ex": "Peter can skip very fast.",
+"es": "Peter (nombre de niño)",
+"s": "peter",
+"p": false
+},
+{
+"w": "pop star",
+"k": "pop star",
+"e": "🎤",
+"t": "music",
+"ex": "She wants to be a pop star.",
+"es": "estrella del pop",
+"s": "pop_star"
+},
+{
+"w": "practise",
+"k": "practise",
+"e": "🎹",
+"t": "actions",
+"ex": "I practise the piano every day.",
+"es": "practicar",
+"s": "practise"
+},
+{
+"w": "quick",
+"k": "quick",
+"e": "⚡",
+"t": "describing",
+"ex": "Be quick! The bus is coming.",
+"es": "rápido",
+"s": "quick"
+},
+{
+"w": "road",
+"k": "road",
+"e": "🛣️",
+"t": "places",
+"ex": "Look both ways before you cross the road.",
+"es": "carretera, calle",
+"s": "road"
+},
+{
+"w": "roller skates",
+"k": "roller skates",
+"e": "🛼",
+"t": "sports",
+"ex": "Sally has got new roller skates.",
+"es": "patines de ruedas",
+"s": "roller_skates"
+},
+{
+"w": "roller skating",
+"k": "roller skating",
+"e": "🛼",
+"t": "sports",
+"ex": "We went roller skating in the park.",
+"es": "patinaje sobre ruedas",
+"s": "roller_skating"
+},
+{
+"w": "sail",
+"k": "sail",
+"e": "⛵",
+"t": "actions",
+"ex": "We sailed on the lake.",
+"es": "navegar",
+"s": "sail"
+},
+{
+"w": "Sally",
+"k": "sally",
+"e": "👧",
+"t": "names",
+"ex": "Sally is my best friend.",
+"es": "Sally (nombre de niña)",
+"s": "sally",
+"p": false
+},
+{
+"w": "sauce",
+"k": "sauce",
+"e": "🥫",
+"t": "food",
+"ex": "I like tomato sauce on my pasta.",
+"es": "salsa",
+"s": "sauce"
+},
+{
+"w": "shall",
+"k": "shall",
+"e": "💬",
+"t": "expressions",
+"ex": "Shall I help you?",
+"es": "¿…? (para ofrecer ayuda)",
+"s": "shall",
+"p": false
+},
+{
+"w": "shoulder",
+"k": "shoulder",
+"e": null,
+"t": "body",
+"ex": "The parrot is on his shoulder.",
+"es": "hombro",
+"s": "shoulder"
+},
+{
+"w": "shower",
+"k": "shower",
+"e": null,
+"t": "home",
+"ex": "I have a shower every morning.",
+"es": "ducha",
+"s": "shower"
+},
+{
+"w": "skip",
+"k": "skip",
+"e": "🪢",
+"t": "actions",
+"ex": "The girls are skipping in the playground.",
+"es": "saltar la cuerda",
+"s": "skip"
+},
+{
+"w": "son",
+"k": "son",
+"e": "👦",
+"t": "family",
+"ex": "Mr Green has got two sons.",
+"es": "hijo",
+"s": "son",
+"p": false
+},
+{
+"w": "swimsuit",
+"k": "swimsuit",
+"e": "🩱",
+"t": "clothes",
+"ex": "Don't forget your swimsuit!",
+"es": "traje de baño",
+"s": "swimsuit"
+},
+{
+"w": "Tuesday",
+"k": "tuesday",
+"e": "📅",
+"t": "time",
+"ex": "We have music on Tuesday.",
+"es": "martes",
+"s": "tuesday",
+"p": false
+},
+{
+"w": "terrible",
+"k": "terrible",
+"e": "😖",
+"t": "describing",
+"ex": "The weather was terrible yesterday.",
+"es": "terrible",
+"s": "terrible"
+},
+{
+"w": "thin",
+"k": "thin",
+"e": "🥢",
+"t": "describing",
+"ex": "The cat is thin, not fat.",
+"es": "delgado",
+"s": "thin"
+},
+{
+"w": "thirsty",
+"k": "thirsty",
+"e": "🥤",
+"t": "body",
+"ex": "I'm thirsty. Can I have some water?",
+"es": "sediento; tener sed",
+"s": "thirsty"
+},
+{
+"w": "toothache",
+"k": "toothache",
+"e": "🦷",
+"t": "body",
+"ex": "Jim has got toothache.",
+"es": "dolor de muelas",
+"s": "toothache"
+},
+{
+"w": "toothpaste",
+"k": "toothpaste",
+"e": "🪥",
+"t": "home",
+"ex": "Put some toothpaste on your toothbrush.",
+"es": "pasta de dientes",
+"s": "toothpaste"
+},
+{
+"w": "tractor",
+"k": "tractor",
+"e": null,
+"t": "transport",
+"ex": "The farmer drives a tractor.",
+"es": "tractor",
+"s": "tractor"
+},
+{
+"w": "Vicky",
+"k": "vicky",
+"e": "👧",
+"t": "names",
+"ex": "Vicky helps at home.",
+"es": "Vicky (nombre de niña)",
+"s": "vicky",
+"p": false
+},
+{
+"w": "waterfall",
+"k": "waterfall",
+"e": "🏞️",
+"t": "world",
+"ex": "We saw a beautiful waterfall.",
+"es": "cascada, catarata",
+"s": "waterfall"
+},
+{
+"w": "weak",
+"k": "weak",
+"e": "😩",
+"t": "describing",
+"ex": "I feel weak when I'm ill.",
+"es": "débil",
+"s": "weak"
+},
+{
+"w": "website",
+"k": "website",
+"e": "🌐",
+"t": "tech",
+"ex": "This website has got good games.",
+"es": "sitio web",
+"s": "website"
+},
+{
+"w": "worse",
+"k": "worse",
+"e": "📉",
+"t": "describing",
+"ex": "My cold is worse today.",
+"es": "peor",
+"s": "worse"
+},
+{
+"w": "worst",
+"k": "worst",
+"e": "📉",
+"t": "describing",
+"ex": "That was the worst film ever!",
+"es": "el peor",
+"s": "worst"
+},
+{
+"w": "wrong",
+"k": "wrong",
+"e": "❌",
+"t": "describing",
+"ex": "That answer is wrong.",
+"es": "incorrecto, equivocado",
+"s": "wrong"
+},
+{
+"w": "Zoe",
+"k": "zoe",
+"e": "👧",
+"t": "names",
+"ex": "Zoe is at the bus stop.",
+"es": "Zoe (nombre de niña)",
+"s": "zoe",
+"p": false
+}
+]
+}

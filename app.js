@@ -1102,7 +1102,7 @@ async function renderAdmin(tab='users'){
   if(tab==='readers') return readerStatsPanel();
   if(tab==='funnordic') return funNordicPanel();
   if(tab==='funaccess') return funAccessPanel(GRADES);
-  if(tab==='yle') return window.ylePanel(GRADES);
+  if(tab==='yle') return window.ylePanel(GRADES, {admin:true});
   if(tab==='funyle') return $('#main').innerHTML = funYleBody('renderAdmin');
   if(tab==='fr') return funFrBody('renderAdmin').then(h => $('#main').innerHTML = h);
   if(tab==='frstarters') return $('#main').innerHTML = funFrCursoBody('starters');
@@ -3005,7 +3005,7 @@ async function renderTeacher(tab){
   if(active==='scope') return scopePanel();
   if(active==='littlereaders') return littleReadersPanel();
   if(active==='funaccess') return funAccessPanel(teacherAllowedGrades());
-  if(active==='yle') return window.ylePanel(teacherAllowedGrades());
+  if(active==='yle') return window.ylePanel(teacherAllowedGrades(), {admin:false});
   if(active==='funyle') return $('#main').innerHTML = funYleBody('renderTeacher');
   if(active==='funstarters') return $('#main').innerHTML = funCursoBody('starters');
   if(active==='funmovers') return $('#main').innerHTML = funCursoBody('movers');
