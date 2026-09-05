@@ -1,0 +1,1127 @@
+{
+  "level": "starters",
+  "number": 5,
+  "theme": "At the beach",
+  "listening": {
+    "p1": {
+      "type": "draw_lines",
+      "image": "L1",
+      "scene": "A sunny beach. Six children are on the sand near the sea, with a boat, a big shell, a beach ball and a fish.",
+      "names": [
+        "Tom",
+        "May",
+        "Dan",
+        "Jill",
+        "Bill",
+        "Sue",
+        "Alex"
+      ],
+      "people": [
+        {
+          "id": "A",
+          "desc": "a boy playing with a beach ball"
+        },
+        {
+          "id": "B",
+          "desc": "a girl with a big shell"
+        },
+        {
+          "id": "C",
+          "desc": "a boy in a small boat"
+        },
+        {
+          "id": "D",
+          "desc": "a girl eating an ice cream under a sun umbrella"
+        },
+        {
+          "id": "E",
+          "desc": "a boy with a fish and a bucket"
+        },
+        {
+          "id": "F",
+          "desc": "a girl swimming in the sea"
+        }
+      ],
+      "example": {
+        "name": "Tom",
+        "person": "A"
+      },
+      "items": [
+        {
+          "name": "May",
+          "person": "B"
+        },
+        {
+          "name": "Dan",
+          "person": "C"
+        },
+        {
+          "name": "Jill",
+          "person": "D"
+        },
+        {
+          "name": "Bill",
+          "person": "E"
+        },
+        {
+          "name": "Sue",
+          "person": "F"
+        }
+      ]
+    },
+    "p2": {
+      "type": "note_taking",
+      "heading": "At the beach",
+      "example": {
+        "q": "What is the boy's name?",
+        "a": "Nick"
+      },
+      "items": [
+        {
+          "q": "How old is Nick?",
+          "a": "8"
+        },
+        {
+          "q": "What is Nick's dog's name?",
+          "a": "Pat"
+        },
+        {
+          "q": "How many shells has Nick got?",
+          "a": "12"
+        },
+        {
+          "q": "What is Nick's sister's name?",
+          "a": "Anna"
+        },
+        {
+          "q": "How many fish can Nick see?",
+          "a": "4"
+        }
+      ]
+    },
+    "p3": {
+      "type": "mc_pictures",
+      "example": {
+        "q": "What has Lucy got?",
+        "pics": [
+          "ball",
+          "kite",
+          "boat"
+        ],
+        "options": [
+          "a ball",
+          "a kite",
+          "a boat"
+        ],
+        "key": "B"
+      },
+      "items": [
+        {
+          "q": "What is Mum wearing?",
+          "pics": [
+            "hat",
+            "glasses",
+            "shoe"
+          ],
+          "options": [
+            "a hat",
+            "glasses",
+            "shoes"
+          ],
+          "key": "A"
+        },
+        {
+          "q": "What is Ben doing?",
+          "pics": [
+            "swimming",
+            "running",
+            "sleep"
+          ],
+          "options": [
+            "swimming",
+            "running",
+            "sleeping"
+          ],
+          "key": "C"
+        },
+        {
+          "q": "Where is the bag?",
+          "image": "L3Q3",
+          "options": [
+            "on the sand",
+            "in the boat",
+            "under the umbrella"
+          ],
+          "key": "C"
+        },
+        {
+          "q": "What animal can Sam see?",
+          "pics": [
+            "fish",
+            "bird",
+            "dog"
+          ],
+          "options": [
+            "a fish",
+            "a bird",
+            "a dog"
+          ],
+          "key": "B"
+        },
+        {
+          "q": "How many boats can Sam see?",
+          "pics": [
+            {
+              "word": "boat",
+              "n": 2
+            },
+            {
+              "word": "boat",
+              "n": 3
+            },
+            {
+              "word": "boat",
+              "n": 7
+            }
+          ],
+          "options": [
+            "two",
+            "three",
+            "seven"
+          ],
+          "key": "C"
+        }
+      ]
+    },
+    "p4": {
+      "type": "colour",
+      "image": "L4",
+      "object": "fish",
+      "scene": "A beach with the sea. There are seven fish in the picture: in the sea, in the boy's hand, in the bucket, on the towel, under the boat, next to the crab and on the girl's T-shirt.",
+      "example": {
+        "where": "in the sea",
+        "colour": "blue"
+      },
+      "items": [
+        {
+          "where": "in the boy's hand",
+          "colour": "orange"
+        },
+        {
+          "where": "in the bucket",
+          "colour": "green"
+        },
+        {
+          "where": "on the towel",
+          "colour": "yellow"
+        },
+        {
+          "where": "under the boat",
+          "colour": "red"
+        },
+        {
+          "where": "next to the crab",
+          "colour": "purple"
+        }
+      ]
+    }
+  },
+  "rw": {
+    "p1": {
+      "type": "tick_cross",
+      "example": {
+        "word": "boat",
+        "sentence": "This is a boat.",
+        "key": true
+      },
+      "items": [
+        {
+          "word": "bird",
+          "sentence": "This is a bird.",
+          "key": true
+        },
+        {
+          "word": "sun",
+          "sentence": "This is a ball.",
+          "key": false
+        },
+        {
+          "word": "fish",
+          "sentence": "This is a fish.",
+          "key": true
+        },
+        {
+          "word": "kite",
+          "sentence": "This is a hat.",
+          "key": false
+        },
+        {
+          "word": "crocodile",
+          "sentence": "This is a crocodile.",
+          "key": true
+        }
+      ]
+    },
+    "p2": {
+      "type": "yes_no",
+      "image": "R2",
+      "scene": "A beach: a woman is reading a book under a big umbrella, two boys are playing football on the sand, a girl is sitting in a small boat, a dog is running next to the sea and there are three shells on the towel.",
+      "example": {
+        "s": "The woman is reading a book.",
+        "key": "yes"
+      },
+      "items": [
+        {
+          "s": "The boys are playing tennis.",
+          "key": "no"
+        },
+        {
+          "s": "The girl is sitting in a boat.",
+          "key": "yes"
+        },
+        {
+          "s": "The dog is sleeping.",
+          "key": "no"
+        },
+        {
+          "s": "There are three shells on the towel.",
+          "key": "yes"
+        },
+        {
+          "s": "The umbrella is small.",
+          "key": "no"
+        }
+      ]
+    },
+    "p3": {
+      "type": "unscramble",
+      "example": {
+        "word": "sea",
+        "letters": [
+          "a",
+          "e",
+          "s"
+        ]
+      },
+      "items": [
+        {
+          "word": "boat",
+          "letters": [
+            "t",
+            "a",
+            "o",
+            "b"
+          ]
+        },
+        {
+          "word": "shell",
+          "letters": [
+            "l",
+            "s",
+            "e",
+            "h",
+            "l"
+          ]
+        },
+        {
+          "word": "beach",
+          "letters": [
+            "c",
+            "a",
+            "h",
+            "b",
+            "e"
+          ]
+        },
+        {
+          "word": "sand",
+          "letters": [
+            "d",
+            "n",
+            "a",
+            "s"
+          ]
+        },
+        {
+          "word": "hat",
+          "letters": [
+            "t",
+            "h",
+            "a"
+          ]
+        }
+      ]
+    },
+    "p4": {
+      "type": "mc_cloze_copy",
+      "image": "R4",
+      "title": "The sea",
+      "text": "The sea is very big and __(0)__. Lots of fish live in the sea. Some fish are small and some fish are very __(1)__. Children like to __(2)__ in the sea. They play with a __(3)__ on the sand. Some children sit in a __(4)__ and look at the fish. In the sea you can find beautiful __(5)__ too.",
+      "words": [
+        "blue",
+        "big",
+        "swim",
+        "ball",
+        "boat",
+        "shells",
+        "school",
+        "run"
+      ],
+      "example": "blue",
+      "key": [
+        "big",
+        "swim",
+        "ball",
+        "boat",
+        "shells"
+      ]
+    },
+    "p5": {
+      "type": "story_one_word",
+      "title": "A day at the beach",
+      "image": "R5",
+      "parts": [
+        {
+          "text": "It is a hot day. Anna and her dad are at the beach. Anna has got a red hat and a big bucket. Dad has got a green umbrella and a book.",
+          "example": {
+            "q": "Where are Anna and her dad?",
+            "a": "beach"
+          },
+          "items": [
+            {
+              "q": "What colour is Anna's hat?",
+              "a": "red"
+            },
+            {
+              "q": "What has Dad got?",
+              "a": "umbrella"
+            }
+          ]
+        },
+        {
+          "text": "Anna is looking for shells. She finds five shells and a small crab! The crab is walking on the sand. Anna puts the shells in her bucket.",
+          "items": [
+            {
+              "q": "How many shells does Anna find?",
+              "a": "five"
+            },
+            {
+              "q": "Where is the crab walking?",
+              "a": "sand"
+            }
+          ]
+        },
+        {
+          "text": "Now Anna and Dad are swimming in the sea. Anna can see a big fish. It is yellow and blue. 'Look, Dad!' she says. What a happy day!",
+          "items": [
+            {
+              "q": "What can Anna see in the sea?",
+              "a": "fish"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "speaking": {
+    "p1": {
+      "type": "scene_cards",
+      "image": "S1",
+      "scene": "A beach scene: a big umbrella, a towel on the sand, a small boat by the sea, a bucket, a crab and the sun in the sky.",
+      "point": [
+        {
+          "say": "Look at the picture. Where is the boat?",
+          "target": "boat"
+        },
+        {
+          "say": "Where is the crab?",
+          "target": "crab"
+        },
+        {
+          "say": "Where is the umbrella?",
+          "target": "umbrella"
+        }
+      ],
+      "cards": [
+        "ball",
+        "fish",
+        "bird",
+        "hat",
+        "kite",
+        "book",
+        "apple",
+        "dog"
+      ],
+      "place": [
+        {
+          "say": "Put the ball on the towel.",
+          "card": "ball",
+          "zone": {
+            "x": 8,
+            "y": 62,
+            "w": 30,
+            "h": 30
+          }
+        },
+        {
+          "say": "Put the fish in the boat.",
+          "card": "fish",
+          "zone": {
+            "x": 62,
+            "y": 44,
+            "w": 34,
+            "h": 30
+          }
+        },
+        {
+          "say": "Put the apple under the umbrella.",
+          "card": "apple",
+          "zone": {
+            "x": 26,
+            "y": 36,
+            "w": 28,
+            "h": 30
+          }
+        }
+      ],
+      "zones": {
+        "boat": {
+          "x": 62,
+          "y": 44,
+          "w": 34,
+          "h": 30
+        },
+        "crab": {
+          "x": 44,
+          "y": 76,
+          "w": 18,
+          "h": 20
+        },
+        "umbrella": {
+          "x": 22,
+          "y": 6,
+          "w": 36,
+          "h": 40
+        },
+        "towel": {
+          "x": 8,
+          "y": 62,
+          "w": 30,
+          "h": 30
+        },
+        "bucket": {
+          "x": 70,
+          "y": 74,
+          "w": 16,
+          "h": 22
+        },
+        "sun": {
+          "x": 76,
+          "y": 2,
+          "w": 20,
+          "h": 22
+        }
+      }
+    },
+    "p2": {
+      "type": "scene_questions",
+      "questions": [
+        {
+          "q": "What's this?",
+          "hint": "point to the boat",
+          "model": "It's a boat."
+        },
+        {
+          "q": "What colour is the umbrella?",
+          "model": "It's red and white."
+        },
+        {
+          "q": "How many shells are there?",
+          "model": "Three."
+        },
+        {
+          "q": "Tell me about the crab.",
+          "model": "It's orange. It's small."
+        }
+      ]
+    },
+    "p3": {
+      "type": "card_questions",
+      "questions": [
+        {
+          "card": "kite",
+          "q": "What's this?",
+          "model": "A kite."
+        },
+        {
+          "card": "kite",
+          "q": "What colour is it?",
+          "model": "It's blue and yellow."
+        },
+        {
+          "card": "dog",
+          "q": "What's this?",
+          "model": "A dog."
+        },
+        {
+          "card": "dog",
+          "q": "Have you got a dog?",
+          "model": "Yes, I have. / No, I haven't."
+        },
+        {
+          "card": "hat",
+          "q": "What's this?",
+          "model": "A hat."
+        },
+        {
+          "card": "hat",
+          "q": "Do you wear a hat at the beach?",
+          "model": "Yes, I do."
+        }
+      ]
+    },
+    "p4": {
+      "type": "personal_questions",
+      "questions": [
+        {
+          "q": "What's your name?",
+          "model": "My name's …"
+        },
+        {
+          "q": "How old are you?",
+          "model": "I'm eight."
+        },
+        {
+          "q": "Do you like the beach?",
+          "model": "Yes, I do."
+        },
+        {
+          "q": "Can you swim?",
+          "model": "Yes, I can. / No, I can't."
+        },
+        {
+          "q": "What do you do at the beach?",
+          "model": "I play with a ball."
+        }
+      ]
+    }
+  },
+  "audio": {
+    "p1": [
+      [
+        "R",
+        "Part One. Look at the picture. Listen and look. There is one example."
+      ],
+      [
+        "pause",
+        2
+      ],
+      [
+        "M",
+        "We're at the beach today. Look at all the children!"
+      ],
+      [
+        "Fch",
+        "Who's the boy with the beach ball?"
+      ],
+      [
+        "M",
+        "That's Tom. He loves playing with his ball."
+      ],
+      [
+        "Fch",
+        "Tom. OK."
+      ],
+      [
+        "pause",
+        2
+      ],
+      [
+        "R",
+        "Can you see the line? This is an example. Now you listen and draw lines."
+      ],
+      [
+        "pause",
+        2
+      ],
+      [
+        "M",
+        "Can you see the girl with the big shell?"
+      ],
+      [
+        "Fch",
+        "Yes. Is that May?"
+      ],
+      [
+        "M",
+        "Yes, that's May. She likes shells."
+      ],
+      [
+        "pause",
+        3.4
+      ],
+      [
+        "Fch",
+        "Look at the boy in the small boat! Who's that?"
+      ],
+      [
+        "M",
+        "That's Dan. He's got a blue boat."
+      ],
+      [
+        "Fch",
+        "Dan. His boat is nice."
+      ],
+      [
+        "pause",
+        3.4
+      ],
+      [
+        "M",
+        "Can you see the girl under the umbrella? She's eating an ice cream."
+      ],
+      [
+        "Fch",
+        "Yes. What's her name?"
+      ],
+      [
+        "M",
+        "That's Jill. She's my cousin."
+      ],
+      [
+        "pause",
+        3.4
+      ],
+      [
+        "Fch",
+        "Who's the boy with the fish and the bucket?"
+      ],
+      [
+        "M",
+        "That's Bill. He's got a very small fish!"
+      ],
+      [
+        "Fch",
+        "Bill. Ha ha, the fish is very small."
+      ],
+      [
+        "pause",
+        3.4
+      ],
+      [
+        "M",
+        "And look at the girl swimming in the sea."
+      ],
+      [
+        "Fch",
+        "Is that Sue?"
+      ],
+      [
+        "M",
+        "Yes, it's Sue. She can swim very well."
+      ],
+      [
+        "pause",
+        3.4
+      ],
+      [
+        "R",
+        "Now listen again."
+      ]
+    ],
+    "p2": [
+      [
+        "R",
+        "Part Two. Listen and write a name or a number. There are two examples."
+      ],
+      [
+        "pause",
+        2
+      ],
+      [
+        "F",
+        "Hello! What's your name?"
+      ],
+      [
+        "Mch",
+        "My name's Nick."
+      ],
+      [
+        "F",
+        "How do you spell that?"
+      ],
+      [
+        "Mch",
+        "N-I-C-K."
+      ],
+      [
+        "F",
+        "And how old are you, Nick?"
+      ],
+      [
+        "Mch",
+        "I'm eight."
+      ],
+      [
+        "pause",
+        2
+      ],
+      [
+        "R",
+        "Can you see the answers? Now you listen and write a name or a number."
+      ],
+      [
+        "pause",
+        2
+      ],
+      [
+        "F",
+        "Is that your dog, Nick? What's its name?"
+      ],
+      [
+        "Mch",
+        "His name's Pat."
+      ],
+      [
+        "F",
+        "Pat? P-A-T?"
+      ],
+      [
+        "Mch",
+        "Yes. He likes the beach."
+      ],
+      [
+        "pause",
+        3.4
+      ],
+      [
+        "F",
+        "You've got lots of shells. How many have you got?"
+      ],
+      [
+        "Mch",
+        "I've got twelve shells. Twelve!"
+      ],
+      [
+        "F",
+        "Twelve! Wow, that's a lot."
+      ],
+      [
+        "pause",
+        3.4
+      ],
+      [
+        "F",
+        "Who's the girl in the boat?"
+      ],
+      [
+        "Mch",
+        "That's my sister. Her name's Anna."
+      ],
+      [
+        "F",
+        "Anna? A-N-N-A?"
+      ],
+      [
+        "Mch",
+        "Yes. She's ten."
+      ],
+      [
+        "pause",
+        3.4
+      ],
+      [
+        "F",
+        "Can you see fish in the sea, Nick?"
+      ],
+      [
+        "Mch",
+        "Yes! One, two, three, four. I can see four fish."
+      ],
+      [
+        "F",
+        "Four fish. Are they big?"
+      ],
+      [
+        "Mch",
+        "No, they're small."
+      ],
+      [
+        "pause",
+        3.4
+      ],
+      [
+        "R",
+        "Now listen again."
+      ]
+    ],
+    "p3": [
+      [
+        "R",
+        "Part Three. Look at the pictures. Listen and tick the box. There is one example."
+      ],
+      [
+        "pause",
+        2
+      ],
+      [
+        "R",
+        "What has Lucy got?"
+      ],
+      [
+        "M",
+        "Lucy, have you got your ball?"
+      ],
+      [
+        "Fch",
+        "No, Dad. I've got my kite. Look! It's flying!"
+      ],
+      [
+        "pause",
+        2
+      ],
+      [
+        "R",
+        "Can you see the tick? Now you listen and tick the box."
+      ],
+      [
+        "pause",
+        2
+      ],
+      [
+        "R",
+        "One. What is Mum wearing?"
+      ],
+      [
+        "Mch",
+        "Mum, are you wearing your glasses?"
+      ],
+      [
+        "F",
+        "No. It's very sunny. I'm wearing my big hat."
+      ],
+      [
+        "Mch",
+        "Your hat. It's nice!"
+      ],
+      [
+        "pause",
+        3.4
+      ],
+      [
+        "R",
+        "Two. What is Ben doing?"
+      ],
+      [
+        "F",
+        "Where's Ben? Is he swimming?"
+      ],
+      [
+        "M",
+        "No, he's sleeping on the towel."
+      ],
+      [
+        "F",
+        "Sleeping! Ha ha. He's tired."
+      ],
+      [
+        "pause",
+        3.4
+      ],
+      [
+        "R",
+        "Three. Where is the bag?"
+      ],
+      [
+        "Fch",
+        "Dad, where's my bag? Is it on the sand?"
+      ],
+      [
+        "M",
+        "No. It's under the umbrella."
+      ],
+      [
+        "Fch",
+        "Under the umbrella. Oh yes, I can see it."
+      ],
+      [
+        "pause",
+        3.4
+      ],
+      [
+        "R",
+        "Four. What animal can Sam see?"
+      ],
+      [
+        "F",
+        "Sam, can you see a fish in the sea?"
+      ],
+      [
+        "Mch",
+        "No, but I can see a bird. It's on the boat."
+      ],
+      [
+        "F",
+        "A bird! Is it big?"
+      ],
+      [
+        "Mch",
+        "No, it's small."
+      ],
+      [
+        "pause",
+        3.4
+      ],
+      [
+        "R",
+        "Five. How many boats can Sam see?"
+      ],
+      [
+        "F",
+        "Sam, can you see the boats in the sea? How many are there?"
+      ],
+      [
+        "Mch",
+        "One, two, three, four, five, six, seven. Seven boats!"
+      ],
+      [
+        "F",
+        "Seven! That's a lot of boats."
+      ],
+      [
+        "pause",
+        3.4
+      ],
+      [
+        "R",
+        "Now listen again."
+      ]
+    ],
+    "p4": [
+      [
+        "R",
+        "Part Four. Listen and colour. There is one example."
+      ],
+      [
+        "pause",
+        2
+      ],
+      [
+        "M",
+        "Look at the beach. Can you see the fish?"
+      ],
+      [
+        "Fch",
+        "Yes. There are lots of fish."
+      ],
+      [
+        "M",
+        "Colour the fish in the sea. Colour it blue."
+      ],
+      [
+        "Fch",
+        "The fish in the sea. Blue. OK!"
+      ],
+      [
+        "pause",
+        2
+      ],
+      [
+        "R",
+        "Can you see the blue fish? This is an example. Now you listen and colour."
+      ],
+      [
+        "pause",
+        2
+      ],
+      [
+        "M",
+        "Now look at the boy. He's got a fish in his hand."
+      ],
+      [
+        "Fch",
+        "Yes. Can I colour it orange?"
+      ],
+      [
+        "M",
+        "Yes. Colour the fish in the boy's hand orange."
+      ],
+      [
+        "pause",
+        3.4
+      ],
+      [
+        "Fch",
+        "There's a fish in the bucket."
+      ],
+      [
+        "M",
+        "That's right. Colour that fish green."
+      ],
+      [
+        "Fch",
+        "Green. OK."
+      ],
+      [
+        "pause",
+        3.4
+      ],
+      [
+        "M",
+        "Can you see the fish on the towel?"
+      ],
+      [
+        "Fch",
+        "Yes. What colour?"
+      ],
+      [
+        "M",
+        "Colour it yellow."
+      ],
+      [
+        "Fch",
+        "A yellow fish on the towel. OK."
+      ],
+      [
+        "pause",
+        3.4
+      ],
+      [
+        "Fch",
+        "Look! There's a fish under the boat."
+      ],
+      [
+        "M",
+        "Yes. Colour the fish under the boat red."
+      ],
+      [
+        "Fch",
+        "Red. OK."
+      ],
+      [
+        "pause",
+        3.4
+      ],
+      [
+        "M",
+        "And now the fish next to the crab."
+      ],
+      [
+        "Fch",
+        "Next to the crab? Can I colour it purple?"
+      ],
+      [
+        "M",
+        "Yes, colour it purple. Good!"
+      ],
+      [
+        "pause",
+        3.4
+      ],
+      [
+        "R",
+        "Now listen again."
+      ]
+    ]
+  }
+}
