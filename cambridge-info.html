@@ -203,7 +203,7 @@ const RUTA = [
 
 const byId = Object.fromEntries(EXAMS.map(e=>[e.id,e]));
 const TABS = [['niveles','📚 Los exámenes'],['escala','📐 Escala Cambridge'],
-              ['nis','🏫 En el NIS'],['nota','🧮 Cómo se califica']];
+              ['nis','🏫 En el NIS'],['nota','🧮 Cómo se califica'],['recursos','📂 Recursos oficiales YLE']];
 let cur = 'niveles';
 
 const el = id => document.getElementById(id);
@@ -375,12 +375,45 @@ function vistaNota(){
   </div>`;
 }
 
+/* 📂 Recursos oficiales YLE — todo lo gratuito de Cambridge para preparar
+   Starters, Movers y Flyers, enlazado a su origen (no se copia nada aquí).
+   Las copias locales para trabajar están en C:\Projects\yle-oficial. */
+function vistaRecursos(){
+  const niv = [
+    ['starters','Pre A1 Starters','https://www.cambridgeenglish.org/exams-and-tests/starters/preparation/','https://www.cambridgeenglish.org/exams-and-tests/starters/'],
+    ['movers','A1 Movers','https://www.cambridgeenglish.org/exams-and-tests/movers/preparation/','https://www.cambridgeenglish.org/exams-and-tests/movers/'],
+    ['flyers','A2 Flyers','https://www.cambridgeenglish.org/exams-and-tests/flyers/preparation/','https://www.cambridgeenglish.org/exams-and-tests/flyers/'],
+  ];
+  const lista = [
+    ['Handbook for teachers 2024','Formato de cada paper, consejos por parte, listas de gramática, escalas del Speaking y los «Can Do» por nivel. Es la especificación que siguen nuestros tests.'],
+    ['Sample papers vol. 1 y 2','Dos tests completos por nivel con clave y guion del audio. Sirven como simulacro en papel el día del mock.'],
+    ['Wordlists 2025','La lista cerrada de palabras por nivel (alfabética, temática y gramatical). Los redactores del examen no salen de ella.'],
+    ['Word list picture book','Escenas temáticas con «Let’s talk!» y actividades: para casa y para el Speaking Part 1.'],
+    ['Lesson plans','Una lección por cada parte del examen, con su audio.'],
+    ['Speaking test video + comentarios del examinador','Cómo es la prueba oral de verdad y qué mira el examinador.'],
+    ['Progress charts, flashcards, posters y activity booklet','Material de aula y la hoja de estrellas que firman alumno y familia.'],
+    ['Information for candidates and parents · Tips for parents','Lo que la familia debe saber: formato, escudos, qué llevar, cómo apoyar en casa.'],
+  ];
+  return `<div class="card"><h2>📂 Recursos oficiales YLE</h2>
+    <p class="muted">Todo lo que Cambridge publica gratis para preparar los tres exámenes de primaria, en su página oficial (siempre la versión más reciente). En cada página de preparación está la lista completa: handbook, sample papers, listas de palabras, lesson plans, videos y recursos para padres.</p>
+    <div class="scroll"><table><tr><th>Nivel</th><th>Página de preparación</th><th>Información del examen</th></tr>
+    ${niv.map(([id,n,prep,info])=>`<tr><td><b>${n}</b></td><td><a href="${prep}" target="_blank" rel="noopener">${prep.replace('https://www.','')}</a></td><td><a href="${info}" target="_blank" rel="noopener">${info.replace('https://www.','')}</a></td></tr>`).join('')}
+    </table></div>
+    <h3>Qué es cada cosa y para qué la usamos</h3>
+    <div class="scroll"><table><tr><th>Recurso</th><th>Para qué sirve en el NIS</th></tr>
+    ${lista.map(([a,b])=>`<tr><td><b>${a}</b></td><td>${b}</td></tr>`).join('')}
+    </table></div>
+    <p class="muted">Los resultados del examen real son <b>escudos</b>: de 1 a 5 por paper (Listening, Reading &amp; Writing, Speaking), 15 como máximo, y todos los niños reciben certificado. Los escudos que muestra el portal son una estimación del colegio a partir de los tests de práctica, no un resultado Cambridge.</p>
+  </div>`;
+}
+
 function draw(){
   drawTabs();
   el('view').innerHTML =
       cur==='escala' ? vistaEscala()
     : cur==='nis'    ? vistaNis()
     : cur==='nota'   ? vistaNota()
+    : cur==='recursos' ? vistaRecursos()
     :                  vistaNiveles();
   window.scrollTo(0,0);
 }
