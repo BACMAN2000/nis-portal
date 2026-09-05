@@ -9,6 +9,20 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Edu+SA+Beginner:wght@400;700&family=Edu+QLD+Beginner:wght@400;700&family=Edu+NSW+ACT+Foundation:wght@400;700&family=Edu+VIC+WA+NT+Beginner:wght@400;700&family=Edu+TAS+Beginner:wght@400;700&family=Schoolbell&family=Patrick+Hand&family=Kalam:wght@400;700&family=Caveat:wght@400;700&family=Comic+Neue:wght@400;700&family=Andika:wght@400;700&family=ABeeZee&family=Lexend:wght@400;700&family=Nunito:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
 <style>
+/* Tipografía de marca de Nordic (Brandbook): Gotham para texto y TT Rounds
+   Neue para destacados. Salen de OneDrive → 09_Instituciones → NORDIC →
+   MARKETING → Tipografía; aquí se sirven desde fonts/ del portal. */
+@font-face{font-family:'Gotham';src:url('fonts/GothamLight.ttf') format('truetype');font-weight:300;font-display:swap}
+@font-face{font-family:'Gotham';src:url('fonts/GothamBook.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'Gotham';src:url('fonts/GothamBookItalic.ttf') format('truetype');font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:'Gotham';src:url('fonts/GothamMedium.ttf') format('truetype');font-weight:500;font-display:swap}
+@font-face{font-family:'Gotham';src:url('fonts/GothamBold.ttf') format('truetype');font-weight:700;font-display:swap}
+@font-face{font-family:'TT Rounds Neue';src:url('fonts/TTRoundsNeue-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'TT Rounds Neue';src:url('fonts/TTRoundsNeue-Italic.ttf') format('truetype');font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:'TT Rounds Neue';src:url('fonts/TTRoundsNeue-Medium.ttf') format('truetype');font-weight:500;font-display:swap}
+@font-face{font-family:'TT Rounds Neue';src:url('fonts/TTRoundsNeue-DemiBold.ttf') format('truetype');font-weight:600;font-display:swap}
+@font-face{font-family:'TT Rounds Neue';src:url('fonts/TTRoundsNeue-Bold.ttf') format('truetype');font-weight:700;font-display:swap}
+@font-face{font-family:'TT Rounds Neue';src:url('fonts/TTRoundsNeue-Black.ttf') format('truetype');font-weight:900;font-display:swap}
 /* =========================================================================
    Pizarra de escritura — una hoja de cuaderno en la pantalla grande.
    El profesor escribe la muestra (triple renglón, doble raya, rayado,
@@ -177,12 +191,15 @@ kbd{background:#3a4050;border-radius:4px;padding:1px 5px;font-family:inherit;fon
 (function(){
 'use strict';
 var $ = function(s){ return document.querySelector(s); };
+/* Primero las de la marca (Brandbook Nordic), luego las escolares de
+   caligrafía, luego las del sistema. Cada grupo es un <optgroup>. */
 var FONTS = [
-  ['Edu SA Beginner','Escolar cursiva (SA)'], ['Edu QLD Beginner','Escolar cursiva (QLD)'], ['Edu NSW ACT Foundation','Escolar Foundation (NSW)'],
-  ['Edu VIC WA NT Beginner','Escolar (VIC)'], ['Edu TAS Beginner','Escolar (TAS)'], ['Andika','Andika (lectoescritura)'], ['ABeeZee','ABeeZee (infantil)'],
-  ['Comic Neue','Comic Neue'], ['Schoolbell','Schoolbell'], ['Patrick Hand','Patrick Hand'], ['Kalam','Kalam'], ['Caveat','Caveat'],
-  ['Lexend','Lexend (dislexia)'], ['Nunito','Nunito'], ['Open Sans','Open Sans'], ['Gotham','Gotham (NIS)'],
-  ['Arial','Arial'], ['Verdana','Verdana'], ['Segoe Print','Segoe Print'], ['Segoe Script','Segoe Script'], ['Comic Sans MS','Comic Sans'], ['Times New Roman','Times New Roman'], ['Georgia','Georgia']
+  ['Gotham','Gotham · Nordic (texto)','Nordic'], ['TT Rounds Neue','TT Rounds Neue · Nordic (destacados)','Nordic'],
+  ['Edu SA Beginner','Escolar cursiva (SA)','Escolares'], ['Edu QLD Beginner','Escolar cursiva (QLD)','Escolares'], ['Edu NSW ACT Foundation','Escolar Foundation (NSW)','Escolares'],
+  ['Edu VIC WA NT Beginner','Escolar (VIC)','Escolares'], ['Edu TAS Beginner','Escolar (TAS)','Escolares'], ['Andika','Andika (lectoescritura)','Escolares'], ['ABeeZee','ABeeZee (infantil)','Escolares'],
+  ['Comic Neue','Comic Neue','Escolares'], ['Schoolbell','Schoolbell','Escolares'], ['Patrick Hand','Patrick Hand','Escolares'], ['Kalam','Kalam','Escolares'], ['Caveat','Caveat','Escolares'],
+  ['Lexend','Lexend (dislexia)','Escolares'], ['Nunito','Nunito','Escolares'], ['Open Sans','Open Sans','Escolares'],
+  ['Arial','Arial','Sistema'], ['Verdana','Verdana','Sistema'], ['Segoe Print','Segoe Print','Sistema'], ['Segoe Script','Segoe Script','Sistema'], ['Comic Sans MS','Comic Sans','Sistema'], ['Times New Roman','Times New Roman','Sistema'], ['Georgia','Georgia','Sistema']
 ];
 var DCOLS = ['#1a1a1a','#e53935','#1e88e5','#43a047','#fb8c00','#8e24aa'];
 var FORMATS = {wide:[1600,900], a4l:[1123,794], a4p:[794,1123]};
@@ -258,8 +275,11 @@ function zoomFit(){
 window.addEventListener('resize', zoomFit);
 
 /* ---- controles ---- */
-var fsel = $('#font');
-FONTS.forEach(function(f){ var o = document.createElement('option'); o.value = f[0]; o.textContent = f[1]; o.style.fontFamily = '"' + f[0] + '"'; fsel.appendChild(o); });
+var fsel = $('#font'), grupos = {};
+FONTS.forEach(function(f){
+  var g = grupos[f[2]]; if(!g){ g = document.createElement('optgroup'); g.label = f[2]; grupos[f[2]] = g; fsel.appendChild(g); }
+  var o = document.createElement('option'); o.value = f[0]; o.textContent = f[1]; o.style.fontFamily = '"' + f[0] + '"'; g.appendChild(o);
+});
 function ui(){
   $('#paper').value = S.paper; $('#format').value = S.format;
   $('#pitch').value = S.pitch; $('#pitchV').textContent = S.pitch + 'px';
