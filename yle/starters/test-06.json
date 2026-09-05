@@ -1,0 +1,1075 @@
+{
+ "level": "starters",
+ "number": 6,
+ "theme": "In the park",
+ "listening": {
+  "p1": {
+   "type": "draw_lines",
+   "image": "L1",
+   "scene": "A green park with trees and flowers. Six children are playing: one is flying a kite, one is riding a bike, one has a dog, one is playing football, one is eating an ice cream and one is reading a book.",
+   "names": [
+    "Tom",
+    "Ben",
+    "Lucy",
+    "Dan",
+    "Sam",
+    "Kim",
+    "Bill"
+   ],
+   "people": [
+    {
+     "id": "A",
+     "desc": "a boy flying a kite"
+    },
+    {
+     "id": "B",
+     "desc": "a boy riding a bike"
+    },
+    {
+     "id": "C",
+     "desc": "a girl playing with a dog"
+    },
+    {
+     "id": "D",
+     "desc": "a boy playing football"
+    },
+    {
+     "id": "E",
+     "desc": "a girl eating an ice cream"
+    },
+    {
+     "id": "F",
+     "desc": "a girl reading a book under a tree"
+    }
+   ],
+   "example": {
+    "name": "Tom",
+    "person": "A"
+   },
+   "items": [
+    {
+     "name": "Ben",
+     "person": "B"
+    },
+    {
+     "name": "Lucy",
+     "person": "C"
+    },
+    {
+     "name": "Dan",
+     "person": "D"
+    },
+    {
+     "name": "Sam",
+     "person": "E"
+    },
+    {
+     "name": "Kim",
+     "person": "F"
+    }
+   ]
+  },
+  "p2": {
+   "type": "note_taking",
+   "heading": "In the park",
+   "example": {
+    "q": "What is the boy's name?",
+    "a": "Ben"
+   },
+   "items": [
+    {
+     "q": "How old is Ben?",
+     "a": "9"
+    },
+    {
+     "q": "What is Ben's dog's name?",
+     "a": "Rex"
+    },
+    {
+     "q": "How many ducks can Ben see?",
+     "a": "6"
+    },
+    {
+     "q": "What is Ben's sister's name?",
+     "a": "Lucy"
+    },
+    {
+     "q": "How many kites are there?",
+     "a": "3"
+    }
+   ]
+  },
+  "p3": {
+   "type": "mc_pictures",
+   "example": {
+    "q": "What has Ben got?",
+    "pics": [
+     "ball",
+     "kite",
+     "bike"
+    ],
+    "options": [
+     "a ball",
+     "a kite",
+     "a bike"
+    ],
+    "key": "B"
+   },
+   "items": [
+    {
+     "q": "What animal can Sam see?",
+     "pics": [
+      "duck",
+      "dog",
+      "cat"
+     ],
+     "options": [
+      "a duck",
+      "a dog",
+      "a cat"
+     ],
+     "key": "A"
+    },
+    {
+     "q": "What is Lucy eating?",
+     "pics": [
+      "apple",
+      "banana",
+      "ice cream"
+     ],
+     "options": [
+      "an apple",
+      "a banana",
+      "an ice cream"
+     ],
+     "key": "C"
+    },
+    {
+     "q": "What is Dan playing with?",
+     "pics": [
+      "ball",
+      "kite",
+      "balloon"
+     ],
+     "options": [
+      "a ball",
+      "a kite",
+      "a balloon"
+     ],
+     "key": "A"
+    },
+    {
+     "q": "What has Kim got?",
+     "pics": [
+      "book",
+      "bag",
+      "hat"
+     ],
+     "options": [
+      "a book",
+      "a bag",
+      "a hat"
+     ],
+     "key": "A"
+    },
+    {
+     "q": "How many birds can Ben see?",
+     "pics": [
+      {
+       "word": "bird",
+       "n": 2
+      },
+      {
+       "word": "bird",
+       "n": 5
+      },
+      {
+       "word": "bird",
+       "n": 8
+      }
+     ],
+     "options": [
+      "two",
+      "five",
+      "eight"
+     ],
+     "key": "B"
+    }
+   ]
+  },
+  "p4": {
+   "type": "colour",
+   "image": "L4",
+   "object": "ball",
+   "scene": "A park with the sun and trees. There are seven balls: next to the tree, in the boy's hand, next to the dog, under the tree, in the bag, next to the flowers and under a tree.",
+   "example": {
+    "where": "next to the tree",
+    "colour": "blue"
+   },
+   "items": [
+    {
+     "where": "in the boy's hand",
+     "colour": "red"
+    },
+    {
+     "where": "next to the dog",
+     "colour": "green"
+    },
+    {
+     "where": "in the bag",
+     "colour": "yellow"
+    },
+    {
+     "where": "next to the flowers",
+     "colour": "orange"
+    },
+    {
+     "where": "under the tree",
+     "colour": "purple"
+    }
+   ]
+  }
+ },
+ "rw": {
+  "p1": {
+   "type": "tick_cross",
+   "example": {
+    "word": "kite",
+    "sentence": "This is a kite.",
+    "key": true
+   },
+   "items": [
+    {
+     "word": "bird",
+     "sentence": "This is a bird.",
+     "key": true
+    },
+    {
+     "word": "ball",
+     "sentence": "This is a cat.",
+     "key": false
+    },
+    {
+     "word": "tree",
+     "sentence": "This is a tree.",
+     "key": true
+    },
+    {
+     "word": "dog",
+     "sentence": "This is a duck.",
+     "key": false
+    },
+    {
+     "word": "flower",
+     "sentence": "This is a flower.",
+     "key": true
+    }
+   ]
+  },
+  "p2": {
+   "type": "yes_no",
+   "image": "R2",
+   "scene": "A park: a boy is riding a bike, two girls are playing with a ball, a dog is running after a duck, a man is reading a book under a big tree, there are flowers next to the trees and a kite in the sky.",
+   "example": {
+    "s": "The boy is riding a bike.",
+    "key": "yes"
+   },
+   "items": [
+    {
+     "s": "The girls are playing football.",
+     "key": "no"
+    },
+    {
+     "s": "The dog is running.",
+     "key": "yes"
+    },
+    {
+     "s": "The man is sleeping.",
+     "key": "no"
+    },
+    {
+     "s": "There is a kite in the sky.",
+     "key": "yes"
+    },
+    {
+     "s": "The tree is small.",
+     "key": "no"
+    }
+   ]
+  },
+  "p3": {
+   "type": "unscramble",
+   "example": {
+    "word": "park",
+    "letters": [
+     "r",
+     "a",
+     "p",
+     "k"
+    ]
+   },
+   "items": [
+    {
+     "word": "tree",
+     "letters": [
+      "e",
+      "t",
+      "r",
+      "e"
+     ]
+    },
+    {
+     "word": "duck",
+     "letters": [
+      "c",
+      "k",
+      "u",
+      "d"
+     ]
+    },
+    {
+     "word": "flower",
+     "letters": [
+      "w",
+      "o",
+      "l",
+      "f",
+      "e",
+      "r"
+     ]
+    },
+    {
+     "word": "bike",
+     "letters": [
+      "k",
+      "i",
+      "b",
+      "e"
+     ]
+    },
+    {
+     "word": "ball",
+     "letters": [
+      "l",
+      "b",
+      "a",
+      "l"
+     ]
+    }
+   ]
+  },
+  "p4": {
+   "type": "mc_cloze_copy",
+   "image": "R4",
+   "title": "The park",
+   "text": "The park is nice. Children like to __(0)__ here. There are big green __(1)__ and lots of nice __(2)__. Children like to fly a __(3)__ or ride a __(4)__. You can see ducks in the __(5)__ too.",
+   "words": [
+    "play",
+    "trees",
+    "flowers",
+    "kite",
+    "bike",
+    "water",
+    "house",
+    "run"
+   ],
+   "example": "play",
+   "key": [
+    "trees",
+    "flowers",
+    "kite",
+    "bike",
+    "water"
+   ]
+  },
+  "p5": {
+   "type": "story_one_word",
+   "title": "A day in the park",
+   "image": "R5",
+   "parts": [
+    {
+     "text": "It is a sunny day. Ben and his sister Lucy are in the park. Ben has got a red kite and Lucy has got a blue bike. Their dog Rex is with them.",
+     "example": {
+      "q": "Where are Ben and Lucy?",
+      "a": "park"
+     },
+     "items": [
+      {
+       "q": "What colour is Ben's kite?",
+       "a": "red"
+      },
+      {
+       "q": "What is the dog's name?",
+       "a": "Rex"
+      }
+     ]
+    },
+    {
+     "text": "Lucy rides her bike next to the trees. Ben flies his kite. It goes up, up, up! Rex runs after a duck next to the water.",
+     "items": [
+      {
+       "q": "What does Ben do with his kite?",
+       "a": "fly"
+      },
+      {
+       "q": "What does Rex run after?",
+       "a": "duck"
+      }
+     ]
+    },
+    {
+     "text": "Now Ben and Lucy want an apple. They sit under a big tree and eat an apple. 'I love the park!' says Lucy. What a happy day!",
+     "items": [
+      {
+       "q": "What do they eat?",
+       "a": "apple"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "speaking": {
+  "p1": {
+   "type": "scene_cards",
+   "image": "S1",
+   "scene": "A park scene: a big tree, some flowers, a small pond of water with a duck, a bench, a ball on the grass and the sun in the sky.",
+   "point": [
+    {
+     "say": "Look at the picture. Where is the tree?",
+     "target": "tree"
+    },
+    {
+     "say": "Where is the duck?",
+     "target": "duck"
+    },
+    {
+     "say": "Where is the ball?",
+     "target": "ball"
+    }
+   ],
+   "cards": [
+    "kite",
+    "dog",
+    "bird",
+    "hat",
+    "book",
+    "apple",
+    "bike",
+    "cat"
+   ],
+   "place": [
+    {
+     "say": "Put the dog next to the tree.",
+     "card": "dog",
+     "zone": {
+      "x": 10,
+      "y": 55,
+      "w": 26,
+      "h": 30
+     }
+    },
+    {
+     "say": "Put the bird in the tree.",
+     "card": "bird",
+     "zone": {
+      "x": 12,
+      "y": 14,
+      "w": 30,
+      "h": 28
+     }
+    },
+    {
+     "say": "Put the apple on the bench.",
+     "card": "apple",
+     "zone": {
+      "x": 58,
+      "y": 58,
+      "w": 30,
+      "h": 16
+     }
+    }
+   ],
+   "zones": {
+    "tree": {
+     "x": 8,
+     "y": 8,
+     "w": 36,
+     "h": 62
+    },
+    "duck": {
+     "x": 60,
+     "y": 74,
+     "w": 20,
+     "h": 18
+    },
+    "ball": {
+     "x": 40,
+     "y": 78,
+     "w": 16,
+     "h": 16
+    },
+    "bench": {
+     "x": 56,
+     "y": 58,
+     "w": 34,
+     "h": 18
+    },
+    "flowers": {
+     "x": 30,
+     "y": 70,
+     "w": 22,
+     "h": 16
+    },
+    "sun": {
+     "x": 82,
+     "y": 2,
+     "w": 16,
+     "h": 24
+    },
+    "water": {
+     "x": 52,
+     "y": 72,
+     "w": 40,
+     "h": 22
+    }
+   }
+  },
+  "p2": {
+   "type": "scene_questions",
+   "questions": [
+    {
+     "q": "What's this?",
+     "hint": "point to the tree",
+     "model": "It's a tree."
+    },
+    {
+     "q": "What colour are the flowers?",
+     "model": "They're red and yellow."
+    },
+    {
+     "q": "How many ducks are there?",
+     "model": "One."
+    },
+    {
+     "q": "Tell me about the ball.",
+     "model": "It's big. It's red."
+    }
+   ]
+  },
+  "p3": {
+   "type": "card_questions",
+   "questions": [
+    {
+     "card": "kite",
+     "q": "What's this?",
+     "model": "A kite."
+    },
+    {
+     "card": "kite",
+     "q": "What colour is it?",
+     "model": "It's blue and red."
+    },
+    {
+     "card": "dog",
+     "q": "What's this?",
+     "model": "A dog."
+    },
+    {
+     "card": "dog",
+     "q": "Have you got a dog?",
+     "model": "Yes, I have. / No, I haven't."
+    },
+    {
+     "card": "bike",
+     "q": "What's this?",
+     "model": "A bike."
+    },
+    {
+     "card": "bike",
+     "q": "Can you ride a bike?",
+     "model": "Yes, I can."
+    }
+   ]
+  },
+  "p4": {
+   "type": "personal_questions",
+   "questions": [
+    {
+     "q": "What's your name?",
+     "model": "My name's …"
+    },
+    {
+     "q": "How old are you?",
+     "model": "I'm seven."
+    },
+    {
+     "q": "Do you like the park?",
+     "model": "Yes, I do."
+    },
+    {
+     "q": "What do you play in the park?",
+     "model": "I play football."
+    },
+    {
+     "q": "Have you got a bike?",
+     "model": "Yes, I have."
+    }
+   ]
+  }
+ },
+ "audio": {
+  "p1": [
+   [
+    "R",
+    "Part One. Look at the picture. Listen and look. There is one example."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "F",
+    "We're in the park today. Look at all the children!"
+   ],
+   [
+    "Mch",
+    "Who's the boy with the kite?"
+   ],
+   [
+    "F",
+    "That's Tom. His kite is red."
+   ],
+   [
+    "Mch",
+    "Tom. OK."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "R",
+    "Can you see the line? This is an example. Now you listen and draw lines."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "Mch",
+    "Look at the boy on the bike! Who's that?"
+   ],
+   [
+    "F",
+    "That's Ben. He's got a blue bike."
+   ],
+   [
+    "Mch",
+    "Ben. His bike is nice."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "F",
+    "Can you see the girl with the dog?"
+   ],
+   [
+    "Mch",
+    "Yes. Is that Lucy?"
+   ],
+   [
+    "F",
+    "Yes, that's Lucy. Her dog is Rex."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "Mch",
+    "Who's the boy playing football?"
+   ],
+   [
+    "F",
+    "That's Dan. He loves football."
+   ],
+   [
+    "Mch",
+    "Dan. OK."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "F",
+    "Look at the girl eating an ice cream."
+   ],
+   [
+    "Mch",
+    "What's her name?"
+   ],
+   [
+    "F",
+    "That's Sam. Her ice cream is big!"
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "Mch",
+    "And who's the girl reading a book under the tree?"
+   ],
+   [
+    "F",
+    "That's Kim. She likes books."
+   ],
+   [
+    "Mch",
+    "Kim. OK."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "R",
+    "Now listen again."
+   ]
+  ],
+  "p2": [
+   [
+    "R",
+    "Part Two. Listen and write a name or a number. There are two examples."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "M",
+    "Hello! What's your name?"
+   ],
+   [
+    "Mch",
+    "My name's Ben."
+   ],
+   [
+    "M",
+    "Ben. And how old are you?"
+   ],
+   [
+    "Mch",
+    "I'm nine."
+   ],
+   [
+    "M",
+    "Nine. OK."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "R",
+    "Can you see the answers? Now you listen and write a name or a number."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "M",
+    "Have you got a dog, Ben?"
+   ],
+   [
+    "Mch",
+    "Yes, his name is Rex. R-E-X."
+   ],
+   [
+    "M",
+    "Rex. What a nice name."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "M",
+    "How many ducks can you see?"
+   ],
+   [
+    "Mch",
+    "I can see six ducks next to the water."
+   ],
+   [
+    "M",
+    "Six ducks. Good."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "M",
+    "Who is that girl?"
+   ],
+   [
+    "Mch",
+    "That's my sister, Lucy. L-U-C-Y."
+   ],
+   [
+    "M",
+    "Lucy. She's got a bike."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "M",
+    "And how many kites are there?"
+   ],
+   [
+    "Mch",
+    "There are three kites in the sky."
+   ],
+   [
+    "M",
+    "Three kites. Lovely."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "R",
+    "Now listen again."
+   ]
+  ],
+  "p3": [
+   [
+    "R",
+    "Part Three. Listen and tick the box. There is one example."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "F",
+    "What has Ben got?"
+   ],
+   [
+    "Mch",
+    "I've got a kite. It can fly high."
+   ],
+   [
+    "F",
+    "A kite. OK."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "R",
+    "Can you see the tick? Now you listen and tick the box."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "F",
+    "What animal can Sam see?"
+   ],
+   [
+    "Fch",
+    "I can see a duck next to the water."
+   ],
+   [
+    "F",
+    "A duck. Nice."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "F",
+    "What is Lucy eating?"
+   ],
+   [
+    "Fch",
+    "Lucy is eating an ice cream. Yum!"
+   ],
+   [
+    "F",
+    "An ice cream. OK."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "F",
+    "What is Dan playing with?"
+   ],
+   [
+    "Fch",
+    "Dan is playing with a ball."
+   ],
+   [
+    "F",
+    "A ball. Good."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "F",
+    "What has Kim got?"
+   ],
+   [
+    "Fch",
+    "Kim has got a book."
+   ],
+   [
+    "F",
+    "A book. OK."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "F",
+    "How many birds can Ben see?"
+   ],
+   [
+    "Fch",
+    "I can see five birds in the tree."
+   ],
+   [
+    "F",
+    "Five birds. Well done."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "R",
+    "Now listen again."
+   ]
+  ],
+  "p4": [
+   [
+    "R",
+    "Part Four. Listen and colour. There is one example."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "M",
+    "Can you see the ball next to the tree?"
+   ],
+   [
+    "Fch",
+    "Yes, I can."
+   ],
+   [
+    "M",
+    "Colour that ball blue."
+   ],
+   [
+    "Fch",
+    "A blue ball. OK."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "R",
+    "Can you see the blue ball? Now you listen and colour."
+   ],
+   [
+    "pause",
+    2
+   ],
+   [
+    "M",
+    "Can you see the ball in the boy's hand?"
+   ],
+   [
+    "Fch",
+    "Yes."
+   ],
+   [
+    "M",
+    "Colour that ball red."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "M",
+    "Now find the ball next to the dog. Colour it green."
+   ],
+   [
+    "Fch",
+    "A green ball. OK."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "M",
+    "Can you see the ball in the bag? Colour it yellow."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "M",
+    "Now colour the ball next to the flowers orange."
+   ],
+   [
+    "Fch",
+    "An orange ball."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "M",
+    "And the ball on the path? Colour it purple."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "R",
+    "Now listen again."
+   ]
+  ]
+ },
+ "marks": {
+  "listening": 20,
+  "rw": 25
+ }
+}
