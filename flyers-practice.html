@@ -443,7 +443,7 @@ function renderListening(t) {
   const n = t.number.toString().padStart(2,'0');
   const L = t.listening;
   const img = (id, alt) => `<img class="lis-pic" src="${PIC_DIR}test_${n}_${id}.jpg" alt="${alt}" loading="lazy" onerror="this.remove()">`;
-  const audio = p => `<audio controls preload="none" src="flyers-audio/test_${n}_part${p}.mp3"
+  const audio = p => `<audio controls preload="none" src="flyers-audio/test_${n}_part${p}.mp3?v=3"
         onerror="this.insertAdjacentHTML('afterend','<p class=&quot;no-audio&quot;>🎧 The recording for this part is not published yet — do the questions while your teacher reads the script.</p>');this.remove()"></audio>`;
   const card = (p, titulo, instr, cuerpo) => `<div class="card"><h3 class="part-title">Listening — Part ${p} · ${titulo}</h3>
       <p class="part-instr">${instr} You will hear each part twice.</p>${audio(p)}${cuerpo}</div>`;
