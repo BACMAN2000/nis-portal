@@ -95,7 +95,7 @@
 
 <script>
 /* ------------------------------------------------------------------ datos */
-const V = '3';
+const V = '4';
 let PAL = null, CORE = null, REGLAS = null, LEX = null;
 const $ = s => document.querySelector(s);
 
@@ -382,17 +382,21 @@ async function ficha(w, el){
   /* El nombre del mp3 sólo viaja en el JSON cuando lleva hash; el resto se
      calcula aquí con la misma regex que usó el generador. */
   const archivo = e.a || w.replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
-  d.innerHTML = '<button class="btn sec cx-oir" title="Oír la palabra">🔊</button> ' +
+  /* Un botón por acento: en Cambridge la referencia es la británica, pero
+     business y systems usan vocabulario que se oye sobre todo en americano. */
+  d.innerHTML = '<button class="btn sec cx-oir" data-voz="uk" title="Oír en británico">🔊 UK</button> ' +
+                '<button class="btn sec cx-oir" data-voz="us" title="Oír en americano">🔊 US</button> ' +
                 (e.uk?'<span class="ipa">UK '+escapa(e.uk)+'</span> ':'') +
                 (e.us?'<span class="ipa">US '+escapa(e.us)+'</span>':'') +
                 (e.d?'<div>'+e.d.map(escapa).join(' · ')+'</div>':'');
-  const boton = d.querySelector('.cx-oir');
-  boton.onclick = ev => {
-    ev.stopPropagation();
-    const a = new Audio('lexicon-audio/uk/'+archivo+'.mp3');
-    a.onerror = ()=>{ boton.textContent='🔇'; boton.title='no hay audio de esta palabra'; };
-    a.play().catch(()=>{});
-  };
+  d.querySelectorAll('.cx-oir').forEach(boton=>{
+    boton.onclick = ev => {
+      ev.stopPropagation();
+      const a = new Audio('lexicon-audio/'+boton.dataset.voz+'/'+archivo+'.mp3');
+      a.onerror = ()=>{ boton.textContent='🔇'; boton.title='no hay audio de esta palabra'; };
+      a.play().catch(()=>{});
+    };
+  });
   el.appendChild(d);
 }
 
