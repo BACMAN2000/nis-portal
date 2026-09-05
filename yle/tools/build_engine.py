@@ -8,7 +8,7 @@ copia: es de las familias del colegio y depende de la base de NIS.
 
     python yle/tools/build_engine.py
 """
-import io, os, re, shutil, glob
+import io, os, re, shutil, glob, hashlib
 
 NIS = r"C:\Projects\nis-portal"
 DEST = [r"C:\Projects\cohasset-community\repo", r"C:\Projects\cohasset-final\cohasset-language-center"]
@@ -28,13 +28,21 @@ def engine(nombre):
         io.open(os.path.join(d, nombre), 'w', encoding='utf-8').write(c)
     print('%s -> Cohasset (%d -> %d bytes)' % (nombre, len(s), len(c)))
 
+def igual(a, b):
+    """Mismo tamano no basta: al regenerar el audio con otra voz, pick_up_ex.mp3
+    pesaba exactamente lo mismo que el viejo y se quedaba sin copiar (5-sep-2026).
+    Si el tamano coincide, se compara el contenido."""
+    if os.path.getsize(a) != os.path.getsize(b): return False
+    return hashlib.md5(io.open(a, 'rb').read()).digest() == hashlib.md5(io.open(b, 'rb').read()).digest()
+
+
 def sync(sub, patrones):
     for d in DEST:
         for pat in patrones:
             for f in glob.glob(os.path.join(NIS, sub, pat), recursive=True):
                 rel = os.path.relpath(f, NIS); out = os.path.join(d, rel)
                 os.makedirs(os.path.dirname(out), exist_ok=True)
-                if not os.path.exists(out) or os.path.getsize(out) != os.path.getsize(f): shutil.copy(f, out)
+                if not os.path.exists(out) or not igual(f, out): shutil.copy(f, out)
     print(sub, 'sincronizado')
 
 if __name__ == '__main__':

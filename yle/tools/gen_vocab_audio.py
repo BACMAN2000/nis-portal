@@ -1,25 +1,30 @@
 # -*- coding: utf-8 -*-
 """Audio del entrenador de vocabulario YLE: por cada palabra de yle/vocab/<level>.json
-dos mp3 con la misma voz de examinadora de los tests (Edge TTS, en-GB Sonia):
+dos mp3 con la misma voz de examinadora de los tests (Edge TTS, en-GB Libby a -6%,
+igual que el reparto del audio de examen desde el 5-sep-2026; antes era Sonia con
+el ritmo estirado por nivel, que sonaba tensa):
     yle-audio/vocab/<level>/<slug>.mp3      la palabra sola
     yle-audio/vocab/<level>/<slug>_ex.mp3   la frase de ejemplo
-Solo genera lo que falta (para relanzar sin coste). Sin ffmpeg: un mp3 por llamada.
+Solo genera lo que falta (para relanzar sin coste); con --force rehace todo, que es
+lo que hay que usar al cambiar de voz. Sin ffmpeg: un mp3 por llamada.
 
     python yle/tools/gen_vocab_audio.py starters
     python yle/tools/gen_vocab_audio.py all
+    python yle/tools/gen_vocab_audio.py all --force
 """
 import os, sys, json, io, asyncio
 import edge_tts
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 RAIZ = os.path.dirname(os.path.dirname(AQUI))
-VOICE = 'en-GB-SoniaNeural'
-RATE = {'starters': '-14%', 'movers': '-12%', 'flyers': '-10%'}
+VOICE = 'en-GB-LibbyNeural'
+RATE = {'starters': '-6%', 'movers': '-6%', 'flyers': '-6%'}
 PAR = 6
+FORCE = '--force' in sys.argv
 
 
 async def uno(sem, texto, out, rate):
-    if os.path.exists(out) and os.path.getsize(out) > 1000: return False
+    if not FORCE and os.path.exists(out) and os.path.getsize(out) > 1000: return False
     async with sem:
         for intento in range(3):
             try:
@@ -45,6 +50,7 @@ async def nivel(level):
 
 
 if __name__ == '__main__':
-    arg = sys.argv[1] if len(sys.argv) > 1 else 'all'
+    args = [a for a in sys.argv[1:] if not a.startswith('--')]
+    arg = args[0] if args else 'all'
     for lv in (['starters', 'movers', 'flyers'] if arg == 'all' else [arg]):
         asyncio.run(nivel(lv))
