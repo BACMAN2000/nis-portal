@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Corrector de material — Nordic</title>
+<link rel="stylesheet" href="brand.css?v=21">
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg,#f2f3ff);color:var(--ink,#2b2c33);
+       font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+  .wrap{max-width:1180px;margin:0 auto;padding:16px}
+  h1{font-size:20px;margin:0 0 4px}
+  .sub{color:var(--grey,#636465);margin:0 0 14px;font-size:13px}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media (max-width:900px){.cols{grid-template-columns:1fr}}
+  .cx-card{background:var(--white,#fff);border:1px solid var(--line,#e3e5f3);
+        border-radius:12px;padding:12px}
+  textarea{width:100%;height:44vh;min-height:260px;border:1px solid var(--line,#e3e5f3);
+           border-radius:8px;padding:10px;font:14px/1.6 ui-monospace,Consolas,monospace;
+           resize:vertical;color:inherit;background:#fff}
+  .cx-bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+  .btn{background:var(--blue,#4987c6);color:#fff;border:0;border-radius:8px;
+       padding:9px 16px;font-size:14px;font-weight:600;cursor:pointer}
+  .btn:hover{background:var(--blue-d,#2f5f93)}
+  .btn[disabled]{opacity:.5;cursor:default}
+  .btn.sec{background:#fff;color:var(--ink,#2b2c33);border:1px solid var(--line,#e3e5f3);font-weight:500}
+  select{padding:8px;border-radius:8px;border:1px solid var(--line,#e3e5f3);background:#fff;color:inherit}
+  .estado{font-size:13px;color:var(--grey,#636465);margin-left:auto}
+  .aviso{border-left:3px solid var(--line);padding:8px 10px;margin-bottom:8px;
+         background:#fbfbff;border-radius:0 8px 8px 0;cursor:pointer}
+  .aviso:hover{background:#f2f4ff}
+  .aviso.ortografia{border-left-color:var(--bad,#dc2626)}
+  .aviso.variante{border-left-color:var(--warn,#f59e0b)}
+  .aviso.uso{border-left-color:var(--blue,#4987c6)}
+  .aviso b{font-family:ui-monospace,Consolas,monospace}
+  .aviso .msg{font-size:13px;color:var(--grey,#636465);margin-top:2px}
+  .tag{display:inline-block;font-size:11px;text-transform:uppercase;letter-spacing:.04em;
+       padding:1px 6px;border-radius:999px;background:var(--lila,#d1d2ea);
+       color:var(--blue-dd,#244c77);margin-right:6px;vertical-align:1px}
+  .vacio{color:var(--grey,#636465);text-align:center;padding:28px 10px}
+  .ok{color:var(--good,#16a34a);font-weight:600}
+  mark{background:#ffe8a3;border-radius:3px;padding:0 1px}
+  mark.sel{background:var(--warn,#f59e0b);color:#fff}
+  #vista{white-space:pre-wrap;font:14px/1.7 ui-monospace,Consolas,monospace;
+         max-height:44vh;overflow:auto;display:none}
+  .ficha{margin-top:8px;padding:8px 10px;background:var(--bg,#f2f3ff);border-radius:8px;font-size:13px}
+  .ficha .ipa{font-family:ui-monospace,Consolas,monospace;color:var(--blue-dd,#244c77)}
+  .cuenta{font-weight:700}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Corrector de material</h1>
+  <p class="sub">Pega aquí una ficha, un examen o un worksheet antes de publicarlo.
+     Revisa ortografía, avisa si mezclas inglés británico y americano, y marca los
+     errores típicos de un hispanohablante que ningún corrector normal detecta.</p>
+
+  <div class="cx-bar">
+    <button class="btn" id="revisar" disabled>Revisar</button>
+    <button class="btn sec" id="ejemplo">Probar con un ejemplo</button>
+    <label>Variante:
+      <select id="variante">
+        <option value="auto">detectar sola</option>
+        <option value="uk">británico</option>
+        <option value="us">americano</option>
+      </select>
+    </label>
+    <span class="estado" id="estado">cargando diccionario…</span>
+  </div>
+
+  <div class="cols">
+    <div class="cx-card">
+      <textarea id="texto" placeholder="Escribe o pega el texto en inglés…" spellcheck="false"></textarea>
+      <div id="vista"></div>
+      <div class="cx-bar" style="margin:8px 0 0">
+        <button class="btn sec" id="volver" style="display:none">← volver a editar</button>
+      </div>
+    </div>
+    <div class="cx-card">
+      <div id="resultado"><div class="vacio">Aún no has revisado nada.</div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ------------------------------------------------------------------ datos */
+const V = '1';
+let PAL = null, REGLAS = null, LEX = null;
+const $ = s => document.querySelector(s);
+
+async function cargar(){
+  try{
+    const [w, r] = await Promise.all([
+      fetch('lexicon/words.txt?v='+V).then(x=>x.text()),
+      fetch('lexicon/rules.json?v='+V).then(x=>x.json()),
+    ]);
+    PAL = new Set(w.split(/\r?\n/).filter(Boolean));
+    REGLAS = r;
+    REGLAS.gramatica = r.gramatica.map(g=>({re:new RegExp(g.re,'gi'), msg:g.msg}));
+    REGLAS.us2uk = {};
+    for(const [uk,us] of Object.entries(r.par_uk_us)) REGLAS.us2uk[us] = uk;
+    $('#estado').textContent = PAL.size.toLocaleString('es') + ' palabras cargadas';
+    $('#revisar').disabled = false;
+  }catch(e){
+    $('#estado').textContent = 'no se pudo cargar el diccionario';
+  }
+}
+cargar();
+
+/* -------------------------------------------------- ¿es inglés correcto? */
+/* El diccionario lista lemas, no todo lo derivable: sin esto marcaría como
+   error 'whole-body', "chair's" o 'logins', que están bien escritos. */
+const SUF = [['s',['']],['es',['','e']],['ies',['y']],['ing',['','e']],
+             ['ed',['','e']],['ied',['y']],['er',['','e']],['est',['','e']],['ly',['']]];
+
+function flexion(w){
+  for(const [suf,bases] of SUF){
+    if(w.endsWith(suf) && w.length > suf.length+2){
+      const raiz = w.slice(0, -suf.length);
+      for(const e of bases) if(PAL.has(raiz+e)) return true;
+      if(raiz.length>2 && raiz[raiz.length-1]===raiz[raiz.length-2]
+         && PAL.has(raiz.slice(0,-1))) return true;
+    }
+  }
+  return false;
+}
+function conocida(w){
+  if(PAL.has(w)) return true;
+  const base = w.replace(/['’]s$/,'');
+  if(base!==w && (PAL.has(base) || flexion(base))) return true;
+  if(w.includes('-')){
+    const partes = w.split('-').filter(Boolean);
+    if(partes.length>1 && partes.every(p=>PAL.has(p)||flexion(p))) return true;
+  }
+  return flexion(w);
+}
+
+/* --------------------------------------------------------- sugerencias */
+/* Damerau-Levenshtein: cuenta el intercambio de dos letras contiguas como UN
+   error. Sin eso, 'recieve' se parece más a 'relieve' que a 'receive', y la
+   sugerencia útil queda fuera — siendo el ie/ei la falta más común en inglés. */
+function dist(a,b,tope){
+  if(Math.abs(a.length-b.length) > tope) return tope+1;
+  let ant2 = null, prev = Array.from({length:b.length+1},(_,i)=>i);
+  for(let i=1;i<=a.length;i++){
+    const cur=[i]; let mejor=i;
+    for(let j=1;j<=b.length;j++){
+      let c = Math.min(prev[j]+1, cur[j-1]+1, prev[j-1]+(a[i-1]===b[j-1]?0:1));
+      if(i>1 && j>1 && a[i-1]===b[j-2] && a[i-2]===b[j-1])
+        c = Math.min(c, ant2[j-2]+1);
+      cur[j]=c; if(c<mejor) mejor=c;
+    }
+    if(mejor>tope) return tope+1;
+    ant2 = prev; prev = cur;
+  }
+  return prev[b.length];
+}
+function sugerir(w){
+  /* El único filtro previo es la longitud. Descartar por la primera letra
+     sería más rápido, pero se pierde justo el error más típico del alumno
+     hispanohablante: la e- que se le añade delante ('estudents'). */
+  const tope = w.length<=4 ? 1 : 2, out=[];
+  for(const c of PAL){
+    if(Math.abs(c.length-w.length)>tope) continue;
+    const d = dist(w,c,tope);
+    if(d<=tope) out.push([d,c]);
+  }
+  return out.sort((a,b)=>a[0]-b[0]||a[1].length-b[1].length).slice(0,3).map(x=>x[1]);
+}
+
+/* ------------------------------------------------------------- revisión */
+const TOKEN = /[A-Za-z][A-Za-z'’-]*/g;
+
+function revisar(texto, variantePedida){
+  const avisos = [];
+  const palabras = [];
+  let m;
+  TOKEN.lastIndex = 0;
+  while((m = TOKEN.exec(texto))) palabras.push([m[0], m.index]);
+
+  // 1. ortografía
+  for(const [w,pos] of palabras){
+    const low = w.toLowerCase().replace(/^['’-]+|['’-]+$/g,'');
+    if(!low || low.length<=2 || conocida(low)) continue;
+    const antes = texto.slice(Math.max(0,pos-2),pos).trim();
+    if(w[0]===w[0].toUpperCase() && w[0]!==w[0].toLowerCase()
+       && pos>0 && !['.','!','?',''].includes(antes)) continue;  // nombre propio
+    const sug = sugerir(low);
+    avisos.push({tipo:'ortografia', palabra:w, pos,
+      msg:'no existe en inglés' + (sug.length ? ' — ¿quisiste decir '+sug.join(', ')+'?'
+          : ' (revísala: no está en el diccionario ni en nuestro léxico)')});
+  }
+
+  // 2. coherencia británico / americano
+  const uk = new Set(), us = new Set();
+  for(const [w] of palabras){
+    const low = w.toLowerCase();
+    if(REGLAS.par_uk_us[low] && PAL.has(REGLAS.par_uk_us[low])) uk.add(low);
+    else if(REGLAS.us2uk[low]) us.add(low);
+  }
+  if(variantePedida==='auto'){
+    if(uk.size && us.size) avisos.push({tipo:'variante', palabra:[...uk,...us].join(', '),
+      msg:'el texto mezcla británico ('+[...uk].join(', ')+') y americano ('+[...us].join(', ')+
+          '). Cambridge espera una sola variante en todo el documento.'});
+  }else{
+    const malas = variantePedida==='uk' ? us : uk;
+    const otra  = variantePedida==='uk' ? REGLAS.us2uk : REGLAS.par_uk_us;
+    for(const w of malas) avisos.push({tipo:'variante', palabra:w,
+      msg:'has elegido '+(variantePedida==='uk'?'británico':'americano')+
+          ': aquí sería «'+otra[w]+'»'});
+  }
+
+  // 3. falsos amigos y calcos
+  const vistas = new Set();
+  for(const [w,pos] of palabras){
+    const low = w.toLowerCase();
+    if(REGLAS.falsos_amigos[low] && !vistas.has(low)){
+      vistas.add(low);
+      avisos.push({tipo:'uso', palabra:w, pos, msg:REGLAS.falsos_amigos[low]});
+    }
+  }
+  for(const g of REGLAS.gramatica){
+    g.re.lastIndex = 0;
+    let x;
+    while((x = g.re.exec(texto))) avisos.push({tipo:'uso', palabra:x[0], pos:x.index, msg:g.msg});
+  }
+  return avisos;
+}
+
+/* ----------------------------------------------------------------- vista */
+function escapa(s){ return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
+
+function pinta(texto, avisos){
+  const marcas = avisos.filter(a=>a.pos!==undefined)
+                       .sort((a,b)=>a.pos-b.pos);
+  let html='', i=0;
+  marcas.forEach((a,k)=>{
+    if(a.pos < i) return;
+    html += escapa(texto.slice(i,a.pos));
+    html += '<mark id="m'+k+'">'+escapa(texto.substr(a.pos, a.palabra.length))+'</mark>';
+    i = a.pos + a.palabra.length;
+    a.marca = k;
+  });
+  html += escapa(texto.slice(i));
+  $('#vista').innerHTML = html;
+  $('#vista').style.display='block';
+  $('#texto').style.display='none';
+  $('#volver').style.display='inline-block';
+}
+
+const NOMBRE = {ortografia:'ortografía', variante:'variante', uso:'uso'};
+
+function mostrar(avisos){
+  const r = $('#resultado');
+  if(!avisos.length){
+    r.innerHTML = '<div class="vacio"><span class="ok">Sin observaciones.</span><br>'+
+                  '<small>El texto no tiene errores de los que este corrector detecta.</small></div>';
+    return;
+  }
+  const orden = {ortografia:0, variante:1, uso:2};
+  avisos.sort((a,b)=>orden[a.tipo]-orden[b.tipo]);
+  const n = avisos.length;
+  r.innerHTML = '<p style="margin:0 0 10px"><span class="cuenta">'+n+'</span> '+
+                (n===1?'observación':'observaciones')+'</p>' +
+    avisos.map(a=>'<div class="aviso '+a.tipo+'" data-m="'+(a.marca??'')+'">'+
+      '<span class="tag">'+NOMBRE[a.tipo]+'</span><b>'+escapa(a.palabra)+'</b>'+
+      '<div class="msg">'+escapa(a.msg)+'</div></div>').join('');
+
+  r.querySelectorAll('.aviso').forEach(el=>{
+    el.onclick = ()=>{
+      const k = el.dataset.m;
+      if(k==='') return;
+      const mk = document.getElementById('m'+k);
+      if(!mk) return;
+      document.querySelectorAll('mark.sel').forEach(x=>x.classList.remove('sel'));
+      mk.classList.add('sel');
+      mk.scrollIntoView({block:'center', behavior:'smooth'});
+      ficha(mk.textContent.toLowerCase(), el);
+    };
+  });
+}
+
+/* Ficha de la palabra: fonética y significado, si la tenemos en el léxico. */
+async function ficha(w, el){
+  if(el.querySelector('.ficha')) return;
+  if(!LEX){
+    try{ LEX = await fetch('lexicon/lexicon.json?v='+V).then(x=>x.json()); }
+    catch(e){ LEX = {}; }
+  }
+  const e = LEX[w];
+  if(!e) return;
+  const d = document.createElement('div');
+  d.className='ficha';
+  d.innerHTML = (e.uk?'<span class="ipa">UK '+escapa(e.uk)+'</span> ':'') +
+                (e.us?'<span class="ipa">US '+escapa(e.us)+'</span>':'') +
+                (e.d?'<div>'+e.d.map(escapa).join(' · ')+'</div>':'');
+  el.appendChild(d);
+}
+
+/* ---------------------------------------------------------------- eventos */
+$('#revisar').onclick = ()=>{
+  const texto = $('#texto').style.display==='none' ? window._ultimo : $('#texto').value;
+  window._ultimo = texto;
+  if(!texto.trim()) return;
+  $('#estado').textContent = 'revisando…';
+  setTimeout(()=>{
+    const avisos = revisar(texto, $('#variante').value);
+    pinta(texto, avisos);
+    mostrar(avisos);
+    $('#estado').textContent = PAL.size.toLocaleString('es')+' palabras cargadas';
+  }, 10);
+};
+$('#volver').onclick = ()=>{
+  $('#vista').style.display='none';
+  $('#texto').style.display='block';
+  $('#volver').style.display='none';
+};
+$('#ejemplo').onclick = ()=>{
+  $('#texto').value =
+    "The estudents recieve a colour card and they organize a program.\n" +
+    "Please explain me the homeworks before the class.\n" +
+    "She is embarrassed because the librery is closed in the night.\n" +
+    "We must discuss about the informations. It depend of the teacher.";
+  $('#volver').click();
+};
+$('#texto').addEventListener('keydown', e=>{
+  if((e.ctrlKey||e.metaKey) && e.key==='Enter') $('#revisar').click();
+});
+</script>
+</body>
+</html>

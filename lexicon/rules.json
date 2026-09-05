@@ -1,0 +1,141 @@
+{
+ "falsos_amigos": {
+  "actually": "si querías decir \"en la actualidad\" es CURRENTLY; actually = en realidad",
+  "assist": "\"asistir a clase\" es TO ATTEND; assist = ayudar",
+  "sensible": "\"sensato\" es SENSIBLE, pero \"sensible (emocional)\" es SENSITIVE",
+  "carpet": "\"carpeta\" es FOLDER; carpet = alfombra",
+  "library": "\"librería (tienda)\" es BOOKSHOP; library = biblioteca",
+  "embarrassed": "\"embarazada\" es PREGNANT; embarrassed = avergonzado",
+  "success": "\"suceso\" es EVENT; success = éxito",
+  "compromise": "\"compromiso\" es COMMITMENT; compromise = ceder a medias",
+  "support": "\"soportar/aguantar\" es TO PUT UP WITH; support = apoyar",
+  "career": "\"carrera universitaria\" es DEGREE; career = trayectoria laboral",
+  "pretend": "\"pretender\" es TO INTEND; pretend = fingir",
+  "constipated": "\"constipado/resfriado\" es TO HAVE A COLD",
+  "exit": "\"éxito\" es SUCCESS; exit = salida",
+  "molest": "\"molestar\" es TO BOTHER; molest tiene sentido sexual en inglés"
+ },
+ "gramatica": [
+  {
+   "re": "\\bexplain\\s+(me|him|her|us|them)\\b",
+   "msg": "explain TO me / TO him — explain lleva \"to\" antes de la persona"
+  },
+  {
+   "re": "\\bdiscuss\\s+about\\b",
+   "msg": "discuss algo, sin \"about\""
+  },
+  {
+   "re": "\\b(informations|advices|homeworks|furnitures|equipments|knowledges|researches|softwares|staffs)\\b",
+   "msg": "es un sustantivo incontable: no lleva -s"
+  },
+  {
+   "re": "\\bpeoples\\b",
+   "msg": "\"people\" ya es plural"
+  },
+  {
+   "re": "\\bthe\\s+most\\s+\\w+est\\b",
+   "msg": "doble superlativo: \"the biggest\", no \"the most biggest\""
+  },
+  {
+   "re": "\\bmore\\s+\\w+er\\b",
+   "msg": "doble comparativo"
+  },
+  {
+   "re": "\\b(I|he|she|we|they)\\s+ha(ve|s)\\s+\\d+\\s+years?\\b",
+   "msg": "la edad va con TO BE: \"I am 12 years old\""
+  },
+  {
+   "re": "\\bdepend\\s+of\\b",
+   "msg": "depend ON, no \"depend of\""
+  },
+  {
+   "re": "\\bin\\s+the\\s+night\\b",
+   "msg": "AT night"
+  },
+  {
+   "re": "\\bmake\\s+a\\s+(question|photo)\\b",
+   "msg": "ASK a question / TAKE a photo"
+  },
+  {
+   "re": "\\bis\\s+depend",
+   "msg": "it DEPENDS, sin \"is\""
+  }
+ ],
+ "par_uk_us": {
+  "colour": "color",
+  "favourite": "favorite",
+  "neighbour": "neighbor",
+  "behaviour": "behavior",
+  "flavour": "flavor",
+  "labour": "labor",
+  "centre": "center",
+  "theatre": "theater",
+  "metre": "meter",
+  "litre": "liter",
+  "programme": "program",
+  "practise": "practice",
+  "defence": "defense",
+  "licence": "license",
+  "grey": "gray",
+  "jewellery": "jewelry",
+  "travelling": "traveling",
+  "cancelled": "canceled",
+  "analyse": "analyze",
+  "organise": "organize",
+  "realise": "realize",
+  "recognise": "recognize",
+  "apologise": "apologize",
+  "catalogue": "catalog",
+  "aeroplane": "airplane",
+  "mum": "mom",
+  "rubbish": "garbage",
+  "lift": "elevator",
+  "biscuit": "cookie",
+  "autumn": "fall",
+  "rucksack": "backpack",
+  "trousers": "pants",
+  "holiday": "vacation"
+ },
+ "reglas_uk_us": [
+  {
+   "re": "^(.+)our$",
+   "rep": "$1or",
+   "etiqueta": "-our / -or"
+  },
+  {
+   "re": "^(.+)ise$",
+   "rep": "$1ize",
+   "etiqueta": "-ise / -ize"
+  },
+  {
+   "re": "^(.+)isation$",
+   "rep": "$1ization",
+   "etiqueta": "-isation / -ization"
+  },
+  {
+   "re": "^(.+)yse$",
+   "rep": "$1yze",
+   "etiqueta": "-yse / -yze"
+  },
+  {
+   "re": "^(.+[^aeiou])re$",
+   "rep": "$1er",
+   "etiqueta": "-re / -er"
+  },
+  {
+   "re": "^(.+)ogue$",
+   "rep": "$1og",
+   "etiqueta": "-ogue / -og"
+  },
+  {
+   "re": "^(.+)lling$",
+   "rep": "$1ling",
+   "etiqueta": "ll / l"
+  },
+  {
+   "re": "^(.+)lled$",
+   "rep": "$1led",
+   "etiqueta": "ll / l"
+  }
+ ]
+}
