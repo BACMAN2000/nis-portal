@@ -39,3 +39,9 @@ elevenlabs-key.txt
 *apikey*
 *api_key*
 *api-key*
+
+# Cache de voz del generador de tests YLE. 27 MB de mp3 intermedios que
+# gen_yle_audio.py rehace solo (makedirs + if not exists), no los usa nada en
+# produccion, y encima nginx los servia: cualquiera podia descargarlos. Lo que
+# se publica es yle-audio/, que es el audio montado.
+yle/tools/_tts_cache/
