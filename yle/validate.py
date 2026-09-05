@@ -38,7 +38,9 @@ def cuenta(parte):
     t = parte.get('type')
     if t == 'mc_cloze_copy': return len(parte.get('key') or [])
     if t == 'story_one_word': return sum(len(x.get('items') or []) for x in parte.get('parts') or [])
-    if t in ('gapped_text_title',): return len(re.findall(r'__\(\d+\)__', parte.get('text', ''))) + 1
+    if t == 'story_completion': return sum(len(x.get('items') or []) for x in parte.get('parts') or [])
+    if t == 'productive_writing' and 'complete' in parte: return len(parte.get('complete') or []) + len(parte.get('answer') or []) + int((parte.get('write') or {}).get('n', 2))
+    if t in ('gapped_text_title',): return len([g for g in re.findall(r'__\((\d+)\)__', parte.get('text', '')) if g != '0']) + 1
     if t in ('story_writing', 'productive_writing'): return len(parte.get('items') or []) or 1
     if t and isinstance(parte.get('items'), list): return len(parte['items'])
     for k in ('items', 'defs', 'pairs', 'questions', 'labels', 'names', 'answers', 'instructions'):

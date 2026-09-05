@@ -1062,6 +1062,7 @@ async function renderAdmin(tab='users'){
     // items del menu resaltados a la vez.
     {group:'Cambridge', icon:'🎓', items:[
       {key:'cambridgehub',label:'🎓 YLE + Main Suite'},
+      {key:'yle',label:'🛡️ Panel YLE'},
       {key:'studyplan',label:'📋 Plan de estudio'},
       {key:'mocks',label:'🔓 Mocks'},
       {key:'practice',label:'🎯 Practice Tests'},
@@ -1101,6 +1102,7 @@ async function renderAdmin(tab='users'){
   if(tab==='readers') return readerStatsPanel();
   if(tab==='funnordic') return funNordicPanel();
   if(tab==='funaccess') return funAccessPanel(GRADES);
+  if(tab==='yle') return window.ylePanel(GRADES);
   if(tab==='funyle') return $('#main').innerHTML = funYleBody('renderAdmin');
   if(tab==='fr') return funFrBody('renderAdmin').then(h => $('#main').innerHTML = h);
   if(tab==='frstarters') return $('#main').innerHTML = funFrCursoBody('starters');
@@ -2948,6 +2950,7 @@ async function renderTeacher(tab){
   ensenanza.push({key:'littlereaders',label:'🧒 Little Readers'});
   ensenanza.push({key:'pizarra',label:'📝 Pizarra'});
   examenes.push({key:'cambridgehub',label:'🎓 YLE + Main Suite'});
+  if(teacherAllowedGrades().length) examenes.push({key:'yle',label:'🛡️ Panel YLE'});
   examenes.push({key:'exams',label:'🎧 Exámenes'});
   if(teacherAllowedGrades().length) examenes.push({key:'practice',label:'🎯 Practice Tests'});
   examenes.push({key:'funyle',label:'🧸 Fun for Nordic'});
@@ -3002,6 +3005,7 @@ async function renderTeacher(tab){
   if(active==='scope') return scopePanel();
   if(active==='littlereaders') return littleReadersPanel();
   if(active==='funaccess') return funAccessPanel(teacherAllowedGrades());
+  if(active==='yle') return window.ylePanel(teacherAllowedGrades());
   if(active==='funyle') return $('#main').innerHTML = funYleBody('renderTeacher');
   if(active==='funstarters') return $('#main').innerHTML = funCursoBody('starters');
   if(active==='funmovers') return $('#main').innerHTML = funCursoBody('movers');
@@ -3864,6 +3868,8 @@ const CAMBRIDGE_TRACKS = {
        desc:'Full Pre A1 Starters practice tests with the official format and timing: Listening, Reading & Writing and Speaking, with colouring and a virtual examiner.', href:'yle-practice.html?level=starters'},
       {key:'movers',      icon:'movers',   name:'Movers',   cefr:'A1 · YLE', short:'Movers',
        desc:'Move on with simple sentences — Fun for Nordic 2.', href:'nis-fun/engine/?level=movers'},
+      {key:'moverstests', icon:'practice', name:'Movers Practice Tests', cefr:'A1 · practice tests', short:'Movers Tests',
+       desc:'Full A1 Movers practice tests with the official format and timing: Listening, Reading & Writing and Speaking, with find-the-differences, picture stories and odd-one-out.', href:'yle-practice.html?level=movers'},
       {key:'flyers',      icon:'flyers',   name:'Flyers',   cefr:'A2 · YLE', short:'Flyers',
        desc:'The A2 Flyers course — Fun for Nordic 3, unit by unit.', href:'nis-fun/engine/?level=flyers'},
       {key:'flyerstests', icon:'practice', name:'Flyers Practice Tests', cefr:'A2 · 10 tests', short:'Flyers Tests',
@@ -3917,8 +3923,8 @@ const _CAMBRIDGE_NODES = [
 const CAMBRIDGE_REPARTO = {
   1:  ['yle.starters','yle.starterstests'],
   2:  ['yle.starters','yle.starterstests'],
-  3:  ['yle.movers'],
-  4:  ['yle.movers','yle.flyers'],
+  3:  ['yle.movers','yle.moverstests'],
+  4:  ['yle.movers','yle.moverstests','yle.flyers'],
   5:  ['yle.flyers','yle.flyerstests','main.ket'],
   6:  ['main.ket','main.pet'],
   7:  ['main.pet','main.fce','main.listening','main.uoe','main.writing','main.bonus'],
