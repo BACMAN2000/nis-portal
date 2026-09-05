@@ -3860,6 +3860,8 @@ const CAMBRIDGE_TRACKS = {
     levels:[
       {key:'starters',    icon:'starters', name:'Starters', cefr:'Pre-A1 · YLE', short:'Starters',
        desc:'First contact with English — Fun for Nordic 1, with audio, games and exam tasks.', href:'nis-fun/engine/?level=starters'},
+      {key:'starterstests', icon:'practice', name:'Starters Practice Tests', cefr:'Pre A1 · practice tests', short:'Starters Tests',
+       desc:'Full Pre A1 Starters practice tests with the official format and timing: Listening, Reading & Writing and Speaking, with colouring and a virtual examiner.', href:'yle-practice.html?level=starters'},
       {key:'movers',      icon:'movers',   name:'Movers',   cefr:'A1 · YLE', short:'Movers',
        desc:'Move on with simple sentences — Fun for Nordic 2.', href:'nis-fun/engine/?level=movers'},
       {key:'flyers',      icon:'flyers',   name:'Flyers',   cefr:'A2 · YLE', short:'Flyers',
@@ -3913,8 +3915,8 @@ const _CAMBRIDGE_NODES = [
    de primaria). Es una PROPUESTA: el botón del panel la aplica, y lo que no
    está en la lista de un grado se cierra para ese grado. */
 const CAMBRIDGE_REPARTO = {
-  1:  ['yle.starters'],
-  2:  ['yle.starters'],
+  1:  ['yle.starters','yle.starterstests'],
+  2:  ['yle.starters','yle.starterstests'],
   3:  ['yle.movers'],
   4:  ['yle.movers','yle.flyers'],
   5:  ['yle.flyers','yle.flyerstests','main.ket'],

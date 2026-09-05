@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YLE Practice Tests · Nordic International School</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="brand.css?v=21">
+<style>
+/* =========================================================================
+   Motor de los practice tests YLE (Starters · Movers · Flyers).
+   Un test = yle/<level>/test-NN.json con el formato oficial (yle/specs.json).
+   Cada parte es una pantalla; hay modo práctica (corrige al momento) y modo
+   examen (tiempo oficial, corrige al final). Lo objetivo lo corrige el motor;
+   colorear y Speaking los revisa el profesor.
+   ========================================================================= */
+:root{--navy:#0d1d33;--blue:#1e3a8a;--sky:#eef3fb;--ink:#1e293b;--muted:#64748b;--border:#d9deea;--ok:#2f8f5b;--bad:#b53a3a;--st:#e08a2a;--mv:#238f85;--fl:#6a54c9}
+*{box-sizing:border-box}
+body{margin:0;background:#f7f8fb;color:var(--ink);font-family:'Gotham','Segoe UI',system-ui,sans-serif}
+header.top{background:var(--navy);color:#fff;padding:10px 18px 10px 118px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}  /* el hueco de la izquierda es para el botón Back de nis-nav */
+header.top img{height:34px}
+header.top h1{font-size:1.1rem;margin:0;font-weight:700}
+header.top .sub{font-size:.8rem;opacity:.8}
+header.top .right{margin-left:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.lv{display:inline-block;padding:.1rem .6rem;border-radius:999px;font-weight:700;font-size:.8rem;color:#fff;background:var(--st)}
+.lv.movers{background:var(--mv)} .lv.flyers{background:var(--fl)}
+.wrap{display:grid;grid-template-columns:230px 1fr;gap:16px;padding:16px;max-width:1240px;margin:0 auto}
+aside{background:#fff;border:1px solid var(--border);border-radius:14px;padding:12px;align-self:start;position:sticky;top:12px}
+aside h2{font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:4px 8px 8px}
+.tbtn{display:block;width:100%;text-align:left;background:#fff;border:1px solid var(--border);border-radius:10px;padding:9px 10px;margin:6px 0;cursor:pointer;font:inherit}
+.tbtn.on{background:var(--sky);border-color:var(--blue);box-shadow:0 0 0 2px #c7d2fe}
+.tbtn b{display:block;font-size:.95rem} .tbtn small{color:var(--muted)}
+main{min-width:0}
+.tabs{display:flex;gap:4px;border-bottom:2px solid var(--border);margin-bottom:12px;flex-wrap:wrap}
+.tab{background:none;border:0;border-bottom:3px solid transparent;padding:10px 14px;font:inherit;font-weight:600;color:var(--muted);cursor:pointer}
+.tab.on{color:var(--blue);border-bottom-color:var(--blue)}
+.card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px 18px;margin-bottom:14px}
+.card h3{margin:0 0 4px;font-size:1.05rem;color:var(--blue)}
+.instr{color:var(--muted);font-size:.92rem;margin:0 0 10px}
+.pic{width:100%;max-width:820px;border:1px solid var(--border);border-radius:14px;display:block;margin:10px 0}
+audio{width:100%;max-width:820px;margin:6px 0 10px}
+.item{display:flex;align-items:center;gap:10px;margin:8px 0;flex-wrap:wrap}
+.item label{min-width:180px;font-weight:600}
+.item input[type=text]{border:1.5px solid var(--border);border-radius:9px;padding:8px 10px;font:inherit;min-width:160px}
+.item select{border:1.5px solid var(--border);border-radius:9px;padding:8px 10px;font:inherit}
+.ex{background:var(--sky);border-radius:9px;padding:6px 10px}
+.ex .tagex{font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-right:6px}
+.ok{border-color:var(--ok)!important;background:#e3f3ea} .bad{border-color:var(--bad)!important;background:#f8e1e1}
+.corr{color:var(--ok);font-weight:700;margin-left:6px}
+.abc{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 14px}
+.abc label{display:flex;align-items:center;gap:6px;border:1.5px solid var(--border);border-radius:10px;padding:8px 12px;cursor:pointer}
+.abc label.ok{background:#e3f3ea} .abc label.bad{background:#f8e1e1}
+.letter{font-weight:800;color:var(--blue)}
+.tc{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.tc .box{border:1.5px solid var(--border);border-radius:12px;padding:10px;text-align:center}
+.tc .box p{margin:6px 0;font-weight:600}
+.tc .box button{border:1.5px solid var(--border);background:#fff;border-radius:9px;font-size:1.3rem;padding:4px 14px;margin:0 4px;cursor:pointer}
+.tc .box button.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+.tiles{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0}
+.tile{width:40px;height:44px;border:2px solid var(--blue);border-radius:9px;background:#fff;font:inherit;font-size:1.2rem;font-weight:800;color:var(--blue);cursor:pointer}
+.tile:disabled{opacity:.35}
+.ans{display:flex;align-items:center;gap:8px;margin:4px 0 10px}
+.ans input{letter-spacing:.2em;font-size:1.2rem;font-weight:700;border:1.5px solid var(--border);border-radius:9px;padding:6px 10px;width:220px;font-family:inherit}
+.small{font-size:.85rem;color:var(--muted)}
+.bank{display:flex;gap:10px;flex-wrap:wrap;background:var(--sky);border-radius:12px;padding:10px;margin:8px 0}
+.bank span{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:.85rem;font-weight:600}
+.cloze{line-height:2.1;font-size:1.05rem}
+.cloze select{margin:0 4px}
+.story{display:grid;grid-template-columns:1fr;gap:12px}
+.story .part{border:1px solid var(--border);border-radius:12px;padding:10px}
+.story .part img{max-width:320px;width:100%;border-radius:10px;display:block;margin-bottom:6px}
+.scene{position:relative;display:inline-block;max-width:820px;width:100%}
+.scene img{width:100%;display:block;border-radius:14px;border:1px solid var(--border)}
+.scene .zone{position:absolute;border:2px dashed transparent;border-radius:8px}
+.scene.debug .zone{border-color:#f06}
+.scene .drop{position:absolute;width:64px;height:64px;transform:translate(-50%,-50%);cursor:grab;touch-action:none}
+.cards{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.cardx{width:78px;height:86px;border:2px solid var(--border);border-radius:12px;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:.75rem;font-weight:600;cursor:grab;user-select:none;touch-action:none}
+.cardx.used{opacity:.35;cursor:default}
+.cardx.on{border-color:var(--blue);box-shadow:0 0 0 2px #c7d2fe}
+.pin{position:absolute;width:26px;height:26px;border-radius:50%;background:#e53935;border:3px solid #fff;transform:translate(-50%,-50%);box-shadow:0 2px 6px rgba(0,0,0,.3);pointer-events:none}
+.spk{border:1px solid var(--border);border-radius:12px;padding:10px 12px;margin:8px 0;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.spk .q{flex:1;min-width:200px;font-weight:600}
+.btn{border:0;background:var(--blue);color:#fff;border-radius:999px;padding:9px 16px;font:inherit;font-weight:700;cursor:pointer}
+.btn.sec{background:#fff;color:var(--blue);border:1.5px solid var(--blue)}
+.btn.red{background:#e53935}
+.btn:disabled{opacity:.5;cursor:default}
+.model{font-size:.85rem;color:var(--muted)}
+.model b{color:var(--ok)}
+details.key{margin-top:10px} details.key summary{cursor:pointer;font-weight:700;color:var(--blue)}
+.navbar{position:sticky;bottom:10px;background:#fff;border:1px solid var(--border);border-radius:999px;padding:8px 10px;display:flex;align-items:center;gap:10px;box-shadow:0 8px 24px rgba(13,29,51,.15);margin-top:10px}
+.navbar .mid{flex:1;text-align:center;font-weight:700;font-size:.92rem}
+.dots{display:flex;gap:4px;justify-content:center;margin-top:4px}
+.dots i{width:7px;height:7px;border-radius:50%;background:var(--border)} .dots i.on{background:var(--blue)}
+.score{background:var(--sky);border-radius:12px;padding:12px 14px;margin:10px 0;font-weight:600}
+.shields{display:flex;gap:6px;align-items:center;margin-top:6px}
+.shield{width:34px;height:40px;clip-path:polygon(50% 0,100% 12%,100% 60%,50% 100%,0 60%,0 12%);background:#d29a1f;display:grid;place-items:center;color:#3b2a05;font-weight:900;font-size:.9rem}
+.shield.off{background:#e2e6ef;color:#9aa3b5}
+.timer{font-variant-numeric:tabular-nums;font-weight:800;background:#fff;color:var(--navy);border-radius:999px;padding:4px 12px}
+.timer.low{background:#ffd5d5;color:#8a1c1c}
+.hidden{display:none!important}
+.welcome .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:12px 0}
+.welcome .tilew{background:var(--sky);border-radius:12px;padding:12px}
+.welcome .tilew b{display:block;font-size:1.3rem}
+@media (max-width:820px){.wrap{grid-template-columns:1fr}aside{position:static}}
+</style>
+</head>
+<body>
+<header class="top">
+  <img src="assets/logo-white-h.svg" alt="" onerror="this.remove()">
+  <div><h1 id="hTitle">YLE Practice Tests</h1><div class="sub" id="hSub">Cambridge Young Learners · Pre A1 Starters</div></div>
+  <div class="right"><span class="lv" id="hLv">Starters</span><span class="timer hidden" id="timer">20:00</span><a href="index.html" class="btn sec" style="text-decoration:none">◀ Portal</a></div>
+</header>
+<div class="wrap">
+  <aside>
+    <h2>Practice tests</h2>
+    <div id="picker"></div>
+    <h2 style="margin-top:14px">Level</h2>
+    <div id="levels"></div>
+  </aside>
+  <main>
+    <div class="tabs" id="tabs"></div>
+    <div id="content"></div>
+  </main>
+</div>
+
+<!-- NIS-ONLY -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+<script src="config.js"></script>
+<script src="nis-nav.js?v=2"></script>
+<script src="activity-save.js?v=4"></script>
+<!-- /NIS-ONLY -->
+<script src="yle/fluent3d.js?v=1"></script>
+<script src="paint-layer.js?v=2"></script>
+<script>
+(function(){
+'use strict';
+var $ = function(s, r){ return (r || document).querySelector(s); };
+var $$ = function(s, r){ return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+var esc = function(s){ return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); };
+var norm = function(s){ return String(s == null ? '' : s).trim().toLowerCase().replace(/^(a|an|the)\s+/, '').replace(/[.,;:!?'"’]/g, '').replace(/\s+/g, ' '); };
+var ART = window.YLE_ART || {};
+var pic = function(word, size){ var e = ART.wordEmoji ? ART.wordEmoji(word) : null; return e ? ART.pic3d(e, size || 64) : '<span class="emoji" style="font-size:' + Math.round((size || 64) * .8) + 'px">🖼️</span>'; };
+
+var qs = new URLSearchParams(location.search);
+var LEVEL = ['starters', 'movers', 'flyers'].indexOf(qs.get('level')) >= 0 ? qs.get('level') : 'starters';
+var NAMES = {starters: 'Pre A1 Starters', movers: 'A1 Movers', flyers: 'A2 Flyers'};
+var IMG = 'yle-img/' + LEVEL + '/', AUD = 'yle-audio/' + LEVEL + '/';
+var SPECS = null, INDEX = [], T = null, cur = -1, tab = 'overview', screen = 0;
+var mode = 'practice';               // practice | exam
+var timerInt = null, timerLeft = 0, t0 = Date.now();
+var STORE = {};                      // respuestas por test#paper#campo
+var PAINT = {};                      // trazos por test#lamina
+var REC = {};                        // grabaciones por test#parte (blob)
+var PLACED = {};                     // tarjetas colocadas por test
+var POINTED = {};                    // clics de "señala" por test
+
+/* ---------- carga ---------- */
+function json(u){ return fetch(u, {cache: 'no-cache'}).then(function(r){ if(!r.ok) throw new Error(u); return r.json(); }); }
+function key(){ return (cur + 1) + '#' + tab + '#'; }
+function nn(){ return String(T.number).padStart(2, '0'); }
+function img(id, cls){ return '<img class="' + (cls || 'pic') + '" src="' + IMG + 'test_' + nn() + '_' + id + '.jpg" alt="" loading="lazy" onerror="this.style.display=\'none\'">'; }
+function audio(p){ return '<audio controls preload="none" src="' + AUD + 'test_' + nn() + '_part' + p + '.mp3" onerror="this.insertAdjacentHTML(\'afterend\',\'<p class=small>🎧 The recording for this part is not published yet: do it while your teacher reads the script.</p>\');this.remove()"></audio>'; }
+
+function init(){
+  $('#hSub').textContent = 'Cambridge Young Learners · ' + NAMES[LEVEL];
+  $('#hLv').textContent = LEVEL.charAt(0).toUpperCase() + LEVEL.slice(1); $('#hLv').className = 'lv ' + LEVEL;
+  $('#levels').innerHTML = ['starters', 'movers', 'flyers'].map(function(l){ return '<a class="tbtn' + (l === LEVEL ? ' on' : '') + '" href="?level=' + l + '" style="text-decoration:none;color:inherit"><b>' + NAMES[l] + '</b></a>'; }).join('');
+  Promise.all([json('yle/specs.json'), json('yle/' + LEVEL + '/index.json').catch(function(){ return []; })]).then(function(r){
+    SPECS = r[0]; INDEX = r[1];
+    $('#picker').innerHTML = INDEX.length ? INDEX.map(function(t, i){ return '<button class="tbtn" data-i="' + i + '"><b>Test ' + t.number + '</b><small>' + esc(t.theme) + '</small></button>'; }).join('') : '<p class="small">No tests published for this level yet.</p>';
+    $$('#picker .tbtn').forEach(function(b){ b.onclick = function(){ openTest(+b.dataset.i); }; });
+    render();
+    var want = +(qs.get('test') || 0); if(want && INDEX.some(function(t){ return t.number === want; })) openTest(INDEX.findIndex(function(t){ return t.number === want; }));
+  }).catch(function(e){ $('#content').innerHTML = '<div class="card">Could not load the tests (' + esc(e.message) + ').</div>'; });
+}
+function openTest(i){
+  json('yle/' + LEVEL + '/test-' + String(INDEX[i].number).padStart(2, '0') + '.json').then(function(t){
+    T = t; cur = i; tab = 'overview'; screen = 0;
+    $$('#picker .tbtn').forEach(function(b, k){ b.classList.toggle('on', k === i); });
+    render();
+  });
+}
+
+/* ---------- render ---------- */
+function render(){
+  var tabs = [['overview', 'Overview'], ['listening', 'Listening'], ['rw', 'Reading & Writing'], ['speaking', 'Speaking']];
+  $('#tabs').innerHTML = T ? tabs.map(function(x){ return '<button class="tab' + (x[0] === tab ? ' on' : '') + '" data-t="' + x[0] + '">' + x[1] + '</button>'; }).join('') : '';
+  $$('#tabs .tab').forEach(function(b){ b.onclick = function(){ tab = b.dataset.t; screen = 0; render(); }; });
+  var c = $('#content');
+  if(!T){ c.innerHTML = welcome(); return; }
+  var html = tab === 'overview' ? overview() : tab === 'listening' ? listening() : tab === 'rw' ? rw() : speaking();
+  c.innerHTML = html;
+  bind(); restore(); screens();
+  if(window.attachPaintYle) attachPaintYle();
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+function welcome(){
+  var s = SPECS ? SPECS.levels[LEVEL] : null;
+  return '<div class="card welcome"><h3>' + NAMES[LEVEL] + ' — practice tests</h3><p class="instr">Pick a test on the left. Each test has the three papers of the real exam, with the same parts, the same number of questions and the official timing.</p>' +
+    (s ? '<div class="grid"><div class="tilew"><b>' + s.listening.items + '</b>Listening questions · ' + s.listening.parts.length + ' parts · ~' + s.listening.minutes + ' min</div><div class="tilew"><b>' + s.rw.items + '</b>Reading & Writing · ' + s.rw.parts.length + ' parts · ' + s.rw.minutes + ' min</div><div class="tilew"><b>' + s.speaking.parts.length + '</b>Speaking parts · ' + s.speaking.minutes[0] + '–' + s.speaking.minutes[1] + ' min</div></div>' : '') +
+    '<p class="small">Results in the real exam are <b>shields</b>: 1 to 5 for each paper, 15 in total. Everybody gets a certificate. The shields shown here are an estimate made by your school from your practice, not a Cambridge result.</p></div>';
+}
+function overview(){
+  var s = SPECS.levels[LEVEL];
+  return '<div class="card welcome"><h3>Test ' + T.number + ' · ' + esc(T.theme) + '</h3>' +
+    '<div class="grid"><div class="tilew"><b>' + s.listening.items + '</b>Listening · ' + s.listening.parts.length + ' parts</div><div class="tilew"><b>' + s.rw.items + '</b>Reading & Writing · ' + s.rw.parts.length + ' parts</div><div class="tilew"><b>' + s.speaking.parts.length + '</b>Speaking parts</div></div>' +
+    '<p><b>Mode:</b> <button class="btn' + (mode === 'practice' ? '' : ' sec') + '" data-mode="practice">Practice (check as you go)</button> <button class="btn' + (mode === 'exam' ? '' : ' sec') + '" data-mode="exam">Exam (official time, check at the end)</button></p>' +
+    '<p class="small">' + (mode === 'exam' ? 'In exam mode the clock starts when you open a paper: ' + s.listening.minutes + ' min for Listening and ' + s.rw.minutes + ' min for Reading & Writing. Answers are checked when the time is up or when you press Finish.' : 'In practice mode you can check each part and see the answers.') + '</p>' +
+    '<p><button class="btn" data-go="listening">Start Listening</button> <button class="btn" data-go="rw">Start Reading & Writing</button> <button class="btn" data-go="speaking">Speaking practice</button></p></div>' +
+    resumen();
+}
+function resumen(){
+  var k = (cur + 1) + '#'; var out = '';
+  ['listening', 'rw'].forEach(function(p){ var r = STORE[k + p + '#result']; if(r) out += '<div class="score">' + (p === 'rw' ? 'Reading & Writing' : 'Listening') + ': ' + r.score + ' / ' + r.total + ' auto-marked (' + r.pct + ' %) · ' + shields(r.shields) + '</div>'; });
+  return out;
+}
+function shields(n){ var h = '<span class="shields">'; for(var i = 1; i <= 5; i++) h += '<span class="shield' + (i <= n ? '' : ' off') + '">' + i + '</span>'; return h + ' <span class="small">estimated shields</span></span>'; }
+
+function card(paper, p, title, instr, body){
+  var n = SPECS.levels[LEVEL][paper].parts[p - 1];
+  return '<div class="card" data-screen="1" data-part="p' + p + '"><h3>' + (paper === 'listening' ? 'Listening' : 'Reading & Writing') + ' — Part ' + p + ' · ' + title + '</h3><p class="instr">' + instr + (n ? ' <b>' + n.items + ' questions.</b>' : '') + (paper === 'listening' ? ' You will hear each part twice.' : '') + '</p>' + (paper === 'listening' ? audio(p) : '') + body + (mode === 'practice' ? '<p><button class="btn sec" data-check="p' + p + '">Check Part ' + p + '</button></p>' : '') + '</div>';
+}
+
+/* ---------- Listening ---------- */
+function listening(){
+  var L = T.listening, h = '';
+  Object.keys(L).sort().forEach(function(pk){
+    var P = L[pk], p = +pk.slice(1);
+    if(P.type === 'draw_lines'){
+      var opts = P.people.map(function(x){ return '<option value="' + x.id + '">' + x.id + ' — ' + esc(x.desc) + '</option>'; }).join('');
+      h += card('listening', p, 'Listen and draw lines', 'Look at the picture. Listen and draw a line from each name to the right person with the pencil. Then choose the person below. One name is not used.',
+        img(P.image).replace('<img ', '<img data-paint="' + P.image + '" data-tools="pencil,eraser" ') + '<p class="small">' + esc(P.scene) + '</p>' +
+        '<div class="item ex"><span class="tagex">Example</span><b>' + esc(P.example.name) + '</b> → ' + P.example.person + '</div>' +
+        P.items.map(function(it, i){ return '<div class="item"><label>' + esc(it.name) + '</label><select data-name="' + pk + '_' + i + '"><option value="">— choose —</option>' + opts + '</select></div>'; }).join(''));
+    } else if(P.type === 'note_taking' || P.type === 'note_taking_names_numbers'){
+      h += card('listening', p, 'Listen and write', 'Read the question. Listen and write a name or a number.' + (P.heading ? ' <b>' + esc(P.heading) + '</b>' : ''),
+        (P.example ? '<div class="item ex"><span class="tagex">Example</span>' + esc(P.example.q) + ' → <b>' + esc(P.example.a) + '</b></div>' : '') +
+        P.items.map(function(it, i){ return '<div class="item"><label>' + (i + 1) + '. ' + esc(it.q) + '</label><input type="text" data-name="' + pk + '_' + i + '" autocomplete="off" spellcheck="false"></div>'; }).join(''));
+    } else if(P.type === 'mc_pictures'){
+      // sin lámina: las tres opciones se dibujan con los emoji 3D (pics: ["apple","banana","cake"] o [{"word":"monkey","n":3},…])
+      var strip = function(it){ if(!it.pics) return ''; return '<div class="abc">' + it.pics.map(function(p, j){ var w = typeof p === 'string' ? p : p.word, n = typeof p === 'string' ? 1 : (p.n || 1); var h = ''; for(var k = 0; k < n; k++) h += pic(w, n > 3 ? 36 : 56); return '<div style="border:1.5px solid var(--border);border-radius:12px;padding:8px 10px;min-width:120px;text-align:center"><div class="letter" style="text-align:left">' + 'ABC'[j] + '</div><div style="display:flex;flex-wrap:wrap;gap:2px;justify-content:center;max-width:200px">' + h + '</div></div>'; }).join('') + '</div>'; };
+      var one = function(it, i, ex){ return '<div class="q"><p><b>' + (ex ? 'Example' : i + 1) + '.</b> ' + esc(it.q) + '</p>' + (it.image ? img(it.image) : strip(it)) + '<div class="abc">' + ['A', 'B', 'C'].map(function(k, j){ return ex ? '<label class="' + (k === it.key ? 'ok' : '') + '"><span class="letter">' + k + '</span> ' + esc(it.options[j]) + (k === it.key ? ' ✓' : '') + '</label>' : '<label><input type="radio" name="' + pk + '_' + i + '" value="' + k + '"><span class="letter">' + k + '</span> ' + esc(it.options[j]) + '</label>'; }).join('') + '</div></div>'; };
+      h += card('listening', p, 'Listen and tick the box', 'Listen and choose the right picture: A, B or C.', (P.example ? one(P.example, 0, true) : '') + P.items.map(function(it, i){ return one(it, i, false); }).join(''));
+    } else if(P.type === 'colour' || P.type === 'colour_write'){
+      h += card('listening', p, P.type === 'colour' ? 'Listen and colour' : 'Listen and colour and write', 'Listen. Find each ' + esc(P.object || 'object') + ' by where it is and colour it with the colour you hear.' + (P.type === 'colour_write' ? ' One question asks you to write a word on the picture.' : '') + ' Only colour what you are told to colour.',
+        img(P.image).replace('<img ', '<img data-paint="' + P.image + '" ') + '<p class="small">' + esc(P.scene) + '</p>' +
+        '<div class="item ex"><span class="tagex">Example</span>the ' + esc(P.object) + ' ' + esc(P.example.where) + ' → <b>' + esc(P.example.colour) + '</b></div>' +
+        '<p class="small">Tick each one when you have coloured it:</p>' + P.items.map(function(it, i){ return '<div class="item"><label><input type="checkbox" data-name="' + pk + '_' + i + '" value="done"> ' + (i + 1) + '. I coloured it</label></div>'; }).join('') +
+        '<details class="key"><summary>Show the key (after listening twice)</summary><ol>' + P.items.map(function(it){ return '<li>the ' + esc(P.object) + ' <b>' + esc(it.where) + '</b> → <b>' + esc(it.colour) + '</b>' + (it.write ? ' · write <b>' + esc(it.write) + '</b>' : '') + '</li>'; }).join('') + '</ol></details>');
+    }
+  });
+  return h;
+}
+
+/* ---------- Reading & Writing ---------- */
+function rw(){
+  var R = T.rw, h = '';
+  Object.keys(R).sort().forEach(function(pk){
+    var P = R[pk], p = +pk.slice(1);
+    if(P.type === 'tick_cross'){
+      var box = function(it, i, ex){ return '<div class="box">' + pic(it.word, 72) + '<p>' + esc(it.sentence) + '</p>' + (ex ? '<span class="tagex">Example</span> <b>' + (it.key ? '✓' : '✗') + '</b>' : '<button type="button" data-tc="' + pk + '_' + i + '" data-v="yes">✓</button><button type="button" data-tc="' + pk + '_' + i + '" data-v="no">✗</button><input type="hidden" data-name="' + pk + '_' + i + '">') + '</div>'; };
+      h += card('rw', p, 'Look and read. Put a tick or a cross', 'Is the sentence right for the picture? Tick ✓ if it is right, cross ✗ if it is wrong.',
+        '<div class="tc">' + (P.example ? box(P.example, 0, true) : '') + P.items.map(function(it, i){ return box(it, i, false); }).join('') + '</div>');
+    } else if(P.type === 'yes_no'){
+      h += card('rw', p, 'Look and read. Write yes or no', 'Look at the picture. Read the sentences and write yes or no.',
+        img(P.image) + '<p class="small">' + esc(P.scene) + '</p>' +
+        '<div class="item ex"><span class="tagex">Example</span>' + esc(P.example.s) + ' → <b>' + esc(P.example.key) + '</b></div>' +
+        P.items.map(function(it, i){ return '<div class="item"><label>' + (i + 1) + '. ' + esc(it.s) + '</label><select data-name="' + pk + '_' + i + '"><option value="">—</option><option value="yes">yes</option><option value="no">no</option></select></div>'; }).join(''));
+    } else if(P.type === 'unscramble'){
+      var un = function(it, i, ex){ return '<div class="box" style="text-align:left"><div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">' + pic(it.word, 64) + '<div><div class="tiles">' + it.letters.map(function(l, j){ return ex ? '<span class="tile" style="display:inline-grid;place-items:center">' + esc(l) + '</span>' : '<button type="button" class="tile" data-tile="' + pk + '_' + i + '" data-l="' + esc(l) + '" data-j="' + j + '">' + esc(l) + '</button>'; }).join('') + '</div>' + (ex ? '<div class="ans"><span class="tagex">Example</span><b style="letter-spacing:.2em">' + esc(it.word) + '</b></div>' : '<div class="ans"><input type="text" data-name="' + pk + '_' + i + '" maxlength="' + (it.letters.length + 2) + '" autocomplete="off" spellcheck="false" placeholder="…"><button type="button" class="btn sec" data-clear="' + pk + '_' + i + '">⌫</button></div>') + '</div></div></div>'; };
+      h += card('rw', p, 'Look at the pictures. Look at the letters. Write the words', 'Tap the letters in the right order to write the word (or type it).',
+        '<div class="tc" style="grid-template-columns:1fr">' + (P.example ? un(P.example, 0, true) : '') + P.items.map(function(it, i){ return un(it, i, false); }).join('') + '</div>');
+    } else if(P.type === 'mc_cloze_copy'){
+      var opts = '<option value="">…</option>' + P.words.map(function(w){ return '<option value="' + esc(w) + '">' + esc(w) + '</option>'; }).join('');
+      var text = esc(P.text).replace(/__\((\d+)\)__/g, function(m, n){ n = +n; return n === 0 ? '<b><u>' + esc(P.example) + '</u></b>' : '<select data-name="' + pk + '_' + (n - 1) + '">' + opts + '</select>'; });
+      h += card('rw', p, 'Read this. Choose a word from the box', 'Read the text. Choose the right word for each gap. The first one is the example.',
+        (P.image ? img(P.image) : '') + '<div class="bank">' + P.words.map(function(w){ return '<span>' + pic(w, 44) + esc(w) + '</span>'; }).join('') + '</div><h4 style="margin:6px 0">' + esc(P.title) + '</h4><p class="cloze">' + text + '</p>');
+    } else if(P.type === 'story_one_word'){
+      var n = 0;
+      h += card('rw', p, 'Look at the pictures and read the story. Write one word', 'Read the story. Write one word for each answer.',
+        '<h4 style="margin:6px 0">' + esc(P.title) + '</h4>' + (P.image ? img(P.image) : '') + '<div class="story">' + P.parts.map(function(part){ return '<div class="part">' + (part.image ? img(part.image, '') : '') + '<p>' + esc(part.text) + '</p>' + (part.example ? '<div class="item ex"><span class="tagex">Example</span>' + esc(part.example.q) + ' → <b>' + esc(part.example.a) + '</b></div>' : '') + part.items.map(function(it){ n++; return '<div class="item"><label>' + n + '. ' + esc(it.q) + '</label><input type="text" data-name="' + pk + '_' + (n - 1) + '" autocomplete="off" spellcheck="false"></div>'; }).join('') + '</div>'; }).join('') + '</div>');
+    }
+  });
+  return h;
+}
+
+/* ---------- Speaking ---------- */
+function spk(q, model, id){ return '<div class="spk"><div class="q">' + esc(q) + (model ? '<div class="model">Model answer: <b>' + esc(model) + '</b></div>' : '') + '</div><button type="button" class="btn sec" data-say="' + esc(q) + '">🔊 Examiner</button></div>'; }
+function recorder(id, hint){ return '<div class="spk" data-rec="' + id + '"><div class="q">🎙️ ' + esc(hint) + '</div><button type="button" class="btn red" data-recbtn="' + id + '">● Record</button><span class="small" data-rectime="' + id + '">0:00</span><audio controls data-recaudio="' + id + '" class="hidden" style="max-width:260px"></audio><span class="small" data-recstate="' + id + '"></span></div>'; }
+function speaking(){
+  var S = T.speaking, h = '';
+  var P1 = S.p1;
+  if(P1 && P1.type === 'scene_cards'){
+    h += '<div class="card" data-screen="1"><h3>Speaking — Part 1 · Scene picture and object cards</h3><p class="instr">The examiner says <i>Where is the …?</i> — tap that thing in the picture. Then the examiner asks you to put the object cards on the picture — drag each card to the right place. Press 🔊 to hear the examiner.</p>' +
+      '<div class="scene" id="scene">' + img(P1.image, '') + Object.keys(P1.zones || {}).map(function(z){ var r = P1.zones[z]; return '<div class="zone" data-zone="' + z + '" style="left:' + r.x + '%;top:' + r.y + '%;width:' + r.w + '%;height:' + r.h + '%"></div>'; }).join('') + '</div><p class="small">' + esc(P1.scene) + '</p>' +
+      '<h4>Point to the picture</h4>' + P1.point.map(function(x, i){ return '<div class="spk"><div class="q">' + esc(x.say) + ' <span class="small" data-point-res="' + i + '"></span></div><button type="button" class="btn sec" data-say="' + esc(x.say) + '" data-point="' + i + '">🔊 Examiner</button></div>'; }).join('') +
+      '<h4>Object cards</h4><div class="cards" id="cards">' + P1.cards.map(function(c){ return '<div class="cardx" data-card="' + esc(c) + '">' + pic(c, 40) + esc(c) + '</div>'; }).join('') + '</div>' +
+      P1.place.map(function(x, i){ return '<div class="spk"><div class="q">' + esc(x.say) + ' <span class="small" data-place-res="' + i + '"></span></div><button type="button" class="btn sec" data-say="' + esc(x.say) + '" data-place="' + i + '">🔊 Examiner</button></div>'; }).join('') +
+      (mode === 'practice' ? '<p><button class="btn sec" data-checkspk="1">Check Part 1</button></p>' : '') + '</div>';
+  }
+  var P2 = S.p2;
+  if(P2){ h += '<div class="card" data-screen="1"><h3>Speaking — Part 2 · Questions about the picture</h3><p class="instr">Look at the picture and answer the examiner. Record yourself so your teacher can listen.</p>' + (P1 ? img(P1.image) : '') + P2.questions.map(function(q){ return spk(q.q, q.model); }).join('') + recorder('p2', 'Record your answers to Part 2') + '</div>'; }
+  var P3 = S.p3;
+  if(P3){ h += '<div class="card" data-screen="1"><h3>Speaking — Part 3 · Questions about the cards</h3><p class="instr">The examiner shows you a card and asks about it.</p>' + P3.questions.map(function(q){ return '<div class="spk"><div style="display:flex;align-items:center;gap:8px">' + pic(q.card, 48) + '</div><div class="q">' + esc(q.q) + '<div class="model">Model answer: <b>' + esc(q.model) + '</b></div></div><button type="button" class="btn sec" data-say="' + esc(q.q) + '">🔊 Examiner</button></div>'; }).join('') + recorder('p3', 'Record your answers to Part 3') + '</div>'; }
+  var P4 = S.p4;
+  if(P4){ h += '<div class="card" data-screen="1"><h3>Speaking — Part 4 · Questions about you</h3><p class="instr">Answer with short answers, like in the real test.</p>' + P4.questions.map(function(q){ return spk(q.q, q.model); }).join('') + recorder('p4', 'Record your answers to Part 4') + '<p class="small">Speaking is marked by your teacher with the three official scales: vocabulary and grammar, pronunciation, interaction.</p></div>'; }
+  return h;
+}
+
+/* ---------- interacción ---------- */
+function bind(){
+  $$('[data-mode]').forEach(function(b){ b.onclick = function(){ mode = b.dataset.mode; render(); }; });
+  $$('[data-go]').forEach(function(b){ b.onclick = function(){ tab = b.dataset.go; screen = 0; render(); if(mode === 'exam' && tab !== 'speaking') startTimer(); }; });
+  $$('[data-check]').forEach(function(b){ b.onclick = function(){ checkPart(b.dataset.check); }; });
+  $$('[data-tc]').forEach(function(b){ b.onclick = function(){ var box = b.parentNode; $$('button', box).forEach(function(x){ x.classList.toggle('on', x === b); }); $('input[data-name="' + b.dataset.tc + '"]', box).value = b.dataset.v; save(); }; });
+  $$('[data-tile]').forEach(function(b){ b.onclick = function(){ var inp = $('input[data-name="' + b.dataset.tile + '"]'); inp.value += b.dataset.l; b.disabled = true; save(); }; });
+  $$('[data-clear]').forEach(function(b){ b.onclick = function(){ var inp = $('input[data-name="' + b.dataset.clear + '"]'); inp.value = ''; $$('[data-tile="' + b.dataset.clear + '"]').forEach(function(t){ t.disabled = false; }); save(); }; });
+  $$('[data-say]').forEach(function(b){ b.onclick = function(){ say(b.dataset.say); if(b.dataset.point != null) armPoint(+b.dataset.point); if(b.dataset.place != null) armPlace(+b.dataset.place); }; });
+  $$('[data-checkspk]').forEach(function(b){ b.onclick = checkSpeaking; });
+  $$('[data-recbtn]').forEach(function(b){ b.onclick = function(){ toggleRec(b.dataset.recbtn); }; });
+  document.addEventListener('input', onInput); document.addEventListener('change', onInput);
+  if($('#scene')) setupScene();
+}
+function onInput(e){ if(e.target.closest && e.target.closest('#content')) save(); }
+function readDOM(){
+  $$('#content [data-name], #content input[type=radio]').forEach(function(el){
+    var n = el.dataset.name || el.name; if(!n) return;
+    if(el.type === 'radio'){ if(el.checked) STORE[key() + n] = el.value; }
+    else if(el.type === 'checkbox'){ STORE[key() + n] = el.checked ? 'done' : ''; }
+    else STORE[key() + n] = el.value;
+  });
+}
+function restore(){
+  $$('#content [data-name], #content input[type=radio]').forEach(function(el){
+    var n = el.dataset.name || el.name; if(!n) return; var v = STORE[key() + n]; if(v == null) return;
+    if(el.type === 'radio') el.checked = (el.value === v); else if(el.type === 'checkbox') el.checked = !!v; else el.value = v;
+    if(el.type === 'hidden' && v){ var box = el.parentNode; $$('button', box).forEach(function(x){ x.classList.toggle('on', x.dataset.v === v); }); }
+  });
+  // fichas de letras ya usadas
+  $$('[data-tile]').forEach(function(t){ var inp = $('input[data-name="' + t.dataset.tile + '"]'); if(inp && inp.value){ var used = inp.value.split(''); var tiles = $$('[data-tile="' + t.dataset.tile + '"]'); tiles.forEach(function(x){ x.disabled = false; }); used.forEach(function(ch){ var free = tiles.find(function(x){ return !x.disabled && x.dataset.l === ch; }); if(free) free.disabled = true; }); } });
+}
+function save(){ readDOM(); try { localStorage.setItem('yle_' + LEVEL, JSON.stringify({store: STORE, paint: PAINT, placed: PLACED})); } catch(e){} if(window.NIS_WORK) NIS_WORK.touch(); }
+try { var g = JSON.parse(localStorage.getItem('yle_' + LEVEL) || 'null'); if(g){ STORE = g.store || {}; PAINT = g.paint || {}; PLACED = g.placed || {}; } } catch(e){}
+
+/* pantallas: una parte cada vez, con flechas */
+function screens(){
+  var parts = $$('#content [data-screen]'); if(parts.length < 2) return;
+  parts.forEach(function(p, i){ p.classList.toggle('hidden', i !== screen); });
+  var bar = document.createElement('div'); bar.className = 'navbar';
+  bar.innerHTML = '<button class="btn sec" id="bPrev"' + (screen === 0 ? ' disabled' : '') + '>‹ Back</button><div class="mid">' + (screen + 1) + ' / ' + parts.length + ' · ' + esc($('h3', parts[screen]).textContent) + '<div class="dots">' + parts.map(function(x, i){ return '<i class="' + (i === screen ? 'on' : '') + '"></i>'; }).join('') + '</div></div>' + (screen === parts.length - 1 ? '<button class="btn" id="bFinish">' + (tab === 'speaking' ? 'Done ✓' : 'Finish ' + (tab === 'rw' ? 'Reading & Writing' : 'Listening')) + '</button>' : '<button class="btn" id="bNext">Next ›</button>');
+  $('#content').appendChild(bar);
+  var go = function(d){ readDOM(); screen = Math.max(0, Math.min(parts.length - 1, screen + d)); parts.forEach(function(p, i){ p.classList.toggle('hidden', i !== screen); }); bar.remove(); screens(); window.scrollTo({top: 0, behavior: 'smooth'}); };
+  if($('#bPrev')) $('#bPrev').onclick = function(){ go(-1); };
+  if($('#bNext')) $('#bNext').onclick = function(){ go(1); };
+  if($('#bFinish')) $('#bFinish').onclick = function(){ if(tab === 'speaking'){ tab = 'overview'; render(); return; } finishPaper(); };
+  document.onkeydown = function(e){ if(/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName)) return; if(e.key === 'ArrowRight' && $('#bNext')) go(1); if(e.key === 'ArrowLeft' && $('#bPrev') && !$('#bPrev').disabled) go(-1); };
+}
+
+/* ---------- corrección ---------- */
+function keyOf(paper, pk, i){
+  var P = T[paper][pk];
+  if(P.type === 'draw_lines') return P.items[i].person;
+  if(P.type === 'note_taking' || P.type === 'note_taking_names_numbers') return P.items[i].a;
+  if(P.type === 'mc_pictures') return P.items[i].key;
+  if(P.type === 'tick_cross') return P.items[i].key ? 'yes' : 'no';
+  if(P.type === 'yes_no') return P.items[i].key;
+  if(P.type === 'unscramble') return P.items[i].word;
+  if(P.type === 'mc_cloze_copy') return P.key[i];
+  if(P.type === 'story_one_word'){ var all = []; P.parts.forEach(function(x){ x.items.forEach(function(it){ all.push(it.a); }); }); return all[i]; }
+  return null;
+}
+var NUM = {one: '1', two: '2', three: '3', four: '4', five: '5', six: '6', seven: '7', eight: '8', nine: '9', ten: '10', eleven: '11', twelve: '12', thirteen: '13', fourteen: '14', fifteen: '15', sixteen: '16', seventeen: '17', eighteen: '18', nineteen: '19', twenty: '20'};
+function same(a, b){ a = norm(a); b = norm(b); if(NUM[a]) a = NUM[a]; if(NUM[b]) b = NUM[b]; return a === b; }
+function countItems(paper, pk){ var P = T[paper][pk]; if(P.type === 'story_one_word') return P.parts.reduce(function(n, x){ return n + x.items.length; }, 0); if(P.type === 'mc_cloze_copy') return P.key.length; return (P.items || []).length; }
+function checkPart(pk, silent){
+  readDOM(); var paper = tab === 'rw' ? 'rw' : 'listening'; var P = T[paper][pk];
+  if(P.type === 'colour' || P.type === 'colour_write'){ var det = $('[data-part="' + pk + '"] details'); if(det) det.open = true; return {score: 0, total: 0, teacher: P.items.length}; }
+  var score = 0, total = countItems(paper, pk);
+  for(var i = 0; i < total; i++){
+    var k = keyOf(paper, pk, i), v = STORE[key() + pk + '_' + i]; var ok = v != null && v !== '' && same(v, k);
+    if(ok) score++;
+    if(!silent){
+      var el = $('#content [data-name="' + pk + '_' + i + '"]') || $('#content input[name="' + pk + '_' + i + '"][value="' + v + '"]');
+      if(el && el.type !== 'hidden'){ el.classList.remove('ok', 'bad'); el.classList.add(ok ? 'ok' : 'bad'); if(el.type === 'radio') el.parentNode.classList.add(ok ? 'ok' : 'bad'); if(!ok && el.parentNode && !$('.corr', el.parentNode)){ var s = document.createElement('span'); s.className = 'corr'; s.textContent = '→ ' + k; el.parentNode.appendChild(s); } }
+      else if(el && el.type === 'hidden'){ el.parentNode.classList.add(ok ? 'ok' : 'bad'); if(!ok && !$('.corr', el.parentNode)){ var s2 = document.createElement('span'); s2.className = 'corr'; s2.textContent = '→ ' + (k === 'yes' ? '✓' : '✗'); el.parentNode.appendChild(s2); } }
+    }
+  }
+  if(!silent){ var c = $('[data-part="' + pk + '"]'); var box = $('.score', c) || document.createElement('div'); box.className = 'score'; box.textContent = 'Part ' + pk.slice(1) + ': ' + score + ' / ' + total; c.appendChild(box); }
+  return {score: score, total: total};
+}
+function band(pct){ var b = (SPECS.shields && SPECS.shields.nis_estimate_bands) || [[90, 5], [75, 4], [60, 3], [40, 2], [0, 1]]; for(var i = 0; i < b.length; i++) if(pct >= b[i][0]) return b[i][1]; return 1; }
+function finishPaper(){
+  stopTimer(); var paper = tab === 'rw' ? 'rw' : 'listening'; var parts = {}, score = 0, total = 0, teacher = 0;
+  $$('#content [data-screen]').forEach(function(p){ p.classList.remove('hidden'); });
+  Object.keys(T[paper]).sort().forEach(function(pk){ var r = checkPart(pk, false); parts[pk] = r; score += r.score; total += r.total; teacher += r.teacher || 0; });
+  var pct = total ? Math.round(100 * score / total) : 0, sh = band(pct);
+  var res = {score: score, total: total, pct: pct, shields: sh, parts: parts, mode: mode, at: new Date().toISOString()};
+  STORE[key() + 'result'] = res; save();
+  var msg = document.createElement('div'); msg.className = 'card';
+  msg.innerHTML = '<h3>' + (paper === 'rw' ? 'Reading & Writing' : 'Listening') + ' — result</h3><div class="score">' + score + ' / ' + total + ' auto-marked (' + pct + ' %)' + (teacher ? ' · ' + teacher + ' colouring items for your teacher to check' : '') + shields(sh) + '</div><p class="small">Estimated shields are your school\'s estimate from this practice test, not a Cambridge result.</p><p id="saveMsg" class="small">Saving…</p>';
+  $('#content').insertBefore(msg, $('#content').firstChild); window.scrollTo({top: 0, behavior: 'smooth'});
+  var bar = $('.navbar'); if(bar) bar.remove();
+  saveAttempt(paper, res).then(function(t){ $('#saveMsg').textContent = t; });
+}
+function answersOf(paper){ var out = {}; var k = key(); Object.keys(STORE).forEach(function(x){ if(x.indexOf(k) === 0 && x !== k + 'result') out[x.slice(k.length)] = STORE[x]; }); return out; }
+function drawingsOf(){ var out = {}; var k = (cur + 1) + '#'; Object.keys(PAINT).forEach(function(x){ if(x.indexOf(k) === 0) out[x.slice(k.length)] = PAINT[x]; }); return out; }
+var sb = null;
+function client(){ if(sb) return sb; if(!window.supabase || !window.NIS_CONFIG) return null; sb = supabase.createClient(NIS_CONFIG.SUPABASE_URL, NIS_CONFIG.SUPABASE_KEY); return sb; }
+function saveAttempt(paper, res, extra){
+  var c = client(); if(!c) return Promise.resolve('Saved on this device (open the test from the portal to save it to your account).');
+  return c.auth.getUser().then(function(u){ var user = u && u.data && u.data.user; if(!user) return 'Saved on this device. Sign in through the portal to keep it in your account.';
+    var row = Object.assign({student_id: user.id, level: LEVEL, test: T.number, paper: paper, mode: mode, score: res.score, total: res.total, parts: res.parts || {}, answers: answersOf(paper), drawings: drawingsOf(), duration_sec: Math.min(32000, Math.round((Date.now() - t0) / 1000)), shields_est: res.shields || null}, extra || {});
+    return c.from('yle_attempts').insert(row).then(function(r){ return r.error ? 'Could not save to your account: ' + r.error.message : 'Saved to your account ✓ Your teacher can see it.'; });
+  }).catch(function(e){ return 'Could not save: ' + e.message; });
+}
+
+/* ---------- temporizador (modo examen) ---------- */
+function startTimer(){ stopTimer(); var s = SPECS.levels[LEVEL][tab === 'rw' ? 'rw' : 'listening']; timerLeft = (s.minutes || 20) * 60; t0 = Date.now(); var el = $('#timer'); el.classList.remove('hidden', 'low'); tick(); timerInt = setInterval(tick, 1000); }
+function tick(){ var el = $('#timer'); var m = Math.floor(timerLeft / 60), s = timerLeft % 60; el.textContent = m + ':' + (s < 10 ? '0' : '') + s; if(timerLeft <= 120) el.classList.add('low'); if(timerLeft <= 0){ stopTimer(); if(tab !== 'speaking' && tab !== 'overview') finishPaper(); return; } timerLeft--; }
+function stopTimer(){ if(timerInt) clearInterval(timerInt); timerInt = null; $('#timer').classList.add('hidden'); }
+
+/* ---------- pintura sobre láminas ---------- */
+window.attachPaintYle = function(){
+  if(!window.PaintLayer) return;
+  $$('#content img[data-paint]').forEach(function(im){
+    if(im.__pl) return; var id = im.dataset.paint, k = (cur + 1) + '#' + id;
+    PaintLayer.attach(im, {tools: im.dataset.tools ? im.dataset.tools.split(',').concat(['text']) : undefined, initial: PAINT[k], onChange: function(d){ PAINT[k] = d; save(); }});
+  });
+};
+
+/* ---------- examinador virtual ---------- */
+function say(txt){
+  if(!window.speechSynthesis) return;
+  speechSynthesis.cancel(); var u = new SpeechSynthesisUtterance(txt); u.lang = 'en-GB'; u.rate = LEVEL === 'starters' ? .82 : .9;
+  var v = speechSynthesis.getVoices().filter(function(x){ return /en-GB/i.test(x.lang); }); if(v.length) u.voice = v.find(function(x){ return /female|Libby|Sonia|Hazel/i.test(x.name); }) || v[0];
+  speechSynthesis.speak(u);
+}
+/* señalar en la escena / colocar tarjetas */
+var armedPoint = null, armedPlace = null;
+function armPoint(i){ armedPoint = i; armedPlace = null; $$('#cards .cardx').forEach(function(c){ c.classList.remove('on'); }); }
+function armPlace(i){ armedPlace = i; armedPoint = null; var P1 = T.speaking.p1; var c = $('#cards .cardx[data-card="' + P1.place[i].card + '"]'); if(c) c.classList.add('on'); }
+function inZone(x, y, z){ return z && x >= z.x && x <= z.x + z.w && y >= z.y && y <= z.y + z.h; }
+function setupScene(){
+  var sc = $('#scene'), P1 = T.speaking.p1, k = (cur + 1) + '#';
+  POINTED[k] = POINTED[k] || {}; PLACED[k] = PLACED[k] || {};
+  var pct = function(e){ var r = sc.getBoundingClientRect(); return {x: 100 * (e.clientX - r.left) / r.width, y: 100 * (e.clientY - r.top) / r.height}; };
+  sc.addEventListener('click', function(e){
+    if(e.target.closest('.drop')) return;
+    var p = pct(e);
+    if(armedPoint != null){ POINTED[k][armedPoint] = p; drawPins(); }
+    else if(armedPlace != null){ PLACED[k][armedPlace] = p; drawDrops(); armedPlace = null; $$('#cards .cardx').forEach(function(c){ c.classList.remove('on'); }); save(); }
+  });
+  // arrastrar tarjetas
+  $$('#cards .cardx').forEach(function(c){
+    c.addEventListener('pointerdown', function(e){ e.preventDefault(); var name = c.dataset.card; var idx = P1.place.findIndex(function(x){ return x.card === name; }); if(idx < 0) return; armedPlace = idx; c.classList.add('on');
+      var ghost = c.cloneNode(true); ghost.style.position = 'fixed'; ghost.style.pointerEvents = 'none'; ghost.style.opacity = '.85'; ghost.style.zIndex = 99; document.body.appendChild(ghost);
+      var move = function(ev){ ghost.style.left = (ev.clientX - 39) + 'px'; ghost.style.top = (ev.clientY - 43) + 'px'; }; move(e);
+      var up = function(ev){ document.removeEventListener('pointermove', move); document.removeEventListener('pointerup', up); ghost.remove(); var r = sc.getBoundingClientRect(); if(ev.clientX >= r.left && ev.clientX <= r.right && ev.clientY >= r.top && ev.clientY <= r.bottom){ PLACED[k][idx] = pct(ev); drawDrops(); save(); } armedPlace = null; c.classList.remove('on'); };
+      document.addEventListener('pointermove', move); document.addEventListener('pointerup', up);
+    });
+  });
+  function drawPins(){ $$('.pin', sc).forEach(function(p){ p.remove(); }); Object.keys(POINTED[k]).forEach(function(i){ var p = POINTED[k][i]; var d = document.createElement('div'); d.className = 'pin'; d.style.left = p.x + '%'; d.style.top = p.y + '%'; d.title = P1.point[i].say; sc.appendChild(d); }); }
+  function drawDrops(){ $$('.drop', sc).forEach(function(p){ p.remove(); }); Object.keys(PLACED[k]).forEach(function(i){ var p = PLACED[k][i]; var d = document.createElement('div'); d.className = 'drop'; d.style.left = p.x + '%'; d.style.top = p.y + '%'; d.innerHTML = pic(P1.place[i].card, 60); sc.appendChild(d); }); $$('#cards .cardx').forEach(function(c){ c.classList.toggle('used', P1.place.some(function(x, i){ return x.card === c.dataset.card && PLACED[k][i]; })); }); }
+  drawPins(); drawDrops();
+}
+function checkSpeaking(){
+  var P1 = T.speaking.p1, k = (cur + 1) + '#', okP = 0, okC = 0;
+  P1.point.forEach(function(x, i){ var p = POINTED[k][i]; var ok = p && inZone(p.x, p.y, P1.zones[x.target]); if(ok) okP++; var el = $('[data-point-res="' + i + '"]'); if(el) el.textContent = p ? (ok ? '✓' : '✗ (not there)') : '— tap the picture after listening'; });
+  P1.place.forEach(function(x, i){ var p = PLACED[k][i]; var c = p && {x: p.x, y: p.y}; var ok = c && inZone(c.x, c.y, x.zone); if(ok) okC++; var el = $('[data-place-res="' + i + '"]'); if(el) el.textContent = p ? (ok ? '✓' : '✗ (wrong place)') : '— drag the card'; });
+  var c = $('#scene').closest('.card'); var box = $('.score', c) || document.createElement('div'); box.className = 'score'; box.textContent = 'Part 1: pointed ' + okP + ' / ' + P1.point.length + ' · cards ' + okC + ' / ' + P1.place.length; c.appendChild(box);
+  saveAttempt('speaking', {score: okP + okC, total: P1.point.length + P1.place.length, parts: {p1: {score: okP + okC, total: P1.point.length + P1.place.length}}, shields: null});
+}
+/* grabadora */
+var recs = {};
+function toggleRec(id){
+  var st = recs[id]; var btn = $('[data-recbtn="' + id + '"]'), time = $('[data-rectime="' + id + '"]'), au = $('[data-recaudio="' + id + '"]'), msg = $('[data-recstate="' + id + '"]');
+  if(st && st.mr && st.mr.state === 'recording'){ st.mr.stop(); return; }
+  if(!navigator.mediaDevices){ msg.textContent = 'This browser cannot record.'; return; }
+  navigator.mediaDevices.getUserMedia({audio: true}).then(function(stream){
+    var mr = new MediaRecorder(stream), chunks = [], start = Date.now(); recs[id] = {mr: mr};
+    var tk = setInterval(function(){ var s = Math.floor((Date.now() - start) / 1000); time.textContent = Math.floor(s / 60) + ':' + (s % 60 < 10 ? '0' : '') + (s % 60); if(s >= 120) mr.stop(); }, 250);
+    mr.ondataavailable = function(e){ chunks.push(e.data); };
+    mr.onstop = function(){ clearInterval(tk); stream.getTracks().forEach(function(t){ t.stop(); }); var blob = new Blob(chunks, {type: mr.mimeType || 'audio/webm'}); REC[(cur + 1) + '#' + id] = blob; au.src = URL.createObjectURL(blob); au.classList.remove('hidden'); btn.textContent = '● Record again'; btn.classList.remove('sec'); msg.textContent = 'Saved on this device. Uploading…'; upload(id, blob).then(function(t){ msg.textContent = t; }); };
+    mr.start(); btn.textContent = '■ Stop'; msg.textContent = 'Recording…';
+  }).catch(function(){ msg.textContent = 'Microphone not allowed.'; });
+}
+function upload(id, blob){
+  var c = client(); if(!c) return Promise.resolve('Saved on this device.');
+  return c.auth.getUser().then(function(u){ var user = u && u.data && u.data.user; if(!user) return 'Saved on this device (sign in through the portal to send it to your teacher).';
+    var ext = /ogg/.test(blob.type) ? 'ogg' : 'webm', ruta = user.id + '/yle-' + LEVEL + '-t' + nn() + '-' + id + '.' + ext;
+    return c.storage.from('fun-speaking').upload(ruta, blob, {upsert: true, contentType: blob.type || 'audio/webm'}).then(function(r){ if(r.error) return 'Saved on this device (' + r.error.message + ').';
+      return saveAttempt('speaking', {score: null, total: null, parts: {}, shields: null}, {audio_path: ruta, answers: {part: id}}).then(function(){ return 'Sent to your teacher ✓'; }); });
+  });
+}
+
+/* ---------- guardado en la cuenta (NIS_WORK) ---------- */
+if(window.NIS_WORK){
+  NIS_WORK.attach(Object.assign(NIS_WORK.ficha(), {
+    slug: 'yle-' + LEVEL, title: NAMES[LEVEL] + ' — Practice Tests',
+    read: function(){ readDOM(); return {store: STORE, paint: PAINT, placed: PLACED}; },
+    write: function(d){ if(d && d.store) Object.keys(d.store).forEach(function(k){ STORE[k] = d.store[k]; }); if(d && d.paint) Object.keys(d.paint).forEach(function(k){ PAINT[k] = d.paint[k]; }); if(d && d.placed) Object.keys(d.placed).forEach(function(k){ PLACED[k] = d.placed[k]; }); },
+    after: function(){ restore(); },
+    count: function(d){ return Object.keys(((d || {}).store) || {}).length; },
+    answers: function(d){ var p = (d && d.store) || {}, out = {}; Object.keys(p).forEach(function(k){ if(/#result$/.test(k)) out['Test ' + k.replace(/#/g, ' / ')] = p[k].score + ' / ' + p[k].total + ' (' + p[k].pct + ' %)'; else if(p[k] !== '') out['Test ' + k.replace(/#/g, ' / ')] = String(p[k]); }); return out; }
+  }));
+}
+if(window.speechSynthesis) speechSynthesis.onvoiceschanged = function(){};
+init();
+})();
+</script>
+</body>
+</html>

@@ -34,6 +34,13 @@ better best worse worst more most less least further farther bigger biggest smal
 # como cuenta items cada tipo de parte del esquema actual (flyers-practice)
 def cuenta(parte):
     if not isinstance(parte, dict): return 0
+    # esquema nuevo (yle/<level>/test-NN.json): cada parte declara su tipo
+    t = parte.get('type')
+    if t == 'mc_cloze_copy': return len(parte.get('key') or [])
+    if t == 'story_one_word': return sum(len(x.get('items') or []) for x in parte.get('parts') or [])
+    if t in ('gapped_text_title',): return len(re.findall(r'__\(\d+\)__', parte.get('text', ''))) + 1
+    if t in ('story_writing', 'productive_writing'): return len(parte.get('items') or []) or 1
+    if t and isinstance(parte.get('items'), list): return len(parte['items'])
     for k in ('items', 'defs', 'pairs', 'questions', 'labels', 'names', 'answers', 'instructions'):
         if isinstance(parte.get(k), list): return len(parte[k])
     if 'words' in parte and 'title_choices' in parte:   # texto con huecos + titulo
@@ -56,7 +63,7 @@ def textos_rw(t):
     def rec(x):
         if isinstance(x, str): out.append(x)
         elif isinstance(x, list): [rec(i) for i in x]
-        elif isinstance(x, dict): [rec(v) for v in x.values()]
+        elif isinstance(x, dict): [rec(v) for k, v in x.items() if k not in ('type', 'image', 'images', 'id', 'person', 'card', 'target', 'zone', 'zones')]
     rec(t.get('rw', {})); rec(t.get('listening', {}))
     return out
 
