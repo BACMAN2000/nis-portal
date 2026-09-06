@@ -24,6 +24,11 @@ def engine(nombre):
     c = c.replace('<a href="index.html" class="btn sec" style="text-decoration:none">◀ Portal</a>', '<a href="cambridge-portal.html" class="btn sec" style="text-decoration:none">◀ Cambridge</a>')
     c = c.replace('<a href="index.html" class="btn sec">◀ Portal</a>', '<a href="cambridge-portal.html" class="btn sec">◀ Cambridge</a>')
     c = c.replace('padding:10px 18px 10px 118px', 'padding:10px 18px')
+    # En cohasset.pe el material es solo para alumnos matriculados: el colegio no
+    # lo vende a externos. La puerta va aqui porque estas paginas se regeneran y
+    # cualquier cambio hecho a mano en el clon se perderia en la siguiente copia.
+    if '</body>' in c and 'yle-access.js' not in c:
+        c = c.replace('</body>', '<script src="yle-access.js?v=1"></script>' + chr(10) + '</body>', 1)
     for d in DEST:
         io.open(os.path.join(d, nombre), 'w', encoding='utf-8').write(c)
     print('%s -> Cohasset (%d -> %d bytes)' % (nombre, len(s), len(c)))
