@@ -671,8 +671,11 @@ window.submit=async(forzado)=>{
       if(txt&&EX.wr.task){
         const r=await sb.from('unit_submissions').upsert({
           student_id:me.uid, grade:GRADE, unit:4, milestone:'exam-'+EX.kind+'-'+EX.lvl, kind:'report',
+          /* draft:false = entregado. Un examen no tiene borrador: cuando se
+             pulsa Submit, ese texto es el que se corrige. Sin esto la cola del
+             profesor lo enseñaba como borrador y parecía que faltaba algo. */
           payload:{text:txt, words:cuenta(txt), task:EX.wr.task, level:EX.lvl.toUpperCase(),
-                   exam:KINDS[EX.kind][1], units:UNITS},
+                   exam:KINDS[EX.kind][1], units:UNITS, draft:false},
           duration_sec:Math.min(32000,dur)
         },{onConflict:'student_id,grade,unit,milestone,kind'});
         wrEstado=r.error?'⚠️ Your writing could not be sent: '+esc(r.error.message)

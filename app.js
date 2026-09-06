@@ -6044,10 +6044,17 @@ async function unitProductsPanel(){
   /* Las entregas de ficha llevan milestone 'w1s1'; el producto final, 'final'.
      Van en dos tablas distintas porque se corrigen distinto. */
   const fichas = data.filter(r=>r.kind==='worksheet');
+  /* El hito entra en la clave. El producto de la unidad y el Writing de un
+     examen de unidad son los dos kind='report' del mismo alumno y la misma
+     unidad: sin el hito, el examen tapaba el producto final en esta tabla (en
+     la base convivían, porque ahí la clave sí lleva el hito). Como todo lo del
+     producto comparte hito 'final', sus cuatro piezas siguen juntas en una
+     fila, y cada examen se lleva la suya. */
   const porAlumno = {};
   data.filter(r=>r.kind!=='worksheet').forEach(r=>{
-    const k = r.student_id+'|'+r.grade+'|'+r.unit;
-    (porAlumno[k] = porAlumno[k] || {alumno:r.student_id, grade:r.grade, unit:r.unit})[r.kind] = r;
+    const k = r.student_id+'|'+r.grade+'|'+r.unit+'|'+r.milestone;
+    (porAlumno[k] = porAlumno[k] || {alumno:r.student_id, grade:r.grade, unit:r.unit,
+                                     milestone:r.milestone})[r.kind] = r;
   });
   const filas = Object.values(porAlumno);
 
@@ -6068,6 +6075,14 @@ async function unitProductsPanel(){
       ${UNIT_LVL.map(l=>`<option value="${l}"${valor===l?' selected':''}>${l}</option>`).join('')}
     </select>`;
 
+  /* De qué es esta fila. El producto de la unidad no lleva etiqueta (es lo
+     normal); el Writing de un examen sí, con su versión y su nivel, porque se
+     corrige con la misma rúbrica pero no es el producto. */
+  const _unitHito = f => {
+    const m = /^exam-(practice|official)-(a2|b1|b2|c1)$/.exec(f.milestone||'');
+    if(!m) return '';
+    return ` <span class="badge" style="background:#fef3c7;color:#78350f">${m[1]==='official'?'🎓 examen oficial':'📝 examen de práctica'} · ${m[2].toUpperCase()}</span>`;
+  };
   const fila = f => {
     const p = quien[f.alumno]||{};
     const rep = f.report, pres = f.presentation, self = f.selfassess, nb = f.notebook;
@@ -6078,7 +6093,7 @@ async function unitProductsPanel(){
     const entregado = !!(rep && rep.payload && rep.payload.draft===false);
     return `<tr>
       <td>${esc(p.full_name||'(alumno)')} <span class="muted">${p.grade_id?p.grade_id+'º'+(p.section||''):''}</span></td>
-      <td class="muted">${esc(f.grade)} · U${f.unit}</td>
+      <td class="muted">${esc(f.grade)} · U${f.unit}${_unitHito(f)}</td>
       <td>${rep ? `<button class="btn small" onclick="unitVerTexto('${rep.id}')">📄 ${pal} pal.</button>
               <span class="badge" style="background:${entregado?'#dcfce7':'#fef9c3'}">${entregado?'entregado':'borrador'}</span>`
             : '<span class="muted">—</span>'}</td>
