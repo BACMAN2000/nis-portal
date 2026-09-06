@@ -1,0 +1,702 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google" content="notranslate">
+<title>Unit Exams — Portal NIS</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{ --blue:#1d6fb8; --blue-d:#154e7f; --ink:#0f172a; --muted:#64748b; --line:#e2e8f0; --gold:#b8934a }
+  *{ box-sizing:border-box; margin:0 }
+  body{ font-family:'Montserrat',system-ui,sans-serif; background:#f1f5f9; color:var(--ink); min-height:100vh }
+  header{ background:#fff; border-bottom:1px solid var(--line); padding:10px 18px; display:flex; gap:14px; align-items:center;
+    position:sticky; top:0; z-index:20 }
+  header img{ height:34px }
+  header .sub{ font-size:11px; font-weight:800; letter-spacing:1.5px; color:var(--muted) }
+  .backbtn{ margin-left:auto; background:#eef2f9; color:var(--blue-d); border:none; border-radius:9px; padding:8px 14px;
+    font-family:inherit; font-weight:700; cursor:pointer; font-size:13px }
+  .backbtn:hover{ background:#dbe4f3 }
+  .backbtn.ghost{ margin-left:0 }
+  main{ max-width:900px; margin:0 auto; padding:22px 16px 60px }
+  h1{ font-size:1.5rem; color:var(--blue-d) }
+  .lead{ color:var(--muted); font-size:14px; margin:6px 0 18px }
+  .muted{ color:var(--muted) }
+  .grid{ display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)) }
+  .card{ background:#fff; border:1px solid var(--line); border-radius:16px; padding:18px; cursor:pointer;
+    box-shadow:0 6px 18px rgba(15,23,42,.06); transition:.15s; position:relative }
+  .card:hover{ transform:translateY(-2px); box-shadow:0 10px 26px rgba(15,23,42,.12); border-color:#93c5fd }
+  .card h2{ font-size:15.5px; color:var(--blue-d); margin:6px 0 4px }
+  .card .desc{ font-size:13px; color:var(--muted) }
+  .card .ico{ font-size:2rem }
+  .card.locked{ opacity:.62; cursor:default }
+  .card.locked:hover{ transform:none; border-color:var(--line); box-shadow:0 6px 18px rgba(15,23,42,.06) }
+  .chip{ display:inline-block; background:#eef2f9; color:var(--blue-d); font-weight:700; font-size:11.5px;
+    border-radius:9px; padding:3px 10px; margin-top:8px }
+  .chip.ok{ background:#dcfce7; color:#065f46 }
+  .chip.no{ background:#fee2e2; color:#991b1b }
+  .inherit{ display:block; font-size:11.5px; color:var(--muted); margin-top:6px }
+  .hero{ background:linear-gradient(135deg,#14524b,#0f2f42); color:#a7f3d0; border-radius:18px; padding:20px 18px;
+    margin-bottom:18px; position:relative; overflow:hidden; border:1px solid var(--gold) }
+  .hero::after{ content:"EXAM"; position:absolute; top:16px; right:-30px; transform:rotate(35deg); background:#b91c1c;
+    color:#fff; font-weight:800; font-size:11px; letter-spacing:2px; padding:4px 42px }
+  .hero h1{ color:#d1fae5 }
+  .hero p{ color:#bfe8dc; font-size:13px; margin-top:4px }
+  .note{ background:#fffbeb; border-left:4px solid #f59e0b; border-radius:10px; padding:10px 14px; font-size:13px;
+    color:#78350f; margin-bottom:16px }
+  .note.bad{ background:#fef2f2; border-color:#fca5a5; color:#7f1d1d }
+  /* examen */
+  .exam-top{ position:sticky; top:56px; z-index:10; background:#fff; border:1.5px solid var(--line); border-radius:14px;
+    padding:10px 16px; margin-bottom:16px; box-shadow:0 8px 20px rgba(15,23,42,.1); display:flex; gap:14px; align-items:center; flex-wrap:wrap }
+  .exam-top b{ color:var(--blue-d) }
+  .timer{ font-variant-numeric:tabular-nums; font-weight:800; font-size:17px; color:var(--blue-d) }
+  .timer.low{ color:#dc2626; animation:blink 1s infinite }
+  @keyframes blink{ 50%{ opacity:.45 } }
+  .tprog{ flex:1; min-width:120px; height:8px; background:#e2e8f0; border-radius:5px; overflow:hidden }
+  .tprog span{ display:block; height:100%; background:var(--blue); transition:width 1s linear }
+  .part-head{ background:#fff; border:1px solid var(--line); border-left:5px solid var(--blue); border-radius:14px;
+    padding:14px 18px; margin-bottom:14px }
+  .part-head h2{ font-size:16px; color:var(--blue-d) }
+  .part-head p{ font-size:13px; color:var(--muted); margin-top:5px; line-height:1.55 }
+  .q{ background:#fff; border:1px solid var(--line); border-radius:14px; padding:16px 18px; margin-bottom:14px }
+  .q .tag{ font-size:10.5px; font-weight:800; letter-spacing:.6px; color:var(--gold); text-transform:uppercase }
+  .q h3{ font-size:15px; margin:4px 0 10px; line-height:1.6; font-weight:600 }
+  .opt{ display:block; width:100%; text-align:left; background:#f8fafc; border:1.5px solid var(--line); border-radius:11px;
+    padding:11px 14px; margin:7px 0; cursor:pointer; font-family:inherit; font-size:14px; font-weight:600; color:var(--ink) }
+  .opt:hover{ border-color:#93c5fd }
+  .opt.sel{ background:#dbeafe; border-color:var(--blue) }
+  .opt.correct{ background:#dcfce7; border-color:#4ade80; color:#065f46 }
+  .opt.wrong{ background:#fee2e2; border-color:#f87171; color:#991b1b }
+  .opt .letter{ display:inline-block; width:22px; font-weight:800; color:var(--blue-d) }
+  input.tin{ border:none; border-bottom:2.5px solid var(--blue); font-family:inherit; font-size:15px; font-weight:700;
+    color:var(--blue-d); width:230px; text-align:center; padding:6px; background:#f8fafc; border-radius:8px 8px 0 0 }
+  input.tin:focus{ outline:none; background:#eff6ff }
+  input.tin.correct{ border-color:#4ade80; background:#dcfce7; color:#065f46 }
+  input.tin.wrong{ border-color:#f87171; background:#fee2e2; color:#991b1b }
+  .root{ display:inline-block; background:#fef3c7; color:#78350f; font-weight:800; font-size:12px; letter-spacing:1px;
+    border-radius:7px; padding:3px 9px; margin-left:6px }
+  .kt-lead{ background:#f8fafc; border-left:3px solid var(--line); border-radius:8px; padding:8px 12px; font-size:14px; margin-bottom:9px }
+  .kt-line{ font-size:14.5px; line-height:2.1 }
+  /* ordenar palabras */
+  .bank{ display:flex; flex-wrap:wrap; gap:7px; margin:8px 0 }
+  .word{ background:#eef2f9; border:1.5px solid var(--line); border-radius:9px; padding:7px 12px; cursor:pointer;
+    font-family:inherit; font-size:14px; font-weight:600; color:var(--blue-d) }
+  .word:hover{ border-color:#93c5fd }
+  .word.used{ opacity:.3; pointer-events:none }
+  .built{ min-height:46px; background:#f8fafc; border:2px dashed var(--line); border-radius:11px; padding:9px 12px;
+    display:flex; flex-wrap:wrap; gap:7px; align-items:center }
+  .built:empty::before{ content:"Tap the words below in the right order"; color:var(--muted); font-size:13px }
+  .built .word{ background:#dbeafe; border-color:var(--blue) }
+  .built.correct{ border-color:#4ade80; background:#dcfce7 }
+  .built.wrong{ border-color:#f87171; background:#fee2e2 }
+  /* writing */
+  textarea.wr{ width:100%; min-height:230px; border:1.5px solid var(--line); border-radius:12px; padding:12px 14px;
+    font-family:inherit; font-size:14.5px; line-height:1.65; resize:vertical; color:var(--ink) }
+  textarea.wr:focus{ outline:none; border-color:var(--blue) }
+  .wcount{ font-size:12.5px; font-weight:700; color:var(--muted); margin-top:6px }
+  .wcount.ok{ color:#059669 } .wcount.no{ color:#b45309 }
+  .tips{ font-size:13px; color:var(--muted); margin:8px 0 0; padding-left:18px; line-height:1.7 }
+  .taskpick{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px }
+  .taskpick button{ border:1.5px solid var(--line); background:#f8fafc; border-radius:10px; padding:9px 14px;
+    font-family:inherit; font-weight:700; font-size:13px; color:var(--blue-d); cursor:pointer }
+  .taskpick button.on{ background:#dbeafe; border-color:var(--blue) }
+  .aud-btn{ background:#eef2f9; color:var(--blue-d); border:none; border-radius:9px; padding:10px 16px;
+    font-family:inherit; font-weight:700; font-size:13.5px; cursor:pointer; margin:4px 0 10px }
+  .aud-btn:hover{ background:#dbe4f3 }
+  .explain{ background:#eff6ff; border-left:4px solid var(--blue); border-radius:8px; padding:9px 12px; font-size:13px;
+    color:#1e3a5f; margin-top:8px; line-height:1.6 }
+  .script{ background:#fffbeb; border:1px solid #fcd34d; border-radius:12px; padding:12px 16px; font-size:13px;
+    color:#78350f; white-space:pre-wrap; line-height:1.7; margin-bottom:14px }
+  .btn{ background:var(--blue); color:#fff; border:none; border-radius:11px; padding:12px 22px; font-family:inherit;
+    font-weight:700; font-size:14.5px; cursor:pointer }
+  .btn:hover{ background:var(--blue-d) }
+  .btn.ghost{ background:#eef2f9; color:var(--blue-d) }
+  .btn.ghost:hover{ background:#dbe4f3 }
+  .btn.sm{ padding:7px 13px; font-size:12.5px; border-radius:9px }
+  .pager{ display:flex; gap:12px; align-items:center; justify-content:space-between; margin-top:18px }
+  .arrow{ background:#eef2f9; color:var(--blue-d); border:none; border-radius:12px; width:52px; height:44px;
+    font-size:18px; cursor:pointer; flex:none }
+  .arrow:disabled{ opacity:.35; cursor:default }
+  .pgdots{ text-align:center; font-size:12.5px; color:var(--muted); font-weight:700 }
+  .dot{ display:inline-block; width:9px; height:9px; border-radius:50%; background:#cbd5e1; margin:6px 3px 0 }
+  .dot.now{ background:var(--blue); transform:scale(1.25) } .dot.done{ background:#86efac }
+  .center{ text-align:center }
+  .score{ font-size:2.6rem; font-weight:800; color:var(--blue-d) }
+  .band{ font-size:1.05rem; font-weight:800; margin-top:4px }
+  table.res{ width:100%; border-collapse:collapse; font-size:13.5px; margin-top:10px }
+  table.res th,table.res td{ padding:7px 9px; border-bottom:1px solid var(--line); text-align:left }
+  table.res th{ color:var(--muted); font-size:11.5px; letter-spacing:.5px; text-transform:uppercase }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+<script src="config.js"></script>
+<script src="nis-nav.js?v=2"></script>
+</head>
+<body>
+<header>
+  <img src="assets/logo-h.svg" alt="Nordic International School" onerror="this.style.display='none'">
+  <div class="sub">9TH GRADE · UNIT EXAMS</div>
+  <button class="backbtn" onclick="location.href='./'">🏫 Portal</button>
+</header>
+<main id="main"><p class="muted">Loading…</p></main>
+
+<script>
+/* =====================================================================
+   UNIT EXAMS — el examen de una unidad (o de varias) con su reader.
+   Siete partes: multiple choice, true/false, word formation, key word
+   transformations, word order, listening y writing.
+
+   EL CONTENIDO NO VIVE AQUI. Se pide a la tabla unit_exams, porque el
+   JSON lleva dentro las claves de respuesta y este repositorio es
+   publico — la misma leccion que los tests YLE el 6-sep-2026. Y la RLS
+   de esa tabla solo se lo entrega al profesor, al admin o al alumno que
+   tiene el examen ABIERTO: mientras esta cerrado no se puede descargar,
+   no es que la pantalla no lo enseñe.
+
+   CANDADO: la tabla reader_exam_access, la misma de los controles de
+   lectura. Sin fila = cerrado. Clave = grade:uUNITS:kind:level.
+
+   El writing no se autocorrige: se guarda en unit_submissions y sale en
+   la pestaña de correccion de producciones escritas del profesor.
+   ===================================================================== */
+const KINDS={practice:['📝','Practice exam','Para entrenar antes del oficial'],
+             official:['🎓','Official exam','La nota que cuenta']};
+const LVL={a2:['🐣','A2 · Elementary'], b1:['🏝️','B1 · Intermediate'],
+           b2:['🚀','B2 · Upper-intermediate'], c1:['🎓','C1 · Advanced']};
+const LVLS=['a2','b1','b2','c1'];
+const GRADE='g9', UNITS='3-4';
+const UNIT_LABEL='Units 3 & 4 · And Then There Were None (ch. 5-7)';
+
+const $=s=>document.querySelector(s);
+const esc=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+const shuffle=a=>{ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; };
+/* Comparar respuestas escritas: el apostrofe curvo del movil y el recto son la
+   misma contraccion, y "don't" y "do not" son la misma respuesta. Sin esto se
+   marca mal lo que esta bien — ya paso con el corrector de producciones. */
+function norm(s){
+  return String(s==null?'':s).toLowerCase()
+    .replace(/[‘’ʼ′]/g,"'")
+    .replace(/n't\b/g,' not').replace(/'re\b/g,' are').replace(/'ve\b/g,' have')
+    .replace(/'ll\b/g,' will').replace(/'m\b/g,' am').replace(/'d\b/g,' would')
+    .replace(/[^a-z0-9' ]/g,' ').replace(/\s+/g,' ').trim();
+}
+const cuenta=t=>(String(t||'').trim().match(/[^\s]+/g)||[]).length;
+
+let sb=null, me=null, ACC=[], INDEX=[], _clockSkew=0;
+const SCHOOL_YEAR=new Date().getFullYear();
+const isStaff=()=>me&&(me.role==='teacher'||me.role==='admin');
+const nowMs=()=>Date.now()+_clockSkew;
+const lockKey=(kind,lvl)=>GRADE+':u'+UNITS+':'+kind+':'+lvl;
+
+async function boot(){
+  if(!(window.supabase&&window.NIS_CONFIG)){ $('#main').innerHTML=aviso('The portal configuration did not load. Reload the page.'); return; }
+  sb=window.supabase.createClient(NIS_CONFIG.SUPABASE_URL,NIS_CONFIG.SUPABASE_KEY);
+  try{
+    const u=await sb.auth.getUser();
+    if(u&&u.data&&u.data.user){
+      const p=await sb.from('profiles').select('full_name,first_name,email,role,grade_id,section').eq('id',u.data.user.id).maybeSingle();
+      me=Object.assign({uid:u.data.user.id,email:u.data.user.email},(p&&p.data)||{});
+    }
+    try{ const {data}=await sb.rpc('server_now'); if(data) _clockSkew=new Date(data).getTime()-Date.now(); }catch(e){}
+    await recarga();
+  }catch(e){}
+  _applyHash();
+}
+async function recarga(){
+  const [a,i]=await Promise.all([
+    sb.from('reader_exam_access').select('key,scope,unlocked,extra_min,opens_at,closes_at').eq('school_year',SCHOOL_YEAR),
+    sb.from('unit_exams_index').select('kind,level,title,minutes,questions,can_open').eq('grade',GRADE).eq('units',UNITS)
+  ]);
+  if(!a.error) ACC=a.data||[];
+  if(!i.error) INDEX=i.data||[];
+}
+const aviso=t=>`<div class="note bad">⚠️ ${t}</div>`;
+const sinSesion=()=>me?'':`<div class="note bad">⚠️ <b>You are not signed in.</b>
+  Your exams can only be checked when you are signed in to the Portal.
+  <a href="./" style="color:#b91c1c;font-weight:700">Sign in here</a> and come back — otherwise everything looks locked.</div>`;
+
+/* Cadena de alcances, del más específico al más general. Igual que en los
+   controles de lectura: lo del alumno manda sobre lo de su salón, lo del salón
+   sobre lo del grado. El tiempo extra es el MAYOR de los que le apliquen. */
+function scopeChain(){
+  const g=me&&me.grade_id, sec=me&&String(me.section||'').trim();
+  const c=[]; if(me&&me.uid) c.push('u:'+me.uid);
+  if(g!=null){ if(sec) c.push('g'+g+'-'+sec); c.push('g'+g); }
+  c.push('all'); return c;
+}
+function rowOpen(r){
+  if(!r||!r.unlocked) return false;
+  const t=nowMs();
+  if(r.opens_at&&new Date(r.opens_at).getTime()>t) return false;
+  if(r.closes_at&&new Date(r.closes_at).getTime()<=t) return false;
+  return true;
+}
+function accFor(key){
+  const chain=isStaff()?['all']:scopeChain();
+  let unlocked=false, extra=0, until=null, from=null;
+  chain.forEach(sc=>{ const r=ACC.find(x=>x.key===key&&x.scope===sc);
+    if(!r) return;
+    if(from===null){ unlocked=rowOpen(r); from=sc; until=r.closes_at||null; }
+    extra=Math.max(extra,r.extra_min||0); });
+  return {unlocked,extra,until};
+}
+const idx=(kind,lvl)=>INDEX.find(x=>x.kind===kind&&x.level===lvl);
+
+/* ---------- navegación por hash ---------- */
+let _hashMute=false;
+function _setHash(h){ if(('#'+h)===location.hash) return; _hashMute=true; location.hash=h; }
+function _applyHash(){
+  const h=(location.hash||'').replace(/^#/,'');
+  let m;
+  if((m=/^(practice|official)\/(a2|b1|b2|c1)$/.exec(h))) return startExam(m[1],m[2],true);
+  if((m=/^(practice|official)$/.exec(h)))                return viewLevels(m[1],true);
+  return viewKinds(true);
+}
+window.addEventListener('hashchange',()=>{
+  if(_hashMute){ _hashMute=false; return; }
+  if(EX&&!EX.done&&!confirm('¿Salir del examen? Se perderán las respuestas que no hayas entregado.')){
+    _setHash(EX.kind+'/'+EX.lvl); return;
+  }
+  pararExamen(); _applyHash();
+});
+if(window.NISNAV&&NISNAV.setBackHandler) NISNAV.setBackHandler(function(){
+  const h=(location.hash||'').replace(/^#/,'');
+  if(!h) return false;
+  const p=h.split('/'); p.pop(); _setHash(p.join('/')); _applyHash(); return true;
+});
+
+/* ---------- pantalla 1: practice / official ---------- */
+function viewKinds(fromHash){
+  if(!fromHash) _setHash('');
+  pararExamen();
+  $('#main').innerHTML=`
+    <div class="hero"><h1>📋 Unit Exams</h1>
+      <p>${UNIT_LABEL}. Seven parts: multiple choice, true/false, word formation, key word
+      transformations, word order, listening and writing — at your level.
+      ${isStaff()?'<b>Teacher mode:</b> you can open any exam to review it, even when it is locked for students.'
+                 :'Your teacher unlocks each exam when your class is ready.'}</p></div>
+    ${sinSesion()}
+    <div class="grid">
+      ${Object.keys(KINDS).map(k=>{ const m=KINDS[k];
+        const abiertos=LVLS.filter(l=>idx(k,l)&&accFor(lockKey(k,l)).unlocked).length;
+        const hay=LVLS.filter(l=>idx(k,l)).length;
+        return `<div class="card" onclick="viewLevels('${k}')">
+          <div class="ico">${m[0]}</div><h2>${m[1]}</h2>
+          <div class="desc">${m[2]} · ${hay} levels · 39 questions + writing</div>
+          <span class="chip ${abiertos?'ok':''}">${abiertos}/${hay} unlocked</span></div>`; }).join('')}
+    </div>`;
+}
+
+/* ---------- pantalla 2: niveles ---------- */
+window.viewLevels=(kind,fromHash)=>{
+  if(!fromHash) _setHash(kind);
+  pararExamen();
+  const m=KINDS[kind]; const staff=isStaff();
+  $('#main').innerHTML=`
+    <h1>${m[0]} ${m[1]}</h1>
+    <p class="lead">${UNIT_LABEL}. Take the exam at the level you are working at: the higher the level, the harder the
+    texts, the longer the writing and the more time you get.</p>
+    ${staff?`<div class="note">👩‍🏫 <b>Modo profesor:</b> puedes entrar a cualquier nivel para revisarlo, aunque esté
+      cerrado para los alumnos, y verás el guion del listening. Abrir y cerrar por grado, salón o alumno se hace en
+      <a href="./#unitexams" style="font-weight:700;color:var(--blue-d)">Portal → 📋 Exámenes de unidad</a>.</div>`:''}
+    ${sinSesion()}
+    <div class="grid">
+      ${LVLS.map(l=>{ const e=idx(kind,l);
+        if(!e) return `<div class="card locked"><div class="ico">⏳</div><h2>${LVL[l][1]}</h2>
+          <div class="desc">This level has not been published yet.</div></div>`;
+        const a=accFor(lockKey(kind,l)); const open=a.unlocked, entra=staff||open;
+        return `<div class="card ${entra?'':'locked'}" ${entra?`onclick="startExam('${kind}','${l}')"`:''}>
+          <div class="ico">${open?LVL[l][0]:'🔒'}</div><h2>${LVL[l][1]}</h2>
+          <div class="desc">${esc(e.title)} · ${e.minutes} minutes</div>
+          <span class="chip ${open?'ok':'no'}">${open?'✅ Open for students':'🔒 Locked for students'}</span>
+          ${open&&a.until?`<span class="inherit">🕒 open until ${new Date(a.until).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}</span>`:''}
+          ${a.extra?`<span class="inherit">⏱ +${a.extra} min extra time</span>`:''}
+        </div>`; }).join('')}
+    </div>
+    <div style="margin-top:16px"><button class="btn ghost" onclick="viewKinds()">← Back</button></div>`;
+};
+
+/* ---------- el examen ---------- */
+let EX=null, _qaud=null;
+function pararExamen(){
+  if(_qaud){ _qaud.pause(); _qaud=null; }
+  if(EX){ clearInterval(EX.timer); clearInterval(EX.poll); clearInterval(EX.gracia); EX=null; }
+}
+window.playQAudio=(btn)=>{
+  if(_qaud){ _qaud.pause(); _qaud=null; btn.textContent='🔊 Play the recording'; return; }
+  if(!EX||!EX.audioUrl){ btn.textContent='⚠️ Recording not available'; return; }
+  _qaud=new Audio(EX.audioUrl);
+  _qaud.onended=()=>{ _qaud=null; btn.textContent='🔊 Play the recording again'; };
+  _qaud.onerror=()=>{ _qaud=null; btn.textContent='⚠️ Recording not available'; };
+  btn.textContent='⏸ Stop'; _qaud.play().catch(()=>_qaud&&_qaud.onerror());
+};
+
+/* El examen se construye con las opciones BARAJADAS: dos alumnos sentados
+   juntos no ven la misma letra, y el orden con el que se escribió no enseña
+   nada. Las partes y las preguntas mantienen su orden, que es el del examen. */
+function construye(data){
+  const partes=[];
+  (data.parts||[]).forEach(p=>{
+    const q=[];
+    if(p.type==='writing'){ partes.push({...p, items:[]}); return; }
+    (p.items||[]).forEach(it=>{
+      if(it.opts){
+        const buena=it.opts[it.ok];
+        const opts=shuffle(it.opts);
+        q.push({...it, opts, ok:opts.indexOf(buena)});
+      }else q.push({...it});
+    });
+    partes.push({...p, items:q});
+  });
+  return partes;
+}
+function numera(partes){
+  let n=0; partes.forEach(p=>p.items.forEach(it=>{ it._n=++n; })); return n;
+}
+
+window.startExam=async(kind,lvl,fromHash)=>{
+  if(!fromHash) _setHash(kind+'/'+lvl);
+  pararExamen();
+  $('#main').innerHTML='<p class="muted">Loading the exam…</p>';
+  const k=lockKey(kind,lvl);
+  const a=accFor(k);
+  if(!isStaff()&&!a.unlocked){
+    $('#main').innerHTML=`<h1>🔒 ${KINDS[kind][1]} · ${LVL[lvl][1]}</h1>
+      <div class="note">This exam is locked. Your teacher opens it when your class is ready.</div>
+      <button class="btn ghost" onclick="viewLevels('${kind}')">← Back</button>`;
+    return;
+  }
+  const r=await sb.from('unit_exams').select('title,minutes,data').eq('grade',GRADE).eq('units',UNITS)
+    .eq('kind',kind).eq('level',lvl).maybeSingle();
+  if(r.error||!r.data){
+    $('#main').innerHTML=`<h1>${KINDS[kind][1]} · ${LVL[lvl][1]}</h1>
+      ${aviso('This exam could not be opened. If you have just been given access, reload the page.')}
+      <button class="btn ghost" onclick="viewLevels('${kind}')">← Back</button>`;
+    return;
+  }
+  const data=r.data.data;
+  const partes=construye(data);
+  const total=numera(partes);
+  const mins=r.data.minutes||60;
+  EX={kind,lvl,title:r.data.title,partes,total,ans:{},wr:{task:null,text:''},page:0,t0:Date.now(),
+      secs:(mins+a.extra)*60, tot:(mins+a.extra)*60, extra:a.extra, lockKey:k,
+      timer:null,poll:null,gracia:null,done:false,
+      preview:isStaff()&&!a.unlocked, script:'', audioUrl:null};
+  EX.pages=partes.length;
+  /* El guion vive en otra tabla que ningún alumno puede leer: dentro del examen
+     serían las respuestas del listening escritas al lado de las preguntas. */
+  if(isStaff()){
+    try{
+      const g=await sb.from('unit_exam_scripts').select('script').eq('grade',GRADE).eq('units',UNITS)
+        .eq('kind',kind).eq('level',lvl).maybeSingle();
+      if(g&&g.data) EX.script=g.data.script||'';
+    }catch(e){}
+  }
+  /* El mp3 vive en un bucket PRIVADO: se pide una URL firmada al abrir el
+     examen. Si estuviera en el repo, cualquiera con la dirección podría
+     escuchar el listening del examen oficial la noche anterior. */
+  try{
+    const p=`${GRADE}/${UNITS}/${kind}/${lvl}.mp3`;
+    const s=await sb.storage.from('exam-audio').createSignedUrl(p,4*3600);
+    if(s&&s.data&&s.data.signedUrl) EX.audioUrl=s.data.signedUrl;
+  }catch(e){}
+  $('#main').innerHTML=`
+    <div class="exam-top">
+      <b>${KINDS[kind][0]} ${LVL[lvl][1].split(' · ')[0]} · ${esc(EX.title)}</b>
+      <div class="tprog"><span id="tb" style="width:100%"></span></div>
+      <span class="timer" id="tm">${mins+a.extra}:00</span>
+    </div>
+    <div id="exBody"></div>`;
+  arrancaReloj();
+  EX.poll=setInterval(revisaExtra,20000);
+  render();
+};
+
+function arrancaReloj(){
+  if(EX&&EX.timer) clearInterval(EX.timer);
+  EX.timer=setInterval(()=>{
+    if(!EX||EX.done) return;
+    EX.secs--; const m=Math.floor(EX.secs/60), s=EX.secs%60;
+    const tm=$('#tm'); if(tm){ tm.textContent=m+':'+String(s).padStart(2,'0'); tm.classList.toggle('low',EX.secs<=60); }
+    const tb=$('#tb'); if(tb) tb.style.width=Math.max(0,EX.secs/EX.tot*100)+'%';
+    if(EX.secs<=0) seAcabo();
+  },1000);
+}
+/* Se acabó el tiempo: no se entrega en el acto ni con un alert() — un alert
+   congela la página y el +5 del profesor no llegaría nunca. */
+const GRACIA=45;
+function seAcabo(){
+  if(!EX||EX.done||EX.gracia) return;
+  clearInterval(EX.timer); EX.timer=null; EX.secs=0;
+  const tm=$('#tm'); if(tm){ tm.textContent='0:00'; tm.classList.add('low'); }
+  const tb=$('#tb'); if(tb) tb.style.width='0%';
+  clearInterval(EX.poll); EX.poll=setInterval(revisaExtra,3000);
+  let quedan=GRACIA;
+  const txt=()=>'⏰ <b>Time is up.</b> Everything you have answered is saved. If your teacher gives you more time it '
+    +'will appear here on its own — otherwise the exam is sent in <b>'+quedan+'s</b>.';
+  const b=$('#exBody');
+  if(b&&!$('#tup')) b.insertAdjacentHTML('afterbegin','<div class="note" id="tup">'+txt()+'</div>');
+  EX.gracia=setInterval(()=>{
+    if(!EX||EX.done){ clearInterval(EX.gracia); EX.gracia=null; return; }
+    quedan--; const el=$('#tup'); if(el) el.innerHTML=txt();
+    if(quedan<=0){ clearInterval(EX.gracia); EX.gracia=null; submit(true); }
+  },1000);
+}
+function reanuda(){
+  if(EX.gracia){ clearInterval(EX.gracia); EX.gracia=null; }
+  const el=$('#tup'); if(el) el.remove();
+  clearInterval(EX.poll); EX.poll=setInterval(revisaExtra,20000);
+  if(!EX.timer) arrancaReloj();
+}
+async function revisaExtra(){
+  if(!EX||EX.done||!sb) return;
+  try{
+    const q=await sb.from('reader_exam_access').select('key,scope,unlocked,extra_min,opens_at,closes_at')
+      .eq('key',EX.lockKey).eq('school_year',SCHOOL_YEAR);
+    if(q.error||!q.data) return;
+    q.data.forEach(row=>{ const i=ACC.findIndex(x=>x.key===row.key&&x.scope===row.scope);
+      if(i<0) ACC.push(row); else ACC[i]=row; });
+    const ahora=accFor(EX.lockKey).extra;
+    if(ahora>EX.extra){
+      const add=ahora-EX.extra; EX.extra=ahora; EX.secs+=add*60; EX.tot+=add*60;
+      if(!EX.timer) reanuda();
+      const b=$('#exBody');
+      if(b) b.insertAdjacentHTML('afterbegin','<div class="note" id="xtn">⏱ Your teacher gave you <b>+'+add+' minute(s)</b>. Keep going!</div>');
+      setTimeout(()=>{ const el=$('#xtn'); if(el) el.remove(); },8000);
+    }
+  }catch(e){}
+}
+
+/* ---------- pintado de cada tipo de pregunta ---------- */
+const LETRAS='ABCD';
+function pintaItem(p,it){
+  const n=it._n, a=EX.ans[n];
+  const tag=`<div class="tag">${esc(p.title)} · question ${n} of ${EX.total}</div>`;
+  if(p.type==='mc'||(p.type==='listening'&&it.kind==='mc')){
+    return `<div class="q" id="q${n}">${tag}<h3>${it.q}</h3>
+      ${it.opts.map((o,j)=>`<button class="opt ${a===j?'sel':''}" id="o${n}-${j}" onclick="pick(${n},${j})">
+        <span class="letter">${LETRAS[j]}</span>${esc(o)}</button>`).join('')}</div>`;
+  }
+  if(p.type==='tf'){
+    return `<div class="q" id="q${n}">${tag}<h3>${it.q}</h3>
+      ${['True','False'].map((t,j)=>`<button class="opt ${a===j?'sel':''}" id="o${n}-${j}" onclick="pick(${n},${j})">
+        <span class="letter">${j?'F':'T'}</span>${t}</button>`).join('')}</div>`;
+  }
+  if(p.type==='wf'){
+    const [pre,post]=it.sent.split('______');
+    return `<div class="q" id="q${n}">${tag}
+      <h3>${esc(pre||'')}<input class="tin" id="t${n}" style="width:170px" autocomplete="off" autocapitalize="off"
+        placeholder="one word" value="${esc(a||'')}" oninput="typed(${n},this.value)">${esc(post||'')}
+        <span class="root">${esc(it.root)}</span></h3></div>`;
+  }
+  if(p.type==='kt'){
+    return `<div class="q" id="q${n}">${tag}
+      <div class="kt-lead">${esc(it.lead)}</div>
+      <div class="kt-line">${esc(it.before||'')}
+        <input class="tin" id="t${n}" autocomplete="off" autocapitalize="off" placeholder="${p.words||'2-5'} words"
+          value="${esc(a||'')}" oninput="typed(${n},this.value)">
+        ${esc(it.after||'')}</div>
+      <div class="explain" style="background:#fefce8;border-color:#facc15;color:#713f12">
+        Use the word <b>${esc(it.key)}</b>. Do not change it.</div></div>`;
+  }
+  if(p.type==='order'){
+    const puestas=(a||'').split(' ').filter(Boolean);
+    return `<div class="q" id="q${n}">${tag}
+      <div class="built" id="b${n}">${puestas.map((w,j)=>`<button class="word" onclick="quita(${n},${j})">${esc(w)}</button>`).join('')}</div>
+      <div class="bank" id="k${n}">${it._bank.map((w,j)=>
+        `<button class="word ${puestas.length&&it._usadas&&it._usadas.indexOf(j)>=0?'used':''}" id="w${n}-${j}"
+          onclick="pon(${n},${j})">${esc(w)}</button>`).join('')}</div>
+      <button class="btn ghost sm" onclick="limpia(${n})">↺ Clear</button></div>`;
+  }
+  if(p.type==='listening'&&it.kind==='gap'){
+    const [pre,post]=it.q.split('______');
+    return `<div class="q" id="q${n}">${tag}
+      <h3>${pre||''}<input class="tin" id="t${n}" autocomplete="off" autocapitalize="off" placeholder="type what you hear"
+        value="${esc(a||'')}" oninput="typed(${n},this.value)">${post||''}</h3></div>`;
+  }
+  return '';
+}
+function pintaWriting(p){
+  const t=EX.wr.task;
+  const tarea=(p.tasks||[]).find(x=>x.id===t)||null;
+  const n=cuenta(EX.wr.text);
+  const dentro=tarea?(n>=tarea.range[0]&&n<=tarea.range[1]):false;
+  return `<div class="q">
+    <div class="taskpick">${(p.tasks||[]).map(x=>
+      `<button class="${t===x.id?'on':''}" onclick="pickTask('${x.id}')">${esc(x.label)}</button>`).join('')}</div>
+    ${tarea?`
+      <h3>${tarea.task}</h3>
+      <ul class="tips">${(tarea.tips||[]).map(x=>`<li>${x}</li>`).join('')}</ul>
+      <p class="muted" style="font-size:13px;margin:10px 0 6px"><b>${tarea.range[0]}–${tarea.range[1]} words.</b>
+        Your teacher marks this part with the unit rubric (AD · A · B · C); the other six parts are marked automatically.</p>
+      <textarea class="wr" id="wrText" placeholder="Write your answer here…"
+        oninput="wrote(this.value)">${esc(EX.wr.text)}</textarea>
+      <div class="wcount ${dentro?'ok':'no'}" id="wrN">${n} words · target ${tarea.range[0]}–${tarea.range[1]}</div>`
+     :'<p class="muted">Choose one task above to start writing.</p>'}
+  </div>`;
+}
+
+function render(){
+  if(_qaud){ _qaud.pause(); _qaud=null; }
+  const p=EX.partes[EX.page], last=EX.page===EX.pages-1;
+  /* Las palabras de "ordenar" se barajan una vez por examen, no en cada
+     repintado: si no, cambian de sitio cada vez que el alumno vuelve atrás. */
+  if(p.type==='order') p.items.forEach(it=>{ if(!it._bank) it._bank=shuffle(it.words); });
+  const cuerpo = p.type==='writing' ? pintaWriting(p)
+    : p.items.map(it=>pintaItem(p,it)).join('');
+  const audio = p.type==='listening'
+    ? `<button class="aud-btn" onclick="playQAudio(this)">🔊 Play the recording</button>
+       ${EX.audioUrl?'':'<p class="muted" style="font-size:12.5px">The recording could not be loaded. Tell your teacher.</p>'}
+       ${EX.script?`<details><summary class="muted" style="cursor:pointer;font-size:12.5px;font-weight:700;margin:6px 0">
+          👩‍🏫 Guion (solo profesor)</summary><div class="script">${esc(EX.script)}</div></details>`:''}` : '';
+  $('#exBody').innerHTML=`
+    ${EX.preview?'<div class="note">👩‍🏫 Vista de profesor — este examen sigue cerrado para los alumnos.</div>':''}
+    <div class="part-head"><h2>Part ${p.n} · ${esc(p.title)}</h2><p>${p.instructions||''}</p></div>
+    ${audio}${cuerpo}
+    <div class="pager">
+      <button class="arrow" onclick="goPage(-1)" ${EX.page===0?'disabled':''} title="Previous">◀</button>
+      <div class="pgdots">Part ${EX.page+1} / ${EX.pages} · <span id="ansN">${respondidas()}</span>/${EX.total} answered<br>
+        ${EX.partes.map((_,x)=>`<span class="dot ${x===EX.page?'now':(partePlena(x)?'done':'')}"></span>`).join('')}</div>
+      ${last?`<button class="btn" style="flex:none" onclick="submit()">✅ Submit</button>`
+            :`<button class="arrow" onclick="goPage(1)" title="Next">▶</button>`}
+    </div>`;
+  window.scrollTo(0,0);
+}
+function respondidas(){
+  let n=0;
+  EX.partes.forEach(p=>p.items.forEach(it=>{ const a=EX.ans[it._n];
+    if(a!=null&&String(a).trim()!=='') n++; }));
+  return n;
+}
+function partePlena(i){
+  const p=EX.partes[i];
+  if(p.type==='writing') return cuenta(EX.wr.text)>0;
+  return p.items.length>0&&p.items.every(it=>{ const a=EX.ans[it._n]; return a!=null&&String(a).trim()!==''; });
+}
+window.goPage=d=>{ if(EX.done) return; EX.page=Math.min(Math.max(0,EX.page+d),EX.pages-1); render(); };
+window.pick=(n,j)=>{
+  if(EX.done) return;
+  EX.ans[n]=j;
+  document.querySelectorAll('[id^="o'+n+'-"]').forEach(b=>b.classList.toggle('sel',b.id==='o'+n+'-'+j));
+  const el=$('#ansN'); if(el) el.textContent=respondidas();
+};
+window.typed=(n,v)=>{ if(EX.done) return; EX.ans[n]=v; const el=$('#ansN'); if(el) el.textContent=respondidas(); };
+window.pickTask=id=>{ if(EX.done) return; EX.wr.task=id; render(); };
+window.wrote=v=>{
+  if(EX.done) return;
+  EX.wr.text=v;
+  const p=EX.partes[EX.page], t=(p.tasks||[]).find(x=>x.id===EX.wr.task);
+  const n=cuenta(v), el=$('#wrN');
+  if(el&&t){ el.textContent=n+' words · target '+t.range[0]+'–'+t.range[1];
+    el.className='wcount '+(n>=t.range[0]&&n<=t.range[1]?'ok':'no'); }
+  const a=$('#ansN'); if(a) a.textContent=respondidas();
+};
+/* Ordenar palabras: se pulsa la palabra y se coloca; se pulsa la colocada y
+   vuelve al banco. El valor guardado es la frase, así que corregir y restaurar
+   funcionan igual que en las respuestas escritas. */
+function itemDe(n){ for(const p of EX.partes){ const it=p.items.find(x=>x._n===n); if(it) return it; } return null; }
+window.pon=(n,j)=>{
+  if(EX.done) return;
+  const it=itemDe(n); it._usadas=it._usadas||[];
+  if(it._usadas.indexOf(j)>=0) return;
+  it._usadas.push(j);
+  EX.ans[n]=it._usadas.map(k=>it._bank[k]).join(' ');
+  render();
+};
+window.quita=(n,pos)=>{
+  if(EX.done) return;
+  const it=itemDe(n); if(!it||!it._usadas) return;
+  it._usadas.splice(pos,1);
+  EX.ans[n]=it._usadas.map(k=>it._bank[k]).join(' ');
+  render();
+};
+window.limpia=n=>{ if(EX.done) return; const it=itemDe(n); it._usadas=[]; EX.ans[n]=''; render(); };
+
+/* ---------- corrección ---------- */
+function corrige(p,it){
+  const a=EX.ans[it._n];
+  if(it.opts) return {bien:a!=null&&a===it.ok, tuya:a!=null?it.opts[a]:'—', buena:it.opts[it.ok]};
+  if(p.type==='tf') return {bien:a!=null&&((a===0)===(it.ok===true)), tuya:a==null?'—':(a?'False':'True'), buena:it.ok?'True':'False'};
+  if(p.type==='order'){
+    const bien=norm(a)===norm(it.answer);
+    return {bien, tuya:(a&&String(a).trim())||'—', buena:it.answer};
+  }
+  const acepta=it.accept||[];
+  const bien=acepta.some(x=>norm(x)===norm(a));
+  return {bien, tuya:(a&&String(a).trim())||'—', buena:acepta[0]};
+}
+
+window.submit=async(forzado)=>{
+  if(!EX||EX.done) return;
+  const n=respondidas();
+  if(!forzado&&n<EX.total&&!confirm('You have answered '+n+'/'+EX.total+'. Submit anyway?')) return;
+  EX.done=true; clearInterval(EX.timer); clearInterval(EX.gracia); EX.gracia=null;
+  if(_qaud){ _qaud.pause(); _qaud=null; }
+  let score=0; const filas=[]; const porParte=[];
+  EX.partes.forEach(p=>{
+    if(p.type==='writing') return;
+    let bienes=0;
+    p.items.forEach(it=>{
+      const c=corrige(p,it); if(c.bien){ score++; bienes++; }
+      filas.push(`<div class="q">
+        <div class="tag">${esc(p.title)} · ${it._n}/${EX.total}</div>
+        <h3>${it.q||esc(it.lead||it.sent||'')}</h3>
+        <table class="res"><tr><th>Your answer</th><td>${esc(c.tuya)}</td></tr>
+        ${c.bien?'':`<tr><th>Correct</th><td><b>${esc(c.buena)}</b></td></tr>`}</table>
+        <div class="explain">${c.bien?'✅':'❌'} ${it.ex||''}</div></div>`);
+    });
+    porParte.push([p.n,p.title,bienes,p.items.length]);
+  });
+  const pct=Math.round(score/EX.total*100);
+  /* Escala del colegio (MINEDU), de mayor a menor: AD · A · B · C. */
+  const band=pct>=90?['🏅 AD — Outstanding','#059669']:pct>=70?['✅ A — Expected','#0d9488']
+           :pct>=55?['📗 B — In progress','#b45309']:['📖 C — Starting out','#dc2626'];
+  clearInterval(EX.poll);
+  const dur=Math.max(1,Math.round((Date.now()-EX.t0)/1000));
+  let wrEstado='';
+  try{
+    if(sb&&me&&me.uid){
+      await sb.from('activity_attempts').insert({student_id:me.uid,
+        activity:'unitexam-'+GRADE+'-u'+UNITS+'-'+EX.kind+'-'+EX.lvl,
+        title:'Unit exam '+GRADE.toUpperCase()+' U'+UNITS+' — '+KINDS[EX.kind][1]+' · '+EX.lvl.toUpperCase(),
+        level:EX.lvl.toUpperCase(),score,total:EX.total,hints_used:0,lives_left:3,duration_sec:dur});
+      /* El writing no se puntúa aquí: va a la cola de correcciones del profesor
+         con la unidad y el criterio, como cualquier otra producción escrita. */
+      const txt=(EX.wr.text||'').trim();
+      if(txt&&EX.wr.task){
+        const r=await sb.from('unit_submissions').upsert({
+          student_id:me.uid, grade:GRADE, unit:4, milestone:'exam-'+EX.kind+'-'+EX.lvl, kind:'report',
+          payload:{text:txt, words:cuenta(txt), task:EX.wr.task, level:EX.lvl.toUpperCase(),
+                   exam:KINDS[EX.kind][1], units:UNITS},
+          duration_sec:Math.min(32000,dur)
+        },{onConflict:'student_id,grade,unit,milestone,kind'});
+        wrEstado=r.error?'⚠️ Your writing could not be sent: '+esc(r.error.message)
+                        :'✍️ Your writing has been sent to your teacher.';
+      }else if(!txt){
+        wrEstado='⚠️ You did not write the Writing part, so it cannot be marked.';
+      }
+    }
+  }catch(e){}
+  $('#exBody').innerHTML=`
+    <div class="q center">
+      <div class="score">${score}/${EX.total}</div>
+      <div class="band" style="color:${band[1]}">${band[0]}</div>
+      <p class="muted">${pct}% in the six marked parts · ${KINDS[EX.kind][1]} · ${LVL[EX.lvl][1]}</p>
+      ${wrEstado?`<div class="note" style="text-align:left;margin-top:12px">${wrEstado}</div>`:''}
+      <table class="res"><tr><th>Part</th><th>Score</th></tr>
+        ${porParte.map(x=>`<tr><td>${x[0]} · ${esc(x[1])}</td><td><b>${x[2]}/${x[3]}</b></td></tr>`).join('')}
+        <tr><td><b>Writing</b></td><td>marked by your teacher</td></tr></table>
+      <div style="margin-top:14px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <button class="btn ghost" onclick="viewLevels('${EX.kind}')">← Other levels</button>
+        ${EX.kind==='practice'?`<button class="btn" onclick="startExam('practice','${EX.lvl}')">🔄 Try again</button>`:''}
+      </div>
+    </div>
+    ${filas.join('')}
+    <div class="center" style="margin-top:14px"><button class="btn ghost" onclick="viewLevels('${EX.kind}')">← Back</button></div>`;
+  window.scrollTo(0,0);
+};
+boot();
+</script>
+</body>
+</html>

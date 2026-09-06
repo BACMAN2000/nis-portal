@@ -54,3 +54,15 @@ yle/tools/_tts_cache/
 yle/starters/*.json
 yle/movers/*.json
 yle/flyers/*.json
+
+# Los examenes de unidad viven en la tabla unit_exams, no como archivos: el
+# JSON lleva las claves de respuesta y este repo es publico. Se quedan en el
+# disco para las herramientas (validate.py, baraja_claves.py, gen_audio.py) y
+# se suben con exams/sube_examen.py. El mp3 del Listening va al bucket PRIVADO
+# exam-audio (exams/sube_audio.py): publicado, se escucha la noche anterior.
+exams/*/*.json
+exam-audio/
+
+# Copia de pruebas del motor de examenes (exams/prueba_local.py): lleva los
+# examenes enteros dentro, con sus claves. Se genera y se borra.
+_test-unit-exam.html
