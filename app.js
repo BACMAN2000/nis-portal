@@ -2578,7 +2578,7 @@ async function unitExamPanel(){
     </td>`;
   };
   const head=`<th style="min-width:150px">Examen</th>`
-    +cols.map(c=>`<th style="text-align:center">${esc(c.label)}${c.n?`<div class="muted" style="font-weight:400;font-size:.7rem">${c.n} alumnos</div>`:''}</th>`).join('');
+    +cols.map(c=>`<th style="text-align:center">${esc(c.label)}${c.n?`<div class="muted" style="font-weight:400;font-size:.7rem">${c.n} alumno${c.n===1?'':'s'}</div>`:''}</th>`).join('');
   const body=UEX_KINDS.map(([kind,etiq])=>{
     const resumen=`<tr style="background:#f8fafc"><td><b>${etiq}</b>
       <div class="muted" style="font-size:.72rem">los cuatro niveles a la vez</div></td>
