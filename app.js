@@ -312,10 +312,12 @@ function navHTML(navItems, activeKey){
 function navKeys(navItems){
   return navItems.reduce((a,n)=> a.concat(n.items ? n.items.map(i=>i.key) : [n.key]), []);
 }
-function shell(navItems, activeKey, body){
+function shell(navItems, activeKey, body, wide){
+  /* wide = paneles de gestion (admin y profesor). Son tablas con muchas
+     columnas y botones; con el ancho de lectura del alumno no caben. */
   return header()+`<div class="shell">
     <nav class="sidebar">${navHTML(navItems, activeKey)}</nav>
-    <main class="main" id="main">${body}</main>
+    <main class="main${wide?' wide':''}" id="main">${body}</main>
   </div>`;
 }
 function bindNav(handler){
@@ -1099,7 +1101,7 @@ async function renderAdmin(tab='users'){
       {key:'unitexams',label:'📋 Abrir exámenes de unidad'},
       {key:'access',label:'🔐 Accesos'},
     ]},
-  ], tab, `<div class="center muted">Cargando…</div>`);
+  ], tab, `<div class="center muted">Cargando…</div>`, true);
   bindNav(renderAdmin);
   if(tab==='mun') return $('#main').innerHTML = munBody();
   if(tab==='livequiz') return $('#main').innerHTML = liveQuizBody();
@@ -1655,7 +1657,7 @@ async function adminUsers(){
       <td><span class="badge lvl">${esc(p.cefr_level||'—')}</span></td>
       <td><span class="badge ${p.role==='student'?'':'on'}">${esc(p.role)}</span>${p.is_demo?' <span class="badge" title="Cuenta de demostración">🧪 demo</span>':''}</td>
       <td><span class="badge ${suspended?'off':'on'}">${suspended?'Suspendido':'Activo'}</span></td>
-      <td style="white-space:nowrap">${p.role==='student'?`<button class="btn sm ghost" onclick="window._previewStudent('${p.id}','${esc((p.full_name||p.email||'').replace(/'/g,'’'))}')" title="Ver el portal tal como lo ve este alumno">👁️ Ver como</button> <button class="btn sm ghost" onclick="window._openStudentAccess('${p.id}',${p.grade_id||'null'},'${esc((p.full_name||p.email||'').replace(/'/g,'’'))}')">🔧 Accesos</button> <button class="btn sm ghost" onclick="window.resetStudentPassword('${p.id}','${esc((p.full_name||p.email||'').replace(/'/g,'’'))}','${esc((p.email||'').replace(/'/g,'’'))}')" title="Asignar una contraseña temporal nueva">🔑 Restablecer</button> `:''}<button class="btn sm ghost" onclick="editUser('${p.id}')">Editar</button> ${toggleBtn} <button class="btn sm danger" onclick="deleteUser('${p.id}','user')">Eliminar</button></td>
+      <td class="acts"><div class="acts-wrap">${p.role==='student'?`<button class="btn sm ghost" onclick="window._previewStudent('${p.id}','${esc((p.full_name||p.email||'').replace(/'/g,'’'))}')" title="Ver el portal tal como lo ve este alumno">👁️ Ver como</button> <button class="btn sm ghost" onclick="window._openStudentAccess('${p.id}',${p.grade_id||'null'},'${esc((p.full_name||p.email||'').replace(/'/g,'’'))}')">🔧 Accesos</button> <button class="btn sm ghost" onclick="window.resetStudentPassword('${p.id}','${esc((p.full_name||p.email||'').replace(/'/g,'’'))}','${esc((p.email||'').replace(/'/g,'’'))}')" title="Asignar una contraseña temporal nueva">🔑 Restablecer</button> `:''}<button class="btn sm ghost" onclick="editUser('${p.id}')">Editar</button> ${toggleBtn} <button class="btn sm danger" onclick="deleteUser('${p.id}','user')">Eliminar</button></div></td>
     </tr>`;}).join('');
   $('#main').innerHTML=`<div class="row" style="justify-content:space-between;align-items:center"><h1>Usuarios</h1>
       <button class="btn sm" onclick="adminNewUser()">+ Nuevo</button></div>
@@ -3227,7 +3229,7 @@ async function renderTeacher(tab){
   grupo('Exámenes','🎧',examenes);
   const claves = navKeys(nav);
   const active = (tab && claves.indexOf(tab)>=0) ? tab : claves[0];
-  document.body.innerHTML = shell(nav, active, `<div class="center muted">Cargando…</div>`);
+  document.body.innerHTML = shell(nav, active, `<div class="center muted">Cargando…</div>`, true);
   bindNav(renderTeacher);
   if(active==='mun') return $('#main').innerHTML = munBody();
   if(active==='livequiz') return $('#main').innerHTML = liveQuizBody();
