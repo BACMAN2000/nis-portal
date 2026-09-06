@@ -35,7 +35,7 @@
     },
     {
      "id": "E",
-     "desc": "a boy eating an apple by the window"
+     "desc": "a boy eating an apple next to the window"
     },
     {
      "id": "F",
@@ -265,7 +265,7 @@
   "p2": {
    "type": "yes_no",
    "image": "R2",
-   "scene": "A classroom: a teacher is standing next to the board, three children are sitting at a big table, a boy is reading a book, a girl has got a blue pencil case, and there is a clock on the wall.",
+   "scene": "A classroom: a teacher is standing next to the board, three children are sitting at a big table, a boy is reading a book, a girl has got a blue pencil box, and there is a clock on the wall.",
    "example": {
     "s": "The teacher is next to the board.",
     "key": "yes"
@@ -280,7 +280,7 @@
      "key": "yes"
     },
     {
-     "s": "The girl has got a red pencil case.",
+     "s": "The girl has got a red pencil box.",
      "key": "no"
     },
     {
@@ -389,14 +389,14 @@
    "image": "R5",
    "parts": [
     {
-     "text": "It is Tom's first day at his new school. He has got a new blue bag and a red pencil case. His mum walks with him to the school door.",
+     "text": "It is Tom's first day at his new school. He has got a new blue bag and a red pencil box. His mum walks with him to the school door.",
      "example": {
       "q": "What colour is Tom's bag?",
       "a": "blue"
      },
      "items": [
       {
-       "q": "What colour is his pencil case?",
+       "q": "What colour is his pencil box?",
        "a": "red"
       },
       {
@@ -707,7 +707,7 @@
    ],
    [
     "M",
-    "Can you see the boy by the window? He's eating an apple."
+    "Can you see the boy next to the window? He's eating an apple."
    ],
    [
     "Fch",

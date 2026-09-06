@@ -197,7 +197,7 @@
    "type": "colour",
    "image": "L4",
    "object": "fish",
-   "scene": "A beach with the sea. There are seven fish in the picture: in the sea, in the boy's hand, in the bucket, on the towel, under the boat, next to the crab and on the girl's T-shirt.",
+   "scene": "A beach with the sea. There are seven fish in the picture: in the sea, in the boy's hand, in the bucket, on the sand, under the boat, next to the crab and on the girl's T-shirt.",
    "example": {
     "where": "in the sea",
     "colour": "blue"
@@ -212,7 +212,7 @@
      "colour": "green"
     },
     {
-     "where": "on the towel",
+     "where": "on the sand",
      "colour": "yellow"
     },
     {
@@ -454,7 +454,7 @@
    ],
    "place": [
     {
-     "say": "Put the ball on the towel.",
+     "say": "Put the ball on the sand.",
      "card": "ball",
      "zone": {
       "x": 24,
@@ -924,7 +924,7 @@
    ],
    [
     "M",
-    "No, he's sleeping on the towel."
+    "No, he's sleeping on the sand."
    ],
    [
     "F",
@@ -1074,7 +1074,7 @@
    ],
    [
     "M",
-    "Can you see the fish on the towel?"
+    "Can you see the fish on the sand?"
    ],
    [
     "Fch",
@@ -1086,7 +1086,7 @@
    ],
    [
     "Fch",
-    "A yellow fish on the towel. OK."
+    "A yellow fish on the sand. OK."
    ],
    [
     "pause",

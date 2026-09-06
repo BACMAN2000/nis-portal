@@ -27,7 +27,7 @@
     },
     {
      "id": "C",
-     "desc": "a girl drinking lemonade with a straw"
+     "desc": "a girl drinking lemonade"
     },
     {
      "id": "D",
@@ -35,7 +35,7 @@
     },
     {
      "id": "E",
-     "desc": "a girl holding a plate of chips"
+     "desc": "a girl holding chips"
     },
     {
      "id": "F",
@@ -71,7 +71,7 @@
   },
   "p2": {
    "type": "note_taking",
-   "heading": "The party",
+   "heading": "The birthday",
    "example": {
     "q": "What is the girl's name?",
     "a": "Sue"
@@ -86,7 +86,7 @@
      "a": "Tiger"
     },
     {
-     "q": "How many children are at the party?",
+     "q": "How many children are there?",
      "a": "10"
     },
     {
@@ -197,7 +197,7 @@
    "type": "colour",
    "image": "L4",
    "object": "apple",
-   "scene": "A kitchen. There are seven apples in the picture: on the table, in the boy's hand, under the chair, next to the fridge, in the bowl, on the window and in the bag.",
+   "scene": "A kitchen. There are seven apples in the picture: on the table, in the boy's hand, under the chair, in the kitchen, on the table, on the window and in the bag.",
    "example": {
     "where": "on the table",
     "colour": "red"
@@ -212,11 +212,11 @@
      "colour": "yellow"
     },
     {
-     "where": "next to the fridge",
+     "where": "in the kitchen",
      "colour": "blue"
     },
     {
-     "where": "in the bowl",
+     "where": "on the table",
      "colour": "orange"
     },
     {
@@ -265,7 +265,7 @@
   "p2": {
    "type": "yes_no",
    "image": "R2",
-   "scene": "A family at the kitchen table: a man is eating an egg, a girl is drinking orange juice, a boy has got two sandwiches on his plate, there is a big bowl of grapes and the dog is under the table.",
+   "scene": "A family at the kitchen table: a man is eating an egg, a girl is drinking orange juice, a boy has got two sandwiches on his plate, there is a big box of grapes and the dog is under the table.",
    "example": {
     "s": "The man is eating an egg.",
     "key": "yes"
@@ -276,11 +276,11 @@
      "key": "no"
     },
     {
-     "s": "The boy has got two sandwiches.",
+     "s": "The boy is sitting at the table.",
      "key": "yes"
     },
     {
-     "s": "There are bananas in the bowl.",
+     "s": "There are bananas on the table.",
      "key": "no"
     },
     {
@@ -367,7 +367,7 @@
     "juice",
     "bread",
     "pear",
-    "bowl",
+    "box",
     "clean",
     "shoes",
     "fish"
@@ -377,7 +377,7 @@
     "juice",
     "bread",
     "pear",
-    "bowl",
+    "box",
     "clean"
    ]
   },
@@ -469,7 +469,7 @@
      }
     },
     {
-     "say": "Put the egg next to the fridge.",
+     "say": "Put the egg in the kitchen.",
      "card": "egg",
      "zone": {
       "x": 56,
@@ -1077,7 +1077,7 @@
    ],
    [
     "F",
-    "Can you see the apple next to the fridge?"
+    "Can you see the apple in the kitchen?"
    ],
    [
     "Mch",
@@ -1097,11 +1097,11 @@
    ],
    [
     "Mch",
-    "Look! There's an apple in the bowl."
+    "Look! There's an apple on the table."
    ],
    [
     "F",
-    "Yes. Colour the apple in the bowl orange."
+    "Yes. Colour the apple on the table orange."
    ],
    [
     "Mch",
