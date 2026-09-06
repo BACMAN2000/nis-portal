@@ -532,7 +532,7 @@ window._funAccessGuardar = async (btn) => {
 
 window._funAccessQuitar = async (btn) => {
   const f = _funAccessFila(btn);
-  if (!confirm('Sin fila, ese grado no ve nada de este idioma. ¿Quitar?')) return;
+  if (!await NISUI.pregunta('Sin fila, ese grado no ve nada de este idioma.', {titulo:'¿Quitar el acceso?', si:'Quitar', no:'Cancelar', tono:'mal', peligro:true})) return;
   btn.disabled = true;
   const { error } = await sb.from('fun_access').delete().eq('grade_id', f.grade_id).eq('lang', f.lang);
   btn.disabled = false;
@@ -546,8 +546,7 @@ window._funAccessReparto = async (lang) => {
     .filter(([g, n]) => (totales[n] || 0) > 0)
     .map(([g, n]) => `G${g} → ${lang === 'fr' ? FUN_FR[n].curso : FUN_CURSOS[n].curso} (1–${totales[n]})`);
   if (!lineas.length) { alert('Ese idioma todavía no tiene unidades.'); return; }
-  if (!confirm('Se va a escribir esto, con el nivel entero para cada grado:\n\n' + lineas.join('\n') +
-               '\n\nLos rangos se ajustan después a mano. ¿Seguir?')) return;
+  if (!await NISUI.pregunta('Se escribirá el nivel entero para cada grado. Los rangos se ajustan después a mano.', {titulo:'¿Aplicar el reparto?', si:'Escribir', no:'Cancelar', detalle: lineas.join('\n')})) return;
   const ahora = new Date().toISOString();
   const uid = (state.session && state.session.user && state.session.user.id) || null;
   const filas = Object.entries(FUN_REPARTO)
@@ -1833,7 +1832,7 @@ window.saveUser = async (id)=>{
 window.deleteUser = async (id, kind)=>{
   const el = document.querySelector(`tr[data-id="${id}"]`) || document.querySelector(`.card[data-tid="${id}"]`);
   const name = el ? ((el.querySelector('b')||el.querySelector('h2'))||{}).textContent || 'este usuario' : 'este usuario';
-  if(!confirm(`¿Eliminar definitivamente a "${name}"?\n\nSe borrará su cuenta y TODOS sus resultados. Esta acción no se puede deshacer.`)) return;
+  if(!await NISUI.pregunta(`Se borrará la cuenta de ${name} y TODOS sus resultados. Esto no se puede deshacer.`, {titulo:'¿Eliminar definitivamente?', si:'Sí, eliminar', no:'Cancelar', tono:'mal', peligro:true})) return;
   const { error } = await sb.rpc('admin_delete_user', { p_id:id });
   if(error){ alert('No se pudo eliminar: '+error.message); return; }
   (kind==='teacher' ? adminTeachers : adminUsers)();
@@ -1841,7 +1840,7 @@ window.deleteUser = async (id, kind)=>{
 /* Suspend (soft): keep the account + data but block access and hide it from the
    default list. Reversible with Reactivar. */
 window.suspendUser = async (id, to, kind)=>{
-  if(!to && !confirm('¿Suspender este usuario? No podrá iniciar sesión y se ocultará de la lista (puedes reactivarlo cuando quieras).')) return;
+  if(!to && !await NISUI.pregunta('No podrá iniciar sesión y se ocultará de la lista. Puedes reactivarlo cuando quieras.', {titulo:'¿Suspender este usuario?', si:'Suspender', no:'Cancelar', tono:'ojo'})) return;
   const { error } = await sb.from('profiles').update({ active:to }).eq('id',id);
   if(error){ alert('No se pudo actualizar: '+error.message); return; }
   (kind==='teacher' ? adminTeachers : adminUsers)();
@@ -4452,7 +4451,7 @@ window._planReparto = async () => {
       .map(f => (_PLAN_COLS.find(c => c.node === f.node_key) || {}).short || f.node_key);
     return `${g.name} → ${abre.length ? abre.join(', ') : '(nada)'}`;
   });
-  if(!confirm('Se va a escribir esto para TODOS los grados (lo que no aparece en un grado se cierra para ese grado):\n\n' + lineas.join('\n') + '\n\nDespués se ajusta casilla a casilla. ¿Seguir?')) return;
+  if(!await NISUI.pregunta('Se escribirá para TODOS los grados: lo que no aparece en un grado se cierra para ese grado. Después se ajusta casilla a casilla.', {titulo:'¿Aplicar a todos los grados?', si:'Escribir', no:'Cancelar', tono:'ojo', detalle: lineas.join('\n')})) return;
   const ahora = new Date().toISOString(), uid = (state.session&&state.session.user&&state.session.user.id)||null;
   const rows = GRADES.flatMap(g => _planFilasReparto(g.id).map(f => ({ grade_id:g.id, node_key:f.node_key, unlocked:f.unlocked, updated_at:ahora, updated_by:uid })));
   const { error } = await sb.from('node_access').upsert(rows, { onConflict:'grade_id,node_key' });
@@ -4460,7 +4459,7 @@ window._planReparto = async () => {
   studyPlanPanel();
 };
 window._planAbrirTodo = async () => {
-  if(!confirm('Se abre TODO el material Cambridge para todos los grados (las excepciones por alumno se conservan). ¿Seguir?')) return;
+  if(!await NISUI.pregunta('Se abre TODO el material Cambridge para todos los grados. Las excepciones por alumno se conservan.', {titulo:'¿Abrir todo Cambridge?', si:'Abrir todo', no:'Cancelar', tono:'ojo'})) return;
   const ahora = new Date().toISOString(), uid = (state.session&&state.session.user&&state.session.user.id)||null;
   const keys = ['english.cambridge', ..._CAMBRIDGE_NODES.map(n => n.key)];
   const rows = GRADES.flatMap(g => [...new Set(keys)].map(k => ({ grade_id:g.id, node_key:k, unlocked:true, updated_at:ahora, updated_by:uid })));
@@ -4509,7 +4508,7 @@ window._planBuscar = (v) => { _planFiltro = v; clearTimeout(_planBuscaT); _planB
   const inp = document.activeElement; _planEpi().then(() => { const i = $('#plan-body input[type=search]'); if(i && inp && inp.type === 'search'){ i.focus(); i.setSelectionRange(i.value.length, i.value.length); } });
 }, 250); };
 window._planEpiFlag = async (sid, to) => {
-  if(!to && !confirm('El alumno vuelve al plan de su grado. Sus excepciones de Cambridge y sus instrucciones se borran. ¿Quitar?')) return;
+  if(!to && !await NISUI.pregunta('El alumno vuelve al plan de su grado. Sus excepciones de Cambridge y sus instrucciones se borran.', {titulo:'¿Quitar el plan individual?', si:'Quitar', no:'Cancelar', tono:'mal', peligro:true})) return;
   const { error } = await sb.from('profiles').update({ individual_plan:to }).eq('id', sid);
   if(error){ alert('No se pudo guardar: ' + error.message); return; }
   if(!to){
@@ -4565,7 +4564,7 @@ window._planSetStudent = async (sid, key, to, el) => {
   const hint = el.nextElementSibling; if(hint && hint.textContent.indexOf('excep.') < 0) hint.textContent += ' · excep.';
 };
 window._planQuitarExcepciones = async (sid) => {
-  if(!confirm('Se borran las excepciones de Cambridge de este alumno: vuelve a ver exactamente lo de su grado. ¿Seguir?')) return;
+  if(!await NISUI.pregunta('Se borran las excepciones de Cambridge de este alumno: vuelve a ver exactamente lo de su grado.', {titulo:'¿Borrar las excepciones?', si:'Borrar', no:'Cancelar', tono:'mal', peligro:true})) return;
   const keys = ['english.cambridge', ..._CAMBRIDGE_NODES.map(n => n.key)];
   const { error } = await sb.from('student_access').delete().eq('student_id', sid).in('node_key', keys);
   if(error){ alert('No se pudo: ' + error.message); return; }
