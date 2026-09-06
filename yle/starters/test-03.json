@@ -6,7 +6,7 @@
   "p1": {
    "type": "draw_lines",
    "image": "L1",
-   "scene": "A living room and a kitchen. Six children are doing different things: on the sofa, at the table, by the window and next to the TV.",
+   "scene": "A living room and a kitchen. Six children are doing different things: on the sofa, at the table, next to the window and next to the TV.",
    "names": [
     "Alice",
     "Bill",
@@ -35,7 +35,7 @@
     },
     {
      "id": "E",
-     "desc": "a girl with a doll by the window"
+     "desc": "a girl with a doll next to the window"
     },
     {
      "id": "F",
@@ -113,7 +113,7 @@
    },
    "items": [
     {
-     "q": "What is Grandma cooking?",
+     "q": "What is Grandma making for dinner?",
      "pics": [
       "rice",
       "chicken",
@@ -155,7 +155,7 @@
      "key": "B"
     },
     {
-     "q": "How many eggs are in the fridge?",
+     "q": "How many eggs are in the kitchen?",
      "pics": [
       {
        "word": "egg",
@@ -265,9 +265,9 @@
   "p2": {
    "type": "yes_no",
    "image": "R2",
-   "scene": "A kitchen: a woman is cooking, a boy is sitting at the table with a glass of milk, a cat is sleeping under the table, there are three apples on the table and a clock on the wall.",
+   "scene": "A kitchen: a woman is making dinner, a boy is sitting at the table with a glass of milk, a cat is sleeping under the table, there are three apples on the table and a clock on the wall.",
    "example": {
-    "s": "The woman is cooking.",
+    "s": "The woman is making dinner.",
     "key": "yes"
    },
    "items": [
@@ -720,7 +720,7 @@
    ],
    [
     "F",
-    "Can you see the girl by the window? She's got a doll."
+    "Can you see the girl next to the window? She's got a doll."
    ],
    [
     "Mch",
@@ -912,7 +912,7 @@
    ],
    [
     "R",
-    "One. What is Grandma cooking?"
+    "One. What is Grandma making for dinner?"
    ],
    [
     "Mch",
@@ -972,11 +972,11 @@
    ],
    [
     "R",
-    "Four. How many eggs are in the fridge?"
+    "Four. How many eggs are in the kitchen?"
    ],
    [
     "F",
-    "Sam, how many eggs are there in the fridge?"
+    "Sam, how many eggs are there in the kitchen?"
    ],
    [
     "Mch",

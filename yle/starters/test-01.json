@@ -265,7 +265,7 @@
   "p2": {
    "type": "yes_no",
    "image": "R2",
-   "scene": "At the zoo: a big elephant is eating a banana, two monkeys are in a tree, a small boy is sitting on a bench with an ice cream, a woman is taking a photo, and a green frog is on a rock next to the water.",
+   "scene": "At the zoo: a big elephant is eating a banana, two monkeys are in a tree, a small boy is sitting on a chair with an ice cream, a woman is taking a photo, and a green frog is on a rock next to the water.",
    "example": {
     "s": "The elephant is eating a banana.",
     "key": "yes"
@@ -276,7 +276,7 @@
      "key": "no"
     },
     {
-     "s": "The boy is sitting on a bench.",
+     "s": "The boy is sitting on a chair.",
      "key": "yes"
     },
     {
@@ -435,7 +435,7 @@
   "p1": {
    "type": "scene_cards",
    "image": "S1",
-   "scene": "A zoo scene: a monkey in a tree, an elephant next to water, a bird on a fence, a bench, a table with a hat on it, a shop, a big tree and a door.",
+   "scene": "A zoo scene: a monkey in a tree, an elephant next to water, a bird on a fence, a chair, a table with a hat on it, a shop, a big tree and a door.",
    "point": [
     {
      "say": "Look at the picture. Where is the monkey?",
