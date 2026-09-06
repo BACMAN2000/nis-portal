@@ -407,11 +407,23 @@ function listening(){
   Object.keys(L).sort().forEach(function(pk){
     var P = L[pk], p = +pk.slice(1);
     if(P.type === 'draw_lines'){
-      var opts = P.people.map(function(x){ return '<option value="' + x.id + '">' + x.id + ' — ' + esc(x.desc) + '</option>'; }).join('');
-      h += card('listening', p, 'Listen and draw lines', 'Look at the picture. Listen and draw a line from each name to the right person with the pencil. Then choose the person in the list beside the picture. One name is not used.',
+      /* Una fila por persona del dibujo y el desplegable con todos los nombres,
+         incluido el que sobra. Al reves —una fila por nombre— el desplegable
+         ofrecia justo las personas que quedaban, asi que la ultima salia por
+         descarte, y el nombre de mas, que en el examen de Cambridge es lo que
+         hace pensar al nino, existia en el JSON y no se ensenaba nunca. */
+      var quien = {}; P.people.forEach(function(x){ quien[x.id] = x.desc; });
+      var nombres = (P.names && P.names.length ? P.names : [P.example.name].concat(P.items.map(function(it){ return it.name; })))
+        .filter(function(nm){ return nm !== P.example.name; }).slice().sort();
+      var opts = nombres.map(function(nm){ return '<option value="' + esc(nm) + '">' + esc(nm) + '</option>'; }).join('');
+      /* las filas van en el orden de las letras del dibujo, pero cada una guarda
+         el indice de su pregunta: la correccion sigue yendo por numero */
+      var filas = P.items.map(function(it, i){ return {it: it, i: i}; }).sort(function(a, b){ return a.it.person < b.it.person ? -1 : 1; });
+      var ficha = function(id){ return '<b>' + esc(id) + '</b> — ' + esc(quien[id] || ''); };
+      h += card('listening', p, 'Listen and draw lines', 'Look at the picture. Listen and draw a line from each name to the right person with the pencil. Then choose the name of each person in the list beside the picture. <b>One name is not used.</b>',
         split(img(P.image, null, P.scene).replace('<img ', '<img data-paint="' + P.image + '" data-tools="pencil,eraser" ') + escena(P),
-        '<div class="item ex"><span class="tagex">Example</span><b>' + esc(P.example.name) + '</b> → ' + P.example.person + '</div>' +
-        P.items.map(function(it, i){ return '<div class="item"><label>' + esc(it.name) + '</label><select data-name="' + pk + '_' + i + '"><option value="">— choose —</option>' + opts + '</select></div>'; }).join('')));
+        '<div class="item ex"><span class="tagex">Example</span>' + ficha(P.example.person) + ' → <b>' + esc(P.example.name) + '</b></div>' +
+        filas.map(function(f){ return '<div class="item"><label>' + ficha(f.it.person) + '</label><select data-name="' + pk + '_' + f.i + '"><option value="">— choose —</option>' + opts + '</select></div>'; }).join('')));
     } else if(P.type === 'note_taking' || P.type === 'note_taking_names_numbers'){
       h += card('listening', p, 'Listen and write', 'Read the question. Listen and write a name or a number.' + (P.heading ? ' <b>' + esc(P.heading) + '</b>' : ''),
         (P.example ? '<div class="item ex"><span class="tagex">Example</span>' + esc(P.example.q) + ' → <b>' + esc(P.example.a) + '</b></div>' : '') +
@@ -681,7 +693,7 @@ function screens(){
 /* ---------- corrección ---------- */
 function keyOf(paper, pk, i){
   var P = T[paper][pk];
-  if(P.type === 'draw_lines') return P.items[i].person;
+  if(P.type === 'draw_lines') return P.items[i].name;   // desde que la fila es la persona, lo que se elige es el nombre
   if(P.type === 'note_taking' || P.type === 'note_taking_names_numbers') return P.items[i].a;
   if(P.type === 'mc_pictures') return P.items[i].key;
   if(P.type === 'tick_cross') return P.items[i].key ? 'yes' : 'no';
