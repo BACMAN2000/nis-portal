@@ -1659,6 +1659,28 @@ window.RP={
 };
 window.rpPara=(i)=>{ if(RP.ready){ RP.seekTo((RP.cum[i]||0)+0.01); if(!RP.playing) RP.play(); } };
 
+/* ---------- lexico propio: fonetica, definicion y voz ----------
+   El paquete del libro (reader-pron/<id>.json) trae la fonetica del 96-100 %
+   de las palabras del texto y la definicion de las que estan en nuestro
+   glosario. Se carga al PRIMER toque, no al abrir el libro: son 264-423 KB y
+   la mayoria de las sesiones de lectura no tocan ninguna palabra. */
+var LEXP=null, _lexPend=null;
+function lexPack(){
+  if(LEXP) return Promise.resolve(LEXP);
+  if(_lexPend) return _lexPend;
+  _lexPend=fetch('reader-pron/'+RDR_ID+'.json?v=1')
+    .then(r=>r.ok?r.json():{}).catch(()=>({}))
+    .then(j=>{ LEXP=j||{}; return LEXP; });
+  return _lexPend;
+}
+function lexOf(w){ return (LEXP||{})[String(w||'').toLowerCase()]||null; }
+function lexAudioUrl(w){
+  const e=lexOf(w); if(!e||!e.a) return '';
+  const b=String(w).toLowerCase();
+  const f=(e.a===1)?b.replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,''):e.a;
+  return f?('lexicon-audio/uk/'+f+'.mp3'):'';
+}
+
 /* ---------- diccionario al tocar una palabra (lectura en pausa) ---------- */
 function _storySentence(word,p){
   const re=new RegExp('\\b'+word.replace(/[^a-zA-Z]/g,'')+'\\b','i');
@@ -1689,12 +1711,26 @@ window.wordDict=(el)=>{
   </div>`;
   veil.onclick=()=>veil.remove();
   document.body.appendChild(veil);
+  /* Lo nuestro primero y sin red: la fonetica del paquete del libro y, si la
+     palabra esta en el glosario, su definicion en ingles simple. Antes, si la
+     API fallaba, el alumno solo leia «ask your teacher». */
+  lexPack().then(()=>{
+    const e=lexOf(word); if(!e) return;
+    const ph=$('#dictPhon');
+    if(ph && !ph.textContent && (e.uk||e.us))
+      ph.textContent=(e.uk?'UK '+e.uk:'')+(e.uk&&e.us?'   ':'')+(e.us?'US '+e.us:'');
+    const body=$('#dictBody');
+    if(body && e.d && !body.dataset.api)
+      body.innerHTML='<div class="pos">meaning</div><p class="def">'+e.d+'</p>';
+  });
   fetch('https://api.dictionaryapi.dev/api/v2/entries/en/'+encodeURIComponent(word))
     .then(r=>r.ok?r.json():Promise.reject())
     .then(j=>{
       const e=j[0]; const body=$('#dictBody'); if(!body) return;
       const phon=e.phonetic||((e.phonetics||[]).find(p=>p.text)||{}).text||'';
-      const ph=$('#dictPhon'); if(ph) ph.textContent=phon;
+      const ph=$('#dictPhon');
+      if(ph && !ph.textContent && phon) ph.textContent=phon;   // la nuestra manda
+      const _b0=$('#dictBody'); if(_b0) _b0.dataset.api='1';
       body.innerHTML=(e.meanings||[]).slice(0,2).map(m=>{
         const d=(m.definitions||[])[0]||{};
         return `<div class="pos">${m.partOfSpeech||''}</div>
@@ -1702,7 +1738,12 @@ window.wordDict=(el)=>{
           ${d.example?`<p class="ex">“${d.example}”</p>`:''}`;
       }).join('')||'<p class="muted">No definition found.</p>';
     })
-    .catch(()=>{ const body=$('#dictBody'); if(body) body.innerHTML=local?'':'<p class="muted">No dictionary entry found for this word — ask your teacher! 🙋</p>'; });
+    .catch(()=>{
+      const body=$('#dictBody'); if(!body) return;
+      const e=lexOf(word);
+      if(e && e.d){ body.innerHTML='<div class="pos">meaning</div><p class="def">'+e.d+'</p>'; return; }
+      body.innerHTML=local?'':'<p class="muted">No dictionary entry found for this word — ask your teacher! 🙋</p>';
+    });
 };
 
 /* ============================================================
@@ -1880,7 +1921,15 @@ function actSummary(c){
    de Agatha · Gramática (past perfect) · Escribir sobre personajes
    ============================================================ */
 const BOOK_WORDS=EXTRAS.BOOK_WORDS||[];
-function sayWord(w){ try{ speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(w.toLowerCase()); u.lang='en-GB';
+function sayWord(w){
+  /* Nuestra grabacion cuando la hay: misma voz para todos, en cualquier movil.
+     La del navegador queda de reserva, como estaba. */
+  const _u=lexAudioUrl(w);
+  if(_u){ try{ speechSynthesis.cancel(); }catch(e){}
+    const _a=new Audio(_u); _a.onerror=()=>_sayTTS(w); _a.play().catch(()=>_sayTTS(w)); return; }
+  _sayTTS(w);
+}
+function _sayTTS(w){ try{ speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(w.toLowerCase()); u.lang='en-GB';
   const v=speechSynthesis.getVoices().find(v=>/^en[-_]GB/i.test(v.lang)); if(v)u.voice=v; speechSynthesis.speak(u);}catch(e){} }
 function extraBeforeYouRead(){
   view={screen:'info',info:'before',chap:null,act:null}; _syncHash(); backEl.style.display='inline-block';
