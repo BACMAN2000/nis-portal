@@ -6,7 +6,7 @@
  "p1": {
  "type": "draw_lines",
  "image": "L1",
- "scene": "A big party: children in different costumes – a witch, a superhero, a princess, a robot, a dinosaur; an adult with a cake; a dog with a party hat; balloons on the walls.",
+ "scene": "A big party: children in different costumes – a girl in a black hat, a boy in a costume with a star, a queen, a robot, a dinosaur; a grown-up with a cake; a dog with a party hat; balloons on the walls.",
  "names": [
  "Uncle Pete",
  "Bella",
@@ -18,15 +18,15 @@
  "people": [
  {
  "id": "A",
- "desc": "a witch"
+ "desc": "a girl in a black hat"
  },
  {
  "id": "B",
- "desc": "a superhero"
+ "desc": "a boy in a costume with a star"
  },
  {
  "id": "C",
- "desc": "a princess"
+ "desc": "a queen"
  },
  {
  "id": "D",
@@ -38,7 +38,7 @@
  },
  {
  "id": "F",
- "desc": "an adult with a cake"
+ "desc": "a grown-up with a cake"
  },
  {
  "id": "G",
@@ -246,7 +246,7 @@
  "p5": {
  "type": "colour_write",
  "image": "L5",
- "scene": "A birthday party scene: a long table with a big cake, eight balloons tied to a chair, a banner with \"HAPPY BIRTHDAY\", a clown juggling, a box of presents, a dog under the table, a mirror on the wall.",
+ "scene": "A birthday party scene: a long table with a big cake, eight balloons tied to a chair, a big poster, a clown juggling, a box of presents, a dog under the table, a mirror on the wall.",
  "object": "thing",
  "example": {
  "what": "the cake",
@@ -258,7 +258,7 @@
  "colour": "red"
  },
  {
- "what": "a star on the banner",
+ "what": "a star on the poster",
  "write": "draw"
  },
  {
@@ -403,7 +403,7 @@
  "key": "G"
  },
  {
- "a": "Me neither! Shall we meet at the party?",
+ "a": "Me too! Shall we meet at the party?",
  "key": "D"
  }
  ]
@@ -722,7 +722,7 @@
  ],
  [
  "Mch",
- "Bella is the princess."
+ "Bella is the queen."
  ],
  [
  "pause",
@@ -738,7 +738,7 @@
  ],
  [
  "Mch",
- "Nina is the witch."
+ "Nina is the girl in the black hat."
  ],
  [
  "pause",
@@ -754,7 +754,7 @@
  ],
  [
  "Mch",
- "Actually wait, Omar is the superhero."
+ "Actually wait, Omar is the boy in the costume."
  ],
  [
  "pause",
@@ -798,7 +798,7 @@
  ],
  [
  "Mch",
- "Bella is the princess."
+ "Bella is the queen."
  ],
  [
  "pause",
@@ -814,7 +814,7 @@
  ],
  [
  "Mch",
- "Nina is the witch."
+ "Nina is the girl in the black hat."
  ],
  [
  "pause",
@@ -830,7 +830,7 @@
  ],
  [
  "Mch",
- "Actually wait, Omar is the superhero."
+ "Actually wait, Omar is the boy in the costume."
  ],
  [
  "pause",
@@ -1858,7 +1858,7 @@
  ],
  [
  "M",
- "On the banner, draw a star."
+ "On the poster, draw a star."
  ],
  [
  "pause",
@@ -1990,7 +1990,7 @@
  ],
  [
  "M",
- "On the banner, draw a star."
+ "On the poster, draw a star."
  ],
  [
  "pause",

@@ -6,7 +6,7 @@
  "p1": {
  "type": "draw_lines",
  "image": "L1",
- "scene": "Children playing in a park with different animals: a boy on a bench with a dog, a girl by a pond with a duck, a boy climbing a tree, a girl riding a pony, a man with a parrot on his shoulder, a woman feeding a rabbit, a boy on a bike.",
+ "scene": "Children playing in a park with different animals: a boy on a seat with a dog, a girl by a pond with a duck, a boy climbing a tree, a girl riding a horse, a man with a parrot on his shoulder, a woman feeding a rabbit, a boy on a bike.",
  "names": [
  "Daisy",
  "Oliver",
@@ -18,7 +18,7 @@
  "people": [
  {
  "id": "A",
- "desc": "a boy on a bench with a dog"
+ "desc": "a boy on a seat with a dog"
  },
  {
  "id": "B",
@@ -30,7 +30,7 @@
  },
  {
  "id": "D",
- "desc": "a girl riding a pony"
+ "desc": "a girl riding a horse"
  },
  {
  "id": "E",
@@ -243,7 +243,7 @@
  "p5": {
  "type": "colour_write",
  "image": "L5",
- "scene": "A farm scene: a large barn, a tree with apples, a fence, a pond with a duck, a horse, a pig, a cat on the roof, a farmer with a hat, a girl with a bucket.",
+ "scene": "A farm scene: a big farm house, a tree with apples, a fence, a pond with a duck, a horse, a pig, a cat on the roof, a farmer with a hat, a girl with a bucket.",
  "object": "thing",
  "example": {
  "what": "the hat of the farmer",
@@ -251,11 +251,11 @@
  },
  "items": [
  {
- "what": "the pig",
+ "what": "the horse",
  "colour": "pink"
  },
  {
- "what": "on the door of the barn",
+ "what": "on the door of the farm house",
  "write": "FARM"
  },
  {
@@ -389,7 +389,7 @@
  "key": "D"
  },
  {
- "a": "We can leave at nine o’clock. Is that okay?",
+ "a": "We can leave at nine o’clock. Is that OK?",
  "key": "F"
  },
  {
@@ -804,7 +804,7 @@
  ],
  [
  "Mch",
- "Sarah is the girl riding the pony."
+ "Sarah is the girl riding the horse."
  ],
  [
  "pause",
@@ -952,7 +952,7 @@
  ],
  [
  "Mch",
- "Sarah is the girl riding the pony."
+ "Sarah is the girl riding the horse."
  ],
  [
  "pause",
@@ -2060,7 +2060,7 @@
  ],
  [
  "M",
- "Can you see the pig?"
+ "Can you see the horse?"
  ],
  [
  "pause",
@@ -2076,7 +2076,7 @@
  ],
  [
  "M",
- "Colour the pig pink, please."
+ "Colour the horse pink, please."
  ],
  [
  "pause",
@@ -2092,7 +2092,7 @@
  ],
  [
  "M",
- "The barn has a big door."
+ "The farm house has a big door."
  ],
  [
  "pause",
@@ -2248,7 +2248,7 @@
  ],
  [
  "M",
- "Can you see the pig?"
+ "Can you see the horse?"
  ],
  [
  "pause",
@@ -2264,7 +2264,7 @@
  ],
  [
  "M",
- "Colour the pig pink, please."
+ "Colour the horse pink, please."
  ],
  [
  "pause",
@@ -2280,7 +2280,7 @@
  ],
  [
  "M",
- "The barn has a big door."
+ "The farm house has a big door."
  ],
  [
  "pause",

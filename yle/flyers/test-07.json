@@ -6,7 +6,7 @@
  "p1": {
  "type": "draw_lines",
  "image": "L1",
- "scene": "A busy airport: a woman with a big red suitcase, a boy reading a travel book, a man with a blue backpack, a girl with a camera around her neck, a pilot with sunglasses, a woman in a uniform holding a clipboard, a small boy with his teddy bear.",
+ "scene": "A busy airport: a woman with a big red suitcase, a boy reading a travel book, a man with a blue backpack, a girl with a camera around her neck, a pilot with sunglasses, a woman in a uniform holding some papers, a small boy with his teddy bear.",
  "names": [
  "Pilot John",
  "Mrs Baker",
@@ -38,7 +38,7 @@
  },
  {
  "id": "F",
- "desc": "a woman in a uniform holding a clipboard"
+ "desc": "a woman in a uniform holding some papers"
  },
  {
  "id": "G",

@@ -6,7 +6,7 @@
  "p1": {
  "type": "draw_lines",
  "image": "L1",
- "scene": "A family party: grandma in a yellow dress, a boy in a pirate costume, a girl in a ballerina dress, a man in a blue suit, a woman in red trousers, a baby in pink pyjamas, a teenage boy in a football shirt.",
+ "scene": "A family party: grandma in a yellow dress, a boy in a pirate costume, a girl dressed as a dancer, a man in a blue jacket, a woman in red trousers, a baby in pink pyjamas, a young boy in a football shirt.",
  "names": [
  "Grandma Rose",
  "Jack",
@@ -26,11 +26,11 @@
  },
  {
  "id": "C",
- "desc": "a girl in a ballerina dress"
+ "desc": "a girl dressed as a dancer"
  },
  {
  "id": "D",
- "desc": "a man in a blue suit"
+ "desc": "a man in a blue jacket"
  },
  {
  "id": "E",
@@ -42,7 +42,7 @@
  },
  {
  "id": "G",
- "desc": "a teenage boy in a football shirt"
+ "desc": "a young boy in a football shirt"
  }
  ],
  "example": {
@@ -133,7 +133,7 @@
  },
  {
  "letter": "C",
- "word": "white shirt & tie"
+ "word": "white shirt"
  },
  {
  "letter": "D",
@@ -241,7 +241,7 @@
  "p5": {
  "type": "colour_write",
  "image": "L5",
- "scene": "A children’s bedroom: a wardrobe, a bed with a teddy bear, a mirror, a shelf with three boxes, a lamp, a window with curtains, a pair of shoes on the floor, a hat on a hook.",
+ "scene": "A children’s bedroom: a wardrobe, a bed with a teddy bear, a mirror, a shelf with three boxes, a lamp, a window with a plant next to it, a pair of shoes on the floor, a hat on the wall.",
  "object": "thing",
  "example": {
  "what": "the teddy bear",
@@ -249,7 +249,7 @@
  },
  "items": [
  {
- "what": "the curtains",
+ "what": "the plant",
  "colour": "purple"
  },
  {
@@ -257,7 +257,7 @@
  "write": "draw"
  },
  {
- "what": "the hat on the hook",
+ "what": "the hat on the wall",
  "colour": "pink"
  },
  {
@@ -444,7 +444,7 @@
  "p4": {
  "type": "mc_cloze",
  "title": "How to stay well",
- "text": "To have a well body, children __(1)__ do __(2)__ things. First, it is important to eat a lot of fruit and __(3)__. Second, we need to drink lots of water __(4)__ day. It is also important __(5)__ sleep between nine and eleven __(6)__ in each night. Exercise is __(7)__ very important – a good __(8)__ or playing in the park is great. And remember, don’t forget to __(9)__ your teeth after every meal! Finally, when you __(10)__ not well, always tell an adult and go to see the doctor.",
+ "text": "To have a well body, children __(1)__ do __(2)__ things. First, it is important to eat a lot of fruit and __(3)__. Second, we need to drink lots of water __(4)__ day. It is also important __(5)__ sleep between nine and eleven __(6)__ in each night. Exercise is __(7)__ very important – a good __(8)__ or playing in the park is great. And remember, don’t forget to __(9)__ your teeth after every meal! Finally, when you __(10)__ not well, always tell a grown-up and go to see the doctor.",
  "example": {
  "options": [
  "",
@@ -1866,7 +1866,7 @@
  ],
  [
  "M",
- "Colour the curtains purple."
+ "Colour the plant purple."
  ],
  [
  "pause",
@@ -1898,7 +1898,7 @@
  ],
  [
  "M",
- "The hat on the hook – colour it pink."
+ "The hat on the wall – colour it pink."
  ],
  [
  "pause",
@@ -1982,7 +1982,7 @@
  ],
  [
  "M",
- "Colour the curtains purple."
+ "Colour the plant purple."
  ],
  [
  "pause",
@@ -2014,7 +2014,7 @@
  ],
  [
  "M",
- "The hat on the hook – colour it pink."
+ "The hat on the wall – colour it pink."
  ],
  [
  "pause",

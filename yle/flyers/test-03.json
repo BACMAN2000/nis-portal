@@ -6,7 +6,7 @@
  "p1": {
  "type": "draw_lines",
  "image": "L1",
- "scene": "A busy café with people at different tables: a man reading a newspaper and drinking tea, a boy eating a chocolate cake, a woman with a coffee, a girl drinking orange juice, a man having spaghetti, a woman with a baby and a banana, a waiter carrying a tray.",
+ "scene": "A busy café with people at different tables: a man reading a newspaper and drinking tea, a boy eating a chocolate cake, a woman with a coffee, a girl drinking orange juice, a man having pasta, a woman with a baby and a banana, a waiter carrying two plates.",
  "names": [
  "Harry",
  "Mandy",
@@ -38,7 +38,7 @@
  },
  {
  "id": "F",
- "desc": "a man having spaghetti"
+ "desc": "a man having pasta"
  },
  {
  "id": "G",
@@ -50,7 +50,7 @@
  },
  {
  "id": "I",
- "desc": "a waiter carrying a tray"
+ "desc": "a waiter carrying two plates"
  }
  ],
  "example": {
@@ -253,7 +253,7 @@
  "p5": {
  "type": "colour_write",
  "image": "L5",
- "scene": "A kitchen: a fridge on the left, a table in the centre with a bowl of fruit, a cat under the table, a small shelf with three bottles, a cupboard with plates, a window with curtains.",
+ "scene": "A kitchen: a fridge on the left, a table in the centre with a bowl of fruit, a cat under the table, a small shelf with three bottles, a cupboard with plates, a window with a plant next to it.",
  "object": "thing",
  "example": {
  "what": "the fridge",
@@ -277,7 +277,7 @@
  "write": "SUGAR"
  },
  {
- "what": "the curtains",
+ "what": "the plant",
  "colour": "red"
  }
  ]
@@ -355,7 +355,7 @@
  "speakerA": "Eva",
  "speakerB": "Chef",
  "example": {
- "a": "Hello! I’d like to order some lunch, please.",
+ "a": "Hello! I’d like some lunch, please.",
  "key": "F",
  "text": "Of course. What would you like to eat today?"
  },
@@ -399,7 +399,7 @@
  "key": "G"
  },
  {
- "a": "And for my main, can I have the chicken with rice?",
+ "a": "And can I have the chicken with rice, please?",
  "key": "E"
  },
  {
@@ -407,7 +407,7 @@
  "key": "D"
  },
  {
- "a": "OK. Do you have any fruit for dessert?",
+ "a": "OK. Do you have any fruit, please?",
  "key": "A"
  },
  {
@@ -2008,7 +2008,7 @@
  ],
  [
  "M",
- "The curtains – colour the curtains red."
+ "The curtains – colour the plant red."
  ],
  [
  "pause",
@@ -2148,7 +2148,7 @@
  ],
  [
  "M",
- "The curtains – colour the curtains red."
+ "The curtains – colour the plant red."
  ],
  [
  "pause",
