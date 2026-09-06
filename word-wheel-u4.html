@@ -371,11 +371,19 @@ body{
   </div>
 </div></div>
 
-<script src="ui-mensajes.js?v=1"></script>
+<script src="ui-mensajes.js?v=2"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js?v=18"></script>
 <script src="activity-save.js?v=4"></script>
 <script>
+/* Aviso de la plataforma, con respaldo: NISUI en el portal NIS, cohConfirm en
+   Cohasset, y el del navegador si la pagina no carga ninguno de los dos. */
+function _preguntaUI(m, op){
+  if (window.NISUI && window.NISUI.pregunta) return window.NISUI.pregunta(m, op);
+  if (typeof window.cohConfirm === 'function') return window.cohConfirm(m);
+  return Promise.resolve(window.confirm(m));
+}
+
 "use strict";
 
 /* ==================================================================
@@ -1028,8 +1036,9 @@ $("btnReveal").onclick=toggleReveal;
 document.querySelectorAll(".tab").forEach(function(t){
   t.onclick=function(){ adminTab=t.getAttribute("data-tab"); paintAdmin(); };
 });
-$("btnReset").onclick=function(){
-  if(!confirm("Reset all progress and coins?")) return;
+$("btnReset").onclick=async function(){
+  if(!await _preguntaUI("You will lose every level you have finished and all your coins.",
+      {titulo:"Reset all progress?", si:"Reset", no:"Cancel", tono:'mal', peligro:true})) return;
   S={coins:0,done:{},sound:S.sound,admin:S.admin}; save(); paintHome();
 };
 $("btnSound").onclick=function(){ S.sound=!S.sound; save(); $("btnSound").textContent=S.sound?"🔊":"🔇"; };

@@ -836,7 +836,7 @@
 
 </div>
 
-<script src="../ui-mensajes.js?v=1"></script>
+<script src="../ui-mensajes.js?v=2"></script>
 <script type="text/html" id="roadmapDoc"><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -2877,8 +2877,8 @@ function addCriterion(){
   document.getElementById('cName').value='';document.getElementById('cDesc').value='';
   save();
 }
-function delCriterion(id){
-  if(DB.corrections.some(c=>c.criterionId===id)){if(!confirm(T('cf_delcrit')))return;}
+async function delCriterion(id){
+  if(DB.corrections.some(c=>c.criterionId===id)){if(!await _preguntaUI(T('cf_delcrit')))return;}
   DB.criteria=DB.criteria.filter(c=>c.id!==id);save();
 }
 function badge(s){return s==='History'?`<span class="badge b-hist">${T('hist')}</span>`:`<span class="badge b-eng">${T('eng')}</span>`;}
@@ -3038,7 +3038,7 @@ function importData(e){
   r.onload=()=>{try{DB=JSON.parse(r.result);localStorage.setItem(KEY,JSON.stringify(DB));renderAll();alert(T('al_imported'));}catch(x){alert(T('al_invalid'));}};
   r.readAsText(f);
 }
-function resetData(){if(confirm(T('cf_reset'))){DB=seed();localStorage.setItem(KEY,JSON.stringify(DB));renderAll();}}
+async function resetData(){if(await _preguntaUI(T('cf_reset'))){DB=seed();localStorage.setItem(KEY,JSON.stringify(DB));renderAll();}}
 function renderDataInfo(){document.getElementById('dataInfo').innerHTML=T('di')(DB.criteria.length,DB.corrections.length,DB.reading.length,DB.seededAt);}
 
 /* ---------- QUIZ (Chapter 22, auto-graded) ---------- */

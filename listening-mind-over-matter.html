@@ -189,11 +189,19 @@
   If you hear no sound: check the volume, and use <b>Chrome</b> or <b>Edge</b> (Firefox voices are limited).
 </footer>
 
-<script src="ui-mensajes.js?v=1"></script>
+<script src="ui-mensajes.js?v=2"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js?v=18"></script>
 <script src="activity-save.js?v=4"></script>
 <script>
+/* Aviso de la plataforma, con respaldo: NISUI en el portal NIS, cohConfirm en
+   Cohasset, y el del navegador si la pagina no carga ninguno de los dos. */
+function _preguntaUI(m, op){
+  if (window.NISUI && window.NISUI.pregunta) return window.NISUI.pregunta(m, op);
+  if (typeof window.cohConfirm === 'function') return window.cohConfirm(m);
+  return Promise.resolve(window.confirm(m));
+}
+
 /* ============================================================
    TARGET VOCABULARY — every level's script is built to contain
    its own list in full. Chips turn green once you have heard it.
@@ -822,8 +830,9 @@ function wire(){
     DATA[cur].ladders.forEach((L,li)=> delete s.ans["lad"+li]);
     delete s.self["_lad"]; save(); render();
   });
-  document.querySelectorAll("[data-reset]").forEach(b=> b.onclick = ()=>{
-    if(confirm("Clear all your answers for level " + cur + " (including the listening count)?")){
+  document.querySelectorAll("[data-reset]").forEach(b=> b.onclick = async ()=>{
+    if(await _preguntaUI("Your answers for level " + cur + ", including the listening count, will be deleted.",
+        {titulo:"Clear your answers?", si:"Clear", no:"Cancel", tono:'mal', peligro:true})){
       delete store[cur]; save(); stopAudio(); render();
     }
   });

@@ -93,7 +93,7 @@
   .lab table{width:100%;border-collapse:collapse;font-size:.78rem;margin-top:2px}
   .lab td{border:1px solid var(--line);padding:5px 7px;vertical-align:top}
 </style>
-<script src="ui-mensajes.js?v=1"></script>
+<script src="ui-mensajes.js?v=2"></script>
 <script src="nis-nav.js?v=2"></script>
 <script src="activity-save.js?v=4"></script>
 </head>
@@ -154,6 +154,14 @@
 <script src="config.js"></script>
 <script src="anticheat.js?v=8" data-activity="writing-tutor" data-label="Virtual Writing Tutor"></script>
 <script>
+/* Aviso de la plataforma, con respaldo: NISUI en el portal NIS, cohConfirm en
+   Cohasset, y el del navegador si la pagina no carga ninguno de los dos. */
+function _preguntaUI(m, op){
+  if (window.NISUI && window.NISUI.pregunta) return window.NISUI.pregunta(m, op);
+  if (typeof window.cohConfirm === 'function') return window.cohConfirm(m);
+  return Promise.resolve(window.confirm(m));
+}
+
 var P={
  opinion:{A2:["I think","I like","I don't like"],B1:["In my opinion","I believe that","I think that","From my point of view"],B2:["It seems to me that","I would argue that","Personally, I feel that","There is no doubt that"],C1:["I am firmly convinced that","It could be argued that","From my perspective","I am inclined to believe that"]},
  adding:{A2:["and","also","First","Next"],B1:["Firstly","To begin with","In addition","Also","Secondly"],B2:["Furthermore","Moreover","What is more","Another point is that"],C1:["In addition to this","A further consideration is","Not only that, but"]},
@@ -494,7 +502,8 @@ function msg(t,cls){ var m=document.getElementById('msg'); m.textContent=t; m.cl
 function copyAll(){ var txt=assemble(); if(!txt){msg('Nothing to copy yet.','warn');return;} navigator.clipboard.writeText(txt).then(function(){msg('Copied to clipboard!','ok');},function(){msg('Could not copy.','warn');}); }
 function downloadTxt(){ var txt=assemble(); if(!txt){msg('Nothing to download yet.','warn');return;}
   var a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([txt],{type:'text/plain'})); a.download=type+"-"+level+"-writing.txt"; a.click(); }
-function clearAll(){ if(!confirm('Clear this draft? Your text will be deleted.'))return; localStorage.removeItem(draftKey()); render(); }
+async function clearAll(){ if(!await _preguntaUI('Your text will be deleted and you cannot get it back.',
+      {titulo:'Clear this draft?', si:'Clear', no:'Cancel', tono:'mal', peligro:true}))return; localStorage.removeItem(draftKey()); render(); }
 function sendTeacher(){
   var txt=assemble(); if(wordCount(txt)<10){ msg('Write a bit more before sending.','warn'); return; }
   var done=function(name,email){

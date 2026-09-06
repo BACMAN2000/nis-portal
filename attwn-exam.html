@@ -106,7 +106,7 @@
   .center{ text-align:center }
   .muted{ color:var(--muted) }
 </style>
-<script src="ui-mensajes.js?v=1"></script>
+<script src="ui-mensajes.js?v=2"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js"></script>
 <script src="nis-nav.js?v=2"></script>
@@ -121,6 +121,14 @@
 <main id="main"><p class="muted">Loading…</p></main>
 
 <script>
+/* Aviso de la plataforma, con respaldo: NISUI en el portal NIS, cohConfirm en
+   Cohasset, y el del navegador si la pagina no carga ninguno de los dos. */
+function _preguntaUI(m, op){
+  if (window.NISUI && window.NISUI.pregunta) return window.NISUI.pregunta(m, op);
+  if (typeof window.cohConfirm === 'function') return window.cohConfirm(m);
+  return Promise.resolve(window.confirm(m));
+}
+
 /* =====================================================================
    READER EXAMS — un examen autocorregible por capítulo y por nivel.
    Secciones (ensambladas del banco del nivel attwn-data-<lvl>.js):
@@ -302,9 +310,10 @@ function _applyHash(){
   if((m=/^([a-z]+)$/.exec(h)) && bookOf(m[1]))                        return viewLevels(m[1],true);
   return viewReaders(true);
 }
-window.addEventListener('hashchange',()=>{
+window.addEventListener('hashchange',async ()=>{
   if(_hashMute){ _hashMute=false; return; }
-  if(EX && !EX.done && !confirm('¿Salir del examen? Tus respuestas de esta pantalla se perderán.')){
+  if(EX && !EX.done && !await _preguntaUI('The answers on this screen will be lost and the exam will not be submitted.',
+      {titulo:'Leave the exam?', si:'Leave', no:'Stay in the exam', tono:'mal', peligro:true})){
     _setHash(EX.rid+'/'+EX.lvl+'/ch'+EX.ch); return;
   }
   if(EX){ clearInterval(EX.timer); clearInterval(EX.poll); clearInterval(EX.gracia); EX=null; }
@@ -626,7 +635,8 @@ window.typed=(i,v)=>{ if(EX.done) return; EX.ans[i]=v; const n=$('#ansN'); if(n)
 window.submitExam=async(force)=>{
   if(!EX||EX.done) return;
   const n=answeredCount();
-  if(!force && n<EX.qs.length && !confirm('You have answered '+n+'/'+EX.qs.length+'. Submit anyway?')) return;
+  if(!force && n<EX.qs.length && !await _preguntaUI('You have answered '+n+' of '+EX.qs.length+' questions. The rest will be marked wrong.',
+      {titulo:'Submit unfinished?', si:'Yes, submit', no:'Go back and answer', tono:'ojo'})) return;
   EX.done=true; clearInterval(EX.timer); clearInterval(EX.gracia); EX.gracia=null; stopQAudio();
   let score=0;
   const review=EX.qs.map((q,i)=>{

@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <meta name="google" content="notranslate">
-<script src="ui-mensajes.js?v=1"></script>
+<script src="ui-mensajes.js?v=2"></script>
 <script src="config.js?v=18"></script>
 <script src="anticheat.js?v=8"></script>
 <style>
@@ -219,6 +219,14 @@
 </div>
 
 <script>
+/* Aviso de la plataforma, con respaldo: NISUI en el portal NIS, cohConfirm en
+   Cohasset, y el del navegador si la pagina no carga ninguno de los dos. */
+function _preguntaUI(m, op){
+  if (window.NISUI && window.NISUI.pregunta) return window.NISUI.pregunta(m, op);
+  if (typeof window.cohConfirm === 'function') return window.cohConfirm(m);
+  return Promise.resolve(window.confirm(m));
+}
+
 /* ---------- levels & word targets (matches the differentiation slide) ---------- */
 const LEVELS={
   a2:{name:'A2',sub:'~60–80',min:60,max:80},
@@ -512,8 +520,9 @@ window.copyEssay=async()=>{
   }catch(e){ const x=document.createElement('textarea'); x.value=ft; document.body.appendChild(x); x.select();
     document.execCommand('copy'); x.remove(); alert('Essay copied.'); }
 };
-window.clearAll=()=>{
-  if(!confirm('Clear your '+topic().short+' essay ('+LEVELS[level].name+')? This cannot be undone.'))return;
+window.clearAll=async ()=>{
+  if(!await _preguntaUI('Your '+topic().short+' essay ('+LEVELS[level].name+') will be deleted. This cannot be undone.',
+      {titulo:'Clear your essay?', si:'Clear', no:'Cancel', tono:'mal', peligro:true}))return;
   data={}; save(); renderBlocks(); update();
 };
 function show(id){document.getElementById(id).classList.add('show');}
@@ -532,12 +541,14 @@ window.submitEssay = async ()=>{
   const ft=fullText();
   if(!ft.trim()){ alert('Your essay is empty. Write something before you hand in.'); return; }
   const total=words(ft), L=LEVELS[level];
-  if(total < L.min && !confirm(`Your essay has ${total} words (target ${L.sub}). Hand in anyway?`)) return;
+  if(total < L.min && !await _preguntaUI(`Your essay has ${total} words and the target is ${L.sub}.`,
+      {titulo:'Hand in a short essay?', si:'Hand it in', no:'Keep writing', tono:'ojo'})) return;
   const stu = (window.NISAntiCheat && NISAntiCheat.getStudent) ? NISAntiCheat.getStudent() : null;
   if(!stu || !stu.name){ alert('Log in to the NIS Portal (with your student account) to hand your work in to your teacher.'); return; }
   const CFG=window.NIS_CONFIG||{};
   if(!CFG.WRITING_WEBHOOK){ alert('No hand-in destination is set up. Let your teacher know.'); return; }
-  if(!confirm(`Hand in your essay "${topic().short}" (${L.name}, ${total} words) to your teacher?`)) return;
+  if(!await _preguntaUI(`"${topic().short}" — ${L.name}, ${total} words. Your teacher will receive it and you will not be able to change it.`,
+      {titulo:'Hand in your essay?', si:'Hand it in', no:'Keep writing', icono:'✍️', tono:'info'})) return;
   const btn=document.getElementById('submitBtn'); const o=btn.textContent; btn.disabled=true; btn.textContent='Sending…';
   const payload={
     skill:'Writing', examType:'Activity', examTitle:'Opinion Essay — '+topic().short,
