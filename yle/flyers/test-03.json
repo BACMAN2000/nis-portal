@@ -266,8 +266,8 @@
  "colour": "yellow"
  },
  {
- "what": "a glass of milk on the table",
- "write": "draw"
+ "what": "on the table",
+ "draw": "a glass of milk"
  },
  {
  "what": "the cat under the table",

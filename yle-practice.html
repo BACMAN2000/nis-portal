@@ -444,11 +444,15 @@ function listening(){
         P.items.map(function(it, i){ return '<div class="item"><label>' + (i + 1) + '. ' + esc(it.who) + '</label><select data-name="' + pk + '_' + i + '"><option value="">—</option>' + letters.map(function(l){ return '<option value="' + l + '">' + l + '</option>'; }).join('') + '</select></div>'; }).join('')));
     } else if(P.type === 'colour' || P.type === 'colour_write'){
       var lab = function(it){ return (it.what ? esc(it.what) : 'the ' + esc(P.object || 'object')) + (it.where ? ' ' + esc(it.where) : ''); };
-      var res = function(it){ return it.write ? 'write <b>' + esc(it.write) + '</b>' + (it.colour ? ' · colour <b>' + esc(it.colour) + '</b>' : '') : '<b>' + esc(it.colour) + '</b>'; };
-      h += card('listening', p, P.type === 'colour' ? 'Listen and colour' : 'Listen and colour and write', 'Listen. Find each thing by where it is and colour it with the colour you hear.' + (P.type === 'colour_write' ? ' One question asks you to write a word on the picture (use the T tool).' : '') + ' Only colour what you are told to colour.',
+      /* una de las preguntas pide dibujar algo, no escribirlo: `draw` dice que se
+         dibuja y `what` donde. Antes venia como write:"draw" y la clave se leia
+         «write draw». */
+      var res = function(it){ return it.draw ? 'draw <b>' + esc(it.draw) + '</b>' + (it.colour ? ' · colour <b>' + esc(it.colour) + '</b>' : '') : it.write ? 'write <b>' + esc(it.write) + '</b>' + (it.colour ? ' · colour <b>' + esc(it.colour) + '</b>' : '') : '<b>' + esc(it.colour) + '</b>'; };
+      var pide = function(k){ return (P.items || []).some(function(x){ return x[k]; }); };
+      h += card('listening', p, P.type === 'colour' ? 'Listen and colour' : 'Listen and colour and write', 'Listen. Find each thing by where it is and colour it with the colour you hear.' + (pide('write') ? ' One question asks you to write a word on the picture (use the T tool).' : '') + (pide('draw') ? ' Another asks you to draw something (use the pencil).' : '') + ' Only colour what you are told to colour.',
         split(img(P.image, null, P.scene).replace('<img ', '<img data-paint="' + P.image + '" ') + escena(P),
         '<div class="item ex"><span class="tagex">Example</span>' + lab(P.example) + ' → ' + res(P.example) + '</div>' +
-        '<p class="small">Tick each one when you have done it:</p>' + P.items.map(function(it, i){ return '<div class="item"><label><input type="checkbox" data-name="' + pk + '_' + i + '" value="done"> ' + (i + 1) + '. ' + (it.write ? 'I wrote it' : 'I coloured it') + '</label></div>'; }).join('') +
+        '<p class="small">Tick each one when you have done it:</p>' + P.items.map(function(it, i){ return '<div class="item"><label><input type="checkbox" data-name="' + pk + '_' + i + '" value="done"> ' + (i + 1) + '. ' + (it.draw ? 'I drew it' : it.write ? 'I wrote it' : 'I coloured it') + '</label></div>'; }).join('') +
         '<details class="key"><summary>Show the key (after listening twice)</summary><ol>' + P.items.map(function(it){ return '<li>' + lab(it) + ' → ' + res(it) + '</li>'; }).join('') + '</ol></details>'));
     }
   });
