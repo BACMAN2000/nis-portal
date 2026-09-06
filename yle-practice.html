@@ -123,13 +123,13 @@ textarea.free{width:100%;max-width:820px;min-height:64px;border:1.5px solid var(
 .welcome .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:12px 0}
 .welcome .tilew{background:var(--sky);border-radius:12px;padding:12px}
 .welcome .tilew b{display:block;font-size:1.3rem}
-/* ---- El menu de tests de la izquierda se pliega con el boton del header: en
-   las partes con lamina hace falta todo el ancho. La preferencia se recuerda. ---- */
+/* ---- El menú de tests de la izquierda se pliega con el botón del header: en
+   las partes con lámina hace falta todo el ancho. La preferencia se recuerda. ---- */
 .wrap.folded{grid-template-columns:1fr;max-width:1500px}
 .wrap.folded>aside{display:none}
 #btnAside{padding:6px 12px}
-/* ---- Lamina a la izquierda, preguntas a la derecha. Antes la foto ocupaba el
-   ancho entero y las preguntas caian debajo: el nino no podia mirar el dibujo
+/* ---- Lámina a la izquierda, preguntas a la derecha. Antes la foto ocupaba el
+   ancho entero y las preguntas caían debajo: el niño no podía mirar el dibujo
    y contestar a la vez, que es justo lo que pide la tarea. ---- */
 .split{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(260px,.7fr);gap:16px;align-items:start}
 .split>.fig{position:sticky;top:12px;min-width:0}
@@ -144,7 +144,7 @@ textarea.free{width:100%;max-width:820px;min-height:64px;border:1.5px solid var(
 .qnav{display:flex;align-items:center;gap:12px;margin:8px 0}
 .qnav .qhold{flex:1;min-width:0}
 /* la tira de dibujos de la pregunta cabe entera en la pantalla: sin esto son
-   448 px de lamina y los A/B/C se quedaban fuera al mirar el dibujo */
+   448 px de lámina y los A/B/C se quedaban fuera al mirar el dibujo */
 .qnav .qhold .pic{max-height:46vh;width:auto;max-width:100%}
 .qarrow{flex:0 0 auto;width:54px;height:54px;border:2px solid var(--blue);background:#fff;color:var(--blue);border-radius:50%;font-size:1.7rem;font-weight:800;line-height:1;cursor:pointer}
 .qarrow:hover:not(:disabled){background:var(--sky)}
@@ -228,12 +228,12 @@ function img(id, cls, alt){ return '<img class="' + (cls || 'pic') + '" src="' +
    para un lector de pantalla, al imprimir y si el dibujo no carga— y deja de
    pintarse debajo compitiendo con él. */
 function escena(P){ return P.scene ? '<p class="small sr-only">' + esc(P.scene) + '</p>' : ''; }
-/* Lamina y preguntas en dos columnas: el nino mira el dibujo mientras contesta. */
+/* Lámina y preguntas en dos columnas: el niño mira el dibujo mientras contesta. */
 function split(fig, qs){ return '<div class="split"><div class="fig">' + fig + '</div><div class="qs">' + qs + '</div></div>'; }
 function audio(p){ if(SESSION) return '<p class="small">🏫 Class mock: your teacher plays the recording for Part ' + p + ' once, like in the real exam.</p>'; return '<audio controls preload="none" src="' + AUD + 'test_' + nn() + '_part' + p + '.mp3" onerror="this.insertAdjacentHTML(\'afterend\',\'<p class=small>🎧 The recording for this part is not published yet: do it while your teacher reads the script.</p>\');this.remove()"></audio>'; }
 
-/* El menu de tests se pliega para dejarle el ancho entero a la lamina; el mismo
-   boton lo vuelve a abrir y la eleccion se recuerda entre partes y tests. */
+/* El menú de tests se pliega para dejarle el ancho entero a la lámina; el mismo
+   botón lo vuelve a abrir y la elección se recuerda entre partes y tests. */
 function asideToggle(){
   var w = $('.wrap'), b = $('#btnAside'); if(!w || !b) return;
   var pon = function(f){ w.classList.toggle('folded', f); b.setAttribute('aria-expanded', f ? 'false' : 'true'); b.innerHTML = (f ? '\u2630' : '\u2715') + ' Tests'; try { localStorage.setItem('yle_aside', f ? 'folded' : 'open'); } catch(e){} };
@@ -632,8 +632,8 @@ function save(){ readDOM(); try { localStorage.setItem('yle_' + LEVEL, JSON.stri
 try { var g = JSON.parse(localStorage.getItem('yle_' + LEVEL) || 'null'); if(g){ STORE = g.store || {}; PAINT = g.paint || {}; PLACED = g.placed || {}; } } catch(e){}
 
 /* Una pregunta cada vez con las flechas de los lados (Listening Part 4): con las
-   cinco tiras de dibujos juntas el nino se perdia y hacia scroll mientras sonaba
-   la grabacion. Las preguntas que no se ven siguen en el DOM, solo ocultas, asi
+   cinco tiras de dibujos juntas el niño se perdía y hacía scroll mientras sonaba
+   la grabación. Las preguntas que no se ven siguen en el DOM, solo ocultas, así
    que se guardan y se corrigen igual que antes. */
 var QNAVS = [];
 function qnav(){
@@ -661,7 +661,7 @@ function qnav(){
 }
 /* la flecha del teclado mueve primero de pregunta y, cuando ya no quedan, de parte */
 function qnavKey(d){ var a = QNAVS.filter(function(q){ var s = q.box.closest('[data-screen]'); return s && !s.classList.contains('hidden'); }); return a.length ? a[0].go(d) : false; }
-/* al corregir se ensenan todas: el nino tiene que ver donde fallo */
+/* al corregir se enseñan todas: el niño tiene que ver dónde falló */
 function qnavTodo(){ QNAVS.forEach(function(q){ q.todo(); }); QNAVS = []; }
 
 /* pantallas: una parte cada vez, con flechas */
