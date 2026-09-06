@@ -670,7 +670,6 @@
  "audio": {
   "p1": [
    [
-    "say",
     "R",
     "Part One. Listen and look. There is one example."
    ],
@@ -679,7 +678,6 @@
     1.5
    ],
    [
-    "say",
     "Mch",
     "Look at the picture."
    ],
@@ -688,7 +686,6 @@
     0.5
    ],
    [
-    "say",
     "Mch",
     "Lots of children are in the playground."
    ],
@@ -697,7 +694,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "Can you see Mark?"
    ],
@@ -706,7 +702,6 @@
     0.5
    ],
    [
-    "say",
     "Mch",
     "Mark is the boy with the football."
    ],
@@ -715,7 +710,6 @@
     0.5
    ],
    [
-    "say",
     "Mch",
     "The line goes from Mark to the boy with the football – that’s the example."
    ],
@@ -724,7 +718,6 @@
     0.5
    ],
    [
-    "say",
     "R",
     "Now listen."
    ],
@@ -733,7 +726,6 @@
     0.5
    ],
    [
-    "say",
     "Mch",
     "Can you find Hannah? Hannah is reading a book on the bench."
    ],
@@ -742,7 +734,6 @@
     3.4
    ],
    [
-    "say",
     "Mch",
     "Where’s Fred? Fred is the boy eating an apple."
    ],
@@ -751,7 +742,6 @@
     3.4
    ],
    [
-    "say",
     "Mch",
     "Now Paula. Paula is the girl drawing on paper."
    ],
@@ -760,7 +750,6 @@
     3.4
    ],
    [
-    "say",
     "Mch",
     "Where’s Jim? Jim is the boy with the skipping rope."
    ],
@@ -769,7 +758,6 @@
     3.4
    ],
    [
-    "say",
     "Fch",
     "And Lisa? Lisa is one of the girls playing basketball"
    ],
@@ -778,7 +766,6 @@
     0.5
    ],
    [
-    "say",
     "Mch",
     "the taller one."
    ],
@@ -791,7 +778,6 @@
     2.0
    ],
    [
-    "say",
     "R",
     "Now listen to Part One again."
    ],
@@ -800,7 +786,6 @@
     1.5
    ],
    [
-    "say",
     "Mch",
     "Look at the picture."
    ],
@@ -809,7 +794,6 @@
     0.5
    ],
    [
-    "say",
     "Mch",
     "Lots of children are in the playground."
    ],
@@ -818,7 +802,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "Can you see Mark?"
    ],
@@ -827,7 +810,6 @@
     0.5
    ],
    [
-    "say",
     "Mch",
     "Mark is the boy with the football."
    ],
@@ -836,7 +818,6 @@
     0.5
    ],
    [
-    "say",
     "Mch",
     "The line goes from Mark to the boy with the football – that’s the example."
    ],
@@ -845,7 +826,6 @@
     0.5
    ],
    [
-    "say",
     "R",
     "Now listen."
    ],
@@ -854,7 +834,6 @@
     0.5
    ],
    [
-    "say",
     "Mch",
     "Can you find Hannah? Hannah is reading a book on the bench."
    ],
@@ -863,7 +842,6 @@
     3.4
    ],
    [
-    "say",
     "Mch",
     "Where’s Fred? Fred is the boy eating an apple."
    ],
@@ -872,7 +850,6 @@
     3.4
    ],
    [
-    "say",
     "Mch",
     "Now Paula. Paula is the girl drawing on paper."
    ],
@@ -881,7 +858,6 @@
     3.4
    ],
    [
-    "say",
     "Mch",
     "Where’s Jim? Jim is the boy with the skipping rope."
    ],
@@ -890,7 +866,6 @@
     3.4
    ],
    [
-    "say",
     "Fch",
     "And Lisa? Lisa is one of the girls playing basketball"
    ],
@@ -899,7 +874,6 @@
     0.5
    ],
    [
-    "say",
     "Mch",
     "the taller one."
    ],
@@ -908,7 +882,6 @@
     3.4
    ],
    [
-    "say",
     "R",
     "That is the end of Part One."
    ],
@@ -919,7 +892,6 @@
   ],
   "p2": [
    [
-    "say",
     "R",
     "Part Two. Listen and look. There is one example."
    ],
@@ -928,7 +900,6 @@
     1.5
    ],
    [
-    "say",
     "R",
     "To a woman telling a father about an English summer camp."
    ],
@@ -937,7 +908,6 @@
     0.5
    ],
    [
-    "say",
     "R",
     "Can you see the answer? Name of camp: Sunnydale. Now you listen and write."
    ],
@@ -946,7 +916,6 @@
     2.0
    ],
    [
-    "say",
     "M",
     "What’s the first day, please?"
    ],
@@ -955,7 +924,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "The camp starts on July 4th."
    ],
@@ -964,7 +932,6 @@
     3.4
    ],
    [
-    "say",
     "M",
     "How many students are there in each class?"
    ],
@@ -973,7 +940,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "We only have 12 students per class."
    ],
@@ -982,7 +948,6 @@
     3.4
    ],
    [
-    "say",
     "M",
     "And how much is it per week?"
    ],
@@ -991,7 +956,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "It’s 95 pounds a week."
    ],
@@ -1000,7 +964,6 @@
     3.4
    ],
    [
-    "say",
     "M",
     "Who’s the main teacher?"
    ],
@@ -1009,7 +972,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "Her name is Miss Adams."
    ],
@@ -1018,7 +980,6 @@
     3.4
    ],
    [
-    "say",
     "M",
     "Shall we bring a notebook?"
    ],
@@ -1027,7 +988,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "Yes, please bring a green notebook."
    ],
@@ -1040,7 +1000,6 @@
     2.0
    ],
    [
-    "say",
     "R",
     "Now listen to Part Two again."
    ],
@@ -1049,7 +1008,6 @@
     1.5
    ],
    [
-    "say",
     "R",
     "To a woman telling a father about an English summer camp."
    ],
@@ -1058,7 +1016,6 @@
     0.5
    ],
    [
-    "say",
     "R",
     "Can you see the answer? Name of camp: Sunnydale. Now you listen and write."
    ],
@@ -1067,7 +1024,6 @@
     2.0
    ],
    [
-    "say",
     "M",
     "What’s the first day, please?"
    ],
@@ -1076,7 +1032,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "The camp starts on July 4th."
    ],
@@ -1085,7 +1040,6 @@
     3.4
    ],
    [
-    "say",
     "M",
     "How many students are there in each class?"
    ],
@@ -1094,7 +1048,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "We only have 12 students per class."
    ],
@@ -1103,7 +1056,6 @@
     3.4
    ],
    [
-    "say",
     "M",
     "And how much is it per week?"
    ],
@@ -1112,7 +1064,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "It’s 95 pounds a week."
    ],
@@ -1121,7 +1072,6 @@
     3.4
    ],
    [
-    "say",
     "M",
     "Who’s the main teacher?"
    ],
@@ -1130,7 +1080,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "Her name is Miss Adams."
    ],
@@ -1139,7 +1088,6 @@
     3.4
    ],
    [
-    "say",
     "M",
     "Shall we bring a notebook?"
    ],
@@ -1148,7 +1096,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "Yes, please bring a green notebook."
    ],
@@ -1157,7 +1104,6 @@
     3.4
    ],
    [
-    "say",
     "R",
     "That is the end of Part Two."
    ],
@@ -1168,7 +1114,6 @@
   ],
   "p3": [
    [
-    "say",
     "R",
     "Part Three. Listen and look. There is one example."
    ],
@@ -1177,7 +1122,6 @@
     1.5
    ],
    [
-    "say",
     "R",
     "Paul is showing his mum his new school timetable."
    ],
@@ -1186,7 +1130,6 @@
     0.5
    ],
    [
-    "say",
     "R",
     "Example: on Monday he has English."
    ],
@@ -1195,7 +1138,6 @@
     0.5
    ],
    [
-    "say",
     "Mch",
     "What about Monday?"
    ],
@@ -1204,7 +1146,6 @@
     0.5
    ],
    [
-    "say",
     "F",
     "On Monday? We saw English."
    ],
@@ -1213,7 +1154,6 @@
     0.5
    ],
    [
-    "say",
     "R",
     "Can you see the letter E? Now you listen and write a letter in each box."
    ],
@@ -1222,7 +1162,6 @@
     2.0
    ],
    [
-    "say",
     "F",
     "What about Tuesday, Paul?"
    ],
@@ -1231,7 +1170,6 @@
     0.5
    ],
    [
-    "say",
     "Mch",
     "Tuesday mornings I have maths, Mum."
    ],
@@ -1240,7 +1178,6 @@
     3.4
    ],
    [
-    "say",
     "F",
     "And Wednesday?"
    ],
@@ -1249,7 +1186,6 @@
     0.5
    ],
    [
-    "say",
     "Mch",
     "Wednesday’s my favourite – we have PE."
    ],
@@ -1258,7 +1194,6 @@
     3.4
    ],
    [
-    "say",
     "F",
     "OK. Thursday?"
    ],
@@ -1267,7 +1202,6 @@
     0.5
    ],
    [
-    "say",
     "Mch",
     "Thursday, we always have science."
    ],
@@ -1276,7 +1210,6 @@
     3.4
    ],
    [
-    "say",
     "F",
     "And on Friday?"
    ],
@@ -1285,7 +1218,6 @@
     0.5
    ],
    [
-    "say",
     "Mch",
     "Friday’s a good day – we have music!"
    ],
@@ -1294,7 +1226,6 @@
     3.4
    ],
    [
-    "say",
     "F",
     "What about the Saturday club?"
    ],
@@ -1303,7 +1234,6 @@
     0.5
    ],
    [
-    "say",
     "Mch",
     "The extra club on Saturday is art."
    ],
@@ -1316,7 +1246,6 @@
     2.0
    ],
    [
-    "say",
     "R",
     "Now listen to Part Three again."
    ],
@@ -1325,7 +1254,6 @@
     1.5
    ],
    [
-    "say",
     "R",
     "Paul is showing his mum his new school timetable."
    ],
@@ -1334,7 +1262,6 @@
     0.5
    ],
    [
-    "say",
     "R",
     "Example: on Monday he has English."
    ],
@@ -1343,7 +1270,6 @@
     0.5
    ],
    [
-    "say",
     "Mch",
     "What about Monday?"
    ],
@@ -1352,7 +1278,6 @@
     0.5
    ],
    [
-    "say",
     "F",
     "On Monday? We saw English."
    ],
@@ -1361,7 +1286,6 @@
     0.5
    ],
    [
-    "say",
     "R",
     "Can you see the letter E? Now you listen and write a letter in each box."
    ],
@@ -1370,7 +1294,6 @@
     2.0
    ],
    [
-    "say",
     "F",
     "What about Tuesday, Paul?"
    ],
@@ -1379,7 +1302,6 @@
     0.5
    ],
    [
-    "say",
     "Mch",
     "Tuesday mornings I have maths, Mum."
    ],
@@ -1388,7 +1310,6 @@
     3.4
    ],
    [
-    "say",
     "F",
     "And Wednesday?"
    ],
@@ -1397,7 +1318,6 @@
     0.5
    ],
    [
-    "say",
     "Mch",
     "Wednesday’s my favourite – we have PE."
    ],
@@ -1406,7 +1326,6 @@
     3.4
    ],
    [
-    "say",
     "F",
     "OK. Thursday?"
    ],
@@ -1415,7 +1334,6 @@
     0.5
    ],
    [
-    "say",
     "Mch",
     "Thursday, we always have science."
    ],
@@ -1424,7 +1342,6 @@
     3.4
    ],
    [
-    "say",
     "F",
     "And on Friday?"
    ],
@@ -1433,7 +1350,6 @@
     0.5
    ],
    [
-    "say",
     "Mch",
     "Friday’s a good day – we have music!"
    ],
@@ -1442,7 +1358,6 @@
     3.4
    ],
    [
-    "say",
     "F",
     "What about the Saturday club?"
    ],
@@ -1451,7 +1366,6 @@
     0.5
    ],
    [
-    "say",
     "Mch",
     "The extra club on Saturday is art."
    ],
@@ -1460,7 +1374,6 @@
     3.4
    ],
    [
-    "say",
     "R",
     "That is the end of Part Three."
    ],
@@ -1471,7 +1384,6 @@
   ],
   "p4": [
    [
-    "say",
     "R",
     "Part Four. Listen and look. Listen and tick the box."
    ],
@@ -1480,7 +1392,6 @@
     1.5
    ],
    [
-    "say",
     "R",
     "One. What did Mia forget?"
    ],
@@ -1489,7 +1400,6 @@
     0.5
    ],
    [
-    "say",
     "F",
     "What did you forget?"
    ],
@@ -1498,7 +1408,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "I didn’t forget my ruler or my lunch – I have them."
    ],
@@ -1507,7 +1416,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "But I left my pencil case on the kitchen table!"
    ],
@@ -1520,7 +1428,6 @@
     3.4
    ],
    [
-    "say",
     "R",
     "Two. What’s the teacher wearing?"
    ],
@@ -1529,7 +1436,6 @@
     0.5
    ],
    [
-    "say",
     "F",
     "What’s the teacher wearing?"
    ],
@@ -1538,7 +1444,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "Not a jumper or a dress."
    ],
@@ -1547,7 +1452,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "She’s wearing a white shirt and a long black skirt."
    ],
@@ -1560,7 +1464,6 @@
     3.4
    ],
    [
-    "say",
     "R",
     "Three. Where is the book?"
    ],
@@ -1569,7 +1472,6 @@
     0.5
    ],
    [
-    "say",
     "F",
     "Where is the book?"
    ],
@@ -1578,7 +1480,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "I looked on the chair and in my bag."
    ],
@@ -1587,7 +1488,6 @@
     0.5
    ],
    [
-    "say",
     "F",
     "Oh, really?"
    ],
@@ -1596,7 +1496,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "Oh!"
    ],
@@ -1605,7 +1504,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "It’s here on the shelf."
    ],
@@ -1618,7 +1516,6 @@
     3.4
    ],
    [
-    "say",
     "R",
     "Four. Ben, what do you like best?"
    ],
@@ -1627,7 +1524,6 @@
     0.5
    ],
    [
-    "say",
     "F",
     "Ben, what do you like best?"
    ],
@@ -1636,7 +1532,6 @@
     0.5
    ],
    [
-    "say",
     "Mch",
     "Maths is OK."
    ],
@@ -1645,7 +1540,6 @@
     0.5
    ],
    [
-    "say",
     "F",
     "Oh, really?"
    ],
@@ -1654,7 +1548,6 @@
     0.5
    ],
    [
-    "say",
     "Mch",
     "English is nice but I love science."
    ],
@@ -1663,7 +1556,6 @@
     0.5
    ],
    [
-    "say",
     "Mch",
     "Science is definitely my favourite."
    ],
@@ -1676,7 +1568,6 @@
     3.4
    ],
    [
-    "say",
     "R",
     "Five. What did you do in PE?"
    ],
@@ -1685,7 +1576,6 @@
     0.5
    ],
    [
-    "say",
     "F",
     "What did you do in PE?"
    ],
@@ -1694,7 +1584,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "No running today."
    ],
@@ -1703,7 +1592,6 @@
     0.5
    ],
    [
-    "say",
     "F",
     "Oh, really?"
    ],
@@ -1712,7 +1600,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "We didn’t go swimming."
    ],
@@ -1721,7 +1608,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "We played basketball all lesson."
    ],
@@ -1738,7 +1624,6 @@
     2.0
    ],
    [
-    "say",
     "R",
     "Now listen to Part Four again."
    ],
@@ -1747,7 +1632,6 @@
     1.5
    ],
    [
-    "say",
     "R",
     "One. What did Mia forget?"
    ],
@@ -1756,7 +1640,6 @@
     0.5
    ],
    [
-    "say",
     "F",
     "What did you forget?"
    ],
@@ -1765,7 +1648,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "I didn’t forget my ruler or my lunch – I have them."
    ],
@@ -1774,7 +1656,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "But I left my pencil case on the kitchen table!"
    ],
@@ -1787,7 +1668,6 @@
     3.4
    ],
    [
-    "say",
     "R",
     "Two. What’s the teacher wearing?"
    ],
@@ -1796,7 +1676,6 @@
     0.5
    ],
    [
-    "say",
     "F",
     "What’s the teacher wearing?"
    ],
@@ -1805,7 +1684,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "Not a jumper or a dress."
    ],
@@ -1814,7 +1692,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "She’s wearing a white shirt and a long black skirt."
    ],
@@ -1827,7 +1704,6 @@
     3.4
    ],
    [
-    "say",
     "R",
     "Three. Where is the book?"
    ],
@@ -1836,7 +1712,6 @@
     0.5
    ],
    [
-    "say",
     "F",
     "Where is the book?"
    ],
@@ -1845,7 +1720,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "I looked on the chair and in my bag."
    ],
@@ -1854,7 +1728,6 @@
     0.5
    ],
    [
-    "say",
     "F",
     "Oh, really?"
    ],
@@ -1863,7 +1736,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "Oh!"
    ],
@@ -1872,7 +1744,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "It’s here on the shelf."
    ],
@@ -1885,7 +1756,6 @@
     3.4
    ],
    [
-    "say",
     "R",
     "Four. Ben, what do you like best?"
    ],
@@ -1894,7 +1764,6 @@
     0.5
    ],
    [
-    "say",
     "F",
     "Ben, what do you like best?"
    ],
@@ -1903,7 +1772,6 @@
     0.5
    ],
    [
-    "say",
     "Mch",
     "Maths is OK."
    ],
@@ -1912,7 +1780,6 @@
     0.5
    ],
    [
-    "say",
     "F",
     "Oh, really?"
    ],
@@ -1921,7 +1788,6 @@
     0.5
    ],
    [
-    "say",
     "Mch",
     "English is nice but I love science."
    ],
@@ -1930,7 +1796,6 @@
     0.5
    ],
    [
-    "say",
     "Mch",
     "Science is definitely my favourite."
    ],
@@ -1943,7 +1808,6 @@
     3.4
    ],
    [
-    "say",
     "R",
     "Five. What did you do in PE?"
    ],
@@ -1952,7 +1816,6 @@
     0.5
    ],
    [
-    "say",
     "F",
     "What did you do in PE?"
    ],
@@ -1961,7 +1824,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "No running today."
    ],
@@ -1970,7 +1832,6 @@
     0.5
    ],
    [
-    "say",
     "F",
     "Oh, really?"
    ],
@@ -1979,7 +1840,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "We didn’t go swimming."
    ],
@@ -1988,7 +1848,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "We played basketball all lesson."
    ],
@@ -2001,7 +1860,6 @@
     3.4
    ],
    [
-    "say",
     "R",
     "That is the end of Part Four."
    ],
@@ -2012,7 +1870,6 @@
   ],
   "p5": [
    [
-    "say",
     "R",
     "Part Five. Listen and look. There is one example."
    ],
@@ -2021,7 +1878,6 @@
     1.5
    ],
    [
-    "say",
     "M",
     "This is a classroom."
    ],
@@ -2030,7 +1886,6 @@
     0.5
    ],
    [
-    "say",
     "M",
     "Example: colour the clock yellow."
    ],
@@ -2039,7 +1894,6 @@
     0.5
    ],
    [
-    "say",
     "M",
     "Do you see it?"
    ],
@@ -2048,7 +1902,6 @@
     0.5
    ],
    [
-    "say",
     "M",
     "Good."
    ],
@@ -2057,7 +1910,6 @@
     0.5
    ],
    [
-    "say",
     "R",
     "This is an example. Now you listen and colour and write."
    ],
@@ -2066,7 +1918,6 @@
     2.0
    ],
    [
-    "say",
     "M",
     "There’s a plant in the window."
    ],
@@ -2075,7 +1926,6 @@
     0.5
    ],
    [
-    "say",
     "M",
     "Colour the plant green."
    ],
@@ -2084,7 +1934,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "OK."
    ],
@@ -2093,7 +1942,6 @@
     5.0
    ],
    [
-    "say",
     "M",
     "On the teacher’s desk, draw a book."
    ],
@@ -2102,7 +1950,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "OK."
    ],
@@ -2111,7 +1958,6 @@
     5.0
    ],
    [
-    "say",
     "M",
     "There’s a map of the world on the wall."
    ],
@@ -2120,7 +1966,6 @@
     0.5
    ],
    [
-    "say",
     "M",
     "Colour it blue."
    ],
@@ -2129,7 +1974,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "OK."
    ],
@@ -2138,7 +1982,6 @@
     5.0
    ],
    [
-    "say",
     "M",
     "Now write 5B on the classroom door."
    ],
@@ -2147,7 +1990,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "OK."
    ],
@@ -2156,7 +1998,6 @@
     5.0
    ],
    [
-    "say",
     "M",
     "On the shelf there are three books."
    ],
@@ -2165,7 +2006,6 @@
     0.5
    ],
    [
-    "say",
     "M",
     "Colour the biggest book red."
    ],
@@ -2174,7 +2014,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "OK."
    ],
@@ -2187,7 +2026,6 @@
     2.0
    ],
    [
-    "say",
     "R",
     "Now listen to Part Five again."
    ],
@@ -2196,7 +2034,6 @@
     1.5
    ],
    [
-    "say",
     "M",
     "This is a classroom."
    ],
@@ -2205,7 +2042,6 @@
     0.5
    ],
    [
-    "say",
     "M",
     "Example: colour the clock yellow."
    ],
@@ -2214,7 +2050,6 @@
     0.5
    ],
    [
-    "say",
     "M",
     "Do you see it?"
    ],
@@ -2223,7 +2058,6 @@
     0.5
    ],
    [
-    "say",
     "M",
     "Good."
    ],
@@ -2232,7 +2066,6 @@
     0.5
    ],
    [
-    "say",
     "R",
     "This is an example. Now you listen and colour and write."
    ],
@@ -2241,7 +2074,6 @@
     2.0
    ],
    [
-    "say",
     "M",
     "There’s a plant in the window."
    ],
@@ -2250,7 +2082,6 @@
     0.5
    ],
    [
-    "say",
     "M",
     "Colour the plant green."
    ],
@@ -2259,7 +2090,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "OK."
    ],
@@ -2268,7 +2098,6 @@
     5.0
    ],
    [
-    "say",
     "M",
     "On the teacher’s desk, draw a book."
    ],
@@ -2277,7 +2106,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "OK."
    ],
@@ -2286,7 +2114,6 @@
     5.0
    ],
    [
-    "say",
     "M",
     "There’s a map of the world on the wall."
    ],
@@ -2295,7 +2122,6 @@
     0.5
    ],
    [
-    "say",
     "M",
     "Colour it blue."
    ],
@@ -2304,7 +2130,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "OK."
    ],
@@ -2313,7 +2138,6 @@
     5.0
    ],
    [
-    "say",
     "M",
     "Now write 5B on the classroom door."
    ],
@@ -2322,7 +2146,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "OK."
    ],
@@ -2331,7 +2154,6 @@
     5.0
    ],
    [
-    "say",
     "M",
     "On the shelf there are three books."
    ],
@@ -2340,7 +2162,6 @@
     0.5
    ],
    [
-    "say",
     "M",
     "Colour the biggest book red."
    ],
@@ -2349,7 +2170,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "OK."
    ],
@@ -2358,7 +2178,6 @@
     5.0
    ],
    [
-    "say",
     "R",
     "That is the end of Part Five."
    ],

@@ -178,14 +178,14 @@
      "key": "C"
     },
     {
-     "q": "What is Tony eating at break?",
+     "q": "What is Tony eating at lunch?",
      "pics": [
-      "sandwich",
+      "burger",
       "banana",
       "cake"
      ],
      "options": [
-      "a sandwich",
+      "a burger",
       "a banana",
       "a cake"
      ],
@@ -363,7 +363,7 @@
    "type": "mc_cloze_copy",
    "image": "R4",
    "title": "My school",
-   "text": "My school is big and it has got a lot of __(0)__. My classroom is number four. In my classroom there are twenty __(1)__ and one big table for the teacher. On the wall there is a __(2)__ and lots of pictures. We read __(3)__ and we write in our notebooks. At break time, we play in the __(4)__ with our friends. I love my __(5)__!",
+   "text": "My school is big and it has got a lot of __(0)__. My classroom is number four. In my classroom there are twenty __(1)__ and one big table for the teacher. On the wall there is a __(2)__ and lots of pictures. We read __(3)__ and we write in our books. At lunch, we play in the __(4)__ with our friends. I love my __(5)__!",
    "words": [
     "classrooms",
     "chairs",
@@ -406,7 +406,7 @@
      ]
     },
     {
-     "text": "In the classroom, the teacher, Miss Green, says hello. Tom sits next to a girl called Anna. They draw pictures with crayons.",
+     "text": "In the classroom, the teacher, Miss Green, says hello. Tom sits next to a girl. Her name is Anna. They draw pictures with crayons.",
      "items": [
       {
        "q": "Who is Tom's teacher?",
@@ -419,7 +419,7 @@
      ]
     },
     {
-     "text": "At break, Tom and Anna play football in the playground. Now Tom has got a new friend and he is very happy.",
+     "text": "At lunch, Tom and Anna play football in the playground. Now Tom has got a new friend and he is very happy.",
      "items": [
       {
        "q": "What do Tom and Anna play?",
@@ -613,7 +613,7 @@
      "model": "English."
     },
     {
-     "q": "What do you do at break time?",
+     "q": "What do you do at lunch?",
      "model": "I play with my friends."
     }
    ]
@@ -683,7 +683,7 @@
    ],
    [
     "M",
-    "Yes, it is. Mark is always late!"
+    "Yes, it is. Mark is not here!"
    ],
    [
     "pause",
@@ -727,7 +727,7 @@
    ],
    [
     "M",
-    "That's Eva. She's helping the teacher."
+    "That's Eva. She's with the teacher."
    ],
    [
     "Fch",
@@ -817,7 +817,7 @@
    ],
    [
     "F",
-    "Number nine. That's next to the library."
+    "Number nine. That's next to the classroom."
    ],
    [
     "pause",
@@ -979,7 +979,7 @@
    ],
    [
     "R",
-    "Five. What is Tony eating at break?"
+    "Five. What is Tony eating at lunch?"
    ],
    [
     "F",
@@ -987,11 +987,11 @@
    ],
    [
     "Mch",
-    "No, Miss. I'm eating a sandwich. A cheese sandwich."
+    "No, Miss. I'm eating a burger. A chicken burger."
    ],
    [
     "F",
-    "A sandwich. OK!"
+    "A burger. OK!"
    ],
    [
     "pause",

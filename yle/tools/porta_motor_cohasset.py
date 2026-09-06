@@ -78,6 +78,26 @@ def main():
     else:
         saltados.append('openTest / paper+part')
 
+    # la descripción de la lámina pasa a ser el alt de la imagen
+    if 'function escena(' not in dst:
+        vieja = [l for l in dst.split(chr(10)) if l.startswith('function img(id, cls)')]
+        if vieja:
+            nueva = trozo(org, 'function img(id, cls, alt){', chr(10) + chr(10)).rstrip()
+            dst = dst.replace(vieja[0], nueva, 1); hechos.append('img con alt + escena()')
+        for v, w in (("img(P.image).replace('<img ', '<img data-paint=\"' + P.image + '\" data-tools=\"pencil,eraser\" ') + '<p class=\"small\">' + esc(P.scene) + '</p>' +",
+                      "img(P.image, null, P.scene).replace('<img ', '<img data-paint=\"' + P.image + '\" data-tools=\"pencil,eraser\" ') + escena(P) +"),
+                     ("img(P.image).replace('<img ', '<img data-paint=\"' + P.image + '\" ') + '<p class=\"small\">' + esc(P.scene) + '</p>' +",
+                      "img(P.image, null, P.scene).replace('<img ', '<img data-paint=\"' + P.image + '\" ') + escena(P) +"),
+                     ("img(P.image) + '<p class=\"small\">' + esc(P.scene) + '</p>' +", "img(P.image, null, P.scene) + escena(P) +"),
+                     ("'</div><p class=\"small\">' + esc(P.scene) + '</p>' +", "'</div>' + escena(P) +"),
+                     ("img(P.image, '')", "img(P.image, '', P.scene)")):
+            if v in dst: dst = dst.replace(v, w)
+        if '.sr-only{' not in dst:
+            dst = dst.replace('</style>', trozo(org, '.sr-only{', '</style>') + '</style>', 1)
+        hechos.append('escena oculta a la vista')
+    else:
+        saltados.append('escena → alt')
+
     # el contador de palabras de la historia
     ancla_bind = "  $$('[data-mode]').forEach(function(b){ b.onclick = function(){ mode = b.dataset.mode; render(); }; });"
     if 'textarea[data-name$="_s0"]' not in dst and ancla_bind in dst:

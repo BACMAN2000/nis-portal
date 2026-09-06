@@ -104,12 +104,12 @@
    "example": {
     "q": "What does Tom want for lunch?",
     "pics": [
-     "pizza",
+     "burger",
      "chicken",
      "fish"
     ],
     "options": [
-     "pizza",
+     "burger",
      "chicken",
      "fish"
     ],
@@ -241,7 +241,7 @@
      "key": true
     },
     {
-     "word": "pizza",
+     "word": "bread",
      "sentence": "This is a cake.",
      "key": false
     },
@@ -361,10 +361,10 @@
    "type": "mc_cloze_copy",
    "image": "R4",
    "title": "Breakfast",
-   "text": "In the morning, my family has a big __(0)__. My dad drinks black coffee and my mum drinks __(1)__ with milk. I eat an egg and some __(2)__ with butter. My little sister eats a banana and a __(3)__. Our dog Rex eats his food from a big __(4)__ on the floor. After breakfast, we __(5)__ our teeth and we go to school.",
+   "text": "In the morning, my family has a big __(0)__. My dad drinks water and my mum drinks __(1)__. I eat an egg and some __(2)__. My small sister eats a banana and a __(3)__. Our dog Rex eats his food from a big __(4)__ on the floor. After breakfast, we __(5)__ our face and we go to school.",
    "words": [
     "breakfast",
-    "tea",
+    "juice",
     "bread",
     "pear",
     "bowl",
@@ -374,7 +374,7 @@
    ],
    "example": "breakfast",
    "key": [
-    "tea",
+    "juice",
     "bread",
     "pear",
     "bowl",
@@ -383,11 +383,11 @@
   },
   "p5": {
    "type": "story_one_word",
-   "title": "The picnic",
+   "title": "A day in the park",
    "image": "R5",
    "parts": [
     {
-     "text": "It is Saturday. Sam and his sister Kim are going to the park with their grandma. Grandma has got a big bag with sandwiches, apples and orange juice.",
+     "text": "It is Saturday. Sam and his sister Kim are going to the park with their grandma. Grandma has got a big bag with burgers, apples and orange juice.",
      "example": {
       "q": "Where are Sam and Kim going?",
       "a": "park"
@@ -404,10 +404,10 @@
      ]
     },
     {
-     "text": "In the park, they sit under a tree. Sam eats two sandwiches. Kim eats an apple. A small bird eats the bread from Kim's hand!",
+     "text": "In the park, they sit under a tree. Sam eats two burgers. Kim eats an apple. A small bird eats the bread from Kim's hand!",
      "items": [
       {
-       "q": "How many sandwiches does Sam eat?",
+       "q": "How many burgers does Sam eat?",
        "a": "two"
       },
       {
@@ -417,7 +417,7 @@
      ]
     },
     {
-     "text": "Then they play with a ball. Grandma has got a surprise: three ice creams! Sam wants a chocolate ice cream. What a nice picnic!",
+     "text": "Then they play with a ball. Grandma has got three ice creams for them! Sam wants a chocolate ice cream. What a nice day!",
      "items": [
       {
        "q": "What does Grandma give the children?",
@@ -679,7 +679,7 @@
    ],
    [
     "F",
-    "Look at the girl drinking lemonade with a straw."
+    "Look at the girl drinking lemonade."
    ],
    [
     "Mch",
@@ -699,7 +699,7 @@
    ],
    [
     "F",
-    "That's Ben. Don't eat all the sweets, Ben!"
+    "That's Ben. Don't eat lots of sweets, Ben!"
    ],
    [
     "Mch",
@@ -887,7 +887,7 @@
    ],
    [
     "Mch",
-    "No, Mum. I want pizza, please."
+    "No, Mum. I want a burger, please."
    ],
    [
     "pause",

@@ -117,12 +117,12 @@
      "pics": [
       "rice",
       "chicken",
-      "pizza"
+      "fish"
      ],
      "options": [
       "rice",
       "chicken",
-      "pizza"
+      "fish"
      ],
      "key": "C"
     },
@@ -407,10 +407,10 @@
      ]
     },
     {
-     "text": "Kim looks under the bed and behind the sofa. Then she hears a noise in the bathroom. Bobby is in the bath with a big yellow duck!",
+     "text": "Kim looks under the bed and behind the sofa. Then she looks in the bathroom. Bobby is in the bath with a big yellow duck!",
      "items": [
       {
-       "q": "Where does Kim hear a noise?",
+       "q": "Where is Bobby?",
        "a": "bathroom"
       },
       {
@@ -420,7 +420,7 @@
      ]
     },
     {
-     "text": "Kim laughs. Bobby is wet! Kim washes Bobby with soap and water. Now Bobby is clean and he sleeps on his bed.",
+     "text": "Kim smiles. Bobby is dirty! Kim cleans Bobby with water. Now Bobby is clean and he sleeps on his bed.",
      "items": [
       {
        "q": "Where does Bobby sleep at the end?",
@@ -676,7 +676,7 @@
    ],
    [
     "F",
-    "That's Bill. He watches TV every afternoon."
+    "That's Bill. He watches TV in the afternoon."
    ],
    [
     "Mch",
@@ -696,7 +696,7 @@
    ],
    [
     "F",
-    "Yes, it is. Jill drinks milk every day."
+    "Yes, it is. Jill drinks milk in the morning."
    ],
    [
     "pause",
@@ -920,11 +920,11 @@
    ],
    [
     "F",
-    "No, Sam. I'm cooking pizza today. Your favourite!"
+    "No, Sam. I'm cooking fish today. Your favourite!"
    ],
    [
     "Mch",
-    "Pizza! Great!"
+    "Fish! Great!"
    ],
    [
     "pause",
@@ -960,7 +960,7 @@
    ],
    [
     "M",
-    "No. I'm cleaning the bathroom. Can you help me?"
+    "No. I'm cleaning the bathroom. Can you come here?"
    ],
    [
     "Mch",

@@ -71,7 +71,7 @@
   },
   "p2": {
    "type": "note_taking",
-   "heading": "The zoo trip",
+   "heading": "The zoo day",
    "example": {
     "q": "What is the boy's name?",
     "a": "Dan"
@@ -86,7 +86,7 @@
      "a": "Green"
     },
     {
-     "q": "How many children are on the trip?",
+     "q": "How many children are at the zoo?",
      "a": "15"
     },
     {
@@ -407,7 +407,7 @@
      ]
     },
     {
-     "text": "Now they are at the monkeys. A small monkey takes Lucy's hat! Ben laughs and Mum takes a photo.",
+     "text": "Now they are at the monkeys. A small monkey takes Lucy's hat! Ben is happy and Mum takes a photo.",
      "items": [
       {
        "q": "What does the monkey take?",
@@ -716,7 +716,7 @@
    ],
    [
     "F",
-    "Yes. That's Lucy. She's tired!"
+    "Yes. That's Lucy. She's sleeping!"
    ],
    [
     "pause",
@@ -810,7 +810,7 @@
    ],
    [
     "F",
-    "How many children are on the trip today?"
+    "How many children are at the zoo today?"
    ],
    [
     "Mch",
@@ -908,7 +908,7 @@
    ],
    [
     "Fch",
-    "It's OK. But I like the giraffe. It's very tall!"
+    "It's OK. But I like the giraffe. It's very big!"
    ],
    [
     "M",

@@ -681,7 +681,6 @@
  "audio": {
   "p1": [
    [
-    "say",
     "R",
     "Part One. Listen and look. There is one example."
    ],
@@ -690,7 +689,6 @@
     1.5
    ],
    [
-    "say",
     "Mch",
     "Look at the family party."
    ],
@@ -699,7 +697,6 @@
     0.5
    ],
    [
-    "say",
     "Mch",
     "Grandma Rose is in the yellow dress – that’s the example."
    ],
@@ -708,7 +705,6 @@
     0.5
    ],
    [
-    "say",
     "Mch",
     "Jack is the boy in the pirate costume."
    ],
@@ -717,7 +713,6 @@
     3.4
    ],
    [
-    "say",
     "Mch",
     "Mia is the girl in the ballerina dress."
    ],
@@ -726,7 +721,6 @@
     3.4
    ],
    [
-    "say",
     "Mch",
     "Uncle Tim is the man in the blue suit."
    ],
@@ -735,7 +729,6 @@
     3.4
    ],
    [
-    "say",
     "Mch",
     "Aunt Zoe is the woman in the red trousers."
    ],
@@ -744,7 +737,6 @@
     3.4
    ],
    [
-    "say",
     "Mch",
     "Baby Eli is the baby in pink pyjamas."
    ],
@@ -757,7 +749,6 @@
     2.0
    ],
    [
-    "say",
     "R",
     "Now listen to Part One again."
    ],
@@ -766,7 +757,6 @@
     1.5
    ],
    [
-    "say",
     "Mch",
     "Look at the family party."
    ],
@@ -775,7 +765,6 @@
     0.5
    ],
    [
-    "say",
     "Mch",
     "Grandma Rose is in the yellow dress – that’s the example."
    ],
@@ -784,7 +773,6 @@
     0.5
    ],
    [
-    "say",
     "Mch",
     "Jack is the boy in the pirate costume."
    ],
@@ -793,7 +781,6 @@
     3.4
    ],
    [
-    "say",
     "Mch",
     "Mia is the girl in the ballerina dress."
    ],
@@ -802,7 +789,6 @@
     3.4
    ],
    [
-    "say",
     "Mch",
     "Uncle Tim is the man in the blue suit."
    ],
@@ -811,7 +797,6 @@
     3.4
    ],
    [
-    "say",
     "Mch",
     "Aunt Zoe is the woman in the red trousers."
    ],
@@ -820,7 +805,6 @@
     3.4
    ],
    [
-    "say",
     "Mch",
     "Baby Eli is the baby in pink pyjamas."
    ],
@@ -829,7 +813,6 @@
     3.4
    ],
    [
-    "say",
     "R",
     "That is the end of Part One."
    ],
@@ -840,7 +823,6 @@
   ],
   "p2": [
    [
-    "say",
     "R",
     "Part Two. Listen and look. There is one example."
    ],
@@ -849,7 +831,6 @@
     1.5
    ],
    [
-    "say",
     "R",
     "A man is ordering from an online shop."
    ],
@@ -858,7 +839,6 @@
     0.5
    ],
    [
-    "say",
     "R",
     "Example: his name is Mr Khan."
    ],
@@ -867,7 +847,6 @@
     0.5
    ],
    [
-    "say",
     "R",
     "Can you see the answer? Customer’s name: Mr Khan. Now you listen and write."
    ],
@@ -876,7 +855,6 @@
     2.0
    ],
    [
-    "say",
     "M",
     "What would you like to buy?"
    ],
@@ -885,7 +863,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "A winter coat, please."
    ],
@@ -894,7 +871,6 @@
     3.4
    ],
    [
-    "say",
     "M",
     "Size?"
    ],
@@ -903,7 +879,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "Large."
    ],
@@ -912,7 +887,6 @@
     3.4
    ],
    [
-    "say",
     "M",
     "What colour?"
    ],
@@ -921,7 +895,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "Dark green, please."
    ],
@@ -930,7 +903,6 @@
     3.4
    ],
    [
-    "say",
     "M",
     "The price is 65 pounds."
    ],
@@ -939,7 +911,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "Delivery?"
    ],
@@ -948,7 +919,6 @@
     3.4
    ],
    [
-    "say",
     "M",
     "We can deliver on Wednesday."
    ],
@@ -961,7 +931,6 @@
     2.0
    ],
    [
-    "say",
     "R",
     "Now listen to Part Two again."
    ],
@@ -970,7 +939,6 @@
     1.5
    ],
    [
-    "say",
     "R",
     "A man is ordering from an online shop."
    ],
@@ -979,7 +947,6 @@
     0.5
    ],
    [
-    "say",
     "R",
     "Example: his name is Mr Khan."
    ],
@@ -988,7 +955,6 @@
     0.5
    ],
    [
-    "say",
     "R",
     "Can you see the answer? Customer’s name: Mr Khan. Now you listen and write."
    ],
@@ -997,7 +963,6 @@
     2.0
    ],
    [
-    "say",
     "M",
     "What would you like to buy?"
    ],
@@ -1006,7 +971,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "A winter coat, please."
    ],
@@ -1015,7 +979,6 @@
     3.4
    ],
    [
-    "say",
     "M",
     "Size?"
    ],
@@ -1024,7 +987,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "Large."
    ],
@@ -1033,7 +995,6 @@
     3.4
    ],
    [
-    "say",
     "M",
     "What colour?"
    ],
@@ -1042,7 +1003,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "Dark green, please."
    ],
@@ -1051,7 +1011,6 @@
     3.4
    ],
    [
-    "say",
     "M",
     "The price is 65 pounds."
    ],
@@ -1060,7 +1019,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "Delivery?"
    ],
@@ -1069,7 +1027,6 @@
     3.4
    ],
    [
-    "say",
     "M",
     "We can deliver on Wednesday."
    ],
@@ -1078,7 +1035,6 @@
     0.5
    ],
    [
-    "say",
     "R",
     "That is the end of Part Two."
    ],
@@ -1089,7 +1045,6 @@
   ],
   "p3": [
    [
-    "say",
     "R",
     "Part Three. Listen and look. There is one example."
    ],
@@ -1098,7 +1053,6 @@
     1.5
    ],
    [
-    "say",
     "R",
     "Maya is telling her sister about clothes."
    ],
@@ -1107,7 +1061,6 @@
     0.5
    ],
    [
-    "say",
     "R",
     "Example: Lily wore a yellow T-shirt on Monday."
    ],
@@ -1116,7 +1069,6 @@
     0.5
    ],
    [
-    "say",
     "Mch",
     "What about Lily (Monday)?"
    ],
@@ -1125,7 +1077,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "On Lily (Monday)? We saw yellow T-shirt."
    ],
@@ -1134,7 +1085,6 @@
     0.5
    ],
    [
-    "say",
     "R",
     "Can you see the letter D? Now you listen and write a letter in each box."
    ],
@@ -1143,7 +1093,6 @@
     2.0
    ],
    [
-    "say",
     "Fch",
     "Tuesday: Ava wore a pink dress – very pretty!"
    ],
@@ -1152,7 +1101,6 @@
     0.5
    ],
    [
-    "say",
     "Mch",
     "Wednesday: Ben was wearing a white shirt and a tie. Smart!"
    ],
@@ -1161,7 +1109,6 @@
     3.4
    ],
    [
-    "say",
     "Fch",
     "Thursday: Mo had sports shorts for PE all day."
    ],
@@ -1170,7 +1117,6 @@
     0.5
    ],
    [
-    "say",
     "Mch",
     "Friday: Sara came in a black jacket – very cool."
    ],
@@ -1179,7 +1125,6 @@
     3.4
    ],
    [
-    "say",
     "Fch",
     "And the teacher Mrs Lu wore a lovely red skirt on Friday."
    ],
@@ -1192,7 +1137,6 @@
     2.0
    ],
    [
-    "say",
     "R",
     "Now listen to Part Three again."
    ],
@@ -1201,7 +1145,6 @@
     1.5
    ],
    [
-    "say",
     "R",
     "Maya is telling her sister about clothes."
    ],
@@ -1210,7 +1153,6 @@
     0.5
    ],
    [
-    "say",
     "R",
     "Example: Lily wore a yellow T-shirt on Monday."
    ],
@@ -1219,7 +1161,6 @@
     0.5
    ],
    [
-    "say",
     "Mch",
     "What about Lily (Monday)?"
    ],
@@ -1228,7 +1169,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "On Lily (Monday)? We saw yellow T-shirt."
    ],
@@ -1237,7 +1177,6 @@
     0.5
    ],
    [
-    "say",
     "R",
     "Can you see the letter D? Now you listen and write a letter in each box."
    ],
@@ -1246,7 +1185,6 @@
     2.0
    ],
    [
-    "say",
     "Fch",
     "Tuesday: Ava wore a pink dress – very pretty!"
    ],
@@ -1255,7 +1193,6 @@
     0.5
    ],
    [
-    "say",
     "Mch",
     "Wednesday: Ben was wearing a white shirt and a tie. Smart!"
    ],
@@ -1264,7 +1201,6 @@
     3.4
    ],
    [
-    "say",
     "Fch",
     "Thursday: Mo had sports shorts for PE all day."
    ],
@@ -1273,7 +1209,6 @@
     0.5
    ],
    [
-    "say",
     "Mch",
     "Friday: Sara came in a black jacket – very cool."
    ],
@@ -1282,7 +1217,6 @@
     3.4
    ],
    [
-    "say",
     "Fch",
     "And the teacher Mrs Lu wore a lovely red skirt on Friday."
    ],
@@ -1291,7 +1225,6 @@
     0.5
    ],
    [
-    "say",
     "R",
     "That is the end of Part Three."
    ],
@@ -1302,7 +1235,6 @@
   ],
   "p4": [
    [
-    "say",
     "R",
     "Part Four. Listen and look. Listen and tick the box."
    ],
@@ -1311,7 +1243,6 @@
     1.5
    ],
    [
-    "say",
     "R",
     "One. — What are you buying?"
    ],
@@ -1320,7 +1251,6 @@
     0.5
    ],
    [
-    "say",
     "F",
     "— What are you buying?"
    ],
@@ -1329,7 +1259,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "No jackets today – too warm."
    ],
@@ -1338,7 +1267,6 @@
     0.5
    ],
    [
-    "say",
     "F",
     "Oh, really?"
    ],
@@ -1347,7 +1275,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "Black jeans?"
    ],
@@ -1356,7 +1283,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "Maybe next time."
    ],
@@ -1365,7 +1291,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "I’ll get these red trainers – so cool!"
    ],
@@ -1378,7 +1303,6 @@
     3.4
    ],
    [
-    "say",
     "R",
     "Two. — What’s wrong, Mia?"
    ],
@@ -1387,7 +1311,6 @@
     0.5
    ],
    [
-    "say",
     "F",
     "— What’s wrong, Mia?"
    ],
@@ -1396,7 +1319,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "My arm is fine."
    ],
@@ -1405,7 +1327,6 @@
     0.5
    ],
    [
-    "say",
     "F",
     "Oh, really?"
    ],
@@ -1414,7 +1335,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "My leg too."
    ],
@@ -1423,7 +1343,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "But my ear hurts a lot."
    ],
@@ -1436,7 +1355,6 @@
     3.4
    ],
    [
-    "say",
     "R",
     "Three. — What did Dad buy?"
    ],
@@ -1445,7 +1363,6 @@
     0.5
    ],
    [
-    "say",
     "F",
     "— What did Dad buy?"
    ],
@@ -1454,7 +1371,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "A scarf?"
    ],
@@ -1463,7 +1379,6 @@
     0.5
    ],
    [
-    "say",
     "F",
     "Oh, really?"
    ],
@@ -1472,7 +1387,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "No."
    ],
@@ -1481,7 +1395,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "A belt?"
    ],
@@ -1490,7 +1403,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "No."
    ],
@@ -1499,7 +1411,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "A nice silver watch."
    ],
@@ -1512,7 +1423,6 @@
     3.4
    ],
    [
-    "say",
     "R",
     "Four. — What colour’s the team?"
    ],
@@ -1521,7 +1431,6 @@
     0.5
    ],
    [
-    "say",
     "F",
     "— What colour’s the team?"
    ],
@@ -1530,7 +1439,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "Not green."
    ],
@@ -1539,7 +1447,6 @@
     0.5
    ],
    [
-    "say",
     "F",
     "Oh, really?"
    ],
@@ -1548,7 +1455,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "Not yellow."
    ],
@@ -1557,7 +1463,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "Red and blue, like always."
    ],
@@ -1570,7 +1475,6 @@
     3.4
    ],
    [
-    "say",
     "R",
     "Five. — What did the girl wear?"
    ],
@@ -1579,7 +1483,6 @@
     0.5
    ],
    [
-    "say",
     "F",
     "— What did the girl wear?"
    ],
@@ -1588,7 +1491,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "Not a pink dress."
    ],
@@ -1597,7 +1499,6 @@
     0.5
    ],
    [
-    "say",
     "F",
     "Oh, really?"
    ],
@@ -1606,7 +1507,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "Not a witch costume."
    ],
@@ -1615,7 +1515,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "She was a queen, so a crown and a cape."
    ],
@@ -1632,7 +1531,6 @@
     2.0
    ],
    [
-    "say",
     "R",
     "Now listen to Part Four again."
    ],
@@ -1641,7 +1539,6 @@
     1.5
    ],
    [
-    "say",
     "R",
     "One. — What are you buying?"
    ],
@@ -1650,7 +1547,6 @@
     0.5
    ],
    [
-    "say",
     "F",
     "— What are you buying?"
    ],
@@ -1659,7 +1555,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "No jackets today – too warm."
    ],
@@ -1668,7 +1563,6 @@
     0.5
    ],
    [
-    "say",
     "F",
     "Oh, really?"
    ],
@@ -1677,7 +1571,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "Black jeans?"
    ],
@@ -1686,7 +1579,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "Maybe next time."
    ],
@@ -1695,7 +1587,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "I’ll get these red trainers – so cool!"
    ],
@@ -1708,7 +1599,6 @@
     3.4
    ],
    [
-    "say",
     "R",
     "Two. — What’s wrong, Mia?"
    ],
@@ -1717,7 +1607,6 @@
     0.5
    ],
    [
-    "say",
     "F",
     "— What’s wrong, Mia?"
    ],
@@ -1726,7 +1615,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "My arm is fine."
    ],
@@ -1735,7 +1623,6 @@
     0.5
    ],
    [
-    "say",
     "F",
     "Oh, really?"
    ],
@@ -1744,7 +1631,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "My leg too."
    ],
@@ -1753,7 +1639,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "But my ear hurts a lot."
    ],
@@ -1766,7 +1651,6 @@
     3.4
    ],
    [
-    "say",
     "R",
     "Three. — What did Dad buy?"
    ],
@@ -1775,7 +1659,6 @@
     0.5
    ],
    [
-    "say",
     "F",
     "— What did Dad buy?"
    ],
@@ -1784,7 +1667,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "A scarf?"
    ],
@@ -1793,7 +1675,6 @@
     0.5
    ],
    [
-    "say",
     "F",
     "Oh, really?"
    ],
@@ -1802,7 +1683,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "No."
    ],
@@ -1811,7 +1691,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "A belt?"
    ],
@@ -1820,7 +1699,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "No."
    ],
@@ -1829,7 +1707,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "A nice silver watch."
    ],
@@ -1842,7 +1719,6 @@
     3.4
    ],
    [
-    "say",
     "R",
     "Four. — What colour’s the team?"
    ],
@@ -1851,7 +1727,6 @@
     0.5
    ],
    [
-    "say",
     "F",
     "— What colour’s the team?"
    ],
@@ -1860,7 +1735,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "Not green."
    ],
@@ -1869,7 +1743,6 @@
     0.5
    ],
    [
-    "say",
     "F",
     "Oh, really?"
    ],
@@ -1878,7 +1751,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "Not yellow."
    ],
@@ -1887,7 +1759,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "Red and blue, like always."
    ],
@@ -1900,7 +1771,6 @@
     3.4
    ],
    [
-    "say",
     "R",
     "Five. — What did the girl wear?"
    ],
@@ -1909,7 +1779,6 @@
     0.5
    ],
    [
-    "say",
     "F",
     "— What did the girl wear?"
    ],
@@ -1918,7 +1787,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "Not a pink dress."
    ],
@@ -1927,7 +1795,6 @@
     0.5
    ],
    [
-    "say",
     "F",
     "Oh, really?"
    ],
@@ -1936,7 +1803,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "Not a witch costume."
    ],
@@ -1945,7 +1811,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "She was a queen, so a crown and a cape."
    ],
@@ -1958,7 +1823,6 @@
     3.4
    ],
    [
-    "say",
     "R",
     "That is the end of Part Four."
    ],
@@ -1969,7 +1833,6 @@
   ],
   "p5": [
    [
-    "say",
     "R",
     "Part Five. Listen and look. There is one example."
    ],
@@ -1978,7 +1841,6 @@
     1.5
    ],
    [
-    "say",
     "M",
     "This is a bedroom."
    ],
@@ -1987,7 +1849,6 @@
     0.5
    ],
    [
-    "say",
     "M",
     "Example: colour the teddy bear brown."
    ],
@@ -1996,7 +1857,6 @@
     0.5
    ],
    [
-    "say",
     "R",
     "This is an example. Now you listen and colour and write."
    ],
@@ -2005,7 +1865,6 @@
     2.0
    ],
    [
-    "say",
     "M",
     "Colour the curtains purple."
    ],
@@ -2014,7 +1873,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "OK."
    ],
@@ -2023,7 +1881,6 @@
     5.0
    ],
    [
-    "say",
     "M",
     "On the bed, next to the teddy bear, draw a T-shirt."
    ],
@@ -2032,7 +1889,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "OK."
    ],
@@ -2041,7 +1897,6 @@
     5.0
    ],
    [
-    "say",
     "M",
     "The hat on the hook – colour it pink."
    ],
@@ -2050,7 +1905,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "OK."
    ],
@@ -2059,7 +1913,6 @@
     5.0
    ],
    [
-    "say",
     "M",
     "On the mirror, write the word ROOM."
    ],
@@ -2068,7 +1921,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "OK."
    ],
@@ -2077,7 +1929,6 @@
     5.0
    ],
    [
-    "say",
     "M",
     "The shoes on the floor – colour them blue."
    ],
@@ -2086,7 +1937,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "OK."
    ],
@@ -2099,7 +1949,6 @@
     2.0
    ],
    [
-    "say",
     "R",
     "Now listen to Part Five again."
    ],
@@ -2108,7 +1957,6 @@
     1.5
    ],
    [
-    "say",
     "M",
     "This is a bedroom."
    ],
@@ -2117,7 +1965,6 @@
     0.5
    ],
    [
-    "say",
     "M",
     "Example: colour the teddy bear brown."
    ],
@@ -2126,7 +1973,6 @@
     0.5
    ],
    [
-    "say",
     "R",
     "This is an example. Now you listen and colour and write."
    ],
@@ -2135,7 +1981,6 @@
     2.0
    ],
    [
-    "say",
     "M",
     "Colour the curtains purple."
    ],
@@ -2144,7 +1989,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "OK."
    ],
@@ -2153,7 +1997,6 @@
     5.0
    ],
    [
-    "say",
     "M",
     "On the bed, next to the teddy bear, draw a T-shirt."
    ],
@@ -2162,7 +2005,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "OK."
    ],
@@ -2171,7 +2013,6 @@
     5.0
    ],
    [
-    "say",
     "M",
     "The hat on the hook – colour it pink."
    ],
@@ -2180,7 +2021,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "OK."
    ],
@@ -2189,7 +2029,6 @@
     5.0
    ],
    [
-    "say",
     "M",
     "On the mirror, write the word ROOM."
    ],
@@ -2198,7 +2037,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "OK."
    ],
@@ -2207,7 +2045,6 @@
     5.0
    ],
    [
-    "say",
     "M",
     "The shoes on the floor – colour them blue."
    ],
@@ -2216,7 +2053,6 @@
     0.5
    ],
    [
-    "say",
     "Fch",
     "OK."
    ],
@@ -2225,7 +2061,6 @@
     5.0
    ],
    [
-    "say",
     "R",
     "That is the end of Part Five."
    ],

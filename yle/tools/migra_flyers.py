@@ -56,7 +56,8 @@ def guiones():
             evs = {}
             for p in range(1, 6):
                 e = G.eventos_test(t, p)
-                if e: evs['p%d' % p] = [list(x) for x in e]
+                # el generador de Flyers da ('say', voz, texto); el motor espera [voz, texto]
+                if e: evs['p%d' % p] = [[x[1], x[2]] if len(x) == 3 and x[0] == 'say' else list(x) for x in e]
             out[t['number']] = evs
         return out
     except Exception as e:
