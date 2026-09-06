@@ -111,8 +111,14 @@ function speakingShields(p){
 }
 
 function load(){
-  var token = qs.get('t');
-  var p = token ? sb.rpc('yle_boletin', {p_token: token}) : sb.auth.getSession().then(function(u){
+  /* Coordinacion decidio que el boletin solo se entrega en PDF por Toddle: ya no
+     hay enlaces sin cuenta. Si alguien llega con uno viejo, se le dice, en vez
+     de dejarle un error de permisos. */
+  if(qs.get('t')){
+    $('#page').innerHTML = '<div class="card err">Este boletín ya no se comparte por enlace. El colegio lo envía en PDF por Toddle. Si es familia del colegio y quiere verlo, entre al portal con la cuenta del alumno.</div>';
+    return Promise.resolve();
+  }
+  var p = sb.auth.getSession().then(function(u){
     if(!(u && u.data && u.data.session && u.data.session.user)) return {data: {error: 'signin'}};
     return sb.rpc('yle_boletin_student', {p_student: STUDENT, p_level: qs.get('level') || 'starters'});
   });
@@ -167,38 +173,16 @@ function render(){
     '<div class="card"><h2>El examen</h2>' +
       '<p><b>Fecha:</b> ' + (examDate ? esc(fecha(examDate + 'T12:00:00') || examDate) : 'por confirmar por el colegio') + (examNote ? ' · ' + esc(examNote) : '') + '</p>' + fmt +
       '<p class="small muted" style="margin-top:8px">Los resultados oficiales llegan al colegio unas semanas después del examen; el certificado en papel, más tarde.</p></div>' +
-    '<p class="small muted">Nordic International School · Programa Cambridge Young Learners. Boletín generado el ' + fecha(D.generated_at) + (D.link && D.link.expires_at ? ' · este enlace caduca el ' + fecha(D.link.expires_at) : '') + '.</p>';
-  if(TEACHER) bindTeacher();
+    '<p class="small muted">Nordic International School · Programa Cambridge Young Learners. Boletín generado el ' + fecha(D.generated_at) + '.</p>';
 }
 
-/* ---------- caja del profesor: PDF para Toddle (y enlace de reserva) ---------- */
+/* ---------- caja del profesor: solo el PDF, que se manda por Toddle ---------- */
 function teacherPanel(){
   var g = D.guardian || {};
   return '<div class="card teacher noprint"><h2>Para el profesor</h2>' +
-    '<p class="small">El boletín se queda en la plataforma. Para la familia: <b>descargue el PDF y envíelo por Toddle</b>, que es el canal del colegio.</p>' +
-    '<p><button class="btn" onclick="window.print()">🖨️ Descargar PDF para Toddle</button></p>' +
-    '<details><summary class="small muted">Enlace directo, solo si la familia no entra a la plataforma</summary>' +
-    '<p class="small">Apoderado: <b>' + esc(g.name || '—') + '</b> · teléfono: <b>' + esc(g.phone || '—') + '</b>. El enlace abre este boletín sin cuenta y caduca a los 60 días.</p>' +
-    '<p><button class="btn sec" id="mkLink">🔗 Crear enlace</button></p>' +
-    '<div id="linkBox" class="hidden"><input id="linkUrl" readonly> <p style="margin:8px 0 0"><button class="btn sec" id="copyLink">📋 Copiar</button></p></div>' +
-    '<div id="linkMsg" class="small muted"></div></details></div>';
-}
-function bindTeacher(){
-  $('#mkLink').onclick = function(){
-    var btn = this; btn.disabled = true;
-    var token = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random()).replace(/-/g, '');
-    sb.auth.getSession().then(function(u){
-      var uid = u && u.data && u.data.session && u.data.session.user && u.data.session.user.id;
-      return sb.from('yle_family_links').insert({token: token, student_id: STUDENT, level: LEVEL, created_by: uid});
-    }).then(function(r){
-      if(r.error){ $('#linkMsg').textContent = 'No se pudo crear el enlace: ' + r.error.message; btn.disabled = false; return; }
-      var url = location.origin + location.pathname + '?t=' + token;
-      $('#linkBox').classList.remove('hidden'); $('#linkUrl').value = url;
-      $('#linkMsg').textContent = 'Enlace creado. Cópielo y péguelo donde haga falta; caduca en 60 días.';
-      btn.disabled = false;
-    });
-  };
-  $('#copyLink').onclick = function(){ var i = $('#linkUrl'); i.select(); try { navigator.clipboard.writeText(i.value); $('#linkMsg').textContent = 'Copiado ✓'; } catch(e){ document.execCommand('copy'); } };
+    '<p class="small">El boletín se queda en la plataforma. A la familia se le manda el <b>PDF por Toddle</b>: es el único canal, decisión de coordinación.</p>' +
+    '<p class="small">Apoderado: <b>' + esc(g.name || '—') + '</b>.</p>' +
+    '<p><button class="btn" onclick="window.print()">🖨️ Descargar PDF para Toddle</button></p></div>';
 }
 load();
 })();
