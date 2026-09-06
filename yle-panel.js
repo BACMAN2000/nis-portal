@@ -157,7 +157,7 @@ async function vistaGuion(){
     partes.map(n => {
       const tarea = spec && (spec.listening.parts.find(p => p.n === n) || {}).task;
       return `<div class="yle-script"><h3>Part ${n}${tarea ? ' · ' + esc(tarea) : ''}</h3>
-        <audio controls preload="none" src="yle-audio/${V.level}/test_${String(V.test).padStart(2, '0')}_part${n}.mp3"></audio>
+        <audio controls preload="none" src="${YM(`yle-audio/${V.level}/test_${String(V.test).padStart(2, '0')}_part${n}.mp3`)}"></audio>
         ${T.audio['p' + n].map(l => {
           if(l[0] === 'pause') return `<div class="ln"><span class="who pausa">pausa</span><span class="pausa-txt">${l[1]} s</span></div>`;
           return `<div class="ln"><span class="who ${esc(l[0])}">${esc(l[0])}</span><span>${esc(l[1])}</span></div>`;
@@ -266,7 +266,7 @@ async function tarjeta(a, quien){
     const pk = Object.keys(parts).find(k => parts[k] && parts[k].teacher > 0) || 'p6';
     const P = T && T.rw && T.rw[pk];
     const campos = Object.keys(ans).filter(k => k.indexOf(pk + '_t') === 0 || k.indexOf(pk + '_w') === 0 || k.indexOf(pk + '_s') === 0).sort();
-    cuerpo = (P && P.image ? `<img src="yle-img/${a.level}/test_${String(a.test).padStart(2, '0')}_${P.image}.jpg" alt="" style="max-width:420px;width:100%;border-radius:10px;display:block;margin:6px 0">` : '') +
+    cuerpo = (P && P.image ? `<img src="${YM(`yle-img/${a.level}/test_${String(a.test).padStart(2, '0')}_${P.image}.jpg`)}" alt="" style="max-width:420px;width:100%;border-radius:10px;display:block;margin:6px 0">` : '') +
       campos.map(k => { const i = +k.replace(/^p\d+_[tws]/, ''); const preg = P && k.indexOf('_t') > 0 && P.answer && P.answer[i] ? P.answer[i].q : (k.indexOf('_w') > 0 ? 'Frase ' + (i + 1) + ' sobre el dibujo' : 'Historia'); const modelo = P && k.indexOf('_t') > 0 && P.answer && P.answer[i] ? P.answer[i].model : ''; return `<div class="yle-ans"><b>${esc(preg)}</b><br>${esc(ans[k] || '—')}${modelo ? `<br><span class="muted">Modelo: ${esc(modelo)}</span>` : ''}</div>`; }).join('') +
       (a.score != null ? `<div class="meta">Parte automática: ${a.score} / ${a.total}</div>` : '');
     /* Marcas oficiales. Movers Part 6 (Handbook p. 44): completar 1 marca; responder y escribir
@@ -280,7 +280,7 @@ async function tarjeta(a, quien){
   } else {
     const lam = Object.keys(a.drawings || {});
     cuerpo = `<div class="meta">Láminas coloreadas: ${lam.length ? lam.map(esc).join(', ') : 'ninguna'} · parte automática ${a.score} / ${a.total}</div>` +
-      lam.map(k => { const id = k.split('#').pop(); return `<img src="yle-img/${a.level}/test_${String(a.test).padStart(2, '0')}_${id}.jpg" alt="" style="max-width:300px;width:100%;border-radius:10px;display:inline-block;margin:4px 6px 4px 0">`; }).join('') +
+      lam.map(k => { const id = k.split('#').pop(); return `<img src="${YM(`yle-img/${a.level}/test_${String(a.test).padStart(2, '0')}_${id}.jpg`)}" alt="" style="max-width:300px;width:100%;border-radius:10px;display:inline-block;margin:4px 6px 4px 0">`; }).join('') +
       `<p class="muted" style="font-size:.85rem">Los trazos se guardan en la cuenta del alumno; pídele que te enseñe la lámina en su pantalla o revisa con la clave del test.</p>`;
     form = `<div class="yle-form"><label>Colorear y escribir (0–5)<input type="number" min="0" max="5" value="5" data-crit="colouring" data-max="5"></label></div>`;
   }
@@ -415,7 +415,7 @@ async function vistaSimulacro(){
       <button class="btn" onclick="window._yleAbrir()">Abrir sesión</button></div>${idx.length ? '' : '<p class="muted">Este nivel aún no tiene tests publicados.</p>'}</div>` +
     (abiertas || []).map(s => `<div class="card" id="ses${s.id}"><h2 style="margin:0 0 4px">🟢 ${esc((V.grades.find(g => g.id === s.grade_id) || {}).name || 'G' + s.grade_id)} · ${NIV[s.level]} · Test ${s.test} · ${PAPER[s.paper]}</h2>
       <div class="muted" style="font-size:.85rem">Abierta ${fecha(s.started_at)}</div>
-      ${s.paper === 'listening' ? `<h3 style="margin:10px 0 4px">Audio para el proyector (una sola vez por parte)</h3><div class="yle-audio">${(SPECS ? SPECS.levels[s.level].listening.parts : [1, 2, 3, 4]).map(pt => { const n = pt.n || pt; return `<div class="muted" style="font-size:.85rem">Part ${n}</div><audio controls preload="none" src="yle-audio/${s.level}/test_${String(s.test).padStart(2, '0')}_part${n}.mp3"></audio>`; }).join('')}</div>
+      ${s.paper === 'listening' ? `<h3 style="margin:10px 0 4px">Audio para el proyector (una sola vez por parte)</h3><div class="yle-audio">${(SPECS ? SPECS.levels[s.level].listening.parts : [1, 2, 3, 4]).map(pt => { const n = pt.n || pt; return `<div class="muted" style="font-size:.85rem">Part ${n}</div><audio controls preload="none" src="${YM(`yle-audio/${s.level}/test_${String(s.test).padStart(2, '0')}_part${n}.mp3`)}"></audio>`; }).join('')}</div>
       <p><button class="btn sm ghost" onclick="window._yleVerGuion('${s.level}',${s.test})">📻 Ver el guion de este test</button></p>` : ''}
       <h3 style="margin:10px 0 4px">Resultados en vivo</h3><div class="yle-live" data-live="${s.id}">Esperando…</div>
       <p><button class="btn sm ghost" onclick="window._yleCerrar('${s.id}')">Cerrar sesión</button></p></div>`).join('');

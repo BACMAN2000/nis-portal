@@ -207,6 +207,7 @@ textarea.free{width:100%;max-width:820px;min-height:64px;border:1.5px solid var(
 <script src="nis-nav.js?v=2"></script>
 <script src="activity-save.js?v=4"></script>
 <!-- /NIS-ONLY -->
+<script src="yle-media.js?v=1"></script>
 <script src="yle/fluent3d.js?v=6"></script>
 <script src="paint-layer.js?v=3"></script>
 <script>
@@ -258,7 +259,7 @@ function traeTest(n){
 }
 function key(){ return (cur + 1) + '#' + tab + '#'; }
 function nn(){ return String(T.number).padStart(2, '0'); }
-function img(id, cls, alt){ return '<img class="' + (cls || 'pic') + '" src="' + IMG + 'test_' + nn() + '_' + id + '.jpg" alt="' + esc(alt || '') + '" loading="lazy" onerror="this.style.display=\'none\'">'; }
+function img(id, cls, alt){ return '<img class="' + (cls || 'pic') + '" src="' + YM(IMG + 'test_' + nn() + '_' + id + '.jpg') + '" alt="' + esc(alt || '') + '" loading="lazy" onerror="this.style.display=\'none\'">'; }
 /* La descripción de la lámina (P.scene) se escribió para generar el dibujo, no para
    que el niño la lea: en el examen real mira la imagen y ya está, y ese texto además
    usa palabras de niveles más altos. Pasa a ser el alt de la imagen —así sigue ahí
@@ -283,7 +284,7 @@ function pintaHueco(w){
   b.classList.toggle('puesto', !!v);
   $$('.gapm button', w).forEach(function(x){ x.classList.toggle('on', x.dataset.v === v); });
 }
-function audio(p){ if(SESSION) return '<p class="small">🏫 Class mock: your teacher plays the recording for Part ' + p + ' once, like in the real exam.</p>'; return '<audio controls preload="none" src="' + AUD + 'test_' + nn() + '_part' + p + '.mp3" onerror="this.insertAdjacentHTML(\'afterend\',\'<p class=small>🎧 The recording for this part is not published yet: do it while your teacher reads the script.</p>\');this.remove()"></audio>'; }
+function audio(p){ if(SESSION) return '<p class="small">🏫 Class mock: your teacher plays the recording for Part ' + p + ' once, like in the real exam.</p>'; return '<audio controls preload="none" src="' + YM(AUD + 'test_' + nn() + '_part' + p + '.mp3') + '" onerror="this.insertAdjacentHTML(\'afterend\',\'<p class=small>🎧 The recording for this part is not published yet: do it while your teacher reads the script.</p>\');this.remove()"></audio>'; }
 
 /* El menú de tests se pliega para dejarle el ancho entero a la lámina; el mismo
    botón lo vuelve a abrir y la elección se recuerda entre partes y tests. */

@@ -107,6 +107,7 @@ input.typed.ok{border-color:var(--ok);background:#e3f3ea}input.typed.bad{border-
 <script src="config.js"></script>
 <script src="nis-nav.js?v=2"></script>
 <!-- /NIS-ONLY -->
+<script src="yle-media.js?v=1"></script>
 <script src="yle/fluent3d.js?v=6"></script>
 <script>
 (function(){
@@ -144,7 +145,7 @@ function boldWord(ex, w){ var base = w.w.split(' (')[0].split(' / ')[0]; var re 
 var cur = null;
 function play(w, ex){
   if(cur){ try { cur.pause(); } catch(e){} }
-  var a = new Audio(AUD + w.s + (ex ? '_ex' : '') + '.mp3?v=3'); cur = a;   /* v3 = voz Libby con el ritmo por nivel (5-sep-2026) */
+  var a = new Audio(YM(AUD + w.s + (ex ? '_ex' : '') + '.mp3')); cur = a;   /* voz Libby con el ritmo por nivel (5-sep-2026); lo sirve el backend */
   a.onerror = function(){
     /* Si falta el mp3 del entrenador se prueba el del lexico, que cubre 8.647
        palabras; la voz del navegador queda como ultimo recurso. */

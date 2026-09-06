@@ -56,5 +56,9 @@ if __name__ == '__main__':
     # del paquete (specs, lista de palabras, validador, dibujos, vocabulario).
     sync('yle', ['*.json', '*.js', '*.py', 'vocab/*.json'])
     sync('yle-audio', ['*/*.mp3', 'vocab/*/*.mp3'])
-    for d in DEST: shutil.copy(os.path.join(NIS, 'paint-layer.js'), os.path.join(d, 'paint-layer.js'))
+    # yle-media.js arma las URL del material contra el backend: sin el, las
+    # paginas copiadas piden /api/yle/media/... con YM sin definir.
+    for d in DEST:
+        for x in ('paint-layer.js', 'yle-media.js'):
+            shutil.copy(os.path.join(NIS, x), os.path.join(d, x))
     print('listo')
