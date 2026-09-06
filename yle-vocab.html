@@ -49,7 +49,9 @@ main{min-width:0}
 .flash .pic{height:170px;display:flex;align-items:center;justify-content:center}
 .flash .pic img{max-height:160px}
 .flash .emoji{font-size:120px;line-height:1}
-.flash .word{font-size:2rem;font-weight:800;margin:6px 0 2px}
+.flash .ipa .reg{font:600 .62rem system-ui;background:#e6e9f5;color:#41527a;border-radius:99px;padding:1px 6px;vertical-align:2px;margin-right:4px}
+.ipa{font-family:ui-monospace,Consolas,monospace;color:#5b6b8c;font-size:1.05rem;margin:2px 0 6px}
+.word{font-size:2rem;font-weight:800;margin:6px 0 2px}
 .flash .ex{font-size:1.1rem;margin:8px auto;max-width:560px}
 .flash .ex b{color:var(--blue)}
 .flash .es{color:var(--muted);font-style:italic}
@@ -138,7 +140,19 @@ var cur = null;
 function play(w, ex){
   if(cur){ try { cur.pause(); } catch(e){} }
   var a = new Audio(AUD + w.s + (ex ? '_ex' : '') + '.mp3?v=3'); cur = a;   /* v3 = voz Libby con el ritmo por nivel (5-sep-2026) */
-  a.onerror = function(){ speak(ex ? w.ex : w.w.split(' (')[0].split(' / ')[0]); };
+  a.onerror = function(){
+    /* Si falta el mp3 del entrenador se prueba el del lexico, que cubre 8.647
+       palabras; la voz del navegador queda como ultimo recurso. */
+    var base = w.w.split(' (')[0].split(' / ')[0].toLowerCase().trim();
+    var f = base.replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    if(!ex && f && base === f){
+      var b = new Audio('lexicon-audio/uk/' + f + '.mp3'); cur = b;
+      b.onerror = function(){ speak(base); };
+      b.play().catch(function(){ speak(base); });
+      return;
+    }
+    speak(ex ? w.ex : base);
+  };
   a.play().catch(function(){ speak(ex ? w.ex : w.w); });
 }
 function speak(t){ try { var u = new SpeechSynthesisUtterance(t); u.lang = 'en-GB'; u.rate = .85; speechSynthesis.cancel(); speechSynthesis.speak(u); } catch(e){} }
@@ -220,6 +234,7 @@ function learn(ws){
     '<div class="round"><span>Card ' + (game.i % game.q.length + 1) + ' of ' + game.q.length + '</span><span>' + (mastered(w) ? '⭐ You know this one' : '✓ ' + p.ok + ' of ' + MASTER) + '</span></div>' +
     '<div class="pic">' + picOf(w, 150) + '</div>' +
     '<div class="word">' + esc(w.w) + '</div>' +
+    (w.ipa ? '<div class="ipa"><span class="reg">' + (w.ipa_reg || 'UK') + '</span> ' + esc(w.ipa) + '</div>' : '') +
     '<div><button class="spk" data-say="w">🔊 Word</button><button class="spk" data-say="ex">🔊 Sentence</button></div>' +
     '<p class="ex">' + boldWord(w.ex, w) + '</p>' +
     '<p class="es hidden" id="es">🇪🇸 ' + esc(w.es) + '</p><p><button class="spk" id="showEs">Show in Spanish</button></p>' +
