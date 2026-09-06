@@ -12,7 +12,11 @@ import io, os, re, shutil, glob, hashlib
 
 NIS = r"C:\Projects\nis-portal"
 DEST = [r"C:\Projects\cohasset-community\repo", r"C:\Projects\cohasset-final\cohasset-language-center"]
-PAGINAS = ['yle-practice.html', 'yle-vocab.html', 'yle-guia-familia.html']
+# yle-practice.html y yle-print.html NO se copian (6-sep-2026): los examenes
+# viven en la tabla yle_tests, que se lee con la cuenta del portal del colegio,
+# y en cohasset.pe no la hay -> la pagina salia sin un solo test. Ahi queda el
+# entrenador de vocabulario, que no depende de la base, y la guia de familia.
+PAGINAS = ['yle-vocab.html', 'yle-guia-familia.html']
 
 def engine(nombre):
     s = io.open(os.path.join(NIS, nombre), encoding='utf-8').read()
@@ -24,6 +28,11 @@ def engine(nombre):
     c = c.replace('<a href="index.html" class="btn sec" style="text-decoration:none">◀ Portal</a>', '<a href="cambridge-portal.html" class="btn sec" style="text-decoration:none">◀ Cambridge</a>')
     c = c.replace('<a href="index.html" class="btn sec">◀ Portal</a>', '<a href="cambridge-portal.html" class="btn sec">◀ Cambridge</a>')
     c = c.replace('padding:10px 18px 10px 118px', 'padding:10px 18px')
+    # el boton de volver a los practice tests no lleva a ninguna parte aqui
+    c = c.replace('href="yle-practice.html" class="btn sec" style="text-decoration:none">◀ Practice tests</a>',
+                  'href="cambridge-portal.html" class="btn sec" style="text-decoration:none">◀ Cambridge</a>')
+    c = c.replace("$('#backTests').href = 'yle-practice.html?level=' + LEVEL;",
+                  "$('#backTests').href = 'cambridge-portal.html';")
     # En cohasset.pe el material es solo para alumnos matriculados: el colegio no
     # lo vende a externos. La puerta va aqui porque estas paginas se regeneran y
     # cualquier cambio hecho a mano en el clon se perderia en la siguiente copia.
