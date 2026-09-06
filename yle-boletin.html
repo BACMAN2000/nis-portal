@@ -11,8 +11,8 @@
    Boletín YLE para la familia (Ruta YLE 2026, Fase 3). Solo NIS.
    Dos puertas: ?t=TOKEN (enlace de familia, sin cuenta, vía rpc yle_boletin)
    y ?student=UUID&level=starters (profesor/admin/alumno con sesión, vía
-   rpc yle_boletin_student). El profesor crea el enlace desde aquí mismo y lo
-   manda por WhatsApp o lo imprime. Los escudos son estimación del colegio.
+   rpc yle_boletin_student). El profesor descarga el PDF desde aquí mismo y lo
+   manda por Toddle, que es el canal del colegio. Los escudos son estimación del colegio.
    ========================================================================= */
 :root{--navy:#0d1d33;--blue:#1e3a8a;--sky:#eef3fb;--ink:#1e293b;--muted:#64748b;--border:#d9deea;--ok:#2f8f5b;--bad:#b53a3a;--st:#e08a2a;--mv:#238f85;--fl:#6a54c9;--gold:#d29a1f}
 *{box-sizing:border-box}
@@ -24,7 +24,6 @@ header.top .sub{font-size:.8rem;opacity:.8}
 header.top .right{margin-left:auto;display:flex;gap:10px;align-items:center}
 .btn{border:0;background:var(--blue);color:#fff;border-radius:10px;padding:9px 16px;font:inherit;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block}
 .btn.sec{background:#fff;color:var(--blue);border:1.5px solid var(--blue)}
-.btn.wa{background:#25d366}
 .page{max-width:860px;margin:22px auto;padding:0 16px}
 .card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px 22px;margin-bottom:16px}
 h2{font-size:1.2rem;margin:0 0 10px}
@@ -172,14 +171,17 @@ function render(){
   if(TEACHER) bindTeacher();
 }
 
-/* ---------- caja del profesor: enlace de familia y WhatsApp ---------- */
+/* ---------- caja del profesor: PDF para Toddle (y enlace de reserva) ---------- */
 function teacherPanel(){
   var g = D.guardian || {};
   return '<div class="card teacher noprint"><h2>Para el profesor</h2>' +
-    '<p class="small">Apoderado: <b>' + esc(g.name || '—') + '</b> · teléfono: <b>' + esc(g.phone || '—') + '</b>. El enlace abre este boletín sin cuenta, solo con su dirección, y caduca a los 60 días.</p>' +
-    '<p><button class="btn" id="mkLink">🔗 Crear enlace para la familia</button> <button class="btn sec" onclick="window.print()">🖨️ Imprimir / guardar PDF</button></p>' +
-    '<div id="linkBox" class="hidden"><input id="linkUrl" readonly> <p style="margin:8px 0 0"><button class="btn sec" id="copyLink">📋 Copiar</button> <a class="btn wa" id="waLink" target="_blank" rel="noopener">💬 Enviar por WhatsApp</a></p></div>' +
-    '<div id="linkMsg" class="small muted"></div></div>';
+    '<p class="small">El boletín se queda en la plataforma. Para la familia: <b>descargue el PDF y envíelo por Toddle</b>, que es el canal del colegio.</p>' +
+    '<p><button class="btn" onclick="window.print()">🖨️ Descargar PDF para Toddle</button></p>' +
+    '<details><summary class="small muted">Enlace directo, solo si la familia no entra a la plataforma</summary>' +
+    '<p class="small">Apoderado: <b>' + esc(g.name || '—') + '</b> · teléfono: <b>' + esc(g.phone || '—') + '</b>. El enlace abre este boletín sin cuenta y caduca a los 60 días.</p>' +
+    '<p><button class="btn sec" id="mkLink">🔗 Crear enlace</button></p>' +
+    '<div id="linkBox" class="hidden"><input id="linkUrl" readonly> <p style="margin:8px 0 0"><button class="btn sec" id="copyLink">📋 Copiar</button></p></div>' +
+    '<div id="linkMsg" class="small muted"></div></details></div>';
 }
 function bindTeacher(){
   $('#mkLink').onclick = function(){
@@ -192,11 +194,7 @@ function bindTeacher(){
       if(r.error){ $('#linkMsg').textContent = 'No se pudo crear el enlace: ' + r.error.message; btn.disabled = false; return; }
       var url = location.origin + location.pathname + '?t=' + token;
       $('#linkBox').classList.remove('hidden'); $('#linkUrl').value = url;
-      var name = (D.student && D.student.first_name) || '';
-      var txt = 'Hola. Le compartimos el boletín Cambridge ' + NAMES[LEVEL] + ' de ' + name + ' con su avance en los tests de práctica: ' + url + ' (el enlace caduca en 60 días).';
-      var phone = String((D.guardian && D.guardian.phone) || '').replace(/\D/g, ''); if(phone.length === 9) phone = '51' + phone;
-      $('#waLink').href = 'https://wa.me/' + (phone || '') + '?text=' + encodeURIComponent(txt);
-      $('#linkMsg').textContent = 'Enlace creado. Cópielo o mándelo por WhatsApp' + (phone ? ' al ' + phone : ' (sin teléfono del apoderado: elija el contacto al abrir WhatsApp)') + '.';
+      $('#linkMsg').textContent = 'Enlace creado. Cópielo y péguelo donde haga falta; caduca en 60 días.';
       btn.disabled = false;
     });
   };
