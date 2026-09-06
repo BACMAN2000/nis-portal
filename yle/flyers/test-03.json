@@ -287,12 +287,12 @@
  "p1": {
  "type": "definitions_copy",
  "words": [
- "a melon",
+ "a watermelon",
  "a strawberry",
- "a mushroom",
+ "an onion",
  "a pineapple",
  "a potato",
- "a cucumber",
+ "a carrot",
  "a pepper",
  "a lemon",
  "a pear",
@@ -317,24 +317,24 @@
  "word": "an onion"
  },
  {
- "def": "This fruit is yellow and sour, and it grows on trees.",
+ "def": "This fruit is yellow and not sweet, and it grows on trees.",
  "word": "a lemon"
  },
  {
  "def": "It is long, green and you often put it in salads.",
- "word": "a cucumber"
+ "word": "a carrot"
  },
  {
  "def": "This vegetable is brown outside and white inside. People make chips with it.",
  "word": "a potato"
  },
  {
- "def": "It is a small sweet fruit that grows in bunches, green or purple.",
+ "def": "It is a small sweet fruit that grows in groups, green or purple.",
  "word": "a grape"
  },
  {
- "def": "This fruit is big, round or oval, and very sweet inside. It is a summer fruit.",
- "word": "a melon"
+ "def": "This fruit is big and round, and very sweet inside. It is a summer fruit.",
+ "word": "a watermelon"
  },
  {
  "def": "It is a round red fruit that you often put on pizzas.",
@@ -345,7 +345,7 @@
  "word": "a coconut"
  },
  {
- "def": "This big yellow fruit from hot countries has sharp leaves on top.",
+ "def": "This big yellow fruit from hot countries has long leaves on top.",
  "word": "a pineapple"
  }
  ]
@@ -370,7 +370,7 @@
  },
  {
  "letter": "C",
- "text": "Sure. Small, medium or large glass?"
+ "text": "Sure. Small or large glass?"
  },
  {
  "letter": "D",
@@ -386,7 +386,7 @@
  },
  {
  "letter": "G",
- "text": "Excellent choice – the chef makes it today with tomatoes."
+ "text": "Very good – the cook makes it today with tomatoes."
  },
  {
  "letter": "H",
@@ -424,11 +424,11 @@
  "sugar",
  "kitchen",
  "happy",
- "tasty",
+ "delicious",
  "family",
  "bought"
  ],
- "text": "Yesterday was Daniel’s ninth birthday. His dad is very good at __(1)__ and he made Daniel a special chocolate cake. First, they went to the supermarket and __(2)__ lots of ingredients, like eggs, flour and __(3)__. At home, they worked together in the __(4)__ for two hours. The cake was very big and __(5)__! In the evening, all the family came to sing and eat the cake. Daniel had a wonderful birthday.",
+ "text": "Yesterday was Daniel’s ninth birthday. His dad is very good at __(1)__ and he made Daniel a special chocolate cake. First, they went to the supermarket and __(2)__ lots of things, like eggs, flour and __(3)__. At home, they worked together in the __(4)__ for two hours. The cake was very big and __(5)__! In the evening, all the family came to sing and eat the cake. Daniel had a wonderful birthday.",
  "example": "",
  "title_choices": [
  [
@@ -449,14 +449,14 @@
  "bought",
  "sugar",
  "kitchen",
- "tasty"
+ "delicious"
  ],
  "title_key": "B"
  },
  "p4": {
  "type": "mc_cloze",
  "title": "Breakfast around the world",
- "text": "Breakfast is different in many parts of the world. In the United Kingdom, some people __(1)__ eggs with bacon and beans for breakfast. In Japan, children __(2)__ have rice and soup __(3)__ they go to school. People in Spain like to __(4)__ a hot chocolate with sweet bread __(5)__ churros. In the morning, families in Turkey __(6)__ cheese, olives, bread __(7)__ tomatoes. Breakfast in many African countries __(8)__ porridge from corn or other grains. Every country is different but a good breakfast gives you __(9)__ __(10)__ start your day!",
+ "text": "Breakfast is different in many parts of the world. In the United Kingdom, some people __(1)__ eggs with beans for breakfast. In Japan, children __(2)__ have rice and soup __(3)__ they go to school. People in Spain like to __(4)__ a hot chocolate with sweet bread __(5)__ sugar. In the morning, families in Turkey __(6)__ cheese, olives, bread __(7)__ tomatoes. Breakfast in many African countries __(8)__ hot cereal from rice. Every country is different but a good breakfast gives you __(9)__ __(10)__ start your day!",
  "example": {
  "options": [
  "",
@@ -532,7 +532,7 @@
  },
  {
  "options": [
- "energy",
+ "strong",
  "school",
  "book"
  ],
@@ -550,10 +550,10 @@
  },
  "p5": {
  "type": "story_completion",
- "title": "The picnic disaster",
+ "title": "The bad picnic",
  "parts": [
  {
- "text": "Last Sunday, my family went on a picnic by the lake. My mum made lots of sandwiches and my dad brought apples, crisps and a big bottle of lemonade. My little sister Holly brought her favourite chocolate biscuits. We sat under a big tree and started to eat. Suddenly, a very hungry duck came out of the water. It was huge and it wanted our food! The duck took all the sandwich from my brother and ran away. We all laughed a lot. Then a second problem started: it began to rain! We quickly put everything in our bags and ran to the car. In the car, we drank the lemonade and ate the chocolate biscuits. It wasn’t the picnic we wanted, but everyone was really happy.",
+ "text": "Last Sunday, my family went on a picnic by the lake. My mum made lots of sandwiches and my dad brought apples, biscuits and a big bottle of lemonade. My little sister Holly brought her favourite chocolate biscuits. We sat under a big tree and started to eat. Suddenly, a very hungry duck came out of the water. It was huge and it wanted our food! The duck took all the sandwich from my brother and ran away. We all laughed a lot. Then a second problem started: it began to rain! We quickly put everything in our bags and ran to the car. In the car, we drank the lemonade and ate the chocolate biscuits. It wasn’t the picnic we wanted, but everyone was really happy.",
  "examples": [
  {
  "s": "Where did they go on a picnic?",
@@ -596,7 +596,7 @@
  "p6": {
  "type": "open_cloze",
  "title": "Our class cooking day",
- "text": "Last Friday __(0)__ class went to a kitchen and we cooked pizzas. The teacher, Mr Rossi, gave us flour, water and salt. __(1)__ hands were very dirty! First, we made a ball with the dough. __(2)__ we put tomato sauce on top. I put lots of cheese on __(3)__ pizza. My friend Mia put mushrooms and onions __(4)__ hers. When the pizzas were ready, we ate them __(5)__ our classmates. They were delicious! I want to learn to cook more things at home.",
+ "text": "Last Friday __(0)__ class went to a kitchen and we cooked pizzas. The teacher, Mr Rossi, gave us flour, water and salt. __(1)__ hands were very dirty! First, we made a ball with the bread. __(2)__ we put tomato sauce on top. I put lots of cheese on __(3)__ pizza. My friend Mia put onions and onions __(4)__ hers. When the pizzas were ready, we ate them __(5)__ our classmates. They were delicious! I want to learn to cook more things at home.",
  "example": "my",
  "key": [
  "Our",
@@ -634,7 +634,7 @@
  "p2": {
  "type": "information_exchange",
  "topic": "Two cafés",
- "candidate_card": "CAFÉ: Yummy Corner – Open: 8 a.m. – Closes: ______ – Best cake: ______ – Drink of the day: ______ – Near the ______ – Friday: special ______ menu.",
+ "candidate_card": "CAFÉ: Yummy Corner – Open: 8 a.m. – Closes: ______ – Best cake: ______ – Drink of the day: ______ – Near the ______ – Friday: special ______ food.",
  "candidate_questions": [
  "What is the name of your café?",
  "When does it open?",

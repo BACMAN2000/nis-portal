@@ -27,8 +27,8 @@
     },
     "p2": {
       "type": "note_taking",
-      "heading": "Swimming club",
-      "example": {"q": "Day of the swimming club:", "a": "Tuesday"},
+      "heading": "Swimming lessons",
+      "example": {"q": "Day of the swimming lessons:", "a": "Tuesday"},
       "items": [
         {"q": "Teacher's name: Mr …", "a": "Best"},
         {"q": "Class starts at:", "a": "4.30"},
@@ -94,7 +94,7 @@
         {"def": "You wear this on your head when you ride a bike, so you are safe.", "word": "a helmet"},
         {"def": "This animal flies at night and sleeps in the day.", "word": "a bat"},
         {"def": "You hold this in your hand to hit the ball in a game.", "word": "a tennis racket"},
-        {"def": "You use this to dry your body after swimming.", "word": "a towel"},
+        {"def": "You take this to dry your body after swimming.", "word": "a towel"},
         {"def": "People go to this big place to do lots of different sports.", "word": "a sports centre"}
       ]
     },
@@ -107,24 +107,24 @@
         {"a": "How old are you?", "options": ["I'm fine, thanks.", "I'm nine.", "I'm at school."], "key": "B"},
         {"a": "Have you got any football boots?", "options": ["No, I haven't.", "No, I didn't.", "No, they aren't."], "key": "A"},
         {"a": "We practise on Wednesdays at four o'clock.", "options": ["That's all right. I can come.", "That's mine.", "That's a good ball."], "key": "A"},
-        {"a": "Which team do you like best?", "options": ["I like it better.", "The Blue Tigers!", "I don't like teams."], "key": "B"},
+        {"a": "Which team do you like best?", "options": ["I like it better.", "The Blue Tigers!", "I don't like ball games."], "key": "B"},
         {"a": "Can your mum bring you to the sports centre?", "options": ["Yes, she does.", "Yes, she can.", "Yes, she is."], "key": "B"},
         {"a": "See you on Wednesday, then!", "options": ["Great. Bye!", "Yes, I saw you.", "Wednesday is a day."], "key": "A"}
       ]
     },
     "p3": {
       "type": "gapped_text_title",
-      "words": ["hospital", "helmet", "slowly", "fell", "afraid", "careful", "race", "brave", "tired"],
-      "text": "Last week, Peter and his friends had a bike __(0)__ in the park. Peter wanted to win. He didn't put on his __(1)__ because he was in a hurry. He rode very quickly, but near the lake he __(2)__ off his bike and hurt his leg. Peter's dad took him to the __(3)__. The doctor looked at his leg and said, 'You must ride more __(4)__ and always wear your helmet.' Peter didn't cry. 'You are very __(5)__,' the doctor said. Now Peter always wears his helmet, and he never rides quickly near the lake!",
-      "example": "race",
+      "words": ["hospital", "helmet", "slowly", "fell", "afraid", "careful", "ride", "brave", "tired"],
+      "text": "Last week, Peter and his friends went for a bike __(0)__ in the park. Peter wanted to be first. He didn't put on his __(1)__ because he wanted to go quickly. He rode very quickly, but near the lake he __(2)__ off his bike and hurt his leg. Peter's dad took him to the __(3)__. The doctor looked at his leg and said, 'You must ride more __(4)__ and always wear your helmet.' Peter didn't cry. 'You are very __(5)__,' the doctor said. Now Peter always wears his helmet, and he never rides quickly near the lake!",
+      "example": "ride",
       "key": ["helmet", "fell", "hospital", "slowly", "brave"],
-      "title_choices": ["Peter's new bike", "The bike race", "A day at the lake"],
+      "title_choices": ["Peter's new bike", "The bike ride", "A day at the lake"],
       "title_key": "B"
     },
     "p4": {
       "type": "mc_cloze",
       "title": "Whales",
-      "text": "Whales are the biggest animals __(0)__ the world. They live in the sea, but they are not fish. A whale __(1)__ to come up to the top of the water to breathe. Baby whales drink milk __(2)__ their mothers, like other baby animals. Whales can swim __(3)__ long way. Some whales travel thousands of kilometres every year to find hot water. Whales 'sing' to talk to __(4)__ other. People __(5)__ go out in boats to watch whales jump and play.",
+      "text": "Whales are the biggest animals __(0)__ the world. They live in the sea, but they are not fish. A whale __(1)__ to come up to the top of the water. Baby whales drink milk __(2)__ their mothers, like all baby animals. Whales can swim __(3)__ long time. Some whales travel every year to find hot water. Whales 'sing' to talk to __(4)__ friends. People __(5)__ go out in boats to watch whales jump and play.",
       "example": {"options": ["in", "at", "on"], "key": "A"},
       "items": [
         {"options": ["have", "has", "having"], "key": "B"},
@@ -136,16 +136,16 @@
     },
     "p5": {
       "type": "story_completion",
-      "title": "The swimming competition",
+      "title": "The swimming day",
       "image": "R5",
       "parts": [
-        {"text": "Jim loved swimming. Every Saturday he went to the sports centre with his older sister, Lucy, who was a very good swimmer. One day, the swimming teacher, Mrs Hill, said, 'There is a competition next Saturday. Would you like to swim in it, Jim?' Jim was afraid, but Lucy said, 'You can do it!'",
+        {"text": "Jim loved swimming. Every Saturday he went to the sports centre with his older sister, Lucy, who was a very good swimmer. One day, the swimming teacher, Mrs Hill, said, 'There is a swimming day next Saturday. Would you like to swim in it, Jim?' Jim was afraid, but Lucy said, 'You can do it!'",
          "examples": [{"s": "Jim went to the sports centre ___.", "a": "every Saturday"}, {"s": "Jim's sister, Lucy, was a very good ___.", "a": "swimmer"}],
-         "items": [{"s": "The swimming teacher was called ___.", "a": ["Mrs Hill", "Hill"]}, {"s": "The competition was on the next ___.", "a": ["Saturday"]}]},
-        {"text": "All week, Jim practised in the pool. Lucy helped him. 'Kick your legs quicker,' she said. On Saturday, lots of parents came to watch. Jim's mum and dad sat at the front. Jim was in the race with five other children.",
-         "items": [{"s": "Lucy told Jim to kick his ___ quicker.", "a": ["legs"]}, {"s": "Jim's parents sat ___ to watch.", "a": ["at the front", "front"]}, {"s": "There were ___ children in Jim's race.", "a": ["six", "6"]}]},
-        {"text": "The race started. Jim swam as quickly as he could. He didn't win, but he came third and got a small cup. 'I'm so happy,' Jim said. 'Next year I want to win!' Lucy laughed and gave him a big hug.",
-         "items": [{"s": "In the race, Jim came ___.", "a": ["third", "3rd"]}, {"s": "Jim got a small ___.", "a": ["cup"]}]}
+         "items": [{"s": "The swimming teacher was called ___.", "a": ["Mrs Hill", "Hill"]}, {"s": "The swimming day was on the next ___.", "a": ["Saturday"]}]},
+        {"text": "All week, Jim practised in the pool. Lucy helped him. 'Kick your legs quicker,' she said. On Saturday, lots of parents came to watch. Jim's mum and dad sat at the front. Jim was in the water with five more children.",
+         "items": [{"s": "Lucy told Jim to kick his ___ quicker.", "a": ["legs"]}, {"s": "Jim's parents sat ___ to watch.", "a": ["at the front", "front"]}, {"s": "There were ___ children with Jim.", "a": ["six", "6"]}]},
+        {"text": "The swimming started. Jim swam very quickly. He wasn't first, but he came third and got a small cup. 'I'm so happy,' Jim said. 'Next year I want to be first!' Lucy laughed and gave him a big smile.",
+         "items": [{"s": "In the swimming, Jim came ___.", "a": ["third", "3rd"]}, {"s": "Jim got a small ___.", "a": ["cup"]}]}
       ]
     },
     "p6": {
@@ -180,14 +180,14 @@
     },
     "p2": {
       "type": "picture_sequence",
-      "title": "Daisy's football match",
+      "title": "Daisy's football day",
       "image": "S2",
-      "examiner_open": "These pictures show a story. It's called 'Daisy's football match'. Look at the pictures first. Daisy is at the sports centre with her team. It's the day of the big match and she is putting on her boots. Now you tell the story.",
+      "examiner_open": "These pictures show a story. It's called 'Daisy's football day'. Look at the pictures first. Daisy is at the sports centre with her friends. It's the day of the big game and she is putting on her boots. Now you tell the story.",
       "frames": [
-        "Daisy is at the sports centre with her team. It's the day of the big match and she is putting on her football boots.",
-        "The match starts. Daisy runs quickly, but she falls down and hurts her leg. Her friends stop and help her.",
+        "Daisy is at the sports centre with her friends. It's the day of the big game and she is putting on her football boots.",
+        "The game starts. Daisy runs quickly, but she falls down and hurts her leg. Her friends stop and help her.",
         "The teacher puts a bandage on her leg. Daisy wants to play again, so she goes back to the field.",
-        "Daisy kicks the ball and scores a goal! Her team wins and everyone is very happy."
+        "Daisy kicks the ball and gets a goal! Her friends are very happy."
       ]
     },
     "p3": {
@@ -252,7 +252,7 @@
     "p2": [
       ["R", "Part Two. Listen and look. There is one example."],
       ["pause", 3],
-      ["M", "Hello. Do you want to come to the swimming club?"],
+      ["M", "Hello. Do you want to come to the swimming lessons?"],
       ["Fch", "Yes, please! Which day is it?"],
       ["M", "It's on Tuesdays."],
       ["Fch", "Tuesday. Great, I can come!"],
@@ -267,9 +267,9 @@
       ["pause", 8],
       ["R", "Two."],
       ["Fch", "What time does the class start?"],
-      ["M", "At half past four. Four thirty."],
-      ["Fch", "Four thirty. And when does it finish?"],
-      ["M", "At half past five."],
+      ["M", "At four thirty."],
+      ["Fch", "Four thirty. And when does it end?"],
+      ["M", "At five thirty."],
       ["pause", 8],
       ["R", "Three."],
       ["Fch", "How many children are in the class?"],
@@ -294,12 +294,12 @@
       ["R", "Jack is telling his grandmother which sport each of his friends does on Saturdays. Which sport does each friend do?"],
       ["pause", 3],
       ["F", "Jack, what do your friends do on Saturdays?"],
-      ["Mch", "Well, Sally goes to the pool. She swims for an hour every Saturday morning. She's really quickly!"],
+      ["Mch", "Well, Sally goes to the pool. She swims every Saturday morning. She's really quickly!"],
       ["pause", 3],
       ["R", "Can you see the letter A? Now you listen and write a letter in each box."],
       ["pause", 3],
       ["F", "And Tom? Does he play football?"],
-      ["Mch", "No, Grandma. Tom is very tall, so he plays basketball. His team is called the Red Stars."],
+      ["Mch", "No, Grandma. Tom is very tall, so he plays basketball. He plays with the Red Stars."],
       ["F", "Basketball. That's a good sport for a tall boy!"],
       ["pause", 3],
       ["Mch", "Lily doesn't go to the sports centre. She goes to a farm."],
@@ -313,10 +313,10 @@
       ["pause", 3],
       ["Mch", "Anna does something different. She goes skating!"],
       ["F", "On the ice?"],
-      ["Mch", "Yes! She's got new white skates. She wants to skate in a competition one day."],
+      ["Mch", "Yes! She's got new white skates. She wants to skate in a big show one day."],
       ["pause", 3],
       ["F", "And your friend Ben?"],
-      ["Mch", "Ben plays badminton with his sister. It's like tennis, but the ball has got feathers and it's very light."],
+      ["Mch", "Ben plays badminton with his sister. It's like tennis, but the ball is very small."],
       ["F", "Badminton! I played that when I was a girl."],
       ["pause", 3],
       ["R", "Now listen to Part Three again."]
@@ -328,7 +328,7 @@
       ["M", "Are you going swimming this afternoon, Mary?"],
       ["Fch", "No, Dad. The pool is closed today. I'm going skating with Anna."],
       ["M", "Not basketball?"],
-      ["Fch", "No, that's tomorrow."],
+      ["Fch", "No, that's on Sunday."],
       ["pause", 3],
       ["R", "Can you see the tick? Now you listen and tick the box."],
       ["pause", 3],
@@ -353,7 +353,7 @@
       ["R", "Four. What is the weather like at the beach?"],
       ["Fch", "Hi, Grandma! We're at the beach."],
       ["F", "Is it sunny there?"],
-      ["Fch", "No, it isn't. It's very windy. My hat flew away! But it isn't raining."],
+      ["Fch", "No, it isn't. It's very windy. My hat flew! But it isn't raining."],
       ["F", "Oh dear! Hold on to your things."],
       ["pause", 3],
       ["R", "Five. Which animal did Sam see at the farm?"],

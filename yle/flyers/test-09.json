@@ -231,7 +231,7 @@
  "options": [
  "a long pink dress",
  "a crown and a long dress",
- "a witch’s costume"
+ "a monster costume"
  ],
  "key": "B",
  "image": "P4Q5"
@@ -289,7 +289,7 @@
  "a hat",
  "a swimsuit",
  "a scarf",
- "earrings"
+ "a necklace"
  ],
  "example": {
  "def": "",
@@ -306,7 +306,7 @@
  },
  {
  "def": "Small things that girls (and some boys) wear on their ears.",
- "word": "earrings"
+ "word": "a necklace"
  },
  {
  "def": "A kind of warm top you put over your head when it is cold.",
@@ -317,11 +317,11 @@
  "word": "a scarf"
  },
  {
- "def": "A piece of clothes for girls or women – it goes around the waist.",
+ "def": "A piece of clothes for girls or women – it goes around your body.",
  "word": "a skirt"
  },
  {
- "def": "You wear this to keep your trousers up around your waist.",
+ "def": "You wear this to keep your trousers up around your body.",
  "word": "a belt"
  },
  {
@@ -343,9 +343,9 @@
  "speakerA": "Kate",
  "speakerB": "Lily",
  "example": {
- "a": "Lily, can you help me choose an dress for the party?",
+ "a": "Lily, can you help me choose a dress for the party?",
  "key": "G",
- "text": "Of course! Is it a smart party or a casual one?"
+ "text": "Of course! Is it a special party or an easy one?"
  },
  "options": [
  {
@@ -362,11 +362,11 @@
  },
  {
  "letter": "D",
- "text": "The pink dress is nicer – it’s more elegant."
+ "text": "The pink dress is nicer – it's more beautiful."
  },
  {
  "letter": "E",
- "text": "Really! Your black shoes with small heels."
+ "text": "Really! Your black shoes for parties."
  },
  {
  "letter": "F",
@@ -374,7 +374,7 @@
  },
  {
  "letter": "G",
- "text": "Of course! Is it a smart party or a casual one?"
+ "text": "Of course! Is it a special party or an easy one?"
  },
  {
  "letter": "H",
@@ -383,7 +383,7 @@
  ],
  "items": [
  {
- "a": "It’s quite smart. My pink dress or my blue skirt?",
+ "a": "It’s quite special. My pink dress or my blue skirt?",
  "key": "D"
  },
  {
@@ -395,7 +395,7 @@
  "key": "C"
  },
  {
- "a": "Yes! And should I wear my long earrings?",
+ "a": "Yes! And should I wear my long a necklace?",
  "key": "F"
  },
  {
@@ -416,7 +416,7 @@
  "mum",
  "clothes"
  ],
- "text": "Last Saturday, I went to the new shopping centre with my __(1)__. We went to buy __(2)__ for school. First, we went to my favourite __(3)__, and I __(4)__ on many jumpers. In the end, my mum __(5)__ me a blue one. We also bought new shoes because my feet have grown a lot!",
+ "text": "Last Saturday, I went to the new shopping centre with my __(1)__. We went to buy __(2)__ for school. First, we went to my favourite __(3)__, and I __(4)__ on many dresses. In the end, my mum __(5)__ me a blue one. We also bought new shoes because my feet are bigger now!",
  "example": "",
  "title_choices": [
  [
@@ -541,7 +541,7 @@
  "title": "The clothes show",
  "parts": [
  {
- "text": "My school organised a clothes show last Friday evening. The show was in the big school hall, and more than 200 people came to watch. The money from the tickets was for a new sports area in the playground. I was very worried because I had to walk in front of everyone. I wore a beautiful green dress and golden shoes. My friend Lola wore a red skirt, a white shirt and a small hat. My classmate Felix was the funniest – he wore a huge purple jacket, very big sunglasses and trainers with lights! Everyone laughed and clapped a lot. Our maths teacher, Mr Grant, was the presenter. He told jokes between each dress. At the end, my sister took a photo of all the group. I will keep it forever. We got 450 books for the school – amazing!",
+ "text": "My school had a clothes show last Friday evening. The show was in the big school hall, and more than 200 people came to watch. The money from the tickets was for a new sports ground in the playground. I was very worried because I had to walk in front of everyone. I wore a beautiful green dress and gold shoes. My friend Lola wore a red skirt, a white shirt and a small hat. My classmate Felix was the funniest – he wore a huge purple jacket, very big sunglasses and trainers with lights! Everyone laughed and clapped a lot. Our maths teacher, Mr Grant, was the teacher. He told funny stories between each dress. At the end, my sister took a photo of all the group. I will keep it always. We got 450 books for the school – amazing!",
  "examples": [
  {
  "s": "Where was the clothes show?",
@@ -555,12 +555,12 @@
  },
  {
  "s": "What was the money for?",
- "a": "a new sports area"
+ "a": "a new sports ground"
  },
  {
  "s": "What colour were the person's shoes?",
  "a": [
- "golden",
+ "gold",
  "gold"
  ]
  },
@@ -573,11 +573,11 @@
  "a": "trainers with lights"
  },
  {
- "s": "Who was the presenter?",
+ "s": "Who was the teacher?",
  "a": "Mr Grant"
  },
  {
- "s": "How much money did they raise?",
+ "s": "How much money did they get?",
  "a": "£450"
  }
  ]
@@ -587,7 +587,7 @@
  "p6": {
  "type": "open_cloze",
  "title": "The circus dress",
- "text": "Last summer, my cousin Alex and __(0)__ went to a circus show. When we arrived, a clown __(1)__ colourful clothes gave us a programme. He was wearing a big red nose and green shoes __(2)__ were enormous! In the show, we saw dancers __(3)__ beautiful silver dresses and acrobats in tight blue suits. My favourite part was __(4)__ acrobat family called the Flying Stars. They all wore matching outfits with stars. The dad __(5)__ caught his daughter in the air. We clapped for five minutes. On the way home, I wanted to be an acrobat!",
+ "text": "Last summer, my cousin Alex and __(0)__ went to a circus show. When we arrived, a clown __(1)__ colourful clothes gave us a programme. He was wearing a big red nose and green shoes __(2)__ were enormous! In the show, we saw people dancing __(3)__ beautiful silver dresses and circus people in blue clothes. My favourite part was __(4)__ circus family called the Flying Stars. They all wore the same dresses with stars. The dad __(5)__ caught his daughter in the air. We clapped for five minutes. On the way home, I wanted to be a circus person!",
  "example": "I",
  "key": [
  "with (or in)",
@@ -606,7 +606,7 @@
  "image": "P7",
  "pictures": [
  "A girl is running fast down a garden path.",
- "One of her shoes falls off and she doesn’t notice.",
+ "One of her shoes falls off and she doesn't see it.",
  "Her dad finds the shoe later and the girl laughs."
  ],
  "prompt": "Look at the three pictures and write the story. Write 20 or more words."
@@ -616,8 +616,8 @@
  "p1": {
  "type": "find_differences_statements",
  "image": "S1",
- "examiner_scene": "A shop: a girl trying on a hat, a boy with a big backpack, a cashier with glasses, three dresses on a rack, a blue mirror, a window with rain outside.",
- "candidate_scene": "A shop: a girl trying on a hat, a boy with a SMALL backpack, a cashier with glasses, FIVE dresses on a rack, a GREEN mirror, a window with rain outside.",
+ "examiner_scene": "A shop: a girl trying on a hat, a boy with a big backpack, a woman with glasses, three dresses on a shelf, a blue mirror, a window with rain outside.",
+ "candidate_scene": "A shop: a girl trying on a hat, a boy with a SMALL backpack, a woman with glasses, FIVE dresses on a shelf, a GREEN mirror, a window with rain outside.",
  "differences": [
  "In my picture the bag is big, but in your picture it's small.",
  "In my picture there are three dresses, but in your picture there are five.",
@@ -628,15 +628,15 @@
  "p2": {
  "type": "information_exchange",
  "topic": "Two clothes shops",
- "candidate_card": "SHOP: Star Fashion – Location: ______ – Most popular item: ______ – Prices: from ______ – Special day: ______ – Staff uniform: ______.",
+ "candidate_card": "SHOP: Star Fashion – Location: ______ – Most popular thing: ______ – Prices: from ______ – Special day: ______ – Staff uniform: ______.",
  "candidate_questions": [
  "What’s the shop’s name?",
  "Where is it?",
  "What can you buy there?",
  "What is the cheapest thing?",
- "Is there a sale?"
+ "Is it cheap?"
  ],
- "examiner_card": "SHOP: Happy Wear – 42 Queen Street – T-shirts, jeans, dresses – cheapest T-shirt: 8 – sale on Saturdays – big sign says 50%.",
+ "examiner_card": "SHOP: Happy Wear – 42 Queen Street – T-shirts, jeans, dresses – cheapest T-shirt: 8 – cheap day on Saturdays – big sign says 50%.",
  "examiner_questions": [
  "What’s the name of your shop?",
  "Where is Star Fashion?",
@@ -673,7 +673,7 @@
  "q": "Do you prefer warm clothes or cool clothes? Why?"
  },
  {
- "q": "Tell me about a new item of clothes you got."
+ "q": "Tell me about a new thing of clothes you got."
  }
  ]
  }
@@ -832,7 +832,7 @@
  ],
  [
  "R",
- "A man is ordering from an online shop."
+ "A man is buying from an online shop."
  ],
  [
  "pause",
@@ -920,7 +920,7 @@
  ],
  [
  "M",
- "We can deliver on Wednesday."
+ "We can bring it on Wednesday."
  ],
  [
  "pause",
@@ -940,7 +940,7 @@
  ],
  [
  "R",
- "A man is ordering from an online shop."
+ "A man is buying from an online shop."
  ],
  [
  "pause",
@@ -1028,7 +1028,7 @@
  ],
  [
  "M",
- "We can deliver on Wednesday."
+ "We can bring it on Wednesday."
  ],
  [
  "pause",

@@ -285,11 +285,11 @@
  "a kangaroo",
  "a spider",
  "a frog",
- "a peacock",
+ "a parrot",
  "a shark",
  "a bat",
  "a panda",
- "a squirrel",
+ "a rabbit",
  "a giraffe",
  "a crocodile"
  ],
@@ -307,23 +307,23 @@
  "word": "a shark"
  },
  {
- "def": "This animal has eight legs and makes webs to catch flies.",
+ "def": "This animal has eight legs and makes homes to catch flies.",
  "word": "a spider"
  },
  {
- "def": "It is a bird with colourful wings that can copy words.",
+ "def": "It is a bird with colourful wings that can say words.",
  "word": "a parrot"
  },
  {
  "def": "This small animal has red fur and a big tail and eats biscuits.",
- "word": "a squirrel"
+ "word": "a rabbit"
  },
  {
  "def": "This baby animal lives inside its mother’s pocket.",
  "word": "a kangaroo"
  },
  {
- "def": "This animal is black and white and eats bamboo in China.",
+ "def": "This animal is black and white and eats plants in China.",
  "word": "a panda"
  },
  {
@@ -446,7 +446,7 @@
  "p4": {
  "type": "mc_cloze",
  "title": "All about dolphins",
- "text": "Dolphins are very clever animals. They __(1)__ in the sea and they can swim very fast. Dolphins are not fish. They are mammals, like people and dogs. Baby dolphins stay with __(2)__ mother __(3)__ two or three years. Dolphins eat fish and other small sea animals. They can make different sounds to __(4)__ to other dolphins. Some dolphins live in families of ten animals __(5)__ more. People __(6)__ study dolphins say they are __(7)__ friendly and like __(8)__ games. In many parts of the world, you can __(9)__ dolphins swimming __(10)__ boats.",
+ "text": "Dolphins are very clever animals. They __(1)__ in the sea and they can swim very fast. Dolphins are not fish. They are like people and dogs. Baby dolphins stay with __(2)__ mother __(3)__ two or three years. Dolphins eat fish and other small sea animals. They can make different sounds to __(4)__ to other dolphins. Some dolphins live in families of ten animals __(5)__ more. People __(6)__ study dolphins say they are __(7)__ friendly and like __(8)__ games. In many parts of the world, you can __(9)__ dolphins swimming __(10)__ boats.",
  "example": {
  "options": [
  "",
@@ -543,7 +543,7 @@
  "title": "The lost puppy",
  "parts": [
  {
- "text": "On Saturday morning, Tom and his sister Mia were playing football in the park. After the game, they sat down under a tree to drink some water. Suddenly, they heard a small noise behind the tree. It was a tiny brown puppy. The puppy was hungry and very thirsty. Tom gave it some of his water and Mia gave it a piece of her sandwich. The puppy had a red collar but there was no phone number on it. \"We can’t leave it here,\" said Mia. \"Let’s take it home and ask Mum what to do.\" They walked home carefully. Mum was in the kitchen. When she saw the puppy, she smiled. \"It’s the same puppy that Mrs Green was looking for yesterday,\" she said. Tom and Mia went to Mrs Green’s house. Mrs Green was very happy and gave the children some chocolate cake. The puppy’s name was Biscuit.",
+ "text": "On Saturday morning, Tom and his sister Mia were playing football in the park. After the game, they sat down under a tree to drink some water. Suddenly, they heard a small noise behind the tree. It was a very small brown puppy. The puppy was hungry and very thirsty. Tom gave it some of his water and Mia gave it a piece of her sandwich. The puppy had a red ring but there was no phone number on it. \"We can’t leave it here,\" said Mia. \"Let’s take it home and ask Mum what to do.\" They walked home carefully. Mum was in the kitchen. When she saw the puppy, she smiled. \"It’s the same puppy that Mrs Green was looking for yesterday,\" she said. Tom and Mia went to Mrs Green’s house. Mrs Green was very happy and gave the children some chocolate cake. The puppy’s name was Biscuit.",
  "examples": [
  {
  "s": "Where were Tom and Mia playing?",
@@ -574,7 +574,7 @@
  ]
  },
  {
- "s": "Who did Mum think the puppy belonged to?",
+ "s": "Who did Mum think the puppy was?",
  "a": "Mrs Green"
  },
  {
@@ -592,7 +592,7 @@
  "p6": {
  "type": "open_cloze",
  "title": "My pet parrot",
- "text": "My name is Leo and I have a beautiful pet parrot called Kiko. Kiko has green and yellow feathers __(0)__ a long tail. He lives in a big cage in __(1)__ bedroom. Kiko is very clever. He __(2)__ say \"hello\" and \"goodbye\" in English and in Spanish! Every day I give him fruit, above all apples, __(3)__ are his favourite. In the afternoon, I open the door of his cage and __(4)__ flies around the room. Sometimes he sits __(5)__ my shoulder when I am reading. I love Kiko very much because he makes my family laugh every day.",
+ "text": "My name is Leo and I have a beautiful pet parrot called Kiko. Kiko has green and yellow wings __(0)__ a long tail. He lives in a big cage in __(1)__ bedroom. Kiko is very clever. He __(2)__ say \"hello\" and \"goodbye\" in English and in Spanish! Every day I give him fruit, above all apples, __(3)__ are his favourite. In the afternoon, I open the door of his cage and __(4)__ flies around the room. Sometimes he sits __(5)__ my shoulder when I am reading. I love Kiko very much because he makes my family laugh every day.",
  "example": "and",
  "key": [
  "my",
@@ -638,7 +638,7 @@
  "Can you buy food for rabbits?",
  "What time does it open?"
  ],
- "examiner_card": "PET SHOP: Furry Friends – Address: 28 Market Road – Open: 10 a.m. to 7 p.m. – Sells: rabbits, guinea pigs, birds and fish – Most popular animal: hamster – Phone: 01 234 5678.",
+ "examiner_card": "PET SHOP: Furry Friends – Address: 28 Market Road – Open: 10 a.m. to 7 p.m. – Sells: rabbits, birds and fish – Most popular animal: rabbit – Phone: 01 234 5678.",
  "examiner_questions": [
  "What’s the name of your pet shop?",
  "What’s the address?",

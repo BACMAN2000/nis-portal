@@ -280,10 +280,10 @@
  "a goal",
  "a swimming pool",
  "a skateboard",
- "a tennis court",
+ "a tennis ground",
  "a racket",
  "a bicycle",
- "a hockey stick",
+ "a hockey bat",
  "a whistle",
  "a gym",
  "a prize",
@@ -310,11 +310,11 @@
  "word": "a prize"
  },
  {
- "def": "A special place with machines where people do exercise.",
+ "def": "A special place with machines where people do sport.",
  "word": "a gym"
  },
  {
- "def": "Teachers and referees use this to make a sound.",
+ "def": "Teachers use this to make a sound.",
  "word": "a whistle"
  },
  {
@@ -326,7 +326,7 @@
  "word": "trainers"
  },
  {
- "def": "A long piece of string you can jump with.",
+ "def": "A long thing you can jump with.",
  "word": "a rope"
  },
  {
@@ -335,7 +335,7 @@
  },
  {
  "def": "This is a place to play tennis or basketball.",
- "word": "a tennis court"
+ "word": "a tennis ground"
  }
  ]
  },
@@ -355,7 +355,7 @@
  },
  {
  "letter": "B",
- "text": "Perfect! I love practising shooting."
+ "text": "Perfect! I love practising football."
  },
  {
  "letter": "C",
@@ -367,7 +367,7 @@
  },
  {
  "letter": "E",
- "text": "No, I prefer playing in attack."
+ "text": "No, I prefer playing in front."
  },
  {
  "letter": "F",
@@ -396,7 +396,7 @@
  "key": "G"
  },
  {
- "a": "Nice choice. Have you seen him on TV?",
+ "a": "Nice idea. Have you seen him on TV?",
  "key": "C"
  },
  {
@@ -417,7 +417,7 @@
  "sports",
  "school"
  ],
- "text": "Last weekend, my __(1)__ had a football match against another school. The morning was very __(2)__ but we ran a lot, so soon we felt warm. I __(3)__ for 60 minutes and I scored two __(4)__! Our __(5)__ came to watch us with their families. When we won, everyone was very happy and we took a team photo.",
+ "text": "Last weekend, my __(1)__ had a football match with another school. The morning was very __(2)__ but we ran a lot, so soon we felt warm. I __(3)__ for 60 minutes and I scored two __(4)__! Our __(5)__ came to watch us with their families. When we won, everyone was very happy and we took a team photo.",
  "example": "",
  "title_choices": [
  [
@@ -445,7 +445,7 @@
  "p4": {
  "type": "mc_cloze",
  "title": "Why we do sport",
- "text": "Sport is very important for our bodies and our minds. When we play sport, we breathe lots __(1)__ air and we move our __(2)__. It __(3)__ us strong and well. Sport can __(4)__ be fun. Many children __(5)__ different sports at school – football, basketball, swimming __(6)__ tennis. Other people prefer __(7)__ types of sport, like yoga or sport. Sport also teaches us __(8)__ work with other people and not give __(9)__. After sport, many people __(10)__ very happy and tired at the same time.",
+ "text": "Sport is very important for our bodies and our minds. When we play sport, we take lots __(1)__ air and we move our __(2)__. It __(3)__ us strong and well. Sport can __(4)__ be fun. Many children __(5)__ different sports at school – football, basketball, swimming __(6)__ tennis. Other people prefer __(7)__ kinds of sport, like yoga or sport. Sport also teaches us __(8)__ work with other people and not give __(9)__. After sport, many people __(10)__ very happy and tired at the same time.",
  "example": {
  "options": [
  "",
@@ -466,8 +466,8 @@
  {
  "options": [
  "hair",
- "bones",
- "muscles"
+ "body",
+ "body"
  ],
  "key": "C"
  },
@@ -542,7 +542,7 @@
  "title": "The painting competition",
  "parts": [
  {
- "text": "Every summer, my town has a big painting competition in the park. This year, my best friend Nico and I decided to try it for the first time. We walked to the park at nine o’clock with our pencils, paper and colours. There were more than 50 children in the competition! Each child had two hours to paint. I painted a beautiful king flying over the mountains. Nico painted a football player scoring a goal. It was difficult because the sun was strong and we got very hot. In the end, Nico won a silver prize for his picture. I didn’t win a prize, but the judges said my king was amazing. We ate an ice cream each at the party. Next year, I will paint a castle with a princess and a king!",
+ "text": "Every summer, my town has a big painting competition in the park. This year, my best friend Nico and I decided to try it for the first time. We walked to the park at nine o’clock with our pencils, paper and colours. There were more than 50 children in the competition! Each child had two hours to paint. I painted a beautiful king flying over the mountains. Nico painted a football player scoring a goal. It was difficult because the sun was strong and we got very hot. In the end, Nico won a silver prize for his picture. I didn’t win a prize, but the teachers said my king was amazing. We ate an ice cream each at the party. Next year, I will paint a castle with a princess and a king!",
  "examples": [
  {
  "s": "Where is the competition?",
@@ -585,7 +585,7 @@
  "p6": {
  "type": "open_cloze",
  "title": "My brother’s hobby",
- "text": "My brother Leo is twelve years old and his favourite hobby __(0)__ playing the guitar. He started __(1)__ two years ago with a teacher called Mrs Diaz. Leo practises every day in __(2)__ bedroom. At first his music was not very good, but now it is really beautiful! Last month, he played __(3)__ a small concert in the library. Our whole family went, and many of __(4)__ cousins came too. Leo was a little worried but he played very well. After the concert, everybody clapped and __(5)__ a lot of photos. I want to learn to play an instrument too – maybe the piano.",
+ "text": "My brother Leo is twelve years old and his favourite hobby __(0)__ playing the guitar. He started __(1)__ two years ago with a teacher called Mrs Diaz. Leo practises every day in __(2)__ bedroom. At first his music was not very good, but now it is really beautiful! Last month, he played __(3)__ a small concert in the library. All our family went, and many of __(4)__ cousins came too. Leo was a little worried but he played very well. After the concert, everyone clapped and __(5)__ a lot of photos. I want to learn to play an instrument too – perhaps the piano.",
  "example": "is",
  "key": [
  "learning",
@@ -631,7 +631,7 @@
  "How many people train there?",
  "Is there a café?"
  ],
- "examiner_card": "SPORTS CLUB: Lion Sports Centre – 12 High Street – swimming, tennis, judo, football – 60 members – yes, café with sandwiches.",
+ "examiner_card": "SPORTS CLUB: Lion Sports Centre – 12 High Street – swimming, tennis, golf, football – 60 members – yes, café with sandwiches.",
  "examiner_questions": [
  "What’s the club called?",
  "Where is Action Kids?",
@@ -648,7 +648,7 @@
  "frames": [
  "Children are at the start of a running race at school.",
  "A girl is running very fast and is in first place.",
- "She crosses the finish line and everyone cheers.",
+ "She crosses the finish line and everyone claps.",
  "The head teacher gives her a gold prize and she smiles."
  ]
  },
@@ -665,7 +665,7 @@
  "q": "Do you prefer team sports or playing alone? Why?"
  },
  {
- "q": "Tell me about a game you played recently."
+ "q": "Tell me about a game you played last week."
  },
  {
  "q": "Do you watch sports on TV? Which ones?"
