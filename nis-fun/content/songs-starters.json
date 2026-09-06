@@ -1,0 +1,27 @@
+{
+ "_nivel": "starters",
+ "_nota": "Solo las unidades cuyo mp3 ya esta en el curso. Lo escribe tools/build_songs.py mirando el disco; no editar a mano.",
+ "unidades": {
+  "01": {
+   "chant": {
+    "titulo": "What Colour Is It?",
+    "letra": "[Leader]\nWhat colour is it? What colour is it?\n[Kids]\nRed! Red! The ball is red!\n\n[Leader]\nWhat colour is it? What colour is it?\n[Kids]\nYellow! Yellow! The kite is yellow!\n\n[Leader]\nWhat colour is it? What colour is it?\n[Kids]\nBlue! Blue! The train is blue!\n\n[Leader]\nWhat colour is it? What colour is it?\n[Kids]\nGreen! Green! The car is green!\n\n[All]\nRed ball, yellow kite, blue train, green car!\nIt's my toy box! It's my toy box!",
+    "archivo": "starters-01-chant.mp3"
+   },
+   "cancion": {
+    "titulo": "Pip's Toy Box",
+    "letra": "[Verse 1]\nOpen the box and look inside,\nthere's a red ball ready to hide.\nA yellow kite, a little blue train,\nlet's take them out and play again!\n\n[Chorus]\nIt's a ball! It's a kite!\nIt's a train! It's a car!\nWhat colour is it? What colour is it?\nTell me what you are!\n\n[Verse 2]\nHere's my teddy, soft and brown,\nhere's my doll in a yellow gown.\nGreen and red and blue and gold —\nmore than my two hands can hold!\n\n[Chorus]\nIt's a ball! It's a kite!\nIt's a train! It's a car!\nWhat colour is it? What colour is it?\nTell me what you are!\n\n[Bridge — soft]\nWho is hiding in the toy box?\nA little bird with an orange beak…\nPip! Pip! Hello, Pip!\n\n[Chorus]\nIt's a ball! It's a kite!\nIt's a train! It's a car!\nWhat colour is it? What colour is it?\nTell me what you are!",
+    "archivo": "starters-01-cancion.mp3"
+   },
+   "groove": "ukelele"
+  },
+  "02": {
+   "chant": {
+    "titulo": "Who Is This?",
+    "letra": "[Leader]\nWho is this? Who is this?\n[Kids]\nThis is my mother! This is my mother!\n\n[Leader]\nWho is this? Who is this?\n[Kids]\nThis is my father! This is my father!\n\n[Leader]\nWho is this? Who is this?\n[Kids]\nThis is my brother! This is my sister!\n\n[Leader]\nWho is this? Who is this?\n[Kids]\nGrandma! Grandpa! And the baby too!\n\n[All]\nMother, father, brother, sister,\ngrandma, grandpa — this is my family!",
+    "archivo": "starters-02-chant.mp3"
+   },
+   "groove": "vals"
+  }
+ }
+}
