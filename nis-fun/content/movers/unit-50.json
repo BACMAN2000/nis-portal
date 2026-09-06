@@ -82,7 +82,7 @@
   {
    "code": "B",
    "type": "exam_task",
-   "title": "The final review · Choose the correct answer.",
+   "title": "Quick check · The final review · Choose the correct answer.",
    "outputs": [
     "book",
     "digital",
@@ -178,7 +178,7 @@
   {
    "code": "D",
    "type": "exam_task",
-   "title": "Exam task · Choose the correct word.",
+   "title": "Quick check · Choose the correct word.",
    "outputs": [
     "book",
     "digital",

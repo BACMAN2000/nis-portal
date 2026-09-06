@@ -78,7 +78,7 @@
   {
    "code": "B",
    "type": "exam_task",
-   "title": "Guess the word from the clue.",
+   "title": "Quick check · Guess the word from the clue.",
    "outputs": [
     "book",
     "digital",
@@ -174,7 +174,7 @@
   {
    "code": "D",
    "type": "exam_task",
-   "title": "Exam task · Choose the correct word.",
+   "title": "Quick check · Choose the correct word.",
    "outputs": [
     "book",
     "digital",

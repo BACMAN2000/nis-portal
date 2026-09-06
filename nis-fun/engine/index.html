@@ -635,6 +635,11 @@ if(/\.github\.io$/i.test(location.hostname)){
     .vis-quien img{height:6.4rem}
     .vis-vineta .marco{height:9rem}
   }
+.puente{margin:14px 0 2px;display:flex;flex-direction:column;gap:4px;align-items:flex-start}
+.btn-puente{display:inline-block;background:#1e3a8a;color:#fff;text-decoration:none;font-weight:700;
+  border-radius:999px;padding:9px 18px;font-size:.95rem}
+.btn-puente:hover{filter:brightness(1.1)}
+.puente-nota{font-size:.8rem;color:#64748b}
 </style>
 </head>
 <body>
@@ -1360,7 +1365,7 @@ function pintaSelfCheck(el, digital){
                       'Je sais lire une définition et écrire le mot.'),
     match_words:    T('I can match words that go together.',
                       'Je sais associer les mots qui vont ensemble.'),
-    exam_task:      T('I can choose the right answer in an exam task.',
+    exam_task:      T('I can choose the right answer, and I know what the real exam task looks like.',
                       "Je sais choisir la bonne réponse dans un exercice d'examen."),
     colour_picture: T('I can listen and colour the picture.',
                       "Je sais écouter et colorier l'image."),
@@ -2678,8 +2683,30 @@ exam_task(act, el){
     s.className='score '+(ok===act.data.items.length?'good':'partial');
     if(ok===act.data.items.length) complete(act.code);
   };
+  /* Este ejercicio es una comprobacion rapida, no la tarea del examen: la tarea
+     de verdad —unir con lineas, colorear, escribir la historia— la pinta el motor
+     de los practice tests. Aqui va el enlace a esa misma parte, para que el nino
+     vea el formato que se va a encontrar. */
+  el.insertAdjacentHTML('beforeend', puenteExamen());
 }
 };
+
+/* El enlace a la parte del practice test que esta unidad dice entrenar. Solo
+   aparece donde el curso se sirve junto al portal: la copia suelta del repo
+   nis-fun no lleva yle-practice.html al lado, y HAY_YLE se queda en false. */
+let HAY_YLE = false;
+fetch('../../yle-practice.html', {method: 'HEAD'}).then(r => { HAY_YLE = r.ok; }).catch(() => {});
+function puenteExamen(){
+  if(!HAY_YLE) return '';
+  const ef = (UD && UD.exam_focus) || {};
+  const PAPERS = {'Listening':'listening', 'Reading & Writing':'rw', 'Speaking':'speaking'};
+  const paper = PAPERS[ef.paper];
+  if(!paper || !ef.part) return '';
+  const url = `../../yle-practice.html?level=${encodeURIComponent(LEVEL)}&paper=${paper}&part=${encodeURIComponent(ef.part)}`;
+  const nombre = `${ef.paper} ${T('Part','partie')} ${ef.part}`;
+  return `<p class="puente"><a class="btn-puente" href="${url}">▶ ${T('Try the real exam task:','Essaie la vraie tâche d’examen :')} ${nombre}</a>
+    <span class="puente-nota">${T('Same part, in a full practice test, with the official format and timing.','La même partie, dans un test complet, au format et au temps officiels.')}</span></p>`;
+}
 
 (UNIT ? unit() : (LEVEL ? hub() : levels())).catch(e=>{ app.textContent = T('Error loading content: ',"Erreur au chargement du contenu : ")+e.message; });
 </script>

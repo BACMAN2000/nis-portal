@@ -1,318 +1,1133 @@
 {
-  "level": "starters",
-  "number": 1,
-  "theme": "At the zoo",
-  "listening": {
-    "p1": {
-      "type": "draw_lines",
-      "image": "L1",
-      "scene": "A sunny day at the zoo. Six children are near the monkeys, the elephant and the big tree.",
-      "names": ["Sam", "Kim", "Alex", "Tom", "Lucy", "Anna", "Nick"],
-      "people": [
-        {"id": "A", "desc": "a girl with glasses drinking water"},
-        {"id": "B", "desc": "a boy in a blue T-shirt looking at the monkeys"},
-        {"id": "C", "desc": "a girl with long hair holding a green balloon"},
-        {"id": "D", "desc": "a boy with a camera taking a photo of the elephant"},
-        {"id": "E", "desc": "a girl in a yellow dress sitting under the tree"},
-        {"id": "F", "desc": "a small boy with a ball next to his mum"}
-      ],
-      "example": {"name": "Sam", "person": "A"},
-      "items": [
-        {"name": "Kim", "person": "C"},
-        {"name": "Alex", "person": "D"},
-        {"name": "Tom", "person": "B"},
-        {"name": "Lucy", "person": "E"},
-        {"name": "Nick", "person": "F"}
-      ]
+ "level": "starters",
+ "number": 1,
+ "theme": "At the zoo",
+ "listening": {
+  "p1": {
+   "type": "draw_lines",
+   "image": "L1",
+   "scene": "A sunny day at the zoo. Six children are near the monkeys, the elephant and the big tree.",
+   "names": [
+    "Sam",
+    "Kim",
+    "Alex",
+    "Tom",
+    "Lucy",
+    "Anna",
+    "Nick"
+   ],
+   "people": [
+    {
+     "id": "A",
+     "desc": "a girl with glasses drinking water"
     },
-    "p2": {
-      "type": "note_taking",
-      "heading": "The zoo trip",
-      "example": {"q": "What is the boy's name?", "a": "Dan"},
-      "items": [
-        {"q": "How old is Dan?", "a": "8"},
-        {"q": "What is the name of Dan's school?", "a": "Green"},
-        {"q": "How many children are on the trip?", "a": "15"},
-        {"q": "What is the name of Dan's teacher?", "a": "Mrs Hill"},
-        {"q": "What number is the bus?", "a": "12"}
-      ]
+    {
+     "id": "B",
+     "desc": "a boy in a blue T-shirt looking at the monkeys"
     },
-    "p3": {
-      "type": "mc_pictures",
-      "example": {"q": "What is Alex eating?", "pics": ["apple", "banana", "cake"], "options": ["an apple", "a banana", "a cake"], "key": "B"},
-      "items": [
-        {"q": "Which animal does Kim like?", "pics": ["giraffe", "elephant", "crocodile"], "options": ["the giraffe", "the elephant", "the crocodile"], "key": "A"},
-        {"q": "Where is Tom's bag?", "image": "L3Q2", "options": ["under the chair", "on the table", "in the car"], "key": "C"},
-        {"q": "What is Lucy drawing?", "pics": ["hippo", "snake", "bird"], "options": ["a hippo", "a snake", "a bird"], "key": "B"},
-        {"q": "How many monkeys can Nick see?", "pics": [{"word": "monkey", "n": 3}, {"word": "monkey", "n": 5}, {"word": "monkey", "n": 7}], "options": ["three", "five", "seven"], "key": "B"},
-        {"q": "What is Anna wearing?", "pics": ["hat", "jacket", "glasses"], "options": ["a hat", "a jacket", "glasses"], "key": "A"}
-      ]
+    {
+     "id": "C",
+     "desc": "a girl with long hair holding a green balloon"
     },
-    "p4": {
-      "type": "colour",
-      "image": "L4",
-      "object": "balloon",
-      "scene": "The zoo shop. There are seven balloons in the picture: on the shop, in the boy's hand, under the table, next to the door, on the tree, in the box and behind the bench.",
-      "example": {"where": "on the shop", "colour": "red"},
-      "items": [
-        {"where": "in the boy's hand", "colour": "green"},
-        {"where": "under the table", "colour": "blue"},
-        {"where": "next to the door", "colour": "yellow"},
-        {"where": "on the tree", "colour": "purple"},
-        {"where": "in the box", "colour": "orange"}
-      ]
+    {
+     "id": "D",
+     "desc": "a boy with a camera taking a photo of the elephant"
+    },
+    {
+     "id": "E",
+     "desc": "a girl in a yellow dress sitting under the tree"
+    },
+    {
+     "id": "F",
+     "desc": "a small boy with a ball next to his mum"
     }
-  },
-  "rw": {
-    "p1": {
-      "type": "tick_cross",
-      "example": {"word": "monkey", "sentence": "This is a monkey.", "key": true},
-      "items": [
-        {"word": "giraffe", "sentence": "This is a giraffe.", "key": true},
-        {"word": "hippo", "sentence": "This is a crocodile.", "key": false},
-        {"word": "snake", "sentence": "This is a snake.", "key": true},
-        {"word": "elephant", "sentence": "This is a zebra.", "key": false},
-        {"word": "frog", "sentence": "This is a fish.", "key": false}
-      ]
+   ],
+   "example": {
+    "name": "Sam",
+    "person": "A"
+   },
+   "items": [
+    {
+     "name": "Kim",
+     "person": "C"
     },
-    "p2": {
-      "type": "yes_no",
-      "image": "R2",
-      "scene": "At the zoo: a big elephant is eating a banana, two monkeys are in a tree, a small boy is sitting on a bench with an ice cream, a woman is taking a photo, and a green frog is on a rock next to the water.",
-      "example": {"s": "The elephant is eating a banana.", "key": "yes"},
-      "items": [
-        {"s": "There are three monkeys in the tree.", "key": "no"},
-        {"s": "The boy is sitting on a bench.", "key": "yes"},
-        {"s": "The boy is eating a cake.", "key": "no"},
-        {"s": "The woman has got a camera.", "key": "yes"},
-        {"s": "The frog is blue.", "key": "no"}
-      ]
+    {
+     "name": "Alex",
+     "person": "D"
     },
-    "p3": {
-      "type": "unscramble",
-      "example": {"word": "tiger", "letters": ["g", "t", "e", "r", "i"]},
-      "items": [
-        {"word": "monkey", "letters": ["k", "e", "y", "m", "o", "n"]},
-        {"word": "zebra", "letters": ["b", "r", "a", "z", "e"]},
-        {"word": "bird", "letters": ["r", "d", "b", "i"]},
-        {"word": "lizard", "letters": ["z", "a", "r", "d", "l", "i"]},
-        {"word": "mouse", "letters": ["u", "s", "e", "m", "o"]}
-      ]
+    {
+     "name": "Tom",
+     "person": "B"
     },
-    "p4": {
-      "type": "mc_cloze_copy",
-      "image": "R4",
-      "title": "Elephants",
-      "text": "Elephants are very big __(0)__. They are grey and they have got big ears and a long nose. Elephants live in __(1)__ and they like water. They eat __(2)__ and fruit. A baby elephant walks next to its __(3)__. At the zoo, you can see elephants next to the __(4)__. Children love to __(5)__ at the elephants!",
-      "words": ["animals", "families", "bananas", "mother", "monkeys", "look", "hats", "run"],
-      "example": "animals",
-      "key": ["families", "bananas", "mother", "monkeys", "look"]
+    {
+     "name": "Lucy",
+     "person": "E"
     },
-    "p5": {
-      "type": "story_one_word",
-      "title": "Lucy at the zoo",
-      "image": "R5",
-      "parts": [
-        {"text": "Lucy is at the zoo with her mum and her brother Ben. They are looking at the giraffes. Lucy has got a red bag and a camera.",
-         "example": {"q": "Who is with Lucy?", "a": "her mum and her brother Ben", "answer_word": "Ben"},
-         "items": [
-           {"q": "What animals are they looking at?", "a": "giraffes"},
-           {"q": "What colour is Lucy's bag?", "a": "red"}
-         ]},
-        {"text": "Now they are at the monkeys. A small monkey takes Lucy's hat! Ben laughs and Mum takes a photo.",
-         "items": [
-           {"q": "What does the monkey take?", "a": "hat"},
-           {"q": "Who takes a photo?", "a": "Mum"}
-         ]},
-        {"text": "The monkey gives the hat to Lucy. Then the family eats ice cream under a big tree. What a fun day!",
-         "items": [
-           {"q": "What does the family eat?", "a": "ice cream"}
-         ]}
-      ]
+    {
+     "name": "Nick",
+     "person": "F"
     }
+   ]
   },
-  "speaking": {
-    "p1": {
-      "type": "scene_cards",
-      "image": "S1",
-      "scene": "A zoo scene: a monkey in a tree, an elephant next to water, a bird on a fence, a bench, a table with a hat on it, a shop, a big tree and a door.",
-      "point": [
-        {"say": "Look at the picture. Where is the monkey?", "target": "monkey"},
-        {"say": "Where is the elephant?", "target": "elephant"},
-        {"say": "Where is the bird?", "target": "bird"}
-      ],
-      "cards": ["ball", "banana", "apple", "book", "hat", "fish", "flower", "frog"],
-      "place": [
-        {"say": "Put the ball under the tree.", "card": "ball", "zone": {"x": 64, "y": 58, "w": 34, "h": 40}},
-        {"say": "Put the banana next to the monkey.", "card": "banana", "zone": {"x": 6, "y": 28, "w": 26, "h": 36}},
-        {"say": "Put the book on the table.", "card": "book", "zone": {"x": 46, "y": 72, "w": 22, "h": 26}}
-      ],
-      "zones": {"monkey": {"x": 10, "y": 32, "w": 14, "h": 26}, "elephant": {"x": 46, "y": 38, "w": 19, "h": 30}, "bird": {"x": 74, "y": 47, "w": 11, "h": 15}, "tree": {"x": 60, "y": 0, "w": 40, "h": 70}, "table": {"x": 48, "y": 78, "w": 17, "h": 20}, "bench": {"x": 11, "y": 69, "w": 15, "h": 20}, "shop": {"x": 26, "y": 30, "w": 18, "h": 28}}
+  "p2": {
+   "type": "note_taking",
+   "heading": "The zoo trip",
+   "example": {
+    "q": "What is the boy's name?",
+    "a": "Dan"
+   },
+   "items": [
+    {
+     "q": "How old is Dan?",
+     "a": "8"
     },
-    "p2": {
-      "type": "scene_questions",
-      "questions": [
-        {"q": "What's this?", "hint": "point to the elephant", "model": "It's an elephant."},
-        {"q": "What colour is the bird?", "model": "It's blue."},
-        {"q": "How many monkeys are there?", "model": "One."},
-        {"q": "Tell me about the boy.", "model": "He's got a ball. He's happy."}
-      ]
+    {
+     "q": "What is the name of Dan's school?",
+     "a": "Green"
     },
-    "p3": {
-      "type": "card_questions",
-      "questions": [
-        {"card": "banana", "q": "What's this?", "model": "A banana."},
-        {"card": "banana", "q": "What colour is it?", "model": "Yellow."},
-        {"card": "frog", "q": "What's this?", "model": "A frog."},
-        {"card": "frog", "q": "Do you like frogs?", "model": "Yes, I do. / No, I don't."},
-        {"card": "book", "q": "What's this?", "model": "A book."},
-        {"card": "book", "q": "Do you read books?", "model": "Yes, I do."}
-      ]
+    {
+     "q": "How many children are on the trip?",
+     "a": "15"
     },
-    "p4": {
-      "type": "personal_questions",
-      "questions": [
-        {"q": "What's your name?", "model": "My name's …"},
-        {"q": "How old are you?", "model": "I'm eight."},
-        {"q": "What's your favourite animal?", "model": "A dog."},
-        {"q": "Have you got a pet?", "model": "Yes, I've got a cat."},
-        {"q": "What do you like doing at the zoo?", "model": "Looking at the monkeys."}
-      ]
+    {
+     "q": "What is the name of Dan's teacher?",
+     "a": "Mrs Hill"
+    },
+    {
+     "q": "What number is the bus?",
+     "a": "12"
     }
+   ]
   },
-  "audio": {
-    "p1": [
-      ["R", "Part One. Look at the picture. Listen and look. There is one example."],
-      ["pause", 2],
-      ["F", "This is my class at the zoo. Can you see the girl with glasses?"],
-      ["Mch", "The girl drinking water?"],
-      ["F", "Yes. That's Sam."],
-      ["Mch", "Sam! I can see her."],
-      ["pause", 2],
-      ["R", "Can you see the line? This is an example. Now you listen and draw lines."],
-      ["pause", 2],
-      ["Mch", "Who's that girl with the green balloon?"],
-      ["F", "The girl with long hair? That's Kim."],
-      ["Mch", "Kim. She's got a very big balloon!"],
-      ["pause", 3.4],
-      ["F", "Look at the boy with the camera. He's taking a photo of the elephant."],
-      ["Mch", "Is that Alex?"],
-      ["F", "Yes, it is. Alex loves elephants."],
-      ["pause", 3.4],
-      ["Mch", "And who's that boy in the blue T-shirt?"],
-      ["F", "The boy looking at the monkeys? That's Tom."],
-      ["Mch", "Tom likes monkeys too."],
-      ["pause", 3.4],
-      ["F", "Can you see the girl in the yellow dress?"],
-      ["Mch", "The girl sitting under the tree?"],
-      ["F", "Yes. That's Lucy. She's tired!"],
-      ["pause", 3.4],
-      ["Mch", "Who's that small boy with the ball?"],
-      ["F", "That's Nick. He's next to his mum."],
-      ["Mch", "Nick's got a nice ball."],
-      ["pause", 3.4],
-      ["R", "Now listen again."]
+  "p3": {
+   "type": "mc_pictures",
+   "example": {
+    "q": "What is Alex eating?",
+    "pics": [
+     "apple",
+     "banana",
+     "cake"
     ],
-    "p2": [
-      ["R", "Part Two. Listen and write a name or a number. There are two examples."],
-      ["pause", 2],
-      ["F", "Hello! What's your name?"],
-      ["Mch", "My name's Dan."],
-      ["F", "How do you spell that?"],
-      ["Mch", "D-A-N."],
-      ["F", "And how old are you, Dan?"],
-      ["Mch", "I'm eight."],
-      ["pause", 2],
-      ["R", "Can you see the answers? Now you listen and write a name or a number."],
-      ["pause", 2],
-      ["F", "Are you here with your school, Dan?"],
-      ["Mch", "Yes, I am. My school is Green School."],
-      ["F", "Green? G-R-E-E-N?"],
-      ["Mch", "Yes, that's right."],
-      ["pause", 3.4],
-      ["F", "How many children are on the trip today?"],
-      ["Mch", "Fifteen children. Fifteen!"],
-      ["F", "Wow, fifteen. That's a lot!"],
-      ["pause", 3.4],
-      ["F", "And what's your teacher's name?"],
-      ["Mch", "Her name's Mrs Hill."],
-      ["F", "Hill? How do you spell that?"],
-      ["Mch", "H-I-L-L."],
-      ["pause", 3.4],
-      ["F", "How do you go home, Dan? By bus?"],
-      ["Mch", "Yes. We go on bus number twelve."],
-      ["F", "Bus number twelve. OK. Have a nice day!"],
-      ["pause", 3.4],
-      ["R", "Now listen again."]
+    "options": [
+     "an apple",
+     "a banana",
+     "a cake"
     ],
-    "p3": [
-      ["R", "Part Three. Look at the pictures. Listen and tick the box. There is one example."],
-      ["pause", 2],
-      ["R", "What is Alex eating?"],
-      ["F", "Alex, are you eating an apple?"],
-      ["Mch", "No, Mum. I'm eating a banana. I love bananas!"],
-      ["pause", 2],
-      ["R", "Can you see the tick? Now you listen and tick the box."],
-      ["pause", 2],
-      ["R", "One. Which animal does Kim like?"],
-      ["M", "Do you like the elephant, Kim?"],
-      ["Fch", "It's OK. But I like the giraffe. It's very tall!"],
-      ["M", "Yes, the giraffe is beautiful."],
-      ["pause", 3.4],
-      ["R", "Two. Where is Tom's bag?"],
-      ["F", "Tom, where's your bag? Is it under the chair?"],
-      ["Mch", "No, Mum. It's in the car."],
-      ["F", "In the car! OK."],
-      ["pause", 3.4],
-      ["R", "Three. What is Lucy drawing?"],
-      ["M", "What are you drawing, Lucy? A hippo?"],
-      ["Fch", "No, Dad. It's a snake. A long green snake."],
-      ["M", "A snake! Very nice."],
-      ["pause", 3.4],
-      ["R", "Four. How many monkeys can Nick see?"],
-      ["F", "Nick, can you see the monkeys? How many are there?"],
-      ["Mch", "One, two, three, four, five. Five monkeys!"],
-      ["F", "Five! They're very funny."],
-      ["pause", 3.4],
-      ["R", "Five. What is Anna wearing?"],
-      ["M", "Is that Anna with the glasses?"],
-      ["Fch", "No, that's Sue. Anna is wearing a hat today. A big blue hat."],
-      ["M", "Oh yes, I can see her."],
-      ["pause", 3.4],
-      ["R", "Now listen again."]
-    ],
-    "p4": [
-      ["R", "Part Four. Listen and colour. There is one example."],
-      ["pause", 2],
-      ["F", "Look at the zoo shop. Can you see the balloons?"],
-      ["Mch", "Yes. There are lots of balloons."],
-      ["F", "Colour the balloon on the shop. Colour it red."],
-      ["Mch", "The balloon on the shop. Red. OK!"],
-      ["pause", 2],
-      ["R", "Can you see the red balloon? This is an example. Now you listen and colour."],
-      ["pause", 2],
-      ["F", "Now look at the boy. He's got a balloon in his hand."],
-      ["Mch", "Yes, I can see it. Can I colour it green?"],
-      ["F", "Yes. Colour the balloon in the boy's hand green."],
-      ["pause", 3.4],
-      ["Mch", "There's a balloon under the table."],
-      ["F", "That's right. Colour that balloon blue."],
-      ["Mch", "Blue. OK."],
-      ["pause", 3.4],
-      ["F", "Can you see the balloon next to the door?"],
-      ["Mch", "Yes. What colour?"],
-      ["F", "Colour it yellow."],
-      ["Mch", "The balloon next to the door. Yellow."],
-      ["pause", 3.4],
-      ["Mch", "Look! There's a balloon on the tree!"],
-      ["F", "Yes. Colour the balloon on the tree purple."],
-      ["Mch", "Purple. That's a nice colour."],
-      ["pause", 3.4],
-      ["F", "And now the balloon in the box."],
-      ["Mch", "In the box? Can I colour it orange?"],
-      ["F", "Yes, colour it orange. Good!"],
-      ["pause", 3.4],
-      ["R", "Now listen again."]
-    ]
+    "key": "B"
+   },
+   "items": [
+    {
+     "q": "Which animal does Kim like?",
+     "pics": [
+      "giraffe",
+      "elephant",
+      "crocodile"
+     ],
+     "options": [
+      "the giraffe",
+      "the elephant",
+      "the crocodile"
+     ],
+     "key": "A"
+    },
+    {
+     "q": "Where is Tom's bag?",
+     "image": "L3Q2",
+     "options": [
+      "under the chair",
+      "on the table",
+      "in the car"
+     ],
+     "key": "C"
+    },
+    {
+     "q": "What is Lucy drawing?",
+     "pics": [
+      "hippo",
+      "snake",
+      "bird"
+     ],
+     "options": [
+      "a hippo",
+      "a snake",
+      "a bird"
+     ],
+     "key": "B"
+    },
+    {
+     "q": "How many monkeys can Nick see?",
+     "pics": [
+      {
+       "word": "monkey",
+       "n": 3
+      },
+      {
+       "word": "monkey",
+       "n": 5
+      },
+      {
+       "word": "monkey",
+       "n": 7
+      }
+     ],
+     "options": [
+      "three",
+      "five",
+      "seven"
+     ],
+     "key": "B"
+    },
+    {
+     "q": "What is Anna wearing?",
+     "pics": [
+      "hat",
+      "jacket",
+      "glasses"
+     ],
+     "options": [
+      "a hat",
+      "a jacket",
+      "glasses"
+     ],
+     "key": "A"
+    }
+   ]
+  },
+  "p4": {
+   "type": "colour",
+   "image": "L4",
+   "object": "balloon",
+   "scene": "The zoo shop. There are seven balloons in the picture: on the shop, in the boy's hand, under the table, next to the door, on the tree, in the box and behind the bench.",
+   "example": {
+    "where": "on the shop",
+    "colour": "red"
+   },
+   "items": [
+    {
+     "where": "in the boy's hand",
+     "colour": "green"
+    },
+    {
+     "where": "under the table",
+     "colour": "blue"
+    },
+    {
+     "where": "next to the door",
+     "colour": "yellow"
+    },
+    {
+     "where": "on the tree",
+     "colour": "purple"
+    },
+    {
+     "where": "in the box",
+     "colour": "orange"
+    }
+   ]
   }
+ },
+ "rw": {
+  "p1": {
+   "type": "tick_cross",
+   "example": {
+    "word": "monkey",
+    "sentence": "This is a monkey.",
+    "key": true
+   },
+   "items": [
+    {
+     "word": "giraffe",
+     "sentence": "This is a giraffe.",
+     "key": true
+    },
+    {
+     "word": "hippo",
+     "sentence": "This is a crocodile.",
+     "key": false
+    },
+    {
+     "word": "snake",
+     "sentence": "This is a snake.",
+     "key": true
+    },
+    {
+     "word": "elephant",
+     "sentence": "This is a zebra.",
+     "key": false
+    },
+    {
+     "word": "frog",
+     "sentence": "This is a fish.",
+     "key": false
+    }
+   ]
+  },
+  "p2": {
+   "type": "yes_no",
+   "image": "R2",
+   "scene": "At the zoo: a big elephant is eating a banana, two monkeys are in a tree, a small boy is sitting on a bench with an ice cream, a woman is taking a photo, and a green frog is on a rock next to the water.",
+   "example": {
+    "s": "The elephant is eating a banana.",
+    "key": "yes"
+   },
+   "items": [
+    {
+     "s": "There are three monkeys in the tree.",
+     "key": "no"
+    },
+    {
+     "s": "The boy is sitting on a bench.",
+     "key": "yes"
+    },
+    {
+     "s": "The boy is eating a cake.",
+     "key": "no"
+    },
+    {
+     "s": "The woman has got a camera.",
+     "key": "yes"
+    },
+    {
+     "s": "The frog is blue.",
+     "key": "no"
+    }
+   ]
+  },
+  "p3": {
+   "type": "unscramble",
+   "example": {
+    "word": "tiger",
+    "letters": [
+     "g",
+     "t",
+     "e",
+     "r",
+     "i"
+    ]
+   },
+   "items": [
+    {
+     "word": "monkey",
+     "letters": [
+      "k",
+      "e",
+      "y",
+      "m",
+      "o",
+      "n"
+     ]
+    },
+    {
+     "word": "zebra",
+     "letters": [
+      "b",
+      "r",
+      "a",
+      "z",
+      "e"
+     ]
+    },
+    {
+     "word": "bird",
+     "letters": [
+      "r",
+      "d",
+      "b",
+      "i"
+     ]
+    },
+    {
+     "word": "lizard",
+     "letters": [
+      "z",
+      "a",
+      "r",
+      "d",
+      "l",
+      "i"
+     ]
+    },
+    {
+     "word": "mouse",
+     "letters": [
+      "u",
+      "s",
+      "e",
+      "m",
+      "o"
+     ]
+    }
+   ]
+  },
+  "p4": {
+   "type": "mc_cloze_copy",
+   "image": "R4",
+   "title": "Elephants",
+   "text": "Elephants are very big __(0)__. They are grey and they have got big ears and a long nose. Elephants live in __(1)__ and they like water. They eat __(2)__ and fruit. A baby elephant walks next to its __(3)__. At the zoo, you can see elephants next to the __(4)__. Children love to __(5)__ at the elephants!",
+   "words": [
+    "animals",
+    "families",
+    "bananas",
+    "mother",
+    "monkeys",
+    "look",
+    "hats",
+    "run"
+   ],
+   "example": "animals",
+   "key": [
+    "families",
+    "bananas",
+    "mother",
+    "monkeys",
+    "look"
+   ]
+  },
+  "p5": {
+   "type": "story_one_word",
+   "title": "Lucy at the zoo",
+   "image": "R5",
+   "parts": [
+    {
+     "text": "Lucy is at the zoo with her mum and her brother Ben. They are looking at the giraffes. Lucy has got a red bag and a camera.",
+     "example": {
+      "q": "Who is with Lucy?",
+      "a": "her mum and her brother Ben",
+      "answer_word": "Ben"
+     },
+     "items": [
+      {
+       "q": "What animals are they looking at?",
+       "a": "giraffes"
+      },
+      {
+       "q": "What colour is Lucy's bag?",
+       "a": "red"
+      }
+     ]
+    },
+    {
+     "text": "Now they are at the monkeys. A small monkey takes Lucy's hat! Ben laughs and Mum takes a photo.",
+     "items": [
+      {
+       "q": "What does the monkey take?",
+       "a": "hat"
+      },
+      {
+       "q": "Who takes a photo?",
+       "a": "Mum"
+      }
+     ]
+    },
+    {
+     "text": "The monkey gives the hat to Lucy. Then the family eats ice cream under a big tree. What a fun day!",
+     "items": [
+      {
+       "q": "What does the family eat?",
+       "a": "ice cream"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "speaking": {
+  "p1": {
+   "type": "scene_cards",
+   "image": "S1",
+   "scene": "A zoo scene: a monkey in a tree, an elephant next to water, a bird on a fence, a bench, a table with a hat on it, a shop, a big tree and a door.",
+   "point": [
+    {
+     "say": "Look at the picture. Where is the monkey?",
+     "target": "monkey"
+    },
+    {
+     "say": "Where is the elephant?",
+     "target": "elephant"
+    },
+    {
+     "say": "Where is the bird?",
+     "target": "bird"
+    }
+   ],
+   "cards": [
+    "ball",
+    "banana",
+    "apple",
+    "book",
+    "hat",
+    "fish",
+    "flower",
+    "frog"
+   ],
+   "place": [
+    {
+     "say": "Put the ball under the tree.",
+     "card": "ball",
+     "zone": {
+      "x": 64,
+      "y": 58,
+      "w": 34,
+      "h": 40
+     }
+    },
+    {
+     "say": "Put the banana next to the monkey.",
+     "card": "banana",
+     "zone": {
+      "x": 6,
+      "y": 28,
+      "w": 26,
+      "h": 36
+     }
+    },
+    {
+     "say": "Put the book on the table.",
+     "card": "book",
+     "zone": {
+      "x": 46,
+      "y": 72,
+      "w": 22,
+      "h": 26
+     }
+    }
+   ],
+   "zones": {
+    "monkey": {
+     "x": 10,
+     "y": 32,
+     "w": 14,
+     "h": 26
+    },
+    "elephant": {
+     "x": 46,
+     "y": 38,
+     "w": 19,
+     "h": 30
+    },
+    "bird": {
+     "x": 74,
+     "y": 47,
+     "w": 11,
+     "h": 15
+    },
+    "tree": {
+     "x": 60,
+     "y": 0,
+     "w": 40,
+     "h": 70
+    },
+    "table": {
+     "x": 48,
+     "y": 78,
+     "w": 17,
+     "h": 20
+    },
+    "bench": {
+     "x": 11,
+     "y": 69,
+     "w": 15,
+     "h": 20
+    },
+    "shop": {
+     "x": 26,
+     "y": 30,
+     "w": 18,
+     "h": 28
+    }
+   }
+  },
+  "p2": {
+   "type": "scene_questions",
+   "questions": [
+    {
+     "q": "What's this?",
+     "hint": "point to the elephant",
+     "model": "It's an elephant."
+    },
+    {
+     "q": "What colour is the bird?",
+     "model": "It's blue."
+    },
+    {
+     "q": "How many monkeys are there?",
+     "model": "One."
+    },
+    {
+     "q": "Tell me about the boy.",
+     "model": "He's got a ball. He's happy."
+    }
+   ]
+  },
+  "p3": {
+   "type": "card_questions",
+   "questions": [
+    {
+     "card": "banana",
+     "q": "What's this?",
+     "model": "A banana."
+    },
+    {
+     "card": "banana",
+     "q": "What colour is it?",
+     "model": "Yellow."
+    },
+    {
+     "card": "frog",
+     "q": "What's this?",
+     "model": "A frog."
+    },
+    {
+     "card": "frog",
+     "q": "Do you like frogs?",
+     "model": "Yes, I do. / No, I don't."
+    },
+    {
+     "card": "book",
+     "q": "What's this?",
+     "model": "A book."
+    },
+    {
+     "card": "book",
+     "q": "Do you read books?",
+     "model": "Yes, I do."
+    }
+   ]
+  },
+  "p4": {
+   "type": "personal_questions",
+   "questions": [
+    {
+     "q": "What's your name?",
+     "model": "My name's …"
+    },
+    {
+     "q": "How old are you?",
+     "model": "I'm eight."
+    },
+    {
+     "q": "What's your favourite animal?",
+     "model": "A dog."
+    },
+    {
+     "q": "Have you got a pet?",
+     "model": "Yes, I've got a cat."
+    },
+    {
+     "q": "What do you like doing at the zoo?",
+     "model": "Looking at the monkeys."
+    }
+   ]
+  }
+ },
+ "audio": {
+  "p1": [
+   [
+    "R",
+    "Part One. Look at the picture. Listen and look. There is one example."
+   ],
+   [
+    "pause",
+    4
+   ],
+   [
+    "F",
+    "This is my class at the zoo. Can you see the girl with glasses?"
+   ],
+   [
+    "Mch",
+    "The girl drinking water?"
+   ],
+   [
+    "F",
+    "Yes. That's Sam."
+   ],
+   [
+    "Mch",
+    "Sam! I can see her."
+   ],
+   [
+    "pause",
+    4
+   ],
+   [
+    "R",
+    "Can you see the line? This is an example. Now you listen and draw lines."
+   ],
+   [
+    "pause",
+    7
+   ],
+   [
+    "Mch",
+    "Who's that girl with the green balloon?"
+   ],
+   [
+    "F",
+    "The girl with long hair? That's Kim."
+   ],
+   [
+    "Mch",
+    "Kim. She's got a very big balloon!"
+   ],
+   [
+    "pause",
+    7
+   ],
+   [
+    "F",
+    "Look at the boy with the camera. He's taking a photo of the elephant."
+   ],
+   [
+    "Mch",
+    "Is that Alex?"
+   ],
+   [
+    "F",
+    "Yes, it is. Alex loves elephants."
+   ],
+   [
+    "pause",
+    7
+   ],
+   [
+    "Mch",
+    "And who's that boy in the blue T-shirt?"
+   ],
+   [
+    "F",
+    "The boy looking at the monkeys? That's Tom."
+   ],
+   [
+    "Mch",
+    "Tom likes monkeys too."
+   ],
+   [
+    "pause",
+    7
+   ],
+   [
+    "F",
+    "Can you see the girl in the yellow dress?"
+   ],
+   [
+    "Mch",
+    "The girl sitting under the tree?"
+   ],
+   [
+    "F",
+    "Yes. That's Lucy. She's tired!"
+   ],
+   [
+    "pause",
+    7
+   ],
+   [
+    "Mch",
+    "Who's that small boy with the ball?"
+   ],
+   [
+    "F",
+    "That's Nick. He's next to his mum."
+   ],
+   [
+    "Mch",
+    "Nick's got a nice ball."
+   ],
+   [
+    "pause",
+    7
+   ],
+   [
+    "R",
+    "Now listen again."
+   ]
+  ],
+  "p2": [
+   [
+    "R",
+    "Part Two. Listen and write a name or a number. There are two examples."
+   ],
+   [
+    "pause",
+    4
+   ],
+   [
+    "F",
+    "Hello! What's your name?"
+   ],
+   [
+    "Mch",
+    "My name's Dan."
+   ],
+   [
+    "F",
+    "How do you spell that?"
+   ],
+   [
+    "Mch",
+    "D-A-N."
+   ],
+   [
+    "F",
+    "And how old are you, Dan?"
+   ],
+   [
+    "Mch",
+    "I'm eight."
+   ],
+   [
+    "pause",
+    4
+   ],
+   [
+    "R",
+    "Can you see the answers? Now you listen and write a name or a number."
+   ],
+   [
+    "pause",
+    10
+   ],
+   [
+    "F",
+    "Are you here with your school, Dan?"
+   ],
+   [
+    "Mch",
+    "Yes, I am. My school is Green School."
+   ],
+   [
+    "F",
+    "Green? G-R-E-E-N?"
+   ],
+   [
+    "Mch",
+    "Yes, that's right."
+   ],
+   [
+    "pause",
+    10
+   ],
+   [
+    "F",
+    "How many children are on the trip today?"
+   ],
+   [
+    "Mch",
+    "Fifteen children. Fifteen!"
+   ],
+   [
+    "F",
+    "Wow, fifteen. That's a lot!"
+   ],
+   [
+    "pause",
+    10
+   ],
+   [
+    "F",
+    "And what's your teacher's name?"
+   ],
+   [
+    "Mch",
+    "Her name's Mrs Hill."
+   ],
+   [
+    "F",
+    "Hill? How do you spell that?"
+   ],
+   [
+    "Mch",
+    "H-I-L-L."
+   ],
+   [
+    "pause",
+    10
+   ],
+   [
+    "F",
+    "How do you go home, Dan? By bus?"
+   ],
+   [
+    "Mch",
+    "Yes. We go on bus number twelve."
+   ],
+   [
+    "F",
+    "Bus number twelve. OK. Have a nice day!"
+   ],
+   [
+    "pause",
+    10
+   ],
+   [
+    "R",
+    "Now listen again."
+   ]
+  ],
+  "p3": [
+   [
+    "R",
+    "Part Three. Look at the pictures. Listen and tick the box. There is one example."
+   ],
+   [
+    "pause",
+    4
+   ],
+   [
+    "R",
+    "What is Alex eating?"
+   ],
+   [
+    "F",
+    "Alex, are you eating an apple?"
+   ],
+   [
+    "Mch",
+    "No, Mum. I'm eating a banana. I love bananas!"
+   ],
+   [
+    "pause",
+    4
+   ],
+   [
+    "R",
+    "Can you see the tick? Now you listen and tick the box."
+   ],
+   [
+    "pause",
+    6
+   ],
+   [
+    "R",
+    "One. Which animal does Kim like?"
+   ],
+   [
+    "M",
+    "Do you like the elephant, Kim?"
+   ],
+   [
+    "Fch",
+    "It's OK. But I like the giraffe. It's very tall!"
+   ],
+   [
+    "M",
+    "Yes, the giraffe is beautiful."
+   ],
+   [
+    "pause",
+    6
+   ],
+   [
+    "R",
+    "Two. Where is Tom's bag?"
+   ],
+   [
+    "F",
+    "Tom, where's your bag? Is it under the chair?"
+   ],
+   [
+    "Mch",
+    "No, Mum. It's in the car."
+   ],
+   [
+    "F",
+    "In the car! OK."
+   ],
+   [
+    "pause",
+    6
+   ],
+   [
+    "R",
+    "Three. What is Lucy drawing?"
+   ],
+   [
+    "M",
+    "What are you drawing, Lucy? A hippo?"
+   ],
+   [
+    "Fch",
+    "No, Dad. It's a snake. A long green snake."
+   ],
+   [
+    "M",
+    "A snake! Very nice."
+   ],
+   [
+    "pause",
+    6
+   ],
+   [
+    "R",
+    "Four. How many monkeys can Nick see?"
+   ],
+   [
+    "F",
+    "Nick, can you see the monkeys? How many are there?"
+   ],
+   [
+    "Mch",
+    "One, two, three, four, five. Five monkeys!"
+   ],
+   [
+    "F",
+    "Five! They're very funny."
+   ],
+   [
+    "pause",
+    6
+   ],
+   [
+    "R",
+    "Five. What is Anna wearing?"
+   ],
+   [
+    "M",
+    "Is that Anna with the glasses?"
+   ],
+   [
+    "Fch",
+    "No, that's Sue. Anna is wearing a hat today. A big blue hat."
+   ],
+   [
+    "M",
+    "Oh yes, I can see her."
+   ],
+   [
+    "pause",
+    6
+   ],
+   [
+    "R",
+    "Now listen again."
+   ]
+  ],
+  "p4": [
+   [
+    "R",
+    "Part Four. Listen and colour. There is one example."
+   ],
+   [
+    "pause",
+    4
+   ],
+   [
+    "F",
+    "Look at the zoo shop. Can you see the balloons?"
+   ],
+   [
+    "Mch",
+    "Yes. There are lots of balloons."
+   ],
+   [
+    "F",
+    "Colour the balloon on the shop. Colour it red."
+   ],
+   [
+    "Mch",
+    "The balloon on the shop. Red. OK!"
+   ],
+   [
+    "pause",
+    4
+   ],
+   [
+    "R",
+    "Can you see the red balloon? This is an example. Now you listen and colour."
+   ],
+   [
+    "pause",
+    15
+   ],
+   [
+    "F",
+    "Now look at the boy. He's got a balloon in his hand."
+   ],
+   [
+    "Mch",
+    "Yes, I can see it. Can I colour it green?"
+   ],
+   [
+    "F",
+    "Yes. Colour the balloon in the boy's hand green."
+   ],
+   [
+    "pause",
+    15
+   ],
+   [
+    "Mch",
+    "There's a balloon under the table."
+   ],
+   [
+    "F",
+    "That's right. Colour that balloon blue."
+   ],
+   [
+    "Mch",
+    "Blue. OK."
+   ],
+   [
+    "pause",
+    15
+   ],
+   [
+    "F",
+    "Can you see the balloon next to the door?"
+   ],
+   [
+    "Mch",
+    "Yes. What colour?"
+   ],
+   [
+    "F",
+    "Colour it yellow."
+   ],
+   [
+    "Mch",
+    "The balloon next to the door. Yellow."
+   ],
+   [
+    "pause",
+    15
+   ],
+   [
+    "Mch",
+    "Look! There's a balloon on the tree!"
+   ],
+   [
+    "F",
+    "Yes. Colour the balloon on the tree purple."
+   ],
+   [
+    "Mch",
+    "Purple. That's a nice colour."
+   ],
+   [
+    "pause",
+    15
+   ],
+   [
+    "F",
+    "And now the balloon in the box."
+   ],
+   [
+    "Mch",
+    "In the box? Can I colour it orange?"
+   ],
+   [
+    "F",
+    "Yes, colour it orange. Good!"
+   ],
+   [
+    "pause",
+    15
+   ],
+   [
+    "R",
+    "Now listen again."
+   ]
+  ]
+ }
 }
