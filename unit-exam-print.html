@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unit exam · printable · Nordic International School</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<style>
+/* =========================================================================
+   Version imprimible de los examenes de unidad, para quien rinde en papel.
+
+   El motor de pantalla (unit-exam.html) corrige solo y cronometra; en la sala
+   de examen hace falta otra cosa: la hoja que el alumno rellena a boligrafo
+   mientras el profesor pone el audio. Esta pagina lee el MISMO examen de la
+   tabla unit_exams —una sola fuente, sin copiar nada— y lo pinta en A4.
+
+   unit-exam-print.html?kind=official&level=b2            la hoja del alumno
+   unit-exam-print.html?kind=official&level=b2&doc=key    la clave del profesor
+   unit-exam-print.html?kind=official&level=b2&doc=script el guion del listening
+
+   SOLO PROFESOR Y ADMIN. No es una precaucion de adorno: en pantalla el alumno
+   ve las respuestas al terminar, pero aqui la clave se pinta de una vez, y un
+   alumno con el examen abierto podria pedir ?doc=key. Sin sesion de profesor
+   esta pagina no pinta nada.
+
+   El Listening lleva el aviso de que lo pone el profesor, y la clave trae el
+   guion entero: en papel no se puede hacer de otra manera y es mejor decirlo
+   que fingir que si.
+   ========================================================================= */
+:root{--ink:#1a1a1a;--soft:#5a6472;--line:#c9d0da;--band:#eef2f7;--accent:#1e3a8a}
+*{box-sizing:border-box}
+body{margin:0;background:#f2f4f8;color:var(--ink);font:15px/1.55 Georgia,'Times New Roman',serif}
+.bar{background:#0d1d33;color:#fff;padding:10px 18px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;
+  font-family:system-ui,sans-serif;font-size:.9rem;position:sticky;top:0;z-index:5}
+.bar h1{margin:0;font-size:1rem}
+.bar select,.bar button,.bar a{font:inherit;border-radius:8px;border:1px solid #33415a;background:#16233a;color:#fff;
+  padding:5px 12px;cursor:pointer;text-decoration:none}
+.bar button.go{background:#fff;color:#0d1d33;font-weight:700;border-color:#fff}
+.bar .sp{margin-left:auto}
+.hoja{background:#fff;max-width:210mm;margin:16px auto;padding:16mm 15mm;box-shadow:0 2px 14px rgba(20,30,50,.14)}
+.cab{border-bottom:2px solid var(--ink);padding-bottom:8px;margin-bottom:14px}
+.cab h2{margin:0;font-size:1.35rem;font-family:system-ui,sans-serif}
+.cab .meta{color:var(--soft);font-size:.85rem;font-family:system-ui,sans-serif;margin-top:3px}
+.datos{display:flex;gap:18px;flex-wrap:wrap;margin:10px 0 0;font-size:.9rem;font-family:system-ui,sans-serif}
+.datos span{flex:1;min-width:140px;border-bottom:1px solid var(--line);padding-bottom:2px}
+.aviso{background:var(--band);border-radius:6px;padding:8px 12px;font-size:.85rem;
+  font-family:system-ui,sans-serif;margin:12px 0 0;color:var(--soft)}
+.paper{margin-top:22px;break-inside:auto}
+.paper > h3{font-family:system-ui,sans-serif;font-size:1.05rem;margin:0 0 4px;
+  background:var(--accent);color:#fff;padding:5px 10px;border-radius:6px;display:flex;justify-content:space-between}
+.paper > h3 span{font-weight:400;font-size:.85rem;opacity:.85}
+.paper .nota{font-size:.82rem;color:var(--soft);font-family:system-ui,sans-serif;margin:0 0 10px}
+ol.items{margin:0;padding-left:26px}
+ol.items li{margin-bottom:11px;break-inside:avoid}
+.linea{display:inline-block;min-width:130px;border-bottom:1px solid var(--ink);margin:0 4px}
+.linea.corta{min-width:74px}
+.linea.larga{min-width:210px}
+.ops{margin:4px 0 0 6px}
+.ops span{display:inline-block;margin:0 16px 2px 0}
+.ops span::before{content:"\25CB  "}
+.raiz{font-family:system-ui,sans-serif;font-size:.76rem;font-weight:700;letter-spacing:.06em;
+  background:var(--band);border-radius:4px;padding:1px 7px;margin-left:6px}
+.lead{background:var(--band);border-radius:6px;padding:6px 10px;margin:0 0 5px;font-size:.93rem}
+.banco{background:var(--band);border-radius:6px;padding:7px 11px;margin:0 0 6px;font-size:.95rem}
+.banco b{font-family:system-ui,sans-serif;font-size:.76rem;text-transform:uppercase;letter-spacing:.05em;
+  color:var(--soft);display:block;margin-bottom:2px}
+.rayas div{border-bottom:1px solid var(--line);height:23px}
+.tarea{margin:0 0 6px}
+.tips{font-size:.85rem;color:var(--soft);margin:4px 0 10px;padding-left:20px}
+.guion{font-size:.92rem}
+.guion p{margin:0 0 7px}
+.guion b{font-family:system-ui,sans-serif}
+.clave{background:#fff8e6;border-left:4px solid #b3771a;padding:8px 12px;border-radius:0 6px 6px 0;margin:8px 0 0;font-size:.9rem}
+.clave b{font-family:system-ui,sans-serif}
+.clave ol{margin:4px 0 0;padding-left:24px}
+.clave li{margin-bottom:3px}
+.clave .exp{color:var(--soft);font-size:.86rem}
+.pie{margin-top:26px;border-top:1px solid var(--line);padding-top:8px;color:var(--soft);
+  font-size:.75rem;font-family:system-ui,sans-serif;display:flex;justify-content:space-between}
+.err{color:#7f1d1d;background:#fef2f2;border-left:4px solid #fca5a5;padding:10px 14px;border-radius:0 6px 6px 0;
+  font-family:system-ui,sans-serif;font-size:.9rem}
+@media print{
+  .bar{display:none}
+  body{background:#fff}
+  .hoja{box-shadow:none;margin:0;max-width:none;padding:0}
+  /* Una parte por hoja: es lo que se reparte en la sala de examen y lo que ya
+     hace el imprimible de los YLE. Son ocho caras por alumno, asi que existe
+     tambien el modo compacto, que deja fluir las partes y baja a la mitad. */
+  .paper{break-before:page}
+  .paper:first-of-type{break-before:auto}
+  /* Fluir de verdad: con break-inside:avoid cada parte seguia reclamando su
+     hoja entera y el modo compacto ahorraba una de ocho. Lo que no se puede
+     partir es una pregunta, y de eso ya se ocupa el li. */
+  .compacto .paper{break-before:auto;break-inside:auto;margin-top:16px}
+  .compacto .paper > h3{break-after:avoid}
+  @page{size:A4;margin:16mm 15mm}
+}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+<script src="config.js"></script>
+</head>
+<body>
+<div class="bar">
+  <h1>📋 Unit exam · printable</h1>
+  <select id="kk"></select>
+  <select id="ll"></select>
+  <select id="dd"></select>
+  <label style="display:flex;gap:5px;align-items:center" title="Deja fluir las partes en vez de empezar cada una en hoja nueva: la mitad de papel"><input type="checkbox" id="cc"> compacto</label>
+  <button class="go" id="ir">Show</button>
+  <span class="sp"></span>
+  <button onclick="window.print()">🖨️ Print / save as PDF</button>
+  <a id="volver" href="unit-exam.html">‹ Back</a>
+</div>
+<div class="hoja" id="hoja"><p style="color:#5a6472">Loading…</p></div>
+
+<script>
+var Q = new URLSearchParams(location.search);
+var GRADE = Q.get('grade') || 'g9';
+var UNITS = Q.get('units') || '3-4';
+var KIND = (Q.get('kind') || 'official').toLowerCase();
+var LEVEL = (Q.get('level') || 'b2').toLowerCase();
+var DOC = (Q.get('doc') || 'exam').toLowerCase();
+var COMPACTO = Q.get('compact') === '1';
+var KINDS = {practice: 'Practice exam', official: 'Official exam'};
+var LVLS = {a2: 'A2 · Elementary', b1: 'B1 · Intermediate', b2: 'B2 · Upper-intermediate', c1: 'C1 · Advanced'};
+var LETRAS = 'ABCD';
+
+function esc(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){
+  return ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'})[c]; }); }
+function $(s){ return document.querySelector(s); }
+function raya(cls){ return '<span class="linea' + (cls ? ' ' + cls : '') + '">&nbsp;</span>'; }
+function rayas(n){ return '<div class="rayas">' + '<div></div>'.repeat(n || 8) + '</div>'; }
+/* El enunciado trae <i> y <b> a proposito (las explicaciones y los ejemplos de
+   gramatica se leen mucho mejor asi), pero no puede traer nada mas: se limpia
+   todo lo demas en vez de confiar en que el JSON venga limpio. */
+function rico(s){
+  return String(s == null ? '' : s)
+    .replace(/<(?!\/?[bi]>)[^>]*>/g, '')
+    .replace(/______/g, '<span class="linea">&nbsp;</span>');
+}
+
+/* ---------- las siete partes en papel ---------- */
+function opciones(opts){
+  return '<div class="ops">' + opts.map(function(o, i){
+    return '<span>' + LETRAS.charAt(i) + '&nbsp; ' + esc(o) + '</span>'; }).join('') + '</div>';
+}
+function itemHTML(p, it){
+  if (p.type === 'mc' || (p.type === 'listening' && it.kind === 'mc'))
+    return rico(it.q) + opciones(it.opts);
+  if (p.type === 'tf')
+    return rico(it.q) + '<div class="ops"><span>True</span><span>False</span></div>';
+  if (p.type === 'wf')
+    return rico(it.sent) + '<span class="raiz">' + esc(it.root) + '</span>';
+  if (p.type === 'kt')
+    return '<div class="lead">' + esc(it.lead) + '</div>' +
+           esc(it.before || '') + raya('larga') + esc(it.after || '') +
+           '<span class="raiz">' + esc(it.key) + '</span>';
+  if (p.type === 'order')
+    return '<div class="banco"><b>The words</b>' + it.words.map(esc).join(' &nbsp;·&nbsp; ') + '</div>' + raya('larga');
+  if (p.type === 'listening' && it.kind === 'gap')
+    return rico(it.q);
+  return '';
+}
+/* En papel no se corrige nada solo. La coletilla la escribimos nosotros en los
+   ocho examenes, asi que se quita aqui en vez de duplicar el enunciado en los
+   datos: en la hoja del alumno decir "el resto se corrige automaticamente" es
+   sencillamente falso. */
+function instrucciones(p){
+  var t = String(p.instructions || '');
+  if (p.type === 'writing')
+    t = t.replace(/;\s*the rest of the exam is marked automatically\.?/i, '.')
+         .replace(/Your teacher corrects this part and gives it a mark\.?/i,
+                  'Your teacher marks this part with the unit rubric.');
+  /* En pantalla el alumno le da al play las veces que quiera; en papel lo pone
+     el profesor y se oye dos veces. Dejar la frase de pantalla contradecia al
+     aviso que va justo debajo. */
+  if (p.type === 'listening')
+    t = t.replace(/\s*You can play it as many times as you need\.?/i, '');
+  return rico(t);
+}
+function parteHTML(p, desde){
+  var cuantos = p.type === 'writing'
+    ? 'choose 1 of ' + (p.tasks || []).length
+    : (p.items || []).length + ' marks';
+  var h = '<section class="paper"><h3>Part ' + p.n + ' · ' + esc(p.title) +
+          '<span>' + cuantos + '</span></h3>' +
+          '<p class="nota">' + instrucciones(p) + '</p>';
+  if (p.type === 'listening')
+    h += '<p class="aviso">🔊 <b>Your teacher plays the recording.</b> You hear it twice. ' +
+         'Write your answers on this paper while you listen.</p>';
+  if (p.type === 'writing') {
+    (p.tasks || []).forEach(function(t, i){
+      h += '<div style="break-inside:avoid;margin-top:12px"><p class="tarea"><b>' + esc(t.label) + '</b> — ' +
+           rico(t.task) + '</p>' +
+           '<ul class="tips">' + (t.tips || []).map(function(x){ return '<li>' + rico(x) + '</li>'; }).join('') + '</ul></div>';
+    });
+    h += '<p class="nota" style="margin-top:14px"><b>Write your answer here.</b> Say which task you have chosen.</p>' +
+         rayas(24);
+    return h + '</section>';
+  }
+  h += '<ol class="items" start="' + desde + '">' +
+       (p.items || []).map(function(it){ return '<li>' + itemHTML(p, it) + '</li>'; }).join('') + '</ol>';
+  return h + '</section>';
+}
+
+/* ---------- la clave del profesor ---------- */
+function respuesta(p, it){
+  if (it.opts) return LETRAS.charAt(it.ok) + '. ' + it.opts[it.ok];
+  if (p.type === 'tf') return it.ok ? 'True' : 'False';
+  if (p.type === 'order') return it.answer;
+  return (it.accept || []).join('  /  ');
+}
+function claveHTML(p, desde){
+  var h = '<section class="paper"><h3>Part ' + p.n + ' · ' + esc(p.title) + '<span>answers</span></h3>';
+  if (p.type === 'writing') {
+    h += '<p class="nota">No hay clave: se corrige con la rúbrica de la unidad (AD · A · B · C) en ' +
+         '<b>Portal → ✅ Corrección → 🎯 Productos de unidad</b>, donde llega el texto que el alumno escribió en pantalla. ' +
+         'Si lo escribió en papel, se califica aquí y se pasa la nota a mano.</p>';
+    return h + '</section>';
+  }
+  h += '<div class="clave"><b>Answers ' + desde + '–' + (desde + (p.items || []).length - 1) + '</b><ol start="' + desde + '">' +
+       (p.items || []).map(function(it){
+         return '<li><b>' + esc(respuesta(p, it)) + '</b>' +
+                (it.ex ? ' <span class="exp">' + rico(it.ex) + '</span>' : '') + '</li>'; }).join('') +
+       '</ol></div>';
+  return h + '</section>';
+}
+
+/* ---------- la hoja ---------- */
+function pinta(ex, guion){
+  var d = ex.data, n = 0;
+  var esClave = DOC === 'key', esGuion = DOC === 'script';
+  var total = (d.parts || []).reduce(function(a, p){ return a + (p.type === 'writing' ? 0 : (p.items || []).length); }, 0);
+  var titulo = KINDS[KIND] + ' · ' + LVLS[LEVEL].split(' · ')[0] +
+               (esClave ? ' · ANSWER KEY' : (esGuion ? ' · LISTENING SCRIPT' : ''));
+  var h = '<div class="cab"><h2>' + esc(titulo) + '</h2>' +
+    '<div class="meta">' + esc(d.title || '') + ' · ' + GRADE.toUpperCase() + ' · Nordic International School · ' +
+    (d.minutes || '—') + ' minutes · ' + total + ' marks + writing</div>';
+  h += esClave || esGuion
+    ? '<div class="aviso">👩‍🏫 Documento del profesor. No se reparte.</div>'
+    : '<div class="datos"><span>Name:</span><span>Class:</span><span>Date:</span><span>Mark:</span></div>' +
+      '<div class="aviso">Answer every part on this paper. In Part 6 your teacher plays the recording twice.</div>';
+  h += '</div>';
+
+  if (esGuion) {
+    h += '<section class="paper"><h3>Listening script<span>Part 6</span></h3>' +
+         '<p class="nota">Lo normal es poner la grabación. Este guion está aquí para leerlo en voz alta si el audio falla: ' +
+         'dos veces, al mismo ritmo, sin añadir nada.</p><div class="guion">' +
+         (guion ? guion.split('\n').map(function(l){
+            var m = /^([^:]{1,24}):\s*(.*)$/.exec(l.trim());
+            return m ? '<p><b>' + esc(m[1]) + ':</b> ' + esc(m[2]) + '</p>' : '<p>' + esc(l) + '</p>';
+          }).join('') : '<p>No hay guion guardado para este examen.</p>') +
+         '</div></section>';
+  } else {
+    (d.parts || []).forEach(function(p){
+      var desde = n + 1;
+      h += esClave ? claveHTML(p, desde) : parteHTML(p, desde);
+      if (p.type !== 'writing') n += (p.items || []).length;
+    });
+    if (esClave && guion) {
+      h += '<section class="paper"><h3>Listening script<span>Part 6</span></h3><div class="guion">' +
+           guion.split('\n').map(function(l){
+             var m = /^([^:]{1,24}):\s*(.*)$/.exec(l.trim());
+             return m ? '<p><b>' + esc(m[1]) + ':</b> ' + esc(m[2]) + '</p>' : '<p>' + esc(l) + '</p>';
+           }).join('') + '</div></section>';
+    }
+  }
+  h += '<div class="pie"><span>' + esc(titulo) + '</span><span>Nordic International School</span></div>';
+  $('#hoja').innerHTML = h;
+  $('#hoja').className = 'hoja' + (COMPACTO ? ' compacto' : '');
+  document.title = titulo + ' · printable';
+}
+
+function controles(hay){
+  $('#kk').innerHTML = Object.keys(KINDS).map(function(k){
+    return '<option value="' + k + '"' + (k === KIND ? ' selected' : '') + '>' + KINDS[k] + '</option>'; }).join('');
+  $('#ll').innerHTML = Object.keys(LVLS).map(function(l){
+    return '<option value="' + l + '"' + (l === LEVEL ? ' selected' : '') + '>' + LVLS[l].split(' · ')[0] + '</option>'; }).join('');
+  $('#dd').innerHTML = [['exam', 'Hoja del alumno'], ['key', 'Clave del profesor'], ['script', 'Guion del listening']]
+    .map(function(d){ return '<option value="' + d[0] + '"' + (d[0] === DOC ? ' selected' : '') + '>' + d[1] + '</option>'; }).join('');
+  $('#cc').checked = COMPACTO;
+  $('#volver').href = 'unit-exam.html';
+  $('#ir').onclick = function(){
+    location.search = '?grade=' + GRADE + '&units=' + UNITS + '&kind=' + $('#kk').value +
+                      '&level=' + $('#ll').value + '&doc=' + $('#dd').value +
+                      ($('#cc').checked ? '&compact=1' : '');
+  };
+}
+
+function fallo(msg){
+  $('#hoja').innerHTML = '<div class="err">' + msg + '</div>';
+}
+
+(function(){
+  controles();
+  if (!(window.supabase && window.NIS_CONFIG)) return fallo('No cargó la configuración del portal. Recarga la página.');
+  var sb = window.supabase.createClient(NIS_CONFIG.SUPABASE_URL, NIS_CONFIG.SUPABASE_KEY);
+  sb.auth.getUser().then(function(u){
+    var uid = u && u.data && u.data.user && u.data.user.id;
+    if (!uid) throw new Error('nosesion');
+    return sb.from('profiles').select('role').eq('id', uid).maybeSingle();
+  }).then(function(p){
+    var rol = p && p.data && p.data.role;
+    if (rol !== 'teacher' && rol !== 'admin') throw new Error('noprofe');
+    return Promise.all([
+      sb.from('unit_exams').select('title,minutes,data').eq('grade', GRADE).eq('units', UNITS)
+        .eq('kind', KIND).eq('level', LEVEL).maybeSingle(),
+      sb.from('unit_exam_scripts').select('script').eq('grade', GRADE).eq('units', UNITS)
+        .eq('kind', KIND).eq('level', LEVEL).maybeSingle()
+    ]);
+  }).then(function(r){
+    if (!r[0] || !r[0].data) return fallo('Ese examen no existe todavía para ' +
+      GRADE.toUpperCase() + ' · unidades ' + UNITS + '.');
+    pinta(r[0].data, (r[1] && r[1].data && r[1].data.script) || '');
+  }).catch(function(e){
+    if (e && e.message === 'nosesion')
+      return fallo('⚠️ <b>No has iniciado sesión.</b> Entra al portal con tu cuenta de profesor y vuelve a abrir esta página. ' +
+                   '<a href="./" style="color:#7f1d1d;font-weight:700">Entrar</a>');
+    if (e && e.message === 'noprofe')
+      return fallo('⚠️ Esta hoja es para <b>profesores y administradores</b>. Trae la clave de respuestas, ' +
+                   'así que no se sirve a las cuentas de alumno.');
+    fallo('No se pudo construir la hoja: ' + esc((e && e.message) || e));
+  });
+})();
+</script>
+</body>
+</html>
