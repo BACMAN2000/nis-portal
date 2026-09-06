@@ -3908,9 +3908,11 @@ const _GATE_PARENT= (function(){ const m={}; _SUB_NODES.forEach(n=>m[n.key]=n.pa
    con lo que NIS ya tenía (Fun for Nordic, Listening B2, Use of English,
    Writing, Practice Tests) y con lo que se trajo de Cohasset tal cual se
    comparten los demás cursos: una copia en este repo, servida desde este
-   origen — cambridge-level.html + cambridge-data/ (KET…CPE),
-   flyers-practice.html y cambridge-bonus.html (su audio sale del mismo bucket
-   de Supabase que el Listening B2). Los dibujos salen de cambridge-icons.js,
+   origen — cambridge-level.html + cambridge-data/ (KET…CPE) y
+   cambridge-bonus.html (su audio sale del mismo bucket de Supabase que el
+   Listening B2). Flyers ya no tiene motor propio: desde el 5-sep-2026 sus diez
+   tests viven en yle/flyers/ y los pinta yle-practice.html, como Starters y
+   Movers, así que cuentan escudos y llegan al panel del profesor. Los dibujos salen de cambridge-icons.js,
    que es UN archivo copiado igual a las dos webs.
 
    Cada rama y cada nivel es un nodo de acceso (english.cambridge.<rama>.<nivel>)
@@ -3934,7 +3936,7 @@ const CAMBRIDGE_TRACKS = {
       {key:'flyers',      icon:'flyers',   name:'Flyers',   cefr:'A2 · YLE', short:'Flyers',
        desc:'The A2 Flyers course — Fun for Nordic 3, unit by unit.', href:'nis-fun/engine/?level=flyers'},
       {key:'flyerstests', icon:'practice', name:'Flyers Practice Tests', cefr:'A2 · 10 tests', short:'Flyers Tests',
-       desc:'Ten full Flyers practice tests: Reading & Writing, Listening and Speaking, with answer keys.', href:'flyers-practice.html'},
+       desc:'Full A2 Flyers practice tests with the official format and timing: Listening, Reading & Writing and Speaking, with the eight-answer dialogue, the open cloze and the picture story.', href:'yle-practice.html?level=flyers'},
     ]},
   main: {
     node:'english.cambridge.main', icon:'main', color:'#7C3AED',

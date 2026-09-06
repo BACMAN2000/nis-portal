@@ -1,0 +1,158 @@
+{
+  "_fuente": "Cambridge English, Pre A1 Starters / A1 Movers / A2 Flyers Handbook for teachers 2024. Escalas de Speaking: pp. 85-87 (los descriptores de las bandas 5, 3 y 1 son literales; 4 y 2 son las bandas intermedias que define el propio handbook). Criterios de escritura: Movers Part 6 p. 44 y Flyers Part 7 p. 70. La ayuda en español la escribe el colegio; el descriptor en inglés es el oficial y manda.",
+  "_banda_intermedia": {
+    "4": "Some features of 3.0 and some features of 5.0 in approximately equal measure.",
+    "2": "Some features of 3.0 and some features of 1.0 in approximately equal measure.",
+    "0": "Performance does not satisfy the Band 1 descriptor."
+  },
+  "speaking": {
+    "starters": {
+      "nota": "En Pre A1 Starters el primer criterio se llama solo «Vocabulary»: la gramática no se evalúa en este nivel.",
+      "criteria": [
+        {
+          "id": "vocabulary",
+          "name": "Vocabulary",
+          "es": "Vocabulario",
+          "sub": ["Range", "Control", "Extent"],
+          "ayuda": "Tiene las palabras que piden las tareas, dice frases sencillas y responde con palabra o frase.",
+          "bands": {
+            "5": "Uses the vocabulary required to deal with all test tasks. Produces simple utterances but makes occasional mistakes. Generally responds at word or phrase level but may also produce some longer utterances.",
+            "3": "Uses the vocabulary required to deal with most test tasks. Attempts a few simple utterances but makes some basic mistakes which may obscure meaning. Generally responds at word level but may also produce phrases.",
+            "1": "Has the vocabulary required to attempt some test tasks. May attempt a few simple utterances but basic mistakes and lack of language prevent communication. Responds only at single word level, or does not respond."
+          }
+        },
+        {
+          "id": "pronunciation",
+          "name": "Pronunciation",
+          "es": "Pronunciación",
+          "sub": ["Individual sounds", "Word stress"],
+          "ayuda": "Se le entiende y coloca el acento de la palabra. En Starters todavía no se valora la entonación.",
+          "bands": {
+            "5": "Generally intelligible, although some sounds may be unclear. Has limited control of word stress.",
+            "3": "Sometimes intelligible.",
+            "1": "Attempts to produce the sounds of the language but is often difficult to understand."
+          }
+        },
+        {
+          "id": "interaction",
+          "name": "Interaction",
+          "es": "Interacción",
+          "sub": ["Reception/Responding", "Support required", "Fluency/Promptness"],
+          "ayuda": "Responde a lo que se le pide, sabe pedir ayuda y contesta sin demoras largas.",
+          "bands": {
+            "5": "Generally responds appropriately to instructions, questions and visual prompts, although some support may be required. Is able to ask for support if required. Often responds promptly, although there may be hesitation.",
+            "3": "Responds to instructions, questions and visual prompts, although frequent support may be required. May attempt to ask for support if required. There is hesitation and responses may be delayed or halting.",
+            "1": "Requires support throughout and often may not respond to instructions, questions and visual prompts. Hesitation requires a great deal of patience of a listener."
+          }
+        }
+      ]
+    },
+    "movers": {
+      "nota": "Desde A1 Movers el primer criterio incluye gramática y aparece «Cohesion» (unir ideas con conectores). En Pronunciation se añade la entonación.",
+      "criteria": [
+        {
+          "id": "vocabulary_and_grammar",
+          "name": "Vocabulary and grammar",
+          "es": "Vocabulario y gramática",
+          "sub": ["Range", "Control", "Extent", "Cohesion"],
+          "ayuda": "Usa las palabras y estructuras del nivel y une ideas con conectores sencillos (and, but, then, when).",
+          "bands": {
+            "5": "Uses the vocabulary required to deal with all test tasks. Uses some simple structures correctly but makes some mistakes, although meaning is generally clear. Responds at word, phrase or longer utterance level. Can join ideas with some simple linkers (e.g. and, but, then, when).",
+            "3": "Uses the vocabulary required to deal with most test tasks. Produces some simple structures but makes some basic mistakes which may obscure meaning. Generally responds at word or phrase level but may also produce some longer utterances. Can join ideas with a few simple linkers (e.g. and).",
+            "1": "Uses the vocabulary required to attempt some test tasks. Attempts a few simple utterances but makes some basic mistakes which may obscure meaning. Generally responds at word level but may also produce phrases. Can join words with simple linkers (e.g. and)."
+          }
+        },
+        {
+          "id": "pronunciation",
+          "name": "Pronunciation",
+          "es": "Pronunciación",
+          "sub": ["Individual sounds", "Stress", "Intonation"],
+          "ayuda": "Se le entiende casi siempre; empieza a controlar el acento de la palabra y la entonación.",
+          "bands": {
+            "5": "Is mostly intelligible. Has limited control of word stress and intonation.",
+            "3": "Is mostly intelligible, although some sounds may be unclear. Has limited control of word stress.",
+            "1": "Sometimes may be difficult to understand."
+          }
+        },
+        {
+          "id": "interaction",
+          "name": "Interaction",
+          "es": "Interacción",
+          "sub": ["Reception/Responding", "Support required", "Fluency/Promptness"],
+          "ayuda": "Responde a lo que se le pide con poca ayuda y sin pausas largas dentro de la frase.",
+          "bands": {
+            "5": "Responds appropriately to instructions, questions and visual prompts, and very little support is required. Is able to ask for support if required. Almost always responds promptly, although there may be hesitation and some pausing mid-utterance.",
+            "3": "Responds appropriately to instructions, questions and visual prompts, although some support is required. Is able to ask for support if required. Often responds promptly, although there may be hesitation and pausing mid-utterance.",
+            "1": "Responds appropriately to some instructions, questions and visual prompts, although frequent support may be required. May attempt to ask for support if required. There is hesitation and pausing mid-utterance; responses may be delayed or halting."
+          }
+        }
+      ]
+    },
+    "flyers": {
+      "nota": "En A2 Flyers se pide un abanico («a range») de vocabulario, de estructuras y de conectores, y control del acento y la entonación también en frases largas.",
+      "criteria": [
+        {
+          "id": "vocabulary_and_grammar",
+          "name": "Vocabulary and grammar",
+          "es": "Vocabulario y gramática",
+          "sub": ["Range", "Control", "Extent", "Cohesion"],
+          "ayuda": "Variedad de palabras y de estructuras del nivel, y une ideas con varios conectores (and, but, when, then, because).",
+          "bands": {
+            "5": "Uses a range of vocabulary to deal with all test tasks. Uses a range of simple structures and, although there are some mistakes, meaning is clear. Responds at word, phrase or longer utterance level. Can join ideas with a range of simple linkers (e.g. and, but, when, then, because).",
+            "3": "Uses the vocabulary required to deal with most test tasks. Uses some simple structures correctly but makes some mistakes, although meaning is generally clear. Responds at word, phrase or longer utterance level. Can join ideas with some simple linkers (e.g. and, but, when, then).",
+            "1": "Uses the vocabulary required to deal with some test tasks. Attempts some simple structures but makes some basic mistakes which may obscure meaning. Generally responds at word or phrase level but may also produce longer utterances. Can join ideas with a few simple linkers (e.g. and)."
+          }
+        },
+        {
+          "id": "pronunciation",
+          "name": "Pronunciation",
+          "es": "Pronunciación",
+          "sub": ["Individual sounds", "Stress", "Intonation"],
+          "ayuda": "Se le entiende y controla algo el acento y la entonación, tanto en palabras como en frases largas.",
+          "bands": {
+            "5": "Is mostly intelligible. Has some control of stress and intonation at both word and longer utterance levels.",
+            "3": "Is mostly intelligible. Has limited control of word stress and intonation.",
+            "1": "Is mostly intelligible, although some sounds may be unclear. Has limited control of word stress."
+          }
+        },
+        {
+          "id": "interaction",
+          "name": "Interaction",
+          "es": "Interacción",
+          "sub": ["Reception/Responding", "Support required", "Fluency/Promptness"],
+          "ayuda": "Responde a todo lo que se le pide con muy poca ayuda y solo con las pausas naturales.",
+          "bands": {
+            "5": "Responds appropriately to all instructions, questions and visual prompts, and very little support is required. Is able to ask for support if required. Responds promptly with only natural hesitation and pausing.",
+            "3": "Responds appropriately to almost all instructions, questions and visual prompts, and little support is required. Is able to ask for support if required. Almost always responds promptly, although there may be hesitation and some pausing mid-utterance.",
+            "1": "Responds appropriately to some instructions, questions and visual prompts, although frequent support may be required. May attempt to ask for support if required. There is hesitation and pausing mid-utterance; responses may be delayed or halting."
+          }
+        }
+      ]
+    }
+  },
+  "_pronunciation_cap": "Pronunciation: If the candidate produces some language, but insufficient language to make a confident judgement about pronunciation (e.g. just a couple of words), the maximum score that can be awarded is 3, regardless of quality of pronunciation.",
+  "writing": {
+    "movers_p6": {
+      "titulo": "A1 Movers · Reading & Writing Parte 6",
+      "total": 10,
+      "regla": [
+        "Preguntas 1 y 2 (completar la frase): 1 marca cada una, por una respuesta que represente el dibujo con exactitud.",
+        "Preguntas 3 a 6 (responder y escribir dos frases): 2 marcas cada una — 1 marca si la respuesta se entiende, y 1 marca más si representa el dibujo con exactitud.",
+        "En las preguntas 5 y 6 se esperan dos frases distintas."
+      ],
+      "marcas": {"complete": 1, "answer": 2, "write": 2}
+    },
+    "flyers_p7": {
+      "titulo": "A2 Flyers · Reading & Writing Parte 7 (escribir la historia)",
+      "total": 5,
+      "bands": {
+        "5": "Describe una progresión de hechos explícitamente conectados entre sí, se basa en los tres dibujos y se entiende con un esfuerzo mínimo por parte del lector.",
+        "4": "Describe una progresión de hechos, algunos explícitamente conectados, se basa en los tres dibujos y exige algo de esfuerzo al lector.",
+        "3": "Describe una progresión de hechos y atiende al menos a uno de los dibujos; o atiende a los tres pero cuesta bastante leerla y puede haber que leerla dos veces.",
+        "2": "Incluye al menos una frase claramente comprensible.",
+        "1": "Incluye algunas palabras en inglés que el lector reconoce.",
+        "0": "No la intentó, o la respuesta es totalmente incomprensible."
+      }
+    }
+  }
+}
