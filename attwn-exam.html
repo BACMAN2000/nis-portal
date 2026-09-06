@@ -398,7 +398,11 @@ window.viewChapters=async(rid,lvl,fromHash)=>{
    el Portal → Controles de lectura, que es la única fuente de verdad. */
 
 /* ---------- construcción del examen ---------- */
-function gapItems(data,ch){
+/* La misma palabra en singular y en plural regala igual: "stranger" en el
+   hueco y "strangers" en un evento de la historia. Se compara por una clave que
+   se come la -s final. */
+function _clave(w){ w=String(w||'').toUpperCase(); return w.length>3&&w.endsWith('S')?w.slice(0,-1):w; }
+function gapItems(data,ch,evitar){
   // 4 huecos de listening: una oración del retelling con una palabra borrada;
   // guarda el nº de párrafo para reproducir SU audio.
   //
@@ -413,19 +417,36 @@ function gapItems(data,ch){
   const items=[]; const used=new Set(), dichas=new Set();
   const frases=p=>paras[p].split(/(?<=[.!?…’”])\s+/);
   const vocab=shuffle(c.vocab);
-  const pasada=(maxPal)=>{
+  /* `evitar` trae las palabras que YA se leen en las preguntas de comprension,
+     en los true/false y en los eventos. Se saltan mientras haya alternativas: un
+     hueco cuya respuesta esta impresa tres preguntas mas abajo no mide si el
+     alumno escucho, mide si hojeo el examen antes de empezar. La ultima pasada
+     se relaja, que es mejor un hueco repetido que un examen con preguntas de
+     menos — el total tiene que seguir siendo 4. */
+  /* Lo ya impreso: lo que llega de fuera (comprension, true/false, eventos)
+     mas las frases de los huecos segun se van eligiendo — el enunciado de un
+     hueco puede contener la respuesta de otro, y eso tambien la regala. */
+  const impreso=new Set(evitar||[]);
+  const apunta=t=>String(t||'').split(/[^A-Za-z']+/).forEach(w=>{ if(w.length>2) impreso.add(_clave(w)); });
+  const veta=w=>impreso.has(_clave(w));
+  /* Y al reves: la frase que se elige para un hueco no puede llevar dentro la
+     respuesta de un hueco ya elegido. Si no, la pregunta 3 le regala la 1. */
+  const respuestas=[];
+  const chocaCon=s=>respuestas.some(r=>new RegExp('\b'+r+'s?\b','i').test(s));
+  const pasada=(maxPal,estricta)=>{
     for(const v of vocab){
       if(items.length>=4) return;
       if(dichas.has(v[0])) continue;                 // una palabra, un hueco
+      if(estricta&&veta(v[0])) continue;
       const w=v[0].toLowerCase(); const re=new RegExp('\\b('+w+'s?)\\b','i');
       for(let p=0;p<paras.length;p++){
-        const s=frases(p).find(s=>re.test(s)&&s.split(/\s+/).length<=maxPal&&!used.has(s));
-        if(s){ used.add(s); dichas.add(v[0]); const m=s.match(re);
+        const s=frases(p).find(s=>re.test(s)&&s.split(/\s+/).length<=maxPal&&!used.has(s)&&!chocaCon(s));
+        if(s){ used.add(s); dichas.add(v[0]); const m=s.match(re); apunta(s); respuestas.push(m[1]);
           items.push({sent:s.replace(re,'______'), answer:m[1], para:p+1}); break; }
       }
     }
   };
-  pasada(30); pasada(45); pasada(Infinity);
+  pasada(30,true); pasada(45,true); pasada(Infinity,true);
   /* Relleno cuando el vocabulario del capítulo no da para cuatro. Se borra una
      palabra de contenido (5+ letras, no de relleno y que salga UNA sola vez en
      la frase, para no dejarla visible al lado del hueco). */
@@ -433,18 +454,40 @@ function gapItems(data,ch){
   for(let p=0;p<paras.length && items.length<4;p++){
     for(const s of frases(p)){
       if(items.length>=4) break;
-      const n=s.split(/\s+/).length; if(used.has(s)||n<6||n>30) continue;
+      const n=s.split(/\s+/).length; if(used.has(s)||n<6||n>30||chocaCon(s)) continue;
       const cand=(s.match(/\b[A-Za-z]{5,}\b/g)||[]).filter(x=>
-        !VACIAS.has(x.toLowerCase()) && !dichas.has(x.toUpperCase()) &&
+        !VACIAS.has(x.toLowerCase()) && !dichas.has(x.toUpperCase()) && !veta(x) &&
         (s.match(new RegExp('\\b'+x+'\\b','g'))||[]).length===1);
       if(!cand.length) continue;
       const w=cand[Math.floor(Math.random()*cand.length)];
-      used.add(s); dichas.add(w.toUpperCase());
+      used.add(s); dichas.add(w.toUpperCase()); apunta(s); respuestas.push(w);
       items.push({sent:s.replace(new RegExp('\\b'+w+'\\b'),'______'), answer:w, para:p+1});
     }
   }
+  /* Ultimo recurso, ya sin veto: mejor un hueco cuya palabra se pueda leer en
+     otra pregunta que un examen con menos de cuatro. Con el reordenamiento casi
+     nunca hace falta llegar aqui. */
+  pasada(Infinity,false);
+  /* Red final, y determinista: da igual en que orden se hayan elegido, si la
+     respuesta de un hueco esta escrita en el enunciado de otro se tapa ahi con
+     puntos suspensivos. El audio no cambia —sigue diciendo la palabra, que es
+     justo lo que el otro hueco pide escuchar—, y la frase se sigue entendiendo.
+     Elegir bien evita casi todos los casos; esto cierra los que quedan. */
+  items.forEach(a=>{
+    if(!a.answer) return;
+    const re=new RegExp('\\b'+String(a.answer).replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'s?\\b','ig');
+    items.forEach(b=>{ if(b!==a) b.sent=b.sent.replace(re,'…'); });
+  });
   return items;
 }
+/* Las palabras que el alumno tiene que ESCRIBIR no pueden estar impresas en
+   otra pregunta del examen. Pasaba en los controles de los capitulos 2-4: el
+   hueco del audio pedia una palabra, el alumno seguia sin saberla y mas
+   adelante se encontraba «What does "SKULL" mean?», con la palabra en el
+   enunciado. Volvia atras y la copiaba sin haber escuchado nada.
+   No era mala suerte: los huecos del listening y las preguntas de vocabulario
+   salen del MISMO banco de doce palabras del capitulo. Se arregla eligiendo,
+   no descartando: el examen tiene que seguir teniendo 27 preguntas. */
 function buildExam(data,ch,lvl,rid,ch1x){
   const c=data.CHAPTERS[ch-1]; const qs=[]; const hard=(lvl==='b2'||lvl==='c1');
   // A · comprensión
@@ -453,8 +496,49 @@ function buildExam(data,ch,lvl,rid,ch1x){
   // B · true/false
   c.tf.forEach(t=>qs.push({tag:'True / False', type:'mc', q:t[0],
     opts:[{t:'True',ok:t[1]===true},{t:'False',ok:t[1]===false}], ex:t[2]}));
+  /* Los huecos del audio se eligen ANTES que el vocabulario, para que sus
+     palabras queden fuera de la sección C. Con doce palabras por capítulo y
+     cuatro huecos quedan ocho, y hacen falta seis. */
+  /* Lo que el alumno ya puede LEER antes de llegar al audio: los enunciados y
+     las opciones de comprension, los true/false y los eventos de la historia.
+     De ahi sale el veto para elegir los huecos. */
+  const yaImpreso=new Set();
+  const meter=t=>String(t||'').split(/[^A-Za-z']+/).forEach(w=>{ if(w.length>2) yaImpreso.add(_clave(w)); });
+  c.comp.forEach(q=>{ meter(q[0]); (q[1]||[]).forEach(meter); });
+  c.tf.forEach(t=>meter(t[0]));
+  ((data.EVENTS[ch]||{}).ev||[]).forEach(meter);
+  /* Y las DEFINICIONES del vocabulario, que es por donde se escapaban las
+     ultimas: la definicion de STORM dice "strong wind and rain", y cualquier
+     definicion del capitulo puede salir como distractor de cualquier pregunta.
+     Con el nombre de la palabra no bastaba. */
+  c.vocab.forEach(v=>{ meter(v[0]); meter(v[1]); });
+  /* Y los enunciados FIJOS de este motor, que también son texto que el alumno
+     lee: «Listen to the paragraph and complete», «Which of these happened
+     FIRST…». Por ahí se colaban las últimas — el hueco pedía "complete" o
+     "happened" y estaban impresas en la pregunta de al lado. */
+  meter('Listen to the paragraph and complete Which of these happened FIRST in this chapter '
+       +'What does mean Write the word it starts with True False Comprehension Vocabulary Listening Story order');
+  const gaps=gapItems(data,ch,yaImpreso);
+  const enHuecos=new Set(gaps.map(g=>_clave(g.answer)));
   // C · vocabulario (en B2/C1, 2 de las 6 se ESCRIBEN)
-  const vv=shuffle(c.vocab).slice(0,6);
+  const libres=c.vocab.filter(v=>!enHuecos.has(_clave(v[0])));
+  const vv=shuffle(libres.length>=6?libres:c.vocab);
+  /* En B2 y C1 las DOS primeras de vv se escriben, y esas tampoco pueden estar
+     impresas en otra pregunta. Se ordena vv poniendo delante las que no se leen
+     en ningun sitio: comprension, true/false, eventos, las frases de los huecos
+     y las definiciones que pueden salir de distractoras. Si no hubiera ninguna
+     limpia, el orden no cambia y se avisa por el auditor, no se rompe el examen. */
+  if(hard){
+    const noImprimible=new Set();
+    const meter2=t=>String(t||'').split(/[^A-Za-z']+/).forEach(w=>{ if(w.length>2) noImprimible.add(_clave(w)); });
+    c.comp.forEach(q=>{ meter2(q[0]); (q[1]||[]).forEach(meter2); });
+    c.tf.forEach(t=>meter2(t[0]));
+    ((data.EVENTS[ch]||{}).ev||[]).forEach(meter2);
+    c.vocab.forEach(v=>meter2(v[1]));            // las definiciones, no los nombres
+    gaps.forEach(g=>meter2(g.sent));
+    vv.sort((a,b)=>(noImprimible.has(_clave(a[0]))?1:0)-(noImprimible.has(_clave(b[0]))?1:0));
+  }
+  vv.length=Math.min(6,vv.length);
   vv.forEach((v,i)=>{
     if(hard && i<2){
       qs.push({tag:'Vocabulary · write', type:'type', q:'Write the word: <i>'+esc(v[1])+'</i> (it starts with “'+v[0][0]+'”)',
@@ -466,7 +550,7 @@ function buildExam(data,ch,lvl,rid,ch1x){
     }
   });
   // D · listening (escribe la palabra que oyes)
-  gapItems(data,ch).forEach(g=>qs.push({tag:'Listening', type:'type',
+  gaps.forEach(g=>qs.push({tag:'Listening', type:'type',
     q:'🎧 Listen to the paragraph and complete: <br><i>'+esc(g.sent)+'</i>',
     audio:audBase(rid,lvl)+'ch'+ch+'-p'+g.para+'.mp3', answer:g.answer,
     ex:'The missing word was “'+g.answer+'”.'}));
