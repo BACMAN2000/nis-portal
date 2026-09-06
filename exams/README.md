@@ -22,6 +22,28 @@ admin entran siempre, y ven además el guion.
 
 El profesor abre y cierra en **Portal → 📋 Exámenes de unidad**.
 
+## En papel
+
+`unit-exam-print.html` pinta el **mismo** examen de la base en A4, listo para
+imprimir o para guardar en PDF (Ctrl+P → Guardar como PDF). Tres documentos:
+
+| `doc=` | Qué es |
+|---|---|
+| `exam` | La hoja del alumno: cabecera con nombre, clase, fecha y nota, círculos para marcar, líneas para escribir y 24 renglones para el Writing. |
+| `key` | La clave, con la respuesta y su explicación, numeradas 1-39, y el guion del listening al final. |
+| `script` | Solo el guion, para leerlo en voz alta si el audio falla. |
+
+`&compact=1` deja fluir las partes en vez de empezar cada una en hoja nueva:
+de 8 caras a 5. Sin él, una parte por hoja, que es como se reparte en la sala.
+
+Se llega desde los botones **🖨️ Papel · 🔑 Clave · 🎧 Guion** que hay en cada
+nivel, tanto en el panel del profesor como en el propio examen. **La página
+vuelve a comprobar el rol**: trae la clave de respuestas, así que no basta con
+no enseñar el botón — a una cuenta de alumno no se le sirve.
+
+El **audio** del listening lo pone el profesor desde el examen en pantalla: en
+papel no hay otra manera, y la hoja lo dice en vez de fingir que sí.
+
 ## El circuito para tocar un examen
 
 ```bash

@@ -78,6 +78,20 @@ window.supabase = { createClient(){ return {
 </script>
 """ % (json.dumps(examenes, ensure_ascii=False), rol, abierto)
 
+def con_stub(nombre, salida, titulo):
+    html = io.open(os.path.join(RAIZ, nombre), encoding='utf-8').read()
+    # El reemplazo va como funcion, no como cadena: re.sub interpreta los
+    # escapes del texto de reemplazo y convertia cada \n del JSON en un salto
+    # de linea de verdad dentro del string de JavaScript.
+    html = re.sub(r'<script src="https://cdn\.jsdelivr\.net/npm/@supabase[^>]*></script>',
+                  lambda m: STUB, html, count=1)
+    html = html.replace('<title>', '<title>[PRUEBA %s] ' % MODO, 1)
+    io.open(os.path.join(RAIZ, salida), 'w', encoding='utf-8').write(html)
+    print('%s generado en modo %s (%s)' % (salida, MODO, titulo))
+
+
+con_stub('unit-exam-print.html', '_test-unit-exam-print.html', 'hoja imprimible')
+
 html = io.open(os.path.join(RAIZ, 'unit-exam.html'), encoding='utf-8').read()
 # El stub tiene que reemplazar al CDN de Supabase, no sumarse: si el de verdad
 # carga despues, machaca el de mentira y la prueba se va a la base real.

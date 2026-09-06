@@ -38,6 +38,10 @@
   .chip.ok{ background:#dcfce7; color:#065f46 }
   .chip.no{ background:#fee2e2; color:#991b1b }
   .inherit{ display:block; font-size:11.5px; color:var(--muted); margin-top:6px }
+  .printrow{ display:flex; gap:6px; flex-wrap:wrap; margin-top:10px; padding-top:9px; border-top:1px dashed var(--line) }
+  .printrow a{ background:#eef2f9; color:var(--blue-d); border-radius:8px; padding:4px 9px; font-size:11.5px;
+    font-weight:700; text-decoration:none; cursor:pointer }
+  .printrow a:hover{ background:#dbe4f3 }
   .hero{ background:linear-gradient(135deg,#14524b,#0f2f42); color:#a7f3d0; border-radius:18px; padding:20px 18px;
     margin-bottom:18px; position:relative; overflow:hidden; border:1px solid var(--gold) }
   .hero::after{ content:"EXAM"; position:absolute; top:16px; right:-30px; transform:rotate(35deg); background:#b91c1c;
@@ -242,6 +246,11 @@ function accFor(key){
   return {unlocked,extra,until};
 }
 const idx=(kind,lvl)=>INDEX.find(x=>x.kind===kind&&x.level===lvl);
+/* Los tres documentos de papel. El enlace se pinta solo para el profesor, y la
+   propia hoja vuelve a comprobar el rol: trae la clave de respuestas, así que
+   no basta con no enseñar el botón. */
+const docUrl=(kind,lvl,doc)=>'unit-exam-print.html?grade='+GRADE+'&units='+UNITS+
+  '&kind='+kind+'&level='+lvl+'&doc='+doc;
 
 /* ---------- navegación por hash ---------- */
 let _hashMute=false;
@@ -316,6 +325,11 @@ window.viewLevels=(kind,fromHash)=>{
           <span class="chip ${open?'ok':'no'}">${open?'✅ Open for students':'🔒 Locked for students'}</span>
           ${open&&a.until?`<span class="inherit">🕒 open until ${new Date(a.until).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}</span>`:''}
           ${a.extra?`<span class="inherit">⏱ +${a.extra} min extra time</span>`:''}
+          ${staff?`<div class="printrow" onclick="event.stopPropagation()">
+            <a href="${docUrl(kind,l,'exam')}" target="_blank" rel="noopener" title="Hoja del alumno en A4">🖨️ Papel</a>
+            <a href="${docUrl(kind,l,'key')}" target="_blank" rel="noopener" title="Clave de respuestas">🔑 Clave</a>
+            <a href="${docUrl(kind,l,'script')}" target="_blank" rel="noopener" title="Guion del listening">🎧 Guion</a>
+          </div>`:''}
         </div>`; }).join('')}
     </div>
     <div style="margin-top:16px"><button class="btn ghost" onclick="viewKinds()">← Back</button></div>`;

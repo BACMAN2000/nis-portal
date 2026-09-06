@@ -2515,6 +2515,15 @@ const uexKey=(kind,lvl)=>uexCtl.grade+':u'+uexCtl.units+':'+kind+':'+lvl;
 /* El grado de la clave ('g9') es el del EXAMEN; el alcance ('g9-B') es el del
    salón al que se le abre. Son cosas distintas aunque se parezcan. */
 const uexGradeId=()=>+String(uexCtl.grade).replace(/\D/g,'');
+/* Los tres documentos de papel de un examen. Abren en otra pestaña porque el
+   profesor los manda a imprimir y quiere seguir teniendo el panel donde está:
+   normalmente imprime los cuatro niveles seguidos. */
+const _uexDoc=(kind,lvl,doc)=>'unit-exam-print.html?grade='+uexCtl.grade+'&units='+uexCtl.units+
+  '&kind='+kind+'&level='+lvl+'&doc='+doc;
+const _uexImprimir=(kind,lvl)=>[['exam','🖨️','Hoja del alumno'],['key','🔑','Clave'],['script','🎧','Guion']]
+  .map(d=>`<a class="btn sm ghost" style="padding:2px 8px;font-size:.7rem;text-decoration:none"
+      href="${_uexDoc(kind,lvl,d[0])}" target="_blank" rel="noopener"
+      title="${d[2]} · ${kind==='official'?'oficial':'práctica'} ${lvl.toUpperCase()} (se abre listo para imprimir o guardar en PDF)">${d[1]} ${d[2]}</a>`).join(' ');
 
 async function unitExamPanel(){
   state._tab='unitexams';
@@ -2586,7 +2595,8 @@ async function unitExamPanel(){
     const porNivel=UEX_LEVELS.filter(l=>publicados.has(kind+':'+l)).map(l=>{
       const e=(pub||[]).find(x=>x.kind===kind&&x.level===l)||{};
       return `<tr><td style="padding-left:22px">${l.toUpperCase()}
-        <span class="muted" style="font-size:.72rem">· ${e.minutes||''} min · ${e.questions||0} preguntas</span></td>
+        <span class="muted" style="font-size:.72rem">· ${e.minutes||''} min · ${e.questions||0} preguntas</span>
+        <div style="margin-top:3px">${_uexImprimir(kind,l)}</div></td>
         ${cols.map(c=>celda(kind,[l],c,'Solo '+l.toUpperCase())).join('')}</tr>`;
     }).join('');
     return resumen+porNivel;
@@ -2609,7 +2619,11 @@ async function unitExamPanel(){
       <thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>
     <p class="muted" style="font-size:.82rem;margin-top:8px">⏱ <b>+5</b> añade minutos a quien esté rindiendo: el cronómetro
       crece solo en menos de 20 segundos, sin sacarlo del examen, y llega incluso cuando el reloj ya está en cero.
-      El <b>Writing</b> no se corrige aquí: llega a <b>✅ Corrección → 🎯 Productos de unidad</b>.</p>`;
+      El <b>Writing</b> no se corrige aquí: llega a <b>✅ Corrección → 🎯 Productos de unidad</b>.</p>
+    <p class="muted" style="font-size:.82rem;margin-top:4px">🖨️ Para quien rinde <b>en papel</b>: cada nivel tiene su
+      <b>hoja del alumno</b>, su <b>clave</b> y el <b>guion del listening</b>. Se abren en A4 listos para imprimir o para
+      guardar en PDF (Ctrl+P → Guardar como PDF). La clave y el guion <b>no se sirven a las cuentas de alumno</b>.
+      El audio del listening lo pones tú desde el examen en pantalla.</p>`;
 }
 window._uexUntil=(v)=>{ uexCtl.until=v||''; unitExamPanel(); };
 async function _uexWrite(filas){

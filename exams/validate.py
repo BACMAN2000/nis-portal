@@ -86,6 +86,17 @@ def revisa(ruta):
                     letras[it['ok']] += 1
                 if len(set(it['opts'])) != len(it['opts']):
                     fallos.append('mc #%d: opciones repetidas' % i)
+            # Dos variantes que se normalizan igual no anaden nada al corregir
+            # (el corrector ya ignora puntuacion y mayusculas) y en cambio la
+            # clave del profesor sale con ruido: "accusation / accusation.".
+            if 'accept' in it:
+                vistas = {}
+                for a in it['accept']:
+                    k = norm(a)
+                    if k in vistas:
+                        fallos.append('%s #%d: "%s" y "%s" son la misma respuesta'
+                                      % (t, i, vistas[k], a))
+                    vistas[k] = a
             if t == 'wf':
                 raiz = norm(it['root'])
                 for a in it['accept']:
