@@ -52,7 +52,9 @@ def sync(sub, patrones):
 
 if __name__ == '__main__':
     for pg in PAGINAS: engine(pg)
-    sync('yle', ['*.json', '*.js', '*.py', '*/*.json'])
+    # Los tests ya no viajan: viven en la tabla yle_tests. Se sincroniza el resto
+    # del paquete (specs, lista de palabras, validador, dibujos, vocabulario).
+    sync('yle', ['*.json', '*.js', '*.py', 'vocab/*.json'])
     sync('yle-audio', ['*/*.mp3', 'vocab/*/*.mp3'])
     for d in DEST: shutil.copy(os.path.join(NIS, 'paint-layer.js'), os.path.join(d, 'paint-layer.js'))
     print('listo')
