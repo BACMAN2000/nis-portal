@@ -95,7 +95,10 @@
     },
     {
      "q": "Children must bring their:",
-     "a": "card"
+     "a": [
+      "ticket",
+      "library ticket"
+     ]
     }
    ]
   },
