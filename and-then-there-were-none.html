@@ -351,11 +351,19 @@
   .c2-prog{height:10px; background:#e2e8f0; border-radius:6px; overflow:hidden; margin:6px 0 16px}
   .c2-prog span{display:block; height:100%; background:#b8934a; transition:width .3s}
 </style>
-<script src="ui-mensajes.js?v=1"></script>
+<script src="ui-mensajes.js?v=2"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js"></script>
 <script src="readers-levels.js?v=1"></script>
 <script>
+/* Aviso de la plataforma, con respaldo: NISUI en el portal NIS, cohConfirm en
+   Cohasset, y el del navegador si la pagina no carga ninguno de los dos. */
+function _preguntaUI(m, op){
+  if (window.NISUI && window.NISUI.pregunta) return window.NISUI.pregunta(m, op);
+  if (typeof window.cohConfirm === 'function') return window.cohConfirm(m);
+  return Promise.resolve(window.confirm(m));
+}
+
 /* Nivel del reader (?level=a2|b1|b2|c1|c2) → carga su archivo de datos.
    Sin nivel: pantalla de selección. c2 = "Read the original" (usa los
    datos C1 como capítulos de apoyo). El motor es el mismo para todos. */
@@ -2081,10 +2089,11 @@ function extraNotebook(){
       `${ok}/${marked} correct${ok<marked?' — the red ones need another look…':' ✓'}`;
     if(marked>=4) saveResult('notebook-deaths',ok,marked,"Notebook · death list");
   };
-  window.nbAccuse=()=>{
+  window.nbAccuse=async ()=>{
     const who=$('#nbWho').value;
     if(!who){ $('#nbReveal').innerHTML='<div class="nb-reveal lose">Choose a suspect first.</div>'; return; }
-    if(!confirm('Have you really finished Chapter 10? The solution will be revealed. Continue?')) return;
+    if(!await _preguntaUI('The solution will be revealed, and you cannot un-see it.',
+        {titulo:'Have you finished Chapter 10?', si:'Yes, reveal it', no:'Not yet', tono:'ojo'})) return;
     const n=nbLoad(); n.accused=who;
     const win = who==='Judge Lawrence Wargrave';
     if(win){ n.solved=true; $('#nbReveal').innerHTML=_nbWinHTML(); }

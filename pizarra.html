@@ -186,9 +186,17 @@ kbd{background:#3a4050;border-radius:4px;padding:1px 5px;font-family:inherit;fon
 <div id="tip"><kbd>H</kbd> barra · <kbd>F</kbd> pantalla completa · <kbd>Esc</kbd> salir de dibujar/puntero · <kbd>Ctrl</kbd>+<kbd>V</kbd> pega una imagen</div>
 <div id="toast"></div>
 
-<script src="ui-mensajes.js?v=1"></script>
+<script src="ui-mensajes.js?v=2"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
+/* Aviso de la plataforma, con respaldo: NISUI en el portal NIS, cohConfirm en
+   Cohasset, y el del navegador si la pagina no carga ninguno de los dos. */
+function _preguntaUI(m, op){
+  if (window.NISUI && window.NISUI.pregunta) return window.NISUI.pregunta(m, op);
+  if (typeof window.cohConfirm === 'function') return window.cohConfirm(m);
+  return Promise.resolve(window.confirm(m));
+}
+
 (function(){
 'use strict';
 var $ = function(s){ return document.querySelector(s); };
@@ -423,7 +431,7 @@ sheet.addEventListener('pointermove', function(e){ if(mode !== 'pointer') return
 function suelta(){ if(!drawing) return; page().ops.push(drawing); drawing = null; repinta(); save(); }
 cv.addEventListener('pointerup', suelta); cv.addEventListener('pointercancel', suelta);
 $('#dUndo').onclick = function(){ page().ops.pop(); repinta(); save(); };
-$('#dClear').onclick = function(){ if(page().ops.length && confirm('¿Borrar todo el dibujo de esta hoja?')){ page().ops = []; repinta(); save(); } };
+$('#dClear').onclick = async function(){ if(page().ops.length && await _preguntaUI('Se borrará todo lo dibujado en esta hoja.', {titulo:'¿Borrar el dibujo?', si:'Borrar', no:'Cancelar', tono:'mal', peligro:true})){ page().ops = []; repinta(); save(); } };
 
 /* ---- hojas ---- */
 function muestra(i){
@@ -434,8 +442,8 @@ $('#pPrev').onclick = function(){ muestra(S.cur - 1); };
 $('#pNext').onclick = function(){ muestra(S.cur + 1); };
 $('#pAdd').onclick = function(){ page().html = text.innerHTML; S.pages.splice(S.cur + 1, 0, {html:'', ops:[], imgs:[]}); muestra(S.cur + 1); toast('Hoja nueva'); };
 $('#pDup').onclick = function(){ page().html = text.innerHTML; S.pages.splice(S.cur + 1, 0, JSON.parse(JSON.stringify(page()))); muestra(S.cur + 1); toast('Hoja duplicada'); };
-$('#pDel').onclick = function(){ if(S.pages.length === 1){ $('#bNew').click(); return; } if(!confirm('¿Eliminar esta hoja?')) return; S.pages.splice(S.cur, 1); S.cur = Math.min(S.cur, S.pages.length - 1); text.innerHTML = page().html || ''; pintaImgs(); repinta(); ui(); save(); };
-$('#bNew').onclick = function(){ if((text.textContent.trim() || page().ops.length || page().imgs.length) && !confirm('¿Vaciar esta hoja?')) return; S.pages[S.cur] = {html:'', ops:[], imgs:[]}; text.innerHTML = ''; pintaImgs(); repinta(); save(); text.focus(); };
+$('#pDel').onclick = async function(){ if(S.pages.length === 1){ $('#bNew').click(); return; } if(!await _preguntaUI('La hoja y todo lo que tiene se pierden.', {titulo:'¿Eliminar esta hoja?', si:'Eliminar', no:'Cancelar', tono:'mal', peligro:true})) return; S.pages.splice(S.cur, 1); S.cur = Math.min(S.cur, S.pages.length - 1); text.innerHTML = page().html || ''; pintaImgs(); repinta(); ui(); save(); };
+$('#bNew').onclick = async function(){ if((text.textContent.trim() || page().ops.length || page().imgs.length) && !await _preguntaUI('Se borra el texto, el dibujo y las imágenes de esta hoja.', {titulo:'¿Vaciar esta hoja?', si:'Vaciar', no:'Cancelar', tono:'mal', peligro:true})) return; S.pages[S.cur] = {html:'', ops:[], imgs:[]}; text.innerHTML = ''; pintaImgs(); repinta(); save(); text.focus(); };
 
 /* ---- archivo / imagen / impresión ---- */
 $('#bSave').onclick = function(){

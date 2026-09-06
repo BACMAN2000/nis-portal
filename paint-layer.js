@@ -1,3 +1,10 @@
+/* Aviso de la plataforma, con respaldo: NISUI en el portal NIS, cohConfirm en
+   Cohasset, y el del navegador si la pagina no carga ninguno de los dos. */
+function _preguntaUI(m, op){
+  if (window.NISUI && window.NISUI.pregunta) return window.NISUI.pregunta(m, op);
+  if (typeof window.cohConfirm === 'function') return window.cohConfirm(m);
+  return Promise.resolve(window.confirm(m));
+}
 /* =========================================================================
  *  PaintLayer · pintar, trazar y escribir sobre una lámina
  * -------------------------------------------------------------------------
@@ -259,9 +266,12 @@ function attach(img, opts){
   var gU = grp();
   var bUndo = b('↶', 'Undo', function(){ if(!ops.length) return; redo.push(ops.pop()); repinta(); cambio(); });
   var bRedo = b('↷', 'Redo', function(){ if(!redo.length) return; ops.push(redo.pop()); repinta(); cambio(); });
-  var bClear = b('🗑️', 'Clear everything', function(){
+  var bClear = b('🗑️', 'Clear everything', async function(){
     if(!ops.length) return;
-    if(!confirm(lang === 'es' ? '¿Borrar todo lo pintado?' : 'Clear everything you painted?')) return;
+    var _es = lang === 'es';
+    if(!await _preguntaUI(_es ? 'Se borrara todo lo que has pintado en esta lamina.' : 'Everything you painted on this picture will be cleared.',
+        {titulo: _es ? '¿Borrar el dibujo?' : 'Clear your drawing?', si: _es ? 'Borrar' : 'Clear',
+         no: _es ? 'Cancelar' : 'Cancel', tono:'mal', peligro:true})) return;
     redo = ops.slice(); ops = []; repinta(); cambio();
   });
   gU.appendChild(bUndo); gU.appendChild(bRedo); gU.appendChild(bClear);

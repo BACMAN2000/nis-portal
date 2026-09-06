@@ -160,11 +160,19 @@
   Use <b>Ctrl+P</b> to print or save your completed work as a PDF for your teacher.
 </footer>
 
-<script src="ui-mensajes.js?v=1"></script>
+<script src="ui-mensajes.js?v=2"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js?v=18"></script>
 <script src="activity-save.js?v=4"></script>
 <script>
+/* Aviso de la plataforma, con respaldo: NISUI en el portal NIS, cohConfirm en
+   Cohasset, y el del navegador si la pagina no carga ninguno de los dos. */
+function _preguntaUI(m, op){
+  if (window.NISUI && window.NISUI.pregunta) return window.NISUI.pregunta(m, op);
+  if (typeof window.cohConfirm === 'function') return window.cohConfirm(m);
+  return Promise.resolve(window.confirm(m));
+}
+
 /* ============================================================
    MODULE A — verb + gerund vs verb + to-infinitive  (W2S1)
    MODULE B — stop / remember / try / forget …       (W2S2)
@@ -527,8 +535,9 @@ function wire(){
   });
   document.querySelectorAll("[data-check]").forEach(b=> b.onclick = ()=> check(b.dataset.check));
   document.querySelectorAll("[data-clear]").forEach(b=> b.onclick = ()=>{ delete s.ans.sort; delete s.self._sort; save(); render(); });
-  document.querySelectorAll("[data-reset]").forEach(b=> b.onclick = ()=>{
-    if(confirm("Clear all your answers for level " + cur + "?")){ delete store[cur]; save(); render(); }
+  document.querySelectorAll("[data-reset]").forEach(b=> b.onclick = async ()=>{
+    if(await _preguntaUI("Your answers for level " + cur + " will be deleted.",
+        {titulo:"Clear your answers?", si:"Clear", no:"Cancel", tono:'mal', peligro:true})){ delete store[cur]; save(); render(); }
   });
 }
 
