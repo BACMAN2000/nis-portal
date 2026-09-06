@@ -203,7 +203,8 @@ const RUTA = [
 
 const byId = Object.fromEntries(EXAMS.map(e=>[e.id,e]));
 const TABS = [['niveles','📚 Los exámenes'],['escala','📐 Escala Cambridge'],
-              ['nis','🏫 En el NIS'],['nota','🧮 Cómo se califica'],['recursos','📂 Recursos oficiales YLE']];
+              ['nis','🏫 En el NIS'],['nota','🧮 Cómo se califica'],
+              ['gramatica','📖 Gramática YLE'],['recursos','📂 Recursos oficiales YLE']];
 let cur = 'niveles';
 
 const el = id => document.getElementById(id);
@@ -407,12 +408,37 @@ function vistaRecursos(){
   </div>`;
 }
 
+/* 📖 Gramática YLE — la Grammar and Structures List del Handbook 2024, que hasta
+   ahora no estaba en ningún sitio del portal. Cada nivel exige además todo lo de
+   los anteriores, así que se marca de dónde viene cada estructura. */
+let GRAM = null;
+function vistaGramatica(){
+  if(!GRAM){
+    fetch('yle/grammar-2024.json', {cache:'no-cache'}).then(r=>r.json()).then(d=>{ GRAM = d; draw(); }).catch(()=>{ GRAM = {}; draw(); });
+    return `<div class="card"><h2>📖 Gramática YLE</h2><p class="muted">Cargando la lista…</p></div>`;
+  }
+  const NOM = {starters:'Pre A1 Starters', movers:'A1 Movers', flyers:'A2 Flyers'};
+  const bloque = (lvl, antes) => {
+    const L = GRAM[lvl] || [];
+    return `<h3 style="margin:18px 0 6px">${NOM[lvl]} <span class="muted" style="font-weight:400">· ${L.length} estructuras nuevas${antes?` (más las ${antes} de los niveles anteriores)`:''}</span></h3>
+      <div class="scroll"><table><tr><th style="width:38%">Estructura</th><th>Ejemplo del handbook</th></tr>
+      ${L.map(e=>`<tr><td><b>${e.name}</b></td><td><i>${e.eg}</i></td></tr>`).join('')}</table></div>`;
+  };
+  const nS = (GRAM.starters||[]).length, nM = (GRAM.movers||[]).length;
+  return `<div class="card"><h2>📖 Gramática YLE</h2>
+    <p class="muted">Lo que Cambridge espera que el niño sepa en cada nivel, tal y como está en la <i>Grammar and Structures List</i> del <i>Handbook for teachers 2024</i>. Un examen de un nivel no usa nada que no esté en su lista o en las de los niveles anteriores, igual que pasa con las palabras.</p>
+    ${bloque('starters', 0)}${bloque('movers', nS)}${bloque('flyers', nS+nM)}
+    <p class="muted" style="margin-top:14px">Fuente: Handbook for teachers 2024, páginas 29-30, 52-53 y 77. La copia que usan nuestros tests está en <code>yle/grammar-2024.json</code>, y el validador avisa si un examen usa una estructura por encima de su nivel.</p>
+  </div>`;
+}
+
 function draw(){
   drawTabs();
   el('view').innerHTML =
       cur==='escala' ? vistaEscala()
     : cur==='nis'    ? vistaNis()
     : cur==='nota'   ? vistaNota()
+    : cur==='gramatica' ? vistaGramatica()
     : cur==='recursos' ? vistaRecursos()
     :                  vistaNiveles();
   window.scrollTo(0,0);
