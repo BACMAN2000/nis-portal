@@ -20,6 +20,8 @@ reaplicarlos en un entorno nuevo. Aplicar en orden por nombre de archivo.
 | 2026-09-05 | `2026-09-05_03_unit_submissions_escritura_sin_ambito.sql` | 🔴 Alta | Un profesor **sin** fila en `teacher_access` no veía ninguna entrega pero podía **sobrescribir las 83** con un UPDATE de valor constante (sin WHERE ni RETURNING no hace falta leer). La política `unit_sub_profesor_exhibe` daba UPDATE de fila entera por tener rol `teacher`. |
 | 2026-09-05 | `2026-09-05_04_worksheets_y_reader_exam_exigen_teacher_access.sql` | 🟠 Media | Mismo patrón que la anterior en las dos tablas que quedaban: un profesor sin grados asignados podía modificar las 96 fichas y los 72 permisos de examen. Ahora exigen fila en `teacher_access`, conservando `is_admin()` porque los admin no están en esa tabla. |
 
+| 2026-09-06 | `2026-09-06_01_rls_una_politica_por_accion.sql` | 🟡 Rendimiento | Los **124** avisos de «multiple permissive policies» que quedaban: dos o más políticas que decían lo mismo se evaluaban todas, fila a fila. Se fusionaron en una por tabla y acción — que es el mismo OR que la base ya hacía — y las `ALL` que convivían con una `SELECT` se acotaron a escritura. La trampa estaba en `teacher_access`, donde la lectura era solo «tu propia fila»: acotar ahí habría dejado al admin sin ver a los demás profesores, así que primero se amplió la lectura. Incluye las 2 políticas que aún evaluaban `auth.role()` por fila y el último índice de clave foránea que faltaba. Verificado con rol simulado (admin, profesor, alumno) antes y después: mismas filas visibles en las nueve tablas. **124 avisos → 0.** |
+
 ## Pendientes (configuración de Supabase Auth — no es SQL)
 
 - **Leaked Password Protection: BLOQUEADO POR PLAN.** Comprobado en el panel el
