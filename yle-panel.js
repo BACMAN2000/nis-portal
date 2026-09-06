@@ -15,13 +15,17 @@
 'use strict';
 const NIV = {starters: 'Pre A1 Starters', movers: 'A1 Movers', flyers: 'A2 Flyers'};
 const PAPER = {listening: 'Listening', rw: 'Reading & Writing', speaking: 'Speaking'};
-const ESCALAS = [
-  ['vocabulary_and_grammar', 'Vocabulary & grammar', 'Usa las palabras y estructuras del nivel; se le entiende aunque haya errores.'],
-  ['pronunciation', 'Pronunciation', 'Se entienden las palabras; ritmo y entonación adecuados al nivel.'],
-  ['interaction', 'Interaction', 'Responde a lo que se le pregunta, pide que repitan si hace falta, mantiene la conversación.']
+/* Las escalas de Speaking salen de yle/scales-2024.json (Handbook 2024, pp. 85-87) y cambian
+   por nivel: en Pre A1 Starters el primer criterio es solo «Vocabulary» —la gramática no se
+   evalúa— y la pronunciación todavía no valora la entonación. Si el fichero no carga, se usa
+   esta versión mínima para no dejar al profesor sin formulario. */
+const ESCALAS_MIN = [
+  {id: 'vocabulary_and_grammar', name: 'Vocabulary and grammar', es: 'Vocabulario y gramática', ayuda: 'Usa las palabras y estructuras del nivel; se le entiende aunque haya errores.', bands: {}},
+  {id: 'pronunciation', name: 'Pronunciation', es: 'Pronunciación', ayuda: 'Se entienden las palabras; ritmo y entonación adecuados al nivel.', bands: {}},
+  {id: 'interaction', name: 'Interaction', es: 'Interacción', ayuda: 'Responde a lo que se le pregunta, pide que repitan si hace falta, mantiene la conversación.', bands: {}}
 ];
-let SPECS = null, TESTS = {}, INDICES = {};
-let V = {view: 'grado', grade: null, level: 'starters', grades: []};
+let SPECS = null, SCALES = null, TESTS = {}, INDICES = {};
+let V = {view: 'grado', grade: null, level: 'starters', test: null, grades: []};
 let pollTimer = null;
 
 const nombre = p => (p && (p.full_name || [p.first_name, p.last_name].filter(Boolean).join(' '))) || '—';
@@ -29,6 +33,22 @@ const fecha = s => s ? new Date(s).toLocaleString('es-PE', {dateStyle: 'short', 
 const pct = (s, t) => t ? Math.round(100 * s / t) : null;
 const j = (u) => fetch(u, {cache: 'no-cache'}).then(r => { if(!r.ok) throw new Error(u); return r.json(); });
 async function specs(){ if(!SPECS){ try { SPECS = await j('yle/specs.json'); } catch(e){ SPECS = null; } } return SPECS; }
+async function scales(){ if(!SCALES){ try { SCALES = await j('yle/scales-2024.json'); } catch(e){ SCALES = null; } } return SCALES; }
+/* Los tres criterios del nivel, con sus descriptores oficiales por banda. */
+function escalasDe(level){
+  const s = SCALES && SCALES.speaking && SCALES.speaking[level];
+  return (s && s.criteria) || ESCALAS_MIN;
+}
+/* El desplegable de una banda: descriptor oficial en inglés, que es el que manda. */
+function bandas(c){
+  const b = c.bands || {}, inter = (SCALES && SCALES._banda_intermedia) || {};
+  const filas = [5, 4, 3, 2, 1, 0].map(n => {
+    const t = b[n] || inter[n] || '';
+    return t ? `<tr><td class="bn">${n}</td><td>${esc(t)}</td></tr>` : '';
+  }).join('');
+  if(!filas) return '';
+  return `<details class="yle-desc"><summary>Descriptores oficiales${c.sub ? ' · ' + c.sub.join(' · ') : ''}</summary><table>${filas}</table></details>`;
+}
 async function indice(level){ if(!INDICES[level]){ try { INDICES[level] = await j('yle/' + level + '/index.json'); } catch(e){ INDICES[level] = []; } } return INDICES[level]; }
 async function testJson(level, n){ const k = level + n; if(!TESTS[k]){ try { TESTS[k] = await j('yle/' + level + '/test-' + String(n).padStart(2, '0') + '.json'); } catch(e){ TESTS[k] = null; } } return TESTS[k]; }
 function band(p){ const b = (SPECS && SPECS.shields && SPECS.shields.nis_estimate_bands) || [[90, 5], [75, 4], [60, 3], [40, 2], [0, 1]]; for(const x of b) if(p >= x[0]) return x[1]; return 1; }
@@ -56,15 +76,29 @@ const CSS = `<style id="yle-panel-css">
 .yle-item textarea{width:100%;min-height:56px;border:1.5px solid var(--border,#d9deea);border-radius:9px;padding:8px 10px;font:inherit;margin:6px 0}
 .yle-live{font-variant-numeric:tabular-nums}
 .yle-audio audio{width:100%;max-width:520px;display:block;margin:4px 0}
+.yle-desc{margin-top:4px;font-weight:400}
+.yle-desc summary{cursor:pointer;color:var(--blue,#1e3a8a);font-size:.78rem;font-weight:600}
+.yle-desc table{width:100%;border-collapse:collapse;margin-top:5px;font-size:.78rem}
+.yle-desc td{border-top:1px solid var(--border,#d9deea);padding:5px 6px;vertical-align:top;color:var(--ink,#1e293b)}
+.yle-desc td.bn{width:22px;font-weight:800;text-align:center;color:#9a6b12;background:#fdf6e6}
+.yle-script{background:#fff;border:1px solid var(--border,#d9deea);border-radius:12px;padding:12px 14px;margin:10px 0}
+.yle-script h3{margin:0 0 8px;font-size:.98rem}
+.yle-script .ln{display:grid;grid-template-columns:74px 1fr;gap:10px;padding:4px 0;border-top:1px solid #eef1f6;font-size:.9rem;line-height:1.45}
+.yle-script .ln:first-of-type{border-top:none}
+.yle-script .who{font-size:.7rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#fff;background:#64748b;border-radius:6px;padding:2px 6px;height:fit-content;text-align:center}
+.yle-script .who.R{background:#1e3a8a} .yle-script .who.F{background:#7a3f9d} .yle-script .who.M{background:#1f6f8b}
+.yle-script .who.Fch{background:#b8541f} .yle-script .who.Mch{background:#2f7d55} .yle-script .who.pausa{background:#cbd2de;color:#4b5563}
+.yle-script .pausa-txt{color:var(--muted,#64748b);font-style:italic}
+@media print{.yle-pills,.yle-bar,.nav,header,footer{display:none!important}.yle-script{break-inside:avoid;border:none}}
 </style>`;
 
 window.ylePanel = async function(grades, opts){
   V.grades = grades || (window.GRADES || []); if(opts && typeof opts.admin === 'boolean') V.admin = opts.admin;
   if(!V.grade || !V.grades.some(g => g.id === V.grade)) V.grade = V.grades.length ? V.grades[0].id : null;
-  await specs();
+  await specs(); await scales();
   if(!document.getElementById('yle-panel-css')) document.head.insertAdjacentHTML('beforeend', CSS);
   clearInterval(pollTimer);
-  const vistas = [['grado', '📊 Por grado'], ['cola', '✅ Corrección'], ['acceso', '🔐 Acceso'], ['simulacro', '🏫 Simulacro']].concat(V.admin ? [['coord', '📈 Coordinación']] : []);
+  const vistas = [['grado', '📊 Por grado'], ['cola', '✅ Corrección'], ['guion', '📻 Guion del audio'], ['acceso', '🔐 Acceso'], ['simulacro', '🏫 Simulacro']].concat(V.admin ? [['coord', '📈 Coordinación']] : []);
   const cab = `<h1>🛡️ Panel YLE</h1>
     <div class="note">Los practice tests de Cambridge Young Learners de cada grado: quién los hizo, cómo le fue parte por parte, qué queda por corregir y qué tests puede abrir cada grado. Los escudos son la <b>estimación del colegio</b>, no un resultado de Cambridge.</div>
     <div class="yle-pills">${vistas.map(v => `<button class="${v[0] === V.view ? 'on' : ''}" onclick="window._yleVista('${v[0]}')">${v[1]}</button>`).join('')}</div>
@@ -73,6 +107,7 @@ window.ylePanel = async function(grades, opts){
   try {
     if(V.view === 'grado') await vistaGrado();
     else if(V.view === 'cola') await vistaCola();
+    else if(V.view === 'guion') await vistaGuion();
     else if(V.view === 'acceso') await vistaAcceso();
     else if(V.view === 'simulacro') await vistaSimulacro();
     else await vistaCoord();
@@ -86,6 +121,48 @@ function barra(conNivel){
   return `<div class="yle-bar"><label>Grado <select onchange="window._yleGrado(this.value)">${V.grades.map(g => `<option value="${g.id}"${g.id === V.grade ? ' selected' : ''}>${esc(g.name)}</option>`).join('')}</select></label>` +
     (conNivel ? `<label>Nivel <select onchange="window._yleNivel(this.value)">${Object.keys(NIV).map(l => `<option value="${l}"${l === V.level ? ' selected' : ''}>${NIV[l]}</option>`).join('')}</select></label>` : '') + '</div>';
 }
+/* ── 📻 Guion del audio ────────────────────────────────────────────────────
+   Lo que se oye en cada parte de Listening, repartido por voces, tal y como se
+   montó el mp3. El profesor lo necesita para dirigir un simulacro (pone el audio
+   una sola vez) y para leerlo en clase cuando prefiere hacerlo él. Sale de la
+   clave "audio" del propio test, así que guion y grabación no se pueden separar. */
+const VOZ = {R: 'Examinadora', F: 'Mujer', M: 'Hombre', Fch: 'Niña', Mch: 'Niño'};
+async function testsDe(level){
+  const idx = await indice(level), vistos = new Set(idx.map(t => t.number)), fuera = [];
+  for(let n = 1; n <= 10; n++){ if(vistos.has(n)) continue; const t = await testJson(level, n); if(t) fuera.push({number: n, theme: t.theme || '', inedito: true}); }
+  return idx.concat(fuera).sort((a, b) => a.number - b.number);
+}
+async function vistaGuion(){
+  const lista = await testsDe(V.level);
+  if(!V.test || !lista.some(t => t.number === V.test)) V.test = lista.length ? lista[0].number : null;
+  const T = V.test ? await testJson(V.level, V.test) : null;
+  const spec = SPECS && SPECS.levels[V.level];
+  const sel = `<div class="yle-bar">
+    <label>Nivel <select onchange="window._yleNivel(this.value)">${Object.keys(NIV).map(l => `<option value="${l}"${l === V.level ? ' selected' : ''}>${NIV[l]}</option>`).join('')}</select></label>
+    <label>Test <select onchange="window._yleTest(this.value)">${lista.map(t => `<option value="${t.number}"${t.number === V.test ? ' selected' : ''}>Test ${t.number}${t.theme ? ' · ' + esc(t.theme) : ''}${t.inedito ? ' (aún no publicado)' : ''}</option>`).join('')}</select></label>
+    <button class="btn sm ghost" onclick="window.print()">🖨️ Imprimir</button></div>`;
+  if(!T || !T.audio){
+    $('#yleBody').innerHTML = `<div class="note">Aquí tienes lo que se oye en cada parte de Listening, por si diriges un simulacro o prefieres leerlo tú en clase.</div>` + sel +
+      `<div class="card"><p class="muted">${lista.length ? 'Este test todavía no tiene guion de audio.' : 'Este nivel aún no tiene tests en el motor YLE.'}</p></div>`;
+    return;
+  }
+  const partes = (spec ? spec.listening.parts.map(p => p.n) : [1, 2, 3, 4, 5]).filter(n => T.audio['p' + n]);
+  const leyenda = Object.keys(VOZ).map(k => `<span class="who ${k}" style="display:inline-block;margin-right:4px">${k}</span> ${VOZ[k]}`).join(' &nbsp; ');
+  $('#yleBody').innerHTML = `<div class="note">Lo que se oye en cada parte del Listening del <b>Test ${V.test}</b>, repartido por voces y con las pausas del examen. Es el mismo texto con el que se grabó el mp3. En el examen real cada parte se oye <b>dos veces</b>: el audio ya trae la repetición.</div>` +
+    sel + `<p class="muted" style="font-size:.82rem">${leyenda}</p>` +
+    partes.map(n => {
+      const tarea = spec && (spec.listening.parts.find(p => p.n === n) || {}).task;
+      return `<div class="yle-script"><h3>Part ${n}${tarea ? ' · ' + esc(tarea) : ''}</h3>
+        <audio controls preload="none" src="yle-audio/${V.level}/test_${String(V.test).padStart(2, '0')}_part${n}.mp3"></audio>
+        ${T.audio['p' + n].map(l => {
+          if(l[0] === 'pause') return `<div class="ln"><span class="who pausa">pausa</span><span class="pausa-txt">${l[1]} s</span></div>`;
+          return `<div class="ln"><span class="who ${esc(l[0])}">${esc(l[0])}</span><span>${esc(l[1])}</span></div>`;
+        }).join('')}</div>`;
+    }).join('');
+}
+window._yleTest = v => { V.test = Number(v); window.ylePanel(V.grades); };
+window._yleVerGuion = (level, test) => { V.level = level; V.test = test; V.view = 'guion'; window.ylePanel(V.grades); };
+
 async function alumnosDe(gradeId){
   const {data, error} = await sb.from('profiles').select('id, full_name, first_name, last_name, active').eq('grade_id', gradeId).eq('role', 'student').order('last_name');
   if(error) throw error;
@@ -176,7 +253,10 @@ async function tarjeta(a, quien){
   if(a.paper === 'speaking'){
     cuerpo = `<div class="yle-audio" id="au${a.id}">${a.audio_path ? 'Cargando la grabación…' : '<span class="muted">Sin grabación (solo señalar y colocar tarjetas).</span>'}</div>` +
       (ans.part ? `<div class="meta">Parte grabada: ${esc(String(ans.part))}</div>` : '') + (a.score != null ? `<div class="meta">Parte automática: ${a.score} / ${a.total}</div>` : '');
-    form = `<div class="yle-form">${ESCALAS.map(e => `<label>${e[1]}<select data-crit="${e[0]}">${[0, 1, 2, 3, 4, 5].map(n => `<option value="${n}"${n === 3 ? ' selected' : ''}>${n}</option>`).join('')}</select><small>${e[2]}</small></label>`).join('')}</div>`;
+    const ESC = escalasDe(a.level), notaNiv = (SCALES && SCALES.speaking && SCALES.speaking[a.level] || {}).nota;
+    form = `<div class="yle-form">${ESC.map(c => `<label>${esc(c.name)} <span class="muted" style="font-weight:400">· ${esc(c.es)}</span><select data-crit="${c.id}">${[0, 1, 2, 3, 4, 5].map(n => `<option value="${n}"${n === 3 ? ' selected' : ''}>${n}</option>`).join('')}</select><small>${esc(c.ayuda || '')}</small>${bandas(c)}</label>`).join('')}</div>` +
+      (notaNiv ? `<p class="muted" style="font-size:.82rem">${esc(notaNiv)}</p>` : '') +
+      (SCALES && SCALES._pronunciation_cap ? `<p class="muted" style="font-size:.78rem">${esc(SCALES._pronunciation_cap)}</p>` : '');
   } else if(a.paper === 'rw'){
     // campos del profesor: p6_t* (respuestas) y p6_w* (frases libres) de Movers; p7_* de Flyers (historia)
     const pk = Object.keys(parts).find(k => parts[k] && parts[k].teacher > 0) || 'p6';
@@ -185,8 +265,14 @@ async function tarjeta(a, quien){
     cuerpo = (P && P.image ? `<img src="yle-img/${a.level}/test_${String(a.test).padStart(2, '0')}_${P.image}.jpg" alt="" style="max-width:420px;width:100%;border-radius:10px;display:block;margin:6px 0">` : '') +
       campos.map(k => { const i = +k.replace(/^p\d+_[tws]/, ''); const preg = P && k.indexOf('_t') > 0 && P.answer && P.answer[i] ? P.answer[i].q : (k.indexOf('_w') > 0 ? 'Frase ' + (i + 1) + ' sobre el dibujo' : 'Historia'); const modelo = P && k.indexOf('_t') > 0 && P.answer && P.answer[i] ? P.answer[i].model : ''; return `<div class="yle-ans"><b>${esc(preg)}</b><br>${esc(ans[k] || '—')}${modelo ? `<br><span class="muted">Modelo: ${esc(modelo)}</span>` : ''}</div>`; }).join('') +
       (a.score != null ? `<div class="meta">Parte automática: ${a.score} / ${a.total}</div>` : '');
-    form = `<div class="yle-form">${campos.map(k => { const max = k.indexOf('_t') > 0 ? 1 : (k.indexOf('_s') > 0 ? 5 : 3); return `<label>${esc(k.replace(pk + '_', '').replace('t', 'Respuesta ').replace('w', 'Frase ').replace('s', 'Historia '))} (0–${max})<input type="number" min="0" max="${max}" value="0" data-crit="${k}" data-max="${max}"></label>`; }).join('')}</div>` +
-      `<p class="muted" style="font-size:.85rem">Movers Part 6: respuestas 1 punto, frases 3 puntos (10 en total). Flyers Part 7: historia hasta 5. Valora contenido, vocabulario y gramática del nivel.</p>`;
+    /* Marcas oficiales. Movers Part 6 (Handbook p. 44): completar 1 marca; responder y escribir
+       2 marcas cada una — 1 si se entiende y 1 más si representa el dibujo con exactitud; 10 en
+       total con las dos automáticas. Flyers Part 7 (p. 70): la historia, escala 0-5. */
+    const W = (SCALES && SCALES.writing) || {};
+    form = `<div class="yle-form">${campos.map(k => { const max = k.indexOf('_s') > 0 ? 5 : 2; return `<label>${esc(k.replace(pk + '_', '').replace('t', 'Respuesta ').replace('w', 'Frase ').replace('s', 'Historia '))} (0–${max})<input type="number" min="0" max="${max}" value="0" data-crit="${k}" data-max="${max}"></label>`; }).join('')}</div>` +
+      (a.level === 'flyers' && W.flyers_p7
+        ? `<details class="yle-desc" open><summary>${esc(W.flyers_p7.titulo)} · escala 0–${W.flyers_p7.total}</summary><table>${[5, 4, 3, 2, 1, 0].map(n => `<tr><td class="bn">${n}</td><td>${esc(W.flyers_p7.bands[n] || '')}</td></tr>`).join('')}</table></details>`
+        : (W.movers_p6 ? `<details class="yle-desc" open><summary>${esc(W.movers_p6.titulo)} · ${W.movers_p6.total} marcas</summary><table>${W.movers_p6.regla.map(r => `<tr><td>${esc(r)}</td></tr>`).join('')}</table></details>` : ''));
   } else {
     const lam = Object.keys(a.drawings || {});
     cuerpo = `<div class="meta">Láminas coloreadas: ${lam.length ? lam.map(esc).join(', ') : 'ninguna'} · parte automática ${a.score} / ${a.total}</div>` +
@@ -207,7 +293,8 @@ window._yleGuardar = async function(id, paper){
   crit.teacher_total = tot; crit.teacher_max = max;
   const fb = box.querySelector('textarea').value.trim();
   const fila = {criteria: crit, feedback: fb || null, reviewed_by: (state.session && state.session.user && state.session.user.id) || null, reviewed_at: new Date().toISOString()};
-  if(paper === 'speaking'){ fila.shields_est = Math.max(1, Math.round(tot / ESCALAS.length)); fila.score = tot; fila.total = max; }
+  /* Speaking: los tres criterios van de 0 a 5 y el escudo es su media, como el máximo por paper. */
+  if(paper === 'speaking'){ const n = Object.keys(crit).filter(k => k !== 'teacher_total' && k !== 'teacher_max').length || 3; fila.shields_est = Math.max(1, Math.round(tot / n)); fila.score = tot; fila.total = max; }
   else {
     const {data} = await sb.from('yle_attempts').select('score,total').eq('id', id).maybeSingle();
     if(data && data.total != null){ const p = pct((data.score || 0) + tot, (data.total || 0) + max); if(p != null) fila.shields_est = band(p); }
@@ -324,7 +411,8 @@ async function vistaSimulacro(){
       <button class="btn" onclick="window._yleAbrir()">Abrir sesión</button></div>${idx.length ? '' : '<p class="muted">Este nivel aún no tiene tests publicados.</p>'}</div>` +
     (abiertas || []).map(s => `<div class="card" id="ses${s.id}"><h2 style="margin:0 0 4px">🟢 ${esc((V.grades.find(g => g.id === s.grade_id) || {}).name || 'G' + s.grade_id)} · ${NIV[s.level]} · Test ${s.test} · ${PAPER[s.paper]}</h2>
       <div class="muted" style="font-size:.85rem">Abierta ${fecha(s.started_at)}</div>
-      ${s.paper === 'listening' ? `<h3 style="margin:10px 0 4px">Audio para el proyector (una sola vez por parte)</h3><div class="yle-audio">${(SPECS ? SPECS.levels[s.level].listening.parts : [1, 2, 3, 4]).map(pt => { const n = pt.n || pt; return `<div class="muted" style="font-size:.85rem">Part ${n}</div><audio controls preload="none" src="yle-audio/${s.level}/test_${String(s.test).padStart(2, '0')}_part${n}.mp3"></audio>`; }).join('')}</div>` : ''}
+      ${s.paper === 'listening' ? `<h3 style="margin:10px 0 4px">Audio para el proyector (una sola vez por parte)</h3><div class="yle-audio">${(SPECS ? SPECS.levels[s.level].listening.parts : [1, 2, 3, 4]).map(pt => { const n = pt.n || pt; return `<div class="muted" style="font-size:.85rem">Part ${n}</div><audio controls preload="none" src="yle-audio/${s.level}/test_${String(s.test).padStart(2, '0')}_part${n}.mp3"></audio>`; }).join('')}</div>
+      <p><button class="btn sm ghost" onclick="window._yleVerGuion('${s.level}',${s.test})">📻 Ver el guion de este test</button></p>` : ''}
       <h3 style="margin:10px 0 4px">Resultados en vivo</h3><div class="yle-live" data-live="${s.id}">Esperando…</div>
       <p><button class="btn sm ghost" onclick="window._yleCerrar('${s.id}')">Cerrar sesión</button></p></div>`).join('');
   const refresca = async () => { for(const s of (abiertas || [])){ const el = document.querySelector(`[data-live="${s.id}"]`); if(!el) continue; const {data} = await sb.from('yle_attempts').select('student_id, score, total, shields_est, created_at, profiles!inner(full_name, first_name, last_name)').eq('session_id', s.id).order('created_at'); const rows = data || []; el.innerHTML = rows.length ? `<table><thead><tr><th>Alumno</th><th>Nota</th><th>Escudos</th><th>Hora</th></tr></thead><tbody>${rows.map(r => `<tr><td>${esc(nombre(r.profiles))}</td><td>${r.score} / ${r.total} (${pct(r.score, r.total)} %)</td><td>${escudos(r.shields_est)}</td><td>${fecha(r.created_at)}</td></tr>`).join('')}</tbody></table>` : '<span class="muted">Todavía nadie ha terminado.</span>'; } };

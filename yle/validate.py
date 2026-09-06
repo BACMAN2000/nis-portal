@@ -29,14 +29,15 @@ could should would might can't cannot don't doesn't didn't isn't aren't wasn't w
 you're he's she's it's we're they're i've you've we've they've i'll you'll we'll they'll that's there's what's who's
 zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty thirty forty fifty
 sixty seventy eighty ninety hundred thousand first second third fourth fifth sixth seventh eighth ninth tenth eleventh twelfth twentieth
-better best worse worst more most less least further farther bigger biggest smaller smallest colour colours colourful favourite'''.split())
+better best worse worst more most less least further farther bigger biggest smaller smallest colour colours colourful favourite
+each'''.split())
 
 # como cuenta items cada tipo de parte del esquema actual (flyers-practice)
 def cuenta(parte):
     if not isinstance(parte, dict): return 0
     # esquema nuevo (yle/<level>/test-NN.json): cada parte declara su tipo
     t = parte.get('type')
-    if t == 'mc_cloze_copy': return len(parte.get('key') or [])
+    if t in ('mc_cloze_copy', 'open_cloze'): return len(parte.get('key') or [])
     if t == 'story_one_word': return sum(len(x.get('items') or []) for x in parte.get('parts') or [])
     if t == 'story_completion': return sum(len(x.get('items') or []) for x in parte.get('parts') or [])
     if t == 'productive_writing' and 'complete' in parte: return len(parte.get('complete') or []) + len(parte.get('answer') or []) + int((parte.get('write') or {}).get('n', 2))

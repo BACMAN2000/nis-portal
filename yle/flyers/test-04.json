@@ -1,0 +1,1974 @@
+{
+ "level": "flyers",
+ "number": 4,
+ "theme": "Family & Home",
+ "listening": {
+  "p1": {
+   "type": "draw_lines",
+   "image": "L1",
+   "scene": "A family party in a living room: grandpa in an armchair reading a card, a girl giving a present to her mother, a man playing the guitar, a boy with a balloon, a woman with a camera, a toddler eating cake on the floor, a teenage girl taking photos on a phone.",
+   "names": [
+    "Grandpa Roy",
+    "Uncle Ben",
+    "Aunt Mary",
+    "Cousin Jake",
+    "Emma",
+    "Grandma Sue"
+   ],
+   "people": [
+    {
+     "id": "A",
+     "desc": "grandpa in an armchair reading a card"
+    },
+    {
+     "id": "B",
+     "desc": "a girl giving a present to her mother"
+    },
+    {
+     "id": "C",
+     "desc": "a man playing the guitar"
+    },
+    {
+     "id": "D",
+     "desc": "a boy with a balloon"
+    },
+    {
+     "id": "E",
+     "desc": "a woman with a camera"
+    },
+    {
+     "id": "F",
+     "desc": "a toddler eating cake on the floor"
+    },
+    {
+     "id": "G",
+     "desc": "a teenage girl taking photos on a phone"
+    }
+   ],
+   "example": {
+    "name": "Grandpa Roy",
+    "person": "A"
+   },
+   "items": [
+    {
+     "name": "Uncle Ben",
+     "person": "C"
+    },
+    {
+     "name": "Aunt Mary",
+     "person": "E"
+    },
+    {
+     "name": "Cousin Jake",
+     "person": "D"
+    },
+    {
+     "name": "Emma",
+     "person": "G"
+    },
+    {
+     "name": "Grandma Sue",
+     "person": "B"
+    }
+   ]
+  },
+  "p2": {
+   "type": "note_taking",
+   "heading": "Party at Sarah’s house",
+   "example": {
+    "q": "Party for (person’s name)",
+    "a": "Sarah"
+   },
+   "items": [
+    {
+     "q": "Day and month",
+     "a": [
+      "11 June",
+      "11th June",
+      "June 11th",
+      "the 11th of June"
+     ]
+    },
+    {
+     "q": "Starting time",
+     "a": [
+      "four o'clock",
+      "4 o'clock",
+      "4.00",
+      "4:00",
+      "four"
+     ]
+    },
+    {
+     "q": "Number of guests",
+     "a": [
+      "14",
+      "fourteen"
+     ]
+    },
+    {
+     "q": "Sarah’s favourite cake",
+     "a": [
+      "strawberry"
+     ]
+    },
+    {
+     "q": "Address: number of the house",
+     "a": [
+      "46"
+     ]
+    }
+   ]
+  },
+  "p3": {
+   "type": "match_letters",
+   "intro": "Lily is telling her friend which family member she visited each day last week.",
+   "image": "L3",
+   "pictures": [
+    {
+     "letter": "A",
+     "word": "uncle"
+    },
+    {
+     "letter": "B",
+     "word": "grandma"
+    },
+    {
+     "letter": "C",
+     "word": "aunt"
+    },
+    {
+     "letter": "D",
+     "word": "cousin Mark"
+    },
+    {
+     "letter": "E",
+     "word": "big brother"
+    },
+    {
+     "letter": "F",
+     "word": "grandpa"
+    },
+    {
+     "letter": "G",
+     "word": "little sister"
+    },
+    {
+     "letter": "H",
+     "word": "cousin Amy"
+    }
+   ],
+   "example": {
+    "who": "Monday",
+    "letter": "D"
+   },
+   "items": [
+    {
+     "who": "Tuesday",
+     "letter": "E"
+    },
+    {
+     "who": "Wednesday",
+     "letter": "C"
+    },
+    {
+     "who": "Thursday",
+     "letter": "F"
+    },
+    {
+     "who": "Friday",
+     "letter": "A"
+    },
+    {
+     "who": "Saturday",
+     "letter": "G"
+    }
+   ]
+  },
+  "p4": {
+   "type": "mc_pictures",
+   "items": [
+    {
+     "q": "Where is Mum now?",
+     "options": [
+      "in the kitchen",
+      "in the garden",
+      "in the bathroom"
+     ],
+     "key": "B",
+     "image": "P4Q1"
+    },
+    {
+     "q": "What colour is the new sofa?",
+     "options": [
+      "green",
+      "brown",
+      "grey"
+     ],
+     "key": "C",
+     "image": "P4Q2"
+    },
+    {
+     "q": "How many brothers does Jack have?",
+     "options": [
+      "one",
+      "two",
+      "three"
+     ],
+     "key": "C",
+     "image": "P4Q3"
+    },
+    {
+     "q": "Who is the boy on the phone?",
+     "options": [
+      "his father",
+      "his grandpa",
+      "his teacher"
+     ],
+     "key": "B",
+     "image": "P4Q4"
+    },
+    {
+     "q": "Where is the cat hiding?",
+     "options": [
+      "under the bed",
+      "on the wardrobe",
+      "behind the curtains"
+     ],
+     "key": "C",
+     "image": "P4Q5"
+    }
+   ]
+  },
+  "p5": {
+   "type": "colour_write",
+   "image": "L5",
+   "scene": "A family living room: a big sofa, a TV on a small table, a lamp in the corner, a round rug on the floor, a picture of a mountain on the wall, a toy box, a cat.",
+   "object": "thing",
+   "example": {
+    "what": "the TV",
+    "colour": "black"
+   },
+   "items": [
+    {
+     "what": "the sofa",
+     "colour": "orange"
+    },
+    {
+     "what": "a book on the small table next to the TV",
+     "write": "draw"
+    },
+    {
+     "what": "the rug",
+     "colour": "yellow"
+    },
+    {
+     "what": "above the picture",
+     "write": "HOME"
+    },
+    {
+     "what": "the cat next to the toy box",
+     "colour": "grey"
+    }
+   ]
+  }
+ },
+ "rw": {
+  "p1": {
+   "type": "definitions_copy",
+   "words": [
+    "a bathroom",
+    "a kitchen",
+    "a garage",
+    "a balcony",
+    "a garden",
+    "a fridge",
+    "a sofa",
+    "a cushion",
+    "a mirror",
+    "a cupboard",
+    "a shower",
+    "a carpet",
+    "a blanket",
+    "a lamp",
+    "a wardrobe"
+   ],
+   "example": {
+    "def": "",
+    "word": "a sofa"
+   },
+   "items": [
+    {
+     "def": "You keep your food cold in this.",
+     "word": "a fridge"
+    },
+    {
+     "def": "This is the room where people cook food.",
+     "word": "a kitchen"
+    },
+    {
+     "def": "You look in this to see your face.",
+     "word": "a mirror"
+    },
+    {
+     "def": "You have a wash or clean your teeth in this room.",
+     "word": "a bathroom"
+    },
+    {
+     "def": "You put your clothes inside this in your bedroom.",
+     "word": "a wardrobe"
+    },
+    {
+     "def": "You use this to see things better at night. It has a light.",
+     "word": "a lamp"
+    },
+    {
+     "def": "Small bag of soft things you put on the sofa to be comfortable.",
+     "word": "a cushion"
+    },
+    {
+     "def": "You put your car in here at home.",
+     "word": "a garage"
+    },
+    {
+     "def": "This covers your floor – it is often soft.",
+     "word": "a carpet"
+    },
+    {
+     "def": "This is a place outside your house with flowers and grass.",
+     "word": "a garden"
+    }
+   ]
+  },
+  "p2": {
+   "type": "dialogue_mc8",
+   "speakerA": "Alice",
+   "speakerB": "Dad",
+   "example": {
+    "a": "Dad, can you help me tidy my bedroom, please?",
+    "key": "C",
+    "text": "Of course, love. Where would you like to start?"
+   },
+   "options": [
+    {
+     "letter": "A",
+     "text": "Sure, the shelves in the wardrobe are empty."
+    },
+    {
+     "letter": "B",
+     "text": "Put them in the blue box under the window."
+    },
+    {
+     "letter": "C",
+     "text": "Of course, love. Where would you like to start?"
+    },
+    {
+     "letter": "D",
+     "text": "I think they go in the wardrobe now."
+    },
+    {
+     "letter": "E",
+     "text": "Yes, of course. He can stay on the pillow."
+    },
+    {
+     "letter": "F",
+     "text": "I’m really happy with you – well done!"
+    },
+    {
+     "letter": "G",
+     "text": "Here you are. How many do you need?"
+    },
+    {
+     "letter": "H",
+     "text": "No, put them in the bathroom."
+    }
+   ],
+   "items": [
+    {
+     "a": "Let’s start with the clothes on the floor.",
+     "key": "D"
+    },
+    {
+     "a": "OK. Can you pass me the hangers, please?",
+     "key": "G"
+    },
+    {
+     "a": "Thanks! What about all these books?",
+     "key": "A"
+    },
+    {
+     "a": "Good idea. And my toys?",
+     "key": "B"
+    },
+    {
+     "a": "Perfect. Can I keep the teddy on my bed?",
+     "key": "E"
+    }
+   ]
+  },
+  "p3": {
+   "type": "gapped_text_title",
+   "words": [
+    "living",
+    "sister",
+    "pictures",
+    "friendly",
+    "house",
+    "small",
+    "kitchen",
+    "built"
+   ],
+   "text": "Last month my family moved to a new __(1)__ in a quiet street. It has three bedrooms, a big __(2)__ with a round table and a nice garden. My favourite room is the __(3)__ room because there is a big window and a soft sofa. I share a bedroom with my little __(4)__, but we have fun together. On the walls we put some __(5)__ of our old home. The neighbours are very friendly and the little dog next door always says hello.",
+   "example": "",
+   "title_choices": [
+    [
+     "A",
+     "A camping weekend"
+    ],
+    [
+     "B",
+     "My new house"
+    ],
+    [
+     "C",
+     "A noisy party"
+    ]
+   ],
+   "key": [
+    "house",
+    "kitchen",
+    "living",
+    "sister",
+    "pictures"
+   ],
+   "title_key": "B"
+  },
+  "p4": {
+   "type": "mc_cloze",
+   "title": "Grandparents’ houses",
+   "text": "Many grandparents live in houses that are different __(1)__ our own. Often, their houses have a lot __(2)__ photos on the walls and interesting objects in every room. My grandma’s kitchen is __(3)__ but always warm, and there is a nice __(4)__ of cakes. Some grandparents live in a small house with a garden __(5)__ they can grow vegetables. Others live in a flat in town and go to the park __(6)__ day. Children __(7)__ visiting their grandparents because they __(8)__ funny stories __(9)__ the past. When I visit my grandparents, I always want to __(10)__ for dinner.",
+   "example": {
+    "options": [
+     "",
+     "",
+     ""
+    ],
+    "key": "A"
+   },
+   "items": [
+    {
+     "options": [
+      "of",
+      "from",
+      "than"
+     ],
+     "key": "C"
+    },
+    {
+     "options": [
+      "of",
+      "with",
+      "from"
+     ],
+     "key": "A"
+    },
+    {
+     "options": [
+      "old",
+      "new",
+      "easy"
+     ],
+     "key": "A"
+    },
+    {
+     "options": [
+      "smell",
+      "smelling",
+      "smells"
+     ],
+     "key": "A"
+    },
+    {
+     "options": [
+      "where",
+      "when",
+      "which"
+     ],
+     "key": "A"
+    },
+    {
+     "options": [
+      "all",
+      "every",
+      "some"
+     ],
+     "key": "B"
+    },
+    {
+     "options": [
+      "love",
+      "loves",
+      "loved"
+     ],
+     "key": "A"
+    },
+    {
+     "options": [
+      "tell",
+      "say",
+      "speak"
+     ],
+     "key": "A"
+    },
+    {
+     "options": [
+      "on",
+      "about",
+      "for"
+     ],
+     "key": "B"
+    },
+    {
+     "options": [
+      "stay",
+      "stayed",
+      "staying"
+     ],
+     "key": "A"
+    }
+   ]
+  },
+  "p5": {
+   "type": "story_completion",
+   "title": "A busy Saturday",
+   "parts": [
+    {
+     "text": "Every Saturday morning, my family wakes up early. Mum starts making pancakes and Dad makes tea for everyone. My baby brother Jamie usually wakes up first, at about 7:30. After breakfast, we all help to clean the house. I always tidy the living room and my sister Ellie cleans our bedroom. Mum does the washing and Dad cleans the bathroom. At 11 o’clock, we stop and have some fruit juice. Last Saturday, Jamie made a huge mess in the kitchen with his cereal! Mum wasn’t angry, she just laughed. After lunch, we went to the park with our dog, Rocky. Rocky ran for two hours and then slept for the rest of the day. In the evening, we all watched a film together with some popcorn. It was the best day of my week.",
+     "examples": [
+      {
+       "s": "Who wakes up first?",
+       "a": "Jamie (baby brother)"
+      }
+     ],
+     "items": [
+      {
+       "s": "What does Mum make for breakfast?",
+       "a": "pancakes"
+      },
+      {
+       "s": "Who tidies the living room?",
+       "a": "the writer (I)"
+      },
+      {
+       "s": "What does Dad clean?",
+       "a": "the bathroom"
+      },
+      {
+       "s": "At what time does the family have fruit juice?",
+       "a": "(at) 11 o’clock"
+      },
+      {
+       "s": "What did Jamie make a mess with?",
+       "a": "(his) cereal"
+      },
+      {
+       "s": "What is the name of the family’s dog?",
+       "a": "Rocky"
+      },
+      {
+       "s": "What did they do in the evening?",
+       "a": "watched a film (with popcorn)"
+      }
+     ]
+    }
+   ]
+  },
+  "p6": {
+   "type": "open_cloze",
+   "title": "My cousin’s flat",
+   "text": "My cousin Oscar lives in a beautiful flat in the city. The flat __(0)__ on the fifth floor and it has a lovely balcony. From __(1)__ balcony, you can see the whole city. Oscar’s bedroom is __(2)__ big as mine. He has a little white dog called Milo who always sleeps __(3)__ the sofa. On weekends, I sometimes go to visit Oscar __(4)__ we play video games. His mum, my aunt, is very kind and makes __(5)__ the best biscuits in the world. When it is late, my dad comes to pick me up in the car.",
+   "example": "is",
+   "key": [
+    "the (or his)",
+    "as",
+    "on",
+    "and",
+    "us"
+   ]
+  },
+  "p7": {
+   "type": "story_writing",
+   "title": "The noisy neighbours",
+   "image": "P7",
+   "pictures": [
+    "A boy is sleeping in his bedroom at night.",
+    "The neighbours make a lot of noise with loud music – the boy covers his ears.",
+    "The next morning the boy’s dad talks to the neighbours and everyone smiles."
+   ],
+   "prompt": "Look at the three pictures and write the story. Write 20 or more words."
+  }
+ },
+ "speaking": {
+  "p1": {
+   "type": "find_differences_statements",
+   "image": "S1",
+   "examiner_scene": "A living room: a woman reading a book on the sofa, a boy playing with a train, a dog on the carpet, a green plant by the window, one clock, a yellow lamp on the table.",
+   "candidate_scene": "A living room: a woman reading a NEWSPAPER on the sofa, a boy playing with a TRUCK, a CAT on the carpet, a green plant by the window, TWO clocks, a yellow lamp on the table.",
+   "differences": [
+    "Book vs newspaper.",
+    "Train vs truck.",
+    "Dog vs cat.",
+    "One clock vs two clocks."
+   ]
+  },
+  "p2": {
+   "type": "information_exchange",
+   "topic": "Two families",
+   "candidate_card": "FAMILY: Mike’s family – Father’s job: ______ – Mother’s job: ______ – Children: Mike, ______ and ______ – Pet: ______ – House: in the ______.",
+   "candidate_questions": [
+    "What’s the father’s name?",
+    "Where does the family live?",
+    "How many brothers or sisters?",
+    "Do they have a pet? What is it?",
+    "What is the mother’s job?"
+   ],
+   "examiner_card": "FAMILY: The Parker family – Father David (doctor) – Mother Rachel (teacher) – Children: Lisa, Tom and baby Anna – Pet: a cat – House: in the countryside.",
+   "examiner_questions": [
+    "What’s the family’s name?",
+    "What does the father do?",
+    "What is the mother’s job?",
+    "How many children are in the family?",
+    "Where is their house?"
+   ]
+  },
+  "p3": {
+   "type": "picture_sequence",
+   "image": "S3",
+   "title": "A surprise for Mum",
+   "examiner_open": "These pictures tell a story called \"A surprise for Mum\". Two children wake up early – it’s Mother’s Day. Now you tell the rest of the story.",
+   "frames": [
+    "Two children wake up early on Mother’s Day.",
+    "They make breakfast: tea, toast and flowers on a tray.",
+    "They take the tray to Mum’s bedroom.",
+    "Mum is surprised and gives her children a big hug."
+   ]
+  },
+  "p4": {
+   "type": "personal_questions",
+   "questions": [
+    {
+     "q": "Tell me about the people in your family."
+    },
+    {
+     "q": "Do you have a favourite room in your house? Why?"
+    },
+    {
+     "q": "What do you do with your family on weekends?"
+    },
+    {
+     "q": "What’s your bedroom like?"
+    },
+    {
+     "q": "Do you help at home? What do you do?"
+    }
+   ]
+  }
+ },
+ "audio": {
+  "p1": [
+   [
+    "say",
+    "R",
+    "Part One. Listen and look. There is one example."
+   ],
+   [
+    "pause",
+    1.5
+   ],
+   [
+    "say",
+    "Mch",
+    "Look at the family party."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Mch",
+    "Grandpa Roy is the man in the armchair reading a card – that’s the example."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Mch",
+    "Can you see Uncle Ben? He’s the man playing the guitar."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "Mch",
+    "Aunt Mary? She’s the woman with the camera."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "Mch",
+    "Cousin Jake? He’s the boy with the balloon."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "Mch",
+    "Where’s Emma? Emma is the teenage girl taking photos on a phone."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "Fch",
+    "And Grandma Sue? She’s the toddler"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Mch",
+    "no, wait – she’s giving a present to her daughter."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "Mch",
+    "Actually Grandma Sue is the woman giving the present."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "pause",
+    2.0
+   ],
+   [
+    "say",
+    "R",
+    "Now listen to Part One again."
+   ],
+   [
+    "pause",
+    1.5
+   ],
+   [
+    "say",
+    "Mch",
+    "Look at the family party."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Mch",
+    "Grandpa Roy is the man in the armchair reading a card – that’s the example."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Mch",
+    "Can you see Uncle Ben? He’s the man playing the guitar."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "Mch",
+    "Aunt Mary? She’s the woman with the camera."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "Mch",
+    "Cousin Jake? He’s the boy with the balloon."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "Mch",
+    "Where’s Emma? Emma is the teenage girl taking photos on a phone."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "Fch",
+    "And Grandma Sue? She’s the toddler"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Mch",
+    "no, wait – she’s giving a present to her daughter."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "Mch",
+    "Actually Grandma Sue is the woman giving the present."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "R",
+    "That is the end of Part One."
+   ],
+   [
+    "pause",
+    1.0
+   ]
+  ],
+  "p2": [
+   [
+    "say",
+    "R",
+    "Part Two. Listen and look. There is one example."
+   ],
+   [
+    "pause",
+    1.5
+   ],
+   [
+    "say",
+    "R",
+    "Sarah’s mum is telling a friend about Sarah’s party."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "R",
+    "Example: the party is for Sarah."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "R",
+    "Can you see the answer? Party for (person’s name): Sarah. Now you listen and write."
+   ],
+   [
+    "pause",
+    2.0
+   ],
+   [
+    "say",
+    "F",
+    "When is the party?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Mch",
+    "On the 11th of June."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "F",
+    "And what time does it start?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Mch",
+    "At four o’clock in the afternoon."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "F",
+    "How many guests?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Mch",
+    "Fourteen children and a few parents."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "F",
+    "What cake would you like?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Mch",
+    "Sarah’s favourite is strawberry – strawberry cake, please."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "F",
+    "What’s the number of the house again?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Mch",
+    "Our house is number 46."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "pause",
+    2.0
+   ],
+   [
+    "say",
+    "R",
+    "Now listen to Part Two again."
+   ],
+   [
+    "pause",
+    1.5
+   ],
+   [
+    "say",
+    "R",
+    "Sarah’s mum is telling a friend about Sarah’s party."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "R",
+    "Example: the party is for Sarah."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "R",
+    "Can you see the answer? Party for (person’s name): Sarah. Now you listen and write."
+   ],
+   [
+    "pause",
+    2.0
+   ],
+   [
+    "say",
+    "F",
+    "When is the party?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Mch",
+    "On the 11th of June."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "F",
+    "And what time does it start?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Mch",
+    "At four o’clock in the afternoon."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "F",
+    "How many guests?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Mch",
+    "Fourteen children and a few parents."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "F",
+    "What cake would you like?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Mch",
+    "Sarah’s favourite is strawberry – strawberry cake, please."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "F",
+    "What’s the number of the house again?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Mch",
+    "Our house is number 46."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "R",
+    "That is the end of Part Two."
+   ],
+   [
+    "pause",
+    1.0
+   ]
+  ],
+  "p3": [
+   [
+    "say",
+    "R",
+    "Part Three. Listen and look. There is one example."
+   ],
+   [
+    "pause",
+    1.5
+   ],
+   [
+    "say",
+    "R",
+    "Lily is telling her friend about her week."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "R",
+    "Example: on Monday she visited her cousin Mark."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Mch",
+    "What about Monday?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "On Monday? We saw cousin Mark."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "R",
+    "Can you see the letter D? Now you listen and write a letter in each box."
+   ],
+   [
+    "pause",
+    2.0
+   ],
+   [
+    "say",
+    "Fch",
+    "Tuesday? My big brother came home from university – I sat with him all day."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Mch",
+    "Wednesday I went to see my aunt – she was sick."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "Fch",
+    "Thursday afternoon – I visited my grandpa."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Mch",
+    "Friday we had dinner at my uncle’s flat."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "Fch",
+    "And Saturday was for my little sister – we played all day at her house."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "pause",
+    2.0
+   ],
+   [
+    "say",
+    "R",
+    "Now listen to Part Three again."
+   ],
+   [
+    "pause",
+    1.5
+   ],
+   [
+    "say",
+    "R",
+    "Lily is telling her friend about her week."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "R",
+    "Example: on Monday she visited her cousin Mark."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Mch",
+    "What about Monday?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "On Monday? We saw cousin Mark."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "R",
+    "Can you see the letter D? Now you listen and write a letter in each box."
+   ],
+   [
+    "pause",
+    2.0
+   ],
+   [
+    "say",
+    "Fch",
+    "Tuesday? My big brother came home from university – I sat with him all day."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Mch",
+    "Wednesday I went to see my aunt – she was sick."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "Fch",
+    "Thursday afternoon – I visited my grandpa."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Mch",
+    "Friday we had dinner at my uncle’s flat."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "Fch",
+    "And Saturday was for my little sister – we played all day at her house."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "R",
+    "That is the end of Part Three."
+   ],
+   [
+    "pause",
+    1.0
+   ]
+  ],
+  "p4": [
+   [
+    "say",
+    "R",
+    "Part Four. Listen and look. Listen and tick the box."
+   ],
+   [
+    "pause",
+    1.5
+   ],
+   [
+    "say",
+    "R",
+    "One. — Where’s Mum?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "F",
+    "— Where’s Mum?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "She was in the kitchen but now she’s outside – yes, in the garden."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "R",
+    "Two. — Do you like the new sofa?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "F",
+    "— Do you like the new sofa?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "It’s not green and not brown."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "Actually it’s a nice grey colour."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "R",
+    "Three. — How many brothers, Jack?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "F",
+    "— How many brothers, Jack?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Mch",
+    "I’ve got my older brother, a twin brother and a baby brother."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Mch",
+    "Three altogether."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "R",
+    "Four. — Who’s on the phone?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "F",
+    "— Who’s on the phone?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "Grandpa Roy!"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "He’s calling from Spain."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "R",
+    "5. — I can’t find the cat! — Look under the bed. No… On the wardrobe? No… Oh, there she is, behind the curtains!"
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "pause",
+    2.0
+   ],
+   [
+    "say",
+    "R",
+    "Now listen to Part Four again."
+   ],
+   [
+    "pause",
+    1.5
+   ],
+   [
+    "say",
+    "R",
+    "One. — Where’s Mum?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "F",
+    "— Where’s Mum?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "She was in the kitchen but now she’s outside – yes, in the garden."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "R",
+    "Two. — Do you like the new sofa?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "F",
+    "— Do you like the new sofa?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "It’s not green and not brown."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "Actually it’s a nice grey colour."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "R",
+    "Three. — How many brothers, Jack?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "F",
+    "— How many brothers, Jack?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Mch",
+    "I’ve got my older brother, a twin brother and a baby brother."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Mch",
+    "Three altogether."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "R",
+    "Four. — Who’s on the phone?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "F",
+    "— Who’s on the phone?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "Grandpa Roy!"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "He’s calling from Spain."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "R",
+    "5. — I can’t find the cat! — Look under the bed. No… On the wardrobe? No… Oh, there she is, behind the curtains!"
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "R",
+    "That is the end of Part Four."
+   ],
+   [
+    "pause",
+    1.0
+   ]
+  ],
+  "p5": [
+   [
+    "say",
+    "R",
+    "Part Five. Listen and look. There is one example."
+   ],
+   [
+    "pause",
+    1.5
+   ],
+   [
+    "say",
+    "M",
+    "This is a living room."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "M",
+    "Example: colour the TV black."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "R",
+    "This is an example. Now you listen and colour and write."
+   ],
+   [
+    "pause",
+    2.0
+   ],
+   [
+    "say",
+    "M",
+    "The sofa – colour it orange."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "OK."
+   ],
+   [
+    "pause",
+    5.0
+   ],
+   [
+    "say",
+    "M",
+    "On the small table next to the TV, draw a book."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "OK."
+   ],
+   [
+    "pause",
+    5.0
+   ],
+   [
+    "say",
+    "M",
+    "The round rug on the floor – colour it yellow."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "OK."
+   ],
+   [
+    "pause",
+    5.0
+   ],
+   [
+    "say",
+    "M",
+    "Above the picture of the mountain, write the word HOME."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "OK."
+   ],
+   [
+    "pause",
+    5.0
+   ],
+   [
+    "say",
+    "M",
+    "The cat next to the toy box – colour the cat grey."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "OK."
+   ],
+   [
+    "pause",
+    5.0
+   ],
+   [
+    "pause",
+    2.0
+   ],
+   [
+    "say",
+    "R",
+    "Now listen to Part Five again."
+   ],
+   [
+    "pause",
+    1.5
+   ],
+   [
+    "say",
+    "M",
+    "This is a living room."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "M",
+    "Example: colour the TV black."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "R",
+    "This is an example. Now you listen and colour and write."
+   ],
+   [
+    "pause",
+    2.0
+   ],
+   [
+    "say",
+    "M",
+    "The sofa – colour it orange."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "OK."
+   ],
+   [
+    "pause",
+    5.0
+   ],
+   [
+    "say",
+    "M",
+    "On the small table next to the TV, draw a book."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "OK."
+   ],
+   [
+    "pause",
+    5.0
+   ],
+   [
+    "say",
+    "M",
+    "The round rug on the floor – colour it yellow."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "OK."
+   ],
+   [
+    "pause",
+    5.0
+   ],
+   [
+    "say",
+    "M",
+    "Above the picture of the mountain, write the word HOME."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "OK."
+   ],
+   [
+    "pause",
+    5.0
+   ],
+   [
+    "say",
+    "M",
+    "The cat next to the toy box – colour the cat grey."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "OK."
+   ],
+   [
+    "pause",
+    5.0
+   ],
+   [
+    "say",
+    "R",
+    "That is the end of Part Five."
+   ],
+   [
+    "pause",
+    1.0
+   ]
+  ]
+ }
+}

@@ -1,0 +1,2107 @@
+{
+ "level": "flyers",
+ "number": 5,
+ "theme": "Sports & Hobbies",
+ "listening": {
+  "p1": {
+   "type": "draw_lines",
+   "image": "L1",
+   "scene": "A sports centre: a boy playing table tennis, a girl swimming in a pool, a man lifting weights, a woman doing yoga on a mat, a boy climbing a wall, a girl running on a treadmill, a coach with a clipboard.",
+   "names": [
+    "Coach Bob",
+    "Laura",
+    "Nick",
+    "Olivia",
+    "Sam",
+    "Grace"
+   ],
+   "people": [
+    {
+     "id": "A",
+     "desc": "a boy playing table tennis"
+    },
+    {
+     "id": "B",
+     "desc": "a girl swimming in a pool"
+    },
+    {
+     "id": "C",
+     "desc": "a man lifting weights"
+    },
+    {
+     "id": "D",
+     "desc": "a woman doing yoga on a mat"
+    },
+    {
+     "id": "E",
+     "desc": "a boy climbing a wall"
+    },
+    {
+     "id": "F",
+     "desc": "a girl running on a treadmill"
+    },
+    {
+     "id": "G",
+     "desc": "a coach with a clipboard"
+    }
+   ],
+   "example": {
+    "name": "Coach Bob",
+    "person": "G"
+   },
+   "items": [
+    {
+     "name": "Laura",
+     "person": "B"
+    },
+    {
+     "name": "Nick",
+     "person": "A"
+    },
+    {
+     "name": "Olivia",
+     "person": "D"
+    },
+    {
+     "name": "Sam",
+     "person": "E"
+    },
+    {
+     "name": "Grace",
+     "person": "F"
+    }
+   ]
+  },
+  "p2": {
+   "type": "note_taking",
+   "heading": "New swimming lessons",
+   "example": {
+    "q": "Sport club name",
+    "a": "Bluewave"
+   },
+   "items": [
+    {
+     "q": "First lesson: day",
+     "a": [
+      "Wednesday"
+     ]
+    },
+    {
+     "q": "First lesson: time",
+     "a": [
+      "a quarter to six",
+      "quarter to six",
+      "5.45",
+      "5:45",
+      "quarter to 6"
+     ]
+    },
+    {
+     "q": "Teacher’s first name",
+     "a": [
+      "Rachel"
+     ]
+    },
+    {
+     "q": "Number of children per group",
+     "a": [
+      "8",
+      "eight"
+     ]
+    },
+    {
+     "q": "Cost of one month (£)",
+     "a": [
+      "35",
+      "£35",
+      "thirty-five"
+     ]
+    }
+   ]
+  },
+  "p3": {
+   "type": "match_letters",
+   "intro": "Helen is telling her dad which sport she does each day.",
+   "image": "L3",
+   "pictures": [
+    {
+     "letter": "A",
+     "word": "basketball"
+    },
+    {
+     "letter": "B",
+     "word": "karate"
+    },
+    {
+     "letter": "C",
+     "word": "football"
+    },
+    {
+     "letter": "D",
+     "word": "dance"
+    },
+    {
+     "letter": "E",
+     "word": "tennis"
+    },
+    {
+     "letter": "F",
+     "word": "swimming"
+    },
+    {
+     "letter": "G",
+     "word": "running"
+    },
+    {
+     "letter": "H",
+     "word": "chess"
+    }
+   ],
+   "example": {
+    "who": "Monday",
+    "letter": "C"
+   },
+   "items": [
+    {
+     "who": "Tuesday",
+     "letter": "B"
+    },
+    {
+     "who": "Wednesday",
+     "letter": "E"
+    },
+    {
+     "who": "Thursday",
+     "letter": "F"
+    },
+    {
+     "who": "Friday",
+     "letter": "A"
+    },
+    {
+     "who": "Saturday",
+     "letter": "G"
+    }
+   ]
+  },
+  "p4": {
+   "type": "mc_pictures",
+   "items": [
+    {
+     "q": "What colour is the team’s new shirt?",
+     "options": [
+      "red",
+      "yellow",
+      "blue"
+     ],
+     "key": "B",
+     "image": "P4Q1"
+    },
+    {
+     "q": "What did Ben win last week?",
+     "options": [
+      "a medal",
+      "a cup",
+      "a book"
+     ],
+     "key": "A",
+     "image": "P4Q2"
+    },
+    {
+     "q": "Which sport does the girl like best?",
+     "options": [
+      "horse riding",
+      "swimming",
+      "tennis"
+     ],
+     "key": "A",
+     "image": "P4Q3"
+    },
+    {
+     "q": "What time does the match start?",
+     "options": [
+      "2:30",
+      "3:00",
+      "3:15"
+     ],
+     "key": "C",
+     "image": "P4Q4"
+    },
+    {
+     "q": "Where did the boys play football on Sunday?",
+     "options": [
+      "at the park",
+      "at school",
+      "at the beach"
+     ],
+     "key": "B",
+     "image": "P4Q5"
+    }
+   ]
+  },
+  "p5": {
+   "type": "colour_write",
+   "image": "L5",
+   "scene": "A skate park: a big ramp, a boy on a skateboard, a bench with a bag, a tree, a sign with the name of the park, a bin, a dog on a lead with a girl.",
+   "object": "thing",
+   "example": {
+    "what": "the skateboard",
+    "colour": "green"
+   },
+   "items": [
+    {
+     "what": "the bag on the bench",
+     "colour": "purple"
+    },
+    {
+     "what": "a ball near the bin",
+     "write": "draw"
+    },
+    {
+     "what": "the dog",
+     "colour": "brown"
+    },
+    {
+     "what": "on the sign",
+     "write": "SKATE"
+    },
+    {
+     "what": "the tree’s leaves",
+     "colour": "orange"
+    }
+   ]
+  }
+ },
+ "rw": {
+  "p1": {
+   "type": "definitions_copy",
+   "words": [
+    "a helmet",
+    "a goal",
+    "a swimming pool",
+    "a skateboard",
+    "a tennis court",
+    "a racket",
+    "a bicycle",
+    "a hockey stick",
+    "a whistle",
+    "a gym",
+    "a medal",
+    "a golf club",
+    "trainers",
+    "a ball",
+    "a rope"
+   ],
+   "example": {
+    "def": "",
+    "word": "a bicycle"
+   },
+   "items": [
+    {
+     "def": "You wear this on your head to be safe when you ride.",
+     "word": "a helmet"
+    },
+    {
+     "def": "You use this to play tennis.",
+     "word": "a racket"
+    },
+    {
+     "def": "You get this when you win a race or a competition.",
+     "word": "a medal"
+    },
+    {
+     "def": "A special place with machines where people do exercise.",
+     "word": "a gym"
+    },
+    {
+     "def": "Teachers and referees blow this to make a sound.",
+     "word": "a whistle"
+    },
+    {
+     "def": "A place full of water where you can swim.",
+     "word": "a swimming pool"
+    },
+    {
+     "def": "Comfortable shoes for running and sport.",
+     "word": "trainers"
+    },
+    {
+     "def": "A long piece of string you can jump with.",
+     "word": "a rope"
+    },
+    {
+     "def": "A flat board with small wheels that children ride.",
+     "word": "a skateboard"
+    },
+    {
+     "def": "This is a place to play tennis or basketball.",
+     "word": "a tennis court"
+    }
+   ]
+  },
+  "p2": {
+   "type": "dialogue_mc8",
+   "speakerA": "Coach",
+   "speakerB": "Ethan",
+   "example": {
+    "a": "Hi Ethan, are you ready for today’s football training?",
+    "key": "D",
+    "text": "Yes, coach. I’m really excited!"
+   },
+   "options": [
+    {
+     "letter": "A",
+     "text": "Yes, and I brought my mum, too – she wants to watch."
+    },
+    {
+     "letter": "B",
+     "text": "Perfect! I love practising shooting."
+    },
+    {
+     "letter": "C",
+     "text": "Yes, many times – he scored three goals last match!"
+    },
+    {
+     "letter": "D",
+     "text": "Yes, coach. I’m really excited!"
+    },
+    {
+     "letter": "E",
+     "text": "No, I prefer playing in attack."
+    },
+    {
+     "letter": "F",
+     "text": "Sure, but only a short one – I get tired!"
+    },
+    {
+     "letter": "G",
+     "text": "My favourite player is Leo. He’s from Spain."
+    },
+    {
+     "letter": "H",
+     "text": "Yes, I put it in my bag this morning."
+    }
+   ],
+   "items": [
+    {
+     "a": "Great. Did you bring your water bottle?",
+     "key": "H"
+    },
+    {
+     "a": "Good. We’re going to practise goals today.",
+     "key": "B"
+    },
+    {
+     "a": "Excellent. Who’s your favourite player?",
+     "key": "G"
+    },
+    {
+     "a": "Nice choice. Have you seen him on TV?",
+     "key": "C"
+    },
+    {
+     "a": "Amazing. Do you want to be a goalkeeper today?",
+     "key": "E"
+    }
+   ]
+  },
+  "p3": {
+   "type": "gapped_text_title",
+   "words": [
+    "team",
+    "played",
+    "cold",
+    "goals",
+    "happy",
+    "classmates",
+    "sports",
+    "school"
+   ],
+   "text": "Last weekend, my __(1)__ had a football match against another school. The morning was very __(2)__ but we ran a lot, so soon we felt warm. I __(3)__ for 60 minutes and I scored two __(4)__! Our __(5)__ came to watch us with their families. When we won, everyone was very happy and we took a team photo.",
+   "example": "",
+   "title_choices": [
+    [
+     "A",
+     "A trip to the mountains"
+    ],
+    [
+     "B",
+     "The football match"
+    ],
+    [
+     "C",
+     "My new piano lessons"
+    ]
+   ],
+   "key": [
+    "school",
+    "cold",
+    "played",
+    "goals",
+    "classmates"
+   ],
+   "title_key": "B"
+  },
+  "p4": {
+   "type": "mc_cloze",
+   "title": "Why we do sport",
+   "text": "Sport is very important for our bodies and our minds. When we play sport, we breathe lots __(1)__ fresh air and we move our __(2)__. It __(3)__ us strong and healthy. Sport can __(4)__ be fun. Many children __(5)__ different sports at school – football, basketball, swimming __(6)__ tennis. Other people prefer __(7)__ types of sport, like yoga or gymnastics. Sport also teaches us __(8)__ work with other people and not give __(9)__. After sport, many people __(10)__ very happy and tired at the same time.",
+   "example": {
+    "options": [
+     "",
+     "",
+     ""
+    ],
+    "key": "A"
+   },
+   "items": [
+    {
+     "options": [
+      "of",
+      "in",
+      "from"
+     ],
+     "key": "A"
+    },
+    {
+     "options": [
+      "hair",
+      "bones",
+      "muscles"
+     ],
+     "key": "C"
+    },
+    {
+     "options": [
+      "make",
+      "makes",
+      "making"
+     ],
+     "key": "B"
+    },
+    {
+     "options": [
+      "also",
+      "either",
+      "too"
+     ],
+     "key": "A"
+    },
+    {
+     "options": [
+      "try",
+      "tries",
+      "trying"
+     ],
+     "key": "A"
+    },
+    {
+     "options": [
+      "but",
+      "and",
+      "or"
+     ],
+     "key": "C"
+    },
+    {
+     "options": [
+      "quiet",
+      "quieter",
+      "quietest"
+     ],
+     "key": "A"
+    },
+    {
+     "options": [
+      "to",
+      "for",
+      "with"
+     ],
+     "key": "A"
+    },
+    {
+     "options": [
+      "off",
+      "on",
+      "up"
+     ],
+     "key": "C"
+    },
+    {
+     "options": [
+      "feel",
+      "like",
+      "look"
+     ],
+     "key": "A"
+    }
+   ]
+  },
+  "p5": {
+   "type": "story_completion",
+   "title": "The painting competition",
+   "parts": [
+    {
+     "text": "Every summer, my town has a big painting competition in the park. This year, my best friend Nico and I decided to try it for the first time. We walked to the park at nine o’clock with our pencils, paper and colours. There were more than 50 children in the competition! Each child had two hours to paint. I painted a beautiful dragon flying over the mountains. Nico painted a football player scoring a goal. It was difficult because the sun was strong and we got very hot. In the end, Nico won a silver medal for his picture. I didn’t win a prize, but the judges said my dragon was amazing. We ate an ice cream each to celebrate. Next year, I will paint a castle with a princess and a dragon!",
+     "examples": [
+      {
+       "s": "Where is the competition?",
+       "a": "in the park"
+      }
+     ],
+     "items": [
+      {
+       "s": "At what time did they arrive?",
+       "a": "at nine o’clock"
+      },
+      {
+       "s": "How many children were in the competition?",
+       "a": "more than 50"
+      },
+      {
+       "s": "How long did they have to paint?",
+       "a": "two hours"
+      },
+      {
+       "s": "What did the writer paint?",
+       "a": "a dragon (flying over mountains)"
+      },
+      {
+       "s": "What did Nico paint?",
+       "a": "a football player (scoring a goal)"
+      },
+      {
+       "s": "Which prize did Nico win?",
+       "a": "a silver medal"
+      },
+      {
+       "s": "What did they eat to celebrate?",
+       "a": "an ice cream"
+      }
+     ]
+    }
+   ]
+  },
+  "p6": {
+   "type": "open_cloze",
+   "title": "My brother’s hobby",
+   "text": "My brother Leo is twelve years old and his favourite hobby __(0)__ playing the guitar. He started __(1)__ two years ago with a teacher called Mrs Diaz. Leo practises every day in __(2)__ bedroom. At first his music was not very good, but now it is really beautiful! Last month, he played __(3)__ a small concert in the library. Our whole family went, and many of __(4)__ cousins came too. Leo was a little nervous but he played perfectly. After the concert, everybody clapped and __(5)__ a lot of photos. I want to learn to play an instrument too – maybe the piano.",
+   "example": "is",
+   "key": [
+    "learning",
+    "his",
+    "at",
+    "our",
+    "took"
+   ]
+  },
+  "p7": {
+   "type": "story_writing",
+   "title": "The new bike",
+   "image": "P7",
+   "pictures": [
+    "A girl gets a new bike for her birthday.",
+    "She rides it in the park but falls off near a tree.",
+    "She gets up, smiles at her dad and rides home safely."
+   ],
+   "prompt": "Look at the three pictures and write the story. Write 20 or more words."
+  }
+ },
+ "speaking": {
+  "p1": {
+   "type": "find_differences_statements",
+   "image": "S1",
+   "examiner_scene": "A sports scene: a boy playing football, a girl on a bike, a red ball, a big tree, two birds in the sky, a bench with a cap on it.",
+   "candidate_scene": "A sports scene: a boy playing BASKETBALL, a girl on a bike, a GREEN ball, a big tree, FOUR birds in the sky, a bench with a BOOK on it.",
+   "differences": [
+    "Football vs basketball.",
+    "Red ball vs green ball.",
+    "Two birds vs four birds.",
+    "Cap on bench vs book on bench."
+   ]
+  },
+  "p2": {
+   "type": "information_exchange",
+   "topic": "Two sports clubs",
+   "candidate_card": "SPORTS CLUB: Action Kids – Address: ______ Avenue – Sports: ______, ______ and ______ – Best day for families: ______ – Clothes to wear: ______.",
+   "candidate_questions": [
+    "What’s the name of your sports club?",
+    "Where is it?",
+    "What sports can you do there?",
+    "How many people train there?",
+    "Is there a café?"
+   ],
+   "examiner_card": "SPORTS CLUB: Lion Sports Centre – 12 High Street – swimming, tennis, judo, football – 60 members – yes, café with sandwiches.",
+   "examiner_questions": [
+    "What’s the club called?",
+    "Where is Action Kids?",
+    "What sports can you do there?",
+    "Which day is best for families?",
+    "What should you wear?"
+   ]
+  },
+  "p3": {
+   "type": "picture_sequence",
+   "image": "S3",
+   "title": "The big race",
+   "examiner_open": "These pictures tell a story about \"The big race\". Children are at the start of a running race at school. Now you tell the rest of the story.",
+   "frames": [
+    "Children are at the start of a running race at school.",
+    "A girl is running very fast and is in first place.",
+    "She crosses the finish line and everyone cheers.",
+    "The head teacher gives her a gold medal and she smiles."
+   ]
+  },
+  "p4": {
+   "type": "personal_questions",
+   "questions": [
+    {
+     "q": "What sports do you like playing?"
+    },
+    {
+     "q": "What hobbies do you have at the weekend?"
+    },
+    {
+     "q": "Do you prefer team sports or playing alone? Why?"
+    },
+    {
+     "q": "Tell me about a game you played recently."
+    },
+    {
+     "q": "Do you watch sports on TV? Which ones?"
+    }
+   ]
+  }
+ },
+ "audio": {
+  "p1": [
+   [
+    "say",
+    "R",
+    "Part One. Listen and look. There is one example."
+   ],
+   [
+    "pause",
+    1.5
+   ],
+   [
+    "say",
+    "Mch",
+    "Look at the sports centre."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Mch",
+    "Coach Bob is the man with the clipboard – that’s the example."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Mch",
+    "Where’s Laura? She’s the girl swimming in the pool."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "Mch",
+    "Can you see Nick? Nick is the boy playing table tennis."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "Mch",
+    "Now Olivia. Olivia is the woman doing yoga on a mat."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "Mch",
+    "Sam? Sam is the boy climbing the wall."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "Mch",
+    "And Grace? Grace is the girl running on the treadmill."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "pause",
+    2.0
+   ],
+   [
+    "say",
+    "R",
+    "Now listen to Part One again."
+   ],
+   [
+    "pause",
+    1.5
+   ],
+   [
+    "say",
+    "Mch",
+    "Look at the sports centre."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Mch",
+    "Coach Bob is the man with the clipboard – that’s the example."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Mch",
+    "Where’s Laura? She’s the girl swimming in the pool."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "Mch",
+    "Can you see Nick? Nick is the boy playing table tennis."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "Mch",
+    "Now Olivia. Olivia is the woman doing yoga on a mat."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "Mch",
+    "Sam? Sam is the boy climbing the wall."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "Mch",
+    "And Grace? Grace is the girl running on the treadmill."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "R",
+    "That is the end of Part One."
+   ],
+   [
+    "pause",
+    1.0
+   ]
+  ],
+  "p2": [
+   [
+    "say",
+    "R",
+    "Part Two. Listen and look. There is one example."
+   ],
+   [
+    "pause",
+    1.5
+   ],
+   [
+    "say",
+    "R",
+    "A father is calling a swimming club."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "R",
+    "Example: the club’s name is Bluewave."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "R",
+    "Can you see the answer? Sport club name: Bluewave. Now you listen and write."
+   ],
+   [
+    "pause",
+    2.0
+   ],
+   [
+    "say",
+    "M",
+    "When’s the first lesson?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "Next Wednesday."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "M",
+    "What time?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "At a quarter to six in the afternoon."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "M",
+    "Who’s the teacher?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "Her first name is Rachel."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "M",
+    "How many children per group?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "Eight children maximum."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "M",
+    "And the cost?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "Thirty-five pounds a month."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "pause",
+    2.0
+   ],
+   [
+    "say",
+    "R",
+    "Now listen to Part Two again."
+   ],
+   [
+    "pause",
+    1.5
+   ],
+   [
+    "say",
+    "R",
+    "A father is calling a swimming club."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "R",
+    "Example: the club’s name is Bluewave."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "R",
+    "Can you see the answer? Sport club name: Bluewave. Now you listen and write."
+   ],
+   [
+    "pause",
+    2.0
+   ],
+   [
+    "say",
+    "M",
+    "When’s the first lesson?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "Next Wednesday."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "M",
+    "What time?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "At a quarter to six in the afternoon."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "M",
+    "Who’s the teacher?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "Her first name is Rachel."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "M",
+    "How many children per group?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "Eight children maximum."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "M",
+    "And the cost?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "Thirty-five pounds a month."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "R",
+    "That is the end of Part Two."
+   ],
+   [
+    "pause",
+    1.0
+   ]
+  ],
+  "p3": [
+   [
+    "say",
+    "R",
+    "Part Three. Listen and look. There is one example."
+   ],
+   [
+    "pause",
+    1.5
+   ],
+   [
+    "say",
+    "R",
+    "Helen is telling her dad about her sports."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "R",
+    "Example: on Monday she plays football."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Mch",
+    "What about Monday?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "On Monday? We saw football."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "R",
+    "Can you see the letter C? Now you listen and write a letter in each box."
+   ],
+   [
+    "pause",
+    2.0
+   ],
+   [
+    "say",
+    "Fch",
+    "Tuesday I go to karate – I’ve got a new belt!"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Mch",
+    "Wednesday afternoon is tennis."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "Fch",
+    "Thursday I go swimming with my cousin."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Mch",
+    "Friday is basketball day."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "Fch",
+    "And Saturday, I love to go running in the park."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "pause",
+    2.0
+   ],
+   [
+    "say",
+    "R",
+    "Now listen to Part Three again."
+   ],
+   [
+    "pause",
+    1.5
+   ],
+   [
+    "say",
+    "R",
+    "Helen is telling her dad about her sports."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "R",
+    "Example: on Monday she plays football."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Mch",
+    "What about Monday?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "On Monday? We saw football."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "R",
+    "Can you see the letter C? Now you listen and write a letter in each box."
+   ],
+   [
+    "pause",
+    2.0
+   ],
+   [
+    "say",
+    "Fch",
+    "Tuesday I go to karate – I’ve got a new belt!"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Mch",
+    "Wednesday afternoon is tennis."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "Fch",
+    "Thursday I go swimming with my cousin."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Mch",
+    "Friday is basketball day."
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "Fch",
+    "And Saturday, I love to go running in the park."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "R",
+    "That is the end of Part Three."
+   ],
+   [
+    "pause",
+    1.0
+   ]
+  ],
+  "p4": [
+   [
+    "say",
+    "R",
+    "Part Four. Listen and look. Listen and tick the box."
+   ],
+   [
+    "pause",
+    1.5
+   ],
+   [
+    "say",
+    "R",
+    "One. — What colour is the new team shirt?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "F",
+    "— What colour is the new team shirt?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "Not red or blue."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "F",
+    "Oh, really?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "It’s a bright yellow."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "Very cool!"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "R",
+    "Two. — What did Ben win?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "F",
+    "— What did Ben win?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Mch",
+    "He got a lovely silver medal last week at the gymnastics competition."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "R",
+    "Three. — What’s your favourite sport?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "F",
+    "— What’s your favourite sport?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "I used to love tennis."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "Now horse riding is my absolute favourite."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "R",
+    "Four. — What time is the match?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "F",
+    "— What time is the match?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "The match starts at three fifteen, not two thirty."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "R",
+    "Five. — Where did you play on Sunday?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "F",
+    "— Where did you play on Sunday?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "Not at the park – it was closed."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "F",
+    "Oh, really?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "At school."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "We played football at school all afternoon."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "pause",
+    2.0
+   ],
+   [
+    "say",
+    "R",
+    "Now listen to Part Four again."
+   ],
+   [
+    "pause",
+    1.5
+   ],
+   [
+    "say",
+    "R",
+    "One. — What colour is the new team shirt?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "F",
+    "— What colour is the new team shirt?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "Not red or blue."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "F",
+    "Oh, really?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "It’s a bright yellow."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "Very cool!"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "R",
+    "Two. — What did Ben win?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "F",
+    "— What did Ben win?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Mch",
+    "He got a lovely silver medal last week at the gymnastics competition."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "R",
+    "Three. — What’s your favourite sport?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "F",
+    "— What’s your favourite sport?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "I used to love tennis."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "Now horse riding is my absolute favourite."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "R",
+    "Four. — What time is the match?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "F",
+    "— What time is the match?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "The match starts at three fifteen, not two thirty."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "R",
+    "Five. — Where did you play on Sunday?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "F",
+    "— Where did you play on Sunday?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "Not at the park – it was closed."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "F",
+    "Oh, really?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "At school."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "We played football at school all afternoon."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "pause",
+    3.4
+   ],
+   [
+    "say",
+    "R",
+    "That is the end of Part Four."
+   ],
+   [
+    "pause",
+    1.0
+   ]
+  ],
+  "p5": [
+   [
+    "say",
+    "R",
+    "Part Five. Listen and look. There is one example."
+   ],
+   [
+    "pause",
+    1.5
+   ],
+   [
+    "say",
+    "M",
+    "This is a skate park."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "M",
+    "Example: colour the skateboard green."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "R",
+    "This is an example. Now you listen and colour and write."
+   ],
+   [
+    "pause",
+    2.0
+   ],
+   [
+    "say",
+    "M",
+    "On the bench there’s a bag – colour it purple."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "OK."
+   ],
+   [
+    "pause",
+    5.0
+   ],
+   [
+    "say",
+    "M",
+    "Near the bin, draw a ball."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "OK."
+   ],
+   [
+    "pause",
+    5.0
+   ],
+   [
+    "say",
+    "M",
+    "Can you see the dog?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "Yes, I can."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "M",
+    "Colour the dog brown."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "OK."
+   ],
+   [
+    "pause",
+    5.0
+   ],
+   [
+    "say",
+    "M",
+    "The sign has the name of the park."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "M",
+    "Write the word SKATE on the sign."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "OK."
+   ],
+   [
+    "pause",
+    5.0
+   ],
+   [
+    "say",
+    "M",
+    "The tree has leaves – colour the leaves orange."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "OK."
+   ],
+   [
+    "pause",
+    5.0
+   ],
+   [
+    "pause",
+    2.0
+   ],
+   [
+    "say",
+    "R",
+    "Now listen to Part Five again."
+   ],
+   [
+    "pause",
+    1.5
+   ],
+   [
+    "say",
+    "M",
+    "This is a skate park."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "M",
+    "Example: colour the skateboard green."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "R",
+    "This is an example. Now you listen and colour and write."
+   ],
+   [
+    "pause",
+    2.0
+   ],
+   [
+    "say",
+    "M",
+    "On the bench there’s a bag – colour it purple."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "OK."
+   ],
+   [
+    "pause",
+    5.0
+   ],
+   [
+    "say",
+    "M",
+    "Near the bin, draw a ball."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "OK."
+   ],
+   [
+    "pause",
+    5.0
+   ],
+   [
+    "say",
+    "M",
+    "Can you see the dog?"
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "Yes, I can."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "M",
+    "Colour the dog brown."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "OK."
+   ],
+   [
+    "pause",
+    5.0
+   ],
+   [
+    "say",
+    "M",
+    "The sign has the name of the park."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "M",
+    "Write the word SKATE on the sign."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "OK."
+   ],
+   [
+    "pause",
+    5.0
+   ],
+   [
+    "say",
+    "M",
+    "The tree has leaves – colour the leaves orange."
+   ],
+   [
+    "pause",
+    0.5
+   ],
+   [
+    "say",
+    "Fch",
+    "OK."
+   ],
+   [
+    "pause",
+    5.0
+   ],
+   [
+    "say",
+    "R",
+    "That is the end of Part Five."
+   ],
+   [
+    "pause",
+    1.0
+   ]
+  ]
+ }
+}

@@ -436,6 +436,28 @@ function rw(){
         '<p><b>Answer the questions.</b></p>' + P.answer.map(function(it, i){ var n = P.complete.length + i + 1; return '<div class="item"><label style="min-width:50%">' + n + '. ' + esc(it.q) + '</label><input type="text" data-name="' + pk + '_t' + i + '" autocomplete="off" spellcheck="false" style="flex:1"></div>'; }).join('') +
         '<p><b>Now write two sentences about the picture.</b></p>' + [0, 1].map(function(i){ var n = P.complete.length + P.answer.length + i + 1; return '<div><b>' + n + '.</b></div><textarea class="free" data-name="' + pk + '_w' + i + '" spellcheck="false" placeholder="Write a full sentence…"></textarea>'; }).join('') +
         '<details class="key"><summary>Show model answers</summary><ol>' + P.complete.map(function(it){ return '<li>' + esc(Array.isArray(it.a) ? it.a.join(' / ') : it.a) + '</li>'; }).join('') + P.answer.map(function(it){ return '<li>' + esc(it.model) + '</li>'; }).join('') + ((P.write || {}).model || []).map(function(m){ return '<li>' + esc(m) + '</li>'; }).join('') + '</ol></details>');
+    } else if(P.type === 'dialogue_mc8'){
+      /* Flyers P2: un diálogo seguido. Ocho respuestas A–H de las que sobran tres,
+         así que la lista se lee entera y no se puede ir por descarte de tres en tres. */
+      var opt8 = '<option value="">…</option>' + P.options.map(function(o){ return '<option value="' + esc(o.letter) + '">' + esc(o.letter) + '</option>'; }).join('');
+      h += card('rw', p, 'Read the conversation. Choose the best answer', 'What does ' + esc(P.speakerB) + ' say to ' + esc(P.speakerA) + '? Choose the right answer, A to H. Three answers are not used.',
+        '<div class="bank" style="display:block">' + P.options.map(function(o){ return '<div style="margin:2px 0"><span class="letter">' + esc(o.letter) + '</span> ' + esc(o.text) + '</div>'; }).join('') + '</div>' +
+        (P.example ? '<div class="dlg"><div class="a"><b>' + esc(P.speakerA) + ':</b> ' + esc(P.example.a) + '</div><div class="item ex"><span class="tagex">Example</span><b>' + esc(P.speakerB) + ':</b> ' + esc(P.example.key) + ' — ' + esc(P.example.text) + '</div></div>' : '') +
+        P.items.map(function(it, i){ return '<div class="dlg"><div class="a"><b>' + esc(P.speakerA) + ':</b> ' + esc(it.a) + '</div><div class="item"><label>' + (i + 1) + '. ' + esc(P.speakerB) + ':</label><select data-name="' + pk + '_' + i + '">' + opt8 + '</select></div></div>'; }).join(''));
+    } else if(P.type === 'open_cloze'){
+      /* Flyers P6: los huecos no traen opciones; el niño escribe la palabra que falta. */
+      var textO = esc(P.text).replace(/__\((\d+)\)__/g, function(m, n){ n = +n; return n === 0 ? '<b><u>' + esc(P.example) + '</u></b>' : '<input type="text" class="gap" data-name="' + pk + '_' + (n - 1) + '" autocomplete="off" spellcheck="false" placeholder="' + n + '">'; });
+      h += card('rw', p, 'Read the text. Write one word in each gap', 'Write <b>one</b> word for each gap. The first one is the example.',
+        '<h4 style="margin:6px 0">' + esc(P.title) + '</h4><p class="cloze">' + textO + '</p>');
+    } else if(P.type === 'story_writing'){
+      /* Flyers P7: tres dibujos y una historia de 20 palabras o más. La corrige el
+         profesor con la escala 0-5 del handbook, así que aquí solo se recoge. */
+      h += card('rw', p, 'Look at the three pictures. Write about this story', 'Write <b>20 or more words</b> about the three pictures. Your teacher marks this part.',
+        (P.image ? img(P.image) : '') + '<h4 style="margin:6px 0">' + esc(P.title) + '</h4>' +
+        '<ol class="small">' + (P.pictures || []).map(function(x){ return '<li>' + esc(x) + '</li>'; }).join('') + '</ol>' +
+        '<textarea class="free" data-name="' + pk + '_s0" spellcheck="false" rows="6" placeholder="Write your story here…"></textarea>' +
+        '<p class="small" data-words="' + pk + '_s0">0 words</p>' +
+        (P.prompt ? '<p class="small">' + esc(P.prompt) + '</p>' : ''));
     } else if(P.type === 'story_one_word'){
       var n = 0;
       h += card('rw', p, 'Look at the pictures and read the story. Write one word', 'Read the story. Write one word for each answer.',
@@ -478,8 +500,25 @@ function speaking(){
       h += '<div class="card" data-screen="1"><h3>Speaking — Part ' + n + ' · Odd one out</h3><p class="instr">Look at each set of four pictures. Tap the one that is different and say why. The examiner shows you the example first.</p>' + sets +
         recorder(pk, 'Record why each one is different') + (mode === 'practice' ? '<p><button class="btn sec" data-checkodd="1">Check Part ' + n + '</button></p>' : '') +
         '<details class="key"><summary>Show the reasons</summary><ol>' + P.sets.slice(1).map(function(st){ return '<li>' + esc(st.reason) + '</li>'; }).join('') + '</ol></details></div>';
+    } else if(P.type === 'find_differences_statements'){
+      /* Flyers P1: el examinador no enseña su lámina, la describe. El niño escucha
+         cada frase y dice en qué se diferencia de la suya. Seis diferencias. */
+      h += '<div class="card" data-screen="1"><h3>Speaking — Part ' + n + ' · Find the differences</h3><p class="instr">You have a picture and the examiner has one that is almost the same. The examiner <b>tells</b> you about their picture; you say what is different in yours: <i>In my picture …</i>. Press 🔊 to hear each sentence.</p>' +
+        img(P.image) + '<p class="small"><b>Your picture:</b> ' + esc(P.candidate_scene) + '</p>' +
+        (P.examiner_scene ? '<div class="spk"><div class="q">' + esc(P.examiner_scene) + '</div><button type="button" class="btn sec" data-say="' + esc(P.examiner_scene) + '">🔊 Examiner</button></div>' : '') +
+        recorder(pk, 'Say what is different in your picture') +
+        '<details class="key"><summary>Show the differences (after recording)</summary><ul>' + (P.differences || []).map(function(d){ return '<li>' + esc(d) + '</li>'; }).join('') + '</ul></details></div>';
+    } else if(P.type === 'information_exchange'){
+      /* Flyers P2: cada uno tiene una ficha con huecos. Primero el niño contesta a
+         lo que le preguntan y después es él quien pregunta. */
+      h += '<div class="card" data-screen="1"><h3>Speaking — Part ' + n + ' · Information exchange</h3><p class="instr">' + (P.topic ? 'You and the examiner have information about <b>' + esc(P.topic) + '</b>. ' : '') + 'First answer the examiner\'s questions with your card. Then ask the examiner your questions to fill the gaps.</p>' +
+        '<div class="bank" style="display:block"><b>Your card</b><div style="margin-top:4px">' + esc(P.candidate_card) + '</div></div>' +
+        '<h4>First, answer</h4>' + (P.examiner_questions || []).map(function(q){ var t = typeof q === 'string' ? q : q.q; return '<div class="spk"><div class="q">' + esc(t) + '</div><button type="button" class="btn sec" data-say="' + esc(t) + '">🔊 Examiner</button></div>'; }).join('') +
+        '<h4>Now you ask</h4><p class="small">Ask these questions to fill in the gaps on your card.</p><ol class="small">' + (P.candidate_questions || []).map(function(q){ return '<li>' + esc(typeof q === 'string' ? q : q.q) + '</li>'; }).join('') + '</ol>' +
+        recorder(pk, 'Record your answers and your questions') +
+        (P.examiner_card ? '<details class="key"><summary>Show the examiner\'s card (after recording)</summary><p>' + esc(P.examiner_card) + '</p></details>' : '') + '</div>';
     } else if(P.type === 'personal_questions'){
-      h += '<div class="card" data-screen="1"><h3>Speaking — Part ' + n + ' · Questions about you</h3><p class="instr">' + (P.topic ? 'The examiner says: <i>Now let\'s talk about ' + esc(P.topic) + '.</i> ' : '') + 'Answer with short answers, like in the real test.</p>' + P.questions.map(function(q){ return spk(q.q, q.model); }).join('') + recorder(pk, 'Record your answers to Part ' + n) + '<p class="small">Speaking is marked by your teacher with the three official scales: vocabulary and grammar, pronunciation, interaction.</p></div>';
+      h += '<div class="card" data-screen="1"><h3>Speaking — Part ' + n + ' · Questions about you</h3><p class="instr">' + (P.topic ? 'The examiner says: <i>Now let\'s talk about ' + esc(P.topic) + '.</i> ' : '') + 'Answer with short answers, like in the real test.</p>' + P.questions.map(function(q){ return spk(q.q, q.model); }).join('') + recorder(pk, 'Record your answers to Part ' + n) + '<p class="small">Speaking is marked by your teacher with the three official scales: ' + (LEVEL === 'starters' ? 'vocabulary' : 'vocabulary and grammar') + ', pronunciation, interaction.</p></div>';
     }
   });
   return h;
@@ -488,6 +527,12 @@ function speaking(){
 /* ---------- interacción ---------- */
 function bind(){
   $$('[data-mode]').forEach(function(b){ b.onclick = function(){ mode = b.dataset.mode; render(); }; });
+  /* Flyers P7 pide 20 palabras o más: el contador se lo dice mientras escribe. */
+  $$('#content textarea[data-name$="_s0"]').forEach(function(ta){
+    var out = $('#content [data-words="' + ta.dataset.name + '"]'); if(!out) return;
+    var cuenta = function(){ var n = (ta.value.trim().match(/\S+/g) || []).length; out.textContent = n + (n === 1 ? ' word' : ' words') + (n >= 20 ? ' ✓' : ' — write 20 or more'); out.style.color = n >= 20 ? 'var(--ok)' : 'var(--muted)'; };
+    ta.addEventListener('input', cuenta); cuenta();
+  });
   $$('[data-go]').forEach(function(b){ b.onclick = function(){ tab = b.dataset.go; screen = 0; render(); if(mode === 'exam' && tab !== 'speaking') startTimer(); }; });
   $$('[data-check]').forEach(function(b){ b.onclick = function(){ checkPart(b.dataset.check); }; });
   $$('[data-tc]').forEach(function(b){ b.onclick = function(){ var box = b.parentNode; $$('button', box).forEach(function(x){ x.classList.toggle('on', x === b); }); $('input[data-name="' + b.dataset.tc + '"]', box).value = b.dataset.v; save(); }; });
@@ -554,12 +599,14 @@ function keyOf(paper, pk, i){
   if(P.type === 'mc_cloze') return P.items[i].options['ABC'.indexOf(P.items[i].key)];
   if(P.type === 'story_completion'){ var allS = []; P.parts.forEach(function(x){ x.items.forEach(function(it){ allS.push(it.a); }); }); return allS[i]; }
   if(P.type === 'productive_writing') return P.complete[i].a;
+  if(P.type === 'dialogue_mc8') return P.items[i].key;
+  if(P.type === 'open_cloze') return P.key[i];
   return null;
 }
 var NUM = {one: '1', two: '2', three: '3', four: '4', five: '5', six: '6', seven: '7', eight: '8', nine: '9', ten: '10', eleven: '11', twelve: '12', thirteen: '13', fourteen: '14', fifteen: '15', sixteen: '16', seventeen: '17', eighteen: '18', nineteen: '19', twenty: '20'};
 function same(a, b){ if(Array.isArray(b)) return b.some(function(x){ return same(a, x); }); a = norm(a); b = norm(b); if(NUM[a]) a = NUM[a]; if(NUM[b]) b = NUM[b]; return a === b; }
-function countItems(paper, pk){ var P = T[paper][pk]; if(P.type === 'story_one_word' || P.type === 'story_completion') return P.parts.reduce(function(n, x){ return n + x.items.length; }, 0); if(P.type === 'mc_cloze_copy') return P.key.length; if(P.type === 'gapped_text_title') return P.key.length + 1; if(P.type === 'productive_writing') return P.complete.length; return (P.items || []).length; }
-function teacherItems(P){ if(P.type === 'colour' || P.type === 'colour_write') return P.items.length; if(P.type === 'productive_writing') return (P.answer || []).length + ((P.write || {}).n || 2); return 0; }
+function countItems(paper, pk){ var P = T[paper][pk]; if(P.type === 'story_one_word' || P.type === 'story_completion') return P.parts.reduce(function(n, x){ return n + x.items.length; }, 0); if(P.type === 'mc_cloze_copy' || P.type === 'open_cloze') return P.key.length; if(P.type === 'gapped_text_title') return P.key.length + 1; if(P.type === 'productive_writing') return P.complete.length; if(P.type === 'story_writing') return 0; return (P.items || []).length; }
+function teacherItems(P){ if(P.type === 'colour' || P.type === 'colour_write') return P.items.length; if(P.type === 'productive_writing') return (P.answer || []).length + ((P.write || {}).n || 2); if(P.type === 'story_writing') return 1; return 0; }
 function checkPart(pk, silent){
   readDOM(); var paper = tab === 'rw' ? 'rw' : 'listening'; var P = T[paper][pk];
   if(P.type === 'colour' || P.type === 'colour_write'){ var det = $('[data-part="' + pk + '"] details'); if(det) det.open = true; return {score: 0, total: 0, teacher: P.items.length}; }
