@@ -133,10 +133,14 @@
   table.res th,table.res td{ padding:7px 9px; border-bottom:1px solid var(--line); text-align:left }
   table.res th{ color:var(--muted); font-size:11.5px; letter-spacing:.5px; text-transform:uppercase }
 </style>
-<script src="ui-mensajes.js?v=1"></script>
+<script src="ui-mensajes.js?v=2"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js"></script>
 <script src="nis-nav.js?v=2"></script>
+<!-- El planner: de ahí salen los bloques de unidades y sus títulos, para no
+     tener aquí una lista paralela que se quede vieja. El alumno ya lo trae en
+     caché de haber pasado por el portal. -->
+<script src="unit-plans.js?v=1"></script>
 </head>
 <body>
 <header>
@@ -147,6 +151,14 @@
 <main id="main"><p class="muted">Loading…</p></main>
 
 <script>
+/* Aviso de la plataforma, con respaldo: NISUI en el portal NIS, cohConfirm en
+   Cohasset, y el del navegador si la pagina no carga ninguno de los dos. */
+function _preguntaUI(m, op){
+  if (window.NISUI && window.NISUI.pregunta) return window.NISUI.pregunta(m, op);
+  if (typeof window.cohConfirm === 'function') return window.cohConfirm(m);
+  return Promise.resolve(window.confirm(m));
+}
+
 /* =====================================================================
    UNIT EXAMS — el examen de una unidad (o de varias) con su reader.
    Siete partes: multiple choice, true/false, word formation, key word
@@ -170,8 +182,26 @@ const KINDS={practice:['📝','Practice exam','Para entrenar antes del oficial']
 const LVL={a2:['🐣','A2 · Elementary'], b1:['🏝️','B1 · Intermediate'],
            b2:['🚀','B2 · Upper-intermediate'], c1:['🎓','C1 · Advanced']};
 const LVLS=['a2','b1','b2','c1'];
-const GRADE='g9', UNITS='3-4';
-const UNIT_LABEL='Units 3 & 4 · And Then There Were None (ch. 5-7)';
+/* El grado sale del propio alumno; el profesor y el admin no tienen grado, así
+   que miran 9.º salvo que llamen con ?grade=. UNITS ya no es fijo: se elige en
+   la primera pantalla, y los bloques salen del planner. */
+const GRADE_FIJO=new URLSearchParams(location.search).get('grade')||'';
+let GRADE='g9', UNITS=null;
+const GRADOS={g2:'2nd',g3:'3rd',g4:'4th',g5:'5th',g6:'6th',g7:'7th',g8:'8th',g9:'9th',g10:'10th',g11:'11th'};
+/* Los bloques de unidades, de dos en dos, como se examinan: 1-2, 3-4, 5-6. Del
+   planner (unit-plans.js), no de una lista escrita a mano: cuando coordinación
+   añada una unidad, su bloque aparece solo — vacío hasta que haya examen, que
+   es justo lo que el alumno tiene que poder ver. Los pilotos quedan fuera. */
+function bloques(){
+  const p=(window.UNIT_PLANS||{})[GRADE];
+  const us=((p&&p.units)||[]).filter(u=>!u.pilot).slice().sort((a,b)=>a.n-b.n);
+  const out=[];
+  for(let i=0;i<us.length;i+=2) out.push(us.slice(i,i+2));
+  return out.filter(b=>b.length);
+}
+const unitsDe=b=>b.map(u=>u.n).join('-');
+const rotuloDe=b=>b.length>1?('Units '+b[0].n+' & '+b[b.length-1].n):('Unit '+b[0].n);
+const bloqueDe=units=>bloques().find(b=>unitsDe(b)===units)||null;
 
 const $=s=>document.querySelector(s);
 const esc=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
@@ -204,14 +234,20 @@ async function boot(){
       me=Object.assign({uid:u.data.user.id,email:u.data.user.email},(p&&p.data)||{});
     }
     try{ const {data}=await sb.rpc('server_now'); if(data) _clockSkew=new Date(data).getTime()-Date.now(); }catch(e){}
+    /* El grado del alumno manda: así el de 8.º ve sus unidades y no las de 9.º.
+       El profesor no tiene grado, y mira 9.º, que es donde está el material. */
+    if(GRADE_FIJO) GRADE=GRADE_FIJO;
+    else if(me&&me.grade_id!=null&&GRADOS['g'+me.grade_id]) GRADE='g'+me.grade_id;
     await recarga();
   }catch(e){}
   _applyHash();
 }
 async function recarga(){
+  /* El grado ENTERO, no un bloque: la primera pantalla necesita saber qué
+     bloques tienen examen y cuáles no. */
   const [a,i]=await Promise.all([
     sb.from('reader_exam_access').select('key,scope,unlocked,extra_min,opens_at,closes_at').eq('school_year',SCHOOL_YEAR),
-    sb.from('unit_exams_index').select('kind,level,title,minutes,questions,can_open').eq('grade',GRADE).eq('units',UNITS)
+    sb.from('unit_exams_index').select('units,kind,level,title,minutes,questions,can_open').eq('grade',GRADE)
   ]);
   if(!a.error) ACC=a.data||[];
   if(!i.error) INDEX=i.data||[];
@@ -246,7 +282,16 @@ function accFor(key){
     extra=Math.max(extra,r.extra_min||0); });
   return {unlocked,extra,until};
 }
-const idx=(kind,lvl)=>INDEX.find(x=>x.kind===kind&&x.level===lvl);
+const idx=(kind,lvl)=>INDEX.find(x=>x.units===UNITS&&x.kind===kind&&x.level===lvl);
+const delBloque=units=>INDEX.filter(x=>x.units===units);
+/* Para la tarjeta de un bloque: cuántos de sus exámenes están abiertos PARA MÍ
+   (para el profesor, los que estén abiertos para alguien). */
+function abiertosDe(units){
+  return delBloque(units).filter(x=>{
+    const k=GRADE+':u'+units+':'+x.kind+':'+x.level;
+    return isStaff() ? ACC.some(r=>r.key===k&&rowOpen(r)) : accFor(k).unlocked;
+  }).length;
+}
 /* Los tres documentos de papel. El enlace se pinta solo para el profesor, y la
    propia hoja vuelve a comprobar el rol: trae la clave de respuestas, así que
    no basta con no enseñar el botón. */
@@ -256,17 +301,25 @@ const docUrl=(kind,lvl,doc)=>'unit-exam-print.html?grade='+GRADE+'&units='+UNITS
 /* ---------- navegación por hash ---------- */
 let _hashMute=false;
 function _setHash(h){ if(('#'+h)===location.hash) return; _hashMute=true; location.hash=h; }
+/* El bloque de unidades entra en el hash, delante de todo: #3-4/official/b2.
+   Así el ◀ Back y el botón del navegador retroceden UNA pantalla —del examen a
+   los niveles, de los niveles a práctica/oficial, y de ahí a las unidades— en
+   vez de sacar al alumno de la app. */
+const U='(\\d+(?:-\\d+)*)';
 function _applyHash(){
   const h=(location.hash||'').replace(/^#/,'');
   let m;
-  if((m=/^(practice|official)\/(a2|b1|b2|c1)$/.exec(h))) return startExam(m[1],m[2],true);
-  if((m=/^(practice|official)$/.exec(h)))                return viewLevels(m[1],true);
-  return viewKinds(true);
+  if((m=new RegExp('^'+U+'/(practice|official)/(a2|b1|b2|c1)$').exec(h))){ UNITS=m[1]; return startExam(m[2],m[3],true); }
+  if((m=new RegExp('^'+U+'/(practice|official)$').exec(h))){ UNITS=m[1]; return viewLevels(m[2],true); }
+  if((m=new RegExp('^'+U+'$').exec(h))){ UNITS=m[1]; return viewKinds(true); }
+  UNITS=null;
+  return viewUnits(true);
 }
-window.addEventListener('hashchange',()=>{
+window.addEventListener('hashchange',async ()=>{
   if(_hashMute){ _hashMute=false; return; }
-  if(EX&&!EX.done&&!confirm('¿Salir del examen? Se perderán las respuestas que no hayas entregado.')){
-    _setHash(EX.kind+'/'+EX.lvl); return;
+  if(EX&&!EX.done&&!await _preguntaUI('Any answers you have not submitted will be lost.',
+      {titulo:'Leave the exam?', si:'Leave', no:'Stay in the exam', tono:'mal', peligro:true})){
+    _setHash(EX.units+'/'+EX.kind+'/'+EX.lvl); return;
   }
   pararExamen(); _applyHash();
 });
@@ -276,16 +329,47 @@ if(window.NISNAV&&NISNAV.setBackHandler) NISNAV.setBackHandler(function(){
   const p=h.split('/'); p.pop(); _setHash(p.join('/')); _applyHash(); return true;
 });
 
-/* ---------- pantalla 1: practice / official ---------- */
-function viewKinds(fromHash){
+/* ---------- pantalla 1: los bloques de unidades ----------
+   Los que todavía no tienen examen se enseñan igual, apagados: que un bloque no
+   aparezca se lee como que no existe, cuando lo que pasa es que su examen aún
+   no está hecho. El alumno ve así todo el curso, no solo lo que ya puede rendir. */
+function viewUnits(fromHash){
   if(!fromHash) _setHash('');
   pararExamen();
+  const bs=bloques();
+  const grado=GRADOS[GRADE]||GRADE;
   $('#main').innerHTML=`
     <div class="hero"><h1>📋 Unit Exams</h1>
-      <p>${UNIT_LABEL}. Seven parts: multiple choice, true/false, word formation, key word
-      transformations, word order, listening and writing — at your level.
+      <p>${grado} grade. Every unit block has a <b>practice exam</b> and an <b>official exam</b>, at your level:
+      multiple choice, true/false, word formation, key word transformations, word order, listening and writing.
       ${isStaff()?'<b>Teacher mode:</b> you can open any exam to review it, even when it is locked for students.'
                  :'Your teacher unlocks each exam when your class is ready.'}</p></div>
+    ${sinSesion()}
+    ${bs.length?`<div class="grid">
+      ${bs.map(b=>{ const u=unitsDe(b), n=delBloque(u).length, ab=abiertosDe(u);
+        const ico=(b[0].cover&&b[0].cover.icon)||'📘';
+        return `<div class="card ${n?'':'locked'}" ${n?`onclick="viewKinds(false,'${u}')"`:''}>
+          <div class="ico">${n?ico:'⏳'}</div>
+          <h2>${rotuloDe(b)}</h2>
+          <div class="desc">${b.map(x=>esc(x.title)).join(' · ')}</div>
+          ${n?`<span class="chip ${ab?'ok':''}">${ab?ab+' of '+n+' open':'All locked for now'}</span>`
+             :`<span class="chip">No exam yet</span>`}</div>`; }).join('')}
+    </div>`
+    :`<p class="lead">There are no units for this grade yet.</p>`}`;
+}
+
+/* ---------- pantalla 2: practice / official ---------- */
+window.viewKinds=(fromHash,units)=>{
+  if(units) UNITS=units;
+  if(!fromHash) _setHash(UNITS||'');
+  pararExamen();
+  const b=bloqueDe(UNITS);
+  const titulo=b?rotuloDe(b):('Units '+UNITS);
+  const sub=b?b.map(x=>esc(x.title)).join(' · '):'';
+  $('#main').innerHTML=`
+    <h1>📋 ${titulo}</h1>
+    <p class="lead">${sub}${sub?'. ':''}Seven parts: multiple choice, true/false, word formation, key word
+      transformations, word order, listening and writing — at your level.</p>
     ${sinSesion()}
     <div class="grid">
       ${Object.keys(KINDS).map(k=>{ const m=KINDS[k];
@@ -299,17 +383,19 @@ function viewKinds(fromHash){
           <div class="desc">${m[2]}${hay?` · ${hay} levels · ${qs} questions + writing`:''}</div>
           ${hay?`<span class="chip ${abiertos?'ok':''}">${abiertos}/${hay} unlocked</span>`
                :`<span class="chip">${me?'Not published yet':'Sign in to see them'}</span>`}</div>`; }).join('')}
-    </div>`;
-}
+    </div>
+    <div style="margin-top:16px"><button class="btn ghost" onclick="viewUnits()">← Units</button></div>`;
+};
 
-/* ---------- pantalla 2: niveles ---------- */
+/* ---------- pantalla 3: niveles ---------- */
 window.viewLevels=(kind,fromHash)=>{
-  if(!fromHash) _setHash(kind);
+  if(!fromHash) _setHash(UNITS+'/'+kind);
   pararExamen();
   const m=KINDS[kind]; const staff=isStaff();
+  const b=bloqueDe(UNITS);
   $('#main').innerHTML=`
     <h1>${m[0]} ${m[1]}</h1>
-    <p class="lead">${UNIT_LABEL}. Take the exam at the level you are working at: the higher the level, the harder the
+    <p class="lead">${b?rotuloDe(b)+'. ':''}Take the exam at the level you are working at: the higher the level, the harder the
     texts, the longer the writing and the more time you get.</p>
     ${staff?`<div class="note">👩‍🏫 <b>Modo profesor:</b> puedes entrar a cualquier nivel para revisarlo, aunque esté
       cerrado para los alumnos, y verás el guion del listening. Abrir y cerrar por grado, salón o alumno se hace en
@@ -375,7 +461,7 @@ function numera(partes){
 }
 
 window.startExam=async(kind,lvl,fromHash)=>{
-  if(!fromHash) _setHash(kind+'/'+lvl);
+  if(!fromHash) _setHash(UNITS+'/'+kind+'/'+lvl);
   pararExamen();
   $('#main').innerHTML='<p class="muted">Loading the exam…</p>';
   const k=lockKey(kind,lvl);
@@ -398,7 +484,9 @@ window.startExam=async(kind,lvl,fromHash)=>{
   const partes=construye(data);
   const total=numera(partes);
   const mins=r.data.minutes||60;
-  EX={kind,lvl,title:r.data.title,partes,total,ans:{},wr:{task:null,text:''},page:0,t0:Date.now(),
+  /* units queda dentro del examen: el hash del examen lo lleva delante, y el
+     alumno que vuelve con el botón del navegador tiene que caer en su bloque. */
+  EX={units:UNITS,kind,lvl,title:r.data.title,partes,total,ans:{},wr:{task:null,text:''},page:0,t0:Date.now(),
       secs:(mins+a.extra)*60, tot:(mins+a.extra)*60, extra:a.extra, lockKey:k,
       timer:null,poll:null,gracia:null,done:false,
       preview:isStaff()&&!a.unlocked, script:'', audioUrl:null};
@@ -649,7 +737,8 @@ function corrige(p,it){
 window.submit=async(forzado)=>{
   if(!EX||EX.done) return;
   const n=respondidas();
-  if(!forzado&&n<EX.total&&!confirm('You have answered '+n+'/'+EX.total+'. Submit anyway?')) return;
+  if(!forzado&&n<EX.total&&!await _preguntaUI('You have answered '+n+' of '+EX.total+' questions. The rest will be marked wrong.',
+      {titulo:'Submit unfinished?', si:'Yes, submit', no:'Go back and answer', tono:'ojo'})) return;
   EX.done=true; clearInterval(EX.timer); clearInterval(EX.gracia); EX.gracia=null;
   if(_qaud){ _qaud.pause(); _qaud=null; }
   let score=0; const filas=[]; const porParte=[];
