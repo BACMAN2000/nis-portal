@@ -382,7 +382,7 @@
    "image": "R5",
    "parts": [
     {
-     "text": "It is a hot day. Anna and her dad are at the beach. Anna has got a red hat and a big bucket. Dad has got a green umbrella and a book.",
+     "text": "It is a beautiful day. Anna and her dad are at the beach. Anna has got a red hat and a big bucket. Dad has got a green umbrella and a book.",
      "example": {
       "q": "Where are Anna and her dad?",
       "a": "beach"
@@ -624,7 +624,7 @@
    ],
    [
     "M",
-    "We're at the beach today. Look at all the children!"
+    "We're at the beach today. Look at the children!"
    ],
    [
     "Fch",
@@ -928,7 +928,7 @@
    ],
    [
     "F",
-    "Sleeping! Ha ha. He's tired."
+    "Sleeping! Ha ha. He's in the sun."
    ],
    [
     "pause",

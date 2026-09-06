@@ -288,7 +288,7 @@
      "key": "no"
     },
     {
-     "s": "There is a kite in the sky.",
+     "s": "There is a kite.",
      "key": "yes"
     },
     {
@@ -388,7 +388,7 @@
    "image": "R5",
    "parts": [
     {
-     "text": "It is a sunny day. Ben and his sister Lucy are in the park. Ben has got a red kite and Lucy has got a blue bike. Their dog Rex is with them.",
+     "text": "It is a beautiful day. Ben and his sister Lucy are in the park. Ben has got a red kite and Lucy has got a blue bike. Their dog Rex is with them.",
      "example": {
       "q": "Where are Ben and Lucy?",
       "a": "park"
@@ -405,14 +405,14 @@
      ]
     },
     {
-     "text": "Lucy rides her bike next to the trees. Ben flies his kite. It goes up, up, up! Rex runs after a duck next to the water.",
+     "text": "Lucy rides her bike next to the trees. Ben flies his kite. It goes up, up, up! Rex sees a duck next to the water.",
      "items": [
       {
        "q": "What does Ben do with his kite?",
        "a": "fly"
       },
       {
-       "q": "What does Rex run after?",
+       "q": "What does Rex see?",
        "a": "duck"
       }
      ]
@@ -630,7 +630,7 @@
    ],
    [
     "F",
-    "We're in the park today. Look at all the children!"
+    "We're in the park today. Look at the children!"
    ],
    [
     "Mch",
@@ -836,7 +836,7 @@
    ],
    [
     "Mch",
-    "There are three kites in the sky."
+    "There are three kites."
    ],
    [
     "M",
@@ -866,7 +866,7 @@
    ],
    [
     "Mch",
-    "I've got a kite. It can fly high."
+    "I've got a kite. It can fly."
    ],
    [
     "F",
@@ -1056,7 +1056,7 @@
    ],
    [
     "M",
-    "And the ball on the path? Colour it purple."
+    "And the ball under the tree? Colour it purple."
    ],
    [
     "pause",
