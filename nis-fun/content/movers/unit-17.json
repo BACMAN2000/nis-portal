@@ -253,6 +253,92 @@
    ],
    "instructions": "Look at picture A and picture B. Find the 11 differences and tell your partner about them.",
    "data": {}
+  },
+  {
+   "code": "G",
+   "type": "grammar_box",
+   "title": "Grammar · Shall I help you?",
+   "instructions": "Read the sentences. Then choose the right word.",
+   "outputs": [
+    "book",
+    "digital"
+   ],
+   "structure": "Shall for offers",
+   "data": {
+    "title": "Shall I help you?",
+    "intro": "You want to help somebody. Do not just do it — offer first. <b>Shall I…?</b> is the polite way in.",
+    "can": "I can offer to help with <b>Shall I…?</b> and answer an offer politely.",
+    "examples": [
+     {
+      "text": "<b>Shall I help</b> you wash the car, Mum?",
+      "note": "Cambridge"
+     },
+     {
+      "text": "You're hungry? <b>Shall I get</b> you a sandwich?"
+     },
+     {
+      "text": "<b>Shall I open</b> the bottle for you?"
+     },
+     {
+      "text": "<b>Shall I carry</b> the blanket? — Yes, please!"
+     }
+    ],
+    "rules": [
+     "<b>Shall I</b> + verb, with no <i>to</i>: Shall I help? Shall I open it?",
+     "The answer is short: <b>Yes, please!</b> or <b>No, thanks.</b>",
+     "<b>Shall we…?</b> is for both of you: \"Shall we have the picnic here?\""
+    ],
+    "practice": {
+     "instructions": "Choose the right word.",
+     "items": [
+      {
+       "sentence": "___ I help you with the picnic?",
+       "options": [
+        "Am",
+        "Shall",
+        "Do"
+       ],
+       "answer": 1
+      },
+      {
+       "sentence": "Shall I ___ the bottle for you?",
+       "options": [
+        "open",
+        "opens",
+        "opening"
+       ],
+       "answer": 0
+      },
+      {
+       "sentence": "— Shall I get you some water? — ___",
+       "options": [
+        "Yes, I shall.",
+        "Yes, I do.",
+        "Yes, please!"
+       ],
+       "answer": 2
+      },
+      {
+       "sentence": "Mum has got a lot of bags. Mateo says: '___ I carry one?'",
+       "options": [
+        "Shall",
+        "Am",
+        "Do"
+       ],
+       "answer": 0
+      },
+      {
+       "sentence": "Which one is right?",
+       "options": [
+        "Shall I to help you?",
+        "Shall I help you?",
+        "Shall I helping you?"
+       ],
+       "answer": 1
+      }
+     ]
+    }
+   }
   }
  ],
  "homework": [
