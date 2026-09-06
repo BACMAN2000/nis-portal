@@ -2554,8 +2554,11 @@ function _uexTarjetas(grade, porBloque, abiertosPorBloque){
       ? `<span class="badge" style="background:${abiertos?'#dcfce7':'#e2e8f0'};color:${abiertos?'#065f46':'#475569'}">
            ${n} ${n===1?'examen':'exámenes'} · ${abiertos?abiertos+(abiertos===1?' abierto':' abiertos'):'todos cerrados'}</span>`
       : `<span class="badge" style="background:#f1f5f9;color:#64748b">Sin examen todavía</span>`;
-    return `<div class="card" style="${n?'cursor:pointer':'opacity:.72'}"
-        ${n?`onclick="window._uexAbreBloque('${units}')"`:''}>
+    /* Tambien se entra a los bloques vacios: aqui solo hay profesores y
+       administradores, y ver por dentro que un bloque no tiene examen es
+       informacion, no un sitio prohibido. */
+    return `<div class="card" style="cursor:pointer;${n?'':'opacity:.72'}"
+        onclick="window._uexAbreBloque('${units}')">
       <div style="font-size:1.9rem;line-height:1">${ico}</div>
       <h2 style="margin:6px 0 2px;font-size:1.05rem">${_uexRotulo(b)}</h2>
       <p class="muted" style="margin:0 0 6px;font-size:.85rem">${titulos}</p>
@@ -4742,7 +4745,7 @@ function studentGrade(key){
       ${key==='g9' ? (nodeVisible('english.classes.g9.cambridge') ? _hubCard('🎓','Cambridge','B2 First (FCE) practice by skill: Listening, Use of English, Reading and Writing.',"window._nav('classes_g9_cambridge')") : _lockedCard('🎓','Cambridge','Cambridge B2 First practice.')) : ''}
       ${key==='g5' ? _hubCard('🦅','Cambridge Flyers','The A2 Flyers picture tasks, sorted by the unit you are working on: label the people, tick the right picture, match people to pictures and write the picture story.',"window._nav('classes_g5_flyers')") : ''}
       ${readerBooksFor(key).length ? (nodeVisible(base+'.reader') ? _hubCard('📚','Readers','Graded readers with activities for every chapter: '+readerBooksFor(key).map(id=>READER_CARDS[id][4]).join(', ')+'.',"window._nav('classes_"+key+"_readers')") : _lockedCard('📚','Readers','Graded readers with activities.')) : ''}
-      ${key==='g9' ? (nodeVisible('english.classes.g9.unitexams') ? _skillCard('📋','Unit Exams','The unit exam and its practice, at your level: multiple choice, true/false, word formation, transformations, word order, listening and writing. Your teacher opens each one when the class is ready.',_withBack('unit-exam.html',route)) : _lockedCard('📋','Unit Exams','The unit exam and its practice.')) : ''}
+      ${key==='g9' ? (nodeVisible('english.classes.g9.unitexams') ? _skillCard('📋','Unit Exams','The unit exam and its practice, at your level: multiple choice, true/false, word formation, transformations, word order, listening and writing. Your teacher opens each one when the class is ready.',_withBack('unit-exam.html?v=3',route)) : _lockedCard('📋','Unit Exams','The unit exam and its practice.')) : ''}
     </div>`;
 }
 /* Cambridge (9.º): tarjeta madre con las destrezas del examen B2 First:

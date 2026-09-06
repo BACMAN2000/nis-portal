@@ -5,7 +5,7 @@ Sirve para recorrer el examen entero en local sin tocar la base ni los datos de
 ningun alumno: los examenes salen de los JSON del disco y el audio del mp3
 local. Genera _test-unit-exam.html, que NO se publica (se borra al terminar).
 
-    python _test-unit-exam.py [teacher|student-open|student-locked]
+    python exams/prueba_local.py [teacher|teacher-locked|student-open|student-locked]
 """
 import io, json, os, re, sys
 
@@ -22,8 +22,10 @@ for f in sorted(os.listdir(d)):
         e['questions'] = sum(len(p.get('items', [])) for p in e.get('parts', []))
         examenes[e['kind'] + ':' + e['level']] = {'e': e, 'script': guion, 'mp3': mp3}
 
-rol = 'teacher' if MODO == 'teacher' else 'student'
-abierto = 'true' if MODO != 'student-locked' else 'false'
+# teacher-locked: el profesor con TODO cerrado, que es como lo ve el dia antes
+# del examen — el caso donde hay que comprobar que a el no se le cierra nada.
+rol = 'teacher' if MODO.startswith('teacher') else 'student'
+abierto = 'false' if MODO.endswith('-locked') else 'true'
 
 STUB = """
 <script>
@@ -49,7 +51,7 @@ function _tabla(nombre){
       }
       if(nombre==='unit_exams_index'){
         return _res(Object.keys(_DATOS).map(k=>{ const e=_DATOS[k].e;
-          return {kind:e.kind, level:e.level, title:e.title, minutes:e.minutes,
+          return {units:e.units, kind:e.kind, level:e.level, title:e.title, minutes:e.minutes,
                   questions:e.questions, can_open:(_ROL!=='student')||_ABIERTO}; }));
       }
       if(nombre==='unit_exams'){
