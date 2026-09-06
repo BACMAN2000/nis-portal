@@ -90,13 +90,16 @@ window.NISACT=(function(){
   api.onReady=function(f){ if(_loaded)f(); else _cbs.push(f); };
   api.isStaff=function(){ return _role==='teacher'||_role==='admin'; };
   api.submit=async function(r){ if(!api._user)return{skipped:true};
-    try{ await client().from('activity_attempts').insert({student_id:api._user.uid,activity:r.activity,title:r.title,level:r.level,score:r.score,total:r.total,hints_used:r.hints,lives_left:r.lives,duration_sec:r.duration}); }catch(e){}
+    let ok=true, motivo='';
+    try{ const q=await client().from('activity_attempts').insert({student_id:api._user.uid,activity:r.activity,title:r.title,level:r.level,score:r.score,total:r.total,hints_used:r.hints,lives_left:r.lives,duration_sec:r.duration});
+      if(q && q.error){ ok=false; motivo=q.error.message; } }catch(e){ ok=false; motivo=(e&&e.message)||'sin conexion'; }
     try{ const m=Math.floor(r.duration/60),sec=r.duration%60;
       await fetch(NIS_CONFIG.WRITING_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
         body:JSON.stringify({skill:'Activity',name:api._user.full_name||api._user.first_name||'',email:api._user.email||'',level:r.level,
           examTitle:r.title+' - Time '+m+'m '+String(sec).padStart(2,'0')+'s - Hints '+r.hints+' - Lives left '+r.lives,
           examType:r.activity,score:r.score,total:r.total,duration_min:Math.max(1,Math.round(r.duration/60))})}); }catch(e){}
-    return {sent:true}; };
+    avisaGuardado(ok, motivo);
+    return ok ? {sent:true} : {sent:false, motivo:motivo}; };
   load(); return api;
 })();
 
@@ -239,4 +242,18 @@ if('speechSynthesis' in window){ _pickFrVoice(); try{ speechSynthesis.onvoicesch
 function speakFR(w){ if(!('speechSynthesis' in window))return; var t=(w&&(w.fr||w.word))||''; if(!t)return; var u=new SpeechSynthesisUtterance(t); u.lang='fr-FR'; if(_frVoice)u.voice=_frVoice; u.rate=0.9; try{speechSynthesis.cancel();}catch(e){} speechSynthesis.speak(u); }
 </script>
 </body>
-</html>
+</html>  /* Corrige el «Guardando tu resultado…» del banner con lo que de verdad paso.
+     Es la unica senal que tiene el alumno: si el guardado falla en silencio, se
+     va convencido de que su trabajo quedo registrado. */
+  function avisaGuardado(ok, motivo){
+    var P = 'Guardando tu resultado\u2026';
+    var texto = ok === null ? 'Entra al Portal para que tu resultado quede guardado.'
+              : ok ? 'Tu resultado quedo guardado en My Results.'
+              : '\u26a0 No se pudo guardar tu resultado (' + (motivo || 'sin conexion') + '). Avisa a tu profesor.';
+    document.querySelectorAll('div,p,span,h1,h2,h3').forEach(function(n){
+      if(n.children.length === 0 && n.textContent.indexOf(P) >= 0){
+        n.textContent = n.textContent.replace(P, texto);
+      }
+    });
+  }
+

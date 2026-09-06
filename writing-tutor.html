@@ -508,9 +508,14 @@ function sendTeacher(){
   var txt=assemble(); if(wordCount(txt)<10){ msg('Write a bit more before sending.','warn'); return; }
   var done=function(name,email){
     if(!email){ msg('Log in to the portal first to send to your teacher.','warn'); return; }
-    try{ fetch(NIS_CONFIG.WRITING_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
-      body:JSON.stringify({skill:'Writing',name:name,email:email,level:level,examTitle:'Writing Tutor - '+TYPES[type].name,examType:'writing-tutor',writingText:txt,words:wordCount(txt)})});
-      msg('Sent to your teacher and to your email!','ok'); }catch(e){ msg('Could not send right now.','warn'); }
+    /* El envio se espera. Antes el fetch se lanzaba sin then ni await
+       dentro de un try/catch, y una promesa rechazada no dispara el
+       catch: el alumno leia 'Sent!' aunque no hubiera salido. */
+    msg('Sending…','warn');
+    fetch(NIS_CONFIG.WRITING_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body:JSON.stringify({skill:'Writing',name:name,email:email,level:level,examTitle:'Writing Tutor - '+TYPES[type].name,examType:'writing-tutor',writingText:txt,words:wordCount(txt)})})
+      .then(function(){ msg('Sent to your teacher and to your email!','ok'); })
+      .catch(function(){ msg('Could not send — check your connection and try again. Your text is still here.','warn'); });
   };
   try{ if(window.supabase&&window.NIS_CONFIG){ var sb=window.supabase.createClient(NIS_CONFIG.SUPABASE_URL,NIS_CONFIG.SUPABASE_KEY);
     sb.auth.getUser().then(function(u){ if(u&&u.data&&u.data.user){ sb.from('profiles').select('full_name,email').eq('id',u.data.user.id).maybeSingle().then(function(p){

@@ -193,17 +193,34 @@ window.NISACT=(function(){
       const p=await c.from('profiles').select('full_name,first_name,email,cefr_level,grades(name)').eq('id',u.data.user.id).maybeSingle();
       const d=(p&&p.data)||{}; return {uid:u.data.user.id,email:u.data.user.email||d.email,full_name:d.full_name,first_name:d.first_name};
     }catch(e){ return null; } }
+  /* Corrige el «Guardando tu resultado…» del banner con lo que de verdad paso.
+     Es la unica senal que tiene el alumno: si el guardado falla en silencio, se
+     va convencido de que su trabajo quedo registrado. */
+  function avisaGuardado(ok, motivo){
+    var P = 'Guardando tu resultado\u2026';
+    var texto = ok === null ? 'Entra al Portal para que tu resultado quede guardado.'
+              : ok ? 'Tu resultado quedo guardado en My Results.'
+              : '\u26a0 No se pudo guardar tu resultado (' + (motivo || 'sin conexion') + '). Avisa a tu profesor.';
+    document.querySelectorAll('div,p,span,h1,h2,h3').forEach(function(n){
+      if(n.children.length === 0 && n.textContent.indexOf(P) >= 0){
+        n.textContent = n.textContent.replace(P, texto);
+      }
+    });
+  }
   async function submit(r){
-    const s=await student(); if(!s) return {skipped:true};
-    try{ await client().from('activity_attempts').insert({student_id:s.uid,activity:r.activity,title:r.title,level:r.level,
-      score:r.score,total:r.total,hints_used:r.hints,lives_left:r.lives,duration_sec:r.duration}); }catch(e){}
+    const s=await student(); if(!s){ avisaGuardado(null); return {skipped:true}; }
+    let ok=true, motivo='';
+    try{ const q=await client().from('activity_attempts').insert({student_id:s.uid,activity:r.activity,title:r.title,level:r.level,
+      score:r.score,total:r.total,hints_used:r.hints,lives_left:r.lives,duration_sec:r.duration});
+      if(q && q.error){ ok=false; motivo=q.error.message; } }catch(e){ ok=false; motivo=(e&&e.message)||'sin conexion'; }
     try{ const m=Math.floor(r.duration/60), sec=r.duration%60;
       await fetch(NIS_CONFIG.WRITING_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
         body:JSON.stringify({skill:'Activity',name:s.full_name||s.first_name||'',email:s.email||'',level:r.level,
           examTitle:r.title+' - Time '+m+'m '+String(sec).padStart(2,'0')+'s - Hints '+r.hints+' - Lives left '+r.lives,
           examType:r.activity,score:r.score,total:r.total,duration_min:Math.max(1,Math.round(r.duration/60))})});
     }catch(e){}
-    return {sent:true};
+    avisaGuardado(ok, motivo);
+    return ok ? {sent:true} : {sent:false, motivo:motivo};
   }
   return {submit};
 })();
@@ -481,7 +498,7 @@ function win(){
     done[level] = true;
     RES[level] = { score:bossMax, total:bossMax, hints:hintsUsed, lives:lives, duration:elapsed };
     if(window.NIS_WORK) NIS_WORK.touch();
-    b.textContent = '🎉 ¡Robo-Noob derrotado en '+fmtT(elapsed)+'! Tu resultado fue guardado en My Results y enviado a tu correo.';
+    b.textContent = '🎉 ¡Robo-Noob derrotado en '+fmtT(elapsed)+'! Guardando tu resultado…';
     if(window.NISACT) NISACT.submit({activity:'voice-battle',title:'Voice Battle — FR 8e Semaine 4',level:level,
       score:bossMax,total:bossMax,hints:hintsUsed,lives:lives,duration:elapsed});
   } else {
