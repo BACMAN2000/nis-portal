@@ -2510,7 +2510,9 @@ window._ctlRow=(ch,open)=>{
    reader_exam_access, con su año escolar, su alcance y sus minutos extra.  */
 const UEX_LEVELS=['a2','b1','b2','c1'];
 const UEX_KINDS=[['practice','📝 Práctica'],['official','🎓 Oficial']];
-const uexCtl={until:'', grade:'g9', units:'3-4'};
+/* units = null → la pantalla de tarjetas por bloque de unidades; con valor, el
+   detalle de ese bloque. */
+const uexCtl={until:'', grade:'g9', units:null};
 const uexKey=(kind,lvl)=>uexCtl.grade+':u'+uexCtl.units+':'+kind+':'+lvl;
 /* El grado de la clave ('g9') es el del EXAMEN; el alcance ('g9-B') es el del
    salón al que se le abre. Son cosas distintas aunque se parezcan. */
@@ -2525,6 +2527,47 @@ const _uexImprimir=(kind,lvl)=>[['exam','🖨️','Hoja del alumno'],['key','�
       href="${_uexDoc(kind,lvl,d[0])}" target="_blank" rel="noopener"
       title="${d[2]} · ${kind==='official'?'oficial':'práctica'} ${lvl.toUpperCase()} (se abre listo para imprimir o guardar en PDF)">${d[1]} ${d[2]}</a>`).join(' ');
 
+/* Los bloques de unidades de un grado, de dos en dos, como se examinan: 1-2,
+   3-4, 5-6. Salen del planner (unit-plans.js), no de una lista escrita a mano,
+   así que en cuanto coordinación añada una unidad su bloque aparece aquí solo
+   —vacío hasta que se cree el examen, que es justo lo que hay que ver: que ese
+   bloque existe y todavía no tiene examen. Los pilotos quedan fuera. */
+function _uexBloques(grade){
+  const us=unitPlansFor(grade).filter(u=>!u.pilot).sort((a,b)=>a.n-b.n);
+  const out=[];
+  for(let i=0;i<us.length;i+=2) out.push(us.slice(i,i+2));
+  return out.filter(b=>b.length);
+}
+const _uexUnits=b=>b.map(u=>u.n).join('-');
+const _uexRotulo=b=>b.length>1?('Unidades '+b[0].n+' y '+b[b.length-1].n):('Unidad '+b[0].n);
+
+/* Pantalla 1: una tarjeta por bloque de unidades. */
+function _uexTarjetas(grade, porBloque, abiertosPorBloque){
+  const bloques=_uexBloques(grade);
+  if(!bloques.length) return `<div class="note info">Este grado no tiene unidades en el planner, así que no hay
+    bloques que examinar. Las unidades se copian del planner de Toddle a <code>unit-plans.js</code>.</div>`;
+  return `<div class="grid cols-2" style="margin-top:12px">${bloques.map(b=>{
+    const units=_uexUnits(b);
+    const n=(porBloque[units]||[]).length, abiertos=abiertosPorBloque[units]||0;
+    const ico=(b[0].cover&&b[0].cover.icon)||'📘';
+    const titulos=b.map(u=>esc(u.title)).join(' · ');
+    const chip=n
+      ? `<span class="badge" style="background:${abiertos?'#dcfce7':'#e2e8f0'};color:${abiertos?'#065f46':'#475569'}">
+           ${n} ${n===1?'examen':'exámenes'} · ${abiertos?abiertos+(abiertos===1?' abierto':' abiertos'):'todos cerrados'}</span>`
+      : `<span class="badge" style="background:#f1f5f9;color:#64748b">Sin examen todavía</span>`;
+    return `<div class="card" style="${n?'cursor:pointer':'opacity:.72'}"
+        ${n?`onclick="window._uexAbreBloque('${units}')"`:''}>
+      <div style="font-size:1.9rem;line-height:1">${ico}</div>
+      <h2 style="margin:6px 0 2px;font-size:1.05rem">${_uexRotulo(b)}</h2>
+      <p class="muted" style="margin:0 0 6px;font-size:.85rem">${titulos}</p>
+      ${chip}
+      ${n?'':`<p class="muted" style="margin:8px 0 0;font-size:.78rem">Aparecerá aquí en cuanto se suba
+         con <code>exams/sube_examen.py</code>. Hasta entonces no hay nada que abrir ni que imprimir.</p>`}
+    </div>`; }).join('')}</div>`;
+}
+window._uexAbreBloque=(units)=>{ uexCtl.units=units; unitExamPanel(); };
+window._uexVuelve=()=>{ uexCtl.units=null; unitExamPanel(); };
+
 async function unitExamPanel(){
   state._tab='unitexams';
   $('#main').innerHTML=`<h1>📋 Exámenes de unidad</h1><p class="muted">Cargando…</p>`;
@@ -2538,14 +2581,40 @@ async function unitExamPanel(){
     return;
   }
   await _rdrSyncClock();
-  const [{data:studs},{data:acc},{data:pub}]=await Promise.all([
+  /* Se pide el grado ENTERO, no solo el bloque abierto: la pantalla de tarjetas
+     necesita saber cuáles tienen examen y cuántos están abiertos. */
+  const [{data:studs},{data:acc},{data:todos}]=await Promise.all([
     sb.from('profiles').select('grade_id,section, grades(name)').eq('role','student').eq('grade_id',gid),
     sb.from('reader_exam_access').select('key,scope,unlocked,extra_min,opens_at,closes_at').eq('school_year',SCHOOL_YEAR_NOW),
-    sb.from('unit_exams_index').select('kind,level,title,minutes,questions').eq('grade',uexCtl.grade).eq('units',uexCtl.units)
+    sb.from('unit_exams_index').select('units,kind,level,title,minutes,questions').eq('grade',uexCtl.grade)
   ]);
-  const publicados=new Set((pub||[]).map(x=>x.kind+':'+x.level));
-  if(!publicados.size){
+  const porBloque={};
+  (todos||[]).forEach(x=>{ (porBloque[x.units]=porBloque[x.units]||[]).push(x); });
+  /* Para la tarjeta, un examen cuenta como abierto si lo está para ALGUIEN —un
+     salón, un grado o todos—, no solo en el alcance «Todos». Mirando solo 'all'
+     la tarjeta decía «todos cerrados» con el B2 abierto para 9.º B, que es
+     justo lo contrario de lo que el profesor necesita ver de un vistazo. */
+  const abiertosPorBloque={};
+  Object.keys(porBloque).forEach(u=>{
+    abiertosPorBloque[u]=porBloque[u].filter(x=>{
+      const k=uexCtl.grade+':u'+u+':'+x.kind+':'+x.level;
+      return (acc||[]).some(r=>r.key===k&&_rdrRowOpen(r));
+    }).length;
+  });
+
+  if(!uexCtl.units){
     $('#main').innerHTML=`<h1>📋 Exámenes de unidad</h1>
+      <p class="muted" style="margin-top:-6px">Elige el bloque de unidades. Dentro están el <b>examen de práctica</b>
+        y el <b>oficial</b>, cada uno en sus cuatro niveles, con su candado y su hoja para imprimir.</p>
+      ${_uexTarjetas(uexCtl.grade, porBloque, abiertosPorBloque)}`;
+    return;
+  }
+
+  const pub=porBloque[uexCtl.units]||[];
+  const publicados=new Set(pub.map(x=>x.kind+':'+x.level));
+  const volver=`<button class="btn sm ghost" style="margin-bottom:10px" onclick="window._uexVuelve()">← Unidades</button>`;
+  if(!publicados.size){
+    $('#main').innerHTML=`<h1>📋 Exámenes de unidad</h1>${volver}
       <div class="note info">Todavía no hay ningún examen publicado para ${uexCtl.grade.toUpperCase()} · unidades ${uexCtl.units}.
       Se suben con <code>exams/sube_examen.py</code>; hasta entonces no hay nada que abrir.</div>`;
     return;
@@ -2577,10 +2646,13 @@ async function unitExamPanel(){
     const st=cell(kind,niveles,c.scope);
     if(!st.n) return `<td style="text-align:center" class="muted">—</td>`;
     const heredado=st.own===0&&st.from&&st.from!==c.scope;
-    const txt=st.all?'✅ abierto':(st.none?'🔒 cerrado':'◐ '+st.open+'/'+st.n);
+    /* Candado ABIERTO cuando está abierto: el botón se lee como lo que hace al
+       pulsarlo (cerrar), no solo como el estado en que está. */
+    const txt=st.all?'🔓 Abierto':(st.none?'🔒 Cerrado':'◐ '+st.open+'/'+st.n);
+    const accion=st.all?'Pulsa para CERRARLO':'Pulsa para ABRIRLO';
     return `<td style="text-align:center">
-      <button class="btn sm ${st.all?'':(st.none?'ghost':'')}" style="padding:5px 10px;min-width:96px"
-        title="${heredado?'Heredado de '+esc(st.from):esc(etiq)}"
+      <button class="btn sm ${st.all?'':(st.none?'ghost':'')}" style="padding:5px 10px;min-width:100px"
+        title="${accion} · ${heredado?'Heredado de '+esc(st.from):esc(etiq)}"
         onclick="window._uexToggle('${kind}','${niveles.join(',')}','${c.scope}',${st.all?'false':'true'})">${txt}</button>
       <div class="muted" style="font-size:.7rem;margin-top:3px">${st.all&&st.until?'🕒 hasta '+_rdrHM(st.until):(heredado?'heredado':(st.extra?'+'+st.extra+' min':'&nbsp;'))}</div>
       ${st.all?`<div style="margin-top:2px"><button class="btn sm ghost" style="padding:2px 7px;font-size:.68rem" onclick="window._uexTime('${kind}','${niveles.join(',')}','${c.scope}',5)">+5</button>${st.extra?` <button class="btn sm ghost" style="padding:2px 7px;font-size:.68rem" onclick="window._uexTime('${kind}','${niveles.join(',')}','${c.scope}',0)">✕</button>`:''}</div>`:''}
@@ -2601,8 +2673,13 @@ async function unitExamPanel(){
     }).join('');
     return resumen+porNivel;
   }).join('');
-  $('#main').innerHTML=`<h1>📋 Exámenes de unidad</h1>
-    <p class="muted" style="margin-top:-6px">9.º · <b>Unidades 3 y 4</b> con los capítulos 5-7 de <i>And Then There Were None</i>.
+  /* El rótulo sale del planner y del título del propio examen, no de un texto
+     escrito a mano: el día que haya examen de 5 y 6 esta cabecera ya lo dirá. */
+  const _b=_uexBloques(uexCtl.grade).find(b=>_uexUnits(b)===uexCtl.units);
+  const _rot=_b?_uexRotulo(_b):('Unidades '+uexCtl.units);
+  const _sub=_b?_b.map(u=>esc(u.title)).join(' · '):'';
+  $('#main').innerHTML=`<h1>📋 Exámenes de unidad</h1>${volver}
+    <p class="muted" style="margin-top:-2px">${(GRADE_META[uexCtl.grade]||['','9.º'])[1]} · <b>${_rot}</b>${_sub?' — '+_sub:''}.
       Cada alumno rinde <b>en su nivel</b>: abrir la fila de arriba abre los cuatro de una vez, y las filas de debajo
       sirven para abrir uno solo. Un salón manda sobre su grado, y el grado sobre «Todos». Año <b>${SCHOOL_YEAR_NOW}</b>.</p>
     <div class="note info" style="margin:0 0 12px">🔒 Mientras un examen está cerrado, el alumno <b>no puede ni descargarlo</b>:
