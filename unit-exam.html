@@ -281,10 +281,14 @@ function viewKinds(fromHash){
       ${Object.keys(KINDS).map(k=>{ const m=KINDS[k];
         const abiertos=LVLS.filter(l=>idx(k,l)&&accFor(lockKey(k,l)).unlocked).length;
         const hay=LVLS.filter(l=>idx(k,l)).length;
+        /* Sin sesión no llega ningún nivel, y «0 levels · 39 questions» se lee
+           como que la página está rota en vez de como que hay que entrar. */
+        const qs=hay?Math.max(...LVLS.map(l=>(idx(k,l)||{}).questions||0)):0;
         return `<div class="card" onclick="viewLevels('${k}')">
           <div class="ico">${m[0]}</div><h2>${m[1]}</h2>
-          <div class="desc">${m[2]} · ${hay} levels · 39 questions + writing</div>
-          <span class="chip ${abiertos?'ok':''}">${abiertos}/${hay} unlocked</span></div>`; }).join('')}
+          <div class="desc">${m[2]}${hay?` · ${hay} levels · ${qs} questions + writing`:''}</div>
+          ${hay?`<span class="chip ${abiertos?'ok':''}">${abiertos}/${hay} unlocked</span>`
+               :`<span class="chip">${me?'Not published yet':'Sign in to see them'}</span>`}</div>`; }).join('')}
     </div>`;
 }
 
