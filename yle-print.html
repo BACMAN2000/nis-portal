@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YLE · Printable exam · Nordic International School</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<style>
+/* =========================================================================
+   Version imprimible del examen YLE, para el simulacro en papel.
+
+   El motor de pantalla (yle-practice.html) corrige solo y cronometra; en la
+   sala de examen del colegio hace falta otra cosa: la hoja que el nino rellena
+   a lapiz mientras el profesor pone el audio. Esta pagina lee el mismo JSON de
+   yle/<nivel>/test-NN.json —una sola fuente, sin copiar nada— y lo pinta en A4.
+
+   yle-print.html?level=movers&test=3            el examen
+   yle-print.html?level=movers&test=3&key=1      la hoja de respuestas
+   yle-print.html?level=movers&test=3&paper=rw   solo un paper
+
+   El Listening lleva el aviso de que lo pone el profesor, y el Speaking sale
+   como guion del examinador: en papel no se puede hacer de otra manera y es
+   mejor decirlo que fingir que si.
+   ========================================================================= */
+:root{--ink:#1a1a1a;--soft:#5a6472;--line:#c9d0da;--band:#eef2f7;--accent:#1e3a8a}
+*{box-sizing:border-box}
+body{margin:0;background:#f2f4f8;color:var(--ink);font:15px/1.55 Georgia,'Times New Roman',serif}
+.bar{background:#0d1d33;color:#fff;padding:10px 18px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;
+  font-family:system-ui,sans-serif;font-size:.9rem;position:sticky;top:0;z-index:5}
+.bar h1{margin:0;font-size:1rem}
+.bar select,.bar button,.bar a{font:inherit;border-radius:8px;border:1px solid #33415a;background:#16233a;color:#fff;
+  padding:5px 12px;cursor:pointer;text-decoration:none}
+.bar button.go{background:#fff;color:#0d1d33;font-weight:700;border-color:#fff}
+.bar .sp{margin-left:auto}
+.hoja{background:#fff;max-width:210mm;margin:16px auto;padding:16mm 15mm;box-shadow:0 2px 14px rgba(20,30,50,.14)}
+.cab{border-bottom:2px solid var(--ink);padding-bottom:8px;margin-bottom:14px}
+.cab h2{margin:0;font-size:1.35rem;font-family:system-ui,sans-serif}
+.cab .meta{color:var(--soft);font-size:.85rem;font-family:system-ui,sans-serif;margin-top:3px}
+.datos{display:flex;gap:18px;flex-wrap:wrap;margin:10px 0 0;font-size:.9rem;font-family:system-ui,sans-serif}
+.datos span{flex:1;min-width:150px;border-bottom:1px solid var(--line);padding-bottom:2px}
+.paper{margin-top:22px}
+.paper > h3{font-family:system-ui,sans-serif;font-size:1.05rem;margin:0 0 4px;
+  background:var(--accent);color:#fff;padding:5px 10px;border-radius:6px}
+.paper .nota{font-size:.82rem;color:var(--soft);font-family:system-ui,sans-serif;margin:0 0 10px}
+.parte{margin:16px 0 0;break-inside:avoid}
+.parte h4{font-family:system-ui,sans-serif;font-size:.95rem;margin:0 0 2px}
+.parte .tarea{font-family:system-ui,sans-serif;font-size:.82rem;color:var(--soft);margin:0 0 8px}
+.escena{background:var(--band);border-radius:6px;padding:8px 12px;font-size:.9rem;margin:0 0 10px}
+.escena b{font-family:system-ui,sans-serif;font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:var(--soft)}
+img.lam{display:block;max-width:100%;border:1px solid var(--line);border-radius:6px;margin:0 auto 10px}
+ol.items{margin:0;padding-left:24px}
+ol.items li{margin-bottom:9px;break-inside:avoid}
+.linea{display:inline-block;min-width:120px;border-bottom:1px solid var(--ink);margin-left:6px}
+.linea.corta{min-width:70px}
+.ops{margin-left:8px}
+.ops span{display:inline-block;margin-right:14px}
+.ops span::before{content:"\25CB  "}
+.banco{background:var(--band);border-radius:6px;padding:8px 12px;margin-bottom:10px;font-size:.95rem}
+.banco b{font-family:system-ui,sans-serif;font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:var(--soft);display:block}
+.ej{font-size:.88rem;color:var(--soft);margin:0 0 8px;padding-left:2px}
+.ej b{color:var(--ink)}
+.rayas div{border-bottom:1px solid var(--line);height:22px}
+.guion{font-size:.9rem}
+.guion p{margin:0 0 6px}
+.clave{background:#fff8e6;border-left:4px solid #b3771a;padding:8px 12px;border-radius:0 6px 6px 0;margin:8px 0 0;font-size:.9rem}
+.clave b{font-family:system-ui,sans-serif}
+.pie{margin-top:26px;border-top:1px solid var(--line);padding-top:8px;color:var(--soft);
+  font-size:.75rem;font-family:system-ui,sans-serif;display:flex;justify-content:space-between}
+@media print{
+  .bar{display:none}
+  body{background:#fff}
+  .hoja{box-shadow:none;margin:0;max-width:none;padding:0}
+  .paper{break-before:page}
+  .paper:first-of-type{break-before:auto}
+  @page{size:A4;margin:16mm 15mm}
+}
+</style>
+</head>
+<body>
+<div class="bar">
+  <h1>YLE · Printable exam</h1>
+  <select id="lv"></select>
+  <select id="tt"></select>
+  <select id="pp"></select>
+  <label style="display:flex;gap:5px;align-items:center"><input type="checkbox" id="kk"> answer key</label>
+  <button class="go" id="ir">Show</button>
+  <span class="sp"></span>
+  <button onclick="window.print()">🖨️ Print</button>
+  <a id="volver" href="yle-practice.html">‹ Back to the tests</a>
+</div>
+<div class="hoja" id="hoja"><p style="color:#5a6472">Loading…</p></div>
+
+<script>
+var Q = new URLSearchParams(location.search);
+var LEVEL = (Q.get('level') || 'starters').toLowerCase();
+var TEST = Math.max(1, parseInt(Q.get('test') || '1', 10));
+var SOLO = Q.get('paper') || '';
+var KEY = Q.get('key') === '1';
+var NAMES = {starters: 'Pre A1 Starters', movers: 'A1 Movers', flyers: 'A2 Flyers'};
+var PAPERS = {listening: 'Listening', rw: 'Reading & Writing', speaking: 'Speaking'};
+var IMG = 'yle-img/' + LEVEL + '/';
+
+function esc(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){
+  return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]; }); }
+function nn(){ return String(TEST).padStart(2, '0'); }
+function $(s){ return document.querySelector(s); }
+
+/* La imagen de la parte, si la hay. Se cae sola si no existe: hay tests cuyas
+   laminas todavia no estan dibujadas y la hoja tiene que salir igual. */
+function lamina(id, alt){
+  if (!id) return '';
+  return '<img class="lam" src="' + IMG + 'test_' + nn() + '_' + esc(id) + '.jpg" alt="' + esc(alt || '') +
+         '" onerror="this.remove()">';
+}
+function raya(n){ return '<span class="linea' + (n ? ' corta' : '') + '">&nbsp;</span>'; }
+function rayas(n){ return '<div class="rayas">' + '<div></div>'.repeat(n || 5) + '</div>'; }
+
+/* Un item puede venir de muchas formas segun la tarea; se pinta lo que traiga.
+   Es preferible a escribir veintinueve pintores casi iguales. */
+function item(it, tipo){
+  if (typeof it === 'string') return esc(it) + raya();
+  var t = '';
+  if (it.q) t += esc(it.q);
+  if (it.def) t += esc(it.def);
+  if (it.a && !it.options && tipo === 'dialogue_mc3') t += esc(it.a);
+  if (it.sentence) t += esc(it.sentence).replace(/_{2,}|\.{3}|…/g, raya(1));
+  if (it.text) t += esc(it.text);
+  if (it.desc) t += esc(it.desc);
+  if (it.options) {
+    t += '<div class="ops">' + it.options.map(function(o, i){
+      return '<span>' + 'ABCDEFGH'.charAt(i) + '  ' + esc(o) + '</span>'; }).join('') + '</div>';
+  } else if (!/_{2,}|…/.test(t)) {
+    t += raya();
+  }
+  return t;
+}
+
+function parteHTML(pk, key, p, spec){
+  var n = key.replace(/^p/, '');
+  var tarea = (spec && spec.task) || p.type || '';
+  var h = '<div class="parte"><h4>Part ' + n + '</h4><p class="tarea">' + esc(tarea) + '</p>';
+  if (p.scene) h += '<p class="escena"><b>The picture</b><br>' + esc(p.scene) + '</p>';
+  h += lamina(p.image, p.scene);
+  if (p.heading) h += '<p class="escena"><b>Heading</b><br>' + esc(p.heading) + '</p>';
+  if (p.words && p.words.length) h += '<p class="banco"><b>Words</b>' + p.words.map(esc).join(' &nbsp;·&nbsp; ') + '</p>';
+  if (p.names && p.names.length) h += '<p class="banco"><b>Names</b>' + p.names.map(esc).join(' &nbsp;·&nbsp; ') + '</p>';
+  if (p.box && p.box.length) h += '<p class="banco"><b>Word box</b>' + p.box.map(esc).join(' &nbsp;·&nbsp; ') + '</p>';
+  if (p.text) h += '<div class="escena">' + esc(p.text).replace(/\{(\d+)\}/g, function(m, d){ return '<b>(' + d + ')</b>' + raya(1); }) + '</div>';
+  if (p.example) {
+    var e = p.example;
+    h += '<p class="ej"><b>Example:</b> ' + esc(e.q || e.def || e.a || e.sentence || '') +
+         ' &nbsp;→&nbsp; <b>' + esc(e.a || e.word || e.key || '') + '</b></p>';
+  }
+  if (p.examiner) h += '<div class="escena guion"><b>The examiner says</b><p>' + esc(p.examiner) + '</p></div>';
+  if (p.examiner_open) h += '<div class="escena guion"><b>The examiner says</b><p>' + esc(p.examiner_open) + '</p></div>';
+  if (p.frames && p.frames.length) h += '<ol class="items">' + p.frames.map(function(f){
+    return '<li>' + esc(f) + '</li>'; }).join('') + '</ol>';
+  if (p.differences && p.differences.length) h += '<ol class="items">' + p.differences.map(function(f){
+    return '<li>' + esc(f) + '</li>'; }).join('') + '</ol>';
+  if (p.people && p.people.length) h += '<p class="banco"><b>People in the picture</b>' + p.people.map(function(x){
+    return esc(x.id) + ': ' + esc(x.desc); }).join(' &nbsp;·&nbsp; ') + '</p>';
+  if (p.items && p.items.length) h += '<ol class="items">' + p.items.map(function(it){
+    return '<li>' + item(it, p.type) + '</li>'; }).join('') + '</ol>';
+  if (p.type === 'productive_writing' || p.type === 'story_writing') h += rayas(7);
+  if (KEY) {
+    var sol = (p.items || []).map(function(it, i){
+      var v = it.a != null ? it.a : (it.word != null ? it.word : (it.key != null ? it.key : (it.answer != null ? it.answer : '')));
+      if (Array.isArray(v)) v = v.join(' / ');
+      return (i + 1) + '. ' + v; }).filter(function(x){ return x.length > 3; });
+    if (sol.length) h += '<p class="clave"><b>Answers</b> · ' + esc(sol.join('   ')) + '</p>';
+  }
+  return h + '</div>';
+}
+
+function pinta(d, specs){
+  var s = specs.levels[LEVEL] || {};
+  var h = '<div class="cab"><h2>' + NAMES[LEVEL] + ' · Practice test ' + TEST + '</h2>' +
+    '<div class="meta">' + esc(d.theme || '') + ' · Nordic International School · about ' + (s.total_minutes || '—') + ' minutes</div>' +
+    '<div class="datos"><span>Name:</span><span>Class:</span><span>Date:</span><span>Mark:</span></div></div>';
+  ['listening', 'rw', 'speaking'].forEach(function(pk){
+    if (SOLO && SOLO !== pk) return;
+    var sec = d[pk]; if (!sec) return;
+    var sp = s[pk] || {};
+    h += '<section class="paper"><h3>' + PAPERS[pk] + (sp.minutes ? ' · ' + sp.minutes + ' minutes' : '') + '</h3>';
+    if (pk === 'listening') h += '<p class="nota">Your teacher plays the recording. You hear everything twice.</p>';
+    if (pk === 'speaking') h += '<p class="nota">This paper is spoken, one child at a time. What follows is the examiner’s script, for the teacher.</p>';
+    Object.keys(sec).sort().forEach(function(k){
+      var spec = ((sp.parts || []).filter(function(x){ return String(x.n) === k.replace(/^p/, ''); })[0]) || null;
+      h += parteHTML(pk, k, sec[k], spec);
+    });
+    h += '</section>';
+  });
+  h += '<div class="pie"><span>' + NAMES[LEVEL] + ' · test ' + TEST + (KEY ? ' · ANSWER KEY' : '') + '</span>' +
+       '<span>Nordic International School</span></div>';
+  $('#hoja').innerHTML = h;
+  document.title = NAMES[LEVEL] + ' · test ' + TEST + (KEY ? ' · key' : '') + ' · printable';
+}
+
+function controles(idx){
+  $('#lv').innerHTML = ['starters', 'movers', 'flyers'].map(function(l){
+    return '<option value="' + l + '"' + (l === LEVEL ? ' selected' : '') + '>' + NAMES[l] + '</option>'; }).join('');
+  var tests = (idx && idx.tests) || [];
+  $('#tt').innerHTML = tests.map(function(t){
+    var n = t.number || t;
+    return '<option value="' + n + '"' + (n === TEST ? ' selected' : '') + '>Test ' + n + '</option>'; }).join('');
+  $('#pp').innerHTML = [['', 'Whole exam'], ['listening', 'Listening'], ['rw', 'Reading & Writing'], ['speaking', 'Speaking']]
+    .map(function(p){ return '<option value="' + p[0] + '"' + (p[0] === SOLO ? ' selected' : '') + '>' + p[1] + '</option>'; }).join('');
+  $('#kk').checked = KEY;
+  $('#volver').href = 'yle-practice.html?level=' + LEVEL;
+  $('#ir').onclick = function(){
+    var q = '?level=' + $('#lv').value + '&test=' + $('#tt').value;
+    if ($('#pp').value) q += '&paper=' + $('#pp').value;
+    if ($('#kk').checked) q += '&key=1';
+    location.search = q;
+  };
+}
+
+function j(u){ return fetch(u + (u.indexOf('?') < 0 ? '?' : '&') + 'v=1').then(function(r){
+  if (!r.ok) throw new Error(u + ' → ' + r.status); return r.json(); }); }
+
+Promise.all([
+  j('yle/specs.json'),
+  j('yle/' + LEVEL + '/index.json').catch(function(){ return {tests: []}; }),
+  j('yle/' + LEVEL + '/test-' + nn() + '.json'),
+]).then(function(r){
+  controles(r[1]);
+  pinta(r[2], r[0]);
+}).catch(function(e){
+  $('#hoja').innerHTML = '<p>Could not build the paper: ' + esc(e.message) + '</p>';
+  controles({tests: []});
+});
+</script>
+</body>
+</html>
