@@ -202,9 +202,13 @@ const RUTA = [
 ];
 
 const byId = Object.fromEntries(EXAMS.map(e=>[e.id,e]));
+/* La pagina no tenia escape propio: la vista de planes lo necesita porque
+   pinta titulos de unidad que vienen del contenido. */
+function sanea(x){ return String(x == null ? '' : x).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
 const TABS = [['niveles','📚 Los exámenes'],['escala','📐 Escala Cambridge'],
               ['nis','🏫 En el NIS'],['nota','🧮 Cómo se califica'],
-              ['gramatica','📖 Gramática YLE'],['recursos','📂 Recursos oficiales YLE']];
+              ['gramatica','📖 Gramática YLE'],['planes','🧑‍🏫 Planes de clase'],['recursos','📂 Recursos oficiales YLE']];
 let cur = 'niveles';
 
 const el = id => document.getElementById(id);
@@ -408,6 +412,38 @@ function vistaRecursos(){
   </div>`;
 }
 
+/* 🧑‍🏫 Planes de clase — los trece cuadernillos de Cambridge para Starters, uno
+   por parte del examen, cruzados con las unidades de Fun for Nordic que
+   entrenan esa parte. Los PDF no se copian: se enlaza la página oficial. */
+let PLANES = null;
+function vistaPlanes(){
+  if(!PLANES){
+    fetch('yle/lesson-plans.json', {cache:'no-cache'}).then(r=>r.json()).then(d=>{ PLANES = d; draw(); })
+      .catch(()=>{ PLANES = {plans: [], otros: []}; draw(); });
+    return `<div class="card"><h2>🧑‍🏫 Planes de clase oficiales</h2><p class="muted">Cargando…</p></div>`;
+  }
+  const P = PLANES;
+  const fila = p => `<tr>
+    <td><b>${p.paper}</b> · parte ${p.part}</td>
+    <td>${sanea(p.task || '')}<br><span class="muted" style="font-size:.85em">${sanea(p.plan)}</span></td>
+    <td>${p.units.length
+        ? p.units.map(u=>`<a href="nis-fun/engine/?level=starters&unit=${u.n}" target="_blank" rel="noopener">u${String(u.n).padStart(2,'0')}</a>`).join(' ')
+        : '<span class="muted">ninguna todavía</span>'}</td>
+    <td><a href="${p.print}" target="_blank" rel="noopener">en papel</a></td></tr>`;
+  return `<div class="card"><h2>🧑‍🏫 Planes de clase oficiales · Pre A1 Starters</h2>
+    <p class="muted">Cambridge publica gratis <b>una lección por cada parte del examen</b>: unas diez páginas con lo que exige la tarea, los objetivos, el material fotocopiable, la hoja del profesor, la actividad de clase y una tarea de muestra con su audio. Se descargan del <a href="${(P.prep||{}).starters||'#'}" target="_blank" rel="noopener">sitio oficial</a> — aquí no se copian, pero sí se dice <b>qué unidad del curso entrena cada parte</b>, que es lo que costaba encontrar.</p>
+    <div class="scroll"><table>
+      <tr><th>Parte del examen</th><th>Lo que da el plan</th><th>Unidades del curso</th><th>Nuestro test</th></tr>
+      ${(P.plans||[]).map(fila).join('')}
+    </table></div>
+    <h3>Y además</h3>
+    <div class="scroll"><table><tr><th>Material</th><th>Qué es</th></tr>
+      ${(P.otros||[]).map(o=>`<tr><td><b>${sanea(o.name)}</b></td><td>${sanea(o.what)}</td></tr>`).join('')}
+    </table></div>
+    <p class="muted">Las hojas de progreso las firman el alumno y la familia después de cada simulacro; el portal genera además el <a href="yle-boletin.html">boletín</a> con los escudos estimados.</p>
+  </div>`;
+}
+
 /* 📖 Gramática YLE — la Grammar and Structures List del Handbook 2024, que hasta
    ahora no estaba en ningún sitio del portal. Cada nivel exige además todo lo de
    los anteriores, así que se marca de dónde viene cada estructura. */
@@ -439,6 +475,7 @@ function draw(){
     : cur==='nis'    ? vistaNis()
     : cur==='nota'   ? vistaNota()
     : cur==='gramatica' ? vistaGramatica()
+    : cur==='planes'  ? vistaPlanes()
     : cur==='recursos' ? vistaRecursos()
     :                  vistaNiveles();
   window.scrollTo(0,0);

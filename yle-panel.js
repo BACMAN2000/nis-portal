@@ -140,7 +140,11 @@ async function vistaGuion(){
   const sel = `<div class="yle-bar">
     <label>Nivel <select onchange="window._yleNivel(this.value)">${Object.keys(NIV).map(l => `<option value="${l}"${l === V.level ? ' selected' : ''}>${NIV[l]}</option>`).join('')}</select></label>
     <label>Test <select onchange="window._yleTest(this.value)">${lista.map(t => `<option value="${t.number}"${t.number === V.test ? ' selected' : ''}>Test ${t.number}${t.theme ? ' · ' + esc(t.theme) : ''}${t.inedito ? ' (aún no publicado)' : ''}</option>`).join('')}</select></label>
-    <button class="btn sm ghost" onclick="window.print()">🖨️ Imprimir</button></div>`;
+    <button class="btn sm ghost" onclick="window.print()">🖨️ Imprimir</button>
+    <a class="btn sm ghost" target="_blank" rel="noopener"
+       href="yle-print.html?level=${V.level}&test=${V.test || 1}">📄 El examen en papel</a>
+    <a class="btn sm ghost" target="_blank" rel="noopener"
+       href="yle-print.html?level=${V.level}&test=${V.test || 1}&key=1">🗝️ Hoja de respuestas</a></div>`;
   if(!T || !T.audio){
     $('#yleBody').innerHTML = `<div class="note">Aquí tienes lo que se oye en cada parte de Listening, por si diriges un simulacro o prefieres leerlo tú en clase.</div>` + sel +
       `<div class="card"><p class="muted">${lista.length ? 'Este test todavía no tiene guion de audio.' : 'Este nivel aún no tiene tests en el motor YLE.'}</p></div>`;
