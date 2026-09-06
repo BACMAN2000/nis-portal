@@ -1,0 +1,19 @@
+{
+ "_nivel": "movers",
+ "_nota": "Solo las unidades cuyo mp3 ya esta en el curso. Lo escribe tools/build_songs.py mirando el disco; no editar a mano.",
+ "unidades": {
+  "03": {
+   "chant": {
+    "titulo": "Yesterday!",
+    "letra": "[Leader]\nToday I go —\n[Kids]\nyesterday I WENT!\n\n[Leader]\nToday I see —\n[Kids]\nyesterday I SAW!\n\n[Leader]\nToday I have —\n[Kids]\nyesterday I HAD!\n\n[Leader]\nToday I ride —\n[Kids]\nyesterday I RODE!\n\n[Leader]\nToday I eat —\n[Kids]\nyesterday I ATE!\n\n[Leader]\nToday I win —\n[Kids]\nyesterday I WON!\n\n[All]\nWent, saw, had, rode, ate, won —\nyesterday at the funfair, everyone!",
+    "archivo": "movers-03-chant.mp3"
+   },
+   "cancion": {
+    "titulo": "Yesterday at the Funfair",
+    "letra": "[Verse 1]\nYesterday we went to the funfair,\nyesterday we saw the big wheel turn.\nMateo had a ticket in his pocket —\nhe lost it twice, but he never learns!\n\n[Chorus]\nWent, saw, had —\nyesterday, yesterday!\nRode, ate, won —\nwhat a day, what a day!\n\n[Verse 2]\nSofía rode the horses round and round,\nErik ate a hot dog on the way.\nValentina won a giant panda —\nshe couldn't even carry it away!\n\n[Chorus]\nWent, saw, had —\nyesterday, yesterday!\nRode, ate, won —\nwhat a day, what a day!\n\n[Bridge]\nToday is today and today we say GO,\nbut when it's finished we say WENT.\nToday we SEE, and after that\nwe tell the story: yesterday we SAW.\n\n[Chorus — final]\nWent, saw, had —\nyesterday, yesterday!\nRode, ate, won —\nwhat a day, what a day!",
+    "archivo": "movers-03-cancion.mp3"
+   },
+   "groove": "rocanrol"
+  }
+ }
+}
