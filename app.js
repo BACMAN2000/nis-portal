@@ -1046,6 +1046,7 @@ async function renderAdmin(tab='users'){
       {key:'results',label:'📝 Resultados'},
       {key:'final',label:'🎓 Resultado final'},
       {key:'readers',label:'📖 Controles de lectura'},
+      {key:'unitexams',label:'📋 Exámenes de unidad'},
       {key:'tiempo',label:'⏱️ Tiempo de pantalla'},
       {key:'honesty',label:'🛡️ Honestidad'},
     ]},
@@ -1113,6 +1114,7 @@ async function renderAdmin(tab='users'){
   if(tab==='results') return adminResults();
   if(tab==='final') return cefrFinalPanel();
   if(tab==='readers') return readerStatsPanel();
+  if(tab==='unitexams') return unitExamPanel();
   if(tab==='funnordic') return funNordicPanel();
   if(tab==='funaccess') return funAccessPanel(GRADES);
   if(tab==='yle') return window.ylePanel(GRADES, {admin:true});
@@ -1407,7 +1409,7 @@ async function adminTeachers(){
     const _nodeChip=(key,label)=>`<label style="${chipCss}"><input type="checkbox" class="tg-node" value="${key}" ${(managed? managed.has(key): true)?'checked':''}> ${esc(label)}</label>`;
     // Unidades y semanas no se asignan al profesor por separado (heredan de
     // su Activities), así que quedan fuera de los chips generales.
-    const _gradeKeySet=new Set([...ALL_GRADE_ORDER.flatMap(g=>['english.classes.'+g,'english.classes.'+g+'.activities','english.classes.'+g+'.grammar']),'english.classes.g9.cambridge','english.classes.g9.cambridge.listening','english.classes.g9.uoe1','english.classes.g9.writing','english.classes.g9.unit5','english.classes.g6.units','english.classes.g7.units','english.classes.g8.units','english.classes.g2.units','english.classes.g3.units','english.classes.g4.units','english.classes.g5.units','english.classes.g10.units','english.classes.g11.units','english.classes.g9.reader','english.classes.g7.reader',..._SUB_NODES.map(n=>n.key)]);
+    const _gradeKeySet=new Set([...ALL_GRADE_ORDER.flatMap(g=>['english.classes.'+g,'english.classes.'+g+'.activities','english.classes.'+g+'.grammar']),'english.classes.g9.cambridge','english.classes.g9.cambridge.listening','english.classes.g9.uoe1','english.classes.g9.writing','english.classes.g9.unit5','english.classes.g9.unitexams','english.classes.g6.units','english.classes.g7.units','english.classes.g8.units','english.classes.g2.units','english.classes.g3.units','english.classes.g4.units','english.classes.g5.units','english.classes.g10.units','english.classes.g11.units','english.classes.g9.reader','english.classes.g7.reader',..._SUB_NODES.map(n=>n.key)]);
     const generalChips=ACCESS_NODES.filter(n=>!_gradeKeySet.has(n.key)).map(n=>_nodeChip(n.key,n.label)).join('');
     // Primaria (2.º–5.º) sin Grammar: en esa etapa la gramática vive dentro
     // de las actividades, igual que en francés.
@@ -1416,7 +1418,7 @@ async function adminTeachers(){
       if(!_isPrimaryGrade(g)) items.push(['english.classes.'+g+'.grammar','📝 Grammar']);
       if(g==='g7') items.push(['english.classes.g7.reader','📚 Readers']);
       if(g!=='g9') items.push(['english.classes.'+g+'.units','🎯 Units']);
-      if(g==='g9') items.push(['english.classes.g9.cambridge','🎓 Cambridge'],['english.classes.g9.cambridge.listening','🎧 Cambridge Listening'],['english.classes.g9.uoe1','🧩 Use of English P1'],['english.classes.g9.writing','✍️ Writing'],['english.classes.g9.unit5','🎯 Unit 5'],['english.classes.g9.reader','📚 Readers']);
+      if(g==='g9') items.push(['english.classes.g9.cambridge','🎓 Cambridge'],['english.classes.g9.cambridge.listening','🎧 Cambridge Listening'],['english.classes.g9.uoe1','🧩 Use of English P1'],['english.classes.g9.writing','✍️ Writing'],['english.classes.g9.unit5','🎯 Unit 5'],['english.classes.g9.reader','📚 Readers'],['english.classes.g9.unitexams','📋 Unit Exams']);
       return `<div class="row" style="gap:6px;align-items:center;margin-top:5px;flex-wrap:wrap"><span class="muted" style="font-size:.8rem;min-width:84px">${GRADE_META[g][0]} ${GRADE_META[g][1]}</span>${items.map(it=>_nodeChip(it[0],it[1])).join('')}</div>`;
     }).join('');
     const suspended = t.active===false;
@@ -2498,6 +2500,143 @@ window._ctlRow=(ch,open)=>{
   _ctlWrite(RDR_LEVELS.map(l=>({key:examCtl.book+':'+l+':ch'+ch,scope:'all',school_year:SCHOOL_YEAR_NOW,
     unlocked:!!open,closes_at:until,updated_at:now})));
 };
+/* ================= 📋 Exámenes de unidad ==================================
+   La misma mecánica que los controles de lectura, y a propósito: el profesor
+   ya sabe abrir una celda, dar +5 y poner hora de cierre. Cambia lo que hay en
+   las filas — aquí son los exámenes de unidad (práctica y oficial), no los
+   capítulos de un libro — y que el candado además le niega al alumno la
+   DESCARGA del examen, no solo la pantalla (RLS de unit_exams).
+   La clave es grade:uUNITS:kind:level, y vive en la misma tabla
+   reader_exam_access, con su año escolar, su alcance y sus minutos extra.  */
+const UEX_LEVELS=['a2','b1','b2','c1'];
+const UEX_KINDS=[['practice','📝 Práctica'],['official','🎓 Oficial']];
+const uexCtl={until:'', grade:'g9', units:'3-4'};
+const uexKey=(kind,lvl)=>uexCtl.grade+':u'+uexCtl.units+':'+kind+':'+lvl;
+/* El grado de la clave ('g9') es el del EXAMEN; el alcance ('g9-B') es el del
+   salón al que se le abre. Son cosas distintas aunque se parezcan. */
+const uexGradeId=()=>+String(uexCtl.grade).replace(/\D/g,'');
+
+async function unitExamPanel(){
+  state._tab='unitexams';
+  $('#main').innerHTML=`<h1>📋 Exámenes de unidad</h1><p class="muted">Cargando…</p>`;
+  const isAdmin=state.profile&&state.profile.role==='admin';
+  const grades=isAdmin?GRADES:teacherAllowedGrades();
+  const gid=uexGradeId();
+  if(!grades.some(g=>+g.id===gid)){
+    $('#main').innerHTML=`<h1>📋 Exámenes de unidad</h1>
+      <div class="note info">Los exámenes de unidad publicados son de <b>9.º grado</b> (unidades 3 y 4 con
+      <i>And Then There Were None</i>), y no tienes ese grado asignado.</div>`;
+    return;
+  }
+  await _rdrSyncClock();
+  const [{data:studs},{data:acc},{data:pub}]=await Promise.all([
+    sb.from('profiles').select('grade_id,section, grades(name)').eq('role','student').eq('grade_id',gid),
+    sb.from('reader_exam_access').select('key,scope,unlocked,extra_min,opens_at,closes_at').eq('school_year',SCHOOL_YEAR_NOW),
+    sb.from('unit_exams_index').select('kind,level,title,minutes,questions').eq('grade',uexCtl.grade).eq('units',uexCtl.units)
+  ]);
+  const publicados=new Set((pub||[]).map(x=>x.kind+':'+x.level));
+  if(!publicados.size){
+    $('#main').innerHTML=`<h1>📋 Exámenes de unidad</h1>
+      <div class="note info">Todavía no hay ningún examen publicado para ${uexCtl.grade.toUpperCase()} · unidades ${uexCtl.units}.
+      Se suben con <code>exams/sube_examen.py</code>; hasta entonces no hay nada que abrir.</div>`;
+    return;
+  }
+  const prefijo=uexCtl.grade+':u'+uexCtl.units+':';
+  const rows=(acc||[]).filter(r=>String(r.key||'').indexOf(prefijo)===0);
+  const rooms={};
+  (studs||[]).forEach(p=>{ const sec=String(p.section||'').trim(), k=p.grade_id+'|'+sec;
+    (rooms[k]||(rooms[k]={gid:p.grade_id,sec,scope:'g'+p.grade_id+(sec?'-'+sec:''),
+      label:((p.grades&&p.grades.name)||('G'+p.grade_id))+(sec?' · '+sec:''),n:0})).n++; });
+  const cols=[{scope:'all',label:'Todos',n:null}].concat(Object.values(rooms).sort((a,b)=>a.sec.localeCompare(b.sec)));
+
+  /* Estado de una celda. `niveles` = los que entran en ella: los cuatro en la
+     fila resumen, uno solo en las filas de nivel. Solo cuentan los publicados,
+     para no decir "2/4 abierto" de exámenes que no existen. */
+  const cell=(kind,niveles,scope)=>{
+    const chain=_rdrScopeChain(scope);
+    const hay=niveles.filter(l=>publicados.has(kind+':'+l));
+    let open=0, own=0, extra=0, from=null, until=null;
+    hay.forEach(l=>{ const a=_rdrAccFor(rows,uexKey(kind,l),chain);
+      if(a.unlocked) open++;
+      if(a.from===scope) own++;
+      extra=Math.max(extra,a.extra); if(a.from&&!from) from=a.from;
+      if(a.until&&!until) until=a.until; });
+    return {open, own, extra, from, until, n:hay.length, hay,
+            all:hay.length>0&&open===hay.length, none:open===0};
+  };
+  const celda=(kind,niveles,c,etiq)=>{
+    const st=cell(kind,niveles,c.scope);
+    if(!st.n) return `<td style="text-align:center" class="muted">—</td>`;
+    const heredado=st.own===0&&st.from&&st.from!==c.scope;
+    const txt=st.all?'✅ abierto':(st.none?'🔒 cerrado':'◐ '+st.open+'/'+st.n);
+    return `<td style="text-align:center">
+      <button class="btn sm ${st.all?'':(st.none?'ghost':'')}" style="padding:5px 10px;min-width:96px"
+        title="${heredado?'Heredado de '+esc(st.from):esc(etiq)}"
+        onclick="window._uexToggle('${kind}','${niveles.join(',')}','${c.scope}',${st.all?'false':'true'})">${txt}</button>
+      <div class="muted" style="font-size:.7rem;margin-top:3px">${st.all&&st.until?'🕒 hasta '+_rdrHM(st.until):(heredado?'heredado':(st.extra?'+'+st.extra+' min':'&nbsp;'))}</div>
+      ${st.all?`<div style="margin-top:2px"><button class="btn sm ghost" style="padding:2px 7px;font-size:.68rem" onclick="window._uexTime('${kind}','${niveles.join(',')}','${c.scope}',5)">+5</button>${st.extra?` <button class="btn sm ghost" style="padding:2px 7px;font-size:.68rem" onclick="window._uexTime('${kind}','${niveles.join(',')}','${c.scope}',0)">✕</button>`:''}</div>`:''}
+    </td>`;
+  };
+  const head=`<th style="min-width:150px">Examen</th>`
+    +cols.map(c=>`<th style="text-align:center">${esc(c.label)}${c.n?`<div class="muted" style="font-weight:400;font-size:.7rem">${c.n} alumnos</div>`:''}</th>`).join('');
+  const body=UEX_KINDS.map(([kind,etiq])=>{
+    const resumen=`<tr style="background:#f8fafc"><td><b>${etiq}</b>
+      <div class="muted" style="font-size:.72rem">los cuatro niveles a la vez</div></td>
+      ${cols.map(c=>celda(kind,UEX_LEVELS,c,'Los cuatro niveles a la vez')).join('')}</tr>`;
+    const porNivel=UEX_LEVELS.filter(l=>publicados.has(kind+':'+l)).map(l=>{
+      const e=(pub||[]).find(x=>x.kind===kind&&x.level===l)||{};
+      return `<tr><td style="padding-left:22px">${l.toUpperCase()}
+        <span class="muted" style="font-size:.72rem">· ${e.minutes||''} min · ${e.questions||0} preguntas</span></td>
+        ${cols.map(c=>celda(kind,[l],c,'Solo '+l.toUpperCase())).join('')}</tr>`;
+    }).join('');
+    return resumen+porNivel;
+  }).join('');
+  $('#main').innerHTML=`<h1>📋 Exámenes de unidad</h1>
+    <p class="muted" style="margin-top:-6px">9.º · <b>Unidades 3 y 4</b> con los capítulos 5-7 de <i>And Then There Were None</i>.
+      Cada alumno rinde <b>en su nivel</b>: abrir la fila de arriba abre los cuatro de una vez, y las filas de debajo
+      sirven para abrir uno solo. Un salón manda sobre su grado, y el grado sobre «Todos». Año <b>${SCHOOL_YEAR_NOW}</b>.</p>
+    <div class="note info" style="margin:0 0 12px">🔒 Mientras un examen está cerrado, el alumno <b>no puede ni descargarlo</b>:
+      la base se lo niega, no es solo que la pantalla no se lo enseñe. Tú y los administradores podéis entrar siempre a revisarlo,
+      y dentro veréis además el <b>guion del listening</b>.</div>
+    <div class="row" style="gap:8px;margin:0 0 10px;align-items:center">
+      <span style="margin-left:auto;font-size:12.5px;color:#475569">Cerrar automáticamente a las
+        <input type="time" value="${esc(uexCtl.until||'')}" onchange="window._uexUntil(this.value)"
+               style="font-family:inherit;font-size:13px;padding:5px 7px;border:1.5px solid var(--line);border-radius:8px">
+        ${uexCtl.until?`<button class="btn sm ghost" style="padding:3px 9px;font-size:.72rem" onclick="window._uexUntil('')">sin hora</button>`:''}
+      </span></div>
+    ${uexCtl.until?`<div class="note info" style="margin:0 0 12px">🕒 Lo que abras ahora se cerrará solo a las <b>${esc(uexCtl.until)}</b>.</div>`:''}
+    <div class="card" style="padding:0;overflow-x:auto"><table>
+      <thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>
+    <p class="muted" style="font-size:.82rem;margin-top:8px">⏱ <b>+5</b> añade minutos a quien esté rindiendo: el cronómetro
+      crece solo en menos de 20 segundos, sin sacarlo del examen, y llega incluso cuando el reloj ya está en cero.
+      El <b>Writing</b> no se corrige aquí: llega a <b>✅ Corrección → 🎯 Productos de unidad</b>.</p>`;
+}
+window._uexUntil=(v)=>{ uexCtl.until=v||''; unitExamPanel(); };
+async function _uexWrite(filas){
+  try{
+    const r=await sb.from('reader_exam_access').upsert(filas);
+    if(r.error) throw r.error;
+    unitExamPanel();
+  }catch(e){ alert('No se pudo guardar: '+(e.message||e)); }
+}
+window._uexToggle=(kind,niveles,scope,open)=>{
+  const now=new Date().toISOString(), until=open?_rdrUntilISO(uexCtl.until):null;
+  _uexWrite(niveles.split(',').map(l=>({key:uexKey(kind,l),scope,school_year:SCHOOL_YEAR_NOW,
+    unlocked:!!open,closes_at:until,updated_at:now})));
+};
+window._uexTime=async(kind,niveles,scope,mins)=>{
+  const ls=niveles.split(',');
+  const { data } = await sb.from('reader_exam_access').select('key,scope,unlocked,extra_min')
+    .eq('school_year',SCHOOL_YEAR_NOW).eq('scope',scope).in('key',ls.map(l=>uexKey(kind,l)));
+  const cur=data||[];
+  const base=cur.reduce((m,r)=>Math.max(m,r.extra_min||0),0);
+  const val=mins===0?0:Math.min(180,base+mins);
+  const now=new Date().toISOString();
+  _uexWrite(ls.map(l=>{ const p=cur.find(r=>r.key===uexKey(kind,l));
+    return {key:uexKey(kind,l),scope,school_year:SCHOOL_YEAR_NOW,
+            unlocked:!!(p&&p.unlocked),extra_min:val,updated_at:now}; }));
+};
+
 window._ctlTime=async(ch,scope,mins)=>{
   const { data } = await sb.from('reader_exam_access').select('key,scope,unlocked,extra_min')
     .eq('school_year',SCHOOL_YEAR_NOW).eq('scope',scope);
@@ -2941,6 +3080,7 @@ async function renderTeacher(tab){
     correccion.push({key:'unitprod',label:'🎯 Productos de unidad'});
     correccion.push({key:'corregir',label:'✅ Corregir fichas'});
     correccion.push({key:'readers',label:'📖 Controles de lectura'});
+    correccion.push({key:'unitexams',label:'📋 Exámenes de unidad'});
     correccion.push({key:'funnordic',label:'🧸 Fun for Nordic'});
     seguimiento.push({key:'results',label:'📝 Resultados'});
     seguimiento.push({key:'final',label:'🎓 Resultado final'});
@@ -2997,6 +3137,7 @@ async function renderTeacher(tab){
   if(active==='results') return teacherResults();
   if(active==='final') return cefrFinalPanel();
   if(active==='readers') return readerStatsPanel();
+  if(active==='unitexams') return unitExamPanel();
   if(active==='students') return teacherStudents();
   if(active==='unitprod') return unitProductsPanel();
   if(active==='materiales') return materialesPanel();
@@ -4353,6 +4494,7 @@ const ACCESS_NODES = [
   {key:'english.classes.g9.uoe1',       label:'9th · Use of English P1'},
   {key:'english.classes.g9.writing',    label:'9th · Writing'},
   {key:'english.classes.g9.unit5',      label:'9th · Unit 5 (product)'},
+  {key:'english.classes.g9.unitexams',  label:'9th · Unit Exams'},
   {key:'english.classes.g6.units',      label:'6th · Units (products)'},
   {key:'english.classes.g7.units',      label:'7th · Units (products)'},
   {key:'english.classes.g8.units',      label:'8th · Units (products)'},
@@ -4510,6 +4652,7 @@ function studentGrade(key){
       ${key==='g9' ? (nodeVisible('english.classes.g9.cambridge') ? _hubCard('🎓','Cambridge','B2 First (FCE) practice by skill: Listening, Use of English, Reading and Writing.',"window._nav('classes_g9_cambridge')") : _lockedCard('🎓','Cambridge','Cambridge B2 First practice.')) : ''}
       ${key==='g5' ? _hubCard('🦅','Cambridge Flyers','The A2 Flyers picture tasks, sorted by the unit you are working on: label the people, tick the right picture, match people to pictures and write the picture story.',"window._nav('classes_g5_flyers')") : ''}
       ${readerBooksFor(key).length ? (nodeVisible(base+'.reader') ? _hubCard('📚','Readers','Graded readers with activities for every chapter: '+readerBooksFor(key).map(id=>READER_CARDS[id][4]).join(', ')+'.',"window._nav('classes_"+key+"_readers')") : _lockedCard('📚','Readers','Graded readers with activities.')) : ''}
+      ${key==='g9' ? (nodeVisible('english.classes.g9.unitexams') ? _skillCard('📋','Unit Exams','The unit exam and its practice, at your level: multiple choice, true/false, word formation, transformations, word order, listening and writing. Your teacher opens each one when the class is ready.',_withBack('unit-exam.html',route)) : _lockedCard('📋','Unit Exams','The unit exam and its practice.')) : ''}
     </div>`;
 }
 /* Cambridge (9.º): tarjeta madre con las destrezas del examen B2 First:
