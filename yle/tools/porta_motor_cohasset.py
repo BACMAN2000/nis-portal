@@ -64,6 +64,20 @@ def main():
         if viejo not in dst: print('  !! no encuentro %s' % marca); continue
         dst = dst.replace(viejo, nuevo, 1); hechos.append(marca)
 
+    # openTest y la entrada directa por ?paper=&part= (el puente desde el curso)
+    if 'irA' not in dst:
+        BLANCO = chr(10) * 2
+        if 'function openTest(i){' in dst:
+            dst = dst.replace(trozo(dst, 'function openTest(i){', BLANCO),
+                              trozo(org, 'function openTest(i, irA){', BLANCO), 1)
+            hechos.append('openTest con irA')
+        v2 = "      var want = +(qs.get('test') || 0); if(want && INDEX.some(function(t){ return t.number === want && !LOCKED[t.number]; })) openTest(INDEX.findIndex(function(t){ return t.number === want; }));"
+        if v2 in dst:
+            dst = dst.replace(v2, trozo(org, '      /* ?test=N abre ese test', chr(10) + '    });').rstrip(), 1)
+            hechos.append('?paper= y &part=')
+    else:
+        saltados.append('openTest / paper+part')
+
     # el contador de palabras de la historia
     ancla_bind = "  $$('[data-mode]').forEach(function(b){ b.onclick = function(){ mode = b.dataset.mode; render(); }; });"
     if 'textarea[data-name$="_s0"]' not in dst and ancla_bind in dst:
