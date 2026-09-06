@@ -777,7 +777,12 @@ window.submit=async(forzado)=>{
   const dur=Math.max(1,Math.round((Date.now()-EX.t0)/1000));
   let wrEstado='';
   try{
-    if(sb&&me&&me.uid){
+    /* El profesor y el admin entran a revisar el examen ANTES de abrirlo, y a
+       menudo lo contestan entero para ver cómo corrige. Eso no puede dejar
+       rastro: se les guardaba un intento con su propio id como alumno, y ese
+       intento aparecía luego en Resultados y en las medias de la clase. Quien
+       revisa no rinde. */
+    if(sb&&me&&me.uid&&!isStaff()){
       await sb.from('activity_attempts').insert({student_id:me.uid,
         activity:'unitexam-'+GRADE+'-u'+UNITS+'-'+EX.kind+'-'+EX.lvl,
         title:'Unit exam '+GRADE.toUpperCase()+' U'+UNITS+' — '+KINDS[EX.kind][1]+' · '+EX.lvl.toUpperCase(),
@@ -800,6 +805,9 @@ window.submit=async(forzado)=>{
       }else if(!txt){
         wrEstado='⚠️ You did not write the Writing part, so it cannot be marked.';
       }
+    }else if(isStaff()){
+      wrEstado='👩‍🏫 <b>Vista de profesor.</b> Esto es una revisión: no se ha guardado ningún intento ni '
+              +'ninguna redacción a tu nombre. Los alumnos sí quedan registrados.';
     }
   }catch(e){}
   $('#exBody').innerHTML=`
