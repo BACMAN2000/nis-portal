@@ -166,7 +166,7 @@ function render(){
       '<div class="tip"><b>Vocabulario de la lista oficial 2025</b>Palabras nuevas dominadas en el entrenador: <b>' + (vocab.mastered || 0) + '</b>' + (vocab.seen ? ' (ha practicado ' + vocab.seen + ')' : '') + '. Cinco minutos al día con el entrenador de vocabulario fijan las palabras que el examen usa.</div>' +
       '<p class="small muted">Cómo ayudar sin saber inglés, y qué esperar el día del examen: <a href="yle-guia-familia.html">Guía para la familia</a>.</p></div>' +
     '<div class="card"><h2>El examen</h2>' +
-      '<p><b>Fecha:</b> ' + (examDate ? esc(examDate) : 'por confirmar por el colegio') + (examNote ? ' · ' + esc(examNote) : '') + '</p>' + fmt +
+      '<p><b>Fecha:</b> ' + (examDate ? esc(fecha(examDate + 'T12:00:00') || examDate) : 'por confirmar por el colegio') + (examNote ? ' · ' + esc(examNote) : '') + '</p>' + fmt +
       '<p class="small muted" style="margin-top:8px">Los resultados oficiales llegan al colegio unas semanas después del examen; el certificado en papel, más tarde.</p></div>' +
     '<p class="small muted">Nordic International School · Programa Cambridge Young Learners. Boletín generado el ' + fecha(D.generated_at) + (D.link && D.link.expires_at ? ' · este enlace caduca el ' + fecha(D.link.expires_at) : '') + '.</p>';
   if(TEACHER) bindTeacher();
