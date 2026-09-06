@@ -286,7 +286,7 @@
         },
         {
           "what": "the cloud",
-          "where": "above the tent",
+          "where": "in the sky",
           "colour": "grey"
         },
         {
@@ -301,7 +301,7 @@
         },
         {
           "what": "the dog's ball",
-          "where": "next to the tent",
+          "where": "next to the dog",
           "colour": "brown"
         }
       ]
@@ -348,7 +348,7 @@
           "word": "a bus"
         },
         {
-          "def": "You eat this hot food with a spoon.",
+          "def": "You eat this hot food when it is cold outside.",
           "word": "soup"
         },
         {
@@ -440,7 +440,7 @@
         "jumped",
         "picnic"
       ],
-      "text": "Last Sunday, Ben's class went for a walk in the __(0)__. Their teacher, Mr Hall, walked in front. 'Walk __(1)__,' he said. 'Then we can see the animals.' After a long walk, they came to a river. There was an old wooden __(2)__ on the water. 'Don't go in it!' said Mr Hall. Then the children heard a loud noise. It was a big __(3)__! The water fell down from the rocks into a small lake. The children sat on the rocks and ate their __(4)__. Ben found a small frog. It __(5)__ from his hand into the water and everyone laughed.",
+      "text": "Last Sunday, Ben's class went for a walk in the __(0)__. Their teacher, Mr Hall, walked in front. 'Walk __(1)__,' he said. 'Then we can see the animals.' After a long walk, they came to a river. There was an old __(2)__ on the water. 'Don't go in it!' said Mr Hall. Then the children heard a loud noise. It was a big __(3)__! The water fell down from the rocks into a small lake. The children sat on the rocks and ate their __(4)__. Ben found a small frog. It __(5)__ from his hand into the water and everyone laughed.",
       "example": "forest",
       "key": [
         "quietly",
@@ -459,7 +459,7 @@
     "p4": {
       "type": "mc_cloze",
       "title": "Parrots",
-      "text": "Parrots are birds __(0)__ live in hot countries. They have got strong mouths and they __(1)__ eating fruit and vegetables. Many parrots are green, __(2)__ some are red, blue or yellow. Parrots are very clever. Some of them can say words and __(3)__ like people! A parrot can live for a very long time. Some live __(4)__ than sixty years. Parrots like to live __(5)__ their families and lots of parrots.",
+      "text": "Parrots are birds __(0)__ live in hot countries. They have got strong mouths and they __(1)__ eating fruit and vegetables. Many parrots are green, __(2)__ some are red, blue or yellow. Parrots are very clever. Some of them can say words and __(3)__ like people! A parrot can live for many years. Some live __(4)__ than sixty years. Parrots like to live __(5)__ their families and lots of parrots.",
       "example": {
         "options": [
           "which",
@@ -517,7 +517,7 @@
       "image": "R5",
       "parts": [
         {
-          "text": "Daisy lived in a small village near a big forest. Every morning, before school, she walked with her dog Rex along the road to the farm. Last Tuesday, the weather was rainy and the road was very wet.",
+          "text": "Daisy lived in a small village near a big forest. Every morning, before school, she walked with her dog Rex along the road to the farm. Last Tuesday, the weather was wet and the road was very wet.",
           "examples": [
             {
               "s": "Daisy's village was near a big ___.",
@@ -532,7 +532,7 @@
             {
               "s": "Last Tuesday the weather was ___.",
               "a": [
-                "rainy",
+                "wet",
                 "wet",
                 "raining"
               ]
@@ -551,7 +551,7 @@
             {
               "s": "Rex stopped and began to ___.",
               "a": [
-                "bark"
+                "run"
               ]
             },
             {
@@ -617,8 +617,8 @@
       ],
       "answer": [
         {
-          "q": "What is the woman pushing?",
-          "model": "She is pushing a pram with a baby (in it)."
+          "q": "What has the woman got?",
+          "model": "She is walking with a baby."
         },
         {
           "q": "Where are the ducks?",
@@ -1392,7 +1392,7 @@
       ],
       [
         "M",
-        "Yes. Colour the cloud above the tent. Make it grey, like a rainy cloud."
+        "Yes. Colour the cloud in the sky. Make it grey, like a rainy cloud."
       ],
       [
         "Fch",

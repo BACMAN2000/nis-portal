@@ -19,11 +19,11 @@
       "people": [
         {
           "id": "A",
-          "desc": "a girl with a purple suitcase and sunglasses"
+          "desc": "a girl with a purple bag and a hat"
         },
         {
           "id": "B",
-          "desc": "a boy eating a sandwich on a bench"
+          "desc": "a boy eating a sandwich on a seat"
         },
         {
           "id": "C",
@@ -31,7 +31,7 @@
         },
         {
           "id": "D",
-          "desc": "a man sleeping with a newspaper on his face"
+          "desc": "a man sleeping with a hat on his face"
         },
         {
           "id": "E",
@@ -198,7 +198,7 @@
       },
       "items": [
         {
-          "q": "What time does the train leave?",
+          "q": "When does the train leave?",
           "pics": [
             {
               "word": "eight o'clock",
@@ -229,7 +229,7 @@
           ],
           "options": [
             "a hat",
-            "sunglasses",
+            "a hat",
             "a T-shirt"
           ],
           "key": "A"
@@ -329,7 +329,7 @@
     "p1": {
       "type": "definitions_copy",
       "words": [
-        "a suitcase",
+        "a bag",
         "a station",
         "a beach",
         "a tent",
@@ -339,7 +339,7 @@
         "a village"
       ],
       "pics": {
-        "a suitcase": "🧳",
+        "a bag": "🧳",
         "a station": "🚉",
         "a beach": "🏖️",
         "a tent": "⛺",
@@ -355,7 +355,7 @@
       "items": [
         {
           "def": "You put your clothes in this when you go on holiday.",
-          "word": "a suitcase"
+          "word": "a bag"
         },
         {
           "def": "This flies in the sky and takes people to different countries.",
@@ -417,7 +417,7 @@
           "key": "A"
         },
         {
-          "a": "Don't forget your coat. It's cold in the mountains.",
+          "a": "Take your coat. It's cold in the mountains.",
           "options": [
             "I won't, Grandpa.",
             "I forgot it.",
@@ -426,7 +426,7 @@
           "key": "A"
         },
         {
-          "a": "Can you send me a postcard?",
+          "a": "Can you send me a letter?",
           "options": [
             "Yes, I did.",
             "Yes I can!",
@@ -477,7 +477,7 @@
     "p4": {
       "type": "mc_cloze",
       "title": "Trains",
-      "text": "Trains are great when you __(0)__ travel. They can carry hundreds of people at the same time. The first trains were very slow and __(1)__ a lot of noise. Today, some trains are __(2)__ than cars and they are very quiet. People sit in nice seats and look __(3)__ of the window at the fields and the towns. Many children like trains __(4)__ they can walk about and buy a drink. Before you get on a train, you __(5)__ buy a ticket at the station.",
+      "text": "Trains are great when you __(0)__ travel. They can carry hundreds of people. The first trains were very slow and __(1)__ a lot of noise. Today, some trains are __(2)__ than cars and they are very quiet. People sit in nice seats and look __(3)__ of the window at the fields and the towns. Many children like trains __(4)__ they can walk about and buy a drink. Before you get on a train, you __(5)__ buy a ticket at the station.",
       "example": {
         "options": [
           "to",
@@ -531,11 +531,11 @@
     },
     "p5": {
       "type": "story_completion",
-      "title": "The lost suitcase",
+      "title": "The lost bag",
       "image": "R5",
       "parts": [
         {
-          "text": "Charlie and his parents went on holiday to the beach. They went to the station early in the morning and got on the train. Charlie had a small red suitcase with his favourite comics, his swimming things and his blue hat inside.",
+          "text": "Charlie and his parents went on holiday to the beach. They went to the station early in the morning and got on the train. Charlie had a small red bag with his favourite comics, his swimming things and his blue hat inside.",
           "examples": [
             {
               "s": "Charlie's family went on holiday to the ___.",
@@ -548,13 +548,13 @@
           ],
           "items": [
             {
-              "s": "Charlie's suitcase was small and ___.",
+              "s": "Charlie's bag was small and ___.",
               "a": [
                 "red"
               ]
             },
             {
-              "s": "Inside the suitcase there were comics, swimming things and a ___.",
+              "s": "Inside the bag there were comics, swimming things and a ___.",
               "a": [
                 "blue hat",
                 "hat"
@@ -563,7 +563,7 @@
           ]
         },
         {
-          "text": "The train stopped at a big station and lots of people got off. When the train started again, Charlie looked for his suitcase. It wasn't there! 'A man took it by mistake,' said his dad. Charlie started to cry. 'My comics! My hat!'",
+          "text": "The train stopped at a big station and lots of people got off. When the train started again, Charlie looked for his bag. It wasn't there! 'A man took it by mistake,' said his dad. Charlie started to cry. 'My comics! My hat!'",
           "items": [
             {
               "s": "The train stopped at a ___ station.",
@@ -572,7 +572,7 @@
               ]
             },
             {
-              "s": "A man took the suitcase by ___.",
+              "s": "A man took the bag by ___.",
               "a": [
                 "mistake"
               ]
@@ -586,12 +586,12 @@
           ]
         },
         {
-          "text": "At the beach station, a woman in a blue coat waited for them. 'Is this your suitcase?' she asked. 'The man found it and phoned us.' Charlie was so happy. That evening, he read all his comics on the beach, and he wore his blue hat.",
+          "text": "At the beach station, a woman in a blue coat waited for them. 'Is this your bag?' she asked. 'The man found it and phoned us.' Charlie was so happy. That evening, he read all his comics on the beach, and he wore his blue hat.",
           "items": [
             {
               "s": "The woman at the station wore a blue ___.",
               "a": [
-                "uniform"
+                "clothes"
               ]
             },
             {
@@ -622,7 +622,7 @@
         {
           "s": "The girl is taking a photo of a ___.",
           "a": [
-            "butterfly"
+            "bird"
           ]
         },
         {
@@ -645,8 +645,8 @@
       "write": {
         "n": 2,
         "model": [
-          "The family is camping next to a river.",
-          "The man is cooking sausages on a fire."
+          "The family is on holiday next to a river.",
+          "The man is cooking sausages."
         ]
       }
     }
@@ -771,7 +771,7 @@
       ],
       [
         "F",
-        "Who's the girl with the purple suitcase? She's got sunglasses."
+        "Who's the girl with the purple bag? She's got sunglasses."
       ],
       [
         "Mch",
@@ -1209,7 +1209,7 @@
       ],
       [
         "R",
-        "One. What time does the train leave?"
+        "One. When does the train leave?"
       ],
       [
         "Fch",
