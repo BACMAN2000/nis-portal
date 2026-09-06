@@ -59,7 +59,11 @@ button{font-family:inherit;cursor:pointer}
 .sidebar .nav-sub{margin:0 0 6px}
 .sidebar .nav-sub[hidden]{display:none}
 .sidebar .nav-sub .nav-item{padding-left:20px;padding-right:8px;font-size:.9rem;margin-bottom:2px}
-.main{flex:1;padding:26px 30px;max-width:1200px}
+.main{flex:1;min-width:0;padding:26px 30px;max-width:1200px}
+/* Los paneles de admin y profesor son tablas anchas (nombre, grado, ano,
+   nivel, rol, estado y media docena de botones): con 1200px los botones de
+   la derecha se salian de la tarjeta. El alumno se queda en 1200. */
+.main.wide{max-width:1760px}
 @media(max-width:760px){.shell{flex-direction:column}.sidebar{width:auto;display:flex;gap:6px;overflow-x:auto}.sidebar .nav-item{margin:0;white-space:nowrap}
   /* la fila horizontal no se pliega: se muestran todas, como antes */
   .sidebar .nav-group{display:contents}.sidebar .nav-head{display:none}
@@ -93,6 +97,10 @@ table{width:100%;border-collapse:collapse;font-size:.92rem}
 th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
 th{font-weight:700;color:var(--grey);font-size:.78rem;text-transform:uppercase;letter-spacing:.5px;background:#fafbff}
 tr:hover td{background:#fafbff}
+/* Celda de acciones: los botones se reparten en varias lineas antes que
+   desbordar la tarjeta. */
+td.acts{white-space:normal}
+td.acts .acts-wrap{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
 .badge{display:inline-block;padding:3px 10px;border-radius:999px;font-size:.74rem;font-weight:500}
 .badge.lvl{background:var(--lila);color:var(--blue-dd)}
 .badge.grade{background:var(--celeste);color:#0b3a48}
