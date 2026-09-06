@@ -721,6 +721,7 @@ if(/\.github\.io$/i.test(location.hostname)){
 <script src="screens.js?v=6"></script>
 <script src="banner.js?v=12"></script>
 <script src="magicbox.js?v=8"></script>
+<script src="songs.js?v=1"></script>
 <script src="recorder.js?v=3"></script>
 <script src="paint-layer.js?v=3"></script>
 <!-- el curso comparte dominio y sesion con el portal -->
@@ -817,6 +818,8 @@ const VIDEO_V = '2026-09-02-fr2';
    imagen y no tiene idioma. */
 const VSUF = LANG === 'fr' ? '-fr' : '';
 window.VIDEO_V = VIDEO_V;   // banner.js lo usa para su propio ?v=
+// songs.js vive fuera de este script y necesita las mismas versiones:
+// sin ellas pedia el mp3 con ?v=1 y un audio regrabado no se refrescaba.
 if (COLORS[LEVEL]) document.documentElement.style.setProperty('--accent', COLORS[LEVEL]);
 const CHAR = (slug, pose) => `../assets/characters/${LEVEL}/${slug}/pose-${String(pose).padStart(2,'0')}.png?v=${ART_V}`;
 // si no existe el PNG (arte 3D), cae al SVG plano provisional
@@ -837,6 +840,7 @@ const store = {
 // subir esta fecha o el alumno sigue viendo la version anterior.
 const CONTENT_V = '2026-08-27-voz';
 const AUDIO_V = '2026-08-27';   // sube al grabar audio nuevo
+window.AUDIO_V = AUDIO_V; window.CONTENT_V = CONTENT_V;
 /* Los dibujos tambien. Cloudflare los guarda siete dias, asi que una
    lamina rehecha seguia sin verse aunque el servidor ya tuviera la nueva:
    el 27-ago-2026 el alumno miraba el zoo vacio y la fachada del colegio
@@ -1384,6 +1388,23 @@ async function unit(){
       html: `<div class="scr-centro">${pwHTML}</div>`,
       alMostrar(){ wirePictureWords(); } },
   ];
+
+  /* La cancion de la unidad, entre las palabras y las actividades: usa ese
+     mismo vocabulario y cantarlo recien visto es lo que lo fija.
+     SONGS.para devuelve null mientras la unidad no tenga su mp3 dentro del
+     curso, y entonces no hay pantalla — un boton de reproducir que no suena
+     es peor que no ofrecer nada. */
+  const laCancion = window.SONGS ? await SONGS.para(LEVEL, UD.number) : null;
+  if (laCancion) {
+    const iban = pantallas[2].etiquetaSiguiente;
+    pantallas[2].etiquetaSiguiente = laCancion.titulo;
+    pantallas.splice(3, 0, {
+      titulo: laCancion.titulo,
+      etiquetaSiguiente: iban,
+      html: laCancion.html,
+      alMostrar: laCancion.alMostrar,
+    });
+  }
 
   // 4. una actividad por pantalla.
   //
