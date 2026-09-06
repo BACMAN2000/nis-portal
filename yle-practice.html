@@ -239,12 +239,16 @@ function json(u){ return fetch(u, {cache: 'no-cache'}).then(function(r){ if(!r.o
 /* Los tests viven en la tabla yle_tests, no en archivos: el JSON lleva dentro
    las claves de respuesta y como archivo publico cualquiera veia el solucionario
    de los 30 examenes (6-sep-2026). Los lee quien tiene cuenta del portal. */
+var SIN_CUENTA = false;
 function listaTests(){
   var c = client();
-  if(!c) return Promise.resolve([]);
-  return c.from('yle_tests').select('number, theme').eq('level', LEVEL).order('number')
-    .then(function(r){ return (r.data || []).map(function(x){ return {number: x.number, theme: x.theme}; }); })
-    .catch(function(){ return []; });
+  if(!c){ SIN_CUENTA = true; return Promise.resolve([]); }
+  return c.auth.getSession().then(function(u){
+    SIN_CUENTA = !(u && u.data && u.data.session);
+    if(SIN_CUENTA) return [];
+    return c.from('yle_tests').select('number, theme').eq('level', LEVEL).order('number')
+      .then(function(r){ return (r.data || []).map(function(x){ return {number: x.number, theme: x.theme}; }); });
+  }).catch(function(){ return []; });
 }
 function traeTest(n){
   var c = client();
@@ -298,7 +302,7 @@ function init(){
   Promise.all([json('yle/specs.json'), listaTests()]).then(function(r){
     SPECS = r[0]; INDEX = r[1];
     return nisGate().then(function(){
-      $('#picker').innerHTML = INDEX.length ? INDEX.map(function(t, i){ var lk = LOCKED[t.number]; return '<button class="tbtn" data-i="' + i + '"' + (lk ? ' disabled style="opacity:.5"' : '') + '><b>' + (lk ? '🔒 ' : '') + 'Test ' + t.number + '</b><small>' + esc(t.theme) + '</small></button>'; }).join('') : (client() ? '<p class="small">No tests published for this level yet.</p>' : '<p class="small">Sign in through your school portal to open the practice tests.</p>');
+      $('#picker').innerHTML = INDEX.length ? INDEX.map(function(t, i){ var lk = LOCKED[t.number]; return '<button class="tbtn" data-i="' + i + '"' + (lk ? ' disabled style="opacity:.5"' : '') + '><b>' + (lk ? '🔒 ' : '') + 'Test ' + t.number + '</b><small>' + esc(t.theme) + '</small></button>'; }).join('') : (SIN_CUENTA ? '<p class="small">Sign in through your school portal to open the practice tests.</p>' : '<p class="small">No tests published for this level yet.</p>');
       $$('#picker .tbtn').forEach(function(b){ b.onclick = function(){ openTest(+b.dataset.i); }; });
       $('#btnPath').onclick = showPath; $('#lnkVocab').href = 'yle-vocab.html?level=' + LEVEL;
       if(qs.get('path') === '1') showPath();
