@@ -10,11 +10,11 @@
       "names": ["Vicky", "Peter", "Daisy", "Jim", "Julia", "Fred", "Charlie"],
       "people": [
         {"id": "A", "desc": "a girl jumping into the swimming pool"},
-        {"id": "B", "desc": "a boy with a bandage on his leg sitting on a bench"},
-        {"id": "C", "desc": "a woman with a whistle teaching football"},
+        {"id": "B", "desc": "a boy with a bad leg sitting on a seat"},
+        {"id": "C", "desc": "a woman teaching football"},
         {"id": "D", "desc": "a boy carrying a big bag with a tennis racket"},
         {"id": "E", "desc": "a girl drinking a milkshake at the café"},
-        {"id": "F", "desc": "a man cleaning the floor with a mop"}
+        {"id": "F", "desc": "a man cleaning the floor"}
       ],
       "example": {"name": "Vicky", "person": "A"},
       "items": [
@@ -66,20 +66,20 @@
         {"q": "What does Jim need for his class?", "pics": ["ball", "hat", "shoes"], "options": ["a ball", "a hat", "shoes"], "key": "C"},
         {"q": "Where is Grandpa now?", "pics": ["garden", "kitchen", "bathroom"], "options": ["in the garden", "in the kitchen", "in the bathroom"], "key": "A"},
         {"q": "What did Daisy have for lunch?", "pics": ["sandwich", "soup", "pasta"], "options": ["a sandwich", "soup", "pasta"], "key": "B"},
-        {"q": "What is the weather like at the beach?", "pics": [{"word": "sunny", "emoji": "☀️"}, {"word": "windy", "emoji": "🌬️"}, {"word": "rainy", "emoji": "🌧️"}], "options": ["sunny", "windy", "rainy"], "key": "B"},
+        {"q": "What is the weather like at the beach?", "pics": [{"word": "sunny", "emoji": "☀️"}, {"word": "windy", "emoji": "🌬️"}, {"word": "wet", "emoji": "🌧️"}], "options": ["sunny", "windy", "wet"], "key": "B"},
         {"q": "Which animal did Sam see at the farm?", "pics": ["goat", "cow", "sheep"], "options": ["a goat", "a cow", "a sheep"], "key": "A"}
       ]
     },
     "p5": {
       "type": "colour_write",
       "image": "L5",
-      "scene": "A playground next to a school. There is a slide, a big ball, a boy on a bike, a girl with a balloon, a bird on the wall, a bag under the tree and a sign on the gate with a blank space.",
-      "example": {"what": "the ball", "where": "next to the slide", "colour": "red"},
+      "scene": "A playground next to a school. There is a slide, a big ball, a boy on a bike, a girl with a balloon, a bird on the wall, a bag under the tree and a board with nothing on it.",
+      "example": {"what": "the ball", "where": "", "colour": "red"},
       "items": [
         {"what": "the bird", "where": "on the wall", "colour": "blue"},
         {"what": "the girl's balloon", "where": "", "colour": "yellow"},
         {"what": "the bag", "where": "under the tree", "colour": "green"},
-        {"what": "the sign", "where": "on the gate", "write": "PARK"},
+        {"what": "the board", "where": "", "write": "PARK"},
         {"what": "the boy's bike", "where": "", "colour": "orange"}
       ]
     }
@@ -102,12 +102,12 @@
       "type": "dialogue_mc3",
       "speakerA": "Teacher",
       "speakerB": "Charlie",
-      "example": {"a": "Hello, Charlie. Do you want to play in the football team?", "options": ["Yes, I'd love to!", "Yes, I played.", "Yes, it's mine."], "key": "A"},
+      "example": {"a": "Hello, Charlie. Do you want to play football with us?", "options": ["Yes, I'd love to!", "Yes, I played.", "Yes, it's mine."], "key": "A"},
       "items": [
         {"a": "How old are you?", "options": ["I'm fine, thanks.", "I'm nine.", "I'm at school."], "key": "B"},
         {"a": "Have you got any football boots?", "options": ["No, I haven't.", "No, I didn't.", "No, they aren't."], "key": "A"},
         {"a": "We practise on Wednesdays at four o'clock.", "options": ["That's all right. I can come.", "That's mine.", "That's a good ball."], "key": "A"},
-        {"a": "Which team do you like best?", "options": ["I like it better.", "The Blue Tigers!", "I don't like ball games."], "key": "B"},
+        {"a": "Which one do you like best?", "options": ["I like it better.", "The Blue Tigers!", "I don't like ball games."], "key": "B"},
         {"a": "Can your mum bring you to the sports centre?", "options": ["Yes, she does.", "Yes, she can.", "Yes, she is."], "key": "B"},
         {"a": "See you on Wednesday, then!", "options": ["Great. Bye!", "Yes, I saw you.", "Wednesday is a day."], "key": "A"}
       ]
@@ -124,7 +124,7 @@
     "p4": {
       "type": "mc_cloze",
       "title": "Whales",
-      "text": "Whales are the biggest animals __(0)__ the world. They live in the sea, but they are not fish. A whale __(1)__ to come up to the top of the water. Baby whales drink milk __(2)__ their mothers, like all baby animals. Whales can swim __(3)__ long time. Some whales travel every year to find hot water. Whales 'sing' to talk to __(4)__ friends. People __(5)__ go out in boats to watch whales jump and play.",
+      "text": "Whales are the biggest animals __(0)__ the world. They live in the sea, but they are not fish. A whale __(1)__ to come up to the top of the water. Baby whales drink milk __(2)__ their mothers, like all baby animals. Whales can swim __(3)__ day and night. Some whales travel every year to find hot water. Whales 'sing' to talk to __(4)__ friends. People __(5)__ go out in boats to watch whales jump and play.",
       "example": {"options": ["in", "at", "on"], "key": "A"},
       "items": [
         {"options": ["have", "has", "having"], "key": "B"},
@@ -151,7 +151,7 @@
     "p6": {
       "type": "productive_writing",
       "image": "R6",
-      "scene": "A sports centre: a boy is playing table tennis, two girls are playing badminton, a man is drinking water on a bench, a woman is carrying a big blue bag, a small boy is bouncing a basketball, and there is a clock on the wall.",
+      "scene": "A sports centre: a boy is playing table tennis, two girls are playing badminton, a man is drinking water on a seat, a woman is carrying a big blue bag, a small boy is bouncing a basketball, and there is a clock on the wall.",
       "examples": [{"s": "The boy is playing table ___.", "a": "tennis"}, {"q": "What is the man doing?", "a": "drinking water"}],
       "complete": [
         {"s": "The two girls are playing ___.", "a": ["badminton"]},
@@ -161,7 +161,7 @@
         {"q": "What is the small boy doing?", "model": "He is bouncing a basketball. / He is playing basketball."},
         {"q": "Where is the clock?", "model": "It is on the wall."}
       ],
-      "write": {"n": 2, "model": ["The man is sitting on a bench.", "There are lots of children at the sports centre."]}
+      "write": {"n": 2, "model": ["The man is sitting on a seat.", "There are lots of children at the sports centre."]}
     }
   },
   "speaking": {
@@ -223,7 +223,7 @@
       ["R", "Can you see the line? This is an example. Now you listen and draw lines."],
       ["pause", 3],
       ["R", "One."],
-      ["F", "Who's the boy sitting on the bench? He's got a bandage on his leg."],
+      ["F", "Who's the boy sitting on the seat? He's got a bandage on his leg."],
       ["Fch", "That's Peter. He fell off his bike last week, so he can't play football today."],
       ["F", "Sad Peter!"],
       ["pause", 5],
@@ -366,7 +366,7 @@
     "p5": [
       ["R", "Part Five. Look at the picture. Listen and look. There is one example."],
       ["pause", 3],
-      ["F", "This is a picture of a playground. Can you see the ball next to the slide?"],
+      ["F", "This is a picture of a playground. Can you see the ball next to the ball?"],
       ["Mch", "Yes, it's a big ball."],
       ["F", "Colour it red, please."],
       ["Mch", "OK. A red ball."],
@@ -385,13 +385,13 @@
       ["pause", 10],
       ["R", "Three."],
       ["F", "Can you see the bag under the tree?"],
-      ["Mch", "Yes, next to the bench?"],
+      ["Mch", "Yes, next to the seat?"],
       ["F", "That's right. Colour the bag green."],
       ["Mch", "Green. Finished!"],
       ["pause", 10],
       ["R", "Four."],
       ["Mch", "Can I write something now?"],
-      ["F", "Yes. There's a sign on the gate. Write the word 'park' on it. P-A-R-K."],
+      ["F", "Yes. There's a board with nothing on it. Write the word 'park' on it. P-A-R-K."],
       ["Mch", "Park. P-A-R-K. Done!"],
       ["pause", 10],
       ["R", "Five."],

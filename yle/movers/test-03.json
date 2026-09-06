@@ -90,7 +90,7 @@
      "a": "12"
     },
     {
-     "q": "Story time on:",
+     "q": "Stories on:",
      "a": "Friday"
     },
     {
@@ -252,7 +252,7 @@
      "key": "A"
     },
     {
-     "q": "What time does the shop close?",
+     "q": "When does the shop close?",
      "pics": [
       {
        "word": "five o'clock",
@@ -311,7 +311,7 @@
      "colour": "brown"
     },
     {
-     "what": "the sign",
+     "what": "the board",
      "where": "above the shop door",
      "write": "TOYS"
     },
@@ -411,7 +411,7 @@
      "key": "B"
     },
     {
-     "a": "That's two pounds, please.",
+     "a": "Here you are, thank you.",
      "options": [
       "Here you are.",
       "There are two.",
@@ -420,7 +420,7 @@
      "key": "A"
     },
     {
-     "a": "Is this your first time in our shop?",
+     "a": "Are you new in our shop?",
      "options": [
       "Yes, I was.",
       "Yes, it is.",
@@ -461,7 +461,7 @@
     "found",
     "frightened"
    ],
-   "text": "Last Saturday, Jack went to the town with his aunt. First they went to the __(0)__ to buy some fruit. There were hundreds of people! Jack looked at a man with a big parrot, and when he looked again, his aunt wasn't there. Jack was __(1)__. He walked to the __(2)__ in the middle of the town, where there was a big clock. A kind __(3)__ asked him, 'Are you all right?' 'I can't find my aunt,' said Jack. The woman looked at the __(4)__ on her phone and phoned the market. A short time after, Jack's aunt came. She was very happy because she __(5)__ him. 'Next time, hold my hand!' she said.",
+   "text": "Last Saturday, Jack went to the town with his aunt. First they went to the __(0)__ to buy some fruit. There were hundreds of people! Jack looked at a man with a big parrot, and when he looked again, his aunt wasn't there. Jack was __(1)__. He walked to the __(2)__ in the centre of the town, where there was a big clock. A kind __(3)__ asked him, 'Are you all right?' 'I can't find my aunt,' said Jack. The woman looked at the __(4)__ on her phone and phoned the market. Soon after, Jack's aunt came. She was very happy because she __(5)__ him. 'Now, hold my hand!' she said.",
    "example": "market",
    "key": [
     "frightened",
@@ -546,7 +546,7 @@
       },
       {
        "s": "Lucy had only ___ to buy a present.",
-       "a": "three pounds"
+       "a": "three"
       }
      ],
      "items": [
@@ -610,11 +610,11 @@
   "p6": {
    "type": "productive_writing",
    "image": "R6",
-   "scene": "A town square: a boy is riding a scooter, a girl is holding a balloon, a woman is buying apples from a market stall, a man is reading a newspaper on a bench, a dog is drinking water from a bowl, there is a fountain in the middle and a big clock on a tower.",
+   "scene": "A town square: a boy is riding a scooter, a girl is holding a balloon, a woman is buying apples from a market stall, a man is reading a newspaper on a seat, a dog is drinking water from a bowl, there is a fountain in the middle and a big clock on a tower.",
    "examples": [
     {
      "s": "The boy is riding a ___.",
-     "a": "scooter"
+     "a": "bike"
     },
     {
      "q": "What is the girl holding?",
@@ -639,17 +639,17 @@
    "answer": [
     {
      "q": "What is the man doing?",
-     "model": "He is reading a newspaper on a bench."
+     "model": "He is reading on a seat."
     },
     {
      "q": "Where is the clock?",
-     "model": "It is on the tower. / It is on top of the tower."
+     "model": "It is on the big clock. / On top of the clock."
     }
    ],
    "write": {
     "n": 2,
     "model": [
-     "There is a fountain in the middle of the square.",
+     "There is a big clock in the centre of the town.",
      "The girl has got a red balloon."
     ]
    }
@@ -1281,7 +1281,7 @@
    ],
    [
     "R",
-    "Four. What time does the shop close?"
+    "Four. When does the shop close?"
    ],
    [
     "Fch",
@@ -1415,7 +1415,7 @@
    ],
    [
     "M",
-    "Can you see the sign above the shop door? It's empty."
+    "Can you see the board above the shop door? It's empty."
    ],
    [
     "Fch",

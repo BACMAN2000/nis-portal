@@ -19,7 +19,7 @@
       "people": [
         {
           "id": "A",
-          "desc": "a girl washing the dishes in the kitchen"
+          "desc": "a girl washing the plates in the kitchen"
         },
         {
           "id": "B",
@@ -27,11 +27,11 @@
         },
         {
           "id": "C",
-          "desc": "a woman painting a wall with a brush"
+          "desc": "a woman painting a wall"
         },
         {
           "id": "D",
-          "desc": "a man cooking soup with a big spoon"
+          "desc": "a man cooking soup"
         },
         {
           "id": "E",
@@ -39,7 +39,7 @@
         },
         {
           "id": "F",
-          "desc": "a boy carrying a basket of clothes up the stairs"
+          "desc": "a boy carrying a bag of clothes up the stairs"
         }
       ],
       "example": {
@@ -281,9 +281,9 @@
     "p5": {
       "type": "colour_write",
       "image": "L5",
-      "scene": "A living room: a sofa with a cushion, a cat on the sofa, a lamp on a small table, a picture on the wall with a blank space, a plant next to the window, a ball under the table and a clock.",
+      "scene": "A living room: a sofa with a blanket, a cat on the sofa, a lamp on a small table, a picture on the wall with a blank space, a plant next to the window, a ball under the table and a clock.",
       "example": {
-        "what": "the cushion",
+        "what": "the clock",
         "where": "on the sofa",
         "colour": "purple"
       },
@@ -326,7 +326,7 @@
         "a garden",
         "a kitchen",
         "a shower",
-        "a basket",
+        "a bag",
         "a roof"
       ],
       "pics": {
@@ -336,7 +336,7 @@
         "a garden": "🌳",
         "a kitchen": "🍳",
         "a shower": "🚿",
-        "a basket": "🧺",
+        "a bag": "🧺",
         "a roof": "🏠"
       },
       "example": {
@@ -362,7 +362,7 @@
         },
         {
           "def": "You carry clothes, food or flowers in this.",
-          "word": "a basket"
+          "word": "a bag"
         }
       ]
     },
@@ -390,7 +390,7 @@
           "key": "B"
         },
         {
-          "a": "Can you wash the dishes, please?",
+          "a": "Can you wash the plates, please?",
           "options": [
             "OK, Mum.",
             "Yes, I washed them.",
@@ -399,7 +399,7 @@
           "key": "A"
         },
         {
-          "a": "Where is the soap?",
+          "a": "Where is the water?",
           "options": [
             "It's next to the window.",
             "It's very clean.",
@@ -565,13 +565,13 @@
             {
               "s": "Sally put some ___ in the bowl by mistake.",
               "a": [
-                "salt"
+                "water"
               ]
             },
             {
-              "s": "Sally thought the white thing was ___.",
+              "s": "Sally thought the water was ___.",
               "a": [
-                "sugar"
+                "milk"
               ]
             }
           ]
@@ -582,7 +582,7 @@
             {
               "s": "Dad said the cake was very ___.",
               "a": [
-                "strange"
+                "funny"
               ]
             },
             {
@@ -612,9 +612,9 @@
       ],
       "complete": [
         {
-          "s": "The man is cutting the ___.",
+          "s": "The man is working in the ___.",
           "a": [
-            "grass"
+            "garden"
           ]
         },
         {
@@ -627,7 +627,7 @@
       "answer": [
         {
           "q": "What is the woman doing?",
-          "model": "She is hanging (the) washing / the clothes on a line."
+          "model": "She is putting the clothes on a line."
         },
         {
           "q": "Where are the apples?",
@@ -766,7 +766,7 @@
       ],
       [
         "M",
-        "Who's the girl washing the dishes?"
+        "Who's the girl washing the plates?"
       ],
       [
         "Fch",
@@ -1334,7 +1334,7 @@
       ],
       [
         "M",
-        "Here's a picture of a living room. Can you see the cushion on the sofa?"
+        "Here's a picture of a living room. Can you see the clock on the sofa?"
       ],
       [
         "Fch",
