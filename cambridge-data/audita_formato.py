@@ -30,8 +30,14 @@ for nombre, ruta in MOTORES.items():
     t = io.open(ruta, encoding='utf-8').read() if os.path.exists(ruta) else ''
     mira(nombre + ' · hueco pulsable', 'gapw' in t and 'gapm' in t)
     mira(nombre + ' · barra en fila con X', '.gapx{' in t)
-    mira(nombre + ' · sin desplegable en el texto',
-         not re.search(r"<select data-name=\"' \+ pk", t), 'queda algun <select> dentro del texto')
+    # solo cuenta el desplegable dentro de un TEXTO (cloze o dialogo); en las listas
+    # de preguntas —unir con lineas, escribir la letra, si/no— el <select> esta bien
+    sueltos = []
+    for tipo in ('mc_cloze', 'mc_cloze_copy', 'gapped_text_title', 'dialogue_mc8', 'gap_text'):
+        i = t.find("'%s'" % tipo)
+        if i > 0 and '<select' in t[i:i + 1800]:
+            sueltos.append(tipo)
+    mira(nombre + ' · sin desplegable dentro del texto', not sueltos, 'todavia lo usan: %s' % sueltos)
 
 # ---------- 2. tipos de ejercicio que el examen de secundaria sabe pintar ----------
 cam = io.open(os.path.join(RAIZ, 'cambridge-level.html'), encoding='utf-8').read()
