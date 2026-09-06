@@ -86,6 +86,21 @@ if(/\.github\.io$/i.test(location.hostname)){
   .sc-nota{margin:0 0 .5rem;color:var(--soft);font-size:.9rem}
   .sc-grado ul{margin:0;padding-left:1.1rem}
   .sc-grado li{margin:.25rem 0;line-height:1.5}
+  /* Puente PROYECTO ↔ CURSO: la unidad dice a qué proyecto del colegio alimenta. */
+  .sc-proyecto{margin:1rem auto 0;max-width:44rem;text-align:left;
+    background:var(--surface2);border-radius:16px;padding:.9rem 1.1rem;border-left:6px solid var(--accent)}
+  .sc-proyecto .pj-h{display:flex;align-items:center;gap:.5rem;font-family:"Baloo 2",sans-serif;
+    color:var(--accent);font-size:1.02rem}
+  .sc-proyecto .pj-ico{font-size:1.3rem}
+  .sc-proyecto .pj-title{font-weight:800;margin:.35rem 0 .1rem;line-height:1.35}
+  .sc-proyecto .pj-sub{font-weight:600;color:var(--soft)}
+  .sc-proyecto .pj-q{margin:.35rem 0;font-style:italic;color:var(--soft)}
+  .sc-proyecto .pj-line{margin:.3rem 0;line-height:1.5}
+  .sc-proyecto .pj-link{display:inline-block;margin-top:.5rem;font-weight:700;color:var(--accent);text-decoration:none}
+  .sc-proyecto .pj-link:hover{text-decoration:underline}
+  /* chip de proyecto en la cabecera de la unidad, junto a la etiqueta de examen */
+  .band .meta.meta-proj{display:inline-flex;align-items:center;gap:.3rem;background:rgba(255,255,255,.2);
+    border-radius:999px;padding:.15rem .65rem;text-transform:none;letter-spacing:0;font-weight:700;opacity:1}
   /* palabras de ampliacion que pide la secuencia */
   .pw.pw-extra{position:relative}
   .pw.pw-extra::after{content:"+";position:absolute;top:.2rem;right:.35rem;
@@ -1055,7 +1070,39 @@ async function pintaCuentos(el, nivel){
 }
 
 /* ---------------- UNIT ---------------- */
-let UD, PROG;
+let UD, PROG, PROJECT_MAP = null;
+
+/* ---------- Puente PROYECTO ↔ CURSO (primaria) ----------
+   La respuesta a «el curso se ve solo como preparación de examen»: cada unidad
+   de primaria muestra a qué proyecto interdisciplinario del colegio alimenta su
+   inglés. El vínculo sale de content/project-map.json, generado por
+   tools/build-project-map.js desde los arcos REALES de project-arcs.js (título,
+   proyecto de Toddle, pregunta esencial, misión de inglés y producto). Donde un
+   periodo no tiene arco no hay vínculo y no se pinta nada ([[nada-incompleto]]). */
+function proyectoDeUnidad(){
+  const sc = (typeof UD !== 'undefined' && UD && UD.scope) || {};
+  const g = PROJECT_MAP && PROJECT_MAP[sc.grado];
+  return (g && sc.temaN != null) ? (g[String(sc.temaN)] || null) : null;
+}
+function puenteProyectoChip(pm){
+  if(!pm) return '';
+  const proj = pm.toddle || (pm.arcTitle && pm.arcTitle.en) || '';
+  return `<span class="meta meta-proj" title="${esc(T('This unit feeds a school project','Cette unité nourrit un projet de l’école'))}">${pm.icon||'🧭'} ${esc(proj)}</span>`;
+}
+function puenteProyectoPanel(pm){
+  if(!pm) return '';
+  const proj = pm.toddle || (pm.arcTitle && pm.arcTitle.en) || '';
+  const barra = pm.grad ? `border-left:6px solid ${pm.grad.to}` : '';
+  return `<div class="sc-proyecto" style="${barra}">
+    <div class="pj-h"><span class="pj-ico">${pm.icon||'🧭'}</span>
+      <b>${T('This unit feeds a school project','Cette unité nourrit un projet de l’école')}</b></div>
+    <div class="pj-title">${esc(proj)}${pm.arcSubtitle?` <span class="pj-sub">— ${esc(pm.arcSubtitle.en)}</span>`:''}</div>
+    ${pm.essentialQ?`<p class="pj-q">${esc(pm.essentialQ.en)}</p>`:''}
+    ${pm.englishMission?`<p class="pj-line">🎯 <b>${T('Your English mission','Ta mission en anglais')}:</b> ${esc(pm.englishMission.en)}</p>`:''}
+    ${pm.product?`<p class="pj-line">🏁 ${T('Building toward','Pour construire')}: <b>${esc(pm.product.en)}</b></p>`:''}
+    <a class="pj-link" href="../../project.html">${T('See the whole project','Voir tout le projet')} ▸</a>
+  </div>`;
+}
 /* Marca en la historia las palabras de la unidad.
  *
  * El alumno lee el texto de apertura antes de ver el vocabulario, y las
@@ -1174,6 +1221,10 @@ async function unit(){
     return;
   }
   UD = await j(`${CDIR}/${LEVEL}/unit-${String(UNIT).padStart(2,'0')}.json`);
+  // Capa PROYECTO ↔ CURSO (primaria): el vínculo unidad→proyecto del colegio
+  // vive en content/project-map.json (mismo para inglés y francés, es data del
+  // colegio). Se carga una vez. Ver tools/build-project-map.js.
+  if (PROJECT_MAP === null) { try { PROJECT_MAP = await j('../content/project-map.json'); } catch(e) { PROJECT_MAP = {}; } }
   try { localStorage.setItem(`${LPFX}-${LEVEL}-lastUnit`, String(UNIT)); } catch(e) {}
   PROG = store.get(UD.number); PROG.done = PROG.done || {};
   document.title = `${T("Unit","Unité")} ${UD.number} · ${UD.title}`;
@@ -1239,7 +1290,7 @@ async function unit(){
       etiquetaSiguiente: T('The story', "L'histoire"),
       html: `<div class="scr-centro">
         <div class="band"><span class="unum">${UD.number}</span><h1>${UD.title}</h1>
-          <span class="meta">${UD.exam_focus.paper} · ${T('Part','partie')} ${UD.exam_focus.part}</span></div>
+          <span class="meta">${UD.exam_focus.paper} · ${T('Part','partie')} ${UD.exam_focus.part}</span>${puenteProyectoChip(proyectoDeUnidad())}</div>
         <div class="scene">
           ${UD.characters.map(c=>`<img src="${CHAR(c,(UD.scene.pose||{})[c]||1)}" alt="${c}" ${FB}>`).join('')}
           <div class="bubble">${UD.scene.bubble}</div></div>
@@ -1402,7 +1453,8 @@ function pintaSelfCheck(el, digital){
       <p class="sc-nota">${T('This unit is part of what you will be able to do by the end of the year:',
         "Cette unité fait partie de ce que tu sauras faire à la fin de l'année :")}</p>
       <ul>${delGrado.map(t=>`<li>${t}</li>`).join('')}</ul>
-    </div>` : ''}`;
+    </div>` : ''}
+    ${puenteProyectoPanel(proyectoDeUnidad())}`;
 
   const cuenta = () => {
     const n = el.querySelectorAll('input:checked').length;
