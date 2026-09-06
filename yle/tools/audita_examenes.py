@@ -63,6 +63,7 @@ def guion(P, d, pk):
         if isinstance(ev, list) and len(ev) >= 2 and isinstance(ev[-1], str): out.append(ev[-1])
     return ' '.join(out).lower()
 
+B = chr(92) + 'b'   # limite de palabra para los regex
 GRAVE, MEDIO, LEVE = [], [], []
 def apunta(nivel, t, donde, msg): nivel.append('T%-2d %-16s %s' % (t, donde, msg))
 
@@ -111,8 +112,15 @@ for n in range(1, 11):
             if len(usados) != len(set(usados)): apunta(GRAVE, n, donde, 'la misma persona es la respuesta de dos nombres')
             for x in usados:
                 if x not in ids: apunta(GRAVE, n, donde, 'la clave apunta a una persona que no existe: %s' % x)
-            if len(ids) < len(P['items']) + 2:
-                apunta(MEDIO, n, donde, '%d personas para %d nombres: no sobra ninguna y la tarea se resuelve por descarte' % (len(ids), len(P['items']) + 1))
+            # desde que la fila es la persona y se elige el nombre, lo que tiene que
+            # sobrar es un nombre; si no, la ultima pregunta sale por descarte
+            nombres = P.get('names') or []
+            usados = [P['example']['name']] + [it['name'] for it in P['items']]
+            sobran = [x for x in nombres if x not in usados]
+            if len(sobran) != 1:
+                apunta(MEDIO, n, donde, '%d nombres para %d preguntas + ejemplo: deberia sobrar exactamente uno (sobran %s)' % (len(nombres), len(P['items']), sobran or 'ninguno'))
+            elif g and re.search(r'(?i)' + B + re.escape(sobran[0]) + B, g):
+                apunta(GRAVE, n, donde, 'el nombre que sobra («%s») se oye en el audio de esta parte' % sobran[0])
             descs = [x['desc'] for x in P.get('people', [])]
             if len(descs) != len(set(descs)): apunta(GRAVE, n, donde, 'dos personas descritas igual')
             for it in P['items']:
@@ -191,7 +199,6 @@ for n in range(1, 11):
                     # la frase tiene que nombrar el dibujo cuando la respuesta es si, y no nombrarlo cuando es no
                     w, fr = norm(it.get('word', '')), norm(it.get('sentence', ''))
                     if w and fr:
-                        B = chr(92) + 'b'
                         pal = lambda x: re.compile(B + re.escape(x) + B)
                         SINON = {'tv': 'television', 'television': 'tv', 'bike': 'bicycle', 'plane': 'aeroplane', 'mum': 'mother', 'dad': 'father'}
                         dice = (pal(w).search(fr) or (singular(w) and pal(singular(w)).search(fr))
