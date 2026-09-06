@@ -337,6 +337,7 @@ function viewUnits(fromHash){
   if(!fromHash) _setHash('');
   pararExamen();
   const bs=bloques();
+  const staff=isStaff();
   const grado=GRADOS[GRADE]||GRADE;
   $('#main').innerHTML=`
     <div class="hero"><h1>📋 Unit Exams</h1>
@@ -348,12 +349,18 @@ function viewUnits(fromHash){
     ${bs.length?`<div class="grid">
       ${bs.map(b=>{ const u=unitsDe(b), n=delBloque(u).length, ab=abiertosDe(u);
         const ico=(b[0].cover&&b[0].cover.icon)||'📘';
-        return `<div class="card ${n?'':'locked'}" ${n?`onclick="viewKinds(false,'${u}')"`:''}>
+        /* Al profesor y al admin no se les cierra nada: entran a cualquier
+           bloque, también a los que aún no tienen examen —para ver que están
+           vacíos— y el candado que ven es información sobre el ALUMNO, no una
+           barrera para ellos. */
+        const entra=staff||n;
+        return `<div class="card ${entra?'':'locked'}" ${entra?`onclick="viewKinds(false,'${u}')"`:''}>
           <div class="ico">${n?ico:'⏳'}</div>
           <h2>${rotuloDe(b)}</h2>
           <div class="desc">${b.map(x=>esc(x.title)).join(' · ')}</div>
-          ${n?`<span class="chip ${ab?'ok':''}">${ab?ab+' of '+n+' open':'All locked for now'}</span>`
-             :`<span class="chip">No exam yet</span>`}</div>`; }).join('')}
+          ${n?`<span class="chip ${ab?'ok':''}">${staff?(ab?ab+' of '+n+' open for students':'Closed for students'):(ab?ab+' of '+n+' open':'All locked for now')}</span>`
+             :`<span class="chip">No exam yet</span>`}
+          ${staff&&n?`<span class="inherit">👩‍🏫 You can open all ${n} to review them</span>`:''}</div>`; }).join('')}
     </div>`
     :`<p class="lead">There are no units for this grade yet.</p>`}`;
 }
@@ -381,8 +388,9 @@ window.viewKinds=(fromHash,units)=>{
         return `<div class="card" onclick="viewLevels('${k}')">
           <div class="ico">${m[0]}</div><h2>${m[1]}</h2>
           <div class="desc">${m[2]}${hay?` · ${hay} levels · ${qs} questions + writing`:''}</div>
-          ${hay?`<span class="chip ${abiertos?'ok':''}">${abiertos}/${hay} unlocked</span>`
-               :`<span class="chip">${me?'Not published yet':'Sign in to see them'}</span>`}</div>`; }).join('')}
+          ${hay?`<span class="chip ${abiertos?'ok':''}">${abiertos}/${hay} ${isStaff()?'open for students':'unlocked'}</span>`
+               :`<span class="chip">${me?'Not published yet':'Sign in to see them'}</span>`}
+          ${isStaff()&&hay?`<span class="inherit">👩‍🏫 You can open all ${hay} to review them</span>`:''}</div>`; }).join('')}
     </div>
     <div style="margin-top:16px"><button class="btn ghost" onclick="viewUnits()">← Units</button></div>`;
 };
@@ -406,10 +414,15 @@ window.viewLevels=(kind,fromHash)=>{
         if(!e) return `<div class="card locked"><div class="ico">⏳</div><h2>${LVL[l][1]}</h2>
           <div class="desc">This level has not been published yet.</div></div>`;
         const a=accFor(lockKey(kind,l)); const open=a.unlocked, entra=staff||open;
+        /* Al profesor y al admin NO se les pinta candado: ellos entran siempre,
+           y un 🔒 grande encima de una tarjeta en la que sí se puede pulsar se
+           lee como «esto no es para ti». El estado sigue estando, pero dicho
+           como lo que es: cómo lo ve el alumno. */
         return `<div class="card ${entra?'':'locked'}" ${entra?`onclick="startExam('${kind}','${l}')"`:''}>
-          <div class="ico">${open?LVL[l][0]:'🔒'}</div><h2>${LVL[l][1]}</h2>
+          <div class="ico">${(open||staff)?LVL[l][0]:'🔒'}</div><h2>${LVL[l][1]}</h2>
           <div class="desc">${esc(e.title)} · ${e.minutes} minutes</div>
-          <span class="chip ${open?'ok':'no'}">${open?'✅ Open for students':'🔒 Locked for students'}</span>
+          <span class="chip ${open?'ok':'no'}">${open?'✅ Open for students':'🔒 Closed for students'}</span>
+          ${staff&&!open?`<span class="inherit">👩‍🏫 You can still open it to review it</span>`:''}
           ${open&&a.until?`<span class="inherit">🕒 open until ${new Date(a.until).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}</span>`:''}
           ${a.extra?`<span class="inherit">⏱ +${a.extra} min extra time</span>`:''}
           ${staff?`<div class="printrow" onclick="event.stopPropagation()">
