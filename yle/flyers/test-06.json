@@ -3,1903 +3,1903 @@
  "number": 6,
  "theme": "Weather & Times of the year",
  "listening": {
-  "p1": {
-   "type": "draw_lines",
-   "image": "L1",
-   "scene": "A park on a windy day: a boy flying a kite, a woman with a red hat running, a girl with a blue umbrella, a man with a dog on a lead, children on a merry-go-round, a girl reading on a bench, a boy with a yellow coat.",
-   "names": [
-    "Lucy",
-    "Dylan",
-    "Robert",
-    "Olga",
-    "Tim",
-    "Poppy"
-   ],
-   "people": [
-    {
-     "id": "A",
-     "desc": "a boy flying a kite"
-    },
-    {
-     "id": "B",
-     "desc": "a woman with a red hat running"
-    },
-    {
-     "id": "C",
-     "desc": "a girl with a blue umbrella"
-    },
-    {
-     "id": "D",
-     "desc": "a man with a dog on a lead"
-    },
-    {
-     "id": "E",
-     "desc": "children on a merry-go-round"
-    },
-    {
-     "id": "F",
-     "desc": "a girl reading on a bench"
-    },
-    {
-     "id": "G",
-     "desc": "a boy with a yellow coat"
-    }
-   ],
-   "example": {
-    "name": "Lucy",
-    "person": "B"
-   },
-   "items": [
-    {
-     "name": "Dylan",
-     "person": "A"
-    },
-    {
-     "name": "Robert",
-     "person": "G"
-    },
-    {
-     "name": "Olga",
-     "person": "C"
-    },
-    {
-     "name": "Tim",
-     "person": "D"
-    },
-    {
-     "name": "Poppy",
-     "person": "F"
-    }
-   ]
-  },
-  "p2": {
-   "type": "note_taking",
-   "heading": "Weather report – Town radio",
-   "example": {
-    "q": "Reporter’s name",
-    "a": "Miss Green"
-   },
-   "items": [
-    {
-     "q": "Day",
-     "a": [
-      "Friday"
-     ]
-    },
-    {
-     "q": "Highest temperature (°C)",
-     "a": [
-      "22",
-      "22 "
-     ]
-    },
-    {
-     "q": "Strong wind starts at (time)",
-     "a": [
-      "four o'clock",
-      "4 o'clock",
-      "4.00",
-      "4:00",
-      "four"
-     ]
-    },
-    {
-     "q": "Rain: until which day?",
-     "a": [
-      "Sunday"
-     ]
-    },
-    {
-     "q": "Best for: sunglasses / umbrella / ______ (one word)",
-     "a": [
-      "hat",
-      "a hat"
-     ]
-    }
-   ]
-  },
-  "p3": {
-   "type": "match_letters",
-   "intro": "Alex is telling her grandma about the weather in different places last week.",
-   "image": "L3",
-   "pictures": [
-    {
-     "letter": "A",
-     "word": "foggy"
-    },
-    {
-     "letter": "B",
-     "word": "windy"
-    },
-    {
-     "letter": "C",
-     "word": "snowing"
-    },
-    {
-     "letter": "D",
-     "word": "raining"
-    },
-    {
-     "letter": "E",
-     "word": "sunny"
-    },
-    {
-     "letter": "F",
-     "word": "stormy"
-    },
-    {
-     "letter": "G",
-     "word": "hot and dry"
-    },
-    {
-     "letter": "H",
-     "word": "cloudy"
-    }
-   ],
-   "example": {
-    "who": "Monday (Spain)",
-    "letter": "E"
-   },
-   "items": [
-    {
-     "who": "Tuesday (Brazil)",
-     "letter": "G"
-    },
-    {
-     "who": "Wednesday (Norway)",
-     "letter": "C"
-    },
-    {
-     "who": "Thursday (Canada)",
-     "letter": "A"
-    },
-    {
-     "who": "Friday (Egypt)",
-     "letter": "B"
-    },
-    {
-     "who": "Saturday (UK)",
-     "letter": "D"
-    }
-   ]
-  },
-  "p4": {
-   "type": "mc_pictures",
-   "items": [
-    {
-     "q": "What clothes will the boy wear today?",
-     "options": [
-      "shorts and a T-shirt",
-      "a coat and boots",
-      "a coat and a scarf"
-     ],
-     "key": "B",
-     "image": "P4Q1"
-    },
-    {
-     "q": "Where did the family go on holiday last summer?",
-     "options": [
-      "to the mountains",
-      "to the beach",
-      "to a city"
-     ],
-     "key": "B",
-     "image": "P4Q2"
-    },
-    {
-     "q": "What time of the year does the girl like best?",
-     "options": [
-      "spring",
-      "summer",
-      "autumn"
-     ],
-     "key": "C",
-     "image": "P4Q3"
-    },
-    {
-     "q": "What did the children do when it rained?",
-     "options": [
-      "watched TV",
-      "played a board game",
-      "read books"
-     ],
-     "key": "B",
-     "image": "P4Q4"
-    },
-    {
-     "q": "What time will the sun come out?",
-     "options": [
-      "12 noon",
-      "2 p.m.",
-      "4 p.m."
-     ],
-     "key": "B",
-     "image": "P4Q5"
-    }
-   ]
-  },
-  "p5": {
-   "type": "colour_write",
-   "image": "L5",
-   "scene": "A winter garden: a snowman in the middle, a small tree with no leaves, a fence, a bird on the fence, a child in a coat, a bench covered with snow, a ball in the snow.",
-   "object": "thing",
-   "example": {
-    "what": "the scarf of the snowman",
-    "colour": "red"
-   },
-   "items": [
-    {
-     "what": "the bird on the fence",
-     "colour": "blue"
-    },
-    {
-     "what": "a carrot on the snowman’s face",
-     "write": "draw"
-    },
-    {
-     "what": "the coat of the child",
-     "colour": "green"
-    },
-    {
-     "what": "on the bench",
-     "write": "COLD"
-    },
-    {
-     "what": "the ball in the snow",
-     "colour": "yellow"
-    }
-   ]
-  }
+ "p1": {
+ "type": "draw_lines",
+ "image": "L1",
+ "scene": "A park on a windy day: a boy flying a kite, a woman with a red hat running, a girl with a blue umbrella, a man with a dog on a lead, children on a merry-go-round, a girl reading on a bench, a boy with a yellow coat.",
+ "names": [
+ "Lucy",
+ "Dylan",
+ "Robert",
+ "Olga",
+ "Tim",
+ "Poppy"
+ ],
+ "people": [
+ {
+ "id": "A",
+ "desc": "a boy flying a kite"
+ },
+ {
+ "id": "B",
+ "desc": "a woman with a red hat running"
+ },
+ {
+ "id": "C",
+ "desc": "a girl with a blue umbrella"
+ },
+ {
+ "id": "D",
+ "desc": "a man with a dog on a lead"
+ },
+ {
+ "id": "E",
+ "desc": "children on a merry-go-round"
+ },
+ {
+ "id": "F",
+ "desc": "a girl reading on a bench"
+ },
+ {
+ "id": "G",
+ "desc": "a boy with a yellow coat"
+ }
+ ],
+ "example": {
+ "name": "Lucy",
+ "person": "B"
+ },
+ "items": [
+ {
+ "name": "Dylan",
+ "person": "A"
+ },
+ {
+ "name": "Robert",
+ "person": "G"
+ },
+ {
+ "name": "Olga",
+ "person": "C"
+ },
+ {
+ "name": "Tim",
+ "person": "D"
+ },
+ {
+ "name": "Poppy",
+ "person": "F"
+ }
+ ]
+ },
+ "p2": {
+ "type": "note_taking",
+ "heading": "Weather news – Town radio",
+ "example": {
+ "q": "Reporter’s name",
+ "a": "Miss Green"
+ },
+ "items": [
+ {
+ "q": "Day",
+ "a": [
+ "Friday"
+ ]
+ },
+ {
+ "q": "Highest temperature (°C)",
+ "a": [
+ "22",
+ "22 "
+ ]
+ },
+ {
+ "q": "Strong wind starts at (time)",
+ "a": [
+ "four o'clock",
+ "4 o'clock",
+ "4.00",
+ "4:00",
+ "four"
+ ]
+ },
+ {
+ "q": "Rain: until which day?",
+ "a": [
+ "Sunday"
+ ]
+ },
+ {
+ "q": "Best for: sunglasses / umbrella / ______ (one word)",
+ "a": [
+ "hat",
+ "a hat"
+ ]
+ }
+ ]
+ },
+ "p3": {
+ "type": "match_letters",
+ "intro": "Alex is telling her grandma about the weather in different places last week.",
+ "image": "L3",
+ "pictures": [
+ {
+ "letter": "A",
+ "word": "foggy"
+ },
+ {
+ "letter": "B",
+ "word": "windy"
+ },
+ {
+ "letter": "C",
+ "word": "snowing"
+ },
+ {
+ "letter": "D",
+ "word": "raining"
+ },
+ {
+ "letter": "E",
+ "word": "sunny"
+ },
+ {
+ "letter": "F",
+ "word": "stormy"
+ },
+ {
+ "letter": "G",
+ "word": "hot and dry"
+ },
+ {
+ "letter": "H",
+ "word": "cloudy"
+ }
+ ],
+ "example": {
+ "who": "Monday (Spain)",
+ "letter": "E"
+ },
+ "items": [
+ {
+ "who": "Tuesday (Brazil)",
+ "letter": "G"
+ },
+ {
+ "who": "Wednesday (Norway)",
+ "letter": "C"
+ },
+ {
+ "who": "Thursday (Canada)",
+ "letter": "A"
+ },
+ {
+ "who": "Friday (Egypt)",
+ "letter": "B"
+ },
+ {
+ "who": "Saturday (UK)",
+ "letter": "D"
+ }
+ ]
+ },
+ "p4": {
+ "type": "mc_pictures",
+ "items": [
+ {
+ "q": "What clothes will the boy wear today?",
+ "options": [
+ "shorts and a T-shirt",
+ "a coat and boots",
+ "a coat and a scarf"
+ ],
+ "key": "B",
+ "image": "P4Q1"
+ },
+ {
+ "q": "Where did the family go on holiday last summer?",
+ "options": [
+ "to the mountains",
+ "to the beach",
+ "to a city"
+ ],
+ "key": "B",
+ "image": "P4Q2"
+ },
+ {
+ "q": "What time of the year does the girl like best?",
+ "options": [
+ "spring",
+ "summer",
+ "autumn"
+ ],
+ "key": "C",
+ "image": "P4Q3"
+ },
+ {
+ "q": "What did the children do when it rained?",
+ "options": [
+ "watched TV",
+ "played a board game",
+ "read books"
+ ],
+ "key": "B",
+ "image": "P4Q4"
+ },
+ {
+ "q": "What time will the sun come out?",
+ "options": [
+ "12 midday",
+ "2 p.m.",
+ "4 p.m."
+ ],
+ "key": "B",
+ "image": "P4Q5"
+ }
+ ]
+ },
+ "p5": {
+ "type": "colour_write",
+ "image": "L5",
+ "scene": "A winter garden: a snowman in the middle, a small tree with no leaves, a fence, a bird on the fence, a child in a coat, a bench covered with snow, a ball in the snow.",
+ "object": "thing",
+ "example": {
+ "what": "the scarf of the snowman",
+ "colour": "red"
+ },
+ "items": [
+ {
+ "what": "the bird on the fence",
+ "colour": "blue"
+ },
+ {
+ "what": "a carrot on the snowman’s face",
+ "write": "draw"
+ },
+ {
+ "what": "the coat of the child",
+ "colour": "green"
+ },
+ {
+ "what": "on the bench",
+ "write": "COLD"
+ },
+ {
+ "what": "the ball in the snow",
+ "colour": "yellow"
+ }
+ ]
+ }
  },
  "rw": {
-  "p1": {
-   "type": "definitions_copy",
-   "words": [
-    "an umbrella",
-    "a rainbow",
-    "sunglasses",
-    "snowflakes",
-    "boots",
-    "a scarf",
-    "gloves",
-    "a coat",
-    "a cloud",
-    "lightning",
-    "a coat",
-    "sandals",
-    "thunder",
-    "autumn leaves",
-    "ice"
-   ],
-   "example": {
-    "def": "",
-    "word": "a rainbow"
-   },
-   "items": [
-    {
-     "def": "You wear this to cover your hands when it is cold.",
-     "word": "gloves"
-    },
-    {
-     "def": "You open this over your head when it is raining.",
-     "word": "an umbrella"
-    },
-    {
-     "def": "Small pieces of frozen water that fall from the sky in winter.",
-     "word": "snowflakes"
-    },
-    {
-     "def": "Long and soft, you put it around your neck when it is cold.",
-     "word": "a scarf"
-    },
-    {
-     "def": "A big coat that keeps you dry when it rains.",
-     "word": "a coat"
-    },
-    {
-     "def": "Big boots to walk in water or mud.",
-     "word": "boots"
-    },
-    {
-     "def": "You wear these on your eyes when the sun is very lovely.",
-     "word": "sunglasses"
-    },
-    {
-     "def": "Water on the ground that becomes hard when it is very cold.",
-     "word": "ice"
-    },
-    {
-     "def": "Open shoes for the hot summer.",
-     "word": "sandals"
-    },
-    {
-     "def": "This is a big sound you hear during a storm.",
-     "word": "thunder"
-    }
-   ]
-  },
-  "p2": {
-   "type": "dialogue_mc8",
-   "speakerA": "Max",
-   "speakerB": "Zoe",
-   "example": {
-    "a": "Zoe, look at the sky! Do you think it’s going to rain?",
-    "key": "A",
-    "text": "I think so – those clouds are very dark."
-   },
-   "options": [
-    {
-     "letter": "A",
-     "text": "I think so – those clouds are very dark."
-    },
-    {
-     "letter": "B",
-     "text": "Bye, see you in five minutes."
-    },
-    {
-     "letter": "C",
-     "text": "Really. Mine is the red one."
-    },
-    {
-     "letter": "D",
-     "text": "Yes, let’s put on the yellow ones."
-    },
-    {
-     "letter": "E",
-     "text": "I forgot mine! I will borrow Dad’s."
-    },
-    {
-     "letter": "F",
-     "text": "Oh yes! They have dinosaurs on them, right?"
-    },
-    {
-     "letter": "G",
-     "text": "Maybe we can play basketball in the gym instead."
-    },
-    {
-     "letter": "H",
-     "text": "I hate the rain. It’s so cold!"
-    }
-   ],
-   "items": [
-    {
-     "a": "Should we take our umbrellas to school?",
-     "key": "C"
-    },
-    {
-     "a": "Good idea. What about our football lesson outside?",
-     "key": "G"
-    },
-    {
-     "a": "Yes, the teacher told us yesterday it might rain today.",
-     "key": "D"
-    },
-    {
-     "a": "Shall we wear our coats too?",
-     "key": "D"
-    },
-    {
-     "a": "Perfect. Remember my new boots!",
-     "key": "F"
-    }
-   ]
-  },
-  "p3": {
-   "type": "gapped_text_title",
-   "words": [
-    "beach",
-    "sunny",
-    "hot",
-    "umbrella",
-    "played",
-    "swam",
-    "holiday",
-    "family"
-   ],
-   "text": "Last August, my __(1)__ and I went on __(2)__ to the seaside. The weather was very __(3)__ and beautifully __(4)__. We took our big blue __(5)__ with us to sit under. In the morning, we swam in the sea, and later we ate ice cream on the beach.",
-   "example": "",
-   "title_choices": [
-    [
-     "A",
-     "A raining Monday"
-    ],
-    [
-     "B",
-     "A summer day"
-    ],
-    [
-     "C",
-     "My new school"
-    ]
-   ],
-   "key": [
-    "family",
-    "holiday",
-    "hot",
-    "sunny",
-    "umbrella"
-   ],
-   "title_key": "B"
-  },
-  "p4": {
-   "type": "mc_cloze",
-   "title": "The four times of the year",
-   "text": "In many parts of the world, there are __(1)__ times of the year: spring, summer, autumn and winter. Each __(2)__ is different. In spring, the flowers start __(3)__ and the weather is __(4)__. In summer, the sun __(5)__ very lovely and many children go __(6)__ holiday. In autumn, the leaves turn red, yellow and brown, and __(7)__ start to wear jackets. In winter, some places __(8)__ lots of snow and it is __(9)__ cold. Near the equator, there __(10)__ only two times of the year – a dry and a raining one.",
-   "example": {
-    "options": [
-     "",
-     "",
-     ""
-    ],
-    "key": "A"
-   },
-   "items": [
-    {
-     "options": [
-      "four",
-      "fours",
-      "fourth"
-     ],
-     "key": "A"
-    },
-    {
-     "options": [
-      "year",
-      "day",
-      "time of the year"
-     ],
-     "key": "C"
-    },
-    {
-     "options": [
-      "grow",
-      "growing",
-      "grew"
-     ],
-     "key": "B"
-    },
-    {
-     "options": [
-      "fresher",
-      "fresh",
-      "freshly"
-     ],
-     "key": "B"
-    },
-    {
-     "options": [
-      "is",
-      "are",
-      "has"
-     ],
-     "key": "A"
-    },
-    {
-     "options": [
-      "on",
-      "at",
-      "in"
-     ],
-     "key": "A"
-    },
-    {
-     "options": [
-      "people",
-      "animals",
-      "trees"
-     ],
-     "key": "A"
-    },
-    {
-     "options": [
-      "got",
-      "get",
-      "gets"
-     ],
-     "key": "B"
-    },
-    {
-     "options": [
-      "more",
-      "much",
-      "very"
-     ],
-     "key": "C"
-    },
-    {
-     "options": [
-      "is",
-      "are",
-      "be"
-     ],
-     "key": "B"
-    }
-   ]
-  },
-  "p5": {
-   "type": "story_completion",
-   "title": "The snow day",
-   "parts": [
-    {
-     "text": "Last January, there was a big surprise in my town. When I woke up on Tuesday morning, I looked out of the window and I couldn’t believe my eyes. There was snow everywhere! It was the first snow in our town for six years. I quickly put on my coat, scarf and gloves and I ran outside. My friend Joe was already there with his little dog, Bertie. We decided to build a snowman together. Our snowman was as tall as my sister. We gave him two round black stones for eyes, a carrot for his nose, and Joe’s old red hat. We called him Mr Chilly. Then my sister Kate came outside. She had a big plastic plate and we used it to slide down the small hill near our house. At lunch, Mum called us for hot chocolate. By the afternoon, the snow started to melt, but Mr Chilly stayed until the next morning.",
-     "examples": [
-      {
-       "s": "When did it snow?",
-       "a": "Tuesday (morning)"
-      }
-     ],
-     "items": [
-      {
-       "s": "When was the last time it snowed in the town?",
-       "a": [
-        "metre 20",
-        "1.20 m"
-       ]
-      },
-      {
-       "s": "Who did the writer build a snowman with?",
-       "a": "Joe (his friend)"
-      },
-      {
-       "s": "What is Joe’s dog called?",
-       "a": "Bertie"
-      },
-      {
-       "s": "How tall was the snowman?",
-       "a": [
-        "as tall as his sister",
-        "as tall as my sister"
-       ]
-      },
-      {
-       "s": "What was used for the snowman’s nose?",
-       "a": [
-        "a carrot"
-       ]
-      },
-      {
-       "s": "What did Kate bring outside?",
-       "a": [
-        "a big plastic plate",
-        "a plastic plate",
-        "a plate"
-       ]
-      },
-      {
-       "s": "What did they drink at lunch?",
-       "a": [
-        "hot chocolate"
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  "p6": {
-   "type": "open_cloze",
-   "title": "Winter in the mountains",
-   "text": "Every December, __(0)__ go to the mountains with my parents. We love skiing and playing in the snow. Our house there is small but __(1)__ is very warm inside. We always __(2)__ lots of warm clothes: coats, hats, scarves and boots. In the morning, we go skiing. In the afternoon, we __(3)__ hot chocolate in a café. I’m not __(4)__ good skier as my brother, but I try hard. Once, my brother fell __(5)__ his skis – it was very funny! In the evening, we watch films and play cards by the fire.",
-   "example": "I",
-   "key": [
-    "it",
-    "wear",
-    "drink",
-    "as",
-    "off"
-   ]
-  },
-  "p7": {
-   "type": "story_writing",
-   "title": "A sudden storm",
-   "image": "P7",
-   "pictures": [
-    "Three friends are having a picnic under a big tree on a sunny day.",
-    "Dark clouds come and it starts to rain heavily – their sandwiches get wet.",
-    "They run to a small shelter and laugh together while they wait for the rain to stop."
-   ],
-   "prompt": "Look at the three pictures and write the story. Write 20 or more words."
-  }
+ "p1": {
+ "type": "definitions_copy",
+ "words": [
+ "an umbrella",
+ "a rainbow",
+ "sunglasses",
+ "snow",
+ "boots",
+ "a scarf",
+ "gloves",
+ "a coat",
+ "a cloud",
+ "storm",
+ "a coat",
+ "shoes",
+ "storm",
+ "autumn leaves",
+ "ice"
+ ],
+ "example": {
+ "def": "",
+ "word": "a rainbow"
+ },
+ "items": [
+ {
+ "def": "You wear this to keep your hands warm when it is cold.",
+ "word": "gloves"
+ },
+ {
+ "def": "You open this over your head when it is raining.",
+ "word": "an umbrella"
+ },
+ {
+ "def": "Small pieces of ice that fall from the sky in winter.",
+ "word": "snow"
+ },
+ {
+ "def": "Long and soft, you put it around your neck when it is cold.",
+ "word": "a scarf"
+ },
+ {
+ "def": "A big coat that keeps you dry when it rains.",
+ "word": "a coat"
+ },
+ {
+ "def": "Big boots to walk in water or dirty ground.",
+ "word": "boots"
+ },
+ {
+ "def": "You wear these on your eyes when the sun is very lovely.",
+ "word": "sunglasses"
+ },
+ {
+ "def": "Water on the ground that gets hard when it is very cold.",
+ "word": "ice"
+ },
+ {
+ "def": "Open shoes for the hot summer.",
+ "word": "shoes"
+ },
+ {
+ "def": "This is a big sound you hear during a storm.",
+ "word": "storm"
+ }
+ ]
+ },
+ "p2": {
+ "type": "dialogue_mc8",
+ "speakerA": "Max",
+ "speakerB": "Zoe",
+ "example": {
+ "a": "Zoe, look at the sky! Do you think it’s going to rain?",
+ "key": "A",
+ "text": "I think so – those clouds are very dark."
+ },
+ "options": [
+ {
+ "letter": "A",
+ "text": "I think so – those clouds are very dark."
+ },
+ {
+ "letter": "B",
+ "text": "Bye, see you in five minutes."
+ },
+ {
+ "letter": "C",
+ "text": "Really. Mine is the red one."
+ },
+ {
+ "letter": "D",
+ "text": "Yes, let’s put on the yellow ones."
+ },
+ {
+ "letter": "E",
+ "text": "I forgot mine! I will borrow Dad’s."
+ },
+ {
+ "letter": "F",
+ "text": "Oh yes! They have dinosaurs on them, right?"
+ },
+ {
+ "letter": "G",
+ "text": "Maybe we can play basketball in the gym instead."
+ },
+ {
+ "letter": "H",
+ "text": "I hate the rain. It’s so cold!"
+ }
+ ],
+ "items": [
+ {
+ "a": "Should we take our umbrellas to school?",
+ "key": "C"
+ },
+ {
+ "a": "Good idea. What about our football lesson outside?",
+ "key": "G"
+ },
+ {
+ "a": "Yes, the teacher told us yesterday it might rain today.",
+ "key": "D"
+ },
+ {
+ "a": "Shall we wear our coats too?",
+ "key": "D"
+ },
+ {
+ "a": "Perfect. Remember my new boots!",
+ "key": "F"
+ }
+ ]
+ },
+ "p3": {
+ "type": "gapped_text_title",
+ "words": [
+ "beach",
+ "sunny",
+ "hot",
+ "umbrella",
+ "played",
+ "swam",
+ "holiday",
+ "family"
+ ],
+ "text": "Last August, my __(1)__ and I went on __(2)__ to the beach. The weather was very __(3)__ and beautifully __(4)__. We took our big blue __(5)__ with us to sit under. In the morning, we swam in the sea, and later we ate ice cream on the beach.",
+ "example": "",
+ "title_choices": [
+ [
+ "A",
+ "A raining Monday"
+ ],
+ [
+ "B",
+ "A summer day"
+ ],
+ [
+ "C",
+ "My new school"
+ ]
+ ],
+ "key": [
+ "family",
+ "holiday",
+ "hot",
+ "sunny",
+ "umbrella"
+ ],
+ "title_key": "B"
+ },
+ "p4": {
+ "type": "mc_cloze",
+ "title": "The four times of the year",
+ "text": "In many parts of the world, there are __(1)__ times of the year: spring, summer, autumn and winter. Each __(2)__ is different. In spring, the flowers start __(3)__ and the weather is __(4)__. In summer, the sun __(5)__ very lovely and many children go __(6)__ holiday. In autumn, the leaves turn red, yellow and brown, and __(7)__ start to wear jackets. In winter, some places __(8)__ lots of snow and it is __(9)__ cold. In hot countries, there __(10)__ only two times of the year – a dry and a raining one.",
+ "example": {
+ "options": [
+ "",
+ "",
+ ""
+ ],
+ "key": "A"
+ },
+ "items": [
+ {
+ "options": [
+ "four",
+ "fours",
+ "fourth"
+ ],
+ "key": "A"
+ },
+ {
+ "options": [
+ "year",
+ "day",
+ "time of the year"
+ ],
+ "key": "C"
+ },
+ {
+ "options": [
+ "grow",
+ "growing",
+ "grew"
+ ],
+ "key": "B"
+ },
+ {
+ "options": [
+ "colder",
+ "cold",
+ "newly"
+ ],
+ "key": "B"
+ },
+ {
+ "options": [
+ "is",
+ "are",
+ "has"
+ ],
+ "key": "A"
+ },
+ {
+ "options": [
+ "on",
+ "at",
+ "in"
+ ],
+ "key": "A"
+ },
+ {
+ "options": [
+ "people",
+ "animals",
+ "trees"
+ ],
+ "key": "A"
+ },
+ {
+ "options": [
+ "got",
+ "get",
+ "gets"
+ ],
+ "key": "B"
+ },
+ {
+ "options": [
+ "more",
+ "much",
+ "very"
+ ],
+ "key": "C"
+ },
+ {
+ "options": [
+ "is",
+ "are",
+ "be"
+ ],
+ "key": "B"
+ }
+ ]
+ },
+ "p5": {
+ "type": "story_completion",
+ "title": "The snow day",
+ "parts": [
+ {
+ "text": "Last January, there was a big surprise in my town. When I woke up on Tuesday morning, I looked out of the window and I couldn’t believe my eyes. There was snow everywhere! It was the first snow in our town for six years. I quickly put on my coat, scarf and gloves and I ran outside. My friend Joe was already there with his little dog, Bertie. We decided to build a snowman together. Our snowman was as tall as my sister. We gave him two round black stones for eyes, a carrot for his nose, and Joe’s old red hat. We called him Mr Chilly. Then my sister Kate came outside. She had a big plastic plate and we used it to go down the small hill near our house. At lunch, Mum called us for hot chocolate. By the afternoon, the snow started to go, but Mr Chilly stayed until the next morning.",
+ "examples": [
+ {
+ "s": "When did it snow?",
+ "a": "Tuesday (morning)"
+ }
+ ],
+ "items": [
+ {
+ "s": "When was the last time it snowed in the town?",
+ "a": [
+ "metre 20",
+ "1.20 m"
+ ]
+ },
+ {
+ "s": "Who did the writer build a snowman with?",
+ "a": "Joe (his friend)"
+ },
+ {
+ "s": "What is Joe’s dog called?",
+ "a": "Bertie"
+ },
+ {
+ "s": "How tall was the snowman?",
+ "a": [
+ "as tall as his sister",
+ "as tall as my sister"
+ ]
+ },
+ {
+ "s": "What was used for the snowman’s nose?",
+ "a": [
+ "a carrot"
+ ]
+ },
+ {
+ "s": "What did Kate bring outside?",
+ "a": [
+ "a big plastic plate",
+ "a plastic plate",
+ "a plate"
+ ]
+ },
+ {
+ "s": "What did they drink at lunch?",
+ "a": [
+ "hot chocolate"
+ ]
+ }
+ ]
+ }
+ ]
+ },
+ "p6": {
+ "type": "open_cloze",
+ "title": "Winter in the mountains",
+ "text": "Every December, __(0)__ go to the mountains with my parents. We love skiing and playing in the snow. Our house there is small but __(1)__ is very warm inside. We always __(2)__ lots of warm clothes: coats, hats, scarves and boots. In the morning, we go skiing. In the afternoon, we __(3)__ hot chocolate in a café. I’m not __(4)__ good skier as my brother, but I try hard. Once, my brother fell __(5)__ his skis – it was very funny! In the evening, we watch films and play cards by the fire.",
+ "example": "I",
+ "key": [
+ "it",
+ "wear",
+ "drink",
+ "as",
+ "off"
+ ]
+ },
+ "p7": {
+ "type": "story_writing",
+ "title": "A big storm",
+ "image": "P7",
+ "pictures": [
+ "Three friends are having a picnic under a big tree on a sunny day.",
+ "Dark clouds come and it starts to rain a lot – their sandwiches get wet.",
+ "They run to a small building and laugh together while they wait for the rain to stop."
+ ],
+ "prompt": "Look at the three pictures and write the story. Write 20 or more words."
+ }
  },
  "speaking": {
-  "p1": {
-   "type": "find_differences_statements",
-   "image": "S1",
-   "examiner_scene": "A park on a sunny day: a girl eating an ice cream, a dog running, a blue kite, three balloons, a man reading a book, a bench with a bottle of water.",
-   "candidate_scene": "A park on a Raining day: a girl eating an ice cream, a dog running, a RED kite, three balloons, a man reading a NEWSPAPER, a bench with a bottle of water.",
-   "differences": [
-    "In my picture it's sunny, but in your picture it's raining.",
-    "In my picture the kite is blue, but in your picture it's red.",
-    "In my picture the man is reading a book, but in your picture he's reading a newspaper.",
-    "In my picture no-one has got an umbrella, but in your picture a woman has got one."
-   ]
-  },
-  "p2": {
-   "type": "information_exchange",
-   "topic": "Two summer camps",
-   "candidate_card": "CAMP: Mountain Days – Month: ______ – Temperature: usually ______°C – Activities: ______, ______ and ______ – Clothes to bring: ______.",
-   "candidate_questions": [
-    "What’s the name of the other summer camp?",
-    "What month is it?",
-    "What’s the weather usually like?",
-    "What can you do?",
-    "What must you bring?"
-   ],
-   "examiner_card": "CAMP: Sunny Beach Camp – July – usually 28°C – swimming, volleyball, sailing – swimsuit, sunglasses, sun hat.",
-   "examiner_questions": [
-    "What’s your camp called?",
-    "When is the camp?",
-    "What is the temperature normally?",
-    "What things do children do?",
-    "What clothes should children bring?"
-   ]
-  },
-  "p3": {
-   "type": "picture_sequence",
-   "image": "S3",
-   "title": "The raining party",
-   "examiner_open": "These pictures tell a story called \"The raining party\". The children are preparing a party in the garden. Now you tell the story.",
-   "frames": [
-    "Children are preparing a birthday party in the garden with balloons and cakes.",
-    "It starts raining a lot and the cakes get wet.",
-    "The children move everything inside the house quickly.",
-    "They have fun dancing indoors, and the rain stops at the end."
-   ]
-  },
-  "p4": {
-   "type": "personal_questions",
-   "questions": [
-    {
-     "q": "What’s your favourite time of the year? Why?"
-    },
-    {
-     "q": "What is the weather like today?"
-    },
-    {
-     "q": "What do you like doing in summer / in winter?"
-    },
-    {
-     "q": "Tell me about a very cold day you remember."
-    },
-    {
-     "q": "Do you prefer sun or snow?"
-    }
-   ]
-  }
+ "p1": {
+ "type": "find_differences_statements",
+ "image": "S1",
+ "examiner_scene": "A park on a sunny day: a girl eating an ice cream, a dog running, a blue kite, three balloons, a man reading a book, a bench with a bottle of water.",
+ "candidate_scene": "A park on a Raining day: a girl eating an ice cream, a dog running, a RED kite, three balloons, a man reading a NEWSPAPER, a bench with a bottle of water.",
+ "differences": [
+ "In my picture it's sunny, but in your picture it's raining.",
+ "In my picture the kite is blue, but in your picture it's red.",
+ "In my picture the man is reading a book, but in your picture he's reading a newspaper.",
+ "In my picture no-one has got an umbrella, but in your picture a woman has got one."
+ ]
+ },
+ "p2": {
+ "type": "information_exchange",
+ "topic": "Two summer camps",
+ "candidate_card": "CAMP: Mountain Days – Month: ______ – Temperature: usually ______°C – Activities: ______, ______ and ______ – Clothes to bring: ______.",
+ "candidate_questions": [
+ "What’s the name of the other summer camp?",
+ "What month is it?",
+ "What’s the weather usually like?",
+ "What can you do?",
+ "What must you bring?"
+ ],
+ "examiner_card": "CAMP: Sunny Beach Camp – July – usually 28°C – swimming, volleyball, sailing – swimsuit, sunglasses, sun hat.",
+ "examiner_questions": [
+ "What’s your camp called?",
+ "When is the camp?",
+ "What is the temperature usually?",
+ "What things do children do?",
+ "What clothes should children bring?"
+ ]
+ },
+ "p3": {
+ "type": "picture_sequence",
+ "image": "S3",
+ "title": "The raining party",
+ "examiner_open": "These pictures tell a story called \"The raining party\". The children are preparing a party in the garden. Now you tell the story.",
+ "frames": [
+ "Children are preparing a birthday party in the garden with balloons and cakes.",
+ "It starts raining a lot and the cakes get wet.",
+ "The children move everything inside the house quickly.",
+ "They have fun dancing inside, and the rain stops at the end."
+ ]
+ },
+ "p4": {
+ "type": "personal_questions",
+ "questions": [
+ {
+ "q": "What’s your favourite time of the year? Why?"
+ },
+ {
+ "q": "What is the weather like today?"
+ },
+ {
+ "q": "What do you like doing in summer / in winter?"
+ },
+ {
+ "q": "Tell me about a very cold day you remember."
+ },
+ {
+ "q": "Do you prefer sun or snow?"
+ }
+ ]
+ }
  },
  "audio": {
-  "p1": [
-   [
-    "R",
-    "Part One. Listen and look. There is one example."
-   ],
-   [
-    "pause",
-    1.5
-   ],
-   [
-    "Mch",
-    "Look at the park on a windy day."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "Lucy is the woman running with a red hat – that’s the example."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "Where’s Dylan? Dylan is the boy flying the kite."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Mch",
-    "Now Robert. Robert is the boy wearing a yellow coat."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Mch",
-    "Olga? Olga is the girl with the blue umbrella."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Mch",
-    "Tim is the man with the dog on a lead."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Mch",
-    "And Poppy? Poppy is the girl reading on the bench."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "pause",
-    2.0
-   ],
-   [
-    "R",
-    "Now listen to Part One again."
-   ],
-   [
-    "pause",
-    1.5
-   ],
-   [
-    "Mch",
-    "Look at the park on a windy day."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "Lucy is the woman running with a red hat – that’s the example."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "Where’s Dylan? Dylan is the boy flying the kite."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Mch",
-    "Now Robert. Robert is the boy wearing a yellow coat."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Mch",
-    "Olga? Olga is the girl with the blue umbrella."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Mch",
-    "Tim is the man with the dog on a lead."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Mch",
-    "And Poppy? Poppy is the girl reading on the bench."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "R",
-    "That is the end of Part One."
-   ],
-   [
-    "pause",
-    1.0
-   ]
-  ],
-  "p2": [
-   [
-    "R",
-    "Part Two. Listen and look. There is one example."
-   ],
-   [
-    "pause",
-    1.5
-   ],
-   [
-    "R",
-    "To the radio weather news."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "R",
-    "Example: the woman's name is Miss Green."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "R",
-    "Can you see the answer? Reporter’s name: Miss Green. Now you listen and write."
-   ],
-   [
-    "pause",
-    2.0
-   ],
-   [
-    "Fch",
-    "Hello, today is Friday."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "The highest temperature today will be 22."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Fch",
-    "Strong wind will start at four o’clock."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "Rain will not stop until Sunday."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Fch",
-    "Today is best for sunglasses, an umbrella or a hat – bring a hat if you go out!"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "pause",
-    2.0
-   ],
-   [
-    "R",
-    "Now listen to Part Two again."
-   ],
-   [
-    "pause",
-    1.5
-   ],
-   [
-    "R",
-    "To the radio weather news."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "R",
-    "Example: the woman's name is Miss Green."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "R",
-    "Can you see the answer? Reporter’s name: Miss Green. Now you listen and write."
-   ],
-   [
-    "pause",
-    2.0
-   ],
-   [
-    "Fch",
-    "Hello, today is Friday."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "The highest temperature today will be 22."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Fch",
-    "Strong wind will start at four o’clock."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "Rain will not stop until Sunday."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Fch",
-    "Today is best for sunglasses, an umbrella or a hat – bring a hat if you go out!"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "R",
-    "That is the end of Part Two."
-   ],
-   [
-    "pause",
-    1.0
-   ]
-  ],
-  "p3": [
-   [
-    "R",
-    "Part Three. Listen and look. There is one example."
-   ],
-   [
-    "pause",
-    1.5
-   ],
-   [
-    "R",
-    "Alex is telling her grandma about the weather last week."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "R",
-    "Example: Spain on Monday was sunny."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "What about Monday (Spain)?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "On Monday (Spain)? We saw sunny."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "R",
-    "Can you see the letter E? Now you listen and write a letter in each box."
-   ],
-   [
-    "pause",
-    2.0
-   ],
-   [
-    "Fch",
-    "Tuesday in Brazil – it was very hot and dry, nearly all 40!"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "Wednesday in Norway – it snowed all day."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Fch",
-    "Thursday in Canada – a lot of fog everywhere, you couldn’t see cars."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "Friday in Egypt – very windy, sand in the air."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Fch",
-    "And Saturday in the UK – again, raining!"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "pause",
-    2.0
-   ],
-   [
-    "R",
-    "Now listen to Part Three again."
-   ],
-   [
-    "pause",
-    1.5
-   ],
-   [
-    "R",
-    "Alex is telling her grandma about the weather last week."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "R",
-    "Example: Spain on Monday was sunny."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "What about Monday (Spain)?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "On Monday (Spain)? We saw sunny."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "R",
-    "Can you see the letter E? Now you listen and write a letter in each box."
-   ],
-   [
-    "pause",
-    2.0
-   ],
-   [
-    "Fch",
-    "Tuesday in Brazil – it was very hot and dry, nearly all 40!"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "Wednesday in Norway – it snowed all day."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Fch",
-    "Thursday in Canada – a lot of fog everywhere, you couldn’t see cars."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "Friday in Egypt – very windy, sand in the air."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Fch",
-    "And Saturday in the UK – again, raining!"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "R",
-    "That is the end of Part Three."
-   ],
-   [
-    "pause",
-    1.0
-   ]
-  ],
-  "p4": [
-   [
-    "R",
-    "Part Four. Listen and look. Listen and tick the box."
-   ],
-   [
-    "pause",
-    1.5
-   ],
-   [
-    "R",
-    "One. — What will you wear today?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "— What will you wear today?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "Not shorts."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "Oh, really?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "And not a coat – it’s not that cold."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "I’ll wear my coat and my boots."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "R",
-    "Two. — Where did you go last summer?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "— Where did you go last summer?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "Not the mountains – too cold for me."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "Oh, really?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "Not a city one of them."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "We went to the beach."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "R",
-    "Three. — Which time of the year do you love?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "— Which time of the year do you love?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "I like spring, summer is nice, but autumn with the coloured leaves is really my favourite."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "R",
-    "Four. — What did you do when it rained?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "— What did you do when it rained?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "No TV, no books."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "We got out the big board game and played all afternoon."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "R",
-    "Five. — What time will the sun come out?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "— What time will the sun come out?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "It won’t stop raining until two in the afternoon."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "After that the sun will come out."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "pause",
-    2.0
-   ],
-   [
-    "R",
-    "Now listen to Part Four again."
-   ],
-   [
-    "pause",
-    1.5
-   ],
-   [
-    "R",
-    "One. — What will you wear today?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "— What will you wear today?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "Not shorts."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "Oh, really?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "And not a coat – it’s not that cold."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "I’ll wear my coat and my boots."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "R",
-    "Two. — Where did you go last summer?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "— Where did you go last summer?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "Not the mountains – too cold for me."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "Oh, really?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "Not a city one of them."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "We went to the beach."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "R",
-    "Three. — Which time of the year do you love?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "— Which time of the year do you love?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "I like spring, summer is nice, but autumn with the coloured leaves is really my favourite."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "R",
-    "Four. — What did you do when it rained?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "— What did you do when it rained?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "No TV, no books."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "We got out the big board game and played all afternoon."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "R",
-    "Five. — What time will the sun come out?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "— What time will the sun come out?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "It won’t stop raining until two in the afternoon."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "After that the sun will come out."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "R",
-    "That is the end of Part Four."
-   ],
-   [
-    "pause",
-    1.0
-   ]
-  ],
-  "p5": [
-   [
-    "R",
-    "Part Five. Listen and look. There is one example."
-   ],
-   [
-    "pause",
-    1.5
-   ],
-   [
-    "M",
-    "Look at the winter garden."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "M",
-    "Example: colour the scarf of the snowman red."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "R",
-    "This is an example. Now you listen and colour and write."
-   ],
-   [
-    "pause",
-    2.0
-   ],
-   [
-    "M",
-    "On the fence, there’s a bird."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "M",
-    "Colour it blue."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "OK."
-   ],
-   [
-    "pause",
-    5.0
-   ],
-   [
-    "M",
-    "On the snowman’s face, draw a carrot – for his nose."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "OK."
-   ],
-   [
-    "pause",
-    5.0
-   ],
-   [
-    "M",
-    "The child is wearing a coat."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "M",
-    "Colour the coat green."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "OK."
-   ],
-   [
-    "pause",
-    5.0
-   ],
-   [
-    "M",
-    "Now on the bench, write the word COLD."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "OK."
-   ],
-   [
-    "pause",
-    5.0
-   ],
-   [
-    "M",
-    "There’s a ball in the snow."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "M",
-    "Colour it yellow."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "OK."
-   ],
-   [
-    "pause",
-    5.0
-   ],
-   [
-    "pause",
-    2.0
-   ],
-   [
-    "R",
-    "Now listen to Part Five again."
-   ],
-   [
-    "pause",
-    1.5
-   ],
-   [
-    "M",
-    "Look at the winter garden."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "M",
-    "Example: colour the scarf of the snowman red."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "R",
-    "This is an example. Now you listen and colour and write."
-   ],
-   [
-    "pause",
-    2.0
-   ],
-   [
-    "M",
-    "On the fence, there’s a bird."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "M",
-    "Colour it blue."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "OK."
-   ],
-   [
-    "pause",
-    5.0
-   ],
-   [
-    "M",
-    "On the snowman’s face, draw a carrot – for his nose."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "OK."
-   ],
-   [
-    "pause",
-    5.0
-   ],
-   [
-    "M",
-    "The child is wearing a coat."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "M",
-    "Colour the coat green."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "OK."
-   ],
-   [
-    "pause",
-    5.0
-   ],
-   [
-    "M",
-    "Now on the bench, write the word COLD."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "OK."
-   ],
-   [
-    "pause",
-    5.0
-   ],
-   [
-    "M",
-    "There’s a ball in the snow."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "M",
-    "Colour it yellow."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "OK."
-   ],
-   [
-    "pause",
-    5.0
-   ],
-   [
-    "R",
-    "That is the end of Part Five."
-   ],
-   [
-    "pause",
-    1.0
-   ]
-  ]
+ "p1": [
+ [
+ "R",
+ "Part One. Listen and look. There is one example."
+ ],
+ [
+ "pause",
+ 1.5
+ ],
+ [
+ "Mch",
+ "Look at the park on a windy day."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "Lucy is the woman running with a red hat – that’s the example."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "Where’s Dylan? Dylan is the boy flying the kite."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Mch",
+ "Now Robert. Robert is the boy wearing a yellow coat."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Mch",
+ "Olga? Olga is the girl with the blue umbrella."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Mch",
+ "Tim is the man with the dog on a lead."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Mch",
+ "And Poppy? Poppy is the girl reading on the bench."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "pause",
+ 2.0
+ ],
+ [
+ "R",
+ "Now listen to Part One again."
+ ],
+ [
+ "pause",
+ 1.5
+ ],
+ [
+ "Mch",
+ "Look at the park on a windy day."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "Lucy is the woman running with a red hat – that’s the example."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "Where’s Dylan? Dylan is the boy flying the kite."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Mch",
+ "Now Robert. Robert is the boy wearing a yellow coat."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Mch",
+ "Olga? Olga is the girl with the blue umbrella."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Mch",
+ "Tim is the man with the dog on a lead."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Mch",
+ "And Poppy? Poppy is the girl reading on the bench."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "R",
+ "That is the end of Part One."
+ ],
+ [
+ "pause",
+ 1.0
+ ]
+ ],
+ "p2": [
+ [
+ "R",
+ "Part Two. Listen and look. There is one example."
+ ],
+ [
+ "pause",
+ 1.5
+ ],
+ [
+ "R",
+ "To the radio weather news."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "R",
+ "Example: the woman's name is Miss Green."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "R",
+ "Can you see the answer? Reporter’s name: Miss Green. Now you listen and write."
+ ],
+ [
+ "pause",
+ 2.0
+ ],
+ [
+ "Fch",
+ "Hello, today is Friday."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "The highest temperature today will be 22."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Fch",
+ "Strong wind will start at four o’clock."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "Rain will not stop until Sunday."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Fch",
+ "Today is best for sunglasses, an umbrella or a hat – bring a hat if you go out!"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "pause",
+ 2.0
+ ],
+ [
+ "R",
+ "Now listen to Part Two again."
+ ],
+ [
+ "pause",
+ 1.5
+ ],
+ [
+ "R",
+ "To the radio weather news."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "R",
+ "Example: the woman's name is Miss Green."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "R",
+ "Can you see the answer? Reporter’s name: Miss Green. Now you listen and write."
+ ],
+ [
+ "pause",
+ 2.0
+ ],
+ [
+ "Fch",
+ "Hello, today is Friday."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "The highest temperature today will be 22."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Fch",
+ "Strong wind will start at four o’clock."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "Rain will not stop until Sunday."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Fch",
+ "Today is best for sunglasses, an umbrella or a hat – bring a hat if you go out!"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "R",
+ "That is the end of Part Two."
+ ],
+ [
+ "pause",
+ 1.0
+ ]
+ ],
+ "p3": [
+ [
+ "R",
+ "Part Three. Listen and look. There is one example."
+ ],
+ [
+ "pause",
+ 1.5
+ ],
+ [
+ "R",
+ "Alex is telling her grandma about the weather last week."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "R",
+ "Example: Spain on Monday was sunny."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "What about Monday (Spain)?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "On Monday (Spain)? We saw sunny."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "R",
+ "Can you see the letter E? Now you listen and write a letter in each box."
+ ],
+ [
+ "pause",
+ 2.0
+ ],
+ [
+ "Fch",
+ "Tuesday in Brazil – it was very hot and dry, nearly all 40!"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "Wednesday in Norway – it snowed all day."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Fch",
+ "Thursday in Canada – a lot of fog everywhere, you couldn’t see cars."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "Friday in Egypt – very windy, sand in the air."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Fch",
+ "And Saturday in the UK – again, raining!"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "pause",
+ 2.0
+ ],
+ [
+ "R",
+ "Now listen to Part Three again."
+ ],
+ [
+ "pause",
+ 1.5
+ ],
+ [
+ "R",
+ "Alex is telling her grandma about the weather last week."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "R",
+ "Example: Spain on Monday was sunny."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "What about Monday (Spain)?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "On Monday (Spain)? We saw sunny."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "R",
+ "Can you see the letter E? Now you listen and write a letter in each box."
+ ],
+ [
+ "pause",
+ 2.0
+ ],
+ [
+ "Fch",
+ "Tuesday in Brazil – it was very hot and dry, nearly all 40!"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "Wednesday in Norway – it snowed all day."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Fch",
+ "Thursday in Canada – a lot of fog everywhere, you couldn’t see cars."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "Friday in Egypt – very windy, sand in the air."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Fch",
+ "And Saturday in the UK – again, raining!"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "R",
+ "That is the end of Part Three."
+ ],
+ [
+ "pause",
+ 1.0
+ ]
+ ],
+ "p4": [
+ [
+ "R",
+ "Part Four. Listen and look. Listen and tick the box."
+ ],
+ [
+ "pause",
+ 1.5
+ ],
+ [
+ "R",
+ "One. — What will you wear today?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "— What will you wear today?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "Not shorts."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "Oh, really?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "And not a coat – it’s not that cold."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "I’ll wear my coat and my boots."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "R",
+ "Two. — Where did you go last summer?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "— Where did you go last summer?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "Not the mountains – too cold for me."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "Oh, really?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "Not a city one of them."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "We went to the beach."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "R",
+ "Three. — Which time of the year do you love?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "— Which time of the year do you love?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "I like spring, summer is nice, but autumn with the coloured leaves is really my favourite."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "R",
+ "Four. — What did you do when it rained?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "— What did you do when it rained?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "No TV, no books."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "We got out the big board game and played all afternoon."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "R",
+ "Five. — What time will the sun come out?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "— What time will the sun come out?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "It won’t stop raining until two in the afternoon."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "After that the sun will come out."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "pause",
+ 2.0
+ ],
+ [
+ "R",
+ "Now listen to Part Four again."
+ ],
+ [
+ "pause",
+ 1.5
+ ],
+ [
+ "R",
+ "One. — What will you wear today?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "— What will you wear today?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "Not shorts."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "Oh, really?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "And not a coat – it’s not that cold."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "I’ll wear my coat and my boots."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "R",
+ "Two. — Where did you go last summer?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "— Where did you go last summer?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "Not the mountains – too cold for me."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "Oh, really?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "Not a city one of them."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "We went to the beach."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "R",
+ "Three. — Which time of the year do you love?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "— Which time of the year do you love?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "I like spring, summer is nice, but autumn with the coloured leaves is really my favourite."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "R",
+ "Four. — What did you do when it rained?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "— What did you do when it rained?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "No TV, no books."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "We got out the big board game and played all afternoon."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "R",
+ "Five. — What time will the sun come out?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "— What time will the sun come out?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "It won’t stop raining until two in the afternoon."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "After that the sun will come out."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "R",
+ "That is the end of Part Four."
+ ],
+ [
+ "pause",
+ 1.0
+ ]
+ ],
+ "p5": [
+ [
+ "R",
+ "Part Five. Listen and look. There is one example."
+ ],
+ [
+ "pause",
+ 1.5
+ ],
+ [
+ "M",
+ "Look at the winter garden."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "M",
+ "Example: colour the scarf of the snowman red."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "R",
+ "This is an example. Now you listen and colour and write."
+ ],
+ [
+ "pause",
+ 2.0
+ ],
+ [
+ "M",
+ "On the fence, there’s a bird."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "M",
+ "Colour it blue."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "OK."
+ ],
+ [
+ "pause",
+ 5.0
+ ],
+ [
+ "M",
+ "On the snowman’s face, draw a carrot – for his nose."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "OK."
+ ],
+ [
+ "pause",
+ 5.0
+ ],
+ [
+ "M",
+ "The child is wearing a coat."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "M",
+ "Colour the coat green."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "OK."
+ ],
+ [
+ "pause",
+ 5.0
+ ],
+ [
+ "M",
+ "Now on the bench, write the word COLD."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "OK."
+ ],
+ [
+ "pause",
+ 5.0
+ ],
+ [
+ "M",
+ "There’s a ball in the snow."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "M",
+ "Colour it yellow."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "OK."
+ ],
+ [
+ "pause",
+ 5.0
+ ],
+ [
+ "pause",
+ 2.0
+ ],
+ [
+ "R",
+ "Now listen to Part Five again."
+ ],
+ [
+ "pause",
+ 1.5
+ ],
+ [
+ "M",
+ "Look at the winter garden."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "M",
+ "Example: colour the scarf of the snowman red."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "R",
+ "This is an example. Now you listen and colour and write."
+ ],
+ [
+ "pause",
+ 2.0
+ ],
+ [
+ "M",
+ "On the fence, there’s a bird."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "M",
+ "Colour it blue."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "OK."
+ ],
+ [
+ "pause",
+ 5.0
+ ],
+ [
+ "M",
+ "On the snowman’s face, draw a carrot – for his nose."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "OK."
+ ],
+ [
+ "pause",
+ 5.0
+ ],
+ [
+ "M",
+ "The child is wearing a coat."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "M",
+ "Colour the coat green."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "OK."
+ ],
+ [
+ "pause",
+ 5.0
+ ],
+ [
+ "M",
+ "Now on the bench, write the word COLD."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "OK."
+ ],
+ [
+ "pause",
+ 5.0
+ ],
+ [
+ "M",
+ "There’s a ball in the snow."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "M",
+ "Colour it yellow."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "OK."
+ ],
+ [
+ "pause",
+ 5.0
+ ],
+ [
+ "R",
+ "That is the end of Part Five."
+ ],
+ [
+ "pause",
+ 1.0
+ ]
+ ]
  }
 }

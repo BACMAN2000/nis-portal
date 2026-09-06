@@ -116,6 +116,7 @@ def vocabulario(level):
                 forma = forma.replace('’', "'")   # o’clock -> o'clock
                 v.add(forma)
                 v.update(forma.split())   # 'ice cream' permite tambien 'ice' y 'cream'
+                v.update(forma.replace('-', ' ').split())   # y 'grown-up' -> 'grown', 'up'
     return v | EXTRA
 
 def palabras(texto):

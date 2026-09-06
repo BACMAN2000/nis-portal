@@ -3,2071 +3,2071 @@
  "number": 10,
  "theme": "Holidays & Parties",
  "listening": {
-  "p1": {
-   "type": "draw_lines",
-   "image": "L1",
-   "scene": "A big party: children in different costumes – a witch, a superhero, a princess, a robot, a dinosaur; an adult with a cake; a dog with a party hat; balloons on the walls.",
-   "names": [
-    "Uncle Pete",
-    "Bella",
-    "Fergus",
-    "Nina",
-    "Omar",
-    "Hero the dog"
-   ],
-   "people": [
-    {
-     "id": "A",
-     "desc": "a witch"
-    },
-    {
-     "id": "B",
-     "desc": "a superhero"
-    },
-    {
-     "id": "C",
-     "desc": "a princess"
-    },
-    {
-     "id": "D",
-     "desc": "a robot"
-    },
-    {
-     "id": "E",
-     "desc": "a dinosaur"
-    },
-    {
-     "id": "F",
-     "desc": "an adult with a cake"
-    },
-    {
-     "id": "G",
-     "desc": "a dog with a party hat"
-    }
-   ],
-   "example": {
-    "name": "Uncle Pete",
-    "person": "F"
-   },
-   "items": [
-    {
-     "name": "Bella",
-     "person": "C"
-    },
-    {
-     "name": "Fergus",
-     "person": "E"
-    },
-    {
-     "name": "Nina",
-     "person": "A"
-    },
-    {
-     "name": "Omar",
-     "person": "B"
-    },
-    {
-     "name": "Hero the dog",
-     "person": "G"
-    }
-   ]
-  },
-  "p2": {
-   "type": "note_taking",
-   "heading": "Birthday planning",
-   "example": {
-    "q": "Birthday boy/girl",
-    "a": "Amy"
-   },
-   "items": [
-    {
-     "q": "Party date (day + month)",
-     "a": [
-      "3 September",
-      "3rd September",
-      "September 3rd",
-      "the 3rd of September"
-     ]
-    },
-    {
-     "q": "Number of friends invited",
-     "a": [
-      "10",
-      "ten"
-     ]
-    },
-    {
-     "q": "Kind of cake",
-     "a": [
-      "strawberry",
-      "a big strawberry cake",
-      "strawberry cake"
-     ]
-    },
-    {
-     "q": "Time: party starts at",
-     "a": [
-      "four o'clock",
-      "4 o'clock",
-      "4.00",
-      "4:00",
-      "four"
-     ]
-    },
-    {
-     "q": "Place (name of park)",
-     "a": [
-      "Green Park",
-      "Green"
-     ]
-    }
-   ]
-  },
-  "p3": {
-   "type": "match_letters",
-   "intro": "Nathan is telling his cousin what he does every year on different holidays.",
-   "image": "L3",
-   "pictures": [
-    {
-     "letter": "A",
-     "word": "goes camping"
-    },
-    {
-     "letter": "B",
-     "word": "visits grandparents"
-    },
-    {
-     "letter": "C",
-     "word": "opens presents"
-    },
-    {
-     "letter": "D",
-     "word": "makes costumes"
-    },
-    {
-     "letter": "E",
-     "word": "watches lights in the sky"
-    },
-    {
-     "letter": "F",
-     "word": "paints eggs"
-    },
-    {
-     "letter": "G",
-     "word": "has a party at the pool"
-    },
-    {
-     "letter": "H",
-     "word": "goes to the beach"
-    }
-   ],
-   "example": {
-    "who": "New Year",
-    "letter": "E"
-   },
-   "items": [
-    {
-     "who": "Easter",
-     "letter": "F"
-    },
-    {
-     "who": "Summer holiday",
-     "letter": "A"
-    },
-    {
-     "who": "Halloween",
-     "letter": "D"
-    },
-    {
-     "who": "Christmas",
-     "letter": "B"
-    },
-    {
-     "who": "His birthday",
-     "letter": "G"
-    }
-   ]
-  },
-  "p4": {
-   "type": "mc_pictures",
-   "items": [
-    {
-     "q": "What present is the girl going to give her mum?",
-     "options": [
-      "a book",
-      "chocolates",
-      "flowers"
-     ],
-     "key": "C",
-     "image": "P4Q1"
-    },
-    {
-     "q": "Where is the party going to be?",
-     "options": [
-      "at the beach",
-      "in the garden",
-      "at the park"
-     ],
-     "key": "C",
-     "image": "P4Q2"
-    },
-    {
-     "q": "What costume did the boy wear last Halloween?",
-     "options": [
-      "a pirate",
-      "a king",
-      "a monster"
-     ],
-     "key": "C",
-     "image": "P4Q3"
-    },
-    {
-     "q": "What did the family do on New Year’s Eve?",
-     "options": [
-      "went to bed early",
-      "watched a film",
-      "went to a concert"
-     ],
-     "key": "B",
-     "image": "P4Q4"
-    },
-    {
-     "q": "What is the girl’s favourite part of her birthday?",
-     "options": [
-      "the cake",
-      "the presents",
-      "being with friends"
-     ],
-     "key": "C",
-     "image": "P4Q5"
-    }
-   ]
-  },
-  "p5": {
-   "type": "colour_write",
-   "image": "L5",
-   "scene": "A birthday party scene: a long table with a big cake, eight balloons tied to a chair, a banner with \"HAPPY BIRTHDAY\", a clown juggling, a box of presents, a dog under the table, a mirror on the wall.",
-   "object": "thing",
-   "example": {
-    "what": "the cake",
-    "colour": "pink"
-   },
-   "items": [
-    {
-     "what": "the biggest balloon",
-     "colour": "red"
-    },
-    {
-     "what": "a star on the banner",
-     "write": "draw"
-    },
-    {
-     "what": "the clown’s hat",
-     "colour": "green"
-    },
-    {
-     "what": "Write the number 9 on the biggest present"
-    },
-    {
-     "what": "the dog under the table",
-     "colour": "black"
-    }
-   ]
-  }
+ "p1": {
+ "type": "draw_lines",
+ "image": "L1",
+ "scene": "A big party: children in different costumes – a witch, a superhero, a princess, a robot, a dinosaur; an adult with a cake; a dog with a party hat; balloons on the walls.",
+ "names": [
+ "Uncle Pete",
+ "Bella",
+ "Fergus",
+ "Nina",
+ "Omar",
+ "Hero the dog"
+ ],
+ "people": [
+ {
+ "id": "A",
+ "desc": "a witch"
+ },
+ {
+ "id": "B",
+ "desc": "a superhero"
+ },
+ {
+ "id": "C",
+ "desc": "a princess"
+ },
+ {
+ "id": "D",
+ "desc": "a robot"
+ },
+ {
+ "id": "E",
+ "desc": "a dinosaur"
+ },
+ {
+ "id": "F",
+ "desc": "an adult with a cake"
+ },
+ {
+ "id": "G",
+ "desc": "a dog with a party hat"
+ }
+ ],
+ "example": {
+ "name": "Uncle Pete",
+ "person": "F"
+ },
+ "items": [
+ {
+ "name": "Bella",
+ "person": "C"
+ },
+ {
+ "name": "Fergus",
+ "person": "E"
+ },
+ {
+ "name": "Nina",
+ "person": "A"
+ },
+ {
+ "name": "Omar",
+ "person": "B"
+ },
+ {
+ "name": "Hero the dog",
+ "person": "G"
+ }
+ ]
+ },
+ "p2": {
+ "type": "note_taking",
+ "heading": "Birthday party",
+ "example": {
+ "q": "Birthday boy/girl",
+ "a": "Amy"
+ },
+ "items": [
+ {
+ "q": "Party date (day + month)",
+ "a": [
+ "3 September",
+ "3rd September",
+ "September 3rd",
+ "the 3rd of September"
+ ]
+ },
+ {
+ "q": "Number of friends invited",
+ "a": [
+ "10",
+ "ten"
+ ]
+ },
+ {
+ "q": "Kind of cake",
+ "a": [
+ "strawberry",
+ "a big strawberry cake",
+ "strawberry cake"
+ ]
+ },
+ {
+ "q": "Time: party starts at",
+ "a": [
+ "four o'clock",
+ "4 o'clock",
+ "4.00",
+ "4:00",
+ "four"
+ ]
+ },
+ {
+ "q": "Place (name of park)",
+ "a": [
+ "Green Park",
+ "Green"
+ ]
+ }
+ ]
+ },
+ "p3": {
+ "type": "match_letters",
+ "intro": "Nathan is telling his cousin what he does every year on different holidays.",
+ "image": "L3",
+ "pictures": [
+ {
+ "letter": "A",
+ "word": "goes camping"
+ },
+ {
+ "letter": "B",
+ "word": "visits grandparents"
+ },
+ {
+ "letter": "C",
+ "word": "opens presents"
+ },
+ {
+ "letter": "D",
+ "word": "makes costumes"
+ },
+ {
+ "letter": "E",
+ "word": "watches lights in the sky"
+ },
+ {
+ "letter": "F",
+ "word": "paints eggs"
+ },
+ {
+ "letter": "G",
+ "word": "has a party at the pool"
+ },
+ {
+ "letter": "H",
+ "word": "goes to the beach"
+ }
+ ],
+ "example": {
+ "who": "New Year",
+ "letter": "E"
+ },
+ "items": [
+ {
+ "who": "Easter",
+ "letter": "F"
+ },
+ {
+ "who": "Summer holiday",
+ "letter": "A"
+ },
+ {
+ "who": "Halloween",
+ "letter": "D"
+ },
+ {
+ "who": "Christmas",
+ "letter": "B"
+ },
+ {
+ "who": "His birthday",
+ "letter": "G"
+ }
+ ]
+ },
+ "p4": {
+ "type": "mc_pictures",
+ "items": [
+ {
+ "q": "What present is the girl going to give her mum?",
+ "options": [
+ "a book",
+ "chocolates",
+ "flowers"
+ ],
+ "key": "C",
+ "image": "P4Q1"
+ },
+ {
+ "q": "Where is the party going to be?",
+ "options": [
+ "at the beach",
+ "in the garden",
+ "at the park"
+ ],
+ "key": "C",
+ "image": "P4Q2"
+ },
+ {
+ "q": "What costume did the boy wear last Halloween?",
+ "options": [
+ "a pirate",
+ "a king",
+ "a monster"
+ ],
+ "key": "C",
+ "image": "P4Q3"
+ },
+ {
+ "q": "What did the family do on New Year’s Eve?",
+ "options": [
+ "went to bed early",
+ "watched a film",
+ "went to a concert"
+ ],
+ "key": "B",
+ "image": "P4Q4"
+ },
+ {
+ "q": "What is the girl’s favourite part of her birthday?",
+ "options": [
+ "the cake",
+ "the presents",
+ "being with friends"
+ ],
+ "key": "C",
+ "image": "P4Q5"
+ }
+ ]
+ },
+ "p5": {
+ "type": "colour_write",
+ "image": "L5",
+ "scene": "A birthday party scene: a long table with a big cake, eight balloons tied to a chair, a banner with \"HAPPY BIRTHDAY\", a clown juggling, a box of presents, a dog under the table, a mirror on the wall.",
+ "object": "thing",
+ "example": {
+ "what": "the cake",
+ "colour": "pink"
+ },
+ "items": [
+ {
+ "what": "the biggest balloon",
+ "colour": "red"
+ },
+ {
+ "what": "a star on the banner",
+ "write": "draw"
+ },
+ {
+ "what": "the clown’s hat",
+ "colour": "green"
+ },
+ {
+ "what": "Write the number 9 on the biggest present"
+ },
+ {
+ "what": "the dog under the table",
+ "colour": "black"
+ }
+ ]
+ }
  },
  "rw": {
-  "p1": {
-   "type": "definitions_copy",
-   "words": [
-    "a candle",
-    "a balloon",
-    "a cake",
-    "lights in the sky",
-    "a present",
-    "a costume",
-    "a party",
-    "a card",
-    "decorations",
-    "a ribbon",
-    "an invitation",
-    "music",
-    "dancing",
-    "a person",
-    "a photo"
-   ],
-   "example": {
-    "def": "",
-    "word": "a party"
-   },
-   "items": [
-    {
-     "def": "A small round light that you put on a birthday cake.",
-     "word": "a candle"
-    },
-    {
-     "def": "You write a nice message on this and give it to a friend on their birthday.",
-     "word": "a card"
-    },
-    {
-     "def": "These are beautiful lights that explode in the sky at special events.",
-     "word": "lights in the sky"
-    },
-    {
-     "def": "You wear this special dress at a Halloween party.",
-     "word": "a costume"
-    },
-    {
-     "def": "A sweet food you eat at a birthday party.",
-     "word": "a cake"
-    },
-    {
-     "def": "You blow air into this and it goes up in the sky.",
-     "word": "a balloon"
-    },
-    {
-     "def": "A person you invite to your house for a party.",
-     "word": "a person"
-    },
-    {
-     "def": "You receive this piece of paper and it tells you about a special event.",
-     "word": "an invitation"
-    },
-    {
-     "def": "You use this to tie a beautiful present.",
-     "word": "a ribbon"
-    },
-    {
-     "def": "Colourful paper or lights you put on walls for a party.",
-     "word": "decorations"
-    }
-   ]
-  },
-  "p2": {
-   "type": "dialogue_mc8",
-   "speakerA": "Jenny",
-   "speakerB": "Liam",
-   "example": {
-    "a": "Hey Liam, are you going to the school Halloween party?",
-    "key": "F",
-    "text": "Of course! I’m really excited. Are you?"
-   },
-   "options": [
-    {
-     "letter": "A",
-     "text": "Great. Don’t forget your costume!"
-    },
-    {
-     "letter": "B",
-     "text": "Yes, she’s really good at making costumes."
-    },
-    {
-     "letter": "C",
-     "text": "Really! Especially chocolate ones."
-    },
-    {
-     "letter": "D",
-     "text": "Yes, outside the school at seven p.m."
-    },
-    {
-     "letter": "E",
-     "text": "I’m going to be a vampire, with a black cape."
-    },
-    {
-     "letter": "F",
-     "text": "Of course! I’m really excited. Are you?"
-    },
-    {
-     "letter": "G",
-     "text": "No way, I hate scary things."
-    },
-    {
-     "letter": "H",
-     "text": "The party was last weekend."
-    }
-   ],
-   "items": [
-    {
-     "a": "Yes! What’s your costume going to be?",
-     "key": "E"
-    },
-    {
-     "a": "Cool! Did your mum help you make it?",
-     "key": "B"
-    },
-    {
-     "a": "Are you going to eat lots of sweets?",
-     "key": "C"
-    },
-    {
-     "a": "Haha! What about the scary films?",
-     "key": "G"
-    },
-    {
-     "a": "Me neither! Shall we meet at the party?",
-     "key": "D"
-    }
-   ]
-  },
-  "p3": {
-   "type": "gapped_text_title",
-   "words": [
-    "cousins",
-    "birthday",
-    "presents",
-    "big",
-    "happy",
-    "lights",
-    "sang",
-    "house"
-   ],
-   "text": "Last Saturday was my ninth __(1)__ and I had a __(2)__ party at my __(3)__. All my __(4)__ came with their parents. My mum made a huge chocolate cake with nine __(5)__ on top. Everybody sang \"Happy Birthday\" and I got lots of presents.",
-   "example": "",
-   "title_choices": [
-    [
-     "A",
-     "A boring homework day"
-    ],
-    [
-     "B",
-     "My birthday party"
-    ],
-    [
-     "C",
-     "A day at the doctor’s"
-    ]
-   ],
-   "key": [
-    "birthday",
-    "big",
-    "house",
-    "cousins",
-    "lights"
-   ],
-   "title_key": "B"
-  },
-  "p4": {
-   "type": "mc_cloze",
-   "title": "Parties around the world",
-   "text": "In different countries, people celebrate special days __(1)__ very different ways. In China, the New Year is __(2)__ for beautiful red __(3)__ and king dances. In Mexico, people __(4)__ the Day of the Dead with colourful flowers __(5)__ special food. In India, during Diwali, __(6)__ light lights and small oil __(7)__ in their houses. In the United States, children __(8)__ costumes and __(9)__ \"trick or treat!\" on Halloween. Every country has its own party, but all around the world they are all days __(10)__ are full of joy.",
-   "example": {
-    "options": [
-     "",
-     "",
-     ""
-    ],
-    "key": "A"
-   },
-   "items": [
-    {
-     "options": [
-      "in",
-      "on",
-      "at"
-     ],
-     "key": "A"
-    },
-    {
-     "options": [
-      "famous",
-      "fame",
-      "famously"
-     ],
-     "key": "A"
-    },
-    {
-     "options": [
-      "decoration",
-      "decorations",
-      "decorating"
-     ],
-     "key": "B"
-    },
-    {
-     "options": [
-      "remember",
-      "remembers",
-      "remembering"
-     ],
-     "key": "A"
-    },
-    {
-     "options": [
-      "and",
-      "or",
-      "but"
-     ],
-     "key": "A"
-    },
-    {
-     "options": [
-      "people",
-      "a person",
-      "someone"
-     ],
-     "key": "A"
-    },
-    {
-     "options": [
-      "lamps",
-      "lights",
-      "fires"
-     ],
-     "key": "A"
-    },
-    {
-     "options": [
-      "wear",
-      "wears",
-      "wore"
-     ],
-     "key": "A"
-    },
-    {
-     "options": [
-      "say",
-      "tell",
-      "speak"
-     ],
-     "key": "A"
-    },
-    {
-     "options": [
-      "who",
-      "where",
-      "that"
-     ],
-     "key": "C"
-    }
-   ]
-  },
-  "p5": {
-   "type": "story_completion",
-   "title": "Our summer camp",
-   "parts": [
-    {
-     "text": "Last July, I went to a summer camp called \"Wild Adventures\" with my second brother Max. The camp was in the countryside, next to a big lake. We stayed for 14 days. There were 60 children in the camp, from 8 to 12 years old. Our leader, Aisha, was really fun and always had good ideas for things to do. Every morning we had a different activity: swimming in the lake, climbing, archery, or cooking around the campfire. My favourite was kayaking. Max’s favourite was making music with other children around the fire at night. On the last day, we had a talent show. I sang a song with my new friends Petra and Juno. Max did a magic trick and made a coin disappear. Everyone clapped loudly. We went home with lots of stories and a small photo album. I want to go back next year!",
-     "examples": [
-      {
-       "s": "What’s the camp called?",
-       "a": "Wild Adventures"
-      }
-     ],
-     "items": [
-      {
-       "s": "Where was the camp?",
-       "a": [
-        "in the countryside",
-        "next to a lake"
-       ]
-      },
-      {
-       "s": "How many children were there?",
-       "a": [
-        "60",
-        "sixty"
-       ]
-      },
-      {
-       "s": "Who was the leader?",
-       "a": [
-        "Aisha"
-       ]
-      },
-      {
-       "s": "What was the person's favourite activity?",
-       "a": [
-        "kayaking"
-       ]
-      },
-      {
-       "s": "What did Max love doing?",
-       "a": [
-        "making music",
-        "making music around the fire"
-       ]
-      },
-      {
-       "s": "Who sang with the writer?",
-       "a": [
-        "Petra and Juno"
-       ]
-      },
-      {
-       "s": "What did Max do in the talent show?",
-       "a": [
-        "a magic trick",
-        "he did a magic trick"
-       ]
-      }
-     ]
-    }
-   ]
-  },
-  "p6": {
-   "type": "open_cloze",
-   "title": "New Year’s Eve",
-   "text": "New Year’s Eve is my favourite party of the year. My family always stays __(0)__ home. My dad cooks a special dinner __(1)__ my mum decorates the living room with balloons. My sister and I write a little letter about __(2)__ we want to do in the new year. At eleven, we start __(3)__ a funny film together. At midnight, we open the window __(4)__ we can hear the lights in the sky! My grandparents always phone us to say \"Happy __(5)__ Year\". We eat a piece of cake and give each other a big smile. Then we go to bed very tired.",
-   "example": "at",
-   "key": [
-    "and",
-    "what",
-    "watching",
-    "so",
-    "New"
-   ]
-  },
-  "p7": {
-   "type": "story_writing",
-   "title": "The birthday cake",
-   "image": "P7",
-   "pictures": [
-    "A boy is helping his mum to decorate a birthday cake in the kitchen.",
-    "They take the cake to the garden where a party is happening.",
-    "The boy’s little sister blows out the lights and everyone claps."
-   ],
-   "prompt": "Look at the three pictures and write the story. Write 20 or more words."
-  }
+ "p1": {
+ "type": "definitions_copy",
+ "words": [
+ "a light",
+ "a balloon",
+ "a cake",
+ "lights in the sky",
+ "a present",
+ "a costume",
+ "a party",
+ "a card",
+ "paintings",
+ "paper",
+ "an invitation",
+ "music",
+ "dancing",
+ "a person",
+ "a photo"
+ ],
+ "example": {
+ "def": "",
+ "word": "a party"
+ },
+ "items": [
+ {
+ "def": "A small round light that you put on a birthday cake.",
+ "word": "a light"
+ },
+ {
+ "def": "You write a nice message on this and give it to a friend on their birthday.",
+ "word": "a card"
+ },
+ {
+ "def": "These are beautiful lights that go up in the sky at special days.",
+ "word": "lights in the sky"
+ },
+ {
+ "def": "You wear this special dress at a Halloween party.",
+ "word": "a costume"
+ },
+ {
+ "def": "A sweet food you eat at a birthday party.",
+ "word": "a cake"
+ },
+ {
+ "def": "You put air into this and it goes up in the sky.",
+ "word": "a balloon"
+ },
+ {
+ "def": "A person you invite to your house for a party.",
+ "word": "a person"
+ },
+ {
+ "def": "You get this piece of paper and it tells you about a special day.",
+ "word": "an invitation"
+ },
+ {
+ "def": "You use this on a beautiful present.",
+ "word": "paper"
+ },
+ {
+ "def": "Colourful paper or lights you put on walls for a party.",
+ "word": "paintings"
+ }
+ ]
+ },
+ "p2": {
+ "type": "dialogue_mc8",
+ "speakerA": "Jenny",
+ "speakerB": "Liam",
+ "example": {
+ "a": "Hey Liam, are you going to the school Halloween party?",
+ "key": "F",
+ "text": "Of course! I’m really excited. Are you?"
+ },
+ "options": [
+ {
+ "letter": "A",
+ "text": "Great. Don’t forget your costume!"
+ },
+ {
+ "letter": "B",
+ "text": "Yes, she’s really good at making costumes."
+ },
+ {
+ "letter": "C",
+ "text": "Really! Especially chocolate ones."
+ },
+ {
+ "letter": "D",
+ "text": "Yes, outside the school at seven p.m."
+ },
+ {
+ "letter": "E",
+ "text": "I’m going to be a monster, with a black coat."
+ },
+ {
+ "letter": "F",
+ "text": "Of course! I’m really excited. Are you?"
+ },
+ {
+ "letter": "G",
+ "text": "No way, I hate scary things."
+ },
+ {
+ "letter": "H",
+ "text": "The party was last weekend."
+ }
+ ],
+ "items": [
+ {
+ "a": "Yes! What’s your costume going to be?",
+ "key": "E"
+ },
+ {
+ "a": "Cool! Did your mum help you make it?",
+ "key": "B"
+ },
+ {
+ "a": "Are you going to eat lots of sweets?",
+ "key": "C"
+ },
+ {
+ "a": "Haha! What about the scary films?",
+ "key": "G"
+ },
+ {
+ "a": "Me neither! Shall we meet at the party?",
+ "key": "D"
+ }
+ ]
+ },
+ "p3": {
+ "type": "gapped_text_title",
+ "words": [
+ "cousins",
+ "birthday",
+ "presents",
+ "big",
+ "happy",
+ "lights",
+ "sang",
+ "house"
+ ],
+ "text": "Last Saturday was my ninth __(1)__ and I had a __(2)__ party at my __(3)__. All my __(4)__ came with their parents. My mum made a huge chocolate cake with nine __(5)__ on top. Everybody sang \"Happy Birthday\" and I got lots of presents.",
+ "example": "",
+ "title_choices": [
+ [
+ "A",
+ "A boring homework day"
+ ],
+ [
+ "B",
+ "My birthday party"
+ ],
+ [
+ "C",
+ "A day at the doctor’s"
+ ]
+ ],
+ "key": [
+ "birthday",
+ "big",
+ "house",
+ "cousins",
+ "lights"
+ ],
+ "title_key": "B"
+ },
+ "p4": {
+ "type": "mc_cloze",
+ "title": "Parties around the world",
+ "text": "In different countries, people have parties on special days __(1)__ very different ways. In China, the New Year is __(2)__ for beautiful red __(3)__ and king dances. In Mexico, people __(4)__ the Day of the Dead with colourful flowers __(5)__ special food. In India, during Diwali, __(6)__ light lights and small __(7)__ in their houses. In the United States, children __(8)__ costumes and __(9)__ \"game or sweet!\" on Halloween. Every country has a different party, but all around the world they are all days __(10)__ are full of fun.",
+ "example": {
+ "options": [
+ "",
+ "",
+ ""
+ ],
+ "key": "A"
+ },
+ "items": [
+ {
+ "options": [
+ "in",
+ "on",
+ "at"
+ ],
+ "key": "A"
+ },
+ {
+ "options": [
+ "famous",
+ "famous",
+ "famously"
+ ],
+ "key": "A"
+ },
+ {
+ "options": [
+ "painting",
+ "paintings",
+ "painting"
+ ],
+ "key": "B"
+ },
+ {
+ "options": [
+ "remember",
+ "remembers",
+ "remembering"
+ ],
+ "key": "A"
+ },
+ {
+ "options": [
+ "and",
+ "or",
+ "but"
+ ],
+ "key": "A"
+ },
+ {
+ "options": [
+ "people",
+ "a person",
+ "someone"
+ ],
+ "key": "A"
+ },
+ {
+ "options": [
+ "lamps",
+ "lights",
+ "fires"
+ ],
+ "key": "A"
+ },
+ {
+ "options": [
+ "wear",
+ "wears",
+ "wore"
+ ],
+ "key": "A"
+ },
+ {
+ "options": [
+ "say",
+ "tell",
+ "speak"
+ ],
+ "key": "A"
+ },
+ {
+ "options": [
+ "who",
+ "where",
+ "that"
+ ],
+ "key": "C"
+ }
+ ]
+ },
+ "p5": {
+ "type": "story_completion",
+ "title": "Our summer camp",
+ "parts": [
+ {
+ "text": "Last July, I went to a summer camp called \"Wild Adventures\" with my second brother Max. The camp was in the countryside, next to a big lake. We stayed for 14 days. There were 60 children in the camp, from 8 to 12 years old. Our teacher, Aisha, was really fun and always had good ideas for things to do. Every morning we had a different thing to do: swimming in the lake, climbing, painting, or cooking around the fire. My favourite was sailing. Max’s favourite was making music with other children around the fire at night. On the last day, we had a school show. I sang a song with my new friends Petra and Juno. Max did something funny and made a key disappear. Everyone clapped loudly. We went home with lots of stories and a small photo book. I want to go back next year!",
+ "examples": [
+ {
+ "s": "What’s the camp called?",
+ "a": "Wild Adventures"
+ }
+ ],
+ "items": [
+ {
+ "s": "Where was the camp?",
+ "a": [
+ "in the countryside",
+ "next to a lake"
+ ]
+ },
+ {
+ "s": "How many children were there?",
+ "a": [
+ "60",
+ "sixty"
+ ]
+ },
+ {
+ "s": "Who was the teacher?",
+ "a": [
+ "Aisha"
+ ]
+ },
+ {
+ "s": "What was the person's favourite thing to do?",
+ "a": [
+ "sailing"
+ ]
+ },
+ {
+ "s": "What did Max love doing?",
+ "a": [
+ "making music",
+ "making music around the fire"
+ ]
+ },
+ {
+ "s": "Who sang with the writer?",
+ "a": [
+ "Petra and Juno"
+ ]
+ },
+ {
+ "s": "What did Max do in the school show?",
+ "a": [
+ "a funny game",
+ "he did a funny game"
+ ]
+ }
+ ]
+ }
+ ]
+ },
+ "p6": {
+ "type": "open_cloze",
+ "title": "New Year’s Eve",
+ "text": "New Year’s Eve is my favourite party of the year. My family always stays __(0)__ home. My dad cooks a special dinner __(1)__ my mum paints the living room with balloons. My sister and I write a little letter about __(2)__ we want to do in the new year. At eleven, we start __(3)__ a funny film together. At midnight, we open the window __(4)__ we can hear the lights in the sky! My grandparents always phone us to say \"Happy __(5)__ Year\". We eat a piece of cake and give each other a big smile. Then we go to bed very tired.",
+ "example": "at",
+ "key": [
+ "and",
+ "what",
+ "watching",
+ "so",
+ "New"
+ ]
+ },
+ "p7": {
+ "type": "story_writing",
+ "title": "The birthday cake",
+ "image": "P7",
+ "pictures": [
+ "A boy is helping his mum to paint a birthday cake in the kitchen.",
+ "They take the cake to the garden where a party is happening.",
+ "The boy’s little sister puts out the lights and everyone claps."
+ ],
+ "prompt": "Look at the three pictures and write the story. Write 20 or more words."
+ }
  },
  "speaking": {
-  "p1": {
-   "type": "find_differences_statements",
-   "image": "S1",
-   "examiner_scene": "A birthday party: a cake with 8 lights, six children dancing, a boy with a present, a dog on the floor, balloons in the air, a banner saying \"HAPPY BIRTHDAY\" in red.",
-   "candidate_scene": "A birthday party: a cake with 10 lights, six children dancing, a boy with a present, a CAT on the floor, balloons in the air, a banner saying \"HAPPY BIRTHDAY\" in BLUE.",
-   "differences": [
-    "In my picture there are eight lights on the cake, but in your picture there are ten.",
-    "In my picture there's a dog, but in your picture there's a cat.",
-    "In my picture the flag on the wall is red, but in your picture it's blue.",
-    "You can say any other difference you find."
-   ]
-  },
-  "p2": {
-   "type": "information_exchange",
-   "topic": "Two holidays",
-   "candidate_card": "HOLIDAY: Winter Fun – Country: ______ – Starts: ______ – Special food: ______ – Activities: ______ – Clothes: ______.",
-   "candidate_questions": [
-    "Where is your holiday?",
-    "When does it happen?",
-    "What do people eat?",
-    "What’s special about this holiday?",
-    "Are there presents?"
-   ],
-   "examiner_card": "HOLIDAY: Spring Flower Festival – in Japan – April – noodles and sweet rice cakes – walking under cherry trees – families, not presents.",
-   "examiner_questions": [
-    "What’s your holiday called?",
-    "When does it start?",
-    "What do people wear?",
-    "What things do they do?",
-    "What do people eat?"
-   ]
-  },
-  "p3": {
-   "type": "picture_sequence",
-   "image": "S3",
-   "title": "A surprise party",
-   "examiner_open": "These pictures tell a story called \"A surprise party\". The children are hiding in a dark room. Now you tell the story.",
-   "frames": [
-    "Children are hiding in a dark room, holding balloons and a cake.",
-    "Their friend opens the door.",
-    "Everyone shouts \"SURPRISE!\" and their friend is very surprised.",
-    "They eat cake and dance together."
-   ]
-  },
-  "p4": {
-   "type": "personal_questions",
-   "questions": [
-    {
-     "q": "What’s your favourite holiday or party? Why?"
-    },
-    {
-     "q": "Tell me about your last birthday."
-    },
-    {
-     "q": "Do you prefer giving or getting presents? Why?"
-    },
-    {
-     "q": "What do you do on New Year’s Eve?"
-    },
-    {
-     "q": "What’s a special food in your family for parties?"
-    }
-   ]
-  }
+ "p1": {
+ "type": "find_differences_statements",
+ "image": "S1",
+ "examiner_scene": "A birthday party: a cake with 8 lights, six children dancing, a boy with a present, a dog on the floor, balloons in the air, a banner saying \"HAPPY BIRTHDAY\" in red.",
+ "candidate_scene": "A birthday party: a cake with 10 lights, six children dancing, a boy with a present, a CAT on the floor, balloons in the air, a banner saying \"HAPPY BIRTHDAY\" in BLUE.",
+ "differences": [
+ "In my picture there are eight lights on the cake, but in your picture there are ten.",
+ "In my picture there's a dog, but in your picture there's a cat.",
+ "In my picture the flag on the wall is red, but in your picture it's blue.",
+ "You can say any other difference you find."
+ ]
+ },
+ "p2": {
+ "type": "information_exchange",
+ "topic": "Two holidays",
+ "candidate_card": "HOLIDAY: Winter Fun – Country: ______ – Starts: ______ – Special food: ______ – Activities: ______ – Clothes: ______.",
+ "candidate_questions": [
+ "Where is your holiday?",
+ "When does it happen?",
+ "What do people eat?",
+ "What’s special about this holiday?",
+ "Are there presents?"
+ ],
+ "examiner_card": "HOLIDAY: Spring Flower Festival – in Japan – April – noodles and sweet rice cakes – walking under the trees – families, not presents.",
+ "examiner_questions": [
+ "What’s your holiday called?",
+ "When does it start?",
+ "What do people wear?",
+ "What things do they do?",
+ "What do people eat?"
+ ]
+ },
+ "p3": {
+ "type": "picture_sequence",
+ "image": "S3",
+ "title": "A surprise party",
+ "examiner_open": "These pictures tell a story called \"A surprise party\". The children are hiding in a dark room. Now you tell the story.",
+ "frames": [
+ "Children are hiding in a dark room, holding balloons and a cake.",
+ "Their friend opens the door.",
+ "Everyone shouts \"SURPRISE!\" and their friend is very surprised.",
+ "They eat cake and dance together."
+ ]
+ },
+ "p4": {
+ "type": "personal_questions",
+ "questions": [
+ {
+ "q": "What’s your favourite holiday or party? Why?"
+ },
+ {
+ "q": "Tell me about your last birthday."
+ },
+ {
+ "q": "Do you prefer giving or getting presents? Why?"
+ },
+ {
+ "q": "What do you do on New Year’s Eve?"
+ },
+ {
+ "q": "What’s a special food in your family for parties?"
+ }
+ ]
+ }
  },
  "audio": {
-  "p1": [
-   [
-    "R",
-    "Part One. Listen and look. There is one example."
-   ],
-   [
-    "pause",
-    1.5
-   ],
-   [
-    "Mch",
-    "Look at the big party."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "Uncle Pete is the adult with the cake – that’s the example."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "Bella is the princess."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Mch",
-    "Fergus is the dinosaur."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Mch",
-    "Nina is the witch."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Fch",
-    "Omar is the robot."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "Actually wait, Omar is the superhero."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Mch",
-    "Hero the dog is the dog with the party hat."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "pause",
-    2.0
-   ],
-   [
-    "R",
-    "Now listen to Part One again."
-   ],
-   [
-    "pause",
-    1.5
-   ],
-   [
-    "Mch",
-    "Look at the big party."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "Uncle Pete is the adult with the cake – that’s the example."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "Bella is the princess."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Mch",
-    "Fergus is the dinosaur."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Mch",
-    "Nina is the witch."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Fch",
-    "Omar is the robot."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "Actually wait, Omar is the superhero."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Mch",
-    "Hero the dog is the dog with the party hat."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "R",
-    "That is the end of Part One."
-   ],
-   [
-    "pause",
-    1.0
-   ]
-  ],
-  "p2": [
-   [
-    "R",
-    "Part Two. Listen and look. There is one example."
-   ],
-   [
-    "pause",
-    1.5
-   ],
-   [
-    "R",
-    "A mum is getting ready for a party."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "R",
-    "Example: the birthday girl is Amy."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "R",
-    "Can you see the answer? Birthday boy/girl: Amy. Now you listen and write."
-   ],
-   [
-    "pause",
-    2.0
-   ],
-   [
-    "Fch",
-    "What’s the date?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "On the 3rd of September."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Fch",
-    "How many friends?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "She wants to invite ten friends."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Fch",
-    "What kind of cake?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "A big strawberry cake."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Fch",
-    "What time does it start?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "We’ll start at four o’clock."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Fch",
-    "And where?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "At Green Park, near the lake."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "pause",
-    2.0
-   ],
-   [
-    "R",
-    "Now listen to Part Two again."
-   ],
-   [
-    "pause",
-    1.5
-   ],
-   [
-    "R",
-    "A mum is getting ready for a party."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "R",
-    "Example: the birthday girl is Amy."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "R",
-    "Can you see the answer? Birthday boy/girl: Amy. Now you listen and write."
-   ],
-   [
-    "pause",
-    2.0
-   ],
-   [
-    "Fch",
-    "What’s the date?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "On the 3rd of September."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Fch",
-    "How many friends?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "She wants to invite ten friends."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Fch",
-    "What kind of cake?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "A big strawberry cake."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Fch",
-    "What time does it start?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "We’ll start at four o’clock."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Fch",
-    "And where?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "At Green Park, near the lake."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "R",
-    "That is the end of Part Two."
-   ],
-   [
-    "pause",
-    1.0
-   ]
-  ],
-  "p3": [
-   [
-    "R",
-    "Part Three. Listen and look. There is one example."
-   ],
-   [
-    "pause",
-    1.5
-   ],
-   [
-    "R",
-    "Nathan is talking about his year."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "R",
-    "Example: New Year – he watches lights in the sky."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "What about New Year?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "On New Year? We saw watches lights in the sky."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "R",
-    "Can you see the letter E? Now you listen and write a letter in each box."
-   ],
-   [
-    "pause",
-    2.0
-   ],
-   [
-    "Fch",
-    "At Easter, we always paint eggs with my grandma."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "In the summer holiday, we go camping every year."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Fch",
-    "Halloween – my mum and I make ours costumes."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "At Christmas I love going to visit my grandparents."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Fch",
-    "On my birthday, we always have a party at the pool – so much fun!"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "pause",
-    2.0
-   ],
-   [
-    "R",
-    "Now listen to Part Three again."
-   ],
-   [
-    "pause",
-    1.5
-   ],
-   [
-    "R",
-    "Nathan is talking about his year."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "R",
-    "Example: New Year – he watches lights in the sky."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "What about New Year?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "On New Year? We saw watches lights in the sky."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "R",
-    "Can you see the letter E? Now you listen and write a letter in each box."
-   ],
-   [
-    "pause",
-    2.0
-   ],
-   [
-    "Fch",
-    "At Easter, we always paint eggs with my grandma."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "In the summer holiday, we go camping every year."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Fch",
-    "Halloween – my mum and I make ours costumes."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "At Christmas I love going to visit my grandparents."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Fch",
-    "On my birthday, we always have a party at the pool – so much fun!"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "R",
-    "That is the end of Part Three."
-   ],
-   [
-    "pause",
-    1.0
-   ]
-  ],
-  "p4": [
-   [
-    "R",
-    "Part Four. Listen and look. Listen and tick the box."
-   ],
-   [
-    "pause",
-    1.5
-   ],
-   [
-    "R",
-    "One. — What are you giving Mum?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "— What are you giving Mum?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "Not a book, she has too many."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "Oh, really?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "Chocolates?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "Maybe next time."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "I’ll get a big bunch of flowers – she’ll love them."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "R",
-    "Two. — Where’s the party?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "— Where’s the party?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "Not the beach, it’s raining."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "Oh, really?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "The garden is too small."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "We’re going to the park this year."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "R",
-    "Three. — Last Halloween, what were you?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "— Last Halloween, what were you?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "Not a pirate, my sister was the pirate."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "Oh, really?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "Not a king."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "I was a very scary monster!"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "R",
-    "Four. — What did you do on New Year’s Eve?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "— What did you do on New Year’s Eve?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "Not bed – too early!"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "Oh, really?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "No concert."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "We watched a film and waited for midnight."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "R",
-    "Five. — What’s your favourite part?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "— What’s your favourite part?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "The cake’s nice and the presents are OK, but really I love being with my friends most."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "pause",
-    2.0
-   ],
-   [
-    "R",
-    "Now listen to Part Four again."
-   ],
-   [
-    "pause",
-    1.5
-   ],
-   [
-    "R",
-    "One. — What are you giving Mum?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "— What are you giving Mum?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "Not a book, she has too many."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "Oh, really?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "Chocolates?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "Maybe next time."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "I’ll get a big bunch of flowers – she’ll love them."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "R",
-    "Two. — Where’s the party?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "— Where’s the party?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "Not the beach, it’s raining."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "Oh, really?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "The garden is too small."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "We’re going to the park this year."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "R",
-    "Three. — Last Halloween, what were you?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "— Last Halloween, what were you?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "Not a pirate, my sister was the pirate."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "Oh, really?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "Not a king."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "I was a very scary monster!"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "R",
-    "Four. — What did you do on New Year’s Eve?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "— What did you do on New Year’s Eve?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "Not bed – too early!"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "Oh, really?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "No concert."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "We watched a film and waited for midnight."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "R",
-    "Five. — What’s your favourite part?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "— What’s your favourite part?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "The cake’s nice and the presents are OK, but really I love being with my friends most."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "R",
-    "That is the end of Part Four."
-   ],
-   [
-    "pause",
-    1.0
-   ]
-  ],
-  "p5": [
-   [
-    "R",
-    "Part Five. Listen and look. There is one example."
-   ],
-   [
-    "pause",
-    1.5
-   ],
-   [
-    "M",
-    "A birthday party!"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "M",
-    "Example: colour the cake pink."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "R",
-    "This is an example. Now you listen and colour and write."
-   ],
-   [
-    "pause",
-    2.0
-   ],
-   [
-    "M",
-    "There are lots of balloons."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "M",
-    "Colour the biggest one red."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "OK."
-   ],
-   [
-    "pause",
-    5.0
-   ],
-   [
-    "M",
-    "On the banner, draw a star."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "OK."
-   ],
-   [
-    "pause",
-    5.0
-   ],
-   [
-    "M",
-    "The clown is juggling."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "M",
-    "Colour his hat green."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "OK."
-   ],
-   [
-    "pause",
-    5.0
-   ],
-   [
-    "M",
-    "On the biggest present, write the number 9."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "OK."
-   ],
-   [
-    "pause",
-    5.0
-   ],
-   [
-    "M",
-    "The dog under the table – colour the dog black."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "OK."
-   ],
-   [
-    "pause",
-    5.0
-   ],
-   [
-    "pause",
-    2.0
-   ],
-   [
-    "R",
-    "Now listen to Part Five again."
-   ],
-   [
-    "pause",
-    1.5
-   ],
-   [
-    "M",
-    "A birthday party!"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "M",
-    "Example: colour the cake pink."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "R",
-    "This is an example. Now you listen and colour and write."
-   ],
-   [
-    "pause",
-    2.0
-   ],
-   [
-    "M",
-    "There are lots of balloons."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "M",
-    "Colour the biggest one red."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "OK."
-   ],
-   [
-    "pause",
-    5.0
-   ],
-   [
-    "M",
-    "On the banner, draw a star."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "OK."
-   ],
-   [
-    "pause",
-    5.0
-   ],
-   [
-    "M",
-    "The clown is juggling."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "M",
-    "Colour his hat green."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "OK."
-   ],
-   [
-    "pause",
-    5.0
-   ],
-   [
-    "M",
-    "On the biggest present, write the number 9."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "OK."
-   ],
-   [
-    "pause",
-    5.0
-   ],
-   [
-    "M",
-    "The dog under the table – colour the dog black."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "OK."
-   ],
-   [
-    "pause",
-    5.0
-   ],
-   [
-    "R",
-    "That is the end of Part Five."
-   ],
-   [
-    "pause",
-    1.0
-   ]
-  ]
+ "p1": [
+ [
+ "R",
+ "Part One. Listen and look. There is one example."
+ ],
+ [
+ "pause",
+ 1.5
+ ],
+ [
+ "Mch",
+ "Look at the big party."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "Uncle Pete is the adult with the cake – that’s the example."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "Bella is the princess."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Mch",
+ "Fergus is the dinosaur."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Mch",
+ "Nina is the witch."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Fch",
+ "Omar is the robot."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "Actually wait, Omar is the superhero."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Mch",
+ "Hero the dog is the dog with the party hat."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "pause",
+ 2.0
+ ],
+ [
+ "R",
+ "Now listen to Part One again."
+ ],
+ [
+ "pause",
+ 1.5
+ ],
+ [
+ "Mch",
+ "Look at the big party."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "Uncle Pete is the adult with the cake – that’s the example."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "Bella is the princess."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Mch",
+ "Fergus is the dinosaur."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Mch",
+ "Nina is the witch."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Fch",
+ "Omar is the robot."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "Actually wait, Omar is the superhero."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Mch",
+ "Hero the dog is the dog with the party hat."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "R",
+ "That is the end of Part One."
+ ],
+ [
+ "pause",
+ 1.0
+ ]
+ ],
+ "p2": [
+ [
+ "R",
+ "Part Two. Listen and look. There is one example."
+ ],
+ [
+ "pause",
+ 1.5
+ ],
+ [
+ "R",
+ "A mum is getting ready for a party."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "R",
+ "Example: the birthday girl is Amy."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "R",
+ "Can you see the answer? Birthday boy/girl: Amy. Now you listen and write."
+ ],
+ [
+ "pause",
+ 2.0
+ ],
+ [
+ "Fch",
+ "What’s the date?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "On the 3rd of September."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Fch",
+ "How many friends?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "She wants to invite ten friends."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Fch",
+ "What kind of cake?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "A big strawberry cake."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Fch",
+ "What time does it start?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "We’ll start at four o’clock."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Fch",
+ "And where?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "At Green Park, near the lake."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "pause",
+ 2.0
+ ],
+ [
+ "R",
+ "Now listen to Part Two again."
+ ],
+ [
+ "pause",
+ 1.5
+ ],
+ [
+ "R",
+ "A mum is getting ready for a party."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "R",
+ "Example: the birthday girl is Amy."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "R",
+ "Can you see the answer? Birthday boy/girl: Amy. Now you listen and write."
+ ],
+ [
+ "pause",
+ 2.0
+ ],
+ [
+ "Fch",
+ "What’s the date?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "On the 3rd of September."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Fch",
+ "How many friends?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "She wants to invite ten friends."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Fch",
+ "What kind of cake?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "A big strawberry cake."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Fch",
+ "What time does it start?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "We’ll start at four o’clock."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Fch",
+ "And where?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "At Green Park, near the lake."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "R",
+ "That is the end of Part Two."
+ ],
+ [
+ "pause",
+ 1.0
+ ]
+ ],
+ "p3": [
+ [
+ "R",
+ "Part Three. Listen and look. There is one example."
+ ],
+ [
+ "pause",
+ 1.5
+ ],
+ [
+ "R",
+ "Nathan is talking about his year."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "R",
+ "Example: New Year – he watches lights in the sky."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "What about New Year?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "On New Year? We saw watches lights in the sky."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "R",
+ "Can you see the letter E? Now you listen and write a letter in each box."
+ ],
+ [
+ "pause",
+ 2.0
+ ],
+ [
+ "Fch",
+ "At Easter, we always paint eggs with my grandma."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "In the summer holiday, we go camping every year."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Fch",
+ "Halloween – my mum and I make ours costumes."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "At Christmas I love going to visit my grandparents."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Fch",
+ "On my birthday, we always have a party at the pool – so much fun!"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "pause",
+ 2.0
+ ],
+ [
+ "R",
+ "Now listen to Part Three again."
+ ],
+ [
+ "pause",
+ 1.5
+ ],
+ [
+ "R",
+ "Nathan is talking about his year."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "R",
+ "Example: New Year – he watches lights in the sky."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "What about New Year?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "On New Year? We saw watches lights in the sky."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "R",
+ "Can you see the letter E? Now you listen and write a letter in each box."
+ ],
+ [
+ "pause",
+ 2.0
+ ],
+ [
+ "Fch",
+ "At Easter, we always paint eggs with my grandma."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "In the summer holiday, we go camping every year."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Fch",
+ "Halloween – my mum and I make ours costumes."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "At Christmas I love going to visit my grandparents."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Fch",
+ "On my birthday, we always have a party at the pool – so much fun!"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "R",
+ "That is the end of Part Three."
+ ],
+ [
+ "pause",
+ 1.0
+ ]
+ ],
+ "p4": [
+ [
+ "R",
+ "Part Four. Listen and look. Listen and tick the box."
+ ],
+ [
+ "pause",
+ 1.5
+ ],
+ [
+ "R",
+ "One. — What are you giving Mum?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "— What are you giving Mum?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "Not a book, she has too many."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "Oh, really?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "Chocolates?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "Maybe next time."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "I’ll get a lot of flowers – she will love them."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "R",
+ "Two. — Where’s the party?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "— Where’s the party?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "Not the beach, it’s raining."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "Oh, really?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "The garden is too small."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "We’re going to the park this year."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "R",
+ "Three. — Last Halloween, what were you?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "— Last Halloween, what were you?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "Not a pirate, my sister was the pirate."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "Oh, really?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "Not a king."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "I was a very scary monster!"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "R",
+ "Four. — What did you do on New Year’s Eve?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "— What did you do on New Year’s Eve?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "Not bed – too early!"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "Oh, really?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "No concert."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "We watched a film and waited for midnight."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "R",
+ "Five. — What’s your favourite part?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "— What’s your favourite part?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "The cake’s nice and the presents are OK, but really I love being with my friends most."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "pause",
+ 2.0
+ ],
+ [
+ "R",
+ "Now listen to Part Four again."
+ ],
+ [
+ "pause",
+ 1.5
+ ],
+ [
+ "R",
+ "One. — What are you giving Mum?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "— What are you giving Mum?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "Not a book, she has too many."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "Oh, really?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "Chocolates?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "Maybe next time."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "I’ll get a lot of flowers – she will love them."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "R",
+ "Two. — Where’s the party?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "— Where’s the party?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "Not the beach, it’s raining."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "Oh, really?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "The garden is too small."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "We’re going to the park this year."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "R",
+ "Three. — Last Halloween, what were you?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "— Last Halloween, what were you?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "Not a pirate, my sister was the pirate."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "Oh, really?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "Not a king."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "I was a very scary monster!"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "R",
+ "Four. — What did you do on New Year’s Eve?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "— What did you do on New Year’s Eve?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "Not bed – too early!"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "Oh, really?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "No concert."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "We watched a film and waited for midnight."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "R",
+ "Five. — What’s your favourite part?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "— What’s your favourite part?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "The cake’s nice and the presents are OK, but really I love being with my friends most."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "R",
+ "That is the end of Part Four."
+ ],
+ [
+ "pause",
+ 1.0
+ ]
+ ],
+ "p5": [
+ [
+ "R",
+ "Part Five. Listen and look. There is one example."
+ ],
+ [
+ "pause",
+ 1.5
+ ],
+ [
+ "M",
+ "A birthday party!"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "M",
+ "Example: colour the cake pink."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "R",
+ "This is an example. Now you listen and colour and write."
+ ],
+ [
+ "pause",
+ 2.0
+ ],
+ [
+ "M",
+ "There are lots of balloons."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "M",
+ "Colour the biggest one red."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "OK."
+ ],
+ [
+ "pause",
+ 5.0
+ ],
+ [
+ "M",
+ "On the banner, draw a star."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "OK."
+ ],
+ [
+ "pause",
+ 5.0
+ ],
+ [
+ "M",
+ "The clown is juggling."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "M",
+ "Colour his hat green."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "OK."
+ ],
+ [
+ "pause",
+ 5.0
+ ],
+ [
+ "M",
+ "On the biggest present, write the number 9."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "OK."
+ ],
+ [
+ "pause",
+ 5.0
+ ],
+ [
+ "M",
+ "The dog under the table – colour the dog black."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "OK."
+ ],
+ [
+ "pause",
+ 5.0
+ ],
+ [
+ "pause",
+ 2.0
+ ],
+ [
+ "R",
+ "Now listen to Part Five again."
+ ],
+ [
+ "pause",
+ 1.5
+ ],
+ [
+ "M",
+ "A birthday party!"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "M",
+ "Example: colour the cake pink."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "R",
+ "This is an example. Now you listen and colour and write."
+ ],
+ [
+ "pause",
+ 2.0
+ ],
+ [
+ "M",
+ "There are lots of balloons."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "M",
+ "Colour the biggest one red."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "OK."
+ ],
+ [
+ "pause",
+ 5.0
+ ],
+ [
+ "M",
+ "On the banner, draw a star."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "OK."
+ ],
+ [
+ "pause",
+ 5.0
+ ],
+ [
+ "M",
+ "The clown is juggling."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "M",
+ "Colour his hat green."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "OK."
+ ],
+ [
+ "pause",
+ 5.0
+ ],
+ [
+ "M",
+ "On the biggest present, write the number 9."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "OK."
+ ],
+ [
+ "pause",
+ 5.0
+ ],
+ [
+ "M",
+ "The dog under the table – colour the dog black."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "OK."
+ ],
+ [
+ "pause",
+ 5.0
+ ],
+ [
+ "R",
+ "That is the end of Part Five."
+ ],
+ [
+ "pause",
+ 1.0
+ ]
+ ]
  }
 }

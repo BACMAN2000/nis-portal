@@ -279,7 +279,7 @@
  "words": [
  "a bathroom",
  "a kitchen",
- "a garage",
+ "a car park",
  "a balcony",
  "a garden",
  "a fridge",
@@ -328,7 +328,7 @@
  },
  {
  "def": "You put your car in here at home.",
- "word": "a garage"
+ "word": "a car park"
  },
  {
  "def": "This goes on your floor – it is often soft.",
@@ -368,7 +368,7 @@
  },
  {
  "letter": "E",
- "text": "Yes, of course. He can stay on the pillow."
+ "text": "Yes, of course. He can stay on the bed."
  },
  {
  "letter": "F",
@@ -446,7 +446,7 @@
  "p4": {
  "type": "mc_cloze",
  "title": "Grandparents’ houses",
- "text": "Many grandparents live in houses that are different __(1)__ ours. Often, their houses have a lot __(2)__ photos on the walls and interesting objects in every room. My grandma’s kitchen is __(3)__ but always warm, and there is a nice __(4)__ of cakes. Some grandparents live in a small house with a garden __(5)__ they can grow vegetables. Others live in a flat in town and go to the park __(6)__ day. Children __(7)__ visiting their grandparents because they __(8)__ funny stories __(9)__ the past. When I visit my grandparents, I always want to __(10)__ for dinner.",
+ "text": "Many grandparents live in houses that are different __(1)__ ours. Often, their houses have a lot __(2)__ photos on the walls and interesting things in every room. My grandma’s kitchen is __(3)__ but always warm, and there is a nice __(4)__ of cakes. Some grandparents live in a small house with a garden __(5)__ they can grow vegetables. Others live in a flat in town and go to the park __(6)__ day. Children __(7)__ visiting their grandparents because they __(8)__ funny stories __(9)__ the past. When I visit my grandparents, I always want to __(10)__ for dinner.",
  "example": {
  "options": [
  "",
@@ -543,7 +543,7 @@
  "title": "A busy Saturday",
  "parts": [
  {
- "text": "Every Saturday morning, my family wakes up early. Mum starts making pancakes and Dad makes tea for everyone. My baby brother Jamie usually wakes up first, at about 7:30. After breakfast, we all help to clean the house. I always tidy the living room and my sister Ellie cleans our bedroom. Mum does the washing and Dad cleans the bathroom. At 11 o’clock, we stop and have some fruit juice. Last Saturday, Jamie made a huge mess in the kitchen with his cereal! Mum wasn’t angry, she just laughed. After lunch, we went to the park with our dog, Rocky. Rocky ran for two hours and then slept for all the day. In the evening, we all watched a film together with some popcorn. It was the best day of my week.",
+ "text": "Every Saturday morning, my family wakes up early. Mum starts making pancakes and Dad makes tea for everyone. My baby brother Jamie usually wakes up first, at about 7:30. After breakfast, we all help to clean the house. I always tidy the living room and my sister Ellie cleans our bedroom. Mum does the washing and Dad cleans the bathroom. At 11 o’clock, we stop and have some fruit juice. Last Saturday, Jamie made everything dirty in the kitchen with his cereal! Mum wasn’t angry, she just laughed. After lunch, we went to the park with our dog, Rocky. Rocky ran for two hours and then slept for all the day. In the evening, we all watched a film together with some biscuits. It was the best day of my week.",
  "examples": [
  {
  "s": "Who wakes up first?",
@@ -577,7 +577,7 @@
  },
  {
  "s": "What did they do in the evening?",
- "a": "watched a film (with popcorn)"
+ "a": "watched a film (with biscuits)"
  }
  ]
  }
@@ -602,7 +602,7 @@
  "image": "P7",
  "pictures": [
  "A boy is sleeping in his bedroom at night.",
- "The friends make a lot of noise with loud music – the boy covers his ears.",
+ "The friends make a lot of noise with loud music – the boy puts his hands on his ears.",
  "The next morning the boy’s dad talks to the friends and everyone smiles."
  ],
  "prompt": "Look at the three pictures and write the story. Write 20 or more words."
@@ -648,7 +648,7 @@
  "examiner_open": "These pictures tell a story called \"A surprise for Mum\". Two children wake up early – it’s Mother’s Day. Now you tell the story.",
  "frames": [
  "Two children wake up early on Mother’s Day.",
- "They make breakfast: tea, toast and flowers on a tray.",
+ "They make breakfast: tea, bread and flowers on a tray.",
  "They take the tray to Mum’s bedroom.",
  "Mum is surprised and gives her children a big smile."
  ]
