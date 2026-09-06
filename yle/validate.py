@@ -121,10 +121,18 @@ def vocabulario(level):
 def palabras(texto):
     return re.findall(r"[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ'’]*", texto or '')   # con acentos: café
 
+# plurales irregulares que la lista da en singular: scarf -> scarves
+IRREG = {'scarves': 'scarf', 'shelves': 'shelf', 'wolves': 'wolf', 'knives': 'knife',
+         'leaves': 'leaf', 'loaves': 'loaf', 'halves': 'half', 'thieves': 'thief',
+         'children': 'child', 'people': 'person', 'mice': 'mouse', 'geese': 'goose',
+         'feet': 'foot', 'teeth': 'tooth', 'men': 'man', 'women': 'woman'}
+
+
 def bases(lw):
     """Formas de las que puede venir una palabra flexionada."""
     out = {lw}
-    for suf, rep in (('ies', 'y'), ('ies', 'ie'), ('es', ''), ('es', 'e'), ('s', ''),
+    if lw in IRREG: out.add(IRREG[lw])
+    for suf, rep in (('ies', 'y'), ('ies', 'ie'), ('ied', 'y'), ('ier', 'y'), ('iest', 'y'), ('es', ''), ('es', 'e'), ('s', ''),
                      ('ed', ''), ('ed', 'e'), ('ing', ''), ('ing', 'e'),
                      ('er', ''), ('er', 'e'), ('est', ''), ('est', 'e'), ('ly', ''),
                      ("'s", ''), ('’s', '')):

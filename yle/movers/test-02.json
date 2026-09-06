@@ -63,7 +63,7 @@
       "type": "mc_pictures",
       "example": {"q": "What is Mary going to do this afternoon?", "pics": [{"word": "swimming", "emoji": "🏊"}, {"word": "basketball", "emoji": "🏀"}, {"word": "skating", "emoji": "⛸️"}], "options": ["go swimming", "play basketball", "go skating"], "key": "C"},
       "items": [
-        {"q": "What does Jim need for his class?", "pics": ["ball", "hat", "shoes"], "options": ["a ball", "a hat", "trainers"], "key": "C"},
+        {"q": "What does Jim need for his class?", "pics": ["ball", "hat", "shoes"], "options": ["a ball", "a hat", "shoes"], "key": "C"},
         {"q": "Where is Grandpa now?", "pics": ["garden", "kitchen", "bathroom"], "options": ["in the garden", "in the kitchen", "in the bathroom"], "key": "A"},
         {"q": "What did Daisy have for lunch?", "pics": ["sandwich", "soup", "pasta"], "options": ["a sandwich", "soup", "pasta"], "key": "B"},
         {"q": "What is the weather like at the beach?", "pics": [{"word": "sunny", "emoji": "☀️"}, {"word": "windy", "emoji": "🌬️"}, {"word": "rainy", "emoji": "🌧️"}], "options": ["sunny", "windy", "rainy"], "key": "B"},
@@ -89,7 +89,7 @@
       "type": "definitions_copy",
       "words": ["a swimming pool", "a coat", "a bat", "a helmet", "a tennis racket", "a towel", "a sports centre", "a whale"],
       "pics": {"a swimming pool": "🏊", "a coat": "🧥", "a bat": "🦇", "a helmet": "⛑️", "a tennis racket": "🎾", "a towel": "🧻", "a sports centre": "🏟️", "a whale": "🐋"},
-      "example": {"def": "You can swim in this place. It is full of water.", "word": "a swimming pool"},
+      "example": {"def": "You can swim in this place. It has got lots of water.", "word": "a swimming pool"},
       "items": [
         {"def": "You wear this on your head when you ride a bike, so you are safe.", "word": "a helmet"},
         {"def": "This animal flies at night and sleeps in the day.", "word": "a bat"},
@@ -100,7 +100,7 @@
     },
     "p2": {
       "type": "dialogue_mc3",
-      "speakerA": "Coach",
+      "speakerA": "Teacher",
       "speakerB": "Charlie",
       "example": {"a": "Hello, Charlie. Do you want to play in the football team?", "options": ["Yes, I'd love to!", "Yes, I played.", "Yes, it's mine."], "key": "A"},
       "items": [
@@ -115,7 +115,7 @@
     "p3": {
       "type": "gapped_text_title",
       "words": ["hospital", "helmet", "slowly", "fell", "afraid", "careful", "race", "brave", "tired"],
-      "text": "Last month, Peter and his friends had a bike __(0)__ in the park. Peter wanted to win. He didn't put on his __(1)__ because he was in a hurry. He rode very fast, but near the lake he __(2)__ off his bike and hurt his leg. Peter's dad took him to the __(3)__. The doctor looked at his leg and said, 'You must ride more __(4)__ and always wear your helmet.' Peter didn't cry. 'You are very __(5)__,' the doctor said. Now Peter always wears his helmet, and he never rides fast near the lake!",
+      "text": "Last week, Peter and his friends had a bike __(0)__ in the park. Peter wanted to win. He didn't put on his __(1)__ because he was in a hurry. He rode very quickly, but near the lake he __(2)__ off his bike and hurt his leg. Peter's dad took him to the __(3)__. The doctor looked at his leg and said, 'You must ride more __(4)__ and always wear your helmet.' Peter didn't cry. 'You are very __(5)__,' the doctor said. Now Peter always wears his helmet, and he never rides quickly near the lake!",
       "example": "race",
       "key": ["helmet", "fell", "hospital", "slowly", "brave"],
       "title_choices": ["Peter's new bike", "The bike race", "A day at the lake"],
@@ -124,7 +124,7 @@
     "p4": {
       "type": "mc_cloze",
       "title": "Whales",
-      "text": "Whales are the biggest animals __(0)__ the world. They live in the sea, but they are not fish. A whale __(1)__ to come up to the top of the water to breathe. Baby whales drink milk __(2)__ their mothers, like other baby animals. Whales can swim __(3)__ long way. Some whales travel thousands of kilometres every year to find warm water. Whales 'sing' to talk to __(4)__ other. People __(5)__ go out in boats to watch whales jump and play.",
+      "text": "Whales are the biggest animals __(0)__ the world. They live in the sea, but they are not fish. A whale __(1)__ to come up to the top of the water to breathe. Baby whales drink milk __(2)__ their mothers, like other baby animals. Whales can swim __(3)__ long way. Some whales travel thousands of kilometres every year to find hot water. Whales 'sing' to talk to __(4)__ other. People __(5)__ go out in boats to watch whales jump and play.",
       "example": {"options": ["in", "at", "on"], "key": "A"},
       "items": [
         {"options": ["have", "has", "having"], "key": "B"},
@@ -142,9 +142,9 @@
         {"text": "Jim loved swimming. Every Saturday he went to the sports centre with his older sister, Lucy, who was a very good swimmer. One day, the swimming teacher, Mrs Hill, said, 'There is a competition next Saturday. Would you like to swim in it, Jim?' Jim was afraid, but Lucy said, 'You can do it!'",
          "examples": [{"s": "Jim went to the sports centre ___.", "a": "every Saturday"}, {"s": "Jim's sister, Lucy, was a very good ___.", "a": "swimmer"}],
          "items": [{"s": "The swimming teacher was called ___.", "a": ["Mrs Hill", "Hill"]}, {"s": "The competition was on the next ___.", "a": ["Saturday"]}]},
-        {"text": "All week, Jim practised in the pool. Lucy helped him. 'Kick your legs faster,' she said. On Saturday, lots of parents came to watch. Jim's mum and dad sat at the front. Jim was in the race with five other children.",
-         "items": [{"s": "Lucy told Jim to kick his ___ faster.", "a": ["legs"]}, {"s": "Jim's parents sat ___ to watch.", "a": ["at the front", "front"]}, {"s": "There were ___ children in Jim's race.", "a": ["six", "6"]}]},
-        {"text": "The race started. Jim swam as fast as he could. He didn't win, but he came third and got a small cup. 'I'm so happy,' Jim said. 'Next year I want to win!' Lucy laughed and gave him a big hug.",
+        {"text": "All week, Jim practised in the pool. Lucy helped him. 'Kick your legs quicker,' she said. On Saturday, lots of parents came to watch. Jim's mum and dad sat at the front. Jim was in the race with five other children.",
+         "items": [{"s": "Lucy told Jim to kick his ___ quicker.", "a": ["legs"]}, {"s": "Jim's parents sat ___ to watch.", "a": ["at the front", "front"]}, {"s": "There were ___ children in Jim's race.", "a": ["six", "6"]}]},
+        {"text": "The race started. Jim swam as quickly as he could. He didn't win, but he came third and got a small cup. 'I'm so happy,' Jim said. 'Next year I want to win!' Lucy laughed and gave him a big hug.",
          "items": [{"s": "In the race, Jim came ___.", "a": ["third", "3rd"]}, {"s": "Jim got a small ___.", "a": ["cup"]}]}
       ]
     },
@@ -169,7 +169,7 @@
       "type": "find_differences",
       "image": "S1",
       "scene": "Two pictures of the same swimming pool. Left: the examiner's picture. Right: your picture.",
-      "examiner": "Look at the two pictures. Here there are two children in the pool, but here there are three children. What other differences can you see?",
+      "examiner": "Look at the two pictures. Here there are two children in the pool, but here there are three children. What more differences can you see?",
       "differences": [
         "In your picture the ball is red, but in my picture it is blue.",
         "In your picture the girl has got a towel, but in my picture she has got a book.",
@@ -185,9 +185,9 @@
       "examiner_open": "These pictures show a story. It's called 'Daisy's football match'. Look at the pictures first. Daisy is at the sports centre with her team. It's the day of the big match and she is putting on her boots. Now you tell the story.",
       "frames": [
         "Daisy is at the sports centre with her team. It's the day of the big match and she is putting on her football boots.",
-        "The match starts. Daisy runs fast, but she falls down and hurts her knee. Her friends stop and help her.",
-        "The coach puts a bandage on her knee. Daisy wants to play again, so she goes back to the field.",
-        "Daisy kicks the ball and scores a goal! Her team wins and everybody is very happy."
+        "The match starts. Daisy runs quickly, but she falls down and hurts her leg. Her friends stop and help her.",
+        "The teacher puts a bandage on her leg. Daisy wants to play again, so she goes back to the field.",
+        "Daisy kicks the ball and scores a goal! Her team wins and everyone is very happy."
       ]
     },
     "p3": {
@@ -195,7 +195,7 @@
       "sets": [
         {"pics": [{"word": "football", "emoji": "⚽"}, {"word": "tennis", "emoji": "🎾"}, {"word": "basketball", "emoji": "🏀"}, "apple"], "odd": 3, "reason": "You don't play with an apple. You eat it."},
         {"pics": ["horse", "cow", "sheep", "bus"], "odd": 3, "reason": "A bus isn't an animal. You travel in it."},
-        {"pics": [{"word": "towel", "emoji": "🧻"}, "milk", "water", "juice"], "odd": 0, "reason": "You can't drink a towel. You dry yourself with it."},
+        {"pics": [{"word": "towel", "emoji": "🧻"}, "milk", "water", "juice"], "odd": 0, "reason": "You can't drink a towel. You dry you with it."},
         {"pics": ["kite", "bike", "ball", "bed"], "odd": 3, "reason": "You don't play with a bed. You sleep in it."}
       ]
     },
@@ -225,12 +225,12 @@
       ["R", "One."],
       ["F", "Who's the boy sitting on the bench? He's got a bandage on his leg."],
       ["Fch", "That's Peter. He fell off his bike last week, so he can't play football today."],
-      ["F", "Poor Peter!"],
+      ["F", "Sad Peter!"],
       ["pause", 5],
       ["R", "Two."],
       ["Fch", "Can you see the woman with the whistle? She's teaching the children football."],
       ["F", "Is she a teacher?"],
-      ["Fch", "Yes, that's Daisy. She's the football coach. Everybody likes her."],
+      ["Fch", "Yes, that's Daisy. She's the football teacher. Everyone likes her."],
       ["pause", 5],
       ["R", "Three."],
       ["F", "And who's that boy? He's carrying a very big bag."],
@@ -294,7 +294,7 @@
       ["R", "Jack is telling his grandmother which sport each of his friends does on Saturdays. Which sport does each friend do?"],
       ["pause", 3],
       ["F", "Jack, what do your friends do on Saturdays?"],
-      ["Mch", "Well, Sally goes to the pool. She swims for an hour every Saturday morning. She's really fast!"],
+      ["Mch", "Well, Sally goes to the pool. She swims for an hour every Saturday morning. She's really quickly!"],
       ["pause", 3],
       ["R", "Can you see the letter A? Now you listen and write a letter in each box."],
       ["pause", 3],
@@ -334,7 +334,7 @@
       ["pause", 3],
       ["R", "One. What does Jim need for his class?"],
       ["F", "Jim, have you got everything for your sports class? Your ball?"],
-      ["Mch", "The teacher has got the balls, Mum. But I need my trainers. I can't find them!"],
+      ["Mch", "The teacher has got the balls, Mum. But I need my shoes. I can't find them!"],
       ["F", "They're under your bed. And take a hat, it's sunny."],
       ["Mch", "I don't need a hat, we play inside."],
       ["pause", 3],
@@ -358,7 +358,7 @@
       ["pause", 3],
       ["R", "Five. Which animal did Sam see at the farm?"],
       ["F", "Did you see the cows at the farm, Sam?"],
-      ["Mch", "No, the cows were in the field, very far away. And the sheep slept under a tree. But I saw a goat! It ate my sandwich!"],
+      ["Mch", "No, the cows were in the field, very not near. And the sheep slept under a tree. But I saw a goat! It ate my sandwich!"],
       ["F", "A goat! That's funny."],
       ["pause", 3],
       ["R", "Now listen to Part Four again."]

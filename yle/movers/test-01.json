@@ -94,7 +94,7 @@
           "a": "river"
         },
         {
-          "q": "Everybody must bring a:",
+          "q": "Everyone must bring a:",
           "a": "hat"
         }
       ]
@@ -177,12 +177,12 @@
         "q": "What does Fred want for lunch?",
         "pics": [
           "cake",
-          "pizza",
+          "pasta",
           "sandwich"
         ],
         "options": [
           "cake",
-          "pizza",
+          "pasta",
           "a sandwich"
         ],
         "key": "B"
@@ -331,7 +331,7 @@
         "a lorry": "🚚"
       },
       "example": {
-        "def": "This is very high and people like to climb it.",
+        "def": "This is very tall and people like to climb it.",
         "word": "a mountain"
       },
       "items": [
@@ -340,7 +340,7 @@
           "word": "a farmer"
         },
         {
-          "def": "You go to this place when you are ill and you have to stay in bed.",
+          "def": "You go to this place when you are ill and a doctor helps you.",
           "word": "a hospital"
         },
         {
@@ -440,7 +440,7 @@
         "jumped",
         "picnic"
       ],
-      "text": "Last Sunday, Ben's class went for a walk in the __(0)__. Their teacher, Mr Hall, walked in front. 'Walk __(1)__,' he said. 'Then we can see the animals.' After an hour, they came to a river. There was an old wooden __(2)__ on the water. 'Don't go in it!' said Mr Hall. On the other side, the children heard a loud noise. It was a big __(3)__! The water fell down from the rocks into a small lake. The children sat on the rocks and ate their __(4)__. Ben found a small frog. It __(5)__ from his hand into the water and everybody laughed.",
+      "text": "Last Sunday, Ben's class went for a walk in the __(0)__. Their teacher, Mr Hall, walked in front. 'Walk __(1)__,' he said. 'Then we can see the animals.' After a long walk, they came to a river. There was an old wooden __(2)__ on the water. 'Don't go in it!' said Mr Hall. Then the children heard a loud noise. It was a big __(3)__! The water fell down from the rocks into a small lake. The children sat on the rocks and ate their __(4)__. Ben found a small frog. It __(5)__ from his hand into the water and everyone laughed.",
       "example": "forest",
       "key": [
         "quietly",
@@ -459,7 +459,7 @@
     "p4": {
       "type": "mc_cloze",
       "title": "Parrots",
-      "text": "Parrots are birds __(0)__ live in hot countries. They have got strong mouths and they __(1)__ eating fruit and vegetables. Many parrots are green, __(2)__ some are red, blue or yellow. Parrots are very clever. Some of them can say words and __(3)__ like people! A parrot can live for a very long time. Some live __(4)__ than sixty years. Parrots like to live __(5)__ their families and lots of other parrots.",
+      "text": "Parrots are birds __(0)__ live in hot countries. They have got strong mouths and they __(1)__ eating fruit and vegetables. Many parrots are green, __(2)__ some are red, blue or yellow. Parrots are very clever. Some of them can say words and __(3)__ like people! A parrot can live for a very long time. Some live __(4)__ than sixty years. Parrots like to live __(5)__ their families and lots of parrots.",
       "example": {
         "options": [
           "which",
@@ -546,7 +546,7 @@
           ]
         },
         {
-          "text": "Suddenly, Rex stopped and started to bark. Daisy looked under a big rock and saw a small brown puppy. It was cold and afraid. 'Oh, poor puppy!' said Daisy. She picked it up and put it inside her coat.",
+          "text": "Suddenly, Rex stopped and started to make a loud noise. Daisy looked under a big rock and saw a small brown puppy. It was cold and afraid. 'Oh, the little puppy!' said Daisy. She picked it up and put it inside her coat.",
           "items": [
             {
               "s": "Rex stopped and began to ___.",
@@ -555,7 +555,7 @@
               ]
             },
             {
-              "s": "The puppy hid under a big ___.",
+              "s": "The puppy was under a big ___.",
               "a": [
                 "rock"
               ]
@@ -569,7 +569,7 @@
           ]
         },
         {
-          "text": "At the farm, the farmer's wife, Mrs Field, looked for something. 'That's Brownie, our new puppy!' she said. 'He ran away this morning. Thank you, Daisy!' She gave Daisy a big bag of apples and Rex got some meat. Daisy was late for school, but she was very happy.",
+          "text": "At the farm, the farmer's mother, Mrs Field, looked for something. 'That's Brownie, our new puppy!' she said. 'He ran out this morning. Thank you, Daisy!' She gave Daisy a big bag of apples and Rex got some meat. Daisy was the last child at school, but she was very happy.",
           "items": [
             {
               "s": "The puppy's name was ___.",
@@ -609,7 +609,7 @@
           ]
         },
         {
-          "s": "One dog is black and the other dog is ___.",
+          "s": "One dog is black and the second dog is ___.",
           "a": [
             "white"
           ]
@@ -639,7 +639,7 @@
       "type": "find_differences",
       "image": "S1",
       "scene": "Two pictures of the same kitchen. Left: the examiner's picture. Right: your picture.",
-      "examiner": "Look at the two pictures. Here the clock says three o'clock, but here it says four o'clock. What other differences can you see?",
+      "examiner": "Look at the two pictures. Here the clock says three o'clock, but here it says four o'clock. What more differences can you see?",
       "differences": [
         "In your picture the cat is on the chair, but in my picture it is under the table.",
         "In your picture there are two cups on the table, but in my picture there are three cups.",
@@ -654,10 +654,10 @@
       "image": "S2",
       "examiner_open": "These pictures show a story. It's called 'Sam and the kite'. Look at the pictures first. Sam is in the park with his new kite. It's a windy day and he is very happy. Now you tell the story.",
       "frames": [
-        "Sam is in the park with his new red kite. It's very windy and the kite flies high in the sky.",
-        "Suddenly the wind is too strong. The string breaks and the kite flies away over the trees.",
-        "Sam runs after the kite. He finds it in a big tree, but it's too high. He is sad.",
-        "A tall man with a ladder helps Sam. He gets the kite down and Sam says 'Thank you!'"
+        "Sam is in the park with his new red kite. It's very windy and the kite flies up in the sky.",
+        "Suddenly the wind is too strong. The kite breaks and it flies above the trees.",
+        "Sam runs after the kite. He finds it in a big tree, but it's too tall. He is sad.",
+        "A tall man helps Sam. He gets the kite down and Sam says 'Thank you!'"
       ]
     },
     "p3": {
@@ -688,10 +688,10 @@
             "t-shirt",
             "jacket",
             "dress",
-            "pizza"
+            "pasta"
           ],
           "odd": 3,
-          "reason": "You can't wear a pizza. You eat it."
+          "reason": "You can't wear pasta. You eat it."
         },
         {
           "pics": [
@@ -780,7 +780,7 @@
       ],
       [
         "Mch",
-        "That's Nick. The bag is full of apples. He picked them at the farm."
+        "That's Nick. The bag has got lots of apples in it. He picked them at the farm."
       ],
       [
         "F",
@@ -840,7 +840,7 @@
       ],
       [
         "Mch",
-        "He's flying his kite. That's Ben. It was a windy day, so the kite went very high."
+        "He's flying his kite. That's Ben. It was a windy day, so the kite went up and up."
       ],
       [
         "F",
@@ -860,7 +860,7 @@
       ],
       [
         "Mch",
-        "That's Jane. The puppy is called Rex. He's only two months old."
+        "That's Jane. The puppy is called Rex. He's only two weeks old."
       ],
       [
         "F",
@@ -1076,11 +1076,11 @@
       ],
       [
         "Mch",
-        "And who's the old lady?"
+        "And who's the old woman?"
       ],
       [
         "M",
-        "That's my grandmother. She's eighty-two, but she still makes dinner for all the family every Sunday. Cooking is her favourite hobby. Her soup is the best in the world!"
+        "That's my grandmother. She's eighty-two, and she makes dinner for all the family every Sunday. Cooking is her favourite hobby. Her soup is the best in the world!"
       ],
       [
         "Mch",
@@ -1100,7 +1100,7 @@
       ],
       [
         "M",
-        "Sometimes! Fishing is the thing he likes most. He can sit quietly for hours."
+        "Sometimes! Fishing is the thing he likes most. He can sit quietly all day."
       ],
       [
         "pause",
@@ -1112,7 +1112,7 @@
       ],
       [
         "M",
-        "Yes, she's ten. She goes to the pool three times a week. She can swim really fast, on her front and on her back. She wants to be a swimming teacher."
+        "Yes, she's ten. She goes to the pool every week. She can swim really quickly, on her front and on her back. She wants to be a swimming teacher."
       ],
       [
         "Mch",
@@ -1178,11 +1178,11 @@
       ],
       [
         "Mch",
-        "No thanks, Mum. Can I have some pizza?"
+        "No thanks, Mum. Can I have some pasta?"
       ],
       [
         "F",
-        "Pizza again! All right. And a piece of cake after."
+        "Pasta again! All right. And some cake after."
       ],
       [
         "pause",
@@ -1214,7 +1214,7 @@
       ],
       [
         "Fch",
-        "No! It's summer!"
+        "No! It's very hot!"
       ],
       [
         "pause",
@@ -1230,7 +1230,7 @@
       ],
       [
         "Fch",
-        "No, Dad. The pandas slept all day. But I saw a kangaroo! It jumped very high."
+        "No, Dad. The pandas slept all day. But I saw a kangaroo! It jumped up and up."
       ],
       [
         "M",
@@ -1262,7 +1262,7 @@
       ],
       [
         "M",
-        "Let him sleep for an hour."
+        "Let him sleep now."
       ],
       [
         "pause",
@@ -1278,7 +1278,7 @@
       ],
       [
         "Mch",
-        "No, Mum. The bus was late, so I went by bike."
+        "No, Mum. The bus didn't come, so I went by bike."
       ],
       [
         "F",

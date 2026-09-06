@@ -1,1483 +1,1483 @@
 {
-  "level": "movers",
-  "number": 3,
-  "theme": "In the town",
-  "listening": {
-    "p1": {
-      "type": "draw_lines",
-      "image": "L1",
-      "scene": "A busy street in a town with a market, a bus stop, a bookshop and a café. Six people are doing different things.",
-      "names": [
-        "Sally",
-        "Fred",
-        "Lily",
-        "Jack",
-        "Zoe",
-        "Tom",
-        "Clare"
-      ],
-      "people": [
-        {
-          "id": "A",
-          "desc": "a girl buying fruit at the market"
-        },
-        {
-          "id": "B",
-          "desc": "a man carrying a big box out of the bookshop"
-        },
-        {
-          "id": "C",
-          "desc": "a woman waiting at the bus stop with a baby"
-        },
-        {
-          "id": "D",
-          "desc": "a boy on a skateboard"
-        },
-        {
-          "id": "E",
-          "desc": "a girl with a map and a camera"
-        },
-        {
-          "id": "F",
-          "desc": "a boy eating an ice cream outside the café"
-        }
-      ],
-      "example": {
-        "name": "Sally",
-        "person": "A"
-      },
-      "items": [
-        {
-          "name": "Fred",
-          "person": "B"
-        },
-        {
-          "name": "Lily",
-          "person": "C"
-        },
-        {
-          "name": "Jack",
-          "person": "D"
-        },
-        {
-          "name": "Zoe",
-          "person": "E"
-        },
-        {
-          "name": "Tom",
-          "person": "F"
-        }
-      ]
+ "level": "movers",
+ "number": 3,
+ "theme": "In the town",
+ "listening": {
+  "p1": {
+   "type": "draw_lines",
+   "image": "L1",
+   "scene": "A busy street in a town with a market, a bus stop, a bookshop and a café. Six people are doing different things.",
+   "names": [
+    "Sally",
+    "Fred",
+    "Lily",
+    "Jack",
+    "Zoe",
+    "Tom",
+    "Clare"
+   ],
+   "people": [
+    {
+     "id": "A",
+     "desc": "a girl buying fruit at the market"
     },
-    "p2": {
-      "type": "note_taking",
-      "heading": "The new library",
-      "example": {
-        "q": "The library is in … Street",
-        "a": "Park"
-      },
-      "items": [
-        {
-          "q": "Opens at:",
-          "a": "9"
-        },
-        {
-          "q": "Name of the children's room: the … room",
-          "a": "Rainbow"
-        },
-        {
-          "q": "Number of computers:",
-          "a": "12"
-        },
-        {
-          "q": "Story time on:",
-          "a": "Friday"
-        },
-        {
-          "q": "Children must bring their:",
-          "a": "card"
-        }
-      ]
+    {
+     "id": "B",
+     "desc": "a man carrying a big box out of the bookshop"
     },
-    "p3": {
-      "type": "match_letters",
-      "intro": "Mrs Long is telling Peter what she bought in each shop in the town. What did she buy in each place?",
-      "pictures": [
-        {
-          "letter": "A",
-          "word": "bread",
-          "emoji": "🍞"
-        },
-        {
-          "letter": "B",
-          "word": "a comic",
-          "emoji": "📖"
-        },
-        {
-          "letter": "C",
-          "word": "a scarf",
-          "emoji": "🧣"
-        },
-        {
-          "letter": "D",
-          "word": "a cake",
-          "emoji": "🎂"
-        },
-        {
-          "letter": "E",
-          "word": "flowers",
-          "emoji": "💐"
-        },
-        {
-          "letter": "F",
-          "word": "a lamp",
-          "emoji": "🪔"
-        },
-        {
-          "letter": "G",
-          "word": "grapes",
-          "emoji": "🍇"
-        },
-        {
-          "letter": "H",
-          "word": "a kite",
-          "emoji": "🪁"
-        }
-      ],
-      "example": {
-        "who": "at the market",
-        "letter": "G"
-      },
-      "items": [
-        {
-          "who": "in the bookshop",
-          "letter": "B"
-        },
-        {
-          "who": "in the clothes shop",
-          "letter": "C"
-        },
-        {
-          "who": "at the café",
-          "letter": "D"
-        },
-        {
-          "who": "in the toy shop",
-          "letter": "H"
-        },
-        {
-          "who": "in the supermarket",
-          "letter": "A"
-        }
-      ]
+    {
+     "id": "C",
+     "desc": "a woman waiting at the bus stop with a baby"
     },
-    "p4": {
-      "type": "mc_pictures",
-      "example": {
-        "q": "How is Jane going to the town centre?",
-        "pics": [
-          "bus",
-          "bike",
-          "car"
-        ],
-        "options": [
-          "by bus",
-          "by bike",
-          "by car"
-        ],
-        "key": "C"
-      },
-      "items": [
-        {
-          "q": "Where is the bookshop?",
-          "pics": [
-            {
-              "word": "next to the bank",
-              "emoji": "🏦"
-            },
-            {
-              "word": "opposite the school",
-              "emoji": "🏫"
-            },
-            {
-              "word": "behind the station",
-              "emoji": "🚉"
-            }
-          ],
-          "options": [
-            "next to the bank",
-            "opposite the school",
-            "behind the station"
-          ],
-          "key": "B"
-        },
-        {
-          "q": "What does Nick want to buy?",
-          "pics": [
-            "kite",
-            "ball",
-            "robot"
-          ],
-          "options": [
-            "a kite",
-            "a ball",
-            "a robot"
-          ],
-          "key": "C"
-        },
-        {
-          "q": "What is Dad doing now?",
-          "pics": [
-            {
-              "word": "shopping",
-              "emoji": "🛒"
-            },
-            {
-              "word": "driving",
-              "emoji": "🚗"
-            },
-            {
-              "word": "cooking",
-              "emoji": "🍳"
-            }
-          ],
-          "options": [
-            "shopping",
-            "driving",
-            "cooking"
-          ],
-          "key": "A"
-        },
-        {
-          "q": "What time does the shop close?",
-          "pics": [
-            {
-              "word": "five o'clock",
-              "emoji": "🕔"
-            },
-            {
-              "word": "six o'clock",
-              "emoji": "🕕"
-            },
-            {
-              "word": "seven o'clock",
-              "emoji": "🕖"
-            }
-          ],
-          "options": [
-            "at five o'clock",
-            "at six o'clock",
-            "at seven o'clock"
-          ],
-          "key": "B"
-        },
-        {
-          "q": "What did Grandma lose in the town?",
-          "pics": [
-            "glasses",
-            "hat",
-            "bag"
-          ],
-          "options": [
-            "her glasses",
-            "her hat",
-            "her bag"
-          ],
-          "key": "A"
-        }
-      ]
+    {
+     "id": "D",
+     "desc": "a boy on a skateboard"
     },
-    "p5": {
-      "type": "colour_write",
-      "image": "L5",
-      "scene": "A street with shops: a bus at the bus stop, a boy with a balloon, a dog outside the café, a bird on the roof, flowers in a window box, a car in the road and a big empty sign above the shop door.",
-      "example": {
-        "what": "the bus",
-        "where": "at the bus stop",
-        "colour": "red"
-      },
-      "items": [
-        {
-          "what": "the flowers",
-          "where": "in the window box",
-          "colour": "pink"
-        },
-        {
-          "what": "the dog",
-          "where": "outside the café",
-          "colour": "brown"
-        },
-        {
-          "what": "the sign",
-          "where": "above the shop door",
-          "write": "TOYS"
-        },
-        {
-          "what": "the car",
-          "where": "in the road",
-          "colour": "blue"
-        },
-        {
-          "what": "the bird",
-          "where": "on the roof",
-          "colour": "yellow"
-        }
-      ]
+    {
+     "id": "E",
+     "desc": "a girl with a map and a camera"
+    },
+    {
+     "id": "F",
+     "desc": "a boy eating an ice cream outside the café"
     }
+   ],
+   "example": {
+    "name": "Sally",
+    "person": "A"
+   },
+   "items": [
+    {
+     "name": "Fred",
+     "person": "B"
+    },
+    {
+     "name": "Lily",
+     "person": "C"
+    },
+    {
+     "name": "Jack",
+     "person": "D"
+    },
+    {
+     "name": "Zoe",
+     "person": "E"
+    },
+    {
+     "name": "Tom",
+     "person": "F"
+    }
+   ]
   },
-  "rw": {
-    "p1": {
-      "type": "definitions_copy",
-      "words": [
-        "a supermarket",
-        "a bus stop",
-        "a farmer",
-        "a cinema",
-        "a market",
-        "a nurse",
-        "a bank",
-        "a car park"
-      ],
-      "pics": {
-        "a supermarket": "🛒",
-        "a bus stop": "🚏",
-        "a farmer": "👨‍🌾",
-        "a cinema": "🎬",
-        "a market": "🍎",
-        "a nurse": "🩺",
-        "a bank": "🏦",
-        "a car park": "🅿️"
+  "p2": {
+   "type": "note_taking",
+   "heading": "The new library",
+   "example": {
+    "q": "The library is in … Street",
+    "a": "Park"
+   },
+   "items": [
+    {
+     "q": "Opens at:",
+     "a": "9"
+    },
+    {
+     "q": "Name of the children's room: the … room",
+     "a": "Rainbow"
+    },
+    {
+     "q": "Number of computers:",
+     "a": "12"
+    },
+    {
+     "q": "Story time on:",
+     "a": "Friday"
+    },
+    {
+     "q": "Children must bring their:",
+     "a": "card"
+    }
+   ]
+  },
+  "p3": {
+   "type": "match_letters",
+   "intro": "Mrs Long is telling Peter what she bought in each shop in the town. What did she buy in each place?",
+   "pictures": [
+    {
+     "letter": "A",
+     "word": "bread",
+     "emoji": "🍞"
+    },
+    {
+     "letter": "B",
+     "word": "a comic",
+     "emoji": "📖"
+    },
+    {
+     "letter": "C",
+     "word": "a scarf",
+     "emoji": "🧣"
+    },
+    {
+     "letter": "D",
+     "word": "a cake",
+     "emoji": "🎂"
+    },
+    {
+     "letter": "E",
+     "word": "flowers",
+     "emoji": "💐"
+    },
+    {
+     "letter": "F",
+     "word": "a lamp",
+     "emoji": "🪔"
+    },
+    {
+     "letter": "G",
+     "word": "grapes",
+     "emoji": "🍇"
+    },
+    {
+     "letter": "H",
+     "word": "a kite",
+     "emoji": "🪁"
+    }
+   ],
+   "example": {
+    "who": "at the market",
+    "letter": "G"
+   },
+   "items": [
+    {
+     "who": "in the bookshop",
+     "letter": "B"
+    },
+    {
+     "who": "in the clothes shop",
+     "letter": "C"
+    },
+    {
+     "who": "at the café",
+     "letter": "D"
+    },
+    {
+     "who": "in the toy shop",
+     "letter": "H"
+    },
+    {
+     "who": "in the supermarket",
+     "letter": "A"
+    }
+   ]
+  },
+  "p4": {
+   "type": "mc_pictures",
+   "example": {
+    "q": "How is Jane going to the town centre?",
+    "pics": [
+     "bus",
+     "bike",
+     "car"
+    ],
+    "options": [
+     "by bus",
+     "by bike",
+     "by car"
+    ],
+    "key": "C"
+   },
+   "items": [
+    {
+     "q": "Where is the bookshop?",
+     "pics": [
+      {
+       "word": "next to the café",
+       "emoji": "🏦"
       },
-      "example": {
-        "def": "People go to this place to watch films.",
-        "word": "a cinema"
+      {
+       "word": "opposite the school",
+       "emoji": "🏫"
       },
-      "items": [
-        {
-          "def": "You wait here when you want to go somewhere by bus.",
-          "word": "a bus stop"
-        },
-        {
-          "def": "This is a big shop where you can buy food and lots of other things.",
-          "word": "a supermarket"
-        },
-        {
-          "def": "People put their money in this place.",
-          "word": "a bank"
-        },
-        {
-          "def": "This person helps the doctor and looks after people in hospital.",
-          "word": "a nurse"
-        },
-        {
-          "def": "Drivers leave their cars in this place.",
-          "word": "a car park"
-        }
-      ]
-    },
-    "p2": {
-      "type": "dialogue_mc3",
-      "speakerA": "Shop assistant",
-      "speakerB": "Zoe",
-      "example": {
-        "a": "Good morning! Can I help you?",
-        "options": [
-          "Yes, please. I'd like a comic.",
-          "Yes, I helped you.",
-          "Yes, it's morning."
-        ],
-        "key": "A"
-      },
-      "items": [
-        {
-          "a": "Which comic would you like?",
-          "options": [
-            "The one with the dinosaur, please.",
-            "I like comics.",
-            "It's on the table."
-          ],
-          "key": "A"
-        },
-        {
-          "a": "Do you want a bag for it?",
-          "options": [
-            "No, I don't have one.",
-            "No, thank you.",
-            "No, it wasn't."
-          ],
-          "key": "B"
-        },
-        {
-          "a": "That's two pounds, please.",
-          "options": [
-            "Here you are.",
-            "There are two.",
-            "It's mine."
-          ],
-          "key": "A"
-        },
-        {
-          "a": "Is this your first time in our shop?",
-          "options": [
-            "Yes, I was.",
-            "Yes, it is.",
-            "Yes, I did it."
-          ],
-          "key": "B"
-        },
-        {
-          "a": "We have new comics every Saturday.",
-          "options": [
-            "Great! I can come back then.",
-            "Saturday is a comic.",
-            "I came on Saturday."
-          ],
-          "key": "A"
-        },
-        {
-          "a": "Goodbye, Zoe. Enjoy your comic!",
-          "options": [
-            "Thank you. Bye!",
-            "Yes, I enjoy.",
-            "I don't know."
-          ],
-          "key": "A"
-        }
-      ]
-    },
-    "p3": {
-      "type": "gapped_text_title",
-      "words": [
-        "market",
-        "lost",
-        "police",
-        "map",
-        "square",
-        "hungry",
-        "station",
-        "found",
-        "frightened"
-      ],
-      "text": "Last Saturday, Jack went to the town with his aunt. First they went to the __(0)__ to buy some fruit. There were hundreds of people! Jack looked at a man with a big parrot, and when he turned round, his aunt wasn't there. Jack was __(1)__. He walked to the __(2)__ in the middle of the town, where there was a big clock. A kind __(3)__ officer asked him, 'Are you all right?' 'I can't find my aunt,' said Jack. The officer looked at the __(4)__ on his phone and phoned the market. Ten minutes later, Jack's aunt arrived. She was very happy because she __(5)__ him. 'Next time, hold my hand!' she said.",
-      "example": "market",
-      "key": [
-        "frightened",
-        "square",
-        "police",
-        "map",
-        "found"
-      ],
-      "title_choices": [
-        "Jack's new parrot",
-        "Lost in the town",
-        "A day at the station"
-      ],
-      "title_key": "B"
-    },
-    "p4": {
-      "type": "mc_cloze",
-      "title": "Buses",
-      "text": "Buses are big cars __(0)__ can carry lots of people. In many towns, buses are red, green or yellow. People wait for the bus __(1)__ a bus stop. When the bus comes, they get on and pay the driver __(2)__ show a card. Some buses have two floors. Children love __(3)__ upstairs because they can see everything from the top. Buses are __(4)__ than cars, so more people can travel together and the streets are not so busy. In some cities there __(5)__ buses at night, too.",
-      "example": {
-        "options": [
-          "which",
-          "who",
-          "when"
-        ],
-        "key": "A"
-      },
-      "items": [
-        {
-          "options": [
-            "at",
-            "in",
-            "on"
-          ],
-          "key": "A"
-        },
-        {
-          "options": [
-            "but",
-            "or",
-            "because"
-          ],
-          "key": "B"
-        },
-        {
-          "options": [
-            "sit",
-            "sat",
-            "sitting"
-          ],
-          "key": "C"
-        },
-        {
-          "options": [
-            "big",
-            "bigger",
-            "biggest"
-          ],
-          "key": "B"
-        },
-        {
-          "options": [
-            "is",
-            "are",
-            "was"
-          ],
-          "key": "B"
-        }
-      ]
-    },
-    "p5": {
-      "type": "story_completion",
-      "title": "The birthday present",
-      "image": "R5",
-      "parts": [
-        {
-          "text": "It was Saturday, and it was Grandpa's birthday. Lucy wanted to buy him a present, but she only had three pounds. 'Let's go to the town,' said her mum. 'We can look in the shops.' They went by bus and got off in the town square.",
-          "examples": [
-            {
-              "s": "Grandpa's birthday was on ___.",
-              "a": "Saturday"
-            },
-            {
-              "s": "Lucy had only ___ to buy a present.",
-              "a": "three pounds"
-            }
-          ],
-          "items": [
-            {
-              "s": "Lucy and her mum went to the town by ___.",
-              "a": [
-                "bus"
-              ]
-            },
-            {
-              "s": "They got off in the town ___.",
-              "a": [
-                "square"
-              ]
-            }
-          ]
-        },
-        {
-          "text": "First they went to the clothes shop, but the scarves were too expensive. Then they looked in the bookshop. Lucy saw a small book about birds. Grandpa loved birds! But the book cost five pounds. Lucy was sad.",
-          "items": [
-            {
-              "s": "In the clothes shop the scarves were too ___.",
-              "a": [
-                "expensive"
-              ]
-            },
-            {
-              "s": "The book in the bookshop was about ___.",
-              "a": [
-                "birds"
-              ]
-            },
-            {
-              "s": "The book cost ___.",
-              "a": [
-                "five pounds",
-                "5 pounds"
-              ]
-            }
-          ]
-        },
-        {
-          "text": "Then Lucy had an idea. In the market, she bought some paper and paints. At home, she painted a picture of Grandpa's favourite bird, a blue and yellow parrot. Grandpa loved it. 'This is the best present in the world,' he said, and he put it on the wall.",
-          "items": [
-            {
-              "s": "Lucy bought paper and paints in the ___.",
-              "a": [
-                "market"
-              ]
-            },
-            {
-              "s": "Grandpa put Lucy's picture on the ___.",
-              "a": [
-                "wall"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    "p6": {
-      "type": "productive_writing",
-      "image": "R6",
-      "scene": "A town square: a boy is riding a scooter, a girl is holding a balloon, a woman is buying apples from a market stall, a man is reading a newspaper on a bench, a dog is drinking water from a bowl, there is a fountain in the middle and a big clock on a tower.",
-      "examples": [
-        {
-          "s": "The boy is riding a ___.",
-          "a": "scooter"
-        },
-        {
-          "q": "What is the girl holding?",
-          "a": "a balloon"
-        }
-      ],
-      "complete": [
-        {
-          "s": "The woman is buying some ___.",
-          "a": [
-            "apples",
-            "fruit"
-          ]
-        },
-        {
-          "s": "The dog is drinking some ___.",
-          "a": [
-            "water"
-          ]
-        }
-      ],
-      "answer": [
-        {
-          "q": "What is the man doing?",
-          "model": "He is reading a newspaper on a bench."
-        },
-        {
-          "q": "Where is the clock?",
-          "model": "It is on the tower. / It is on top of the tower."
-        }
-      ],
-      "write": {
-        "n": 2,
-        "model": [
-          "There is a fountain in the middle of the square.",
-          "The girl has got a red balloon."
-        ]
+      {
+       "word": "behind the station",
+       "emoji": "🚉"
       }
+     ],
+     "options": [
+      "next to the café",
+      "opposite the school",
+      "behind the station"
+     ],
+     "key": "B"
+    },
+    {
+     "q": "What does Nick want to buy?",
+     "pics": [
+      "kite",
+      "ball",
+      "robot"
+     ],
+     "options": [
+      "a kite",
+      "a ball",
+      "a robot"
+     ],
+     "key": "C"
+    },
+    {
+     "q": "What is Dad doing now?",
+     "pics": [
+      {
+       "word": "shopping",
+       "emoji": "🛒"
+      },
+      {
+       "word": "driving",
+       "emoji": "🚗"
+      },
+      {
+       "word": "cooking",
+       "emoji": "🍳"
+      }
+     ],
+     "options": [
+      "shopping",
+      "driving",
+      "cooking"
+     ],
+     "key": "A"
+    },
+    {
+     "q": "What time does the shop close?",
+     "pics": [
+      {
+       "word": "five o'clock",
+       "emoji": "🕔"
+      },
+      {
+       "word": "six o'clock",
+       "emoji": "🕕"
+      },
+      {
+       "word": "seven o'clock",
+       "emoji": "🕖"
+      }
+     ],
+     "options": [
+      "at five o'clock",
+      "at six o'clock",
+      "at seven o'clock"
+     ],
+     "key": "B"
+    },
+    {
+     "q": "What did Grandma lose in the town?",
+     "pics": [
+      "glasses",
+      "hat",
+      "bag"
+     ],
+     "options": [
+      "her glasses",
+      "her hat",
+      "her bag"
+     ],
+     "key": "A"
     }
+   ]
   },
-  "speaking": {
-    "p1": {
-      "type": "find_differences",
-      "image": "S1",
-      "scene": "Two pictures of the same street with a café. Left: the examiner's picture. Right: your picture.",
-      "examiner": "Look at the two pictures. Here the bus is red, but here the bus is green. What other differences can you see?",
-      "differences": [
-        "In your picture there are two people at the bus stop, but in my picture there is one.",
-        "In your picture the dog is sitting, but in my picture it is running.",
-        "In your picture the café door is open, but in my picture it is closed.",
-        "In your picture the girl has got an umbrella, but in my picture she has got a bag.",
-        "In your picture there are flowers in the window, but in my picture there aren't any."
-      ]
+  "p5": {
+   "type": "colour_write",
+   "image": "L5",
+   "scene": "A street with shops: a bus at the bus stop, a boy with a balloon, a dog outside the café, a bird on the roof, flowers in a window box, a car in the road and a big empty sign above the shop door.",
+   "example": {
+    "what": "the bus",
+    "where": "at the bus stop",
+    "colour": "red"
+   },
+   "items": [
+    {
+     "what": "the flowers",
+     "where": "in the window box",
+     "colour": "pink"
     },
-    "p2": {
-      "type": "picture_sequence",
-      "title": "Fred and the lost dog",
-      "image": "S2",
-      "examiner_open": "These pictures show a story. It's called 'Fred and the lost dog'. Look at the pictures first. Fred is walking in the town with his mum. He sees a small dog next to a shop. It hasn't got a collar and it looks sad. Now you tell the story.",
-      "frames": [
-        "Fred is walking in the town with his mum. He sees a small sad dog next to a shop.",
-        "Fred and his mum take the dog to the police station. The police officer looks at the dog and phones somebody.",
-        "A girl and her dad arrive at the police station. The girl is crying, but when she sees the dog she is very happy.",
-        "The girl hugs the dog and says 'Thank you!' to Fred. Fred and the girl are now friends."
-      ]
+    {
+     "what": "the dog",
+     "where": "outside the café",
+     "colour": "brown"
     },
-    "p3": {
-      "type": "odd_one_out",
-      "sets": [
-        {
-          "pics": [
-            "bus",
-            "train",
-            "car",
-            "banana"
-          ],
-          "odd": 3,
-          "reason": "You don't travel in a banana. You eat it."
-        },
-        {
-          "pics": [
-            "bread",
-            "cake",
-            "sandwich",
-            "kite"
-          ],
-          "odd": 3,
-          "reason": "You can't eat a kite. You fly it."
-        },
-        {
-          "pics": [
-            {
-              "word": "shop",
-              "emoji": "🏪"
-            },
-            "school",
-            {
-              "word": "hospital",
-              "emoji": "🏥"
-            },
-            "elephant"
-          ],
-          "odd": 3,
-          "reason": "An elephant isn't a building. It's an animal."
-        },
-        {
-          "pics": [
-            "hat",
-            "coat",
-            "phone",
-            "dress"
-          ],
-          "odd": 2,
-          "reason": "You don't wear a phone. You talk on it."
-        }
-      ]
+    {
+     "what": "the sign",
+     "where": "above the shop door",
+     "write": "TOYS"
     },
-    "p4": {
-      "type": "personal_questions",
-      "topic": "your town",
-      "questions": [
-        {
-          "q": "What is the name of your town?",
-          "model": "It's called Lima."
-        },
-        {
-          "q": "What shops are there near your house?",
-          "model": "There is a supermarket and a bakery."
-        },
-        {
-          "q": "How do you go to school?",
-          "model": "I go by car with my dad."
-        },
-        {
-          "q": "Where did you go last weekend?",
-          "model": "I went to the park and to the cinema."
-        },
-        {
-          "q": "Tell me about your favourite place in your town.",
-          "model": "My favourite place is the park. I ride my bike there."
-        }
-      ]
+    {
+     "what": "the car",
+     "where": "in the road",
+     "colour": "blue"
+    },
+    {
+     "what": "the bird",
+     "where": "on the roof",
+     "colour": "yellow"
     }
-  },
-  "audio": {
-    "p1": [
-      [
-        "R",
-        "Part One. Look at the picture. Listen and look. There is one example."
-      ],
-      [
-        "pause",
-        3
-      ],
-      [
-        "M",
-        "Look at this picture of our town, Kim. It's very busy today!"
-      ],
-      [
-        "Fch",
-        "Who's the girl at the market, Dad? She's buying some fruit."
-      ],
-      [
-        "M",
-        "That's Sally. She lives next to us."
-      ],
-      [
-        "Fch",
-        "Oh yes! I know her."
-      ],
-      [
-        "pause",
-        3
-      ],
-      [
-        "R",
-        "Can you see the line? This is an example. Now you listen and draw lines."
-      ],
-      [
-        "pause",
-        3
-      ],
-      [
-        "R",
-        "One."
-      ],
-      [
-        "Fch",
-        "Who's the man with the big box? He's coming out of the bookshop."
-      ],
-      [
-        "M",
-        "That's Fred. He works there. The box is full of new books."
-      ],
-      [
-        "Fch",
-        "It looks very heavy!"
-      ],
-      [
-        "pause",
-        5
-      ],
-      [
-        "R",
-        "Two."
-      ],
-      [
-        "M",
-        "Can you see the woman at the bus stop? She's got a baby."
-      ],
-      [
-        "Fch",
-        "Is that Lily?"
-      ],
-      [
-        "M",
-        "Yes, that's Lily and her little boy. They're waiting for the bus to the hospital."
-      ],
-      [
-        "pause",
-        5
-      ],
-      [
-        "R",
-        "Three."
-      ],
-      [
-        "Fch",
-        "Look at that boy! He's on a skateboard."
-      ],
-      [
-        "M",
-        "That's Jack. He's very good, but he must be careful in the street."
-      ],
-      [
-        "Fch",
-        "Jack. He's in my class!"
-      ],
-      [
-        "pause",
-        5
-      ],
-      [
-        "R",
-        "Four."
-      ],
-      [
-        "M",
-        "And who's the girl with the map? She's got a camera too."
-      ],
-      [
-        "Fch",
-        "That's Zoe. She's from another town, so she doesn't know our streets."
-      ],
-      [
-        "M",
-        "She's taking a photo of the old clock."
-      ],
-      [
-        "pause",
-        5
-      ],
-      [
-        "R",
-        "Five."
-      ],
-      [
-        "Fch",
-        "Can you see the boy outside the café? He's eating an ice cream."
-      ],
-      [
-        "M",
-        "Is that Tom?"
-      ],
-      [
-        "Fch",
-        "Yes, that's Tom. He always has a chocolate ice cream on Saturdays."
-      ],
-      [
-        "pause",
-        5
-      ],
-      [
-        "R",
-        "Now listen to Part One again."
-      ]
-    ],
-    "p2": [
-      [
-        "R",
-        "Part Two. Listen and look. There is one example."
-      ],
-      [
-        "pause",
-        3
-      ],
-      [
-        "F",
-        "There's a new library in the town, children."
-      ],
-      [
-        "Mch",
-        "Where is it, Miss Field?"
-      ],
-      [
-        "F",
-        "It's in Park Street, opposite the bank."
-      ],
-      [
-        "Mch",
-        "Park Street. Great, that's near my house."
-      ],
-      [
-        "pause",
-        3
-      ],
-      [
-        "R",
-        "Can you see the answer? Now you listen and write."
-      ],
-      [
-        "pause",
-        3
-      ],
-      [
-        "R",
-        "One."
-      ],
-      [
-        "Mch",
-        "What time does the library open?"
-      ],
-      [
-        "F",
-        "It opens at nine o'clock in the morning."
-      ],
-      [
-        "Mch",
-        "Nine o'clock. And when does it close?"
-      ],
-      [
-        "F",
-        "At six in the evening."
-      ],
-      [
-        "pause",
-        8
-      ],
-      [
-        "R",
-        "Two."
-      ],
-      [
-        "Mch",
-        "Is there a room for children?"
-      ],
-      [
-        "F",
-        "Yes. It's called the Rainbow Room. R-A-I-N-B-O-W."
-      ],
-      [
-        "Mch",
-        "The Rainbow Room. Is it big?"
-      ],
-      [
-        "F",
-        "Yes, and it's got lots of comics."
-      ],
-      [
-        "pause",
-        8
-      ],
-      [
-        "R",
-        "Three."
-      ],
-      [
-        "Mch",
-        "Can we use computers there?"
-      ],
-      [
-        "F",
-        "Yes. There are twelve computers for children."
-      ],
-      [
-        "Mch",
-        "Twelve! That's a lot."
-      ],
-      [
-        "F",
-        "Yes, but you can only use them for an hour."
-      ],
-      [
-        "pause",
-        8
-      ],
-      [
-        "R",
-        "Four."
-      ],
-      [
-        "Mch",
-        "Is there story time?"
-      ],
-      [
-        "F",
-        "Yes. Story time is on Fridays at four o'clock."
-      ],
-      [
-        "Mch",
-        "Friday. I can go after school."
-      ],
-      [
-        "pause",
-        8
-      ],
-      [
-        "R",
-        "Five."
-      ],
-      [
-        "Mch",
-        "What do we need to bring?"
-      ],
-      [
-        "F",
-        "Your library card. You can't take books home without it."
-      ],
-      [
-        "Mch",
-        "My card. OK, I've got one."
-      ],
-      [
-        "pause",
-        8
-      ],
-      [
-        "R",
-        "Now listen to Part Two again."
-      ]
-    ],
-    "p3": [
-      [
-        "R",
-        "Part Three. Listen and look. There is one example."
-      ],
-      [
-        "pause",
-        3
-      ],
-      [
-        "R",
-        "Mrs Long is telling Peter what she bought in each shop in the town. What did she buy in each place?"
-      ],
-      [
-        "pause",
-        3
-      ],
-      [
-        "Mch",
-        "Hello, Mrs Long. You've got lots of bags!"
-      ],
-      [
-        "F",
-        "Yes, Peter. I went to the market first. I bought some grapes. They're very sweet."
-      ],
-      [
-        "pause",
-        3
-      ],
-      [
-        "R",
-        "Can you see the letter G? Now you listen and write a letter in each box."
-      ],
-      [
-        "pause",
-        3
-      ],
-      [
-        "Mch",
-        "Did you go to the bookshop?"
-      ],
-      [
-        "F",
-        "Yes, I bought a comic for my grandson. It's about a dinosaur. He loves dinosaurs."
-      ],
-      [
-        "Mch",
-        "I like dinosaurs too!"
-      ],
-      [
-        "pause",
-        3
-      ],
-      [
-        "F",
-        "Then I went to the clothes shop. It's cold now, so I bought a scarf. A long red one."
-      ],
-      [
-        "Mch",
-        "It's very nice."
-      ],
-      [
-        "pause",
-        3
-      ],
-      [
-        "Mch",
-        "Did you have a drink at the café?"
-      ],
-      [
-        "F",
-        "Yes, and I bought a cake to take home. A chocolate cake for tea."
-      ],
-      [
-        "Mch",
-        "Mmm!"
-      ],
-      [
-        "pause",
-        3
-      ],
-      [
-        "F",
-        "After that, I went to the toy shop. I bought a kite for my granddaughter. It's blue and green."
-      ],
-      [
-        "Mch",
-        "She can fly it in the park."
-      ],
-      [
-        "F",
-        "Yes, on a windy day."
-      ],
-      [
-        "pause",
-        3
-      ],
-      [
-        "Mch",
-        "And the big bag?"
-      ],
-      [
-        "F",
-        "That's from the supermarket. Just some bread for dinner. Now I'm going home. Bye, Peter!"
-      ],
-      [
-        "Mch",
-        "Bye, Mrs Long!"
-      ],
-      [
-        "pause",
-        3
-      ],
-      [
-        "R",
-        "Now listen to Part Three again."
-      ]
-    ],
-    "p4": [
-      [
-        "R",
-        "Part Four. Look at the pictures. Listen and look. There is one example."
-      ],
-      [
-        "pause",
-        3
-      ],
-      [
-        "R",
-        "How is Jane going to the town centre?"
-      ],
-      [
-        "M",
-        "Jane, are you going to the town centre by bus?"
-      ],
-      [
-        "Fch",
-        "No, Dad. Mum is taking me in the car. My bike has got a flat tyre."
-      ],
-      [
-        "M",
-        "OK. See you later."
-      ],
-      [
-        "pause",
-        3
-      ],
-      [
-        "R",
-        "Can you see the tick? Now you listen and tick the box."
-      ],
-      [
-        "pause",
-        3
-      ],
-      [
-        "R",
-        "One. Where is the bookshop?"
-      ],
-      [
-        "Fch",
-        "Excuse me, where's the bookshop? Is it next to the bank?"
-      ],
-      [
-        "M",
-        "No, it moved last year. Now it's opposite the school."
-      ],
-      [
-        "Fch",
-        "Opposite the school. Thank you."
-      ],
-      [
-        "M",
-        "It's not far from the station."
-      ],
-      [
-        "pause",
-        3
-      ],
-      [
-        "R",
-        "Two. What does Nick want to buy?"
-      ],
-      [
-        "F",
-        "Nick, do you want a kite for your birthday?"
-      ],
-      [
-        "Mch",
-        "No, Mum. I've got a ball and a kite. I want a robot! The one that walks."
-      ],
-      [
-        "F",
-        "A robot? Let's see how much it costs."
-      ],
-      [
-        "pause",
-        3
-      ],
-      [
-        "R",
-        "Three. What is Dad doing now?"
-      ],
-      [
-        "Mch",
-        "Where's Dad? Is he cooking?"
-      ],
-      [
-        "F",
-        "No, he's at the supermarket. He's doing the shopping."
-      ],
-      [
-        "Mch",
-        "Did he drive there?"
-      ],
-      [
-        "F",
-        "No, he walked. It's very near."
-      ],
-      [
-        "pause",
-        3
-      ],
-      [
-        "R",
-        "Four. What time does the shop close?"
-      ],
-      [
-        "Fch",
-        "Excuse me, does the shop close at five o'clock?"
-      ],
-      [
-        "M",
-        "No, we close at six. And on Saturdays we close at seven."
-      ],
-      [
-        "Fch",
-        "Six o'clock. OK, I can come back after school."
-      ],
-      [
-        "pause",
-        3
-      ],
-      [
-        "R",
-        "Five. What did Grandma lose in the town?"
-      ],
-      [
-        "M",
-        "Grandma, did you lose your hat in the town?"
-      ],
-      [
-        "F",
-        "No, my hat's here. I lost my glasses! I can't read the newspaper."
-      ],
-      [
-        "M",
-        "Did you leave them in your bag?"
-      ],
-      [
-        "F",
-        "No, I looked in my bag. They're not there."
-      ],
-      [
-        "pause",
-        3
-      ],
-      [
-        "R",
-        "Now listen to Part Four again."
-      ]
-    ],
-    "p5": [
-      [
-        "R",
-        "Part Five. Look at the picture. Listen and look. There is one example."
-      ],
-      [
-        "pause",
-        3
-      ],
-      [
-        "M",
-        "Here's a picture of a street with some shops. Can you see the bus at the bus stop?"
-      ],
-      [
-        "Fch",
-        "Yes. Shall I colour it?"
-      ],
-      [
-        "M",
-        "Yes, please. Colour the bus red."
-      ],
-      [
-        "Fch",
-        "OK, a red bus."
-      ],
-      [
-        "pause",
-        3
-      ],
-      [
-        "R",
-        "Can you see the red bus? This is an example. Now you listen and colour and write."
-      ],
-      [
-        "pause",
-        3
-      ],
-      [
-        "R",
-        "One."
-      ],
-      [
-        "M",
-        "Now, can you see the flowers in the window box?"
-      ],
-      [
-        "Fch",
-        "Yes, above the café."
-      ],
-      [
-        "M",
-        "Colour them pink, please."
-      ],
-      [
-        "Fch",
-        "Pink flowers. OK!"
-      ],
-      [
-        "pause",
-        10
-      ],
-      [
-        "R",
-        "Two."
-      ],
-      [
-        "Fch",
-        "There's a dog outside the café. Can I colour it?"
-      ],
-      [
-        "M",
-        "Yes. Colour the dog brown."
-      ],
-      [
-        "Fch",
-        "A brown dog. Done!"
-      ],
-      [
-        "pause",
-        10
-      ],
-      [
-        "R",
-        "Three."
-      ],
-      [
-        "M",
-        "Can you see the sign above the shop door? It's empty."
-      ],
-      [
-        "Fch",
-        "Yes. Shall I write something on it?"
-      ],
-      [
-        "M",
-        "Yes. Write the word 'toys'. T-O-Y-S. It's a toy shop."
-      ],
-      [
-        "Fch",
-        "Toys. OK, I'm writing it now."
-      ],
-      [
-        "pause",
-        10
-      ],
-      [
-        "R",
-        "Four."
-      ],
-      [
-        "Fch",
-        "Can I colour the car in the road?"
-      ],
-      [
-        "M",
-        "Yes. What colour would you like?"
-      ],
-      [
-        "Fch",
-        "Blue?"
-      ],
-      [
-        "M",
-        "Yes, blue is good."
-      ],
-      [
-        "pause",
-        10
-      ],
-      [
-        "R",
-        "Five."
-      ],
-      [
-        "M",
-        "And now the bird on the roof. Colour it yellow, please."
-      ],
-      [
-        "Fch",
-        "The bird on the roof. Yellow. Finished!"
-      ],
-      [
-        "M",
-        "Well done. That's a lovely picture."
-      ],
-      [
-        "pause",
-        10
-      ],
-      [
-        "R",
-        "Now listen to Part Five again."
-      ]
-    ]
+   ]
   }
+ },
+ "rw": {
+  "p1": {
+   "type": "definitions_copy",
+   "words": [
+    "a supermarket",
+    "a bus stop",
+    "a farmer",
+    "a cinema",
+    "a market",
+    "a nurse",
+    "a café",
+    "a car park"
+   ],
+   "pics": {
+    "a supermarket": "🛒",
+    "a bus stop": "🚏",
+    "a farmer": "👨‍🌾",
+    "a cinema": "🎬",
+    "a market": "🍎",
+    "a nurse": "🩺",
+    "a café": "🏦",
+    "a car park": "🅿️"
+   },
+   "example": {
+    "def": "People go to this place to watch films.",
+    "word": "a cinema"
+   },
+   "items": [
+    {
+     "def": "You wait here when you want to go to another place by bus.",
+     "word": "a bus stop"
+    },
+    {
+     "def": "This is a big shop where you can buy food and lots of things.",
+     "word": "a supermarket"
+    },
+    {
+     "def": "You sit here and drink a milkshake with friends.",
+     "word": "a café"
+    },
+    {
+     "def": "This person helps the doctor and looks after people in hospital.",
+     "word": "a nurse"
+    },
+    {
+     "def": "Drivers leave their cars in this place.",
+     "word": "a car park"
+    }
+   ]
+  },
+  "p2": {
+   "type": "dialogue_mc3",
+   "speakerA": "Woman in the shop",
+   "speakerB": "Zoe",
+   "example": {
+    "a": "Good morning! Can I help you?",
+    "options": [
+     "Yes, please. I'd like a comic.",
+     "Yes, I helped you.",
+     "Yes, it's morning."
+    ],
+    "key": "A"
+   },
+   "items": [
+    {
+     "a": "Which comic would you like?",
+     "options": [
+      "The one with the shark, please.",
+      "I like comics.",
+      "It's on the table."
+     ],
+     "key": "A"
+    },
+    {
+     "a": "Do you want a bag for it?",
+     "options": [
+      "No, I don't have one.",
+      "No, thank you.",
+      "No, it wasn't."
+     ],
+     "key": "B"
+    },
+    {
+     "a": "That's two pounds, please.",
+     "options": [
+      "Here you are.",
+      "There are two.",
+      "It's mine."
+     ],
+     "key": "A"
+    },
+    {
+     "a": "Is this your first time in our shop?",
+     "options": [
+      "Yes, I was.",
+      "Yes, it is.",
+      "Yes, I did it."
+     ],
+     "key": "B"
+    },
+    {
+     "a": "We have new comics every Saturday.",
+     "options": [
+      "Great! I can come back then.",
+      "Saturday is a comic.",
+      "I came on Saturday."
+     ],
+     "key": "A"
+    },
+    {
+     "a": "Goodbye, Zoe. Enjoy your comic!",
+     "options": [
+      "Thank you. Bye!",
+      "Yes, I enjoy.",
+      "I don't know."
+     ],
+     "key": "A"
+    }
+   ]
+  },
+  "p3": {
+   "type": "gapped_text_title",
+   "words": [
+    "market",
+    "lost",
+    "woman",
+    "map",
+    "square",
+    "hungry",
+    "station",
+    "found",
+    "frightened"
+   ],
+   "text": "Last Saturday, Jack went to the town with his aunt. First they went to the __(0)__ to buy some fruit. There were hundreds of people! Jack looked at a man with a big parrot, and when he looked again, his aunt wasn't there. Jack was __(1)__. He walked to the __(2)__ in the middle of the town, where there was a big clock. A kind __(3)__ asked him, 'Are you all right?' 'I can't find my aunt,' said Jack. The woman looked at the __(4)__ on her phone and phoned the market. A short time after, Jack's aunt came. She was very happy because she __(5)__ him. 'Next time, hold my hand!' she said.",
+   "example": "market",
+   "key": [
+    "frightened",
+    "square",
+    "woman",
+    "map",
+    "found"
+   ],
+   "title_choices": [
+    "Jack's new parrot",
+    "Lost in the town",
+    "A day at the station"
+   ],
+   "title_key": "B"
+  },
+  "p4": {
+   "type": "mc_cloze",
+   "title": "Buses",
+   "text": "Buses are big cars __(0)__ can carry lots of people. In many towns, buses are red, green or yellow. People wait for the bus __(1)__ a bus stop. When the bus comes, they get on and show the driver __(2)__ buy a ticket. Some buses have two floors. Children love __(3)__ upstairs because they can see everything from the top. Buses are __(4)__ than cars, so more people can travel in one bus and the streets are not so busy. In some cities there __(5)__ buses at night, too.",
+   "example": {
+    "options": [
+     "which",
+     "who",
+     "when"
+    ],
+    "key": "A"
+   },
+   "items": [
+    {
+     "options": [
+      "at",
+      "in",
+      "on"
+     ],
+     "key": "A"
+    },
+    {
+     "options": [
+      "but",
+      "or",
+      "because"
+     ],
+     "key": "B"
+    },
+    {
+     "options": [
+      "sit",
+      "sat",
+      "sitting"
+     ],
+     "key": "C"
+    },
+    {
+     "options": [
+      "big",
+      "bigger",
+      "biggest"
+     ],
+     "key": "B"
+    },
+    {
+     "options": [
+      "is",
+      "are",
+      "was"
+     ],
+     "key": "B"
+    }
+   ]
+  },
+  "p5": {
+   "type": "story_completion",
+   "title": "The birthday present",
+   "image": "R5",
+   "parts": [
+    {
+     "text": "It was Saturday, and it was Grandpa's birthday. Lucy wanted to buy him a present, but she couldn't buy a big one. 'Let's go to the town,' said her mum. 'We can look in the shops.' They went by bus and got off in the town square.",
+     "examples": [
+      {
+       "s": "Grandpa's birthday was on ___.",
+       "a": "Saturday"
+      },
+      {
+       "s": "Lucy had only ___ to buy a present.",
+       "a": "three pounds"
+      }
+     ],
+     "items": [
+      {
+       "s": "Lucy and her mum went to the town by ___.",
+       "a": [
+        "bus"
+       ]
+      },
+      {
+       "s": "They got off in the town ___.",
+       "a": [
+        "square"
+       ]
+      }
+     ]
+    },
+    {
+     "text": "First they went to the clothes shop, but she couldn't buy a scarf there. Then they looked in the bookshop. Lucy saw a small book about birds. Grandpa loved birds! But the book was too big. Lucy was sad.",
+     "items": [
+      {
+       "s": "In the clothes shop, Lucy couldn't buy a ___.",
+       "a": [
+        "scarf",
+        "a scarf"
+       ]
+      },
+      {
+       "s": "The book in the bookshop was about ___.",
+       "a": [
+        "birds"
+       ]
+      },
+      {
+       "s": "The book was too ___.",
+       "a": [
+        "big"
+       ]
+      }
+     ]
+    },
+    {
+     "text": "Then Lucy had an idea. In the market, she bought some paper and paints. At home, she painted a picture of Grandpa's favourite bird, a blue and yellow parrot. Grandpa loved it. 'This is the best present in the world,' he said, and he put it on the wall.",
+     "items": [
+      {
+       "s": "Lucy bought paper and paints in the ___.",
+       "a": [
+        "market"
+       ]
+      },
+      {
+       "s": "Grandpa put Lucy's picture on the ___.",
+       "a": [
+        "wall"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "p6": {
+   "type": "productive_writing",
+   "image": "R6",
+   "scene": "A town square: a boy is riding a scooter, a girl is holding a balloon, a woman is buying apples from a market stall, a man is reading a newspaper on a bench, a dog is drinking water from a bowl, there is a fountain in the middle and a big clock on a tower.",
+   "examples": [
+    {
+     "s": "The boy is riding a ___.",
+     "a": "scooter"
+    },
+    {
+     "q": "What is the girl holding?",
+     "a": "a balloon"
+    }
+   ],
+   "complete": [
+    {
+     "s": "The woman is buying some ___.",
+     "a": [
+      "apples",
+      "fruit"
+     ]
+    },
+    {
+     "s": "The dog is drinking some ___.",
+     "a": [
+      "water"
+     ]
+    }
+   ],
+   "answer": [
+    {
+     "q": "What is the man doing?",
+     "model": "He is reading a newspaper on a bench."
+    },
+    {
+     "q": "Where is the clock?",
+     "model": "It is on the tower. / It is on top of the tower."
+    }
+   ],
+   "write": {
+    "n": 2,
+    "model": [
+     "There is a fountain in the middle of the square.",
+     "The girl has got a red balloon."
+    ]
+   }
+  }
+ },
+ "speaking": {
+  "p1": {
+   "type": "find_differences",
+   "image": "S1",
+   "scene": "Two pictures of the same street with a café. Left: the examiner's picture. Right: your picture.",
+   "examiner": "Look at the two pictures. Here the bus is red, but here the bus is green. What more differences can you see?",
+   "differences": [
+    "In your picture there are two people at the bus stop, but in my picture there is one.",
+    "In your picture the dog is sitting, but in my picture it is running.",
+    "In your picture the café door is open, but in my picture it is closed.",
+    "In your picture the girl has got a scarf, but in my picture she has got a bag.",
+    "In your picture there are flowers in the window, but in my picture there aren't any."
+   ]
+  },
+  "p2": {
+   "type": "picture_sequence",
+   "title": "Fred and the lost dog",
+   "image": "S2",
+   "examiner_open": "These pictures show a story. It's called 'Fred and the lost dog'. Look at the pictures first. Fred is walking in the town with his mum. He sees a small dog next to a shop. It hasn't got a name on it and it looks sad. Now you tell the story.",
+   "frames": [
+    "Fred is walking in the town with his mum. He sees a small sad dog next to a shop.",
+    "Fred and his mum take the dog to a shop near the park. A kind woman looks at the dog and phones someone.",
+    "A girl and her dad come to the shop. The girl is crying, but when she sees the dog she is very happy.",
+    "The girl takes the dog and says 'Thank you!' to Fred. Fred and the girl are now friends."
+   ]
+  },
+  "p3": {
+   "type": "odd_one_out",
+   "sets": [
+    {
+     "pics": [
+      "bus",
+      "train",
+      "car",
+      "banana"
+     ],
+     "odd": 3,
+     "reason": "You don't travel in a banana. You eat it."
+    },
+    {
+     "pics": [
+      "bread",
+      "cake",
+      "sandwich",
+      "kite"
+     ],
+     "odd": 3,
+     "reason": "You can't eat a kite. You fly it."
+    },
+    {
+     "pics": [
+      {
+       "word": "shop",
+       "emoji": "🏪"
+      },
+      "school",
+      {
+       "word": "hospital",
+       "emoji": "🏥"
+      },
+      "elephant"
+     ],
+     "odd": 3,
+     "reason": "An elephant isn't a building. It's an animal."
+    },
+    {
+     "pics": [
+      "hat",
+      "coat",
+      "phone",
+      "dress"
+     ],
+     "odd": 2,
+     "reason": "You don't wear a phone. You talk on it."
+    }
+   ]
+  },
+  "p4": {
+   "type": "personal_questions",
+   "topic": "your town",
+   "questions": [
+    {
+     "q": "What is the name of your town?",
+     "model": "It's called Lima."
+    },
+    {
+     "q": "What shops are there near your house?",
+     "model": "There is a supermarket and a bakery."
+    },
+    {
+     "q": "How do you go to school?",
+     "model": "I go by car with my dad."
+    },
+    {
+     "q": "Where did you go last weekend?",
+     "model": "I went to the park and to the cinema."
+    },
+    {
+     "q": "Tell me about your favourite place in your town.",
+     "model": "My favourite place is the park. I ride my bike there."
+    }
+   ]
+  }
+ },
+ "audio": {
+  "p1": [
+   [
+    "R",
+    "Part One. Look at the picture. Listen and look. There is one example."
+   ],
+   [
+    "pause",
+    3
+   ],
+   [
+    "M",
+    "Look at this picture of our town, Kim. It's very busy today!"
+   ],
+   [
+    "Fch",
+    "Who's the girl at the market, Dad? She's buying some fruit."
+   ],
+   [
+    "M",
+    "That's Sally. She lives next to us."
+   ],
+   [
+    "Fch",
+    "Oh yes! I know her."
+   ],
+   [
+    "pause",
+    3
+   ],
+   [
+    "R",
+    "Can you see the line? This is an example. Now you listen and draw lines."
+   ],
+   [
+    "pause",
+    3
+   ],
+   [
+    "R",
+    "One."
+   ],
+   [
+    "Fch",
+    "Who's the man with the big box? He's coming out of the bookshop."
+   ],
+   [
+    "M",
+    "That's Fred. He works there. The box has got lots of new books in it."
+   ],
+   [
+    "Fch",
+    "It looks very big!"
+   ],
+   [
+    "pause",
+    5
+   ],
+   [
+    "R",
+    "Two."
+   ],
+   [
+    "M",
+    "Can you see the woman at the bus stop? She's got a baby."
+   ],
+   [
+    "Fch",
+    "Is that Lily?"
+   ],
+   [
+    "M",
+    "Yes, that's Lily and her little boy. They're waiting for the bus to the hospital."
+   ],
+   [
+    "pause",
+    5
+   ],
+   [
+    "R",
+    "Three."
+   ],
+   [
+    "Fch",
+    "Look at that boy! He's on a skateboard."
+   ],
+   [
+    "M",
+    "That's Jack. He's very good, but he must be careful in the street."
+   ],
+   [
+    "Fch",
+    "Jack. He's in my class!"
+   ],
+   [
+    "pause",
+    5
+   ],
+   [
+    "R",
+    "Four."
+   ],
+   [
+    "M",
+    "And who's the girl with the map? She's got a camera too."
+   ],
+   [
+    "Fch",
+    "That's Zoe. She's from another town, so she doesn't know our streets."
+   ],
+   [
+    "M",
+    "She's taking a photo of the old clock."
+   ],
+   [
+    "pause",
+    5
+   ],
+   [
+    "R",
+    "Five."
+   ],
+   [
+    "Fch",
+    "Can you see the boy outside the café? He's eating an ice cream."
+   ],
+   [
+    "M",
+    "Is that Tom?"
+   ],
+   [
+    "Fch",
+    "Yes, that's Tom. He always has a chocolate ice cream on Saturdays."
+   ],
+   [
+    "pause",
+    5
+   ],
+   [
+    "R",
+    "Now listen to Part One again."
+   ]
+  ],
+  "p2": [
+   [
+    "R",
+    "Part Two. Listen and look. There is one example."
+   ],
+   [
+    "pause",
+    3
+   ],
+   [
+    "F",
+    "There's a new library in the town, children."
+   ],
+   [
+    "Mch",
+    "Where is it, Miss Field?"
+   ],
+   [
+    "F",
+    "It's in Park Street, opposite the café."
+   ],
+   [
+    "Mch",
+    "Park Street. Great, that's near my house."
+   ],
+   [
+    "pause",
+    3
+   ],
+   [
+    "R",
+    "Can you see the answer? Now you listen and write."
+   ],
+   [
+    "pause",
+    3
+   ],
+   [
+    "R",
+    "One."
+   ],
+   [
+    "Mch",
+    "What time does the library open?"
+   ],
+   [
+    "F",
+    "It opens at nine o'clock in the morning."
+   ],
+   [
+    "Mch",
+    "Nine o'clock. And when does it close?"
+   ],
+   [
+    "F",
+    "At six in the evening."
+   ],
+   [
+    "pause",
+    8
+   ],
+   [
+    "R",
+    "Two."
+   ],
+   [
+    "Mch",
+    "Is there a room for children?"
+   ],
+   [
+    "F",
+    "Yes. It's called the Rainbow Room. R-A-I-N-B-O-W."
+   ],
+   [
+    "Mch",
+    "The Rainbow Room. Is it big?"
+   ],
+   [
+    "F",
+    "Yes, and it's got lots of comics."
+   ],
+   [
+    "pause",
+    8
+   ],
+   [
+    "R",
+    "Three."
+   ],
+   [
+    "Mch",
+    "Can we go on the computers there?"
+   ],
+   [
+    "F",
+    "Yes. There are twelve computers for children."
+   ],
+   [
+    "Mch",
+    "Twelve! That's a lot."
+   ],
+   [
+    "F",
+    "Yes, but only for a short time."
+   ],
+   [
+    "pause",
+    8
+   ],
+   [
+    "R",
+    "Four."
+   ],
+   [
+    "Mch",
+    "Is there story time?"
+   ],
+   [
+    "F",
+    "Yes. Story time is on Fridays at four o'clock."
+   ],
+   [
+    "Mch",
+    "Friday. I can go after school."
+   ],
+   [
+    "pause",
+    8
+   ],
+   [
+    "R",
+    "Five."
+   ],
+   [
+    "Mch",
+    "What do we need to bring?"
+   ],
+   [
+    "F",
+    "Your library ticket. You need it to take books home."
+   ],
+   [
+    "Mch",
+    "My ticket. OK, I've got one."
+   ],
+   [
+    "pause",
+    8
+   ],
+   [
+    "R",
+    "Now listen to Part Two again."
+   ]
+  ],
+  "p3": [
+   [
+    "R",
+    "Part Three. Listen and look. There is one example."
+   ],
+   [
+    "pause",
+    3
+   ],
+   [
+    "R",
+    "Mrs Long is telling Peter what she bought in each shop in the town. What did she buy in each place?"
+   ],
+   [
+    "pause",
+    3
+   ],
+   [
+    "Mch",
+    "Hello, Mrs Long. You've got lots of bags!"
+   ],
+   [
+    "F",
+    "Yes, Peter. I went to the market first. I bought some grapes. They're very sweet."
+   ],
+   [
+    "pause",
+    3
+   ],
+   [
+    "R",
+    "Can you see the letter G? Now you listen and write a letter in each box."
+   ],
+   [
+    "pause",
+    3
+   ],
+   [
+    "Mch",
+    "Did you go to the bookshop?"
+   ],
+   [
+    "F",
+    "Yes, I bought a comic for my grandson. It's about a shark. He loves sharks."
+   ],
+   [
+    "Mch",
+    "I like sharks too!"
+   ],
+   [
+    "pause",
+    3
+   ],
+   [
+    "F",
+    "Then I went to the clothes shop. It's cold now, so I bought a scarf. A long red one."
+   ],
+   [
+    "Mch",
+    "It's very nice."
+   ],
+   [
+    "pause",
+    3
+   ],
+   [
+    "Mch",
+    "Did you have a drink at the café?"
+   ],
+   [
+    "F",
+    "Yes, and I bought a cake to take home. A chocolate cake for tea."
+   ],
+   [
+    "Mch",
+    "Mmm!"
+   ],
+   [
+    "pause",
+    3
+   ],
+   [
+    "F",
+    "After that, I went to the toy shop. I bought a kite for my granddaughter. It's blue and green."
+   ],
+   [
+    "Mch",
+    "She can fly it in the park."
+   ],
+   [
+    "F",
+    "Yes, on a windy day."
+   ],
+   [
+    "pause",
+    3
+   ],
+   [
+    "Mch",
+    "And the big bag?"
+   ],
+   [
+    "F",
+    "That's from the supermarket. Just some bread for dinner. Now I'm going home. Bye, Peter!"
+   ],
+   [
+    "Mch",
+    "Bye, Mrs Long!"
+   ],
+   [
+    "pause",
+    3
+   ],
+   [
+    "R",
+    "Now listen to Part Three again."
+   ]
+  ],
+  "p4": [
+   [
+    "R",
+    "Part Four. Look at the pictures. Listen and look. There is one example."
+   ],
+   [
+    "pause",
+    3
+   ],
+   [
+    "R",
+    "How is Jane going to the town centre?"
+   ],
+   [
+    "M",
+    "Jane, are you going to the town centre by bus?"
+   ],
+   [
+    "Fch",
+    "No, Dad. Mum is taking me in the car. My bike is broken."
+   ],
+   [
+    "M",
+    "OK. See you."
+   ],
+   [
+    "pause",
+    3
+   ],
+   [
+    "R",
+    "Can you see the tick? Now you listen and tick the box."
+   ],
+   [
+    "pause",
+    3
+   ],
+   [
+    "R",
+    "One. Where is the bookshop?"
+   ],
+   [
+    "Fch",
+    "Excuse me, where's the bookshop? Is it next to the café?"
+   ],
+   [
+    "M",
+    "No, it moved last year. Now it's opposite the school."
+   ],
+   [
+    "Fch",
+    "Opposite the school. Thank you."
+   ],
+   [
+    "M",
+    "It's near the station."
+   ],
+   [
+    "pause",
+    3
+   ],
+   [
+    "R",
+    "Two. What does Nick want to buy?"
+   ],
+   [
+    "F",
+    "Nick, do you want a kite for your birthday?"
+   ],
+   [
+    "Mch",
+    "No, Mum. I've got a ball and a kite. I want a robot! The one that walks."
+   ],
+   [
+    "F",
+    "A robot? Let's see how much it is."
+   ],
+   [
+    "pause",
+    3
+   ],
+   [
+    "R",
+    "Three. What is Dad doing now?"
+   ],
+   [
+    "Mch",
+    "Where's Dad? Is he cooking?"
+   ],
+   [
+    "F",
+    "No, he's at the supermarket. He's doing the shopping."
+   ],
+   [
+    "Mch",
+    "Did he drive there?"
+   ],
+   [
+    "F",
+    "No, he walked. It's very near."
+   ],
+   [
+    "pause",
+    3
+   ],
+   [
+    "R",
+    "Four. What time does the shop close?"
+   ],
+   [
+    "Fch",
+    "Excuse me, does the shop close at five o'clock?"
+   ],
+   [
+    "M",
+    "No, we close at six. And on Saturdays we close at seven."
+   ],
+   [
+    "Fch",
+    "Six o'clock. OK, I can come back after school."
+   ],
+   [
+    "pause",
+    3
+   ],
+   [
+    "R",
+    "Five. What did Grandma lose in the town?"
+   ],
+   [
+    "M",
+    "Grandma, did you lose your hat in the town?"
+   ],
+   [
+    "F",
+    "No, my hat's here. I lost my glasses! I can't read the newspaper."
+   ],
+   [
+    "M",
+    "Did you leave them in your bag?"
+   ],
+   [
+    "F",
+    "No, I looked in my bag. They're not there."
+   ],
+   [
+    "pause",
+    3
+   ],
+   [
+    "R",
+    "Now listen to Part Four again."
+   ]
+  ],
+  "p5": [
+   [
+    "R",
+    "Part Five. Look at the picture. Listen and look. There is one example."
+   ],
+   [
+    "pause",
+    3
+   ],
+   [
+    "M",
+    "Here's a picture of a street with some shops. Can you see the bus at the bus stop?"
+   ],
+   [
+    "Fch",
+    "Yes. Shall I colour it?"
+   ],
+   [
+    "M",
+    "Yes, please. Colour the bus red."
+   ],
+   [
+    "Fch",
+    "OK, a red bus."
+   ],
+   [
+    "pause",
+    3
+   ],
+   [
+    "R",
+    "Can you see the red bus? This is an example. Now you listen and colour and write."
+   ],
+   [
+    "pause",
+    3
+   ],
+   [
+    "R",
+    "One."
+   ],
+   [
+    "M",
+    "Now, can you see the flowers in the window box?"
+   ],
+   [
+    "Fch",
+    "Yes, above the café."
+   ],
+   [
+    "M",
+    "Colour them pink, please."
+   ],
+   [
+    "Fch",
+    "Pink flowers. OK!"
+   ],
+   [
+    "pause",
+    10
+   ],
+   [
+    "R",
+    "Two."
+   ],
+   [
+    "Fch",
+    "There's a dog outside the café. Can I colour it?"
+   ],
+   [
+    "M",
+    "Yes. Colour the dog brown."
+   ],
+   [
+    "Fch",
+    "A brown dog. Done!"
+   ],
+   [
+    "pause",
+    10
+   ],
+   [
+    "R",
+    "Three."
+   ],
+   [
+    "M",
+    "Can you see the sign above the shop door? It's empty."
+   ],
+   [
+    "Fch",
+    "Yes. Shall I write something on it?"
+   ],
+   [
+    "M",
+    "Yes. Write the word 'toys'. T-O-Y-S. It's a toy shop."
+   ],
+   [
+    "Fch",
+    "Toys. OK, I'm writing it now."
+   ],
+   [
+    "pause",
+    10
+   ],
+   [
+    "R",
+    "Four."
+   ],
+   [
+    "Fch",
+    "Can I colour the car in the road?"
+   ],
+   [
+    "M",
+    "Yes. What colour would you like?"
+   ],
+   [
+    "Fch",
+    "Blue?"
+   ],
+   [
+    "M",
+    "Yes, blue is good."
+   ],
+   [
+    "pause",
+    10
+   ],
+   [
+    "R",
+    "Five."
+   ],
+   [
+    "M",
+    "And now the bird on the roof. Colour it yellow, please."
+   ],
+   [
+    "Fch",
+    "The bird on the roof. Yellow. Finished!"
+   ],
+   [
+    "M",
+    "Well done. That's a lovely picture."
+   ],
+   [
+    "pause",
+    10
+   ],
+   [
+    "R",
+    "Now listen to Part Five again."
+   ]
+  ]
+ }
 }

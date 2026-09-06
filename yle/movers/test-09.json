@@ -485,7 +485,7 @@
         "car",
         "laughed"
       ],
-      "text": "Last Sunday, Hugo's family went to the __(0)__. In the morning there was a lot of __(1)__ in the sky and all the family was hot. Hugo's father put a big __(2)__ on his head and slept under a tree. After lunch, black clouds came and it started to __(3)__. Everybody ran to the __(4)__ with the bags and the towels. They were very __(5)__, but they ate their sandwiches inside the car and Hugo's mother said it was the best day of the year.",
+      "text": "Last Sunday, Hugo's family went to the __(0)__. In the morning there was a lot of __(1)__ in the sky and all the family was hot. Hugo's father put a big __(2)__ on his head and slept under a tree. After lunch, black clouds came and it started to __(3)__. Everyone ran to the __(4)__ with the bags and the towels. They were very __(5)__, but they ate their sandwiches inside the car and Hugo's mother said it was the best day of the year.",
       "example": "beach",
       "key": [
         "sun",
@@ -682,7 +682,7 @@
       "type": "find_differences",
       "image": "S1",
       "scene": "Two pictures of the same park on a windy day. Left: the examiner's picture. Right: your picture.",
-      "examiner": "Look at the two pictures. Here the girl is wearing a red coat, but here she is wearing a blue coat. What other differences can you see?",
+      "examiner": "Look at the two pictures. Here the girl is wearing a red coat, but here she is wearing a blue coat. What more differences can you see?",
       "differences": [
         "In your picture the boy has got a ball, but in my picture he has got a dog.",
         "In your picture there are three clouds, but in my picture there are five.",
@@ -698,7 +698,7 @@
       "examiner_open": "These pictures show a story. It's called 'A cold day'. Look at the pictures first. Tom looks out of the window and it is a very cold morning. Now you tell the story.",
       "frames": [
         "Tom looks out of the window. It is very cold and there is water on the ground.",
-        "Tom puts on his coat, his scarf and his boots. His mother gives him his gloves too.",
+        "Tom puts on his coat, his scarf and his boots. His mother gives him his hat too.",
         "Tom is walking to school when he sees a little cat next to a wall. The cat is cold and wet.",
         "Tom takes the cat home. Now the cat is sleeping in the kitchen with Tom's scarf."
       ]
@@ -1033,7 +1033,7 @@
       ],
       [
         "F",
-        "And don't forget your hat!"
+        "And take your hat!"
       ],
       [
         "Fch",
@@ -1159,7 +1159,7 @@
       ],
       [
         "M",
-        "That sounds nice."
+        "That's nice."
       ],
       [
         "pause",
@@ -1229,7 +1229,7 @@
       ],
       [
         "Mch",
-        "My jacket isn't warm. I want to wear my big coat."
+        "My jacket isn't hot. I want to wear my big coat."
       ],
       [
         "F",
@@ -1475,7 +1475,7 @@
       ],
       [
         "M",
-        "Well done. Now you're ready for the trip."
+        "Well done. Now you can go on the trip."
       ],
       [
         "pause",
