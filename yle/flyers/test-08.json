@@ -104,7 +104,7 @@
      ]
     },
     {
-     "q": "Money per hour (£)",
+     "q": "Number of the house",
      "a": [
       "12",
       "twelve",
@@ -288,7 +288,7 @@
     "a teacher",
     "a cook",
     "a journalist",
-    "a librarian",
+    "a person",
     "a singer",
     "a painter"
    ],
@@ -335,7 +335,7 @@
     },
     {
      "def": "This person works in a library and helps people find books.",
-     "word": "a librarian"
+     "word": "a person"
     }
    ]
   },
@@ -346,7 +346,7 @@
    "example": {
     "a": "Hi Mia. What would you like to be when you grow up?",
     "key": "E",
-    "text": "I’d love to be a vet – I really like animals!"
+    "text": "I’d love to be a animal doctor – I really like animals!"
    },
    "options": [
     {
@@ -363,11 +363,11 @@
     },
     {
      "letter": "D",
-     "text": "Sometimes, especially when the rabbit gets out of her cage."
+     "text": "Sometimes, above all when the rabbit gets out of her cage."
     },
     {
      "letter": "E",
-     "text": "I’d love to be a vet – I really like animals!"
+     "text": "I’d love to be a animal doctor – I really like animals!"
     },
     {
      "letter": "F",
@@ -539,19 +539,19 @@
   },
   "p5": {
    "type": "story_completion",
-   "title": "Dad’s new bakery",
+   "title": "Dad’s new bread shop",
    "parts": [
     {
-     "text": "Two months ago, my dad opened a small bakery on Queen Street. He has wanted to be a baker since he was young, so we are all very proud of him. The name of the bakery is \"Sweet Morning\" and it has a big window with a yellow sign. My dad wakes up every day at four o’clock to bake fresh bread. He makes 100 loaves of bread every morning. He also makes chocolate cakes, strawberry tarts and cookies. My favourite cookies are the ones with white chocolate chips. My big sister helps him on Saturdays. She puts the cakes in the shop window and she serves the customers. Last Saturday, she served more than fifty people! I can’t work in the bakery yet because I’m only nine, but I help by tasting everything. That’s the best job!",
+     "text": "Two months ago, my dad opened a small bread shop on Queen Street. He has wanted to be a baker since he was young, so we are all very proud of him. The name of the bread shop is \"Sweet Morning\" and it has a big window with a yellow sign. My dad wakes up every day at four o’clock to bake bread. He makes 100 loaves of bread every morning. He also makes chocolate cakes, strawberry tarts and cookies. My favourite cookies are the ones with white chocolate chips. My big sister helps him on Saturdays. She puts the cakes in the shop window and she serves the customers. Last Saturday, she served more than fifty people! I can’t work in the bread shop yet because I’m only nine, but I help by tasting everything. That’s the best job!",
      "examples": [
       {
-       "s": "Where is the bakery?",
+       "s": "Where is the bread shop?",
        "a": "on Queen Street"
       }
      ],
      "items": [
       {
-       "s": "What is the name of the bakery?",
+       "s": "What is the name of the bread shop?",
        "a": "Sweet Morning"
       },
       {
@@ -560,23 +560,43 @@
       },
       {
        "s": "How many loaves of bread does he make?",
-       "a": ""
+       "a": [
+        "100",
+        "a hundred",
+        "one hundred"
+       ]
       },
       {
        "s": "Who helps on Saturdays?",
-       "a": ""
+       "a": [
+        "his big sister",
+        "his sister",
+        "my big sister"
+       ]
       },
       {
        "s": "How many people did she serve last Saturday?",
-       "a": ""
+       "a": [
+        "more than fifty",
+        "fifty",
+        "more than 50",
+        "50"
+       ]
       },
       {
        "s": "Why can’t the writer work there?",
-       "a": ""
+       "a": [
+        "he is only nine",
+        "because he is only nine",
+        "he’s only nine"
+       ]
       },
       {
-       "s": "What is the writer’s job?",
-       "a": ""
+       "s": "What is the person's job?",
+       "a": [
+        "a baker",
+        "baker"
+       ]
       }
      ]
     }
@@ -584,8 +604,8 @@
   },
   "p6": {
    "type": "open_cloze",
-   "title": "My daily routine",
-   "text": "Every school day, I wake __(0)__ at seven o’clock. I have breakfast with my family and __(1)__ I brush my teeth. I usually wear my blue school uniform. My mother takes me to school __(2)__ car. My first lesson starts at half past eight. I __(3)__ four lessons before lunchtime. In the afternoon, we __(4)__ maths and music. I come home at four and I play __(5)__ my dog, Bruno. Before dinner, I do my homework. At nine o’clock, I go to bed. I love my routine.",
+   "title": "My daily day",
+   "text": "Every school day, I wake __(0)__ at seven o’clock. I have breakfast with my family and __(1)__ I brush my teeth. I usually wear my blue school uniform. My mother takes me to school __(2)__ car. My first lesson starts at half past eight. I __(3)__ four lessons before lunch. In the afternoon, we __(4)__ maths and music. I come home at four and I play __(5)__ my dog, Bruno. Before dinner, I do my homework. At nine o’clock, I go to bed. I love my day.",
    "example": "up",
    "key": [
     "then",
@@ -597,12 +617,12 @@
   },
   "p7": {
    "type": "story_writing",
-   "title": "A day in the life of a vet",
+   "title": "A day in the life of a animal doctor",
    "image": "P7",
    "pictures": [
-    "A young vet arrives at her clinic and puts on her white coat.",
+    "A young animal doctor arrives at her clinic and puts on her white coat.",
     "She looks after a little puppy with a sore paw.",
-    "The happy owner thanks the vet and the puppy wags its tail."
+    "The happy owner thanks the animal doctor and the puppy wags its tail."
    ],
    "prompt": "Look at the three pictures and write the story. Write 20 or more words."
   }
@@ -614,10 +634,10 @@
    "examiner_scene": "A doctor’s office: a doctor in a white coat, a child on a chair, a stethoscope, a picture of a flower, a window with sun, a plant on the desk.",
    "candidate_scene": "A doctor’s office: a doctor in a white coat, a child on a chair, a stethoscope, a picture of a DOG, a window with sun, a CUP on the desk.",
    "differences": [
-    "Picture of flower vs picture of dog.",
-    "Plant vs cup on the desk.",
-    "(Accept other small differences).",
-    "(Accept other small differences)."
+    "In my picture there's a picture of a flower on the wall, but in your picture there's a picture of a dog.",
+    "In my picture there's a plant on the desk, but in your picture there's a cup.",
+    "In my picture the woman is writing, but in your picture she's using the computer.",
+    "You can say any other difference you find."
    ]
   },
   "p2": {
@@ -644,7 +664,7 @@
    "type": "picture_sequence",
    "image": "S3",
    "title": "Tom’s morning",
-   "examiner_open": "These pictures show Tom’s morning. Tom wakes up when his alarm clock rings. Now you tell the rest.",
+   "examiner_open": "These pictures show Tom’s morning. Tom wakes up when his alarm clock rings. Now you tell the story.",
    "frames": [
     "Tom wakes up when his alarm clock rings.",
     "He eats breakfast with his family.",
@@ -656,7 +676,7 @@
    "type": "personal_questions",
    "questions": [
     {
-     "q": "Tell me about your morning routine."
+     "q": "Tell me about your morning day."
     },
     {
      "q": "What do you want to be when you grow up? Why?"
@@ -899,7 +919,7 @@
    ],
    [
     "F",
-    "Perfect. How much per hour?"
+    "Great. And the number of your house?"
    ],
    [
     "pause",
@@ -907,7 +927,7 @@
    ],
    [
     "Mch",
-    "I usually charge twelve pounds an hour."
+    "Our house is number twelve."
    ],
    [
     "pause",
@@ -1015,7 +1035,7 @@
    ],
    [
     "F",
-    "Perfect. How much per hour?"
+    "Great. And the number of your house?"
    ],
    [
     "pause",
@@ -1023,7 +1043,7 @@
    ],
    [
     "Mch",
-    "I usually charge twelve pounds an hour."
+    "Our house is number twelve."
    ],
    [
     "pause",
@@ -1411,7 +1431,7 @@
    ],
    [
     "Fch",
-    "Not in a school either."
+    "Not in a school one of them."
    ],
    [
     "pause",
@@ -1651,7 +1671,7 @@
    ],
    [
     "Fch",
-    "Not in a school either."
+    "Not in a school one of them."
    ],
    [
     "pause",

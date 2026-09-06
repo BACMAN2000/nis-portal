@@ -1,7 +1,7 @@
 {
  "level": "flyers",
  "number": 6,
- "theme": "Weather & Seasons",
+ "theme": "Weather & Times of the year",
  "listening": {
   "p1": {
    "type": "draw_lines",
@@ -90,7 +90,7 @@
      "q": "Highest temperature (°C)",
      "a": [
       "22",
-      "22 degrees"
+      "22 "
      ]
     },
     {
@@ -133,11 +133,11 @@
     },
     {
      "letter": "C",
-     "word": "snowy"
+     "word": "snowing"
     },
     {
      "letter": "D",
-     "word": "rainy"
+     "word": "raining"
     },
     {
      "letter": "E",
@@ -190,7 +190,7 @@
      "q": "What clothes will the boy wear today?",
      "options": [
       "shorts and a T-shirt",
-      "a raincoat and wellies",
+      "a coat and boots",
       "a coat and a scarf"
      ],
      "key": "B",
@@ -207,7 +207,7 @@
      "image": "P4Q2"
     },
     {
-     "q": "What season does the girl like best?",
+     "q": "What time of the year does the girl like best?",
      "options": [
       "spring",
       "summer",
@@ -279,13 +279,13 @@
     "a rainbow",
     "sunglasses",
     "snowflakes",
-    "wellies",
+    "boots",
     "a scarf",
     "gloves",
     "a coat",
     "a cloud",
     "lightning",
-    "a raincoat",
+    "a coat",
     "sandals",
     "thunder",
     "autumn leaves",
@@ -314,14 +314,14 @@
     },
     {
      "def": "A big coat that keeps you dry when it rains.",
-     "word": "a raincoat"
+     "word": "a coat"
     },
     {
      "def": "Big boots to walk in water or mud.",
-     "word": "wellies"
+     "word": "boots"
     },
     {
-     "def": "You wear these on your eyes when the sun is very bright.",
+     "def": "You wear these on your eyes when the sun is very lovely.",
      "word": "sunglasses"
     },
     {
@@ -358,7 +358,7 @@
     },
     {
      "letter": "C",
-     "text": "Definitely. Mine is the red one."
+     "text": "Really. Mine is the red one."
     },
     {
      "letter": "D",
@@ -395,11 +395,11 @@
      "key": "D"
     },
     {
-     "a": "Shall we wear our raincoats too?",
+     "a": "Shall we wear our coats too?",
      "key": "D"
     },
     {
-     "a": "Perfect. Remember my new wellies!",
+     "a": "Perfect. Remember my new boots!",
      "key": "F"
     }
    ]
@@ -421,7 +421,7 @@
    "title_choices": [
     [
      "A",
-     "A rainy Monday"
+     "A raining Monday"
     ],
     [
      "B",
@@ -443,8 +443,8 @@
   },
   "p4": {
    "type": "mc_cloze",
-   "title": "The four seasons",
-   "text": "In many parts of the world, there are __(1)__ seasons: spring, summer, autumn and winter. Each __(2)__ is different. In spring, the flowers start __(3)__ and the weather is __(4)__. In summer, the sun __(5)__ very bright and many children go __(6)__ holiday. In autumn, the leaves turn red, yellow and brown, and __(7)__ start to wear jackets. In winter, some places __(8)__ lots of snow and it is __(9)__ cold. Near the equator, there __(10)__ only two seasons – a dry and a rainy one.",
+   "title": "The four times of the year",
+   "text": "In many parts of the world, there are __(1)__ times of the year: spring, summer, autumn and winter. Each __(2)__ is different. In spring, the flowers start __(3)__ and the weather is __(4)__. In summer, the sun __(5)__ very lovely and many children go __(6)__ holiday. In autumn, the leaves turn red, yellow and brown, and __(7)__ start to wear jackets. In winter, some places __(8)__ lots of snow and it is __(9)__ cold. Near the equator, there __(10)__ only two times of the year – a dry and a raining one.",
    "example": {
     "options": [
      "",
@@ -466,7 +466,7 @@
      "options": [
       "year",
       "day",
-      "season"
+      "time of the year"
      ],
      "key": "C"
     },
@@ -541,7 +541,7 @@
    "title": "The snow day",
    "parts": [
     {
-     "text": "Last January, there was a big surprise in my town. When I woke up on Tuesday morning, I looked out of the window and I couldn’t believe my eyes. There was snow everywhere! It was the first snow in our town for six years. I quickly put on my coat, scarf and gloves and I ran outside. My neighbour Joe was already there with his little dog, Bertie. We decided to build a snowman together. Our snowman was 1 metre 20 tall. We gave him two round black stones for eyes, a carrot for his nose, and Joe’s old red hat. We called him Mr Chilly. Then my sister Kate came outside. She had a big plastic plate and we used it to slide down the small hill near our house. At lunchtime, Mum called us for hot chocolate. By the afternoon, the snow started to melt, but Mr Chilly stayed until the next morning.",
+     "text": "Last January, there was a big surprise in my town. When I woke up on Tuesday morning, I looked out of the window and I couldn’t believe my eyes. There was snow everywhere! It was the first snow in our town for six years. I quickly put on my coat, scarf and gloves and I ran outside. My friend Joe was already there with his little dog, Bertie. We decided to build a snowman together. Our snowman was as tall as my sister. We gave him two round black stones for eyes, a carrot for his nose, and Joe’s old red hat. We called him Mr Chilly. Then my sister Kate came outside. She had a big plastic plate and we used it to slide down the small hill near our house. At lunch, Mum called us for hot chocolate. By the afternoon, the snow started to melt, but Mr Chilly stayed until the next morning.",
      "examples": [
       {
        "s": "When did it snow?",
@@ -558,7 +558,7 @@
       },
       {
        "s": "Who did the writer build a snowman with?",
-       "a": "Joe (his neighbour)"
+       "a": "Joe (his friend)"
       },
       {
        "s": "What is Joe’s dog called?",
@@ -566,19 +566,30 @@
       },
       {
        "s": "How tall was the snowman?",
-       "a": ""
+       "a": [
+        "as tall as his sister",
+        "as tall as my sister"
+       ]
       },
       {
        "s": "What was used for the snowman’s nose?",
-       "a": ""
+       "a": [
+        "a carrot"
+       ]
       },
       {
        "s": "What did Kate bring outside?",
-       "a": ""
+       "a": [
+        "a big plastic plate",
+        "a plastic plate",
+        "a plate"
+       ]
       },
       {
-       "s": "What did they drink at lunchtime?",
-       "a": ""
+       "s": "What did they drink at lunch?",
+       "a": [
+        "hot chocolate"
+       ]
       }
      ]
     }
@@ -614,12 +625,12 @@
    "type": "find_differences_statements",
    "image": "S1",
    "examiner_scene": "A park on a sunny day: a girl eating an ice cream, a dog running, a blue kite, three balloons, a man reading a book, a bench with a bottle of water.",
-   "candidate_scene": "A park on a RAINY day: a girl eating an ice cream, a dog running, a RED kite, three balloons, a man reading a NEWSPAPER, a bench with a bottle of water.",
+   "candidate_scene": "A park on a Raining day: a girl eating an ice cream, a dog running, a RED kite, three balloons, a man reading a NEWSPAPER, a bench with a bottle of water.",
    "differences": [
-    "Sunny vs rainy weather.",
-    "Blue kite vs red kite.",
-    "Book vs newspaper.",
-    "(Plus: in one picture people might use an umbrella)."
+    "In my picture it's sunny, but in your picture it's raining.",
+    "In my picture the kite is blue, but in your picture it's red.",
+    "In my picture the man is reading a book, but in your picture he's reading a newspaper.",
+    "In my picture no-one has got an umbrella, but in your picture a woman has got one."
    ]
   },
   "p2": {
@@ -630,7 +641,7 @@
     "What’s the name of the other summer camp?",
     "What month is it?",
     "What’s the weather usually like?",
-    "What activities can you do?",
+    "What can you do?",
     "What must you bring?"
    ],
    "examiner_card": "CAMP: Sunny Beach Camp – July – usually 28°C – swimming, volleyball, sailing – swimsuit, sunglasses, sun hat.",
@@ -638,15 +649,15 @@
     "What’s your camp called?",
     "When is the camp?",
     "What is the temperature normally?",
-    "What activities do children do?",
+    "What things do children do?",
     "What clothes should children bring?"
    ]
   },
   "p3": {
    "type": "picture_sequence",
    "image": "S3",
-   "title": "The rainy party",
-   "examiner_open": "These pictures tell a story called \"The rainy party\". The children are preparing a party in the garden. Now you tell the rest.",
+   "title": "The raining party",
+   "examiner_open": "These pictures tell a story called \"The raining party\". The children are preparing a party in the garden. Now you tell the story.",
    "frames": [
     "Children are preparing a birthday party in the garden with balloons and cakes.",
     "It starts raining a lot and the cakes get wet.",
@@ -658,7 +669,7 @@
    "type": "personal_questions",
    "questions": [
     {
-     "q": "What’s your favourite season? Why?"
+     "q": "What’s your favourite time of the year? Why?"
     },
     {
      "q": "What is the weather like today?"
@@ -829,7 +840,7 @@
    ],
    [
     "R",
-    "To the local radio weather report."
+    "To the radio weather news."
    ],
    [
     "pause",
@@ -837,7 +848,7 @@
    ],
    [
     "R",
-    "Example: the reporter’s name is Miss Green."
+    "Example: the woman's name is Miss Green."
    ],
    [
     "pause",
@@ -861,7 +872,7 @@
    ],
    [
     "Mch",
-    "The highest temperature today will be 22 degrees."
+    "The highest temperature today will be 22."
    ],
    [
     "pause",
@@ -877,7 +888,7 @@
    ],
    [
     "Mch",
-    "Rain will continue until Sunday."
+    "Rain will not stop until Sunday."
    ],
    [
     "pause",
@@ -905,7 +916,7 @@
    ],
    [
     "R",
-    "To the local radio weather report."
+    "To the radio weather news."
    ],
    [
     "pause",
@@ -913,7 +924,7 @@
    ],
    [
     "R",
-    "Example: the reporter’s name is Miss Green."
+    "Example: the woman's name is Miss Green."
    ],
    [
     "pause",
@@ -937,7 +948,7 @@
    ],
    [
     "Mch",
-    "The highest temperature today will be 22 degrees."
+    "The highest temperature today will be 22."
    ],
    [
     "pause",
@@ -953,7 +964,7 @@
    ],
    [
     "Mch",
-    "Rain will continue until Sunday."
+    "Rain will not stop until Sunday."
    ],
    [
     "pause",
@@ -1027,7 +1038,7 @@
    ],
    [
     "Fch",
-    "Tuesday in Brazil – it was very hot and dry, almost 40 degrees!"
+    "Tuesday in Brazil – it was very hot and dry, nearly all 40!"
    ],
    [
     "pause",
@@ -1035,7 +1046,7 @@
    ],
    [
     "Mch",
-    "Wednesday in Norway – it was really snowy all day."
+    "Wednesday in Norway – it snowed all day."
    ],
    [
     "pause",
@@ -1043,7 +1054,7 @@
    ],
    [
     "Fch",
-    "Thursday in Canada – thick fog everywhere, you couldn’t see cars."
+    "Thursday in Canada – a lot of fog everywhere, you couldn’t see cars."
    ],
    [
     "pause",
@@ -1051,7 +1062,7 @@
    ],
    [
     "Mch",
-    "Friday in Egypt – terribly windy, sand in the air."
+    "Friday in Egypt – very windy, sand in the air."
    ],
    [
     "pause",
@@ -1059,7 +1070,7 @@
    ],
    [
     "Fch",
-    "And Saturday in the UK – as usual, rainy!"
+    "And Saturday in the UK – again, raining!"
    ],
    [
     "pause",
@@ -1119,7 +1130,7 @@
    ],
    [
     "Fch",
-    "Tuesday in Brazil – it was very hot and dry, almost 40 degrees!"
+    "Tuesday in Brazil – it was very hot and dry, nearly all 40!"
    ],
    [
     "pause",
@@ -1127,7 +1138,7 @@
    ],
    [
     "Mch",
-    "Wednesday in Norway – it was really snowy all day."
+    "Wednesday in Norway – it snowed all day."
    ],
    [
     "pause",
@@ -1135,7 +1146,7 @@
    ],
    [
     "Fch",
-    "Thursday in Canada – thick fog everywhere, you couldn’t see cars."
+    "Thursday in Canada – a lot of fog everywhere, you couldn’t see cars."
    ],
    [
     "pause",
@@ -1143,7 +1154,7 @@
    ],
    [
     "Mch",
-    "Friday in Egypt – terribly windy, sand in the air."
+    "Friday in Egypt – very windy, sand in the air."
    ],
    [
     "pause",
@@ -1151,7 +1162,7 @@
    ],
    [
     "Fch",
-    "And Saturday in the UK – as usual, rainy!"
+    "And Saturday in the UK – again, raining!"
    ],
    [
     "pause",
@@ -1217,7 +1228,7 @@
    ],
    [
     "Fch",
-    "I’ll wear my raincoat and my wellies."
+    "I’ll wear my coat and my boots."
    ],
    [
     "pause",
@@ -1261,7 +1272,7 @@
    ],
    [
     "Fch",
-    "Not a city either."
+    "Not a city one of them."
    ],
    [
     "pause",
@@ -1281,7 +1292,7 @@
    ],
    [
     "R",
-    "Three. — Which season do you love?"
+    "Three. — Which time of the year do you love?"
    ],
    [
     "pause",
@@ -1289,7 +1300,7 @@
    ],
    [
     "F",
-    "— Which season do you love?"
+    "— Which time of the year do you love?"
    ],
    [
     "pause",
@@ -1297,7 +1308,7 @@
    ],
    [
     "Fch",
-    "I like spring, summer is nice, but autumn with the coloured leaves is definitely my favourite."
+    "I like spring, summer is nice, but autumn with the coloured leaves is really my favourite."
    ],
    [
     "pause",
@@ -1369,7 +1380,7 @@
    ],
    [
     "Fch",
-    "After that the sun will shine."
+    "After that the sun will come out."
    ],
    [
     "pause",
@@ -1433,7 +1444,7 @@
    ],
    [
     "Fch",
-    "I’ll wear my raincoat and my wellies."
+    "I’ll wear my coat and my boots."
    ],
    [
     "pause",
@@ -1477,7 +1488,7 @@
    ],
    [
     "Fch",
-    "Not a city either."
+    "Not a city one of them."
    ],
    [
     "pause",
@@ -1497,7 +1508,7 @@
    ],
    [
     "R",
-    "Three. — Which season do you love?"
+    "Three. — Which time of the year do you love?"
    ],
    [
     "pause",
@@ -1505,7 +1516,7 @@
    ],
    [
     "F",
-    "— Which season do you love?"
+    "— Which time of the year do you love?"
    ],
    [
     "pause",
@@ -1513,7 +1524,7 @@
    ],
    [
     "Fch",
-    "I like spring, summer is nice, but autumn with the coloured leaves is definitely my favourite."
+    "I like spring, summer is nice, but autumn with the coloured leaves is really my favourite."
    ],
    [
     "pause",
@@ -1585,7 +1596,7 @@
    ],
    [
     "Fch",
-    "After that the sun will shine."
+    "After that the sun will come out."
    ],
    [
     "pause",

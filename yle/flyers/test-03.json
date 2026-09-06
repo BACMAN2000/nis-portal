@@ -3,2173 +3,2173 @@
  "number": 3,
  "theme": "Food & Drink",
  "listening": {
-  "p1": {
-   "type": "draw_lines",
-   "image": "L1",
-   "scene": "A busy café with people at different tables: a man reading a newspaper and drinking tea, a boy eating a chocolate cake, a woman with a coffee, a girl drinking orange juice, a man having spaghetti, a woman with a baby and a banana, a waiter carrying a tray.",
-   "names": [
-    "Harry",
-    "Mandy",
-    "Tom",
-    "Kate",
-    "Rosa",
-    "Alex"
-   ],
-   "people": [
-    {
-     "id": "A",
-     "desc": "a man reading a newspaper"
-    },
-    {
-     "id": "B",
-     "desc": "drinking tea"
-    },
-    {
-     "id": "C",
-     "desc": "a boy eating a chocolate cake"
-    },
-    {
-     "id": "D",
-     "desc": "a woman with a coffee"
-    },
-    {
-     "id": "E",
-     "desc": "a girl drinking orange juice"
-    },
-    {
-     "id": "F",
-     "desc": "a man having spaghetti"
-    },
-    {
-     "id": "G",
-     "desc": "a woman with a baby"
-    },
-    {
-     "id": "H",
-     "desc": "a banana"
-    },
-    {
-     "id": "I",
-     "desc": "a waiter carrying a tray"
-    }
-   ],
-   "example": {
-    "name": "Harry",
-    "person": "A"
-   },
-   "items": [
-    {
-     "name": "Mandy",
-     "person": "G"
-    },
-    {
-     "name": "Tom",
-     "person": "C"
-    },
-    {
-     "name": "Kate",
-     "person": "D"
-    },
-    {
-     "name": "Rosa",
-     "person": "E"
-    },
-    {
-     "name": "Alex",
-     "person": "F"
-    }
-   ]
-  },
-  "p2": {
-   "type": "note_taking",
-   "heading": "Restaurant booking – telephone call",
-   "example": {
-    "q": "Customer’s name",
-    "a": "Mr Parker"
-   },
-   "items": [
-    {
-     "q": "Day and month",
-     "a": [
-      "17 May",
-      "17th May",
-      "May 17th",
-      "the 17th of May",
-      "17 of May"
-     ]
-    },
-    {
-     "q": "Time (evening)",
-     "a": [
-      "eight o'clock",
-      "8 o'clock",
-      "8.00",
-      "8:00",
-      "eight"
-     ]
-    },
-    {
-     "q": "Number of people",
-     "a": [
-      "5",
-      "five"
-     ]
-    },
-    {
-     "q": "Special food (one child cannot eat)",
-     "a": [
-      "peanuts",
-      "no peanuts"
-     ]
-    },
-    {
-     "q": "Table by the ______ (window / door)",
-     "a": [
-      "window"
-     ]
-    }
-   ]
-  },
-  "p3": {
-   "type": "match_letters",
-   "intro": "Ben is telling his grandma what he cooks on different days.",
-   "image": "L3",
-   "pictures": [
-    {
-     "letter": "A",
-     "word": "pasta"
-    },
-    {
-     "letter": "B",
-     "word": "rice"
-    },
-    {
-     "letter": "C",
-     "word": "soup"
-    },
-    {
-     "letter": "D",
-     "word": "salad"
-    },
-    {
-     "letter": "E",
-     "word": "pizza"
-    },
-    {
-     "letter": "F",
-     "word": "burgers"
-    },
-    {
-     "letter": "G",
-     "word": "fish"
-    },
-    {
-     "letter": "H",
-     "word": "pancakes"
-    }
-   ],
-   "example": {
-    "who": "Sunday",
-    "letter": "B"
-   },
-   "items": [
-    {
-     "who": "Monday",
-     "letter": "F"
-    },
-    {
-     "who": "Tuesday",
-     "letter": "A"
-    },
-    {
-     "who": "Wednesday",
-     "letter": "D"
-    },
-    {
-     "who": "Thursday",
-     "letter": "H"
-    },
-    {
-     "who": "Friday",
-     "letter": "E"
-    }
-   ]
-  },
-  "p4": {
-   "type": "mc_pictures",
-   "items": [
-    {
-     "q": "What does the boy want for lunch?",
-     "options": [
-      "a cheese sandwich",
-      "a chicken salad",
-      "a bowl of soup"
-     ],
-     "key": "C",
-     "image": "P4Q1"
-    },
-    {
-     "q": "Where is the cake?",
-     "options": [
-      "in the fridge",
-      "on the table",
-      "in the cupboard"
-     ],
-     "key": "C",
-     "image": "P4Q2"
-    },
-    {
-     "q": "What did the family eat at the restaurant?",
-     "options": [
-      "pizza",
-      "pasta",
-      "burgers"
-     ],
-     "key": "B",
-     "image": "P4Q3"
-    },
-    {
-     "q": "What is the girl drinking?",
-     "options": [
-      "water",
-      "milk",
-      "juice"
-     ],
-     "key": "B",
-     "image": "P4Q4"
-    },
-    {
-     "q": "What fruit did Mum buy?",
-     "options": [
-      "pears",
-      "grapes",
-      "pineapples"
-     ],
-     "key": "B",
-     "image": "P4Q5"
-    }
-   ]
-  },
-  "p5": {
-   "type": "colour_write",
-   "image": "L5",
-   "scene": "A kitchen: a fridge on the left, a table in the centre with a bowl of fruit, a cat under the table, a small shelf with three jars, a cupboard with plates, a window with curtains.",
-   "object": "thing",
-   "example": {
-    "what": "the fridge",
-    "colour": "blue"
-   },
-   "items": [
-    {
-     "what": "the smallest jar on the shelf",
-     "colour": "yellow"
-    },
-    {
-     "what": "a glass of milk on the table",
-     "write": "draw"
-    },
-    {
-     "what": "the cat under the table",
-     "colour": "black"
-    },
-    {
-     "what": "on the biggest jar",
-     "write": "SUGAR"
-    },
-    {
-     "what": "the curtains",
-     "colour": "red"
-    }
-   ]
-  }
+ "p1": {
+ "type": "draw_lines",
+ "image": "L1",
+ "scene": "A busy café with people at different tables: a man reading a newspaper and drinking tea, a boy eating a chocolate cake, a woman with a coffee, a girl drinking orange juice, a man having spaghetti, a woman with a baby and a banana, a waiter carrying a tray.",
+ "names": [
+ "Harry",
+ "Mandy",
+ "Tom",
+ "Kate",
+ "Rosa",
+ "Alex"
+ ],
+ "people": [
+ {
+ "id": "A",
+ "desc": "a man reading a newspaper"
+ },
+ {
+ "id": "B",
+ "desc": "drinking tea"
+ },
+ {
+ "id": "C",
+ "desc": "a boy eating a chocolate cake"
+ },
+ {
+ "id": "D",
+ "desc": "a woman with a coffee"
+ },
+ {
+ "id": "E",
+ "desc": "a girl drinking orange juice"
+ },
+ {
+ "id": "F",
+ "desc": "a man having spaghetti"
+ },
+ {
+ "id": "G",
+ "desc": "a woman with a baby"
+ },
+ {
+ "id": "H",
+ "desc": "a banana"
+ },
+ {
+ "id": "I",
+ "desc": "a waiter carrying a tray"
+ }
+ ],
+ "example": {
+ "name": "Harry",
+ "person": "A"
+ },
+ "items": [
+ {
+ "name": "Mandy",
+ "person": "G"
+ },
+ {
+ "name": "Tom",
+ "person": "C"
+ },
+ {
+ "name": "Kate",
+ "person": "D"
+ },
+ {
+ "name": "Rosa",
+ "person": "E"
+ },
+ {
+ "name": "Alex",
+ "person": "F"
+ }
+ ]
+ },
+ "p2": {
+ "type": "note_taking",
+ "heading": "Restaurant booking – telephone call",
+ "example": {
+ "q": "Customer’s name",
+ "a": "Mr Parker"
+ },
+ "items": [
+ {
+ "q": "Day and month",
+ "a": [
+ "17 May",
+ "17th May",
+ "May 17th",
+ "the 17th of May",
+ "17 of May"
+ ]
+ },
+ {
+ "q": "Time (evening)",
+ "a": [
+ "eight o'clock",
+ "8 o'clock",
+ "8.00",
+ "8:00",
+ "eight"
+ ]
+ },
+ {
+ "q": "Number of people",
+ "a": [
+ "5",
+ "five"
+ ]
+ },
+ {
+ "q": "Special food (one child cannot eat)",
+ "a": [
+ "olives",
+ "no olives"
+ ]
+ },
+ {
+ "q": "Table by the ______ (window / door)",
+ "a": [
+ "window"
+ ]
+ }
+ ]
+ },
+ "p3": {
+ "type": "match_letters",
+ "intro": "Ben is telling his grandma what he cooks on different days.",
+ "image": "L3",
+ "pictures": [
+ {
+ "letter": "A",
+ "word": "pasta"
+ },
+ {
+ "letter": "B",
+ "word": "rice"
+ },
+ {
+ "letter": "C",
+ "word": "soup"
+ },
+ {
+ "letter": "D",
+ "word": "salad"
+ },
+ {
+ "letter": "E",
+ "word": "pizza"
+ },
+ {
+ "letter": "F",
+ "word": "burgers"
+ },
+ {
+ "letter": "G",
+ "word": "fish"
+ },
+ {
+ "letter": "H",
+ "word": "pancakes"
+ }
+ ],
+ "example": {
+ "who": "Sunday",
+ "letter": "B"
+ },
+ "items": [
+ {
+ "who": "Monday",
+ "letter": "F"
+ },
+ {
+ "who": "Tuesday",
+ "letter": "A"
+ },
+ {
+ "who": "Wednesday",
+ "letter": "D"
+ },
+ {
+ "who": "Thursday",
+ "letter": "H"
+ },
+ {
+ "who": "Friday",
+ "letter": "E"
+ }
+ ]
+ },
+ "p4": {
+ "type": "mc_pictures",
+ "items": [
+ {
+ "q": "What does the boy want for lunch?",
+ "options": [
+ "a cheese sandwich",
+ "a chicken salad",
+ "a bowl of soup"
+ ],
+ "key": "C",
+ "image": "P4Q1"
+ },
+ {
+ "q": "Where is the cake?",
+ "options": [
+ "in the fridge",
+ "on the table",
+ "in the cupboard"
+ ],
+ "key": "C",
+ "image": "P4Q2"
+ },
+ {
+ "q": "What did the family eat at the restaurant?",
+ "options": [
+ "pizza",
+ "pasta",
+ "burgers"
+ ],
+ "key": "B",
+ "image": "P4Q3"
+ },
+ {
+ "q": "What is the girl drinking?",
+ "options": [
+ "water",
+ "milk",
+ "juice"
+ ],
+ "key": "B",
+ "image": "P4Q4"
+ },
+ {
+ "q": "What fruit did Mum buy?",
+ "options": [
+ "pears",
+ "grapes",
+ "pineapples"
+ ],
+ "key": "B",
+ "image": "P4Q5"
+ }
+ ]
+ },
+ "p5": {
+ "type": "colour_write",
+ "image": "L5",
+ "scene": "A kitchen: a fridge on the left, a table in the centre with a bowl of fruit, a cat under the table, a small shelf with three bottles, a cupboard with plates, a window with curtains.",
+ "object": "thing",
+ "example": {
+ "what": "the fridge",
+ "colour": "blue"
+ },
+ "items": [
+ {
+ "what": "the smallest bottle on the shelf",
+ "colour": "yellow"
+ },
+ {
+ "what": "a glass of milk on the table",
+ "write": "draw"
+ },
+ {
+ "what": "the cat under the table",
+ "colour": "black"
+ },
+ {
+ "what": "on the biggest bottle",
+ "write": "SUGAR"
+ },
+ {
+ "what": "the curtains",
+ "colour": "red"
+ }
+ ]
+ }
  },
  "rw": {
-  "p1": {
-   "type": "definitions_copy",
-   "words": [
-    "a melon",
-    "a strawberry",
-    "a mushroom",
-    "a pineapple",
-    "a potato",
-    "a cucumber",
-    "a pepper",
-    "a lemon",
-    "a pear",
-    "a coconut",
-    "a carrot",
-    "an onion",
-    "a tomato",
-    "a mango",
-    "a grape"
-   ],
-   "example": {
-    "def": "",
-    "word": "a strawberry"
-   },
-   "items": [
-    {
-     "def": "This vegetable is orange and long. Rabbits love it.",
-     "word": "a carrot"
-    },
-    {
-     "def": "This vegetable makes you cry when you cut it.",
-     "word": "an onion"
-    },
-    {
-     "def": "This fruit is yellow and sour, and it grows on trees.",
-     "word": "a lemon"
-    },
-    {
-     "def": "It is long, green and you often put it in salads.",
-     "word": "a cucumber"
-    },
-    {
-     "def": "This vegetable is brown outside and white inside. People make chips with it.",
-     "word": "a potato"
-    },
-    {
-     "def": "It is a small sweet fruit that grows in bunches, green or purple.",
-     "word": "a grape"
-    },
-    {
-     "def": "This fruit is big, round or oval, and very sweet inside. It is a summer fruit.",
-     "word": "a melon"
-    },
-    {
-     "def": "It is a round red fruit that you often put on pizzas.",
-     "word": "a tomato"
-    },
-    {
-     "def": "This fruit has hard brown hair outside and white sweet food inside, with milk inside too.",
-     "word": "a coconut"
-    },
-    {
-     "def": "This big yellow fruit from hot countries has sharp leaves on top.",
-     "word": "a pineapple"
-    }
-   ]
-  },
-  "p2": {
-   "type": "dialogue_mc8",
-   "speakerA": "Eva",
-   "speakerB": "Chef",
-   "example": {
-    "a": "Hello! I’d like to order some lunch, please.",
-    "key": "F",
-    "text": "Of course. What would you like to eat today?"
-   },
-   "options": [
-    {
-     "letter": "A",
-     "text": "Yes, we have strawberries or a fruit salad today."
-    },
-    {
-     "letter": "B",
-     "text": "About fifteen minutes – is that OK?"
-    },
-    {
-     "letter": "C",
-     "text": "Sure. Small, medium or large glass?"
-    },
-    {
-     "letter": "D",
-     "text": "Yes, but we can put some ice if you prefer."
-    },
-    {
-     "letter": "E",
-     "text": "Certainly. Would you like potatoes with it instead?"
-    },
-    {
-     "letter": "F",
-     "text": "Of course. What would you like to eat today?"
-    },
-    {
-     "letter": "G",
-     "text": "Excellent choice – the chef makes it today with fresh tomatoes."
-    },
-    {
-     "letter": "H",
-     "text": "We don’t have chicken. We have fish instead."
-    }
-   ],
-   "items": [
-    {
-     "a": "I’d like the tomato soup to start, please.",
-     "key": "G"
-    },
-    {
-     "a": "And for my main, can I have the chicken with rice?",
-     "key": "E"
-    },
-    {
-     "a": "Is the soup very hot?",
-     "key": "D"
-    },
-    {
-     "a": "OK. Do you have any fresh fruit for dessert?",
-     "key": "A"
-    },
-    {
-     "a": "Perfect. And can I drink some orange juice, please?",
-     "key": "C"
-    }
-   ]
-  },
-  "p3": {
-   "type": "gapped_text_title",
-   "words": [
-    "vegetables",
-    "cooking",
-    "sugar",
-    "kitchen",
-    "happy",
-    "tasty",
-    "family",
-    "bought"
-   ],
-   "text": "Yesterday was Daniel’s ninth birthday. His dad is very good at __(1)__ and he made Daniel a special chocolate cake. First, they went to the supermarket and __(2)__ lots of ingredients, like eggs, flour and __(3)__. At home, they worked together in the __(4)__ for two hours. The cake was very big and __(5)__! In the evening, all the family came to sing and eat the cake. Daniel had a wonderful birthday.",
-   "example": "",
-   "title_choices": [
-    [
-     "A",
-     "A trip to the farm"
-    ],
-    [
-     "B",
-     "Daniel’s birthday cake"
-    ],
-    [
-     "C",
-     "My favourite restaurant"
-    ]
-   ],
-   "key": [
-    "cooking",
-    "bought",
-    "sugar",
-    "kitchen",
-    "tasty"
-   ],
-   "title_key": "B"
-  },
-  "p4": {
-   "type": "mc_cloze",
-   "title": "Breakfast around the world",
-   "text": "Breakfast is different in many parts of the world. In the United Kingdom, some people __(1)__ eggs with bacon and beans for breakfast. In Japan, children __(2)__ have rice and soup __(3)__ they go to school. People in Spain like to __(4)__ a hot chocolate with sweet bread __(5)__ churros. In the morning, families in Turkey __(6)__ cheese, olives, bread __(7)__ tomatoes. Breakfast in many African countries __(8)__ porridge from corn or other grains. Every country is different but a good breakfast gives you __(9)__ __(10)__ start your day!",
-   "example": {
-    "options": [
-     "",
-     "",
-     ""
-    ],
-    "key": "A"
-   },
-   "items": [
-    {
-     "options": [
-      "eats",
-      "eat",
-      "eating"
-     ],
-     "key": "B"
-    },
-    {
-     "options": [
-      "never",
-      "ever",
-      "often"
-     ],
-     "key": "C"
-    },
-    {
-     "options": [
-      "before",
-      "after",
-      "until"
-     ],
-     "key": "A"
-    },
-    {
-     "options": [
-      "drink",
-      "eat",
-      "bring"
-     ],
-     "key": "A"
-    },
-    {
-     "options": [
-      "calling",
-      "call",
-      "called"
-     ],
-     "key": "C"
-    },
-    {
-     "options": [
-      "eat",
-      "eats",
-      "eating"
-     ],
-     "key": "A"
-    },
-    {
-     "options": [
-      "or",
-      "and",
-      "but"
-     ],
-     "key": "B"
-    },
-    {
-     "options": [
-      "are",
-      "is",
-      "be"
-     ],
-     "key": "B"
-    },
-    {
-     "options": [
-      "energy",
-      "school",
-      "book"
-     ],
-     "key": "A"
-    },
-    {
-     "options": [
-      "at",
-      "for",
-      "to"
-     ],
-     "key": "C"
-    }
-   ]
-  },
-  "p5": {
-   "type": "story_completion",
-   "title": "The picnic disaster",
-   "parts": [
-    {
-     "text": "Last Sunday, my family went on a picnic by the lake. My mum made lots of sandwiches and my dad brought apples, crisps and a big bottle of lemonade. My little sister Holly brought her favourite chocolate biscuits. We sat under a big tree and started to eat. Suddenly, a very hungry duck came out of the water. It was huge and it wanted our food! The duck took a whole sandwich from my brother and ran away. We all laughed a lot. Then a second problem started: it began to rain! We quickly put everything in our bags and ran to the car. In the car, we drank the lemonade and ate the chocolate biscuits. It wasn’t the picnic we wanted, but everyone was really happy.",
-     "examples": [
-      {
-       "s": "Where did they go on a picnic?",
-       "a": "by the lake"
-      }
-     ],
-     "items": [
-      {
-       "s": "Who made the sandwiches?",
-       "a": "(my) mum"
-      },
-      {
-       "s": "What did Dad bring to drink?",
-       "a": "(a big bottle of) lemonade"
-      },
-      {
-       "s": "What did Holly bring?",
-       "a": "(her favourite) chocolate biscuits"
-      },
-      {
-       "s": "Where did they sit?",
-       "a": "under a (big) tree"
-      },
-      {
-       "s": "Which animal took their food?",
-       "a": "a (hungry) duck"
-      },
-      {
-       "s": "Why did they run to the car?",
-       "a": "(because) it began to rain"
-      },
-      {
-       "s": "What did they eat in the car?",
-       "a": "lemonade and chocolate biscuits"
-      }
-     ]
-    }
-   ]
-  },
-  "p6": {
-   "type": "open_cloze",
-   "title": "Our class cooking day",
-   "text": "Last Friday __(0)__ class went to a kitchen and we cooked pizzas. The teacher, Mr Rossi, gave us flour, water and salt. __(1)__ hands were very dirty! First, we made a ball with the dough. __(2)__ we put tomato sauce on top. I put lots of cheese on __(3)__ pizza. My friend Mia put mushrooms and onions __(4)__ hers. When the pizzas were ready, we ate them __(5)__ our classmates. They were delicious! I want to learn to cook more things at home.",
-   "example": "my",
-   "key": [
-    "Our",
-    "Then",
-    "my",
-    "on",
-    "with"
-   ]
-  },
-  "p7": {
-   "type": "story_writing",
-   "title": "The big ice cream",
-   "image": "P7",
-   "pictures": [
-    "A boy buys a very big ice cream at an ice cream shop.",
-    "He is walking and a dog jumps up and eats his ice cream.",
-    "The boy cries but his mum buys him a new small ice cream."
-   ],
-   "prompt": "Look at the three pictures and write the story. Write 20 or more words."
-  }
+ "p1": {
+ "type": "definitions_copy",
+ "words": [
+ "a melon",
+ "a strawberry",
+ "a mushroom",
+ "a pineapple",
+ "a potato",
+ "a cucumber",
+ "a pepper",
+ "a lemon",
+ "a pear",
+ "a coconut",
+ "a carrot",
+ "an onion",
+ "a tomato",
+ "a mango",
+ "a grape"
+ ],
+ "example": {
+ "def": "",
+ "word": "a strawberry"
+ },
+ "items": [
+ {
+ "def": "This vegetable is orange and long. Rabbits love it.",
+ "word": "a carrot"
+ },
+ {
+ "def": "This vegetable makes you cry when you cut it.",
+ "word": "an onion"
+ },
+ {
+ "def": "This fruit is yellow and sour, and it grows on trees.",
+ "word": "a lemon"
+ },
+ {
+ "def": "It is long, green and you often put it in salads.",
+ "word": "a cucumber"
+ },
+ {
+ "def": "This vegetable is brown outside and white inside. People make chips with it.",
+ "word": "a potato"
+ },
+ {
+ "def": "It is a small sweet fruit that grows in bunches, green or purple.",
+ "word": "a grape"
+ },
+ {
+ "def": "This fruit is big, round or oval, and very sweet inside. It is a summer fruit.",
+ "word": "a melon"
+ },
+ {
+ "def": "It is a round red fruit that you often put on pizzas.",
+ "word": "a tomato"
+ },
+ {
+ "def": "This fruit has hard brown hair outside and white sweet food inside, with milk inside too.",
+ "word": "a coconut"
+ },
+ {
+ "def": "This big yellow fruit from hot countries has sharp leaves on top.",
+ "word": "a pineapple"
+ }
+ ]
+ },
+ "p2": {
+ "type": "dialogue_mc8",
+ "speakerA": "Eva",
+ "speakerB": "Chef",
+ "example": {
+ "a": "Hello! I’d like to order some lunch, please.",
+ "key": "F",
+ "text": "Of course. What would you like to eat today?"
+ },
+ "options": [
+ {
+ "letter": "A",
+ "text": "Yes, we have strawberries or a fruit salad today."
+ },
+ {
+ "letter": "B",
+ "text": "About fifteen minutes – is that OK?"
+ },
+ {
+ "letter": "C",
+ "text": "Sure. Small, medium or large glass?"
+ },
+ {
+ "letter": "D",
+ "text": "Yes, but we can put some ice if you prefer."
+ },
+ {
+ "letter": "E",
+ "text": "Certainly. Would you like potatoes with it instead?"
+ },
+ {
+ "letter": "F",
+ "text": "Of course. What would you like to eat today?"
+ },
+ {
+ "letter": "G",
+ "text": "Excellent choice – the chef makes it today with tomatoes."
+ },
+ {
+ "letter": "H",
+ "text": "We don’t have chicken. We have fish instead."
+ }
+ ],
+ "items": [
+ {
+ "a": "I’d like the tomato soup to start, please.",
+ "key": "G"
+ },
+ {
+ "a": "And for my main, can I have the chicken with rice?",
+ "key": "E"
+ },
+ {
+ "a": "Is the soup very hot?",
+ "key": "D"
+ },
+ {
+ "a": "OK. Do you have any fruit for dessert?",
+ "key": "A"
+ },
+ {
+ "a": "Perfect. And can I drink some orange juice, please?",
+ "key": "C"
+ }
+ ]
+ },
+ "p3": {
+ "type": "gapped_text_title",
+ "words": [
+ "vegetables",
+ "cooking",
+ "sugar",
+ "kitchen",
+ "happy",
+ "tasty",
+ "family",
+ "bought"
+ ],
+ "text": "Yesterday was Daniel’s ninth birthday. His dad is very good at __(1)__ and he made Daniel a special chocolate cake. First, they went to the supermarket and __(2)__ lots of ingredients, like eggs, flour and __(3)__. At home, they worked together in the __(4)__ for two hours. The cake was very big and __(5)__! In the evening, all the family came to sing and eat the cake. Daniel had a wonderful birthday.",
+ "example": "",
+ "title_choices": [
+ [
+ "A",
+ "A trip to the farm"
+ ],
+ [
+ "B",
+ "Daniel’s birthday cake"
+ ],
+ [
+ "C",
+ "My favourite restaurant"
+ ]
+ ],
+ "key": [
+ "cooking",
+ "bought",
+ "sugar",
+ "kitchen",
+ "tasty"
+ ],
+ "title_key": "B"
+ },
+ "p4": {
+ "type": "mc_cloze",
+ "title": "Breakfast around the world",
+ "text": "Breakfast is different in many parts of the world. In the United Kingdom, some people __(1)__ eggs with bacon and beans for breakfast. In Japan, children __(2)__ have rice and soup __(3)__ they go to school. People in Spain like to __(4)__ a hot chocolate with sweet bread __(5)__ churros. In the morning, families in Turkey __(6)__ cheese, olives, bread __(7)__ tomatoes. Breakfast in many African countries __(8)__ porridge from corn or other grains. Every country is different but a good breakfast gives you __(9)__ __(10)__ start your day!",
+ "example": {
+ "options": [
+ "",
+ "",
+ ""
+ ],
+ "key": "A"
+ },
+ "items": [
+ {
+ "options": [
+ "eats",
+ "eat",
+ "eating"
+ ],
+ "key": "B"
+ },
+ {
+ "options": [
+ "never",
+ "ever",
+ "often"
+ ],
+ "key": "C"
+ },
+ {
+ "options": [
+ "before",
+ "after",
+ "until"
+ ],
+ "key": "A"
+ },
+ {
+ "options": [
+ "drink",
+ "eat",
+ "bring"
+ ],
+ "key": "A"
+ },
+ {
+ "options": [
+ "calling",
+ "call",
+ "called"
+ ],
+ "key": "C"
+ },
+ {
+ "options": [
+ "eat",
+ "eats",
+ "eating"
+ ],
+ "key": "A"
+ },
+ {
+ "options": [
+ "or",
+ "and",
+ "but"
+ ],
+ "key": "B"
+ },
+ {
+ "options": [
+ "are",
+ "is",
+ "be"
+ ],
+ "key": "B"
+ },
+ {
+ "options": [
+ "energy",
+ "school",
+ "book"
+ ],
+ "key": "A"
+ },
+ {
+ "options": [
+ "at",
+ "for",
+ "to"
+ ],
+ "key": "C"
+ }
+ ]
+ },
+ "p5": {
+ "type": "story_completion",
+ "title": "The picnic disaster",
+ "parts": [
+ {
+ "text": "Last Sunday, my family went on a picnic by the lake. My mum made lots of sandwiches and my dad brought apples, crisps and a big bottle of lemonade. My little sister Holly brought her favourite chocolate biscuits. We sat under a big tree and started to eat. Suddenly, a very hungry duck came out of the water. It was huge and it wanted our food! The duck took all the sandwich from my brother and ran away. We all laughed a lot. Then a second problem started: it began to rain! We quickly put everything in our bags and ran to the car. In the car, we drank the lemonade and ate the chocolate biscuits. It wasn’t the picnic we wanted, but everyone was really happy.",
+ "examples": [
+ {
+ "s": "Where did they go on a picnic?",
+ "a": "by the lake"
+ }
+ ],
+ "items": [
+ {
+ "s": "Who made the sandwiches?",
+ "a": "(my) mum"
+ },
+ {
+ "s": "What did Dad bring to drink?",
+ "a": "(a big bottle of) lemonade"
+ },
+ {
+ "s": "What did Holly bring?",
+ "a": "(her favourite) chocolate biscuits"
+ },
+ {
+ "s": "Where did they sit?",
+ "a": "under a (big) tree"
+ },
+ {
+ "s": "Which animal took their food?",
+ "a": "a (hungry) duck"
+ },
+ {
+ "s": "Why did they run to the car?",
+ "a": "(because) it began to rain"
+ },
+ {
+ "s": "What did they eat in the car?",
+ "a": "lemonade and chocolate biscuits"
+ }
+ ]
+ }
+ ]
+ },
+ "p6": {
+ "type": "open_cloze",
+ "title": "Our class cooking day",
+ "text": "Last Friday __(0)__ class went to a kitchen and we cooked pizzas. The teacher, Mr Rossi, gave us flour, water and salt. __(1)__ hands were very dirty! First, we made a ball with the dough. __(2)__ we put tomato sauce on top. I put lots of cheese on __(3)__ pizza. My friend Mia put mushrooms and onions __(4)__ hers. When the pizzas were ready, we ate them __(5)__ our classmates. They were delicious! I want to learn to cook more things at home.",
+ "example": "my",
+ "key": [
+ "Our",
+ "Then",
+ "my",
+ "on",
+ "with"
+ ]
+ },
+ "p7": {
+ "type": "story_writing",
+ "title": "The big ice cream",
+ "image": "P7",
+ "pictures": [
+ "A boy buys a very big ice cream at an ice cream shop.",
+ "He is walking and a dog jumps up and eats his ice cream.",
+ "The boy cries but his mum buys him a new small ice cream."
+ ],
+ "prompt": "Look at the three pictures and write the story. Write 20 or more words."
+ }
  },
  "speaking": {
-  "p1": {
-   "type": "find_differences_statements",
-   "image": "S1",
-   "examiner_scene": "A kitchen: a cook wearing a white hat, four eggs on the table, a blue apron, a small cat, a window with the sun, two tomatoes on a plate.",
-   "candidate_scene": "A kitchen: a cook wearing a BLACK hat, SIX eggs on the table, a blue apron, a small DOG, a window with the sun, FOUR tomatoes on a plate.",
-   "differences": [
-    "White hat vs black hat.",
-    "Four eggs vs six eggs.",
-    "Cat vs dog.",
-    "Two tomatoes vs four tomatoes."
-   ]
-  },
-  "p2": {
-   "type": "information_exchange",
-   "topic": "Two cafés",
-   "candidate_card": "CAFÉ: Yummy Corner – Open: 8 a.m. – Closes: ______ – Best cake: ______ – Drink of the day: ______ – Near the ______ – Friday: special ______ menu.",
-   "candidate_questions": [
-    "What is the name of your café?",
-    "When does it open?",
-    "What food can you eat there?",
-    "How much is a juice?",
-    "Can you sit outside?"
-   ],
-   "examiner_card": "CAFÉ: The Green Leaf – Open 9 a.m. to 6 p.m. – Best food: vegetable soup – Juice: 2.50 – Near the park – Yes, big garden outside.",
-   "examiner_questions": [
-    "What’s the café called?",
-    "What time does it close?",
-    "What is the best cake?",
-    "What’s the drink of the day?",
-    "Where is it?"
-   ]
-  },
-  "p3": {
-   "type": "picture_sequence",
-   "image": "S3",
-   "title": "A cake for Granny",
-   "examiner_open": "These pictures tell a story called \"A cake for Granny\". Two children are in the kitchen – they are making a cake. Now you tell the rest of the story.",
-   "frames": [
-    "Two children are making a cake in the kitchen.",
-    "They put the cake in the oven.",
-    "They take out the cake – it looks perfect!",
-    "Granny arrives and eats a piece with them, smiling."
-   ]
-  },
-  "p4": {
-   "type": "personal_questions",
-   "questions": [
-    {
-     "q": "What’s your favourite food? Why?"
-    },
-    {
-     "q": "Do you help at home in the kitchen?"
-    },
-    {
-     "q": "Tell me about your lunch yesterday."
-    },
-    {
-     "q": "Do you prefer fruit or cake? Why?"
-    },
-    {
-     "q": "What do you usually drink for breakfast?"
-    }
-   ]
-  }
+ "p1": {
+ "type": "find_differences_statements",
+ "image": "S1",
+ "examiner_scene": "A kitchen: a cook wearing a white hat, four eggs on the table, a blue coat, a small cat, a window with the sun, two tomatoes on a plate.",
+ "candidate_scene": "A kitchen: a cook wearing a BLACK hat, SIX eggs on the table, a blue coat, a small DOG, a window with the sun, FOUR tomatoes on a plate.",
+ "differences": [
+ "In my picture the hat is white, but in your picture it's black.",
+ "In my picture there are four eggs, but in your picture there are six.",
+ "In my picture there's a cat, but in your picture there's a dog.",
+ "In my picture there are two tomatoes, but in your picture there are four."
+ ]
+ },
+ "p2": {
+ "type": "information_exchange",
+ "topic": "Two cafés",
+ "candidate_card": "CAFÉ: Yummy Corner – Open: 8 a.m. – Closes: ______ – Best cake: ______ – Drink of the day: ______ – Near the ______ – Friday: special ______ menu.",
+ "candidate_questions": [
+ "What is the name of your café?",
+ "When does it open?",
+ "What food can you eat there?",
+ "How much is a juice?",
+ "Can you sit outside?"
+ ],
+ "examiner_card": "CAFÉ: The Green Leaf – Open 9 a.m. to 6 p.m. – Best food: vegetable soup – Juice: 2.50 – Near the park – Yes, big garden outside.",
+ "examiner_questions": [
+ "What’s the café called?",
+ "What time does it close?",
+ "What is the best cake?",
+ "What’s the drink of the day?",
+ "Where is it?"
+ ]
+ },
+ "p3": {
+ "type": "picture_sequence",
+ "image": "S3",
+ "title": "A cake for Granny",
+ "examiner_open": "These pictures tell a story called \"A cake for Granny\". Two children are in the kitchen – they are making a cake. Now you tell the story.",
+ "frames": [
+ "Two children are making a cake in the kitchen.",
+ "They put the cake in the oven.",
+ "They take out the cake – it looks great!",
+ "Granny arrives and eats a piece with them, smiling."
+ ]
+ },
+ "p4": {
+ "type": "personal_questions",
+ "questions": [
+ {
+ "q": "What’s your favourite food? Why?"
+ },
+ {
+ "q": "Do you help at home in the kitchen?"
+ },
+ {
+ "q": "Tell me about your lunch yesterday."
+ },
+ {
+ "q": "Do you prefer fruit or cake? Why?"
+ },
+ {
+ "q": "What do you usually drink for breakfast?"
+ }
+ ]
+ }
  },
  "audio": {
-  "p1": [
-   [
-    "R",
-    "Part One. Listen and look. There is one example."
-   ],
-   [
-    "pause",
-    1.5
-   ],
-   [
-    "Mch",
-    "Look at the picture – people in a café."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "Harry is the man reading the newspaper and drinking tea."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "Do you see the line from Harry to that man?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "That’s the example."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "Can you see Mandy? Mandy is the woman with the baby holding a banana."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Mch",
-    "Where’s Tom? Tom is the boy eating the chocolate cake."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Mch",
-    "Now Kate. Kate is the woman drinking a coffee."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Mch",
-    "Where is Rosa? Rosa is the girl with orange juice."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Mch",
-    "And Alex? Alex is the man eating spaghetti."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "pause",
-    2.0
-   ],
-   [
-    "R",
-    "Now listen to Part One again."
-   ],
-   [
-    "pause",
-    1.5
-   ],
-   [
-    "Mch",
-    "Look at the picture – people in a café."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "Harry is the man reading the newspaper and drinking tea."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "Do you see the line from Harry to that man?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "That’s the example."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "Can you see Mandy? Mandy is the woman with the baby holding a banana."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Mch",
-    "Where’s Tom? Tom is the boy eating the chocolate cake."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Mch",
-    "Now Kate. Kate is the woman drinking a coffee."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Mch",
-    "Where is Rosa? Rosa is the girl with orange juice."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Mch",
-    "And Alex? Alex is the man eating spaghetti."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "R",
-    "That is the end of Part One."
-   ],
-   [
-    "pause",
-    1.0
-   ]
-  ],
-  "p2": [
-   [
-    "R",
-    "Part Two. Listen and look. There is one example."
-   ],
-   [
-    "pause",
-    1.5
-   ],
-   [
-    "R",
-    "A man is booking a table at a restaurant."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "R",
-    "Example: his name is Mr Parker."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "R",
-    "Can you see the answer? Customer’s name: Mr Parker. Now you listen and write."
-   ],
-   [
-    "pause",
-    2.0
-   ],
-   [
-    "M",
-    "When would you like to come?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "On the 17th of May, please."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "M",
-    "What time?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "At eight o’clock in the evening."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "M",
-    "How many people?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "There will be five of us."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "M",
-    "Any special food?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "Yes, one of the children can’t eat peanuts. Please, no peanuts."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "M",
-    "Where would you like to sit?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "A table by the window would be lovely."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "pause",
-    2.0
-   ],
-   [
-    "R",
-    "Now listen to Part Two again."
-   ],
-   [
-    "pause",
-    1.5
-   ],
-   [
-    "R",
-    "A man is booking a table at a restaurant."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "R",
-    "Example: his name is Mr Parker."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "R",
-    "Can you see the answer? Customer’s name: Mr Parker. Now you listen and write."
-   ],
-   [
-    "pause",
-    2.0
-   ],
-   [
-    "M",
-    "When would you like to come?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "On the 17th of May, please."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "M",
-    "What time?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "At eight o’clock in the evening."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "M",
-    "How many people?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "There will be five of us."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "M",
-    "Any special food?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "Yes, one of the children can’t eat peanuts. Please, no peanuts."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "M",
-    "Where would you like to sit?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "A table by the window would be lovely."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "R",
-    "That is the end of Part Two."
-   ],
-   [
-    "pause",
-    1.0
-   ]
-  ],
-  "p3": [
-   [
-    "R",
-    "Part Three. Listen and look. There is one example."
-   ],
-   [
-    "pause",
-    1.5
-   ],
-   [
-    "R",
-    "Ben is telling his grandma what he cooks each day."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "R",
-    "Example: on Sunday he cooks rice."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "What about Sunday?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "On Sunday? We saw rice."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "R",
-    "Can you see the letter B? Now you listen and write a letter in each box."
-   ],
-   [
-    "pause",
-    2.0
-   ],
-   [
-    "Mch",
-    "Monday, grandma, I make my favourite – burgers!"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "Tuesday I try a new pasta dish with tomato sauce."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Mch",
-    "Wednesday is easy: a big salad with lettuce and tomatoes."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "Thursday we had pancakes for breakfast and dinner – yum!"
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Mch",
-    "On Friday, Dad and I made homemade pizza – delicious!"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "pause",
-    2.0
-   ],
-   [
-    "R",
-    "Now listen to Part Three again."
-   ],
-   [
-    "pause",
-    1.5
-   ],
-   [
-    "R",
-    "Ben is telling his grandma what he cooks each day."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "R",
-    "Example: on Sunday he cooks rice."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "What about Sunday?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "On Sunday? We saw rice."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "R",
-    "Can you see the letter B? Now you listen and write a letter in each box."
-   ],
-   [
-    "pause",
-    2.0
-   ],
-   [
-    "Mch",
-    "Monday, grandma, I make my favourite – burgers!"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "Tuesday I try a new pasta dish with tomato sauce."
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Mch",
-    "Wednesday is easy: a big salad with lettuce and tomatoes."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "Thursday we had pancakes for breakfast and dinner – yum!"
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "Mch",
-    "On Friday, Dad and I made homemade pizza – delicious!"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "R",
-    "That is the end of Part Three."
-   ],
-   [
-    "pause",
-    1.0
-   ]
-  ],
-  "p4": [
-   [
-    "R",
-    "Part Four. Listen and look. Listen and tick the box."
-   ],
-   [
-    "pause",
-    1.5
-   ],
-   [
-    "R",
-    "One. — What do you want for lunch, Jack?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "— What do you want for lunch, Jack?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "A cheese sandwich?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "Oh, really?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "No."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "A chicken salad?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "No, I’m cold."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "Can I have a bowl of soup, please?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "R",
-    "Two. — Where’s the cake?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "— Where’s the cake?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "Not in the fridge."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "Oh, really?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "Not on the table."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "I put it in the cupboard last night."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "R",
-    "Three. — What did you eat at the restaurant?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "— What did you eat at the restaurant?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "We wanted pizza but the menu was different."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "Oh, really?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "We didn’t have burgers."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "We ate lovely pasta."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "R",
-    "Four. — What are you drinking, Emma?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "— What are you drinking, Emma?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "Not water."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "Oh, really?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "Not juice."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "It’s a glass of milk."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "I love milk."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "R",
-    "Five. — What fruit did Mum buy?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "— What fruit did Mum buy?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "Not pears, they were expensive."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "Oh, really?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "Not pineapples."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "She bought some beautiful red grapes."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "pause",
-    2.0
-   ],
-   [
-    "R",
-    "Now listen to Part Four again."
-   ],
-   [
-    "pause",
-    1.5
-   ],
-   [
-    "R",
-    "One. — What do you want for lunch, Jack?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "— What do you want for lunch, Jack?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "A cheese sandwich?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "Oh, really?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "No."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "A chicken salad?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "No, I’m cold."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Mch",
-    "Can I have a bowl of soup, please?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "R",
-    "Two. — Where’s the cake?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "— Where’s the cake?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "Not in the fridge."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "Oh, really?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "Not on the table."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "I put it in the cupboard last night."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "R",
-    "Three. — What did you eat at the restaurant?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "— What did you eat at the restaurant?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "We wanted pizza but the menu was different."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "Oh, really?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "We didn’t have burgers."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "We ate lovely pasta."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "R",
-    "Four. — What are you drinking, Emma?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "— What are you drinking, Emma?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "Not water."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "Oh, really?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "Not juice."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "It’s a glass of milk."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "I love milk."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "R",
-    "Five. — What fruit did Mum buy?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "— What fruit did Mum buy?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "Not pears, they were expensive."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "F",
-    "Oh, really?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "Not pineapples."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "She bought some beautiful red grapes."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "pause",
-    3.4
-   ],
-   [
-    "R",
-    "That is the end of Part Four."
-   ],
-   [
-    "pause",
-    1.0
-   ]
-  ],
-  "p5": [
-   [
-    "R",
-    "Part Five. Listen and look. There is one example."
-   ],
-   [
-    "pause",
-    1.5
-   ],
-   [
-    "M",
-    "This is a kitchen."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "M",
-    "Example: colour the fridge blue."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "R",
-    "This is an example. Now you listen and colour and write."
-   ],
-   [
-    "pause",
-    2.0
-   ],
-   [
-    "M",
-    "There are three jars on the shelf."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "M",
-    "Colour the smallest one yellow."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "OK."
-   ],
-   [
-    "pause",
-    5.0
-   ],
-   [
-    "M",
-    "On the table, draw a glass of milk."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "OK."
-   ],
-   [
-    "pause",
-    5.0
-   ],
-   [
-    "M",
-    "Can you see the cat under the table?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "Yes, I can."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "M",
-    "Colour the cat black."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "OK."
-   ],
-   [
-    "pause",
-    5.0
-   ],
-   [
-    "M",
-    "Now write SUGAR on the biggest jar."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "OK."
-   ],
-   [
-    "pause",
-    5.0
-   ],
-   [
-    "M",
-    "The curtains – colour the curtains red."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "OK."
-   ],
-   [
-    "pause",
-    5.0
-   ],
-   [
-    "pause",
-    2.0
-   ],
-   [
-    "R",
-    "Now listen to Part Five again."
-   ],
-   [
-    "pause",
-    1.5
-   ],
-   [
-    "M",
-    "This is a kitchen."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "M",
-    "Example: colour the fridge blue."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "R",
-    "This is an example. Now you listen and colour and write."
-   ],
-   [
-    "pause",
-    2.0
-   ],
-   [
-    "M",
-    "There are three jars on the shelf."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "M",
-    "Colour the smallest one yellow."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "OK."
-   ],
-   [
-    "pause",
-    5.0
-   ],
-   [
-    "M",
-    "On the table, draw a glass of milk."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "OK."
-   ],
-   [
-    "pause",
-    5.0
-   ],
-   [
-    "M",
-    "Can you see the cat under the table?"
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "Yes, I can."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "M",
-    "Colour the cat black."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "OK."
-   ],
-   [
-    "pause",
-    5.0
-   ],
-   [
-    "M",
-    "Now write SUGAR on the biggest jar."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "OK."
-   ],
-   [
-    "pause",
-    5.0
-   ],
-   [
-    "M",
-    "The curtains – colour the curtains red."
-   ],
-   [
-    "pause",
-    0.5
-   ],
-   [
-    "Fch",
-    "OK."
-   ],
-   [
-    "pause",
-    5.0
-   ],
-   [
-    "R",
-    "That is the end of Part Five."
-   ],
-   [
-    "pause",
-    1.0
-   ]
-  ]
+ "p1": [
+ [
+ "R",
+ "Part One. Listen and look. There is one example."
+ ],
+ [
+ "pause",
+ 1.5
+ ],
+ [
+ "Mch",
+ "Look at the picture – people in a café."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "Harry is the man reading the newspaper and drinking tea."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "Do you see the line from Harry to that man?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "That’s the example."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "Can you see Mandy? Mandy is the woman with the baby holding a banana."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Mch",
+ "Where’s Tom? Tom is the boy eating the chocolate cake."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Mch",
+ "Now Kate. Kate is the woman drinking a coffee."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Mch",
+ "Where is Rosa? Rosa is the girl with orange juice."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Mch",
+ "And Alex? Alex is the man eating spaghetti."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "pause",
+ 2.0
+ ],
+ [
+ "R",
+ "Now listen to Part One again."
+ ],
+ [
+ "pause",
+ 1.5
+ ],
+ [
+ "Mch",
+ "Look at the picture – people in a café."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "Harry is the man reading the newspaper and drinking tea."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "Do you see the line from Harry to that man?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "That’s the example."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "Can you see Mandy? Mandy is the woman with the baby holding a banana."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Mch",
+ "Where’s Tom? Tom is the boy eating the chocolate cake."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Mch",
+ "Now Kate. Kate is the woman drinking a coffee."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Mch",
+ "Where is Rosa? Rosa is the girl with orange juice."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Mch",
+ "And Alex? Alex is the man eating spaghetti."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "R",
+ "That is the end of Part One."
+ ],
+ [
+ "pause",
+ 1.0
+ ]
+ ],
+ "p2": [
+ [
+ "R",
+ "Part Two. Listen and look. There is one example."
+ ],
+ [
+ "pause",
+ 1.5
+ ],
+ [
+ "R",
+ "A man is booking a table at a restaurant."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "R",
+ "Example: his name is Mr Parker."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "R",
+ "Can you see the answer? Customer’s name: Mr Parker. Now you listen and write."
+ ],
+ [
+ "pause",
+ 2.0
+ ],
+ [
+ "M",
+ "When would you like to come?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "On the 17th of May, please."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "M",
+ "What time?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "At eight o’clock in the evening."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "M",
+ "How many people?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "There will be five of us."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "M",
+ "Any special food?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "Yes, one of the children can’t eat olives. Please, no olives."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "M",
+ "Where would you like to sit?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "A table by the window would be lovely."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "pause",
+ 2.0
+ ],
+ [
+ "R",
+ "Now listen to Part Two again."
+ ],
+ [
+ "pause",
+ 1.5
+ ],
+ [
+ "R",
+ "A man is booking a table at a restaurant."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "R",
+ "Example: his name is Mr Parker."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "R",
+ "Can you see the answer? Customer’s name: Mr Parker. Now you listen and write."
+ ],
+ [
+ "pause",
+ 2.0
+ ],
+ [
+ "M",
+ "When would you like to come?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "On the 17th of May, please."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "M",
+ "What time?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "At eight o’clock in the evening."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "M",
+ "How many people?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "There will be five of us."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "M",
+ "Any special food?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "Yes, one of the children can’t eat olives. Please, no olives."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "M",
+ "Where would you like to sit?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "A table by the window would be lovely."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "R",
+ "That is the end of Part Two."
+ ],
+ [
+ "pause",
+ 1.0
+ ]
+ ],
+ "p3": [
+ [
+ "R",
+ "Part Three. Listen and look. There is one example."
+ ],
+ [
+ "pause",
+ 1.5
+ ],
+ [
+ "R",
+ "Ben is telling his grandma what he cooks each day."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "R",
+ "Example: on Sunday he cooks rice."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "What about Sunday?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "On Sunday? We saw rice."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "R",
+ "Can you see the letter B? Now you listen and write a letter in each box."
+ ],
+ [
+ "pause",
+ 2.0
+ ],
+ [
+ "Mch",
+ "Monday, grandma, I make my favourite – burgers!"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "Tuesday I try a new pasta meal with tomato sauce."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Mch",
+ "Wednesday is easy: a big salad with tomatoes and olives."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "Thursday we had pancakes for breakfast and dinner – delicious!"
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Mch",
+ "On Friday, Dad and I made pizza at home – delicious!"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "pause",
+ 2.0
+ ],
+ [
+ "R",
+ "Now listen to Part Three again."
+ ],
+ [
+ "pause",
+ 1.5
+ ],
+ [
+ "R",
+ "Ben is telling his grandma what he cooks each day."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "R",
+ "Example: on Sunday he cooks rice."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "What about Sunday?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "On Sunday? We saw rice."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "R",
+ "Can you see the letter B? Now you listen and write a letter in each box."
+ ],
+ [
+ "pause",
+ 2.0
+ ],
+ [
+ "Mch",
+ "Monday, grandma, I make my favourite – burgers!"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "Tuesday I try a new pasta meal with tomato sauce."
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Mch",
+ "Wednesday is easy: a big salad with tomatoes and olives."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "Thursday we had pancakes for breakfast and dinner – delicious!"
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "Mch",
+ "On Friday, Dad and I made pizza at home – delicious!"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "R",
+ "That is the end of Part Three."
+ ],
+ [
+ "pause",
+ 1.0
+ ]
+ ],
+ "p4": [
+ [
+ "R",
+ "Part Four. Listen and look. Listen and tick the box."
+ ],
+ [
+ "pause",
+ 1.5
+ ],
+ [
+ "R",
+ "One. — What do you want for lunch, Jack?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "— What do you want for lunch, Jack?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "A cheese sandwich?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "Oh, really?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "No."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "A chicken salad?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "No, I’m cold."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "Can I have a bowl of soup, please?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "R",
+ "Two. — Where’s the cake?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "— Where’s the cake?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "Not in the fridge."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "Oh, really?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "Not on the table."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "I put it in the cupboard last night."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "R",
+ "Three. — What did you eat at the restaurant?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "— What did you eat at the restaurant?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "We wanted pizza but the food was different."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "Oh, really?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "We didn’t have burgers."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "We ate lovely pasta."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "R",
+ "Four. — What are you drinking, Emma?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "— What are you drinking, Emma?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "Not water."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "Oh, really?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "Not juice."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "It’s a glass of milk."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "I love milk."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "R",
+ "Five. — What fruit did Mum buy?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "— What fruit did Mum buy?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "Not pears, they were expensive."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "Oh, really?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "Not pineapples."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "She bought some beautiful red grapes."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "pause",
+ 2.0
+ ],
+ [
+ "R",
+ "Now listen to Part Four again."
+ ],
+ [
+ "pause",
+ 1.5
+ ],
+ [
+ "R",
+ "One. — What do you want for lunch, Jack?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "— What do you want for lunch, Jack?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "A cheese sandwich?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "Oh, really?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "No."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "A chicken salad?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "No, I’m cold."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Mch",
+ "Can I have a bowl of soup, please?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "R",
+ "Two. — Where’s the cake?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "— Where’s the cake?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "Not in the fridge."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "Oh, really?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "Not on the table."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "I put it in the cupboard last night."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "R",
+ "Three. — What did you eat at the restaurant?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "— What did you eat at the restaurant?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "We wanted pizza but the food was different."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "Oh, really?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "We didn’t have burgers."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "We ate lovely pasta."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "R",
+ "Four. — What are you drinking, Emma?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "— What are you drinking, Emma?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "Not water."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "Oh, really?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "Not juice."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "It’s a glass of milk."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "I love milk."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "R",
+ "Five. — What fruit did Mum buy?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "— What fruit did Mum buy?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "Not pears, they were expensive."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "F",
+ "Oh, really?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "Not pineapples."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "She bought some beautiful red grapes."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "pause",
+ 3.4
+ ],
+ [
+ "R",
+ "That is the end of Part Four."
+ ],
+ [
+ "pause",
+ 1.0
+ ]
+ ],
+ "p5": [
+ [
+ "R",
+ "Part Five. Listen and look. There is one example."
+ ],
+ [
+ "pause",
+ 1.5
+ ],
+ [
+ "M",
+ "This is a kitchen."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "M",
+ "Example: colour the fridge blue."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "R",
+ "This is an example. Now you listen and colour and write."
+ ],
+ [
+ "pause",
+ 2.0
+ ],
+ [
+ "M",
+ "There are three bottles on the shelf."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "M",
+ "Colour the smallest one yellow."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "OK."
+ ],
+ [
+ "pause",
+ 5.0
+ ],
+ [
+ "M",
+ "On the table, draw a glass of milk."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "OK."
+ ],
+ [
+ "pause",
+ 5.0
+ ],
+ [
+ "M",
+ "Can you see the cat under the table?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "Yes, I can."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "M",
+ "Colour the cat black."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "OK."
+ ],
+ [
+ "pause",
+ 5.0
+ ],
+ [
+ "M",
+ "Now write SUGAR on the biggest bottle."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "OK."
+ ],
+ [
+ "pause",
+ 5.0
+ ],
+ [
+ "M",
+ "The curtains – colour the curtains red."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "OK."
+ ],
+ [
+ "pause",
+ 5.0
+ ],
+ [
+ "pause",
+ 2.0
+ ],
+ [
+ "R",
+ "Now listen to Part Five again."
+ ],
+ [
+ "pause",
+ 1.5
+ ],
+ [
+ "M",
+ "This is a kitchen."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "M",
+ "Example: colour the fridge blue."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "R",
+ "This is an example. Now you listen and colour and write."
+ ],
+ [
+ "pause",
+ 2.0
+ ],
+ [
+ "M",
+ "There are three bottles on the shelf."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "M",
+ "Colour the smallest one yellow."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "OK."
+ ],
+ [
+ "pause",
+ 5.0
+ ],
+ [
+ "M",
+ "On the table, draw a glass of milk."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "OK."
+ ],
+ [
+ "pause",
+ 5.0
+ ],
+ [
+ "M",
+ "Can you see the cat under the table?"
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "Yes, I can."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "M",
+ "Colour the cat black."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "OK."
+ ],
+ [
+ "pause",
+ 5.0
+ ],
+ [
+ "M",
+ "Now write SUGAR on the biggest bottle."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "OK."
+ ],
+ [
+ "pause",
+ 5.0
+ ],
+ [
+ "M",
+ "The curtains – colour the curtains red."
+ ],
+ [
+ "pause",
+ 0.5
+ ],
+ [
+ "Fch",
+ "OK."
+ ],
+ [
+ "pause",
+ 5.0
+ ],
+ [
+ "R",
+ "That is the end of Part Five."
+ ],
+ [
+ "pause",
+ 1.0
+ ]
+ ]
  }
 }

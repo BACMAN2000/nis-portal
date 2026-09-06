@@ -123,6 +123,40 @@ textarea.free{width:100%;max-width:820px;min-height:64px;border:1.5px solid var(
 .welcome .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:12px 0}
 .welcome .tilew{background:var(--sky);border-radius:12px;padding:12px}
 .welcome .tilew b{display:block;font-size:1.3rem}
+/* ---- El menu de tests de la izquierda se pliega con el boton del header: en
+   las partes con lamina hace falta todo el ancho. La preferencia se recuerda. ---- */
+.wrap.folded{grid-template-columns:1fr;max-width:1500px}
+.wrap.folded>aside{display:none}
+#btnAside{padding:6px 12px}
+/* ---- Lamina a la izquierda, preguntas a la derecha. Antes la foto ocupaba el
+   ancho entero y las preguntas caian debajo: el nino no podia mirar el dibujo
+   y contestar a la vez, que es justo lo que pide la tarea. ---- */
+.split{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(260px,.7fr);gap:16px;align-items:start}
+.split>.fig{position:sticky;top:12px;min-width:0}
+.split>.fig .pic,.split>.fig img,.split>.fig .pl-wrap,.split>.fig audio{max-width:100%}
+.split>.qs{min-width:0}
+.split>.qs .item{gap:6px}
+.split>.qs .item label{min-width:0;flex:1 1 100%}
+.split>.qs .item select,.split>.qs .item input[type=text]{width:100%;min-width:0}
+.split>.qs .board{grid-template-columns:repeat(auto-fill,minmax(96px,1fr))}
+@media (max-width:1080px){.split{grid-template-columns:1fr}.split>.fig{position:static}}
+/* ---- Una pregunta cada vez, con la flecha al costado derecho (Listening P4) ---- */
+.qnav{display:flex;align-items:center;gap:12px;margin:8px 0}
+.qnav .qhold{flex:1;min-width:0}
+/* la tira de dibujos de la pregunta cabe entera en la pantalla: sin esto son
+   448 px de lamina y los A/B/C se quedaban fuera al mirar el dibujo */
+.qnav .qhold .pic{max-height:46vh;width:auto;max-width:100%}
+.qarrow{flex:0 0 auto;width:54px;height:54px;border:2px solid var(--blue);background:#fff;color:var(--blue);border-radius:50%;font-size:1.7rem;font-weight:800;line-height:1;cursor:pointer}
+.qarrow:hover:not(:disabled){background:var(--sky)}
+.qarrow:disabled{opacity:.25;cursor:default}
+.qcount{font-weight:700;color:var(--muted);font-size:.8rem;letter-spacing:.05em;text-transform:uppercase;margin:0 0 4px}
+.qdots{display:flex;gap:6px;justify-content:center;margin:2px 0 6px}
+.qdots i{width:9px;height:9px;border-radius:50%;background:var(--border)}
+.qdots i.done{background:var(--ok)}
+.qdots i.on{background:var(--blue);box-shadow:0 0 0 3px #c7d2fe}
+/* en pantalla estrecha las flechas se van debajo, una a cada lado: si se quedan
+   a los costados la tira de dibujos se queda sin ancho */
+@media (max-width:560px){.qnav{flex-wrap:wrap;justify-content:space-between}.qnav .qhold{flex:1 0 100%;order:-1}.qarrow{width:44px;height:44px;font-size:1.4rem}}
 @media (max-width:820px){.wrap{grid-template-columns:1fr}aside{position:static}}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 @media print{.sr-only{position:static;width:auto;height:auto;clip:auto;margin:0;white-space:normal}}
@@ -132,7 +166,7 @@ textarea.free{width:100%;max-width:820px;min-height:64px;border:1.5px solid var(
 <header class="top">
   <img src="assets/logo-white-h.svg" alt="" onerror="this.remove()">
   <div><h1 id="hTitle">YLE Practice Tests</h1><div class="sub" id="hSub">Cambridge Young Learners · Pre A1 Starters</div></div>
-  <div class="right"><span class="lv" id="hLv">Starters</span><span class="timer hidden" id="timer">20:00</span><a href="index.html" class="btn sec" style="text-decoration:none">◀ Portal</a></div>
+  <div class="right"><button class="btn sec" id="btnAside" type="button" aria-expanded="true" title="Show or hide the list of tests">&#9776; Tests</button><span class="lv" id="hLv">Starters</span><span class="timer hidden" id="timer">20:00</span><a href="index.html" class="btn sec" style="text-decoration:none">◀ Portal</a></div>
 </header>
 <div class="wrap">
   <aside>
@@ -194,12 +228,24 @@ function img(id, cls, alt){ return '<img class="' + (cls || 'pic') + '" src="' +
    para un lector de pantalla, al imprimir y si el dibujo no carga— y deja de
    pintarse debajo compitiendo con él. */
 function escena(P){ return P.scene ? '<p class="small sr-only">' + esc(P.scene) + '</p>' : ''; }
+/* Lamina y preguntas en dos columnas: el nino mira el dibujo mientras contesta. */
+function split(fig, qs){ return '<div class="split"><div class="fig">' + fig + '</div><div class="qs">' + qs + '</div></div>'; }
 function audio(p){ if(SESSION) return '<p class="small">🏫 Class mock: your teacher plays the recording for Part ' + p + ' once, like in the real exam.</p>'; return '<audio controls preload="none" src="' + AUD + 'test_' + nn() + '_part' + p + '.mp3" onerror="this.insertAdjacentHTML(\'afterend\',\'<p class=small>🎧 The recording for this part is not published yet: do it while your teacher reads the script.</p>\');this.remove()"></audio>'; }
 
+/* El menu de tests se pliega para dejarle el ancho entero a la lamina; el mismo
+   boton lo vuelve a abrir y la eleccion se recuerda entre partes y tests. */
+function asideToggle(){
+  var w = $('.wrap'), b = $('#btnAside'); if(!w || !b) return;
+  var pon = function(f){ w.classList.toggle('folded', f); b.setAttribute('aria-expanded', f ? 'false' : 'true'); b.innerHTML = (f ? '\u2630' : '\u2715') + ' Tests'; try { localStorage.setItem('yle_aside', f ? 'folded' : 'open'); } catch(e){} };
+  var f = false; try { f = localStorage.getItem('yle_aside') === 'folded'; } catch(e){}
+  pon(f);
+  b.onclick = function(){ pon(!w.classList.contains('folded')); };
+}
 function init(){
   $('#hSub').textContent = 'Cambridge Young Learners · ' + NAMES[LEVEL];
   $('#hLv').textContent = LEVEL.charAt(0).toUpperCase() + LEVEL.slice(1); $('#hLv').className = 'lv ' + LEVEL;
   $('#levels').innerHTML = ['starters', 'movers', 'flyers'].map(function(l){ return '<a class="tbtn' + (l === LEVEL ? ' on' : '') + '" href="?level=' + l + '" style="text-decoration:none;color:inherit"><b>' + NAMES[l] + '</b></a>'; }).join('');
+  asideToggle();
   Promise.all([json('yle/specs.json'), json('yle/' + LEVEL + '/index.json').catch(function(){ return []; })]).then(function(r){
     SPECS = r[0]; INDEX = r[1];
     return nisGate().then(function(){
@@ -324,7 +370,7 @@ function render(){
   var html = tab === 'overview' ? overview() : tab === 'listening' ? listening() : tab === 'rw' ? rw() : speaking();
   if(SESSION) html = '<div class="score">🏫 Class mock test — ' + NAMES[LEVEL] + ' · Test ' + SESSION.test + ' · ' + (SESSION.paper === 'rw' ? 'Reading & Writing' : 'Listening') + '. Exam mode: answers are checked when you finish or when the time is up.</div>' + html;
   c.innerHTML = html;
-  bind(); restore(); screens();
+  bind(); restore(); screens(); qnav();
   if(window.attachPaintYle) attachPaintYle();
   window.scrollTo({top: 0, behavior: 'smooth'});
 }
@@ -362,10 +408,10 @@ function listening(){
     var P = L[pk], p = +pk.slice(1);
     if(P.type === 'draw_lines'){
       var opts = P.people.map(function(x){ return '<option value="' + x.id + '">' + x.id + ' — ' + esc(x.desc) + '</option>'; }).join('');
-      h += card('listening', p, 'Listen and draw lines', 'Look at the picture. Listen and draw a line from each name to the right person with the pencil. Then choose the person below. One name is not used.',
-        img(P.image, null, P.scene).replace('<img ', '<img data-paint="' + P.image + '" data-tools="pencil,eraser" ') + escena(P) +
+      h += card('listening', p, 'Listen and draw lines', 'Look at the picture. Listen and draw a line from each name to the right person with the pencil. Then choose the person in the list beside the picture. One name is not used.',
+        split(img(P.image, null, P.scene).replace('<img ', '<img data-paint="' + P.image + '" data-tools="pencil,eraser" ') + escena(P),
         '<div class="item ex"><span class="tagex">Example</span><b>' + esc(P.example.name) + '</b> → ' + P.example.person + '</div>' +
-        P.items.map(function(it, i){ return '<div class="item"><label>' + esc(it.name) + '</label><select data-name="' + pk + '_' + i + '"><option value="">— choose —</option>' + opts + '</select></div>'; }).join(''));
+        P.items.map(function(it, i){ return '<div class="item"><label>' + esc(it.name) + '</label><select data-name="' + pk + '_' + i + '"><option value="">— choose —</option>' + opts + '</select></div>'; }).join('')));
     } else if(P.type === 'note_taking' || P.type === 'note_taking_names_numbers'){
       h += card('listening', p, 'Listen and write', 'Read the question. Listen and write a name or a number.' + (P.heading ? ' <b>' + esc(P.heading) + '</b>' : ''),
         (P.example ? '<div class="item ex"><span class="tagex">Example</span>' + esc(P.example.q) + ' → <b>' + esc(P.example.a) + '</b></div>' : '') +
@@ -373,24 +419,25 @@ function listening(){
     } else if(P.type === 'mc_pictures'){
       // sin lámina: las tres opciones se dibujan con los emoji 3D (pics: ["apple","banana","cake"] o [{"word":"monkey","n":3},…])
       var strip = function(it){ if(!it.pics) return ''; return '<div class="abc">' + it.pics.map(function(p, j){ var w = typeof p === 'string' ? p : p.word, n = typeof p === 'string' ? 1 : (p.n || 1), e = typeof p === 'string' ? null : p.emoji; var h = ''; for(var k = 0; k < n; k++) h += e ? ART.pic3d(e, n > 3 ? 36 : 56) : pic(w, n > 3 ? 36 : 56); return '<div style="border:1.5px solid var(--border);border-radius:12px;padding:8px 10px;min-width:120px;text-align:center"><div class="letter" style="text-align:left">' + 'ABC'[j] + '</div><div style="display:flex;flex-wrap:wrap;gap:2px;justify-content:center;max-width:200px">' + h + '</div></div>'; }).join('') + '</div>'; };
-      var one = function(it, i, ex){ return '<div class="q"><p><b>' + (ex ? 'Example' : i + 1) + '.</b> ' + esc(it.q) + '</p>' + (it.image ? img(it.image) : strip(it)) + '<div class="abc">' + ['A', 'B', 'C'].map(function(k, j){ return ex ? '<label class="' + (k === it.key ? 'ok' : '') + '"><span class="letter">' + k + '</span> ' + esc(it.options[j]) + (k === it.key ? ' ✓' : '') + '</label>' : '<label><input type="radio" name="' + pk + '_' + i + '" value="' + k + '"><span class="letter">' + k + '</span> ' + esc(it.options[j]) + '</label>'; }).join('') + '</div></div>'; };
-      h += card('listening', p, 'Listen and tick the box', 'Listen and choose the right picture: A, B or C.', (P.example ? one(P.example, 0, true) : '') + P.items.map(function(it, i){ return one(it, i, false); }).join(''));
+      var one = function(it, i, ex){ return '<div class="q"' + (ex ? '' : ' data-qstep="1"') + '><p><b>' + (ex ? 'Example' : i + 1) + '.</b> ' + esc(it.q) + '</p>' + (it.image ? img(it.image) : strip(it)) + '<div class="abc">' + ['A', 'B', 'C'].map(function(k, j){ return ex ? '<label class="' + (k === it.key ? 'ok' : '') + '"><span class="letter">' + k + '</span> ' + esc(it.options[j]) + (k === it.key ? ' ✓' : '') + '</label>' : '<label><input type="radio" name="' + pk + '_' + i + '" value="' + k + '"><span class="letter">' + k + '</span> ' + esc(it.options[j]) + '</label>'; }).join('') + '</div></div>'; };
+      h += card('listening', p, 'Listen and tick the box', 'Listen and choose the right picture: A, B or C. One question at a time: press the arrow on the right for the next one.', (P.example ? one(P.example, 0, true) : '') +
+        '<div class="qnav" data-qnav="' + pk + '"><button type="button" class="qarrow" data-qprev="' + pk + '" aria-label="Previous question">‹</button><div class="qhold">' + P.items.map(function(it, i){ return one(it, i, false); }).join('') + '</div><button type="button" class="qarrow" data-qnext="' + pk + '" aria-label="Next question">›</button></div><div class="qdots" data-qdots="' + pk + '"></div>');
     } else if(P.type === 'match_letters'){
       // Movers P3: lista (quién / qué día…) → dibujos A–H (dos sobran). Los dibujos salen de los emoji 3D (word o emoji directo).
       var bx = function(x){ return '<div class="bx"><span class="letter">' + x.letter + '</span>' + (x.emoji ? ART.pic3d(x.emoji, 56) : pic(x.word, 56)) + '<div>' + esc(x.word) + '</div></div>'; };
       var letters = P.pictures.map(function(x){ return x.letter; });
       h += card('listening', p, 'Listen and write a letter', esc(P.intro || 'Listen and write a letter in each box.') + ' Two pictures are not used.',
-        '<div class="board">' + P.pictures.map(bx).join('') + '</div>' +
+        split('<div class="board">' + P.pictures.map(bx).join('') + '</div>',
         '<div class="item ex"><span class="tagex">Example</span><b>' + esc(P.example.who) + '</b> → ' + esc(P.example.letter) + '</div>' +
-        P.items.map(function(it, i){ return '<div class="item"><label>' + (i + 1) + '. ' + esc(it.who) + '</label><select data-name="' + pk + '_' + i + '"><option value="">—</option>' + letters.map(function(l){ return '<option value="' + l + '">' + l + '</option>'; }).join('') + '</select></div>'; }).join(''));
+        P.items.map(function(it, i){ return '<div class="item"><label>' + (i + 1) + '. ' + esc(it.who) + '</label><select data-name="' + pk + '_' + i + '"><option value="">—</option>' + letters.map(function(l){ return '<option value="' + l + '">' + l + '</option>'; }).join('') + '</select></div>'; }).join('')));
     } else if(P.type === 'colour' || P.type === 'colour_write'){
       var lab = function(it){ return (it.what ? esc(it.what) : 'the ' + esc(P.object || 'object')) + (it.where ? ' ' + esc(it.where) : ''); };
       var res = function(it){ return it.write ? 'write <b>' + esc(it.write) + '</b>' + (it.colour ? ' · colour <b>' + esc(it.colour) + '</b>' : '') : '<b>' + esc(it.colour) + '</b>'; };
       h += card('listening', p, P.type === 'colour' ? 'Listen and colour' : 'Listen and colour and write', 'Listen. Find each thing by where it is and colour it with the colour you hear.' + (P.type === 'colour_write' ? ' One question asks you to write a word on the picture (use the T tool).' : '') + ' Only colour what you are told to colour.',
-        img(P.image, null, P.scene).replace('<img ', '<img data-paint="' + P.image + '" ') + escena(P) +
+        split(img(P.image, null, P.scene).replace('<img ', '<img data-paint="' + P.image + '" ') + escena(P),
         '<div class="item ex"><span class="tagex">Example</span>' + lab(P.example) + ' → ' + res(P.example) + '</div>' +
         '<p class="small">Tick each one when you have done it:</p>' + P.items.map(function(it, i){ return '<div class="item"><label><input type="checkbox" data-name="' + pk + '_' + i + '" value="done"> ' + (i + 1) + '. ' + (it.write ? 'I wrote it' : 'I coloured it') + '</label></div>'; }).join('') +
-        '<details class="key"><summary>Show the key (after listening twice)</summary><ol>' + P.items.map(function(it){ return '<li>' + lab(it) + ' → ' + res(it) + '</li>'; }).join('') + '</ol></details>');
+        '<details class="key"><summary>Show the key (after listening twice)</summary><ol>' + P.items.map(function(it){ return '<li>' + lab(it) + ' → ' + res(it) + '</li>'; }).join('') + '</ol></details>'));
     }
   });
   return h;
@@ -470,11 +517,11 @@ function rw(){
       /* Flyers P7: tres dibujos y una historia de 20 palabras o más. La corrige el
          profesor con la escala 0-5 del handbook, así que aquí solo se recoge. */
       h += card('rw', p, 'Look at the three pictures. Write about this story', 'Write <b>20 or more words</b> about the three pictures. Your teacher marks this part.',
-        (P.image ? img(P.image) : '') + '<h4 style="margin:6px 0">' + esc(P.title) + '</h4>' +
-        '<ol class="small">' + (P.pictures || []).map(function(x){ return '<li>' + esc(x) + '</li>'; }).join('') + '</ol>' +
-        '<textarea class="free" data-name="' + pk + '_s0" spellcheck="false" rows="6" placeholder="Write your story here…"></textarea>' +
+        split((P.image ? img(P.image) : '') + '<h4 style="margin:6px 0">' + esc(P.title) + '</h4>' +
+        '<ol class="small">' + (P.pictures || []).map(function(x){ return '<li>' + esc(x) + '</li>'; }).join('') + '</ol>',
+        '<textarea class="free" data-name="' + pk + '_s0" spellcheck="false" rows="10" placeholder="Write your story here…"></textarea>' +
         '<p class="small" data-words="' + pk + '_s0">0 words</p>' +
-        (P.prompt ? '<p class="small">' + esc(P.prompt) + '</p>' : ''));
+        (P.prompt ? '<p class="small">' + esc(P.prompt) + '</p>' : '')));
     } else if(P.type === 'story_one_word'){
       var n = 0;
       h += card('rw', p, 'Look at the pictures and read the story. Write one word', 'Read the story. Write one word for each answer.',
@@ -505,12 +552,12 @@ function speaking(){
     } else if(P.type === 'find_differences'){
       // Movers/Flyers P1: dos dibujos casi iguales; el niño dice las diferencias. La lámina S1 lleva los dos lado a lado.
       h += '<div class="card" data-screen="1"><h3>Speaking — Part ' + n + ' · Find the differences</h3><p class="instr">Look at the two pictures. The examiner\'s picture is on the left and yours is on the right. Say what is different: <i>In your picture … but in my picture …</i>. Say at least four differences.</p>' +
-        img(P.image) + (P.examiner ? spk(P.examiner, P.model) : '') + recorder(pk, 'Record the differences you find') +
-        '<details class="key"><summary>Show the differences (after recording)</summary><ul>' + (P.differences || []).map(function(d){ return '<li>' + esc(d) + '</li>'; }).join('') + '</ul></details></div>';
+        split(img(P.image), (P.examiner ? spk(P.examiner, P.model) : '') + recorder(pk, 'Record the differences you find') +
+        '<details class="key"><summary>Show the differences (after recording)</summary><ul>' + (P.differences || []).map(function(d){ return '<li>' + esc(d) + '</li>'; }).join('') + '</ul></details>') + '</div>';
     } else if(P.type === 'picture_sequence'){
       h += '<div class="card" data-screen="1"><h3>Speaking — Part ' + n + ' · Picture story</h3><p class="instr">These pictures show a story. The examiner tells you the name of the story and describes the first picture. Then you continue the story: say what happens in each picture.</p>' +
-        '<h4 style="margin:6px 0">' + esc(P.title) + '</h4>' + img(P.image) + spk(P.examiner_open, null) + recorder(pk, 'Record the story, picture by picture') +
-        '<details class="key"><summary>Show a model story</summary><ol>' + (P.frames || []).map(function(f){ return '<li>' + esc(f) + '</li>'; }).join('') + '</ol></details></div>';
+        split('<h4 style="margin:6px 0">' + esc(P.title) + '</h4>' + img(P.image), spk(P.examiner_open, null) + recorder(pk, 'Record the story, picture by picture') +
+        '<details class="key"><summary>Show a model story</summary><ol>' + (P.frames || []).map(function(f){ return '<li>' + esc(f) + '</li>'; }).join('') + '</ol></details>') + '</div>';
     } else if(P.type === 'odd_one_out'){
       var tile = function(x, si, j, ex, odd){ var w = typeof x === 'string' ? x : x.word, e = typeof x === 'string' ? null : x.emoji; var inner = (e ? ART.pic3d(e, 52) : pic(w, 52)) + '<span>' + esc(w) + '</span>'; return ex ? '<div class="oddt' + (j === odd ? ' ok' : '') + '">' + inner + '</div>' : '<button type="button" class="oddt" data-odd="' + si + '" data-j="' + j + '">' + inner + '</button>'; };
       var sets = P.sets.map(function(st, si){ var ex = si === 0; return '<div><p style="margin:8px 0 2px"><b>' + (ex ? 'Example' : si) + '.</b> ' + (ex ? esc(st.reason) : 'Which one is different? Why?') + ' <span class="small" data-odd-res="' + (si - 1) + '"></span></p><div class="oddset">' + st.pics.map(function(x, j){ return tile(x, si - 1, j, ex, st.odd); }).join('') + (ex ? '' : '<input type="hidden" data-name="p' + n + '_' + (si - 1) + '">') + '</div></div>'; }).join('');
@@ -521,10 +568,10 @@ function speaking(){
       /* Flyers P1: el examinador no enseña su lámina, la describe. El niño escucha
          cada frase y dice en qué se diferencia de la suya. Seis diferencias. */
       h += '<div class="card" data-screen="1"><h3>Speaking — Part ' + n + ' · Find the differences</h3><p class="instr">You have a picture and the examiner has one that is almost the same. The examiner <b>tells</b> you about their picture; you say what is different in yours: <i>In my picture …</i>. Press 🔊 to hear each sentence.</p>' +
-        img(P.image) + '<p class="small"><b>Your picture:</b> ' + esc(P.candidate_scene) + '</p>' +
+        split(img(P.image) + '<p class="small"><b>Your picture:</b> ' + esc(P.candidate_scene) + '</p>',
         (P.examiner_scene ? '<div class="spk"><div class="q">' + esc(P.examiner_scene) + '</div><button type="button" class="btn sec" data-say="' + esc(P.examiner_scene) + '">🔊 Examiner</button></div>' : '') +
         recorder(pk, 'Say what is different in your picture') +
-        '<details class="key"><summary>Show the differences (after recording)</summary><ul>' + (P.differences || []).map(function(d){ return '<li>' + esc(d) + '</li>'; }).join('') + '</ul></details></div>';
+        '<details class="key"><summary>Show the differences (after recording)</summary><ul>' + (P.differences || []).map(function(d){ return '<li>' + esc(d) + '</li>'; }).join('') + '</ul></details>') + '</div>';
     } else if(P.type === 'information_exchange'){
       /* Flyers P2: cada uno tiene una ficha con huecos. Primero el niño contesta a
          lo que le preguntan y después es él quien pregunta. */
@@ -584,6 +631,39 @@ function restore(){
 function save(){ readDOM(); try { localStorage.setItem('yle_' + LEVEL, JSON.stringify({store: STORE, paint: PAINT, placed: PLACED})); } catch(e){} if(window.NIS_WORK) NIS_WORK.touch(); }
 try { var g = JSON.parse(localStorage.getItem('yle_' + LEVEL) || 'null'); if(g){ STORE = g.store || {}; PAINT = g.paint || {}; PLACED = g.placed || {}; } } catch(e){}
 
+/* Una pregunta cada vez con las flechas de los lados (Listening Part 4): con las
+   cinco tiras de dibujos juntas el nino se perdia y hacia scroll mientras sonaba
+   la grabacion. Las preguntas que no se ven siguen en el DOM, solo ocultas, asi
+   que se guardan y se corrigen igual que antes. */
+var QNAVS = [];
+function qnav(){
+  QNAVS = [];
+  $$('#content [data-qnav]').forEach(function(box){
+    var qs = $$('[data-qstep]', box); if(qs.length < 2) return;
+    var pk = box.dataset.qnav, i = 0;
+    var prev = $('[data-qprev]', box), next = $('[data-qnext]', box), hold = $('.qhold', box);
+    var dots = $('[data-qdots="' + pk + '"]', box.parentNode);
+    var cnt = document.createElement('p'); cnt.className = 'qcount'; hold.insertBefore(cnt, hold.firstChild);
+    if(dots) dots.innerHTML = qs.map(function(){ return '<i></i>'; }).join('');
+    var hecha = function(q){ return $$('input[type=radio]', q).some(function(r){ return r.checked; }); };
+    var pinta = function(){
+      qs.forEach(function(q, j){ q.classList.toggle('hidden', j !== i); });
+      cnt.textContent = 'Question ' + (i + 1) + ' of ' + qs.length;
+      prev.disabled = i === 0; next.disabled = i === qs.length - 1;
+      if(dots) $$('i', dots).forEach(function(d, j){ d.className = (j === i ? 'on ' : '') + (hecha(qs[j]) ? 'done' : ''); });
+    };
+    var go = function(d){ var n = Math.max(0, Math.min(qs.length - 1, i + d)); if(n === i) return false; i = n; pinta(); return true; };
+    prev.onclick = function(){ go(-1); }; next.onclick = function(){ go(1); };
+    box.addEventListener('change', pinta);
+    pinta();
+    QNAVS.push({box: box, go: go, todo: function(){ qs.forEach(function(q){ q.classList.remove('hidden'); }); cnt.remove(); prev.remove(); next.remove(); if(dots) dots.remove(); }});
+  });
+}
+/* la flecha del teclado mueve primero de pregunta y, cuando ya no quedan, de parte */
+function qnavKey(d){ var a = QNAVS.filter(function(q){ var s = q.box.closest('[data-screen]'); return s && !s.classList.contains('hidden'); }); return a.length ? a[0].go(d) : false; }
+/* al corregir se ensenan todas: el nino tiene que ver donde fallo */
+function qnavTodo(){ QNAVS.forEach(function(q){ q.todo(); }); QNAVS = []; }
+
 /* pantallas: una parte cada vez, con flechas */
 function screens(){
   var parts = $$('#content [data-screen]'); if(parts.length < 2) return;
@@ -595,7 +675,7 @@ function screens(){
   if($('#bPrev')) $('#bPrev').onclick = function(){ go(-1); };
   if($('#bNext')) $('#bNext').onclick = function(){ go(1); };
   if($('#bFinish')) $('#bFinish').onclick = function(){ if(tab === 'speaking'){ tab = 'overview'; render(); return; } finishPaper(); };
-  document.onkeydown = function(e){ if(/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName)) return; if(e.key === 'ArrowRight' && $('#bNext')) go(1); if(e.key === 'ArrowLeft' && $('#bPrev') && !$('#bPrev').disabled) go(-1); };
+  document.onkeydown = function(e){ if(/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName)) return; if(e.key === 'ArrowRight'){ if(qnavKey(1)) return; if($('#bNext')) go(1); } if(e.key === 'ArrowLeft'){ if(qnavKey(-1)) return; if($('#bPrev') && !$('#bPrev').disabled) go(-1); } };
 }
 
 /* ---------- corrección ---------- */
@@ -638,13 +718,13 @@ function checkPart(pk, silent){
     }
   }
   var tch = teacherItems(P);
-  if(!silent){ var c = $('[data-part="' + pk + '"]'); var box = $('.score', c) || document.createElement('div'); box.className = 'score'; box.textContent = 'Part ' + pk.slice(1) + ': ' + score + ' / ' + total + (tch ? ' auto-marked · ' + tch + ' for your teacher' : ''); c.appendChild(box); var det = $('[data-part="' + pk + '"] details'); if(det && tch) det.open = true; }
+  if(!silent){ qnavTodo(); var c = $('[data-part="' + pk + '"]'); var box = $('.score', c) || document.createElement('div'); box.className = 'score'; box.textContent = 'Part ' + pk.slice(1) + ': ' + score + ' / ' + total + (tch ? ' auto-marked · ' + tch + ' for your teacher' : ''); c.appendChild(box); var det = $('[data-part="' + pk + '"] details'); if(det && tch) det.open = true; }
   return {score: score, total: total, teacher: tch};
 }
 function band(pct){ var b = (SPECS.shields && SPECS.shields.nis_estimate_bands) || [[90, 5], [75, 4], [60, 3], [40, 2], [0, 1]]; for(var i = 0; i < b.length; i++) if(pct >= b[i][0]) return b[i][1]; return 1; }
 function finishPaper(){
   stopTimer(); var paper = tab === 'rw' ? 'rw' : 'listening'; var parts = {}, score = 0, total = 0, teacher = 0;
-  $$('#content [data-screen]').forEach(function(p){ p.classList.remove('hidden'); });
+  $$('#content [data-screen]').forEach(function(p){ p.classList.remove('hidden'); }); qnavTodo();
   Object.keys(T[paper]).sort().forEach(function(pk){ var r = checkPart(pk, false); parts[pk] = r; score += r.score; total += r.total; teacher += r.teacher || 0; });
   var pct = total ? Math.round(100 * score / total) : 0, sh = band(pct);
   var res = {score: score, total: total, pct: pct, shields: sh, parts: parts, mode: mode, at: new Date().toISOString()};
