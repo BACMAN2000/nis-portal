@@ -1092,6 +1092,11 @@ async function renderAdmin(tab='users'){
     ]},
     {group:'Permisos', icon:'🔐', items:[
       {key:'unitaccess',label:'📚 Activar unidades'},
+      /* Tambien aqui, y a proposito. En Seguimiento esta al lado de su hermano
+         —los controles de lectura, que abren y cierran igual—, pero quien va a
+         habilitar un examen busca en Permisos, junto a "Activar unidades", y
+         ahi no estaba: el menu nace plegado y la pestana no se encontraba. */
+      {key:'unitexams',label:'📋 Abrir exámenes de unidad'},
       {key:'access',label:'🔐 Accesos'},
     ]},
   ], tab, `<div class="center muted">Cargando…</div>`);
