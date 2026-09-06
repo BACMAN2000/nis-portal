@@ -44,6 +44,25 @@
   .q .opt.bad .mark{color:#DC2626}
   .q input[type=text]{padding:7px 10px;border:1px solid #CBD5E1;border-radius:8px;font:inherit;width:160px}
   .q textarea{width:100%;padding:10px;border:1px solid #CBD5E1;border-radius:8px;font:inherit;min-height:120px}
+  /* Hueco del texto: se pulsa el numero y salen las alternativas ahi mismo.
+     Es el mismo formato de los examenes YLE y del curso. */
+  .gapw{position:relative;display:inline-block;vertical-align:baseline;margin:0 2px}
+  .gapb{border:0;border-bottom:2px solid #1D4ED8;background:#EEF3FB;border-radius:7px 7px 0 0;padding:1px 9px;font:600 .95rem inherit;color:#1D4ED8;cursor:pointer;min-width:62px}
+  .gapb i{font-style:normal;font-weight:800;font-size:.78em;opacity:.7;margin-right:4px}
+  .gapb.puesto{color:#0F172A;background:#fff}
+  .gapm{position:absolute;z-index:30;left:0;top:calc(100% + 2px);background:#fff;border:1.5px solid #1D4ED8;border-radius:11px;box-shadow:0 12px 28px rgba(15,23,42,.2);padding:4px;display:flex;flex-wrap:wrap;align-items:center;width:max-content;gap:2px;max-width:min(92vw,34rem);max-height:46vh;overflow:auto}
+  .gapx{border:0;background:#EEF3FB;color:#64748B;border-radius:8px;padding:6px 10px;cursor:pointer;font:inherit;font-weight:700}
+  .gapm.hidden{display:none}
+  .gapm button{border:0;background:none;text-align:left;padding:7px 13px;border-radius:8px;font:inherit;font-size:.92rem;cursor:pointer;white-space:nowrap;color:#0F172A}
+  .gapm button:hover,.gapm button.sel{background:#EEF3FB}
+  .gapw.ok .gapb{background:#DCFCE7;border-bottom-color:#15803D}
+  .gapw.bad .gapb{background:#FEE2E2;border-bottom-color:#DC2626}
+  .lsn-audio{width:100%;max-width:36rem;margin:6px 0 10px}
+  .kw{margin:4px 0}
+  .kw-tag{background:#7c1d3f;color:#fff;border-radius:5px;padding:1px 7px;font-size:.7rem;font-weight:700;letter-spacing:.04em}
+  .q input.wide{min-width:15rem}
+  .raiz{background:#eef3fb;border-radius:6px;padding:1px 8px;font-weight:700;letter-spacing:.05em;font-size:.85rem;margin-left:6px}
+  .sol{color:#15803D;font-weight:700}
   .res{font-weight:700;margin-top:10px}
   .muted{color:#64748B;font-size:.85rem}
   .hidden{display:none}
@@ -164,7 +183,22 @@ function partNumber(ex,ei){ const m=(ex&&ex.title||'').match(/Part\s*(\d+)/i); r
 function exerciseHtml(ti,ei){
   const ex=CAM.lessons[ti].exercises[ei];
   let h=`<div class="ex" id="ex-${ti}-${ei}"><b>${esc(ex.title||ex.tl||'Ejercicio')}</b><div class="ins">${esc(ex.ins||'')}</div>`;
-  if(ex.passage) h+=`<div class="passage">${esc(ex.passage)}</div>`;
+  /* Listening: hasta ahora la pagina daba las preguntas y no habia nada que oir.
+     El mp3 lo graba cambridge-data/gen_cambridge_audio.py con los guiones que ya
+     estaban escritos en los datos. */
+  if(ex.tl==='Listening'){
+    h+=`<audio class="lsn-audio" controls preload="none" src="cambridge-audio/${LEVEL}/t${String(ti+1).padStart(2,'0')}-e${ei+1}.mp3"
+          onerror="this.insertAdjacentHTML('afterend','<div class=\\'muted\\'>La grabación de este ejercicio todavía no está publicada.</div>');this.remove()"></audio>`;
+  }
+  /* Texto con huecos: el numero se pulsa y las alternativas salen donde esta. */
+  const conHuecos = !!(ex.passage && /\((\d+)\)_{2,}/.test(ex.passage) && (ex.items||[]).length && (ex.items||[]).every(it=>it.opts));
+  if(conHuecos){
+    h+=`<div class="passage">`+esc(ex.passage).replace(/\((\d+)\)_{2,}/g,(m,n)=>{
+      const qi=+n-1, it=(ex.items||[])[qi]||{};
+      return `<span class="gapw" id="gw-${ti}-${ei}-${qi}"><button type="button" class="gapb" onclick="abreGap(event,${ti},${ei},${qi})"><i>${n}</i>…</button>`
+        +`<span class="gapm hidden"><button type="button" class="gapx" onclick="event.stopPropagation();this.parentNode.classList.add('hidden')">✕</button>`+(it.opts||[]).map((o,oi)=>`<button type="button" id="o-${ti}-${ei}-${qi}-${oi}" onclick="pickGap(event,${ti},${ei},${qi},${oi})">${String.fromCharCode(65+oi)}. ${esc(o)}</button>`).join('')+`</span></span>`;
+    })+`</div>`;
+  } else if(ex.passage) h+=`<div class="passage">${esc(ex.passage)}</div>`;
   if(ex.type==='wr'){
     h+=`<p>${esc(ex.prompt||'').replace(/\n/g,'<br>')}</p>
         <textarea id="wr-${ti}-${ei}" oninput="wc(${ti},${ei},${ex.minWords||0})" placeholder="Escribe aquí…"></textarea>
@@ -172,10 +206,22 @@ function exerciseHtml(ti,ei){
         <div class="res" id="r-${ti}-${ei}"></div>
         <button class="go" style="margin-top:10px" onclick="submitWr(${ti},${ei})">Enviar</button>`;
   } else {
-    (ex.items||[]).forEach((it,qi)=>{
+    (conHuecos ? [] : (ex.items||[])).forEach((it,qi)=>{
       h+=`<div class="q" id="q-${ti}-${ei}-${qi}">`;
       if(ex.type==='fl'){
         h+=`<div>${esc(it.pre||'')} <input type="text" aria-label="Respuesta ${qi+1}" id="i-${ti}-${ei}-${qi}"> ${esc(it.post||'')}</div>`;
+      } else if(ex.type==='kt'){
+        /* Key word transformations: la frase original, la palabra obligatoria y el
+           hueco. Antes caian en la rama de opciones A-D, que no encontraba ni
+           enunciado ni alternativas, y salia el numero a secas. */
+        h+=`<div style="font-weight:600;margin-bottom:4px">${qi+1}. ${esc(it.src||'')}</div>
+            <div class="kw"><span class="kw-tag">PALABRA CLAVE</span> <b>${esc(it.kw||'')}</b></div>
+            <div><input type="text" class="wide" placeholder="2-5 palabras" aria-label="Respuesta ${qi+1}" id="i-${ti}-${ei}-${qi}"></div>
+            ${it.hint?`<div class="muted" style="margin-top:4px">${esc(it.hint)}</div>`:''}`;
+      } else if(ex.type==='wf'){
+        /* Word formation: la raiz que hay que transformar va junto al hueco. */
+        h+=`<div>${qi+1}. ${esc(it.pre||'')} <input type="text" aria-label="Respuesta ${qi+1}" id="i-${ti}-${ei}-${qi}"> ${esc(it.post||'')}
+            <span class="raiz">${esc(it.root||'')}</span></div>`;
       } else {
         h+=`<div style="font-weight:600;margin-bottom:4px" id="ql-${ti}-${ei}-${qi}">${qi+1}. ${esc(it.q||'')}</div>`;
         h+=`<div role="radiogroup" aria-labelledby="ql-${ti}-${ei}-${qi}">`;
@@ -189,6 +235,32 @@ function exerciseHtml(ti,ei){
   h+=`</div>`;
   return h;
 }
+
+/* Huecos del texto: abrir uno cierra los demas; elegir usa el mismo pick() de
+   siempre, asi que la correccion y el guardado no cambian. */
+function abreGap(e,ti,ei,qi){
+  e.stopPropagation();
+  const w=document.getElementById(`gw-${ti}-${ei}-${qi}`), m=w.querySelector('.gapm');
+  const abierto=!m.classList.contains('hidden');
+  document.querySelectorAll('.gapm').forEach(x=>x.classList.add('hidden'));
+  if(abierto) return;
+  m.classList.remove('hidden'); m.style.left='0'; m.style.right='auto'; m.style.marginLeft='0';
+  /* la barra se corre lo justo para no salirse por ningun lado */
+  const caja=(document.getElementById('crMain')||document.body).getBoundingClientRect(), r=m.getBoundingClientRect();
+  let dx=0;
+  if(r.right>caja.right-6) dx=(caja.right-6)-r.right;
+  if(r.left+dx<caja.left+6) dx=(caja.left+6)-r.left;
+  m.style.marginLeft=Math.round(dx)+'px';
+}
+function pickGap(e,ti,ei,qi,oi){
+  e.stopPropagation();
+  pick(ti,ei,qi,oi);
+  const w=document.getElementById(`gw-${ti}-${ei}-${qi}`);
+  const b=w.querySelector('.gapb'), op=document.getElementById(`o-${ti}-${ei}-${qi}-${oi}`);
+  b.textContent=(op.textContent||'').replace(/^[A-Z]\.\s*/,''); b.classList.add('puesto');
+  w.querySelector('.gapm').classList.add('hidden');
+}
+document.addEventListener('click',()=>document.querySelectorAll('.gapm').forEach(x=>x.classList.add('hidden')));
 
 // Guarda/restaura lo escrito y lo seleccionado para no perder respuestas al cambiar de tarjeta.
 const _vals={};
@@ -263,10 +335,18 @@ function grade(ti,ei){
   let ok=0,total=(ex.items||[]).length;
   (ex.items||[]).forEach((it,qi)=>{
     let correct=false,ua='';
-    if(ex.type==='fl'){
+    if(ex.type==='fl'||ex.type==='kt'||ex.type==='wf'){
       const inp=document.getElementById(`i-${ti}-${ei}-${qi}`);
       ua=inp.value.trim();
-      correct=ua.toLowerCase()===String(it.gap||'').toLowerCase();
+      /* la respuesta buena esta en `gap` (huecos), en `ans` (transformaciones) o
+         en `gap`/`ans` segun el archivo, y puede admitir variantes separadas por / */
+      const buenas=String(it.gap!=null?it.gap:(it.ans!=null?it.ans:'')).split('/').map(x=>x.trim().toLowerCase()).filter(Boolean);
+      const suya=ua.toLowerCase().replace(/\s+/g,' ');
+      correct=buenas.some(b=>b.replace(/\s+/g,' ')===suya);
+      if(!correct && !inp.nextElementSibling){
+        inp.insertAdjacentHTML('afterend', `<span class="sol"> \u2192 ${esc(buenas[0]||'')}</span>`);
+      }
+      if(correct){ const s=inp.parentNode.querySelector('.sol'); if(s) s.remove(); }
       inp.style.borderColor=correct?'#15803D':'#DC2626';
       inp.setAttribute('aria-invalid', correct?'false':'true');
     } else {
@@ -280,6 +360,14 @@ function grade(ti,ei){
         if(k===it.ans){ el.classList.add('ok'); el.insertAdjacentHTML('beforeend','<span class="mark">✓ <span class="sr-only">correcta</span></span>'); }
         else if(k===sel){ el.classList.add('bad'); el.insertAdjacentHTML('beforeend','<span class="mark">✗ <span class="sr-only">tu respuesta</span></span>'); }
       });
+      /* si la pregunta vive dentro del texto, se pinta el hueco y, si fallo, se
+         enseña ahi la palabra buena */
+      const gw=document.getElementById(`gw-${ti}-${ei}-${qi}`);
+      if(gw){
+        gw.classList.remove('ok','bad'); gw.classList.add(correct?'ok':'bad');
+        const vieja=gw.querySelector('.sol'); if(vieja) vieja.remove();
+        if(!correct) gw.insertAdjacentHTML('beforeend',`<span class="sol"> → ${esc((it.opts||[])[it.ans]||'')}</span>`);
+      }
     }
     if(correct) ok++;
     dispatchAttempt(ex,ti,ei,{
