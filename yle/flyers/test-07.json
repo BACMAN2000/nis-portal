@@ -255,10 +255,13 @@
  "write": "draw"
  },
  {
- "what": "Colour the dog white"
+ "what": "the dog",
+ "where": "crossing the road",
+ "colour": "white"
  },
  {
- "what": "Write STOP on the traffic light"
+ "what": "the traffic light",
+ "write": "STOP"
  },
  {
  "what": "the man’s bike",
