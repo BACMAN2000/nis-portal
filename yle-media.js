@@ -45,11 +45,13 @@
     // Se relee cada 30 s: el token de Supabase caduca a la hora y el SDK lo
     // renueva solo; con un valor congelado el audio del final del examen
     // empezaria a dar 401.
+    // El "no hay token" no se guarda: si se guardara, quien entra con la pagina
+    // ya abierta se quedaria medio minuto sin laminas.
     var ahora = Date.now();
     if (cache && ahora - cuando < 30000) return cache;
     var t = null;
     try { t = localStorage.getItem('bm_token') || deSupabase(); } catch (e) { t = null; }
-    cache = t; cuando = ahora;
+    cache = t; cuando = t ? ahora : 0;
     return t;
   }
 
