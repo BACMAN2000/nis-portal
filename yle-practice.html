@@ -236,6 +236,22 @@ var LOCKED = {};                     // tests con candado por yle_access (NIS)
 
 /* ---------- carga ---------- */
 function json(u){ return fetch(u, {cache: 'no-cache'}).then(function(r){ if(!r.ok) throw new Error(u); return r.json(); }); }
+/* Los tests viven en la tabla yle_tests, no en archivos: el JSON lleva dentro
+   las claves de respuesta y como archivo publico cualquiera veia el solucionario
+   de los 30 examenes (6-sep-2026). Los lee quien tiene cuenta del portal. */
+function listaTests(){
+  var c = client();
+  if(!c) return Promise.resolve([]);
+  return c.from('yle_tests').select('number, theme').eq('level', LEVEL).order('number')
+    .then(function(r){ return (r.data || []).map(function(x){ return {number: x.number, theme: x.theme}; }); })
+    .catch(function(){ return []; });
+}
+function traeTest(n){
+  var c = client();
+  if(!c) return Promise.reject(new Error('sin conexión'));
+  return c.from('yle_tests').select('data').eq('level', LEVEL).eq('number', n).single()
+    .then(function(r){ if(r.error || !r.data) throw new Error('no disponible'); return r.data.data; });
+}
 function key(){ return (cur + 1) + '#' + tab + '#'; }
 function nn(){ return String(T.number).padStart(2, '0'); }
 function img(id, cls, alt){ return '<img class="' + (cls || 'pic') + '" src="' + IMG + 'test_' + nn() + '_' + id + '.jpg" alt="' + esc(alt || '') + '" loading="lazy" onerror="this.style.display=\'none\'">'; }
@@ -279,14 +295,14 @@ function init(){
   $('#hLv').textContent = LEVEL.charAt(0).toUpperCase() + LEVEL.slice(1); $('#hLv').className = 'lv ' + LEVEL;
   $('#levels').innerHTML = ['starters', 'movers', 'flyers'].map(function(l){ return '<a class="tbtn' + (l === LEVEL ? ' on' : '') + '" href="?level=' + l + '" style="text-decoration:none;color:inherit"><b>' + NAMES[l] + '</b></a>'; }).join('');
   asideToggle();
-  Promise.all([json('yle/specs.json'), json('yle/' + LEVEL + '/index.json').catch(function(){ return []; })]).then(function(r){
+  Promise.all([json('yle/specs.json'), listaTests()]).then(function(r){
     SPECS = r[0]; INDEX = r[1];
     return nisGate().then(function(){
-      $('#picker').innerHTML = INDEX.length ? INDEX.map(function(t, i){ var lk = LOCKED[t.number]; return '<button class="tbtn" data-i="' + i + '"' + (lk ? ' disabled style="opacity:.5"' : '') + '><b>' + (lk ? '🔒 ' : '') + 'Test ' + t.number + '</b><small>' + esc(t.theme) + '</small></button>'; }).join('') : '<p class="small">No tests published for this level yet.</p>';
+      $('#picker').innerHTML = INDEX.length ? INDEX.map(function(t, i){ var lk = LOCKED[t.number]; return '<button class="tbtn" data-i="' + i + '"' + (lk ? ' disabled style="opacity:.5"' : '') + '><b>' + (lk ? '🔒 ' : '') + 'Test ' + t.number + '</b><small>' + esc(t.theme) + '</small></button>'; }).join('') : (client() ? '<p class="small">No tests published for this level yet.</p>' : '<p class="small">Sign in through your school portal to open the practice tests.</p>');
       $$('#picker .tbtn').forEach(function(b){ b.onclick = function(){ openTest(+b.dataset.i); }; });
       $('#btnPath').onclick = showPath; $('#lnkVocab').href = 'yle-vocab.html?level=' + LEVEL;
       if(qs.get('path') === '1') showPath();
-      if(SESSION){ mode = 'exam'; var si = INDEX.findIndex(function(t){ return t.number === SESSION.test; }); if(si >= 0){ json('yle/' + LEVEL + '/test-' + String(SESSION.test).padStart(2, '0') + '.json').then(function(t){ T = t; cur = si; tab = SESSION.paper; screen = 0; $$('#picker .tbtn').forEach(function(b, k){ b.classList.toggle('on', k === si); }); render(); startTimer(); }); return; } }
+      if(SESSION){ mode = 'exam'; var si = INDEX.findIndex(function(t){ return t.number === SESSION.test; }); if(si >= 0){ traeTest(SESSION.test).then(function(t){ T = t; cur = si; tab = SESSION.paper; screen = 0; $$('#picker .tbtn').forEach(function(b, k){ b.classList.toggle('on', k === si); }); render(); startTimer(); }); return; } }
       render();
       /* ?test=N abre ese test; con &paper= y &part= se entra directamente en esa
          parte, que es como llega el alumno desde una unidad del curso («practise
@@ -314,7 +330,7 @@ function nisGate(){
   }).catch(function(){});
 }
 function openTest(i, irA){
-  return json('yle/' + LEVEL + '/test-' + String(INDEX[i].number).padStart(2, '0') + '.json').then(function(t){
+  return traeTest(INDEX[i].number).then(function(t){
     T = t; cur = i; tab = 'overview'; screen = 0;
     /* irA = {paper, part}: se entra directo en esa parte, que es como llega el
        alumno desde una unidad del curso. */
