@@ -45,3 +45,12 @@ elevenlabs-key.txt
 # produccion, y encima nginx los servia: cualquiera podia descargarlos. Lo que
 # se publica es yle-audio/, que es el audio montado.
 yle/tools/_tts_cache/
+
+# Los examenes viven en la tabla yle_tests, no como archivos: el JSON lleva las
+# claves de respuesta y publicado dejaba el solucionario de los 30 examenes al
+# alcance de cualquiera (6-sep-2026). Se quedan en el disco para las
+# herramientas (validate.py, check_audio.py, gen_yle_audio.py...), pero no se
+# publican. Para cambiar un test: se edita aqui, se valida y se sube a la base.
+yle/starters/*.json
+yle/movers/*.json
+yle/flyers/*.json
