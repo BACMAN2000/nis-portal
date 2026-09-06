@@ -224,7 +224,8 @@ def valida(tests, level, strict=False):
             for w in palabras(txt):
                 lw = w.lower().strip("'’")
                 lw = lw.replace('’', "'")
-                if len(lw) <= 1 or lw in vocab or w[0].isupper() or lw.isdigit() or lw == 'ex': continue
+                # 'th'/'st'/'nd'/'rd' salen de los ordinales (4th, 17th), no son palabras
+                if len(lw) <= 1 or lw in vocab or w[0].isupper() or lw.isdigit() or lw in ('ex', 'th', 'st', 'nd', 'rd'): continue
                 if bases(lw) & vocab: continue   # formas flexionadas de palabras de la lista
                 fuera[lw] = fuera.get(lw, 0) + 1
         if fuera:

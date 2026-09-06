@@ -49,7 +49,7 @@ def fuera_de(t, level):
             for m in re.finditer(r"[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ'’]*", txt):
                 w = m.group(0)
                 lw = w.lower().strip("'’").replace('’', "'")
-                if len(lw) <= 1 or lw in vocab or w[0].isupper() or lw.isdigit() or lw == 'ex': continue
+                if len(lw) <= 1 or lw in vocab or w[0].isupper() or lw.isdigit() or lw in ('ex', 'th', 'st', 'nd', 'rd'): continue
                 if V.bases(lw) & vocab: continue
                 ini = max(0, m.start() - 45)
                 out.append((lw, ruta, ('…' if ini else '') + txt[ini:m.end() + 40].replace('\n', ' ')))

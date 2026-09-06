@@ -94,7 +94,7 @@
      ]
     },
     {
-     "q": "Price per week (£)",
+     "q": "Number of children in the camp",
      "a": [
       "95",
       "£95"
@@ -174,7 +174,7 @@
      "letter": "B"
     },
     {
-     "who": "Saturday (extra club)",
+     "who": "Saturday (other club)",
      "letter": "G"
     }
    ]
@@ -186,7 +186,7 @@
      "q": "What did Mia forget to bring to school today?",
      "options": [
       "her ruler",
-      "her pencil case",
+      "her pencil box",
       "her lunch"
      ],
      "key": "B",
@@ -271,7 +271,7 @@
    "type": "definitions_copy",
    "words": [
     "a ruler",
-    "a pencil case",
+    "a pencil box",
     "a rubber",
     "a calculator",
     "a dictionary",
@@ -280,7 +280,7 @@
     "a uniform",
     "a classroom",
     "a playground",
-    "a notebook",
+    "a book",
     "a chair",
     "a scissors",
     "a teacher",
@@ -288,7 +288,7 @@
    ],
    "example": {
     "def": "",
-    "word": "a pencil case"
+    "word": "a pencil box"
    },
    "items": [
     {
@@ -439,7 +439,7 @@
   "p4": {
    "type": "mc_cloze",
    "title": "School libraries",
-   "text": "Libraries are very important places in every school. In a library, students can __(1)__ new books about animals, sports, science or adventure stories. In most school libraries, children __(2)__ borrow three books and take them home __(3)__ two weeks. There is __(4)__ a librarian who helps the students __(5)__ the right book. Libraries are quiet places __(6)__ you should not talk loudly. Today, many libraries also __(7)__ computers so children can use the internet __(8)__ projects. Libraries help children love __(9)__ and learn lots of __(10)__ things.",
+   "text": "Libraries are very important places in every school. In a library, students can __(1)__ new books about animals, sports, science or adventure stories. In most school libraries, children __(2)__ borrow three books and take them home __(3)__ two weeks. There is __(4)__ a person who helps the students __(5)__ the right book. Libraries are quiet places __(6)__ you should not talk loudly. Today, many libraries also __(7)__ computers so children can use the internet __(8)__ projects. Libraries help children love __(9)__ and learn lots of __(10)__ things.",
    "example": {
     "options": [
      "",
@@ -536,7 +536,7 @@
    "title": "The school trip",
    "parts": [
     {
-     "text": "Last Friday, class 5B went on a school trip to the Science Museum. They took the bus at nine o’clock and arrived at ten. Their teacher, Mrs Brown, told them to stay together. First, they visited the dinosaur room. Ben’s favourite was a very big dinosaur called Diplodocus, which was 25 metres long. Then they went to the space room and Emma drew a rocket in her notebook. At twelve o’clock they had lunch in the museum garden. Emma shared her cheese sandwich with Ben because he forgot his lunchbox at home. After lunch, they watched a short film about the planets. Everyone got a small poster of Mars as a present. They returned to school at half past three, very tired but happy.",
+     "text": "Last Friday, class 5B went on a school trip to the Science Museum. They took the bus at nine o’clock and arrived at ten. Their teacher, Mrs Brown, told them to stay together. First, they visited the dinosaur room. Ben’s favourite was a very big dinosaur called Diplodocus, which was very long. Then they went to the space room and Emma drew a rocket in her book. At twelve o’clock they had lunch in the museum garden. Emma shared her cheese sandwich with Ben because he forgot his lunchbox at home. After lunch, they watched a short film about the planets. Everyone got a small poster of Mars as a present. They returned to school at half past three, very tired but happy.",
      "examples": [
       {
        "s": "Where did class 5B go?",
@@ -558,19 +558,32 @@
       },
       {
        "s": "How long is the Diplodocus?",
-       "a": ""
+       "a": [
+        "very long"
+       ]
       },
       {
-       "s": "Why did Emma share her sandwich?",
-       "a": ""
+       "s": "Why did Emma give away her sandwich?",
+       "a": [
+        "Ben forgot his lunchbox",
+        "because Ben forgot his lunch",
+        "he forgot his lunchbox"
+       ]
       },
       {
        "s": "What was the film about?",
-       "a": ""
+       "a": [
+        "the planets",
+        "about the planets"
+       ]
       },
       {
        "s": "What present did everyone get?",
-       "a": ""
+       "a": [
+        "a poster of Mars",
+        "a small poster of Mars",
+        "a poster"
+       ]
       }
      ]
     }
@@ -591,12 +604,12 @@
   },
   "p7": {
    "type": "story_writing",
-   "title": "The missing pencil case",
+   "title": "The missing pencil box",
    "image": "P7",
    "pictures": [
-    "A boy can’t find his pencil case in his school bag.",
+    "A boy can’t find his pencil box in his school bag.",
     "He looks everywhere in the classroom – under the desks and on the shelves.",
-    "The teacher finds the pencil case on the floor in the playground."
+    "The teacher finds the pencil box on the floor in the playground."
    ],
    "prompt": "Look at the three pictures and write the story. Write 20 or more words."
   }
@@ -608,10 +621,10 @@
    "examiner_scene": "A classroom: a boy writing with a pencil, a girl with a red school bag, a clock showing 10:00, a teacher at the board writing \"maths\", a window showing the sun, three books on a shelf.",
    "candidate_scene": "A classroom: a boy writing with a PEN, a girl with a BLUE school bag, a clock showing 10:00, a teacher at the board writing \"SCIENCE\", a window showing the sun, FIVE books on a shelf.",
    "differences": [
-    "Pencil vs pen.",
-    "Red bag vs blue bag.",
-    "Maths on the board vs science.",
-    "Three books vs five books."
+    "In my picture there's a pencil on the desk, but in your picture there's a pen.",
+    "In my picture the bag is red, but in your picture it's blue.",
+    "In my picture there's maths on the board, but in your picture there's science.",
+    "In my picture there are three books, but in your picture there are five."
    ]
   },
   "p2": {
@@ -625,7 +638,7 @@
     "What sports do children do?",
     "What is the uniform like?"
    ],
-   "examiner_card": "SCHOOL: Riverside School – 240 students – Open 8:30 to 3:30 – Sports: football, tennis, swimming – Uniform: white shirt, grey trousers, red tie.",
+   "examiner_card": "SCHOOL: Riverside School – 240 students – Open 8:30 to 3:30 – Sports: football, tennis, swimming – Uniform: white shirt, grey trousers, red scarf.",
    "examiner_questions": [
     "What’s your school’s name?",
     "How many classrooms are there?",
@@ -637,12 +650,12 @@
   "p3": {
    "type": "picture_sequence",
    "image": "S3",
-   "title": "The science experiment",
-   "examiner_open": "Look at these pictures. They tell a story called \"The science experiment\". Two children are in the classroom and they are putting some water on a seed in a small pot. Now you tell the rest of the story.",
+   "title": "The science lesson",
+   "examiner_open": "Look at these pictures. They tell a story called \"The science lesson\". Two children are in the classroom and they are putting some water on a seed in a small glass. Now you tell the story.",
    "frames": [
-    "Two children put some water in a small plant pot with a seed.",
-    "They put the pot next to a sunny window.",
-    "One week later, a little green plant grows in the pot.",
+    "Two children put some water in a small plant glass with a seed.",
+    "They put the glass next to a sunny window.",
+    "One week later, a little green plant grows in the glass.",
     "The children show the plant proudly to their teacher, who smiles."
    ]
   },
@@ -941,7 +954,7 @@
    ],
    [
     "Fch",
-    "We only have 12 students per class."
+    "We only have 12 students in each class."
    ],
    [
     "pause",
@@ -949,7 +962,7 @@
    ],
    [
     "M",
-    "And how much is it per week?"
+    "And how many children are in the camp?"
    ],
    [
     "pause",
@@ -957,7 +970,7 @@
    ],
    [
     "Fch",
-    "It’s 95 pounds a week."
+    "There are 95 children."
    ],
    [
     "pause",
@@ -965,7 +978,7 @@
    ],
    [
     "M",
-    "Who’s the main teacher?"
+    "Who’s the teacher?"
    ],
    [
     "pause",
@@ -981,7 +994,7 @@
    ],
    [
     "M",
-    "Shall we bring a notebook?"
+    "Shall we bring a book?"
    ],
    [
     "pause",
@@ -989,7 +1002,7 @@
    ],
    [
     "Fch",
-    "Yes, please bring a green notebook."
+    "Yes, please bring a green book."
    ],
    [
     "pause",
@@ -1049,7 +1062,7 @@
    ],
    [
     "Fch",
-    "We only have 12 students per class."
+    "We only have 12 students in each class."
    ],
    [
     "pause",
@@ -1057,7 +1070,7 @@
    ],
    [
     "M",
-    "And how much is it per week?"
+    "And how many children are in the camp?"
    ],
    [
     "pause",
@@ -1065,7 +1078,7 @@
    ],
    [
     "Fch",
-    "It’s 95 pounds a week."
+    "There are 95 children."
    ],
    [
     "pause",
@@ -1073,7 +1086,7 @@
    ],
    [
     "M",
-    "Who’s the main teacher?"
+    "Who’s the teacher?"
    ],
    [
     "pause",
@@ -1089,7 +1102,7 @@
    ],
    [
     "M",
-    "Shall we bring a notebook?"
+    "Shall we bring a book?"
    ],
    [
     "pause",
@@ -1097,7 +1110,7 @@
    ],
    [
     "Fch",
-    "Yes, please bring a green notebook."
+    "Yes, please bring a green book."
    ],
    [
     "pause",
@@ -1235,7 +1248,7 @@
    ],
    [
     "Mch",
-    "The extra club on Saturday is art."
+    "The other club on Saturday is art."
    ],
    [
     "pause",
@@ -1367,7 +1380,7 @@
    ],
    [
     "Mch",
-    "The extra club on Saturday is art."
+    "The other club on Saturday is art."
    ],
    [
     "pause",
@@ -1417,7 +1430,7 @@
    ],
    [
     "Fch",
-    "But I left my pencil case on the kitchen table!"
+    "But I left my pencil box on the kitchen table!"
    ],
    [
     "pause",
@@ -1557,7 +1570,7 @@
    ],
    [
     "Mch",
-    "Science is definitely my favourite."
+    "Science is really my favourite."
    ],
    [
     "pause",
@@ -1657,7 +1670,7 @@
    ],
    [
     "Fch",
-    "But I left my pencil case on the kitchen table!"
+    "But I left my pencil box on the kitchen table!"
    ],
    [
     "pause",
@@ -1797,7 +1810,7 @@
    ],
    [
     "Mch",
-    "Science is definitely my favourite."
+    "Science is really my favourite."
    ],
    [
     "pause",

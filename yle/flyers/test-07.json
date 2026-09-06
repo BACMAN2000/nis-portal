@@ -87,7 +87,7 @@
      ]
     },
     {
-     "q": "Day of the flight",
+     "q": "Day of the journey",
      "a": [
       "Saturday"
      ]
@@ -108,7 +108,7 @@
      ]
     },
     {
-     "q": "Total price (£)",
+     "q": "Number of the room",
      "a": [
       "950",
       "£950"
@@ -131,7 +131,7 @@
     },
     {
      "letter": "C",
-     "word": "ferry"
+     "word": "boat"
     },
     {
      "letter": "D",
@@ -147,7 +147,7 @@
     },
     {
      "letter": "G",
-     "word": "tram"
+     "word": "bus"
     },
     {
      "letter": "H",
@@ -215,7 +215,7 @@
      "image": "P4Q3"
     },
     {
-     "q": "What is the boy’s favourite vehicle?",
+     "q": "What is the boy’s favourite cars and buses?",
      "options": [
       "a lorry",
       "a motorbike",
@@ -277,12 +277,12 @@
     "a ticket",
     "a station",
     "a helicopter",
-    "a ferry",
+    "a boat",
     "a lorry",
     "an airport",
     "a taxi",
     "a map",
-    "a tram",
+    "a bus",
     "a tunnel",
     "a plane",
     "a motorbike"
@@ -293,7 +293,7 @@
    },
    "items": [
     {
-     "def": "A big vehicle for a family that carries things from one place to another, on the road.",
+     "def": "A big cars and buses for a family that carries things from one place to another, on the road.",
      "word": "a lorry"
     },
     {
@@ -306,7 +306,7 @@
     },
     {
      "def": "A big boat that carries people and cars across the sea.",
-     "word": "a ferry"
+     "word": "a boat"
     },
     {
      "def": "You put your clothes in this when you travel.",
@@ -366,7 +366,7 @@
     },
     {
      "letter": "F",
-     "text": "Five pounds for adults and two pounds for children."
+     "text": "Five for adults and two for children."
     },
     {
      "letter": "G",
@@ -440,7 +440,7 @@
   "p4": {
    "type": "mc_cloze",
    "title": "Travelling by train",
-   "text": "Trains are a very comfortable and safe __(1)__ to travel. You can see a __(2)__ of beautiful places from the window. Trains do not __(3)__ in traffic like cars. Some trains are very fast and __(4)__ go from one city __(5)__ another in a __(6)__ hours. Many trains have a special carriage where you __(7)__ buy food and drinks. Children under four years old usually travel for __(8)__. In some countries, you can take a night train with small __(9)__ and you __(10)__ sleep while you travel.",
+   "text": "Trains are a very soft and safe __(1)__ to travel. You can see a __(2)__ of beautiful places from the window. Trains do not __(3)__ in traffic like cars. Some trains are very fast and __(4)__ go from one city __(5)__ another in a __(6)__ hours. Many trains have a special carriage where you __(7)__ buy food and drinks. Children under four years old usually travel for __(8)__. In some countries, you can take a night train with small __(9)__ and you __(10)__ sleep while you travel.",
    "example": {
     "options": [
      "",
@@ -534,44 +534,69 @@
   },
   "p5": {
    "type": "story_completion",
-   "title": "An adventure on the ferry",
+   "title": "An adventure on the boat",
    "parts": [
     {
-     "text": "Last month, my class went on an adventure day to visit a small island near our town. We travelled on a big red and white ferry. The trip was only 45 minutes but it was very fun. Our teacher, Mr Lloyd, gave each of us a map with red marks for the important places. First we visited the old lighthouse, which is 75 metres tall. Then we had lunch in a little café called The Salty Fish. I had fish and chips, my best friend Zara had a cheese sandwich. Zara said the café owner’s dog was really cute. After lunch, we walked to the top of a small hill and took lots of photos. On the way back, the sea was rougher and some students felt sick, but I love the ferry so I was happy. We arrived back at school at four o’clock. What an amazing day!",
+     "text": "Last month, my class went on an adventure day to visit a small island near our town. We travelled on a big red and white boat. The trip was only 45 minutes but it was very fun. Our teacher, Mr Lloyd, gave each of us a map with red marks for the important places. First we visited the old lighthouse, which has 75 steps. Then we had lunch in a little café called The Salty Fish. I had fish and chips, my best friend Zara had a cheese sandwich. Zara said the café owner’s dog was really cute. After lunch, we walked to the top of a small hill and took lots of photos. On the way back, the sea was rougher and some students felt sick, but I love the boat so I was happy. We arrived back at school at four o’clock. What an amazing day!",
      "examples": [
       {
-       "s": "What colour was the ferry?",
+       "s": "What colour was the boat?",
        "a": "red and white"
       }
      ],
      "items": [
       {
-       "s": "How long was the ferry trip?",
-       "a": ""
+       "s": "How long was the boat trip?",
+       "a": [
+        "45 minutes",
+        "forty-five minutes"
+       ]
       },
       {
        "s": "What did the teacher give to everyone?",
-       "a": ""
+       "a": [
+        "a map",
+        "a map with red marks"
+       ]
       },
       {
-       "s": "How tall is the lighthouse?",
-       "a": ""
+       "s": "How many steps has the lighthouse got?",
+       "a": [
+        "75 steps",
+        "seventy-five steps",
+        "75"
+       ]
       },
       {
        "s": "What is the café called?",
-       "a": ""
+       "a": [
+        "The Salty Fish"
+       ]
       },
       {
        "s": "What did Zara have for lunch?",
-       "a": ""
+       "a": [
+        "a cheese sandwich",
+        "cheese sandwich"
+       ]
       },
       {
        "s": "Why did some students feel sick?",
-       "a": ""
+       "a": [
+        "the sea was rougher",
+        "because the sea was rougher",
+        "the sea"
+       ]
       },
       {
        "s": "What time did they arrive at school?",
-       "a": ""
+       "a": [
+        "four o’clock",
+        "four o'clock",
+        "4 o’clock",
+        "4 o'clock",
+        "at four"
+       ]
       }
      ]
     }
@@ -609,10 +634,10 @@
    "examiner_scene": "A train station: a woman with a big suitcase, a boy eating an apple, a clock at 9:00, three travellers in a queue, a blue train arriving, a cat on the platform.",
    "candidate_scene": "A train station: a woman with a big suitcase, a boy eating a BANANA, a clock at 9:00, FIVE travellers in a queue, a RED train arriving, a cat on the platform.",
    "differences": [
-    "Apple vs banana.",
-    "Three travellers vs five.",
-    "Blue train vs red train.",
-    "(Clock same, suitcase same – find remaining different detail)."
+    "In my picture the girl is eating an apple, but in your picture she's eating a banana.",
+    "In my picture there are three people waiting, but in your picture there are five.",
+    "In my picture the train is blue, but in your picture it's red.",
+    "You can say any other difference you find."
    ]
   },
   "p2": {
@@ -624,7 +649,7 @@
     "How do people go there?",
     "How many days is the holiday?",
     "What’s the hotel like?",
-    "What activities can you do there?"
+    "What can you do there?"
    ],
    "examiner_card": "HOLIDAY: Forest Lodge – Transport: train – 5 days – 4-star lodge – hiking, fishing, biking – cool and fresh.",
    "examiner_questions": [
@@ -639,7 +664,7 @@
    "type": "picture_sequence",
    "image": "S3",
    "title": "The bus home",
-   "examiner_open": "These pictures tell a story called \"The bus home\". The boy is running but he misses the school bus. Now you tell the rest.",
+   "examiner_open": "These pictures tell a story called \"The bus home\". The boy is running but he misses the school bus. Now you tell the story.",
    "frames": [
     "A boy misses the school bus and watches it leave.",
     "He calls his mum on the phone.",
@@ -663,7 +688,7 @@
      "q": "Where would you like to go for your next holiday?"
     },
     {
-     "q": "Have you been on a boat or ferry? What was it like?"
+     "q": "Have you been on a boat or boat? What was it like?"
     }
    ]
   }
@@ -862,7 +887,7 @@
    ],
    [
     "Fch",
-    "Day of the flight?"
+    "Day of the journey?"
    ],
    [
     "pause",
@@ -878,7 +903,7 @@
    ],
    [
     "Fch",
-    "Your flight number is IA 27."
+    "Your plane number is IA 27."
    ],
    [
     "pause",
@@ -902,7 +927,7 @@
    ],
    [
     "Mch",
-    "And the total price?"
+    "And the room?"
    ],
    [
     "pause",
@@ -910,7 +935,7 @@
    ],
    [
     "Fch",
-    "That’s £950 for the whole family."
+    "That’s room 950 for all the family."
    ],
    [
     "pause",
@@ -970,7 +995,7 @@
    ],
    [
     "Fch",
-    "Day of the flight?"
+    "Day of the journey?"
    ],
    [
     "pause",
@@ -986,7 +1011,7 @@
    ],
    [
     "Fch",
-    "Your flight number is IA 27."
+    "Your plane number is IA 27."
    ],
    [
     "pause",
@@ -1010,7 +1035,7 @@
    ],
    [
     "Mch",
-    "And the total price?"
+    "And the room?"
    ],
    [
     "pause",
@@ -1018,7 +1043,7 @@
    ],
    [
     "Fch",
-    "That’s £950 for the whole family."
+    "That’s room 950 for all the family."
    ],
    [
     "pause",
@@ -1084,7 +1109,7 @@
    ],
    [
     "Mch",
-    "Tuesday we took a tram all around the city."
+    "Tuesday we took a bus all around the city."
    ],
    [
     "pause",
@@ -1108,7 +1133,7 @@
    ],
    [
     "Fch",
-    "Friday we took a ferry to a small island."
+    "Friday we took a boat to a small island."
    ],
    [
     "pause",
@@ -1176,7 +1201,7 @@
    ],
    [
     "Mch",
-    "Tuesday we took a tram all around the city."
+    "Tuesday we took a bus all around the city."
    ],
    [
     "pause",
@@ -1200,7 +1225,7 @@
    ],
    [
     "Fch",
-    "Friday we took a ferry to a small island."
+    "Friday we took a boat to a small island."
    ],
    [
     "pause",
@@ -1374,7 +1399,7 @@
    ],
    [
     "R",
-    "Four. — What vehicle do you love?"
+    "Four. — How do you like to travel?"
    ],
    [
     "pause",
@@ -1382,7 +1407,7 @@
    ],
    [
     "F",
-    "— What vehicle do you love?"
+    "— How do you like to travel?"
    ],
    [
     "pause",
@@ -1390,7 +1415,7 @@
    ],
    [
     "Fch",
-    "Lorries are cool, motorbikes too, but helicopters are my absolute favourite."
+    "Lorries are cool, motorbikes too, but helicopters are my favourite."
    ],
    [
     "pause",
@@ -1606,7 +1631,7 @@
    ],
    [
     "R",
-    "Four. — What vehicle do you love?"
+    "Four. — How do you like to travel?"
    ],
    [
     "pause",
@@ -1614,7 +1639,7 @@
    ],
    [
     "F",
-    "— What vehicle do you love?"
+    "— How do you like to travel?"
    ],
    [
     "pause",
@@ -1622,7 +1647,7 @@
    ],
    [
     "Fch",
-    "Lorries are cool, motorbikes too, but helicopters are my absolute favourite."
+    "Lorries are cool, motorbikes too, but helicopters are my favourite."
    ],
    [
     "pause",
