@@ -517,7 +517,7 @@
       "image": "R5",
       "parts": [
         {
-          "text": "Daisy lived in a small village near a big forest. Every morning, before school, she walked with her dog Rex along the road to the farm. Last Tuesday, it was raining and the road was very wet.",
+          "text": "Daisy lived in a small village near a big forest. Every morning, before school, she walked with her dog Rex along the road to the farm. Last Tuesday, the weather was rainy and the road was very wet.",
           "examples": [
             {
               "s": "Daisy's village was near a big ___.",
@@ -555,7 +555,7 @@
               ]
             },
             {
-              "s": "The puppy was hiding under a big ___.",
+              "s": "The puppy hid under a big ___.",
               "a": [
                 "rock"
               ]
@@ -569,7 +569,7 @@
           ]
         },
         {
-          "text": "At the farm, the farmer's wife, Mrs Field, was looking for something. 'That's Brownie, our new puppy!' she said. 'He ran away this morning. Thank you, Daisy!' She gave Daisy a big bag of apples and Rex got some meat. Daisy was late for school, but she was very happy.",
+          "text": "At the farm, the farmer's wife, Mrs Field, looked for something. 'That's Brownie, our new puppy!' she said. 'He ran away this morning. Thank you, Daisy!' She gave Daisy a big bag of apples and Rex got some meat. Daisy was late for school, but she was very happy.",
           "items": [
             {
               "s": "The puppy's name was ___.",
@@ -1018,7 +1018,7 @@
       ],
       [
         "F",
-        "Your lunch and a hat. It's going to be very sunny."
+        "Your lunch and a hat. It's very sunny today."
       ],
       [
         "Mch",
@@ -1230,7 +1230,7 @@
       ],
       [
         "Fch",
-        "No, Dad. The pandas were sleeping. But I saw a kangaroo! It was jumping."
+        "No, Dad. The pandas slept all day. But I saw a kangaroo! It jumped very high."
       ],
       [
         "M",

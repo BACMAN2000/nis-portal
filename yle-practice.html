@@ -201,7 +201,13 @@ function init(){
       if(qs.get('path') === '1') showPath();
       if(SESSION){ mode = 'exam'; var si = INDEX.findIndex(function(t){ return t.number === SESSION.test; }); if(si >= 0){ json('yle/' + LEVEL + '/test-' + String(SESSION.test).padStart(2, '0') + '.json').then(function(t){ T = t; cur = si; tab = SESSION.paper; screen = 0; $$('#picker .tbtn').forEach(function(b, k){ b.classList.toggle('on', k === si); }); render(); startTimer(); }); return; } }
       render();
-      var want = +(qs.get('test') || 0); if(want && INDEX.some(function(t){ return t.number === want && !LOCKED[t.number]; })) openTest(INDEX.findIndex(function(t){ return t.number === want; }));
+      /* ?test=N abre ese test; con &paper= y &part= se entra directamente en esa
+         parte, que es como llega el alumno desde una unidad del curso («practise
+         Listening Part 4»). Si no dice qué test, se coge el primero que pueda abrir. */
+      var want = +(qs.get('test') || 0), quiere = qs.get('paper'), pnum = +(qs.get('part') || 0);
+      if(!want && quiere) want = (INDEX.filter(function(t){ return !LOCKED[t.number]; })[0] || {}).number || 0;
+      if(want && INDEX.some(function(t){ return t.number === want && !LOCKED[t.number]; }))
+        openTest(INDEX.findIndex(function(t){ return t.number === want; }), quiere ? {paper: quiere, part: pnum} : null);
     });
   }).catch(function(e){ $('#content').innerHTML = '<div class="card">Could not load the tests (' + esc(e.message) + ').</div>'; });
 }
@@ -220,9 +226,12 @@ function nisGate(){
     });
   }).catch(function(){});
 }
-function openTest(i){
-  json('yle/' + LEVEL + '/test-' + String(INDEX[i].number).padStart(2, '0') + '.json').then(function(t){
+function openTest(i, irA){
+  return json('yle/' + LEVEL + '/test-' + String(INDEX[i].number).padStart(2, '0') + '.json').then(function(t){
     T = t; cur = i; tab = 'overview'; screen = 0;
+    /* irA = {paper, part}: se entra directo en esa parte, que es como llega el
+       alumno desde una unidad del curso. */
+    if(irA && ['listening', 'rw', 'speaking'].indexOf(irA.paper) >= 0){ tab = irA.paper; screen = irA.part > 0 ? irA.part - 1 : 0; }
     $$('#picker .tbtn').forEach(function(b, k){ b.classList.toggle('on', k === i); }); var bp = $('#btnPath'); if(bp) bp.classList.remove('on');
     render();
   });

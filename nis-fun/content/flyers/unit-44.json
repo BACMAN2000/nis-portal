@@ -78,7 +78,7 @@
   {
    "code": "B",
    "type": "exam_task",
-   "title": "Complete the funfair story.",
+   "title": "Quick check · Complete the funfair story.",
    "outputs": [
     "book",
     "digital",
@@ -174,7 +174,7 @@
   {
    "code": "D",
    "type": "exam_task",
-   "title": "Exam task · Choose the correct word.",
+   "title": "Quick check · Choose the correct word.",
    "outputs": [
     "book",
     "digital",

@@ -78,7 +78,7 @@
   {
    "code": "B",
    "type": "exam_task",
-   "title": "Read about the trip and choose the right answer.",
+   "title": "Quick check · Read about the trip and choose the right answer.",
    "outputs": [
     "book",
     "digital",
@@ -175,7 +175,7 @@
   {
    "code": "D",
    "type": "exam_task",
-   "title": "Exam task · Choose the correct past form.",
+   "title": "Quick check · Choose the correct past form.",
    "outputs": [
     "book",
     "digital",

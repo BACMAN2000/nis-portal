@@ -90,7 +90,7 @@
           "a": "16"
         },
         {
-          "q": "Ben is going to learn the:",
+          "q": "Ben wants to learn the:",
           "a": "piano"
         },
         {
@@ -562,10 +562,10 @@
       "image": "R5",
       "parts": [
         {
-          "text": "One wet afternoon, Ben was helping his grandmother in her house. In a cupboard behind some boxes, he found an old guitar. It was very dirty and very old, but Ben loved it.",
+          "text": "One wet afternoon, Ben helped his grandmother in her house. In a cupboard behind some boxes, he found an old guitar. It was very dirty and very old, but Ben loved it.",
           "examples": [
             {
-              "s": "Ben was helping his ___ in her house.",
+              "s": "Ben helped his ___ in her house.",
               "a": "grandmother"
             },
             {
@@ -973,7 +973,7 @@
       ],
       [
         "F",
-        "Which teacher is going to help you?"
+        "Which teacher helps you?"
       ],
       [
         "Mch",

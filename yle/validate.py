@@ -145,8 +145,60 @@ def textos_rw(t):
     rec(t.get('rw', {})); rec(t.get('listening', {}))
     return out
 
+# ---------------------------------------------------------------- gramatica
+# Estructuras de la Grammar and Structures List (yle/grammar-2024.json) que se
+# reconocen en un texto. Solo estan las que se pueden detectar sin equivocarse:
+# la idea no es puntuar la gramatica del test, sino avisar de que un examen usa
+# algo que su nivel todavia no ha visto (past continuous en Movers, por ejemplo).
+# Las palabras que terminan en -ing sin serlo (nothing, morning) se descartan.
+NO_ING = set('nothing something anything everything thing things king ring spring morning evening during string wing swing sing bring young along wrong'.split())
+GRAM_PAT = {
+  'past_simple':      [r"\b(?:went|saw|ate|drank|rode|took|gave|bought|found|caught|flew|wrote|sang|swam|ran|said|told|made|played|walked|looked|wanted|liked|opened|closed|jumped|helped|watched|carried|dropped|shouted|laughed|climbed|painted|cleaned|washed|cooked|visited|arrived)\b"],
+  'comparative_adj':  [r"\b\w{3,}er than\b", r"\bthe \w{3,}est\b", r"\bmore \w+ than\b"],
+  'must':             [r"\bmust(?:n't)? \w+"],
+  'have_to':          [r"\b(?:have|has|had) to \w+"],
+  'relative_clauses': [r"\bthe (?:girl|boy|man|woman|person|one|thing|place|house|dog|cat|children|people) (?:who|which|where|that) \w+"],
+  'past_continuous':  ['@ing'],
+  'present_perfect':  [r"\b(?:has|have|'s|'ve) (?:just|already|ever|never) \w+", r"\b(?:has|have|'ve) (?:been|gone|eaten|seen|done|made|finished|found|bought|written|taken|forgotten|broken|lost|won)\b"],
+  'be_going_to':      [r"\b(?:am|is|are|'m|'s|'re) going to (?!the\b|a\b|an\b|school\b|bed\b|town\b|work\b|sleep\b)[a-z]+"],
+  'will':             [r"\b(?:will|won't) [a-z]+", r"'ll [a-z]+"],
+  'might':            [r"\bmight [a-z]+"],
+  'should':           [r"\bshould(?:n't)? [a-z]+"],
+  'tag_questions':    [r",\s(?:isn't|aren't|doesn't|don't|didn't|wasn't|can't|won't) (?:it|he|she|they|you|we|I)\?"],
+}
+
+
+def gramatica_de(level):
+    """{id: nivel} de las estructuras oficiales, para saber cual sobra en cada nivel."""
+    try:
+        G = json.load(io.open(os.path.join(AQUI, 'grammar-2024.json'), encoding='utf-8'))
+    except Exception:
+        return {}
+    return {e['id']: (L, e['name']) for L in ORDEN for e in G.get(L, [])}
+
+
+def gramatica_fuera(texto, level, mapa):
+    """Estructuras de un nivel superior que aparecen en el texto, con un ejemplo."""
+    permitido = ORDEN.index(level)
+    out = {}
+    for sid, pats in GRAM_PAT.items():
+        if sid not in mapa: continue
+        nivel, nombre = mapa[sid]
+        if ORDEN.index(nivel) <= permitido: continue
+        casos = []
+        for pat in pats:
+            if pat == '@ing':   # past continuous: was/were + gerundio de verdad
+                for m in re.finditer(r"\b(was|were)\s+([a-z]+ing)\b", texto, re.I):
+                    if m.group(2).lower() not in NO_ING: casos.append(m.group(0))
+            else:
+                casos += re.findall(pat, texto, re.I)
+        if casos: out[nombre] = (nivel, len(casos), casos[0])
+    return out
+
+
 def valida(tests, level, strict=False):
     spec = SPECS['levels'][level]; vocab = vocabulario(level); errores = 0; avisos = 0
+    mapa = gramatica_de(level); gram = 0
     for t in tests:
         n = t.get('number'); print('== Test %s %s' % (n, t.get('theme', '')))
         for paper, clave in (('listening', 'listening'), ('rw', 'rw')):
@@ -170,8 +222,12 @@ def valida(tests, level, strict=False):
         if fuera:
             avisos += len(fuera)
             print('   ~ fuera de la lista %s: %s' % (level, ', '.join(sorted(fuera)[:30]) + (' …' if len(fuera) > 30 else '')))
-    print('\nerrores de formato:', errores, '| palabras fuera de lista:', avisos)
-    return errores == 0 and (not strict or avisos == 0)
+        g = gramatica_fuera(' '.join(textos_rw(t)), level, mapa)
+        for nombre, (niv, n, ej) in sorted(g.items(), key=lambda x: -x[1][1]):
+            gram += 1
+            print('   ~ gramática de %s: %s (%d) «%s»' % (niv, nombre, n, ej.strip()[:60]))
+    print('\nerrores de formato:', errores, '| palabras fuera de lista:', avisos, '| estructuras por encima de nivel:', gram)
+    return errores == 0 and (not strict or (avisos == 0 and gram == 0))
 
 if __name__ == '__main__':
     args = [a for a in sys.argv[1:] if not a.startswith('--')]

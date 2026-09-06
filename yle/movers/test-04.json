@@ -535,7 +535,7 @@
       "image": "R5",
       "parts": [
         {
-          "text": "Charlie and his parents were going on holiday to the seaside. They went to the station early in the morning and got on the train. Charlie had a small red suitcase with his favourite comics, his swimming things and his blue hat inside.",
+          "text": "Charlie and his parents went on holiday to the seaside. They went to the station early in the morning and got on the train. Charlie had a small red suitcase with his favourite comics, his swimming things and his blue hat inside.",
           "examples": [
             {
               "s": "Charlie's family went on holiday to the ___.",
@@ -586,10 +586,10 @@
           ]
         },
         {
-          "text": "At the seaside station, a woman in a blue uniform was waiting for them. 'Is this your suitcase?' she asked. 'The man found it and phoned us.' Charlie was so happy. That evening, he read all his comics on the beach, and he wore his blue hat.",
+          "text": "At the seaside station, a woman in a blue uniform waited for them. 'Is this your suitcase?' she asked. 'The man found it and phoned us.' Charlie was so happy. That evening, he read all his comics on the beach, and he wore his blue hat.",
           "items": [
             {
-              "s": "The woman at the station was wearing a blue ___.",
+              "s": "The woman at the station wore a blue ___.",
               "a": [
                 "uniform"
               ]
@@ -883,7 +883,7 @@
       ],
       [
         "Mch",
-        "That's Nick. He was saying 'The train is late!' He looked at the clock every minute."
+        "That's Nick. He said 'The train is late!' He looked at the clock every minute."
       ],
       [
         "F",
@@ -1241,7 +1241,7 @@
       ],
       [
         "F",
-        "No, I've got sunglasses. I'm going to buy a hat. A big one."
+        "No, I've got sunglasses. I want to buy a hat. A big one."
       ],
       [
         "Mch",

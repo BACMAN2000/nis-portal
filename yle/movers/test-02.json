@@ -144,7 +144,7 @@
          "items": [{"s": "The swimming teacher was called ___.", "a": ["Mrs Hill", "Hill"]}, {"s": "The competition was on the next ___.", "a": ["Saturday"]}]},
         {"text": "All week, Jim practised in the pool. Lucy helped him. 'Kick your legs faster,' she said. On Saturday, lots of parents came to watch. Jim's mum and dad sat at the front. Jim was in the race with five other children.",
          "items": [{"s": "Lucy told Jim to kick his ___ faster.", "a": ["legs"]}, {"s": "Jim's parents sat ___ to watch.", "a": ["at the front", "front"]}, {"s": "There were ___ children in Jim's race.", "a": ["six", "6"]}]},
-        {"text": "The race started. Jim swam as fast as he could. He didn't win, but he came third and got a small cup. 'I'm so happy,' Jim said. 'Next year I'm going to win!' Lucy laughed and gave him a big hug.",
+        {"text": "The race started. Jim swam as fast as he could. He didn't win, but he came third and got a small cup. 'I'm so happy,' Jim said. 'Next year I want to win!' Lucy laughed and gave him a big hug.",
          "items": [{"s": "In the race, Jim came ___.", "a": ["third", "3rd"]}, {"s": "Jim got a small ___.", "a": ["cup"]}]}
       ]
     },
@@ -358,7 +358,7 @@
       ["pause", 3],
       ["R", "Five. Which animal did Sam see at the farm?"],
       ["F", "Did you see the cows at the farm, Sam?"],
-      ["Mch", "No, the cows were in the field, very far away. And the sheep were sleeping. But I saw a goat! It ate my sandwich!"],
+      ["Mch", "No, the cows were in the field, very far away. And the sheep slept under a tree. But I saw a goat! It ate my sandwich!"],
       ["F", "A goat! That's funny."],
       ["pause", 3],
       ["R", "Now listen to Part Four again."]

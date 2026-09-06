@@ -82,7 +82,7 @@
           "a": "Sandy"
         },
         {
-          "q": "The weather is going to be:",
+          "q": "The weather today:",
           "a": "hot"
         },
         {
@@ -426,9 +426,9 @@
           "key": "B"
         },
         {
-          "a": "Take your boots too. It's going to rain.",
+          "a": "Take your boots too. The path is very wet.",
           "options": [
-            "OK, I'll take it.",
+            "OK, I can take them.",
             "It rained a lot.",
             "Yes, they're boots."
           ],
@@ -589,10 +589,10 @@
           ]
         },
         {
-          "text": "One windy afternoon, Kim was walking next to the river with her brother. Suddenly the wind took the hat off her head! It went up into a big tree and Kim started to cry.",
+          "text": "One windy afternoon, Kim walked next to the river with her brother. Suddenly the wind took the hat off her head! It went up into a big tree and Kim started to cry.",
           "items": [
             {
-              "s": "Kim was walking next to the ___ with her brother.",
+              "s": "Kim walked next to the ___ with her brother.",
               "a": [
                 "river"
               ]
@@ -989,11 +989,11 @@
       ],
       [
         "Fch",
-        "Is it going to rain?"
+        "Is the weather bad today?"
       ],
       [
         "F",
-        "No, it's going to be hot. Very hot!"
+        "No, it's hot today. Very hot!"
       ],
       [
         "Fch",
@@ -1229,7 +1229,7 @@
       ],
       [
         "Mch",
-        "My jacket isn't warm. I'm going to wear my big coat."
+        "My jacket isn't warm. I want to wear my big coat."
       ],
       [
         "F",

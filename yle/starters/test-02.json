@@ -1,1132 +1,1132 @@
 {
-  "level": "starters",
-  "number": 2,
-  "theme": "At school",
-  "listening": {
-    "p1": {
-      "type": "draw_lines",
-      "image": "L1",
-      "scene": "A classroom. Six children are doing different things near the board, the bookcase and the teacher's desk.",
-      "names": [
-        "Ben",
-        "Sue",
-        "Pat",
-        "Mark",
-        "Grace",
-        "Tony",
-        "Eva"
-      ],
-      "people": [
-        {
-          "id": "A",
-          "desc": "a boy writing on the board"
-        },
-        {
-          "id": "B",
-          "desc": "a girl reading a book at a desk"
-        },
-        {
-          "id": "C",
-          "desc": "a boy with a red bag next to the door"
-        },
-        {
-          "id": "D",
-          "desc": "a girl drawing a picture with crayons"
-        },
-        {
-          "id": "E",
-          "desc": "a boy eating an apple by the window"
-        },
-        {
-          "id": "F",
-          "desc": "a girl with a ruler and a pencil at the teacher's desk"
-        }
-      ],
-      "example": {
-        "name": "Ben",
-        "person": "A"
-      },
-      "items": [
-        {
-          "name": "Sue",
-          "person": "B"
-        },
-        {
-          "name": "Mark",
-          "person": "C"
-        },
-        {
-          "name": "Grace",
-          "person": "D"
-        },
-        {
-          "name": "Tony",
-          "person": "E"
-        },
-        {
-          "name": "Eva",
-          "person": "F"
-        }
-      ]
+ "level": "starters",
+ "number": 2,
+ "theme": "At school",
+ "listening": {
+  "p1": {
+   "type": "draw_lines",
+   "image": "L1",
+   "scene": "A classroom. Six children are doing different things near the board, the bookcase and the teacher's desk.",
+   "names": [
+    "Ben",
+    "Sue",
+    "Pat",
+    "Mark",
+    "Grace",
+    "Tony",
+    "Eva"
+   ],
+   "people": [
+    {
+     "id": "A",
+     "desc": "a boy writing on the board"
     },
-    "p2": {
-      "type": "note_taking",
-      "heading": "The new boy",
-      "example": {
-        "q": "What is the boy's name?",
-        "a": "Nick"
-      },
-      "items": [
-        {
-          "q": "How old is Nick?",
-          "a": "7"
-        },
-        {
-          "q": "What is his teacher's name?",
-          "a": "Mr Bell"
-        },
-        {
-          "q": "What number is his classroom?",
-          "a": "9"
-        },
-        {
-          "q": "What is his friend's name?",
-          "a": "Lucy"
-        },
-        {
-          "q": "How many books has Nick got in his bag?",
-          "a": "4"
-        }
-      ]
+    {
+     "id": "B",
+     "desc": "a girl reading a book at a desk"
     },
-    "p3": {
-      "type": "mc_pictures",
-      "example": {
-        "q": "What is Pat doing?",
-        "pics": [
-          "book",
-          "computer",
-          "guitar"
-        ],
-        "options": [
-          "reading a book",
-          "playing on the computer",
-          "playing the guitar"
-        ],
-        "key": "B"
-      },
-      "items": [
-        {
-          "q": "What has Eva got in her bag?",
-          "pics": [
-            "ruler",
-            "pen",
-            "pencil"
-          ],
-          "options": [
-            "a ruler",
-            "a pen",
-            "a pencil"
-          ],
-          "key": "C"
-        },
-        {
-          "q": "Where is the teacher's bag?",
-          "image": "L3Q2",
-          "options": [
-            "on the desk",
-            "under the chair",
-            "next to the door"
-          ],
-          "key": "A"
-        },
-        {
-          "q": "What is Ben drawing?",
-          "pics": [
-            "car",
-            "boat",
-            "plane"
-          ],
-          "options": [
-            "a car",
-            "a boat",
-            "a plane"
-          ],
-          "key": "B"
-        },
-        {
-          "q": "How many pencils has Sue got?",
-          "pics": [
-            {
-              "word": "pencil",
-              "n": 2
-            },
-            {
-              "word": "pencil",
-              "n": 4
-            },
-            {
-              "word": "pencil",
-              "n": 6
-            }
-          ],
-          "options": [
-            "two",
-            "four",
-            "six"
-          ],
-          "key": "C"
-        },
-        {
-          "q": "What is Tony eating at break?",
-          "pics": [
-            "sandwich",
-            "banana",
-            "cake"
-          ],
-          "options": [
-            "a sandwich",
-            "a banana",
-            "a cake"
-          ],
-          "key": "A"
-        }
-      ]
+    {
+     "id": "C",
+     "desc": "a boy with a red bag next to the door"
     },
-    "p4": {
-      "type": "colour",
-      "image": "L4",
-      "object": "book",
-      "scene": "A classroom. There are seven books in the picture: on the teacher's desk, under the chair, in the boy's hand, on the bookcase, next to the computer, in the box and on the floor by the door.",
-      "example": {
-        "where": "on the teacher's desk",
-        "colour": "red"
-      },
-      "items": [
-        {
-          "where": "under the chair",
-          "colour": "green"
-        },
-        {
-          "where": "in the boy's hand",
-          "colour": "yellow"
-        },
-        {
-          "where": "on the bookcase",
-          "colour": "blue"
-        },
-        {
-          "where": "next to the computer",
-          "colour": "purple"
-        },
-        {
-          "where": "in the box",
-          "colour": "brown"
-        }
-      ]
+    {
+     "id": "D",
+     "desc": "a girl drawing a picture with crayons"
+    },
+    {
+     "id": "E",
+     "desc": "a boy eating an apple by the window"
+    },
+    {
+     "id": "F",
+     "desc": "a girl with a ruler and a pencil at the teacher's desk"
     }
-  },
-  "rw": {
-    "p1": {
-      "type": "tick_cross",
-      "example": {
-        "word": "pencil",
-        "sentence": "This is a pencil.",
-        "key": true
-      },
-      "items": [
-        {
-          "word": "ruler",
-          "sentence": "This is a ruler.",
-          "key": true
-        },
-        {
-          "word": "book",
-          "sentence": "This is a bag.",
-          "key": false
-        },
-        {
-          "word": "computer",
-          "sentence": "This is a computer.",
-          "key": true
-        },
-        {
-          "word": "chair",
-          "sentence": "This is a table.",
-          "key": false
-        },
-        {
-          "word": "clock",
-          "sentence": "This is a clock.",
-          "key": true
-        }
-      ]
+   ],
+   "example": {
+    "name": "Ben",
+    "person": "A"
+   },
+   "items": [
+    {
+     "name": "Sue",
+     "person": "B"
     },
-    "p2": {
-      "type": "yes_no",
-      "image": "R2",
-      "scene": "A classroom: a teacher is standing next to the board, three children are sitting at a big table, a boy is reading a book, a girl has got a blue pencil case, and there is a clock on the wall.",
-      "example": {
-        "s": "The teacher is next to the board.",
-        "key": "yes"
-      },
-      "items": [
-        {
-          "s": "There are four children at the table.",
-          "key": "no"
-        },
-        {
-          "s": "A boy is reading a book.",
-          "key": "yes"
-        },
-        {
-          "s": "The girl has got a red pencil case.",
-          "key": "no"
-        },
-        {
-          "s": "There is a clock on the wall.",
-          "key": "yes"
-        },
-        {
-          "s": "The children are eating lunch.",
-          "key": "no"
-        }
-      ]
+    {
+     "name": "Mark",
+     "person": "C"
     },
-    "p3": {
-      "type": "unscramble",
-      "example": {
-        "word": "desk",
-        "letters": [
-          "s",
-          "k",
-          "d",
-          "e"
-        ]
-      },
-      "items": [
-        {
-          "word": "ruler",
-          "letters": [
-            "l",
-            "e",
-            "r",
-            "u",
-            "r"
-          ]
-        },
-        {
-          "word": "board",
-          "letters": [
-            "a",
-            "r",
-            "d",
-            "b",
-            "o"
-          ]
-        },
-        {
-          "word": "pencil",
-          "letters": [
-            "c",
-            "i",
-            "l",
-            "p",
-            "e",
-            "n"
-          ]
-        },
-        {
-          "word": "book",
-          "letters": [
-            "o",
-            "k",
-            "b",
-            "o"
-          ]
-        },
-        {
-          "word": "teacher",
-          "letters": [
-            "c",
-            "h",
-            "e",
-            "r",
-            "t",
-            "e",
-            "a"
-          ]
-        }
-      ]
+    {
+     "name": "Grace",
+     "person": "D"
     },
-    "p4": {
-      "type": "mc_cloze_copy",
-      "image": "R4",
-      "title": "My school",
-      "text": "My school is big and it has got a lot of __(0)__. My classroom is number four. In my classroom there are twenty __(1)__ and one big table for the teacher. On the wall there is a __(2)__ and lots of pictures. We read __(3)__ and we write in our notebooks. At break time, we play in the __(4)__ with our friends. I love my __(5)__!",
-      "words": [
-        "classrooms",
-        "chairs",
-        "board",
-        "books",
-        "playground",
-        "school",
-        "shoes",
-        "eggs"
-      ],
-      "example": "classrooms",
-      "key": [
-        "chairs",
-        "board",
-        "books",
-        "playground",
-        "school"
-      ]
+    {
+     "name": "Tony",
+     "person": "E"
     },
-    "p5": {
-      "type": "story_one_word",
-      "title": "Tom's first day",
-      "image": "R5",
-      "parts": [
-        {
-          "text": "It is Tom's first day at his new school. He has got a new blue bag and a red pencil case. His mum walks with him to the school door.",
-          "example": {
-            "q": "What colour is Tom's bag?",
-            "a": "blue"
-          },
-          "items": [
-            {
-              "q": "What colour is his pencil case?",
-              "a": "red"
-            },
-            {
-              "q": "Who walks with Tom to school?",
-              "a": "mum"
-            }
-          ]
-        },
-        {
-          "text": "In the classroom, the teacher, Miss Green, says hello. Tom sits next to a girl called Anna. They draw pictures with crayons.",
-          "items": [
-            {
-              "q": "Who is Tom's teacher?",
-              "a": "Miss Green"
-            },
-            {
-              "q": "What do Tom and Anna draw with?",
-              "a": "crayons"
-            }
-          ]
-        },
-        {
-          "text": "At break, Tom and Anna play football in the playground. Now Tom has got a new friend and he is very happy.",
-          "items": [
-            {
-              "q": "What do Tom and Anna play?",
-              "a": "football"
-            }
-          ]
-        }
-      ]
+    {
+     "name": "Eva",
+     "person": "F"
     }
+   ]
   },
-  "speaking": {
-    "p1": {
-      "type": "scene_cards",
-      "image": "S1",
-      "scene": "A classroom scene: a board, a teacher's desk with a computer, a bookcase, a big table with four chairs, a window, a clock on the wall and a door.",
-      "point": [
-        {
-          "say": "Look at the picture. Where is the board?",
-          "target": "board"
-        },
-        {
-          "say": "Where is the clock?",
-          "target": "clock"
-        },
-        {
-          "say": "Where is the bookcase?",
-          "target": "bookcase"
-        }
-      ],
-      "cards": [
-        "pencil",
-        "book",
-        "ball",
-        "apple",
-        "ruler",
-        "cat",
-        "kite",
-        "phone"
-      ],
-      "place": [
-        {
-          "say": "Put the pencil on the table.",
-          "card": "pencil",
-          "zone": {
-            "x": 34,
-            "y": 56,
-            "w": 44,
-            "h": 40
-          }
-        },
-        {
-          "say": "Put the ball under the teacher's desk.",
-          "card": "ball",
-          "zone": {
-            "x": 0,
-            "y": 70,
-            "w": 30,
-            "h": 30
-          }
-        },
-        {
-          "say": "Put the apple next to the computer.",
-          "card": "apple",
-          "zone": {
-            "x": 10,
-            "y": 42,
-            "w": 22,
-            "h": 22
-          }
-        }
-      ],
-      "zones": {
-        "board": {
-          "x": 18,
-          "y": 18,
-          "w": 29,
-          "h": 35
-        },
-        "clock": {
-          "x": 29,
-          "y": 6,
-          "w": 8,
-          "h": 13
-        },
-        "bookcase": {
-          "x": 0,
-          "y": 13,
-          "w": 16,
-          "h": 48
-        },
-        "table": {
-          "x": 34,
-          "y": 56,
-          "w": 44,
-          "h": 40
-        },
-        "desk": {
-          "x": 0,
-          "y": 56,
-          "w": 30,
-          "h": 36
-        },
-        "door": {
-          "x": 84,
-          "y": 8,
-          "w": 15,
-          "h": 70
-        },
-        "window": {
-          "x": 60,
-          "y": 8,
-          "w": 21,
-          "h": 43
-        }
+  "p2": {
+   "type": "note_taking",
+   "heading": "The new boy",
+   "example": {
+    "q": "What is the boy's name?",
+    "a": "Nick"
+   },
+   "items": [
+    {
+     "q": "How old is Nick?",
+     "a": "7"
+    },
+    {
+     "q": "What is his teacher's name?",
+     "a": "Mr Bell"
+    },
+    {
+     "q": "What number is his classroom?",
+     "a": "9"
+    },
+    {
+     "q": "What is his friend's name?",
+     "a": "Lucy"
+    },
+    {
+     "q": "How many books has Nick got in his bag?",
+     "a": "4"
+    }
+   ]
+  },
+  "p3": {
+   "type": "mc_pictures",
+   "example": {
+    "q": "What is Pat doing?",
+    "pics": [
+     "book",
+     "computer",
+     "guitar"
+    ],
+    "options": [
+     "reading a book",
+     "playing on the computer",
+     "playing the guitar"
+    ],
+    "key": "B"
+   },
+   "items": [
+    {
+     "q": "What has Eva got in her bag?",
+     "pics": [
+      "ruler",
+      "pen",
+      "pencil"
+     ],
+     "options": [
+      "a ruler",
+      "a pen",
+      "a pencil"
+     ],
+     "key": "C"
+    },
+    {
+     "q": "Where is the teacher's bag?",
+     "image": "L3Q2",
+     "options": [
+      "on the desk",
+      "under the chair",
+      "next to the door"
+     ],
+     "key": "A"
+    },
+    {
+     "q": "What is Ben drawing?",
+     "pics": [
+      "car",
+      "boat",
+      "plane"
+     ],
+     "options": [
+      "a car",
+      "a boat",
+      "a plane"
+     ],
+     "key": "B"
+    },
+    {
+     "q": "How many pencils has Sue got?",
+     "pics": [
+      {
+       "word": "pencil",
+       "n": 2
+      },
+      {
+       "word": "pencil",
+       "n": 4
+      },
+      {
+       "word": "pencil",
+       "n": 6
       }
+     ],
+     "options": [
+      "two",
+      "four",
+      "six"
+     ],
+     "key": "C"
     },
-    "p2": {
-      "type": "scene_questions",
-      "questions": [
-        {
-          "q": "What's this?",
-          "hint": "point to the clock",
-          "model": "It's a clock."
-        },
-        {
-          "q": "What colour is the board?",
-          "model": "It's green."
-        },
-        {
-          "q": "How many chairs are there?",
-          "model": "Four."
-        },
-        {
-          "q": "Tell me about the teacher's desk.",
-          "model": "There's a computer on it. It's brown."
-        }
-      ]
-    },
-    "p3": {
-      "type": "card_questions",
-      "questions": [
-        {
-          "card": "ruler",
-          "q": "What's this?",
-          "model": "A ruler."
-        },
-        {
-          "card": "ruler",
-          "q": "What colour is it?",
-          "model": "It's yellow."
-        },
-        {
-          "card": "kite",
-          "q": "What's this?",
-          "model": "A kite."
-        },
-        {
-          "card": "kite",
-          "q": "Have you got a kite?",
-          "model": "Yes, I have. / No, I haven't."
-        },
-        {
-          "card": "cat",
-          "q": "What's this?",
-          "model": "A cat."
-        },
-        {
-          "card": "cat",
-          "q": "Do you like cats?",
-          "model": "Yes, I do."
-        }
-      ]
-    },
-    "p4": {
-      "type": "personal_questions",
-      "questions": [
-        {
-          "q": "What's your name?",
-          "model": "My name's …"
-        },
-        {
-          "q": "How old are you?",
-          "model": "I'm seven."
-        },
-        {
-          "q": "What's the name of your school?",
-          "model": "Nordic."
-        },
-        {
-          "q": "What's your favourite lesson?",
-          "model": "English."
-        },
-        {
-          "q": "What do you do at break time?",
-          "model": "I play with my friends."
-        }
-      ]
+    {
+     "q": "What is Tony eating at break?",
+     "pics": [
+      "sandwich",
+      "banana",
+      "cake"
+     ],
+     "options": [
+      "a sandwich",
+      "a banana",
+      "a cake"
+     ],
+     "key": "A"
     }
+   ]
   },
-  "audio": {
-    "p1": [
-      [
-        "R",
-        "Part One. Look at the picture. Listen and look. There is one example."
-      ],
-      [
-        "pause",
-        2
-      ],
-      [
-        "M",
-        "This is my class. Can you see the boy writing on the board?"
-      ],
-      [
-        "Fch",
-        "The boy with the blue jumper?"
-      ],
-      [
-        "M",
-        "Yes. That's Ben."
-      ],
-      [
-        "Fch",
-        "Ben. He writes very well!"
-      ],
-      [
-        "pause",
-        2
-      ],
-      [
-        "R",
-        "Can you see the line? This is an example. Now you listen and draw lines."
-      ],
-      [
-        "pause",
-        2
-      ],
-      [
-        "Fch",
-        "Who's the girl reading a book?"
-      ],
-      [
-        "M",
-        "The girl at the desk? That's Sue. She loves reading."
-      ],
-      [
-        "Fch",
-        "Sue. OK."
-      ],
-      [
-        "pause",
-        3.4
-      ],
-      [
-        "M",
-        "Look at the boy next to the door. He's got a red bag."
-      ],
-      [
-        "Fch",
-        "Is that Mark?"
-      ],
-      [
-        "M",
-        "Yes, it is. Mark is always late!"
-      ],
-      [
-        "pause",
-        3.4
-      ],
-      [
-        "Fch",
-        "And who's that girl drawing a picture?"
-      ],
-      [
-        "M",
-        "The girl with the crayons? That's Grace."
-      ],
-      [
-        "Fch",
-        "Grace draws nice pictures."
-      ],
-      [
-        "pause",
-        3.4
-      ],
-      [
-        "M",
-        "Can you see the boy by the window? He's eating an apple."
-      ],
-      [
-        "Fch",
-        "Yes. Is that Tony?"
-      ],
-      [
-        "M",
-        "That's right. Tony likes apples."
-      ],
-      [
-        "pause",
-        3.4
-      ],
-      [
-        "Fch",
-        "Who's the girl at the teacher's desk with the ruler?"
-      ],
-      [
-        "M",
-        "That's Eva. She's helping the teacher."
-      ],
-      [
-        "Fch",
-        "Eva. She's got a pencil too."
-      ],
-      [
-        "pause",
-        3.4
-      ],
-      [
-        "R",
-        "Now listen again."
-      ]
-    ],
-    "p2": [
-      [
-        "R",
-        "Part Two. Listen and write a name or a number. There are two examples."
-      ],
-      [
-        "pause",
-        2
-      ],
-      [
-        "F",
-        "Hello. Are you the new boy? What's your name?"
-      ],
-      [
-        "Mch",
-        "My name's Nick."
-      ],
-      [
-        "F",
-        "How do you spell that?"
-      ],
-      [
-        "Mch",
-        "N-I-C-K."
-      ],
-      [
-        "F",
-        "And how old are you, Nick?"
-      ],
-      [
-        "Mch",
-        "I'm seven."
-      ],
-      [
-        "pause",
-        2
-      ],
-      [
-        "R",
-        "Can you see the answers? Now you listen and write a name or a number."
-      ],
-      [
-        "pause",
-        2
-      ],
-      [
-        "F",
-        "Who's your teacher, Nick?"
-      ],
-      [
-        "Mch",
-        "My teacher is Mr Bell."
-      ],
-      [
-        "F",
-        "Bell? B-E-L-L?"
-      ],
-      [
-        "Mch",
-        "Yes, that's right. Mr Bell."
-      ],
-      [
-        "pause",
-        3.4
-      ],
-      [
-        "F",
-        "And what number is your classroom?"
-      ],
-      [
-        "Mch",
-        "It's number nine."
-      ],
-      [
-        "F",
-        "Number nine. That's next to the library."
-      ],
-      [
-        "pause",
-        3.4
-      ],
-      [
-        "F",
-        "Have you got a friend in your class?"
-      ],
-      [
-        "Mch",
-        "Yes. My friend is Lucy."
-      ],
-      [
-        "F",
-        "Lucy? L-U-C-Y?"
-      ],
-      [
-        "Mch",
-        "Yes. Lucy sits next to me."
-      ],
-      [
-        "pause",
-        3.4
-      ],
-      [
-        "F",
-        "Your bag is very big, Nick! How many books have you got in it?"
-      ],
-      [
-        "Mch",
-        "Four books. One, two, three, four."
-      ],
-      [
-        "F",
-        "Four books! That's a lot."
-      ],
-      [
-        "pause",
-        3.4
-      ],
-      [
-        "R",
-        "Now listen again."
-      ]
-    ],
-    "p3": [
-      [
-        "R",
-        "Part Three. Look at the pictures. Listen and tick the box. There is one example."
-      ],
-      [
-        "pause",
-        2
-      ],
-      [
-        "R",
-        "What is Pat doing?"
-      ],
-      [
-        "F",
-        "Pat, are you reading a book?"
-      ],
-      [
-        "Mch",
-        "No, Mum. I'm playing a game on the computer."
-      ],
-      [
-        "pause",
-        2
-      ],
-      [
-        "R",
-        "Can you see the tick? Now you listen and tick the box."
-      ],
-      [
-        "pause",
-        2
-      ],
-      [
-        "R",
-        "One. What has Eva got in her bag?"
-      ],
-      [
-        "M",
-        "Eva, have you got a ruler in your bag?"
-      ],
-      [
-        "Fch",
-        "No, Dad. But I've got a new pencil. A blue one!"
-      ],
-      [
-        "M",
-        "A pencil. Good."
-      ],
-      [
-        "pause",
-        3.4
-      ],
-      [
-        "R",
-        "Two. Where is the teacher's bag?"
-      ],
-      [
-        "Fch",
-        "Mr Bell, where's your bag? Is it under the chair?"
-      ],
-      [
-        "M",
-        "No. It's on the desk, next to the computer."
-      ],
-      [
-        "Fch",
-        "Oh yes. I can see it on the desk."
-      ],
-      [
-        "pause",
-        3.4
-      ],
-      [
-        "R",
-        "Three. What is Ben drawing?"
-      ],
-      [
-        "F",
-        "What are you drawing, Ben? A car?"
-      ],
-      [
-        "Mch",
-        "No. I'm drawing a boat. A big red boat."
-      ],
-      [
-        "F",
-        "A boat! It's very nice."
-      ],
-      [
-        "pause",
-        3.4
-      ],
-      [
-        "R",
-        "Four. How many pencils has Sue got?"
-      ],
-      [
-        "M",
-        "Sue, how many pencils have you got?"
-      ],
-      [
-        "Fch",
-        "One, two, three, four, five, six. Six pencils!"
-      ],
-      [
-        "M",
-        "Six! That's a lot of pencils."
-      ],
-      [
-        "pause",
-        3.4
-      ],
-      [
-        "R",
-        "Five. What is Tony eating at break?"
-      ],
-      [
-        "F",
-        "Tony, are you eating a banana?"
-      ],
-      [
-        "Mch",
-        "No, Miss. I'm eating a sandwich. A cheese sandwich."
-      ],
-      [
-        "F",
-        "A sandwich. OK!"
-      ],
-      [
-        "pause",
-        3.4
-      ],
-      [
-        "R",
-        "Now listen again."
-      ]
-    ],
-    "p4": [
-      [
-        "R",
-        "Part Four. Listen and colour. There is one example."
-      ],
-      [
-        "pause",
-        2
-      ],
-      [
-        "F",
-        "Look at the classroom. Can you see the books?"
-      ],
-      [
-        "Mch",
-        "Yes. There are lots of books."
-      ],
-      [
-        "F",
-        "Colour the book on the teacher's desk. Colour it red."
-      ],
-      [
-        "Mch",
-        "The book on the teacher's desk. Red. OK!"
-      ],
-      [
-        "pause",
-        2
-      ],
-      [
-        "R",
-        "Can you see the red book? This is an example. Now you listen and colour."
-      ],
-      [
-        "pause",
-        2
-      ],
-      [
-        "F",
-        "Now look under the chair. Can you see a book?"
-      ],
-      [
-        "Mch",
-        "Yes. Can I colour it green?"
-      ],
-      [
-        "F",
-        "Yes. Colour the book under the chair green."
-      ],
-      [
-        "pause",
-        3.4
-      ],
-      [
-        "Mch",
-        "There's a boy with a book in his hand."
-      ],
-      [
-        "F",
-        "That's right. Colour that book yellow."
-      ],
-      [
-        "Mch",
-        "Yellow. OK."
-      ],
-      [
-        "pause",
-        3.4
-      ],
-      [
-        "F",
-        "Can you see the book on the bookcase?"
-      ],
-      [
-        "Mch",
-        "Yes. What colour?"
-      ],
-      [
-        "F",
-        "Colour it blue."
-      ],
-      [
-        "Mch",
-        "The book on the bookcase. Blue."
-      ],
-      [
-        "pause",
-        3.4
-      ],
-      [
-        "Mch",
-        "Look! There's a book next to the computer."
-      ],
-      [
-        "F",
-        "Yes. Colour the book next to the computer purple."
-      ],
-      [
-        "Mch",
-        "Purple. I like purple."
-      ],
-      [
-        "pause",
-        3.4
-      ],
-      [
-        "F",
-        "And now the book in the box."
-      ],
-      [
-        "Mch",
-        "In the box? Can I colour it brown?"
-      ],
-      [
-        "F",
-        "Yes, colour it brown. Good!"
-      ],
-      [
-        "pause",
-        3.4
-      ],
-      [
-        "R",
-        "Now listen again."
-      ]
-    ]
+  "p4": {
+   "type": "colour",
+   "image": "L4",
+   "object": "book",
+   "scene": "A classroom. There are seven books in the picture: on the teacher's desk, under the chair, in the boy's hand, on the bookcase, next to the computer, in the box and on the floor by the door.",
+   "example": {
+    "where": "on the teacher's desk",
+    "colour": "red"
+   },
+   "items": [
+    {
+     "where": "under the chair",
+     "colour": "green"
+    },
+    {
+     "where": "in the boy's hand",
+     "colour": "yellow"
+    },
+    {
+     "where": "on the bookcase",
+     "colour": "blue"
+    },
+    {
+     "where": "next to the computer",
+     "colour": "purple"
+    },
+    {
+     "where": "in the box",
+     "colour": "brown"
+    }
+   ]
   }
+ },
+ "rw": {
+  "p1": {
+   "type": "tick_cross",
+   "example": {
+    "word": "pencil",
+    "sentence": "This is a pencil.",
+    "key": true
+   },
+   "items": [
+    {
+     "word": "ruler",
+     "sentence": "This is a ruler.",
+     "key": true
+    },
+    {
+     "word": "book",
+     "sentence": "This is a bag.",
+     "key": false
+    },
+    {
+     "word": "computer",
+     "sentence": "This is a computer.",
+     "key": true
+    },
+    {
+     "word": "chair",
+     "sentence": "This is a table.",
+     "key": false
+    },
+    {
+     "word": "clock",
+     "sentence": "This is a clock.",
+     "key": true
+    }
+   ]
+  },
+  "p2": {
+   "type": "yes_no",
+   "image": "R2",
+   "scene": "A classroom: a teacher is standing next to the board, three children are sitting at a big table, a boy is reading a book, a girl has got a blue pencil case, and there is a clock on the wall.",
+   "example": {
+    "s": "The teacher is next to the board.",
+    "key": "yes"
+   },
+   "items": [
+    {
+     "s": "There are four children at the table.",
+     "key": "no"
+    },
+    {
+     "s": "A boy is reading a book.",
+     "key": "yes"
+    },
+    {
+     "s": "The girl has got a red pencil case.",
+     "key": "no"
+    },
+    {
+     "s": "There is a clock on the wall.",
+     "key": "yes"
+    },
+    {
+     "s": "The children are eating lunch.",
+     "key": "no"
+    }
+   ]
+  },
+  "p3": {
+   "type": "unscramble",
+   "example": {
+    "word": "desk",
+    "letters": [
+     "s",
+     "k",
+     "d",
+     "e"
+    ]
+   },
+   "items": [
+    {
+     "word": "ruler",
+     "letters": [
+      "l",
+      "e",
+      "r",
+      "u",
+      "r"
+     ]
+    },
+    {
+     "word": "board",
+     "letters": [
+      "a",
+      "r",
+      "d",
+      "b",
+      "o"
+     ]
+    },
+    {
+     "word": "pencil",
+     "letters": [
+      "c",
+      "i",
+      "l",
+      "p",
+      "e",
+      "n"
+     ]
+    },
+    {
+     "word": "book",
+     "letters": [
+      "o",
+      "k",
+      "b",
+      "o"
+     ]
+    },
+    {
+     "word": "teacher",
+     "letters": [
+      "c",
+      "h",
+      "e",
+      "r",
+      "t",
+      "e",
+      "a"
+     ]
+    }
+   ]
+  },
+  "p4": {
+   "type": "mc_cloze_copy",
+   "image": "R4",
+   "title": "My school",
+   "text": "My school is big and it has got a lot of __(0)__. My classroom is number four. In my classroom there are twenty __(1)__ and one big table for the teacher. On the wall there is a __(2)__ and lots of pictures. We read __(3)__ and we write in our notebooks. At break time, we play in the __(4)__ with our friends. I love my __(5)__!",
+   "words": [
+    "classrooms",
+    "chairs",
+    "board",
+    "books",
+    "playground",
+    "school",
+    "shoes",
+    "eggs"
+   ],
+   "example": "classrooms",
+   "key": [
+    "chairs",
+    "board",
+    "books",
+    "playground",
+    "school"
+   ]
+  },
+  "p5": {
+   "type": "story_one_word",
+   "title": "Tom's first day",
+   "image": "R5",
+   "parts": [
+    {
+     "text": "It is Tom's first day at his new school. He has got a new blue bag and a red pencil case. His mum walks with him to the school door.",
+     "example": {
+      "q": "What colour is Tom's bag?",
+      "a": "blue"
+     },
+     "items": [
+      {
+       "q": "What colour is his pencil case?",
+       "a": "red"
+      },
+      {
+       "q": "Who walks with Tom to school?",
+       "a": "mum"
+      }
+     ]
+    },
+    {
+     "text": "In the classroom, the teacher, Miss Green, says hello. Tom sits next to a girl called Anna. They draw pictures with crayons.",
+     "items": [
+      {
+       "q": "Who is Tom's teacher?",
+       "a": "Miss Green"
+      },
+      {
+       "q": "What do Tom and Anna draw with?",
+       "a": "crayons"
+      }
+     ]
+    },
+    {
+     "text": "At break, Tom and Anna play football in the playground. Now Tom has got a new friend and he is very happy.",
+     "items": [
+      {
+       "q": "What do Tom and Anna play?",
+       "a": "football"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "speaking": {
+  "p1": {
+   "type": "scene_cards",
+   "image": "S1",
+   "scene": "A classroom scene: a board, a teacher's desk with a computer, a bookcase, a big table with four chairs, a window, a clock on the wall and a door.",
+   "point": [
+    {
+     "say": "Look at the picture. Where is the board?",
+     "target": "board"
+    },
+    {
+     "say": "Where is the clock?",
+     "target": "clock"
+    },
+    {
+     "say": "Where is the bookcase?",
+     "target": "bookcase"
+    }
+   ],
+   "cards": [
+    "pencil",
+    "book",
+    "ball",
+    "apple",
+    "ruler",
+    "cat",
+    "kite",
+    "phone"
+   ],
+   "place": [
+    {
+     "say": "Put the pencil on the table.",
+     "card": "pencil",
+     "zone": {
+      "x": 34,
+      "y": 56,
+      "w": 44,
+      "h": 40
+     }
+    },
+    {
+     "say": "Put the ball under the teacher's desk.",
+     "card": "ball",
+     "zone": {
+      "x": 0,
+      "y": 70,
+      "w": 30,
+      "h": 30
+     }
+    },
+    {
+     "say": "Put the apple next to the computer.",
+     "card": "apple",
+     "zone": {
+      "x": 10,
+      "y": 42,
+      "w": 22,
+      "h": 22
+     }
+    }
+   ],
+   "zones": {
+    "board": {
+     "x": 18,
+     "y": 18,
+     "w": 29,
+     "h": 35
+    },
+    "clock": {
+     "x": 29,
+     "y": 6,
+     "w": 8,
+     "h": 13
+    },
+    "bookcase": {
+     "x": 0,
+     "y": 13,
+     "w": 16,
+     "h": 48
+    },
+    "table": {
+     "x": 34,
+     "y": 56,
+     "w": 44,
+     "h": 40
+    },
+    "desk": {
+     "x": 0,
+     "y": 56,
+     "w": 30,
+     "h": 36
+    },
+    "door": {
+     "x": 84,
+     "y": 8,
+     "w": 15,
+     "h": 70
+    },
+    "window": {
+     "x": 60,
+     "y": 8,
+     "w": 21,
+     "h": 43
+    }
+   }
+  },
+  "p2": {
+   "type": "scene_questions",
+   "questions": [
+    {
+     "q": "What's this?",
+     "hint": "point to the clock",
+     "model": "It's a clock."
+    },
+    {
+     "q": "What colour is the board?",
+     "model": "It's green."
+    },
+    {
+     "q": "How many chairs are there?",
+     "model": "Four."
+    },
+    {
+     "q": "Tell me about the teacher's desk.",
+     "model": "There's a computer on it. It's brown."
+    }
+   ]
+  },
+  "p3": {
+   "type": "card_questions",
+   "questions": [
+    {
+     "card": "ruler",
+     "q": "What's this?",
+     "model": "A ruler."
+    },
+    {
+     "card": "ruler",
+     "q": "What colour is it?",
+     "model": "It's yellow."
+    },
+    {
+     "card": "kite",
+     "q": "What's this?",
+     "model": "A kite."
+    },
+    {
+     "card": "kite",
+     "q": "Have you got a kite?",
+     "model": "Yes, I have. / No, I haven't."
+    },
+    {
+     "card": "cat",
+     "q": "What's this?",
+     "model": "A cat."
+    },
+    {
+     "card": "cat",
+     "q": "Do you like cats?",
+     "model": "Yes, I do."
+    }
+   ]
+  },
+  "p4": {
+   "type": "personal_questions",
+   "questions": [
+    {
+     "q": "What's your name?",
+     "model": "My name's …"
+    },
+    {
+     "q": "How old are you?",
+     "model": "I'm seven."
+    },
+    {
+     "q": "What's the name of your school?",
+     "model": "Nordic."
+    },
+    {
+     "q": "What's your favourite lesson?",
+     "model": "English."
+    },
+    {
+     "q": "What do you do at break time?",
+     "model": "I play with my friends."
+    }
+   ]
+  }
+ },
+ "audio": {
+  "p1": [
+   [
+    "R",
+    "Part One. Look at the picture. Listen and look. There is one example."
+   ],
+   [
+    "pause",
+    4
+   ],
+   [
+    "M",
+    "This is my class. Can you see the boy writing on the board?"
+   ],
+   [
+    "Fch",
+    "The boy with the blue jumper?"
+   ],
+   [
+    "M",
+    "Yes. That's Ben."
+   ],
+   [
+    "Fch",
+    "Ben. He writes very well!"
+   ],
+   [
+    "pause",
+    4
+   ],
+   [
+    "R",
+    "Can you see the line? This is an example. Now you listen and draw lines."
+   ],
+   [
+    "pause",
+    7
+   ],
+   [
+    "Fch",
+    "Who's the girl reading a book?"
+   ],
+   [
+    "M",
+    "The girl at the desk? That's Sue. She loves reading."
+   ],
+   [
+    "Fch",
+    "Sue. OK."
+   ],
+   [
+    "pause",
+    7
+   ],
+   [
+    "M",
+    "Look at the boy next to the door. He's got a red bag."
+   ],
+   [
+    "Fch",
+    "Is that Mark?"
+   ],
+   [
+    "M",
+    "Yes, it is. Mark is always late!"
+   ],
+   [
+    "pause",
+    7
+   ],
+   [
+    "Fch",
+    "And who's that girl drawing a picture?"
+   ],
+   [
+    "M",
+    "The girl with the crayons? That's Grace."
+   ],
+   [
+    "Fch",
+    "Grace draws nice pictures."
+   ],
+   [
+    "pause",
+    7
+   ],
+   [
+    "M",
+    "Can you see the boy by the window? He's eating an apple."
+   ],
+   [
+    "Fch",
+    "Yes. Is that Tony?"
+   ],
+   [
+    "M",
+    "That's right. Tony likes apples."
+   ],
+   [
+    "pause",
+    7
+   ],
+   [
+    "Fch",
+    "Who's the girl at the teacher's desk with the ruler?"
+   ],
+   [
+    "M",
+    "That's Eva. She's helping the teacher."
+   ],
+   [
+    "Fch",
+    "Eva. She's got a pencil too."
+   ],
+   [
+    "pause",
+    7
+   ],
+   [
+    "R",
+    "Now listen again."
+   ]
+  ],
+  "p2": [
+   [
+    "R",
+    "Part Two. Listen and write a name or a number. There are two examples."
+   ],
+   [
+    "pause",
+    4
+   ],
+   [
+    "F",
+    "Hello. Are you the new boy? What's your name?"
+   ],
+   [
+    "Mch",
+    "My name's Nick."
+   ],
+   [
+    "F",
+    "How do you spell that?"
+   ],
+   [
+    "Mch",
+    "N-I-C-K."
+   ],
+   [
+    "F",
+    "And how old are you, Nick?"
+   ],
+   [
+    "Mch",
+    "I'm seven."
+   ],
+   [
+    "pause",
+    4
+   ],
+   [
+    "R",
+    "Can you see the answers? Now you listen and write a name or a number."
+   ],
+   [
+    "pause",
+    10
+   ],
+   [
+    "F",
+    "Who's your teacher, Nick?"
+   ],
+   [
+    "Mch",
+    "My teacher is Mr Bell."
+   ],
+   [
+    "F",
+    "Bell? B-E-L-L?"
+   ],
+   [
+    "Mch",
+    "Yes, that's right. Mr Bell."
+   ],
+   [
+    "pause",
+    10
+   ],
+   [
+    "F",
+    "And what number is your classroom?"
+   ],
+   [
+    "Mch",
+    "It's number nine."
+   ],
+   [
+    "F",
+    "Number nine. That's next to the library."
+   ],
+   [
+    "pause",
+    10
+   ],
+   [
+    "F",
+    "Have you got a friend in your class?"
+   ],
+   [
+    "Mch",
+    "Yes. My friend is Lucy."
+   ],
+   [
+    "F",
+    "Lucy? L-U-C-Y?"
+   ],
+   [
+    "Mch",
+    "Yes. Lucy sits next to me."
+   ],
+   [
+    "pause",
+    10
+   ],
+   [
+    "F",
+    "Your bag is very big, Nick! How many books have you got in it?"
+   ],
+   [
+    "Mch",
+    "Four books. One, two, three, four."
+   ],
+   [
+    "F",
+    "Four books! That's a lot."
+   ],
+   [
+    "pause",
+    10
+   ],
+   [
+    "R",
+    "Now listen again."
+   ]
+  ],
+  "p3": [
+   [
+    "R",
+    "Part Three. Look at the pictures. Listen and tick the box. There is one example."
+   ],
+   [
+    "pause",
+    4
+   ],
+   [
+    "R",
+    "What is Pat doing?"
+   ],
+   [
+    "F",
+    "Pat, are you reading a book?"
+   ],
+   [
+    "Mch",
+    "No, Mum. I'm playing a game on the computer."
+   ],
+   [
+    "pause",
+    4
+   ],
+   [
+    "R",
+    "Can you see the tick? Now you listen and tick the box."
+   ],
+   [
+    "pause",
+    6
+   ],
+   [
+    "R",
+    "One. What has Eva got in her bag?"
+   ],
+   [
+    "M",
+    "Eva, have you got a ruler in your bag?"
+   ],
+   [
+    "Fch",
+    "No, Dad. But I've got a new pencil. A blue one!"
+   ],
+   [
+    "M",
+    "A pencil. Good."
+   ],
+   [
+    "pause",
+    6
+   ],
+   [
+    "R",
+    "Two. Where is the teacher's bag?"
+   ],
+   [
+    "Fch",
+    "Mr Bell, where's your bag? Is it under the chair?"
+   ],
+   [
+    "M",
+    "No. It's on the desk, next to the computer."
+   ],
+   [
+    "Fch",
+    "Oh yes. I can see it on the desk."
+   ],
+   [
+    "pause",
+    6
+   ],
+   [
+    "R",
+    "Three. What is Ben drawing?"
+   ],
+   [
+    "F",
+    "What are you drawing, Ben? A car?"
+   ],
+   [
+    "Mch",
+    "No. I'm drawing a boat. A big red boat."
+   ],
+   [
+    "F",
+    "A boat! It's very nice."
+   ],
+   [
+    "pause",
+    6
+   ],
+   [
+    "R",
+    "Four. How many pencils has Sue got?"
+   ],
+   [
+    "M",
+    "Sue, how many pencils have you got?"
+   ],
+   [
+    "Fch",
+    "One, two, three, four, five, six. Six pencils!"
+   ],
+   [
+    "M",
+    "Six! That's a lot of pencils."
+   ],
+   [
+    "pause",
+    6
+   ],
+   [
+    "R",
+    "Five. What is Tony eating at break?"
+   ],
+   [
+    "F",
+    "Tony, are you eating a banana?"
+   ],
+   [
+    "Mch",
+    "No, Miss. I'm eating a sandwich. A cheese sandwich."
+   ],
+   [
+    "F",
+    "A sandwich. OK!"
+   ],
+   [
+    "pause",
+    6
+   ],
+   [
+    "R",
+    "Now listen again."
+   ]
+  ],
+  "p4": [
+   [
+    "R",
+    "Part Four. Listen and colour. There is one example."
+   ],
+   [
+    "pause",
+    4
+   ],
+   [
+    "F",
+    "Look at the classroom. Can you see the books?"
+   ],
+   [
+    "Mch",
+    "Yes. There are lots of books."
+   ],
+   [
+    "F",
+    "Colour the book on the teacher's desk. Colour it red."
+   ],
+   [
+    "Mch",
+    "The book on the teacher's desk. Red. OK!"
+   ],
+   [
+    "pause",
+    4
+   ],
+   [
+    "R",
+    "Can you see the red book? This is an example. Now you listen and colour."
+   ],
+   [
+    "pause",
+    15
+   ],
+   [
+    "F",
+    "Now look under the chair. Can you see a book?"
+   ],
+   [
+    "Mch",
+    "Yes. Can I colour it green?"
+   ],
+   [
+    "F",
+    "Yes. Colour the book under the chair green."
+   ],
+   [
+    "pause",
+    15
+   ],
+   [
+    "Mch",
+    "There's a boy with a book in his hand."
+   ],
+   [
+    "F",
+    "That's right. Colour that book yellow."
+   ],
+   [
+    "Mch",
+    "Yellow. OK."
+   ],
+   [
+    "pause",
+    15
+   ],
+   [
+    "F",
+    "Can you see the book on the bookcase?"
+   ],
+   [
+    "Mch",
+    "Yes. What colour?"
+   ],
+   [
+    "F",
+    "Colour it blue."
+   ],
+   [
+    "Mch",
+    "The book on the bookcase. Blue."
+   ],
+   [
+    "pause",
+    15
+   ],
+   [
+    "Mch",
+    "Look! There's a book next to the computer."
+   ],
+   [
+    "F",
+    "Yes. Colour the book next to the computer purple."
+   ],
+   [
+    "Mch",
+    "Purple. I like purple."
+   ],
+   [
+    "pause",
+    15
+   ],
+   [
+    "F",
+    "And now the book in the box."
+   ],
+   [
+    "Mch",
+    "In the box? Can I colour it brown?"
+   ],
+   [
+    "F",
+    "Yes, colour it brown. Good!"
+   ],
+   [
+    "pause",
+    15
+   ],
+   [
+    "R",
+    "Now listen again."
+   ]
+  ]
+ }
 }

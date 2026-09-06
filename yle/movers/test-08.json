@@ -426,10 +426,10 @@
           "key": "C"
         },
         {
-          "a": "What are you going to do this afternoon?",
+          "a": "What do you want to do this afternoon?",
           "options": [
             "I did the fields.",
-            "I'm going to swim in the river.",
+            "I want to swim in the river.",
             "This afternoon is good."
           ],
           "key": "B"
@@ -594,7 +594,7 @@
           ]
         },
         {
-          "text": "Snowy was inside one of Uncle Fred's big boots! She was sleeping and she didn't want to come out. Now Snowy sleeps in that boot every night, and Uncle Fred wears his old shoes.",
+          "text": "Snowy was inside one of Uncle Fred's big boots! She slept in it and she didn't want to come out. Now Snowy sleeps in that boot every night, and Uncle Fred wears his old shoes.",
           "items": [
             {
               "s": "Snowy was inside one of Uncle Fred's ___.",

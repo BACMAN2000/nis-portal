@@ -78,7 +78,7 @@
   {
    "code": "B",
    "type": "exam_task",
-   "title": "Read about Roald Amundsen and choose the right answer.",
+   "title": "Quick check · Read about Roald Amundsen and choose the right answer.",
    "outputs": [
     "book",
     "digital",
@@ -175,7 +175,7 @@
   {
    "code": "D",
    "type": "exam_task",
-   "title": "Exam task · Choose the correct word.",
+   "title": "Quick check · Choose the correct word.",
    "outputs": [
     "book",
     "digital",
