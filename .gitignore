@@ -66,3 +66,4 @@ exam-audio/
 # Copia de pruebas del motor de examenes (exams/prueba_local.py): lleva los
 # examenes enteros dentro, con sus claves. Se genera y se borra.
 _test-unit-exam.html
+_test-panel.html
