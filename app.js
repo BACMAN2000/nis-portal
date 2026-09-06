@@ -995,7 +995,7 @@ async function doSignup(){
   const email=v('su_email'), pw=$('#su_pw').value, pw2=$('#su_pw2').value;
   if(!v('su_first')||!v('su_last')||!email||!pw) return msg('err','Completa nombres, apellidos, correo y contraseña.');
   if(pw!==pw2) return msg('err','Las contraseñas no coinciden.');
-  if(pw.length<6) return msg('err','La contraseña debe tener al menos 6 caracteres.');
+  if(pw.length<8) return msg('err','La contraseña debe tener al menos 8 caracteres.');
   const meta={ first_name:v('su_first'), last_name:v('su_last'), full_name:v('su_first')+' '+v('su_last'),
     document_id:v('su_doc'), birthdate:v('su_bd'), phone:v('su_phone'),
     guardian_name:v('su_guard'), guardian_phone:v('su_gphone'),
@@ -1431,7 +1431,7 @@ async function adminTeachers(){
               style="background:none;border:none;cursor:pointer;font-size:.9rem;padding:2px;line-height:1;color:var(--muted)">🔑 Cambiar contraseña</button>
           </span>
           <span id="pw-box-${t.id}" style="display:none;margin-top:6px;gap:6px;align-items:center;justify-content:flex-end">
-            <input id="pw-new-${t.id}" type="password" placeholder="Nueva contraseña (mín. 6)"
+            <input id="pw-new-${t.id}" type="password" placeholder="Nueva contraseña (mín. 8)"
               style="padding:5px 8px;border:1px solid var(--line);border-radius:7px;font-size:.82rem;width:190px">
             <button class="btn small" onclick="window._guardaPw('${t.id}')">Guardar</button>
             <span id="pw-msg-${t.id}" style="font-size:.78rem"></span>
@@ -1468,7 +1468,7 @@ window.adminNewTeacher=()=>{
     <label>Correo electrónico</label><input id="nt_email" type="email" placeholder="nombre.apellido@nordic-school.edu.pe">
     <label style="margin-top:10px;display:block">Contraseña</label>
     <div style="position:relative;display:flex;align-items:center">
-      <input id="nt_pw" type="password" placeholder="Mínimo 6 caracteres" style="flex:1;padding-right:40px">
+      <input id="nt_pw" type="password" placeholder="Mínimo 8 caracteres" style="flex:1;padding-right:40px">
       <button onclick="window._toggleNewPw('nt_pw','nt_pw_btn')" id="nt_pw_btn" title="Mostrar/ocultar contraseña"
         style="position:absolute;right:10px;background:none;border:none;cursor:pointer;font-size:1rem;color:var(--muted);line-height:1;padding:0">👁</button>
     </div>
@@ -1488,7 +1488,7 @@ window.createTeacher=async()=>{
   const first=v('nt_first'), last=v('nt_last'), email=v('nt_email'), pw=v('nt_pw');
   const msg=$('#nt_msg');
   if(!first||!last||!email||!pw) return msg.innerHTML='<div class="note err">Completa todos los campos: nombres, apellidos, correo y contraseña.</div>';
-  if(pw.length<6) return msg.innerHTML='<div class="note err">La contraseña debe tener al menos 6 caracteres.</div>';
+  if(pw.length<8) return msg.innerHTML='<div class="note err">La contraseña debe tener al menos 8 caracteres.</div>';
   msg.innerHTML='<div class="note">Creando cuenta…</div>';
   const meta={ first_name:first, last_name:last, full_name:first+' '+last, role:'teacher', academic_year:new Date().getFullYear() };
   let rpcErr=null, timedOut=false;
@@ -1761,7 +1761,7 @@ window.adminNewUser = ()=>{
     <div class="field-2"><div><label>Nombres</label><input id="n_first"></div><div><label>Apellidos</label><input id="n_last"></div></div>
     <label>Correo</label><input id="n_email" type="email" placeholder="nombre.apellido@nordic-school.edu.pe">
     <div class="field-2"><div><label>Rol</label><select id="n_role"><option value="student">student</option><option value="teacher">teacher</option><option value="admin">admin</option></select></div>
-      <div><label>Contraseña</label><input id="n_pw" type="password" autocomplete="new-password" placeholder="mín. 6 caracteres"></div></div>
+      <div><label>Contraseña</label><input id="n_pw" type="password" autocomplete="new-password" placeholder="mín. 8 caracteres"></div></div>
     <div class="field-2"><div><label>Grado</label><select id="n_grade"><option value="">—</option>${GRADES.map(g=>`<option value="${g.id}">${g.name}</option>`).join('')}</select></div>
       <div><label>Sección</label><input id="n_section"></div></div>
     <div class="field-2"><div><label>Nivel</label><select id="n_level"><option value="">—</option>${LEVELS.map(l=>`<option>${l}</option>`).join('')}</select></div>
@@ -1774,7 +1774,7 @@ window.createUser = async ()=>{
   const v=id=>$('#'+id).value.trim();
   const email=v('n_email'), pw=v('n_pw');
   if(!v('n_first')||!v('n_last')||!email||!pw) return $('#nmsg').innerHTML='<div class="note err">Completa nombres, apellidos, correo y contraseña.</div>';
-  if(pw.length<6) return $('#nmsg').innerHTML='<div class="note err">La contraseña debe tener al menos 6 caracteres.</div>';
+  if(pw.length<8) return $('#nmsg').innerHTML='<div class="note err">La contraseña debe tener al menos 8 caracteres.</div>';
   const meta={first_name:v('n_first'),last_name:v('n_last'),full_name:v('n_first')+' '+v('n_last'),
     role:$('#n_role').value, document_id:v('n_doc'),
     grade_id:$('#n_grade').value||null, section:v('n_section')||null, cefr_level:$('#n_level').value||null,
@@ -1804,7 +1804,7 @@ window.editUser = async (id)=>{
       <label style="display:flex;align-items:center;gap:8px;font-weight:500">
         <input type="checkbox" id="e_demo" ${p.is_demo?'checked':''} style="width:auto">
         🧪 Cuenta de demostración (no es un alumno ni un profesor real del colegio)</label>
-      <label>Restablecer contraseña de acceso (opcional)</label><input id="e_pw" type="password" autocomplete="new-password" placeholder="dejar vacío para no cambiar · mín. 6 caracteres">
+      <label>Restablecer contraseña de acceso (opcional)</label><input id="e_pw" type="password" autocomplete="new-password" placeholder="dejar vacío para no cambiar · mín. 8 caracteres">
       <div id="emsg"></div>
       <div class="row" style="margin-top:14px"><button class="btn" onclick="saveUser('${id}')">Guardar</button></div>
     </div>`;
@@ -1817,7 +1817,7 @@ window.saveUser = async (id)=>{
   const pw=$('#e_pw').value.trim();
   let pwErr=null;
   if(pw){
-    if(pw.length<6){ $('#emsg').innerHTML='<div class="note err">La contraseña debe tener al menos 6 caracteres.</div>'; return; }
+    if(pw.length<8){ $('#emsg').innerHTML='<div class="note err">La contraseña debe tener al menos 8 caracteres.</div>'; return; }
     // Cambia la contraseña REAL de Auth (no solo la visible), para que el usuario pueda entrar.
     const r = await sb.rpc('admin_set_password',{p_id:id,p_password:pw});
     pwErr = r.error;
@@ -7389,7 +7389,7 @@ window._guardaPw = async function(id){
   const inp = document.getElementById('pw-new-' + id);
   const msg = document.getElementById('pw-msg-' + id);
   const pw  = (inp.value || '').trim();
-  if(pw.length < 6){ msg.textContent = 'Mínimo 6 caracteres'; msg.style.color = 'var(--bad)'; return; }
+  if(pw.length < 8){ msg.textContent = 'Mínimo 8 caracteres'; msg.style.color = 'var(--bad)'; return; }
   msg.textContent = 'Guardando…'; msg.style.color = 'var(--muted)';
 
   const r = await sb.rpc('admin_set_password', { p_id: id, p_password: pw });
