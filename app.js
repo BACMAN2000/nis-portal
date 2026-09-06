@@ -4000,6 +4000,16 @@ function _camIco(key, size){ return (typeof camIcon === 'function') ? camIcon(ke
 
 /* Lo que el admin/profesor escribió para el grado y para el alumno (tabla
    study_plans). El alumno lo ve arriba del hub; sin nota no se pinta nada. */
+/* Fecha del examen oficial de Cambridge (la pone el admin en yle_settings).
+   Vale para las dos ramas: la sesion es la misma para YLE y para Main Suite. */
+async function cambridgeExamDate(){
+  try{
+    const { data } = await sb.from('yle_settings').select('key,value').in('key', ['exam_date', 'exam_note']);
+    const m = {}; (data || []).forEach(r => m[r.key] = r.value);
+    return m.exam_date ? {date: m.exam_date, note: m.exam_note || ''} : null;
+  }catch(e){ return null; }
+}
+
 async function cambridgePlanNotes(){
   const p = state.profile; if(!p) return [];
   const ors = [];
@@ -4061,6 +4071,7 @@ async function studentCambridgePortal(){
     </a>` : '';
   $('#main').innerHTML = `${back}<h1>🎓 Cambridge English</h1>
     <p class="muted" style="margin-top:-6px">Choose your route: <b>Young Learners</b> for children (Pre-A1 to A2) or <b>Main Suite</b> for the general exam (A2 to C2). Click a card to see its levels.</p>
+    <div id="cam-exam-date"></div>
     <div id="cam-plan-notes"></div>
     <div class="cam-branches">${branch('yle')}${branch('main')}</div>
     ${practice}
@@ -4071,6 +4082,12 @@ async function studentCambridgePortal(){
   const first = prim ? 'yle' : 'main', other = prim ? 'main' : 'yle';
   window._camToggle(nodeVisible(CAMBRIDGE_TRACKS[first].node) ? first : other);
   // Las instrucciones del plan llegan después: no retrasan la pantalla.
+  cambridgeExamDate().then(x => {
+    const caja = $('#cam-exam-date'); if(!caja || !x) return;
+    const d = new Date(x.date + 'T12:00:00');
+    const txt = isNaN(d) ? x.date : d.toLocaleDateString('es-PE', {day: 'numeric', month: 'long', year: 'numeric'});
+    caja.innerHTML = `<div class="cam-plan"><b>🗓️ Examen oficial de Cambridge:</b> ${esc(txt)}${x.note ? ' · ' + esc(x.note) : ''}</div>`;
+  });
   cambridgePlanNotes().then(notas => {
     const box = $('#cam-plan-notes'); if(!box || !notas.length) return;
     const grado = notas.find(n => n.scope === 'grade'), mio = notas.find(n => n.scope === 'student');
