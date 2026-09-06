@@ -39,6 +39,13 @@ body{margin:0;background:#f2f4f8;color:var(--ink);font:15px/1.55 Georgia,'Times 
 .bar .sp{margin-left:auto}
 .hoja{background:#fff;max-width:210mm;margin:16px auto;padding:16mm 15mm;box-shadow:0 2px 14px rgba(20,30,50,.14)}
 .cab{border-bottom:2px solid var(--ink);padding-bottom:8px;margin-bottom:14px}
+/* La marca va como <img>, no como fondo: una imagen de fondo desaparece cuando
+   el profesor imprime sin "gráficos de fondo", que es lo que trae el navegador
+   por defecto, y la hoja del examen salia sin logo. */
+.marca{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:10px}
+.marca img{height:13mm;width:auto}
+.marca .anio{font-family:system-ui,sans-serif;font-size:.75rem;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--soft);white-space:nowrap}
 .cab h2{margin:0;font-size:1.35rem;font-family:system-ui,sans-serif}
 .cab .meta{color:var(--soft);font-size:.85rem;font-family:system-ui,sans-serif;margin-top:3px}
 .datos{display:flex;gap:18px;flex-wrap:wrap;margin:10px 0 0;font-size:.9rem;font-family:system-ui,sans-serif}
@@ -46,8 +53,12 @@ body{margin:0;background:#f2f4f8;color:var(--ink);font:15px/1.55 Georgia,'Times 
 .aviso{background:var(--band);border-radius:6px;padding:8px 12px;font-size:.85rem;
   font-family:system-ui,sans-serif;margin:12px 0 0;color:var(--soft)}
 .paper{margin-top:22px;break-inside:auto}
+/* La banda del titulo lleva texto BLANCO sobre azul. El navegador imprime sin
+   graficos de fondo salvo que se le marque la casilla, asi que sin esto la
+   cabecera de cada parte salia en blanco sobre blanco: invisible. */
 .paper > h3{font-family:system-ui,sans-serif;font-size:1.05rem;margin:0 0 4px;
-  background:var(--accent);color:#fff;padding:5px 10px;border-radius:6px;display:flex;justify-content:space-between}
+  background:var(--accent);color:#fff;padding:5px 10px;border-radius:6px;display:flex;justify-content:space-between;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
 .paper > h3 span{font-weight:400;font-size:.85rem;opacity:.85}
 .paper .nota{font-size:.82rem;color:var(--soft);font-family:system-ui,sans-serif;margin:0 0 10px}
 ol.items{margin:0;padding-left:26px}
@@ -233,8 +244,14 @@ function pinta(ex, guion){
   var total = (d.parts || []).reduce(function(a, p){ return a + (p.type === 'writing' ? 0 : (p.items || []).length); }, 0);
   var titulo = KINDS[KIND] + ' · ' + LVLS[LEVEL].split(' · ')[0] +
                (esClave ? ' · ANSWER KEY' : (esGuion ? ' · LISTENING SCRIPT' : ''));
-  var h = '<div class="cab"><h2>' + esc(titulo) + '</h2>' +
-    '<div class="meta">' + esc(d.title || '') + ' · ' + GRADE.toUpperCase() + ' · Nordic International School · ' +
+  /* El nombre del colegio no se repite en la meta: ya lo dice el logo, y si el
+     logo no cargara sigue estando en el pie de la hoja. */
+  var h = '<div class="cab">' +
+    '<div class="marca"><img src="assets/logo-h.svg" alt="Nordic International School" ' +
+      'onerror="this.replaceWith(Object.assign(document.createElement(\'b\'),{textContent:\'Nordic International School\'}))">' +
+      '<span class="anio">Curso ' + new Date().getFullYear() + '</span></div>' +
+    '<h2>' + esc(titulo) + '</h2>' +
+    '<div class="meta">' + esc(d.title || '') + ' · ' + GRADE.toUpperCase() + ' · ' +
     (d.minutes || '—') + ' minutes · ' + total + ' marks + writing</div>';
   h += esClave || esGuion
     ? '<div class="aviso">👩‍🏫 Documento del profesor. No se reparte.</div>'
