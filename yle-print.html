@@ -90,6 +90,7 @@ ol.items li{margin-bottom:9px;break-inside:avoid}
 </div>
 <div class="hoja" id="hoja"><p style="color:#5a6472">Loading…</p></div>
 
+<script src="yle-media.js?v=1"></script>
 <script>
 var Q = new URLSearchParams(location.search);
 var LEVEL = (Q.get('level') || 'starters').toLowerCase();
@@ -109,7 +110,7 @@ function $(s){ return document.querySelector(s); }
    laminas todavia no estan dibujadas y la hoja tiene que salir igual. */
 function lamina(id, alt){
   if (!id) return '';
-  return '<img class="lam" src="' + IMG + 'test_' + nn() + '_' + esc(id) + '.jpg" alt="' + esc(alt || '') +
+  return '<img class="lam" src="' + YM(IMG + 'test_' + nn() + '_' + esc(id) + '.jpg') + '" alt="' + esc(alt || '') +
          '" onerror="this.remove()">';
 }
 function raya(n){ return '<span class="linea' + (n ? ' corta' : '') + '">&nbsp;</span>'; }
