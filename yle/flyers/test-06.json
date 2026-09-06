@@ -6,7 +6,7 @@
  "p1": {
  "type": "draw_lines",
  "image": "L1",
- "scene": "A park on a windy day: a boy flying a kite, a woman with a red hat running, a girl with a blue umbrella, a man with a dog on a lead, children on a merry-go-round, a girl reading on a bench, a boy with a yellow coat.",
+ "scene": "A park on a windy day: a boy flying a kite, a woman with a red hat running, a girl with a blue umbrella, a man walking with his dog, children playing together, a girl reading on a seat, a boy with a yellow coat.",
  "names": [
  "Lucy",
  "Dylan",
@@ -30,15 +30,15 @@
  },
  {
  "id": "D",
- "desc": "a man with a dog on a lead"
+ "desc": "a man walking with his dog"
  },
  {
  "id": "E",
- "desc": "children on a merry-go-round"
+ "desc": "children playing together"
  },
  {
  "id": "F",
- "desc": "a girl reading on a bench"
+ "desc": "a girl reading on a seat"
  },
  {
  "id": "G",
@@ -145,7 +145,7 @@
  },
  {
  "letter": "F",
- "word": "stormy"
+ "word": "a storm"
  },
  {
  "letter": "G",
@@ -241,7 +241,7 @@
  "p5": {
  "type": "colour_write",
  "image": "L5",
- "scene": "A winter garden: a snowman in the middle, a small tree with no leaves, a fence, a bird on the fence, a child in a coat, a bench covered with snow, a ball in the snow.",
+ "scene": "A winter garden: a snowman in the middle, a small tree with no leaves, a wall, a bird on the fence, a child in a coat, a seat covered with snow, a ball in the snow.",
  "object": "thing",
  "example": {
  "what": "the scarf of the snowman",
@@ -249,7 +249,7 @@
  },
  "items": [
  {
- "what": "the bird on the fence",
+ "what": "the bird on the wall",
  "colour": "blue"
  },
  {
@@ -261,7 +261,7 @@
  "colour": "green"
  },
  {
- "what": "on the bench",
+ "what": "on the seat",
  "write": "COLD"
  },
  {
@@ -552,7 +552,7 @@
  {
  "s": "When was the last time it snowed in the town?",
  "a": [
- "metre 20",
+ "1.20 m",
  "1.20 m"
  ]
  },
@@ -624,8 +624,8 @@
  "p1": {
  "type": "find_differences_statements",
  "image": "S1",
- "examiner_scene": "A park on a sunny day: a girl eating an ice cream, a dog running, a blue kite, three balloons, a man reading a book, a bench with a bottle of water.",
- "candidate_scene": "A park on a Raining day: a girl eating an ice cream, a dog running, a RED kite, three balloons, a man reading a NEWSPAPER, a bench with a bottle of water.",
+ "examiner_scene": "A park on a sunny day: a girl eating an ice cream, a dog running, a blue kite, three balloons, a man reading a book, a seat with a bottle of water.",
+ "candidate_scene": "A park on a Raining day: a girl eating an ice cream, a dog running, a RED kite, three balloons, a man reading a NEWSPAPER, a seat with a bottle of water.",
  "differences": [
  "In my picture it's sunny, but in your picture it's raining.",
  "In my picture the kite is blue, but in your picture it's red.",
@@ -746,7 +746,7 @@
  ],
  [
  "Mch",
- "And Poppy? Poppy is the girl reading on the bench."
+ "And Poppy? Poppy is the girl reading on the seat."
  ],
  [
  "pause",
@@ -814,7 +814,7 @@
  ],
  [
  "Mch",
- "And Poppy? Poppy is the girl reading on the bench."
+ "And Poppy? Poppy is the girl reading on the seat."
  ],
  [
  "pause",
@@ -1650,7 +1650,7 @@
  ],
  [
  "M",
- "On the fence, there’s a bird."
+ "On the wall, there’s a bird."
  ],
  [
  "pause",
@@ -1714,7 +1714,7 @@
  ],
  [
  "M",
- "Now on the bench, write the word COLD."
+ "Now on the seat, write the word COLD."
  ],
  [
  "pause",
@@ -1790,7 +1790,7 @@
  ],
  [
  "M",
- "On the fence, there’s a bird."
+ "On the wall, there’s a bird."
  ],
  [
  "pause",
@@ -1854,7 +1854,7 @@
  ],
  [
  "M",
- "Now on the bench, write the word COLD."
+ "Now on the seat, write the word COLD."
  ],
  [
  "pause",

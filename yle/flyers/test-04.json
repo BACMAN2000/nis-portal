@@ -6,7 +6,7 @@
  "p1": {
  "type": "draw_lines",
  "image": "L1",
- "scene": "A family party in a living room: grandpa in an armchair reading a card, a girl giving a present to her mother, a man playing the guitar, a boy with a balloon, a woman with a camera, a toddler eating cake on the floor, a teenage girl taking photos on a phone.",
+ "scene": "A family party in a living room: grandpa in an armchair reading a card, a girl giving a present to her mother, a man playing the guitar, a boy with a balloon, a woman with a camera, a baby eating cake on the floor, a young girl taking photos on a phone.",
  "names": [
  "Grandpa Roy",
  "Uncle Ben",
@@ -38,11 +38,11 @@
  },
  {
  "id": "F",
- "desc": "a toddler eating cake on the floor"
+ "desc": "a baby eating cake on the floor"
  },
  {
  "id": "G",
- "desc": "a teenage girl taking photos on a phone"
+ "desc": "a young girl taking photos on a phone"
  }
  ],
  "example": {
@@ -232,8 +232,8 @@
  "q": "Where is the cat hiding?",
  "options": [
  "under the bed",
- "on the wardrobe",
- "behind the curtains"
+ "on the cupboard",
+ "behind the door"
  ],
  "key": "C",
  "image": "P4Q5"
@@ -291,7 +291,7 @@
  "a rug",
  "a blanket",
  "a lamp",
- "a wardrobe"
+ "a cupboard"
  ],
  "example": {
  "def": "",
@@ -316,7 +316,7 @@
  },
  {
  "def": "You put your clothes inside this in your bedroom.",
- "word": "a wardrobe"
+ "word": "a cupboard"
  },
  {
  "def": "You use this to see things better at night. It has a light.",
@@ -352,7 +352,7 @@
  "options": [
  {
  "letter": "A",
- "text": "Sure, the shelves in the wardrobe are empty."
+ "text": "Sure, the shelves in the cupboard are empty."
  },
  {
  "letter": "B",
@@ -364,7 +364,7 @@
  },
  {
  "letter": "D",
- "text": "I think they go in the wardrobe now."
+ "text": "I think they go in the cupboard now."
  },
  {
  "letter": "E",
@@ -389,7 +389,7 @@
  "key": "D"
  },
  {
- "a": "OK. Can you pass me the hangers, please?",
+ "a": "OK. Can you give me those clothes, please?",
  "key": "G"
  },
  {
@@ -1424,7 +1424,7 @@
  ],
  [
  "R",
- "5. — I can’t find the cat! — Look under the bed. No… On the wardrobe? No… Oh, there she is, behind the curtains!"
+ "5. — I can’t find the cat! — Look under the bed. No… On the cupboard? No… Oh, there she is, behind the door!"
  ],
  [
  "pause",
@@ -1580,7 +1580,7 @@
  ],
  [
  "R",
- "5. — I can’t find the cat! — Look under the bed. No… On the wardrobe? No… Oh, there she is, behind the curtains!"
+ "5. — I can’t find the cat! — Look under the bed. No… On the cupboard? No… Oh, there she is, behind the door!"
  ],
  [
  "pause",

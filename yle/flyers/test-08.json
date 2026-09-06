@@ -6,7 +6,7 @@
  "p1": {
  "type": "draw_lines",
  "image": "L1",
- "scene": "A hospital corridor: a doctor looking at a chart, a nurse pushing a wheelchair, a man in pyjamas reading a book, a child with a bandage on her arm, a cleaner with a mop, a visitor carrying flowers, a cook pushing a food trolley.",
+ "scene": "A hospital corridor: a doctor looking at some papers, a nurse helping a man in a chair, a man in pyjamas reading a book, a child with a bandage on her arm, a cleaner with a brush, a woman carrying flowers, a cook pushing the food.",
  "names": [
  "Dr Smith",
  "Nurse Ava",
@@ -18,11 +18,11 @@
  "people": [
  {
  "id": "A",
- "desc": "a doctor looking at a chart"
+ "desc": "a doctor looking at some papers"
  },
  {
  "id": "B",
- "desc": "a nurse pushing a wheelchair"
+ "desc": "a nurse helping a man in a chair"
  },
  {
  "id": "C",
@@ -34,15 +34,15 @@
  },
  {
  "id": "E",
- "desc": "a cleaner with a mop"
+ "desc": "a cleaner with a brush"
  },
  {
  "id": "F",
- "desc": "a visitor carrying flowers"
+ "desc": "a woman carrying flowers"
  },
  {
  "id": "G",
- "desc": "a cook pushing a food trolley"
+ "desc": "a cook pushing the food"
  }
  ],
  "example": {
@@ -542,7 +542,7 @@
  "title": "Dad’s new bread shop",
  "parts": [
  {
- "text": "Two months ago, my dad opened a small bread shop on Queen Street. He has wanted to make bread in a shop since he was young, so we are all very happy for him. The name of the bread shop is \"Sweet Morning\" and it has a big window with a yellow sign. My dad wakes up every day at four o’clock to make bread. He makes 100 breads every morning. He also makes chocolate cakes, strawberry cakes and cookies. My favourite cookies are the ones with white chocolate chips. My big sister helps him on Saturdays. She puts the cakes in the shop window and she helps the people. Last Saturday, she helped more than fifty people! I can’t work in the bread shop yet because I’m only nine, but I help by tasting everything. That’s the best job!",
+ "text": "Two months ago, my dad opened a small bread shop on Queen Street. He has wanted to make bread in a shop since he was young, so we are all very happy for him. The name of the bread shop is \"Sweet Morning\" and it has a big yellow window. My dad wakes up every day at four o’clock to make bread. He makes 100 breads every morning. He also makes chocolate cakes, strawberry cakes and cookies. My favourite cookies are the ones with white chocolate chips. My big sister helps him on Saturdays. She puts the cakes in the shop window and she helps the people. Last Saturday, she helped more than fifty people! I can’t work in the bread shop yet because I’m only nine, but I help by tasting everything. That’s the best job!",
  "examples": [
  {
  "s": "Where is the bread shop?",

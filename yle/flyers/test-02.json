@@ -6,7 +6,7 @@
  "p1": {
  "type": "draw_lines",
  "image": "L1",
- "scene": "A school playground at break time with children doing different things: a girl reading a book on a bench, a boy with a skipping rope, two girls playing basketball, a boy eating an apple, a girl drawing on paper, a boy with a football.",
+ "scene": "A school playground at break time with children doing different things: a girl reading a book on a seat, a boy jumping, two girls playing basketball, a boy eating an apple, a girl drawing on paper, a boy with a football.",
  "names": [
  "Mark",
  "Hannah",
@@ -18,11 +18,11 @@
  "people": [
  {
  "id": "A",
- "desc": "a girl reading a book on a bench"
+ "desc": "a girl reading a book on a seat"
  },
  {
  "id": "B",
- "desc": "a boy with a skipping rope"
+ "desc": "a boy jumping"
  },
  {
  "id": "C",
@@ -237,7 +237,7 @@
  "p5": {
  "type": "colour_write",
  "image": "L5",
- "scene": "A classroom with: a blackboard, a teacher’s desk, three student desks, a window with a plant, a clock above the door, a map of the world on the wall, a bookshelf in the corner.",
+ "scene": "A classroom with: a board, a teacher’s desk, three student desks, a window with a plant, a clock above the door, a map of the world on the wall, a bookshelf in the corner.",
  "object": "thing",
  "example": {
  "what": "the clock",
@@ -275,7 +275,7 @@
  "a rubber",
  "a computer",
  "a dictionary",
- "a blackboard",
+ "a board",
  "a timetable",
  "a uniform",
  "a classroom",

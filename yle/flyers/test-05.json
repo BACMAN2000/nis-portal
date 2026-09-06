@@ -6,7 +6,7 @@
  "p1": {
  "type": "draw_lines",
  "image": "L1",
- "scene": "A sports centre: a boy playing table tennis, a girl swimming in a pool, a man lifting weights, a woman doing yoga on a mat, a boy climbing a wall, a girl running on a treadmill, a coach with a clipboard.",
+ "scene": "A sports centre: a boy playing table tennis, a girl swimming in a pool, a man making his arms strong, a woman sitting on a mat, a boy climbing a wall, a girl running on a machine, a sports teacher with a book.",
  "names": [
  "Coach Bob",
  "Laura",
@@ -26,11 +26,11 @@
  },
  {
  "id": "C",
- "desc": "a man lifting weights"
+ "desc": "a man making his arms strong"
  },
  {
  "id": "D",
- "desc": "a woman doing yoga on a mat"
+ "desc": "a woman sitting on a mat"
  },
  {
  "id": "E",
@@ -38,11 +38,11 @@
  },
  {
  "id": "F",
- "desc": "a girl running on a treadmill"
+ "desc": "a girl running on a machine"
  },
  {
  "id": "G",
- "desc": "a coach with a clipboard"
+ "desc": "a sports teacher with a book"
  }
  ],
  "example": {
@@ -242,7 +242,7 @@
  "p5": {
  "type": "colour_write",
  "image": "L5",
- "scene": "A skate park: a big ramp, a boy on a skateboard, a bench with a bag, a tree, a sign with the name of the park, a bin, a dog on a lead with a girl.",
+ "scene": "A skate park: a big ramp, a boy on a skateboard, a seat with a bag, a tree, a board with the name of the park, a bin, a dog on a lead with a girl.",
  "object": "thing",
  "example": {
  "what": "the skateboard",
@@ -250,7 +250,7 @@
  },
  "items": [
  {
- "what": "the bag on the bench",
+ "what": "the bag on the seat",
  "colour": "purple"
  },
  {
@@ -262,7 +262,7 @@
  "colour": "brown"
  },
  {
- "what": "on the sign",
+ "what": "on the board",
  "write": "SKATE"
  },
  {
@@ -290,7 +290,7 @@
  "a golf club",
  "trainers",
  "a ball",
- "a rope"
+ "a net"
  ],
  "example": {
  "def": "",
@@ -327,7 +327,7 @@
  },
  {
  "def": "A long thing you can jump with.",
- "word": "a rope"
+ "word": "a net"
  },
  {
  "def": "A flat board with small wheels that children ride.",
@@ -346,7 +346,7 @@
  "example": {
  "a": "Hi Ethan, are you ready for today’s football training?",
  "key": "D",
- "text": "Yes, coach. I’m really excited!"
+ "text": "Yes! I’m really excited!"
  },
  "options": [
  {
@@ -363,7 +363,7 @@
  },
  {
  "letter": "D",
- "text": "Yes, coach. I’m really excited!"
+ "text": "Yes! I’m really excited!"
  },
  {
  "letter": "E",
@@ -400,7 +400,7 @@
  "key": "C"
  },
  {
- "a": "Amazing. Do you want to be a goalkeeper today?",
+ "a": "Amazing. Do you want to play in front of the goal today?",
  "key": "E"
  }
  ]
@@ -445,7 +445,7 @@
  "p4": {
  "type": "mc_cloze",
  "title": "Why we do sport",
- "text": "Sport is very important for our bodies and our minds. When we play sport, we take lots __(1)__ air and we move our __(2)__. It __(3)__ us strong and well. Sport can __(4)__ be fun. Many children __(5)__ different sports at school – football, basketball, swimming __(6)__ tennis. Other people prefer __(7)__ kinds of sport, like yoga or sport. Sport also teaches us __(8)__ work with other people and not give __(9)__. After sport, many people __(10)__ very happy and tired at the same time.",
+ "text": "Sport is very important for our bodies and our minds. When we play sport, we take lots __(1)__ air and we move our __(2)__. It __(3)__ us strong and well. Sport can __(4)__ be fun. Many children __(5)__ different sports at school – football, basketball, swimming __(6)__ tennis. Other people prefer __(7)__ kinds of sport, like dancing or swimming. Sport also teaches us __(8)__ work with other people and not give __(9)__. After sport, many people __(10)__ very happy and tired at the same time.",
  "example": {
  "options": [
  "",
@@ -542,7 +542,7 @@
  "title": "The painting competition",
  "parts": [
  {
- "text": "Every summer, my town has a big painting competition in the park. This year, my best friend Nico and I decided to try it for the first time. We walked to the park at nine o’clock with our pencils, paper and colours. There were more than 50 children in the competition! Each child had two hours to paint. I painted a beautiful king flying over the mountains. Nico painted a football player scoring a goal. It was difficult because the sun was strong and we got very hot. In the end, Nico won a silver prize for his picture. I didn’t win a prize, but the teachers said my king was amazing. We ate an ice cream each at the party. Next year, I will paint a castle with a princess and a king!",
+ "text": "Every summer, my town has a big painting competition in the park. This year, my best friend Nico and I decided to try it for the first time. We walked to the park at nine o’clock with our pencils, paper and colours. There were more than 50 children in the competition! Each child had two hours to paint. I painted a beautiful king flying over the mountains. Nico painted a football player scoring a goal. It was difficult because the sun was strong and we got very hot. In the end, Nico won a silver prize for his picture. I didn’t win a prize, but the teachers said my king was amazing. We ate an ice cream each at the party. Next year, I will paint a castle with a queen and a king!",
  "examples": [
  {
  "s": "Where is the competition?",
@@ -1701,7 +1701,7 @@
  ],
  [
  "M",
- "On the bench there’s a bag – colour it purple."
+ "On the seat there’s a bag – colour it purple."
  ],
  [
  "pause",
@@ -1773,7 +1773,7 @@
  ],
  [
  "M",
- "Write the word SKATE on the sign."
+ "Write the word SKATE on the board."
  ],
  [
  "pause",
@@ -1841,7 +1841,7 @@
  ],
  [
  "M",
- "On the bench there’s a bag – colour it purple."
+ "On the seat there’s a bag – colour it purple."
  ],
  [
  "pause",
@@ -1913,7 +1913,7 @@
  ],
  [
  "M",
- "Write the word SKATE on the sign."
+ "Write the word SKATE on the board."
  ],
  [
  "pause",
