@@ -28,6 +28,10 @@ header.top .right{margin-left:auto;display:flex;gap:10px;align-items:center}
 .wrap{display:grid;grid-template-columns:250px 1fr;gap:18px;max-width:1180px;margin:18px auto;padding:0 16px}
 aside{background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px;align-self:start;position:sticky;top:12px}
 aside h2{font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:0 0 8px}
+/* Cuanto de la lista oficial se entrena aqui y cuanto lo da ya el curso. Es la
+   pregunta que hace el profesor y antes la pagina no la contestaba. */
+.cover{margin:14px 0 0;padding-top:10px;border-top:1px solid var(--border);font-size:.74rem;line-height:1.5;color:var(--muted)}
+.cover b{color:var(--ink)}
 .tbtn{display:flex;justify-content:space-between;align-items:center;gap:8px;width:100%;text-align:left;border:1.5px solid var(--border);background:#fff;border-radius:10px;padding:8px 10px;margin:0 0 6px;font:inherit;font-size:.9rem;cursor:pointer}
 .tbtn.on{border-color:var(--blue);background:var(--sky)}
 .tbtn small{color:var(--muted);font-size:.75rem;white-space:nowrap}
@@ -90,6 +94,7 @@ input.typed.ok{border-color:var(--ok);background:#e3f3ea}input.typed.bad{border-
     <div id="themes"></div>
     <h2 style="margin-top:14px">Level</h2>
     <div id="levels"></div>
+    <p class="cover" id="cover"></p>
   </aside>
   <main>
     <div class="card" id="top"></div>
@@ -185,9 +190,19 @@ function saveRound(modeKey, score, total){
   sb.from('activity_attempts').insert({student_id: USER.id, activity: 'yle-vocab:' + LEVEL + ':' + modeKey, title: 'YLE Word Trainer · ' + NAMES[LEVEL] + ' · ' + label, level: LEVEL, score: score, total: total, duration_sec: Math.min(32000, Math.round((Date.now() - t0) / 1000)), submitted_at: new Date().toISOString()}).then(function(r){ if(r.error) console.warn(r.error.message); t0 = Date.now(); });
 }
 
+/* Lo que cubre el entrenador. Antes la cabecera decia «the 2025 word list» y
+   entrenaba una cuarta parte: las palabras que el curso ya ensena no estaban
+   aqui, y nada lo explicaba. Ahora se dicen las tres cifras. */
+function paintCover(){
+  var c = DATA.cover; if(!c) return;
+  $('#hSub').textContent = 'Cambridge Young Learners · ' + NAMES[LEVEL] + ' · ' + c.trainer + ' words of the 2025 list';
+  $('#cover').innerHTML = '<b>' + c.trainer + '</b> words here \u00b7 <b>' + c.course +
+    '</b> in the Fun for Nordic course \u00b7 together the whole <b>' + c.official + '</b>-word list for ' + NAMES[LEVEL] + '.';
+}
+
 /* ---------- pantalla ---------- */
 function init(){
-  $('#hSub').textContent = 'Cambridge Young Learners · ' + NAMES[LEVEL] + ' · the 2025 word list';
+  $('#hSub').textContent = 'Cambridge Young Learners · ' + NAMES[LEVEL] + ' · the 2025 word list';   /* la cifra exacta la pone paintCover() al cargar los datos */
   $('#hLv').textContent = LEVEL.charAt(0).toUpperCase() + LEVEL.slice(1); $('#hLv').className = 'lv ' + LEVEL;
   $('#backTests').href = 'yle-practice.html?level=' + LEVEL;
   $('#levels').innerHTML = ['starters', 'movers', 'flyers'].map(function(l){ return '<a class="tbtn' + (l === LEVEL ? ' on' : '') + '" href="?level=' + l + '" style="text-decoration:none;color:inherit"><b>' + NAMES[l] + '</b></a>'; }).join('');
@@ -195,6 +210,7 @@ function init(){
   json('yle/vocab/' + LEVEL + '.json').then(function(d){
     DATA = d; WORDS = d.words; THEMES = d.themes;
     if(theme !== 'all' && !THEMES[theme]) theme = 'all';
+    paintCover();
     return loadAccount();
   }).then(function(){ paintThemes(); paintTop(); render(); })
   .catch(function(e){ $('#content').innerHTML = '<div class="card">Could not load the words (' + esc(e.message) + ').</div>'; });

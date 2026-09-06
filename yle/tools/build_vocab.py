@@ -11,11 +11,10 @@ Formato de cada entrada: {"w": palabra, "e": emoji|null, "t": tema, "ex": ejempl
                           "p": false si el dibujo es genérico (nombres, frases) y no sirve para
                           «elige el dibujo», "s": slug del audio (yle-audio/vocab/<level>/<s>.mp3)}
 """
-import io, json, os, re, sys
+import glob, importlib.util, io, json, os, re, sys
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 RAIZ = os.path.dirname(os.path.dirname(AQUI))
-FALTAN = r'C:\Projects\yle-oficial\faltan_%s.json'
 OUT = os.path.join(RAIZ, 'yle', 'vocab')
 
 THEMES = {
@@ -24,6 +23,7 @@ THEMES = {
   'body': '🩺 Body & health', 'transport': '🚌 Transport', 'world': '🌍 The world', 'time': '🕒 Time & numbers',
   'expressions': '💬 Useful phrases', 'describing': '🎨 Describing words', 'actions': '🏃 Action words',
   'tech': '💻 Technology', 'clothes': '👕 Clothes', 'work': '💼 Jobs & work', 'music': '🎵 Music',
+  'grammar': '🔤 Small words',
 }
 GENERIC = {'💬', '👦', '👧', '🧒', '📅', '📍', '❓', '🙋', '🚫', '🔢', '⏱️', '⏳', '⏰'}
 
@@ -413,6 +413,27 @@ FLYERS = {
 
 DATA = {'starters': STARTERS, 'movers': MOVERS, 'flyers': FLYERS}
 
+# Las 471 que no cubria nadie (ver vocab_huecos.py). Se anaden a las de arriba.
+_aqui = os.path.dirname(os.path.abspath(__file__))
+_spec = importlib.util.spec_from_file_location('vocab_huecos', os.path.join(_aqui, 'vocab_huecos.py'))
+_vh = importlib.util.module_from_spec(_spec); _spec.loader.exec_module(_vh)
+for _lv, _d in (('starters', _vh.STARTERS), ('movers', _vh.MOVERS), ('flyers', _vh.FLYERS)):
+    DATA[_lv].update(_d)
+
+WL = json.load(io.open(os.path.join(RAIZ, 'yle', 'wordlist-2025.json'), encoding='utf-8'))
+# La transcripcion sale de la base de palabras propia, que ya la trae para 6.868
+# entradas. Se guarda la britanica: es la del examen y la de las grabaciones.
+LEX = json.load(io.open(os.path.join(RAIZ, 'lexicon', 'lexicon.json'), encoding='utf-8'))
+
+
+def ipa(w):
+    for k in (w, re.sub(r'\s*\(.*?\)', '', w).strip(), w.split('/')[0].strip()):
+        e = LEX.get(k.lower())
+        if e and e.get('uk'):
+            return e['uk']
+    return None
+CONTENT = os.path.join(RAIZ, 'nis-fun', 'content')
+
 
 def slug(w):
     return re.sub(r'[^a-z0-9]+', '_', w.lower()).strip('_')
@@ -423,17 +444,69 @@ def titulo(w):
     return w[0].upper() + w[1:] if w and w[0].isalpha() else w
 
 
+def formas(w):
+    """Todas las formas de una entrada de la lista oficial.
+
+    La lista escribe «eraser (UK rubber)», «fish (s + pl)» o «child/children», y
+    el curso declara «eraser» a secas. Sin desplegarlas, la palabra parecia sin
+    cubrir y el entrenador se llenaba de duplicados."""
+    w = w.lower().strip()
+    out = {w}
+    m = re.match(r'^(.*?)\s*\((.*)\)\s*$', w)
+    if m:
+        base, par = m.group(1).strip(), m.group(2).strip()
+        out.add(base)
+        par = re.sub(r'^(uk|us|e\.g\.|as|for|s \+ pl|as in|plural)\b\.?\s*', '', par).strip()
+        if par and len(par) < 30 and not par.startswith(('past of', 'sports', 'time', 'music', 'a ball', 'a bus')):
+            out.add(par)
+    for p in list(out):
+        if '/' in p:
+            out.update(x.strip() for x in p.split('/'))
+    return {x for x in out if x}
+
+
+def declaradas(level):
+    """Lo que alguna unidad de Fun for Nordic dice que hay que aprender.
+
+    Antes se miraba si la palabra aparecia en CUALQUIER texto del curso, y asi
+    una palabra que sale una vez dentro de un cuento contaba como ensenada. No
+    lo esta: nadie le dice al alumno que la aprenda."""
+    fuera = set()
+    for f in sorted(glob.glob(os.path.join(CONTENT, level, 'unit-*.json'))):
+        u = json.load(io.open(f, encoding='utf-8'))
+        for w in (u.get('wordlist') or []) + (u.get('wordlist_extra') or []):
+            fuera |= formas(w)
+    return fuera
+
+
+def hueco(level):
+    """Las palabras oficiales que el curso no declara. Son las del entrenador."""
+    decl = declaradas(level)
+    return [w for w in WL[level] if not (formas(w) & decl)]
+
+
+def clave(w):
+    """La misma palabra escrita como la escribe la tabla de aqui abajo.
+
+    La lista oficial pone «Alex», «CD», «a.m. (for time)» o «keyboard (computer)»;
+    las tablas estan en minuscula y sin la aclaracion entre parentesis."""
+    w = re.sub(r'\s*\(.*?\)', '', w.lower()).strip()
+    return re.sub(r'\s*/\s*', '/', w)
+
+
 def build(level):
-    faltan = json.load(io.open(FALTAN % level, encoding='utf-8'))
-    ren = RENOMBRA.get(level, {})
-    palabras = []
-    for w in faltan:
-        palabras.extend(ren.get(w, [w]))
     d = DATA[level]
-    faltantes = [w for w in palabras if w not in d]
-    sobran = [w for w in d if w not in palabras]
-    if faltantes or sobran:
-        print('%s: SIN DEFINIR %s | SOBRAN %s' % (level, faltantes, sobran))
+    ren = RENOMBRA.get(level, {})
+    # indice por forma normalizada, para no depender de como este escrita la entrada
+    idx = {clave(k): k for k in d}
+    idx.update({clave(k): k for k in ren})
+    palabras = []
+    for w in hueco(level):
+        k = idx.get(clave(w), w)
+        palabras.extend(ren.get(k, [k]))
+    sin_definir = [w for w in palabras if w not in d]
+    if sin_definir:
+        print('%s: SIN DEFINIR (%d) %s' % (level, len(sin_definir), sin_definir[:12]))
     out = []
     for w in palabras:
         if w not in d: continue
@@ -441,12 +514,22 @@ def build(level):
         assert t in THEMES, (w, t)
         mostrar = titulo(w) if t in ('names', 'time') and w not in ("o'clock", 'zero', 'soon', 'end', 'at the moment', 'in a minute', 'a.m.', 'p.m.') else w
         row = {'w': mostrar, 'k': w, 'e': e, 't': t, 'ex': ex, 'es': es, 's': slug(w)}
-        if e in GENERIC or t in ('names', 'expressions'): row['p'] = False
+        fon = ipa(w)
+        if fon: row['ipa'], row['ipa_reg'] = fon, 'UK'
+        if e in GENERIC or t in ('names', 'expressions', 'grammar'): row['p'] = False
         out.append(row)
     os.makedirs(OUT, exist_ok=True)
-    io.open(os.path.join(OUT, level + '.json'), 'w', encoding='utf-8').write(json.dumps({'level': level, 'themes': THEMES, 'words': out}, ensure_ascii=False, indent=0))
+    # la pagina dice cuanto cubre, y lo dice con la cuenta de verdad: lo que
+    # entrena aqui, lo que ya ensena el curso y el total de la lista oficial
+    cubre = {'trainer': len(hueco(level)), 'course': len(WL[level]) - len(hueco(level)), 'official': len(WL[level])}
+    io.open(os.path.join(OUT, level + '.json'), 'w', encoding='utf-8').write(
+        json.dumps({'level': level, 'themes': THEMES, 'cover': cubre, 'words': out}, ensure_ascii=False, indent=0))
     con = sum(1 for r in out if r.get('p') is not False)
-    print('%s: %d palabras (%d con dibujo para elegir) -> yle/vocab/%s.json' % (level, len(out), con, level))
+    # la cobertura se cuenta por entrada de la lista oficial, no por tarjeta: una
+    # entrada como «ann/ anna» se parte en dos tarjetas y contarlas inflaba el total
+    h = len(hueco(level)); ofi = len(WL[level]); fon = sum(1 for r in out if r.get('ipa'))
+    print("%-9s %3d tarjetas (%3d con dibujo, %3d con IPA) | el curso ensena %3d | el entrenador %3d | cubiertas %d/%d"
+          % (level, len(out), con, fon, ofi - h, h, ofi, ofi))
 
 
 if __name__ == '__main__':
