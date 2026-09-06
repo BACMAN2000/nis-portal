@@ -656,7 +656,7 @@
       "type": "find_differences",
       "image": "S1",
       "scene": "Two pictures of the same classroom. Left: the examiner's picture. Right: your picture.",
-      "examiner": "Look at the two pictures. Here the teacher is writing on the board, but here she is reading a book. What other differences can you see?",
+      "examiner": "Look at the two pictures. Here the teacher is writing on the board, but here she is reading a book. What more differences can you see?",
       "differences": [
         "In your picture there are four children, but in my picture there are three.",
         "In your picture the bag is on the desk, but in my picture it is under the desk.",
@@ -673,8 +673,8 @@
       "frames": [
         "Nick is doing his homework at his desk. His friends come to the window and ask him to play football.",
         "Nick goes out to play with his friends. They play football in the park and Nick is very happy.",
-        "It is late. Nick comes home and looks at his desk. His homework isn't finished and he is worried.",
-        "Nick gets up early in the morning and finishes his homework before school. His teacher is happy with him."
+        "It is nine o'clock. Nick comes home and looks at his desk. He hasn't got his homework and he is sad.",
+        "Nick gets up early in the morning and does his homework before school. His teacher is happy with him."
       ]
     },
     "p3": {
@@ -971,7 +971,7 @@
       ],
       [
         "Mch",
-        "Twenty-eight. All my class and some children from the other class."
+        "Twenty-eight. All my class and some children from another class."
       ],
       [
         "F",
@@ -1089,7 +1089,7 @@
       ],
       [
         "Fch",
-        "Nick plays football. He's in a school team and they play in the park."
+        "Nick plays football. He plays with his school friends in the park."
       ],
       [
         "pause",
@@ -1101,7 +1101,7 @@
       ],
       [
         "Fch",
-        "No, Zoe goes swimming. She's very fast in the water."
+        "No, Zoe goes swimming. She's very quickly in the water."
       ],
       [
         "M",
@@ -1141,7 +1141,7 @@
       ],
       [
         "Fch",
-        "Matt rides his bike. He goes to the park with his dog and rides for two hours."
+        "Matt rides his bike. He goes to the park with his dog and rides for a long time."
       ],
       [
         "M",
@@ -1231,11 +1231,11 @@
       ],
       [
         "Mch",
-        "No, Miss Green. It's a bird. Look, it's got two big wings."
+        "No, Miss Green. It's a bird. Look, it can fly!"
       ],
       [
         "F",
-        "Of course! It's beautiful."
+        "Yes! It's beautiful."
       ],
       [
         "pause",
@@ -1299,7 +1299,7 @@
       ],
       [
         "M",
-        "It's a good way to start the day."
+        "It's a good thing before school."
       ],
       [
         "pause",
@@ -1441,7 +1441,7 @@
       ],
       [
         "M",
-        "And now the ball in the box in the corner. Colour it purple, please."
+        "And now the ball in the box next to the wall. Colour it purple, please."
       ],
       [
         "Fch",

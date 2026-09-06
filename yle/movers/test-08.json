@@ -665,7 +665,7 @@
       "type": "find_differences",
       "image": "S1",
       "scene": "Two pictures of the same farm garden. Left: the examiner's picture. Right: your picture.",
-      "examiner": "Look at the two pictures. Here the cat is on the wall, but here the cat is under the tree. What other differences can you see?",
+      "examiner": "Look at the two pictures. Here the cat is on the wall, but here the cat is under the tree. What more differences can you see?",
       "differences": [
         "In your picture there are four ducks, but in my picture there are two.",
         "In your picture the horse is brown, but in my picture it is white.",
@@ -680,9 +680,9 @@
       "image": "S2",
       "examiner_open": "These pictures show a story. It's called 'The lost sheep'. Look at the pictures first. Sam and his grandfather are counting the sheep in the field, and one sheep isn't there. Now you tell the story.",
       "frames": [
-        "Sam and his grandfather are counting the sheep in the field. One sheep isn't there and they are worried.",
+        "Sam and his grandfather are counting the sheep in the field. One sheep isn't there and they are sad.",
         "Sam and the dog look for the sheep. They walk next to the river and behind the trees.",
-        "The dog stops and starts to bark. The sheep is in the water and it can't get out!",
+        "The dog stops and makes a loud noise. The sheep is in the water and it can't get out!",
         "Sam and his grandfather help the sheep to come out of the river. The sheep is happy and Sam gives the dog a big dinner."
       ]
     },
@@ -729,7 +729,7 @@
             "cat"
           ],
           "odd": 3,
-          "reason": "A cat doesn't like water. The others do."
+          "reason": "A cat doesn't like water. These three do."
         },
         {
           "pics": [
@@ -739,7 +739,7 @@
             "kitchen"
           ],
           "odd": 3,
-          "reason": "A kitchen is inside a house. The others are outside."
+          "reason": "A kitchen is inside a house. These three are outside."
         }
       ]
     },
@@ -753,7 +753,7 @@
         },
         {
           "q": "Which farm animal do you like best? Why?",
-          "model": "Horses, because they can run very fast."
+          "model": "Horses, because they can run very quickly."
         },
         {
           "q": "Do you like the countryside or the town?",
@@ -964,7 +964,7 @@
       ],
       [
         "M",
-        "Of course not!"
+        "No!"
       ],
       [
         "pause",
@@ -1016,7 +1016,7 @@
       ],
       [
         "M",
-        "Your first job is the horses. Give them some water, please."
+        "Your first work is the horses. Give them some water, please."
       ],
       [
         "Fch",
@@ -1126,7 +1126,7 @@
       ],
       [
         "F",
-        "Poor cat!"
+        "Sad cat!"
       ],
       [
         "pause",
@@ -1184,7 +1184,7 @@
       ],
       [
         "Fch",
-        "No, a duck! It was next to the car when we arrived."
+        "No, a duck! It was next to the car when we came."
       ],
       [
         "F",
@@ -1244,7 +1244,7 @@
       ],
       [
         "Mch",
-        "The potatoes are in the other box, then."
+        "The potatoes are in the second box, then."
       ],
       [
         "F",

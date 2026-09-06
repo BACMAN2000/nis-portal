@@ -656,7 +656,7 @@
       "type": "find_differences",
       "image": "S1",
       "scene": "Two pictures of the same market table. Left: the examiner's picture. Right: your picture.",
-      "examiner": "Look at the two pictures. Here the woman is holding an apple, but here she is holding a banana. What other differences can you see?",
+      "examiner": "Look at the two pictures. Here the woman is holding an apple, but here she is holding a banana. What more differences can you see?",
       "differences": [
         "In your picture there are five oranges, but in my picture there are three.",
         "In your picture the bag is on the table, but in my picture it is under the table.",
@@ -688,7 +688,7 @@
             "carrot"
           ],
           "odd": 3,
-          "reason": "A carrot is a vegetable. The others are fruit."
+          "reason": "A carrot is a vegetable. These three are fruit."
         },
         {
           "pics": [
@@ -809,7 +809,7 @@
       ],
       [
         "Fch",
-        "That's Peter. The box is full of potatoes and it's very heavy."
+        "That's Peter. The box has got lots of potatoes and it's very big."
       ],
       [
         "M",
@@ -833,7 +833,7 @@
       ],
       [
         "M",
-        "It smells fantastic."
+        "It's fantastic."
       ],
       [
         "pause",
@@ -1011,7 +1011,7 @@
       ],
       [
         "F",
-        "At two o'clock. Don't be late or the tables aren't there!"
+        "At two o'clock. Come before two o'clock or the tables aren't there!"
       ],
       [
         "Mch",
@@ -1105,7 +1105,7 @@
       ],
       [
         "Mch",
-        "He bought a jacket! It's blue and it wasn't expensive. His old one was very old."
+        "He bought a jacket! It's blue and it was a very good one. His old one was very old."
       ],
       [
         "F",
@@ -1133,7 +1133,7 @@
       ],
       [
         "Mch",
-        "Yes. He bought cheese. He eats cheese with everything, even with cake!"
+        "Yes. He bought cheese. He eats cheese with everything!"
       ],
       [
         "F",

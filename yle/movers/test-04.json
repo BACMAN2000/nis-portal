@@ -86,7 +86,7 @@
           "a": "7"
         },
         {
-          "q": "Name of the hotel: the … Hotel",
+          "q": "Name of the house: the … House",
           "a": "Star"
         },
         {
@@ -336,7 +336,7 @@
         "a plane",
         "a map",
         "an island",
-        "a hotel"
+        "a village"
       ],
       "pics": {
         "a suitcase": "🧳",
@@ -346,10 +346,10 @@
         "a plane": "✈️",
         "a map": "🗺️",
         "an island": "🏝️",
-        "a hotel": "🏨"
+        "a village": "🏨"
       },
       "example": {
-        "def": "You sleep in this when you go camping.",
+        "def": "You sleep in this when you go to the mountains.",
         "word": "a tent"
       },
       "items": [
@@ -358,7 +358,7 @@
           "word": "a suitcase"
         },
         {
-          "def": "This flies in the sky and takes people to other countries.",
+          "def": "This flies in the sky and takes people to different countries.",
           "word": "a plane"
         },
         {
@@ -370,7 +370,7 @@
           "word": "a map"
         },
         {
-          "def": "This is land with water all around it.",
+          "def": "This is a place with water all around it.",
           "word": "an island"
         }
       ]
@@ -393,7 +393,7 @@
           "a": "How are you going to get there?",
           "options": [
             "By train.",
-            "It's very far.",
+            "It's not near.",
             "At the station."
           ],
           "key": "A"
@@ -402,7 +402,7 @@
           "a": "Are you taking your dog?",
           "options": [
             "Yes, he is.",
-            "No, he's staying with Aunt Jane.",
+            "No, he's with Aunt Jane.",
             "No, he can't swim."
           ],
           "key": "B"
@@ -428,8 +428,8 @@
         {
           "a": "Can you send me a postcard?",
           "options": [
-            "Yes, I sent it.",
-            "Of course I can!",
+            "Yes, I did.",
+            "Yes I can!",
             "Yes, I've got one."
           ],
           "key": "B"
@@ -458,7 +458,7 @@
         "sunny",
         "beach"
       ],
-      "text": "Last summer, Kim and her family went to a small __(0)__ by boat. It was a beautiful __(1)__ day. In the boat, Kim's dad said, 'Look at the sea!' Suddenly, three __(2)__ jumped out of the water next to the boat. Kim wasn't __(3)__. She laughed and took lots of photos with her new __(4)__. On the island, the family walked to a quiet beach and ate their __(5)__ under a big tree. 'This is the best day of the holiday,' said Kim.",
+      "text": "Last year, Kim and her family went to a small __(0)__ by boat. It was a beautiful __(1)__ day. In the boat, Kim's dad said, 'Look at the sea!' Suddenly, three __(2)__ jumped out of the water next to the boat. Kim wasn't __(3)__. She laughed and took lots of photos with her new __(4)__. On the island, the family walked to a quiet beach and ate their __(5)__ under a big tree. 'This is the best day of the holiday,' said Kim.",
       "example": "island",
       "key": [
         "sunny",
@@ -477,7 +477,7 @@
     "p4": {
       "type": "mc_cloze",
       "title": "Trains",
-      "text": "Trains are a great way __(0)__ travel. They can carry hundreds of people at the same time. The first trains were very slow and __(1)__ a lot of smoke. Today, some trains are __(2)__ than cars and they are very quiet. People sit in comfortable seats and look __(3)__ of the window at the fields and the towns. Many children like trains __(4)__ they can walk about and buy a drink. Before you get on a train, you __(5)__ buy a ticket at the station.",
+      "text": "Trains are great when you __(0)__ travel. They can carry hundreds of people at the same time. The first trains were very slow and __(1)__ a lot of noise. Today, some trains are __(2)__ than cars and they are very quiet. People sit in nice seats and look __(3)__ of the window at the fields and the towns. Many children like trains __(4)__ they can walk about and buy a drink. Before you get on a train, you __(5)__ buy a ticket at the station.",
       "example": {
         "options": [
           "to",
@@ -497,9 +497,9 @@
         },
         {
           "options": [
-            "fast",
-            "faster",
-            "fastest"
+            "quickly",
+            "quicker",
+            "quickest"
           ],
           "key": "B"
         },
@@ -535,11 +535,11 @@
       "image": "R5",
       "parts": [
         {
-          "text": "Charlie and his parents went on holiday to the seaside. They went to the station early in the morning and got on the train. Charlie had a small red suitcase with his favourite comics, his swimming things and his blue hat inside.",
+          "text": "Charlie and his parents went on holiday to the beach. They went to the station early in the morning and got on the train. Charlie had a small red suitcase with his favourite comics, his swimming things and his blue hat inside.",
           "examples": [
             {
               "s": "Charlie's family went on holiday to the ___.",
-              "a": "seaside"
+              "a": "beach"
             },
             {
               "s": "They went to the station ___ in the morning.",
@@ -586,7 +586,7 @@
           ]
         },
         {
-          "text": "At the seaside station, a woman in a blue uniform waited for them. 'Is this your suitcase?' she asked. 'The man found it and phoned us.' Charlie was so happy. That evening, he read all his comics on the beach, and he wore his blue hat.",
+          "text": "At the beach station, a woman in a blue coat waited for them. 'Is this your suitcase?' she asked. 'The man found it and phoned us.' Charlie was so happy. That evening, he read all his comics on the beach, and he wore his blue hat.",
           "items": [
             {
               "s": "The woman at the station wore a blue ___.",
@@ -656,25 +656,25 @@
       "type": "find_differences",
       "image": "S1",
       "scene": "Two pictures of the same beach. Left: the examiner's picture. Right: your picture.",
-      "examiner": "Look at the two pictures. Here the sun is shining, but here it is cloudy. What other differences can you see?",
+      "examiner": "Look at the two pictures. Here it is sunny, but here it is cloudy. What more differences can you see?",
       "differences": [
         "In your picture the boy has got a green kite, but in my picture it is yellow.",
         "In your picture there are two boats in the sea, but in my picture there is one.",
         "In your picture the woman is reading a book, but in my picture she is sleeping.",
         "In your picture the girl is wearing a hat, but in my picture she isn't.",
-        "In your picture there is a crab on the sand, but in my picture there is a shell."
+        "In your picture there is a shell on the sand, but in my picture there is a shell."
       ]
     },
     "p2": {
       "type": "picture_sequence",
       "title": "Peter and the tent",
       "image": "S2",
-      "examiner_open": "These pictures show a story. It's called 'Peter and the tent'. Look at the pictures first. Peter and his dad are camping in the mountains. It's the evening and they are putting up their tent. Now you tell the story.",
+      "examiner_open": "These pictures show a story. It's called 'Peter and the tent'. Look at the pictures first. Peter and his dad are on holiday in the mountains. It's the evening and they are putting up their tent. Now you tell the story.",
       "frames": [
-        "Peter and his dad are camping in the mountains. In the evening they put up their tent next to a river.",
+        "Peter and his dad are on holiday in the mountains. In the evening they put up their tent next to a river.",
         "At night it starts to rain and the wind is very strong. The tent falls down and Peter and his dad get wet.",
         "They run to the car and sleep there. Peter is laughing because his dad's hair is very wet.",
-        "In the morning the sun is shining again. They put up the tent and cook breakfast on a fire."
+        "In the morning it is sunny again. They put up the tent and cook breakfast on a fire."
       ]
     },
     "p3": {
@@ -724,7 +724,7 @@
             "cat"
           ],
           "odd": 3,
-          "reason": "A cat doesn't live in the sea. The others swim in the sea."
+          "reason": "A cat doesn't live in the sea. These three swim in the sea."
         }
       ]
     },
@@ -827,7 +827,7 @@
       ],
       [
         "Mch",
-        "Yes, Aunt Sue. She wanted to find the hotel on the map."
+        "Yes, Aunt Sue. She wanted to find the house on the map."
       ],
       [
         "pause",
@@ -847,7 +847,7 @@
       ],
       [
         "F",
-        "Ha ha! I hope he didn't miss the train."
+        "Ha ha! He came to the train after us."
       ],
       [
         "pause",
@@ -883,11 +883,11 @@
       ],
       [
         "Mch",
-        "That's Nick. He said 'The train is late!' He looked at the clock every minute."
+        "That's Nick. He said 'The train isn't here!' He looked at the clock all the time."
       ],
       [
         "F",
-        "Poor Nick!"
+        "Sad Nick!"
       ],
       [
         "pause",
@@ -945,7 +945,7 @@
       ],
       [
         "M",
-        "No, it's too far. We're going by train. It takes four hours."
+        "No, it's not near. We're going by train. It takes a long time."
       ],
       [
         "Fch",
@@ -961,11 +961,11 @@
       ],
       [
         "Fch",
-        "How many days are we staying there?"
+        "How many days are we there?"
       ],
       [
         "M",
-        "Seven days. A whole week."
+        "Seven days. One week."
       ],
       [
         "Fch",
@@ -985,7 +985,7 @@
       ],
       [
         "M",
-        "In a hotel next to the lake. It's called the Star Hotel. S-T-A-R."
+        "In a house next to the lake. It's called the Star House. S-T-A-R."
       ],
       [
         "Fch",
@@ -1009,7 +1009,7 @@
       ],
       [
         "M",
-        "Yes, we can go in a boat. A small boat with a motor."
+        "Yes, we can go in a boat. A small boat with a red sail."
       ],
       [
         "Fch",
@@ -1033,7 +1033,7 @@
       ],
       [
         "M",
-        "Your coat. It's cold in the mountains in the evening, even in summer."
+        "Your coat. It's cold in the mountains in the evening."
       ],
       [
         "Fch",
@@ -1071,7 +1071,7 @@
       ],
       [
         "Mch",
-        "Yes, Miss Green. We went to the sea. I swam every day. The water was warm."
+        "Yes, Miss Green. We went to the sea. I swam every day. The water was hot."
       ],
       [
         "pause",
@@ -1123,11 +1123,11 @@
       ],
       [
         "Mch",
-        "Yes, but he didn't swim. He was tired, so he slept under a big umbrella every afternoon."
+        "Yes, but he didn't swim. He was tired, so he slept under a big tree every afternoon."
       ],
       [
         "F",
-        "That sounds nice too!"
+        "That's nice too!"
       ],
       [
         "pause",
@@ -1155,7 +1155,7 @@
       ],
       [
         "F",
-        "Ha ha! Everybody did something different."
+        "Ha ha! Everyone did something different."
       ],
       [
         "pause",
@@ -1321,7 +1321,7 @@
       ],
       [
         "M",
-        "Chicken is tomorrow."
+        "Chicken is on Sunday."
       ],
       [
         "pause",

@@ -686,7 +686,7 @@
       "type": "find_differences",
       "image": "S1",
       "scene": "Two pictures of the same bedroom. Left: the examiner's picture. Right: your picture.",
-      "examiner": "Look at the two pictures. Here the guitar is next to the bed, but here it is on the bed. What other differences can you see?",
+      "examiner": "Look at the two pictures. Here the guitar is next to the bed, but here it is on the bed. What more differences can you see?",
       "differences": [
         "In your picture there are two footballs, but in my picture there is one.",
         "In your picture the camera is on the desk, but in my picture it is on the chair.",
@@ -703,8 +703,8 @@
       "frames": [
         "Lucy wants to play football with the boys in the park, but they say no because she is a girl.",
         "Lucy practises next to the wall every afternoon. She kicks the ball again and again.",
-        "One day, a boy is ill and the group needs one more player. They ask Lucy to play with them.",
-        "Lucy plays very well and she gets two goals. Now she plays with the group every Saturday."
+        "One day, a boy is ill and they need one more player. They ask Lucy to play with them.",
+        "Lucy plays very well and she gets two goals. Now she plays with them every Saturday."
       ]
     },
     "p3": {
@@ -714,7 +714,7 @@
           "pics": [
             "guitar",
             "piano",
-            "drum",
+            "guitar",
             "book"
           ],
           "odd": 3,
@@ -750,7 +750,7 @@
             "carrot"
           ],
           "odd": 3,
-          "reason": "A carrot is food. The others are about pictures."
+          "reason": "A carrot is food. These three are about pictures."
         },
         {
           "pics": [
@@ -760,7 +760,7 @@
             "bedroom"
           ],
           "odd": 3,
-          "reason": "A bedroom is inside the house. The others are outside."
+          "reason": "A bedroom is inside the house. These three are outside."
         }
       ]
     },
@@ -777,7 +777,7 @@
           "model": "My favourite hobby is drawing."
         },
         {
-          "q": "Can you play a musical instrument?",
+          "q": "Can you play the piano or the guitar?",
           "model": "Yes, I can play the guitar a little."
         },
         {
@@ -815,7 +815,7 @@
       ],
       [
         "F",
-        "She rides very fast!"
+        "She rides very quickly!"
       ],
       [
         "pause",
@@ -977,7 +977,7 @@
       ],
       [
         "Mch",
-        "Mr Baker. B-A-K-E-R. He plays six instruments!"
+        "Mr Baker. B-A-K-E-R. He plays the piano and the guitar!"
       ],
       [
         "F",
@@ -1021,7 +1021,7 @@
       ],
       [
         "F",
-        "Sixteen. That's a big group."
+        "Sixteen. That's a big class."
       ],
       [
         "pause",
@@ -1155,11 +1155,11 @@
       ],
       [
         "Fch",
-        "No, he stays at home and plays the piano. He plays old songs and we all sing."
+        "No, he's at home and plays the piano. He plays old songs and we all sing."
       ],
       [
         "F",
-        "That sounds fantastic."
+        "That's fantastic."
       ],
       [
         "pause",
@@ -1209,7 +1209,7 @@
       ],
       [
         "Mch",
-        "I listen to music, but I can't play anything."
+        "I listen to music, but I can't play it."
       ],
       [
         "pause",
@@ -1265,7 +1265,7 @@
       ],
       [
         "Fch",
-        "In the summer, sometimes!"
+        "When it's hot, sometimes!"
       ],
       [
         "pause",
@@ -1281,7 +1281,7 @@
       ],
       [
         "Mch",
-        "No, I get up too late. I practise in the evening, after dinner."
+        "No, I get up after nine o'clock. I practise in the evening, after dinner."
       ],
       [
         "F",
