@@ -184,7 +184,10 @@ for n in range(1, 11):
                 clave = (str(it.get('what') or P.get('object') or '') + '|' + str(it.get('where') or '')).lower()
                 if clave in vistos: apunta(GRAVE, n, donde, 'dos ordenes sobre lo mismo: %s' % clave)
                 vistos[clave] = 1
-                if not it.get('colour') and not it.get('write'): apunta(GRAVE, n, donde, 'orden %d sin color' % i)
+                if not it.get('colour') and not it.get('write') and not it.get('draw'):
+                    apunta(GRAVE, n, donde, 'orden %d sin color, sin palabra que escribir y sin nada que dibujar' % i)
+                if it.get('draw') and g and norm(it['draw']) not in g:
+                    apunta(MEDIO, n, donde, 'el audio no manda dibujar «%s»' % it['draw'])
                 if g and it.get('colour') and it['colour'].lower() not in g:
                     apunta(MEDIO, n, donde, 'el audio no dice el color «%s»' % it['colour'])
 
