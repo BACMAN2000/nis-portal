@@ -1,0 +1,587 @@
+{
+ "_leeme": "Cobertura de unidades de SECUNDARIA leída de Toddle (Planning insights > Manage units) el 5-sep-2026: 303 unidades. Por cada área y grado se anota qué números de unidad existen. Un número que falta NO es necesariamente un hueco: puede ser que el área no se imparta en ese grado. Por eso cada fila lleva 'grados' con los grados donde el área sí aparece, y la lectura honesta es comparar dentro de esa fila, no entre filas. 's/n' = la unidad existe pero su título no lleva número, así que la cobertura no se puede leer del título.",
+ "fuente": "Toddle · Nordic International School of Lima - SEC · platform/42029099119559222 · Planning insights > Manage units",
+ "leido": "2026-09-05",
+ "unidades_totales": 303,
+ "ritmo": "Secundaria trabaja con TRES unidades al año en casi todas las áreas, no con seis como primaria. Las excepciones son inglés (seis en 6.º, 7.º y 9.º), francés (cuatro en los seis grados) y Enterprise (seis en 10.º).",
+ "areas": [
+  {
+   "area": "English",
+   "grados": [
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "cobertura": {
+    "6": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ],
+    "7": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ],
+    "8": [
+     1,
+     2,
+     3
+    ],
+    "9": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ],
+    "10": [
+     1,
+     2,
+     3
+    ],
+    "11": [
+     1,
+     2,
+     3
+    ]
+   },
+   "hueco": "8.º, 10.º y 11.º tienen tres unidades donde 6.º, 7.º y 9.º tienen seis. Es el desnivel más grande de secundaria y es del área que más nos toca.",
+   "numerado": true
+  },
+  {
+   "area": "French",
+   "grados": [
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "cobertura": {
+    "6": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "7": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "8": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "9": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "10": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "11": [
+     1,
+     2,
+     3,
+     4
+    ]
+   },
+   "hueco": null,
+   "numerado": true
+  },
+  {
+   "area": "Math",
+   "grados": [
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "cobertura": {
+    "6": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "7": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "8": [
+     1,
+     2,
+     3
+    ],
+    "9": [
+     1,
+     2,
+     3
+    ],
+    "10": [
+     1
+    ],
+    "11": [
+     1,
+     2,
+     3
+    ]
+   },
+   "hueco": "10.º solo tiene la Unidad 1. Es el hueco más llamativo del cuadro.",
+   "numerado": true
+  },
+  {
+   "area": "Science",
+   "grados": [
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "cobertura": {
+    "6": [
+     2,
+     3
+    ],
+    "7": [
+     2,
+     3
+    ],
+    "8": [
+     2,
+     3
+    ],
+    "9": [
+     1,
+     2,
+     3
+    ],
+    "10": [
+     1,
+     2,
+     3
+    ],
+    "11": [
+     1,
+     2
+    ]
+   },
+   "hueco": "Sin Unidad 1 en 6.º, 7.º ni 8.º; sin Unidad 3 en 11.º.",
+   "numerado": true
+  },
+  {
+   "area": "Social Studies",
+   "grados": [
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "cobertura": {
+    "6": [
+     2,
+     3
+    ],
+    "7": [
+     1,
+     2,
+     3
+    ],
+    "8": [
+     1,
+     2,
+     3
+    ],
+    "9": [
+     1,
+     2,
+     3
+    ],
+    "10": [
+     1,
+     3
+    ],
+    "11": [
+     1,
+     2,
+     3
+    ]
+   },
+   "hueco": "Sin Unidad 1 en 6.º y sin Unidad 2 en 10.º.",
+   "numerado": true
+  },
+  {
+   "area": "Spanish",
+   "grados": [
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "cobertura": {
+    "6": [
+     1,
+     2,
+     3
+    ],
+    "7": [
+     1,
+     2,
+     3
+    ],
+    "8": [
+     1,
+     2,
+     3
+    ],
+    "9": [
+     1,
+     2,
+     3
+    ],
+    "10": [
+     1,
+     2,
+     3
+    ],
+    "11": [
+     2
+    ]
+   },
+   "hueco": "11.º solo tiene la Unidad 2.",
+   "numerado": true
+  },
+  {
+   "area": "PE",
+   "grados": [
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "cobertura": {
+    "6": [
+     1,
+     2,
+     3
+    ],
+    "7": [
+     1,
+     2
+    ],
+    "8": [
+     1,
+     2
+    ],
+    "9": [
+     1,
+     2,
+     3
+    ],
+    "10": [
+     1,
+     2,
+     3
+    ],
+    "11": [
+     1,
+     2,
+     3
+    ]
+   },
+   "hueco": "Sin Unidad 3 en 7.º ni en 8.º.",
+   "numerado": true
+  },
+  {
+   "area": "ICT",
+   "grados": [
+    6,
+    7,
+    8,
+    9
+   ],
+   "cobertura": {
+    "6": [
+     1,
+     2,
+     3
+    ],
+    "7": [
+     1,
+     2,
+     3
+    ],
+    "8": [
+     2,
+     3
+    ],
+    "9": [
+     1,
+     2,
+     3
+    ]
+   },
+   "hueco": "Sin Unidad 1 en 8.º. En 10.º y 11.º el área pasa a ser Enterprise: no es un hueco.",
+   "numerado": true
+  },
+  {
+   "area": "Enterprise",
+   "grados": [
+    10,
+    11
+   ],
+   "cobertura": {
+    "10": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ],
+    "11": [
+     1,
+     2,
+     3
+    ]
+   },
+   "hueco": null,
+   "numerado": true
+  },
+  {
+   "area": "Philosophy",
+   "grados": [
+    9,
+    10,
+    11
+   ],
+   "cobertura": {
+    "9": [
+     1,
+     2,
+     3
+    ],
+    "10": [
+     1,
+     2,
+     3
+    ],
+    "11": [
+     1,
+     2,
+     3
+    ]
+   },
+   "hueco": null,
+   "numerado": true
+  },
+  {
+   "area": "Global Perspectives",
+   "grados": [
+    9,
+    10,
+    11
+   ],
+   "cobertura": {
+    "9": [
+     2,
+     3
+    ],
+    "10": [
+     1,
+     2
+    ],
+    "11": [
+     1,
+     2
+    ]
+   },
+   "hueco": "Sin Unidad 1 en 9.º y sin Unidad 3 en 10.º ni 11.º.",
+   "numerado": true
+  },
+  {
+   "area": "Spiritual History",
+   "grados": [
+    6,
+    7,
+    8
+   ],
+   "cobertura": {
+    "6": [
+     1,
+     2,
+     3
+    ],
+    "7": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "8": [
+     1,
+     2,
+     3
+    ]
+   },
+   "hueco": null,
+   "numerado": true
+  },
+  {
+   "area": "Drama",
+   "grados": [
+    6,
+    7,
+    8
+   ],
+   "cobertura": {
+    "6": [
+     2,
+     3
+    ],
+    "7": [
+     2,
+     3
+    ],
+    "8": [
+     2,
+     3
+    ]
+   },
+   "hueco": "No hay Unidad 1 en NINGÚN grado. O falta en los tres, o el área arranca en la 2: hay que preguntarlo.",
+   "numerado": true
+  },
+  {
+   "area": "Music",
+   "grados": [
+    6,
+    7,
+    8
+   ],
+   "cobertura": {
+    "6": [
+     1,
+     2,
+     3
+    ],
+    "7": [
+     1,
+     2,
+     3
+    ],
+    "8": [
+     2
+    ]
+   },
+   "hueco": "8.º solo tiene la Unidad 2.",
+   "numerado": true
+  },
+  {
+   "area": "Creative Arts",
+   "grados": [
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "cobertura": {
+    "6": [],
+    "7": [],
+    "8": [
+     4
+    ],
+    "9": [],
+    "10": [
+     3
+    ],
+    "11": [
+     2,
+     3
+    ]
+   },
+   "hueco": "Sus unidades tienen título descriptivo y casi ninguna lleva número, así que la cobertura no se puede leer del título. Hay 16 unidades dadas de alta: lo que falta es numerarlas, no crearlas.",
+   "numerado": false
+  },
+  {
+   "area": "PSE",
+   "grados": [
+    6,
+    8,
+    9,
+    10,
+    11
+   ],
+   "cobertura": {
+    "6": [
+     1,
+     3
+    ],
+    "8": [
+     1,
+     3
+    ],
+    "9": [
+     1
+    ],
+    "10": [],
+    "11": [
+     1
+    ]
+   },
+   "hueco": "No aparece nada en 7.º, y en 10.º ninguna unidad lleva número. En 6.º y 8.º falta la Unidad 2.",
+   "numerado": false
+  },
+  {
+   "area": "Tutor/Co-Tutor",
+   "grados": [
+    8,
+    11
+   ],
+   "cobertura": {
+    "8": [
+     1
+    ],
+    "11": [
+     1
+    ]
+   },
+   "hueco": "Solo existe en 8.º y 11.º. Si la tutoría se planifica en los seis grados, faltan cuatro.",
+   "numerado": true
+  }
+ ]
+}

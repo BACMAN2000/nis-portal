@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Planning report · Nordic International School</title>
+<link rel="icon" href="assets/favicon.svg">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#4987c6; --blue-d:#2f5f93; --blue-dd:#244c77;
+  --bg:#f2f3ff; --white:#fff; --grey:#636465; --line:#e3e5f3;
+  --good:#16a34a; --warn:#b45309; --bad:#dc2626;
+  --ink:#2b2c33; --r:16px; --r-sm:10px;
+  --shadow:0 10px 30px rgba(36,76,119,.10);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:'Montserrat',system-ui,Segoe UI,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5}
+h1,h2,h3,h4{line-height:1.2;margin:0 0 .4em;font-weight:700}
+a{color:var(--blue-d)}
+header{display:flex;align-items:center;gap:14px;background:var(--blue);padding:12px 22px;color:#fff;box-shadow:var(--shadow)}
+header img{height:34px;width:auto;display:block}
+header .spacer{flex:1}
+header a.back,header button.lang{background:rgba(255,255,255,.16);color:#fff;border:none;padding:8px 14px;
+  border-radius:var(--r-sm);font-weight:600;font-size:.9rem;font-family:inherit;cursor:pointer;
+  display:inline-flex;align-items:center;gap:7px;text-decoration:none}
+header a.back:hover,header button.lang:hover{background:rgba(255,255,255,.30)}
+.wrap{max-width:1000px;margin:0 auto;padding:22px 18px 80px}
+.hero{background:linear-gradient(135deg,#244c77,#4987c6);color:#fff;border-radius:var(--r);
+  padding:26px 28px;margin-bottom:22px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero .motivo{position:absolute;right:-8px;bottom:-38px;font-size:9rem;line-height:1;opacity:.18;pointer-events:none}
+.hero .eyebrow{font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:#cfe3f6;font-weight:700;margin:0 0 8px}
+.hero h1{color:#fff;font-size:1.7rem;font-weight:800;margin:0}
+.hero .sub{margin:8px 0 0;color:#e2edf8;font-size:.95rem}
+.card{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;margin-bottom:14px;box-shadow:var(--shadow)}
+.sec-title{display:flex;align-items:baseline;gap:10px;margin:30px 0 12px;flex-wrap:wrap}
+.sec-title h2{font-size:1.15rem;color:var(--blue-dd);margin:0}
+.sec-title .hint{font-size:.82rem;color:var(--grey)}
+.muted{color:var(--grey)}
+ul.tight{margin:.3em 0 0;padding-left:1.15em}
+ul.tight li{margin:.25em 0}
+.dec{border-left:5px solid var(--warn)}
+.dec .q{font-size:1.02rem;font-weight:700;color:var(--blue-dd);margin:0 0 8px}
+.dec .por{font-size:.9rem;margin:0 0 12px}
+.dec .rec{background:#ECFDF5;border:1px solid #A7F3D0;border-radius:var(--r-sm);padding:11px 14px;font-size:.92rem}
+.dec .rec b{color:#047857}
+table{width:100%;border-collapse:collapse;font-size:.86rem}
+th,td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;text-align:left}
+th{background:#eef4fb;color:var(--blue-dd);font-weight:700;font-size:.74rem;text-transform:uppercase;letter-spacing:.04em}
+td.k{font-weight:700;white-space:nowrap;background:#fafbff}
+.pill{display:inline-block;font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:999px;margin:1px}
+.pill.ok{background:#ECFDF5;color:#059669}
+.pill.no{background:#FEF2F2;color:#DC2626}
+.pill.na{background:#F1F5F9;color:#64748B}
+.badge{display:inline-block;font-size:.72rem;font-weight:700;padding:3px 9px;border-radius:999px}
+.badge.borrar{background:#FEF2F2;color:#DC2626}
+.badge.fusionar{background:#FFFBEB;color:#B45309}
+.badge.ojo{background:#EFF6FF;color:#1D4ED8}
+.nota{font-size:.8rem;color:var(--grey);margin:8px 0 0}
+.center{text-align:center}
+@media(max-width:640px){ .hero h1{font-size:1.3rem} table{font-size:.78rem} }
+</style>
+</head>
+<body>
+<header>
+  <img src="assets/logo-white-h.svg" alt="Nordic International School" onerror="this.style.display='none'">
+  <div class="spacer"></div>
+  <button class="lang" id="lang" type="button">&#127760; Español</button>
+  <a class="back" id="back" href="project.html">&#8592; Back</a>
+</header>
+
+<div class="wrap" id="app"><p class="muted">Loading…</p></div>
+
+<script src="project-arcs.js?v=7"></script>
+<script>
+const $ = s => document.querySelector(s);
+let LANG = 'en';
+try{ const g = localStorage.getItem('nis.project.lang'); if(g==='es'||g==='en') LANG = g; }catch(_){}
+const FUSION = window.PROJECT_ARCS_FUSION || {};
+const ARCS   = window.PROJECT_ARCS || {};
+let SEC = null;
+
+function t(v){ if(v==null) return ''; return (typeof v==='string') ? v : (v[LANG]||v.en||v.es||''); }
+function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;')
+  .replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+const UI = {
+  volver:   {en:'&#8592; Projects', es:'&#8592; Proyectos'},
+  otro:     {en:'&#127760; Español', es:'&#127760; English'},
+  titulo:   {en:'Planning report 2026', es:'Informe de planificación 2026'},
+  eyebrow:  {en:'For the leadership team', es:'Para dirección'},
+  sub:      {en:'What the portal already has, what is proposed, and the four things only the school can decide. Everything here is read from the school own documents and from Toddle.',
+             es:'Lo que el portal ya tiene, lo que se propone, y las cuatro cosas que solo el colegio puede decidir. Todo lo de aquí sale de los documentos del propio colegio y de Toddle.'},
+  decis:    {en:'The four decisions', es:'Las cuatro decisiones'},
+  decisHint:{en:'each one with a recommendation', es:'cada una con su recomendación'},
+  reco:     {en:'Recommendation', es:'Recomendación'},
+  semanas:  {en:'The extra week, in nine places', es:'La semana de más, en nueve sitios'},
+  semanasHint:{en:'already counted and with a concrete proposal', es:'ya contada y con propuesta concreta'},
+  semanasTxt:{en:'The Primary Calendar gives 34 teaching weeks (P1=6, P2=5, P3=6, P4=6, P5=5, P6=6) and the annual plan spreadsheet loads one more in nine periods. Two of the nine are not content that does not fit: they are data errors.',
+              es:'El Primary Calendar da 34 semanas de clase (P1=6, P2=5, P3=6, P4=6, P5=5, P6=6) y el Excel del plan anual carga una más en nueve periodos. Dos de los nueve no son contenido que no quepa: son errores de dato.'},
+  grado:    {en:'Grade', es:'Grado'},
+  quehacer: {en:'What is proposed', es:'Qué se propone'},
+  fusionar: {en:'merge', es:'fusionar'},
+  borrar:   {en:'delete the row', es:'borrar la fila'},
+  mirar:    {en:'look at this one', es:'mirar este'},
+  sec:      {en:'Secondary: unit coverage', es:'Secundaria: cobertura de unidades'},
+  secHint:  {en:'303 units read in Toddle on 5 Sep', es:'303 unidades leídas en Toddle el 5-sep'},
+  area:     {en:'Subject', es:'Área'},
+  hueco:    {en:'What is missing', es:'Qué falta'},
+  sinHueco: {en:'complete', es:'completa'},
+  noAplica: {en:'not taught', es:'no se imparte'},
+  prim:     {en:'Primary: where it stands', es:'Primaria: cómo está'},
+  primHint: {en:'13 arcs live', es:'13 arcos en vivo'},
+  fuente:   {en:'Sources', es:'Fuentes'},
+  fuenteTxt:{en:'Primary Calendar 2026.xlsx and Annual Plan Primary 2026.xlsx (Drive), the Annual Plan sheet inside EY_Assessment Criteria_G1.xlsx, the four Project.docx of Grade 1, and Toddle (Planning insights → Manage units, read on 5 September 2026: 221 units in Primary and 303 in Secondary).',
+             es:'Primary Calendar 2026.xlsx y Annual Plan Primary 2026.xlsx (Drive), la hoja Annual Plan dentro de EY_Assessment Criteria_G1.xlsx, los cuatro Project.docx de 1.º, y Toddle (Planning insights → Manage units, leído el 5 de septiembre de 2026: 221 unidades en Primary y 303 en Secondary).'},
+  verProy:  {en:'See the projects', es:'Ver los proyectos'},
+  leerPill: {en:'A red number only means that unit number does not exist in Toddle — it is not a verdict. Each subject has its own rhythm (English six, French four, most of them three), so the column that matters is the last one.',
+             es:'Un número en rojo solo significa que esa unidad no existe en Toddle — no es un juicio. Cada área tiene su propio ritmo (inglés seis, francés cuatro, la mayoría tres), así que la columna que importa es la última.'}
+};
+function u(k){ return t(UI[k]); }
+
+const DECISIONES = [
+ {q:{en:'Grade 4: do we rebuild its second-term arc around the Ica trip, or withdraw it?',
+     es:'4.º: ¿rehacemos su arco de segundo trimestre sobre el viaje a Ica, o lo retiramos?'},
+  por:{en:'In Toddle, P4 of Grade 4 revolves entirely around Ica — «Sustainable Ica: History, Economy and Environment», «Your Guide to Exploring Ica» and «Fractions and Chance». The measurement arc the portal publishes picks up none of that. And Grade 4 has no interdisciplinary unit at all: its 23 units are single-subject, even when some are named P1 or P2.',
+       es:'En Toddle, el P4 de 4.º gira entero alrededor de Ica — «Sustainable Ica: History, Economy and Environment», «Your Guide to Exploring Ica» y «Fractions and Chance». El arco de medida que publica el portal no recoge nada de eso. Y 4.º no tiene ninguna unidad interdisciplinaria: sus 23 unidades son de área, aunque algunas se llamen P1 o P2.'},
+  rec:{en:'Rebuild it around Ica. The trip is already in the calendar and three subjects are already pointing at it — the crossing exists, it is just not declared. Withdrawing the arc would leave Grade 4 as the only grade without one.',
+       es:'Rehacerlo sobre Ica. El viaje ya está en el calendario y tres áreas ya apuntan a él: el cruce existe, solo que no está declarado. Retirar el arco dejaría a 4.º como el único grado sin uno.'}},
+ {q:{en:'Grade 2, second term: does «Peru: Our Home» win, or the field guide the portal proposes?',
+     es:'2.º, segundo trimestre: ¿manda «Peru: Our Home» o la guía de campo que propone el portal?'},
+  por:{en:'Toddle says P3 is «Peru: Our Home» and P4 is «Growing, Changing and Learning». The portal proposes a field guide to the school grounds, built on the living-things content of the annual plan. Both are defensible; they cannot both be true at once. And P4 is entered twice, with two different durations.',
+       es:'Toddle dice que P3 es «Peru: Our Home» y P4 «Growing, Changing and Learning». El portal propone una guía de campo del patio, construida sobre el contenido de seres vivos del plan anual. Las dos se sostienen; las dos a la vez no. Y P4 está dado de alta dos veces, con dos duraciones distintas.'},
+  rec:{en:'Toddle wins, and the portal arc gets rebuilt on «Peru: Our Home». The teacher plans against Toddle, not against us. The duplicate P4 has to be resolved either way: today the same project says 5 weeks in one record and 6 in the other.',
+       es:'Manda Toddle, y el arco del portal se rehace sobre «Peru: Our Home». El profesor planifica contra Toddle, no contra nosotros. El P4 duplicado hay que resolverlo en cualquier caso: hoy el mismo proyecto dice 5 semanas en una ficha y 6 en la otra.'}},
+ {q:{en:'Third term of primary: do we plan it in Toddle, or do we accept it runs on the spreadsheet alone?',
+     es:'Tercer trimestre de primaria: ¿lo planificamos en Toddle, o aceptamos que va solo sobre el Excel?'},
+  por:{en:'P6 does not exist in Toddle for any primary grade, and the four U5 units of Grade 4 are created but empty. The annual plan spreadsheet does carry content for those weeks, so the portal can show the term — but there is no planner behind it.',
+       es:'P6 no existe en Toddle para ningún grado de primaria, y las cuatro unidades U5 de 4.º están creadas pero vacías. El Excel del plan anual sí trae contenido para esas semanas, así que el portal puede enseñar el trimestre — pero no hay planificador detrás.'},
+  rec:{en:'Plan it in Toddle before the term starts. A third of the year with no planner is a third of the year with no evidence, no rubrics and nothing for the Gradebook. The portal can hand over the week-by-week draft so it is a matter of approving, not writing.',
+       es:'Planificarlo en Toddle antes de que empiece el trimestre. Un tercio del año sin planificador es un tercio sin evidencias, sin rúbricas y sin nada para el Gradebook. El portal puede entregar el borrador semana a semana para que sea aprobar, no redactar.'}},
+ {q:{en:'The annual plan spreadsheet: do we remove the extra week in the nine places, or does coordination say which week merges with which?',
+     es:'El Excel del plan anual: ¿le quitamos la semana de más en los nueve sitios, o dice coordinación qué semana se junta con cuál?'},
+  por:{en:'The calendar gives 34 teaching weeks and the spreadsheet loads one more in P2 and P5 of Grades 1, 2, 4 and 5, and in P5 of Grade 3. Two of those nine are not content at all: one row only holds a teacher note and another repeats the previous week word for word.',
+       es:'El calendario da 34 semanas de clase y el Excel carga una más en P2 y P5 de 1.º, 2.º, 4.º y 5.º, y en P5 de 3.º. Dos de esos nueve no son contenido: una fila solo tiene una nota del profesor y otra repite la semana anterior palabra por palabra.'},
+  rec:{en:'Approve the nine proposals below one by one — they are already written. Seven are a merge into W5 and take a minute each; two are a deletion. The only one that deserves a conversation is Grade 3 P5, where what is left over is the whole project exhibition.',
+       es:'Aprobar las nueve propuestas de abajo una por una — ya están escritas. Siete son juntar con la W5 y llevan un minuto cada una; dos son borrar. La única que merece conversación es 3.º P5, donde lo que sobra es la exhibición entera del proyecto.'}}
+];
+
+async function cargaSec(){
+  try{ const r = await fetch('scope/secundaria-cobertura-2026.json', {cache:'no-store'});
+       if(r.ok) SEC = await r.json(); }catch(_){ SEC = null; }
+}
+
+function pinta(){
+  const G = {g1:'1.º', g2:'2.º', g3:'3.º', g4:'4.º', g5:'5.º'};
+  let h = `<div class="hero"><div class="motivo">📋</div>
+    <p class="eyebrow">${u('eyebrow')} · NIS 2026</p>
+    <h1>${u('titulo')}</h1><p class="sub">${u('sub')}</p></div>`;
+
+  /* 1 — las cuatro decisiones */
+  h += `<div class="sec-title"><h2>${u('decis')}</h2><span class="hint">${u('decisHint')}</span></div>`;
+  DECISIONES.forEach((d,i) => {
+    h += `<div class="card dec">
+      <p class="q">${i+1}. ${esc(t(d.q))}</p>
+      <p class="por">${esc(t(d.por))}</p>
+      <div class="rec"><b>${u('reco')}:</b> ${esc(t(d.rec))}</div></div>`;
+  });
+
+  /* 2 — la semana de mas */
+  h += `<div class="sec-title"><h2>${u('semanas')}</h2><span class="hint">${u('semanasHint')}</span></div>
+    <div class="card"><p style="margin:0 0 12px;font-size:.92rem">${u('semanasTxt')}</p>
+    <div style="overflow-x:auto"><table>
+    <tr><th>${u('grado')}</th><th>${u('quehacer')}</th></tr>`;
+  Object.keys(FUSION).sort().forEach(k => {
+    const f = FUSION[k];
+    const et = f.estado === 'borrar'
+      ? `<span class="badge borrar">${u('borrar')}</span>`
+      : `<span class="badge fusionar">${u('fusionar')} → W${f.absorbe}</span>`;
+    h += `<tr><td class="k">${G[f.grade]||f.grade} · P${f.periodo}<br>${et}
+      ${f.ojo ? `<br><span class="badge ojo">${u('mirar')}</span>` : ''}</td>
+      <td>${esc(t(f.propuesta))}</td></tr>`;
+  });
+  h += `</table></div></div>`;
+
+  /* 3 — secundaria */
+  h += `<div class="sec-title"><h2>${u('sec')}</h2><span class="hint">${u('secHint')}</span></div>`;
+  if(!SEC){
+    h += `<div class="card"><p class="muted" style="margin:0">scope/secundaria-cobertura-2026.json</p></div>`;
+  }else{
+    h += `<div class="card"><p style="margin:0 0 12px;font-size:.92rem">${esc(SEC.ritmo)}</p>
+      <div style="overflow-x:auto"><table>
+      <tr><th>${u('area')}</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>${u('hueco')}</th></tr>`;
+    SEC.areas.forEach(a => {
+      /* Cada area tiene su propio ritmo: ingles seis unidades, frances cuatro,
+         casi todas tres. Se pintan 1..N segun el maximo de SU fila, para que
+         el hueco se vea rojo en vez de desaparecer. */
+      const esperado = Math.max(0, ...Object.values(a.cobertura).map(x => Math.max(0, ...x)));
+      let celdas = '';
+      [6,7,8,9,10,11].forEach(g => {
+        if(a.grados.indexOf(g) < 0){ celdas += `<td><span class="pill na">—</span></td>`; return; }
+        const us = a.cobertura[String(g)] || [];
+        if(a.numerado === false || !esperado){
+          celdas += `<td><span class="pill na">s/n</span></td>`; return;
+        }
+        let p = '';
+        for(let n=1; n<=esperado; n++) p += `<span class="pill ${us.indexOf(n)>=0?'ok':'no'}">${n}</span>`;
+        celdas += `<td>${p}</td>`;
+      });
+      h += `<tr><td class="k">${esc(a.area)}</td>${celdas}
+        <td>${a.hueco ? esc(a.hueco) : `<span class="pill ok">${u('sinHueco')}</span>`}</td></tr>`;
+    });
+    h += `</table></div><p class="nota"><b>${u('leerPill')}</b></p>
+      <p class="nota">${esc(SEC._leeme)}</p></div>`;
+  }
+
+  /* 4 — primaria */
+  const porGrado = {};
+  Object.keys(ARCS).forEach(k => { const a = ARCS[k]; (porGrado[a.grade] = porGrado[a.grade]||[]).push(a); });
+  h += `<div class="sec-title"><h2>${u('prim')}</h2><span class="hint">${u('primHint')}</span></div>
+    <div class="card"><div style="overflow-x:auto"><table>
+    <tr><th>${u('grado')}</th><th>P1+P2</th><th>P3+P4</th><th>P5+P6</th></tr>`;
+  ['g1','g2','g3','g4','g5'].forEach(g => {
+    const arcos = porGrado[g] || [];
+    const celda = per => {
+      const a = arcos.find(x => x.periodos[0] === per);
+      return a ? `<span class="pill ok">✓</span> ${esc(t(a.titulo))}` : `<span class="pill no">—</span>`;
+    };
+    h += `<tr><td class="k">${G[g]}</td><td>${celda(1)}</td><td>${celda(3)}</td><td>${celda(5)}</td></tr>`;
+  });
+  h += `</table></div>
+    <p class="nota">5.º: su arco de once semanas va de P4 a P5 (viaje a Cajamarca → Science Fair), así que P3 y P6 quedan sueltos. 1.º no tiene P5 ni P6 escritos.</p></div>`;
+
+  h += `<div class="card"><h3 style="font-size:1rem;color:var(--blue-dd)">${u('fuente')}</h3>
+    <p style="margin:0;font-size:.88rem" class="muted">${u('fuenteTxt')}</p></div>
+    <p class="center" style="margin-top:20px"><a href="project.html">${u('verProy')} &#8594;</a></p>`;
+
+  $('#app').innerHTML = h;
+  document.documentElement.lang = LANG;
+  document.title = u('titulo') + ' · NIS';
+  $('#lang').innerHTML = u('otro');
+  $('#back').innerHTML = u('volver');
+}
+
+$('#lang').addEventListener('click', () => {
+  LANG = (LANG === 'en') ? 'es' : 'en';
+  try{ localStorage.setItem('nis.project.lang', LANG); }catch(_){}
+  pinta();
+});
+
+(async function(){
+  const v = new URLSearchParams(location.search).get('back');
+  if(v) $('#back').href = v;
+  await cargaSec();
+  pinta();
+})();
+</script>
+</body>
+</html>

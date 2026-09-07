@@ -213,7 +213,9 @@ const UI = {
   aFusionar:   {en:'Merge it into W%s',              es:'Juntarlo con la W%s'},
   esperaSi:    {en:'Coordination only has to say yes or no.',
                 es:'Coordinación solo tiene que decir sí o no.'},
-  delDocx:     {en:'from the Project.docx',          es:'del Project.docx'}
+  delDocx:     {en:'from the Project.docx',          es:'del Project.docx'},
+  verInforme:  {en:'Planning report: the four decisions, the extra week and the secondary coverage',
+                es:'Informe de planificación: las cuatro decisiones, la semana de más y la cobertura de secundaria'}
 };
 function u(k, ...args){
   let x = t(UI[k]);
@@ -549,7 +551,8 @@ function pintaArco(k, a){
   /* Solo docente: situacion significativa, competencias CNEB y lo que falta. */
   if(!soloAlumno){
     h += `<div class="sec-title"><h2>${u('paraProfe')}</h2>
-      <span class="hint">${u('paraProfeHint')}</span></div>`;
+      <span class="hint">${u('paraProfeHint')}</span></div>
+      <p style="margin:-4px 0 14px"><a href="informe.html">${u('verInforme')} &#8594;</a></p>`;
 
     h += `<div class="card"><h3 style="font-size:1rem;color:var(--blue-dd)">${u('situacion')}</h3>
       <p style="margin:0;font-size:.92rem">${esc(t(a.situacion))}</p></div>`;
