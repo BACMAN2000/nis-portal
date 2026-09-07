@@ -68,3 +68,14 @@ exam-audio/
 _test-unit-exam.html
 _test-panel.html
 _test-unit-exam-print.html
+
+# Material pesado del curso Fun for Nordic (6-sep-2026). Cada version se subia
+# entera y el historial del portal llego a 2,6 GB, con el audio y estos archivos
+# como principal causa. Ahora viven en /opt/nis-media del servidor:
+#   assets/videos  -> los SIRVE nginx en /nis-fun/assets/videos/ (location ^~)
+#   book-builder   -> los PDF del libro del alumno; no los pide ninguna pagina
+#   build-videos   -> el taller con que se montaron los videos; no se publica
+# Para reponerlos o rehacerlos, ver /opt/nis-media/LEEME.txt
+nis-fun/assets/videos/
+nis-fun/book-builder/
+nis-fun/build-videos/
