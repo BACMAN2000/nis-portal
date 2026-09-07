@@ -469,10 +469,10 @@ async function funAccessPanel(grades){
           <input class="fa-hasta" type="number" min="1" value="${hasta}" style="width:4.5rem">
         </td>
         <td style="white-space:nowrap"><span class="badge ${f && on ? 'on' : 'off'}">${!f ? '— sin regla —' : (on ? '🔓 Abierto' : '🔒 Cerrado')}</span></td>
-        <td style="white-space:nowrap">
+        <td class="acts"><div class="acts-wrap">
           <button class="btn sm" onclick="window._funAccessGuardar(this)">Guardar</button>
           ${f ? `<button class="btn sm ghost" onclick="window._funAccessQuitar(this)">Quitar</button>` : ''}
-        </td></tr>`;
+        </div></td></tr>`;
     }).join('');
     return `<div class="card" style="padding:0;overflow-x:auto">
       <div style="padding:14px 16px 0"><h2 style="margin:0">${lang === 'fr' ? '🇫🇷 Français' : '🇬🇧 English'}</h2>
@@ -2469,8 +2469,8 @@ async function readerControlPanel(){
         ${st.all?`<div style="margin-top:2px"><button class="btn sm ghost" style="padding:2px 7px;font-size:.68rem" onclick="window._ctlTime(${ch},'${c.scope}',5)">+5</button>${st.extra?` <button class="btn sm ghost" style="padding:2px 7px;font-size:.68rem" onclick="window._ctlTime(${ch},'${c.scope}',0)">✕</button>`:''}</div>`:''}
       </td>`; }).join('');
     return `<tr><td><b>Ch. ${ch}</b></td>${tds}
-      <td><button class="btn sm ghost" style="padding:4px 9px;font-size:.72rem" onclick="window._ctlRow(${ch},true)">abrir a todos</button>
-          <button class="btn sm ghost" style="padding:4px 9px;font-size:.72rem" onclick="window._ctlRow(${ch},false)">cerrar</button></td></tr>`;
+      <td class="acts"><div class="acts-wrap"><button class="btn sm ghost" style="padding:4px 9px;font-size:.72rem" onclick="window._ctlRow(${ch},true)">abrir a todos</button>
+          <button class="btn sm ghost" style="padding:4px 9px;font-size:.72rem" onclick="window._ctlRow(${ch},false)">cerrar</button></div></td></tr>`;
   }).join('');
   $('#main').innerHTML=`<h1>📖 Controles de lectura</h1>${_readerTabs()}
     <p class="muted" style="margin-top:-6px">Abre el control de un capítulo para un salón: <b>una celda vale por los cuatro niveles</b> (cada alumno rinde en el suyo).
@@ -3127,13 +3127,13 @@ async function funNordicPanel(){
         ? `<span class="muted">${((r.payload||{}).puede||[]).length} / ${(r.payload||{}).total||0} marcadas</span>`
         : `<span>${esc(((r.payload||{}).respuestas||[]).join(' · ')).slice(0,140)}</span>`;
     return `<tr>
-      <td>${esc(nombre)} <span class="muted">${grado}</span></td>
+      <td class="col-name">${esc(nombre)} <span class="muted">${grado}</span></td>
       <td>${NIVEL[r.level]||r.level} · U${r.unit} · ${esc(r.activity_code)}</td>
       <td>${ICONO[r.kind]||''} ${r.kind}</td>
       <td>${cuerpo}</td>
       <td><input type="number" min="0" max="10" value="${r.score==null?'':r.score}"
             style="width:4rem" onchange="funCalificar('${r.id}', this.value, null)"></td>
-      <td><input type="text" placeholder="comentario" value="${esc(r.feedback||'')}"
+      <td class="col-flex"><input type="text" placeholder="comentario" value="${esc(r.feedback||'')}"
             onchange="funCalificar('${r.id}', null, this.value)"></td>
       <td class="muted">${r.reviewed_at ? '✔' : '—'}</td>
     </tr>`;
@@ -4490,8 +4490,8 @@ async function _planEpi(){
   const fila = (p) => `<tr class="${_planStudent===p.id?'sel':''}">
       <td><b>${esc(p.full_name||p.email)}</b> <span class="epi-tag">EPI</span></td>
       <td><span class="badge grade">${esc(p.grades?.name||'—')}</span> ${p.section?esc(p.section):''}</td>
-      <td><button class="btn sm ${_planStudent===p.id?'':'ghost'}" onclick="window._planOpenStudent('${p.id}')">🔧 Su plan</button>
-          <button class="btn sm ghost" onclick="window._planEpiFlag('${p.id}',false)">✕ Quitar</button></td></tr>`;
+      <td class="acts"><div class="acts-wrap"><button class="btn sm ${_planStudent===p.id?'':'ghost'}" onclick="window._planOpenStudent('${p.id}')">🔧 Su plan</button>
+          <button class="btn sm ghost" onclick="window._planEpiFlag('${p.id}',false)">✕ Quitar</button></div></td></tr>`;
   $('#plan-body').innerHTML = `
     <div class="grid cols-2" style="align-items:start">
       <div class="card" style="margin:0">
@@ -5716,7 +5716,7 @@ async function cefrFinalPanel(){
       <td>${wCell}</td>
       <td style="white-space:nowrap">${sCell}</td>
       <td>${finBadge}</td>
-      <td><button class="btn sm" onclick="studentReportPDF('${s.id}','es')">📄 ES</button> <button class="btn sm ghost" onclick="studentReportPDF('${s.id}','en')">📄 EN</button></td>
+      <td class="acts"><div class="acts-wrap"><button class="btn sm" onclick="studentReportPDF('${s.id}','es')">📄 ES</button><button class="btn sm ghost" onclick="studentReportPDF('${s.id}','en')">📄 EN</button></div></td>
     </tr>`;
   }).join('');
 
@@ -6192,7 +6192,7 @@ async function unitProductsPanel(){
     const pal = rep && rep.payload ? (rep.payload.words||0) : 0;
     const entregado = !!(rep && rep.payload && rep.payload.draft===false);
     return `<tr>
-      <td>${esc(p.full_name||'(alumno)')} <span class="muted">${p.grade_id?p.grade_id+'º'+(p.section||''):''}</span></td>
+      <td class="col-name">${esc(p.full_name||'(alumno)')} <span class="muted">${p.grade_id?p.grade_id+'º'+(p.section||''):''}</span></td>
       <td class="muted">${esc(f.grade)} · U${f.unit}${_unitHito(f)}</td>
       <td>${rep ? `<button class="btn small" onclick="unitVerTexto('${rep.id}')">📄 ${pal} pal.</button>
               <span class="badge" style="background:${entregado?'#dcfce7':'#fef9c3'}">${entregado?'entregado':'borrador'}</span>`
@@ -6203,7 +6203,7 @@ async function unitProductsPanel(){
           ${selfL[k]?`<span class="muted" style="font-size:.72rem" title="lo que se puso el alumno">↖${selfL[k]}</span>`:''}</td>`).join('')}
       <td><input type="number" min="0" max="10" value="${base&&base.score!=null?base.score:''}" style="width:4rem"
             ${base?`onchange="unitCalificar('${base.id}',this.value,null)"`:'disabled'}></td>
-      <td><input type="text" placeholder="comentario" value="${esc((base&&base.feedback)||'')}"
+      <td class="col-flex"><input type="text" placeholder="comentario" value="${esc((base&&base.feedback)||'')}"
             ${base?`onchange="unitCalificar('${base.id}',null,this.value)"`:'disabled'}></td>
       <td style="text-align:center">${base?`<input type="checkbox" ${base.shared?'checked':''}
             onchange="unitExhibe('${base.id}',this.checked)" title="Mostrar en la galería de la unidad">`:''}</td>
@@ -6525,12 +6525,12 @@ function fichasTabla(fichas, quien){
           ? `<button class="btn small" onclick="unitVerArchivo('${esc(r.file_path)}',this)">📎 ${esc(nombre)}</button>`
           : '<span class="muted">—</span>');
     return `<tr>
-      <td>${esc(p.full_name || '(alumno)')} <span class="muted">${p.grade_id ? p.grade_id + 'º' + (p.section || '') : ''}</span></td>
+      <td class="col-name">${esc(p.full_name || '(alumno)')} <span class="muted">${p.grade_id ? p.grade_id + 'º' + (p.section || '') : ''}</span></td>
       <td class="muted">${esc(r.grade)} · U${r.unit} · ${donde}</td>
       <td>${entrega}</td>
       <td><input type="number" min="0" max="20" value="${r.score != null ? r.score : ''}" style="width:4rem"
             onchange="unitCalificar('${r.id}', this.value, null)"></td>
-      <td><input type="text" placeholder="comentario" value="${esc(r.feedback || '')}"
+      <td class="col-flex"><input type="text" placeholder="comentario" value="${esc(r.feedback || '')}"
             onchange="unitCalificar('${r.id}', null, this.value)"></td>
       <td class="muted">${r.reviewed_at ? '✔' : '—'}</td>
     </tr>`;
