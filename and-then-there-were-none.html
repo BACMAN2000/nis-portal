@@ -1669,7 +1669,7 @@ window.wordDict=(el)=>{
   </div>`;
   veil.onclick=()=>veil.remove();
   document.body.appendChild(veil);
-  fetch('https://api.dictionaryapi.dev/api/v2/entries/en/'+encodeURIComponent(word))
+  fetch('/api/dict/en/'+encodeURIComponent(word))
     .then(r=>r.ok?r.json():Promise.reject())
     .then(j=>{
       const e=j[0]; const body=$('#dictBody'); if(!body) return;
