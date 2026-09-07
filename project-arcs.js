@@ -748,205 +748,228 @@ window.PROJECT_ARCS = {
   grade:'g2', label:'Grade 2', trimestre:2, periodos:[3,4], semanas:12,
   inicio:'2026-06-01', fin:'2026-09-11',
   cover:{icon:'🦋', from:'#245c34', to:'#68b46c'},
-  titulo:'Who lives in our school',
-  subtitulo:L('A field guide to the playground, and to the people who look after it',
-              'Una guía de campo del patio, y de la gente que lo cuida'),
-  areaEje:'science', areasArticuladas:['social','math','comunicacion','english'],
-  situacion:L('P3 and P4 give Grade 2 the whole living-things block: the animal kingdom '+
-    '(vertebrates and invertebrates, external body parts and body coverings), the plant kingdom '+
-    '(flowering and non-flowering, parts of the plant), life cycles and who eats whom. Alongside, '+
-    'Social Studies works on the jobs in my community and what they are for, the institutions and '+
-    'the work-need-quality of life relation, and positions and reference points. Math brings in '+
-    'the units of length, mass and capacity. That is, literally, a field guide: describe, measure, '+
-    'locate and ask whoever looks after it.',
-    'P3 y P4 dan a 2.º el bloque de seres vivos completo: reino animal (vertebrados e '+
-    'invertebrados, partes externas y cubiertas del cuerpo), reino vegetal (con flor y sin flor, '+
-    'partes de la planta), ciclos de vida y quién come a quién. En paralelo, Social trabaja los '+
-    'oficios de mi comunidad y para qué sirven, las instituciones y la relación trabajo-necesidad-'+
-    'calidad de vida, y las posiciones y puntos de referencia. Math pone las unidades de longitud, '+
-    'masa y capacidad. Eso es, literalmente, una guía de campo: describir, medir, situar y '+
-    'preguntar a quien lo cuida.'),
-  preguntaEsencial:L('Who lives in our school, and who looks after them?',
-    '¿Quién vive en nuestro colegio y quién lo cuida?'),
-  narrativa:L('Our school is full of living things and most of them have never been written down. '+
-    'You are going to be the first ones to do it. You will find them, look at them properly, '+
-    'measure them, say exactly where they are, and draw them. And you will interview the people '+
-    'whose job is to keep them alive. At the end we will have a book that did not exist, and the '+
-    'families will walk through the school with it in their hands.',
-    'Nuestro colegio está lleno de seres vivos y casi ninguno se ha escrito nunca. Vais a ser los '+
-    'primeros en hacerlo. Los encontraréis, los miraréis bien, los mediréis, diréis exactamente '+
-    'dónde están y los dibujaréis. Y entrevistaréis a la gente cuyo trabajo es mantenerlos vivos. '+
-    'Al final tendremos un libro que no existía, y las familias recorrerán el colegio con él en '+
-    'la mano.'),
+  titulo:'Our home, and the people who were here first',
+  subtitulo:L('Peru, what lives in it, and one place where people lived long ago',
+              'El Perú, lo que vive en él, y un sitio donde vivió gente hace mucho'),
+  autoria:L('Rebuilt on 6 Sep against the two units as they are written in Toddle: «P3 - Perú: Our '+
+    'Home» (Social Studies + Science) and «P4 - Growing, Changing and Learning» (the study trip to '+
+    'Pachacamac). The big questions, the products and the content are the grade own; the portal '+
+    'only ties the two periods into one arc.',
+    'Rehecho el 6-sep contra las dos unidades tal como están escritas en Toddle: «P3 - Perú: Our '+
+    'Home» (Social Studies + Science) y «P4 - Growing, Changing and Learning» (el viaje de '+
+    'estudios a Pachacámac). Las preguntas grandes, los productos y el contenido son del grado; '+
+    'el portal solo une los dos periodos en un arco.'),
+  areaEje:'social', areasArticuladas:['science','math','comunicacion','english'],
+  situacion:L('P3 «Perú: Our Home» opens with the Independence Day celebrations and an exhibition '+
+    'the school wants to put on. Each family has different traditions and each child moves through '+
+    'different spaces — neighbourhood, city, region, country. And as they explore Peru they start '+
+    'to notice its natural richness: vertebrates and invertebrates, body coverings, flowering and '+
+    'non-flowering plants, the parts of a plant. P4 «Growing, Changing and Learning» takes them to '+
+    'Pachacámac, to see how people lived many years ago: what they built, what work they did, how '+
+    'they got their food, what animals and plants were around them, how they made textiles. To be '+
+    'ready they learn to ask research questions, predict, observe, follow instructions, keep a '+
+    'Field Journal, take simple measurements and communicate what they found.',
+    'P3 «Perú: Our Home» abre con las Fiestas Patrias y una exhibición que el colegio quiere '+
+    'montar. Cada familia tiene tradiciones distintas y cada niño se mueve por espacios distintos '+
+    '— barrio, ciudad, región, país. Y al explorar el Perú empiezan a fijarse en su riqueza '+
+    'natural: vertebrados e invertebrados, cubiertas del cuerpo, plantas con flor y sin flor, las '+
+    'partes de la planta. P4 «Growing, Changing and Learning» los lleva a Pachacámac, a ver cómo '+
+    'vivía la gente hace muchos años: qué construyeron, en qué trabajaban, cómo conseguían la '+
+    'comida, qué animales y plantas tenían alrededor, cómo hacían los tejidos. Para estar '+
+    'preparados aprenden a hacer preguntas de investigación, predecir, observar, seguir '+
+    'instrucciones, llevar un Field Journal, tomar medidas sencillas y comunicar lo que '+
+    'encontraron.'),
+  preguntaEsencial:L('Who are we, what lives here with us, and what changed before we arrived?',
+    '¿Quiénes somos, qué vive aquí con nosotros, y qué cambió antes de que llegáramos?'),
+  narrativa:L('Peru is your home, and you are going to show it. First you find out what your '+
+    'family does that nobody else does, and what animals and plants live in this country that live '+
+    'nowhere else — and you put it all in an exhibition for the whole school at the Fiesta de la '+
+    'cultura. Then you go to Pachacámac with a Field Journal in your hand, to find out how people '+
+    'lived here long before you, what they built and what they ate. You come back and tell everyone '+
+    'what changed.',
+    'El Perú es tu casa, y lo vas a enseñar. Primero averiguas qué hace tu familia que no hace '+
+    'nadie más, y qué animales y plantas viven en este país que no viven en ningún otro — y lo '+
+    'pones todo en una exhibición para el colegio entero en la Fiesta de la cultura. Después vas a '+
+    'Pachacámac con un Field Journal en la mano, a averiguar cómo vivía la gente aquí mucho antes '+
+    'que tú, qué construyeron y qué comían. Y vuelves a contar qué cambió.'),
   orientadoras:{
-    science:L('How do I group living things and how does each one change along its life?',
-              '¿Cómo agrupo a los seres vivos y cómo cambia cada uno a lo largo de su vida?'),
-    social:L('What jobs does this place need to work, and what need does each one cover?',
-             '¿Qué oficios hacen falta para que este lugar funcione, y qué necesidad cubre cada uno?'),
-    math:L('How long, how heavy and how much does it hold? And how do I say where it is?',
-           '¿Cuánto mide, cuánto pesa y cuánto cabe? ¿Y cómo digo dónde está?'),
-    comunicacion:L('How do you write a text that explains, and how do you present it to others?',
-                   '¿Cómo se escribe un texto que explica, y cómo se expone delante de otros?'),
+    social:L('What makes me proud of where I come from, and how did people live here before?',
+             '¿Qué me hace estar orgulloso de donde vengo, y cómo vivía aquí la gente antes?'),
+    science:L('How do I group the animals and plants of Peru, and what is each part for?',
+              '¿Cómo agrupo los animales y las plantas del Perú, y para qué sirve cada parte?'),
+    math:L('How do I say where something is, and how do I take a simple measurement?',
+           '¿Cómo digo dónde está algo, y cómo tomo una medida sencilla?'),
+    comunicacion:L('How do I tell what I found so the whole school understands it?',
+                   '¿Cómo cuento lo que encontré para que lo entienda el colegio entero?'),
     english:L('Can I describe a living thing and say where it is?',
               '¿Sé describir un ser vivo y decir dónde está?')
   },
   competencias:[
-    {area:'science', nombre:L('Explains the physical world drawing on knowledge about living things, matter and energy, biodiversity, Earth and the universe','Explica el mundo físico basándose en conocimientos sobre los seres vivos, materia y energía, biodiversidad, Tierra y universo'),
-     capacidades:[L('Understands and uses knowledge about living things, matter and energy','Comprende y usa conocimientos sobre los seres vivos, materia y energía'),
-                  L('Evaluates what scientific and technological work implies','Evalúa las implicancias del saber y del quehacer científico y tecnológico')]},
-    {area:'science', nombre:L('Inquires through scientific methods to build knowledge','Indaga mediante métodos científicos para construir sus conocimientos'),
-     capacidades:[L('Designs strategies for inquiry','Diseña estrategias para hacer indagación'),
-                  L('Generates and records data','Genera y registra datos o información'),
-                  L('Analyses data and information','Analiza datos e información')]},
-    {area:'social', nombre:L('Responsibly manages economic resources','Gestiona responsablemente los recursos económicos'),
-     capacidades:[L('Understands the relations inside the economic and financial system','Comprende las relaciones entre los elementos del sistema económico y financiero')]},
-    {area:'math', nombre:L('Solves problems of shape, movement and location','Resuelve problemas de forma, movimiento y localización'),
-     capacidades:[L('Models objects with geometric shapes and their transformations','Modela objetos con formas geométricas y sus transformaciones'),
-                  L('Uses strategies and procedures to measure and find his way in space','Usa estrategias y procedimientos para medir y orientarse en el espacio')]},
-    {area:'comunicacion', nombre:L('Speaks in his mother tongue','Se comunica oralmente en su lengua materna'),
-     capacidades:[L('Fits, organises and develops ideas coherently','Adecúa, organiza y desarrolla las ideas de forma coherente'),
-                  L('Interacts strategically with different people','Interactúa estratégicamente con distintos interlocutores')]}
+    {area:'social', nombre:L('Builds their identity','Construye su identidad'),
+     capacidades:[L('Recognises what makes them feel proud','Reconoce qué le hace sentir orgulloso'),
+                  L('Expresses aspects of their culture','Expresa aspectos de su cultura')]},
+    {area:'social', nombre:L('Builds historical interpretations','Construye interpretaciones históricas'),
+     capacidades:[L('Identifies change and continuity in family and school traditions','Identifica cambios y continuidades en las tradiciones de la familia y del colegio'),
+                  L('Puts events in chronological order','Ordena los hechos en secuencia cronológica')]},
+    {area:'social', nombre:L('Responsibly manages space and the environment','Gestiona responsablemente el espacio y el ambiente'),
+     capacidades:[L('Represents nearby spaces (up, down, left, right)','Representa espacios cercanos (arriba, abajo, izquierda, derecha)'),
+                  L('Identifies natural and social elements in the environment','Identifica elementos naturales y sociales del entorno')]},
+    {area:'science', nombre:L('Inquires using scientific methods to construct knowledge','Indaga mediante métodos científicos para construir sus conocimientos'),
+     capacidades:[L('Asks research questions and makes predictions','Formula preguntas de investigación y hace predicciones'),
+                  L('Observes, records in a field journal and takes simple measurements','Observa, registra en un cuaderno de campo y toma medidas sencillas'),
+                  L('Communicates what was discovered','Comunica lo que descubrió')]},
+    {area:'science', nombre:L('Explains the physical world based on knowledge of living beings, matter and energy, biodiversity, Earth and the universe','Explica el mundo físico basándose en conocimientos sobre los seres vivos, materia y energía, biodiversidad, Tierra y universo'),
+     capacidades:[L('Tells vertebrates from invertebrates and names their external body parts and coverings','Distingue vertebrados de invertebrados y nombra sus partes externas y cubiertas'),
+                  L('Identifies flowering and non-flowering plants, their parts and their functions','Identifica plantas con flor y sin flor, sus partes y sus funciones')]}
   ],
   producto:{
-    titulo:'The Nordic Field Guide',
-    audiencia:L('The families, on a guided walk around the playground; and the Grade 1 class, who '+
-      'keep the copy next year.',
-      'Las familias, en una visita guiada por el patio; y la clase de 1.º, que se queda con el '+
-      'ejemplar el año que viene.'),
-    descripcion:L('One guide page per child: the living thing, its group, its parts, its measure, '+
-      'a map of where it is, and who looks after it. Bound into a single class guide.',
-      'Una página de guía por niño: el ser vivo, su grupo, sus partes, su medida, un mapa de dónde '+
-      'está, y quién lo cuida. Encuadernado en una sola guía de la clase.'),
-    incluye:[L('My field card with a drawing from life','Mi ficha de campo con dibujo del natural'),
-             L('My living thing classified, and its parts','Mi ser vivo clasificado y sus partes'),
-             L('Its length and its mass, with the right unit','Su medida y su masa, con la unidad correcta'),
-             L('The map: where it is, with reference points','El mapa: dónde está, con referencias'),
-             L('The interview with the job that looks after it','La entrevista al oficio que lo cuida'),
-             L('The cover: what material I chose and why','La tapa: qué material elegí y por qué')]
+    titulo:'The Fiesta de la cultura exhibition, and the Pachacámac Field Journal',
+    audiencia:L('The whole school community, which walks through the exhibition at the Fiesta de '+
+      'la cultura; and afterwards the class itself, which compares what it found at Pachacámac.',
+      'La comunidad escolar entera, que recorre la exhibición de la Fiesta de la cultura; y '+
+      'después la propia clase, que compara lo que encontró en Pachacámac.'),
+    descripcion:L('In P3, a stand at the exhibition showing who we are, where we come from, what '+
+      'our city is like and what animals and plants make Peru worth being proud of. In P4, the '+
+      'Field Journal filled in at Pachacámac and what it says about how life changed.',
+      'En P3, una parada de la exhibición que enseña quiénes somos, de dónde venimos, cómo es '+
+      'nuestra ciudad y qué animales y plantas hacen que el Perú dé orgullo. En P4, el Field '+
+      'Journal llenado en Pachacámac y lo que dice sobre cómo cambió la vida.'),
+    incluye:[L('What makes me proud of my family and my culture','Qué me hace estar orgulloso de mi familia y mi cultura'),
+             L('My map of nearby spaces, with its reference points','Mi mapa de los espacios cercanos, con sus referencias'),
+             L('My animal or plant, classified, with its parts','Mi animal o planta, clasificado, con sus partes'),
+             L('My research question and my prediction for the trip','Mi pregunta de investigación y mi predicción para el viaje'),
+             L('The Field Journal from Pachacámac, with its measurements','El Field Journal de Pachacámac, con sus medidas'),
+             L('What changed: then and now','Qué cambió: antes y ahora')]
   },
   fases:[
-    {n:1, periodo:3, semana:1, fase:L('Classify','Clasificar'), foco:L('Vertebrates and invertebrates','Vertebrados e invertebrados'),
-     hace:L('Trip to the playground with a magnifying glass. Whatever is there is collected and '+
-       'grouped before anybody says how to group it. Then it is compared with the classification '+
-       'in the book.',
-       'Salida al patio con lupa. Se recoge lo que hay y se agrupa antes de que nadie diga cómo '+
-       'se agrupa. Después se compara con la clasificación del libro.'),
-     evidencia:L('First sort','Primera clasificación')},
-    {n:2, periodo:3, semana:2, fase:L('Classify','Clasificar'), foco:L('Body parts and body coverings','Partes y cubiertas del cuerpo'),
-     hace:L('External body parts of animals and what each covering is for. Each child now chooses '+
-       'his living thing and starts his card.',
-       'Partes externas del cuerpo de los animales y para qué sirve cada cubierta. Cada niño elige '+
-       'ya su ser vivo y empieza su ficha.'),
-     evidencia:L('Field card, part 1','Ficha de campo, parte 1')},
-    {n:3, periodo:3, semana:3, fase:L('Classify','Clasificar'), foco:L('The people who keep it alive','Quienes lo mantienen vivo'),
-     hace:L('Jobs in my community and what they are for. Interview with the school staff who look '+
-       'after the playground, the plants or the animals. Questions prepared the lesson before.',
-       'Oficios de mi comunidad y para qué sirven. Entrevista al personal del colegio que cuida el '+
-       'patio, las plantas o los animales. Preguntas preparadas la clase anterior.'),
-     evidencia:L('Interview','Entrevista')},
-    {n:4, periodo:3, semana:4, fase:L('Classify','Clasificar'), foco:L('Flowering and non-flowering plants','Plantas con flor y sin flor'),
-     hace:L('The plant kingdom. The plants of the school are shared out between teams and '+
-       'classified on the spot, without pulling them up.',
-       'Reino vegetal. Las plantas del colegio se reparten entre los equipos y se clasifican en el '+
-       'sitio, sin arrancarlas.'),
-     evidencia:L('Plant sort','Clasificación de plantas')},
-    {n:5, periodo:3, semana:5, fase:L('Classify','Clasificar'), foco:L('Parts of the plant and what they do','Partes de la planta y su función'),
-     hace:L('Parts of the plant and their function. The card is completed by those who chose a plant.',
-       'Partes de la planta y su función. Se completa la ficha de los que eligieron planta.'),
-     evidencia:L('Field card, part 2','Ficha de campo, parte 2')},
-    {n:6, periodo:3, semana:6, fase:L('Classify','Clasificar'), foco:L('What we found out','Lo que averiguamos'),
-     hace:L('P3 closes: all the cards go up on the wall and the class looks for what repeats. '+
-       'Which group has the most specimens in our school?',
-       'Cierre de P3: se ponen todas las fichas en la pared y se busca lo que se repite. ¿Qué '+
-       'grupo tiene más ejemplares en nuestro colegio?'),
-     evidencia:L('Class wall','Mural de la clase')},
-    {n:7, periodo:4, semana:1, fase:L('Measure','Medir'), foco:L('Life cycles','Ciclos de vida'),
-     hace:L('P4 begins. Life cycle in animals and plants: birth, growth, maturity, reproduction '+
-       'and death. Where in its cycle is mine?',
-       'Arranca P4. Ciclo de vida en animales y plantas: nacer, crecer, madurar, reproducirse y '+
-       'morir. ¿En qué punto de su ciclo está el mío?'),
-     evidencia:L('Life cycle strip','Tira del ciclo de vida')},
-    {n:8, periodo:4, semana:2, fase:L('Measure','Medir'), foco:L('How long and how heavy','Cuánto mide y cuánto pesa'),
-     hace:L('Length in cm and m. The living thing or its home is measured. Estimate first, measure '+
-       'after, and compare the two.',
-       'Longitud en cm y m. Se mide el ser vivo o su casa. Estimar primero, medir después, y '+
-       'comparar las dos cosas.'),
-     evidencia:L('Measurement log','Registro de medidas')},
-    {n:9, periodo:4, semana:3, fase:L('Measure','Medir'), foco:L('Who eats whom','Quién come a quién'),
-     hace:L('Carnivore, herbivore, omnivore. The short chain mine belongs to is drawn.',
-       'Carnívoro, herbívoro, omnívoro. Se dibuja la cadena corta a la que pertenece el mío.'),
-     evidencia:L('Food chain','Cadena alimentaria')},
-    {n:10, periodo:4, semana:4, fase:L('Locate','Situar'), foco:L('Where exactly it is','Dónde está exactamente'),
-     hace:L('Map of the playground with reference points: in front, behind, inside, outside, near, '+
-       'far. Another child has to get there with my map alone. If he does not, the map is corrected.',
-       'Mapa del patio con puntos de referencia: delante, detrás, dentro, fuera, cerca, lejos. '+
-       'Otro niño tiene que llegar hasta ahí solo con mi mapa. Si no llega, el mapa se corrige.'),
-     evidencia:L('Map that works','Un mapa que funciona')},
-    {n:11, periodo:4, semana:5, fase:L('Locate','Situar'), foco:L('Choosing the cover','Elegir la tapa'),
-     hace:L('Types of material and their properties: hard, soft, flexible, rigid. Transparent, '+
-       'translucent, opaque. What material survives a guide a hundred hands will touch?',
-       'Tipos de materiales y sus propiedades: duro, blando, flexible, rígido. Transparente, '+
-       'translúcido, opaco. ¿Qué material aguanta una guía que van a tocar cien manos?'),
-     evidencia:L('Cover, with the reason','La tapa, con su motivo')},
-    {n:12, periodo:4, semana:6, fase:L('Teach','Enseñar'), foco:L('The guided tour','La visita guiada'),
-     hace:L('The guide is bound and the families do the walk. Each child stays at his stop and '+
-       'explains his living thing with the guide open.',
-       'La guía se encuaderna y las familias hacen el recorrido. Cada niño se queda en su parada y '+
-       'explica su ser vivo con la guía abierta.'),
-     evidencia:L('Guided tour','Visita guiada')}
+    {n:1, periodo:3, semana:1, fase:L('Who we are','Quiénes somos'), foco:L('What makes me proud','Qué me hace estar orgulloso'),
+     hace:L('Cultural expressions: crafts, textiles, dance, festivals, gastronomy, music. Each '+
+       'child finds one thing their family does that nobody else does.',
+       'Expresiones culturales: artesanía, textiles, danza, fiestas, gastronomía, música. Cada '+
+       'niño encuentra una cosa que hace su familia y no hace nadie más.'),
+     evidencia:L('What makes me proud','Qué me hace estar orgulloso')},
+    {n:2, periodo:3, semana:2, fase:L('Who we are','Quiénes somos'), foco:L('Traditions and symbols','Tradiciones y símbolos'),
+     hace:L('Traditions, national symbols, and change and continuity: what my family used to do '+
+       'and what it does now. Jobs in my community and what they are for.',
+       'Tradiciones, símbolos nacionales, y cambio y continuidad: qué hacía antes mi familia y qué '+
+       'hace ahora. Oficios de mi comunidad y para qué sirven.'),
+     evidencia:L('Then and now card','Ficha de antes y ahora')},
+    {n:3, periodo:3, semana:3, fase:L('Where we are','Dónde estamos'), foco:L('Saying where things are','Decir dónde están las cosas'),
+     hace:L('Prepositions of place: front, back, under, over, beside, inside, outside, near, far, '+
+       'right, left. Nearby spaces are represented on a map. Natural and social elements of the '+
+       'city.',
+       'Preposiciones de lugar: delante, detrás, debajo, encima, al lado, dentro, fuera, cerca, '+
+       'lejos, derecha, izquierda. Se representan los espacios cercanos en un mapa. Elementos '+
+       'naturales y sociales de la ciudad.'),
+     evidencia:L('Map with reference points','Mapa con puntos de referencia')},
+    {n:4, periodo:3, semana:4, fase:L('What lives here','Qué vive aquí'), foco:L('Vertebrates and invertebrates','Vertebrados e invertebrados'),
+     hace:L('The animals of Peru: what they have in common and what tells them apart. External '+
+       'body parts and what each covering is for.',
+       'Los animales del Perú: qué tienen en común y qué los distingue. Partes externas del cuerpo '+
+       'y para qué sirve cada cubierta.'),
+     evidencia:L('My animal, classified','Mi animal, clasificado')},
+    {n:5, periodo:3, semana:5, fase:L('What lives here','Qué vive aquí'), foco:L('Flowering and non-flowering plants','Plantas con flor y sin flor'),
+     hace:L('The plant kingdom of Peru: with flower and without, the parts of the plant and what '+
+       'each one does.',
+       'El reino vegetal del Perú: con flor y sin flor, las partes de la planta y qué hace cada '+
+       'una.'),
+     evidencia:L('My plant, with its parts','Mi planta, con sus partes')},
+    {n:6, periodo:3, semana:6, fase:L('Show it','Enseñarlo'), foco:'Fiesta de la cultura',
+     hace:L('The exhibition. Each child mans a stand: who I am, where I come from, what my city is '+
+       'like, and the animal or plant that makes me proud of Peru.',
+       'La exhibición. Cada niño atiende una parada: quién soy, de dónde vengo, cómo es mi ciudad, '+
+       'y el animal o la planta que me hace estar orgulloso del Perú.'),
+     evidencia:L('The exhibition stand','La parada de la exhibición')},
+    {n:7, periodo:4, semana:1, fase:L('Get ready','Prepararse'), foco:L('Asking a question you can answer','Hacer una pregunta que se pueda responder'),
+     hace:L('P4 begins. Research questions and predictions for the trip. What I want to find out '+
+       'at Pachacámac and what I think I will see.',
+       'Arranca P4. Preguntas de investigación y predicciones para el viaje. Qué quiero averiguar '+
+       'en Pachacámac y qué creo que voy a ver.'),
+     evidencia:L('My question + my prediction','Mi pregunta + mi predicción')},
+    {n:8, periodo:4, semana:2, fase:L('Get ready','Prepararse'), foco:L('How to keep a field journal','Cómo se lleva un cuaderno de campo'),
+     hace:L('Following instructions to run a simple investigation, recording in the Field Journal '+
+       'and taking simple measurements. Rules of coexistence for sharing, and what to do in a safe '+
+       'or a dangerous situation.',
+       'Seguir instrucciones para hacer una investigación sencilla, registrar en el Field Journal '+
+       'y tomar medidas sencillas. Reglas de convivencia para compartir, y qué hacer en una '+
+       'situación segura o peligrosa.'),
+     evidencia:L('Field Journal, ready','Field Journal, listo')},
+    {n:9, periodo:4, semana:3, fase:L('Go and look','Ir a mirar'), foco:'Pachacámac',
+     hace:L('Study trip. What they built, what work they did, how they got their food, what '+
+       'animals and plants were around them, how they made textiles and crafts with what they had.',
+       'Viaje de estudios. Qué construyeron, en qué trabajaban, cómo conseguían la comida, qué '+
+       'animales y plantas tenían alrededor, cómo hacían tejidos y artesanía con lo que había.'),
+     evidencia:L('Field Journal, filled in','Field Journal, lleno')},
+    {n:10, periodo:4, semana:4, fase:L('Understand it','Entenderlo'), foco:L('Past and present','Pasado y presente'),
+     hace:L('What has changed and what has stayed. Events are put in chronological order. '+
+       'Institutions that provide services today and who looked after things then.',
+       'Qué ha cambiado y qué se ha quedado. Se ordenan los hechos en secuencia cronológica. '+
+       'Instituciones que dan servicios hoy y quién se ocupaba entonces.'),
+     evidencia:L('Time line: then and now','Línea de tiempo: antes y ahora')},
+    {n:11, periodo:4, semana:5, fase:L('Understand it','Entenderlo'), foco:L('What we owe the place','Qué le debemos al sitio'),
+     hace:L('Caring for cultural heritage, protecting nature and valuing people work. What we can '+
+       'do so Pachacámac is still there for the children who come after us.',
+       'Cuidar el patrimonio cultural, proteger la naturaleza y valorar el trabajo de las '+
+       'personas. Qué podemos hacer para que Pachacámac siga ahí para los niños que vengan '+
+       'después.'),
+     evidencia:L('One action we commit to','Una acción a la que nos comprometemos')},
+    {n:12, periodo:4, semana:6, fase:L('Tell it','Contarlo'), foco:L('What we found','Lo que encontramos'),
+     hace:L('Findings are shared. Each child answers the question they asked in week 7 with what '+
+       'their Field Journal says — including when the answer was not what they predicted.',
+       'Se comparten los hallazgos. Cada niño responde a la pregunta que hizo en la semana 7 con '+
+       'lo que dice su Field Journal — incluso cuando la respuesta no fue lo que predijo.'),
+     evidencia:L('Findings shared','Hallazgos compartidos')}
   ],
   evaluacion:[
+    {criterio:L('I show who I am','Enseño quién soy'),
+     descriptor:L('Says what makes him proud and expresses an aspect of his culture that is his own, not a general one.',
+                  'Dice qué le hace estar orgulloso y expresa un aspecto de su cultura que es suyo, no uno general.')},
+    {criterio:L('I say where things are','Digo dónde están las cosas'),
+     descriptor:L('Represents nearby spaces with up, down, left and right, and identifies natural and social elements.',
+                  'Representa espacios cercanos con arriba, abajo, izquierda y derecha, e identifica elementos naturales y sociales.')},
     {criterio:L('I classify and explain','Clasifico y explico'),
-     descriptor:L('Puts his living thing in its group, names its parts and says what each one is for.',
-                  'Coloca su ser vivo en su grupo, nombra sus partes y dice para qué sirve cada una.')},
-    {criterio:L('I measure properly','Mido bien'),
-     descriptor:L('Chooses the right unit, estimates before measuring and writes down the result with its unit.',
-                  'Elige la unidad correcta, estima antes de medir y anota el resultado con su unidad.')},
-    {criterio:L('I say where it is','Digo dónde está'),
-     descriptor:L('His map gets another child to the place without help.',
-                  'Su mapa lleva a otro niño hasta el sitio sin ayuda.')},
-    {criterio:L('I explain it to somebody who was not there','Explico a alguien que no estaba'),
-     descriptor:L('Holds his stop on the tour, answers a question and does not read the whole card.',
-                  'Sostiene su parada de la visita, responde una pregunta y no lee la ficha entera.')}
+     descriptor:L('Tells a vertebrate from an invertebrate, names external body parts and coverings, and identifies the parts of a plant and what they do.',
+                  'Distingue vertebrado de invertebrado, nombra partes externas y cubiertas, e identifica las partes de la planta y su función.')},
+    {criterio:L('I investigate at the site','Investigo en el sitio'),
+     descriptor:L('Asks his question before going, records in the Field Journal while he is there, and answers it afterwards with what he wrote.',
+                  'Hace su pregunta antes de ir, registra en el Field Journal mientras está allí, y después la responde con lo que escribió.')},
+    {criterio:L('I order what changed','Ordeno lo que cambió'),
+     descriptor:L('Puts events in chronological order and says one thing that changed and one that stayed.',
+                  'Ordena los hechos en secuencia cronológica y dice una cosa que cambió y una que se quedó.')}
   ],
   diferenciacion:[
-    L('The card can be completed with a drawing and labels, with a photo and labels, or with text.',
-      'La ficha se puede completar con dibujo y etiquetas, con foto y etiquetas, o con texto.'),
-    L('The interview is done in pairs: one asks and one writes down.',
-      'La entrevista se hace en pareja: uno pregunta y otro apunta.'),
-    L('The tour stop can be shared by two if speaking alone in front of adults is a blocker.',
-      'La parada de la visita se puede hacer entre dos si hablar solo delante de adultos bloquea.')
+    L('The exhibition stand can be a poster, an object brought from home with its explanation, or a short talk.',
+      'La parada de la exhibición puede ser un póster, un objeto traído de casa con su explicación, o una charla corta.'),
+    L('The Field Journal takes drawings, marks or writing: what is asked is that it is filled in at the site, not afterwards.',
+      'El Field Journal admite dibujos, marcas o escritura: lo que se pide es que se llene en el sitio, no después.'),
+    L('Whoever cannot go on the trip works with a classmate journal and answers the same question.',
+      'Quien no pueda ir al viaje trabaja con el cuaderno de un compañero y responde a la misma pregunta.')
   ],
   sad:{titulo:'Student Achievement Day #2',
-    muestra:L('The child brings his page of the guide and explains how he decided which group his '+
-      'living thing belongs to. He is not asked to recite the classification: he is asked to '+
-      'justify his own.',
-      'El niño trae su página de la guía y explica cómo decidió a qué grupo pertenece su ser vivo. '+
-      'No se le pide que recite la clasificación: se le pide que justifique la suya.')},
-  toddle:[{periodo:3, nombre:'P3 - Peru: Our Home', tipo:IDU, semanas:5, area:'Social Studies +1'},
+    muestra:L('The child shows his exhibition stand and his Field Journal, and explains one thing '+
+      'he predicted before Pachacámac that turned out differently.',
+      'El niño enseña su parada de la exhibición y su Field Journal, y explica una cosa que '+
+      'predijo antes de Pachacámac y que salió distinta.')},
+  toddle:[{periodo:3, nombre:'P3 - Perú: Our Home', tipo:IDU, semanas:5, area:'Social Studies + Science'},
           {periodo:4, nombre:'P4 - Growing, Changing and Learning', tipo:IDU, semanas:5, area:'Social Studies'},
           {periodo:4, nombre:'P4 - Growing, Changing & Learning', tipo:IDU, semanas:6, area:'Science'}],
   unidades:[],
   revisar:[
-    L('WATCH OUT: in Toddle, P3 of Grade 2 is "Peru: Our Home" and P4 is "Growing, Changing and '+
-      'Learning". This field guide of the school is NOT what the planner says. Somebody has to '+
-      'decide which one wins before this arc is used.',
-      'OJO: en Toddle, P3 de 2.º es «Peru: Our Home» y P4 «Growing, Changing and Learning». Esta '+
-      'guía de campo del colegio NO es lo que dice el planificador. Hay que decidir cuál manda '+
-      'antes de usar el arco.'),
-    L('P4 is entered TWICE in Toddle: "Growing, Changing and Learning" (Social, 5 weeks) and '+
-      '"Growing, Changing & Learning" (Science, 6 weeks). Same project, two records and two '+
-      'durations.',
-      'P4 está dado de alta DOS VECES en Toddle: «Growing, Changing and Learning» (Social, 5 '+
+    L('REBUILT on 6 Sep against Toddle. The earlier version of this arc proposed a field guide to '+
+      'the school playground; it had the content right but the frame wrong. The frame is the '+
+      'school own: the Fiesta de la cultura exhibition and the Pachacámac study trip.',
+      'REHECHO el 6-sep contra Toddle. La versión anterior de este arco proponía una guía de campo '+
+      'del patio del colegio; acertaba el contenido pero erraba el marco. El marco es el del '+
+      'propio colegio: la exhibición de la Fiesta de la cultura y el viaje a Pachacámac.'),
+    L('P4 is still entered TWICE in Toddle: «Growing, Changing and Learning» (Social, 5 weeks) and '+
+      '«Growing, Changing & Learning» (Science, 6 weeks). Same project, two records and two '+
+      'durations. It has to be resolved.',
+      'P4 sigue dado de alta DOS VECES en Toddle: «Growing, Changing and Learning» (Social, 5 '+
       'semanas) y «Growing, Changing & Learning» (Science, 6 semanas). Mismo proyecto, dos fichas '+
-      'y dos duraciones.'),
-    L('If the school has no staff available for the interviews, a visit from the gardener or the '+
-      'cleaning staff to the classroom will do; what will not do is inventing the job.',
-      'Si el colegio no tiene personal disponible para las entrevistas, sirve una visita del '+
-      'jardinero o del personal de limpieza a la clase; lo que no sirve es inventar el oficio.'),
-    L('The playground trip in week 1 needs magnifying glasses: they have to be requested in P2, '+
-      'not in June.',
-      'La salida al patio de la semana 1 necesita lupas: hay que pedirlas en P2, no en junio.')]
+      'y dos duraciones. Hay que resolverlo.'),
+    L('The Pachacámac trip needs its date fixed in the calendar: phases 9 to 12 hang off it.',
+      'El viaje a Pachacámac necesita su fecha fijada en el calendario: de él cuelgan las fases 9 '+
+      'a 12.')]
 },
 
 'g2.t3': {
@@ -1925,208 +1948,250 @@ window.PROJECT_ARCS = {
 'g4.t2': {
   grade:'g4', label:'Grade 4', trimestre:2, periodos:[3,4], semanas:12,
   inicio:'2026-06-01', fin:'2026-09-11',
-  cover:{icon:'📏', from:'#1c4a6b', to:'#5fa9d4'},
-  titulo:'How do you know it changed?',
-  subtitulo:L('Measuring matter, and measuring what changes over time',
-              'Medir la materia, y medir lo que cambia con el tiempo'),
-  areaEje:'science', areasArticuladas:['math','pe','comunicacion','english'],
-  situacion:L('P3 gives Grade 4 the whole measurement block: states of matter, properties and '+
-    'measurement, size, mass, volume, temperature and density; Math goes alongside with '+
-    'measurement, patterns and the properties of squares and rectangles, and PE does athletics, '+
-    'which is the only subject in the plan that produces its own numbers every week (speed, '+
-    'endurance, relays, jumps, hurdles). P4 changes the object but not the method: human '+
-    'development and growth, and in Math bar and line graphs and unit conversion. The line graph '+
-    'turns up exactly when something changing over time has to be measured. That is the arc: you '+
-    'do not claim something changed, you prove it.',
-    'P3 le da a 4.º el bloque de medida completo: estados de la materia, propiedades y medición, '+
-    'tamaño, masa, volumen, temperatura y densidad; Math acompaña con medida, patrones y '+
-    'propiedades de cuadrados y rectángulos, y Educación Física hace atletismo, que es la única '+
-    'área del plan que produce números propios cada semana (velocidad, resistencia, relevos, '+
-    'saltos, obstáculos). P4 cambia el objeto pero no el método: desarrollo humano y crecimiento, '+
-    'y en Math gráficos de barras y de líneas y conversión de unidades. El gráfico de líneas '+
-    'aparece justo cuando hace falta medir algo que cambia en el tiempo. El arco es ese: no se '+
-    'afirma que algo cambió, se demuestra.'),
-  preguntaEsencial:L('How do you know that something has changed?',
-    '¿Cómo sabes que algo ha cambiado?'),
-  narrativa:L('Anybody can say "it got bigger" or "I got faster". Proving it is harder. For twelve '+
-    'weeks you are going to measure properly: first things — their mass, their volume, their '+
-    'temperature, their density — and then your own performance, week after week, on the track. '+
-    'At the end you will have a line that goes somewhere, and a text that explains why.',
-    'Cualquiera puede decir "se hizo más grande" o "soy más rápido". Demostrarlo es más difícil. '+
-    'Durante doce semanas vais a medir bien: primero cosas — su masa, su volumen, su temperatura, '+
-    'su densidad — y después vuestro propio rendimiento, semana a semana, en la pista. Al final '+
-    'tendréis una línea que va a alguna parte, y un texto que explica por qué.'),
+  cover:{icon:'🏜️', from:'#7a4a1a', to:'#d9a05b'},
+  titulo:'Peru, and one place in it',
+  subtitulo:L('First the whole country and how we show it; then Ica, walked through',
+              'Primero el país entero y cómo lo enseñamos; después Ica, recorrida a pie'),
+  autoria:L('Rebuilt on 6 Sep against the four units as they are written in Toddle: «P.3 Perú to '+
+    'the World», «U3 - Ecosystems of Peru», «U.4 Sustainable Ica» and «U4 - Your Guide to '+
+    'Exploring Ica». The big questions, the products and the assessment criteria are the grade '+
+    'own; the portal only ties the two periods into one arc.',
+    'Rehecho el 6-sep contra las cuatro unidades tal como están escritas en Toddle: «P.3 Perú to '+
+    'the World», «U3 - Ecosystems of Peru», «U.4 Sustainable Ica» y «U4 - Your Guide to Exploring '+
+    'Ica». Las preguntas grandes, los productos y los criterios de evaluación son del grado; el '+
+    'portal solo une los dos periodos en un arco.'),
+  notaPlan:L('Two subjects run their own unit this term and are not part of the arc: Math goes to '+
+    'the Math and Games Fair («Fractions and Chance: Making Fair Decisions») and in P4 Science '+
+    'goes to forces and simple machines. That is said here rather than pretending they converge.',
+    'Dos áreas llevan su propia unidad este trimestre y no forman parte del arco: Math va a la '+
+    'Feria de Matemática y Juegos («Fractions and Chance: Making Fair Decisions») y en P4 Science '+
+    'va a fuerzas y máquinas simples. Se dice aquí en vez de fingir que convergen.'),
+  areaEje:'social', areasArticuladas:['english','science','comunicacion'],
+  situacion:L('P3 «Perú to the World» starts from an imagined situation: what if Peru qualified '+
+    'for the World Cup and thousands of fans travelled to represent us? How should they dress, '+
+    'what colours, symbols, dances, foods or traditions could best show our country — and do all '+
+    'Peruvians see themselves the same way? Alongside, Science studies the ecosystems of Peru. P4 '+
+    'stops imagining and travels: the study trip to Ica, where the class visits historical sites, '+
+    'productive areas and natural environments and discovers how people adapted to a desert region '+
+    'by using the resources they had. English turns the same trip into «Nordic\’s Guide to the '+
+    'Ica Study Trip», a real resource for next year fourth graders. Same country, two distances: '+
+    'first the whole of it from far away, then one place close enough to walk through.',
+    'P3 «Perú to the World» arranca de una situación imaginada: ¿y si el Perú clasificara al '+
+    'Mundial y miles de hinchas viajaran a representarnos? ¿Cómo deberían vestirse, qué colores, '+
+    'símbolos, danzas, comidas o tradiciones enseñarían mejor nuestro país — y se identifican '+
+    'igual todos los peruanos? En paralelo, Science estudia los ecosistemas del Perú. P4 deja de '+
+    'imaginar y viaja: el viaje de estudios a Ica, donde la clase visita sitios históricos, zonas '+
+    'productivas y ambientes naturales y descubre cómo la gente se adaptó a una región desértica '+
+    'usando los recursos que tenía. English convierte ese mismo viaje en «Nordic\’s Guide to '+
+    'the Ica Study Trip», un recurso de verdad para los de 4.º del año que viene. El mismo país, a '+
+    'dos distancias: primero entero y de lejos, después un sitio lo bastante cerca para recorrerlo '+
+    'a pie.'),
+  preguntaEsencial:L('How do you get to know a country — and what do you do with what you learn?',
+    '¿Cómo se llega a conocer un país — y qué se hace con lo que uno aprende?'),
+  narrativa:L('Imagine Peru qualified for the World Cup and thousands of fans travelled to '+
+    'represent us. What would they wear? What music, what food, what dances? Not everybody would '+
+    'answer the same — and that is the point. First you are going to find out how many Perus fit '+
+    'inside Peru. Then you are going to travel to one of them: Ica, a desert where people learned '+
+    'to live with very little water. You come back with two things: a proposal for a sustainable '+
+    'community, and a guide so next year fourth graders know what to expect.',
+    'Imagina que el Perú clasifica al Mundial y miles de hinchas viajan a representarnos. ¿Qué se '+
+    'pondrían? ¿Qué música, qué comida, qué danzas? No todos responderían igual — y de eso se '+
+    'trata. Primero vais a averiguar cuántos Perús caben dentro del Perú. Después vais a viajar a '+
+    'uno de ellos: Ica, un desierto donde la gente aprendió a vivir con muy poca agua. Volvéis con '+
+    'dos cosas: una propuesta de comunidad sostenible, y una guía para que los de 4.º del año que '+
+    'viene sepan a qué van.'),
   orientadoras:{
-    science:L('What properties of matter can be measured, and with which instrument each one?',
-              '¿Qué propiedades de la materia se pueden medir, y con qué instrumento cada una?'),
-    math:L('When do I use a bar graph and when a line graph? How do I convert units?',
-           '¿Cuándo uso un gráfico de barras y cuándo uno de líneas? ¿Cómo convierto unidades?'),
-    pe:L('What data does my body produce each week and how do I record it honestly?',
-         '¿Qué dato produce mi cuerpo cada semana y cómo lo registro sin trampas?'),
-    comunicacion:L('How do you write a text that explains, with the verbs properly conjugated?',
-                   '¿Cómo se escribe un texto que explica, con verbos bien conjugados?'),
-    english:L('Can I write an informative text about what I measured?',
-              '¿Sé escribir un texto informativo sobre lo que medí?')
+    social:L('How can we represent Peru to the world while respecting and valuing its cultural diversity? And how can what we learn from Ica help us build a more sustainable community?',
+             '¿Cómo podemos representar al Perú ante el mundo respetando y valorando su diversidad cultural? ¿Y cómo lo que aprendemos de Ica nos ayuda a construir una comunidad más sostenible?'),
+    english:L('How can we create a guide that helps future fourth-grade students prepare for and enjoy their study trip to Ica?',
+              '¿Cómo hacemos una guía que ayude a los de 4.º del año que viene a prepararse y a disfrutar su viaje a Ica?'),
+    science:L('What ecosystems does Peru have, and how does a desert one work?',
+              '¿Qué ecosistemas tiene el Perú, y cómo funciona uno desértico?'),
+    comunicacion:L('How do I write to instruct, to inform and to recommend — three different jobs?',
+                   '¿Cómo escribo para instruir, para informar y para recomendar — tres trabajos distintos?')
   },
   competencias:[
-    {area:'science', nombre:L('Inquires through scientific methods to build knowledge','Indaga mediante métodos científicos para construir sus conocimientos'),
-     capacidades:[L('Designs strategies for inquiry','Diseña estrategias para hacer indagación'),
-                  L('Generates and records data','Genera y registra datos o información'),
-                  L('Analyses data and information','Analiza datos e información')]},
-    {area:'science', nombre:L('Explains the physical world drawing on knowledge about living things, matter and energy, biodiversity, Earth and the universe','Explica el mundo físico basándose en conocimientos sobre los seres vivos, materia y energía, biodiversidad, Tierra y universo'),
-     capacidades:[L('Understands and uses knowledge about matter and energy','Comprende y usa conocimientos sobre materia y energía')]},
-    {area:'math', nombre:L('Solves problems of quantity','Resuelve problemas de cantidad'),
-     capacidades:[L('Uses estimation and calculation strategies and procedures','Usa estrategias y procedimientos de estimación y cálculo'),
-                  L('Argues claims about numerical relations and operations','Argumenta afirmaciones sobre las relaciones numéricas y las operaciones')]},
-    {area:'math', nombre:L('Solves problems of data management and uncertainty','Resuelve problemas de gestión de datos e incertidumbre'),
-     capacidades:[L('Represents data with graphs and statistical measures','Representa datos con gráficos y medidas estadísticas')]},
-    {area:'comunicacion', nombre:L('Writes different kinds of texts in his mother tongue','Escribe diversos tipos de textos en su lengua materna'),
-     capacidades:[L('Organises and develops ideas coherently and cohesively','Organiza y desarrolla las ideas de forma coherente y cohesionada')]}
+    {area:'social', nombre:L('Builds their identity','Construye su identidad'),
+     capacidades:[L('Relates to others with equality and respect, valuing the traditions, customs and perspectives that are part of Peruvian identity','Se relaciona con los demás con igualdad y respeto, valorando las tradiciones, costumbres y perspectivas que forman parte de la identidad peruana'),
+                  L('Identifies emotions, their causes and consequences when sharing personal, family or cultural experiences','Identifica emociones, sus causas y consecuencias al compartir experiencias personales, familiares o culturales')]},
+    {area:'social', nombre:L('Lives and participates democratically in the pursuit of the common good','Convive y participa democráticamente en la búsqueda del bien común'),
+     capacidades:[L('Takes part in creating and respecting agreements that promote appreciation, respect and inclusion of the diverse cultural expressions','Participa en crear y respetar acuerdos que promueven la valoración, el respeto y la inclusión de las diversas expresiones culturales')]},
+    {area:'social', nombre:L('Builds historical interpretations','Construye interpretaciones históricas'),
+     capacidades:[L('Gathers information from sources and observations about Ica','Recoge información de fuentes y observaciones sobre Ica'),
+                  L('Interprets how people have used natural resources over time','Interpreta cómo la gente ha usado los recursos naturales a lo largo del tiempo'),
+                  L('Explains simple historical changes and relationships','Explica cambios y relaciones históricas sencillas')]},
+    {area:'social', nombre:L('Responsibly manages space and the environment','Gestiona responsablemente el espacio y el ambiente'),
+     capacidades:[L('Recognises environmental features and problems','Reconoce características y problemas ambientales'),
+                  L('Explains the impact of human activities on the environment','Explica el impacto de las actividades humanas sobre el ambiente'),
+                  L('Proposes actions for the responsible use of natural resources','Propone acciones para el uso responsable de los recursos naturales')]},
+    {area:'social', nombre:L('Responsibly manages economic resources','Gestiona responsablemente los recursos económicos'),
+     capacidades:[L('Identifies productive and extractive activities','Identifica actividades productivas y extractivas'),
+                  L('Relates economic activities to the use of natural resources','Relaciona las actividades económicas con el uso de los recursos naturales'),
+                  L('Explains how these activities meet people needs','Explica cómo esas actividades cubren las necesidades de la gente')]},
+    {area:'english', nombre:L('Writes diverse types of texts in English','Escribe diversos tipos de textos en inglés'),
+     capacidades:[L('Writes instructional texts to help others prepare and travel responsibly','Escribe textos instructivos para ayudar a otros a prepararse y viajar con responsabilidad'),
+                  L('Writes informative texts describing the places visited','Escribe textos informativos que describen los lugares visitados'),
+                  L('Writes opinion texts recommending the experiences enjoyed most','Escribe textos de opinión que recomiendan las experiencias que más gustaron')]}
   ],
   producto:{
-    titulo:'The measurement journal',
-    audiencia:L('The class, which compares its lines; and the families on Student Achievement Day.',
-      'La clase, que compara sus líneas; y las familias en el Student Achievement Day.'),
-    descripcion:L('A twelve-week measurement notebook: matter measured with instrument and unit in '+
-      'P3, and his own athletic performance recorded week by week in P4, with the line graph and '+
-      'the informative text that explains it.',
-      'Un cuaderno de medidas de doce semanas: la materia medida con instrumento y unidad en P3, y '+
-      'el propio rendimiento atlético registrado semana a semana en P4, con el gráfico de líneas y '+
-      'el texto informativo que lo explica.'),
-    incluye:[L('My measurements of matter, with instrument and unit','Mis medidas de materia, con instrumento y unidad'),
-             L('The estimate before each measurement','La estimación antes de cada medida'),
-             L('My weekly athletics record','Mi registro semanal de atletismo'),
-             L('The line graph of my progress','El gráfico de líneas de mi progreso'),
-             L('The unit conversion where it was needed','La conversión de unidades donde hizo falta'),
-             L('The final informative text','El texto informativo final')]
+    titulo:'A sustainable community proposal, and Nordic’s Guide to the Ica Study Trip',
+    audiencia:L('For the guide, next year fourth graders — it is a real resource they will use '+
+      'before their own trip. For the cultural proposal, the class itself and the school.',
+      'Para la guía, los de 4.º del año que viene — es un recurso de verdad que van a usar antes '+
+      'de su propio viaje. Para la propuesta cultural, la clase y el colegio.'),
+    descripcion:L('In P3, a creative proposal showing how Peruvian fans could represent Peru '+
+      'abroad — posters, outfits, chants or presentations — with its oral defence. In P4, a design '+
+      'for a sustainable community inspired by Ica, and the guide for the students who travel next.',
+      'En P3, una propuesta creativa de cómo los hinchas peruanos podrían representar al Perú '+
+      'fuera — pósters, atuendos, cánticos o presentaciones — con su defensa oral. En P4, el '+
+      'diseño de una comunidad sostenible inspirada en Ica, y la guía para los alumnos que viajen '+
+      'el año que viene.'),
+    incluye:[L('My cultural proposal to represent Peru, and why I chose it','Mi propuesta cultural para representar al Perú, y por qué la elegí'),
+             L('What ecosystem each region of Peru has','Qué ecosistema tiene cada región del Perú'),
+             L('My field notes from Ica','Mis notas de campo de Ica'),
+             L('The instructional text: how to get ready for the trip','El texto instructivo: cómo prepararse para el viaje'),
+             L('The informative text: what the places we visited are like','El texto informativo: cómo son los sitios que visitamos'),
+             L('The opinion text: what I recommend and why','El texto de opinión: qué recomiendo y por qué'),
+             L('The sustainable community design','El diseño de la comunidad sostenible')]
   },
   fases:[
-    {n:1, periodo:3, semana:1, fase:L('Measure matter','Medir la materia'), foco:L('States of matter','Estados de la materia'),
-     hace:L('States of matter and their changes. The measurement journal is opened and the rule is '+
-       'agreed: first I estimate, then I measure, and I write down both.',
-       'Estados de la materia y sus cambios. Se abre el cuaderno de medidas y se pacta la regla: '+
-       'primero estimo, luego mido, y anoto las dos cosas.'),
-     evidencia:L('Journal opened','Cuaderno abierto')},
-    {n:2, periodo:3, semana:2, fase:L('Measure matter','Medir la materia'), foco:L('Properties and measurement','Propiedades y medición'),
-     hace:L('Properties of matter and how they are measured. Which instrument suits which property. '+
-       'In PE athletics starts and the first speed record is taken.',
-       'Propiedades de la materia y su medición. Qué instrumento sirve para qué propiedad. En PE '+
-       'arranca el atletismo y se toma el primer registro de velocidad.'),
-     evidencia:L('Instrument match + first time','Instrumento correcto + primer tiempo')},
-    {n:3, periodo:3, semana:3, fase:L('Measure matter','Medir la materia'), foco:L('Size, mass, volume','Tamaño, masa, volumen'),
-     hace:L('Size, mass and volume measured for real, not read about. Math comes in with multiples '+
-       'and factors and with patterns. PE: track endurance.',
-       'Tamaño, masa y volumen medidos de verdad, no leídos. Math entra con múltiplos y factores y '+
-       'con patrones. PE: resistencia en pista.'),
-     evidencia:L('Mass and volume log','Registro de masa y volumen')},
-    {n:4, periodo:3, semana:4, fase:L('Measure matter','Medir la materia'), foco:L('Temperature and density','Temperatura y densidad'),
-     hace:L('Temperature and density. Why two things of the same size do not weigh the same. '+
-       'Measurement in Math. PE: relays.',
-       'Temperatura y densidad. Por qué dos cosas del mismo tamaño no pesan igual. Medida en Math. '+
-       'PE: relevos.'),
-     evidencia:L('Density test','Prueba de densidad')},
-    {n:5, periodo:3, semana:5, fase:L('Measure matter','Medir la materia'), foco:L('Writing it up','Escribirlo'),
-     hace:L('Informative text in English about one of the properties measured. In Comunicación, '+
-       'classes of verbs and conjugation, which is what an explanatory text needs. PE: jumps.',
-       'Texto informativo en English sobre una de las propiedades medidas. En Comunicación, clases '+
-       'de verbos y conjugación, que es lo que un texto explicativo necesita. PE: saltos.'),
-     evidencia:L('Informative text, draft','Texto informativo, borrador')},
-    {n:6, periodo:3, semana:6, fase:L('Measure matter','Medir la materia'), foco:L('Squares and rectangles','Cuadrados y rectángulos'),
-     hace:L('Properties of squares and rectangles in Math: area and shape of the container they '+
-       'have been measuring. PE: hurdles, last record of P3.',
-       'Propiedades de cuadrados y rectángulos en Math: área y forma del recipiente que se estuvo '+
-       'midiendo. PE: carreras con obstáculos, último registro de P3.'),
-     evidencia:L('P3 data set closed','Serie de datos de P3 cerrada')},
-    {n:7, periodo:4, semana:1, fase:L('Measure change','Medir el cambio'), foco:L('Change over time','El cambio en el tiempo'),
-     hace:L('P4 begins. Human development as a process that happens over time. Math opens the bar '+
-       'graph and the line graph: which one is for what.',
-       'Arranca P4. El desarrollo humano como proceso que ocurre en el tiempo. Math abre el '+
-       'gráfico de barras y el de líneas: cuál sirve para qué.'),
-     evidencia:L('Bar vs line, decided','Barras o líneas, decidido')},
-    {n:8, periodo:4, semana:2, fase:L('Measure change','Medir el cambio'), foco:L('Plotting my own line','Dibujar mi línea'),
-     hace:L('The PE records from P3 are plotted on a line graph. What does the line say that the '+
-       'table did not? Mixed operations in Math. PE: introduction to basketball.',
-       'Se vuelcan los registros de PE de P3 en un gráfico de líneas. ¿Qué dice la línea que no '+
-       'decía la tabla? Operaciones combinadas en Math. PE: iniciación al básquet.'),
-     evidencia:L('My line, first version','Mi línea, primera versión')},
-    {n:9, periodo:4, semana:3, fase:L('Measure change','Medir el cambio'), foco:L('Fractions of a whole','Fracciones de un todo'),
-     hace:L('Fractions: adding and subtracting parts of a whole, which is how a partial improvement '+
-       'gets expressed. Determiners and polysemous words in Comunicación.',
-       'Fracciones: sumar y restar partes de un todo, que es como se expresa una mejora parcial. '+
-       'Determinantes y palabras polisémicas en Comunicación.'),
-     evidencia:L('Improvement as a fraction','La mejora como fracción')},
-    {n:10, periodo:4, semana:4, fase:L('Measure change','Medir el cambio'), foco:L('Converting units','Convertir unidades'),
-     hace:L('Converting from a larger unit to a smaller one, including with fractions and mixed '+
-       'numbers. Every measurement in the journal is reviewed and put into the same unit.',
-       'Conversión de una unidad mayor a una menor, incluida con fracciones y números mixtos. Se '+
-       'revisan todas las medidas del cuaderno y se pasan a la misma unidad.'),
-     evidencia:L('Journal in one unit','Cuaderno en una sola unidad')},
-    {n:11, periodo:4, semana:5, fase:L('Explain','Explicar'), foco:L('Why the line moves','Por qué se mueve la línea'),
-     hace:L('The explanation is written: what I did differently and what the data shows. Quotation '+
-       'marks and ellipsis in Comunicación, to quote what the PE teacher said.',
-       'Se escribe la explicación: qué hice distinto y qué muestra el dato. Comillas y puntos '+
-       'suspensivos en Comunicación para citar lo que dijo el profesor de PE.'),
-     evidencia:L('Explanation','Explicación')},
-    {n:12, periodo:4, semana:6, fase:L('Explain','Explicar'), foco:L('The journal is handed in','Se entrega el cuaderno'),
-     hace:L('Measurement journal complete and presented. The lines of the class are compared: not '+
-       'to see who runs fastest, but to see which line explains its own shape best.',
-       'Cuaderno de medidas completo y presentado. Se comparan las líneas de la clase: no para ver '+
-       'quién corre más, sino para ver qué línea explica mejor su propia forma.'),
-     evidencia:L('Measurement journal','Cuaderno de medidas')}
+    {n:1, periodo:3, semana:1, fase:L('Who we are','Quiénes somos'), foco:L('Representing Peru','Representar al Perú'),
+     hace:L('The World Cup situation is set out: if thousands of fans travelled to represent us, '+
+       'how would they do it? Identity, cultural identity and Peruvian symbols.',
+       'Se plantea la situación del Mundial: si miles de hinchas viajaran a representarnos, ¿cómo '+
+       'lo harían? Identidad, identidad cultural y símbolos peruanos.'),
+     evidencia:L('What I would take of Peru','Qué me llevaría del Perú')},
+    {n:2, periodo:3, semana:2, fase:L('Who we are','Quiénes somos'), foco:L('Coast, highlands and jungle','Costa, sierra y selva'),
+     hace:L('Cultural diversity of the three regions. Traditions, clothing, dances and cultural '+
+       'expressions. Do all Peruvians see themselves the same way?',
+       'Diversidad cultural de las tres regiones. Tradiciones, vestimenta, danzas y expresiones '+
+       'culturales. ¿Se identifican igual todos los peruanos?'),
+     evidencia:L('Region file','Ficha de la región')},
+    {n:3, periodo:3, semana:3, fase:L('Who we are','Quiénes somos'), foco:L('The ecosystems underneath','Los ecosistemas de debajo'),
+     hace:L('Science: the ecosystems of Peru. Under each set of traditions there is a place that '+
+       'made them possible.',
+       'Science: los ecosistemas del Perú. Debajo de cada conjunto de tradiciones hay un sitio que '+
+       'las hizo posibles.'),
+     evidencia:L('Ecosystem map','Mapa de ecosistemas')},
+    {n:4, periodo:3, semana:4, fase:L('Show it','Enseñarlo'), foco:L('How countries show themselves','Cómo se enseñan los países'),
+     hace:L('Research on how countries represent themselves internationally, and discussion on how '+
+       'Peruvian fans could do it abroad.',
+       'Investigación sobre cómo se representan los países internacionalmente, y discusión sobre '+
+       'cómo podrían hacerlo los hinchas peruanos fuera.'),
+     evidencia:L('Examples gathered','Ejemplos recogidos')},
+    {n:5, periodo:3, semana:5, fase:L('Show it','Enseñarlo'), foco:L('Making the proposal','Hacer la propuesta'),
+     hace:L('Creation of the proposal: posters, outfits, chants or cultural presentations. '+
+       'Agreements that make sure every cultural expression shared is respected.',
+       'Creación de la propuesta: pósters, atuendos, cánticos o presentaciones culturales. '+
+       'Acuerdos para que se respete cada expresión cultural que se comparta.'),
+     evidencia:L('The proposal, built','La propuesta, construida')},
+    {n:6, periodo:3, semana:6, fase:L('Show it','Enseñarlo'), foco:L('Presenting and reflecting','Presentar y reflexionar'),
+     hace:L('Oral presentations of the proposals and a final reflection on identity, belonging and '+
+       'respect for diversity.',
+       'Presentaciones orales de las propuestas y reflexión final sobre identidad, pertenencia y '+
+       'respeto a la diversidad.'),
+     evidencia:L('Proposal presented','Propuesta presentada')},
+    {n:7, periodo:4, semana:1, fase:L('Get ready','Prepararse'), foco:L('What is Ica like?','¿Cómo es Ica?'),
+     hace:L('P4 begins. Ica: location, resources and economic activities. In English, instructional '+
+       'texts — what to pack, how to travel responsibly. For many this is the first trip outside '+
+       'Lima and the first without their parents.',
+       'Arranca P4. Ica: ubicación, recursos y actividades económicas. En English, textos '+
+       'instructivos — qué llevar, cómo viajar con responsabilidad. Para muchos es el primer viaje '+
+       'fuera de Lima y el primero sin sus padres.'),
+     evidencia:L('Instructional text, draft','Texto instructivo, borrador')},
+    {n:8, periodo:4, semana:2, fase:L('Get ready','Prepararse'), foco:L('What people do there','Qué hace la gente allí'),
+     hace:L('Productive and extractive activities in Ica. How a desert region lives off what it '+
+       'has. Field observation is prepared: what to look at and how to record it.',
+       'Actividades productivas y extractivas en Ica. Cómo vive de lo que tiene una región '+
+       'desértica. Se prepara la observación de campo: qué mirar y cómo registrarlo.'),
+     evidencia:L('Observation plan','Plan de observación')},
+    {n:9, periodo:4, semana:3, fase:L('Go and look','Ir a mirar'), foco:L('The study trip to Ica','El viaje de estudios a Ica'),
+     hace:L('Historical sites, productive areas and natural environments. Field research and '+
+       'observation: notes, questions and evidence gathered on the spot.',
+       'Sitios históricos, zonas productivas y ambientes naturales. Investigación y observación de '+
+       'campo: notas, preguntas y evidencias recogidas en el sitio.'),
+     evidencia:L('Field notes from Ica','Notas de campo de Ica')},
+    {n:10, periodo:4, semana:4, fase:L('Understand it','Entenderlo'), foco:L('Water, the limit','El agua, el límite'),
+     hace:L('Economic activities and the use of resources; sustainability and environmental '+
+       'challenges. Why the responsible use of water is the condition for everything else in Ica. '+
+       'In English, informative texts describing what was visited.',
+       'Actividades económicas y uso de los recursos; sostenibilidad y retos ambientales. Por qué '+
+       'el uso responsable del agua es la condición de todo lo demás en Ica. En English, textos '+
+       'informativos que describen lo visitado.'),
+     evidencia:L('Informative text','Texto informativo')},
+    {n:11, periodo:4, semana:5, fase:L('Build it','Construirlo'), foco:L('An eco-sustainable city','Una ciudad ecosostenible'),
+     hace:L('Design of a sustainable community inspired by Ica: how historical knowledge, '+
+       'responsible economic decisions and care for the environment work together to improve '+
+       'people quality of life.',
+       'Diseño de una comunidad sostenible inspirada en Ica: cómo el conocimiento histórico, las '+
+       'decisiones económicas responsables y el cuidado del ambiente trabajan juntos para mejorar '+
+       'la calidad de vida de la gente.'),
+     evidencia:L('Sustainable community design','Diseño de la comunidad sostenible')},
+    {n:12, periodo:4, semana:6, fase:L('Hand it on','Pasarlo'), foco:'Nordic’s Guide to the Ica Study Trip',
+     hace:L('The guide is assembled: the instructional texts to get ready, the informative ones '+
+       'describing the places, and the opinion ones recommending what to do. It is handed to the '+
+       'teacher of next year fourth grade, because that is who is going to use it.',
+       'Se arma la guía: los textos instructivos para prepararse, los informativos que describen '+
+       'los sitios, y los de opinión que recomiendan qué hacer. Se entrega al profesor de 4.º del '+
+       'año que viene, que es quien la va a usar.'),
+     evidencia:L('The guide, delivered','La guía, entregada')}
   ],
   evaluacion:[
-    {criterio:L('I measure with the right instrument','Mido con el instrumento correcto'),
-     descriptor:L('Chooses instrument and unit according to the property, and writes the estimate next to the measurement.',
-                  'Elige instrumento y unidad según la propiedad, y anota la estimación junto a la medida.')},
-    {criterio:L('I record without skipping weeks','Registro sin saltarme semanas'),
-     descriptor:L('The series is complete and includes the weeks when the data got worse.',
-                  'La serie está completa e incluye las semanas en que el dato empeoró.')},
-    {criterio:L('I choose the right graph','Elijo el gráfico que toca'),
-     descriptor:L('Uses lines for what changes over time and bars to compare, and can say why.',
-                  'Usa líneas para lo que cambia en el tiempo y barras para comparar, y sabe decir por qué.')},
-    {criterio:L('I explain the change','Explico el cambio'),
-     descriptor:L('Links what he did with what the data shows, without claiming more than the data allows.',
-                  'Relaciona lo que hizo con lo que muestra el dato, sin afirmar más de lo que el dato permite.')}
+    {criterio:L('I represent without flattening','Represento sin aplanar'),
+     descriptor:L('Shows Peru through something concrete of his own and recognises that not every Peruvian would choose the same.',
+                  'Enseña el Perú a través de algo concreto y suyo, y reconoce que no todo peruano elegiría lo mismo.')},
+    {criterio:L('I gather evidence at the site','Recojo evidencia en el sitio'),
+     descriptor:L('His Ica notes were written there, and he can tell what he observed from what he was told.',
+                  'Sus notas de Ica se escribieron allí, y sabe distinguir lo que observó de lo que le contaron.')},
+    {criterio:L('I relate activity and resource','Relaciono actividad y recurso'),
+     descriptor:L('Explains how one economic activity of Ica depends on a natural resource, and what happens when that resource runs short.',
+                  'Explica cómo una actividad económica de Ica depende de un recurso natural, y qué pasa cuando ese recurso escasea.')},
+    {criterio:L('I write for the person who will read it','Escribo para quien lo va a leer'),
+     descriptor:L('His three texts do three different jobs — instruct, inform, recommend — and are written for a fourth grader who has not travelled yet.',
+                  'Sus tres textos hacen tres trabajos distintos — instruir, informar, recomendar — y están escritos para un alumno de 4.º que aún no ha viajado.')},
+    {criterio:L('I propose something that holds','Propongo algo que se sostiene'),
+     descriptor:L('His sustainable community says what resource it depends on and who takes care of it.',
+                  'Su comunidad sostenible dice de qué recurso depende y quién lo cuida.')}
   ],
   diferenciacion:[
-    L('The PE record can be time, distance or repetitions: each child chooses a measure and keeps it.',
-      'El registro de PE puede ser tiempo, distancia o repeticiones: cada niño elige su medida y la mantiene.'),
-    L('The graph can be drawn by hand on graph paper or made in a spreadsheet.',
-      'El gráfico se puede hacer a mano en papel milimetrado o en hoja de cálculo.'),
-    L('The informative text allows a short version with a scaffold for anyone who needs it.',
-      'El texto informativo admite versión corta con esquema para quien lo necesite.')
+    L('The cultural proposal can be a poster, an outfit, a chant or a spoken presentation.',
+      'La propuesta cultural puede ser póster, atuendo, cántico o presentación hablada.'),
+    L('Each child writes one of the three text types in full and contributes to the other two.',
+      'Cada niño escribe entero uno de los tres tipos de texto y colabora en los otros dos.'),
+    L('Whoever cannot travel works from a classmate notes and writes the informative text.',
+      'Quien no pueda viajar trabaja con las notas de un compañero y escribe el texto informativo.')
   ],
   sad:{titulo:'Student Achievement Day #2',
-    muestra:L('The child shows his line graph and explains a week when the data went down. What is '+
-      'valued is that he can explain the dip, not that the line goes up.',
-      'El niño enseña su gráfico de líneas y explica una semana en la que el dato bajó. Se valora '+
-      'que sepa explicar la bajada, no que la línea suba.')},
+    muestra:L('The child shows his page of the guide and reads the piece of advice he would give '+
+      'to somebody travelling to Ica for the first time — and says where in his notes it came from.',
+      'El niño enseña su página de la guía y lee el consejo que le daría a alguien que viaja a Ica '+
+      'por primera vez — y dice de qué parte de sus notas salió.')},
   toddle:[{periodo:3, nombre:'P.3 "Peru to the World"', tipo:AREA, semanas:5, area:'Social Studies'},
           {periodo:3, nombre:'U3 - Ecosystems of Peru', tipo:AREA, semanas:4, area:'Science'},
+          {periodo:3, nombre:'U3 - Learn and Celebrate', tipo:AREA, semanas:4, area:'English'},
           {periodo:4, nombre:'U.4 Sustainable Ica: History, Economy and Environment', tipo:AREA, semanas:5, area:'Social Studies'},
           {periodo:4, nombre:'U4 - Your Guide to Exploring Ica', tipo:AREA, semanas:5, area:'English'},
           {periodo:4, nombre:'P.4 Math "Fractions and Chance: Making Fair Decisions"', tipo:AREA, semanas:5, area:'Math'}],
   unidades:[],
   revisar:[
-    L('BIG MISMATCH: in Toddle, P4 of Grade 4 revolves entirely around the trip to ICA '+
-      '("Sustainable Ica", "Your Guide to Exploring Ica", "Fractions and Chance"). This '+
-      'measurement arc picks up none of that. Before using it, it has to be rebuilt around Ica or '+
-      'withdrawn.',
-      'DESAJUSTE GRANDE: en Toddle, el P4 de 4.º gira entero alrededor del viaje a ICA '+
-      '(«Sustainable Ica», «Your Guide to Exploring Ica», «Fractions and Chance»). Este arco de '+
-      'medida no recoge nada de eso. Antes de usarlo hay que rehacerlo sobre Ica o retirarlo.'),
-    L('The P4 Science content is human development and puberty and the subject teaches it with its '+
-      'own approach. The arc does NOT measure bodies: the personal data recorded is PE performance, '+
-      'chosen by the child. That is not a style detail, it is the condition for the project to be '+
-      'acceptable.',
-      'El contenido de P4 en Science es desarrollo humano y pubertad y lo imparte el área con su '+
-      'propio enfoque. El arco NO mide cuerpos: el dato personal que se registra es rendimiento en '+
-      'PE, elegido por el niño. Esto no es un detalle de estilo, es la condición para que el '+
-      'proyecto sea aceptable.'),
-    L('It has to be agreed with the PE teacher that the athletics records are written down and '+
-      'shared; without that the arc loses its data series.',
-      'Hace falta acordar con el profesor de PE que los registros de atletismo se anoten y se '+
-      'compartan; sin eso el arco pierde su serie de datos.')]
+    L('REBUILT on 6 Sep against Toddle. The earlier version of this arc was about measurement and '+
+      'did not mention Ica at all: it has been replaced. The big questions, the products and the '+
+      'assessment criteria now come from the grade own units.',
+      'REHECHO el 6-sep contra Toddle. La versión anterior de este arco iba de medida y no '+
+      'mencionaba Ica: se ha sustituido. Las preguntas grandes, los productos y los criterios de '+
+      'evaluación salen ahora de las unidades del propio grado.'),
+    L('Grade 4 still has NO interdisciplinary unit in Toddle: these are single-subject units that '+
+      'happen to point at the same thing. Declaring the arc is the pending step, and it is the '+
+      'grade team decision.',
+      '4.º sigue sin NINGUNA unidad interdisciplinaria en Toddle: son unidades de área que '+
+      'apuntan a lo mismo. Declarar el arco es el paso pendiente, y es decisión del grado.'),
+    L('Math and, in P4, Science run their own units this term and are deliberately left out of the '+
+      'arc. If the grade wants Math inside, the Games Fair would have to move or connect.',
+      'Math y, en P4, Science llevan sus propias unidades este trimestre y quedan fuera del arco a '+
+      'propósito. Si el grado quiere meter Math, la Feria de Juegos tendría que moverse o '+
+      'conectarse.'),
+    L('The Ica trip needs its date fixed: phases 9 to 12 hang off it.',
+      'El viaje a Ica necesita su fecha fijada: de él cuelgan las fases 9 a 12.')]
 },
 
 'g4.t3': {
