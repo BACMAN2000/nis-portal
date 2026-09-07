@@ -105,8 +105,9 @@ td.acts .acts-wrap{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
    Estado queden juntas (sin hueco), y las acciones -incluido Eliminar- van
    todas en una sola fila. El card ya tiene overflow-x en pantallas estrechas. */
 .usuarios td:first-child{width:100%}
-.usuarios th,.usuarios td{white-space:nowrap}
-.usuarios td.acts .acts-wrap{flex-wrap:nowrap}
+.usuarios th,.usuarios td{white-space:nowrap;padding:10px 9px}
+.usuarios td.acts .acts-wrap{flex-wrap:nowrap;gap:5px}
+.usuarios td.acts .btn.sm{padding:7px 11px}
 .badge{display:inline-block;padding:3px 10px;border-radius:999px;font-size:.74rem;font-weight:500}
 .badge.lvl{background:var(--lila);color:var(--blue-dd)}
 .badge.grade{background:var(--celeste);color:#0b3a48}
