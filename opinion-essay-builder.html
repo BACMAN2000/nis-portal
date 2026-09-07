@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <meta name="google" content="notranslate">
 <script src="ui-mensajes.js?v=2"></script>
-<script src="config.js?v=18"></script>
+<script src="config.js?v=19"></script>
 <script src="anticheat.js?v=8"></script>
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
@@ -557,13 +557,24 @@ window.submitEssay = async ()=>{
     topic:topicId, source:'opinion-essay-builder',
     antiCheat:(window.NISAntiCheat?NISAntiCheat.getStatus():null)
   };
+  /* El envio deja de ir a ciegas: en no-cors la respuesta era opaca y un fallo
+     del script pasaba por «Handed in!». */
+  const _env = (typeof enviaWebhook === 'function')
+    ? await enviaWebhook(CFG.WRITING_WEBHOOK, payload)
+    : await (async () => { try {
+        const r = await fetch(CFG.WRITING_WEBHOOK,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)});
+        if(!r.ok) return {ok:false, motivo:'el servidor respondio ' + r.status};
+        let j=null; try{ j = JSON.parse(await r.text()); }catch(_){}
+        if(j && j.ok === false) return {ok:false, motivo: j.error || 'el servidor lo rechazo'};
+        return {ok:true};
+      } catch(e){ return {ok:false, motivo:'sin conexion'}; } })();
   try{
-    await fetch(CFG.WRITING_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)});
+    if(!_env.ok) throw new Error(_env.motivo || 'no salio');
     try{ localStorage.setItem(submitKey(), new Date().toISOString()); }catch(e){}
     renderSubmitState();
     alert('✅ Handed in! Your teacher will receive your essay by email to mark it and give you your grade. You can keep editing and hand it in again if you need to.');
   }catch(e){
-    alert('Could not hand in. Check your connection and try again.');
+    alert('Could not hand in — ' + (e && e.message ? e.message : 'check your connection') + '. Your essay is still here; try again.');
   }
   btn.disabled=false; btn.textContent=o;
 };
