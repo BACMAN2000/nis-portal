@@ -101,6 +101,12 @@ tr:hover td{background:#fafbff}
    desbordar la tarjeta. */
 td.acts{white-space:normal}
 td.acts .acts-wrap{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+/* Tabla de Usuarios: el Nombre absorbe el ancho sobrante para que Rol y
+   Estado queden juntas (sin hueco), y las acciones -incluido Eliminar- van
+   todas en una sola fila. El card ya tiene overflow-x en pantallas estrechas. */
+.usuarios td:first-child{width:100%}
+.usuarios th,.usuarios td{white-space:nowrap}
+.usuarios td.acts .acts-wrap{flex-wrap:nowrap}
 .badge{display:inline-block;padding:3px 10px;border-radius:999px;font-size:.74rem;font-weight:500}
 .badge.lvl{background:var(--lila);color:var(--blue-dd)}
 .badge.grade{background:var(--celeste);color:#0b3a48}

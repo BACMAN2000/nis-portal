@@ -1673,7 +1673,7 @@ async function adminUsers(){
       </div>
     </div>
     <div class="card" style="padding:0;overflow-x:auto">
-      <table><thead><tr><th>Nombre</th><th>Grado</th><th>Año</th><th>Nivel</th><th>Rol</th><th>Estado</th><th></th></tr></thead>
+      <table class="usuarios"><thead><tr><th>Nombre</th><th>Grado</th><th>Año</th><th>Nivel</th><th>Rol</th><th>Estado</th><th></th></tr></thead>
       <tbody>${rows||'<tr><td colspan="7" class="center muted">No hay usuarios con ese filtro.</td></tr>'}</tbody></table>
     </div>`;
 }
