@@ -116,6 +116,8 @@ const UI = {
   fuenteTxt:{en:'Primary Calendar 2026.xlsx and Annual Plan Primary 2026.xlsx (Drive), the Annual Plan sheet inside EY_Assessment Criteria_G1.xlsx, the four Project.docx of Grade 1, and Toddle (Planning insights → Manage units, read on 5 September 2026: 221 units in Primary and 303 in Secondary).',
              es:'Primary Calendar 2026.xlsx y Annual Plan Primary 2026.xlsx (Drive), la hoja Annual Plan dentro de EY_Assessment Criteria_G1.xlsx, los cuatro Project.docx de 1.º, y Toddle (Planning insights → Manage units, leído el 5 de septiembre de 2026: 221 unidades en Primary y 303 en Secondary).'},
   verProy:  {en:'See the projects', es:'Ver los proyectos'},
+  enlazaToddle:{en:'Each project page now links straight to its own planner in Toddle: 23 of the 24 units referenced have a direct link.',
+                es:'La página de cada proyecto enlaza ya directamente con su planificador en Toddle: 23 de las 24 unidades referenciadas tienen enlace directo.'},
   borrador: {en:'Draft ready for Toddle: the third term',
              es:'Borrador listo para Toddle: el tercer trimestre'},
   borrHint: {en:'copy it into the planner as it is', es:'se copia al planificador tal cual'},
@@ -236,11 +238,14 @@ function pinta(){
     const arcos = porGrado[g] || [];
     const celda = per => {
       const a = arcos.find(x => x.periodos[0] === per);
-      return a ? `<span class="pill ok">✓</span> ${esc(t(a.titulo))}` : `<span class="pill no">—</span>`;
+      if(!a) return `<span class="pill no">—</span>`;
+      const k = Object.keys(ARCS).find(x => ARCS[x] === a);
+      return `<span class="pill ok">✓</span> <a href="project.html?arc=${encodeURIComponent(k)}&back=${encodeURIComponent('informe.html')}">${esc(t(a.titulo))}</a>`;
     };
     h += `<tr><td class="k">${G[g]}</td><td>${celda(1)}</td><td>${celda(3)}</td><td>${celda(5)}</td></tr>`;
   });
   h += `</table></div>
+    <p class="nota">${u('enlazaToddle')}</p>
     <p class="nota">5.º: su arco de once semanas va de P4 a P5 (viaje a Cajamarca → Science Fair), así que P3 y P6 quedan sueltos. 1.º no tiene P5 ni P6 escritos.</p></div>`;
 
   /* 5 — el borrador del tercer trimestre, listo para pegar en Toddle */
