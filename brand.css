@@ -108,6 +108,11 @@ td.acts .acts-wrap{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
 .usuarios th,.usuarios td{white-space:nowrap;padding:10px 9px}
 .usuarios td.acts .acts-wrap{flex-wrap:nowrap;gap:5px}
 .usuarios td.acts .btn.sm{padding:7px 11px}
+/* En las tablas de correccion el comentario es el unico campo donde se
+   escribe de verdad: se queda con el ancho que sobra en la fila. */
+td.col-flex{width:100%}
+td.col-flex input{min-width:11rem}
+td.col-name{white-space:nowrap}
 .badge{display:inline-block;padding:3px 10px;border-radius:999px;font-size:.74rem;font-weight:500}
 .badge.lvl{background:var(--lila);color:var(--blue-dd)}
 .badge.grade{background:var(--celeste);color:#0b3a48}
