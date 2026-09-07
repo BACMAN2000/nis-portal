@@ -44,21 +44,38 @@ del repositorio, y el clon nuevo no lo afecta.
 
 ## 3. Cada PC (la de escritorio, la Lenovo)
 
-Lo más simple y seguro es clonar de cero al lado y borrar la carpeta vieja
-después de comprobar:
+> ### ⚠️ NO borres la carpeta para clonar de cero
+>
+> En la PC de escritorio hay **1.379 MB repartidos en 20 carpetas que no están
+> en ningún commit** y que un clon nuevo **no trae**: el material que sacamos
+> del repositorio (los vídeos, los PDF del libro, el taller de vídeo, el audio),
+> las fichas de `classes/`, el caché de voces de `yle/tools/_tts_cache/` y la
+> carpeta `.claude/` con la configuración de las sesiones. Nada de eso se pierde
+> para los alumnos —el material vive en el servidor— pero **desaparece de tu
+> máquina**, y el caché y las fichas no están en ninguna otra parte.
+>
+> **Refrescar la carpeta que ya tienes es la vía buena.** Solo lleva un minuto.
 
-    cd C:\Projects
-    git clone https://github.com/BACMAN2000/nis-portal.git nis-portal-nuevo
-
-Luego copiar a mano lo que no está en git y quieras conservar (el audio y los
-vídeos locales, si los tenías), renombrar la carpeta vieja y poner la nueva en su
-sitio.
-
-Si prefieres reaprovechar la carpeta que ya tienes:
+En la carpeta del portal, después de haber guardado lo tuyo (punto 1):
 
     git fetch origin
     git reset --hard origin/main
-    git reflog expire --expire=now --all && git gc --prune=now --aggressive
+    git reflog expire --expire=now --all
+    git gc --prune=now --aggressive
+
+Eso reemplaza el historial viejo por el nuevo y libera el espacio, **sin tocar
+nada de lo que no está en git**. Comprueba al final que `.git` ronda los 325 MB
+y que las carpetas de material siguen ahí.
+
+Si aun así prefieres clonar de cero, **copia antes** a un sitio seguro todo lo
+que aparece en:
+
+    git status --porcelain --ignored | findstr "^!!"
+
+### `.claude/launch.json` se suma, no se reemplaza
+
+Cada sesión tiene su entrada en ese archivo. Al refrescar, **añade** la tuya en
+lugar de sobrescribirlo entero: ya se borró una vez la de otra sesión.
 
 ## 4. Las sesiones de Claude que estén trabajando en el portal
 

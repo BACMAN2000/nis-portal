@@ -83,6 +83,12 @@ Deja el `.git` en **325 MB** (de 2.540), medido en un ensayo real.
       --path-glob 'mocks-cambridge/mp3/*'
     git push --force --mirror
 
+**Se clona desde GitHub, no desde la copia de trabajo.** `git filter-repo` se
+niega a correr en un repositorio con *worktrees* extra registrados, y este los
+tiene (`git worktree list`). Clonando desde GitHub no aparece el problema; si aun
+así se ejecuta sobre el clon local, hay que desregistrar antes el worktree con
+`git worktree remove` o `git worktree prune`.
+
 **Las carpetas van enumeradas, NO con `*-audio/*`.** El primer ensayo, con el
 comodín, se llevaba por delante `voice-battle-audio/` (144 archivos) y
 `g2u4-audio/` (62): pesan 4 MB entre las dos, **siguen dentro del repositorio y
