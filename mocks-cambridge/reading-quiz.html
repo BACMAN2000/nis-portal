@@ -371,6 +371,7 @@ if(/\.github\.io$/i.test(location.hostname)){
   /* z-index 99999 ensures it sits above the fixed inspera-shell (z-index:1000) */
   #acOverlay{position:fixed!important;inset:0!important;z-index:99999!important}
 </style>
+<script src="../vendor/qrcode.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="ui-mensajes.js"></script>
 <script src="nis-bridge.js"></script>
@@ -42945,16 +42946,30 @@ function motivational(firstName, pct, level){
 /* ---- Send result to Apps Script (optional). Returns a Promise. ---- */
 async function sendResultToWebhook(payload){
   if(!CONFIG.webhookUrl) return {skipped:true};
+  /* En modo cors se puede leer lo que responde el script; en no-cors la
+     respuesta era opaca y un fallo del servidor pasaba por exito. El helper
+     reintenta a ciegas si CORS fallara, y entonces avisa de que el envio no
+     se pudo confirmar. */
+  if (typeof enviaWebhook === 'function') {
+    const r = await enviaWebhook(CONFIG.webhookUrl, payload);
+    if (r.ok) return {sent:true, sinConfirmar: !!r.sinConfirmar};
+    return {sent:false, error: r.motivo};
+  }
+  const cab = {'Content-Type': 'text/plain;charset=utf-8'};
+  const cuerpo = JSON.stringify(payload);
   try {
-    await fetch(CONFIG.webhookUrl, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: {'Content-Type': 'text/plain;charset=utf-8'},
-      body: JSON.stringify(payload)
-    });
+    const r = await fetch(CONFIG.webhookUrl, {method:'POST', headers:cab, body:cuerpo});
+    if(!r.ok) return {sent:false, error:'el servidor respondio ' + r.status};
+    let j = null;
+    try { j = JSON.parse(await r.text()); } catch(_) {}
+    if(j && j.ok === false) return {sent:false, error: j.error || 'el servidor lo rechazo'};
     return {sent:true};
   } catch(err){
-    return {sent:false, error: err.message};
+    /* CORS o red: se reintenta a ciegas para no perder la entrega, pero no se
+       da por confirmada. */
+    try { await fetch(CONFIG.webhookUrl, {method:'POST', mode:'no-cors', headers:cab, body:cuerpo});
+          return {sent:true, sinConfirmar:true}; }
+    catch(_) { return {sent:false, error: err.message}; }
   }
 }
 
@@ -43577,17 +43592,24 @@ function scoreExam(ex){
 }
 
 /* ---------------- Screens ---------------- */
+/* El QR se dibuja aqui, no se le pide a nadie. Antes venia de api.qrserver.com:
+   funcionaba, pero era una llamada a un tercero para algo que sabemos hacer, y
+   de paso le contaba a ese servicio que direccion abre cada alumno. */
+function qrSrc(texto){
+  try { const q = qrcode(0, 'M'); q.addData(texto); q.make(); return q.createDataURL(4, 8); }
+  catch(e){ return ''; }
+}
+
 const render = {
   welcome(){
     stopTimer();
-    const url = encodeURIComponent(location.href);
     app.innerHTML = `
       <div class="hero">
         <img class="hero-logo" src="nordic-logo-h.svg" alt="Nordic International School of Lima">
         <h1>MOCKS CAMBRIDGE — Reading &amp; Use of English</h1>
         <p class="sub">Two full mock exams (MOCK 1 &amp; MOCK 2), Cambridge format — A2 · B1 · B2 · C1</p>
         <div class="qr">
-          <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&amp;data=${url}" alt="QR code">
+          <img src="${qrSrc(location.href)}" alt="QR code" onerror="this.closest('.qr').style.display='none'">
         </div>
         <p class="qr-help">Scan this QR with your phone to open the Reading Mock on another device, then sign in with your name and grade.</p>
         <div class="row" style="justify-content:center;margin-top:8px">
@@ -44298,7 +44320,9 @@ const render = {
       } else if(res.sent){
         st.style.display = 'block';
         st.classList.remove('err');
-        st.textContent = '✓ Result sent. Check your email shortly for your PDF report.';
+        st.textContent = res.sinConfirmar
+          ? '✓ Result sent, but we could not confirm it. Download the PDF just in case.'
+          : '✓ Result sent. Check your email shortly for your PDF report.';
       } else {
         st.style.display = 'block';
         st.classList.add('err');
