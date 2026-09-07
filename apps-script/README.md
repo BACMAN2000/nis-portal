@@ -37,3 +37,23 @@ No toca nada de Reading / Listening / quizzes.
 
 > El correo sale desde la cuenta que ejecuta el script. Despliega con pbaca@
 > para que salga desde pbaca@. La carpeta "Comentarios de Writing" se crea sola.
+
+## Limpiar las filas de prueba
+
+Las comprobaciones técnicas del endpoint dejan filas reales en las hojas. Para
+quitarlas sin tocar nada de un alumno, `Codigo.gs` trae dos funciones. **No hay
+que desplegar nada**: son utilidades del editor, el `/exec` no cambia.
+
+1. Pega el `Codigo.gs` de esta carpeta sobre el del script y **Guarda**.
+2. Elige `listaFilasDePrueba` en el desplegable de funciones y pulsa **Ejecutar**.
+3. Abre el registro (**Ver → Registros**) y comprueba que lo listado es justo lo
+   que quieres borrar. No borra nada todavía.
+4. Solo entonces, elige `borraFilasDePrueba` y **Ejecutar**.
+
+Busca en las pestañas Reading, Listening y Writing las filas cuya columna
+`Student` empiece por `PRUEBA CORS`, `PRUEBA ` o `TEST CORS` — la lista está en
+`PREFIJOS_PRUEBA`, arriba de las funciones, por si hace falta añadir otra marca.
+
+Borra de abajo hacia arriba a propósito: al quitar una fila las de debajo suben
+un número, así que recorriendo de arriba abajo el segundo borrado caería en la
+fila equivocada.

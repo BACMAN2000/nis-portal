@@ -385,3 +385,76 @@ function archivarWritingEnDrive_(d) {
   folder.addFile(file);
   DriveApp.getRootFolder().removeFile(file);   // mover (no dejar copia en Mi unidad)
 }
+
+/* ===== LIMPIEZA DE FILAS DE PRUEBA =====================================
+   Las comprobaciones tecnicas del endpoint dejan filas reales en las hojas
+   (el 6-sep-2026, una «PRUEBA CORS» en Reading al verificar que el POST podia
+   leer la respuesta del script). Estas dos funciones las quitan sin tocar
+   nada de un alumno.
+
+   COMO USARLAS — desde el editor del script, no hace falta desplegar:
+     1) elegir  listaFilasDePrueba  y pulsar Ejecutar,
+     2) abrir el registro (Ver → Registros) y comprobar que lo listado es
+        justo lo que se quiere borrar,
+     3) solo entonces, elegir  borraFilasDePrueba  y Ejecutar.
+
+   La Web App no cambia: son funciones de utilidad, el /exec sigue igual.   */
+
+var PREFIJOS_PRUEBA = ['PRUEBA CORS', 'PRUEBA ', 'TEST CORS'];   // por columna Student
+var HOJAS_PRUEBA    = ['Reading', 'Listening', 'Writing'];
+
+/* Devuelve [{hoja, fila, cuando, alumno, examen}] con lo que se borraria. */
+function buscaFilasDePrueba_() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var fuera = [];
+  HOJAS_PRUEBA.forEach(function (nombre) {
+    var sh = ss.getSheetByName(nombre);
+    if (!sh || sh.getLastRow() < 2) return;
+    var cab = sh.getRange(1, 1, 1, sh.getLastColumn()).getValues()[0];
+    var cStu = cab.indexOf('Student');
+    var cTs  = cab.indexOf('Timestamp');
+    var cEx  = cab.indexOf('Exam');
+    if (cStu < 0) return;                      // hoja con otra forma: no se toca
+    var datos = sh.getRange(2, 1, sh.getLastRow() - 1, sh.getLastColumn()).getValues();
+    datos.forEach(function (fila, i) {
+      var alumno = String(fila[cStu] == null ? '' : fila[cStu]).trim();
+      var esPrueba = PREFIJOS_PRUEBA.some(function (p) { return alumno.indexOf(p) === 0; });
+      if (!esPrueba) return;
+      fuera.push({
+        hoja:   nombre,
+        fila:   i + 2,                          // +1 por la cabecera, +1 porque las filas empiezan en 1
+        cuando: cTs >= 0 ? fila[cTs] : '',
+        alumno: alumno,
+        examen: cEx >= 0 ? fila[cEx] : ''
+      });
+    });
+  });
+  return fuera;
+}
+
+/* Solo mira: no borra nada. */
+function listaFilasDePrueba() {
+  var f = buscaFilasDePrueba_();
+  if (!f.length) { Logger.log('No hay filas de prueba en ' + HOJAS_PRUEBA.join(', ') + '.'); return; }
+  Logger.log('Se borrarian ' + f.length + ' fila(s):');
+  f.forEach(function (x) {
+    Logger.log('  [' + x.hoja + '] fila ' + x.fila + ' · ' + x.cuando + ' · ' + x.alumno + ' · ' + x.examen);
+  });
+  Logger.log('Si es correcto, ejecuta ahora  borraFilasDePrueba.');
+}
+
+/* Borra de verdad, y de abajo hacia arriba. Es la parte donde estas funciones
+   suelen fallar: al borrar una fila, todas las de debajo suben un numero. Si se
+   recorre de arriba abajo, el segundo borrado cae ya en la fila equivocada — y
+   con datos de alumnos al lado, eso es exactamente lo que no puede pasar. */
+function borraFilasDePrueba() {
+  var f = buscaFilasDePrueba_();
+  if (!f.length) { Logger.log('No hay filas de prueba que borrar.'); return; }
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  f.sort(function (a, b) { return b.fila - a.fila; });          // de la ultima a la primera
+  f.forEach(function (x) {
+    ss.getSheetByName(x.hoja).deleteRow(x.fila);
+    Logger.log('Borrada  [' + x.hoja + '] fila ' + x.fila + ' · ' + x.alumno);
+  });
+  Logger.log('Listo: ' + f.length + ' fila(s) borrada(s).');
+}
