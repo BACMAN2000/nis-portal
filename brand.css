@@ -56,6 +56,11 @@ button{font-family:inherit;cursor:pointer}
 .sidebar .nav-head:hover{background:var(--bg);color:var(--blue-d)}
 .sidebar .nav-head .fl{transition:transform .15s;font-size:1rem;line-height:1}
 .sidebar .nav-head.open .fl{transform:rotate(90deg)}
+/* Con la barra compacta, el grupo donde esta la pestaña abierta se marca
+   sin desplegarse: si no, al entrar no hay forma de saber donde se esta. */
+.sidebar .nav-head.aqui{color:var(--blue-d)}
+.sidebar .nav-head.aqui>span:first-child::before{content:'';display:inline-block;width:6px;height:6px;
+  border-radius:50%;background:var(--blue);margin-right:7px;vertical-align:middle}
 .sidebar .nav-sub{margin:0 0 6px}
 .sidebar .nav-sub[hidden]{display:none}
 .sidebar .nav-sub .nav-item{padding-left:20px;padding-right:8px;font-size:.9rem;margin-bottom:2px}

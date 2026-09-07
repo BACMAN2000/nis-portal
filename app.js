@@ -282,13 +282,26 @@ function header(){
    Se abre el grupo donde esta la pestana activa; lo demas, como lo dejo el
    usuario la ultima vez. En movil la barra es una fila con scroll y el
    acordeon no aplica: alli se ven todos (ver brand.css). */
+/* El menu se abre SIEMPRE compacto: todos los grupos plegados, y es el usuario
+   quien despliega el que necesita. Antes se recordaba en localStorage, asi que
+   al volver al dia siguiente uno se encontraba con lo que dejo abierto hace una
+   semana y la barra volvia a ser una lista larga.
+   Lo desplegado se guarda en sessionStorage y no en localStorage: mientras se
+   navega por el panel se conserva (cambiar de pestaña repinta la barra entera,
+   y cerrarle los grupos a cada clic seria insufrible), pero al abrir el portal
+   de nuevo se vuelve a empezar compacto. */
 const NAV_ABIERTOS = 'nis_nav_open';
 function navAbiertos(){
-  try { return JSON.parse(localStorage.getItem(NAV_ABIERTOS)||'{}') || {}; } catch(e){ return {}; }
+  try {
+    // Rastro de la version anterior: si se queda, no molesta, pero tampoco
+    // pinta nada ya. Se limpia una vez.
+    localStorage.removeItem(NAV_ABIERTOS);
+    return JSON.parse(sessionStorage.getItem(NAV_ABIERTOS)||'{}') || {};
+  } catch(e){ return {}; }
 }
 function navGuardaAbierto(nombre, abierto){
   const o = navAbiertos(); o[nombre] = abierto;
-  try { localStorage.setItem(NAV_ABIERTOS, JSON.stringify(o)); } catch(e){}
+  try { sessionStorage.setItem(NAV_ABIERTOS, JSON.stringify(o)); } catch(e){}
 }
 function navItemHTML(n, activeKey){
   return n.href
@@ -299,10 +312,10 @@ function navHTML(navItems, activeKey){
   const abiertos = navAbiertos();
   return navItems.map(n => {
     if(!n.items) return navItemHTML(n, activeKey);
-    const tieneActivo = n.items.some(i => i.key===activeKey);
-    const abierto = tieneActivo || abiertos[n.group]===true;
+    const abierto = abiertos[n.group]===true;
+    const aqui = n.items.some(i => i.key===activeKey);
     return `<div class="nav-group">
-      <button class="nav-head ${abierto?'open':''}" data-group="${esc(n.group)}"
+      <button class="nav-head ${abierto?'open':''} ${aqui?'aqui':''}" data-group="${esc(n.group)}"
         aria-expanded="${abierto?'true':'false'}" type="button">
         <span>${n.icon||''} ${esc(n.group)}</span><span class="fl">›</span></button>
       <div class="nav-sub"${abierto?'':' hidden'}>${n.items.map(i=>navItemHTML(i, activeKey)).join('')}</div>
