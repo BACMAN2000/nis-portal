@@ -65,6 +65,8 @@ ul.tight li{margin:.22em 0}
 .area ul{margin:0;padding-left:1.05em;font-size:.83rem;color:var(--ink)}
 .area li{margin:.15em 0}
 .pnote{font-size:.76rem;color:var(--grey);margin:10px 0 0}
+.delDocx{font-size:.62rem;font-weight:700;color:#5B21B6;background:#F5F3FF;
+  padding:1px 6px;border-radius:999px;letter-spacing:0;text-transform:none}
 
 table.rub{width:100%;border-collapse:collapse;font-size:.86rem}
 table.rub th,table.rub td{border:1px solid var(--line);padding:9px 11px;vertical-align:top;text-align:left}
@@ -112,7 +114,7 @@ button.lang:hover{background:rgba(255,255,255,.30)}
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js?v=21"></script>
-<script src="project-arcs.js?v=5"></script>
+<script src="project-arcs.js?v=7"></script>
 <script>
 const $ = s => document.querySelector(s);
 const P = new URLSearchParams(location.search);
@@ -204,7 +206,14 @@ const UI = {
   noExiste:    {en:'That project does not exist',    es:'Ese proyecto no existe'},
   noExisteTxt: {en:'It may have been renamed.',      es:'Puede que se haya renombrado.'},
   verTodos:    {en:'See all the projects',           es:'Ver todos los proyectos'},
-  primaria:    {en:'Primary',                        es:'Primaria'}
+  primaria:    {en:'Primary',                        es:'Primaria'},
+  propuesta:   {en:'Proposal',                       es:'Propuesta'},
+  aBorrar:     {en:'Nothing to merge — the row has to be deleted',
+                es:'Nada que fusionar — hay que borrar la fila'},
+  aFusionar:   {en:'Merge it into W%s',              es:'Juntarlo con la W%s'},
+  esperaSi:    {en:'Coordination only has to say yes or no.',
+                es:'Coordinación solo tiene que decir sí o no.'},
+  delDocx:     {en:'from the Project.docx',          es:'del Project.docx'}
 };
 function u(k, ...args){
   let x = t(UI[k]);
@@ -227,11 +236,16 @@ function aplicaIdioma(){
 const ARC = P.get('arc') || '';
 const ARCS = window.PROJECT_ARCS || {};
 const SUELTOS = window.PROJECT_ARCS_SUELTOS || [];
+const FUSION = window.PROJECT_ARCS_FUSION || {};
 
 /* El contenido por area y semana NO vive en project-arcs.js: se lee del
    volcado del Annual Plan del colegio. Si el JSON no esta, la pagina sigue
    funcionando y lo dice — media pagina en blanco enseña menos que decirlo. */
 let PLAN = null, planError = '';
+/* Science y Social de 1.o no estan en su hoja del plan anual: viven en los
+   Project.docx del grado. Se transcriben aparte y se pintan marcados, para
+   que se vea de donde salen. */
+let PLAN_G1 = null;
 
 const AREA_NOMBRE = {
   science:'Science', social:'Social Studies', math:'Math', english:'English',
@@ -257,6 +271,17 @@ async function cargaPlan(){
     if(!r.ok) throw new Error('HTTP ' + r.status);
     PLAN = await r.json();
   }catch(e){ planError = e.message || String(e); }
+  try{
+    const r = await fetch('scope/g1-project-areas.json', {cache:'no-store'});
+    if(r.ok) PLAN_G1 = await r.json();
+  }catch(_){ PLAN_G1 = null; }
+}
+
+/* Lo que en esta semana sale de los Project.docx y no de la hoja del plan. */
+function deProyecto(grade, periodo, semana){
+  if(grade !== 'g1' || !PLAN_G1) return null;
+  const p = PLAN_G1.periodos && PLAN_G1.periodos[String(periodo)];
+  return (p && p[String(semana)]) || null;
 }
 
 /* Semanas que el Excel del plan anual escribe de mas: el calendario da 34
@@ -278,7 +303,12 @@ function contenidoDe(grade, periodo, semana){
   const p = g.periodos.find(x => x.periodo === periodo);
   if(!p) return null;
   const s = p.semanas.find(x => x.n === semana);
-  return s ? s.areas : null;
+  const base = s ? s.areas : null;
+  const extra = deProyecto(grade, periodo, semana);
+  if(!extra) return base;
+  const junto = Object.assign({}, base || {});
+  Object.keys(extra).forEach(a => { junto[a] = (junto[a] || []).concat(extra[a]); });
+  return junto;
 }
 
 /* ---------------- quien mira ---------------- */
@@ -441,11 +471,18 @@ function pintaArco(k, a){
   function cierraPeriodo(per){
     const sobra = sobranteDe(a.grade, per);
     if(!sobra.length) return '';
+    /* La propuesta concreta de que semana se junta con cual: coordinacion
+       solo tiene que aprobarla, no redactarla. */
+    const prop = FUSION[a.grade + '.p' + per];
     const lineas = sobra.map(x => AREA_ORDEN.filter(k => x[k] && x[k].length)
       .map(k => `<li><b>${AREA_NOMBRE[k]||k}</b> — ${esc(x[k].join(' · '))}</li>`).join('')).join('');
     return `<div class="warnbox" style="margin:2px 0 14px"><h4>${u('sobraTit', per)}</h4>
       <p style="margin:0 0 6px">${u('sobraTxt', a.fases.filter(z=>z.periodo===per).length)}</p>
-      <ul class="tight" style="margin:0">${lineas}</ul></div>`;
+      <ul class="tight" style="margin:0">${lineas}</ul>
+      ${prop ? `<p style="margin:10px 0 0;padding-top:9px;border-top:1px solid #FDE68A">
+        <b>${u('propuesta')} — ${prop.estado === 'borrar' ? u('aBorrar') : u('aFusionar', prop.absorbe)}.</b>
+        ${esc(t(prop.propuesta))} <i>${u('esperaSi')}</i></p>` : ''}
+      </div>`;
   }
 
   let periodoPintado = null;
@@ -460,8 +497,9 @@ function pintaArco(k, a){
     let bloques = '';
     if(cont){
       const ks = AREA_ORDEN.filter(x => cont[x] && cont[x].length);
+      const extra = deProyecto(a.grade, f.periodo, f.semana) || {};
       bloques = ks.map(x => `<div class="area${areasProy.indexOf(x)>=0?'':' otra'}">
-        <h5>${AREA_NOMBRE[x]||x}</h5>
+        <h5>${AREA_NOMBRE[x]||x}${extra[x] ? ' <span class="delDocx">'+u('delDocx')+'</span>' : ''}</h5>
         <ul>${cont[x].slice(0,6).map(l=>`<li>${esc(l)}</li>`).join('')}</ul></div>`).join('');
     }
     h += `<details class="wk" style="border-left-color:${a.cover.from}">

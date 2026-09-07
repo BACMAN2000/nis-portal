@@ -1,0 +1,221 @@
+{
+ "_leeme": "Science y Social de 1.o, transcritos de los Project 1..4.docx del grado. La hoja \"Annual Plan\" de 1.o no los trae. El area de cada leccion se deduce de su competencia CNEB, que es una equivalencia directa del curriculo.",
+ "fuente": "1. EARLY YEARS/3. Grade 1/8. Planning/P1..P4/Project N.docx",
+ "generado_por": "tools/extrae_g1_projects.py",
+ "grado": "g1",
+ "periodos": {
+  "1": {
+   "1": {
+    "science": [
+     "Observe and describe their own physical features in order to recognize that their body characteristics make them unique through a self-portrait.",
+     "Explore their fingerprints and relate them to personal identification (DNI), comparing patterns to understand that each person has a unique identity."
+    ],
+    "social": [
+     "Identify and express their preferences, skills and personal changes that occurred during the vacation period, representing them through drawings and oral explanation.",
+     "Identify and express how they feel in first grade, recognizing emotions such as envy, embarrassment and worry through reflection and discussion activities.",
+     "Share one special quality about themselves through a puzzle piece activity and collaborate to build a classroom mural that represents their uniqueness."
+    ]
+   },
+   "2": {
+    "science": [
+     "Identify and describe how they have physically changed over time by comparing photos, creating a simple timeline and measuring and representing their growth.",
+     "Describe in basic terms how food travels through the body and understand that food provides energy for growth through an experiment.",
+     "Explain in simple terms how breathing helps their body function and recognize the role of the lungs through an experiment."
+    ],
+    "social": [
+     "Share memories and demonstrate skills by describing things they can do now that they could not do before."
+    ]
+   },
+   "3": {
+    "social": [
+     "Describe family traditions and games from the past and present through research and class discussion.",
+     "Identify where they live and analyze changes in their district by observing local landmarks, Google Maps images and community surroundings.",
+     "Analyze how their school has changed over time and propose actions to take care of it through real-life cases."
+    ],
+    "science": [
+     "Investigate the origin of their last name and describe where their family comes from by completing an application sheet."
+    ]
+   },
+   "4": {
+    "social": [
+     "Identify the difference between rights and responsibilities and explain them within the classroom and school community.",
+     "Identify the members of their family and describe their roles and responsibilities by creating a circle of trust tree.",
+     "Identify different members of their community and describe their roles by conducting a simple interview."
+    ]
+   },
+   "5": {
+    "science": [
+     "Explore their surroundings through an exploratory walk and evaluate which environmental elements require protection and attention."
+    ],
+    "social": [
+     "Recall observed environmental issues, develop possible solutions, and produce a video presentation to promote positive action.",
+     "Observe the classroom environment, identify what is needed for order and harmony, and propose solutions to improve it.",
+     "Recognize actions to care for people and community spaces and write a thank-you letter to a community member."
+    ]
+   },
+   "6": {
+    "social": [
+     "Practice cooperation skills by working in teams to complete a group challenge such as building a paper tower, solving a puzzle or creating a short story together.",
+     "Practice respectful communication by participating in role-play situations and creating a “Magic Words Basket” to use polite expressions in everyday interactions.",
+     "Reflect on their learning throughout the project by creating a detailed 3D self-portrait and expressing that they are unique and special.",
+     "Demonstrate respect for the environment and self-regulation skills by participating in a beach visit and practicing yoga and mindfulness activities."
+    ]
+   }
+  },
+  "2": {
+   "1": {
+    "science": [
+     "Observe insects found in the classroom and school environment, recording when, where and how often they appear through graphic organizers.",
+     "Explore where insects are found in the school through an observation walk, identifying places where they appear.",
+     "Share prior knowledge, curiosities and questions about insects through brainstorming and discussion.",
+     "Explore common myths and facts about insects distinguishing between ideas and evidence. Students represent their initial understanding through drawings or simple oral explanations."
+    ]
+   },
+   "2": {
+    "science": [
+     "Recognize basic structures of insects (body parts, movement, size) and relate them to their functions through observation and hands-on diagramming.",
+     "Explore what insects eat and how they find their food through guided inquiry and observation of mouthparts.",
+     "Identify and describe the habitats of insects found in their environment and classify them based on their characteristics and habits."
+    ]
+   },
+   "3": {
+    "science": [
+     "Identify the vital roles of insects in the environment (such as pollination, decomposition, and food chains) through discussion and examples to reflect on the consequences of their disappearance.",
+     "Analyze how human daily actions regarding food, cleanliness, and material use directly affect insects and their natural habitats.",
+     "Propose and discuss specific strategies to care for insects, emphasizing how to interact with them respectfully within the classroom and the community.",
+     "Represent actions of care and respect for living beings through creative outputs like drawings, posters, or oral explanations to promote environmental conservation."
+    ]
+   },
+   "4": {
+    "social": [
+     "Reflect on real-life situations involving insects in the classroom and analyze different possible responses to foster empathy and respect.",
+     "Devise collaborative solutions and establish shared protocols to respond to insects in the classroom safely."
+    ],
+    "science": [
+     "Identify problems related to insects and brainstorm creative solutions, selecting a preferred format to share their learning.",
+     "Collaboratively negotiate and design a single team prototype per table."
+    ]
+   },
+   "5": {
+    "science": [
+     "Construct a functional prototype using recycled materials, following their team blueprint to solve the problem chosen.",
+     "Will evaluate and improve their prototypes based on feedback, then create a poster to explain how their invention works.",
+     "Will describe the characteristics and benefits of their insect prototypes through an oral presentation to prepare for their community awareness video.",
+     "Will communicate their environmental solutions by recording an explanatory video through the creation of visual aids and oral presentation techniques."
+    ]
+   }
+  },
+  "3": {
+   "1": {
+    "science": [
+     "Explore the difference between natural phenomena and natural disasters through images, discussions and real examples from Peru.",
+     "Identify natural disasters that have occurred in Peru, recognizing how these events affect people and communities."
+    ],
+    "social": [
+     "Analyze visual information and simple examples to distinguish when a natural phenomenon becomes a disaster, building a collaborative timeline that represents natural disasters in Peru and connects these events with time concepts such as past and present."
+    ]
+   },
+   "2": {
+    "social": [
+     "Identify places they have visited in Peru and connect personal experiences with different locations across the country."
+    ],
+    "science": [
+     "Recognize the main characteristics (weather, and landscapes) of Peru's coast, mountains and rainforest regions.",
+     "Investigate how geographical conditions influence the natural disasters that occur in different regions of Peru.",
+     "Investigate different natural disasters through books, informational texts, posters identifying which disasters occur in Peru and explaining why they happen in certain regions."
+    ]
+   },
+   "3": {
+    "social": [
+     "Identify actions that help people stay safe before, during, and after natural disasters.",
+     "Recognize the role of community members and school brigades in promoting safety and preparedness.",
+     "Organize and communicate safety recommendations through discussions, practical activities, and visual resources."
+    ],
+    "science": [
+     "Explore emergency preparedness strategies, recognizing materials, resources, and safe actions that support safety during emergencies."
+    ]
+   },
+   "4": {
+    "social": [
+     "Identify different types of infrastructure in Peru and explain how geography and weather influence their design.",
+     "Recognize safe zones, evacuation routes and safety signs within their school and community environments, identifying how they help protect people during emergencies.",
+     "Investigate different structures found in Peru, identifying features that help them remain stable and functional, and apply their understanding by designing and constructing a structure for a collaborative city."
+    ],
+    "science": [
+     "Investigate how columns help structures remain stable and resistant by making predictions, observing evidence and comparing results."
+    ]
+   },
+   "5": {
+    "science": [
+     "Identify the causes and prevention of Landslides and forest fires, recognizing both natural and human actions that provoke them through simple case analysis."
+    ],
+    "social": [
+     "Explain the origin, causes, and prevention of earthquakes, tsunamis, and floods through image analysis and simple simulations."
+    ]
+   },
+   "6": {
+    "social": [
+     "Apply their understanding of natural disasters, infrastructure and safety actions to respond to real-life emergency situations."
+    ],
+    "science": [
+     "Reflect on their learning throughout the project, identifying how their ideas, knowledge and skills have grown over time."
+    ]
+   }
+  },
+  "4": {
+   "1": {
+    "science": [
+     "Explain where plants come from through the analysis of seed germination and describe the essential elements (sunlight, water, soil, and air) they need to grow strong through visual and hands-on exploration.",
+     "Identify the main parts of a plant (root, stem, leaves, and fruits) through the direct observation of real foods and explain which of these parts are edible and beneficial for the body.",
+     "Sequence and compare the life cycle of a fruit plant and a vegetable from planting to harvest, identifying that fruits contain seeds inside while vegetables are other parts of the plant."
+    ]
+   },
+   "2": {
+    "science": [
+     "Understand the role of farmers in caring for fruit and vegetable crops and recognize the tools and basic practices used by farmers to grow healthy plants.",
+     "Recognize where fruits and vegetables grow in different natural environments such as trees, plants and underground spaces.",
+     "Understand how to identify when fruits and vegetables are ready to be harvested.",
+     "Understand how the climate and regions of Peru influence where different fruits and vegetables grow (coast, highlands and jungle)."
+    ]
+   },
+   "3": {
+    "science": [
+     "Sequence the stages of food transportation from farms to school and describe the use of the cold chain and careful packaging as necessary conditions to prevent products from spoiling."
+    ],
+    "social": [
+     "Explain the function of the wholesale market as the place where harvests from the coast, highlands, and jungle arrive before being distributed to local markets, through role-play and the classification of products by region of origin.",
+     "Describe the role of shopkeepers in the community market through video observation and role-play, recognizing how they sell the products that arrive from the wholesale market.",
+     "Explain how to buy food at the market using coins and a scale, through a hands-on buying and selling fair."
+    ]
+   },
+   "4": {
+    "science": [
+     "Observe and describe fruits and vegetables using their senses, focusing on details such as color, shape, texture, smell and appearance.",
+     "Understand why fruits and vegetables need to be properly cleaned and disinfected before consumption and identify the steps to care for them at home.",
+     "Understand how the climate and regions of Peru influence where different fruits and vegetables grow (coast, highlands and jungle)."
+    ],
+    "social": [
+     "Communicate their understanding of food hygiene and care by creating a visual diptych guide."
+    ]
+   },
+   "5": {
+    "science": [
+     "Classify foods according to their origin (animal, vegetable, or mineral) through direct observation of real foods and the analysis of a video.",
+     "Explain how vitamins from fruits and vegetables help their body grow and protect itself, through dramatization and the \"Superpowers\" role-play game.",
+     "Classify foods according to their function in the body (giving energy or protecting from illnesses), through the \"Team Energy vs. Team Shield\" dramatization.",
+     "Explain the importance of water for the human body and food, through watching a video and the \"Water Detectives\" experiment."
+    ]
+   },
+   "6": {
+    "social": [
+     "Prepare for a market visit by identifying what they can observe, how they can participate in a purchase and how the market connects to the journey of fruits and vegetables.",
+     "Organize and communicate their learning by selecting evidence, preparing their assigned station and practicing their presentation for the Food Scientists Fair."
+    ],
+    "science": [
+     "Design simple paper prototypes of tools or ideas that can help improve different stages of the food process.",
+     "Present their learning about fruits and vegetables, explain their design solutions and apply their knowledge to create a balanced lunchbox."
+    ]
+   }
+  }
+ }
+}

@@ -72,9 +72,12 @@ window.PROJECT_ARCS = {
     'portal solo pone el título del arco, la pregunta esencial y la narrativa que une los dos '+
     'periodos.'),
   notaPlan:L('The Grade 1 annual plan only carries Comunicación, Math, English and (in P1) Music '+
-    'and PE. Science and Social Studies live in the Project.docx files, not in that sheet.',
+    'and PE. Science and Social Studies are not in that sheet: they live in the grade own '+
+    'Project.docx files, and they are transcribed here week by week — the blocks marked '+
+    '«from the Project.docx» come from there.',
     'El plan anual de 1.º solo carga Comunicación, Math, English y (en P1) Music y PE. Science y '+
-    'Social viven en los propios Project.docx, no en esa hoja.'),
+    'Social no están en esa hoja: viven en los Project.docx del grado, y aquí se transcriben '+
+    'semana a semana — los bloques marcados «del Project.docx» salen de ahí.'),
   areaEje:'social', areasArticuladas:['science','comunicacion','math','english'],
   situacion:L('P1 and P2 ask the same question about two different subjects. In P1 the child '+
     'looks at himself: his face, his fingerprints, his ID card, how he has changed, where his '+
@@ -304,9 +307,12 @@ window.PROJECT_ARCS = {
     'equipo de 1.º. El portal solo pone el título del arco, la pregunta esencial y la narrativa '+
     'que une los dos periodos.'),
   notaPlan:L('The Grade 1 annual plan only carries Comunicación, Math and English in P3, and only '+
-    'English in P4. The Science and Social Studies content of this arc is in the Project.docx files.',
+    'English in P4. The Science and Social Studies content of this arc comes from the grade own '+
+    'Project 3 and Project 4.docx, transcribed week by week — the blocks marked «from the '+
+    'Project.docx».',
     'El plan anual de 1.º solo carga Comunicación, Math e English en P3, y solo English en P4. El '+
-    'contenido de Science y Social de este arco está en los propios Project.docx.'),
+    'contenido de Science y Social de este arco sale de los Project 3 y Project 4.docx del grado, '+
+    'transcritos semana a semana — los bloques marcados «del Project.docx».'),
   areaEje:'science', areasArticuladas:['social','math','comunicacion','english'],
   situacion:L('Both periods share one spine that the plan itself writes twice: the three regions '+
     'of Peru. In P3, the coast, the highlands and the jungle explain why a different disaster '+
@@ -2725,4 +2731,99 @@ window.PROJECT_ARCS_SUELTOS = [
      'ingles, pero no un proyecto interdisciplinario de once semanas. Cuando el equipo de 1.o '+
      'escriba los dos Project.docx, se transcriben igual que los cuatro primeros.')}
 ];
+
+/* ==================================================================
+   LA SEMANA DE MAS: propuesta concreta para los nueve sitios.
+
+   El Primary Calendar da 34 semanas de clase (P1=6, P2=5, P3=6, P4=6,
+   P5=5, P6=6) y el Excel del plan anual carga una semana mas en nueve
+   periodos. Aqui va, para cada uno, QUE SE PROPONE HACER, para que
+   coordinacion solo tenga que decir si o no.
+
+   Dos de los nueve no son contenido que no quepa: son errores de dato
+   (una nota del profesor y filas repetidas). Se marcan aparte.
+
+   estado:  'fusionar'  el contenido es real y se propone juntarlo
+            'borrar'    no hay contenido: es una nota o un duplicado
+   absorbe: la semana que se queda con lo que sobra
+*/
+window.PROJECT_ARCS_FUSION = {
+
+'g1.p2': {grade:'g1', periodo:2, absorbe:5, estado:'fusionar',
+  propuesta:L('Move the riddle presentation and the plan lector to W5, which already closes the '+
+    'riddle ("Creamos nuestra adivinanza"); "Double facts to 10" goes with the "Add 6+1 / 7+2" of '+
+    'W5, which is the same content said twice.',
+    'Pasar la exposición de adivinanzas y el plan lector a W5, que ya cierra la adivinanza '+
+    '(«Creamos nuestra adivinanza»); «Double facts to 10» va con el «Add 6+1 / 7+2» de W5, que es '+
+    'lo mismo dicho dos veces.')},
+
+'g1.p5': {grade:'g1', periodo:5, absorbe:5, estado:'fusionar',
+  propuesta:L('Only one English line is left over ("Recognizes familiar words, high-frequency '+
+    'words and cvc words in context") and it is the natural review of W5 "Early sentence '+
+    'formation". One session absorbs it.',
+    'Solo sobra una línea de inglés («Recognizes familiar words, high-frequency words and cvc '+
+    'words in context») y es el repaso natural del «Early sentence formation» de W5. Una sesión '+
+    'la absorbe.')},
+
+'g2.p2': {grade:'g2', periodo:2, absorbe:5, estado:'fusionar',
+  propuesta:L('Only one PE session is left over (body expression in gymnastics, posture and '+
+    'injury prevention, group routines). W5 already does combined gymnastic sequences and hygiene: '+
+    'they merge into one.',
+    'Solo sobra una sesión de Educación Física (expresión corporal en gimnasia, postura y '+
+    'prevención de lesiones, rutinas en grupo). W5 ya hace secuencias gimnásticas combinadas e '+
+    'higiene: se funden en una.')},
+
+'g2.p5': {grade:'g2', periodo:5, absorbe:5, estado:'fusionar',
+  propuesta:L('The laboratory block in Science (observing, safety measures, logbook, communicating '+
+    'findings) and "Tally charts / picture graphs" in Math move to W5. The English that is left '+
+    'over ("Present Continuous, basic conjunctions") is a literal repeat of W5 and should simply '+
+    'be deleted.',
+    'El bloque de laboratorio de Science (observar, medidas de seguridad, cuaderno de registro, '+
+    'comunicar hallazgos) y los «Tally charts / picture graphs» de Math pasan a W5. El inglés que '+
+    'sobra («Present Continuous, conjunciones básicas») es repetición literal de W5 y lo que toca '+
+    'es borrarlo.')},
+
+'g3.p5': {grade:'g3', periodo:5, absorbe:5, estado:'fusionar', ojo:true,
+  propuesta:L('This is the one to look at. What is left over is the WHOLE exhibition: the model or '+
+    'experiment, the scientific explanation, public speaking, civic behaviour at the exhibition '+
+    'and the reflection "Why is Earth important?". The proposal is to hold the exhibition on the '+
+    'last day of W5, alongside the design of the model — which is exactly what the g3.t3 arc '+
+    'already does. The alternative is to move it into P6 W1, but then it stops closing the term.',
+    'Este es el que hay que mirar. Lo que sobra es la exhibición ENTERA: el modelo o experimento, '+
+    'la explicación científica, hablar en público, el comportamiento cívico en la exhibición y la '+
+    'reflexión «Why is Earth important?». La propuesta es hacer la exhibición el último día de W5, '+
+    'junto al diseño del modelo — que es justo lo que ya hace el arco g3.t3. La alternativa es '+
+    'llevarla a P6 W1, pero entonces deja de cerrar el trimestre.')},
+
+'g4.p2': {grade:'g4', periodo:2, absorbe:5, estado:'fusionar',
+  propuesta:L('Only "Rotación por puestos" in PE is left over. It is a rotation of positions, not '+
+    'a new topic: W5 absorbs it.',
+    'Solo sobra «Rotación por puestos» de Educación Física. Es una rotación de posiciones, no un '+
+    'tema nuevo: la absorbe W5.')},
+
+'g4.p5': {grade:'g4', periodo:5, absorbe:5, estado:'fusionar',
+  propuesta:L('"Equations" in Math and "Tildación: palabras esdrújulas" in Comunicación go to W5, '+
+    'which already carries decimals and tildación of palabras graves. "Planets in the solar '+
+    'system" in Science closes better with the "Energy" of W4 than on its own.',
+    '«Equations» de Math y «Tildación: palabras esdrújulas» de Comunicación pasan a W5, que ya '+
+    'lleva decimales y tildación de graves. «Planets in the solar system» de Science cierra mejor '+
+    'con la «Energy» de W4 que suelto.')},
+
+'g5.p2': {grade:'g5', periodo:2, absorbe:null, estado:'borrar',
+  propuesta:L('There is NOTHING to merge here. The extra row only contains the teacher note "Solo '+
+    'son 5 semanitas :) xd" — they had already spotted it. The fix is to delete the row.',
+    'Aquí NO hay nada que fusionar. La fila que sobra solo contiene la nota del profesor «Solo son '+
+    '5 semanitas :) xd» — ya lo habían visto ellos. El arreglo es borrar la fila.')},
+
+'g5.p5': {grade:'g5', periodo:5, absorbe:5, estado:'fusionar',
+  propuesta:L('Half of it is a duplicate: Science ("primary and secondary sources") and Social '+
+    'Studies ("Ecosystems") repeat W5 word for word and should be deleted. What is genuinely new '+
+    'is Math ("Patterns & equations"), English ("Review of verb tenses"), Comunicación ("Uso de '+
+    'hay, ahí y ¡ay!") and one PE session: those four go to W5.',
+    'La mitad es duplicado: Science («primary and secondary sources») y Social («Ecosystems») '+
+    'repiten W5 palabra por palabra y hay que borrarlos. Nuevo de verdad solo hay Math («Patterns '+
+    '& equations»), English («Review of verb tenses»), Comunicación («Uso de hay, ahí y ¡ay!») y '+
+    'una sesión de PE: esos cuatro van a W5.')}
+
+};
 })();
