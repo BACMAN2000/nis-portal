@@ -49,8 +49,12 @@ function bandas(c){
   if(!filas) return '';
   return `<details class="yle-desc"><summary>Descriptores oficiales${c.sub ? ' · ' + c.sub.join(' · ') : ''}</summary><table>${filas}</table></details>`;
 }
-async function indice(level){ if(!INDICES[level]){ try { INDICES[level] = await j('yle/' + level + '/index.json'); } catch(e){ INDICES[level] = []; } } return INDICES[level]; }
-async function testJson(level, n){ const k = level + n; if(!TESTS[k]){ try { TESTS[k] = await j('yle/' + level + '/test-' + String(n).padStart(2, '0') + '.json'); } catch(e){ TESTS[k] = null; } } return TESTS[k]; }
+/* Los examenes ya no son archivos publicos: viven en la tabla yle_tests, porque el
+   JSON lleva dentro las claves de respuesta y cualquiera con la direccion se llevaba
+   el solucionario de los treinta (6-sep-2026). El panel los lee de la base con la
+   sesion del profesor, igual que la pantalla del alumno. */
+async function indice(level){ if(!INDICES[level]){ try { const r = await sb.from('yle_tests').select('number, theme').eq('level', level).order('number'); INDICES[level] = r.data || []; } catch(e){ INDICES[level] = []; } } return INDICES[level]; }
+async function testJson(level, n){ const k = level + n; if(!(k in TESTS)){ try { const r = await sb.from('yle_tests').select('data').eq('level', level).eq('number', n).maybeSingle(); TESTS[k] = (r.data && r.data.data) || null; } catch(e){ TESTS[k] = null; } } return TESTS[k]; }
 function band(p){ const b = (SPECS && SPECS.shields && SPECS.shields.nis_estimate_bands) || [[90, 5], [75, 4], [60, 3], [40, 2], [0, 1]]; for(const x of b) if(p >= x[0]) return x[1]; return 1; }
 function escudos(n){ let h = '<span class="yle-sh">'; for(let i = 1; i <= 5; i++) h += '<i class="' + (i <= (n || 0) ? 'on' : '') + '">' + i + '</i>'; return h + '</span>'; }
 const CSS = `<style id="yle-panel-css">
@@ -127,10 +131,11 @@ function barra(conNivel){
    una sola vez) y para leerlo en clase cuando prefiere hacerlo él. Sale de la
    clave "audio" del propio test, así que guion y grabación no se pueden separar. */
 const VOZ = {R: 'Examinadora', F: 'Mujer', M: 'Hombre', Fch: 'Niña', Mch: 'Niño'};
+/* Ya no hay tests "ineditos" que rescatar uno a uno: el indice sale de la misma
+   tabla que los examenes, asi que lista todo lo que existe. Con archivos habia dos
+   fuentes (index.json y el disco) y una podia quedarse corta. */
 async function testsDe(level){
-  const idx = await indice(level), vistos = new Set(idx.map(t => t.number)), fuera = [];
-  for(let n = 1; n <= 10; n++){ if(vistos.has(n)) continue; const t = await testJson(level, n); if(t) fuera.push({number: n, theme: t.theme || '', inedito: true}); }
-  return idx.concat(fuera).sort((a, b) => a.number - b.number);
+  return (await indice(level)).slice().sort((a, b) => a.number - b.number);
 }
 async function vistaGuion(){
   const lista = await testsDe(V.level);

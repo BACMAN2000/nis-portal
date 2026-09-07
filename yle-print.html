@@ -11,8 +11,9 @@
 
    El motor de pantalla (yle-practice.html) corrige solo y cronometra; en la
    sala de examen del colegio hace falta otra cosa: la hoja que el nino rellena
-   a lapiz mientras el profesor pone el audio. Esta pagina lee el mismo JSON de
-   yle/<nivel>/test-NN.json —una sola fuente, sin copiar nada— y lo pinta en A4.
+   a lapiz mientras el profesor pone el audio. Esta pagina lee el mismo examen
+   que la pantalla del alumno, de la tabla yle_tests --una sola fuente, sin
+   copiar nada- y lo pinta en A4.
 
    yle-print.html?level=movers&test=3            el examen
    yle-print.html?level=movers&test=3&key=1      la hoja de respuestas
@@ -90,6 +91,8 @@ ol.items li{margin-bottom:9px;break-inside:avoid}
 </div>
 <div class="hoja" id="hoja"><p style="color:#5a6472">Loading…</p></div>
 
+<script src="vendor/supabase-js.min.js"></script>
+<script src="config.js"></script>
 <script src="yle-media.js?v=1"></script>
 <script>
 var Q = new URLSearchParams(location.search);
@@ -219,16 +222,41 @@ function controles(idx){
 function j(u){ return fetch(u + (u.indexOf('?') < 0 ? '?' : '&') + 'v=1').then(function(r){
   if (!r.ok) throw new Error(u + ' → ' + r.status); return r.json(); }); }
 
-Promise.all([
-  j('yle/specs.json'),
-  j('yle/' + LEVEL + '/index.json').catch(function(){ return {tests: []}; }),
-  j('yle/' + LEVEL + '/test-' + nn() + '.json'),
-]).then(function(r){
-  controles(r[1]);
-  pinta(r[2], r[0]);
+/* Los tests viven en la tabla yle_tests, no en archivos: el JSON lleva dentro las
+   claves de respuesta y como archivo publico cualquiera veia el solucionario de
+   los 30 examenes (6-sep-2026). Esta hoja la saca el profesor desde el portal,
+   con su sesion ya abierta, igual que la pantalla del alumno. Solo specs.json
+   sigue siendo archivo: son los minutos y las tareas del Handbook, no el examen. */
+var sb = null;
+function client(){ if(sb) return sb; if(!window.supabase || !window.NIS_CONFIG) return null;
+  sb = supabase.createClient(NIS_CONFIG.SUPABASE_URL, NIS_CONFIG.SUPABASE_KEY); return sb; }
+
+function indice(){
+  var c = client(); if(!c) return Promise.resolve({tests: []});
+  return c.from('yle_tests').select('number').eq('level', LEVEL).order('number')
+    .then(function(r){ return {tests: (r.data || []).map(function(x){ return x.number; })}; })
+    .catch(function(){ return {tests: []}; });
+}
+function traeTest(){
+  var c = client();
+  if(!c) return Promise.reject(new Error('the portal configuration did not load. Reload the page.'));
+  return c.auth.getSession().then(function(u){
+    if(!(u && u.data && u.data.session)) throw new Error('sign in through the portal to print this paper.');
+    return c.from('yle_tests').select('data').eq('level', LEVEL).eq('number', TEST).maybeSingle();
+  }).then(function(r){
+    if(r.error) throw new Error(r.error.message);
+    if(!r.data || !r.data.data) throw new Error('test ' + TEST + ' of ' + NAMES[LEVEL] + ' is not published yet.');
+    return r.data.data;
+  });
+}
+
+/* Los selectores se pintan aunque el examen falle: si el profesor pide un test que
+   no esta, tiene que poder saltar a otro sin escribir la direccion a mano. */
+indice().then(controles);
+Promise.all([j('yle/specs.json'), traeTest()]).then(function(r){
+  pinta(r[1], r[0]);
 }).catch(function(e){
   $('#hoja').innerHTML = '<p>Could not build the paper: ' + esc(e.message) + '</p>';
-  controles({tests: []});
 });
 </script>
 </body>
