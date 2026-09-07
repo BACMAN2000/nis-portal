@@ -49,6 +49,14 @@ const IDU   = L('interdisciplinary unit', 'unidad interdisciplinaria');
 const AREA  = L('single-subject unit', 'unidad de area');
 const VACIA = L('empty template', 'plantilla vacia');
 
+/* Para abrir una unidad en Toddle hace falta el curso del grado. Estos son
+   los de la seccion A, leidos el 6-sep-2026; 1.o no esta en Toddle. */
+window.TODDLE_PLATAFORMA = '73866419409797881';
+window.TODDLE_CURSO = {
+  g2:'325634377654495949', g3:'325634377671273172',
+  g4:'325634377725799148', g5:'325634377889377057'
+};
+
 window.PROJECT_ARCS = {
 
 /* ==================================================================== 1.o
@@ -724,8 +732,8 @@ window.PROJECT_ARCS = {
       'El niño enseña su tabla, su gráfico y su carta, y cuenta en una frase qué le respondieron. '+
       'La pregunta que se le hace delante de la familia es la misma que se le hizo todo el '+
       'trimestre: "¿qué evidencia tienes?"')},
-  toddle:[{periodo:1, nombre:'P1 - Community Voices', tipo:IDU, semanas:5, area:'STEAM +2'},
-          {periodo:2, nombre:'P2 - Living Changes: My Story, Our World and Life Cycles', tipo:IDU, semanas:5, area:'Social Studies +1'}],
+  toddle:[{periodo:1, nombre:'P1 - Community Voices', id:'348729414369952536', tipo:IDU, semanas:5, area:'STEAM +2'},
+          {periodo:2, nombre:'P2 - Living Changes: My Story, Our World and Life Cycles', id:'368674725431375811', tipo:IDU, semanas:5, area:'Social Studies +1'}],
   unidades:[],
   revisar:[
     L('In Toddle this term is TWO projects with names of their own, not one: "Community Voices" '+
@@ -950,9 +958,9 @@ window.PROJECT_ARCS = {
       'he predicted before Pachacámac that turned out differently.',
       'El niño enseña su parada de la exhibición y su Field Journal, y explica una cosa que '+
       'predijo antes de Pachacámac y que salió distinta.')},
-  toddle:[{periodo:3, nombre:'P3 - Perú: Our Home', tipo:IDU, semanas:5, area:'Social Studies + Science'},
-          {periodo:4, nombre:'P4 - Growing, Changing and Learning', tipo:IDU, semanas:5, area:'Social Studies'},
-          {periodo:4, nombre:'P4 - Growing, Changing & Learning', tipo:IDU, semanas:6, area:'Science'}],
+  toddle:[{periodo:3, nombre:'P3 - Perú: Our Home', id:'384427774435157434', tipo:IDU, semanas:5, area:'Social Studies + Science'},
+          {periodo:4, nombre:'P4 - Growing, Changing and Learning', id:'397125550088405448', tipo:IDU, semanas:5, area:'Social Studies'},
+          {periodo:4, nombre:'P4 - Growing, Changing & Learning', id:'411775071187664126', tipo:IDU, semanas:6, area:'Science'}],
   unidades:[],
   revisar:[
     L('REBUILT on 6 Sep against Toddle. The earlier version of this arc proposed a field guide to '+
@@ -1125,7 +1133,7 @@ window.PROJECT_ARCS = {
       'what he would change if he did it again.',
       'El niño enseña su registro de la prueba y hace la demostración en pequeño. Se le pregunta '+
       'qué cambiaría si lo repitiera.')},
-  toddle:[{periodo:5, nombre:'P5 - Matter Around Us: Little Scientists, Big Changes', tipo:AREA, semanas:6, area:'Social Studies'}],
+  toddle:[{periodo:5, nombre:'P5 - Matter Around Us: Little Scientists, Big Changes', id:'417394123775964627', tipo:AREA, semanas:6, area:'Social Studies'}],
   unidades:[{n:5, titulo:'The Shadow Show'},{n:6, titulo:L('Things that move','Cosas que se mueven')}],
   revisar:[
     L('This arc is already running as two portal units (U5 and U6). The arc only declares that '+
@@ -1325,8 +1333,8 @@ window.PROJECT_ARCS = {
       'explains one decision the team changed because of what the data said.',
       'El niño enseña su tabla de frecuencias y el gráfico del día de la venta, y explica una '+
       'decisión que el equipo cambió por lo que decían los datos.')},
-  toddle:[{periodo:1, nombre:'P1 - My Vote, My Voice', tipo:IDU, semanas:5, area:'Social Studies +1'},
-          {periodo:2, nombre:'P2 - The Power of Food (We are Against Anemia)', tipo:IDU, semanas:5, area:'Social Studies +1'}],
+  toddle:[{periodo:1, nombre:'P1 - My Vote, My Voice', id:'348719903823380805', tipo:IDU, semanas:5, area:'Social Studies +1'},
+          {periodo:2, nombre:'P2 - The Power of Food (We are Against Anemia)', id:'370561213261697903', tipo:IDU, semanas:5, area:'Social Studies +1'}],
   unidades:[],
   revisar:[
     L('It matches Toddle: P1 is "My Vote, My Voice" and P2 is "The Power of Food (We are Against '+
@@ -1524,8 +1532,8 @@ window.PROJECT_ARCS = {
       'trip that he did not know before going.',
       'El niño trae su maqueta y su línea de tiempo y explica qué aprendió en el viaje que no '+
       'sabía antes de ir.')},
-  toddle:[{periodo:3, nombre:'P3 - Passport Through Peru', tipo:IDU, semanas:5, area:'Social Studies +1'},
-          {periodo:4, nombre:'P4 - Guardians of Our Ecosystems', tipo:IDU, semanas:6, area:'Social Studies +1'}],
+  toddle:[{periodo:3, nombre:'P3 - Passport Through Peru', id:'383615238307599907', tipo:IDU, semanas:5, area:'Social Studies +1'},
+          {periodo:4, nombre:'P4 - Guardians of Our Ecosystems', id:'399487668934694753', tipo:IDU, semanas:6, area:'Social Studies +1'}],
   unidades:[],
   revisar:[
     L('It matches Toddle: P3 is "Passport Through Peru" and P4 is "Guardians of Our Ecosystems". '+
@@ -1928,9 +1936,9 @@ window.PROJECT_ARCS = {
       'argument convinced the others and why.',
       'El niño enseña su gráfico y el acuerdo firmado por la clase, y explica qué argumento '+
       'convenció a los demás y por qué.')},
-  toddle:[{periodo:1, nombre:'P1 - Making Choices', tipo:AREA, semanas:6, area:'Social Studies'},
-          {periodo:1, nombre:'U1 - Life on Earth', tipo:AREA, semanas:6, area:'Science'},
-          {periodo:2, nombre:'P2 - Asking Questions, Researching Answers', tipo:AREA, semanas:6, area:'Science'}],
+  toddle:[{periodo:1, nombre:'P1 - Making Choices', id:'348716752110108976', tipo:AREA, semanas:6, area:'Social Studies'},
+          {periodo:1, nombre:'U1 - Life on Earth', id:'348716144787488639', tipo:AREA, semanas:6, area:'Science'},
+          {periodo:2, nombre:'P2 - Asking Questions, Researching Answers', id:'367732262281698740', tipo:AREA, semanas:6, area:'Science'}],
   unidades:[],
   revisar:[
     L('Grade 4 has NO interdisciplinary unit at all in Toddle: its 23 units are single-subject, '+
@@ -2166,12 +2174,12 @@ window.PROJECT_ARCS = {
       'to somebody travelling to Ica for the first time — and says where in his notes it came from.',
       'El niño enseña su página de la guía y lee el consejo que le daría a alguien que viaja a Ica '+
       'por primera vez — y dice de qué parte de sus notas salió.')},
-  toddle:[{periodo:3, nombre:'P.3 "Peru to the World"', tipo:AREA, semanas:5, area:'Social Studies'},
-          {periodo:3, nombre:'U3 - Ecosystems of Peru', tipo:AREA, semanas:4, area:'Science'},
-          {periodo:3, nombre:'U3 - Learn and Celebrate', tipo:AREA, semanas:4, area:'English'},
-          {periodo:4, nombre:'U.4 Sustainable Ica: History, Economy and Environment', tipo:AREA, semanas:5, area:'Social Studies'},
-          {periodo:4, nombre:'U4 - Your Guide to Exploring Ica', tipo:AREA, semanas:5, area:'English'},
-          {periodo:4, nombre:'P.4 Math "Fractions and Chance: Making Fair Decisions"', tipo:AREA, semanas:5, area:'Math'}],
+  toddle:[{periodo:3, nombre:'P.3 "Peru to the World"', id:'383610253951915541', tipo:AREA, semanas:5, area:'Social Studies'},
+          {periodo:3, nombre:'U3 - Ecosystems of Peru', id:'383916426395673291', tipo:AREA, semanas:4, area:'Science'},
+          {periodo:3, nombre:'U3 - Learn and Celebrate', id:'383916659879994060', tipo:AREA, semanas:4, area:'English'},
+          {periodo:4, nombre:'U.4 Sustainable Ica: History, Economy and Environment', id:'396666107403992878', tipo:AREA, semanas:5, area:'Social Studies'},
+          {periodo:4, nombre:'U4 - Your Guide to Exploring Ica', id:'396667280177528623', tipo:AREA, semanas:5, area:'English'},
+          {periodo:4, nombre:'P.4 Math "Fractions and Chance: Making Fair Decisions"', id:'402063552711520358', tipo:AREA, semanas:5, area:'Math'}],
   unidades:[],
   revisar:[
     L('REBUILT on 6 Sep against Toddle. The earlier version of this arc was about measurement and '+
@@ -2568,8 +2576,8 @@ window.PROJECT_ARCS = {
       'he was wrong. That is what is asked of him: not to be right, but to know what the data told him.',
       'El alumno enseña su hipótesis original al lado de su conclusión y explica en qué se '+
       'equivocó. Eso es lo que se le pide: no acertar, sino saber qué le dijeron los datos.')},
-  toddle:[{periodo:1, nombre:'Project 1: Building our 5th Grade Territory!', tipo:IDU, semanas:5, area:'Social Studies'},
-          {periodo:2, nombre:'PROJECT 2 - Life Systems: Everything is Connected', tipo:IDU, semanas:5, area:'Social Studies +1'}],
+  toddle:[{periodo:1, nombre:'Project 1: Building our 5th Grade Territory!', id:'348715018793025404', tipo:IDU, semanas:5, area:'Social Studies'},
+          {periodo:2, nombre:'PROJECT 2 - Life Systems: Everything is Connected', id:'370929857225318560', tipo:IDU, semanas:5, area:'Social Studies +1'}],
   unidades:[],
   revisar:[
     L('The title comes from Toddle: "Project 1: Building our 5th Grade Territory!". But there that '+
@@ -2742,8 +2750,8 @@ window.PROJECT_ARCS = {
       'evidence he collected and his new research question.',
       '«My Scientific Journey»: lo que sabía antes, lo que descubrió durante el viaje, las '+
       'evidencias recogidas y su nueva pregunta de investigación.')},
-  toddle:[{periodo:4, nombre:'UNITS 4 & 5 - Discovering Sustainable Communities Through Science', tipo:AREA, semanas:11, area:'Science'},
-          {periodo:5, nombre:'UNITS 4 & 5 - Discovering Sustainable Communities Through Science', tipo:AREA, semanas:11, area:'Science'}],
+  toddle:[{periodo:4, nombre:'UNITS 4 & 5 - Discovering Sustainable Communities Through Science', id:'408060031964039614', tipo:AREA, semanas:11, area:'Science'},
+          {periodo:5, nombre:'UNITS 4 & 5 - Discovering Sustainable Communities Through Science', id:'408060031964039614', tipo:AREA, semanas:11, area:'Science'}],
   unidades:[{n:5, titulo:L('Unit 5 in the portal','Unidad 5 del portal')}],
   revisar:[
     L('Confirmed in Toddle: it is entered as ONE single eleven-week unit, "UNITS 4 & 5 - '+
@@ -2764,7 +2772,7 @@ window.PROJECT_ARCS = {
 
 };
 window.PROJECT_ARCS_SUELTOS = [
-  {grade:'g5', periodos:[3],
+  {grade:'g5', periodos:[3], id:'385483254179852567',
    titulo:L('Peruvian History  ·  in Toddle: Project 3 - Peru Heritage Through Food',
             'Peruvian History  ·  en Toddle: Project 3 - Peru Heritage Through Food'),
    motivo:L('Grade 5 gives P3 over to the history of Peru (consumer rights, advertising, centuries '+

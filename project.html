@@ -84,6 +84,8 @@ table.rub td.crit{background:#fafbff;font-weight:600;width:32%}
 .toddle li{margin:.25em 0}
 .toddle .per{display:inline-block;min-width:26px;font-weight:800;color:#5B21B6}
 .toddle .tipo{font-size:.76rem;color:var(--grey)}
+.toddle a{color:#5B21B6;text-decoration:none;font-weight:600}
+.toddle a:hover{text-decoration:underline}
 .srcbox{background:#F8FAFC;border:1px solid var(--line);border-radius:var(--r-sm);padding:13px 15px;font-size:.82rem;color:var(--grey)}
 .arcs{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
 a.arc{display:block;text-decoration:none;color:#fff;border-radius:var(--r);padding:20px;box-shadow:var(--shadow);min-height:150px;position:relative;overflow:hidden}
@@ -114,7 +116,7 @@ button.lang:hover{background:rgba(255,255,255,.30)}
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js?v=21"></script>
-<script src="project-arcs.js?v=8"></script>
+<script src="project-arcs.js?v=9"></script>
 <script>
 const $ = s => document.querySelector(s);
 const P = new URLSearchParams(location.search);
@@ -214,6 +216,8 @@ const UI = {
   esperaSi:    {en:'Coordination only has to say yes or no.',
                 es:'Coordinación solo tiene que decir sí o no.'},
   delDocx:     {en:'from the Project.docx',          es:'del Project.docx'},
+  abreEnToddle:{en:'Each name opens its own planner in Toddle. You need to be signed in there.',
+                es:'Cada nombre abre su propio planificador en Toddle. Hay que tener sesión allí.'},
   verInforme:  {en:'Planning report: the four decisions, the extra week and the secondary coverage',
                 es:'Informe de planificación: las cuatro decisiones, la semana de más y la cobertura de secundaria'}
 };
@@ -239,6 +243,14 @@ const ARC = P.get('arc') || '';
 const ARCS = window.PROJECT_ARCS || {};
 const SUELTOS = window.PROJECT_ARCS_SUELTOS || [];
 const FUSION = window.PROJECT_ARCS_FUSION || {};
+/* Enlace directo a la ficha de la unidad en Toddle. Sin id no hay enlace:
+   mejor el nombre suelto que un enlace que lleve a una pantalla de login. */
+function urlToddle(grade, id){
+  const curso = (window.TODDLE_CURSO||{})[grade];
+  if(!curso || !id) return null;
+  return 'https://web.toddleapp.com/platform/' + window.TODDLE_PLATAFORMA +
+         '/courses/' + curso + '/unitPlans/' + id + '/planner';
+}
 
 /* El contenido por area y semana NO vive en project-arcs.js: se lee del
    volcado del Annual Plan del colegio. Si el JSON no esta, la pagina sigue
@@ -381,7 +393,8 @@ function pintaIndice(){
     h += `<div class="sec-title"><h2>${u('fueraTitulo')}</h2>
       <span class="hint">${u('fueraHint')}</span></div><div class="card">`;
     sueltos.forEach(s => {
-      h += `<p style="margin:0 0 10px"><b>${esc(t(s.titulo))}</b>
+      const urlS = urlToddle(s.grade, s.id);
+      h += `<p style="margin:0 0 10px"><b>${urlS ? `<a href="${urlS}" target="_blank" rel="noopener">${esc(t(s.titulo))} &#8599;</a>` : esc(t(s.titulo))}</b>
         <span class="muted">— ${s.grade.toUpperCase()}, P${s.periodos.join(', P')}</span><br>
         <span class="muted" style="font-size:.88rem">${esc(t(s.motivo))}</span></p>`;
     });
@@ -419,8 +432,14 @@ function pintaArco(k, a){
      manera, lo primero que hay que ver es la equivalencia. */
   if((a.toddle||[]).length){
     h += `<div class="toddle"><h4>${u('toddleTit')}</h4>
-      <ul>${a.toddle.map(x=>`<li><span class="per">P${x.periodo}</span> ${esc(x.nombre)}
-        <span class="tipo">· ${esc(t(x.tipo))} · ${x.semanas} ${u('semanas')} · ${esc(t(x.area))}</span></li>`).join('')}</ul></div>`;
+      <ul>${a.toddle.map(x=>{
+        const url = urlToddle(a.grade, x.id);
+        const nom = url ? `<a href="${url}" target="_blank" rel="noopener">${esc(x.nombre)} &#8599;</a>`
+                        : esc(x.nombre);
+        return `<li><span class="per">P${x.periodo}</span> ${nom}
+        <span class="tipo">· ${esc(t(x.tipo))} · ${x.semanas} ${u('semanas')} · ${esc(t(x.area))}</span></li>`;
+      }).join('')}</ul>
+      <p class="pnote" style="margin:8px 0 0">${u('abreEnToddle')}</p></div>`;
   } else if(a.toddle){
     h += `<div class="toddle"><h4>${u('toddleTit')}</h4>
       <p style="margin:0;font-size:.9rem">${u('toddleNada')}</p></div>`;
