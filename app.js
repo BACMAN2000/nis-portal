@@ -1949,7 +1949,7 @@ function ensureChart(){
   if(_chartLib) return _chartLib;
   _chartLib=new Promise((res,rej)=>{
     const s=document.createElement('script');
-    s.src='https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js';
+    s.src='vendor/chart.umd.min.js';
     s.onload=()=>res(); s.onerror=()=>rej(new Error('No se pudo cargar Chart.js (conexión).'));
     document.head.appendChild(s);
   });
@@ -5827,8 +5827,8 @@ function ensurePdfLibs(){
   if(_pdfLibs) return _pdfLibs;
   const load=(src)=>new Promise((res,rej)=>{ const s=document.createElement('script'); s.src=src; s.onload=res; s.onerror=()=>rej(new Error('No se pudieron cargar las librerías de PDF (conexión).')); document.head.appendChild(s); });
   _pdfLibs=(async()=>{
-    if(!window.html2canvas) await load('https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js');
-    if(!(window.jspdf&&window.jspdf.jsPDF)) await load('https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js');
+    if(!window.html2canvas) await load('vendor/html2canvas.min.js');
+    if(!(window.jspdf&&window.jspdf.jsPDF)) await load('vendor/jspdf.umd.min.js');
   })();
   return _pdfLibs;
 }
