@@ -201,6 +201,7 @@ textarea:focus{outline:none;border-color:var(--blue)}
 <script src="activities-data.js?v=12"></script>
 <script src="class-files.js?v=2"></script>
 <script src="unit-plans.js?v=15"></script>
+<script src="project-arcs.js?v=9"></script>
 <script src="nis-nav.js?v=2"></script>
 <script>
 /* Motor del hub de unidad. Los datos vienen de unit-plans.js, que es una copia
@@ -233,6 +234,31 @@ if(!U){
 } else {
   document.title = 'Unit '+(U.label||U.n)+' · '+U.title+' — Nordic International School';
   // pinta() se llama al final del script: usa `sb`/`me`, que se declaran abajo.
+}
+
+/* El arco de proyecto al que pertenece esta unidad, si lo hay. La unidad ya
+   enlaza hacia dentro (actividades, entregas); faltaba el enlace hacia
+   arriba: de que proyecto de once semanas forma parte. */
+function arcoDeEstaUnidad(){
+  const A = window.PROJECT_ARCS || {};
+  const k = Object.keys(A).find(x => A[x].grade === GRADE &&
+    (A[x].unidades||[]).some(u => String(u.n) === String(UNIT)));
+  return k ? [k, A[k]] : null;
+}
+function bandaDelArco(){
+  const par = arcoDeEstaUnidad();
+  if(!par) return '';
+  const [k, a] = par;
+  const tit = typeof a.titulo === 'string' ? a.titulo : (a.titulo.en || a.titulo.es);
+  const sub = typeof a.subtitulo === 'string' ? a.subtitulo : (a.subtitulo.en || a.subtitulo.es);
+  return `<a href="project.html?arc=${encodeURIComponent(k)}&back=${encodeURIComponent(location.pathname+location.search)}"
+    style="display:block;text-decoration:none;background:#F5F3FF;border:1px solid #DDD6FE;
+           border-radius:12px;padding:13px 16px;margin:-6px 0 18px">
+    <span style="font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#5B21B6;font-weight:700">
+      Part of the term project</span>
+    <div style="font-weight:700;color:#244c77;margin-top:3px">${esc(tit)} &#8594;</div>
+    <div style="font-size:.85rem;color:#636465">${esc(sub)} · ${a.semanas} weeks · P${a.periodos.join(' + P')}</div>
+  </a>`;
 }
 
 function pinta(){
@@ -299,6 +325,7 @@ function pinta(){
     <div class="bigq">Big question — ${esc(U.bigq)}</div>
     <p class="meta">${U.weeks} weeks · ${esc(U.situation)}</p>
   </div>
+  ${bandaDelArco()}
   ${esProfe?`<div style="display:flex;gap:10px;flex-wrap:wrap;margin:-6px 0 18px">
     <a href="teacher-guide.html?grade=${encodeURIComponent(GRADE)}&unit=${U.n}" target="_blank" rel="noopener"
        style="background:#eef4fb;border:1px solid #cfe0f0;color:#244c77;text-decoration:none;
