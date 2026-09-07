@@ -271,6 +271,7 @@ function header(){
     <span class="role-chip">${esc(p.role||'')}</span>
     <span class="who">${esc(name)}</span>
     ${real ? `<span class="who" style="opacity:.75">· sesión: ${esc(real.full_name||real.email||'admin')}</span>` : ''}
+    <button class="logout" onclick="window._irAyuda()" title="Ayuda: dónde está cada cosa">❓ Ayuda</button>
     <button class="logout" onclick="logout()">Salir</button>
   </div>`+_previewBar();
 }
@@ -338,6 +339,29 @@ function bindNav(handler){
     };
   });
 }
+/* La ayuda es UNA sola pagina (ayuda.html) y se embebe aqui con el rol ya
+   resuelto, para que se abra por la pestaña que le toca a quien mira. Que sea
+   la misma pagina que se imprime es lo que evita que la ayuda en pantalla y el
+   manual en papel se separen con el tiempo. */
+function ayudaBody(){
+  const r = (state.profile||{}).role || 'student';
+  return `<h1>❓ Ayuda</h1>
+    <p class="muted" style="margin-top:-6px">Dónde está cada cosa y cómo se hace. Puedes cambiar de guía
+      con las pastillas de arriba, y buscar por lo que quieres hacer.</p>
+    <iframe src="ayuda.html?role=${encodeURIComponent(r)}" title="Ayuda del Portal NIS"
+      style="width:100%;height:80vh;min-height:560px;border:0;border-radius:12px;display:block;background:#eef3f9"></iframe>
+    <p class="muted" style="font-size:.82rem;margin-top:10px">¿Prefieres tenerla aparte?
+      <a href="ayuda.html" target="_blank" rel="noopener">Abrir la ayuda en otra pestaña</a>.</p>`;
+}
+/* El ❓ de la cabecera lleva a la pestaña de ayuda del panel que corresponda.
+   En "Ver como alumno" el perfil es el del alumno, asi que se abre la guia del
+   alumno: que es lo que se quiere ver desde ahi. */
+window._irAyuda = function(){
+  const r = (state.profile||{}).role;
+  if(r==='admin')   return renderAdmin('help');
+  if(r==='teacher') return renderTeacher('help');
+  return window._nav('help');
+};
 function munBody(){ return `<iframe src="mun-academy.html" title="MUN Academy" style="width:100%;height:82vh;min-height:560px;border:0;border-radius:12px;display:block;background:#fff"></iframe>`; }
 function liveQuizBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
@@ -1025,6 +1049,9 @@ function renderSuspended(){
 
 /* ===================== ADMIN ===================== */
 async function renderAdmin(tab='users'){
+  // Los simulacros viven fuera del SPA (mocks-cambridge/): se sale a ellos,
+  // igual que hace el panel del profesor.
+  if(tab==='exams'){ window.location.assign(location.origin + '/mocks-cambridge/quizzes.html'); return; }
   /* Agrupado por lo que se va a HACER, no por lo que es cada cosa: primero
      quien existe, luego lo que hay que corregir (el trabajo diario), lo que
      solo se consulta, lo que se ensena, lo que el alumno usa y, al final, lo
@@ -1037,53 +1064,67 @@ async function renderAdmin(tab='users'){
       {key:'users',label:'👥 Usuarios'},
       {key:'teachers',label:'👨‍🏫 Profesores'},
     ]},
+    /* Correccion = todo lo que espera una nota o hay que abrir para que se
+       pueda entregar. Los controles de lectura y los examenes de unidad
+       estaban en Seguimiento para el admin y en Correccion para el profesor:
+       los dos paneles tienen que leerse igual, y quien entra aqui viene a
+       corregir, no a mirar una grafica. */
     {group:'Corrección', icon:'✅', items:[
       {key:'unitprod',label:'🎯 Productos de unidad'},
       {key:'corregir',label:'✅ Corregir fichas'},
+      {key:'unitexams',label:'📋 Exámenes de unidad'},
+      {key:'readers',label:'📖 Controles de lectura'},
       {key:'funnordic',label:'🧸 Fun for Nordic'},
     ]},
+    /* Seguimiento = solo se mira, no se toca nada. */
     {group:'Seguimiento', icon:'📈', items:[
       {key:'stats',label:'📈 Estadísticas'},
       {key:'results',label:'📝 Resultados'},
       {key:'final',label:'🎓 Resultado final'},
-      {key:'readers',label:'📖 Controles de lectura'},
-      {key:'unitexams',label:'📋 Exámenes de unidad'},
       {key:'tiempo',label:'⏱️ Tiempo de pantalla'},
       {key:'honesty',label:'🛡️ Honestidad'},
     ]},
-    {group:'Enseñanza', icon:'🏫', items:[
+    /* Clases = dar clase: la materia, la secuencia, el material y las dos
+       herramientas del profesor. Antes esto se llamaba Ensenanza y tenia doce
+       pestanas: la materia, la planificacion, los tres cursos de primaria, un
+       permiso, los materiales, dos herramientas y la biblioteca. Era el cajon
+       de sastre del menu. */
+    {group:'Clases', icon:'🏫', items:[
       {key:'classes',label:'🏫 Classes'},
       // French vivia SOLO en el hub del alumno, y el admin nunca pasa por ese
       // hub (route() lo manda a renderAdmin): la materia entera quedaba sin
       // puerta de entrada, aunque sus candados si estuvieran en 🔐 Accesos.
       {key:'french',label:'🇫🇷 French'},
       {key:'scope',label:'📚 Scope & Sequence'},
-      // Los tres cursos de primaria: son las clases de G1–G5, asi que van aqui
-      // y no en Cambridge, aunque preparen los examenes YLE.
-      {key:'funstarters',label:'🐧 Starters'},
-      {key:'funmovers',label:'🐺 Movers'},
-      {key:'funflyers',label:'🦅 Flyers'},
-      {key:'fr',label:'🇫🇷 Cap sur le français'},
-      {key:'funaccess',label:'🔐 Unidades por grado'},
       {key:'materiales',label:'📄 Materiales de clase'},
+      // Tenia handler pero no entrada en el menu del admin: desde
+      // administracion no habia forma de llegar a Little Readers.
+      {key:'littlereaders',label:'🧒 Little Readers'},
       {key:'pizarra',label:'📝 Pizarra'},
       {key:'corrector',label:'✍️ Corrector de material'},
       {key:'library',label:'📚 Library'},
     ]},
-    // Todo lo del examen junto: los dos candados (Mocks / Practice, que antes
-    // vivian en Permisos) y las apps de Cambridge. Fun for Nordic entra como la
-    // rama YLE (`funyle`), que es un indice a los tres cursos de Ensenanza y a
-    // las entregas de Correccion — NO la misma clave repetida, que dejaria dos
-    // items del menu resaltados a la vez.
+    /* Los cursos propios, en su grupo. Son las clases de G1–G5 y el curso de
+       frances: no son "Cambridge" aunque preparen los YLE, ni caben ya dentro
+       de Clases. */
+    {group:'Cursos Nordic', icon:'🧸', items:[
+      {key:'funstarters',label:'🐧 Starters'},
+      {key:'funmovers',label:'🐺 Movers'},
+      {key:'funflyers',label:'🦅 Flyers'},
+      {key:'fr',label:'🇫🇷 Cap sur le français'},
+    ]},
+    /* Cambridge: las apps del examen y los dos candados que lo abren. Los
+       candados dicen "Abrir" para que no se confundan con la app. Fun for
+       Nordic salio de aqui: era su TERCERA aparicion en el mismo menu. */
     {group:'Cambridge', icon:'🎓', items:[
       {key:'cambridgehub',label:'🎓 YLE + Main Suite'},
       {key:'yle',label:'🛡️ Panel YLE'},
       {key:'studyplan',label:'📋 Plan de estudio'},
-      {key:'mocks',label:'🔓 Mocks'},
-      {key:'practice',label:'🎯 Practice Tests'},
-      {key:'funyle',label:'🧸 Fun for Nordic'},
+      {key:'exams',label:'🎧 Simulacros y Practice'},
       {key:'uoe',label:'🧩 Use of English'},
       {key:'cambridgeinfo',label:'📘 Info Cambridge'},
+      {key:'mocks',label:'🔓 Abrir Mocks'},
+      {key:'practice',label:'🔓 Abrir Practice Tests'},
     ]},
     {group:'Actividades', icon:'🎮', items:[
       {key:'games',label:'🎲 Games Lab'},
@@ -1092,17 +1133,19 @@ async function renderAdmin(tab='users'){
       {key:'phonics',label:'🔤 Phonics'},
       {key:'coach',label:'🎙️ Pronunciación'},
     ]},
+    /* Permisos = lo que se abre y se cierra por grado. "Abrir examenes de
+       unidad" estaba aqui repitiendo la MISMA clave que en Seguimiento, y una
+       clave en dos grupos deja dos items del menu resaltados a la vez. Ahora
+       vive solo en Correccion, que es donde ademas se califica. */
     {group:'Permisos', icon:'🔐', items:[
-      {key:'unitaccess',label:'📚 Activar unidades'},
-      /* Tambien aqui, y a proposito. En Seguimiento esta al lado de su hermano
-         —los controles de lectura, que abren y cierran igual—, pero quien va a
-         habilitar un examen busca en Permisos, junto a "Activar unidades", y
-         ahi no estaba: el menu nace plegado y la pestana no se encontraba. */
-      {key:'unitexams',label:'📋 Abrir exámenes de unidad'},
       {key:'access',label:'🔐 Accesos'},
+      {key:'unitaccess',label:'📚 Activar unidades'},
+      {key:'funaccess',label:'🔐 Unidades por grado'},
     ]},
+    {key:'help',label:'❓ Ayuda'},
   ], tab, `<div class="center muted">Cargando…</div>`, true);
   bindNav(renderAdmin);
+  if(tab==='help') return $('#main').innerHTML = ayudaBody();
   if(tab==='mun') return $('#main').innerHTML = munBody();
   if(tab==='livequiz') return $('#main').innerHTML = liveQuizBody();
   if(tab==='games') return $('#main').innerHTML = gamesLabBody();
@@ -3174,43 +3217,45 @@ async function renderTeacher(tab){
      igual. Un grupo que se queda sin pestanas (porque el profesor no tiene
      ese acceso) no se pinta. Alumnos va suelto arriba: es por donde entra
      casi siempre. */
-  const suelto = [], correccion = [], seguimiento = [], ensenanza = [], examenes = [];
+  const suelto=[], correccion=[], seguimiento=[], clases=[], cursos=[], cambridge=[], permisos=[];
   if(acc.can_students) suelto.push({key:'students',label:'👥 Alumnos'});
   if(acc.can_results){
     correccion.push({key:'unitprod',label:'🎯 Productos de unidad'});
     correccion.push({key:'corregir',label:'✅ Corregir fichas'});
-    correccion.push({key:'readers',label:'📖 Controles de lectura'});
     correccion.push({key:'unitexams',label:'📋 Exámenes de unidad'});
+    correccion.push({key:'readers',label:'📖 Controles de lectura'});
     correccion.push({key:'funnordic',label:'🧸 Fun for Nordic'});
     seguimiento.push({key:'results',label:'📝 Resultados'});
     seguimiento.push({key:'final',label:'🎓 Resultado final'});
     seguimiento.push({key:'tiempo',label:'⏱️ Tiempo de pantalla'});
-    ensenanza.push({key:'materiales',label:'📄 Materiales de clase'});
   }
   if(acc.can_results||acc.can_students) seguimiento.push({key:'honesty',label:'🛡️ Honestidad'});
-  if(_canClasses) ensenanza.unshift({key:'classes',label:'🏫 Classes'});
-  // French va pegado a Classes: es la otra materia, no un extra del final.
-  if(_canFrench) ensenanza.splice(_canClasses?1:0, 0, {key:'french',label:'🇫🇷 French'});
-  if(teacherAllowedGrades().length) ensenanza.push({key:'unitaccess',label:'📚 Activar unidades'});
-  ensenanza.push({key:'scope',label:'📚 Scope & Sequence'});
-  /* Los tres cursos de primaria (Fun for Nordic). Van sin candado, como Little
+  // Mismo orden que en el menu del admin, pestana por pestana: los dos
+  // paneles se leen igual y una indicacion sirve para los dos.
+  if(_canClasses) clases.push({key:'classes',label:'🏫 Classes'});
+  if(_canFrench)  clases.push({key:'french',label:'🇫🇷 French'});
+  clases.push({key:'scope',label:'📚 Scope & Sequence'});
+  if(acc.can_results) clases.push({key:'materiales',label:'📄 Materiales de clase'});
+  clases.push({key:'littlereaders',label:'🧒 Little Readers'});
+  clases.push({key:'pizarra',label:'📝 Pizarra'});
+  clases.push({key:'corrector',label:'✍️ Corrector de material'});
+  /* Los tres cursos de primaria y el de frances. Van sin candado, como Little
      Readers: son material de consulta, no datos de alumnos. Sus entregas se
      corrigen en Correccion > Fun for Nordic. */
-  ensenanza.push({key:'funstarters',label:'🐧 Starters'});
-  ensenanza.push({key:'funmovers',label:'🐺 Movers'});
-  ensenanza.push({key:'funflyers',label:'🦅 Flyers'});
-  ensenanza.push({key:'fr',label:'🇫🇷 Cap sur le français'});
-  if(teacherAllowedGrades().length) ensenanza.push({key:'funaccess',label:'🔐 Unidades por grado'});
-  ensenanza.push({key:'littlereaders',label:'🧒 Little Readers'});
-  ensenanza.push({key:'pizarra',label:'📝 Pizarra'});
-  ensenanza.push({key:'corrector',label:'✍️ Corrector de material'});
-  examenes.push({key:'cambridgehub',label:'🎓 YLE + Main Suite'});
-  if(teacherAllowedGrades().length) examenes.push({key:'yle',label:'🛡️ Panel YLE'});
-  examenes.push({key:'exams',label:'🎧 Exámenes'});
-  if(teacherAllowedGrades().length) examenes.push({key:'practice',label:'🎯 Practice Tests'});
-  examenes.push({key:'funyle',label:'🧸 Fun for Nordic'});
-  examenes.push({key:'uoe',label:'🧩 Use of English'});
-  examenes.push({key:'cambridgeinfo',label:'📘 Info Cambridge'});
+  cursos.push({key:'funstarters',label:'🐧 Starters'});
+  cursos.push({key:'funmovers',label:'🐺 Movers'});
+  cursos.push({key:'funflyers',label:'🦅 Flyers'});
+  cursos.push({key:'fr',label:'🇫🇷 Cap sur le français'});
+  cambridge.push({key:'cambridgehub',label:'🎓 YLE + Main Suite'});
+  if(teacherAllowedGrades().length) cambridge.push({key:'yle',label:'🛡️ Panel YLE'});
+  cambridge.push({key:'exams',label:'🎧 Simulacros y Practice'});
+  cambridge.push({key:'uoe',label:'🧩 Use of English'});
+  cambridge.push({key:'cambridgeinfo',label:'📘 Info Cambridge'});
+  if(teacherAllowedGrades().length) cambridge.push({key:'practice',label:'🔓 Abrir Practice Tests'});
+  if(teacherAllowedGrades().length){
+    permisos.push({key:'unitaccess',label:'📚 Activar unidades'});
+    permisos.push({key:'funaccess',label:'🔐 Unidades por grado'});
+  }
 
   const nav = [];
   if(suelto.length) nav.push(...suelto);
@@ -3218,7 +3263,9 @@ async function renderTeacher(tab){
   const grupo = (g,ic,items)=>{ if(items.length) nav.push({group:g, icon:ic, items:items}); };
   grupo('Corrección','✅',correccion);
   grupo('Seguimiento','📈',seguimiento);
-  grupo('Enseñanza','🏫',ensenanza);
+  grupo('Clases','🏫',clases);
+  grupo('Cursos Nordic','🧸',cursos);
+  grupo('Cambridge','🎓',cambridge);
   grupo('Actividades','🎮',[
     {key:'games',label:'🎲 Games Lab'},
     {key:'livequiz',label:'🎮 NIShoot Live'},
@@ -3226,11 +3273,13 @@ async function renderTeacher(tab){
     {key:'phonics',label:'🔤 Phonics'},
     {key:'coach',label:'🎙️ Pronunciación'},
   ]);
-  grupo('Exámenes','🎧',examenes);
+  grupo('Permisos','🔐',permisos);
+  nav.push({key:'help',label:'❓ Ayuda'});
   const claves = navKeys(nav);
   const active = (tab && claves.indexOf(tab)>=0) ? tab : claves[0];
   document.body.innerHTML = shell(nav, active, `<div class="center muted">Cargando…</div>`, true);
   bindNav(renderTeacher);
+  if(active==='help') return $('#main').innerHTML = ayudaBody();
   if(active==='mun') return $('#main').innerHTML = munBody();
   if(active==='livequiz') return $('#main').innerHTML = liveQuizBody();
   if(active==='games') return $('#main').innerHTML = gamesLabBody();
@@ -3717,8 +3766,11 @@ async function renderStudent(initial){
     {key:'home',label:'🏠 Home'},
     {key:'english',label:'🇬🇧 English'},
     {key:'french',label:'🇫🇷 French'},
-    {key:'general',label:'🗂️ General'},
+    // 'General' salio de la barra: sus dos unicas tarjetas (Library y MUN) ya
+    // estaban identicas en Home, asi que era una pestaña que no llevaba a
+    // nada nuevo. La ruta #general sigue viva por si algun enlace la usa.
     {key:'results',label:'📊 My Progress'},
+    {key:'help',label:'❓ Ayuda'},
     {key:'account',label:'👤 Mi cuenta'},
   ], initial||'home', `<div class="center muted">Loading…</div>`);
   // Toda la navegación pasa por window._nav para que la ruta quede en el hash
@@ -3872,6 +3924,17 @@ function studentHub(){
 
 /* ---------- Jerarquía de contenido: Materia → Área → Grado → Actividad ----------
    Las áreas de English se reflejan en French (placeholder hasta alimentarlas). */
+/* Los bloques en que se reparten las areas. English era una parrilla de doce
+   tarjetas seguidas donde todo pesaba igual: la unidad que se esta trabajando,
+   un juego y el examen. Ahora van en cuatro bloques y en el orden del curso:
+   primero lo que el alumno esta haciendo, con que entrena, el examen oficial
+   y, al final, lo que ha sacado. Un bloque sin tarjetas no se pinta. */
+const ENGLISH_BLOCKS = [
+  {key:'work',     title:'🎯 My work',     desc:'What you are working on this term.'},
+  {key:'practice', title:'🧠 Practice',    desc:'Train on your own: sounds, grammar and vocabulary games.'},
+  {key:'exam',     title:'🎓 Cambridge',   desc:'The official exam and its practice.'},
+  {key:'results',  title:'📊 My results',  desc:'Your final level and the report your family receives.'},
+];
 const ENGLISH_AREAS = [
   // Va la PRIMERA a proposito. Direccion dijo que la plataforma se leia como
   // un simulador de examenes, y tenia razon leyendo esta pantalla: de diez
@@ -3879,22 +3942,27 @@ const ENGLISH_AREAS = [
   // ninguna. El proyecto existia -- con su pregunta, su producto y su rubrica
   // -- pero a cinco clics: English > Classes > etapa > grado > Units > unidad.
   // Lo que ordena el curso tiene que verse antes que lo que lo mide.
-  {emoji:'🎯', title:'My unit',       desc:'Your project this term: the big question, what you will produce, and how it is marked.', nav:'myunit', node:'english.classes'},
+  {emoji:'🎯', title:'My unit',       desc:'Your project this term: the big question, what you will produce, and how it is marked.', nav:'myunit', node:'english.classes', block:'work'},
   // Y el proyecto del trimestre justo detras: la unidad es una parte de el.
   // Silvia pregunto donde estaban los proyectos y la respuesta honesta era
   // que existian pero no se veian. Once semanas de trabajo no pueden vivir
   // dentro de una pagina de unidad a la que se llega por cinco clics.
-  {emoji:'🧩', title:'My project',    desc:'The interdisciplinary project of this term: eleven weeks, and every subject pulling the same way.', nav:'projects', node:'english.classes', when:_verProyectos},
-  {emoji:'🎙️', title:'Pronunciation', desc:'Listen to each sound, watch the tongue and airflow, and practise.', nav:'coach',    node:'english.pronunciation'},
-  {emoji:'🎓', icon:'main', title:'Cambridge', desc:'YLE and Main Suite: the official Cambridge route from Pre-A1 to C2, with practice tests.', nav:'cambridge', node:'english.cambridge'},
-  {emoji:'🎓', title:'Mocks',         desc:'Official MOCK 1 and MOCK 2 exams by skill.',        nav:'mocks'},
-  {emoji:'🎮', title:'NIShoot Live',  desc:"Join your class's live game: enter with the PIN.",    nav:'nishoot'},
-  {emoji:'🎲', title:'Games Lab',     desc:'7 games per topic for grammar, vocabulary, phrasal verbs and idioms (A1–C1).', nav:'games'},
-  {emoji:'🏫', title:'Classes',       desc:'Class material by grade: grammar, activities and more.',  nav:'classes',  node:'english.classes'},
-  {emoji:'🎯', title:'Practice Tests',desc:'Practice tests 1, 2 and 3 in Cambridge format, always available.', nav:'practice', node:'english.practice'},
-  {emoji:'🔤', title:'Phonics',       desc:'Sounds and word shapes: CVC, blends, magic-e.',  nav:'phonics',  node:'english.phonics'},
-  {emoji:'📊', title:'My Progress',   desc:'Todos tus exámenes y prácticas: tu historial y avance.',    nav:'results', englishOnly:true},
-  {emoji:'🏅', title:'Resultado final',desc:'Tu nivel final CEFR (reporte para los padres) + PDF.',      nav:'final',   englishOnly:true},
+  {emoji:'🧩', title:'My project',    desc:'The interdisciplinary project of this term: eleven weeks, and every subject pulling the same way.', nav:'projects', node:'english.classes', when:_verProyectos, block:'work'},
+  {emoji:'🏫', title:'Classes',       desc:'Class material by grade: grammar, activities and more.',  nav:'classes',  node:'english.classes', block:'work'},
+  {emoji:'🎙️', title:'Pronunciation', desc:'Listen to each sound, watch the tongue and airflow, and practise.', nav:'coach',    node:'english.pronunciation', block:'practice'},
+  {emoji:'🔤', title:'Phonics',       desc:'Sounds and word shapes: CVC, blends, magic-e.',  nav:'phonics',  node:'english.phonics', block:'practice'},
+  {emoji:'🎲', title:'Games Lab',     desc:'7 games per topic for grammar, vocabulary, phrasal verbs and idioms (A1–C1).', nav:'games', block:'practice'},
+  {emoji:'🎮', title:'NIShoot Live',  desc:"Join your class's live game: enter with the PIN.",    nav:'nishoot', block:'practice'},
+  // Las tres puertas del examen, juntas. Cambridge es el mapa (las dos ramas
+  // y sus niveles); Mocks y Practice Tests son los atajos a los simulacros que
+  // el alumno ya conoce por su nombre, y por eso no se retiran.
+  {emoji:'🎓', icon:'main', title:'Cambridge', desc:'YLE and Main Suite: the official Cambridge route from Pre-A1 to C2, with practice tests.', nav:'cambridge', node:'english.cambridge', block:'exam'},
+  {emoji:'🎓', title:'Mocks',         desc:'Official MOCK 1 and MOCK 2 exams by skill.',        nav:'mocks', block:'exam'},
+  {emoji:'🎯', title:'Practice Tests',desc:'Practice tests 1, 2 and 3 in Cambridge format, always available.', nav:'practice', node:'english.practice', block:'exam'},
+  // 'My Progress' NO esta aqui: vive en la barra lateral, que es donde el
+  // alumno lo busca desde cualquier pantalla. Tenerlo en los dos sitios era
+  // el duplicado mas visible de esta vista.
+  {emoji:'🏅', title:'Resultado final',desc:'Tu nivel final CEFR (reporte para los padres) + PDF.',      nav:'final',   englishOnly:true, block:'results'},
 ];
 function _backBtn(onclick,label){
   return `<button class="btn sm ghost" onclick="${onclick}" style="margin-bottom:10px">← ${label}</button>`;
@@ -4633,19 +4701,24 @@ function studentSubject(key){
       </div>`;
     return;
   }
-  const title = isEn ? '🇬🇧 English' : '🇫🇷 French';
-  const areas = (isEn ? ENGLISH_AREAS : ENGLISH_AREAS.filter(a=>!a.englishOnly))
-    .filter(a=>!a.when || a.when());
-  const cards = areas.map(a=>{
-    if(!isEn) return _soonCard(a.emoji,a.title,a.desc);
+  // Aqui abajo ya solo se pinta ingles: el francés se fue por su propia rama.
+  const areas = ENGLISH_AREAS.filter(a=>!a.when || a.when());
+  const tarjeta = (a)=>{
     // Cambridge trae su dibujo 3D (cambridge-icons.js) en lugar de emoji.
     const em = (a.icon && typeof camIcon==='function') ? camIcon(a.icon,72) : a.emoji;
     if(a.node && !nodeVisible(a.node)) return _lockedCard(em,a.title,a.desc);
     return _hubCard(em,a.title,a.desc,`window._nav('${a.nav}')`);
+  };
+  const bloques = ENGLISH_BLOCKS.map(b=>{
+    const cards = areas.filter(a=>a.block===b.key).map(tarjeta).join('');
+    if(!cards) return '';
+    return `<h2 style="margin:26px 0 2px">${b.title}</h2>
+      <p class="muted" style="margin:0 0 12px;font-size:.86rem">${b.desc}</p>
+      <div class="grid cols-3">${cards}</div>`;
   }).join('');
-  $('#main').innerHTML = `${_isStudent()?_backBtn("window._nav('home')",'Home'):''}<h1>${title}</h1>
-    <p class="muted" style="margin-top:-6px">${isEn?'Your English areas.':'Próximamente — iremos habilitando el francés poco a poco.'}</p>
-    <div class="grid cols-3" style="margin-top:12px">${cards}</div>`;
+  $('#main').innerHTML = `${_isStudent()?_backBtn("window._nav('home')",'Home'):''}<h1>🇬🇧 English</h1>
+    <p class="muted" style="margin-top:-6px">Everything you have in English, in the order you use it.</p>
+    ${bloques}`;
 }
 
 /* Vista General (transversal) */
@@ -5136,6 +5209,7 @@ function _navRender(k){
   if(m=/^classes_(g\d+)_readers_report$/.exec(k)){ studentReaderReport(m[1]); return true; }
   if(m=/^classes_(g\d+)_readers$/.exec(k)){ studentGradeReaders(m[1]); return true; }
   if(m=/^classes_(g\d+)$/.exec(k))    { studentGrade(m[1]);           return true; }
+  if(k==='help'){ _setNav('help'); $('#main').innerHTML = ayudaBody(); return true; }
   const fn={english:()=>studentSubject('english'),french:()=>studentSubject('french'),general:studentGeneral,
     mocks:studentMocks,practice:studentPractice,cambridge:studentCambridgePortal,library:studentLibrary,mun:studentMun,classes:studentClasses,
     phonics:studentPhonics,coach:studentCoach,results:studentResults,nishoot:studentNishoot,games:studentGames,
