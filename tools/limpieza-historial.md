@@ -67,24 +67,40 @@ nuevo hay que subirlo a mano.
 
 ## Paso 3 — reescribir el historial (NO ejecutar sin avisar)
 
-Deja el `.git` en unos **105 MB** (de 2.598). Herramienta: `git-filter-repo`
-(**no está instalada**: `pip install git-filter-repo`; tampoco hay Java para BFG).
+Deja el `.git` en **325 MB** (de 2.540), medido en un ensayo real.
+`git-filter-repo` **ya está instalada**; se invoca como `python -m git_filter_repo`.
 
-    git clone --mirror https://github.com/bacman2000/nis-portal.git nis-portal-mirror
+    git clone --mirror https://github.com/BACMAN2000/nis-portal.git nis-portal-mirror
     cd nis-portal-mirror
-    git filter-repo --invert-paths \
+    python -m git_filter_repo --invert-paths \
       --path-glob 'nis-fun/assets/videos/*' \
       --path-glob 'nis-fun/book-builder/*' \
       --path-glob 'nis-fun/build-videos/*' \
-      --path-glob '*-audio/*' \
-      --path-glob 'yle-audio/*' --path-glob 'yle-img/*' \
+      --path treasureisland-audio --path princepauper-audio --path attwn-audio \
+      --path earnest-audio --path tomsawyer-audio --path cambridge-audio \
+      --path yle-audio --path yle-img \
       --path-glob 'nis-fun/audio/*' \
-      --path-glob 'mocks-cambridge/*.mp3' --path-glob 'cambridge-audio/*'
+      --path-glob 'mocks-cambridge/mp3/*'
     git push --force --mirror
 
-Antes de empujar: comparar `git count-objects -vH` del espejo con el original y
-comprobar que el árbol del último commit conserva todo el código
-(`git ls-files | wc -l` y un `diff` de la lista contra el repo actual).
+**Las carpetas van enumeradas, NO con `*-audio/*`.** El primer ensayo, con el
+comodín, se llevaba por delante `voice-battle-audio/` (144 archivos) y
+`g2u4-audio/` (62): pesan 4 MB entre las dos, **siguen dentro del repositorio y
+las usan páginas** (`say-it-right-*.html` y `g2-u4-data.js`). Con el comodín
+habrían desaparecido del checkout sin estar servidas desde ningún otro sitio, y
+esas páginas se habrían quedado mudas sin que nada fallara a la vista.
+
+### Ensayado el 7-sep-2026, en una copia aparte
+
+    tamaño       2,54 GiB  ->  325 MiB
+    commits           654  ->  642    (los 12 que solo tocaban material se vacían)
+    archivos        3.392  ->  3.392  (ni uno menos: el código se conserva entero)
+
+Respaldo completo en `C:\Projects\_respaldo-nis-portal-20260907` — clon espejo,
+2,6 GB, 654 commits, 6 ramas. **Es la única vuelta atrás si el push sale mal.**
+
+Antes de empujar, repetir la comprobación: `git count-objects -vH` y un `diff` de
+`git ls-tree -r --name-only HEAD` contra el repo actual, que debe salir vacío.
 
 ### Lo que rompe
 
@@ -103,3 +119,12 @@ comprobar que el árbol del último commit conserva todo el código
 ### Cuándo
 
 Cuando no haya nadie más publicando y con el usuario avisado. Es su decisión.
+
+**Lo que faltaba resolver el 7-sep-2026:** la sesión que trabaja en
+`.claude/worktrees/determined-moser-6b6aac` tenía **294 archivos sin commitear**,
+en la rama `claude/determined-moser-6b6aac`, que **no está publicada en origin**.
+Tras la reescritura esa rama cuelga de commits que ya no existen: hay que
+publicarla o sacar parches **antes** de abrir la ventana. Los archivos del disco
+no se pierden, pero rescatarlos después es a mano.
+
+Después de ejecutar, cada máquina y el servidor siguen `tools/volver-a-clonar.md`.
