@@ -1739,7 +1739,7 @@ window.wordDict=(el)=>{
     if(body && e.d && !body.dataset.api)
       body.innerHTML='<div class="pos">meaning</div><p class="def">'+e.d+'</p>';
   });
-  fetch('https://api.dictionaryapi.dev/api/v2/entries/en/'+encodeURIComponent(word))
+  fetch('/api/dict/en/'+encodeURIComponent(word))
     .then(r=>r.ok?r.json():Promise.reject())
     .then(j=>{
       const e=j[0]; const body=$('#dictBody'); if(!body) return;
