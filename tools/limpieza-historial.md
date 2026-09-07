@@ -103,7 +103,20 @@ esas páginas se habrían quedado mudas sin que nada fallara a la vista.
     archivos        3.392  ->  3.392  (ni uno menos: el código se conserva entero)
 
 Respaldo completo en `C:\Projects\_respaldo-nis-portal-20260907` — clon espejo,
-2,6 GB, 654 commits, 6 ramas. **Es la única vuelta atrás si el push sale mal.**
+2,6 GB. **Es la única vuelta atrás si el push sale mal.**
+
+**El respaldo se desfasa, y hay que refrescarlo justo antes de empujar.** El de
+esta preparación ya se quedó atrás en un par de horas: le faltaba el `main` que
+había en GitHub porque entretanto se publicaron commits. Antes del `push --force`:
+
+    cd C:\Projects\_respaldo-nis-portal-20260907
+    git fetch --prune origin '+refs/heads/*:refs/heads/*' '+refs/tags/*:refs/tags/*'
+    git show-ref | grep refs/heads          # comparar con: git ls-remote origin
+
+Deben coincidir uno a uno. Y comprobar que está sano con
+`git fsck --connectivity-only`, que no debe decir nada.
+
+Para revertir, si hiciera falta: `git push --force --mirror` desde ese espejo.
 
 Antes de empujar, repetir la comprobación: `git count-objects -vH` y un `diff` de
 `git ls-tree -r --name-only HEAD` contra el repo actual, que debe salir vacío.
