@@ -42965,11 +42965,10 @@ async function sendResultToWebhook(payload){
     if(j && j.ok === false) return {sent:false, error: j.error || 'el servidor lo rechazo'};
     return {sent:true};
   } catch(err){
-    /* CORS o red: se reintenta a ciegas para no perder la entrega, pero no se
-       da por confirmada. */
-    try { await fetch(CONFIG.webhookUrl, {method:'POST', mode:'no-cors', headers:cab, body:cuerpo});
-          return {sent:true, sinConfirmar:true}; }
-    catch(_) { return {sent:false, error: err.message}; }
+    /* Sin reintento en no-cors: resuelve siempre, asi que daria por enviado lo
+       que no salio, y si el fallo fue de CORS el POST ya llego y se mandaria
+       dos veces. */
+    return {sent:false, error:'no se pudo contactar con el servidor'};
   }
 }
 
