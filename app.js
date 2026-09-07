@@ -1139,7 +1139,6 @@ async function renderAdmin(tab='users'){
       {key:'livequiz',label:'🎮 NIShoot Live'},
       {key:'mun',label:'🌐 MUN Academy'},
       {key:'phonics',label:'🔤 Phonics'},
-    {key:'phrasal',label:'🔗 Phrasal verbs'},
       {key:'phrasal',label:'🔗 Phrasal verbs'},
       {key:'coach',label:'🎙️ Pronunciación'},
     ]},
@@ -3282,6 +3281,7 @@ async function renderTeacher(tab){
     {key:'livequiz',label:'🎮 NIShoot Live'},
     {key:'mun',label:'🌐 MUN Academy'},
     {key:'phonics',label:'🔤 Phonics'},
+    {key:'phrasal',label:'🔗 Phrasal verbs'},
     {key:'coach',label:'🎙️ Pronunciación'},
   ]);
   grupo('Permisos','🔐',permisos);
