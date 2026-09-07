@@ -16,6 +16,11 @@ DEST = [r"C:\Projects\cohasset-community\repo", r"C:\Projects\cohasset-final\coh
 # viven en la tabla yle_tests, que se lee con la cuenta del portal del colegio,
 # y en cohasset.pe no la hay -> la pagina salia sin un solo test. Ahi queda el
 # entrenador de vocabulario, que no depende de la base, y la guia de familia.
+# OJO: yle-practice.html y yle-print.html NO van aqui. En cohasset.pe existen
+# desde el 6-sep-2026, pero son una version distinta: leen los examenes del
+# backend de Cohasset (yle-cohasset.js + /api/yle/tests) porque alli no hay
+# cuenta de Supabase. Copiarlas desde aqui las dejaria pidiendo la base del
+# colegio y volverian a salir vacias.
 PAGINAS = ['yle-vocab.html', 'yle-guia-familia.html']
 
 def engine(nombre):
