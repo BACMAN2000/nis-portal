@@ -25,22 +25,32 @@ Esos parches se vuelven a aplicar luego con `git am ../mis-cambios-portal/*.patc
 
 ## 2. El servidor (lo hace quien tenga acceso; **primero esto, antes que nada**)
 
-La web se sirve desde `/opt/nis-portal`. Se sustituye por un clon nuevo, dejando
-el viejo al lado hasta comprobar que todo va bien:
+La web se sirve desde `/opt/nis-portal`. **Se clona al lado y se cambia al final
+con dos `mv`**, para que el sitio no deje de servirse ni un segundo:
 
     systemctl stop cron                       # que el autopull no moleste
-    mv /opt/nis-portal /opt/nis-portal.viejo
-    git clone https://github.com/BACMAN2000/nis-portal.git /opt/nis-portal
+    git clone https://github.com/BACMAN2000/nis-portal.git /opt/nis-portal.nuevo
+    # ↑ tarda unos minutos, y mientras tanto la web sigue funcionando con la carpeta vieja
+
+    mv /opt/nis-portal /opt/nis-portal.viejo && mv /opt/nis-portal.nuevo /opt/nis-portal
+    # ↑ los dos juntos son instantáneos: nadie ve el sitio caído
+
     systemctl start cron
+
+**No hagas `mv` antes de clonar**: entre el `mv` y el final del `clone` la carpeta
+no existe, y ahí el sitio devuelve error a todo el mundo durante minutos.
 
 Comprobar **antes de borrar nada**: la portada, el portal, el lector, el curso y
 los simulacros responden, y suena un audio de cada sitio. Si algo falla, se
-vuelve atrás con `mv /opt/nis-portal.viejo /opt/nis-portal`.
+vuelve atrás igual de rápido:
+
+    mv /opt/nis-portal /opt/nis-portal.fallido && mv /opt/nis-portal.viejo /opt/nis-portal
 
 Cuando lleve un par de días bien: `rm -rf /opt/nis-portal.viejo`.
 
 **El material no se toca.** Vive en `/opt/nis-media` y `/opt/yle-media`, fuera
-del repositorio, y el clon nuevo no lo afecta.
+del repositorio, y el clon nuevo no lo afecta. Las páginas siguen siendo las
+mismas: la reescritura cambia el historial, no el contenido de los archivos.
 
 ## 3. Cada PC (la de escritorio, la Lenovo)
 
