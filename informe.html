@@ -116,6 +116,17 @@ const UI = {
   fuenteTxt:{en:'Primary Calendar 2026.xlsx and Annual Plan Primary 2026.xlsx (Drive), the Annual Plan sheet inside EY_Assessment Criteria_G1.xlsx, the four Project.docx of Grade 1, and Toddle (Planning insights → Manage units, read on 5 September 2026: 221 units in Primary and 303 in Secondary).',
              es:'Primary Calendar 2026.xlsx y Annual Plan Primary 2026.xlsx (Drive), la hoja Annual Plan dentro de EY_Assessment Criteria_G1.xlsx, los cuatro Project.docx de 1.º, y Toddle (Planning insights → Manage units, leído el 5 de septiembre de 2026: 221 unidades en Primary y 303 en Secondary).'},
   verProy:  {en:'See the projects', es:'Ver los proyectos'},
+  borrador: {en:'Draft ready for Toddle: the third term',
+             es:'Borrador listo para Toddle: el tercer trimestre'},
+  borrHint: {en:'copy it into the planner as it is', es:'se copia al planificador tal cual'},
+  borrTxt:  {en:'P6 does not exist in Toddle for any primary grade and the four U5 units of Grade 4 are empty. This is what the portal already has for those weeks, laid out in the fields Toddle asks for, so that filling the planner is approving rather than writing. The content of each week comes from the school own annual plan.',
+             es:'P6 no existe en Toddle para ningún grado de primaria y las cuatro unidades U5 de 4.º están vacías. Esto es lo que el portal ya tiene para esas semanas, puesto en los campos que pide Toddle, para que llenar el planificador sea aprobar y no redactar. El contenido de cada semana sale del propio plan anual del colegio.'},
+  campoNom: {en:'Unit name', es:'Nombre de la unidad'},
+  campoDur: {en:'Duration', es:'Duración'},
+  campoQ:   {en:'Essential question', es:'Pregunta esencial'},
+  campoSem: {en:'Weeks and evidence', es:'Semanas y evidencia'},
+  sinBorr:  {en:'Grade 1 has no P5 or P6 written, and in Grade 5 P6 goes on its own: there is nothing to draft for them without inventing it.',
+             es:'1.º no tiene P5 ni P6 escritos, y en 5.º el P6 va suelto: para ellos no hay borrador que dar sin inventarlo.'},
   leerPill: {en:'A red number only means that unit number does not exist in Toddle — it is not a verdict. Each subject has its own rhythm (English six, French four, most of them three), so the column that matters is the last one.',
              es:'Un número en rojo solo significa que esa unidad no existe en Toddle — no es un juicio. Cada área tiene su propio ritmo (inglés seis, francés cuatro, la mayoría tres), así que la columna que importa es la última.'}
 };
@@ -231,6 +242,22 @@ function pinta(){
   });
   h += `</table></div>
     <p class="nota">5.º: su arco de once semanas va de P4 a P5 (viaje a Cajamarca → Science Fair), así que P3 y P6 quedan sueltos. 1.º no tiene P5 ni P6 escritos.</p></div>`;
+
+  /* 5 — el borrador del tercer trimestre, listo para pegar en Toddle */
+  h += `<div class="sec-title"><h2>${u('borrador')}</h2><span class="hint">${u('borrHint')}</span></div>
+    <div class="card"><p style="margin:0 0 14px;font-size:.92rem">${u('borrTxt')}</p>`;
+  Object.keys(ARCS).filter(k => (ARCS[k].periodos||[])[0] === 5 && ARCS[k].grade !== 'g5').forEach(k => {
+    const a = ARCS[k];
+    h += `<div style="border:1px solid var(--line);border-radius:var(--r-sm);padding:14px 16px;margin-bottom:12px">
+      <p style="margin:0 0 8px"><b>${G[a.grade]}</b> · P${a.periodos.join(' + P')}</p>
+      <table><tr><td class="k">${u('campoNom')}</td><td>${esc(t(a.titulo))} — ${esc(t(a.subtitulo))}</td></tr>
+      <tr><td class="k">${u('campoDur')}</td><td>${a.semanas} ${LANG==='en'?'weeks':'semanas'}</td></tr>
+      <tr><td class="k">${u('campoQ')}</td><td>${esc(t(a.preguntaEsencial))}</td></tr>
+      <tr><td class="k">${u('campoSem')}</td><td><ol style="margin:0;padding-left:1.2em">
+      ${a.fases.map(f => `<li><b>P${f.periodo} W${f.semana}</b> — ${esc(t(f.foco))} · <i>${esc(t(f.evidencia))}</i></li>`).join('')}
+      </ol></td></tr></table></div>`;
+  });
+  h += `<p class="nota">${u('sinBorr')}</p></div>`;
 
   h += `<div class="card"><h3 style="font-size:1rem;color:var(--blue-dd)">${u('fuente')}</h3>
     <p style="margin:0;font-size:.88rem" class="muted">${u('fuenteTxt')}</p></div>
