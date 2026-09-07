@@ -71,6 +71,21 @@ ul.tight li{margin:.22em 0}
 .delDocx{font-size:.62rem;font-weight:700;color:#5B21B6;background:#F5F3FF;
   padding:1px 6px;border-radius:999px;letter-spacing:0;text-transform:none}
 
+/* --- el ingles de la casa dentro de la semana --- */
+.ingles{margin-top:12px;border:1px solid #BFDBFE;background:#F0F7FF;border-radius:var(--r-sm);padding:11px 13px}
+.ingles h5{margin:0 0 8px;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#1D4ED8;
+  display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+.ingles .ing-u{font-size:.72rem;font-weight:700;color:#1E3A8A;background:#DBEAFE;
+  padding:2px 8px;border-radius:999px;letter-spacing:0;text-transform:none}
+.ing-b{margin-bottom:7px}
+.ing-b h6{margin:0 0 2px;font-size:.78rem;color:var(--blue-dd);font-weight:700}
+.ing-b ul{margin:0;padding-left:1.05em;font-size:.83rem}
+.ing-b li{margin:.14em 0}
+.ing-chips{display:flex;gap:8px;flex-wrap:wrap}
+.ing-chips span{background:#EFF6FF;border:1px solid #BFDBFE;color:var(--blue-dd);
+  border-radius:999px;padding:4px 11px;font-size:.82rem}
+.ing-chips b{color:#1D4ED8}
+
 table.rub{width:100%;border-collapse:collapse;font-size:.86rem}
 table.rub th,table.rub td{border:1px solid var(--line);padding:9px 11px;vertical-align:top;text-align:left}
 table.rub th{background:#eef4fb;color:var(--blue-dd);font-weight:700;font-size:.76rem;text-transform:uppercase;letter-spacing:.04em}
@@ -177,6 +192,26 @@ const UI = {
                 es:'el colegio lo llama <i>Project %s</i> en el calendario'},
   verTodo:     {en:'Open the eleven weeks', es:'Abrir las once semanas'},
   plegarTodo:  {en:'Collapse the weeks', es:'Plegar las semanas'},
+  inglesTit:   {en:'English · our programme', es:'Inglés · nuestro programa'},
+  inglesFuente:{en:'From the school <i>English Scope &amp; Sequence 2026</i>. The portal only proposes which week each block falls on.',
+                es:'Del <i>Scope &amp; Sequence 2026</i> de inglés del colegio. El portal solo propone en qué semana cae cada bloque.'},
+  inglesSinBloque:{en:'This week has no English block of its own: it consolidates the previous one.',
+                es:'Esta semana no lleva bloque propio de inglés: consolida el anterior.'},
+  unidad:      {en:'Unit', es:'Unidad'},
+  inglesArcoTit:{en:'English across the term', es:'El inglés del trimestre'},
+  inglesArcoHint:{en:'what the grade is preparing for, and what is expected of it',
+                es:'para qué se prepara el grado, y qué se espera de él'},
+  examen:      {en:'Cambridge exam', es:'Examen Cambridge'},
+  escritura:   {en:'Writing', es:'Escritura'},
+  lectura:     {en:'Reading', es:'Lectura'},
+  kpiTit:      {en:'What the student should be able to do (KPI)', es:'Lo que el alumno debe poder hacer (KPI)'},
+  kpi_listening:{en:'Listening', es:'Listening'},
+  kpi_speaking:{en:'Speaking', es:'Speaking'},
+  kpi_reading: {en:'Reading', es:'Reading'},
+  kpi_writing: {en:'Writing', es:'Writing'},
+  kpi_lengua:  {en:'Language', es:'Lengua'},
+  lectorTit:   {en:'Reading plan for these weeks', es:'Plan lector de estas semanas'},
+  gramTit:     {en:'Grammar covered', es:'Gramática que se trabaja'},
   delPlan:     {en:'From the school <i>Annual Plan Primary 2026</i>, exactly as written.',
                 es:'Del <i>Annual Plan Primary 2026</i> del colegio, tal cual está escrito.'},
   sinPlan:     {en:'The annual plan has no content loaded for this week.',
@@ -265,6 +300,7 @@ let PLAN = null, planError = '';
    Project.docx del grado. Se transcriben aparte y se pintan marcados, para
    que se vea de donde salen. */
 let PLAN_G1 = null;
+let SCOPE = null;
 
 const AREA_NOMBRE = {
   science:'Science', social:'Social Studies', math:'Math', english:'English',
@@ -294,6 +330,110 @@ async function cargaPlan(){
     const r = await fetch('scope/g1-project-areas.json', {cache:'no-store'});
     if(r.ok) PLAN_G1 = await r.json();
   }catch(_){ PLAN_G1 = null; }
+  /* El Scope & Sequence de ingles: de aqui salen el examen Cambridge del grado,
+     los KPI, el vocabulario, la gramatica y el plan lector. Es la misma fuente
+     que alimenta la pestana Scope & Sequence del portal, no una copia. */
+  try{
+    const r = await fetch('scope/scope-2026.json', {cache:'no-store'});
+    if(r.ok) SCOPE = await r.json();
+  }catch(_){ SCOPE = null; }
+}
+
+
+/* ====================== el ingles de la casa, semana a semana =============
+   Cada periodo del calendario es una unidad del Scope & Sequence (P1 = U1 ...
+   P6 = U6). La unidad trae once bloques -phonics, vocabulario, lectura, plan
+   lector, gramatica, escritura, listening y speaking- y el periodo tiene cinco
+   o seis semanas: el reparto de abajo dice que toca cada semana.
+
+   El reparto es NUESTRO, no del colegio; por eso sale marcado. El contenido de
+   cada bloque no se retoca: sale tal cual del JSON. */
+const ING_REPARTO = [
+  ['Phonics', 'Vocabulary Development'],
+  ['Reading Skills', 'Textual Comprehension'],
+  ['Reading Plan', 'Listening Skills'],
+  ['Language Conventions (Writing)', 'Idea Development & Process'],
+  ['Speaking Skills', 'Text Types (Writing)'],
+  ['Writing Reflection', 'Reading Plan']
+];
+
+function gradoScope(grade){
+  if(!SCOPE || !SCOPE.grados) return null;
+  const g = String(grade || '').toUpperCase();
+  return SCOPE.grados.find(x => String(x.grado).toUpperCase() === g) || null;
+}
+
+function unidadDe(grade, periodo){
+  const g = gradoScope(grade);
+  if(!g || !g.unidades) return null;
+  return g.unidades.find(u => Number(u.n) === Number(periodo)) || null;
+}
+
+/* Lo que toca esa semana: uno o dos bloques de la unidad. */
+function inglesSemana(grade, periodo, semana){
+  const u = unidadDe(grade, periodo);
+  if(!u) return null;
+  const quiere = ING_REPARTO[(Number(semana) - 1) % ING_REPARTO.length] || [];
+  const bloques = (u.bloques || []).filter(b => quiere.indexOf(b.bloque) >= 0);
+  return bloques.length ? {unidad: u, bloques: bloques} : {unidad: u, bloques: []};
+}
+
+function bloqueInglesHTML(grade, periodo, semana){
+  const x = inglesSemana(grade, periodo, semana);
+  if(!x) return '';
+  const partes = x.bloques.map(b =>
+    `<div class="ing-b"><h6>${esc(b.bloque)}</h6><ul>` +
+    (b.puntos || []).slice(0, 4).map(p => `<li>${esc(p)}</li>`).join('') +
+    `</ul></div>`).join('');
+  return `<div class="ingles">
+    <h5>${u('inglesTit')} <span class="ing-u">${u('unidad')} ${x.unidad.n} · ${esc(x.unidad.tema)}</span></h5>
+    ${partes || '<p class="pnote" style="margin:0">' + u('inglesSinBloque') + '</p>'}
+    <p class="pnote" style="margin:8px 0 0">${u('inglesFuente')}</p>
+  </div>`;
+}
+
+/* La cabecera del trimestre: que examen prepara el grado, que se espera de el
+   y que hito de Cambridge cae dentro. Sin esto, el proyecto no dice a donde
+   lleva. */
+function inglesDelArco(a){
+  const g = gradoScope(a.grade);
+  if(!g) return '';
+  const via = (SCOPE.pathway || []).find(p => String(p.grado).toUpperCase() === String(a.grade).toUpperCase());
+  const kpi = (SCOPE.benchmarks || []).find(p => String(p.grado).toUpperCase() === String(a.grade).toUpperCase());
+  const unidades = (a.periodos || []).map(p => unidadDe(a.grade, p)).filter(Boolean);
+
+  const chips = [];
+  if(via && via.examen)     chips.push(`<span><b>${u('examen')}</b> ${esc(via.examen)}</span>`);
+  if(g.cefr)                chips.push(`<span><b>CEFR</b> ${esc(g.cefr)}</span>`);
+  if(via && via.escritura)  chips.push(`<span><b>${u('escritura')}</b> ${esc(via.escritura)}</span>`);
+  if(via && via.lectura)    chips.push(`<span><b>${u('lectura')}</b> ${esc(via.lectura)}</span>`);
+
+  const filasKpi = kpi ? ['listening','speaking','reading','writing','lengua']
+    .filter(k => kpi[k]).map(k =>
+      `<tr><td class="crit">${u('kpi_' + k)}</td><td>${esc(kpi[k])}</td></tr>`).join('') : '';
+
+  const lector = unidades.map(un => {
+    const b = (un.bloques || []).find(x => x.bloque === 'Reading Plan');
+    return b ? `<li><b>${u('unidad')} ${un.n}</b> — ${esc((b.puntos || []).join(' · '))}</li>` : '';
+  }).join('');
+
+  const gram = unidades.map(un => {
+    const b = (un.bloques || []).find(x => x.bloque === 'Language Conventions (Writing)');
+    return b ? `<li><b>${u('unidad')} ${un.n}</b> — ${esc((b.puntos || []).filter(p => p.indexOf('Bloom') < 0).join(' · '))}</li>` : '';
+  }).join('');
+
+  return `<div class="sec-title"><h2>${u('inglesArcoTit')}</h2>
+      <span class="hint">${u('inglesArcoHint')}</span></div>
+    <div class="card">
+      <div class="ing-chips">${chips.join('')}</div>
+      ${filasKpi ? `<h4 style="margin:16px 0 6px;font-size:.9rem">${u('kpiTit')}</h4>
+        <table class="rub">${filasKpi}</table>` : ''}
+      ${lector ? `<h4 style="margin:16px 0 6px;font-size:.9rem">${u('lectorTit')}</h4>
+        <ul class="tight">${lector}</ul>` : ''}
+      ${gram ? `<h4 style="margin:16px 0 6px;font-size:.9rem">${u('gramTit')}</h4>
+        <ul class="tight">${gram}</ul>` : ''}
+      <p class="pnote">${u('inglesFuente')}</p>
+    </div>`;
 }
 
 /* Lo que en esta semana sale de los Project.docx y no de la hoja del plan. */
@@ -478,6 +618,9 @@ function pintaArco(k, a){
     h += `</div>`;
   }
 
+  /* Antes del mapa de semanas: a donde lleva el ingles de este trimestre. */
+  h += inglesDelArco(a);
+
   /* El mapa de semanas: la parte que de verdad hace falta.
 
      Las once semanas salían plegadas, y eso hacía creer —a quien abre la página
@@ -548,6 +691,7 @@ function pintaArco(k, a){
         ${bloques ? `<div class="areas">${bloques}</div>
           <p class="pnote">${u('delPlan')}</p>`
         : `<p class="pnote">${u('sinPlan')}</p>`}
+        ${bloqueInglesHTML(a.grade, f.periodo, f.semana)}
       </div></details>`;
   });
   if(periodoPintado !== null) h += cierraPeriodo(periodoPintado);
