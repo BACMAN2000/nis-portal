@@ -830,6 +830,14 @@ function studentGames(){ _setNav('games'); $('#main').innerHTML = `${_backBtn("w
 
 /* Phonics Studio embedded as an iframe (same-origin app in /phonics).
    ?embed=1 tells it to hide its own top bar so it nests under the portal. */
+/* Phrasal verbs: 210 verbos compuestos por nivel, con sus ejercicios. Es la
+   misma app que en cohasset.pe; aqui entra embebida para no sacar al alumno
+   del portal. */
+function phrasalPanel(){
+  return `<iframe src="phrasal-app/index.html?embed=1&v=1" title="Phrasal Verbs"
+    style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block"></iframe>`;
+}
+
 function phonicsPanel(){
   return `<iframe src="phonics/index.html?embed=1&v=8" title="Phonics Studio"
     style="width:100%;height:calc(100vh - 120px);border:none;border-radius:14px;box-shadow:var(--shadow);background:#fff"></iframe>`;
@@ -1131,6 +1139,8 @@ async function renderAdmin(tab='users'){
       {key:'livequiz',label:'🎮 NIShoot Live'},
       {key:'mun',label:'🌐 MUN Academy'},
       {key:'phonics',label:'🔤 Phonics'},
+    {key:'phrasal',label:'🔗 Phrasal verbs'},
+      {key:'phrasal',label:'🔗 Phrasal verbs'},
       {key:'coach',label:'🎙️ Pronunciación'},
     ]},
     /* Permisos = lo que se abre y se cierra por grado. "Abrir examenes de
@@ -1153,6 +1163,7 @@ async function renderAdmin(tab='users'){
   if(tab==='french') return studentSubject('french');
   if(tab==='library') return studentLibrary();
   if(tab==='phonics') return $('#main').innerHTML = phonicsPanel();
+  if(tab==='phrasal') return $('#main').innerHTML = phrasalPanel();
   if(tab==='coach') return $('#main').innerHTML = coachPanel();
   if(tab==='overview') return adminOverview();
   if(tab==='unitprod') return unitProductsPanel();
@@ -3298,6 +3309,7 @@ async function renderTeacher(tab){
   if(active==='classes') return studentClasses();
   if(active==='french') return studentSubject('french');
   if(active==='phonics'){ $('#main').innerHTML = phonicsPanel(); return; }
+  if(active==='phrasal'){ $('#main').innerHTML = phrasalPanel(); return; }
   if(active==='coach'){ $('#main').innerHTML = coachPanel(); return; }
   // Estas tres estaban en el menu pero sin handler: el profesor las clicaba y
   // le salia el mensaje de "sin accesos".
@@ -3952,6 +3964,7 @@ const ENGLISH_AREAS = [
   {emoji:'🎙️', title:'Pronunciation', desc:'Listen to each sound, watch the tongue and airflow, and practise.', nav:'coach',    node:'english.pronunciation', block:'practice'},
   {emoji:'🔤', title:'Phonics',       desc:'Sounds and word shapes: CVC, blends, magic-e.',  nav:'phonics',  node:'english.phonics', block:'practice'},
   {emoji:'🎲', title:'Games Lab',     desc:'7 games per topic for grammar, vocabulary, phrasal verbs and idioms (A1–C1).', nav:'games', block:'practice'},
+  {emoji:'🔗', title:'Phrasal Verbs',  desc:'210 phrasal verbs level by level, with the sentence from your own course.', nav:'phrasal', block:'practice'},
   {emoji:'🎮', title:'NIShoot Live',  desc:"Join your class's live game: enter with the PIN.",    nav:'nishoot', block:'practice'},
   // Las tres puertas del examen, juntas. Cambridge es el mapa (las dos ramas
   // y sus niveles); Mocks y Practice Tests son los atajos a los simulacros que
