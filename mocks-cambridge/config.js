@@ -1,3 +1,21 @@
+/* ---- una sola puerta de entrada -------------------------------------------
+   El sitio se publica tambien en bacman2000.github.io/nis-portal/, y por ahi
+   entraban alumnos: 10 personas distintas solo el 7-sep-2026. Al ser otro
+   dominio el navegador les guarda una sesion aparte, asi que quien salta entre
+   los dos se encuentra desconectado sin motivo aparente. Y el alumno no debe
+   ver github.io ni bacman2000 en la barra (pedido del 13-ago-2026).
+
+   Se manda a nis.cohasset.pe conservando pagina, parametros y ancla.
+   replace() y no href: con href el boton Atras devuelve a github.io y rebota. */
+(function () {
+  if (location.hostname !== 'bacman2000.github.io') return;
+  var base = '/nis-portal/';
+  var ruta = location.pathname.indexOf(base) === 0
+    ? location.pathname.slice(base.length)
+    : location.pathname.replace(/^\/+/, '');
+  location.replace('https://nis.cohasset.pe/' + ruta + location.search + location.hash);
+})();
+
 // Supabase connection for Portal NIS.
 // The publishable (anon) key is safe to expose in the browser: Row Level
 // Security policies on the database decide what each role can read/write.
