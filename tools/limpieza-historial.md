@@ -34,22 +34,36 @@ página cambió. Los PDF y el taller de vídeo no los pedía nadie.
 Esto **frena el crecimiento**; no reduce el `.git`, que sigue guardando todas las
 versiones anteriores.
 
-## Paso 2 — pendiente, sin reescribir historial
+## Paso 2 — hecho el 6-sep-2026
 
-Sacar el audio del mismo modo. Es el mismo procedimiento, probado ya dos veces
-(`/opt/lexicon-audio`, `/opt/yle-media`) y una tercera hoy:
+Salió también el audio: **15.984 archivos y 1.777 MB**. Las ocho carpetas
+(`treasureisland-audio`, `princepauper-audio`, `attwn-audio`, `earnest-audio`,
+`tomsawyer-audio`, `cambridge-audio`, `nis-fun/audio`, `mocks-cambridge/mp3`)
+viven en `/opt/nis-media/` y las sirve nginx **en las mismas rutas de siempre**,
+cada una con su `location ^~`. Ninguna página cambió una línea.
+
+`yle-audio/` e `yle-img/` salieron también, pero **sin `location`**: ese material
+lo entrega el backend con permiso desde `/opt/yle-media`, y sus rutas públicas
+siguen devolviendo 404 a propósito.
+
+**Resultado: el checkout pasó de 3,4 GB a 246 MB.** Los archivos rastreados
+bajaron de ~19.400 a 3.392.
+
+El procedimiento, por si hay que repetirlo con otra carpeta:
 
 1. copiar la carpeta a `/opt/nis-media/<lo-que-sea>/` **en el servidor**, que ya
    la tiene desplegada (no hace falta subir nada);
 2. `location ^~ /<ruta-web>/ { alias /opt/nis-media/...; }` en nginx —
    **el `^~` es imprescindible**, o la regex de extensiones se evalúa antes y
    devuelve 404;
-3. comprobar, apartando un archivo del repo, que se sigue sirviendo;
+3. comprobar, **apartando un archivo del repo**, que se sigue sirviendo: es la
+   única prueba que distingue «funciona» de «todavía lo sirve el repo»;
 4. `.gitignore` + `git rm -r --cached` + push;
-5. volver a comprobar tras el autopull.
+5. volver a comprobar tras el autopull, y abrir una página que lo use.
 
-Baja el checkout de 3,4 GB a unos 0,5 GB. **No toca el historial y no obliga a
-nadie a clonar de nuevo.**
+`/opt/yle-media-sync.sh` se actualizó: ya no tiene nada que copiar en un
+despliegue normal y **avisa en el log** en vez de callar, porque el material
+nuevo hay que subirlo a mano.
 
 ## Paso 3 — reescribir el historial (NO ejecutar sin avisar)
 
@@ -81,8 +95,8 @@ comprobar que el árbol del último commit conserva todo el código
 - **El servidor también.** `nis-portal-autopull.sh` hace `git reset --hard
   origin/main` y fallará con el historial divergente: hay que **borrar
   `/opt/nis-portal` y clonar de nuevo**, y comprobar después que la web responde.
-- **Antes hay que haber hecho el paso 2.** Si el audio sigue rastreado, la
-  reescritura lo borra del checkout y las páginas se quedan sin sonido.
+- **El paso 2 ya está hecho**, así que la reescritura no dejaría ninguna página
+  sin sonido: el material vive fuera del repositorio y lo sirve nginx.
 - El material sacado deja de estar recuperable desde git: por eso está copiado en
   `/opt/nis-media/`, y conviene una copia más fuera del servidor.
 
