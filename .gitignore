@@ -79,3 +79,19 @@ _test-unit-exam-print.html
 nis-fun/assets/videos/
 nis-fun/book-builder/
 nis-fun/build-videos/
+
+# El audio tampoco viaja ya en el repositorio (6-sep-2026): eran 1,7 GB que se
+# subian enteros cada vez que se regeneraban. Vive en /opt/nis-media del
+# servidor y lo sirve nginx en las mismas rutas de siempre (location ^~), asi
+# que ninguna pagina cambio. yle-audio e yle-img son distintos: esos los
+# entrega el backend con permiso desde /opt/yle-media.
+treasureisland-audio/
+princepauper-audio/
+attwn-audio/
+earnest-audio/
+tomsawyer-audio/
+cambridge-audio/
+nis-fun/audio/
+mocks-cambridge/mp3/
+yle-audio/
+yle-img/
