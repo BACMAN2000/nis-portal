@@ -5812,7 +5812,7 @@ function ensureHtml2pdf(){
   if(_h2pLib) return _h2pLib;
   _h2pLib=new Promise((res,rej)=>{
     const s=document.createElement('script');
-    s.src='https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.1/dist/html2pdf.bundle.min.js';
+    s.src='vendor/html2pdf.bundle.min.js';
     s.onload=()=>res(); s.onerror=()=>rej(new Error('No se pudo cargar html2pdf (conexión).'));
     document.head.appendChild(s);
   });
