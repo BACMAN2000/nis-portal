@@ -38,6 +38,9 @@ header a.back:hover{background:rgba(255,255,255,.28)}
 .sec-title{display:flex;align-items:baseline;gap:10px;margin:28px 0 12px;flex-wrap:wrap}
 .sec-title h2{font-size:1.15rem;color:var(--blue-dd);margin:0}
 .sec-title .hint{font-size:.82rem;color:var(--grey)}
+.btn-todo{margin-left:auto;border:1px solid var(--blue-d);background:#fff;color:var(--blue-dd);border-radius:8px;padding:5px 12px;font-size:.82rem;font-weight:600;cursor:pointer}
+.btn-todo:hover{background:#eef4ff}
+@media print{.wk>.body{display:block!important}.btn-todo{display:none}}
 .muted{color:var(--grey)}
 .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:14px}
 ul.tight{margin:.3em 0 0;padding-left:1.15em}
@@ -172,6 +175,8 @@ const UI = {
   periodo:     {en:'Period',                         es:'Periodo'},
   periodoNota: {en:'the school calls it <i>Project %s</i> in the calendar',
                 es:'el colegio lo llama <i>Project %s</i> en el calendario'},
+  verTodo:     {en:'Open the eleven weeks', es:'Abrir las once semanas'},
+  plegarTodo:  {en:'Collapse the weeks', es:'Plegar las semanas'},
   delPlan:     {en:'From the school <i>Annual Plan Primary 2026</i>, exactly as written.',
                 es:'Del <i>Annual Plan Primary 2026</i> del colegio, tal cual está escrito.'},
   sinPlan:     {en:'The annual plan has no content loaded for this week.',
@@ -473,9 +478,15 @@ function pintaArco(k, a){
     h += `</div>`;
   }
 
-  /* El mapa de semanas: la parte que de verdad hace falta. */
+  /* El mapa de semanas: la parte que de verdad hace falta.
+
+     Las once semanas salían plegadas, y eso hacía creer —a quien abre la página
+     y también a quien la presenta— que solo hay una semana desarrollada. Están
+     todas, con lo que da cada área esa semana. El botón las abre de golpe, que
+     es como se enseña el plan a coordinación, y al imprimir salen abiertas. */
   h += `<div class="sec-title"><h2>${u('semana')}</h2>
-    <span class="hint">${u('semanaHint')}</span></div>`;
+    <span class="hint">${u('semanaHint')}</span>
+    <button type="button" id="btnTodo" class="btn-todo">${u('verTodo')}</button></div>`;
 
   /* Cuando el plan anual del grado carga menos áreas de las que el proyecto
      usa, se dice antes de que el lector lo note y crea que falta la mitad. */
@@ -608,6 +619,16 @@ function pintaArco(k, a){
 
   $('#app').innerHTML = h;
   document.title = t(a.titulo) + ' · ' + a.label + ' · NIS';
+
+  /* Abrir o plegar las once semanas de una vez. Va aquí, después de pintar,
+     porque el HTML se arma entero en una cadena y antes el botón no existe. */
+  const bt = $('#btnTodo');
+  if(bt) bt.onclick = function(){
+    const ws = document.querySelectorAll('details.wk');
+    const abrir = ![...ws].every(d => d.open);
+    ws.forEach(d => { d.open = abrir; });
+    bt.textContent = u(abrir ? 'plegarTodo' : 'verTodo');
+  };
 }
 
 /* Se pinta en cuanto esta el plan anual, sin esperar a Supabase: averiguar
