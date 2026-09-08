@@ -202,6 +202,7 @@ a.arc p{max-width:60%}
 <script src="project-arcs.js?v=9"></script>
 <script src="project-art.js?v=1"></script>
 <script src="project-models.js?v=1"></script>
+<script src="project-cursos.js?v=1"></script>
 <script src="project-arcs-sec.js?v=1"></script>
 <script>
 const $ = s => document.querySelector(s);
@@ -1277,7 +1278,7 @@ function pintaArco(k, a){
           <p class="pnote">${u('delPlan')}</p>`
         : `<p class="pnote">${u('sinPlan')}</p>`}
         ${bloqueInglesHTML(a.grade, f.periodo, f.semana)}
-        ${bloqueCursos(f.cursos)}
+        ${bloqueCursos(f.cursos || ((window.PROJECT_ARCS_CURSOS||{})[k]||{})[f.n])}
         ${sm ? bloqueModelo(sm.modelo, a.cover) : ''}
       </div></details>`;
   });
