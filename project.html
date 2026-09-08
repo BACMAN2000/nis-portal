@@ -192,6 +192,26 @@ const UI = {
                 es:'el colegio lo llama <i>Project %s</i> en el calendario'},
   verTodo:     {en:'Open the eleven weeks', es:'Abrir las once semanas'},
   plegarTodo:  {en:'Collapse the weeks', es:'Plegar las semanas'},
+  secundaria:  {en:'Secondary', es:'Secundaria'},
+  secTit:      {en:'English sequence', es:'Secuencia de inglés'},
+  secSub:      {en:'What the grade covers across the year, unit by unit, and what each subject has loaded in the planner.',
+                es:'Lo que el grado cubre a lo largo del año, unidad por unidad, y lo que cada área tiene cargado en el planificador.'},
+  secUnidades: {en:'The six units', es:'Las seis unidades'},
+  secUnidadesHint:{en:'phonics, vocabulary, reading, writing, listening and speaking',
+                es:'phonics, vocabulario, lectura, escritura, listening y speaking'},
+  verTodoU:    {en:'Open every unit', es:'Abrir todas las unidades'},
+  secAreas:    {en:'What every subject has in the planner', es:'Lo que cada área tiene en el planificador'},
+  secAreasHint:{en:'read from Toddle on 5 Sep 2026', es:'leído de Toddle el 5-sep-2026'},
+  area:        {en:'Subject', es:'Área'},
+  unidadesCargadas:{en:'Units loaded', es:'Unidades cargadas'},
+  sinNumero:   {en:'units with no number in the title', es:'unidades sin número en el título'},
+  secFuenteToddle:{en:'From Toddle · Planning insights › Manage units. A missing number is not always a gap: the subject may not be taught in that grade.',
+                es:'De Toddle · Planning insights › Manage units. Un número que falta no siempre es un hueco: puede que el área no se imparta en ese grado.'},
+  secHuecoTit: {en:'The gap worth looking at', es:'El desnivel que conviene mirar'},
+  secFaltaTit: {en:'What secondary does not have yet', es:'Lo que secundaria todavía no tiene'},
+  secFaltaTxt: {en:'Secondary has no interdisciplinary projects written down and no week-by-week matrix by subject, the way primary does. This page shows what does exist — the English sequence and the units loaded in the planner — and does not invent the rest.',
+                es:'Secundaria no tiene proyectos interdisciplinarios escritos ni matriz semana a semana por área, como sí tiene primaria. Esta página enseña lo que sí existe —la secuencia de inglés y las unidades cargadas en el planificador— y no se inventa el resto.'},
+  secSinScope: {en:'This grade is not in the Scope &amp; Sequence.', es:'Este grado no está en el Scope &amp; Sequence.'},
   inglesTit:   {en:'English · our programme', es:'Inglés · nuestro programa'},
   inglesFuente:{en:'From the school <i>English Scope &amp; Sequence 2026</i>. The portal only proposes which week each block falls on.',
                 es:'Del <i>Scope &amp; Sequence 2026</i> de inglés del colegio. El portal solo propone en qué semana cae cada bloque.'},
@@ -300,7 +320,7 @@ let PLAN = null, planError = '';
    Project.docx del grado. Se transcriben aparte y se pintan marcados, para
    que se vea de donde salen. */
 let PLAN_G1 = null;
-let SCOPE = null;
+let SCOPE = null, SEC = null;
 
 const AREA_NOMBRE = {
   science:'Science', social:'Social Studies', math:'Math', english:'English',
@@ -337,6 +357,12 @@ async function cargaPlan(){
     const r = await fetch('scope/scope-2026.json', {cache:'no-store'});
     if(r.ok) SCOPE = await r.json();
   }catch(_){ SCOPE = null; }
+  /* Las unidades que secundaria tiene cargadas en Toddle, leidas del planificador
+     el 5-sep-2026. Es el unico dato real de que se da en cada area. */
+  try{
+    const r = await fetch('scope/secundaria-cobertura-2026.json', {cache:'no-store'});
+    if(r.ok) SEC = await r.json();
+  }catch(_){ SEC = null; }
 }
 
 
@@ -434,6 +460,110 @@ function inglesDelArco(a){
         <ul class="tight">${gram}</ul>` : ''}
       <p class="pnote">${u('inglesFuente')}</p>
     </div>`;
+}
+
+
+/* ================= secundaria: 6.o a 11.o ================================
+   Aqui no hay arcos ni matriz semana x area: secundaria no los tiene escritos.
+   Se ensena la secuencia de ingles del grado -que si esta, unidad por unidad-
+   y el mapa de lo que cada area tiene cargado en Toddle. Lo que falta se dice. */
+const SEC_GRADOS = ['g6','g7','g8','g9','g10','g11'];
+const SEC_LBL = {g6:'6th', g7:'7th', g8:'8th', g9:'9th', g10:'10th', g11:'11th'};
+
+function esSecundaria(g){ return SEC_GRADOS.indexOf(String(g||'').toLowerCase()) >= 0; }
+
+function areasToddle(grade){
+  if(!SEC || !SEC.areas) return [];
+  const n = Number(String(grade).replace('g',''));
+  return SEC.areas.filter(a => (a.grados||[]).indexOf(n) >= 0).map(a => ({
+    area: a.area,
+    unidades: ((a.cobertura||{})[String(n)] || []),
+    hueco: a.hueco || ''
+  }));
+}
+
+function pintaSecundaria(grade){
+  const g = gradoScope(grade);
+  if(!g){ $('#app').innerHTML = '<p class="muted">'+u('secSinScope')+'</p>'; return; }
+  const via = (SCOPE.pathway || []).find(p => String(p.grado).toUpperCase() === String(grade).toUpperCase()) || {};
+  const kpi = (SCOPE.benchmarks || []).find(p => String(p.grado).toUpperCase() === String(grade).toUpperCase()) || {};
+  const lbl = SEC_LBL[String(grade).toLowerCase()] || grade;
+
+  let h = `<div class="hero" style="background:linear-gradient(135deg,#2f5f93,#4987c6)">
+    <div class="motivo">🎓</div>
+    <p class="eyebrow">${esc(lbl)} · 2026 · ${u('secundaria')}</p>
+    <h1>${esc(u('secTit'))}</h1>
+    <p class="sub">${esc(u('secSub'))}</p>
+    <div class="meta"><span>${esc(via.examen || '—')}</span><span>CEFR ${esc(g.cefr||'')}</span>
+      <span>${g.unidades.length} ${u('unidades')}</span></div></div>`;
+
+  /* Lo que el grado prepara y lo que se espera de el. */
+  const chips = [];
+  if(via.examen)    chips.push(`<span><b>${u('examen')}</b> ${esc(via.examen)}</span>`);
+  if(g.cefr)        chips.push(`<span><b>CEFR</b> ${esc(g.cefr)}</span>`);
+  if(via.escritura) chips.push(`<span><b>${u('escritura')}</b> ${esc(via.escritura)}</span>`);
+  if(via.lectura)   chips.push(`<span><b>${u('lectura')}</b> ${esc(via.lectura)}</span>`);
+  if(via.gramatica) chips.push(`<span><b>${u('gramTit')}</b> ${esc(via.gramatica)}</span>`);
+  const filasKpi = ['listening','speaking','reading','writing','lengua'].filter(k => kpi[k])
+    .map(k => `<tr><td class="crit">${u('kpi_'+k)}</td><td>${esc(kpi[k])}</td></tr>`).join('');
+
+  h += `<div class="sec-title"><h2>${u('inglesArcoTit')}</h2>
+      <span class="hint">${u('inglesArcoHint')}</span></div>
+    <div class="card"><div class="ing-chips">${chips.join('')}</div>
+    ${filasKpi ? `<h4 style="margin:16px 0 6px;font-size:.9rem">${u('kpiTit')}</h4>
+      <table class="rub">${filasKpi}</table>` : ''}
+    <p class="pnote">${u('inglesFuente')}</p></div>`;
+
+  /* Las seis unidades, enteras. */
+  h += `<div class="sec-title"><h2>${u('secUnidades')}</h2>
+    <span class="hint">${u('secUnidadesHint')}</span>
+    <button type="button" id="btnTodo" class="btn-todo">${u('verTodoU')}</button></div>`;
+  g.unidades.forEach(un => {
+    const porSec = {};
+    (un.bloques||[]).forEach(b => (porSec[b.seccion] = porSec[b.seccion] || []).push(b));
+    const cuerpo = Object.keys(porSec).map(sec => `<div class="area">
+        <h5>${esc(sec)}</h5>
+        ${porSec[sec].map(b => `<div class="ing-b"><h6>${esc(b.bloque)}</h6>
+          <ul>${(b.puntos||[]).map(p=>`<li>${esc(p)}</li>`).join('')}</ul></div>`).join('')}
+      </div>`).join('');
+    h += `<details class="wk" style="border-left-color:#2f5f93">
+      <summary>
+        <div class="num">U${un.n}</div>
+        <div class="txt"><div class="fase">${u('unidad')} ${un.n}</div>
+          <div class="foco">${esc(un.tema)}</div></div>
+      </summary>
+      <div class="body"><div class="areas">${cuerpo}</div>
+        <p class="pnote">${u('inglesFuente')}</p></div></details>`;
+  });
+
+  /* Lo que cada area tiene cargado en Toddle, que es el dato real. */
+  const areas = areasToddle(grade);
+  if(areas.length){
+    h += `<div class="sec-title"><h2>${u('secAreas')}</h2>
+      <span class="hint">${u('secAreasHint')}</span></div><div class="card">
+      <table class="rub"><tr><th>${u('area')}</th><th>${u('unidadesCargadas')}</th></tr>` +
+      areas.map(a => `<tr><td class="crit">${esc(a.area)}</td>
+        <td>${a.unidades.length ? a.unidades.map(n=>'U'+n).join(' · ') : '<span class="muted">'+u('sinNumero')+'</span>'}</td></tr>`).join('') +
+      `</table><p class="pnote">${u('secFuenteToddle')}</p></div>`;
+    const hueco = (areas.find(a => a.area === 'English') || {}).hueco;
+    if(hueco) h += `<div class="warnbox" style="margin-top:12px"><h4>${u('secHuecoTit')}</h4>
+      <p style="margin:0">${esc(hueco)}</p></div>`;
+  }
+
+  /* Lo que NO hay, dicho antes de que alguien lo eche en falta. */
+  h += `<div class="sec-title"><h2>${u('secFaltaTit')}</h2></div>
+    <div class="warnbox"><p style="margin:0">${u('secFaltaTxt')}</p></div>`;
+
+  h += `<p class="center" style="margin-top:24px"><a href="project.html">${u('todos')}</a></p>`;
+  $('#app').innerHTML = h;
+  document.title = lbl + ' · ' + t(u('secTit')) + ' · NIS';
+  const bt = $('#btnTodo');
+  if(bt) bt.onclick = function(){
+    const ws = document.querySelectorAll('details.wk');
+    const abrir = ![...ws].every(d => d.open);
+    ws.forEach(d => { d.open = abrir; });
+    bt.textContent = u(abrir ? 'plegarTodo' : 'verTodoU');
+  };
 }
 
 /* Lo que en esta semana sale de los Project.docx y no de la hoja del plan. */
@@ -782,6 +912,10 @@ function pintaArco(k, a){
    leccion del arranque de unit.html: no dejar la pantalla en "Loading" por
    una consulta que puede no volver. */
 function pinta(){
+  /* Secundaria no tiene arcos: se le ensena su secuencia de ingles y lo que
+     cada area tiene cargado en Toddle. */
+  const gq = (P.get('grade') || '').toLowerCase();
+  if(!ARC && esSecundaria(gq)){ pintaSecundaria(gq); return; }
   if(!ARC){ pintaIndice(); return; }
   const a = ARCS[ARC];
   if(!a){
