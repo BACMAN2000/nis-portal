@@ -7521,8 +7521,115 @@ function escBorrador(an, props){
   return l.join(' ');
 }
 
+/* ---------- produccion de unidad: rubrica de writing ----------
+   Una redaccion que no sale de una ficha —el articulo, el ensayo, el informe
+   final— no tiene rubrica de sesion, y hasta hoy la pantalla decia "esta
+   practica no tiene rubrica" justo en los textos mas largos de la unidad. Se
+   corrige con la rubrica del WRITING (writing-rubrics.js), que es la que el
+   alumno vio en unit.html el dia uno, en niveles AD/A/B/C.
+
+   La maquina propone donde de verdad puede medir. AD no se propone nunca:
+   significa ir mas alla de lo que la tarea pedia y eso lo decide el docente. */
+const ESC_EVIDENCIA = ['research','study','studies','according to','experts','scientists',
+  'evidence','survey','statistics','data','shows that','found that','estimates',
+  'world health organization','report says','a report'];
+const ESC_CONSEJO = {
+  fuerte:['had better','must','have to','need to','never','always'],
+  medio: ['should','ought to','should not','avoid','make sure','remember to','shouldn\u2019t'],
+  suave: ['could','why not','try','you can','it helps to','consider','it is worth'] };
+const ESC_ESPECULA = ['might','may','perhaps','possibly','probably','it seems','tends to'];
+
+/* El gancho: la primera frase hace algo o no hace nada. */
+function escGancho(texto){
+  /* El gancho vive DESPUES del titulo: cogiendo la primera frase a secas, un
+     titulo acabado en ! o ? se hacia pasar por gancho, y uno normal se comia
+     el gancho de verdad que venia debajo. */
+  let lineas = String(texto||'').split(/\n+/).map(function(x){ return x.trim(); })
+                 .filter(function(x){ return x; });
+  if(lineas.length > 1 && lineas[0].length <= 80 && !/[.]$/.test(lineas[0])) lineas = lineas.slice(1);
+  const cuerpo = lineas.slice(0, 3).join(' ');
+  const primera = (cuerpo.split(/(?<=[.!?])\s/)[0] || cuerpo).slice(0, 220);
+  if(/\?/.test(primera)) return { hay:true, como:'una pregunta', frase:primera };
+  if(/\b(imagine|picture this|what if|have you ever|did you know|stop|remember)\b/i.test(primera))
+    return { hay:true, como:'una llamada al lector', frase:primera };
+  if(/\b\d+([.,]\d+)?\s*(%|percent|hours|minutes|out of|in \d+)\b/i.test(primera))
+    return { hay:true, como:'un dato', frase:primera };
+  return { hay:false, frase:primera };
+}
+
+/* Titulo: primera linea corta y sin punto final, con cuerpo debajo. */
+function escTitulo(texto){
+  const lineas = String(texto||'').split(/\n/).map(function(x){ return x.trim(); });
+  const prim = lineas.find(function(x){ return x; }) || '';
+  return { hay: !!prim && prim.length <= 80 && !/[.]$/.test(prim) && lineas.filter(function(x){ return x; }).length > 1,
+           texto: prim.slice(0, 80) };
+}
+
+function escProponeNivel(c, an, W){
+  const t = an.texto;
+
+  if(c.auto === 'evidence'){
+    const h = escBusca(t, ESC_EVIDENCIA);
+    if(h.length >= 2) return { n:'A', r:'Cita evidencia (' + h.slice(0,3).join(', ') + '). Para AD tendria que pesarla, no solo citarla \u2014 eso lo ves tu.' };
+    if(h.length === 1) return { n:'B', r:'Una sola marca de evidencia ("' + h[0] + '"); el resto es opinion propia.' };
+    return { n:'C', r:'No se ve ninguna fuente ni dato: todo es opinion.' };
+  }
+
+  if(c.auto === 'advice'){
+    const usa = Object.keys(ESC_CONSEJO).filter(function(k){ return escBusca(t, ESC_CONSEJO[k]).length; });
+    const esp = escBusca(t, ESC_ESPECULA);
+    const ejemplos = usa.map(function(k){ return escBusca(t, ESC_CONSEJO[k])[0]; }).join(', ');
+    if(usa.length >= 2 && esp.length)
+      return { n:'A', r:'Gradua el consejo (' + ejemplos + ') y usa modales de especulacion ("' + esp[0] + '"). Si separa lo seguro de lo probable, es AD.' };
+    if(usa.length >= 2) return { n:'A', r:'Gradua el consejo con mas de una fuerza (' + ejemplos + ').' };
+    if(usa.length === 1) return { n:'B', r:'Da consejo siempre con la misma fuerza ("' + ejemplos + '").' };
+    return { n:'C', r:'No hay modales de consejo en el texto.' };
+  }
+
+  if(c.auto === 'structure'){
+    const rango = (W && W.range) || null;
+    const tit = escTitulo(t), n = an.palabras;
+    const dentro = rango ? (n >= rango[0] && n <= rango[1]) : null;
+    const cerca  = rango ? (n >= rango[0]*0.85 && n <= rango[1]*1.15) : null;
+    const partes = [];
+    partes.push(tit.hay ? 'titulo' : null);
+    partes.push(an.parrafos >= 3 ? 'tres o mas parrafos' : (an.parrafos === 2 ? 'dos parrafos' : null));
+    partes.push(dentro ? 'dentro de ' + rango[0] + '\u2013' + rango[1] : null);
+    const tiene = partes.filter(Boolean);
+    const falta = [];
+    if(!tit.hay) falta.push('titulo');
+    if(an.parrafos < 3) falta.push('parrafos (' + an.parrafos + ')');
+    if(rango && !dentro) falta.push(n + ' palabras, ' + (n < rango[0] ? 'por debajo' : 'por encima') + ' de ' + rango[0] + '\u2013' + rango[1]);
+    const r = (tiene.length ? 'Tiene ' + tiene.join(', ') + '. ' : '') + (falta.length ? 'Le falta: ' + falta.join('; ') + '.' : '');
+    if(tiene.length === 3) return { n:'A', r:r };
+    if(tiene.length === 2 || (cerca && tit.hay)) return { n:'B', r:r };
+    return { n:'C', r:r };
+  }
+
+  if(c.auto === 'hook'){
+    const g = escGancho(t);
+    if(g.hay) return { n:'A', r:'Abre con ' + g.como + ': \u201c' + g.frase.slice(0,70) + '\u2026\u201d. Que lo mantenga hasta el final lo ves tu.' };
+    return { n:'C', r:'Abre anunciando el tema: \u201c' + g.frase.slice(0,70) + '\u2026\u201d.' };
+  }
+
+  return { n:null, r:'Esto no se mide automaticamente \u2014 lo valoras tu.' };
+}
+
+/* La rubrica con que se corrige esta produccion. */
+function escRubrica(f){
+  const deFicha = (f.ficha && f.ficha.rubric) || [];
+  if(deFicha.length) return { modo:'puntos', rub:deFicha, W:null };
+  /* El writing de un examen es otra consigna: no se corrige con la rubrica
+     del producto de la unidad aunque se guarde con el mismo kind. */
+  if(/^exam-/.test(f.fila.milestone || '')) return { modo:'puntos', rub:[], W:null };
+  const W = window.WRITING_RUBRICS &&
+            WRITING_RUBRICS.get(f.fila.grade, f.fila.unit, f.fila.kind);
+  if(W) return { modo:'niveles', rub:W.criteria, W:W };
+  return { modo:'puntos', rub:[], W:null };
+}
+
 /* ---------- pantalla ---------- */
-let _esc = { grade:'g9', unit:4, filas:[], i:-1, actual:null, props:[], puntos:{} };
+let _esc = { grade:'g9', unit:4, filas:[], i:-1, actual:null, props:[], puntos:{}, modo:'puntos', W:null };
 
 /* Un texto cuenta como produccion escrita si la ficha lo declaro como bloque
    `write`, y si no hay ficha (las actividades sueltas no la tienen) por su
@@ -7548,7 +7655,7 @@ async function escCarga(){
      actividad suelta: para el docente son la misma cosa, texto que corregir. */
   const { data, error } = await sb.from('unit_submissions')
     .select('id,student_id,grade,unit,milestone,kind,payload,score,criteria,feedback,reviewed_at,updated_at')
-    .eq('grade', _esc.grade).eq('unit', _esc.unit).in('kind', ['worksheet','report'])
+    .eq('grade', _esc.grade).eq('unit', _esc.unit).in('kind', ['worksheet','report','reflection'])
     .order('updated_at', { ascending:false }).limit(600);
   if(error){
     $('#eLista').innerHTML = `<p class="err">No pude leerlo: ${esc(error.message)}</p>`;
@@ -7571,7 +7678,7 @@ async function escCarga(){
     /* El producto final de la unidad (kind 'report') guarda su texto en
        payload.text, no en answers: es una redaccion sola, no una ficha. Para
        quien corrige es lo mismo — texto que leer y puntuar. */
-    const textos = (r.kind === 'report')
+    const textos = (r.kind === 'report' || r.kind === 'reflection')
       ? ((r.payload && r.payload.text || '').trim() ? [{ campo:'texto', texto:r.payload.text }] : [])
       : escTextos(r.payload, ficha);
     textos.forEach(function(t){
@@ -7579,7 +7686,8 @@ async function escCarga(){
         id:r.id, campo:t.campo, texto:t.texto, fila:r, ficha:ficha,
         nombre:(quien[r.student_id] || {}).full_name || '(alumno)',
         grado:(quien[r.student_id] || {}).grade_id, seccion:(quien[r.student_id] || {}).section,
-        donde:(r.kind === 'report') ? 'Producto final de la unidad'
+        donde:(r.kind === 'reflection') ? 'Reflexión de la unidad'
+              : (r.kind === 'report') ? 'Producto final de la unidad'
               : ((r.payload && r.payload.title) || r.milestone),
         /* Mismo contador que el analisis: si no, el numero cambia al abrir. */
         palabras:(String(t.texto).match(/[A-Za-zÀ-ÿ']+/g) || []).length
@@ -7616,7 +7724,8 @@ function escPinta(){
       <tbody>${_esc.filas.map(function(f, j){
         const est = f.fila.reviewed_at
           ? '<span class="badge" style="background:#dcfce7">enviado' + (f.fila.score != null ? ' · ' + f.fila.score : '') + '</span>'
-          : (f.fila.criteria && Object.keys(f.fila.criteria).length
+          : ((f.fila.criteria && Object.keys(f.fila.criteria).length) ||
+             (f.fila.payload && f.fila.payload.review && f.fila.payload.review.niveles)
               ? '<span class="badge" style="background:#fef9c3">guardado sin enviar</span>'
               : '<span class="badge" style="background:#fee2e2">sin corregir</span>');
         return `<tr>
@@ -7639,7 +7748,9 @@ window.escAbre = function(j, silencioso){
   _esc.actual = f;
 
   const an = escAnaliza(f.texto);
-  const rub = (f.ficha && f.ficha.rubric) || [];
+  const R = escRubrica(f);
+  const rub = R.rub;
+  _esc.modo = R.modo; _esc.W = R.W;
   const resp = (f.fila.payload && f.fila.payload.answers) || {};
   const respondidos = Object.keys(resp).filter(function(k){
     return resp[k] !== '' && resp[k] !== false && resp[k] != null; }).length;
@@ -7657,19 +7768,26 @@ window.escAbre = function(j, silencioso){
   if(!campos) campos = Object.keys(resp).length;
   const ctx = { campos:campos, respondidos:respondidos, banco:banco };
 
-  _esc.props = rub.map(function(c){ return escPropone(c, an, ctx); });
+  _esc.props = (_esc.modo === 'niveles')
+    ? rub.map(function(c){ return escProponeNivel(c, an, R.W); })
+    : rub.map(function(c){ return escPropone(c, an, ctx); });
   /* Si ya se habia corregido, mandan los puntos guardados; si no, la propuesta. */
-  const guardados = f.fila.criteria || {};
+  const enBorrador = (f.fila.payload && f.fila.payload.review) || {};
+  const guardados = (f.fila.criteria && Object.keys(f.fila.criteria).length)
+                    ? f.fila.criteria : (enBorrador.niveles || {});
   _esc.puntos = {};
   rub.forEach(function(c, k){
-    if(guardados[k] != null) _esc.puntos[k] = guardados[k];
-    else if(_esc.props[k] && _esc.props[k].p != null) _esc.puntos[k] = _esc.props[k].p;
+    const clave = (_esc.modo === 'niveles') ? c.k : k;
+    const pr = _esc.props[k] || {};
+    if(guardados[clave] != null) _esc.puntos[clave] = guardados[clave];
+    else if(_esc.modo === 'niveles'){ if(pr.n) _esc.puntos[clave] = pr.n; }
+    else if(pr.p != null) _esc.puntos[clave] = pr.p;
   });
 
-  const maxTotal = rub.reduce(function(a,c){ return a + (c.max || 0); }, 0);
-  const borrador = f.fila.feedback ||
-    (f.fila.payload && f.fila.payload.review && f.fila.payload.review.borrador) ||
-    escBorrador(an, _esc.props);
+  const maxTotal = (_esc.modo === 'niveles') ? 20
+                 : rub.reduce(function(a,c){ return a + (c.max || 0); }, 0);
+  const borrador = f.fila.feedback || enBorrador.borrador ||
+    ((_esc.modo === 'niveles') ? '' : escBorrador(an, _esc.props));
 
   $('#eCorr').innerHTML = `
     <div class="card">
@@ -7692,7 +7810,31 @@ window.escAbre = function(j, silencioso){
         <div>
           ${rub.length ? `<div class="badge" style="background:#e7ecfd;color:#2d5a8d;margin-bottom:8px">
               🤖 Propuesta automática — revísala antes de enviar</div>` : ''}
-          ${rub.length ? rub.map(function(c, k){
+          ${_esc.modo === 'niveles' ? `
+            <p class="muted" style="font-size:.78rem;margin:0 0 10px">
+              Rúbrica del writing: <b>${esc(R.W.task)}</b> · ${esc(R.W.spec)}.
+              Es la que el alumno tiene delante desde el día uno.
+              ${R.W.fuera ? '<br>Fuera de esta corrección: ' + esc(R.W.fuera) : ''}
+              <br><b>AD no se propone nunca</b>: significa ir más allá de lo que se pidió, y eso lo decides tú.</p>` : ''}
+          ${rub.length && _esc.modo === 'niveles' ? rub.map(function(c, k){
+            const pr = _esc.props[k] || {};
+            const puesto = _esc.puntos[c.k];
+            return `<div style="margin-bottom:14px">
+              <div style="font-size:.85rem;font-weight:600">${c.n}. ${esc(c.text)}</div>
+              <div class="row" style="gap:5px;margin-top:5px;flex-wrap:wrap">
+                ${WRITING_RUBRICS.NIVELES.map(function(l){
+                  const sug = pr.n === l;
+                  return `<button class="btn small ${puesto === l ? '' : 'ghost'}"
+                    style="padding:5px 12px;min-width:40px;${sug && puesto !== l ? 'border-color:#3b5bdb;color:#3b5bdb' : ''}"
+                    title="${esc(c.levels[l])}"
+                    onclick="escPunto('${c.k}','${l}')">${l}</button>`; }).join('')}
+              </div>
+              ${puesto ? `<div style="font-size:.78rem;margin-top:5px;background:#f6f8fc;border-left:3px solid var(--blue);
+                    padding:6px 9px;border-radius:0 6px 6px 0">${esc(c.levels[puesto])}</div>` : ''}
+              <div class="muted" style="font-size:.76rem;margin-top:4px">${esc(pr.r || '')}</div>
+            </div>`; }).join('')
+          : ''}
+          ${rub.length && _esc.modo !== 'niveles' ? rub.map(function(c, k){
             const pr = _esc.props[k] || {};
             return `<div style="margin-bottom:12px">
               <div style="font-size:.85rem;font-weight:600">${esc(c.c)}</div>
@@ -7705,13 +7847,14 @@ window.escAbre = function(j, silencioso){
                     onclick="escPunto(${k},${p})">${p}</button>`; }).join('')}
               </div>
               <div class="muted" style="font-size:.76rem;margin-top:4px">${esc(pr.r || '')}</div>
-            </div>`; }).join('')
-          : '<p class="muted">Esta práctica no tiene rúbrica. Defínela en «Corregir fichas» y aquí se puntúa sola.</p>'}
+            </div>`; }).join('') : ''}
+          ${rub.length ? '' : '<p class="muted">Esta práctica no tiene rúbrica. Defínela en «Corregir fichas» y aquí se puntúa sola.</p>'}
 
           <div style="border-top:1px solid var(--line);padding-top:10px;margin-top:10px">
             <div class="row" style="justify-content:space-between">
               <b style="font-size:.9rem">Nota</b>
-              <span style="font-weight:800;color:var(--blue-dd)" id="eTotal">${escTotal()}${maxTotal ? (' / ' + maxTotal) : ''}</span>
+              <span style="font-weight:800;color:var(--blue-dd)" id="eTotal">${escTotal()}${maxTotal ? (' / ' + maxTotal) : ''}${
+                _esc.modo === 'niveles' && escNivel() ? ' · ' + escNivel() + ' (' + WRITING_RUBRICS.SIGNIFICA[escNivel()] + ')' : ''}</span>
             </div>
             <textarea id="eComent" rows="5" style="width:100%;margin-top:8px;padding:9px;
               border:1px solid var(--line);border-radius:8px;font-family:inherit;font-size:.85rem;
@@ -7732,8 +7875,18 @@ window.escAbre = function(j, silencioso){
   if(!silencioso) $('#eCorr').scrollIntoView({ behavior:'smooth', block:'start' });
 };
 
+/* Con rubrica de ficha la nota es la suma de puntos; con rubrica de writing
+   es la media vigesimal de los niveles (AD 18-20 · A 14-17 · B 11-13 · C 0-10,
+   la tabla del MINEDU), que es como califica el colegio. */
 function escTotal(){
+  if(_esc.modo === 'niveles' && _esc.W)
+    return WRITING_RUBRICS.nota(_esc.W, _esc.puntos) || 0;
   return Object.keys(_esc.puntos).reduce(function(a,k){ return a + (Number(_esc.puntos[k]) || 0); }, 0);
+}
+
+function escNivel(){
+  if(_esc.modo !== 'niveles' || !_esc.W) return null;
+  return WRITING_RUBRICS.global(_esc.W, _esc.puntos);
 }
 
 window.escPunto = function(k, p){
@@ -7750,8 +7903,13 @@ window.escGuarda = async function(enviar){
   const comentario = ($('#eComent').value || '').trim();
   const hayPuntos = Object.keys(_esc.puntos).length > 0;
 
+  /* Con rubrica de writing, ademas de los niveles por criterio (w1, w2, …)
+     se escribe el nivel global en la clave '3', que es la competencia
+     Writing de «Productos de unidad»: el profesor lo ve ahi sin abrir nada. */
+  const criterios = Object.assign({}, _esc.puntos);
+  if(_esc.modo === 'niveles' && escNivel()) criterios['3'] = escNivel();
   const cambio = {
-    criteria: _esc.puntos,
+    criteria: criterios,
     reviewed_by: (state.profile && state.profile.id) || null
   };
   if(enviar){
@@ -7763,14 +7921,14 @@ window.escGuarda = async function(enviar){
     /* Sin enviar: el borrador se queda en el payload, y score/feedback
        intactos para que al alumno no le llegue media correccion. */
     const p = Object.assign({}, f.fila.payload || {});
-    p.review = Object.assign({}, p.review || {}, { borrador:comentario });
+    p.review = Object.assign({}, p.review || {}, { borrador:comentario, niveles:criterios });
     cambio.payload = p;
   }
 
   const { error } = await sb.from('unit_submissions').update(cambio).eq('id', f.id);
   if(error){ est.textContent = 'No se guardó: ' + error.message; est.className = 'state err'; return; }
 
-  f.fila.criteria = _esc.puntos;
+  f.fila.criteria = criterios;
   if(enviar){
     f.fila.score = cambio.score; f.fila.feedback = cambio.feedback;
     f.fila.reviewed_at = cambio.reviewed_at;

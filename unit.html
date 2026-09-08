@@ -64,6 +64,9 @@ table.rub td.lvl.on{background:#dff0e0;box-shadow:inset 0 0 0 2px var(--good)}
 table.rub.desc td.crit{width:22%}
 table.rub.plain td.lvl{width:9%;font-weight:700;color:var(--blue-d)}
 .rub-wrap{overflow-x:auto}
+details.wrub{border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin:0 0 12px;background:#fafbff}
+details.wrub summary{cursor:pointer;font-weight:700;font-size:.85rem;color:var(--blue-dd)}
+details.wrub[open] summary{margin-bottom:4px}
 .legend{font-size:.78rem;color:var(--grey);margin-top:10px}
 /* que significa cada letra, en el mismo orden que las columnas */
 .escala{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:6px}
@@ -201,6 +204,7 @@ textarea:focus{outline:none;border-color:var(--blue)}
 <script src="activities-data.js?v=12"></script>
 <script src="class-files.js?v=2"></script>
 <script src="unit-plans.js?v=15"></script>
+<script src="writing-rubrics.js?v=1"></script>
 <script src="project-arcs.js?v=9"></script>
 <script src="nis-nav.js?v=2"></script>
 <script>
@@ -760,10 +764,28 @@ function sesionesSemana(n){
   return `<div class="ses"><h4>Class materials — choose your level</h4>${filas}</div>`;
 }
 
+/* La rubrica del writing, con sus cuatro niveles. Sale de
+   writing-rubrics.js, que la deriva de los criterios de esta misma unidad:
+   el alumno la tiene delante mientras escribe, no despues de la nota. */
+function rubricaEscrita(d){
+  const R = window.WRITING_RUBRICS && WRITING_RUBRICS.get(GRADE, UNIT, d.kind);
+  if(!R) return '';
+  return `<details class="wrub"><summary>&#128209; How this will be marked &mdash; ${esc(R.task)}</summary>
+    <div class="rub-wrap" style="margin-top:10px">
+      <table class="rub desc"><thead><tr><th>Criterion</th>${NIVELES.map(l=>`<th>${l}</th>`).join('')}</tr></thead>
+        <tbody>${R.criteria.map(c=>`<tr><td class="crit">${c.n}. ${esc(c.text)}</td>
+          ${NIVELES.map(l=>`<td>${esc(c.levels[l])}</td>`).join('')}</tr>`).join('')}</tbody></table>
+    </div>
+    <ul class="escala">${NIVELES.map(l=>`<li><span class="lv ${l.toLowerCase()}">${l}</span>
+      ${esc(WRITING_RUBRICS.SIGNIFICA[l])}</li>`).join('')}</ul>
+  </details>`;
+}
+
 function bloqueTexto(d){
   return `<div class="card">
     <h3 style="color:var(--blue-dd);font-size:1rem">${d.icon} ${esc(d.title)}</h3>
     <p style="font-size:.86rem;color:var(--grey);margin:0 0 10px">${esc(d.desc)}</p>
+    ${rubricaEscrita(d)}
     <textarea id="t-${d.kind}" placeholder="Type your final version here…"></textarea>
     <div class="counter off" id="wc-${d.kind}">0 words</div>
     ${d.checklist?`<ul class="checklist" id="chk-${d.kind}">${d.checklist.map(c=>`<li data-k="${c.k}">${esc(c.t)}</li>`).join('')}</ul>`:''}
