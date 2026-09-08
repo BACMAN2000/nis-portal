@@ -7537,6 +7537,8 @@ const ESC_CONSEJO = {
   fuerte:['had better','must','have to','need to','never','always'],
   medio: ['should','ought to','should not','avoid','make sure','remember to','shouldn\u2019t'],
   suave: ['could','why not','try','you can','it helps to','consider','it is worth'] };
+const ESC_SECUENCIA = ['first','firstly','then','next','after that','after','later',
+  'finally','lastly','second','secondly','third','before','meanwhile','at the end','to begin'];
 const ESC_ESPECULA = ['might','may','perhaps','possibly','probably','it seems','tends to'];
 
 /* El gancho: la primera frase hace algo o no hace nada. */
@@ -7600,9 +7602,13 @@ function escProponeNivel(c, an, W){
     if(!tit.hay) falta.push('titulo');
     if(an.parrafos < 3) falta.push('parrafos (' + an.parrafos + ')');
     if(rango && !dentro) falta.push(n + ' palabras, ' + (n < rango[0] ? 'por debajo' : 'por encima') + ' de ' + rango[0] + '\u2013' + rango[1]);
-    const r = (tiene.length ? 'Tiene ' + tiene.join(', ') + '. ' : '') + (falta.length ? 'Le falta: ' + falta.join('; ') + '.' : '');
-    if(tiene.length === 3) return { n:'A', r:r };
-    if(tiene.length === 2 || (cerca && tit.hay)) return { n:'B', r:r };
+    const r = ((tiene.length ? 'Tiene ' + tiene.join(', ') + '. ' : '') +
+               (falta.length ? 'Le falta: ' + falta.join('; ') + '.' : '')).trim();
+    /* Sin rango declarado solo hay dos senales que mirar, no tres: si no,
+       una rubrica sin extension (la biografia de 6.o) nunca podia pasar de B. */
+    const total = rango ? 3 : 2;
+    if(tiene.length >= total) return { n:'A', r:r };
+    if(tiene.length === total - 1 || (cerca && tit.hay)) return { n:'B', r:r };
     return { n:'C', r:r };
   }
 
@@ -7610,6 +7616,36 @@ function escProponeNivel(c, an, W){
     const g = escGancho(t);
     if(g.hay) return { n:'A', r:'Abre con ' + g.como + ': \u201c' + g.frase.slice(0,70) + '\u2026\u201d. Que lo mantenga hasta el final lo ves tu.' };
     return { n:'C', r:'Abre anunciando el tema: \u201c' + g.frase.slice(0,70) + '\u2026\u201d.' };
+  }
+
+  /* Palabras que ordenan: las piden media primaria (la receta, la carrera de
+     rampas, el ciclo del agua) y la biografia de 6.o. */
+  if(c.auto === 'sequence'){
+    const h = escBusca(t, ESC_SECUENCIA);
+    const distintas = [...new Set(h.map(function(x){ return x.toLowerCase(); }))];
+    if(distintas.length >= 3) return { n:'A', r:'Ordena con ' + distintas.slice(0,4).join(', ') + '.' };
+    if(distintas.length) return { n:'B', r:'Solo ' + distintas.length + ' palabra(s) de orden ("' + distintas[0] + '").' };
+    return { n:'C', r:'No hay ninguna palabra que ponga los pasos en orden.' };
+  }
+
+  /* Conectores de cualquier tipo: el analisis ya los trae contados. */
+  if(c.auto === 'linkers'){
+    const tipos = Object.keys(an.conectores).filter(function(k){ return an.conectores[k].length; });
+    const ejem = tipos.map(function(k){ return an.conectores[k][0]; }).slice(0,3);
+    if(tipos.length >= 2) return { n:'A', r:'Enlaza con ' + ejem.join(', ') + ' (' + tipos.join(', ') + ').' };
+    if(tipos.length === 1) return { n:'B', r:'Un solo tipo de conector: ' + tipos[0] + ' ("' + ejem[0] + '").' };
+    return { n:'C', r:'Las frases no estan enlazadas.' };
+  }
+
+  /* Cifras de verdad. Una cantidad sin unidad no es un dato: "20" puede ser
+     cualquier cosa; "20 cm" o "20%" ya dice algo. */
+  if(c.auto === 'data'){
+    const conUnidad = t.match(/\d+([.,]\d+)?\s*(%|percent|cm|mm|km|kg|ml|min|hours|minutes|seconds|degrees|\u00b0|m\b|g\b|l\b|h\b)/gi) || [];
+    const cifras = t.match(/\d+([.,]\d+)?/g) || [];
+    if(conUnidad.length >= 2) return { n:'A', r:'Trae ' + conUnidad.length + ' cifras con su unidad (' + conUnidad.slice(0,3).join(', ') + ').' };
+    if(conUnidad.length === 1) return { n:'B', r:'Una sola cifra con unidad ("' + conUnidad[0] + '").' };
+    if(cifras.length) return { n:'B', r:'Hay numeros (' + cifras.slice(0,3).join(', ') + ') pero ninguno lleva unidad.' };
+    return { n:'C', r:'No hay ninguna cifra en el texto.' };
   }
 
   return { n:null, r:'Esto no se mide automaticamente \u2014 lo valoras tu.' };
