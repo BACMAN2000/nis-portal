@@ -854,6 +854,18 @@ function wordformPanel(){
     style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 
+/* Collocations e idioms: las otras dos apps de vocabulario. Mismo trato que
+   phrasal verbs, embebidas para no sacar al alumno del portal. */
+function collocationsPanel(){
+  return `<iframe src="collocations-app/index.html?embed=1&v=1" title="Collocations"
+    style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block"></iframe>`;
+}
+
+function idiomsPanel(){
+  return `<iframe src="idioms-app/index.html?embed=1&v=1" title="Idioms"
+    style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block"></iframe>`;
+}
+
 function phrasalPanel(){
   return `<iframe src="phrasal-app/index.html?embed=1&v=1" title="Phrasal Verbs"
     style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block"></iframe>`;
@@ -1161,6 +1173,8 @@ async function renderAdmin(tab='users'){
       {key:'mun',label:'🌐 MUN Academy'},
       {key:'phonics',label:'🔤 Phonics'},
       {key:'phrasal',label:'🔗 Phrasal verbs'},
+      {key:'collocations',label:'🪢 Collocations'},
+      {key:'idioms',label:'💬 Idioms'},
       {key:'wordform',label:'🧩 Word formation'},
       {key:'coach',label:'🎙️ Pronunciación'},
     ]},
@@ -1185,6 +1199,8 @@ async function renderAdmin(tab='users'){
   if(tab==='library') return studentLibrary();
   if(tab==='phonics') return $('#main').innerHTML = phonicsPanel();
   if(tab==='phrasal') return $('#main').innerHTML = phrasalPanel();
+  if(tab==='collocations') return $('#main').innerHTML = collocationsPanel();
+  if(tab==='idioms') return $('#main').innerHTML = idiomsPanel();
   if(tab==='wordform') return $('#main').innerHTML = wordformPanel();
   if(tab==='coach') return $('#main').innerHTML = coachPanel();
   if(tab==='overview') return adminOverview();
@@ -3305,6 +3321,8 @@ async function renderTeacher(tab){
     {key:'mun',label:'🌐 MUN Academy'},
     {key:'phonics',label:'🔤 Phonics'},
     {key:'phrasal',label:'🔗 Phrasal verbs'},
+      {key:'collocations',label:'🪢 Collocations'},
+      {key:'idioms',label:'💬 Idioms'},
     {key:'wordform',label:'🧩 Word formation'},
     {key:'coach',label:'🎙️ Pronunciación'},
   ]);
@@ -3334,6 +3352,8 @@ async function renderTeacher(tab){
   if(active==='french') return studentSubject('french');
   if(active==='phonics'){ $('#main').innerHTML = phonicsPanel(); return; }
   if(active==='phrasal'){ $('#main').innerHTML = phrasalPanel(); return; }
+  if(active==='collocations'){ $('#main').innerHTML = collocationsPanel(); return; }
+  if(active==='idioms'){ $('#main').innerHTML = idiomsPanel(); return; }
   if(active==='wordform'){ $('#main').innerHTML = wordformPanel(); return; }
   if(active==='coach'){ $('#main').innerHTML = coachPanel(); return; }
   // Estas tres estaban en el menu pero sin handler: el profesor las clicaba y
@@ -3989,7 +4009,9 @@ const ENGLISH_AREAS = [
   {emoji:'🎙️', title:'Pronunciation', desc:'Listen to each sound, watch the tongue and airflow, and practise.', nav:'coach',    node:'english.pronunciation', block:'practice'},
   {emoji:'🔤', title:'Phonics',       desc:'Sounds and word shapes: CVC, blends, magic-e.',  nav:'phonics',  node:'english.phonics', block:'practice'},
   {emoji:'🎲', title:'Games Lab',     desc:'7 games per topic for grammar, vocabulary, phrasal verbs and idioms (A1–C1).', nav:'games', block:'practice'},
-  {emoji:'🔗', title:'Phrasal Verbs',  desc:'210 phrasal verbs level by level, with the sentence from your own course.', nav:'phrasal', block:'practice'},
+  {emoji:'🔗', title:'Phrasal Verbs',  desc:'331 phrasal verbs level by level, with the sentence from your own course.', nav:'phrasal', block:'practice'},
+  {emoji:'🪢', title:'Collocations',   desc:'395 word partnerships level by level, measured in your own courses.', nav:'collocations', block:'practice'},
+  {emoji:'💬', title:'Idioms',         desc:'212 expressions you cannot guess from their words. From B1 up.', nav:'idioms', block:'practice'},
   {emoji:'🧩', title:'Word Formation', desc:'Prefixes, suffixes and word families, with the sentence from your own course.', nav:'wordform', block:'practice'},
   {emoji:'🎮', title:'NIShoot Live',  desc:"Join your class's live game: enter with the PIN.",    nav:'nishoot', block:'practice'},
   // Las tres puertas del examen, juntas. Cambridge es el mapa (las dos ramas
