@@ -552,6 +552,318 @@ window.PROJECT_ARCS = {
 
 /* ==================================================================== 2.o */
 
+'g1.t3': {
+  grade:'g1', label:'Grade 1', trimestre:3, periodos:[5,6], semanas:11,
+  inicio:'2026-09-14', fin:'2026-12-04',
+  cover:{icon:'🍎', from:'#7f1d1d', to:'#f0a05a'},
+  titulo:'My family and our table',
+  subtitulo:L('Who is in my house, and what we eat when we are together',
+              'Quién vive en mi casa, y qué comemos cuando estamos juntos'),
+  /* Este arco NO esta transcrito de un Project.docx como los dos anteriores:
+     1.o no tiene Project 5 ni Project 6 escritos. Es propuesta del portal
+     sobre lo unico que el plan anual carga en P5 y P6, que es ingles, y sobre
+     el Scope & Sequence del grado, que da los temas de las dos unidades:
+     My Family y Food & Fun. Sale marcado como propuesta en pantalla. */
+  propuesta:true,
+  notaPlan:L('In the Grade 1 annual plan, P5 and P6 only carry ENGLISH: one line of grammar per week '+
+    'and nothing else. There is no Project 5 or Project 6 document either. So the English column of '+
+    'every week below is the school’s, copied as it is, and everything else is what this page proposes '+
+    'so that the term has a project. Coordination approves it, changes it or drops it.',
+    'En el plan anual de 1.º, P5 y P6 solo cargan INGLÉS: una línea de gramática por semana y nada '+
+    'más. Tampoco existen los documentos Project 5 ni Project 6. Así que la columna de English de cada '+
+    'semana es del colegio, copiada tal cual, y todo lo demás es lo que esta página propone para que '+
+    'el trimestre tenga proyecto. Coordinación lo aprueba, lo cambia o lo descarta.'),
+  areaEje:'social', areasArticuladas:['comunicacion','math','english','science','art'],
+  situacion:L('The last eleven weeks of the year are, in English, two units that fit together on their '+
+    'own: My Family in P5 and Food & Fun in P6. A six-year-old learns to say who is in their house, '+
+    'what each person is like and what each one can do; and then, what they eat, what they like and '+
+    'what they do not. Put together they make one thing that every family in the world recognises: the '+
+    'table. The project turns the classroom into a café where each child seats their own family.',
+    'Las últimas once semanas del año son, en inglés, dos unidades que encajan solas: My Family en P5 '+
+    'y Food & Fun en P6. Un niño de seis años aprende a decir quién vive en su casa, cómo es cada uno '+
+    'y qué sabe hacer; y después, qué comen, qué le gusta y qué no. Juntas dan una sola cosa que '+
+    'reconoce cualquier familia del mundo: la mesa. El proyecto convierte el aula en un café donde '+
+    'cada niño sienta a su familia.'),
+  preguntaEsencial:L('Who sits at my table, and what do we share there?',
+    '¿Quién se sienta en mi mesa, y qué compartimos ahí?'),
+  narrativa:L('You are going to make a café. A real one, with tables, with a menu and with people '+
+    'coming in. But it is not any café: at your table sits your family, and on the plate goes the food '+
+    'you eat at home. First you are going to learn to say who they are and what each one can do. Then '+
+    'you are going to find out what we eat and where it comes from. And on the last day of the year, '+
+    'your family walks in through the door and you are the one who explains everything.',
+    'Vas a montar un café. Uno de verdad, con mesas, con carta y con gente que entra. Pero no es un '+
+    'café cualquiera: en tu mesa se sienta tu familia, y en el plato va la comida que comes en casa. '+
+    'Primero vas a aprender a decir quiénes son y qué sabe hacer cada uno. Después vas a descubrir qué '+
+    'comemos y de dónde viene. Y el último día del año tu familia entra por la puerta y el que lo '+
+    'explica todo eres tú.'),
+  orientadoras:{
+    social:L('Who is my family and what do we do together?','¿Quién es mi familia y qué hacemos juntos?'),
+    comunicacion:L('How do I tell somebody about my family and my food?','¿Cómo le cuento a alguien cómo es mi familia y qué comemos?'),
+    math:L('How many are we, how much do we need and how much does it cost?','¿Cuántos somos, cuánto necesitamos y cuánto cuesta?'),
+    english:L('Can I say who they are, what they can do and what I like?','¿Sé decir quiénes son, qué saben hacer y qué me gusta?'),
+    science:L('What do I eat, where does it come from and what does it do to me?','¿Qué como, de dónde viene y qué me hace?'),
+    art:L('How do I show my family and my plate so that others see them?','¿Cómo enseño a mi familia y mi plato para que los demás los vean?')
+  },
+  competencias:[
+    {area:'social', nombre:L('Builds his or her identity','Construye su identidad'),
+     capacidades:[L('Values himself or herself as part of a family','Se valora a sí mismo como parte de una familia'),
+                  L('Reflects and argues ethically about how we treat each other','Reflexiona y argumenta éticamente sobre cómo nos tratamos')]},
+    {area:'social', nombre:L('Lives together and participates democratically','Convive y participa democráticamente'),
+     capacidades:[L('Builds norms and takes on agreements','Construye normas y asume acuerdos'),
+                  L('Takes part in actions for the common good','Participa en acciones que promueven el bienestar común')]},
+    {area:'science', nombre:L('Inquires through scientific methods','Indaga mediante métodos científicos'),
+     capacidades:[L('Frames situations for inquiry','Problematiza situaciones'),
+                  L('Generates and records data','Genera y registra datos'),
+                  L('Evaluates and communicates findings','Evalúa y comunica sus hallazgos')]},
+    {area:'comunicacion', nombre:L('Communicates orally in his or her mother tongue','Se comunica oralmente en su lengua materna'),
+     capacidades:[L('Gets information from oral texts','Obtiene información del texto oral'),
+                  L('Adapts what he says to the situation','Adecúa, organiza y desarrolla las ideas de forma coherente')]},
+    {area:'math', nombre:L('Solves problems of quantity','Resuelve problemas de cantidad'),
+     capacidades:[L('Translates quantities into numerical expressions','Traduce cantidades a expresiones numéricas'),
+                  L('Uses strategies of estimation and calculation','Usa estrategias y procedimientos de estimación y cálculo')]}
+  ],
+  producto:{
+    titulo:'My family café',
+    audiencia:L('The families themselves, who come in on the last day of the year, and the Nursery '+
+      'class, who visit the café the day before.',
+      'Las propias familias, que entran el último día del año, y la clase de Nursery, que visita el '+
+      'café el día anterior.'),
+    descripcion:L('The classroom turned into a café. Each child has their own place mat with the family '+
+      'tree drawn and labelled, the plate of the food their family shares, the price list they worked '+
+      'out, and the sentences in English to receive whoever sits down.',
+      'El aula convertida en un café. Cada niño tiene su mantel individual con el árbol de familia '+
+      'dibujado y etiquetado, el plato de la comida que su familia comparte, la lista de precios que '+
+      'calculó y las frases en inglés para recibir a quien se siente.'),
+    incluye:[L('My family tree, labelled','Mi árbol de familia, etiquetado'),
+             L('My family portrait','El retrato de mi familia'),
+             L('My plate, drawn and labelled','Mi plato, dibujado y etiquetado'),
+             L('The class menu and its prices','La carta de la clase y sus precios'),
+             L('The song and the story','La canción y el cuento'),
+             L('My portfolio of the year','Mi portafolio del año')]
+  },
+  fases:[
+    {n:1, periodo:5, semana:1, fase:L('My family','Mi familia'), foco:L('Who lives in my house','Quién vive en mi casa'),
+     hace:L('The family tree begins: who lives in my house and what I call each one. In English, the '+
+       'family words and the present simple with common verbs; at home, a photo or a drawing is asked for.',
+       'Empieza el árbol de familia: quién vive en mi casa y cómo llamo a cada uno. En inglés, las '+
+       'palabras de la familia y el present simple con verbos comunes; se pide en casa una foto o un dibujo.'),
+     evidencia:L('My family tree, first draft','Mi árbol de familia, primer borrador'),
+     cursos:{
+       english:'Present simple with common verbs. Family members: mum, dad, sister, brother, grandma, grandpa. Match family word to picture. (Del plan anual y del Scope: U5 My Family.)',
+       comunicacion:'Cada niño dice en voz alta quién vive en su casa, en una frase. Se escriben los nombres propios con mayúscula.',
+       math:'Contar cuántos somos en casa: conteo hasta 10 y comparación entre familias (más que, menos que).',
+       science:'Los seres vivos de mi casa: quién come, quién duerme, quién crece — también las mascotas y las plantas.',
+       social:'Qué es una familia y por qué no todas son iguales. Se acuerda que en el aula ninguna forma de familia sobra.',
+       art:'Retrato de la familia con la técnica del año: se elige el formato del mantel individual.',
+       music:'Canción de la familia: se aprende la letra en inglés y se marca el pulso con palmas.',
+       pe:'Juegos por parejas y tríos: cooperar con quien te toca, como en casa.',
+       tutoria:'Cómo nos tratamos en casa y en el aula: primeras normas del café.'}},
+    {n:2, periodo:5, semana:2, fase:L('My family','Mi familia'), foco:L('What each one is like','Cómo es cada uno'),
+     hace:L('Adjectives arrive: old, young, tall, short. Each member of the family gets a description '+
+       'and the portrait is finished. In English, the verb «can» for abilities.',
+       'Llegan los adjetivos: old, young, tall, short. Cada miembro de la familia recibe una '+
+       'descripción y se termina el retrato. En inglés, el verbo «can» para las habilidades.'),
+     evidencia:L('Family portrait with descriptions','Retrato de familia con descripciones'),
+     cursos:{
+       english:'Verb «can»: expressing abilities. Adjectives: old, young, tall, short. Read simple sentences: This is my dad. He is tall. (Del plan anual y del Scope.)',
+       comunicacion:'Descripción oral y escrita de una persona: dos rasgos y una cosa que sabe hacer.',
+       math:'Medir y comparar alturas de la familia con una cinta; ordenar de mayor a menor.',
+       science:'Las partes del cuerpo y por qué cada uno es distinto: crecemos y cambiamos.',
+       social:'Qué hace cada persona de mi familia durante el día: los oficios de la casa.',
+       art:'Retrato terminado, con color y con los rasgos que lo hacen esa persona y no otra.',
+       music:'Se añade a la canción una estrofa con los adjetivos aprendidos.',
+       pe:'Circuito de habilidades: cada uno enseña una cosa que sabe hacer con el cuerpo.',
+       tutoria:'Lo que admiro de alguien de mi familia: se dice en voz alta y se escucha sin interrumpir.'}},
+    {n:3, periodo:5, semana:3, fase:L('My family','Mi familia'), foco:L('What each one can do','Qué sabe hacer cada uno'),
+     hace:L('From «can» for abilities to «can» for permission: what we are allowed to do at home and '+
+       'what we are not. The rules of the house become the rules of the café.',
+       'Del «can» de habilidad al «can» de permiso: qué se puede hacer en casa y qué no. Las normas de '+
+       'la casa se convierten en las normas del café.'),
+     evidencia:L('The rules of our café','Las normas de nuestro café'),
+     cursos:{
+       english:'Verb «can»: expressing permissions. Can I…? Yes, you can / No, you can’t. (Del plan anual.)',
+       comunicacion:'Pedir permiso y dar las gracias: fórmulas de cortesía, en oral y por escrito.',
+       math:'Cuántas sillas, cuántos platos, cuántos vasos: correspondencia uno a uno para el café.',
+       science:'Higiene antes de comer: por qué nos lavamos las manos, con un experimento sencillo.',
+       social:'Derechos y responsabilidades en casa: qué me toca a mí.',
+       art:'Cartel de las normas del café, con dibujos para quien todavía no lee.',
+       music:'Ritmo del café: se inventa una llamada de dos compases para pedir silencio.',
+       pe:'Juegos de turnos: esperar, pedir y ceder.',
+       tutoria:'Se firman las normas del café entre todos.'}},
+    {n:4, periodo:5, semana:4, fase:L('My family','Mi familia'), foco:L('What we do together','Lo que hacemos juntos'),
+     hace:L('The routine of the family: what we do on a normal day and what we do when we are all '+
+       'together. Sentences start to grow: two ideas joined.',
+       'La rutina de la familia: qué hacemos un día normal y qué hacemos cuando estamos todos. Las '+
+       'frases empiezan a crecer: dos ideas unidas.'),
+     evidencia:L('Our family routine','Nuestra rutina de familia'),
+     cursos:{
+       english:'Sentence expansion and word order awareness. Possessive adjectives: my, your, his, her. (Del plan anual y del Scope.)',
+       comunicacion:'Ordenar una secuencia de tres momentos del día y contarla con conectores: primero, después, al final.',
+       math:'La hora en punto y las rutinas: a qué hora hacemos cada cosa.',
+       science:'El día y la noche: por qué dormimos y por qué desayunamos.',
+       social:'Las celebraciones de mi familia: cuál es la que más me gusta y por qué.',
+       art:'Tira de tres viñetas con la rutina familiar.',
+       music:'Se ensaya la canción completa con la estrofa nueva.',
+       pe:'Juego de imitación de acciones cotidianas: adivinar la rutina del otro.',
+       tutoria:'Qué hace mi familia cuando alguien está triste.'}},
+    {n:5, periodo:5, semana:5, fase:L('My family','Mi familia'), foco:L('My family, presented','Mi familia, presentada'),
+     hace:L('The Family Book by Todd Parr is read in shared reading, and each child presents their '+
+       'family tree to the class with the sentence frame in English. The place mat closes its first half.',
+       'Se lee The Family Book, de Todd Parr, en lectura compartida, y cada niño presenta su árbol de '+
+       'familia a la clase con la estructura en inglés. El mantel cierra su primera mitad.'),
+     evidencia:L('Family tree presented','Árbol de familia presentado'),
+     cursos:{
+       english:'Early sentence formation. Reading Plan: The Family Book (T. Parr). Speaking: Introduce my family — This is my mum. She is tall. (Del plan anual y del Scope.)',
+       comunicacion:'Exposición oral de un minuto ante la clase, mirando al público.',
+       math:'Gráfico de barras muy simple: cuántas familias tienen 3, 4 o 5 personas.',
+       science:'Cierre del apartado: qué necesita cada miembro de la familia para estar sano.',
+       social:'Todas las familias del aula, expuestas juntas: qué tienen en común.',
+       art:'Primera mitad del mantel terminada y guardada.',
+       music:'Canción de la familia, cantada entera.',
+       pe:'Juego cooperativo de cierre de periodo.',
+       tutoria:'Autoevaluación con caritas: qué me costó y qué me salió bien.'}},
+    {n:6, periodo:6, semana:1, fase:L('Our table','Nuestra mesa'), foco:L('What we eat','Lo que comemos'),
+     hace:L('P6 begins and the subject changes: food. The words for what we eat, and the verb to be to '+
+       'say what things are like. Each child brings the name of a dish from home.',
+       'Empieza P6 y cambia el sujeto: la comida. Las palabras de lo que comemos, y el verbo to be para '+
+       'decir cómo son las cosas. Cada niño trae de casa el nombre de un plato.'),
+     evidencia:L('My food words','Mis palabras de comida'),
+     cursos:{
+       english:'Verb to be (am, is, are). Food: apple, banana, bread, milk, egg, cake, water, juice. (Del plan anual y del Scope: U6 Food & Fun.)',
+       comunicacion:'El nombre del plato de mi casa, escrito con ayuda; separación en sílabas al decirlo.',
+       math:'Contar y agrupar frutas de verdad: decenas y unidades con material.',
+       science:'Alimentos que vienen de plantas y alimentos que vienen de animales: primera clasificación.',
+       social:'Los alimentos de mi región: qué se come aquí y qué no.',
+       art:'Bodegón sencillo: dibujar del natural una fruta traída de casa.',
+       music:'Canción de las frutas, con gestos.',
+       pe:'Circuito «del mercado a la casa»: transportar sin que se caiga.',
+       tutoria:'Compartir sin pelear: la merienda del recreo.'}},
+    {n:7, periodo:6, semana:2, fase:L('Our table','Nuestra mesa'), foco:L('What I like and what I do not','Lo que me gusta y lo que no'),
+     hace:L('I like / I don’t like, and the class survey: what does 1st grade like? The first real data '+
+       'of the project appears.',
+       'I like / I don’t like, y la encuesta de la clase: ¿qué le gusta a 1.º? Aparecen los primeros '+
+       'datos de verdad del proyecto.'),
+     evidencia:L('The class survey','La encuesta de la clase'),
+     cursos:{
+       english:'Personal pronouns (I, you, we…). Like/don’t like: I like…, I don’t like… Listen and tick: like/don’t like survey. (Del plan anual y del Scope.)',
+       comunicacion:'Preguntar y responder por turnos; anotar la respuesta del compañero.',
+       math:'Tabla de conteo con palotes y recuento del total: cuántos prefieren cada alimento.',
+       science:'Por qué no nos gusta todo: los sabores y la lengua.',
+       social:'Respetar el gusto del otro: nadie se burla de lo que come otra familia.',
+       art:'Pictograma de la encuesta con dibujos, uno por cada tres votos.',
+       music:'Se inventa una estrofa con los alimentos ganadores.',
+       pe:'Juego de relevos por equipos según el alimento preferido.',
+       tutoria:'Probar algo nuevo: se acuerda un día de degustación.'}},
+    {n:8, periodo:6, semana:3, fase:L('Our table','Nuestra mesa'), foco:L('Where food comes from','De dónde viene la comida'),
+     hace:L('The Very Hungry Caterpillar is read and its sequence retold. And the real journey is '+
+       'traced: who grows it, who brings it, who sells it.',
+       'Se lee La oruga muy hambrienta y se cuenta su secuencia. Y se sigue el viaje de verdad: quién '+
+       'la cultiva, quién la trae, quién la vende.'),
+     evidencia:L('The journey of one food','El viaje de un alimento'),
+     cursos:{
+       english:'Noun-Adjectives. Reading Plan: The Very Hungry Caterpillar (E. Carle) — sequence and retell. (Del plan anual y del Scope.)',
+       comunicacion:'Recontar el cuento en tres partes con apoyo de imágenes.',
+       math:'Los días de la semana y el conteo de la oruga: cuántas frutas comió en total.',
+       science:'De la semilla al fruto: se planta algo en el aula y se empieza el registro.',
+       social:'Los oficios que traen la comida a mi mesa: agricultor, transportista, vendedor.',
+       art:'Mural colectivo de la oruga con material reciclado.',
+       music:'Cuento musicalizado: un sonido para cada día de la semana.',
+       pe:'Circuito de la oruga: reptar, saltar y rodar.',
+       tutoria:'Dar las gracias a alguien que trae la comida al colegio.'}},
+    {n:9, periodo:6, semana:4, fase:L('Our table','Nuestra mesa'), foco:L('My plate','Mi plato'),
+     hace:L('Each child draws and labels their plate: three or four foods, chosen and explained. In '+
+       'English, negative structures to say what is not on it.',
+       'Cada niño dibuja y etiqueta su plato: tres o cuatro alimentos, elegidos y explicados. En '+
+       'inglés, las estructuras negativas para decir lo que no lleva.'),
+     evidencia:L('My plate, drawn and labelled','Mi plato, dibujado y etiquetado'),
+     cursos:{
+       english:'Negative structures. Draw and label: My plate (3-4 foods). Copy: I like ___ . I don’t like ___ . (Del plan anual y del Scope.)',
+       comunicacion:'La receta de casa contada en tres pasos, dictada al profesor.',
+       math:'Repartir en partes iguales: la mitad y el cuarto de un plato; precios sencillos de la carta.',
+       science:'Alimentos que dan energía y alimentos que protegen: se clasifica el propio plato.',
+       social:'El plato de mi familia y el de otra: qué se parece.',
+       art:'El plato, dibujado del natural y etiquetado, para el mantel.',
+       music:'Ensayo general de la canción del café.',
+       pe:'Juego de la lonchera equilibrada.',
+       tutoria:'Qué me gustaría aprender a cocinar.'}},
+    {n:10, periodo:6, semana:5, fase:L('Our table','Nuestra mesa'), foco:L('We get the café ready','Preparamos el café'),
+     hace:L('The café is assembled: menu, prices, invitations, signs and the trial run with the '+
+       'Nursery class as the first customers.',
+       'Se monta el café: carta, precios, invitaciones, carteles y el ensayo con la clase de Nursery '+
+       'como primeros clientes.'),
+     evidencia:L('Café ready + trial run','Café listo + ensayo con Nursery'),
+     cursos:{
+       english:'Sentence expansion and word order. Order food in a classroom café role-play: Can I have…? Here you are. (Del plan anual y del Scope.)',
+       comunicacion:'La invitación para la familia, escrita y decorada.',
+       math:'La carta con precios; pagar y dar el vuelto con monedas de juguete.',
+       science:'Higiene del café: manos, superficies y alimentos tapados.',
+       social:'Repartir los roles del café y respetarlos.',
+       art:'Carteles, carta y decoración del aula.',
+       music:'Ensayo de la actuación de apertura.',
+       pe:'Ensayo del recorrido del café sin chocarse.',
+       tutoria:'Ensayo de cómo recibir a un invitado.'}},
+    {n:11, periodo:6, semana:6, fase:L('Our table','Nuestra mesa'), foco:L('My family café','El café de mi familia'),
+     hace:L('The families come in. Each child receives them at their own place mat, presents their '+
+       'family in English, explains their plate and hands over the portfolio of the year.',
+       'Entran las familias. Cada niño las recibe en su mantel, presenta a su familia en inglés, '+
+       'explica su plato y entrega el portafolio del año.'),
+     evidencia:L('The café opens + my portfolio','El café abre + mi portafolio'),
+     cursos:{
+       english:'Early sentence formation. Speaking: say what I like and don’t like; welcome and order. End-of-year portfolio: my 6 drawings. (Del plan anual y del Scope.)',
+       comunicacion:'Presentación oral ante la familia: tres frases, mirando a quien escucha.',
+       math:'Caja del café: contar lo recaudado en monedas de juguete.',
+       science:'Se enseña la planta que se sembró en la semana 8 y cómo está.',
+       social:'Cierre: todas las familias del aula, juntas y expuestas.',
+       art:'Mantel individual terminado y expuesto; portafolio del año encuadernado.',
+       music:'Actuación de apertura del café con la canción del trimestre.',
+       pe:'Juego final con las familias.',
+       tutoria:'Despedida del año: qué me llevo de 1.º.'}}
+  ],
+  evaluacion:[
+    {criterio:L('I say who my family is','Digo quién es mi familia'),
+     descriptor:L('Names the members of the family and describes at least two with an adjective and one thing they can do.',
+                  'Nombra a los miembros de su familia y describe al menos a dos con un adjetivo y una cosa que saben hacer.')},
+    {criterio:L('I count and compare','Cuento y comparo'),
+     descriptor:L('Counts the people, the plates and the coins with one-to-one correspondence and compares quantities.',
+                  'Cuenta personas, platos y monedas con correspondencia uno a uno y compara cantidades.')},
+    {criterio:L('I explain what I eat','Explico lo que como'),
+     descriptor:L('Sorts the food on their plate and says what it gives them, using what was studied.',
+                  'Clasifica los alimentos de su plato y dice qué le aportan, con lo estudiado.')},
+    {criterio:L('I receive and I explain','Recibo y explico'),
+     descriptor:L('Welcomes a visitor, presents their place mat and answers a simple question in English.',
+                  'Recibe a un visitante, presenta su mantel y responde a una pregunta sencilla en inglés.')}
+  ],
+  diferenciacion:[
+    L('Everything can be handed in drawn and labelled, spoken or written.',
+      'Todo se puede entregar dibujado y etiquetado, hablado o escrito.'),
+    L('A child who does not want to talk about their family can present the family of the story instead.',
+      'Quien no quiera hablar de su familia puede presentar la familia del cuento.'),
+    L('The English sentences are given as a frame to complete, not as free production.',
+      'Las frases en inglés se dan como estructura para completar, no como producción libre.')
+  ],
+  sad:{titulo:'Student Achievement Day #3',
+    muestra:L('The child shows the place mat: the family tree on one side and the plate on the other, '+
+      'and explains both in one minute.',
+      'El niño enseña el mantel: el árbol de familia de un lado y el plato del otro, y explica los dos '+
+      'en un minuto.')},
+  toddle:[],
+  unidades:[],
+  revisar:[
+    L('Grade 1 has no Project 5 or Project 6 document, and the annual plan only loads English in P5 '+
+      'and P6. Everything that is not English here is a proposal and needs the teacher’s approval.',
+      '1.º no tiene documento Project 5 ni Project 6, y el plan anual solo carga inglés en P5 y P6. '+
+      'Todo lo que aquí no es inglés es propuesta y necesita el visto bueno de la profesora.'),
+    L('The café of week 11 needs a date agreed with the families and with the school: it should be '+
+      'requested in week 6, not in week 10.',
+      'El café de la semana 11 necesita fecha acordada con las familias y con el colegio: hay que '+
+      'pedirla en la semana 6, no en la 10.'),
+    L('Asking children to bring a family photo has to be optional: not every child can bring one, and '+
+      'the drawing has to be worth exactly the same.',
+      'Pedir una foto de familia tiene que ser opcional: no todos los niños pueden traerla, y el '+
+      'dibujo tiene que valer exactamente lo mismo.'),
+    L('P6 has six weeks and P5 five: eleven in total. The calendar ends on 4 December.',
+      'P6 tiene seis semanas y P5 cinco: once en total. El calendario acaba el 4 de diciembre.')]
+},
 'g2.t1': {
   grade:'g2', label:'Grade 2', trimestre:1, periodos:[1,2], semanas:11,
   inicio:'2026-03-09', fin:'2026-05-29',
@@ -2791,18 +3103,19 @@ window.PROJECT_ARCS_SUELTOS = [
      'P6 de 5.o junta origen del universo y formacion de estrellas en Science con emociones, '+
      'ciudadania y plan de ahorro en Social. Son dos unidades legitimas y sin relacion; forzarlas '+
      'en un proyecto seria inventarla.')},
-  {grade:'g1', periodos:[5,6],
-   titulo:L('P5 and P6 of Grade 1, not written yet','P5 y P6 de 1.o, sin escribir todavia'),
-   motivo:L('The P5 and P6 folders in "Grade 1 / 8. Planning" are empty: there is no Project 5 or '+
-     'Project 6. And in the Grade 1 "Annual Plan" sheet those two periods only carry English '+
-     '(present simple, can, verb to be, pronouns, sentence building). That is enough to plan the '+
-     'English lesson, but not an eleven-week interdisciplinary project. When the Grade 1 team '+
-     'writes the two Project.docx files, they will be transcribed like the first four.',
-     'Las carpetas P5 y P6 de "Grade 1 / 8. Planning" estan vacias: no hay Project 5 ni Project 6. '+
-     'Y en la hoja "Annual Plan" de 1.o esos dos periodos solo cargan English (present simple, '+
-     'can, verb to be, pronombres, formacion de frases). Con eso se puede planificar la clase de '+
-     'ingles, pero no un proyecto interdisciplinario de once semanas. Cuando el equipo de 1.o '+
-     'escriba los dos Project.docx, se transcriben igual que los cuatro primeros.')}
+  {grade:'g1', periodos:[5,6], resuelto:true,
+   titulo:L('P5 and P6 of Grade 1 — proposal, not transcription',
+            'P5 y P6 de 1.o — propuesta, no transcripcion'),
+   motivo:L('The P5 and P6 folders in "Grade 1 / 8. Planning" are still empty: there is no Project '+
+     '5 or Project 6, and the annual plan only loads English in those two periods. Unlike the '+
+     'first two arcs, which are transcribed from the grade own documents, the third one — '+
+     '«My family and our table» — is a PROPOSAL built on the only thing that is loaded: '+
+     'the English of the two units, My Family and Food & Fun. It needs the teacher to approve it.',
+     'Las carpetas P5 y P6 de "Grade 1 / 8. Planning" siguen vacias: no hay Project 5 ni Project '+
+     '6, y el plan anual solo carga ingles en esos dos periodos. A diferencia de los dos primeros '+
+     'arcos, que estan transcritos de los documentos del grado, el tercero —«My family and our '+
+     'table»— es una PROPUESTA construida sobre lo unico que si esta cargado: el ingles de las '+
+     'dos unidades, My Family y Food & Fun. Necesita el visto bueno de la profesora.')}
 ];
 
 /* ==================================================================

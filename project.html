@@ -163,7 +163,13 @@ a.arc .lam{position:absolute;right:10px;bottom:10px;width:104px;border-radius:8p
   opacity:.94;box-shadow:0 4px 14px rgba(0,0,0,.18)}
 a.arc .lam svg{display:block}
 a.arc p{max-width:60%}
-@media print{.mdl{break-inside:avoid}.tira{display:none}}
+.cursos{margin-top:14px;border:1px solid #FDE68A;background:#FFFDF5;border-radius:var(--r-sm);padding:11px 13px}
+.cursos>h5{margin:0 0 9px;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#92400E;
+  display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.cursos .area.curso{background:#fff;border-color:#FDE68A}
+.cursos .area.curso h5{color:#92400E;text-transform:none;letter-spacing:0;font-size:.8rem}
+.cursos .area.curso p{margin:0;font-size:.85rem;line-height:1.4}
+@media print{.mdl{break-inside:avoid}.tira{display:none}.cursos{break-inside:avoid}}
 @media(max-width:760px){
   .mdl .cuerpo,.finalmdl{grid-template-columns:1fr}
   a.arc .lam{display:none}a.arc p{max-width:100%}
@@ -252,6 +258,15 @@ const UI = {
   periodo:     {en:'Period',                         es:'Periodo'},
   periodoNota: {en:'the school calls it <i>Project %s</i> in the calendar',
                 es:'el colegio lo llama <i>Project %s</i> en el calendario'},
+  /* --- que hace cada curso esta semana --- */
+  arcoPropuesta:{en:'Portal proposal', es:'Propuesta del portal'},
+  arcoPropTxt: {en:'This grade has no Project document written for these two periods, and the annual plan only loads English. Everything that is not English here is what this page proposes so that the term has a project: the teacher and coordination approve it, change it or drop it.',
+                es:'Este grado no tiene documento Project escrito para estos dos periodos, y el plan anual solo carga inglés. Todo lo que aquí no es inglés es lo que esta página propone para que el trimestre tenga proyecto: la profesora y coordinación lo aprueban, lo cambian o lo descartan.'},
+  yaPropuesto: {en:'Already has a proposal', es:'Ya tiene propuesta'},
+  cursosTit:   {en:'What each subject does this week', es:'Lo que hace cada curso esta semana'},
+  cursosHint:  {en:'the task of each subject inside the project', es:'la tarea de cada curso dentro del proyecto'},
+  cursosProp:  {en:'Portal proposal — to agree with each teacher',
+                es:'Propuesta del portal — para acordar con cada profesor'},
   /* --- proyectos interdisciplinarios de secundaria --- */
   secProy:     {en:'Interdisciplinary projects', es:'Proyectos interdisciplinarios'},
   secProyHint: {en:'one per unit, six weeks each, built on what each subject already teaches',
@@ -984,6 +999,22 @@ function bloqueModelo(m, cover){
     </div></div>`;
 }
 
+/* La tarea de cada curso dentro del proyecto, semana a semana. Es distinto
+   del bloque del Annual Plan: aquel dice lo que el area DA esa semana (y es
+   del colegio); este dice lo que ese curso APORTA AL PROYECTO (y es
+   propuesta). Se pintan los dos, y cada uno con su etiqueta. */
+function bloqueCursos(cursos){
+  if(!cursos) return '';
+  const ks = AREA_ORDEN.filter(x => cursos[x]).concat(
+    Object.keys(cursos).filter(x => AREA_ORDEN.indexOf(x) < 0));
+  if(!ks.length) return '';
+  return `<div class="cursos">
+    <h5>${u('cursosTit')} <span class="badge own">${u('cursosProp')}</span></h5>
+    <div class="areas">${ks.map(x => `<div class="area curso">
+      <h5><span class="ico" aria-hidden="true">${AREA_ICONO[x] || '\u2022'}</span>${AREA_NOMBRE[x] || x}</h5>
+      <p>${esc(cursos[x])}</p></div>`).join('')}</div></div>`;
+}
+
 function bloqueAliento(al){
   if(!al) return '';
   return `<p class="aliento"><span>${u('aliento')}</span>${esc(t(al))}</p>`;
@@ -1056,7 +1087,8 @@ function pintaIndice(){
     sueltos.forEach(s => {
       const urlS = urlToddle(s.grade, s.id);
       h += `<p style="margin:0 0 10px"><b>${urlS ? `<a href="${urlS}" target="_blank" rel="noopener">${esc(t(s.titulo))} &#8599;</a>` : esc(t(s.titulo))}</b>
-        <span class="muted">— ${s.grade.toUpperCase()}, P${s.periodos.join(', P')}</span><br>
+        <span class="muted">— ${s.grade.toUpperCase()}, P${s.periodos.join(', P')}</span>
+        ${s.resuelto ? `<span class="badge own" style="margin-left:6px">${u('yaPropuesto')}</span>` : ''}<br>
         <span class="muted" style="font-size:.88rem">${esc(t(s.motivo))}</span></p>`;
     });
     h += `</div>`;
@@ -1082,6 +1114,14 @@ function pintaArco(k, a){
       <span>${areasProy.map(x=>AREA_NOMBRE[x]||x).join(' · ')}</span>
     </div></div>`;
 
+  /* Un arco puede ser transcripcion de un documento del colegio (autoria) o
+     propuesta del portal (propuesta). Nunca las dos cosas, y siempre se dice
+     cual de las dos es. */
+  if(a.propuesta){
+    h += `<div class="card" style="border-left:5px solid var(--warn)">
+      <span class="badge own">${u('arcoPropuesta')}</span>
+      <p style="margin:8px 0 0;font-size:.9rem">${u('arcoPropTxt')}</p></div>`;
+  }
   if(a.autoria){
     h += `<div class="card" style="border-left:5px solid var(--good)">
       <span class="badge src">${u('docColegio')}</span>
@@ -1237,6 +1277,7 @@ function pintaArco(k, a){
           <p class="pnote">${u('delPlan')}</p>`
         : `<p class="pnote">${u('sinPlan')}</p>`}
         ${bloqueInglesHTML(a.grade, f.periodo, f.semana)}
+        ${bloqueCursos(f.cursos)}
         ${sm ? bloqueModelo(sm.modelo, a.cover) : ''}
       </div></details>`;
   });
