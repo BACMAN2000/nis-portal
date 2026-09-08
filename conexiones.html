@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Conexiones interdisciplinarias · Secundaria · NIS</title>
+<link rel="icon" href="assets/favicon.svg">
+<link href="vendor/fonts/montserrat-68a53b.css" rel="stylesheet">
+<!--
+  El documento que va a la reunión de coordinación de nivel.
+
+  Reproduce el FORMATO del colegio — el mismo de los 30 archivos "CONEXIONES
+  INTERDISCIPLINARIAS" de Drive y el del "EJEMPLO UNIDAD 2", que es el único
+  que está relleno — con la tercera columna completa y con los bloques que el
+  ejemplo añade debajo de la tabla: temáticas comunes, producto integrador,
+  cronograma y evaluación.
+
+  Dos colores y una regla: lo que está en gris es del colegio, copiado de sus
+  documentos; lo que está en ámbar es propuesta del portal. Quien lo lea en la
+  reunión tiene que poder distinguirlo de un vistazo, sin preguntar.
+
+  Se imprime: cada proyecto empieza en una página nueva.
+-->
+<style>
+:root{
+  --tinta:#1f2937; --gris:#6b7280; --linea:#d7dce5;
+  --colegio:#f8fafc; --colegioB:#cbd5e1;
+  --propuesta:#FFFBEB; --propuestaB:#FDE68A; --propuestaT:#92400E;
+  --azul:#244c77;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:'Montserrat',system-ui,Segoe UI,sans-serif;color:var(--tinta);background:#eef1f6;line-height:1.45;font-size:14px}
+header{background:var(--azul);color:#fff;padding:12px 22px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+header img{height:30px}
+header .spacer{flex:1}
+header a, header button{background:rgba(255,255,255,.18);color:#fff;border:none;padding:7px 13px;border-radius:9px;
+  font:inherit;font-size:.85rem;font-weight:600;text-decoration:none;cursor:pointer}
+header a:hover, header button:hover{background:rgba(255,255,255,.3)}
+select{font:inherit;padding:6px 10px;border-radius:8px;border:1px solid var(--linea)}
+.wrap{max-width:1000px;margin:0 auto;padding:18px 16px 70px}
+.doc{background:#fff;border:1px solid var(--linea);border-radius:10px;padding:26px 30px;margin-bottom:22px;
+  box-shadow:0 6px 20px rgba(36,76,119,.08)}
+.doc h1{font-size:1.02rem;letter-spacing:.06em;text-transform:uppercase;margin:0 0 2px;color:var(--azul)}
+.doc .cab{font-size:.86rem;color:var(--gris);margin:0 0 4px}
+.doc h2{font-size:1.3rem;margin:10px 0 4px}
+.doc .pregunta{font-style:italic;color:var(--azul);margin:0 0 14px}
+table{width:100%;border-collapse:collapse;font-size:.83rem;margin:10px 0 18px}
+th,td{border:1px solid var(--linea);padding:8px 10px;vertical-align:top;text-align:left}
+th{background:#eef4fb;color:var(--azul);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em}
+td.area{width:14%;font-weight:700;background:#fafbfd}
+td.cont{width:43%;background:var(--colegio)}
+td.conex{background:var(--propuesta)}
+td ul{margin:0;padding-left:1.05em}
+td li{margin:.12em 0}
+.leyenda{display:flex;gap:16px;flex-wrap:wrap;font-size:.78rem;color:var(--gris);margin:0 0 14px}
+.leyenda span{display:inline-flex;align-items:center;gap:6px}
+.chip{width:14px;height:14px;border-radius:4px;display:inline-block;border:1px solid var(--colegioB);background:var(--colegio)}
+.chip.p{background:var(--propuesta);border-color:var(--propuestaB)}
+h3.bloque{font-size:.78rem;letter-spacing:.07em;text-transform:uppercase;color:var(--propuestaT);
+  margin:20px 0 6px;padding-top:10px;border-top:2px solid var(--propuestaB)}
+.bloque-cuerpo{background:var(--propuesta);border:1px solid var(--propuestaB);border-radius:8px;padding:12px 15px;font-size:.86rem}
+.bloque-cuerpo ul{margin:.2em 0;padding-left:1.15em}
+.bloque-cuerpo li{margin:.2em 0}
+.crono{width:100%;border-collapse:collapse;font-size:.83rem}
+.crono td:first-child{width:12%;font-weight:700;color:var(--azul)}
+.crono td:last-child{width:26%;font-style:italic;color:var(--gris)}
+.vacio{background:#FEF2F2;border:1px solid #FECACA;color:#991B1B;border-radius:8px;padding:12px 15px;font-size:.86rem}
+.nota{font-size:.78rem;color:var(--gris);margin:10px 0 0}
+.intro{background:#fff;border:1px solid var(--linea);border-radius:10px;padding:20px 24px;margin-bottom:20px}
+.intro h2{margin:0 0 8px;font-size:1.1rem;color:var(--azul)}
+.intro p{margin:0 0 8px;font-size:.9rem}
+.intro ul{margin:.3em 0;padding-left:1.2em;font-size:.9rem}
+@media print{
+  body{background:#fff;font-size:11px}
+  header,.noprint{display:none!important}
+  .wrap{max-width:none;padding:0}
+  .doc{border:none;box-shadow:none;border-radius:0;padding:0 0 10px;margin:0;page-break-after:always}
+  .doc:last-child{page-break-after:auto}
+  .intro{border:none;box-shadow:none;padding:0 0 12px;page-break-after:always}
+  table{font-size:10px}
+}
+</style>
+</head>
+<body>
+<header>
+  <img src="assets/logo-white-h.svg" alt="Nordic International School" onerror="this.style.display='none'">
+  <select id="grado" aria-label="Grado"></select>
+  <div class="spacer"></div>
+  <button type="button" id="print">&#128424; Imprimir</button>
+  <a id="back" href="project.html">&#8592; Volver</a>
+</header>
+
+<div class="wrap" id="app"><p>Cargando…</p></div>
+
+<script src="project-arcs-sec.js?v=1"></script>
+<script>
+const $ = q => document.querySelector(q);
+const P = new URLSearchParams(location.search);
+const GRADOS = [6,7,8,9,10,11];
+let CONEX = null;
+
+function esc(s){ return String(s == null ? '' : s)
+  .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+/* Los textos de cara al alumno son bilingues; este documento es de trabajo y
+   va en castellano, que es la lengua de la reunion. */
+const es = v => (v == null) ? '' : (typeof v === 'string' ? v : (v.es || v.en || ''));
+
+async function carga(){
+  try{
+    const r = await fetch('scope/secundaria-conexiones-2026.json', {cache:'no-store'});
+    if(r.ok) CONEX = await r.json();
+  }catch(_){ CONEX = null; }
+}
+
+/* Contenidos del colegio para ese grado y unidad, por clave de area. */
+function contenido(grado, unidad){
+  if(!CONEX) return null;
+  const pr = (CONEX.proyectos || []).find(x => x.unidad === unidad);
+  if(!pr) return null;
+  const g = pr.grados[String(grado)];
+  if(!g) return null;
+  const out = {};
+  (g.areas || []).forEach(a => {
+    const k = window.PROJECT_SEC_AREA_KEY(a.area) || ('otra:' + a.area);
+    out[k] = out[k] || {nombre: a.area, contenidos: [], propias: []};
+    out[k].contenidos = out[k].contenidos.concat(a.contenidos || []);
+    out[k].propias = out[k].propias.concat(a.conexiones || []);
+  });
+  return {doc: g, areas: out};
+}
+
+function documento(k, p){
+  const NOM = window.PROJECT_SEC_AREA_NOMBRE || {};
+  const cont = contenido(p.grado, p.unidad);
+  let h = `<div class="doc">
+    <h1>Conexiones interdisciplinarias</h1>
+    <p class="cab">GRADO: ${p.grado} &nbsp;·&nbsp; PROYECTO ${p.proyecto} / UNIDAD ${p.unidad}
+      &nbsp;·&nbsp; ${esc(p.mes)} &nbsp;·&nbsp; DURACIÓN: ${p.semanas.length} SEMANAS</p>
+    <h2>${esc(es(p.titulo))}</h2>
+    <p class="pregunta">${esc(es(p.preguntaEsencial))}</p>`;
+
+  if(p.parcial){
+    h += `<div class="vacio" style="margin-bottom:12px">Esta unidad está a medio cargar en el documento
+      del colegio. La propuesta se apoya solo en las áreas que sí tienen contenido y señala las que faltan.</div>`;
+  }
+
+  h += `<div class="leyenda noprint">
+    <span><i class="chip"></i> Contenido escrito por el colegio</span>
+    <span><i class="chip p"></i> Propuesta del portal, para aprobar o cambiar</span></div>`;
+
+  h += `<table><tr><th>Área</th><th>Contenidos / conceptos clave</th>
+    <th>Posibles conexiones con otras áreas</th></tr>`;
+  const claves = Object.keys(p.areas);
+  const extras = cont ? Object.keys(cont.areas).filter(x => claves.indexOf(x) < 0) : [];
+  claves.concat(extras).forEach(a => {
+    const c = cont && cont.areas[a];
+    const li = c && c.contenidos.length
+      ? `<ul>${c.contenidos.map(x => `<li>${esc(x)}</li>`).join('')}</ul>`
+      : `<i>sin cargar en el documento del colegio</i>`;
+    const suya = c && c.propias.length
+      ? `<p style="margin:6px 0 0"><i>Nota del profesor: ${esc(c.propias.join(' · '))}</i></p>` : '';
+    h += `<tr><td class="area">${esc((c && c.nombre) || NOM[a] || a)}</td>
+      <td class="cont">${li}${suya}</td>
+      <td class="conex">${p.areas[a] ? esc(p.areas[a]) : '<i>—</i>'}</td></tr>`;
+  });
+  h += `</table>`;
+
+  h += `<h3 class="bloque">Temáticas comunes identificadas</h3><div class="bloque-cuerpo">
+    ${p.tematicas.map(tm => `<p style="margin:0 0 8px"><b>${esc(tm.nombre)}</b></p>
+      <ul>${tm.aporta.map(x => `<li><b>${esc(NOM[x[0]] || x[0])}:</b> ${esc(x[1])}</li>`).join('')}</ul>`).join('')}
+    </div>`;
+
+  h += `<h3 class="bloque">Producto integrador propuesto</h3><div class="bloque-cuerpo">
+    <p style="margin:0 0 6px"><b>${esc(es(p.producto.titulo))}</b></p>
+    <p style="margin:0 0 8px">${esc(es(p.producto.descripcion))}</p>
+    <ul>${p.producto.incluye.map(x => `<li>${esc(es(x))}</li>`).join('')}</ul>
+    <p style="margin:8px 0 0"><b>Para mejorarlo:</b> ${esc(es(p.producto.modelo.mejora))}</p></div>`;
+
+  h += `<h3 class="bloque">Cronograma sugerido</h3><div class="bloque-cuerpo">
+    <table class="crono">${p.semanas.map(w => `<tr>
+      <td>Semana ${w.n}</td><td>${esc(es(w.foco))}. ${esc(w.hace)}</td>
+      <td>${esc(es(w.evidencia))}</td></tr>`).join('')}</table></div>`;
+
+  h += `<h3 class="bloque">Evaluación</h3><div class="bloque-cuerpo">
+    <p style="margin:0 0 8px">Una sola nota por producto, con una rúbrica integrada. Cada área evalúa su
+      dimensión sobre el mismo trabajo.</p>
+    <table class="crono">${p.evaluacion.map(e => `<tr><td>${esc(e.areas)}</td>
+      <td><b>${esc(e.dimension)}</b></td><td style="font-style:normal;color:inherit;width:52%">${esc(e.descriptor)}</td></tr>`).join('')}</table></div>`;
+
+  const PF = window.PROJECT_SEC_PERFIL || {};
+  if((p.perfil || []).length){
+    h += `<p class="nota"><b>Perfil del Egresado Nordic:</b> ${p.perfil.map(n => 'CE ' + n + ' ' + (PF[n] || '')).join(' · ')}</p>`;
+  }
+  if((p.revisar || []).length){
+    h += `<h3 class="bloque">Para decidir en coordinación</h3><div class="bloque-cuerpo">
+      <ul>${p.revisar.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>`;
+  }
+  h += `</div>`;
+  return h;
+}
+
+function pinta(){
+  const g = (P.get('grade') || 'g9').toLowerCase().replace('g','');
+  $('#grado').innerHTML = GRADOS.map(n =>
+    `<option value="${n}"${String(n) === g ? ' selected' : ''}>Grado ${n}</option>`).join('');
+  $('#back').href = 'project.html?grade=g' + g;
+
+  const PS = window.PROJECT_SEC || {};
+  const lista = Object.keys(PS).filter(k => PS[k].grado === Number(g))
+    .map(k => [k, PS[k]]).sort((a, b) => a[1].unidad - b[1].unidad);
+
+  const u6 = window.PROJECT_SEC_U6 || {};
+  let h = `<div class="intro">
+    <h2>Conexiones interdisciplinarias · Grado ${g} · 2026</h2>
+    <p>Este documento usa el formato del colegio y completa la columna que está sin escribir. Los
+      <b>contenidos</b> de cada área son de los profesores, copiados de los archivos
+      <i>CONEXIONES INTERDISCIPLINARIAS</i> de Drive y sin retocar. Las <b>conexiones</b>, el
+      <b>producto integrador</b>, el <b>cronograma</b> y la <b>evaluación</b> son propuesta, y siguen
+      el molde del <i>EJEMPLO UNIDAD 2</i>, que es el único documento que el colegio tiene relleno.</p>
+    <p>Lo que hay que decidir en la reunión:</p>
+    <ul>
+      <li>Si el proyecto propuesto para cada unidad es el que el nivel quiere, o hay otro mejor.</li>
+      <li>Qué áreas entran de verdad en cada uno y cuáles siguen en paralelo, sin forzarlas.</li>
+      <li>El peso de cada dimensión en la nota única del producto.</li>
+      <li>Los puntos listados en <i>Para decidir en coordinación</i> al final de cada proyecto.</li>
+    </ul>
+    <p class="nota">Estado del material: U2, U3 y U4 tienen los contenidos completos. U5 está a medio
+      cargar en los seis grados. ${esc(u6.detalle || '')}</p>
+  </div>`;
+
+  h += lista.map(x => documento(x[0], x[1])).join('');
+
+  if(u6.estado === 'vacio'){
+    h += `<div class="doc"><h1>Conexiones interdisciplinarias</h1>
+      <p class="cab">GRADO: ${g} · PROYECTO 5 / UNIDAD 6 · Noviembre</p>
+      <h2 style="color:#991B1B">Sin propuesta, a propósito</h2>
+      <div class="vacio">${esc(u6.detalle)}</div>
+      <h3 class="bloque">Lo que hace falta</h3><div class="bloque-cuerpo">
+        <ul>${(u6.pedido || []).map(x => `<li>${esc(x)}</li>`).join('')}</ul>
+        <p style="margin:8px 0 0">${esc(u6.cuandoEste || '')}</p></div></div>`;
+  }
+
+  $('#app').innerHTML = h;
+  document.title = 'Conexiones interdisciplinarias · Grado ' + g + ' · NIS';
+}
+
+$('#grado').addEventListener('change', function(){
+  location.search = '?grade=g' + this.value;
+});
+$('#print').addEventListener('click', () => window.print());
+
+(async function(){
+  await carga();
+  pinta();
+})();
+</script>
+</body>
+</html>

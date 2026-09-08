@@ -196,6 +196,7 @@ a.arc p{max-width:60%}
 <script src="project-arcs.js?v=9"></script>
 <script src="project-art.js?v=1"></script>
 <script src="project-models.js?v=1"></script>
+<script src="project-arcs-sec.js?v=1"></script>
 <script>
 const $ = s => document.querySelector(s);
 const P = new URLSearchParams(location.search);
@@ -251,6 +252,37 @@ const UI = {
   periodo:     {en:'Period',                         es:'Periodo'},
   periodoNota: {en:'the school calls it <i>Project %s</i> in the calendar',
                 es:'el colegio lo llama <i>Project %s</i> en el calendario'},
+  /* --- proyectos interdisciplinarios de secundaria --- */
+  secProy:     {en:'Interdisciplinary projects', es:'Proyectos interdisciplinarios'},
+  secProyHint: {en:'one per unit, six weeks each, built on what each subject already teaches',
+                es:'uno por unidad, de seis semanas, sobre lo que cada área ya enseña'},
+  propuesta:   {en:'Portal proposal', es:'Propuesta del portal'},
+  propuestaTxt:{en:'The content of each subject is the school’s, copied from its own documents. The connections between subjects, the integrating product, the schedule and the assessment are what this page proposes: coordination approves them, changes them or drops them.',
+                es:'El contenido de cada área es del colegio, copiado de sus propios documentos. Las conexiones entre áreas, el producto integrador, el cronograma y la evaluación son lo que esta página propone: coordinación los aprueba, los cambia o los descarta.'},
+  delColegio:  {en:'Written by the school', es:'Escrito por el colegio'},
+  situacionSec:{en:'Meaningful situation', es:'Situación significativa'},
+  tematicas:   {en:'Common themes identified', es:'Temáticas comunes identificadas'},
+  productoInt: {en:'Integrating product', es:'Producto integrador'},
+  cronograma:  {en:'Six-week schedule', es:'Cronograma de seis semanas'},
+  cronoHint:   {en:'the school writes six weeks in the header of every unit',
+                es:'el colegio escribe seis semanas en la cabecera de cada unidad'},
+  tablaAreas:  {en:'Subject by subject', es:'Área por área'},
+  tablaHint:   {en:'the content is the school’s; the connection is what this page proposes',
+                es:'el contenido es del colegio; la conexión es lo que esta página propone'},
+  colContenido:{en:'Content / key concepts', es:'Contenidos / conceptos clave'},
+  colConexion: {en:'Connection with other subjects', es:'Conexión con otras áreas'},
+  sinContenido:{en:'not loaded in the school document', es:'sin cargar en el documento del colegio'},
+  perfilTit:   {en:'Nordic Graduate Profile', es:'Perfil del Egresado Nordic'},
+  aQuienEval:  {en:'Subjects', es:'Áreas'},
+  dimension:   {en:'Dimension', es:'Dimensión'},
+  verFormato:  {en:'Printable version for coordination', es:'Versión imprimible para coordinación'},
+  u6Tit:       {en:'Unit 6 (November) has no proposal, on purpose',
+                es:'La Unidad 6 (noviembre) no tiene propuesta, a propósito'},
+  proyectoDe:  {en:'Project', es:'Proyecto'},
+  unidadN:     {en:'Unit', es:'Unidad'},
+  volverGrado: {en:'All the projects of this grade', es:'Todos los proyectos de este grado'},
+  parcialAviso:{en:'This unit is only half loaded in the school document: the proposal rests on what is there and says what is missing.',
+                es:'Esta unidad está a medio cargar en el documento del colegio: la propuesta se apoya en lo que hay y dice lo que falta.'},
   /* --- modelos de entrega --- */
   aliento:     {en:'This week', es:'Esta semana'},
   modeloTit:   {en:'What you hand in', es:'Lo que entregas'},
@@ -442,6 +474,14 @@ async function cargaPlan(){
     const r = await fetch('scope/secundaria-cobertura-2026.json', {cache:'no-store'});
     if(r.ok) SEC = await r.json();
   }catch(_){ SEC = null; }
+  /* Los contenidos por area, grado y unidad que los profesores de secundaria
+     escribieron en los 30 documentos de CONEXIONES INTERDISCIPLINARIAS. La
+     pagina los lee en vivo y NUNCA los reescribe: lo que el portal propone
+     -las conexiones- vive aparte, en project-arcs-sec.js. */
+  try{
+    const r = await fetch('scope/secundaria-conexiones-2026.json', {cache:'no-store'});
+    if(r.ok) CONEX = await r.json();
+  }catch(_){ CONEX = null; }
 }
 
 
@@ -561,6 +601,189 @@ function areasToddle(grade){
   }));
 }
 
+/* ---- proyectos interdisciplinarios de secundaria ----------------------
+   El colegio tiene los contenidos escritos por area y unidad, y la columna de
+   conexiones practicamente vacia. Aqui se pintan las dos cosas juntas y se
+   distingue siempre cual es cual: lo del colegio va marcado como suyo y la
+   propuesta del portal, como propuesta. */
+function proyectosDe(grade){
+  const PS = window.PROJECT_SEC || {};
+  return Object.keys(PS).filter(k => k.indexOf(grade + '.') === 0)
+    .map(k => [k, PS[k]]).sort((a, b) => a[1].unidad - b[1].unidad);
+}
+
+/* Los contenidos reales de ese grado y unidad, indexados por clave de area. */
+function contenidoSec(grado, unidad){
+  if(!CONEX) return null;
+  const pr = (CONEX.proyectos || []).find(x => x.unidad === unidad);
+  if(!pr) return null;
+  const g = pr.grados[String(grado)];
+  if(!g) return null;
+  const out = {};
+  (g.areas || []).forEach(a => {
+    const k = window.PROJECT_SEC_AREA_KEY(a.area);
+    const key = k || ('otra:' + a.area);
+    out[key] = out[key] || {nombre: a.area, contenidos: [], propias: []};
+    out[key].contenidos = out[key].contenidos.concat(a.contenidos || []);
+    out[key].propias = out[key].propias.concat(a.conexiones || []);
+  });
+  return {doc: g, areas: out};
+}
+
+function tarjetaProyecto(k, p){
+  const mdl = p.producto && p.producto.modelo;
+  return `<a class="arc" href="project.html?sec=${encodeURIComponent(k)}"
+    style="background:linear-gradient(135deg,${p.cover.from},${p.cover.to})">
+    <span class="tag">${u('unidadN')} ${p.unidad} &middot; ${esc(p.mes)}</span>
+    <div class="ic">${p.cover.icon}</div>
+    <h3>${esc(t(p.titulo))}</h3>
+    <p>${esc(t(p.preguntaEsencial))}</p>
+    ${mdl ? `<span class="lam">${lamina({tipo: mdl.tipo, titulo: t(p.producto.titulo), partes: mdl.partes}, p.cover, 68)}</span>` : ''}</a>`;
+}
+
+function pintaProyectoSec(k){
+  const p = (window.PROJECT_SEC || {})[k];
+  if(!p){
+    $('#app').innerHTML = `<div class="card center" style="max-width:620px;margin:50px auto">
+      <div style="font-size:3rem">&#129513;</div><h2>${u('noExiste')}</h2>
+      <p><a href="project.html">${u('verTodos')}</a></p></div>`;
+    return;
+  }
+  const grade = 'g' + p.grado;
+  const cont = contenidoSec(p.grado, p.unidad);
+  const CAM = (window.PROJECT_SEC_CAMBRIDGE || {})[p.grado] || '';
+  const NOM = window.PROJECT_SEC_AREA_NOMBRE || {};
+
+  let h = `<div class="hero" style="background:linear-gradient(135deg,${p.cover.from},${p.cover.to})">
+    <div class="motivo">${p.cover.icon}</div>
+    <p class="eyebrow">${SEC_LBL[grade] || grade} &middot; ${u('proyectoDe')} ${p.proyecto} &middot; ${u('unidadN')} ${p.unidad}</p>
+    <h1>${esc(t(p.titulo))}</h1>
+    <div class="bigq">${esc(t(p.preguntaEsencial))}</div>
+    <div class="meta"><span>${p.semanas.length} ${u('semanas')}</span><span>${esc(p.mes)}</span>
+      <span>${esc(CAM)}</span></div></div>`;
+
+  h += `<div class="card" style="border-left:5px solid var(--warn)">
+    <span class="badge own">${u('propuesta')}</span>
+    <p style="margin:8px 0 0;font-size:.9rem">${u('propuestaTxt')}</p></div>`;
+
+  if(p.parcial){
+    h += `<div class="warnbox" style="margin-bottom:16px"><p style="margin:0">${u('parcialAviso')}</p></div>`;
+  }
+
+  h += `<div class="sec-title"><h2>${u('situacionSec')}</h2></div>
+    <div class="card"><p style="margin:0">${esc(p.situacion)}</p></div>`;
+
+  const fin = p.producto;
+  h += `<div class="sec-title"><h2>${u('productoInt')}</h2>
+    <span class="hint">${u('finalMdl')}</span></div>
+    <div class="card"><div class="finalmdl">
+      <div class="lamina" style="border:1px solid var(--line);border-radius:10px;overflow:hidden">
+        ${lamina({tipo: fin.modelo.tipo, titulo: t(fin.titulo), partes: fin.modelo.partes}, p.cover, 240)}</div>
+      <div>
+        <h3 style="color:var(--blue-dd);margin:0 0 4px">${esc(t(fin.titulo))}</h3>
+        <p style="margin:0 0 10px">${esc(t(fin.descripcion))}</p>
+        <ul class="tight">${fin.incluye.map(x => `<li>${esc(t(x))}</li>`).join('')}</ul>
+      </div></div>
+      <div class="mdl" style="margin-top:16px"><h5>${u('modeloQue')}</h5>
+        <div class="cuerpo" style="grid-template-columns:1fr"><div>
+          <ul class="partes">${fin.modelo.partes.map(x => `<li>${esc(t(x))}</li>`).join('')}</ul>
+          ${(fin.modelo.apoyo || []).length ? `<h6>${u('modeloApoyo')}</h6>
+            <div class="apoyo">${fin.modelo.apoyo.map(x => `<code>${esc(x)}</code>`).join('')}</div>` : ''}
+          <p class="mejora"><b>${u('modeloMejora')}</b> ${esc(t(fin.modelo.mejora))}</p>
+        </div></div></div>
+    </div>`;
+
+  h += `<div class="sec-title"><h2>${u('tematicas')}</h2></div><div class="grid2">`;
+  p.tematicas.forEach(tm => {
+    h += `<div class="card" style="margin:0"><h3 style="font-size:1rem;color:var(--blue-dd)">${esc(tm.nombre)}</h3>
+      <ul class="tight" style="font-size:.88rem">${tm.aporta.map(x =>
+        `<li><b>${esc(NOM[x[0]] || x[0])}</b> &mdash; ${esc(x[1])}</li>`).join('')}</ul></div>`;
+  });
+  h += `</div>`;
+
+  h += `<div class="sec-title"><h2>${u('tablaAreas')}</h2>
+    <span class="hint">${u('tablaHint')}</span></div>
+    <div class="card" style="padding:0;overflow-x:auto"><table class="rub">
+    <tr><th style="width:15%">${u('area')}</th><th style="width:42%">${u('colContenido')}
+      <span class="badge src" style="margin-left:6px">${u('delColegio')}</span></th>
+      <th>${u('colConexion')} <span class="badge own" style="margin-left:6px">${u('propuesta')}</span></th></tr>`;
+  const claves = Object.keys(p.areas);
+  const extras = cont ? Object.keys(cont.areas).filter(x => claves.indexOf(x) < 0) : [];
+  claves.concat(extras).forEach(a => {
+    const c = cont && cont.areas[a];
+    const contenido = c && c.contenidos.length
+      ? `<ul class="tight" style="font-size:.85rem">${c.contenidos.slice(0, 8).map(x => `<li>${esc(x)}</li>`).join('')}</ul>`
+      : `<span class="muted" style="font-size:.85rem">${u('sinContenido')}</span>`;
+    const propia = c && c.propias.length
+      ? `<p class="pnote" style="margin:6px 0 0"><i>${esc(c.propias.join(' &middot; '))}</i></p>` : '';
+    h += `<tr><td class="crit">${esc((c && c.nombre) || NOM[a] || a)}</td>
+      <td>${contenido}${propia}</td>
+      <td style="font-size:.88rem">${p.areas[a] ? esc(p.areas[a]) : '<span class="muted">&mdash;</span>'}</td></tr>`;
+  });
+  h += `</table></div>`;
+
+  h += `<div class="sec-title"><h2>${u('cronograma')}</h2>
+    <span class="hint">${u('cronoHint')}</span>
+    <button type="button" id="btnTodo" class="btn-todo">${u('verTodo')}</button></div>`;
+  p.semanas.forEach(w => {
+    const mdl = {tipo: w.tipo, titulo: t(w.evidencia), partes: []};
+    h += `<details class="wk" id="w${w.n}" style="border-left-color:${p.cover.from}">
+      <summary>
+        <div class="num">W${w.n}</div>
+        ${miniatura(mdl, p.cover)}
+        <div class="txt">
+          <div class="fase">${u('semana')} ${w.n}</div>
+          <div class="foco">${esc(t(w.foco))}</div>
+        </div>
+        <div class="ev">${esc(t(w.evidencia))}</div>
+      </summary>
+      <div class="body">
+        ${bloqueAliento(w.aliento)}
+        <p class="hace">${esc(w.hace)}</p>
+        <div class="mdl"><h5>${u('modeloTit')} <b>${esc(t(w.evidencia))}</b></h5>
+          <div class="cuerpo"><div class="lamina">${lamina(mdl, p.cover)}
+            <p>${u('modeloPie')}</p></div>
+            <div><p class="que">${esc(w.hace)}</p></div></div></div>
+      </div></details>`;
+  });
+
+  h += `<div class="sec-title"><h2>${u('rubrica')}</h2>
+    <span class="hint">${u('rubricaHint')}</span></div>
+    <div class="card" style="padding:0;overflow-x:auto"><table class="rub">
+    <tr><th>${u('dimension')}</th><th style="width:14%">${u('aQuienEval')}</th><th>${u('queSeMira')}</th></tr>
+    ${p.evaluacion.map(e => `<tr><td class="crit">${esc(e.dimension)}</td>
+      <td style="font-size:.82rem;color:var(--blue-d)">${esc(e.areas)}</td>
+      <td>${esc(e.descriptor)}</td></tr>`).join('')}
+    </table></div>`;
+
+  const PF = window.PROJECT_SEC_PERFIL || {};
+  if((p.perfil || []).length){
+    h += `<div class="sec-title"><h2>${u('perfilTit')}</h2></div><div class="card">
+      <div class="ing-chips">${p.perfil.map(n =>
+        `<span><b>CE ${n}</b> ${esc(PF[n] || '')}</span>`).join('')}</div></div>`;
+  }
+
+  if((p.revisar || []).length){
+    h += `<div class="warnbox"><h4>${u('revisar')}</h4>
+      <ul class="tight" style="margin:0">${p.revisar.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>`;
+  }
+
+  h += `<p class="center" style="margin-top:24px">
+    <a href="conexiones.html?grade=${grade}">${u('verFormato')} &#8594;</a> &middot;
+    <a href="project.html?grade=${grade}">${u('volverGrado')}</a></p>`;
+
+  $('#app').innerHTML = h;
+  document.title = t(p.titulo) + ' - ' + (SEC_LBL[grade] || grade) + ' - NIS';
+
+  const bt = $('#btnTodo');
+  if(bt) bt.onclick = function(){
+    const ws = document.querySelectorAll('details.wk');
+    const abrir = ![...ws].every(d => d.open);
+    ws.forEach(d => { d.open = abrir; });
+    bt.textContent = u(abrir ? 'plegarTodo' : 'verTodo');
+  };
+}
+
 function pintaSecundaria(grade){
   const g = gradoScope(grade);
   if(!g){ $('#app').innerHTML = '<p class="muted">'+u('secSinScope')+'</p>'; return; }
@@ -575,6 +798,25 @@ function pintaSecundaria(grade){
     <p class="sub">${esc(u('secSub'))}</p>
     <div class="meta"><span>${esc(via.examen || '—')}</span><span>CEFR ${esc(g.cefr||'')}</span>
       <span>${g.unidades.length} ${u('unidades')}</span></div></div>`;
+
+  /* Los proyectos interdisciplinarios del grado. Van primero porque son lo
+     que el colegio llama "Proyecto" en su propio calendario, y porque es la
+     parte que coordinacion tiene que revisar. */
+  const proy = proyectosDe(String(grade).toLowerCase());
+  if(proy.length){
+    h += `<div class="sec-title"><h2>${u('secProy')}</h2>
+      <span class="hint">${u('secProyHint')}</span></div>
+      <div class="arcs">${proy.map(x => tarjetaProyecto(x[0], x[1])).join('')}</div>`;
+    const u6 = window.PROJECT_SEC_U6;
+    if(u6 && u6.estado === 'vacio'){
+      h += `<div class="warnbox" style="margin-top:14px"><h4>${u('u6Tit')}</h4>
+        <p style="margin:0 0 6px">${esc(u6.detalle)}</p>
+        <ul class="tight" style="margin:0">${u6.pedido.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
+        <p class="pnote" style="margin:8px 0 0">${esc(u6.cuandoEste)}</p></div>`;
+    }
+    h += `<p class="center" style="margin:14px 0 0">
+      <a href="conexiones.html?grade=${String(grade).toLowerCase()}">${u('verFormato')} &#8594;</a></p>`;
+  }
 
   /* Lo que el grado prepara y lo que se espera de el. */
   const chips = [];
@@ -680,6 +922,7 @@ function contenidoDe(grade, periodo, semana){
 }
 
 /* ---------------- quien mira ---------------- */
+let CONEX = null;
 let sb=null, me=null, esProfe=false;
 async function conectar(){
   try{
@@ -1101,6 +1344,9 @@ function pinta(){
   /* Secundaria no tiene arcos: se le ensena su secuencia de ingles y lo que
      cada area tiene cargado en Toddle. */
   const gq = (P.get('grade') || '').toLowerCase();
+  /* ?sec=g9.u2 abre un proyecto interdisciplinario de secundaria. */
+  const sq = P.get('sec');
+  if(sq){ pintaProyectoSec(sq); return; }
   if(!ARC && esSecundaria(gq)){ pintaSecundaria(gq); return; }
   if(!ARC){ pintaIndice(); return; }
   const a = ARCS[ARC];
