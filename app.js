@@ -1512,10 +1512,11 @@ async function adminTeachers(){
     // Primaria (2.º–5.º) sin Grammar: en esa etapa la gramática vive dentro
     // de las actividades, igual que en francés.
     const gradeBlocks=ALL_GRADE_ORDER.map(g=>{
-      const items=[['english.classes.'+g,'Classes'],['english.classes.'+g+'.activities','🎲 Activities']];
-      if(!_isPrimaryGrade(g)) items.push(['english.classes.'+g+'.grammar','📝 Grammar']);
+      const items=_isEarlyGrade(g) ? [['english.classes.'+g,'Classes']]
+        : [['english.classes.'+g,'Classes'],['english.classes.'+g+'.activities','🎲 Activities']];
+      if(!_isPrimaryGrade(g) && !_isEarlyGrade(g)) items.push(['english.classes.'+g+'.grammar','📝 Grammar']);
       if(g==='g7') items.push(['english.classes.g7.reader','📚 Readers']);
-      if(g!=='g9') items.push(['english.classes.'+g+'.units','🎯 Units']);
+      if(g!=='g9' && !_isEarlyGrade(g)) items.push(['english.classes.'+g+'.units','🎯 Units']);
       if(g==='g9') items.push(['english.classes.g9.cambridge','🎓 Cambridge'],['english.classes.g9.cambridge.listening','🎧 Cambridge Listening'],['english.classes.g9.uoe1','🧩 Use of English P1'],['english.classes.g9.writing','✍️ Writing'],['english.classes.g9.unit5','🎯 Unit 5'],['english.classes.g9.reader','📚 Readers'],['english.classes.g9.unitexams','📋 Unit Exams']);
       return `<div class="row" style="gap:6px;align-items:center;margin-top:5px;flex-wrap:wrap"><span class="muted" style="font-size:.8rem;min-width:84px">${GRADE_META[g][0]} ${GRADE_META[g][1]}</span>${items.map(it=>_nodeChip(it[0],it[1])).join('')}</div>`;
     }).join('');
@@ -4842,20 +4843,25 @@ async function studentFinal(){
 /* Metadatos de grados dentro de Classes y niveles de actividades por grado.
    Primary 2–5 → pre-A1/A1 · 6/7/8 → A1–B2 · 9/10/11 → A1–C1.
    Classes se divide en DOS etapas: Primary (2.º–5.º) y Secondary (6.º–11.º). */
-const GRADE_META = { g2:['2️⃣','2nd grade'], g3:['3️⃣','3rd grade'], g4:['4️⃣','4th grade'],
+const GRADE_META = { g1:['1️⃣','1st grade'], g2:['2️⃣','2nd grade'], g3:['3️⃣','3rd grade'], g4:['4️⃣','4th grade'],
   g5:['5️⃣','5th grade'],
   g6:['6️⃣','6th grade'], g7:['7️⃣','7th grade'], g8:['8️⃣','8th grade'],
   g9:['9️⃣','9th grade'], g10:['🔟','10th grade'], g11:['🎓','11th grade'] };
-const GRADE_LEVELS = { g2:'A1', g3:'A1', g4:'A1,A2', g5:'A1,A2',
+const GRADE_LEVELS = { g1:'A1', g2:'A1', g3:'A1', g4:'A1,A2', g5:'A1,A2',
   g6:'A1,A2,B1,B2', g7:'A1,A2,B1,B2', g8:'A1,A2,B1,B2',
   g9:'A1,A2,B1,B2,C1', g10:'A1,A2,B1,B2,C1', g11:'A1,A2,B1,B2,C1' };
 /* GRADE_ORDER sigue siendo SOLO secundaria: todo el código previo (accesos,
    vistas) nació con 6.º–11.º y así no cambia de significado. */
+/* 1.º va aparte: en el colegio es Early Years, no primaria, y su material es
+   el proyecto del periodo, no las actividades por unidad. */
+const EARLY_ORDER = ['g1'];
 const PRIMARY_ORDER = ['g2','g3','g4','g5'];
 const GRADE_ORDER = ['g6','g7','g8','g9','g10','g11'];
-const ALL_GRADE_ORDER = [...PRIMARY_ORDER, ...GRADE_ORDER];
+const ALL_GRADE_ORDER = [...EARLY_ORDER, ...PRIMARY_ORDER, ...GRADE_ORDER];
 function _isPrimaryGrade(k){ return PRIMARY_ORDER.indexOf(k)>=0; }
+function _isEarlyGrade(k){ return EARLY_ORDER.indexOf(k)>=0; }
 const STAGE_META = {
+  early:    {emoji:'🌱', title:'Early Years', desc:'1st grade — the interdisciplinary project of each term.', grades:EARLY_ORDER},
   primary:  {emoji:'🧒', title:'Primary',   desc:'2nd to 5th grade — games and activities for young learners.',   grades:PRIMARY_ORDER},
   secondary:{emoji:'🎓', title:'Secondary', desc:'6th to 11th grade — grammar, activities and exam practice.', grades:GRADE_ORDER},
 };
@@ -4874,7 +4880,7 @@ function studentGrade(key){
   const [emoji,label]=GRADE_META[key]||['🏫',key];
   const base='english.classes.'+key;
   const route='classes_'+key;
-  const stage=_isPrimaryGrade(key)?'primary':'secondary';
+  const stage=_isEarlyGrade(key)?'early':(_isPrimaryGrade(key)?'primary':'secondary');
   const back = _backBtn("window._nav('classes_"+stage+"')",STAGE_META[stage].title);
   $('#main').innerHTML=`${back}<h1>${emoji} ${label}</h1>
     <p class="muted" style="margin-top:-6px">${label} material.</p>
@@ -4882,8 +4888,8 @@ function studentGrade(key){
       ${arcsFor(key).length ? _hubCard('🧩','Project','The interdisciplinary project of the term: the essential question, the eleven-week map and what every subject contributes.',"location.href='"+_withBack('project.html?arc='+(arcoActual(key)||arcsFor(key)[0][0]),route)+"'")
         : (_isPrimaryGrade(key) ? '' : _hubCard('📚','English sequence','The six units of the year with their vocabulary, grammar and reading plan, the Cambridge exam the grade is preparing for and what every subject has in the planner.',"location.href='"+_withBack('project.html?grade='+key,route)+"'"))}
       ${unitPlansFor(key).length ? (nodeVisible(unitsNode(key)) ? _hubCard('🎯','Units','Your units this year: the final product, the rubric from day one, and the week-by-week practice that feeds it.',"window._nav('classes_"+key+"_units')") : _lockedCard('🎯','Units','Your units and their final products.')) : ''}
-      ${_isPrimaryGrade(key) ? '' : (nodeVisible(base+'.grammar') ? _skillCard('📝','Grammar','Grammar for '+label+': explanations and games by unit.',_withBack('grammar.html?grade='+key,route)) : _lockedCard('📝','Grammar','Grammar for '+label+'.'))}
-      ${nodeVisible(base+'.activities') ? _hubCard('🎲','Activities',_isPrimaryGrade(key)?'Games for each unit — with audio for young learners.':'Games by unit and by level: crosswords, word searches and more.',"window._nav('classes_"+key+"_act')") : _lockedCard('🎲','Activities','Games and activities.')}
+      ${_isPrimaryGrade(key)||_isEarlyGrade(key) ? '' : (nodeVisible(base+'.grammar') ? _skillCard('📝','Grammar','Grammar for '+label+': explanations and games by unit.',_withBack('grammar.html?grade='+key,route)) : _lockedCard('📝','Grammar','Grammar for '+label+'.'))}
+      ${_isEarlyGrade(key) ? '' : nodeVisible(base+'.activities') ? _hubCard('🎲','Activities',_isPrimaryGrade(key)?'Games for each unit — with audio for young learners.':'Games by unit and by level: crosswords, word searches and more.',"window._nav('classes_"+key+"_act')") : _lockedCard('🎲','Activities','Games and activities.')}
       ${key==='g9' ? (nodeVisible('english.classes.g9.cambridge') ? _hubCard('🎓','Cambridge','B2 First (FCE) practice by skill: Listening, Use of English, Reading and Writing.',"window._nav('classes_g9_cambridge')") : _lockedCard('🎓','Cambridge','Cambridge B2 First practice.')) : ''}
       ${key==='g5' ? _hubCard('🦅','Cambridge Flyers','The A2 Flyers picture tasks, sorted by the unit you are working on: label the people, tick the right picture, match people to pictures and write the picture story.',"window._nav('classes_g5_flyers')") : ''}
       ${readerBooksFor(key).length ? (nodeVisible(base+'.reader') ? _hubCard('📚','Readers','Graded readers with activities for every chapter: '+readerBooksFor(key).map(id=>READER_CARDS[id][4]).join(', ')+'.',"window._nav('classes_"+key+"_readers')") : _lockedCard('📚','Readers','Graded readers with activities.')) : ''}
@@ -5431,7 +5437,7 @@ window._assignTerm=async(gid,sec,term,bookId)=>{
 function studentClasses(){
   _setNav('classes');
   const back = _isStudent() ? _backBtn("window._nav('english')",'English') : '';
-  const cards = ['primary','secondary'].map(st=>{
+  const cards = ['early','primary','secondary'].map(st=>{
     const m=STAGE_META[st];
     return _hubCard(m.emoji,m.title,m.desc,"window._nav('classes_"+st+"')");
   }).join('');
