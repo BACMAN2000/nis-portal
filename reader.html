@@ -1684,7 +1684,7 @@ var LEXP=null, _lexPend=null;
 function lexPack(){
   if(LEXP) return Promise.resolve(LEXP);
   if(_lexPend) return _lexPend;
-  _lexPend=fetch('reader-pron/'+RDR_ID+'.json?v=1')
+  _lexPend=fetch('reader-pron/'+RDR_ID+'.json?v=2')
     .then(r=>r.ok?r.json():{}).catch(()=>({}))
     .then(j=>{ LEXP=j||{}; return LEXP; });
   return _lexPend;
