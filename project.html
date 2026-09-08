@@ -116,9 +116,67 @@ button.lang{background:rgba(255,255,255,.16);color:#fff;border:none;padding:8px 
   border-radius:var(--r-sm);font-weight:600;font-size:.9rem;font-family:inherit;cursor:pointer;
   display:inline-flex;align-items:center;gap:7px}
 button.lang:hover{background:rgba(255,255,255,.30)}
+/* --- modelo de la entrega: la lamina que ensena que hay que producir ---
+   Un nombre ("Evidence Map") no dice que forma tiene la cosa. La lamina de
+   project-art.js se dibuja aqui, y al lado van sus partes, el ingles que hace
+   falta para hacerla y como se mejora. */
+.aliento{margin:12px 0 14px;padding:11px 14px 11px 16px;border-radius:var(--r-sm);
+  background:#F0FDF4;border:1px solid #BBF7D0;border-left:4px solid var(--good);
+  font-size:.95rem;font-weight:600;color:#14532D;position:relative}
+.aliento::before{content:'“';position:absolute;left:6px;top:-2px;font-size:1.7rem;color:#86EFAC;line-height:1}
+.aliento span{display:block;font-size:.68rem;letter-spacing:.09em;text-transform:uppercase;
+  color:#15803D;font-weight:800;margin-bottom:3px}
+.mdl{margin:14px 0 4px;border:1px solid var(--line);border-radius:var(--r-sm);background:#fff;overflow:hidden}
+.mdl>h5{margin:0;padding:9px 13px;background:#eef4fb;color:var(--blue-dd);
+  font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;
+  display:flex;gap:9px;align-items:baseline;flex-wrap:wrap}
+.mdl>h5 b{font-size:.86rem;letter-spacing:0;text-transform:none;color:var(--blue-dd)}
+.mdl .cuerpo{display:grid;grid-template-columns:minmax(0,290px) minmax(0,1fr);gap:16px;padding:14px}
+.mdl .lamina{border:1px solid var(--line);border-radius:var(--r-sm);overflow:hidden;background:#fff;align-self:start}
+.mdl .lamina p{margin:0;padding:6px 9px;background:#f8fafc;border-top:1px solid var(--line);
+  font-size:.7rem;color:var(--grey);text-align:center}
+.mdl .que{margin:0 0 10px;font-size:.9rem}
+.mdl h6{margin:12px 0 4px;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--blue-d)}
+.mdl ul.partes{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:7px}
+.mdl ul.partes li{font-size:.83rem;background:#F8FAFC;border:1px solid var(--line);
+  border-radius:999px;padding:4px 12px 4px 9px}
+.mdl ul.partes li::before{content:'✓';color:var(--good);font-weight:800;margin-right:5px}
+.mdl .apoyo{display:flex;flex-wrap:wrap;gap:7px}
+.mdl .apoyo code{background:#EFF6FF;border:1px solid #BFDBFE;color:#1E3A8A;border-radius:8px;
+  padding:4px 10px;font-size:.83rem;font-family:inherit;font-style:italic}
+.mdl .mejora{margin:12px 0 0;background:#FFFBEB;border:1px solid #FDE68A;border-radius:var(--r-sm);
+  padding:10px 13px;font-size:.86rem;color:#78350F}
+.mdl .mejora b{color:#92400E}
+.mdl-thumb{flex:0 0 auto;width:66px;border:1px solid var(--line);border-radius:7px;overflow:hidden;
+  background:#fff;align-self:center;display:block}
+.mdl-thumb svg{display:block}
+.tira{display:grid;grid-template-columns:repeat(auto-fill,minmax(116px,1fr));gap:10px}
+.tira a{text-decoration:none;color:inherit;border:1px solid var(--line);border-radius:var(--r-sm);
+  overflow:hidden;background:#fff;display:block}
+.tira a:hover{border-color:var(--blue);box-shadow:var(--shadow)}
+.tira .pie{padding:6px 8px;border-top:1px solid var(--line)}
+.tira .pie b{display:block;font-size:.68rem;color:var(--blue-d);letter-spacing:.06em}
+.tira .pie span{display:block;font-size:.74rem;color:var(--ink);line-height:1.25}
+.finalmdl{display:grid;grid-template-columns:minmax(0,330px) minmax(0,1fr);gap:18px;align-items:start}
+a.arc .lam{position:absolute;right:10px;bottom:10px;width:104px;border-radius:8px;overflow:hidden;
+  opacity:.94;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+a.arc .lam svg{display:block}
+a.arc p{max-width:60%}
+@media print{.mdl{break-inside:avoid}.tira{display:none}}
+@media(max-width:760px){
+  .mdl .cuerpo,.finalmdl{grid-template-columns:1fr}
+  a.arc .lam{display:none}a.arc p{max-width:100%}
+}
 @media(max-width:640px){
   .wk .body{padding-left:16px}
   .hero h1{font-size:1.35rem}
+  /* En el movil la cabecera de la semana no tiene sitio para todo: la
+     miniatura se quita (la lamina entera esta dentro igualmente) y el chip
+     de la entrega deja de ir en una sola linea, que era lo que lo montaba
+     encima del titulo. */
+  .mdl-thumb{display:none}
+  .wk>summary{flex-wrap:wrap}
+  .wk .ev{white-space:normal;align-self:flex-start;text-align:left}
 }
 </style>
 </head>
@@ -135,6 +193,8 @@ button.lang:hover{background:rgba(255,255,255,.30)}
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js?v=21"></script>
 <script src="project-arcs.js?v=9"></script>
+<script src="project-art.js?v=1"></script>
+<script src="project-models.js?v=1"></script>
 <script>
 const $ = s => document.querySelector(s);
 const P = new URLSearchParams(location.search);
@@ -190,6 +250,18 @@ const UI = {
   periodo:     {en:'Period',                         es:'Periodo'},
   periodoNota: {en:'the school calls it <i>Project %s</i> in the calendar',
                 es:'el colegio lo llama <i>Project %s</i> en el calendario'},
+  /* --- modelos de entrega --- */
+  aliento:     {en:'This week', es:'Esta semana'},
+  modeloTit:   {en:'What you hand in', es:'Lo que entregas'},
+  modeloEjem:  {en:'model', es:'modelo'},
+  modeloQue:   {en:'It has to have', es:'Tiene que llevar'},
+  modeloApoyo: {en:'English you can use', es:'Inglés que puedes usar'},
+  modeloMejora:{en:'To make it better:', es:'Para mejorarlo:'},
+  modeloPie:   {en:'a model, not the answer', es:'un modelo, no la respuesta'},
+  tiraTit:     {en:'The eleven deliveries, at a glance', es:'Las once entregas, de un vistazo'},
+  tiraHint:    {en:'one per week, ending in the final product', es:'una por semana, hasta el producto final'},
+  finalMdl:    {en:'What the final product looks like', es:'Qué forma tiene el producto final'},
+  sinModelo:   {en:'This week has no model drawn yet.', es:'Esta semana todavía no tiene modelo dibujado.'},
   verTodo:     {en:'Open the eleven weeks', es:'Abrir las once semanas'},
   plegarTodo:  {en:'Collapse the weeks', es:'Plegar las semanas'},
   secundaria:  {en:'Secondary', es:'Secundaria'},
@@ -623,6 +695,66 @@ async function conectar(){
   }catch(_){ esProfe = false; }
 }
 
+/* ---------------- modelos de entrega ----------------
+   El arco ya decia QUE se entrega cada semana ("Evidence Map"). Aqui se
+   ensena QUE FORMA tiene: la lamina de project-art.js, sus partes, el ingles
+   que hace falta para hacerla y la linea de como se mejora. Y la frase de
+   aliento de esa semana, que es lo primero que se lee al abrirla.
+
+   Todo esto es opcional: si un arco no tiene modelos, la pagina queda
+   exactamente como estaba en vez de pintar huecos. */
+function modelosDe(k){ return (window.PROJECT_MODELS || {})[k] || null; }
+
+/* La lamina se dibuja con los textos YA traducidos: el SVG pinta un idioma,
+   no un par. */
+function lamina(m, cover, alto){
+  if(!m || !window.modeloSVG) return '';
+  return window.modeloSVG({tipo: m.tipo, titulo: t(m.titulo),
+    partes: (m.partes || []).map(t)}, cover, {alto: alto || 210});
+}
+function miniatura(m, cover){
+  if(!m || !window.modeloSVG) return '';
+  return `<span class="mdl-thumb">${lamina(m, cover, 46)}</span>`;
+}
+
+function bloqueModelo(m, cover){
+  if(!m) return '';
+  return `<div class="mdl">
+    <h5>${u('modeloTit')} <b>${esc(t(m.titulo))}</b></h5>
+    <div class="cuerpo">
+      <div class="lamina">${lamina(m, cover)}<p>${u('modeloPie')}</p></div>
+      <div>
+        <p class="que">${esc(t(m.que))}</p>
+        <h6>${u('modeloQue')}</h6>
+        <ul class="partes">${(m.partes || []).map(x=>`<li>${esc(t(x))}</li>`).join('')}</ul>
+        ${(m.apoyo || []).length ? `<h6>${u('modeloApoyo')}</h6>
+          <div class="apoyo">${m.apoyo.map(x=>`<code>${esc(x)}</code>`).join('')}</div>` : ''}
+        <p class="mejora"><b>${u('modeloMejora')}</b> ${esc(t(m.mejora))}</p>
+      </div>
+    </div></div>`;
+}
+
+function bloqueAliento(al){
+  if(!al) return '';
+  return `<p class="aliento"><span>${u('aliento')}</span>${esc(t(al))}</p>`;
+}
+
+/* La tira: las once entregas seguidas, antes de abrir ninguna semana. Es la
+   respuesta visual a "de que va todo esto": se ve el camino entero. */
+function tiraEntregas(k, a){
+  const M = modelosDe(k);
+  if(!M) return '';
+  const items = a.fases.map(f => {
+    const s = M.semanas[f.n];
+    if(!s) return '';
+    return `<a href="#w${f.n}" data-w="${f.n}">${lamina(s.modelo, a.cover, 78)}
+      <span class="pie"><b>W${f.n}</b><span>${esc(t(s.modelo.titulo))}</span></span></a>`;
+  }).join('');
+  return `<div class="sec-title"><h2>${u('tiraTit')}</h2>
+    <span class="hint">${u('tiraHint')}</span></div>
+    <div class="tira">${items}</div>`;
+}
+
 /* ---------------- indice ---------------- */
 function pintaIndice(){
   /* ?grade=g3 acota el indice al grado del alumno. Sin el, se ven todos:
@@ -653,12 +785,16 @@ function pintaIndice(){
   grados.forEach(g => {
     h += `<div class="sec-title"><h2>${esc(porGrado[g][0][1].label)}</h2></div><div class="arcs">`;
     porGrado[g].sort((a,b)=>a[1].periodos[0]-b[1].periodos[0]).forEach(([k,a]) => {
+      /* La tarjeta ensena la lamina del producto final: desde el indice ya se
+         ve con que se acaba, que es la pregunta que hace todo el mundo. */
+      const mk = modelosDe(k);
       h += `<a class="arc" href="project.html?arc=${encodeURIComponent(k)}"
         style="background:linear-gradient(135deg,${a.cover.from},${a.cover.to})">
         <span class="tag">P${a.periodos.join('+')} · ${a.semanas} ${u('semanas')}</span>
         <div class="ic">${a.cover.icon}</div>
         <h3>${esc(t(a.titulo))}</h3>
-        <p>${esc(t(a.subtitulo))}</p></a>`;
+        <p>${esc(t(a.subtitulo))}</p>
+        ${mk ? `<span class="lam">${lamina(mk.final, a.cover, 68)}</span>` : ''}</a>`;
     });
     h += `</div>`;
   });
@@ -725,13 +861,31 @@ function pintaArco(k, a){
     <span class="hint">${u('misionHint')}</span></div>
     <div class="card"><p style="margin:0;font-size:1rem">${esc(t(a.narrativa))}</p></div>`;
 
-  /* Producto final. */
-  h += `<div class="sec-title"><h2>${u('producto')}</h2></div>
+  /* Producto final. Con su lamina al lado: es lo primero que el alumno
+     pregunta ("y esto que es?") y hasta ahora solo tenia un titulo. */
+  const MOD = modelosDe(k);
+  const fin = MOD ? MOD.final : null;
+  h += `<div class="sec-title"><h2>${u('producto')}</h2>
+    ${fin ? `<span class="hint">${u('finalMdl')}</span>` : ''}</div>
     <div class="card">
-      <h3 style="color:var(--blue-dd);margin:0 0 4px">${esc(t(a.producto.titulo))}</h3>
-      <p style="margin:0 0 10px">${esc(t(a.producto.descripcion))}</p>
-      <p class="muted" style="margin:0 0 10px;font-size:.88rem"><b>${u('paraQuien')}</b> ${esc(t(a.producto.audiencia))}</p>
-      <ul class="tight">${a.producto.incluye.map(x=>`<li>${esc(t(x))}</li>`).join('')}</ul>
+      <div class="${fin ? 'finalmdl' : ''}">
+        ${fin ? `<div class="lamina" style="border:1px solid var(--line);border-radius:10px;overflow:hidden">
+          ${lamina(fin, a.cover, 240)}</div>` : ''}
+        <div>
+          <h3 style="color:var(--blue-dd);margin:0 0 4px">${esc(t(a.producto.titulo))}</h3>
+          <p style="margin:0 0 10px">${esc(t(a.producto.descripcion))}</p>
+          <p class="muted" style="margin:0 0 10px;font-size:.88rem"><b>${u('paraQuien')}</b> ${esc(t(a.producto.audiencia))}</p>
+          <ul class="tight">${a.producto.incluye.map(x=>`<li>${esc(t(x))}</li>`).join('')}</ul>
+        </div>
+      </div>
+      ${fin ? `<div class="mdl" style="margin-top:16px"><h5>${u('modeloQue')}</h5>
+        <div class="cuerpo" style="grid-template-columns:1fr">
+          <div>
+            <ul class="partes">${(fin.partes||[]).map(x=>`<li>${esc(t(x))}</li>`).join('')}</ul>
+            ${(fin.apoyo||[]).length ? `<h6>${u('modeloApoyo')}</h6>
+              <div class="apoyo">${fin.apoyo.map(x=>`<code>${esc(x)}</code>`).join('')}</div>` : ''}
+            <p class="mejora"><b>${u('modeloMejora')}</b> ${esc(t(fin.mejora))}</p>
+          </div></div></div>` : ''}
     </div>`;
 
   /* Preguntas orientadoras por area. */
@@ -747,6 +901,11 @@ function pintaArco(k, a){
     });
     h += `</div>`;
   }
+
+  /* Las once entregas seguidas, antes de abrir ninguna semana: el camino
+     entero de un vistazo. Sin esto hay que abrir once desplegables para
+     saber a donde va el proyecto. */
+  h += tiraEntregas(k, a);
 
   /* Antes del mapa de semanas: a donde lleva el ingles de este trimestre. */
   h += inglesDelArco(a);
@@ -807,9 +966,14 @@ function pintaArco(k, a){
         <h5>${AREA_NOMBRE[x]||x}${extra[x] ? ' <span class="delDocx">'+u('delDocx')+'</span>' : ''}</h5>
         <ul>${cont[x].slice(0,6).map(l=>`<li>${esc(l)}</li>`).join('')}</ul></div>`).join('');
     }
-    h += `<details class="wk" style="border-left-color:${a.cover.from}">
+    /* El modelo de la semana, si lo hay: miniatura en la cabecera para que se
+       vea plegada, y dentro el aliento arriba y la lamina completa debajo del
+       contenido de las areas. */
+    const sm = MOD && MOD.semanas[f.n] ? MOD.semanas[f.n] : null;
+    h += `<details class="wk" id="w${f.n}" style="border-left-color:${a.cover.from}">
       <summary>
         <div class="num">W${f.n}</div>
+        ${sm ? miniatura(sm.modelo, a.cover) : ''}
         <div class="txt">
           <div class="fase">${esc(t(f.fase))} · P${f.periodo} W${f.semana}</div>
           <div class="foco">${esc(t(f.foco))}</div>
@@ -817,11 +981,13 @@ function pintaArco(k, a){
         <div class="ev">${esc(t(f.evidencia))}</div>
       </summary>
       <div class="body">
+        ${sm ? bloqueAliento(sm.aliento) : ''}
         <p class="hace">${esc(t(f.hace))}</p>
         ${bloques ? `<div class="areas">${bloques}</div>
           <p class="pnote">${u('delPlan')}</p>`
         : `<p class="pnote">${u('sinPlan')}</p>`}
         ${bloqueInglesHTML(a.grade, f.periodo, f.semana)}
+        ${sm ? bloqueModelo(sm.modelo, a.cover) : ''}
       </div></details>`;
   });
   if(periodoPintado !== null) h += cierraPeriodo(periodoPintado);
@@ -903,6 +1069,19 @@ function pintaArco(k, a){
     ws.forEach(d => { d.open = abrir; });
     bt.textContent = u(abrir ? 'plegarTodo' : 'verTodo');
   };
+
+  /* La tira de entregas lleva a su semana. Un ancla sola no basta: la semana
+     es un <details> y el navegador salta a el sin abrirlo, asi que parece que
+     el enlace no hace nada. Hay que abrirlo a mano. */
+  document.querySelectorAll('.tira a[data-w]').forEach(el => {
+    el.onclick = function(ev){
+      ev.preventDefault();
+      const d = document.getElementById('w' + el.dataset.w);
+      if(!d) return;
+      d.open = true;
+      d.scrollIntoView({behavior: 'smooth', block: 'center'});
+    };
+  });
 }
 
 /* Se pinta en cuanto esta el plan anual, sin esperar a Supabase: averiguar
