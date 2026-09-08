@@ -6,6 +6,25 @@ de trabajo).
 
     python yle/tools/build_img.py            # todos los niveles
     python yle/tools/build_img.py starters
+
+ANTES de dar por buena una lamina, comprueba la ortografia de las palabras que
+lleva DIBUJADAS DENTRO (titulares, carteles, lomos de libros). El corrector no
+las ve: no son texto, son pixeles, y Gemini se equivoca al dibujarlas.
+
+    python C:\\Projects\\corpus-linguistico\\tools\\laminas_ortografia.py --carpeta C:\\Projects\\nis-portal\\yle-img\\flyers
+
+Termina con codigo 1 si encuentra una palabra que parece falta de ortografia.
+Paso el 8-sep-2026 con test_04_S1.jpg de Flyers: el periodico que lee la madre
+decia NEWSRAPER en una mitad y NEWSPAPER bien en la otra, en la tarea en que el
+alumno tiene que decir justamente "newspaper".
+
+Ojo con dos cosas de este material:
+  - yle-img/ esta en .gitignore del portal NIS: un push NO lo publica. En NIS se
+    sirve desde /opt/nis-media por endpoint con permiso; hay que subirlo aparte.
+    En cohasset-community/repo si viaja por git.
+  - las laminas de flyers/ no salen de SRC: su master vive en
+    C:\\Projects\\cohasset.pe\\Flyers_Practice\\img_src\\ (ver README_FLYERS.md),
+    y la copia publicada esta ademas en Flyers_Practice/img/ de los tres repos.
 """
 import io, os, sys, glob
 from PIL import Image
