@@ -33,7 +33,7 @@ student: { secciones: [
     ]},
 
   { icon:'🧭', titulo:'Cómo está organizado', busca:'menu barra navegacion donde esta estructura mapa',
-    sub:'Cinco entradas en la barra de la izquierda, y nada más.',
+    sub:'Seis entradas en la barra de la izquierda, y nada más.',
     cuerpo:[
       {tabla:{cols:['En la barra','Qué encuentras'],filas:[
         ['🏠 Home','Tu unidad de un vistazo, las materias (English y French) y los recursos generales: Library y MUN Academy.'],
