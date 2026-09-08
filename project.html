@@ -65,6 +65,7 @@ ul.tight li{margin:.22em 0}
 .area.otra{background:#fff;border-style:dashed}
 .area.otra h5{color:var(--grey)}
 .area h5{margin:0 0 5px;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--blue-d)}
+.area h5 .ico{font-size:.95rem;margin-right:5px;letter-spacing:0;vertical-align:-1px}
 .area ul{margin:0;padding-left:1.05em;font-size:.83rem;color:var(--ink)}
 .area li{margin:.15em 0}
 .pnote{font-size:.76rem;color:var(--grey);margin:10px 0 0}
@@ -400,6 +401,12 @@ const AREA_NOMBRE = {
   art:'Art', music:'Music', drama:'Drama', spiritual:'Spiritual History'
 };
 const AREA_ORDEN = ['science','social','math','english','comunicacion','pe','tutoria','art','music','drama','spiritual'];
+/* Un icono por area. En primaria la semana es un muro de texto en once
+   idiomas de asignatura; el icono deja encontrar la propia de un vistazo. */
+const AREA_ICONO = {
+  science:'🔬', social:'🌎', math:'🔢', english:'🗣️', comunicacion:'📖',
+  tutoria:'🤝', pe:'⚽', art:'🎨', music:'🎵', drama:'🎭', spiritual:'🕊️'
+};
 
 function esc(s){ return String(s==null?'':s)
   .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
@@ -963,7 +970,7 @@ function pintaArco(k, a){
       const ks = AREA_ORDEN.filter(x => cont[x] && cont[x].length);
       const extra = deProyecto(a.grade, f.periodo, f.semana) || {};
       bloques = ks.map(x => `<div class="area${areasProy.indexOf(x)>=0?'':' otra'}">
-        <h5>${AREA_NOMBRE[x]||x}${extra[x] ? ' <span class="delDocx">'+u('delDocx')+'</span>' : ''}</h5>
+        <h5><span class="ico" aria-hidden="true">${AREA_ICONO[x]||'•'}</span>${AREA_NOMBRE[x]||x}${extra[x] ? ' <span class="delDocx">'+u('delDocx')+'</span>' : ''}</h5>
         <ul>${cont[x].slice(0,6).map(l=>`<li>${esc(l)}</li>`).join('')}</ul></div>`).join('');
     }
     /* El modelo de la semana, si lo hay: miniatura en la cabecera para que se
