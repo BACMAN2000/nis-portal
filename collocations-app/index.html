@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Phrasal Verbs · Nordic International School</title>
+<title>Collocations · Nordic International School</title>
 <link rel="icon" href="../favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -79,9 +79,9 @@ h1{margin:0;font-size:1.55rem;font-weight:700;letter-spacing:-.01em}
 <script>if(new URLSearchParams(location.search).get("embed")==="1")document.documentElement.classList.add("embed");</script>
 <header>
   <div class="wrap">
-    <div class="crumb"><a href="../index.html">Portal</a> › Phrasal verbs</div>
-    <h1>Phrasal Verbs</h1>
-    <div class="sub">Los verbos compuestos que de verdad aparecen en nuestros cursos, nivel por nivel.</div>
+    <div class="crumb"><a href="../index.html">Portal</a> › Collocations</div>
+    <h1>Collocations</h1>
+    <div class="sub">Las palabras que en inglés van juntas, medidas en nuestros propios cursos y ordenadas por nivel.</div>
   </div>
 </header>
 
@@ -104,19 +104,19 @@ function esc(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c
   return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
 
 function guardaProgreso(){
-  try { localStorage.setItem('coh_phrasal', JSON.stringify(HECHOS)); } catch(e){}
+  try { localStorage.setItem('coh_colloc', JSON.stringify(HECHOS)); } catch(e){}
 }
 function leeProgreso(){
-  try { HECHOS = JSON.parse(localStorage.getItem('coh_phrasal') || '{}') || {}; } catch(e){ HECHOS = {}; }
+  try { HECHOS = JSON.parse(localStorage.getItem('coh_colloc') || '{}') || {}; } catch(e){ HECHOS = {}; }
 }
 
 function pintaNiveles(){
   var c = document.getElementById('levels');
   c.innerHTML = DATA.niveles.map(function(L){
-    var n = (DATA.verbs[L] || []).length;
+    var n = (DATA.cols[L] || []).length;
     return '<button class="lv" data-l="' + L + '" aria-pressed="' + (L === LEVEL) + '"' +
       ' style="--c:' + COLORS[L] + ';--cl:' + COLORS[L] + '18;--cd:' + COLORS[L] + '"' +
-      ' onclick="setLevel(this.dataset.l)">' + L + '<small>' + n + ' verbos · ' + NOMBRES[L] + '</small></button>';
+      ' onclick="setLevel(this.dataset.l)">' + L + '<small>' + n + ' colocaciones · ' + NOMBRES[L] + '</small></button>';
   }).join('');
 }
 function setLevel(L){ LEVEL = L; IDX = 0; SESION = {ok:0, total:0}; pintaNiveles(); render(); }
@@ -129,8 +129,8 @@ function setTab(t){
 }
 
 function vistaAprender(){
-  var lista = DATA.verbs[LEVEL] || [];
-  var html = '<input class="find" id="find" placeholder="Filtrar phrasal verb o significado…" oninput="filtra(this.value)" autocomplete="off">';
+  var lista = DATA.cols[LEVEL] || [];
+  var html = '<input class="find" id="find" placeholder="Filtrar colocación o significado…" oninput="filtra(this.value)" autocomplete="off">';
   html += '<div id="lista">' + tarjetas(lista) + '</div>';
   return html;
 }
@@ -138,11 +138,11 @@ function tarjetas(lista){
   if(!lista.length) return '<div class="empty">Nada que mostrar.</div>';
   return lista.map(function(d){
     return '<div class="card">' +
-      '<span class="pv">' + esc(d.pv) + '</span>' +
-      '<span class="badge ' + (d.sep === 'separable' ? 'sep">separable' : 'insep">inseparable') + '</span>' +
+      '<span class="pv">' + esc(d.col) + '</span>' +
+      '<span class="badge insep">' + esc(d.tipo || '') + '</span>' +
       (d.freq ? '<span class="badge">' + d.freq + ' veces en el curso</span>' : '') +
-      '<button class="say" type="button" data-say="uk" data-pv="' + esc(d.pv) + '" title="Pronunciación británica">UK</button>' +
-      '<button class="say" type="button" data-say="us" data-pv="' + esc(d.pv) + '" title="Pronunciación americana">US</button>' +
+      '<button class="say" type="button" data-say="uk" data-col="' + esc(d.col) + '" title="Pronunciación británica">UK</button>' +
+      '<button class="say" type="button" data-say="us" data-col="' + esc(d.col) + '" title="Pronunciación americana">US</button>' +
       '<div class="en">' + esc(d.en) + '</div>' +
       '<div class="es">' + esc(d.es) + '</div>' +
       '<div class="ex">' + esc(d.ex) + '</div>' +
@@ -150,14 +150,15 @@ function tarjetas(lista){
       '</div>';
   }).join('');
 }
-// El phrasal verb y su ejemplo, dichos con la misma voz que el diccionario.
+// La colocación y su ejemplo, dichos con la misma voz que el diccionario.
+// El nombre del archivo se calcula igual que en genera_audio_collocations.py.
 var AUDIO = null;
-function slugPV(pv){ return pv.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''); }
+function slugCol(col){ return col.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''); }
 function dice(boton){
-  var pv = boton.getAttribute('data-pv'), ac = boton.getAttribute('data-say');
+  var col = boton.getAttribute('data-col'), ac = boton.getAttribute('data-say');
   if(AUDIO){ AUDIO.pause(); }
   document.querySelectorAll('.say[aria-pressed="true"]').forEach(function(b){ b.setAttribute('aria-pressed', 'false'); });
-  AUDIO = new Audio('/lexicon-audio/phrasal/' + ac + '/' + slugPV(pv) + '.mp3');
+  AUDIO = new Audio('/lexicon-audio/collocations/' + ac + '/' + slugCol(col) + '.mp3');
   boton.setAttribute('aria-pressed', 'true');
   AUDIO.onended = AUDIO.onerror = function(){ boton.setAttribute('aria-pressed', 'false'); };
   AUDIO.play().catch(function(){ boton.setAttribute('aria-pressed', 'false'); });
@@ -169,8 +170,8 @@ document.addEventListener('click', function(ev){
 });
 function filtra(v){
   var f = (v || '').trim().toLowerCase();
-  var lista = (DATA.verbs[LEVEL] || []).filter(function(d){
-    return !f || d.pv.indexOf(f) >= 0 || d.en.toLowerCase().indexOf(f) >= 0 || d.es.toLowerCase().indexOf(f) >= 0;
+  var lista = (DATA.cols[LEVEL] || []).filter(function(d){
+    return !f || d.col.indexOf(f) >= 0 || d.en.toLowerCase().indexOf(f) >= 0 || d.es.toLowerCase().indexOf(f) >= 0;
   });
   document.getElementById('lista').innerHTML = tarjetas(lista);
 }
@@ -184,7 +185,7 @@ function vistaPractica(){
     '<div class="meta"><span>Ejercicio ' + (IDX + 1) + ' de ' + ej.length + '</span>' +
     '<span>' + SESION.ok + ' / ' + SESION.total + ' correctas</span></div><div class="card">';
   if(e.t === 'match'){
-    html += '<div class="q">Empareja cada phrasal verb con su significado.</div>' + matchHTML(e);
+    html += '<div class="q">Empareja cada colocación con su significado.</div>' + matchHTML(e);
   } else {
     html += '<div class="q">' + e.q + '</div><div class="opts" id="opts">' +
       e.options.map(function(o, i){
@@ -247,8 +248,8 @@ function responde(i){
     '<button class="btn" style="margin-left:12px" onclick="siguiente()">Siguiente</button></div>';
 }
 function marca(e, bien){
-  if(!e.pv) return;
-  var k = LEVEL + '|' + e.pv;
+  if(!e.col) return;
+  var k = LEVEL + '|' + e.col;
   if(!HECHOS[k]) HECHOS[k] = {ok:0, no:0};
   HECHOS[k][bien ? 'ok' : 'no']++;
   guardaProgreso();
@@ -267,16 +268,16 @@ function resumen(total){
 }
 
 function vistaProgreso(){
-  var lista = DATA.verbs[LEVEL] || [];
+  var lista = DATA.cols[LEVEL] || [];
   var vistos = 0, dominados = 0;
   var filas = lista.map(function(d){
-    var h = HECHOS[LEVEL + '|' + d.pv];
+    var h = HECHOS[LEVEL + '|' + d.col];
     if(h) vistos++;
     var tot = h ? h.ok + h.no : 0;
     var pct = tot ? Math.round(h.ok / tot * 100) : 0;
     if(tot >= 2 && pct >= 80) dominados++;
     return '<div class="card" style="display:flex;justify-content:space-between;align-items:center;padding:11px 15px">' +
-      '<span class="pv" style="font-size:1rem">' + esc(d.pv) + '</span>' +
+      '<span class="pv" style="font-size:1rem">' + esc(d.col) + '</span>' +
       '<span style="font-size:.88rem;color:' + (tot ? (pct >= 80 ? 'var(--ok)' : 'var(--muted)') : 'var(--muted)') + '">' +
       (tot ? h.ok + '/' + tot + ' · ' + pct + '%' : 'sin practicar') + '</span></div>';
   }).join('');
