@@ -106,6 +106,10 @@ tr:hover td{background:#fafbff}
    desbordar la tarjeta. */
 td.acts{white-space:normal}
 td.acts .acts-wrap{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+/* Que el boton nunca encoja ni parta su propio texto (p.ej. "Su plan" en dos
+   lineas dentro del boton, visto en Plan de estudio en movil con nombres
+   largos): si no entran los dos en la linea, el que sobra baja entero. */
+td.acts .acts-wrap>*{flex-shrink:0}
 /* Tabla de Usuarios: el Nombre absorbe el ancho sobrante para que Rol y
    Estado queden juntas (sin hueco), y las acciones -incluido Eliminar- van
    todas en una sola fila. El card ya tiene overflow-x en pantallas estrechas. */
