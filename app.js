@@ -4844,7 +4844,8 @@ function studentGrade(key){
   $('#main').innerHTML=`${back}<h1>${emoji} ${label}</h1>
     <p class="muted" style="margin-top:-6px">${label} material.</p>
     <div class="grid cols-2" style="margin-top:12px">
-      ${arcsFor(key).length ? _hubCard('🧩','Project','The interdisciplinary project of the term: the essential question, the eleven-week map and what every subject contributes.',"location.href='"+_withBack('project.html?arc='+(arcoActual(key)||arcsFor(key)[0][0]),route)+"'") : ''}
+      ${arcsFor(key).length ? _hubCard('🧩','Project','The interdisciplinary project of the term: the essential question, the eleven-week map and what every subject contributes.',"location.href='"+_withBack('project.html?arc='+(arcoActual(key)||arcsFor(key)[0][0]),route)+"'")
+        : (_isPrimaryGrade(key) ? '' : _hubCard('📚','English sequence','The six units of the year with their vocabulary, grammar and reading plan, the Cambridge exam the grade is preparing for and what every subject has in the planner.',"location.href='"+_withBack('project.html?grade='+key,route)+"'"))}
       ${unitPlansFor(key).length ? (nodeVisible(unitsNode(key)) ? _hubCard('🎯','Units','Your units this year: the final product, the rubric from day one, and the week-by-week practice that feeds it.',"window._nav('classes_"+key+"_units')") : _lockedCard('🎯','Units','Your units and their final products.')) : ''}
       ${_isPrimaryGrade(key) ? '' : (nodeVisible(base+'.grammar') ? _skillCard('📝','Grammar','Grammar for '+label+': explanations and games by unit.',_withBack('grammar.html?grade='+key,route)) : _lockedCard('📝','Grammar','Grammar for '+label+'.'))}
       ${nodeVisible(base+'.activities') ? _hubCard('🎲','Activities',_isPrimaryGrade(key)?'Games for each unit — with audio for young learners.':'Games by unit and by level: crosswords, word searches and more.',"window._nav('classes_"+key+"_act')") : _lockedCard('🎲','Activities','Games and activities.')}
