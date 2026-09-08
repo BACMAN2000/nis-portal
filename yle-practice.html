@@ -251,11 +251,17 @@ function listaTests(){
       .then(function(r){ return (r.data || []).map(function(x){ return {number: x.number, theme: x.theme}; }); });
   }).catch(function(){ return []; });
 }
+/* El contenido ya no sale de la tabla: la columna `data` de yle_tests dejo de estar
+   al alcance de las cuentas del portal (7-sep-2026), porque con UNA consulta sin
+   filtro se bajaban los 30 examenes de los tres niveles con su solucionario. Ahora
+   se pide test a test a yle_test_data(), que entrega UNO y solo si al que pregunta
+   le toca — el mismo candado que ya llevaba unit_exams. El indice sigue saliendo de
+   la tabla: number y theme no delatan nada. */
 function traeTest(n){
   var c = client();
   if(!c) return Promise.reject(new Error('sin conexión'));
-  return c.from('yle_tests').select('data').eq('level', LEVEL).eq('number', n).single()
-    .then(function(r){ if(r.error || !r.data) throw new Error('no disponible'); return r.data.data; });
+  return c.rpc('yle_test_data', {p_level: LEVEL, p_number: n})
+    .then(function(r){ if(r.error) throw new Error(r.error.message); if(!r.data) throw new Error('no disponible'); return r.data; });
 }
 function key(){ return (cur + 1) + '#' + tab + '#'; }
 function nn(){ return String(T.number).padStart(2, '0'); }

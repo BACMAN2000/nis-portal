@@ -54,7 +54,9 @@ function bandas(c){
    el solucionario de los treinta (6-sep-2026). El panel los lee de la base con la
    sesion del profesor, igual que la pantalla del alumno. */
 async function indice(level){ if(!INDICES[level]){ try { const r = await sb.from('yle_tests').select('number, theme').eq('level', level).order('number'); INDICES[level] = r.data || []; } catch(e){ INDICES[level] = []; } } return INDICES[level]; }
-async function testJson(level, n){ const k = level + n; if(!(k in TESTS)){ try { const r = await sb.from('yle_tests').select('data').eq('level', level).eq('number', n).maybeSingle(); TESTS[k] = (r.data && r.data.data) || null; } catch(e){ TESTS[k] = null; } } return TESTS[k]; }
+/* El contenido va por yle_test_data(): desde el 7-sep-2026 la columna `data` no esta
+   al alcance de ninguna cuenta del portal. Al profesor la funcion se lo da entero. */
+async function testJson(level, n){ const k = level + n; if(!(k in TESTS)){ try { const r = await sb.rpc('yle_test_data', {p_level: level, p_number: n}); TESTS[k] = r.data || null; } catch(e){ TESTS[k] = null; } } return TESTS[k]; }
 function band(p){ const b = (SPECS && SPECS.shields && SPECS.shields.nis_estimate_bands) || [[90, 5], [75, 4], [60, 3], [40, 2], [0, 1]]; for(const x of b) if(p >= x[0]) return x[1]; return 1; }
 function escudos(n){ let h = '<span class="yle-sh">'; for(let i = 1; i <= 5; i++) h += '<i class="' + (i <= (n || 0) ? 'on' : '') + '">' + i + '</i>'; return h + '</span>'; }
 const CSS = `<style id="yle-panel-css">

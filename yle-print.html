@@ -237,16 +237,27 @@ function indice(){
     .then(function(r){ return {tests: (r.data || []).map(function(x){ return x.number; })}; })
     .catch(function(){ return {tests: []}; });
 }
+/* Esta hoja trae la CLAVE DE RESPUESTAS (?key=1), asi que pide rol, no solo sesion:
+   igual que unit-exam-print.html. Hasta el 7-sep-2026 bastaba con tener cuenta, y
+   eso la convertia en la misma fuga por otra puerta — un alumno con sesion abierta
+   podia imprimir el solucionario de cualquiera de los 30 examenes. El contenido, ya
+   de paso, va por yle_test_data(): la columna `data` no esta al alcance de la tabla. */
 function traeTest(){
   var c = client();
   if(!c) return Promise.reject(new Error('the portal configuration did not load. Reload the page.'));
-  return c.auth.getSession().then(function(u){
-    if(!(u && u.data && u.data.session)) throw new Error('sign in through the portal to print this paper.');
-    return c.from('yle_tests').select('data').eq('level', LEVEL).eq('number', TEST).maybeSingle();
+  return c.auth.getUser().then(function(u){
+    var uid = u && u.data && u.data.user && u.data.user.id;
+    if(!uid) throw new Error('sign in through the portal to print this paper.');
+    return c.from('profiles').select('role').eq('id', uid).maybeSingle();
+  }).then(function(p){
+    var rol = p && p.data && p.data.role;
+    if(rol !== 'teacher' && rol !== 'admin')
+      throw new Error('this printable paper is for teachers and administrators — it carries the answer key, so it is not served to student accounts.');
+    return c.rpc('yle_test_data', {p_level: LEVEL, p_number: TEST});
   }).then(function(r){
     if(r.error) throw new Error(r.error.message);
-    if(!r.data || !r.data.data) throw new Error('test ' + TEST + ' of ' + NAMES[LEVEL] + ' is not published yet.');
-    return r.data.data;
+    if(!r.data) throw new Error('test ' + TEST + ' of ' + NAMES[LEVEL] + ' is not published yet.');
+    return r.data;
   });
 }
 
