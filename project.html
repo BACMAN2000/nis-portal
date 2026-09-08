@@ -204,6 +204,7 @@ a.arc p{max-width:60%}
 <script src="project-models.js?v=1"></script>
 <script src="project-cursos.js?v=1"></script>
 <script src="project-arcs-sec.js?v=1"></script>
+<script src="project-arcs-sec11.js?v=1"></script>
 <script>
 const $ = s => document.querySelector(s);
 const P = new URLSearchParams(location.search);
@@ -260,6 +261,15 @@ const UI = {
   periodoNota: {en:'the school calls it <i>Project %s</i> in the calendar',
                 es:'el colegio lo llama <i>Project %s</i> en el calendario'},
   /* --- que hace cada curso esta semana --- */
+  arco11:      {en:'The eleven-week arc', es:'El arco de once semanas'},
+  arco11Hint:  {en:'two units in a row, one project, and what every subject does each week',
+                es:'dos unidades seguidas, un proyecto, y lo que hace cada curso cada semana'},
+  integraTit:  {en:'What each subject contributes to the final product',
+                es:'Qué aporta cada curso al producto final'},
+  integraHint: {en:'this is the interdisciplinary part: take one out and the product is incomplete',
+                es:'esta es la parte interdisciplinaria: quita uno y el producto queda incompleto'},
+  cursosInvol: {en:'Subjects involved', es:'Cursos involucrados'},
+  verUnidades: {en:'The same arc, unit by unit', es:'El mismo arco, unidad por unidad'},
   arcoPropuesta:{en:'Portal proposal', es:'Propuesta del portal'},
   arcoPropTxt: {en:'This grade has no Project document written for these two periods, and the annual plan only loads English. Everything that is not English here is what this page proposes so that the term has a project: the teacher and coordination approve it, change it or drop it.',
                 es:'Este grado no tiene documento Project escrito para estos dos periodos, y el plan anual solo carga inglés. Todo lo que aquí no es inglés es lo que esta página propone para que el trimestre tenga proyecto: la profesora y coordinación lo aprueban, lo cambian o lo descartan.'},
@@ -657,6 +667,140 @@ function tarjetaProyecto(k, p){
     ${mdl ? `<span class="lam">${lamina({tipo: mdl.tipo, titulo: t(p.producto.titulo), partes: mdl.partes}, p.cover, 68)}</span>` : ''}</a>`;
 }
 
+/* El arco de once semanas: dos unidades seguidas, un solo producto y —lo que
+   de verdad hacia falta— la tarea de cada curso en cada semana. Es la misma
+   forma que los arcos de primaria, con una diferencia que se dice en
+   pantalla: en primaria el contenido semanal por area lo da el Annual Plan y
+   en secundaria no existe, asi que el reparto semanal es propuesta. */
+function pintaArco11(k){
+  const p = (window.PROJECT_SEC11 || {})[k];
+  if(!p){ pintaProyectoSec(k); return; }
+  const grade = 'g' + p.grado;
+  const CAM = (window.PROJECT_SEC_CAMBRIDGE || {})[p.grado] || '';
+  const NOM = window.PROJECT_SEC_AREA_NOMBRE || {};
+  const fin = p.producto;
+
+  let h = `<div class="hero" style="background:linear-gradient(135deg,${p.cover.from},${p.cover.to})">
+    <div class="motivo">${p.cover.icon}</div>
+    <p class="eyebrow">${SEC_LBL[grade] || grade} &middot; ${u('trimestre')} ${p.trimestre} &middot; U${p.unidades.join(' + U')}</p>
+    <h1>${esc(t(p.titulo))}</h1>
+    <div class="bigq">${esc(t(p.preguntaEsencial))}</div>
+    <div class="meta"><span>${p.semanas.length} ${u('semanas')}</span><span>${esc(p.meses)}</span>
+      <span>${esc(CAM)}</span>
+      <span>${p.cursos.map(x => NOM[x] || x).join(' &middot; ')}</span></div></div>`;
+
+  h += `<div class="card" style="border-left:5px solid var(--warn)">
+    <span class="badge own">${u('propuesta')}</span>
+    <p style="margin:8px 0 0;font-size:.9rem">${u('propuestaTxt')}</p></div>`;
+
+  h += `<div class="sec-title"><h2>${u('situacionSec')}</h2></div>
+    <div class="card"><p style="margin:0">${esc(p.situacion)}</p></div>`;
+
+  /* Producto final y, debajo, lo que aporta cada curso: la parte
+     interdisciplinaria propiamente dicha. */
+  h += `<div class="sec-title"><h2>${u('productoInt')}</h2>
+    <span class="hint">${u('finalMdl')}</span></div>
+    <div class="card"><div class="finalmdl">
+      <div class="lamina" style="border:1px solid var(--line);border-radius:10px;overflow:hidden">
+        ${lamina({tipo: fin.modelo.tipo, titulo: t(fin.titulo), partes: fin.modelo.partes}, p.cover, 240)}</div>
+      <div>
+        <h3 style="color:var(--blue-dd);margin:0 0 4px">${esc(t(fin.titulo))}</h3>
+        <p style="margin:0 0 10px">${esc(t(fin.descripcion))}</p>
+        <ul class="tight">${fin.incluye.map(x => `<li>${esc(t(x))}</li>`).join('')}</ul>
+      </div></div>
+      <div class="mdl" style="margin-top:16px"><h5>${u('modeloQue')}</h5>
+        <div class="cuerpo" style="grid-template-columns:1fr"><div>
+          <ul class="partes">${fin.modelo.partes.map(x => `<li>${esc(t(x))}</li>`).join('')}</ul>
+          ${(fin.modelo.apoyo || []).length ? `<h6>${u('modeloApoyo')}</h6>
+            <div class="apoyo">${fin.modelo.apoyo.map(x => `<code>${esc(x)}</code>`).join('')}</div>` : ''}
+          <p class="mejora"><b>${u('modeloMejora')}</b> ${esc(t(fin.modelo.mejora))}</p>
+        </div></div></div>
+    </div>`;
+
+  h += `<div class="sec-title"><h2>${u('integraTit')}</h2>
+    <span class="hint">${u('integraHint')}</span></div>
+    <div class="cursos" style="margin-bottom:16px"><div class="areas">
+    ${(fin.integra || []).map(x => `<div class="area curso">
+      <h5><span class="ico" aria-hidden="true">${AREA_ICONO[x[0]] || '\u2022'}</span>${NOM[x[0]] || x[0]}</h5>
+      <p>${esc(x[1])}</p></div>`).join('')}</div></div>`;
+
+  /* Las tematicas comunes solo las traen los proyectos de unidad; en el arco
+     de once semanas su sitio lo ocupa "que aporta cada curso al producto". */
+  if((p.tematicas || []).length){
+    h += `<div class="sec-title"><h2>${u('tematicas')}</h2></div><div class="grid2">`;
+    p.tematicas.forEach(tm => {
+      h += `<div class="card" style="margin:0"><h3 style="font-size:1rem;color:var(--blue-dd)">${esc(tm.nombre)}</h3>
+        <ul class="tight" style="font-size:.88rem">${tm.aporta.map(x =>
+          `<li><b>${esc(NOM[x[0]] || x[0])}</b> &mdash; ${esc(x[1])}</li>`).join('')}</ul></div>`;
+    });
+    h += `</div>`;
+  }
+
+  /* Las once semanas, con la tarea de cada curso dentro. */
+  h += `<div class="sec-title"><h2>${u('semana')}</h2>
+    <span class="hint">${u('arco11Hint')}</span>
+    <button type="button" id="btnTodo" class="btn-todo">${u('verTodo')}</button></div>`;
+  let uPintada = null;
+  p.semanas.forEach(w => {
+    if(w.unidad !== uPintada){
+      uPintada = w.unidad;
+      h += `<p class="pnote" style="margin:16px 0 8px"><b>${u('unidadN')} ${w.unidad}</b></p>`;
+    }
+    const mdl = {tipo: w.tipo, titulo: t(w.hito), partes: []};
+    h += `<details class="wk" id="w${w.n}" style="border-left-color:${p.cover.from}">
+      <summary>
+        <div class="num">W${w.n}</div>
+        ${miniatura(mdl, p.cover)}
+        <div class="txt">
+          <div class="fase">${esc(t(w.fase))} &middot; U${w.unidad}</div>
+          <div class="foco">${esc(t(w.foco))}</div>
+        </div>
+        <div class="ev">${esc(t(w.hito))}</div>
+      </summary>
+      <div class="body">
+        ${bloqueAliento(w.aliento)}
+        ${bloqueCursos(w.cursos)}
+        <div class="mdl"><h5>${u('modeloTit')} <b>${esc(t(w.hito))}</b></h5>
+          <div class="cuerpo"><div class="lamina">${lamina(mdl, p.cover)}
+            <p>${u('modeloPie')}</p></div>
+            <div><p class="que">${esc(t(w.foco))}</p></div></div></div>
+      </div></details>`;
+  });
+
+  h += `<div class="sec-title"><h2>${u('rubrica')}</h2>
+    <span class="hint">${u('rubricaHint')}</span></div>
+    <div class="card" style="padding:0;overflow-x:auto"><table class="rub">
+    <tr><th>${u('dimension')}</th><th style="width:14%">${u('aQuienEval')}</th><th>${u('queSeMira')}</th></tr>
+    ${p.evaluacion.map(e => `<tr><td class="crit">${esc(e.dimension)}</td>
+      <td style="font-size:.82rem;color:var(--blue-d)">${esc(e.areas)}</td>
+      <td>${esc(e.descriptor)}</td></tr>`).join('')}
+    </table></div>`;
+
+  const PF = window.PROJECT_SEC_PERFIL || {};
+  if((p.perfil || []).length){
+    h += `<div class="sec-title"><h2>${u('perfilTit')}</h2></div><div class="card">
+      <div class="ing-chips">${p.perfil.map(n => `<span><b>CE ${n}</b> ${esc(PF[n] || '')}</span>`).join('')}</div></div>`;
+  }
+  if((p.revisar || []).length){
+    h += `<div class="warnbox"><h4>${u('revisar')}</h4>
+      <ul class="tight" style="margin:0">${p.revisar.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>`;
+  }
+
+  h += `<p class="center" style="margin-top:24px">
+    <a href="conexiones.html?grade=${grade}">${u('verFormato')} &#8594;</a> &middot;
+    <a href="project.html?grade=${grade}">${u('volverGrado')}</a></p>`;
+
+  $('#app').innerHTML = h;
+  document.title = t(p.titulo) + ' - ' + (SEC_LBL[grade] || grade) + ' - NIS';
+  const bt = $('#btnTodo');
+  if(bt) bt.onclick = function(){
+    const ws = document.querySelectorAll('details.wk');
+    const abrir = ![...ws].every(d => d.open);
+    ws.forEach(d => { d.open = abrir; });
+    bt.textContent = u(abrir ? 'plegarTodo' : 'verTodo');
+  };
+}
+
 function pintaProyectoSec(k){
   const p = (window.PROJECT_SEC || {})[k];
   if(!p){
@@ -818,9 +962,30 @@ function pintaSecundaria(grade){
   /* Los proyectos interdisciplinarios del grado. Van primero porque son lo
      que el colegio llama "Proyecto" en su propio calendario, y porque es la
      parte que coordinacion tiene que revisar. */
+  /* El arco de once semanas va primero: es el proyecto del trimestre, y los
+     de unidad son sus dos mitades. */
+  const a11 = Object.keys(window.PROJECT_SEC11 || {})
+    .filter(x => x.indexOf(String(grade).toLowerCase() + '.') === 0);
+  if(a11.length){
+    h += `<div class="sec-title"><h2>${u('arco11')}</h2>
+      <span class="hint">${u('arco11Hint')}</span></div><div class="arcs">`;
+    a11.forEach(x => {
+      const p = window.PROJECT_SEC11[x];
+      h += `<a class="arc" href="project.html?arco11=${encodeURIComponent(x)}"
+        style="background:linear-gradient(135deg,${p.cover.from},${p.cover.to})">
+        <span class="tag">${p.semanas.length} ${u('semanas')} &middot; U${p.unidades.join('+U')}</span>
+        <div class="ic">${p.cover.icon}</div>
+        <h3>${esc(t(p.titulo))}</h3>
+        <p>${esc(t(p.preguntaEsencial))}</p>
+        <span class="lam">${lamina({tipo: p.producto.modelo.tipo, titulo: t(p.producto.titulo),
+          partes: p.producto.modelo.partes}, p.cover, 68)}</span></a>`;
+    });
+    h += `</div>`;
+  }
+
   const proy = proyectosDe(String(grade).toLowerCase());
   if(proy.length){
-    h += `<div class="sec-title"><h2>${u('secProy')}</h2>
+    h += `<div class="sec-title"><h2>${a11.length ? u('verUnidades') : u('secProy')}</h2>
       <span class="hint">${u('secProyHint')}</span></div>
       <div class="arcs">${proy.map(x => tarjetaProyecto(x[0], x[1])).join('')}</div>`;
     const u6 = window.PROJECT_SEC_U6;
@@ -1387,6 +1552,9 @@ function pinta(){
      cada area tiene cargado en Toddle. */
   const gq = (P.get('grade') || '').toLowerCase();
   /* ?sec=g9.u2 abre un proyecto interdisciplinario de secundaria. */
+  /* ?arco11=g9.t2 abre el arco de once semanas; ?sec=g9.u2, un proyecto de unidad. */
+  const aq = P.get('arco11');
+  if(aq){ pintaArco11(aq); return; }
   const sq = P.get('sec');
   if(sq){ pintaProyectoSec(sq); return; }
   if(!ARC && esSecundaria(gq)){ pintaSecundaria(gq); return; }
