@@ -5267,6 +5267,7 @@ function _navRender(k){
   if(k==='fr_cefr')                      { studentFrenchCefr();        return true; }
   if(k==='myunit')            { irAMiUnidad();              return true; }
   if(k==='projects')          { irAMisProyectos();          return true; }
+  if(k==='classes_early')     { studentStage('early');     return true; }
   if(k==='classes_primary')   { studentStage('primary');   return true; }
   if(k==='classes_secondary') { studentStage('secondary'); return true; }
   if(m=/^classes_(g\d+)_unit_([a-z0-9]+)$/.exec(k)){ studentGradeUnit(m[1],m[2]); return true; }
