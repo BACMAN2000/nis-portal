@@ -95,7 +95,9 @@ td.nota{background:#FFFBEB;border-left:3px solid #F59E0B;color:#92400E;font-size
 
 <script src="project-arcs.js?v=110db8f3"></script>
 <script src="project-cursos.js?v=c8aeeb5e"></script>
+<script src="project-cursos-en.js?v=8003afc4"></script>
 <script src="project-arcs-sec11.js?v=ed2aef1d"></script>
+<script src="project-arcs-sec11-en.js?v=ab696ef0"></script>
 <script>
 const $ = q => document.querySelector(q);
 const P = new URLSearchParams(location.search);
@@ -203,7 +205,7 @@ function producto(a){
    del colegio; el resto es propuesta. En papel se distingue con un punto
    verde delante, que es lo minimo que se ve en blanco y negro sin dejar de
    verse. */
-const RE_FUENTE = /^Del (plan|Scope|documento)([ ]*\([^)]*\))?:[ ]*/;
+const RE_FUENTE = /^(?:Del|From the) (plan|Scope|documento)([ ]*\([^)]*\))?:[ ]*/;
 function celda(txt){
   const t = String(txt || '');
   const m = t.match(RE_FUENTE);

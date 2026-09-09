@@ -211,8 +211,10 @@ a.arc p{max-width:60%}
 <script src="project-art.js?v=439f0576"></script>
 <script src="project-models.js?v=5b2d5af7"></script>
 <script src="project-cursos.js?v=c8aeeb5e"></script>
+<script src="project-cursos-en.js?v=8003afc4"></script>
 <script src="project-arcs-sec.js?v=bb5518a4"></script>
 <script src="project-arcs-sec11.js?v=ed2aef1d"></script>
+<script src="project-arcs-sec11-en.js?v=ab696ef0"></script>
 <script>
 const $ = s => document.querySelector(s);
 const P = new URLSearchParams(location.search);
@@ -498,7 +500,7 @@ const AREA_ICONO = {
    "Del Scope:" viene del Scope & Sequence de ingles. Las dos son contenido
    del colegio y se pintan igual; lo que no lleva prefijo es propuesta del
    portal, para acordar con el profesor. */
-const RE_FUENTE = /^Del (plan|Scope|documento)([ ]*\([^)]*\))?:[ ]*/;
+const RE_FUENTE = /^(?:Del|From the) (plan|Scope|documento)([ ]*\([^)]*\))?:[ ]*/;
 
 function esc(s){ return String(s==null?'':s)
   .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
@@ -813,8 +815,8 @@ function pintaArco11(k){
       </summary>
       <div class="body">
         ${bloqueAliento(w.aliento)}
-        ${w.nota ? `<p class="pnote nota-fuente">${esc(w.nota)}</p>` : ''}
-        ${bloqueCursos(w.cursos)}
+        ${w.nota ? `<p class="pnote nota-fuente">${esc(notaEn(k, w.n, w.nota))}</p>` : ''}
+        ${bloqueCursos(cursosEn(k, w.n, w.cursos))}
         <div class="mdl"><h5>${u('modeloTit')} <b>${esc(t(w.hito))}</b></h5>
           <div class="cuerpo"><div class="lamina">${lamina(mdl, p.cover)}
             <p>${u('modeloPie')}</p></div>
@@ -1235,6 +1237,34 @@ function bloqueModelo(m, cover){
    del bloque del Annual Plan: aquel dice lo que el area DA esa semana (y es
    del colegio); este dice lo que ese curso APORTA AL PROYECTO (y es
    propuesta). Se pintan los dos, y cada uno con su etiqueta. */
+/* La linea de cada curso, en el idioma del portal. Las traducciones viven
+   en project-cursos-en.js (primaria) y project-arcs-sec11-en.js (secundaria),
+   con las mismas claves; si falta la de un curso, se queda el castellano. */
+/* Los nombres de area de secundaria estan en castellano en el documento del
+   colegio; en la vista inglesa se rotulan en ingles. */
+const AREA_NOMBRE_EN = {
+  com:'Spanish', mat:'Math', cyt:'Science', ccss:'Social Studies', arte:'Art & Culture',
+  ict:'ICT', ing:'English', sh:'Spiritual History', fr:'French', fil:'Philosophy',
+  ent:'Enterprise', tutoria:'Tutoring', comunicacion:'Spanish'
+};
+const nombreArea = x => (LANG === 'en' && AREA_NOMBRE_EN[x]) || AREA_NOMBRE[x] || x;
+
+function cursosEn(k, n, cursos){
+  if(LANG !== 'en' || !cursos) return cursos;
+  const p = ((window.PROJECT_CURSOS_EN || {})[k] || {}).semanas || {};
+  const s = (((window.SEC11_EN || {})[k] || {}).semanas || {})[n] || {};
+  const t = Object.assign({}, p[n] || {}, s.cursos || {});
+  if(!Object.keys(t).length) return cursos;
+  const out = {};
+  Object.keys(cursos).forEach(c => { out[c] = t[c] || cursos[c]; });
+  return out;
+}
+function notaEn(k, n, nota){
+  if(LANG !== 'en' || !nota) return nota;
+  const s = (((window.SEC11_EN || {})[k] || {}).semanas || {})[n] || {};
+  return s.nota || nota;
+}
+
 function bloqueCursos(cursos){
   if(!cursos) return '';
   const ks = AREA_ORDEN.filter(x => cursos[x]).concat(
@@ -1249,7 +1279,7 @@ function bloqueCursos(cursos){
        se conserva al principio del texto, que es donde se lee. */
     const cuerpo = m ? ((m[2] ? m[2].trim() + ' ' : '') + txt.slice(m[0].length)) : txt;
     return `<div class="area curso${m ? ' delplan' : ''}">
-      <h5><span class="ico" aria-hidden="true">${AREA_ICONO[x] || '\u2022'}</span>${AREA_NOMBRE[x] || x}
+      <h5><span class="ico" aria-hidden="true">${AREA_ICONO[x] || '\u2022'}</span>${nombreArea(x)}
         ${m ? `<span class="badge src">${u(m[1] === 'Scope' ? 'delScopeBadge' : 'delPlanBadge')}</span>` : ''}</h5>
       <p>${esc(cuerpo)}</p></div>`;
   };
@@ -1524,7 +1554,7 @@ function pintaArco(k, a){
           <p class="pnote">${u('delPlan')}</p>`
         : `<p class="pnote">${u('sinPlan')}</p>`}
         ${bloqueInglesHTML(a.grade, f.periodo, f.semana, a, f.n)}
-        ${bloqueCursos(f.cursos || ((window.PROJECT_ARCS_CURSOS||{})[k]||{})[f.n])}
+        ${bloqueCursos(cursosEn(k, f.n, f.cursos || ((window.PROJECT_ARCS_CURSOS||{})[k]||{})[f.n]))}
         ${sm ? bloqueModelo(sm.modelo, a.cover) : ''}
       </div></details>`;
   });
