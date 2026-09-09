@@ -45,7 +45,12 @@ const salida = html
     '<script>' + datos + '</script>\n<script>window.__SCOPE = '
     + json(min) + ';\nwindow.__PLAN = ' + json(planMin) + ';'
     + (fijo ? '\nwindow.__FIJO = ' + json(fijo) + ';' : '') + '</script>')
-  .replace('<a id="back" href="project.html">&#8592; Volver</a>', '');
+  .replace('<a id="back" href="project.html">&#8592; Volver</a>', '')
+  /* La copia suelta vive fuera del portal: el favicon y la hoja de la fuente
+     son rutas relativas que ahi no existen. Se quitan para que no haya dos
+     peticiones muertas cada vez que una coordinadora abre el archivo. */
+  .replace(/<link rel="icon"[^>]*>\n?/, '')
+  .replace(/<link href="vendor\/fonts\/[^>]*>\n?/, '');
 
 const destino = process.argv[2];
 fs.writeFileSync(destino, salida);
