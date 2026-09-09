@@ -708,6 +708,692 @@ window.UNIT_PLANS = {
   ]
 },
 
+/* --------------------------------------------- 3.o U5 (piloto 2026)
+   ONCE SEMANAS, NO CINCO. El area pidio el 8-sep-2026 una sola unidad para
+   el trimestre entero (P5+P6) y la profesora mando el proyecto: terremotos y
+   tsunamis, con el flyer de seguridad como producto. Cuatro sesiones por
+   semana mas la hora de Cambridge, que va en `cambridge` de cada semana.
+   Los datos del Peru estan verificados y citados en earth-moves-peru-g3u5.html.
+   Los descriptores C/B/A/AD los redactamos nosotros y siguen PENDIENTES DE
+   VALIDACION del profesor, como en el resto de las unidades piloto. */
+{
+  cover:{icon:'🌎', from:'#7a2f12', to:'#d98a4a'},
+  n:5,
+  title:'When the Earth Moves',
+  weeks:11,
+  bigq:'Peru shakes. What do I have to know, and what do I have to have ready, so that it does not catch my family by surprise?',
+  situation:'The Nazca plate goes down under Peru seven or eight centimetres every year and the IGP recorded 835 earthquakes in 2025 alone. Almost none of them are felt, but five of them changed the country: 1746, 1868, 1970, 2001 and 2007. In these eleven weeks you read what really happened, in real figures, and you turn it into something useful: a safety flyer that a family in your street could follow without asking anybody.',
+  audience:'A family in your street who has never thought about this. They will not read a report: they will read your flyer while the ground is moving, or they will not read it at all.',
+  client:'The families of the school \u00b7 safety fair in week 11',
+  reader:{title:'Earthquakes, Volcanoes and Tsunamis', series:'Raz-Plus \u00b7 Lexile 730L', term:3, inPortal:false},
+  exam:{target:'movers', themes:['The world around us','Health','Places and directions','Time'],
+        grammar:['must / must not','should','have to','imperatives','past simple: was, were and -ed'],
+        extra:['earthquake','tsunami','landslide','flood','plate','safe zone','drill','shelter','whistle','torch','blanket','headache','bruise']},
+  areas:[{area:'science', level:3},{area:'social', level:2},{area:'math', level:1}],
+  criteria:[
+    {n:1, text:'I name natural disasters, safety words, the things in the emergency kit and the parts of the body.',
+     levels:{
+       C:'I say a few of the words with help.',
+       B:'I say most of the words when I see the picture.',
+       A:'I use the words on my own, in sentences, when I am talking about safety.',
+       AD:'I use them and I explain what one of them means to somebody who does not know it.'}},
+    {n:2, text:'I read a table and a chart about earthquakes in Peru and I say what they show.',
+     levels:{
+       C:'I find one piece of information if somebody shows me the column.',
+       B:'I find information when I am asked a direct question.',
+       A:'I ask and answer questions about the data and I compare two earthquakes.',
+       AD:'I notice something in the data that nobody pointed out to me.'}},
+    {n:3, text:'I tell what happened in a real Peruvian earthquake using the past simple.',
+     levels:{
+       C:'I copy sentences in the past.',
+       B:'I write two or three sentences in the past with some mistakes.',
+       A:'I tell what happened in four sentences, in order and in the past.',
+       AD:'I tell it in order and I add what happened afterwards.'}},
+    {n:4, text:'I use must, must not and should to give safety rules and advice.',
+     levels:{
+       C:'I copy a rule that is given to me.',
+       B:'I write rules but I mix up must and should.',
+       A:'I choose must, must not or should correctly and I give the reason.',
+       AD:'I explain to somebody else why one is a rule and the other is advice.'}},
+    {n:5, text:'I organise safety instructions into before, during and after.',
+     levels:{
+       C:'I put two of the three moments in the right place.',
+       B:'I sort most of the actions with a bit of help.',
+       A:'I sort them all and I use the three moments to organise my own flyer.',
+       AD:'I notice when an instruction could go in two moments and I say why.'}},
+    {n:6, text:'I write a safety flyer of 90 to 110 words and I present it to other people.',
+     levels:{
+       C:'I write some sentences and I show my drawing.',
+       B:'I write the three parts but they are short or unclear.',
+       A:'I write the three parts, with a heading, an instruction and a drawing each, and I present it.',
+       AD:'My flyer works for somebody who is younger than me, and I prove it.'}}
+  ],
+  sequence:[
+    {n:1,title:'Our ground moves',desc:'Why Peru shakes: the Nazca plate, the Ring of Fire, and the words for what the Earth does.',
+     give:'Your first page: the four words with a drawing each.',
+     cambridge:{paper:'Listening', part:'Part 1',
+       focus:'Matching names to people. Same skill you need all unit: listen, hold two things in your head, connect them.'},
+     sessions:[
+      {s:1,title:'The words for it',
+       objective:'Name the four things the Earth does.',
+       view:[
+         'Four photos on the board: earthquake, tsunami, flood, landslide. Which one is which?',
+         'Clap the syllables: earth-quake, tsu-na-mi, land-slide, flood.',
+         'The /kw/ sound: quake, quick, question. Say them, feel where your lips go.',
+         'Word wall: the four words go up and they stay up for eleven weeks.'],
+       levels:{
+         'Support':{task:'Match four pictures with their word.',
+               help:'Pictures with the word underneath.'},
+         'Core':{task:'Write each word and draw it. Add one more you already know.',
+               help:'Word wall on the board.'}}},
+      {s:2,title:'What is under Peru',
+       objective:'Explain that the ground moves because two plates push.',
+       view:[
+         'The map of Peru: the sea on one side, the mountains on the other.',
+         'The Nazca plate goes down under South America, 7 or 8 centimetres a year.',
+         'With two books on the desk: push them together. One goes under. That is it.',
+         'Peru is on the Ring of Fire. Find it on the world map.'],
+       levels:{
+         'Support':{task:'Label the diagram: sea, plate, mountains.',
+               help:'Diagram with the three labels given.'},
+         'Core':{task:'Draw the two plates and write one sentence: what happens when they push?',
+               help:'Frame: "The Nazca plate ____ under Peru."'}}},
+      {s:3,title:'Have you felt one?',
+       objective:'Talk about a real earthquake you remember.',
+       view:[
+         'Hands up: who has felt a sismo? Where were you?',
+         'There was an earthquake. I was at home. My mother was in the kitchen.',
+         'In pairs: tell your partner. Two sentences is enough.',
+         'Two volunteers tell the class. Everybody listens for was and were.'],
+       levels:{
+         'Support':{task:'Complete: "I was in the ____. There was an earthquake."',
+               help:'Sentence started, word bank.'},
+         'Core':{task:'Tell it in three sentences: where you were, what you felt, what you did.',
+               help:'was / were on the board.'}}},
+      {s:4,title:'Two every day',
+       objective:'Read big numbers and say what they mean.',
+       view:[
+         'The IGP recorded 835 earthquakes in Peru in 2025. Read the number out loud.',
+         '835 in a year. How many in a day? Work it out — it is more than two.',
+         'We do not feel almost any of them. Why is that good news?',
+         'Your first page of the unit: the four words, drawn, with 835 at the top.'],
+       levels:{
+         'Support':{task:'Read and copy the numbers: 798, 835, 2, and say which is the biggest.',
+               help:'Numbers on cards.'},
+         'Core':{task:'Write two sentences with the numbers of 2024 and 2025.',
+               help:'Frame: "In 2025 there were ____ earthquakes."'}}}
+     ]},
+    {n:2,title:'Reading the numbers',desc:'The five earthquakes Peru remembers, in a table and in a chart. Asking and answering about data.',
+     give:'Five true sentences taken from the table.',
+     cambridge:{paper:'Listening', part:'Part 2',
+       focus:'Words and numbers up to 100 in the gaps of a form. Spelling names and writing numbers you hear.'},
+     sessions:[
+      {s:1,title:'The table',
+       objective:'Find information in a table.',
+       view:[
+         'Open Earthquakes and Tsunamis in Peru on the portal. Look at the table.',
+         'Four columns: year, where, magnitude, tsunami. What does each one tell you?',
+         'Find 1970. Where was it? Find Pisco. What year?',
+         'Six questions in pairs, one asks and one finds it.'],
+       levels:{
+         'Support':{task:'Find three answers in the table and write the year.',
+               help:'Questions with the column marked.'},
+         'Core':{task:'Write three questions of your own about the table and swap with your partner.',
+               help:'Question words on the board.'}}},
+      {s:2,title:'The chart',
+       objective:'Compare sizes with a bar chart.',
+       view:[
+         'The same five earthquakes, now as bars. Taller bar means what?',
+         'Which is the tallest? Which is the shortest? Put them in order.',
+         'Magnitude 8 is much bigger than 7, not one more. Thirty times more energy.',
+         'One earthquake has a range, 8.5 to 9.0. Why? Nobody had machines in 1868.'],
+       levels:{
+         'Support':{task:'Colour the bars from the shortest to the tallest and write the years.',
+               help:'Chart with the bars empty.'},
+         'Core':{task:'Write three sentences with bigger than and the biggest.',
+               help:'Frame: "The 1746 earthquake was bigger than ____."'}}},
+      {s:3,title:'It was, they were',
+       objective:'Say where and when something was.',
+       view:[
+         'On the board: The 2007 earthquake WAS in Pisco. The waves WERE 20 metres.',
+         'One thing: was. More than one thing: were.',
+         'Ten sentences on cards, you choose was or were.',
+         'Your turn: five sentences from the table, all true.'],
+       levels:{
+         'Support':{task:'Choose was or were in six sentences.',
+               help:'Two options in each gap.'},
+         'Core':{task:'Write five true sentences about the table using was and were.',
+               help:'The table on screen.'}}},
+      {s:4,title:'Ask me about the table',
+       objective:'Ask questions about data.',
+       view:[
+         'Where was the 1970 earthquake? When was the Pisco earthquake?',
+         'Question first, answer second. The answer is in the table, always.',
+         'Data duel: two teams, five questions each, the table on the screen.',
+         'Hand in your five sentences. They have to be true and you have to prove them.'],
+       levels:{
+         'Support':{task:'Match five questions with their answers.',
+               help:'Questions and answers cut up.'},
+         'Core':{task:'Ask and answer six questions with your partner, and write down two.',
+               help:'Where / When / How big.'}}}
+     ]},
+    {n:3,title:'What happened in 1970',desc:'The worst disaster in the history of Peru, told in order. Past simple with -ed. The reading plan starts.',
+     give:'Your four-sentence report about 1970.',
+     cambridge:{paper:'Reading & Writing', part:'Part 1',
+       focus:'Definitions matched to eight labelled pictures, copying the word. Our unit words are the ones we use.'},
+     sessions:[
+      {s:1,title:'The reading plan starts',
+       objective:'Get information out of an informative text.',
+       view:[
+         'Earthquakes, Volcanoes and Tsunamis. Look at the cover: what will it be about?',
+         'Read the first part together. Headings, captions and pictures first.',
+         'Where does the text explain and where does it just show?',
+         'Three words you did not know. Write them in your reading log.'],
+       levels:{
+         'Support':{task:'Match four headings with four pictures of the book.',
+               help:'Headings and pictures cut up.'},
+         'Core':{task:'Write what each of the first three headings tells you, in one line.',
+               help:'The book open.'}}},
+      {s:2,title:'31 May 1970',
+       objective:'Tell the events of a real earthquake in order.',
+       view:[
+         '31 May 1970, twenty past three in the afternoon. Magnitude 7.9.',
+         'Ice and rock came down from Mount Huascaran and covered the town of Yungay.',
+         'About 70,000 people died. It is the worst disaster Peru has had.',
+         'Four cards with the events. Put them in the right order in your team.'],
+       levels:{
+         'Support':{task:'Put four events in order with the pictures.',
+               help:'Cards with drawings.'},
+         'Core':{task:'Put six events in order and write the year and the place.',
+               help:'Cards with text only.'}}},
+      {s:3,title:'Yesterday verbs',
+       objective:'Use the past simple to say what happened.',
+       view:[
+         'happen-ed, cover-ed, arriv-ed, start-ed, help-ed. The -ed at the end.',
+         'Careful with three of them: come came, fall fell, die died.',
+         'Say the sentence today, then say it in 1970. The class changes the verb.',
+         'Ten verbs on the wall. You will need them on Thursday.'],
+       levels:{
+         'Support':{task:'Complete six sentences with the verb given in the past.',
+               help:'Verb in brackets.'},
+         'Core':{task:'Write six sentences about 1970 in the past simple.',
+               help:'Verb wall.'}}},
+      {s:4,title:'My report',
+       objective:'Write a short report about something that happened.',
+       view:[
+         'A report answers four things: what, where, when, and what happened after.',
+         'Four sentences. No more. Every sentence has to be true.',
+         'first, then, after, finally to hold them together.',
+         'Read it to your partner. Did they understand it the first time?'],
+       levels:{
+         'Support':{task:'Complete the report with the data given.',
+               help:'Report with gaps and a word bank.'},
+         'Core':{task:'Write your four sentences and add one thing that surprised you.',
+               help:'The data on the board.'}}}
+     ]},
+    {n:4,title:'When the sea comes',desc:'What a tsunami is, why the earthquake itself is the alarm, and the five steps that save you.',
+     give:'The five steps in order, in your notebook.',
+     cambridge:{paper:'Listening', part:'Part 3',
+       focus:'Matching a list with pictures A to H by writing a letter. Two pictures are left over on purpose.'},
+     sessions:[
+      {s:1,title:'It is not one wave',
+       objective:'Explain what a tsunami is.',
+       view:[
+         'Three drawings: the sea as usual, the sea floor moving, the water arriving.',
+         'A tsunami is not one big wave. It is the sea coming on to the land and not stopping.',
+         'In a tray of water: lift the bottom and watch. That is the whole idea.',
+         'Sometimes the sea goes back first. That is not a show, that is the warning.'],
+       levels:{
+         'Support':{task:'Put the three drawings in order.',
+               help:'Drawings cut up.'},
+         'Core':{task:'Draw the three moments and write one line under each.',
+               help:'Words: sea floor, push, wave.'}}},
+      {s:2,title:'The earthquake is the alarm',
+       objective:'Know what to do on the coast without waiting for anybody.',
+       view:[
+         'In Peru the first wave can arrive in fifteen or twenty minutes.',
+         'Nobody has time to call you. If you cannot stand up and you are near the sea, you go.',
+         'Safe means more than thirty metres above the sea. Higher, not further.',
+         'Where would you go from the beach you know? Draw the way.'],
+       levels:{
+         'Support':{task:'Choose the safe place in three pictures.',
+               help:'Three pictures with heights marked.'},
+         'Core':{task:'Draw your escape route from a beach and mark the safe place.',
+               help:'Frame: "I must go to ____ because ____."'}}},
+      {s:3,title:'Alerta, alarma, SISMATE',
+       objective:'Tell the difference between getting ready and going.',
+       view:[
+         'Alerta means get ready. Alarma means go now. Two words, two different things.',
+         'The Navy is the one who says it, and the one who says it is over.',
+         'SISMATE sends emergency messages to phones. It does NOT warn before an earthquake.',
+         'No machine in the world does that today. Your plan and your legs are the alarm.'],
+       levels:{
+         'Support':{task:'Sort six cards into ALERTA and ALARMA.',
+               help:'Cards with pictures.'},
+         'Core':{task:'Explain to a younger child what SISMATE does and what it does not.',
+               help:'Two sentences, no more.'}}},
+      {s:4,title:'The five steps',
+       objective:'Put safety steps in the right order.',
+       view:[
+         'Five steps on the screen, mixed up. Put them in order in the app.',
+         'Check it. Any step in the wrong place changes everything.',
+         'Act it out: the earthquake, the standing up, the walking, the high ground, the waiting.',
+         'Copy the five steps into your notebook. You are going to need them in week 9.'],
+       levels:{
+         'Support':{task:'Number the five steps.',
+               help:'Steps written out.'},
+         'Core':{task:'Write the five steps in your own words.',
+               help:'The app open.'}}}
+     ]},
+    {n:5,title:'When people get hurt',desc:'The body, the aches and how you say where it hurts. Who you tell and what you say.',
+     give:'A four-line dialogue: somebody is hurt and you help.',
+     cambridge:{paper:'Reading & Writing', part:'Part 2',
+       focus:'A short dialogue, choosing the answer A, B or C. The same speaking turns we practise here.'},
+     sessions:[
+      {s:1,title:'Head, arm, leg',
+       objective:'Name the parts of the body.',
+       view:[
+         'Simon says, with the six words: head, arm, leg, back, knee, ankle.',
+         'Point to it on yourself, then on the drawing.',
+         'Draw a body on the board and label it as a class.',
+         'Fast round: the teacher says the word, you touch it.'],
+       levels:{
+         'Support':{task:'Label the body with the six words given.',
+               help:'Drawing with lines to fill.'},
+         'Core':{task:'Label the body and add three more parts you know.',
+               help:'Drawing, no words given.'}}},
+      {s:2,title:'It hurts',
+       objective:'Say where it hurts.',
+       view:[
+         'My leg hurts. My back hurts. One part: hurts with an s.',
+         'headache, stomachache, backache. The -ache is one sound, like ake.',
+         'I have a headache. Not I have headache. The a matters.',
+         'Mime and guess: you show it, your partner says it.'],
+       levels:{
+         'Support':{task:'Match five pictures with My ____ hurts.',
+               help:'Pictures and sentence starts.'},
+         'Core':{task:'Write five sentences: three with hurts and two with I have a.',
+               help:'Word bank of aches.'}}},
+      {s:3,title:'Are you all right?',
+       objective:'Ask if somebody is hurt and answer.',
+       view:[
+         'Are you all right? Where does it hurt? Can you walk?',
+         'Answers: Yes, I am fine. No, my knee hurts. I cannot stand up.',
+         'Roleplay in threes: one is hurt, one asks, one goes for help.',
+         'Who do we tell in this school? Say the name out loud.'],
+       levels:{
+         'Support':{task:'Complete the dialogue with the three answers given.',
+               help:'Dialogue with gaps.'},
+         'Core':{task:'Write and act your own four-line dialogue.',
+               help:'Question words on the board.'}}},
+      {s:4,title:'Cuts and bruises',
+       objective:'Talk about small injuries and the first-aid kit.',
+       view:[
+         'cut, bruise, hurt. What is the difference between a cut and a bruise?',
+         'What is inside a first-aid kit? Open one and look.',
+         'What we do NOT do: move somebody who cannot move, or touch a wound with dirty hands.',
+         'Hand in your dialogue. Two people have to be able to act it.'],
+       levels:{
+         'Support':{task:'Sort six pictures into cut and bruise.',
+               help:'Pictures.'},
+         'Core':{task:'Write what you would do in three situations.',
+               help:'Frame: "First I ____, then I ____."'}}}
+     ]},
+    {n:6,title:'The backpack',desc:'The real INDECI list: eight kilos, one litre of water each, the first 24 hours. must and must not.',
+     give:'Your list of eight things, each with a reason.',
+     cambridge:{paper:'Listening', part:'Part 4',
+       focus:'Three-option multiple choice with pictures. Listening for the one detail that decides it.'},
+     sessions:[
+      {s:1,title:'What INDECI says',
+       objective:'Know what an emergency backpack is for.',
+       view:[
+         'One backpack, by the door, ready. Not in the wardrobe, by the door.',
+         'Eight kilos maximum. One litre of water for every person.',
+         'It is for the first 24 hours, when nobody can come to help yet.',
+         'Weigh your school bag. Is it more or less than eight kilos?'],
+       levels:{
+         'Support':{task:'Circle the three rules of the backpack.',
+               help:'Rules with pictures.'},
+         'Core':{task:'Write the three rules in your own words and say why each one exists.',
+               help:'The three numbers on the board.'}}},
+      {s:2,title:'Choose eight',
+       objective:'Choose what goes in and justify it.',
+       view:[
+         'Fourteen things on the screen. Only eight go in.',
+         'Choose in pairs. You have to agree before you touch the screen.',
+         'Check. Read why each one is right or wrong.',
+         'The hardest ones: the mirror and the football. Why not?'],
+       levels:{
+         'Support':{task:'Choose eight things from the fourteen.',
+               help:'The app, in pairs.'},
+         'Core':{task:'Choose eight and write why you left two of the others out.',
+               help:'The app, then your notebook.'}}},
+      {s:3,title:'must and must not',
+       objective:'Give a rule, not an opinion.',
+       view:[
+         'must is a rule. must not is never, it is dangerous. should is a good idea.',
+         'You must take water. You must not take a mirror.',
+         'Ten sentences to sort in the app: must or must not.',
+         'Careful: must not is not the same as do not have to.'],
+       levels:{
+         'Support':{task:'Sort eight sentences into must and must not.',
+               help:'The app.'},
+         'Core':{task:'Sort the ten and write two more of your own.',
+               help:'The app plus your notebook.'}}},
+      {s:4,title:'Because',
+       objective:'Give the reason for a rule.',
+       view:[
+         'We must take water because we cannot drink from the tap after an earthquake.',
+         'Rule first, because second. One reason is enough.',
+         'Round the class: one thing, one reason, no repeating.',
+         'Hand in your eight things, each with its because.'],
+       levels:{
+         'Support':{task:'Match five rules with five reasons.',
+               help:'Rules and reasons cut up.'},
+         'Core':{task:'Write your eight things with a because for each one.',
+               help:'Frame: "We must take ____ because ____."'}}}
+     ]},
+    {n:7,title:'The safe zone and the drill',desc:'Where the safe zone is and why. Drop, cover and hold on. The three moments of a Peruvian drill.',
+     give:'The map of your classroom with the safe zone and the way out.',
+     cambridge:{paper:'Reading & Writing', part:'Part 3',
+       focus:'A gapped story with a word bank, and choosing the title. Reading for the whole, not for one word.'},
+     sessions:[
+      {s:1,title:'Where is it in our room',
+       objective:'Find the safe zone of your own classroom.',
+       view:[
+         'The safe zone is where a column meets a beam. The strongest part of the building.',
+         'It is not next to the window and it is not under the shelf.',
+         'Walk to it. Everybody. How long did it take?',
+         'Where is the green sign? Who can see it from their chair?'],
+       levels:{
+         'Support':{task:'Mark the safe zone on the plan of the classroom.',
+               help:'Plan with the columns drawn.'},
+         'Core':{task:'Draw the plan of your classroom and mark the safe zone and the exit.',
+               help:'Blank paper.'}}},
+      {s:2,title:'Drop, cover, hold on',
+       objective:'Give an instruction with one word.',
+       view:[
+         'Three verbs, three actions. Drop. Cover. Hold on.',
+         'An instruction starts with the verb: Go, Stop, Wait, Listen.',
+         'No please, no you, no maybe. In an emergency the verb goes first.',
+         'Do it three times, faster each time, until nobody has to think.'],
+       levels:{
+         'Support':{task:'Match six instructions with six pictures.',
+               help:'Pictures and instructions.'},
+         'Core':{task:'Write six instructions for the classroom door.',
+               help:'Verbs on the board.'}}},
+      {s:3,title:'should',
+       objective:'Give advice that is not an order.',
+       view:[
+         'You should have a torch at home. You should know the meeting point.',
+         'should is advice. must is a rule. Which one for the family meeting point?',
+         'Six situations: is this a must or a should?',
+         'Two pieces of advice for a family that has just moved to Lima.'],
+       levels:{
+         'Support':{task:'Choose must or should in six sentences.',
+               help:'Two options each.'},
+         'Core':{task:'Write four sentences, two with must and two with should.',
+               help:'Situations on the board.'}}},
+      {s:4,title:'The drill, for real',
+       objective:'Take part in a drill and measure it.',
+       view:[
+         'Three moments: the alarm, two minutes in the safe zone, out by the marked route.',
+         'We do it. Somebody times it with a watch.',
+         'How long did we take? Write the number on the board.',
+         'Do it again. Did we improve? By how many seconds?'],
+       levels:{
+         'Support':{task:'Number the three moments of the drill.',
+               help:'Three pictures.'},
+         'Core':{task:'Write what went well and one thing to improve, with the times.',
+               help:'The two times on the board.'}}}
+     ]},
+    {n:8,title:'How a safety flyer works',desc:'Reading a real flyer as a model: headings, captions and pictures, and the instruction hidden inside the text.',
+     give:'The three headings of your flyer with one instruction under each.',
+     cambridge:{paper:'Reading & Writing', part:'Part 4',
+       focus:'A factual text with three options per gap. Exactly the kind of text we are reading this week.'},
+     sessions:[
+      {s:1,title:'Taking a flyer apart',
+       objective:'Recognise the parts of an informative flyer.',
+       view:[
+         'A real flyer on every desk. Do not read it yet. Look at it.',
+         'What is a heading, what is a caption, what is a picture doing there?',
+         'Now read it. Was your guess right?',
+         'Which part would you look at first if the ground was moving?'],
+       levels:{
+         'Support':{task:'Label the three parts of the flyer.',
+               help:'Flyer with arrows.'},
+         'Core':{task:'Say what each part is for, in one line each.',
+               help:'Flyer and blank paper.'}}},
+      {s:2,title:'Find the instruction',
+       objective:'Find a safety instruction inside a text.',
+       view:[
+         'Not everything in a flyer is an instruction. Some of it is explanation.',
+         'Underline only what tells you to DO something.',
+         'How many did you find? Compare with your partner.',
+         'The ones you both underlined are the important ones.'],
+       levels:{
+         'Support':{task:'Underline four instructions in a short text.',
+               help:'Text with four of them.'},
+         'Core':{task:'Underline the instructions and write them as a list.',
+               help:'Longer text.'}}},
+      {s:3,title:'Before, during, after',
+       objective:'Organise information in three parts.',
+       view:[
+         'Every good safety flyer has the same skeleton: before, during, after.',
+         'Nine actions on cards. Which of the three is each one?',
+         'Check in the app. Any that surprised you?',
+         'Why is the order important? What happens if you mix them up?'],
+       levels:{
+         'Support':{task:'Sort six actions into the three moments.',
+               help:'Cards with pictures.'},
+         'Core':{task:'Sort the nine and add one of your own to each moment.',
+               help:'The app.'}}},
+      {s:4,title:'Would a little kid understand this?',
+       objective:'Judge whether an instruction is clear.',
+       view:[
+         'Three badly written instructions on the board. What is wrong with each?',
+         'Too long, two ideas in one, or a word nobody knows.',
+         'Rewrite them so a six-year-old could follow them.',
+         'Write your three headings. One instruction under each. That is your plan.'],
+       levels:{
+         'Support':{task:'Choose the clearer of two instructions, five times.',
+               help:'Pairs of instructions.'},
+         'Core':{task:'Rewrite three bad instructions and write your three headings.',
+               help:'The three bad ones on the board.'}}}
+     ]},
+    {n:9,title:'Writing my flyer',desc:'Three parts, 90 to 110 words, with must, must not and should. And a drawing in each part.',
+     give:'Your first draft, with its three drawings.',
+     cambridge:{paper:'Reading & Writing', part:'Part 5',
+       focus:'Completing sentences about a story with one to three words. Writing short and exact, like a flyer.'},
+     sessions:[
+      {s:1,title:'The plan',
+       objective:'Plan a text before writing it.',
+       view:[
+         'Your three headings from Thursday. Are they still the right ones?',
+         'Under each one: what does the family have to know? Two ideas maximum.',
+         'A flyer is not everything you know. It is what they need.',
+         'Cross out one idea per section. Yes, really.'],
+       levels:{
+         'Support':{task:'Complete the plan with the ideas given.',
+               help:'Plan with gaps.'},
+         'Core':{task:'Write your own plan with two ideas per section.',
+               help:'Blank plan.'}}},
+      {s:2,title:'Before and During',
+       objective:'Write the first two sections.',
+       view:[
+         'Open the app, My flyer. Section one: Before.',
+         'Short sentences. One idea each. Start with You must or You should.',
+         'Section two: During. This is the one they will read while it shakes.',
+         'The counter is at the bottom. Do not look at it yet.'],
+       levels:{
+         'Support':{task:'Complete the two sections with the frames given.',
+               help:'Sentence frames.'},
+         'Core':{task:'Write the two sections in your own words.',
+               help:'The word wall.'}}},
+      {s:3,title:'After, and the count',
+       objective:'Finish the text and adjust the length.',
+       view:[
+         'Section three: After. What do we do when it stops?',
+         'Now look at the counter. Between 90 and 110 words.',
+         'Too short: what did you leave out that they need?',
+         'Too long: which sentence says the same as another one?'],
+       levels:{
+         'Support':{task:'Complete the third section and count the words.',
+               help:'Frames and a counter.'},
+         'Core':{task:'Finish the flyer and cut or add until it is between 90 and 110.',
+               help:'The counter.'}}},
+      {s:4,title:'The three drawings',
+       objective:'Support a text with a picture.',
+       view:[
+         'A drawing in a flyer is not decoration. It says what the words say.',
+         'One drawing per section. Somebody who cannot read has to understand it.',
+         'Draw them. Big, clear, few lines.',
+         'Show them to your partner without the text. What did they understand?'],
+       levels:{
+         'Support':{task:'Choose the right drawing for each section, from six.',
+               help:'Six drawings.'},
+         'Core':{task:'Draw your three and check them with a partner who does not read the text.',
+               help:'Blank paper.'}}}
+     ]},
+    {n:10,title:'Making it better',desc:'The peer check, the verbs, and reading it out loud so that it can be heard from the back.',
+     give:'Your finished flyer.',
+     cambridge:{paper:'Speaking', part:'Parts 1 and 2',
+       focus:'Four differences between two pictures, and describing each picture of a story. Speaking with your flyer in hand.'},
+     sessions:[
+      {s:1,title:'The real test',
+       objective:'Check whether somebody else can follow your instructions.',
+       view:[
+         'Swap flyers with somebody who is not your partner.',
+         'Read it and do only what it says. Nothing else.',
+         'Where did you get stuck? Mark it with a pencil.',
+         'Give it back and explain the mark. Do not defend yours, listen.'],
+       levels:{
+         'Support':{task:'Check three things on a list and mark them.',
+               help:'Checklist with pictures.'},
+         'Core':{task:'Write two things that worked and one that did not, for your partner.',
+               help:'Checklist.'}}},
+      {s:2,title:'The verbs',
+       objective:'Correct the modal verbs in your own text.',
+       view:[
+         'Go through your flyer looking only at must, must not and should.',
+         'Is it a rule or advice? Change the ones that are wrong.',
+         'must not, never do not must. Check every one.',
+         'Read your sentences out loud. Do they sound like an order or like a suggestion?'],
+       levels:{
+         'Support':{task:'Correct six sentences with the wrong verb.',
+               help:'Sentences with the verb marked.'},
+         'Core':{task:'Correct your own flyer and explain two changes you made.',
+               help:'Your draft.'}}},
+      {s:3,title:'Out loud',
+       objective:'Read a text so that it can be understood.',
+       view:[
+         'Stand up. Feet still. Paper down, not in front of your face.',
+         'Slowly. In an emergency nobody understands somebody who talks fast.',
+         'Practise in pairs, one reads and one stands at the back of the room.',
+         'Could they hear you? If not, again.'],
+       levels:{
+         'Support':{task:'Read your flyer to one partner.',
+               help:'Sitting down, close.'},
+         'Core':{task:'Read it to three people, one of them from the back of the room.',
+               help:'Standing up.'}}},
+      {s:4,title:'The final copy',
+       objective:'Produce a clean final version.',
+       view:[
+         'Final copy: the text as it is now, the three drawings, your name.',
+         'Check the spelling of the words from the wall. They are all on it.',
+         'Hand it in from the app, the Submit button at the bottom.',
+         'Whoever finishes helps somebody who has not.'],
+       levels:{
+         'Support':{task:'Copy out the final version with the model.',
+               help:'Model layout.'},
+         'Core':{task:'Produce the final version and hand it in from the portal.',
+               help:'The app.'}}}
+     ]},
+    {n:11,title:'The safety fair',desc:'You present the flyer to people who did not write it, you answer their questions, and you check your own house.',
+     give:'Your presentation and the family reflection.',
+     cambridge:{paper:'Reading & Writing / Speaking', part:'Part 6 and Parts 3 and 4',
+       focus:'Answering questions and writing two sentences about a picture; odd one out and personal questions. A full Movers rehearsal.'},
+     sessions:[
+      {s:1,title:'Rehearsal',
+       objective:'Rehearse a short presentation.',
+       view:[
+         'Thirty seconds. Who you are, what your flyer is, one thing they must remember.',
+         'Practise it three times in pairs, changing partner each time.',
+         'The third time, without looking at the paper.',
+         'What question do you think they will ask you? Prepare the answer.'],
+       levels:{
+         'Support':{task:'Say the three sentences with the frame.',
+               help:'Frame with gaps.'},
+         'Core':{task:'Present without the paper and answer two questions.',
+               help:'Only your drawings.'}}},
+      {s:2,title:'The fair',
+       objective:'Explain your work to somebody who did not do it.',
+       view:[
+         'The flyers go up around the room. Half the class stays, half visits.',
+         'Visitors: you have to come back with one thing you did not know.',
+         'Then swap. Everybody presents and everybody visits.',
+         'The guests arrive: another class, or the families.'],
+       levels:{
+         'Support':{task:'Present with your flyer in your hand.',
+               help:'The flyer as support.'},
+         'Core':{task:'Present without the flyer and ask your visitor a question.',
+               help:'Only the drawings.'}}},
+      {s:3,title:'Their questions',
+       objective:'Answer questions about your own work.',
+       view:[
+         'Questions from the visitors. Some of them you will not know.',
+         'I do not know is a good answer if you add I can find out.',
+         'The three questions that came up most: we answer them as a class.',
+         'What would you change in your flyer after hearing them?'],
+       levels:{
+         'Support':{task:'Answer three questions with the answers given.',
+               help:'Answer bank.'},
+         'Core':{task:'Answer three questions in your own words and write one you could not answer.',
+               help:'Your notebook.'}}},
+      {s:4,title:'And in my house?',
+       objective:'Check your own family plan.',
+       view:[
+         'Does your family have a meeting point? Do you know where it is?',
+         'Is there a backpack? Where? When did somebody last look inside it?',
+         'Write it down honestly. Nobody is going to tell you off.',
+         'Exit ticket: one thing I must do during an earthquake. One line.'],
+       levels:{
+         'Support':{task:'Tick the four questions and write the exit ticket.',
+               help:'Yes/no list.'},
+         'Core':{task:'Write what your house has, what it does not, and what you are going to do about it.',
+               help:'Four questions on the board.'}}}
+     ]}
+  ],
+  words:['earthquake','tsunami','landslide','flood','plate','Ring of Fire','magnitude','safe zone','drill','shelter','exit','danger','emergency kit','torch','whistle','blanket','first-aid kit','head','arm','leg','back','knee','ankle','headache','stomachache','backache','cut','bruise','hurt','must','must not','should','have to','Drop, cover, hold on','before','during','after','was','were','-ed'],
+  deliverables:[
+    {kind:'report', type:'text', icon:'&#128221;', title:'Your safety flyer',
+     desc:'Three parts \u2014 before, during and after an earthquake \u2014 each with a heading, one instruction and a drawing.',
+     spec:'90\u2013110 words, three sections',
+     range:[90,110],
+     checklist:[
+       {k:'before', t:'My flyer has a BEFORE part', re:'(before)'},
+       {k:'during', t:'My flyer has a DURING part', re:'(during|while)'},
+       {k:'after', t:'My flyer has an AFTER part', re:'(after|afterwards)'},
+       {k:'modal', t:'I use must, must not or should', re:'(must|should|have to)'},
+       {k:'kit', t:'I say what the family must have ready', re:'(water|torch|radio|whistle|blanket|kit|backpack|bag)'},
+       {k:'zone', t:'I say where to go', re:'(safe zone|meeting point|high ground|exit|outside|column)'}
+     ]},
+    {kind:'presentation', type:'file', icon:'&#127908;', title:'Your flyer at the safety fair',
+     desc:'A photo of your flyer and, if you can, a recording of you explaining it to a visitor.',
+     spec:'Photo, and audio if possible'},
+    {kind:'reflection', type:'text', icon:'&#127968;', title:'And in my house?',
+     desc:'What your family already has ready, what it does not, and the one thing you are going to do about it.',
+     spec:'Three or four lines, honest'}
+  ]
+}
+    ],
+
+    /* Lo que el planner del colegio tenia para P5 y P6 antes de que el area
+       pidiera una sola unidad de once semanas. NO se ofrece (el portal solo
+       lee `units`) y NO se borra: mientras el plan anual siga diciendo Sistema
+       Solar y el proyecto de ingles diga terremotos, el desacuerdo tiene que
+       quedar a la vista de quien lo abra. Lo resuelve coordinacion. */
+    superseded:[
 /* --------------------------------------------- 3.o U5 (piloto 2026) */
 {
   cover:{icon:'🪐', from:'#1b2a63', to:'#5566c4'},

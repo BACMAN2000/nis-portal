@@ -4061,7 +4061,10 @@ const NODE_DEFAULT_LOCKED = new Set(['french','english.classes.g9.grammar',
    que el candado estaba puesto y la puerta abierta. */
 const UNIT_PILOT = new Set([
   'english.classes.g2.units.u5','english.classes.g2.units.u6',
-  'english.classes.g3.units.u5','english.classes.g3.units.u6',
+  /* La U5 de 3.o salio del piloto el 9-sep-2026: es la unidad real del
+     trimestre -once semanas, terremotos y tsunamis- y nace abierta como
+     cualquier otra. La U6 se queda: ya no se ofrece. */
+  'english.classes.g3.units.u6',
   'english.classes.g4.units.u5','english.classes.g4.units.u6',
   'english.classes.g5.units.u5','english.classes.g5.units.u6',
   'english.classes.g9.units.u105','english.classes.g9.units.u106',
@@ -4906,7 +4909,7 @@ function studentGrade(key){
       ${key==='g9' ? (nodeVisible('english.classes.g9.cambridge') ? _hubCard('🎓','Cambridge','B2 First (FCE) practice by skill: Listening, Use of English, Reading and Writing.',"window._nav('classes_g9_cambridge')") : _lockedCard('🎓','Cambridge','Cambridge B2 First practice.')) : ''}
       ${key==='g5' ? _hubCard('🦅','Cambridge Flyers','The A2 Flyers picture tasks, sorted by the unit you are working on: label the people, tick the right picture, match people to pictures and write the picture story.',"window._nav('classes_g5_flyers')") : ''}
       ${readerBooksFor(key).length ? (nodeVisible(base+'.reader') ? _hubCard('📚','Readers','Graded readers with activities for every chapter: '+readerBooksFor(key).map(id=>READER_CARDS[id][4]).join(', ')+'.',"window._nav('classes_"+key+"_readers')") : _lockedCard('📚','Readers','Graded readers with activities.')) : ''}
-      ${key==='g9' ? (nodeVisible('english.classes.g9.unitexams') ? _skillCard('📋','Unit Exams','The unit exam and its practice, at your level: multiple choice, true/false, word formation, transformations, word order, listening and writing. Your teacher opens each one when the class is ready.',_withBack('unit-exam.html?v=f2757cce',route)) : _lockedCard('📋','Unit Exams','The unit exam and its practice.')) : ''}
+      ${key==='g9' ? (nodeVisible('english.classes.g9.unitexams') ? _skillCard('📋','Unit Exams','The unit exam and its practice, at your level: multiple choice, true/false, word formation, transformations, word order, listening and writing. Your teacher opens each one when the class is ready.',_withBack('unit-exam.html?v=eb072fe6',route)) : _lockedCard('📋','Unit Exams','The unit exam and its practice.')) : ''}
     </div>`;
 }
 /* Cambridge (9.º): tarjeta madre con las destrezas del examen B2 First:
