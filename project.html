@@ -261,6 +261,8 @@ const UI = {
   periodoNota: {en:'the school calls it <i>Project %s</i> in the calendar',
                 es:'el colegio lo llama <i>Project %s</i> en el calendario'},
   /* --- que hace cada curso esta semana --- */
+  verPlan:     {en:'Printable plan: week by week and subject by subject',
+                es:'Plan imprimible: semana a semana y curso por curso'},
   arco11:      {en:'The eleven-week arc', es:'El arco de once semanas'},
   arco11Hint:  {en:'two units in a row, one project, and what every subject does each week',
                 es:'dos unidades seguidas, un proyecto, y lo que hace cada curso cada semana'},
@@ -787,6 +789,7 @@ function pintaArco11(k){
   }
 
   h += `<p class="center" style="margin-top:24px">
+    <a href="plan.html?arco11=${encodeURIComponent(k)}">${u('verPlan')} &#8594;</a> &middot;
     <a href="conexiones.html?grade=${grade}">${u('verFormato')} &#8594;</a> &middot;
     <a href="project.html?grade=${grade}">${u('volverGrado')}</a></p>`;
 
@@ -1512,6 +1515,7 @@ function pintaArco(k, a){
   }
 
   h += `<p class="center" style="margin-top:24px">
+    <a href="plan.html?arc=${encodeURIComponent(k)}">${u('verPlan')} &#8594;</a> &middot;
     <a href="project.html">${u('todos')}</a></p>`;
 
   $('#app').innerHTML = h;
