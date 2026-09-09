@@ -34,9 +34,9 @@
 const L = (en, es) => ({en: en, es: es});
 
 /* c(): una semana del arco. */
-function c(n, unidad, fase, foco, hito, tipo, aliento, cursos){
+function c(n, unidad, fase, foco, hito, tipo, aliento, cursos, nota){
   return {n: n, unidad: unidad, fase: fase, foco: foco, hito: hito,
-          tipo: tipo, aliento: aliento, cursos: cursos};
+          tipo: tipo, aliento: aliento, cursos: cursos, nota: nota || ''};
 }
 
 window.PROJECT_SEC11 = {
@@ -1191,7 +1191,980 @@ window.PROJECT_SEC11 = {
   revisar:['La intervención necesita autorización de dirección y, si sale del colegio, del vecino o del municipio: hay que pedirla en la semana 5.',
            'En el documento de 11.º, U4 no carga Inglés ni Ciencia y Tecnología: en el arco aportan desde U3 y se dice.',
            'Arte y Cultura no está cargada en U3 de 11.º: entra en la semana 1 solo como estudio de referentes.']
-}
+},
+
+/* ======================================================================
+ * TERCER TRIMESTRE · U5 + U6 · setiembre – noviembre
+ *
+ * ATENCION, y sale escrito en pantalla en cada semana afectada:
+ * **U6 (noviembre) no tiene contenido cargado en ninguna area de ningun
+ * grado**. Los seis documentos de "Proyecto 5 (U6) - Noviembre" son la misma
+ * plantilla en blanco copiada seis veces. Y U5 tiene entre tres y cinco
+ * areas cargadas de nueve.
+ *
+ * Lo unico que si cubre las once semanas de los seis grados es el **Scope &
+ * Sequence de ingles**, que trae U5 y U6 completas con su vocabulario, su
+ * plan lector, su tipo de texto y su gramatica. Asi que estos seis arcos se
+ * construyen como se construyo el de 1.o de primaria: sobre lo que esta
+ * escrito, diciendo de donde sale cada linea, y sin inventarle contenido a
+ * seis equipos de profesores.
+ *
+ *   Semanas 1-6  = U5, con las areas que si cargan (marcadas "Del plan:")
+ *                  mas el Scope de ingles (marcado "Del Scope:").
+ *   Semanas 7-11 = U6, donde **solo hay Scope**. Cada una de esas semanas
+ *                  lleva su `nota` diciendolo.
+ *
+ * Dos grados traen ademas el contenido repartido por semanas en el propio
+ * documento del colegio —Matematica y Spiritual History de 11.o, Matematica
+ * de 10.o—, y ahi la semana del arco es literalmente la semana del plan.
+ * ==================================================================== */
+
+/* ==================================================================== 6.o */
+
+'g6.t3': {
+  grado:6, trimestre:3, unidades:[5,6], meses:'Setiembre – Noviembre', semanas:11,
+  cover:{icon:'🏘️', from:'#7c2d12', to:'#fbbf24'},
+  titulo:L('My neighbourhood, and what we do in it','Mi barrio y lo que hacemos en él'),
+  preguntaEsencial:L('What is my neighbourhood made of, and what do people do there when they are free?',
+                     '¿De qué está hecho mi barrio, y qué hace la gente ahí cuando tiene tiempo libre?'),
+  situacion:'El Scope pone en U5 «My Neighbourhood & Places» —lugares, transporte, preposiciones de '+
+    'lugar, there is / there are— y en U6 «Free Time & Hobbies». En medio, Ciencia da elementos, '+
+    'compuestos y mezclas, que es literalmente de qué están hechas las cosas del barrio; Arte prepara '+
+    'el Canon en Re para el Creative Arts Show, que es un acto de barrio; y Spiritual History estudia '+
+    'el judaísmo, una comunidad que se define por lo que hace junta. Once semanas para mirar el sitio '+
+    'donde se vive y lo que ahí se hace.',
+  cursos:['ing','cyt','arte','sh','com','mat'],
+  producto:{
+    titulo:L('The neighbourhood guide and its concert','La guía del barrio y su concierto'),
+    descripcion:L('A guide to the neighbourhood written in English: its map with directions, what each '+
+      'place is made of, and what people do there in their free time — plus the Creative Arts Show '+
+      'concert as the neighbourhood’s own event.',
+      'Una guía del barrio escrita en inglés: su mapa con direcciones, de qué está hecho cada lugar y '+
+      'qué hace ahí la gente en su tiempo libre — más el concierto del Creative Arts Show como acto '+
+      'del propio barrio.'),
+    integra:[
+      ['ing','El texto entero: el neighbourhood report de 130-160 palabras, las direcciones y el relato del fin de semana.'],
+      ['cyt','De qué está hecho cada lugar: elemento, compuesto o mezcla, con ejemplos del propio barrio.'],
+      ['arte','El Canon en Re del Show, tocado como acto de barrio, y el diseño de la guía.'],
+      ['sh','El panel de la comunidad: qué hace que unos vecinos sean una comunidad y no solo gente que vive cerca.'],
+      ['com','La versión en castellano de la guía, para las familias que no leen en inglés.'],
+      ['mat','El mapa a escala y la encuesta de tiempo libre, tabulada.']
+    ],
+    incluye:[L('The map with directions','El mapa con direcciones'),
+             L('What each place is made of','De qué está hecho cada lugar'),
+             L('The free-time survey','La encuesta de tiempo libre'),
+             L('The concert','El concierto')],
+    modelo:{tipo:'guide',
+      partes:[L('the map','el mapa'), L('the places','los lugares'),
+              L('what people do','qué hace la gente'), L('how to get there','cómo llegar')],
+      apoyo:['There is a park next to the school.', 'Turn left and go straight on.',
+             'On Sundays people play football there.'],
+      mejora:L('Write it for somebody who does not live here. If a sentence only makes sense to '+
+        'somebody who already knows the street, rewrite it.',
+        'Escríbela para alguien que no vive aquí. Si una frase solo se entiende sabiendo ya cuál es la '+
+        'calle, reescríbela.')}
+  },
+  semanas:[
+    c(1, 5, L('The place','El lugar'), L('Where things are','Dónde están las cosas'),
+      L('Map with directions','Mapa con direcciones'), 'map',
+      L('You walk through your neighbourhood every day and you could not draw it. This week you draw it.',
+        'Pasas por tu barrio todos los días y no sabrías dibujarlo. Esta semana lo dibujas.'),
+      {ing:'Del Scope: lugares del pueblo y transporte, preposiciones de lugar, there is / there are; entonación de pregunta frente a afirmación.',
+       cyt:'Del plan: elementos, compuestos y mezclas. Se listan los materiales que se ven en la calle.',
+       mat:'El mapa a escala: cuántos pasos son cien metros.',
+       com:'La descripción del barrio en castellano, para contrastar con la inglesa.',
+       arte:'Del plan: se reparte el Canon en Re de Pachelbel y se lee la partitura.',
+       sh:'Del plan: introducción al judaísmo — qué hace que un grupo sea una comunidad.'}),
+    c(2, 5, L('The place','El lugar'), L('Giving directions','Dar indicaciones'),
+      L('Written directions','Indicaciones escritas'), 'leaflet',
+      L('Explaining how to get somewhere is harder than getting there. This week you explain it.',
+        'Explicar cómo se llega es más difícil que llegar. Esta semana lo explicas.'),
+      {ing:'Del Scope: vocabulario de indicaciones sencillas; leer y seguir indicaciones paso a paso; localizar información en un mapa.',
+       cyt:'Del plan: se clasifica cada material del barrio en elemento, compuesto o mezcla.',
+       com:'El texto instructivo en castellano: cómo se llega, paso a paso.',
+       mat:'Distancias y tiempos entre dos puntos del mapa.',
+       arte:'Del plan: ensayo por voces del Canon en Re.'}),
+    c(3, 5, L('The place','El lugar'), L('What it is made of','De qué está hecho'),
+      L('Materials of the neighbourhood','Materiales del barrio'), 'sort',
+      L('The bench, the wall and the window are three chemistry lessons you can touch.',
+        'El banco, el muro y la ventana son tres clases de química que se pueden tocar.'),
+      {cyt:'Del plan: mezclas y su separación; se explica de qué está hecho cada lugar de la guía.',
+       ing:'Del Scope: The Prince and the Pauper, capítulos 1-8 — el mismo reader que ya está construido en el portal.',
+       com:'Vocabulario de materiales en castellano y su equivalencia con el inglés.',
+       mat:'Proporciones de una mezcla sencilla.',
+       arte:'Diseño de la guía: retícula, jerarquía y color.',
+       sh:'Del plan: ritos y días señalados — qué hace la comunidad estudiada, y dónde lo hace.'}),
+    c(4, 5, L('The place','El lugar'), L('The report','El informe'),
+      L('Neighbourhood report','Informe del barrio'), 'report',
+      L('130 words about your own street. It sounds like little and it is the hardest thing you have written in English.',
+        '130 palabras sobre tu propia calle. Parece poco y es lo más difícil que has escrito en inglés.'),
+      {ing:'Del Scope: simple neighbourhood report de 130-160 palabras; peer feedback con «2 stars & 1 wish»; revisión de mayúsculas y puntos.',
+       com:'La versión en castellano del informe, para la guía bilingüe.',
+       cyt:'Del plan: ficha de materiales terminada, con su clasificación justificada.',
+       arte:'Maquetación del informe dentro de la guía.',
+       mat:'Comprobación de los datos del mapa.'}),
+    c(5, 5, L('The place','El lugar'), L('The rehearsal','El ensayo'),
+      L('Full rehearsal','Ensayo general'), 'speech',
+      L('The rehearsal where it goes wrong is the one that saves the concert.',
+        'El ensayo en que sale mal es el que salva el concierto.'),
+      {arte:'Del plan: Creative Arts Show — ensayo general del Canon en Re.',
+       ing:'Del Scope: dar y seguir indicaciones en pareja; escucha de anuncios de viaje.',
+       sh:'Del plan: la música dentro del rito — para qué sirve tocar juntos.',
+       com:'El guion de presentación del concierto.',
+       cyt:'De qué está hecho el instrumento que se toca.'}),
+    c(6, 5, L('The place','El lugar'), L('The concert and the guide','El concierto y la guía'),
+      L('Guide published + concert','Guía publicada + concierto'), 'stand',
+      L('Tonight the neighbourhood listens to itself. Play it as if they were your neighbours, because they are.',
+        'Esta noche el barrio se escucha a sí mismo. Tócalo como si fueran tus vecinos, porque lo son.'),
+      {arte:'Del plan: Creative Arts Show. Se interpreta la pieza y se expone la guía.',
+       ing:'Del Scope: pair work describiendo el barrio; autoevaluación con rúbrica de vocabulario.',
+       com:'Entrega de la guía bilingüe a las familias.',
+       sh:'Del plan: cierre — qué convierte a unos vecinos en una comunidad.',
+       cyt:'Panel de materiales, expuesto junto a la guía.',
+       mat:'El mapa a escala, expuesto.'}),
+    c(7, 6, L('Free time','El tiempo libre'), L('What we do when we are free','Qué hacemos cuando tenemos tiempo'),
+      L('Free-time survey','Encuesta de tiempo libre'), 'tally',
+      L('You have never counted what you actually do with your free time. This week you count it.',
+        'Nunca has contado qué haces de verdad con tu tiempo libre. Esta semana lo cuentas.'),
+      {ing:'Del Scope: deportes, aficiones y ocio; expresiones de frecuencia; like / love / hate + -ing. Encuesta en pareja sobre actividades de tiempo libre.',
+       mat:'Tabla de frecuencias de la encuesta y su gráfico.',
+       com:'Los resultados, contados en castellano para el panel.'},
+      'A partir de aquí empieza U6 (noviembre), que NO tiene contenido cargado en ninguna área salvo Inglés. Estas cinco semanas se apoyan en el Scope y en la continuidad del proyecto.'),
+    c(8, 6, L('Free time','El tiempo libre'), L('What I can do','Lo que sé hacer'),
+      L('Ability paragraph','Párrafo de habilidades'), 'card',
+      L('«I can» is the shortest sentence in English and the one that most changes what you believe about yourself.',
+        '«I can» es la frase más corta del inglés y la que más cambia lo que crees de ti.'),
+      {ing:'Del Scope: can / can’t para habilidad; sugerencias con Let’s… y Why don’t we…?; equipamiento y lugares del deporte.',
+       mat:'Comparación de los resultados de la encuesta entre dos grupos.',
+       arte:'La ilustración de la ficha de aficiones.'},
+      'U6 sigue sin contenido cargado fuera de Inglés.'),
+    c(9, 6, L('Free time','El tiempo libre'), L('The story of a weekend','La historia de un fin de semana'),
+      L('Narrative recount','Relato de recuento'), 'journal',
+      L('A weekend told well is worth more than an adventure told badly.',
+        'Un fin de semana bien contado vale más que una aventura mal contada.'),
+      {ing:'Del Scope: narrative paragraph (recount) de 150-200 palabras — la historia del fin de semana pasado; entonación y ritmo del relato.',
+       com:'La misma historia en castellano, para ver qué cambia al pasar de una lengua a otra.'},
+      'U6 sigue sin contenido cargado fuera de Inglés.'),
+    c(10, 6, L('Free time','El tiempo libre'), L('The reader closes','Se cierra el reader'),
+      L('Reader finished + response','Reader terminado + respuesta'), 'journal',
+      L('You started this book eleven weeks ago as somebody else. Notice that.',
+        'Empezaste este libro hace once semanas siendo otro. Date cuenta de eso.'),
+      {ing:'Del Scope: The Prince and the Pauper, del capítulo 9 al final, con discusión comparativa; respuesta personal a textos ilustrados y a poemas.',
+       com:'Comparación entre el príncipe y el mendigo y el propio barrio: quién vive dónde y por qué.'},
+      'U6 sigue sin contenido cargado fuera de Inglés.'),
+    c(11, 6, L('Free time','El tiempo libre'), L('My hobby, presented','Mi afición, presentada'),
+      L('Talk + portfolio','Charla + portafolio'), 'speech',
+      L('Two or three minutes about something you do because you want to. It should be the easiest talk of the year.',
+        'Dos o tres minutos sobre algo que haces porque quieres. Debería ser la charla más fácil del año.'),
+      {ing:'Del Scope: presentación oral de 2-3 minutos sobre mi afición, estilo TED con apoyo visual; portafolio de fin de trimestre y autoevaluación semáforo.',
+       arte:'El apoyo visual de la charla.',
+       com:'La reflexión final del portafolio.'},
+      'U6 sigue sin contenido cargado fuera de Inglés: el cierre del trimestre se sostiene en el portafolio del Scope.')
+  ],
+  evaluacion:[
+    {dimension:'Escritura en inglés', areas:'ING',
+     descriptor:'El informe del barrio y el relato tienen la extensión pedida y usan there is/are, preposiciones y can con propósito.'},
+    {dimension:'Clasificación de la materia', areas:'CyT',
+     descriptor:'Distingue elemento, compuesto y mezcla con ejemplos reales del barrio, no de libro.'},
+    {dimension:'Interpretación', areas:'ARTE',
+     descriptor:'Toca su parte del Canon y explica qué papel cumple su voz dentro del conjunto.'},
+    {dimension:'Datos y escala', areas:'MAT',
+     descriptor:'La encuesta está bien tabulada y el mapa guarda la escala que declara.'},
+    {dimension:'Comunidad', areas:'SH',
+     descriptor:'Explica qué convierte a un grupo de vecinos en una comunidad, con un ejemplo propio.'}
+  ],
+  perfil:[1,2,4,9],
+  revisar:['U6 (noviembre) no tiene contenido cargado en ninguna área de ningún grado: las semanas 7 a 11 se apoyan solo en el Scope de inglés. Con los contenidos cargados, esas cinco semanas se reescriben en una tarde.',
+           'En U5 de 6.º solo hay tres áreas cargadas de nueve: Ciencia y Tecnología, Arte y Spiritual History. Matemática y Comunicación entran aquí como propuesta del portal.',
+           'El reader del Scope, The Prince and the Pauper, ya está construido en el portal: no hay que preparar material nuevo para el plan lector.']
+},
+
+/* ==================================================================== 7.o */
+
+'g7.t3': {
+  grado:7, trimestre:3, unidades:[5,6], meses:'Setiembre – Noviembre', semanas:11,
+  cover:{icon:'🦉', from:'#14532d', to:'#a3e635'},
+  titulo:L('What lives here, and what I want to be','Lo vivo que hay, y lo que quiero ser'),
+  preguntaEsencial:L('What is alive around me, and what do I want to be doing in ten years?',
+                     '¿Qué está vivo a mi alrededor, y qué quiero estar haciendo dentro de diez años?'),
+  situacion:'El Scope pone en U5 «Nature & Environment» —animales, hábitats, ecosistemas y modales de '+
+    'obligación— y en U6 «Future Plans & Ambitions», con oficios y planes. Ciencia da justo la '+
+    'clasificación de la vida: dominios, reinos, vertebrados, invertebrados, plantas y claves '+
+    'dicotómicas. Y Matemática, fracciones y decimales. Las dos mitades hacen una sola pregunta con '+
+    'dos plazos: qué hay vivo aquí ahora, y qué quiero yo que siga habiendo cuando sea lo que voy a ser.',
+  cursos:['ing','cyt','mat','arte','com'],
+  producto:{
+    titulo:L('The inventory of what is alive, and my ten-year plan','El inventario de lo vivo y mi plan a diez años'),
+    descripcion:L('A dichotomous key of the living things of the school or the neighbourhood, a '+
+      'comparative paragraph on two of them, and — on the same sheet — the career plan of whoever '+
+      'wrote it, with what that job would do for or against what was inventoried.',
+      'Una clave dicotómica de los seres vivos del colegio o del barrio, un párrafo comparativo sobre '+
+      'dos de ellos y —en la misma hoja— el plan de carrera de quien lo escribe, con qué haría ese '+
+      'oficio a favor o en contra de lo inventariado.'),
+    integra:[
+      ['cyt','La clave dicotómica: dominios, reinos, vertebrados, invertebrados y plantas, con ejemplos propios.'],
+      ['ing','El párrafo comparativo de 200-250 palabras, el de planes de futuro y los modales de obligación del cartel de cuidado.'],
+      ['mat','Las fracciones y decimales del inventario: qué proporción de lo encontrado es de cada grupo.'],
+      ['com','La versión en castellano del inventario y del texto de futuro.'],
+      ['arte','Las láminas de observación y el repertorio del Creative Arts Show.']
+    ],
+    incluye:[L('The dichotomous key','La clave dicotómica'),
+             L('The comparative paragraph','El párrafo comparativo'),
+             L('The ten-year plan','El plan a diez años'),
+             L('The Show performance','La interpretación del Show')],
+    modelo:{tipo:'sort',
+      partes:[L('with backbone','con columna'), L('without','sin columna'),
+              L('the criterion','el criterio'), L('the example','el ejemplo')],
+      apoyo:['Does it have a backbone?', 'We must not disturb their habitat.',
+             'In ten years I am going to work as…'],
+      mejora:L('The last line has to join the two halves: what does the job you chose do to what you '+
+        'inventoried? Without that line these are two homeworks stapled together.',
+        'La última línea tiene que unir las dos mitades: ¿qué le hace el oficio que elegiste a lo que '+
+        'inventariaste? Sin esa línea son dos tareas grapadas.')}
+  },
+  semanas:[
+    c(1, 5, L('What is alive','Lo vivo'), L('Domains and kingdoms','Dominios y reinos'),
+      L('The criteria','Los criterios'), 'diagram',
+      L('Every classification is somebody’s decision. This week you see the decisions.',
+        'Toda clasificación es la decisión de alguien. Esta semana ves las decisiones.'),
+      {cyt:'Del plan: clasificación de la vida — dominios y reinos, con sus características y ejemplos; conexión con el tipo de célula, eucariota y procariota.',
+       ing:'Del Scope: animales salvajes y domésticos, hábitats y ecosistemas; entonación de sorpresa y entusiasmo.',
+       mat:'Del plan: fracciones — relación de orden.',
+       com:'Vocabulario de clasificación en castellano.',
+       arte:'Del plan: repertorio del Creative Arts Show (Liebestraum n.º 3 de Liszt / Minueto en Sol de Bach); primera lectura.'}),
+    c(2, 5, L('What is alive','Lo vivo'), L('Vertebrates and invertebrates','Vertebrados e invertebrados'),
+      L('Field inventory','Inventario de campo'), 'log',
+      L('There is more alive in this playground than in the whole textbook. Go and count it.',
+        'Hay más vida en este patio que en todo el libro. Sal a contarla.'),
+      {cyt:'Del plan: reino Animalia — vertebrados (aves, mamíferos, reptiles, anfibios y peces) e invertebrados (poríferos, cnidarios, platelmintos, anélidos, moluscos y artrópodos).',
+       mat:'Del plan: adición y sustracción de fracciones — la proporción de cada grupo en el inventario.',
+       ing:'Del Scope: comparar información entre dos textos; identificar lenguaje persuasivo.',
+       com:'El registro de campo, con fecha, lugar y condiciones.',
+       arte:'Láminas de observación de las especies encontradas.'}),
+    c(3, 5, L('What is alive','Lo vivo'), L('Plants and the reader','Las plantas y el reader'),
+      L('Habitat file','Ficha de hábitat'), 'card',
+      L('Treasure Island is about an island nobody classified. Yours you are going to classify.',
+        'La isla del tesoro va de una isla que nadie clasificó. La tuya la vas a clasificar tú.'),
+      {cyt:'Del plan: reino Plantae — características y clasificación (briofitas, filicinofitas, coniferofitas y angiospermas).',
+       ing:'Del Scope: Treasure Island, parte 1 — el reader que ya está construido en el portal; adjetivos ambientales.',
+       mat:'Del plan: multiplicación y división de fracciones.',
+       com:'La ficha de hábitat en castellano.',
+       arte:'Del plan: ensayo del repertorio del Show.'}),
+    c(4, 5, L('What is alive','Lo vivo'), L('Comparing two','Comparar dos'),
+      L('Comparative paragraph','Párrafo comparativo'), 'report',
+      L('Comparing is choosing the criteria first. Everything else is putting one after the other.',
+        'Comparar es elegir antes los criterios. Lo demás es poner uno detrás de otro.'),
+      {ing:'Del Scope: comparative paragraph de 200-250 palabras sobre dos animales o dos hábitats; estructura PEEL; peer review de ideas y vocabulario.',
+       cyt:'Del plan: claves dicotómicas y cladogramas — los dos seres vivos comparados con los mismos criterios.',
+       mat:'Del plan: potenciación y radicación de fracciones.',
+       com:'Corrección del párrafo en su versión castellana.'}),
+    c(5, 5, L('What is alive','Lo vivo'), L('What we must and must not','Lo que se debe y no se debe'),
+      L('Rules of care','Reglas de cuidado'), 'poster',
+      L('«Must not» is the strongest verb in the unit. Use it where it is worth it.',
+        '«Must not» es el verbo más fuerte de la unidad. Úsalo donde valga la pena.'),
+      {ing:'Del Scope: modales should / shouldn’t, must / mustn’t, have to / don’t have to; infinitivo de finalidad.',
+       cyt:'Impacto humano sobre las especies inventariadas.',
+       mat:'Del plan: decimales — relación de orden y expresión de una fracción como número decimal.',
+       arte:'Del plan: Creative Arts Show — ensayo general.',
+       com:'El cartel de reglas de cuidado, redactado y corregido.'}),
+    c(6, 5, L('What is alive','Lo vivo'), L('The Show and the inventory','El Show y el inventario'),
+      L('Show + inventory exhibited','Show + inventario expuesto'), 'stand',
+      L('Two things at once: you play, and next to you is what you found alive.',
+        'Dos cosas a la vez: tú tocas, y al lado está lo que encontraste vivo.'),
+      {arte:'Del plan: Creative Arts Show — interpretación de Liszt o de Bach.',
+       cyt:'Exposición del inventario y de la clave dicotómica.',
+       ing:'Del Scope: comparar dos animales en debate por parejas; informe oral sobre una especie amenazada.',
+       mat:'Del plan: operaciones con decimales — los porcentajes del inventario, expuestos.',
+       com:'Presentación del inventario en castellano para las familias.'}),
+    c(7, 6, L('What I will be','Lo que seré'), L('Jobs and ambitions','Oficios y ambiciones'),
+      L('Career vocabulary map','Mapa de oficios'), 'web',
+      L('Naming what you want to be is the first work you do for it.',
+        'Nombrar lo que quieres ser es el primer trabajo que haces por ello.'),
+      {ing:'Del Scope: oficios y profesiones, ambiciones y metas personales, expresiones de tiempo futuro.',
+       com:'El mapa de oficios en castellano y las preguntas de la entrevista.'},
+      'A partir de aquí empieza U6 (noviembre), que NO tiene contenido cargado en ninguna área salvo Inglés. Estas cinco semanas se apoyan en el Scope y en la continuidad del proyecto.'),
+    c(8, 6, L('What I will be','Lo que seré'), L('Going to and will','Going to y will'),
+      L('Future plans, draft','Párrafo de futuro, borrador'), 'journal',
+      L('«Going to» is for what you have decided. «Will» is for what you think. The difference matters.',
+        '«Going to» es para lo que ya decidiste. «Will» para lo que crees. La diferencia importa.'),
+      {ing:'Del Scope: going to para planes e intenciones, will para predicciones y decisiones espontáneas, presente continuo para lo ya acordado.',
+       mat:'Cuánto cuesta y cuánto dura la formación del oficio elegido, en años y en dinero.'},
+      'U6 sigue sin contenido cargado fuera de Inglés.'),
+    c(9, 6, L('What I will be','Lo que seré'), L('The interview','La entrevista'),
+      L('Interview simulation','Simulación de entrevista'), 'speech',
+      L('Somebody is going to ask you why you and not another. Have the answer ready.',
+        'Alguien te va a preguntar por qué tú y no otro. Ten la respuesta lista.'),
+      {ing:'Del Scope: simulación de entrevista en pareja; puntos principales en podcasts de orientación profesional.',
+       com:'La misma entrevista en castellano, para comparar el registro formal en las dos lenguas.'},
+      'U6 sigue sin contenido cargado fuera de Inglés.'),
+    c(10, 6, L('What I will be','Lo que seré'), L('The reader closes','Se cierra el reader'),
+      L('Treasure Island finished','Treasure Island terminado'), 'journal',
+      L('The island ends and somebody has changed. Say who, and in what.',
+        'La isla se acaba y alguien ha cambiado. Di quién, y en qué.'),
+      {ing:'Del Scope: Treasure Island, de la parte 2 al final, con discusión comparativa; opiniones e intenciones de los personajes.',
+       arte:'La ilustración de la escena elegida del reader.'},
+      'U6 sigue sin contenido cargado fuera de Inglés.'),
+    c(11, 6, L('What I will be','Lo que seré'), L('My career in ten years','Mi carrera en diez años'),
+      L('Plan + presentation','Plan + presentación'), 'speech',
+      L('Join the two halves in the last line: what would your job do to what you inventoried?',
+        'Une las dos mitades en la última línea: ¿qué le haría tu oficio a lo que inventariaste?'),
+      {ing:'Del Scope: future plans paragraph de 200-250 palabras; presentación breve sobre mi carrera futura; portafolio de fin de trimestre.',
+       com:'La reflexión final del portafolio.'},
+      'U6 sigue sin contenido cargado fuera de Inglés: el cierre se sostiene en el portafolio del Scope.')
+  ],
+  evaluacion:[
+    {dimension:'Clasificación biológica', areas:'CyT',
+     descriptor:'La clave usa criterios observables y funciona con una especie que no se usó para construirla.'},
+    {dimension:'Escritura comparativa y de futuro', areas:'ING',
+     descriptor:'El párrafo comparativo tiene criterios explícitos y el de futuro distingue going to de will.'},
+    {dimension:'Fracciones y decimales', areas:'MAT',
+     descriptor:'Las proporciones del inventario están bien calculadas y bien expresadas en las dos notaciones.'},
+    {dimension:'Interpretación', areas:'ARTE',
+     descriptor:'Toca su pieza del Show y sitúa el periodo al que pertenece.'},
+    {dimension:'La unión de las dos mitades', areas:'todas',
+     descriptor:'La última línea relaciona el oficio elegido con lo inventariado, y no es un adorno.'}
+  ],
+  perfil:[3,7,8],
+  revisar:['U6 no tiene contenido cargado en ninguna área: las semanas 7 a 11 se apoyan solo en el Scope de inglés.',
+           'En U5 de 7.º hay tres áreas cargadas de nueve: Matemática, Ciencia y Arte. Comunicación entra como propuesta del portal.',
+           'El reader del Scope, Treasure Island, ya está construido en el portal, con sus once partes y sus láminas.']
+},
+
+/* ==================================================================== 8.o */
+
+'g8.t3': {
+  grado:8, trimestre:3, unidades:[5,6], meses:'Setiembre – Noviembre', semanas:11,
+  cover:{icon:'🌍', from:'#0c4a6e', to:'#38bdf8'},
+  titulo:L('The ecosystem measured, and the ecosystem told','El ecosistema medido y el ecosistema contado'),
+  preguntaEsencial:L('What do the numbers say about this place, and what story do they let us tell about its future?',
+                     '¿Qué dicen los números de este lugar, y qué historia nos dejan contar sobre su futuro?'),
+  situacion:'8.º tiene las dos mitades de una misma cosa. En U5, Ciencia da ecosistemas, biomas, '+
+    'biodiversidad, especies endémicas y exóticas e impacto humano; Matemática da tablas de '+
+    'frecuencias, media, mediana, moda y la regla de Laplace; e Inglés pide un texto informativo con '+
+    'evidencia. En U6 el Scope cambia de registro y pide narración: tiempos del pasado, estilo '+
+    'indirecto, un relato de 280-350 palabras — y el reader, The Giver, es una distopía. El proyecto '+
+    'es exactamente ese giro: primero se mide un lugar de verdad, y después se cuenta qué será de él.',
+  cursos:['ing','cyt','mat','arte','com'],
+  producto:{
+    titulo:L('Field report + the story of the same place in 2076','Informe de campo + la historia de ese mismo lugar en 2076'),
+    descripcion:L('Two documents about one real place. The first is an evidence-based report: its '+
+      'levels of organisation, its biodiversity, the data measured and the probability of what could '+
+      'happen to it. The second is a short story set in that same place fifty years from now, written '+
+      'with narrative tenses — and every invention in it has to be defensible with the data in the '+
+      'first document.',
+      'Dos documentos sobre un lugar real. El primero es un informe con evidencia: sus niveles de '+
+      'organización, su biodiversidad, los datos medidos y la probabilidad de lo que puede pasarle. El '+
+      'segundo es un relato situado en ese mismo lugar dentro de cincuenta años, escrito con los '+
+      'tiempos del pasado — y cada invención suya tiene que poder defenderse con los datos del primero.'),
+    integra:[
+      ['cyt','El lugar y su ciencia: niveles de organización, biodiversidad, especies endémicas y exóticas, impacto humano.'],
+      ['mat','Los datos: tabla de frecuencias, media, mediana, moda, recorrido, y la probabilidad por la regla de Laplace.'],
+      ['ing','El informe con evidencia y voz pasiva, el relato con tiempos del pasado y estilo indirecto, y el debate.'],
+      ['arte','La pieza del Creative Arts Show y la ilustración de portada del relato.'],
+      ['com','La versión en castellano del informe y la corrección del relato.']
+    ],
+    incluye:[L('The field report','El informe de campo'),
+             L('The data and its graph','Los datos y su gráfico'),
+             L('The probability of the risk','La probabilidad del riesgo'),
+             L('The story of 2076','El relato de 2076')],
+    modelo:{tipo:'report',
+      partes:[L('the place','el lugar'), L('the data','los datos'),
+              L('the risk','el riesgo'), L('the story','el relato')],
+      apoyo:['The stream is polluted by waste from the road.',
+             'The mean number of species per site was 7.4.',
+             'By 2076 the water had gone, and nobody remembered it.'],
+      mejora:L('Test every invention in the story against the report: if a fact in the fiction '+
+        'contradicts your own data, either the data is wrong or the story is lazy.',
+        'Contrasta cada invención del relato con el informe: si un dato de la ficción contradice tus '+
+        'propios datos, o el dato está mal o el relato es perezoso.')}
+  },
+  semanas:[
+    c(1, 5, L('The place','El lugar'), L('Species, population, community','Especie, población, comunidad'),
+      L('Levels of organisation','Niveles de organización'), 'diagram',
+      L('You are going to spend eleven weeks on one place. Choose one you can actually walk to.',
+        'Vas a pasar once semanas con un solo lugar. Elige uno al que de verdad puedas ir andando.'),
+      {cyt:'Del plan: especie, población, comunidad, ecosistema, biomas y otros niveles de organización; topografía y estructura de la Tierra.',
+       mat:'Del plan: tablas de distribución de frecuencias — se prepara la hoja de registro.',
+       ing:'Del Scope: vocabulario de problemas ambientales y cambio climático; The Giver, capítulos 1-12.',
+       com:'Los criterios de observación, escritos en castellano antes de salir al campo.',
+       arte:'Del plan: repertorio del Creative Arts Show (Riptide / The Lazy Song); primera lectura.'}),
+    c(2, 5, L('The place','El lugar'), L('Counting what is there','Contar lo que hay'),
+      L('Field data','Datos de campo'), 'tally',
+      L('A measurement nobody took is an opinion. Take it.',
+        'Una medida que nadie tomó es una opinión. Tómala.'),
+      {cyt:'Del plan: biodiversidad; especies endémicas y exóticas.',
+       mat:'Del plan: gráficos estadísticos — los datos de campo, tabulados y representados.',
+       ing:'Del Scope: skim y scan para localizar información concreta; causa y efecto en artículos.',
+       com:'El cuaderno de campo, con su fecha y sus condiciones.',
+       arte:'Del plan: ensayo del repertorio del Show.'}),
+    c(3, 5, L('The place','El lugar'), L('What the numbers say','Qué dicen los números'),
+      L('Mean, median, mode','Media, mediana, moda'), 'chart',
+      L('The average hides as much as it shows. Say which of the two your number is doing.',
+        'La media esconde tanto como enseña. Di cuál de las dos cosas está haciendo tu número.'),
+      {mat:'Del plan: media aritmética, mediana y moda; recorrido.',
+       cyt:'Del plan: biodiversidad y estabilidad del ecosistema — qué significan esos números para el lugar.',
+       ing:'Del Scope: voz pasiva en presente y pasado simple; by + agente.',
+       com:'La lectura crítica del gráfico: qué se ve y qué no se ve.'}),
+    c(4, 5, L('The place','El lugar'), L('What could happen','Qué puede pasar'),
+      L('Probability of the risk','Probabilidad del riesgo'), 'experiment',
+      L('«It might disappear» becomes serious the moment you put a number on it.',
+        '«Podría desaparecer» se pone serio en el momento en que le pones un número.'),
+      {mat:'Del plan: experimento aleatorio, espacio muestral, probabilidad de un suceso y regla de Laplace.',
+       cyt:'Del plan: impacto humano sobre los ecosistemas.',
+       ing:'Del Scope: texto informativo sobre un problema ecológico, 250-300 palabras; escritura con evidencia y paráfrasis de fuentes.',
+       com:'Corrección del informe en su versión castellana.'}),
+    c(5, 5, L('The place','El lugar'), L('The argument','El argumento'),
+      L('Debate + rehearsal','Debate + ensayo'), 'speech',
+      L('You have the data. Now find out whether you can defend it out loud.',
+        'Ya tienes los datos. Ahora averigua si sabes defenderlos en voz alta.'),
+      {ing:'Del plan: presentaciones orales, ensayo argumentativo sencillo de 300-350 palabras con evidencia, dos puntos y punto y coma. Del Scope: debate «¿se está haciendo bastante por el planeta?».',
+       mat:'Del plan: revisión de los estadísticos que sostienen el argumento.',
+       arte:'Del plan: Creative Arts Show — ensayo general.',
+       cyt:'La ficha del lugar, terminada y revisada.'}),
+    c(6, 5, L('The place','El lugar'), L('The report and the Show','El informe y el Show'),
+      L('Report published + Show','Informe publicado + Show'), 'stand',
+      L('Tonight two things go out: a song and a piece of evidence about a real place.',
+        'Esta noche salen dos cosas: una canción y una prueba sobre un lugar de verdad.'),
+      {arte:'Del plan: Creative Arts Show — interpretación de la pieza.',
+       cyt:'Exposición del informe de campo.',
+       mat:'Los gráficos y la probabilidad, expuestos junto al informe.',
+       ing:'Del plan: recitación de poema y presentación oral. Del Scope: informe oral sobre el problema ambiental.',
+       com:'Presentación del informe en castellano.'}),
+    c(7, 6, L('The story','El relato'), L('The same place in 2076','El mismo lugar en 2076'),
+      L('Premise + plot','Premisa + trama'), 'plan',
+      L('Now invent — but only what your own data allows you to invent.',
+        'Ahora inventa — pero solo lo que tus propios datos te dejen inventar.'),
+      {ing:'Del Scope: géneros literarios y elementos del relato; estructura narrativa, trama y conflicto; adjetivos narrativos.',
+       cyt:'Qué le pasaría de verdad al lugar en cincuenta años con el impacto medido.'},
+      'A partir de aquí empieza U6 (noviembre), que NO tiene contenido cargado en ninguna área salvo Inglés. Estas cinco semanas se apoyan en el Scope y en la continuidad del proyecto.'),
+    c(8, 6, L('The story','El relato'), L('Narrative tenses','Los tiempos del relato'),
+      L('First draft','Primer borrador'), 'journal',
+      L('The past perfect exists so you can tell what had already happened before the story starts. Use it.',
+        'El pasado perfecto existe para contar lo que ya había pasado antes de que empiece la historia. Úsalo.'),
+      {ing:'Del Scope: relato breve de 280-350 palabras con tiempos narrativos — pasado simple, continuo y perfecto.',
+       com:'La revisión de la coherencia temporal, que es la misma en las dos lenguas.'},
+      'U6 sigue sin contenido cargado fuera de Inglés.'),
+    c(9, 6, L('The story','El relato'), L('Whose voice','La voz de quién'),
+      L('Reported speech + revision','Estilo indirecto + revisión'), 'journal',
+      L('Somebody in your story has to say something that changes everything. Decide who.',
+        'Alguien en tu relato tiene que decir algo que lo cambie todo. Decide quién.'),
+      {ing:'Del Scope: estilo indirecto con say / tell y retroceso temporal; autoedición de la consistencia narrativa.',
+       arte:'La ilustración de portada del relato.'},
+      'U6 sigue sin contenido cargado fuera de Inglés.'),
+    c(10, 6, L('The story','El relato'), L('The Giver closes','Se cierra The Giver'),
+      L('Comparative essay','Ensayo comparativo'), 'report',
+      L('Lowry invented a world where nothing goes wrong and everything is wrong. Compare it with yours.',
+        'Lowry inventó un mundo donde nada sale mal y todo está mal. Compáralo con el tuyo.'),
+      {ing:'Del Scope: The Giver, del capítulo 13 al final, y ensayo comparativo de distopías; respuesta personal con evidencia del texto.',
+       com:'El ensayo comparativo, corregido.'},
+      'U6 sigue sin contenido cargado fuera de Inglés.'),
+    c(11, 6, L('The story','El relato'), L('Told out loud','Contado en voz alta'),
+      L('Storytelling + portfolio','Narración oral + portafolio'), 'speech',
+      L('Read it aloud to somebody who has your report in their hand. That is the real test.',
+        'Léelo en voz alta a alguien que tenga tu informe en la mano. Esa es la prueba de verdad.'),
+      {ing:'Del Scope: contar el relato con tiempos narrativos; reto de narración en grupo; portafolio de fin de trimestre y reflexión metacognitiva.',
+       cyt:'Contraste final: qué del relato aguanta el informe y qué no.',
+       com:'La reflexión final del portafolio.'},
+      'U6 sigue sin contenido cargado fuera de Inglés: el cierre se sostiene en el portafolio del Scope.')
+  ],
+  evaluacion:[
+    {dimension:'Comprensión de ecosistemas', areas:'CyT',
+     descriptor:'Sitúa el lugar en sus niveles de organización y explica el impacto humano con lo observado, no con lo leído.'},
+    {dimension:'Estadística y probabilidad', areas:'MAT',
+     descriptor:'La tabla, los estadísticos y la probabilidad de Laplace están bien calculados y bien interpretados.'},
+    {dimension:'Texto informativo y narrativo', areas:'ING',
+     descriptor:'El informe usa evidencia y voz pasiva; el relato mantiene los tiempos del pasado y el estilo indirecto.'},
+    {dimension:'Interpretación', areas:'ARTE',
+     descriptor:'Toca su pieza del Show y sostiene el pulso dentro del grupo.'},
+    {dimension:'La ficción responde al dato', areas:'todas',
+     descriptor:'Cada invención del relato se puede defender con una línea del informe.'}
+  ],
+  perfil:[3,8,9],
+  revisar:['U6 no tiene contenido cargado en ninguna área: las semanas 7 a 11 se apoyan solo en el Scope de inglés.',
+           'En U5 de 8.º hay cuatro áreas cargadas de nueve: Matemática, Ciencia, Arte e Inglés. Comunicación entra como propuesta del portal.',
+           'El informe de campo necesita una salida fuera del aula en la semana 2. Si no se puede salir, sirve el propio colegio como ecosistema, pero hay que decidirlo en la semana 1.']
+},
+
+/* ==================================================================== 9.o */
+
+'g9.t3': {
+  grado:9, trimestre:3, unidades:[5,6], meses:'Setiembre – Noviembre', semanas:11,
+  cover:{icon:'⏳', from:'#4c1d95', to:'#f472b6'},
+  titulo:L('The instrument that measures whether we are better off','El instrumento que mide si estamos mejor'),
+  preguntaEsencial:L('If we had to measure whether people here are well, what would we measure — and who decides?',
+                     'Si tuviéramos que medir si la gente de aquí está bien, ¿qué mediríamos — y quién lo decide?'),
+  situacion:'9.º tiene tres cursos hablando del mismo asunto sin saberlo. Filosofía pregunta qué es ser '+
+    'feliz y trae la teoría de las capacidades de Sen y Nussbaum, que es una respuesta medible: no cómo '+
+    'te sientes, sino qué puedes llegar a hacer y a ser. ICT enseña a construir aplicaciones y proyectos '+
+    'que recogen datos, con Mimo y con Arduino. Matemática da funciones, dominio y rango, y progresiones '+
+    'geométricas: la forma que tiene una cosa cuando crece. Y el Scope de inglés lee The Time Machine, '+
+    'una novela sobre un futuro donde unos pueden y otros no. Once semanas para construir un instrumento '+
+    'que mida una sola cosa del colegio, y para discutir si medirla era buena idea.',
+  cursos:['ing','ict','fil','mat','com'],
+  producto:{
+    titulo:L('The wellbeing observatory','El observatorio del bienestar'),
+    descripcion:L('One working instrument — an app, a form, a sensor — that collects one single piece '+
+      'of data about wellbeing in the school, with the philosophical criterion that justifies '+
+      'measuring that and not something else, the mathematics of how it grows, the short story of what '+
+      'that data becomes in the year 802,701, and the for-and-against essay on whether it should be '+
+      'collected at all.',
+      'Un instrumento que funciona —una aplicación, un formulario, un sensor— que recoge un solo dato '+
+      'sobre el bienestar en el colegio, con el criterio filosófico que justifica medir eso y no otra '+
+      'cosa, la matemática de cómo crece, el relato de en qué se convierte ese dato en el año 802.701 '+
+      'y el ensayo a favor y en contra de si debería recogerse siquiera.'),
+    integra:[
+      ['fil','El criterio: por qué ese dato y no otro. Sen y Nussbaum dan la definición medible de estar bien.'],
+      ['ict','El instrumento: la aplicación o el montaje que recoge el dato, con su algoritmo.'],
+      ['mat','La forma del dato en el tiempo: dominio y rango, función cuadrática y progresión geométrica.'],
+      ['ing','El relato de 320-380 palabras y el ensayo a favor y en contra de 320-380 palabras.'],
+      ['com','La versión en castellano del criterio y la presentación del observatorio.']
+    ],
+    incluye:[L('The criterion','El criterio'), L('The instrument','El instrumento'),
+             L('The data and its curve','El dato y su curva'),
+             L('The story and the essay','El relato y el ensayo')],
+    modelo:{tipo:'experiment',
+      partes:[L('what we measure','qué medimos'), L('why that','por qué eso'),
+              L('how it grows','cómo crece'), L('who owns it','de quién es')],
+      apoyo:['We measure how many students can choose what they do at break.',
+             'The function is quadratic, so it accelerates.',
+             'If we had known, we would not have collected it.'],
+      mejora:L('The hardest question is not what you measured, it is who gets to see it. Answer that '+
+        'one in writing before you demo the instrument.',
+        'La pregunta difícil no es qué mediste, es quién puede verlo. Contesta esa por escrito antes '+
+        'de enseñar el instrumento.')}
+  },
+  semanas:[
+    c(1, 5, L('The criterion','El criterio'), L('What does being well mean','Qué significa estar bien'),
+      L('The question, written','La pregunta, escrita'), 'question',
+      L('Before you measure anything, you have to be able to say what you are measuring. That takes a week.',
+        'Antes de medir nada, hay que saber decir qué se está midiendo. Eso lleva una semana.'),
+      {fil:'Del plan: unidad «¿Qué significa ser feliz?» — la felicidad como estado de ánimo, deber moral o práctica de una vida.',
+       mat:'Del plan: dominio y rango de una función real.',
+       ict:'Del plan: identificación del proyecto y del dato que se va a recoger.',
+       ing:'Del Scope: géneros y elementos narrativos; The Time Machine, capítulos 1-6.',
+       com:'La pregunta del observatorio, formulada en castellano para presentarla al colegio.'}),
+    c(2, 5, L('The criterion','El criterio'), L('What people can be and do','Lo que se puede ser y hacer'),
+      L('Capability list','Lista de capacidades'), 'sort',
+      L('Sen and Nussbaum turned happiness into a list you can check. That is why it is dangerous and useful.',
+        'Sen y Nussbaum convirtieron la felicidad en una lista que se puede comprobar. Por eso es peligrosa y útil.'),
+      {fil:'Del plan: teoría de las capacidades (Sen y Nussbaum) — qué tiene que poder hacer alguien para que digamos que está bien.',
+       ict:'Del plan: desarrollo de aplicaciones web con Mimo — primer prototipo del formulario.',
+       mat:'Del plan: estudio de una función real.',
+       ing:'Del Scope: analizar técnicas narrativas, estructura y voz; colocaciones de plot, character y theme.',
+       com:'La lista de capacidades, traducida y discutida.'}),
+    c(3, 5, L('The criterion','El criterio'), L('The longest study','El estudio más largo'),
+      L('What long data looks like','Qué forma tiene un dato largo'), 'chart',
+      L('Harvard has been following the same people for eighty years. Your data will last eleven weeks. Respect the difference.',
+        'Harvard lleva ochenta años siguiendo a las mismas personas. Tu dato durará once semanas. Respeta la diferencia.'),
+      {fil:'Del plan: el estudio más largo sobre la felicidad (Harvard) — qué se puede saber solo mirando mucho tiempo.',
+       mat:'Del plan: función cuadrática — cómo se ve una cosa que acelera.',
+       ict:'Del plan: Arduino y su papel en robótica y automatización; simulación en Tinkercad.',
+       ing:'Del Scope: prosodia narrativa; entonación para el suspense y el clímax.',
+       com:'La ficha del estudio, resumida en castellano.'}),
+    c(4, 5, L('The criterion','El criterio'), L('Stoics and believers','Estoicos y creyentes'),
+      L('Two answers compared','Dos respuestas comparadas'), 'diagram',
+      L('Two traditions answered this before you were born. Read them before you decide you disagree.',
+        'Dos tradiciones contestaron a esto antes de que nacieras. Léelas antes de decidir que no estás de acuerdo.'),
+      {fil:'Del plan: religión y felicidad; estoicismo.',
+       mat:'Del plan: función valor absoluto y función raíz cuadrada.',
+       ict:'Del plan: algoritmos iterativos y recursión — el algoritmo que procesa el dato.',
+       ing:'Del Scope: relato breve con tiempos narrativos, 320-380 palabras — primer borrador; adverbios de secuencia.',
+       com:'El contraste entre las dos tradiciones, por escrito.'}),
+    c(5, 5, L('The criterion','El criterio'), L('The science of it','La ciencia del asunto'),
+      L('Instrument collecting','Instrumento recogiendo'), 'log',
+      L('This week the instrument stops being a plan and starts producing numbers. That is the moment.',
+        'Esta semana el instrumento deja de ser un plan y empieza a dar números. Ese es el momento.'),
+      {fil:'Del plan: eudaimonía moderna (Seligman y la psicología positiva); neurociencia y felicidad.',
+       mat:'Del plan: sucesiones y progresión geométrica — cómo se compone el crecimiento.',
+       ict:'Del plan: implementación de proyectos con recogida de datos — el instrumento, funcionando.',
+       ing:'Del Scope: cohesión narrativa y expresiones de tiempo; revisión de la consistencia verbal.',
+       com:'El guion de presentación del observatorio.'}),
+    c(6, 5, L('The criterion','El criterio'), L('The observatory opens','El observatorio abre'),
+      L('Instrument + story','Instrumento + relato'), 'stand',
+      L('Show the instrument and the story on the same table. One measures what is; the other says what it becomes.',
+        'Enseña el instrumento y el relato en la misma mesa. Uno mide lo que hay; el otro dice en qué se convierte.'),
+      {ict:'Del plan: presentación del proyecto de software y de los datos recogidos.',
+       fil:'Del plan: cierre de la unidad — qué respuesta damos ya a la pregunta de la felicidad.',
+       mat:'Del plan: la curva del dato, interpretada y expuesta.',
+       ing:'Del Scope: narración oral de una historia real o imaginada; narración colaborativa en grupo.',
+       com:'La presentación del observatorio al resto del grado.'}),
+    c(7, 6, L('The ethics','La ética'), L('Should we be measuring this','Habría que estar midiendo esto'),
+      L('The objection, written','La objeción, escrita'), 'question',
+      L('You built it. Now argue against it, seriously. Anything you cannot defend, you should not have built.',
+        'Lo construiste. Ahora arguméntalo en contra, en serio. Lo que no sepas defender, no había que haberlo construido.'),
+      {ing:'Del Scope: problemas globales y soluciones; ONG y organismos internacionales; vocabulario de debate formal.',
+       ict:'Qué pasa con el dato recogido: dónde vive, quién lo ve, cuándo se borra.'},
+      'A partir de aquí empieza U6 (noviembre), que NO tiene contenido cargado en ninguna área salvo Inglés. Estas cinco semanas se apoyan en el Scope y en la continuidad del proyecto.'),
+    c(8, 6, L('The ethics','La ética'), L('If we had known','Si lo hubiéramos sabido'),
+      L('Third conditional','Tercer condicional'), 'card',
+      L('The third conditional is the grammar of regret. This week you use it about your own project.',
+        'El tercer condicional es la gramática del arrepentimiento. Esta semana lo usas sobre tu propio proyecto.'),
+      {ing:'Del Scope: tercer condicional para el pasado hipotético; wish e if only; contraste y concesión con whereas y nevertheless.',
+       fil:'La objeción de las capacidades: qué queda fuera de cualquier medida.'},
+      'U6 sigue sin contenido cargado fuera de Inglés.'),
+    c(9, 6, L('The ethics','La ética'), L('Reading against the argument','Leer contra el argumento'),
+      L('Bias and fallacy found','Sesgo y falacia encontrados'), 'report',
+      L('Find the fallacy in a text you agree with. That is the only version of this exercise that teaches anything.',
+        'Encuentra la falacia en un texto con el que estás de acuerdo. Esa es la única versión de este ejercicio que enseña algo.'),
+      {ing:'Del Scope: evaluar la lógica y la coherencia de los argumentos; lectura crítica para identificar sesgo y falacia.',
+       com:'El mismo ejercicio sobre un texto periodístico en castellano.'},
+      'U6 sigue sin contenido cargado fuera de Inglés.'),
+    c(10, 6, L('The ethics','La ética'), L('The Time Machine closes','Se cierra The Time Machine'),
+      L('For-and-against essay','Ensayo a favor y en contra'), 'report',
+      L('Wells saw a future split in two. Your data is a small machine for seeing the same thing. Write it.',
+        'Wells vio un futuro partido en dos. Tu dato es una máquina pequeña para ver lo mismo. Escríbelo.'),
+      {ing:'Del Scope: The Time Machine, del capítulo 7 al final, y ensayo comparativo de tres novelas; for-and-against essay de 320-380 palabras.',
+       com:'La corrección del ensayo y su versión castellana.'},
+      'U6 sigue sin contenido cargado fuera de Inglés.'),
+    c(11, 6, L('The ethics','La ética'), L('The formal debate','El debate formal'),
+      L('Debate + portfolio','Debate + portafolio'), 'speech',
+      L('Point, evidence, explanation. Three sentences. If you cannot do it in three, you have not understood it yet.',
+        'Idea, evidencia, explicación. Tres frases. Si no puedes en tres, todavía no lo has entendido.'),
+      {ing:'Del Scope: debate formal estructurado sobre un asunto global con el modelo Point–Evidence–Explanation; portafolio de fin de trimestre y autoevaluación semáforo.',
+       ict:'La decisión final sobre el dato: se conserva, se anonimiza o se borra.',
+       com:'La reflexión final del portafolio.'},
+      'U6 sigue sin contenido cargado fuera de Inglés: el cierre se sostiene en el portafolio del Scope.')
+  ],
+  evaluacion:[
+    {dimension:'Argumentación filosófica', areas:'FIL',
+     descriptor:'Justifica qué se mide con una teoría nombrada, y sabe decir qué deja fuera esa teoría.'},
+    {dimension:'Construcción del instrumento', areas:'ICT',
+     descriptor:'El instrumento funciona, recoge el dato declarado y su algoritmo está explicado.'},
+    {dimension:'Modelo matemático', areas:'MAT',
+     descriptor:'Elige el tipo de función que corresponde al dato y sabe decir su dominio y su rango.'},
+    {dimension:'Relato y ensayo', areas:'ING',
+     descriptor:'El relato sostiene los tiempos narrativos; el ensayo presenta las dos posturas antes de tomar una.'},
+    {dimension:'Ética del dato', areas:'todas',
+     descriptor:'Dice por escrito quién ve el dato, para qué y hasta cuándo, antes de recogerlo.'}
+  ],
+  perfil:[8,9,10],
+  revisar:['U6 no tiene contenido cargado en ninguna área: las semanas 7 a 11 se apoyan solo en el Scope de inglés.',
+           'En U5 de 9.º hay tres áreas cargadas de nueve: Matemática, ICT y Philosophy. Comunicación entra como propuesta del portal.',
+           'El instrumento recoge datos de personas del colegio: hay que acordar con coordinación qué dato es admisible y con qué consentimiento, en la semana 1 y no en la 5.']
+},
+
+/* =================================================================== 10.o */
+
+'g10.t3': {
+  grado:10, trimestre:3, unidades:[5,6], meses:'Setiembre – Noviembre', semanas:11,
+  cover:{icon:'♻️', from:'#065f46', to:'#fbbf24'},
+  titulo:L('The proposal, and who holds it up','La propuesta y quién la sostiene'),
+  preguntaEsencial:L('What would we change here if we had to cost it, argue it and name who does the work?',
+                     '¿Qué cambiaríamos aquí si tuviéramos que costearlo, defenderlo y decir quién hace el trabajo?'),
+  situacion:'10.º tiene, cargadas en U5, cinco áreas que juntas hacen una sola cosa: Matemática da '+
+    'semejanza y congruencia y luego sistemas de ecuaciones, que es como se costea cualquier propuesta '+
+    'con dos condiciones a la vez; Enterprise da comunicación empresarial, documentación y '+
+    'presentaciones; Inglés pide argumentos complejos, un pódcast en pareja y varios borradores; el '+
+    'Scope añade el ensayo persuasivo y Fahrenheit 451; y Spiritual History estudia el reconocimiento '+
+    '—la dignidad, quién es visible y quién no, incluido en el trabajo—. En U6 el Scope gira a carrera '+
+    'profesional: CV, carta formal y entrevista. Así que el arco es una propuesta real para el colegio, '+
+    'y después la solicitud del puesto que la llevaría a cabo.',
+  cursos:['ing','mat','ent','sh','arte','com'],
+  producto:{
+    titulo:L('The costed proposal and the application to run it','La propuesta costeada y la solicitud para dirigirla'),
+    descripcion:L('One real proposal for a sustainable change in the school: the evidence, the costing '+
+      'solved with a system of equations, the persuasive essay, the podcast that defends it, the '+
+      'business documentation that formalises it, and the analysis of whose work it depends on and '+
+      'whether that work is recognised. It closes with the CV and cover letter of somebody applying '+
+      'for the job of making it happen.',
+      'Una propuesta real de un cambio sostenible en el colegio: la evidencia, el costeo resuelto con '+
+      'un sistema de ecuaciones, el ensayo persuasivo, el pódcast que la defiende, la documentación '+
+      'empresarial que la formaliza y el análisis de de quién depende ese trabajo y si ese trabajo '+
+      'está reconocido. Cierra con el CV y la carta de quien se postula al puesto de hacerlo realidad.'),
+    integra:[
+      ['mat','El costeo: semejanza y escala de lo que se construye, y el sistema de ecuaciones que da las dos incógnitas.'],
+      ['ent','La documentación empresarial, la estructura de la presentación y las fuentes de apoyo y la red de contactos.'],
+      ['ing','El ensayo persuasivo de 370-440 palabras, el pódcast, y en U6 el CV y la carta formal.'],
+      ['sh','El análisis de reconocimiento: de quién depende la propuesta y si ese trabajo se ve.'],
+      ['arte','La canción del Show y la identidad visual de la propuesta.'],
+      ['com','La versión en castellano de la propuesta, que es la que leerá la dirección.']
+    ],
+    incluye:[L('The evidence','La evidencia'), L('The costing','El costeo'),
+             L('The persuasive essay + podcast','El ensayo persuasivo + pódcast'),
+             L('The CV and cover letter','El CV y la carta')],
+    modelo:{tipo:'plan',
+      partes:[L('the problem','el problema'), L('the numbers','los números'),
+              L('who does the work','quién hace el trabajo'), L('the ask','la petición')],
+      apoyo:['If the school installed them, we would save 340 soles a month.',
+             'Consequently, the proposal pays for itself in eleven months.',
+             'I am writing to apply for the position of…'],
+      mejora:L('A proposal that does not say who does the extra work is a proposal that somebody else '+
+        'will pay for with their time. Name them, and say whether they agreed.',
+        'Una propuesta que no dice quién hace el trabajo extra es una propuesta que alguien pagará con '+
+        'su tiempo. Nómbralo, y di si estuvo de acuerdo.')}
+  },
+  semanas:[
+    c(1, 5, L('The problem','El problema'), L('What needs changing','Qué hay que cambiar'),
+      L('The problem, framed','El problema, acotado'), 'question',
+      L('Choose something small enough to actually happen. A proposal that cannot happen is an essay.',
+        'Elige algo bastante pequeño como para que pase de verdad. Una propuesta que no puede pasar es una redacción.'),
+      {mat:'Del plan (semanas 1-2): semejanza y congruencia — semejanza de figuras y criterios de semejanza de triángulos.',
+       ent:'Del plan: comunicación empresarial básica — cómo se plantea un asunto por escrito.',
+       sh:'Del plan: qué significa «reconocimiento» en filosofía y en la vida diaria; la necesidad de reconocimiento como condición humana.',
+       ing:'Del Scope: vocabulario de ecología y sostenibilidad; Fahrenheit 451, partes 1-2. Del plan: textos complejos y variados.',
+       com:'El planteamiento del problema en castellano, que es el que leerá la dirección.',
+       arte:'Del plan: historia del rock — elección de la canción del Show.'}),
+    c(2, 5, L('The problem','El problema'), L('The evidence','La evidencia'),
+      L('Data + sources','Datos + fuentes'), 'log',
+      L('Anybody can have an opinion about this. Only you are going to have the measurements.',
+        'Cualquiera puede opinar de esto. Solo tú vas a tener las medidas.'),
+      {mat:'Del plan (semanas 1-2): congruencia de figuras, criterios de congruencia de triángulos y relaciones métricas; IGCSE Extended, demostraciones geométricas.',
+       ing:'Del Scope: sintetizar información de varias fuentes; introducción a la bibliografía anotada.',
+       ent:'Del plan: documentación empresarial — la ficha del proyecto.',
+       sh:'Del plan: diferencia entre reconocimiento y tolerancia o aceptación.',
+       com:'El registro de fuentes, con su referencia completa.'}),
+    c(3, 5, L('The numbers','Los números'), L('What it costs','Cuánto cuesta'),
+      L('The costing','El costeo'), 'chart',
+      L('Two unknowns and two conditions. That is not an exercise: that is what a budget actually is.',
+        'Dos incógnitas y dos condiciones. Eso no es un ejercicio: eso es exactamente lo que es un presupuesto.'),
+      {mat:'Del plan (semanas 3-6): sistemas de ecuaciones lineales y métodos de resolución — sustitución, igualación, eliminación y gráfico.',
+       ent:'Del plan: desarrollo de habilidades de presentación.',
+       ing:'Del Scope: ensayo persuasivo de 370-440 palabras — primer borrador; conectores formales.',
+       arte:'Del plan: ensayo de la canción del Show.',
+       com:'El presupuesto, explicado en castellano en media página.'}),
+    c(4, 5, L('The numbers','Los números'), L('What would happen if','Qué pasaría si'),
+      L('Scenarios','Escenarios'), 'diagram',
+      L('The second conditional is how you argue for something that does not exist yet.',
+        'El segundo condicional es como se defiende algo que todavía no existe.'),
+      {mat:'Del plan (semanas 3-6): sistemas mixtos, lineales y cuadráticas, y aplicaciones; IGCSE, ecuaciones simultáneas y fracciones algebraicas.',
+       ing:'Del Scope: condicionales 2 y 3 y condicionales mixtos; wish, if only, it’s time, would rather.',
+       sh:'Del plan: reconocimiento de minorías y grupos marginados a lo largo de la historia; reconocimiento en política.',
+       ent:'Del plan: comunicación formal.',
+       com:'Los escenarios, redactados para el anexo.'}),
+    c(5, 5, L('Who holds it up','Quién la sostiene'), L('Whose work is invisible','Qué trabajo no se ve'),
+      L('Podcast + recognition analysis','Pódcast + análisis de reconocimiento'), 'video',
+      L('Every proposal makes work for somebody. This week you find out for whom.',
+        'Toda propuesta genera trabajo para alguien. Esta semana averiguas para quién.'),
+      {sh:'Del plan: reconocimiento en el trabajo — dignidad, trato justo e identidad profesional; riesgos del no reconocimiento.',
+       ing:'Del plan: pódcast en parejas y argumentos complejos en debate; puntuación avanzada. Del Scope: debate persuasivo sobre políticas ambientales.',
+       ent:'Del plan: identificación de fuentes de apoyo y desarrollo de redes iniciales.',
+       mat:'Del plan (semanas 3-6): aplicaciones de sistemas — el costeo revisado con el trabajo incluido.',
+       arte:'Del plan: ensayo general de la canción.'}),
+    c(6, 5, L('Who holds it up','Quién la sostiene'), L('The proposal presented','La propuesta presentada'),
+      L('Proposal + Show','Propuesta + Show'), 'stand',
+      L('You are not asking for a grade. You are asking somebody to say yes.',
+        'No estás pidiendo una nota. Estás pidiendo que alguien diga que sí.'),
+      {ent:'Del plan: preparación de la evaluación final — la propuesta presentada con formato empresarial.',
+       ing:'Del Scope: ensayo persuasivo final y debate estructurado punto-contrapunto.',
+       arte:'Del plan: Creative Arts Show — interpretación de la canción elegida.',
+       mat:'El costeo, expuesto y defendido.',
+       sh:'Del plan: reconocimiento en la vida diaria — redes sociales, «me gusta» y visibilidad.',
+       com:'La entrega de la propuesta en castellano a coordinación.'}),
+    c(7, 6, L('The job','El puesto'), L('Who would do this for a living','Quién haría esto para vivir'),
+      L('Career map','Mapa de la profesión'), 'web',
+      L('Somebody does your proposal as a job, somewhere. Find out what that job is called.',
+        'Alguien hace tu propuesta como oficio, en algún sitio. Averigua cómo se llama ese oficio.'),
+      {ing:'Del Scope: comunicación profesional y vocabulario de trabajo; registro formal frente a informal; convenciones de género en documentos profesionales.',
+       ent:'La red de contactos del sector, a partir de lo trabajado en U5.'},
+      'A partir de aquí empieza U6 (noviembre), que NO tiene contenido cargado en ninguna área salvo Inglés. Estas cinco semanas se apoyan en el Scope y en la continuidad del proyecto.'),
+    c(8, 6, L('The job','El puesto'), L('The CV','El CV'),
+      L('CV, first version','CV, primera versión'), 'card',
+      L('Your CV is one page and it is the hardest page of the term. Everything on it must be true.',
+        'Tu CV es una página y es la página más difícil del trimestre. Todo lo que ponga tiene que ser verdad.'),
+      {ing:'Del Scope: CV en formato de comunicación profesional; anuncios de empleo y cartas de presentación como modelo.',
+       com:'El mismo CV en castellano, que es el formato que se usa aquí.'},
+      'U6 sigue sin contenido cargado fuera de Inglés.'),
+    c(9, 6, L('The job','El puesto'), L('The cover letter','La carta'),
+      L('Formal cover letter','Carta formal'), 'letter',
+      L('The letter says what the CV cannot: why this job, and why you.',
+        'La carta dice lo que el CV no puede: por qué este puesto, y por qué tú.'),
+      {ing:'Del Scope: carta de presentación formal; formas de futuro —will, going to, presente continuo, futuro perfecto y continuo—; nominalización y estructuras impersonales.',
+       com:'La corrección de la carta y su equivalente en castellano.'},
+      'U6 sigue sin contenido cargado fuera de Inglés.'),
+    c(10, 6, L('The job','El puesto'), L('Fahrenheit 451 closes','Se cierra Fahrenheit 451'),
+      L('Comparative essay','Ensayo comparativo'), 'report',
+      L('Bradbury wrote about a society that stopped reading. Compare it with the one you proposed.',
+        'Bradbury escribió sobre una sociedad que dejó de leer. Compárala con la que tú propusiste.'),
+      {ing:'Del Scope: Fahrenheit 451, parte 3 y final, y ensayo comparativo de distopías; lista de comprobación para la revisión final.',
+       sh:'El vínculo con reconocimiento: quién es invisible en la sociedad de la novela.'},
+      'U6 sigue sin contenido cargado fuera de Inglés.'),
+    c(11, 6, L('The job','El puesto'), L('The interview','La entrevista'),
+      L('Mock interview + portfolio','Entrevista simulada + portafolio'), 'speech',
+      L('You will be asked what you have actually done. This term you have an answer: the proposal.',
+        'Te van a preguntar qué has hecho de verdad. Este trimestre tienes respuesta: la propuesta.'),
+      {ing:'Del Scope: entrevista de trabajo simulada y presentación de carrera; estrategias de comunicación profesional; portafolio de fin de año.',
+       ent:'La presentación final y el portafolio de evidencias.',
+       com:'La reflexión final del portafolio.'},
+      'U6 sigue sin contenido cargado fuera de Inglés: el cierre se sostiene en el portafolio del Scope y en el de Enterprise.')
+  ],
+  evaluacion:[
+    {dimension:'Modelo matemático', areas:'MAT',
+     descriptor:'El costeo se plantea como sistema de ecuaciones, se resuelve por un método declarado y se interpreta.'},
+    {dimension:'Comunicación empresarial', areas:'ENT',
+     descriptor:'La documentación tiene el formato acordado y la presentación se sostiene sin leer.'},
+    {dimension:'Persuasión escrita y oral', areas:'ING',
+     descriptor:'El ensayo usa condicionales y conectores con propósito; el pódcast defiende la propuesta con evidencia.'},
+    {dimension:'Reconocimiento', areas:'SH',
+     descriptor:'Nombra de quién depende la propuesta y distingue reconocer de tolerar.'},
+    {dimension:'Interpretación', areas:'ARTE',
+     descriptor:'Interpreta la canción del Show y sitúa su lugar en la historia del rock.'}
+  ],
+  perfil:[2,7,8,10],
+  revisar:['U6 no tiene contenido cargado en ninguna área: las semanas 7 a 11 se apoyan solo en el Scope de inglés.',
+           'En U5 de 10.º hay cinco áreas cargadas de nueve —Matemática, Arte, Enterprise, Inglés y Spiritual History—, y es el grado mejor servido de secundaria. Comunicación entra como propuesta.',
+           'Matemática de 10.º sí trae el contenido repartido por semanas en el propio documento (semanas 1-2 y 3-6): esas líneas son literalmente las del plan.',
+           'La propuesta va dirigida a alguien de verdad. Hay que decidir en la semana 1 a quién se le presenta, o el trabajo de once semanas se queda en el aula.']
+},
+
+/* =================================================================== 11.o */
+
+'g11.t3': {
+  grado:11, trimestre:3, unidades:[5,6], meses:'Setiembre – Noviembre', semanas:11,
+  cover:{icon:'🏛️', from:'#1e3a5f', to:'#e0b33a'},
+  titulo:L('The community we would found','La comunidad que fundaríamos'),
+  preguntaEsencial:L('If we had to found a political community from nothing, what would we write down first?',
+                     'Si tuviéramos que fundar una comunidad política desde cero, ¿qué escribiríamos primero?'),
+  situacion:'De los seis grados, 11.º es el que llega con todo alineado. Spiritual History trae la '+
+    'unidad de comunidad con Charles Taylor, y la trae repartida semana a semana: qué es una '+
+    'comunidad, individualismo frente a comunidad, comunitarismo, ciudadanía, los desafíos de hoy y mi '+
+    'papel en ella. Matemática también viene por semanas, y son las herramientas con que se funda un '+
+    'sitio de verdad: el plano cartesiano, las distancias, las áreas, los sólidos y la trigonometría. '+
+    'El Scope pone «Politics, Society & Global Citizenship» con un artículo de opinión de 450-550 '+
+    'palabras y un discurso político de cinco minutos, y el plan lector es El señor de las moscas, que '+
+    'es la novela de una comunidad política que fracasa. En U6 llega la recta final: preparación del '+
+    'examen C1 y del Diploma.',
+  cursos:['ing','sh','mat','ent','arte','com'],
+  producto:{
+    titulo:L('The founding document and its defence','El acta fundacional y su defensa'),
+    descripcion:L('The founding document of a community that does not exist: its territory surveyed '+
+      'with real geometry, its principle of belonging argued from Taylor, its rules written against '+
+      'what fails in Lord of the Flies, its opinion article for publication, and the five-minute '+
+      'political speech that defends it before a mock assembly.',
+      'El acta fundacional de una comunidad que no existe: su territorio levantado con geometría de '+
+      'verdad, su principio de pertenencia argumentado desde Taylor, sus reglas escritas contra lo que '+
+      'fracasa en El señor de las moscas, su artículo de opinión para publicar y el discurso político '+
+      'de cinco minutos que la defiende ante una asamblea simulada.'),
+    integra:[
+      ['sh','La teoría: qué es una comunidad, qué la sostiene y qué la amenaza, desde Taylor.'],
+      ['mat','El territorio: el plano, las distancias, las áreas por habitante, los sólidos y la trigonometría de lo que se construye.'],
+      ['ing','El artículo de opinión de 450-550 palabras, el discurso de cinco minutos con preguntas y el debate modelo ONU.'],
+      ['ent','El formato: el portafolio de evidencias y la presentación final, que es el molde del acta.'],
+      ['arte','La forma sonata como estructura del acto de fundación, y la música que lo abre y lo cierra.'],
+      ['com','El acta en castellano, que es la versión que se archiva.']
+    ],
+    incluye:[L('The territory, surveyed','El territorio, levantado'),
+             L('The principle of belonging','El principio de pertenencia'),
+             L('The rules','Las reglas'),
+             L('The speech and the article','El discurso y el artículo')],
+    modelo:{tipo:'letter',
+      partes:[L('who belongs','quién pertenece'), L('what we owe each other','qué nos debemos'),
+              L('how we decide','cómo decidimos'), L('what we do when it fails','qué hacemos si falla')],
+      apoyo:['We hold that belonging is not the same as agreement.',
+             'The assembly must have been aware of the risk.',
+             'Whoever holds power here holds it on loan.'],
+      mejora:L('The clause that matters is the one about failure. Every founding document that skips '+
+        'it becomes Lord of the Flies. Write it, and make it specific.',
+        'La cláusula que importa es la del fracaso. Toda acta fundacional que se la salta acaba siendo '+
+        'El señor de las moscas. Escríbela, y que sea concreta.')}
+  },
+  semanas:[
+    c(1, 5, L('The community','La comunidad'), L('What is a community','Qué es una comunidad'),
+      L('The definition, argued','La definición, argumentada'), 'question',
+      L('Everybody uses this word every day. This week you find out that almost nobody can define it.',
+        'Todo el mundo usa esta palabra todos los días. Esta semana descubres que casi nadie sabe definirla.'),
+      {sh:'Del plan (semana 1): ¿qué es una comunidad? — el concepto, en la unidad «¿Qué papel juego en una comunidad política?».',
+       mat:'Del plan (primera semana): métodos de factorización — factor común, agrupación de términos, aspa simple y Ruffini.',
+       ing:'Del Scope: vocabulario de ciencia política —gobernanza y soberanía—, movimientos sociales y AWL set 7; Lord of the Flies, capítulos 1-6.',
+       ent:'Del plan: revisión de todos los temas de examen.',
+       com:'La definición de comunidad, contrastada con la de sociedad y la de Estado.'}),
+    c(2, 5, L('The community','La comunidad'), L('One or all','Uno o todos'),
+      L('Individualism vs community','Individualismo frente a comunidad'), 'diagram',
+      L('The whole argument of the modern world fits in this week. Take a side and then argue the other one.',
+        'La discusión entera del mundo moderno cabe en esta semana. Toma partido y después defiende el contrario.'),
+      {sh:'Del plan (semana 2): individualismo frente a comunidad.',
+       mat:'Del plan (segunda semana): ecuaciones e inecuaciones de primer grado; el valor absoluto como herramienta — definición, propiedades, ecuaciones e inecuaciones con valor absoluto.',
+       ing:'Del Scope: analizar el discurso político y la postura ideológica; identificar la manipulación lingüística.',
+       ent:'Del plan: práctica con exámenes de años anteriores.',
+       com:'El contraste entre las dos posturas, por escrito.'}),
+    c(3, 5, L('The community','La comunidad'), L('Taylor','Taylor'),
+      L('Communitarianism, applied','Comunitarismo, aplicado'), 'report',
+      L('Taylor says you cannot even want something without a community that made wanting it possible. Argue with that.',
+        'Taylor dice que ni siquiera puedes querer algo sin una comunidad que hiciera posible quererlo. Discútelo.'),
+      {sh:'Del plan (semana 3): Charles Taylor y el comunitarismo; el sentido de pertenencia.',
+       mat:'Del plan (tercera semana): ecuaciones de segundo grado —fórmula general, factorización y discriminante— y sistemas de ecuaciones lineales de dos y tres variables.',
+       ing:'Del Scope: artículo de opinión para publicar, 450-550 palabras — primer borrador; estilo editorial y recursos retóricos.',
+       arte:'Del plan: introducción a la apreciación de la música académica — barroco y clásico, forma sonata.',
+       com:'La ficha de Taylor, resumida para el anexo del acta.'}),
+    c(4, 5, L('The territory','El territorio'), L('Citizenship and the map','Ciudadanía y el mapa'),
+      L('The territory, surveyed','El territorio, levantado'), 'map',
+      L('You cannot found a place you have not measured. This week the community gets coordinates.',
+        'No se puede fundar un sitio que no has medido. Esta semana la comunidad tiene coordenadas.'),
+      {sh:'Del plan (semana 4): comunidades políticas y ciudadanía.',
+       mat:'Del plan (cuarta semana): del punto al recorrido en el plano cartesiano —ubicación de puntos, distancia, punto medio y pendiente— y funciones que explican cambios y valores fijos.',
+       ing:'Del Scope: modales avanzados de deducción y crítica —must have, can’t have, should have, ought to have— y estructuras paralelas en la escritura formal.',
+       ent:'Del plan: finalización de la documentación del proyecto.',
+       com:'La descripción del territorio en castellano.'}),
+    c(5, 5, L('The territory','El territorio'), L('How much for each','Cuánto para cada uno'),
+      L('Areas and the article','Áreas y el artículo'), 'chart',
+      L('How much land per person is a political question that answers itself with an area formula.',
+        'Cuánta tierra por persona es una pregunta política que se contesta con una fórmula de áreas.'),
+      {mat:'Del plan (quinta semana): áreas de figuras planas —regiones triangulares y cuadrangulares, área del círculo— y semejanza de triángulos.',
+       sh:'Del plan (semana 5): los desafíos de la comunidad hoy.',
+       ing:'Del Scope: artículo de opinión terminado; revisión de estilo, cohesión e impacto con estructuras variadas de nivel C1. Del plan: textos literarios de estructura compleja, 1500 palabras.',
+       ent:'Del plan: portafolio de evidencias completo.',
+       com:'La corrección del artículo y su versión castellana.'}),
+    c(6, 5, L('The founding','La fundación'), L('My role in it','Mi papel en ella'),
+      L('Founding act + speech','Acto fundacional + discurso'), 'speech',
+      L('Five minutes and then questions. The questions are the part that counts.',
+        'Cinco minutos y después preguntas. Las preguntas son la parte que cuenta.'),
+      {sh:'Del plan (semana 6): mi papel en la comunidad política.',
+       mat:'Del plan (sexta semana): sólidos geométricos —cubo, paralelepípedo, cilindro y cono—, área y volumen, y razones trigonométricas con identidades básicas.',
+       ing:'Del Scope: discurso de opinión política de cinco minutos con turno de preguntas; debate modelo ONU o parlamentario. Del plan: discursos improvisados y presentaciones sobre acontecimientos globales.',
+       ent:'Del plan: presentación final y entrega del portafolio del proyecto.',
+       arte:'Del plan: romanticismo y forma sonata — la música que abre y cierra el acto.',
+       com:'El acta fundacional, archivada en castellano.'}),
+    c(7, 6, L('The exam','El examen'), L('Strategy','Estrategia'),
+      L('C1 strategies','Estrategias C1'), 'guide',
+      L('The exam is not a new subject. It is everything you already did, under a clock.',
+        'El examen no es una asignatura nueva. Es todo lo que ya hiciste, con un reloj delante.'),
+      {ing:'Del Scope: estrategias de examen C1 —gestión del tiempo, vocabulario desconocido, distinguir idea general de detalle—; formación de palabras con prefijos y sufijos.',
+       com:'Las mismas estrategias, aplicadas a la comprensión lectora en castellano.'},
+      'A partir de aquí empieza U6 (noviembre), que NO tiene contenido cargado en ninguna área salvo Inglés. En 11.º esto pesa menos que en el resto: el Scope de U6 es explícitamente la preparación del examen C1 y del Diploma, y Enterprise ya cerró su portafolio en U5.'),
+    c(8, 6, L('The exam','El examen'), L('Writing under a clock','Escribir con reloj'),
+      L('All task types','Todos los formatos'), 'report',
+      L('Essay, report, proposal, formal letter. You have written every one of them this year. Now do it in forty minutes.',
+        'Ensayo, informe, propuesta, carta formal. Este año has escrito todos. Ahora hazlo en cuarenta minutos.'),
+      {ing:'Del Scope: escritura de examen C1 en todos los formatos —ensayo, informe, propuesta y carta formal, de 350 a 500 palabras y en condiciones de tiempo—; estrategias de corrección de errores.'},
+      'U6 sigue sin contenido cargado fuera de Inglés.'),
+    c(9, 6, L('The exam','El examen'), L('Lord of the Flies closes','Se cierra El señor de las moscas'),
+      L('Comparative essay','Ensayo comparativo'), 'report',
+      L('Golding’s island had no founding document. Yours does. That comparison is your essay.',
+        'La isla de Golding no tenía acta fundacional. La tuya sí. Esa comparación es tu ensayo.'),
+      {ing:'Del Scope: Lord of the Flies, capítulos 7-12, y ensayo comparativo de dos novelas; textos de examen —texto con huecos, opción múltiple y emparejar títulos—.',
+       sh:'El contraste entre el acta fundacional propia y lo que falla en la isla.'},
+      'U6 sigue sin contenido cargado fuera de Inglés.'),
+    c(10, 6, L('The exam','El examen'), L('Transformation','Transformación'),
+      L('Use of English + listening','Use of English + listening'), 'guide',
+      L('Key word transformation is grammar with the safety net removed. That is why it works.',
+        'La transformación con palabra clave es gramática sin red. Por eso funciona.'),
+      {ing:'Del Scope: repaso gramatical C1 —transformación con palabra clave estilo FCE/CAE, elipsis y sustitución, open cloze—; listening de examen en todos sus formatos; idioms y verbos frasales en contexto académico.'},
+      'U6 sigue sin contenido cargado fuera de Inglés.'),
+    c(11, 6, L('The exam','El examen'), L('The long turn','El turno largo'),
+      L('Speaking + final portfolio','Speaking + portafolio final'), 'speech',
+      L('Last week of school English. Speak about what you founded — it is the best material you have.',
+        'Última semana de inglés del colegio. Habla de lo que fundaste: es el mejor material que tienes.'),
+      {ing:'Del Scope: speaking de examen C1 —turno largo y discusión—; autoevaluación de preparación en las cuatro destrezas; portafolio de fin de año con cinco piezas y reflexión extensa; revisión de los diez atributos del perfil.',
+       com:'La reflexión final del portafolio.'},
+      'U6 sigue sin contenido cargado fuera de Inglés: el cierre se sostiene en el portafolio del Scope, que en 11.º es el de fin de etapa.')
+  ],
+  evaluacion:[
+    {dimension:'Argumentación política', areas:'SH',
+     descriptor:'Usa a Taylor para sostener una posición propia, y sabe decir qué le objetaría un individualista.'},
+    {dimension:'Geometría aplicada', areas:'MAT',
+     descriptor:'El territorio está levantado con distancias, áreas y volúmenes calculados, no estimados.'},
+    {dimension:'Escritura y oratoria C1', areas:'ING',
+     descriptor:'El artículo de opinión y el discurso sostienen registro, cohesión y recursos retóricos de nivel C1.'},
+    {dimension:'Portafolio y presentación', areas:'ENT',
+     descriptor:'La documentación está completa y la presentación final se defiende ante preguntas.'},
+    {dimension:'La cláusula del fracaso', areas:'todas',
+     descriptor:'El acta dice qué se hace cuando la comunidad falla, y lo dice de forma concreta.'}
+  ],
+  perfil:[2,3,8,10],
+  revisar:['U6 no tiene contenido cargado en ninguna área. En 11.º pesa menos porque el Scope de U6 es exactamente la preparación del examen C1 y del Diploma, pero conviene confirmarlo con coordinación.',
+           'En U5 de 11.º hay cinco áreas cargadas de nueve: Matemática, Arte, Enterprise, Inglés y Spiritual History.',
+           'Matemática y Spiritual History de 11.º traen el contenido repartido semana a semana en el propio documento del colegio: en esas dos columnas, la semana del arco es literalmente la semana del plan.',
+           'Enterprise cierra su portafolio y su examen en U5, no en U6: el calendario de entregas de noviembre no debe contar con ese curso.']
+},
 
 };
 })();

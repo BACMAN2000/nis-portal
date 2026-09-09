@@ -69,6 +69,11 @@ ul.tight li{margin:.22em 0}
 .area ul{margin:0;padding-left:1.05em;font-size:.83rem;color:var(--ink)}
 .area li{margin:.15em 0}
 .pnote{font-size:.76rem;color:var(--grey);margin:10px 0 0}
+/* La procedencia de una semana entera: en secundaria hay unidades sin
+   contenido cargado y la pantalla tiene que decirlo donde se lee, no en
+   una nota al pie que nadie abre. */
+.nota-fuente{background:#FFFBEB;border:1px solid #FDE68A;border-left:4px solid #F59E0B;
+  border-radius:8px;padding:9px 12px;color:#92400E;font-size:.8rem;margin:0 0 12px}
 .delDocx{font-size:.62rem;font-weight:700;color:#5B21B6;background:#F5F3FF;
   padding:1px 6px;border-radius:999px;letter-spacing:0;text-transform:none}
 
@@ -207,7 +212,7 @@ a.arc p{max-width:60%}
 <script src="project-models.js?v=2"></script>
 <script src="project-cursos.js?v=3"></script>
 <script src="project-arcs-sec.js?v=1"></script>
-<script src="project-arcs-sec11.js?v=1"></script>
+<script src="project-arcs-sec11.js?v=2"></script>
 <script>
 const $ = s => document.querySelector(s);
 const P = new URLSearchParams(location.search);
@@ -282,6 +287,7 @@ const UI = {
   cursosTit:   {en:'What each subject does this week', es:'Lo que hace cada curso esta semana'},
   cursosHint:  {en:'the task of each subject inside the project', es:'la tarea de cada curso dentro del proyecto'},
   delPlanBadge:{en:'from the annual plan', es:'del plan anual'},
+  delScopeBadge:{en:'from the English Scope', es:'del Scope de inglés'},
   cursosProp:  {en:'Portal proposal — to agree with each teacher',
                 es:'Propuesta del portal — para acordar con cada profesor'},
   /* --- proyectos interdisciplinarios de secundaria --- */
@@ -462,15 +468,31 @@ let SCOPE = null, SEC = null;
 const AREA_NOMBRE = {
   science:'Science', social:'Social Studies', math:'Math', english:'English',
   comunicacion:'Comunicación', tutoria:'Tutoría', pe:'PE',
-  art:'Art', music:'Music', drama:'Drama', spiritual:'Spiritual History'
+  art:'Art', music:'Music', drama:'Drama', spiritual:'Spiritual History',
+  /* Secundaria nombra sus areas con otras claves (ver project-arcs-sec.js).
+     Van en la misma tabla para que la semana de un arco de once semanas
+     titule sus tarjetas con el nombre del curso y no con la clave cruda. */
+  com:'Comunicación', mat:'Matemática', cyt:'Ciencia y Tecnología',
+  ccss:'Ciencias Sociales', arte:'Arte y Cultura', ict:'ICT', ing:'Inglés',
+  sh:'Spiritual History', fr:'Français', fil:'Philosophy', ent:'Enterprise'
 };
-const AREA_ORDEN = ['science','social','math','english','comunicacion','pe','tutoria','art','music','drama','spiritual'];
+const AREA_ORDEN = ['science','social','math','english','comunicacion','pe','tutoria','art','music','drama','spiritual',
+  'com','mat','cyt','ccss','ing','ict','fil','ent','arte','sh','fr'];
 /* Un icono por area. En primaria la semana es un muro de texto en once
    idiomas de asignatura; el icono deja encontrar la propia de un vistazo. */
 const AREA_ICONO = {
   science:'🔬', social:'🌎', math:'🔢', english:'🗣️', comunicacion:'📖',
-  tutoria:'🤝', pe:'⚽', art:'🎨', music:'🎵', drama:'🎭', spiritual:'🕊️'
+  tutoria:'🤝', pe:'⚽', art:'🎨', music:'🎵', drama:'🎭', spiritual:'🕊️',
+  com:'📖', mat:'🔢', cyt:'🔬', ccss:'🌎', arte:'🎨', ict:'💻', ing:'🗣️',
+  sh:'🕊️', fr:'🇫🇷', fil:'🤔', ent:'💼'
 };
+
+/* De donde sale una linea de curso. La que empieza por "Del plan:" viene del
+   Annual Plan o del documento de conexiones del colegio; la que empieza por
+   "Del Scope:" viene del Scope & Sequence de ingles. Las dos son contenido
+   del colegio y se pintan igual; lo que no lleva prefijo es propuesta del
+   portal, para acordar con el profesor. */
+const RE_FUENTE = /^Del (plan|Scope|documento)([ ]*\([^)]*\))?:[ ]*/;
 
 function esc(s){ return String(s==null?'':s)
   .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
@@ -785,6 +807,7 @@ function pintaArco11(k){
       </summary>
       <div class="body">
         ${bloqueAliento(w.aliento)}
+        ${w.nota ? `<p class="pnote nota-fuente">${esc(w.nota)}</p>` : ''}
         ${bloqueCursos(w.cursos)}
         <div class="mdl"><h5>${u('modeloTit')} <b>${esc(t(w.hito))}</b></h5>
           <div class="cuerpo"><div class="lamina">${lamina(mdl, p.cover)}
@@ -1205,11 +1228,14 @@ function bloqueCursos(cursos){
      del Annual Plan de esa misma semana; el resto es propuesta del portal. */
   const tarjeta = x => {
     const txt = String(cursos[x] || '');
-    const dp = txt.indexOf('Del plan:') === 0;
-    return `<div class="area curso${dp ? ' delplan' : ''}">
+    const m = txt.match(RE_FUENTE);
+    /* El parentesis del prefijo dice de que semana del plan sale la linea:
+       se conserva al principio del texto, que es donde se lee. */
+    const cuerpo = m ? ((m[2] ? m[2].trim() + ' ' : '') + txt.slice(m[0].length)) : txt;
+    return `<div class="area curso${m ? ' delplan' : ''}">
       <h5><span class="ico" aria-hidden="true">${AREA_ICONO[x] || '\u2022'}</span>${AREA_NOMBRE[x] || x}
-        ${dp ? `<span class="badge src">${u('delPlanBadge')}</span>` : ''}</h5>
-      <p>${esc(dp ? txt.slice(9).trim() : txt)}</p></div>`;
+        ${m ? `<span class="badge src">${u(m[1] === 'Scope' ? 'delScopeBadge' : 'delPlanBadge')}</span>` : ''}</h5>
+      <p>${esc(cuerpo)}</p></div>`;
   };
   return `<div class="cursos">
     <h5>${u('cursosTit')} <span class="badge own">${u('cursosProp')}</span></h5>

@@ -61,6 +61,7 @@ td.hito{background:#F8FAFC;font-size:.72rem;color:var(--gris);width:120px}
 .prod .integra div{border:1px solid var(--propB);background:var(--prop);border-radius:8px;padding:8px 11px;font-size:.8rem}
 .prod .integra b{display:block;color:var(--propT);margin-bottom:2px}
 .dp{color:#15803D;font-size:.9em}
+td.nota{background:#FFFBEB;border-left:3px solid #F59E0B;color:#92400E;font-size:.7rem;font-style:italic}
 .leyenda{font-size:.78rem;color:var(--gris);margin:0 0 10px}
 .oculto{display:none}
 @media print{
@@ -94,7 +95,7 @@ td.hito{background:#F8FAFC;font-size:.72rem;color:var(--gris);width:120px}
 
 <script src="project-arcs.js?v=11"></script>
 <script src="project-cursos.js?v=3"></script>
-<script src="project-arcs-sec11.js?v=1"></script>
+<script src="project-arcs-sec11.js?v=2"></script>
 <script>
 const $ = q => document.querySelector(q);
 const P = new URLSearchParams(location.search);
@@ -155,7 +156,7 @@ function normaliza(){
       evaluacion: (p.evaluacion || []).map(e => ({dim: e.dimension, areas: e.areas, desc: e.descriptor})),
       revisar: p.revisar || [],
       semanas: p.semanas.map(w => ({n: w.n, etiqueta: 'U' + w.unidad,
-        foco: es(w.foco), hito: es(w.hito), cursos: w.cursos || null}))});
+        foco: es(w.foco), hito: es(w.hito), cursos: w.cursos || null, nota: w.nota || ''}))});
   });
   out.sort((a, b) => a.orden[0] - b.orden[0] || a.orden[1] - b.orden[1] || a.orden[2] - b.orden[2]);
   return out;
@@ -197,13 +198,25 @@ function producto(a){
   </div>`;
 }
 
-/* Una linea que empieza por "Del plan:" es contenido del colegio; el resto es
-   propuesta. En papel se distingue con un punto verde delante, que es lo
-   minimo que se ve en blanco y negro sin dejar de verse. */
+/* Una linea que empieza por "Del plan:" (Annual Plan o documento de
+   conexiones) o por "Del Scope:" (Scope & Sequence de ingles) es contenido
+   del colegio; el resto es propuesta. En papel se distingue con un punto
+   verde delante, que es lo minimo que se ve en blanco y negro sin dejar de
+   verse. */
+const RE_FUENTE = /^Del (plan|Scope|documento)([ ]*\([^)]*\))?:[ ]*/;
 function celda(txt){
   const t = String(txt || '');
-  if(t.indexOf('Del plan:') !== 0) return esc(t);
-  return '<span class="dp" title="del plan anual">&#9679;</span> ' + esc(t.slice(9).trim());
+  const m = t.match(RE_FUENTE);
+  if(!m) return esc(t);
+  const cuerpo = (m[2] ? m[2].trim() + ' ' : '') + t.slice(m[0].length);
+  return '<span class="dp" title="contenido del colegio">&#9679;</span> ' + esc(cuerpo);
+}
+
+/* La nota de procedencia solo se imprime cuando cambia: si no, la misma
+   advertencia sale cinco veces seguidas y deja de leerse. */
+function filaNota(s, prev, cols){
+  if(!s.nota || s.nota === prev) return '';
+  return `<tr><td class="nota" colspan="${cols}">${esc(s.nota)}</td></tr>`;
 }
 
 function matriz(a){
@@ -211,7 +224,10 @@ function matriz(a){
   if(!cs.length) return `<div class="prod"><p>Este proyecto todavía no tiene el detalle por curso.</p></div>`;
   let h = `<div class="matriz"><table><tr><th>Semana</th><th>Hito</th>
     ${cs.map(c => `<th>${AREA_ICONO[c] || ''} ${esc(AREA_NOMBRE[c] || c)}</th>`).join('')}</tr>`;
+  let prev = '';
   a.semanas.forEach(s => {
+    h += filaNota(s, prev, cs.length + 2);
+    prev = s.nota || prev;
     h += `<tr><td class="sem">W${s.n}<small>${esc(s.etiqueta)}</small><small>${esc(s.foco)}</small></td>
       <td class="hito">${esc(s.hito)}</td>
       ${cs.map(c => `<td>${celda((s.cursos || {})[c])}</td>`).join('')}</tr>`;
@@ -223,9 +239,13 @@ function porCurso(a){
   const cs = cursosDe(a);
   if(!cs.length) return `<div class="prod"><p>Este proyecto todavía no tiene el detalle por curso.</p></div>`;
   return cs.map(c => {
-    const filas = a.semanas.filter(s => (s.cursos || {})[c])
-      .map(s => `<tr><td class="sem">W${s.n}<small>${esc(s.etiqueta)}</small></td>
-        <td class="hito">${esc(s.hito)}</td><td>${celda(s.cursos[c])}</td></tr>`).join('');
+    let prev = '';
+    const filas = a.semanas.filter(s => (s.cursos || {})[c]).map(s => {
+      const nota = filaNota(s, prev, 3);
+      prev = s.nota || prev;
+      return nota + `<tr><td class="sem">W${s.n}<small>${esc(s.etiqueta)}</small></td>
+        <td class="hito">${esc(s.hito)}</td><td>${celda(s.cursos[c])}</td></tr>`;
+    }).join('');
     const n = a.semanas.filter(s => (s.cursos || {})[c]).length;
     return `<div class="curso-hoja">
       <h2>${AREA_ICONO[c] || ''} ${esc(AREA_NOMBRE[c] || c)}</h2>
