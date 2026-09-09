@@ -315,8 +315,9 @@ const UI = {
   aQuienEval:  {en:'Subjects', es:'Áreas'},
   dimension:   {en:'Dimension', es:'Dimensión'},
   verFormato:  {en:'Printable version for coordination', es:'Versión imprimible para coordinación'},
-  verU56:      {en:'The proposal: U5 + U6 as one eleven-week unit',
-                es:'La propuesta: U5 + U6 como una sola unidad de once semanas'},
+  /* Sirve a las dos etapas: en secundaria son U5 y U6, en primaria P5 y P6. */
+  verU56:      {en:'The proposal: the whole term as one eleven-week unit',
+                es:'La propuesta: el trimestre como una sola unidad de once semanas'},
   verU56Hint:  {en:'built on the English Scope, with the Cambridge calendar as the argument',
                 es:'construida sobre el Scope de inglés, con el calendario de Cambridge como argumento'},
   u6Tit:       {en:'Unit 6 (November) has no proposal, on purpose',
@@ -1300,6 +1301,10 @@ function pintaIndice(){
     <div class="meta"><span>${nArcos} ${nArcos===1?u('arco'):u('arcos')}</span>
       <span>${u('semanasCal')}</span><span>P1–P6</span></div>
   </div>`;
+  h += `<div class="card" style="border-left:5px solid var(--warn);margin-bottom:16px">
+    <a href="unidad56.html?${soloGrado ? 'grado=' + soloGrado.replace('g','') : 'etapa=primaria'}"
+      ><b>${u('verU56')}</b> &#8594;</a><br>
+    <span class="hint">${u('verU56Hint')}</span></div>`;
   if(!nArcos){
     h += `<div class="card center"><p class="muted" style="margin:0">
       ${u('sinArcos')}</p></div>`;

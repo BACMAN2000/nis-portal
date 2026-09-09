@@ -143,7 +143,9 @@ const es = v => v == null ? '' : (typeof v === 'string' ? v : (v.es || v.en || '
 /* La cobertura no se afirma, se calcula: se leen los bloques que el Scope
    declara para U5 y U6 de cada grado y se comprueba que cada uno tenga
    semana asignada. */
-let SCOPE = null;
+let SCOPE = null, PLAN = null;
+/* Lo que el usuario eligió en el selector, si eligió algo. */
+let forzado = null;
 function cobertura(g){
   if(!SCOPE) return null;
   const gs = SCOPE.grados.find(x => x.grado === 'G' + g);
@@ -160,59 +162,36 @@ function cobertura(g){
           sobra: Object.keys(donde).filter(x => esperado.indexOf(x) < 0)};
 }
 
-function argumento(){
-  const cal = U.calendario.map(c =>
-    `<tr><td class="sem" style="width:120px">${esc(c.cuando)}</td>
-      <td>${esc(c.que)}</td><td class="hito" style="width:230px">${esc(c.donde)}</td></tr>`).join('');
+/* Las razones y el calendario ya no viven aqui: son distintos en primaria y
+   en secundaria, y vienen de los datos. La pagina solo los pinta. */
+function argumento(et){
+  const e = U.etapas[et];
+  const cal = e.calendario.map(c =>
+    `<tr><td class="sem" style="width:132px">${esc(c.cuando)}</td>
+      <td>${esc(c.que)}</td><td class="hito" style="width:250px">${esc(c.donde)}</td></tr>`).join('');
+  const rango = e.grados[0] + '.º a ' + e.grados[e.grados.length - 1] + '.º';
   return `<div class="hero">
-    <p class="eyebrow">Secundaria &middot; 6.º a 11.º &middot; setiembre – noviembre 2026 &middot; propuesta a coordinación</p>
-    <h1>Unidad 5 y Unidad 6 son una sola unidad de once semanas</h1>
-    <p class="lead">En vez de una unidad de seis semanas en setiembre y otra de cinco en noviembre,
-      una sola planificación de once semanas por grado, con un solo producto y una sola nota.</p>
+    <p class="eyebrow">${esc(e.label)} &middot; ${rango} &middot; setiembre – noviembre 2026 &middot; propuesta a coordinación</p>
+    <h1>${et === 'primaria' ? 'El periodo 5 y el periodo 6 son una sola unidad de once semanas'
+                            : 'Unidad 5 y Unidad 6 son una sola unidad de once semanas'}</h1>
+    <p class="lead">${esc(e.lead)}</p>
     <p class="fuente">Construido sobre ${esc(U.fuente)}. La cobertura del final de cada grado se
-      calcula en vivo contra ese archivo.</p>
+      calcula en vivo contra esos archivos. Reparto: ${esc(e.reparto)}.</p>
   </div>
 
   <div class="card">
     <h2>Por qué</h2>
-    <div class="razones">
-      <div class="razon"><span class="n">1</span>
-        <h4>U6 no existe</h4>
-        <p>Los seis documentos de «Proyecto 5 (U6) – Noviembre» están en blanco en las nueve áreas
-        de los seis grados, y los seis son la misma plantilla copiada: hasta la cabecera dice
-        «GRADO: 6 / UNIDAD 3». No es un área que se olvidó; esa unidad no se llegó a planificar.</p></div>
-      <div class="razon"><span class="n">2</span>
-        <h4>Noviembre ya está ocupado</h4>
-        <p>El calendario del propio Scope pone el <b>Mock 2 en octubre</b>, la matrícula y la última
-        milla en octubre–noviembre, y el <b>examen oficial de Cambridge el 2 de diciembre</b>. Abrir
-        contenido nuevo de seis semanas ahí compite con la recta final.</p></div>
-      <div class="razon"><span class="n">3</span>
-        <h4>El Scope ya las trata como una</h4>
-        <p>El plan lector es <b>un solo libro partido por la mitad</b> (U5 la primera parte, U6
-        «Ch. X–end + comparative essay»); U6 cierra con el portafolio <b>de fin de trimestre</b>, que
-        evalúa once semanas y no cinco; y en 11.º U6 ni siquiera es contenido: se llama
-        «C1 Mastery &amp; IB Diploma Exam».</p></div>
-      <div class="razon"><span class="n">4</span>
-        <h4>El Show queda dentro</h4>
-        <p>El Creative Arts Show cae en U5 y es lo único cargado en cuatro grados. Con la unidad de
-        once semanas el Show es el cierre de la primera mitad y no el corte entre dos unidades.</p></div>
-    </div>
+    <div class="razones">${e.razones.map((r, i) => `<div class="razon">
+      <span class="n">${i + 1}</span><h4>${esc(r[0])}</h4><p>${r[1]}</p></div>`).join('')}</div>
 
     <h3>El calendario con el que hay que encajar</h3>
     <div class="tabla"><table>
       <tr><th>Cuándo</th><th>Qué</th><th>Dónde cae en la unidad</th></tr>${cal}</table></div>
-    <div class="alerta"><b>Presentan examen oficial el 2 de diciembre,</b> según el pathway y el
-      calendario del Scope —que coinciden—: 6.º (A2 Key), 8.º (B1 Preliminary), 9.º (B2 First) y
-      11.º (C1 Advanced). 7.º y 10.º serían grados puente y no presentarían: su noviembre sí puede
-      ser contenido nuevo, y la propuesta lo aprovecha.</div>
-    ${discrepancia()}
+    <div class="alerta">${e.alerta}</div>
+    ${et === 'secundaria' ? discrepancia() : ''}
+    ${et === 'primaria' ? huecosPlan() : ''}
 
-    <div class="pide"><b>Lo que se pide a coordinación</b>
-      No cargar U6 desde cero en nueve áreas por seis grados —54 documentos— sino ampliar U5 a once
-      semanas y firmar <b>una</b> planificación por grado, con dos evidencias calificadas dentro
-      (una en la semana 5 y otra en la 9 o la 10) y el portafolio del trimestre al final.
-      Las demás áreas copian la misma duración: el proyecto interdisciplinario del trimestre ya está
-      escrito a once semanas en el portal.</div>
+    <div class="pide">${e.pide.join(' ')}</div>
   </div>`;
 }
 
@@ -230,10 +209,51 @@ function discrepancia(){
     <p style="margin:0"><i>${esc(d.mientras)}</i></p></div>`;
 }
 
+/* Que areas del Annual Plan no aparecen NI UNA semana en las once. Es el dato
+   que hace util la reunion de primaria, asi que no se escribe a mano: se
+   cuenta del propio plan cada vez que se abre la pagina. */
+const AREAS = {comunicacion:'Comunicación', math:'Math', science:'Science', social:'Social Studies',
+  english:'English', art:'Art', music:'Music', pe:'PE', tutoria:'Tutoría'};
+function cuentaPlan(g){
+  if(!PLAN) return null;
+  const gr = (PLAN.grados || {})['g' + g];
+  if(!gr) return null;
+  const n = {};
+  [5, 6].forEach(pn => {
+    const per = (gr.periodos || []).find(x => x.periodo === pn) || {semanas: []};
+    (per.semanas || []).forEach(w => Object.keys(w.areas || {}).forEach(a => {
+      if((w.areas[a] || []).length) n[a] = (n[a] || 0) + 1;
+    }));
+  });
+  return n;
+}
+function huecosPlan(){
+  if(!PLAN) return '';
+  const filas = U.etapas.primaria.grados.map(g => {
+    const n = cuentaPlan(g); if(!n) return '';
+    const ks = Object.keys(AREAS);
+    const cero = ks.filter(a => !n[a]), poco = ks.filter(a => n[a] && n[a] <= 3);
+    return `<tr><td class="sem" style="width:64px">${g}.º</td>
+      <td>${cero.length ? cero.map(a => esc(AREAS[a])).join(', ') : '&mdash;'}</td>
+      <td>${poco.length ? poco.map(a => esc(AREAS[a]) + ' (' + n[a] + ')').join(', ') : '&mdash;'}</td></tr>`;
+  }).join('');
+  return `<h3>Qué áreas no llegan a estas once semanas</h3>
+    <p style="font-size:.84rem;margin:0 0 7px">Contado en vivo sobre el Annual Plan del colegio,
+      periodos 5 y 6. Es el hueco que un producto integrador de once semanas puede cubrir.</p>
+    <div class="tabla"><table>
+      <tr><th style="width:64px">Grado</th><th>Sin una sola semana en las once</th>
+        <th style="width:32%">Con 3 semanas o menos</th></tr>${filas}</table></div>`;
+}
+
+const etiqMitad = (et, de) => et === 'primaria'
+  ? 'P' + de.slice(1) + ' · U' + de.slice(1) + ' del Scope'
+  : de + ' del Scope';
+
 function pintaGrado(g){
   const d = U.grados[g], ex = U.examen[g], conEx = ex.indexOf('—') !== 0;
+  const pri = d.etapa === 'primaria';
   const filas = d.semanas.map(s => `<tr>
-    <td class="sem ${s.de === 'U5' ? 'u5' : 'u6'}">Semana ${s.n}<small>${s.de} del Scope</small></td>
+    <td class="sem ${s.de === 'U5' ? 'u5' : 'u6'}">Semana ${s.n}<small>${etiqMitad(d.etapa, s.de)}</small></td>
     <td class="hito">${esc(es(s.foco))}</td>
     <td>${esc(s.lengua)}</td>
     <td>${esc(s.lectura)}</td>
@@ -261,11 +281,12 @@ function pintaGrado(g){
   return `<div class="grado">
     <h2>${g}.º &middot; ${esc(es(d.titulo))}</h2>
     <p class="meta">CEFR ${esc(d.cefr)} &middot; 11 semanas &middot; ${esc(U.trimestre.inicio)} → ${esc(U.trimestre.fin)}</p>
-    <p class="fusion"><b>U5 «${esc(d.temaU5)}»</b> + <b>U6 «${esc(d.temaU6)}»</b> &rarr; una unidad</p>
+    <p class="fusion"><b>${pri ? 'P5' : 'U5'} «${esc(d.temaU5)}»</b> +
+      <b>${pri ? 'P6' : 'U6'} «${esc(d.temaU6)}»</b> &rarr; una unidad</p>
     <div class="chips">
       <span class="chip${conEx ? ' ex' : ' no'}">${conEx ? '2 de diciembre: ' : ''}${esc(ex)}</span>
       <span class="chip">Plan lector: ${esc(d.reader)}</span>
-      ${d.escritura.map(e => `<span class="chip">${esc(e.de)}: ${esc(e.que)}</span>`).join('')}
+      ${d.escritura.map(e => `<span class="chip">${pri ? 'P' + e.de.slice(1) : e.de}: ${esc(e.que)}</span>`).join('')}
     </div>
     <p class="hilo">${esc(d.hilo)}</p>
     <div class="tabla"><table>
@@ -286,24 +307,48 @@ function marcaEvidencia(txt){
   return esc(t.slice(0, corte)) + ' <span class="evid">' + esc(t.slice(corte).trim()) + '</span>';
 }
 
-function pinta(){
+/* La etapa sale del grado pedido; sin grado, de ?etapa; y si no, secundaria,
+   que es como nacio esta pagina y como esta enlazada desde fuera. */
+function pedido(){
   const P = new URLSearchParams(location.search);
-  const g = P.get('grado');
-  const lista = g && U.grados[g] ? [Number(g)] : GRADOS;
-  document.getElementById('app').innerHTML = argumento()
-    + `<p class="leyenda">Franja del color de la unidad de origen:
-        <i class="a"></i> contenido de U5 &nbsp; <i class="b"></i> contenido de U6.
+  return {grado: (forzado ? forzado.grado : P.get('grado')),
+          etapa: (forzado ? forzado.etapa : P.get('etapa'))};
+}
+function etapaActual(){
+  const q = pedido();
+  if(q.grado && U.grados[q.grado]) return U.grados[q.grado].etapa;
+  return U.etapas[q.etapa] ? q.etapa : 'secundaria';
+}
+
+function pinta(){
+  const g = pedido().grado, et = etapaActual();
+  const lista = g && U.grados[g] ? [Number(g)] : U.etapas[et].grados;
+  const u5 = et === 'primaria' ? 'P5' : 'U5', u6 = et === 'primaria' ? 'P6' : 'U6';
+  document.getElementById('app').innerHTML = argumento(et)
+    + `<p class="leyenda">Franja del color de la mitad de origen:
+        <i class="a"></i> contenido de ${u5} &nbsp; <i class="b"></i> contenido de ${u6}.
         Las dos entregas calificadas van marcadas en verde.</p>`
     + lista.map(pintaGrado).join('');
+  document.title = U.etapas[et].label + ': una sola unidad de once semanas · NIS';
 }
 
 const sel = document.getElementById('sel');
-sel.innerHTML = '<option value="">Los seis grados</option>'
-  + GRADOS.map(g => `<option value="${g}">${g}.º · ${esc(es(U.grados[g].titulo))}</option>`).join('');
-sel.value = new URLSearchParams(location.search).get('grado') || '';
+sel.innerHTML = Object.keys(U.etapas).map(et => {
+  const e = U.etapas[et];
+  return `<optgroup label="${esc(e.label)}">`
+    + `<option value="e:${et}">Todo ${esc(e.label.toLowerCase())} (${e.grados.length} grados)</option>`
+    + e.grados.map(g => `<option value="${g}">${g}.º · ${esc(es(U.grados[g].titulo))}</option>`).join('')
+    + '</optgroup>';
+}).join('');
+sel.value = pedido().grado || ('e:' + etapaActual());
+/* La copia suelta se abre desde el disco, y ahi replaceState puede fallar.
+   La eleccion del selector se guarda en `forzado` para que repinte igual. */
 sel.onchange = () => {
   const v = sel.value;
-  history.replaceState(null, '', v ? '?grado=' + v : location.pathname);
+  forzado = v.indexOf('e:') === 0 ? {etapa: v.slice(2), grado: null} : {etapa: null, grado: v};
+  try{
+    history.replaceState(null, '', v.indexOf('e:') === 0 ? '?etapa=' + v.slice(2) : '?grado=' + v);
+  }catch(e){ /* file:// no deja reescribir la URL; da igual, ya está en forzado */ }
   pinta(); window.scrollTo(0, 0);
 };
 document.getElementById('print').onclick = () => window.print();
@@ -313,11 +358,13 @@ pinta();
    falta el recuadro de comprobación. */
 /* La copia suelta que se lleva a la reunion trae el Scope incrustado en
    window.__SCOPE y no pide nada a la red (ver tools/gen-u56.js). */
-if(window.__SCOPE){ SCOPE = window.__SCOPE; pinta(); }
-else fetch('scope/scope-2026.json', {cache: 'no-store'})
-  .then(r => r.ok ? r.json() : null)
-  .then(j => { if(j){ SCOPE = j; pinta(); } })
-  .catch(() => {});
+function carga(url, guarda, incrustado){
+  if(incrustado){ guarda(incrustado); pinta(); return; }
+  fetch(url, {cache: 'no-store'}).then(r => r.ok ? r.json() : null)
+    .then(j => { if(j){ guarda(j); pinta(); } }).catch(() => {});
+}
+carga('scope/scope-2026.json', j => { SCOPE = j; }, window.__SCOPE);
+carga('scope/annual-plan-primary-2026.json', j => { PLAN = j; }, window.__PLAN);
 </script>
 </body>
 </html>

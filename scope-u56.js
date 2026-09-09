@@ -59,14 +59,104 @@ function s(n, de, foco, lengua, lectura, escritura, oral, hito, cubre){
 window.SCOPE_U56 = {
   fuente:'scope/scope-2026.json (NIS_English_Master_SS_2026.xlsx) y scope/secundaria-conexiones-2026.json',
   trimestre:{inicio:'2026-09-14', fin:'2026-12-04', semanas:11},
-  calendario:[
-    {cuando:'Octubre', que:'MOCK EXAM 2 — ensayo final en condiciones oficiales', donde:'cae en las semanas 4 a 6 de la unidad'},
-    {cuando:'Octubre – noviembre', que:'Final prep + matrícula Cambridge (100 % matriculados a mediados de noviembre)', donde:'semanas 6 a 11'},
-    {cuando:'2 de diciembre', que:'EXAMEN OFICIAL CAMBRIDGE — 6.º, 8.º, 9.º y 11.º', donde:'la semana siguiente al cierre de la unidad'}
-  ],
-  /* Del pathway del Scope, que ademas coincide con su propio calendario: los
-     grados de examen son G6, G8, G9 y G11 en las dos listas. */
-  examen:{6:'Cambridge A2 Key (KET)', 7:'— (puente KET+ / PET)', 8:'Cambridge B1 Preliminary (PET)',
+
+/* Las dos etapas piden lo mismo —una unidad de once semanas en vez de dos—
+ * pero por razones que NO son las mismas, y conviene no mezclarlas:
+ *
+ *  En SECUNDARIA U6 esta vacia en las nueve areas de los seis grados. La
+ *  propuesta llena un hueco.
+ *
+ *  En PRIMARIA el periodo 6 esta tan cargado como el 5: aqui no hay hueco que
+ *  llenar, hay otra cosa. Los dos periodos ya son el mismo trimestre en el
+ *  propio Annual Plan (P5 = 14-sep a 23-oct, 5 semanas; P6 = 26-oct a 4-dic,
+ *  6 semanas, sin corte entre medias), el examen oficial de Cambridge cae
+ *  DENTRO de la ultima semana del periodo 6, y hay areas enteras que no
+ *  aparecen ni una semana en las once. Ese es el argumento, y la pagina lo
+ *  cuenta en vivo contra scope/annual-plan-primary-2026.json.
+ */
+  etapas:{
+  primaria:{
+    label:'Primaria', grados:[1,2,3,4,5], reparto:'semanas 1-5 = P5 · semanas 6-11 = P6',
+    lead:'En vez del periodo 5 (cinco semanas, del 14 de setiembre al 23 de octubre) y el periodo 6 '+
+      '(seis semanas, del 26 de octubre al 4 de diciembre) como dos unidades, una sola planificación '+
+      'de once semanas por grado, con un producto y una nota.',
+    razones:[
+      ['El calendario ya las trata como una',
+       'En el propio Annual Plan los dos periodos son «trimestre 3» y sus fechas son continuas: el '+
+       'P5 acaba el viernes 23 de octubre y el P6 empieza el lunes 26. No hay corte real entre medias, '+
+       'solo un cambio de número.'],
+      ['El examen cae dentro del periodo 6',
+       'Cambridge es el 2 de diciembre y el periodo 6 termina el 4. Con dos unidades, la sexta empieza '+
+       'el 26 de octubre y tiene que evaluar lo suyo la misma semana del examen. Con una, la segunda '+
+       'entrega es en la semana 10 y noviembre queda para repasar.'],
+      ['Hay áreas que no aparecen en las once semanas',
+       'Música no aparece ni una semana en ninguno de los cinco grados; Arte, en cuatro de cinco. '+
+       'En 4.º tampoco hay inglés, ni Personal Social, ni Tutoría. Un producto integrador de once '+
+       'semanas les da dónde entrar sin obligarles a programar dos unidades.'],
+      ['El inglés sí está escrito, en el Scope',
+       'Lo que no llegó al plan anual está en el Scope & Sequence, que trae U5 y U6 completas en los '+
+       'cinco grados con su vocabulario, su gramática, su plan lector y sus dos textos. La propuesta '+
+       'no inventa contenido: coloca el que ya existe.']
+    ],
+    calendario:[
+      {cuando:'14 set – 23 oct', que:'Periodo 5 del Annual Plan (5 semanas)', donde:'semanas 1 a 5 de la unidad'},
+      {cuando:'Octubre', que:'MOCK EXAM 2 — ensayo final en condiciones oficiales (2.º, 4.º y 5.º)', donde:'semanas 4 a 6'},
+      {cuando:'26 oct – 4 dic', que:'Periodo 6 del Annual Plan (6 semanas)', donde:'semanas 6 a 11'},
+      {cuando:'2 de diciembre', que:'EXAMEN OFICIAL CAMBRIDGE — Starters (2.º), Movers (4.º) y Flyers (5.º)',
+       donde:'dentro de la semana 11, dos días antes de que acabe el periodo'}
+    ],
+    alerta:'<b>Rinden examen oficial el 2 de diciembre:</b> 2.º (Starters), 4.º (Movers) y 5.º (Flyers). '+
+      '1.º y 3.º son grados de preparación y no rinden: su noviembre puede ser contenido de verdad.',
+    pide:['<b>Lo que se pide a coordinación de primaria</b>',
+      'Que el trimestre 3 se planifique como <b>una unidad de once semanas</b> —no como P5 más P6— con '+
+      'dos evidencias calificadas dentro (semana 5 y semana 10) y el portafolio al final, de modo que '+
+      'la semana del examen no lleve entrega nueva. El proyecto interdisciplinario del trimestre ya '+
+      'está escrito a once semanas en el portal, área por área y semana por semana.']
+  },
+  secundaria:{
+    label:'Secundaria', grados:[6,7,8,9,10,11], reparto:'semanas 1-6 = U5 · semanas 7-11 = U6',
+    lead:'En vez de una unidad de seis semanas en setiembre y otra de cinco en noviembre, una sola '+
+      'planificación de once semanas por grado, con un solo producto y una sola nota.',
+    razones:[
+      ['U6 no existe',
+       'Los seis documentos de «Proyecto 5 (U6) – Noviembre» están en blanco en las nueve áreas de los '+
+       'seis grados, y los seis son la misma plantilla copiada: hasta la cabecera dice «GRADO: 6 / '+
+       'UNIDAD 3». No es un área que se olvidó; esa unidad no se llegó a planificar.'],
+      ['Noviembre ya está ocupado',
+       'El calendario del propio Scope pone el Mock 2 en octubre, la matrícula y la última milla en '+
+       'octubre–noviembre, y el examen oficial de Cambridge el 2 de diciembre. Abrir contenido nuevo '+
+       'de seis semanas ahí compite con la recta final.'],
+      ['El Scope ya las trata como una',
+       'El plan lector es un solo libro partido por la mitad (U5 la primera parte, U6 «Ch. X–end + '+
+       'comparative essay»); U6 cierra con el portafolio de fin de trimestre, que evalúa once semanas '+
+       'y no cinco; y en 11.º U6 ni siquiera es contenido: se llama «C1 Mastery & IB Diploma Exam».'],
+      ['El Show queda dentro',
+       'El Creative Arts Show cae en U5 y es lo único cargado en cuatro grados. Con la unidad de once '+
+       'semanas el Show es el cierre de la primera mitad y no el corte entre dos unidades.']
+    ],
+    calendario:[
+      {cuando:'Octubre', que:'MOCK EXAM 2 — ensayo final en condiciones oficiales', donde:'cae en las semanas 4 a 6 de la unidad'},
+      {cuando:'Octubre – noviembre', que:'Final prep + matrícula Cambridge (100 % matriculados a mediados de noviembre)', donde:'semanas 6 a 11'},
+      {cuando:'2 de diciembre', que:'EXAMEN OFICIAL CAMBRIDGE — 6.º, 8.º, 9.º y 11.º', donde:'la semana siguiente al cierre de la unidad'}
+    ],
+    alerta:'<b>Presentan examen oficial el 2 de diciembre,</b> según el pathway y el calendario del '+
+      'Scope —que coinciden—: 6.º (A2 Key), 8.º (B1 Preliminary), 9.º (B2 First) y 11.º (C1 Advanced). '+
+      '7.º y 10.º serían grados puente y no presentarían: su noviembre sí puede ser contenido nuevo, '+
+      'y la propuesta lo aprovecha.',
+    pide:['<b>Lo que se pide a coordinación</b>',
+      'No cargar U6 desde cero en nueve áreas por seis grados —54 documentos— sino ampliar U5 a once '+
+      'semanas y firmar <b>una</b> planificación por grado, con dos evidencias calificadas dentro (una '+
+      'en la semana 5 y otra en la 9 o la 10) y el portafolio del trimestre al final. Las demás áreas '+
+      'copian la misma duración: el proyecto interdisciplinario del trimestre ya está escrito a once '+
+      'semanas en el portal.']
+  }},
+
+
+  /* Del pathway del Scope. En secundaria coincide ademas con su propio
+     calendario: los grados de examen son G6, G8, G9 y G11 en las dos listas. */
+  examen:{1:'— (preparación Pre-Starters)', 2:'Cambridge Starters', 3:'— (preparación Pre-Movers)',
+          4:'Cambridge Movers', 5:'Cambridge Flyers',
+          6:'Cambridge A2 Key (KET)', 7:'— (puente KET+ / PET)', 8:'Cambridge B1 Preliminary (PET)',
           9:'Cambridge B2 First (FCE)', 10:'— (consolidación FCE / puente CAE)', 11:'Cambridge C1 Advanced (CAE)'},
 
   /* Y aqui hay un desacuerdo entre dos documentos del colegio que esta
@@ -88,9 +178,381 @@ window.SCOPE_U56 = {
 
 grados:{
 
+/* ==================================================================== 1.o */
+1:{
+  etapa:'primaria', cefr:'Pre-A1', temaU5:'My Family', temaU6:'Food & Fun',
+  reader:'The Family Book (T. Parr) y The Very Hungry Caterpillar (E. Carle)',
+  titulo:L('My family and our table','Mi familia y nuestra mesa'),
+  hilo:'Quién vive en mi casa y qué comemos cuando estamos juntos. Es la misma mesa en las dos '+
+    'mitades: primero se dibuja quién se sienta en ella y después qué hay encima. En 1.º esta '+
+    'unidad no es una mejora, es la única planificación que existe: en las once semanas el plan '+
+    'anual solo carga inglés.',
+  escritura:[{de:'U5', que:'Árbol de familia con etiquetas y la frase «This is my ___»'},
+             {de:'U6', que:'«My plate»: dibujar y etiquetar 3-4 alimentos, con I like / I don’t like'}],
+  semanas:[
+    s(1,'U5',L('Who is in my house','Quién vive en mi casa'),
+      'Miembros de la familia: mum, dad, sister, brother, grandma, grandpa. Adjetivos: old, young, happy, kind. Sonidos iniciales del vocabulario de familia.',
+      'The Family Book, lectura compartida.','Dibujo de mi familia.','Presentar a mi familia: This is my mum.',
+      L('My family drawing','Dibujo de mi familia'),
+      ['U5:Vocabulary Development','U5:Phonics','U5:Reading Plan']),
+    s(2,'U5',L('Reading the family','Leer la familia'),
+      'Blending de palabras CVC.','Emparejar palabra e imagen; leer frases sencillas: This is my dad. Diagramas ilustrados de árbol de familia.',
+      'Emparejar la palabra con la foto antes de escribir.','Describir: She is tall.',
+      L('Word–picture match','Palabra e imagen'),
+      ['U5:Reading Skills','U5:Textual Comprehension']),
+    s(3,'U5',L('My, your, his, her','My, your, his, her'),
+      'Posesivos: my, your, his, her. Verbo to be: She is my grandma. Números como adjetivo: two sisters.',
+      '—','Frases con el posesivo correcto.',
+      'Escucha: identificar miembros de la familia en una descripción; adivinanzas «Who is it?».',
+      L('Possessives','Posesivos'),
+      ['U5:Language Conventions (Writing)','U5:Listening Skills']),
+    s(4,'U5',L('The family tree','El árbol de familia'),
+      'Clasificación por sonido inicial.','—',
+      'Árbol de familia con etiquetas; copiar «This is my ___ . He/She is ___». Del dibujo a la frase con el molde.',
+      'Escuchar y rodear: la tarea de la foto de familia.',L('Family tree','Árbol de familia'),
+      ['U5:Text Types (Writing)','U5:Idea Development & Process']),
+    s(5,'U5',L('Sharing my family','Presento a mi familia'),
+      'Repaso.','—','Ticket de salida: una frase sobre mi familia. PRIMERA EVIDENCIA CALIFICADA.',
+      'Presentación en pareja: la foto de mi familia.',L('Family presentation','Presentación de familia'),
+      ['U5:Speaking Skills','U5:Writing Reflection']),
+    s(6,'U6',L('What is on the table','Qué hay en la mesa'),
+      'Comida: apple, banana, bread, milk, egg, cake, water, juice. I like… / I don’t like… Repaso de todas las vocales cortas.',
+      'The Very Hungry Caterpillar: empezar el libro.','Banco de palabras de comida.','Decir qué me gusta.',
+      L('Food word bank','Banco de palabras de comida'),
+      ['U6:Vocabulary Development','U6:Phonics','U6:Reading Plan']),
+    s(7,'U6',L('Reading the menu','Leer el menú'),
+      'Emparejar palabra e imagen.','Leer y emparejar imágenes y palabras de comida; completar «I like ___» con banco de palabras. Cuadros de comida y menús ilustrados.',
+      'Elegir del banco la palabra que va.','Pedir en el café de la clase.',
+      L('Menu reading','Leer el menú'),
+      ['U6:Reading Skills','U6:Textual Comprehension']),
+    s(8,'U6',L('I like, I don’t like','I like, I don’t like'),
+      'Like + sustantivo: I like apples. Don’t like + sustantivo. Frase simple completa: sujeto + verbo + objeto.',
+      '—','Frases completas con la estructura.',
+      'Escucha: identificar alimentos en diálogos; encuesta de gustos «escuchar y marcar».',
+      L('Full sentences','Frases completas'),
+      ['U6:Language Conventions (Writing)','U6:Listening Skills']),
+    s(9,'U6',L('My plate','Mi plato'),
+      'Repaso de sonidos.','—',
+      'Dibujar y etiquetar «My plate» con 3-4 alimentos; copiar «I like ___ . I don’t like ___».',
+      'Juego de rol: pedir comida.',L('My plate','Mi plato'),
+      ['U6:Text Types (Writing)','U6:Idea Development & Process']),
+    s(10,'U6',L('The caterpillar ends','Se acaba la oruga'),
+      'Cantinela de fonética de fin de año.','The Very Hungry Caterpillar: terminar, secuenciar y volver a contar.',
+      'Versión final de «My plate». SEGUNDA EVIDENCIA CALIFICADA.',
+      'Nombrar las comidas del cuento; canción Fruit Salad.',
+      L('Retell + plate','Recontar + plato'),
+      ['U6:Reading Plan','U6:Speaking Skills']),
+    s(11,'U6',L('My six drawings','Mis seis dibujos'),
+      'Repaso general.','—','Portafolio de fin de año: mis seis dibujos.',
+      'Compartir en voz alta: mi unidad favorita.',L('Portfolio','Portafolio'),
+      ['U6:Writing Reflection'])
+  ],
+  gana:['1.º no tiene NADA cargado en las once semanas salvo inglés: ni Matemática, ni Ciencia, ni Comunicación, ni Personal Social, ni Arte, ni Música, ni Tutoría. Una sola unidad con producto integrador es la única forma de que el trimestre tenga plan.',
+        'Los dos libros del Scope —The Family Book y The Very Hungry Caterpillar— son la misma mesa: quién se sienta y qué se come. En once semanas se leen los dos con tiempo de volver al primero.',
+        '1.º no rinde examen Cambridge en diciembre, así que la semana 11 es cierre de año de verdad: el portafolio de los seis dibujos.']
+},
+
+/* ==================================================================== 2.o */
+2:{
+  etapa:'primaria', cefr:'Pre-A1→A1', temaU5:'Food & Health', temaU6:'Hobbies & Play',
+  reader:'Eat Your Peas (K. Gray) y Horrid Henry’s Football Fiend (F. Simon, adaptado)',
+  titulo:L('What I eat and what I play','Lo que como y lo que juego'),
+  hilo:'Las dos mitades son el mismo día de un niño de siete años: lo que se lleva a la boca y lo '+
+    'que hace después. La primera enseña a aconsejar (should / shouldn’t) y la segunda a contar '+
+    'con qué frecuencia hace uno lo que le gusta.',
+  escritura:[{de:'U5', que:'Cartel de alimentación saludable: 5 viñetas con I should / I shouldn’t'},
+             {de:'U6', que:'Párrafo de afición, 60-80 palabras'}],
+  semanas:[
+    s(1,'U5',L('Food and the body','La comida y el cuerpo'),
+      'Grupos de alimentos: fruit, vegetables, dairy, meat, bread. Saludable y no saludable. Molestias: headache, stomachache, cold, toothache. Vocales largas ee, ea, oo.',
+      'Eat Your Peas: empezar el libro.','Dos columnas: saludable / no saludable.','Decir qué como y qué bebo.',
+      L('Two columns','Dos columnas'),
+      ['U5:Vocabulary Development','U5:Phonics','U5:Reading Plan']),
+    s(2,'U5',L('Reading a leaflet','Leer un folleto'),
+      'Clasificación de vocales.','Leer e identificar si un alimento es saludable; localizar información en un folleto de salud sencillo. Textos cortos sobre hábitos.',
+      'Lluvia de ideas en dos columnas.','Encuesta: ¿qué desayunas?',
+      L('Health leaflet','Folleto de salud'),
+      ['U5:Reading Skills','U5:Textual Comprehension']),
+    s(3,'U5',L('Should and shouldn’t','Should y shouldn’t'),
+      'Should / shouldn’t para aconsejar. Sustantivos contables e incontables. Some / any (introducción).',
+      '—','Cinco frases con should / shouldn’t.',
+      'Escucha: emparejar problema de salud con el consejo; cuento en el consultorio.',
+      L('Advice sentences','Frases de consejo'),
+      ['U5:Language Conventions (Writing)','U5:Listening Skills']),
+    s(4,'U5',L('The poster','El cartel'),
+      'Autocorrección: «2 stars & 1 wish».','—',
+      'Cartel de alimentación saludable con cinco viñetas; borrador de las cinco frases.',
+      'Juego de rol en el consultorio: I have a headache.',L('Healthy poster','Cartel saludable'),
+      ['U5:Text Types (Writing)','U5:Idea Development & Process']),
+    s(5,'U5',L('One healthy tip','Un consejo saludable'),
+      'Revisión entre pares.','Eat Your Peas: terminar y discutir.',
+      'Versión final del cartel. PRIMERA EVIDENCIA CALIFICADA.',
+      'Compartir un consejo saludable con la clase.',L('Poster + tip','Cartel + consejo'),
+      ['U5:Speaking Skills','U5:Writing Reflection']),
+    s(6,'U6',L('What I play','Lo que juego'),
+      'Deportes y juegos: football, swimming, cycling, tennis, basketball. Juguetes. Frecuencia: every day, on Saturdays. Repaso de mezclas y dígrafos.',
+      'Horrid Henry’s Football Fiend: empezar el libro.','Mapa mental de mi afición.','Hablar de aficiones: I like playing…',
+      L('Hobby mind map','Mapa de mi afición'),
+      ['U6:Vocabulary Development','U6:Phonics','U6:Reading Plan']),
+    s(7,'U6',L('Who does what','Quién hace qué'),
+      'Acento de frase: I like playing football.','Leer y emparejar afición y persona; identificar palabras de frecuencia en un texto corto. Textos ilustrados sobre aficiones.',
+      'Notas del mapa mental.','En pareja: ¿qué haces los sábados?',
+      L('Match hobby–person','Emparejar afición y persona'),
+      ['U6:Reading Skills','U6:Textual Comprehension']),
+    s(8,'U6',L('How often','Con qué frecuencia'),
+      'Presente simple: like + -ing. Adverbios de frecuencia: always, usually, sometimes, never. Pregunta: Do you like…? Yes, I do / No, I don’t.',
+      '—','Frases con adverbio de frecuencia.',
+      'Escucha: marcar deportes en un horario; diálogo de actividades extraescolares; Starters «escuchar y dibujar».',
+      L('Frequency','Frecuencia'),
+      ['U6:Language Conventions (Writing)','U6:Listening Skills']),
+    s(9,'U6',L('My favourite hobby','Mi afición favorita'),
+      'Autocomprobación: ¿tiene sentido?','—',
+      'Párrafo de afición, 60-80 palabras: My favourite hobby is… I like it because…',
+      'Presentación breve: mi deporte favorito.',L('Hobby paragraph','Párrafo de afición'),
+      ['U6:Text Types (Writing)','U6:Idea Development & Process']),
+    s(10,'U6',L('Henry ends','Se acaba Henry'),
+      'Juego de fonética de fin de año.','Horrid Henry’s Football Fiend: terminar.',
+      'Versión final del párrafo. SEGUNDA EVIDENCIA CALIFICADA.',
+      'Presentación estructurada ante la clase.',L('Paragraph + talk','Párrafo + charla'),
+      ['U6:Reading Plan','U6:Speaking Skills']),
+    s(11,'U6',L('Starters week','Semana de Starters'),
+      'Repaso de todo el año.','—','Portafolio de fin de trimestre: la pieza favorita.',
+      'Oral: ¿qué he aprendido este año?',L('Portfolio + exam','Portafolio + examen'),
+      ['U6:Writing Reflection'])
+  ],
+  gana:['2.º rinde Cambridge Starters el 2 de diciembre y el periodo 6 termina el 4: el examen cae DENTRO de la última semana. Con una sola unidad, la segunda evidencia se entrega en la semana 10 y la 11 es repaso, no una entrega nueva compitiendo con el examen.',
+        'Arte y Música no aparecen ni una semana en las once, y Personal Social solo una. Un producto integrador de once semanas les da sitio sin obligarles a programar dos unidades.',
+        'La comida (U5) y el juego (U6) son el mismo día del niño: en una unidad se pueden cruzar —qué como antes de jugar— y en dos quedan como dos temas sueltos.']
+},
+
+/* ==================================================================== 3.o */
+3:{
+  etapa:'primaria', cefr:'A1', temaU5:'When the Earth Moves', temaU6:'My Community',
+  reader:'Earthquakes, Volcanoes and Tsunamis (Raz-Plus, 730L) y The Lorax (Dr. Seuss)',
+  titulo:L('When the earth moves, who helps','Cuando la tierra se mueve, quién ayuda'),
+  hilo:'La primera mitad enseña qué hacer cuando pasa algo grave; la segunda, quién viene a '+
+    'ayudar. Es una sola pregunta partida en dos: el bombero, el policía y el médico de U6 son '+
+    'exactamente las personas del simulacro de U5.',
+  escritura:[{de:'U5', que:'Folleto de seguridad: antes, durante y después, 90-110 palabras'},
+             {de:'U6', que:'Perfil de un servidor de la comunidad, 90-110 palabras'}],
+  semanas:[
+    s(1,'U5',L('When the earth moves','Cuando la tierra se mueve'),
+      'Desastres naturales: earthquake, tsunami, flood, landslide. Seguridad: danger, safe place, exit, shelter, drill, helmet. Sílabas en palabras largas y el sonido /kw/.',
+      'Earthquakes, Volcanoes and Tsunamis: empezar.','Lista de la mochila de emergencia.','Nombrar lo que hay que tener.',
+      L('Emergency kit list','Lista de la mochila'),
+      ['U5:Vocabulary Development','U5:Phonics','U5:Reading Plan']),
+    s(2,'U5',L('Before, during, after','Antes, durante, después'),
+      '-ache como un solo sonido: headache, stomachache, backache.',
+      'Localizar una instrucción de seguridad dentro de un texto informativo; ordenar los pasos; usar títulos, pies y diagramas. Textos informativos con diagramas y un folleto leído como modelo.',
+      'Planificar el folleto en tres partes.','Decir dónde duele: My leg hurts.',
+      L('Steps in order','Pasos en orden'),
+      ['U5:Reading Skills','U5:Textual Comprehension']),
+    s(3,'U5',L('Drop, cover, hold on','Drop, cover, hold on'),
+      'Modales de norma y consejo: must / must not, should, have to. Imperativos para instrucciones. Pasado simple para contar lo que pasó: was/were y verbos en -ed.',
+      '—','Instrucciones en imperativo y consejos en modal.',
+      'Escucha: instrucciones de seguridad en orden; identificar los objetos nombrados de la mochila.',
+      L('Instructions','Instrucciones'),
+      ['U5:Language Conventions (Writing)','U5:Listening Skills']),
+    s(4,'U5',L('The safety flyer','El folleto de seguridad'),
+      'Revisión entre pares: ¿podría seguirlo un niño más pequeño?','—',
+      'Folleto de seguridad de 90-110 palabras, en tres secciones con título, una instrucción y un dibujo.',
+      'Dar consejos: You should… / You must not…',L('Safety flyer','Folleto de seguridad'),
+      ['U5:Text Types (Writing)','U5:Idea Development & Process']),
+    s(5,'U5',L('Presenting the flyer','Presentar el folleto'),
+      'Reflexión: ¿mi familia tiene punto de encuentro y mochila en casa?',
+      'Earthquakes, Volcanoes and Tsunamis: terminar.',
+      'Versión final del folleto. PRIMERA EVIDENCIA CALIFICADA.',
+      'Presentar mi folleto a la clase.',L('Flyer + presentation','Folleto + presentación'),
+      ['U5:Speaking Skills','U5:Writing Reflection']),
+    s(6,'U6',L('Who helps','Quién ayuda'),
+      'Servidores de la comunidad: doctor, teacher, firefighter, police officer, baker, librarian, vet. Lugares y verbos: help, protect, serve, bake, heal. Repaso de dígrafos vocálicos.',
+      'The Lorax: empezar el libro.','Emparejar persona y lugar de trabajo.','Describir el trabajo de alguien.',
+      L('Helpers and places','Personas y lugares'),
+      ['U6:Vocabulary Development','U6:Phonics','U6:Reading Plan']),
+    s(7,'U6',L('What they do','Qué hacen'),
+      'Ritmo y acento de la frase.','Identificar qué hace cada servidor; emparejar persona y lugar de trabajo en un texto. Textos ilustrados sobre servidores de la comunidad.',
+      'Notas de la entrevista.','Juego de rol: entrevistar a un servidor.',
+      L('Interview notes','Notas de la entrevista'),
+      ['U6:Reading Skills','U6:Textual Comprehension']),
+    s(8,'U6',L('He helps, she protects','He helps, she protects'),
+      'Presente simple con he / she. Artículos a / an / the ampliados. Conjunción so: I was tired, so I rested.',
+      '—','Frases del perfil con la tercera persona.',
+      'Escucha: identificar servidores en descripciones; ¿qué hace un bombero?',
+      L('Third person','Tercera persona'),
+      ['U6:Language Conventions (Writing)','U6:Listening Skills']),
+    s(9,'U6',L('The profile','El perfil'),
+      'Revisión entre pares: ¿falta información?','—',
+      'Perfil de un servidor, 90-110 palabras: nombre, oficio, lugar de trabajo y por qué es importante.',
+      'Agradecer a un servidor de la comunidad.',L('Helper profile','Perfil del servidor'),
+      ['U6:Text Types (Writing)','U6:Idea Development & Process']),
+    s(10,'U6',L('The Lorax ends','Se acaba el Lorax'),
+      'Concurso de fonética de fin de año.','The Lorax: terminar; la comunidad y el ambiente.',
+      'Versión final del perfil. SEGUNDA EVIDENCIA CALIFICADA.',
+      'Presentación en grupo: nuestra comunidad.',L('Profile + presentation','Perfil + presentación'),
+      ['U6:Reading Plan','U6:Speaking Skills']),
+    s(11,'U6',L('Three things I learned','Tres cosas que aprendí'),
+      'Repaso general.','—','Reflexión de fin de trimestre: tres cosas que aprendí.',
+      'Apreciación entre pares: decir algo bueno.',L('Reflection','Reflexión'),
+      ['U6:Writing Reflection'])
+  ],
+  gana:['El cruce es el más limpio de primaria: los servidores de la comunidad de U6 son las personas del simulacro de U5. En dos unidades se pierde; en una, el folleto de seguridad se entrega a quien lo va a usar.',
+        'Matemática solo aparece 3 de las 11 semanas en el plan y Comunicación, Arte y Música ninguna. Un producto de once semanas les da dónde entrar.',
+        '3.º no rinde examen Cambridge en diciembre (es preparación de Movers): su noviembre puede ser contenido de verdad.']
+},
+
+/* ==================================================================== 4.o */
+4:{
+  etapa:'primaria', cefr:'A1→A2', temaU5:'Holidays & Travel', temaU6:'My Future',
+  reader:'Around the World in 80 Days (Oxford Bookworms 2) y lecturas de jóvenes que lograron algo',
+  titulo:L('Where I was and where I am going','Dónde estuve y adónde voy'),
+  hilo:'Once semanas entre dos tiempos verbales: la primera mitad cuenta en pasado un viaje que '+
+    'ya pasó y la segunda anuncia en futuro un oficio que todavía no. El mismo alumno, la misma '+
+    'estructura de párrafo, dos tiempos.',
+  escritura:[{de:'U5', que:'Recuento de vacaciones en pasado simple, 120-150 palabras'},
+             {de:'U6', que:'Párrafo de ambiciones de futuro, 120-150 palabras'}],
+  semanas:[
+    s(1,'U5',L('Where I went','Dónde fui'),
+      'Vocabulario de viaje: beach, mountains, camping, sightseeing, souvenir, sunscreen. Clima: freezing, boiling, humid, mild. Acento de frase en narraciones en pasado.',
+      'Around the World in 80 Days: empezar el libro.','Cuadro de tiempo: ¿cuándo? ¿dónde? ¿qué?',
+      'Contar adónde fui.',L('Time chart','Cuadro de tiempo'),
+      ['U5:Vocabulary Development','U5:Phonics','U5:Reading Plan']),
+    s(2,'U5',L('The order of a story','El orden de una historia'),
+      'Formas débiles: was /wəz/, were /wə/.',
+      'Secuenciar los hechos de una narración de viaje; identificar expresiones de tiempo pasado. Folletos de viaje y postales.',
+      'Conectores: first, then, after, finally.','Describir una foto de vacaciones.',
+      L('Events in order','Hechos en orden'),
+      ['U5:Reading Skills','U5:Textual Comprehension']),
+    s(3,'U5',L('Past simple, all of it','Pasado simple, entero'),
+      'Pasado simple regular e irregular, conjugación completa; preguntas con Did you…? y negativas con didn’t; expresiones de tiempo: yesterday, last week, in 2023, ago.',
+      '—','Verbos del recuento, conjugados.',
+      'Escucha: secuenciar los hechos de una historia de vacaciones; ¿adónde fueron y qué hicieron?',
+      L('Past simple','Pasado simple'),
+      ['U5:Language Conventions (Writing)','U5:Listening Skills']),
+    s(4,'U5',L('The recount','El recuento'),
+      'Del cuadro de tiempo al borrador.','—',
+      'Recuento de vacaciones, 120-150 palabras: dónde, cuándo, qué hice y lo mejor.',
+      'Contar mis últimas vacaciones en pasado.',L('Holiday recount','Recuento de vacaciones'),
+      ['U5:Text Types (Writing)','U5:Idea Development & Process']),
+    s(5,'U5',L('The recount, delivered','El recuento, entregado'),
+      'Revisión entre pares «2 stars, 1 wish»; reflexión: ¿qué fue lo mejor de mi recuento?',
+      'Around the World in 80 Days: seguir.',
+      'Versión final del recuento. PRIMERA EVIDENCIA CALIFICADA.',
+      'Encuesta de clase: ¿adónde fuiste?',L('Recount + survey','Recuento + encuesta'),
+      ['U5:Speaking Skills','U5:Writing Reflection']),
+    s(6,'U6',L('What I want to be','Lo que quiero ser'),
+      'Oficios y futuro: engineer, scientist, artist, athlete, entrepreneur, programmer. Ambiciones: I want to be…, I’d like to… Entonación de la frase en futuro.',
+      'Lecturas sobre jóvenes que lograron algo: empezar.','Línea de tiempo de metas.','Hablar de mi oficio soñado.',
+      L('Goal timeline','Línea de tiempo de metas'),
+      ['U6:Vocabulary Development','U6:Phonics','U6:Reading Plan']),
+    s(7,'U6',L('Reading about others','Leer sobre otros'),
+      'Acento: I WILL be a doctor.','Identificar idea principal y detalles en un artículo; emparejar título y párrafo. Artículos breves sobre jóvenes y sobre oficios.',
+      'Notas del artículo leído.','En pareja: entrevista de trabajo soñado.',
+      L('Main idea','Idea principal'),
+      ['U6:Reading Skills','U6:Textual Comprehension']),
+    s(8,'U6',L('Going to and will','Going to y will'),
+      'Going to para planes e intenciones; will para predicciones y decisiones espontáneas; want to / would like to para ambiciones.',
+      '—','Autocomprobación de las formas verbales.',
+      'Escucha: entrevistas sobre oficios futuros; completar nombre, ambición y razón.',
+      L('Future forms','Formas de futuro'),
+      ['U6:Language Conventions (Writing)','U6:Listening Skills']),
+    s(9,'U6',L('My ambitions','Mis ambiciones'),
+      'De la línea de tiempo al borrador.','—',
+      'Párrafo de ambiciones, 120-150 palabras: I want to be… because… I am going to…',
+      'Hablar de mi ambición ante el grupo.',L('Ambitions paragraph','Párrafo de ambiciones'),
+      ['U6:Text Types (Writing)','U6:Idea Development & Process']),
+    s(10,'U6',L('The careers fair','La feria de oficios'),
+      'Repaso de todos los patrones fonéticos de 1.º a 4.º.','Terminar la lectura de jóvenes que lograron algo.',
+      'Versión final del párrafo. SEGUNDA EVIDENCIA CALIFICADA.',
+      'Presentación en grupo: feria de oficios del futuro.',L('Paragraph + fair','Párrafo + feria'),
+      ['U6:Reading Plan','U6:Speaking Skills']),
+    s(11,'U6',L('Movers week','Semana de Movers'),
+      'Repaso general.','—','Portafolio de fin de año; metas: ¿qué haré en 5.º?',
+      'Repaso oral en formato de examen.',L('Portfolio + exam','Portafolio + examen'),
+      ['U6:Writing Reflection'])
+  ],
+  gana:['Este es el hallazgo que hay que llevar a la reunión: 4.º rinde Cambridge Movers el 2 de diciembre y en el plan anual NO tiene inglés cargado en ninguna de las once semanas previas. Tampoco Personal Social, ni Arte, ni Música, ni Tutoría: solo cuatro áreas de nueve.',
+        'El Scope sí tiene esas once semanas escritas —Holidays & Travel y My Future—, así que la unidad de once semanas no inventa: recupera lo que ya existe y no llegó al plan.',
+        'Pasado simple (U5) y formas de futuro (U6) son la misma competencia en dos tiempos, y el Movers evalúa las dos: en una unidad se enseñan como pareja y no como dos temas.']
+},
+
+/* ==================================================================== 5.o */
+5:{
+  etapa:'primaria', cefr:'A2', temaU5:'Health & Wellbeing', temaU6:'Adventures & Experiences',
+  reader:'The Crossover (K. Alexander) y Percy Jackson n.º 1 o Into the Wild (adaptado)',
+  titulo:L('Looking after myself, and daring','Cuidarme y atreverme'),
+  hilo:'Primero se aprende a aconsejar sobre el propio cuerpo y la propia cabeza; después se '+
+    'cuenta una aventura en la que hubo que aguantar. El consejo de la primera mitad es lo que '+
+    'sostiene al protagonista de la segunda.',
+  escritura:[{de:'U5', que:'Entrada de blog con consejos de salud, 180-230 palabras'},
+             {de:'U6', que:'Narración de aventura, 200-260 palabras'}],
+  semanas:[
+    s(1,'U5',L('Body and mind','El cuerpo y la cabeza'),
+      'Salud y medicina: vaccination, symptoms, diagnosis, prescription, allergy, first aid. Salud mental: stress, anxiety, wellbeing, resilience. Entonación del consejo: You SHOULD rest.',
+      'The Crossover: empezar los capítulos seleccionados.','Esquema problema → causa → consejo → resultado.',
+      'Dar y responder a un consejo de salud.',L('Advice structure','Esquema del consejo'),
+      ['U5:Vocabulary Development','U5:Phonics','U5:Reading Plan']),
+    s(2,'U5',L('Is this advice any good','¿Sirve este consejo?'),
+      'Habla encadenada: What’s the matter?','Entender consejos y recomendaciones implícitas; evaluar la lógica de una afirmación sobre salud. Artículos de consejo y blogs de bienestar.',
+      'Comprobación entre pares: ¿convence el consejo?','Juego de rol: farmacéutico y paciente.',
+      L('Claim check','¿Se sostiene?'),
+      ['U5:Reading Skills','U5:Textual Comprehension']),
+    s(3,'U5',L('Should, ought to, might','Should, ought to, might'),
+      'Modales: should, ought to, might, could. Voz pasiva en presente simple (introducción). Gerundio frente a infinitivo: enjoy + -ing, want + to.',
+      '—','Consejos con el modal que corresponde.',
+      'Escucha: detalles clave en una consulta médica; distinguir síntoma de causa.',
+      L('Modals of advice','Modales de consejo'),
+      ['U5:Language Conventions (Writing)','U5:Listening Skills']),
+    s(4,'U5',L('The blog post','La entrada de blog'),
+      'Del esquema al borrador.','—',
+      'Entrada de blog con consejos de salud, 180-230 palabras, dirigiéndose al lector: You should / Why not try…',
+      'Consejos de bienestar para adolescentes, en grupo.',L('Health blog','Blog de salud'),
+      ['U5:Text Types (Writing)','U5:Idea Development & Process']),
+    s(5,'U5',L('How am I feeling','Cómo me siento'),
+      'Diario de bienestar: ¿cómo me siento este trimestre? ¿Qué me mantiene en equilibrio?',
+      'The Crossover: terminar los capítulos seleccionados.',
+      'Versión final del blog. PRIMERA EVIDENCIA CALIFICADA.',
+      'Registro persuasivo al aconsejar.',L('Blog + journal','Blog + diario'),
+      ['U5:Speaking Skills','U5:Writing Reflection']),
+    s(6,'U6',L('The adventure','La aventura'),
+      'Aventura y viaje: expedition, backpacking, cruise, safari, pilgrimage. Narración en pasado: realised, discovered, overcame, survived. Vocabulario emocional: breathtaking, terrifying, unforgettable.',
+      'Percy Jackson o Into the Wild: empezar.','Ficha de las 5 W de la aventura.','Contar una aventura breve.',
+      L('5 Ws sheet','Ficha de las 5 W'),
+      ['U6:Vocabulary Development','U6:Phonics','U6:Reading Plan']),
+    s(7,'U6',L('How a story is built','Cómo se arma una historia'),
+      'Fluidez: volver a contar sin titubear.','Analizar la estructura narrativa: orientación, crisis y resolución; respuesta personal con referencia al texto. Extractos de narrativa de viaje y memorias.',
+      'El esquema de mi narración.','En pareja: historia con fotos de viaje.',
+      L('Story structure','Estructura de la historia'),
+      ['U6:Reading Skills','U6:Textual Comprehension']),
+    s(8,'U6',L('While and when','While y when'),
+      'Pasado simple con pasado continuo: while / when. Pasado perfecto (introducción): I had already… Conectores narrativos: eventually, meanwhile, suddenly, as a result.',
+      '—','Escenas de prueba con los tres tiempos.',
+      'Escucha: secuenciar los hechos de una aventura; identificar emociones; Flyers, ordenar imágenes.',
+      L('Narrative tenses','Tiempos del relato'),
+      ['U6:Language Conventions (Writing)','U6:Listening Skills']),
+    s(9,'U6',L('The narrative','La narración'),
+      'Autoedición: verbos vivos, detalle sensorial, expresiones de tiempo.','—',
+      'Narración de aventura, 200-260 palabras, con pasado simple y continuo y adjetivos vívidos.',
+      'Narrar una aventura real o imaginada, 3-4 minutos.',L('Adventure narrative','Narración de aventura'),
+      ['U6:Text Types (Writing)','U6:Idea Development & Process']),
+    s(10,'U6',L('Amazing journeys','Viajes increíbles'),
+      'Turno largo estilo Flyers.','Percy Jackson o Into the Wild: terminar.',
+      'Versión final de la narración. SEGUNDA EVIDENCIA CALIFICADA.',
+      'Presentación oral en grupo: viajes increíbles.',L('Narrative + presentation','Narración + presentación'),
+      ['U6:Reading Plan','U6:Speaking Skills']),
+    s(11,'U6',L('Flyers week','Semana de Flyers'),
+      'Repaso general.','—',
+      'Portafolio de fin de año: mis tres mejores piezas; carta a mi yo de 6.º; repaso de los diez atributos del perfil.',
+      'Repaso oral en formato de examen.',L('Portfolio + exam','Portafolio + examen'),
+      ['U6:Writing Reflection'])
+  ],
+  gana:['5.º rinde Cambridge Flyers el 2 de diciembre, y en el plan anual el inglés cae a 2 de las 6 semanas del periodo 6, justo antes del examen. La unidad de once semanas devuelve esas semanas al inglés sin quitárselas a nadie: son las que el Scope ya tiene escritas.',
+        'Es el grado mejor cargado de primaria —8 de 9 áreas en P6— así que la fusión aquí no resuelve un vacío: ordena. Un solo producto en vez de dos evita que noviembre tenga dos cierres.',
+        'La narración de aventura de U6 pide pasado simple, continuo y perfecto: en once semanas hay sitio para enseñarlos sobre el consejo de salud de U5, que ya usaba modales.']
+},
+
 /* ------------------------------------------------------------------ 6.o */
 6:{
-  cefr:'A2→B1', temaU5:'My Neighbourhood & Places', temaU6:'Free Time & Hobbies',
+  etapa:'secundaria', cefr:'A2→B1', temaU5:'My Neighbourhood & Places', temaU6:'Free Time & Hobbies',
   reader:'The Prince and the Pauper (M. Twain), Black Cat A2',
   titulo:L('My place and my time','Mi sitio y mi tiempo'),
   hilo:'Dónde vivo y qué hago cuando puedo elegir. La primera mitad describe el sitio; '+
@@ -162,7 +624,7 @@ grados:{
 
 /* ------------------------------------------------------------------ 7.o */
 7:{
-  cefr:'B1', temaU5:'Nature & Environment', temaU6:'Future Plans & Ambitions',
+  etapa:'secundaria', cefr:'B1', temaU5:'Nature & Environment', temaU6:'Future Plans & Ambitions',
   reader:'Treasure Island (R.L. Stevenson), Vicens Vives A2/B1',
   titulo:L('What is here, and what I will be','Lo que hay aquí y lo que seré'),
   hilo:'Qué está vivo alrededor y qué quiero estar haciendo dentro de diez años. Es una sola '+
@@ -236,7 +698,7 @@ grados:{
 
 /* ------------------------------------------------------------------ 8.o */
 8:{
-  cefr:'B1+', temaU5:'Our Planet', temaU6:'Stories & Narratives',
+  etapa:'secundaria', cefr:'B1+', temaU5:'Our Planet', temaU6:'Stories & Narratives',
   reader:'The Giver (L. Lowry), Clarion Books',
   titulo:L('The planet, and the stories we tell about it','El planeta y las historias que contamos de él'),
   hilo:'Primero se mide y se argumenta con evidencia; después se narra. La distopía de The Giver '+
@@ -310,7 +772,7 @@ grados:{
 
 /* ------------------------------------------------------------------ 9.o */
 9:{
-  cefr:'B1+→B2', temaU5:'Literature & Power', temaU6:'Justice & Ethics',
+  etapa:'secundaria', cefr:'B1+→B2', temaU5:'Literature & Power', temaU6:'Justice & Ethics',
   reader:'The Time Machine (H.G. Wells), Vicens Vives B1.2',
   titulo:L('Who tells it, and who it is fair to','Quién lo cuenta y a quién le es justo'),
   hilo:'La primera mitad enseña a construir un relato; la segunda, a juzgarlo. Wells da el puente: '+
@@ -383,7 +845,7 @@ grados:{
 
 /* ----------------------------------------------------------------- 10.o */
 10:{
-  cefr:'B2+', temaU5:'Sustainability & Action', temaU6:'Language, Career & Communication',
+  etapa:'secundaria', cefr:'B2+', temaU5:'Sustainability & Action', temaU6:'Language, Career & Communication',
   reader:'Fahrenheit 451 (R. Bradbury), Simon & Schuster',
   titulo:L('What I would change, and who I would be to change it','Lo que cambiaría y quién tendría que ser para cambiarlo'),
   hilo:'La primera mitad convence; la segunda se postula. Es la misma persona: primero defiende '+
@@ -459,7 +921,7 @@ grados:{
 
 /* ----------------------------------------------------------------- 11.o */
 11:{
-  cefr:'C1', temaU5:'Politics, Society & Global Citizenship', temaU6:'C1 Mastery & IB Diploma Exam',
+  etapa:'secundaria', cefr:'C1', temaU5:'Politics, Society & Global Citizenship', temaU6:'C1 Mastery & IB Diploma Exam',
   reader:'Lord of the Flies (W. Golding), Penguin Books',
   titulo:L('The word in public, and the exam that measures it','La palabra en público y el examen que la mide'),
   hilo:'En 11.º la fusión no es un remedio, es lo correcto: U6 del Scope no es contenido nuevo, '+

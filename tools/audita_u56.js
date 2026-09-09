@@ -32,5 +32,7 @@ Object.keys(U.grados).forEach(g => {
     console.log('ok ' + g + '.o  11 semanas  ' + esperado.length + '/' + esperado.length + ' bloques del Scope cubiertos');
   }
 });
-console.log(fallos ? '\n' + fallos + ' grado(s) con problemas' : '\nTodo cubierto: ' + total + ' bloques de U5 y U6 en los seis grados.');
+const n = Object.keys(U.grados).length;
+console.log(fallos ? '\n' + fallos + ' grado(s) con problemas'
+  : '\nTodo cubierto: ' + total + ' bloques de U5 y U6 en los ' + n + ' grados.');
 process.exit(fallos ? 1 : 0);
