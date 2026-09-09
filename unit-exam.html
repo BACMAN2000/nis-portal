@@ -105,10 +105,20 @@
   .taskpick button{ border:1.5px solid var(--line); background:#f8fafc; border-radius:10px; padding:9px 14px;
     font-family:inherit; font-weight:700; font-size:13px; color:var(--blue-d); cursor:pointer }
   .taskpick button.on{ background:#dbeafe; border-color:var(--blue) }
-  /* Reproductor de la grabacion: los controles del navegador ya traen pausa y
-     la barra con el tiempo que lleva y el que queda, que es lo que el alumno
-     necesita para no perderse. */
-  .aud{ display:block; width:100%; max-width:520px; margin:4px 0 12px }
+  /* Reproductor propio. Trae pausa y la barra con el tiempo, que es lo que el
+     alumno necesita para no perderse; la barra NO deja arrastrar en el examen
+     oficial, porque con el rebobinado del navegador el limite de escuchas no
+     significaria nada. */
+  .aud{ display:flex; align-items:center; gap:11px; background:#eef2f9; border-radius:11px;
+    padding:9px 13px; margin:4px 0 12px; max-width:520px }
+  .aud button{ flex:none; width:34px; height:34px; border:none; border-radius:50%; cursor:pointer;
+    background:var(--blue); color:#fff; font-size:13px; line-height:1 }
+  .aud button:disabled{ background:#b9c4d6; cursor:not-allowed }
+  .aud .bar{ flex:1; height:7px; background:#cfd9ea; border-radius:99px; overflow:hidden }
+  .aud .bar.seek{ cursor:pointer }
+  .aud .bar i{ display:block; height:100%; width:0; background:var(--blue); border-radius:99px }
+  .aud .t{ flex:none; font-size:12.5px; font-weight:700; color:var(--blue-d); font-variant-numeric:tabular-nums }
+  .aud .left{ flex:none; font-size:12px; font-weight:700; color:#8a5a00 }
   .explain{ background:#eff6ff; border-left:4px solid var(--blue); border-radius:8px; padding:9px 12px; font-size:13px;
     color:#1e3a5f; margin-top:8px; line-height:1.6 }
   .script{ background:#fffbeb; border:1px solid #fcd34d; border-radius:12px; padding:12px 16px; font-size:13px;
@@ -437,8 +447,77 @@ window.viewLevels=(kind,fromHash)=>{
 
 /* ---------- el examen ---------- */
 let EX=null;
-/* La grabacion es ahora un <audio> del DOM: se para pidiendoselo a el. */
+/* La grabacion es un <audio> del DOM: se para pidiendoselo a el. */
 function paraAudio(){ const a=document.getElementById('qaud'); if(a) a.pause(); }
+
+/* ----- la grabacion -----
+   El examen OFICIAL se escucha dos veces, como en Cambridge. Pausar y seguir
+   no gasta escucha; empezar desde el principio, si. Por eso el reproductor es
+   nuestro y no el del navegador: con la barra del navegador el alumno rebobina
+   y contar escuchas no significa nada. La practica no tiene limite. */
+const ESCUCHAS = 2;
+function audLimitado(){ return !!EX && EX.kind === 'official'; }
+function audFmt(s){ s = Math.max(0, Math.floor(s || 0));
+  return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); }
+function pintaAudio(){
+  if(!EX.audioUrl) return '<p class="muted" style="font-size:12.5px">The recording could not be loaded. Tell your teacher.</p>';
+  const lim = audLimitado();
+  return `<div class="aud">
+      <button id="audBtn" onclick="audPlay()" title="Play / pause">&#9654;</button>
+      <div class="bar${lim?'':' seek'}" id="audBar" ${lim?'':'onclick="audSeek(event)"'}><i id="audFill"></i></div>
+      <span class="t" id="audT">0:00</span>
+      ${lim?'<span class="left" id="audLeft"></span>':''}
+      <audio id="qaud" preload="metadata" src="${EX.audioUrl}"></audio>
+    </div>
+    ${lim?'<p class="muted" style="font-size:12.5px;margin:-6px 0 12px">You can listen to the recording <b>twice</b>. Pausing does not use up a listen.</p>':''}`;
+}
+function audMonta(){
+  const a = document.getElementById('qaud'); if(!a) return;
+  if(EX.audioPos){ try{ a.currentTime = EX.audioPos; }catch(e){} }
+  a.ontimeupdate = () => { EX.audioPos = a.currentTime; audPinta(); };
+  a.onended = () => { EX.audioOn = false; EX.audioPos = 0; try{ a.currentTime = 0; }catch(e){} audPinta(); };
+  a.onloadedmetadata = audPinta;
+  a.onplay = audPinta; a.onpause = audPinta;
+  a.onerror = () => { const b = document.getElementById('audBtn'); if(b) b.disabled = true; };
+  audPinta();
+}
+function audPinta(){
+  const a = document.getElementById('qaud'); if(!a) return;
+  const btn = document.getElementById('audBtn'), fill = document.getElementById('audFill'),
+        t = document.getElementById('audT'), left = document.getElementById('audLeft');
+  const dur = isFinite(a.duration) ? a.duration : 0;
+  if(fill) fill.style.width = (dur ? (a.currentTime / dur * 100) : 0) + '%';
+  if(t) t.textContent = audFmt(a.currentTime) + (dur ? ' / ' + audFmt(dur) : '');
+  /* Solo se bloquea EMPEZAR otra escucha: la que quedo a medias se reanuda
+     aunque ya no queden. */
+  const sinEscuchas = audLimitado() && EX.plays >= ESCUCHAS && !EX.audioOn;
+  if(btn){ btn.innerHTML = a.paused ? '&#9654;' : '&#10074;&#10074;'; btn.disabled = !!(sinEscuchas && a.paused); }
+  if(left) left.textContent = EX.plays >= ESCUCHAS ? 'no listens left'
+                            : (ESCUCHAS - EX.plays) + ' of ' + ESCUCHAS + ' left';
+}
+window.audPlay = () => {
+  const a = document.getElementById('qaud'); if(!a) return;
+  if(!a.paused){ a.pause(); audPinta(); return; }
+  /* Una escucha empieza cuando no hay ninguna en curso y termina cuando la
+     grabacion llega al final. Pausar no la cierra: por eso no vale mirar el
+     segundo en que va -pausar a los tres segundos gastaba otra escucha-. */
+  if(!EX.audioOn){
+    if(audLimitado() && EX.plays >= ESCUCHAS) return;
+    EX.plays = (EX.plays || 0) + 1;
+    EX.audioOn = true;
+  }
+  a.play().catch(()=>{});
+  audPinta();
+};
+/* Moverse por la grabacion: solo en la practica, donde repetir un trozo es
+   justo lo que se quiere hacer. */
+window.audSeek = ev => {
+  const a = document.getElementById('qaud'), bar = document.getElementById('audBar');
+  if(!a || !bar || audLimitado() || !isFinite(a.duration)) return;
+  const r = bar.getBoundingClientRect();
+  a.currentTime = Math.min(a.duration, Math.max(0, (ev.clientX - r.left) / r.width * a.duration));
+  audPinta();
+};
 function pararExamen(){
   paraAudio();
   if(EX){ clearInterval(EX.timer); clearInterval(EX.poll); clearInterval(EX.gracia); EX=null; }
@@ -495,6 +574,10 @@ window.startExam=async(kind,lvl,fromHash)=>{
   EX={units:UNITS,kind,lvl,title:r.data.title,partes,total,ans:{},wr:{task:null,text:''},page:0,t0:Date.now(),
       secs:(mins+a.extra)*60, tot:(mins+a.extra)*60, extra:a.extra, lockKey:k,
       timer:null,poll:null,gracia:null,done:false,
+      /* Escuchas gastadas, si hay una a medias y por donde iba: viven en EX
+         para que salir a otra parte y volver no reinicie el audio ni gaste
+         una escucha. */
+      plays:0, audioOn:false, audioPos:0,
       preview:isStaff()&&!a.unlocked, script:'', audioUrl:null};
   EX.pages=partes.length;
   /* El guion vive en otra tabla que ningún alumno puede leer: dentro del examen
@@ -658,9 +741,7 @@ function render(){
   const cuerpo = p.type==='writing' ? pintaWriting(p)
     : p.items.map(it=>pintaItem(p,it)).join('');
   const audio = p.type==='listening'
-    ? `${EX.audioUrl?`<audio id="qaud" class="aud" controls preload="metadata"
-            controlsList="nodownload noplaybackrate" src="${EX.audioUrl}"></audio>`
-          :'<p class="muted" style="font-size:12.5px">The recording could not be loaded. Tell your teacher.</p>'}
+    ? `${pintaAudio()}
        ${EX.script?`<details><summary class="muted" style="cursor:pointer;font-size:12.5px;font-weight:700;margin:6px 0">
           👩‍🏫 Guion (solo profesor)</summary><div class="script">${esc(EX.script)}</div></details>`:''}` : '';
   $('#exBody').innerHTML=`
@@ -674,6 +755,7 @@ function render(){
       ${last?`<button class="btn" style="flex:none" onclick="submit()">✅ Submit</button>`
             :`<button class="arrow" onclick="goPage(1)" title="Next">▶</button>`}
     </div>`;
+  audMonta();
   window.scrollTo(0,0);
 }
 function respondidas(){
