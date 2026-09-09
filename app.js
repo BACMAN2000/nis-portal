@@ -6432,12 +6432,18 @@ function arcsFor(grade){
   return Object.keys(A).filter(k=>A[k].grade===grade)
     .sort((x,y)=>A[x].periodos[0]-A[y].periodos[0]).map(k=>[k,A[k]]);
 }
-/* El arco que esta corriendo hoy. Si estamos entre trimestres no hay ninguno
-   y se devuelve null: mejor el indice del grado que abrir uno que ya cerro. */
+/* El arco que esta corriendo hoy. Entre trimestres no hay ninguno vigente, y
+   entonces vale el que VIENE, no el primero de la lista: en septiembre, entre
+   el fin de un trimestre y el arranque del siguiente, la tarjeta llevaba al
+   arco de marzo. Si ya no queda ninguno por venir, el ultimo del ano. */
 function arcoActual(grade){
   const hoy = new Date().toISOString().slice(0,10);
-  const par = arcsFor(grade).filter(([,a])=>a.inicio<=hoy && hoy<=a.fin);
-  return par.length ? par[0][0] : null;
+  const todos = arcsFor(grade);
+  const vigente = todos.filter(([,a])=>a.inicio<=hoy && hoy<=a.fin);
+  if(vigente.length) return vigente[0][0];
+  const proximo = todos.filter(([,a])=>a.inicio>hoy);
+  if(proximo.length) return proximo[0][0];
+  return todos.length ? todos[todos.length-1][0] : null;
 }
 function _miGradoKey(){ const p=state.profile||{}; return p.grade_id ? 'g'+p.grade_id : null; }
 /* La tarjeta solo aparece si hay algo detras: alumno de un grado con arco, o
