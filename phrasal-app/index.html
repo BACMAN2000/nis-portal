@@ -8,69 +8,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../lexapp.css?v=1">
 <style>
-:root{
-  --primary:#2563EB; --primary-d:#1E40AF; --primary-l:#EFF6FF;
-  --ink:#0F172A; --muted:#64748B; --line:#E2E8F0; --bg:#F8FAFC; --card:#fff;
-  --ok:#059669; --ok-bg:#ECFDF5; --bad:#DC2626; --bad-bg:#FEF2F2;
-  --a1:#0EA5E9; --a2:#22C55E; --b1:#EAB308; --b2:#F97316; --c1:#EF4444; --c2:#8B5CF6;
-}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
-.wrap{max-width:900px;margin:0 auto;padding:0 18px 70px}
-header{background:linear-gradient(135deg,var(--primary),var(--primary-d));color:#fff;padding:26px 0 22px;margin-bottom:22px}
-header .wrap{padding-bottom:0}
-.crumb{font-size:.8rem;opacity:.85;margin-bottom:8px}
-.crumb a{color:#fff;text-decoration:none;opacity:.9}
-.crumb a:hover{text-decoration:underline}
-h1{margin:0;font-size:1.55rem;font-weight:700;letter-spacing:-.01em}
-.sub{opacity:.9;font-size:.92rem;margin-top:5px}
-.levels{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 6px}
-.lv{border:2px solid var(--line);background:var(--card);border-radius:11px;padding:9px 15px;cursor:pointer;font-weight:600;font-size:.95rem;color:var(--ink);transition:.15s}
-.lv small{display:block;font-weight:400;font-size:.72rem;color:var(--muted)}
-.lv[aria-pressed="true"]{border-color:var(--c);background:var(--cl);color:var(--cd)}
-.lv:focus-visible,button:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
-.tabs{display:flex;gap:6px;margin:16px 0 14px;border-bottom:2px solid var(--line)}
-.tab{border:0;background:none;padding:9px 15px;cursor:pointer;font-weight:600;color:var(--muted);border-bottom:3px solid transparent;margin-bottom:-2px;font-size:.95rem}
-.tab[aria-selected="true"]{color:var(--primary);border-bottom-color:var(--primary)}
-.card{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:17px 19px;margin-bottom:12px}
-.pv{font-size:1.12rem;font-weight:700;color:var(--primary-d)}
-.badge{display:inline-block;font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:20px;background:var(--primary-l);color:var(--primary-d);margin-left:8px;vertical-align:2px}
-.badge.sep{background:#FEF3C7;color:#92400E}
-.badge.insep{background:#E0E7FF;color:#3730A3}
-.say{border:1px solid var(--primary-l);background:#fff;color:var(--primary-d);font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:20px;margin-left:8px;cursor:pointer;vertical-align:2px;line-height:1.5}
-.say:hover{background:var(--primary-l)}
-.say[aria-pressed="true"]{background:var(--primary-d);color:#fff}
-.en{margin-top:6px}
-.es{color:var(--muted);font-size:.93rem}
-.ex{margin-top:8px;padding-left:11px;border-left:3px solid var(--line);font-style:italic;color:#334155}
-.note{margin-top:7px;font-size:.85rem;color:var(--muted);background:var(--bg);padding:7px 10px;border-radius:8px}
-.q{font-size:1.05rem;margin-bottom:14px}
-.opts{display:grid;gap:8px}
-.opt{text-align:left;border:2px solid var(--line);background:var(--card);border-radius:10px;padding:11px 14px;cursor:pointer;font-size:.97rem;font-family:inherit;color:var(--ink)}
-.opt:hover:not(:disabled){border-color:var(--primary);background:var(--primary-l)}
-.opt:disabled{cursor:default}
-.opt.good{border-color:var(--ok);background:var(--ok-bg);color:#065F46;font-weight:600}
-.opt.bad{border-color:var(--bad);background:var(--bad-bg);color:#991B1B}
-.fb{margin-top:12px;padding:10px 13px;border-radius:9px;font-size:.92rem}
-.fb.ok{background:var(--ok-bg);color:#065F46}
-.fb.no{background:var(--bad-bg);color:#991B1B}
-.bar{height:7px;background:var(--line);border-radius:20px;overflow:hidden;margin:14px 0 6px}
-.bar i{display:block;height:100%;background:var(--primary);transition:width .3s}
-.meta{display:flex;justify-content:space-between;font-size:.83rem;color:var(--muted)}
-.btn{border:0;background:var(--primary);color:#fff;border-radius:10px;padding:11px 20px;font-weight:600;cursor:pointer;font-size:.95rem;font-family:inherit}
-.btn.sec{background:var(--card);color:var(--primary-d);border:2px solid var(--line)}
-.btn:hover{filter:brightness(1.06)}
-.row{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}
-.match{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-@media(max-width:640px){.match{grid-template-columns:1fr}}
-.mt{border:2px solid var(--line);background:var(--card);border-radius:10px;padding:10px 13px;cursor:pointer;font-size:.93rem;text-align:left;font-family:inherit;color:var(--ink)}
-.mt[aria-pressed="true"]{border-color:var(--primary);background:var(--primary-l)}
-.mt.done{border-color:var(--ok);background:var(--ok-bg);color:#065F46;cursor:default}
-.find{width:100%;padding:10px 13px;border:2px solid var(--line);border-radius:10px;font-size:.95rem;font-family:inherit;margin-bottom:13px}
-.empty{color:var(--muted);text-align:center;padding:26px}
-.score{font-size:2.4rem;font-weight:700;color:var(--primary-d);text-align:center;margin:6px 0}
-.hint{font-size:.85rem;color:var(--muted);margin-top:9px}
 .embed header{display:none}
 .embed .wrap{padding-top:16px}
 </style>
@@ -90,216 +29,26 @@ h1{margin:0;font-size:1.55rem;font-weight:700;letter-spacing:-.01em}
   <div class="tabs" role="tablist">
     <button class="tab" id="tab-learn" role="tab" aria-selected="true" onclick="setTab('learn')">Aprender</button>
     <button class="tab" id="tab-practice" role="tab" aria-selected="false" onclick="setTab('practice')">Practicar</button>
+    <button class="tab" id="tab-games" role="tab" aria-selected="false" onclick="setTab('games')">Juegos</button>
     <button class="tab" id="tab-progress" role="tab" aria-selected="false" onclick="setTab('progress')">Mi progreso</button>
   </div>
   <div id="view"><div class="empty">Cargando…</div></div>
 </div>
 
 <script>
-var DATA = null, LEVEL = 'A1', TAB = 'learn', IDX = 0, HECHOS = {}, SESION = {ok:0, total:0};
-var COLORS = {A1:'#0EA5E9', A2:'#22C55E', B1:'#EAB308', B2:'#F97316', C1:'#EF4444', C2:'#8B5CF6'};
-var NOMBRES = {A1:'Primeros pasos', A2:'Elemental', B1:'Intermedio', B2:'Intermedio alto', C1:'Avanzado', C2:'Dominio'};
-
-function esc(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){
-  return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
-
-function guardaProgreso(){
-  try { localStorage.setItem('coh_phrasal', JSON.stringify(HECHOS)); } catch(e){}
-}
-function leeProgreso(){
-  try { HECHOS = JSON.parse(localStorage.getItem('coh_phrasal') || '{}') || {}; } catch(e){ HECHOS = {}; }
-}
-
-function pintaNiveles(){
-  var c = document.getElementById('levels');
-  c.innerHTML = DATA.niveles.map(function(L){
-    var n = (DATA.verbs[L] || []).length;
-    return '<button class="lv" data-l="' + L + '" aria-pressed="' + (L === LEVEL) + '"' +
-      ' style="--c:' + COLORS[L] + ';--cl:' + COLORS[L] + '18;--cd:' + COLORS[L] + '"' +
-      ' onclick="setLevel(this.dataset.l)">' + L + '<small>' + n + ' verbos · ' + NOMBRES[L] + '</small></button>';
-  }).join('');
-}
-function setLevel(L){ LEVEL = L; IDX = 0; SESION = {ok:0, total:0}; pintaNiveles(); render(); }
-function setTab(t){
-  TAB = t; IDX = 0;
-  ['learn','practice','progress'].forEach(function(x){
-    document.getElementById('tab-' + x).setAttribute('aria-selected', x === t);
-  });
-  render();
-}
-
-function vistaAprender(){
-  var lista = DATA.verbs[LEVEL] || [];
-  var html = '<input class="find" id="find" placeholder="Filtrar phrasal verb o significado…" oninput="filtra(this.value)" autocomplete="off">';
-  html += '<div id="lista">' + tarjetas(lista) + '</div>';
-  return html;
-}
-function tarjetas(lista){
-  if(!lista.length) return '<div class="empty">Nada que mostrar.</div>';
-  return lista.map(function(d){
-    return '<div class="card">' +
-      '<span class="pv">' + esc(d.pv) + '</span>' +
-      '<span class="badge ' + (d.sep === 'separable' ? 'sep">separable' : 'insep">inseparable') + '</span>' +
-      (d.freq ? '<span class="badge">' + d.freq + ' veces en el curso</span>' : '') +
-      '<button class="say" type="button" data-say="uk" data-pv="' + esc(d.pv) + '" title="Pronunciación británica">UK</button>' +
-      '<button class="say" type="button" data-say="us" data-pv="' + esc(d.pv) + '" title="Pronunciación americana">US</button>' +
-      '<div class="en">' + esc(d.en) + '</div>' +
-      '<div class="es">' + esc(d.es) + '</div>' +
-      '<div class="ex">' + esc(d.ex) + '</div>' +
-      (d.note ? '<div class="note">' + esc(d.note) + '</div>' : '') +
-      '</div>';
-  }).join('');
-}
-// El phrasal verb y su ejemplo, dichos con la misma voz que el diccionario.
-var AUDIO = null;
-function slugPV(pv){ return pv.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''); }
-function dice(boton){
-  var pv = boton.getAttribute('data-pv'), ac = boton.getAttribute('data-say');
-  if(AUDIO){ AUDIO.pause(); }
-  document.querySelectorAll('.say[aria-pressed="true"]').forEach(function(b){ b.setAttribute('aria-pressed', 'false'); });
-  AUDIO = new Audio('/lexicon-audio/phrasal/' + ac + '/' + slugPV(pv) + '.mp3');
-  boton.setAttribute('aria-pressed', 'true');
-  AUDIO.onended = AUDIO.onerror = function(){ boton.setAttribute('aria-pressed', 'false'); };
-  AUDIO.play().catch(function(){ boton.setAttribute('aria-pressed', 'false'); });
-}
-// Delegado, no onclick inline: un apóstrofe en el texto rompería el atributo sin avisar.
-document.addEventListener('click', function(ev){
-  var b = ev.target.closest ? ev.target.closest('.say') : null;
-  if(b){ ev.preventDefault(); dice(b); }
-});
-function filtra(v){
-  var f = (v || '').trim().toLowerCase();
-  var lista = (DATA.verbs[LEVEL] || []).filter(function(d){
-    return !f || d.pv.indexOf(f) >= 0 || d.en.toLowerCase().indexOf(f) >= 0 || d.es.toLowerCase().indexOf(f) >= 0;
-  });
-  document.getElementById('lista').innerHTML = tarjetas(lista);
-}
-
-function vistaPractica(){
-  var ej = DATA.exercises[LEVEL] || [];
-  if(!ej.length) return '<div class="empty">Todavía no hay ejercicios en este nivel.</div>';
-  if(IDX >= ej.length) return resumen(ej.length);
-  var e = ej[IDX];
-  var html = '<div class="bar"><i style="width:' + Math.round(IDX / ej.length * 100) + '%"></i></div>' +
-    '<div class="meta"><span>Ejercicio ' + (IDX + 1) + ' de ' + ej.length + '</span>' +
-    '<span>' + SESION.ok + ' / ' + SESION.total + ' correctas</span></div><div class="card">';
-  if(e.t === 'match'){
-    html += '<div class="q">Empareja cada phrasal verb con su significado.</div>' + matchHTML(e);
-  } else {
-    html += '<div class="q">' + e.q + '</div><div class="opts" id="opts">' +
-      e.options.map(function(o, i){
-        return '<button class="opt" data-i="' + i + '" onclick="responde(' + i + ')">' + esc(o) + '</button>';
-      }).join('') + '</div><div id="fb"></div>';
+/* Lo único propio de esta app: qué claves trae su data.json y cómo se nombra lo
+   que enseña. El motor está en ../js/lexapp.js, compartido con las otras dos. */
+var APP = {
+  store:'coh_phrasal', list:'verbs', id:'pv', audio:'phrasal', datav:1,
+  uno:'phrasal verb', varios:'phrasal verbs',
+  elMejor:'el mejor', deLos:'de los',
+  extra:', forma de pasado y separable o no',
+  badges: function(d){
+    return '<span class="badge ' + (d.sep === 'separable' ? 'sep">separable' : 'insep">inseparable') + '</span>' +
+      (d.freq ? '<span class="badge">' + d.freq + ' veces en el curso</span>' : '');
   }
-  return html + '</div>';
-}
-
-function matchHTML(e){
-  var izq = e.pairs.map(function(p, i){ return {t:p[0], i:i}; });
-  var der = e.pairs.map(function(p, i){ return {t:p[1], i:i}; }).slice().sort(function(){ return Math.random() - 0.5; });
-  window.__MATCH = {sel:null, hechos:0, total:e.pairs.length};
-  return '<div class="match"><div>' +
-    izq.map(function(x){ return '<button class="mt" style="width:100%;margin-bottom:8px" data-side="L" data-i="' + x.i + '" onclick="pick(this)">' + esc(x.t) + '</button>'; }).join('') +
-    '</div><div>' +
-    der.map(function(x){ return '<button class="mt" style="width:100%;margin-bottom:8px" data-side="R" data-i="' + x.i + '" onclick="pick(this)">' + esc(x.t) + '</button>'; }).join('') +
-    '</div></div><div id="fb"></div>';
-}
-function pick(b){
-  var m = window.__MATCH;
-  if(b.classList.contains('done')) return;
-  if(!m.sel){ m.sel = b; b.setAttribute('aria-pressed', 'true'); return; }
-  if(m.sel === b){ m.sel = null; b.setAttribute('aria-pressed', 'false'); return; }
-  if(m.sel.dataset.side === b.dataset.side){
-    m.sel.setAttribute('aria-pressed', 'false'); m.sel = b; b.setAttribute('aria-pressed', 'true'); return;
-  }
-  var bien = m.sel.dataset.i === b.dataset.i;
-  if(bien){
-    m.sel.classList.add('done'); b.classList.add('done');
-    m.sel.setAttribute('aria-pressed', 'false'); b.setAttribute('aria-pressed', 'false');
-    m.hechos++;
-    if(m.hechos === m.total){
-      SESION.ok++; SESION.total++;
-      marca(DATA.exercises[LEVEL][IDX], true);
-      document.getElementById('fb').innerHTML = '<div class="fb ok">¡Completo! <button class="btn" style="margin-left:10px" onclick="siguiente()">Siguiente</button></div>';
-    }
-  } else {
-    m.sel.setAttribute('aria-pressed', 'false');
-    document.getElementById('fb').innerHTML = '<div class="fb no">Ese no. Prueba otra vez.</div>';
-  }
-  m.sel = null;
-}
-
-function responde(i){
-  var e = DATA.exercises[LEVEL][IDX];
-  var bien = i === e.a;
-  SESION.total++; if(bien) SESION.ok++;
-  marca(e, bien);
-  var bs = document.querySelectorAll('#opts .opt');
-  for(var k = 0; k < bs.length; k++){
-    bs[k].disabled = true;
-    if(k === e.a) bs[k].classList.add('good');
-    else if(k === i) bs[k].classList.add('bad');
-  }
-  document.getElementById('fb').innerHTML =
-    '<div class="fb ' + (bien ? 'ok' : 'no') + '">' +
-    (bien ? '¡Correcto!' : 'La respuesta era: <b>' + esc(e.options[e.a]) + '</b>') +
-    (e.why ? ' — ' + esc(e.why) : '') +
-    '<button class="btn" style="margin-left:12px" onclick="siguiente()">Siguiente</button></div>';
-}
-function marca(e, bien){
-  if(!e.pv) return;
-  var k = LEVEL + '|' + e.pv;
-  if(!HECHOS[k]) HECHOS[k] = {ok:0, no:0};
-  HECHOS[k][bien ? 'ok' : 'no']++;
-  guardaProgreso();
-}
-function siguiente(){ IDX++; render(); window.scrollTo({top:0, behavior:'smooth'}); }
-
-function resumen(total){
-  var pct = SESION.total ? Math.round(SESION.ok / SESION.total * 100) : 0;
-  return '<div class="card" style="text-align:center">' +
-    '<div class="score">' + pct + '%</div>' +
-    '<p>' + SESION.ok + ' aciertos de ' + SESION.total + ' en el nivel ' + LEVEL + '.</p>' +
-    '<div class="row" style="justify-content:center">' +
-    '<button class="btn" onclick="IDX=0;SESION={ok:0,total:0};render()">Volver a empezar</button>' +
-    '<button class="btn sec" onclick="setTab(\'learn\')">Repasar la lista</button>' +
-    '</div></div>';
-}
-
-function vistaProgreso(){
-  var lista = DATA.verbs[LEVEL] || [];
-  var vistos = 0, dominados = 0;
-  var filas = lista.map(function(d){
-    var h = HECHOS[LEVEL + '|' + d.pv];
-    if(h) vistos++;
-    var tot = h ? h.ok + h.no : 0;
-    var pct = tot ? Math.round(h.ok / tot * 100) : 0;
-    if(tot >= 2 && pct >= 80) dominados++;
-    return '<div class="card" style="display:flex;justify-content:space-between;align-items:center;padding:11px 15px">' +
-      '<span class="pv" style="font-size:1rem">' + esc(d.pv) + '</span>' +
-      '<span style="font-size:.88rem;color:' + (tot ? (pct >= 80 ? 'var(--ok)' : 'var(--muted)') : 'var(--muted)') + '">' +
-      (tot ? h.ok + '/' + tot + ' · ' + pct + '%' : 'sin practicar') + '</span></div>';
-  }).join('');
-  return '<div class="card"><b>' + dominados + '</b> de ' + lista.length + ' dominados en ' + LEVEL +
-    ' · ' + vistos + ' practicados.<div class="bar"><i style="width:' +
-    (lista.length ? Math.round(dominados / lista.length * 100) : 0) + '%"></i></div>' +
-    '<div class="hint">Se considera dominado con dos intentos y un 80 % de aciertos. El progreso se guarda en este navegador.</div></div>' + filas;
-}
-
-function render(){
-  var v = document.getElementById('view');
-  v.innerHTML = TAB === 'learn' ? vistaAprender() : (TAB === 'practice' ? vistaPractica() : vistaProgreso());
-}
-
-leeProgreso();
-fetch('data.json?v=1').then(function(r){ return r.json(); }).then(function(d){
-  DATA = d;
-  if(DATA.niveles.indexOf(LEVEL) < 0) LEVEL = DATA.niveles[0];
-  pintaNiveles(); render();
-}).catch(function(){
-  document.getElementById('view').innerHTML =
-    '<div class="empty">No se ha podido cargar el material. Vuelve a intentarlo en un momento.</div>';
-});
+};
 </script>
+<script src="../lexapp.js?v=1"></script>
 </body>
 </html>
