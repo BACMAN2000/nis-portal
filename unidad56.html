@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>U5 + U6: una sola unidad de once semanas · NIS</title>
+<link rel="icon" href="assets/favicon.svg">
+<link href="vendor/fonts/montserrat-68a53b.css" rel="stylesheet">
+<!--
+  La propuesta que se lleva a coordinación de secundaria.
+
+  No es una página de contenido: es una decisión de calendario con su
+  justificación y su prueba. Tres partes:
+
+    1. POR QUÉ  — cuatro razones, y la tercera es la que pesa: el calendario
+                  del propio Scope pone el examen oficial de Cambridge el
+                  2 de diciembre. Noviembre ya está ocupado.
+    2. CÓMO     — las once semanas de cada grado, con todo el contenido de
+                  las dos unidades del Scope repartido.
+    3. LA PRUEBA — la cobertura se calcula EN VIVO contra scope-2026.json:
+                  la página cuenta los bloques que el Scope declara para U5 y
+                  U6 y comprueba uno por uno que estén asignados a una semana.
+                  Si alguien cambia el Scope y algo deja de encajar, esta
+                  página lo dice sola. Lo mismo, en consola:
+                  node tools/audita_u56.js
+-->
+<style>
+:root{ --tinta:#1f2937; --gris:#6b7280; --linea:#d7dce5; --azul:#244c77;
+  --prop:#FFFBEB; --propB:#FDE68A; --propT:#92400E;
+  --ok:#15803D; --okB:#BBF7D0; --okF:#F0FDF4;
+  --al:#B91C1C; --alB:#FECACA; --alF:#FEF2F2; }
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:'Montserrat',system-ui,Segoe UI,sans-serif;color:var(--tinta);background:#eef1f6;line-height:1.45;font-size:13px}
+header{background:var(--azul);color:#fff;padding:11px 20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+header img{height:28px}
+header .sp{flex:1}
+header a,header button{background:rgba(255,255,255,.18);color:#fff;border:none;padding:7px 13px;border-radius:9px;
+  font:inherit;font-size:.85rem;font-weight:600;text-decoration:none;cursor:pointer}
+header a:hover,header button:hover{background:rgba(255,255,255,.3)}
+select{font:inherit;padding:6px 10px;border-radius:8px;border:1px solid var(--linea);max-width:280px}
+.wrap{max-width:1500px;margin:0 auto;padding:16px 14px 60px}
+
+.hero{background:#fff;border:1px solid var(--linea);border-radius:10px;padding:20px 24px;margin-bottom:16px}
+.hero .eyebrow{font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;color:var(--gris);margin:0 0 4px}
+.hero h1{margin:0 0 6px;font-size:1.5rem;color:var(--azul);line-height:1.2}
+.hero .lead{margin:0 0 4px;font-size:.98rem}
+.hero .fuente{margin:10px 0 0;font-size:.76rem;color:var(--gris)}
+
+.card{background:#fff;border:1px solid var(--linea);border-radius:10px;padding:18px 22px;margin-bottom:16px}
+.card h2{margin:0 0 10px;font-size:1.08rem;color:var(--azul)}
+.card h3{margin:16px 0 5px;font-size:.95rem;color:var(--azul)}
+.card p{margin:0 0 9px;font-size:.9rem}
+.card ul{margin:.2em 0 .6em;padding-left:1.2em;font-size:.88rem}
+.card li{margin-bottom:4px}
+
+.razones{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:12px}
+.razon{border:1px solid var(--linea);border-radius:9px;padding:13px 15px;background:#fafbfd}
+.razon .n{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;
+  background:var(--azul);color:#fff;font-size:.74rem;font-weight:700;margin-bottom:6px}
+.razon h4{margin:0 0 5px;font-size:.9rem;color:var(--azul)}
+.razon p{margin:0;font-size:.83rem}
+
+.alerta{background:var(--alF);border:1px solid var(--alB);border-left:5px solid var(--al);border-radius:9px;
+  padding:13px 16px;margin:0 0 14px;font-size:.88rem;color:#7F1D1D}
+.alerta b{color:var(--al)}
+.pide{background:var(--prop);border:1px solid var(--propB);border-left:5px solid #F59E0B;border-radius:9px;
+  padding:14px 17px;font-size:.9rem;color:var(--propT)}
+.pide b{display:block;font-size:.95rem;margin-bottom:5px}
+
+table{width:100%;border-collapse:collapse;font-size:.76rem;background:#fff}
+th,td{border:1px solid var(--linea);padding:6px 7px;vertical-align:top;text-align:left}
+th{background:#eef4fb;color:var(--azul);font-size:.68rem;text-transform:uppercase;letter-spacing:.04em}
+td.sem{background:#fafbfd;font-weight:700;color:var(--azul);width:86px}
+td.sem small{display:block;font-weight:400;color:var(--gris);font-size:.92em;text-transform:none;letter-spacing:0}
+td.u5{border-left:4px solid #7c3aed}
+td.u6{border-left:4px solid #0891b2}
+td.hito{background:#F8FAFC;color:var(--gris);width:118px;font-size:.72rem}
+.tabla{overflow-x:auto;border-radius:10px;border:1px solid var(--linea);margin-bottom:14px}
+.evid{color:var(--ok);font-weight:700}
+
+.grado{background:#fff;border:1px solid var(--linea);border-radius:10px;padding:18px 22px;margin-bottom:18px}
+.grado h2{margin:0 0 2px;font-size:1.25rem;color:var(--azul)}
+.grado .meta{font-size:.82rem;color:var(--gris);margin:0 0 4px}
+.grado .fusion{font-size:.85rem;margin:0 0 10px}
+.grado .fusion b{color:var(--azul)}
+.grado .hilo{font-size:.9rem;margin:0 0 12px;font-style:italic;color:#374151;
+  border-left:3px solid var(--linea);padding-left:11px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
+.chip{font-size:.72rem;padding:3px 9px;border-radius:99px;background:#eef4fb;color:var(--azul);border:1px solid #dbe6f3}
+.chip.ex{background:var(--alF);color:var(--al);border-color:var(--alB)}
+.chip.no{background:#F3F4F6;color:var(--gris);border-color:#E5E7EB}
+
+.gana{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:9px;margin-top:4px}
+.gana div{background:var(--okF);border:1px solid var(--okB);border-radius:8px;padding:9px 12px;font-size:.8rem;color:#14532D}
+
+.cober{background:var(--okF);border:1px solid var(--okB);border-radius:9px;padding:12px 15px;font-size:.82rem;color:#14532D;margin-top:12px}
+.cober.mal{background:var(--alF);border-color:var(--alB);color:#7F1D1D}
+.cober b{font-size:.9rem}
+.cober .lista{margin-top:7px;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:2px 14px;font-size:.74rem}
+.cober .lista span{color:#166534}
+
+.leyenda{font-size:.78rem;color:var(--gris);margin:0 0 12px}
+.leyenda i{display:inline-block;width:10px;height:10px;border-radius:2px;vertical-align:-1px;margin:0 3px 0 9px}
+.leyenda i.a{background:#7c3aed}.leyenda i.b{background:#0891b2}
+
+@media print{
+  @page{size:A4 landscape;margin:9mm}
+  body{background:#fff;font-size:8.6px}
+  header,.noprint{display:none!important}
+  .wrap{max-width:none;padding:0}
+  .hero,.card,.grado{border:none;border-radius:0;padding:0 0 8px;margin:0 0 11px}
+  .tabla{border:none;overflow:visible}
+  table{font-size:7.3px}
+  th,td{padding:3px 4px}
+  .grado{page-break-before:always}
+  .grado:first-of-type{page-break-before:auto}
+  .razon,.gana div,.cober{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<header>
+  <img src="assets/logo-white-h.svg" alt="Nordic International School" onerror="this.style.display='none'">
+  <select id="sel" aria-label="Grado"></select>
+  <div class="sp"></div>
+  <button type="button" id="print">&#128424; Imprimir</button>
+  <a id="back" href="project.html">&#8592; Volver</a>
+</header>
+
+<div class="wrap" id="app"><p>Cargando…</p></div>
+
+<script src="scope-u56.js?v=1"></script>
+<script>
+const U = window.SCOPE_U56;
+const GRADOS = Object.keys(U.grados).map(Number).sort((a, b) => a - b);
+const esc = s => String(s == null ? '' : s)
+  .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+/* Documento de reunión: castellano. Los términos del Scope van en inglés
+   porque así se llaman en el documento del colegio. */
+const es = v => v == null ? '' : (typeof v === 'string' ? v : (v.es || v.en || ''));
+
+/* La cobertura no se afirma, se calcula: se leen los bloques que el Scope
+   declara para U5 y U6 de cada grado y se comprueba que cada uno tenga
+   semana asignada. */
+let SCOPE = null;
+function cobertura(g){
+  if(!SCOPE) return null;
+  const gs = SCOPE.grados.find(x => x.grado === 'G' + g);
+  if(!gs) return null;
+  const esperado = [];
+  [5, 6].forEach(n => ((gs.unidades.find(u => u.n === n) || {}).bloques || [])
+    .forEach(b => esperado.push('U' + n + ':' + b.bloque)));
+  const donde = {};
+  U.grados[g].semanas.forEach(s => (s.cubre || []).forEach(x => {
+    (donde[x] = donde[x] || []).push(s.n);
+  }));
+  return {esperado: esperado, donde: donde,
+          falta: esperado.filter(x => !donde[x]),
+          sobra: Object.keys(donde).filter(x => esperado.indexOf(x) < 0)};
+}
+
+function argumento(){
+  const cal = U.calendario.map(c =>
+    `<tr><td class="sem" style="width:120px">${esc(c.cuando)}</td>
+      <td>${esc(c.que)}</td><td class="hito" style="width:230px">${esc(c.donde)}</td></tr>`).join('');
+  return `<div class="hero">
+    <p class="eyebrow">Secundaria &middot; 6.º a 11.º &middot; setiembre – noviembre 2026 &middot; propuesta a coordinación</p>
+    <h1>Unidad 5 y Unidad 6 son una sola unidad de once semanas</h1>
+    <p class="lead">En vez de una unidad de seis semanas en setiembre y otra de cinco en noviembre,
+      una sola planificación de once semanas por grado, con un solo producto y una sola nota.</p>
+    <p class="fuente">Construido sobre ${esc(U.fuente)}. La cobertura del final de cada grado se
+      calcula en vivo contra ese archivo.</p>
+  </div>
+
+  <div class="card">
+    <h2>Por qué</h2>
+    <div class="razones">
+      <div class="razon"><span class="n">1</span>
+        <h4>U6 no existe</h4>
+        <p>Los seis documentos de «Proyecto 5 (U6) – Noviembre» están en blanco en las nueve áreas
+        de los seis grados, y los seis son la misma plantilla copiada: hasta la cabecera dice
+        «GRADO: 6 / UNIDAD 3». No es un área que se olvidó; esa unidad no se llegó a planificar.</p></div>
+      <div class="razon"><span class="n">2</span>
+        <h4>Noviembre ya está ocupado</h4>
+        <p>El calendario del propio Scope pone el <b>Mock 2 en octubre</b>, la matrícula y la última
+        milla en octubre–noviembre, y el <b>examen oficial de Cambridge el 2 de diciembre</b>. Abrir
+        contenido nuevo de seis semanas ahí compite con la recta final.</p></div>
+      <div class="razon"><span class="n">3</span>
+        <h4>El Scope ya las trata como una</h4>
+        <p>El plan lector es <b>un solo libro partido por la mitad</b> (U5 la primera parte, U6
+        «Ch. X–end + comparative essay»); U6 cierra con el portafolio <b>de fin de trimestre</b>, que
+        evalúa once semanas y no cinco; y en 11.º U6 ni siquiera es contenido: se llama
+        «C1 Mastery &amp; IB Diploma Exam».</p></div>
+      <div class="razon"><span class="n">4</span>
+        <h4>El Show queda dentro</h4>
+        <p>El Creative Arts Show cae en U5 y es lo único cargado en cuatro grados. Con la unidad de
+        once semanas el Show es el cierre de la primera mitad y no el corte entre dos unidades.</p></div>
+    </div>
+
+    <h3>El calendario con el que hay que encajar</h3>
+    <div class="tabla"><table>
+      <tr><th>Cuándo</th><th>Qué</th><th>Dónde cae en la unidad</th></tr>${cal}</table></div>
+    <div class="alerta"><b>Presentan examen oficial el 2 de diciembre,</b> según el pathway y el
+      calendario del Scope —que coinciden—: 6.º (A2 Key), 8.º (B1 Preliminary), 9.º (B2 First) y
+      11.º (C1 Advanced). 7.º y 10.º serían grados puente y no presentarían: su noviembre sí puede
+      ser contenido nuevo, y la propuesta lo aprovecha.</div>
+    ${discrepancia()}
+
+    <div class="pide"><b>Lo que se pide a coordinación</b>
+      No cargar U6 desde cero en nueve áreas por seis grados —54 documentos— sino ampliar U5 a once
+      semanas y firmar <b>una</b> planificación por grado, con dos evidencias calificadas dentro
+      (una en la semana 5 y otra en la 9 o la 10) y el portafolio del trimestre al final.
+      Las demás áreas copian la misma duración: el proyecto interdisciplinario del trimestre ya está
+      escrito a once semanas en el portal.</div>
+  </div>`;
+}
+
+/* Un desacuerdo entre dos documentos del colegio no se resuelve desde aqui:
+   se pone delante, con las dos fuentes citadas, y lo decide coordinacion. */
+function discrepancia(){
+  const d = U.discrepancia;
+  if(!d) return '';
+  return `<div class="alerta" style="border-left-color:#F59E0B;background:var(--prop);
+      border-color:var(--propB);color:var(--propT)">
+    <b style="color:var(--propT)">Sin resolver, y hay que resolverlo antes de la matrícula &mdash; ${esc(d.titulo)}</b>
+    <ul style="margin:7px 0 7px;padding-left:1.2em">
+      ${d.fuentes.map(f => `<li><b>${esc(f[0])}:</b> ${esc(f[1])}</li>`).join('')}</ul>
+    <p style="margin:0 0 6px">${esc(d.porque)}</p>
+    <p style="margin:0"><i>${esc(d.mientras)}</i></p></div>`;
+}
+
+function pintaGrado(g){
+  const d = U.grados[g], ex = U.examen[g], conEx = ex.indexOf('—') !== 0;
+  const filas = d.semanas.map(s => `<tr>
+    <td class="sem ${s.de === 'U5' ? 'u5' : 'u6'}">Semana ${s.n}<small>${s.de} del Scope</small></td>
+    <td class="hito">${esc(es(s.foco))}</td>
+    <td>${esc(s.lengua)}</td>
+    <td>${esc(s.lectura)}</td>
+    <td>${marcaEvidencia(s.escritura)}</td>
+    <td>${esc(s.oral)}</td>
+    <td class="hito" style="width:130px">${esc(es(s.hito))}</td></tr>`).join('');
+
+  const c = cobertura(g);
+  let cob = '';
+  if(c){
+    const bien = !c.falta.length && !c.sobra.length;
+    cob = `<div class="cober${bien ? '' : ' mal'}">
+      <b>${bien ? '&#10003; ' + c.esperado.length + ' de ' + c.esperado.length
+                 + ' bloques del Scope de U5 y U6, colocados'
+                 : '&#9888; ' + c.falta.length + ' bloque(s) del Scope sin semana asignada'}</b>
+      ${bien ? '<p style="margin:5px 0 0;font-size:.79rem">Nada de las dos unidades se queda fuera. '
+               + 'Comprobado contra scope/scope-2026.json al abrir esta página.</p>' : ''}
+      ${c.falta.length ? '<p style="margin:5px 0 0">Falta: ' + esc(c.falta.join(', ')) + '</p>' : ''}
+      ${c.sobra.length ? '<p style="margin:5px 0 0">Declarado y no está en el Scope: ' + esc(c.sobra.join(', ')) + '</p>' : ''}
+      <div class="lista">${c.esperado.map(x =>
+        `<span>${esc(x)} &rarr; semana ${(c.donde[x] || []).join(' y ')}</span>`).join('')}</div>
+    </div>`;
+  }
+
+  return `<div class="grado">
+    <h2>${g}.º &middot; ${esc(es(d.titulo))}</h2>
+    <p class="meta">CEFR ${esc(d.cefr)} &middot; 11 semanas &middot; ${esc(U.trimestre.inicio)} → ${esc(U.trimestre.fin)}</p>
+    <p class="fusion"><b>U5 «${esc(d.temaU5)}»</b> + <b>U6 «${esc(d.temaU6)}»</b> &rarr; una unidad</p>
+    <div class="chips">
+      <span class="chip${conEx ? ' ex' : ' no'}">${conEx ? '2 de diciembre: ' : ''}${esc(ex)}</span>
+      <span class="chip">Plan lector: ${esc(d.reader)}</span>
+      ${d.escritura.map(e => `<span class="chip">${esc(e.de)}: ${esc(e.que)}</span>`).join('')}
+    </div>
+    <p class="hilo">${esc(d.hilo)}</p>
+    <div class="tabla"><table>
+      <tr><th>Semana</th><th>Foco</th><th>Lengua</th><th>Lectura</th><th>Escritura</th><th>Oral</th><th>Hito</th></tr>
+      ${filas}</table></div>
+    <h3 style="margin:0 0 6px;font-size:.95rem;color:var(--azul)">Qué gana este grado</h3>
+    <div class="gana">${d.gana.map(x => '<div>' + esc(x) + '</div>').join('')}</div>
+    ${cob}
+  </div>`;
+}
+
+/* Las dos entregas calificadas son el esqueleto de la propuesta: se ven. */
+function marcaEvidencia(txt){
+  const t = String(txt || '');
+  const i = t.indexOf('EVIDENCIA CALIFICADA');
+  if(i < 0) return esc(t);
+  const corte = t.lastIndexOf('.', i) + 1;
+  return esc(t.slice(0, corte)) + ' <span class="evid">' + esc(t.slice(corte).trim()) + '</span>';
+}
+
+function pinta(){
+  const P = new URLSearchParams(location.search);
+  const g = P.get('grado');
+  const lista = g && U.grados[g] ? [Number(g)] : GRADOS;
+  document.getElementById('app').innerHTML = argumento()
+    + `<p class="leyenda">Franja del color de la unidad de origen:
+        <i class="a"></i> contenido de U5 &nbsp; <i class="b"></i> contenido de U6.
+        Las dos entregas calificadas van marcadas en verde.</p>`
+    + lista.map(pintaGrado).join('');
+}
+
+const sel = document.getElementById('sel');
+sel.innerHTML = '<option value="">Los seis grados</option>'
+  + GRADOS.map(g => `<option value="${g}">${g}.º · ${esc(es(U.grados[g].titulo))}</option>`).join('');
+sel.value = new URLSearchParams(location.search).get('grado') || '';
+sel.onchange = () => {
+  const v = sel.value;
+  history.replaceState(null, '', v ? '?grado=' + v : location.pathname);
+  pinta(); window.scrollTo(0, 0);
+};
+document.getElementById('print').onclick = () => window.print();
+
+pinta();
+/* El Scope se lee después de pintar: si no está, la página sirve igual y solo
+   falta el recuadro de comprobación. */
+/* La copia suelta que se lleva a la reunion trae el Scope incrustado en
+   window.__SCOPE y no pide nada a la red (ver tools/gen-u56.js). */
+if(window.__SCOPE){ SCOPE = window.__SCOPE; pinta(); }
+else fetch('scope/scope-2026.json', {cache: 'no-store'})
+  .then(r => r.ok ? r.json() : null)
+  .then(j => { if(j){ SCOPE = j; pinta(); } })
+  .catch(() => {});
+</script>
+</body>
+</html>

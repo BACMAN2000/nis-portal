@@ -315,6 +315,10 @@ const UI = {
   aQuienEval:  {en:'Subjects', es:'Áreas'},
   dimension:   {en:'Dimension', es:'Dimensión'},
   verFormato:  {en:'Printable version for coordination', es:'Versión imprimible para coordinación'},
+  verU56:      {en:'The proposal: U5 + U6 as one eleven-week unit',
+                es:'La propuesta: U5 + U6 como una sola unidad de once semanas'},
+  verU56Hint:  {en:'built on the English Scope, with the Cambridge calendar as the argument',
+                es:'construida sobre el Scope de inglés, con el calendario de Cambridge como argumento'},
   u6Tit:       {en:'Unit 6 (November) has no proposal, on purpose',
                 es:'La Unidad 6 (noviembre) no tiene propuesta, a propósito'},
   proyectoDe:  {en:'Project', es:'Proyecto'},
@@ -1051,7 +1055,10 @@ function pintaSecundaria(grade){
       h += `<div class="warnbox" style="margin-top:14px"><h4>${u('u6Tit')}</h4>
         <p style="margin:0 0 6px">${esc(u6.detalle)}</p>
         <ul class="tight" style="margin:0">${u6.pedido.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
-        <p class="pnote" style="margin:8px 0 0">${esc(u6.cuandoEste)}</p></div>`;
+        <p class="pnote" style="margin:8px 0 0">${esc(u6.cuandoEste)}</p>
+        <p style="margin:10px 0 0"><a href="unidad56.html?grado=${String(grade).replace('g','')}"
+          ><b>${u('verU56')}</b> &#8594;</a><br>
+          <span class="hint">${u('verU56Hint')}</span></p></div>`;
     }
     h += `<p class="center" style="margin:14px 0 0">
       <a href="conexiones.html?grade=${String(grade).toLowerCase()}">${u('verFormato')} &#8594;</a></p>`;
