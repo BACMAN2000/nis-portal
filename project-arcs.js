@@ -1452,6 +1452,14 @@ window.PROJECT_ARCS = {
       'they are one single eleven-week project.',
       'Este arco ya está ejecutado como dos unidades del portal (U5 y U6). El arco solo declara '+
       'que son un mismo proyecto de once semanas.'),
+    L('Counted on the annual plan: over the eleven weeks of P5 and P6, Grade 2 loads Math, English, '+
+      'Science and PE in 11 of 11; Tutoria in 6; Comunicacion in 4; SOCIAL STUDIES IN 1; and Art and '+
+      'Music in NONE. The project needs all of them, so what is not loaded is a proposal, and the '+
+      'Social Studies gap deserves a conversation of its own.',
+      'Contado sobre el plan anual: en las once semanas de P5 y P6, 2.o carga Math, English, Science '+
+      'y PE en 11 de 11; Tutoria en 6; Comunicacion en 4; CIENCIAS SOCIALES EN 1; y Arte y Musica en '+
+      'NINGUNA. El proyecto las necesita a todas, asi que lo que no esta cargado es propuesta, y el '+
+      'hueco de Ciencias Sociales merece conversacion aparte.'),
     L('In Toddle, P5 of Grade 2 is "Matter Around Us: Little Scientists, Big Changes" and it is '+
       'NOT interdisciplinary: it is entered as a Social Studies unit. And P6 does not exist in '+
       'Toddle for any primary grade. What this arc puts in P5 and P6 comes from the annual plan '+
@@ -2066,7 +2074,15 @@ window.PROJECT_ARCS = {
       'que sobra es justo la de la exhibición; aquí va junta con el diseño del modelo. Es una '+
       'decisión, no un descuido: conviene confirmarla con el grado.'),
     L('P6 W6 only has PE loaded in the annual plan.',
-      'P6 W6 solo tiene Educación Física cargada en el plan anual.')]
+      'P6 W6 solo tiene Educación Física cargada en el plan anual.'),
+    L('Counted on the annual plan: over the eleven weeks of P5 and P6, Grade 3 loads PE in 11 of 11; '+
+      'English, Social Studies and Science in 10; Tutoria in 6; MATH IN 3; and Comunicacion, Art and '+
+      'Music in NONE. That Comunicacion does not appear at all in the last term is the first thing to '+
+      'take to coordination.',
+      'Contado sobre el plan anual: en las once semanas de P5 y P6, 3.o carga PE en 11 de 11; English, '+
+      'Ciencias Sociales y Science en 10; Tutoria en 6; MATEMATICA EN 3; y Comunicacion, Arte y Musica '+
+      'en NINGUNA. Que Comunicacion no aparezca en todo el ultimo trimestre es lo primero que hay que '+
+      'llevar a coordinacion.')]
 },
 
 /* ==================================================================== 4.o */
