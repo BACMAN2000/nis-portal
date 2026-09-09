@@ -105,9 +105,10 @@
   .taskpick button{ border:1.5px solid var(--line); background:#f8fafc; border-radius:10px; padding:9px 14px;
     font-family:inherit; font-weight:700; font-size:13px; color:var(--blue-d); cursor:pointer }
   .taskpick button.on{ background:#dbeafe; border-color:var(--blue) }
-  .aud-btn{ background:#eef2f9; color:var(--blue-d); border:none; border-radius:9px; padding:10px 16px;
-    font-family:inherit; font-weight:700; font-size:13.5px; cursor:pointer; margin:4px 0 10px }
-  .aud-btn:hover{ background:#dbe4f3 }
+  /* Reproductor de la grabacion: los controles del navegador ya traen pausa y
+     la barra con el tiempo que lleva y el que queda, que es lo que el alumno
+     necesita para no perderse. */
+  .aud{ display:block; width:100%; max-width:520px; margin:4px 0 12px }
   .explain{ background:#eff6ff; border-left:4px solid var(--blue); border-radius:8px; padding:9px 12px; font-size:13px;
     color:#1e3a5f; margin-top:8px; line-height:1.6 }
   .script{ background:#fffbeb; border:1px solid #fcd34d; border-radius:12px; padding:12px 16px; font-size:13px;
@@ -435,20 +436,13 @@ window.viewLevels=(kind,fromHash)=>{
 };
 
 /* ---------- el examen ---------- */
-let EX=null, _qaud=null;
+let EX=null;
+/* La grabacion es ahora un <audio> del DOM: se para pidiendoselo a el. */
+function paraAudio(){ const a=document.getElementById('qaud'); if(a) a.pause(); }
 function pararExamen(){
-  if(_qaud){ _qaud.pause(); _qaud=null; }
+  paraAudio();
   if(EX){ clearInterval(EX.timer); clearInterval(EX.poll); clearInterval(EX.gracia); EX=null; }
 }
-window.playQAudio=(btn)=>{
-  if(_qaud){ _qaud.pause(); _qaud=null; btn.textContent='🔊 Play the recording'; return; }
-  if(!EX||!EX.audioUrl){ btn.textContent='⚠️ Recording not available'; return; }
-  _qaud=new Audio(EX.audioUrl);
-  _qaud.onended=()=>{ _qaud=null; btn.textContent='🔊 Play the recording again'; };
-  _qaud.onerror=()=>{ _qaud=null; btn.textContent='⚠️ Recording not available'; };
-  btn.textContent='⏸ Stop'; _qaud.play().catch(()=>_qaud&&_qaud.onerror());
-};
-
 /* El examen se construye con las opciones BARAJADAS: dos alumnos sentados
    juntos no ven la misma letra, y el orden con el que se escribió no enseña
    nada. Las partes y las preguntas mantienen su orden, que es el del examen. */
@@ -657,7 +651,6 @@ function pintaWriting(p){
 }
 
 function render(){
-  if(_qaud){ _qaud.pause(); _qaud=null; }
   const p=EX.partes[EX.page], last=EX.page===EX.pages-1;
   /* Las palabras de "ordenar" se barajan una vez por examen, no en cada
      repintado: si no, cambian de sitio cada vez que el alumno vuelve atrás. */
@@ -665,8 +658,9 @@ function render(){
   const cuerpo = p.type==='writing' ? pintaWriting(p)
     : p.items.map(it=>pintaItem(p,it)).join('');
   const audio = p.type==='listening'
-    ? `<button class="aud-btn" onclick="playQAudio(this)">🔊 Play the recording</button>
-       ${EX.audioUrl?'':'<p class="muted" style="font-size:12.5px">The recording could not be loaded. Tell your teacher.</p>'}
+    ? `${EX.audioUrl?`<audio id="qaud" class="aud" controls preload="metadata"
+            controlsList="nodownload noplaybackrate" src="${EX.audioUrl}"></audio>`
+          :'<p class="muted" style="font-size:12.5px">The recording could not be loaded. Tell your teacher.</p>'}
        ${EX.script?`<details><summary class="muted" style="cursor:pointer;font-size:12.5px;font-weight:700;margin:6px 0">
           👩‍🏫 Guion (solo profesor)</summary><div class="script">${esc(EX.script)}</div></details>`:''}` : '';
   $('#exBody').innerHTML=`
@@ -715,22 +709,39 @@ window.wrote=v=>{
    vuelve al banco. El valor guardado es la frase, así que corregir y restaurar
    funcionan igual que en las respuestas escritas. */
 function itemDe(n){ for(const p of EX.partes){ const it=p.items.find(x=>x._n===n); if(it) return it; } return null; }
+function parteDe(n){ for(const p of EX.partes){ if(p.items.some(x=>x._n===n)) return p; } return null; }
+/* Repinta SOLO este ejercicio. Antes cada palabra llamaba a render(), que
+   rehace la parte entera y termina en scrollTo(0,0): al alumno se le subia la
+   pantalla en cada clic —y en una parte de listening se le cortaba la
+   grabacion, porque render() paraba el audio. */
+function repintaOrden(n){
+  const p=parteDe(n), it=itemDe(n); if(!p||!it) return;
+  const nodo=document.getElementById('q'+n);
+  if(!nodo){ render(); return; }
+  nodo.outerHTML=pintaItem(p,it);
+  const el=$('#ansN'); if(el) el.textContent=respondidas();
+  /* Los puntos de arriba dicen que partes estan completas: se refrescan a
+     mano porque ya no pasamos por render(). */
+  document.querySelectorAll('.pgdots .dot').forEach((d,x)=>{
+    d.className='dot '+(x===EX.page?'now':(partePlena(x)?'done':''));
+  });
+}
 window.pon=(n,j)=>{
   if(EX.done) return;
   const it=itemDe(n); it._usadas=it._usadas||[];
   if(it._usadas.indexOf(j)>=0) return;
   it._usadas.push(j);
   EX.ans[n]=it._usadas.map(k=>it._bank[k]).join(' ');
-  render();
+  repintaOrden(n);
 };
 window.quita=(n,pos)=>{
   if(EX.done) return;
   const it=itemDe(n); if(!it||!it._usadas) return;
   it._usadas.splice(pos,1);
   EX.ans[n]=it._usadas.map(k=>it._bank[k]).join(' ');
-  render();
+  repintaOrden(n);
 };
-window.limpia=n=>{ if(EX.done) return; const it=itemDe(n); it._usadas=[]; EX.ans[n]=''; render(); };
+window.limpia=n=>{ if(EX.done) return; const it=itemDe(n); it._usadas=[]; EX.ans[n]=''; repintaOrden(n); };
 
 /* ---------- corrección ---------- */
 function corrige(p,it){
@@ -752,7 +763,7 @@ window.submit=async(forzado)=>{
   if(!forzado&&n<EX.total&&!await _preguntaUI('You have answered '+n+' of '+EX.total+' questions. The rest will be marked wrong.',
       {titulo:'Submit unfinished?', si:'Yes, submit', no:'Go back and answer', tono:'ojo'})) return;
   EX.done=true; clearInterval(EX.timer); clearInterval(EX.gracia); EX.gracia=null;
-  if(_qaud){ _qaud.pause(); _qaud=null; }
+  paraAudio();
   let score=0; const filas=[]; const porParte=[];
   EX.partes.forEach(p=>{
     if(p.type==='writing') return;
