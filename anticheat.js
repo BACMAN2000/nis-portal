@@ -3,7 +3,7 @@
  * -------------------------------------------------------------------------
  *  Una sola línea por actividad:
  *
- *     <script src="anticheat.js?v=1" data-activity="opinion-essay"
+ *     <script src="anticheat.js?v=9" data-activity="opinion-essay"
  *             data-label="Opinion Essay"></script>
  *
  *  o, para pasar el estado de la actividad (snapshot) y reaccionar al bloqueo:
