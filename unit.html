@@ -141,6 +141,9 @@ textarea:focus{outline:none;border-color:var(--blue)}
 .state{font-size:.83rem;color:var(--grey)}
 .state.ok{color:var(--good);font-weight:700}
 .state.err{color:var(--bad);font-weight:700}
+.meter{display:none;width:120px;height:8px;border-radius:999px;background:var(--lila);overflow:hidden;vertical-align:middle}
+.meter.on{display:inline-block}
+.meter i{display:block;height:100%;width:0;background:var(--good)}
 .note{background:#fff8e6;border:1px solid #f5dea0;border-radius:var(--r-sm);padding:12px 14px;font-size:.85rem;color:#7a5b12}
 .fb{background:#eef7ee;border:1px solid #cbe6cd;border-radius:var(--r-sm);padding:14px 16px;margin-top:14px}
 .fb h4{margin:0 0 6px;color:#1c6b23;font-size:.92rem}
@@ -803,9 +806,11 @@ function bloqueArchivo(d){
     <p style="font-size:.86rem;color:var(--grey);margin:0 0 12px">${esc(d.desc)} Record it here, or upload the video, slides or audio you used — up to 50 MB.</p>
     <div class="row" style="margin:0 0 12px">
       <button class="btn" id="rec-${d.kind}">&#9679; Record</button>
+      <span class="meter" id="mtr-${d.kind}"><i></i></span>
       <span class="state" id="st-${d.kind}"></span>
     </div>
     <audio id="pv-${d.kind}" controls style="display:none;width:100%;margin-bottom:12px"></audio>
+    <a id="lnk-${d.kind}" target="_blank" rel="noopener" style="display:none;font-size:.85rem;margin:0 0 12px">&#128206; Open what you handed in</a>
     <label class="drop" for="f-${d.kind}" id="lbl-${d.kind}">
       <input type="file" id="f-${d.kind}" accept="audio/*,video/*,application/pdf,image/png,image/jpeg,.docx">
       &#128206; <b>Choose a file</b> — or drag it here
@@ -902,7 +907,8 @@ async function arrancaSesion(){
     const st=$('#st-'+r.kind);
     const ta=$('#t-'+r.kind);
     if(ta){ ta.value=(r.payload&&r.payload.text)||''; if(st && r.payload && r.payload.draft===false){ st.textContent='Handed in'; st.className='state ok'; } }
-    else if(st && r.file_path){ st.textContent='Uploaded — you can replace it.'; st.className='state ok'; }
+    else if(st && r.file_path){ st.textContent='Uploaded — you can replace it.'; st.className='state ok';
+      muestraEntregado(r.kind, r.file_path); }
     if(r.feedback){
       const fb=$('#fb-'+r.kind); if(fb){ fb.style.display='block';
         $('#fbt-'+r.kind).textContent=(r.score!=null?('Mark: '+r.score+'/10 — '):'')+r.feedback; }
@@ -1074,12 +1080,64 @@ async function sube(blob,ext,estado,kind){
   estado.className=r.ok?'state ok':'state err';
 }
 
+/* El reproductor de esta entrega: la grabacion recien hecha, el archivo que
+   se acaba de elegir o lo que ya estaba entregado. */
+function muestraAudio(kind,url){
+  const pv=$('#pv-'+kind); if(!pv) return;
+  pv.src=url; pv.style.display='block';
+}
+
+/* Lo entregado en otro dia tiene que poder oirse al volver: el bucket es
+   privado, asi que se pide un enlace temporal como hace el profesor. */
+async function muestraEntregado(kind,ruta){
+  if(!sb||!ruta) return;
+  const ext=(ruta.split('.').pop()||'').toLowerCase();
+  const {data,error}=await sb.storage.from('unit-products').createSignedUrl(ruta,3600);
+  if(error||!data) return;
+  if(['webm','ogg','mp3','m4a','wav'].indexOf(ext)>=0){ muestraAudio(kind,data.signedUrl); return; }
+  const a=$('#lnk-'+kind); if(a){ a.href=data.signedUrl; a.style.display='inline-block'; }
+}
+
+/* Lo que entra por el microfono mientras se graba. Un micro mudo (silenciado
+   en el sistema, o el dispositivo equivocado) produce un archivo que sube y
+   se guarda igual, y el alumno solo lo descubre al no oir nada. Devuelve el
+   pico visto, o -1 si el navegador no deja medir: sin medida no se acusa. */
+function mideEntrada(stream,barra){
+  /* Con requestAnimationFrame no se mide nada si la pestana deja de pintarse
+     (otra pestana delante, la tablet con la pantalla apagada) y el silencio
+     seria mentira. Por eso un temporizador, y si no dio tiempo a tomar unas
+     cuantas muestras se devuelve -1: sin medida no se acusa. */
+  let pico=0, muestras=0, tim=0, ac=null;
+  try{
+    ac=new (window.AudioContext||window.webkitAudioContext)();
+    if(ac.state==='suspended') ac.resume().catch(()=>{});
+    const an=ac.createAnalyser(); an.fftSize=1024;
+    ac.createMediaStreamSource(stream).connect(an);
+    const buf=new Uint8Array(an.fftSize);
+    if(barra) barra.classList.add('on');
+    tim=setInterval(()=>{
+      an.getByteTimeDomainData(buf);
+      let m=0; for(let i=0;i<buf.length;i++){ const v=Math.abs(buf[i]-128)/128; if(v>m) m=v; }
+      if(m>pico) pico=m;
+      muestras++;
+      if(barra) barra.firstElementChild.style.width=Math.min(100,Math.round(m*160))+'%';
+    },100);
+  }catch(_){ muestras=-1; }
+  return { cierra(){
+    clearInterval(tim);
+    if(ac) try{ ac.close(); }catch(_){}
+    if(barra){ barra.classList.remove('on'); barra.firstElementChild.style.width='0'; }
+    return muestras>=5 ? pico : -1;
+  } };
+}
+
 function cableaArchivo(kind){
   const st=$('#st-'+kind), lbl=$('#lbl-'+kind), inp=$('#f-'+kind);
   if(!inp) return;
   const desde=async f=>{
     if(!f) return;
     if(f.size>52428800){ st.textContent='That file is over 50 MB.'; st.className='state err'; return; }
+    if((f.type||'').indexOf('audio/')===0) muestraAudio(kind,URL.createObjectURL(f));
     await sube(f, EXT[f.type]||(f.name.split('.').pop()||'bin').toLowerCase(), st, kind);
   };
   inp.addEventListener('change',e=>desde(e.target.files&&e.target.files[0]));
@@ -1095,13 +1153,24 @@ function cableaArchivo(kind){
     try{
       const stream=await navigator.mediaDevices.getUserMedia({audio:true});
       trozos=[]; rec=new MediaRecorder(stream);
+      const medidor=mideEntrada(stream,$('#mtr-'+kind)), t0=Date.now();
       rec.ondataavailable=e=>{ if(e.data.size) trozos.push(e.data); };
       rec.onstop=async()=>{
+        const pico=medidor.cierra();
         stream.getTracks().forEach(t=>t.stop());
         grabando=false; btn.innerHTML='&#9679; Record';
         const blob=new Blob(trozos,{type:rec.mimeType||'audio/webm'});
-        const pv=$('#pv-'+kind); pv.src=URL.createObjectURL(blob); pv.style.display='block';
+        muestraAudio(kind,URL.createObjectURL(blob));
+        /* Si no se pudo medir la entrada (el alumno se fue a otra pestana y el
+           navegador congela los temporizadores) queda el peso: el silencio se
+           comprime a unos 300 bytes por segundo y la voz no baja de miles. */
+        const segs=(Date.now()-t0)/1000;
+        const mudo = pico>=0 ? pico<0.01 : (segs>=2 && blob.size/segs<1200);
         await sube(blob,(blob.type||'').indexOf('ogg')>=0?'ogg':'webm',st,kind);
+        if(mudo){
+          st.textContent='Nothing came through the microphone — play it back to check, turn the right microphone on, and record again.';
+          st.className='state err';
+        }
       };
       rec.start(); grabando=true; btn.innerHTML='&#9632; Stop';
       st.textContent='Recording…'; st.className='state';
