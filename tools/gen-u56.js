@@ -3,6 +3,7 @@
      node tools/gen-u56.js <salida.html>                  las dos etapas
      node tools/gen-u56.js <salida.html> 4                solo 4.o
      node tools/gen-u56.js <salida.html> etapa:primaria   solo primaria
+     node tools/gen-u56.js <salida.html> 4 en             ese grado, en ingles
 
    Sin query string —que es como se abre un archivo del disco— la eleccion
    tiene que viajar dentro del propio HTML: por eso window.__FIJO.          */
@@ -10,6 +11,9 @@ const fs = require('fs'), path = require('path');
 const raiz = path.join(__dirname, '..');
 const html = fs.readFileSync(path.join(raiz, 'unidad56.html'), 'utf8');
 const datos = fs.readFileSync(path.join(raiz, 'scope-u56.js'), 'utf8');
+/* La traduccion viaja dentro de la copia suelta: sin ella, el boton de
+   idioma no aparece y el documento se queda en castellano. */
+const datosEn = fs.readFileSync(path.join(raiz, 'scope-u56-en.js'), 'utf8');
 const scope = JSON.parse(fs.readFileSync(path.join(raiz, 'scope/scope-2026.json'), 'utf8'));
 
 /* Solo lo que la comprobacion mira: los bloques de U5 y U6, de 1.o a 11.o. */
@@ -36,21 +40,27 @@ Object.keys(plan.grados || {}).forEach(gk => {
 const que = process.argv[3] || '';
 const fijo = que.indexOf('etapa:') === 0 ? {etapa: que.slice(6)}
            : que ? {grado: que} : null;
+/* En que idioma se abre. El boton sigue estando para cambiarlo. */
+const lang = process.argv[4] === 'en' ? 'en' : 'es';
 
 /* Un '</script>' dentro del JSON cerraria el script que lo lleva. */
 const json = o => JSON.stringify(o).replace(/</g, '\\u003c');
 
 const salida = html
   .replace(/<script src="scope-u56\.js\?v=\d+"><\/script>/,
-    '<script>' + datos + '</script>\n<script>window.__SCOPE = '
+    '<script>' + datos + '</script>\n<script>' + datosEn + '</script>\n'
+    + '<script>window.__SCOPE = '
     + json(min) + ';\nwindow.__PLAN = ' + json(planMin) + ';'
-    + (fijo ? '\nwindow.__FIJO = ' + json(fijo) + ';' : '') + '</script>')
+    + (fijo ? '\nwindow.__FIJO = ' + json(fijo) + ';' : '')
+    + '\nwindow.__LANG = ' + JSON.stringify(lang) + ';</script>')
   .replace('<a id="back" href="project.html">&#8592; Volver</a>', '')
   /* La copia suelta vive fuera del portal: el favicon y la hoja de la fuente
      son rutas relativas que ahi no existen. Se quitan para que no haya dos
      peticiones muertas cada vez que una coordinadora abre el archivo. */
   .replace(/<link rel="icon"[^>]*>\n?/, '')
-  .replace(/<link href="vendor\/fonts\/[^>]*>\n?/, '');
+  .replace(/<link href="vendor\/fonts\/[^>]*>\n?/, '')
+  /* La traduccion ya va incrustada arriba: la etiqueta que la pedia sobra. */
+  .replace(/<script src="scope-u56-en\.js\?v=\d+"><\/script>\n?/, '');
 
 const destino = process.argv[2];
 fs.writeFileSync(destino, salida);
