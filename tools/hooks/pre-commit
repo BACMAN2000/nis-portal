@@ -1,0 +1,23 @@
+#!/bin/sh
+# Sella los ?v= con el hash del contenido antes de cada commit.
+# Se instala con:  python tools/instala_hook.py
+#
+# Por que un hook y no un paso de despliegue: el portal se publica con un
+# "git reset --hard" y no compila nada, asi que el sello tiene que ir DENTRO
+# del commit. Si dependiera de que alguien se acuerde de correr el script,
+# estariamos donde estabamos.
+#
+# SOLO toca lo que va en el commit (--estacionados). En este repositorio casi
+# siempre hay trabajo de otra sesion a medias en el arbol: sellarlo entero
+# obligaria a arrastrarlo o a bloquearse, y las dos cosas son peores que un
+# sello que llega tarde.
+
+set -e
+python tools/sella_versiones.py --estacionados >/dev/null || exit 1
+
+# Lo que el sellado acaba de tocar ya estaba estacionado por definicion, asi que
+# vuelve al commit sin arrastrar nada ajeno.
+for f in $(git diff --cached --name-only); do
+  [ -f "$f" ] && git add -- "$f"
+done
+exit 0
