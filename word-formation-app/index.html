@@ -3,40 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Word Formation · Cohasset Language Center</title>
+<title>Word Formation · Nordic International School</title>
 <link rel="icon" href="../favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../lexapp.css?v=1">
 <style>
-:root{
-  --primary:#2563EB; --primary-d:#1E40AF; --primary-l:#EFF6FF;
-  --ink:#0F172A; --muted:#64748B; --line:#E2E8F0; --bg:#F8FAFC; --card:#fff;
-  --ok:#059669; --ok-bg:#ECFDF5; --bad:#DC2626; --bad-bg:#FEF2F2;
-  --a1:#0EA5E9; --a2:#22C55E; --b1:#EAB308; --b2:#F97316; --c1:#EF4444; --c2:#8B5CF6;
-}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
-.wrap{max-width:900px;margin:0 auto;padding:0 18px 70px}
-header{background:linear-gradient(135deg,var(--primary),var(--primary-d));color:#fff;padding:26px 0 22px;margin-bottom:22px}
-header .wrap{padding-bottom:0}
-.crumb{font-size:.8rem;opacity:.85;margin-bottom:8px}
-.crumb a{color:#fff;text-decoration:none;opacity:.9}
-.crumb a:hover{text-decoration:underline}
-h1{margin:0;font-size:1.55rem;font-weight:700;letter-spacing:-.01em}
-.sub{opacity:.9;font-size:.92rem;margin-top:5px}
-.levels{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 6px}
-.lv{border:2px solid var(--line);background:var(--card);border-radius:11px;padding:9px 15px;cursor:pointer;font-weight:600;font-size:.95rem;color:var(--ink);transition:.15s}
-.lv small{display:block;font-weight:400;font-size:.72rem;color:var(--muted)}
-.lv[aria-pressed="true"]{border-color:var(--c);background:var(--cl);color:var(--cd)}
-.lv:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
-.tabs{display:flex;gap:6px;margin:16px 0 14px;border-bottom:2px solid var(--line)}
-.tab{border:0;background:none;padding:9px 15px;cursor:pointer;font-weight:600;color:var(--muted);border-bottom:3px solid transparent;margin-bottom:-2px;font-size:.95rem;font-family:inherit}
-.tab[aria-selected="true"]{color:var(--primary);border-bottom-color:var(--primary)}
-.card{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:17px 19px;margin-bottom:12px}
-.afijo{font-size:1.18rem;font-weight:700;color:var(--primary-d);font-feature-settings:"tnum"}
+/* Lo propio de esta app: afijos, familias y el hueco al estilo Cambridge.
+   Todo lo demás (tarjetas, carrusel, banco, juegos) viene de lexapp.css. */
+.afijo{font-size:1.18rem;font-weight:700;color:var(--primary-d)}
 .sentido{font-weight:600;margin-left:9px;color:var(--ink)}
-.badge{display:inline-block;font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:20px;background:var(--primary-l);color:var(--primary-d);margin-left:8px;vertical-align:2px}
 .badge.n{background:#E0E7FF;color:#3730A3}
 .badge.a{background:#FEF3C7;color:#92400E}
 .badge.v{background:#DCFCE7;color:#166534}
@@ -46,39 +23,17 @@ h1{margin:0;font-size:1.55rem;font-weight:700;letter-spacing:-.01em}
 .chip{border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:4px 10px;font-size:.88rem;cursor:pointer;font-family:inherit;color:var(--ink)}
 .chip:hover{border-color:var(--primary);background:var(--primary-l)}
 .chip.on{border-color:var(--primary);background:var(--primary-l);color:var(--primary-d);font-weight:600}
-.ex{margin-top:9px;padding-left:11px;border-left:3px solid var(--line);font-style:italic;color:#334155;font-size:.93rem}
 .ex b{font-style:normal;color:var(--primary-d)}
 .fam{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px;align-items:center}
-.raiz{font-weight:700;color:var(--ink)}
-.arrow{color:var(--muted)}
-.q{font-size:1.05rem;margin-bottom:6px}
+.flecha{color:var(--muted)}
 .stem{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:13px 15px;margin:10px 0 14px;font-size:1.02rem}
 .stem u{text-decoration:none;border-bottom:2px dashed var(--primary);padding:0 26px}
 .given{display:inline-block;margin-top:9px;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--primary-d);background:var(--primary-l);border-radius:6px;padding:3px 9px}
-.opts{display:grid;gap:8px}
-.opt{text-align:left;border:2px solid var(--line);background:var(--card);border-radius:10px;padding:11px 14px;cursor:pointer;font-size:.97rem;font-family:inherit;color:var(--ink)}
-.opt:hover:not(:disabled){border-color:var(--primary);background:var(--primary-l)}
-.opt:disabled{cursor:default}
-.opt.good{border-color:var(--ok);background:var(--ok-bg);color:#065F46;font-weight:600}
-.opt.bad{border-color:var(--bad);background:var(--bad-bg);color:#991B1B}
-.fb{margin-top:12px;padding:10px 13px;border-radius:9px;font-size:.92rem}
-.fb.ok{background:var(--ok-bg);color:#065F46}
-.fb.no{background:var(--bad-bg);color:#991B1B}
-.bar{height:7px;background:var(--line);border-radius:20px;overflow:hidden;margin:14px 0 6px}
-.bar i{display:block;height:100%;background:var(--primary);transition:width .3s}
-.meta{display:flex;justify-content:space-between;font-size:.83rem;color:var(--muted)}
-.btn{border:0;background:var(--primary);color:#fff;border-radius:10px;padding:11px 20px;font-weight:600;cursor:pointer;font-size:.95rem;font-family:inherit}
-.btn.sec{background:var(--card);color:var(--primary-d);border:2px solid var(--line)}
-.btn:hover{filter:brightness(1.06)}
-.row{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}
-.build{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}
-.slot{min-height:44px;border:2px dashed var(--line);border-radius:10px;padding:9px 14px;font-size:1.05rem;font-weight:600;color:var(--primary-d);background:var(--bg);min-width:150px}
-.find{width:100%;padding:10px 13px;border:2px solid var(--line);border-radius:10px;font-size:.95rem;font-family:inherit;margin-bottom:13px}
-.empty{color:var(--muted);text-align:center;padding:26px}
-.score{font-size:2.4rem;font-weight:700;color:var(--primary-d);text-align:center;margin:6px 0}
-.hint{font-size:.85rem;color:var(--muted);margin-top:9px}
-.seccion{font-size:.78rem;letter-spacing:.09em;text-transform:uppercase;font-weight:700;color:var(--muted);margin:22px 0 9px}
-.seccion:first-child{margin-top:6px}
+.modos{display:flex;gap:8px;flex-wrap:wrap;margin:2px 0 14px}
+.modo{border:2px solid var(--line);background:var(--card);border-radius:11px;padding:8px 15px;cursor:pointer;font-weight:600;font-size:.92rem;color:var(--muted);font-family:inherit}
+.modo b{color:var(--ink)}
+.modo[aria-pressed="true"]{border-color:var(--primary);background:var(--primary-l);color:var(--primary-d)}
+.modo[aria-pressed="true"] b{color:var(--primary-d)}
 body.embed header{display:none}
 body.embed .wrap{padding-top:14px}
 </style>
@@ -86,7 +41,7 @@ body.embed .wrap{padding-top:14px}
 <body>
 <header>
   <div class="wrap">
-    <div class="crumb"><a href="../COHASSET-platform-standalone.html">Plataforma</a> › Word formation</div>
+    <div class="crumb"><a href="../index.html">Portal</a> › Word formation</div>
     <h1>Word Formation</h1>
     <div class="sub">Prefijos, sufijos y familias de palabras, sacados de los textos de nuestros propios cursos.</div>
   </div>
@@ -97,300 +52,13 @@ body.embed .wrap{padding-top:14px}
   <div class="tabs" role="tablist">
     <button class="tab" id="tab-learn" role="tab" aria-selected="true" onclick="setTab('learn')">Aprender</button>
     <button class="tab" id="tab-practice" role="tab" aria-selected="false" onclick="setTab('practice')">Practicar</button>
+    <button class="tab" id="tab-games" role="tab" aria-selected="false" onclick="setTab('games')">Juegos</button>
     <button class="tab" id="tab-progress" role="tab" aria-selected="false" onclick="setTab('progress')">Mi progreso</button>
   </div>
   <div id="view"><div class="empty">Cargando…</div></div>
 </div>
 
-<script>
-var DATA = null, LEVEL = 'A1', TAB = 'learn', HECHOS = {}, SESION = {ok:0, total:0};
-var PREG = null, ABIERTO = {};
-var COLORS = {A1:'#0EA5E9', A2:'#22C55E', B1:'#EAB308', B2:'#F97316', C1:'#EF4444', C2:'#8B5CF6'};
-var NOMBRES = {A1:'Primeros pasos', A2:'Elemental', B1:'Intermedio', B2:'Intermedio alto', C1:'Avanzado', C2:'Dominio'};
-var CLASE = {sustantivo:'n', adjetivo:'a', verbo:'v', adverbio:'d'};
-var ORDEN = ['A1','A2','B1','B2','C1','C2'];
-
-if (location.search.indexOf('embed=1') >= 0) document.body.classList.add('embed');
-
-function esc(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){
-  return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
-
-function guardaProgreso(){
-  try { localStorage.setItem('coh_wordform', JSON.stringify(HECHOS)); } catch(e){}
-}
-function leeProgreso(){
-  try { HECHOS = JSON.parse(localStorage.getItem('coh_wordform') || '{}') || {}; } catch(e){ HECHOS = {}; }
-}
-
-/* Todo lo de un nivel o por debajo: si algo se enseña en A2, en B1 sigue valiendo. */
-function hasta(L){ return ORDEN.slice(0, ORDEN.indexOf(L) + 1); }
-function delNivel(lista, L){
-  var v = hasta(L);
-  return lista.filter(function(x){ return v.indexOf(x.nivel) >= 0; });
-}
-function afijosDe(L){ return delNivel(DATA.prefijos, L).concat(delNivel(DATA.sufijos, L)); }
-function familiasDe(L){ return delNivel(DATA.familias, L); }
-
-function pintaNiveles(){
-  document.getElementById('levels').innerHTML = DATA.niveles.map(function(L){
-    var n = afijosDe(L).length;
-    return '<button class="lv" data-l="' + L + '" aria-pressed="' + (L === LEVEL) + '"' +
-      ' style="--c:' + COLORS[L] + ';--cl:' + COLORS[L] + '18;--cd:' + COLORS[L] + '"' +
-      ' onclick="setLevel(this.dataset.l)">' + L + '<small>' + n + ' afijos · ' + NOMBRES[L] + '</small></button>';
-  }).join('');
-}
-function setLevel(L){ LEVEL = L; PREG = null; SESION = {ok:0, total:0}; pintaNiveles(); render(); }
-function setTab(t){
-  TAB = t; PREG = null;
-  ['learn','practice','progress'].forEach(function(x){
-    document.getElementById('tab-' + x).setAttribute('aria-selected', x === t);
-  });
-  render();
-}
-
-/* ---------------------------------------------------------------- aprender */
-function frase(ej){
-  if(!ej.frases || !ej.frases.length) return '';
-  var t = ej.frases[0].t;
-  var rx = new RegExp('\\b(' + ej.w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')\\b', 'i');
-  return '<div class="ex">' + esc(t).replace(rx, '<b>$1</b>') + '</div>';
-}
-function tarjetaAfijo(a, esPrefijo){
-  var cl = a.clase ? '<span class="badge ' + (CLASE[a.clase] || '') + '">' + esc(a.clase) + '</span>' : '';
-  var abierto = ABIERTO[a.afijo];
-  var chips = a.ejemplos.map(function(e, i){
-    return '<button class="chip' + (abierto === i ? ' on' : '') + '" onclick="verEjemplo(\'' +
-      esc(a.afijo) + '\',' + i + ')">' + esc(e.w) + '</button>';
-  }).join('');
-  var muestra = abierto != null && a.ejemplos[abierto] ? frase(a.ejemplos[abierto]) : '';
-  return '<div class="card"><span class="afijo">' + esc(a.afijo) + '</span>' +
-    '<span class="sentido">' + esc(a.sentido || '') + '</span>' + cl +
-    '<span class="badge">' + esc(a.nivel) + '</span>' +
-    '<div class="nota">' + esc(a.nota || '') + '</div>' +
-    '<div class="chips">' + chips + '</div>' + muestra +
-    '<div class="hint">Pulsa una palabra para verla en una frase de tu curso.</div></div>';
-}
-function verEjemplo(afijo, i){
-  ABIERTO[afijo] = ABIERTO[afijo] === i ? null : i;
-  render();
-}
-function vistaAprender(){
-  var pre = delNivel(DATA.prefijos, LEVEL), suf = delNivel(DATA.sufijos, LEVEL);
-  var fam = familiasDe(LEVEL);
-  if(!pre.length && !suf.length) return '<div class="empty">Todavía no hay nada en este nivel.</div>';
-  var h = '';
-  if(pre.length){
-    h += '<div class="seccion">Prefijos — van delante y cambian el significado (' + pre.length + ')</div>';
-    h += pre.map(function(a){ return tarjetaAfijo(a, true); }).join('');
-  }
-  if(suf.length){
-    h += '<div class="seccion">Sufijos — van detrás y cambian la clase de palabra (' + suf.length + ')</div>';
-    h += suf.map(function(a){ return tarjetaAfijo(a, false); }).join('');
-  }
-  if(fam.length){
-    h += '<div class="seccion">Familias de palabras (' + fam.length + ')</div>';
-    h += fam.slice(0, 40).map(function(f){
-      var formas = f.formas.map(function(y){
-        return '<span class="chip">' + esc(y.w) + '<span class="badge ' + (CLASE[y.clase] || '') +
-          '" style="margin-left:6px">' + esc(y.sufijo) + '</span></span>';
-      }).join('<span class="arrow">·</span>');
-      return '<div class="card"><div class="fam"><span class="raiz">' + esc(f.raiz) +
-        '</span><span class="arrow">→</span>' + formas + '</div></div>';
-    }).join('');
-  }
-  return h;
-}
-
-/* ---------------------------------------------------------------- practicar */
-function mezcla(a){
-  a = a.slice();
-  for(var i = a.length - 1; i > 0; i--){ var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; }
-  return a;
-}
-function unaFrase(ej){
-  if(!ej.frases || !ej.frases.length) return null;
-  for(var i = 0; i < ej.frases.length; i++){
-    var rx = new RegExp('\\b' + ej.w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'i');
-    if(rx.test(ej.frases[i].t)) return ej.frases[i].t;
-  }
-  return null;
-}
-
-/* Hueco al estilo del Use of English de Cambridge: se da la raíz en mayúsculas
-   y el alumno elige la forma que encaja. La frase es de su propio curso. */
-function pregHueco(){
-  var fams = familiasDe(LEVEL).filter(function(f){ return f.formas.length >= 2; });
-  if(!fams.length) return null;
-  var f = fams[Math.floor(Math.random() * fams.length)];
-  var buenas = f.formas.filter(function(y){ return unaFrase(y); });
-  if(!buenas.length) return null;
-  var y = buenas[Math.floor(Math.random() * buenas.length)];
-  var t = unaFrase(y);
-  var rx = new RegExp('\\b' + y.w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'i');
-  var otras = f.formas.filter(function(z){ return z.w !== y.w; }).map(function(z){ return z.w; });
-  var pool = [];
-  familiasDe(LEVEL).forEach(function(g){ g.formas.forEach(function(z){ pool.push(z.w); }); });
-  while(otras.length < 3 && pool.length){
-    var c = pool.splice(Math.floor(Math.random() * pool.length), 1)[0];
-    if(c !== y.w && otras.indexOf(c) < 0) otras.push(c);
-  }
-  return {
-    tipo: 'hueco', clave: 'h:' + y.w,
-    enunciado: 'Completa la frase con la forma correcta.',
-    stem: esc(t).replace(rx, '<u></u>'),
-    dado: f.raiz,
-    opciones: mezcla([y.w].concat(otras.slice(0, 3))),
-    correcta: y.w,
-    porque: '«' + f.raiz + '» + «' + y.sufijo + '» da un ' + y.clase + ': ' + y.w + '.'
-  };
-}
-/* Qué clase de palabra produce un sufijo. */
-function pregClase(){
-  var suf = delNivel(DATA.sufijos, LEVEL);
-  if(suf.length < 2) return null;
-  var a = suf[Math.floor(Math.random() * suf.length)];
-  var clases = ['sustantivo', 'adjetivo', 'verbo', 'adverbio'];
-  return {
-    tipo: 'clase', clave: 'c:' + a.afijo,
-    enunciado: '¿Qué clase de palabra forma el sufijo <b>' + esc(a.afijo) + '</b>?',
-    stem: a.ejemplos.slice(0, 4).map(function(e){ return esc(e.w); }).join(' · '),
-    opciones: mezcla(clases), correcta: a.clase,
-    porque: a.nota
-  };
-}
-/* Qué significa un afijo. */
-function pregSentido(){
-  var todos = afijosDe(LEVEL).filter(function(a){ return a.sentido; });
-  if(todos.length < 4) return null;
-  var a = todos[Math.floor(Math.random() * todos.length)];
-  // Varios prefijos comparten sentido ('lo contrario' vale para un-, in-, im- y
-  // dis-), así que los distractores hay que deduplicarlos entre sí además de
-  // contra la respuesta: si no, la pregunta sale con dos opciones iguales y no
-  // tiene solución.
-  var vistos = {}, otros = [];
-  mezcla(todos).forEach(function(b){
-    if(b.sentido === a.sentido || vistos[b.sentido] || otros.length >= 3) return;
-    vistos[b.sentido] = 1; otros.push(b);
-  });
-  if(otros.length < 2) return null;
-  return {
-    tipo: 'sentido', clave: 's:' + a.afijo,
-    enunciado: '¿Qué aporta <b>' + esc(a.afijo) + '</b> a la palabra?',
-    stem: a.ejemplos.slice(0, 4).map(function(e){ return esc(e.w); }).join(' · '),
-    opciones: mezcla([a.sentido].concat(otros.map(function(b){ return b.sentido; }))),
-    correcta: a.sentido, porque: a.nota
-  };
-}
-/* Cuál NO pertenece a la familia. */
-function pregIntruso(){
-  var fams = familiasDe(LEVEL).filter(function(f){ return f.formas.length >= 3; });
-  if(fams.length < 2) return null;
-  var f = fams[Math.floor(Math.random() * fams.length)];
-  var otras = fams.filter(function(g){ return g.raiz !== f.raiz; });
-  var intruso = otras[Math.floor(Math.random() * otras.length)].formas[0].w;
-  var tres = mezcla(f.formas).slice(0, 3).map(function(y){ return y.w; });
-  return {
-    tipo: 'intruso', clave: 'i:' + f.raiz,
-    enunciado: '¿Cuál <b>no</b> es de la misma familia que las otras?',
-    stem: '', opciones: mezcla(tres.concat([intruso])), correcta: intruso,
-    porque: tres.join(', ') + ' vienen todas de «' + f.raiz + '».'
-  };
-}
-/* Qué prefijo lo convierte en su contrario. */
-function pregPrefijo(){
-  var pre = delNivel(DATA.prefijos, LEVEL);
-  if(pre.length < 3) return null;
-  var a = pre[Math.floor(Math.random() * pre.length)];
-  var e = a.ejemplos[Math.floor(Math.random() * a.ejemplos.length)];
-  var raiz = e.w.slice(a.afijo.length - 1);
-  var otros = mezcla(pre.filter(function(b){ return b.afijo !== a.afijo; })).slice(0, 3);
-  return {
-    tipo: 'prefijo', clave: 'p:' + e.w,
-    enunciado: '¿Qué prefijo necesita <b>' + esc(raiz) + '</b> para dar <b>' + esc(e.w) + '</b>?',
-    stem: '', opciones: mezcla([a.afijo].concat(otros.map(function(b){ return b.afijo; }))),
-    correcta: a.afijo, porque: a.afijo + ' significa «' + a.sentido + '». ' + a.nota
-  };
-}
-
-var GENERADORES = [pregHueco, pregHueco, pregClase, pregSentido, pregIntruso, pregPrefijo];
-
-function nuevaPregunta(){
-  for(var i = 0; i < 14; i++){
-    var g = GENERADORES[Math.floor(Math.random() * GENERADORES.length)];
-    var p = g();
-    if(p && p.opciones.length >= 2) return p;
-  }
-  return null;
-}
-
-function vistaPractica(){
-  if(!PREG) PREG = nuevaPregunta();
-  if(!PREG) return '<div class="empty">Este nivel todavía no tiene material suficiente para practicar.</div>';
-  var p = PREG;
-  var opts = p.opciones.map(function(o, i){
-    return '<button class="opt" id="o' + i + '" onclick="responde(' + i + ')">' + esc(o) + '</button>';
-  }).join('');
-  return '<div class="card">' +
-    '<div class="q">' + p.enunciado + '</div>' +
-    (p.stem ? '<div class="stem">' + p.stem + '</div>' : '') +
-    (p.dado ? '<div class="given">' + esc(p.dado) + '</div>' : '') +
-    '<div class="opts" style="margin-top:12px">' + opts + '</div>' +
-    '<div id="fb"></div>' +
-    '<div class="meta" style="margin-top:14px"><span>Acertadas ' + SESION.ok + ' de ' + SESION.total + '</span>' +
-    '<span>' + LEVEL + '</span></div></div>';
-}
-
-function responde(i){
-  var p = PREG, elegida = p.opciones[i], bien = elegida === p.correcta;
-  SESION.total++; if(bien) SESION.ok++;
-  var h = HECHOS[p.clave] || {ok:0, no:0};
-  if(bien) h.ok++; else h.no++;
-  HECHOS[p.clave] = h; guardaProgreso();
-  p.opciones.forEach(function(o, k){
-    var b = document.getElementById('o' + k);
-    if(!b) return;
-    b.disabled = true;
-    if(o === p.correcta) b.className = 'opt good';
-    else if(k === i) b.className = 'opt bad';
-  });
-  document.getElementById('fb').innerHTML =
-    '<div class="fb ' + (bien ? 'ok' : 'no') + '">' +
-    (bien ? '✓ Correcto. ' : '✗ Era «' + esc(p.correcta) + '». ') + esc(p.porque || '') + '</div>' +
-    '<div class="row"><button class="btn" onclick="siguiente()">Siguiente</button></div>';
-}
-function siguiente(){ PREG = nuevaPregunta(); render(); }
-
-/* ---------------------------------------------------------------- progreso */
-function vistaProgreso(){
-  var claves = Object.keys(HECHOS);
-  if(!claves.length) return '<div class="card"><div class="empty">Todavía no has practicado. Empieza por la pestaña <b>Practicar</b>.</div></div>';
-  var ok = 0, no = 0;
-  claves.forEach(function(k){ ok += HECHOS[k].ok; no += HECHOS[k].no; });
-  var pct = ok + no ? Math.round(ok / (ok + no) * 100) : 0;
-  var flojos = claves.filter(function(k){ return HECHOS[k].no > HECHOS[k].ok; })
-    .map(function(k){ return k.slice(2); });
-  return '<div class="card"><div class="score">' + pct + ' %</div>' +
-    '<div class="meta"><span>' + ok + ' aciertos</span><span>' + no + ' fallos</span></div>' +
-    '<div class="bar"><i style="width:' + pct + '%"></i></div>' +
-    (flojos.length ? '<div class="nota" style="margin-top:14px"><b>Repasa esto:</b> ' +
-      esc(flojos.slice(0, 18).join(', ')) + '</div>' : '') +
-    '<div class="hint">El progreso se guarda en este navegador.</div></div>';
-}
-
-function render(){
-  var v = document.getElementById('view');
-  v.innerHTML = TAB === 'learn' ? vistaAprender() : (TAB === 'practice' ? vistaPractica() : vistaProgreso());
-}
-
-leeProgreso();
-fetch('data.json?v=1').then(function(r){ return r.json(); }).then(function(d){
-  DATA = d;
-  if(DATA.niveles.indexOf(LEVEL) < 0) LEVEL = DATA.niveles[0];
-  pintaNiveles(); render();
-}).catch(function(){
-  document.getElementById('view').innerHTML =
-    '<div class="empty">No se ha podido cargar el material. Vuelve a intentarlo en un momento.</div>';
-});
-</script>
+<script>if(location.search.indexOf('embed=1') >= 0) document.body.classList.add('embed');</script>
+<script src="../wordform.js?v=1"></script>
 </body>
 </html>
