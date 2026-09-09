@@ -272,6 +272,7 @@ const UI = {
   verPlan:     {en:'Printable plan: week by week and subject by subject',
                 es:'Plan imprimible: semana a semana y curso por curso'},
   arco11:      {en:'The eleven-week arc', es:'El arco de once semanas'},
+  enCurso:     {en:'now', es:'en curso'},
   arco11Hint:  {en:'two units in a row, one project, and what every subject does each week',
                 es:'dos unidades seguidas, un proyecto, y lo que hace cada curso cada semana'},
   integraTit:  {en:'What each subject contributes to the final product',
@@ -1015,7 +1016,13 @@ function pintaSecundaria(grade){
   /* El arco de once semanas va primero: es el proyecto del trimestre, y los
      de unidad son sus dos mitades. */
   const a11 = Object.keys(window.PROJECT_SEC11 || {})
-    .filter(x => x.indexOf(String(grade).toLowerCase() + '.') === 0);
+    .filter(x => x.indexOf(String(grade).toLowerCase() + '.') === 0)
+    .sort((a, b) => window.PROJECT_SEC11[a].trimestre - window.PROJECT_SEC11[b].trimestre);
+  /* Cual de los arcos del grado es el de ahora. Los de secundaria no llevan
+     fechas, llevan trimestre; el calendario del colegio los reparte marzo-mayo,
+     junio-agosto y setiembre-noviembre. */
+  const mes = new Date().getMonth();
+  const trimHoy = mes <= 4 ? 1 : mes <= 7 ? 2 : 3;
   if(a11.length){
     h += `<div class="sec-title"><h2>${u('arco11')}</h2>
       <span class="hint">${u('arco11Hint')}</span></div><div class="arcs">`;
@@ -1023,7 +1030,8 @@ function pintaSecundaria(grade){
       const p = window.PROJECT_SEC11[x];
       h += `<a class="arc" href="project.html?arco11=${encodeURIComponent(x)}"
         style="background:linear-gradient(135deg,${p.cover.from},${p.cover.to})">
-        <span class="tag">${p.semanas.length} ${u('semanas')} &middot; U${p.unidades.join('+U')}</span>
+        <span class="tag">${p.semanas.length} ${u('semanas')} &middot; U${p.unidades.join('+U')}${
+          p.trimestre === trimHoy ? ' &middot; ' + u('enCurso') : ''}</span>
         <div class="ic">${p.cover.icon}</div>
         <h3>${esc(t(p.titulo))}</h3>
         <p>${esc(t(p.preguntaEsencial))}</p>
