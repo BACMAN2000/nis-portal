@@ -41,7 +41,10 @@
   .fact div{flex:1 1 150px; background:var(--blue-soft); border-radius:14px; padding:12px 14px; text-align:center;}
   .fact b{display:block; font-size:1.5rem; color:var(--blue); line-height:1.15;}
   .fact span{font-size:.8rem; color:var(--muted); font-weight:700;}
-  table.data{width:100%; border-collapse:collapse; margin:12px 0; font-size:.9rem; min-width:560px;}
+  /* min-width alto a proposito: con la columna "What happened" estrecha las
+     filas crecen a seis o siete lineas y en una tablet se ve medio renglon
+     util por fila. Es mejor que la tabla se desplace de lado dentro de su caja. */
+  table.data{width:100%; border-collapse:collapse; margin:12px 0; font-size:.9rem; min-width:740px;}
   table.data th{background:var(--accent-soft); color:#a24413; text-align:left; padding:8px 10px; font-size:.76rem;
     text-transform:uppercase; letter-spacing:.5px;}
   table.data td{border-bottom:1px solid #efe7dd; padding:8px 10px; vertical-align:top;}
