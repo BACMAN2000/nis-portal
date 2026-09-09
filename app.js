@@ -4024,7 +4024,7 @@ const ENGLISH_AREAS = [
   {emoji:'🎲', title:'Games Lab',     desc:'7 games per topic for grammar, vocabulary, phrasal verbs and idioms (A1–C1).', nav:'games', block:'practice'},
   {emoji:'🔗', title:'Phrasal Verbs',  desc:'331 phrasal verbs level by level, with the sentence from your own course.', nav:'phrasal', block:'practice'},
   {emoji:'🪢', title:'Collocations',   desc:'395 word partnerships level by level, measured in your own courses.', nav:'collocations', block:'practice'},
-  {emoji:'💬', title:'Idioms',         desc:'212 expressions you cannot guess from their words. From B1 up.', nav:'idioms', block:'practice'},
+  {emoji:'💬', title:'Idioms',         desc:'290 expressions you cannot guess from their words. From B1 up.', nav:'idioms', block:'practice'},
   {emoji:'🧩', title:'Word Formation', desc:'Prefixes, suffixes and word families, with the sentence from your own course.', nav:'wordform', block:'practice'},
   {emoji:'📖', title:'NIS Dictionary',  desc:'Our own dictionary: phonetics, audio, translation and the meaning written for your course.', nav:'dict', block:'practice'},
   {emoji:'🎮', title:'NIShoot Live',  desc:"Join your class's live game: enter with the PIN.",    nav:'nishoot', block:'practice'},
