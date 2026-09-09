@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diccionario · Cohasset Language Center</title>
+<link rel="icon" href="../favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --primary:#2563EB; --primary-d:#1E40AF; --primary-l:#EFF6FF;
+  --ink:#0F172A; --muted:#64748B; --line:#E2E8F0; --bg:#F8FAFC; --card:#fff;
+  --ok:#059669; --ok-bg:#ECFDF5;
+  --a1:#0EA5E9; --a2:#22C55E; --b1:#EAB308; --b2:#F97316; --c1:#EF4444; --c2:#8B5CF6;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
+.wrap{max-width:820px;margin:0 auto;padding:0 18px 70px}
+header{background:linear-gradient(135deg,var(--primary),var(--primary-d));color:#fff;padding:26px 0 24px;margin-bottom:20px}
+header .wrap{padding-bottom:0}
+.crumb{font-size:.8rem;opacity:.85;margin-bottom:8px}
+.crumb a{color:#fff;text-decoration:none;opacity:.9}
+.crumb a:hover{text-decoration:underline}
+h1{margin:0;font-size:1.55rem;font-weight:700;letter-spacing:-.01em}
+.sub{opacity:.9;font-size:.92rem;margin-top:5px}
+
+.buscador{position:relative;margin:0 0 6px}
+.buscador input{width:100%;padding:15px 46px 15px 16px;border:2px solid var(--line);border-radius:13px;
+  font-size:1.12rem;font-family:inherit;background:var(--card);color:var(--ink)}
+.buscador input:focus{outline:none;border-color:var(--primary)}
+.buscador .lupa{position:absolute;right:15px;top:15px;color:var(--muted);font-size:1.1rem}
+.sug{position:absolute;left:0;right:0;top:58px;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;box-shadow:0 12px 30px #0f172a1a;z-index:20;overflow:hidden;max-height:340px;overflow-y:auto}
+.sug button{display:flex;width:100%;justify-content:space-between;align-items:center;gap:10px;
+  text-align:left;border:0;background:none;padding:10px 15px;cursor:pointer;font-family:inherit;
+  font-size:.98rem;color:var(--ink);border-bottom:1px solid var(--line)}
+.sug button:last-child{border-bottom:0}
+.sug button:hover,.sug button.on{background:var(--primary-l)}
+.stats{font-size:.83rem;color:var(--muted);margin:0 0 16px}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-bottom:13px}
+.pal{font-size:1.7rem;font-weight:700;letter-spacing:-.02em;display:inline-block;vertical-align:middle}
+.cefr{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.06em;padding:3px 9px;
+  border-radius:20px;margin-left:10px;vertical-align:6px;color:#fff}
+.fon{display:flex;flex-wrap:wrap;gap:9px;margin:12px 0 4px}
+.fon button{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--bg);
+  border-radius:20px;padding:6px 13px;cursor:pointer;font-family:inherit;font-size:.9rem;color:var(--ink)}
+.fon button:hover{border-color:var(--primary);background:var(--primary-l)}
+.fon .ac{font-size:.68rem;font-weight:700;letter-spacing:.06em;color:var(--muted)}
+.fon .ipa{font-family:"Segoe UI",system-ui,sans-serif}
+.es{margin:16px 0 0;padding:13px 16px;background:var(--ok-bg);border-left:3px solid var(--ok);
+  border-radius:0 9px 9px 0;font-size:1.14rem;font-weight:600;color:#065F46}
+.pos{font-size:.72rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);
+  margin:17px 0 7px}
+.defs{margin:0;padding-left:20px}
+.defs li{margin-bottom:6px}
+.nada{color:var(--muted);text-align:center;padding:30px 20px}
+.nada b{color:var(--ink);display:block;font-size:1.05rem;margin-bottom:6px}
+
+.seccion{font-size:.78rem;letter-spacing:.09em;text-transform:uppercase;font-weight:700;color:var(--muted);margin:26px 0 10px}
+.abc{display:flex;flex-wrap:wrap;gap:5px}
+.abc button{border:1px solid var(--line);background:var(--card);border-radius:8px;width:34px;height:34px;
+  cursor:pointer;font-family:inherit;font-weight:600;color:var(--ink);text-transform:uppercase;font-size:.9rem}
+.abc button:hover{border-color:var(--primary);background:var(--primary-l)}
+.abc button[aria-pressed="true"]{background:var(--primary);border-color:var(--primary);color:#fff}
+.abc button:disabled{opacity:.35;cursor:default}
+.niveles{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+.niveles button{border:1px solid var(--line);background:var(--card);border-radius:8px;padding:5px 12px;
+  cursor:pointer;font-family:inherit;font-weight:600;font-size:.85rem;color:var(--ink)}
+.niveles button[aria-pressed="true"]{background:var(--primary);border-color:var(--primary);color:#fff}
+.lista{display:flex;flex-wrap:wrap;gap:6px;margin-top:13px}
+.lista button{border:1px solid var(--line);background:var(--card);border-radius:8px;padding:5px 11px;
+  cursor:pointer;font-family:inherit;font-size:.92rem;color:var(--ink)}
+.lista button:hover{border-color:var(--primary);background:var(--primary-l)}
+.mas{margin-top:13px}
+.btn{border:0;background:var(--primary);color:#fff;border-radius:10px;padding:10px 18px;font-weight:600;
+  cursor:pointer;font-size:.93rem;font-family:inherit}
+.btn.sec{background:var(--card);color:var(--primary-d);border:2px solid var(--line)}
+button:focus-visible,input:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+body.embed header{display:none}
+body.embed .wrap{padding-top:14px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="crumb"><a href="../COHASSET-platform-standalone.html">Plataforma</a> › Diccionario</div>
+    <h1 id="titulo">Cohasset Dictionary</h1>
+    <div class="sub" id="lema">Nuestro diccionario: fonética, audio, traducción y el significado escrito para nuestros cursos.</div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="buscador">
+    <input id="q" type="search" autocomplete="off" spellcheck="false"
+           placeholder="Escribe una palabra en inglés…" aria-label="Buscar una palabra">
+    <span class="lupa" aria-hidden="true">🔍</span>
+    <div id="sug" class="sug" hidden></div>
+  </div>
+  <p class="stats" id="stats">Cargando…</p>
+
+  <div id="ficha"></div>
+
+  <div class="seccion">Hojear el diccionario</div>
+  <div class="abc" id="abc"></div>
+  <div class="niveles" id="niveles"></div>
+  <div class="lista" id="lista"></div>
+  <div class="mas" id="mas"></div>
+</div>
+
+<script>
+var NIVELES = ['A1','A2','B1','B2','C1','C2'];
+var COLORS = {A1:'#0EA5E9', A2:'#22C55E', B1:'#EAB308', B2:'#F97316', C1:'#EF4444', C2:'#8B5CF6'};
+var LETRA = 'a', NIVEL = '', DESDE = 0, PORLETRA = {}, SUGS = [], SEL = -1, TMR = null;
+
+/* El mismo archivo vive en las dos webs. El nombre lo pone el dominio, para no
+   mantener dos copias que acabarian divergiendo. */
+var ES_NIS = /(^|\.)nis\./.test(location.hostname);
+if (ES_NIS) {
+  document.getElementById('titulo').textContent = 'NIS Dictionary';
+  document.title = 'Diccionario · Nordic International School';
+}
+if (location.search.indexOf('embed=1') >= 0) document.body.classList.add('embed');
+
+function esc(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){
+  return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+function api(ruta){
+  return fetch('/api/dict/' + ruta).then(function(r){
+    if(!r.ok) throw new Error(r.status);
+    return r.json();
+  });
+}
+
+/* ---------------------------------------------------------------- la ficha */
+function suena(url){
+  if(!url) return;
+  try { new Audio(url).play(); } catch(e){}
+}
+function pintaFicha(e){
+  var cefr = e.cefr && NIVELES.indexOf(e.cefr) >= 0
+    ? '<span class="cefr" style="background:' + COLORS[e.cefr] + '">' + e.cefr + '</span>' : '';
+  var fon = (e.phonetics || []).map(function(f){
+    var t = f.text || '', a = f.audio || '';
+    if(!t && !a) return '';
+    return '<button onclick="suena(\'' + esc(a) + '\')"' + (a ? '' : ' disabled') + '>' +
+      '<span class="ac">' + (f.accent === 'us' ? 'US' : 'UK') + '</span>' +
+      '<span class="ipa">' + esc(t) + '</span>' + (a ? '<span>🔊</span>' : '') + '</button>';
+  }).join('');
+  var bloques = (e.meanings || []).map(function(m){
+    var defs = (m.definitions || []).map(function(d){
+      return '<li>' + esc(d.definition) + '</li>'; }).join('');
+    if(!defs) return '';
+    return (m.partOfSpeech ? '<div class="pos">' + esc(m.partOfSpeech) + '</div>' : '') +
+      '<ul class="defs">' + defs + '</ul>';
+  }).join('');
+  document.getElementById('ficha').innerHTML =
+    '<div class="card"><span class="pal">' + esc(e.word) + '</span>' + cefr +
+    (fon ? '<div class="fon">' + fon + '</div>' : '') +
+    (e.es ? '<div class="es">' + esc(e.es) + '</div>' : '') +
+    bloques + '</div>';
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+function noEsta(w){
+  document.getElementById('ficha').innerHTML =
+    '<div class="card"><div class="nada"><b>«' + esc(w) + '» no está todavía</b>' +
+    'Nuestro diccionario lo escribimos nosotros, palabra a palabra, así que va creciendo. ' +
+    'Prueba con la forma base: <i>nurses</i> → <i>nurse</i>.</div></div>';
+}
+function busca(w){
+  w = (w || '').trim().toLowerCase();
+  if(!w) return;
+  document.getElementById('q').value = w;
+  cierraSug();
+  api('en/' + encodeURIComponent(w))
+    .then(function(d){ if(d && d[0]) pintaFicha(d[0]); else noEsta(w); })
+    .catch(function(){ noEsta(w); });
+}
+
+/* ---------------------------------------------------------------- sugerencias */
+function cierraSug(){ var s = document.getElementById('sug'); s.hidden = true; s.innerHTML = ''; SEL = -1; }
+function pintaSug(){
+  var s = document.getElementById('sug');
+  if(!SUGS.length){ cierraSug(); return; }
+  s.innerHTML = SUGS.map(function(p, i){
+    var c = p.cefr && COLORS[p.cefr]
+      ? '<span class="cefr" style="background:' + COLORS[p.cefr] + ';vertical-align:0">' + p.cefr + '</span>' : '';
+    return '<button class="' + (i === SEL ? 'on' : '') + '" onmousedown="busca(\'' +
+      esc(p.w).replace(/'/g, "\\'") + '\')">' + '<span>' + esc(p.d) + '</span>' + c + '</button>';
+  }).join('');
+  s.hidden = false;
+}
+function alEscribir(){
+  var t = document.getElementById('q').value.trim();
+  clearTimeout(TMR);
+  if(t.length < 2){ cierraSug(); return; }
+  TMR = setTimeout(function(){
+    api('buscar?q=' + encodeURIComponent(t))
+      .then(function(d){ SUGS = d.palabras || []; SEL = -1; pintaSug(); })
+      .catch(cierraSug);
+  }, 180);
+}
+
+/* ---------------------------------------------------------------- hojear */
+function pintaAbc(){
+  var c = document.getElementById('abc');
+  c.innerHTML = 'abcdefghijklmnopqrstuvwxyz'.split('').map(function(L){
+    var n = PORLETRA[L] || 0;
+    return '<button aria-pressed="' + (L === LETRA) + '"' + (n ? '' : ' disabled') +
+      ' title="' + n + ' palabras" onclick="verLetra(\'' + L + '\')">' + L + '</button>';
+  }).join('');
+  document.getElementById('niveles').innerHTML =
+    ['<button aria-pressed="' + (NIVEL === '') + '" onclick="verNivel(\'\')">Todos</button>'].concat(
+      NIVELES.map(function(N){
+        return '<button aria-pressed="' + (N === NIVEL) + '" onclick="verNivel(\'' + N + '\')">' + N + '</button>';
+      })).join('');
+}
+function verLetra(L){ LETRA = L; DESDE = 0; pintaAbc(); cargaLista(false); }
+function verNivel(N){ NIVEL = N; DESDE = 0; pintaAbc(); cargaLista(false); }
+function cargaLista(anade){
+  api('indice?letra=' + LETRA + '&nivel=' + NIVEL + '&desde=' + DESDE)
+    .then(function(d){
+      var html = (d.palabras || []).map(function(p){
+        return '<button onclick="busca(\'' + esc(p.w).replace(/'/g, "\\'") + '\')">' +
+          esc(p.d) + '</button>';
+      }).join('');
+      var c = document.getElementById('lista');
+      c.innerHTML = anade ? c.innerHTML + html : html;
+      var vistas = DESDE + (d.palabras || []).length;
+      document.getElementById('mas').innerHTML = vistas < d.total
+        ? '<button class="btn sec" onclick="masLista()">Ver más (' + vistas + ' de ' + d.total + ')</button>'
+        : (d.total ? '<span class="stats">' + d.total + ' palabras con «' + LETRA + '»' +
+            (NIVEL ? ' en ' + NIVEL : '') + '</span>' : '<span class="stats">Nada aquí todavía.</span>');
+    })
+    .catch(function(){ document.getElementById('lista').innerHTML =
+      '<span class="stats">No se ha podido cargar el índice.</span>'; });
+}
+function masLista(){ DESDE += 120; cargaLista(true); }
+
+/* ---------------------------------------------------------------- arranque */
+var caja = document.getElementById('q');
+caja.addEventListener('input', alEscribir);
+caja.addEventListener('blur', function(){ setTimeout(cierraSug, 150); });
+caja.addEventListener('keydown', function(ev){
+  if(ev.key === 'Enter'){
+    ev.preventDefault();
+    busca(SEL >= 0 && SUGS[SEL] ? SUGS[SEL].w : caja.value);
+  } else if(ev.key === 'ArrowDown' || ev.key === 'ArrowUp'){
+    if(!SUGS.length) return;
+    ev.preventDefault();
+    SEL = (SEL + (ev.key === 'ArrowDown' ? 1 : SUGS.length - 1)) % SUGS.length;
+    pintaSug();
+  } else if(ev.key === 'Escape'){ cierraSug(); }
+});
+
+api('resumen').then(function(d){
+  PORLETRA = d.por_letra || {};
+  document.getElementById('stats').textContent =
+    d.total.toLocaleString('es') + ' palabras · ' +
+    d.con_traduccion.toLocaleString('es') + ' con traducción · ' +
+    d.con_definicion.toLocaleString('es') + ' con significado. Todo escrito en casa.';
+  pintaAbc(); cargaLista(false);
+}).catch(function(){
+  document.getElementById('stats').textContent = 'No se ha podido contactar con el diccionario.';
+  pintaAbc();
+});
+</script>
+</body>
+</html>

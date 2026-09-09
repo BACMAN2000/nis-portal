@@ -849,6 +849,14 @@ function studentGames(){ _setNav('games'); $('#main').innerHTML = `${_backBtn("w
 /* Word formation: prefijos, sufijos y familias de palabras medidos en nuestro
    propio corpus. Misma app que en cohasset.pe, embebida para no sacar al alumno
    del portal. */
+/* NIS Dictionary: el mismo diccionario del centro que en cohasset.pe. El
+   nombre lo pone el dominio dentro de la propia pagina, asi que no hay dos
+   copias que mantener. */
+function dictPanel(){
+  return `<iframe src="dictionary-app/index.html?embed=1&v=1" title="NIS Dictionary"
+    style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block"></iframe>`;
+}
+
 function wordformPanel(){
   return `<iframe src="word-formation-app/index.html?embed=1&v=1" title="Word Formation"
     style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block"></iframe>`;
@@ -1176,6 +1184,7 @@ async function renderAdmin(tab='users'){
       {key:'collocations',label:'🪢 Collocations'},
       {key:'idioms',label:'💬 Idioms'},
       {key:'wordform',label:'🧩 Word formation'},
+      {key:'dict',label:'📖 NIS Dictionary'},
       {key:'coach',label:'🎙️ Pronunciación'},
     ]},
     /* Permisos = lo que se abre y se cierra por grado. "Abrir examenes de
@@ -1202,6 +1211,7 @@ async function renderAdmin(tab='users'){
   if(tab==='collocations') return $('#main').innerHTML = collocationsPanel();
   if(tab==='idioms') return $('#main').innerHTML = idiomsPanel();
   if(tab==='wordform') return $('#main').innerHTML = wordformPanel();
+  if(tab==='dict') return $('#main').innerHTML = dictPanel();
   if(tab==='coach') return $('#main').innerHTML = coachPanel();
   if(tab==='overview') return adminOverview();
   if(tab==='unitprod') return unitProductsPanel();
@@ -3325,6 +3335,7 @@ async function renderTeacher(tab){
       {key:'collocations',label:'🪢 Collocations'},
       {key:'idioms',label:'💬 Idioms'},
     {key:'wordform',label:'🧩 Word formation'},
+    {key:'dict',label:'📖 NIS Dictionary'},
     {key:'coach',label:'🎙️ Pronunciación'},
   ]);
   grupo('Permisos','🔐',permisos);
@@ -3356,6 +3367,7 @@ async function renderTeacher(tab){
   if(active==='collocations'){ $('#main').innerHTML = collocationsPanel(); return; }
   if(active==='idioms'){ $('#main').innerHTML = idiomsPanel(); return; }
   if(active==='wordform'){ $('#main').innerHTML = wordformPanel(); return; }
+  if(active==='dict'){ $('#main').innerHTML = dictPanel(); return; }
   if(active==='coach'){ $('#main').innerHTML = coachPanel(); return; }
   // Estas tres estaban en el menu pero sin handler: el profesor las clicaba y
   // le salia el mensaje de "sin accesos".
@@ -4014,6 +4026,7 @@ const ENGLISH_AREAS = [
   {emoji:'🪢', title:'Collocations',   desc:'395 word partnerships level by level, measured in your own courses.', nav:'collocations', block:'practice'},
   {emoji:'💬', title:'Idioms',         desc:'212 expressions you cannot guess from their words. From B1 up.', nav:'idioms', block:'practice'},
   {emoji:'🧩', title:'Word Formation', desc:'Prefixes, suffixes and word families, with the sentence from your own course.', nav:'wordform', block:'practice'},
+  {emoji:'📖', title:'NIS Dictionary',  desc:'Our own dictionary: phonetics, audio, translation and the meaning written for your course.', nav:'dict', block:'practice'},
   {emoji:'🎮', title:'NIShoot Live',  desc:"Join your class's live game: enter with the PIN.",    nav:'nishoot', block:'practice'},
   // Las tres puertas del examen, juntas. Cambridge es el mapa (las dos ramas
   // y sus niveles); Mocks y Practice Tests son los atajos a los simulacros que
