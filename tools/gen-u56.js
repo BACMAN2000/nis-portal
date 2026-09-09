@@ -31,7 +31,7 @@ Object.keys(plan.grados || {}).forEach(gk => {
 const json = o => JSON.stringify(o).replace(/</g, '\\u003c');
 
 const salida = html
-  .replace('<script src="scope-u56.js?v=1"></script>',
+  .replace(/<script src="scope-u56\.js\?v=\d+"><\/script>/,
     '<script>' + datos + '</script>\n<script>window.__SCOPE = '
     + json(min) + ';\nwindow.__PLAN = ' + json(planMin) + ';</script>')
   .replace('<a id="back" href="project.html">&#8592; Volver</a>', '');
