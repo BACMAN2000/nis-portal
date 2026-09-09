@@ -853,7 +853,7 @@ function studentGames(){ _setNav('games'); $('#main').innerHTML = `${_backBtn("w
    nombre lo pone el dominio dentro de la propia pagina, asi que no hay dos
    copias que mantener. */
 function dictPanel(){
-  return `<iframe src="dictionary-app/index.html?embed=1&v=1" title="NIS Dictionary"
+  return `<iframe src="dictionary-app/index.html?embed=1&v=2" title="NIS Dictionary"
     style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 
