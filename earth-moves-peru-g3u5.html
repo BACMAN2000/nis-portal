@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Earthquakes &amp; Tsunamis in Peru — When the Earth Moves · 3rd grade</title>
+<style>
+  :root{ --bg:#f6f3ee; --card:#ffffff; --ink:#2f2a26; --muted:#7d7166;
+    --accent:#c9541f; --accent-soft:#fde6d8; --blue:#2b5ea8; --blue-soft:#dfeaf9;
+    --good:#2f9e44; --good-soft:#d3f4dc; --bad:#e03131; --bad-soft:#ffe3e3;
+    --gold:#f59f00; --gold-soft:#fff4d6; }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:'Segoe UI',system-ui,Arial,sans-serif; background:var(--bg); color:var(--ink);
+       padding:18px 14px 70px; line-height:1.5;}
+  .topnav{position:sticky; top:0; z-index:30; background:#fff; display:flex; align-items:center; gap:12px;
+    flex-wrap:wrap; padding:10px 18px; box-shadow:0 2px 10px rgba(60,40,20,.10); margin:-18px -14px 16px;}
+  .topnav img{height:32px; width:auto; display:block;}
+  .topnav .nav-sp{margin-left:auto;}
+  .navbtn{text-decoration:none; font-weight:700; font-size:.85rem; padding:8px 14px; border-radius:9px;
+    white-space:nowrap; background:var(--accent-soft); color:#a24413; border:none; cursor:pointer;}
+  .navbtn.primary{background:var(--accent); color:#fff;}
+  header{max-width:960px; margin:0 auto 6px; text-align:center;}
+  header .kicker{font-size:.72rem; letter-spacing:1.6px; text-transform:uppercase; color:var(--accent); font-weight:800;}
+  header h1{font-size:1.6rem; margin-top:6px; line-height:1.25;}
+  header p.sub{color:var(--muted); font-size:.9rem; margin-top:6px;}
+  .tabs{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin:16px auto; max-width:960px;}
+  .tab{border:none; background:var(--card); color:var(--ink); padding:9px 15px; border-radius:22px;
+       font-weight:800; font-size:.92rem; cursor:pointer; box-shadow:0 2px 6px rgba(60,40,20,.12);}
+  .tab.on{background:var(--accent); color:#fff;}
+  .tab .tick{color:var(--good); font-weight:900;}
+  .tab.on .tick{color:#ffe8d6;}
+  .wrap{max-width:960px; margin:0 auto;}
+  .card{background:var(--card); border-radius:18px; padding:20px 22px; box-shadow:0 3px 14px rgba(60,40,20,.10);
+        margin-bottom:16px;}
+  .card h2{font-size:1.22rem; margin-bottom:8px;}
+  .card h3{font-size:1.02rem; margin:16px 0 6px; color:var(--accent);}
+  .card p{margin:7px 0;}
+  .muted{color:var(--muted);}
+  .small{font-size:.85rem;}
+  .fact{display:flex; gap:12px; flex-wrap:wrap; margin:14px 0;}
+  .fact div{flex:1 1 150px; background:var(--blue-soft); border-radius:14px; padding:12px 14px; text-align:center;}
+  .fact b{display:block; font-size:1.5rem; color:var(--blue); line-height:1.15;}
+  .fact span{font-size:.8rem; color:var(--muted); font-weight:700;}
+  table.data{width:100%; border-collapse:collapse; margin:12px 0; font-size:.9rem; min-width:560px;}
+  table.data th{background:var(--accent-soft); color:#a24413; text-align:left; padding:8px 10px; font-size:.76rem;
+    text-transform:uppercase; letter-spacing:.5px;}
+  table.data td{border-bottom:1px solid #efe7dd; padding:8px 10px; vertical-align:top;}
+  table.data tr:last-child td{border-bottom:none;}
+  .wrapscroll{overflow-x:auto;}
+  .bars{display:flex; align-items:flex-end; gap:14px; height:200px; margin:16px 0 6px; padding:0 4px;}
+  .bars .b{flex:1; display:flex; flex-direction:column; justify-content:flex-end; align-items:center; height:100%;}
+  .bars .col{width:100%; background:linear-gradient(180deg,#e8894f,#c9541f); border-radius:8px 8px 0 0;
+    display:flex; align-items:flex-start; justify-content:center; color:#fff; font-weight:800; font-size:.78rem; padding-top:4px;}
+  .bars .lb{font-size:.74rem; font-weight:700; color:var(--muted); margin-top:6px; text-align:center; line-height:1.2;}
+  .q{background:#fbf8f4; border-radius:12px; padding:12px 14px; margin:10px 0;}
+  .q .qt{font-weight:700; margin-bottom:8px;}
+  .opts{display:flex; gap:8px; flex-wrap:wrap;}
+  .opt{border:2px solid #e6ddd2; background:#fff; border-radius:10px; padding:8px 13px; cursor:pointer;
+       font-size:.92rem; font-weight:600; color:var(--ink);}
+  .opt.sel{border-color:var(--blue); background:var(--blue-soft);}
+  .opt.ok{border-color:var(--good); background:var(--good-soft);}
+  .opt.ko{border-color:var(--bad); background:var(--bad-soft);}
+  .btn{border:none; border-radius:12px; background:var(--accent); color:#fff; font-weight:800; font-size:1rem;
+       padding:11px 22px; cursor:pointer; box-shadow:0 3px 0 #9c400f;}
+  .btn:active{transform:translateY(2px); box-shadow:0 1px 0 #9c400f;}
+  .btn.ghost{background:#fff; color:var(--accent); border:2px solid var(--accent-soft); box-shadow:none;}
+  .bar{display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-top:14px;}
+  .score{font-weight:800;}
+  .items{display:grid; grid-template-columns:repeat(auto-fill,minmax(135px,1fr)); gap:10px; margin:12px 0;}
+  .item{border:3px solid #eee3d6; background:#fff; border-radius:14px; padding:10px 8px; text-align:center;
+        cursor:pointer; font-weight:700; font-size:.86rem;}
+  .item .ico{font-size:2rem; display:block; line-height:1.25;}
+  .item.sel{border-color:var(--blue); background:var(--blue-soft);}
+  .item.ok{border-color:var(--good); background:var(--good-soft);}
+  .item.ko{border-color:var(--bad); background:var(--bad-soft);}
+  .steps{display:flex; flex-direction:column; gap:8px; margin:12px 0;}
+  .step{border:2px solid #eee3d6; background:#fff; border-radius:12px; padding:10px 14px; cursor:pointer;
+        font-size:.94rem; display:flex; gap:10px; align-items:center;}
+  .step .n{min-width:28px; height:28px; border-radius:50%; background:var(--accent-soft); color:#a24413;
+    display:flex; align-items:center; justify-content:center; font-weight:800; font-size:.85rem;}
+  .step.picked .n{background:var(--accent); color:#fff;}
+  .step.ok{border-color:var(--good); background:var(--good-soft);}
+  .step.ko{border-color:var(--bad); background:var(--bad-soft);}
+  .sortrow{display:flex; gap:10px; align-items:center; flex-wrap:wrap; border-bottom:1px solid #f0e8de; padding:9px 0;}
+  .sortrow .txt{flex:1 1 230px; font-size:.94rem;}
+  .pill{border:2px solid #e6ddd2; background:#fff; border-radius:20px; padding:6px 13px; cursor:pointer;
+        font-weight:800; font-size:.8rem; color:var(--ink);}
+  .pill.sel{border-color:var(--blue); background:var(--blue-soft);}
+  .pill.ok{border-color:var(--good); background:var(--good-soft);}
+  .pill.ko{border-color:var(--bad); background:var(--bad-soft);}
+  .note{background:var(--gold-soft); border-left:5px solid var(--gold); border-radius:0 10px 10px 0;
+        padding:11px 14px; margin:14px 0; font-size:.9rem;}
+  .danger{background:var(--bad-soft); border-left:5px solid var(--bad); border-radius:0 10px 10px 0;
+        padding:11px 14px; margin:14px 0; font-size:.9rem;}
+  textarea{width:100%; min-height:96px; border:2px solid #e6ddd2; border-radius:12px; padding:11px 13px;
+    font-family:inherit; font-size:.96rem; line-height:1.55; resize:vertical; background:#fffdfb; color:var(--ink);}
+  textarea:focus{outline:none; border-color:var(--blue);}
+  .wc{font-size:.82rem; color:var(--muted); font-weight:700; text-align:right; margin-top:4px;}
+  .wc.good{color:var(--good);}
+  details.src{margin-top:14px; font-size:.85rem;}
+  details.src summary{cursor:pointer; font-weight:700; color:var(--blue);}
+  details.src li{margin:5px 0 5px 18px;}
+  footer{max-width:960px; margin:22px auto 0; text-align:center; color:var(--muted); font-size:.76rem;}
+  @media (max-width:520px){ body{padding:10px 8px 60px;} .topnav{margin:-10px -8px 12px; padding:8px 12px;}
+    .card{padding:15px 14px;} .bars{height:160px; gap:8px;} }
+</style>
+<meta name="google" content="notranslate">
+<script src="ui-mensajes.js?v=18d6c1e2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
+<script src="config.js?v=68725f64"></script>
+<script src="nis-nav.js?v=c3230c7d"></script>
+<script src="activity-save.js?v=7bdace9a"></script>
+</head>
+<body>
+<nav class="topnav">
+  <img src="assets/logo-h.svg" alt="Nordic International School" onerror="this.style.display='none'">
+  <span class="nav-sp"></span>
+  <a class="navbtn" href="activities.html">&#127922; Actividades</a>
+  <a class="navbtn primary" href="./">&#127979; Portal</a>
+</nav>
+
+<header>
+  <div class="kicker">Unit 5 &middot; When the Earth Moves &middot; 3rd grade</div>
+  <h1>&#127758; Earthquakes and Tsunamis in Peru</h1>
+  <p class="sub">Real numbers from our country &mdash; and what we must do to be safe.</p>
+</header>
+
+<div class="tabs" id="tabs"></div>
+<div class="wrap" id="stage"></div>
+
+<footer>Unit 5 &middot; When the Earth Moves &mdash; 3rd grade Primary &middot; Nordic International School</footer>
+
+<script>
+/* ============================================================================
+   Earthquakes and Tsunamis in Peru — Unit 5, 3rd grade.
+
+   Los numeros de esta pagina son REALES y estan citados al final de la
+   pestana "The numbers" (IGP, INDECI, DHN de la Marina, USGS). No se ha
+   redondeado nada hacia arriba para impresionar: donde las fuentes no
+   coinciden -la magnitud de Pisco es 8.0 para el USGS y 7.9 para el IGP- se
+   dice el rango en vez de elegir la cifra mas grande.
+
+   Tono: esto se le cuenta a ninos de ocho anos. Se habla de lo que hay que
+   hacer, no de cuanta gente puede morir. Por eso no entra el "silencio
+   sismico" de Lima ni la estimacion de la proxima magnitud: eso es para la
+   nota del profesor, no para la clase.
+   ========================================================================= */
+
+/* ---------- datos reales -------------------------------------------------- */
+const QUAKES = [
+  { year:1746, place:'Lima and Callao', mag:'8.6', bar:8.6, tsu:'Yes — 20 m',
+    note:'The tsunami covered Callao twenty minutes later. Of about 5,000 people in the port, fewer than 200 survived.' },
+  { year:1868, place:'South of Peru — Arica, Tacna, Moquegua, Arequipa', mag:'8.5 – 9.0', bar:8.75, tsu:'Yes — 16 m',
+    note:'The earthquake lasted almost five minutes. The waves crossed the Pacific Ocean and arrived in Hawaii, New Zealand and Japan.' },
+  { year:1970, place:'Áncash — Chimbote and Yungay', mag:'7.9', bar:7.9, tsu:'No',
+    note:'About 70,000 people died. Ice and rock fell from Mount Huascarán and covered the town of Yungay. It is the worst disaster in the history of Peru.' },
+  { year:2001, place:'Arequipa and Camaná', mag:'8.4', bar:8.4, tsu:'Yes — 7 m',
+    note:'The waves arrived at the beach of Camaná and more than twenty people died there.' },
+  { year:2007, place:'Pisco and Ica', mag:'8.0', bar:8.0, tsu:'Small',
+    note:'About 600 people died and around 48,000 houses fell down. After this earthquake Peru changed the way it prepares for disasters.' }
+];
+
+/* ---------- ejercicios ---------------------------------------------------- */
+const NUMQ = [
+  { q:'How many earthquakes did the IGP record in Peru in 2025?',
+    o:['835','83','8,350'], a:0 },
+  { q:'Which earthquake killed about 70,000 people?',
+    o:['Pisco, 2007','Áncash, 1970','Camaná, 2001'], a:1 },
+  { q:'In 1746 a tsunami destroyed…',
+    o:['Yungay','Pisco','Callao'], a:2 },
+  { q:'Peru had 798 earthquakes in 2024 and 835 in 2025. How many more in 2025?',
+    o:['37','137','17'], a:0 },
+  { q:'How fast does the Nazca plate move under Peru?',
+    o:['7 or 8 metres a year','7 or 8 centimetres a year','7 or 8 kilometres a year'], a:1 },
+  { q:'In 1868 the waves from Peru arrived in…',
+    o:['Hawaii, New Zealand and Japan','only Lima','only Arequipa'], a:0 }
+];
+
+const TSUNAMI_STEPS = [
+  'A very strong earthquake shakes the coast.',
+  'You cannot stand up. That is the alarm — the earthquake itself.',
+  'When it stops, walk fast. Do not wait for a message on the phone.',
+  'Go up to a safe place, more than 30 metres above the sea.',
+  'Stay there until the Navy says the sea is safe again.'
+];
+
+const KIT = [
+  { w:'water', ico:'&#128167;', ok:true,  why:'One litre for every person.' },
+  { w:'tinned food', ico:'&#129387;', ok:true, why:'Food that does not go bad.' },
+  { w:'a torch', ico:'&#128294;', ok:true, why:'With extra batteries.' },
+  { w:'a radio', ico:'&#128251;', ok:true, why:'The phone can stop working; the radio does not.' },
+  { w:'a whistle', ico:'&#128274;', ok:true, why:'A whistle is louder than your voice.' },
+  { w:'a first-aid kit', ico:'&#129658;', ok:true, why:'And the medicine your family takes.' },
+  { w:'a blanket', ico:'&#129530;', ok:true, why:'The night is cold outside.' },
+  { w:'phone numbers on paper', ico:'&#128221;', ok:true, why:'Paper works when the phone does not.' },
+  { w:'a television', ico:'&#128250;', ok:false, why:'Too heavy, and there is no plug outside.' },
+  { w:'a football', ico:'&#9917;', ok:false, why:'Not now. It takes the space of the water.' },
+  { w:'ice cream', ico:'&#127848;', ok:false, why:'It goes bad in one hour.' },
+  { w:'a video game', ico:'&#127918;', ok:false, why:'The backpack is for 24 hours of help, not for fun.' },
+  { w:'a big mirror', ico:'&#129517;', ok:false, why:'Glass breaks. Never in the backpack.' },
+  { w:'a bicycle', ico:'&#128690;', ok:false, why:'It does not go in a backpack of eight kilos!' }
+];
+
+const RULES = [
+  { t:'stay calm and count', a:'must' },
+  { t:'go to the safe zone of the classroom', a:'must' },
+  { t:'get under a strong table and hold on', a:'must' },
+  { t:'help the small children', a:'must' },
+  { t:'know where the meeting point is', a:'must' },
+  { t:'use the lift', a:'mustnot' },
+  { t:'push the other children', a:'mustnot' },
+  { t:'stand next to the windows', a:'mustnot' },
+  { t:'go back into a broken building', a:'mustnot' },
+  { t:'light a candle after the earthquake', a:'mustnot' }
+];
+
+const WHEN = [
+  { t:'Prepare the emergency backpack.', a:'before' },
+  { t:'Choose a meeting point for the family.', a:'before' },
+  { t:'Learn where the safe zone of your house is.', a:'before' },
+  { t:'Drop, cover and hold on.', a:'during' },
+  { t:'Stay away from the windows.', a:'during' },
+  { t:'Go to the safe zone and wait there.', a:'during' },
+  { t:'Ask if somebody is hurt.', a:'after' },
+  { t:'Listen to the radio.', a:'after' },
+  { t:'Go up to high ground if you are at the coast.', a:'after' }
+];
+
+/* ---------- estado -------------------------------------------------------- */
+const ST = { num:{}, tsu:[], kit:[], rules:{}, when:{}, flyer:{b:'',d:'',a:''}, res:{} };
+let tab = 0;
+const TABS = [
+  { k:'why',    label:'&#127759; Why Peru shakes' },
+  { k:'numbers',label:'&#128202; The numbers' },
+  { k:'tsunami',label:'&#127754; Tsunami' },
+  { k:'kit',    label:'&#127890; My backpack' },
+  { k:'rules',  label:'&#9989; Must / must not' },
+  { k:'flyer',  label:'&#9997;&#65039; My flyer' }
+];
+
+function esc(s){ return String(s).replace(/&(?![a-z#0-9]+;)/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+function drawTabs(){
+  document.getElementById('tabs').innerHTML = TABS.map(function(t,i){
+    const r = ST.res[t.k];
+    const tick = r ? ' <span class="tick">' + r.score + '/' + r.total + '</span>' : '';
+    return '<button class="tab' + (tab===i?' on':'') + '" data-act="tab" data-i="' + i + '">' + t.label + tick + '</button>';
+  }).join('');
+}
+
+/* ---------- pestañas ------------------------------------------------------ */
+function viewWhy(){
+  return '<div class="card">' +
+    '<h2>Peru shakes. That is geography, not bad luck.</h2>' +
+    '<p>The floor of the Pacific Ocean is a big plate of rock. It is called the <b>Nazca plate</b>. ' +
+    'It moves to the east and it goes <b>down under South America</b>. It moves <b>7 or 8 centimetres every year</b> — ' +
+    'about 75 centimetres in ten years, almost as tall as your desk.</p>' +
+    '<p>The two plates are not smooth. They push, they stick, and one day the rock <b>breaks</b>. ' +
+    'That is an earthquake. Peru sits on the <b>Ring of Fire</b>, the line of earthquakes and volcanoes around the Pacific Ocean.</p>' +
+    svgPlates() +
+    '<div class="fact">' +
+      '<div><b>835</b><span>earthquakes in Peru in 2025 (IGP)</span></div>' +
+      '<div><b>2 a day</b><span>most of them we do not feel</span></div>' +
+      '<div><b>7–8 cm</b><span>the Nazca plate every year</span></div>' +
+    '</div>' +
+    '<div class="note"><b>Careful with one word.</b> An <b>earthquake</b> is the ground moving. ' +
+    'A <b>tsunami</b> is the sea coming on to the land after it. They are not the same thing, ' +
+    'and only some earthquakes make a tsunami.</div>' +
+    '<h3>Words for this unit</h3>' +
+    '<p class="small muted">earthquake &middot; tsunami &middot; landslide &middot; flood &middot; plate &middot; safe zone &middot; ' +
+    'drill &middot; shelter &middot; exit &middot; danger &middot; emergency kit &middot; whistle &middot; torch &middot; blanket</p>' +
+  '</div>';
+}
+
+function svgPlates(){
+  return '<div class="wrapscroll"><svg viewBox="0 0 640 250" width="100%" style="min-width:520px;max-width:640px;display:block;margin:14px auto" role="img" aria-label="The Nazca plate goes down under South America">' +
+    '<rect x="0" y="0" width="640" height="250" fill="#eef4fb"/>' +
+    '<rect x="0" y="86" width="292" height="34" fill="#2b5ea8"/>' +
+    '<path d="M292 120 L340 96 L380 62 L420 84 L470 54 L520 78 L580 60 L640 72 L640 250 L292 250 Z" fill="#c9a678"/>' +
+    '<path d="M292 120 L340 96 L380 62 L420 84 L470 54 L520 78 L580 60 L640 72" fill="none" stroke="#8a5a2b" stroke-width="3"/>' +
+    '<path d="M0 120 L292 120 L430 246 L360 246 L0 150 Z" fill="#7d8f9e"/>' +
+    '<path d="M0 120 L292 120 L430 246" fill="none" stroke="#4a5a68" stroke-width="3"/>' +
+    '<path d="M30 106 L104 106" stroke="#fff" stroke-width="5" marker-end="url(#ar)"/>' +
+    '<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">' +
+      '<path d="M0 0 L8 4 L0 8 Z" fill="#fff"/></marker></defs>' +
+    '<text x="122" y="111" font-size="13" font-weight="700" fill="#fff">7–8 cm a year</text>' +
+    '<text x="46" y="145" font-size="14" font-weight="700" fill="#fff">Nazca plate</text>' +
+    '<text x="452" y="140" font-size="14" font-weight="700" fill="#5a3d1c">South American plate</text>' +
+    '<text x="452" y="160" font-size="13" fill="#5a3d1c">(Peru is here)</text>' +
+    '<text x="118" y="78" font-size="13" font-weight="700" fill="#2b5ea8">Pacific Ocean</text>' +
+    '<path d="M292 120 l14 -14 l6 12 l14 -8 l-6 14 l16 2 l-16 10 l8 12 l-18 -6 l-2 14 l-10 -12 l-12 8 l4 -14 l-16 -2 Z" fill="#f59f00" stroke="#c9541f" stroke-width="2"/>' +
+    '<text x="236" y="60" font-size="13" font-weight="700" fill="#c9541f">the rock breaks here</text>' +
+    '<path d="M292 96 L288 108" stroke="#c9541f" stroke-width="2"/>' +
+  '</svg></div>';
+}
+
+function viewNumbers(){
+  const rows = QUAKES.map(function(q){
+    return '<tr><td><b>' + q.year + '</b></td><td>' + esc(q.place) + '</td><td><b>' + q.mag + '</b></td>' +
+           '<td>' + q.tsu + '</td><td>' + esc(q.note) + '</td></tr>';
+  }).join('');
+  const lo = 7.6, hi = 9.0;
+  const bars = QUAKES.map(function(q){
+    const h = Math.round(100 * (q.bar - lo) / (hi - lo));
+    return '<div class="b"><div class="col" style="height:' + h + '%">' + q.mag + '</div>' +
+           '<div class="lb">' + q.year + '<br>' + esc(q.place.split(' — ')[0].split(' and ')[0]) + '</div></div>';
+  }).join('');
+  const qs = NUMQ.map(function(item,i){
+    const sel = ST.num[i];
+    return '<div class="q"><div class="qt">' + (i+1) + '. ' + esc(item.q) + '</div><div class="opts">' +
+      item.o.map(function(o,j){
+        return '<button class="opt' + (sel===j?' sel':'') + '" data-act="num" data-i="' + i + '" data-j="' + j + '">' + esc(o) + '</button>';
+      }).join('') + '</div></div>';
+  }).join('');
+  return '<div class="card">' +
+    '<h2>Five earthquakes that Peru remembers</h2>' +
+    '<p class="small muted">The magnitude says how much energy the earthquake had. Every whole number is about ' +
+    '30 times more energy: an 8.0 is much, much bigger than a 7.0.</p>' +
+    '<div class="wrapscroll"><table class="data"><thead><tr>' +
+      '<th>Year</th><th>Where</th><th>Magnitude</th><th>Tsunami</th><th>What happened</th>' +
+    '</tr></thead><tbody>' + rows + '</tbody></table></div>' +
+    '<h3>The same numbers in a chart</h3>' +
+    '<div class="bars">' + bars + '</div>' +
+    '<p class="small muted" style="text-align:center">Magnitude (moment magnitude scale). The 1868 earthquake is a ' +
+    'range because the scientists do not agree: nobody had machines in 1868.</p>' +
+    '<div class="note"><b>And today?</b> The IGP recorded <b>798</b> earthquakes in Peru in 2024 and <b>835</b> in 2025. ' +
+    'Big ones are not more frequent than before: there were 21 earthquakes of magnitude 6 or more between 2016 and 2020, ' +
+    'and 23 between 2021 and 2025.</div>' +
+    '<h3>Read the data</h3>' + qs +
+    '<div class="bar"><button class="btn" data-act="check" data-s="numbers">Check my answers</button>' +
+      '<span class="score" id="sc-numbers"></span></div>' +
+    srcBlock() +
+  '</div>';
+}
+
+function srcBlock(){
+  return '<details class="src"><summary>Fuentes de estas cifras (para el profesor)</summary><ul>' +
+    '<li><b>1746 Lima–Callao</b>: M 8.6; el tsunami llegó ~20 min después con olas de hasta 20 m; de los ~5.000 ' +
+    'habitantes del Callao sobrevivieron menos de 200.</li>' +
+    '<li><b>1868 sur del Perú</b> (Arica, entonces territorio peruano, Tacna, Moquegua, Arequipa): estimaciones entre ' +
+    '8.5 y 9.0 Mw, casi cinco minutos de duración, olas de hasta 16 m; el tsunami cruzó el Pacífico hasta Hawái, ' +
+    'Nueva Zelanda y Japón.</li>' +
+    '<li><b>1970 Áncash</b>: 31-may-1970, Mw 7.9 (IGP y USGS), epicentro 20 km al OSO de Chimbote, 45 km de ' +
+    'profundidad; ~70.000 fallecidos según el IGP; el aluvión del Huascarán sepultó Yungay y Ranrahirca.</li>' +
+    '<li><b>2001 Arequipa–Camaná</b>: 23-jun-2001, Mw 8.4 (el USGS; algunas publicaciones del IGP usan 8.2); olas de ' +
+    'unos 7 m en Camaná, con más de veinte muertos por el tsunami.</li>' +
+    '<li><b>2007 Pisco</b>: 15-ago-2007, Mw 8.0 según el NEIC/USGS y 7.9 según el IGP; ~600 fallecidos y unas 48.000 ' +
+    'viviendas destruidas (evaluación de INDECI).</li>' +
+    '<li><b>Sismicidad actual</b>: 798 sismos registrados en 2024 y 835 en 2025 (catálogo del IGP); 21 sismos de ' +
+    'magnitud ≥6 en 2016–2020 frente a 23 en 2021–2025.</li>' +
+    '<li><b>Placa de Nazca</b>: subduce bajo la Sudamericana a unos 7–8 cm/año (IGP).</li>' +
+    '<li><b>Prevención</b>: mochila de emergencia de INDECI (máx. 8 kg, 1 litro de agua por persona, para las ' +
+    'primeras 24 horas); zona segura interna en la unión de columna y viga; tres momentos del simulacro; ' +
+    'evacuación por tsunami sobre los 30 m s. n. m. y diferencia alerta / alarma según la DHN de la Marina de Guerra.</li>' +
+    '</ul><p class="small muted">Donde las fuentes discrepan, la página da el rango o la cifra más conservadora. ' +
+    'Si actualizas un dato, actualiza también esta lista.</p></details>';
+}
+
+function viewTsunami(){
+  const picked = ST.tsu;
+  const steps = TSUNAMI_STEPS.map(function(t,i){
+    const p = picked.indexOf(i);
+    return '<div class="step' + (p>=0?' picked':'') + '" data-act="tsu" data-i="' + i + '">' +
+      '<span class="n">' + (p>=0 ? (p+1) : '&nbsp;') + '</span><span>' + esc(t) + '</span></div>';
+  }).join('');
+  return '<div class="card">' +
+    '<h2>A tsunami is not one wave</h2>' +
+    '<p>When the sea floor moves in an earthquake, it pushes <b>all</b> the water above it. That water arrives at the ' +
+    'coast, comes on to the land and does not stop. Sometimes the sea goes back first and you can see the sand ' +
+    'where the water was. That is not a show. That is the warning.</p>' +
+    '<p>In Peru the plates are very close to the coast, so the first wave can arrive in <b>15 or 20 minutes</b>. ' +
+    'Nobody has time to call you.</p>' +
+    '<div class="danger"><b>The earthquake is the alarm.</b> If you are near the sea and the earthquake is so strong ' +
+    'that you cannot stand up, you must go to high ground when it stops. You must not wait for a message.</div>' +
+    '<div class="fact">' +
+      '<div><b>30 m</b><span>above the sea = safe place</span></div>' +
+      '<div><b>Alerta</b><span>get ready to go</span></div>' +
+      '<div><b>Alarma</b><span>go now</span></div>' +
+    '</div>' +
+    '<div class="note"><b>What SISMATE is — and what it is not.</b> SISMATE sends a message and a loud sound to the ' +
+    'phones of a whole zone in an emergency. But it does <b>not</b> tell you before an earthquake: no machine in the ' +
+    'world can do that today. Your plan and your legs are the alarm.</div>' +
+    '<h3>Put the five steps in order</h3>' +
+    '<p class="small muted">Touch them in the right order. Touch again to take one out.</p>' +
+    '<div class="steps">' + steps + '</div>' +
+    '<div class="bar"><button class="btn" data-act="check" data-s="tsunami">Check the order</button>' +
+      '<button class="btn ghost" data-act="clear" data-s="tsunami">Start again</button>' +
+      '<span class="score" id="sc-tsunami"></span></div>' +
+  '</div>';
+}
+
+function viewKit(){
+  const items = KIT.map(function(it,i){
+    const sel = ST.kit.indexOf(i) >= 0;
+    return '<div class="item' + (sel?' sel':'') + '" data-act="kit" data-i="' + i + '">' +
+      '<span class="ico">' + it.ico + '</span>' + esc(it.w) + '</div>';
+  }).join('');
+  return '<div class="card">' +
+    '<h2>The emergency backpack</h2>' +
+    '<p>INDECI, the people who organise the drills in Peru, say that every family must have one backpack ready ' +
+    'near the door. It is for the <b>first 24 hours</b> after a disaster, when nobody can come to help yet.</p>' +
+    '<div class="fact">' +
+      '<div><b>8 kg</b><span>the maximum weight</span></div>' +
+      '<div><b>1 litre</b><span>of water for every person</span></div>' +
+      '<div><b>24 h</b><span>what it has to cover</span></div>' +
+    '</div>' +
+    '<h3>Choose the 8 things that go in the backpack</h3>' +
+    '<p class="small muted">Six of these fourteen things must <b>not</b> go in. Choose carefully — the space is small.</p>' +
+    '<div class="items">' + items + '</div>' +
+    '<div class="bar"><button class="btn" data-act="check" data-s="kit">Check my backpack</button>' +
+      '<button class="btn ghost" data-act="clear" data-s="kit">Empty it</button>' +
+      '<span class="score" id="sc-kit"></span></div>' +
+    '<div id="kit-why"></div>' +
+  '</div>';
+}
+
+function viewRules(){
+  const a = RULES.map(function(r,i){
+    const s = ST.rules[i];
+    return '<div class="sortrow"><span class="txt">In an earthquake, you… ' + esc(r.t) + '.</span>' +
+      '<button class="pill' + (s==='must'?' sel':'') + '" data-act="rule" data-i="' + i + '" data-v="must">must</button>' +
+      '<button class="pill' + (s==='mustnot'?' sel':'') + '" data-act="rule" data-i="' + i + '" data-v="mustnot">must not</button></div>';
+  }).join('');
+  const b = WHEN.map(function(w,i){
+    const s = ST.when[i];
+    return '<div class="sortrow"><span class="txt">' + esc(w.t) + '</span>' +
+      '<button class="pill' + (s==='before'?' sel':'') + '" data-act="when" data-i="' + i + '" data-v="before">before</button>' +
+      '<button class="pill' + (s==='during'?' sel':'') + '" data-act="when" data-i="' + i + '" data-v="during">during</button>' +
+      '<button class="pill' + (s==='after'?' sel':'') + '" data-act="when" data-i="' + i + '" data-v="after">after</button></div>';
+  }).join('');
+  return '<div class="card">' +
+    '<h2>The rules of the drill</h2>' +
+    '<p>In a Peruvian drill there are three moments: the <b>alarm</b> sounds, everybody goes to the ' +
+    '<b>internal safe zone</b> for two minutes, and then everybody <b>leaves</b> by the marked route.</p>' +
+    '<p>The safe zone is not next to the window and it is not under the shelf. It is where a <b>column</b> meets a ' +
+    '<b>beam</b> — the strongest part of the building. In your classroom it has a green sign.</p>' +
+    '<div class="note"><b>must</b> = it is a rule, not an opinion. &nbsp;<b>must not</b> = never, it is dangerous. ' +
+    '&nbsp;<b>should</b> = it is a good idea.</div>' +
+    '<h3>A. must or must not?</h3>' + a +
+    '<h3>B. When do we do it: before, during or after?</h3>' + b +
+    '<div class="bar"><button class="btn" data-act="check" data-s="rules">Check my answers</button>' +
+      '<span class="score" id="sc-rules"></span></div>' +
+  '</div>';
+}
+
+function viewFlyer(){
+  const f = ST.flyer;
+  return '<div class="card">' +
+    '<h2>Write your safety flyer</h2>' +
+    '<p>Now you are the one who explains it. Write a flyer for a family in your street. ' +
+    'Three parts, <b>90 to 110 words</b> in total. Use <b>must</b>, <b>must not</b> and <b>should</b>.</p>' +
+    '<div class="note">A younger child has to understand it. Short sentences. One idea in each one.</div>' +
+    '<h3>1. Before the earthquake</h3>' +
+    '<p class="small muted">The backpack, the meeting point, the safe zone of the house.</p>' +
+    '<textarea data-act="flyer" data-k="b" placeholder="Before an earthquake you must…">' + esc(f.b) + '</textarea>' +
+    '<h3>2. During the earthquake</h3>' +
+    '<p class="small muted">Drop, cover, hold on. What you must not do.</p>' +
+    '<textarea data-act="flyer" data-k="d" placeholder="During an earthquake you must…">' + esc(f.d) + '</textarea>' +
+    '<h3>3. After the earthquake</h3>' +
+    '<p class="small muted">Leave by the route, ask if somebody is hurt, the coast and the high ground.</p>' +
+    '<textarea data-act="flyer" data-k="a" placeholder="After an earthquake you should…">' + esc(f.a) + '</textarea>' +
+    '<div class="wc" id="wc">0 words</div>' +
+    '<div class="bar"><span class="small muted">Your flyer is saved in your account by itself. ' +
+    'Use <b>Submit</b> in the bar below to hand it in to your teacher.</span></div>' +
+  '</div>';
+}
+
+const VIEWS = { why:viewWhy, numbers:viewNumbers, tsunami:viewTsunami, kit:viewKit, rules:viewRules, flyer:viewFlyer };
+
+function render(){
+  document.getElementById('stage').innerHTML = VIEWS[TABS[tab].k]();
+  drawTabs();
+  if(TABS[tab].k === 'flyer') countWords();
+  const r = ST.res[TABS[tab].k];
+  const sc = document.getElementById('sc-' + TABS[tab].k);
+  if(r && sc) sc.textContent = r.score + ' / ' + r.total;
+}
+
+/* ---------- correccion ---------------------------------------------------- */
+function checkNumbers(){
+  let ok = 0;
+  document.querySelectorAll('[data-act="num"]').forEach(function(b){
+    const i = +b.dataset.i, j = +b.dataset.j;
+    b.classList.remove('sel','ok','ko');
+    if(j === NUMQ[i].a) b.classList.add('ok');
+    else if(ST.num[i] === j) b.classList.add('ko');
+  });
+  NUMQ.forEach(function(q,i){ if(ST.num[i] === q.a) ok++; });
+  return { score:ok, total:NUMQ.length };
+}
+
+function checkTsunami(){
+  let ok = 0;
+  document.querySelectorAll('[data-act="tsu"]').forEach(function(el){
+    const i = +el.dataset.i, p = ST.tsu.indexOf(i);
+    el.classList.remove('ok','ko');
+    if(p === i) { el.classList.add('ok'); }
+    else if(p >= 0) el.classList.add('ko');
+  });
+  TSUNAMI_STEPS.forEach(function(_,i){ if(ST.tsu.indexOf(i) === i) ok++; });
+  return { score:ok, total:TSUNAMI_STEPS.length };
+}
+
+function checkKit(){
+  let ok = 0;
+  document.querySelectorAll('[data-act="kit"]').forEach(function(el){
+    const i = +el.dataset.i, sel = ST.kit.indexOf(i) >= 0;
+    el.classList.remove('sel','ok','ko');
+    if(sel && KIT[i].ok) el.classList.add('ok');
+    else if(sel && !KIT[i].ok) el.classList.add('ko');
+    else if(!sel && KIT[i].ok) el.classList.add('ko');
+  });
+  KIT.forEach(function(it,i){
+    const sel = ST.kit.indexOf(i) >= 0;
+    if(sel === it.ok) ok++;
+  });
+  document.getElementById('kit-why').innerHTML =
+    '<h3>Why</h3>' + KIT.map(function(it){
+      return '<p class="small"><b>' + (it.ok ? '&#9989;' : '&#10060;') + ' ' + esc(it.w) + '</b> — ' + esc(it.why) + '</p>';
+    }).join('');
+  return { score:ok, total:KIT.length };
+}
+
+function checkRules(){
+  let ok = 0;
+  document.querySelectorAll('[data-act="rule"]').forEach(function(b){
+    const i = +b.dataset.i, v = b.dataset.v;
+    b.classList.remove('sel','ok','ko');
+    if(ST.rules[i] !== v) return;
+    if(v === RULES[i].a) b.classList.add('ok'); else b.classList.add('ko');
+  });
+  document.querySelectorAll('[data-act="when"]').forEach(function(b){
+    const i = +b.dataset.i, v = b.dataset.v;
+    b.classList.remove('sel','ok','ko');
+    if(ST.when[i] !== v) return;
+    if(v === WHEN[i].a) b.classList.add('ok'); else b.classList.add('ko');
+  });
+  RULES.forEach(function(r,i){ if(ST.rules[i] === r.a) ok++; });
+  WHEN.forEach(function(w,i){ if(ST.when[i] === w.a) ok++; });
+  return { score:ok, total:RULES.length + WHEN.length };
+}
+
+const CHECKERS = { numbers:checkNumbers, tsunami:checkTsunami, kit:checkKit, rules:checkRules };
+const TITLES = {
+  numbers:'Peru earthquakes — read the data',
+  tsunami:'Tsunami — the five steps',
+  kit:'The emergency backpack',
+  rules:'Must / must not and before, during, after'
+};
+
+function countWords(){
+  const f = ST.flyer;
+  const n = (f.b + ' ' + f.d + ' ' + f.a).trim().split(/\s+/).filter(Boolean).length;
+  const el = document.getElementById('wc');
+  if(!el) return;
+  el.textContent = n + ' words' + (n < 90 ? ' — you need 90' : n > 110 ? ' — a bit long, cut a few' : ' — good length!');
+  el.className = 'wc' + (n >= 90 && n <= 110 ? ' good' : '');
+}
+
+/* ---------- eventos ------------------------------------------------------- */
+document.getElementById('tabs').addEventListener('click', function(e){
+  const b = e.target.closest('[data-act="tab"]');
+  if(!b) return;
+  tab = +b.dataset.i;
+  render();
+  window.scrollTo({ top:0, behavior:'smooth' });
+});
+
+document.getElementById('stage').addEventListener('click', function(e){
+  const el = e.target.closest('[data-act]');
+  if(!el) return;
+  const a = el.dataset.act;
+
+  if(a === 'num'){ ST.num[+el.dataset.i] = +el.dataset.j; touch(); return render(); }
+
+  if(a === 'kit'){
+    const i = +el.dataset.i, p = ST.kit.indexOf(i);
+    if(p >= 0) ST.kit.splice(p,1);
+    else if(ST.kit.length < 8) ST.kit.push(i);
+    touch(); return render();
+  }
+
+  if(a === 'tsu'){
+    const i = +el.dataset.i, p = ST.tsu.indexOf(i);
+    if(p >= 0) ST.tsu.splice(p,1); else ST.tsu.push(i);
+    touch(); return render();
+  }
+
+  if(a === 'rule'){ ST.rules[+el.dataset.i] = el.dataset.v; touch(); return render(); }
+  if(a === 'when'){ ST.when[+el.dataset.i] = el.dataset.v; touch(); return render(); }
+
+  if(a === 'clear'){
+    const s = el.dataset.s;
+    if(s === 'kit') ST.kit = [];
+    if(s === 'tsunami') ST.tsu = [];
+    delete ST.res[s];
+    touch(); return render();
+  }
+
+  if(a === 'check'){
+    const s = el.dataset.s;
+    const r = CHECKERS[s]();
+    ST.res[s] = r;
+    const sc = document.getElementById('sc-' + s);
+    if(sc) sc.textContent = r.score + ' / ' + r.total +
+      (r.score === r.total ? '  ⭐ perfect!' : r.score >= r.total * 0.7 ? '  well done' : '  try again');
+    drawTabs();
+    touch();
+    submitAttempt(s, r);
+    return;
+  }
+});
+
+document.getElementById('stage').addEventListener('input', function(e){
+  const t = e.target;
+  if(t.dataset && t.dataset.act === 'flyer'){
+    ST.flyer[t.dataset.k] = t.value;
+    countWords();
+    touch();
+  }
+});
+
+function touch(){ if(window.NIS_WORK) NIS_WORK.touch(); }
+
+/* ---------- resultado a My Results ---------------------------------------
+   Va a activity_attempts, la misma tabla que usan los juegos. Si falla no se
+   dice nada falso: la barra de NIS_WORK es la que informa del guardado de
+   verdad, y esta insercion es solo para que el intento salga en My Results. */
+let _sb = null;
+function sbClient(){
+  if(_sb) return _sb;
+  if(!window.supabase || !window.NIS_CONFIG) return null;
+  _sb = window.supabase.createClient(NIS_CONFIG.SUPABASE_URL, NIS_CONFIG.SUPABASE_KEY);
+  return _sb;
+}
+async function submitAttempt(seccion, r){
+  const c = sbClient();
+  if(!c) return;
+  try{
+    const u = await c.auth.getUser();
+    if(!u || !u.data || !u.data.user) return;
+    await c.from('activity_attempts').insert({
+      student_id: u.data.user.id,
+      activity: 'g3u5-earth-moves-peru:' + seccion,
+      title: TITLES[seccion] || 'When the Earth Moves — Peru',
+      level: 'A1',
+      score: r.score,
+      total: r.total,
+      hints_used: 0,
+      lives_left: 3,
+      duration_sec: Math.round((Date.now() - T0) / 1000)
+    });
+  }catch(e){ /* la barra de guardado ya dice la verdad; no se inventa un OK */ }
+}
+const T0 = Date.now();
+
+/* ---------- guardado y entrega -------------------------------------------- */
+function resumenFlyer(){
+  const f = ST.flyer;
+  const n = (f.b + ' ' + f.d + ' ' + f.a).trim().split(/\s+/).filter(Boolean).length;
+  return n;
+}
+if(window.NIS_WORK) NIS_WORK.attach(Object.assign(NIS_WORK.ficha(), {
+  title: 'Earthquakes and Tsunamis in Peru — Unit 5',
+  vacio: 'Do one section first — then you can hand it in.',
+  read: function(){ return { store:{ num:ST.num, tsu:ST.tsu, kit:ST.kit, rules:ST.rules,
+                                     when:ST.when, flyer:ST.flyer, res:ST.res } }; },
+  write: function(d){
+    const s = (d && d.store) || {};
+    if(s.num)   ST.num = s.num;
+    if(s.tsu)   ST.tsu = s.tsu;
+    if(s.kit)   ST.kit = s.kit;
+    if(s.rules) ST.rules = s.rules;
+    if(s.when)  ST.when = s.when;
+    if(s.flyer) ST.flyer = s.flyer;
+    if(s.res)   ST.res = s.res;
+  },
+  after: function(){ render(); },
+  count: function(){
+    return Object.keys(ST.num).length + ST.tsu.length + ST.kit.length +
+           Object.keys(ST.rules).length + Object.keys(ST.when).length +
+           (resumenFlyer() > 0 ? 1 : 0);
+  },
+  answers: function(){
+    const out = {};
+    Object.keys(ST.res).forEach(function(k){
+      out['Score · ' + k] = ST.res[k].score + '/' + ST.res[k].total;
+    });
+    if(ST.flyer.b) out['Flyer · Before'] = ST.flyer.b;
+    if(ST.flyer.d) out['Flyer · During'] = ST.flyer.d;
+    if(ST.flyer.a) out['Flyer · After']  = ST.flyer.a;
+    if(resumenFlyer()) out['Flyer · words'] = String(resumenFlyer());
+    return out;
+  }
+}));
+
+render();
+</script>
+</body>
+</html>

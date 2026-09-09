@@ -131,6 +131,25 @@
           ]},
         ],
       },
+      /* ===== PRIMARY · 3rd grade ===== */
+      {
+        id:'u5', grade:'g3', icon:'🌎',
+        title:'Unit 5 — When the Earth Moves',
+        blurb:'Earthquakes and tsunamis in Peru: the real figures, and what INDECI says every family must have ready.',
+        lead:'When the Earth Moves · Grade 3. Real data from our own country — and the safety flyer you write at the end.',
+        weeks: [
+          /* Semana única sin título: la unidad se extiende por las once semanas
+             del arco g3.t3, así que el material no cuelga de ninguna en particular
+             (mismo criterio que u3.w0 y g2 u4.w0). */
+          { id:'w0', title:'', games:[
+            { href:'earth-moves-peru-g3u5.html', icon:'🌎', title:'Earthquakes & Tsunamis in Peru',
+              desc:'The five earthquakes Peru remembers in a table and a chart (IGP figures), why the ground moves here, '+
+                   'the tsunami rule on the coast, the INDECI backpack, must / must not, before-during-after, and the safety flyer. '+
+                   'It corrects itself and the flyer is handed in from the page.',
+              tags:['A1','Data','Safety'] },
+          ]},
+        ],
+      },
     ],
   };
 
