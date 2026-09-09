@@ -2705,6 +2705,14 @@ window.PROJECT_ARCS = {
   toddle:[{periodo:5, nombre:'U5 - Science · U5 - English · U5 - Social Studies · U5 - Math', tipo:VACIA, semanas:5, area:L('all four subjects','las cuatro áreas')}],
   unidades:[],
   revisar:[
+    L('Counted on the annual plan: over the eleven weeks of P5 and P6, Grade 4 loads Math, '+
+      'Comunicacion and PE in 11 of 11, Science in 7, and SOCIAL STUDIES, ENGLISH, ART, MUSIC AND '+
+      'TUTORIA IN NONE. It is the grade with the biggest gap in the last term, and the project uses '+
+      'only what is loaded.',
+      'Contado sobre el plan anual: en las once semanas de P5 y P6, 4.o carga Matematica, Comunicacion '+
+      'y PE en 11 de 11, Science en 7, y CIENCIAS SOCIALES, INGLES, ARTE, MUSICA Y TUTORIA EN '+
+      'NINGUNA. Es el grado con el hueco mas grande del ultimo trimestre, y el proyecto usa solo lo '+
+      'que esta cargado.'),
     L('In Toddle the four U5 units of Grade 4 exist but are EMPTY: no learning experiences and no '+
       'assessments. They are reserved templates. P6 does not exist. This arc stands only on the '+
       'annual plan spreadsheet.',
@@ -3101,6 +3109,192 @@ window.PROJECT_ARCS = {
       'calendario solo marca «Shark tank? STEAM DAY?» con interrogante.')]
 },
 
+'g5.t3': {
+  grade:'g5', label:'Grade 5', trimestre:3, periodos:[6], semanas:6,
+  inicio:'2026-10-26', fin:'2026-12-04',
+  cover:{icon:'🪐', from:'#1e1b4b', to:'#818cf8'},
+  titulo:'What belongs to nobody',
+  subtitulo:L('The sky nobody owns, and the money it takes to get there',
+              'El cielo que no es de nadie, y lo que cuesta llegar hasta ahí'),
+  /* Este arco cubre SOLO P6: el trimestre de 5.o esta partido porque su arco
+     grande, el de Cajamarca y la Science Fair, ocupa P4 y P5. P6 se quedaba
+     sin proyecto y aparecia en PROJECT_ARCS_SUELTOS con el motivo de que
+     "origen del universo" y "plan de ahorro" no tienen relacion. Mirado con
+     el plan entero delante, si la tienen, y es exactamente la pregunta que
+     separa un bien libre de un bien economico. */
+  propuesta:true,
+  notaPlan:L('Grade 5 loads all its subjects in P6 except Music, so almost everything below is the '+
+    'school’s own content. What this page proposes is the thread that ties it: the connection between '+
+    'the sky and the savings plan, the final product and the weekly order.',
+    '5.º carga en P6 todas sus áreas menos Música, así que casi todo lo que sigue es contenido del '+
+    'propio colegio. Lo que esta página propone es el hilo que lo une: la conexión entre el cielo y el '+
+    'plan de ahorro, el producto final y el orden de las semanas.'),
+  areaEje:'science', areasArticuladas:['math','social','comunicacion','english'],
+  situacion:L('The last six weeks of the year put two things side by side that look unrelated: in '+
+    'Science, the origin of the universe, the formation of stars and planetary movement; in Social '+
+    'Studies, renewable and non-renewable resources, free goods versus economic goods, the importance '+
+    'of saving and making a savings plan. And in Maths, exactly the geometry you need to build a model '+
+    'of it all: area of polygons, 3D solids, nets, circles and circumference. The thread is a question '+
+    'a ten-year-old can hold: the light of a star reaches you for free and nobody owns it, but getting '+
+    'anywhere near it costs a fortune. What is free, what is scarce, and who decides.',
+    'Las últimas seis semanas del año ponen juntas dos cosas que parecen no tener relación: en Ciencia, '+
+    'el origen del universo, la formación de las estrellas y los movimientos planetarios; en Sociales, '+
+    'recursos renovables y no renovables, bienes libres frente a bienes económicos, la importancia del '+
+    'ahorro y hacer un plan de ahorro. Y en Matemática, justo la geometría con la que se construye un '+
+    'modelo de todo eso: área de polígonos, sólidos 3D, desarrollos planos, círculos y circunferencia. '+
+    'El hilo es una pregunta que un niño de diez años puede sostener: la luz de una estrella te llega '+
+    'gratis y no es de nadie, pero acercarse a ella cuesta una fortuna. Qué es libre, qué es escaso y '+
+    'quién decide.'),
+  preguntaEsencial:L('Who owns what belongs to nobody, and what does it cost to get there?',
+    '¿De quién es lo que no es de nadie, y qué cuesta llegar hasta ahí?'),
+  narrativa:L('Tonight, light that left a star before you were born is going to reach your eyes, and '+
+    'nobody is going to charge you for it. That is a free good, and there are very few left. In these '+
+    'six weeks you are going to build the sky with your own hands — with real geometry, not with '+
+    'cardboard circles — and at the same time you are going to work out what it would cost to send '+
+    'something up there, and how much you would have to save to get it. At the end you defend both: '+
+    'the model and the plan.',
+    'Esta noche, luz que salió de una estrella antes de que tú nacieras va a llegar a tus ojos, y nadie '+
+    'te la va a cobrar. Eso es un bien libre, y quedan muy pocos. En estas seis semanas vas a construir '+
+    'el cielo con tus manos —con geometría de verdad, no con círculos de cartulina— y a la vez vas a '+
+    'calcular qué costaría mandar algo allá arriba y cuánto habría que ahorrar para conseguirlo. Al '+
+    'final defiendes las dos cosas: la maqueta y el plan.'),
+  orientadoras:{
+    science:L('How did all this form, and how does it move?','¿Cómo se formó todo esto y cómo se mueve?'),
+    math:L('What shape is it, how big is it and what are the odds?','¿Qué forma tiene, cuánto mide y qué probabilidad hay?'),
+    social:L('What is free, what costs money, and how do I save for it?','¿Qué es gratis, qué cuesta y cómo ahorro para conseguirlo?'),
+    comunicacion:L('How do I say it so that somebody believes me?','¿Cómo lo digo para que alguien me crea?'),
+    english:L('Can I defend an opinion with reasons?','¿Sé defender una opinión con razones?')
+  },
+  competencias:[
+    {area:'science', nombre:L('Explains the physical world based on scientific knowledge','Explica el mundo físico basándose en conocimientos científicos'),
+     capacidades:[L('Understands and uses knowledge about living beings, matter and energy','Comprende y usa conocimientos sobre los seres vivos, materia y energía'),
+                  L('Evaluates the implications of knowing and of technology','Evalúa las implicancias del saber y del quehacer científico y tecnológico')]},
+    {area:'math', nombre:L('Solves problems of shape, movement and location','Resuelve problemas de forma, movimiento y localización'),
+     capacidades:[L('Models objects with geometric shapes','Modela objetos con formas geométricas'),
+                  L('Uses strategies and procedures to guide himself in space','Usa estrategias y procedimientos para orientarse en el espacio')]},
+    {area:'math', nombre:L('Solves problems of management of uncertainty','Resuelve problemas de gestión de datos e incertidumbre'),
+     capacidades:[L('Represents data with statistical or probabilistic measures','Representa datos con gráficos y medidas estadísticas o probabilísticas')]},
+    {area:'social', nombre:L('Responsibly manages economic resources','Gestiona responsablemente los recursos económicos'),
+     capacidades:[L('Understands the relations between the elements of the economic system','Comprende las relaciones entre los elementos del sistema económico'),
+                  L('Takes economic and financial decisions','Toma decisiones económicas y financieras')]},
+    {area:'comunicacion', nombre:L('Writes texts in his mother tongue','Escribe diversos tipos de textos en su lengua materna'),
+     capacidades:[L('Organises and develops ideas coherently','Organiza y desarrolla las ideas de forma coherente y cohesionada'),
+                  L('Uses conventions of written language','Utiliza convenciones del lenguaje escrito de forma pertinente')]}
+  ],
+  producto:{
+    titulo:'The sky, and the plan to get there',
+    audiencia:L('The families and the rest of primary, at the closing exhibition of the year, and the '+
+      'Creative Arts Show audience in week 4.',
+      'Las familias y el resto de primaria, en la exposición de cierre del año, y el público del '+
+      'Creative Arts Show en la semana 4.'),
+    descripcion:L('Two things on the same table. On one side, a model of the sky built with real '+
+      'geometry: polygons, 3D solids opened into nets, circles measured. On the other, the economic '+
+      'decision: what up there is a free good and what costs money, and a savings plan to reach one '+
+      'concrete goal, defended in a persuasive speech.',
+      'Dos cosas en la misma mesa. A un lado, una maqueta del cielo construida con geometría de verdad: '+
+      'polígonos, sólidos 3D abiertos en su desarrollo plano, círculos medidos. Al otro, la decisión '+
+      'económica: qué de allá arriba es un bien libre y qué cuesta, y un plan de ahorro para una meta '+
+      'concreta, defendido con un discurso persuasivo.'),
+    incluye:[L('The model, with its measurements','La maqueta, con sus medidas'),
+             L('The net of one of its solids','El desarrollo plano de uno de sus sólidos'),
+             L('Free goods and economic goods, sorted','Bienes libres y bienes económicos, clasificados'),
+             L('The savings plan','El plan de ahorro'),
+             L('The persuasive speech','El discurso persuasivo')]
+  },
+  fases:[
+    {n:1, periodo:6, semana:1, fase:L('The sky','El cielo'), foco:L('Where everything came from','De dónde salió todo'),
+     hace:L('Science opens with the origin of the universe and Maths with the area of polygons: the '+
+       'first pieces of the model are cut and measured. Social Studies starts with emotions, which is '+
+       'where a project about what we value has to start.',
+       'Ciencia abre con el origen del universo y Matemática con el área de polígonos: se cortan y se '+
+       'miden las primeras piezas de la maqueta. Sociales empieza por las emociones, que es por donde '+
+       'tiene que empezar un proyecto sobre lo que valoramos.'),
+     evidencia:L('First pieces, measured','Primeras piezas, medidas')},
+    {n:2, periodo:6, semana:2, fase:L('The sky','El cielo'), foco:L('Solids that hold it up','Sólidos que lo sostienen'),
+     hace:L('Prisms, pyramids and polyhedra: the model stops being flat. In English, discussions and '+
+       'persuasive speech begin; in Social Studies, customs and citizenship — what a community shares.',
+       'Prismas, pirámides y poliedros: la maqueta deja de ser plana. En inglés arrancan las discusiones '+
+       'y el discurso persuasivo; en Sociales, costumbres y ciudadanía — lo que una comunidad comparte.'),
+     evidencia:L('Solids built','Sólidos construidos')},
+    {n:3, periodo:6, semana:3, fase:L('The sky','El cielo'), foco:L('What runs out and what does not','Lo que se acaba y lo que no'),
+     hace:L('Nets, faces, edges and vertices: every solid is opened flat before being closed again. And '+
+       'Social Studies puts the question of the term on the table: renewable and non-renewable resources.',
+       'Desarrollos planos, caras, aristas y vértices: cada sólido se abre en plano antes de volver a '+
+       'cerrarse. Y Sociales pone sobre la mesa la pregunta del trimestre: recursos renovables y no '+
+       'renovables.'),
+     evidencia:L('The net, drawn and folded','El desarrollo plano, dibujado y plegado')},
+    {n:4, periodo:6, semana:4, fase:L('The price','El precio'), foco:L('Free or paid for','Gratis o pagado'),
+     hace:L('Circles and circumference for the orbits, and the distinction that gives the project its '+
+       'name: free goods versus economic goods. Creative Arts Show this week.',
+       'Círculos y circunferencia para las órbitas, y la distinción que da nombre al proyecto: bienes '+
+       'libres frente a bienes económicos. Esta semana cae el Creative Arts Show.'),
+     evidencia:L('Free / economic sort','Clasificación libre / económico')},
+    {n:5, periodo:6, semana:5, fase:L('The price','El precio'), foco:L('What are the odds','Qué probabilidad hay'),
+     hace:L('Theoretical and experimental probability, applied to the mission: how likely is it to work. '+
+       'And in Social Studies, why saving matters.',
+       'Probabilidad teórica y experimental, aplicada a la misión: qué probabilidad hay de que salga '+
+       'bien. Y en Sociales, por qué importa el ahorro.'),
+     evidencia:L('Risk estimate','Estimación del riesgo')},
+    {n:6, periodo:6, semana:6, fase:L('The price','El precio'), foco:L('The model and the plan','La maqueta y el plan'),
+     hace:L('Data analysis and integrated problem solving close Maths, and Social Studies closes with '+
+       'making a savings plan. The two halves are presented together, which is the point.',
+       'Análisis de datos y resolución integrada cierran Matemática, y Sociales cierra haciendo el plan '+
+       'de ahorro. Las dos mitades se presentan juntas, que es de lo que se trataba.'),
+     evidencia:L('Model + savings plan, defended','Maqueta + plan de ahorro, defendidos')}
+  ],
+  evaluacion:[
+    {criterio:L('I build it with real geometry','Lo construyo con geometría de verdad'),
+     descriptor:L('The model uses measured polygons, solids and circles, and the net matches the solid it closes.',
+                  'La maqueta usa polígonos, sólidos y círculos medidos, y el desarrollo plano coincide con el sólido que cierra.')},
+    {criterio:L('I explain how it formed','Explico cómo se formó'),
+     descriptor:L('Explains the formation of stars and planetary movement with what was studied, not with what he had heard.',
+                  'Explica la formación de las estrellas y los movimientos planetarios con lo estudiado, no con lo que había oído.')},
+    {criterio:L('I tell a free good from an economic one','Distingo un bien libre de uno económico'),
+     descriptor:L('Sorts real cases and justifies the hard ones — water, air, light, land.',
+                  'Clasifica casos reales y justifica los difíciles: el agua, el aire, la luz, la tierra.')},
+    {criterio:L('My savings plan adds up','Mi plan de ahorro cuadra'),
+     descriptor:L('The plan has an amount, a period and a realistic monthly figure, and says what he gives up.',
+                  'El plan tiene una cantidad, un plazo y una cifra mensual realista, y dice a qué se renuncia.')},
+    {criterio:L('I defend it','Lo defiendo'),
+     descriptor:L('The speech has an order, uses evidence and answers the objection it receives.',
+                  'El discurso tiene orden, usa pruebas y responde a la objeción que recibe.')}
+  ],
+  diferenciacion:[
+    L('The model can be built as a solid, as a drawn net or as a scale drawing.',
+      'La maqueta se puede entregar construida, como desarrollo plano dibujado o como plano a escala.'),
+    L('The savings goal is chosen by each student and can be for the class, not personal.',
+      'La meta de ahorro la elige cada alumno y puede ser de la clase, no personal.'),
+    L('The speech can be delivered with notes and, if the student prefers, in pairs.',
+      'El discurso se puede dar con guion en la mano y, si el alumno lo prefiere, en pareja.')
+  ],
+  sad:{titulo:'Student Achievement Day #3',
+    muestra:L('The student shows the net next to the closed solid and explains why the areas match; '+
+      'and reads the first line of the savings plan.',
+      'El alumno enseña el desarrollo plano al lado del sólido cerrado y explica por qué las áreas '+
+      'coinciden; y lee la primera línea de su plan de ahorro.')},
+  toddle:[],
+  unidades:[],
+  revisar:[
+    L('This arc covers only P6, six weeks. The big arc of Grade 5 —Cajamarca and the Science Fair— '+
+      'takes P4 and P5, so the third term of this grade is split in two on purpose.',
+      'Este arco cubre solo P6, seis semanas. El arco grande de 5.º —Cajamarca y la Science Fair— ocupa '+
+      'P4 y P5, así que el tercer trimestre de este grado va partido en dos a propósito.'),
+    L('It replaces the note that said P6 of Grade 5 had no possible crossing. With the whole plan in '+
+      'front of you it does: free goods versus economic goods is the question that ties the sky to the '+
+      'savings plan. The judgement was made too fast the first time.',
+      'Sustituye a la nota que decía que P6 de 5.º no tenía cruce posible. Con el plan entero delante sí '+
+      'lo tiene: bienes libres frente a bienes económicos es la pregunta que une el cielo con el plan de '+
+      'ahorro. El juicio de la primera vez fue apresurado.'),
+    L('Music is the only subject with nothing loaded in P6 of Grade 5; Art has one week. Everything '+
+      'else is the school’s own content.',
+      'Música es la única área sin nada cargado en P6 de 5.º; Arte tiene una semana. Todo lo demás es '+
+      'contenido del propio colegio.'),
+    L('The Creative Arts Show falls in week 4 and takes time away from that week: the model has to be '+
+      'closed in week 3.',
+      'El Creative Arts Show cae en la semana 4 y le quita tiempo a esa semana: la maqueta tiene que '+
+      'quedar cerrada en la 3.')]
+},
+
 };
 window.PROJECT_ARCS_SUELTOS = [
   {grade:'g5', periodos:[3], id:'385483254179852567',
@@ -3114,14 +3308,17 @@ window.PROJECT_ARCS_SUELTOS = [
      'Virreinato, Independencia) mientras Science va por cadenas troficas y fotosintesis. No hay '+
      'un cruce que aguante once semanas, y el arco del grado empieza en P4 con el viaje a '+
      'Cajamarca, que ya esta escrito por el equipo de 5.o.')},
-  {grade:'g5', periodos:[6], titulo:L('Universe and savings','Universo y ahorro'),
+  {grade:'g5', periodos:[6], resuelto:true, titulo:L('Universe and savings — now it has a proposal',
+     'Universo y ahorro — ahora tiene propuesta'),
    motivo:L('P6 of Grade 5 puts the origin of the universe and the formation of stars in Science '+
      'together with emotions, citizenship and a savings plan in Social Studies. They are two '+
      'legitimate units with nothing to do with each other; forcing them into one project would be '+
      'inventing it.',
      'P6 de 5.o junta origen del universo y formacion de estrellas en Science con emociones, '+
      'ciudadania y plan de ahorro en Social. Son dos unidades legitimas y sin relacion; forzarlas '+
-     'en un proyecto seria inventarla.')},
+     'en un proyecto seria inventarla. CORREGIDO el 8-sep-2026: mirado con el plan entero delante, si '+
+     'hay cruce, y es la distincion entre bien libre y bien economico. El arco g5.t3 «What belongs to '+
+     'nobody» cubre esas seis semanas.')},
   {grade:'g1', periodos:[5,6], resuelto:true,
    titulo:L('P5 and P6 of Grade 1 — proposal, not transcription',
             'P5 y P6 de 1.o — propuesta, no transcripcion'),
