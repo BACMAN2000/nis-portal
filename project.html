@@ -199,7 +199,7 @@ a.arc p{max-width:60%}
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js?v=21"></script>
-<script src="project-arcs.js?v=9"></script>
+<script src="project-arcs.js?v=10"></script>
 <script src="project-art.js?v=1"></script>
 <script src="project-models.js?v=1"></script>
 <script src="project-cursos.js?v=1"></script>
@@ -530,6 +530,19 @@ const ING_REPARTO = [
   ['Writing Reflection', 'Reading Plan']
 ];
 
+/* Un arco puede declarar que su ingles es UNA sola unidad extendida por todo el
+   arco (ingUnidad en project-arcs.js), en vez de una unidad por periodo. Ahi el
+   reparto no cicla cada seis semanas: los once bloques caen uno por semana, en
+   el orden en que se construye el proyecto — primero la lengua que se necesita,
+   despues leer y escuchar, luego la gramatica, y al final escribir, presentar y
+   reflexionar. Once bloques, once semanas, sin repetir ninguno. */
+const ING_UNA_UNIDAD = [
+  'Phonics', 'Vocabulary Development', 'Reading Skills', 'Reading Plan',
+  'Textual Comprehension', 'Listening Skills', 'Language Conventions (Writing)',
+  'Idea Development & Process', 'Text Types (Writing)', 'Speaking Skills',
+  'Writing Reflection'
+];
+
 function gradoScope(grade){
   if(!SCOPE || !SCOPE.grados) return null;
   const g = String(grade || '').toUpperCase();
@@ -543,16 +556,22 @@ function unidadDe(grade, periodo){
 }
 
 /* Lo que toca esa semana: uno o dos bloques de la unidad. */
-function inglesSemana(grade, periodo, semana){
-  const u = unidadDe(grade, periodo);
+function inglesSemana(grade, periodo, semana, arco, semanaArco){
+  const fija = arco && arco.ingUnidad;
+  const u = unidadDe(grade, fija || periodo);
   if(!u) return null;
+  if(fija){
+    const nombre = ING_UNA_UNIDAD[(Number(semanaArco || semana) - 1) % ING_UNA_UNIDAD.length];
+    const b = (u.bloques || []).filter(x => x.bloque === nombre);
+    return {unidad: u, bloques: b};
+  }
   const quiere = ING_REPARTO[(Number(semana) - 1) % ING_REPARTO.length] || [];
   const bloques = (u.bloques || []).filter(b => quiere.indexOf(b.bloque) >= 0);
   return bloques.length ? {unidad: u, bloques: bloques} : {unidad: u, bloques: []};
 }
 
-function bloqueInglesHTML(grade, periodo, semana){
-  const x = inglesSemana(grade, periodo, semana);
+function bloqueInglesHTML(grade, periodo, semana, arco, semanaArco){
+  const x = inglesSemana(grade, periodo, semana, arco, semanaArco);
   if(!x) return '';
   const partes = x.bloques.map(b =>
     `<div class="ing-b"><h6>${esc(b.bloque)}</h6><ul>` +
@@ -573,7 +592,8 @@ function inglesDelArco(a){
   if(!g) return '';
   const via = (SCOPE.pathway || []).find(p => String(p.grado).toUpperCase() === String(a.grade).toUpperCase());
   const kpi = (SCOPE.benchmarks || []).find(p => String(p.grado).toUpperCase() === String(a.grade).toUpperCase());
-  const unidades = (a.periodos || []).map(p => unidadDe(a.grade, p)).filter(Boolean);
+  const unidades = a.ingUnidad ? [unidadDe(a.grade, a.ingUnidad)].filter(Boolean)
+    : (a.periodos || []).map(p => unidadDe(a.grade, p)).filter(Boolean);
 
   const chips = [];
   if(via && via.examen)     chips.push(`<span><b>${u('examen')}</b> ${esc(via.examen)}</span>`);
@@ -1445,7 +1465,7 @@ function pintaArco(k, a){
         ${bloques ? `<div class="areas">${bloques}</div>
           <p class="pnote">${u('delPlan')}</p>`
         : `<p class="pnote">${u('sinPlan')}</p>`}
-        ${bloqueInglesHTML(a.grade, f.periodo, f.semana)}
+        ${bloqueInglesHTML(a.grade, f.periodo, f.semana, a, f.n)}
         ${bloqueCursos(f.cursos || ((window.PROJECT_ARCS_CURSOS||{})[k]||{})[f.n])}
         ${sm ? bloqueModelo(sm.modelo, a.cover) : ''}
       </div></details>`;

@@ -1863,6 +1863,9 @@ window.PROJECT_ARCS = {
 },
 
 'g3.t3': {
+  /* El ingles de este arco NO se parte en U5 y U6: es una sola unidad, la 5,
+     extendida por las once semanas. Lo pidio el area el 8-sep-2026. */
+  ingUnidad:5,
   grade:'g3', label:'Grade 3', trimestre:3, periodos:[5,6], semanas:11,
   inicio:'2026-09-14', fin:'2026-12-04',
   cover:{icon:'🪐', from:'#2b2c66', to:'#7b6ad0'},
