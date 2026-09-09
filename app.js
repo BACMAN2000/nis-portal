@@ -4026,7 +4026,7 @@ const ENGLISH_AREAS = [
   {emoji:'🪢', title:'Collocations',   desc:'395 word partnerships level by level, measured in your own courses.', nav:'collocations', block:'practice'},
   {emoji:'💬', title:'Idioms',         desc:'290 expressions you cannot guess from their words. From B1 up.', nav:'idioms', block:'practice'},
   {emoji:'🧩', title:'Word Formation', desc:'Prefixes, suffixes and word families, with the sentence from your own course.', nav:'wordform', block:'practice'},
-  {emoji:'📖', title:'NIS Dictionary',  desc:'Our own dictionary, over 10,000 words: phonetics, audio, translation and the meaning written for your course.', nav:'dict', block:'practice'},
+  {emoji:'📖', title:'NIS Dictionary',  desc:'Our own dictionary, 10,910 words: phonetics, audio, translation and the meaning written for your course.', nav:'dict', block:'practice'},
   {emoji:'🎮', title:'NIShoot Live',  desc:"Join your class's live game: enter with the PIN.",    nav:'nishoot', block:'practice'},
   // Las tres puertas del examen, juntas. Cambridge es el mapa (las dos ramas
   // y sus niveles); Mocks y Practice Tests son los atajos a los simulacros que
