@@ -23,7 +23,7 @@
 "grammar": "🔤 Small words"
 },
 "cover": {
-"trainer": 305,
+"trainer": 504,
 "course": 199,
 "official": 504
 },
@@ -33,7 +33,7 @@
 "k": "a few",
 "e": "💬",
 "t": "expressions",
-"ex": "I've got a few coins in my pocket.",
+"ex": "I've got a few sweets in my pocket.",
 "es": "unos pocos",
 "s": "a_few",
 "p": false
@@ -105,6 +105,18 @@
 "p": false
 },
 {
+"w": "adventure",
+"k": "adventure",
+"e": "🗺️",
+"t": "world",
+"ex": "Their journey to the cave was a great adventure.",
+"es": "aventura",
+"s": "adventure",
+"ipa": "/ɐdvˈɛntʃɐ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "Ago",
 "k": "ago",
 "e": "⏪",
@@ -114,6 +126,18 @@
 "s": "ago",
 "ipa": "/ɐɡˈəʊ/",
 "ipa_reg": "UK"
+},
+{
+"w": "agree",
+"k": "agree",
+"e": "🤝",
+"t": "actions",
+"ex": "I agree with you. That's the best answer.",
+"es": "estar de acuerdo",
+"s": "agree",
+"ipa": "/ɐɡɹˈiː/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "air",
@@ -127,6 +151,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "airport",
+"k": "airport",
+"e": "🛫",
+"t": "places",
+"ex": "We arrived at the airport two hours early.",
+"es": "aeropuerto",
+"s": "airport",
+"ipa": "/ˈeəpɔːt/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "alone",
 "k": "alone",
 "e": "🧍",
@@ -136,6 +172,19 @@
 "s": "alone",
 "ipa": "/ɐlˈəʊn/",
 "ipa_reg": "UK"
+},
+{
+"w": "already",
+"k": "already",
+"e": "💬",
+"t": "grammar",
+"ex": "I've already finished my homework.",
+"es": "ya",
+"s": "already",
+"ipa": "/ɔːlɹˈɛdi/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
 },
 {
 "w": "also",
@@ -159,6 +208,18 @@
 "s": "amazing",
 "ipa": "/ɐmˈeɪzɪŋ/",
 "ipa_reg": "UK"
+},
+{
+"w": "ambulance",
+"k": "ambulance",
+"e": "🚑",
+"t": "transport",
+"ex": "The ambulance took the man to hospital.",
+"es": "ambulancia",
+"s": "ambulance",
+"ipa": "/ˈæmbjʊləns/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "anyone",
@@ -208,6 +269,53 @@
 "ipa_reg": "UK"
 },
 {
+"w": "April",
+"k": "April",
+"e": "📅",
+"t": "time",
+"ex": "My birthday is in April.",
+"es": "abril",
+"s": "april",
+"p": false,
+"c": true
+},
+{
+"w": "arrive",
+"k": "arrive",
+"e": "🚉",
+"t": "actions",
+"ex": "The train arrives at midday.",
+"es": "llegar",
+"s": "arrive",
+"ipa": "/ɐɹˈaɪv/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "art",
+"k": "art",
+"e": "🎨",
+"t": "school",
+"ex": "Art is my favourite subject at school.",
+"es": "arte, plástica",
+"s": "art",
+"ipa": "/ˈɑːt/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "artist",
+"k": "artist",
+"e": "🧑‍🎨",
+"t": "work",
+"ex": "The artist is painting a picture of the sea.",
+"es": "artista",
+"s": "artist",
+"ipa": "/ˈɑːtɪst/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "as",
 "k": "as",
 "e": "💬",
@@ -228,6 +336,18 @@
 "p": false
 },
 {
+"w": "astronaut",
+"k": "astronaut",
+"e": "🧑‍🚀",
+"t": "work",
+"ex": "The astronaut went into space in a rocket.",
+"es": "astronauta",
+"s": "astronaut",
+"ipa": "/ˈæstɹənˌɔːt/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "at the moment",
 "k": "at the moment",
 "e": "⏱️",
@@ -238,6 +358,29 @@
 "ipa": "/ˈæt ðə mˈəʊmənt/",
 "ipa_reg": "UK",
 "p": false
+},
+{
+"w": "August",
+"k": "August",
+"e": "📅",
+"t": "time",
+"ex": "We go to the beach in August.",
+"es": "agosto",
+"s": "august",
+"p": false,
+"c": true
+},
+{
+"w": "Autumn (US fall)",
+"k": "autumn (US fall)",
+"e": "🍂",
+"t": "time",
+"ex": "In autumn the leaves fall from the trees.",
+"es": "otoño",
+"s": "autumn_us_fall",
+"ipa": "/ˈɔːtʌm/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "away",
@@ -318,6 +461,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "belt",
+"k": "belt",
+"e": "🧵",
+"t": "clothes",
+"ex": "My trousers are too big without a belt.",
+"es": "cinturón, correa",
+"s": "belt",
+"ipa": "/bˈɛlt/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "Betty",
 "k": "betty",
 "e": "👧",
@@ -326,6 +481,18 @@
 "es": "Betty (nombre de mujer)",
 "s": "betty",
 "p": false
+},
+{
+"w": "bicycle",
+"k": "bicycle",
+"e": "🚲",
+"t": "transport",
+"ex": "I go to school on my bicycle.",
+"es": "bicicleta",
+"s": "bicycle",
+"ipa": "/bˈaɪsɪkəl/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "bin",
@@ -362,6 +529,18 @@
 "p": false
 },
 {
+"w": "bored",
+"k": "bored",
+"e": "😑",
+"t": "describing",
+"ex": "I'm bored. Let's play a game!",
+"es": "aburrido",
+"s": "bored",
+"ipa": "/bˈɔːd/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "borrow",
 "k": "borrow",
 "e": "📚",
@@ -382,6 +561,30 @@
 "s": "bracelet",
 "ipa": "/bɹˈeɪslət/",
 "ipa_reg": "UK"
+},
+{
+"w": "bridge",
+"k": "bridge",
+"e": "🌉",
+"t": "places",
+"ex": "We walked over the bridge to the village.",
+"es": "puente",
+"s": "bridge",
+"ipa": "/bɹˈɪdʒ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "broken",
+"k": "broken",
+"e": "🔧",
+"t": "describing",
+"ex": "My watch is broken. It doesn't work.",
+"es": "roto, averiado",
+"s": "broken",
+"ipa": "/bɹˈəʊkən/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "brush",
@@ -410,7 +613,7 @@
 "k": "business",
 "e": "💼",
 "t": "work",
-"ex": "My aunt has got her own business.",
+"ex": "My aunt has got a small business in town.",
 "es": "negocio, empresa",
 "s": "business",
 "ipa": "/bˈɪznəs/",
@@ -423,7 +626,21 @@
 "t": "work",
 "ex": "A businessman works in an office.",
 "es": "empresario / empresaria",
-"s": "businessman_businesswoman"
+"s": "businessman_businesswoman",
+"ipa": "/bˈɪznəsmən/",
+"ipa_reg": "UK"
+},
+{
+"w": "butter",
+"k": "butter",
+"e": "🧈",
+"t": "food",
+"ex": "I'd like some bread and butter, please.",
+"es": "mantequilla",
+"s": "butter",
+"ipa": "/bˈʌtɐ/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "butterfly",
@@ -495,6 +712,89 @@
 "ipa_reg": "UK"
 },
 {
+"w": "Card",
+"k": "card",
+"e": "💌",
+"t": "time",
+"ex": "I'm sending my grandma a birthday card.",
+"es": "tarjeta",
+"s": "card",
+"ipa": "/kˈɑːd/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "cartoon",
+"k": "cartoon",
+"e": "📺",
+"t": "expressions",
+"ex": "My little brother watches cartoons after school.",
+"es": "dibujos animados",
+"s": "cartoon",
+"ipa": "/kɑːtˈuːn/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
+"w": "castle",
+"k": "castle",
+"e": "🏰",
+"t": "places",
+"ex": "The old castle is on top of the hill.",
+"es": "castillo",
+"s": "castle",
+"ipa": "/kˈɑːsəl/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "cave",
+"k": "cave",
+"e": "🕳️",
+"t": "world",
+"ex": "They found treasure in a dark cave.",
+"es": "cueva, caverna",
+"s": "cave",
+"c": true
+},
+{
+"w": "Century",
+"k": "century",
+"e": "🕰️",
+"t": "time",
+"ex": "This castle is more than a century old.",
+"es": "siglo",
+"s": "century",
+"ipa": "/sˈɛntʃəɹi/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "cereal",
+"k": "cereal",
+"e": "🥣",
+"t": "food",
+"ex": "I have cereal and milk for breakfast.",
+"es": "cereal",
+"s": "cereal",
+"ipa": "/sˈiəɹɪəl/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "channel",
+"k": "channel",
+"e": "📺",
+"t": "tech",
+"ex": "Can you change the channel? This programme is boring.",
+"es": "canal",
+"s": "channel",
+"ipa": "/tʃˈænəl/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "chat",
 "k": "chat",
 "e": "💬",
@@ -505,6 +805,18 @@
 "ipa": "/tʃˈæt/",
 "ipa_reg": "UK",
 "p": false
+},
+{
+"w": "cheap",
+"k": "cheap",
+"e": "💰",
+"t": "describing",
+"ex": "These shoes are cheap. They aren't expensive.",
+"es": "barato",
+"s": "cheap",
+"ipa": "/tʃˈiːp/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "chemist('s)",
@@ -518,6 +830,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "chess",
+"k": "chess",
+"e": "♟️",
+"t": "sports",
+"ex": "My grandpa taught me to play chess.",
+"es": "ajedrez",
+"s": "chess",
+"ipa": "/tʃˈɛs/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "chopsticks",
 "k": "chopsticks",
 "e": "🥢",
@@ -527,6 +851,28 @@
 "s": "chopsticks",
 "ipa": "/tʃˈɒpstɪks/",
 "ipa_reg": "UK"
+},
+{
+"w": "club",
+"k": "club",
+"e": "🎽",
+"t": "sports",
+"ex": "I go to the chess club on Thursdays.",
+"es": "club",
+"s": "club",
+"ipa": "/klˈʌb/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "collect",
+"k": "collect",
+"e": "📦",
+"t": "actions",
+"ex": "My sister collects stamps from other countries.",
+"es": "coleccionar, recoger",
+"s": "collect",
+"c": true
 },
 {
 "w": "college",
@@ -604,6 +950,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "corner",
+"k": "corner",
+"e": "📐",
+"t": "places",
+"ex": "The shop is on the corner of my street.",
+"es": "esquina, rincón",
+"s": "corner",
+"ipa": "/kˈɔːnɐ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "costume",
 "k": "costume",
 "e": "🦸",
@@ -660,6 +1018,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "cut",
+"k": "cut",
+"e": "✂️",
+"t": "actions",
+"ex": "Cut the paper with these scissors.",
+"es": "cortar",
+"s": "cut",
+"ipa": "/kˈʌt/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "cycle",
 "k": "cycle",
 "e": "🚴",
@@ -669,6 +1039,18 @@
 "s": "cycle",
 "ipa": "/sˈaɪkəl/",
 "ipa_reg": "UK"
+},
+{
+"w": "dark",
+"k": "dark",
+"e": "🌑",
+"t": "describing",
+"ex": "It's dark outside. Turn on the light!",
+"es": "oscuro",
+"s": "dark",
+"ipa": "/dˈɑːk/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "Date (as in time)",
@@ -705,6 +1087,17 @@
 "p": false
 },
 {
+"w": "December",
+"k": "December",
+"e": "📅",
+"t": "time",
+"ex": "It snows here in December.",
+"es": "diciembre",
+"s": "december",
+"p": false,
+"c": true
+},
+{
 "w": "decide",
 "k": "decide",
 "e": "🤔",
@@ -714,6 +1107,18 @@
 "s": "decide",
 "ipa": "/dɪsˈaɪd/",
 "ipa_reg": "UK"
+},
+{
+"w": "deep",
+"k": "deep",
+"e": "🌊",
+"t": "describing",
+"ex": "Don't swim there. The water is very deep.",
+"es": "profundo, hondo",
+"s": "deep",
+"ipa": "/dˈiːp/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "delicious",
@@ -747,6 +1152,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "designer",
+"k": "designer",
+"e": "🧑‍🎨",
+"t": "work",
+"ex": "My aunt is a designer. She makes clothes.",
+"es": "diseñador, diseñadora",
+"s": "designer",
+"ipa": "/dɪzˈaɪnɐ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "diary",
 "k": "diary",
 "e": "📓",
@@ -756,6 +1173,18 @@
 "s": "diary",
 "ipa": "/dˈaɪəɹi/",
 "ipa_reg": "UK"
+},
+{
+"w": "dictionary",
+"k": "dictionary",
+"e": "📖",
+"t": "school",
+"ex": "Look up the new word in your dictionary.",
+"es": "diccionario",
+"s": "dictionary",
+"ipa": "/dˈɪkʃənəɹi/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "dinosaur",
@@ -826,6 +1255,55 @@
 "ipa_reg": "UK"
 },
 {
+"w": "Early",
+"k": "early",
+"e": "⏰",
+"t": "time",
+"ex": "We got up early to catch the first train.",
+"es": "temprano",
+"s": "early",
+"ipa": "/ˈɜːli/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
+"w": "Earth",
+"k": "Earth",
+"e": "🌍",
+"t": "world",
+"ex": "The Earth goes round the sun.",
+"es": "la Tierra",
+"s": "earth",
+"ipa": "/ˈɜːθ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "east",
+"k": "east",
+"e": "🧭",
+"t": "world",
+"ex": "The sun comes up in the east.",
+"es": "este, oriente",
+"s": "east",
+"ipa": "/ˈiːst/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "elbow",
+"k": "elbow",
+"e": "🦾",
+"t": "body",
+"ex": "I fell off my bike and hurt my elbow.",
+"es": "codo",
+"s": "elbow",
+"ipa": "/ˈɛlbəʊ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "else",
 "k": "else",
 "e": "💬",
@@ -848,6 +1326,18 @@
 "p": false
 },
 {
+"w": "empty",
+"k": "empty",
+"e": "🫙",
+"t": "describing",
+"ex": "The bottle is empty. There's no water in it.",
+"es": "vacío",
+"s": "empty",
+"ipa": "/ˈɛmpti/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "engine",
 "k": "engine",
 "e": "⚙️",
@@ -859,6 +1349,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "engineer",
+"k": "engineer",
+"e": "🔧",
+"t": "work",
+"ex": "The engineer is building a new bridge.",
+"es": "ingeniero, ingeniera",
+"s": "engineer",
+"ipa": "/ˌɛndʒɪnˈiə/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "enormous",
 "k": "enormous",
 "e": "🐘",
@@ -868,6 +1370,19 @@
 "s": "enormous",
 "ipa": "/ɪnˈɔːməs/",
 "ipa_reg": "UK"
+},
+{
+"w": "enough",
+"k": "enough",
+"e": "💬",
+"t": "grammar",
+"ex": "We haven't got enough chairs for all the children.",
+"es": "suficiente, bastante",
+"s": "enough",
+"ipa": "/ɪnˈʌf/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
 },
 {
 "w": "enter (a competition)",
@@ -890,6 +1405,16 @@
 "s": "entrance"
 },
 {
+"w": "envelope",
+"k": "envelope",
+"e": "📩",
+"t": "school",
+"ex": "Put the letter in the envelope and send it.",
+"es": "sobre",
+"s": "envelope",
+"c": true
+},
+{
 "w": "environment",
 "k": "environment",
 "e": "🌱",
@@ -899,6 +1424,19 @@
 "s": "environment",
 "ipa": "/ɛnvˈaɪɹənmənt/",
 "ipa_reg": "UK"
+},
+{
+"w": "ever",
+"k": "ever",
+"e": "💬",
+"t": "grammar",
+"ex": "Have you ever been to the mountains?",
+"es": "alguna vez",
+"s": "ever",
+"ipa": "/ˈɛvɐ/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
 },
 {
 "w": "everywhere",
@@ -924,6 +1462,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "excited",
+"k": "excited",
+"e": "🤩",
+"t": "describing",
+"ex": "The children are excited about the journey.",
+"es": "emocionado, entusiasmado",
+"s": "excited",
+"ipa": "/ɛksˈaɪtɪd/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "exit",
 "k": "exit",
 "e": "🚪",
@@ -933,6 +1483,18 @@
 "s": "exit",
 "ipa": "/ˈɛɡzɪt/",
 "ipa_reg": "UK"
+},
+{
+"w": "expensive",
+"k": "expensive",
+"e": "💰",
+"t": "describing",
+"ex": "That camera is too expensive for me.",
+"es": "caro, costoso",
+"s": "expensive",
+"ipa": "/ɛkspˈɛnsɪv/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "explain",
@@ -979,6 +1541,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "Fall (UK autumn)",
+"k": "fall (UK autumn)",
+"e": "🍂",
+"t": "time",
+"ex": "In fall the weather gets colder.",
+"es": "otoño",
+"s": "fall_uk_autumn",
+"ipa": "/fˈɔːl/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "fall over",
 "k": "fall over",
 "e": "🤸",
@@ -1013,6 +1587,17 @@
 "ipa_reg": "UK"
 },
 {
+"w": "February",
+"k": "February",
+"e": "📅",
+"t": "time",
+"ex": "February is the shortest month of the year.",
+"es": "febrero",
+"s": "february",
+"p": false,
+"c": true
+},
+{
 "w": "feel",
 "k": "feel",
 "e": "🫀",
@@ -1022,6 +1607,18 @@
 "s": "feel",
 "ipa": "/fˈiːl/",
 "ipa_reg": "UK"
+},
+{
+"w": "Festival",
+"k": "festival",
+"e": "🎪",
+"t": "time",
+"ex": "There is a music festival in our town in May.",
+"es": "festival",
+"s": "festival",
+"ipa": "/fˈɛstɪvəl/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "fetch",
@@ -1055,11 +1652,57 @@
 "ipa_reg": "UK"
 },
 {
+"w": "finger",
+"k": "finger",
+"e": "☝️",
+"t": "body",
+"ex": "I've got five fingers on each hand.",
+"es": "dedo (de la mano)",
+"s": "finger",
+"ipa": "/fˈɪŋɡɐ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "finish",
+"k": "finish",
+"e": "🏁",
+"t": "actions",
+"ex": "I finish my homework before dinner.",
+"es": "terminar, acabar",
+"s": "finish",
+"c": true
+},
+{
+"w": "fire",
+"k": "fire",
+"e": "🔥",
+"t": "world",
+"ex": "They cooked their dinner on the fire.",
+"es": "fuego, incendio",
+"s": "fire",
+"ipa": "/fˈaɪə/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "fire engine (US fire truck)",
+"k": "fire engine (US fire truck)",
+"e": "🚒",
+"t": "transport",
+"ex": "The fire engine arrived very quickly.",
+"es": "camión de bomberos",
+"s": "fire_engine_us_fire_truck",
+"ipa": "/fˈaɪə ˈɛndʒɪn/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "fire fighter",
 "k": "fire fighter",
 "e": "🧑‍🚒",
 "t": "work",
-"ex": "The fire fighter climbed the ladder.",
+"ex": "The fire fighter came in a fire engine.",
 "es": "bombero",
 "s": "fire_fighter",
 "ipa": "/fˈaɪə fˈaɪtɐ/",
@@ -1099,6 +1742,30 @@
 "ipa_reg": "UK"
 },
 {
+"w": "flour",
+"k": "flour",
+"e": "🥖",
+"t": "food",
+"ex": "You need flour and eggs to make a cake.",
+"es": "harina",
+"s": "flour",
+"ipa": "/flˈaʊə/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "fog",
+"k": "fog",
+"e": "🌫️",
+"t": "world",
+"ex": "We couldn't see the mountain because of the fog.",
+"es": "niebla, neblina",
+"s": "fog",
+"ipa": "/fˈɒɡ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "foggy",
 "k": "foggy",
 "e": "🌫️",
@@ -1119,6 +1786,18 @@
 "s": "follow",
 "ipa": "/fˈɒləʊ/",
 "ipa_reg": "UK"
+},
+{
+"w": "forget",
+"k": "forget",
+"e": "🤔",
+"t": "actions",
+"ex": "Don't forget your ticket!",
+"es": "olvidar",
+"s": "forget",
+"ipa": "/fəɡˈɛt/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "fork",
@@ -1142,6 +1821,30 @@
 "ipa": "/fɹˈæŋk/",
 "ipa_reg": "UK",
 "p": false
+},
+{
+"w": "fridge",
+"k": "fridge",
+"e": "🧊",
+"t": "home",
+"ex": "Put the milk in the fridge, please.",
+"es": "refrigeradora, nevera",
+"s": "fridge",
+"ipa": "/fɹˈɪdʒ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "friendly",
+"k": "friendly",
+"e": "😊",
+"t": "describing",
+"ex": "Our new teacher is very friendly.",
+"es": "amable, simpático",
+"s": "friendly",
+"ipa": "/fɹˈɛndli/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "frightening",
@@ -1182,7 +1885,7 @@
 "k": "fur",
 "e": "🐻",
 "t": "animals",
-"ex": "The bear has got thick brown fur.",
+"ex": "The bear has got long brown fur.",
 "es": "pelaje",
 "s": "fur",
 "ipa": "/fˈɜː/",
@@ -1193,11 +1896,47 @@
 "k": "furry",
 "e": "🐹",
 "t": "describing",
-"ex": "My hamster is small and furry.",
+"ex": "My rabbit is small and furry.",
 "es": "peludo",
 "s": "furry",
 "ipa": "/fˈɜːɹi/",
 "ipa_reg": "UK"
+},
+{
+"w": "Future",
+"k": "future",
+"e": "🔮",
+"t": "time",
+"ex": "In the future I want to be a pilot.",
+"es": "futuro",
+"s": "future",
+"ipa": "/fjˈuːtʃɐ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "gate",
+"k": "gate",
+"e": "🚧",
+"t": "home",
+"ex": "Please close the gate so the dog can't get out.",
+"es": "reja, portón",
+"s": "gate",
+"ipa": "/ɡˈeɪt/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "geography",
+"k": "geography",
+"e": "🌍",
+"t": "school",
+"ex": "In geography we are learning about mountains and rivers.",
+"es": "geografía",
+"s": "geography",
+"ipa": "/dʒɪˈɒɡɹəfi/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "George",
@@ -1221,6 +1960,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "glass",
+"k": "glass",
+"e": "🥛",
+"t": "food",
+"ex": "Can I have a glass of water, please?",
+"es": "vaso, vidrio",
+"s": "glass",
+"ipa": "/ɡlˈɑːs/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "glove",
 "k": "glove",
 "e": "🧤",
@@ -1236,7 +1987,7 @@
 "k": "glue",
 "e": "🧴",
 "t": "school",
-"ex": "Use glue to stick the paper.",
+"ex": "Use glue to make your card.",
 "es": "pegamento",
 "s": "glue",
 "ipa": "/ɡlˈuː/",
@@ -1265,6 +2016,30 @@
 "ipa_reg": "UK"
 },
 {
+"w": "gold",
+"k": "gold",
+"e": "🥇",
+"t": "describing",
+"ex": "They found gold in the old cave.",
+"es": "oro, dorado",
+"s": "gold",
+"ipa": "/ɡˈəʊld/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "golf",
+"k": "golf",
+"e": "⛳",
+"t": "sports",
+"ex": "My uncle plays golf every Sunday.",
+"es": "golf",
+"s": "golf",
+"ipa": "/ɡˈɒlf/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "group",
 "k": "group",
 "e": "👥",
@@ -1274,6 +2049,30 @@
 "s": "group",
 "ipa": "/ɡɹˈuːp/",
 "ipa_reg": "UK"
+},
+{
+"w": "guess",
+"k": "guess",
+"e": "🤔",
+"t": "actions",
+"ex": "Guess what's in my bag!",
+"es": "adivinar",
+"s": "guess",
+"ipa": "/ɡˈɛs/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "gym",
+"k": "gym",
+"e": "🏋️",
+"t": "places",
+"ex": "We play basketball in the school gym.",
+"es": "gimnasio",
+"s": "gym",
+"ipa": "/dʒˈɪm/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "Half",
@@ -1344,6 +2143,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "heavy",
+"k": "heavy",
+"e": "🏋️",
+"t": "describing",
+"ex": "This suitcase is too heavy to carry.",
+"es": "pesado",
+"s": "heavy",
+"ipa": "/hˈɛvi/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "Helen",
 "k": "helen",
 "e": "👧",
@@ -1363,6 +2174,30 @@
 "s": "high",
 "ipa": "/hˈaɪ/",
 "ipa_reg": "UK"
+},
+{
+"w": "hill",
+"k": "hill",
+"e": "⛰️",
+"t": "world",
+"ex": "Our house is at the top of the hill.",
+"es": "colina, cerro",
+"s": "hill",
+"ipa": "/hˈɪl/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "history",
+"k": "history",
+"e": "🕰️",
+"t": "school",
+"ex": "In history we learn about castles.",
+"es": "historia",
+"s": "history",
+"ipa": "/hˈɪstəɹˌi/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "hole",
@@ -1388,6 +2223,18 @@
 "p": false
 },
 {
+"w": "honey",
+"k": "honey",
+"e": "🍯",
+"t": "food",
+"ex": "I like honey on my bread.",
+"es": "miel",
+"s": "honey",
+"ipa": "/hˈʌni/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "hope",
 "k": "hope",
 "e": "🤞",
@@ -1409,6 +2256,18 @@
 "s": "horrible",
 "ipa": "/hˈɒɹɪbəl/",
 "ipa_reg": "UK"
+},
+{
+"w": "hotel",
+"k": "hotel",
+"e": "🏨",
+"t": "places",
+"ex": "We stayed in a hotel near the beach.",
+"es": "hotel",
+"s": "hotel",
+"ipa": "/həʊtˈɛl/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "Hour",
@@ -1435,6 +2294,18 @@
 "p": false
 },
 {
+"w": "hurry",
+"k": "hurry",
+"e": "🏃",
+"t": "actions",
+"ex": "Hurry up! The film starts in ten minutes.",
+"es": "apurarse, darse prisa",
+"s": "hurry",
+"ipa": "/hˈʌɹi/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "husband",
 "k": "husband",
 "e": "👨",
@@ -1444,6 +2315,19 @@
 "s": "husband",
 "ipa": "/hˈʌsbənd/",
 "ipa_reg": "UK"
+},
+{
+"w": "if",
+"k": "if",
+"e": "💬",
+"t": "grammar",
+"ex": "If it rains, we'll stay at home.",
+"es": "si",
+"s": "if",
+"ipa": "/ˈɪf/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
 },
 {
 "w": "if you want",
@@ -1512,6 +2396,19 @@
 "ipa_reg": "UK"
 },
 {
+"w": "instead",
+"k": "instead",
+"e": "💬",
+"t": "grammar",
+"ex": "There isn't any juice, so drink water instead.",
+"es": "en lugar de eso",
+"s": "instead",
+"ipa": "/ɪnstˈɛd/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
 "w": "instrument",
 "k": "instrument",
 "e": "🎻",
@@ -1567,6 +2464,29 @@
 "ipa_reg": "UK"
 },
 {
+"w": "jam",
+"k": "jam",
+"e": "🍓",
+"t": "food",
+"ex": "I have bread and jam for breakfast.",
+"es": "mermelada",
+"s": "jam",
+"ipa": "/dʒˈæm/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "January",
+"k": "January",
+"e": "📅",
+"t": "time",
+"ex": "The new year starts in January.",
+"es": "enero",
+"s": "january",
+"p": false,
+"c": true
+},
+{
 "w": "job",
 "k": "job",
 "e": "💼",
@@ -1574,6 +2494,42 @@
 "ex": "My father has got a new job in the city.",
 "es": "trabajo, oficio",
 "s": "job"
+},
+{
+"w": "join (a club)",
+"k": "join (a club)",
+"e": "🎽",
+"t": "actions",
+"ex": "I want to join the swimming club.",
+"es": "apuntarse, unirse a",
+"s": "join_a_club",
+"ipa": "/dʒˈɔɪn/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "journalist",
+"k": "journalist",
+"e": "📰",
+"t": "work",
+"ex": "The journalist is writing about the festival.",
+"es": "periodista",
+"s": "journalist",
+"ipa": "/dʒˈɜːnəlˌɪst/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "journey",
+"k": "journey",
+"e": "🧳",
+"t": "transport",
+"ex": "The journey to the mountains takes three hours.",
+"es": "viaje, trayecto",
+"s": "journey",
+"ipa": "/dʒˈɜːni/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "July",
@@ -1594,6 +2550,19 @@
 "es": "junio",
 "s": "june",
 "p": false
+},
+{
+"w": "just",
+"k": "just",
+"e": "💬",
+"t": "grammar",
+"ex": "I've just finished my homework.",
+"es": "acabar de, solo",
+"s": "just",
+"ipa": "/dʒˈʌst/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
 },
 {
 "w": "Katy",
@@ -1628,6 +2597,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "Kilometre (US kilometer)",
+"k": "kilometre (US kilometer)",
+"e": "📏",
+"t": "time",
+"ex": "The lake is two kilometres from our hotel.",
+"es": "kilómetro",
+"s": "kilometre_us_kilometer",
+"ipa": "/kˈɪləmˌiːtɐ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "king",
 "k": "king",
 "e": "🤴",
@@ -1637,6 +2618,18 @@
 "s": "king",
 "ipa": "/kˈɪŋ/",
 "ipa_reg": "UK"
+},
+{
+"w": "knee",
+"k": "knee",
+"e": "🦵",
+"t": "body",
+"ex": "I fell over and hurt my knee.",
+"es": "rodilla",
+"s": "knee",
+"ipa": "/nˈiː/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "knife",
@@ -1683,6 +2676,68 @@
 "ipa_reg": "UK"
 },
 {
+"w": "Late",
+"k": "late",
+"e": "⏰",
+"t": "time",
+"ex": "Hurry up, or we'll be late for school!",
+"es": "tarde, atrasado",
+"s": "late",
+"ipa": "/lˈeɪt/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
+"w": "Later",
+"k": "later",
+"e": "⏰",
+"t": "time",
+"ex": "I'll do my homework later, after dinner.",
+"es": "después, más tarde",
+"s": "later",
+"ipa": "/lˈeɪtɐ/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
+"w": "lazy",
+"k": "lazy",
+"e": "😴",
+"t": "describing",
+"ex": "My cat is very lazy. It sleeps all day.",
+"es": "perezoso, flojo",
+"s": "lazy",
+"ipa": "/lˈeɪzi/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "leave",
+"k": "leave",
+"e": "🚪",
+"t": "actions",
+"ex": "We leave the house at eight o'clock.",
+"es": "salir de, dejar",
+"s": "leave",
+"ipa": "/lˈiːv/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "left (as in direction)",
+"k": "left (as in direction)",
+"e": "⬅️",
+"t": "places",
+"ex": "Turn left at the corner.",
+"es": "izquierda",
+"s": "left_as_in_direction",
+"ipa": "/lˈɛft/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "let",
 "k": "let",
 "e": "💬",
@@ -1695,6 +2750,18 @@
 "p": false
 },
 {
+"w": "letter (as in mail)",
+"k": "letter (as in mail)",
+"e": "💌",
+"t": "school",
+"ex": "I wrote a letter to my cousin.",
+"es": "carta",
+"s": "letter_as_in_mail",
+"ipa": "/lˈɛtɐ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "lie (as in lie down)",
 "k": "lie (as in lie down)",
 "e": "🛏️",
@@ -1704,6 +2771,42 @@
 "s": "lie_as_in_lie_down",
 "ipa": "/lˈaɪ/",
 "ipa_reg": "UK"
+},
+{
+"w": "lift",
+"k": "lift",
+"e": "🛗",
+"t": "home",
+"ex": "Our flat is on the tenth floor, so we take the lift.",
+"es": "ascensor, elevador",
+"s": "lift",
+"ipa": "/lˈɪft/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "lift (ride)",
+"k": "lift (ride)",
+"e": "🚗",
+"t": "transport",
+"ex": "Dad gave me a lift to the station.",
+"es": "aventón, llevar en carro",
+"s": "lift_ride",
+"ipa": "/lˈɪft/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "light",
+"k": "light",
+"e": "💡",
+"t": "home",
+"ex": "Turn on the light. It's dark in here.",
+"es": "luz, ligero",
+"s": "light",
+"ipa": "/lˈaɪt/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "London",
@@ -1793,6 +2896,31 @@
 "p": false
 },
 {
+"w": "manager",
+"k": "manager",
+"e": "💼",
+"t": "work",
+"ex": "My mother is the manager of a hotel.",
+"es": "gerente, jefa",
+"s": "manager",
+"ipa": "/mˈænɪdʒɐ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "March",
+"k": "March",
+"e": "📅",
+"t": "time",
+"ex": "It's often windy in March.",
+"es": "marzo",
+"s": "march",
+"ipa": "/mˈɑːtʃ/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
 "w": "married",
 "k": "married",
 "e": "💍",
@@ -1813,6 +2941,32 @@
 "s": "match_football",
 "ipa": "/mˈætʃ/",
 "ipa_reg": "UK"
+},
+{
+"w": "maths (US math)",
+"k": "maths (US math)",
+"e": "🔢",
+"t": "school",
+"ex": "We have maths after break.",
+"es": "matemáticas",
+"s": "maths_us_math",
+"ipa": "/mæθs/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
+"w": "May",
+"k": "May",
+"e": "📅",
+"t": "time",
+"ex": "The festival is in May.",
+"es": "mayo",
+"s": "may",
+"ipa": "/mˈeɪ/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
 },
 {
 "w": "meal",
@@ -1837,11 +2991,35 @@
 "ipa_reg": "UK"
 },
 {
+"w": "medicine",
+"k": "medicine",
+"e": "💊",
+"t": "body",
+"ex": "Take this medicine and you'll feel better.",
+"es": "medicina, medicamento",
+"s": "medicine",
+"ipa": "/mˈɛdsən/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "meet",
+"k": "meet",
+"e": "🤝",
+"t": "actions",
+"ex": "Let's meet at the cinema at six.",
+"es": "encontrarse, conocer",
+"s": "meet",
+"ipa": "/mˈiːt/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "meeting",
 "k": "meeting",
 "e": "👥",
 "t": "work",
-"ex": "The meeting is closed. See you tomorrow!",
+"ex": "The meeting is closed. See you at school!",
 "es": "reunión",
 "s": "meeting",
 "ipa": "/mˈiːtɪŋ/",
@@ -1859,6 +3037,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "metal",
+"k": "metal",
+"e": "🔩",
+"t": "describing",
+"ex": "The gate is made of metal.",
+"es": "metal",
+"s": "metal",
+"ipa": "/mˈɛtəl/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "Michael",
 "k": "michael",
 "e": "👦",
@@ -1867,6 +3057,18 @@
 "es": "Michael (nombre de niño)",
 "s": "michael",
 "p": false
+},
+{
+"w": "Midday",
+"k": "midday",
+"e": "🕛",
+"t": "time",
+"ex": "We have lunch at midday.",
+"es": "mediodía",
+"s": "midday",
+"ipa": "/mˌɪddˈeɪ/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "middle",
@@ -1879,6 +3081,31 @@
 "ipa": "/mˈɪdəl/",
 "ipa_reg": "UK",
 "p": false
+},
+{
+"w": "Midnight",
+"k": "midnight",
+"e": "🕛",
+"t": "time",
+"ex": "The party finished at midnight.",
+"es": "medianoche",
+"s": "midnight",
+"ipa": "/mˈɪdnaɪt/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "might",
+"k": "might",
+"e": "💬",
+"t": "grammar",
+"ex": "It might rain later. Take your umbrella.",
+"es": "podría, quizá",
+"s": "might",
+"ipa": "/mˈaɪt/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
 },
 {
 "w": "Million",
@@ -1904,6 +3131,17 @@
 "p": false
 },
 {
+"w": "Minute",
+"k": "minute",
+"e": "⏱️",
+"t": "time",
+"ex": "Wait a minute! I'm coming.",
+"es": "minuto",
+"s": "minute",
+"p": false,
+"c": true
+},
+{
 "w": "missing",
 "k": "missing",
 "e": "❓",
@@ -1914,6 +3152,18 @@
 "ipa": "/mˈɪsɪŋ/",
 "ipa_reg": "UK",
 "p": false
+},
+{
+"w": "mix",
+"k": "mix",
+"e": "🥣",
+"t": "actions",
+"ex": "Mix the flour and the eggs in a bowl.",
+"es": "mezclar",
+"s": "mix",
+"ipa": "/mˈɪks/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "money",
@@ -1939,6 +3189,18 @@
 "p": false
 },
 {
+"w": "motorway",
+"k": "motorway",
+"e": "🛣️",
+"t": "transport",
+"ex": "There is a lot of traffic on the motorway.",
+"es": "autopista",
+"s": "motorway",
+"ipa": "/mˈəʊtəwˌeɪ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "much",
 "k": "much",
 "e": "💬",
@@ -1949,6 +3211,18 @@
 "ipa": "/mˈʌtʃ/",
 "ipa_reg": "UK",
 "p": false
+},
+{
+"w": "museum",
+"k": "museum",
+"e": "🏛️",
+"t": "places",
+"ex": "We saw an old spaceship at the museum.",
+"es": "museo",
+"s": "museum",
+"ipa": "/mjuːzˈiəm/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "necklace",
@@ -1971,6 +3245,18 @@
 "s": "nest",
 "ipa": "/nˈɛst/",
 "ipa_reg": "UK"
+},
+{
+"w": "news",
+"k": "news",
+"e": "📰",
+"t": "tech",
+"ex": "My parents watch the news after dinner.",
+"es": "noticias",
+"s": "news",
+"ipa": "/njˈuːz/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "newspaper",
@@ -2016,6 +3302,30 @@
 "p": false
 },
 {
+"w": "noisy",
+"k": "noisy",
+"e": "📢",
+"t": "describing",
+"ex": "The classroom is very noisy today.",
+"es": "ruidoso",
+"s": "noisy",
+"ipa": "/nˈɔɪzi/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "north",
+"k": "north",
+"e": "🧭",
+"t": "world",
+"ex": "It's colder in the north of the country.",
+"es": "norte",
+"s": "north",
+"ipa": "/nˈɔːθ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "November",
 "k": "november",
 "e": "📅",
@@ -2036,6 +3346,29 @@
 "ipa": "/nˈəʊweə/",
 "ipa_reg": "UK",
 "p": false
+},
+{
+"w": "ocean",
+"k": "ocean",
+"e": "🌊",
+"t": "world",
+"ex": "Whales and sharks live in the ocean.",
+"es": "océano",
+"s": "ocean",
+"ipa": "/ˈəʊʃən/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "October",
+"k": "October",
+"e": "📅",
+"t": "time",
+"ex": "School starts again in October.",
+"es": "octubre",
+"s": "october",
+"p": false,
+"c": true
 },
 {
 "w": "octopus",
@@ -2082,6 +3415,31 @@
 "p": false
 },
 {
+"w": "olives",
+"k": "olives",
+"e": "🫒",
+"t": "food",
+"ex": "I like olives on my pizza.",
+"es": "aceitunas",
+"s": "olives",
+"ipa": "/ˈɒlɪvz/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "once",
+"k": "once",
+"e": "💬",
+"t": "grammar",
+"ex": "I go swimming once a week.",
+"es": "una vez",
+"s": "once",
+"ipa": "/wˈɒns/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
 "w": "online",
 "k": "online",
 "e": "🌐",
@@ -2103,6 +3461,31 @@
 "ipa": "/ˈʌðɐ/",
 "ipa_reg": "UK",
 "p": false
+},
+{
+"w": "oven",
+"k": "oven",
+"e": "🍳",
+"t": "home",
+"ex": "The cake is in the oven.",
+"es": "horno",
+"s": "oven",
+"ipa": "/ˈʌvən/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "over",
+"k": "over",
+"e": "💬",
+"t": "grammar",
+"ex": "The plane flew over the mountains.",
+"es": "sobre, por encima de",
+"s": "over",
+"ipa": "/ˈəʊvɐ/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
 },
 {
 "w": "p.m.",
@@ -2137,6 +3520,53 @@
 "ipa_reg": "UK"
 },
 {
+"w": "Past",
+"k": "past",
+"e": "🕰️",
+"t": "time",
+"ex": "It's half past four.",
+"es": "y (la hora), pasado",
+"s": "past",
+"ipa": "/pˈɑːst/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "path",
+"k": "path",
+"e": "🥾",
+"t": "places",
+"ex": "Follow this path through the forest.",
+"es": "sendero, camino",
+"s": "path",
+"c": true
+},
+{
+"w": "pepper",
+"k": "pepper",
+"e": "🫑",
+"t": "food",
+"ex": "Put some salt and pepper on your salad.",
+"es": "pimienta, pimiento",
+"s": "pepper",
+"ipa": "/pˈɛpɐ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "perhaps",
+"k": "perhaps",
+"e": "💬",
+"t": "grammar",
+"ex": "Perhaps we'll go to the beach on Sunday.",
+"es": "quizá, tal vez",
+"s": "perhaps",
+"ipa": "/pəhˈæps/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
 "w": "photographer",
 "k": "photographer",
 "e": "📷",
@@ -2159,6 +3589,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "pilot",
+"k": "pilot",
+"e": "🧑‍✈️",
+"t": "work",
+"ex": "The pilot flies the plane.",
+"es": "piloto",
+"s": "pilot",
+"ipa": "/pˈaɪlət/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "pizza",
 "k": "pizza",
 "e": "🍕",
@@ -2170,6 +3612,42 @@
 "ipa_reg": "UK"
 },
 {
+"w": "planet",
+"k": "planet",
+"e": "🪐",
+"t": "world",
+"ex": "The Earth is a planet.",
+"es": "planeta",
+"s": "planet",
+"ipa": "/plˈænɪt/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "plastic",
+"k": "plastic",
+"e": "♻️",
+"t": "describing",
+"ex": "This bottle is made of plastic.",
+"es": "plástico",
+"s": "plastic",
+"ipa": "/plˈɑːstɪk/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "platform",
+"k": "platform",
+"e": "🚉",
+"t": "transport",
+"ex": "Our train leaves from platform two.",
+"es": "andén",
+"s": "platform",
+"ipa": "/plˈætfɔːm/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "pleased",
 "k": "pleased",
 "e": "😊",
@@ -2179,6 +3657,42 @@
 "s": "pleased",
 "ipa": "/plˈiːzd/",
 "ipa_reg": "UK"
+},
+{
+"w": "pocket",
+"k": "pocket",
+"e": "👕",
+"t": "clothes",
+"ex": "My keys are in my jacket pocket.",
+"es": "bolsillo",
+"s": "pocket",
+"ipa": "/pˈɒkɪt/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "police officer",
+"k": "police officer",
+"e": "👮",
+"t": "work",
+"ex": "The police officer helped us find our hotel.",
+"es": "policía",
+"s": "police_officer",
+"ipa": "/pəlˈiːs ˈɒfɪsɐ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "police station",
+"k": "police station",
+"e": "🏢",
+"t": "places",
+"ex": "We took the lost bag to the police station.",
+"es": "comisaría",
+"s": "police_station",
+"ipa": "/pəlˈiːs stˈeɪʃən/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "pond",
@@ -2247,6 +3761,30 @@
 "ipa_reg": "UK"
 },
 {
+"w": "Postcard",
+"k": "postcard",
+"e": "📮",
+"t": "time",
+"ex": "I sent my friend a postcard from the beach.",
+"es": "postal",
+"s": "postcard",
+"ipa": "/pˈəʊstkɑːd/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "prefer",
+"k": "prefer",
+"e": "👍",
+"t": "actions",
+"ex": "I prefer tennis to golf.",
+"es": "preferir",
+"s": "prefer",
+"ipa": "/pɹɪfˈɜː/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "prepare",
 "k": "prepare",
 "e": "🍳",
@@ -2258,6 +3796,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "prize",
+"k": "prize",
+"e": "🏆",
+"t": "sports",
+"ex": "Our team won first prize in the race.",
+"es": "premio",
+"s": "prize",
+"ipa": "/pɹˈaɪz/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "problem",
 "k": "problem",
 "e": "❗",
@@ -2267,6 +3817,18 @@
 "s": "problem",
 "ipa": "/pɹˈɒbləm/",
 "ipa_reg": "UK"
+},
+{
+"w": "programme (US program)",
+"k": "programme (US program)",
+"e": "📺",
+"t": "tech",
+"ex": "This programme about dolphins is very good.",
+"es": "programa",
+"s": "programme_us_program",
+"ipa": "/pɹˈəʊɡɹæm/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "project",
@@ -2282,7 +3844,7 @@
 "k": "pull",
 "e": "🪢",
 "t": "actions",
-"ex": "Pull the rope!",
+"ex": "Pull the door to open it.",
 "es": "tirar, jalar",
 "s": "pull",
 "ipa": "/pˈʊl/",
@@ -2298,6 +3860,18 @@
 "s": "push",
 "ipa": "/pˈʊʃ/",
 "ipa_reg": "UK"
+},
+{
+"w": "puzzle",
+"k": "puzzle",
+"e": "🧩",
+"t": "sports",
+"ex": "This puzzle has got a thousand pieces.",
+"es": "rompecabezas",
+"s": "puzzle",
+"ipa": "/pˈʌzəl/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "pyjamas (US pajamas)",
@@ -2320,6 +3894,18 @@
 "s": "pyramid",
 "ipa": "/pˈɪɹɐmˌɪd/",
 "ipa_reg": "UK"
+},
+{
+"w": "Quarter",
+"k": "quarter",
+"e": "🕒",
+"t": "time",
+"ex": "I get up at a quarter past seven.",
+"es": "cuarto",
+"s": "quarter",
+"ipa": "/kwˈɔːtɐ/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "queen",
@@ -2355,6 +3941,18 @@
 "p": false
 },
 {
+"w": "race",
+"k": "race",
+"e": "🏁",
+"t": "sports",
+"ex": "My brother won the race yesterday.",
+"es": "carrera",
+"s": "race",
+"ipa": "/ɹˈeɪs/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "racing (car; bike)",
 "k": "racing (car; bike)",
 "e": "🏎️",
@@ -2364,6 +3962,42 @@
 "s": "racing_car_bike",
 "ipa": "/ɹˈeɪsɪŋ/",
 "ipa_reg": "UK"
+},
+{
+"w": "railway",
+"k": "railway",
+"e": "🛤️",
+"t": "transport",
+"ex": "The railway goes through the mountains.",
+"es": "ferrocarril, vía férrea",
+"s": "railway",
+"ipa": "/ɹˈeɪlweɪ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "ready",
+"k": "ready",
+"e": "✅",
+"t": "describing",
+"ex": "Are you ready? The bus is here!",
+"es": "listo, preparado",
+"s": "ready",
+"ipa": "/ɹˈɛdi/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "remember",
+"k": "remember",
+"e": "🧠",
+"t": "actions",
+"ex": "Remember to take your umbrella!",
+"es": "recordar, acordarse",
+"s": "remember",
+"ipa": "/ɹɪmˈɛmbɐ/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "repair",
@@ -2384,6 +4018,18 @@
 "s": "repeat",
 "ipa": "/ɹɪpˈiːt/",
 "ipa_reg": "UK"
+},
+{
+"w": "restaurant",
+"k": "restaurant",
+"e": "🍽️",
+"t": "places",
+"ex": "We had dinner in a restaurant near the river.",
+"es": "restaurante",
+"s": "restaurant",
+"ipa": "/ɹˈɛstɹɒnt/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "rich",
@@ -2407,6 +4053,30 @@
 "p": false
 },
 {
+"w": "right (as in direction)",
+"k": "right (as in direction)",
+"e": "➡️",
+"t": "places",
+"ex": "Turn right after the bridge.",
+"es": "derecha",
+"s": "right_as_in_direction",
+"ipa": "/ɹˈaɪt/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "ring",
+"k": "ring",
+"e": "💍",
+"t": "clothes",
+"ex": "My grandma has got a gold ring.",
+"es": "anillo, sonar",
+"s": "ring",
+"ipa": "/ɹˈɪŋ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "Robert",
 "k": "robert",
 "e": "👦",
@@ -2428,6 +4098,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "rocket",
+"k": "rocket",
+"e": "🚀",
+"t": "transport",
+"ex": "The rocket took the astronauts into space.",
+"es": "cohete",
+"s": "rocket",
+"ipa": "/ɹˈɒkɪt/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "rucksack (US backpack)",
 "k": "rucksack (US backpack)",
 "e": "🎒",
@@ -2437,6 +4119,18 @@
 "s": "rucksack_us_backpack",
 "ipa": "/ɹˈʌksæk/",
 "ipa_reg": "UK"
+},
+{
+"w": "salt",
+"k": "salt",
+"e": "🧂",
+"t": "food",
+"ex": "There's too much salt in this soup.",
+"es": "sal",
+"s": "salt",
+"ipa": "/sˈɒlt/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "same",
@@ -2472,6 +4166,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "science",
+"k": "science",
+"e": "🔬",
+"t": "school",
+"ex": "In science we are learning about planets.",
+"es": "ciencias",
+"s": "science",
+"ipa": "/sˈaɪəns/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "scissors",
 "k": "scissors",
 "e": "✂️",
@@ -2483,6 +4189,30 @@
 "ipa_reg": "UK"
 },
 {
+"w": "score",
+"k": "score",
+"e": "🥅",
+"t": "sports",
+"ex": "Our team scored three goals.",
+"es": "marcar, puntuación",
+"s": "score",
+"ipa": "/skˈɔː/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "screen",
+"k": "screen",
+"e": "🖥️",
+"t": "tech",
+"ex": "The words are on the computer screen.",
+"es": "pantalla",
+"s": "screen",
+"ipa": "/skɹˈiːn/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "search",
 "k": "search",
 "e": "🔎",
@@ -2492,6 +4222,17 @@
 "s": "search",
 "ipa": "/sˈɜːtʃ/",
 "ipa_reg": "UK"
+},
+{
+"w": "secret",
+"k": "secret",
+"e": "🤫",
+"t": "expressions",
+"ex": "Don't tell anyone! It's a secret.",
+"es": "secreto",
+"s": "secret",
+"p": false,
+"c": true
 },
 {
 "w": "sell",
@@ -2538,6 +4279,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "shelf",
+"k": "shelf",
+"e": "📚",
+"t": "home",
+"ex": "The dictionary is on the top shelf.",
+"es": "estante, repisa",
+"s": "shelf",
+"ipa": "/ʃˈɛlf/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "should",
 "k": "should",
 "e": "💬",
@@ -2550,6 +4303,18 @@
 "p": false
 },
 {
+"w": "silver",
+"k": "silver",
+"e": "🥈",
+"t": "describing",
+"ex": "She's wearing a silver ring.",
+"es": "plata, plateado",
+"s": "silver",
+"ipa": "/sˈɪlvɐ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "since",
 "k": "since",
 "e": "💬",
@@ -2560,6 +4325,16 @@
 "ipa": "/sˈɪns/",
 "ipa_reg": "UK",
 "p": false
+},
+{
+"w": "singer",
+"k": "singer",
+"e": "🧑‍🎤",
+"t": "music",
+"ex": "My favourite singer is coming to our town.",
+"es": "cantante",
+"s": "singer",
+"c": true
 },
 {
 "w": "ski",
@@ -2606,6 +4381,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "snack",
+"k": "snack",
+"e": "🍪",
+"t": "food",
+"ex": "I have a snack after school.",
+"es": "refrigerio, tentempié",
+"s": "snack",
+"ipa": "/snˈæk/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "snowball",
 "k": "snowball",
 "e": "❄️",
@@ -2626,6 +4413,18 @@
 "s": "snowboard",
 "ipa": "/snˈəʊbɔːd/",
 "ipa_reg": "UK"
+},
+{
+"w": "snowboarding",
+"k": "snowboarding",
+"e": "🏂",
+"t": "sports",
+"ex": "We went snowboarding in the mountains.",
+"es": "snowboard",
+"s": "snowboarding",
+"ipa": "/snˈəʊbɔːdɪŋ/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "snowman",
@@ -2699,11 +4498,59 @@
 "k": "sore",
 "e": "🤒",
 "t": "body",
-"ex": "I've got a sore throat.",
+"ex": "I've got a sore knee.",
 "es": "dolorido, irritado",
 "s": "sore",
 "ipa": "/sˈɔː/",
 "ipa_reg": "UK"
+},
+{
+"w": "sound",
+"k": "sound",
+"e": "🔊",
+"t": "music",
+"ex": "What's that sound? Is it a bird?",
+"es": "sonido",
+"s": "sound",
+"ipa": "/sˈaʊnd/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "south",
+"k": "south",
+"e": "🧭",
+"t": "world",
+"ex": "It's hotter in the south.",
+"es": "sur",
+"s": "south",
+"ipa": "/sˈaʊθ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "space",
+"k": "space",
+"e": "🌌",
+"t": "world",
+"ex": "The astronaut looked at the Earth from space.",
+"es": "espacio",
+"s": "space",
+"ipa": "/spˈeɪs/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "spaceship",
+"k": "spaceship",
+"e": "🛸",
+"t": "transport",
+"ex": "The spaceship is flying to another planet.",
+"es": "nave espacial",
+"s": "spaceship",
+"ipa": "/spˈeɪsʃɪp/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "speak",
@@ -2772,6 +4619,127 @@
 "ipa_reg": "UK"
 },
 {
+"w": "Spring",
+"k": "spring",
+"e": "🌸",
+"t": "time",
+"ex": "The flowers grow in spring.",
+"es": "primavera",
+"s": "spring",
+"ipa": "/spɹˈɪŋ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "stadium",
+"k": "stadium",
+"e": "🏟️",
+"t": "places",
+"ex": "There were thirty thousand people in the stadium.",
+"es": "estadio",
+"s": "stadium",
+"ipa": "/stˈeɪdiəm/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "stage (theatre)",
+"k": "stage (theatre)",
+"e": "🎭",
+"t": "music",
+"ex": "The singer is on the stage.",
+"es": "escenario",
+"s": "stage_theatre",
+"ipa": "/stˈeɪdʒ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "stamp",
+"k": "stamp",
+"e": "📮",
+"t": "school",
+"ex": "Put a stamp on the envelope before you send it.",
+"es": "sello, estampilla",
+"s": "stamp",
+"ipa": "/stˈæmp/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "stay",
+"k": "stay",
+"e": "🏨",
+"t": "actions",
+"ex": "We stayed with my grandparents for a week.",
+"es": "quedarse, alojarse",
+"s": "stay",
+"ipa": "/stˈeɪ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "step",
+"k": "step",
+"e": "🪜",
+"t": "actions",
+"ex": "Be careful! There's a step here.",
+"es": "escalón, paso",
+"s": "step",
+"ipa": "/stˈɛp/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "still",
+"k": "still",
+"e": "💬",
+"t": "grammar",
+"ex": "It's ten o'clock and my brother is still asleep.",
+"es": "todavía, aún",
+"s": "still",
+"ipa": "/stˈɪl/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
+"w": "stone",
+"k": "stone",
+"e": "🪨",
+"t": "world",
+"ex": "The old bridge is made of stone.",
+"es": "piedra",
+"s": "stone",
+"ipa": "/stˈəʊn/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "storm",
+"k": "storm",
+"e": "⛈️",
+"t": "world",
+"ex": "We stayed at home because of the storm.",
+"es": "tormenta",
+"s": "storm",
+"ipa": "/stˈɔːm/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "straight on",
+"k": "straight on",
+"e": "⬆️",
+"t": "places",
+"ex": "Go straight on and you'll see the museum.",
+"es": "todo recto, de frente",
+"s": "straight_on",
+"ipa": "/stɹˈeɪt ˈɒn/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "strange",
 "k": "strange",
 "e": "👽",
@@ -2792,6 +4760,18 @@
 "s": "strawberry",
 "ipa": "/stɹˈɔːbəɹi/",
 "ipa_reg": "UK"
+},
+{
+"w": "stream",
+"k": "stream",
+"e": "🏞️",
+"t": "world",
+"ex": "There are little fish in the stream.",
+"es": "arroyo, riachuelo",
+"s": "stream",
+"ipa": "/stɹˈiːm/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "stripe",
@@ -2838,6 +4818,16 @@
 "ipa_reg": "UK"
 },
 {
+"w": "subject",
+"k": "subject",
+"e": "📚",
+"t": "school",
+"ex": "My favourite subject is geography.",
+"es": "asignatura, materia",
+"s": "subject",
+"c": true
+},
+{
 "w": "such",
 "k": "such",
 "e": "💬",
@@ -2848,6 +4838,43 @@
 "ipa": "/sˈʌtʃ/",
 "ipa_reg": "UK",
 "p": false
+},
+{
+"w": "suddenly",
+"k": "suddenly",
+"e": "💥",
+"t": "grammar",
+"ex": "Suddenly, the lights went off.",
+"es": "de repente",
+"s": "suddenly",
+"ipa": "/sˈʌdənli/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
+"w": "sugar",
+"k": "sugar",
+"e": "🍬",
+"t": "food",
+"ex": "I don't take sugar in my tea.",
+"es": "azúcar",
+"s": "sugar",
+"ipa": "/ʃˈʊɡɐ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "suitcase",
+"k": "suitcase",
+"e": "🧳",
+"t": "transport",
+"ex": "My suitcase is very heavy.",
+"es": "maleta",
+"s": "suitcase",
+"ipa": "/sˈuːtkeɪs/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "Summer",
@@ -2870,6 +4897,32 @@
 "s": "sunglasses",
 "ipa": "/sˈʌŋɡlɑːsɪz/",
 "ipa_reg": "UK"
+},
+{
+"w": "sure",
+"k": "sure",
+"e": "✅",
+"t": "expressions",
+"ex": "Are you sure this is the right way?",
+"es": "seguro",
+"s": "sure",
+"ipa": "/ʃˈɔː/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
+"w": "surname",
+"k": "surname",
+"e": "📛",
+"t": "expressions",
+"ex": "What's your surname? How do you spell it?",
+"es": "apellido",
+"s": "surname",
+"ipa": "/sˈɜːneɪm/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
 },
 {
 "w": "surprise",
@@ -2929,6 +4982,30 @@
 "ipa_reg": "UK"
 },
 {
+"w": "taxi",
+"k": "taxi",
+"e": "🚕",
+"t": "transport",
+"ex": "We took a taxi to the airport.",
+"es": "taxi",
+"s": "taxi",
+"ipa": "/tˈæksi/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "team",
+"k": "team",
+"e": "🏅",
+"t": "sports",
+"ex": "There are eleven players in a football team.",
+"es": "equipo",
+"s": "team",
+"ipa": "/tˈiːm/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "telephone",
 "k": "telephone",
 "e": "☎️",
@@ -2938,6 +5015,18 @@
 "s": "telephone",
 "ipa": "/tˈɛlɪfˌəʊn/",
 "ipa_reg": "UK"
+},
+{
+"w": "tent",
+"k": "tent",
+"e": "⛺",
+"t": "sports",
+"ex": "We slept in a tent next to the lake.",
+"es": "carpa, tienda de campaña",
+"s": "tent",
+"ipa": "/tˈɛnt/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "thank",
@@ -2952,6 +5041,18 @@
 "p": false
 },
 {
+"w": "theatre (US theater)",
+"k": "theatre (US theater)",
+"e": "🎭",
+"t": "places",
+"ex": "We saw a play at the theatre.",
+"es": "teatro",
+"s": "theatre_us_theater",
+"ipa": "/θˈiətɐ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "Thousand",
 "k": "thousand",
 "e": "🔢",
@@ -2962,6 +5063,19 @@
 "ipa": "/θˈaʊzənd/",
 "ipa_reg": "UK",
 "p": false
+},
+{
+"w": "through",
+"k": "through",
+"e": "💬",
+"t": "grammar",
+"ex": "The train went through the mountains.",
+"es": "a través de, por",
+"s": "through",
+"ipa": "/θɹˈuː/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
 },
 {
 "w": "tidy",
@@ -2975,6 +5089,31 @@
 "ipa_reg": "UK"
 },
 {
+"w": "Time",
+"k": "time",
+"e": "🕒",
+"t": "time",
+"ex": "What time does the film start?",
+"es": "hora, tiempo, vez",
+"s": "time",
+"ipa": "/tˈaɪm/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "timetable",
+"k": "timetable",
+"e": "📅",
+"t": "school",
+"ex": "Look at the timetable. We have science on Monday.",
+"es": "horario",
+"s": "timetable",
+"ipa": "/tˈaɪmteɪbəl/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
 "w": "toe",
 "k": "toe",
 "e": "🦶",
@@ -2984,6 +5123,19 @@
 "s": "toe",
 "ipa": "/tˈəʊ/",
 "ipa_reg": "UK"
+},
+{
+"w": "together",
+"k": "together",
+"e": "🤝",
+"t": "grammar",
+"ex": "We did our homework together.",
+"es": "juntos",
+"s": "together",
+"ipa": "/təɡˈɛðɐ/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
 },
 {
 "w": "Tomorrow",
@@ -3053,6 +5205,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "traffic",
+"k": "traffic",
+"e": "🚦",
+"t": "transport",
+"ex": "There was a lot of traffic this morning.",
+"es": "tráfico",
+"s": "traffic",
+"ipa": "/tɹˈæfɪk/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "trainers",
 "k": "trainers",
 "e": "👟",
@@ -3108,6 +5272,19 @@
 "ipa_reg": "UK"
 },
 {
+"w": "twice",
+"k": "twice",
+"e": "💬",
+"t": "grammar",
+"ex": "I go swimming twice a week.",
+"es": "dos veces",
+"s": "twice",
+"ipa": "/twˈaɪs/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
 "w": "tyre (US tire)",
 "k": "tyre (US tire)",
 "e": "🛞",
@@ -3117,6 +5294,18 @@
 "s": "tyre_us_tire",
 "ipa": "/tˈaɪə/",
 "ipa_reg": "UK"
+},
+{
+"w": "umbrella",
+"k": "umbrella",
+"e": "☂️",
+"t": "clothes",
+"ex": "Take your umbrella. It's going to rain.",
+"es": "paraguas",
+"s": "umbrella",
+"ipa": "/ʌmbɹˈɛlɐ/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "unfriendly",
@@ -3139,6 +5328,30 @@
 "s": "unhappy",
 "ipa": "/ʌnhˈæpi/",
 "ipa_reg": "UK"
+},
+{
+"w": "uniform",
+"k": "uniform",
+"e": "👔",
+"t": "clothes",
+"ex": "We wear a blue school uniform.",
+"es": "uniforme",
+"s": "uniform",
+"ipa": "/jˈuːnɪfˌɔːm/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "university",
+"k": "university",
+"e": "🎓",
+"t": "places",
+"ex": "My cousin studies science at university.",
+"es": "universidad",
+"s": "university",
+"ipa": "/jˌuːnɪvˈɜːsɪtˌi/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "unkind",
@@ -3195,6 +5408,31 @@
 "s": "use"
 },
 {
+"w": "usually",
+"k": "usually",
+"e": "💬",
+"t": "grammar",
+"ex": "I usually get up at seven o'clock.",
+"es": "normalmente, suele",
+"s": "usually",
+"ipa": "/jˈuːʒuːəli/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
+"w": "view",
+"k": "view",
+"e": "🏞️",
+"t": "world",
+"ex": "There's a beautiful view from the top of the hill.",
+"es": "vista",
+"s": "view",
+"ipa": "/vjˈuː/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "violin",
 "k": "violin",
 "e": "🎻",
@@ -3204,6 +5442,42 @@
 "s": "violin",
 "ipa": "/vaɪəlˈɪn/",
 "ipa_reg": "UK"
+},
+{
+"w": "visit",
+"k": "visit",
+"e": "🚶",
+"t": "actions",
+"ex": "We visit my grandparents every weekend.",
+"es": "visitar",
+"s": "visit",
+"ipa": "/vˈɪzɪt/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "volleyball",
+"k": "volleyball",
+"e": "🏐",
+"t": "sports",
+"ex": "We played volleyball on the beach.",
+"es": "vóleibol",
+"s": "volleyball",
+"ipa": "/vˈɒlɪbˌɔːl/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "waiter",
+"k": "waiter",
+"e": "🧑‍🍽️",
+"t": "work",
+"ex": "The waiter brought us our soup.",
+"es": "mesero, camarero",
+"s": "waiter",
+"ipa": "/wˈeɪtɐ/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "warm",
@@ -3227,6 +5501,18 @@
 "ipa": "/wˈeɪ/",
 "ipa_reg": "UK",
 "p": false
+},
+{
+"w": "west",
+"k": "west",
+"e": "🧭",
+"t": "world",
+"ex": "The sun goes down in the west.",
+"es": "oeste",
+"s": "west",
+"ipa": "/wˈɛst/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "wheel",
@@ -3261,6 +5547,18 @@
 "s": "whisper",
 "ipa": "/wˈɪspɐ/",
 "ipa_reg": "UK"
+},
+{
+"w": "whistle",
+"k": "whistle",
+"e": "🎣",
+"t": "sports",
+"ex": "The teacher has got a whistle for the race.",
+"es": "silbato, silbar",
+"s": "whistle",
+"ipa": "/wˈɪsəl/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "wife",
@@ -3338,6 +5636,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "winner",
+"k": "winner",
+"e": "🏆",
+"t": "sports",
+"ex": "The winner of the race got a prize.",
+"es": "ganador, ganadora",
+"s": "winner",
+"ipa": "/wˈɪnɐ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "Winter",
 "k": "winter",
 "e": "❄️",
@@ -3347,6 +5657,18 @@
 "s": "winter",
 "ipa": "/wˈɪntɐ/",
 "ipa_reg": "UK"
+},
+{
+"w": "wish",
+"k": "wish",
+"e": "🌠",
+"t": "actions",
+"ex": "Close your eyes and make a wish!",
+"es": "deseo, desear",
+"s": "wish",
+"ipa": "/wˈɪʃ/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "without",
@@ -3373,6 +5695,77 @@
 "p": false
 },
 {
+"w": "wood",
+"k": "wood",
+"e": "🪵",
+"t": "describing",
+"ex": "This table is made of wood.",
+"es": "madera, bosque",
+"s": "wood",
+"ipa": "/wˈʊd/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "wool",
+"k": "wool",
+"e": "🧶",
+"t": "clothes",
+"ex": "My sweater is made of wool.",
+"es": "lana",
+"s": "wool",
+"ipa": "/wˈʊl/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "worried",
+"k": "worried",
+"e": "😟",
+"t": "describing",
+"ex": "Mum was worried because we were late.",
+"es": "preocupado",
+"s": "worried",
+"ipa": "/wˈʌɹɪd/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "x-ray",
+"k": "x-ray",
+"e": "🩻",
+"t": "body",
+"ex": "The doctor took an x-ray of my knee.",
+"es": "radiografía",
+"s": "x_ray",
+"c": true
+},
+{
+"w": "yet",
+"k": "yet",
+"e": "💬",
+"t": "grammar",
+"ex": "I haven't finished my homework yet.",
+"es": "todavía, aún",
+"s": "yet",
+"ipa": "/jˈɛt/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
+"w": "yoghurt",
+"k": "yoghurt",
+"e": "🥣",
+"t": "food",
+"ex": "I have yoghurt and fruit for breakfast.",
+"es": "yogur",
+"s": "yoghurt",
+"ipa": "/jˈɒɡət/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "you’re welcome",
 "k": "you’re welcome",
 "e": "🙏",
@@ -3387,7 +5780,7 @@
 "k": "zero",
 "e": "0️⃣",
 "t": "time",
-"ex": "Ten minus ten is zero.",
+"ex": "Our team won two - zero.",
 "es": "cero",
 "s": "zero",
 "ipa": "/zˈiəɹəʊ/",

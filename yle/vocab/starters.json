@@ -23,11 +23,22 @@
 "grammar": "🔤 Small words"
 },
 "cover": {
-"trainer": 265,
+"trainer": 495,
 "course": 230,
 "official": 495
 },
 "words": [
+{
+"w": "a",
+"k": "a",
+"e": "💬",
+"t": "grammar",
+"ex": "This is a cat.",
+"es": "un, una",
+"s": "a",
+"p": false,
+"c": true
+},
 {
 "w": "a lot",
 "k": "a lot",
@@ -72,6 +83,29 @@
 "ipa_reg": "UK"
 },
 {
+"w": "Afternoon",
+"k": "afternoon",
+"e": "🌇",
+"t": "time",
+"ex": "Good afternoon, class!",
+"es": "tarde",
+"s": "afternoon",
+"c": true
+},
+{
+"w": "again",
+"k": "again",
+"e": "🔁",
+"t": "expressions",
+"ex": "Sing the song again!",
+"es": "otra vez",
+"s": "again",
+"ipa": "/ɐɡˈɛn/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
 "w": "Alex",
 "k": "alex",
 "e": "🧒",
@@ -103,6 +137,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "alphabet",
+"k": "alphabet",
+"e": "🔤",
+"t": "school",
+"ex": "We are learning the alphabet.",
+"es": "abecedario",
+"s": "alphabet",
+"ipa": "/ˈælfəbˌɛt/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "an",
 "k": "an",
 "e": "💬",
@@ -125,6 +171,18 @@
 "ipa": "/ˈænd/",
 "ipa_reg": "UK",
 "p": false
+},
+{
+"w": "angry",
+"k": "angry",
+"e": "😠",
+"t": "describing",
+"ex": "Dad is angry with the dog.",
+"es": "enfadado, molesto",
+"s": "angry",
+"ipa": "/ˈæŋɡɹi/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "animal",
@@ -158,6 +216,19 @@
 "p": false
 },
 {
+"w": "answer",
+"k": "answer",
+"e": "🙋",
+"t": "school",
+"ex": "What is the answer? Ten!",
+"es": "respuesta, responder",
+"s": "answer",
+"ipa": "/ˈɑːnsɐ/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
 "w": "apartment (UK flat)",
 "k": "apartment (UK flat)",
 "e": "🏢",
@@ -169,6 +240,30 @@
 "ipa_reg": "UK"
 },
 {
+"w": "apple",
+"k": "apple",
+"e": "🍎",
+"t": "food",
+"ex": "I've got a big red apple.",
+"es": "manzana",
+"s": "apple",
+"ipa": "/ˈæpəl/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "arm",
+"k": "arm",
+"e": "💪",
+"t": "body",
+"ex": "My arm is long.",
+"es": "brazo",
+"s": "arm",
+"ipa": "/ˈɑːm/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "armchair",
 "k": "armchair",
 "e": "🛋️",
@@ -178,6 +273,19 @@
 "s": "armchair",
 "ipa": "/ˈɑːmtʃeə/",
 "ipa_reg": "UK"
+},
+{
+"w": "ask",
+"k": "ask",
+"e": "❓",
+"t": "actions",
+"ex": "Ask your teacher!",
+"es": "preguntar, pedir",
+"s": "ask",
+"ipa": "/ˈɑːsk/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
 },
 {
 "w": "at",
@@ -192,6 +300,18 @@
 "p": false
 },
 {
+"w": "baby",
+"k": "baby",
+"e": "👶",
+"t": "family",
+"ex": "The baby is sleeping.",
+"es": "bebé",
+"s": "baby",
+"ipa": "/bˈeɪbi/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "badminton",
 "k": "badminton",
 "e": "🏸",
@@ -201,6 +321,54 @@
 "s": "badminton",
 "ipa": "/bˈædmɪntən/",
 "ipa_reg": "UK"
+},
+{
+"w": "bag",
+"k": "bag",
+"e": "🎒",
+"t": "school",
+"ex": "My books are in my bag.",
+"es": "bolsa, mochila",
+"s": "bag",
+"ipa": "/bˈæɡ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "ball",
+"k": "ball",
+"e": "⚽",
+"t": "sports",
+"ex": "Throw the ball to me!",
+"es": "pelota, balón",
+"s": "ball",
+"ipa": "/bˈɔːl/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "balloon",
+"k": "balloon",
+"e": "🎈",
+"t": "sports",
+"ex": "I've got a big red balloon.",
+"es": "globo",
+"s": "balloon",
+"ipa": "/bəlˈuːn/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "banana",
+"k": "banana",
+"e": "🍌",
+"t": "food",
+"ex": "Monkeys like bananas.",
+"es": "plátano, banana",
+"s": "banana",
+"ipa": "/bɐnˈɑːnɐ/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "baseball",
@@ -218,11 +386,23 @@
 "k": "baseball cap",
 "e": "🧢",
 "t": "clothes",
-"ex": "Put on your baseball cap. It's sunny!",
+"ex": "My new baseball cap is red.",
 "es": "gorra",
 "s": "baseball_cap",
 "ipa": "/bˈeɪsbɔːl kˈæp/",
 "ipa_reg": "UK"
+},
+{
+"w": "basketball",
+"k": "basketball",
+"e": "🏀",
+"t": "sports",
+"ex": "We play basketball in the park.",
+"es": "básquetbol",
+"s": "basketball",
+"ipa": "/bˈɑːskɪtbˌɔːl/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "bat (as sports equipment)",
@@ -247,6 +427,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "bathroom",
+"k": "bathroom",
+"e": "🛁",
+"t": "home",
+"ex": "The bathroom is next to my bedroom.",
+"es": "baño, cuarto de baño",
+"s": "bathroom",
+"ipa": "/bˈɑːθɹuːm/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "be",
 "k": "be",
 "e": "💬",
@@ -259,6 +451,18 @@
 "p": false
 },
 {
+"w": "beach",
+"k": "beach",
+"e": "🏖️",
+"t": "places",
+"ex": "We are playing on the beach.",
+"es": "playa",
+"s": "beach",
+"ipa": "/bˈiːtʃ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "bean",
 "k": "bean",
 "e": "🫘",
@@ -268,6 +472,54 @@
 "s": "bean",
 "ipa": "/bˈiːn/",
 "ipa_reg": "UK"
+},
+{
+"w": "bear",
+"k": "bear",
+"e": "🐻",
+"t": "animals",
+"ex": "The bear is very big.",
+"es": "oso",
+"s": "bear",
+"ipa": "/bˈeə/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "beautiful",
+"k": "beautiful",
+"e": "🌸",
+"t": "describing",
+"ex": "What a beautiful flower!",
+"es": "hermoso, bonito",
+"s": "beautiful",
+"ipa": "/bjˈuːtɪfəl/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "bed",
+"k": "bed",
+"e": "🛏️",
+"t": "home",
+"ex": "My teddy is on the bed.",
+"es": "cama",
+"s": "bed",
+"ipa": "/bˈɛd/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "bedroom",
+"k": "bedroom",
+"e": "🛏️",
+"t": "home",
+"ex": "There are two beds in my bedroom.",
+"es": "dormitorio",
+"s": "bedroom",
+"ipa": "/bˈɛdɹuːm/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "bee",
@@ -317,6 +569,30 @@
 "p": false
 },
 {
+"w": "big",
+"k": "big",
+"e": "🐘",
+"t": "describing",
+"ex": "An elephant is very big.",
+"es": "grande",
+"s": "big",
+"ipa": "/bˈɪɡ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "bike",
+"k": "bike",
+"e": "🚲",
+"t": "transport",
+"ex": "I can ride my bike.",
+"es": "bicicleta",
+"s": "bike",
+"ipa": "/bˈaɪk/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "Bill",
 "k": "bill",
 "e": "👦",
@@ -329,6 +605,66 @@
 "p": false
 },
 {
+"w": "bird",
+"k": "bird",
+"e": "🐦",
+"t": "animals",
+"ex": "The bird is in the tree.",
+"es": "pájaro, ave",
+"s": "bird",
+"ipa": "/bˈɜːd/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "Birthday",
+"k": "birthday",
+"e": "🎂",
+"t": "time",
+"ex": "Happy birthday, Grandma!",
+"es": "cumpleaños",
+"s": "birthday",
+"ipa": "/bˈɜːθdeɪ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "black",
+"k": "black",
+"e": "⚫",
+"t": "describing",
+"ex": "My cat is black.",
+"es": "negro",
+"s": "black",
+"ipa": "/blˈæk/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "blue",
+"k": "blue",
+"e": "🔵",
+"t": "describing",
+"ex": "The sea is blue.",
+"es": "azul",
+"s": "blue",
+"ipa": "/blˈuː/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "board",
+"k": "board",
+"e": "📋",
+"t": "school",
+"ex": "Look at the board, please.",
+"es": "pizarra",
+"s": "board",
+"ipa": "/bˈɔːd/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "board game",
 "k": "board game",
 "e": "🎲",
@@ -338,6 +674,42 @@
 "s": "board_game",
 "ipa": "/bˈɔːd ɡˈeɪm/",
 "ipa_reg": "UK"
+},
+{
+"w": "boat",
+"k": "boat",
+"e": "⛵",
+"t": "transport",
+"ex": "There is a boat on the water.",
+"es": "barco, bote",
+"s": "boat",
+"ipa": "/bˈəʊt/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "body",
+"k": "body",
+"e": "🧍",
+"t": "body",
+"ex": "Point to your body!",
+"es": "cuerpo",
+"s": "body",
+"ipa": "/bˈɒdi/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "book",
+"k": "book",
+"e": "📘",
+"t": "school",
+"ex": "This book is about animals.",
+"es": "libro",
+"s": "book",
+"ipa": "/bˈʊk/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "bookcase",
@@ -355,7 +727,7 @@
 "k": "bookshop",
 "e": "🏪",
 "t": "places",
-"ex": "Mum is buying a book in the bookshop.",
+"ex": "There are a lot of books in the bookshop.",
 "es": "librería",
 "s": "bookshop",
 "ipa": "/bˈʊkʃɒp/",
@@ -384,6 +756,80 @@
 "ipa_reg": "UK"
 },
 {
+"w": "box",
+"k": "box",
+"e": "📦",
+"t": "home",
+"ex": "What is in the box?",
+"es": "caja",
+"s": "box",
+"ipa": "/bˈɒks/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "boy",
+"k": "boy",
+"e": "👦",
+"t": "family",
+"ex": "That boy is my brother.",
+"es": "niño, chico",
+"s": "boy",
+"ipa": "/bˈɔɪ/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
+"w": "bread",
+"k": "bread",
+"e": "🍞",
+"t": "food",
+"ex": "I eat bread for breakfast.",
+"es": "pan",
+"s": "bread",
+"ipa": "/bɹˈɛd/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "breakfast",
+"k": "breakfast",
+"e": "🥞",
+"t": "food",
+"ex": "We have breakfast at seven.",
+"es": "desayuno",
+"s": "breakfast",
+"ipa": "/bɹˈɛkfəst/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "brother",
+"k": "brother",
+"e": "👦",
+"t": "family",
+"ex": "My brother is ten.",
+"es": "hermano",
+"s": "brother",
+"ipa": "/bɹˈʌðɐ/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
+"w": "brown",
+"k": "brown",
+"e": "🟤",
+"t": "describing",
+"ex": "The horse is brown.",
+"es": "marrón, café",
+"s": "brown",
+"ipa": "/bɹˈaʊn/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "burger",
 "k": "burger",
 "e": null,
@@ -393,6 +839,18 @@
 "s": "burger",
 "ipa": "/bˈɜːɡɐ/",
 "ipa_reg": "UK"
+},
+{
+"w": "bus",
+"k": "bus",
+"e": "🚌",
+"t": "transport",
+"ex": "I go to school on the bus.",
+"es": "autobús, bus",
+"s": "bus",
+"ipa": "/bˈʌs/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "but",
@@ -411,12 +869,24 @@
 "k": "bye",
 "e": "👋",
 "t": "expressions",
-"ex": "Bye! See you tomorrow!",
+"ex": "Bye! See you at school!",
 "es": "adiós",
 "s": "bye",
 "ipa": "/bˈaɪ/",
 "ipa_reg": "UK",
 "p": false
+},
+{
+"w": "cake",
+"k": "cake",
+"e": "🎂",
+"t": "food",
+"ex": "This cake is for my birthday.",
+"es": "pastel, torta",
+"s": "cake",
+"ipa": "/kˈeɪk/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "camera",
@@ -430,6 +900,19 @@
 "ipa_reg": "UK"
 },
 {
+"w": "can",
+"k": "can",
+"e": "💬",
+"t": "grammar",
+"ex": "I can swim!",
+"es": "poder, saber (hacer algo)",
+"s": "can",
+"ipa": "/kˈæn/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
 "w": "candy (UK sweet(s))",
 "k": "candy (UK sweet(s))",
 "e": "🍬",
@@ -437,6 +920,42 @@
 "ex": "I've got two candies for you.",
 "es": "caramelo, dulce",
 "s": "candy_uk_sweet_s"
+},
+{
+"w": "car",
+"k": "car",
+"e": "🚗",
+"t": "transport",
+"ex": "Dad's car is red.",
+"es": "carro, coche",
+"s": "car",
+"ipa": "/kˈɑː/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "carrot",
+"k": "carrot",
+"e": "🥕",
+"t": "food",
+"ex": "The carrot is orange.",
+"es": "zanahoria",
+"s": "carrot",
+"ipa": "/kˈæɹət/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "cat",
+"k": "cat",
+"e": "🐱",
+"t": "animals",
+"ex": "My cat is sleeping on the sofa.",
+"es": "gato",
+"s": "cat",
+"ipa": "/kˈæt/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "catch (e.g. a ball)",
@@ -448,6 +967,43 @@
 "s": "catch_e_g_a_ball",
 "ipa": "/kˈætʃ/",
 "ipa_reg": "UK"
+},
+{
+"w": "chair",
+"k": "chair",
+"e": "🪑",
+"t": "home",
+"ex": "Sit on the chair, please.",
+"es": "silla",
+"s": "chair",
+"ipa": "/tʃˈeə/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "chicken",
+"k": "chicken",
+"e": "🐔",
+"t": "animals",
+"ex": "The chicken is in the garden.",
+"es": "pollo, gallina",
+"s": "chicken",
+"ipa": "/tʃˈɪkɪn/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "child / children",
+"k": "child / children",
+"e": "🧒",
+"t": "family",
+"ex": "There are ten children in my class.",
+"es": "niño / niños",
+"s": "child_children",
+"ipa": "/tʃˈaɪld/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
 },
 {
 "w": "chips (US fries)",
@@ -483,6 +1039,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "clap",
+"k": "clap",
+"e": "👏",
+"t": "actions",
+"ex": "Clap your hands!",
+"es": "aplaudir",
+"s": "clap",
+"ipa": "/klˈæp/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "class",
 "k": "class",
 "e": "🧑‍🏫",
@@ -514,6 +1082,40 @@
 "s": "classroom",
 "ipa": "/klˈɑːsɹuːm/",
 "ipa_reg": "UK"
+},
+{
+"w": "clean",
+"k": "clean",
+"e": "🧽",
+"t": "describing",
+"ex": "My hands are clean now.",
+"es": "limpio, limpiar",
+"s": "clean",
+"ipa": "/klˈiːn/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "Clock",
+"k": "clock",
+"e": "🕐",
+"t": "time",
+"ex": "The clock is on the wall.",
+"es": "reloj (de pared)",
+"s": "clock",
+"ipa": "/klˈɒk/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "close",
+"k": "close",
+"e": "🚪",
+"t": "actions",
+"ex": "Close the door, please.",
+"es": "cerrar",
+"s": "close",
+"c": true
 },
 {
 "w": "closed",
@@ -605,6 +1207,31 @@
 "p": false
 },
 {
+"w": "correct",
+"k": "correct",
+"e": "✅",
+"t": "school",
+"ex": "Yes, that's correct!",
+"es": "correcto",
+"s": "correct",
+"ipa": "/kəɹˈɛkt/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "count",
+"k": "count",
+"e": "🔢",
+"t": "school",
+"ex": "Count the apples: one, two, three!",
+"es": "contar",
+"s": "count",
+"ipa": "/kˈaʊnt/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
 "w": "cousin",
 "k": "cousin",
 "e": "🧑",
@@ -616,6 +1243,30 @@
 "ipa_reg": "UK"
 },
 {
+"w": "cow",
+"k": "cow",
+"e": "🐮",
+"t": "animals",
+"ex": "The cow is black and white.",
+"es": "vaca",
+"s": "cow",
+"ipa": "/kˈaʊ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "crayon",
+"k": "crayon",
+"e": "🖍️",
+"t": "school",
+"ex": "Draw the sun with a yellow crayon.",
+"es": "crayón, lápiz de color",
+"s": "crayon",
+"ipa": "/kɹˈeɪɒn/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "crocodile",
 "k": "crocodile",
 "e": null,
@@ -625,6 +1276,42 @@
 "s": "crocodile",
 "ipa": "/kɹˈɒkədˌaɪl/",
 "ipa_reg": "UK"
+},
+{
+"w": "cross",
+"k": "cross",
+"e": "❌",
+"t": "school",
+"ex": "Write a cross next to the picture.",
+"es": "cruz, tachar",
+"s": "cross",
+"ipa": "/kɹˈɒs/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "cupboard",
+"k": "cupboard",
+"e": "🚪",
+"t": "home",
+"ex": "The cupboard is in the kitchen.",
+"es": "armario, alacena",
+"s": "cupboard",
+"ipa": "/kˈʌbəd/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "dad",
+"k": "dad",
+"e": "👨",
+"t": "family",
+"ex": "My dad is driving the car.",
+"es": "papá",
+"s": "dad",
+"ipa": "/dˈæd/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "Dan",
@@ -682,6 +1369,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "dirty",
+"k": "dirty",
+"e": "🧼",
+"t": "describing",
+"ex": "Your shoes are very dirty!",
+"es": "sucio",
+"s": "dirty",
+"ipa": "/dˈɜːti/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "do",
 "k": "do",
 "e": "💬",
@@ -690,6 +1389,30 @@
 "es": "hacer (y para preguntar)",
 "s": "do",
 "p": false
+},
+{
+"w": "dog",
+"k": "dog",
+"e": "🐶",
+"t": "animals",
+"ex": "The dog is playing with the ball.",
+"es": "perro",
+"s": "dog",
+"ipa": "/dˈɒɡ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "doll",
+"k": "doll",
+"e": "🪆",
+"t": "sports",
+"ex": "My sister has got a new doll.",
+"es": "muñeca",
+"s": "doll",
+"ipa": "/dˈɒl/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "donkey",
@@ -713,6 +1436,18 @@
 "p": false
 },
 {
+"w": "door",
+"k": "door",
+"e": "🚪",
+"t": "home",
+"ex": "Open the door, please.",
+"es": "puerta",
+"s": "door",
+"ipa": "/dˈɔː/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "double",
 "k": "double",
 "e": "2️⃣",
@@ -722,6 +1457,18 @@
 "s": "double",
 "ipa": "/dˈʌbəl/",
 "ipa_reg": "UK"
+},
+{
+"w": "draw",
+"k": "draw",
+"e": "🖌️",
+"t": "actions",
+"ex": "Draw a big yellow sun.",
+"es": "dibujar",
+"s": "draw",
+"ipa": "/dɹˈɔː/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "drawing",
@@ -735,6 +1482,30 @@
 "ipa_reg": "UK"
 },
 {
+"w": "dress",
+"k": "dress",
+"e": "👗",
+"t": "clothes",
+"ex": "Her dress is pink.",
+"es": "vestido",
+"s": "dress",
+"ipa": "/dɹˈɛs/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "drink",
+"k": "drink",
+"e": "🥤",
+"t": "actions",
+"ex": "Drink your milk!",
+"es": "beber, tomar",
+"s": "drink",
+"ipa": "/dɹˈɪŋk/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "drive",
 "k": "drive",
 "e": "🚗",
@@ -744,6 +1515,18 @@
 "s": "drive",
 "ipa": "/dɹˈaɪv/",
 "ipa_reg": "UK"
+},
+{
+"w": "duck",
+"k": "duck",
+"e": "🦆",
+"t": "animals",
+"ex": "The duck is on the water.",
+"es": "pato",
+"s": "duck",
+"ipa": "/dˈʌk/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "ear",
@@ -766,6 +1549,30 @@
 "s": "eat",
 "ipa": "/ˈiːt/",
 "ipa_reg": "UK"
+},
+{
+"w": "egg",
+"k": "egg",
+"e": "🥚",
+"t": "food",
+"ex": "I eat two eggs for breakfast.",
+"es": "huevo",
+"s": "egg",
+"ipa": "/ˈɛɡ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "elephant",
+"k": "elephant",
+"e": "🐘",
+"t": "animals",
+"ex": "The elephant has got a long nose.",
+"es": "elefante",
+"s": "elephant",
+"ipa": "/ˈɛlɪfənt/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "end",
@@ -801,6 +1608,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "eraser (UK rubber)",
+"k": "eraser (UK rubber)",
+"e": "🧽",
+"t": "school",
+"ex": "Can I have your eraser, please?",
+"es": "borrador, goma",
+"s": "eraser_uk_rubber",
+"ipa": "/ɪɹˈeɪzɐ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "Eva",
 "k": "eva",
 "e": "👧",
@@ -809,6 +1628,16 @@
 "es": "Eva (nombre de niña)",
 "s": "eva",
 "p": false
+},
+{
+"w": "Evening",
+"k": "evening",
+"e": "🌆",
+"t": "time",
+"ex": "Good evening, Mum!",
+"es": "tarde, noche",
+"s": "evening",
+"c": true
 },
 {
 "w": "example",
@@ -833,6 +1662,30 @@
 "ipa_reg": "UK"
 },
 {
+"w": "face",
+"k": "face",
+"e": "😀",
+"t": "body",
+"ex": "Look at my funny face!",
+"es": "cara",
+"s": "face",
+"ipa": "/fˈeɪs/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "family",
+"k": "family",
+"e": "👪",
+"t": "family",
+"ex": "This is a photo of my family.",
+"es": "familia",
+"s": "family",
+"ipa": "/fˈæmɪli/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "fantastic",
 "k": "fantastic",
 "e": "🤩",
@@ -843,6 +1696,18 @@
 "ipa": "/fɑːntˈæstɪk/",
 "ipa_reg": "UK",
 "p": false
+},
+{
+"w": "father",
+"k": "father",
+"e": "👨",
+"t": "family",
+"ex": "My father is a teacher.",
+"es": "padre",
+"s": "father",
+"ipa": "/fˈɑːðɐ/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "favourite (US favorite)",
@@ -867,6 +1732,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "fish (s + pl)",
+"k": "fish (s + pl)",
+"e": "🐟",
+"t": "animals",
+"ex": "There are ten fish in the water.",
+"es": "pez, pescado",
+"s": "fish_s_pl",
+"ipa": "/fˈɪʃ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "fishing",
 "k": "fishing",
 "e": "🎣",
@@ -889,6 +1766,40 @@
 "ipa_reg": "UK"
 },
 {
+"w": "floor",
+"k": "floor",
+"e": "🧹",
+"t": "home",
+"ex": "Your books are on the floor!",
+"es": "suelo, piso",
+"s": "floor",
+"ipa": "/flˈɔː/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "flower",
+"k": "flower",
+"e": "🌼",
+"t": "world",
+"ex": "This flower is beautiful.",
+"es": "flor",
+"s": "flower",
+"c": true
+},
+{
+"w": "fly",
+"k": "fly",
+"e": "🦋",
+"t": "actions",
+"ex": "Look! The bird can fly.",
+"es": "volar",
+"s": "fly",
+"ipa": "/flˈaɪ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "food",
 "k": "food",
 "e": "🍎",
@@ -898,6 +1809,30 @@
 "s": "food",
 "ipa": "/fˈuːd/",
 "ipa_reg": "UK"
+},
+{
+"w": "foot / feet",
+"k": "foot / feet",
+"e": "🦶",
+"t": "body",
+"ex": "I've got two feet.",
+"es": "pie / pies",
+"s": "foot_feet",
+"ipa": "/fˈʊt/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "football (US soccer)",
+"k": "football (US soccer)",
+"e": "⚽",
+"t": "sports",
+"ex": "My brother plays football at school.",
+"es": "fútbol",
+"s": "football_us_soccer",
+"ipa": "/fˈʊtbɔːl/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "for",
@@ -910,6 +1845,18 @@
 "ipa": "/fˈɔː/",
 "ipa_reg": "UK",
 "p": false
+},
+{
+"w": "friend",
+"k": "friend",
+"e": "🧑‍🤝‍🧑",
+"t": "family",
+"ex": "Sam is my friend.",
+"es": "amigo, amiga",
+"s": "friend",
+"ipa": "/fɹˈɛnd/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "fries (UK chips)",
@@ -946,6 +1893,67 @@
 "p": false
 },
 {
+"w": "fruit",
+"k": "fruit",
+"e": "🍎",
+"t": "food",
+"ex": "I like fruit: apples, bananas and pears.",
+"es": "fruta",
+"s": "fruit",
+"ipa": "/fɹˈuːt/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "fun",
+"k": "fun",
+"e": "🎉",
+"t": "expressions",
+"ex": "This game is fun!",
+"es": "divertido, diversión",
+"s": "fun",
+"ipa": "/fˈʌn/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
+"w": "funny",
+"k": "funny",
+"e": "😂",
+"t": "describing",
+"ex": "That monkey is very funny!",
+"es": "gracioso, chistoso",
+"s": "funny",
+"ipa": "/fˈʌni/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "game",
+"k": "game",
+"e": "🎲",
+"t": "sports",
+"ex": "Let's play a game!",
+"es": "juego",
+"s": "game",
+"ipa": "/ɡˈeɪm/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "garden",
+"k": "garden",
+"e": "🏡",
+"t": "home",
+"ex": "We are playing in the garden.",
+"es": "jardín",
+"s": "garden",
+"ipa": "/ɡˈɑːdən/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "get",
 "k": "get",
 "e": "🎁",
@@ -955,6 +1963,31 @@
 "s": "get",
 "ipa": "/ɡˈɛt/",
 "ipa_reg": "UK"
+},
+{
+"w": "giraffe",
+"k": "giraffe",
+"e": "🦒",
+"t": "animals",
+"ex": "The giraffe is very big.",
+"es": "jirafa",
+"s": "giraffe",
+"ipa": "/dʒɪɹˈɑːf/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "girl",
+"k": "girl",
+"e": "👧",
+"t": "family",
+"ex": "That girl is my sister.",
+"es": "niña, chica",
+"s": "girl",
+"ipa": "/ɡˈɜːl/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
 },
 {
 "w": "give",
@@ -994,7 +2027,7 @@
 "k": "go to bed",
 "e": "🛏️",
 "t": "actions",
-"ex": "I go to bed at eight o'clock.",
+"ex": "I go to bed at night.",
 "es": "irse a la cama",
 "s": "go_to_bed",
 "ipa": "/ɡˈəʊ tˈuː bˈɛd/",
@@ -1012,6 +2045,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "goat",
+"k": "goat",
+"e": "🐐",
+"t": "animals",
+"ex": "The goat is eating my hat!",
+"es": "cabra",
+"s": "goat",
+"ipa": "/ɡˈəʊt/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "good",
 "k": "good",
 "e": "👍",
@@ -1021,6 +2066,19 @@
 "s": "good",
 "ipa": "/ɡˈʊd/",
 "ipa_reg": "UK"
+},
+{
+"w": "goodbye",
+"k": "goodbye",
+"e": "👋",
+"t": "expressions",
+"ex": "Goodbye, Mum! See you!",
+"es": "adiós",
+"s": "goodbye",
+"ipa": "/ɡʊdbˈaɪ/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
 },
 {
 "w": "Grace",
@@ -1046,6 +2104,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "grandma",
+"k": "grandma",
+"e": "👵",
+"t": "family",
+"ex": "My grandma makes very good cakes.",
+"es": "abuela",
+"s": "grandma",
+"ipa": "/ɡɹˈændmɑː/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "grandmother",
 "k": "grandmother",
 "e": "👵",
@@ -1055,6 +2125,18 @@
 "s": "grandmother",
 "ipa": "/ɡɹˈændmʌðɐ/",
 "ipa_reg": "UK"
+},
+{
+"w": "grandpa",
+"k": "grandpa",
+"e": "👴",
+"t": "family",
+"ex": "Grandpa is reading in the armchair.",
+"es": "abuelo",
+"s": "grandpa",
+"ipa": "/ɡɹˈændpɑː/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "grape",
@@ -1090,6 +2172,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "green",
+"k": "green",
+"e": "🟢",
+"t": "describing",
+"ex": "The tree is green.",
+"es": "verde",
+"s": "green",
+"ipa": "/ɡɹˈiːn/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "grey (US gray)",
 "k": "grey (US gray)",
 "e": "🩶",
@@ -1112,6 +2206,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "hair",
+"k": "hair",
+"e": "🦱",
+"t": "body",
+"ex": "Her hair is long and black.",
+"es": "cabello, pelo",
+"s": "hair",
+"ipa": "/hˈeə/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "hall",
 "k": "hall",
 "e": "🚪",
@@ -1123,6 +2229,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "hand",
+"k": "hand",
+"e": "✋",
+"t": "body",
+"ex": "Put up your hand!",
+"es": "mano",
+"s": "hand",
+"ipa": "/hˈænd/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "handbag",
 "k": "handbag",
 "e": null,
@@ -1132,6 +2250,30 @@
 "s": "handbag",
 "ipa": "/hˈændbæɡ/",
 "ipa_reg": "UK"
+},
+{
+"w": "happy",
+"k": "happy",
+"e": "😊",
+"t": "describing",
+"ex": "I'm very happy today!",
+"es": "feliz, contento",
+"s": "happy",
+"ipa": "/hˈæpi/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "hat",
+"k": "hat",
+"e": "🎩",
+"t": "clothes",
+"ex": "Grandpa's hat is brown.",
+"es": "sombrero",
+"s": "hat",
+"ipa": "/hˈæt/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "have",
@@ -1154,15 +2296,77 @@
 "p": false
 },
 {
+"w": "he",
+"k": "he",
+"e": "💬",
+"t": "grammar",
+"ex": "This is my brother. He is nine.",
+"es": "él",
+"s": "he",
+"p": false,
+"c": true
+},
+{
+"w": "head",
+"k": "head",
+"e": "🧠",
+"t": "body",
+"ex": "Put your hands on your head.",
+"es": "cabeza",
+"s": "head",
+"ipa": "/hˈɛd/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "helicopter",
 "k": "helicopter",
 "e": null,
 "t": "transport",
-"ex": "Look! A helicopter in the sky!",
+"ex": "Look at that big helicopter!",
 "es": "helicóptero",
 "s": "helicopter",
 "ipa": "/hˈɛlɪkˌɒptɐ/",
 "ipa_reg": "UK"
+},
+{
+"w": "hello",
+"k": "hello",
+"e": "👋",
+"t": "expressions",
+"ex": "Hello! What's your name?",
+"es": "hola",
+"s": "hello",
+"ipa": "/həlˈəʊ/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
+"w": "her",
+"k": "her",
+"e": "💬",
+"t": "grammar",
+"ex": "This is Anna and her cat.",
+"es": "su, de ella",
+"s": "her",
+"ipa": "/hˈɜː/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
+"w": "here",
+"k": "here",
+"e": "📍",
+"t": "grammar",
+"ex": "Come here, please!",
+"es": "aquí",
+"s": "here",
+"ipa": "/hˈiə/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
 },
 {
 "w": "hers",
@@ -1199,6 +2403,31 @@
 "ipa": "/hˈɪm/",
 "ipa_reg": "UK",
 "p": false
+},
+{
+"w": "hippo",
+"k": "hippo",
+"e": "🦛",
+"t": "animals",
+"ex": "The hippo is in the water.",
+"es": "hipopótamo",
+"s": "hippo",
+"ipa": "/hˈɪpəʊ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "his",
+"k": "his",
+"e": "💬",
+"t": "grammar",
+"ex": "This is Tom and his dog.",
+"es": "su, de él",
+"s": "his",
+"ipa": "/hˈɪz/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
 },
 {
 "w": "hit",
@@ -1254,6 +2483,41 @@
 "s": "home",
 "ipa": "/hˈəʊm/",
 "ipa_reg": "UK"
+},
+{
+"w": "hooray",
+"k": "hooray",
+"e": "🎉",
+"t": "expressions",
+"ex": "Hooray! We are going to the beach!",
+"es": "¡bravo!, ¡hurra!",
+"s": "hooray",
+"ipa": "/hˈɔːɹeɪ/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
+"w": "horse",
+"k": "horse",
+"e": "🐴",
+"t": "animals",
+"ex": "The horse is running.",
+"es": "caballo",
+"s": "horse",
+"ipa": "/hˈɔːs/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "house",
+"k": "house",
+"e": "🏠",
+"t": "home",
+"ex": "Our house is white and blue.",
+"es": "casa",
+"s": "house",
+"c": true
 },
 {
 "w": "how",
@@ -1314,6 +2578,31 @@
 "p": false
 },
 {
+"w": "ice cream",
+"k": "ice cream",
+"e": "🍨",
+"t": "food",
+"ex": "I'd like an ice cream, please.",
+"es": "helado",
+"s": "ice_cream",
+"ipa": "/ˈaɪs kɹˈiːm/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "in",
+"k": "in",
+"e": "💬",
+"t": "grammar",
+"ex": "The cat is in the box.",
+"es": "en, dentro de",
+"s": "in",
+"ipa": "/ˈɪn/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
 "w": "in front of",
 "k": "in front of",
 "e": "📍",
@@ -1326,6 +2615,19 @@
 "p": false
 },
 {
+"w": "it",
+"k": "it",
+"e": "💬",
+"t": "grammar",
+"ex": "Look at the bird! It is very small.",
+"es": "ello, lo (para cosas)",
+"s": "it",
+"ipa": "/ˈɪt/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
 "w": "its",
 "k": "its",
 "e": "💬",
@@ -1336,6 +2638,18 @@
 "ipa": "/ˈɪts/",
 "ipa_reg": "UK",
 "p": false
+},
+{
+"w": "jacket",
+"k": "jacket",
+"e": "🧥",
+"t": "clothes",
+"ex": "Put on your jacket!",
+"es": "chaqueta, casaca",
+"s": "jacket",
+"ipa": "/dʒˈækɪt/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "jeans",
@@ -1370,6 +2684,30 @@
 "ipa": "/dʒˈɪl/",
 "ipa_reg": "UK",
 "p": false
+},
+{
+"w": "juice",
+"k": "juice",
+"e": "🧃",
+"t": "food",
+"ex": "Would you like some apple juice?",
+"es": "jugo, zumo",
+"s": "juice",
+"ipa": "/dʒˈuːs/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "jump",
+"k": "jump",
+"e": "🤸",
+"t": "actions",
+"ex": "Jump! One, two, three!",
+"es": "saltar",
+"s": "jump",
+"ipa": "/dʒˈʌmp/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "keyboard (computer)",
@@ -1416,6 +2754,30 @@
 "p": false
 },
 {
+"w": "kitchen",
+"k": "kitchen",
+"e": "🍽️",
+"t": "home",
+"ex": "Mum is in the kitchen.",
+"es": "cocina",
+"s": "kitchen",
+"ipa": "/kˈɪtʃən/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "kite",
+"k": "kite",
+"e": "🪁",
+"t": "sports",
+"ex": "My kite is red and yellow.",
+"es": "cometa, papalote",
+"s": "kite",
+"ipa": "/kˈaɪt/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "kiwi",
 "k": "kiwi",
 "e": "🥝",
@@ -1438,6 +2800,42 @@
 "ipa_reg": "UK"
 },
 {
+"w": "lamp",
+"k": "lamp",
+"e": "💡",
+"t": "home",
+"ex": "The lamp is next to my bed.",
+"es": "lámpara",
+"s": "lamp",
+"ipa": "/lˈæmp/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "learn",
+"k": "learn",
+"e": "📖",
+"t": "school",
+"ex": "We learn English at school.",
+"es": "aprender",
+"s": "learn",
+"ipa": "/lˈɜːn/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "leg",
+"k": "leg",
+"e": "🦵",
+"t": "body",
+"ex": "A spider has got eight legs.",
+"es": "pierna, pata",
+"s": "leg",
+"ipa": "/lˈɛɡ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "lemon",
 "k": "lemon",
 "e": "🍋",
@@ -1449,6 +2847,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "lemonade",
+"k": "lemonade",
+"e": "🧃",
+"t": "food",
+"ex": "Would you like some lemonade?",
+"es": "limonada",
+"s": "lemonade",
+"ipa": "/lˌɛmənˈeɪd/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "lesson",
 "k": "lesson",
 "e": "🏫",
@@ -1458,6 +2868,18 @@
 "s": "lesson",
 "ipa": "/lˈɛsən/",
 "ipa_reg": "UK"
+},
+{
+"w": "letter (as in alphabet)",
+"k": "letter (as in alphabet)",
+"e": "🔤",
+"t": "school",
+"ex": "What letter is this? It's a B!",
+"es": "letra",
+"s": "letter_as_in_alphabet",
+"ipa": "/lˈɛtɐ/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "let's",
@@ -1485,7 +2907,7 @@
 "k": "lime",
 "e": "🍋",
 "t": "food",
-"ex": "This lime is very sour!",
+"ex": "This lime is small and green.",
 "es": "lima",
 "s": "lime",
 "ipa": "/lˈaɪm/",
@@ -1503,6 +2925,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "listen",
+"k": "listen",
+"e": "👂",
+"t": "actions",
+"ex": "Listen to the song!",
+"es": "escuchar",
+"s": "listen",
+"ipa": "/lˈɪsən/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "live",
 "k": "live",
 "e": "🏠",
@@ -1512,15 +2946,51 @@
 "s": "live"
 },
 {
+"w": "living room",
+"k": "living room",
+"e": "🛋️",
+"t": "home",
+"ex": "We watch TV in the living room.",
+"es": "sala, salón",
+"s": "living_room",
+"ipa": "/lˈɪvɪŋ ɹˈuːm/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "lizard",
 "k": "lizard",
 "e": null,
 "t": "animals",
-"ex": "The lizard is on the rock.",
+"ex": "The lizard is under the table.",
 "es": "lagartija",
 "s": "lizard",
 "ipa": "/lˈɪzəd/",
 "ipa_reg": "UK"
+},
+{
+"w": "long",
+"k": "long",
+"e": "📏",
+"t": "describing",
+"ex": "The snake is very long.",
+"es": "largo",
+"s": "long",
+"ipa": "/lˈɒŋ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "look",
+"k": "look",
+"e": "👀",
+"t": "actions",
+"ex": "Look at the picture!",
+"es": "mirar",
+"s": "look",
+"ipa": "/lˈʊk/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "look at",
@@ -1532,6 +3002,18 @@
 "s": "look_at",
 "ipa": "/lˈʊk ˈæt/",
 "ipa_reg": "UK"
+},
+{
+"w": "lorry (US truck)",
+"k": "lorry (US truck)",
+"e": "🚚",
+"t": "transport",
+"ex": "The lorry is very big.",
+"es": "camión",
+"s": "lorry_us_truck",
+"ipa": "/lˈɒɹi/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "lots",
@@ -1599,6 +3081,30 @@
 "s": "make",
 "ipa": "/mˈeɪk/",
 "ipa_reg": "UK"
+},
+{
+"w": "man / men",
+"k": "man / men",
+"e": "👨",
+"t": "family",
+"ex": "That man is my father.",
+"es": "hombre / hombres",
+"s": "man_men",
+"ipa": "/mˈæn/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "mango",
+"k": "mango",
+"e": "🥭",
+"t": "food",
+"ex": "I like mango ice cream.",
+"es": "mango",
+"s": "mango",
+"ipa": "/mˈæŋɡəʊ/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "many",
@@ -1676,12 +3182,24 @@
 "k": "me too",
 "e": "💬",
 "t": "expressions",
-"ex": "I like pizza. Me too!",
+"ex": "I like cake. Me too!",
 "es": "yo también",
 "s": "me_too",
 "ipa": "/mˈiː tˈuː/",
 "ipa_reg": "UK",
 "p": false
+},
+{
+"w": "meat",
+"k": "meat",
+"e": "🍖",
+"t": "food",
+"ex": "The dog is eating meat.",
+"es": "carne",
+"s": "meat",
+"ipa": "/mˈiːt/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "meatballs",
@@ -1693,6 +3211,18 @@
 "s": "meatballs",
 "ipa": "/mˈiːtbɔːlz/",
 "ipa_reg": "UK"
+},
+{
+"w": "milk",
+"k": "milk",
+"e": "🥛",
+"t": "food",
+"ex": "Drink your milk!",
+"es": "leche",
+"s": "milk",
+"ipa": "/mˈɪlk/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "mine",
@@ -1730,6 +3260,18 @@
 "p": false
 },
 {
+"w": "monkey",
+"k": "monkey",
+"e": "🐵",
+"t": "animals",
+"ex": "The monkey is in the tree.",
+"es": "mono",
+"s": "monkey",
+"ipa": "/mˈʌnki/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "monster",
 "k": "monster",
 "e": null,
@@ -1739,6 +3281,70 @@
 "s": "monster",
 "ipa": "/mˈɒnstɐ/",
 "ipa_reg": "UK"
+},
+{
+"w": "Morning",
+"k": "morning",
+"e": "🌅",
+"t": "time",
+"ex": "Good morning, children!",
+"es": "mañana",
+"s": "morning",
+"ipa": "/mˈɔːnɪŋ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "mother",
+"k": "mother",
+"e": "👩",
+"t": "family",
+"ex": "My mother is making a cake.",
+"es": "madre",
+"s": "mother",
+"c": true
+},
+{
+"w": "motorbike",
+"k": "motorbike",
+"e": "🏍️",
+"t": "transport",
+"ex": "Dad has got a big motorbike.",
+"es": "moto, motocicleta",
+"s": "motorbike",
+"ipa": "/mˈəʊtəbˌaɪk/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "mouse (computer)",
+"k": "mouse (computer)",
+"e": "🖱️",
+"t": "tech",
+"ex": "The mouse is next to the computer.",
+"es": "ratón (de computadora)",
+"s": "mouse_computer",
+"c": true
+},
+{
+"w": "mouse / mice",
+"k": "mouse / mice",
+"e": "🐭",
+"t": "animals",
+"ex": "There are two mice under the table.",
+"es": "ratón / ratones",
+"s": "mouse_mice",
+"c": true
+},
+{
+"w": "mouth",
+"k": "mouth",
+"e": "👄",
+"t": "body",
+"ex": "Open your mouth!",
+"es": "boca",
+"s": "mouth",
+"c": true
 },
 {
 "w": "Mr",
@@ -1759,6 +3365,18 @@
 "es": "señora",
 "s": "mrs",
 "p": false
+},
+{
+"w": "mum",
+"k": "mum",
+"e": "👩",
+"t": "family",
+"ex": "My mum is making a cake.",
+"es": "mamá",
+"s": "mum",
+"ipa": "/mˈʌm/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "music",
@@ -1784,6 +3402,44 @@
 "p": false
 },
 {
+"w": "name",
+"k": "name",
+"e": "📛",
+"t": "expressions",
+"ex": "What's your name? I'm Ben.",
+"es": "nombre",
+"s": "name",
+"ipa": "/nˈeɪm/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
+"w": "new",
+"k": "new",
+"e": "✨",
+"t": "describing",
+"ex": "I've got a new bike!",
+"es": "nuevo",
+"s": "new",
+"ipa": "/njˈuː/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "next to",
+"k": "next to",
+"e": "💬",
+"t": "grammar",
+"ex": "The chair is next to the table.",
+"es": "al lado de",
+"s": "next_to",
+"ipa": "/nˈɛkst tˈuː/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
 "w": "nice",
 "k": "nice",
 "e": "🙂",
@@ -1805,6 +3461,18 @@
 "p": false
 },
 {
+"w": "Night",
+"k": "night",
+"e": "🌙",
+"t": "time",
+"ex": "Good night! Sleep well.",
+"es": "noche",
+"s": "night",
+"ipa": "/nˈaɪt/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "no",
 "k": "no",
 "e": "💬",
@@ -1813,6 +3481,18 @@
 "es": "no",
 "s": "no",
 "p": false
+},
+{
+"w": "nose",
+"k": "nose",
+"e": "👃",
+"t": "body",
+"ex": "The elephant has got a long nose.",
+"es": "nariz",
+"s": "nose",
+"ipa": "/nˈəʊz/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "not",
@@ -1895,6 +3575,43 @@
 "p": false
 },
 {
+"w": "old",
+"k": "old",
+"e": "👴",
+"t": "describing",
+"ex": "My grandpa is very old.",
+"es": "viejo, mayor",
+"s": "old",
+"ipa": "/ˈəʊld/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "on",
+"k": "on",
+"e": "💬",
+"t": "grammar",
+"ex": "The book is on the table.",
+"es": "sobre, encima de",
+"s": "on",
+"ipa": "/ˈɒn/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
+"w": "One",
+"k": "one",
+"e": "1️⃣",
+"t": "time",
+"ex": "I've got one brother and two sisters.",
+"es": "uno",
+"s": "one",
+"ipa": "/wˈɒn/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "onion",
 "k": "onion",
 "e": null,
@@ -1904,6 +3621,18 @@
 "s": "onion",
 "ipa": "/ˈʌniən/",
 "ipa_reg": "UK"
+},
+{
+"w": "open",
+"k": "open",
+"e": "🚪",
+"t": "actions",
+"ex": "Open your books, please.",
+"es": "abrir, abierto",
+"s": "open",
+"ipa": "/ˈəʊpən/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "or",
@@ -1916,6 +3645,18 @@
 "ipa": "/ˈɔː/",
 "ipa_reg": "UK",
 "p": false
+},
+{
+"w": "orange",
+"k": "orange",
+"e": "🍊",
+"t": "food",
+"ex": "I'd like an orange, please.",
+"es": "naranja",
+"s": "orange",
+"ipa": "/ˈɒɹɪndʒ/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "our",
@@ -1953,6 +3694,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "paint",
+"k": "paint",
+"e": "🎨",
+"t": "actions",
+"ex": "Let's paint a big blue boat!",
+"es": "pintar, pintura",
+"s": "paint",
+"ipa": "/pˈeɪnt/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "painting",
 "k": "painting",
 "e": "🎨",
@@ -1985,6 +3738,18 @@
 "ipa": "/pˈɑːdən/",
 "ipa_reg": "UK",
 "p": false
+},
+{
+"w": "park",
+"k": "park",
+"e": "🌳",
+"t": "places",
+"ex": "We play football in the park.",
+"es": "parque",
+"s": "park",
+"ipa": "/pˈɑːk/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "part",
@@ -2032,6 +3797,54 @@
 "ipa_reg": "UK"
 },
 {
+"w": "pen",
+"k": "pen",
+"e": "🖊️",
+"t": "school",
+"ex": "Write with a blue pen.",
+"es": "bolígrafo, lapicero",
+"s": "pen",
+"ipa": "/pˈɛn/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "pencil",
+"k": "pencil",
+"e": "✏️",
+"t": "school",
+"ex": "My pencil is on the desk.",
+"es": "lápiz",
+"s": "pencil",
+"ipa": "/pˈɛnsəl/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "person / people",
+"k": "person / people",
+"e": "🧑",
+"t": "family",
+"ex": "There are ten people in the shop.",
+"es": "persona / personas",
+"s": "person_people",
+"ipa": "/pˈɜːsən/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "pet",
+"k": "pet",
+"e": "🐾",
+"t": "animals",
+"ex": "My pet is a small brown dog.",
+"es": "mascota",
+"s": "pet",
+"ipa": "/pˈɛt/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "phone",
 "k": "phone",
 "e": null,
@@ -2076,6 +3889,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "picture",
+"k": "picture",
+"e": "🖼️",
+"t": "school",
+"ex": "Look at the picture and say the word.",
+"es": "dibujo, foto",
+"s": "picture",
+"ipa": "/pˈɪktʃɐ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "pie",
 "k": "pie",
 "e": "🥧",
@@ -2087,15 +3912,51 @@
 "ipa_reg": "UK"
 },
 {
+"w": "pineapple",
+"k": "pineapple",
+"e": "🍍",
+"t": "food",
+"ex": "This pineapple is very big.",
+"es": "piña, ananá",
+"s": "pineapple",
+"ipa": "/pˈaɪnæpəl/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "pink",
+"k": "pink",
+"e": "🩷",
+"t": "describing",
+"ex": "Her dress is pink.",
+"es": "rosado, rosa",
+"s": "pink",
+"ipa": "/pˈɪŋk/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "plane",
 "k": "plane",
 "e": null,
 "t": "transport",
-"ex": "The plane is in the sky.",
+"ex": "The plane is very big.",
 "es": "avión",
 "s": "plane",
 "ipa": "/plˈeɪn/",
 "ipa_reg": "UK"
+},
+{
+"w": "play",
+"k": "play",
+"e": "🧸",
+"t": "actions",
+"ex": "Let's play in the garden!",
+"es": "jugar, tocar (música)",
+"s": "play",
+"ipa": "/plˈeɪ/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "playground",
@@ -2119,6 +3980,18 @@
 "ipa": "/plˈiːz/",
 "ipa_reg": "UK",
 "p": false
+},
+{
+"w": "point",
+"k": "point",
+"e": "☝️",
+"t": "actions",
+"ex": "Point to the red car!",
+"es": "señalar",
+"s": "point",
+"ipa": "/pˈɔɪnt/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "polar bear",
@@ -2154,6 +4027,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "purple",
+"k": "purple",
+"e": "🟣",
+"t": "describing",
+"ex": "I've got a purple pen.",
+"es": "morado, lila",
+"s": "purple",
+"ipa": "/pˈɜːpəl/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "put",
 "k": "put",
 "e": "📥",
@@ -2186,6 +4071,16 @@
 "ipa_reg": "UK"
 },
 {
+"w": "read",
+"k": "read",
+"e": "📖",
+"t": "actions",
+"ex": "I read a book at night.",
+"es": "leer",
+"s": "read",
+"c": true
+},
+{
 "w": "really",
 "k": "really",
 "e": "💬",
@@ -2196,6 +4091,30 @@
 "ipa": "/ɹˈiəli/",
 "ipa_reg": "UK",
 "p": false
+},
+{
+"w": "red",
+"k": "red",
+"e": "🔴",
+"t": "describing",
+"ex": "My bike is red.",
+"es": "rojo",
+"s": "red",
+"ipa": "/ɹˈɛd/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "rice",
+"k": "rice",
+"e": "🍚",
+"t": "food",
+"ex": "We eat rice with chicken.",
+"es": "arroz",
+"s": "rice",
+"ipa": "/ɹˈaɪs/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "ride",
@@ -2209,13 +4128,13 @@
 "ipa_reg": "UK"
 },
 {
-"w": "right (as in correct)",
-"k": "right (as in correct)",
-"e": "✅",
+"w": "right",
+"k": "right",
+"e": "👉",
 "t": "describing",
-"ex": "Yes! That's the right answer.",
-"es": "correcto",
-"s": "right_as_in_correct",
+"ex": "Your right hand, not your left!",
+"es": "derecha",
+"s": "right",
 "ipa": "/ɹˈaɪt/",
 "ipa_reg": "UK"
 },
@@ -2253,6 +4172,66 @@
 "ipa_reg": "UK"
 },
 {
+"w": "rubber (US eraser)",
+"k": "rubber (US eraser)",
+"e": "🧽",
+"t": "school",
+"ex": "Can I have your rubber, please?",
+"es": "borrador, goma",
+"s": "rubber_us_eraser",
+"ipa": "/ɹˈʌbɐ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "rug",
+"k": "rug",
+"e": "🧶",
+"t": "home",
+"ex": "The cat is sleeping on the rug.",
+"es": "alfombra, tapete",
+"s": "rug",
+"ipa": "/ɹˈʌɡ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "ruler",
+"k": "ruler",
+"e": "📏",
+"t": "school",
+"ex": "Draw the line with a ruler.",
+"es": "regla",
+"s": "ruler",
+"ipa": "/ɹˈuːlɐ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "run",
+"k": "run",
+"e": "🏃",
+"t": "actions",
+"ex": "Run! The bus is here!",
+"es": "correr",
+"s": "run",
+"ipa": "/ɹˈʌn/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "sad",
+"k": "sad",
+"e": "😢",
+"t": "describing",
+"ex": "My sister is sad today.",
+"es": "triste",
+"s": "sad",
+"ipa": "/sˈæd/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "Sam",
 "k": "sam",
 "e": "🧒",
@@ -2261,6 +4240,18 @@
 "es": "Sam (nombre de niño o niña)",
 "s": "sam",
 "p": false
+},
+{
+"w": "sand",
+"k": "sand",
+"e": "🏖️",
+"t": "world",
+"ex": "We are playing in the sand.",
+"es": "arena",
+"s": "sand",
+"ipa": "/sˈænd/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "sausage",
@@ -2286,6 +4277,42 @@
 "p": false
 },
 {
+"w": "scary",
+"k": "scary",
+"e": "👻",
+"t": "describing",
+"ex": "That story is very scary!",
+"es": "que da miedo",
+"s": "scary",
+"ipa": "/skˈeəɹi/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "school",
+"k": "school",
+"e": "🏫",
+"t": "school",
+"ex": "I go to school with my brother.",
+"es": "colegio, escuela",
+"s": "school",
+"ipa": "/skˈuːl/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "sea",
+"k": "sea",
+"e": "🌊",
+"t": "world",
+"ex": "There are a lot of fish in the sea.",
+"es": "mar",
+"s": "sea",
+"ipa": "/sˈiː/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "see",
 "k": "see",
 "e": "👀",
@@ -2301,7 +4328,7 @@
 "k": "see you",
 "e": "👋",
 "t": "expressions",
-"ex": "See you tomorrow!",
+"ex": "See you at school!",
 "es": "nos vemos",
 "s": "see_you",
 "ipa": "/sˈiː jˈuː/",
@@ -2318,6 +4345,43 @@
 "s": "sentence",
 "ipa": "/sˈɛntəns/",
 "ipa_reg": "UK"
+},
+{
+"w": "she",
+"k": "she",
+"e": "💬",
+"t": "grammar",
+"ex": "This is my sister. She is six.",
+"es": "ella",
+"s": "she",
+"ipa": "/ʃˈiː/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
+"w": "sheep (s + pl)",
+"k": "sheep (s + pl)",
+"e": "🐑",
+"t": "animals",
+"ex": "There are ten sheep in the garden.",
+"es": "oveja, ovejas",
+"s": "sheep_s_pl",
+"ipa": "/ʃˈiːp/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "shell",
+"k": "shell",
+"e": "🐚",
+"t": "world",
+"ex": "Look at this beautiful shell!",
+"es": "concha, caracol",
+"s": "shell",
+"ipa": "/ʃˈɛl/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "ship",
@@ -2353,6 +4417,42 @@
 "ipa_reg": "UK"
 },
 {
+"w": "shop (US store)",
+"k": "shop (US store)",
+"e": "🏬",
+"t": "places",
+"ex": "The shop is next to my house.",
+"es": "tienda",
+"s": "shop_us_store",
+"ipa": "/ʃˈɒp/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "short",
+"k": "short",
+"e": "📏",
+"t": "describing",
+"ex": "My hair is short.",
+"es": "corto, bajo",
+"s": "short",
+"ipa": "/ʃˈɔːt/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "shorts",
+"k": "shorts",
+"e": "🩳",
+"t": "clothes",
+"ex": "My shorts are green.",
+"es": "pantalones cortos, shorts",
+"s": "shorts",
+"ipa": "/ʃˈɔːts/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "show",
 "k": "show",
 "e": "👉",
@@ -2373,6 +4473,43 @@
 "s": "silly",
 "ipa": "/sˈɪli/",
 "ipa_reg": "UK"
+},
+{
+"w": "sing",
+"k": "sing",
+"e": "🎤",
+"t": "actions",
+"ex": "Let's sing a song!",
+"es": "cantar",
+"s": "sing",
+"ipa": "/sˈɪŋ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "sister",
+"k": "sister",
+"e": "👧",
+"t": "family",
+"ex": "My sister is four.",
+"es": "hermana",
+"s": "sister",
+"ipa": "/sˈɪstɐ/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
+"w": "sit",
+"k": "sit",
+"e": "🪑",
+"t": "actions",
+"ex": "Sit next to me, please.",
+"es": "sentarse",
+"s": "sit",
+"ipa": "/sˈɪt/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "skateboard",
@@ -2397,6 +4534,66 @@
 "ipa_reg": "UK"
 },
 {
+"w": "skirt",
+"k": "skirt",
+"e": "👘",
+"t": "clothes",
+"ex": "Her skirt is blue and white.",
+"es": "falda",
+"s": "skirt",
+"ipa": "/skˈɜːt/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "sleep",
+"k": "sleep",
+"e": "😴",
+"t": "actions",
+"ex": "The baby is sleeping.",
+"es": "dormir",
+"s": "sleep",
+"ipa": "/slˈiːp/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "small",
+"k": "small",
+"e": "🐭",
+"t": "describing",
+"ex": "A mouse is very small.",
+"es": "pequeño",
+"s": "small",
+"ipa": "/smˈɔːl/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "smile",
+"k": "smile",
+"e": "😊",
+"t": "actions",
+"ex": "Smile! I'm taking a photo.",
+"es": "sonreír, sonrisa",
+"s": "smile",
+"ipa": "/smˈaɪl/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "snake",
+"k": "snake",
+"e": "🐍",
+"t": "animals",
+"ex": "The snake is long and green.",
+"es": "serpiente, culebra",
+"s": "snake",
+"ipa": "/snˈeɪk/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "so",
 "k": "so",
 "e": "💬",
@@ -2409,6 +4606,18 @@
 "p": false
 },
 {
+"w": "soccer (UK football)",
+"k": "soccer (UK football)",
+"e": "⚽",
+"t": "sports",
+"ex": "We play soccer in the park.",
+"es": "fútbol",
+"s": "soccer_uk_football",
+"ipa": "/sˈɒkɐ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "sock",
 "k": "sock",
 "e": null,
@@ -2418,6 +4627,18 @@
 "s": "sock",
 "ipa": "/sˈɒk/",
 "ipa_reg": "UK"
+},
+{
+"w": "sofa",
+"k": "sofa",
+"e": "🛋️",
+"t": "home",
+"ex": "The cat is on the sofa.",
+"es": "sofá",
+"s": "sofa",
+"ipa": "/sˈəʊfɐ/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "some",
@@ -2455,6 +4676,18 @@
 "p": false
 },
 {
+"w": "spell",
+"k": "spell",
+"e": "🔤",
+"t": "school",
+"ex": "How do you spell your name?",
+"es": "deletrear",
+"s": "spell",
+"ipa": "/spˈɛl/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "spider",
 "k": "spider",
 "e": null,
@@ -2477,6 +4710,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "stand",
+"k": "stand",
+"e": "🧍",
+"t": "actions",
+"ex": "Stand up, please!",
+"es": "estar de pie, ponerse de pie",
+"s": "stand",
+"ipa": "/stˈænd/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "start",
 "k": "start",
 "e": "🚦",
@@ -2486,6 +4731,31 @@
 "s": "start",
 "ipa": "/stˈɑːt/",
 "ipa_reg": "UK"
+},
+{
+"w": "stop",
+"k": "stop",
+"e": "🚫",
+"t": "actions",
+"ex": "Stop! Don't run!",
+"es": "parar, detenerse",
+"s": "stop",
+"ipa": "/stˈɒp/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
+"w": "store (UK shop)",
+"k": "store (UK shop)",
+"e": "🏬",
+"t": "places",
+"ex": "There is a new store in my street.",
+"es": "tienda",
+"s": "store_uk_shop",
+"ipa": "/stˈɔː/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "story",
@@ -2499,6 +4769,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "street",
+"k": "street",
+"e": "🏙️",
+"t": "places",
+"ex": "My house is in this street.",
+"es": "calle",
+"s": "street",
+"ipa": "/stɹˈiːt/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "Sue",
 "k": "sue",
 "e": "👧",
@@ -2509,11 +4791,69 @@
 "p": false
 },
 {
+"w": "sun",
+"k": "sun",
+"e": "☀️",
+"t": "world",
+"ex": "The sun is big and yellow.",
+"es": "sol",
+"s": "sun",
+"ipa": "/sˈʌn/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "sweets (US candy)",
+"k": "sweets (US candy)",
+"e": "🍬",
+"t": "food",
+"ex": "I've got two sweets for you.",
+"es": "dulces, caramelos",
+"s": "sweets_us_candy",
+"ipa": "/swˈiːts/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "swim",
+"k": "swim",
+"e": "🏊",
+"t": "actions",
+"ex": "I can swim in the sea.",
+"es": "nadar",
+"s": "swim",
+"ipa": "/swˈɪm/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "T-shirt",
+"k": "T-shirt",
+"e": "👕",
+"t": "clothes",
+"ex": "My T-shirt is yellow.",
+"es": "polo, camiseta",
+"s": "t_shirt",
+"c": true
+},
+{
+"w": "table",
+"k": "table",
+"e": "🍽️",
+"t": "home",
+"ex": "The bread is on the table.",
+"es": "mesa",
+"s": "table",
+"ipa": "/tˈeɪbəl/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "table tennis",
 "k": "table tennis",
 "e": "🏓",
 "t": "sports",
-"ex": "We play table tennis after school.",
+"ex": "We play table tennis in the garden.",
 "es": "tenis de mesa, ping-pong",
 "s": "table_tennis",
 "ipa": "/tˈeɪbəl tˈɛnɪs/",
@@ -2524,11 +4864,33 @@
 "k": "tablet",
 "e": "📱",
 "t": "tech",
-"ex": "I watch cartoons on the tablet.",
+"ex": "I play games on the tablet.",
 "es": "tableta",
 "s": "tablet",
 "ipa": "/tˈæblət/",
 "ipa_reg": "UK"
+},
+{
+"w": "tail",
+"k": "tail",
+"e": "🐈",
+"t": "animals",
+"ex": "My cat has got a long tail.",
+"es": "cola, rabo",
+"s": "tail",
+"ipa": "/tˈeɪl/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "take a photo",
+"k": "take a photo",
+"e": "📸",
+"t": "actions",
+"ex": "Can I take a photo of you?",
+"es": "tomar una foto",
+"s": "take_a_photo",
+"c": true
 },
 {
 "w": "talk",
@@ -2542,13 +4904,39 @@
 "ipa_reg": "UK"
 },
 {
-"w": "television (TV)",
-"k": "television (TV)",
+"w": "teacher",
+"k": "teacher",
+"e": "🧑‍🏫",
+"t": "school",
+"ex": "My teacher is very funny.",
+"es": "profesor, maestra",
+"s": "teacher",
+"ipa": "/tˈiːtʃɐ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "teddy (bear)",
+"k": "teddy (bear)",
+"e": "🧸",
+"t": "sports",
+"ex": "I sleep with my teddy bear.",
+"es": "osito de peluche",
+"s": "teddy_bear",
+"ipa": "/tˈɛdi/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "television/TV",
+"k": "television/TV",
 "e": "📺",
 "t": "home",
-"ex": "We watch TV in the living room.",
-"es": "televisión",
-"s": "television_tv"
+"ex": "There is a big television in the living room.",
+"es": "televisión, tele",
+"s": "television_tv",
+"ipa": "/tˈɛlɪvˌɪʒən/",
+"ipa_reg": "UK"
 },
 {
 "w": "tell",
@@ -2562,6 +4950,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "tennis",
+"k": "tennis",
+"e": "🎾",
+"t": "sports",
+"ex": "Let's play tennis!",
+"es": "tenis",
+"s": "tennis",
+"ipa": "/tˈɛnɪs/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "tennis racket",
 "k": "tennis racket",
 "e": "🎾",
@@ -2571,6 +4971,19 @@
 "s": "tennis_racket",
 "ipa": "/tˈɛnɪs ɹˈækɪt/",
 "ipa_reg": "UK"
+},
+{
+"w": "thank you",
+"k": "thank you",
+"e": "💬",
+"t": "expressions",
+"ex": "Thank you, Grandma!",
+"es": "gracias",
+"s": "thank_you",
+"ipa": "/θˈæŋk jˈuː/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
 },
 {
 "w": "thanks",
@@ -2583,6 +4996,19 @@
 "ipa": "/θˈæŋks/",
 "ipa_reg": "UK",
 "p": false
+},
+{
+"w": "that",
+"k": "that",
+"e": "💬",
+"t": "grammar",
+"ex": "What's that? It's a kite.",
+"es": "ese, aquel",
+"s": "that",
+"ipa": "/ðˈæt/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
 },
 {
 "w": "the",
@@ -2645,6 +5071,32 @@
 "p": false
 },
 {
+"w": "there",
+"k": "there",
+"e": "📍",
+"t": "grammar",
+"ex": "Look! There is a bird in the tree.",
+"es": "allí, ahí",
+"s": "there",
+"ipa": "/ðˈeə/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
+"w": "these",
+"k": "these",
+"e": "💬",
+"t": "grammar",
+"ex": "These are my new shoes.",
+"es": "estos, estas",
+"s": "these",
+"ipa": "/ðˈiːz/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
 "w": "they",
 "k": "they",
 "e": "💬",
@@ -2666,6 +5118,32 @@
 "s": "thing",
 "ipa": "/θˈɪŋ/",
 "ipa_reg": "UK"
+},
+{
+"w": "this",
+"k": "this",
+"e": "💬",
+"t": "grammar",
+"ex": "This is my dog.",
+"es": "este, esta",
+"s": "this",
+"ipa": "/ðˈɪs/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
+"w": "those",
+"k": "those",
+"e": "💬",
+"t": "grammar",
+"ex": "Those are my friends.",
+"es": "esos, aquellos",
+"s": "those",
+"ipa": "/ðˈəʊz/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
 },
 {
 "w": "throw",
@@ -2690,6 +5168,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "tiger",
+"k": "tiger",
+"e": "🐯",
+"t": "animals",
+"ex": "The tiger is orange and black.",
+"es": "tigre",
+"s": "tiger",
+"ipa": "/tˈaɪɡɐ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "to",
 "k": "to",
 "e": "💬",
@@ -2700,6 +5190,19 @@
 "ipa": "/tˈuː/",
 "ipa_reg": "UK",
 "p": false
+},
+{
+"w": "Today",
+"k": "today",
+"e": "📅",
+"t": "time",
+"ex": "Today is my birthday!",
+"es": "hoy",
+"s": "today",
+"ipa": "/tədˈeɪ/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
 },
 {
 "w": "Tom",
@@ -2748,6 +5251,54 @@
 "ipa_reg": "UK"
 },
 {
+"w": "train",
+"k": "train",
+"e": "🚆",
+"t": "transport",
+"ex": "The train is going to the beach.",
+"es": "tren",
+"s": "train",
+"ipa": "/tɹˈeɪn/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "tree",
+"k": "tree",
+"e": "🌳",
+"t": "world",
+"ex": "There is a bird in the tree.",
+"es": "árbol",
+"s": "tree",
+"ipa": "/tɹˈiː/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "trousers",
+"k": "trousers",
+"e": "👖",
+"t": "clothes",
+"ex": "My trousers are black.",
+"es": "pantalones",
+"s": "trousers",
+"ipa": "/tɹˈaʊsəz/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "truck (UK lorry)",
+"k": "truck (UK lorry)",
+"e": "🚚",
+"t": "transport",
+"ex": "There are two trucks in the street.",
+"es": "camión",
+"s": "truck_uk_lorry",
+"ipa": "/tɹˈʌk/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "try",
 "k": "try",
 "e": "💪",
@@ -2777,6 +5328,19 @@
 "s": "ugly",
 "ipa": "/ˈʌɡli/",
 "ipa_reg": "UK"
+},
+{
+"w": "under",
+"k": "under",
+"e": "💬",
+"t": "grammar",
+"ex": "The ball is under the chair.",
+"es": "debajo de",
+"s": "under",
+"ipa": "/ˈʌndɐ/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
 },
 {
 "w": "understand",
@@ -2814,6 +5378,30 @@
 "p": false
 },
 {
+"w": "walk",
+"k": "walk",
+"e": "🚶",
+"t": "actions",
+"ex": "Let's walk to the park.",
+"es": "caminar, andar",
+"s": "walk",
+"ipa": "/wˈɔːk/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "wall",
+"k": "wall",
+"e": "🧱",
+"t": "home",
+"ex": "The picture is on the wall.",
+"es": "pared, muro",
+"s": "wall",
+"ipa": "/wˈɔːl/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "want",
 "k": "want",
 "e": "🙋",
@@ -2837,6 +5425,42 @@
 "ipa_reg": "UK"
 },
 {
+"w": "water",
+"k": "water",
+"e": "💧",
+"t": "food",
+"ex": "Drink some water!",
+"es": "agua",
+"s": "water",
+"ipa": "/wˈɔːtɐ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "watermelon",
+"k": "watermelon",
+"e": "🍉",
+"t": "food",
+"ex": "This watermelon is very big.",
+"es": "sandía",
+"s": "watermelon",
+"ipa": "/wˈɔːtəmˌɛlən/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "wave",
+"k": "wave",
+"e": "👋",
+"t": "actions",
+"ex": "Wave goodbye to Grandma!",
+"es": "saludar con la mano, ola",
+"s": "wave",
+"ipa": "/wˈeɪv/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "we",
 "k": "we",
 "e": "💬",
@@ -2847,6 +5471,16 @@
 "ipa": "/wˈiː/",
 "ipa_reg": "UK",
 "p": false
+},
+{
+"w": "wear",
+"k": "wear",
+"e": "👕",
+"t": "actions",
+"ex": "I wear a blue T-shirt at school.",
+"es": "llevar puesto, usar",
+"s": "wear",
+"c": true
 },
 {
 "w": "well",
@@ -2860,6 +5494,45 @@
 "ipa_reg": "UK"
 },
 {
+"w": "well done",
+"k": "well done",
+"e": "💬",
+"t": "expressions",
+"ex": "Well done! That's correct.",
+"es": "¡muy bien!, ¡bien hecho!",
+"s": "well_done",
+"ipa": "/wˈɛl dˈʌn/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
+"w": "what",
+"k": "what",
+"e": "❓",
+"t": "grammar",
+"ex": "What's this? It's a lamp.",
+"es": "qué",
+"s": "what",
+"ipa": "/wˈɒt/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
+"w": "where",
+"k": "where",
+"e": "❓",
+"t": "grammar",
+"ex": "Where is my bag?",
+"es": "dónde",
+"s": "where",
+"ipa": "/wˈeə/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
 "w": "which",
 "k": "which",
 "e": "❓",
@@ -2870,6 +5543,18 @@
 "ipa": "/wˈɪtʃ/",
 "ipa_reg": "UK",
 "p": false
+},
+{
+"w": "white",
+"k": "white",
+"e": "⚪",
+"t": "describing",
+"ex": "The sheep is white.",
+"es": "blanco",
+"s": "white",
+"ipa": "/wˈaɪt/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "who",
@@ -2896,6 +5581,18 @@
 "p": false
 },
 {
+"w": "window",
+"k": "window",
+"e": "🪟",
+"t": "home",
+"ex": "Open the window, please.",
+"es": "ventana",
+"s": "window",
+"ipa": "/wˈɪndəʊ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "with",
 "k": "with",
 "e": "💬",
@@ -2906,6 +5603,30 @@
 "ipa": "/wˈɪð/",
 "ipa_reg": "UK",
 "p": false
+},
+{
+"w": "woman / women",
+"k": "woman / women",
+"e": "👩",
+"t": "family",
+"ex": "That woman is my mother.",
+"es": "mujer / mujeres",
+"s": "woman_women",
+"ipa": "/wˈʊmən/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "word",
+"k": "word",
+"e": "🔤",
+"t": "school",
+"ex": "Read the word and write it.",
+"es": "palabra",
+"s": "word",
+"ipa": "/wˈɜːd/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "would like",
@@ -2932,6 +5653,18 @@
 "p": false
 },
 {
+"w": "write",
+"k": "write",
+"e": "✍️",
+"t": "actions",
+"ex": "Write your name here.",
+"es": "escribir",
+"s": "write",
+"ipa": "/ɹˈaɪt/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "Year",
 "k": "year",
 "e": "📅",
@@ -2942,6 +5675,18 @@
 "ipa": "/jˈiə/",
 "ipa_reg": "UK",
 "p": false
+},
+{
+"w": "yellow",
+"k": "yellow",
+"e": "🟡",
+"t": "describing",
+"ex": "The sun is yellow.",
+"es": "amarillo",
+"s": "yellow",
+"ipa": "/jˈɛləʊ/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "yes",
@@ -2966,6 +5711,18 @@
 "ipa": "/jˈuː/",
 "ipa_reg": "UK",
 "p": false
+},
+{
+"w": "young",
+"k": "young",
+"e": "👶",
+"t": "describing",
+"ex": "My sister is very young.",
+"es": "joven, pequeño",
+"s": "young",
+"ipa": "/jˈʌŋ/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "your",
@@ -3001,6 +5758,18 @@
 "s": "zebra",
 "ipa": "/zˈɛbɹɐ/",
 "ipa_reg": "UK"
+},
+{
+"w": "zoo",
+"k": "zoo",
+"e": "🦁",
+"t": "places",
+"ex": "There are two tigers at the zoo.",
+"es": "zoológico",
+"s": "zoo",
+"ipa": "/zˈuː/",
+"ipa_reg": "UK",
+"c": true
 }
 ]
 }

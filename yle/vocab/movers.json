@@ -23,11 +23,24 @@
 "grammar": "🔤 Small words"
 },
 "cover": {
-"trainer": 259,
+"trainer": 381,
 "course": 122,
 "official": 381
 },
 "words": [
+{
+"w": "above",
+"k": "above",
+"e": "💬",
+"t": "grammar",
+"ex": "The clock is above the door.",
+"es": "encima de, sobre",
+"s": "above",
+"ipa": "/əbˈʌv/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
 {
 "w": "address",
 "k": "address",
@@ -264,6 +277,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "bat",
+"k": "bat",
+"e": "🦇",
+"t": "animals",
+"ex": "Bats sleep in the day and fly at night.",
+"es": "murciélago",
+"s": "bat",
+"ipa": "/bˈæt/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "be called",
 "k": "be called",
 "e": "💬",
@@ -274,6 +299,18 @@
 "ipa": "/bˈiː kˈɔːld/",
 "ipa_reg": "UK",
 "p": false
+},
+{
+"w": "beard",
+"k": "beard",
+"e": "🧔",
+"t": "body",
+"ex": "My grandpa has got a white beard.",
+"es": "barba",
+"s": "beard",
+"ipa": "/bˈiəd/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "because",
@@ -323,6 +360,30 @@
 "ipa_reg": "UK"
 },
 {
+"w": "better",
+"k": "better",
+"e": "👍",
+"t": "describing",
+"ex": "I'm better at tennis than my brother.",
+"es": "mejor",
+"s": "better",
+"ipa": "/bˈɛtɐ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "blanket",
+"k": "blanket",
+"e": "🛏️",
+"t": "home",
+"ex": "There is a blanket on my bed.",
+"es": "manta, frazada",
+"s": "blanket",
+"ipa": "/blˈæŋkɪt/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "blond(e)",
 "k": "blond(e)",
 "e": "👱",
@@ -332,6 +393,18 @@
 "s": "blond_e",
 "ipa": "/blˈɒnd/",
 "ipa_reg": "UK"
+},
+{
+"w": "boring",
+"k": "boring",
+"e": "😑",
+"t": "describing",
+"ex": "This film is boring!",
+"es": "aburrido",
+"s": "boring",
+"ipa": "/bˈɔːɹɪŋ/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "both",
@@ -344,6 +417,18 @@
 "ipa": "/bˈəʊθ/",
 "ipa_reg": "UK",
 "p": false
+},
+{
+"w": "bottle",
+"k": "bottle",
+"e": "🍼",
+"t": "food",
+"ex": "There is a bottle of water in my bag.",
+"es": "botella",
+"s": "bottle",
+"ipa": "/bˈɒtəl/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "bottom",
@@ -372,7 +457,7 @@
 "k": "brave",
 "e": "🦸",
 "t": "describing",
-"ex": "The firefighter is very brave.",
+"ex": "My little brother is very brave.",
 "es": "valiente",
 "s": "brave",
 "ipa": "/bɹˈeɪv/",
@@ -491,6 +576,18 @@
 "p": false
 },
 {
+"w": "café",
+"k": "café",
+"e": "☕",
+"t": "places",
+"ex": "We had a milkshake in the café.",
+"es": "cafetería, café",
+"s": "caf",
+"ipa": "/ˌkæˈfeɪ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "cage",
 "k": "cage",
 "e": "🐹",
@@ -557,6 +654,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "catch (e.g. a bus)",
+"k": "catch (e.g. a bus)",
+"e": "🚌",
+"t": "actions",
+"ex": "We catch the bus at eight o'clock.",
+"es": "tomar, coger (el bus)",
+"s": "catch_e_g_a_bus",
+"ipa": "/kˈætʃ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "cd",
 "k": "cd",
 "e": "💿",
@@ -600,6 +709,30 @@
 "p": false
 },
 {
+"w": "cheese",
+"k": "cheese",
+"e": "🧀",
+"t": "food",
+"ex": "I'd like a cheese sandwich, please.",
+"es": "queso",
+"s": "cheese",
+"ipa": "/tʃˈiːz/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "cinema",
+"k": "cinema",
+"e": "🎬",
+"t": "places",
+"ex": "We are going to the cinema on Saturday.",
+"es": "cine",
+"s": "cinema",
+"ipa": "/sˈɪnəmɐ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "circle",
 "k": "circle",
 "e": "⭕",
@@ -626,7 +759,7 @@
 "k": "city",
 "e": "🏙️",
 "t": "places",
-"ex": "Lima is a very big city.",
+"ex": "We live in a very big city.",
 "es": "ciudad",
 "s": "city",
 "ipa": "/sˈɪti/",
@@ -654,6 +787,54 @@
 "p": false
 },
 {
+"w": "clever",
+"k": "clever",
+"e": "🧠",
+"t": "describing",
+"ex": "My sister is very clever at school.",
+"es": "listo, inteligente",
+"s": "clever",
+"ipa": "/klˈɛvɐ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "climb",
+"k": "climb",
+"e": "🧗",
+"t": "actions",
+"ex": "The monkey can climb the tree.",
+"es": "trepar, escalar",
+"s": "climb",
+"ipa": "/klˈaɪm/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "cloud",
+"k": "cloud",
+"e": "☁️",
+"t": "world",
+"ex": "There is a big grey cloud in the sky.",
+"es": "nube",
+"s": "cloud",
+"ipa": "/klˈaʊd/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "cloudy",
+"k": "cloudy",
+"e": "☁️",
+"t": "world",
+"ex": "It's cloudy today, but it isn't raining.",
+"es": "nublado",
+"s": "cloudy",
+"ipa": "/klˈaʊdi/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "clown",
 "k": "clown",
 "e": "🤡",
@@ -663,6 +844,18 @@
 "s": "clown",
 "ipa": "/klˈaʊn/",
 "ipa_reg": "UK"
+},
+{
+"w": "coat",
+"k": "coat",
+"e": "🧥",
+"t": "clothes",
+"ex": "Put on your coat. It's cold outside!",
+"es": "abrigo",
+"s": "coat",
+"ipa": "/kˈəʊt/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "coffee",
@@ -676,11 +869,23 @@
 "ipa_reg": "UK"
 },
 {
+"w": "cold",
+"k": "cold",
+"e": "🥶",
+"t": "describing",
+"ex": "The water in the lake is very cold.",
+"es": "frío",
+"s": "cold",
+"ipa": "/kˈəʊld/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "come on",
 "k": "come on",
 "e": "💬",
 "t": "expressions",
-"ex": "Come on! We're late!",
+"ex": "Come on! The bus is here!",
 "es": "¡vamos!, ¡venga!",
 "s": "come_on",
 "ipa": "/kˈʌm ˈɒn/",
@@ -721,6 +926,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "cough",
+"k": "cough",
+"e": "🤧",
+"t": "body",
+"ex": "I've got a bad cough today.",
+"es": "tos, toser",
+"s": "cough",
+"ipa": "/kˈɒf/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "could (as in past of can for ability)",
 "k": "could (as in past of can for ability)",
 "e": "💬",
@@ -737,7 +954,7 @@
 "k": "country",
 "e": "🌍",
 "t": "world",
-"ex": "Peru is a big country.",
+"ex": "My country is very big.",
 "es": "país",
 "s": "country",
 "ipa": "/kˈʌntɹi/",
@@ -777,6 +994,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "curly",
+"k": "curly",
+"e": "🦱",
+"t": "describing",
+"ex": "She has got long curly hair.",
+"es": "rizado, crespo",
+"s": "curly",
+"ipa": "/kˈɜːli/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "Daisy",
 "k": "daisy",
 "e": "👧",
@@ -789,6 +1018,30 @@
 "p": false
 },
 {
+"w": "dance",
+"k": "dance",
+"e": "💃",
+"t": "actions",
+"ex": "Let's dance to this song!",
+"es": "bailar",
+"s": "dance",
+"ipa": "/dˈɑːns/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "dangerous",
+"k": "dangerous",
+"e": "⚠️",
+"t": "describing",
+"ex": "Sharks are dangerous animals.",
+"es": "peligroso",
+"s": "dangerous",
+"ipa": "/dˈeɪndʒəɹəs/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "daughter",
 "k": "daughter",
 "e": "👧",
@@ -799,6 +1052,18 @@
 "ipa": "/dˈɔːtɐ/",
 "ipa_reg": "UK",
 "p": false
+},
+{
+"w": "dentist",
+"k": "dentist",
+"e": "🦷",
+"t": "work",
+"ex": "The dentist is looking at my teeth.",
+"es": "dentista",
+"s": "dentist",
+"ipa": "/dˈɛntɪst/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "difference",
@@ -821,6 +1086,42 @@
 "s": "different",
 "ipa": "/dˈɪfɹənt/",
 "ipa_reg": "UK"
+},
+{
+"w": "difficult",
+"k": "difficult",
+"e": "😖",
+"t": "describing",
+"ex": "This game is very difficult.",
+"es": "difícil",
+"s": "difficult",
+"ipa": "/dˈɪfɪkəlt/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "doctor",
+"k": "doctor",
+"e": "🧑‍⚕️",
+"t": "work",
+"ex": "The doctor helps people who are ill.",
+"es": "doctor, médica",
+"s": "doctor",
+"ipa": "/dˈɒktɐ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "dolphin",
+"k": "dolphin",
+"e": "🐬",
+"t": "animals",
+"ex": "Dolphins can swim and jump.",
+"es": "delfín",
+"s": "dolphin",
+"ipa": "/dˈɒlfɪn/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "down",
@@ -859,11 +1160,23 @@
 "k": "dress up",
 "e": "🎭",
 "t": "actions",
-"ex": "We dressed up as pirates.",
+"ex": "We dressed up for the party.",
 "es": "disfrazarse",
 "s": "dress_up",
 "ipa": "/dɹˈɛs ˈʌp/",
 "ipa_reg": "UK"
+},
+{
+"w": "driver",
+"k": "driver",
+"e": "🚌",
+"t": "work",
+"ex": "The bus driver is very friendly.",
+"es": "conductor, chofer",
+"s": "driver",
+"ipa": "/dɹˈaɪvɐ/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "drop",
@@ -892,7 +1205,7 @@
 "k": "dvd",
 "e": "📀",
 "t": "tech",
-"ex": "Let's watch a DVD tonight.",
+"ex": "Let's watch a DVD after dinner.",
 "es": "DVD",
 "s": "dvd"
 },
@@ -917,6 +1230,18 @@
 "s": "earache",
 "ipa": "/ˈiəɹeɪk/",
 "ipa_reg": "UK"
+},
+{
+"w": "easy",
+"k": "easy",
+"e": "😀",
+"t": "describing",
+"ex": "This word is easy to spell.",
+"es": "fácil",
+"s": "easy",
+"ipa": "/ˈiːzi/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "elevator (UK lift)",
@@ -1062,6 +1387,30 @@
 "ipa_reg": "UK"
 },
 {
+"w": "feed",
+"k": "feed",
+"e": "🍼",
+"t": "actions",
+"ex": "I feed my rabbit every morning.",
+"es": "dar de comer, alimentar",
+"s": "feed",
+"ipa": "/fˈiːd/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "field",
+"k": "field",
+"e": "🌾",
+"t": "places",
+"ex": "There are ten sheep in the garden.",
+"es": "campo, prado",
+"s": "field",
+"ipa": "/fˈiːld/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "film (US movie)",
 "k": "film (US movie)",
 "e": "🎬",
@@ -1094,6 +1443,30 @@
 "p": false
 },
 {
+"w": "First",
+"k": "first",
+"e": "1️⃣",
+"t": "time",
+"ex": "Read the first word on the page.",
+"es": "primero",
+"s": "first",
+"ipa": "/fˈɜːst/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "fish",
+"k": "fish",
+"e": "🐟",
+"t": "food",
+"ex": "We eat fish and rice on Fridays.",
+"es": "pescado",
+"s": "fish",
+"ipa": "/fˈɪʃ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "fix",
 "k": "fix",
 "e": "🔧",
@@ -1116,6 +1489,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "forest",
+"k": "forest",
+"e": "🌲",
+"t": "places",
+"ex": "There are a lot of trees in the forest.",
+"es": "bosque",
+"s": "forest",
+"ipa": "/fˈɒɹɪst/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "Fred",
 "k": "fred",
 "e": "👦",
@@ -1126,15 +1511,50 @@
 "p": false
 },
 {
+"w": "Friday",
+"k": "Friday",
+"e": "📅",
+"t": "time",
+"ex": "We play football on Friday.",
+"es": "viernes",
+"s": "friday",
+"p": false,
+"c": true
+},
+{
 "w": "frightened",
 "k": "frightened",
 "e": "😱",
 "t": "describing",
-"ex": "The children were frightened of the storm.",
+"ex": "The children were frightened of the big dog.",
 "es": "asustado",
 "s": "frightened",
 "ipa": "/fɹˈaɪtənd/",
 "ipa_reg": "UK"
+},
+{
+"w": "funfair",
+"k": "funfair",
+"e": "🎪",
+"t": "places",
+"ex": "We went to the funfair on Saturday.",
+"es": "feria, parque de diversiones",
+"s": "funfair",
+"ipa": "/fˈʌnfeə/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "get dressed",
+"k": "get dressed",
+"e": "👕",
+"t": "actions",
+"ex": "I get dressed after breakfast.",
+"es": "vestirse",
+"s": "get_dressed",
+"ipa": "/ɡˈɛt dɹˈɛst/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "get off",
@@ -1163,11 +1583,24 @@
 "k": "get undressed",
 "e": "🩳",
 "t": "actions",
-"ex": "Get undressed and put on your pyjamas.",
+"ex": "Get undressed and have a bath.",
 "es": "desvestirse",
 "s": "get_undressed",
 "ipa": "/ɡˈɛt ʌndɹˈɛst/",
 "ipa_reg": "UK"
+},
+{
+"w": "get up",
+"k": "get up",
+"e": "⏰",
+"t": "actions",
+"ex": "I get up at seven o'clock.",
+"es": "levantarse",
+"s": "get_up",
+"ipa": "/ɡˈɛt ˈʌp/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
 },
 {
 "w": "go shopping",
@@ -1227,6 +1660,18 @@
 "p": false
 },
 {
+"w": "grass",
+"k": "grass",
+"e": "🌱",
+"t": "world",
+"ex": "The cows are eating grass.",
+"es": "pasto, hierba",
+"s": "grass",
+"ipa": "/ɡɹˈɑːs/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "ground",
 "k": "ground",
 "e": "🟤",
@@ -1236,6 +1681,18 @@
 "s": "ground",
 "ipa": "/ɡɹˈaʊnd/",
 "ipa_reg": "UK"
+},
+{
+"w": "grow",
+"k": "grow",
+"e": "🌱",
+"t": "actions",
+"ex": "These flowers grow very quickly.",
+"es": "crecer, cultivar",
+"s": "grow",
+"ipa": "/ɡɹˈəʊ/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "grown-up",
@@ -1257,6 +1714,18 @@
 "p": false
 },
 {
+"w": "headache",
+"k": "headache",
+"e": "🤕",
+"t": "body",
+"ex": "I've got a headache. Can I have some water?",
+"es": "dolor de cabeza",
+"s": "headache",
+"ipa": "/hˈɛdeɪk/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "helmet",
 "k": "helmet",
 "e": null,
@@ -1266,6 +1735,30 @@
 "s": "helmet",
 "ipa": "/hˈɛlmɪt/",
 "ipa_reg": "UK"
+},
+{
+"w": "help",
+"k": "help",
+"e": "🤝",
+"t": "actions",
+"ex": "Can you help me, please?",
+"es": "ayudar, ayuda",
+"s": "help",
+"ipa": "/hˈɛlp/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "hide",
+"k": "hide",
+"e": "🙈",
+"t": "actions",
+"ex": "Let's hide behind the tree!",
+"es": "esconderse, esconder",
+"s": "hide",
+"ipa": "/hˈaɪd/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "Holiday",
@@ -1288,6 +1781,42 @@
 "s": "homework",
 "ipa": "/hˈəʊmwɜːk/",
 "ipa_reg": "UK"
+},
+{
+"w": "hop",
+"k": "hop",
+"e": "🐰",
+"t": "actions",
+"ex": "Rabbits hop on their long legs.",
+"es": "brincar, saltar",
+"s": "hop",
+"ipa": "/hˈɒp/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "hospital",
+"k": "hospital",
+"e": "🏥",
+"t": "places",
+"ex": "My mother works in a hospital.",
+"es": "hospital",
+"s": "hospital",
+"ipa": "/hˈɒspɪtəl/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "hot",
+"k": "hot",
+"e": "🔥",
+"t": "describing",
+"ex": "Don't drink it! The soup is very hot.",
+"es": "caliente, caluroso",
+"s": "hot",
+"ipa": "/hˈɒt/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "how much",
@@ -1336,11 +1865,23 @@
 "ipa_reg": "UK"
 },
 {
+"w": "hungry",
+"k": "hungry",
+"e": "🍽️",
+"t": "describing",
+"ex": "I'm hungry. Can I have a sandwich?",
+"es": "hambriento, con hambre",
+"s": "hungry",
+"ipa": "/hˈʌŋɡɹi/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "hurt",
 "k": "hurt",
 "e": "🤕",
 "t": "body",
-"ex": "I fell and hurt my knee.",
+"ex": "I fell and hurt my leg.",
 "es": "doler; hacerse daño",
 "s": "hurt",
 "ipa": "/hˈɜːt/",
@@ -1373,7 +1914,7 @@
 "k": "ice skating",
 "e": "⛸️",
 "t": "sports",
-"ex": "We went ice skating in winter.",
+"ex": "We went ice skating with my cousin.",
 "es": "patinaje sobre hielo",
 "s": "ice_skating",
 "ipa": "/ˈaɪs skˈeɪtɪŋ/",
@@ -1389,6 +1930,18 @@
 "s": "idea",
 "ipa": "/aɪdˈiə/",
 "ipa_reg": "UK"
+},
+{
+"w": "ill",
+"k": "ill",
+"e": "🤒",
+"t": "body",
+"ex": "Tom is ill today, so he isn't at school.",
+"es": "enfermo",
+"s": "ill",
+"ipa": "/ˈɪl/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "inside",
@@ -1422,6 +1975,16 @@
 "ipa": "/ˈɪntʊ/",
 "ipa_reg": "UK",
 "p": false
+},
+{
+"w": "invite",
+"k": "invite",
+"e": "💌",
+"t": "actions",
+"ex": "I want to invite all my friends to the party.",
+"es": "invitar",
+"s": "invite",
+"c": true
 },
 {
 "w": "island",
@@ -1479,6 +2042,30 @@
 "p": false
 },
 {
+"w": "jungle",
+"k": "jungle",
+"e": "🌴",
+"t": "places",
+"ex": "Tigers and monkeys live in the jungle.",
+"es": "selva, jungla",
+"s": "jungle",
+"ipa": "/dʒˈʌŋɡəl/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "kangaroo",
+"k": "kangaroo",
+"e": "🦘",
+"t": "animals",
+"ex": "Kangaroos can jump and run.",
+"es": "canguro",
+"s": "kangaroo",
+"ipa": "/kˈæŋɡɐɹˌuː/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "kind",
 "k": "kind",
 "e": "🤗",
@@ -1499,6 +2086,18 @@
 "s": "kitten",
 "ipa": "/kˈɪtən/",
 "ipa_reg": "UK"
+},
+{
+"w": "lake",
+"k": "lake",
+"e": "🏞️",
+"t": "places",
+"ex": "There are ducks on the lake.",
+"es": "lago",
+"s": "lake",
+"ipa": "/lˈeɪk/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "laptop",
@@ -1534,6 +2133,30 @@
 "ipa_reg": "UK"
 },
 {
+"w": "leaf / leaves",
+"k": "leaf / leaves",
+"e": "🍂",
+"t": "world",
+"ex": "The leaves on this tree are green.",
+"es": "hoja / hojas",
+"s": "leaf_leaves",
+"ipa": "/lˈiːf/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "library",
+"k": "library",
+"e": "📚",
+"t": "places",
+"ex": "I read books in the library.",
+"es": "biblioteca",
+"s": "library",
+"ipa": "/lˈaɪbɹəɹi/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "lift (US elevator)",
 "k": "lift (US elevator)",
 "e": "🛗",
@@ -1557,6 +2180,30 @@
 "p": false
 },
 {
+"w": "lion",
+"k": "lion",
+"e": "🦁",
+"t": "animals",
+"ex": "The lion is sleeping under a tree.",
+"es": "león",
+"s": "lion",
+"ipa": "/lˈaɪən/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "little",
+"k": "little",
+"e": "🐭",
+"t": "describing",
+"ex": "My little sister is only two.",
+"es": "pequeño, poquito",
+"s": "little",
+"ipa": "/lˈɪtəl/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "look for",
 "k": "look for",
 "e": "🔍",
@@ -1572,7 +2219,7 @@
 "k": "lose",
 "e": "😢",
 "t": "actions",
-"ex": "Don't lose your keys!",
+"ex": "Don't lose your ticket!",
 "es": "perder",
 "s": "lose",
 "ipa": "/lˈuːz/",
@@ -1610,6 +2257,30 @@
 "s": "machine",
 "ipa": "/məʃˈiːn/",
 "ipa_reg": "UK"
+},
+{
+"w": "map",
+"k": "map",
+"e": "🗺️",
+"t": "places",
+"ex": "Look at the map. Where is the lake?",
+"es": "mapa",
+"s": "map",
+"ipa": "/mˈæp/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "market",
+"k": "market",
+"e": "🏪",
+"t": "places",
+"ex": "We buy fruit at the market.",
+"es": "mercado",
+"s": "market",
+"ipa": "/mˈɑːkɪt/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "Mary",
@@ -1657,6 +2328,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "milkshake",
+"k": "milkshake",
+"e": "🥤",
+"t": "food",
+"ex": "I'd like a banana milkshake, please.",
+"es": "batido, malteada",
+"s": "milkshake",
+"ipa": "/mˈɪlkʃeɪk/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "mistake",
 "k": "mistake",
 "e": "❌",
@@ -1679,11 +2362,22 @@
 "ipa_reg": "UK"
 },
 {
+"w": "Monday",
+"k": "Monday",
+"e": "📅",
+"t": "time",
+"ex": "We have English on Monday.",
+"es": "lunes",
+"s": "monday",
+"p": false,
+"c": true
+},
+{
 "w": "moon",
 "k": "moon",
 "e": null,
 "t": "world",
-"ex": "The moon is bright tonight.",
+"ex": "Look at the moon and the stars!",
 "es": "luna",
 "s": "moon",
 "ipa": "/mˈuːn/",
@@ -1712,6 +2406,18 @@
 "ipa": "/mˈəʊst/",
 "ipa_reg": "UK",
 "p": false
+},
+{
+"w": "mountain",
+"k": "mountain",
+"e": "⛰️",
+"t": "world",
+"ex": "That mountain is very big.",
+"es": "montaña",
+"s": "mountain",
+"ipa": "/mˈaʊntɪn/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "moustache",
@@ -1862,6 +2568,18 @@
 "p": false
 },
 {
+"w": "nurse",
+"k": "nurse",
+"e": "🧑‍⚕️",
+"t": "work",
+"ex": "The nurse is helping the doctor.",
+"es": "enfermero, enfermera",
+"s": "nurse",
+"ipa": "/nˈɜːs/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "off",
 "k": "off",
 "e": "💬",
@@ -1898,6 +2616,19 @@
 "p": false
 },
 {
+"w": "opposite",
+"k": "opposite",
+"e": "↔️",
+"t": "grammar",
+"ex": "The shop is opposite the library.",
+"es": "enfrente de, contrario",
+"s": "opposite",
+"ipa": "/ˈɒpəsˌɪt/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
 "w": "out",
 "k": "out",
 "e": "💬",
@@ -1922,6 +2653,17 @@
 "p": false
 },
 {
+"w": "outside",
+"k": "outside",
+"e": "🌳",
+"t": "grammar",
+"ex": "It's sunny. Let's play outside!",
+"es": "afuera, fuera",
+"s": "outside",
+"p": false,
+"c": true
+},
+{
 "w": "o'clock",
 "k": "o'clock",
 "e": "🕔",
@@ -1931,6 +2673,18 @@
 "s": "o_clock",
 "ipa": "/əklˈɒk/",
 "ipa_reg": "UK"
+},
+{
+"w": "pair",
+"k": "pair",
+"e": "👟",
+"t": "clothes",
+"ex": "I've got a new pair of shoes.",
+"es": "par",
+"s": "pair",
+"ipa": "/pˈeə/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "pancake",
@@ -1944,6 +2698,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "panda",
+"k": "panda",
+"e": "🐼",
+"t": "animals",
+"ex": "The panda is eating.",
+"es": "panda",
+"s": "panda",
+"ipa": "/pˈændɐ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "parent",
 "k": "parent",
 "e": "👪",
@@ -1953,6 +2719,42 @@
 "s": "parent",
 "ipa": "/pˈeəɹənt/",
 "ipa_reg": "UK"
+},
+{
+"w": "parrot",
+"k": "parrot",
+"e": "🦜",
+"t": "animals",
+"ex": "My parrot can say my name!",
+"es": "loro, perico",
+"s": "parrot",
+"ipa": "/pˈæɹət/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "Party",
+"k": "party",
+"e": "🎉",
+"t": "time",
+"ex": "There are twenty children at the party.",
+"es": "fiesta",
+"s": "party",
+"ipa": "/pˈɑːti/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "pasta",
+"k": "pasta",
+"e": "🍝",
+"t": "food",
+"ex": "We have pasta for dinner on Mondays.",
+"es": "pasta, fideos",
+"s": "pasta",
+"ipa": "/pˈɑːstɐ/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "Paul",
@@ -1965,16 +2767,40 @@
 "p": false
 },
 {
+"w": "penguin",
+"k": "penguin",
+"e": "🐧",
+"t": "animals",
+"ex": "Penguins can't fly, but they can swim.",
+"es": "pingüino",
+"s": "penguin",
+"ipa": "/pˈɛŋɡwɪn/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "Peter",
 "k": "peter",
 "e": "👦",
 "t": "names",
-"ex": "Peter can skip very fast.",
+"ex": "Peter can skip and jump.",
 "es": "Peter (nombre de niño)",
 "s": "peter",
 "ipa": "/pˈiːtɐ/",
 "ipa_reg": "UK",
 "p": false
+},
+{
+"w": "picnic",
+"k": "picnic",
+"e": "🧺",
+"t": "sports",
+"ex": "We had a picnic in the park.",
+"es": "picnic",
+"s": "picnic",
+"ipa": "/pˈɪknɪk/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "pirate",
@@ -1998,6 +2824,18 @@
 "ipa": "/plˈeɪs/",
 "ipa_reg": "UK",
 "p": false
+},
+{
+"w": "plant",
+"k": "plant",
+"e": "🪴",
+"t": "world",
+"ex": "There is a green plant next to the window.",
+"es": "planta, plantar",
+"s": "plant",
+"ipa": "/plˈænt/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "plate",
@@ -2066,6 +2904,28 @@
 "ipa_reg": "UK"
 },
 {
+"w": "Present",
+"k": "present",
+"e": "🎁",
+"t": "time",
+"ex": "This present is for your birthday.",
+"es": "regalo",
+"s": "present",
+"c": true
+},
+{
+"w": "pretty",
+"k": "pretty",
+"e": "🌸",
+"t": "describing",
+"ex": "What a pretty dress!",
+"es": "bonito, lindo",
+"s": "pretty",
+"ipa": "/pɹˈɪti/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "puppy",
 "k": "puppy",
 "e": "🐶",
@@ -2075,6 +2935,16 @@
 "s": "puppy",
 "ipa": "/pˈʌpi/",
 "ipa_reg": "UK"
+},
+{
+"w": "put on",
+"k": "put on",
+"e": "🧥",
+"t": "actions",
+"ex": "Put on your coat before you go outside.",
+"es": "ponerse",
+"s": "put_on",
+"c": true
 },
 {
 "w": "quick",
@@ -2099,6 +2969,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "quiet",
+"k": "quiet",
+"e": "🤫",
+"t": "describing",
+"ex": "Be quiet! The baby is sleeping.",
+"es": "callado, silencioso",
+"s": "quiet",
+"ipa": "/kwˈaɪət/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "quietly",
 "k": "quietly",
 "e": "🤫",
@@ -2108,6 +2990,18 @@
 "s": "quietly",
 "ipa": "/kwˈaɪətli/",
 "ipa_reg": "UK"
+},
+{
+"w": "rabbit",
+"k": "rabbit",
+"e": "🐇",
+"t": "animals",
+"ex": "My rabbit likes carrots.",
+"es": "conejo",
+"s": "rabbit",
+"ipa": "/ɹˈæbɪt/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "rain",
@@ -2121,15 +3015,49 @@
 "ipa_reg": "UK"
 },
 {
+"w": "rainbow",
+"k": "rainbow",
+"e": "🌈",
+"t": "world",
+"ex": "Look at the rainbow in the sky!",
+"es": "arcoíris",
+"s": "rainbow",
+"ipa": "/ɹˈeɪnbəʊ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "river",
+"k": "river",
+"e": "🏞️",
+"t": "world",
+"ex": "There are a lot of fish in the river.",
+"es": "río",
+"s": "river",
+"c": true
+},
+{
 "w": "road",
 "k": "road",
 "e": "🛣️",
 "t": "places",
-"ex": "Look both ways before you cross the road.",
+"ex": "Don't play in the road!",
 "es": "carretera, calle",
 "s": "road",
 "ipa": "/ɹˈəʊd/",
 "ipa_reg": "UK"
+},
+{
+"w": "rock",
+"k": "rock",
+"e": "🪨",
+"t": "world",
+"ex": "The bird is sitting on a big rock.",
+"es": "roca, piedra",
+"s": "rock",
+"ipa": "/ɹˈɒk/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "roller skates",
@@ -2198,6 +3126,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "salad",
+"k": "salad",
+"e": "🥗",
+"t": "food",
+"ex": "I'd like a salad with my chicken.",
+"es": "ensalada",
+"s": "salad",
+"ipa": "/sˈæləd/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "Sally",
 "k": "sally",
 "e": "👧",
@@ -2208,6 +3148,29 @@
 "ipa": "/sˈæli/",
 "ipa_reg": "UK",
 "p": false
+},
+{
+"w": "sandwich",
+"k": "sandwich",
+"e": "🥪",
+"t": "food",
+"ex": "I've got a cheese sandwich for lunch.",
+"es": "sándwich, emparedado",
+"s": "sandwich",
+"ipa": "/sˈændwɪtʃ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "Saturday",
+"k": "Saturday",
+"e": "📅",
+"t": "time",
+"ex": "On Saturday we go to the beach.",
+"es": "sábado",
+"s": "saturday",
+"p": false,
+"c": true
 },
 {
 "w": "sauce",
@@ -2221,6 +3184,30 @@
 "ipa_reg": "UK"
 },
 {
+"w": "scarf",
+"k": "scarf",
+"e": "🧣",
+"t": "clothes",
+"ex": "My scarf is red and very long.",
+"es": "bufanda",
+"s": "scarf",
+"ipa": "/skˈɑːf/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "seat",
+"k": "seat",
+"e": "🪑",
+"t": "transport",
+"ex": "Is this your seat?",
+"es": "asiento",
+"s": "seat",
+"ipa": "/sˈiːt/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "Second",
 "k": "second",
 "e": "⏱️",
@@ -2229,6 +3216,18 @@
 "es": "segundo",
 "s": "second",
 "p": false
+},
+{
+"w": "send",
+"k": "send",
+"e": "📩",
+"t": "actions",
+"ex": "I want to send this letter to my grandma.",
+"es": "enviar, mandar",
+"s": "send",
+"ipa": "/sˈɛnd/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "shall",
@@ -2252,6 +3251,30 @@
 "s": "shape",
 "ipa": "/ʃˈeɪp/",
 "ipa_reg": "UK"
+},
+{
+"w": "shark",
+"k": "shark",
+"e": "🦈",
+"t": "animals",
+"ex": "Sharks live in the sea.",
+"es": "tiburón",
+"s": "shark",
+"ipa": "/ʃˈɑːk/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "shop",
+"k": "shop",
+"e": "🏬",
+"t": "places",
+"ex": "There is a new shop in our street.",
+"es": "tienda",
+"s": "shop",
+"ipa": "/ʃˈɒp/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "shopping",
@@ -2287,6 +3310,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "shout",
+"k": "shout",
+"e": "📢",
+"t": "actions",
+"ex": "Don't shout! The baby is sleeping.",
+"es": "gritar",
+"s": "shout",
+"ipa": "/ʃˈaʊt/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "shower",
 "k": "shower",
 "e": null,
@@ -2294,6 +3329,18 @@
 "ex": "I have a shower every morning.",
 "es": "ducha",
 "s": "shower"
+},
+{
+"w": "sick",
+"k": "sick",
+"e": "🤢",
+"t": "body",
+"ex": "I'm sick today, so I'm not at school.",
+"es": "mareado, con náuseas",
+"s": "sick",
+"ipa": "/sˈɪk/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "skate",
@@ -2351,6 +3398,30 @@
 "ipa_reg": "UK"
 },
 {
+"w": "snail",
+"k": "snail",
+"e": "🐌",
+"t": "animals",
+"ex": "The snail is on the leaf.",
+"es": "caracol",
+"s": "snail",
+"ipa": "/snˈeɪl/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "snow",
+"k": "snow",
+"e": "❄️",
+"t": "world",
+"ex": "There is snow on the mountain.",
+"es": "nieve, nevar",
+"s": "snow",
+"ipa": "/snˈəʊ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "someone",
 "k": "someone",
 "e": "🙋",
@@ -2399,6 +3470,30 @@
 "p": false
 },
 {
+"w": "soup",
+"k": "soup",
+"e": "🍜",
+"t": "food",
+"ex": "This soup is very hot!",
+"es": "sopa",
+"s": "soup",
+"ipa": "/sˈuːp/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "sports centre (US center)",
+"k": "sports centre (US center)",
+"e": "🏟️",
+"t": "places",
+"ex": "We play basketball at the sports centre.",
+"es": "polideportivo, centro deportivo",
+"s": "sports_centre_us_center",
+"ipa": "/spˈɔːts sˈɛntɐ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "square",
 "k": "square",
 "e": "⬜",
@@ -2419,6 +3514,18 @@
 "s": "stair_s",
 "ipa": "/stˈeə/",
 "ipa_reg": "UK"
+},
+{
+"w": "star",
+"k": "star",
+"e": "⭐",
+"t": "world",
+"ex": "Look at the stars in the sky!",
+"es": "estrella",
+"s": "star",
+"ipa": "/stˈɑː/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "station",
@@ -2443,6 +3550,99 @@
 "ipa_reg": "UK"
 },
 {
+"w": "stomach-ache",
+"k": "stomach-ache",
+"e": "🤕",
+"t": "body",
+"ex": "I've got a stomach-ache. I ate too much cake.",
+"es": "dolor de estómago",
+"s": "stomach_ache",
+"c": true
+},
+{
+"w": "straight",
+"k": "straight",
+"e": "📏",
+"t": "describing",
+"ex": "She has got long straight hair.",
+"es": "liso, recto",
+"s": "straight",
+"ipa": "/stɹˈeɪt/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "strong",
+"k": "strong",
+"e": "💪",
+"t": "describing",
+"ex": "Elephants are very strong animals.",
+"es": "fuerte",
+"s": "strong",
+"ipa": "/stɹˈɒŋ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "Sunday",
+"k": "Sunday",
+"e": "📅",
+"t": "time",
+"ex": "On Sunday we don't go to school.",
+"es": "domingo",
+"s": "sunday",
+"p": false,
+"c": true
+},
+{
+"w": "sunny",
+"k": "sunny",
+"e": "☀️",
+"t": "world",
+"ex": "It's a sunny day. Let's go to the beach!",
+"es": "soleado",
+"s": "sunny",
+"ipa": "/sˈʌni/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "supermarket",
+"k": "supermarket",
+"e": "🏬",
+"t": "places",
+"ex": "Mum is buying eggs at the supermarket.",
+"es": "supermercado",
+"s": "supermarket",
+"ipa": "/sˈuːpəmˌɑːkɪt/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "surprised",
+"k": "surprised",
+"e": "😲",
+"t": "describing",
+"ex": "Grandma was surprised when she saw her present.",
+"es": "sorprendido",
+"s": "surprised",
+"ipa": "/səpɹˈaɪzd/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "sweater",
+"k": "sweater",
+"e": "🧶",
+"t": "clothes",
+"ex": "Put on your sweater. It's cold.",
+"es": "suéter, chompa",
+"s": "sweater",
+"ipa": "/swˈɛtɐ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "sweet",
 "k": "sweet",
 "e": "🍬",
@@ -2454,11 +3654,23 @@
 "ipa_reg": "UK"
 },
 {
+"w": "swimming pool",
+"k": "swimming pool",
+"e": "🏊",
+"t": "sports",
+"ex": "There is a swimming pool at the sports centre.",
+"es": "piscina, alberca",
+"s": "swimming_pool",
+"ipa": "/swˈɪmɪŋ pˈuːl/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "swimsuit",
 "k": "swimsuit",
 "e": "🩱",
 "t": "clothes",
-"ex": "Don't forget your swimsuit!",
+"ex": "Take your swimsuit to the swimming pool.",
 "es": "traje de baño",
 "s": "swimsuit",
 "ipa": "/swˈɪmsuːt/",
@@ -2474,6 +3686,18 @@
 "s": "take",
 "ipa": "/tˈeɪk/",
 "ipa_reg": "UK"
+},
+{
+"w": "take off (i.e. get undressed)",
+"k": "take off (i.e. get undressed)",
+"e": "🧥",
+"t": "actions",
+"ex": "Take off your wet coat, please.",
+"es": "quitarse",
+"s": "take_off_i_e_get_undressed",
+"ipa": "/tˈeɪk ˈɒf/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "tall",
@@ -2509,6 +3733,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "temperature",
+"k": "temperature",
+"e": "🌡️",
+"t": "body",
+"ex": "The doctor is taking my temperature.",
+"es": "temperatura, fiebre",
+"s": "temperature",
+"ipa": "/tˈɛmpɹɪtʃɐ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "terrible",
 "k": "terrible",
 "e": "😖",
@@ -2529,6 +3765,19 @@
 "s": "text",
 "ipa": "/tˈɛkst/",
 "ipa_reg": "UK"
+},
+{
+"w": "than",
+"k": "than",
+"e": "💬",
+"t": "grammar",
+"ex": "My brother is taller than me.",
+"es": "que (en comparaciones)",
+"s": "than",
+"ipa": "/ðˈɐn/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
 },
 {
 "w": "thin",
@@ -2575,6 +3824,29 @@
 "ipa_reg": "UK"
 },
 {
+"w": "Thursday",
+"k": "Thursday",
+"e": "📅",
+"t": "time",
+"ex": "We have music on Thursday.",
+"es": "jueves",
+"s": "thursday",
+"p": false,
+"c": true
+},
+{
+"w": "ticket",
+"k": "ticket",
+"e": "🎫",
+"t": "transport",
+"ex": "I've got two tickets for the train.",
+"es": "boleto, entrada",
+"s": "ticket",
+"ipa": "/tˈɪkɪt/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "tired",
 "k": "tired",
 "e": "😪",
@@ -2586,6 +3858,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "tooth / teeth",
+"k": "tooth / teeth",
+"e": "🦷",
+"t": "body",
+"ex": "Clean your teeth after breakfast!",
+"es": "diente / dientes",
+"s": "tooth_teeth",
+"ipa": "/tˈuːθ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "toothache",
 "k": "toothache",
 "e": "🦷",
@@ -2595,6 +3879,18 @@
 "s": "toothache",
 "ipa": "/tˈuːθeɪk/",
 "ipa_reg": "UK"
+},
+{
+"w": "toothbrush",
+"k": "toothbrush",
+"e": "🪥",
+"t": "home",
+"ex": "My toothbrush is blue and white.",
+"es": "cepillo de dientes",
+"s": "toothbrush",
+"ipa": "/tˈuːθbɹʌʃ/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "toothpaste",
@@ -2617,6 +3913,18 @@
 "s": "top",
 "ipa": "/tˈɒp/",
 "ipa_reg": "UK"
+},
+{
+"w": "towel",
+"k": "towel",
+"e": "🏖️",
+"t": "home",
+"ex": "Take a towel to the swimming pool.",
+"es": "toalla",
+"s": "towel",
+"ipa": "/tˈaʊəl/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "town",
@@ -2663,6 +3971,18 @@
 "ipa_reg": "UK"
 },
 {
+"w": "treasure",
+"k": "treasure",
+"e": "💎",
+"t": "world",
+"ex": "They found treasure under the old tree.",
+"es": "tesoro",
+"s": "treasure",
+"ipa": "/tɹˈɛʒɐ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
 "w": "trip",
 "k": "trip",
 "e": "🚌",
@@ -2672,6 +3992,17 @@
 "s": "trip",
 "ipa": "/tɹˈɪp/",
 "ipa_reg": "UK"
+},
+{
+"w": "Tuesday",
+"k": "tuesday",
+"e": "📅",
+"t": "time",
+"ex": "We have music on Tuesday.",
+"es": "martes",
+"s": "tuesday",
+"p": false,
+"c": true
 },
 {
 "w": "uncle",
@@ -2738,6 +4069,31 @@
 "ipa_reg": "UK"
 },
 {
+"w": "village",
+"k": "village",
+"e": "🏘️",
+"t": "places",
+"ex": "My grandpa lives in a small village.",
+"es": "pueblo, aldea",
+"s": "village",
+"ipa": "/vˈɪlɪdʒ/",
+"ipa_reg": "UK",
+"c": true
+},
+{
+"w": "wait",
+"k": "wait",
+"e": "⏳",
+"t": "actions",
+"ex": "Wait for me! I'm coming.",
+"es": "esperar",
+"s": "wait",
+"ipa": "/wˈeɪt/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
 "w": "wake (up)",
 "k": "wake (up)",
 "e": "⏰",
@@ -2748,6 +4104,18 @@
 "ipa": "/wˈeɪk/",
 "ipa_reg": "UK",
 "p": false
+},
+{
+"w": "wash",
+"k": "wash",
+"e": "🧼",
+"t": "actions",
+"ex": "Wash your hands before dinner.",
+"es": "lavar, lavarse",
+"s": "wash",
+"ipa": "/wˈɒʃ/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "waterfall",
@@ -2765,11 +4133,23 @@
 "k": "weak",
 "e": "😩",
 "t": "describing",
-"ex": "I feel weak when I'm ill.",
+"ex": "The baby animal is very weak.",
 "es": "débil",
 "s": "weak",
 "ipa": "/wˈiːk/",
 "ipa_reg": "UK"
+},
+{
+"w": "weather",
+"k": "weather",
+"e": "🌤️",
+"t": "world",
+"ex": "What's the weather like today?",
+"es": "clima, tiempo",
+"s": "weather",
+"ipa": "/wˈɛðɐ/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "website",
@@ -2781,6 +4161,17 @@
 "s": "website",
 "ipa": "/wˈɛbsaɪt/",
 "ipa_reg": "UK"
+},
+{
+"w": "Wednesday",
+"k": "Wednesday",
+"e": "📅",
+"t": "time",
+"ex": "On Wednesday we have sport.",
+"es": "miércoles",
+"s": "wednesday",
+"p": false,
+"c": true
 },
 {
 "w": "Week",
@@ -2795,6 +4186,19 @@
 "p": false
 },
 {
+"w": "Weekend",
+"k": "weekend",
+"e": "📅",
+"t": "time",
+"ex": "At the weekend we go to my grandma's house.",
+"es": "fin de semana",
+"s": "weekend",
+"ipa": "/wiːkˈɛnd/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
+},
+{
 "w": "wet",
 "k": "wet",
 "e": "💧",
@@ -2804,6 +4208,18 @@
 "s": "wet",
 "ipa": "/wˈɛt/",
 "ipa_reg": "UK"
+},
+{
+"w": "whale",
+"k": "whale",
+"e": "🐳",
+"t": "animals",
+"ex": "Whales are the biggest animals in the sea.",
+"es": "ballena",
+"s": "whale",
+"ipa": "/wˈeɪl/",
+"ipa_reg": "UK",
+"c": true
 },
 {
 "w": "when",
@@ -2828,6 +4244,26 @@
 "ipa": "/wˈaɪ/",
 "ipa_reg": "UK",
 "p": false
+},
+{
+"w": "wind",
+"k": "wind",
+"e": "💨",
+"t": "world",
+"ex": "The wind is taking my kite up!",
+"es": "viento",
+"s": "wind",
+"c": true
+},
+{
+"w": "windy",
+"k": "windy",
+"e": "💨",
+"t": "world",
+"ex": "It's windy today. Let's fly our kites!",
+"es": "ventoso, con viento",
+"s": "windy",
+"c": true
 },
 {
 "w": "work",
@@ -2867,7 +4303,7 @@
 "k": "worst",
 "e": "📉",
 "t": "describing",
-"ex": "That was the worst film ever!",
+"ex": "That film was the worst!",
 "es": "el peor",
 "s": "worst",
 "ipa": "/wˈɜːst/",
@@ -2895,6 +4331,19 @@
 "s": "wrong",
 "ipa": "/ɹˈɒŋ/",
 "ipa_reg": "UK"
+},
+{
+"w": "Yesterday",
+"k": "yesterday",
+"e": "📅",
+"t": "time",
+"ex": "Yesterday we played football in the park.",
+"es": "ayer",
+"s": "yesterday",
+"ipa": "/jˈɛstədˌeɪ/",
+"ipa_reg": "UK",
+"p": false,
+"c": true
 },
 {
 "w": "Zoe",

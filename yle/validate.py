@@ -27,6 +27,7 @@ built began begun caught felt fell fallen flew flown forgot found got grew heard
 slept spoke spent stood swam taught thought told understood wore woke won wrote written drew drawn sang sung swum threw thrown broke broken chose chosen
 could should would might can't cannot don't doesn't didn't isn't aren't wasn't weren't couldn't shouldn't wouldn't won't haven't hasn't hadn't let's i'm
 you're he's she's it's we're they're i've you've we've they've i'll you'll we'll they'll that's there's what's who's
+sent i'd you'd he'd she'd we'd they'd
 zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty thirty forty fifty
 sixty seventy eighty ninety hundred thousand first second third fourth fifth sixth seventh eighth ninth tenth eleventh twelfth twentieth
 better best worse worst more most less least further farther bigger biggest smaller smallest colour colours colourful favourite

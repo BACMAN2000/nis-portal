@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>YLE Word Trainer · Nordic International School</title>
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-<link rel="stylesheet" href="brand.css?v=21">
+<link rel="stylesheet" href="brand.css?v=f981a8dd">
 <style>
 /* =========================================================================
    Entrenador de vocabulario YLE (Ruta YLE 2026, Fase 3).
@@ -90,7 +90,9 @@ input.typed.ok{border-color:var(--ok);background:#e3f3ea}input.typed.bad{border-
 </header>
 <div class="wrap">
   <aside>
-    <h2>Topics</h2>
+    <h2>Words</h2>
+    <div id="scope"></div>
+    <h2 style="margin-top:14px">Topics</h2>
     <div id="themes"></div>
     <h2 style="margin-top:14px">Level</h2>
     <div id="levels"></div>
@@ -104,11 +106,11 @@ input.typed.ok{border-color:var(--ok);background:#e3f3ea}input.typed.bad{border-
 
 <!-- NIS-ONLY -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
-<script src="config.js?v=21"></script>
-<script src="nis-nav.js?v=2"></script>
+<script src="config.js?v=68725f64"></script>
+<script src="nis-nav.js?v=c3230c7d"></script>
 <!-- /NIS-ONLY -->
-<script src="yle-media.js?v=1"></script>
-<script src="yle/fluent3d.js?v=6"></script>
+<script src="yle-media.js?v=dfe92ae3"></script>
+<script src="yle/fluent3d.js?v=fa6d9e1d"></script>
 <script>
 (function(){
 'use strict';
@@ -122,6 +124,12 @@ var LEVEL = ['starters', 'movers', 'flyers'].indexOf(qs.get('level')) >= 0 ? qs.
 var NAMES = {starters: 'Pre A1 Starters', movers: 'A1 Movers', flyers: 'A2 Flyers'};
 var AUD = 'yle-audio/vocab/' + LEVEL + '/';
 var MODES = [['learn', '📖 Learn'], ['pick', '🖼️ Pick the picture'], ['spell', '🔤 Spell it'], ['listen', '🎧 Listen & type']];
+/* Desde el 8-sep-2026 el entrenador trae la lista oficial entera, tambien lo que
+   ya se ve en clase (viene marcado con "c"). Aqui el alumno elige: todo, solo lo
+   que no ha dado en Fun for Nordic, o solo el repaso de lo que si. */
+var SCOPES = [['all', '⭐ All words'], ['new', '✨ New for you'], ['course', '🏫 Also in class']];
+var scope = ['all', 'new', 'course'].indexOf(qs.get('words')) >= 0 ? qs.get('words') : 'all';
+function scoped(){ return scope === 'all' ? WORDS : WORDS.filter(function(w){ return scope === 'course' ? !!w.c : !w.c; }); }
 var DATA = null, WORDS = [], THEMES = {};
 var theme = qs.get('topic') || 'all', mode = ['learn', 'pick', 'spell', 'listen'].indexOf(qs.get('mode')) >= 0 ? qs.get('mode') : 'learn';
 var PROG = {};                         // clave -> {ok, seen}
@@ -138,7 +146,7 @@ function picOf(w, size){ var e = emojiOf(w); if(!e) return '<span class="emoji" 
 function hasPic(w){ return w.p !== false && !!emojiOf(w); }
 function prog(w){ return PROG[w.k] || {ok: 0, seen: 0}; }
 function mastered(w){ return prog(w).ok >= MASTER; }
-function pool(){ return theme === 'all' ? WORDS : WORDS.filter(function(w){ return w.t === theme; }); }
+function pool(){ var ws = scoped(); return theme === 'all' ? ws : ws.filter(function(w){ return w.t === theme; }); }
 function boldWord(ex, w){ var base = w.w.split(' (')[0].split(' / ')[0]; var re = new RegExp('(' + base.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/s$/, '') + '\\w*)', 'i'); return esc(ex).replace(re, '<b>$1</b>'); }
 
 /* ---------- audio: mp3 propio, y si no carga, la voz del navegador ---------- */
@@ -193,12 +201,13 @@ function saveRound(modeKey, score, total){
 
 /* Lo que cubre el entrenador. Antes la cabecera decia «the 2025 word list» y
    entrenaba una cuarta parte: las palabras que el curso ya ensena no estaban
-   aqui, y nada lo explicaba. Ahora se dicen las tres cifras. */
+   aqui, y nada lo explicaba. Desde el 8-sep-2026 estan todas, y lo que se dice
+   es la lista entera; el curso queda como el dato de cuantas se repasan. */
 function paintCover(){
   var c = DATA.cover; if(!c) return;
-  $('#hSub').textContent = 'Cambridge Young Learners · ' + NAMES[LEVEL] + ' · ' + c.trainer + ' words of the 2025 list';
-  $('#cover').innerHTML = '<b>' + c.trainer + '</b> words here \u00b7 <b>' + c.course +
-    '</b> in the Fun for Nordic course \u00b7 together the whole <b>' + c.official + '</b>-word list for ' + NAMES[LEVEL] + '.';
+  $('#hSub').textContent = 'Cambridge Young Learners · ' + NAMES[LEVEL] + ' · ' + c.official + ' words of the 2025 list';
+  $('#cover').innerHTML = 'The whole <b>' + c.official + '</b>-word 2025 list for ' + NAMES[LEVEL] +
+    ' \u00b7 <b>' + c.course + '</b> of them you also study in Fun for Nordic.';
 }
 
 /* ---------- pantalla ---------- */
@@ -212,14 +221,28 @@ function init(){
     DATA = d; WORDS = d.words; THEMES = d.themes;
     if(theme !== 'all' && !THEMES[theme]) theme = 'all';
     paintCover();
+    paintScope();
     return loadAccount();
   }).then(function(){ paintThemes(); paintTop(); render(); })
   .catch(function(e){ $('#content').innerHTML = '<div class="card">Could not load the words (' + esc(e.message) + ').</div>'; });
 }
+function paintScope(){
+  $('#scope').innerHTML = SCOPES.map(function(s){
+    var n = s[0] === 'all' ? WORDS.length : WORDS.filter(function(w){ return s[0] === 'course' ? !!w.c : !w.c; }).length;
+    return '<button class="tbtn' + (s[0] === scope ? ' on' : '') + '" data-s="' + s[0] + '"><span>' + s[1] + '</span><small>' + n + '</small></button>';
+  }).join('');
+  $$('#scope .tbtn').forEach(function(b){ b.onclick = function(){
+    scope = b.dataset.s; game = null;
+    /* si el tema abierto se queda sin palabras en el grupo nuevo, se vuelve a todos */
+    if(theme !== 'all' && !scoped().some(function(w){ return w.t === theme; })) theme = 'all';
+    paintScope(); paintThemes(); paintTop(); render();
+  }; });
+}
 function paintThemes(){
-  var keys = Object.keys(THEMES).filter(function(t){ return WORDS.some(function(w){ return w.t === t; }); });
+  var vis = scoped();
+  var keys = Object.keys(THEMES).filter(function(t){ return vis.some(function(w){ return w.t === t; }); });
   var row = function(k, label, ws){ var m = ws.filter(mastered).length; return '<button class="tbtn' + (k === theme ? ' on' : '') + '" data-t="' + k + '"><span>' + label + '</span><small' + (m === ws.length && ws.length ? ' class="done"' : '') + '>' + m + '/' + ws.length + '</small></button>'; };
-  $('#themes').innerHTML = row('all', '⭐ All words', WORDS) + keys.map(function(k){ return row(k, THEMES[k], WORDS.filter(function(w){ return w.t === k; })); }).join('');
+  $('#themes').innerHTML = row('all', '⭐ All topics', vis) + keys.map(function(k){ return row(k, THEMES[k], vis.filter(function(w){ return w.t === k; })); }).join('');
   $$('#themes .tbtn').forEach(function(b){ b.onclick = function(){ theme = b.dataset.t; game = null; paintThemes(); paintTop(); render(); }; });
 }
 function paintTop(){

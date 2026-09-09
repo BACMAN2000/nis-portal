@@ -1,15 +1,21 @@
 # -*- coding: utf-8 -*-
 """Entrenador de vocabulario YLE (Ruta YLE 2026, Fase 3): construye yle/vocab/<level>.json
-con las palabras de la lista oficial 2025 que NO aparecen en Fun for Nordic
-(C:/Projects/yle-oficial/faltan_<level>.json), cada una con dibujo (emoji, o el mapa
+con TODA la lista oficial 2025 del nivel, cada palabra con dibujo (emoji, o el mapa
 de yle/fluent3d.js en la app), tema, frase de ejemplo dentro del vocabulario del nivel
 y significado en español para la familia.
+
+Hasta el 8-sep-2026 solo escribía el hueco: la lista menos lo que Fun for Nordic
+declara. Pero el mismo archivo lo sirve cohasset.pe, que no tiene ese curso, y allí
+el entrenador prometía la lista entera y entregaba dos tercios. Ahora van todas y
+las que el curso ya enseña salen marcadas con "c": true, que es lo que el portal
+del colegio usa para ofrecerlas aparte, como repaso.
 
     python yle/tools/build_vocab.py            # escribe los tres JSON y avisa si falta alguna palabra
 
 Formato de cada entrada: {"w": palabra, "e": emoji|null, "t": tema, "ex": ejemplo, "es": español,
                           "p": false si el dibujo es genérico (nombres, frases) y no sirve para
-                          «elige el dibujo», "s": slug del audio (yle-audio/vocab/<level>/<s>.mp3)}
+                          «elige el dibujo», "c": true si Fun for Nordic ya la enseña,
+                          "s": slug del audio (yle-audio/vocab/<level>/<s>.mp3)}
 """
 import glob, importlib.util, io, json, os, re, sys
 
@@ -30,7 +36,9 @@ GENERIC = {'💬', '👦', '👧', '🧒', '📅', '📍', '❓', '🙋', '🚫'
 # Entradas de la lista oficial que vienen con dos formas: se separan o se limpian.
 RENOMBRA = {
   'starters': {'ann/ anna': ['ann', 'anna'], 'take a photo/picture': ['take a photo'], 'television/tv': ['television (TV)'],
-               'don\u2019t worry': ["don't worry"], 'let\u2019s': ["let's"]},
+               'don\u2019t worry': ["don't worry"], 'let\u2019s': ["let's"],
+               # sin esto el mp3 de la palabra sale leido \u00absweet parentesis ese\u00bb
+               'sweet(s) (US candy)': ['sweets (US candy)']},
   'movers': {'t uesday': ['tuesday'], 'o\u2019clock': ["o'clock"]},
   'flyers': {'businessman/woman': ['businessman / businesswoman']},
 }
@@ -47,17 +55,17 @@ STARTERS = {
  "armchair": ["🛋️","home","Grandpa is sleeping in the armchair.","sillón"],
  "badminton": ["🏸","sports","We play badminton in the garden.","bádminton"],
  "baseball": ["⚾","sports","Tom has got a new baseball.","béisbol"],
- "baseball cap": ["🧢","clothes","Put on your baseball cap. It's sunny!","gorra"],
+ "baseball cap": ["🧢","clothes","My new baseball cap is red.","gorra"],
  "bean": ["🫘","food","I don't like beans.","frijol, judía"],
  "bee": ["🐝","animals","The bee is on the flower.","abeja"],
  "ben": ["👦","names","Ben is playing football.","Ben (nombre de niño)"],
  "bill": ["👦","names","Bill has got a blue bike.","Bill (nombre de niño)"],
  "board game": ["🎲","sports","Let's play a board game!","juego de mesa"],
  "bookcase": ["📚","home","The books are in the bookcase.","estantería, librero"],
- "bookshop": ["🏪","places","Mum is buying a book in the bookshop.","librería"],
+ "bookshop": ["🏪","places","There are a lot of books in the bookshop.","librería"],
  "bounce": ["🏀","actions","Bounce the ball!","botar, rebotar"],
  "burger": [None,"food","I'd like a burger and some chips.","hamburguesa"],
- "bye": ["👋","expressions","Bye! See you tomorrow!","adiós"],
+ "bye": ["👋","expressions","Bye! See you at school!","adiós"],
  "camera": [None,"tech","Dad has got a new camera.","cámara"],
  "classmate": ["🧑‍🤝‍🧑","school","Sam is my classmate.","compañero/a de clase"],
  "coconut": [None,"food","Monkeys like coconuts.","coco"],
@@ -76,14 +84,14 @@ STARTERS = {
  "fantastic": ["🤩","expressions","Fantastic! Well done!","fantástico"],
  "fishing": ["🎣","sports","Grandpa likes fishing.","pesca, ir a pescar"],
  "glasses": [None,"clothes","My teacher wears glasses.","lentes, gafas"],
- "go to bed": ["🛏️","actions","I go to bed at eight o'clock.","irse a la cama"],
+ "go to bed": ["🛏️","actions","I go to bed at night.","irse a la cama"],
  "go to sleep": ["😴","actions","The baby is going to sleep.","dormirse"],
  "grace": ["👧","names","Grace has got a cat.","Grace (nombre de niña)"],
  "grape": [None,"food","I like green grapes.","uva"],
  "guitar": [None,"music","Dad plays the guitar.","guitarra"],
  "hall": ["🚪","home","Your shoes are in the hall.","recibidor, pasillo"],
  "handbag": [None,"clothes","Mum's handbag is red.","bolso, cartera"],
- "helicopter": [None,"transport","Look! A helicopter in the sky!","helicóptero"],
+ "helicopter": [None,"transport","Look at that big helicopter!","helicóptero"],
  "hers": ["💬","expressions","This bag is hers.","suyo, suya (de ella)"],
  "hi": ["👋","expressions","Hi! I'm Lucy.","hola"],
  "hit": ["🏏","actions","Hit the ball with the bat.","golpear"],
@@ -98,16 +106,16 @@ STARTERS = {
  "kim": ["🧒","names","Kim is my friend.","Kim (nombre de niño o niña)"],
  "kiwi": ["🥝","food","Kiwis are green.","kiwi"],
  "let's": ["💬","expressions","Let's play football!","vamos a…"],
- "lime": ["🍋","food","This lime is very sour!","lima"],
+ "lime": ["🍋","food","This lime is small and green.","lima"],
  "line": ["〰️","school","Draw a line under the word.","línea"],
- "lizard": [None,"animals","The lizard is on the rock.","lagartija"],
+ "lizard": [None,"animals","The lizard is under the table.","lagartija"],
  "lots": ["💬","expressions","Thanks a lot! I've got lots!","muchos, mucho"],
  "lots of": ["💬","expressions","There are lots of toys in the box.","muchos, muchas"],
  "lucy": ["👧","names","Lucy is wearing a hat.","Lucy (nombre de niña)"],
  "mark": ["👦","names","Mark has got a robot.","Mark (nombre de niño)"],
  "mat": ["🟫","home","The cat is on the mat.","tapete, alfombrilla"],
  "matt": ["👦","names","Matt likes tennis.","Matt (nombre de niño)"],
- "me too": ["💬","expressions","I like pizza. Me too!","yo también"],
+ "me too": ["💬","expressions","I like cake. Me too!","yo también"],
  "meatballs": ["🍝","food","We are having meatballs for dinner.","albóndigas"],
  "mine": ["💬","expressions","This pencil is mine.","mío, mía"],
  "mirror": [None,"home","Look in the mirror!","espejo"],
@@ -125,22 +133,22 @@ STARTERS = {
  "piano": [None,"music","Alice plays the piano.","piano"],
  "pick up": ["🙌","actions","Pick up your pencil, please.","recoger, levantar"],
  "pie": ["🥧","food","Grandma is making an apple pie.","pastel, tarta"],
- "plane": [None,"transport","The plane is in the sky.","avión"],
+ "plane": [None,"transport","The plane is very big.","avión"],
  "polar bear": ["🐻‍❄️","animals","Polar bears are white.","oso polar"],
  "poster": ["🖼️","home","There's a poster on the wall.","póster, afiche"],
  "potato": [None,"food","We eat potatoes for lunch.","papa, patata"],
  "really": ["💬","expressions","Really? That's great!","¿de verdad?, realmente"],
  "sam": ["🧒","names","Sam is swimming.","Sam (nombre de niño o niña)"],
  "sausage": [None,"food","I like sausages and eggs.","salchicha"],
- "see you": ["👋","expressions","See you tomorrow!","nos vemos"],
+ "see you": ["👋","expressions","See you at school!","nos vemos"],
  "skateboard": [None,"sports","My skateboard is red.","patineta, monopatín"],
  "skateboarding": ["🛹","sports","I love skateboarding.","andar en patineta"],
  "sock": [None,"clothes","Where is my blue sock?","calcetín, media"],
  "spider": [None,"animals","There's a spider on the wall!","araña"],
  "story": ["📖","school","Grandma is reading a story.","cuento, historia"],
  "sue": ["👧","names","Sue is drawing a horse.","Sue (nombre de niña)"],
- "table tennis": ["🏓","sports","We play table tennis after school.","tenis de mesa, ping-pong"],
- "tablet": ["📱","tech","I watch cartoons on the tablet.","tableta"],
+ "table tennis": ["🏓","sports","We play table tennis in the garden.","tenis de mesa, ping-pong"],
+ "tablet": ["📱","tech","I play games on the tablet.","tableta"],
  "take a photo": ["📸","actions","Can I take a photo of you?","tomar una foto"],
  "television (TV)": ["📺","home","We watch TV in the living room.","televisión"],
  "tennis racket": ["🎾","sports","This is my new tennis racket.","raqueta de tenis"],
@@ -163,7 +171,7 @@ MOVERS = {
  "badly": ["😬","describing","He played badly today.","mal"],
  "basement": ["🪜","home","Our bikes are in the basement.","sótano"],
  "be called": ["💬","expressions","My dog is called Max.","llamarse"],
- "brave": ["🦸","describing","The firefighter is very brave.","valiente"],
+ "brave": ["🦸","describing","My little brother is very brave.","valiente"],
  "break": ["💥","actions","Don't break the window!","romper"],
  "brilliant": ["🌟","expressions","Brilliant! You did it!","genial, brillante"],
  "building": ["🏢","places","That building is very tall.","edificio"],
@@ -176,18 +184,18 @@ MOVERS = {
  "circus": ["🎪","places","We went to the circus on Saturday.","circo"],
  "clare": ["👧","names","Clare is good at swimming.","Clare (nombre de niña)"],
  "coffee": [None,"food","Mum drinks coffee in the morning.","café"],
- "come on": ["💬","expressions","Come on! We're late!","¡vamos!, ¡venga!"],
+ "come on": ["💬","expressions","Come on! The bus is here!","¡vamos!, ¡venga!"],
  "comic": ["📰","school","I read a comic every week.","cómic, historieta"],
  "comic book": ["📚","school","This comic book is funny.","libro de cómics"],
- "country": ["🌍","world","Peru is a big country.","país"],
+ "country": ["🌍","world","My country is very big.","país"],
  "daisy": ["👧","names","Daisy is wearing a yellow dress.","Daisy (nombre de niña)"],
  "daughter": ["👧","family","Mrs Brown has got one daughter.","hija"],
  "difference": ["🔍","school","Find the differences between the two pictures.","diferencia"],
  "downstairs": ["⬇️","home","The kitchen is downstairs.","abajo, en el piso de abajo"],
- "dress up": ["🎭","actions","We dressed up as pirates.","disfrazarse"],
+ "dress up": ["🎭","actions","We dressed up for the party.","disfrazarse"],
  "drive": ["🚗","actions","My dad drives a red car.","conducir, manejar"],
  "drop": ["💧","actions","Don't drop the glass!","dejar caer"],
- "dvd": ["📀","tech","Let's watch a DVD tonight.","DVD"],
+ "dvd": ["📀","tech","Let's watch a DVD after dinner.","DVD"],
  "e-book": ["📱","tech","I read an e-book on the tablet.","libro electrónico"],
  "earache": ["🤕","body","Jim has got earache.","dolor de oído"],
  "email": ["📧","tech","Grandpa sent me an email.","correo electrónico"],
@@ -198,9 +206,9 @@ MOVERS = {
  "fine": ["👍","expressions","How are you? I'm fine, thanks.","bien"],
  "fix": ["🔧","actions","Dad can fix my bike.","arreglar"],
  "fred": ["👦","names","Fred has got a new kite.","Fred (nombre de niño)"],
- "frightened": ["😱","describing","The children were frightened of the storm.","asustado"],
+ "frightened": ["😱","describing","The children were frightened of the big dog.","asustado"],
  "get off": ["🚌","actions","We get off the bus at the school.","bajarse (del bus)"],
- "get undressed": ["🩳","actions","Get undressed and put on your pyjamas.","desvestirse"],
+ "get undressed": ["🩳","actions","Get undressed and have a bath.","desvestirse"],
  "go shopping": ["🛍️","actions","We go shopping on Saturdays.","ir de compras"],
  "granddaughter": ["👧","family","Grandma is with her granddaughter.","nieta"],
  "grandparent": ["👴","family","My grandparents live in the countryside.","abuelo, abuela"],
@@ -209,9 +217,9 @@ MOVERS = {
  "grown-up": ["🧑","family","Grown-ups drink coffee.","adulto, persona mayor"],
  "helmet": [None,"clothes","Wear a helmet on your bike.","casco"],
  "how often": ["🗓️","expressions","How often do you play tennis?","con qué frecuencia"],
- "hurt": ["🤕","body","I fell and hurt my knee.","doler; hacerse daño"],
+ "hurt": ["🤕","body","I fell and hurt my leg.","doler; hacerse daño"],
  "ice skates": ["⛸️","sports","I got new ice skates for my birthday.","patines de hielo"],
- "ice skating": ["⛸️","sports","We went ice skating in winter.","patinaje sobre hielo"],
+ "ice skating": ["⛸️","sports","We went ice skating with my cousin.","patinaje sobre hielo"],
  "internet": ["🌐","tech","I look for pictures on the internet.","internet"],
  "jack": ["👦","names","Jack is climbing the tree.","Jack (nombre de niño)"],
  "jane": ["👧","names","Jane is cooking with her mum.","Jane (nombre de niña)"],
@@ -219,10 +227,10 @@ MOVERS = {
  "julia": ["👧","names","Julia is riding a horse.","Julia (nombre de niña)"],
  "laptop": ["💻","tech","Mum works on her laptop.","laptop, portátil"],
  "lily": ["👧","names","Lily is at the circus.","Lily (nombre de niña)"],
- "lose": ["😢","actions","Don't lose your keys!","perder"],
+ "lose": ["😢","actions","Don't lose your ticket!","perder"],
  "mary": ["👧","names","Mary is younger than me.","Mary (nombre de niña)"],
  "model": ["🚢","sports","Peter makes model planes.","maqueta, modelo"],
- "moon": [None,"world","The moon is bright tonight.","luna"],
+ "moon": [None,"world","Look at the moon and the stars!","luna"],
  "moustache": ["👨","body","My uncle has got a moustache.","bigote"],
  "naughty": ["😈","describing","The naughty dog ate my sandwich!","travieso"],
  "net": ["🥅","sports","The ball is in the net!","red"],
@@ -230,11 +238,11 @@ MOVERS = {
  "o'clock": ["🕔","time","School starts at eight o'clock.","en punto"],
  "parent": ["👪","family","My parents are teachers.","padre, madre"],
  "paul": ["👦","names","Paul is a good singer.","Paul (nombre de niño)"],
- "peter": ["👦","names","Peter can skip very fast.","Peter (nombre de niño)"],
+ "peter": ["👦","names","Peter can skip and jump.","Peter (nombre de niño)"],
  "pop star": ["🎤","music","She wants to be a pop star.","estrella del pop"],
  "practise": ["🎹","actions","I practise the piano every day.","practicar"],
  "quick": ["⚡","describing","Be quick! The bus is coming.","rápido"],
- "road": ["🛣️","places","Look both ways before you cross the road.","carretera, calle"],
+ "road": ["🛣️","places","Don't play in the road!","carretera, calle"],
  "roller skates": ["🛼","sports","Sally has got new roller skates.","patines de ruedas"],
  "roller skating": ["🛼","sports","We went roller skating in the park.","patinaje sobre ruedas"],
  "sail": ["⛵","actions","We sailed on the lake.","navegar"],
@@ -245,7 +253,7 @@ MOVERS = {
  "shower": [None,"home","I have a shower every morning.","ducha"],
  "skip": ["🪢","actions","The girls are skipping in the playground.","saltar la cuerda"],
  "son": ["👦","family","Mr Green has got two sons.","hijo"],
- "swimsuit": ["🩱","clothes","Don't forget your swimsuit!","traje de baño"],
+ "swimsuit": ["🩱","clothes","Take your swimsuit to the swimming pool.","traje de baño"],
  "tuesday": ["📅","time","We have music on Tuesday.","martes"],
  "terrible": ["😖","describing","The weather was terrible yesterday.","terrible"],
  "thin": ["🥢","describing","The cat is thin, not fat.","delgado"],
@@ -255,16 +263,16 @@ MOVERS = {
  "tractor": [None,"transport","The farmer drives a tractor.","tractor"],
  "vicky": ["👧","names","Vicky helps at home.","Vicky (nombre de niña)"],
  "waterfall": ["🏞️","world","We saw a beautiful waterfall.","cascada, catarata"],
- "weak": ["😩","describing","I feel weak when I'm ill.","débil"],
+ "weak": ["😩","describing","The baby animal is very weak.","débil"],
  "website": ["🌐","tech","This website has got good games.","sitio web"],
  "worse": ["📉","describing","My cold is worse today.","peor"],
- "worst": ["📉","describing","That was the worst film ever!","el peor"],
+ "worst": ["📉","describing","That film was the worst!","el peor"],
  "wrong": ["❌","describing","That answer is wrong.","incorrecto, equivocado"],
  "zoe": ["👧","names","Zoe is at the bus stop.","Zoe (nombre de niña)"],
 }
 
 FLYERS = {
- "a few": ["💬","expressions","I've got a few coins in my pocket.","unos pocos"],
+ "a few": ["💬","expressions","I've got a few sweets in my pocket.","unos pocos"],
  "a.m.": ["⏰","time","School starts at eight a.m.","de la mañana (antes del mediodía)"],
  "actor": ["🎭","work","My uncle is an actor.","actor"],
  "anywhere": ["🗺️","expressions","I can't find my glove anywhere.","en ningún sitio; en cualquier sitio"],
@@ -275,7 +283,7 @@ FLYERS = {
  "bin": ["🗑️","home","Put the paper in the bin.","tacho, papelera"],
  "bracelet": ["📿","clothes","Emma is wearing a silver bracelet.","pulsera"],
  "burn": ["🔥","actions","Be careful! Don't burn your hand.","quemar"],
- "business": ["💼","work","My aunt has got her own business.","negocio, empresa"],
+ "business": ["💼","work","My aunt has got a small business in town.","negocio, empresa"],
  "businessman / businesswoman": ["👔","work","A businessman works in an office.","empresario / empresaria"],
  "by myself": ["🙋","expressions","I made this cake by myself.","yo solo, yo sola"],
  "by yourself": ["🙋","expressions","Did you do it by yourself?","tú solo, tú sola"],
@@ -300,18 +308,18 @@ FLYERS = {
  "fall over": ["🤸","actions","I fell over on the ice.","caerse"],
  "fetch": ["🐕","actions","The dog can fetch the ball.","ir a buscar, traer"],
  "file": ["📁","tech","Open the file on the computer.","archivo"],
- "fire fighter": ["🧑‍🚒","work","The fire fighter climbed the ladder.","bombero"],
+ "fire fighter": ["🧑‍🚒","work","The fire fighter came in a fire engine.","bombero"],
  "fire station": ["🚒","places","The fire station is on this road.","estación de bomberos"],
  "foggy": ["🌫️","world","It's foggy this morning.","con niebla"],
  "fork": ["🍴","food","We eat pasta with a fork.","tenedor"],
  "frank": ["👦","names","Frank is a mechanic.","Frank (nombre de niño)"],
  "frightening": ["👻","describing","That film was frightening!","aterrador"],
- "fur": ["🐻","animals","The bear has got thick brown fur.","pelaje"],
- "furry": ["🐹","describing","My hamster is small and furry.","peludo"],
+ "fur": ["🐻","animals","The bear has got long brown fur.","pelaje"],
+ "furry": ["🐹","describing","My rabbit is small and furry.","peludo"],
  "george": ["👦","names","George is at the post office.","George (nombre de niño)"],
  "get to": ["🏁","actions","How do you get to school?","llegar a"],
  "glove": ["🧤","clothes","I lost one glove in the snow.","guante"],
- "glue": ["🧴","school","Use glue to stick the paper.","pegamento"],
+ "glue": ["🧴","school","Use glue to make your card.","pegamento"],
  "go away": ["🚶","actions","Go away! I'm reading.","irse, marcharse"],
  "harry": ["👦","names","Harry built a snowman.","Harry (nombre de niño)"],
  "hate": ["😠","describing","I hate cold weather.","odiar"],
@@ -356,7 +364,7 @@ FLYERS = {
  "pop music": ["🎵","music","I listen to pop music.","música pop"],
  "popular": ["⭐","describing","Football is popular in my country.","popular"],
  "post office": ["📮","places","I bought stamps at the post office.","oficina de correos"],
- "pull": ["🪢","actions","Pull the rope!","tirar, jalar"],
+ "pull": ["🪢","actions","Pull the door to open it.","tirar, jalar"],
  "push": ["🛒","actions","Push the door to open it.","empujar"],
  "pyramid": ["🔺","world","We saw the pyramids in Egypt.","pirámide"],
  "repair": ["🔧","actions","Dad repaired my bike.","reparar"],
@@ -382,7 +390,7 @@ FLYERS = {
  "soap": ["🧼","home","Wash your hands with soap.","jabón"],
  "soon": ["⏰","time","See you soon!","pronto"],
  "sophia": ["👧","names","Sophia is a member of the swimming club.","Sophia (nombre de niña)"],
- "sore": ["🤒","body","I've got a sore throat.","dolorido, irritado"],
+ "sore": ["🤒","body","I've got a sore knee.","dolorido, irritado"],
  "speak": ["🗣️","actions","Do you speak English?","hablar"],
  "spotted": ["🐆","describing","The dog has got a spotted coat.","con manchas, moteado"],
  "stripe": ["🦓","describing","A zebra has got black and white stripes.","raya"],
@@ -408,17 +416,25 @@ FLYERS = {
  "wifi": ["📶","tech","Is there wifi in the hotel?","wifi"],
  "william": ["👦","names","William is good at chess.","William (nombre de niño)"],
  "wonderful": ["🌈","expressions","What a wonderful day!","maravilloso"],
- "zero": ["0️⃣","time","Ten minus ten is zero.","cero"],
+ "zero": ["0️⃣","time","Our team won two - zero.","cero"],
 }
 
 DATA = {'starters': STARTERS, 'movers': MOVERS, 'flyers': FLYERS}
 
-# Las 471 que no cubria nadie (ver vocab_huecos.py). Se anaden a las de arriba.
+# Las 471 que no cubria nadie (vocab_huecos.py) y las 551 que solo ensenaba el curso
+# de primaria (vocab_curso.py). Juntas con las de arriba, la lista oficial entera.
 _aqui = os.path.dirname(os.path.abspath(__file__))
-_spec = importlib.util.spec_from_file_location('vocab_huecos', os.path.join(_aqui, 'vocab_huecos.py'))
-_vh = importlib.util.module_from_spec(_spec); _spec.loader.exec_module(_vh)
-for _lv, _d in (('starters', _vh.STARTERS), ('movers', _vh.MOVERS), ('flyers', _vh.FLYERS)):
-    DATA[_lv].update(_d)
+
+
+def _tabla(mod):
+    s = importlib.util.spec_from_file_location(mod, os.path.join(_aqui, mod + '.py'))
+    m = importlib.util.module_from_spec(s); s.loader.exec_module(m)
+    return m
+
+for _mod in ('vocab_huecos', 'vocab_curso'):
+    _m = _tabla(_mod)
+    for _lv, _d in (('starters', _m.STARTERS), ('movers', _m.MOVERS), ('flyers', _m.FLYERS)):
+        DATA[_lv].update(_d)
 
 WL = json.load(io.open(os.path.join(RAIZ, 'yle', 'wordlist-2025.json'), encoding='utf-8'))
 # La transcripcion sale de la base de palabras propia, que ya la trae para 6.868
@@ -495,15 +511,29 @@ def clave(w):
 
 
 def build(level):
+    """El entrenador entrena la lista oficial entera, no el descuento del curso.
+
+    Hasta el 8-sep-2026 solo se escribian las de hueco(): lo que Fun for Nordic no
+    declaraba. Ese descuento vale en el portal del colegio y en ningun otro sitio.
+    cohasset.pe sirve el mismo archivo y no tiene el curso, asi que alli el
+    entrenador prometia la lista de 2025 y daba dos tercios. Ahora se escriben las
+    de la lista y las que el curso ya ensena van marcadas con "c": true, para que
+    el portal las pueda ofrecer aparte como repaso."""
     d = DATA[level]
     ren = RENOMBRA.get(level, {})
     # indice por forma normalizada, para no depender de como este escrita la entrada
     idx = {clave(k): k for k in d}
     idx.update({clave(k): k for k in ren})
-    palabras = []
-    for w in hueco(level):
-        k = idx.get(clave(w), w)
-        palabras.extend(ren.get(k, [k]))
+    del_curso = set(WL[level]) - set(hueco(level))
+    palabras, curso = [], set()
+    for w in WL[level]:
+        # la coincidencia exacta manda sobre la normalizada: «lift» y «lift (ride)»
+        # dan la misma clave, y sin esto una se comia a la otra (le pasaba a
+        # «right» en Starters: salia dos veces la correcta y ninguna la direccion)
+        k = w if (w in d or w in ren) else idx.get(clave(w), w)
+        formas_k = ren.get(k, [k])
+        palabras.extend(formas_k)
+        if w in del_curso: curso.update(formas_k)
     sin_definir = [w for w in palabras if w not in d]
     if sin_definir:
         print('%s: SIN DEFINIR (%d) %s' % (level, len(sin_definir), sin_definir[:12]))
@@ -517,19 +547,20 @@ def build(level):
         fon = ipa(w)
         if fon: row['ipa'], row['ipa_reg'] = fon, 'UK'
         if e in GENERIC or t in ('names', 'expressions', 'grammar'): row['p'] = False
+        if w in curso: row['c'] = True
         out.append(row)
     os.makedirs(OUT, exist_ok=True)
-    # la pagina dice cuanto cubre, y lo dice con la cuenta de verdad: lo que
-    # entrena aqui, lo que ya ensena el curso y el total de la lista oficial
-    cubre = {'trainer': len(hueco(level)), 'course': len(WL[level]) - len(hueco(level)), 'official': len(WL[level])}
+    # la pagina dice cuanto cubre: aqui esta la lista entera, y de ella tantas se
+    # ven ademas en el curso (dato que solo significa algo en el portal del colegio)
+    cubre = {'trainer': len(WL[level]), 'course': len(del_curso), 'official': len(WL[level])}
     io.open(os.path.join(OUT, level + '.json'), 'w', encoding='utf-8').write(
         json.dumps({'level': level, 'themes': THEMES, 'cover': cubre, 'words': out}, ensure_ascii=False, indent=0))
     con = sum(1 for r in out if r.get('p') is not False)
     # la cobertura se cuenta por entrada de la lista oficial, no por tarjeta: una
     # entrada como «ann/ anna» se parte en dos tarjetas y contarlas inflaba el total
-    h = len(hueco(level)); ofi = len(WL[level]); fon = sum(1 for r in out if r.get('ipa'))
-    print("%-9s %3d tarjetas (%3d con dibujo, %3d con IPA) | el curso ensena %3d | el entrenador %3d | cubiertas %d/%d"
-          % (level, len(out), con, fon, ofi - h, h, ofi, ofi))
+    ofi = len(WL[level]); fon = sum(1 for r in out if r.get('ipa')); rep = sum(1 for r in out if r.get('c'))
+    print("%-9s %3d tarjetas (%3d con dibujo, %3d con IPA) | tambien en el curso %3d | cubiertas %d/%d"
+          % (level, len(out), con, fon, rep, ofi, ofi))
 
 
 if __name__ == '__main__':
