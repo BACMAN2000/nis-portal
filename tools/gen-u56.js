@@ -1,6 +1,11 @@
 /* Copia suelta de unidad56.html para la reunion: sin servidor y sin red.
    Incrusta scope-u56.js y la parte del Scope que la pagina comprueba.
-   node tools/gen-u56.js <salida.html>                                    */
+     node tools/gen-u56.js <salida.html>                  las dos etapas
+     node tools/gen-u56.js <salida.html> 4                solo 4.o
+     node tools/gen-u56.js <salida.html> etapa:primaria   solo primaria
+
+   Sin query string —que es como se abre un archivo del disco— la eleccion
+   tiene que viajar dentro del propio HTML: por eso window.__FIJO.          */
 const fs = require('fs'), path = require('path');
 const raiz = path.join(__dirname, '..');
 const html = fs.readFileSync(path.join(raiz, 'unidad56.html'), 'utf8');
@@ -27,13 +32,19 @@ Object.keys(plan.grados || {}).forEach(gk => {
     })}))};
 });
 
+/* Que abre esta copia: un grado, una etapa, o las dos etapas. */
+const que = process.argv[3] || '';
+const fijo = que.indexOf('etapa:') === 0 ? {etapa: que.slice(6)}
+           : que ? {grado: que} : null;
+
 /* Un '</script>' dentro del JSON cerraria el script que lo lleva. */
 const json = o => JSON.stringify(o).replace(/</g, '\\u003c');
 
 const salida = html
   .replace(/<script src="scope-u56\.js\?v=\d+"><\/script>/,
     '<script>' + datos + '</script>\n<script>window.__SCOPE = '
-    + json(min) + ';\nwindow.__PLAN = ' + json(planMin) + ';</script>')
+    + json(min) + ';\nwindow.__PLAN = ' + json(planMin) + ';'
+    + (fijo ? '\nwindow.__FIJO = ' + json(fijo) + ';' : '') + '</script>')
   .replace('<a id="back" href="project.html">&#8592; Volver</a>', '');
 
 const destino = process.argv[2];

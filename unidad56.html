@@ -310,9 +310,10 @@ function marcaEvidencia(txt){
 /* La etapa sale del grado pedido; sin grado, de ?etapa; y si no, secundaria,
    que es como nacio esta pagina y como esta enlazada desde fuera. */
 function pedido(){
+  if(forzado) return forzado;
+  if(window.__FIJO) return {grado: window.__FIJO.grado || null, etapa: window.__FIJO.etapa || null};
   const P = new URLSearchParams(location.search);
-  return {grado: (forzado ? forzado.grado : P.get('grado')),
-          etapa: (forzado ? forzado.etapa : P.get('etapa'))};
+  return {grado: P.get('grado'), etapa: P.get('etapa')};
 }
 function etapaActual(){
   const q = pedido();
