@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme="light" data-theme="light" lang="en">
+<html data-theme="light" lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,7 +15,8 @@ if(/\.github\.io$/i.test(location.hostname)){
 <link rel="stylesheet" href="../../vendor/fonts/baloo2-sourcesans3-e3f99b.css">
 <link rel="preload" href="../../fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../nis-fonts.css?v=fd196882">
-<link rel="stylesheet" href="../../nis-tokens.css?v=fd0ffbab">
+<script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="../../nis-tokens.css?v=36174a4f">
 <style>
   :root{
   --surface:#fff;
@@ -3175,5 +3176,6 @@ function puenteExamen(){
 
 (UNIT ? unit() : (LEVEL ? hub() : levels())).catch(e=>{ app.textContent = T('Error loading content: ',"Erreur au chargement du contenu : ")+e.message; });
 </script>
+<script src="../../nis-tema.js?v=a9738cd9" defer></script>
 </body>
 </html>

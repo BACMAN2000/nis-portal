@@ -10,7 +10,7 @@
 <link rel="preload" href="fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="nis-fonts.css?v=fd196882">
 <script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<link rel="stylesheet" href="nis-tokens.css?v=fd0ffbab">
+<link rel="stylesheet" href="nis-tokens.css?v=36174a4f">
 <style>
   :root{--blue:#1d6fb8;--blue-d:#154e7f;--line:#e2e8f0;--gold:#b8934a}
   *{ box-sizing:border-box; margin:0 }
@@ -36,8 +36,8 @@
   .card.locked:hover{ transform:none; border-color:var(--line) }
   .chip{ display:inline-block; background:var(--bg); color:var(--blue-d); font-weight:700; font-size:11.5px;
     border-radius:9px; padding:3px 10px; margin-top:8px }
-  .chip.ok{ background:#dcfce7; color:var(--ink) }
-  .chip.no{ background:#fee2e2; color:var(--ink) }
+  .chip.ok{ background:var(--green50); color:var(--ink) }
+  .chip.no{ background:var(--red50); color:var(--ink) }
   .hero{ background:linear-gradient(135deg,#7f1d1d,#1c1712); color:#fde68a; border-radius:18px; padding:20px 18px;
     margin-bottom:18px; position:relative; overflow:hidden; border:1px solid var(--gold) }
   .hero::after{ content:"EXAM"; position:absolute; top:16px; right:-30px; transform:rotate(35deg); background:#b91c1c;
@@ -49,7 +49,7 @@
   .tgl{ display:flex; gap:8px; align-items:center; margin-top:10px; font-size:12px; font-weight:700 }
   .tgl button{ border:none; border-radius:20px; width:46px; height:24px; cursor:pointer; position:relative; transition:.2s; flex:none }
   .tgl button::after{ content:""; position:absolute; top:3px; width:18px; height:18px; border-radius:50%; background:var(--card); transition:.2s }
-  .tgl button.off{ background:#cbd5e1 } .tgl button.off::after{ left:3px }
+  .tgl button.off{ background:var(--line-2) } .tgl button.off::after{ left:3px }
   .tgl button.on{ background:#16a34a } .tgl button.on::after{ left:25px }
   /* examen */
   .exam-top{ position:sticky; top:56px; z-index:10; background:var(--card); border:1.5px solid var(--line); border-radius:14px;
@@ -58,7 +58,7 @@
   .timer{ font-variant-numeric:tabular-nums; font-weight:800; font-size:17px; color:var(--blue-d) }
   .timer.low{ color:var(--bad); animation:blink 1s infinite }
   @keyframes blink{ 50%{ opacity:.45 } }
-  .tprog{ flex:1; min-width:120px; height:8px; background:#e2e8f0; border-radius:5px; overflow:hidden }
+  .tprog{ flex:1; min-width:120px; height:8px; background:var(--line); border-radius:5px; overflow:hidden }
   .tprog span{ display:block; height:100%; background:var(--blue); transition:width 1s linear }
   .q{ background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px 18px; margin-bottom:14px }
   .q .tag{ font-size:10.5px; font-weight:800; letter-spacing:.6px; color:var(--gold); text-transform:uppercase }
@@ -67,13 +67,13 @@
     padding:11px 14px; margin:7px 0; cursor:pointer; font-family:inherit; font-size:14px; font-weight:600; color:var(--ink) }
   .opt:hover{ border-color:#93c5fd }
   .opt.sel{ background:var(--accent-soft); border-color:var(--blue) }
-  .opt.correct{ background:#dcfce7; border-color:#4ade80; color:var(--ink) }
-  .opt.wrong{ background:#fee2e2; border-color:#f87171; color:var(--ink) }
+  .opt.correct{ background:var(--green50); border-color:#4ade80; color:var(--ink) }
+  .opt.wrong{ background:var(--red50); border-color:#f87171; color:var(--ink) }
   input.tin{ border:none; border-bottom:2.5px solid var(--blue); font-family:inherit; font-size:16px; font-weight:700;
     color:var(--blue-d); width:200px; text-align:center; padding:6px; background:var(--bg); border-radius:8px 8px 0 0 }
   input.tin:focus{ outline:none; background:var(--bg) }
-  input.tin.correct{ border-color:#4ade80; background:#dcfce7; color:var(--ink) }
-  input.tin.wrong{ border-color:#f87171; background:#fee2e2; color:var(--ink) }
+  input.tin.correct{ border-color:#4ade80; background:var(--green50); color:var(--ink) }
+  input.tin.wrong{ border-color:#f87171; background:var(--red50); color:var(--ink) }
   .aud-btn{ background:var(--bg); color:var(--blue-d); border:none; border-radius:9px; padding:8px 14px;
     font-family:inherit; font-weight:700; font-size:13px; cursor:pointer; margin:4px 0 10px }
   .aud-btn:hover{ background:var(--line) }
@@ -89,9 +89,9 @@
   .arrow{ width:54px; height:54px; border-radius:50%; border:none; background:var(--blue); color:var(--card); font-size:22px;
     cursor:pointer; box-shadow:0 6px 16px rgba(15,23,42,.2); flex:none }
   .arrow:hover:not(:disabled){ background:var(--blue-d) }
-  .arrow:disabled{ background:#cbd5e1; box-shadow:none }
+  .arrow:disabled{ background:var(--line-2); box-shadow:none }
   .pgdots{ flex:1; text-align:center; font-size:12.5px; font-weight:700; color:var(--muted) }
-  .pgdots .dot{ display:inline-block; width:9px; height:9px; border-radius:50%; background:#cbd5e1; margin:0 3px }
+  .pgdots .dot{ display:inline-block; width:9px; height:9px; border-radius:50%; background:var(--line-2); margin:0 3px }
   .scopebar{ display:flex; gap:10px; flex-wrap:wrap; align-items:flex-end; background:var(--card); border:1px solid var(--line);
              border-radius:12px; padding:12px 14px; margin:0 0 12px }
   .scopebar label{ display:block; font-size:11px; font-weight:700; color:var(--muted); margin-bottom:3px; letter-spacing:.4px }
@@ -100,7 +100,7 @@
   .xtime button{ font-family:inherit; font-size:11.5px; font-weight:700; padding:4px 9px; border-radius:8px;
                  border:1.5px solid var(--line); background:var(--bg); color:var(--blue-d); cursor:pointer }
   .xtime button:hover{ background:var(--bg) }
-  .xtime .on{ background:#dcfce7; border-color:#86efac; color:var(--ink) }
+  .xtime .on{ background:var(--green50); border-color:#86efac; color:var(--ink) }
   .inherit{ font-size:11.5px; color:#94a3b8; display:block; margin-top:4px }
   .pgdots .dot.now{ background:var(--blue) }
   .pgdots .dot.done{ background:#86efac }
@@ -241,7 +241,7 @@ const isStaff=()=>me && (me.role==='teacher'||me.role==='admin');
    cerrados sin explicar por que: el alumno cree que su profesor no los abrio. */
 const noSessionNote=()=>me?'':`<div class="note" style="background:#fef2f2;border-color:#fca5a5;color:#7f1d1d">
   ⚠️ <b>You are not signed in.</b> Your exams can only be checked when you are signed in to the Portal.
-  <a href="./" style="color:#b91c1c;font-weight:700">Sign in here</a> and come back — otherwise every chapter looks locked.</div>`;
+  <a href="./" style="color:var(--bad);font-weight:700">Sign in here</a> and come back — otherwise every chapter looks locked.</div>`;
 const lockKey=(r,l,ch)=>r+':'+l+':ch'+ch;
 /* Alcances que le aplican a alguien, del más específico al más general. */
 function scopeChain(sc){

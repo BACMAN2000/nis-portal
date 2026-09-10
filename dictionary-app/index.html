@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme="light" data-theme="light" lang="es">
+<html data-theme="light" lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 <link rel="preload" href="../fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../nis-fonts.css?v=fd196882">
-<link rel="stylesheet" href="../nis-tokens.css?v=fd0ffbab">
+<script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="../nis-tokens.css?v=36174a4f">
 <style>
 :root{
   --primary:#2563EB;
@@ -328,5 +329,6 @@ function cargaResumen(luego){
 }
 cargaResumen(function(){ pintaFuentes(); pintaAbc(); cargaLista(false); });
 </script>
+<script src="../nis-tema.js?v=a9738cd9" defer></script>
 </body>
 </html>

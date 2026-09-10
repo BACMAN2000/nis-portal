@@ -39,7 +39,7 @@ if(/\.github\.io$/i.test(location.hostname)){
 <link rel="preload" href="../fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../nis-fonts.css?v=fd196882">
 <script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<link rel="stylesheet" href="../nis-tokens.css?v=fd0ffbab">
+<link rel="stylesheet" href="../nis-tokens.css?v=36174a4f">
 <style>
   :root{--accent:#4987c6;--accent2:#2f6aa8;--line:#cbd5e1;--soft:#d1d2ea;--warn:#f59e0b;--bg:#f1f5f9}
   *{box-sizing:border-box}
@@ -114,7 +114,7 @@ if(/\.github\.io$/i.test(location.hostname)){
   /* footer nav */
   .ftr{flex:0 0 auto;display:flex;align-items:stretch;gap:8px;border-top:1px solid var(--line);padding:8px 14px;background:var(--card);overflow-x:auto}
   .tabs{display:flex;gap:6px;flex:1}
-  .tab{padding:8px 16px;border:1px solid var(--line);border-radius:8px;background:#f1f5f9;cursor:pointer;min-width:90px;text-align:center;flex-shrink:0;display:flex;flex-direction:column;gap:3px}
+  .tab{padding:8px 16px;border:1px solid var(--line);border-radius:8px;background:var(--bg);cursor:pointer;min-width:90px;text-align:center;flex-shrink:0;display:flex;flex-direction:column;gap:3px}
   .tab .tn{font-weight:700;font-size:.85rem}
   .tab .ts{font-size:.76rem;color:var(--muted)}
   .tab.active{background:var(--card);border-color:var(--accent);box-shadow:0 0 0 2px var(--soft);color:var(--accent)}
@@ -5610,8 +5610,8 @@ const render={
         <div class="card"><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:.9rem">
           <div><b>Student:</b> ${esc(state.name)}</div><div><b>Grade:</b> ${esc(state.grade)}</div>
           <div><b>Level:</b> ${state.level} · ${LEVEL_NAMES[state.level]}</div><div><b>Date:</b> ${new Date().toLocaleString()}</div>
-          <div style="grid-column:1/-1;${(state._tabSwitches||0)>0?'background:#fef3c7;border-radius:8px;padding:4px 6px':''}"><b>Tab / window switches:</b> <span style="${(state._tabSwitches||0)>0?'color:#b45309;font-weight:700':'color:#16a34a'}">${state._tabSwitches||0} ${(state._tabSwitches||0)===0?'✓ (none detected)':'⚠ detected'}</span></div>
-          <div style="grid-column:1/-1;${(state._translateHits||0)>0?'background:#fef3c7;border-radius:8px;padding:4px 6px':''}"><b>Translation attempts:</b> <span style="${(state._translateHits||0)>0?'color:#b45309;font-weight:700':'color:#16a34a'}">${state._translateHits||0} ${(state._translateHits||0)===0?'✓ (none detected)':'⚠ detected'}</span></div>
+          <div style="grid-column:1/-1;${(state._tabSwitches||0)>0?'background:var(--amber50);border-radius:8px;padding:4px 6px':''}"><b>Tab / window switches:</b> <span style="${(state._tabSwitches||0)>0?'color:#b45309;font-weight:700':'color:#16a34a'}">${state._tabSwitches||0} ${(state._tabSwitches||0)===0?'✓ (none detected)':'⚠ detected'}</span></div>
+          <div style="grid-column:1/-1;${(state._translateHits||0)>0?'background:var(--amber50);border-radius:8px;padding:4px 6px':''}"><b>Translation attempts:</b> <span style="${(state._translateHits||0)>0?'color:#b45309;font-weight:700':'color:#16a34a'}">${state._translateHits||0} ${(state._translateHits||0)===0?'✓ (none detected)':'⚠ detected'}</span></div>
         </div></div>
         <div class="card" style="text-align:center;border-left:4px solid var(--good)">
           <div style="font-size:2.2rem">✓</div>

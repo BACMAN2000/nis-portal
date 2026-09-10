@@ -1,5 +1,5 @@
 <!doctype html>
-<html data-theme="light" lang="en">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,11 +8,12 @@
 <link href="vendor/fonts/montserrat-68a53b.css" rel="stylesheet">
 <link rel="preload" href="fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="nis-fonts.css?v=fd196882">
-<link rel="stylesheet" href="nis-tokens.css?v=fd0ffbab">
+<script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="nis-tokens.css?v=36174a4f">
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
   body{font:15px/1.55 'Gotham',"Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    color:#0f172a;background:linear-gradient(180deg,#d1d2ea 0%,var(--bg) 60%,var(--card) 100%);min-height:100vh}
+    color:var(--ink);background:linear-gradient(180deg,var(--lila) 0%,var(--bg) 60%,var(--card) 100%);min-height:100vh}
   header{background:var(--card);padding:12px 22px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;
     box-shadow:0 4px 16px rgba(15,23,42,.06);position:sticky;top:0;z-index:10;border-bottom:1px solid var(--line)}
   header img{display:block;height:38px;width:auto}
@@ -21,37 +22,37 @@
   main{max-width:760px;margin:0 auto;padding:22px 18px}
   h1{font-size:22px;margin:0 0 6px}
   p.lead{color:var(--muted);margin:0 0 16px}
-  .rules{background:var(--bg);border:1px solid #d7e0f2;border-radius:14px;padding:14px 16px;margin-bottom:18px;font-size:13.5px;color:#26415e}
-  .rules b{color:#2d5a8d}
+  .rules{background:var(--bg);border:1px solid #d7e0f2;border-radius:14px;padding:14px 16px;margin-bottom:18px;font-size:13.5px;color:var(--blue-dd)}
+  .rules b{color:var(--blue-d)}
   .rules ul{margin:6px 0 0 18px}
   .rules li{margin:3px 0}
   .panel{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:0 8px 24px rgba(15,23,42,.08);padding:22px}
   .bar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;flex-wrap:wrap}
-  .pill{background:#d1d2ea;color:#244c77;font-weight:700;font-size:13px;padding:6px 12px;border-radius:20px}
+  .pill{background:var(--lila);color:var(--blue-dd);font-weight:700;font-size:13px;padding:6px 12px;border-radius:20px}
   .progress{flex:1;height:9px;background:var(--line);border-radius:99px;overflow:hidden;min-width:120px}
   .progress>span{display:block;height:100%;background:#2d5a8d;width:0;transition:width .3s}
   .tagdir{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.5px;padding:4px 10px;border-radius:20px;text-transform:uppercase}
-  .tagdir.d{background:var(--accent-soft);color:#1e40af}
-  .tagdir.r{background:#dcfce7;color:#166534}
+  .tagdir.d{background:var(--accent-soft);color:var(--accent-strong)}
+  .tagdir.r{background:var(--green50);color:var(--green-txt)}
   .prompt{font-size:19px;font-weight:600;margin:10px 0 4px;line-height:1.4}
   .ask{color:var(--muted);font-size:14px;margin-bottom:14px}
   .opts{display:flex;flex-direction:column;gap:10px}
-  .opt{text-align:left;background:var(--card);border:2px solid var(--line);border-radius:12px;padding:13px 15px;font:inherit;font-size:15px;cursor:pointer;transition:.12s;color:#0f172a}
+  .opt{text-align:left;background:var(--card);border:2px solid var(--line);border-radius:12px;padding:13px 15px;font:inherit;font-size:15px;cursor:pointer;transition:.12s;color:var(--ink)}
   .opt:hover:not(:disabled){border-color:#4987c6;background:var(--bg)}
   .opt:disabled{cursor:default}
   .opt.correct{border-color:#16a34a;background:var(--bg)}
   .opt.wrong{border-color:var(--bad);background:var(--bg)}
   .opt .mk{float:right;font-weight:800}
   .fb{margin-top:14px;padding:12px 14px;border-radius:12px;font-size:14px;display:none}
-  .fb.ok{background:var(--bg);border:1px solid #bbf7d0;color:#166534;display:block}
-  .fb.no{background:var(--bg);border:1px solid #fecaca;color:#991b1b;display:block}
+  .fb.ok{background:var(--bg);border:1px solid #bbf7d0;color:var(--green-txt);display:block}
+  .fb.no{background:var(--bg);border:1px solid #fecaca;color:var(--bad);display:block}
   .fb b{color:inherit}
   .actions{margin-top:16px;display:flex;gap:10px;justify-content:flex-end}
   .btn{background:#2d5a8d;color:var(--card);border:0;border-radius:10px;padding:11px 20px;font:inherit;font-weight:700;cursor:pointer}
-  .btn.ghost{background:var(--card);color:#2d5a8d;border:2px solid #2d5a8d}
+  .btn.ghost{background:var(--card);color:var(--blue-d);border:2px solid #2d5a8d}
   .btn:disabled{opacity:.45;cursor:default}
   .result{text-align:center;padding:18px 6px}
-  .result .big{font-size:46px;font-weight:800;color:#2d5a8d;line-height:1}
+  .result .big{font-size:46px;font-weight:800;color:var(--blue-d);line-height:1}
   .result .msg{color:var(--muted);margin:10px 0 18px}
   .footer{color:var(--muted);font-size:12px;text-align:center;padding:22px 0 32px}
 </style>
@@ -69,7 +70,7 @@
 <main>
   <h1>🗣️ Reported Speech</h1>
   <p class="lead">Report what another person said. Read the summary, then play: choose the correct transformation and get instant feedback.</p>
-  <a href="reported-speech-order.html" style="display:inline-block;text-decoration:none;background:#fff;border:2px solid #2d5a8d;color:#2d5a8d;font-weight:700;font-size:13px;padding:7px 13px;border-radius:9px;margin-bottom:16px">🔤 Another game: Put the sentence in order →</a>
+  <a href="reported-speech-order.html" style="display:inline-block;text-decoration:none;background:var(--card);border:2px solid var(--blue-d);color:var(--blue-d);font-weight:700;font-size:13px;padding:7px 13px;border-radius:9px;margin-bottom:16px">🔤 Another game: Put the sentence in order →</a>
 
   <div class="rules">
     <b>The essentials</b>
@@ -213,5 +214,6 @@ function _pickEn(){ try{ var vs=speechSynthesis.getVoices(); _enVoice=vs.find(fu
 if('speechSynthesis' in window){ _pickEn(); try{ speechSynthesis.onvoiceschanged=_pickEn; }catch(e){} }
 function speakEN(t){ if(!t||!('speechSynthesis' in window))return; var u=new SpeechSynthesisUtterance(t); u.lang='en-GB'; if(_enVoice)u.voice=_enVoice; u.rate=0.95; try{speechSynthesis.cancel();}catch(e){} speechSynthesis.speak(u); }
 </script>
+<script src="nis-tema.js?v=a9738cd9" defer></script>
 </body>
 </html>

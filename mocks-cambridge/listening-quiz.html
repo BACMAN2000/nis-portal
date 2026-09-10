@@ -1,5 +1,5 @@
 <!doctype html>
-<html data-theme="light" data-theme="light" lang="en" translate="no">
+<html data-theme="light" lang="en" translate="no">
 <head>
 <meta charset="utf-8">
 <script>
@@ -36,7 +36,8 @@ if(/\.github\.io$/i.test(location.hostname)){
 </script>
 <link rel="preload" href="../fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../nis-fonts.css?v=fd196882">
-<link rel="stylesheet" href="../nis-tokens.css?v=fd0ffbab">
+<script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="../nis-tokens.css?v=36174a4f">
 <style>
   :root{
   --bg:#0f172a;
@@ -124,35 +125,35 @@ if(/\.github\.io$/i.test(location.hostname)){
   .ins-hdr .ins-cand{font-size:.9rem; color:var(--muted)}
   .ins-hdr .ins-right{margin-left:auto; display:flex; align-items:center; gap:10px}
   .ins-audio{font-size:.85rem; color:var(--ink); font-weight:700}
-  .ins-hdr button{background:var(--card); color:#475569; border:1px solid var(--line); padding:7px 14px; border-radius:8px; font-weight:600; cursor:pointer; font-size:.85rem}
+  .ins-hdr button{background:var(--card); color:var(--muted); border:1px solid var(--line); padding:7px 14px; border-radius:8px; font-weight:600; cursor:pointer; font-size:.85rem}
   .ins-hdr button.ins-fin{background:#2f5f93; color:var(--card); border-color:#2f5f93}
   .ins-main{flex:1; overflow-y:auto; padding:18px 22px 28px}
   .ins-inner{max-width:1000px; margin:0 auto}
-  .ins-title h1{font-size:1.3rem; margin:0 0 10px; color:#0f172a}
+  .ins-title h1{font-size:1.3rem; margin:0 0 10px; color:var(--ink)}
   .ins-pane{display:none}
   .ins-pane.active{display:block}
   .ins-instr{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:14px 18px; margin:8px 0 14px}
-  .ins-instr strong{display:block; color:#0f172a; font-size:1rem; margin-bottom:4px}
-  .ins-instr p{margin:0; color:#475569; font-size:.92rem}
-  .ins-player{background:var(--bg); border:1px solid #e2e8f0; border-radius:10px; padding:12px 14px; margin-bottom:14px}
+  .ins-instr strong{display:block; color:var(--ink); font-size:1rem; margin-bottom:4px}
+  .ins-instr p{margin:0; color:var(--muted); font-size:.92rem}
+  .ins-player{background:var(--bg); border:1px solid var(--line); border-radius:10px; padding:12px 14px; margin-bottom:14px}
   .ins-ftr{display:flex; align-items:stretch; gap:8px; border-top:1px solid var(--line); padding:8px 14px; background:var(--card); overflow-x:auto; flex-shrink:0}
   .ins-tabs{display:flex; gap:6px; flex:1}
-  .ins-tab{padding:8px 14px; border:1px solid #e2e8f0; border-radius:8px; background:var(--bg); cursor:pointer; min-width:92px; text-align:center; flex-shrink:0; display:flex; flex-direction:column; gap:3px}
-  .ins-tab .tn{font-weight:700; font-size:.82rem; color:#0f172a}
+  .ins-tab{padding:8px 14px; border:1px solid var(--line); border-radius:8px; background:var(--bg); cursor:pointer; min-width:92px; text-align:center; flex-shrink:0; display:flex; flex-direction:column; gap:3px}
+  .ins-tab .tn{font-weight:700; font-size:.82rem; color:var(--ink)}
   .ins-tab .tp{font-size:.76rem; color:var(--muted)}
   .ins-tab.active{background:var(--card); border-color:#4987c6; box-shadow:0 0 0 2px #d1d2ea}
   .ins-tab.active .tn{color:var(--ink)}
   .ins-tab .tq{display:none; gap:4px; justify-content:center; flex-wrap:wrap; margin-top:2px}
   .ins-tab.active .tq{display:flex}
   .ins-tab.active .tp{display:none}
-  .lqn{width:26px; height:26px; display:inline-flex; align-items:center; justify-content:center; border:1px solid var(--line); border-radius:5px; background:var(--card); color:#475569; font-size:.78rem; font-weight:700; cursor:pointer; padding:0}
+  .lqn{width:26px; height:26px; display:inline-flex; align-items:center; justify-content:center; border:1px solid var(--line); border-radius:5px; background:var(--card); color:var(--muted); font-size:.78rem; font-weight:700; cursor:pointer; padding:0}
   .lqn:hover{border-color:#4987c6; color:var(--ink)}
   .lqn.done{background:#2f5f93; border-color:#2f5f93; color:var(--card)}
   .lqn.cur{box-shadow:0 0 0 2px #d1d2ea; border-color:#4987c6}
-  .ins-arrows{display:flex; gap:6px; align-items:center; padding-left:8px; border-left:1px solid #e2e8f0}
+  .ins-arrows{display:flex; gap:6px; align-items:center; padding-left:8px; border-left:1px solid var(--line)}
   .ins-arrows button{background:#2f5f93; color:var(--card); border:none; padding:9px 16px; border-radius:8px; font-weight:700; cursor:pointer; min-width:46px}
-  .ins-arrows button:disabled{background:#cbd5e1; cursor:not-allowed}
-  .ins-content .q{background:var(--bg); border:1px solid #e2e8f0; border-radius:10px; padding:14px 18px; margin:12px 0; border-top:1px solid #e2e8f0}
+  .ins-arrows button:disabled{background:var(--line-2); cursor:not-allowed}
+  .ins-content .q{background:var(--bg); border:1px solid var(--line); border-radius:10px; padding:14px 18px; margin:12px 0; border-top:1px solid var(--line)}
   .ins-content .paged-q{display:none}
   .ins-content .paged-q.show{display:block}
   .q-audio{margin:0 0 12px}
@@ -164,35 +165,35 @@ if(/\.github\.io$/i.test(location.hostname)){
   body.signin-mode{background:linear-gradient(180deg,var(--line) 0%,var(--bg) 35%,var(--bg) 100%)}
   .signin-wrap{max-width:780px; margin:0 auto; padding:48px 22px}
   .signin-wrap .crumb{color:var(--muted); font-size:14px; margin-bottom:10px}
-  .signin-wrap h1{font-size:2rem; margin:0 0 6px; color:#0f172a}
-  .signin-wrap .sub{color:#475569; margin:0 0 22px; font-size:1.05rem; line-height:1.5}
+  .signin-wrap h1{font-size:2rem; margin:0 0 6px; color:var(--ink)}
+  .signin-wrap .sub{color:var(--muted); margin:0 0 22px; font-size:1.05rem; line-height:1.5}
   .signin-card{background:var(--card); border-radius:16px; box-shadow:0 24px 60px rgba(15,23,42,.12); padding:28px 30px}
-  .signin-card label{display:block; font-weight:700; color:#0f172a; font-size:.95rem; margin:16px 0 6px}
+  .signin-card label{display:block; font-weight:700; color:var(--ink); font-size:.95rem; margin:16px 0 6px}
   .signin-card label:first-child{margin-top:0}
-  .signin-card input{width:100%; padding:13px 14px; border:1px solid #e2e8f0; border-radius:10px; font:inherit; font-size:1rem; background:var(--card)}
+  .signin-card input{width:100%; padding:13px 14px; border:1px solid var(--line); border-radius:10px; font:inherit; font-size:1rem; background:var(--card)}
   .signin-card input:focus{outline:none; border-color:#4987c6; box-shadow:0 0 0 3px #d1d2ea}
   .signin-actions{display:flex; gap:12px; margin-top:22px; flex-wrap:wrap}
   .signin-actions button, .signin-actions a{font:inherit; font-weight:700; padding:13px 22px; border-radius:10px; cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; justify-content:center; border:1px solid transparent}
   .signin-actions .primary{background:#2f5f93; color:var(--card)}
-  .signin-actions .secondary2{background:var(--card); color:#0f172a; border-color:var(--line)}
+  .signin-actions .secondary2{background:var(--card); color:var(--ink); border-color:var(--line)}
   .level-pick{max-width:780px; margin:0 auto; padding:34px 22px}
-  .level-pick h1{font-size:1.7rem; margin:0 0 4px; color:#0f172a}
-  .level-pick .sub{color:#475569; margin:0 0 18px}
+  .level-pick h1{font-size:1.7rem; margin:0 0 4px; color:var(--ink)}
+  .level-pick .sub{color:var(--muted); margin:0 0 18px}
   /* ===== Results screen (match Reading/Writing report) ===== */
   body.result-mode > header{display:none}
   body.result-mode{background:linear-gradient(180deg,var(--line) 0%,var(--bg) 35%,var(--bg) 100%)}
   .res-wrap{max-width:900px; margin:0 auto; padding:34px 22px}
   .res-wrap .crumb{color:var(--muted); font-size:14px; margin-bottom:8px}
-  .res-wrap h1{font-size:2rem; margin:0 0 4px; color:#0f172a}
-  .res-wrap .res-sub{color:#475569; margin:0 0 18px}
+  .res-wrap h1{font-size:2rem; margin:0 0 4px; color:var(--ink)}
+  .res-wrap .res-sub{color:var(--muted); margin:0 0 18px}
   .motivation-card{background:linear-gradient(135deg,#3268a0 0%,#0b7caf 100%); color:var(--card); border-radius:18px; padding:24px; margin-bottom:18px; text-align:center; box-shadow:0 12px 30px rgba(15,23,42,.18)}
   .motivation-card h2{color:var(--card); font-size:1.4rem; margin:0 0 6px}
   .motivation-card p{margin:6px 0; font-size:1rem; line-height:1.5; opacity:.95}
   .pdf-actions{display:flex; gap:10px; justify-content:center; margin:8px 0 12px; flex-wrap:wrap}
   .pdf-actions button{background:#2f5f93; color:var(--card); border:none; padding:12px 22px; border-radius:10px; font-weight:700; cursor:pointer; font-size:.95rem; font:inherit; font-weight:700}
   .pdf-actions button.email{background:#0ea5e9}
-  .pdf-actions button:disabled{background:#cbd5e1; cursor:not-allowed}
-  .send-status{text-align:center; margin:6px 0 14px; color:#16a34a; font-weight:700}
+  .pdf-actions button:disabled{background:var(--line-2); cursor:not-allowed}
+  .send-status{text-align:center; margin:6px 0 14px; color:var(--good); font-weight:700}
   .send-status.err{color:var(--bad)}
   #pdfTarget{background:var(--card); border-radius:16px; padding:22px; box-shadow:0 12px 40px rgba(15,23,42,.10)}
   .pdf-brand{text-align:center; padding:6px 0 12px; border-bottom:2px solid #4987c6; margin-bottom:14px}
@@ -200,31 +201,31 @@ if(/\.github\.io$/i.test(location.hostname)){
   .pdf-brand .rep{color:var(--muted); font-size:.78rem; letter-spacing:1px; margin-top:4px; font-weight:700}
   .res-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px; font-size:.92rem; margin-bottom:16px}
   @media(max-width:520px){.res-grid{grid-template-columns:1fr}}
-  .res-grid > div{padding:10px 12px; background:var(--bg); border:1px solid #e2e8f0; border-radius:8px}
+  .res-grid > div{padding:10px 12px; background:var(--bg); border:1px solid var(--line); border-radius:8px}
   .res-grid label{display:block; color:var(--muted); font-size:.7rem; letter-spacing:.6px; text-transform:uppercase; margin-bottom:4px; font-weight:700}
-  .score-card{background:var(--card); border:1px solid #e2e8f0; border-radius:16px; padding:26px; text-align:center; margin-bottom:16px}
+  .score-card{background:var(--card); border:1px solid var(--line); border-radius:16px; padding:26px; text-align:center; margin-bottom:16px}
   .score-card .big{font-size:3rem; font-weight:800; line-height:1}
-  .score-card .big.pass{color:#16a34a}
+  .score-card .big.pass{color:var(--good)}
   .score-card .big.fail{color:var(--bad)}
   .score-card .pct{font-size:1.2rem; color:var(--ink); font-weight:700; margin-top:2px}
-  .score-card .verdict{margin-top:8px; color:#475569}
-  .part-bar{background:var(--bg); border:1px solid #e2e8f0; border-radius:10px; padding:12px 16px; margin:8px 0; display:grid; grid-template-columns:1fr auto; gap:6px 14px; align-items:center}
-  .part-bar .pname{font-weight:700; color:#0f172a}
+  .score-card .verdict{margin-top:8px; color:var(--muted)}
+  .part-bar{background:var(--bg); border:1px solid var(--line); border-radius:10px; padding:12px 16px; margin:8px 0; display:grid; grid-template-columns:1fr auto; gap:6px 14px; align-items:center}
+  .part-bar .pname{font-weight:700; color:var(--ink)}
   .part-bar .meta{font-size:.82rem; color:var(--muted)}
   .part-bar .pctn{font-weight:800; font-family:Consolas,monospace}
-  .part-bar .barw{grid-column:1/-1; background:#e2e8f0; border-radius:6px; height:8px; overflow:hidden}
+  .part-bar .barw{grid-column:1/-1; background:var(--line); border-radius:6px; height:8px; overflow:hidden}
   .part-bar .barf{height:100%; background:#4987c6}
-  .res-card{background:var(--card); border:1px solid #e2e8f0; border-radius:14px; padding:18px; margin:14px 0}
+  .res-card{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px; margin:14px 0}
   .res-card h2{margin:0 0 8px; font-size:1.1rem}
   .res-line{display:flex; justify-content:space-between; gap:10px; padding:8px 0; border-top:1px solid var(--line)}
   .res-ans{font-size:.85rem; color:var(--muted); padding:0 0 8px}
-  .res-ok{color:#16a34a; font-weight:700}
+  .res-ok{color:var(--good); font-weight:700}
   .res-bad{color:var(--bad); font-weight:700}
   .q .stem{font-weight:600; margin-bottom:6px}
   .q .meta{font-size:12px; color:var(--muted); margin-bottom:8px; display:flex; gap:8px; align-items:center}
   .pill{display:inline-block; padding:2px 8px; background:var(--bg); color:var(--ink); border-radius:999px; font-size:11px; font-weight:700}
-  .pill.tf{background:#fef3c7; color:var(--ink)}
-  .pill.inf{background:#dcfce7; color:var(--ink)}
+  .pill.tf{background:var(--amber50); color:var(--ink)}
+  .pill.inf{background:var(--green50); color:var(--ink)}
   .pill.seq{background:var(--line); color:var(--ink)}
   .opts{display:grid; gap:6px}
   .opt{
@@ -238,7 +239,7 @@ if(/\.github\.io$/i.test(location.hostname)){
   .pic-opt{flex-direction:column; align-items:center; gap:8px; text-align:center}
   .pic-opt .pic{display:block; width:100%}
   .pic-opt .pic svg{width:100%; height:auto; background:var(--card); border-radius:8px}
-  .pic-opt .pic img.pic-img{width:100%; height:150px; object-fit:cover; background:var(--card); border-radius:8px; display:block; border:1px solid #e2e8f0}
+  .pic-opt .pic img.pic-img{width:100%; height:150px; object-fit:cover; background:var(--card); border-radius:8px; display:block; border:1px solid var(--line)}
   .opt input:checked ~ .pic img.pic-img{outline:3px solid #4987c6; outline-offset:1px}
   @media(max-width:560px){.pic-opts{grid-template-columns:1fr}}
   /* Gap-fill input + matching select */
@@ -257,15 +258,15 @@ if(/\.github\.io$/i.test(location.hostname)){
   .right{text-align:right}
   details summary{cursor:pointer; font-weight:700; padding:6px 0}
   .reveal{background:var(--bg); padding:10px; border-radius:8px; margin-top:6px; font-size:13px}
-  .reveal.correct{background:#dcfce7; color:var(--ink)}
-  .reveal.wrong{background:#fee2e2; color:var(--ink)}
+  .reveal.correct{background:var(--green50); color:var(--ink)}
+  .reveal.wrong{background:var(--red50); color:var(--ink)}
   .badge-level{padding:4px 10px; background:#0b7caf; color:var(--card); border-radius:999px; font-size:12px; font-weight:700}
-  .warn{background:#fef9c3; border:1px solid #fde68a; padding:10px; border-radius:10px; color:var(--ink); font-size:13px}
+  .warn{background:var(--amber50); border:1px solid #fde68a; padding:10px; border-radius:10px; color:var(--ink); font-size:13px}
   .hint{font-size:12px; color:var(--muted); margin-top:4px}
   .seg-list{display:flex; gap:6px; flex-wrap:wrap; margin-top:8px}
   .seg{padding:4px 10px; border-radius:999px; background:var(--card); border:1px solid var(--line); font-size:12px; color:var(--muted)}
   .seg.playing{background:#0b7caf; color:var(--card); border-color:#0b7caf}
-  .seg.done{background:#dcfce7; color:var(--ink); border-color:#86efac}
+  .seg.done{background:var(--green50); color:var(--ink); border-color:#86efac}
   @media (max-width:520px){
     main{padding:12px}
     .card{padding:14px}
@@ -280,12 +281,12 @@ if(/\.github\.io$/i.test(location.hostname)){
 .ev-card .ev-sub{color:var(--muted);font-size:.9rem;margin:0 0 10px}
 .ev-list{display:grid;gap:8px}
 .ev-row{display:flex;gap:10px;align-items:flex-start;justify-content:space-between;
-        background:var(--bg);border:1px solid #e2e8f0;border-radius:10px;padding:8px 10px}
-.ev-ipa{font-family:ui-monospace,Consolas,monospace;color:#475569;font-size:.85rem;margin-left:6px}
-.ev-def{color:#475569;font-size:.88rem;margin-top:2px}
+        background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+.ev-ipa{font-family:ui-monospace,Consolas,monospace;color:var(--muted);font-size:.85rem;margin-left:6px}
+.ev-def{color:var(--muted);font-size:.88rem;margin-top:2px}
 .ev-say{background:var(--card);border:1px solid var(--line);border-radius:8px;cursor:pointer;
         font-size:1rem;padding:4px 9px;line-height:1.2}
-.ev-say:hover{background:#e2e8f0}
+.ev-say:hover{background:var(--line)}
 .ev-more{color:var(--muted);font-size:.85rem;margin:8px 0 0}
 
 /* Foco de teclado: se apaga el marco del navegador en varios sitios de esta
@@ -355,5 +356,6 @@ document.addEventListener('click', function(ev){
 <main id="app"></main>
 
 <script src="listening-quiz.app-data.js?v=9319b5f7"></script>
+<script src="../nis-tema.js?v=a9738cd9" defer></script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html data-theme="light" data-theme="light" lang="en">
+<html data-theme="light" lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,7 +9,8 @@
 <link href="vendor/fonts/montserrat-68a53b.css" rel="stylesheet">
 <link rel="preload" href="fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="nis-fonts.css?v=fd196882">
-<link rel="stylesheet" href="nis-tokens.css?v=fd0ffbab">
+<script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="nis-tokens.css?v=36174a4f">
 <style>
   :root{--blue:#2d5a8d;--blue-d:#1e3f66;--line:#e2e8f0;--muted:#475569}
   *{box-sizing:border-box; margin:0; padding:0}
@@ -63,8 +64,8 @@
   table.ws{border-collapse:collapse; user-select:none; touch-action:none; margin:0 auto}
   table.ws td{width:28px; height:28px; text-align:center; font-weight:700; font-size:14px; cursor:pointer;
     border:1px solid var(--line); color:var(--muted)}
-  table.ws td.sel{background:#bfdbfe}
-  table.ws td.found{background:#bbf7d0; color:var(--ink)}
+  table.ws td.sel{background:var(--sky100)}
+  table.ws td.found{background:var(--green100); color:var(--ink)}
   .wordlist{min-width:160px; flex:1}
   .wordlist li{list-style:none; padding:4px 2px; font-weight:600; border-bottom:1px solid var(--line); font-size:13px}
   .wordlist li.done{text-decoration:line-through; color:#94a3b8}
@@ -76,7 +77,7 @@
     font-family:inherit; font-weight:700; font-size:14px; color:var(--blue-d); background:transparent; padding:0}
   table.cw td input:focus{outline:2px solid #93c5fd; background:var(--bg)}
   table.cw td .qn{position:absolute; top:0; left:1px; font-size:8px; color:var(--muted); font-weight:700}
-  td.ok input{background:#bbf7d0} td.bad input{background:#fecaca}
+  td.ok input{background:var(--green100)} td.bad input{background:#fecaca}
   .clues{display:flex; gap:26px; flex-wrap:wrap; margin-top:6px}
   .clues h3{font-size:13px; color:var(--blue-d); margin:0 0 4px}
   .clues ol{margin:0; padding-left:20px; font-size:13px}
@@ -88,19 +89,19 @@
     font-size:12px; transition:.15s; border:2px solid transparent}
   .mtile.def{background:var(--bg); color:var(--blue-d); font-weight:600}
   .mtile.down{background:var(--card); color:var(--ink); border-color:var(--line); cursor:default}
-  .mtile.matched{background:#dcfce7; color:var(--ink); border-color:#86efac; cursor:default}
+  .mtile.matched{background:var(--green50); color:var(--ink); border-color:#86efac; cursor:default}
   .mtile .face-back{font-size:1.6rem}
   /* Quiz / MC / TF */
   .opt{display:block; width:100%; text-align:left; background:var(--bg); border:1.5px solid var(--line);
     border-radius:11px; padding:12px 14px; margin:8px 0; cursor:pointer; font-family:inherit; font-size:14px;
     font-weight:600; color:var(--ink); transition:.12s}
   .opt:hover{border-color:#93c5fd}
-  .opt.correct{background:#dcfce7; border-color:#4ade80; color:var(--ink)}
-  .opt.wrong{background:#fee2e2; border-color:#f87171; color:var(--ink)}
+  .opt.correct{background:var(--green50); border-color:#4ade80; color:var(--ink)}
+  .opt.wrong{background:var(--red50); border-color:#f87171; color:var(--ink)}
   .opt:disabled{cursor:default}
-  .prog{height:8px; background:#e2e8f0; border-radius:6px; overflow:hidden; margin:4px 0 14px}
+  .prog{height:8px; background:var(--line); border-radius:6px; overflow:hidden; margin:4px 0 14px}
   .prog span{display:block; height:100%; background:var(--blue); transition:width .3s}
-  .timerbar{height:10px; background:#e2e8f0; border-radius:6px; overflow:hidden; margin:8px 0 16px}
+  .timerbar{height:10px; background:var(--line); border-radius:6px; overflow:hidden; margin:8px 0 16px}
   .timerbar span{display:block; height:100%; background:var(--gold); transition:width .1s linear}
   .qnum{font-size:12px; font-weight:700; color:#94a3b8; letter-spacing:.5px}
   .qtext{font-size:17px; font-weight:700; margin:4px 0 10px}
@@ -113,8 +114,8 @@
   .tf-btn{flex:1; padding:9px; border:1.5px solid var(--line); border-radius:9px; background:var(--bg);
     font-family:inherit; font-weight:700; cursor:pointer; color:var(--blue-d)}
   .tf-btn:hover{border-color:#93c5fd}
-  .tf-btn.pick-correct{background:#dcfce7; border-color:#4ade80; color:var(--ink)}
-  .tf-btn.pick-wrong{background:#fee2e2; border-color:#f87171; color:var(--ink)}
+  .tf-btn.pick-correct{background:var(--green50); border-color:#4ade80; color:var(--ink)}
+  .tf-btn.pick-wrong{background:var(--red50); border-color:#f87171; color:var(--ink)}
   .tf-btn:disabled{cursor:default}
   .tf-corr{margin-top:9px; font-size:13px}
   /* Hangman */
@@ -124,7 +125,7 @@
   .key{padding:9px 0; border:none; border-radius:8px; background:var(--bg); color:var(--blue-d); font-weight:700;
     font-family:inherit; cursor:pointer; font-size:14px}
   .key:hover{background:var(--line)}
-  .key.good{background:#bbf7d0; color:var(--ink)} .key.bad{background:#fecaca; color:var(--ink)}
+  .key.good{background:var(--green100); color:var(--ink)} .key.bad{background:#fecaca; color:var(--ink)}
   .key:disabled{opacity:.55; cursor:default}
   /* Scramble */
   .scram{font-size:1.6rem; letter-spacing:6px; font-weight:800; color:var(--blue); text-align:center; margin:10px 0}
@@ -162,8 +163,8 @@
   .rp-dl:hover{text-decoration:underline}
   .reading p.rp{position:relative; padding-left:34px; border-radius:10px; transition:background .25s}
   .reading p.rp .pbtn{position:absolute; left:2px; top:2px; width:26px; height:26px; border:none; border-radius:50%;
-    background:#e2e8f0; color:var(--blue-d); font-size:12px; cursor:pointer; line-height:1}
-  .reading p.rp .pbtn:hover{background:#bfdbfe}
+    background:var(--line); color:var(--blue-d); font-size:12px; cursor:pointer; line-height:1}
+  .reading p.rp .pbtn:hover{background:var(--sky100)}
   .reading p.rp.playing{background:#fefce8}
   .reading p.rp.playing .pbtn{background:var(--blue); color:var(--card)}
   /* Palabra a palabra */
@@ -236,7 +237,7 @@
   .rp-ctl .cbtn.ghost{background:var(--bg); color:var(--blue-d)}
   .rp-ctl .time{font-variant-numeric:tabular-nums; font-weight:700; font-size:12.5px; color:var(--blue-d); min-width:86px}
   .rp-seek{flex:1; min-width:160px; -webkit-appearance:none; appearance:none; height:6px; border-radius:4px;
-    background:linear-gradient(to right, var(--blue) 0%, var(--blue) var(--pct,0%), #e2e8f0 var(--pct,0%), #e2e8f0 100%); cursor:pointer}
+    background:linear-gradient(to right, var(--blue) 0%, var(--blue) var(--pct,0%), var(--line) var(--pct,0%), var(--line) 100%); cursor:pointer}
   .rp-seek::-webkit-slider-thumb{-webkit-appearance:none; appearance:none; width:18px; height:18px; border-radius:50%;
     background:var(--blue); border:3px solid var(--card); box-shadow:0 1px 5px rgba(15,23,42,.4)}
   .rp-seek::-moz-range-thumb{width:16px; height:16px; border-radius:50%; background:var(--blue); border:3px solid var(--card);
@@ -246,7 +247,7 @@
   .rdr-fig img{width:100%; border-radius:12px; background:var(--card); box-shadow:0 2px 10px rgba(15,23,42,.10)}
   .rdr-fig figcaption{font-size:12px; color:var(--muted); margin-top:6px; font-style:italic}
   .rp-chap{font-size:15px; color:var(--blue-d); margin:26px 0 10px; padding-bottom:6px;
-           border-bottom:1px solid #e2e8f0; letter-spacing:.02em; text-transform:uppercase}
+           border-bottom:1px solid var(--line); letter-spacing:.02em; text-transform:uppercase}
   .rp-bridge{font-style:italic; color:var(--muted); background:var(--bg);
              border-left:3px solid var(--line); padding:10px 14px; border-radius:0 8px 8px 0}
   /* Diccionario */
@@ -258,7 +259,7 @@
   .dict-pop .pos{display:inline-block; background:var(--bg); color:var(--blue-d); font-weight:800; font-size:10.5px;
     letter-spacing:.6px; text-transform:uppercase; border-radius:8px; padding:2px 8px; margin:10px 0 4px}
   .dict-pop .def{font-size:14px; color:var(--ink); margin:2px 0}
-  .dict-pop .ex{font-size:13px; color:#475569; font-style:italic; margin:3px 0 0; padding-left:12px; border-left:3px solid #e2e8f0}
+  .dict-pop .ex{font-size:13px; color:var(--muted); font-style:italic; margin:3px 0 0; padding-left:12px; border-left:3px solid var(--line)}
   .dict-pop .story{background:#fefce8; border-left:3px solid #fde047; border-radius:8px; padding:8px 11px; font-size:13px;
     color:var(--muted); margin-top:12px}
   @media(min-width:640px){ .dict-veil{align-items:center} .dict-pop{border-radius:18px} }
@@ -277,12 +278,12 @@
   .ord-item{display:flex; gap:10px; align-items:flex-start; border:1.5px solid var(--line); background:var(--bg);
     border-radius:11px; padding:11px 13px; margin:8px 0; cursor:pointer; font-size:14px; font-weight:600}
   .ord-item:hover{border-color:#93c5fd}
-  .ord-item .n{min-width:26px; height:26px; border-radius:50%; background:#e2e8f0; color:var(--blue-d); font-weight:800;
+  .ord-item .n{min-width:26px; height:26px; border-radius:50%; background:var(--line); color:var(--blue-d); font-weight:800;
     display:flex; align-items:center; justify-content:center; font-size:13px}
   .ord-item.picked{background:var(--bg); border-color:#93c5fd}
   .ord-item.picked .n{background:var(--blue); color:var(--card)}
-  .ord-item.good{background:#dcfce7; border-color:#4ade80}
-  .ord-item.bad{background:#fee2e2; border-color:#f87171}
+  .ord-item.good{background:var(--green50); border-color:#4ade80}
+  .ord-item.bad{background:var(--red50); border-color:#f87171}
   /* Character medallions */
   .char-grid{display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
   .char-card{background:var(--card); border:1px solid var(--line); border-radius:16px; padding:16px; text-align:left;
@@ -296,7 +297,7 @@
     filter:sepia(.25); box-shadow:0 8px 24px rgba(0,0,0,.35)}
   .img-credit{font-size:10.5px; color:#94a3b8; margin-top:8px}
   .char-card h3{font-size:15px; color:var(--blue-d); margin:4px 0 1px}
-  .char-card .role{font-size:11px; font-weight:800; letter-spacing:.6px; color:#b8934a; text-transform:uppercase}
+  .char-card .role{font-size:11px; font-weight:800; letter-spacing:.6px; color:var(--gold-txt); text-transform:uppercase}
   .char-card p{font-size:13px; color:var(--muted); margin:8px 0 0; clear:both}
   .char-card .secret{margin-top:8px; font-size:12.5px; background:var(--bg); border-left:3px solid #f87171; border-radius:6px;
     padding:7px 9px; color:var(--ink); display:none}
@@ -308,11 +309,11 @@
   .gap-item input{border:none; border-bottom:2px solid var(--blue); font-family:inherit; font-size:14.5px; font-weight:700;
     color:var(--blue-d); width:130px; text-align:center; padding:2px 4px; background:var(--bg)}
   .gap-item input:focus{outline:none; background:var(--bg)}
-  .gap-item input.ok{border-color:#4ade80; color:var(--ink); background:#dcfce7}
-  .gap-item input.no{border-color:#f87171; color:var(--ink); background:#fee2e2}
+  .gap-item input.ok{border-color:#4ade80; color:var(--ink); background:var(--green50)}
+  .gap-item input.no{border-color:#f87171; color:var(--ink); background:var(--red50)}
   .kw{display:inline-block; background:var(--bg); color:var(--blue-d); font-weight:700; font-size:12px; border-radius:10px;
     padding:3px 10px; margin:3px 4px 0 0; border:1px solid var(--line)}
-  .kw.hit{background:#dcfce7; color:var(--ink); border-color:#86efac}
+  .kw.hit{background:var(--green50); color:var(--ink); border-color:#86efac}
   /* Detective's notebook */
   .nb-head{background:linear-gradient(135deg,#3b2f23,#1c1712); border-radius:18px; padding:20px 18px; color:#f5e9d0;
     margin-bottom:16px; border:1px solid #6b5a41; box-shadow:0 10px 30px rgba(15,23,42,.3); position:relative; overflow:hidden}
@@ -328,7 +329,7 @@
   .sus-card .med{width:42px; height:42px; border-radius:50%; background:radial-gradient(circle at 35% 30%,#2d5a8d,#12263f);
     border:2px solid #b8934a; display:flex; align-items:center; justify-content:center; font-size:20px; flex:none}
   .sus-card h3{font-size:14px; color:var(--blue-d); margin:0}
-  .sus-card .role{font-size:10.5px; font-weight:800; letter-spacing:.5px; color:#b8934a; text-transform:uppercase}
+  .sus-card .role{font-size:10.5px; font-weight:800; letter-spacing:.5px; color:var(--gold-txt); text-transform:uppercase}
   .sus-card select{font-family:inherit; font-size:12px; font-weight:700; color:var(--blue-d); border:1.5px solid var(--line);
     border-radius:8px; padding:5px 7px; background:var(--card); margin-top:8px; width:100%}
   .sus-card select.okd{border-color:#4ade80; background:var(--bg)}
@@ -350,13 +351,13 @@
   .c2-stage{border:1px solid var(--line); border-radius:14px; background:var(--card); padding:14px 16px; margin-bottom:12px}
   .c2-stage .hd{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
   .c2-stage .hd b{color:var(--blue-d)}
-  .c2-stage .map{font-size:11.5px; font-weight:700; color:#b8934a; letter-spacing:.4px; text-transform:uppercase}
+  .c2-stage .map{font-size:11.5px; font-weight:700; color:var(--gold-txt); letter-spacing:.4px; text-transform:uppercase}
   .c2-stage ul{margin:8px 0 0; padding-left:20px; font-size:13.5px; color:var(--muted)}
   .c2-stage ul li{margin-bottom:5px}
   .c2-stage label.done{margin-left:auto; display:flex; gap:6px; align-items:center; font-size:12.5px; font-weight:700;
     color:var(--blue-d); cursor:pointer}
   .c2-stage.readed{border-color:#86efac; background:var(--bg)}
-  .c2-prog{height:10px; background:#e2e8f0; border-radius:6px; overflow:hidden; margin:6px 0 16px}
+  .c2-prog{height:10px; background:var(--line); border-radius:6px; overflow:hidden; margin:6px 0 16px}
   .c2-prog span{display:block; height:100%; background:#b8934a; transition:width .3s}
 </style>
 <script src="ui-mensajes.js?v=18d6c1e2"></script>
@@ -767,7 +768,7 @@ function renderChapters(){
     <div class="grid cols-2">
       ${CHAPTERS.map((c,i)=>{ const lk=chapterLocked(c.n); return `
         <div class="card chap-card${lk?' locked':''}"${lk?'':` onclick="openChapter(${i})"`}>
-          <span class="num">CHAPTER ${c.n} ${lk?'<span style="color:#b45309">🔒 EXAM</span>':(doneList[i]?'<span style="color:#059669">✓ DONE</span>':'')}</span>
+          <span class="num">CHAPTER ${c.n} ${lk?'<span style="color:#b45309">🔒 EXAM</span>':(doneList[i]?'<span style="color:var(--green-txt)">✓ DONE</span>':'')}</span>
           <h2>${lk?'🔒 ':''}${c.title}</h2>
           <div class="desc">${lk?'Its exam is open: the reading and its 13 activities are closed until your teacher finishes.':c.sum}</div>
           ${lk?'':`<span class="chip">🎧 audio · ${c.vocab.length} words · ${c.comp.length} questions</span>
@@ -2163,8 +2164,8 @@ const LEVEL_PLAN=(()=>{ // genérico: palabras reales del nivel abierto, estimac
   });
 })();
 function _tkChapter(c){
-  const comp=(c.comp||[]).map((q,i)=>`<li><b>${i+1}.</b> ${q[0]}<br><span style="color:#059669">✔ ${q[1][q[2]]}</span>${q[3]?`<br><span class="muted" style="font-size:12.5px">${q[3]}</span>`:''}</li>`).join('');
-  const tf=(c.tf||[]).map((t,i)=>`<li><b>${i+1}.</b> ${t[0]} — <b style="color:${t[1]?'#059669':'#dc2626'}">${t[1]?'TRUE':'FALSE'}</b>${t[2]?` <span class="muted" style="font-size:12.5px">${t[2]}</span>`:''}</li>`).join('');
+  const comp=(c.comp||[]).map((q,i)=>`<li><b>${i+1}.</b> ${q[0]}<br><span style="color:var(--green-txt)">✔ ${q[1][q[2]]}</span>${q[3]?`<br><span class="muted" style="font-size:12.5px">${q[3]}</span>`:''}</li>`).join('');
+  const tf=(c.tf||[]).map((t,i)=>`<li><b>${i+1}.</b> ${t[0]} — <b style="color:${t[1]?'var(--green-txt)':'var(--bad)'}">${t[1]?'TRUE':'FALSE'}</b>${t[2]?` <span class="muted" style="font-size:12.5px">${t[2]}</span>`:''}</li>`).join('');
   const vocab=(c.vocab||[]).map(v=>`<li><b>${v[0]}</b> — ${v[1]}</li>`).join('');
   const wr=(c.writing||[]).map((w,i)=>`<li><b>Task ${i+1}</b> <span class="muted">(${w.target})</span>: ${w.task}</li>`).join('');
   const ev=EVENTS[c.n];
@@ -2190,9 +2191,9 @@ function teacherView(){
   const planRows=LEVEL_PLAN.map(p=>`<tr${p.lvl===LVL?' style="background:#eef4ff"':''}>
     <td><b>${p.lvl}</b></td><td>${p.words.toLocaleString('es')}</td><td>${p.perCh}</td><td><b>${p.hrs}</b></td><td>${p.note}</td></tr>`).join('');
   const byr=BOOK_WORDS.map(v=>`<li><b>${v[0]}</b> — ${v[1]}</li>`).join('');
-  const ww=WHOSWHO.map((w,i)=>`<li><b>${i+1}.</b> ${w[0]} <b style="color:#059669">→ ${w[1]}</b></li>`).join('');
+  const ww=WHOSWHO.map((w,i)=>`<li><b>${i+1}.</b> ${w[0]} <b style="color:var(--green-txt)">→ ${w[1]}</b></li>`).join('');
   const nums=BIO_NUMBERS.map(b=>`<li><b>${b[0]}</b> — ${b[1]}</li>`).join('');
-  const gram=GRAMMAR_PP.map((g,i)=>`<li><b>${i+1}.</b> ${g[0]}<br><span style="color:#059669">✔ ${g[1][g[2]]}</span> <span class="muted" style="font-size:12.5px">${g[3]}</span></li>`).join('');
+  const gram=GRAMMAR_PP.map((g,i)=>`<li><b>${i+1}.</b> ${g[0]}<br><span style="color:var(--green-txt)">✔ ${g[1][g[2]]}</span> <span class="muted" style="font-size:12.5px">${g[3]}</span></li>`).join('');
   const lvlPills=['a2','b1','b2','c1'].map(l=>l.toUpperCase()===LVL
     ? `<span class="kw hit">${l.toUpperCase()}</span>`
     : `<a class="kw" style="text-decoration:none" href="${_lvlLink(l)}">${l.toUpperCase()}</a>`).join('');
@@ -2327,7 +2328,7 @@ function actGapFill(c){
     <div class="explain" style="margin-bottom:12px"><b>${bank.join(' &nbsp;·&nbsp; ')}</b></div>
     <ol class="tk-list" style="line-height:2.1">
       ${g.items.map((it,i)=>`<li>${it[0].replace('___',
-        `<input id="gf${i}" class="gf-in" autocomplete="off" spellcheck="false" style="min-width:120px;padding:4px 8px;border:1px solid #cbd5e1;border-radius:8px">`)}
+        `<input id="gf${i}" class="gf-in" autocomplete="off" spellcheck="false" style="min-width:120px;padding:4px 8px;border:1px solid var(--line-2);border-radius:8px">`)}
         <span id="gm${i}"></span></li>`).join('')}
     </ol>
     <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap">
@@ -2399,7 +2400,7 @@ function actReadingPics(c){
     </figure>
     <ol class="tk-list" style="line-height:1.9">
       ${P.qs.map((q,i)=>`<li>${q[0]}
-        <div style="margin:6px 0 4px"><textarea id="rp${i}" rows="2" style="width:100%;padding:6px 8px;border:1px solid #cbd5e1;border-radius:8px"></textarea></div>
+        <div style="margin:6px 0 4px"><textarea id="rp${i}" rows="2" style="width:100%;padding:6px 8px;border:1px solid var(--line-2);border-radius:8px"></textarea></div>
         <div id="rpm${i}" class="explain" style="display:none"></div></li>`).join('')}
     </ol>
     <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap">
@@ -2429,7 +2430,7 @@ function actPicSummary(c){
       <h2 style="color:var(--blue-d);margin:2px 0 6px">🧩 Put the pictures in order</h2>
       <p class="muted" style="margin:0 0 12px">The pictures are not in the right order. Use ↑ and ↓ to put them in the order they appear in the chapter.</p>
       <div id="psList">${order.map((idx,pos)=>`
-        <div class="ps-row" style="display:flex;gap:10px;align-items:center;margin-bottom:10px;border:1px solid #e2e8f0;border-radius:12px;padding:8px">
+        <div class="ps-row" style="display:flex;gap:10px;align-items:center;margin-bottom:10px;border:1px solid var(--line);border-radius:12px;padding:8px">
           <div style="font-weight:800;color:var(--blue-d);min-width:22px">${pos+1}</div>
           <img src="${RDR_ID}-img/${L[idx].img}.jpg" alt="" style="width:130px;border-radius:8px;flex:none" onerror="this.remove()">
           <div style="flex:1;font-size:13.5px">${L[idx].cap}</div>
@@ -2568,7 +2569,7 @@ function keyPart(id){
       <ol class="tk-list" style="line-height:2.1">
         ${rows.map((r,i)=>`<li>${r[0]}
           <input id="kp${i}" class="gf-in" autocomplete="off" spellcheck="false"
-                 style="min-width:130px;padding:4px 8px;border:1px solid #cbd5e1;border-radius:8px">
+                 style="min-width:130px;padding:4px 8px;border:1px solid var(--line-2);border-radius:8px">
           <span id="kpm${i}"></span></li>`).join('')}
       </ol>
       <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap">
@@ -2692,5 +2693,6 @@ if(window.NIS_WORK) NIS_WORK.attach(Object.assign(
 ));
 
 </script>
+<script src="nis-tema.js?v=a9738cd9" defer></script>
 </body>
 </html>

@@ -9,7 +9,7 @@
 <link rel="preload" href="fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="nis-fonts.css?v=fd196882">
 <script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<link rel="stylesheet" href="nis-tokens.css?v=fd0ffbab">
+<link rel="stylesheet" href="nis-tokens.css?v=36174a4f">
 <style>
   :root{--blue:#4987c6;--blue-d:#2f5f93;--blue-dd:#244c77;--line:#e3e5f3}
   *{box-sizing:border-box}
@@ -33,7 +33,7 @@
   .tip{background:var(--bg);border-left:3px solid var(--blue);padding:10px 12px;border-radius:8px;margin:6px 0;font-size:.9rem}
   .test-item{display:flex;justify-content:space-between;align-items:center;padding:13px 14px;border:1px solid var(--line);border-radius:10px;margin:8px 0}
   button.go{background:var(--blue-d);color:var(--card);border:none;border-radius:9px;padding:9px 16px;font-weight:700;cursor:pointer;font-family:inherit}
-  button.go.sec{background:var(--bg);color:#0F172A;border:1px solid var(--line)}
+  button.go.sec{background:var(--bg);color:var(--ink);border:1px solid var(--line)}
   .ex{border:1px solid var(--line);border-radius:12px;padding:16px;margin:14px 0}
   .ex .ins{color:var(--muted);font-size:.88rem;margin:2px 0 10px}
   .passage{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:12px;font-size:.9rem;line-height:1.6;margin-bottom:12px}
@@ -53,14 +53,14 @@
   .gapw{position:relative;display:inline-block;vertical-align:baseline;margin:0 2px}
   .gapb{border:0;border-bottom:2px solid #1D4ED8;background:var(--bg);border-radius:7px 7px 0 0;padding:1px 9px;font:600 .95rem inherit;color:#1D4ED8;cursor:pointer;min-width:62px}
   .gapb i{font-style:normal;font-weight:800;font-size:.78em;opacity:.7;margin-right:4px}
-  .gapb.puesto{color:#0F172A;background:var(--card)}
+  .gapb.puesto{color:var(--ink);background:var(--card)}
   .gapm{position:absolute;z-index:30;left:0;top:calc(100% + 2px);background:var(--card);border:1.5px solid #1D4ED8;border-radius:11px;box-shadow:0 12px 28px rgba(15,23,42,.2);padding:4px;display:flex;flex-wrap:wrap;align-items:center;width:max-content;gap:2px;max-width:min(92vw,34rem);max-height:46vh;overflow:auto}
   .gapx{border:0;background:var(--bg);color:var(--muted);border-radius:8px;padding:6px 10px;cursor:pointer;font:inherit;font-weight:700}
   .gapm.hidden{display:none}
-  .gapm button{border:0;background:none;text-align:left;padding:7px 13px;border-radius:8px;font:inherit;font-size:.92rem;cursor:pointer;white-space:nowrap;color:#0F172A}
+  .gapm button{border:0;background:none;text-align:left;padding:7px 13px;border-radius:8px;font:inherit;font-size:.92rem;cursor:pointer;white-space:nowrap;color:var(--ink)}
   .gapm button:hover,.gapm button.sel{background:var(--bg)}
-  .gapw.ok .gapb{background:#DCFCE7;border-bottom-color:#15803D}
-  .gapw.bad .gapb{background:#FEE2E2;border-bottom-color:var(--bad)}
+  .gapw.ok .gapb{background:var(--green50);border-bottom-color:#15803D}
+  .gapw.bad .gapb{background:var(--red50);border-bottom-color:var(--bad)}
   .lsn-audio{width:100%;max-width:36rem;margin:6px 0 10px}
   .kw{margin:4px 0}
   .kw-tag{background:#7c1d3f;color:var(--card);border-radius:5px;padding:1px 7px;font-size:.7rem;font-weight:700;letter-spacing:.04em}
@@ -74,7 +74,7 @@
   .cr-top{margin-bottom:14px}
   .cr-lay{display:grid;grid-template-columns:240px 1fr;gap:16px;align-items:start}
   .cr-sb{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:8px;position:sticky;top:16px;max-height:calc(100vh - 36px);overflow-y:auto}
-  .cr-item{display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:none;background:transparent;border-radius:10px;padding:9px 10px;cursor:pointer;font-family:inherit;color:#0F172A;border-left:3px solid transparent;margin:2px 0}
+  .cr-item{display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:none;background:transparent;border-radius:10px;padding:9px 10px;cursor:pointer;font-family:inherit;color:var(--ink);border-left:3px solid transparent;margin:2px 0}
   .cr-item:hover{background:var(--bg)}
   .cr-item.act{background:var(--bg);border-left-color:#2563EB}
   .cr-item:focus-visible{outline:3px solid #2563EB;outline-offset:2px}

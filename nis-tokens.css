@@ -34,6 +34,39 @@
   /* marcas de palabra encontrada (sopas de letras) */
   --f1:#ffd8a8; --f2:#b2f2bb; --f3:#a5d8ff;
   --f4:#fcc2d7; --f5:#d0bfff; --f6:#ffec99;
+
+  /* Fondos suaves de aviso y tonos de apoyo que estaban escritos a pelo.
+     El valor en claro es el de siempre: lo que se gana es el de noche. */
+  --amber50:#fff4e6;
+  --amber100:#ffec99;
+  --sky50:#e7f5ff;
+  --violet50:#f3f0ff;
+  --orange50:#ffe8cc;
+  --orange100:#ffd8a8;
+  --pink50:#ffdeeb;
+  --pink100:#fcc2d7;
+  --line-2:#cbd5e1;
+  --accent-strong:#1e3a8a;
+  --blue-d:#2f5f93;
+  --blue-dd:#244c77;
+  --orange-txt:#e8590c;
+
+  /* Tonos de apoyo que estaban escritos a pelo en readers, quiz e informes.
+     Mismo valor en claro; lo que se gana es la version de noche. */
+  --green50:#dcfce7;
+  --green100:#bbf7d0;
+  --red50:#fee2e2;
+  --sky100:#bfdbfe;
+  --amber-strong:#facc15;
+  --lila:#d1d2ea;
+  --green-txt:#059669;
+  --gold-txt:#b8934a;
+  --teal50:#d4efeb;
+  --teal-txt:#0f5048;
+  --sand50:#f5e6cc;
+  --sand-txt:#8a5a1a;
+  --lilac50:#e8e3f5;
+  --lilac-txt:#3a2a6a;
 }
 
 
@@ -51,11 +84,38 @@
 
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
+    --green50:#16301f;
+    --green100:#1e4530;
+    --red50:#331a1a;
+    --sky100:#1e3550;
+    --amber-strong:#8a6a18;
+    --lila:#2c3050;
+    --green-txt:#6fd39d;
+    --gold-txt:#e0c07a;
+    --teal50:#16302c;
+    --teal-txt:#7fd0c4;
+    --sand50:#332b1c;
+    --sand-txt:#e6bd7a;
+    --lilac50:#272040;
+    --lilac-txt:#c3b3f8;
     --ink:#e9ecf3;
     --muted:#98a1b5;
     --bg:#10141c;
     --card:#181d28;
     --deep:#0b0e14;
+    --amber50:#2e2617;
+    --amber100:#3a2f18;
+    --sky50:#16283a;
+    --violet50:#241f3d;
+    --orange50:#33251a;
+    --orange100:#4a3520;
+    --pink50:#331d2a;
+    --pink100:#4a2434;
+    --line-2:#39424f;
+    --accent-strong:#9dbcf7;
+    --blue-d:#9dc0e6;
+    --blue-dd:#c3d9f2;
+    --orange-txt:#f0a86;
     --line:#2b3244;
 
     --accent:#8ea3f0;      --accent-soft:#1d2745;
@@ -68,14 +128,165 @@
 
     --f1:#5c4520; --f2:#2c5136; --f3:#1f4460;
     --f4:#5a2c40; --f5:#40325e; --f6:#5a5020;
-  }
+  
+
+    /* --- El vocabulario que cada pagina trae por su cuenta, resuelto por lo que
+       hace cada token: el texto se aclara, el fondo se oscurece y el borde se
+       queda a media luz, cada uno con su matiz. --- */
+    --a1:#265164;
+    --a2:#26643d;
+    --acc:#263b64;
+    --accent-d:#a8b4e6;
+    --accent2:#aac5e4;
+    --al:#e6a8a8;
+    --alB:#4c2424;
+    --alF:#2b1717;
+    --amber-bg:#2b2317;
+    --amber-dark:#e6cba8;
+    --amber-light:#2b2417;
+    --amber-line:#4c3d24;
+    --amber:#4c3924;
+    --ask:#266432;
+    --azul:#a9c6e5;
+    --b1:#645526;
+    --b2:#643f26;
+    --bad-bg:#2b1717;
+    --band:#17202b;
+    --bar:#383e52;
+    --blue-soft:#17202b;
+    --border:#283148;
+    --brand:#265164;
+    --c-pron:#a8b4e6;
+    --c-struct:#e6a8be;
+    --c-tense:#e6bea8;
+    --c-time:#a8dde6;
+    --c0:#642926;
+    --c1:#642626;
+    --c2:#392664;
+    --c3:#266446;
+    --canvas:#171b2b;
+    --colegio:#17212b;
+    --colegioB:#293747;
+    --coral-light:#2b1d17;
+    --coral:#e5b7a8;
+    --cream:#2b2417;
+    --direct-soft:#17212b;
+    --direct:#264764;
+    --em50:#172b22;
+    --em:#26644f;
+    --er50:#2b1717;
+    --er:#e6a8a8;
+    --f7:#192e27;
+    --f8:#2e2519;
+    --fl:#322664;
+    --fondo:#17222b;
+    --g9-bg:#17192b;
+    --g9-strong:#17182b;
+    --g9-text:#a9c6e5;
+    --gold-dark:#e6c3a8;
+    --gold-soft:#2b2617;
+    --good-bg:#172b1f;
+    --green-bg:#182b1f;
+    --green-light:#172b1b;
+    --green:#244c2e;
+    --gris:#c2c5cc;
+    --inf-soft:#172a2b;
+    --inf:#a8dde6;
+    --ing-soft:#1b172b;
+    --ing:#b7a8e6;
+    --lila-50:#17192b;
+    --line2:#17202b;
+    --linea:#2c3544;
+    --list50:#172a2b;
+    --list:#a8dae6;
+    --mv:#26645e;
+    --navy:#a8c2e6;
+    --nordic-100:#171a2b;
+    --nordic-500:#aac7e4;
+    --nordic-50:#17192b;
+    --nordic-600:#aac7e4;
+    --nordic-700:#aac6e4;
+    --nordic-800:#a9c6e5;
+    --nordic-900:#c2c3cc;
+    --now:#a8dde6;
+    --ok-bg:#172b22;
+    --ok-soft:#172b1d;
+    --ok50:#172b1e;
+    --ok:#244c33;
+    --okB:#244c32;
+    --okF:#172b1d;
+    --paper:#2b2417;
+    --primary-d:#a8b7e6;
+    --primary-l:#17202b;
+    --primary:#24314c;
+    --prop:#2b2717;
+    --propB:#4c4424;
+    --propT:#e6bfa8;
+    --propuesta:#2b2717;
+    --propuestaB:#4c4424;
+    --propuestaT:#e6bfa8;
+    --purple-light:#1d172b;
+    --read50:#191e2e;
+    --reported-soft:#172b1e;
+    --reported:#266432;
+    --rose50:#2b171a;
+    --rose:#642630;
+    --s5:#bec5d0;
+    --s6:#bcc5d2;
+    --s8:#b5c2d9;
+    --say:#264764;
+    --sky1:#264464;
+    --sky2:#264464;
+    --sky:#171f2b;
+    --st:#644726;
+    --star:#e6d4a8;
+    --surface2:#17222b;
+    --surface:#212121;
+    --teal-light:#172b28;
+    --teal:#ace2da;
+    --tell:#643c26;
+    --text:#acbce1;
+    --then:#e6bea8;
+    --tinta:#b7c4d7;
+    --v3:#2d244c;
+    --v50:#1d172b;
+    --v7:#c0a8e6;
+    --violet:#3d2664;
+}
 }
 :root[data-theme="dark"]{
+  --green50:#16301f;
+  --green100:#1e4530;
+  --red50:#331a1a;
+  --sky100:#1e3550;
+  --amber-strong:#8a6a18;
+  --lila:#2c3050;
+  --green-txt:#6fd39d;
+  --gold-txt:#e0c07a;
+  --teal50:#16302c;
+  --teal-txt:#7fd0c4;
+  --sand50:#332b1c;
+  --sand-txt:#e6bd7a;
+  --lilac50:#272040;
+  --lilac-txt:#c3b3f8;
   --ink:#e9ecf3;
   --muted:#98a1b5;
   --bg:#10141c;
   --card:#181d28;
   --deep:#0b0e14;
+  --amber50:#2e2617;
+  --amber100:#3a2f18;
+  --sky50:#16283a;
+  --violet50:#241f3d;
+  --orange50:#33251a;
+  --orange100:#4a3520;
+  --pink50:#331d2a;
+  --pink100:#4a2434;
+  --line-2:#39424f;
+  --accent-strong:#9dbcf7;
+  --blue-d:#9dc0e6;
+  --blue-dd:#c3d9f2;
+  --orange-txt:#f0a86;
   --line:#2b3244;
 
   --accent:#8ea3f0;      --accent-soft:#1d2745;
@@ -88,6 +299,130 @@
 
   --f1:#5c4520; --f2:#2c5136; --f3:#1f4460;
   --f4:#5a2c40; --f5:#40325e; --f6:#5a5020;
+
+
+  /* --- El vocabulario que cada pagina trae por su cuenta, resuelto por lo que
+     hace cada token: el texto se aclara, el fondo se oscurece y el borde se
+     queda a media luz, cada uno con su matiz. --- */
+  --a1:#265164;
+  --a2:#26643d;
+  --acc:#263b64;
+  --accent-d:#a8b4e6;
+  --accent2:#aac5e4;
+  --al:#e6a8a8;
+  --alB:#4c2424;
+  --alF:#2b1717;
+  --amber-bg:#2b2317;
+  --amber-dark:#e6cba8;
+  --amber-light:#2b2417;
+  --amber-line:#4c3d24;
+  --amber:#4c3924;
+  --ask:#266432;
+  --azul:#a9c6e5;
+  --b1:#645526;
+  --b2:#643f26;
+  --bad-bg:#2b1717;
+  --band:#17202b;
+  --bar:#383e52;
+  --blue-soft:#17202b;
+  --border:#283148;
+  --brand:#265164;
+  --c-pron:#a8b4e6;
+  --c-struct:#e6a8be;
+  --c-tense:#e6bea8;
+  --c-time:#a8dde6;
+  --c0:#642926;
+  --c1:#642626;
+  --c2:#392664;
+  --c3:#266446;
+  --canvas:#171b2b;
+  --colegio:#17212b;
+  --colegioB:#293747;
+  --coral-light:#2b1d17;
+  --coral:#e5b7a8;
+  --cream:#2b2417;
+  --direct-soft:#17212b;
+  --direct:#264764;
+  --em50:#172b22;
+  --em:#26644f;
+  --er50:#2b1717;
+  --er:#e6a8a8;
+  --f7:#192e27;
+  --f8:#2e2519;
+  --fl:#322664;
+  --fondo:#17222b;
+  --g9-bg:#17192b;
+  --g9-strong:#17182b;
+  --g9-text:#a9c6e5;
+  --gold-dark:#e6c3a8;
+  --gold-soft:#2b2617;
+  --good-bg:#172b1f;
+  --green-bg:#182b1f;
+  --green-light:#172b1b;
+  --green:#244c2e;
+  --gris:#c2c5cc;
+  --inf-soft:#172a2b;
+  --inf:#a8dde6;
+  --ing-soft:#1b172b;
+  --ing:#b7a8e6;
+  --lila-50:#17192b;
+  --line2:#17202b;
+  --linea:#2c3544;
+  --list50:#172a2b;
+  --list:#a8dae6;
+  --mv:#26645e;
+  --navy:#a8c2e6;
+  --nordic-100:#171a2b;
+  --nordic-500:#aac7e4;
+  --nordic-50:#17192b;
+  --nordic-600:#aac7e4;
+  --nordic-700:#aac6e4;
+  --nordic-800:#a9c6e5;
+  --nordic-900:#c2c3cc;
+  --now:#a8dde6;
+  --ok-bg:#172b22;
+  --ok-soft:#172b1d;
+  --ok50:#172b1e;
+  --ok:#244c33;
+  --okB:#244c32;
+  --okF:#172b1d;
+  --paper:#2b2417;
+  --primary-d:#a8b7e6;
+  --primary-l:#17202b;
+  --primary:#24314c;
+  --prop:#2b2717;
+  --propB:#4c4424;
+  --propT:#e6bfa8;
+  --propuesta:#2b2717;
+  --propuestaB:#4c4424;
+  --propuestaT:#e6bfa8;
+  --purple-light:#1d172b;
+  --read50:#191e2e;
+  --reported-soft:#172b1e;
+  --reported:#266432;
+  --rose50:#2b171a;
+  --rose:#642630;
+  --s5:#bec5d0;
+  --s6:#bcc5d2;
+  --s8:#b5c2d9;
+  --say:#264764;
+  --sky1:#264464;
+  --sky2:#264464;
+  --sky:#171f2b;
+  --st:#644726;
+  --star:#e6d4a8;
+  --surface2:#17222b;
+  --surface:#212121;
+  --teal-light:#172b28;
+  --teal:#ace2da;
+  --tell:#643c26;
+  --text:#acbce1;
+  --then:#e6bea8;
+  --tinta:#b7c4d7;
+  --v3:#2d244c;
+  --v50:#1d172b;
+  --v7:#c0a8e6;
+  --violet:#3d2664;
 }
 
 /* Con la paleta cambiada, el fondo de la pagina y el color del texto tienen que

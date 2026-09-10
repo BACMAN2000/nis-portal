@@ -1,5 +1,5 @@
 <!doctype html>
-<html data-theme="light" lang="es">
+<html lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,7 +25,8 @@
 -->
 <link rel="preload" href="fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="nis-fonts.css?v=fd196882">
-<link rel="stylesheet" href="nis-tokens.css?v=fd0ffbab">
+<script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="nis-tokens.css?v=36174a4f">
 <style>
 :root{ --tinta:#1f2937; --gris:#6b7280; --linea:#d7dce5; --azul:#244c77;
   --prop:#FFFBEB; --propB:#FDE68A; --propT:#92400E; }
@@ -64,7 +65,7 @@ td.hito{background:var(--bg);font-size:.72rem;color:var(--gris);width:120px}
 .prod .integra div{border:1px solid var(--propB);background:var(--prop);border-radius:8px;padding:8px 11px;font-size:.8rem}
 .prod .integra b{display:block;color:var(--propT);margin-bottom:2px}
 .dp{color:#15803D;font-size:.9em}
-td.nota{background:#FFFBEB;border-left:3px solid var(--gold);color:#92400E;font-size:.7rem;font-style:italic}
+td.nota{background:#FFFBEB;border-left:3px solid var(--gold);color:var(--sand-txt);font-size:.7rem;font-style:italic}
 .leyenda{font-size:.78rem;color:var(--gris);margin:0 0 10px}
 .oculto{display:none}
 @media print{
@@ -299,5 +300,6 @@ $('#bCurso').addEventListener('click', () => { modo = 'curso'; pinta(); });
 $('#print').addEventListener('click', () => window.print());
 pinta();
 </script>
+<script src="nis-tema.js?v=a9738cd9" defer></script>
 </body>
 </html>

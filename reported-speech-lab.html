@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html data-theme="light" data-theme="light" lang="en">
+<html data-theme="light" lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Reported Speech Lab · NIS English</title>
 <link rel="preload" href="fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="nis-fonts.css?v=fd196882">
-<link rel="stylesheet" href="nis-tokens.css?v=fd0ffbab">
+<script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="nis-tokens.css?v=36174a4f">
 <style>
   :root{
   --c-verb:#9b5de5;
@@ -94,7 +95,7 @@
   /* ---- Match ---- */
   .mwrap{display:grid; grid-template-columns:1fr 1fr; gap:22px; max-width:600px; margin:14px auto 0;}
   .mcol h3{font-size:.76rem; text-transform:uppercase; letter-spacing:1px; text-align:center; margin-bottom:10px;}
-  .mcol.l h3{color:var(--c-time);} .mcol.r h3{color:var(--then,#e8590c);}
+  .mcol.l h3{color:var(--c-time);} .mcol.r h3{color:var(--then,var(--orange-txt));}
   .mcard{background:var(--card); border:2px solid #d7def0; border-radius:12px; padding:12px; margin-bottom:10px; font-weight:700; cursor:pointer; text-align:center; transition:.12s;}
   .mcard.sel{border-color:var(--accent); background:var(--accent-soft);}
   .mcard.matched{border-color:var(--good); background:var(--good-soft); color:var(--good); cursor:default; opacity:.85;}
@@ -431,7 +432,7 @@ function renderMatch(){
   const right=mOrder.map(i=>`<div class="mcard" data-r="${i}" onclick="pickR(${i})">${MATCH[i][1]}</div>`).join('');
   document.getElementById('main').innerHTML=`<div class="card">
     <div class="hud"><span class="chip">🔗 <span id="mscore">0/${MATCH.length}</span></span><span class="chip"><span class="watch" id="mwatch">⏱ 00:00</span></span></div>
-    <p style="text-align:center;color:var(--muted);font-size:.88rem">Match each <b style="color:var(--c-time)">direct</b> time/place word with its <b style="color:#e8590c">reported</b> form.</p>
+    <p style="text-align:center;color:var(--muted);font-size:.88rem">Match each <b style="color:var(--c-time)">direct</b> time/place word with its <b style="color:var(--orange-txt)">reported</b> form.</p>
     <div class="mwrap">
       <div class="mcol l"><h3>Direct (now)</h3>${left}</div>
       <div class="mcol r"><h3>Reported (then)</h3>${right}</div>
@@ -472,5 +473,6 @@ if(window.NIS_WORK) NIS_WORK.attach(Object.assign(
 ));
 
 </script>
+<script src="nis-tema.js?v=a9738cd9" defer></script>
 </body>
 </html>

@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html data-theme="light" data-theme="light" lang="en">
+<html data-theme="light" lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>English Games Lab — NIS</title>
 <!-- Shell only. All game logic lives in games-lab-engine.js, which is byte-identical
      to the copy on cohasset.pe — the two sites differ in this file's CSS + header. -->
-<link rel="stylesheet" href="nis-tokens.css?v=fd0ffbab">
+<script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="nis-tokens.css?v=36174a4f">
 <style>
 :root{
   --navy:#244c77;
@@ -232,5 +233,6 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px soli
 <script src="coh-games-core.js?v=8124db8f"></script>
 <script src="games-lab-data.js?v=8d268bcc"></script>
 <script src="games-lab-engine.js?v=f07cfab4"></script>
+<script src="nis-tema.js?v=a9738cd9" defer></script>
 </body>
 </html>

@@ -1,18 +1,19 @@
 <!doctype html>
-<html data-theme="light" data-theme="light" lang="es">
+<html data-theme="light" lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Corrector de material — Nordic</title>
 <link rel="preload" href="fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin>
+<script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 <link rel="stylesheet" href="brand.css?v=5f69053f">
 <style>
   *{box-sizing:border-box}
-  body{margin:0;background:var(--bg,#f2f3ff);color:var(--ink,#2b2c33);
+  body{margin:0;background:var(--bg,#f2f3ff);color:var(--ink,var(--ink));
        font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
   .wrap{max-width:1180px;margin:0 auto;padding:16px}
   h1{font-size:20px;margin:0 0 4px}
-  .sub{color:var(--grey,#636465);margin:0 0 14px;font-size:13px}
+  .sub{color:var(--grey,var(--muted));margin:0 0 14px;font-size:13px}
   .cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
   @media (max-width:900px){.cols{grid-template-columns:1fr}}
   .cx-card{background:var(--white,var(--card));border:1px solid var(--line,#e3e5f3);
@@ -25,9 +26,9 @@
        padding:9px 16px;font-size:14px;font-weight:600;cursor:pointer}
   .btn:hover{background:var(--blue-d,#2f5f93)}
   .btn[disabled]{opacity:.5;cursor:default}
-  .btn.sec{background:var(--card);color:var(--ink,#2b2c33);border:1px solid var(--line,#e3e5f3);font-weight:500}
+  .btn.sec{background:var(--card);color:var(--ink,var(--ink));border:1px solid var(--line,#e3e5f3);font-weight:500}
   select{padding:8px;border-radius:8px;border:1px solid var(--line,#e3e5f3);background:var(--card);color:inherit}
-  .estado{font-size:13px;color:var(--grey,#636465);margin-left:auto}
+  .estado{font-size:13px;color:var(--grey,var(--muted));margin-left:auto}
   .aviso{border-left:3px solid var(--line);padding:8px 10px;margin-bottom:8px;
          background:#fbfbff;border-radius:0 8px 8px 0;cursor:pointer}
   .aviso:hover{background:#f2f4ff}
@@ -35,24 +36,24 @@
   .aviso.variante{border-left-color:var(--warn,#f59e0b)}
   .aviso.uso{border-left-color:var(--blue,#4987c6)}
   .aviso b{font-family:ui-monospace,Consolas,monospace}
-  .aviso .msg{font-size:13px;color:var(--grey,#636465);margin-top:2px}
+  .aviso .msg{font-size:13px;color:var(--grey,var(--muted));margin-top:2px}
   .tag{display:inline-block;font-size:11px;text-transform:uppercase;letter-spacing:.04em;
-       padding:1px 6px;border-radius:999px;background:var(--lila,#d1d2ea);
-       color:var(--blue-dd,#244c77);margin-right:6px;vertical-align:1px}
-  .vacio{color:var(--grey,#636465);text-align:center;padding:28px 10px}
-  .ok{color:var(--good,#16a34a);font-weight:600}
+       padding:1px 6px;border-radius:999px;background:var(--lila,var(--lila));
+       color:var(--blue-dd,var(--blue-dd));margin-right:6px;vertical-align:1px}
+  .vacio{color:var(--grey,var(--muted));text-align:center;padding:28px 10px}
+  .ok{color:var(--good,var(--good));font-weight:600}
   mark{background:#ffe8a3;border-radius:3px;padding:0 1px}
-  mark.sel{background:var(--warn,#f59e0b);color:#78350f}
+  mark.sel{background:var(--warn,#f59e0b);color:var(--sand-txt)}
   #vista{white-space:pre-wrap;font:14px/1.7 ui-monospace,Consolas,monospace;
          max-height:44vh;overflow:auto;display:none}
   .ficha{margin-top:8px;padding:8px 10px;background:var(--bg,#f2f3ff);border-radius:8px;font-size:13px}
-  .ficha .ipa{font-family:ui-monospace,Consolas,monospace;color:var(--blue-dd,#244c77)}
+  .ficha .ipa{font-family:ui-monospace,Consolas,monospace;color:var(--blue-dd,var(--blue-dd))}
   .cuenta{font-weight:700}
   .aviso.revisar{border-left-color:var(--celeste,#76cbe5)}
   .cx-sug{margin-top:6px;display:flex;gap:6px;flex-wrap:wrap;align-items:center;
-          font-size:12px;color:var(--grey,#636465)}
+          font-size:12px;color:var(--grey,var(--muted))}
   .cx-fix{background:var(--white,var(--card));border:1px solid var(--blue,#4987c6);
-          color:var(--blue-dd,#244c77);border-radius:999px;padding:3px 10px;
+          color:var(--blue-dd,var(--blue-dd));border-radius:999px;padding:3px 10px;
           font:600 13px ui-monospace,Consolas,monospace;cursor:pointer}
   .cx-fix:hover{background:var(--blue,#2f5f93);color:var(--card)}
 </style>
@@ -432,5 +433,6 @@ $('#texto').addEventListener('keydown', e=>{
   if((e.ctrlKey||e.metaKey) && e.key==='Enter') $('#revisar').click();
 });
 </script>
+<script src="nis-tema.js?v=a9738cd9" defer></script>
 </body>
 </html>

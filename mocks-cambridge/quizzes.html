@@ -36,13 +36,13 @@ if(/\.github\.io$/i.test(location.hostname)){
 <link rel="preload" href="../fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../nis-fonts.css?v=fd196882">
 <script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<link rel="stylesheet" href="../nis-tokens.css?v=fd0ffbab">
+<link rel="stylesheet" href="../nis-tokens.css?v=36174a4f">
 <style>
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}
   body{font:15px/1.55 'Gotham',"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-    color:#0f172a; background:linear-gradient(180deg,#d1d2ea 0%,var(--bg) 60%,var(--card) 100%); min-height:100vh}
-  header{background:var(--card); color:#0f172a; padding:12px 22px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+    color:var(--ink); background:linear-gradient(180deg,var(--lila) 0%,var(--bg) 60%,var(--card) 100%); min-height:100vh}
+  header{background:var(--card); color:var(--ink); padding:12px 22px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;
     box-shadow:0 4px 16px rgba(15,23,42,.06); position:sticky; top:0; z-index:10; border-bottom:1px solid var(--line)}
   header .logo img{display:block; height:38px; width:auto}
   header .sub{color:var(--muted); font-size:13px; margin-left:auto; font-weight:600}
@@ -67,8 +67,8 @@ if(/\.github\.io$/i.test(location.hostname)){
   .btn.write{background:#16a34a}
   .url{display:block; margin-top:8px; font-size:12px; color:var(--muted); word-break:break-all}
   .footer{color:var(--muted); font-size:12px; text-align:center; padding:22px 0 32px}
-  .tip{background:#fef9c3; border:1px solid #fde68a; padding:12px 14px; border-radius:12px;
-    color:#92400e; font-size:13px; margin:18px 0}
+  .tip{background:var(--amber50); border:1px solid #fde68a; padding:12px 14px; border-radius:12px;
+    color:var(--sand-txt); font-size:13px; margin:18px 0}
 </style>
 <script src="config.js?v=f23d261f"></script>
 </head>
@@ -86,7 +86,7 @@ if(/\.github\.io$/i.test(location.hostname)){
 
   <!-- nis-only:start (el sync de cohasset.pe recorta este bloque: su portal ya tiene sección YLE propia) -->
   <h2 style="font-size:18px;margin:6px 0 2px">🧭 YLE — Young Learners (Primary)</h2>
-  <p style="color:#475569;font-size:13px;margin:0 0 12px"><b>Fun for Nordic</b>, our Cambridge Young Learners course: interactive units with audio, crosswords and exam tasks. Open to primary.</p>
+  <p style="color:var(--muted);font-size:13px;margin:0 0 12px"><b>Fun for Nordic</b>, our Cambridge Young Learners course: interactive units with audio, crosswords and exam tasks. Open to primary.</p>
   <div class="grid">
     <div class="card" style="border-top:5px solid #3b6fb5">
       <h2>🧭 Fun for Nordic — YLE</h2>
@@ -101,7 +101,7 @@ if(/\.github\.io$/i.test(location.hostname)){
   <!-- nis-only:end -->
 
   <h2 id="mocks" style="font-size:18px;margin:22px 0 2px">📝 MOCKS — full exams</h2>
-  <p style="color:#475569;font-size:13px;margin:0 0 12px">Full mock exams, harder than the practice tests. <b>Locked by default</b>: coordination opens them by grade when they are scheduled.</p>
+  <p style="color:var(--muted);font-size:13px;margin:0 0 12px">Full mock exams, harder than the practice tests. <b>Locked by default</b>: coordination opens them by grade when they are scheduled.</p>
   <div class="grid">
     <div class="card">
       <h2>📖 Reading &amp; Use of English</h2>
@@ -129,7 +129,7 @@ if(/\.github\.io$/i.test(location.hostname)){
   </div>
 
   <h2 id="practice" style="font-size:18px;margin:22px 0 2px">🎯 PRACTICE TESTS</h2>
-  <p style="color:#475569;font-size:13px;margin:0 0 12px">Practice tests in the same Cambridge format, marked automatically. <b>Open by default</b>; your teacher can hold them back by grade to use them in class.</p>
+  <p style="color:var(--muted);font-size:13px;margin:0 0 12px">Practice tests in the same Cambridge format, marked automatically. <b>Open by default</b>; your teacher can hold them back by grade to use them in class.</p>
   <div class="grid">
     <div class="card">
       <h2>📖 Reading &amp; Use of English</h2>

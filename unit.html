@@ -9,7 +9,7 @@
 <link rel="preload" href="fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="nis-fonts.css?v=fd196882">
 <script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<link rel="stylesheet" href="nis-tokens.css?v=fd0ffbab">
+<link rel="stylesheet" href="nis-tokens.css?v=36174a4f">
 <style>
 :root{
   --blue:#4987c6;
@@ -83,10 +83,10 @@ details.wrub[open] summary{margin-bottom:4px}
 .escala li{display:flex;align-items:center;gap:9px;font-size:.82rem;color:var(--ink)}
 .escala .lv{flex:none;min-width:2.2rem;text-align:center;border-radius:6px;padding:2px 7px;
   font-weight:800;font-size:.76rem;color:var(--ink)}
-.escala .lv.ad{background:#dcfce7}
+.escala .lv.ad{background:var(--green50)}
 .escala .lv.a{background:var(--accent-soft)}
-.escala .lv.b{background:#fef9c3}
-.escala .lv.c{background:#fee2e2}
+.escala .lv.b{background:var(--amber50)}
+.escala .lv.c{background:var(--red50)}
 .week{display:flex;gap:14px;padding:14px 0;border-bottom:1px dashed var(--line)}
 .week:last-child{border-bottom:none}
 .week .n{flex:0 0 46px;height:46px;border-radius:50%;background:var(--blue);color:var(--card);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.95rem}
@@ -286,10 +286,10 @@ function bandaDelArco(){
   return `<a href="project.html?arc=${encodeURIComponent(k)}&back=${encodeURIComponent(location.pathname+location.search)}"
     style="display:block;text-decoration:none;background:#F5F3FF;border:1px solid #DDD6FE;
            border-radius:12px;padding:13px 16px;margin:-6px 0 18px">
-    <span style="font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#5B21B6;font-weight:700">
+    <span style="font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--purple);font-weight:700">
       Part of the term project</span>
-    <div style="font-weight:700;color:#244c77;margin-top:3px">${esc(tit)} &#8594;</div>
-    <div style="font-size:.85rem;color:#636465">${esc(sub)} · ${a.semanas} weeks · P${a.periodos.join(' + P')}</div>
+    <div style="font-weight:700;color:var(--blue-dd);margin-top:3px">${esc(tit)} &#8594;</div>
+    <div style="font-size:.85rem;color:var(--muted)">${esc(sub)} · ${a.semanas} weeks · P${a.periodos.join(' + P')}</div>
   </a>`;
 }
 
@@ -363,7 +363,7 @@ function pinta(){
   ${bandaDelArco()}
   ${esProfe?`<div style="display:flex;gap:10px;flex-wrap:wrap;margin:-6px 0 18px">
     <a href="teacher-guide.html?grade=${encodeURIComponent(GRADE)}&unit=${U.n}" target="_blank" rel="noopener"
-       style="background:#eef4fb;border:1px solid #cfe0f0;color:#244c77;text-decoration:none;
+       style="background:#eef4fb;border:1px solid #cfe0f0;color:var(--blue-dd);text-decoration:none;
               padding:9px 15px;border-radius:10px;font-weight:600;font-size:.86rem">
       &#128218; Teacher guide &mdash; print</a>
     <a href="workbook.html?grade=${encodeURIComponent(GRADE)}&unit=${U.n}" target="_blank" rel="noopener"

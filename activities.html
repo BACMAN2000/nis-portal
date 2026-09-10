@@ -9,11 +9,11 @@
 <link rel="preload" href="fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="nis-fonts.css?v=fd196882">
 <script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<link rel="stylesheet" href="nis-tokens.css?v=fd0ffbab">
+<link rel="stylesheet" href="nis-tokens.css?v=36174a4f">
 <style>
   *{box-sizing:border-box; margin:0; padding:0}
   body{font:15px/1.55 'Gotham',"Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    color:#0f172a; background:linear-gradient(180deg,#d1d2ea 0%,var(--bg) 60%,var(--card) 100%); min-height:100vh}
+    color:var(--ink); background:linear-gradient(180deg,var(--lila) 0%,var(--bg) 60%,var(--card) 100%); min-height:100vh}
   header{background:var(--card); padding:12px 22px; display:flex; align-items:center; gap:14px; flex-wrap:wrap;
     box-shadow:0 4px 16px rgba(15,23,42,.06); position:sticky; top:0; z-index:10; border-bottom:1px solid var(--line)}
   header img{display:block; height:38px; width:auto}
@@ -29,9 +29,9 @@
     display:block; transition:.15s}
   .card:hover{transform:translateY(-3px)}
   .card .ico{font-size:3rem; line-height:1}
-  .card h2{font-size:19px; margin:10px 0 4px; color:#2d5a8d}
+  .card h2{font-size:19px; margin:10px 0 4px; color:var(--blue-d)}
   .card .desc{color:var(--muted); font-size:13px; margin:0 0 12px}
-  .tag{display:inline-block; background:var(--accent-soft); color:#2d5a8d; font-weight:700; font-size:12px;
+  .tag{display:inline-block; background:var(--accent-soft); color:var(--blue-d); font-weight:700; font-size:12px;
     padding:5px 12px; border-radius:14px; margin:2px}
   .footer{color:var(--muted); font-size:12px; text-align:center; padding:22px 0 32px}
 </style>
@@ -46,7 +46,7 @@
   <h1>&#127922; Activities</h1>
   <p class="lead">Interactive games and activities by Common European Framework level (A1 &middot; A2 &middot; B1 &middot; B2 &middot; C1).</p>
 
-  <h2 style="font-size:17px;margin:6px 0 12px;color:#2d5a8d">&#128218; CEFR Vocabulary (A1&ndash;C1)</h2>
+  <h2 style="font-size:17px;margin:6px 0 12px;color:var(--blue-d)">&#128218; CEFR Vocabulary (A1&ndash;C1)</h2>
   <div class="grid">
     <a class="card" href="crosswords.html">
       <div class="ico">&#128353;</div>
@@ -62,7 +62,7 @@
     </a>
   </div>
 
-  <h2 style="font-size:17px;margin:22px 0 12px;color:#2d5a8d">&#9997;&#65039; Writing</h2>
+  <h2 style="font-size:17px;margin:22px 0 12px;color:var(--blue-d)">&#9997;&#65039; Writing</h2>
   <div class="grid">
     <a class="card" href="writing-tutor.html">
       <div class="ico">&#9997;&#65039;</div>
@@ -94,16 +94,16 @@
       ${(g.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join('')}
     </a>`;
   const shortTitle = t => String(t||'').split('—')[0].trim();
-  const week = w => (w.title ? `<h3 style="font-size:14px;margin:14px 0 10px;color:#475569;font-weight:700">${esc(w.title)}</h3>` : '')
+  const week = w => (w.title ? `<h3 style="font-size:14px;margin:14px 0 10px;color:var(--muted);font-weight:700">${esc(w.title)}</h3>` : '')
     + `<div class="grid">${(w.games||[]).map(card).join('')}</div>`;
   const unit = (u, hiddenWeeks) => {
     const ws = u.weeks||[], soon = ws.filter(w=>w.title && hiddenWeeks.has(w.id));
-    return `<h2 style="font-size:17px;margin:22px 0 12px;color:#2d5a8d">${u.icon} ${esc(u.title)}</h2>`
+    return `<h2 style="font-size:17px;margin:22px 0 12px;color:var(--blue-d)">${u.icon} ${esc(u.title)}</h2>`
       + (u.lead ? `<p class="lead" style="margin:-6px 0 14px">${esc(u.lead)}</p>` : '')
       + ws.filter(w=>!hiddenWeeks.has(w.id)).map(week).join('')
       + (soon.length ? `<p class="lead" style="margin:12px 0 0">🔒 ${soon.map(w=>esc(shortTitle(w.title))).join(' · ')} — your teacher will unlock these.</p>` : '');
   };
-  const lockedUnit = u => `<h2 style="font-size:17px;margin:22px 0 8px;color:#2d5a8d">${u.icon} ${esc(u.title)}</h2>`
+  const lockedUnit = u => `<h2 style="font-size:17px;margin:22px 0 8px;color:var(--blue-d)">${u.icon} ${esc(u.title)}</h2>`
     + `<p class="lead" style="margin:-4px 0 14px">🔒 Your teacher will unlock this.</p>`;
 
   const d = window.ACTIVITIES_DATA;

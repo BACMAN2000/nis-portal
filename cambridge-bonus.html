@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme="light" data-theme="light" lang="en">
+<html data-theme="light" lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,8 @@
 <link href="vendor/fonts/montserrat-68a53b.css" rel="stylesheet">
 <link rel="preload" href="fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="nis-fonts.css?v=fd196882">
-<link rel="stylesheet" href="nis-tokens.css?v=fd0ffbab">
+<script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="nis-tokens.css?v=36174a4f">
 <style>
   :root{
   --s8:#1E293B;
@@ -61,7 +62,7 @@
   .paper .meta{font-size:.76rem;color:var(--s5);font-weight:600;margin-top:3px}
   .paper p{font-size:.8rem;color:var(--s6);margin-top:8px}
   .paper .tag{position:absolute;top:14px;right:14px;font-size:.6rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:3px 8px;border-radius:999px}
-  .tag.full{background:#DCFCE7;color:var(--ink)}.tag.link{background:#EEF2FF;color:var(--ink)}
+  .tag.full{background:var(--green50);color:var(--ink)}.tag.link{background:#EEF2FF;color:var(--ink)}
   /* sections */
   .sec{scroll-margin-top:14px;margin-bottom:38px}
   .sec-h{display:flex;align-items:center;gap:12px;margin:0 0 6px}
@@ -570,5 +571,6 @@
   }));
 })();
 </script>
+<script src="nis-tema.js?v=a9738cd9" defer></script>
 </body>
 </html>

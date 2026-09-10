@@ -1,5 +1,5 @@
 <!doctype html>
-<html data-theme="light" lang="es">
+<html lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,7 +26,8 @@
 -->
 <link rel="preload" href="fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="nis-fonts.css?v=fd196882">
-<link rel="stylesheet" href="nis-tokens.css?v=fd0ffbab">
+<script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="nis-tokens.css?v=36174a4f">
 <style>
 :root{ --tinta:#1f2937; --gris:#6b7280; --linea:#d7dce5; --azul:#244c77;
   --prop:#FFFBEB; --propB:#FDE68A; --propT:#92400E;
@@ -101,7 +102,7 @@ td.hito{background:var(--bg);color:var(--gris);width:118px;font-size:.72rem}
 .cober.mal{background:var(--alF);border-color:var(--alB);color:#7F1D1D}
 .cober b{font-size:.9rem}
 .cober .lista{margin-top:7px;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:2px 14px;font-size:.74rem}
-.cober .lista span{color:#166534}
+.cober .lista span{color:var(--green-txt)}
 
 .leyenda{font-size:.78rem;color:var(--gris);margin:0 0 12px}
 .leyenda i{display:inline-block;width:10px;height:10px;border-radius:2px;vertical-align:-1px;margin:0 3px 0 9px}
@@ -459,5 +460,6 @@ function carga(url, guarda, incrustado){
 carga('scope/scope-2026.json', j => { SCOPE = j; }, window.__SCOPE);
 carga('scope/annual-plan-primary-2026.json', j => { PLAN = j; }, window.__PLAN);
 </script>
+<script src="nis-tema.js?v=a9738cd9" defer></script>
 </body>
 </html>

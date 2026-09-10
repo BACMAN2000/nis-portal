@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html data-theme="light" data-theme="light" lang="en">
+<html data-theme="light" lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Memory Game · NIS English</title>
 <link rel="preload" href="fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="nis-fonts.css?v=fd196882">
-<link rel="stylesheet" href="nis-tokens.css?v=fd0ffbab">
+<script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="nis-tokens.css?v=36174a4f">
 <style>
   :root{
   --accent-d:#2d4ac0;
@@ -49,7 +50,7 @@
   .banner.show{display:block;animation:pop .4s}
   .msg{display:none;max-width:560px;margin:6px auto;text-align:center;font-weight:700;font-size:.84rem;padding:8px;border-radius:9px}
   .msg.ok{display:block;background:var(--good-soft);color:var(--good)}
-  .msg.warn{display:block;background:#fff4e6;color:var(--gold)}
+  .msg.warn{display:block;background:var(--amber50);color:var(--gold)}
   @media(max-width:480px){body{padding:8px}.grid{gap:6px}.front .emoji{font-size:1.7rem}.front .word{font-size:.62rem}}
 </style>
 <script src="nis-nav.js?v=c3230c7d"></script>
@@ -205,5 +206,6 @@ if(window.NIS_WORK) NIS_WORK.attach(Object.assign(
 ));
 
 </script>
+<script src="nis-tema.js?v=a9738cd9" defer></script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html data-theme="light" lang="en">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,11 +7,12 @@
 <link href="vendor/fonts/montserrat-68a53b.css" rel="stylesheet">
 <link rel="preload" href="fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="nis-fonts.css?v=fd196882">
-<link rel="stylesheet" href="nis-tokens.css?v=fd0ffbab">
+<script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="nis-tokens.css?v=36174a4f">
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
   body{font:15px/1.55 'Gotham',"Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    color:#0f172a;background:linear-gradient(180deg,#d1d2ea 0%,var(--bg) 60%,var(--card) 100%);min-height:100vh}
+    color:var(--ink);background:linear-gradient(180deg,var(--lila) 0%,var(--bg) 60%,var(--card) 100%);min-height:100vh}
   header{background:var(--card);padding:12px 22px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;
     box-shadow:0 4px 16px rgba(15,23,42,.06);position:sticky;top:0;z-index:10;border-bottom:1px solid var(--line)}
   header img{display:block;height:38px;width:auto}
@@ -21,7 +22,7 @@
   h1{font-size:22px;margin:0 0 6px}
   p.lead{color:var(--muted);margin:0 0 16px}
   .rules{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;color:var(--muted);font-size:13.5px;margin-bottom:16px}
-  .rules b{color:#244c77}
+  .rules b{color:var(--blue-dd)}
 
   .controls{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
   .group{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 10px;display:flex;gap:6px;align-items:center;flex-wrap:wrap;box-shadow:0 4px 14px rgba(15,23,42,.05)}
@@ -37,9 +38,9 @@
 
   .card{background:var(--card);border-radius:16px;box-shadow:0 8px 24px rgba(15,23,42,.08);padding:22px}
   .bar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;flex-wrap:wrap}
-  .pill{background:#d1d2ea;color:#244c77;font-weight:700;font-size:13px;padding:6px 12px;border-radius:20px}
-  .pill.streak{background:#fef3c7;color:#92400e}
-  .pill.score{background:#dcfce7;color:#166534}
+  .pill{background:var(--lila);color:var(--blue-dd);font-weight:700;font-size:13px;padding:6px 12px;border-radius:20px}
+  .pill.streak{background:var(--amber50);color:var(--sand-txt)}
+  .pill.score{background:var(--green50);color:var(--green-txt)}
   .progress{flex:1;height:9px;background:var(--line);border-radius:99px;overflow:hidden;min-width:120px}
   .progress>span{display:block;height:100%;background:#2d5a8d;width:0;transition:width .3s}
 
@@ -49,24 +50,24 @@
 
   .modehead{font-size:12px;font-weight:800;letter-spacing:.5px;color:#94a3b8;text-transform:uppercase;margin:2px 0 10px}
   .base{font-size:15px;color:var(--muted);margin:6px 0 2px}
-  .base b{color:#0f172a;background:#fef9c3;padding:2px 10px;border-radius:6px;letter-spacing:1px;font-size:16px}
+  .base b{color:var(--ink);background:var(--amber50);padding:2px 10px;border-radius:6px;letter-spacing:1px;font-size:16px}
   .prompt{font-size:19px;font-weight:600;margin:12px 0 6px;line-height:1.45}
-  .prompt .gap{display:inline-block;min-width:96px;border-bottom:2px dashed #94a3b8;text-align:center;color:#2d5a8d;font-weight:800}
+  .prompt .gap{display:inline-block;min-width:96px;border-bottom:2px dashed #94a3b8;text-align:center;color:var(--blue-d);font-weight:800}
   .ask{color:var(--muted);font-size:14px;margin-bottom:14px}
 
   input.answer{width:100%;font:inherit;font-size:18px;font-weight:600;padding:12px 14px;border:2px solid var(--line);border-radius:12px;outline:none;transition:.15s}
   input.answer:focus{border-color:#2d5a8d}
 
   .opts{display:flex;flex-direction:column;gap:10px}
-  .opt{text-align:left;background:var(--card);border:2px solid var(--line);border-radius:12px;padding:13px 15px;font:inherit;font-size:16px;font-weight:600;cursor:pointer;transition:.12s;color:#0f172a}
+  .opt{text-align:left;background:var(--card);border:2px solid var(--line);border-radius:12px;padding:13px 15px;font:inherit;font-size:16px;font-weight:600;cursor:pointer;transition:.12s;color:var(--ink)}
   .opt:hover{border-color:#c7d2ea;background:var(--bg)}
-  .opt.ok{background:var(--bg);border-color:#86efac;color:#166534}
-  .opt.no{background:var(--bg);border-color:#fecaca;color:#991b1b}
+  .opt.ok{background:var(--bg);border-color:#86efac;color:var(--green-txt)}
+  .opt.no{background:var(--bg);border-color:#fecaca;color:var(--bad)}
 
   .buildslot{min-height:56px;border:2px dashed var(--line);border-radius:12px;padding:10px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px;background:var(--bg)}
   .buildslot.empty::before{content:"Tap the pieces in order…";color:#94a3b8;font-size:13px}
   .bank{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:6px}
-  .piece{border:2px solid var(--line);background:var(--card);color:#0f172a;font:inherit;font-weight:700;font-size:16px;padding:9px 14px;border-radius:10px;cursor:pointer;transition:.12s}
+  .piece{border:2px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-weight:700;font-size:16px;padding:9px 14px;border-radius:10px;cursor:pointer;transition:.12s}
   .piece:hover{border-color:#2d5a8d;background:var(--bg)}
   .piece.pre{border-color:#c084fc}.piece.suf{border-color:#5eead4}
   .piece.used{opacity:.35;pointer-events:none}
@@ -78,23 +79,23 @@
   .mitem:hover{border-color:#c7d2ea}
   .mitem.sel{border-color:#2d5a8d;background:var(--bg)}
   .mitem.no{border-color:#fecaca;background:var(--bg)}
-  .mitem.done{background:var(--bg);border-color:#86efac;color:#166534;cursor:default;pointer-events:none}
-  .mitem .aff{font-size:16px;font-weight:800;color:#2d5a8d}
-  .mitem.done .aff{color:#166534}
+  .mitem.done{background:var(--bg);border-color:#86efac;color:var(--green-txt);cursor:default;pointer-events:none}
+  .mitem .aff{font-size:16px;font-weight:800;color:var(--blue-d)}
+  .mitem.done .aff{color:var(--green-txt)}
 
   .fb{display:none;border-radius:12px;padding:12px 14px;margin-top:14px;font-size:14.5px}
-  .fb.ok{background:var(--bg);border:1px solid #bbf7d0;color:#166534;display:block}
-  .fb.no{background:var(--bg);border:1px solid #fecaca;color:#991b1b;display:block}
+  .fb.ok{background:var(--bg);border:1px solid #bbf7d0;color:var(--green-txt);display:block}
+  .fb.no{background:var(--bg);border:1px solid #fecaca;color:var(--bad);display:block}
   .fb b{color:inherit}
   .fb .ex{display:block;margin-top:5px;color:var(--muted);font-size:13px}
 
   .actions{margin-top:16px;display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
   .btn{background:#2d5a8d;color:var(--card);border:0;border-radius:10px;padding:11px 20px;font:inherit;font-weight:700;cursor:pointer}
-  .btn.ghost{background:var(--card);color:#2d5a8d;border:2px solid #2d5a8d}
+  .btn.ghost{background:var(--card);color:var(--blue-d);border:2px solid #2d5a8d}
   .btn:disabled{opacity:.45;cursor:default}
 
   .result{text-align:center;padding:18px 6px}
-  .result .big{font-size:46px;font-weight:800;color:#2d5a8d;line-height:1}
+  .result .big{font-size:46px;font-weight:800;color:var(--blue-d);line-height:1}
   .result .msg{color:var(--muted);margin:10px 0 18px}
   .result .bd{font-size:13px;color:var(--muted);margin-top:8px}
   .footer{color:var(--muted);font-size:12px;text-align:center;padding:22px 0 32px}
@@ -505,7 +506,7 @@ function tryPair(set){
     a.classList.remove('sel'); b.classList.remove('sel');
     a.classList.add('done'); b.classList.add('done');
     const ex=(set.find(x=>x.aff===a.dataset.aff)||{}).ex;
-    a.innerHTML=`<span class="aff">${a.dataset.aff}</span> · <span style="font-weight:600;color:#166534">${ex}</span>`;
+    a.innerHTML=`<span class="aff">${a.dataset.aff}</span> · <span style="font-weight:600;color:var(--green-txt)">${ex}</span>`;
     state.score+=10; state.streak++; if(state.streak>state.best)state.best=state.streak;
     state.matchDone++; state.selL=null; state.selR=null; refreshBar();
     if(state.matchDone===set.length){
@@ -593,5 +594,6 @@ if(window.NIS_WORK) NIS_WORK.attach(Object.assign(NIS_WORK.ficha(), {
 startRound();
 /* build v2 */
 </script>
+<script src="nis-tema.js?v=a9738cd9" defer></script>
 </body>
 </html>
