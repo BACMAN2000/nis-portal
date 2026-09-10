@@ -370,6 +370,10 @@ function pinta(){
        style="background:#fdf6ec;border:1px solid #e6c894;color:#9a5c15;text-decoration:none;
               padding:9px 15px;border-radius:10px;font-weight:600;font-size:.86rem">
       &#9999;&#65039; Student workbook &mdash; print</a>
+    ${_deck?`<a href="#" onclick="return abreArchivo('${GRADE}/u${UNIT}/${_deck}',this)"
+       style="background:#fdeee7;border:1px solid #e6b394;color:#8f3a12;text-decoration:none;
+              padding:9px 15px;border-radius:10px;font-weight:600;font-size:.86rem">
+      &#128506;&#65039; Unit slides &mdash; download</a>`:''}
   </div>`:''}
 
   <div class="sec-title"><h2>&#127919; What you will produce</h2><span class="hint">This is the point of the unit — everything else feeds it.</span></div>
@@ -544,7 +548,7 @@ function juegosSueltos(){
    cuatro niveles (A2-C1) y las diapositivas del profesor. Van dentro de la
    SEMANA que les toca, no en un cajon aparte. Las diapositivas solo se
    ensenan a quien es profesor. */
-let esProfe = false, _portada = null;
+let esProfe = false, _portada = null, _deck = null;
 /* Los materiales viven en el bucket privado class-files: el enlace se firma
    en el momento y caduca. El alumno solo puede abrir las fichas; las
    diapositivas las bloquea la propia politica del bucket. */
@@ -899,6 +903,11 @@ async function conectar(){
      una imagen del viaje o de la clase dice mas que cualquier icono. */
   try{
     const lista = await sb.storage.from('class-files').list(GRADE+'/u'+UNIT, {limit:20});
+    /* Las diapositivas de la unidad, si estan subidas. Mismo criterio que la
+       portada: se listan, no se declaran, asi que el boton no existe hasta
+       que el archivo existe y nunca se ofrece un enlace que da error. */
+    const dk = (lista.data||[]).filter(f=>/-unit-deck\.pptx$/i.test(f.name))[0];
+    if(dk) _deck = dk.name;
     const tapa = (lista.data||[]).filter(f=>/^cover\.(jpg|jpeg|png)$/i.test(f.name))[0];
     if(tapa){
       const r = await sb.storage.from('class-files')
@@ -1243,7 +1252,15 @@ const UNIT_PILOT = new Set([
 function esUnidadPiloto(){ return UNIT_PILOT.has(GRADE+'.u'+UNIT); }
 
 /* Todo declarado: ahora si se puede pintar. */
-if(U) (async function(){ await conectar(); if(!(await puedeAbrirUnidad())){pintaUnidadBloqueada();return;} pinta(); await arrancaSesion(); })();
+/* pinta() corre ANTES de arrancaSesion(), que es donde se averigua si quien
+   mira es profesor y se buscan la portada y las diapositivas en el bucket. Sin
+   este segundo pintado, todo lo que depende de eso se calculaba y no se
+   ensenaba nunca: la barra del profesor (guia, workbook y ahora las
+   diapositivas) y la foto de portada de la unidad, que llevaba puesta desde
+   que se escribio y no se habia visto una sola vez. Se repinta solo si hay
+   algo nuevo que ensenar, y pinta() vuelve a cablear todo al final, asi que
+   repetirlo es inocuo. */
+if(U) (async function(){ await conectar(); if(!(await puedeAbrirUnidad())){pintaUnidadBloqueada();return;} pinta(); await arrancaSesion(); if(esProfe || _portada || _deck) pinta(); })();
 </script>
 <script src="nis-tema.js?v=469a5ee4" defer></script>
 </body>
