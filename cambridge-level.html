@@ -134,7 +134,10 @@ function showTab(t){
 function loadData(cb){
   if(!CEFR[LEVEL]){ fail('Nivel inválido. Usa ?level=ket|pet|fce|cae|cpe'); return; }
   const s=document.createElement('script');
-  s.src='cambridge-data/cambridge-'+LEVEL+'.js?v=1';  // cache-bust: asegura cargar la versión con window.CAM_*
+  // El sello cambia el dia que se tocan los datasets. Subio el 10-sep-2026 al
+  // sacarles las respuestas: sin cambiarlo, el navegador que ya tuviera el
+  // archivo viejo seguiria trayendo la clave dentro.
+  s.src='cambridge-data/cambridge-'+LEVEL+'.js?v=20260910';
   s.onload=()=>{ CAM=window['CAM_'+LEVEL.toUpperCase()]; CAM?cb():fail('No se encontró el dataset.'); };
   s.onerror=()=>fail('No se pudo cargar cambridge-'+LEVEL+'.js');
   document.head.appendChild(s);
@@ -332,7 +335,39 @@ function dispatchAttempt(ex,ti,ei,o){
   },o)}));
 }
 
-function grade(ti,ei){
+/* Las respuestas ya no viajan dentro del dataset: `cambridge-data/*.js` es un
+   archivo estatico de un repositorio PUBLICO, y con ellas dentro cualquiera se
+   descargaba la clave de los diez tests sin tener cuenta. Las preguntas siguen
+   abiertas -practicar no pide cuenta, esa es la politica- y solo corregir pide
+   identificarse. Se piden por test, una sola vez, y se quedan en memoria: no se
+   guardan en el navegador, que seria volver a dejarlas al alcance de cualquiera. */
+const _claves={};
+async function claves(ti){
+  if(_claves[ti]) return true;
+  const t = window.YMtoken ? window.YMtoken() : null;
+  if(!t) return false;
+  try{
+    const r = await fetch(`/api/cambridge/keys/${LEVEL}/${ti+1}`, {headers:{Authorization:"Bearer "+t}});
+    if(!r.ok) return false;
+    const d = await r.json();
+    (d.exercises||[]).forEach((ex,ei)=>{
+      const dest=((CAM.lessons[ti]||{}).exercises||[])[ei];
+      if(!dest) return;
+      (ex.items||[]).forEach((k,qi)=>{ if((dest.items||[])[qi]) Object.assign(dest.items[qi],k); });
+    });
+    _claves[ti]=true;
+    return true;
+  }catch(e){ return false; }
+}
+
+async function grade(ti,ei){
+  if(!await claves(ti)){
+    const r=document.getElementById(`r-${ti}-${ei}`);
+    r.setAttribute("role","status"); r.setAttribute("aria-live","polite");
+    r.style.color="#B45309";
+    r.textContent="Entra con tu cuenta del colegio para corregir: las respuestas ya no viajan en la página.";
+    return;
+  }
   const ex=CAM.lessons[ti].exercises[ei];
   let ok=0,total=(ex.items||[]).length;
   (ex.items||[]).forEach((it,qi)=>{
@@ -405,6 +440,7 @@ loadData(()=>{ renderExam(); renderPracList(); });
 <script src="nis-nav.js?v=c3230c7d"></script>
 <script src="config.js?v=68725f64"></script>
 <script src="activity-save.js?v=7bdace9a"></script>
+<script src="yle-media.js?v=8e201b2b"></script>
 <script>
 /* El motor emite `cohasset:attempt` en cada respuesta. En NIS no hay quien
    lo escuche, asi que se recoge aqui y se lleva a la cuenta del alumno por

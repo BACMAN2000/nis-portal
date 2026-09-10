@@ -56,6 +56,11 @@
   }
 
   /* ruta = 'yle-img/movers/test_06_L1.jpg' (tal cual estaba antes en el src) */
+  /* El mismo token, para quien necesita pedir con `fetch` en vez de con un
+     `src`: cambridge-level.html lo usa para pedir las respuestas del test.
+     Se expone la funcion, no el valor, porque caduca y se relee sola. */
+  window.YMtoken = token;
+
   window.YM = function (ruta) {
     var t = token();
     return API + String(ruta).replace(/^\/+/, '') + (t ? '?tk=' + encodeURIComponent(t) : '');
