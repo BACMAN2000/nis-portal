@@ -9,6 +9,11 @@
 
 var DATA = null, LEVEL = null, TAB = 'learn', HECHOS = {}, RECS = {}, IDXEJ = {};
 var BLOQUES = [], IB = 0, PAG = 0, FILTRO = '', ACT = null, ST = null, RELOJ = null, PP = 3;
+/* Embebida en el portal: el iframe manda el alto, así que la app no scrollea
+   por dentro; le dice al portal cuánto mide y él ajusta el iframe. */
+var EMBED = false; try { EMBED = window.parent !== window; } catch(e){ EMBED = true; }
+var ALTO = 0;
+
 var COLORS = {A1:'#0EA5E9', A2:'#22C55E', B1:'#EAB308', B2:'#F97316', C1:'#EF4444', C2:'#8B5CF6'};
 var NOMBRES = {A1:'Primeros pasos', A2:'Elemental', B1:'Intermedio', B2:'Intermedio alto', C1:'Avanzado', C2:'Dominio'};
 var POR_BLOQUE = 10, SEGUNDOS = 60;
@@ -22,7 +27,31 @@ function mezcla(a){
   for(var i = a.length - 1; i > 0; i--){ var j = Math.floor(Math.random() * (i + 1)), x = a[i]; a[i] = a[j]; a[j] = x; }
   return a;
 }
-function arriba(){ window.scrollTo({top:0, behavior:'smooth'}); }
+function arriba(){
+  if(EMBED){ avisa('lexapp:arriba'); return; }
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+function avisa(tipo, alto){
+  try { window.parent.postMessage({tipo:tipo, alto:alto}, location.origin); } catch(e){}
+}
+/* Alto real del contenido. No vale medir <html>: dentro de un iframe se estira
+   hasta el alto del marco y entonces nunca encogería. */
+function altoContenido(){
+  var n = document.body.children, max = 0;
+  for(var i = 0; i < n.length; i++){
+    if(n[i].tagName === 'SCRIPT') continue;
+    var r = n[i].getBoundingClientRect();
+    if(r.height && r.bottom + window.pageYOffset > max) max = r.bottom + window.pageYOffset;
+  }
+  return Math.ceil(max);
+}
+function avisaAlto(){
+  if(!EMBED) return;
+  var h = altoContenido();
+  if(!h || Math.abs(h - ALTO) < 2) return;
+  ALTO = h;
+  avisa('lexapp:alto', h);
+}
 function plural(n, uno, muchos){ return n + ' ' + (n === 1 ? uno : muchos); }
 
 /* ---------- progreso y récords (solo en este navegador) ---------- */
@@ -166,7 +195,7 @@ function cabecera(){
 }
 
 /* ---------- aprender: dos o tres tarjetas por pantalla ---------- */
-function porPagina(){ return (window.innerWidth < 640 || window.innerHeight < 640) ? 2 : 3; }
+function porPagina(){ return (window.innerWidth < 640 || (!EMBED && window.innerHeight < 640)) ? 2 : 3; }
 function vistaAprender(){
   if(!BLOQUES.length) return '<div class="empty">Todavía no hay material en este nivel.</div>';
   return cabecera() +
@@ -190,6 +219,7 @@ function cuerpoAprender(){
 function filtra(v){
   FILTRO = (v || '').trim(); PAG = 0;
   document.getElementById('lista').innerHTML = cuerpoAprender();
+  avisaAlto();
 }
 function carrusel(){
   var b = BLOQUES[IB] || [];
@@ -659,6 +689,7 @@ function render(){
     TAB === 'practice' ? vistaPractica() :
     TAB === 'games' ? vistaJuegos() : vistaProgreso();
   if(ACT === 'speed' && ST && !ST.terminado && !RELOJ) arrancaReloj();
+  avisaAlto();
 }
 
 // Delegado y no onclick inline: un apóstrofe en el texto rompería el atributo sin avisar.
@@ -703,6 +734,11 @@ window.addEventListener('resize', function(){
     if(TAB === 'learn' && !FILTRO && DATA && porPagina() !== PP) render();
   }, 180);
 });
+
+/* Latido: casi todo lo que cambia de alto pasa por render(), pero no todo
+   (el reloj de los juegos, las fuentes al llegar). Media lectura de layout
+   cada medio segundo cuesta menos que buscar cada punto que repinta. */
+if(EMBED) setInterval(avisaAlto, 500);
 
 leeProgreso(); leeRecs();
 fetch('data.json?v=' + (APP.datav || 1)).then(function(r){ return r.json(); }).then(function(d){
