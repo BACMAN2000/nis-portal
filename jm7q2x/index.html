@@ -7,7 +7,7 @@
 <title>José Manuel — Tutoring Center</title>
 <link rel="preload" href="../fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../nis-fonts.css?v=fd196882">
-<link rel="stylesheet" href="../nis-tokens.css?v=8e4add1e">
+<link rel="stylesheet" href="../nis-tokens.css?v=fd0ffbab">
 <style id="embedded-fonts">
 @font-face {
   font-family: 'DM Mono';
@@ -180,7 +180,7 @@
   input,select,textarea{font-family:inherit;font-size:14px}
 
   /* HEADER */
-  .site-header{background:var(--ink);padding:34px 48px 30px;position:relative;overflow:hidden}
+  .site-header{background:var(--deep,#0f172a);padding:34px 48px 30px;position:relative;overflow:hidden}
   .site-header::before{content:'';position:absolute;top:-60px;right:-60px;width:260px;height:260px;border-radius:50%;background:var(--amber);opacity:.12}
   .site-header::after{content:'';position:absolute;bottom:-40px;left:200px;width:180px;height:180px;border-radius:50%;background:var(--teal);opacity:.1}
   .header-label{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);margin-bottom:10px}
@@ -224,7 +224,7 @@
   input.f:focus,select.f:focus,textarea.f:focus{outline:none;border-color:var(--amber);background:var(--card)}
   .field{margin-bottom:12px}
 
-  .btn{display:inline-flex;align-items:center;gap:7px;padding:9px 16px;border:none;border-radius:9px;font-size:13px;font-weight:600;background:var(--ink);color:var(--card);transition:.15s}
+  .btn{display:inline-flex;align-items:center;gap:7px;padding:9px 16px;border:none;border-radius:9px;font-size:13px;font-weight:600;background:var(--deep,#0f172a);color:var(--card);transition:.15s}
   .btn:hover{background:#000;transform:translateY(-1px)}
   .btn.amber{background:var(--amber)}.btn.amber:hover{background:var(--amber-dark)}
   .btn.teal{background:var(--teal)}
@@ -287,9 +287,9 @@
   .hint{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5}
   .toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
   .filter-pill{padding:6px 13px;border:1px solid var(--border);border-radius:20px;font-size:12px;background:var(--card);color:var(--muted)}
-  .filter-pill.active{background:var(--ink);color:var(--card);border-color:var(--ink)}
+  .filter-pill.active{background:var(--deep,#0f172a);color:var(--card);border-color:var(--ink)}
 
-  .roadmap-link{display:flex;align-items:center;gap:14px;background:var(--ink);color:var(--card);border-radius:13px;padding:18px 22px;text-decoration:none;transition:.15s}
+  .roadmap-link{display:flex;align-items:center;gap:14px;background:var(--deep,#0f172a);color:var(--card);border-radius:13px;padding:18px 22px;text-decoration:none;transition:.15s}
   .roadmap-link:hover{transform:translateY(-2px)}
   .roadmap-link .rl-ic{font-size:26px}
   .roadmap-link .rl-t{font-weight:600;font-size:15px}
@@ -324,7 +324,7 @@
   .flip-f{background:linear-gradient(140deg,var(--card),#f5efe4)}
   .flip-f .term{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;line-height:1.2}
   .flip-f .hintw{font-size:11px;color:var(--muted);margin-top:8px;font-family:'DM Mono',monospace}
-  .flip-b{background:var(--ink);color:#f3ede2;transform:rotateY(180deg);font-size:12.5px;line-height:1.5;overflow:auto}
+  .flip-b{background:var(--deep,#0f172a);color:#f3ede2;transform:rotateY(180deg);font-size:12.5px;line-height:1.5;overflow:auto}
   .flip-b .mnem{margin-top:8px;color:var(--amber);font-size:11.5px;font-style:italic}
   .flip.know .flip-f{border-color:var(--green);box-shadow:0 0 0 2px var(--green-light)}
   .flip-mark{display:flex;gap:6px;margin-top:8px}
@@ -1031,7 +1031,7 @@
 
   /* HEADER */
   .site-header {
-    background: var(--ink);
+    background: var(--deep,#0f172a);
     padding: 40px 48px 36px;
     position: relative;
     overflow: hidden;
@@ -1401,7 +1401,7 @@
   .ex-steps li::before {
     content: counter(step);
     min-width: 22px; height: 22px;
-    background: var(--ink);
+    background: var(--deep,#0f172a);
     color: white;
     border-radius: 50%;
     display: flex;
@@ -1419,7 +1419,7 @@
     margin: 10px 0;
   }
   .ex-table th {
-    background: var(--ink);
+    background: var(--deep,#0f172a);
     color: var(--paper);
     padding: 9px 12px;
     text-align: left;
@@ -2396,7 +2396,7 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px soli
 
     <div class="exercise" id="ex-6-1">
       <div class="exercise-header" onclick="toggleEx('ex-6-1')">
-        <div class="ex-num" style="background:var(--ink);color:var(--amber)">6.1</div>
+        <div class="ex-num" style="background:var(--deep,#0f172a);color:var(--amber)">6.1</div>
         <div class="ex-meta">
           <div class="ex-title">Peer Correction — Apply the Rubric to Your Own Essay</div>
           <div class="ex-tags">

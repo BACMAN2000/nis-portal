@@ -19,6 +19,7 @@
   --muted:#67718a;
   --bg:#f4f6fb;
   --card:#ffffff;
+  --deep:#0f172a;        /* superficie oscura: el hueco de una foto, una franja */
   --line:#e9ecf3;        /* bordes de tarjeta y separadores */
   --chip:#dce4ff;        /* fondo de las etiquetas de nivel */
   --good-bright:#bff2cc; /* el verde vivo de acierto */
@@ -54,6 +55,7 @@
     --muted:#98a1b5;
     --bg:#10141c;
     --card:#181d28;
+    --deep:#0b0e14;
     --line:#2b3244;
 
     --accent:#8ea3f0;      --accent-soft:#1d2745;
@@ -73,6 +75,7 @@
   --muted:#98a1b5;
   --bg:#10141c;
   --card:#181d28;
+  --deep:#0b0e14;
   --line:#2b3244;
 
   --accent:#8ea3f0;      --accent-soft:#1d2745;
