@@ -6,7 +6,8 @@
 <title>Say It Right — FR · 9e · Semaine 5 — Les pronoms COD</title>
 <link rel="preload" href="fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="nis-fonts.css?v=fd196882">
-<link rel="stylesheet" href="nis-tokens.css?v=e99820a8">
+<script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="nis-tokens.css?v=8e4add1e">
 <style>
   
   *{box-sizing:border-box; margin:0; padding:0;}
@@ -18,11 +19,11 @@
   .tab{border:2px solid transparent; background:var(--card); color:var(--ink); padding:9px 20px; border-radius:24px;
        font-weight:700; font-size:.95rem; cursor:pointer; box-shadow:0 1px 3px rgba(20,30,60,.12); transition:.15s;}
   .tab small{display:block; font-weight:500; font-size:.68rem; color:var(--muted);}
-  .tab.on{background:var(--accent); color:#fff; border-color:var(--accent);}
-  .tab.on small{color:#dce4ff;}
+  .tab.on{background:var(--accent); color:var(--card); border-color:var(--accent);}
+  .tab.on small{color:var(--chip);}
   .tab.done{border-color:var(--good);}
   .tab.done::after{content:" ✓"; color:var(--good);}
-  .tab.on.done::after{color:#bff2cc;}
+  .tab.on.done::after{color:var(--good-bright);}
   .wrap{max-width:1100px; margin:0 auto; display:flex; gap:18px; align-items:flex-start; flex-wrap:wrap;}
   .board{flex:1 1 520px; min-width:300px; max-width:100%; background:var(--card); border-radius:14px; padding:18px; box-shadow:0 2px 10px rgba(20,30,60,.08); text-align:center;}
   .side{flex:1 1 280px; min-width:260px;}
@@ -32,7 +33,7 @@
   .hud .pill{background:var(--accent-soft); color:var(--accent); border-radius:20px; padding:4px 12px; font-size:.88rem;}
   .boss{font-size:54px; line-height:1; margin:2px 0;}
   .boss.dead{filter:grayscale(1); opacity:.6;}
-  .hpbar{height:12px; border-radius:8px; background:#e9ecf3; overflow:hidden; margin:8px auto 2px; max-width:340px;}
+  .hpbar{height:12px; border-radius:8px; background:var(--line); overflow:hidden; margin:8px auto 2px; max-width:340px;}
   .hpfill{height:100%; width:100%; background:linear-gradient(90deg,#ef4444,#f97316); transition:width .4s;}
   .qcard{background:var(--accent-soft); border-radius:12px; padding:16px; margin:14px auto; max-width:460px;}
   .qcard .lbl{font-size:.72rem; color:var(--muted); text-transform:uppercase; letter-spacing:1px;}
@@ -40,17 +41,17 @@
   .qcard .clue{font-size:.86rem; color:var(--muted); line-height:1.35;}
   .btns{display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-top:6px;}
   button.act{border:none; border-radius:9px; padding:12px 18px; font-weight:700; font-size:.9rem; cursor:pointer; transition:.15s;}
-  .b-hear{background:#e9ecf3; color:var(--ink);}
-  .b-mic{background:var(--purple); color:#fff; min-width:170px; font-size:1rem;}
+  .b-hear{background:var(--line); color:var(--ink);}
+  .b-mic{background:var(--purple); color:var(--card); min-width:170px; font-size:1rem;}
   .b-mic.listening{animation:pulse 1s infinite;}
-  .b-skip{background:#e9ecf3; color:var(--muted);}
+  .b-skip{background:var(--line); color:var(--muted);}
   button.act:hover{filter:brightness(1.06);}
   button.act:disabled{opacity:.5; cursor:default;}
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:.55}}
   .fb{margin-top:12px; min-height:52px; font-weight:700; font-size:.95rem; line-height:1.4;}
   .fb .heard{display:block; font-size:.78rem; font-weight:500; color:var(--muted); margin-top:3px;}
   .fb.ok{color:var(--good);} .fb.ko{color:var(--bad);}
-  .meter{height:10px; border-radius:8px; background:#e9ecf3; overflow:hidden; max-width:340px; margin:8px auto 0;}
+  .meter{height:10px; border-radius:8px; background:var(--line); overflow:hidden; max-width:340px; margin:8px auto 0;}
   .meterfill{height:100%; width:0; background:var(--bad); transition:width .5s;}
   .meterfill.ok{background:var(--good);}
   .banner{display:none; margin-top:12px; padding:12px; border-radius:10px; background:var(--good-soft); color:var(--good);
@@ -63,19 +64,19 @@
   .scorerow.ok{color:var(--good); background:var(--good-soft);}
   .scorerow.ko{color:var(--bad); background:var(--bad-soft);}
   .scorerow.pend{color:var(--muted);}
-  .warn{display:none; margin:10px auto 0; max-width:520px; padding:12px; border-radius:10px; background:#fff4e6; color:#b35309;
+  .warn{display:none; margin:10px auto 0; max-width:520px; padding:12px; border-radius:10px; background:#fff4e6; color:var(--ink);
         font-size:.85rem; font-weight:600; line-height:1.4;}
   .warn.show{display:block;}
   footer{max-width:1100px; margin:18px auto 0; text-align:center; color:var(--muted); font-size:.75rem;}
   @media (max-width:480px){ body{padding:8px;} .board{padding:12px;} .qcard .word{font-size:1.6rem;} }
-  .topnav{position:sticky; top:0; z-index:30; background:#fff; display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+  .topnav{position:sticky; top:0; z-index:30; background:var(--card); display:flex; align-items:center; gap:12px; flex-wrap:wrap;
     padding:10px 18px; box-shadow:0 2px 10px rgba(20,30,60,.08); margin:-18px -18px 16px;}
   .topnav img{height:32px; width:auto; display:block;}
   .topnav .nav-sp{margin-left:auto;}
   .navbtn{text-decoration:none; font-weight:700; font-size:.85rem; padding:8px 14px; border-radius:9px; white-space:nowrap;
     background:var(--accent-soft); color:var(--accent); transition:.15s; border:none; cursor:pointer;}
   .navbtn:hover{filter:brightness(.97);}
-  .navbtn.primary{background:var(--accent); color:#fff;}
+  .navbtn.primary{background:var(--accent); color:var(--card);}
   @media (max-width:480px){ .topnav{margin:-8px -8px 12px; padding:8px 12px;} .navbtn{padding:7px 11px; font-size:.8rem;} }
 </style>
   <meta name="google" content="notranslate">
@@ -480,5 +481,6 @@ if(window.speechSynthesis){
   setTimeout(_frVoiceCheck, 1500);              /* Chrome las carga tarde */
 }
 </script>
+<script src="nis-tema.js?v=a9738cd9" defer></script>
 </body>
 </html>

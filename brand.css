@@ -234,3 +234,54 @@ button:focus-visible{outline:3px solid var(--blue-d);outline-offset:2px}
    No se migraron los que ya existen: cambiar donde salta la maquetacion de 345
    paginas sin poder comprobarlas una a una es peor que la incoherencia. Lo que
    se toque de nuevo usa estos.                                               */
+
+
+/* ===== brand.css de noche =====
+
+   Los mismos tokens de arriba, con los valores que pide un fondo oscuro. Solo
+   tokens: ningun componente cambia de forma.
+
+   --blue-d y --blue-dd se usan como color de TEXTO (enlaces, botones planos),
+   asi que aqui se aclaran; --blue sigue siendo el azul de las superficies de
+   marca y se mantiene reconocible. --white es el nombre historico de la
+   superficie: en oscuro deja de ser blanco, que es justo el sentido de tenerlo
+   como token.                                                                */
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --blue:#5b8fc9;  --blue-d:#9dc0e6;  --blue-dd:#c3d9f2;
+    --bg:#10141c;    --white:#181d28;   --grey:#98a1b5;
+    --line:#2b3244;  --lila:#2a3352;    --celeste:#3f8ba3;  --puce:#8c5b64;
+    --good:#5cc98a;  --warn:#f0b93f;    --bad:#f28b8b;
+    --ink:#e9ecf3;
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+  }
+}
+:root[data-theme="dark"]{
+  --blue:#5b8fc9;  --blue-d:#9dc0e6;  --blue-dd:#c3d9f2;
+  --bg:#10141c;    --white:#181d28;   --grey:#98a1b5;
+  --line:#2b3244;  --lila:#2a3352;    --celeste:#3f8ba3;  --puce:#8c5b64;
+  --good:#5cc98a;  --warn:#f0b93f;    --bad:#f28b8b;
+  --ink:#e9ecf3;
+  --shadow:0 10px 30px rgba(0,0,0,.45);
+}
+
+/* Las superficies que estaban escritas en blanco literal -tarjetas, barra
+   lateral, campos- tienen que seguir a la paleta o el tema oscuro las deja
+   como islas de papel. */
+:root[data-theme="dark"] .sidebar,
+:root[data-theme="dark"] .card,
+:root[data-theme="dark"] .panel,
+:root[data-theme="dark"] input,
+:root[data-theme="dark"] select,
+:root[data-theme="dark"] textarea,
+:root[data-theme="dark"] .auth-card{ background:var(--white); color:var(--ink); border-color:var(--line); }
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .sidebar,
+  :root:not([data-theme="light"]) .card,
+  :root:not([data-theme="light"]) .panel,
+  :root:not([data-theme="light"]) input,
+  :root:not([data-theme="light"]) select,
+  :root:not([data-theme="light"]) textarea,
+  :root:not([data-theme="light"]) .auth-card{ background:var(--white); color:var(--ink); border-color:var(--line); }
+}

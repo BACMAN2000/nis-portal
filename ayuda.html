@@ -8,7 +8,8 @@
 <link href="vendor/fonts/montserrat-68a53b.css" rel="stylesheet">
 <link rel="preload" href="fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="nis-fonts.css?v=fd196882">
-<link rel="stylesheet" href="nis-tokens.css?v=e99820a8">
+<script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="nis-tokens.css?v=8e4add1e">
 <style>
   :root{
   --blue:#4987c6;
@@ -19,22 +20,22 @@
 }
   *{box-sizing:border-box}
   body{margin:0;font-family:'Gotham',Montserrat,system-ui,Segoe UI,sans-serif;color:var(--ink);
-       background:#eef3f9;line-height:1.55}
+       background:var(--bg);line-height:1.55}
   .wrap{max-width:1040px;margin:0 auto;padding:18px 16px 70px}
-  header.top{background:var(--blue-d);color:#fff;border-radius:16px;padding:18px 22px;margin-bottom:16px;
+  header.top{background:var(--blue-d);color:var(--card);border-radius:16px;padding:18px 22px;margin-bottom:16px;
              display:flex;align-items:center;gap:16px;flex-wrap:wrap}
   header.top h1{margin:0 0 2px;font-size:1.3rem}
   header.top p{margin:0;opacity:.85;font-size:.85rem;max-width:64ch}
   .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
-  .tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 18px;cursor:pointer;
+  .tab{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:8px 18px;cursor:pointer;
        font-weight:600;color:var(--blue-d);font-size:.9rem;font-family:inherit}
-  .tab.on{background:var(--blue);border-color:var(--blue);color:#fff}
+  .tab.on{background:var(--blue);border-color:var(--blue);color:var(--card)}
   .buscador{display:flex;gap:8px;align-items:center;margin-bottom:16px}
   .buscador input{flex:1;font-family:inherit;font-size:.92rem;padding:11px 14px;border:1px solid var(--line);
-                  border-radius:12px;background:#fff;color:var(--ink)}
+                  border-radius:12px;background:var(--card);color:var(--ink)}
   .buscador input:focus{outline:2px solid var(--blue);outline-offset:1px}
   .buscador .n{font-size:.8rem;color:var(--muted);white-space:nowrap}
-  .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin-bottom:14px;
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin-bottom:14px;
         box-shadow:0 1px 3px rgba(20,40,80,.05)}
   .card > h2{margin:0 0 3px;font-size:1.06rem;color:var(--blue-d);display:flex;align-items:center;gap:9px}
   .card .sub{color:var(--muted);font-size:.85rem;margin:0 0 12px}
@@ -43,7 +44,7 @@
   ol.pasos{margin:0 0 10px;padding-left:0;counter-reset:paso;list-style:none}
   ol.pasos li{counter-increment:paso;position:relative;padding:0 0 9px 34px;font-size:.9rem}
   ol.pasos li::before{content:counter(paso);position:absolute;left:0;top:0;width:23px;height:23px;
-      border-radius:50%;background:var(--blue);color:#fff;font-size:.76rem;font-weight:700;
+      border-radius:50%;background:var(--blue);color:var(--card);font-size:.76rem;font-weight:700;
       display:flex;align-items:center;justify-content:center}
   ul.simple{margin:0 0 10px;padding-left:20px;font-size:.9rem}
   ul.simple li{margin-bottom:5px}
@@ -54,18 +55,18 @@
   .scroll{overflow-x:auto}
   .ruta{font-weight:600;color:var(--blue-d)}
   .note{background:var(--bg);border-left:4px solid var(--blue);padding:11px 14px;border-radius:8px;
-        font-size:.86rem;color:#33415a;margin:12px 0}
-  .note.warn{background:#fff7ea;border-left-color:var(--gold);color:#6b4a08}
-  .note.bad{background:#fef2f2;border-left-color:var(--bad);color:#7f1d1d}
+        font-size:.86rem;color:var(--muted);margin:12px 0}
+  .note.warn{background:#fff7ea;border-left-color:var(--gold);color:var(--ink)}
+  .note.bad{background:var(--bg);border-left-color:var(--bad);color:var(--ink)}
   .pill{display:inline-block;border-radius:999px;padding:3px 11px;font-size:.73rem;font-weight:700;
         background:var(--bg);color:var(--blue-dd);border:1px solid var(--line)}
-  kbd{font-family:inherit;font-size:.78rem;font-weight:700;background:#fff;border:1px solid var(--line);
+  kbd{font-family:inherit;font-size:.78rem;font-weight:700;background:var(--card);border:1px solid var(--line);
       border-bottom-width:2px;border-radius:6px;padding:1px 6px;color:var(--blue-dd)}
-  .vacio{background:#fff;border:1px dashed var(--line);border-radius:16px;padding:34px 20px;text-align:center;
+  .vacio{background:var(--card);border:1px dashed var(--line);border-radius:16px;padding:34px 20px;text-align:center;
          color:var(--muted);font-size:.9rem}
   footer.src{color:var(--muted);font-size:.78rem;text-align:center;margin-top:26px}
   @media print{
-    body{background:#fff}
+    body{background:var(--card)}
     .tabs,.buscador,.noprint{display:none!important}
     .wrap{max-width:none;padding:0}
     .card{break-inside:avoid;box-shadow:none;border-color:#ccc;margin-bottom:10px}
@@ -189,5 +190,6 @@
   }
 })();
 </script>
+<script src="nis-tema.js?v=a9738cd9" defer></script>
 </body>
 </html>

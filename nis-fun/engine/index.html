@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html data-theme="light" data-theme="light" lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,7 +15,7 @@ if(/\.github\.io$/i.test(location.hostname)){
 <link rel="stylesheet" href="../../vendor/fonts/baloo2-sourcesans3-e3f99b.css">
 <link rel="preload" href="../../fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../nis-fonts.css?v=fd196882">
-<link rel="stylesheet" href="../../nis-tokens.css?v=e99820a8">
+<link rel="stylesheet" href="../../nis-tokens.css?v=8e4add1e">
 <style>
   :root{
   --surface:#fff;
@@ -116,7 +116,7 @@ if(/\.github\.io$/i.test(location.hostname)){
   /* palabras de ampliacion que pide la secuencia */
   .pw.pw-extra{position:relative}
   .pw.pw-extra::after{content:"+";position:absolute;top:.2rem;right:.35rem;
-    background:var(--star);color:#3a2c05;border-radius:999px;width:1.1rem;height:1.1rem;
+    background:var(--star);color:var(--ink);border-radius:999px;width:1.1rem;height:1.1rem;
     display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.72rem}
   /* las palabras de la unidad, marcadas en la historia */
   mark.clave{background:#fff2c9;color:inherit;border-radius:5px;padding:0 .18rem;
@@ -124,14 +124,14 @@ if(/\.github\.io$/i.test(location.hostname)){
   /* mando del audio: play, pausa y parar por separado */
   .lsn-mando{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;margin-bottom:.9rem;
     justify-content:center}
-  .lsn-mando button{background:var(--accent);color:#fff;border:0;border-radius:999px;
+  .lsn-mando button{background:var(--accent);color:var(--card);border:0;border-radius:999px;
     padding:.42rem 1rem;font-family:"Baloo 2",sans-serif;font-weight:700;cursor:pointer}
   .lsn-mando button:disabled{background:var(--line);color:var(--soft);cursor:default}
   .provisional{color:var(--soft);font-size:.85rem}
   /* mientras esta corregido no se puede reescribir encima */
   input.bloqueado{background:var(--surface2);cursor:default}
-  input.revelado{background:#eaf6f0;border-color:var(--ok);color:var(--ok);font-weight:700}
-  .again{background:var(--star);color:#3a2c05}
+  input.revelado{background:var(--line);border-color:var(--ok);color:var(--ok);font-weight:700}
+  .again{background:var(--star);color:var(--ink)}
   .reveal{background:var(--surface2);color:var(--ink);border:1px solid var(--line)}
   .tries{color:var(--soft);font-size:.9rem}
   /* la mascota presentando: su dibujo y un bocadillo que se puede oir */
@@ -143,7 +143,7 @@ if(/\.github\.io$/i.test(location.hostname)){
   .guia-globo::before{content:"";position:absolute;left:-9px;top:50%;transform:translateY(-50%);
     border:9px solid transparent;border-right-color:var(--surface2)}
   .guia-globo p{margin:0 0 .4rem;line-height:1.5}
-  .guia-say{background:var(--accent);color:#fff;border:0;border-radius:999px;
+  .guia-say{background:var(--accent);color:var(--card);border:0;border-radius:999px;
     padding:.3rem .8rem;font-family:"Baloo 2",sans-serif;font-weight:700;
     font-size:.9rem;cursor:pointer}
   .guia-say.saying{background:var(--ok)}
@@ -158,8 +158,8 @@ if(/\.github\.io$/i.test(location.hostname)){
     border-radius:999px;padding:.35rem .85rem;font-family:"Baloo 2",sans-serif;
     font-weight:700;font-size:.9rem;cursor:pointer;min-height:2.1rem}
   .sp-b:hover{filter:brightness(.97)}
-  .sp-b.sp-main{background:var(--accent);color:#fff;border-color:var(--accent)}
-  .sp-b.on{background:var(--ok);color:#fff;border-color:var(--ok)}
+  .sp-b.sp-main{background:var(--accent);color:var(--card);border-color:var(--accent)}
+  .sp-b.on{background:var(--ok);color:var(--card);border-color:var(--ok)}
   .sp-bar{margin-top:.6rem;height:.7rem;background:var(--surface2);cursor:pointer;
     border:1px solid var(--line);border-radius:999px;overflow:hidden}
   .sp-fill{height:100%;width:0;background:var(--accent);border-radius:999px}
@@ -168,7 +168,7 @@ if(/\.github\.io$/i.test(location.hostname)){
   .sp-tip{margin:.45rem 0 0;color:var(--soft);font-size:.85rem}
   /* cada frase de la historia se pulsa para oir solo esa parte */
   .sfr{cursor:pointer;border-radius:.35rem}
-  .sfr:hover{background:#e8f0fa}
+  .sfr:hover{background:var(--accent-soft)}
   .sfr.on{background:#cfe3fa;box-shadow:0 0 0 .18rem #cfe3fa}
   @media (max-width:560px){
     .sp-b{font-size:.95rem;min-height:2.5rem;flex:1 1 auto;justify-content:center}
@@ -206,7 +206,7 @@ if(/\.github\.io$/i.test(location.hostname)){
 
   /* flechas: la de avanzar, grande y a la derecha, como pidio el usuario */
   .scr-nav{position:fixed;top:50%;transform:translateY(-50%);z-index:5;
-    background:var(--accent);color:#fff;border:0;border-radius:999px;
+    background:var(--accent);color:var(--card);border:0;border-radius:999px;
     padding:.7rem 1.1rem;display:flex;align-items:center;gap:.4rem;
     box-shadow:0 4px 16px rgba(59,111,181,.35);font-family:"Baloo 2",sans-serif;
     font-weight:700;font-size:1rem;cursor:pointer}
@@ -228,7 +228,7 @@ if(/\.github\.io$/i.test(location.hostname)){
   .course-status h3{margin:0;font-size:1.15rem;color:var(--ink)}
   .course-status p{margin:.15rem 0 0;color:var(--soft);font-size:.94rem}
   .course-status .continue{grid-column:2;grid-row:1 / span 2;display:inline-flex;
-    align-items:center;justify-content:center;gap:.35rem;background:var(--accent);color:#fff;
+    align-items:center;justify-content:center;gap:.35rem;background:var(--accent);color:var(--card);
     border-radius:999px;padding:.7rem 1.1rem;text-decoration:none;font-family:"Baloo 2";
     font-weight:800;white-space:nowrap;min-height:44px}
   .course-meter{grid-column:1 / -1;height:.65rem;border-radius:999px;background:var(--surface2);
@@ -265,9 +265,9 @@ if(/\.github\.io$/i.test(location.hostname)){
   .pw-task p{margin:0;line-height:1.6}
   .rec{margin-top:1rem;background:var(--surface2);border-radius:14px;padding:1rem;text-align:left}
   .rec-fila{display:flex;align-items:center;gap:.9rem;flex-wrap:wrap}
-  .rec-btn{background:var(--bad);color:#fff;display:flex;align-items:center;gap:.5rem}
+  .rec-btn{background:var(--bad);color:var(--card);display:flex;align-items:center;gap:.5rem}
   .rec-btn.on{background:var(--ink)}
-  .rec-punto{width:.7rem;height:.7rem;border-radius:50%;background:#fff;display:inline-block}
+  .rec-punto{width:.7rem;height:.7rem;border-radius:50%;background:var(--card);display:inline-block}
   .rec-btn.on .rec-punto{animation:reclat 1s infinite}
   @keyframes reclat{50%{opacity:.25}}
   .rec-tiempo{font-family:"Baloo 2";font-weight:700;color:var(--soft)}
@@ -306,8 +306,8 @@ if(/\.github\.io$/i.test(location.hostname)){
   .sc-lista input{width:1.2rem;height:1.2rem;margin-top:.15rem;accent-color:var(--ok);flex:none}
   .sc-cuenta{margin:1rem 0 0;font-family:"Baloo 2";font-weight:700;color:var(--ok)}
   h1,h2,h3{font-family:"Baloo 2",sans-serif;text-wrap:balance}
-  .band{background:var(--accent);color:#fff;border-radius:14px;padding:1rem 1.4rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
-  .band .unum{font-family:"Baloo 2",sans-serif;font-weight:800;font-size:2.2rem;background:#fff;color:var(--accent);border-radius:12px;padding:0 .8rem;line-height:1.4}
+  .band{background:var(--accent);color:var(--card);border-radius:14px;padding:1rem 1.4rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+  .band .unum{font-family:"Baloo 2",sans-serif;font-weight:800;font-size:2.2rem;background:var(--card);color:var(--accent);border-radius:12px;padding:0 .8rem;line-height:1.4}
   .band h1{font-size:1.6rem;margin:0;flex:1;min-width:12rem}
   .band .meta{font-size:.8rem;opacity:.9;text-transform:uppercase;letter-spacing:.06em}
   .scene{display:flex;align-items:flex-end;gap:1rem;margin:1.2rem 0;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1rem 1.2rem}
@@ -327,9 +327,9 @@ if(/\.github\.io$/i.test(location.hostname)){
   }
   .act{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.2rem 1.4rem;margin:1.2rem 0}
   .act h2{display:flex;align-items:center;gap:.6rem;font-size:1.15rem;margin:0 0 .9rem}
-  .act .code{background:var(--accent);color:#fff;border-radius:10px;width:2rem;height:2rem;display:inline-flex;align-items:center;justify-content:center;font-weight:800;flex:none}
+  .act .code{background:var(--accent);color:var(--card);border-radius:10px;width:2rem;height:2rem;display:inline-flex;align-items:center;justify-content:center;font-weight:800;flex:none}
   .act.done .code{background:var(--ok)}
-  button{font-family:"Baloo 2",sans-serif;font-weight:700;font-size:1rem;border:0;border-radius:10px;padding:.55rem 1.2rem;cursor:pointer;background:var(--accent);color:#fff}
+  button{font-family:"Baloo 2",sans-serif;font-weight:700;font-size:1rem;border:0;border-radius:10px;padding:.55rem 1.2rem;cursor:pointer;background:var(--accent);color:var(--card)}
   button.secondary{background:var(--surface2);color:var(--ink)}
   button:disabled{opacity:.5;cursor:default}
   .cpic-instr{font-weight:600;margin:.2rem 0 .6rem}
@@ -347,7 +347,7 @@ if(/\.github\.io$/i.test(location.hostname)){
   .xw-grid td.cell{border:1.5px solid var(--soft);background:var(--surface)}
   .xw-grid td.cell input{width:100%;height:100%;border:0;text-align:center;font:700 1.05rem "Source Sans 3";text-transform:uppercase;background:transparent;color:var(--ink);outline-color:var(--accent)}
   .xw-grid td.cell .n{position:absolute;top:1px;left:3px;font-size:.55rem;font-weight:700;color:var(--soft)}
-  .xw-grid td.cell.ok{background:#e2f2e9} .xw-grid td.cell.bad{background:#f8e4e1}
+  .xw-grid td.cell.ok{background:var(--line)} .xw-grid td.cell.bad{background:#f8e4e1}
   /* palabra entera correcta: se ve al momento, sin pulsar Check */
   .xw-grid td.cell.wok{background:#cdeedd;box-shadow:inset 0 0 0 1.5px var(--ok)}
   .xw-grid td.cell.wok input{color:var(--ok);font-weight:800}
@@ -364,20 +364,20 @@ if(/\.github\.io$/i.test(location.hostname)){
   .clue-say{background:var(--surface2);color:var(--accent);border:0;border-radius:8px;
     padding:.1rem .4rem;font-size:.9rem;line-height:1.35;cursor:pointer;flex:none;
     font-family:inherit}
-  .clue-say:hover{background:var(--accent);color:#fff}
-  .clue-say.saying{background:var(--ok);color:#fff}
+  .clue-say:hover{background:var(--accent);color:var(--card)}
+  .clue-say.saying{background:var(--ok);color:var(--card)}
   /* match */
   .match{display:grid;grid-template-columns:1fr 1fr;gap:.6rem 2rem;max-width:34rem}
   .match .colh{font-size:.8rem;text-transform:uppercase;letter-spacing:.07em;color:var(--soft);font-weight:700}
   .mbtn{background:var(--surface2);color:var(--ink);border:2px solid transparent;border-radius:10px;padding:.5rem .8rem;font-family:"Source Sans 3";font-weight:600;text-align:left}
   .mbtn.sel{border-color:var(--accent)}
-  .mbtn.paired{background:#e2f2e9;color:var(--ok);pointer-events:none}
+  .mbtn.paired{background:var(--line);color:var(--ok);pointer-events:none}
   .mbtn.flash{border-color:var(--bad)}
   /* listening */
   .lsn .gaps{display:grid;gap:.5rem;margin-top:.8rem;max-width:34rem}
   .lsn label{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
   .lsn input{border:1.5px solid var(--line);border-radius:8px;padding:.35rem .6rem;font:600 1rem "Source Sans 3";width:9rem;background:var(--surface);color:var(--ink)}
-  .lsn input.ok{border-color:var(--ok);background:#e2f2e9}
+  .lsn input.ok{border-color:var(--ok);background:var(--line)}
   .lsn input.bad{border-color:var(--bad);background:#f8e4e1}
   .playing{background:var(--ok)!important}
   .provisional{font-size:.8rem;color:var(--soft)}
@@ -387,7 +387,7 @@ if(/\.github\.io$/i.test(location.hostname)){
   .exam .opts{display:flex;gap:.5rem;flex-wrap:wrap}
   .obtn{background:var(--surface2);color:var(--ink);border:2px solid transparent;border-radius:10px;padding:.4rem .9rem;font-family:"Source Sans 3";font-weight:600}
   .obtn.sel{border-color:var(--accent)}
-  .obtn.ok{background:#e2f2e9;border-color:var(--ok)}
+  .obtn.ok{background:var(--line);border-color:var(--ok)}
   .obtn.bad{background:#f8e4e1;border-color:var(--bad)}
   .exam .rtext{background:var(--surface2);border-radius:10px;padding:.9rem 1.1rem;margin-bottom:1rem;max-width:44rem}
   /* autoria de las lecturas: son textos propios, no adaptaciones ajenas */
@@ -432,7 +432,7 @@ if(/\.github\.io$/i.test(location.hostname)){
   .sd-z.found{border-color:var(--ok);background:rgba(47,146,104,.22)}
   .demoflag{margin:1.4rem 0 .2rem;background:#fff6e0;border:1px solid #e8cf94;
     border-left:6px solid var(--star);border-radius:12px;padding:.75rem 1rem;
-    font-size:.92rem;color:#6b5313}
+    font-size:.92rem;color:var(--ink)}
   /* opener: texto de introduccion + panel ilustrado */
   .opener{display:flex;flex-direction:column;gap:1rem;margin:1.2rem 0}
   .op-text{width:100%;background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--accent);border-radius:14px;padding:1.1rem 1.3rem}
@@ -457,7 +457,7 @@ if(/\.github\.io$/i.test(location.hostname)){
   .pwrow .pw:hover{border-color:var(--accent);transform:translateY(-2px);
     box-shadow:0 4px 12px rgba(59,111,181,.16)}
   .pwrow .pw:active{transform:translateY(0) scale(.97)}
-  .pwrow .pw.saying{border-color:var(--ok);background:#e2f2e9}
+  .pwrow .pw.saying{border-color:var(--ok);background:var(--line)}
   .pwrow .pw .ico{line-height:1.2;display:flex;align-items:center;justify-content:center;height:7rem}
   .pwrow .pw .ico svg{width:7rem;height:7rem;display:block}
   .pwrow .pw .ico img.art3d{width:7rem;height:7rem;object-fit:contain;display:block}
@@ -477,25 +477,25 @@ if(/\.github\.io$/i.test(location.hostname)){
   .gapw{position:relative;display:inline-block;vertical-align:baseline;margin:0 .15rem}
   .gapb{border:0;border-bottom:2px solid var(--accent);background:var(--surface2);border-radius:7px 7px 0 0;padding:.15rem .6rem;font:700 1rem "Source Sans 3";color:var(--accent);cursor:pointer;min-width:5.5rem}
   .gapb i{font-style:normal;font-size:.8em;opacity:.7;margin-right:.35rem}
-  .gapb.puesto{color:var(--ink);background:#fff}
+  .gapb.puesto{color:var(--ink);background:var(--card)}
   .gapm.hidden{display:none}
-  .gapm{position:absolute;z-index:40;left:0;top:calc(100% + 2px);background:#fff;border:1.5px solid var(--accent);border-radius:11px;box-shadow:0 12px 28px rgba(0,0,0,.18);padding:.25rem;display:flex;flex-wrap:wrap;align-items:center;width:max-content;gap:.15rem;max-width:min(92vw,34rem);max-height:46vh;overflow:auto}
+  .gapm{position:absolute;z-index:40;left:0;top:calc(100% + 2px);background:var(--card);border:1.5px solid var(--accent);border-radius:11px;box-shadow:0 12px 28px rgba(0,0,0,.18);padding:.25rem;display:flex;flex-wrap:wrap;align-items:center;width:max-content;gap:.15rem;max-width:min(92vw,34rem);max-height:46vh;overflow:auto}
   .gapx{border:0;background:var(--surface2);border-radius:8px;padding:.4rem .6rem;cursor:pointer;font:700 1rem "Source Sans 3"}
   .gapm button{border:0;background:none;text-align:left;padding:.45rem .8rem;border-radius:8px;font:600 1rem "Source Sans 3";color:var(--ink);cursor:pointer;white-space:nowrap}
   .gapm button:hover,.gapm button.on{background:var(--surface2)}
-  .gapw.ok .gapb{background:#e3f3ea;border-bottom-color:var(--ok)}
+  .gapw.ok .gapb{background:var(--line);border-bottom-color:var(--ok)}
   .gapw.bad .gapb{background:#f8e1e1;border-bottom-color:var(--bad,#b53a3a)}
   .gapw .sol{font:700 .85rem "Source Sans 3";color:var(--ok);margin-left:.2rem}
   .gt-text input.bad{color:var(--bad);border-color:var(--bad)}
   .gt-text .gn{font-size:.7rem;color:var(--soft);font-weight:700;vertical-align:super}
   /* spot the difference */
   .sd-wrap{display:flex;gap:1.4rem;flex-wrap:wrap}
-  .sd-scene{border:2px solid var(--line);border-radius:12px;padding:.5rem;background:#eef7fb}
+  .sd-scene{border:2px solid var(--line);border-radius:12px;padding:.5rem;background:var(--bg)}
   .sd-scene h4{margin:.1rem 0 .3rem;text-align:center;font-family:"Baloo 2"}
   .sd-grid{display:grid;gap:2px}
-  .sd-cell{width:3.4rem;height:3.4rem;display:flex;align-items:center;justify-content:center;font-size:2.1rem;background:#fff;border-radius:8px}
+  .sd-cell{width:3.4rem;height:3.4rem;display:flex;align-items:center;justify-content:center;font-size:2.1rem;background:var(--card);border-radius:8px}
   .sd-scene.clickable .sd-cell{cursor:pointer}
-  .sd-cell.found{background:#e2f2e9;outline:3px solid var(--ok)}
+  .sd-cell.found{background:var(--line);outline:3px solid var(--ok)}
   .sd-cell.flash{outline:3px solid var(--bad)}
   /* video guia de la mascota */
   .guide{margin:1.2rem 0;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1rem 1.2rem}
@@ -522,7 +522,7 @@ if(/\.github\.io$/i.test(location.hostname)){
     color:var(--lv);border-radius:999px;padding:.25rem .65rem;font-family:"Baloo 2";
     font-size:.78rem;font-weight:800;box-shadow:0 3px 12px rgba(20,40,70,.18)}
   .lvplaying{position:absolute;right:.7rem;top:.7rem;z-index:3;display:flex;align-items:center;
-    gap:.28rem;background:rgba(8,20,36,.65);color:#fff;border-radius:999px;padding:.27rem .58rem;
+    gap:.28rem;background:rgba(8,20,36,.65);color:var(--card);border-radius:999px;padding:.27rem .58rem;
     font-size:.7rem;font-weight:700;opacity:0;transition:opacity .2s ease}
   .lvcard.is-playing .lvplaying{opacity:1}
   .lvpulse{width:.45rem;height:.45rem;background:#66e5ae;border-radius:50%;
@@ -568,7 +568,7 @@ if(/\.github\.io$/i.test(location.hostname)){
     filter:drop-shadow(0 3px 5px rgba(0,0,0,.28))}
   .vis-quien input{width:5.4rem;text-align:center;font-weight:700;
     border:2px solid var(--line);border-radius:9px;padding:.28rem;background:var(--surface)}
-  .vis-quien input.ok{border-color:var(--ok);background:#e2f2e9}
+  .vis-quien input.ok{border-color:var(--ok);background:var(--line)}
   .vis-quien input.bad{border-color:var(--bad)}
   .vis-quien input.revelado{border-color:var(--accent);background:var(--surface2)}
   .vis-quien .num{font-size:.78rem;font-weight:800;color:var(--soft)}
@@ -599,7 +599,7 @@ if(/\.github\.io$/i.test(location.hostname)){
   .vis-op .pie{font-size:.82rem;color:var(--soft);visibility:hidden}
   .vis-ops.resuelto .vis-op .pie{visibility:visible}
   .vis-op.sel{border-color:var(--accent);background:var(--surface2)}
-  .vis-op.ok{border-color:var(--ok);background:#e2f2e9}
+  .vis-op.ok{border-color:var(--ok);background:var(--line)}
   .vis-op.bad{border-color:var(--bad)}
   .vis-op.marca{outline:3px dashed var(--accent);outline-offset:2px}
   .vis-op[disabled]{cursor:default}
@@ -632,7 +632,7 @@ if(/\.github\.io$/i.test(location.hostname)){
   .vis-gente .vis-quien img{height:6.4rem}
   .vis-gente select{font:inherit;font-weight:700;border:2px solid var(--line);
     border-radius:9px;padding:.26rem .5rem;background:var(--surface)}
-  .vis-gente select.ok{border-color:var(--ok);background:#e2f2e9}
+  .vis-gente select.ok{border-color:var(--ok);background:var(--line)}
   .vis-gente select.bad{border-color:var(--bad)}
   .vis-gente select.revelado{border-color:var(--accent);background:var(--surface2)}
 
@@ -644,7 +644,7 @@ if(/\.github\.io$/i.test(location.hostname)){
   .vis-vineta .marco .gente{position:absolute;inset:auto 0 0 0;display:flex;
     justify-content:center;align-items:flex-end;gap:.2rem}
   .vis-vineta .marco .gente img{height:7.6rem;filter:drop-shadow(0 3px 5px rgba(0,0,0,.28))}
-  .vis-vineta .nn{position:absolute;top:.35rem;left:.45rem;background:var(--accent);color:#fff;
+  .vis-vineta .nn{position:absolute;top:.35rem;left:.45rem;background:var(--accent);color:var(--card);
     border-radius:999px;width:1.5rem;height:1.5rem;display:grid;place-items:center;
     font-weight:800;font-size:.82rem}
   .vis-vineta .pista{padding:.45rem .55rem;font-size:.85rem;color:var(--soft);font-weight:700}
@@ -677,10 +677,10 @@ if(/\.github\.io$/i.test(location.hostname)){
     .vis-vineta .marco{height:9rem}
   }
 .puente{margin:14px 0 2px;display:flex;flex-direction:column;gap:4px;align-items:flex-start}
-.btn-puente{display:inline-block;background:#1e3a8a;color:#fff;text-decoration:none;font-weight:700;
+.btn-puente{display:inline-block;background:#1e3a8a;color:var(--card);text-decoration:none;font-weight:700;
   border-radius:999px;padding:9px 18px;font-size:.95rem}
 .btn-puente:hover{filter:brightness(1.1)}
-.puente-nota{font-size:.8rem;color:#64748b}
+.puente-nota{font-size:.8rem;color:var(--muted)}
 
   /* ===== Coursebook renderers: reading text + grammar box ===== */
   .reading, .gbox{max-width:46rem;margin-inline:auto}
@@ -702,7 +702,7 @@ if(/\.github\.io$/i.test(location.hostname)){
   .gb-card{background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 8%,var(--surface)),var(--surface));
     border:1px solid var(--line);border-left:6px solid var(--accent);border-radius:14px;padding:1rem 1.2rem}
   .gb-h{display:flex;align-items:center;gap:.6rem;margin-bottom:.4rem}
-  .gb-tag{background:var(--accent);color:#fff;font-family:"Source Sans 3";font-weight:700;font-size:.7rem;
+  .gb-tag{background:var(--accent);color:var(--card);font-family:"Source Sans 3";font-weight:700;font-size:.7rem;
     letter-spacing:.06em;text-transform:uppercase;padding:.15rem .5rem;border-radius:6px}
   .gb-h h3{font-family:"Baloo 2";font-size:1.25rem;margin:0}
   .gb-intro{margin:.3rem 0 .5rem;color:var(--ink)}
@@ -715,22 +715,22 @@ if(/\.github\.io$/i.test(location.hostname)){
   /* la parte del examen oral que ensaya el pairwork */
   .pw-parte{max-width:46rem;margin:0 auto .7rem;display:flex;align-items:center;gap:.5rem;
     font-size:.92rem;color:var(--soft)}
-  .pw-parte span{background:var(--accent);color:#fff;border-radius:999px;padding:.15rem .7rem;
+  .pw-parte span{background:var(--accent);color:var(--card);border-radius:999px;padding:.15rem .7rem;
     font-family:"Source Sans 3";font-weight:700;font-size:.78rem;white-space:nowrap}
   /* ordenar las letras (Reading & Writing 3) */
   .unsc{display:flex;flex-direction:column;gap:.6rem;max-width:34rem;margin-inline:auto}
   .unsc-it{display:flex;align-items:center;gap:.8rem;background:var(--surface2);border-radius:12px;padding:.5rem .8rem;flex-wrap:wrap}
   .unsc-pic{font-size:1.8rem;line-height:1}
   .unsc-let{font-family:"Baloo 2",sans-serif;font-weight:800;letter-spacing:.35em;color:var(--accent);font-size:1.1rem;flex:1}
-  .unsc-it input{border:none;border-bottom:2px solid var(--line);background:#fff;border-radius:8px 8px 0 0;padding:.3rem .6rem;width:9rem;font-family:"Source Sans 3";font-weight:600}
-  .unsc-it input.ok{border-color:var(--ok);background:#e2f2e9}
+  .unsc-it input{border:none;border-bottom:2px solid var(--line);background:var(--card);border-radius:8px 8px 0 0;padding:.3rem .6rem;width:9rem;font-family:"Source Sans 3";font-weight:600}
+  .unsc-it input.ok{border-color:var(--ok);background:var(--line)}
   .unsc-it input.bad{border-color:var(--bad);background:#fbe6e3}
   /* la historia con preguntas de una palabra (Reading & Writing 5) */
   .sqa{max-width:40rem;margin:.8rem auto 0;padding-left:1.4rem;display:flex;flex-direction:column;gap:.55rem}
   .sqa li{line-height:1.9}
   .sqa-q{margin-right:.5rem}
   .sqa input{border:none;border-bottom:2px solid var(--accent);background:var(--surface2);border-radius:6px 6px 0 0;padding:.2rem .5rem;min-width:7rem;font-family:"Source Sans 3";font-weight:600}
-  .sqa input.ok{border-color:var(--ok);background:#e2f2e9}
+  .sqa input.ok{border-color:var(--ok);background:var(--line)}
   .sqa input.bad{border-color:var(--bad);background:#fbe6e3}
   .sol{margin-left:.5rem;color:var(--bad);font-weight:700;font-size:.9rem}
   .gb-ph{margin-bottom:.5rem}
@@ -741,10 +741,10 @@ if(/\.github\.io$/i.test(location.hostname)){
   .kwt-item{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:.7rem .9rem;margin-bottom:.7rem}
   .kwt-first{margin:0 0 .3rem;font-weight:600}
   .kwt-key{margin:.2rem 0;color:var(--soft)}
-  .kwt-tag{background:var(--accent);color:#fff;font-family:"Source Sans 3";font-weight:700;font-size:.66rem;letter-spacing:.06em;padding:.1rem .4rem;border-radius:5px;margin-right:.3rem}
+  .kwt-tag{background:var(--accent);color:var(--card);font-family:"Source Sans 3";font-weight:700;font-size:.66rem;letter-spacing:.06em;padding:.1rem .4rem;border-radius:5px;margin-right:.3rem}
   .kwt-second{margin:.3rem 0 .1rem;line-height:1.9}
   .kwt-in{border:none;border-bottom:2px solid var(--accent);background:var(--surface2);border-radius:6px 6px 0 0;padding:.2rem .5rem;font-family:"Source Sans 3";font-weight:600;min-width:9rem}
-  .kwt-in.ok{border-color:var(--ok);background:#e2f2e9}
+  .kwt-in.ok{border-color:var(--ok);background:var(--line)}
   .kwt-in.bad{border-color:var(--bad);background:#fbe6e3}
   .kwt-mark{font-weight:700;font-size:.9rem}
   .kwt-mark.good{color:var(--ok)} .kwt-mark.bad{color:var(--bad)}
@@ -752,8 +752,8 @@ if(/\.github\.io$/i.test(location.hostname)){
 /* Foco de teclado: se apaga el marco del navegador en varios sitios de esta
    pagina, asi que aqui se pone uno propio; sin el, quien navega con Tab no
    ve donde esta. */
-:focus-visible{outline:3px solid #3b5bdb;outline-offset:2px}
-input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #3b5bdb;outline-offset:1px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--accent);outline-offset:1px}
 </style>
 </head>
 <body>

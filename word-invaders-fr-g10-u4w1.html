@@ -6,7 +6,8 @@
 <title>Word Invaders — FR · 10e · Semaine 1 — Médias et réseaux sociaux</title>
 <link rel="preload" href="fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="nis-fonts.css?v=fd196882">
-<link rel="stylesheet" href="nis-tokens.css?v=e99820a8">
+<script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="nis-tokens.css?v=8e4add1e">
 <style>
   
   *{box-sizing:border-box; margin:0; padding:0;}
@@ -18,11 +19,11 @@
   .tab{border:2px solid transparent; background:var(--card); color:var(--ink); padding:9px 20px; border-radius:24px;
        font-weight:700; font-size:.95rem; cursor:pointer; box-shadow:0 1px 3px rgba(20,30,60,.12); transition:.15s;}
   .tab small{display:block; font-weight:500; font-size:.68rem; color:var(--muted);}
-  .tab.on{background:var(--accent); color:#fff; border-color:var(--accent);}
-  .tab.on small{color:#dce4ff;}
+  .tab.on{background:var(--accent); color:var(--card); border-color:var(--accent);}
+  .tab.on small{color:var(--chip);}
   .tab.done{border-color:var(--good);}
   .tab.done::after{content:" ✓"; color:var(--good);}
-  .tab.on.done::after{color:#bff2cc;}
+  .tab.on.done::after{color:var(--good-bright);}
   .wrap{max-width:1100px; margin:0 auto; display:flex; gap:18px; align-items:flex-start; flex-wrap:wrap;}
   .board{flex:1 1 520px; min-width:300px; max-width:100%; background:var(--card); border-radius:14px; padding:16px; box-shadow:0 2px 10px rgba(20,30,60,.08);}
   .side{flex:1 1 280px; min-width:260px;}
@@ -41,17 +42,17 @@
   .inv.near{color:#7bffb0;}
   .inv.long{font-size:14px;}
   #startCurtain{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;
-                gap:10px; background:rgba(8,20,45,.86); color:#fff; text-align:center; padding:16px; z-index:5;}
+                gap:10px; background:rgba(8,20,45,.86); color:var(--card); text-align:center; padding:16px; z-index:5;}
   #startCurtain h2{font-size:1.15rem;}
   #startCurtain p{font-size:.85rem; color:#c7d4f5; max-width:420px;}
   #typed{width:100%; margin-top:10px; border:2px solid var(--accent-soft); border-radius:10px; padding:12px 14px;
-         font-size:1.05rem; font-weight:700; letter-spacing:1px; text-transform:lowercase; outline:none; background:#fff; color:var(--ink);}
+         font-size:1.05rem; font-weight:700; letter-spacing:1px; text-transform:lowercase; outline:none; background:var(--card); color:var(--ink);}
   #typed:focus{border-color:var(--accent);}
-  #typed:disabled{background:#f1f3f8; color:var(--muted);}
+  #typed:disabled{background:var(--bg); color:var(--muted);}
   .btns{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;}
   button.act{border:none; border-radius:9px; padding:10px 16px; font-weight:700; font-size:.88rem; cursor:pointer; transition:.15s;}
-  .b-go{background:var(--good); color:#fff;}
-  .b-again{background:#e9ecf3; color:var(--ink);}
+  .b-go{background:var(--good); color:var(--card);}
+  .b-again{background:var(--line); color:var(--ink);}
   button.act:hover{filter:brightness(1.08);}
   .score{font-size:.92rem; margin-top:10px; color:var(--muted); font-weight:600;}
   .banner{display:none; margin-top:10px; padding:12px; border-radius:10px; background:var(--good-soft); color:var(--good);
@@ -66,21 +67,21 @@
   .wordrow.hit b::after{content:" ✓";}
   footer{max-width:1100px; margin:18px auto 0; text-align:center; color:var(--muted); font-size:.75rem;}
   @media (max-width:480px){ body{padding:8px;} .board{padding:10px;} .inv{font-size:15px;} }
-  .topnav{position:sticky; top:0; z-index:30; background:#fff; display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+  .topnav{position:sticky; top:0; z-index:30; background:var(--card); display:flex; align-items:center; gap:12px; flex-wrap:wrap;
     padding:10px 18px; box-shadow:0 2px 10px rgba(20,30,60,.08); margin:-18px -18px 16px;}
   .topnav img{height:32px; width:auto; display:block;}
   .topnav .nav-sp{margin-left:auto;}
   .navbtn{text-decoration:none; font-weight:700; font-size:.85rem; padding:8px 14px; border-radius:9px; white-space:nowrap;
     background:var(--accent-soft); color:var(--accent); transition:.15s; border:none; cursor:pointer;}
   .navbtn:hover{filter:brightness(.97);}
-  .navbtn.primary{background:var(--accent); color:#fff;}
+  .navbtn.primary{background:var(--accent); color:var(--card);}
   @media (max-width:480px){ .topnav{margin:-8px -8px 12px; padding:8px 12px;} .navbtn{padding:7px 11px; font-size:.8rem;} }
 
 /* Foco de teclado: se apaga el marco del navegador en varios sitios de esta
    pagina, asi que aqui se pone uno propio; sin el, quien navega con Tab no
    ve donde esta. */
-:focus-visible{outline:3px solid #3b5bdb;outline-offset:2px}
-input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #3b5bdb;outline-offset:1px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--accent);outline-offset:1px}
 </style>
   <meta name="google" content="notranslate">
   <script src="config.js?v=68725f64"></script>
@@ -402,5 +403,6 @@ if(window.NIS_WORK) NIS_WORK.attach(Object.assign(NIS_WORK.ficha(), {
 
 load();
 </script>
+<script src="nis-tema.js?v=a9738cd9" defer></script>
 </body>
 </html>

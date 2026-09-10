@@ -9,15 +9,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="../lexapp.css?v=bf8f5e87">
+<script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="../nis-tokens.css?v=8e4add1e">
 <style>
 /* Lo propio de esta app: afijos, familias y el hueco al estilo Cambridge.
    Todo lo demás (tarjetas, carrusel, banco, juegos) viene de lexapp.css. */
 .afijo{font-size:1.18rem;font-weight:700;color:var(--primary-d)}
 .sentido{font-weight:600;margin-left:9px;color:var(--ink)}
-.badge.n{background:#E0E7FF;color:#3730A3}
+.badge.n{background:var(--accent-soft);color:#3730A3}
 .badge.a{background:#FEF3C7;color:#92400E}
 .badge.v{background:#DCFCE7;color:#166534}
-.badge.d{background:#FCE7F3;color:#9D174D}
+.badge.d{background:var(--line);color:#9D174D}
 .nota{margin-top:7px;font-size:.9rem;color:var(--muted)}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px}
 .chip{border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:4px 10px;font-size:.88rem;cursor:pointer;font-family:inherit;color:var(--ink)}
@@ -60,5 +62,6 @@ body.embed .wrap{padding-top:14px}
 
 <script>if(location.search.indexOf('embed=1') >= 0) document.body.classList.add('embed');</script>
 <script src="../wordform.js?v=abc74dd1"></script>
+<script src="../nis-tema.js?v=a9738cd9" defer></script>
 </body>
 </html>

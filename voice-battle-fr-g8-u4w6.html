@@ -6,7 +6,8 @@
 <title>Voice Battle — FR · 8e · Semaine 6 — Projet — Portrait et interview</title>
 <link rel="preload" href="fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="nis-fonts.css?v=fd196882">
-<link rel="stylesheet" href="nis-tokens.css?v=e99820a8">
+<script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="nis-tokens.css?v=8e4add1e">
 <style>
   
   *{box-sizing:border-box; margin:0; padding:0;}
@@ -18,11 +19,11 @@
   .tab{border:2px solid transparent; background:var(--card); color:var(--ink); padding:9px 20px; border-radius:24px;
        font-weight:700; font-size:.95rem; cursor:pointer; box-shadow:0 1px 3px rgba(20,30,60,.12); transition:.15s;}
   .tab small{display:block; font-weight:500; font-size:.68rem; color:var(--muted);}
-  .tab.on{background:var(--accent); color:#fff; border-color:var(--accent);}
-  .tab.on small{color:#dce4ff;}
+  .tab.on{background:var(--accent); color:var(--card); border-color:var(--accent);}
+  .tab.on small{color:var(--chip);}
   .tab.done{border-color:var(--good);}
   .tab.done::after{content:" ✓"; color:var(--good);}
-  .tab.on.done::after{color:#bff2cc;}
+  .tab.on.done::after{color:var(--good-bright);}
   .wrap{max-width:1100px; margin:0 auto; display:flex; gap:18px; align-items:flex-start; flex-wrap:wrap;}
   .board{max-width:100%; background:var(--card); border-radius:14px; padding:18px; box-shadow:0 2px 10px rgba(20,30,60,.08); flex:1 1 460px; min-width:300px;}
   .side{flex:1 1 280px; min-width:260px;}
@@ -38,8 +39,8 @@
   .hpwrap{flex:1; min-width:0;}
   .bossname{font-weight:800; font-size:.95rem; display:flex; justify-content:space-between; gap:8px; margin-bottom:6px;}
   .bossname span{font-variant-numeric:tabular-nums; color:var(--accent);}
-  .hpbar{height:14px; background:#fff; border-radius:8px; overflow:hidden; box-shadow:inset 0 0 0 1px rgba(20,30,60,.08);}
-  .hpfill{height:100%; width:100%; background:linear-gradient(90deg,#e03131,#f59f00); transition:width .35s;}
+  .hpbar{height:14px; background:var(--card); border-radius:8px; overflow:hidden; box-shadow:inset 0 0 0 1px rgba(20,30,60,.08);}
+  .hpfill{height:100%; width:100%; background:linear-gradient(90deg,var(--bad),var(--gold)); transition:width .35s;}
 
   #lifebar{margin-top:12px; font-weight:800; font-size:1.05rem; display:flex; gap:16px; align-items:center; flex-wrap:wrap;}
   #watch{font-variant-numeric:tabular-nums; color:var(--accent);}
@@ -48,22 +49,22 @@
   .startgate p{color:var(--muted); font-size:.9rem; margin-bottom:14px; line-height:1.5;}
   .big{font-size:1.05rem !important; padding:14px 28px !important;}
 
-  .timerbar{height:8px; background:#e9ecf3; border-radius:6px; overflow:hidden; margin:16px 0 10px;}
+  .timerbar{height:8px; background:var(--line); border-radius:6px; overflow:hidden; margin:16px 0 10px;}
   .timerfill{height:100%; width:100%; background:var(--accent); transition:width .1s linear;}
   .timerfill.low{background:var(--bad);}
   .roundinfo{display:flex; justify-content:space-between; gap:8px; font-size:.8rem; color:var(--muted); font-weight:600;}
   .slots{margin:12px 0; font-weight:800; font-size:1.5rem; letter-spacing:.32em; color:var(--accent); text-align:center;
          font-family:'Courier New',monospace; word-break:break-all;}
   #answer{width:100%; border:2px solid var(--accent-soft); border-radius:10px; padding:13px 14px; font-size:1.15rem;
-          font-weight:700; font-family:inherit; color:var(--ink); outline:none; text-align:center; background:#fbfcff;}
-  #answer:focus{border-color:var(--accent); background:#fff;}
+          font-weight:700; font-family:inherit; color:var(--ink); outline:none; text-align:center; background:var(--card);}
+  #answer:focus{border-color:var(--accent); background:var(--card);}
   #answer:disabled{opacity:.6;}
   .btns{display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;}
   button.act{border:none; border-radius:9px; padding:10px 16px; font-weight:700; font-size:.88rem; cursor:pointer; transition:.15s; font-family:inherit;}
-  .b-attack{background:var(--accent); color:#fff;}
+  .b-attack{background:var(--accent); color:var(--card);}
   .b-play{background:var(--accent-soft); color:var(--accent);}
-  .b-slow{background:#e9ecf3; color:var(--ink);}
-  .b-hint{background:var(--gold); color:#fff;}
+  .b-slow{background:var(--line); color:var(--ink);}
+  .b-hint{background:var(--gold); color:var(--card);}
   button.act:hover{filter:brightness(1.08);}
   button.act:disabled{opacity:.5; cursor:default;}
   .fb{min-height:22px; margin-top:12px; font-weight:800; font-size:.95rem;}
@@ -81,25 +82,25 @@
   @keyframes pop{0%{transform:scale(.85); opacity:0;} 100%{transform:scale(1); opacity:1;}}
   .chips{display:flex; flex-wrap:wrap; gap:6px;}
   .chip{background:var(--good-soft); color:var(--good); font-weight:700; font-size:.78rem; padding:4px 10px; border-radius:20px;}
-  .chip.empty{background:#eef1f7; color:var(--muted); font-weight:500;}
+  .chip.empty{background:var(--line); color:var(--muted); font-weight:500;}
   footer{max-width:1100px; margin:18px auto 0; text-align:center; color:var(--muted); font-size:.75rem;}
   @media (max-width:760px){ .wrap{justify-content:center;} }
   @media (max-width:480px){ body{padding:8px;} .board{padding:12px;} .slots{font-size:1.2rem; letter-spacing:.25em;} }
-  .topnav{position:sticky; top:0; z-index:30; background:#fff; display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+  .topnav{position:sticky; top:0; z-index:30; background:var(--card); display:flex; align-items:center; gap:12px; flex-wrap:wrap;
     padding:10px 18px; box-shadow:0 2px 10px rgba(20,30,60,.08); margin:-18px -18px 16px;}
   .topnav img{height:32px; width:auto; display:block;}
   .topnav .nav-sp{margin-left:auto;}
   .navbtn{text-decoration:none; font-weight:700; font-size:.85rem; padding:8px 14px; border-radius:9px; white-space:nowrap;
     background:var(--accent-soft); color:var(--accent); transition:.15s; border:none; cursor:pointer;}
   .navbtn:hover{filter:brightness(.97);}
-  .navbtn.primary{background:var(--accent); color:#fff;}
+  .navbtn.primary{background:var(--accent); color:var(--card);}
   @media (max-width:480px){ .topnav{margin:-8px -8px 12px; padding:8px 12px;} .navbtn{padding:7px 11px; font-size:.8rem;} }
 
 /* Foco de teclado: se apaga el marco del navegador en varios sitios de esta
    pagina, asi que aqui se pone uno propio; sin el, quien navega con Tab no
    ve donde esta. */
-:focus-visible{outline:3px solid #3b5bdb;outline-offset:2px}
-input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #3b5bdb;outline-offset:1px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--accent);outline-offset:1px}
 </style>
   <meta name="google" content="notranslate">
   <script src="ui-mensajes.js?v=18d6c1e2"></script>
@@ -576,5 +577,6 @@ if(window.speechSynthesis){
   setTimeout(_frVoiceCheck, 1500);              /* Chrome las carga tarde */
 }
 </script>
+<script src="nis-tema.js?v=a9738cd9" defer></script>
 </body>
 </html>

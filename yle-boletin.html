@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="es">
+<html data-theme="light" data-theme="light" lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Boletín YLE · Nordic International School</title>
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="preload" href="fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="brand.css?v=44f203d2">
-<link rel="stylesheet" href="nis-tokens.css?v=e99820a8">
+<link rel="stylesheet" href="brand.css?v=5f69053f">
+<link rel="stylesheet" href="nis-tokens.css?v=8e4add1e">
 <style>
 /* =========================================================================
    Boletín YLE para la familia (Ruta YLE 2026, Fase 3). Solo NIS.
@@ -18,29 +18,29 @@
    ========================================================================= */
 :root{--navy:#0d1d33;--blue:#1e3a8a;--sky:#eef3fb;--border:#d9deea;--ok:#2f8f5b;--bad:#b53a3a;--st:#e08a2a;--mv:#238f85;--fl:#6a54c9;--gold:#d29a1f}
 *{box-sizing:border-box}
-body{margin:0;background:#f7f8fb;color:var(--ink);font-family:'Gotham','Segoe UI',system-ui,sans-serif;line-height:1.5}
-header.top{background:var(--navy);color:#fff;padding:10px 18px 10px 118px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Gotham','Segoe UI',system-ui,sans-serif;line-height:1.5}
+header.top{background:var(--navy);color:var(--card);padding:10px 18px 10px 118px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 header.top img{height:36px}
 header.top h1{margin:0;font-size:1.15rem}
 header.top .sub{font-size:.8rem;opacity:.8}
 header.top .right{margin-left:auto;display:flex;gap:10px;align-items:center}
-.btn{border:0;background:var(--blue);color:#fff;border-radius:10px;padding:9px 16px;font:inherit;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block}
-.btn.sec{background:#fff;color:var(--blue);border:1.5px solid var(--blue)}
+.btn{border:0;background:var(--blue);color:var(--card);border-radius:10px;padding:9px 16px;font:inherit;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block}
+.btn.sec{background:var(--card);color:var(--blue);border:1.5px solid var(--blue)}
 .page{max-width:860px;margin:22px auto;padding:0 16px}
-.card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px 22px;margin-bottom:16px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 22px;margin-bottom:16px}
 h2{font-size:1.2rem;margin:0 0 10px}
 h3{font-size:1rem;margin:12px 0 6px}
 .head{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
 .head .who{font-size:1.5rem;font-weight:800}
-.lvl{border-radius:999px;padding:5px 14px;color:#fff;font-weight:700}
+.lvl{border-radius:999px;padding:5px 14px;color:var(--card);font-weight:700}
 .starters{background:var(--st)}.movers{background:var(--mv)}.flyers{background:var(--fl)}
 .papers{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:10px 0}
 .paper{background:var(--sky);border-radius:12px;padding:12px 14px}
 .paper b{display:block;font-size:1rem}
 .paper .n{font-size:.85rem;color:var(--muted)}
 .shields{display:inline-flex;gap:3px;vertical-align:middle;margin:6px 0}
-.shields i{width:22px;height:26px;display:inline-grid;place-items:center;font-style:normal;font-size:.72rem;font-weight:800;color:#5a657b;background:#e2e6ef;clip-path:polygon(50% 0,100% 12%,100% 60%,50% 100%,0 60%,0 12%)}
-.shields i.on{background:var(--gold);color:#3b2a05}
+.shields i{width:22px;height:26px;display:inline-grid;place-items:center;font-style:normal;font-size:.72rem;font-weight:800;color:var(--muted);background:var(--line);clip-path:polygon(50% 0,100% 12%,100% 60%,50% 100%,0 60%,0 12%)}
+.shields i.on{background:var(--gold);color:var(--ink)}
 .total{font-size:1.1rem;margin-top:6px}
 .warn{background:#fff3d6;border-radius:12px;padding:10px 14px;margin:10px 0;font-size:.92rem}
 .note{background:var(--sky);border-radius:12px;padding:10px 14px;margin:10px 0}
@@ -48,16 +48,16 @@ h3{font-size:1rem;margin:12px 0 6px}
 ul.cando{margin:6px 0;padding-left:20px}
 ul.cando li{margin:3px 0}
 .two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
-.tip{border-left:4px solid var(--gold);padding:6px 12px;margin:8px 0;background:#fffbf0;border-radius:0 10px 10px 0}
+.tip{border-left:4px solid var(--gold);padding:6px 12px;margin:8px 0;background:var(--card);border-radius:0 10px 10px 0}
 .tip b{display:block}
 .muted{color:var(--muted)}.small{font-size:.85rem}
 table{border-collapse:collapse;width:100%;font-size:.95rem}
 th,td{border-bottom:1px solid var(--border);padding:7px 6px;text-align:left;vertical-align:top}
 th{font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
-.teacher{border:2px dashed var(--blue);background:#f4f7ff}
+.teacher{border:2px dashed var(--blue);background:var(--bg)}
 .teacher input{font:inherit;width:100%;border:1.5px solid var(--border);border-radius:9px;padding:8px 10px}
 .stars{font-size:1.2rem;letter-spacing:1px}
-@media print{header.top,.noprint{display:none!important}body{background:#fff}.card{border:0;padding:0 0 14px;break-inside:avoid}.page{margin:0;max-width:none}}
+@media print{header.top,.noprint{display:none!important}body{background:var(--card)}.card{border:0;padding:0 0 14px;break-inside:avoid}.page{margin:0;max-width:none}}
 </style>
 </head>
 <body>

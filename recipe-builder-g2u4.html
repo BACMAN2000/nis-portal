@@ -6,7 +6,8 @@
 <title>Little Chef — In the Kitchen · 2nd grade</title>
 <link rel="preload" href="fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="nis-fonts.css?v=fd196882">
-<link rel="stylesheet" href="nis-tokens.css?v=e99820a8">
+<script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="nis-tokens.css?v=8e4add1e">
 <style>
   :root{
   --ink:#3a332a;
@@ -17,20 +18,20 @@
 }
   *{box-sizing:border-box; margin:0; padding:0;}
   body{font-family:'Gotham','Segoe UI',system-ui,Arial,sans-serif; background:var(--bg); color:var(--ink); padding:18px; touch-action:manipulation;}
-  .topnav{position:sticky; top:0; z-index:30; background:#fff; display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+  .topnav{position:sticky; top:0; z-index:30; background:var(--card); display:flex; align-items:center; gap:12px; flex-wrap:wrap;
     padding:10px 18px; box-shadow:0 2px 10px rgba(70,55,20,.10); margin:-18px -18px 16px;}
   .topnav img{height:32px; width:auto; display:block;}
   .topnav .nav-sp{margin-left:auto;}
   .navbtn{text-decoration:none; font-weight:700; font-size:.85rem; padding:8px 14px; border-radius:9px; white-space:nowrap;
-    background:var(--accent-soft); color:#9a5b00; border:none; cursor:pointer;}
-  .navbtn.primary{background:var(--accent); color:#fff;}
+    background:var(--accent-soft); color:var(--ink); border:none; cursor:pointer;}
+  .navbtn.primary{background:var(--accent); color:var(--card);}
   header{max-width:900px; margin:0 auto 10px; text-align:center;}
   header h1{font-size:1.6rem;}
   header p{color:var(--muted); font-size:.95rem; margin-top:4px;}
   .tabs{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin:14px auto;}
   .tab{border:3px solid transparent; background:var(--card); color:var(--ink); padding:10px 18px; border-radius:24px;
        font-weight:800; font-size:1rem; cursor:pointer; box-shadow:0 2px 6px rgba(70,55,20,.12);}
-  .tab.on{background:var(--accent); color:#fff;}
+  .tab.on{background:var(--accent); color:var(--card);}
   .tab .best{display:block; font-weight:600; font-size:.7rem; color:var(--good);}
   .tab.on .best{color:#ffec99;}
   .stage{max-width:860px; margin:0 auto; background:var(--card); border-radius:20px; padding:22px;
@@ -57,7 +58,7 @@
   @keyframes pop{0%{transform:scale(.8);}60%{transform:scale(1.08);}100%{transform:scale(1);}}
   @keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-8px);}75%{transform:translateX(8px);}}
   .msg{min-height:1.5em; font-weight:800; font-size:1.1rem; margin-top:8px;}
-  .bigbtn{border:none; border-radius:16px; background:var(--blue); color:#fff; font-weight:800;
+  .bigbtn{border:none; border-radius:16px; background:var(--blue); color:var(--card); font-weight:800;
           font-size:1.25rem; padding:16px 30px; cursor:pointer; box-shadow:0 4px 0 #2b46b3; margin-top:10px;}
   .bigbtn:active{transform:translateY(3px); box-shadow:0 1px 0 #2b46b3;}
   .end .trophy{font-size:5rem;}
@@ -246,5 +247,6 @@ if(window.NIS_WORK) NIS_WORK.attach(Object.assign(NIS_WORK.ficha(), {
 }));
 
 </script>
+<script src="nis-tema.js?v=a9738cd9" defer></script>
 </body>
 </html>

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html data-theme="light" data-theme="light" lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Reported Speech Wheel · NIS English</title>
 <link rel="preload" href="fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="nis-fonts.css?v=fd196882">
-<link rel="stylesheet" href="nis-tokens.css?v=e99820a8">
+<link rel="stylesheet" href="nis-tokens.css?v=8e4add1e">
 <style>
   :root{
   --c-verb:#9b5de5;
@@ -17,13 +17,13 @@
 }
   *{box-sizing:border-box; margin:0; padding:0;}
   body{font-family:'Gotham','Segoe UI',system-ui,Arial,sans-serif; background:var(--bg); color:var(--ink); padding:16px; line-height:1.5;}
-  .topnav{position:sticky; top:0; z-index:30; background:#fff; display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+  .topnav{position:sticky; top:0; z-index:30; background:var(--card); display:flex; align-items:center; gap:12px; flex-wrap:wrap;
     padding:10px 18px; box-shadow:0 2px 10px rgba(20,30,60,.08); margin:-16px -16px 16px;}
   .topnav img{height:30px; width:auto; display:block;}
   .topnav .nav-sp{margin-left:auto;}
   .navbtn{text-decoration:none; font-weight:700; font-size:.85rem; padding:8px 14px; border-radius:9px; white-space:nowrap;
     background:var(--accent-soft); color:var(--accent); transition:.15s;}
-  .navbtn.primary{background:var(--accent); color:#fff;}
+  .navbtn.primary{background:var(--accent); color:var(--card);}
   header{max-width:900px; margin:0 auto 6px; text-align:center;}
   header h1{font-size:1.5rem;}
   header p{color:var(--muted); font-size:.9rem; margin-top:4px;}
@@ -34,14 +34,14 @@
   #wheelsvg{width:100%; height:auto; display:block;}
   #wheel{transform-origin:160px 160px; transition:transform 4.2s cubic-bezier(.16,.74,.1,1);}
   .hub{position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:64px; height:64px; border-radius:50%;
-    background:#fff; box-shadow:0 2px 8px rgba(0,0,0,.2); display:flex; align-items:center; justify-content:center; font-size:1.8rem; cursor:pointer; border:3px solid var(--accent);}
+    background:var(--card); box-shadow:0 2px 8px rgba(0,0,0,.2); display:flex; align-items:center; justify-content:center; font-size:1.8rem; cursor:pointer; border:3px solid var(--accent);}
   .hub:active{transform:translate(-50%,-50%) scale(.94);}
   .panel{flex:1 1 320px; min-width:300px;}
   .card{background:var(--card); border-radius:16px; padding:20px; box-shadow:0 2px 12px rgba(20,30,60,.08);}
   .who{color:var(--muted); font-size:.9rem; margin-bottom:4px;}
   .direct{font-size:1.5rem; font-weight:800; color:var(--accent); min-height:40px;}
   .arrow{font-size:1.4rem; color:var(--muted); margin:10px 0;}
-  .reported{font-size:1.3rem; font-weight:700; padding:14px 16px; border-radius:12px; background:#f8fafc; border:1px dashed #cbd5e1; min-height:52px;}
+  .reported{font-size:1.3rem; font-weight:700; padding:14px 16px; border-radius:12px; background:var(--bg); border:1px dashed var(--line); min-height:52px;}
   .reported.show{background:var(--good-soft); border-color:var(--good);}
   mark{background:none; font-weight:800; padding:0 1px;}
   .c-verb{color:var(--c-verb);} .c-pron{color:var(--c-pron);} .c-tense{color:var(--c-tense);} .c-time{color:var(--c-time);} .c-struct{color:var(--c-struct);}
@@ -50,7 +50,7 @@
   .dot{width:10px; height:10px; border-radius:50%; display:inline-block;}
   .btns{display:flex; gap:8px; flex-wrap:wrap; margin-top:16px;}
   button.act{border:none; border-radius:10px; padding:12px 18px; font-weight:700; font-size:.95rem; cursor:pointer; transition:.15s;}
-  .b-go{background:var(--accent); color:#fff;} .b-alt{background:#e9ecf3; color:var(--ink);}
+  .b-go{background:var(--accent); color:var(--card);} .b-alt{background:var(--line); color:var(--ink);}
   button.act:hover{filter:brightness(1.06);} button.act:disabled{opacity:.5; cursor:default;}
   .hint{color:var(--muted); font-size:.85rem; text-align:center; margin-top:12px;}
   footer{max-width:900px; margin:18px auto 0; text-align:center; color:var(--muted); font-size:.75rem;}

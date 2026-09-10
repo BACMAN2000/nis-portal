@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es">
+<html data-theme="light" lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,50 +25,51 @@
 -->
 <link rel="preload" href="fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="nis-fonts.css?v=fd196882">
+<link rel="stylesheet" href="nis-tokens.css?v=8e4add1e">
 <style>
 :root{ --tinta:#1f2937; --gris:#6b7280; --linea:#d7dce5; --azul:#244c77;
   --prop:#FFFBEB; --propB:#FDE68A; --propT:#92400E; }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
-body{font-family:'Gotham','Montserrat',system-ui,Segoe UI,sans-serif;color:var(--tinta);background:#eef1f6;line-height:1.4;font-size:13px}
-header{background:var(--azul);color:#fff;padding:11px 20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+body{font-family:'Gotham','Montserrat',system-ui,Segoe UI,sans-serif;color:var(--tinta);background:var(--line);line-height:1.4;font-size:13px}
+header{background:var(--azul);color:var(--card);padding:11px 20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
 header img{height:28px}
 header .sp{flex:1}
-header a,header button{background:rgba(255,255,255,.18);color:#fff;border:none;padding:7px 13px;border-radius:9px;
+header a,header button{background:rgba(255,255,255,.18);color:var(--card);border:none;padding:7px 13px;border-radius:9px;
   font:inherit;font-size:.85rem;font-weight:600;text-decoration:none;cursor:pointer}
 header a:hover,header button:hover{background:rgba(255,255,255,.3)}
-header button.on{background:#fff;color:var(--azul)}
+header button.on{background:var(--card);color:var(--azul)}
 select{font:inherit;padding:6px 10px;border-radius:8px;border:1px solid var(--linea);max-width:260px}
 .wrap{max-width:1500px;margin:0 auto;padding:16px 14px 60px}
-.cab{background:#fff;border:1px solid var(--linea);border-radius:10px;padding:18px 22px;margin-bottom:16px}
+.cab{background:var(--card);border:1px solid var(--linea);border-radius:10px;padding:18px 22px;margin-bottom:16px}
 .cab h1{margin:0 0 4px;font-size:1.4rem;color:var(--azul)}
 .cab .meta{font-size:.85rem;color:var(--gris);margin:0 0 8px}
 .cab .q{font-style:italic;color:var(--azul);margin:0 0 10px;font-size:1rem}
 .cab p{margin:0 0 8px;font-size:.9rem}
 .aviso{background:var(--prop);border:1px solid var(--propB);border-radius:8px;padding:10px 13px;font-size:.85rem;color:var(--propT)}
-table{width:100%;border-collapse:collapse;font-size:.76rem;background:#fff}
+table{width:100%;border-collapse:collapse;font-size:.76rem;background:var(--card)}
 th,td{border:1px solid var(--linea);padding:6px 7px;vertical-align:top;text-align:left}
-th{background:#eef4fb;color:var(--azul);font-size:.68rem;text-transform:uppercase;letter-spacing:.04em;position:sticky;top:0}
-td.sem{background:#fafbfd;font-weight:700;color:var(--azul);width:104px}
+th{background:var(--bg);color:var(--azul);font-size:.68rem;text-transform:uppercase;letter-spacing:.04em;position:sticky;top:0}
+td.sem{background:var(--card);font-weight:700;color:var(--azul);width:104px}
 td.sem small{display:block;font-weight:400;color:var(--gris);font-size:.92em;text-transform:none;letter-spacing:0}
-td.hito{background:#F8FAFC;font-size:.72rem;color:var(--gris);width:120px}
+td.hito{background:var(--bg);font-size:.72rem;color:var(--gris);width:120px}
 .matriz{overflow-x:auto;border-radius:10px;border:1px solid var(--linea)}
-.curso-hoja{background:#fff;border:1px solid var(--linea);border-radius:10px;padding:18px 22px;margin-bottom:16px}
+.curso-hoja{background:var(--card);border:1px solid var(--linea);border-radius:10px;padding:18px 22px;margin-bottom:16px}
 .curso-hoja h2{margin:0 0 2px;font-size:1.15rem;color:var(--azul)}
 .curso-hoja .sub{font-size:.82rem;color:var(--gris);margin:0 0 12px}
 .curso-hoja table{font-size:.82rem}
-.prod{background:#fff;border:1px solid var(--linea);border-radius:10px;padding:18px 22px;margin-bottom:16px}
+.prod{background:var(--card);border:1px solid var(--linea);border-radius:10px;padding:18px 22px;margin-bottom:16px}
 .prod h2{margin:0 0 8px;font-size:1.05rem;color:var(--azul)}
 .prod .integra{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:9px;margin-top:10px}
 .prod .integra div{border:1px solid var(--propB);background:var(--prop);border-radius:8px;padding:8px 11px;font-size:.8rem}
 .prod .integra b{display:block;color:var(--propT);margin-bottom:2px}
 .dp{color:#15803D;font-size:.9em}
-td.nota{background:#FFFBEB;border-left:3px solid #F59E0B;color:#92400E;font-size:.7rem;font-style:italic}
+td.nota{background:#FFFBEB;border-left:3px solid var(--gold);color:#92400E;font-size:.7rem;font-style:italic}
 .leyenda{font-size:.78rem;color:var(--gris);margin:0 0 10px}
 .oculto{display:none}
 @media print{
   @page{size:A4 landscape;margin:9mm}
-  body{background:#fff;font-size:8.5px}
+  body{background:var(--card);font-size:8.5px}
   header,.noprint{display:none!important}
   .wrap{max-width:none;padding:0}
   .cab,.prod,.curso-hoja{border:none;border-radius:0;padding:0 0 8px;margin:0 0 10px}

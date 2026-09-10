@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html data-theme="light" data-theme="light" lang="en">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Nordic Little Readers</title>
@@ -24,7 +24,7 @@
 <link href="../../vendor/fonts/baloo2-nunito-13d763.css" rel="stylesheet">
 <link rel="preload" href="../../fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../nis-fonts.css?v=fd196882">
-<link rel="stylesheet" href="../../nis-tokens.css?v=e99820a8">
+<link rel="stylesheet" href="../../nis-tokens.css?v=8e4add1e">
 <style>
   :root{
   --soft:#6b7d90;
@@ -74,13 +74,13 @@
   .frase{font-family:"Baloo 2",sans-serif;font-weight:600;
     font-size:clamp(1.25rem,3.4vw,1.85rem);line-height:1.45;margin:0 auto;max-width:36rem}
   .frase b{color:var(--accent)}
-  .oir{margin-top:.9rem;background:var(--accent);color:#fff;border:0;border-radius:999px;
+  .oir{margin-top:.9rem;background:var(--accent);color:var(--card);border:0;border-radius:999px;
     padding:.5rem 1.3rem;font-family:"Baloo 2",sans-serif;font-weight:700;font-size:1rem;
     cursor:pointer}
   .oir.sonando{background:var(--ok)}
 
   .barra{display:flex;align-items:center;justify-content:center;gap:1rem;margin:1.2rem 0 .3rem}
-  .nav{background:var(--accent);color:#fff;border:0;border-radius:999px;padding:.6rem 1.4rem;
+  .nav{background:var(--accent);color:var(--card);border:0;border-radius:999px;padding:.6rem 1.4rem;
     font-family:"Baloo 2",sans-serif;font-weight:700;font-size:1.05rem;cursor:pointer}
   .nav[disabled]{background:var(--line);color:var(--soft);cursor:default}
   .puntos{display:flex;gap:.35rem;justify-content:center;margin:.8rem 0}
@@ -97,7 +97,7 @@
     padding:.7rem;cursor:pointer;font-family:"Baloo 2",sans-serif;font-weight:700;
     font-size:1.05rem;color:inherit}
   .par img{width:100%;height:74px;object-fit:contain;display:block;margin-bottom:.3rem}
-  .par.bien{border-color:var(--ok);background:#e8f5ef}
+  .par.bien{border-color:var(--ok);background:var(--line)}
   .par.mal{border-color:var(--bad,#c9483c);opacity:.55}
   .marcador{font-family:"Baloo 2",sans-serif;font-weight:800;font-size:1.1rem;min-height:1.6rem}
   .listo{font-size:1.15rem;color:var(--ok);font-weight:800}
@@ -331,3 +331,4 @@ function actividad(d, cola){
 });
 </script>
 </html>
+

@@ -19,6 +19,9 @@
   --muted:#67718a;
   --bg:#f4f6fb;
   --card:#ffffff;
+  --line:#e9ecf3;        /* bordes de tarjeta y separadores */
+  --chip:#dce4ff;        /* fondo de las etiquetas de nivel */
+  --good-bright:#bff2cc; /* el verde vivo de acierto */
 
   /* marca y estados, cada uno con su version suave para fondos */
   --accent:#3b5bdb;      --accent-soft:#e7ecfd;
@@ -30,4 +33,66 @@
   /* marcas de palabra encontrada (sopas de letras) */
   --f1:#ffd8a8; --f2:#b2f2bb; --f3:#a5d8ff;
   --f4:#fcc2d7; --f5:#d0bfff; --f6:#ffec99;
+}
+
+
+/* ===== El mismo portal, de noche =====
+
+   Los tokens de arriba son el tema claro. Aqui se redefinen -solo los tokens,
+   ningun componente- para quien tiene el sistema en oscuro o lo elige a mano.
+
+   Tres estados, no dos: el que elige claro, el que elige oscuro y el que no ha
+   elegido nada (la mayoria), que es el que ve la media query. Por eso el
+   :not([data-theme="light"]): una eleccion explicita de claro gana al sistema.
+
+   El azul de marca se aclara sobre fondo oscuro -#8ea3f0 en vez de #3b5bdb- o
+   no se leeria; es el mismo azul, con la luz que pide el fondo.              */
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ink:#e9ecf3;
+    --muted:#98a1b5;
+    --bg:#10141c;
+    --card:#181d28;
+    --line:#2b3244;
+
+    --accent:#8ea3f0;      --accent-soft:#1d2745;
+    --good:#5cc98a;        --good-soft:#14301f;
+    --bad:#f28b8b;         --bad-soft:#3a1a1c;
+    --gold:#f0b93f;
+    --purple:#a992f5;
+    --chip:#24304f;
+    --good-bright:#1e4530;
+
+    --f1:#5c4520; --f2:#2c5136; --f3:#1f4460;
+    --f4:#5a2c40; --f5:#40325e; --f6:#5a5020;
+  }
+}
+:root[data-theme="dark"]{
+  --ink:#e9ecf3;
+  --muted:#98a1b5;
+  --bg:#10141c;
+  --card:#181d28;
+  --line:#2b3244;
+
+  --accent:#8ea3f0;      --accent-soft:#1d2745;
+  --good:#5cc98a;        --good-soft:#14301f;
+  --bad:#f28b8b;         --bad-soft:#3a1a1c;
+  --gold:#f0b93f;
+  --purple:#a992f5;
+  --chip:#24304f;
+  --good-bright:#1e4530;
+
+  --f1:#5c4520; --f2:#2c5136; --f3:#1f4460;
+  --f4:#5a2c40; --f5:#40325e; --f6:#5a5020;
+}
+
+/* Con la paleta cambiada, el fondo de la pagina y el color del texto tienen que
+   salir de ella: si el body se queda con el blanco del navegador, el tema
+   oscuro pinta texto claro sobre papel blanco. */
+:root[data-theme="dark"] body,
+:root[data-theme="dark"] html{ background:var(--bg); color:var(--ink); }
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) body,
+  :root:not([data-theme="light"]) html{ background:var(--bg); color:var(--ink); }
 }

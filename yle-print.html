@@ -7,7 +7,8 @@
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="preload" href="fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="nis-fonts.css?v=fd196882">
-<link rel="stylesheet" href="nis-tokens.css?v=e99820a8">
+<script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="nis-tokens.css?v=8e4add1e">
 <style>
 /* =========================================================================
    Version imprimible del examen YLE, para el simulacro en papel.
@@ -28,15 +29,15 @@
    ========================================================================= */
 :root{--soft:#5a6472;--line:#c9d0da;--band:#eef2f7;--accent:#1e3a8a}
 *{box-sizing:border-box}
-body{margin:0;background:#f2f4f8;color:var(--ink);font:15px/1.55 'Gotham',Georgia,'Times New Roman',serif}
-.bar{background:#0d1d33;color:#fff;padding:10px 18px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 'Gotham',Georgia,'Times New Roman',serif}
+.bar{background:#0d1d33;color:var(--card);padding:10px 18px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;
   font-family:system-ui,sans-serif;font-size:.9rem;position:sticky;top:0;z-index:5}
 .bar h1{margin:0;font-size:1rem}
-.bar select,.bar button,.bar a{font:inherit;border-radius:8px;border:1px solid #33415a;background:#16233a;color:#fff;
+.bar select,.bar button,.bar a{font:inherit;border-radius:8px;border:1px solid #33415a;background:#16233a;color:var(--card);
   padding:5px 12px;cursor:pointer;text-decoration:none}
-.bar button.go{background:#fff;color:#0d1d33;font-weight:700;border-color:#fff}
+.bar button.go{background:var(--card);color:var(--ink);font-weight:700;border-color:var(--card)}
 .bar .sp{margin-left:auto}
-.hoja{background:#fff;max-width:210mm;margin:16px auto;padding:16mm 15mm;box-shadow:0 2px 14px rgba(20,30,50,.14)}
+.hoja{background:var(--card);max-width:210mm;margin:16px auto;padding:16mm 15mm;box-shadow:0 2px 14px rgba(20,30,50,.14)}
 .cab{border-bottom:2px solid var(--ink);padding-bottom:8px;margin-bottom:14px}
 .cab h2{margin:0;font-size:1.35rem;font-family:system-ui,sans-serif}
 .cab .meta{color:var(--soft);font-size:.85rem;font-family:system-ui,sans-serif;margin-top:3px}
@@ -44,7 +45,7 @@ body{margin:0;background:#f2f4f8;color:var(--ink);font:15px/1.55 'Gotham',Georgi
 .datos span{flex:1;min-width:150px;border-bottom:1px solid var(--line);padding-bottom:2px}
 .paper{margin-top:22px}
 .paper > h3{font-family:system-ui,sans-serif;font-size:1.05rem;margin:0 0 4px;
-  background:var(--accent);color:#fff;padding:5px 10px;border-radius:6px}
+  background:var(--accent);color:var(--card);padding:5px 10px;border-radius:6px}
 .paper .nota{font-size:.82rem;color:var(--soft);font-family:system-ui,sans-serif;margin:0 0 10px}
 .parte{margin:16px 0 0;break-inside:avoid}
 .parte h4{font-family:system-ui,sans-serif;font-size:.95rem;margin:0 0 2px}
@@ -72,7 +73,7 @@ ol.items li{margin-bottom:9px;break-inside:avoid}
   font-size:.75rem;font-family:system-ui,sans-serif;display:flex;justify-content:space-between}
 @media print{
   .bar{display:none}
-  body{background:#fff}
+  body{background:var(--card)}
   .hoja{box-shadow:none;margin:0;max-width:none;padding:0}
   .paper{break-before:page}
   .paper:first-of-type{break-before:auto}
@@ -273,5 +274,6 @@ Promise.all([j('yle/specs.json'), traeTest()]).then(function(r){
   $('#hoja').innerHTML = '<p>Could not build the paper: ' + esc(e.message) + '</p>';
 });
 </script>
+<script src="nis-tema.js?v=a9738cd9" defer></script>
 </body>
 </html>

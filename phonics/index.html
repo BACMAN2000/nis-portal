@@ -29,14 +29,16 @@
     }
   }
 </script>
+<script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="../nis-tokens.css?v=8e4add1e">
 <style>
-  body{font-family:'Gotham','Segoe UI',system-ui,-apple-system,sans-serif;background:linear-gradient(160deg,#F0F4FA 0%,#E4ECF7 100%);}
-  body.embed{background:#f2f3ff;}
+  body{font-family:'Gotham','Segoe UI',system-ui,-apple-system,sans-serif;background:linear-gradient(160deg,var(--bg) 0%,var(--line) 100%);}
+  body.embed{background:var(--bg);}
   .card-shadow{box-shadow:0 1px 3px rgba(20,50,84,.08),0 8px 24px rgba(20,50,84,.06);}
   .grad-text{background:linear-gradient(90deg,#1F4E79,#4A7BC8);-webkit-background-clip:text;background-clip:text;color:transparent;}
-  .tab-active{background:#1F4E79;color:#fff;box-shadow:0 4px 12px rgba(31,78,121,.3);}
+  .tab-active{background:#1F4E79;color:var(--card);box-shadow:0 4px 12px rgba(31,78,121,.3);}
   ::-webkit-scrollbar{height:8px;width:8px}::-webkit-scrollbar-thumb{background:#B4BCDF;border-radius:8px}
-  @media print{.no-print{display:none!important}body{background:#fff}}
+  @media print{.no-print{display:none!important}body{background:var(--card)}}
   .voiced-dot{box-shadow:0 0 0 4px rgba(74,123,200,.18)}
 </style>
   <meta name="google" content="notranslate">
@@ -2055,5 +2057,6 @@ function App() {
 if (EMBED) document.body.classList.add('embed');
 ReactDOM.createRoot(document.getElementById("root")).render(/*#__PURE__*/React.createElement(App, null));
 </script>
+<script src="../nis-tema.js?v=a9738cd9" defer></script>
 </body>
 </html>

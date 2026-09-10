@@ -6,7 +6,8 @@
 <title>Word Search (Français) — Portal NIS</title>
 <link rel="preload" href="fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="nis-fonts.css?v=fd196882">
-<link rel="stylesheet" href="nis-tokens.css?v=e99820a8">
+<script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="nis-tokens.css?v=8e4add1e">
 <style>
   :root{
   --f7:#c3fae8;
@@ -17,10 +18,10 @@
   header{max-width:1150px;margin:0 auto 6px;text-align:center}
   header h1{font-size:1.35rem}
   header p{color:var(--muted);font-size:.85rem;margin-top:3px}
-  a.back{display:inline-block;margin-top:8px;text-decoration:none;background:#2d5a8d;color:#fff;font-weight:700;font-size:.8rem;padding:7px 13px;border-radius:9px}
+  a.back{display:inline-block;margin-top:8px;text-decoration:none;background:#2d5a8d;color:var(--card);font-weight:700;font-size:.8rem;padding:7px 13px;border-radius:9px}
   .levels,.puzzles{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin:10px auto;max-width:1150px}
   .lv{border:2px solid transparent;background:var(--card);color:var(--ink);padding:7px 16px;border-radius:22px;font-weight:800;font-size:.9rem;cursor:pointer;box-shadow:0 1px 3px rgba(20,30,60,.12)}
-  .lv.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .lv.on{background:var(--accent);color:var(--card);border-color:var(--accent)}
   .pz{border:1px solid #d7def0;background:var(--card);color:var(--ink);padding:6px 11px;border-radius:14px;font-weight:700;font-size:.8rem;cursor:pointer}
   .pz small{display:block;font-weight:500;font-size:.66rem;color:var(--muted)}
   .pz.on{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
@@ -29,14 +30,14 @@
   .board{max-width:100%;background:var(--card);border-radius:14px;padding:12px;box-shadow:0 2px 10px rgba(20,30,60,.08);overflow:auto}
   .gridbox{display:grid;gap:2px;touch-action:none}
   .cell{width:var(--cs);height:var(--cs);display:flex;align-items:center;justify-content:center;background:var(--accent-soft);border-radius:4px;font-weight:800;font-size:calc(var(--cs)*.5);cursor:pointer}
-  .cell.sel{background:#4c63c9;color:#fff}
-  .cell.found{color:#1e2433}
+  .cell.sel{background:#4c63c9;color:var(--card)}
+  .cell.found{color:var(--ink)}
   .info{color:var(--muted);font-size:.78rem;margin-top:8px}
   .lifebar{margin-top:8px;font-weight:800;font-size:1rem;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
   .watch{font-variant-numeric:tabular-nums;color:var(--accent)}
   .btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
   button.act{border:none;border-radius:9px;padding:9px 15px;font-weight:700;font-size:.85rem;cursor:pointer}
-  .b-hint{background:var(--gold);color:#fff}.b-clear{background:#e9ecf3;color:var(--ink)}
+  .b-hint{background:var(--gold);color:var(--card)}.b-clear{background:var(--line);color:var(--ink)}
   .side{flex:1 1 280px;min-width:250px;max-width:400px}
   .panel{background:var(--card);border-radius:14px;padding:14px 16px;box-shadow:0 2px 10px rgba(20,30,60,.08)}
   .panel h3{font-size:.8rem;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:9px}
@@ -46,8 +47,8 @@
   .score{font-size:.9rem;margin-top:10px;color:var(--muted);font-weight:600}
   .banner{display:none;margin-top:10px;padding:11px;border-radius:10px;background:var(--good-soft);color:var(--good);font-weight:800;text-align:center;font-size:.95rem}
   .banner.show{display:block}
-  .staffnote{display:none;margin:8px auto;max-width:1150px;padding:9px 12px;border-radius:9px;background:#fff4e6;color:#b35309;font-weight:700;text-align:center;font-size:.85rem}
-  .flash{animation:flash 1s 3}@keyframes flash{50%{background:var(--gold);color:#fff}}
+  .staffnote{display:none;margin:8px auto;max-width:1150px;padding:9px 12px;border-radius:9px;background:#fff4e6;color:var(--ink);font-weight:700;text-align:center;font-size:.85rem}
+  .flash{animation:flash 1s 3}@keyframes flash{50%{background:var(--gold);color:var(--card)}}
   @media (max-width:480px){body{padding:6px}.board{padding:8px}.gridbox{gap:1px}}
 </style>
   <meta name="google" content="notranslate">
@@ -245,6 +246,7 @@ function _pickFrVoice(){ try{ var vs=speechSynthesis.getVoices(); _frVoice=vs.fi
 if('speechSynthesis' in window){ _pickFrVoice(); try{ speechSynthesis.onvoiceschanged=_pickFrVoice; }catch(e){} }
 function speakFR(w){ if(!('speechSynthesis' in window))return; var t=(w&&(w.fr||w.word))||''; if(!t)return; var u=new SpeechSynthesisUtterance(t); u.lang='fr-FR'; if(_frVoice)u.voice=_frVoice; u.rate=0.9; try{speechSynthesis.cancel();}catch(e){} speechSynthesis.speak(u); }
 </script>
+<script src="nis-tema.js?v=a9738cd9" defer></script>
 </body>
 </html>  /* Corrige el «Guardando tu resultado…» del banner con lo que de verdad paso.
      Es la unica senal que tiene el alumno: si el guardado falla en silencio, se

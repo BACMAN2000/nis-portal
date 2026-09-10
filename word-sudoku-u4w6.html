@@ -6,18 +6,19 @@
 <title>Unit 4 · Week 6 Word Sudoku — The Wellbeing Issue</title>
 <link rel="preload" href="fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="nis-fonts.css?v=fd196882">
-<link rel="stylesheet" href="nis-tokens.css?v=e99820a8">
+<script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="nis-tokens.css?v=8e4add1e">
 <style>
   
   *{box-sizing:border-box; margin:0; padding:0;}
   body{font-family:'Gotham','Segoe UI',system-ui,Arial,sans-serif; background:var(--bg); color:var(--ink); padding:16px; line-height:1.45;}
-  .topnav{position:sticky; top:0; z-index:30; background:#fff; display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+  .topnav{position:sticky; top:0; z-index:30; background:var(--card); display:flex; align-items:center; gap:12px; flex-wrap:wrap;
     padding:10px 18px; box-shadow:0 2px 10px rgba(20,30,60,.08); margin:-16px -16px 16px;}
   .topnav img{height:30px; width:auto; display:block;}
   .topnav .nav-sp{margin-left:auto;}
   .navbtn{text-decoration:none; font-weight:700; font-size:.85rem; padding:8px 14px; border-radius:9px; white-space:nowrap;
     background:var(--accent-soft); color:var(--accent); transition:.15s; border:none; cursor:pointer;}
-  .navbtn.primary{background:var(--accent); color:#fff;}
+  .navbtn.primary{background:var(--accent); color:var(--card);}
   header{max-width:760px; margin:0 auto 6px; text-align:center;}
   header h1{font-size:1.5rem;}
   header p{color:var(--muted); font-size:.9rem; margin-top:4px;}
@@ -25,10 +26,10 @@
   .lv{border:2px solid transparent; background:var(--card); color:var(--ink); padding:8px 18px; border-radius:22px;
     font-weight:800; font-size:.92rem; cursor:pointer; box-shadow:0 1px 3px rgba(20,30,60,.12);}
   .lv small{display:block; font-weight:500; font-size:.64rem; color:var(--muted);}
-  .lv.on{background:var(--accent); color:#fff; border-color:var(--accent);} .lv.on small{color:#dce4ff;}
+  .lv.on{background:var(--accent); color:var(--card); border-color:var(--accent);} .lv.on small{color:var(--chip);}
   .lv.done{border-color:var(--good);} .lv.done::after{content:" ✓"; color:var(--good);}
   .puzzles{display:flex; gap:6px; justify-content:center; flex-wrap:wrap; margin:0 auto 10px; max-width:760px;}
-  .pz{border:1px solid #d7def0; background:#fff; color:var(--ink); min-width:34px; height:34px; padding:0 8px; border-radius:9px; font-weight:800; font-size:.85rem; cursor:pointer;}
+  .pz{border:1px solid #d7def0; background:var(--card); color:var(--ink); min-width:34px; height:34px; padding:0 8px; border-radius:9px; font-weight:800; font-size:.85rem; cursor:pointer;}
   .pz.on{background:var(--accent-soft); border-color:var(--accent); color:var(--accent);}
   .pz.done{border-color:var(--good); color:var(--good);}
   main{max-width:760px; margin:0 auto;}
@@ -36,25 +37,25 @@
   .theme{text-align:center; font-size:.95rem; margin-bottom:10px;}
   .theme b{color:var(--accent); letter-spacing:2px; font-size:1.1rem;}
   .hud{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:12px;}
-  .chip{font-weight:800; font-size:.9rem; background:#f1f3f9; padding:7px 12px; border-radius:12px;}
+  .chip{font-weight:800; font-size:.9rem; background:var(--bg); padding:7px 12px; border-radius:12px;}
   .chip.tm{color:var(--gold);}
   .gridwrap{display:flex; justify-content:center;}
-  .grid{display:grid; gap:0; background:#1e2433; border:3px solid #1e2433; border-radius:8px; overflow:hidden;}
-  .cell{display:flex; align-items:center; justify-content:center; background:#fff; font-weight:800; cursor:pointer;
-    user-select:none; border:1px solid #cbd5e1; transition:background .1s;}
-  .cell.given{background:#cfd8ec; color:#0f172a; cursor:not-allowed;}
+  .grid{display:grid; gap:0; background:var(--ink); border:3px solid var(--ink); border-radius:8px; overflow:hidden;}
+  .cell{display:flex; align-items:center; justify-content:center; background:var(--card); font-weight:800; cursor:pointer;
+    user-select:none; border:1px solid var(--line); transition:background .1s;}
+  .cell.given{background:#cfd8ec; color:var(--ink); cursor:not-allowed;}
   .cell:not(.given){color:var(--accent);}
   .cell.sel{background:var(--accent-soft); box-shadow:inset 0 0 0 2px var(--accent);}
-  .cell.peer{background:#f5f7fc;}
+  .cell.peer{background:var(--bg);}
   .cell.bad{background:var(--bad-soft); color:var(--bad);}
-  .cell.br{border-right:3px solid #1e2433;} .cell.bb{border-bottom:3px solid #1e2433;}
+  .cell.br{border-right:3px solid var(--ink);} .cell.bb{border-bottom:3px solid var(--ink);}
   .pad{display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-top:14px;}
-  .key{min-width:42px; height:46px; padding:0 10px; border:none; border-radius:10px; background:var(--accent); color:#fff;
+  .key{min-width:42px; height:46px; padding:0 10px; border:none; border-radius:10px; background:var(--accent); color:var(--card);
     font-weight:800; font-size:1.1rem; cursor:pointer;}
-  .key.erase{background:#e9ecf3; color:var(--ink);}
+  .key.erase{background:var(--line); color:var(--ink);}
   .btns{display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-top:14px;}
   button.act{border:none; border-radius:10px; padding:11px 16px; font-weight:700; font-size:.88rem; cursor:pointer;}
-  .b-go{background:var(--accent); color:#fff;} .b-alt{background:#e9ecf3; color:var(--ink);} .b-hint{background:var(--gold); color:#fff;}
+  .b-go{background:var(--accent); color:var(--card);} .b-alt{background:var(--line); color:var(--ink);} .b-hint{background:var(--gold); color:var(--card);}
   .banner{display:none; margin-top:14px; padding:14px; border-radius:12px; background:var(--good-soft); color:var(--good); font-weight:800; text-align:center; font-size:1.05rem;}
   .banner.show{display:block; animation:pop .4s;}
   @keyframes pop{0%{transform:scale(.85); opacity:0;}100%{transform:scale(1); opacity:1;}}
@@ -409,5 +410,6 @@ if(window.NIS_WORK) NIS_WORK.attach(Object.assign(NIS_WORK.ficha(), {
 
 newPuzzle();
 </script>
+<script src="nis-tema.js?v=a9738cd9" defer></script>
 </body>
 </html>

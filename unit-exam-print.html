@@ -7,7 +7,8 @@
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="preload" href="fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="nis-fonts.css?v=fd196882">
-<link rel="stylesheet" href="nis-tokens.css?v=e99820a8">
+<script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="nis-tokens.css?v=8e4add1e">
 <style>
 /* =========================================================================
    Version imprimible de los examenes de unidad, para quien rinde en papel.
@@ -32,15 +33,15 @@
    ========================================================================= */
 :root{--soft:#5a6472;--line:#c9d0da;--band:#eef2f7;--accent:#1e3a8a}
 *{box-sizing:border-box}
-body{margin:0;background:#f2f4f8;color:var(--ink);font:15px/1.55 'Gotham',Georgia,'Times New Roman',serif}
-.bar{background:#0d1d33;color:#fff;padding:10px 18px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 'Gotham',Georgia,'Times New Roman',serif}
+.bar{background:#0d1d33;color:var(--card);padding:10px 18px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;
   font-family:system-ui,sans-serif;font-size:.9rem;position:sticky;top:0;z-index:5}
 .bar h1{margin:0;font-size:1rem}
-.bar select,.bar button,.bar a{font:inherit;border-radius:8px;border:1px solid #33415a;background:#16233a;color:#fff;
+.bar select,.bar button,.bar a{font:inherit;border-radius:8px;border:1px solid #33415a;background:#16233a;color:var(--card);
   padding:5px 12px;cursor:pointer;text-decoration:none}
-.bar button.go{background:#fff;color:#0d1d33;font-weight:700;border-color:#fff}
+.bar button.go{background:var(--card);color:var(--ink);font-weight:700;border-color:var(--card)}
 .bar .sp{margin-left:auto}
-.hoja{background:#fff;max-width:210mm;margin:16px auto;padding:16mm 15mm;box-shadow:0 2px 14px rgba(20,30,50,.14)}
+.hoja{background:var(--card);max-width:210mm;margin:16px auto;padding:16mm 15mm;box-shadow:0 2px 14px rgba(20,30,50,.14)}
 .cab{border-bottom:2px solid var(--ink);padding-bottom:8px;margin-bottom:14px}
 /* La marca va como <img>, no como fondo: una imagen de fondo desaparece cuando
    el profesor imprime sin "gráficos de fondo", que es lo que trae el navegador
@@ -60,7 +61,7 @@ body{margin:0;background:#f2f4f8;color:var(--ink);font:15px/1.55 'Gotham',Georgi
    graficos de fondo salvo que se le marque la casilla, asi que sin esto la
    cabecera de cada parte salia en blanco sobre blanco: invisible. */
 .paper > h3{font-family:system-ui,sans-serif;font-size:1.05rem;margin:0 0 4px;
-  background:var(--accent);color:#fff;padding:5px 10px;border-radius:6px;display:flex;justify-content:space-between;
+  background:var(--accent);color:var(--card);padding:5px 10px;border-radius:6px;display:flex;justify-content:space-between;
   -webkit-print-color-adjust:exact;print-color-adjust:exact}
 .paper > h3 span{font-weight:400;font-size:.85rem;opacity:.85}
 .paper .nota{font-size:.82rem;color:var(--soft);font-family:system-ui,sans-serif;margin:0 0 10px}
@@ -91,11 +92,11 @@ ol.items li{margin-bottom:11px;break-inside:avoid}
 .clave .exp{color:var(--soft);font-size:.86rem}
 .pie{margin-top:26px;border-top:1px solid var(--line);padding-top:8px;color:var(--soft);
   font-size:.75rem;font-family:system-ui,sans-serif;display:flex;justify-content:space-between}
-.err{color:#7f1d1d;background:#fef2f2;border-left:4px solid #fca5a5;padding:10px 14px;border-radius:0 6px 6px 0;
+.err{color:var(--ink);background:var(--bg);border-left:4px solid #fca5a5;padding:10px 14px;border-radius:0 6px 6px 0;
   font-family:system-ui,sans-serif;font-size:.9rem}
 @media print{
   .bar{display:none}
-  body{background:#fff}
+  body{background:var(--card)}
   .hoja{box-shadow:none;margin:0;max-width:none;padding:0}
   /* Una parte por hoja: es lo que se reparte en la sala de examen y lo que ya
      hace el imprimible de los YLE. Son ocho caras por alumno, asi que existe
@@ -343,5 +344,6 @@ function fallo(msg){
   });
 })();
 </script>
+<script src="nis-tema.js?v=a9738cd9" defer></script>
 </body>
 </html>

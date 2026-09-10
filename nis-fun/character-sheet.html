@@ -2,11 +2,13 @@
 <html lang="es"><head><meta charset="utf-8"><title>Fun for Nordic — Character sheet</title>
 <link rel="preload" href="../fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../nis-fonts.css?v=fd196882">
+<script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="../nis-tokens.css?v=8e4add1e">
 <style>
- body{font-family:'Gotham',system-ui;background:#f6f9fb;color:#1b2b3d;margin:2rem}
+ body{font-family:'Gotham',system-ui;background:var(--bg);color:var(--ink);margin:2rem}
  h2{margin:2rem 0 .5rem} .row{display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end}
- figure{margin:0;text-align:center;background:#fff;border:1px solid #d7e1e9;border-radius:8px;padding:6px}
- img{width:96px;display:block} figcaption{font-size:.65rem;color:#4a5d70}
+ figure{margin:0;text-align:center;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px}
+ img{width:96px;display:block} figcaption{font-size:.65rem;color:var(--muted)}
 </style><script src="../config.js?v=68725f64"></script>
 </head><body>
 <h1>Character sheet — verificación</h1>
@@ -29,4 +31,5 @@ for(const [lvl,names] of Object.entries(KIDS)){
   h+='</div>';
 }
 document.getElementById('out').innerHTML=h;
-</script></body></html>
+</script><script src="../nis-tema.js?v=a9738cd9" defer></script>
+</body></html>

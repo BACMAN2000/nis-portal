@@ -6,7 +6,8 @@
 <title>English Exercises · NIS English</title>
 <link rel="preload" href="fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="nis-fonts.css?v=fd196882">
-<link rel="stylesheet" href="nis-tokens.css?v=e99820a8">
+<script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="nis-tokens.css?v=8e4add1e">
 <style>
   :root{
   --accent-d:#2d4ac0;
@@ -18,12 +19,12 @@
   header{max-width:900px;margin:0 auto 6px;text-align:center}
   header h1{font-size:1.35rem}
   header p{color:var(--muted);font-size:.85rem;margin-top:3px}
-  a.back{display:inline-block;margin-top:8px;text-decoration:none;background:#2d5a8d;color:#fff;font-weight:700;font-size:.8rem;padding:7px 13px;border-radius:9px}
+  a.back{display:inline-block;margin-top:8px;text-decoration:none;background:#2d5a8d;color:var(--card);font-weight:700;font-size:.8rem;padding:7px 13px;border-radius:9px}
   .row{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin:10px auto;max-width:900px}
   .cat{border:2px solid transparent;background:var(--card);color:var(--ink);padding:8px 14px;border-radius:22px;font-weight:800;font-size:.85rem;cursor:pointer;box-shadow:0 1px 3px rgba(20,30,60,.12)}
-  .cat.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .cat.on{background:var(--accent);color:var(--card);border-color:var(--accent)}
   .lv{border:2px solid transparent;background:var(--card);color:var(--ink);padding:6px 14px;border-radius:20px;font-weight:800;font-size:.82rem;cursor:pointer;box-shadow:0 1px 3px rgba(20,30,60,.1)}
-  .lv.on{background:var(--gold);color:#fff;border-color:var(--gold)}
+  .lv.on{background:var(--gold);color:var(--card);border-color:var(--gold)}
   .wrap{max-width:760px;margin:10px auto 0}
   .scorebar{position:sticky;top:0;z-index:5;background:var(--card);border-radius:12px;padding:10px 14px;box-shadow:0 2px 10px rgba(20,30,60,.08);display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
   .scorebar b{color:var(--accent)}
@@ -31,18 +32,18 @@
   .q{background:var(--card);border-radius:14px;padding:15px 16px;box-shadow:0 2px 10px rgba(20,30,60,.07);margin-bottom:12px;border-left:5px solid var(--accent)}
   .q .num{font-size:.72rem;font-weight:800;color:var(--accent);text-transform:uppercase;letter-spacing:.5px}
   .q .qt{font-size:.98rem;font-weight:600;margin:5px 0 10px;line-height:1.4}
-  .opt{display:block;width:100%;text-align:left;background:#f7f9fe;border:2px solid var(--line);border-radius:10px;padding:10px 12px;margin:6px 0;font:inherit;font-size:.9rem;cursor:pointer;transition:.12s}
+  .opt{display:block;width:100%;text-align:left;background:var(--bg);border:2px solid var(--line);border-radius:10px;padding:10px 12px;margin:6px 0;font:inherit;font-size:.9rem;cursor:pointer;transition:.12s}
   .opt:hover{border-color:var(--accent)}
   .opt.correct{background:var(--good-soft);border-color:var(--good);color:var(--good);font-weight:700}
   .opt.wrong{background:var(--bad-soft);border-color:var(--bad);color:var(--bad)}
   .opt:disabled{cursor:default}
-  .why{display:none;margin-top:8px;font-size:.84rem;background:#f1f5ff;border-left:4px solid var(--accent);border-radius:8px;padding:8px 10px;line-height:1.4}
+  .why{display:none;margin-top:8px;font-size:.84rem;background:var(--bg);border-left:4px solid var(--accent);border-radius:8px;padding:8px 10px;line-height:1.4}
   .why.show{display:block}
   .why.bad{background:var(--bad-soft);border-color:var(--bad)}
   .actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:6px 0 20px}
   button.act{border:none;border-radius:10px;padding:10px 16px;font:inherit;font-weight:700;font-size:.85rem;cursor:pointer}
-  .b-restart{background:#e9ecf3;color:var(--ink)}.b-send{background:var(--good);color:#fff}
-  .done{display:none;background:linear-gradient(135deg,var(--accent),#4969e3);color:#fff;border-radius:14px;padding:18px;text-align:center;margin-bottom:12px}
+  .b-restart{background:var(--line);color:var(--ink)}.b-send{background:var(--good);color:var(--card)}
+  .done{display:none;background:linear-gradient(135deg,var(--accent),#4969e3);color:var(--card);border-radius:14px;padding:18px;text-align:center;margin-bottom:12px}
   .done.show{display:block}
   .done .pct{font-size:2.4rem;font-weight:800;line-height:1}
   .msg{display:none;text-align:center;font-weight:700;font-size:.85rem;margin:6px 0;padding:8px;border-radius:9px}
@@ -287,5 +288,6 @@ if(window.NIS_WORK) NIS_WORK.attach(Object.assign(
 ));
 
 </script>
+<script src="nis-tema.js?v=a9738cd9" defer></script>
 </body>
 </html>

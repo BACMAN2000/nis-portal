@@ -8,41 +8,43 @@
 <link href="vendor/fonts/montserrat-68a53b.css" rel="stylesheet">
 <link rel="preload" href="fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="nis-fonts.css?v=fd196882">
+<script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="nis-tokens.css?v=8e4add1e">
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
   body{font:15px/1.55 'Gotham',"Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    color:#0f172a;background:linear-gradient(180deg,#d1d2ea 0%,#f8fafc 60%,#fff 100%);min-height:100vh}
-  header{background:#fff;padding:12px 22px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;
-    box-shadow:0 4px 16px rgba(15,23,42,.06);position:sticky;top:0;z-index:10;border-bottom:1px solid #e2e8f0}
+    color:#0f172a;background:linear-gradient(180deg,#d1d2ea 0%,var(--bg) 60%,var(--card) 100%);min-height:100vh}
+  header{background:var(--card);padding:12px 22px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+    box-shadow:0 4px 16px rgba(15,23,42,.06);position:sticky;top:0;z-index:10;border-bottom:1px solid var(--line)}
   header img{display:block;height:38px;width:auto}
-  header .sub{color:#636465;font-size:13px;margin-left:auto;font-weight:600}
-  header a.back{margin-left:14px;text-decoration:none;background:#2d5a8d;color:#fff;font-weight:700;font-size:13px;padding:8px 14px;border-radius:9px;white-space:nowrap}
+  header .sub{color:var(--muted);font-size:13px;margin-left:auto;font-weight:600}
+  header a.back{margin-left:14px;text-decoration:none;background:#2d5a8d;color:var(--card);font-weight:700;font-size:13px;padding:8px 14px;border-radius:9px;white-space:nowrap}
   main{max-width:940px;margin:0 auto;padding:22px 18px}
   h1{font-size:22px;margin:0 0 6px}
-  p.lead{color:#475569;margin:0 0 16px}
+  p.lead{color:var(--muted);margin:0 0 16px}
   /* índice de saltos entre unidades */
   .jump{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 22px}
-  .jump a{text-decoration:none;background:#fff;border:1px solid #e2e8f0;color:#244c77;font-weight:700;font-size:12.5px;
+  .jump a{text-decoration:none;background:var(--card);border:1px solid var(--line);color:#244c77;font-weight:700;font-size:12.5px;
     padding:7px 13px;border-radius:20px;box-shadow:0 2px 8px rgba(15,23,42,.06)}
-  .jump a:hover{background:#eef2fb}
+  .jump a:hover{background:var(--bg)}
   /* cabecera de unidad */
   .unit{margin:0 0 30px;scroll-margin-top:74px}
   .uhead{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;padding-bottom:8px;margin-bottom:14px;
     border-bottom:2px solid #d1d2ea}
   .uhead h2{font-size:18px;color:#244c77}
-  .uhead .s{color:#636465;font-size:12.5px;font-weight:600}
+  .uhead .s{color:var(--muted);font-size:12.5px;font-weight:600}
   .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-  .card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:24px 20px;
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 20px;
     box-shadow:0 8px 24px rgba(15,23,42,.08);text-align:center;color:inherit;display:block;text-decoration:none;transition:.15s}
   a.card:hover{transform:translateY(-3px)}
   .card.soon{opacity:.7}
   .card .ico{font-size:2.7rem;line-height:1}
   .card h3{font-size:17px;margin:9px 0 4px;color:#2d5a8d}
-  .card .desc{color:#475569;font-size:13px;margin:0 0 12px}
+  .card .desc{color:var(--muted);font-size:13px;margin:0 0 12px}
   .card .wk{display:block;font-size:10.5px;letter-spacing:1.4px;text-transform:uppercase;color:#8a97a8;font-weight:700;margin-bottom:2px}
   .tag{display:inline-block;background:#d1d2ea;color:#244c77;font-weight:700;font-size:12px;padding:5px 12px;border-radius:14px;margin:2px}
-  .tag.go{background:#2d5a8d;color:#fff}
-  .footer{color:#475569;font-size:12px;text-align:center;padding:22px 0 32px}
+  .tag.go{background:#2d5a8d;color:var(--card)}
+  .footer{color:var(--muted);font-size:12px;text-align:center;padding:22px 0 32px}
 </style>
 <script src="nis-nav.js?v=c3230c7d"></script>
 <script src="config.js?v=68725f64"></script>
@@ -155,5 +157,6 @@ document.getElementById('units').innerHTML=units.map(u=>`
     }).join('')}</div>
   </section>`).join('');
 </script>
+<script src="nis-tema.js?v=a9738cd9" defer></script>
 </body>
 </html>

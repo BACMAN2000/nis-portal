@@ -12,8 +12,10 @@ tailwind.config = { theme: { extend: { colors: {
 </script>
 <link rel="preload" href="../fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../nis-fonts.css?v=fd196882">
+<script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="stylesheet" href="../nis-tokens.css?v=8e4add1e">
 <style>
-  body{font-family:'Gotham',system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:#F0F4FA}
+  body{font-family:'Gotham',system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg)}
   .card-shadow{box-shadow:0 4px 18px -6px rgba(31,78,121,.18)}
   @keyframes pulse-ring{0%{transform:scale(.9);opacity:.7}70%{transform:scale(1.6);opacity:0}100%{opacity:0}}
   .rec-ring{animation:pulse-ring 1.4s cubic-bezier(.2,.6,.4,1) infinite}
@@ -31,7 +33,7 @@ tailwind.config = { theme: { extend: { colors: {
   svg .part{cursor:help}
   svg .part:hover{filter:brightness(.9) saturate(1.25)}
   svg .lead{stroke:#9AA8B8;stroke-width:.8}
-  svg .lbl{font-size:8.5px;font-weight:700;fill:#5A6B80}
+  svg .lbl{font-size:8.5px;font-weight:700;fill:var(--muted)}
   svg .ldot{fill:#9AA8B8}
 </style>
   <meta name="google" content="notranslate">
@@ -518,5 +520,6 @@ function testPair(pr){
 if(window.speechSynthesis) speechSynthesis.getVoices();
 render();
 </script>
+<script src="../nis-tema.js?v=a9738cd9" defer></script>
 </body>
 </html>
