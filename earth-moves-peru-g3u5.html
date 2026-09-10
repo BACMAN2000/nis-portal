@@ -58,6 +58,19 @@
   table.data td{border-bottom:1px solid #efe7dd; padding:8px 10px; vertical-align:top;}
   table.data tr:last-child td{border-bottom:none;}
   .wrapscroll{overflow-x:auto;}
+  /* Fotos y grabados de la unidad. Todas de Wikimedia Commons: dominio publico o
+     Creative Commons, y el credito va DEBAJO DE CADA UNA, no en una lista al final.
+     Las tres CC (Yungay hoy, la mochila y su contenido) obligan a citar al autor:
+     si alguien quita el figcaption, deja de poder usarse la imagen. */
+  .gal{display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:12px; margin:14px 0;}
+  figure.ph{margin:0; background:var(--bg); border-radius:12px; overflow:hidden;}
+  figure.ph img{width:100%; display:block; aspect-ratio:4/3; object-fit:cover;}
+  figure.ph.wide img{aspect-ratio:auto; object-fit:contain;}
+  figure.ph figcaption{padding:8px 10px; font-size:.76rem; line-height:1.35; color:var(--muted);}
+  figure.ph figcaption b{color:var(--ink); display:block; font-size:.86rem; margin-bottom:2px;}
+  figure.ph .cred{display:block; margin-top:4px; font-size:.68rem; opacity:.85;}
+  .gal2{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:14px; margin:14px 0;}
+  .gal2 figure.ph img{aspect-ratio:auto;}
   .bars{display:flex; align-items:flex-end; gap:14px; height:200px; margin:16px 0 6px; padding:0 4px;}
   .bars .b{flex:1; display:flex; flex-direction:column; justify-content:flex-end; align-items:center; height:100%;}
   .bars .col{width:100%; background:linear-gradient(180deg,#b95518,#712f11); border-radius:8px 8px 0 0;
@@ -176,6 +189,51 @@ const QUAKES = [
   { year:2007, place:'Pisco and Ica', mag:'8.0', bar:8.0, tsu:'Small',
     note:'About 600 people died and around 48,000 houses fell down. After this earthquake Peru changed the way it prepares for disasters.' }
 ];
+
+/* ---------- fotos y grabados --------------------------------------------
+   Conseguidas el 10-sep-2026 en Wikimedia Commons, comprobando la licencia
+   archivo por archivo con la API antes de bajarlas. Estan reducidas a 1400 px
+   de ancho: las once juntas pesan menos que UNA portada de unidad.
+   OJO con dos titulos que mienten en Commons y que aqui se descartaron: un
+   cuadro llamado "Catedral de Lima 1746" que retrata los danos de 1687, y tres
+   archivos "Terremoto Arequipa 2001" que son shakemaps del USGS (y uno de ellos,
+   de otro sismo: el del 7 de julio). Comprobar la descripcion, no el nombre. */
+const IMG = 'assets/g3-u5/';
+const FOTOS_Q = [
+  { y:1746, f:'lima-1746-plano-antes.jpg',
+    t:'The city the sea found',
+    d:'Lima drawn in Italy, "as it was before it was destroyed by the last earthquake".',
+    c:'Public domain \u00b7 David Rumsey Map Collection' },
+  { y:1868, f:'arica-1868-maremoto-grabado.jpg',
+    t:'Submersion of Arica',
+    d:'A wood engraving of the wave coming in over the port. Arica was Peru then.',
+    c:'Public domain' },
+  { y:1970, f:'yungay-1970-cristo-cementerio.jpg',
+    t:'The cemetery hill',
+    d:'Everything is rubble and the statue is still standing. The people who ran up here lived.',
+    c:'U.S. Geological Survey \u00b7 public domain' },
+  { y:2001, f:'camana-2001-valle-desde-el-espacio.jpg',
+    t:'Camana from space',
+    d:'Flat, green and next to the sea, with nowhere flat to run to. Higher, not further.',
+    c:'NASA \u00b7 public domain' },
+  { y:2007, f:'pisco-2007-calle-casas-caidas.jpg',
+    t:'A street in Pisco',
+    d:'August 2007. Around 48,000 houses fell down like these ones.',
+    c:'U.S. Navy \u00b7 public domain' }
+];
+
+function figura(f, titulo, desc, cred, cls){
+  return '<figure class="ph' + (cls ? ' ' + cls : '') + '">' +
+    '<img src="' + IMG + f + '" alt="' + esc(titulo) + '" loading="lazy">' +
+    '<figcaption><b>' + esc(titulo) + '</b>' + esc(desc) +
+    '<span class="cred">' + esc(cred) + ' \u00b7 Wikimedia Commons</span></figcaption></figure>';
+}
+
+function galeriaQuakes(){
+  return '<div class="gal">' + FOTOS_Q.map(function(p){
+    return figura(p.f, p.y + ' \u2014 ' + p.t, p.d, p.c);
+  }).join('') + '</div>';
+}
 
 /* ---------- esquemas -----------------------------------------------------
    Van dibujados, no generados. El contorno del Peru sale de la frontera de
@@ -349,6 +407,12 @@ function viewNumbers(){
     '<div class="wrapscroll"><table class="data"><thead><tr>' +
       '<th>Year</th><th>Where</th><th>Magnitude</th><th>Tsunami</th><th>What happened</th>' +
     '</tr></thead><tbody>' + rows + '</tbody></table></div>' +
+    '<h3>The five, in pictures</h3>' +
+    '<p class="small muted">Two of them are engravings: in 1746 and in 1868 nobody had a camera yet.</p>' +
+    galeriaQuakes() +
+    figura('yungay-1970-recorrido-aluvion.jpg', 'Yungay today',
+      'The town was under this. Now it is a field, and the cemetery hill is on the right.',
+      'Uwebart \u00b7 CC BY-SA 3.0', 'wide') +
     '<h3>The same numbers in a chart</h3>' +
     '<div class="bars">' + bars + '</div>' +
     '<p class="small muted" style="text-align:center">Magnitude (moment magnitude scale). The 1868 earthquake is a ' +
@@ -411,6 +475,15 @@ function viewTsunami(){
     '<div class="note"><b>What SISMATE is — and what it is not.</b> SISMATE sends a message and a loud sound to the ' +
     'phones of a whole zone in an emergency. But it does <b>not</b> tell you before an earthquake: no machine in the ' +
     'world can do that today. Your plan and your legs are the alarm.</div>' +
+    '<div class="gal2">' +
+      figura('arica-1868-grabado-melbourne.jpg', 'The news crossed the ocean',
+        'This was printed in Australia in November 1868, about a wave in Peru. The waves crossed the '+
+        'Pacific too. Look at where the people are running: away from the sea, and up.',
+        'C. T. Winter, The Illustrated Melbourne Post \u00b7 public domain') +
+      figura('arica-1868-barco-wateree.jpg', 'A ship on dry land',
+        'The USS Wateree was in the sea at Arica. After the wave it was here, and it never sailed again.',
+        'USMC Archives \u00b7 CC BY 2.0') +
+    '</div>' +
     '<h3>Put the five steps in order</h3>' +
     '<p class="small muted">Touch them in the right order. Touch again to take one out.</p>' +
     '<div class="steps">' + steps + '</div>' +
@@ -434,6 +507,15 @@ function viewKit(){
       '<div><b>8 kg</b><span>the maximum weight</span></div>' +
       '<div><b>1 litre</b><span>of water for every person</span></div>' +
       '<div><b>24 h</b><span>what it has to cover</span></div>' +
+    '</div>' +
+    '<div class="gal2">' +
+      figura('mochila-defensa-civil-lima.jpg', 'This is the backpack',
+        'The one Defensa Civil hands out in Lima, with the blanket rolled underneath. By the door, ready.',
+        'Estefanych \u00b7 CC BY-SA 4.0') +
+      figura('mochila-contenido-real-peru.jpg', 'And this is what is inside one',
+        'A real one, in a Peruvian house: tinned milk, tinned fish, crackers, rice, water, a first-aid box, '+
+        'a blanket. Three things from your list are missing here. Which ones?',
+        'ValverdeOrbegozo \u00b7 CC BY-SA 4.0') +
     '</div>' +
     '<h3>Choose the 8 things that go in the backpack</h3>' +
     '<p class="small muted">Six of these fourteen things must <b>not</b> go in. Choose carefully — the space is small.</p>' +
