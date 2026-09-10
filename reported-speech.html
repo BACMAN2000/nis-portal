@@ -214,6 +214,6 @@ function _pickEn(){ try{ var vs=speechSynthesis.getVoices(); _enVoice=vs.find(fu
 if('speechSynthesis' in window){ _pickEn(); try{ speechSynthesis.onvoiceschanged=_pickEn; }catch(e){} }
 function speakEN(t){ if(!t||!('speechSynthesis' in window))return; var u=new SpeechSynthesisUtterance(t); u.lang='en-GB'; if(_enVoice)u.voice=_enVoice; u.rate=0.95; try{speechSynthesis.cancel();}catch(e){} speechSynthesis.speak(u); }
 </script>
-<script src="nis-tema.js?v=a9738cd9" defer></script>
+<script src="nis-tema.js?v=469a5ee4" defer></script>
 </body>
 </html>
