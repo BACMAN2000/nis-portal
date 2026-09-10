@@ -230,7 +230,7 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px soli
 <script src="config.js?v=68725f64"></script>
 <script src="activities-data.js?v=e0f3c821"></script>
 <script src="class-files.js?v=1a59ee7e"></script>
-<script src="unit-plans.js?v=72852dd5"></script>
+<script src="unit-plans.js?v=f0f82814"></script>
 <script src="writing-rubrics.js?v=ec0449a5"></script>
 <script src="project-arcs.js?v=110db8f3"></script>
 <script src="nis-nav.js?v=c3230c7d"></script>
@@ -333,6 +333,7 @@ function pinta(){
         <div style="flex:1">
           <h3>${esc(w.title)}</h3><p>${esc(w.desc)}</p>
           ${w.give?`<div class="give">You hand in: ${esc(w.give)}</div>`:''}
+          ${capituloSemana(w.n)}
           ${sesionesSemana(w.n)}
           ${horaCambridge(w)}
           ${juegosSemana(w.n)}
@@ -376,6 +377,7 @@ function pinta(){
       &#128506;&#65039; Unit slides &mdash; download</a>`:''}
   </div>`:''}
 
+  ${bloqueLibro()}
   <div class="sec-title"><h2>&#127919; What you will produce</h2><span class="hint">This is the point of the unit — everything else feeds it.</span></div>
   <div class="grid2">
     ${U.deliverables.map(d=>`<div class="prod">
@@ -525,6 +527,24 @@ function chips(games){
   return `<div class="acts">${games.map(g=>
     `<a class="act" href="${esc(g.href)}" title="${esc(g.desc||'')}">${g.icon||'&#127918;'} ${esc(g.title.replace(/\s+—\s+(Week \d+|Unit \d+)$/,''))}</a>`
   ).join('')}</div>`;
+}
+/* El libro de la unidad (U.book en unit-plans.js): va en la portada, que es lo
+   primero que se ve, y cada semana enlaza su capitulo. Los cuadernillos A4 y el
+   solucionario solo los ve el profesor. */
+function bloqueLibro(){
+  const B = U.book; if(!B) return '';
+  const pdfs = (B.pdfs||[]).filter(p=>!p.teacher || esProfe)
+    .map(p=>`<a class="deck-chip" href="${esc(p.href)}" target="_blank" rel="noopener">&#128424; ${esc(p.label)}</a>`).join(' ');
+  return `<div class="sec-title"><h2>&#128214; Your unit book</h2><span class="hint">Read it online or print it.</span></div>
+  <div class="card" style="margin-bottom:18px">
+    <a class="tool" href="${esc(B.href)}"><span class="ico">&#128214;</span><span><b>${esc(B.title)} &mdash; read online</b><small>${esc(B.desc)}</small></span></a>
+    ${pdfs?`<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px">${pdfs}</div>`:''}
+  </div>`;
+}
+function capituloSemana(n){
+  const B = U.book; if(!B || !B.chapters || !B.chapters[n]) return '';
+  return `<div class="acts">${B.chapters[n].map(c=>
+    `<a class="act" href="${esc(B.href)}#ch=${c}">&#128214; Read chapter ${c} of the book</a>`).join('')}</div>`;
 }
 function juegosSemana(n){
   const w = semanaActividades(n);

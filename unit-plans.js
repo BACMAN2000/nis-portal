@@ -726,6 +726,19 @@ window.UNIT_PLANS = {
   audience:'A family in your street who has never thought about this. They will not read a report: they will read your flyer while the ground is moving, or they will not read it at all.',
   client:'The families of the school \u00b7 safety fair in week 11',
   reader:{title:'Earthquakes, Volcanoes and Tsunamis', series:'Raz-Plus \u00b7 Lexile 730L', term:3, inPortal:false},
+  /* El libro de la unidad (readers/when-the-earth-moves/): un capitulo por semana.
+     `chapters` dice que capitulo toca en cada semana (el 5, volcanes, es de enlace
+     con Science y va en la W4). unit.html lo pinta en la portada y en cada semana. */
+  book:{href:'readers/when-the-earth-moves/index.html', title:'When the Earth Moves',
+        desc:'Your unit book: one chapter for every week, in three editions (Starters, Movers, Flyers), with real photos of Peru, 3D models and activities.',
+        pdfs:[{label:'Starters PDF', href:'readers/when-the-earth-moves/When_the_Earth_Moves_Starters.pdf'},
+              {label:'Movers PDF', href:'readers/when-the-earth-moves/When_the_Earth_Moves_Movers.pdf'},
+              {label:'Flyers PDF', href:'readers/when-the-earth-moves/When_the_Earth_Moves_Flyers.pdf'},
+              {label:'Starters booklet', href:'readers/when-the-earth-moves/When_the_Earth_Moves_Starters_booklet.pdf', teacher:true},
+              {label:'Movers booklet', href:'readers/when-the-earth-moves/When_the_Earth_Moves_Movers_booklet.pdf', teacher:true},
+              {label:'Flyers booklet', href:'readers/when-the-earth-moves/When_the_Earth_Moves_Flyers_booklet.pdf', teacher:true},
+              {label:'Teacher\u2019s key', href:'readers/when-the-earth-moves/When_the_Earth_Moves_Teachers_Key.pdf', teacher:true}],
+        chapters:{1:[1],2:[2],3:[3],4:[4,5],5:[6],6:[7],7:[8],8:[9],9:[10],10:[11],11:[12]}},
   exam:{target:'movers', themes:['The world around us','Health','Places and directions','Time'],
         grammar:['must / must not','should','have to','imperatives','past simple: was, were and -ed'],
         extra:['earthquake','tsunami','landslide','flood','plate','safe zone','drill','shelter','whistle','torch','blanket','headache','bruise'],

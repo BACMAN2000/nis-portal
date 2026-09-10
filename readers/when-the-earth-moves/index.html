@@ -1949,8 +1949,16 @@ earthquake. But a family that is ready will not be caught by surprise.</p></div>
   }, {rootMargin: '200px'}) : null;
   function observeModels(art){ if (!io) return; art.querySelectorAll('.m3d').forEach(function(b){ io.observe(b); }); }
 
+  // #ch=N (from the unit page) opens chapter N in the edition the child is using
+  function goHash(){
+    var m = /ch=(\d+)/.exec(location.hash || ''); if (!m) return;
+    var sec = document.querySelector('article.edition:not([hidden]) section[data-ch="' + m[1] + '"]');
+    if (sec) setTimeout(function(){ sec.scrollIntoView(); }, 50);
+  }
+  window.addEventListener('hashchange', goHash);
   var saved = null; try { saved = localStorage.getItem(KEY); } catch(e){}
   setEd(saved && COLORS[saved] ? saved : 'm', true);
+  goHash();
 })();
 </script>
 </body>
