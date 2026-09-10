@@ -9,7 +9,10 @@
    Las rutas son relativas a ESTE archivo, asi que funcionan igual desde una
    subcarpeta (mocks-cambridge/, nis-fun/) mientras el enlace apunte aqui.     */
 
-@font-face{font-family:'Gotham';src:url('fonts/GothamBook.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
-@font-face{font-family:'Gotham';src:url('fonts/GothamMedium.ttf') format('truetype');font-weight:500;font-style:normal;font-display:swap}
-@font-face{font-family:'Gotham';src:url('fonts/GothamBold.ttf') format('truetype');font-weight:700;font-style:normal;font-display:swap}
-@font-face{font-family:'Gotham';src:url('fonts/GothamBookItalic.ttf') format('truetype');font-weight:400;font-style:italic;font-display:swap}
+/* WOFF2 primero y el TTF de reserva: la misma letra pesa 74 KB en vez de 198,
+   y el navegador que no entienda WOFF2 -practicamente ninguno ya- sigue
+   teniendo su archivo. */
+@font-face{font-family:'Gotham';src:url('fonts/GothamBook.woff2') format('woff2'),url('fonts/GothamBook.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Gotham';src:url('fonts/GothamMedium.woff2') format('woff2'),url('fonts/GothamMedium.ttf') format('truetype');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Gotham';src:url('fonts/GothamBold.woff2') format('woff2'),url('fonts/GothamBold.ttf') format('truetype');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'Gotham';src:url('fonts/GothamBookItalic.woff2') format('woff2'),url('fonts/GothamBookItalic.ttf') format('truetype');font-weight:400;font-style:italic;font-display:swap}
