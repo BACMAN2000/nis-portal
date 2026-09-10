@@ -34,17 +34,18 @@ if(/\.github\.io$/i.test(location.hostname)){
   }catch(e){}
 })();
 </script>
+<link rel="stylesheet" href="../nis-fonts.css?v=0713cbd8">
 <style>
   :root{
-    --bg:#0f172a; --card:#fff; --ink:#0f172a; --muted:#475569;
-    --brand:#0ea5e9; --ok:#16a34a; --bad:#dc2626; --warn:#f59e0b;
-    --line:#e2e8f0; --soft:#f1f5f9;
+    --bg:#0f172a; --card:#ffffff; --ink:#1e2433; --muted:#475569;
+    --brand:#0ea5e9; --ok:#16a34a; --bad:#e03131; --warn:#f59e0b;
+    --line:#e2e8f0; --soft:#e7ecfd;
     --shadow:0 8px 24px rgba(15,23,42,.08), 0 2px 6px rgba(15,23,42,.06);
   }
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}
   body{
-    font:15px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    font:15px/1.55 'Gotham',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
     color:var(--ink); background:linear-gradient(180deg,#eef2ff 0%,#f8fafc 60%,#fff 100%);
     min-height:100vh;
   }
@@ -280,6 +281,12 @@ if(/\.github\.io$/i.test(location.hostname)){
         font-size:1rem;padding:4px 9px;line-height:1.2}
 .ev-say:hover{background:#e2e8f0}
 .ev-more{color:#64748b;font-size:.85rem;margin:8px 0 0}
+
+/* Foco de teclado: se apaga el marco del navegador en varios sitios de esta
+   pagina, asi que aqui se pone uno propio; sin el, quien navega con Tab no
+   ve donde esta. */
+:focus-visible{outline:3px solid #3b5bdb;outline-offset:2px}
+input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #3b5bdb;outline-offset:1px}
 </style>
 <script>
 /* ---------- vocabulario del examen (solo en RESULTADOS) ----------

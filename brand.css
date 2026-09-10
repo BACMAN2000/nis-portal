@@ -217,3 +217,7 @@ button:focus-visible{outline:3px solid var(--blue-d);outline-offset:2px}
 .plan-grid tr:hover td:first-child{background:#f5f8ff}
 .plan-note{width:100%;min-height:54px;border:1px solid var(--line);border-radius:var(--r-sm);padding:8px 10px;font:inherit;font-size:.86rem;resize:vertical}
 .epi-tag{display:inline-block;background:#ede9fe;color:#5b21b6;border-radius:999px;padding:2px 9px;font-size:.72rem;font-weight:700;letter-spacing:.04em}
+
+/* Foco de teclado, para todo lo que no tenga una regla propia mas arriba.
+   Varias paginas apagan el outline del navegador; este lo devuelve visible. */
+:focus-visible{outline:3px solid var(--blue-d);outline-offset:2px}

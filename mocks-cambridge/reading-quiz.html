@@ -42,8 +42,8 @@ if(/\.github\.io$/i.test(location.hostname)){
 <script src="../vendor/html2pdf.bundle.min.js" defer></script>
 <style>
   :root{
-    --bg:#f8fafc; --card:#ffffff; --accent:#4987c6; --accent2:#2d5a8d;
-    --good:#16a34a; --bad:#ef4444; --text:#0f172a; --muted:#636465; --line:#e2e8f0;
+    --bg:#f4f6fb; --card:#ffffff; --accent:#4987c6; --accent2:#2d5a8d;
+    --good:#2f9e44; --bad:#ef4444; --text:#0f172a; --muted:#636465; --line:#e2e8f0;
     --soft:#d1d2ea;
   }
   *{box-sizing:border-box;margin:0;padding:0;font-family:"Montserrat","Segoe UI",system-ui,sans-serif}
@@ -387,6 +387,12 @@ if(/\.github\.io$/i.test(location.hostname)){
         font-size:1rem;padding:4px 9px;line-height:1.2}
 .ev-say:hover{background:#e2e8f0}
 .ev-more{color:#64748b;font-size:.85rem;margin:8px 0 0}
+
+/* Foco de teclado: se apaga el marco del navegador en varios sitios de esta
+   pagina, asi que aqui se pone uno propio; sin el, quien navega con Tab no
+   ve donde esta. */
+:focus-visible{outline:3px solid #3b5bdb;outline-offset:2px}
+input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #3b5bdb;outline-offset:1px}
 </style>
 <script>
 /* ---------- vocabulario del examen (solo en RESULTADOS) ----------

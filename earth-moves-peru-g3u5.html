@@ -4,13 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Earthquakes &amp; Tsunamis in Peru — When the Earth Moves · 3rd grade</title>
+<link rel="stylesheet" href="nis-fonts.css?v=0713cbd8">
 <style>
-  :root{ --bg:#f6f3ee; --card:#ffffff; --ink:#2f2a26; --muted:#7d7166;
+  :root{ --bg:#f4f6fb; --card:#ffffff; --ink:#1e2433; --muted:#7d7166;
     --accent:#c9541f; --accent-soft:#fde6d8; --blue:#2b5ea8; --blue-soft:#dfeaf9;
     --good:#2f9e44; --good-soft:#d3f4dc; --bad:#e03131; --bad-soft:#ffe3e3;
     --gold:#f59f00; --gold-soft:#fff4d6; }
   *{box-sizing:border-box; margin:0; padding:0;}
-  body{font-family:'Segoe UI',system-ui,Arial,sans-serif; background:var(--bg); color:var(--ink);
+  body{font-family:'Gotham','Segoe UI',system-ui,Arial,sans-serif; background:var(--bg); color:var(--ink);
        padding:18px 14px 70px; line-height:1.5;}
   .topnav{position:sticky; top:0; z-index:30; background:#fff; display:flex; align-items:center; gap:12px;
     flex-wrap:wrap; padding:10px 18px; box-shadow:0 2px 10px rgba(60,40,20,.10); margin:-18px -14px 16px;}
@@ -106,6 +107,12 @@
   footer{max-width:960px; margin:22px auto 0; text-align:center; color:var(--muted); font-size:.76rem;}
   @media (max-width:520px){ body{padding:10px 8px 60px;} .topnav{margin:-10px -8px 12px; padding:8px 12px;}
     .card{padding:15px 14px;} .bars{height:160px; gap:8px;} }
+
+/* Foco de teclado: se apaga el marco del navegador en varios sitios de esta
+   pagina, asi que aqui se pone uno propio; sin el, quien navega con Tab no
+   ve donde esta. */
+:focus-visible{outline:3px solid #3b5bdb;outline-offset:2px}
+input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #3b5bdb;outline-offset:1px}
 </style>
 <meta name="google" content="notranslate">
 <script src="ui-mensajes.js?v=18d6c1e2"></script>

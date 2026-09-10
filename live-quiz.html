@@ -4,16 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>NIShoot Live · NIS</title>
+<link rel="stylesheet" href="nis-fonts.css?v=0713cbd8">
 <style>
 :root{
-  --navy:#142a4a; --deep:#0d1d33; --blue:#4987c6; --celeste:#76cbe5;
-  --bg:#eef1f8; --ink:#1d2733; --line:#e3e8f0; --card:#fff;
+  --navy:#0d1d33; --deep:#0d1d33; --blue:#4987c6; --celeste:#76cbe5;
+  --bg:#f4f6fb; --ink:#1e2433; --line:#e2e8f0; --card:#ffffff;
   --c0:#e8443b; --c1:#2367c9; --c2:#e6a417; --c3:#20955c;
-  --ok:#20955c; --bad:#e8443b;
+  --ok:#16a34a; --bad:#e03131;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 html,body{margin:0;height:100%;}
-body{font-family:"Segoe UI",system-ui,-apple-system,sans-serif;color:var(--ink);
+body{font-family:'Gotham',"Segoe UI",system-ui,-apple-system,sans-serif;color:var(--ink);
   background:radial-gradient(130% 120% at 50% -10%,#1b3a63,#0d1d33);min-height:100%;}
 h1,h2,h3{margin:0;line-height:1.1;font-weight:800;}
 button{font-family:inherit;cursor:pointer;border:none;}
@@ -134,6 +135,12 @@ input.in:focus{border-color:var(--blue);}
 .qz .ico{font-size:30px;}
 .qz b{display:block;color:var(--navy);font-size:17px;}
 .qz small{color:#6a7484;}
+
+/* Foco de teclado: se apaga el marco del navegador en varios sitios de esta
+   pagina, asi que aqui se pone uno propio; sin el, quien navega con Tab no
+   ve donde esta. */
+:focus-visible{outline:3px solid #3b5bdb;outline-offset:2px}
+input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #3b5bdb;outline-offset:1px}
 </style>
 <script src="config.js?v=68725f64"></script>
 </head>

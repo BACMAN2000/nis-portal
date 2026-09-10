@@ -7,6 +7,7 @@
 <meta name="google" content="notranslate">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link href="vendor/fonts/montserrat-68a53b.css" rel="stylesheet">
+<link rel="stylesheet" href="nis-fonts.css?v=0713cbd8">
 <style>
 /* Gotham when the portal serves it (or when it is installed locally),
    Montserrat as the web fallback — same lockup as the rest of the portal. */
@@ -16,14 +17,14 @@
 :root{
   --blue:#4987C6; --blue-d:#2F5F93; --blue-dd:#244C77;
   --lila:#D1D2EA; --lila-50:#EDEEF9; --celeste:#76CBE5; --puce:#D2909B; --grey:#636465;
-  --ink:#1B2733; --muted:#5A6B7D; --line:#E2E8F0;
-  --ok:#16A34A; --ok-soft:#E7F7EC; --bad:#DC2626; --bad-soft:#FDECEC;
-  --gold:#F59E0B; --paper:#fff;
+  --ink:#1e2433; --muted:#67718a; --line:#E2E8F0;
+  --ok:#16A34A; --ok-soft:#E7F7EC; --bad:#e03131; --bad-soft:#ffe3e3;
+  --gold:#f59f00; --paper:#fff;
   --sans:'Gotham','Montserrat',system-ui,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
   --r:16px;
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-body{font:15px/1.55 var(--sans);color:var(--ink);
+body{font:15px/1.55 'Gotham',var(--sans);color:var(--ink);
   background:linear-gradient(180deg,var(--lila) 0%,#F6F8FC 55%,#fff 100%);min-height:100vh;padding-bottom:30px}
 
 /* ---------- top bar ---------- */
@@ -205,6 +206,12 @@ footer a{color:var(--blue-d);font-weight:700}
   .qtext{font-size:1rem}
   .tline input{min-width:150px}
 }
+
+/* Foco de teclado: se apaga el marco del navegador en varios sitios de esta
+   pagina, asi que aqui se pone uno propio; sin el, quien navega con Tab no
+   ve donde esta. */
+:focus-visible{outline:3px solid #3b5bdb;outline-offset:2px}
+input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #3b5bdb;outline-offset:1px}
 </style>
 <script src="nis-nav.js?v=c3230c7d"></script>
 <script src="activity-save.js?v=7bdace9a"></script>

@@ -7,10 +7,11 @@
 <title>Reader Exams — Portal NIS</title>
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link href="vendor/fonts/montserrat-a93118.css" rel="stylesheet">
+<link rel="stylesheet" href="nis-fonts.css?v=0713cbd8">
 <style>
-  :root{ --blue:#1d6fb8; --blue-d:#154e7f; --ink:#0f172a; --muted:#64748b; --line:#e2e8f0; --gold:#b8934a }
+  :root{ --blue:#1d6fb8; --blue-d:#154e7f; --ink:#1e2433; --muted:#67718a; --line:#e2e8f0; --gold:#b8934a }
   *{ box-sizing:border-box; margin:0 }
-  body{ font-family:'Montserrat',system-ui,sans-serif; background:#f1f5f9; color:var(--ink); min-height:100vh }
+  body{ font-family:'Gotham','Montserrat',system-ui,sans-serif; background:#f1f5f9; color:var(--ink); min-height:100vh }
   header{ background:#fff; border-bottom:1px solid var(--line); padding:10px 18px; display:flex; gap:14px; align-items:center;
     position:sticky; top:0; z-index:20 }
   header img{ height:34px }
@@ -104,6 +105,12 @@
   .band{ font-size:1.3rem; font-weight:800; margin:6px 0 }
   .center{ text-align:center }
   .muted{ color:var(--muted) }
+
+/* Foco de teclado: se apaga el marco del navegador en varios sitios de esta
+   pagina, asi que aqui se pone uno propio; sin el, quien navega con Tab no
+   ve donde esta. */
+:focus-visible{outline:3px solid #3b5bdb;outline-offset:2px}
+input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #3b5bdb;outline-offset:1px}
 </style>
 <script src="ui-mensajes.js?v=18d6c1e2"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>

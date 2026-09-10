@@ -4,11 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Virtual Writing Tutor · NIS English</title>
+<link rel="stylesheet" href="nis-fonts.css?v=0713cbd8">
 <style>
-  :root{--bg:#eef1f9;--card:#fff;--ink:#1e2433;--muted:#67718a;--accent:#3b5bdb;--accent-d:#2d4ac0;
+  :root{--bg:#f4f6fb;--card:#ffffff;--ink:#1e2433;--muted:#67718a;--accent:#3b5bdb;--accent-d:#2d4ac0;
     --soft:#e7ecfd;--good:#2f9e44;--good-soft:#d3f4dc;--warn:#e8590c;--gold:#f59f00;--line:#e2e8f0;}
   *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:'Segoe UI',system-ui,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+  body{font-family:'Gotham','Segoe UI',system-ui,Arial,sans-serif;background:var(--bg);color:var(--ink)}
   header{background:#fff;padding:12px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;
     box-shadow:0 3px 14px rgba(15,23,42,.06);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
   header h1{font-size:1.15rem}
@@ -92,6 +93,12 @@
   .lab .body{padding:0 11px 11px;font-size:.82rem;line-height:1.5;color:var(--ink)}
   .lab table{width:100%;border-collapse:collapse;font-size:.78rem;margin-top:2px}
   .lab td{border:1px solid var(--line);padding:5px 7px;vertical-align:top}
+
+/* Foco de teclado: se apaga el marco del navegador en varios sitios de esta
+   pagina, asi que aqui se pone uno propio; sin el, quien navega con Tab no
+   ve donde esta. */
+:focus-visible{outline:3px solid #3b5bdb;outline-offset:2px}
+input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #3b5bdb;outline-offset:1px}
 </style>
 <script src="ui-mensajes.js?v=18d6c1e2"></script>
 <script src="nis-nav.js?v=c3230c7d"></script>

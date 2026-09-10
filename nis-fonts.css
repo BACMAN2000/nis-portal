@@ -1,0 +1,15 @@
+/* ===== Gotham: la tipografia de Nordic =====
+
+   brand.css ya la declara, pero solo 9 de las 345 paginas del portal cargan
+   brand.css: el resto arrancaba con 'Segoe UI', es decir, con la letra por
+   defecto de Windows. Este archivo trae solo las caras, sin ningun componente,
+   para que cualquier pagina pueda vestirse de la marca sin arrastrar estilos
+   que le pisen la maquetacion.
+
+   Las rutas son relativas a ESTE archivo, asi que funcionan igual desde una
+   subcarpeta (mocks-cambridge/, nis-fun/) mientras el enlace apunte aqui.     */
+
+@font-face{font-family:'Gotham';src:url('fonts/GothamBook.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Gotham';src:url('fonts/GothamMedium.ttf') format('truetype');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Gotham';src:url('fonts/GothamBold.ttf') format('truetype');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'Gotham';src:url('fonts/GothamBookItalic.ttf') format('truetype');font-weight:400;font-style:italic;font-display:swap}

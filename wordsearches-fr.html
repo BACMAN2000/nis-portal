@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Word Search (Français) — Portal NIS</title>
+<link rel="stylesheet" href="nis-fonts.css?v=0713cbd8">
 <style>
-  :root{--bg:#f4f6fb;--card:#fff;--ink:#1e2433;--muted:#67718a;--accent:#3b5bdb;--accent-soft:#e7ecfd;
+  :root{--bg:#f4f6fb;--card:#ffffff;--ink:#1e2433;--muted:#67718a;--accent:#3b5bdb;--accent-soft:#e7ecfd;
     --good:#2f9e44;--good-soft:#d3f4dc;--gold:#f59f00;
     --f1:#ffd8a8;--f2:#b2f2bb;--f3:#a5d8ff;--f4:#fcc2d7;--f5:#d0bfff;--f6:#ffec99;--f7:#c3fae8;--f8:#ffd6a5;}
   *{box-sizing:border-box;margin:0;padding:0}
-  body{-webkit-touch-callout:none;font-family:'Segoe UI',system-ui,Arial,sans-serif;background:var(--bg);color:var(--ink);padding:14px;user-select:none;-webkit-user-select:none}
+  body{-webkit-touch-callout:none;font-family:'Gotham','Segoe UI',system-ui,Arial,sans-serif;background:var(--bg);color:var(--ink);padding:14px;user-select:none;-webkit-user-select:none}
   header{max-width:1150px;margin:0 auto 6px;text-align:center}
   header h1{font-size:1.35rem}
   header p{color:var(--muted);font-size:.85rem;margin-top:3px}
@@ -25,7 +26,7 @@
   .board{max-width:100%;background:var(--card);border-radius:14px;padding:12px;box-shadow:0 2px 10px rgba(20,30,60,.08);overflow:auto}
   .gridbox{display:grid;gap:2px;touch-action:none}
   .cell{width:var(--cs);height:var(--cs);display:flex;align-items:center;justify-content:center;background:var(--accent-soft);border-radius:4px;font-weight:800;font-size:calc(var(--cs)*.5);cursor:pointer}
-  .cell.sel{background:#94a8f5;color:#fff}
+  .cell.sel{background:#4c63c9;color:#fff}
   .cell.found{color:#1e2433}
   .info{color:var(--muted);font-size:.78rem;margin-top:8px}
   .lifebar{margin-top:8px;font-weight:800;font-size:1rem;display:flex;gap:14px;align-items:center;flex-wrap:wrap}

@@ -10,9 +10,10 @@
 <script src="ui-mensajes.js?v=18d6c1e2"></script>
 <script src="config.js?v=68725f64"></script>
 <script src="anticheat.js?v=f2bd3ba6"></script>
+<link rel="stylesheet" href="nis-fonts.css?v=0713cbd8">
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
-  body{font:15px/1.55 "Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  body{font:15px/1.55 'Gotham',"Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     color:#0f172a;background:linear-gradient(180deg,#d1d2ea 0%,#f8fafc 60%,#fff 100%);min-height:100vh}
   header{background:#fff;padding:12px 22px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;
     box-shadow:0 4px 16px rgba(15,23,42,.06);position:sticky;top:0;z-index:30;border-bottom:1px solid #e2e8f0}
@@ -129,6 +130,12 @@
     .block{box-shadow:none;border:0;padding:0;margin:0 0 4px}
     textarea{border:0;padding:0;min-height:0;font-size:13pt;height:auto}
   }
+
+/* Foco de teclado: se apaga el marco del navegador en varios sitios de esta
+   pagina, asi que aqui se pone uno propio; sin el, quien navega con Tab no
+   ve donde esta. */
+:focus-visible{outline:3px solid #3b5bdb;outline-offset:2px}
+input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #3b5bdb;outline-offset:1px}
 </style>
 <script src="nis-nav.js?v=c3230c7d"></script>
 <script src="activity-save.js?v=7bdace9a"></script>

@@ -4,8 +4,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Portal NIS — Nordic International School</title>
+<script>
+/* El servidor de nis.cohasset.pe devuelve ESTE index, con estado 200, para
+   cualquier ruta que no exista (/portal/, /loquesea/). Desde una subcarpeta
+   inventada los recursos relativos dan 404 y la pagina no llega a cargar:
+   el visitante se queda mirando una pantalla en blanco. Hasta que el servidor
+   devuelva un 404 de verdad, aqui volvemos a la raiz, que si funciona.
+   Solo aplica al dominio propio: en GitHub Pages el portal vive en
+   /nis-portal/ y esa ruta es legitima. */
+(function(){var h=location.hostname,p=location.pathname;
+ if((h==='nis.cohasset.pe'||h==='www.nis.cohasset.pe')&&p!=='/'&&!/\.html?$/i.test(p)){
+   location.replace('/'+location.search+location.hash);}})();
+</script>
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-<link rel="stylesheet" href="brand.css?v=f981a8dd">
+<link rel="stylesheet" href="brand.css?v=6622714e">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 </head>
 <body>

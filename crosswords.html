@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Crosswords A1–C1 · NIS English</title>
+<link rel="stylesheet" href="nis-fonts.css?v=0713cbd8">
 <style>
-  :root{--bg:#f4f6fb;--card:#fff;--ink:#1e2433;--muted:#67718a;--accent:#3b5bdb;--accent-soft:#e7ecfd;
+  :root{--bg:#f4f6fb;--card:#ffffff;--ink:#1e2433;--muted:#67718a;--accent:#3b5bdb;--accent-soft:#e7ecfd;
     --good:#2f9e44;--good-soft:#d3f4dc;--bad:#e03131;--bad-soft:#ffe3e3;--gold:#f59f00;}
   *{box-sizing:border-box;margin:0;padding:0}
-  body{-webkit-touch-callout:none;font-family:'Segoe UI',system-ui,Arial,sans-serif;background:var(--bg);color:var(--ink);padding:14px}
+  body{-webkit-touch-callout:none;font-family:'Gotham','Segoe UI',system-ui,Arial,sans-serif;background:var(--bg);color:var(--ink);padding:14px}
   header{max-width:1100px;margin:0 auto 6px;text-align:center}
   header h1{font-size:1.35rem}
   header p{color:var(--muted);font-size:.85rem;margin-top:3px}
@@ -49,6 +50,12 @@
   .banner.show{display:block}
   .staffnote{display:none;margin:8px auto;max-width:1100px;padding:9px 12px;border-radius:9px;background:#fff4e6;color:#b35309;font-weight:700;text-align:center;font-size:.85rem}
   @media (max-width:480px){body{padding:8px}.board{padding:10px}.gridbox{gap:1px}}
+
+/* Foco de teclado: se apaga el marco del navegador en varios sitios de esta
+   pagina, asi que aqui se pone uno propio; sin el, quien navega con Tab no
+   ve donde esta. */
+:focus-visible{outline:3px solid #3b5bdb;outline-offset:2px}
+input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #3b5bdb;outline-offset:1px}
 </style>
   <meta name="google" content="notranslate">
   <script src="ui-mensajes.js?v=18d6c1e2"></script>

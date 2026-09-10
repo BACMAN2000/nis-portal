@@ -13,14 +13,15 @@ if(/\.github\.io$/i.test(location.hostname)){
 }
 </script>
 <link rel="stylesheet" href="../../vendor/fonts/baloo2-sourcesans3-e3f99b.css">
+<link rel="stylesheet" href="../../nis-fonts.css?v=0713cbd8">
 <style>
   :root{
-    --bg:#f6f9fb; --surface:#fff; --surface2:#eef3f7; --ink:#1b2b3d; --soft:#4a5d70;
-    --line:#d7e1e9; --accent:#3b6fb5; --ok:#2f9268; --bad:#cc4b3d; --star:#e0a91f;
+    --bg:#f4f6fb; --surface:#fff; --surface2:#eef3f7; --ink:#1e2433; --soft:#4a5d70;
+    --line:#e2e8f0; --accent:#3b6fb5; --ok:#2f9268; --bad:#cc4b3d; --star:#e0a91f;
   }
   *{box-sizing:border-box}
   html{min-width:0;overflow-x:hidden}
-  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Source Sans 3",system-ui,sans-serif;font-size:1.04rem;line-height:1.5}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Gotham',"Source Sans 3",system-ui,sans-serif;font-size:1.04rem;line-height:1.5}
   main{max-width:64rem;margin:0 auto;padding:1rem 1rem 5rem}
   .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;
     margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;
@@ -739,6 +740,12 @@ if(/\.github\.io$/i.test(location.hostname)){
   .kwt-in.bad{border-color:var(--bad);background:#fbe6e3}
   .kwt-mark{font-weight:700;font-size:.9rem}
   .kwt-mark.good{color:var(--ok)} .kwt-mark.bad{color:var(--bad)}
+
+/* Foco de teclado: se apaga el marco del navegador en varios sitios de esta
+   pagina, asi que aqui se pone uno propio; sin el, quien navega con Tab no
+   ve donde esta. */
+:focus-visible{outline:3px solid #3b5bdb;outline-offset:2px}
+input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #3b5bdb;outline-offset:1px}
 </style>
 </head>
 <body>

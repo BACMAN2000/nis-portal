@@ -88,6 +88,12 @@ kbd{background:#3a4050;border-radius:4px;padding:1px 5px;font-family:inherit;fon
   #sheet{position:relative;transform:none!important;box-shadow:none;border-radius:0;page-break-after:always}
   .imgbox{outline:none}
 }
+
+/* Foco de teclado: se apaga el marco del navegador en varios sitios de esta
+   pagina, asi que aqui se pone uno propio; sin el, quien navega con Tab no
+   ve donde esta. */
+:focus-visible{outline:3px solid #3b5bdb;outline-offset:2px}
+input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #3b5bdb;outline-offset:1px}
 </style>
 <script src="config.js?v=68725f64"></script>
 </head>

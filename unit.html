@@ -6,18 +6,19 @@
 <title>Unit · Nordic International School</title>
 <link rel="icon" href="assets/favicon.svg">
 <link href="vendor/fonts/montserrat-68a53b.css" rel="stylesheet">
+<link rel="stylesheet" href="nis-fonts.css?v=0713cbd8">
 <style>
 :root{
   --blue:#4987c6; --blue-d:#2f5f93; --blue-dd:#244c77;
-  --bg:#f2f3ff; --white:#fff; --grey:#636465; --line:#e3e5f3;
+  --bg:#f4f6fb; --white:#fff; --grey:#636465; --line:#e2e8f0;
   --lila:#d1d2ea; --celeste:#76cbe5;
-  --good:#16a34a; --warn:#f59e0b; --bad:#dc2626;
-  --ink:#2b2c33; --r:16px; --r-sm:10px;
+  --good:#2f9e44; --warn:#f59e0b; --bad:#e03131;
+  --ink:#1e2433; --r:16px; --r-sm:10px;
   --shadow:0 10px 30px rgba(36,76,119,.10);
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
-body{font-family:'Montserrat',system-ui,Segoe UI,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5}
+body{font-family:'Gotham','Montserrat',system-ui,Segoe UI,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5}
 h1,h2,h3{line-height:1.2;margin:0 0 .4em;font-weight:700}
 a{color:var(--blue-d)}
 header{display:flex;align-items:center;gap:14px;background:var(--blue);padding:12px 22px;color:#fff;box-shadow:var(--shadow)}
@@ -184,6 +185,12 @@ textarea:focus{outline:none;border-color:var(--blue)}
 @keyframes screenIn{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:none}}
 @media(max-width:560px){.hero h1{font-size:1.3rem}.wrap{padding:16px 13px 90px}.card{padding:16px 15px}.unit-screen{min-height:calc(100vh - 160px)}.unit-nav{bottom:8px;grid-template-columns:46px minmax(0,1fr) 46px;padding:7px 9px}.unit-nav button{width:40px;height:40px}.unit-screen .week{display:block}.unit-screen .week .n{margin-bottom:12px}.week-menu{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.unit-screen{animation:none}.unit-nav button{transition:none}}
+
+/* Foco de teclado: se apaga el marco del navegador en varios sitios de esta
+   pagina, asi que aqui se pone uno propio; sin el, quien navega con Tab no
+   ve donde esta. */
+:focus-visible{outline:3px solid #3b5bdb;outline-offset:2px}
+input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #3b5bdb;outline-offset:1px}
 </style>
 </head>
 <body>

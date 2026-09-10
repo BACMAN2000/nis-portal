@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
 <title>José Manuel — Tutoring Center</title>
+<link rel="stylesheet" href="../nis-fonts.css?v=0713cbd8">
 <style id="embedded-fonts">
 @font-face {
   font-family: 'DM Mono';
@@ -153,16 +154,16 @@
 </style>
 <style>
   :root{
-    --ink:#1a1714; --paper:#faf8f4; --cream:#f2ede3; --card:#fff;
+    --ink:#1a1714; --paper:#faf8f4; --cream:#f2ede3; --card:#ffffff;
     --amber:#c8822a; --amber-light:#f5e6cc; --amber-dark:#8a5a1a;
     --teal:#2a7a6e; --teal-light:#d4efeb;
     --coral:#c45a3a; --coral-light:#f7e4dc;
     --purple:#5a4a8a; --purple-light:#e8e3f5;
     --green:#3d8a4f; --green-light:#dcefe0;
-    --muted:#7a7068; --border:#e0d8cc; --shadow:rgba(26,23,20,0.08);
+    --muted:#7a7068; --border:#d9deea; --shadow:rgba(26,23,20,0.08);
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  body{background:var(--paper);font-family:'DM Sans',sans-serif;color:var(--ink);min-height:100vh}
+  body{background:var(--paper);font-family:'Gotham','DM Sans',sans-serif;color:var(--ink);min-height:100vh}
   button{font-family:inherit;cursor:pointer}
   input,select,textarea{font-family:inherit;font-size:14px}
 
@@ -1003,7 +1004,7 @@
     --purple: #5a4a8a;
     --purple-light: #e8e3f5;
     --muted: #7a7068;
-    --border: #e0d8cc;
+    --border:#d9deea;
     --shadow: rgba(26,23,20,0.08);
   }
 
@@ -1534,6 +1535,12 @@
     .overview-grid { grid-template-columns: 1fr; }
     .header-title { font-size: 26px; }
   }
+
+/* Foco de teclado: se apaga el marco del navegador en varios sitios de esta
+   pagina, asi que aqui se pone uno propio; sin el, quien navega con Tab no
+   ve donde esta. */
+:focus-visible{outline:3px solid #3b5bdb;outline-offset:2px}
+input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #3b5bdb;outline-offset:1px}
 </style>
 </head>
 <body>

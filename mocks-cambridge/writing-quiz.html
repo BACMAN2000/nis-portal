@@ -36,10 +36,11 @@ if(/\.github\.io$/i.test(location.hostname)){
 <meta http-equiv="Content-Language" content="en">
 <link href="../vendor/fonts/montserrat-68a53b.css" rel="stylesheet">
 <script src="../vendor/html2pdf.bundle.min.js" defer></script>
+<link rel="stylesheet" href="../nis-fonts.css?v=0713cbd8">
 <style>
-  :root{--accent:#4987c6;--accent2:#2f6aa8;--ink:#0f172a;--muted:#64748b;--line:#cbd5e1;--soft:#d1d2ea;--good:#16a34a;--bad:#dc2626;--warn:#f59e0b;--bg:#f1f5f9}
+  :root{--accent:#4987c6;--accent2:#2f6aa8;--ink:#1e2433;--muted:#67718a;--line:#cbd5e1;--soft:#d1d2ea;--good:#2f9e44;--bad:#e03131;--warn:#f59e0b;--bg:#f1f5f9}
   *{box-sizing:border-box}
-  body{margin:0;font-family:"Montserrat","Segoe UI",sans-serif;color:var(--ink);background:var(--bg);line-height:1.5}
+  body{margin:0;font-family:'Gotham',"Montserrat","Segoe UI",sans-serif;color:var(--ink);background:var(--bg);line-height:1.5}
   button{font-family:inherit}
   input,select,textarea{font-family:inherit;font-size:1rem;touch-action:manipulation;-webkit-user-select:text;user-select:text;-webkit-tap-highlight-color:rgba(73,135,198,.18)}
   .app{max-width:1100px;margin:0 auto;padding:18px}
@@ -141,6 +142,12 @@ if(/\.github\.io$/i.test(location.hostname)){
   .topbar img{height:40px}
   .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
   a.link{color:var(--accent);text-decoration:none;font-weight:600}
+
+/* Foco de teclado: se apaga el marco del navegador en varios sitios de esta
+   pagina, asi que aqui se pone uno propio; sin el, quien navega con Tab no
+   ve donde esta. */
+:focus-visible{outline:3px solid #3b5bdb;outline-offset:2px}
+input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #3b5bdb;outline-offset:1px}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="ui-mensajes.js"></script>
