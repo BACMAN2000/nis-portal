@@ -66,6 +66,13 @@ h1{margin:0;font-size:1.55rem;font-weight:700;letter-spacing:-.01em}
 .abc button:hover{border-color:var(--primary);background:var(--primary-l)}
 .abc button[aria-pressed="true"]{background:var(--primary);border-color:var(--primary);color:#fff}
 .abc button:disabled{opacity:.35;cursor:default}
+.fuentes{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:11px}
+.fuentes button{border:1px solid var(--line);background:var(--card);border-radius:8px;padding:6px 13px;
+  font-size:.87rem;font-weight:600;cursor:pointer;font-family:inherit;color:var(--ink)}
+.fuentes button:hover{border-color:var(--primary);background:var(--primary-l)}
+.fuentes button span{font-weight:400;color:var(--muted);font-size:.78rem;margin-left:7px}
+.fuentes button[aria-pressed="true"]{background:var(--primary);border-color:var(--primary);color:#fff}
+.fuentes button[aria-pressed="true"] span{color:#DBEAFE}
 .niveles{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
 .niveles button{border:1px solid var(--line);background:var(--card);border-radius:8px;padding:5px 12px;
   cursor:pointer;font-family:inherit;font-weight:600;font-size:.85rem;color:var(--ink)}
@@ -104,6 +111,7 @@ body.embed .wrap{padding-top:14px}
   <div id="ficha"></div>
 
   <div class="seccion">Hojear el diccionario</div>
+  <div class="fuentes" id="fuentes"></div>
   <div class="abc" id="abc"></div>
   <div class="niveles" id="niveles"></div>
   <div class="lista" id="lista"></div>
@@ -112,6 +120,10 @@ body.embed .wrap{padding-top:14px}
 
 <script>
 var NIVELES = ['pre-A1','A1','A2','B1','B2','C1','C2'];
+// Se hojea el diccionario general, no los glosarios de los cursos: mezclados,
+// la letra A empieza con el vocabulario de Systems Engineers. Buscar sigue
+// mirandolo todo, que para eso el alumno pulsa una palabra de SU curso.
+var FUENTE = 'general', FUENTES = [];
 var COLORS = {'pre-A1':'#14B8A6', A1:'#0EA5E9', A2:'#22C55E', B1:'#EAB308', B2:'#F97316', C1:'#EF4444', C2:'#8B5CF6'};
 var LETRA = 'a', NIVEL = '', DESDE = 0, PORLETRA = {}, SUGS = [], SEL = -1, TMR = null;
 
@@ -217,10 +229,41 @@ function pintaAbc(){
         return '<button aria-pressed="' + (N === NIVEL) + '" onclick="verNivel(\'' + N + '\')">' + N + '</button>';
       })).join('');
 }
+function pintaFuentes(){
+  if(FUENTES.length < 2){ document.getElementById('fuentes').innerHTML = ''; return; }
+  document.getElementById('fuentes').innerHTML = FUENTES.map(function(f, i){
+    return '<button aria-pressed="' + (f.id === FUENTE) + '" onclick="verFuenteN(' + i + ')">' +
+      esc(f.label) + '<span>' + f.n + '</span></button>';
+  }).join('');
+}
+function verFuenteN(i){ if(FUENTES[i]) verFuente(FUENTES[i].id); }
+function etiquetaFuente(){
+  var f = FUENTES.filter(function(x){ return x.id === FUENTE; })[0];
+  return f ? f.label : '';
+}
+// Cambiar de fuente son dos viajes (resumen y luego indice). Si pulsas otra
+// antes de que vuelva el primero, la respuesta vieja llegaria la ultima y
+// pintaria la lista que no es: gana la ultima peticion pedida.
+var PETICION = 0;
+function verFuente(f){
+  if(f === FUENTE) return;
+  FUENTE = f; DESDE = 0;
+  var mia = ++PETICION;
+  cargaResumen(function(){
+    if(mia !== PETICION) return;
+    // Si la letra en la que estabas no tiene nada en esta fuente, no dejarla
+    // mirando una lista vacia: saltar a la primera que si tenga.
+    if(!PORLETRA[LETRA]){
+      var l = 'abcdefghijklmnopqrstuvwxyz'.split('').filter(function(x){ return PORLETRA[x]; })[0];
+      if(l) LETRA = l;
+    }
+    pintaFuentes(); pintaAbc(); cargaLista(false);
+  });
+}
 function verLetra(L){ LETRA = L; DESDE = 0; pintaAbc(); cargaLista(false); }
 function verNivel(N){ NIVEL = N; DESDE = 0; pintaAbc(); cargaLista(false); }
 function cargaLista(anade){
-  api('indice?letra=' + LETRA + '&nivel=' + NIVEL + '&desde=' + DESDE)
+  api('indice?letra=' + LETRA + '&nivel=' + NIVEL + '&fuente=' + encodeURIComponent(FUENTE) + '&desde=' + DESDE)
     .then(function(d){
       var html = (d.palabras || []).map(function(p){
         return '<button onclick="busca(\'' + esc(p.w).replace(/'/g, "\\'") + '\')">' +
@@ -232,7 +275,7 @@ function cargaLista(anade){
       document.getElementById('mas').innerHTML = vistas < d.total
         ? '<button class="btn sec" onclick="masLista()">Ver más (' + vistas + ' de ' + d.total + ')</button>'
         : (d.total ? '<span class="stats">' + d.total + ' palabras con «' + LETRA + '»' +
-            (NIVEL ? ' en ' + NIVEL : '') + '</span>' : '<span class="stats">Nada aquí todavía.</span>');
+            (NIVEL ? ' en ' + NIVEL : '') + ' · ' + esc(etiquetaFuente()) + '</span>' : '<span class="stats">Nada aquí todavía.</span>');
     })
     .catch(function(){ document.getElementById('lista').innerHTML =
       '<span class="stats">No se ha podido cargar el índice.</span>'; });
@@ -255,17 +298,24 @@ caja.addEventListener('keydown', function(ev){
   } else if(ev.key === 'Escape'){ cierraSug(); }
 });
 
-api('resumen').then(function(d){
-  PORLETRA = d.por_letra || {};
-  document.getElementById('stats').textContent =
-    d.total.toLocaleString('es') + ' palabras · ' +
-    d.con_traduccion.toLocaleString('es') + ' con traducción · ' +
-    d.con_definicion.toLocaleString('es') + ' con significado. Todo escrito en casa.';
-  pintaAbc(); cargaLista(false);
-}).catch(function(){
-  document.getElementById('stats').textContent = 'No se ha podido contactar con el diccionario.';
-  pintaAbc();
-});
+function cargaResumen(luego){
+  return api('resumen?fuente=' + encodeURIComponent(FUENTE)).then(function(d){
+    PORLETRA = d.por_letra || {};
+    FUENTES = d.fuentes || [];
+    // Los glosarios son de los cursos de Cohasset: en el colegio no pintan nada.
+    if(ES_NIS) FUENTES = FUENTES.filter(function(f){ return f.id === 'general'; });
+    // El tamano de la casa no cambia porque estes hojeando un curso.
+    document.getElementById('stats').textContent =
+      d.total.toLocaleString('es') + ' palabras · ' +
+      d.con_traduccion.toLocaleString('es') + ' con traducción · ' +
+      d.con_definicion.toLocaleString('es') + ' con significado. Todo escrito en casa.';
+    if(luego) luego();
+  }).catch(function(){
+    document.getElementById('stats').textContent = 'No se ha podido contactar con el diccionario.';
+    pintaAbc();
+  });
+}
+cargaResumen(function(){ pintaFuentes(); pintaAbc(); cargaLista(false); });
 </script>
 </body>
 </html>
