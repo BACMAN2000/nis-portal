@@ -728,7 +728,11 @@ window.UNIT_PLANS = {
   reader:{title:'Earthquakes, Volcanoes and Tsunamis', series:'Raz-Plus \u00b7 Lexile 730L', term:3, inPortal:false},
   exam:{target:'movers', themes:['The world around us','Health','Places and directions','Time'],
         grammar:['must / must not','should','have to','imperatives','past simple: was, were and -ed'],
-        extra:['earthquake','tsunami','landslide','flood','plate','safe zone','drill','shelter','whistle','torch','blanket','headache','bruise']},
+        extra:['earthquake','tsunami','landslide','flood','plate','safe zone','drill','shelter','whistle','torch','blanket','headache','bruise'],
+        /* En ingles NO hay tres palabras como en castellano: sismo, temblor y terremoto son
+           todos `earthquake`, y se gradua con un adjetivo delante o con la magnitud. `tremor`
+           es falso amigo de temblor y en sismologia significa otra cosa: no se ensena. */
+        noUsar:['tremor','tidal wave','seism']},
   areas:[{area:'science', level:3},{area:'social', level:2},{area:'math', level:1}],
   criteria:[
     {n:1, text:'I name natural disasters, safety words, the things in the emergency kit and the parts of the body.',
@@ -1364,7 +1368,7 @@ window.UNIT_PLANS = {
                help:'Four questions on the board.'}}}
      ]}
   ],
-  words:['earthquake','tsunami','landslide','flood','plate','Ring of Fire','magnitude','safe zone','drill','shelter','exit','danger','emergency kit','torch','whistle','blanket','first-aid kit','head','arm','leg','back','knee','ankle','headache','stomachache','backache','cut','bruise','hurt','must','must not','should','have to','Drop, cover, hold on','before','during','after','was','were','-ed'],
+  words:['earthquake','tsunami','landslide','flood','plate','fault','Ring of Fire','magnitude','intensity','aftershock','epicentre','safe zone','drill','shelter','exit','danger','emergency kit','torch','whistle','blanket','first-aid kit','head','arm','leg','back','knee','ankle','headache','stomachache','backache','cut','bruise','hurt','must','must not','should','have to','Drop, cover, hold on','before','during','after','was','were','-ed'],
   deliverables:[
     {kind:'report', type:'text', icon:'&#128221;', title:'Your safety flyer',
      desc:'Three parts \u2014 before, during and after an earthquake \u2014 each with a heading, one instruction and a drawing.',
