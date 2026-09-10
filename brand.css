@@ -221,3 +221,16 @@ button:focus-visible{outline:3px solid var(--blue-d);outline-offset:2px}
 /* Foco de teclado, para todo lo que no tenga una regla propia mas arriba.
    Varias paginas apagan el outline del navegador; este lo devuelve visible. */
 :focus-visible{outline:3px solid var(--blue-d);outline-offset:2px}
+
+/* ===== Cortes responsive =====
+   El portal tiene 17 anchos de corte distintos, heredados de haber crecido
+   pagina a pagina: 420, 480, 520, 560, 620, 640, 680, 700, 720, 760, 780, 820,
+   880, 900, 1080… La escala buena son tres, y son estos:
+
+       640 px   movil -> tableta
+       900 px   tableta -> escritorio
+      1200 px   escritorio ancho
+
+   No se migraron los que ya existen: cambiar donde salta la maquetacion de 345
+   paginas sin poder comprobarlas una a una es peor que la incoherencia. Lo que
+   se toque de nuevo usa estos.                                               */
