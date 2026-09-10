@@ -13,6 +13,21 @@
 # sello que llega tarde.
 
 set -e
+
+# Si el commit toca el curso en frances, primero la concordancia de genero.
+# En ingles no hay genero, asi que al traducir el fallo tipico no es el
+# vocabulario sino ese -«un maison», «elle est alle»- y con 150 unidades no se ve
+# a ojo. Va ANTES del sellado: si hay que abortar, mejor sin haber tocado nada.
+# Solo corre cuando toca, y tarda dos decimas.
+if git diff --cached --name-only --diff-filter=ACM | grep -q "^nis-fun/content-fr/"; then
+  if ! python tools/check_fr_genre.py; then
+    echo ""
+    echo "El curso en frances tiene fallos de concordancia (arriba)."
+    echo "Arreglalos y repite el commit. Si el aviso es falso, se salta con:"
+    echo "    git commit --no-verify"
+    exit 1
+  fi
+fi
 python tools/sella_versiones.py --estacionados >/dev/null || exit 1
 
 # Lo que el sellado acaba de tocar ya estaba estacionado por definicion, asi que
