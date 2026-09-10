@@ -1,0 +1,33 @@
+/* ===== La paleta del portal, en un solo sitio =====
+
+   Hasta hoy estos once colores estaban copiados a mano dentro de cada pagina:
+   319 bloques :root con los mismos valores, y ya derivando -- --ink llego a
+   tener 18 tonos distintos. Aqui viven una vez.
+
+   Como funciona el reparto: la pagina enlaza este archivo ANTES de su propio
+   <style>, asi que cualquier :root local sigue mandando sobre lo que declare.
+   Se borro de las paginas solo lo que coincidia exactamente con estos valores,
+   de modo que lo que se ve no cambia; lo que era distinto a proposito se quedo
+   donde estaba.
+
+   Los --f1..--f6 son los seis colores con que se marcan las palabras
+   encontradas en las sopas de letras.                                        */
+
+:root{
+  /* texto y superficies */
+  --ink:#1e2433;
+  --muted:#67718a;
+  --bg:#f4f6fb;
+  --card:#ffffff;
+
+  /* marca y estados, cada uno con su version suave para fondos */
+  --accent:#3b5bdb;      --accent-soft:#e7ecfd;
+  --good:#2f9e44;        --good-soft:#d3f4dc;
+  --bad:#e03131;         --bad-soft:#ffe3e3;
+  --gold:#f59f00;
+  --purple:#7048e8;
+
+  /* marcas de palabra encontrada (sopas de letras) */
+  --f1:#ffd8a8; --f2:#b2f2bb; --f3:#a5d8ff;
+  --f4:#fcc2d7; --f5:#d0bfff; --f6:#ffec99;
+}
