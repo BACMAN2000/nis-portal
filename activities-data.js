@@ -142,6 +142,11 @@
              del arco g3.t3, así que el material no cuelga de ninguna en particular
              (mismo criterio que u3.w0 y g2 u4.w0). */
           { id:'w0', title:'', games:[
+            { href:'readers/when-the-earth-moves/index.html', icon:'📖', title:'When the Earth Moves — the reader',
+              desc:'The unit book in three editions (Starters, Movers, Flyers): twelve chapters, one per week, with the Fun for Nordic '+
+                   'characters, real photos of Peru, two 3D models of the plates, timelines and the activities for every week. '+
+                   'Printable as A5 pages or as a folded A4 booklet.',
+              tags:['Starters','Movers','Flyers','3D'] },
             { href:'earth-moves-peru-g3u5.html', icon:'🌎', title:'Earthquakes & Tsunamis in Peru',
               desc:'The five earthquakes Peru remembers in a table and a chart (IGP figures), why the ground moves here, '+
                    'the tsunami rule on the coast, the INDECI backpack, must / must not, before-during-after, and the safety flyer. '+
