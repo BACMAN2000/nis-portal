@@ -246,7 +246,7 @@ function _pickFrVoice(){ try{ var vs=speechSynthesis.getVoices(); _frVoice=vs.fi
 if('speechSynthesis' in window){ _pickFrVoice(); try{ speechSynthesis.onvoiceschanged=_pickFrVoice; }catch(e){} }
 function speakFR(w){ if(!('speechSynthesis' in window))return; var t=(w&&(w.fr||w.word))||''; if(!t)return; var u=new SpeechSynthesisUtterance(t); u.lang='fr-FR'; if(_frVoice)u.voice=_frVoice; u.rate=0.9; try{speechSynthesis.cancel();}catch(e){} speechSynthesis.speak(u); }
 </script>
-<script src="nis-tema.js?v=469a5ee4" defer></script>
+<script src="nis-tema.js?v=a7890d34" defer></script>
 </body>
 </html>  /* Corrige el «Guardando tu resultado…» del banner con lo que de verdad paso.
      Es la unica senal que tiene el alumno: si el guardado falla en silencio, se

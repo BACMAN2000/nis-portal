@@ -104,7 +104,9 @@
     if (barra) {
       boton.style.cssText = ESTILO_EN_BARRA;
       barra.appendChild(boton);
-      return;
+      // Un <header> puede ser un hero con la foto encima, y una .bar un
+      // contenedor cualquiera: si ahi el boton queda tapado, no vale.
+      if (libre()) return;
     }
     document.body.appendChild(boton);
     for (var i = 0; i < ESQUINAS.length; i++) {
