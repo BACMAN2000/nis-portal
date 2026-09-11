@@ -14,8 +14,9 @@ var DATA = null, LEVEL = 'A1', MODO = 'afijos', TAB = 'learn';
 var HECHOS = {}, RECS = {}, ABIERTO = {};
 var BLOQUES = [], IB = 0, PAG = 0, FILTRO = '', ACT = null, ST = null, RELOJ = null, PP = 3;
 var COLORS = {A1:'#0EA5E9', A2:'#22C55E', B1:'#EAB308', B2:'#F97316', C1:'#EF4444', C2:'#8B5CF6'};
-var NOMBRES = {A1:'Primeros pasos', A2:'Elemental', B1:'Intermedio', B2:'Intermedio alto', C1:'Avanzado', C2:'Dominio'};
+var NOMBRES = {A1:'First steps', A2:'Elementary', B1:'Intermediate', B2:'Upper intermediate', C1:'Advanced', C2:'Mastery'};
 var CLASE = {sustantivo:'n', adjetivo:'a', verbo:'v', adverbio:'d'};
+var CLASE_EN = {sustantivo:'noun', adjetivo:'adjective', verbo:'verb', adverbio:'adverb'};
 var ORDEN = ['A1','A2','B1','B2','C1','C2'];
 var POR_BLOQUE = 10, SEGUNDOS = 60;
 
@@ -30,6 +31,7 @@ function mezcla(a){
 function alAzar(a){ return a[Math.floor(Math.random() * a.length)]; }
 function plural(n, uno, muchos){ return n + ' ' + (n === 1 ? uno : muchos); }
 function arriba(){ window.scrollTo({top:0, behavior:'smooth'}); }
+function modoLabel(){ return MODO === 'afijos' ? 'affixes' : 'families'; }
 
 /* Todo lo de un nivel o por debajo: si algo se enseña en A2, en B1 sigue valiendo. */
 function hasta(L){ return ORDEN.slice(0, ORDEN.indexOf(L) + 1); }
@@ -235,7 +237,7 @@ function pintaNiveles(){
     var n = lista(L).length;
     return '<button class="lv" data-l="' + L + '" aria-pressed="' + (L === LEVEL) + '"' +
       ' style="--c:' + COLORS[L] + ';--cl:' + COLORS[L] + '18;--cd:' + COLORS[L] + '"' +
-      ' onclick="setLevel(this.dataset.l)">' + L + '<small>' + n + ' ' + MODO + ' · ' + NOMBRES[L] + '</small></button>';
+      ' onclick="setLevel(this.dataset.l)">' + L + '<small>' + n + ' ' + modoLabel() + ' · ' + NOMBRES[L] + '</small></button>';
   }).join('');
 }
 function recarga(){ BLOQUES = armaBloques(lista()); if(IB >= BLOQUES.length) IB = 0; }
@@ -264,7 +266,7 @@ function selectorModo(){
     ['afijos','familias'].map(function(m){
       var n = (m === 'afijos' ? afijosDe(LEVEL) : familiasDe(LEVEL)).length;
       return '<button class="modo" aria-pressed="' + (m === MODO) + '" onclick="setModo(\'' + m + '\')">' +
-        (m === 'afijos' ? 'Prefijos y sufijos' : 'Familias de palabras') + ' <b>' + n + '</b></button>';
+        (m === 'afijos' ? 'Prefixes and suffixes' : 'Word families') + ' <b>' + n + '</b></button>';
     }).join('') + '</div>';
 }
 function cabecera(){
@@ -272,21 +274,21 @@ function cabecera(){
   var chips = BLOQUES.map(function(bl, i){
     var dom = domBloque(bl);
     return '<button class="bk" aria-pressed="' + (i === IB) + '" onclick="setBloque(' + i + ')"' +
-      ' title="Bloque ' + (i + 1) + ': ' + dom + ' de ' + bl.length + ' dominados">' + (i + 1) +
+      ' title="Block ' + (i + 1) + ': ' + dom + ' of ' + bl.length + ' mastered">' + (i + 1) +
       '<i><b style="width:' + Math.round(dom / bl.length * 100) + '%"></b></i></button>';
   }).join('');
   return selectorModo() +
-    '<div class="blockhead">Bloque <b>' + (IB + 1) + '</b> de ' + BLOQUES.length + ' · ' +
-    b.length + ' ' + MODO + ' · ' + plural(domBloque(b), 'dominado', 'dominados') + '</div>' +
+    '<div class="blockhead">Block <b>' + (IB + 1) + '</b> of ' + BLOQUES.length + ' · ' +
+    b.length + ' ' + modoLabel() + ' · ' + plural(domBloque(b), 'mastered', 'mastered') + '</div>' +
     '<div class="blocks">' + chips + '</div>';
 }
 
 /* ---------- aprender ---------- */
 function porPagina(){ return (window.innerWidth < 640 || window.innerHeight < 640) ? 2 : 3; }
 function vistaAprender(){
-  if(!BLOQUES.length) return selectorModo() + '<div class="empty">Todavía no hay nada en este nivel.</div>';
+  if(!BLOQUES.length) return selectorModo() + '<div class="empty">There is nothing at this level yet.</div>';
   return cabecera() +
-    '<input class="find" id="find" placeholder="Filtrar por afijo, raíz o sentido…"' +
+    '<input class="find" id="find" placeholder="Filter by affix, root or meaning…"' +
     ' oninput="filtra(this.value)" autocomplete="off" value="' + esc(FILTRO) + '">' +
     '<div id="lista">' + cuerpoAprender() + '</div>';
 }
@@ -298,8 +300,8 @@ function cuerpoAprender(){
         significado(d).toLowerCase().indexOf(f) >= 0 ||
         String(d.nota || '').toLowerCase().indexOf(f) >= 0;
     });
-    return '<div class="hint" style="margin:0 0 11px">' + l.length + ' en todo el nivel ' + LEVEL +
-      '. Borra el filtro para volver al bloque.</div>' + tarjetas(l);
+    return '<div class="hint" style="margin:0 0 11px">' + l.length + ' at level ' + LEVEL +
+      ' in total. Clear the filter to go back to the block.</div>' + tarjetas(l);
   }
   return carrusel();
 }
@@ -315,18 +317,18 @@ function carrusel(){
   if(PAG < 0) PAG = 0;
   var primera = IB === 0 && PAG === 0, ultima = IB === BLOQUES.length - 1 && PAG === np - 1;
   var h = '<div class="deckwrap">' +
-    '<button class="arrow" type="button" onclick="mueve(-1)" aria-label="Anterior"' + (primera ? ' disabled' : '') + '>&lsaquo;</button>' +
+    '<button class="arrow" type="button" onclick="mueve(-1)" aria-label="Previous"' + (primera ? ' disabled' : '') + '>&lsaquo;</button>' +
     '<div class="deck" id="deck">' + tarjetas(b.slice(PAG * PP, PAG * PP + PP)) + '</div>' +
-    '<button class="arrow" type="button" onclick="mueve(1)" aria-label="Siguiente"' + (ultima ? ' disabled' : '') + '>&rsaquo;</button>' +
+    '<button class="arrow" type="button" onclick="mueve(1)" aria-label="Next"' + (ultima ? ' disabled' : '') + '>&rsaquo;</button>' +
     '</div><div class="dots">';
   for(var i = 0; i < np; i++){
-    h += '<button class="dot' + (i === PAG ? ' on' : '') + '" type="button" onclick="vePag(' + i + ')" aria-label="Pantalla ' + (i + 1) + '"></button>';
+    h += '<button class="dot' + (i === PAG ? ' on' : '') + '" type="button" onclick="vePag(' + i + ')" aria-label="Screen ' + (i + 1) + '"></button>';
   }
-  h += '</div><div class="pagenum">Pantalla ' + (PAG + 1) + ' de ' + np + ' · avanza con &lsaquo; &rsaquo; o con las teclas ← →</div>';
+  h += '</div><div class="pagenum">Screen ' + (PAG + 1) + ' of ' + np + ' · move with &lsaquo; &rsaquo; or the ← → keys</div>';
   if(PAG === np - 1){
     h += '<div class="row" style="justify-content:center">' +
-      '<button class="btn" onclick="alPracticar()">Practicar este bloque</button>' +
-      (IB < BLOQUES.length - 1 ? '<button class="btn sec" onclick="setBloque(' + (IB + 1) + ')">Siguiente bloque</button>' : '') +
+      '<button class="btn" onclick="alPracticar()">Practise this block</button>' +
+      (IB < BLOQUES.length - 1 ? '<button class="btn sec" onclick="setBloque(' + (IB + 1) + ')">Next block</button>' : '') +
       '</div>';
   }
   return h;
@@ -346,11 +348,11 @@ function mueve(d){
   render();
 }
 function tarjetas(l){
-  if(!l.length) return '<div class="empty">Nada que mostrar.</div>';
+  if(!l.length) return '<div class="empty">Nothing to show.</div>';
   return l.map(MODO === 'afijos' ? tarjetaAfijo : tarjetaFamilia).join('');
 }
 function tarjetaAfijo(a){
-  var cl = a.clase ? '<span class="badge ' + (CLASE[a.clase] || '') + '">' + esc(a.clase) + '</span>' : '';
+  var cl = a.clase ? '<span class="badge ' + (CLASE[a.clase] || '') + '">' + esc(CLASE_EN[a.clase] || a.clase) + '</span>' : '';
   var abierto = ABIERTO[a.afijo];
   var chips = (a.ejemplos || []).slice(0, 6).map(function(e, i){
     return '<button class="chip' + (abierto === i ? ' on' : '') + '" type="button" data-af="' + esc(a.afijo) +
@@ -367,10 +369,10 @@ function tarjetaAfijo(a){
   return '<div class="card"><span class="afijo">' + esc(a.afijo) + '</span>' +
     '<span class="sentido">' + esc(sentidoDe(a)) + '</span>' + cl +
     '<span class="badge">' + esc(a.nivel) + '</span>' +
-    (dominado(a) ? '<span class="badge dom">dominado</span>' : '') +
+    (dominado(a) ? '<span class="badge dom">mastered</span>' : '') +
     '<div class="nota">' + esc(a.nota || '') + '</div>' +
     '<div class="chips">' + chips + '</div>' + muestra +
-    '<div class="hint">Pulsa una palabra para verla en una frase de tu curso.</div></div>';
+    '<div class="hint">Tap a word to see it in a sentence from your course.</div></div>';
 }
 function tarjetaFamilia(f){
   var formas = f.formas.map(function(y){
@@ -381,7 +383,7 @@ function tarjetaFamilia(f){
   if(h) muestra = '<div class="ex">' + esc(h.pre) + '<b>' + esc(h.palabra) + '</b>' + esc(h.post) + '</div>';
   return '<div class="card"><span class="afijo">' + esc(f.raiz) + '</span>' +
     '<span class="badge">' + esc(f.nivel) + '</span>' +
-    (dominado(f) ? '<span class="badge dom">dominado</span>' : '') +
+    (dominado(f) ? '<span class="badge dom">mastered</span>' : '') +
     '<div class="fam">' + formas + '</div>' + muestra + '</div>';
 }
 function verEjemplo(af, i){
@@ -392,22 +394,22 @@ function verEjemplo(af, i){
 
 /* ---------- practicar ---------- */
 function vistaPractica(){
-  if(!BLOQUES.length) return selectorModo() + '<div class="empty">Todavía no hay nada en este nivel.</div>';
+  if(!BLOQUES.length) return selectorModo() + '<div class="empty">There is nothing at this level yet.</div>';
   if(ACT === 'gap') return vistaRelleno();
   if(ACT === 'par') return vistaEmparejar();
   if(ACT === 'mix') return vistaMixto();
   var b = BLOQUES[IB] || [];
   var af = MODO === 'afijos';
   return cabecera() + '<div class="acts">' +
-    acto('gap', '&#10003;', 'Rellenar los huecos',
-      af ? 'Frases de tu curso con el afijo borrado dentro de la palabra: elige cuál de los ' + b.length + ' la construye.'
-         : 'Frases de tu curso con una palabra borrada: elige de qué raíz de las ' + b.length + ' sale.') +
-    acto('par', '&#8646;', af ? 'Emparejar sentidos' : 'Emparejar con su raíz',
-      af ? 'Une cada afijo con lo que aporta a la palabra, en rondas de cinco.'
-         : 'Une cada palabra derivada con la raíz de la que viene, en rondas de cinco.') +
-    acto('mix', '&#10022;', 'Repaso mixto',
-      af ? 'Preguntas variadas del bloque: qué clase de palabra forma cada sufijo, qué aporta y qué prefijo pide cada raíz.'
-         : 'Preguntas variadas del bloque: la forma que encaja en la frase y el intruso de la familia.') +
+    acto('gap', '&#10003;', 'Fill in the gaps',
+      af ? 'Sentences from your course with the affix removed from inside the word: choose which of the ' + b.length + ' forms it.'
+         : 'Sentences from your course with a word removed: choose which of the ' + b.length + ' roots it comes from.') +
+    acto('par', '&#8646;', af ? 'Match meanings' : 'Match with its root',
+      af ? 'Match each affix with what it adds to the word, in rounds of five.'
+         : 'Match each derived word with the root it comes from, in rounds of five.') +
+    acto('mix', '&#10022;', 'Mixed review',
+      af ? 'Varied questions from the block: what class of word each suffix forms, what it adds and which prefix each root needs.'
+         : 'Varied questions from the block: the form that fits the sentence and the odd one out in the family.') +
     '</div>';
 }
 function acto(id, ic, tit, desc, extra){
@@ -426,11 +428,11 @@ function resumenAct(tit, ok, total, a){
   var pct = total ? Math.round(ok / total * 100) : 0;
   return '<div class="card" style="text-align:center">' +
     '<div class="score">' + pct + '%</div>' +
-    '<p>' + tit + ' · ' + ok + ' de ' + total + ' en el bloque ' + (IB + 1) + ' de ' + LEVEL + '.</p>' +
+    '<p>' + tit + ' · ' + ok + ' of ' + total + ' in block ' + (IB + 1) + ' of ' + LEVEL + '.</p>' +
     '<div class="row" style="justify-content:center">' +
-    '<button class="btn" onclick="inicia(\'' + a + '\')">Otra vez</button>' +
-    (IB < BLOQUES.length - 1 ? '<button class="btn sec" onclick="setBloque(' + (IB + 1) + ')">Siguiente bloque</button>' : '') +
-    '<button class="btn sec" onclick="alMenu()">Otras actividades</button></div></div>';
+    '<button class="btn" onclick="inicia(\'' + a + '\')">Again</button>' +
+    (IB < BLOQUES.length - 1 ? '<button class="btn sec" onclick="setBloque(' + (IB + 1) + ')">Next block</button>' : '') +
+    '<button class="btn sec" onclick="alMenu()">Other activities</button></div></div>';
 }
 
 /* Rellenar: el banco son los diez del bloque. */
@@ -445,15 +447,15 @@ function iniciaRelleno(){
 }
 function vistaRelleno(){
   var n = ST.huecos.length;
-  if(!n) return '<div class="card"><div class="empty">Este bloque no tiene frases para huecos.</div>' +
-    '<div class="row" style="justify-content:center"><button class="btn sec" onclick="alMenu()">Otras actividades</button></div></div>';
-  if(ST.i >= n) return resumenAct('Rellenar los huecos', ST.ok, n, 'gap');
+  if(!n) return '<div class="card"><div class="empty">This block has no sentences for gap-fills.</div>' +
+    '<div class="row" style="justify-content:center"><button class="btn sec" onclick="alMenu()">Other activities</button></div></div>';
+  if(ST.i >= n) return resumenAct('Fill in the gaps', ST.ok, n, 'gap');
   var h = ST.huecos[ST.i], d = h.item;
   return '<div class="bar"><i style="width:' + Math.round(ST.i / n * 100) + '%"></i></div>' +
-    '<div class="meta"><span>Frase ' + (ST.i + 1) + ' de ' + n + ' · bloque ' + (IB + 1) + '</span>' +
-    '<span>' + ST.ok + ' a la primera</span></div>' +
+    '<div class="meta"><span>Sentence ' + (ST.i + 1) + ' of ' + n + ' · block ' + (IB + 1) + '</span>' +
+    '<span>' + ST.ok + ' on the first try</span></div>' +
     '<div class="card"><div class="sent">' + pintaHueco(h, ST.resuelto) + '</div>' +
-    '<div class="banktitle">Elige la opción que mejor encaja</div><div class="bank">' +
+    '<div class="banktitle">Choose the option that fits best</div><div class="bank">' +
     ST.banco.map(function(x){
       var tt = term(x), hecho = ST.hechos[tt];
       return '<button class="w' + (hecho ? ' done' : '') + '" type="button" data-t="' + esc(tt) + '"' +
@@ -464,9 +466,9 @@ function vistaRelleno(){
 function feedbackRelleno(h, d){
   var txt = MODO === 'afijos' ?
     '<b>' + esc(h.palabra) + '</b> = ' + esc(d.afijo) + ' · ' + esc(sentidoDe(d)) :
-    '<b>' + esc(h.palabra) + '</b> = ' + esc(d.raiz) + ' + -' + esc(h.forma.sufijo) + ' (' + esc(h.forma.clase) + ')';
+    '<b>' + esc(h.palabra) + '</b> = ' + esc(d.raiz) + ' + -' + esc(h.forma.sufijo) + ' (' + esc(CLASE_EN[h.forma.clase] || h.forma.clase) + ')';
   return '<div class="fb ok">' + txt +
-    '<button class="btn sm" style="margin-left:12px" onclick="sigRelleno()">Siguiente</button></div>';
+    '<button class="btn sm" style="margin-left:12px" onclick="sigRelleno()">Next</button></div>';
 }
 function eligeBanco(btn){
   if(ACT !== 'gap' || !ST || ST.resuelto) return;
@@ -482,10 +484,10 @@ function eligeBanco(btn){
     var otro = null;
     ST.banco.forEach(function(x){ if(term(x) === sel) otro = x; });
     var porque = otro ? (MODO === 'afijos' ?
-      '<b>' + esc(sel) + '</b> es «' + esc(sentidoDe(otro)) + '».' :
-      '<b>' + esc(sel) + '</b> da ' + esc(significado(otro)) + '.') : 'Ese no encaja aquí.';
+      '<b>' + esc(sel) + '</b> means «' + esc(sentidoDe(otro)) + '».' :
+      '<b>' + esc(sel) + '</b> gives ' + esc(significado(otro)) + '.') : 'That does not fit here.';
     document.getElementById('fb').innerHTML = '<div class="fb no">' + porque +
-      (ST.fallo ? ' Lee otra vez la frase entera: la palabra tiene que tener sentido ahí.' : '') + '</div>';
+      (ST.fallo ? ' Read the whole sentence again: the word has to make sense there.' : '') + '</div>';
     ST.fallo = true;
     setTimeout(function(){ btn.classList.remove('bad'); }, 900);
   }
@@ -518,13 +520,13 @@ function iniciaRonda(){
   ST.hechos = 0; ST.selEl = null;
 }
 function vistaEmparejar(){
-  if(ST.r >= ST.rondas.length) return resumenAct('Emparejar', ST.ok, ST.ok + ST.err, 'par');
+  if(ST.r >= ST.rondas.length) return resumenAct('Match', ST.ok, ST.ok + ST.err, 'par');
   var g = ST.rondas[ST.r];
-  return '<div class="meta" style="margin-bottom:10px"><span>Ronda ' + (ST.r + 1) + ' de ' + ST.rondas.length +
-    ' · bloque ' + (IB + 1) + '</span><span>' + plural(ST.ok, 'acierto', 'aciertos') + ' · ' +
-    plural(ST.err, 'fallo', 'fallos') + '</span></div>' +
+  return '<div class="meta" style="margin-bottom:10px"><span>Round ' + (ST.r + 1) + ' of ' + ST.rondas.length +
+    ' · block ' + (IB + 1) + '</span><span>' + plural(ST.ok, 'correct answer', 'correct answers') + ' · ' +
+    plural(ST.err, 'mistake', 'mistakes') + '</span></div>' +
     '<div class="card"><div class="q">' +
-    (MODO === 'afijos' ? 'Empareja cada afijo con lo que aporta.' : 'Empareja cada palabra con la raíz de la que sale.') +
+    (MODO === 'afijos' ? 'Match each affix with what it adds.' : 'Match each word with the root it comes from.') +
     '</div><div class="match"><div>' +
     g.map(function(p, i){
       return '<button class="mt" type="button" style="width:100%;margin-bottom:8px" data-side="L" data-i="' + i + '">' + esc(p.izq) + '</button>';
@@ -550,13 +552,13 @@ function pick(b){
     sel.classList.add('done'); b.classList.add('done');
     ST.hechos++; ST.ok++; marca(par.item, true);
     if(ST.hechos === ST.rondas[ST.r].length){
-      document.getElementById('fb').innerHTML = '<div class="fb ok">Ronda completa. ' +
+      document.getElementById('fb').innerHTML = '<div class="fb ok">Round complete. ' +
         '<button class="btn sm" style="margin-left:10px" onclick="sigRonda()">' +
-        (ST.r < ST.rondas.length - 1 ? 'Siguiente ronda' : 'Ver resultado') + '</button></div>';
+        (ST.r < ST.rondas.length - 1 ? 'Next round' : 'See result') + '</button></div>';
     }
   } else {
     ST.err++; marca(par.item, false);
-    document.getElementById('fb').innerHTML = '<div class="fb no">Ese no. Prueba otra vez.</div>';
+    document.getElementById('fb').innerHTML = '<div class="fb no">Not that one. Try again.</div>';
   }
   ST.selEl = null;
 }
@@ -579,10 +581,10 @@ function pregHueco(b){
     if(c !== h.forma.w && otras.indexOf(c) < 0) otras.push(c);
   }
   return {clave:'h:' + h.forma.w, item:f,
-    enunciado:'Completa la frase con la forma correcta.',
+    enunciado:'Complete the sentence with the correct form.',
     stem:esc(h.pre) + '<u></u>' + esc(h.post), dado:f.raiz,
     opciones:mezcla([h.forma.w].concat(otras.slice(0, 3))), correcta:h.forma.w,
-    porque:'«' + f.raiz + '» + «' + h.forma.sufijo + '» da un ' + h.forma.clase + ': ' + h.forma.w + '.'};
+    porque:'«' + f.raiz + '» + «' + h.forma.sufijo + '» makes a ' + (CLASE_EN[h.forma.clase] || h.forma.clase) + ': ' + h.forma.w + '.'};
 }
 /* Qué clase de palabra produce un sufijo. */
 function pregClase(b){
@@ -590,9 +592,9 @@ function pregClase(b){
   if(!suf.length) return null;
   var a = alAzar(suf);
   return {clave:'c:' + a.afijo, item:a,
-    enunciado:'¿Qué clase de palabra forma el sufijo <b>' + esc(a.afijo) + '</b>?',
+    enunciado:'What class of word does the suffix <b>' + esc(a.afijo) + '</b> form?',
     stem:a.ejemplos.slice(0, 4).map(function(e){ return esc(e.w); }).join(' · '),
-    opciones:mezcla(['sustantivo','adjetivo','verbo','adverbio']), correcta:a.clase, porque:a.nota};
+    opciones:mezcla(['noun','adjective','verb','adverb']), correcta:CLASE_EN[a.clase] || a.clase, porque:a.nota};
 }
 /* Qué aporta un afijo. Varios comparten sentido ('lo contrario' vale para un-,
    in-, im- y dis-), así que los distractores se deduplican entre sí: si no, la
@@ -609,7 +611,7 @@ function pregSentido(b){
   });
   if(otros.length < 2) return null;
   return {clave:'s:' + a.afijo, item:a,
-    enunciado:'¿Qué aporta <b>' + esc(a.afijo) + '</b> a la palabra?',
+    enunciado:'What does <b>' + esc(a.afijo) + '</b> add to the word?',
     stem:a.ejemplos.slice(0, 4).map(function(e){ return esc(e.w); }).join(' · '),
     opciones:mezcla([sentidoDe(a)].concat(otros)), correcta:sentidoDe(a), porque:a.nota};
 }
@@ -623,9 +625,9 @@ function pregPrefijo(b){
   var otros = mezcla(todos.filter(function(x){ return x.afijo !== a.afijo; })).slice(0, 3);
   if(!raiz || otros.length < 2) return null;
   return {clave:'p:' + e.w, item:a,
-    enunciado:'¿Qué prefijo necesita <b>' + esc(raiz) + '</b> para dar <b>' + esc(e.w) + '</b>?',
+    enunciado:'Which prefix does <b>' + esc(raiz) + '</b> need to make <b>' + esc(e.w) + '</b>?',
     stem:'', opciones:mezcla([a.afijo].concat(otros.map(function(x){ return x.afijo; }))),
-    correcta:a.afijo, porque:a.afijo + ' significa «' + sentidoDe(a) + '». ' + (a.nota || '')};
+    correcta:a.afijo, porque:a.afijo + ' means «' + sentidoDe(a) + '». ' + (a.nota || '')};
 }
 /* Cuál NO es de la familia. */
 function pregIntruso(b){
@@ -636,9 +638,9 @@ function pregIntruso(b){
   var tres = mezcla(f.formas).slice(0, 3).map(function(y){ return y.w; });
   if(tres.indexOf(intruso) >= 0) return null;
   return {clave:'i:' + f.raiz, item:f,
-    enunciado:'¿Cuál <b>no</b> es de la misma familia que las otras?',
+    enunciado:'Which one is <b>not</b> from the same family as the others?',
     stem:'', opciones:mezcla(tres.concat([intruso])), correcta:intruso,
-    porque:tres.join(', ') + ' vienen todas de «' + f.raiz + '».'};
+    porque:tres.join(', ') + ' all come from «' + f.raiz + '».'};
 }
 function generadores(){
   return MODO === 'afijos' ? [pregClase, pregSentido, pregPrefijo] : [pregHueco, pregHueco, pregIntruso];
@@ -657,13 +659,13 @@ function iniciaMixto(){
 }
 function vistaMixto(){
   var n = ST.q.length;
-  if(!n) return '<div class="card"><div class="empty">Este bloque no da para preguntas sueltas.</div>' +
-    '<div class="row" style="justify-content:center"><button class="btn sec" onclick="alMenu()">Otras actividades</button></div></div>';
-  if(ST.i >= n) return resumenAct('Repaso mixto', ST.ok, n, 'mix');
+  if(!n) return '<div class="card"><div class="empty">This block does not have enough for standalone questions.</div>' +
+    '<div class="row" style="justify-content:center"><button class="btn sec" onclick="alMenu()">Other activities</button></div></div>';
+  if(ST.i >= n) return resumenAct('Mixed review', ST.ok, n, 'mix');
   var p = ST.q[ST.i];
   return '<div class="bar"><i style="width:' + Math.round(ST.i / n * 100) + '%"></i></div>' +
-    '<div class="meta"><span>Pregunta ' + (ST.i + 1) + ' de ' + n + ' · bloque ' + (IB + 1) + '</span>' +
-    '<span>' + ST.ok + ' correctas</span></div><div class="card">' +
+    '<div class="meta"><span>Question ' + (ST.i + 1) + ' of ' + n + ' · block ' + (IB + 1) + '</span>' +
+    '<span>' + ST.ok + ' correct</span></div><div class="card">' +
     '<div class="q">' + p.enunciado + '</div>' +
     (p.stem ? '<div class="stem">' + p.stem + '</div>' : '') +
     (p.dado ? '<div class="given">' + esc(p.dado) + '</div>' : '') +
@@ -684,27 +686,27 @@ function responde(i){
     else if(k === i) bs[k].classList.add('bad');
   }
   document.getElementById('fb').innerHTML = '<div class="fb ' + (bien ? 'ok' : 'no') + '">' +
-    (bien ? '¡Correcto! ' : 'Era «' + esc(p.correcta) + '». ') + esc(p.porque || '') +
-    '<button class="btn sm" style="margin-left:12px" onclick="sigMixto()">Siguiente</button></div>';
+    (bien ? 'Correct! ' : 'It was «' + esc(p.correcta) + '». ') + esc(p.porque || '') +
+    '<button class="btn sm" style="margin-left:12px" onclick="sigMixto()">Next</button></div>';
 }
 function sigMixto(){ ST.i++; render(); arriba(); }
 
 /* ---------- juegos ---------- */
 function vistaJuegos(){
-  if(!BLOQUES.length) return selectorModo() + '<div class="empty">Todavía no hay nada en este nivel.</div>';
+  if(!BLOQUES.length) return selectorModo() + '<div class="empty">There is nothing at this level yet.</div>';
   if(ACT === 'speed') return vistaSpeed();
   if(ACT === 'mem') return vistaMem();
   var rs = rec('speed'), rm = rec('mem'), af = MODO === 'afijos';
   return cabecera() + '<div class="acts">' +
-    acto('speed', '&#9201;', 'Contrarreloj',
-      SEGUNDOS + ' segundos: ' + (af ? 'reconoce el afijo por su sentido o por la palabra a medias.'
-        : 'elige la forma que encaja en la frase.') + ' Encadena aciertos y el punto vale doble y triple.',
-      rs != null ? 'Récord ' + rs : '') +
-    acto('mem', '&#9635;', 'Memoria',
-      af ? 'Seis parejas boca abajo: cada afijo con lo que aporta.'
-         : 'Seis parejas boca abajo: cada palabra con su raíz.',
-      rm != null ? 'Récord ' + rm + ' mov.' : '') +
-    '</div><div class="hint">Los récords son de este bloque y se guardan en este navegador.</div>';
+    acto('speed', '&#9201;', 'Time trial',
+      SEGUNDOS + ' seconds: ' + (af ? 'recognise the affix by its meaning or by the half-finished word.'
+        : 'choose the form that fits the sentence.') + ' Chain correct answers and the point is worth double, then triple.',
+      rs != null ? 'Record ' + rs : '') +
+    acto('mem', '&#9635;', 'Memory',
+      af ? 'Six pairs face down: each affix with what it adds.'
+         : 'Six pairs face down: each word with its root.',
+      rm != null ? 'Record ' + rm + ' moves' : '') +
+    '</div><div class="hint">Records are for this block and are saved in this browser.</div>';
 }
 function iniciaSpeed(){
   ACT = 'speed';
@@ -729,7 +731,7 @@ function nuevaQ(){
   }
   var op = mezcla([a.afijo].concat(otros));
   ST.q = {item:a, clave:'s:' + a.afijo, opciones:op, correcta:a.afijo,
-    enunciado: h ? 'Completa la palabra:' : '¿Qué afijo aporta «<b>' + esc(sentidoDe(a)) + '</b>»?',
+    enunciado: h ? 'Complete the word:' : 'Which affix adds «<b>' + esc(sentidoDe(a)) + '</b>»?',
     // Sin las palabras de ejemplo: aquí las opciones son los afijos, y enseñar
     // «reaction · recover · remove» al lado de «re-» regala la respuesta.
     stem: h ? (h.afijoIzquierda ? '<u></u>' + esc(h.resto) : esc(h.resto) + '<u></u>') +
@@ -738,17 +740,17 @@ function nuevaQ(){
 function vistaSpeed(){
   if(ST.terminado || !ST.q){
     return '<div class="card" style="text-align:center"><div class="score">' + ST.puntos + '</div>' +
-      '<p>' + plural(ST.aciertos, 'acierto', 'aciertos') + ' y ' + plural(ST.fallos, 'fallo', 'fallos') +
-      ' en ' + SEGUNDOS + ' segundos · racha máxima ' + ST.mejorRacha + '.</p>' +
-      (ST.nuevoRecord ? '<p style="color:var(--ok);font-weight:600">¡Récord nuevo en este bloque!</p>' :
-        (rec('speed') != null ? '<p class="hint">Tu récord en el bloque ' + (IB + 1) + ' es ' + rec('speed') + '.</p>' : '')) +
+      '<p>' + plural(ST.aciertos, 'correct answer', 'correct answers') + ' and ' + plural(ST.fallos, 'mistake', 'mistakes') +
+      ' in ' + SEGUNDOS + ' seconds · best streak ' + ST.mejorRacha + '.</p>' +
+      (ST.nuevoRecord ? '<p style="color:var(--ok);font-weight:600">New record for this block!</p>' :
+        (rec('speed') != null ? '<p class="hint">Your record for block ' + (IB + 1) + ' is ' + rec('speed') + '.</p>' : '')) +
       '<div class="row" style="justify-content:center">' +
-      '<button class="btn" onclick="inicia(\'speed\')">Otra vez</button>' +
-      '<button class="btn sec" onclick="alMenu()">Volver a los juegos</button></div></div>';
+      '<button class="btn" onclick="inicia(\'speed\')">Again</button>' +
+      '<button class="btn sec" onclick="alMenu()">Back to games</button></div></div>';
   }
   var q = ST.q, queda = Math.max(0, ST.hasta - Date.now());
-  return '<div class="hud"><span class="pts">' + ST.puntos + ' puntos</span>' +
-    '<span class="racha">' + (ST.racha >= 3 ? 'Racha ' + ST.racha + ' · x' + mult() : (ST.racha ? 'Racha ' + ST.racha : '')) + '</span>' +
+  return '<div class="hud"><span class="pts">' + ST.puntos + ' points</span>' +
+    '<span class="racha">' + (ST.racha >= 3 ? 'Streak ' + ST.racha + ' · x' + mult() : (ST.racha ? 'Streak ' + ST.racha : '')) + '</span>' +
     '<span id="tnum">' + Math.ceil(queda / 1000) + ' s</span></div>' +
     '<div class="tbar" id="tw"><i id="tbar" style="width:' + (queda / (SEGUNDOS * 1000) * 100) + '%"></i></div>' +
     '<div class="card"><div class="q">' + q.enunciado + '</div>' +
@@ -813,17 +815,17 @@ function vistaMem(){
   for(k in ST.hechas) hechas++;
   if(ST.fin != null){
     return '<div class="card" style="text-align:center"><div class="score">' + ST.movs + '</div>' +
-      '<p>' + (ST.movs === 1 ? 'movimiento' : 'movimientos') + ' para las ' + ST.total + ' parejas, en ' +
-      plural(ST.fin, 'segundo', 'segundos') + '.</p>' +
-      (ST.nuevoRecord ? '<p style="color:var(--ok);font-weight:600">¡Récord nuevo en este bloque!</p>' :
-        (rec('mem') != null ? '<p class="hint">Tu récord en el bloque ' + (IB + 1) + ' es ' +
-          plural(rec('mem'), 'movimiento', 'movimientos') + '.</p>' : '')) +
+      '<p>' + (ST.movs === 1 ? 'move' : 'moves') + ' for the ' + ST.total + ' pairs, in ' +
+      plural(ST.fin, 'second', 'seconds') + '.</p>' +
+      (ST.nuevoRecord ? '<p style="color:var(--ok);font-weight:600">New record for this block!</p>' :
+        (rec('mem') != null ? '<p class="hint">Your record for block ' + (IB + 1) + ' is ' +
+          plural(rec('mem'), 'move', 'moves') + '.</p>' : '')) +
       '<div class="row" style="justify-content:center">' +
-      '<button class="btn" onclick="inicia(\'mem\')">Otra vez</button>' +
-      '<button class="btn sec" onclick="alMenu()">Volver a los juegos</button></div></div>';
+      '<button class="btn" onclick="inicia(\'mem\')">Again</button>' +
+      '<button class="btn sec" onclick="alMenu()">Back to games</button></div></div>';
   }
-  return '<div class="hud"><span>Parejas <b>' + hechas + ' / ' + ST.total + '</b></span>' +
-    '<span class="racha">' + plural(ST.movs, 'movimiento', 'movimientos') + '</span></div>' +
+  return '<div class="hud"><span>Pairs <b>' + hechas + ' / ' + ST.total + '</b></span>' +
+    '<span class="racha">' + plural(ST.movs, 'move', 'moves') + '</span></div>' +
     '<div class="mem">' + ST.cartas.map(function(c, i){
       var hecha = ST.hechas[c.p], abierta = ST.abiertas.indexOf(i) >= 0;
       if(hecha || abierta){
@@ -832,8 +834,8 @@ function vistaMem(){
       }
       return '<button class="mc tapada" type="button" data-c="' + i + '">?</button>';
     }).join('') + '</div>' +
-    '<div class="hint">' + (MODO === 'afijos' ? 'Cada afijo con lo que aporta.' : 'Cada palabra con su raíz.') +
-    ' Se guarda el mejor número de movimientos.</div>';
+    '<div class="hint">' + (MODO === 'afijos' ? 'Each affix with what it adds.' : 'Each word with its root.') +
+    ' The best number of moves is saved.</div>';
 }
 function voltea(b){
   if(ACT !== 'mem' || !ST || ST.bloq || ST.fin != null) return;
@@ -872,21 +874,21 @@ function vistaProgreso(){
     return '<div class="card" style="display:flex;justify-content:space-between;align-items:center;padding:11px 15px">' +
       '<span class="afijo" style="font-size:1rem">' + esc(term(d)) + '</span>' +
       '<span style="font-size:.88rem;color:' + (tot && pct >= 80 ? 'var(--ok)' : 'var(--muted)') + '">' +
-      (tot ? h.ok + '/' + tot + ' · ' + pct + '%' : 'sin practicar') + '</span></div>';
+      (tot ? h.ok + '/' + tot + ' · ' + pct + '%' : 'not practised yet') + '</span></div>';
   }).join('');
   var porBloque = BLOQUES.map(function(b, i){
     var n = domBloque(b);
     return '<div style="display:flex;align-items:center;gap:10px;margin-top:9px">' +
-      '<button class="btn sec sm" onclick="setBloque(' + i + ')">Bloque ' + (i + 1) + '</button>' +
+      '<button class="btn sec sm" onclick="setBloque(' + i + ')">Block ' + (i + 1) + '</button>' +
       '<div class="bar" style="flex:1;margin:0"><i style="width:' + Math.round(n / b.length * 100) + '%"></i></div>' +
       '<span style="font-size:.85rem;color:var(--muted);white-space:nowrap">' + n + '/' + b.length + '</span></div>';
   }).join('');
   return selectorModo() +
-    '<div class="card"><b>' + dom + '</b> de ' + l.length + ' dominados en ' + LEVEL + ' (' + MODO + ')' +
-    ' · ' + vistos + ' practicados.<div class="bar"><i style="width:' +
+    '<div class="card"><b>' + dom + '</b> of ' + l.length + ' mastered at ' + LEVEL + ' (' + modoLabel() + ')' +
+    ' · ' + vistos + ' practised.<div class="bar"><i style="width:' +
     (l.length ? Math.round(dom / l.length * 100) : 0) + '%"></i></div>' +
-    '<div class="hint">Se considera dominado con dos intentos y un 80 % de aciertos. El progreso se guarda en este navegador.</div></div>' +
-    '<div class="card"><b>Por bloques</b>' + porBloque + '</div>' + filas;
+    '<div class="hint">An item counts as mastered after two attempts with 80% correct. Progress is saved in this browser.</div></div>' +
+    '<div class="card"><b>By block</b>' + porBloque + '</div>' + filas;
 }
 
 /* ---------- pintado y eventos ---------- */
@@ -952,5 +954,5 @@ fetch('data.json?v=1').then(function(r){ return r.json(); }).then(function(d){
   recarga(); pintaNiveles(); render();
 }).catch(function(){
   document.getElementById('view').innerHTML =
-    '<div class="empty">No se ha podido cargar el material. Vuelve a intentarlo en un momento.</div>';
+    '<div class="empty">Could not load the material. Please try again in a moment.</div>';
 });

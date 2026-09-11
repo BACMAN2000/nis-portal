@@ -15,7 +15,7 @@ var EMBED = false; try { EMBED = window.parent !== window; } catch(e){ EMBED = t
 var ALTO = 0;
 
 var COLORS = {A1:'#0EA5E9', A2:'#22C55E', B1:'#EAB308', B2:'#F97316', C1:'#EF4444', C2:'#8B5CF6'};
-var NOMBRES = {A1:'Primeros pasos', A2:'Elemental', B1:'Intermedio', B2:'Intermedio alto', C1:'Avanzado', C2:'Dominio'};
+var NOMBRES = {A1:'First steps', A2:'Elementary', B1:'Intermediate', B2:'Upper intermediate', C1:'Advanced', C2:'Mastery'};
 var POR_BLOQUE = 10, SEGUNDOS = 60;
 
 function esc(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){
@@ -186,20 +186,20 @@ function cabecera(){
   var chips = BLOQUES.map(function(bl, i){
     var dom = domBloque(bl);
     return '<button class="bk" aria-pressed="' + (i === IB) + '" onclick="setBloque(' + i + ')"' +
-      ' title="Bloque ' + (i + 1) + ': ' + dom + ' de ' + bl.length + ' dominados">' + (i + 1) +
+      ' title="Block ' + (i + 1) + ': ' + dom + ' of ' + bl.length + ' mastered">' + (i + 1) +
       '<i><b style="width:' + Math.round(dom / bl.length * 100) + '%"></b></i></button>';
   }).join('');
-  return '<div class="blockhead">Bloque <b>' + (IB + 1) + '</b> de ' + BLOQUES.length + ' · ' +
-    b.length + ' ' + APP.varios + ' · ' + plural(domBloque(b), 'dominado', 'dominados') + '</div>' +
+  return '<div class="blockhead">Block <b>' + (IB + 1) + '</b> of ' + BLOQUES.length + ' · ' +
+    b.length + ' ' + APP.varios + ' · ' + plural(domBloque(b), 'mastered', 'mastered') + '</div>' +
     '<div class="blocks">' + chips + '</div>';
 }
 
 /* ---------- aprender: dos o tres tarjetas por pantalla ---------- */
 function porPagina(){ return (window.innerWidth < 640 || (!EMBED && window.innerHeight < 640)) ? 2 : 3; }
 function vistaAprender(){
-  if(!BLOQUES.length) return '<div class="empty">Todavía no hay material en este nivel.</div>';
+  if(!BLOQUES.length) return '<div class="empty">No material for this level yet.</div>';
   return cabecera() +
-    '<input class="find" id="find" placeholder="Filtrar ' + esc(APP.uno) + ' o significado…"' +
+    '<input class="find" id="find" placeholder="Filter ' + esc(APP.uno) + ' or meaning…"' +
     ' oninput="filtra(this.value)" autocomplete="off" value="' + esc(FILTRO) + '">' +
     '<div id="lista">' + cuerpoAprender() + '</div>';
 }
@@ -211,8 +211,8 @@ function cuerpoAprender(){
         String(d.en || '').toLowerCase().indexOf(f) >= 0 ||
         String(d.es || '').toLowerCase().indexOf(f) >= 0;
     });
-    return '<div class="hint" style="margin:0 0 11px">' + l.length + ' en todo el nivel ' + LEVEL +
-      '. Borra el filtro para volver al bloque.</div>' + tarjetas(l);
+    return '<div class="hint" style="margin:0 0 11px">' + l.length + ' in the whole level ' + LEVEL +
+      '. Clear the filter to go back to the block.</div>' + tarjetas(l);
   }
   return carrusel();
 }
@@ -229,18 +229,18 @@ function carrusel(){
   if(PAG < 0) PAG = 0;
   var primera = IB === 0 && PAG === 0, ultima = IB === BLOQUES.length - 1 && PAG === np - 1;
   var h = '<div class="deckwrap">' +
-    '<button class="arrow" type="button" onclick="mueve(-1)" aria-label="Anterior"' + (primera ? ' disabled' : '') + '>&lsaquo;</button>' +
+    '<button class="arrow" type="button" onclick="mueve(-1)" aria-label="Previous"' + (primera ? ' disabled' : '') + '>&lsaquo;</button>' +
     '<div class="deck" id="deck">' + tarjetas(b.slice(PAG * PP, PAG * PP + PP)) + '</div>' +
-    '<button class="arrow" type="button" onclick="mueve(1)" aria-label="Siguiente"' + (ultima ? ' disabled' : '') + '>&rsaquo;</button>' +
+    '<button class="arrow" type="button" onclick="mueve(1)" aria-label="Next"' + (ultima ? ' disabled' : '') + '>&rsaquo;</button>' +
     '</div><div class="dots">';
   for(var i = 0; i < np; i++){
-    h += '<button class="dot' + (i === PAG ? ' on' : '') + '" type="button" onclick="vePag(' + i + ')" aria-label="Pantalla ' + (i + 1) + '"></button>';
+    h += '<button class="dot' + (i === PAG ? ' on' : '') + '" type="button" onclick="vePag(' + i + ')" aria-label="Screen ' + (i + 1) + '"></button>';
   }
-  h += '</div><div class="pagenum">Pantalla ' + (PAG + 1) + ' de ' + np + ' · avanza con &lsaquo; &rsaquo; o con las teclas ← →</div>';
+  h += '</div><div class="pagenum">Screen ' + (PAG + 1) + ' of ' + np + ' · move with &lsaquo; &rsaquo; or the ← → keys</div>';
   if(PAG === np - 1){
     h += '<div class="row" style="justify-content:center">' +
-      '<button class="btn" onclick="alPracticar()">Practicar este bloque</button>' +
-      (IB < BLOQUES.length - 1 ? '<button class="btn sec" onclick="setBloque(' + (IB + 1) + ')">Siguiente bloque</button>' : '') +
+      '<button class="btn" onclick="alPracticar()">Practice this block</button>' +
+      (IB < BLOQUES.length - 1 ? '<button class="btn sec" onclick="setBloque(' + (IB + 1) + ')">Next block</button>' : '') +
       '</div>';
   }
   return h;
@@ -260,14 +260,14 @@ function mueve(d){
   render();
 }
 function tarjetas(lista){
-  if(!lista.length) return '<div class="empty">Nada que mostrar.</div>';
+  if(!lista.length) return '<div class="empty">Nothing to show.</div>';
   return lista.map(function(d){
     var t = term(d);
     return '<div class="card">' +
       '<span class="pv">' + esc(t) + '</span>' + APP.badges(d) +
-      (dominado(d) ? '<span class="badge dom">dominado</span>' : '') +
-      '<button class="say" type="button" data-say="uk" data-t="' + esc(t) + '" title="Pronunciación británica">UK</button>' +
-      '<button class="say" type="button" data-say="us" data-t="' + esc(t) + '" title="Pronunciación americana">US</button>' +
+      (dominado(d) ? '<span class="badge dom">mastered</span>' : '') +
+      '<button class="say" type="button" data-say="uk" data-t="' + esc(t) + '" title="British pronunciation">UK</button>' +
+      '<button class="say" type="button" data-say="us" data-t="' + esc(t) + '" title="American pronunciation">US</button>' +
       '<div class="en">' + esc(d.en) + '</div>' +
       '<div class="es">' + esc(d.es) + '</div>' +
       '<div class="ex">' + esc(d.ex) + '</div>' +
@@ -291,18 +291,18 @@ function dice(boton){
 
 /* ---------- practicar: menú del bloque ---------- */
 function vistaPractica(){
-  if(!BLOQUES.length) return '<div class="empty">Todavía no hay material en este nivel.</div>';
+  if(!BLOQUES.length) return '<div class="empty">No material for this level yet.</div>';
   if(ACT === 'gap') return vistaRelleno();
   if(ACT === 'par') return vistaEmparejar();
   if(ACT === 'mix') return vistaMixto();
   var b = BLOQUES[IB] || [];
   return cabecera() + '<div class="acts">' +
-    acto('gap', '&#10003;', 'Rellenar los huecos',
-      b.length + ' frases con un hueco: elige ' + APP.elMejor + ' ' + APP.deLos + ' ' + b.length + ' ' + APP.varios + ' del bloque.') +
-    acto('par', '&#8646;', 'Emparejar significados',
-      'Une cada ' + APP.uno + ' con lo que significa, en rondas de cinco.') +
-    acto('mix', '&#10022;', 'Repaso mixto',
-      'Preguntas variadas de este bloque: significado en inglés y en español, verdadero o falso' + (APP.extra || '') + '.') +
+    acto('gap', '&#10003;', 'Fill in the gaps',
+      b.length + ' gap-fill sentences: choose ' + APP.elMejor + ' ' + APP.deLos + ' ' + b.length + ' ' + APP.varios + ' in the block.') +
+    acto('par', '&#8646;', 'Match meanings',
+      'Match each ' + APP.uno + ' with what it means, in rounds of five.') +
+    acto('mix', '&#10022;', 'Mixed review',
+      'Varied questions from this block: meaning in English and Spanish, true or false' + (APP.extra || '') + '.') +
     '</div>';
 }
 function acto(id, ic, tit, desc, extra){
@@ -321,11 +321,11 @@ function resumenAct(tit, ok, total, a){
   var pct = total ? Math.round(ok / total * 100) : 0;
   return '<div class="card" style="text-align:center">' +
     '<div class="score">' + pct + '%</div>' +
-    '<p>' + tit + ' · ' + ok + ' de ' + total + ' en el bloque ' + (IB + 1) + ' de ' + LEVEL + '.</p>' +
+    '<p>' + tit + ' · ' + ok + ' out of ' + total + ' in block ' + (IB + 1) + ' of ' + LEVEL + '.</p>' +
     '<div class="row" style="justify-content:center">' +
-    '<button class="btn" onclick="inicia(\'' + a + '\')">Otra vez</button>' +
-    (IB < BLOQUES.length - 1 ? '<button class="btn sec" onclick="setBloque(' + (IB + 1) + ')">Siguiente bloque</button>' : '') +
-    '<button class="btn sec" onclick="alMenu()">Otras actividades</button></div></div>';
+    '<button class="btn" onclick="inicia(\'' + a + '\')">Try again</button>' +
+    (IB < BLOQUES.length - 1 ? '<button class="btn sec" onclick="setBloque(' + (IB + 1) + ')">Next block</button>' : '') +
+    '<button class="btn sec" onclick="alMenu()">Other activities</button></div></div>';
 }
 
 /* ---------- rellenar huecos con el banco de diez ---------- */
@@ -355,13 +355,13 @@ function fraseHueco(d, resuelto){
 }
 function vistaRelleno(){
   var n = ST.orden.length;
-  if(ST.i >= n) return resumenAct('Rellenar los huecos', ST.ok, n, 'gap');
+  if(ST.i >= n) return resumenAct('Fill in the gaps', ST.ok, n, 'gap');
   var d = ST.orden[ST.i];
   return '<div class="bar"><i style="width:' + Math.round(ST.i / n * 100) + '%"></i></div>' +
-    '<div class="meta"><span>Frase ' + (ST.i + 1) + ' de ' + n + ' · bloque ' + (IB + 1) + '</span>' +
-    '<span>' + ST.ok + ' a la primera</span></div>' +
+    '<div class="meta"><span>Sentence ' + (ST.i + 1) + ' of ' + n + ' · block ' + (IB + 1) + '</span>' +
+    '<span>' + ST.ok + ' right first try</span></div>' +
     '<div class="card"><div class="sent">' + fraseHueco(d, ST.resuelto) + '</div>' +
-    '<div class="banktitle">Elige la opción que mejor encaja</div><div class="bank">' +
+    '<div class="banktitle">Choose the option that fits best</div><div class="bank">' +
     ST.banco.map(function(x){
       var tt = term(x), hecho = ST.hechos[tt];
       return '<button class="w' + (hecho ? ' done' : '') + '" type="button" data-t="' + esc(tt) + '"' +
@@ -369,7 +369,7 @@ function vistaRelleno(){
     }).join('') +
     '</div><div id="fb">' + (ST.resuelto ?
       '<div class="fb ok"><b>' + esc(term(d)) + '</b> — ' + esc(d.es) +
-      '<button class="btn sm" style="margin-left:12px" onclick="sigRelleno()">Siguiente</button></div>' : '') +
+      '<button class="btn sm" style="margin-left:12px" onclick="sigRelleno()">Next</button></div>' : '') +
     '</div></div>';
 }
 function eligeBanco(btn){
@@ -386,8 +386,8 @@ function eligeBanco(btn){
     var otro = null;
     ST.banco.forEach(function(x){ if(term(x) === sel) otro = x; });
     document.getElementById('fb').innerHTML = '<div class="fb no">' +
-      (otro ? '<b>' + esc(sel) + '</b> es «' + esc(otro.es) + '». La frase pide otra cosa.' : 'Ese no encaja aquí.') +
-      (ST.fallo ? ' Pista: buscas «' + esc(d.es) + '».' : '') + '</div>';
+      (otro ? '<b>' + esc(sel) + '</b> means «' + esc(otro.es) + '». The sentence calls for something else.' : 'That one does not fit here.') +
+      (ST.fallo ? ' Hint: you are looking for «' + esc(d.es) + '».' : '') + '</div>';
     ST.fallo = true;
     setTimeout(function(){ btn.classList.remove('bad'); }, 900);
   }
@@ -411,11 +411,11 @@ function iniciaRonda(){
   ST.hechos = 0; ST.selEl = null;
 }
 function vistaEmparejar(){
-  if(ST.r >= ST.rondas.length) return resumenAct('Emparejar significados', ST.ok, ST.ok + ST.err, 'par');
+  if(ST.r >= ST.rondas.length) return resumenAct('Match meanings', ST.ok, ST.ok + ST.err, 'par');
   var g = ST.rondas[ST.r];
-  var h = '<div class="meta" style="margin-bottom:10px"><span>Ronda ' + (ST.r + 1) + ' de ' + ST.rondas.length +
-    ' · bloque ' + (IB + 1) + '</span><span>' + plural(ST.ok, 'acierto', 'aciertos') + ' · ' + plural(ST.err, 'fallo', 'fallos') + '</span></div>' +
-    '<div class="card"><div class="q">Empareja cada ' + APP.uno + ' con su significado.</div><div class="match"><div>' +
+  var h = '<div class="meta" style="margin-bottom:10px"><span>Round ' + (ST.r + 1) + ' of ' + ST.rondas.length +
+    ' · block ' + (IB + 1) + '</span><span>' + plural(ST.ok, 'correct', 'correct') + ' · ' + plural(ST.err, 'wrong', 'wrong') + '</span></div>' +
+    '<div class="card"><div class="q">Match each ' + APP.uno + ' with its meaning.</div><div class="match"><div>' +
     g.map(function(d, i){
       return '<button class="mt" type="button" style="width:100%;margin-bottom:8px" data-side="L" data-i="' + i + '">' + esc(term(d)) + '</button>';
     }).join('') + '</div><div>' +
@@ -441,13 +441,13 @@ function pick(b){
     sel.classList.add('done'); b.classList.add('done');
     ST.hechos++; ST.ok++; marca(d, true);
     if(ST.hechos === ST.rondas[ST.r].length){
-      document.getElementById('fb').innerHTML = '<div class="fb ok">Ronda completa. ' +
+      document.getElementById('fb').innerHTML = '<div class="fb ok">Round complete. ' +
         '<button class="btn sm" style="margin-left:10px" onclick="sigRonda()">' +
-        (ST.r < ST.rondas.length - 1 ? 'Siguiente ronda' : 'Ver resultado') + '</button></div>';
+        (ST.r < ST.rondas.length - 1 ? 'Next round' : 'See result') + '</button></div>';
     }
   } else {
     ST.err++; marca(d, false);
-    document.getElementById('fb').innerHTML = '<div class="fb no">Ese no. Prueba otra vez.</div>';
+    document.getElementById('fb').innerHTML = '<div class="fb no">That is not it. Try again.</div>';
   }
   ST.selEl = null;
 }
@@ -465,12 +465,12 @@ function iniciaMixto(){
 }
 function vistaMixto(){
   var n = ST.q.length;
-  if(!n) return cabecera() + '<div class="card"><div class="empty">Este bloque no tiene preguntas sueltas.</div></div>';
-  if(ST.i >= n) return resumenAct('Repaso mixto', ST.ok, n, 'mix');
+  if(!n) return cabecera() + '<div class="card"><div class="empty">This block has no standalone questions.</div></div>';
+  if(ST.i >= n) return resumenAct('Mixed review', ST.ok, n, 'mix');
   var e = ST.q[ST.i];
   return '<div class="bar"><i style="width:' + Math.round(ST.i / n * 100) + '%"></i></div>' +
-    '<div class="meta"><span>Pregunta ' + (ST.i + 1) + ' de ' + n + ' · bloque ' + (IB + 1) + '</span>' +
-    '<span>' + ST.ok + ' correctas</span></div><div class="card">' +
+    '<div class="meta"><span>Question ' + (ST.i + 1) + ' of ' + n + ' · block ' + (IB + 1) + '</span>' +
+    '<span>' + ST.ok + ' correct</span></div><div class="card">' +
     '<div class="q">' + e.q + '</div><div class="opts" id="opts">' +
     e.options.map(function(o, i){
       return '<button class="opt" type="button" data-i="' + i + '">' + esc(o) + '</button>';
@@ -487,24 +487,24 @@ function responde(i){
     else if(k === i) bs[k].classList.add('bad');
   }
   document.getElementById('fb').innerHTML = '<div class="fb ' + (bien ? 'ok' : 'no') + '">' +
-    (bien ? '¡Correcto!' : 'La respuesta era: <b>' + esc(e.options[e.a]) + '</b>') +
+    (bien ? 'Correct!' : 'The answer was: <b>' + esc(e.options[e.a]) + '</b>') +
     (e.why ? ' — ' + esc(e.why) : '') +
-    '<button class="btn sm" style="margin-left:12px" onclick="sigMixto()">Siguiente</button></div>';
+    '<button class="btn sm" style="margin-left:12px" onclick="sigMixto()">Next</button></div>';
 }
 function sigMixto(){ ST.i++; render(); arriba(); }
 
 /* ---------- juegos ---------- */
 function vistaJuegos(){
-  if(!BLOQUES.length) return '<div class="empty">Todavía no hay material en este nivel.</div>';
+  if(!BLOQUES.length) return '<div class="empty">No material for this level yet.</div>';
   if(ACT === 'speed') return vistaSpeed();
   if(ACT === 'mem') return vistaMem();
   var rs = rec('speed'), rm = rec('mem');
   return cabecera() + '<div class="acts">' +
-    acto('speed', '&#9201;', 'Contrarreloj', SEGUNDOS + ' segundos: reconoce el significado antes de que se acabe el tiempo. Encadena aciertos y el punto vale doble y triple.',
-      rs != null ? 'Récord ' + rs : '') +
-    acto('mem', '&#9635;', 'Memoria', 'Seis parejas boca abajo: cada ' + APP.uno + ' con su traducción. Gana quien menos movimientos gasta.',
-      rm != null ? 'Récord ' + rm + ' mov.' : '') +
-    '</div><div class="hint">Los récords son de este bloque y se guardan en este navegador.</div>';
+    acto('speed', '&#9201;', 'Time attack', SEGUNDOS + ' seconds: recognise the meaning before time runs out. Chain correct answers and each point is worth double, then triple.',
+      rs != null ? 'Record ' + rs : '') +
+    acto('mem', '&#9635;', 'Memory', 'Six pairs face down: match each ' + APP.uno + ' with its translation. Fewest moves wins.',
+      rm != null ? 'Record ' + rm + ' moves' : '') +
+    '</div><div class="hint">Records are for this block and are saved in this browser.</div>';
 }
 
 /* Contrarreloj */
@@ -536,19 +536,19 @@ function nuevaQ(){
 function vistaSpeed(){
   if(ST.terminado){
     return '<div class="card" style="text-align:center"><div class="score">' + ST.puntos + '</div>' +
-      '<p>' + plural(ST.aciertos, 'acierto', 'aciertos') + ' y ' + plural(ST.fallos, 'fallo', 'fallos') + ' en ' + SEGUNDOS + ' segundos · racha máxima ' + ST.mejorRacha + '.</p>' +
-      (ST.nuevoRecord ? '<p style="color:var(--ok);font-weight:600">¡Récord nuevo en este bloque!</p>' :
-        (rec('speed') != null ? '<p class="hint">Tu récord en el bloque ' + (IB + 1) + ' es ' + rec('speed') + '.</p>' : '')) +
+      '<p>' + plural(ST.aciertos, 'correct', 'correct') + ' and ' + plural(ST.fallos, 'wrong', 'wrong') + ' in ' + SEGUNDOS + ' seconds · best streak ' + ST.mejorRacha + '.</p>' +
+      (ST.nuevoRecord ? '<p style="color:var(--ok);font-weight:600">New record for this block!</p>' :
+        (rec('speed') != null ? '<p class="hint">Your record in block ' + (IB + 1) + ' is ' + rec('speed') + '.</p>' : '')) +
       '<div class="row" style="justify-content:center">' +
-      '<button class="btn" onclick="inicia(\'speed\')">Otra vez</button>' +
-      '<button class="btn sec" onclick="alMenu()">Volver a los juegos</button></div></div>';
+      '<button class="btn" onclick="inicia(\'speed\')">Try again</button>' +
+      '<button class="btn sec" onclick="alMenu()">Back to games</button></div></div>';
   }
   var q = ST.q, queda = Math.max(0, ST.hasta - Date.now());
-  return '<div class="hud"><span class="pts">' + ST.puntos + ' puntos</span>' +
-    '<span class="racha">' + (ST.racha >= 3 ? 'Racha ' + ST.racha + ' · x' + mult() : (ST.racha ? 'Racha ' + ST.racha : '')) + '</span>' +
+  return '<div class="hud"><span class="pts">' + ST.puntos + ' points</span>' +
+    '<span class="racha">' + (ST.racha >= 3 ? 'Streak ' + ST.racha + ' · x' + mult() : (ST.racha ? 'Streak ' + ST.racha : '')) + '</span>' +
     '<span id="tnum">' + Math.ceil(queda / 1000) + ' s</span></div>' +
     '<div class="tbar" id="tw"><i id="tbar" style="width:' + (queda / (SEGUNDOS * 1000) * 100) + '%"></i></div>' +
-    '<div class="card"><div class="q">¿Qué ' + APP.uno + ' significa ' + (q.enEs ? '' : '(en inglés) ') +
+    '<div class="card"><div class="q">Which ' + APP.uno + ' means ' + (q.enEs ? '' : '(in English) ') +
     '«<b>' + esc(q.pista) + '</b>»?</div><div class="opts" id="opts">' +
     q.op.map(function(o, i){
       return '<button class="opt" type="button" data-i="' + i + '">' + esc(o) + '</button>';
@@ -609,15 +609,15 @@ function vistaMem(){
   for(k in ST.hechas) hechas++;
   if(ST.fin != null){
     return '<div class="card" style="text-align:center"><div class="score">' + ST.movs + '</div>' +
-      '<p>' + (ST.movs === 1 ? 'movimiento' : 'movimientos') + ' para las ' + ST.total + ' parejas, en ' + plural(ST.fin, 'segundo', 'segundos') + '.</p>' +
-      (ST.nuevoRecord ? '<p style="color:var(--ok);font-weight:600">¡Récord nuevo en este bloque!</p>' :
-        (rec('mem') != null ? '<p class="hint">Tu récord en el bloque ' + (IB + 1) + ' es ' + plural(rec('mem'), 'movimiento', 'movimientos') + '.</p>' : '')) +
+      '<p>' + (ST.movs === 1 ? 'move' : 'moves') + ' for the ' + ST.total + ' pairs, in ' + plural(ST.fin, 'second', 'seconds') + '.</p>' +
+      (ST.nuevoRecord ? '<p style="color:var(--ok);font-weight:600">New record for this block!</p>' :
+        (rec('mem') != null ? '<p class="hint">Your record in block ' + (IB + 1) + ' is ' + plural(rec('mem'), 'move', 'moves') + '.</p>' : '')) +
       '<div class="row" style="justify-content:center">' +
-      '<button class="btn" onclick="inicia(\'mem\')">Otra vez</button>' +
-      '<button class="btn sec" onclick="alMenu()">Volver a los juegos</button></div></div>';
+      '<button class="btn" onclick="inicia(\'mem\')">Try again</button>' +
+      '<button class="btn sec" onclick="alMenu()">Back to games</button></div></div>';
   }
-  return '<div class="hud"><span>Parejas <b>' + hechas + ' / ' + ST.total + '</b></span>' +
-    '<span class="racha">' + plural(ST.movs, 'movimiento', 'movimientos') + '</span></div>' +
+  return '<div class="hud"><span>Pairs <b>' + hechas + ' / ' + ST.total + '</b></span>' +
+    '<span class="racha">' + plural(ST.movs, 'move', 'moves') + '</span></div>' +
     '<div class="mem">' + ST.cartas.map(function(c, i){
       var hecha = ST.hechas[c.p], abierta = ST.abiertas.indexOf(i) >= 0;
       if(hecha || abierta){
@@ -626,7 +626,7 @@ function vistaMem(){
       }
       return '<button class="mc tapada" type="button" data-c="' + i + '">?</button>';
     }).join('') + '</div>' +
-    '<div class="hint">Cada ' + APP.uno + ' con su traducción. Se guarda el mejor número de movimientos.</div>';
+    '<div class="hint">Match each ' + APP.uno + ' with its translation. The best number of moves is saved.</div>';
 }
 function voltea(b){
   if(ACT !== 'mem' || !ST || ST.bloq || ST.fin != null) return;
@@ -665,20 +665,20 @@ function vistaProgreso(){
     return '<div class="card" style="display:flex;justify-content:space-between;align-items:center;padding:11px 15px">' +
       '<span class="pv" style="font-size:1rem">' + esc(term(d)) + '</span>' +
       '<span style="font-size:.88rem;color:' + (tot && pct >= 80 ? 'var(--ok)' : 'var(--muted)') + '">' +
-      (tot ? h.ok + '/' + tot + ' · ' + pct + '%' : 'sin practicar') + '</span></div>';
+      (tot ? h.ok + '/' + tot + ' · ' + pct + '%' : 'not practised') + '</span></div>';
   }).join('');
   var porBloque = BLOQUES.map(function(b, i){
     var n = domBloque(b);
     return '<div style="display:flex;align-items:center;gap:10px;margin-top:9px">' +
-      '<button class="btn sec sm" onclick="setBloque(' + i + ')">Bloque ' + (i + 1) + '</button>' +
+      '<button class="btn sec sm" onclick="setBloque(' + i + ')">Block ' + (i + 1) + '</button>' +
       '<div class="bar" style="flex:1;margin:0"><i style="width:' + Math.round(n / b.length * 100) + '%"></i></div>' +
       '<span style="font-size:.85rem;color:var(--muted);white-space:nowrap">' + n + '/' + b.length + '</span></div>';
   }).join('');
-  return '<div class="card"><b>' + dom + '</b> de ' + lista.length + ' dominados en ' + LEVEL +
-    ' · ' + vistos + ' practicados.<div class="bar"><i style="width:' +
+  return '<div class="card"><b>' + dom + '</b> of ' + lista.length + ' mastered in ' + LEVEL +
+    ' · ' + vistos + ' practised.<div class="bar"><i style="width:' +
     (lista.length ? Math.round(dom / lista.length * 100) : 0) + '%"></i></div>' +
-    '<div class="hint">Se considera dominado con dos intentos y un 80 % de aciertos. El progreso se guarda en este navegador.</div></div>' +
-    '<div class="card"><b>Por bloques</b>' + porBloque + '</div>' + filas;
+    '<div class="hint">Considered mastered after two attempts with 80% correct. Progress is saved in this browser.</div></div>' +
+    '<div class="card"><b>By block</b>' + porBloque + '</div>' + filas;
 }
 
 /* ---------- pintado y eventos ---------- */
@@ -749,5 +749,5 @@ fetch('data.json?v=' + (APP.datav || 1)).then(function(r){ return r.json(); }).t
   pintaNiveles(); render();
 }).catch(function(){
   document.getElementById('view').innerHTML =
-    '<div class="empty">No se ha podido cargar el material. Vuelve a intentarlo en un momento.</div>';
+    '<div class="empty">The material could not be loaded. Please try again in a moment.</div>';
 });

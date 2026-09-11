@@ -404,7 +404,7 @@
           const n=i+1;
           return `<div class="fillrow" id="row-${idx}-${i}"><span class="fn">${n}</span>
             <span>${esc(it.pre)}</span>
-            <input class="fin" id="in-${idx}-${i}" aria-label="Respuesta del hueco ${n}" autocomplete="off" spellcheck="false">
+            <input class="fin" id="in-${idx}-${i}" aria-label="Answer to gap ${n}" autocomplete="off" spellcheck="false">
             <span>${esc(it.post)}</span>
             <span class="fsol" id="sol-${idx}-${i}"></span></div>`;
         }).join('');
@@ -458,7 +458,7 @@
     const chk=document.getElementById(`chk-${idx}`); if(chk) chk.disabled = n<ex.items.length || ST[idx].revealed;
     const remaining=ex.items.length-n;
     const hint=document.getElementById(`hint-${idx}`);
-    if(hint) hint.textContent = (remaining>0 && !ST[idx].revealed) ? ` · responde ${remaining} más para corregir` : '';
+    if(hint) hint.textContent = (remaining>0 && !ST[idx].revealed) ? ` · answer ${remaining} more to check` : '';
   }
   document.addEventListener('input',e=>{ const m=e.target.id&&e.target.id.match(/^in-(\d+)-/); if(m) updateCount(+m[1]); });
 
@@ -536,8 +536,8 @@
   render();
 </script>
 <script src="nis-nav.js?v=c3230c7d"></script>
-<script src="config.js?v=68725f64"></script>
-<script src="activity-save.js?v=7bdace9a"></script>
+<script src="config.js?v=6ed285ca"></script>
+<script src="activity-save.js?v=9dbd5cb4"></script>
 <script>
 /* Los siete ejercicios extra guardaban solo en la pagina. Se recogen las
    respuestas de los campos para que viajen con la cuenta del alumno. */
@@ -571,6 +571,6 @@
   }));
 })();
 </script>
-<script src="nis-tema.js?v=a7890d34" defer></script>
+<script src="nis-tema.js?v=410c4879" defer></script>
 </body>
 </html>

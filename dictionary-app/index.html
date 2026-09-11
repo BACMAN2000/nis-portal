@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Diccionario · Cohasset Language Center</title>
+<title>Dictionary · Cohasset Language Center</title>
 <link rel="icon" href="../favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -105,24 +105,24 @@ body.embed .wrap{padding-top:14px}
 <body>
 <header>
   <div class="wrap">
-    <div class="crumb"><a href="../COHASSET-platform-standalone.html">Plataforma</a> › Diccionario</div>
+    <div class="crumb"><a href="../COHASSET-platform-standalone.html">Platform</a> › Dictionary</div>
     <h1 id="titulo">Cohasset Dictionary</h1>
-    <div class="sub" id="lema">Nuestro diccionario: fonética, audio, traducción y el significado escrito para nuestros cursos.</div>
+    <div class="sub" id="lema">Our dictionary: phonetics, audio, translation and definitions written for our courses.</div>
   </div>
 </header>
 
 <div class="wrap">
   <div class="buscador">
     <input id="q" type="search" autocomplete="off" spellcheck="false"
-           placeholder="Escribe una palabra en inglés…" aria-label="Buscar una palabra">
+           placeholder="Type a word in English…" aria-label="Search for a word">
     <span class="lupa" aria-hidden="true">🔍</span>
     <div id="sug" class="sug" hidden></div>
   </div>
-  <p class="stats" id="stats">Cargando…</p>
+  <p class="stats" id="stats">Loading…</p>
 
   <div id="ficha"></div>
 
-  <div class="seccion">Hojear el diccionario</div>
+  <div class="seccion">Browse the dictionary</div>
   <div class="fuentes" id="fuentes"></div>
   <div class="abc" id="abc"></div>
   <div class="niveles" id="niveles"></div>
@@ -144,7 +144,7 @@ var LETRA = 'a', NIVEL = '', DESDE = 0, PORLETRA = {}, SUGS = [], SEL = -1, TMR 
 var ES_NIS = /(^|\.)nis\./.test(location.hostname);
 if (ES_NIS) {
   document.getElementById('titulo').textContent = 'NIS Dictionary';
-  document.title = 'Diccionario · Nordic International School';
+  document.title = 'Dictionary · Nordic International School';
 }
 if (location.search.indexOf('embed=1') >= 0) document.body.classList.add('embed');
 
@@ -189,9 +189,9 @@ function pintaFicha(e){
 }
 function noEsta(w){
   document.getElementById('ficha').innerHTML =
-    '<div class="card"><div class="nada"><b>«' + esc(w) + '» no está todavía</b>' +
-    'Nuestro diccionario lo escribimos nosotros, palabra a palabra, así que va creciendo. ' +
-    'Prueba con la forma base: <i>nurses</i> → <i>nurse</i>.</div></div>';
+    '<div class="card"><div class="nada"><b>«' + esc(w) + '» is not there yet</b>' +
+    'We write our dictionary ourselves, word by word, so it keeps growing. ' +
+    'Try the base form: <i>nurses</i> → <i>nurse</i>.</div></div>';
 }
 function busca(w){
   w = (w || '').trim().toLowerCase();
@@ -233,10 +233,10 @@ function pintaAbc(){
   c.innerHTML = 'abcdefghijklmnopqrstuvwxyz'.split('').map(function(L){
     var n = PORLETRA[L] || 0;
     return '<button aria-pressed="' + (L === LETRA) + '"' + (n ? '' : ' disabled') +
-      ' title="' + n + ' palabras" onclick="verLetra(\'' + L + '\')">' + L + '</button>';
+      ' title="' + n + ' words" onclick="verLetra(\'' + L + '\')">' + L + '</button>';
   }).join('');
   document.getElementById('niveles').innerHTML =
-    ['<button aria-pressed="' + (NIVEL === '') + '" onclick="verNivel(\'\')">Todos</button>'].concat(
+    ['<button aria-pressed="' + (NIVEL === '') + '" onclick="verNivel(\'\')">All</button>'].concat(
       NIVELES.map(function(N){
         return '<button aria-pressed="' + (N === NIVEL) + '" onclick="verNivel(\'' + N + '\')">' + N + '</button>';
       })).join('');
@@ -285,12 +285,12 @@ function cargaLista(anade){
       c.innerHTML = anade ? c.innerHTML + html : html;
       var vistas = DESDE + (d.palabras || []).length;
       document.getElementById('mas').innerHTML = vistas < d.total
-        ? '<button class="btn sec" onclick="masLista()">Ver más (' + vistas + ' de ' + d.total + ')</button>'
-        : (d.total ? '<span class="stats">' + d.total + ' palabras con «' + LETRA + '»' +
-            (NIVEL ? ' en ' + NIVEL : '') + ' · ' + esc(etiquetaFuente()) + '</span>' : '<span class="stats">Nada aquí todavía.</span>');
+        ? '<button class="btn sec" onclick="masLista()">See more (' + vistas + ' of ' + d.total + ')</button>'
+        : (d.total ? '<span class="stats">' + d.total + ' words with «' + LETRA + '»' +
+            (NIVEL ? ' in ' + NIVEL : '') + ' · ' + esc(etiquetaFuente()) + '</span>' : '<span class="stats">Nothing here yet.</span>');
     })
     .catch(function(){ document.getElementById('lista').innerHTML =
-      '<span class="stats">No se ha podido cargar el índice.</span>'; });
+      '<span class="stats">The index could not be loaded.</span>'; });
 }
 function masLista(){ DESDE += 120; cargaLista(true); }
 
@@ -318,17 +318,17 @@ function cargaResumen(luego){
     if(ES_NIS) FUENTES = FUENTES.filter(function(f){ return f.id === 'general'; });
     // El tamano de la casa no cambia porque estes hojeando un curso.
     document.getElementById('stats').textContent =
-      d.total.toLocaleString('es') + ' palabras · ' +
-      d.con_traduccion.toLocaleString('es') + ' con traducción · ' +
-      d.con_definicion.toLocaleString('es') + ' con significado. Todo escrito en casa.';
+      d.total.toLocaleString('en-GB') + ' words · ' +
+      d.con_traduccion.toLocaleString('en-GB') + ' with translation · ' +
+      d.con_definicion.toLocaleString('en-GB') + ' with a definition. All written in-house.';
     if(luego) luego();
   }).catch(function(){
-    document.getElementById('stats').textContent = 'No se ha podido contactar con el diccionario.';
+    document.getElementById('stats').textContent = 'Could not reach the dictionary.';
     pintaAbc();
   });
 }
 cargaResumen(function(){ pintaFuentes(); pintaAbc(); cargaLista(false); });
 </script>
-<script src="../nis-tema.js?v=a7890d34" defer></script>
+<script src="../nis-tema.js?v=410c4879" defer></script>
 </body>
 </html>

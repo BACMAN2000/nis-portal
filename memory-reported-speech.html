@@ -59,10 +59,10 @@
   @media (max-width:620px){ body{overflow:auto; height:auto;} .board{grid-template-columns:repeat(2,1fr); grid-auto-rows:auto; gap:8px;} .cardc{aspect-ratio:1/1.05;} .back .txt{font-size:1rem;} .topnav{margin:-10px -14px 10px;} }
 </style>
   <meta name="google" content="notranslate">
-  <script src="config.js?v=68725f64"></script>
-  <script src="anticheat.js?v=f2bd3ba6" data-activity="memory-reported-speech"></script>
+  <script src="config.js?v=6ed285ca"></script>
+  <script src="anticheat.js?v=e8b83646" data-activity="memory-reported-speech"></script>
 <script src="nis-nav.js?v=c3230c7d"></script>
-<script src="activity-save.js?v=7bdace9a"></script>
+<script src="activity-save.js?v=9dbd5cb4"></script>
 </head>
 <body>
 <nav class="topnav">
@@ -94,7 +94,7 @@
 <footer>Reported Speech · Memory · NIS English · 2026 — <a href="reported-speech-lab.html" style="color:var(--accent)">More games: Reported Speech Lab →</a></footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
-<script src="config.js?v=68725f64"></script>
+<script src="config.js?v=6ed285ca"></script>
 <script>
 window.NISACT=(function(){
   let _sb=null;
@@ -110,9 +110,9 @@ window.NISACT=(function(){
      va convencido de que su trabajo quedo registrado. */
   function avisaGuardado(ok, motivo){
     var P = 'Guardando tu resultado\u2026';
-    var texto = ok === null ? 'Entra al Portal para que tu resultado quede guardado.'
-              : ok ? 'Tu resultado quedo guardado en My Results.'
-              : '\u26a0 No se pudo guardar tu resultado (' + (motivo || 'sin conexion') + '). Avisa a tu profesor.';
+    var texto = ok === null ? 'Sign in to the Portal so your result is saved.'
+              : ok ? 'Your result was saved to My Results.'
+              : '\u26a0 Your result could not be saved (' + (motivo || 'no connection') + '). Tell your teacher.';
     document.querySelectorAll('div,p,span,h1,h2,h3').forEach(function(n){
       if(n.children.length === 0 && n.textContent.indexOf(P) >= 0){
         n.textContent = n.textContent.replace(P, texto);
@@ -124,7 +124,7 @@ window.NISACT=(function(){
     let ok=true, motivo='';
     try{ const q=await client().from('activity_attempts').insert({student_id:s.uid,activity:r.activity,title:r.title,level:r.level,
       score:r.score,total:r.total,hints_used:0,lives_left:r.lives,duration_sec:r.duration});
-      if(q && q.error){ ok=false; motivo=q.error.message; } }catch(e){ ok=false; motivo=(e&&e.message)||'sin conexion'; }
+      if(q && q.error){ ok=false; motivo=q.error.message; } }catch(e){ ok=false; motivo=(e&&e.message)||'no connection'; }
     try{ const m=Math.floor(r.duration/60), sec=r.duration%60;
       await fetch(NIS_CONFIG.WRITING_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
         body:JSON.stringify({skill:'Activity',name:s.full_name||s.first_name||'',email:s.email||'',level:r.level,
@@ -224,6 +224,6 @@ if(window.NIS_WORK) NIS_WORK.attach(Object.assign(NIS_WORK.ficha(), {
 
 newGame();
 </script>
-<script src="nis-tema.js?v=a7890d34" defer></script>
+<script src="nis-tema.js?v=410c4879" defer></script>
 </body>
 </html>

@@ -224,7 +224,7 @@ footer a{color:var(--blue-d);font-weight:700}
 input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--accent);outline-offset:1px}
 </style>
 <script src="nis-nav.js?v=c3230c7d"></script>
-<script src="activity-save.js?v=7bdace9a"></script>
+<script src="activity-save.js?v=9dbd5cb4"></script>
 </head>
 <body>
 <nav class="topnav">
@@ -247,7 +247,7 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px soli
 <footer id="foot"></footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
-<script src="config.js?v=68725f64"></script>
+<script src="config.js?v=6ed285ca"></script>
 <script src="grammar-lab-data.js?v=2325774d"></script>
 <script>
 /* ===================================================================
@@ -272,9 +272,9 @@ window.NISACT = (function () {
      va convencido de que su trabajo quedo registrado. */
   function avisaGuardado(ok, motivo){
     var P = 'Guardando tu resultado\u2026';
-    var texto = ok === null ? 'Entra al Portal para que tu resultado quede guardado.'
-              : ok ? 'Tu resultado quedo guardado en My Results.'
-              : '\u26a0 No se pudo guardar tu resultado (' + (motivo || 'sin conexion') + '). Avisa a tu profesor.';
+    var texto = ok === null ? 'Sign in to the Portal so your result is saved.'
+              : ok ? 'Your result was saved to My Results.'
+              : '\u26a0 We could not save your result (' + (motivo || 'no connection') + '). Tell your teacher.';
     document.querySelectorAll('div,p,span,h1,h2,h3').forEach(function(n){
       if(n.children.length === 0 && n.textContent.indexOf(P) >= 0){
         n.textContent = n.textContent.replace(P, texto);
@@ -650,6 +650,6 @@ if(window.NIS_WORK) NIS_WORK.attach(Object.assign(
 ));
 
 </script>
-<script src="nis-tema.js?v=a7890d34" defer></script>
+<script src="nis-tema.js?v=410c4879" defer></script>
 </body>
 </html>

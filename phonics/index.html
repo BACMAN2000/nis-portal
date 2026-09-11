@@ -42,8 +42,8 @@
   .voiced-dot{box-shadow:0 0 0 4px rgba(74,123,200,.18)}
 </style>
   <meta name="google" content="notranslate">
-  <script src="../config.js?v=68725f64"></script>
-  <script src="../anticheat.js?v=f2bd3ba6" data-activity="phonics"></script>
+  <script src="../config.js?v=6ed285ca"></script>
+  <script src="../anticheat.js?v=e8b83646" data-activity="phonics"></script>
 </head>
 <body>
 <div id="root"></div>
@@ -1974,7 +1974,7 @@ function VoiceControls() {
     className: "flex items-center gap-2"
   }, /*#__PURE__*/React.createElement("div", {
     className: "flex gap-0.5 bg-nordic-50 rounded-xl p-0.5 border border-nordic-100",
-    title: "Acento del ingl\xE9s"
+    title: "English accent"
   }, /*#__PURE__*/React.createElement("button", {
     onClick: () => set('accent', 'us'),
     className: seg(voicePrefs.accent === 'us')
@@ -1983,7 +1983,7 @@ function VoiceControls() {
     className: seg(voicePrefs.accent === 'uk')
   }, "\uD83C\uDDEC\uD83C\uDDE7 UK")), /*#__PURE__*/React.createElement("div", {
     className: "flex gap-0.5 bg-nordic-50 rounded-xl p-0.5 border border-nordic-100",
-    title: "Voz"
+    title: "Voice"
   }, /*#__PURE__*/React.createElement("button", {
     onClick: () => set('gender', 'female'),
     className: seg(voicePrefs.gender === 'female')
@@ -1992,14 +1992,14 @@ function VoiceControls() {
     className: seg(voicePrefs.gender === 'male')
   }, "\uD83D\uDC68 Mr")), /*#__PURE__*/React.createElement("div", {
     className: "flex gap-0.5 bg-nordic-50 rounded-xl p-0.5 border border-nordic-100",
-    title: "Velocidad"
+    title: "Speed"
   }, /*#__PURE__*/React.createElement("button", {
     onClick: () => set('speed', 'normal'),
     className: seg(voicePrefs.speed === 'normal')
   }, "\u25B6 Normal"), /*#__PURE__*/React.createElement("button", {
     onClick: () => set('speed', 'slow'),
     className: seg(voicePrefs.speed === 'slow')
-  }, "\uD83D\uDC22 Lento")));
+  }, "\uD83D\uDC22 Slow")));
 }
 function App() {
   const [tab, setTab] = useState("home");
@@ -2057,6 +2057,6 @@ function App() {
 if (EMBED) document.body.classList.add('embed');
 ReactDOM.createRoot(document.getElementById("root")).render(/*#__PURE__*/React.createElement(App, null));
 </script>
-<script src="../nis-tema.js?v=a7890d34" defer></script>
+<script src="../nis-tema.js?v=410c4879" defer></script>
 </body>
 </html>

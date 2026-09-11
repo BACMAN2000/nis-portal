@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,19 +24,19 @@
   <div class="wrap">
     <div class="crumb"><a href="../index.html">Portal</a> › Collocations</div>
     <h1>Collocations</h1>
-    <div class="sub">Las palabras que en inglés van juntas, medidas en nuestros propios cursos y ordenadas por nivel.</div>
+    <div class="sub">The words that go together in English, measured in our own courses and ranked by level.</div>
   </div>
 </header>
 
 <div class="wrap">
   <div class="levels" id="levels"></div>
   <div class="tabs" role="tablist">
-    <button class="tab" id="tab-learn" role="tab" aria-selected="true" onclick="setTab('learn')">Aprender</button>
-    <button class="tab" id="tab-practice" role="tab" aria-selected="false" onclick="setTab('practice')">Practicar</button>
-    <button class="tab" id="tab-games" role="tab" aria-selected="false" onclick="setTab('games')">Juegos</button>
-    <button class="tab" id="tab-progress" role="tab" aria-selected="false" onclick="setTab('progress')">Mi progreso</button>
+    <button class="tab" id="tab-learn" role="tab" aria-selected="true" onclick="setTab('learn')">Learn</button>
+    <button class="tab" id="tab-practice" role="tab" aria-selected="false" onclick="setTab('practice')">Practice</button>
+    <button class="tab" id="tab-games" role="tab" aria-selected="false" onclick="setTab('games')">Games</button>
+    <button class="tab" id="tab-progress" role="tab" aria-selected="false" onclick="setTab('progress')">My progress</button>
   </div>
-  <div id="view"><div class="empty">Cargando…</div></div>
+  <div id="view"><div class="empty">Loading…</div></div>
 </div>
 
 <script>
@@ -44,16 +44,16 @@
    que enseña. El motor está en ../js/lexapp.js, compartido con las otras dos. */
 var APP = {
   store:'coh_colloc', list:'cols', id:'col', audio:'collocations', datav:1,
-  uno:'colocación', varios:'colocaciones',
-  elMejor:'la mejor', deLos:'de las',
-  extra:' y la pareja de palabras',
+  uno:'collocation', varios:'collocations',
+  elMejor:'the best', deLos:'of the',
+  extra:' and the word pair',
   badges: function(d){
     return '<span class="badge insep">' + esc(d.tipo || '') + '</span>' +
-      (d.freq ? '<span class="badge">' + d.freq + ' veces en el curso</span>' : '');
+      (d.freq ? '<span class="badge">' + d.freq + ' times in the course</span>' : '');
   }
 };
 </script>
-<script src="../lexapp.js?v=7c37370b"></script>
-<script src="../nis-tema.js?v=a7890d34" defer></script>
+<script src="../lexapp.js?v=8e70a27f"></script>
+<script src="../nis-tema.js?v=410c4879" defer></script>
 </body>
 </html>

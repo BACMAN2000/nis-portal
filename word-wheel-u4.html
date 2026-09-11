@@ -354,7 +354,7 @@ body{
     <p class="note" id="adminNote"></p>
     <div id="listBody"></div>
     <div class="btnrow">
-      <button class="btn primary" id="btnAsStudent">👁 Ver como alumno</button>
+      <button class="btn primary" id="btnAsStudent">👁 View as student</button>
     </div>
     <div class="slogan">
       <svg class="iso" style="color:#fff"><use href="#nsIso"/></svg>
@@ -386,10 +386,10 @@ body{
   </div>
 </div></div>
 
-<script src="ui-mensajes.js?v=18d6c1e2"></script>
+<script src="ui-mensajes.js?v=22f3c588"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
-<script src="config.js?v=68725f64"></script>
-<script src="activity-save.js?v=7bdace9a"></script>
+<script src="config.js?v=6ed285ca"></script>
+<script src="activity-save.js?v=9dbd5cb4"></script>
 <script>
 /* Aviso de la plataforma, con respaldo: NISUI en el portal NIS, cohConfirm en
    Cohasset, y el del navegador si la pagina no carga ninguno de los dos. */
@@ -968,7 +968,7 @@ function askAdmin(){
   const p=window.prompt("Admin PIN:");
   if(p===null) return;
   if(p.trim()===ADMIN_PIN){ S.admin=true; save(); openAdmin(); }
-  else window.alert("PIN incorrecto.");
+  else window.alert("Incorrect PIN.");
 }
 function openAdmin(){ paintAdmin(); show("list"); }
 function exitAdmin(){ S.admin=false; save(); revealed=false; paintHome(); show("home"); }
@@ -978,8 +978,8 @@ function paintAdmin(){
   for(let i=0;i<tabs.length;i++)
     tabs[i].classList.toggle("on", tabs[i].getAttribute("data-tab")===adminTab);
   $("adminNote").textContent = adminTab==="words"
-    ? "Las letras de la ruleta son la palabra clave; todas las demás se forman con esas mismas letras."
-    : "Solucionario de los 36 crucigramas. La casilla azul marca la palabra clave de la unidad. 🖨 imprime esta vista.";
+    ? "The wheel letters are the key word; every other word is formed from those same letters."
+    : "Answer key for the 36 crosswords. The blue tile marks the unit’s key word. 🖨 prints this view.";
   if(adminTab==="words") paintList(); else paintAnswers();
 }
 
@@ -1104,6 +1104,6 @@ if(window.NIS_WORK) NIS_WORK.attach(Object.assign(NIS_WORK.ficha(), {
 
 paintHome();
 </script>
-<script src="nis-tema.js?v=a7890d34" defer></script>
+<script src="nis-tema.js?v=410c4879" defer></script>
 </body>
 </html>

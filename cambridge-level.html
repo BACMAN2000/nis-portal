@@ -112,8 +112,8 @@
 <main>
   <div id="loadErr" class="card hidden" style="border-color:#FCA5A5;background:#FEF2F2"></div>
   <div class="tabs">
-    <button id="tabExam" class="act" onclick="showTab('exam')">Examen</button>
-    <button id="tabPrac" onclick="showTab('prac')">Tests de práctica</button>
+    <button id="tabExam" class="act" onclick="showTab('exam')">Exam</button>
+    <button id="tabPrac" onclick="showTab('prac')">Practice tests</button>
   </div>
   <div id="viewExam"></div>
   <div id="viewPrac" class="hidden"></div>
@@ -134,14 +134,14 @@ function showTab(t){
 }
 
 function loadData(cb){
-  if(!CEFR[LEVEL]){ fail('Nivel inválido. Usa ?level=ket|pet|fce|cae|cpe'); return; }
+  if(!CEFR[LEVEL]){ fail('Invalid level. Use ?level=ket|pet|fce|cae|cpe'); return; }
   const s=document.createElement('script');
   // El sello cambia el dia que se tocan los datasets. Subio el 10-sep-2026 al
   // sacarles las respuestas: sin cambiarlo, el navegador que ya tuviera el
   // archivo viejo seguiria trayendo la clave dentro.
   s.src='cambridge-data/cambridge-'+LEVEL+'.js?v=20260910';
-  s.onload=()=>{ CAM=window['CAM_'+LEVEL.toUpperCase()]; CAM?cb():fail('No se encontró el dataset.'); };
-  s.onerror=()=>fail('No se pudo cargar cambridge-'+LEVEL+'.js');
+  s.onload=()=>{ CAM=window['CAM_'+LEVEL.toUpperCase()]; CAM?cb():fail('Dataset not found.'); };
+  s.onerror=()=>fail('Could not load cambridge-'+LEVEL+'.js');
   document.head.appendChild(s);
 }
 function fail(m){ const e=document.getElementById('loadErr'); e.textContent='⚠ '+m; e.classList.remove('hidden'); }
@@ -150,20 +150,20 @@ function renderExam(){
   const ei=CAM.examInfo||{};
   document.getElementById('examName').textContent=CAM.name||'Cambridge';
   document.getElementById('examLvl').textContent=CEFR[LEVEL]+' · '+(ei.title||'');
-  let h=`<div class="card"><h2>Descripción</h2><p>${esc(ei.overview||'')}</p>`;
+  let h=`<div class="card"><h2>Description</h2><p>${esc(ei.overview||'')}</p>`;
   if(ei.papers&&ei.papers.length){
-    h+=`<h2>Estructura</h2><table><thead><tr><th>Paper</th><th>Duración</th><th>Partes</th><th>Preguntas</th></tr></thead><tbody>`;
+    h+=`<h2>Structure</h2><table><thead><tr><th>Paper</th><th>Duration</th><th>Parts</th><th>Questions</th></tr></thead><tbody>`;
     ei.papers.forEach(p=>h+=`<tr><td>${esc(p.name)}</td><td>${esc(p.duration)}</td><td>${p.parts??'—'}</td><td>${p.questions??'—'}</td></tr>`);
     h+=`</tbody></table>`;
   }
   h+=`</div>`;
   (ei.paperDetails||[]).forEach(pd=>{
     h+=`<div class="card"><h2>${esc(pd.paper)}</h2>`;
-    (pd.parts||[]).forEach(pt=>h+=`<details class="acc"><summary>Parte ${pt.part}: ${esc(pt.name)} ${pt.questions?('· '+pt.questions+' preguntas'):''}</summary><div>${esc(pt.description||'')}</div></details>`);
+    (pd.parts||[]).forEach(pt=>h+=`<details class="acc"><summary>Part ${pt.part}: ${esc(pt.name)} ${pt.questions?('· '+pt.questions+' questions'):''}</summary><div>${esc(pt.description||'')}</div></details>`);
     h+=`</div>`;
   });
   if(ei.tips&&ei.tips.length){
-    h+=`<div class="card"><h2>Consejos</h2>`;
+    h+=`<div class="card"><h2>Tips</h2>`;
     ei.tips.forEach(t=>h+=`<div class="tip">${esc(typeof t==='string'?t:(t.tip||JSON.stringify(t)))}</div>`);
     h+=`</div>`;
   }
@@ -172,8 +172,8 @@ function renderExam(){
 
 function renderPracList(){
   const ls=CAM.lessons||[];
-  let h=`<div class="card"><h2>Tests de práctica (${ls.length})</h2><p class="muted">Inicia sesión (widget abajo a la derecha) para que tu progreso se guarde en el servidor.</p>`;
-  ls.forEach((t,i)=>h+=`<div class="test-item"><span><b>${esc(t.t||('Test '+(i+1)))}</b> <span class="muted">· ${(t.exercises||[]).length} ejercicios</span></span><button class="go" onclick="openTest(${i})">Empezar</button></div>`);
+  let h=`<div class="card"><h2>Practice tests (${ls.length})</h2><p class="muted">Sign in (widget at the bottom right) so your progress is saved on the server.</p>`;
+  ls.forEach((t,i)=>h+=`<div class="test-item"><span><b>${esc(t.t||('Test '+(i+1)))}</b> <span class="muted">· ${(t.exercises||[]).length} exercises</span></span><button class="go" onclick="openTest(${i})">Start</button></div>`);
   h+=`</div>`;
   document.getElementById('viewPrac').innerHTML=h;
 }
@@ -189,13 +189,13 @@ function partNumber(ex,ei){ const m=(ex&&ex.title||'').match(/Part\s*(\d+)/i); r
 // HTML de UN solo ejercicio (mismos IDs que antes → grade/pick/wc/submitWr intactos).
 function exerciseHtml(ti,ei){
   const ex=CAM.lessons[ti].exercises[ei];
-  let h=`<div class="ex" id="ex-${ti}-${ei}"><b>${esc(ex.title||ex.tl||'Ejercicio')}</b><div class="ins">${esc(ex.ins||'')}</div>`;
+  let h=`<div class="ex" id="ex-${ti}-${ei}"><b>${esc(ex.title||ex.tl||'Exercise')}</b><div class="ins">${esc(ex.ins||'')}</div>`;
   /* Listening: hasta ahora la pagina daba las preguntas y no habia nada que oir.
      El mp3 lo graba cambridge-data/gen_cambridge_audio.py con los guiones que ya
      estaban escritos en los datos. */
   if(ex.tl==='Listening'){
     h+=`<audio class="lsn-audio" controls preload="none" src="cambridge-audio/${LEVEL}/t${String(ti+1).padStart(2,'0')}-e${ei+1}.mp3"
-          onerror="this.insertAdjacentHTML('afterend','<div class=\\'muted\\'>La grabación de este ejercicio todavía no está publicada.</div>');this.remove()"></audio>`;
+          onerror="this.insertAdjacentHTML('afterend','<div class=\\'muted\\'>The recording for this exercise is not published yet.</div>');this.remove()"></audio>`;
   }
   /* Texto con huecos: el numero se pulsa y las alternativas salen donde esta. */
   const conHuecos = !!(ex.passage && /\((\d+)\)_{2,}/.test(ex.passage) && (ex.items||[]).length && (ex.items||[]).every(it=>it.opts));
@@ -208,26 +208,26 @@ function exerciseHtml(ti,ei){
   } else if(ex.passage) h+=`<div class="passage">${esc(ex.passage)}</div>`;
   if(ex.type==='wr'){
     h+=`<p>${esc(ex.prompt||'').replace(/\n/g,'<br>')}</p>
-        <textarea id="wr-${ti}-${ei}" oninput="wc(${ti},${ei},${ex.minWords||0})" placeholder="Escribe aquí…"></textarea>
-        <div class="muted" id="wc-${ti}-${ei}">0 palabras (mínimo ${ex.minWords||0})</div>
+        <textarea id="wr-${ti}-${ei}" oninput="wc(${ti},${ei},${ex.minWords||0})" placeholder="Write here…"></textarea>
+        <div class="muted" id="wc-${ti}-${ei}">0 words (minimum ${ex.minWords||0})</div>
         <div class="res" id="r-${ti}-${ei}"></div>
-        <button class="go" style="margin-top:10px" onclick="submitWr(${ti},${ei})">Enviar</button>`;
+        <button class="go" style="margin-top:10px" onclick="submitWr(${ti},${ei})">Submit</button>`;
   } else {
     (conHuecos ? [] : (ex.items||[])).forEach((it,qi)=>{
       h+=`<div class="q" id="q-${ti}-${ei}-${qi}">`;
       if(ex.type==='fl'){
-        h+=`<div>${esc(it.pre||'')} <input type="text" aria-label="Respuesta ${qi+1}" id="i-${ti}-${ei}-${qi}"> ${esc(it.post||'')}</div>`;
+        h+=`<div>${esc(it.pre||'')} <input type="text" aria-label="Answer ${qi+1}" id="i-${ti}-${ei}-${qi}"> ${esc(it.post||'')}</div>`;
       } else if(ex.type==='kt'){
         /* Key word transformations: la frase original, la palabra obligatoria y el
            hueco. Antes caian en la rama de opciones A-D, que no encontraba ni
            enunciado ni alternativas, y salia el numero a secas. */
         h+=`<div style="font-weight:600;margin-bottom:4px">${qi+1}. ${esc(it.src||'')}</div>
-            <div class="kw"><span class="kw-tag">PALABRA CLAVE</span> <b>${esc(it.kw||'')}</b></div>
-            <div><input type="text" class="wide" placeholder="2-5 palabras" aria-label="Respuesta ${qi+1}" id="i-${ti}-${ei}-${qi}"></div>
+            <div class="kw"><span class="kw-tag">KEY WORD</span> <b>${esc(it.kw||'')}</b></div>
+            <div><input type="text" class="wide" placeholder="2-5 words" aria-label="Answer ${qi+1}" id="i-${ti}-${ei}-${qi}"></div>
             ${it.hint?`<div class="muted" style="margin-top:4px">${esc(it.hint)}</div>`:''}`;
       } else if(ex.type==='wf'){
         /* Word formation: la raiz que hay que transformar va junto al hueco. */
-        h+=`<div>${qi+1}. ${esc(it.pre||'')} <input type="text" aria-label="Respuesta ${qi+1}" id="i-${ti}-${ei}-${qi}"> ${esc(it.post||'')}
+        h+=`<div>${qi+1}. ${esc(it.pre||'')} <input type="text" aria-label="Answer ${qi+1}" id="i-${ti}-${ei}-${qi}"> ${esc(it.post||'')}
             <span class="raiz">${esc(it.root||'')}</span></div>`;
       } else {
         h+=`<div style="font-weight:600;margin-bottom:4px" id="ql-${ti}-${ei}-${qi}">${qi+1}. ${esc(it.q||'')}</div>`;
@@ -237,7 +237,7 @@ function exerciseHtml(ti,ei){
       }
       h+=`</div>`;
     });
-    h+=`<div class="res" id="r-${ti}-${ei}"></div><button class="go" style="margin-top:8px" onclick="grade(${ti},${ei})">Revisar</button>`;
+    h+=`<div class="res" id="r-${ti}-${ei}"></div><button class="go" style="margin-top:8px" onclick="grade(${ti},${ei})">Check answers</button>`;
   }
   h+=`</div>`;
   return h;
@@ -287,12 +287,12 @@ function openTest(ti){
   window._ti=ti; window._part=0;
   const menu=exs.map((ex,ei)=>`<button type="button" class="cr-item" id="cr-item-${ei}" aria-pressed="false" onclick="showPart(${ei})">
       <span class="cr-n">${esc(partNumber(ex,ei))}</span>
-      <span class="cr-body"><span class="cr-ttl">${esc(ex.title||ex.tl||('Ejercicio '+(ei+1)))}</span>${ex.tl?`<span class="cr-sub">${esc(ex.tl)}</span>`:''}</span>
+      <span class="cr-body"><span class="cr-ttl">${esc(ex.title||ex.tl||('Exercise '+(ei+1)))}</span>${ex.tl?`<span class="cr-sub">${esc(ex.tl)}</span>`:''}</span>
       <span class="cr-hand" aria-hidden="true">👆</span>
     </button>`).join('');
   const h=`<div class="card cr-top"><button class="go sec" onclick="renderPracList()">← Tests</button> <h2 style="display:inline;margin-left:8px">${esc(test.t)}</h2></div>
     <div class="cr-lay">
-      <aside class="cr-sb" id="crSb" aria-label="Unidades del test">${menu||'<p class="muted" style="padding:8px">Sin unidades.</p>'}</aside>
+      <aside class="cr-sb" id="crSb" aria-label="Test units">${menu||'<p class="muted" style="padding:8px">No units yet.</p>'}</aside>
       <div class="cr-main" id="crMain"></div>
     </div>`;
   const v=document.getElementById('viewPrac'); v.innerHTML=h; v.scrollIntoView({behavior:'smooth'});
@@ -307,9 +307,9 @@ function showPart(ei){
   exs.forEach((_,k)=>{ const it=document.getElementById('cr-item-'+k); if(it){ const on=k===ei; it.classList.toggle('act',on); it.setAttribute('aria-pressed',on?'true':'false'); } });
   const total=exs.length;
   const nav=`<div class="cr-nav">
-      <button class="go sec" ${ei===0?'disabled':''} onclick="showPart(${ei-1})">← Anterior</button>
-      <span class="cr-prog">Unidad ${ei+1} de ${total}</span>
-      <button class="go" ${ei===total-1?'disabled':''} onclick="showPart(${ei+1})">Siguiente →</button>
+      <button class="go sec" ${ei===0?'disabled':''} onclick="showPart(${ei-1})">← Previous</button>
+      <span class="cr-prog">Unit ${ei+1} of ${total}</span>
+      <button class="go" ${ei===total-1?'disabled':''} onclick="showPart(${ei+1})">Next →</button>
     </div>`;
   const main=document.getElementById('crMain');
   main.innerHTML=`<div class="cr-card">${exerciseHtml(ti,ei)}${nav}</div>`;
@@ -327,7 +327,7 @@ function pick(ti,ei,qi,oi){
 function wc(ti,ei,min){
   const v=document.getElementById(`wr-${ti}-${ei}`).value.trim();
   const n=v?v.split(/\s+/).length:0;
-  document.getElementById(`wc-${ti}-${ei}`).textContent=`${n} palabras (mínimo ${min})`;
+  document.getElementById(`wc-${ti}-${ei}`).textContent=`${n} words (minimum ${min})`;
 }
 
 function dispatchAttempt(ex,ti,ei,o){
@@ -367,7 +367,7 @@ async function grade(ti,ei){
     const r=document.getElementById(`r-${ti}-${ei}`);
     r.setAttribute("role","status"); r.setAttribute("aria-live","polite");
     r.style.color="#B45309";
-    r.textContent="Entra con tu cuenta del colegio para corregir: las respuestas ya no viajan en la página.";
+    r.textContent="Sign in with your school account to check answers: answers no longer travel within the page.";
     return;
   }
   const ex=CAM.lessons[ti].exercises[ei];
@@ -396,8 +396,8 @@ async function grade(ti,ei){
         const el=document.getElementById(`o-${ti}-${ei}-${qi}-${k}`);
         el.classList.remove('sel');
         el.querySelectorAll('.mark').forEach(m=>m.remove());
-        if(k===it.ans){ el.classList.add('ok'); el.insertAdjacentHTML('beforeend','<span class="mark">✓ <span class="sr-only">correcta</span></span>'); }
-        else if(k===sel){ el.classList.add('bad'); el.insertAdjacentHTML('beforeend','<span class="mark">✗ <span class="sr-only">tu respuesta</span></span>'); }
+        if(k===it.ans){ el.classList.add('ok'); el.insertAdjacentHTML('beforeend','<span class="mark">✓ <span class="sr-only">correct</span></span>'); }
+        else if(k===sel){ el.classList.add('bad'); el.insertAdjacentHTML('beforeend','<span class="mark">✗ <span class="sr-only">your answer</span></span>'); }
       });
       /* si la pregunta vive dentro del texto, se pinta el hueco y, si fallo, se
          enseña ahi la palabra buena */
@@ -419,7 +419,7 @@ async function grade(ti,ei){
   const r=document.getElementById(`r-${ti}-${ei}`);
   r.setAttribute('role','status'); r.setAttribute('aria-live','polite');
   const pct=total?Math.round(100*ok/total):0;
-  r.textContent=`Resultado: ${ok}/${total} (${pct}%)`;
+  r.textContent=`Result: ${ok}/${total} (${pct}%)`;
   r.style.color=pct>=60?'#15803D':'#DC2626';
 }
 
@@ -429,8 +429,8 @@ function submitWr(ti,ei){
   const n=v?v.split(/\s+/).length:0, min=ex.minWords||0;
   const r=document.getElementById(`r-${ti}-${ei}`);
   r.setAttribute('role','status'); r.setAttribute('aria-live','polite');
-  if(n<min){ r.style.color='#DC2626'; r.textContent=`Llevas ${n} de ${min} palabras mínimas.`; return; }
-  r.style.color='#15803D'; r.textContent='Enviado para revisión del profesor.';
+  if(n<min){ r.style.color='#DC2626'; r.textContent=`You have ${n} of ${min} minimum words.`; return; }
+  r.style.color='#15803D'; r.textContent='Submitted for teacher review.';
   dispatchAttempt(ex,ti,ei,{
     question_text:(ex.prompt||'Writing').slice(0,500), options:null,
     user_answer:v.slice(0,4000), correct_answer:null, is_correct:null
@@ -440,8 +440,8 @@ function submitWr(ti,ei){
 loadData(()=>{ renderExam(); renderPracList(); });
 </script>
 <script src="nis-nav.js?v=c3230c7d"></script>
-<script src="config.js?v=68725f64"></script>
-<script src="activity-save.js?v=7bdace9a"></script>
+<script src="config.js?v=6ed285ca"></script>
+<script src="activity-save.js?v=9dbd5cb4"></script>
 <script src="yle-media.js?v=8e201b2b"></script>
 <script>
 /* El motor emite `cohasset:attempt` en cada respuesta. En NIS no hay quien
@@ -466,6 +466,6 @@ if(window.NIS_WORK) NIS_WORK.attach(Object.assign(NIS_WORK.ficha(), {
   }
 }));
 </script>
-<script src="nis-tema.js?v=a7890d34" defer></script>
+<script src="nis-tema.js?v=410c4879" defer></script>
 </body>
 </html>
