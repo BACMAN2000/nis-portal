@@ -330,20 +330,310 @@ window.LEVEL_RUBRICS = {
   },
 
   reading: {
+    criteria: [
+      { k:'gist',       text:'Main idea — I get the overall meaning and purpose of a text.' },
+      { k:'detail',     text:'Detail — I find specific information and check it against the text.' },
+      { k:'inference',  text:'Inference — I understand what is implied: attitude, opinion, purpose.' },
+      { k:'vocabulary', text:'Vocabulary in context — I work out unknown words and expressions from what surrounds them.' },
+      { k:'structure',  text:'Text organisation — I follow reference words, linkers and the order of ideas.' }
+    ],
     expect: {
-      A2:'I understand short, simple, clearly signposted texts about familiar topics, matching them to short factual questions.',
-      B1:'I understand the main points and some detail in longer texts on familiar and semi-familiar topics, including some inference.',
-      B2:'I understand the main ideas, detail, opinion and attitude in longer texts, including topics I do not know well, and follow the writer’s argument.',
-      C1:'I follow implicit meaning, tone and argument structure across long, complex texts on abstract or unfamiliar topics, including literary and journalistic style.'
+      A2: { texts:'very short notices, signs, messages and simple stories, up to about 150 words',
+            tasks:'matching a text to its purpose or to a picture, and multiple-choice questions on plain factual detail',
+            summary:'I understand short, simple, clearly signposted texts about familiar topics, matching them to short factual questions.' },
+      B1: { texts:'short texts of about 100–120 words, and one longer article or blog of around 450 words',
+            tasks:'multiple matching across several short texts, multiple choice, and choosing which sentence completes a gapped text',
+            summary:'I understand the main points and some detail in longer texts on familiar and semi-familiar topics, including some inference.' },
+      B2: { texts:'longer magazine and newspaper articles of about 550–700 words, sometimes spread across four short texts',
+            tasks:'multiple choice on detail, opinion and attitude, a gapped text with sentences removed, and multiple matching across texts',
+            summary:'I understand the main ideas, detail, opinion and attitude in longer texts, including topics I do not know well, and follow the writer’s argument.' },
+      C1: { texts:'long, complex texts of about 700–850 words, including literary extracts and journalistic or academic writing',
+            tasks:'multiple choice on nuanced meaning, a gapped text with complex logical links, and multiple matching of opinions across several short texts',
+            summary:'I follow implicit meaning, tone and argument structure across long, complex texts on abstract or unfamiliar topics, including literary and journalistic style.' }
+    },
+    levels: {
+      A2: {
+        gist: {
+          AD:'I identify the overall message of a short text even when it is not stated in the first line.',
+          A: 'I identify the main point of a short, simple text about a familiar topic.',
+          B: 'I get part of the general idea, but I confuse it with a secondary detail.',
+          C: 'I cannot say what a short, simple text is mainly about.'
+        },
+        detail: {
+          AD:'I find a specific detail even when it is expressed with different words than the question.',
+          A: 'I find specific factual information in a short text when the wording matches closely.',
+          B: 'I find a detail only when it appears in the same words as the question.',
+          C: 'I cannot locate specific information in a short text.'
+        },
+        inference: {
+          AD:'I notice a simple feeling or opinion even when it is not stated directly.',
+          A: 'I understand a clearly signalled feeling, like happy or angry, from an obvious clue.',
+          B: 'I only notice a feeling or opinion when it is named with the exact word.',
+          C: 'I do not go beyond the literal words of the text.'
+        },
+        vocabulary: {
+          AD:'I work out an unfamiliar everyday word from a picture or a very clear context clue.',
+          A: 'I understand everyday, high-frequency vocabulary without needing to guess.',
+          B: 'An unfamiliar word stops me from understanding the sentence around it.',
+          C: 'Too many unfamiliar words block my understanding of the whole text.'
+        },
+        structure: {
+          AD:'I follow a short text even when a sentence changes the order of events.',
+          A: 'I follow a short text organised in a simple, chronological order.',
+          B: 'I lose the order of events when the text is longer than a few lines.',
+          C: 'I cannot follow the sequence of a short text at all.'
+        }
+      },
+      B1: {
+        gist: {
+          AD:'I identify the overall purpose of a text, not only its topic.',
+          A: 'I identify the main idea and the writer’s general purpose in a text on a familiar or semi-familiar topic.',
+          B: 'I identify the topic, but not what the writer’s purpose is.',
+          C: 'I cannot identify the main idea of a text longer than a few lines.'
+        },
+        detail: {
+          AD:'I find and cross-check a detail against a second part of the text before answering.',
+          A: 'I find specific information across a longer text, even when the wording differs from the question.',
+          B: 'I find a detail only when I read past the paragraph where it appears.',
+          C: 'I cannot locate specific information reliably in a longer text.'
+        },
+        inference: {
+          AD:'I infer a writer’s opinion even when it is expressed indirectly, through examples rather than a direct statement.',
+          A: 'I infer a simple opinion or feeling that the writer implies rather than states directly.',
+          B: 'I only recognise an opinion when the writer states it directly.',
+          C: 'I do not notice implied meaning at all.'
+        },
+        vocabulary: {
+          AD:'I work out a less common word from context even when the surrounding clues are indirect.',
+          A: 'I work out an unfamiliar word from the context of the sentence around it.',
+          B: 'I need most words to be familiar already, or I lose the meaning of the sentence.',
+          C: 'Unfamiliar vocabulary blocks my understanding of much of the text.'
+        },
+        structure: {
+          AD:'I follow reference words like it, this or one across more than one sentence without losing the thread.',
+          A: 'I follow how ideas connect from one sentence to the next, including simple reference words.',
+          B: 'I lose track of what a reference word like it or this refers to.',
+          C: 'I cannot follow how the ideas in the text connect.'
+        }
+      },
+      B2: {
+        gist: {
+          AD:'I identify the overall argument of a text and how each part serves it.',
+          A: 'I identify the main idea, tone and purpose of a text on a topic I do not know well.',
+          B: 'I identify the main idea, but not the tone or the writer’s attitude behind it.',
+          C: 'I cannot reliably identify the main idea of a longer text.'
+        },
+        detail: {
+          AD:'I distinguish a detail from a similar but incorrect option designed to mislead.',
+          A: 'I find and confirm specific detail, opinion and attitude across a longer text.',
+          B: 'I find some detail, but I am misled by an option that looks similar to the correct one.',
+          C: 'I cannot reliably distinguish correct detail from a similar, incorrect option.'
+        },
+        inference: {
+          AD:'I infer the writer’s attitude even when it shifts or is qualified within the same text.',
+          A: 'I infer the writer’s attitude, opinion or purpose from indirect clues in the text.',
+          B: 'I infer an attitude only when the language is strongly obvious.',
+          C: 'I do not go beyond the literal meaning of what is stated.'
+        },
+        vocabulary: {
+          AD:'I work out the precise meaning of an idiomatic expression from how it is used.',
+          A: 'I work out the meaning of less frequent vocabulary and expressions from context.',
+          B: 'I understand most vocabulary, but an idiomatic expression or collocation stops me.',
+          C: 'Unfamiliar vocabulary and expressions block my understanding of key parts of the text.'
+        },
+        structure: {
+          AD:'I follow cohesion across a whole text, including a paragraph moved out of its original place.',
+          A: 'I follow cohesion across paragraphs, including reference chains that span several sentences.',
+          B: 'I follow cohesion within a paragraph, but lose it across paragraph breaks.',
+          C: 'I cannot follow how paragraphs relate to each other in a longer text.'
+        }
+      },
+      C1: {
+        gist: {
+          AD:'I identify a subtle shift in the writer’s stance across a long, complex text.',
+          A: 'I identify the overall argument and stance of a long, complex text on an abstract or unfamiliar topic.',
+          B: 'I identify the general topic, but the precise stance or argument escapes me.',
+          C: 'I cannot identify the overall argument of a long, complex text.'
+        },
+        detail: {
+          AD:'I trace a detail across a text where it is developed, qualified or later reconsidered.',
+          A: 'I find and interpret precise detail in a long, complex text, including detail stated with nuance.',
+          B: 'I find obvious detail, but not detail that is qualified or stated with nuance.',
+          C: 'I cannot reliably locate detail in a long, complex text.'
+        },
+        inference: {
+          AD:'I recognise irony or understatement, and what the writer implies without stating it.',
+          A: 'I infer implicit meaning, tone and authorial stance in a long, complex text.',
+          B: 'I infer only the most explicit attitudes, missing subtler or indirect ones.',
+          C: 'I do not access implicit meaning in a long, complex text.'
+        },
+        vocabulary: {
+          AD:'I distinguish between two close shades of meaning conveyed by different word choices.',
+          A: 'I work out precise, abstract or literary vocabulary from context, including subtle shades of meaning.',
+          B: 'I understand common vocabulary, but abstract or literary language stops me.',
+          C: 'Unfamiliar abstract or literary vocabulary blocks my understanding of the text.'
+        },
+        structure: {
+          AD:'I follow the logical architecture of a complex argument across an entire long text.',
+          A: 'I follow complex cohesion and long-range reference across an entire long text.',
+          B: 'I follow local cohesion, but lose the overall structure of a long, complex text.',
+          C: 'I cannot follow the organisation of a long, complex text.'
+        }
+      }
     }
   },
 
   listening: {
+    criteria: [
+      { k:'gist',      text:'Main idea — I get what the speakers are talking about and why.' },
+      { k:'detail',    text:'Detail — I catch names, numbers, times and facts, and complete notes or gaps accurately.' },
+      { k:'inference', text:'Attitude and opinion — I understand feelings, agreement and what is implied.' },
+      { k:'speed',     text:'Speed and voices — I keep up with natural speed, different accents and background noise.' },
+      { k:'following', text:'Following longer recordings — I hold the thread of a longer talk or conversation to the end.' }
+    ],
     expect: {
-      A2:'I understand the main point and simple factual detail in short, slow, clearly articulated recordings on familiar topics.',
-      B1:'I understand the main points and specific detail in longer recordings at natural speed, on familiar and some unfamiliar topics.',
-      B2:'I understand detailed information, opinion and attitude in extended recordings at natural speed, including some unfamiliar topics and speakers.',
-      C1:'I follow extended, fast, natural speech on abstract or unfamiliar topics, including implied meaning, attitude and the relationship between speakers.'
+      A2: { sources:'short dialogues, announcements and simple phone messages',
+            speed:'slow, clearly articulated, in one standard accent, with pauses',
+            summary:'I understand the main point and simple factual detail in short, slow, clearly articulated recordings on familiar topics.' },
+      B1: { sources:'longer dialogues, interviews and short talks',
+            speed:'near-natural speed, in a couple of standard accents',
+            summary:'I understand the main points and specific detail in longer recordings at natural speed, on familiar and some unfamiliar topics.' },
+      B2: { sources:'interviews, discussions and monologues, including five short extracts on a shared theme',
+            speed:'natural speed, across a range of standard accents',
+            summary:'I understand detailed information, opinion and attitude in extended recordings at natural speed, including some unfamiliar topics and speakers.' },
+      C1: { sources:'extended talks, lectures and multi-speaker discussions on abstract or specialised topics',
+            speed:'fast, natural speech with connected speech and a wide range of accents',
+            summary:'I follow extended, fast, natural speech on abstract or unfamiliar topics, including implied meaning, attitude and the relationship between speakers.' }
+    },
+    levels: {
+      A2: {
+        gist: {
+          AD:'I identify the topic of a short recording even when it is only mentioned once, in passing.',
+          A: 'I identify what a short, slow, clearly articulated recording is about.',
+          B: 'I identify the general topic, but I lose it if the speaker changes subject briefly.',
+          C: 'I cannot say what a short recording is about.'
+        },
+        detail: {
+          AD:'I catch a specific detail even when a number or a name is said quickly.',
+          A: 'I catch simple factual detail, like a time, a place or a name, in a slow, clear recording.',
+          B: 'I catch a detail only when it is repeated or spelled out.',
+          C: 'I cannot reliably catch specific factual detail in a recording.'
+        },
+        inference: {
+          AD:'I notice a simple feeling in a speaker’s voice even without an obvious clue word.',
+          A: 'I understand an obvious feeling, like being happy or annoyed, from a clear clue in what is said.',
+          B: 'I only notice a feeling when the speaker names it directly.',
+          C: 'I do not go beyond the literal words a speaker uses.'
+        },
+        speed: {
+          AD:'I follow a recording even when the speaker briefly speeds up or hesitates.',
+          A: 'I follow speech that is slow, clear and in one standard accent.',
+          B: 'I lose the meaning as soon as the speaker speaks a little faster than expected.',
+          C: 'I cannot follow speech at anything above a very slow, deliberate pace.'
+        },
+        following: {
+          AD:'I follow a short recording and still remember detail from its very beginning by the end.',
+          A: 'I follow a single short exchange between one or two speakers to the end.',
+          B: 'I follow the start of a short recording, but lose the thread before the end.',
+          C: 'I cannot follow a short recording from beginning to end.'
+        }
+      },
+      B1: {
+        gist: {
+          AD:'I identify the purpose of a conversation, not only its topic.',
+          A: 'I identify the main idea of a longer dialogue or monologue at near-natural speed.',
+          B: 'I identify the topic, but not what the speakers are trying to achieve.',
+          C: 'I cannot identify the main idea of a longer recording.'
+        },
+        detail: {
+          AD:'I complete notes accurately even when the answer is reworded rather than said directly.',
+          A: 'I complete notes or answer questions with specific detail from a longer recording.',
+          B: 'I complete notes only when the wording matches the recording closely.',
+          C: 'I cannot reliably extract specific detail from a longer recording.'
+        },
+        inference: {
+          AD:'I infer agreement or disagreement between speakers even when it is not stated directly.',
+          A: 'I infer a speaker’s simple opinion or feeling that is implied rather than stated.',
+          B: 'I only recognise an opinion when a speaker states it directly.',
+          C: 'I do not notice implied attitude in a recording.'
+        },
+        speed: {
+          AD:'I follow speech at natural speed even with some background noise or overlap.',
+          A: 'I follow speech at near-natural speed, in a couple of standard accents.',
+          B: 'I lose parts of the meaning when the speed feels natural rather than careful.',
+          C: 'I cannot follow speech at anything close to natural speed.'
+        },
+        following: {
+          AD:'I hold the thread of a longer conversation between several speakers to the end.',
+          A: 'I hold the thread of a longer conversation or talk of a few minutes.',
+          B: 'I hold the thread for part of a longer recording, then lose it.',
+          C: 'I cannot follow a recording longer than a short exchange.'
+        }
+      },
+      B2: {
+        gist: {
+          AD:'I identify the overall stance of a speaker across an extended talk.',
+          A: 'I identify the main idea and gist of an interview or discussion at natural speed.',
+          B: 'I identify the topic, but not the speaker’s overall stance.',
+          C: 'I cannot reliably identify the main idea of an extended recording.'
+        },
+        detail: {
+          AD:'I complete a sentence with the precise words used, distinguishing it from a similar but wrong detail.',
+          A: 'I complete sentences with specific information from an extended recording at natural speed.',
+          B: 'I complete some sentences, but I am misled by similar-sounding but incorrect detail.',
+          C: 'I cannot reliably complete sentences with detail from an extended recording.'
+        },
+        inference: {
+          AD:'I infer a speaker’s attitude even when it is qualified or changes during the recording.',
+          A: 'I infer opinion and attitude from tone and word choice, not only from direct statements.',
+          B: 'I infer an attitude only when it is expressed very clearly.',
+          C: 'I do not go beyond the literal content of what speakers say.'
+        },
+        speed: {
+          AD:'I follow several different accents and speeds without needing repetition.',
+          A: 'I follow natural speed and a range of standard accents.',
+          B: 'I follow one familiar accent well, but a different accent slows my understanding.',
+          C: 'I cannot follow natural-speed speech reliably.'
+        },
+        following: {
+          AD:'I keep track of five or more short extracts on the same theme and match each one correctly.',
+          A: 'I keep track of several speakers or short extracts on a related theme.',
+          B: 'I follow one extract at a time, but lose track when several extracts follow quickly.',
+          C: 'I cannot keep track of more than one speaker or extract at a time.'
+        }
+      },
+      C1: {
+        gist: {
+          AD:'I identify a shift in a speaker’s position over the course of an extended, abstract talk.',
+          A: 'I identify the overall argument and stance in an extended, abstract talk or discussion.',
+          B: 'I identify the topic, but the precise argument or stance escapes me.',
+          C: 'I cannot identify the overall argument of an extended, abstract talk.'
+        },
+        detail: {
+          AD:'I capture a precise detail even when it is stated once, quickly, inside a longer explanation.',
+          A: 'I capture precise detail from fast, natural speech, including detail stated only once.',
+          B: 'I capture detail only when it is stated clearly and given time to register.',
+          C: 'I cannot reliably capture detail from fast, natural speech.'
+        },
+        inference: {
+          AD:'I recognise irony, hesitation or understatement in what a speaker implies but does not say.',
+          A: 'I infer implied attitude, agreement and nuance across an extended, abstract discussion.',
+          B: 'I infer only the most direct attitudes, missing subtler or indirect ones.',
+          C: 'I do not access implied meaning in an extended discussion.'
+        },
+        speed: {
+          AD:'I follow overlapping, fast speech across a wide range of accents without losing meaning.',
+          A: 'I follow fast, natural speech with connected speech and a wide range of accents.',
+          B: 'I follow natural speed in a familiar accent, but fast or unfamiliar speech loses me.',
+          C: 'I cannot follow fast, natural speech reliably.'
+        },
+        following: {
+          AD:'I hold the thread of a long, complex talk even when the argument shifts direction more than once.',
+          A: 'I hold the thread of a long, complex talk or discussion through shifts in the argument.',
+          B: 'I hold the thread of a long talk in parts, but lose it when the argument shifts.',
+          C: 'I cannot hold the thread of a long, complex talk to the end.'
+        }
+      }
     }
   }
 };

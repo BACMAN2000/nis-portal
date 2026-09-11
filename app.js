@@ -2648,17 +2648,23 @@ function nivelRubricaHTML(skill, lvl, opts){
   const L = S.levels[lvl]; if(!L) return `<p class="muted" style="font-size:.82rem">No rubric for level ${esc(lvl||'—')}.</p>`;
   const ex = (S.expect||{})[lvl] || {};
   const compacto = opts && opts.compacto;
+  const NOMBRE = { writing:'Writing', speaking:'Speaking', reading:'Reading', listening:'Listening' };
+  /* Lo que se espera en el nivel: cada habilidad trae sus propias claves
+     (extensión y estructuras en writing; textos y tareas en reading; fuentes
+     y velocidad en listening). Se pintan todas menos el resumen, que va primero. */
+  const ROTULO = { length:'Length', structures:'Structures', linkers:'Linkers', accuracy:'Accuracy', texts:'Texts', tasks:'Tasks', sources:'Sources', speed:'Speed' };
+  const extras = Object.keys(ex).filter(k=>k!=='summary' && ex[k]).map(k=>' · <b>'+esc(ROTULO[k]||k.charAt(0).toUpperCase()+k.slice(1))+':</b> '+esc(ex[k])).join('');
   return `<div style="overflow-x:auto"><table class="tbl" style="font-size:${compacto?'.76rem':'.82rem'}">
-      <thead><tr><th style="min-width:150px">${skill==='writing'?'Writing':'Speaking'} · ${esc(lvl)}</th>
+      <thead><tr><th style="min-width:150px">${NOMBRE[skill]||skill} · ${esc(lvl)}</th>
         ${UNIT_LVL.map(b=>`<th>${b}${b==='A'?' <span class="muted" style="font-weight:400">expected</span>':''}</th>`).join('')}</tr></thead>
       <tbody>${S.criteria.map(c=>`<tr><td><b>${esc(c.text.split(' — ')[0])}</b>${compacto?'':'<div class="muted" style="font-weight:400">'+esc(c.text.split(' — ').slice(1).join(' — '))+'</div>'}</td>
         ${UNIT_LVL.map(b=>`<td style="vertical-align:top">${esc((L[c.k]||{})[b]||'')}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
-    ${ex.summary?`<p class="muted" style="font-size:.78rem;margin:6px 0 0"><b>At ${esc(lvl)}:</b> ${esc(ex.summary)}${ex.length?' · <b>Length:</b> '+esc(ex.length):''}${ex.structures?' · <b>Structures:</b> '+esc(ex.structures):''}${ex.linkers?' · <b>Linkers:</b> '+esc(ex.linkers):''}${ex.accuracy?' · <b>Accuracy:</b> '+esc(ex.accuracy):''}</p>`:''}`;
+    ${ex.summary||extras?`<p class="muted" style="font-size:.78rem;margin:6px 0 0"><b>At ${esc(lvl)}:</b> ${esc(ex.summary||'')}${extras}</p>`:''}`;
 }
 /* El desplegable «Expected at <nivel>» que va junto al alumno al corregir. */
 function nivelEsperadoBox(skill, lvl){
   if(!lvl) return `<div class="note info" style="margin:8px 0;font-size:.82rem">This student has <b>no level set</b>: mark them at the level you know they work at, and set it in 🧭 Levels &amp; roadmap.</div>`;
-  return `<details style="margin:8px 0"><summary style="cursor:pointer;font-weight:700;font-size:.85rem">📐 Expected at ${esc(String(lvl).toUpperCase())} — ${skill==='writing'?'writing':'speaking'} rubric for this level</summary>
+  return `<details style="margin:8px 0"><summary style="cursor:pointer;font-weight:700;font-size:.85rem">📐 Expected at ${esc(String(lvl).toUpperCase())} — ${esc(skill)} rubric for this level</summary>
     <div style="margin-top:6px">${nivelRubricaHTML(skill, lvl, {compacto:true})}</div></details>`;
 }
 
@@ -3038,6 +3044,7 @@ async function _uexResultados(studs){
             ? '<span class="badge" id="uexw-'+w.id+'" style="background:#dcfce7">marked'+(w.score!=null?' · '+w.score+'/20':'')+(w.released_at?' · sent':'')+'</span>'
             : '<span class="badge" id="uexw-'+w.id+'" style="background:#fee2e2">not marked</span>'}</summary>
           <div style="white-space:pre-wrap;font-size:.86rem;line-height:1.55;max-height:260px;overflow:auto;padding:8px 10px;margin-top:6px;border:1px solid var(--line);border-radius:8px;background:#fcfdff">${esc(wp.text||'')}</div>
+          ${traceHTML(wp)}
           ${nivelEsperadoBox('writing', f.lvl)}
           <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:6px">
             <label style="font-size:.78rem">Grade <input type="number" min="0" max="20" value="${w.score!=null?w.score:''}" style="width:4rem"
@@ -5161,7 +5168,7 @@ function studentGrade(key){
       ${key==='g9' ? (nodeVisible('english.classes.g9.cambridge') ? _hubCard('🎓','Cambridge','B2 First (FCE) practice by skill: Listening, Use of English, Reading and Writing.',"window._nav('classes_g9_cambridge')") : _lockedCard('🎓','Cambridge','Cambridge B2 First practice.')) : ''}
       ${key==='g5' ? _hubCard('🦅','Cambridge Flyers','The A2 Flyers picture tasks, sorted by the unit you are working on: label the people, tick the right picture, match people to pictures and write the picture story.',"window._nav('classes_g5_flyers')") : ''}
       ${readerBooksFor(key).length ? (nodeVisible(base+'.reader') ? _hubCard('📚','Readers','Graded readers with activities for every chapter: '+readerBooksFor(key).map(id=>READER_CARDS[id][4]).join(', ')+'.',"window._nav('classes_"+key+"_readers')") : _lockedCard('📚','Readers','Graded readers with activities.')) : ''}
-      ${key==='g9' ? (nodeVisible('english.classes.g9.unitexams') ? _skillCard('📋','Unit Exams','The unit exam and its practice, at your level: multiple choice, true/false, word formation, transformations, word order, listening and writing. Your teacher opens each one when the class is ready.',_withBack('unit-exam.html?v=96e114da',route)) : _lockedCard('📋','Unit Exams','The unit exam and its practice.')) : ''}
+      ${key==='g9' ? (nodeVisible('english.classes.g9.unitexams') ? _skillCard('📋','Unit Exams','The unit exam and its practice, at your level: multiple choice, true/false, word formation, transformations, word order, listening and writing. Your teacher opens each one when the class is ready.',_withBack('unit-exam.html?v=649746ce',route)) : _lockedCard('📋','Unit Exams','The unit exam and its practice.')) : ''}
     </div>`;
 }
 /* Cambridge (9.º): tarjeta madre con las destrezas del examen B2 First:
@@ -6537,6 +6544,30 @@ const UNIT_LVL  = ['AD','A','B','C'];
 const UNIT_VIG  = { AD:19, A:16, B:12, C:8 };
 const UNIT_SIG  = { AD:'outstanding achievement', A:'expected achievement', B:'in progress', C:'beginning' };
 const UNIT_TRAMO= { AD:'18-20', A:'14-17', B:'11-13', C:'0-10' };
+/* Cómo se escribió el texto — writing-trace.js en las páginas del alumno
+   cuenta pulsaciones, minutos con la caja activa y pegados bloqueados, y lo
+   deja en payload.trace (un rastro por producto; por campo en las fichas).
+   Sin rastro = anterior al 11-sep-2026 o escrito en una caja sin vigilar.
+   No se juzga aquí: se enseña y decide el docente. */
+function traceDe(payload, campo){
+  const tr = payload && payload.trace; if(!tr || typeof tr!=='object') return null;
+  if(typeof tr.keys==='number' || Array.isArray(tr.pastes)) return tr;
+  if(campo && tr[campo]) return tr[campo];
+  const ks = Object.keys(tr); return ks.length===1 ? tr[ks[0]] : null;
+}
+function traceResumen(t){
+  if(!t || (!t.keys && !t.blocked)) return '— no writing trace (before 11 Sep, or typed in an unmonitored box)';
+  const min = Math.round((t.active_s||0)/60), out = [`✍️ ${(t.keys||0).toLocaleString('en')} keystrokes`, `${(t.typed||0).toLocaleString('en')} characters typed`, `${min} min in the box`];
+  if(t.blocked){
+    const tam = (t.pastes||[]).map(x=>x.chars).filter(c=>c>0);
+    out.push(`🚫 ${t.blocked} paste${t.blocked===1?'':'s'} blocked${tam.length?' ('+tam.map(c=>c.toLocaleString('en')).join(', ')+' chars)':''}`);
+  } else out.push('no pastes');
+  return out.join(' · ');
+}
+function traceHTML(payload, campo){
+  const t = traceDe(payload, campo);
+  return `<div class="muted" style="font-size:.76rem;margin-top:4px${t&&t.blocked?';color:#b91c1c;font-weight:600':''}">${esc(traceResumen(t))}</div>`;
+}
 function unitNota(crits, puestos){
   const vs = crits.map(c=>UNIT_VIG[(puestos||{})[c.n]]).filter(v=>v!=null);
   if(!vs.length) return null;
@@ -6745,7 +6776,8 @@ function unitPintaAlumno(){
     if(!q || typeof q.text!=='string' || !q.text.trim()) return vacio;
     return `<div class="muted" style="font-size:.75rem;margin-bottom:4px">${q.words||0} words ·
         <span class="badge" style="background:${q.draft===false?'#dcfce7':'#fef9c3'}">${q.draft===false?'submitted':'draft'}</span></div>
-      <div style="white-space:pre-wrap;font-size:.88rem;line-height:1.6;max-height:360px;overflow:auto;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:#fcfdff">${esc(q.text)}</div>`;
+      <div style="white-space:pre-wrap;font-size:.88rem;line-height:1.6;max-height:360px;overflow:auto;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:#fcfdff">${esc(q.text)}</div>
+      ${traceHTML(q)}`;
   };
   /* Cada entregable lleva debajo SU nota y SU comentario (las columnas score
      y feedback de su propia fila, que son las que el alumno lee en unit.html):
@@ -7253,7 +7285,8 @@ function unitPintaFicha(){
         ${nivelBadge(p.cefr_level, pl.level)}</h3>
       <span class="muted" style="font-size:.85rem">${esc(unitFichaDonde(r))}${r.released_at?' · <span class="badge" style="background:#dcfce7">sent to student</span>':(r.reviewed_at?' · <span class="badge" style="background:#e0f2fe">marked · not sent</span>':'')}</span>
     </div>
-    <div style="margin:12px 0">${entrega}</div>
+    <div style="margin:12px 0">${entrega}${(pl.trace && typeof pl.trace==='object' && Object.keys(pl.trace).length)
+      ? Object.keys(pl.trace).map(k=>`<div class="muted" style="font-size:.76rem;margin-top:2px"><b>${esc(k)}</b> — ${esc(traceResumen(pl.trace[k]))}</div>`).join('') : ''}</div>
     <div style="border-top:1px solid var(--line);padding-top:10px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
       <label style="font-size:.8rem">Grade <input type="number" min="0" max="20" id="unitFichaNota" value="${r.score!=null?r.score:''}" style="width:4.5rem"></label>
       <input type="text" id="unitFichaComent" placeholder="Comment for the student" value="${esc(r.feedback||'')}" style="flex:1 1 240px;min-width:200px">
@@ -8504,6 +8537,7 @@ window.escAbre = function(j, silencioso){
             ${an.palabras} words · ${an.frases} sentences (${an.mediaFrase} words on average) ·
             ${an.parrafos} paragraph(s) · ${Math.round(an.variedad * 100)}% distinct words ·
             ${an.totalConectores} connector(s)${an.repetidas.length ? ' · repeats: ' + esc(an.repetidas.join(', ')) : ''}</p>
+          ${traceHTML(f.fila.payload, f.campo)}
         </div>
 
         <div>
