@@ -1336,15 +1336,16 @@ const UNIT_PILOT = new Set([
 function esUnidadPiloto(){ return UNIT_PILOT.has(GRADE+'.u'+UNIT); }
 
 /* Todo declarado: ahora si se puede pintar. */
-/* pinta() corre ANTES de arrancaSesion(), que es donde se averigua si quien
-   mira es profesor y se buscan la portada y las diapositivas en el bucket. Sin
-   este segundo pintado, todo lo que depende de eso se calculaba y no se
-   ensenaba nunca: la barra del profesor (guia, workbook y ahora las
-   diapositivas) y la foto de portada de la unidad, que llevaba puesta desde
-   que se escribio y no se habia visto una sola vez. Se repinta solo si hay
-   algo nuevo que ensenar, y pinta() vuelve a cablear todo al final, asi que
-   repetirlo es inocuo. */
-if(U) (async function(){ await conectar(); if(!(await puedeAbrirUnidad())){pintaUnidadBloqueada();return;} pinta(); await arrancaSesion(); if(esProfe || _portada || _deck) pinta(); })();
+/* Orden: conectar() averigua quien mira, si es profesor, y busca la portada y
+   las diapositivas en el bucket; DESPUES se pinta, ya con todo eso; y por
+   ultimo arrancaSesion() muestra la seccion de entrega y carga los borradores.
+   Aqui hubo un segundo pinta() al final (10-sep) «por si habia algo nuevo que
+   ensenar»: no era inocuo. Reconstruia la pagina entera con la entrega
+   OCULTA y nadie volvia a mostrarla, asi que todo alumno con sesion en una
+   unidad con portada —9.o U4— llegaba a la ultima pantalla y no habia donde
+   entregar (11-sep-2026, todo 9.o). Lo que ese repintado queria ensenar ya
+   esta calculado antes del primer pinta(), asi que sobra. */
+if(U) (async function(){ await conectar(); if(!(await puedeAbrirUnidad())){pintaUnidadBloqueada();return;} pinta(); await arrancaSesion(); })();
 </script>
 <script src="nis-tema.js?v=410c4879" defer></script>
 </body>
