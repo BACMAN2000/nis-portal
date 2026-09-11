@@ -589,8 +589,12 @@ window.abreEntrega = function(hito){
 };
 
 function pintaEntregas(){
+  /* Por id, no por selector: el hito de una actividad lleva dos puntos
+     ('a:word-invaders-u4w4') y con $('#hand-'+h) el navegador lanzaba
+     «not a valid selector», que abortaba arrancaSesion() antes de cargar los
+     borradores y comentarios de los productos (11-sep-2026, visto en iPad). */
   Object.keys(_entregas).forEach(h=>{
-    const chip = $('#hand-'+h), r = _entregas[h];
+    const chip = document.getElementById('hand-'+h), r = _entregas[h];
     if(!chip) return;
     chip.classList.add('done');
     /* La ficha se corrige con niveles y la nota es vigesimal, como los
@@ -602,13 +606,13 @@ function pintaEntregas(){
        su recuadro debajo de la fila, igual que el de los productos. */
     if(r.released_at && (r.feedback || r.score!=null)){
       const row = chip.closest('.ses-row');
-      let fb = $('#fbw-'+h);
+      let fb = document.getElementById('fbw-'+h);
       if(!fb && row){ fb = document.createElement('div'); fb.className='fb'; fb.id='fbw-'+h; fb.style.margin='6px 0 10px'; row.insertAdjacentElement('afterend', fb); }
       if(fb) fb.innerHTML = '<h4>Your teacher\'s feedback</h4><p>'
         + (r.score!=null?('<span class="mark"><b>'+r.score+'/20</b> · '+lv+'</span>'):'')
         + (r.feedback?esc(r.feedback):'') + '</p>';
     }
-    const u = $('#u-'+h);
+    const u = document.getElementById('u-'+h);
     if(u && r.payload && r.payload.link) u.value = r.payload.link;
   });
 }

@@ -6606,15 +6606,9 @@ function unitNivelDeNota(n){ return n==null ? null : n>=18 ? 'AD' : n>=14 ? 'A' 
    filas ya cargadas, para pasar de un alumno a otro sin volver a la base. */
 const _unit = { grade:null, unit:null, section:'', i:0, filas:[], quien:{}, plan:{}, DELS:[], crits:[], firmadas:{}, rubrica:true };
 
-/* Balizas de diagnostico (11-sep-2026): el panel se quedaba en «Loading
-   submissions…» con el navegador colgado y sin rastro en ningun registro. Cada
-   paso manda una baliza a client_errors ANTES de seguir; la ultima que llega
-   dice donde se atasca. Se quitan cuando este resuelto. */
-function _upBaliza(paso, extra){ try{ if(window.NIS_ERROR) NIS_ERROR('UNITPROD:'+paso, '', Object.assign({t:Date.now()%100000}, extra||{})); }catch(_){} }
 async function unitProductsPanel(){
   const main = $('#main');
   main.innerHTML = '<div class="card"><p class="muted">Loading submissions…</p></div>';
-  _upBaliza('inicio', {grade:_unit.grade, unit:_unit.unit, section:_unit.section, i:_unit.i});
 
   const { data, error } = await sb
     .from('unit_submissions')
@@ -6626,7 +6620,6 @@ async function unitProductsPanel(){
     main.innerHTML = `<div class="card"><p class="err">Could not read the submissions: ${esc(error.message)}</p></div>`;
     return;
   }
-  _upBaliza('datos', {n:(data||[]).length, bytes:JSON.stringify(data||[]).length});
   /* Solo el producto de la unidad (hito 'final'): el Writing de los examenes
      de unidad se corrige en 📋 Examenes de unidad, junto a su nota. */
   const productos = (data||[]).filter(r=>r.milestone==='final');
@@ -6642,7 +6635,6 @@ async function unitProductsPanel(){
   const { data: gente } = await sb.from('profiles').select('id,full_name,grade_id,section,cefr_level').in('id', ids);
   const quien = Object.fromEntries((gente||[]).map(p=>[p.id,p]));
   const seccionDe = r => String((quien[r.student_id]||{}).section||'').trim();
-  _upBaliza('perfiles', {n:(gente||[]).length});
 
   /* Grado → unidad → seccion. Si lo elegido ya no existe (o es la primera
      vez) se abre lo mas reciente, que es lo que se esta corrigiendo. */
@@ -6689,7 +6681,6 @@ async function unitProductsPanel(){
 
   Object.assign(_unit, { filas, quien, plan, DELS, crits, firmadas });
   if(_unit.i >= filas.length) _unit.i = 0;
-  _upBaliza('firmadas', {filas:filas.length, rutas:rutas.length, grade:_unit.grade, unit:_unit.unit, section:_unit.section});
 
   /* Las fichas digitales de la misma unidad y seccion, debajo, con el mismo
      formato: una ficha elegida y un alumno cada vez. `blocks` sirve para
@@ -6703,7 +6694,6 @@ async function unitProductsPanel(){
     planillas = ws || [];
   }
   Object.assign(_unit, { fichas, planillas });
-  _upBaliza('fichas', {fichas:fichas.length, planillas:planillas.length});
 
   /* Cuantos van evaluados y en que nivel global quedaron, con palabras: una
      letra con un numero detras no le dice nada a nadie. */
@@ -6750,11 +6740,8 @@ async function unitProductsPanel(){
   </div>
   <div id="unitAlumno"></div>
   ${unitFichasBloque()}`;
-  _upBaliza('pintado');
   unitPintaAlumno();
-  _upBaliza('alumno');
   unitPintaFicha();
-  _upBaliza('fin');
 }
 
 window.unitFiltra = function(k, v){
