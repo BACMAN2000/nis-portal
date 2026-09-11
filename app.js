@@ -6785,7 +6785,7 @@ function unitPintaAlumno(){
   const entregados = U.DELS.filter(d=>{ const r=f[d.kind];
     return r && (d.type==='file' ? !!r.file_path : !!(r.payload && r.payload.text && r.payload.text.trim())); }).length;
 
-  const AUDIO = ['webm','ogg','mp3','m4a','wav'], VIDEO = ['mp4'];
+  const AUDIO = ['webm','ogg','mp3','m4a','wav','aac'], VIDEO = ['mp4','mov','m4v'];
   const vacio = '<p class="muted" style="margin:0;font-size:.85rem">Not submitted</p>';
   const archivo = r => {
     if(!r || !r.file_path) return vacio;
@@ -6936,7 +6936,7 @@ window.unitVerArchivo = async function(ruta, boton){
   const { data, error } = await sb.storage.from('unit-products').createSignedUrl(ruta, 3600);
   if(error || !data){ boton.textContent='Not available'; return; }
   const ext = (ruta.split('.').pop()||'').toLowerCase();
-  if(['webm','ogg','mp3','m4a','wav'].indexOf(ext)>=0){
+  if(['webm','ogg','mp3','m4a','wav','aac'].indexOf(ext)>=0){
     const a=document.createElement('audio'); a.controls=true; a.src=data.signedUrl; a.style.maxWidth='15rem';
     boton.replaceWith(a); a.play().catch(()=>{});
   } else {
