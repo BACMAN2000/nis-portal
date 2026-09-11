@@ -54,8 +54,8 @@
   .footer{color:var(--muted);font-size:12px;text-align:center;padding:22px 0 32px}
 </style>
   <meta name="google" content="notranslate">
-  <script src="config.js?v=68725f64"></script>
-  <script src="anticheat.js?v=f2bd3ba6" data-activity="reported-speech-order"></script>
+  <script src="config.js?v=6ed285ca"></script>
+  <script src="anticheat.js?v=e8b83646" data-activity="reported-speech-order"></script>
 <script src="nis-nav.js?v=c3230c7d"></script>
 </head>
 <body>
@@ -188,6 +188,6 @@ function _pickEn(){ try{ var vs=speechSynthesis.getVoices(); _enVoice=vs.find(fu
 if('speechSynthesis' in window){ _pickEn(); try{ speechSynthesis.onvoiceschanged=_pickEn; }catch(e){} }
 function speakEN(t){ if(!t||!('speechSynthesis' in window))return; var u=new SpeechSynthesisUtterance(t); u.lang='en-GB'; if(_enVoice)u.voice=_enVoice; u.rate=0.95; try{speechSynthesis.cancel();}catch(e){} speechSynthesis.speak(u); }
 </script>
-<script src="nis-tema.js?v=a7890d34" defer></script>
+<script src="nis-tema.js?v=410c4879" defer></script>
 </body>
 </html>
