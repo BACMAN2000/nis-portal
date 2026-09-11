@@ -6454,10 +6454,18 @@ async function unitProductsPanel(){
   Object.assign(_unit, { filas, quien, plan, DELS, crits, firmadas });
   if(_unit.i >= filas.length) _unit.i = 0;
 
-  /* Las fichas digitales de la misma unidad y seccion, debajo, como siempre. */
+  /* Las fichas digitales de la misma unidad y seccion, debajo, con el mismo
+     formato: una ficha elegida y un alumno cada vez. `blocks` sirve para
+     poner el enunciado junto a cada respuesta, como en Corregir fichas. */
   const fichas = worksheets.filter(r=>r.grade===_unit.grade && String(r.unit)===_unit.unit &&
     (!_unit.section || seccionDe(r)===_unit.section));
-  window._unitFichas = Object.fromEntries(fichas.map(r=>[r.id,r]));
+  let planillas = [];
+  if(fichas.length){
+    const { data: ws } = await sb.from('worksheets').select('level,week,session,title,rubric,blocks')
+      .eq('grade',_unit.grade).eq('unit',parseInt(_unit.unit,10));
+    planillas = ws || [];
+  }
+  Object.assign(_unit, { fichas, planillas });
 
   /* Cuantos van evaluados y en que nivel global quedaron, con palabras: una
      letra con un numero detras no le dice nada a nadie. */
@@ -6502,8 +6510,9 @@ async function unitProductsPanel(){
     ${rubrica}
   </div>
   <div id="unitAlumno"></div>
-  <div class="card" id="unitTexto" style="display:none"></div>${fichasTabla(fichas, quien)}`;
+  ${unitFichasBloque()}`;
   unitPintaAlumno();
+  unitPintaFicha();
 }
 
 window.unitFiltra = function(k, v){
@@ -6894,67 +6903,140 @@ async function matSube(files){
    distinta de la del producto final de la unidad. El alumno entrega el
    archivo que rellenó o un enlace de Google Docs, porque muchos trabajan ahí
    y un PDF no se puede editar. */
-function fichasTabla(fichas, quien){
-  if(!fichas || !fichas.length) return '';
-  /* Las fichas de sesión llevan milestone 'w1s1'; las actividades sueltas
-     (reading, listening, grammar lab) llevan 'a:<actividad>' y dicen su
-     semana en el payload. Se ordenan dentro de su semana, después de las
-     sesiones, para que el profesor lea la semana entera de corrido. */
-  const orden = f => {
-    const m = /^w(\d+)s(\d+)$/.exec(f.milestone || '');
-    if (m) return (+m[1]) * 100 + (+m[2]);
-    const w = f.payload && f.payload.week;
-    return w ? (+w) * 100 + 50 : 9999;
-  };
-  fichas.sort((a,b) => orden(a) - orden(b)
-    || String((quien[a.student_id]||{}).full_name||'').localeCompare(String((quien[b.student_id]||{}).full_name||'')));
+/* ---------- 📄 Fichas entregadas, con el mismo formato que los productos:
+   se elige la ficha (sesion o actividad) y se pasa alumno por alumno. ---------- */
+const _ficha = { sel:null, i:0 };
 
-  const fila = r => {
-    const p = quien[r.student_id] || {};
-    const m = /^w(\d+)s(\d+)$/.exec(r.milestone || '');
-    const act = /^a:/.test(r.milestone || '');
-    /* El título de la actividad ya suele decir su semana ("Unit 4 · Week 1
-       Crossword…", "Mots croisés — FR · 7e · Semaine 3"): anteponerla otra vez
-       solo alarga la celda. Se pone delante únicamente si falta. */
-    const tituloAct = esc((r.payload && r.payload.title) || (r.milestone || '').slice(2));
-    const semanaAct = (r.payload && r.payload.week && !/(week|semaine|semana)\s*\d/i.test(tituloAct))
-      ? 'Semana ' + r.payload.week + ' · ' : '';
-    const donde = m ? ('Semana ' + m[1] + ' · Sesión ' + m[2])
-      : act ? (semanaAct + tituloAct)
-      : esc(r.milestone || '');
-    const link = r.payload && r.payload.link;
-    const nombre = (r.payload && r.payload.name) || 'Ver archivo';
-    const digital = r.payload && r.payload.answers;
-    const nresp = digital ? Object.keys(r.payload.answers).length : 0;
-    const entrega = digital
-      ? '<button class="btn small" onclick="unitVerFicha(&quot;' + r.id + '&quot;)">🧩 ' + nresp + ' respuestas</button>'
-      : link
-      ? `<a href="${esc(link)}" target="_blank" rel="noopener">🔗 Google Docs</a>`
-      : (r.file_path
-          ? `<button class="btn small" onclick="unitVerArchivo('${esc(r.file_path)}',this)">📎 ${esc(nombre)}</button>`
-          : '<span class="muted">—</span>');
-    return `<tr>
-      <td class="col-name">${esc(p.full_name || '(alumno)')} <span class="muted">${p.grade_id ? p.grade_id + 'º' + (p.section || '') : ''}</span></td>
-      <td class="muted">${esc(r.grade)} · U${r.unit} · ${donde}</td>
-      <td>${entrega}</td>
-      <td><input type="number" min="0" max="20" value="${r.score != null ? r.score : ''}" style="width:4rem"
-            onchange="unitCalificar('${r.id}', this.value, null)"></td>
-      <td class="col-flex"><input type="text" placeholder="comentario" value="${esc(r.feedback || '')}"
-            onchange="unitCalificar('${r.id}', null, this.value)"></td>
-      <td class="muted">${r.reviewed_at ? '✔' : '—'}</td>
-    </tr>`;
-  };
+/* De que es una entrega de ficha: sesion 'w1s1' o actividad suelta 'a:...'. */
+function unitFichaDonde(r){
+  const m = /^w(\d+)s(\d+)$/.exec(r.milestone || '');
+  if(m) return 'Semana ' + m[1] + ' · Sesión ' + m[2];
+  const titulo = (r.payload && r.payload.title) || (r.milestone || '').replace(/^a:/,'');
+  const semana = (r.payload && r.payload.week && !/(week|semaine|semana)\s*\d/i.test(titulo)) ? 'Semana ' + r.payload.week + ' · ' : '';
+  return semana + titulo;
+}
+function unitFichaOrden(r){
+  const m = /^w(\d+)s(\d+)$/.exec(r.milestone || '');
+  if(m) return (+m[1]) * 100 + (+m[2]);
+  const w = r.payload && r.payload.week;
+  return w ? (+w) * 100 + 50 : 9999;
+}
 
-  return `<div class="card">
+function unitFichasBloque(){
+  const F = _unit.fichas || [];
+  if(!F.length) return '';
+  /* Una opcion por ficha, en el orden de la unidad, con cuantos la entregaron. */
+  const grupos = {};
+  F.forEach(r=>{ (grupos[r.milestone] = grupos[r.milestone] || {r, n:0}).n++; });
+  const claves = Object.keys(grupos).sort((a,b)=>unitFichaOrden(grupos[a].r)-unitFichaOrden(grupos[b].r) || a.localeCompare(b));
+  if(claves.indexOf(_ficha.sel)<0){ _ficha.sel = claves[0]; _ficha.i = 0; }
+  return `<div class="card" style="margin-top:14px">
     <h2>📄 Fichas entregadas</h2>
-    <p class="muted">Lo que entregan sesión a sesión: el archivo que rellenaron, el enlace de
-      Google Docs o la actividad que resolvieron en el portal (reading, listening, grammar lab).
-      Pon la nota y el comentario y el alumno lo ve en la propia actividad.</p>
-    <div style="overflow-x:auto"><table class="tbl">
-      <thead><tr><th>Alumno</th><th>Dónde</th><th>Entrega</th><th>Nota</th><th>Comentario</th><th>Visto</th></tr></thead>
-      <tbody>${fichas.map(fila).join('')}</tbody></table></div>
+    <p class="muted">Lo que entregan sesión a sesión: la ficha que resolvieron en el portal, el enlace de
+      Google Docs o el archivo. Elige la ficha y pasa alumno por alumno; la nota y el comentario los ve
+      el alumno en la propia actividad.</p>
+    <label style="font-size:.85rem">Ficha <select onchange="unitFichaElige(this.value)" style="margin-left:4px;max-width:420px">
+      ${claves.map(k=>`<option value="${esc(k)}"${k===_ficha.sel?' selected':''}>${esc(unitFichaDonde(grupos[k].r))} (${grupos[k].n})</option>`).join('')}
+    </select></label>
+    <div id="unitFicha"></div>
   </div>`;
 }
+window.unitFichaElige = function(v){ _ficha.sel = v; _ficha.i = 0; unitPintaFicha(); };
+window.unitFichaMueve = function(d){
+  const n = unitFichaLista().length; if(!n) return;
+  _ficha.i = Math.max(0, Math.min(n-1, _ficha.i + d)); unitPintaFicha();
+  const h = $('#unitFicha'); if(h) h.scrollIntoView({ behavior:'smooth', block:'start' });
+};
+window.unitFichaSalta = function(j){ _ficha.i = parseInt(j,10)||0; unitPintaFicha(); };
+function unitFichaLista(){
+  const q = _unit.quien || {};
+  return (_unit.fichas || []).filter(r=>r.milestone===_ficha.sel).sort((a,b)=>
+    String((q[a.student_id]||{}).section||'').localeCompare(String((q[b.student_id]||{}).section||'')) ||
+    String((q[a.student_id]||{}).full_name||'').localeCompare(String((q[b.student_id]||{}).full_name||'')));
+}
+
+function unitPintaFicha(){
+  const host = $('#unitFicha'); if(!host) return;
+  const lista = unitFichaLista(), r = lista[_ficha.i];
+  if(!r){ host.innerHTML = '<p class="muted">Nadie ha entregado esta ficha.</p>'; return; }
+  const p = (_unit.quien||{})[r.student_id] || {};
+  const pl = r.payload || {};
+  const m = /^w(\d+)s(\d+)$/.exec(r.milestone || '');
+  /* La planilla de la sesion en el nivel del alumno, para el enunciado de
+     cada campo y para saber si tiene rubrica de puntos. */
+  const planilla = m ? ((_unit.planillas||[]).find(w=>w.week===+m[1] && w.session===+m[2] && w.level===pl.level)
+                     || (_unit.planillas||[]).find(w=>w.week===+m[1] && w.session===+m[2])) : null;
+  let etiquetas = {};
+  try{ if(window.WSITEMS && planilla && Array.isArray(planilla.blocks)) etiquetas = WSITEMS.prepara(planilla.blocks).labels || {}; }catch(_){}
+  const orden = Object.keys(etiquetas);
+  const resp = pl.answers || {};
+  const claves = Object.keys(resp).filter(k=>resp[k]!=='' && resp[k]!==false && resp[k]!=null)
+    .sort((a,b)=>{ const ia=orden.indexOf(a), ib=orden.indexOf(b); return (ia<0?9999:ia)-(ib<0?9999:ib); });
+  const valor = v => v===true ? '✔' : v==='T' ? 'True' : v==='F' ? 'False' : String(v);
+
+  const nav = `<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:12px 0 10px">
+      <button class="btn" onclick="unitFichaMueve(-1)" ${_ficha.i===0?'disabled':''}>◀ Anterior</button>
+      <span style="font-size:.9rem">Alumno <b>${_ficha.i+1}</b> de ${lista.length} ·
+        <select onchange="unitFichaSalta(this.value)" style="max-width:260px">
+          ${lista.map((x,j)=>`<option value="${j}"${j===_ficha.i?' selected':''}>${esc(((_unit.quien||{})[x.student_id]||{}).full_name||'(alumno)')}</option>`).join('')}
+        </select></span>
+      <button class="btn" onclick="unitFichaMueve(1)" ${_ficha.i>=lista.length-1?'disabled':''}>Siguiente ▶</button>
+    </div>`;
+
+  let entrega;
+  if(pl.answers){
+    entrega = `<div class="muted" style="font-size:.78rem;margin-bottom:6px">🧩 ${esc(pl.title||(planilla&&planilla.title)||'Ficha digital')}
+        ${pl.level?' · nivel '+esc(pl.level):''} · ${claves.length} campo${claves.length===1?'':'s'} respondido${claves.length===1?'':'s'}
+        · <span class="badge" style="background:${pl.handed_at||pl.draft===false?'#dcfce7':'#fef9c3'}">${pl.handed_at||pl.draft===false?'entregada':'borrador'}</span></div>
+      ${claves.length ? `<div style="overflow:auto;max-height:420px;border:1px solid var(--line);border-radius:8px"><table class="tbl" style="margin:0">
+        <tbody>${claves.map(k=>`<tr>
+          <td style="font-size:.8rem;vertical-align:top;min-width:160px;max-width:380px">${etiquetas[k]?esc(etiquetas[k]):'<span class="muted">'+esc(k)+'</span>'}</td>
+          <td style="white-space:pre-wrap;font-size:.86rem;line-height:1.5">${esc(valor(resp[k]))}</td></tr>`).join('')}</tbody></table></div>`
+        : '<p class="muted" style="margin:0">No respondió ningún campo.</p>'}`;
+  } else if(pl.link){
+    entrega = `<a class="btn small" href="${esc(pl.link)}" target="_blank" rel="noopener">🔗 Abrir en Google Docs</a>`;
+  } else if(r.file_path){
+    entrega = `<button class="btn small" onclick="unitVerArchivo('${esc(r.file_path)}',this)">📎 ${esc(pl.name||'Ver archivo')}</button>`;
+  } else {
+    entrega = '<p class="muted" style="margin:0">Sin entrega.</p>';
+  }
+
+  const conRubrica = !!(planilla && Array.isArray(planilla.rubric) && planilla.rubric.length);
+  host.innerHTML = `${nav}
+    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap">
+      <h3 style="margin:0;font-size:1.05rem">${esc(p.full_name||'(alumno)')}
+        <span class="muted" style="font-weight:400;font-size:.9rem">${p.grade_id?p.grade_id+'.º '+(p.section||''):''}</span></h3>
+      <span class="muted" style="font-size:.85rem">${esc(unitFichaDonde(r))}${r.reviewed_at?' · <span class="badge" style="background:#e0f2fe">enviado al alumno</span>':''}</span>
+    </div>
+    <div style="margin:12px 0">${entrega}</div>
+    <div style="border-top:1px solid var(--line);padding-top:10px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+      <label style="font-size:.8rem">Nota <input type="number" min="0" max="20" id="unitFichaNota" value="${r.score!=null?r.score:''}" style="width:4.5rem"></label>
+      <input type="text" id="unitFichaComent" placeholder="Comentario para el alumno" value="${esc(r.feedback||'')}" style="flex:1 1 240px;min-width:200px">
+      <button class="btn" onclick="unitFichaEnvia('${r.id}')">📨 Guardar y enviar</button>
+      <span class="state" id="unitFichaEstado"></span>
+    </div>
+    ${conRubrica && m ? `<p class="muted" style="font-size:.78rem;margin:8px 0 0">Esta sesión tiene rúbrica de puntos:
+      <a href="#" onclick="unitFichaCorregir('${_unit.grade}',${parseInt(_unit.unit,10)},${+m[1]},${+m[2]});return false">corregirla con la rúbrica en ✅ Corregir fichas</a>.</p>` : ''}`;
+}
+
+window.unitFichaEnvia = async function(id){
+  const r = (_unit.fichas||[]).find(x=>x.id===id); if(!r) return;
+  const st = $('#unitFichaEstado'), nota = $('#unitFichaNota'), com = $('#unitFichaComent');
+  const cambio = { feedback:(com?com.value:r.feedback)||'', reviewed_at:new Date().toISOString(), reviewed_by:(state.profile&&state.profile.id)||null };
+  if(nota && nota.value!=='') cambio.score = Number(nota.value);
+  if(st){ st.textContent='Guardando…'; st.className='state'; }
+  const { error } = await sb.from('unit_submissions').update(cambio).eq('id', id);
+  if(error){ if(st){ st.textContent='No se pudo enviar: '+error.message; st.className='state err'; } return; }
+  Object.assign(r, cambio);
+  unitPintaFicha();
+  const st2 = $('#unitFichaEstado'); if(st2){ st2.textContent='Enviado al alumno ✓'; st2.className='state ok'; }
+};
+/* Abre esa sesion en Corregir fichas, que corrige con la rubrica de puntos. */
+window.unitFichaCorregir = function(grade, unit, week, session){
+  Object.assign(_corr, { grade, unit, week, session, modo:'sesion' });
+  state._tab = 'corregir';
+  corregirPanel();
+};
 
 /* Importa las fichas ya digitalizadas a la tabla worksheets. El archivo lo
    genera tools/digitaliza_fichas.py leyendo los .docx; aquí solo se vuelca,
@@ -7323,26 +7405,6 @@ async function matImporta(file){
     : `${ok} fichas digitales importadas. Ya se pueden resolver en el portal.`;
   est.className = fallos ? 'state err' : 'state ok';
 }
-
-/* Abre lo que el alumno escribio en una ficha digital. Se guardan como
-   {campo: valor}, asi que se muestran en orden con su identificador: basta
-   para corregir sin tener que abrir nada. */
-window._unitFichas = {};
-window.unitVerFicha = function(id){
-  const r = window._unitFichas[id];
-  const caja = $('#unitTexto');
-  if(!r){ return; }
-  const a = (r.payload && r.payload.answers) || {};
-  const filas = Object.keys(a).filter(k => a[k] !== '' && a[k] !== false)
-    .map(k => `<tr><td class="muted" style="white-space:nowrap">${esc(k)}</td>
-                   <td>${a[k] === true ? '✔' : esc(String(a[k]))}</td></tr>`).join('');
-  caja.style.display = 'block';
-  caja.innerHTML = `<h3>🧩 ${esc((r.payload && r.payload.title) || 'Ficha')} —
-      nivel ${esc((r.payload && r.payload.level) || '')}</h3>
-    <p class="muted">${Object.keys(a).length} campos respondidos.</p>
-    <div style="overflow-x:auto"><table class="tbl"><tbody>${filas}</tbody></table></div>`;
-  caja.scrollIntoView({behavior:'smooth', block:'start'});
-};
 
 /* ---------------------------------------------------------------
    ✅ Corregir fichas — la rúbrica y la corrección, en una pantalla.
