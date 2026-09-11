@@ -717,7 +717,7 @@ window.UNIT_PLANS = {
    Los descriptores C/B/A/AD los redactamos nosotros y siguen PENDIENTES DE
    VALIDACION del profesor, como en el resto de las unidades piloto. */
 {
-  cover:{icon:'🌎', from:'#7a2f12', to:'#d98a4a'},
+  cover:{icon:'🌎', from:'#7a2f12', to:'#d98a4a', image:'assets/unit-covers/g3-u5-earth-moves.png'},
   n:5,
   title:'When the Earth Moves',
   weeks:11,
