@@ -353,7 +353,7 @@
   .c2-prog{height:10px; background:var(--line); border-radius:6px; overflow:hidden; margin:6px 0 16px}
   .c2-prog span{display:block; height:100%; background:#b8934a; transition:width .3s}
 </style>
-<script src="ui-mensajes.js?v=18d6c1e2"></script>
+<script src="ui-mensajes.js?v=22f3c588"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js?v=68725f64"></script>
 <script src="readers-levels.js?v=2d067055"></script>
@@ -377,7 +377,7 @@ if(['a2','b1','b2','c1'].indexOf(ATTWN_LVL)<0) ATTWN_LVL='b1';
 document.write('<script src="attwn-data-'+ATTWN_LVL+'.js?v=1"><\/script>');
 </script>
 <script src="nis-nav.js?v=c3230c7d"></script>
-<script src="activity-save.js?v=7bdace9a"></script>
+<script src="activity-save.js?v=9dbd5cb4"></script>
 </head>
 <body>
 <header>
@@ -2190,7 +2190,7 @@ function _c2Read(){ try{ return new Set(JSON.parse(localStorage.getItem(C2_KEY)|
 /* ---------- C2 · leer el texto original dentro de la app ---------- */
 function c2Original(unit){
   const chs=(window.READER_ORIGINAL||{})[unit]||[];
-  if(!chs.length){ alert('El texto original de esta etapa no está disponible.'); return; }
+  if(!chs.length){ alert('The original text for this stage is not available.'); return; }
   view={screen:'info',info:'c2o',chap:null,act:null}; backEl.style.display='inline-block';
   crumbEl.innerHTML='C2 · the original text';
   const words=chs.reduce((n,c)=>n+c.paras.join(' ').split(/\s+/).length,0);
@@ -2301,13 +2301,13 @@ function renderChooser(){
    ============================================================ */
 const LEVEL_PLAN=[
   {lvl:'A2', words:2706, hrs:'8–10 h', perCh:'50–55 min',
-   note:'Elementary. Frases cortas y vocabulario básico; audio más lento. Ideal para refuerzo o 6.º–7.º. Sugerencia: 1 capítulo por sesión de 50 min con las 3 actividades núcleo (Comprehension, True/False, Listening).'},
+   note:'Elementary. Short sentences and basic vocabulary; slower audio. Good for reinforcement or Grade 6–7. Suggestion: 1 chapter per 50-minute session with the 3 core activities (Comprehension, True/False, Listening).'},
   {lvl:'B1', words:3624, hrs:'10–12 h', perCh:'60–70 min',
-   note:'Intermedio — versión estándar de 9.º grado. Narrativa clara con audio completo. Sugerencia: leer + 4–5 actividades por capítulo; Writing como tarea para casa.'},
+   note:'Intermediate — standard Grade 9 version. Clear narrative with full audio. Suggestion: read + 4–5 activities per chapter; Writing as homework.'},
   {lvl:'B2', words:4546, hrs:'12–15 h', perCh:'75–85 min',
-   note:'Intermedio-alto. Textos más densos y léxico ampliado; bueno para 10.º. Sugerencia: exigir las 13 actividades; Speed Quiz y Crossword como repaso de vocabulario.'},
+   note:'Upper-intermediate. Denser texts and wider vocabulary; good for Grade 10. Suggestion: require all 13 activities; Speed Quiz and Crossword as vocabulary review.'},
   {lvl:'C1', words:6299, hrs:'15–18 h', perCh:'90–100 min',
-   note:'Avanzado, cercano al original; ideal 11.º / preparación C1. Sugerencia: combinar con “Read the original” (C2) y escritura extendida.'}
+   note:'Advanced, close to the original; ideal for Grade 11 / C1 preparation. Suggestion: combine with “Read the original” (C2) and extended writing.'}
 ];
 function _tkChapter(c){
   const comp=(c.comp||[]).map((q,i)=>`<li><b>${i+1}.</b> ${q[0]}<br><span style="color:var(--green-txt)">✔ ${q[1][q[2]]}</span>${q[3]?`<br><span class="muted" style="font-size:12.5px">${q[3]}</span>`:''}</li>`).join('');
@@ -2319,23 +2319,23 @@ function _tkChapter(c){
   const keys=ev?ev.keys.join(' · '):'';
   return `<details class="tk-ch"><summary><b>Chapter ${c.n}</b> · ${c.title}</summary>
     <div class="tk-body">
-      <h4>❓ Comprehension <span class="muted">(mismas respuestas que ⚡ Speed Quiz)</span></h4><ol class="tk-list">${comp}</ol>
+      <h4>❓ Comprehension <span class="muted">(same answers as ⚡ Speed Quiz)</span></h4><ol class="tk-list">${comp}</ol>
       <h4>✅ True / False</h4><ol class="tk-list">${tf}</ol>
-      <h4>🔤 Vocabulario <span class="muted">— alimenta Multiple Choice · Crossword · Word Search · Hangman · Memory · Scramble</span></h4><ul class="tk-list">${vocab}</ul>
-      <h4>🎧 Listening (gap-fill)</h4><p class="muted" style="margin:0 0 4px">Los 6 huecos se generan del texto: la palabra que falta es siempre uno de los términos de vocabulario de arriba (o un nombre de personaje). Se eligen al azar en cada intento.</p>
-      <h4>📋 Summarize — orden correcto de los hechos</h4><ol class="tk-list">${order}</ol>
-      <p class="muted" style="margin:6px 0 0"><b>Palabras clave:</b> ${keys}</p>
-      <p class="muted" style="margin:4px 0 0"><b>Resumen modelo:</b> ${c.sum||'—'}</p>
-      <h4>✍️ Writing <span class="muted">— tareas abiertas (sin clave única)</span></h4><ul class="tk-list">${wr}</ul>
+      <h4>🔤 Vocabulary <span class="muted">— feeds Multiple Choice · Crossword · Word Search · Hangman · Memory · Scramble</span></h4><ul class="tk-list">${vocab}</ul>
+      <h4>🎧 Listening (gap-fill)</h4><p class="muted" style="margin:0 0 4px">The 6 gaps are generated from the text: the missing word is always one of the vocabulary terms above (or a character name). They are chosen at random each attempt.</p>
+      <h4>📋 Summarize — correct order of events</h4><ol class="tk-list">${order}</ol>
+      <p class="muted" style="margin:6px 0 0"><b>Key words:</b> ${keys}</p>
+      <p class="muted" style="margin:4px 0 0"><b>Model summary:</b> ${c.sum||'—'}</p>
+      <h4>✍️ Writing <span class="muted">— open-ended tasks (no single answer key)</span></h4><ul class="tk-list">${wr}</ul>
     </div></details>`;
 }
 function teacherView(){
   _stopAudio();
   view={screen:'teacher',chap:null,act:null,info:null};
   backEl.style.display='inline-block';
-  crumbEl.innerHTML='👩‍🏫 Panel del profesor';
+  crumbEl.innerHTML='👩‍🏫 Teacher panel';
   const planRows=LEVEL_PLAN.map(p=>`<tr${p.lvl===LVL?' style="background:#eef4ff"':''}>
-    <td><b>${p.lvl}</b></td><td>${p.words.toLocaleString('es')}</td><td>${p.perCh}</td><td><b>${p.hrs}</b></td><td>${p.note}</td></tr>`).join('');
+    <td><b>${p.lvl}</b></td><td>${p.words.toLocaleString('en-GB')}</td><td>${p.perCh}</td><td><b>${p.hrs}</b></td><td>${p.note}</td></tr>`).join('');
   const byr=BOOK_WORDS.map(v=>`<li><b>${v[0]}</b> — ${v[1]}</li>`).join('');
   const ww=WHOSWHO.map((w,i)=>`<li><b>${i+1}.</b> ${w[0]} <b style="color:var(--green-txt)">→ ${w[1]}</b></li>`).join('');
   const nums=BIO_NUMBERS.map(b=>`<li><b>${b[0]}</b> — ${b[1]}</li>`).join('');
@@ -2367,22 +2367,22 @@ function teacherView(){
 input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--accent);outline-offset:1px}
 </style>
   <div class="tk panel">
-    <h2>👩‍🏫 Panel del profesor</h2>
-    <p class="muted">Claves de respuestas y planificación de <b>And Then There Were None</b>. Solo visible para docentes.</p>
+    <h2>👩‍🏫 Teacher panel</h2>
+    <p class="muted">Answer keys and lesson planning for <b>And Then There Were None</b>. Visible to teachers only.</p>
     <div class="no-print" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:10px 0 4px">
-      <button class="btn sm" onclick="window.print()">🖨️ Imprimir / PDF</button>
-      <button class="btn ghost sm" onclick="view={screen:'chapters',chap:null,act:null};render()">← Volver a la app</button>
-      <span class="muted" style="font-size:12.5px;margin-left:6px">Respuestas del nivel:</span> ${lvlPills}
+      <button class="btn sm" onclick="window.print()">🖨️ Print / PDF</button>
+      <button class="btn ghost sm" onclick="view={screen:'chapters',chap:null,act:null};render()">← Back to the app</button>
+      <span class="muted" style="font-size:12.5px;margin-left:6px">Answers for level:</span> ${lvlPills}
     </div>
-    <h3>📊 Detallado por nivel</h3>
-    <table><thead><tr><th>Nivel</th><th>N.º de palabras<br>(texto del reader)</th><th>Tiempo por<br>capítulo</th><th>Total<br>(todas las actividades)</th><th>Notas</th></tr></thead>
+    <h3>📊 Level breakdown</h3>
+    <table><thead><tr><th>Level</th><th>Word count<br>(reader text)</th><th>Time per<br>chapter</th><th>Total<br>(all activities)</th><th>Notes</th></tr></thead>
     <tbody>${planRows}</tbody></table>
-    <p class="muted" style="font-size:12px">“N.º de palabras” = solo el texto del reader (10 capítulos). El total incluye leer + las 13 actividades por capítulo + los extras. Estimaciones para 9.º grado; ajústalas a tu grupo. (Fila resaltada = nivel abierto ahora, <b>${LVL}</b>.)</p>
-    <h3>🗝️ Claves por capítulo <span class="muted" style="font-size:13px;font-weight:400">— nivel ${LVL}</span></h3>
-    <p class="muted" style="font-size:12.5px">Toca un capítulo para desplegar sus respuestas.</p>
+    <p class="muted" style="font-size:12px">“Word count” = only the reader text (10 chapters). The total includes reading + the 13 activities per chapter + the extras. Estimates for Grade 9; adjust them to your group. (Highlighted row = level currently open, <b>${LVL}</b>.)</p>
+    <h3>🗝️ Answer keys by chapter <span class="muted" style="font-size:13px;font-weight:400">— level ${LVL}</span></h3>
+    <p class="muted" style="font-size:12.5px">Tap a chapter to see its answers.</p>
     ${CHAPTERS.map(_tkChapter).join('')}
-    <h3>🎬 Extras (iguales en todos los niveles)</h3>
-    <h4>Before you read — 12 palabras</h4><ul class="tk-list">${byr}</ul>
+    <h3>🎬 Extras (the same at every level)</h3>
+    <h4>Before you read — 12 words</h4><ul class="tk-list">${byr}</ul>
     <h4>Who is who?</h4><ol class="tk-list">${ww}</ol>
     <h4>Agatha in numbers</h4><ul class="tk-list">${nums}</ul>
     <h4>Grammar — Past perfect</h4><ol class="tk-list">${gram}</ol>
@@ -2392,8 +2392,8 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px soli
 function _mountTeacherBtn(){
   if(document.getElementById('tkBtn')) return;
   const b=document.createElement('button');
-  b.id='tkBtn'; b.textContent='👩‍🏫 Profesor';
-  b.title='Claves de respuestas y planificación (solo docentes)';
+  b.id='tkBtn'; b.textContent='👩‍🏫 Teacher';
+  b.title='Answer keys and lesson planning (teachers only)';
   b.style.cssText='position:fixed;right:16px;bottom:16px;z-index:50;background:var(--blue-d);color:#fff;border:none;border-radius:30px;padding:11px 18px;font-family:inherit;font-weight:700;font-size:14px;cursor:pointer;box-shadow:0 6px 20px rgba(15,23,42,.3)';
   b.onclick=teacherView;
   document.body.appendChild(b);
@@ -2469,6 +2469,6 @@ if(window.NIS_WORK) NIS_WORK.attach(Object.assign(
 ));
 
 </script>
-<script src="nis-tema.js?v=a7890d34" defer></script>
+<script src="nis-tema.js?v=410c4879" defer></script>
 </body>
 </html>

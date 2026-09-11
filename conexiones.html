@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Conexiones interdisciplinarias · Secundaria · NIS</title>
+<title>Interdisciplinary connections · Secondary · NIS</title>
 <link rel="icon" href="assets/favicon.svg">
 <link href="vendor/fonts/montserrat-68a53b.css" rel="stylesheet">
 <!--
@@ -89,13 +89,13 @@ h3.bloque{font-size:.78rem;letter-spacing:.07em;text-transform:uppercase;color:v
 <body>
 <header>
   <img src="assets/logo-white-h.svg" alt="Nordic International School" onerror="this.style.display='none'">
-  <select id="grado" aria-label="Grado"></select>
+  <select id="grado" aria-label="Grade"></select>
   <div class="spacer"></div>
-  <button type="button" id="print">&#128424; Imprimir</button>
-  <a id="back" href="project.html">&#8592; Volver</a>
+  <button type="button" id="print">&#128424; Print</button>
+  <a id="back" href="project.html">&#8592; Back</a>
 </header>
 
-<div class="wrap" id="app"><p>Cargando…</p></div>
+<div class="wrap" id="app"><p>Loading…</p></div>
 
 <script src="project-arcs-sec.js?v=bb5518a4"></script>
 <script>
@@ -138,66 +138,66 @@ function documento(k, p){
   const NOM = window.PROJECT_SEC_AREA_NOMBRE || {};
   const cont = contenido(p.grado, p.unidad);
   let h = `<div class="doc">
-    <h1>Conexiones interdisciplinarias</h1>
-    <p class="cab">GRADO: ${p.grado} &nbsp;·&nbsp; PROYECTO ${p.proyecto} / UNIDAD ${p.unidad}
-      &nbsp;·&nbsp; ${esc(p.mes)} &nbsp;·&nbsp; DURACIÓN: ${p.semanas.length} SEMANAS</p>
+    <h1>Interdisciplinary connections</h1>
+    <p class="cab">GRADE: ${p.grado} &nbsp;·&nbsp; PROJECT ${p.proyecto} / UNIT ${p.unidad}
+      &nbsp;·&nbsp; ${esc(p.mes)} &nbsp;·&nbsp; DURATION: ${p.semanas.length} WEEKS</p>
     <h2>${esc(es(p.titulo))}</h2>
     <p class="pregunta">${esc(es(p.preguntaEsencial))}</p>`;
 
   if(p.parcial){
-    h += `<div class="vacio" style="margin-bottom:12px">Esta unidad está a medio cargar en el documento
-      del colegio. La propuesta se apoya solo en las áreas que sí tienen contenido y señala las que faltan.</div>`;
+    h += `<div class="vacio" style="margin-bottom:12px">This unit is only half complete in the school’s
+      document. The proposal is based only on the subjects that do have content, and flags the ones that are missing.</div>`;
   }
 
   h += `<div class="leyenda noprint">
-    <span><i class="chip"></i> Contenido escrito por el colegio</span>
-    <span><i class="chip p"></i> Propuesta del portal, para aprobar o cambiar</span></div>`;
+    <span><i class="chip"></i> Content written by the school</span>
+    <span><i class="chip p"></i> Portal proposal, to approve or change</span></div>`;
 
-  h += `<table><tr><th>Área</th><th>Contenidos / conceptos clave</th>
-    <th>Posibles conexiones con otras áreas</th></tr>`;
+  h += `<table><tr><th>Subject</th><th>Content / key concepts</th>
+    <th>Possible connections with other subjects</th></tr>`;
   const claves = Object.keys(p.areas);
   const extras = cont ? Object.keys(cont.areas).filter(x => claves.indexOf(x) < 0) : [];
   claves.concat(extras).forEach(a => {
     const c = cont && cont.areas[a];
     const li = c && c.contenidos.length
       ? `<ul>${c.contenidos.map(x => `<li>${esc(x)}</li>`).join('')}</ul>`
-      : `<i>sin cargar en el documento del colegio</i>`;
+      : `<i>not entered in the school’s document</i>`;
     const suya = c && c.propias.length
-      ? `<p style="margin:6px 0 0"><i>Nota del profesor: ${esc(c.propias.join(' · '))}</i></p>` : '';
+      ? `<p style="margin:6px 0 0"><i>Teacher’s note: ${esc(c.propias.join(' · '))}</i></p>` : '';
     h += `<tr><td class="area">${esc((c && c.nombre) || NOM[a] || a)}</td>
       <td class="cont">${li}${suya}</td>
       <td class="conex">${p.areas[a] ? esc(p.areas[a]) : '<i>—</i>'}</td></tr>`;
   });
   h += `</table>`;
 
-  h += `<h3 class="bloque">Temáticas comunes identificadas</h3><div class="bloque-cuerpo">
+  h += `<h3 class="bloque">Common themes identified</h3><div class="bloque-cuerpo">
     ${p.tematicas.map(tm => `<p style="margin:0 0 8px"><b>${esc(tm.nombre)}</b></p>
       <ul>${tm.aporta.map(x => `<li><b>${esc(NOM[x[0]] || x[0])}:</b> ${esc(x[1])}</li>`).join('')}</ul>`).join('')}
     </div>`;
 
-  h += `<h3 class="bloque">Producto integrador propuesto</h3><div class="bloque-cuerpo">
+  h += `<h3 class="bloque">Proposed integrating product</h3><div class="bloque-cuerpo">
     <p style="margin:0 0 6px"><b>${esc(es(p.producto.titulo))}</b></p>
     <p style="margin:0 0 8px">${esc(es(p.producto.descripcion))}</p>
     <ul>${p.producto.incluye.map(x => `<li>${esc(es(x))}</li>`).join('')}</ul>
-    <p style="margin:8px 0 0"><b>Para mejorarlo:</b> ${esc(es(p.producto.modelo.mejora))}</p></div>`;
+    <p style="margin:8px 0 0"><b>To improve it:</b> ${esc(es(p.producto.modelo.mejora))}</p></div>`;
 
-  h += `<h3 class="bloque">Cronograma sugerido</h3><div class="bloque-cuerpo">
+  h += `<h3 class="bloque">Suggested timeline</h3><div class="bloque-cuerpo">
     <table class="crono">${p.semanas.map(w => `<tr>
-      <td>Semana ${w.n}</td><td>${esc(es(w.foco))}. ${esc(w.hace)}</td>
+      <td>Week ${w.n}</td><td>${esc(es(w.foco))}. ${esc(w.hace)}</td>
       <td>${esc(es(w.evidencia))}</td></tr>`).join('')}</table></div>`;
 
-  h += `<h3 class="bloque">Evaluación</h3><div class="bloque-cuerpo">
-    <p style="margin:0 0 8px">Una sola nota por producto, con una rúbrica integrada. Cada área evalúa su
-      dimensión sobre el mismo trabajo.</p>
+  h += `<h3 class="bloque">Assessment</h3><div class="bloque-cuerpo">
+    <p style="margin:0 0 8px">One single grade per product, with an integrated rubric. Each subject assesses
+      its dimension on the same piece of work.</p>
     <table class="crono">${p.evaluacion.map(e => `<tr><td>${esc(e.areas)}</td>
       <td><b>${esc(e.dimension)}</b></td><td style="font-style:normal;color:inherit;width:52%">${esc(e.descriptor)}</td></tr>`).join('')}</table></div>`;
 
   const PF = window.PROJECT_SEC_PERFIL || {};
   if((p.perfil || []).length){
-    h += `<p class="nota"><b>Perfil del Egresado Nordic:</b> ${p.perfil.map(n => 'CE ' + n + ' ' + (PF[n] || '')).join(' · ')}</p>`;
+    h += `<p class="nota"><b>Nordic Graduate Profile:</b> ${p.perfil.map(n => 'CE ' + n + ' ' + (PF[n] || '')).join(' · ')}</p>`;
   }
   if((p.revisar || []).length){
-    h += `<h3 class="bloque">Para decidir en coordinación</h3><div class="bloque-cuerpo">
+    h += `<h3 class="bloque">To decide in coordination</h3><div class="bloque-cuerpo">
       <ul>${p.revisar.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>`;
   }
   h += `</div>`;
@@ -207,7 +207,7 @@ function documento(k, p){
 function pinta(){
   const g = (P.get('grade') || 'g9').toLowerCase().replace('g','');
   $('#grado').innerHTML = GRADOS.map(n =>
-    `<option value="${n}"${String(n) === g ? ' selected' : ''}>Grado ${n}</option>`).join('');
+    `<option value="${n}"${String(n) === g ? ' selected' : ''}>Grade ${n}</option>`).join('');
   $('#back').href = 'project.html?grade=g' + g;
 
   const PS = window.PROJECT_SEC || {};
@@ -216,37 +216,37 @@ function pinta(){
 
   const u6 = window.PROJECT_SEC_U6 || {};
   let h = `<div class="intro">
-    <h2>Conexiones interdisciplinarias · Grado ${g} · 2026</h2>
-    <p>Este documento usa el formato del colegio y completa la columna que está sin escribir. Los
-      <b>contenidos</b> de cada área son de los profesores, copiados de los archivos
-      <i>CONEXIONES INTERDISCIPLINARIAS</i> de Drive y sin retocar. Las <b>conexiones</b>, el
-      <b>producto integrador</b>, el <b>cronograma</b> y la <b>evaluación</b> son propuesta, y siguen
-      el molde del <i>EJEMPLO UNIDAD 2</i>, que es el único documento que el colegio tiene relleno.</p>
-    <p>Lo que hay que decidir en la reunión:</p>
+    <h2>Interdisciplinary connections · Grade ${g} · 2026</h2>
+    <p>This document uses the school’s format and completes the column that is left blank. The
+      <b>content</b> for each subject comes from the teachers, copied from the
+      <i>CONEXIONES INTERDISCIPLINARIAS</i> files in Drive and unedited. The <b>connections</b>, the
+      <b>integrating product</b>, the <b>timeline</b> and the <b>assessment</b> are a proposal, and follow
+      the pattern of the <i>EJEMPLO UNIDAD 2</i>, which is the only document the school has filled in.</p>
+    <p>What needs to be decided in the meeting:</p>
     <ul>
-      <li>Si el proyecto propuesto para cada unidad es el que el nivel quiere, o hay otro mejor.</li>
-      <li>Qué áreas entran de verdad en cada uno y cuáles siguen en paralelo, sin forzarlas.</li>
-      <li>El peso de cada dimensión en la nota única del producto.</li>
-      <li>Los puntos listados en <i>Para decidir en coordinación</i> al final de cada proyecto.</li>
+      <li>Whether the project proposed for each unit is the one the grade level wants, or whether there is a better one.</li>
+      <li>Which subjects genuinely take part in each one and which stay parallel, without forcing them in.</li>
+      <li>The weight of each dimension in the product’s single grade.</li>
+      <li>The points listed under <i>To decide in coordination</i> at the end of each project.</li>
     </ul>
-    <p class="nota">Estado del material: U2, U3 y U4 tienen los contenidos completos. U5 está a medio
-      cargar en los seis grados. ${esc(u6.detalle || '')}</p>
+    <p class="nota">Material status: U2, U3 and U4 have complete content. U5 is only half filled in
+      across the six grades. ${esc(u6.detalle || '')}</p>
   </div>`;
 
   h += lista.map(x => documento(x[0], x[1])).join('');
 
   if(u6.estado === 'vacio'){
-    h += `<div class="doc"><h1>Conexiones interdisciplinarias</h1>
-      <p class="cab">GRADO: ${g} · PROYECTO 5 / UNIDAD 6 · Noviembre</p>
-      <h2 style="color:var(--bad)">Sin propuesta, a propósito</h2>
+    h += `<div class="doc"><h1>Interdisciplinary connections</h1>
+      <p class="cab">GRADE: ${g} · PROJECT 5 / UNIT 6 · November</p>
+      <h2 style="color:var(--bad)">No proposal, on purpose</h2>
       <div class="vacio">${esc(u6.detalle)}</div>
-      <h3 class="bloque">Lo que hace falta</h3><div class="bloque-cuerpo">
+      <h3 class="bloque">What is missing</h3><div class="bloque-cuerpo">
         <ul>${(u6.pedido || []).map(x => `<li>${esc(x)}</li>`).join('')}</ul>
         <p style="margin:8px 0 0">${esc(u6.cuandoEste || '')}</p></div></div>`;
   }
 
   $('#app').innerHTML = h;
-  document.title = 'Conexiones interdisciplinarias · Grado ' + g + ' · NIS';
+  document.title = 'Interdisciplinary connections · Grade ' + g + ' · NIS';
 }
 
 $('#grado').addEventListener('change', function(){
@@ -259,6 +259,6 @@ $('#print').addEventListener('click', () => window.print());
   pinta();
 })();
 </script>
-<script src="nis-tema.js?v=a7890d34" defer></script>
+<script src="nis-tema.js?v=410c4879" defer></script>
 </body>
 </html>

@@ -115,7 +115,7 @@
 :focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--accent);outline-offset:1px}
 </style>
-<script src="ui-mensajes.js?v=18d6c1e2"></script>
+<script src="ui-mensajes.js?v=22f3c588"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js?v=68725f64"></script>
 <script src="nis-nav.js?v=c3230c7d"></script>
@@ -385,9 +385,9 @@ window.viewChapters=async(rid,lvl,fromHash)=>{
   $('#main').innerHTML=`
     <h1>${m[0]} ${r.title} · ${m[1]}</h1>
     <p class="lead">One exam per chapter — ${m[2]} minutes: comprehension, true/false, vocabulary${lvl==='b2'||lvl==='c1'?' (with written answers)':''}, listening and story order. Two questions per screen; corrected automatically with feedback at the end.</p>
-    ${staff?`<div class="note">👩‍🏫 <b>Modo profesor:</b> puedes entrar a cualquier capítulo para revisar el examen, aunque esté cerrado para los alumnos.
-      Lo que ves abajo es el estado <b>general</b>; abrir o cerrar por grado y salón, y dar minutos extra, se hace en un solo sitio:
-      <a href="./#readers" style="font-weight:700;color:var(--blue-d)">Portal → 📖 Controles de lectura</a>.</div>`:''}
+    ${staff?`<div class="note">👩‍🏫 <b>Teacher mode:</b> you can enter any chapter to review the exam, even if it is locked for students.
+      What you see below is the <b>general</b> status; opening or closing it by grade and section, and giving extra minutes, is done in one place:
+      <a href="./#readers" style="font-weight:700;color:var(--blue-d)">Portal → 📖 Reading controls</a>.</div>`:''}
     ${noSessionNote()}
     <div class="grid" id="chGrid">
       ${data.CHAPTERS.map(c=>{ const k=lockKey(rid,lvl,c.n); const a=accFor(k,chain);
@@ -397,8 +397,8 @@ window.viewChapters=async(rid,lvl,fromHash)=>{
           <h2>Chapter ${c.n} · ${esc(c.title)}</h2>
           <div class="desc">${esc(c.sum).slice(0,90)}…</div>
           <span class="chip ${open?'ok':'no'}" id="st-${c.n}">${open?'✅ Open for students':'🔒 Locked for students'}</span>
-          ${open&&a.until?`<span class="inherit">🕒 abierto hasta las ${new Date(a.until).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})}</span>`:''}
-          ${staff&&a.extra?`<span class="inherit">⏱ +${a.extra} min de tiempo extra</span>`:''}
+          ${open&&a.until?`<span class="inherit">🕒 open until ${new Date(a.until).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})}</span>`:''}
+          ${staff&&a.extra?`<span class="inherit">⏱ +${a.extra} extra minute(s)</span>`:''}
         </div>`; }).join('')}
     </div>
     <div style="margin-top:16px"><button class="btn ghost" onclick="viewLevels('${rid}')">← Levels</button></div>`;
@@ -785,6 +785,6 @@ window.submitExam=async(force)=>{
 };
 boot();
 </script>
-<script src="nis-tema.js?v=a7890d34" defer></script>
+<script src="nis-tema.js?v=410c4879" defer></script>
 </body>
 </html>

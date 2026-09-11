@@ -95,7 +95,7 @@ ol.pasos li::before{content:counter(p);position:absolute;left:0;top:12px;width:3
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js?v=68725f64"></script>
-<script src="unit-plans.js?v=c5e69a2b"></script>
+<script src="unit-plans.js?v=60a03c38"></script>
 <script src="nis-nav.js?v=c3230c7d"></script>
 <script>
 /* Dos vistas de la misma semana, generadas del planner:
@@ -176,7 +176,7 @@ function cerrado(t,d){
       <h2 style="margin:14px 0 6px">${esc(t)}</h2>
       <p class="foco">${esc(d)}</p>
       <a href="./" style="display:inline-block;background:var(--blue);color:#fff;text-decoration:none;
-         padding:10px 18px;border-radius:10px;font-weight:600;font-size:.9rem">← Volver al portal</a>
+         padding:10px 18px;border-radius:10px;font-weight:600;font-size:.9rem">← Back to the portal</a>
     </div>`;
 }
 
@@ -197,21 +197,21 @@ function portada(sub){
 /* ---------------- VIEW CLASS: el guion de la sesion ---------------- */
 function vistaClase(){
   const ses = W.sessions||[];
-  return portada('Guion de clase') + ses.map(s=>`
+  return portada('Class script') + ses.map(s=>`
     <section class="hoja">
-      <div class="cinta">Sesión ${s.s}</div>
+      <div class="cinta">Session ${s.s}</div>
       <h2>${esc(s.title)}</h2>
       <p class="foco">${esc(s.objective||W.desc||'')}</p>
-      <div class="bloque"><h3>Cómo va la sesión</h3>
+      <div class="bloque"><h3>How the session goes</h3>
         <ol class="pasos">${(s.view||[]).map(p=>`<li>${esc(p)}</li>`).join('')}</ol></div>
-      ${W.across?`<div class="bloque"><h3>Qué aporta cada área esta semana</h3>
+      ${W.across?`<div class="bloque"><h3>What each subject contributes this week</h3>
         <ul class="exito">${Object.keys(W.across).map(a=>`<li><b>${esc(NOMBRE_AREA[a]||a)}:</b> ${esc(W.across[a])}</li>`).join('')}</ul></div>`:''}
-      <div class="bloque"><h3>Al terminar, el alumno entrega</h3>
+      <div class="bloque"><h3>By the end, the student hands in</h3>
         <div class="consigna">${esc(W.give||'')}</div></div>
-      ${(s.levels||W.levels)?`<div class="bloque"><h3>La ficha de esta sesión, por nivel</h3><div class="otros">
+      ${(s.levels||W.levels)?`<div class="bloque"><h3>This session’s worksheet, by level</h3><div class="otros">
         ${Object.keys(s.levels||W.levels).map(l=>`<a href="class-session.html?grade=${esc(GRADE)}&unit=${U.n}&week=${W.n}&session=${s.s}&level=${encodeURIComponent(l)}">${esc(l)}</a>`).join('')}
       </div></div>`:''}
-      ${U.words&&U.words.length?`<div class="bloque"><h3>Lengua de la unidad</h3>
+      ${U.words&&U.words.length?`<div class="bloque"><h3>Unit language</h3>
         <div class="apoyo">${U.words.slice(0,14).map(w=>`<span>${esc(w)}</span>`).join('')}</div></div>`:''}
     </section>`).join('');
 }
@@ -219,8 +219,8 @@ function vistaClase(){
 /* ---------------- LA FICHA DEL ALUMNO, por nivel ---------------- */
 function vistaFicha(){
   const L = fichaDe(LEVEL);
-  if(!L) return `<div class="hoja"><h2>Ese nivel no existe en esta semana</h2>
-    <p class="foco">Los niveles disponibles son: ${Object.keys(nivelesDe()||{}).join(', ')||'ninguno'}.</p></div>`;
+  if(!L) return `<div class="hoja"><h2>That level does not exist this week</h2>
+    <p class="foco">The levels available are: ${Object.keys(nivelesDe()||{}).join(', ')||'none'}.</p></div>`;
   const otros = Object.keys(nivelesDe()).map(l=>
     `<a class="${l===LEVEL?'on':''}" href="class-session.html?grade=${esc(GRADE)}&unit=${U.n}&week=${W.n}${SESS?'&session='+SESS:''}&level=${encodeURIComponent(l)}">${esc(l)}</a>`).join('');
   const crit = (U.criteria||[]).slice(0, 2).map(c=>{
@@ -245,13 +245,13 @@ function vistaFicha(){
 
 (async function(){
   await conecta();
-  if(!U || !W){ cerrado('Esa semana no está', 'Vuelve al portal y elige otra.'); return; }
+  if(!U || !W){ cerrado('That week is not here', 'Go back to the portal and choose another one.'); return; }
   if(!(await puedeVerla())){ cerrado('This unit is not open yet','Your teacher will unlock it when the unit starts.'); return; }
-  if(!LEVEL && !esProfe){ cerrado('Solo para profesores','El guion de clase es material del profesor. Pide a tu profesor la ficha de tu nivel.'); return; }
+  if(!LEVEL && !esProfe){ cerrado('Teachers only','The class script is teacher material. Ask your teacher for your level’s worksheet.'); return; }
   document.title = (LEVEL? 'Worksheet '+LEVEL : 'Class') + ' · '+PLAN.label+' · Unit '+(U.label||U.n)+' W'+W.n;
   document.getElementById('app').innerHTML = LEVEL ? vistaFicha() : vistaClase();
 })();
 </script>
-<script src="nis-tema.js?v=a7890d34" defer></script>
+<script src="nis-tema.js?v=410c4879" defer></script>
 </body>
 </html>

@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>U5 + U6: una sola unidad de once semanas · NIS</title>
+<title>U5 + U6: one single eleven-week unit · NIS</title>
 <link rel="icon" href="assets/favicon.svg">
 <link href="vendor/fonts/montserrat-68a53b.css" rel="stylesheet">
 <!--
@@ -126,13 +126,13 @@ td.hito{background:var(--bg);color:var(--gris);width:118px;font-size:.72rem}
 <body>
 <header>
   <img src="assets/logo-white-h.svg" alt="Nordic International School" onerror="this.style.display='none'">
-  <select id="sel" aria-label="Grado"></select>
+  <select id="sel" aria-label="Grade"></select>
   <div class="sp"></div>
-  <button type="button" id="print">&#128424; Imprimir</button>
-  <a id="back" href="project.html">&#8592; Volver</a>
+  <button type="button" id="print">&#128424; Print</button>
+  <a id="back" href="project.html">&#8592; Back</a>
 </header>
 
-<div class="wrap" id="app"><p>Cargando…</p></div>
+<div class="wrap" id="app"><p>Loading…</p></div>
 
 <script src="scope-u56.js?v=b875949b"></script>
 <script src="scope-u56-en.js?v=92ee599b"></script>
@@ -152,7 +152,8 @@ const es = v => v == null ? '' : (typeof v === 'string' ? v : (v.es || v.en || '
 const EN = window.SCOPE_U56_EN || null;
 let LANG = (function(){
   const q = new URLSearchParams(location.search).get('lang') || window.__LANG || '';
-  return (q === 'en' && EN) ? 'en' : 'es';
+  if(q === 'es') return 'es';
+  return EN ? 'en' : 'es';
 })();
 const enIngles = () => LANG === 'en' && EN;
 
@@ -408,6 +409,16 @@ function pinta(){
 }
 
 const sel = document.getElementById('sel');
+/* Cabecera fija fuera del diccionario del Scope: no depende de scope-u56-en.js,
+   solo de si enIngles() esta activo. */
+const printBtn = document.getElementById('print');
+const backLink = document.getElementById('back');
+function pintaCabecera(){
+  const en = enIngles();
+  sel.setAttribute('aria-label', en ? 'Grade' : 'Grado');
+  printBtn.innerHTML = en ? '&#128424; Print' : '&#128424; Imprimir';
+  backLink.innerHTML = en ? '&#8592; Back' : '&#8592; Volver';
+}
 function pintaSelector(){
   sel.innerHTML = Object.keys(U.etapas).map(et => {
     const e = U.etapas[et], lab = eT(et, 'label');
@@ -418,6 +429,7 @@ function pintaSelector(){
   }).join('');
 }
 pintaSelector();
+pintaCabecera();
 sel.value = pedido().grado || ('e:' + etapaActual());
 /* La copia suelta se abre desde el disco, y ahi replaceState puede fallar.
    La eleccion del selector se guarda en `forzado` para que repinte igual. */
@@ -439,7 +451,7 @@ if(EN){
   rotula();
   bo.onclick = () => {
     LANG = enIngles() ? 'es' : 'en';
-    rotula(); pintaSelector();
+    rotula(); pintaSelector(); pintaCabecera();
     sel.value = pedido().grado || ('e:' + etapaActual());
     pinta(); window.scrollTo(0, 0);
   };
@@ -460,6 +472,6 @@ function carga(url, guarda, incrustado){
 carga('scope/scope-2026.json', j => { SCOPE = j; }, window.__SCOPE);
 carga('scope/annual-plan-primary-2026.json', j => { PLAN = j; }, window.__PLAN);
 </script>
-<script src="nis-tema.js?v=a7890d34" defer></script>
+<script src="nis-tema.js?v=410c4879" defer></script>
 </body>
 </html>

@@ -129,7 +129,7 @@ td.sem{font-weight:800;color:var(--blue-d);white-space:nowrap;width:52px}
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js?v=68725f64"></script>
-<script src="unit-plans.js?v=c5e69a2b"></script>
+<script src="unit-plans.js?v=60a03c38"></script>
 <script src="nis-nav.js?v=c3230c7d"></script>
 <script>
 /* Guia del profesor de la unidad, para imprimir.
@@ -151,9 +151,9 @@ const esc = s => String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&l
 const PLAN = (window.UNIT_PLANS||{})[GRADE];
 const U = PLAN ? (PLAN.units||[]).filter(u=>u.n===UNIT)[0] : null;
 
-const NIVEL_ACOPLE = {1:'Paralelo — mismo tema, cada área entrega lo suyo',
-                      2:'Producto compartido — una entrega, una nota',
-                      3:'Fusionado — planner interdisciplinario completo'};
+const NIVEL_ACOPLE = {1:'Parallel — same theme, each subject submits its own work',
+                      2:'Shared product — one submission, one grade',
+                      3:'Merged — full interdisciplinary planner'};
 const AREA_NOMBRE = {science:'Science', math:'Math', social:'Social Studies', english:'English',
                      comunicacion:'Comunicación', ict:'ICT', art:'Creative Arts',
                      globalperspectives:'Global Perspectives', pe:'PE', music:'Music'};
@@ -162,18 +162,18 @@ const EXAMEN = {starters:'Pre A1 Starters', movers:'A1 Movers', flyers:'A2 Flyer
 
 /* El ciclo de la unidad. La semana 6 solo existe donde el calendario la da. */
 const CICLO = [
-  ['Lanzamiento','Situación significativa, big question, equipos. La rúbrica se enseña hoy, no al final.',
-   'Ver el estímulo y leer la rúbrica (~15 min)','Primeras preguntas y lluvia de ideas del equipo'],
-  ['Investigación','Fuentes, lectura de la obra, datos. Es la semana con más pantalla, y está justificada.',
-   'Leer y escuchar fuentes, buscar, verificar','Notas de lectura y organizador gráfico, a mano'],
-  ['Construcción','El trabajo del área: el experimento, el cálculo, la fuente, el prototipo.',
-   'Language lab de la unidad (~20 min)','Laboratorio, taller, medición, cuaderno'],
-  ['Borrador','La semana de producción. Es la de MENOS pantalla del ciclo.',
-   'Solo la foto del cuaderno como evidencia','El borrador entero, con tachones'],
-  ['Final y entrega','Corrección contra la rúbrica, reescritura y entrega.',
-   'Corrector automático y grabadora para ensayar','La reescritura a mano'],
-  ['Producto y audiencia','Exposición ante audiencia real y galería.',
-   'Publicar en la galería','La defensa, presencial']
+  ['Launch','Significant situation, big question, teams. The rubric is taught today, not at the end.',
+   'See the prompt and read the rubric (~15 min)','First questions and team brainstorming'],
+  ['Research','Sources, reading of the book, data. It is the week with the most screen time, and it is justified.',
+   'Read and listen to sources, search, verify','Reading notes and graphic organiser, by hand'],
+  ['Construction','The work of the subject: the experiment, the calculation, the source, the prototype.',
+   'Unit language lab (~20 min)','Lab, workshop, measurement, notebook'],
+  ['Draft','The production week. It is the one with the LEAST screen time in the cycle.',
+   'Only the photo of the notebook as evidence','The whole draft, with crossed-out lines'],
+  ['Final and submission','Marking against the rubric, rewriting and submission.',
+   'Automatic marker and recorder for practice','The rewrite, by hand'],
+  ['Product and audience','Presentation to a real audience and gallery.',
+   'Publish in the gallery','The defence, in person']
 ];
 
 function chips(cls, arr){
@@ -184,58 +184,58 @@ function chips(cls, arr){
 function portada(){
   const prod = (U.deliverables||[]).map(d=>esc(d.title)+(d.spec?' — '+esc(d.spec):'')).join(' · ');
   return `<section class="hoja portada">
-    <div class="cinta">Guía del profesor · ${esc((PLAN.label||GRADE).toUpperCase())} · Unidad ${esc(String(U.label||U.n))}</div>
+    <div class="cinta">Teacher guide · ${esc((PLAN.label||GRADE).toUpperCase())} · Unit ${esc(String(U.label||U.n))}</div>
     <h1>${esc(U.title)}</h1>
     <div class="bigq">${esc(U.bigq||'')}</div>
     <div class="meta">
-      <span>${U.weeks||5} semanas</span>
+      <span>${U.weeks||5} weeks</span>
       ${U.exam&&U.exam.target?`<span>${esc(EXAMEN[U.exam.target]||U.exam.target)}</span>`:''}
       ${U.reader&&U.reader.title?`<span>📖 ${esc(U.reader.title)}</span>`:''}
-      ${(U.areas||[]).map(a=>`<span>${esc(AREA_NOMBRE[a.area]||a.area)} · nivel ${a.level}</span>`).join('')}
+      ${(U.areas||[]).map(a=>`<span>${esc(AREA_NOMBRE[a.area]||a.area)} · level ${a.level}</span>`).join('')}
       ${U.toddle&&U.toddle.unitId?`<span>Toddle ${esc(U.toddle.unitId)}</span>`:''}
     </div>
-    <div class="bloque"><h3 style="color:#dbe8f6">Situación significativa</h3><p style="color:#eaf2fb">${esc(U.situation||'')}</p></div>
-    <div class="bloque"><h3 style="color:#dbe8f6">Audiencia del producto</h3><p style="color:#eaf2fb">${esc(U.audience||'')}</p></div>
-    <div class="bloque"><h3 style="color:#dbe8f6">Se entrega</h3><p style="color:#eaf2fb">${prod||'—'}</p></div>
+    <div class="bloque"><h3 style="color:#dbe8f6">Significant situation</h3><p style="color:#eaf2fb">${esc(U.situation||'')}</p></div>
+    <div class="bloque"><h3 style="color:#dbe8f6">Product audience</h3><p style="color:#eaf2fb">${esc(U.audience||'')}</p></div>
+    <div class="bloque"><h3 style="color:#dbe8f6">Submission</h3><p style="color:#eaf2fb">${prod||'—'}</p></div>
   </section>`;
 }
 
 function cobertura(){
   const e = U.exam, r = U.reader;
   let av = '';
-  if(r && !r.title) av = `<div class="aviso"><b>Sin obra asignada.</b> ${esc(r.note||'Este trimestre no tiene obra en inglés.')}</div>`;
-  else if(r && r.inPortal === false) av = `<div class="aviso"><b>La obra no tiene reader en el portal.</b> Se lee en papel, en la edición del plan lector.${r.note?' '+esc(r.note):''}</div>`;
-  else if(r) av = `<div class="ok"><b>Reader disponible en el portal</b>${r.level?' — se entra en nivel '+esc(r.level.toUpperCase()):''}.</div>`;
+  if(r && !r.title) av = `<div class="aviso"><b>No book assigned.</b> ${esc(r.note||'This term has no book in English.')}</div>`;
+  else if(r && r.inPortal === false) av = `<div class="aviso"><b>The book has no reader in the portal.</b> It is read on paper, in the reading plan edition.${r.note?' '+esc(r.note):''}</div>`;
+  else if(r) av = `<div class="ok"><b>Reader available in the portal</b>${r.level?' — accessed at level '+esc(r.level.toUpperCase()):''}.</div>`;
 
   return `<section class="hoja">
-    <div class="cinta">Antes de empezar</div>
-    <h2>Qué cubre esta unidad</h2>
-    <p class="foco">Las seis unidades del grado tienen que cubrir entre todas la wordlist y la gramática del examen. Esta se lleva lo siguiente.</p>
+    <div class="cinta">Before starting</div>
+    <h2>What this unit covers</h2>
+    <p class="foco">The six units of the grade must together cover the exam wordlist and grammar. This one covers the following.</p>
     <div class="datos">
       <div class="dato exam">
-        <h4>Vocabulario del examen — bloques temáticos</h4>
-        ${e&&e.themes?chips('', e.themes):'<p>Sin asignar todavía.</p>'}
+        <h4>Exam vocabulary — topic blocks</h4>
+        ${e&&e.themes?chips('', e.themes):'<p>Not assigned yet.</p>'}
       </div>
       <div class="dato exam">
-        <h4>Gramática del examen</h4>
-        ${e&&e.grammar?chips('gram', e.grammar):'<p>Sin asignar todavía.</p>'}
+        <h4>Exam grammar</h4>
+        ${e&&e.grammar?chips('gram', e.grammar):'<p>Not assigned yet.</p>'}
       </div>
       <div class="dato">
-        <h4>Léxico propio de la unidad — fuera de la wordlist</h4>
+        <h4>Unit-specific vocabulary — outside the wordlist</h4>
         ${e&&e.extra?chips('extra', e.extra):'<p>—</p>'}
-        <p class="pie">Se enseña igual, pero no cuenta para la cobertura del examen.</p>
+        <p class="pie">It is taught all the same, but does not count towards exam coverage.</p>
       </div>
       <div class="dato reader">
-        <h4>Obra del trimestre</h4>
+        <h4>Book of the term</h4>
         <p>${r&&r.title?'<b>'+esc(r.title)+'</b>'+(r.series?'<br>'+esc(r.series):''):'—'}</p>
       </div>
     </div>
     <div class="bloque">${av}</div>
     <div class="bloque">
-      <h3>Áreas acopladas a este proyecto</h3>
-      <table><thead><tr><th>Área</th><th>Nivel de acoplamiento</th></tr></thead><tbody>
+      <h3>Subjects linked to this project</h3>
+      <table><thead><tr><th>Subject</th><th>Level of integration</th></tr></thead><tbody>
       ${(U.areas||[]).length ? (U.areas||[]).map(a=>`<tr><td><b>${esc(AREA_NOMBRE[a.area]||a.area)}</b></td><td>${esc(NIVEL_ACOPLE[a.level]||a.level)}</td></tr>`).join('')
-        : '<tr><td colspan="2">Ninguna declarada. La unidad corre solo en inglés.</td></tr>'}
+        : '<tr><td colspan="2">None declared. The unit runs in English only.</td></tr>'}
       </tbody></table>
     </div>
   </section>`;
@@ -259,12 +259,12 @@ function semanas(){
     </tr>`);
   }
   return `<section class="hoja">
-    <div class="cinta">Conducción</div>
-    <h2>Semana a semana</h2>
-    <p class="foco">La columna de la derecha es la fase del ciclo, que es la misma en todas las unidades: el alumno siempre sabe en qué punto está. Cuando la semana declara qué aporta cada área, aparece debajo del título.</p>
-    <table><thead><tr><th></th><th>Qué se hace</th><th>Qué entrega el alumno</th><th>Fase</th></tr></thead>
+    <div class="cinta">Delivery</div>
+    <h2>Week by week</h2>
+    <p class="foco">The column on the right is the phase of the cycle, which is the same in every unit: the student always knows where they are. When the week states what each subject contributes, it appears below the title.</p>
+    <table><thead><tr><th></th><th>What happens</th><th>What the student submits</th><th>Phase</th></tr></thead>
     <tbody>${filas.join('')}</tbody></table>
-    ${n<6?`<div class="bloque"><div class="aviso"><b>Esta unidad no tiene semana 6.</b> El calendario no la da, así que cierra en la semana ${n} con la entrega y <b>sin defensa oral ante audiencia</b>. El Speaking se evalúa en las unidades que sí la tienen.</div></div>`:''}
+    ${n<6?`<div class="bloque"><div class="aviso"><b>This unit has no week 6.</b> The calendar does not include it, so it closes in week ${n} with the submission and <b>without an oral defence in front of an audience</b>. Speaking is assessed in the units that do have it.</div></div>`:''}
   </section>`;
 }
 
@@ -276,11 +276,11 @@ function reparto(){
     filas.push(`<tr><td class="sem">W${i+1}</td><td>${esc(c[2])}</td><td>${esc(c[3])}</td></tr>`);
   }
   return `<section class="hoja">
-    <div class="cinta">Acuerdo con dirección</div>
-    <h2>Pantalla y cuaderno</h2>
-    <p class="foco">La regla: la pantalla solo hace lo que el papel no puede — grabar voz, dar feedback inmediato, buscar y verificar, guardar evidencia y publicar. Todo lo demás es cuaderno.</p>
-    <table><thead><tr><th></th><th>Pantalla</th><th>Cuaderno y aula</th></tr></thead><tbody>${filas.join('')}</tbody></table>
-    <div class="bloque"><div class="ok"><b>La semana del borrador es la de menos pantalla del ciclo.</b> Es donde se produce, y se produce a mano.</div></div>
+    <div class="cinta">Agreement with school leadership</div>
+    <h2>Screen and notebook</h2>
+    <p class="foco">The rule: the screen only does what paper cannot — record voice, give immediate feedback, search and verify, save evidence and publish. Everything else is notebook.</p>
+    <table><thead><tr><th></th><th>Screen</th><th>Notebook and classroom</th></tr></thead><tbody>${filas.join('')}</tbody></table>
+    <div class="bloque"><div class="ok"><b>The draft week is the one with the least screen time in the cycle.</b> It is where production happens, and it happens by hand.</div></div>
   </section>`;
 }
 
@@ -290,53 +290,53 @@ function rubrica(){
   let cuerpo;
   if(conNiveles){
     cuerpo = c.map(x=>{
-      if(!x.levels) return `<tr><td>${esc(x.text)}</td><td colspan="2">Sin descriptores. El alumno se sitúa en AD · A · B · C.</td></tr>`;
+      if(!x.levels) return `<tr><td>${esc(x.text)}</td><td colspan="2">No descriptors. The student is placed on AD · A · B · C.</td></tr>`;
       return ['AD','A','B','C'].map((k,j)=>`<tr>
         ${j===0?`<td rowspan="4">${esc(x.text)}</td>`:''}
         <td class="nivel">${k}</td><td>${esc(x.levels[k]||'—')}</td></tr>`).join('');
     }).join('');
-    cuerpo = `<table class="rub"><thead><tr><th>Criterio</th><th>Nivel</th><th>Descriptor</th></tr></thead><tbody>${cuerpo}</tbody></table>`;
+    cuerpo = `<table class="rub"><thead><tr><th>Criterion</th><th>Level</th><th>Descriptor</th></tr></thead><tbody>${cuerpo}</tbody></table>`;
   } else {
-    cuerpo = `<table class="rub"><thead><tr><th>N.º</th><th>Criterio</th></tr></thead><tbody>
+    cuerpo = `<table class="rub"><thead><tr><th>No.</th><th>Criterion</th></tr></thead><tbody>
       ${c.map(x=>`<tr><td class="nivel">${x.n}</td><td>${esc(x.text)}</td></tr>`).join('')}
       </tbody></table>
-      <div class="bloque"><div class="aviso"><b>Sin descriptores por nivel.</b> El criterio va tal cual y el alumno se sitúa en AD · A · B · C. No se inventan descriptores: si hacen falta, se escriben en Toddle y bajan solos.</div></div>`;
+      <div class="bloque"><div class="aviso"><b>No descriptors by level.</b> The criterion stands as is and the student is placed on AD · A · B · C. Descriptors are not invented: if they are needed, they are written in Toddle and come through automatically.</div></div>`;
   }
   return `<section class="hoja">
-    <div class="cinta">Evaluación</div>
-    <h2>La rúbrica completa</h2>
-    <p class="foco">Es la misma que el alumno ve desde la semana 1 en su cuaderno de trabajo. La escala va de mayor a menor: AD · A · B · C.</p>
+    <div class="cinta">Assessment</div>
+    <h2>The full rubric</h2>
+    <p class="foco">It is the same one the student sees from week 1 in their workbook. The scale runs from highest to lowest: AD · A · B · C.</p>
     ${cuerpo}
-    <div class="bloque"><div class="ok"><b>Una nota por producto.</b> Si la unidad tiene áreas acopladas en nivel 2 o 3, esta rúbrica lleva además el bloque de la otra área y la nota es única. El bloque de lengua se guarda aparte como evidencia de nivel, no como nota.</div></div>
+    <div class="bloque"><div class="ok"><b>One grade per product.</b> If the unit has subjects linked at level 2 or 3, this rubric also carries the block for the other subject and the grade is a single one. The language block is kept separately as evidence of level, not as a grade.</div></div>
   </section>`;
 }
 
 function entregables(){
   return `<section class="hoja">
-    <div class="cinta">Corrección</div>
-    <h2>Qué se entrega y qué revisa el corrector</h2>
-    <p class="foco">La primera pasada la hace el portal contra estos criterios. La segunda, y la nota, son del profesor.</p>
+    <div class="cinta">Marking</div>
+    <h2>What is submitted and what the marker checks</h2>
+    <p class="foco">The first pass is done by the portal against these criteria. The second, and the grade, are the teacher’s.</p>
     ${(U.deliverables||[]).map(d=>`
       <div class="bloque">
         <h3>${esc(d.title)}${d.spec?' · '+esc(d.spec):''}</h3>
         <p style="font-size:.9rem;color:var(--grey);margin-bottom:6px">${esc(d.desc||'')}</p>
         ${d.checklist&&d.checklist.length?`<ul class="check">${d.checklist.map(k=>`<li>${esc(k.t)}</li>`).join('')}</ul>`
-          :`<p style="font-size:.86rem;color:var(--grey)">Entrega de archivo — la revisa el profesor, no el corrector.</p>`}
+          :`<p style="font-size:.86rem;color:var(--grey)">File submission — reviewed by the teacher, not the marker.</p>`}
       </div>`).join('')}
-    ${U.words&&U.words.length?`<div class="bloque"><h3>Banco de lengua de la unidad</h3>${chips('',U.words)}
-      <p class="pie">Se reparte solo entre las tareas del cuaderno del alumno: cada semana lleva el trozo que le toca.</p></div>`:''}
+    ${U.words&&U.words.length?`<div class="bloque"><h3>Unit language bank</h3>${chips('',U.words)}
+      <p class="pie">It is spread only across the student’s notebook tasks: each week carries its share.</p></div>`:''}
   </section>`;
 }
 
 function cierre(){
   return `<section class="hoja">
-    <div class="cinta">Al terminar</div>
-    <h2>Evaluación de la unidad</h2>
-    <p class="foco">Los dos campos que el formato de proyecto del colegio ya pide. Lo que se escriba aquí es lo que decide si la unidad se repite igual el año que viene.</p>
-    <div class="bloque"><h3>Qué funcionó</h3><div class="renglones">${'<div></div>'.repeat(6)}</div></div>
-    <div class="bloque"><h3>Qué no funcionó</h3><div class="renglones">${'<div></div>'.repeat(6)}</div></div>
-    <div class="bloque"><h3>Qué cambiar para 2027</h3><div class="renglones">${'<div></div>'.repeat(6)}</div></div>
-    ${U.toddle?`<p class="pie">Unidad tomada de Toddle${U.toddle.unitId?' · '+esc(U.toddle.unitId):''}. Si cambia allí, hay que actualizarla en <code>unit-plans.js</code>; no se edita a mano en el portal.</p>`:''}
+    <div class="cinta">At the end</div>
+    <h2>Unit review</h2>
+    <p class="foco">The two fields that the school’s project format already asks for. What is written here decides whether the unit is repeated the same way next year.</p>
+    <div class="bloque"><h3>What worked</h3><div class="renglones">${'<div></div>'.repeat(6)}</div></div>
+    <div class="bloque"><h3>What did not work</h3><div class="renglones">${'<div></div>'.repeat(6)}</div></div>
+    <div class="bloque"><h3>What to change for 2027</h3><div class="renglones">${'<div></div>'.repeat(6)}</div></div>
+    ${U.toddle?`<p class="pie">Unit taken from Toddle${U.toddle.unitId?' · '+esc(U.toddle.unitId):''}. If it changes there, it needs to be updated in <code>unit-plans.js</code>; it is not edited by hand in the portal.</p>`:''}
   </section>`;
 }
 
@@ -369,20 +369,20 @@ function pintaCerrado(msg){
     `<div class="hoja" style="text-align:center;padding:52px 38px">
       <div style="font-size:3.2rem;line-height:1">🔒</div>
       <h2 style="margin:14px 0 6px">${esc(msg)}</h2>
-      <p class="foco">Esta guía es material del profesor. Entra al portal con tu cuenta docente.</p>
+      <p class="foco">This guide is teacher material. Sign in to the portal with your teacher account.</p>
       <a href="./" style="display:inline-block;background:var(--blue);color:#fff;text-decoration:none;
-         padding:10px 18px;border-radius:10px;font-weight:600;font-size:.9rem">← Volver al portal</a>
+         padding:10px 18px;border-radius:10px;font-weight:600;font-size:.9rem">← Back to portal</a>
     </div>`;
 }
 
 (async function(){
-  if(!(await esPersonal())){ pintaCerrado('Solo para profesores'); return; }
-  if(!U){ pintaCerrado('Esa unidad todavía no está'); return; }
+  if(!(await esPersonal())){ pintaCerrado('Teachers only'); return; }
+  if(!U){ pintaCerrado('That unit is not ready yet'); return; }
   document.title = `Teacher guide · ${PLAN.label} · Unit ${U.label||U.n} · ${U.title}`;
   document.getElementById('app').innerHTML =
     portada() + cobertura() + semanas() + reparto() + rubrica() + entregables() + cierre();
 })();
 </script>
-<script src="nis-tema.js?v=a7890d34" defer></script>
+<script src="nis-tema.js?v=410c4879" defer></script>
 </body>
 </html>

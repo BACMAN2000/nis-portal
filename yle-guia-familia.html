@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Guía para la familia · Exámenes Cambridge Young Learners · Nordic International School</title>
+<title data-i18n="pageTitle">Family guide · Cambridge Young Learners exams · Nordic International School</title>
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="preload" href="fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin>
 <script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
@@ -12,7 +12,8 @@
 <style>
 /* Guía «Qué esperar el día del examen» para las familias (Ruta YLE 2026, Fase 3).
    Texto propio, escrito a partir del Handbook for teachers 2024 de Cambridge.
-   Es estática: la misma página va a NIS y a Cohasset. */
+   Es estática: la misma página va a NIS y a Cohasset. Bilingüe: nace en inglés,
+   el botón #lang la pasa a español (persistido en localStorage nis.yle.lang). */
 :root{--navy:#0d1d33;--blue:#1e3a8a;--sky:#eef3fb;--border:#d9deea;--ok:#2f8f5b;--st:#e08a2a;--mv:#238f85;--fl:#6a54c9;--gold:#d29a1f}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:'Gotham','Segoe UI',system-ui,sans-serif;line-height:1.5}
@@ -51,83 +52,177 @@ th{font-size:.8rem;text-transform:uppercase;letter-spacing:.04em;color:var(--mut
 <body>
 <header class="top">
   <img src="assets/logo-white-h.svg" alt="" onerror="this.remove()">
-  <div><h1>Guía para la familia</h1><div class="sub">Cambridge Young Learners · Pre A1 Starters · A1 Movers · A2 Flyers</div></div>
-  <div class="right noprint"><button class="btn sec" onclick="window.print()">🖨️ Imprimir</button><a href="index.html" class="btn sec">◀ Portal</a></div>
+  <div><h1 data-i18n="h1">Family guide</h1><div class="sub">Cambridge Young Learners · Pre A1 Starters · A1 Movers · A2 Flyers</div></div>
+  <div class="right noprint"><button class="btn sec lang" id="lang" type="button">🌐 Español</button><button class="btn sec" onclick="window.print()" data-i18n="btnPrint">🖨️ Print</button><a href="index.html" class="btn sec">◀ Portal</a></div>
 </header>
 <div class="page">
 
 <div class="card">
-  <h2>Qué son los exámenes Young Learners</h2>
-  <p class="lead">Son los exámenes de Cambridge para niños. Miden, de forma amable y con actividades parecidas a las de clase, cómo va su hijo o hija en inglés. <b>No se aprueba ni se desaprueba:</b> todos los niños reciben un certificado con <span class="shields"><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i></span> escudos por cada parte del examen, hasta 15 en total.</p>
+  <h2 data-i18n="c1_h2">What the Young Learners exams are</h2>
+  <p class="lead" data-i18n="c1_lead" data-i18n-html="1">These are Cambridge exams for children. In a friendly way, with activities similar to what happens in class, they measure how your child is doing in English. <b>There is no pass or fail:</b> every child receives a certificate with <span class="shields"><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i></span> shields for each part of the exam, up to 15 in total.</p>
   <div class="levels">
-    <div class="lvl st"><b>Pre A1 Starters</b><small>El primer contacto. Unos 45 minutos en total. Vocabulario de unas 460 palabras.</small></div>
-    <div class="lvl mv"><b>A1 Movers</b><small>Frases sencillas y pequeñas historias. Alrededor de 1 hora. Suma unas 370 palabras nuevas.</small></div>
-    <div class="lvl fl"><b>A2 Flyers</b><small>Cuenta y escribe historias cortas. Alrededor de 1 h 15 min. Suma unas 470 palabras nuevas.</small></div>
+    <div class="lvl st"><b>Pre A1 Starters</b><small data-i18n="lvl_st">The first contact. About 45 minutes in total. Vocabulary of around 460 words.</small></div>
+    <div class="lvl mv"><b>A1 Movers</b><small data-i18n="lvl_mv">Simple sentences and short stories. About 1 hour. Adds around 370 new words.</small></div>
+    <div class="lvl fl"><b>A2 Flyers</b><small data-i18n="lvl_fl">Tells and writes short stories. About 1 h 15 min. Adds around 470 new words.</small></div>
   </div>
-  <p>Los tres niveles van uno detrás del otro y llevan a los exámenes de secundaria (A2 Key for Schools, B1 Preliminary for Schools). Lo que aprende en cada nivel le sirve en el siguiente.</p>
+  <p data-i18n="c1_p2">The three levels follow one another and lead into the secondary exams (A2 Key for Schools, B1 Preliminary for Schools). What your child learns at each level is used at the next one.</p>
 </div>
 
 <div class="card">
-  <h2>Cómo es el examen</h2>
-  <p>Tiene tres partes, llamadas <i>papers</i>. Dos se hacen en el aula con el grupo (Listening y Reading &amp; Writing) y una es una conversación corta a solas con un examinador (Speaking).</p>
+  <h2 data-i18n="c2_h2">What the exam is like</h2>
+  <p data-i18n="c2_p" data-i18n-html="1">It has three parts, called <i>papers</i>. Two are done in the classroom with the group (Listening and Reading &amp; Writing) and one is a short one-to-one conversation with an examiner (Speaking).</p>
   <table>
-    <thead><tr><th>Parte</th><th>Qué hace el niño</th><th>Starters</th><th>Movers</th><th>Flyers</th></tr></thead>
+    <thead><tr><th data-i18n="th_parte">Part</th><th data-i18n="th_que">What the child does</th><th>Starters</th><th>Movers</th><th>Flyers</th></tr></thead>
     <tbody>
-      <tr><td><b>Listening</b><br><span class="small muted">escuchar</span></td><td>Oye grabaciones cortas (cada una <b>dos veces</b>) y marca, une, escribe o colorea en el cuadernillo.</td><td>≈ 20 min · 4 partes</td><td>≈ 25 min · 5 partes</td><td>≈ 25 min · 5 partes</td></tr>
-      <tr><td><b>Reading &amp; Writing</b><br><span class="small muted">leer y escribir</span></td><td>Lee frases, textos y cuentos cortos con dibujos, y escribe palabras u oraciones.</td><td>20 min · 5 partes</td><td>30 min · 6 partes</td><td>40 min · 7 partes</td></tr>
-      <tr><td><b>Speaking</b><br><span class="small muted">hablar</span></td><td>Conversa con un examinador sobre dibujos, tarjetas o una historia, y responde preguntas sobre sí mismo.</td><td>3–5 min</td><td>5–7 min</td><td>7–9 min</td></tr>
+      <tr><td><b>Listening</b><br><span class="small muted" data-i18n="lbl_listen">listening</span></td><td data-i18n="desc_listen" data-i18n-html="1">Hears short recordings (each one <b>twice</b>) and ticks, matches, writes or colours in the booklet.</td><td data-i18n="dur_listen_st">≈ 20 min · 4 parts</td><td data-i18n="dur_listen_mv">≈ 25 min · 5 parts</td><td data-i18n="dur_listen_fl">≈ 25 min · 5 parts</td></tr>
+      <tr><td><b>Reading &amp; Writing</b><br><span class="small muted" data-i18n="lbl_rw">reading and writing</span></td><td data-i18n="desc_rw" data-i18n-html="1">Reads sentences, texts and short illustrated stories, and writes words or sentences.</td><td data-i18n="dur_rw_st">20 min · 5 parts</td><td data-i18n="dur_rw_mv">30 min · 6 parts</td><td data-i18n="dur_rw_fl">40 min · 7 parts</td></tr>
+      <tr><td><b>Speaking</b><br><span class="small muted" data-i18n="lbl_speak">speaking</span></td><td data-i18n="desc_speak" data-i18n-html="1">Talks with an examiner about pictures, cards or a story, and answers questions about themselves.</td><td>3–5 min</td><td>5–7 min</td><td>7–9 min</td></tr>
     </tbody>
   </table>
-  <div class="note"><b>El Speaking no da miedo.</b> Antes de entrar, un acompañante del colegio le explica al niño, en español, qué va a pasar y lo presenta al examinador. Dentro solo hay un examinador amable que le enseña dibujos y le hace preguntas sencillas. Si el niño no entiende, el examinador repite.</div>
+  <div class="note" data-i18n="note_speak" data-i18n-html="1"><b>The Speaking part is nothing to worry about.</b> Before going in, a member of school staff explains to the child, in Spanish, what is going to happen and introduces them to the examiner. Inside there is only a friendly examiner who shows pictures and asks simple questions. If the child does not understand, the examiner repeats the question.</div>
 </div>
 
 <div class="card">
-  <h2>Qué esperar el día del examen</h2>
+  <h2 data-i18n="c3_h2">What to expect on exam day</h2>
   <div class="two">
     <div>
-      <h3>Antes</h3>
+      <h3 data-i18n="c3_before_h3">Before</h3>
       <ul class="check">
-        <li>Que duerma bien la noche anterior y desayune con calma.</li>
-        <li>Llegar con tiempo: el colegio indica la hora y el aula. No hay que llevar nada especial.</li>
-        <li>Lápiz, borrador y <b>lápices de colores</b> (en Listening hay que colorear); el colegio los tendrá igualmente.</li>
-        <li>Decirle que es «como los tests de práctica que hizo en la plataforma»: el formato es el mismo.</li>
+        <li data-i18n="c3_before_li1">Make sure they sleep well the night before and have a calm breakfast.</li>
+        <li data-i18n="c3_before_li2">Arrive with plenty of time: the school lets you know the time and the classroom. There is nothing special to bring.</li>
+        <li data-i18n="c3_before_li3" data-i18n-html="1">Pencil, eraser and <b>coloured pencils</b> (colouring is needed in Listening); the school will have them anyway.</li>
+        <li data-i18n="c3_before_li4">Tell them it is “like the practice tests done on the platform”: the format is the same.</li>
       </ul>
     </div>
     <div>
-      <h3>Durante</h3>
+      <h3 data-i18n="c3_during_h3">During</h3>
       <ul class="check">
-        <li>Las grabaciones se oyen dos veces; nadie va a apurarlo.</li>
-        <li>Si no sabe una respuesta, pasa a la siguiente. Nada resta puntos.</li>
-        <li>En Speaking puede responder con una palabra o con «yes / no»: eso ya cuenta.</li>
-        <li>Al terminar cada paper hay una pausa; el Speaking suele ser en otro momento del mismo día o en otra fecha que avisa el colegio.</li>
+        <li data-i18n="c3_during_li1">Recordings are played twice; no one will rush them.</li>
+        <li data-i18n="c3_during_li2">If they do not know an answer, they move on to the next one. Nothing takes points away.</li>
+        <li data-i18n="c3_during_li3">In Speaking they can answer with one word or with “yes / no”: that already counts.</li>
+        <li data-i18n="c3_during_li4">There is a break after each paper; Speaking is usually at another time on the same day, or on another date the school announces.</li>
       </ul>
     </div>
   </div>
-  <h3>Después</h3>
-  <p>Los resultados llegan al colegio unas semanas después del examen y el certificado en papel, más tarde. El certificado muestra los escudos de cada parte. <b>Cinco escudos</b> en una parte significa que el niño la hizo muy bien; <b>uno o dos</b> significa que todavía está aprendiendo esa destreza, y es normal.</p>
+  <h3 data-i18n="c3_after_h3">Afterwards</h3>
+  <p data-i18n="c3_after_p" data-i18n-html="1">Results reach the school a few weeks after the exam, and the paper certificate arrives later. The certificate shows the shields for each part. <b>Five shields</b> in a part means the child did very well; <b>one or two</b> means they are still learning that skill, and that is normal.</p>
 </div>
 
 <div class="card">
-  <h2>Cómo leer el boletín del colegio</h2>
-  <p>En la plataforma, cada niño practica con tests completos que tienen el mismo formato y los mismos tiempos que el examen real. Con esos resultados el colegio calcula una <b>estimación de escudos</b> para que la familia sepa por dónde va.</p>
-  <div class="warn">⚠️ Los escudos del boletín son una <b>estimación del colegio</b> a partir de los tests de práctica. Cambridge no publica su tabla de conversión, así que el resultado oficial puede ser distinto. Sirven para orientar, no para prometer.</div>
-  <p>El boletín también dice qué <b>ya puede hacer</b> el niño en cada destreza (con las descripciones oficiales de Cambridge para su nivel) y qué conviene <b>practicar en casa</b>.</p>
+  <h2 data-i18n="c4_h2">How to read the school report</h2>
+  <p data-i18n="c4_p1" data-i18n-html="1">On the platform, each child practises with full tests that have the same format and timing as the real exam. With those results the school works out an <b>estimated shield score</b> so the family knows how things are going.</p>
+  <div class="warn" data-i18n="c4_warn" data-i18n-html="1">⚠️ The shields on the report are a <b>school estimate</b> based on the practice tests. Cambridge does not publish its conversion table, so the official result may be different. They are a guide, not a promise.</div>
+  <p data-i18n="c4_p2" data-i18n-html="1">The report also says what the child <b>can already do</b> in each skill (using Cambridge’s official descriptions for their level) and what is worth <b>practising at home</b>.</p>
 </div>
 
 <div class="card">
-  <h2>Cómo ayudar en casa (sin saber inglés)</h2>
+  <h2 data-i18n="c5_h2">How to help at home (without knowing English)</h2>
   <ul class="check">
-    <li><b>Cinco minutos al día</b> valen más que una hora el domingo: una tanda del entrenador de vocabulario o una parte de un test.</li>
-    <li>Pídale que le <b>explique un dibujo</b> en inglés o que le «enseñe» tres palabras nuevas: contar lo aprendido lo fija.</li>
-    <li>Escuchen juntos los audios de los tests: oír inglés con acento británico y americano es parte del examen.</li>
-    <li>Canciones, dibujos animados y cuentos en inglés cuentan como práctica de Listening.</li>
-    <li>Celebre las estrellas y los escudos estimados; evite comparar con otros niños.</li>
+    <li data-i18n="c5_li1" data-i18n-html="1"><b>Five minutes a day</b> are worth more than one hour on Sunday: a round of the vocabulary trainer or one part of a test.</li>
+    <li data-i18n="c5_li2" data-i18n-html="1">Ask them to <b>explain a picture</b> in English, or to “teach” you three new words: explaining what they learned helps it stick.</li>
+    <li data-i18n="c5_li3">Listen to the test audio together: hearing English with British and American accents is part of the exam.</li>
+    <li data-i18n="c5_li4">Songs, cartoons and stories in English all count as Listening practice.</li>
+    <li data-i18n="c5_li5">Celebrate the stars and the estimated shields; avoid comparing with other children.</li>
   </ul>
-  <p class="small muted">Recursos oficiales de Cambridge para familias: <a href="https://www.cambridgeenglish.org/learning-english/parents-and-children/" target="_blank" rel="noopener">cambridgeenglish.org · Parents and children</a> y la página de los exámenes <a href="https://www.cambridgeenglish.org/exams-and-tests/young-learners/" target="_blank" rel="noopener">Young Learners</a>.</p>
+  <p class="small muted" data-i18n="c5_links" data-i18n-html="1">Official Cambridge resources for families: <a href="https://www.cambridgeenglish.org/learning-english/parents-and-children/" target="_blank" rel="noopener">cambridgeenglish.org · Parents and children</a> and the exam page <a href="https://www.cambridgeenglish.org/exams-and-tests/young-learners/" target="_blank" rel="noopener">Young Learners</a>.</p>
 </div>
 
-<p class="small muted">Nordic International School · Programa Cambridge Young Learners. Guía elaborada a partir del <i>Handbook for teachers 2024</i> de Cambridge English. Cambridge es marca registrada de Cambridge University Press &amp; Assessment; esta guía es del colegio.</p>
+<p class="small muted" data-i18n="footer" data-i18n-html="1">Nordic International School · Cambridge Young Learners programme. Guide prepared using the <i>Handbook for teachers 2024</i> from Cambridge English. Cambridge is a registered trademark of Cambridge University Press &amp; Assessment; this guide belongs to the school.</p>
 </div>
-<script src="nis-tema.js?v=a7890d34" defer></script>
+<script>
+(function(){
+'use strict';
+var I18N = {
+  pageTitle:{en:'Family guide · Cambridge Young Learners exams · Nordic International School', es:'Guía para la familia · Exámenes Cambridge Young Learners · Nordic International School'},
+  h1:{en:'Family guide', es:'Guía para la familia'},
+  btnPrint:{en:'🖨️ Print', es:'🖨️ Imprimir'},
+  c1_h2:{en:'What the Young Learners exams are', es:'Qué son los exámenes Young Learners'},
+  c1_lead:{en:'These are Cambridge exams for children. In a friendly way, with activities similar to what happens in class, they measure how your child is doing in English. <b>There is no pass or fail:</b> every child receives a certificate with <span class="shields"><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i></span> shields for each part of the exam, up to 15 in total.',
+             es:'Son los exámenes de Cambridge para niños. Miden, de forma amable y con actividades parecidas a las de clase, cómo va su hijo o hija en inglés. <b>No se aprueba ni se desaprueba:</b> todos los niños reciben un certificado con <span class="shields"><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i></span> escudos por cada parte del examen, hasta 15 en total.'},
+  lvl_st:{en:'The first contact. About 45 minutes in total. Vocabulary of around 460 words.', es:'El primer contacto. Unos 45 minutos en total. Vocabulario de unas 460 palabras.'},
+  lvl_mv:{en:'Simple sentences and short stories. About 1 hour. Adds around 370 new words.', es:'Frases sencillas y pequeñas historias. Alrededor de 1 hora. Suma unas 370 palabras nuevas.'},
+  lvl_fl:{en:'Tells and writes short stories. About 1 h 15 min. Adds around 470 new words.', es:'Cuenta y escribe historias cortas. Alrededor de 1 h 15 min. Suma unas 470 palabras nuevas.'},
+  c1_p2:{en:'The three levels follow one another and lead into the secondary exams (A2 Key for Schools, B1 Preliminary for Schools). What your child learns at each level is used at the next one.',
+         es:'Los tres niveles van uno detrás del otro y llevan a los exámenes de secundaria (A2 Key for Schools, B1 Preliminary for Schools). Lo que aprende en cada nivel le sirve en el siguiente.'},
+  c2_h2:{en:'What the exam is like', es:'Cómo es el examen'},
+  c2_p:{en:'It has three parts, called <i>papers</i>. Two are done in the classroom with the group (Listening and Reading &amp; Writing) and one is a short one-to-one conversation with an examiner (Speaking).',
+        es:'Tiene tres partes, llamadas <i>papers</i>. Dos se hacen en el aula con el grupo (Listening y Reading &amp; Writing) y una es una conversación corta a solas con un examinador (Speaking).'},
+  th_parte:{en:'Part', es:'Parte'},
+  th_que:{en:'What the child does', es:'Qué hace el niño'},
+  lbl_listen:{en:'listening', es:'escuchar'},
+  desc_listen:{en:'Hears short recordings (each one <b>twice</b>) and ticks, matches, writes or colours in the booklet.',
+               es:'Oye grabaciones cortas (cada una <b>dos veces</b>) y marca, une, escribe o colorea en el cuadernillo.'},
+  dur_listen_st:{en:'≈ 20 min · 4 parts', es:'≈ 20 min · 4 partes'},
+  dur_listen_mv:{en:'≈ 25 min · 5 parts', es:'≈ 25 min · 5 partes'},
+  dur_listen_fl:{en:'≈ 25 min · 5 parts', es:'≈ 25 min · 5 partes'},
+  lbl_rw:{en:'reading and writing', es:'leer y escribir'},
+  desc_rw:{en:'Reads sentences, texts and short illustrated stories, and writes words or sentences.',
+           es:'Lee frases, textos y cuentos cortos con dibujos, y escribe palabras u oraciones.'},
+  dur_rw_st:{en:'20 min · 5 parts', es:'20 min · 5 partes'},
+  dur_rw_mv:{en:'30 min · 6 parts', es:'30 min · 6 partes'},
+  dur_rw_fl:{en:'40 min · 7 parts', es:'40 min · 7 partes'},
+  lbl_speak:{en:'speaking', es:'hablar'},
+  desc_speak:{en:'Talks with an examiner about pictures, cards or a story, and answers questions about themselves.',
+              es:'Conversa con un examinador sobre dibujos, tarjetas o una historia, y responde preguntas sobre sí mismo.'},
+  note_speak:{en:'<b>The Speaking part is nothing to worry about.</b> Before going in, a member of school staff explains to the child, in Spanish, what is going to happen and introduces them to the examiner. Inside there is only a friendly examiner who shows pictures and asks simple questions. If the child does not understand, the examiner repeats the question.',
+              es:'<b>El Speaking no da miedo.</b> Antes de entrar, un acompañante del colegio le explica al niño, en español, qué va a pasar y lo presenta al examinador. Dentro solo hay un examinador amable que le enseña dibujos y le hace preguntas sencillas. Si el niño no entiende, el examinador repite.'},
+  c3_h2:{en:'What to expect on exam day', es:'Qué esperar el día del examen'},
+  c3_before_h3:{en:'Before', es:'Antes'},
+  c3_before_li1:{en:'Make sure they sleep well the night before and have a calm breakfast.', es:'Que duerma bien la noche anterior y desayune con calma.'},
+  c3_before_li2:{en:'Arrive with plenty of time: the school lets you know the time and the classroom. There is nothing special to bring.', es:'Llegar con tiempo: el colegio indica la hora y el aula. No hay que llevar nada especial.'},
+  c3_before_li3:{en:'Pencil, eraser and <b>coloured pencils</b> (colouring is needed in Listening); the school will have them anyway.', es:'Lápiz, borrador y <b>lápices de colores</b> (en Listening hay que colorear); el colegio los tendrá igualmente.'},
+  c3_before_li4:{en:'Tell them it is “like the practice tests done on the platform”: the format is the same.', es:'Decirle que es «como los tests de práctica que hizo en la plataforma»: el formato es el mismo.'},
+  c3_during_h3:{en:'During', es:'Durante'},
+  c3_during_li1:{en:'Recordings are played twice; no one will rush them.', es:'Las grabaciones se oyen dos veces; nadie va a apurarlo.'},
+  c3_during_li2:{en:'If they do not know an answer, they move on to the next one. Nothing takes points away.', es:'Si no sabe una respuesta, pasa a la siguiente. Nada resta puntos.'},
+  c3_during_li3:{en:'In Speaking they can answer with one word or with “yes / no”: that already counts.', es:'En Speaking puede responder con una palabra o con «yes / no»: eso ya cuenta.'},
+  c3_during_li4:{en:'There is a break after each paper; Speaking is usually at another time on the same day, or on another date the school announces.', es:'Al terminar cada paper hay una pausa; el Speaking suele ser en otro momento del mismo día o en otra fecha que avisa el colegio.'},
+  c3_after_h3:{en:'Afterwards', es:'Después'},
+  c3_after_p:{en:'Results reach the school a few weeks after the exam, and the paper certificate arrives later. The certificate shows the shields for each part. <b>Five shields</b> in a part means the child did very well; <b>one or two</b> means they are still learning that skill, and that is normal.',
+              es:'Los resultados llegan al colegio unas semanas después del examen y el certificado en papel, más tarde. El certificado muestra los escudos de cada parte. <b>Cinco escudos</b> en una parte significa que el niño la hizo muy bien; <b>uno o dos</b> significa que todavía está aprendiendo esa destreza, y es normal.'},
+  c4_h2:{en:'How to read the school report', es:'Cómo leer el boletín del colegio'},
+  c4_p1:{en:'On the platform, each child practises with full tests that have the same format and timing as the real exam. With those results the school works out an <b>estimated shield score</b> so the family knows how things are going.',
+         es:'En la plataforma, cada niño practica con tests completos que tienen el mismo formato y los mismos tiempos que el examen real. Con esos resultados el colegio calcula una <b>estimación de escudos</b> para que la familia sepa por dónde va.'},
+  c4_warn:{en:'⚠️ The shields on the report are a <b>school estimate</b> based on the practice tests. Cambridge does not publish its conversion table, so the official result may be different. They are a guide, not a promise.',
+           es:'⚠️ Los escudos del boletín son una <b>estimación del colegio</b> a partir de los tests de práctica. Cambridge no publica su tabla de conversión, así que el resultado oficial puede ser distinto. Sirven para orientar, no para prometer.'},
+  c4_p2:{en:'The report also says what the child <b>can already do</b> in each skill (using Cambridge’s official descriptions for their level) and what is worth <b>practising at home</b>.',
+         es:'El boletín también dice qué <b>ya puede hacer</b> el niño en cada destreza (con las descripciones oficiales de Cambridge para su nivel) y qué conviene <b>practicar en casa</b>.'},
+  c5_h2:{en:'How to help at home (without knowing English)', es:'Cómo ayudar en casa (sin saber inglés)'},
+  c5_li1:{en:'<b>Five minutes a day</b> are worth more than one hour on Sunday: a round of the vocabulary trainer or one part of a test.', es:'<b>Cinco minutos al día</b> valen más que una hora el domingo: una tanda del entrenador de vocabulario o una parte de un test.'},
+  c5_li2:{en:'Ask them to <b>explain a picture</b> in English, or to “teach” you three new words: explaining what they learned helps it stick.', es:'Pídale que le <b>explique un dibujo</b> en inglés o que le «enseñe» tres palabras nuevas: contar lo aprendido lo fija.'},
+  c5_li3:{en:'Listen to the test audio together: hearing English with British and American accents is part of the exam.', es:'Escuchen juntos los audios de los tests: oír inglés con acento británico y americano es parte del examen.'},
+  c5_li4:{en:'Songs, cartoons and stories in English all count as Listening practice.', es:'Canciones, dibujos animados y cuentos en inglés cuentan como práctica de Listening.'},
+  c5_li5:{en:'Celebrate the stars and the estimated shields; avoid comparing with other children.', es:'Celebre las estrellas y los escudos estimados; evite comparar con otros niños.'},
+  c5_links:{en:'Official Cambridge resources for families: <a href="https://www.cambridgeenglish.org/learning-english/parents-and-children/" target="_blank" rel="noopener">cambridgeenglish.org · Parents and children</a> and the exam page <a href="https://www.cambridgeenglish.org/exams-and-tests/young-learners/" target="_blank" rel="noopener">Young Learners</a>.',
+            es:'Recursos oficiales de Cambridge para familias: <a href="https://www.cambridgeenglish.org/learning-english/parents-and-children/" target="_blank" rel="noopener">cambridgeenglish.org · Parents and children</a> y la página de los exámenes <a href="https://www.cambridgeenglish.org/exams-and-tests/young-learners/" target="_blank" rel="noopener">Young Learners</a>.'},
+  footer:{en:'Nordic International School · Cambridge Young Learners programme. Guide prepared using the <i>Handbook for teachers 2024</i> from Cambridge English. Cambridge is a registered trademark of Cambridge University Press &amp; Assessment; this guide belongs to the school.',
+          es:'Nordic International School · Programa Cambridge Young Learners. Guía elaborada a partir del <i>Handbook for teachers 2024</i> de Cambridge English. Cambridge es marca registrada de Cambridge University Press &amp; Assessment; esta guía es del colegio.'}
+};
+var $ = function(s){ return document.querySelector(s); };
+var LANG = 'en';
+try{ var g = localStorage.getItem('nis.yle.lang'); if(g === 'es' || g === 'en') LANG = g; }catch(e){}
+function apply(){
+  document.documentElement.lang = LANG;
+  var els = document.querySelectorAll('[data-i18n]');
+  for(var i = 0; i < els.length; i++){
+    var el = els[i], key = el.getAttribute('data-i18n'), entry = I18N[key];
+    if(!entry) continue;
+    var val = entry[LANG] || entry.en || entry.es || '';
+    if(el.hasAttribute('data-i18n-html')) el.innerHTML = val; else el.textContent = val;
+  }
+  var btn = $('#lang');
+  if(btn) btn.textContent = (LANG === 'en') ? '🌐 Español' : '🌐 English';
+}
+function toggle(){
+  LANG = (LANG === 'en') ? 'es' : 'en';
+  try{ localStorage.setItem('nis.yle.lang', LANG); }catch(e){}
+  apply();
+}
+var btn0 = $('#lang');
+if(btn0) btn0.addEventListener('click', toggle);
+apply();
+})();
+</script>
+<script src="nis-tema.js?v=410c4879" defer></script>
 </body>
 </html>

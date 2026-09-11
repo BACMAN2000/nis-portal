@@ -7,9 +7,9 @@
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link href="vendor/fonts/montserrat-68a53b.css" rel="stylesheet">
 <meta name="google" content="notranslate">
-<script src="ui-mensajes.js?v=18d6c1e2"></script>
+<script src="ui-mensajes.js?v=22f3c588"></script>
 <script src="config.js?v=68725f64"></script>
-<script src="anticheat.js?v=f2bd3ba6"></script>
+<script src="anticheat.js?v=e8b83646"></script>
 <link rel="preload" href="fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="nis-fonts.css?v=fd196882">
 <script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
@@ -141,7 +141,7 @@
 input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--accent);outline-offset:1px}
 </style>
 <script src="nis-nav.js?v=c3230c7d"></script>
-<script src="activity-save.js?v=7bdace9a"></script>
+<script src="activity-save.js?v=9dbd5cb4"></script>
 </head>
 <body>
 <header>
@@ -571,13 +571,13 @@ window.submitEssay = async ()=>{
     ? await enviaWebhook(CFG.WRITING_WEBHOOK, payload)
     : await (async () => { try {
         const r = await fetch(CFG.WRITING_WEBHOOK,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)});
-        if(!r.ok) return {ok:false, motivo:'el servidor respondio ' + r.status};
+        if(!r.ok) return {ok:false, motivo:'the server responded ' + r.status};
         let j=null; try{ j = JSON.parse(await r.text()); }catch(_){}
-        if(j && j.ok === false) return {ok:false, motivo: j.error || 'el servidor lo rechazo'};
+        if(j && j.ok === false) return {ok:false, motivo: j.error || 'the server rejected it'};
         return {ok:true};
-      } catch(e){ return {ok:false, motivo:'sin conexion'}; } })();
+      } catch(e){ return {ok:false, motivo:'no connection'}; } })();
   try{
-    if(!_env.ok) throw new Error(_env.motivo || 'no salio');
+    if(!_env.ok) throw new Error(_env.motivo || 'it did not go through');
     try{ localStorage.setItem(submitKey(), new Date().toISOString()); }catch(e){}
     renderSubmitState();
     alert('✅ Handed in! Your teacher will receive your essay by email to mark it and give you your grade. You can keep editing and hand it in again if you need to.');
@@ -615,6 +615,6 @@ if(window.NIS_WORK) NIS_WORK.attach(Object.assign(
 ));
 
 </script>
-<script src="nis-tema.js?v=a7890d34" defer></script>
+<script src="nis-tema.js?v=410c4879" defer></script>
 </body>
 </html>

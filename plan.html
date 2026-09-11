@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Plan de las once semanas · NIS</title>
+<title>Eleven-week plan · NIS</title>
 <link rel="icon" href="assets/favicon.svg">
 <link href="vendor/fonts/montserrat-68a53b.css" rel="stylesheet">
 <!--
@@ -87,15 +87,15 @@ td.nota{background:#FFFBEB;border-left:3px solid var(--gold);color:var(--sand-tx
 <body>
 <header>
   <img src="assets/logo-white-h.svg" alt="Nordic International School" onerror="this.style.display='none'">
-  <select id="sel" aria-label="Proyecto"></select>
-  <button type="button" id="bMatriz" class="on">Matriz</button>
-  <button type="button" id="bCurso">Por curso</button>
+  <select id="sel" aria-label="Project"></select>
+  <button type="button" id="bMatriz" class="on">Matrix</button>
+  <button type="button" id="bCurso">By subject</button>
   <div class="sp"></div>
-  <button type="button" id="print">&#128424; Imprimir</button>
-  <a id="back" href="project.html">&#8592; Volver</a>
+  <button type="button" id="print">&#128424; Print</button>
+  <a id="back" href="project.html">&#8592; Back</a>
 </header>
 
-<div class="wrap" id="app"><p>Cargando…</p></div>
+<div class="wrap" id="app"><p>Loading…</p></div>
 
 <script src="project-arcs.js?v=110db8f3"></script>
 <script src="project-cursos.js?v=c8aeeb5e"></script>
@@ -109,8 +109,8 @@ const P = new URLSearchParams(location.search);
 const AREA_NOMBRE = {
   science:'Science', social:'Social Studies', math:'Math', english:'English',
   comunicacion:'Comunicación', tutoria:'Tutoría', pe:'PE', art:'Art', music:'Music',
-  drama:'Drama', spiritual:'Spiritual History', ccss:'Ciencias Sociales', com:'Comunicación',
-  mat:'Matemática', cyt:'Ciencia y Tecnología', arte:'Arte y Cultura', ict:'ICT', ing:'Inglés',
+  drama:'Drama', spiritual:'Spiritual History', ccss:'Social Studies', com:'Comunicación',
+  mat:'Math', cyt:'Science and Technology', arte:'Art and Culture', ict:'ICT', ing:'English',
   sh:'Spiritual History', fr:'Français', fil:'Philosophy', ent:'Enterprise'
 };
 const AREA_ICONO = {
@@ -181,24 +181,24 @@ function cursosDe(a){
 function cabecera(a){
   return `<div class="cab">
     <h1>${esc(a.titulo)}</h1>
-    <p class="meta">${esc(a.grado)} &middot; ${esc(a.periodos)} &middot; ${a.semanas.length} semanas
+    <p class="meta">${esc(a.grado)} &middot; ${esc(a.periodos)} &middot; ${a.semanas.length} weeks
       &middot; ${esc(a.fechas)}</p>
     <p class="q">${esc(a.pregunta)}</p>
     <p>${esc(a.situacion)}</p>
-    ${a.propuesta ? `<div class="aviso"><b>Propuesta del portal.</b> El contenido de cada curso sale
-      del plan del colegio; el reparto por semana y la redacción son propuesta, para acordar con cada
-      profesor y con coordinación.</div>` : ''}
+    ${a.propuesta ? `<div class="aviso"><b>Portal proposal.</b> The content of each subject comes
+      from the school’s plan; the weekly breakdown and the wording are a proposal, to be agreed with
+      each teacher and with coordination.</div>` : ''}
   </div>`;
 }
 
 function producto(a){
   return `<div class="prod">
-    <h2>Producto final &middot; ${esc(a.producto.titulo)}</h2>
+    <h2>Final product &middot; ${esc(a.producto.titulo)}</h2>
     <p style="margin:0 0 6px;font-size:.88rem">${esc(a.producto.desc)}</p>
     <ul style="margin:.2em 0;padding-left:1.15em;font-size:.85rem">
       ${a.producto.incluye.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
-    ${(a.producto.integra || []).length ? `<h2 style="margin-top:14px">Qué aporta cada curso
-      <span style="font-weight:400;font-size:.8rem;color:var(--gris)">— quita uno y el producto queda incompleto</span></h2>
+    ${(a.producto.integra || []).length ? `<h2 style="margin-top:14px">What each subject contributes
+      <span style="font-weight:400;font-size:.8rem;color:var(--gris)">— remove one and the product is incomplete</span></h2>
       <div class="integra">${a.producto.integra.map(x =>
         `<div><b>${AREA_ICONO[x[0]] || ''} ${esc(AREA_NOMBRE[x[0]] || x[0])}</b>${esc(x[1])}</div>`).join('')}</div>` : ''}
   </div>`;
@@ -215,7 +215,7 @@ function celda(txt){
   const m = t.match(RE_FUENTE);
   if(!m) return esc(t);
   const cuerpo = (m[2] ? m[2].trim() + ' ' : '') + t.slice(m[0].length);
-  return '<span class="dp" title="contenido del colegio">&#9679;</span> ' + esc(cuerpo);
+  return '<span class="dp" title="content from the school">&#9679;</span> ' + esc(cuerpo);
 }
 
 /* La nota de procedencia solo se imprime cuando cambia: si no, la misma
@@ -227,8 +227,8 @@ function filaNota(s, prev, cols){
 
 function matriz(a){
   const cs = cursosDe(a);
-  if(!cs.length) return `<div class="prod"><p>Este proyecto todavía no tiene el detalle por curso.</p></div>`;
-  let h = `<div class="matriz"><table><tr><th>Semana</th><th>Hito</th>
+  if(!cs.length) return `<div class="prod"><p>This project does not yet have the detail by subject.</p></div>`;
+  let h = `<div class="matriz"><table><tr><th>Week</th><th>Milestone</th>
     ${cs.map(c => `<th>${AREA_ICONO[c] || ''} ${esc(AREA_NOMBRE[c] || c)}</th>`).join('')}</tr>`;
   let prev = '';
   a.semanas.forEach(s => {
@@ -243,7 +243,7 @@ function matriz(a){
 
 function porCurso(a){
   const cs = cursosDe(a);
-  if(!cs.length) return `<div class="prod"><p>Este proyecto todavía no tiene el detalle por curso.</p></div>`;
+  if(!cs.length) return `<div class="prod"><p>This project does not yet have the detail by subject.</p></div>`;
   return cs.map(c => {
     let prev = '';
     const filas = a.semanas.filter(s => (s.cursos || {})[c]).map(s => {
@@ -255,21 +255,21 @@ function porCurso(a){
     const n = a.semanas.filter(s => (s.cursos || {})[c]).length;
     return `<div class="curso-hoja">
       <h2>${AREA_ICONO[c] || ''} ${esc(AREA_NOMBRE[c] || c)}</h2>
-      <p class="sub">${esc(a.titulo)} &middot; ${esc(a.grado)} &middot; ${n} de ${a.semanas.length} semanas</p>
-      <table><tr><th style="width:104px">Semana</th><th style="width:130px">Hito de la semana</th>
-        <th>Lo que hace este curso</th></tr>${filas}</table></div>`;
+      <p class="sub">${esc(a.titulo)} &middot; ${esc(a.grado)} &middot; ${n} of ${a.semanas.length} weeks</p>
+      <table><tr><th style="width:104px">Week</th><th style="width:130px">Milestone of the week</th>
+        <th>What this subject does</th></tr>${filas}</table></div>`;
   }).join('');
 }
 
 function evaluacion(a){
   if(!a.evaluacion.length) return '';
-  return `<div class="prod"><h2>Evaluación</h2>
-    <table><tr><th style="width:26%">Criterio</th>${a.evaluacion[0].areas ? '<th style="width:12%">Áreas</th>' : ''}
-      <th>Qué se mira</th></tr>
+  return `<div class="prod"><h2>Assessment</h2>
+    <table><tr><th style="width:26%">Criterion</th>${a.evaluacion[0].areas ? '<th style="width:12%">Subjects</th>' : ''}
+      <th>What is assessed</th></tr>
     ${a.evaluacion.map(e => `<tr><td class="sem" style="width:auto">${esc(e.dim)}</td>
       ${e.areas ? `<td class="hito" style="width:auto">${esc(e.areas)}</td>` : ''}
       <td>${esc(e.desc)}</td></tr>`).join('')}</table>
-    ${a.revisar.length ? `<h2 style="margin-top:14px">Para decidir en la reunión</h2>
+    ${a.revisar.length ? `<h2 style="margin-top:14px">To decide in the meeting</h2>
       <ul style="margin:.2em 0;padding-left:1.15em;font-size:.85rem">
       ${a.revisar.map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}</div>`;
 }
@@ -278,7 +278,7 @@ function pinta(){
   const clave = P.get('arc') ? 'arc=' + P.get('arc')
               : P.get('arco11') ? 'arco11=' + P.get('arco11') : (TODOS[0] || {}).clave;
   const a = TODOS.find(x => x.clave === clave) || TODOS[0];
-  if(!a){ $('#app').innerHTML = '<p>No hay proyectos cargados.</p>'; return; }
+  if(!a){ $('#app').innerHTML = '<p>No projects loaded.</p>'; return; }
 
   $('#sel').innerHTML = TODOS.map(x =>
     `<option value="${x.clave}"${x.clave === a.clave ? ' selected' : ''}>${esc(x.grado)} — ${esc(x.titulo)}</option>`).join('');
@@ -287,11 +287,11 @@ function pinta(){
   $('#bMatriz').className = modo === 'matriz' ? 'on' : '';
   $('#bCurso').className = modo === 'curso' ? 'on' : '';
 
-  const leyenda = `<p class="leyenda"><span class="dp">&#9679;</span> lo que el plan anual del
-    colegio da esa semana &nbsp;·&nbsp; sin punto: propuesta del portal, para acordar con el profesor</p>`;
+  const leyenda = `<p class="leyenda"><span class="dp">&#9679;</span> what the school’s annual plan
+    gives that week &nbsp;·&nbsp; no dot: portal proposal, to be agreed with the teacher</p>`;
   $('#app').innerHTML = cabecera(a) + producto(a) + leyenda +
     (modo === 'matriz' ? matriz(a) + evaluacion(a) : porCurso(a));
-  document.title = a.titulo + ' · plan de ' + a.semanas.length + ' semanas · NIS';
+  document.title = a.titulo + ' · ' + a.semanas.length + '-week plan · NIS';
 }
 
 $('#sel').addEventListener('change', function(){ location.search = '?' + this.value; });
@@ -300,6 +300,6 @@ $('#bCurso').addEventListener('click', () => { modo = 'curso'; pinta(); });
 $('#print').addEventListener('click', () => window.print());
 pinta();
 </script>
-<script src="nis-tema.js?v=a7890d34" defer></script>
+<script src="nis-tema.js?v=410c4879" defer></script>
 </body>
 </html>

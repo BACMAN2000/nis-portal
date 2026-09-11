@@ -120,7 +120,7 @@ ol.items li{margin-bottom:11px;break-inside:avoid}
   <select id="kk"></select>
   <select id="ll"></select>
   <select id="dd"></select>
-  <label style="display:flex;gap:5px;align-items:center" title="Deja fluir las partes en vez de empezar cada una en hoja nueva: la mitad de papel"><input type="checkbox" id="cc"> compacto</label>
+  <label style="display:flex;gap:5px;align-items:center" title="Let the parts flow instead of starting each one on a new page — half the paper"><input type="checkbox" id="cc"> compact</label>
   <button class="go" id="ir">Show</button>
   <span class="sp"></span>
   <button onclick="window.print()">🖨️ Print / save as PDF</button>
@@ -228,9 +228,9 @@ function respuesta(p, it){
 function claveHTML(p, desde){
   var h = '<section class="paper"><h3>Part ' + p.n + ' · ' + esc(p.title) + '<span>answers</span></h3>';
   if (p.type === 'writing') {
-    h += '<p class="nota">No hay clave: se corrige con la rúbrica de la unidad (AD · A · B · C) en ' +
-         '<b>Portal → ✅ Corrección → 🎯 Productos de unidad</b>, donde llega el texto que el alumno escribió en pantalla. ' +
-         'Si lo escribió en papel, se califica aquí y se pasa la nota a mano.</p>';
+    h += '<p class="nota">There is no key: this part is marked with the unit rubric (AD · A · B · C) in ' +
+         '<b>Portal → ✅ Marking → 🎯 Unit products</b>, where the text the student wrote on screen arrives. ' +
+         'If the student wrote it on paper, mark it here and record the grade by hand.</p>';
     return h + '</section>';
   }
   h += '<div class="clave"><b>Answers ' + desde + '–' + (desde + (p.items || []).length - 1) + '</b><ol start="' + desde + '">' +
@@ -253,24 +253,24 @@ function pinta(ex, guion){
   var h = '<div class="cab">' +
     '<div class="marca"><img src="assets/logo-h.svg" alt="Nordic International School" ' +
       'onerror="this.replaceWith(Object.assign(document.createElement(\'b\'),{textContent:\'Nordic International School\'}))">' +
-      '<span class="anio">Curso ' + new Date().getFullYear() + '</span></div>' +
+      '<span class="anio">School year ' + new Date().getFullYear() + '</span></div>' +
     '<h2>' + esc(titulo) + '</h2>' +
     '<div class="meta">' + esc(d.title || '') + ' · ' + GRADE.toUpperCase() + ' · ' +
     (d.minutes || '—') + ' minutes · ' + total + ' marks + writing</div>';
   h += esClave || esGuion
-    ? '<div class="aviso">👩‍🏫 Documento del profesor. No se reparte.</div>'
+    ? '<div class="aviso">👩‍🏫 Teacher document. Not handed out.</div>'
     : '<div class="datos"><span>Name:</span><span>Class:</span><span>Date:</span><span>Mark:</span></div>' +
       '<div class="aviso">Answer every part on this paper. In Part 6 your teacher plays the recording twice.</div>';
   h += '</div>';
 
   if (esGuion) {
     h += '<section class="paper"><h3>Listening script<span>Part 6</span></h3>' +
-         '<p class="nota">Lo normal es poner la grabación. Este guion está aquí para leerlo en voz alta si el audio falla: ' +
-         'dos veces, al mismo ritmo, sin añadir nada.</p><div class="guion">' +
+         '<p class="nota">Normally you play the recording. This script is here to read aloud if the audio fails: ' +
+         'twice, at the same pace, without adding anything.</p><div class="guion">' +
          (guion ? guion.split('\n').map(function(l){
             var m = /^([^:]{1,24}):\s*(.*)$/.exec(l.trim());
             return m ? '<p><b>' + esc(m[1]) + ':</b> ' + esc(m[2]) + '</p>' : '<p>' + esc(l) + '</p>';
-          }).join('') : '<p>No hay guion guardado para este examen.</p>') +
+          }).join('') : '<p>No script is saved for this exam.</p>') +
          '</div></section>';
   } else {
     (d.parts || []).forEach(function(p){
@@ -297,7 +297,7 @@ function controles(hay){
     return '<option value="' + k + '"' + (k === KIND ? ' selected' : '') + '>' + KINDS[k] + '</option>'; }).join('');
   $('#ll').innerHTML = Object.keys(LVLS).map(function(l){
     return '<option value="' + l + '"' + (l === LEVEL ? ' selected' : '') + '>' + LVLS[l].split(' · ')[0] + '</option>'; }).join('');
-  $('#dd').innerHTML = [['exam', 'Hoja del alumno'], ['key', 'Clave del profesor'], ['script', 'Guion del listening']]
+  $('#dd').innerHTML = [['exam', 'Student paper'], ['key', 'Teacher key'], ['script', 'Listening script']]
     .map(function(d){ return '<option value="' + d[0] + '"' + (d[0] === DOC ? ' selected' : '') + '>' + d[1] + '</option>'; }).join('');
   $('#cc').checked = COMPACTO;
   $('#volver').href = 'unit-exam.html';
@@ -314,7 +314,7 @@ function fallo(msg){
 
 (function(){
   controles();
-  if (!(window.supabase && window.NIS_CONFIG)) return fallo('No cargó la configuración del portal. Recarga la página.');
+  if (!(window.supabase && window.NIS_CONFIG)) return fallo('The portal configuration did not load. Reload the page.');
   var sb = window.supabase.createClient(NIS_CONFIG.SUPABASE_URL, NIS_CONFIG.SUPABASE_KEY);
   sb.auth.getUser().then(function(u){
     var uid = u && u.data && u.data.user && u.data.user.id;
@@ -330,20 +330,20 @@ function fallo(msg){
         .eq('kind', KIND).eq('level', LEVEL).maybeSingle()
     ]);
   }).then(function(r){
-    if (!r[0] || !r[0].data) return fallo('Ese examen no existe todavía para ' +
-      GRADE.toUpperCase() + ' · unidades ' + UNITS + '.');
+    if (!r[0] || !r[0].data) return fallo('That exam does not exist yet for ' +
+      GRADE.toUpperCase() + ' · units ' + UNITS + '.');
     pinta(r[0].data, (r[1] && r[1].data && r[1].data.script) || '');
   }).catch(function(e){
     if (e && e.message === 'nosesion')
-      return fallo('⚠️ <b>No has iniciado sesión.</b> Entra al portal con tu cuenta de profesor y vuelve a abrir esta página. ' +
-                   '<a href="./" style="color:#7f1d1d;font-weight:700">Entrar</a>');
+      return fallo('⚠️ <b>You are not signed in.</b> Sign in to the portal with your teacher account and open this page again. ' +
+                   '<a href="./" style="color:#7f1d1d;font-weight:700">Sign in</a>');
     if (e && e.message === 'noprofe')
-      return fallo('⚠️ Esta hoja es para <b>profesores y administradores</b>. Trae la clave de respuestas, ' +
-                   'así que no se sirve a las cuentas de alumno.');
-    fallo('No se pudo construir la hoja: ' + esc((e && e.message) || e));
+      return fallo('⚠️ This paper is for <b>teachers and administrators</b>. It carries the answer key, ' +
+                   'so it is not served to student accounts.');
+    fallo('Could not build the paper: ' + esc((e && e.message) || e));
   });
 })();
 </script>
-<script src="nis-tema.js?v=a7890d34" defer></script>
+<script src="nis-tema.js?v=410c4879" defer></script>
 </body>
 </html>

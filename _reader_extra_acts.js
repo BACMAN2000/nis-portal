@@ -10,7 +10,7 @@
 /* ---------- Right / Wrong / Doesn't say (Cambridge A2 Key, RW4) ---------- */
 function actRightWrong(c){
   const items=(c&&c.rw)||[];
-  if(!items.length){ stage.innerHTML=`<div class="panel"><p class="muted">No hay preguntas para este capítulo.</p></div>`; return; }
+  if(!items.length){ stage.innerHTML=`<div class="panel"><p class="muted">There are no questions for this chapter.</p></div>`; return; }
   const LABELS=['Right','Wrong','Doesn’t say'];
   runQuiz(items.map(it=>({
     q:`<span class="muted" style="font-size:12px">Is this sentence Right, Wrong, or does the text not say?</span><br>${it[0]}`,
@@ -24,7 +24,7 @@ function actRightWrong(c){
 /* ---------- Odd one out ---------- */
 function actOddOneOut(c){
   const items=(c&&c.odd)||[];
-  if(!items.length){ stage.innerHTML=`<div class="panel"><p class="muted">No hay preguntas para este capítulo.</p></div>`; return; }
+  if(!items.length){ stage.innerHTML=`<div class="panel"><p class="muted">There are no questions for this chapter.</p></div>`; return; }
   runQuiz(items.map(it=>({
     q:`Which word is different from the others?`,
     opts:it[0].map((w,k)=>({t:w, correct:k===it[1]})),
@@ -37,7 +37,7 @@ function actOddOneOut(c){
 /* ---------- Sentence halves ---------- */
 function actHalves(c){
   const items=(c&&c.halves)||[];
-  if(items.length<4){ stage.innerHTML=`<div class="panel"><p class="muted">No hay frases para este capítulo.</p></div>`; return; }
+  if(items.length<4){ stage.innerHTML=`<div class="panel"><p class="muted">There are no sentences for this chapter.</p></div>`; return; }
   const ends=items.map(p=>p[1]);
   runQuiz(items.map((p,i)=>{
     const wrong=shuffle(ends.filter((_,k)=>k!==i)).slice(0,3);
@@ -52,7 +52,7 @@ function actHalves(c){
 /* ---------- Gap fill con banco de palabras ---------- */
 function actGapFill(c){
   const g=(c&&c.gaps)||null;
-  if(!g||!g.items||!g.items.length){ stage.innerHTML=`<div class="panel"><p class="muted">No hay ejercicio para este capítulo.</p></div>`; return; }
+  if(!g||!g.items||!g.items.length){ stage.innerHTML=`<div class="panel"><p class="muted">There is no exercise for this chapter.</p></div>`; return; }
   const bank=shuffle((g.bank||[]).slice());
   _actT0=Date.now();
   crumbEl.innerHTML='Gap fill · '+(g.title||'');
@@ -93,7 +93,7 @@ function actThink(c){
   const t=(c&&c.think)||null;
   const V=(EXTRAS.VALUES)||{};
   const val=(V.chapters||[]).find(x=>x[0]===(c?c.n:0));
-  if(!t){ stage.innerHTML=`<div class="panel"><p class="muted">No hay reflexión para este capítulo.</p></div>`; return; }
+  if(!t){ stage.innerHTML=`<div class="panel"><p class="muted">There is no reflection for this chapter.</p></div>`; return; }
   crumbEl.innerHTML='Values &amp; Feelings';
   stage.innerHTML=`<div class="panel">
     <div class="qnum">VALUES &amp; FEELINGS</div>
@@ -124,7 +124,7 @@ function actThink(c){
 /* ---------- Reading pictures ---------- */
 function actReadingPics(c){
   const P=((EXTRAS.PICS)||{})[c?c.n:0];
-  if(!P){ stage.innerHTML=`<div class="panel"><p class="muted">No hay lámina para este capítulo.</p></div>`; return; }
+  if(!P){ stage.innerHTML=`<div class="panel"><p class="muted">There is no picture for this chapter.</p></div>`; return; }
   crumbEl.innerHTML='Reading pictures';
   stage.innerHTML=`<div class="panel">
     <div class="qnum">READING PICTURES</div>
@@ -153,7 +153,7 @@ function actReadingPics(c){
 /* ---------- Picture summary: ordenar las láminas del capítulo ---------- */
 function actPicSummary(c){
   const L=((EXTRAS.ILLUS)||{})[c?c.n:0]||[];
-  if(L.length<3){ stage.innerHTML=`<div class="panel"><p class="muted">Este capítulo no tiene láminas suficientes.</p></div>`; return; }
+  if(L.length<3){ stage.innerHTML=`<div class="panel"><p class="muted">This chapter does not have enough pictures.</p></div>`; return; }
   const right=L.map((x,i)=>i);
   let order=shuffle(right.slice());
   if(order.join()===right.join()) order.reverse();
@@ -196,7 +196,7 @@ function actPicSummary(c){
 /* ---------- Word formation: sustantivo ↔ adjetivo ---------- */
 function actWordForm(c){
   const items=(c&&c.wordform)||[];
-  if(!items.length){ stage.innerHTML=`<div class="panel"><p class="muted">No hay tabla para este capítulo.</p></div>`; return; }
+  if(!items.length){ stage.innerHTML=`<div class="panel"><p class="muted">There is no table for this chapter.</p></div>`; return; }
   runQuiz(items.map((p,i)=>{
     const wrong=shuffle(items.filter((_,k)=>k!==i)).slice(0,3).map(w=>({t:w[1],correct:false}));
     return { q:`Which is the <b>adjective</b> from the noun <b>${p[0]}</b>?`,
@@ -210,7 +210,7 @@ function actWordForm(c){
 /* ---------- Opposites ---------- */
 function actOpposites(c){
   const items=(c&&c.opposites)||[];
-  if(!items.length){ stage.innerHTML=`<div class="panel"><p class="muted">No hay pares para este capítulo.</p></div>`; return; }
+  if(!items.length){ stage.innerHTML=`<div class="panel"><p class="muted">There are no pairs for this chapter.</p></div>`; return; }
   runQuiz(items.map((p,i)=>{
     const wrong=shuffle(items.filter((_,k)=>k!==i)).slice(0,3).map(w=>({t:w[1],correct:false}));
     return { q:`What is the opposite of <b>${p[0]}</b>?`,
@@ -226,7 +226,7 @@ function actOpposites(c){
    ============================================================ */
 function extraKeyPrep(){
   const K=EXTRAS.KEY||{};
-  if(!K.part1){ stage.innerHTML=`<div class="panel"><p class="muted">Este libro no tiene bloque Cambridge.</p></div>`; return; }
+  if(!K.part1){ stage.innerHTML=`<div class="panel"><p class="muted">This book does not have a Cambridge section.</p></div>`; return; }
   crumbEl.innerHTML='Cambridge A2 Key · Preparation';
   const parts=[
     ['p1','📋 Part 1 — Notices',   K.part1 && K.part1.title],
@@ -332,7 +332,7 @@ function keyPart(id){
 /* ---------- Trinity · speaking ---------- */
 function extraTrinity(){
   const T=EXTRAS.TRINITY||[];
-  if(!T.length){ stage.innerHTML=`<div class="panel"><p class="muted">Este libro no tiene bloque Trinity.</p></div>`; return; }
+  if(!T.length){ stage.innerHTML=`<div class="panel"><p class="muted">This book does not have a Trinity section.</p></div>`; return; }
   crumbEl.innerHTML='Trinity · Preparation';
   stage.innerHTML=`<div class="panel">
     <div class="qnum">TRINITY</div>
@@ -350,7 +350,7 @@ function extraTrinity(){
 /* ---------- Surf the net ---------- */
 function extraSurf(){
   const S=EXTRAS.SURF||[];
-  if(!S.length){ stage.innerHTML=`<div class="panel"><p class="muted">Este libro no tiene esta sección.</p></div>`; return; }
+  if(!S.length){ stage.innerHTML=`<div class="panel"><p class="muted">This book does not have this section.</p></div>`; return; }
   crumbEl.innerHTML='Surf the net';
   stage.innerHTML=`<div class="panel">
     <div class="qnum">SURF THE NET</div>

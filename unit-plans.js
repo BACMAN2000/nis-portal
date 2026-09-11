@@ -67,7 +67,7 @@ window.UNIT_PLANS = {
 /* --------------------------------------------- 2.o U5 (piloto 2026) */
 {
   cover:{icon:'🔦', from:'#7a4a10', to:'#e0a83a'},
-  n:5, label:'5 · piloto', pilot:true,
+  n:5, label:'5 · pilot', pilot:true,
   title:'The Shadow Show',
   weeks:5,
   bigq:'Where does light come from, and what happens when something gets in its way?',
@@ -346,14 +346,14 @@ window.UNIT_PLANS = {
 /* --------------------------------------------- 2.o U6 (piloto 2026) */
 {
   cover:{icon:'🚗', from:'#12496b', to:'#4aa3c9'},
-  n:6, label:'6 · piloto', pilot:true,
+  n:6, label:'6 · pilot', pilot:true,
   title:'The Ramp Race',
   weeks:6,
   bigq:'What makes things move, and what makes them stop?',
   situation:'At the end-of-year showing there will be a ramp in the hall and a race. Each team builds a vehicle and has to make it go as far as possible — and then explain to whoever is watching why theirs went further. Nothing moves on its own: you push, you pull, and the floor pushes back.',
   audience:'Your families at the closing showing. They will watch the race and ask you why your vehicle won or lost.',
   client:'The families · end-of-year showing',
-  reader:{title:null, term:3, inPortal:false, note:'2.o tiene dos libros en inglés para tres trimestres. Esta unidad se queda sin obra: es el hueco del plan lector que hay que resolver para 2027.'},
+  reader:{title:null, term:3, inPortal:false, note:'Grade 2 has two books in English for three terms. This unit is left without a book: it is the gap in the reading plan to solve for 2027.'},
   exam:{target:'starters', themes:['Toys','Transport','The world around us','School'],
         grammar:['past simple','prepositions of place','there is / there are','and, but, because'],
         extra:['push','pull','fall','fast','slow','smooth','rough','wheel','ramp','further']},
@@ -1414,7 +1414,7 @@ window.UNIT_PLANS = {
 /* --------------------------------------------- 3.o U5 (piloto 2026) */
 {
   cover:{icon:'🪐', from:'#1b2a63', to:'#5566c4'},
-  n:5, label:'5 · piloto', pilot:true,
+  n:5, label:'5 · pilot', pilot:true,
   title:'Our Place in Space',
   weeks:5,
   bigq:'How does the Earth move, and how do you explain it to somebody who has never thought about it?',
@@ -1694,7 +1694,7 @@ window.UNIT_PLANS = {
 /* --------------------------------------------- 3.o U6 (piloto 2026) */
 {
   cover:{icon:'🎯', from:'#14563e', to:'#4fae7c'},
-  n:6, label:'6 · piloto', pilot:true,
+  n:6, label:'6 · pilot', pilot:true,
   title:'One Thing I Will Do Better',
   weeks:6,
   bigq:'What did I actually get better at this year, and what am I going to do about next year?',
@@ -2053,7 +2053,7 @@ window.UNIT_PLANS = {
 /* --------------------------------------------- 4.o U5 (piloto 2026) */
 {
   cover:{icon:'⚙️', from:'#5a2f6b', to:'#a473c4'},
-  n:5, label:'5 · piloto', pilot:true,
+  n:5, label:'5 · pilot', pilot:true,
   title:'The Fair Test Challenge',
   weeks:5,
   bigq:'What makes an object move the way it does — and how do you measure it well enough to prove it?',
@@ -2345,7 +2345,7 @@ window.UNIT_PLANS = {
 /* --------------------------------------------- 4.o U6 (piloto 2026) */
 {
   cover:{icon:'🌍', from:'#0f5b52', to:'#4bb3a2'},
-  n:6, label:'6 · piloto', pilot:true,
+  n:6, label:'6 · pilot', pilot:true,
   title:'Where Our Water Comes From',
   weeks:6,
   bigq:'Where does our water come from, and what would happen if we used it as though it would never run out?',
@@ -2353,7 +2353,7 @@ window.UNIT_PLANS = {
   audience:'The whole school, in the corridor. People walk past — they do not sit down to read. It has to work in thirty seconds.',
   client:'The school · the guide goes up on the corridor wall',
   reader:{title:'Incredible Earth', series:'Oxford Dolphin Readers', term:3, inPortal:false,
-          note:'Encaja de lleno con la unidad: recursos naturales, ciclo del agua y clima.'},
+          note:'It fits perfectly with the unit: natural resources, the water cycle and climate.'},
   exam:{target:'movers', themes:['The world around us','Weather','Materials','The home'],
         grammar:['present simple for processes','sequencers: first, then, next, finally','quantifiers: some, many, a lot of','opinion + reason: I think… because…, therefore, since, for example'],
         extra:['water cycle','evaporation','condensation','precipitation','natural resource','renewable','climate','weather','rainfall','thermometer']},
@@ -2727,7 +2727,7 @@ window.UNIT_PLANS = {
 /* --------------------------------------------- 5.o U5 (piloto 2026) */
 {
   cover:{icon:'🗺️', from:'#0d4f6b', to:'#4aa8c9'},
-  n:5, label:'5 · piloto', pilot:true,
+  n:5, label:'5 · pilot', pilot:true,
   title:'The Air and the Water of Our Region',
   weeks:5,
   bigq:'What is the air and the water around us really like, and what should be done about it?',
@@ -2735,7 +2735,7 @@ window.UNIT_PLANS = {
   audience:'Whoever can act on it: the school’s leadership, or the district. A report nobody can act on is not finished.',
   client:'The school leadership · or the district office',
   reader:{title:'Exploring Our World', series:'Oxford Dolphin Readers', term:3, inPortal:false,
-          note:'Ya asignada a esta unidad en el Annual Plan (U5 W1).'},
+          note:'Already assigned to this unit in the Annual Plan (U5 W1).'},
   exam:{target:'flyers', themes:['The world around us','Weather','Places and directions','Health'],
         grammar:['present simple for facts','comparatives and superlatives','because / however / although','opinion phrases: I think, in my opinion'],
         extra:['atmosphere','hydrosphere','ecosystem','map','scale','river','lake','watershed','primary source','secondary source','pollution']},
@@ -3012,14 +3012,14 @@ window.UNIT_PLANS = {
 /* --------------------------------------------- 5.o U6 (piloto 2026) */
 {
   cover:{icon:'💰', from:'#6b4a0d', to:'#d1a13a'},
-  n:6, label:'6 · piloto', pilot:true,
+  n:6, label:'6 · pilot', pilot:true,
   title:'Worth Saving',
   weeks:6,
   bigq:'What is worth saving — and can you convince anybody else of it?',
   situation:'Some things are free and endless, like the air; others are not, and somebody pays for them. This unit is about telling the two apart and doing something about it. You choose one resource, you find out what it really costs the school, you build a savings plan with your own data, and then you have to persuade a hall full of people who did not ask to be persuaded.',
   audience:'The whole school at the closing showing. You have three minutes and they can walk away.',
   client:'The school · closing showing',
-  reader:{title:null, term:3, inPortal:false, note:'5.o tiene dos libros en inglés y los dos ya se usan (U2 y U5). Este es el hueco del plan lector a resolver para 2027.'},
+  reader:{title:null, term:3, inPortal:false, note:'Grade 5 has two books in English and both are already used (U2 and U5). This is the gap in the reading plan to solve for 2027.'},
   exam:{target:'flyers', themes:['The home','The world around us','Work','School'],
         grammar:['should / shouldn\u2019t','first conditional','persuasive imperatives','because / that is why'],
         extra:['renewable','non-renewable','free goods','economic goods','saving','budget','probability','data','waste','campaign']},
@@ -3890,7 +3890,7 @@ window.UNIT_PLANS = {
 {
   cover:{icon:'🔌', from:'#123f4f', to:'#3f9bb0'},
   n:105,
-  label:'5 · piloto', pilot:true,
+  label:'5 · pilot', pilot:true,
   title:'Does Our School Run on Data?',
   weeks:5,
   bigq:'What does artificial intelligence really cost our school — and what should we do about it?',
@@ -3898,7 +3898,7 @@ window.UNIT_PLANS = {
   audience:'The leadership team of NIS. They will read your proposal to write next year’s policy, and they will ask you questions you have not rehearsed.',
   client:'NIS leadership team · they write the policy',
   reader:{title:'The Time Machine', series:'Vicens Vives · Reading & Training Step Three B1.2', term:3, inPortal:false,
-          note:'Obra del trimestre en el Plan Lector de 9.o. Todavía sin reader en el portal: se lee en papel.'},
+          note:'This term’s book in the Grade 9 reading plan. Still no reader in the portal: it is read on paper.'},
   exam:{target:'b2first',
         themes:['technology','environment','society','ethics','education'],
         grammar:['proposal register: I would recommend, it is advisable to','passive for processes','concession: although, despite, even though','hedging: may, might, tends to','advanced connectors: nevertheless, moreover, in contrast'],
@@ -4307,7 +4307,7 @@ window.UNIT_PLANS = {
 {
   cover:{icon:'🔭', from:'#2a1f66', to:'#6e63c6'},
   n:106,
-  label:'6 · piloto', pilot:true,
+  label:'6 · pilot', pilot:true,
   title:'NIS 2040',
   weeks:6,
   bigq:'What kind of future is worth arguing for — and can you make somebody believe it?',
@@ -4315,7 +4315,7 @@ window.UNIT_PLANS = {
   audience:'The families and the school at the closing exhibition. They did not come to be taught — they came to see, and they can walk away.',
   client:'Families and school · NIS 2040 exhibition',
   reader:{title:'The Time Machine', series:'Vicens Vives · Reading & Training Step Three B1.2', term:3, inPortal:false,
-          note:'La misma obra del trimestre. Aquí encaja de lleno: es exactamente el ejercicio de imaginar un futuro y defenderlo.'},
+          note:'The same book for the term. It fits perfectly here: it is exactly the exercise of imagining a future and defending it.'},
   exam:{target:'b2first',
         themes:['future','innovation','society','environment','work'],
         grammar:['future forms: will, going to, future perfect','second conditional','speculation: could, might, is likely to','discourse markers for argument'],
