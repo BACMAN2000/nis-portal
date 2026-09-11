@@ -230,6 +230,7 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px soli
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js?v=6ed285ca"></script>
+<script src="writing-trace.js?v=2b1d82de"></script>
 <script src="activities-data.js?v=38ce60ee"></script>
 <script src="class-files.js?v=1a59ee7e"></script>
 <script src="unit-plans.js?v=60a03c38"></script>
@@ -872,6 +873,7 @@ function bloqueTexto(d){
     <h3 style="color:var(--blue-dd);font-size:1rem">${d.icon} ${esc(d.title)}</h3>
     <p style="font-size:.86rem;color:var(--grey);margin:0 0 10px">${esc(d.desc)}</p>
     ${rubricaEscrita(d)}
+    ${window.WRITING_TRACE?WRITING_TRACE.aviso():''}
     <textarea id="t-${d.kind}" placeholder="Type your final version here…"></textarea>
     <div class="counter off" id="wc-${d.kind}">0 words</div>
     ${d.checklist?`<ul class="checklist" id="chk-${d.kind}">${d.checklist.map(c=>`<li data-k="${c.k}">${esc(c.t)}</li>`).join('')}</ul>`:''}
@@ -998,7 +1000,9 @@ async function arrancaSesion(){
     if(r.kind==='selfassess'){ self_=(r.payload&&r.payload.levels)||{}; pintaSelf(); return; }
     const st=$('#st-'+r.kind);
     const ta=$('#t-'+r.kind);
-    if(ta){ ta.value=(r.payload&&r.payload.text)||''; if(st && r.payload && r.payload.draft===false){ st.textContent='Handed in'; st.className='state ok'; } }
+    if(ta){ ta.value=(r.payload&&r.payload.text)||''; if(st && r.payload && r.payload.draft===false){ st.textContent='Handed in'; st.className='state ok'; }
+      /* El rastro de escritura sigue contando desde la visita anterior. */
+      if(window.WRITING_TRACE && r.payload && r.payload.trace) WRITING_TRACE.restore(ta, r.payload.trace); }
     else if(st && r.file_path){ st.textContent='Uploaded — you can replace it.'; st.className='state ok';
       muestraEntregado(r.kind, r.file_path); }
     /* Solo lo publicado: la nota existe desde que el profesor corrige, pero el
@@ -1041,6 +1045,9 @@ function recuperaLocales(filas){
   });
 }
 
+/* Cómo se escribió (pulsaciones, minutos, pegados bloqueados): writing-trace.js.
+   Va en cada guardado porque el payload se sustituye entero. */
+function rastro(ta){ return (window.WRITING_TRACE && ta) ? WRITING_TRACE.of(ta) : undefined; }
 async function guarda(kind,payload,extra){
   if(!sb||!me) return {ok:false,motivo:'no session'};
   const fila=Object.assign({student_id:me.id,grade:GRADE,unit:UNIT,milestone:MILESTONE,kind:kind,
@@ -1109,7 +1116,7 @@ async function subeBorrador(kind){
   const s=_txt[kind]; if(!s||!me) return;
   clearTimeout(s.timer); clearTimeout(s.reint);
   const texto=s.ta.value;
-  const r=await guarda(kind,{text:texto,words:palabras(texto),draft:true});
+  const r=await guarda(kind,{text:texto,words:palabras(texto),draft:true,trace:rastro(s.ta)});
   if(r.ok){
     if(s.ta.value===texto) s.sucio=false;
     s.espera=0;
@@ -1154,7 +1161,7 @@ function cablea(d){
     if(n<30){ st.textContent='This is still too short to hand in.'; st.className='state err'; return; }
     clearTimeout(s.timer); clearTimeout(s.reint);
     $('#send-'+d.kind).disabled=true;
-    const r=await guarda(d.kind,{text:ta.value,words:n,draft:false,handed_at:new Date().toISOString()});
+    const r=await guarda(d.kind,{text:ta.value,words:n,draft:false,handed_at:new Date().toISOString(),trace:rastro(ta)});
     $('#send-'+d.kind).disabled=false;
     if(r.ok) s.sucio=false;
     st.textContent=r.ok?'Handed in — you can still edit it and hand it in again.':'Could not hand in: '+r.motivo;

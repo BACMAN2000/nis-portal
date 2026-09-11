@@ -156,6 +156,7 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px soli
 <script src="ui-mensajes.js?v=22f3c588"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js?v=6ed285ca"></script>
+<script src="writing-trace.js?v=2b1d82de"></script>
 <script src="nis-nav.js?v=c3230c7d"></script>
 <!-- El planner: de ahí salen los bloques de unidades y sus títulos, para no
      tener aquí una lista paralela que se quede vieja. El alumno ya lo trae en
@@ -773,6 +774,7 @@ function pintaWriting(p){
       <ul class="tips">${(tarea.tips||[]).map(x=>`<li>${x}</li>`).join('')}</ul>
       <p class="muted" style="font-size:13px;margin:10px 0 6px"><b>${tarea.range[0]}–${tarea.range[1]} words.</b>
         Your teacher marks this part with the unit rubric (AD · A · B · C); the other six parts are marked automatically.</p>
+      ${window.WRITING_TRACE?WRITING_TRACE.aviso():''}
       <textarea class="wr" id="wrText" placeholder="Write your answer here…"
         oninput="wrote(this.value)">${esc(EX.wr.text)}</textarea>
       <div class="wcount ${dentro?'ok':'no'}" id="wrN">${n} words · target ${tarea.range[0]}–${tarea.range[1]}</div>`
@@ -781,6 +783,8 @@ function pintaWriting(p){
 }
 
 function render(){
+  /* Antes de repintar, lo que la caja del Writing lleva contado (también los pegados bloqueados sin tecleo). */
+  if(window.WRITING_TRACE && EX && EX.wr){ const ta0=$('#wrText'); if(ta0) EX.wr.trace=WRITING_TRACE.of(ta0); }
   const p=EX.partes[EX.page], last=EX.page===EX.pages-1;
   /* Las palabras de "ordenar" se barajan una vez por examen, no en cada
      repintado: si no, cambian de sitio cada vez que el alumno vuelve atrás. */
@@ -803,6 +807,9 @@ function render(){
             :`<button class="arrow" onclick="goPage(1)" title="Next">▶</button>`}
     </div>`;
   audMonta();
+  /* La caja del Writing se vuelve a pintar al cambiar de parte: el rastro
+     (pulsaciones, pegados bloqueados) sigue desde donde iba. */
+  if(p.type==='writing' && window.WRITING_TRACE && EX.wr.trace){ const ta=$('#wrText'); if(ta) WRITING_TRACE.restore(ta, EX.wr.trace); }
   window.scrollTo(0,0);
 }
 function respondidas(){
@@ -828,6 +835,7 @@ window.pickTask=id=>{ if(EX.done) return; EX.wr.task=id; render(); };
 window.wrote=v=>{
   if(EX.done) return;
   EX.wr.text=v;
+  if(window.WRITING_TRACE){ const ta=$('#wrText'); if(ta) EX.wr.trace=WRITING_TRACE.of(ta); }
   const p=EX.partes[EX.page], t=(p.tasks||[]).find(x=>x.id===EX.wr.task);
   const n=cuenta(v), el=$('#wrN');
   if(el&&t){ el.textContent=n+' words · target '+t.range[0]+'–'+t.range[1];
@@ -936,7 +944,8 @@ window.submit=async(forzado)=>{
              pulsa Submit, ese texto es el que se corrige. Sin esto la cola del
              profesor lo enseñaba como borrador y parecía que faltaba algo. */
           payload:{text:txt, words:cuenta(txt), task:EX.wr.task, level:EX.lvl.toUpperCase(),
-                   exam:KINDS[EX.kind][1], units:UNITS, draft:false},
+                   exam:KINDS[EX.kind][1], units:UNITS, draft:false,
+                   trace:(window.WRITING_TRACE&&$('#wrText'))?WRITING_TRACE.of($('#wrText')):(EX.wr.trace||undefined)},
           duration_sec:Math.min(32000,dur)
         },{onConflict:'student_id,grade,unit,milestone,kind'});
         wrEstado=r.error?'⚠️ Your writing could not be sent: '+esc(r.error.message)

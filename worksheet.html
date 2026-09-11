@@ -139,6 +139,7 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px soli
 <script src="config.js?v=6ed285ca"></script>
 <script src="nis-nav.js?v=c3230c7d"></script>
 <script src="worksheet-items.js?v=0f9d5fb1"></script>
+<script src="writing-trace.js?v=2b1d82de"></script>
 <script>
 /* Ficha digital: el alumno la resuelve aqui dentro y le da a enviar. No hay
    que bajarse el PDF (que no se puede editar) ni salir a Word o Google Docs.
@@ -161,6 +162,8 @@ const $  = s => document.querySelector(s);
 const esc = s => String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
 let sb=null, me=null, ficha=null, resp={}, entregado=false;
+/* Cómo se escribió cada caja de texto (writing-trace.js), por campo. */
+let trazas={};
 let wsIndex=0;
 
 /* Un parrafo puede traer dos cosas que se responden dentro del propio texto:
@@ -246,12 +249,14 @@ function pinta(){
       <span class="nivel">Level ${esc(ficha.level)}</span>
     </div>
     <div class="fb" id="fb" style="display:none"><h4>Your teacher's feedback</h4><p id="fbt"></p></div>
+    ${(window.WRITING_TRACE && (ficha.blocks||[]).some(b=>b.t==='write'))?WRITING_TRACE.aviso():''}
     ${pantallas.map((p,i)=>`<section class="ws-screen${i===0?' on':''}" data-label="${esc(p.label)}">${p.html}</section>`).join('')}`;
 
   $('#app').addEventListener('input', e => {
     const c = e.target.dataset.campo;
     if(!c) return;
     resp[c] = e.target.value;
+    if(window.WRITING_TRACE && e.target.tagName==='TEXTAREA') trazas[c] = WRITING_TRACE.of(e.target);
     autoguarda();
   });
   $('#app').addEventListener('click', e => {
@@ -280,6 +285,8 @@ function pinta(){
       autoguarda();
     }
   });
+  /* Cada caja de texto sigue contando desde lo guardado en la visita anterior. */
+  if(window.WRITING_TRACE) document.querySelectorAll('textarea[data-campo]').forEach(ta=>{ if(trazas[ta.dataset.campo]) WRITING_TRACE.restore(ta, trazas[ta.dataset.campo]); });
   $('#barra').style.display = 'grid';
   wsIndex=0;
   muestraPantalla(0,false);
@@ -404,6 +411,7 @@ async function guarda(final){
     student_id: me.id, grade: GRADE, unit: UNIT, milestone: HITO, kind: 'worksheet',
     payload: { level: LEVEL, code: ficha.code, title: ficha.title,
                answers: resp, draft: !final,
+               trace: window.WRITING_TRACE ? Object.assign({}, trazas, WRITING_TRACE.all()) : undefined,
                handed_at: final ? new Date().toISOString() : null },
     updated_at: new Date().toISOString()
   };
@@ -443,6 +451,7 @@ async function guarda(final){
     .eq('milestone',HITO).eq('kind','worksheet').maybeSingle();
   if(prev && prev.payload){
     resp = prev.payload.answers || {};
+    trazas = (prev.payload.trace && typeof prev.payload.trace==='object') ? prev.payload.trace : {};
     entregado = prev.payload.draft === false;
   }
 

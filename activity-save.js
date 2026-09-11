@@ -218,6 +218,7 @@ function fila(final){
       activity: O.slug, title: O.title, week: O.week || null,
       level: estado.level || null,
       answers: aplana(estado),     // lo que ve el profesor
+      trace: window.WRITING_TRACE ? WRITING_TRACE.all() : undefined,   // cómo se escribió (por caja)
       state: estado,               // lo que se le devuelve al alumno
       seconds: segundos(),
       draft: !final,
@@ -298,9 +299,25 @@ function reconcilia(servidor){
   return true;
 }
 
+/* Cómo se escribió cada caja de texto (writing-trace.js): bloquea pegar,
+   cuenta pulsaciones y minutos, y avisa al alumno delante de la primera
+   caja. Solo se carga si la página tiene alguna <textarea>; así las 290
+   actividades lo llevan sin tocar una a una. La ruta lleva ?v= como todas
+   las referencias del portal, para que la selle el hook. document.currentScript
+   solo vale mientras este archivo se está ejecutando: por eso la carpeta se
+   lee aquí arriba y no dentro de la función. */
+var rutaRastro = (function(){ var c = document.currentScript; return (c && c.src) ? c.src.replace(/[^\/]*$/, '') : ''; })();
+function cargaRastro(){
+  if(window.WRITING_TRACE || !document.querySelector('textarea')) return;
+  var s = document.createElement('script');
+  s.src = rutaRastro + 'writing-trace.js?v=2b1d82de';
+  document.head.appendChild(s);
+}
+
 function arranca(){
   cfg = window.NIS_CONFIG || null;
   pintaBarra();
+  cargaRastro();
   di('Connecting…');
   bSave.disabled = bSend.disabled = true;
 
