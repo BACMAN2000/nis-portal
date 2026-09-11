@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Corrector de material — Nordic</title>
+<title>Material proofreader — Nordic</title>
 <link rel="preload" href="fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin>
 <script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 <link rel="stylesheet" href="brand.css?v=5f69053f">
@@ -57,41 +57,41 @@
           font:600 13px ui-monospace,Consolas,monospace;cursor:pointer}
   .cx-fix:hover{background:var(--blue,#2f5f93);color:var(--card)}
 </style>
-<script src="config.js?v=68725f64"></script>
+<script src="config.js?v=6ed285ca"></script>
 </head>
 <body>
 <div class="wrap">
-  <h1>Corrector de material</h1>
-  <p class="sub">Pega aquí una ficha, un examen o un worksheet antes de publicarlo.
-     Revisa ortografía, avisa si mezclas inglés británico y americano, y marca los
-     errores típicos de un hispanohablante que ningún corrector normal detecta.</p>
+  <h1>Material proofreader</h1>
+  <p class="sub">Paste a handout, an exam, or a worksheet here before publishing it.
+     It checks spelling, warns you if you mix British and American English, and flags
+     typical mistakes made by Spanish speakers that no ordinary checker detects.</p>
 
   <div class="cx-bar">
-    <button class="btn" id="revisar" disabled>Revisar</button>
-    <button class="btn sec" id="ejemplo">Probar con un ejemplo</button>
-    <label>Variante:
+    <button class="btn" id="revisar" disabled>Check</button>
+    <button class="btn sec" id="ejemplo">Try an example</button>
+    <label>Variant:
       <select id="variante">
-        <option value="auto">detectar sola</option>
-        <option value="uk">británico</option>
-        <option value="us">americano</option>
+        <option value="auto">auto-detect</option>
+        <option value="uk">British</option>
+        <option value="us">American</option>
       </select>
     </label>
     <label style="font-size:13px;display:flex;align-items:center;gap:5px" title="then/than, form/from, were/where…">
-      <input type="checkbox" id="confundibles"> palabras que se confunden
+      <input type="checkbox" id="confundibles"> commonly confused words
     </label>
-    <span class="estado" id="estado">cargando diccionario…</span>
+    <span class="estado" id="estado">loading dictionary…</span>
   </div>
 
   <div class="cols">
     <div class="cx-card">
-      <textarea id="texto" placeholder="Escribe o pega el texto en inglés…" spellcheck="false"></textarea>
+      <textarea id="texto" placeholder="Type or paste the English text…" spellcheck="false"></textarea>
       <div id="vista"></div>
       <div class="cx-bar" style="margin:8px 0 0">
-        <button class="btn sec" id="volver" style="display:none">← volver a editar</button>
+        <button class="btn sec" id="volver" style="display:none">← back to editing</button>
       </div>
     </div>
     <div class="cx-card">
-      <div id="resultado"><div class="vacio">Aún no has revisado nada.</div></div>
+      <div id="resultado"><div class="vacio">You haven’t checked anything yet.</div></div>
     </div>
   </div>
 </div>
@@ -115,10 +115,10 @@ async function cargar(){
     REGLAS.gramatica = r.gramatica.map(g=>({re:new RegExp(g.re,'gi'), msg:g.msg}));
     REGLAS.us2uk = {};
     for(const [uk,us] of Object.entries(r.par_uk_us)) REGLAS.us2uk[us] = uk;
-    $('#estado').textContent = PAL.size.toLocaleString('es') + ' palabras cargadas';
+    $('#estado').textContent = PAL.size.toLocaleString('en-GB') + ' words loaded';
     $('#revisar').disabled = false;
   }catch(e){
-    $('#estado').textContent = 'no se pudo cargar el diccionario';
+    $('#estado').textContent = 'could not load the dictionary';
   }
 }
 cargar();
@@ -227,7 +227,7 @@ function revisar(texto, variantePedida, verConfundibles){
        corrector la marca, pero en una ficha es casi seguro 'which'. */
     if(REGLAS.typos[low]){
       avisos.push({tipo:'ortografia', palabra:w, pos, sug:[REGLAS.typos[low].split(' ')[0]],
-                   msg:'seguramente querías «'+REGLAS.typos[low]+'»'});
+                   msg:'you probably meant «'+REGLAS.typos[low]+'»'});
       continue;
     }
     if(low.length<=2 || conocida(low)) continue;
@@ -236,8 +236,8 @@ function revisar(texto, variantePedida, verConfundibles){
        && pos>0 && !['.','!','?',''].includes(antes)) continue;  // nombre propio
     const sug = sugerir(low);
     avisos.push({tipo:'ortografia', palabra:w, pos, sug,
-      msg:'no existe en inglés' + (sug.length ? ''
-          : ' (revísala: no está en el diccionario ni en nuestro léxico)')});
+      msg:'does not exist in English' + (sug.length ? ''
+          : ' (check it: it isn’t in the dictionary or our lexicon)')});
   }
 
   // 2. coherencia británico / americano
@@ -249,14 +249,14 @@ function revisar(texto, variantePedida, verConfundibles){
   }
   if(variantePedida==='auto'){
     if(uk.size && us.size) avisos.push({tipo:'variante', palabra:[...uk,...us].join(', '),
-      msg:'el texto mezcla británico ('+[...uk].join(', ')+') y americano ('+[...us].join(', ')+
-          '). Cambridge espera una sola variante en todo el documento.'});
+      msg:'the text mixes British ('+[...uk].join(', ')+') and American ('+[...us].join(', ')+
+          '). Cambridge expects a single variant throughout the document.'});
   }else{
     const malas = variantePedida==='uk' ? us : uk;
     const otra  = variantePedida==='uk' ? REGLAS.us2uk : REGLAS.par_uk_us;
     for(const w of malas) avisos.push({tipo:'variante', palabra:w,
-      msg:'has elegido '+(variantePedida==='uk'?'británico':'americano')+
-          ': aquí sería «'+otra[w]+'»'});
+      msg:'you chose '+(variantePedida==='uk'?'British':'American')+
+          ': here it should be «'+otra[w]+'»'});
   }
 
   // 3. falsos amigos y calcos
@@ -283,7 +283,7 @@ function revisar(texto, variantePedida, verConfundibles){
       if(REGLAS.confundibles[low] && !ya.has(low)){
         ya.add(low);
         avisos.push({tipo:'revisar', palabra:w, pos,
-                     msg:'¿o querías '+REGLAS.confundibles[low]+'?'});
+                     msg:'or did you mean '+REGLAS.confundibles[low]+'?'});
       }
     }
   }
@@ -311,8 +311,8 @@ function pinta(texto, avisos){
   $('#volver').style.display='inline-block';
 }
 
-const NOMBRE = {ortografia:'ortografía', variante:'variante', uso:'uso',
-                revisar:'revisar'};
+const NOMBRE = {ortografia:'spelling', variante:'variant', uso:'usage',
+                revisar:'review'};
 
 /* Sustituye la palabra en el texto y vuelve a revisar. Se recalcula todo en
    vez de ir moviendo posiciones a mano: cambiar una palabra desplaza las
@@ -332,20 +332,20 @@ function aplicar(aviso, correcta){
 function mostrar(avisos){
   const r = $('#resultado');
   if(!avisos.length){
-    r.innerHTML = '<div class="vacio"><span class="ok">Sin observaciones.</span><br>'+
-                  '<small>El texto no tiene errores de los que este corrector detecta.</small></div>';
+    r.innerHTML = '<div class="vacio"><span class="ok">No issues found.</span><br>'+
+                  '<small>The text has no errors that this checker detects.</small></div>';
     return;
   }
   const orden = {ortografia:0, variante:1, uso:2, revisar:3};
   avisos.sort((a,b)=>orden[a.tipo]-orden[b.tipo]);
   const n = avisos.length;
   r.innerHTML = '<p style="margin:0 0 10px"><span class="cuenta">'+n+'</span> '+
-                (n===1?'observación':'observaciones')+'</p>' +
+                (n===1?'issue':'issues')+'</p>' +
     avisos.map((a,i)=>'<div class="aviso '+a.tipo+'" data-m="'+(a.marca??'')+'" data-i="'+i+'">'+
       '<span class="tag">'+NOMBRE[a.tipo]+'</span><b>'+escapa(a.palabra)+'</b>'+
       '<div class="msg">'+escapa(a.msg)+'</div>'+
       ((a.sug&&a.sug.length)
-        ? '<div class="cx-sug">Cambiar por: '+a.sug.map(s=>
+        ? '<div class="cx-sug">Change to: '+a.sug.map(s=>
             '<button class="cx-fix" data-s="'+escapa(s)+'">'+escapa(s)+'</button>').join('')+'</div>'
         : '')+
       '</div>').join('');
@@ -387,8 +387,8 @@ async function ficha(w, el){
   const archivo = e.a || w.replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
   /* Un botón por acento: en Cambridge la referencia es la británica, pero
      business y systems usan vocabulario que se oye sobre todo en americano. */
-  d.innerHTML = '<button class="btn sec cx-oir" data-voz="uk" title="Oír en británico">🔊 UK</button> ' +
-                '<button class="btn sec cx-oir" data-voz="us" title="Oír en americano">🔊 US</button> ' +
+  d.innerHTML = '<button class="btn sec cx-oir" data-voz="uk" title="Listen in British">🔊 UK</button> ' +
+                '<button class="btn sec cx-oir" data-voz="us" title="Listen in American">🔊 US</button> ' +
                 (e.uk?'<span class="ipa">UK '+escapa(e.uk)+'</span> ':'') +
                 (e.us?'<span class="ipa">US '+escapa(e.us)+'</span>':'') +
                 (e.d?'<div>'+e.d.map(escapa).join(' · ')+'</div>':'');
@@ -396,7 +396,7 @@ async function ficha(w, el){
     boton.onclick = ev => {
       ev.stopPropagation();
       const a = new Audio('lexicon-audio/'+boton.dataset.voz+'/'+archivo+'.mp3');
-      a.onerror = ()=>{ boton.textContent='🔇'; boton.title='no hay audio de esta palabra'; };
+      a.onerror = ()=>{ boton.textContent='🔇'; boton.title='no audio for this word'; };
       a.play().catch(()=>{});
     };
   });
@@ -408,12 +408,12 @@ $('#revisar').onclick = ()=>{
   const texto = $('#texto').style.display==='none' ? window._ultimo : $('#texto').value;
   window._ultimo = texto;
   if(!texto.trim()) return;
-  $('#estado').textContent = 'revisando…';
+  $('#estado').textContent = 'checking…';
   setTimeout(()=>{
     const avisos = revisar(texto, $('#variante').value, $('#confundibles').checked);
     pinta(texto, avisos);
     mostrar(avisos);
-    $('#estado').textContent = PAL.size.toLocaleString('es')+' palabras cargadas';
+    $('#estado').textContent = PAL.size.toLocaleString('en-GB')+' words loaded';
   }, 10);
 };
 $('#volver').onclick = ()=>{
@@ -433,6 +433,6 @@ $('#texto').addEventListener('keydown', e=>{
   if((e.ctrlKey||e.metaKey) && e.key==='Enter') $('#revisar').click();
 });
 </script>
-<script src="nis-tema.js?v=a7890d34" defer></script>
+<script src="nis-tema.js?v=410c4879" defer></script>
 </body>
 </html>

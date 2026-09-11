@@ -86,7 +86,7 @@ window.BACKEND = (function () {
   /* ---- respuestas escritas y repaso final ---- */
   async function guardar(kind, info, payload, extra) {
     await arranca();
-    if (!sb || !alumno) return { ok: false, motivo: 'sin sesion' };
+    if (!sb || !alumno) return { ok: false, motivo: 'not signed in' };
     const fila = Object.assign({
       student_id: alumno.id,
       // El idioma va en la fila y en la clave unica: el curso frances usa los
@@ -132,7 +132,7 @@ window.BACKEND = (function () {
   /* ---- grabacion de voz ---- */
   async function subirAudio(blob, info) {
     await arranca();
-    if (!sb || !alumno) return { ok: false, motivo: 'sin sesion' };
+    if (!sb || !alumno) return { ok: false, motivo: 'not signed in' };
     /* La extension sale del tipo real: Safari graba audio/mp4, no webm. */
     const tipo = (blob.type || 'audio/webm').split(';')[0];
     const ext = { 'audio/ogg': 'ogg', 'audio/mp4': 'm4a', 'audio/mpeg': 'mp3', 'audio/wav': 'wav' }[tipo] || 'webm';

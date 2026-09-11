@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pizarra · NIS</title>
+<title>Whiteboard · NIS</title>
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link href="vendor/fonts/edusabeginner-eduqldbeginner-edunswactfoundation-b23d03.css" rel="stylesheet">
 <script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
@@ -97,83 +97,83 @@ kbd{background:#3a4050;border-radius:4px;padding:1px 5px;font-family:inherit;fon
 :focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--accent);outline-offset:1px}
 </style>
-<script src="config.js?v=68725f64"></script>
+<script src="config.js?v=6ed285ca"></script>
 </head>
 <body>
 <div id="bar">
   <div class="g gp">
-    <span class="t">Papel</span>
-    <select id="paper" title="Tipo de papel">
-      <option value="triple">Triple renglón</option>
-      <option value="double">Doble raya</option>
-      <option value="single">Rayado</option>
-      <option value="grid">Cuadriculado</option>
-      <option value="blank">En blanco</option>
+    <span class="t">Paper</span>
+    <select id="paper" title="Paper type">
+      <option value="triple">Triple line</option>
+      <option value="double">Double line</option>
+      <option value="single">Ruled</option>
+      <option value="grid">Grid</option>
+      <option value="blank">Blank</option>
     </select>
-    <button id="bPaper" title="Ajustes del papel">⚙️</button>
+    <button id="bPaper" title="Paper settings">⚙️</button>
     <div class="pop" id="popPaper">
-      <label>Formato <select id="format"><option value="wide">Pantalla 16:9</option><option value="a4l">A4 horizontal</option><option value="a4p">A4 vertical</option></select></label>
-      <label>Interlineado <span><input type="range" id="pitch" min="40" max="200" step="2"> <b id="pitchV"></b></span></label>
-      <label>Altura del renglón <span><input type="range" id="ruled" min="35" max="90" step="1"> <b id="ruledV"></b>%</span></label>
-      <label>Color de líneas <select id="lineColor"><option value="#7aa7ff">Azul</option><option value="#9aa3b5">Gris</option><option value="#8fd19e">Verde</option><option value="#f4a7a7">Rojo claro</option><option value="#333">Negro</option></select></label>
-      <label>Margen rojo <input type="checkbox" id="margin" checked></label>
-      <label>Línea central punteada <input type="checkbox" id="dashed" checked></label>
+      <label>Format <select id="format"><option value="wide">Screen 16:9</option><option value="a4l">A4 landscape</option><option value="a4p">A4 portrait</option></select></label>
+      <label>Line spacing <span><input type="range" id="pitch" min="40" max="200" step="2"> <b id="pitchV"></b></span></label>
+      <label>Line height <span><input type="range" id="ruled" min="35" max="90" step="1"> <b id="ruledV"></b>%</span></label>
+      <label>Line colour <select id="lineColor"><option value="#7aa7ff">Blue</option><option value="#9aa3b5">Grey</option><option value="#8fd19e">Green</option><option value="#f4a7a7">Light red</option><option value="#333">Black</option></select></label>
+      <label>Red margin <input type="checkbox" id="margin" checked></label>
+      <label>Dashed centre line <input type="checkbox" id="dashed" checked></label>
     </div>
   </div>
   <div class="g gp">
-    <span class="t">Letra</span>
-    <select id="font" title="Tipo de letra"></select>
-    <button class="icon" id="szMinus" title="Más pequeña">−</button>
-    <input type="number" id="size" min="12" max="220" step="2" title="Tamaño en px">
-    <button class="icon" id="szPlus" title="Más grande">+</button>
-    <button id="fit" title="Tamaño que encaja en los renglones">↕ A renglón</button>
-    <input type="color" id="color" value="#1a1a1a" title="Color de la letra">
-    <button id="model" title="Gris claro para calcar">Modelo gris</button>
-    <button class="icon" id="bold" title="Negrita (Ctrl+B)"><b>B</b></button>
-    <button class="icon" id="italic" title="Cursiva (Ctrl+I)"><i>I</i></button>
-    <button class="icon" id="under" title="Subrayado (Ctrl+U)"><u>U</u></button>
-    <button class="icon" id="hl" title="Resaltar amarillo">🖍️</button>
-    <button class="icon" id="alL" title="Alinear a la izquierda">⯇</button>
-    <button class="icon" id="alC" title="Centrar">☰</button>
-    <button id="bText" title="Más ajustes de texto">⚙️</button>
+    <span class="t">Font</span>
+    <select id="font" title="Font"></select>
+    <button class="icon" id="szMinus" title="Smaller">−</button>
+    <input type="number" id="size" min="12" max="220" step="2" title="Size in px">
+    <button class="icon" id="szPlus" title="Bigger">+</button>
+    <button id="fit" title="Size that fits the lines">↕ Fit line</button>
+    <input type="color" id="color" value="#1a1a1a" title="Font colour">
+    <button id="model" title="Light grey for tracing">Grey model</button>
+    <button class="icon" id="bold" title="Bold (Ctrl+B)"><b>B</b></button>
+    <button class="icon" id="italic" title="Italic (Ctrl+I)"><i>I</i></button>
+    <button class="icon" id="under" title="Underline (Ctrl+U)"><u>U</u></button>
+    <button class="icon" id="hl" title="Highlight yellow">🖍️</button>
+    <button class="icon" id="alL" title="Align left">⯇</button>
+    <button class="icon" id="alC" title="Centre">☰</button>
+    <button id="bText" title="More text settings">⚙️</button>
     <div class="pop" id="popText">
-      <label>Ajuste vertical <span><input type="range" id="offset" min="-60" max="60" step="1"> <b id="offsetV"></b>px</span></label>
-      <label>Sangría izquierda <span><input type="range" id="indent" min="20" max="240" step="4"> <b id="indentV"></b>px</span></label>
-      <label>Espacio entre letras <span><input type="range" id="spacing" min="0" max="12" step="1"> <b id="spacingV"></b>px</span></label>
-      <div class="fila"><button id="clearFmt">Quitar formato</button><button id="upper">MAYÚSCULAS</button><button id="lower">minúsculas</button></div>
+      <label>Vertical offset <span><input type="range" id="offset" min="-60" max="60" step="1"> <b id="offsetV"></b>px</span></label>
+      <label>Left indent <span><input type="range" id="indent" min="20" max="240" step="4"> <b id="indentV"></b>px</span></label>
+      <label>Letter spacing <span><input type="range" id="spacing" min="0" max="12" step="1"> <b id="spacingV"></b>px</span></label>
+      <div class="fila"><button id="clearFmt">Clear format</button><button id="upper">UPPERCASE</button><button id="lower">lowercase</button></div>
     </div>
   </div>
   <div class="g">
-    <span class="t">Insertar</span>
-    <button id="bImg" title="Imagen desde el equipo (o pega con Ctrl+V)">🖼️ Imagen</button>
+    <span class="t">Insert</span>
+    <button id="bImg" title="Image from device (or paste with Ctrl+V)">🖼️ Image</button>
     <input type="file" id="fileImg" accept="image/*" hidden>
-    <button id="bDate" title="Escribe la fecha de hoy">📅</button>
-    <button id="bLine" title="Línea de separación">―</button>
+    <button id="bDate" title="Writes today’s date">📅</button>
+    <button id="bLine" title="Divider line">―</button>
   </div>
   <div class="g gp">
-    <span class="t">Dibujar</span>
-    <button id="mPen" title="Lápiz">✏️</button>
-    <button id="mHi" title="Resaltador">🖍️</button>
-    <button id="mEr" title="Borrador">🧽</button>
+    <span class="t">Draw</span>
+    <button id="mPen" title="Pencil">✏️</button>
+    <button id="mHi" title="Highlighter">🖍️</button>
+    <button id="mEr" title="Eraser">🧽</button>
     <span id="dcols"></span>
-    <input type="range" id="dsize" min="2" max="40" step="1" value="5" title="Grosor">
-    <button class="icon" id="dUndo" title="Deshacer trazo">↶</button>
-    <button class="icon" id="dClear" title="Borrar todo el dibujo">🗑️</button>
+    <input type="range" id="dsize" min="2" max="40" step="1" value="5" title="Thickness">
+    <button class="icon" id="dUndo" title="Undo stroke">↶</button>
+    <button class="icon" id="dClear" title="Clear the whole drawing">🗑️</button>
   </div>
   <div class="g">
-    <button id="mPtr" title="Puntero láser (Esc para salir)">🔴 Puntero</button>
-    <button id="bFull" title="Pantalla completa (F)">⛶</button>
-    <button id="bHide" title="Ocultar la barra (H)">👁️</button>
-    <button id="bZoom" title="Ajustar a la ventana">⤢</button>
+    <button id="mPtr" title="Laser pointer (Esc to exit)">🔴 Pointer</button>
+    <button id="bFull" title="Full screen (F)">⛶</button>
+    <button id="bHide" title="Hide the toolbar (H)">👁️</button>
+    <button id="bZoom" title="Fit to window">⤢</button>
   </div>
   <div class="g">
-    <span class="t">Hoja</span>
-    <button id="bNew" title="Nueva hoja en blanco (borra el texto de esta)">🆕</button>
-    <button id="bSave" title="Guardar como archivo .pizarra.json">💾</button>
-    <button id="bOpen" title="Abrir un archivo guardado">📂</button>
+    <span class="t">Sheet</span>
+    <button id="bNew" title="New blank sheet (deletes the text on this one)">🆕</button>
+    <button id="bSave" title="Save as a .pizarra.json file">💾</button>
+    <button id="bOpen" title="Open a saved file">📂</button>
     <input type="file" id="fileOpen" accept=".json,application/json" hidden>
-    <button id="bPng" title="Descargar la hoja como imagen PNG">🖼️ PNG</button>
-    <button id="bPrint" title="Imprimir (o guardar en PDF)">🖨️</button>
+    <button id="bPng" title="Download the sheet as a PNG image">🖼️ PNG</button>
+    <button id="bPrint" title="Print (or save as PDF)">🖨️</button>
   </div>
 </div>
 
@@ -182,18 +182,18 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px soli
     <div id="sheet">
       <div id="paperbg"></div>
       <div id="marginline"></div>
-      <div id="text" contenteditable="true" spellcheck="false" data-ph="Escribe aquí…"></div>
+      <div id="text" contenteditable="true" spellcheck="false" data-ph="Write here…"></div>
       <div id="imgs"></div>
       <canvas id="draw"></canvas>
       <div id="laser"></div>
     </div>
   </div>
 </div>
-<div id="pages"><button id="pPrev" title="Hoja anterior">◀</button><span id="pNum">1 / 1</span><button id="pNext" title="Hoja siguiente">▶</button><button id="pAdd" title="Añadir hoja">＋</button><button id="pDup" title="Duplicar hoja">⧉</button><button id="pDel" title="Eliminar hoja">🗑️</button></div>
-<div id="tip"><kbd>H</kbd> barra · <kbd>F</kbd> pantalla completa · <kbd>Esc</kbd> salir de dibujar/puntero · <kbd>Ctrl</kbd>+<kbd>V</kbd> pega una imagen</div>
+<div id="pages"><button id="pPrev" title="Previous sheet">◀</button><span id="pNum">1 / 1</span><button id="pNext" title="Next sheet">▶</button><button id="pAdd" title="Add sheet">＋</button><button id="pDup" title="Duplicate sheet">⧉</button><button id="pDel" title="Delete sheet">🗑️</button></div>
+<div id="tip"><kbd>H</kbd> toolbar · <kbd>F</kbd> full screen · <kbd>Esc</kbd> exit drawing/pointer · <kbd>Ctrl</kbd>+<kbd>V</kbd> paste an image</div>
 <div id="toast"></div>
 
-<script src="ui-mensajes.js?v=18d6c1e2"></script>
+<script src="ui-mensajes.js?v=22f3c588"></script>
 <script src="vendor/html2canvas.min.js"></script>
 <script>
 /* Aviso de la plataforma, con respaldo: NISUI en el portal NIS, cohConfirm en
@@ -210,12 +210,12 @@ var $ = function(s){ return document.querySelector(s); };
 /* Primero las de la marca (Brandbook Nordic), luego las escolares de
    caligrafía, luego las del sistema. Cada grupo es un <optgroup>. */
 var FONTS = [
-  ['Gotham','Gotham · Nordic (texto)','Nordic'], ['TT Rounds Neue','TT Rounds Neue · Nordic (destacados)','Nordic'],
-  ['Edu SA Beginner','Escolar cursiva (SA)','Escolares'], ['Edu QLD Beginner','Escolar cursiva (QLD)','Escolares'], ['Edu NSW ACT Foundation','Escolar Foundation (NSW)','Escolares'],
-  ['Edu VIC WA NT Beginner','Escolar (VIC)','Escolares'], ['Edu TAS Beginner','Escolar (TAS)','Escolares'], ['Andika','Andika (lectoescritura)','Escolares'], ['ABeeZee','ABeeZee (infantil)','Escolares'],
-  ['Comic Neue','Comic Neue','Escolares'], ['Schoolbell','Schoolbell','Escolares'], ['Patrick Hand','Patrick Hand','Escolares'], ['Kalam','Kalam','Escolares'], ['Caveat','Caveat','Escolares'],
-  ['Lexend','Lexend (dislexia)','Escolares'], ['Nunito','Nunito','Escolares'], ['Open Sans','Open Sans','Escolares'],
-  ['Arial','Arial','Sistema'], ['Verdana','Verdana','Sistema'], ['Segoe Print','Segoe Print','Sistema'], ['Segoe Script','Segoe Script','Sistema'], ['Comic Sans MS','Comic Sans','Sistema'], ['Times New Roman','Times New Roman','Sistema'], ['Georgia','Georgia','Sistema']
+  ['Gotham','Gotham · Nordic (text)','Nordic'], ['TT Rounds Neue','TT Rounds Neue · Nordic (highlights)','Nordic'],
+  ['Edu SA Beginner','School cursive (SA)','School'], ['Edu QLD Beginner','School cursive (QLD)','School'], ['Edu NSW ACT Foundation','School Foundation (NSW)','School'],
+  ['Edu VIC WA NT Beginner','School (VIC)','School'], ['Edu TAS Beginner','School (TAS)','School'], ['Andika','Andika (literacy)','School'], ['ABeeZee','ABeeZee (early years)','School'],
+  ['Comic Neue','Comic Neue','School'], ['Schoolbell','Schoolbell','School'], ['Patrick Hand','Patrick Hand','School'], ['Kalam','Kalam','School'], ['Caveat','Caveat','School'],
+  ['Lexend','Lexend (dyslexia)','School'], ['Nunito','Nunito','School'], ['Open Sans','Open Sans','School'],
+  ['Arial','Arial','System'], ['Verdana','Verdana','System'], ['Segoe Print','Segoe Print','System'], ['Segoe Script','Segoe Script','System'], ['Comic Sans MS','Comic Sans','System'], ['Times New Roman','Times New Roman','System'], ['Georgia','Georgia','System']
 ];
 var DCOLS = ['#1a1a1a','#e53935','#1e88e5','#43a047','#fb8c00','#8e24aa'];
 var FORMATS = {wide:[1600,900], a4l:[1123,794], a4p:[794,1123]};
@@ -237,7 +237,7 @@ var tSave = null;
 
 function page(){ return S.pages[S.cur]; }
 function toast(m){ var t = $('#toast'); t.textContent = m; t.classList.add('show'); clearTimeout(toast._t); toast._t = setTimeout(function(){ t.classList.remove('show'); }, 1800); }
-function save(){ clearTimeout(tSave); tSave = setTimeout(function(){ page().html = text.innerHTML; try { localStorage.setItem(KEY, JSON.stringify(S)); } catch(e){ toast('No cabe en el navegador: guarda como archivo'); } }, 400); }
+function save(){ clearTimeout(tSave); tSave = setTimeout(function(){ page().html = text.innerHTML; try { localStorage.setItem(KEY, JSON.stringify(S)); } catch(e){ toast('Doesn’t fit in the browser: save as a file'); } }, 400); }
 
 /* ---- papel ---- */
 function svgPaper(){
@@ -325,7 +325,7 @@ fsel.onchange = function(){ set('font', this.value); };
 $('#size').onchange = function(){ set('size', Math.max(12, Math.min(220, +this.value || 48))); };
 $('#szMinus').onclick = function(){ set('size', Math.max(12, S.size - 4)); };
 $('#szPlus').onclick = function(){ set('size', Math.min(220, S.size + 4)); };
-$('#fit').onclick = function(){ var R = S.pitch * S.ruled / 100; set('size', Math.round(R * 1.15)); S.offset = 0; pintaPapel(); toast('Tamaño ajustado al renglón'); };
+$('#fit').onclick = function(){ var R = S.pitch * S.ruled / 100; set('size', Math.round(R * 1.15)); S.offset = 0; pintaPapel(); toast('Size fitted to the line'); };
 $('#color').oninput = function(){ set('color', this.value); };
 $('#model').onclick = function(){ set('color', S.color === '#c4c9d4' ? '#1a1a1a' : '#c4c9d4'); };
 $('#offset').oninput = function(){ set('offset', +this.value); };
@@ -346,7 +346,7 @@ function transforma(fn){
   if(sel && sel.rangeCount && !sel.isCollapsed && text.contains(sel.anchorNode)){ cmd('insertText', fn(sel.toString())); return; }
   text.textContent = fn(text.textContent); save();
 }
-$('#bDate').onclick = function(){ var d = new Date(); var dias = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado']; var meses = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre']; cmd('insertText', dias[d.getDay()] + ', ' + d.getDate() + ' de ' + meses[d.getMonth()] + ' de ' + d.getFullYear()); };
+$('#bDate').onclick = function(){ var d = new Date(); var dias = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']; var meses = ['January','February','March','April','May','June','July','August','September','October','November','December']; cmd('insertText', dias[d.getDay()] + ', ' + d.getDate() + ' ' + meses[d.getMonth()] + ' ' + d.getFullYear()); };
 $('#bLine').onclick = function(){ cmd('insertHTML', '<div>――――――――――――――――</div>'); };
 ['bPaper','bText'].forEach(function(id){
   var pop = $('#' + (id === 'bPaper' ? 'popPaper' : 'popText'));
@@ -380,7 +380,7 @@ function leeImagen(file){
       c.getContext('2d').drawImage(im, 0, 0, c.width, c.height);
       var w = Math.min(W * .4, c.width);
       page().imgs.push({src: c.toDataURL('image/jpeg', .85), x: Math.round(W * .55), y: 80, w: Math.round(w)});
-      pintaImgs(); save(); toast('Imagen insertada: arrástrala o cámbiale el tamaño desde la esquina');
+      pintaImgs(); save(); toast('Image inserted: drag it or resize it from the corner');
     };
     im.src = r.result;
   };
@@ -390,7 +390,7 @@ function pintaImgs(){
   imgs.innerHTML = '';
   page().imgs.forEach(function(o, i){
     var d = document.createElement('div'); d.className = 'imgbox'; d.style.left = o.x + 'px'; d.style.top = o.y + 'px'; d.style.width = o.w + 'px';
-    d.innerHTML = '<img src="' + o.src + '" alt=""><button class="del" title="Quitar">✕</button><div class="rs"></div>';
+    d.innerHTML = '<img src="' + o.src + '" alt=""><button class="del" title="Remove">✕</button><div class="rs"></div>';
     imgs.appendChild(d);
     d.querySelector('.del').onclick = function(e){ e.stopPropagation(); page().imgs.splice(i, 1); pintaImgs(); save(); };
     d.addEventListener('pointerdown', function(e){
@@ -438,7 +438,7 @@ sheet.addEventListener('pointermove', function(e){ if(mode !== 'pointer') return
 function suelta(){ if(!drawing) return; page().ops.push(drawing); drawing = null; repinta(); save(); }
 cv.addEventListener('pointerup', suelta); cv.addEventListener('pointercancel', suelta);
 $('#dUndo').onclick = function(){ page().ops.pop(); repinta(); save(); };
-$('#dClear').onclick = async function(){ if(page().ops.length && await _preguntaUI('Se borrará todo lo dibujado en esta hoja.', {titulo:'¿Borrar el dibujo?', si:'Borrar', no:'Cancelar', tono:'mal', peligro:true})){ page().ops = []; repinta(); save(); } };
+$('#dClear').onclick = async function(){ if(page().ops.length && await _preguntaUI('This will delete everything drawn on this sheet.', {titulo:'Delete the drawing?', si:'Delete', no:'Cancel', tono:'mal', peligro:true})){ page().ops = []; repinta(); save(); } };
 
 /* ---- hojas ---- */
 function muestra(i){
@@ -447,37 +447,37 @@ function muestra(i){
 }
 $('#pPrev').onclick = function(){ muestra(S.cur - 1); };
 $('#pNext').onclick = function(){ muestra(S.cur + 1); };
-$('#pAdd').onclick = function(){ page().html = text.innerHTML; S.pages.splice(S.cur + 1, 0, {html:'', ops:[], imgs:[]}); muestra(S.cur + 1); toast('Hoja nueva'); };
-$('#pDup').onclick = function(){ page().html = text.innerHTML; S.pages.splice(S.cur + 1, 0, JSON.parse(JSON.stringify(page()))); muestra(S.cur + 1); toast('Hoja duplicada'); };
-$('#pDel').onclick = async function(){ if(S.pages.length === 1){ $('#bNew').click(); return; } if(!await _preguntaUI('La hoja y todo lo que tiene se pierden.', {titulo:'¿Eliminar esta hoja?', si:'Eliminar', no:'Cancelar', tono:'mal', peligro:true})) return; S.pages.splice(S.cur, 1); S.cur = Math.min(S.cur, S.pages.length - 1); text.innerHTML = page().html || ''; pintaImgs(); repinta(); ui(); save(); };
-$('#bNew').onclick = async function(){ if((text.textContent.trim() || page().ops.length || page().imgs.length) && !await _preguntaUI('Se borra el texto, el dibujo y las imágenes de esta hoja.', {titulo:'¿Vaciar esta hoja?', si:'Vaciar', no:'Cancelar', tono:'mal', peligro:true})) return; S.pages[S.cur] = {html:'', ops:[], imgs:[]}; text.innerHTML = ''; pintaImgs(); repinta(); save(); text.focus(); };
+$('#pAdd').onclick = function(){ page().html = text.innerHTML; S.pages.splice(S.cur + 1, 0, {html:'', ops:[], imgs:[]}); muestra(S.cur + 1); toast('New sheet'); };
+$('#pDup').onclick = function(){ page().html = text.innerHTML; S.pages.splice(S.cur + 1, 0, JSON.parse(JSON.stringify(page()))); muestra(S.cur + 1); toast('Sheet duplicated'); };
+$('#pDel').onclick = async function(){ if(S.pages.length === 1){ $('#bNew').click(); return; } if(!await _preguntaUI('The sheet and everything on it will be lost.', {titulo:'Delete this sheet?', si:'Delete', no:'Cancel', tono:'mal', peligro:true})) return; S.pages.splice(S.cur, 1); S.cur = Math.min(S.cur, S.pages.length - 1); text.innerHTML = page().html || ''; pintaImgs(); repinta(); ui(); save(); };
+$('#bNew').onclick = async function(){ if((text.textContent.trim() || page().ops.length || page().imgs.length) && !await _preguntaUI('This will delete the text, drawing, and images on this sheet.', {titulo:'Clear this sheet?', si:'Clear', no:'Cancel', tono:'mal', peligro:true})) return; S.pages[S.cur] = {html:'', ops:[], imgs:[]}; text.innerHTML = ''; pintaImgs(); repinta(); save(); text.focus(); };
 
 /* ---- archivo / imagen / impresión ---- */
 $('#bSave').onclick = function(){
   page().html = text.innerHTML;
   var blob = new Blob([JSON.stringify(S)], {type:'application/json'});
   var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'pizarra-' + new Date().toISOString().slice(0,10) + '.pizarra.json'; a.click();
-  setTimeout(function(){ URL.revokeObjectURL(a.href); }, 2000); toast('Archivo guardado en Descargas');
+  setTimeout(function(){ URL.revokeObjectURL(a.href); }, 2000); toast('File saved to Downloads');
 };
 $('#bOpen').onclick = function(){ $('#fileOpen').click(); };
 $('#fileOpen').onchange = function(){
   var f = this.files[0]; if(!f) return; var r = new FileReader();
-  r.onload = function(){ try { var g = JSON.parse(r.result); if(!g.pages) throw 0; S = Object.assign(S, g); S.cur = 0; text.innerHTML = page().html || ''; pintaImgs(); pintaPapel(); save(); toast('Archivo abierto'); } catch(e){ toast('Ese archivo no es una pizarra'); } };
+  r.onload = function(){ try { var g = JSON.parse(r.result); if(!g.pages) throw 0; S = Object.assign(S, g); S.cur = 0; text.innerHTML = page().html || ''; pintaImgs(); pintaPapel(); save(); toast('File opened'); } catch(e){ toast('That file is not a whiteboard file'); } };
   r.readAsText(f); this.value = '';
 };
 $('#bPng').onclick = function(){
-  if(!window.html2canvas){ toast('Sin conexión no se puede exportar; usa Imprimir'); return; }
+  if(!window.html2canvas){ toast('Can’t export without a connection; use Print'); return; }
   document.querySelectorAll('.imgbox').forEach(function(b){ b.classList.remove('sel'); });
   var k0 = k; sheet.style.transform = 'none';
   html2canvas(sheet, {backgroundColor:'#fff', scale: 1, useCORS: true}).then(function(c){
     sheet.style.transform = 'scale(' + k0 + ')';
-    var a = document.createElement('a'); a.href = c.toDataURL('image/png'); a.download = 'pizarra-hoja-' + (S.cur + 1) + '.png'; a.click(); toast('PNG en Descargas');
-  }).catch(function(){ sheet.style.transform = 'scale(' + k0 + ')'; toast('No se pudo exportar; usa Imprimir'); });
+    var a = document.createElement('a'); a.href = c.toDataURL('image/png'); a.download = 'pizarra-hoja-' + (S.cur + 1) + '.png'; a.click(); toast('PNG saved to Downloads');
+  }).catch(function(){ sheet.style.transform = 'scale(' + k0 + ')'; toast('Could not export; use Print'); });
 };
 $('#bPrint').onclick = function(){ window.print(); };
 
 /* ---- pantalla ---- */
-$('#bFull').onclick = function(){ if(document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen().catch(function(){ toast('Tu navegador no deja pantalla completa aquí: ábrela con el botón ↗ del portal'); }); };
+$('#bFull').onclick = function(){ if(document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen().catch(function(){ toast('Your browser won’t allow full screen here: open it with the ↗ button in the portal'); }); };
 $('#bHide').onclick = function(){ $('#bar').classList.toggle('oculta'); setTimeout(zoomFit, 0); };
 $('#bZoom').onclick = zoomFit;
 document.addEventListener('fullscreenchange', function(){ setTimeout(zoomFit, 60); });
@@ -497,6 +497,6 @@ pintaImgs(); pintaPapel();
 if(document.fonts && document.fonts.ready) document.fonts.ready.then(pintaPapel);
 })();
 </script>
-<script src="nis-tema.js?v=a7890d34" defer></script>
+<script src="nis-tema.js?v=410c4879" defer></script>
 </body>
 </html>

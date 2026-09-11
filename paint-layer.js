@@ -220,7 +220,7 @@ function attach(img, opts){
     var q = xy(e);
     box = document.createElement('input');
     box.className = 'pl-textbox'; box.type = 'text'; box.autocomplete = 'off'; box.spellcheck = false;
-    box.placeholder = lang === 'es' ? 'escribe…' : 'type…';
+    box.placeholder = lang === 'es' ? 'write…' : 'type…';
     var px = 22 * SIZES[size] * (r.width / 820);
     box.style.left = Math.max(0, e.clientX - r.left - 4) + 'px';
     box.style.top = Math.max(0, e.clientY - r.top - px * .9) + 'px';
@@ -269,9 +269,9 @@ function attach(img, opts){
   var bClear = b('🗑️', 'Clear everything', async function(){
     if(!ops.length) return;
     var _es = lang === 'es';
-    if(!await _preguntaUI(_es ? 'Se borrara todo lo que has pintado en esta lamina.' : 'Everything you painted on this picture will be cleared.',
-        {titulo: _es ? '¿Borrar el dibujo?' : 'Clear your drawing?', si: _es ? 'Borrar' : 'Clear',
-         no: _es ? 'Cancelar' : 'Cancel', tono:'mal', peligro:true})) return;
+    if(!await _preguntaUI(_es ? 'Everything you have painted on this picture will be cleared.' : 'Everything you painted on this picture will be cleared.',
+        {titulo: _es ? 'Clear your drawing?' : 'Clear your drawing?', si: _es ? 'Clear' : 'Clear',
+         no: _es ? 'Cancel' : 'Cancel', tono:'mal', peligro:true})) return;
     redo = ops.slice(); ops = []; repinta(); cambio();
   });
   gU.appendChild(bUndo); gU.appendChild(bRedo); gU.appendChild(bClear);
@@ -282,8 +282,8 @@ function attach(img, opts){
     Object.keys(szb).forEach(function(k){ szb[k].classList.toggle('on', k === size); });
     bUndo.disabled = !ops.length; bRedo.disabled = !redo.length; bClear.disabled = !ops.length;
     var T = TOOLS[tool];
-    hint.textContent = tool === 'text' ? (lang === 'es' ? 'Toca la lámina y escribe · Enter para fijar' : 'Tap the picture and type · Enter to place')
-                     : tool === 'eraser' ? (lang === 'es' ? 'Borra solo lo pintado' : 'Erases only your painting')
+    hint.textContent = tool === 'text' ? (lang === 'es' ? 'Tap the picture and type · Enter to place' : 'Tap the picture and type · Enter to place')
+                     : tool === 'eraser' ? (lang === 'es' ? 'Erases only your painting' : 'Erases only your painting')
                      : (T.label + ' · ' + (colours.filter(function(c){ return c.c === colour; })[0] || {n:''}).n);
   }
   botones();

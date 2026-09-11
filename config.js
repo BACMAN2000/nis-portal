@@ -85,15 +85,15 @@ window.NIS_CONFIG = {
    a ciegas para no perder la entrega, pero se devuelve sinConfirmar:true — que
    no es lo mismo que un exito. */
 window.enviaWebhook = async function (url, payload) {
-  if (!url) return { ok: false, motivo: 'no hay destino configurado' };
+  if (!url) return { ok: false, motivo: 'no destination configured' };
   const cuerpo = JSON.stringify(payload);
   const cab = { 'Content-Type': 'text/plain;charset=utf-8' };
   try {
     const r = await fetch(url, { method: 'POST', headers: cab, body: cuerpo });
-    if (!r.ok) return { ok: false, motivo: 'el servidor respondio ' + r.status };
+    if (!r.ok) return { ok: false, motivo: 'the server responded ' + r.status };
     let j = null;
     try { j = JSON.parse(await r.text()); } catch (_) { /* respuesta no JSON: se da por buena */ }
-    if (j && j.ok === false) return { ok: false, motivo: j.error || 'el servidor lo rechazo' };
+    if (j && j.ok === false) return { ok: false, motivo: j.error || 'the server rejected it' };
     return { ok: true };
   } catch (e) {
     /* Aqui NO se reintenta en no-cors, aunque sea tentador. Probado contra un
@@ -101,6 +101,6 @@ window.enviaWebhook = async function (url, payload) {
        siempre, con lo que un destino mal configurado pasaba desapercibido. Y
        cuando el fallo es de CORS el POST ya llego al servidor, asi que el
        reintento mandaria la entrega dos veces: dos filas y dos correos. */
-    return { ok: false, motivo: 'no se pudo contactar con el servidor' };
+    return { ok: false, motivo: 'could not contact the server' };
   }
 };

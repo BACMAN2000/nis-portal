@@ -133,10 +133,10 @@ window.G2U4 = (function(){
      Es la unica senal que tiene el alumno: si el guardado falla en silencio, se
      va convencido de que su trabajo quedo registrado. */
   function avisaGuardado(ok, motivo){
-    var P = 'Guardando tu resultado\u2026';
-    var texto = ok === null ? 'Entra al Portal para que tu resultado quede guardado.'
-              : ok ? 'Tu resultado quedo guardado en My Results.'
-              : '\u26a0 No se pudo guardar tu resultado (' + (motivo || 'sin conexion') + '). Avisa a tu profesor.';
+    var P = 'Saving your result\u2026';
+    var texto = ok === null ? 'Sign in to the Portal so your result gets saved.'
+              : ok ? 'Your result was saved in My Results.'
+              : '\u26a0 Your result could not be saved (' + (motivo || 'no connection') + '). Tell your teacher.';
     document.querySelectorAll('div,p,span,h1,h2,h3').forEach(function(n){
       if(n.children.length === 0 && n.textContent.indexOf(P) >= 0){
         n.textContent = n.textContent.replace(P, texto);
