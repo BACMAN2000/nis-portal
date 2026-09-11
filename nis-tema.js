@@ -36,7 +36,7 @@
     if (!boton) return;
     var oscuro = actual() === 'dark';
     boton.textContent = oscuro ? '☀' : '☾';
-    boton.title = oscuro ? 'Ver en claro' : 'Ver en oscuro';
+    boton.title = oscuro ? 'Switch to light mode' : 'Switch to dark mode';
     boton.setAttribute('aria-label', boton.title);
   }
 

@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ayuda · Portal NIS</title>
+<title>Help · NIS Portal</title>
 <link rel="icon" href="assets/favicon.svg">
 <link href="vendor/fonts/montserrat-68a53b.css" rel="stylesheet">
 <link rel="preload" href="fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin>
@@ -80,24 +80,24 @@
   <header class="top">
     <img src="assets/logo-white-h.svg" alt="Nordic International School" style="height:34px" onerror="this.style.display='none'">
     <div>
-      <h1>❓ Ayuda del Portal NIS</h1>
-      <p>Dónde está cada cosa y cómo se hace, según quién seas. Escribe lo que buscas
-         y la guía se queda solo con lo que responde.</p>
+      <h1>❓ NIS Portal help</h1>
+      <p>Where everything is and how to do it, depending on who you are. Type what you’re
+         looking for and the guide keeps only what answers it.</p>
     </div>
   </header>
 
   <div class="tabs" id="tabs" role="tablist"></div>
   <div class="buscador noprint">
-    <input id="q" type="search" placeholder="Buscar: entregar una ficha, abrir un examen, cambiar la contraseña…"
-           autocomplete="off" aria-label="Buscar en la ayuda">
+    <input id="q" type="search" placeholder="Search: submit a worksheet, open an exam, change the password…"
+           autocomplete="off" aria-label="Search the help">
     <span class="n" id="n"></span>
   </div>
   <div id="guia"></div>
   <footer class="src">Nordic International School of Lima · nis.cohasset.pe ·
-    ¿Falta algo en esta ayuda? Escribe a <b>pbaca@nordic-school.edu.pe</b>.</footer>
+    Is something missing from this help? Write to <b>pbaca@nordic-school.edu.pe</b>.</footer>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
-<script src="ayuda-datos.js?v=bf63fee0"></script>
+<script src="ayuda-datos.js?v=5968a0fd"></script>
 <script>
 /* La ayuda vive en un solo sitio y se usa de tres formas: embebida en el
    portal (que le pasa ?role=), abierta suelta (mira la sesion de Supabase) e
@@ -106,7 +106,7 @@
    poder explicarselo por telefono. */
 (function(){
   const P = new URLSearchParams(location.search);
-  const ROLES = [['student','🎒 Alumno'],['teacher','👨‍🏫 Profesor'],['admin','🛠️ Administrador']];
+  const ROLES = [['student','🎒 Student'],['teacher','👨‍🏫 Teacher'],['admin','🛠️ Admin']];
   let rol = P.get('role');
   if(!ROLES.some(r=>r[0]===rol)) rol = null;
 
@@ -150,7 +150,7 @@
       const ok = !q || c.dataset.buscar.indexOf(q) >= 0;
       c.hidden = !ok; if(ok) n++;
     });
-    $('#n').textContent = q ? (n+' de '+cards.length) : '';
+    $('#n').textContent = q ? (n+' of '+cards.length) : '';
     const antes = $('#guia .vacio'); if(antes) antes.remove();
     if(q && !n){
       // Buscar algo y que no salga nada suele significar que esta en OTRA
@@ -159,10 +159,10 @@
       const otras = ROLES.filter(r=>r[0]!==actual)
         .filter(r=>(window.AYUDA[r[0]].secciones||[]).some(x=>texto(x).indexOf(q)>=0));
       $('#guia').insertAdjacentHTML('beforeend',
-        '<div class="vacio">No encontramos nada con <b>'+esc(q)+'</b> en esta guía.'
+        '<div class="vacio">We found nothing for <b>'+esc(q)+'</b> in this guide.'
         + (otras.length
-            ? '<br>Sí aparece en: '+otras.map(r=>'<button class="tab" type="button" data-salta="'+r[0]+'">'+r[1]+'</button>').join(' ')
-            : '<br>Prueba con una palabra suelta — «ficha», «examen», «contraseña» — o escríbenos.')
+            ? '<br>It does appear in: '+otras.map(r=>'<button class="tab" type="button" data-salta="'+r[0]+'">'+r[1]+'</button>').join(' ')
+            : '<br>Try a single word — «worksheet», «exam», «password» — or write to us.')
         + '</div>');
       const caja = $('#guia .vacio');
       if(caja) caja.onclick = e => { const b = e.target.closest('[data-salta]'); if(b) pinta(b.dataset.salta); };
@@ -190,6 +190,6 @@
   }
 })();
 </script>
-<script src="nis-tema.js?v=a7890d34" defer></script>
+<script src="nis-tema.js?v=410c4879" defer></script>
 </body>
 </html>

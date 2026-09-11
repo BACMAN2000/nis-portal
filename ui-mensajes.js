@@ -156,7 +156,7 @@
         icono: op.icono,
         detalle: op.detalle,
         valorEscape: undefined,
-        botones: [{ texto: op.cerrar || 'Entendido', valor: undefined }]
+        botones: [{ texto: op.cerrar || 'Got it', valor: undefined }]
       });
     },
 
@@ -171,15 +171,15 @@
       var p = parte(mensaje);
       return pinta({
         mensaje: op.titulo ? mensaje : p.cuerpo,
-        titulo: op.titulo || p.titulo || '¿Confirmas?',
+        titulo: op.titulo || p.titulo || 'Are you sure?',
         tono: op.tono || 'ojo',
         icono: op.icono,
         detalle: op.detalle,
         escapa: true,
         valorEscape: false,
         botones: [
-          { texto: op.no || 'Cancelar', valor: false, clase: 'ghost' },
-          { texto: op.si || 'Continuar', valor: true, clase: op.peligro ? 'peligro' : '' }
+          { texto: op.no || 'Cancel', valor: false, clase: 'ghost' },
+          { texto: op.si || 'Continue', valor: true, clase: op.peligro ? 'peligro' : '' }
         ]
       });
     },
@@ -199,10 +199,10 @@
         mal:  ['Could not be saved', 'You have finished the exam, but it could not be saved to your account.\nDownload the PDF and tell your teacher.', 'See my result'],
         motivo: 'Reason: '
       } : {
-        ok:   ['Entregado', 'Tu examen ha quedado entregado y guardado en tu cuenta.\nTu profesor ya puede verlo desde el Portal.', 'Ver mi resultado'],
-        sin:  ['Terminado, pero sin guardar', 'Has terminado el examen, pero NO se ha guardado en ninguna cuenta porque no has entrado al Portal.\nAbajo tienes tu resultado: descárgalo en PDF si necesitas entregarlo.', 'Ver mi resultado'],
-        mal:  ['No se pudo guardar', 'Has terminado el examen, pero no se ha podido guardar en tu cuenta.\nDescarga el PDF y avisa a tu profesor.', 'Ver mi resultado'],
-        motivo: 'Motivo: '
+        ok:   ['Submitted', 'Your exam has been submitted and saved to your account.\nYour teacher can already see it from the Portal.', 'See my result'],
+        sin:  ['Finished, but not saved', 'You have finished the exam, but it has NOT been saved to any account because you have not signed in to the Portal.\nYour result is below: download it as a PDF if you need to hand it in.', 'See my result'],
+        mal:  ['Could not be saved', 'You have finished the exam, but it could not be saved to your account.\nDownload the PDF and tell your teacher.', 'See my result'],
+        motivo: 'Reason: '
       };
       NISUI._motivo = T.motivo;
       var k = estado === 'guardado' ? 'ok' : (estado === 'sin-sesion' ? 'sin' : 'mal');

@@ -100,21 +100,21 @@
     'a medias': 'est-medias', 'FALTA': 'est-falta',
   };
   const ETIQUETA = {
-    'cubierto': 'en el curso', 'en el portal': 'en el portal',
-    'a medias': 'a medias', 'FALTA': 'falta',
+    'cubierto': 'in the course', 'en el portal': 'in the portal',
+    'a medias': 'partly', 'FALTA': 'missing',
   };
 
   /* ---------- pintado ---------- */
   function ficha(g) {
     const v = via(g);
     const campos = [
-      ['Nivel CEFR', v.cefr], ['Examen Cambridge', v.examen || '—'],
-      ['Ciclo MINEDU', v.minedu], ['Edad', v.edad],
-      ['Escritura', v.escritura], ['Lectura', v.lectura],
+      ['CEFR level', v.cefr], ['Cambridge exam', v.examen || '—'],
+      ['MINEDU cycle', v.minedu], ['Age', v.edad],
+      ['Writing', v.escritura], ['Reading', v.lectura],
     ];
     return `<div class="sq-ficha">${campos.map(([k, x]) =>
       `<div><b>${esc(k)}</b>${esc(x || '—')}</div>`).join('')}</div>
-      ${v.gramatica ? `<p class="sq-det"><b>Gramática del año:</b> ${esc(v.gramatica)}</p>` : ''}`;
+      ${v.gramatica ? `<p class="sq-det"><b>Grammar for the year:</b> ${esc(v.gramatica)}</p>` : ''}`;
   }
 
   function benchmarks(g) {
@@ -123,7 +123,7 @@
                   ['Reading', b.reading], ['Writing', b.writing],
                   ['Grammar & Vocabulary', b.lengua]];
     if (!cols.some(c => c[1])) return '';
-    return `<h3>Al acabar el año, el alumno puede…</h3>
+    return `<h3>By the end of the year, the student can…</h3>
       <div class="sq-bench">${cols.filter(c => c[1]).map(([k, t]) =>
         `<div><h4>${esc(k)}</h4><p>${esc(t)}</p></div>`).join('')}</div>`;
   }
@@ -132,23 +132,23 @@
     if (!a) return '';
     const r = a.resumen || {};
     const trozos = [
-      ['est-cubierto', 'en el curso', r['cubierto'] || 0],
-      ['est-portal', 'en el portal', r['en el portal'] || 0],
-      ['est-medias', 'a medias', r['a medias'] || 0],
-      ['est-falta', 'falta', r['FALTA'] || 0],
+      ['est-cubierto', 'in the course', r['cubierto'] || 0],
+      ['est-portal', 'in the portal', r['en el portal'] || 0],
+      ['est-medias', 'partly', r['a medias'] || 0],
+      ['est-falta', 'missing', r['FALTA'] || 0],
     ];
     const enlaces = (a.recursos || []).map(x =>
       `<a href="${esc(x.enlace)}">${esc(x.nombre)}</a>`).join(' · ');
-    return `<h3>Cómo lo cubre hoy la plataforma</h3>
+    return `<h3>How the platform covers this today</h3>
       <p class="sq-det">Material: <b>Fun for Nordic ${esc(a.nivel)}</b>
-        (${a.unidadesCurso} unidades)${enlaces ? ' · apoyo: ' + enlaces : ''}</p>
+        (${a.unidadesCurso} units)${enlaces ? ' · support: ' + enlaces : ''}</p>
       <div class="sq-res">${trozos.map(([c, t, n]) =>
         `<span class="${c}"><b>${n}</b> ${esc(t)}</span>`).join('')}</div>`;
   }
 
   function unidades(g) {
     const d = grado(g);
-    if (!d) return '<p class="muted">Este grado todavía no tiene detalle por unidad.</p>';
+    if (!d) return '<p class="muted">This grade does not have unit-by-unit detail yet.</p>';
     const a = audit(g);
     return d.unidades.map(u => {
       const au = a && (a.unidades || []).find(x => x.n === u.n);
@@ -172,13 +172,13 @@
       const dc = (au && au.delCurso) || [];
       const nivel = a ? a.nivel : '';
       const cuales = dc.length ? `<p class="sq-det sq-curso">
-        En clase se dan las unidades
+        The units taught in class are
         ${dc.map(n => `<a href="nis-fun/engine/index.html?level=${esc(nivel)}&unit=${n}"
            target="_blank">${n}</a>`).join(', ')}
-        de Fun for Nordic ${esc(nivel)}.</p>` : '';
+        from Fun for Nordic ${esc(nivel)}.</p>` : '';
       return `<details class="sq-u">
         <summary><span class="sq-n">${u.n}</span> ${esc(u.tema)}
-          ${dc.length ? `<span class="sq-cuantas">${dc.length} unidades</span>` : ''}</summary>
+          ${dc.length ? `<span class="sq-cuantas">${dc.length} units</span>` : ''}</summary>
         <div class="sq-cuerpo">${cuales}${cuerpo}</div></details>`;
     }).join('');
   }
@@ -186,9 +186,9 @@
   function calendario() {
     const c = DATOS.calendario || [];
     if (!c.length) return '';
-    return `<h3>Calendario Cambridge 2026</h3>
+    return `<h3>Cambridge calendar 2026</h3>
       <div style="overflow-x:auto"><table class="sq-cal">
-        <tr><th>Mes</th><th>Hito</th><th>Grados</th><th>Actividad</th><th>KPI</th></tr>
+        <tr><th>Month</th><th>Milestone</th><th>Grades</th><th>Activity</th><th>KPI</th></tr>
         ${c.map(f => `<tr class="${/🎯/.test(f.hito) ? 'hito' : ''}">
           <td><b>${esc(f.mes)}</b></td><td>${esc(f.hito)}</td><td>${esc(f.grados)}</td>
           <td>${esc(f.actividad)}</td><td>${esc(f.kpi)}</td></tr>`).join('')}
@@ -206,14 +206,14 @@
     main.innerHTML = `<style>${CSS}</style>
       <div class="card">
         <h2>📚 Scope &amp; Sequence 2026</h2>
-        <p class="muted">Lo que toca en cada grado: nivel, examen, los seis temas del año
-          y cómo lo cubre hoy la plataforma. Sale del documento maestro de coordinación
+        <p class="muted">What applies to each grade: level, exam, the six themes for the year
+          and how the platform covers it today. It comes from coordination’s master document
           (${esc(DATOS.origen || '')}).</p>
         <div class="sq-grados">${botones}</div>
         ${ficha(g)}
         ${benchmarks(g)}
         ${resumenAudit(audit(g))}
-        <h3>Las seis unidades del año</h3>
+        <h3>The six units of the year</h3>
         ${unidades(g)}
         ${calendario()}
       </div>`;
@@ -228,11 +228,11 @@
   /* ---------- entrada ---------- */
   window.scopePanel = async function () {
     const main = document.getElementById('main');
-    main.innerHTML = '<div class="card"><p class="muted">Cargando la secuencia…</p></div>';
+    main.innerHTML = '<div class="card"><p class="muted">Loading the sequence…</p></div>';
     if (!(await carga())) {
       main.innerHTML = `<div class="card"><h2>📚 Scope &amp; Sequence</h2>
-        <p class="err">No pude leer la secuencia. Falta <code>scope/scope-2026.json</code>;
-        se genera con <code>python scope/extrae_scope.py</code>.</p></div>`;
+        <p class="err">Could not read the sequence. <code>scope/scope-2026.json</code> is missing;
+        it is generated with <code>python scope/extrae_scope.py</code>.</p></div>`;
       return;
     }
     // se abre en el primer grado de primaria, que es por donde se empieza

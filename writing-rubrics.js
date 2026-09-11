@@ -29,7 +29,7 @@ window.WRITING_RUBRICS = (function(){
 
   const NIVELES   = ['AD','A','B','C'];      // de mayor a menor, como en todo el portal
   const VIGESIMAL = { AD:19, A:16, B:12, C:8 };
-  const SIGNIFICA = { AD:'logro destacado', A:'logro esperado', B:'en proceso', C:'en inicio' };
+  const SIGNIFICA = { AD:'outstanding achievement', A:'expected achievement', B:'in progress', C:'starting out' };
 
   const DATOS = {
 
@@ -44,7 +44,7 @@ window.WRITING_RUBRICS = (function(){
       report: {
         task:'Your recipe', spec:'Ingredients + utensils + steps',
         nota:'Criterios 6, 5 y 1 del planner.',
-        fuera:'Criterios 2, 3 y 4 — preguntas y comprension oral, no el texto escrito.',
+        fuera:'Criteria 2, 3 and 4 — questions and listening comprehension, not the written text.',
         criteria:[
           { k:'w1', n:1, from:6, auto:null,
             text:'The three parts — ingredients, utensils and steps.',
@@ -83,7 +83,7 @@ window.WRITING_RUBRICS = (function(){
       report: {
         task:'What I found out about light', spec:'40–60 words', range:[40,60],
         nota:'El criterio 2 del planner es el de escritura y va tal cual, con sus niveles.',
-        fuera:'Criterio 1 (Speaking) y criterio 3 (el propio experimento).',
+        fuera:'Criterion 1 (Speaking) and criterion 3 (the experiment itself).',
         criteria:[
           { k:'w1', n:1, from:2, auto:null,
             text:'Writing — write what you found out.',
@@ -115,7 +115,7 @@ window.WRITING_RUBRICS = (function(){
       story: {
         task:'The story of my vehicle', spec:'50–80 words', range:[50,80],
         nota:'El criterio 2 del planner es el de escritura y va tal cual.',
-        fuera:'Criterio 1 (Speaking) y criterio 3 (la carrera justa).',
+        fuera:'Criterion 1 (Speaking) and criterion 3 (the fair race).',
         criteria:[
           { k:'w1', n:1, from:2, auto:'sequence',
             text:'Writing — tell what happened, in order.',
@@ -151,7 +151,7 @@ window.WRITING_RUBRICS = (function(){
       report: {
         task:'Your interview script', spec:'With commas and quotation marks',
         nota:'El criterio 3 del planner es el de escritura; los descriptores se redactan a partir de el.',
-        fuera:'Nada: los tres criterios tocan el guion, aunque el 1 se ve sobre todo al leerlo en voz alta.',
+        fuera:'Nothing: all three criteria touch the script, though criterion 1 shows mainly when it is read aloud.',
         criteria:[
           { k:'w1', n:1, from:3, auto:null,
             text:'Purpose and order — an interview with a beginning, a middle and an end.',
@@ -190,7 +190,7 @@ window.WRITING_RUBRICS = (function(){
       report: {
         task:'How my model works', spec:'80–120 words', range:[80,120],
         nota:'El criterio 2 del planner es el de escritura y va tal cual.',
-        fuera:'Criterio 1 (Explaining, en voz alta ante el visitante).',
+        fuera:'Criterion 1 (Explaining, spoken aloud to the visitor).',
         criteria:[
           { k:'w1', n:1, from:2, auto:'sequence',
             text:'Writing — explain a process so it can be followed.',
@@ -222,7 +222,7 @@ window.WRITING_RUBRICS = (function(){
       report: {
         task:'This year I learned, next year I will', spec:'about 100 words each', range:[150,260],
         nota:'Los criterios 1 y 2 del planner son los dos de escritura y van tal cual.',
-        fuera:'Criterio 3 (Speaking) — decirselo a la familia en voz alta.',
+        fuera:'Criterion 3 (Speaking) — telling the family out loud.',
         criteria:[
           { k:'w1', n:1, from:1, auto:null,
             text:'Writing — look back with evidence, not with memory.',
@@ -395,7 +395,7 @@ window.WRITING_RUBRICS = (function(){
       report: {
         task:'Writer’s Notebook', spec:'Collected across the unit',
         nota:'El criterio 3 del planner es el de escritura; los descriptores se redactan a partir de el y del propio cuaderno.',
-        fuera:'Criterio 1 (Speaking).',
+        fuera:'Criterion 1 (Speaking).',
         criteria:[
           { k:'w1', n:1, from:3, auto:null,
             text:'Sensory observation — descriptive vocabulary and powerful verbs.',
@@ -472,7 +472,7 @@ window.WRITING_RUBRICS = (function(){
       campaign: {
         task:'Your campaign', spec:'200–250 words', range:[200,250],
         nota:'Los criterios 1 y 2 del planner van tal cual; el tercero es la forma del texto.',
-        fuera:'Criterio 3 (Speaking) — defenderla en el hall.',
+        fuera:'Criterion 3 (Speaking) — presenting it in the hall.',
         criteria:[
           { k:'w1', n:1, from:1, auto:null,
             text:'Persuading — make somebody want to change something.',
@@ -509,7 +509,7 @@ window.WRITING_RUBRICS = (function(){
       report: {
         task:'Three-paragraph biography', spec:'3 paragraphs · past simple',
         nota:'Criterios 5, 3, 4 y 2 del planner; los descriptores se redactan a partir de ellos.',
-        fuera:'Criterios 1, 6 y 7 — comprension literal, lectura en voz alta y exposicion oral.',
+        fuera:'Criteria 1, 6 and 7 — literal comprehension, reading aloud and the oral presentation.',
         criteria:[
           { k:'w1', n:1, from:5, auto:'structure',
             text:'Structure — three paragraphs, one job each.',
@@ -548,7 +548,7 @@ window.WRITING_RUBRICS = (function(){
       report: {
         task:'Report on technology in your life', spec:'6–8 sentences minimum', range:[80,200],
         nota:'El criterio 3 del planner es el de escritura; los descriptores se redactan a partir de el.',
-        fuera:'Criterio 2 (Reading).',
+        fuera:'Criterion 2 (Reading).',
         criteria:[
           { k:'w1', n:1, from:3, auto:'structure',
             text:'Shape — topic sentence, reasons, conclusion.',
@@ -591,7 +591,7 @@ window.WRITING_RUBRICS = (function(){
       report: {
         task:'Narrative snapshot', spec:'200–250 words', range:[200,250],
         nota:'El criterio 2 del planner es el de escritura; los descriptores se redactan a partir de el y del entregable.',
-        fuera:'Criterio 3 (Speaking) — el debate.',
+        fuera:'Criterion 3 (Speaking) — the debate.',
         criteria:[
           { k:'w1', n:1, from:2, auto:null,
             text:'An unspoken rule — not a written one.',
@@ -630,7 +630,7 @@ window.WRITING_RUBRICS = (function(){
       report: {
         task:'Report on technology and society', spec:'200–250 words', range:[200,250],
         nota:'El criterio 3 del planner es el de escritura; los descriptores se redactan a partir de el.',
-        fuera:'Criterio 1 (Speaking & listening).',
+        fuera:'Criterion 1 (Speaking & listening).',
         criteria:[
           { k:'w1', n:1, from:3, auto:'structure',
             text:'Structure — introduction, two body paragraphs, conclusion, in 200–250 words.',
@@ -673,7 +673,7 @@ window.WRITING_RUBRICS = (function(){
       report: {
         task:'Argumentative essay', spec:'300–350 words', range:[300,350],
         nota:'Criterios 3, 2 y 4 del planner; los descriptores se redactan a partir de ellos.',
-        fuera:'Criterio 1 (Speaking) — la exposicion.',
+        fuera:'Criterion 1 (Speaking) — the presentation.',
         criteria:[
           { k:'w1', n:1, from:3, auto:null,
             text:'Thesis — a claim, not a summary.',
@@ -708,7 +708,7 @@ window.WRITING_RUBRICS = (function(){
       reflection: {
         task:'Self-reflection', spec:'Around 100 words', range:[80,160],
         nota:'Una reflexion se mide por lo que el alumno es capaz de decir de su propia lectura, no con la rubrica del ensayo.',
-        fuera:'Criterios 1 y 4 del planner.',
+        fuera:'Criteria 1 and 4 of the planner.',
         criteria:[
           { k:'w1', n:1, from:3, auto:null,
             text:'The strongest theme, and why you say so.',
@@ -744,7 +744,7 @@ window.WRITING_RUBRICS = (function(){
       report: {
         task:'Your case file', spec:'Formal, descriptive register',
         nota:'Criterios 1 a 5 del planner; los descriptores se redactan a partir de ellos.',
-        fuera:'Criterio 6 (Creativity & presentation) — la defensa oral del caso.',
+        fuera:'Criterion 6 (Creativity & presentation) — the oral defence of the case.',
         criteria:[
           { k:'w1', n:1, from:1, auto:null,
             text:'Content & ideas — an original mystery that develops logically.',
@@ -855,7 +855,7 @@ window.WRITING_RUBRICS = (function(){
       report: {
         task:'Balanced opinion essay', spec:'140–190 words · FCE Writing Part 1', range:[140,190],
         nota:'Criterios 1 a 5 del planner; los descriptores se redactan a partir de ellos.',
-        fuera:'Criterio 6 (Communication) — es del vlog.',
+        fuera:'Criterion 6 (Communication) — that belongs to the vlog.',
         criteria:[
           { k:'w1', n:1, from:1, auto:null,
             text:'Content — more than one perspective, represented fairly.',
@@ -928,7 +928,7 @@ window.WRITING_RUBRICS = (function(){
       report: {
         task:'Analytical report', spec:'300–350 words · formal register', range:[300,350],
         nota:'El criterio 3 del planner es el de escritura y va tal cual, con sus niveles.',
-        fuera:'Criterio 1 (Speaking & listening) — el debate.',
+        fuera:'Criterion 1 (Speaking & listening) — the debate.',
         criteria:[
           { k:'w1', n:1, from:3, auto:null,
             text:'Writing — produce a structured analytical report.',
@@ -1032,7 +1032,7 @@ window.WRITING_RUBRICS = (function(){
       report: {
         task:'Proposal to the leadership team', spec:'300–350 words · proposal register', range:[300,350],
         nota:'Los criterios 1 y 2 del planner van tal cual; el tercero es la forma y el registro del documento.',
-        fuera:'Criterio 3 (Defence) — defenderla ante quien puede decir que no.',
+        fuera:'Criterion 3 (Defence) — defending it in front of whoever can say no.',
         criteria:[
           { k:'w1', n:1, from:1, auto:null,
             text:'Proposal — write something the leadership team can act on.',
@@ -1064,7 +1064,7 @@ window.WRITING_RUBRICS = (function(){
       report: {
         task:'The case for your 2040', spec:'280–330 words', range:[280,330],
         nota:'Los criterios 1 y 2 del planner van tal cual; los otros dos son la lengua del futuro y la forma del texto.',
-        fuera:'Criterio 3 (Holding the room) — el stand.',
+        fuera:'Criterion 3 (Holding the room) — the stand.',
         criteria:[
           { k:'w1', n:1, from:1, auto:null,
             text:'Vision — argue for a future, do not just describe one.',
@@ -1112,7 +1112,7 @@ window.WRITING_RUBRICS = (function(){
         spec:'140–190 words · FCE Writing Part 2',
         range:[140,190],
         nota:'Los cinco criterios salen de la rubrica de la unidad que el alumno tiene delante desde el dia uno.',
-        fuera:'Criterio 6 (Collaboration) — es del podcast en pareja, no del articulo.',
+        fuera:'Criterion 6 (Collaboration) — that belongs to the paired podcast, not the article.',
         criteria:[
 
           { k:'w1', n:1, from:1, auto:'evidence',
@@ -1162,7 +1162,7 @@ window.WRITING_RUBRICS = (function(){
         spec:'Around 100 words',
         range:[80,140],
         nota:'Una reflexion no se corrige con la rubrica del articulo: se mira lo que el alumno es capaz de decir de su propio proceso.',
-        fuera:'Criterios 4, 5 y 6 de la unidad — son del producto, no de la reflexion.',
+        fuera:'Criteria 4, 5 and 6 of the unit — they belong to the product, not the reflection.',
         criteria:[
 
           { k:'w1', n:1, from:1, auto:null,
@@ -1201,7 +1201,7 @@ window.WRITING_RUBRICS = (function(){
       report: {
         task:'Argumentative essay', spec:'Formal register · advanced punctuation',
         nota:'Criterios 2, 3, 4 y 5 del planner; los descriptores se redactan a partir de ellos.',
-        fuera:'Criterio 1 (Delivery) — es del podcast y del debate.',
+        fuera:'Criterion 1 (Delivery) — that belongs to the podcast and the debate.',
         criteria:[
           { k:'w1', n:1, from:2, auto:'evidence',
             text:'Argument — a claim built on evidence.',
@@ -1251,7 +1251,7 @@ window.WRITING_RUBRICS = (function(){
       report: {
         task:'Position script', spec:'Academic register',
         nota:'Criterios 2, 3 y 4 del planner; los descriptores se redactan a partir de ellos.',
-        fuera:'Criterio 1 (Delivery) — la intervencion en la conferencia.',
+        fuera:'Criterion 1 (Delivery) — the talk at the conference.',
         criteria:[
           { k:'w1', n:1, from:2, auto:null,
             text:'Position — unmistakable, and argued.',

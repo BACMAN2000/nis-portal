@@ -74,12 +74,12 @@
     // OS / navegador legibles (best-effort)
     var os = /iPhone|iPad|iPod/i.test(ua) ? 'iOS' : /Android/i.test(ua) ? 'Android'
            : /Windows/i.test(ua) ? 'Windows' : /Mac OS X/i.test(ua) ? 'macOS'
-           : /Linux/i.test(ua) ? 'Linux' : plat || 'Desconocido';
+           : /Linux/i.test(ua) ? 'Linux' : plat || 'Unknown';
     var br = /Edg\//i.test(ua) ? 'Edge' : /OPR\//i.test(ua) ? 'Opera'
            : /Chrome\//i.test(ua) && !/Edg\//i.test(ua) ? 'Chrome'
            : /CriOS/i.test(ua) ? 'Chrome iOS'
            : /Firefox\//i.test(ua) ? 'Firefox'
-           : /Safari\//i.test(ua) ? 'Safari' : 'Desconocido';
+           : /Safari\//i.test(ua) ? 'Safari' : 'Unknown';
     return {
       os: os, browser: br, ua: ua, platform: plat,
       screen: (screen.width + 'x' + screen.height),
@@ -246,37 +246,37 @@
     // reported = última vida (queda 1): se reporta al docente.
     var left = livesLeft(), html;
     if (reported) {
-      html = '<div class="nis-ac-ic">🚩</div><h2>Has sido reportado</h2>' +
+      html = '<div class="nis-ac-ic">🚩</div><h2>You have been reported</h2>' +
         '<div class="nis-ac-lives">' + hearts() + '</div>' +
-        '<p>Saliste de nuevo. Esto ha sido <b>reportado a tu docente</b>.</p>' +
-        '<p>Te queda <b>1 vida</b>. La próxima salida <b>eliminará la actividad</b> y tu nota será <b>C</b>.</p>' +
-        '<button class="nis-ac-btn">Entiendo, volver</button>';
+        '<p>You left again. This has been <b>reported to your teacher</b>.</p>' +
+        '<p>You have <b>1 life</b> left. The next time you leave will <b>delete the activity</b> and your grade will be <b>C</b>.</p>' +
+        '<button class="nis-ac-btn">Got it, go back</button>';
     } else {
-      html = '<div class="nis-ac-ic">⚠️</div><h2>Saliste de la actividad</h2>' +
+      html = '<div class="nis-ac-ic">⚠️</div><h2>You left the activity</h2>' +
         '<div class="nis-ac-lives">' + hearts() + '</div>' +
-        '<p>Te quedan <b>' + left + ' vidas</b>. La actividad detecta cuando cambias de pestaña, app o ventana.</p>' +
-        (left === 2 ? '<p><b>La próxima salida será reportada a tu docente.</b></p>' : '') +
-        '<button class="nis-ac-btn">Volver a la actividad</button>';
+        '<p>You have <b>' + left + ' lives</b> left. The activity detects when you switch tabs, apps or windows.</p>' +
+        (left === 2 ? '<p><b>The next time you leave will be reported to your teacher.</b></p>' : '') +
+        '<button class="nis-ac-btn">Back to the activity</button>';
     }
     modal(html, false);
   }
   function showLock() {
     var who = me ? (me.name + (me.grade ? ' · ' + me.grade : '')) : '';
-    var html = '<div class="nis-ac-ic">⛔</div><h2>Actividad eliminada</h2>' +
+    var html = '<div class="nis-ac-ic">⛔</div><h2>Activity deleted</h2>' +
       '<div class="nis-ac-lives">🖤🖤🖤</div>' +
-      '<p>Saliste de la actividad demasiadas veces. Por las reglas de honestidad, esta actividad ha sido <b>eliminada</b>.</p>' +
-      '<p>Tu nota es <b>C</b>. Se ha notificado a tu <b>docente</b>, quien informará a tus <b>padres</b>.</p>' +
+      '<p>You left the activity too many times. Under the honesty rules, this activity has been <b>deleted</b>.</p>' +
+      '<p>Your grade is <b>C</b>. Your <b>teacher</b> has been notified, and will inform your <b>parents</b>.</p>' +
       (who ? '<div class="nis-ac-meta">' + who + '</div>' : '') +
-      '<div class="nis-ac-meta">Si tu docente te dio una <b>vida extra</b>, pulsa el botón.</div>' +
-      '<button class="nis-ac-btn nis-ac-retry" style="margin-top:12px">🔄 Ya tengo permiso — reintentar</button>';
+      '<div class="nis-ac-meta">If your teacher gave you an <b>extra life</b>, press the button.</div>' +
+      '<button class="nis-ac-btn nis-ac-retry" style="margin-top:12px">🔄 I already have permission — retry</button>';
     var ov = modal(html, true);
     document.body.classList.add('nis-ac-locked');
     var rb = ov.querySelector('.nis-ac-retry');
     if (rb) rb.addEventListener('click', function () {
-      rb.disabled = true; rb.textContent = 'Comprobando…';
+      rb.disabled = true; rb.textContent = 'Checking…';
       loadGrants().then(function () {
         if (!isLocked()) { revive(); }
-        else { rb.disabled = false; rb.textContent = '🔄 Aún sin vida extra — reintentar'; }
+        else { rb.disabled = false; rb.textContent = '🔄 Still no extra life — retry'; }
       });
     });
     if (opts.onLock) { try { opts.onLock(); } catch (e) {} }
@@ -288,11 +288,11 @@
     showRevived(livesLeft());
   }
   function showRevived(n) {
-    var html = '<div class="nis-ac-ic">❤️</div><h2 style="color:#15803d">¡Tienes una vida extra!</h2>' +
+    var html = '<div class="nis-ac-ic">❤️</div><h2 style="color:#15803d">You have an extra life!</h2>' +
       '<div class="nis-ac-lives">' + hearts() + '</div>' +
-      '<p>Tu docente te otorgó una <b>vida extra</b>. Ahora te quedan <b>' + n + '</b>. ' +
-      'Recuerda: <b>no salgas</b> de la actividad.</p>' +
-      '<button class="nis-ac-btn">Continuar la actividad</button>';
+      '<p>Your teacher gave you an <b>extra life</b>. Now you have <b>' + n + '</b> left. ' +
+      'Remember: <b>do not leave</b> the activity.</p>' +
+      '<button class="nis-ac-btn">Continue the activity</button>';
     var ov = modal(html, false);
     var b = ov.querySelector('.nis-ac-btn');
     // Recargar reactiva los campos deshabilitados y rearma el control.

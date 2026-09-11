@@ -19,157 +19,157 @@ window.AYUDA = {
 /* ───────────────────────────── ALUMNO ───────────────────────────── */
 student: { secciones: [
 
-  { icon:'🔑', titulo:'Entrar al portal', busca:'login contraseña password acceso entrar olvide',
-    sub:'La dirección es nis.cohasset.pe. Entra siempre por ahí.',
+  { icon:'🔑', titulo:'Signing in to the portal', busca:'login password access sign in forgot',
+    sub:'The address is nis.cohasset.pe. Always sign in there.',
     cuerpo:[
       {pasos:[
-        'Abre <b>nis.cohasset.pe</b> en el navegador (Chrome funciona mejor).',
-        'Escribe tu <b>correo del colegio</b> y tu contraseña.',
-        'Pulsa <b>Entrar</b>. Verás tu nombre arriba a la derecha.'
+        'Open <b>nis.cohasset.pe</b> in your browser (Chrome works best).',
+        'Enter your <b>school email</b> and your password.',
+        'Tap <b>Sign in</b>. You will see your name at the top right.'
       ]},
-      {h:'Olvidé mi contraseña'},
-      'En la pantalla de entrada pulsa <b>¿Olvidaste tu contraseña?</b> y escribe tu correo: te llega un enlace para poner una nueva. Si el correo no llega, mira la carpeta de correo no deseado y, si sigue sin aparecer, pídele a tu profesor que avise a coordinación para que te asignen una contraseña temporal.',
-      {nota:'Si entras desde una dirección que empieza por <b>bacman2000.github.io</b>, el portal te lleva solo a nis.cohasset.pe. Es la misma plataforma, pero la sesión solo funciona en nis.cohasset.pe: cambia tu marcador.', tipo:'warn'}
+      {h:'I forgot my password'},
+      'On the sign-in screen, tap <b>Forgot your password?</b> and enter your email: you will get a link to set a new one. If the email does not arrive, check the spam folder, and if it still does not show up, ask your teacher to tell coordination so they can give you a temporary password.',
+      {nota:'If you go in through an address starting with <b>bacman2000.github.io</b>, the portal takes you straight to nis.cohasset.pe. It is the same platform, but sign-in only works on nis.cohasset.pe: update your bookmark.', tipo:'warn'}
     ]},
 
-  { icon:'🧭', titulo:'Cómo está organizado', busca:'menu barra navegacion donde esta estructura mapa',
-    sub:'Seis entradas en la barra de la izquierda, y nada más.',
+  { icon:'🧭', titulo:'How it is organized', busca:'menu bar navigation where is structure map',
+    sub:'Six entries on the left-hand bar, and nothing more.',
     cuerpo:[
-      {tabla:{cols:['En la barra','Qué encuentras'],filas:[
-        ['🏠 Home','Tu unidad de un vistazo, las materias (English y French) y los recursos generales: Library y MUN Academy.'],
-        ['🇬🇧 English','<b>Todo lo de inglés</b>, repartido en cuatro bloques. Es la pantalla donde vas a estar casi siempre.'],
-        ['🇫🇷 French','El material de francés: por grado (lo que se está dando en clase) y por nivel del Marco Europeo (A1–C2).'],
-        ['📊 My Progress','Tus exámenes y prácticas: qué rendiste, cuándo y con qué nota.'],
-        ['👤 Mi cuenta','Cambiar tu contraseña.'],
-        ['❓ Ayuda','Esta guía.']
+      {tabla:{cols:['On the bar','What you will find'],filas:[
+        ['🏠 Home','Your unit at a glance, the subjects (English and French) and the general resources: Library and MUN Academy.'],
+        ['🇬🇧 English','<b>Everything for English</b>, spread across four blocks. It is the screen where you will spend most of your time.'],
+        ['🇫🇷 French','The French material: by grade (what is being taught in class) and by Common European Framework level (A1–C2).'],
+        ['📊 My Progress','Your exams and practice: what you took, when, and with what grade.'],
+        ['👤 My account','Change your password.'],
+        ['❓ Help','This guide.']
       ]}},
-      {nota:'En el móvil o la tablet la barra no está a la izquierda: es una fila que se desliza arriba de la pantalla. Están las mismas entradas.'}
+      {nota:'On mobile or tablet the bar is not on the left: it is a row that scrolls along the top of the screen. It has the same entries.'}
     ]},
 
-  { icon:'🇬🇧', titulo:'English: los cuatro bloques', busca:'english bloques my work practice cambridge results tarjetas',
-    sub:'Van en el orden en que se usan: primero lo que estás haciendo, luego con qué entrenas, después el examen y al final tus notas.',
+  { icon:'🇬🇧', titulo:'English: the four blocks', busca:'english blocks my work practice cambridge results cards',
+    sub:'They go in the order you use them: first what you are working on, then what you train with, then the exam, and finally your grades.',
     cuerpo:[
-      {h:'🎯 My work — lo que estás haciendo'},
+      {h:'🎯 My work — what you are working on'},
       {lista:[
-        '<b>My unit</b> — tu unidad de este trimestre: la pregunta grande, qué tienes que producir y con qué criterios se te va a calificar. <b>La rúbrica se ve desde el primer día</b>, antes de empezar.',
-        '<b>My project</b> — el proyecto interdisciplinario del trimestre: once semanas y lo que aporta cada asignatura.',
-        '<b>Classes</b> — el material de tu grado: gramática, actividades, readers, exámenes de unidad y las fichas de cada sesión.'
+        '<b>My unit</b> — your unit for this term: the big question, what you need to produce, and the criteria you will be graded on. <b>The rubric is visible from day one</b>, before you start.',
+        '<b>My project</b> — the term’s interdisciplinary project: eleven weeks and what each subject contributes.',
+        '<b>Classes</b> — your grade’s material: grammar, activities, readers, unit exams and the worksheets for each session.'
       ]},
-      {h:'🧠 Practice — para entrenar por tu cuenta'},
+      {h:'🧠 Practice — to train on your own'},
       {lista:[
-        '<b>Pronunciation</b> — cada sonido, con la lengua y el aire, para escuchar y repetir.',
-        '<b>Phonics</b> — sonidos y formas de palabra: CVC, blends, magic-e.',
-        '<b>Games Lab</b> — 7 juegos por tema: gramática, vocabulario, phrasal verbs e idioms (A1–C1).',
-        '<b>NIShoot Live</b> — el juego en vivo de tu clase. Entras con el PIN que da el profesor.'
+        '<b>Pronunciation</b> — every sound, with the tongue and the airflow, to listen to and repeat.',
+        '<b>Phonics</b> — sounds and word patterns: CVC, blends, magic-e.',
+        '<b>Games Lab</b> — 7 games per topic: grammar, vocabulary, phrasal verbs and idioms (A1–C1).',
+        '<b>NIShoot Live</b> — your class’s live game. Join with the PIN your teacher gives you.'
       ]},
-      {h:'🎓 Cambridge — el examen oficial'},
+      {h:'🎓 Cambridge — the official exam'},
       {lista:[
-        '<b>Cambridge</b> — el mapa completo: la rama Young Learners (Pre-A1 a A2) y la Main Suite (A2 a C2), con la guía de cada examen.',
-        '<b>Mocks</b> — los simulacros oficiales MOCK 1 y MOCK 2, por destreza.',
-        '<b>Practice Tests</b> — prácticas en formato Cambridge, siempre disponibles.'
+        '<b>Cambridge</b> — the full map: the Young Learners track (Pre-A1 to A2) and the Main Suite (A2 to C2), with the guide for each exam.',
+        '<b>Mocks</b> — the official MOCK 1 and MOCK 2 mock exams, by skill.',
+        '<b>Practice Tests</b> — practice in Cambridge format, always available.'
       ]},
       {h:'📊 My results'},
-      {lista:['<b>Resultado final</b> — tu nivel CEFR final y el reporte que recibe tu familia, con PDF.']},
-      {nota:'Tu <b>progreso día a día</b> no está aquí: está en <b>📊 My Progress</b>, en la barra de la izquierda, para que lo alcances desde cualquier pantalla.'}
+      {lista:['<b>Final result</b> — your final CEFR level and the report your family receives, with a PDF.']},
+      {nota:'Your <b>day-to-day progress</b> is not here: it is under <b>📊 My Progress</b>, on the left-hand bar, so you can reach it from any screen.'}
     ]},
 
-  { icon:'🎯', titulo:'Mi unidad y mi proyecto', busca:'unidad unit producto rubrica proyecto entrega big question',
-    sub:'La unidad tiene un producto final y una rúbrica. Las dos cosas se ven desde el principio.',
+  { icon:'🎯', titulo:'My unit and my project', busca:'unit product rubric project submission big question',
+    sub:'The unit has a final product and a rubric. Both are visible from the start.',
     cuerpo:[
       {pasos:[
-        'Entra por <b>English → My unit</b> (o desde Home, en la banda de arriba).',
-        'Arriba está el <b>producto final</b>: lo que tienes que entregar al terminar la unidad.',
-        'Debajo, la <b>rúbrica</b>: los criterios con los que se califica, en la escala <b>AD · A · B · C</b> (AD es el nivel más alto).',
-        'Después va el <b>camino semana a semana</b>, con las actividades de cada semana enganchadas donde toca.',
-        'Al final está la <b>entrega</b>: subes tu archivo o pegas el enlace de tu Google Doc, y pulsas enviar.'
+        'Go to <b>English → My unit</b> (or from Home, in the band at the top).',
+        'At the top is the <b>final product</b>: what you need to submit at the end of the unit.',
+        'Below it, the <b>rubric</b>: the criteria you are graded on, on the <b>AD · A · B · C</b> scale (AD is the highest level).',
+        'After that comes the <b>week-by-week path</b>, with each week’s activities attached where they belong.',
+        'At the end is the <b>submission</b>: you upload your file or paste your Google Doc link, and tap submit.'
       ]},
-      {h:'Los materiales de cada sesión'},
-      'Dentro de cada semana verás la ficha en <b>PDF</b> (para leer), en <b>Word</b> (para editarla en tu computadora o en Google Docs) y el <b>visor de clase</b> con las diapositivas que usó el profesor.',
-      {nota:'Las diapositivas se ven en el portal pero no se descargan. La ficha sí puedes bajarla en los dos formatos.'}
+      {h:'The materials for each session'},
+      'Inside each week you will find the worksheet in <b>PDF</b> (to read), in <b>Word</b> (to edit it on your computer or in Google Docs), and the <b>class viewer</b> with the slides your teacher used.',
+      {nota:'The slides can be viewed in the portal but not downloaded. You can download the worksheet in both formats.'}
     ]},
 
-  { icon:'📄', titulo:'Responder y entregar una ficha', busca:'ficha worksheet guardar enviar entregar borrador save submit',
-    sub:'Las fichas se responden dentro del portal. No hace falta imprimirlas ni pasarlas a Word.',
+  { icon:'📄', titulo:'Answering and submitting a worksheet', busca:'worksheet save submit draft',
+    sub:'Worksheets are answered inside the portal. There is no need to print them or copy them into Word.',
     cuerpo:[
       {pasos:[
-        'Abre la sesión que toca desde <b>Classes → tu grado → la unidad → la semana</b>.',
-        'La ficha se abre con sus campos: escribes directamente en la pantalla.',
-        'Se <b>autoguarda</b> mientras escribes, un segundo y medio después de la última tecla. Arriba verás el aviso de guardado.',
-        'Cuando termines, pulsa <b>Submit / Entregar</b>. Ese es el momento en el que tu profesor la recibe.'
+        'Open the right session from <b>Classes → your grade → the unit → the week</b>.',
+        'The worksheet opens with its fields: you write directly on the screen.',
+        'It <b>autosaves</b> as you type, a second and a half after your last keystroke. You will see the save notice at the top.',
+        'When you finish, tap <b>Submit</b>. That is the moment your teacher receives it.'
       ]},
-      {nota:'<b>Guardar no es entregar.</b> Mientras solo guardas, tu trabajo queda como borrador y tu profesor no lo ve en su lista. La entrega es el botón de enviar.', tipo:'warn'},
-      {h:'Tu trabajo va a tu cuenta, no al equipo'},
-      'Puedes empezar una ficha en la sala de cómputo y terminarla en casa: al volver a abrirla aparece lo que escribiste. Si la copia del equipo es más reciente que la de tu cuenta, el portal se queda con la del equipo y te ofrece deshacerlo. Nunca se borra nada.',
-      {nota:'Si has entrado al portal en otra pestaña y la sesión se cerró, la ficha sigue funcionando pero solo guarda en ese equipo, y te lo dice en la barra. Vuelve a entrar antes de escribir mucho.', tipo:'warn'}
+      {nota:'<b>Saving is not submitting.</b> While you only save, your work stays as a draft and your teacher does not see it in their list. The submission happens with the submit button.', tipo:'warn'},
+      {h:'Your work goes to your account, not to the computer'},
+      'You can start a worksheet in the computer lab and finish it at home: when you open it again, what you wrote is there. If the copy on the computer is more recent than the one in your account, the portal keeps the computer’s copy and offers to undo it. Nothing is ever deleted.',
+      {nota:'If you signed in to the portal in another tab and the session closed, the worksheet keeps working but only saves on that computer, and the bar tells you so. Sign in again before writing too much.', tipo:'warn'}
     ]},
 
-  { icon:'📚', titulo:'Readers y controles de lectura', busca:'reader lectura libro capitulo control examen read along',
-    sub:'Los libros graduados con actividades por capítulo, y el control de lectura de cada uno.',
+  { icon:'📚', titulo:'Readers and reading checks', busca:'reader reading book chapter check exam read along',
+    sub:'The graded readers with activities by chapter, and the reading check for each one.',
     cuerpo:[
-      'Entra por <b>Classes → tu grado → Readers</b>. Cada libro se lee <b>en tu nivel</b>: al abrirlo eliges A2, B1, B2 o C1 y el texto cambia de dificultad, no solo de tamaño.',
+      'Go to <b>Classes → your grade → Readers</b>. Each book is read <b>at your level</b>: when you open it you choose A2, B1, B2 or C1, and the text changes in difficulty, not just in length.',
       {h:'Read along'},
-      'Es la pantalla de lectura con audio. El tiempo que pasas ahí queda registrado y tu profesor lo ve: no da nota, pero es la prueba de que has leído.',
-      {h:'El control del capítulo'},
+      'This is the reading screen with audio. The time you spend there is recorded and your teacher can see it: it does not give a grade, but it is proof that you have read.',
+      {h:'The chapter check'},
       {lista:[
-        'Se llega desde la tarjeta <b>📝 EXAMS</b> del selector de niveles del libro.',
-        'Tu profesor lo <b>abre y lo cierra</b>. Si no está abierto, no puedes rendirlo.',
-        'Mientras el control de un capítulo está abierto, <b>ese capítulo se cierra en la lectura</b>, y en todos los niveles del libro. Al cerrarse el control, la lectura vuelve sola.'
+        'You get to it from the <b>📝 EXAMS</b> card in the book’s level selector.',
+        'Your teacher <b>opens and closes it</b>. If it is not open, you cannot take it.',
+        'While a chapter’s check is open, <b>that chapter is closed in the reading</b>, and in every level of the book. When the check closes, the reading reopens on its own.'
       ]},
       {h:'📊 My reading report'},
-      'En Readers tienes tu informe: la nota de cada capítulo, tu tiempo de lectura y tu nota general. La nota del capítulo es la de tu <b>mejor intento</b>.'
+      'In Readers you have your report: the grade for each chapter, your reading time, and your overall grade. The chapter grade is from your <b>best attempt</b>.'
     ]},
 
-  { icon:'📋', titulo:'Exámenes de unidad', busca:'examen unidad unit exam practica oficial writing listening',
-    sub:'El examen de tu unidad con su reader, en tu nivel, en versión de práctica y en versión oficial.',
+  { icon:'📋', titulo:'Unit exams', busca:'exam unit practice official writing listening',
+    sub:'Your unit’s exam with its reader, at your level, in a practice version and an official version.',
     cuerpo:[
-      'Se entra por <b>Classes → tu grado → 📋 Unit Exams</b>. Lo primero que ves es una tarjeta por <b>bloque de unidades</b> (1 y 2, 3 y 4, 5 y 6). Los bloques que todavía no tienen examen aparecen apagados.',
+      'You get to it from <b>Classes → your grade → 📋 Unit Exams</b>. The first thing you see is a card for each <b>block of units</b> (1 and 2, 3 and 4, 5 and 6). Blocks that do not have an exam yet appear greyed out.',
       {lista:[
-        '<b>Práctica</b> — para entrenar. Puedes rendirla cuando tu profesor la abra.',
-        '<b>Oficial</b> — la que cuenta. Se abre solo el día que corresponde.'
+        '<b>Practice</b> — to train. You can take it once your teacher opens it.',
+        '<b>Official</b> — the one that counts. It only opens on the day it is scheduled.'
       ]},
-      'Tiene siete partes: multiple choice, true/false, word formation, key word transformations, word order, listening y writing. Las seis primeras te dan la nota al instante en la escala AD·A·B·C.',
-      {nota:'El <b>writing no se corrige solo</b>: lo lee y lo califica tu profesor, y te llega su comentario.'},
-      {nota:'Si el examen no está abierto para ti, no aparece su contenido. No es un fallo de la página: es que tu profesor todavía no lo ha abierto.', tipo:'warn'}
+      'It has seven parts: multiple choice, true/false, word formation, key word transformations, word order, listening and writing. The first six give you the grade instantly on the AD·A·B·C scale.',
+      {nota:'<b>Writing is not marked automatically</b>: your teacher reads and grades it, and their comment reaches you.'},
+      {nota:'If the exam is not open for you, its content does not appear. It is not a page fault: your teacher simply has not opened it yet.', tipo:'warn'}
     ]},
 
-  { icon:'📊', titulo:'Mi progreso y mi resultado final', busca:'progreso notas resultados historial cefr nivel final reporte padres',
+  { icon:'📊', titulo:'My progress and my final result', busca:'progress grades results history cefr level final report parents',
     cuerpo:[
-      {h:'📊 My Progress (en la barra)'},
-      'Todos tus exámenes y prácticas: qué rendiste, cuándo, con qué puntaje y en qué partes estuviste más fuerte o más flojo.',
-      {h:'🏅 Resultado final (English → My results)'},
-      'Tu nivel CEFR final del año y el reporte que recibe tu familia, con su PDF para descargar.'
+      {h:'📊 My Progress (on the bar)'},
+      'All your exams and practice: what you took, when, with what score, and which parts you were stronger or weaker in.',
+      {h:'🏅 Final result (English → My results)'},
+      'Your final CEFR level for the year and the report your family receives, with its PDF to download.'
     ]},
 
-  { icon:'👤', titulo:'Mi cuenta y mi contraseña', busca:'contraseña cambiar cuenta password seguridad',
+  { icon:'👤', titulo:'My account and my password', busca:'password change account security',
     cuerpo:[
       {pasos:[
-        'Entra en <b>👤 Mi cuenta</b>.',
-        'Escribe la contraseña nueva dos veces (mínimo 8 caracteres).',
-        'Pulsa <b>Guardar nueva contraseña</b>. El cambio es inmediato.'
+        'Go to <b>👤 My account</b>.',
+        'Type the new password twice (at least 8 characters).',
+        'Tap <b>Save new password</b>. The change is immediate.'
       ]},
-      {nota:'Elige una frase corta que recuerdes, con letras y números. <b>No compartas tu contraseña con nadie</b>, tampoco con un compañero: lo que se haga con tu cuenta queda registrado a tu nombre.', tipo:'warn'}
+      {nota:'Choose a short phrase you will remember, with letters and numbers. <b>Do not share your password with anyone</b>, not even a classmate: whatever is done with your account is recorded under your name.', tipo:'warn'}
     ]},
 
-  { icon:'🔒', titulo:'Por qué no veo algo que sí tiene un compañero', busca:'candado bloqueado locked no veo falta no aparece',
+  { icon:'🔒', titulo:'Why I cannot see something a classmate has', busca:'lock locked cannot see missing does not appear',
     cuerpo:[
-      'Cuando una tarjeta sale con un <b>candado 🔒</b>, existe pero todavía no está abierta para tu grado o para ti. Se abre por tres motivos distintos:',
+      'When a card shows a <b>🔒 lock</b>, it exists but is not yet open for your grade or for you. It stays locked for three different reasons:',
       {lista:[
-        'Tu profesor <b>aún no la ha activado</b> (es lo más frecuente: el material se abre cuando la clase llega ahí).',
-        'La actividad es de <b>otro grado</b> o de otro nivel.',
-        'Es un <b>examen</b>, y los exámenes se abren solo durante su ventana.'
+        'Your teacher <b>has not activated it yet</b> (this is the most common reason: material opens once the class gets there).',
+        'The activity belongs to <b>another grade</b> or another level.',
+        'It is an <b>exam</b>, and exams only open during their window.'
       ]},
-      'Si crees que debería estar abierta, díselo a tu profesor: lo abre él desde su panel, en el momento.'
+      'If you think it should be open, tell your teacher: they can open it from their panel right away.'
     ]},
 
-  { icon:'🆘', titulo:'Si algo no funciona', busca:'problema error fallo no carga no guarda lento ayuda soporte',
+  { icon:'🆘', titulo:'If something is not working', busca:'problem error fault will not load will not save slow help support',
     cuerpo:[
-      {tabla:{cols:['Lo que ves','Qué hacer'],filas:[
-        ['La página se ve como antes del cambio','Pulsa <kbd>Ctrl</kbd>+<kbd>F5</kbd> (en Mac <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd>) para que el navegador traiga la versión nueva.'],
-        ['«Tu sesión expiró» al recargar','Cierra todas las pestañas del portal, abre una sola y vuelve a entrar.'],
-        ['No guarda mi trabajo','Comprueba que arriba aparece tu nombre. Sin sesión, la actividad solo guarda en ese equipo y te lo avisa en la barra.'],
-        ['No puedo abrir un examen','Está cerrado. Solo lo abre tu profesor.'],
-        ['El audio no suena','Sube el volumen del equipo y prueba con auriculares. Si sigue sin sonar, avisa al profesor: puede darte la hoja en papel.'],
-        ['Nada de lo anterior','Escribe a tu profesor o a <b>pbaca@nordic-school.edu.pe</b> contando en qué pantalla estabas.']
+      {tabla:{cols:['What you see','What to do'],filas:[
+        ['The page looks like it did before the update','Press <kbd>Ctrl</kbd>+<kbd>F5</kbd> (on Mac <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd>) so the browser fetches the new version.'],
+        ['“Your session expired” when reloading','Close all the portal tabs, open just one, and sign in again.'],
+        ['My work is not saving','Check that your name shows at the top. Without a session, the activity only saves on that computer and the bar tells you so.'],
+        ['I cannot open an exam','It is closed. Only your teacher can open it.'],
+        ['The audio does not play','Turn up the computer’s volume and try headphones. If it still does not play, tell your teacher: they can give you the paper sheet.'],
+        ['None of the above','Write to your teacher or to <b>pbaca@nordic-school.edu.pe</b> telling them which screen you were on.']
       ]}}
     ]}
 ]},
@@ -177,216 +177,216 @@ student: { secciones: [
 /* ──────────────────────────── PROFESOR ──────────────────────────── */
 teacher: { secciones: [
 
-  { icon:'🧭', titulo:'Tu panel, grupo por grupo', busca:'menu grupos barra lateral panel donde esta navegacion',
-    sub:'La barra va por grupos que se pliegan. El criterio es qué vas a HACER, no qué es cada cosa.',
+  { icon:'🧭', titulo:'Your panel, group by group', busca:'menu groups sidebar panel where is navigation',
+    sub:'The bar is organized into groups that collapse. The criterion is what you are going to DO, not what each thing is.',
     cuerpo:[
-      {tabla:{cols:['Grupo','Para qué es','Qué hay dentro'],filas:[
-        ['👥 Alumnos','Suelto arriba: es por donde se entra casi siempre.','Tus alumnos, su ficha y su avance.'],
-        ['✅ Corrección','Lo que espera una nota tuya, o lo que hay que abrir para que se pueda entregar.','Productos de unidad · Corregir fichas · Exámenes de unidad · Controles de lectura · Fun for Nordic'],
-        ['📈 Seguimiento','Solo se mira. No se toca nada.','Resultados · Resultado final · Tiempo de pantalla · Honestidad'],
-        ['🏫 Clases','Dar clase: la materia, la secuencia, el material y tus herramientas.','Classes · French · Scope &amp; Sequence · Materiales de clase · Little Readers · Pizarra · Corrector de material'],
-        ['🧸 Cursos Nordic','Los cursos propios del colegio.','Starters · Movers · Flyers · Cap sur le français'],
-        ['🎓 Cambridge','El examen oficial: sus apps y el candado que abre las prácticas.','YLE + Main Suite · Panel YLE · Simulacros y Practice · Use of English · Info Cambridge · Abrir Practice Tests'],
-        ['🎮 Actividades','Lo que usan tus alumnos, para que lo veas antes de mandarlo.','Games Lab · NIShoot Live · MUN Academy · Phonics · Pronunciación'],
-        ['🔐 Permisos','Lo que abres y cierras por grado.','Activar unidades · Unidades por grado']
+      {tabla:{cols:['Group','What it is for','What is inside'],filas:[
+        ['👥 Students','On its own at the top: it is where you go in almost every time.','Your students, their profile and their progress.'],
+        ['✅ Marking','Whatever is waiting for a grade from you, or needs opening so it can be submitted.','Unit products · Mark worksheets · Unit exams · Reading checks · Fun for Nordic'],
+        ['📈 Monitoring','Only for viewing. Nothing gets changed here.','Results · Final result · Screen time · Honesty'],
+        ['🏫 Classes','Teaching: the subject, the sequence, the material and your tools.','Classes · French · Scope &amp; Sequence · Class materials · Little Readers · Whiteboard · Material checker'],
+        ['🧸 Nordic courses','The school’s own courses.','Starters · Movers · Flyers · Cap sur le français'],
+        ['🎓 Cambridge','The official exam: its apps and the lock that opens practice.','YLE + Main Suite · YLE panel · Mocks and Practice · Use of English · Cambridge info · Open Practice Tests'],
+        ['🎮 Activities','What your students use, so you can see it before assigning it.','Games Lab · NIShoot Live · MUN Academy · Phonics · Pronunciation'],
+        ['🔐 Permissions','What you open and close by grade.','Activate units · Units by grade']
       ]}},
-      {nota:'<b>Solo ves los grupos para los que tienes acceso.</b> Un grupo sin pestañas no se pinta. Si te falta algo que necesitas, pídeselo a coordinación: los accesos los da el administrador.'},
-      {nota:'El grupo donde está la pestaña abierta se despliega solo; el resto se queda como lo dejaste la última vez. Si no encuentras una pestaña, <b>abre las cabeceras</b>: nacen plegadas.', tipo:'warn'}
+      {nota:'<b>You only see the groups you have access to.</b> A group with no tabs does not appear. If something you need is missing, ask coordination: access is granted by the administrator.'},
+      {nota:'The group with the currently open tab expands on its own; the rest stay as you left them last time. If you cannot find a tab, <b>open the headers</b>: they start collapsed.', tipo:'warn'}
     ]},
 
-  { icon:'✅', titulo:'Corregir: las cinco pantallas', busca:'corregir calificar nota rubrica entregas fichas productos',
-    sub:'Todo lo que espera nota tuya está en este grupo, y en ningún otro sitio.',
+  { icon:'✅', titulo:'Marking: the five screens', busca:'mark grade rubric submissions worksheets products',
+    sub:'Everything waiting for a grade from you is in this group, and nowhere else.',
     cuerpo:[
-      {h:'🎯 Productos de unidad'},
-      'El producto final de cada unidad. Arriba va el <b>avance por criterio</b> y debajo la nota. Aquí también marcas un trabajo para que salga en la <b>galería de la unidad</b>, con una casilla.',
-      {h:'✅ Corregir fichas'},
+      {h:'🎯 Unit products'},
+      'The final product for each unit. At the top is <b>progress by criterion</b> and below it the grade. This is also where you mark a piece of work to appear in the <b>unit gallery</b>, with a checkbox.',
+      {h:'✅ Mark worksheets'},
       {pasos:[
-        'Elige grado, unidad, semana y sesión.',
-        'Ves quién entregó y cuántos faltan.',
-        'Al abrir a un alumno tienes sus respuestas a la izquierda y la <b>rúbrica a la derecha</b>, con un botón por puntuación.',
-        'La nota se suma sola. <b>Guardar y siguiente</b> encadena alumnos sin volver a la lista.'
+        'Choose grade, unit, week and session.',
+        'See who submitted and how many are still missing.',
+        'When you open a student, their answers are on the left and the <b>rubric on the right</b>, with a button for each score.',
+        'The grade adds up on its own. <b>Save and next</b> moves from one student to the next without going back to the list.'
       ]},
-      {nota:'La rúbrica se define <b>una vez por sesión</b> y se aplica a los cuatro niveles: el criterio es el mismo, lo que cambia es la exigencia.'},
-      {h:'📋 Exámenes de unidad'},
-      'Se entra por una tarjeta por <b>bloque de unidades</b> (1 y 2, 3 y 4, 5 y 6). Dentro, una fila por examen y otra por nivel, con el botón 🔓/🔒 para abrir y cerrar. Puedes abrir para todos, para un grado, para un salón o para un alumno concreto: <b>gana siempre el alcance más específico</b>.',
+      {nota:'The rubric is set <b>once per session</b> and applies to all four levels: the criterion is the same, what changes is how demanding it is.'},
+      {h:'📋 Unit exams'},
+      'You get to it through a card for each <b>block of units</b> (1 and 2, 3 and 4, 5 and 6). Inside, a row per exam and another per level, with the 🔓/🔒 button to open and close. You can open it for everyone, for a grade, for a homeroom, or for one specific student: <b>the most specific scope always wins</b>.',
       {lista:[
-        'Las seis primeras partes se corrigen solas, en la escala AD·A·B·C.',
-        'El <b>writing lo calificas tú</b>: aparece en la cola de producciones escritas.',
-        'Cada nivel trae los botones <b>🖨️ Papel · 🔑 Clave · 🎧 Guion</b> para dar el examen impreso. La clave y el guion no se le sirven a una cuenta de alumno.'
+        'The first six parts mark themselves, on the AD·A·B·C scale.',
+        '<b>You grade the writing</b>: it appears in the written work queue.',
+        'Each level has the <b>🖨️ Paper · 🔑 Key · 🎧 Script</b> buttons for giving the exam on paper. The key and the script are never served to a student account.'
       ]},
-      {h:'📖 Controles de lectura'},
-      'Abres y cierras el control de cada capítulo de cada reader. <b>Mientras el control está abierto, ese capítulo se cierra en la lectura</b> y en todos los niveles del libro, para que nadie lo responda leyendo. Al cerrarlo, la lectura vuelve sola.',
-      'Tiene tres pestañas: las notas por capítulo, el detalle por alumno y el <b>tiempo de lectura</b> por semana. Los que no han leído nada salen igual, en gris: son la mitad de la información.',
+      {h:'📖 Reading checks'},
+      'You open and close the check for each chapter of each reader. <b>While the check is open, that chapter is closed in the reading</b>, and in every level of the book, so no one can answer it while reading. When you close it, the reading reopens on its own.',
+      'It has three tabs: grades by chapter, detail by student, and <b>reading time</b> by week. Students who have not read anything still show up, in grey: they are half the picture.',
       {h:'🧸 Fun for Nordic'},
-      'Las entregas de los tres cursos de primaria, con pastillas para filtrar por nivel (Starters, Movers, Flyers).'
+      'The submissions for the three primary courses, with pills to filter by level (Starters, Movers, Flyers).'
     ]},
 
-  { icon:'📈', titulo:'Seguimiento: mirar sin tocar', busca:'resultados estadisticas tiempo pantalla honestidad cefr',
+  { icon:'📈', titulo:'Monitoring: look without touching', busca:'results statistics screen time honesty cefr',
     cuerpo:[
       {lista:[
-        '<b>📝 Resultados</b> — todos los intentos de tus alumnos: mocks, prácticas y actividades, con el desglose por parte.',
-        '<b>🎓 Resultado final</b> — el nivel CEFR final de cada alumno y el reporte para la familia.',
-        '<b>⏱️ Tiempo de pantalla</b> — minutos por alumno y semana.',
-        '<b>🛡️ Honestidad</b> — los avisos del sistema anti-trampa.'
+        '<b>📝 Results</b> — all your students’ attempts: mocks, practice and activities, with the breakdown by part.',
+        '<b>🎓 Final result</b> — each student’s final CEFR level and the report for the family.',
+        '<b>⏱️ Screen time</b> — minutes per student and week.',
+        '<b>🛡️ Honesty</b> — the alerts from the anti-cheating system.'
       ]},
-      {nota:'El tiempo de pantalla mide el tiempo <b>registrado</b>: es un suelo, no cuenta la página abierta sin actividad. Cada sesión se acota a 120 minutos porque algunas quedan abiertas. Los dos avisos están escritos en la propia pantalla.'}
+      {nota:'Screen time measures <b>logged</b> time: it is a floor, it does not count a page left open with no activity. Each session is capped at 120 minutes because some are left open. Both notes are written on the screen itself.'}
     ]},
 
-  { icon:'🏫', titulo:'Clases: material y herramientas', busca:'materiales fichas diapositivas subir scope secuencia pizarra corrector',
+  { icon:'🏫', titulo:'Classes: material and tools', busca:'materials worksheets slides upload scope sequence whiteboard checker',
     cuerpo:[
-      {h:'📄 Materiales de clase — subir tus fichas'},
+      {h:'📄 Class materials — uploading your worksheets'},
       {pasos:[
-        'Entra en <b>Clases → Materiales de clase</b>.',
-        'Arrastra los archivos. <b>La ruta sale del nombre</b>: <code>u4w1s1-worksheet-a2.pdf</code> va solo a 9.º / unidad 4 / semana 1.',
-        'Cabe una unidad entera de una vez.'
+        'Go to <b>Classes → Class materials</b>.',
+        'Drag the files in. <b>The path comes from the file name</b>: <code>u4w1s1-worksheet-a2.pdf</code> goes straight to Grade 9 / unit 4 / week 1.',
+        'A whole unit fits in one go.'
       ]},
-      {nota:'Puedes subir, pero <b>borrar solo puede el administrador</b>. Si subiste algo mal, avisa a coordinación.', tipo:'warn'},
+      {nota:'You can upload, but <b>only the administrator can delete</b>. If you uploaded something by mistake, tell coordination.', tipo:'warn'},
       {h:'📚 Scope &amp; Sequence'},
-      'La secuencia oficial del año: qué nivel le toca a cada grado y en qué orden.',
+      'The official sequence for the year: which level each grade covers and in what order.',
       {h:'🧒 Little Readers'},
-      'Los libros de los más pequeños, para consulta.',
-      {h:'📝 Pizarra y ✍️ Corrector de material'},
-      'La pizarra para explicar en clase, y el corrector para revisar el material que preparas antes de repartirlo.'
+      'The books for the youngest students, for reference.',
+      {h:'📝 Whiteboard and ✍️ Material checker'},
+      'The whiteboard for explaining things in class, and the checker for reviewing material you prepare before handing it out.'
     ]},
 
-  { icon:'🎓', titulo:'Cambridge', busca:'cambridge yle mocks practice simulacros use of english info',
+  { icon:'🎓', titulo:'Cambridge', busca:'cambridge yle mocks practice info',
     cuerpo:[
       {lista:[
-        '<b>🎓 YLE + Main Suite</b> — el mapa que ven tus alumnos: las dos ramas y sus niveles.',
-        '<b>🛡️ Panel YLE</b> — el seguimiento de los exámenes de Young Learners de tus grados.',
-        '<b>🎧 Simulacros y Practice</b> — abre los exámenes en formato Cambridge (sale del portal, a la sección de simulacros).',
-        '<b>🧩 Use of English</b> — la app de Part 1 del B2 First.',
-        '<b>📘 Info Cambridge</b> — qué es cada examen, cuántas partes tiene, cuánto dura y cómo se puntúa. Para responder a las familias.',
-        '<b>🔓 Abrir Practice Tests</b> — el candado: qué grado puede rendir las prácticas.'
+        '<b>🎓 YLE + Main Suite</b> — the map your students see: both tracks and their levels.',
+        '<b>🛡️ YLE panel</b> — the tracking of the Young Learners exams for your grades.',
+        '<b>🎧 Mocks and Practice</b> — opens the exams in Cambridge format (leaves the portal, to the mocks section).',
+        '<b>🧩 Use of English</b> — the Part 1 app for B2 First.',
+        '<b>📘 Cambridge info</b> — what each exam is, how many parts it has, how long it takes and how it is scored. For answering families.',
+        '<b>🔓 Open Practice Tests</b> — the lock: which grade can take the practice tests.'
       ]},
-      {nota:'Las entradas que empiezan por <b>🔓 Abrir</b> no son la actividad: son el permiso. Abren o cierran el acceso de un grado.'}
+      {nota:'Entries starting with <b>🔓 Open</b> are not the activity itself: they are the permission. They open or close access for a grade.'}
     ]},
 
-  { icon:'🔐', titulo:'Lo que puedes abrir y cerrar', busca:'permisos activar unidades abrir candado acceso grado',
+  { icon:'🔐', titulo:'What you can open and close', busca:'permissions activate units open lock access grade',
     cuerpo:[
       {lista:[
-        '<b>📚 Activar unidades</b> — qué unidades ve cada grado.',
-        '<b>🔐 Unidades por grado</b> — qué parte de los cursos Fun for Nordic ve cada grado.',
-        '<b>📋 Exámenes de unidad</b> y <b>📖 Controles de lectura</b> (en Corrección) — abren y cierran cada examen.',
-        '<b>🔓 Abrir Practice Tests</b> (en Cambridge).'
+        '<b>📚 Activate units</b> — which units each grade sees.',
+        '<b>🔐 Units by grade</b> — which part of the Fun for Nordic courses each grade sees.',
+        '<b>📋 Unit exams</b> and <b>📖 Reading checks</b> (under Marking) — open and close each exam.',
+        '<b>🔓 Open Practice Tests</b> (under Cambridge).'
       ]},
-      {nota:'Estas pestañas solo aparecen si tienes grados asignados. Si no las ves, es que coordinación todavía no te ha asignado ninguno.', tipo:'warn'}
+      {nota:'These tabs only appear if you have grades assigned. If you do not see them, coordination has not assigned you any yet.', tipo:'warn'}
     ]},
 
-  { icon:'❗', titulo:'Lo que solo puede el administrador', busca:'no puedo permisos crear usuario borrar admin coordinacion',
+  { icon:'❗', titulo:'What only the administrator can do', busca:'cannot permissions create user delete admin coordination',
     cuerpo:[
       {lista:[
-        'Crear, editar, suspender o eliminar cuentas de alumnos y profesores.',
-        'Dar accesos a otro profesor.',
-        'Borrar material ya subido al bucket de clase.',
-        'Abrir los Mocks (los simulacros oficiales).',
-        'Ver las estadísticas globales del colegio.'
+        'Create, edit, suspend or delete student and teacher accounts.',
+        'Grant access to another teacher.',
+        'Delete material already uploaded to the class bucket.',
+        'Open the Mocks (the official mock exams).',
+        'View the school’s overall statistics.'
       ]},
-      'Todo eso se pide a coordinación: <b>pbaca@nordic-school.edu.pe</b>.'
+      'All of that is requested from coordination: <b>pbaca@nordic-school.edu.pe</b>.'
     ]}
 ]},
 
 /* ─────────────────────────── ADMINISTRADOR ─────────────────────────── */
 admin: { secciones: [
 
-  { icon:'🧭', titulo:'El panel, grupo por grupo', busca:'menu grupos admin panel navegacion donde esta',
-    sub:'Nueve grupos y el Resumen suelto arriba. El profesor ve estos mismos grupos, con menos pestañas dentro.',
+  { icon:'🧭', titulo:'The panel, group by group', busca:'menu groups admin panel navigation where is',
+    sub:'Nine groups and the Overview on its own at the top. Teachers see these same groups, with fewer tabs inside.',
     cuerpo:[
-      {tabla:{cols:['Grupo','Qué hay dentro'],filas:[
-        ['📊 Resumen','La portada: cuántos alumnos, cuántos profesores y la actividad reciente.'],
-        ['👥 Personas','Usuarios · Profesores'],
-        ['✅ Corrección','Productos de unidad · Corregir fichas · Exámenes de unidad · Controles de lectura · Fun for Nordic'],
-        ['📈 Seguimiento','Estadísticas · Resultados · Resultado final · Tiempo de pantalla · Honestidad'],
-        ['🏫 Clases','Classes · French · Scope &amp; Sequence · Materiales de clase · Little Readers · Pizarra · Corrector de material · Library'],
-        ['🧸 Cursos Nordic','Starters · Movers · Flyers · Cap sur le français'],
-        ['🎓 Cambridge','YLE + Main Suite · Panel YLE · Plan de estudio · Simulacros y Practice · Use of English · Info Cambridge · Abrir Mocks · Abrir Practice Tests'],
-        ['🎮 Actividades','Games Lab · NIShoot Live · MUN Academy · Phonics · Pronunciación'],
-        ['🔐 Permisos','Accesos · Activar unidades · Unidades por grado']
+      {tabla:{cols:['Group','What is inside'],filas:[
+        ['📊 Overview','The homepage: how many students, how many teachers, and recent activity.'],
+        ['👥 People','Users · Teachers'],
+        ['✅ Marking','Unit products · Mark worksheets · Unit exams · Reading checks · Fun for Nordic'],
+        ['📈 Monitoring','Statistics · Results · Final result · Screen time · Honesty'],
+        ['🏫 Classes','Classes · French · Scope &amp; Sequence · Class materials · Little Readers · Whiteboard · Material checker · Library'],
+        ['🧸 Nordic courses','Starters · Movers · Flyers · Cap sur le français'],
+        ['🎓 Cambridge','YLE + Main Suite · YLE panel · Study plan · Mocks and Practice · Use of English · Cambridge info · Open Mocks · Open Practice Tests'],
+        ['🎮 Activities','Games Lab · NIShoot Live · MUN Academy · Phonics · Pronunciation'],
+        ['🔐 Permissions','Access · Activate units · Units by grade']
       ]}},
-      {nota:'El criterio del reparto: <b>Corrección</b> es lo que espera una nota o hay que abrir para que se entregue; <b>Seguimiento</b> es lo que solo se mira; <b>Permisos</b> es lo que se abre y se cierra por grado.'}
+      {nota:'The criterion behind the layout: <b>Marking</b> is whatever waits for a grade or needs opening so it can be submitted; <b>Monitoring</b> is for viewing only; <b>Permissions</b> is what gets opened and closed by grade.'}
     ]},
 
-  { icon:'👥', titulo:'Personas: crear cuentas y dar accesos', busca:'usuario crear alumno profesor contraseña demo suspender eliminar',
+  { icon:'👥', titulo:'People: creating accounts and granting access', busca:'user create student teacher password demo suspend delete',
     cuerpo:[
-      {h:'👥 Usuarios'},
-      'Están <b>todos</b>: alumnos, profesores, administradores y cuentas de demostración. Los filtros son una fila de botones con el recuento de cada tipo (Todos · Alumnos · Profesores · Admins · Demos) más grado, sección y año académico.',
-      {tabla:{cols:['Botón de la fila','Qué hace'],filas:[
-        ['👁️ Ver como','Abre el portal <b>tal como lo ve ese alumno</b>, con sus candados. Una barra arriba recuerda quién está realmente dentro.'],
-        ['🔧 Accesos','Abre o cierra actividades <b>para ese alumno concreto</b>, por encima de lo que tenga su grado.'],
-        ['🔑 Restablecer','Asigna una contraseña temporal nueva. Es lo que se hace cuando un alumno no puede entrar.'],
-        ['Editar','Nombre, grado, sección, nivel CEFR y la casilla 🧪 <b>demo</b>.'],
-        ['Eliminar','Borra la cuenta. No tiene vuelta atrás.']
+      {h:'👥 Users'},
+      '<b>Everyone</b> is here: students, teachers, administrators and demo accounts. The filters are a row of buttons with the count for each type (All · Students · Teachers · Admins · Demos) plus grade, section and academic year.',
+      {tabla:{cols:['Row button','What it does'],filas:[
+        ['👁️ View as','Opens the portal <b>exactly as that student sees it</b>, with their locks. A bar at the top reminds you who is really signed in.'],
+        ['🔧 Access','Opens or closes activities <b>for that specific student</b>, on top of whatever their grade has.'],
+        ['🔑 Reset','Assigns a new temporary password. This is what you do when a student cannot sign in.'],
+        ['Edit','Name, grade, section, CEFR level and the 🧪 <b>demo</b> checkbox.'],
+        ['Delete','Deletes the account. There is no going back.']
       ]}},
-      {nota:'<b>«Demo» no es un rol.</b> Los roles siguen siendo alumno, profesor y administrador; demo es una casilla aparte para las cuentas de prueba. Márcala en Editar, después de crear la cuenta.'},
-      {nota:'En <b>Ver como</b> no se puede cambiar la contraseña del alumno: es deliberado. Para eso está 🔑 Restablecer.', tipo:'warn'},
-      {h:'👨‍🏫 Profesores'},
-      'Aquí se decide qué ve cada profesor: <b>Resultados</b>, <b>Alumnos</b> y los grados que tiene asignados. Un profesor sin nada asignado entra al portal y solo lee «El administrador aún no te ha asignado accesos».',
-      {nota:'Al crear una pestaña o un grado nuevos, <b>los profesores ya configurados no los reciben solos</b>: hay que asignárselos.', tipo:'warn'}
+      {nota:'<b>“Demo” is not a role.</b> The roles are still student, teacher and administrator; demo is a separate checkbox for test accounts. Check it in Edit, after creating the account.'},
+      {nota:'In <b>View as</b> you cannot change the student’s password: that is deliberate. That is what 🔑 Reset is for.', tipo:'warn'},
+      {h:'👨‍🏫 Teachers'},
+      'This is where you decide what each teacher sees: <b>Results</b>, <b>Students</b>, and the grades assigned to them. A teacher with nothing assigned signs in to the portal and only reads “The administrator has not assigned you any access yet.”',
+      {nota:'When you create a new tab or a new grade, <b>teachers already set up do not receive it automatically</b>: you have to assign it to them.', tipo:'warn'}
     ]},
 
-  { icon:'🔐', titulo:'Cómo funcionan los accesos', busca:'accesos nodos candado grado alumno permisos matriz abrir cerrar',
-    sub:'Tres niveles, y gana siempre el más específico.',
+  { icon:'🔐', titulo:'How access works', busca:'access nodes lock grade student permissions matrix open close',
+    sub:'Three levels, and the most specific always wins.',
     cuerpo:[
-      {tabla:{cols:['Nivel','Dónde se toca','Para qué'],filas:[
-        ['Por grado','🔐 Permisos → 🔐 Accesos','La matriz grado × actividad. Es el nivel normal: se abre una actividad para todo un grado.'],
-        ['Por alumno','👥 Usuarios → 🔧 Accesos','Abre o cierra algo para una sola persona, por encima de su grado.'],
-        ['Por examen','✅ Corrección → Exámenes de unidad / Controles de lectura','Ventanas de examen, con alcance todos → grado → salón → alumno.']
+      {tabla:{cols:['Level','Where you change it','What it is for'],filas:[
+        ['By grade','🔐 Permissions → 🔐 Access','The grade × activity matrix. This is the normal level: an activity is opened for a whole grade.'],
+        ['By student','👥 Users → 🔧 Access','Opens or closes something for a single person, on top of their grade.'],
+        ['By exam','✅ Marking → Unit exams / Reading checks','Exam windows, with scope everyone → grade → homeroom → student.']
       ]}},
       {lista:[
-        '<b>Sin fila = cerrado</b> en los exámenes. Si nadie lo abrió, nadie puede rendirlo.',
-        'Lo que ya existía nace <b>abierto</b>; lo que se añade nuevo nace <b>cerrado</b> hasta que se habilita.',
-        'El administrador ve todo siempre, aunque esté cerrado: es la vista previa.'
+        '<b>No row = closed</b> for exams. If no one opened it, no one can take it.',
+        'Whatever already existed starts out <b>open</b>; anything newly added starts out <b>closed</b> until it is enabled.',
+        'The administrator always sees everything, even when it is closed: it is the preview.'
       ]},
-      {h:'Las otras dos puertas'},
+      {h:'The other two doors'},
       {lista:[
-        '<b>📚 Activar unidades</b> — qué unidades ofrece cada grado.',
-        '<b>🔐 Unidades por grado</b> — qué parte de los cursos Fun for Nordic ve cada grado.'
+        '<b>📚 Activate units</b> — which units each grade offers.',
+        '<b>🔐 Units by grade</b> — which part of the Fun for Nordic courses each grade sees.'
       ]}
     ]},
 
-  { icon:'📈', titulo:'Seguimiento y estadísticas', busca:'estadisticas resultados proyeccion diciembre tiempo pantalla honestidad',
+  { icon:'📈', titulo:'Monitoring and statistics', busca:'statistics results projection december screen time honesty',
     cuerpo:[
       {lista:[
-        '<b>📈 Estadísticas</b> — el avance del colegio con su gráfico y la proyección a diciembre.',
-        '<b>📝 Resultados</b> — todos los intentos, filtrables por grado, sección y año.',
-        '<b>🎓 Resultado final</b> — el nivel CEFR final y los reportes para las familias.',
-        '<b>⏱️ Tiempo de pantalla</b> — la respuesta con datos a la pregunta de cuánto tiempo pasan los alumnos en la tablet.',
-        '<b>🛡️ Honestidad</b> — los avisos del anti-trampa.'
+        '<b>📈 Statistics</b> — the school’s progress with its chart and the projection to December.',
+        '<b>📝 Results</b> — every attempt, filterable by grade, section and year.',
+        '<b>🎓 Final result</b> — the final CEFR level and the reports for families.',
+        '<b>⏱️ Screen time</b> — the data-backed answer to how much time students spend on the tablet.',
+        '<b>🛡️ Honesty</b> — the alerts from the anti-cheating system.'
       ]},
-      {nota:'Los recuentos del Resumen <b>incluyen las cuentas demo</b>. Para contar alumnos reales, filtra en Usuarios.', tipo:'warn'}
+      {nota:'The counts on the Overview <b>include demo accounts</b>. To count real students, filter in Users.', tipo:'warn'}
     ]},
 
-  { icon:'🎓', titulo:'Cambridge y el plan de estudio', busca:'cambridge mocks practice yle plan estudio fecha examen',
+  { icon:'🎓', titulo:'Cambridge and the study plan', busca:'cambridge mocks practice yle study plan exam date',
     cuerpo:[
       {lista:[
-        '<b>🎓 YLE + Main Suite</b> — el mapa que ven alumnos y profesores.',
-        '<b>🛡️ Panel YLE</b> — el seguimiento de Young Learners de todos los grados.',
-        '<b>📋 Plan de estudio</b> — la fecha del examen oficial y las indicaciones que aparecen en la pantalla de Cambridge del alumno, por grado o por alumno.',
-        '<b>🎧 Simulacros y Practice</b> — la sección de simulacros (sale del portal).',
-        '<b>🔓 Abrir Mocks</b> y <b>🔓 Abrir Practice Tests</b> — los dos candados.'
+        '<b>🎓 YLE + Main Suite</b> — the map students and teachers see.',
+        '<b>🛡️ YLE panel</b> — the Young Learners tracking for all grades.',
+        '<b>📋 Study plan</b> — the official exam date and the instructions that appear on the student’s Cambridge screen, by grade or by student.',
+        '<b>🎧 Mocks and Practice</b> — the mocks section (leaves the portal).',
+        '<b>🔓 Open Mocks</b> and <b>🔓 Open Practice Tests</b> — the two locks.'
       ]},
-      {nota:'Lo que escribas en el plan de estudio lo lee el alumno en su pantalla de Cambridge, arriba del todo. Es el sitio para avisar de una fecha o dar una instrucción de trimestre.'}
+      {nota:'Whatever you write in the study plan is read by the student on their Cambridge screen, right at the top. It is the place to announce a date or give a term-long instruction.'}
     ]},
 
-  { icon:'🧪', titulo:'Comprobar un cambio antes de anunciarlo', busca:'probar verificar demo pruebas alumno vista previa cache',
+  { icon:'🧪', titulo:'Checking a change before announcing it', busca:'test verify demo trial student preview cache',
     cuerpo:[
       {pasos:[
-        'Usa una <b>cuenta demo</b>, nunca la primera fila de alumno que aparezca: lo que hagas queda en su expediente.',
-        'O entra por <b>👥 Usuarios → 👁️ Ver como</b>, que no escribe nada.',
-        'Si la pantalla se ve como antes, pulsa <kbd>Ctrl</kbd>+<kbd>F5</kbd>: el navegador guarda la versión anterior.'
+        'Use a <b>demo account</b>, never the first student row you find: whatever you do stays on their record.',
+        'Or go through <b>👥 Users → 👁️ View as</b>, which does not write anything.',
+        'If the screen looks like it did before, press <kbd>Ctrl</kbd>+<kbd>F5</kbd>: the browser has saved the previous version.'
       ]},
-      {nota:'Marca las cuentas de prueba con la casilla 🧪 <b>demo</b> en Editar. Así se distinguen de las reales en cualquier listado.'}
+      {nota:'Mark test accounts with the 🧪 <b>demo</b> checkbox in Edit. That way they stand out from real ones in any listing.'}
     ]},
 
-  { icon:'🆘', titulo:'Lo que más preguntan', busca:'problema frecuente no entra no ve error soporte duda',
+  { icon:'🆘', titulo:'The most frequently asked questions', busca:'problem frequent cannot sign in cannot see error support question',
     cuerpo:[
-      {tabla:{cols:['El caso','La respuesta'],filas:[
-        ['«Un alumno no puede entrar»','👥 Usuarios → busca su nombre → 🔑 Restablecer. Comprueba también que la cuenta no esté suspendida.'],
-        ['«Un profesor no ve nada»','👨‍🏫 Profesores: no tiene Resultados ni Alumnos asignados, o no tiene grados.'],
-        ['«Mis alumnos no ven la actividad»','🔐 Accesos: esa actividad está cerrada para su grado. Lo nuevo nace cerrado.'],
-        ['«El examen no les aparece»','Sin fila de apertura, el examen está cerrado. Ábrelo en ✅ Corrección → Exámenes de unidad.'],
-        ['«Se ve la versión de ayer»','<kbd>Ctrl</kbd>+<kbd>F5</kbd> en esa página.'],
-        ['«¿Cuántos alumnos hay de verdad?»','El Resumen incluye las cuentas demo. Filtra en 👥 Usuarios.']
+      {tabla:{cols:['The case','The answer'],filas:[
+        ['“A student cannot sign in”','👥 Users → search their name → 🔑 Reset. Also check that the account is not suspended.'],
+        ['“A teacher cannot see anything”','👨‍🏫 Teachers: they have no Results or Students assigned, or no grades.'],
+        ['“My students cannot see the activity”','🔐 Access: that activity is closed for their grade. New items start out closed.'],
+        ['“The exam does not appear for them”','With no opening row, the exam is closed. Open it in ✅ Marking → Unit exams.'],
+        ['“It shows yesterday’s version”','<kbd>Ctrl</kbd>+<kbd>F5</kbd> on that page.'],
+        ['“How many students are there really?”','The Overview includes demo accounts. Filter in 👥 Users.']
       ]}}
     ]}
 ]}

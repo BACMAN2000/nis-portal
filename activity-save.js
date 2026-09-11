@@ -514,7 +514,7 @@ function porResultados(extra){
     var original = window.NISACT.submit;
     window.NISACT.submit = function(o){
       try{
-        var k = (o && (o.title || o.level)) || 'Resultado';
+        var k = (o && (o.title || o.level)) || 'Result';
         RES[k] = { score:o.score, total:o.total, duration:o.duration, lives:o.lives };
         if(window.NIS_WORK) window.NIS_WORK.touch();
       }catch(e){}

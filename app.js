@@ -1,7 +1,7 @@
 /* ===================== Portal NIS ===================== */
 const CFG = window.NIS_CONFIG;
 if(!window.supabase || !window.supabase.createClient){
-  document.getElementById('app').innerHTML = '<div class="auth-wrap"><div class="auth-card center"><h1>Portal NIS</h1><p class="muted">No se pudo cargar una librería necesaria (conexión). Recarga la página.</p><button class="btn" onclick="location.reload()">Reintentar</button></div></div>';
+  document.getElementById('app').innerHTML = '<div class="auth-wrap"><div class="auth-card center"><h1>NIS Portal</h1><p class="muted">A required library could not be loaded (connection). Reload the page.</p><button class="btn" onclick="location.reload()">Retry</button></div></div>';
 }
 const sb = (window.supabase && window.supabase.createClient) ? window.supabase.createClient(CFG.SUPABASE_URL, CFG.SUPABASE_KEY) : null;
 const $ = (s, r=document) => r.querySelector(s);
@@ -70,11 +70,11 @@ function partsOf(breakdown){
 }
 function cefrRec(level, pct){
   const L = level||'B2';
-  if(pct==null) return {tier:'info', label:'Sin calificar', text:`Esta destreza no se califica automáticamente (la revisa el profesor). No afecta la proyección hacia ${L}.`};
-  if(pct>=80) return {tier:'good', label:`Aprobado alto — ${L}`, text:`Desempeño fuerte en ${L} (${pct}%). Listo para empezar a practicar el nivel siguiente.`};
-  if(pct>=60) return {tier:'good', label:`Aprobado — ${L}`, text:`Aprobado en ${L} (${pct}%); el estándar Cambridge ronda el 60%. Consolidar para asegurar el examen oficial.`};
-  if(pct>=40) return {tier:'warn', label:`Acercándose a ${L}`, text:`Se está acercando a ${L} (${pct}%). Reforzar las partes más bajas antes de presentarse.`};
-  return {tier:'bad', label:`Por debajo de ${L}`, text:`Por debajo de ${L} (${pct}%). Conviene más práctica en este nivel antes del examen oficial.`};
+  if(pct==null) return {tier:'info', label:'Not graded', text:`This skill is not graded automatically (the teacher reviews it). It does not affect the projection towards ${L}.`};
+  if(pct>=80) return {tier:'good', label:`High pass — ${L}`, text:`Strong performance in ${L} (${pct}%). Ready to start practising the next level.`};
+  if(pct>=60) return {tier:'good', label:`Pass — ${L}`, text:`Pass in ${L} (${pct}%); the Cambridge standard is around 60%. Keep consolidating to secure the official exam.`};
+  if(pct>=40) return {tier:'warn', label:`Approaching ${L}`, text:`Approaching ${L} (${pct}%). Strengthen the lowest parts before sitting the exam.`};
+  return {tier:'bad', label:`Below ${L}`, text:`Below ${L} (${pct}%). More practice at this level is recommended before the official exam.`};
 }
 function barRow(label, pct){
   const cls = pct>=70?'var(--good)':pct>=50?'var(--warn)':'var(--bad)';
@@ -107,11 +107,11 @@ function partsBreakdownCard(list){
   const weak=parts.filter(p=>p.avg<50), strong=parts.filter(p=>p.avg>=70);
   const chip=(p,color)=>`<span class="badge" style="background:${color};color:#fff;font-size:.8rem">${esc(p.name)} · ${p.avg}%</span>`;
   return `<div class="card">
-    <h2 style="margin-bottom:2px">Partes del examen — fortalezas y debilidades del grupo</h2>
-    <p class="muted" style="margin-top:0;font-size:.85rem">Promedio por parte sobre los resultados filtrados (${list.length} examen(es)). Lo más débil va primero.</p>
+    <h2 style="margin-bottom:2px">Exam parts — group strengths and weaknesses</h2>
+    <p class="muted" style="margin-top:0;font-size:.85rem">Average per part over the filtered results (${list.length} exam(s)). Weakest first.</p>
     <div class="grid cols-2" style="margin:10px 0">
-      <div><h3 style="color:var(--bad);margin:0 0 6px">⚠️ A reforzar (&lt;50%)</h3>${weak.length?`<div style="display:flex;flex-wrap:wrap;gap:6px">${weak.map(p=>chip(p,'#dc2626')).join('')}</div>`:'<p class="muted">Ninguna parte por debajo del 50%. 👏</p>'}</div>
-      <div><h3 style="color:var(--good);margin:0 0 6px">💪 Fortalezas (≥70%)</h3>${strong.length?`<div style="display:flex;flex-wrap:wrap;gap:6px">${strong.map(p=>chip(p,'#16a34a')).join('')}</div>`:'<p class="muted">Aún ninguna parte ≥70%.</p>'}</div>
+      <div><h3 style="color:var(--bad);margin:0 0 6px">⚠️ Needs work (&lt;50%)</h3>${weak.length?`<div style="display:flex;flex-wrap:wrap;gap:6px">${weak.map(p=>chip(p,'#dc2626')).join('')}</div>`:'<p class="muted">No part below 50%. 👏</p>'}</div>
+      <div><h3 style="color:var(--good);margin:0 0 6px">💪 Strengths (≥70%)</h3>${strong.length?`<div style="display:flex;flex-wrap:wrap;gap:6px">${strong.map(p=>chip(p,'#16a34a')).join('')}</div>`:'<p class="muted">No part at ≥70% yet.</p>'}</div>
     </div>
     <div style="margin-top:6px">${parts.map(p=>barRow(`${p.name} (${p.n})`, p.avg)).join('')}</div>
   </div>`;
@@ -139,16 +139,16 @@ function renderStartupError(error){
   if(!root) return;
   const offline = navigator && navigator.onLine === false;
   const detail = offline
-    ? 'Parece que no hay conexión a Internet.'
-    : 'No fue posible iniciar el portal. La sesión o los datos tardaron demasiado en responder.';
+    ? 'It looks like there is no internet connection.'
+    : 'The portal could not start. The session or data took too long to respond.';
   root.innerHTML = `<div class="auth-wrap"><div class="auth-card center">
-    <h1>Portal NIS</h1>
+    <h1>NIS Portal</h1>
     <p class="sub">${detail}</p>
     <div class="row" style="justify-content:center;gap:8px;flex-wrap:wrap">
-      <button class="btn" onclick="location.reload()">↻ Reintentar</button>
-      <button class="btn ghost" onclick="window.nisSafeLogout()">Cerrar sesión</button>
+      <button class="btn" onclick="location.reload()">↻ Retry</button>
+      <button class="btn ghost" onclick="window.nisSafeLogout()">Sign out</button>
     </div>
-    <p class="muted" style="font-size:.8rem;margin-top:12px">Código: ${esc(error && (error.code||error.message) || 'STARTUP_ERROR')}</p>
+    <p class="muted" style="font-size:.8rem;margin-top:12px">Code: ${esc(error && (error.code||error.message) || 'STARTUP_ERROR')}</p>
   </div></div>`;
 }
 
@@ -163,8 +163,8 @@ window.nisSafeLogout = async ()=>{
 // explicit timeout/error states below, so users are never left on a spinner.
 setTimeout(()=>{ try{
   const m=document.getElementById('main');
-  if(m && (m.textContent||'').trim()==='Cargando…'){
-    m.innerHTML='<div class="center muted" style="padding:24px">No se pudo cargar este módulo.<br><button class="btn" style="margin-top:10px" onclick="location.reload()">↻ Reintentar</button></div>';
+  if(m && (m.textContent||'').trim()==='Loading…'){
+    m.innerHTML='<div class="center muted" style="padding:24px">This module could not be loaded.<br><button class="btn" style="margin-top:10px" onclick="location.reload()">↻ Retry</button></div>';
   }
 }catch(_){ } }, 15000);
 
@@ -270,9 +270,9 @@ function header(){
     <div class="spacer"></div>
     <span class="role-chip">${esc(p.role||'')}</span>
     <span class="who">${esc(name)}</span>
-    ${real ? `<span class="who" style="opacity:.75">· sesión: ${esc(real.full_name||real.email||'admin')}</span>` : ''}
-    <button class="logout" onclick="window._irAyuda()" title="Ayuda: dónde está cada cosa">❓ Ayuda</button>
-    <button class="logout" onclick="logout()">Salir</button>
+    ${real ? `<span class="who" style="opacity:.75">· session: ${esc(real.full_name||real.email||'admin')}</span>` : ''}
+    <button class="logout" onclick="window._irAyuda()" title="Help: where everything is">❓ Help</button>
+    <button class="logout" onclick="logout()">Sign out</button>
   </div>`+_previewBar();
 }
 /* La barra lateral admite GRUPOS: {group:'Personas', icon:'👥', items:[…]}.
@@ -358,13 +358,13 @@ function bindNav(handler){
    manual en papel se separen con el tiempo. */
 function ayudaBody(){
   const r = (state.profile||{}).role || 'student';
-  return `<h1>❓ Ayuda</h1>
-    <p class="muted" style="margin-top:-6px">Dónde está cada cosa y cómo se hace. Puedes cambiar de guía
-      con las pastillas de arriba, y buscar por lo que quieres hacer.</p>
-    <iframe src="ayuda.html?role=${encodeURIComponent(r)}" title="Ayuda del Portal NIS"
+  return `<h1>❓ Help</h1>
+    <p class="muted" style="margin-top:-6px">Where everything is and how to do it. You can switch guides
+      with the pills above, and search for what you want to do.</p>
+    <iframe src="ayuda.html?role=${encodeURIComponent(r)}" title="NIS Portal help"
       style="width:100%;height:80vh;min-height:560px;border:0;border-radius:12px;display:block;background:#eef3f9"></iframe>
-    <p class="muted" style="font-size:.82rem;margin-top:10px">¿Prefieres tenerla aparte?
-      <a href="ayuda.html" target="_blank" rel="noopener">Abrir la ayuda en otra pestaña</a>.</p>`;
+    <p class="muted" style="font-size:.82rem;margin-top:10px">Prefer to have it separately?
+      <a href="ayuda.html" target="_blank" rel="noopener">Open help in another tab</a>.</p>`;
 }
 /* El ❓ de la cabecera lleva a la pestaña de ayuda del panel que corresponda.
    En "Ver como alumno" el perfil es el del alumno, asi que se abre la guia del
@@ -378,8 +378,8 @@ window._irAyuda = function(){
 function munBody(){ return `<iframe src="mun-academy.html" title="MUN Academy" style="width:100%;height:82vh;min-height:560px;border:0;border-radius:12px;display:block;background:#fff"></iframe>`; }
 function liveQuizBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
-    <div class="muted" style="flex:1;min-width:220px">Aloja un juego en vivo estilo Kahoot. Proyecta esta pantalla; los alumnos entran con el PIN o el QR desde su celular.</div>
-    <a class="btn" href="live-quiz.html?v=713f09b4" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Abrir en pantalla completa ↗</a>
+    <div class="muted" style="flex:1;min-width:220px">Host a live Kahoot-style game. Project this screen; students join with the PIN or the QR code from their phone.</div>
+    <a class="btn" href="live-quiz.html?v=713f09b4" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
   </div>
   <iframe src="live-quiz.html?v=713f09b4" title="NIShoot Live" allow="autoplay" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#0d1d33"></iframe>`; }
 function gamesLabBody(){ return `
@@ -394,10 +394,10 @@ function gamesLabBody(){ return `
    guarda en el navegador del profesor, no en la cuenta de nadie. */
 function pizarraBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
-    <div class="muted" style="flex:1;min-width:220px">Escribe como en el cuaderno del alumno y proyéctalo: papel triple renglón, doble raya, rayado, cuadriculado o en blanco; varias letras escolares, tamaño, colores, imágenes y dibujo a mano. Lo escrito se queda guardado en este navegador.</div>
-    <a class="btn" href="pizarra.html?v=17c36d58" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Abrir en pantalla completa ↗</a>
+    <div class="muted" style="flex:1;min-width:220px">Write like in the student’s notebook and project it: triple-line paper, double line, ruled, squared or blank; several school fonts, size, colours, images and freehand drawing. What is written stays saved in this browser.</div>
+    <a class="btn" href="pizarra.html?v=17c36d58" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
   </div>
-  <iframe src="pizarra.html?v=17c36d58" title="Pizarra" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#2b2f3a"></iframe>`; }
+  <iframe src="pizarra.html?v=17c36d58" title="Whiteboard" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#2b2f3a"></iframe>`; }
 /* ✍️ Corrector de material — revisa la ficha ANTES de publicarla: ortografía,
    mezcla de inglés británico y americano, y los calcos del hispanohablante
    ("explain me", "discuss about", "I have 12 years") que ningún corrector
@@ -406,27 +406,27 @@ function pizarraBody(){ return `
    escribe no se manda a ningún sitio. */
 function correctorBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
-    <div class="muted" style="flex:1;min-width:220px">Pega una ficha, un examen o un worksheet y compruébalo antes de publicarlo. Se revisa en tu navegador: el texto no sale de esta pantalla.</div>
-    <a class="btn" href="corrector.html?v=14017ee0" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Abrir en pantalla completa ↗</a>
+    <div class="muted" style="flex:1;min-width:220px">Paste a worksheet, an exam or a worksheet and check it before publishing it. It is reviewed in your browser: the text never leaves this screen.</div>
+    <a class="btn" href="corrector.html?v=14017ee0" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
   </div>
-  <iframe src="corrector.html?v=14017ee0" title="Corrector de material" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#f2f3ff"></iframe>`; }
+  <iframe src="corrector.html?v=14017ee0" title="Material checker" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#f2f3ff"></iframe>`; }
 /* 🧩 Use of English — la app B2 (First, Part 1: multiple-choice cloze). Es la
    misma que ve el alumno en Classes > 9.º > Cambridge; aqui el admin la revisa.
    Se corrige sola en el navegador y no guarda intentos en Supabase. */
 function useOfEnglishBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
-    <div class="muted" style="flex:1;min-width:220px">Multiple-choice cloze de <b>B2 First</b> (Reading &amp; Use of English, Part 1): textos con 8 huecos y opciones A–D, con corrección y explicación de cada respuesta. Se corrige sola en el navegador y <b>no</b> guarda intentos, así que no aparece en 📝 Resultados.</div>
-    <a class="btn" href="use-of-english-part1.html" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Abrir en pantalla completa ↗</a>
+    <div class="muted" style="flex:1;min-width:220px">Multiple-choice cloze for <b>B2 First</b> (Reading &amp; Use of English, Part 1): texts with 8 gaps and options A–D, with marking and an explanation for each answer. It marks itself in the browser and <b>does not</b> save attempts, so it does not appear in 📝 Results.</div>
+    <a class="btn" href="use-of-english-part1.html" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
   </div>
   <iframe src="use-of-english-part1.html" title="Use of English · Part 1" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#eef3f9"></iframe>`; }
 /* 📘 Info Cambridge — ficha de los examenes (papers, tiempos, escala) y que grado
    del NIS apunta a cual, con el enlace a la app del portal que le toca. */
 function cambridgeInfoBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
-    <div class="muted" style="flex:1;min-width:220px">Qué es cada examen Cambridge, cuántas partes tiene, cuánto dura, cómo se puntúa en la Escala Cambridge y qué grado del NIS apunta a cuál.</div>
-    <a class="btn" href="cambridge-info.html?v=f83c2cc8" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Abrir en pantalla completa ↗</a>
+    <div class="muted" style="flex:1;min-width:220px">What each Cambridge exam is, how many parts it has, how long it lasts, how it is scored on the Cambridge Scale, and which NIS grade is aiming for which.</div>
+    <a class="btn" href="cambridge-info.html?v=f83c2cc8" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
   </div>
-  <iframe src="cambridge-info.html?v=f83c2cc8" title="Info Cambridge" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#eef3f9"></iframe>`; }
+  <iframe src="cambridge-info.html?v=f83c2cc8" title="Cambridge info" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#eef3f9"></iframe>`; }
 /* Los tres cursos de Fun for Nordic (YLE). El motor es UNO solo — nis-fun/engine —
    y el nivel va en la URL; aqui se embebe igual que Games Lab o Phonics para que
    el profesor lo vea sin salir del portal. Datos de nis-fun/content/levels.json. */
@@ -497,42 +497,42 @@ async function funAccessPanel(grades){
       return `<tr data-g="${g.id}" data-lang="${lang}">
         <td><b>${esc(g.name)}</b></td>
         <td><select class="fa-nivel" style="min-width:15rem">
-          <option value="">— sin curso —</option>
+          <option value="">— no course —</option>
           ${FUN_NIVELES.map(n => `<option value="${n}"${n === nivel ? ' selected' : ''}>${esc(nombre(n))} (${totales[n] || 0})</option>`).join('')}
         </select></td>
         <td style="white-space:nowrap">
           <input class="fa-desde" type="number" min="1" value="${desde}" style="width:4.5rem">
-          <span class="muted">a</span>
+          <span class="muted">to</span>
           <input class="fa-hasta" type="number" min="1" value="${hasta}" style="width:4.5rem">
         </td>
-        <td style="white-space:nowrap"><span class="badge ${f && on ? 'on' : 'off'}">${!f ? '— sin regla —' : (on ? '🔓 Abierto' : '🔒 Cerrado')}</span></td>
+        <td style="white-space:nowrap"><span class="badge ${f && on ? 'on' : 'off'}">${!f ? '— no rule —' : (on ? '🔓 Open' : '🔒 Closed')}</span></td>
         <td class="acts"><div class="acts-wrap">
-          <button class="btn sm" onclick="window._funAccessGuardar(this)">Guardar</button>
-          ${f ? `<button class="btn sm ghost" onclick="window._funAccessQuitar(this)">Quitar</button>` : ''}
+          <button class="btn sm" onclick="window._funAccessGuardar(this)">Save</button>
+          ${f ? `<button class="btn sm ghost" onclick="window._funAccessQuitar(this)">Remove</button>` : ''}
         </div></td></tr>`;
     }).join('');
     return `<div class="card" style="padding:0;overflow-x:auto">
       <div style="padding:14px 16px 0"><h2 style="margin:0">${lang === 'fr' ? '🇫🇷 Français' : '🇬🇧 English'}</h2>
         <p class="muted" style="font-size:.86rem;margin:4px 0 10px">${abierto
-          ? 'Sin ninguna regla: <b>todos los grados ven los tres niveles enteros</b>. En cuanto guardes una fila, solo se verá lo que esté escrito aquí.'
-          : 'Solo se ve lo escrito aquí. Un grado sin fila <b>no ve nada</b> de este idioma.'}</p></div>
-      <table><thead><tr><th>Grado</th><th>Nivel</th><th>Unidades</th><th>Estado</th><th></th></tr></thead>
+          ? 'No rules yet: <b>all grades see the three full levels</b>. As soon as you save a row, only what is written here will be shown.'
+          : 'Only what is written here is shown. A grade with no row <b>sees nothing</b> of this language.'}</p></div>
+      <table><thead><tr><th>Grade</th><th>Level</th><th>Units</th><th>Status</th><th></th></tr></thead>
       <tbody>${cuerpo}</tbody></table></div>`;
   };
 
-  $('#main').innerHTML = `<h1>🔐 Unidades por grado — Fun for Nordic</h1>
-    <div class="note">Qué parte del curso puede abrir cada grado. Las unidades fuera del rango
-      <b>siguen apareciendo</b> al alumno, con un candado: así ve a dónde va a llegar, pero no se adelanta.
-      Es lo mismo que hace <b>📚 Activar unidades</b> con las clases.</div>
+  $('#main').innerHTML = `<h1>🔐 Units by grade — Fun for Nordic</h1>
+    <div class="note">Which part of the course each grade can open. Units outside the range
+      <b>still appear</b> to the student, with a lock: this way they see how far they will get, but cannot get ahead.
+      It is the same as what <b>📚 Activate units</b> does with classes.</div>
     <div class="card">
-      <h2 style="margin:0 0 4px;color:var(--blue-d)">El reparto que pidió el colegio</h2>
+      <h2 style="margin:0 0 4px;color:var(--blue-d)">The split the school asked for</h2>
       <div class="muted" style="font-size:.88rem;margin-bottom:12px">
-        1.º y 2.º hacen <b>Starters</b>, 3.º y 4.º <b>Movers</b>, 5.º <b>Flyers</b>.
-        Las 45 unidades de Starters se reparten entre 1.º y 2.º, y las 50 de Movers entre 3.º y 4.º.
-        <b>6.º queda fuera</b> hasta que se decida si entra en Flyers.
-        Esto no se aplica solo: revisa los rangos y pulsa el botón.</div>
-      <button class="btn" onclick="window._funAccessReparto('en')">Aplicar a English</button>
-      <button class="btn" onclick="window._funAccessReparto('fr')">Aplicar a Français</button>
+        Grade 1 and Grade 2 do <b>Starters</b>, Grade 3 and Grade 4 <b>Movers</b>, Grade 5 <b>Flyers</b>.
+        The 45 Starters units are split between Grade 1 and Grade 2, and the 50 Movers units between Grade 3 and Grade 4.
+        <b>Grade 6 is left out</b> until it is decided whether it joins Flyers.
+        This does not apply itself: check the ranges and click the button.</div>
+      <button class="btn" onclick="window._funAccessReparto('en')">Apply to English</button>
+      <button class="btn" onclick="window._funAccessReparto('fr')">Apply to Français</button>
     </div>
     ${tabla('en', totEn)}
     <div style="height:16px"></div>
@@ -553,8 +553,8 @@ function _funAccessFila(btn){
 
 window._funAccessGuardar = async (btn) => {
   const f = _funAccessFila(btn);
-  if (!f.level) { alert('Elige un nivel, o pulsa Quitar para dejar el grado sin curso.'); return; }
-  if (!(f.desde >= 1) || !(f.hasta >= f.desde)) { alert('El rango no cuadra: «hasta» tiene que ser mayor o igual que «desde».'); return; }
+  if (!f.level) { alert('Choose a level, or click Remove to leave the grade without a course.'); return; }
+  if (!(f.desde >= 1) || !(f.hasta >= f.desde)) { alert('The range does not add up: «to» must be greater than or equal to «from».'); return; }
   btn.disabled = true;
   // un grado hace UN nivel: al guardar se van los otros del mismo idioma
   await sb.from('fun_access').delete().eq('grade_id', f.grade_id).eq('lang', f.lang).neq('level', f.level);
@@ -565,17 +565,17 @@ window._funAccessGuardar = async (btn) => {
     updated_by: (state.session && state.session.user && state.session.user.id) || null,
   }, { onConflict: 'grade_id,lang,level' });
   btn.disabled = false;
-  if (error) { alert('No se pudo guardar: ' + error.message); return; }
+  if (error) { alert('Could not save: ' + error.message); return; }
   funAccessPanel(state.profile && state.profile.role === 'admin' ? GRADES : teacherAllowedGrades());
 };
 
 window._funAccessQuitar = async (btn) => {
   const f = _funAccessFila(btn);
-  if (!await NISUI.pregunta('Sin fila, ese grado no ve nada de este idioma.', {titulo:'¿Quitar el acceso?', si:'Quitar', no:'Cancelar', tono:'mal', peligro:true})) return;
+  if (!await NISUI.pregunta('With no row, that grade sees nothing of this language.', {titulo:'Remove access?', si:'Remove', no:'Cancel', tono:'mal', peligro:true})) return;
   btn.disabled = true;
   const { error } = await sb.from('fun_access').delete().eq('grade_id', f.grade_id).eq('lang', f.lang);
   btn.disabled = false;
-  if (error) { alert('No se pudo quitar: ' + error.message); return; }
+  if (error) { alert('Could not remove: ' + error.message); return; }
   funAccessPanel(state.profile && state.profile.role === 'admin' ? GRADES : teacherAllowedGrades());
 };
 
@@ -584,8 +584,8 @@ window._funAccessReparto = async (lang) => {
   const lineas = Object.entries(FUN_REPARTO)
     .filter(([g, n]) => (totales[n] || 0) > 0)
     .map(([g, n]) => `G${g} → ${lang === 'fr' ? FUN_FR[n].curso : FUN_CURSOS[n].curso} (1–${totales[n]})`);
-  if (!lineas.length) { alert('Ese idioma todavía no tiene unidades.'); return; }
-  if (!await NISUI.pregunta('Se escribirá el nivel entero para cada grado. Los rangos se ajustan después a mano.', {titulo:'¿Aplicar el reparto?', si:'Escribir', no:'Cancelar', detalle: lineas.join('\n')})) return;
+  if (!lineas.length) { alert('That language does not have any units yet.'); return; }
+  if (!await NISUI.pregunta('The whole level will be written for each grade. The ranges can be adjusted by hand afterwards.', {titulo:'Apply the split?', si:'Write', no:'Cancel', detalle: lineas.join('\n')})) return;
   const ahora = new Date().toISOString();
   const uid = (state.session && state.session.user && state.session.user.id) || null;
   const filas = Object.entries(FUN_REPARTO)
@@ -593,7 +593,7 @@ window._funAccessReparto = async (lang) => {
     .map(([g, n]) => ({ grade_id: Number(g), lang, level: n, desde: 1, hasta: totales[n],
                         unlocked: true, updated_at: ahora, updated_by: uid }));
   const { error } = await sb.from('fun_access').upsert(filas, { onConflict: 'grade_id,lang,level' });
-  if (error) { alert('No se pudo aplicar: ' + error.message); return; }
+  if (error) { alert('Could not apply: ' + error.message); return; }
   funAccessPanel(state.profile && state.profile.role === 'admin' ? GRADES : teacherAllowedGrades());
 };
 
@@ -649,11 +649,11 @@ function funCursoBody(nivel){
   const url = `nis-fun/engine/?level=${nivel}`;
   return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
-    <div class="muted" style="flex:1;min-width:220px"><b>${c.curso}</b> — ${c.unidades} unidades con audio, juegos y tareas de examen para preparar <b>${c.examen}</b> (${c.grados} · ${c.cast}). Es el mismo curso que abre el alumno; lo que escriba y grabe aparece en <b>✅ Corrección → 🧸 Fun for Nordic</b>.</div>
-    <a class="btn" href="${url}" target="_blank" rel="noopener" style="background:${c.color};text-decoration:none">${c.em} Abrir en pantalla completa ↗</a>
+    <div class="muted" style="flex:1;min-width:220px"><b>${c.curso}</b> — ${c.unidades} units with audio, games and exam tasks to prepare for <b>${c.examen}</b> (${c.grados} · ${c.cast}). It is the same course the student opens; what they write and record appears in <b>✅ Marking → 🧸 Fun for Nordic</b>.</div>
+    <a class="btn" href="${url}" target="_blank" rel="noopener" style="background:${c.color};text-decoration:none">${c.em} Open in full screen ↗</a>
   </div>
   <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px">
-    <span class="muted" style="font-size:.85rem">Para imprimir:</span>${funLibros(nivel, 'en', true)}
+    <span class="muted" style="font-size:.85rem">To print:</span>${funLibros(nivel, 'en', true)}
   </div>
   <iframe src="${url}" title="${esc(c.curso)}" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#fff"></iframe>`;
 }
@@ -670,27 +670,27 @@ function funYleBody(render){
       `${render}('${tab}')`);
   };
   return `<h1>🧸 Fun for Nordic — Cambridge Young Learners</h1>
-    <p class="muted" style="margin-top:-6px">Los tres primeros peldaños de la escalera Cambridge:
-      Pre A1 Starters, A1 Movers y A2 Flyers. 150 unidades con audio, juegos y tareas de examen.
-      El formato de cada examen está en <b>📘 Info Cambridge</b>.</p>
+    <p class="muted" style="margin-top:-6px">The first three steps of the Cambridge ladder:
+      Pre A1 Starters, A1 Movers and A2 Flyers. 150 units with audio, games and exam tasks.
+      The format of each exam is in <b>📘 Cambridge info</b>.</p>
     <div class="grid cols-3">
       ${tarjeta('starters','funstarters')}${tarjeta('movers','funmovers')}${tarjeta('flyers','funflyers')}
     </div>
     <div class="card" style="margin-top:16px">
-      <h2 style="margin:0 0 4px;color:var(--blue-d)">📚 Los libros en PDF</h2>
-      <div class="muted" style="font-size:.88rem;margin-bottom:12px">El libro del alumno, el cuaderno de casa
-        y el corregido de cada nivel. Salen del mismo contenido que el curso en pantalla, así que dicen
-        exactamente lo mismo.</div>
+      <h2 style="margin:0 0 4px;color:var(--blue-d)">📚 The PDF books</h2>
+      <div class="muted" style="font-size:.88rem;margin-bottom:12px">The student’s book, the homework workbook
+        and the answer key for each level. They come from the same content as the on-screen course, so they say
+        exactly the same thing.</div>
       ${['starters','movers','flyers'].map(n => `<div style="margin-bottom:14px">
         <div style="font-weight:600;margin-bottom:6px;color:${FUN_CURSOS[n].color}">${FUN_CURSOS[n].em} ${FUN_CURSOS[n].curso}</div>
         <div style="display:flex;gap:8px;flex-wrap:wrap">${funLibros(n, 'en', true)}</div></div>`).join('')}
     </div>
     <div class="card" style="margin-top:16px">
-      <h2 style="margin:0 0 4px;color:var(--blue-d)">✅ Corregir lo que entregan</h2>
-      <div class="muted" style="font-size:.88rem;margin-bottom:12px">Lo que los alumnos escriben y
-        graban en los tres niveles, para ponerles nota y comentario. Es la misma pestaña que hay en
-        <b>✅ Corrección</b>.</div>
-      <button class="btn" onclick="${render}('funnordic')">🧸 Ver las entregas</button>
+      <h2 style="margin:0 0 4px;color:var(--blue-d)">✅ Mark what they submit</h2>
+      <div class="muted" style="font-size:.88rem;margin-bottom:12px">What students write and
+        record in the three levels, to give them a grade and feedback. It is the same tab found in
+        <b>✅ Marking</b>.</div>
+      <button class="btn" onclick="${render}('funnordic')">🧸 View submissions</button>
     </div>`;
 }
 /* ===== Francais - el mismo curso, en frances ==============================
@@ -722,12 +722,12 @@ function funFrCursoBody(nivel){
   return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
     <div class="muted" style="flex:1;min-width:220px"><b>${c.curso}</b> \u2014 ${c.nivel} (${c.grados} \u00b7 ${c.cast}).
-      Mismo curso, mismos dibujos y mismas l\u00e1minas que la versi\u00f3n inglesa, con el texto y las voces en franc\u00e9s.
-      Lo que el alumno escriba y grabe aparece en <b>\u{1F1EB}\u{1F1F7} Cap sur le fran\u00e7ais \u2192 M\u00e9tricas</b>.</div>
-    <a class="btn" href="${url}" target="_blank" rel="noopener" style="background:${c.color};text-decoration:none">${c.em} Abrir en pantalla completa \u2197</a>
+      Same course, same artwork and same slides as the English version, with the text and voices in French.
+      What the student writes and records appears in <b>\u{1F1EB}\u{1F1F7} Cap sur le fran\u00e7ais \u2192 Metrics</b>.</div>
+    <a class="btn" href="${url}" target="_blank" rel="noopener" style="background:${c.color};text-decoration:none">${c.em} Open in full screen \u2197</a>
   </div>
   <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px">
-    <span class="muted" style="font-size:.85rem">Para imprimir:</span>${funLibros(nivel, 'fr', true)}
+    <span class="muted" style="font-size:.85rem">To print:</span>${funLibros(nivel, 'fr', true)}
   </div>
   <iframe src="${url}" title="${esc(c.curso)}" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#fff"></iframe>`;
 }
@@ -738,37 +738,37 @@ async function funFrBody(render){
   const idx = await frIndice();
   const tarjeta = (nivel,tab) => {
     const c = FUN_FR[nivel], n = idx[nivel] || 0;
-    return _hubCard(c.em, c.curso, `${c.nivel} \u00b7 ${c.grados}<br>${n} ${n===1?'unidad lista':'unidades listas'}`,
+    return _hubCard(c.em, c.curso, `${c.nivel} \u00b7 ${c.grados}<br>${n} ${n===1?'unit ready':'units ready'}`,
       `${render}('${tab}')`);
   };
   const total = Object.values(idx).reduce((a,b)=>a+b,0);
   return `<h1>\u{1F1EB}\u{1F1F7} Cap sur le fran\u00e7ais</h1>
-    <p class="muted" style="margin-top:-6px">El curso de primaria en franc\u00e9s: el mismo motor, los mismos
-      personajes y los mismos dibujos, con el texto adaptado y las voces grabadas en franc\u00e9s.
-      Hoy hay <b>${total} de 150 unidades</b> listas; el resto aparece aqu\u00ed solo cuando est\u00e1 completo.</p>
+    <p class="muted" style="margin-top:-6px">The Primary course in French: the same engine, the same
+      characters and the same artwork, with the text adapted and the voices recorded in French.
+      Today there are <b>${total} of 150 units</b> ready; the rest appears here only once it is complete.</p>
     <div class="grid cols-3">
       ${tarjeta('starters','frstarters')}${tarjeta('movers','frmovers')}${tarjeta('flyers','frflyers')}
     </div>
     <div class="card" style="margin-top:16px">
-      <h2 style="margin:0 0 4px;color:var(--blue-d)">\u{1F4DA} Los libros en PDF</h2>
-      <div class="muted" style="font-size:.88rem;margin-bottom:12px">Los mismos tres libros de cada nivel que en
-        ingl\u00e9s, con la misma maqueta y los mismos dibujos. Salen del mismo contenido que el curso en pantalla,
-        as\u00ed que dicen exactamente lo mismo.</div>
+      <h2 style="margin:0 0 4px;color:var(--blue-d)">\u{1F4DA} The PDF books</h2>
+      <div class="muted" style="font-size:.88rem;margin-bottom:12px">The same three books for each level as in
+        English, with the same layout and the same artwork. They come from the same content as the on-screen course,
+        so they say exactly the same thing.</div>
       ${['starters','movers','flyers'].map(n => `<div style="margin-bottom:14px">
         <div style="font-weight:600;margin-bottom:6px;color:${FUN_FR[n].color}">${FUN_FR[n].em} ${FUN_FR[n].curso}</div>
         <div style="display:flex;gap:8px;flex-wrap:wrap">${funLibros(n, 'fr', true)}</div></div>`).join('')}
     </div>
     <div class="card" style="margin-top:16px">
-      <h2 style="margin:0 0 4px;color:var(--blue-d)">\u{1F4CA} C\u00f3mo se est\u00e1 usando</h2>
-      <div class="muted" style="font-size:.88rem;margin-bottom:12px">Alumnos, unidades, actividades y minutos
-        del curso franc\u00e9s, separados del ingl\u00e9s. Es lo que responde a \u00ab\u00bfesto se usa de verdad?\u00bb.</div>
-      <button class="btn" onclick="${render}('frmetricas')">\u{1F4CA} Ver m\u00e9tricas</button>
+      <h2 style="margin:0 0 4px;color:var(--blue-d)">\u{1F4CA} How it is being used</h2>
+      <div class="muted" style="font-size:.88rem;margin-bottom:12px">Students, units, activities and minutes
+        of the French course, separate from English. It is what answers \u00abis this really being used?\u00bb.</div>
+      <button class="btn" onclick="${render}('frmetricas')">\u{1F4CA} View metrics</button>
     </div>`;
 }
 /* Metricas del curso frances. Sale de v_fun_metricas y v_fun_unidades, que
    agrupan por idioma: aqui nunca se mezcla con lo que hacen en ingles. */
 async function funFrMetricas(){
-  $('#main').innerHTML = `<h1>\u{1F4CA} Cap sur le fran\u00e7ais \u00b7 m\u00e9tricas</h1><p class="muted">Cargando\u2026</p>`;
+  $('#main').innerHTML = `<h1>\u{1F4CA} Cap sur le fran\u00e7ais \u00b7 metrics</h1><p class="muted">Loading\u2026</p>`;
   const [alu, uds] = await Promise.all([
     sb.from('v_fun_metricas').select('*').eq('lang','fr').order('ultima',{ascending:false}),
     sb.from('v_fun_unidades').select('*').eq('lang','fr').order('unit',{ascending:true}),
@@ -802,31 +802,31 @@ async function funFrMetricas(){
       <td style="text-align:center">${r.entregas||0}</td>
       <td style="text-align:center">${min(r.segundos)}</td>
     </tr>`).join('');
-  $('#main').innerHTML = `<h1>\u{1F4CA} Cap sur le fran\u00e7ais \u00b7 m\u00e9tricas</h1>
-    <p class="muted" style="margin-top:-6px">Solo el curso franc\u00e9s. Las entregas llevan el idioma dentro,
-      as\u00ed que lo de ingl\u00e9s no entra en estos n\u00fameros.</p>
+  $('#main').innerHTML = `<h1>\u{1F4CA} Cap sur le fran\u00e7ais \u00b7 metrics</h1>
+    <p class="muted" style="margin-top:-6px">Only the French course. Submissions carry the language inside them,
+      so English does not enter into these numbers.</p>
     <div class="grid cols-3" style="margin-bottom:16px">
-      ${kpi(totalAlumnos,'alumnos que lo han abierto')}
-      ${kpi(totalAct,'actividades hechas')}
-      ${kpi(totalMin+' min','tiempo dedicado')}
-      ${kpi(totalEsc,'producciones escritas')}
-      ${kpi(totalGrab,'grabaciones de voz')}
-      ${kpi(U.length,'unidades con actividad')}
+      ${kpi(totalAlumnos,'students who have opened it')}
+      ${kpi(totalAct,'activities done')}
+      ${kpi(totalMin+' min','time spent')}
+      ${kpi(totalEsc,'written productions')}
+      ${kpi(totalGrab,'voice recordings')}
+      ${kpi(U.length,'units with activity')}
     </div>
     <div class="card">
-      <h2 style="margin:0 0 10px">Por alumno</h2>
+      <h2 style="margin:0 0 10px">By student</h2>
       ${A.length ? `<div style="overflow-x:auto"><table class="tbl"><thead><tr>
-        <th>Alumno</th><th>Grado</th><th>Nivel</th><th>Unidades</th><th>Actividades</th>
-        <th>Escritas</th><th>Grabaciones</th><th>Minutos</th><th>Corregidas \u00b7 nota</th><th>\u00daltima vez</th>
+        <th>Student</th><th>Grade</th><th>Level</th><th>Units</th><th>Activities</th>
+        <th>Written</th><th>Recordings</th><th>Minutes</th><th>Marked \u00b7 grade</th><th>Last time</th>
         </tr></thead><tbody>${filas}</tbody></table></div>`
-      : `<p class="muted">Todav\u00eda no hay actividad en el curso franc\u00e9s. Aparecer\u00e1 aqu\u00ed en cuanto un alumno abra una unidad.</p>`}
+      : `<p class="muted">There is no activity in the French course yet. It will appear here as soon as a student opens a unit.</p>`}
     </div>
     <div class="card" style="margin-top:16px">
-      <h2 style="margin:0 0 10px">Por unidad</h2>
+      <h2 style="margin:0 0 10px">By unit</h2>
       ${U.length ? `<div style="overflow-x:auto"><table class="tbl"><thead><tr>
-        <th>Nivel</th><th>Unidad</th><th>Alumnos</th><th>Entregas</th><th>Minutos</th>
+        <th>Level</th><th>Unit</th><th>Students</th><th>Submissions</th><th>Minutes</th>
         </tr></thead><tbody>${porUnidad}</tbody></table></div>`
-      : `<p class="muted">Sin datos por unidad todav\u00eda.</p>`}
+      : `<p class="muted">No data by unit yet.</p>`}
     </div>`;
 }
 function studentMun(){ document.querySelectorAll('[data-nav]').forEach(e=>e.classList.toggle('active',e.dataset.nav==='mun')); $('#main').innerHTML = munBody(); }
@@ -910,15 +910,15 @@ function coachPanel(){
 function renderAuth(mode='login'){
   document.body.innerHTML = `<div class="auth-wrap"><div class="auth-card">
     <img class="logo" src="assets/logo-h.svg" alt="Nordic">
-    <h1>Portal NIS</h1>
-    <p class="sub">${mode==='login'?'Ingresa con tu cuenta':'Crea tu cuenta de estudiante'}</p>
+    <h1>NIS Portal</h1>
+    <p class="sub">${mode==='login'?'Sign in to your account':'Create your student account'}</p>
     <div id="msg"></div>
     <!-- Un <form> de verdad: es lo que hace que el gestor de contrasenas del
          navegador ofrezca guardar y rellenar, y que el Enter envie solo. -->
     <form id="form" novalidate></form>
     <div class="auth-switch">${mode==='login'
-        ? `¿No tienes cuenta? <a id="toSignup">Regístrate</a>`
-        : `¿Ya tienes cuenta? <a id="toLogin">Inicia sesión</a>`}</div>
+        ? `Don’t have an account? <a id="toSignup">Sign up</a>`
+        : `Already have an account? <a id="toLogin">Sign in</a>`}</div>
   </div></div>`;
   $('#form').innerHTML = mode==='login' ? loginForm() : signupForm();
   if(mode==='login'){
@@ -935,18 +935,18 @@ function renderAuth(mode='login'){
 }
 function loginForm(){
   let savedEmail=''; try{ savedEmail=localStorage.getItem('nis_remember_email')||''; }catch(_){}
-  return `<label for="li_email">Correo</label><input id="li_email" name="email" type="email" autocomplete="username" placeholder="tucorreo@nordic-school.edu.pe" value="${esc(savedEmail)}">
-    <label for="li_pw">Contraseña</label>
+  return `<label for="li_email">Email</label><input id="li_email" name="email" type="email" autocomplete="username" placeholder="youremail@nordic-school.edu.pe" value="${esc(savedEmail)}">
+    <label for="li_pw">Password</label>
     <div style="position:relative">
       <input id="li_pw" name="password" type="password" autocomplete="current-password" placeholder="••••••••" style="width:100%;padding-right:42px">
-      <button type="button" id="li_eye" onclick="window._toggleLoginPw()" title="Mostrar / ocultar contraseña"
+      <button type="button" id="li_eye" onclick="window._toggleLoginPw()" title="Show / hide password"
         style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:1.15rem;line-height:1;padding:0;color:var(--muted)">👁</button>
     </div>
-    <div style="text-align:right;margin-top:8px"><a id="forgotPw" href="#" style="font-size:.9rem">¿Olvidaste tu contraseña?</a></div>
+    <div style="text-align:right;margin-top:8px"><a id="forgotPw" href="#" style="font-size:.9rem">Forgot your password?</a></div>
     <label style="display:flex;align-items:center;gap:8px;margin-top:10px;font-weight:400;cursor:pointer">
-      <input type="checkbox" id="li_remember" ${savedEmail?'checked':''} style="width:auto;margin:0;accent-color:var(--blue,#4987c6)"> Recordar mi correo
+      <input type="checkbox" id="li_remember" ${savedEmail?'checked':''} style="width:auto;margin:0;accent-color:var(--blue,#4987c6)"> Remember my email
     </label>
-    <div style="margin-top:16px"><button class="btn" type="submit" id="loginBtn" style="width:100%">Ingresar</button></div>`;
+    <div style="margin-top:16px"><button class="btn" type="submit" id="loginBtn" style="width:100%">Sign in</button></div>`;
 }
 window._toggleLoginPw=()=>{
   const inp=$('#li_pw'), btn=$('#li_eye'); if(!inp) return;
@@ -958,13 +958,13 @@ window._toggleLoginPw=()=>{
 function renderForgotPassword(){
   document.body.innerHTML = `<div class="auth-wrap"><div class="auth-card">
     <img class="logo" src="assets/logo-h.svg" alt="Nordic">
-    <h1>Recuperar contraseña</h1>
-    <p class="sub">Te enviaremos un enlace seguro para crear una nueva contraseña.</p>
+    <h1>Reset password</h1>
+    <p class="sub">We will send you a secure link to create a new password.</p>
     <div id="msg"></div>
-    <label>Correo</label>
-    <input id="fp_email" type="email" autocomplete="email" placeholder="tucorreo@nordic-school.edu.pe">
-    <div style="margin-top:16px"><button class="btn" id="fp_btn" style="width:100%">Enviar enlace</button></div>
-    <div class="auth-switch"><a id="fp_back">← Volver a iniciar sesión</a></div>
+    <label>Email</label>
+    <input id="fp_email" type="email" autocomplete="email" placeholder="youremail@nordic-school.edu.pe">
+    <div style="margin-top:16px"><button class="btn" id="fp_btn" style="width:100%">Send link</button></div>
+    <div class="auth-switch"><a id="fp_back">← Back to sign in</a></div>
   </div></div>`;
   const saved=(()=>{ try{return localStorage.getItem('nis_remember_email')||'';}catch(_){return '';} })();
   if($('#fp_email')) $('#fp_email').value=saved;
@@ -977,8 +977,8 @@ function renderForgotPassword(){
 async function sendPasswordResetEmail(){
   const email=(($('#fp_email')||{}).value||'').trim();
   const btn=$('#fp_btn');
-  if(!email) return msg('err','Ingresa tu correo.');
-  if(btn){ btn.disabled=true; btn.textContent='Enviando…'; }
+  if(!email) return msg('err','Enter your email.');
+  if(btn){ btn.disabled=true; btn.textContent='Sending…'; }
   try{
     const redirectTo = `${location.origin}${location.pathname}?recovery=1`;
     const { error } = await withTimeout(
@@ -987,26 +987,26 @@ async function sendPasswordResetEmail(){
       'PASSWORD_RESET_EMAIL_TIMEOUT'
     );
     if(error) throw error;
-    msg('ok','Si ese correo está registrado, recibirás un enlace para crear una nueva contraseña. Revisa también Spam o Correo no deseado.');
+    msg('ok','If that email is registered, you will receive a link to create a new password. Also check Spam or Junk mail.');
   }catch(e){
-    const text=(e&&e.message)?e.message:'No se pudo enviar el correo de recuperación.';
+    const text=(e&&e.message)?e.message:'The recovery email could not be sent.';
     msg('err',text);
   }finally{
-    if(btn){ btn.disabled=false; btn.textContent='Enviar enlace'; }
+    if(btn){ btn.disabled=false; btn.textContent='Send link'; }
   }
 }
 
 function renderRecoveryPassword(){
   document.body.innerHTML = `<div class="auth-wrap"><div class="auth-card">
     <img class="logo" src="assets/logo-h.svg" alt="Nordic">
-    <h1>Nueva contraseña</h1>
-    <p class="sub">Crea una contraseña que puedas recordar.</p>
+    <h1>New password</h1>
+    <p class="sub">Create a password you can remember.</p>
     <div id="msg"></div>
-    <label>Nueva contraseña</label>
-    <input id="rp_pw1" type="password" autocomplete="new-password" placeholder="Mínimo 8 caracteres">
-    <label>Repite la nueva contraseña</label>
-    <input id="rp_pw2" type="password" autocomplete="new-password" placeholder="Repite la contraseña">
-    <div style="margin-top:16px"><button class="btn" id="rp_btn" style="width:100%">Guardar nueva contraseña</button></div>
+    <label>New password</label>
+    <input id="rp_pw1" type="password" autocomplete="new-password" placeholder="Minimum 8 characters">
+    <label>Repeat the new password</label>
+    <input id="rp_pw2" type="password" autocomplete="new-password" placeholder="Repeat the password">
+    <div style="margin-top:16px"><button class="btn" id="rp_btn" style="width:100%">Save new password</button></div>
   </div></div>`;
   $('#rp_btn').onclick=saveRecoveredPassword;
   ['rp_pw1','rp_pw2'].forEach(id=>$('#'+id).addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); saveRecoveredPassword(); } }));
@@ -1017,98 +1017,98 @@ async function saveRecoveredPassword(){
   const pw1=(($('#rp_pw1')||{}).value||'').trim();
   const pw2=(($('#rp_pw2')||{}).value||'').trim();
   const btn=$('#rp_btn');
-  if(pw1.length<8) return msg('err','La contraseña debe tener al menos 8 caracteres.');
-  if(pw1!==pw2) return msg('err','Las contraseñas no coinciden.');
-  if(btn){ btn.disabled=true; btn.textContent='Guardando…'; }
+  if(pw1.length<8) return msg('err','The password must be at least 8 characters long.');
+  if(pw1!==pw2) return msg('err','The passwords do not match.');
+  if(btn){ btn.disabled=true; btn.textContent='Saving…'; }
   try{
     const { error } = await withTimeout(sb.auth.updateUser({password:pw1}), STARTUP_TIMEOUT_MS, 'PASSWORD_RECOVERY_UPDATE_TIMEOUT');
     if(error) throw error;
     try{ history.replaceState(null,'',location.pathname); }catch(_){ }
-    msg('ok','Contraseña actualizada correctamente. Ya puedes iniciar sesión con tu nueva contraseña.');
+    msg('ok','Password updated successfully. You can now sign in with your new password.');
     const card=document.querySelector('.auth-card');
     if(card){
       const go=document.createElement('button');
-      go.className='btn ghost'; go.style.width='100%'; go.style.marginTop='10px'; go.textContent='Ir a iniciar sesión';
+      go.className='btn ghost'; go.style.width='100%'; go.style.marginTop='10px'; go.textContent='Go to sign in';
       go.onclick=async()=>{ try{ await sb.auth.signOut(); }catch(_){ } state.session=null; state.profile=null; renderAuth('login'); };
       card.appendChild(go);
     }
   }catch(e){
-    const text=(e&&e.message)?e.message:'No se pudo actualizar la contraseña.';
+    const text=(e&&e.message)?e.message:'The password could not be updated.';
     msg('err',text);
-    if(btn){ btn.disabled=false; btn.textContent='Guardar nueva contraseña'; }
+    if(btn){ btn.disabled=false; btn.textContent='Save new password'; }
   }
 }
 
 function signupForm(){
   return `
     <div class="field-2">
-      <div><label>Nombres</label><input id="su_first"></div>
-      <div><label>Apellidos</label><input id="su_last"></div>
+      <div><label>First name(s)</label><input id="su_first"></div>
+      <div><label>Last name(s)</label><input id="su_last"></div>
     </div>
     <div class="field-2">
-      <div><label>Documento (DNI)</label><input id="su_doc"></div>
-      <div><label>Fecha de nacimiento</label><input id="su_bd" type="date"></div>
+      <div><label>ID document (DNI)</label><input id="su_doc"></div>
+      <div><label>Date of birth</label><input id="su_bd" type="date"></div>
     </div>
-    <label>Correo</label><input id="su_email" type="email">
+    <label>Email</label><input id="su_email" type="email">
     <div class="field-2">
-      <div><label>Grado</label><select id="su_grade">${GRADES.map(g=>`<option value="${g.id}">${g.name}</option>`).join('')}</select></div>
-      <div><label>Sección</label><input id="su_section" placeholder="A / B / C"></div>
-    </div>
-    <div class="field-2">
-      <div><label>Nivel Cambridge</label><select id="su_level"><option value="">— sin asignar —</option>${LEVELS.map(l=>`<option>${l}</option>`).join('')}</select></div>
-      <div><label>Teléfono</label><input id="su_phone"></div>
+      <div><label>Grade</label><select id="su_grade">${GRADES.map(g=>`<option value="${g.id}">${g.name}</option>`).join('')}</select></div>
+      <div><label>Section</label><input id="su_section" placeholder="A / B / C"></div>
     </div>
     <div class="field-2">
-      <div><label>Apoderado</label><input id="su_guard"></div>
-      <div><label>Tel. apoderado</label><input id="su_gphone"></div>
+      <div><label>Cambridge level</label><select id="su_level"><option value="">— not assigned —</option>${LEVELS.map(l=>`<option>${l}</option>`).join('')}</select></div>
+      <div><label>Phone</label><input id="su_phone"></div>
     </div>
     <div class="field-2">
-      <div><label>Contraseña</label><input id="su_pw" type="password"></div>
-      <div><label>Repetir contraseña</label><input id="su_pw2" type="password"></div>
+      <div><label>Guardian</label><input id="su_guard"></div>
+      <div><label>Guardian phone</label><input id="su_gphone"></div>
     </div>
-    <div style="margin-top:16px"><button class="btn" id="signupBtn" style="width:100%">Crear cuenta</button></div>`;
+    <div class="field-2">
+      <div><label>Password</label><input id="su_pw" type="password"></div>
+      <div><label>Repeat password</label><input id="su_pw2" type="password"></div>
+    </div>
+    <div style="margin-top:16px"><button class="btn" id="signupBtn" style="width:100%">Create account</button></div>`;
 }
 function msg(kind, text){ $('#msg').innerHTML = `<div class="note ${kind}">${esc(text)}</div>`; }
 async function doLogin(){
   const email=$('#li_email').value.trim(), pw=$('#li_pw').value;
-  if(!email||!pw) return msg('err','Ingresa correo y contraseña.');
+  if(!email||!pw) return msg('err','Enter your email and password.');
   // Recordar (o olvidar) el correo según la casilla.
   try{
     if($('#li_remember') && $('#li_remember').checked) localStorage.setItem('nis_remember_email', email);
     else localStorage.removeItem('nis_remember_email');
   }catch(_){}
   const { error } = await sb.auth.signInWithPassword({ email, password:pw });
-  if(error) return msg('err', error.message.includes('Email not confirmed')?'Tu correo aún no está confirmado. (El admin puede desactivar la confirmación de correo en Supabase.)':error.message);
+  if(error) return msg('err', error.message.includes('Email not confirmed')?'Your email is not confirmed yet. (The admin can disable email confirmation in Supabase.)':error.message);
 }
 async function doSignup(){
   const v=id=>$('#'+id).value.trim();
   const email=v('su_email'), pw=$('#su_pw').value, pw2=$('#su_pw2').value;
-  if(!v('su_first')||!v('su_last')||!email||!pw) return msg('err','Completa nombres, apellidos, correo y contraseña.');
-  if(pw!==pw2) return msg('err','Las contraseñas no coinciden.');
-  if(pw.length<8) return msg('err','La contraseña debe tener al menos 8 caracteres.');
+  if(!v('su_first')||!v('su_last')||!email||!pw) return msg('err','Complete first name, last name, email and password.');
+  if(pw!==pw2) return msg('err','The passwords do not match.');
+  if(pw.length<8) return msg('err','The password must be at least 8 characters long.');
   const meta={ first_name:v('su_first'), last_name:v('su_last'), full_name:v('su_first')+' '+v('su_last'),
     document_id:v('su_doc'), birthdate:v('su_bd'), phone:v('su_phone'),
     guardian_name:v('su_guard'), guardian_phone:v('su_gphone'),
     grade_id:$('#su_grade').value, section:v('su_section'), cefr_level:$('#su_level').value };
   const { data, error } = await sb.auth.signUp({ email, password:pw, options:{ data:meta } });
   if(error) return msg('err', error.message);
-  if(data.session){ msg('ok','¡Cuenta creada! Entrando…'); }
-  else { msg('ok','¡Cuenta creada! Revisa tu correo para confirmar, o pide al admin que active el acceso. Luego inicia sesión.'); }
+  if(data.session){ msg('ok','Account created! Signing in…'); }
+  else { msg('ok','Account created! Check your email to confirm, or ask the admin to activate access. Then sign in.'); }
 }
 function renderPending(){
   document.body.innerHTML = `<div class="auth-wrap"><div class="auth-card center">
     <img class="logo" src="assets/logo-h.svg">
-    <h1>Casi listo</h1>
-    <p class="sub">Tu cuenta existe pero aún no tiene perfil/rol. Pide al administrador que te active.</p>
-    <button class="btn ghost" onclick="logout()">Salir</button>
+    <h1>Almost ready</h1>
+    <p class="sub">Your account exists but does not have a profile/role yet. Ask the administrator to activate you.</p>
+    <button class="btn ghost" onclick="logout()">Sign out</button>
   </div></div>`;
 }
 function renderSuspended(){
   document.body.innerHTML = `<div class="auth-wrap"><div class="auth-card center">
     <img class="logo" src="assets/logo-h.svg">
-    <h1>Cuenta suspendida</h1>
-    <p class="sub">Tu acceso al Portal NIS está temporalmente suspendido. Comunícate con el administrador del colegio para reactivarlo.</p>
-    <button class="btn ghost" onclick="logout()">Salir</button>
+    <h1>Account suspended</h1>
+    <p class="sub">Your access to the NIS Portal is temporarily suspended. Contact the school administrator to reactivate it.</p>
+    <button class="btn ghost" onclick="logout()">Sign out</button>
   </div></div>`;
 }
 
@@ -1124,55 +1124,55 @@ async function renderAdmin(tab='users'){
      La secuencia (scope) esta tambien aqui y no solo en el menu del profesor:
      desde coordinacion no habia por donde entrar. */
   document.body.innerHTML = shell([
-    {key:'overview',label:'📊 Resumen'},
-    {group:'Personas', icon:'👥', items:[
-      {key:'users',label:'👥 Usuarios'},
-      {key:'teachers',label:'👨‍🏫 Profesores'},
+    {key:'overview',label:'📊 Overview'},
+    {group:'People', icon:'👥', items:[
+      {key:'users',label:'👥 Users'},
+      {key:'teachers',label:'👨‍🏫 Teachers'},
     ]},
     /* Correccion = todo lo que espera una nota o hay que abrir para que se
        pueda entregar. Los controles de lectura y los examenes de unidad
        estaban en Seguimiento para el admin y en Correccion para el profesor:
        los dos paneles tienen que leerse igual, y quien entra aqui viene a
        corregir, no a mirar una grafica. */
-    {group:'Corrección', icon:'✅', items:[
-      {key:'unitprod',label:'🎯 Productos de unidad'},
-      {key:'corregir',label:'✅ Corregir fichas'},
-      {key:'unitexams',label:'📋 Exámenes de unidad'},
-      {key:'readers',label:'📖 Controles de lectura'},
+    {group:'Marking', icon:'✅', items:[
+      {key:'unitprod',label:'🎯 Unit products'},
+      {key:'corregir',label:'✅ Mark worksheets'},
+      {key:'unitexams',label:'📋 Unit exams'},
+      {key:'readers',label:'📖 Reading checks'},
       {key:'funnordic',label:'🧸 Fun for Nordic'},
     ]},
     /* Seguimiento = solo se mira, no se toca nada. */
-    {group:'Seguimiento', icon:'📈', items:[
-      {key:'stats',label:'📈 Estadísticas'},
-      {key:'results',label:'📝 Resultados'},
-      {key:'final',label:'🎓 Resultado final'},
-      {key:'tiempo',label:'⏱️ Tiempo de pantalla'},
-      {key:'honesty',label:'🛡️ Honestidad'},
+    {group:'Tracking', icon:'📈', items:[
+      {key:'stats',label:'📈 Statistics'},
+      {key:'results',label:'📝 Results'},
+      {key:'final',label:'🎓 Final result'},
+      {key:'tiempo',label:'⏱️ Screen time'},
+      {key:'honesty',label:'🛡️ Honesty'},
     ]},
     /* Clases = dar clase: la materia, la secuencia, el material y las dos
        herramientas del profesor. Antes esto se llamaba Ensenanza y tenia doce
        pestanas: la materia, la planificacion, los tres cursos de primaria, un
        permiso, los materiales, dos herramientas y la biblioteca. Era el cajon
        de sastre del menu. */
-    {group:'Clases', icon:'🏫', items:[
+    {group:'Classes', icon:'🏫', items:[
       {key:'classes',label:'🏫 Classes'},
       // French vivia SOLO en el hub del alumno, y el admin nunca pasa por ese
       // hub (route() lo manda a renderAdmin): la materia entera quedaba sin
       // puerta de entrada, aunque sus candados si estuvieran en 🔐 Accesos.
       {key:'french',label:'🇫🇷 French'},
       {key:'scope',label:'📚 Scope & Sequence'},
-      {key:'materiales',label:'📄 Materiales de clase'},
+      {key:'materiales',label:'📄 Class materials'},
       // Tenia handler pero no entrada en el menu del admin: desde
       // administracion no habia forma de llegar a Little Readers.
       {key:'littlereaders',label:'🧒 Little Readers'},
-      {key:'pizarra',label:'📝 Pizarra'},
-      {key:'corrector',label:'✍️ Corrector de material'},
+      {key:'pizarra',label:'📝 Whiteboard'},
+      {key:'corrector',label:'✍️ Material corrector'},
       {key:'library',label:'📚 Library'},
     ]},
     /* Los cursos propios, en su grupo. Son las clases de G1–G5 y el curso de
        frances: no son "Cambridge" aunque preparen los YLE, ni caben ya dentro
        de Clases. */
-    {group:'Cursos Nordic', icon:'🧸', items:[
+    {group:'Nordic courses', icon:'🧸', items:[
       {key:'funstarters',label:'🐧 Starters'},
       {key:'funmovers',label:'🐺 Movers'},
       {key:'funflyers',label:'🦅 Flyers'},
@@ -1183,15 +1183,15 @@ async function renderAdmin(tab='users'){
        Nordic salio de aqui: era su TERCERA aparicion en el mismo menu. */
     {group:'Cambridge', icon:'🎓', items:[
       {key:'cambridgehub',label:'🎓 YLE + Main Suite'},
-      {key:'yle',label:'🛡️ Panel YLE'},
-      {key:'studyplan',label:'📋 Plan de estudio'},
-      {key:'exams',label:'🎧 Simulacros y Practice'},
+      {key:'yle',label:'🛡️ YLE panel'},
+      {key:'studyplan',label:'📋 Study plan'},
+      {key:'exams',label:'🎧 Mock exams and Practice'},
       {key:'uoe',label:'🧩 Use of English'},
-      {key:'cambridgeinfo',label:'📘 Info Cambridge'},
-      {key:'mocks',label:'🔓 Abrir Mocks'},
-      {key:'practice',label:'🔓 Abrir Practice Tests'},
+      {key:'cambridgeinfo',label:'📘 Cambridge info'},
+      {key:'mocks',label:'🔓 Open Mocks'},
+      {key:'practice',label:'🔓 Open Practice Tests'},
     ]},
-    {group:'Actividades', icon:'🎮', items:[
+    {group:'Activities', icon:'🎮', items:[
       {key:'games',label:'🎲 Games Lab'},
       {key:'livequiz',label:'🎮 NIShoot Live'},
       {key:'mun',label:'🌐 MUN Academy'},
@@ -1201,19 +1201,19 @@ async function renderAdmin(tab='users'){
       {key:'idioms',label:'💬 Idioms'},
       {key:'wordform',label:'🧩 Word formation'},
       {key:'dict',label:'📖 NIS Dictionary'},
-      {key:'coach',label:'🎙️ Pronunciación'},
+      {key:'coach',label:'🎙️ Pronunciation'},
     ]},
     /* Permisos = lo que se abre y se cierra por grado. "Abrir examenes de
        unidad" estaba aqui repitiendo la MISMA clave que en Seguimiento, y una
        clave en dos grupos deja dos items del menu resaltados a la vez. Ahora
        vive solo en Correccion, que es donde ademas se califica. */
-    {group:'Permisos', icon:'🔐', items:[
-      {key:'access',label:'🔐 Accesos'},
-      {key:'unitaccess',label:'📚 Activar unidades'},
-      {key:'funaccess',label:'🔐 Unidades por grado'},
+    {group:'Permissions', icon:'🔐', items:[
+      {key:'access',label:'🔐 Access'},
+      {key:'unitaccess',label:'📚 Activate units'},
+      {key:'funaccess',label:'🔐 Units by grade'},
     ]},
-    {key:'help',label:'❓ Ayuda'},
-  ], tab, `<div class="center muted">Cargando…</div>`, true);
+    {key:'help',label:'❓ Help'},
+  ], tab, `<div class="center muted">Loading…</div>`, true);
   bindNav(renderAdmin);
   if(tab==='help') return $('#main').innerHTML = ayudaBody();
   if(tab==='mun') return $('#main').innerHTML = munBody();
@@ -1272,7 +1272,7 @@ async function adminAccess(){
   const { data, error } = await sb.from('node_access').select('grade_id,node_key,unlocked');
   if(error){ $('#main').innerHTML=`<div class="note err">${esc(error.message)}</div>`; return; }
   const map={}; (data||[]).forEach(r=>{ (map[r.grade_id]=map[r.grade_id]||{})[r.node_key]=r.unlocked; });
-  const head = `<th style="text-align:left">Actividad</th>` + GRADES.map(g=>`<th>${g.name}</th>`).join('');
+  const head = `<th style="text-align:left">Activity</th>` + GRADES.map(g=>`<th>${g.name}</th>`).join('');
   const rows = ACCESS_NODES.map(n=>{
     const cells = GRADES.map(g=>{
       const has = map[g.id] && Object.prototype.hasOwnProperty.call(map[g.id], n.key);
@@ -1282,16 +1282,16 @@ async function adminAccess(){
     return `<tr><td><b>${esc(n.label)}</b><div class="muted" style="font-size:.7rem">${n.key}</div></td>${cells}</tr>`;
   }).join('');
   const pvOpts = GRADES.map(g=>`<option value="${g.id}" ${g.id===9?'selected':''}>${g.name}</option>`).join('');
-  $('#main').innerHTML=`<h1>🔐 Accesos por grado</h1>
+  $('#main').innerHTML=`<h1>🔐 Access by grade</h1>
     <div class="card" style="display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap">
-      <div><label>Comprobar el resultado</label>
+      <div><label>Check the result</label>
         <select id="pv_grade" style="min-width:120px">${pvOpts}</select></div>
-      <button class="btn sm" onclick="window._previewGrade(document.getElementById('pv_grade').value)">👁️ Ver el portal como alumno</button>
-      <div class="muted" style="padding-bottom:11px;flex:1;min-width:240px">Abre el portal con los ojos de un alumno de ese grado —
-        con sus candados— para verificar lo que acabas de marcar. Para un alumno concreto (con sus excepciones),
-        usa <b>👥 Usuarios → 👁️ Ver como</b>.</div>
+      <button class="btn sm" onclick="window._previewGrade(document.getElementById('pv_grade').value)">👁️ View portal as student</button>
+      <div class="muted" style="padding-bottom:11px;flex:1;min-width:240px">Opens the portal through the eyes of a student in that grade —
+        with their locks — to check what you just set. For a specific student (with their exceptions),
+        use <b>👥 Users → 👁️ View as</b>.</div>
     </div>
-    <div class="note">Marca qué actividades ve cada <b>grado</b>. Lo nuevo (French, Grammar) nace bloqueado; el resto, abierto. Las <b>unidades</b> (<code>…activities.u4</code>) y sus <b>semanas</b> (<code>…activities.u4.w3</code>) se abren o cierran una a una: cerrar una unidad la oculta entera de <b>Activities</b>; cerrar una semana deja el resto de la unidad como está. Para excepciones de un alumno, el profesor las ajusta en <b>Alumnos</b>. Los <b>Mocks</b> se gestionan en su pestaña 🔓 Mocks.</div>
+    <div class="note">Sets which activities each <b>grade</b> sees. New items (French, Grammar) start locked; the rest start open. <b>Units</b> (<code>…activities.u4</code>) and their <b>weeks</b> (<code>…activities.u4.w3</code>) are opened or closed one by one: closing a unit hides it entirely from <b>Activities</b>; closing a week leaves the rest of the unit as it is. For a student’s exceptions, the teacher adjusts them in <b>Students</b>. <b>Mocks</b> are managed in their 🔓 Mocks tab.</div>
     <div class="card" style="padding:0;overflow-x:auto"><table>
       <thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table></div>`;
 }
@@ -1306,7 +1306,7 @@ async function unitAccessPanel(grades){
   const sections=allowed.map(g=>{
     const gradeKey='g'+g.id, plans=unitPlansFor(gradeKey);
     if(!plans.length) return '';
-    return `<div class="card"><h2 style="margin:0 0 12px">${esc(g.name)} · Unidades</h2>
+    return `<div class="card"><h2 style="margin:0 0 12px">${esc(g.name)} · Units</h2>
       <div class="grid cols-3">${plans.map(u=>{
         const key=_academicUnitNode(gradeKey,u.n);
         const has=map[g.id]&&Object.prototype.hasOwnProperty.call(map[g.id],key);
@@ -1314,32 +1314,32 @@ async function unitAccessPanel(grades){
         return `<label class="card" style="margin:0;padding:16px;cursor:pointer;border-color:${on?'#86c59a':'var(--line)'}">
           <div style="display:flex;align-items:center;gap:11px">
             <input type="checkbox" ${on?'checked':''} onchange="window._toggleAcademicUnit(${g.id},'${key}',this.checked,this)">
-            <span><b>Unidad ${esc(String(u.label||u.n))} · ${esc(u.title)}</b><small class="muted" style="display:block;margin-top:3px">${on?'Activa para alumnos':'Bloqueada para alumnos'}</small></span>
+            <span><b>Unit ${esc(String(u.label||u.n))} · ${esc(u.title)}</b><small class="muted" style="display:block;margin-top:3px">${on?'Active for students':'Locked for students'}</small></span>
           </div></label>`;
       }).join('')}</div></div>`;
   }).join('');
-  $('#main').innerHTML=`<h1>📚 Activar unidades</h1>
-    <div class="note">Las unidades bloqueadas <b>siguen apareciendo</b> al alumno, pero no se pueden abrir. Actívalas cuando el grado llegue a esa parte del curso.</div>
-    ${sections||'<div class="card muted">No tienes grados con unidades asignadas.</div>'}`;
+  $('#main').innerHTML=`<h1>📚 Activate units</h1>
+    <div class="note">Locked units <b>keep appearing</b> to the student, but cannot be opened. Activate them when the grade reaches that part of the course.</div>
+    ${sections||'<div class="card muted">You have no grades with units assigned.</div>'}`;
 }
 window._toggleAcademicUnit=async(g,key,to,el)=>{
   el.disabled=true;
   const {error}=await sb.from('node_access').upsert({grade_id:g,node_key:key,unlocked:to,updated_at:new Date().toISOString(),updated_by:(state.session&&state.session.user&&state.session.user.id)||null},{onConflict:'grade_id,node_key'});
   el.disabled=false;
-  if(error){alert('No se pudo guardar: '+error.message);el.checked=!to;return;}
+  if(error){alert('Could not save: '+error.message);el.checked=!to;return;}
   unitAccessPanel(state.profile&&state.profile.role==='admin'?GRADES:teacherAllowedGrades());
 };
 window._toggleNode=async(g,key,to,el)=>{
   el.disabled=true;
   const { error } = await sb.from('node_access').upsert({grade_id:g,node_key:key,unlocked:to,updated_at:new Date().toISOString(),updated_by:(state.session&&state.session.user&&state.session.user.id)||null},{onConflict:'grade_id,node_key'});
   el.disabled=false;
-  if(error){ alert('No se pudo guardar: '+error.message); el.checked=!to; }
+  if(error){ alert('Could not save: '+error.message); el.checked=!to; }
 };
 /* ===================== 🛡️ HONESTIDAD (anti-trampa) =====================
    Incidentes registrados por anticheat.js + botón "dar vida extra" a un
    alumno en una actividad. Disponible para admin y profesor (con acceso). */
 const AC_ACTIVITIES = [
-  ['portal','🏠 Portal (pantalla de inicio)'],
+  ['portal','🏠 Portal (home screen)'],
   ['opinion-essay','Opinion Essay (Writing)'],['use-of-english-part1','Use of English · Part 1'],
   ['grammar-quiz','Grammar Quiz'],['crosswords','Crosswords'],['wordsearches','Word Searches'],
   ['crossword-digital-footprint','Crossword · Digital Footprint'],['wordsearch-digital-footprint','Word Search · Digital Footprint'],
@@ -1359,7 +1359,7 @@ const AC_ACTIVITIES = [
   ['word-wheel-u4-by-level','U4 · Word Wheel by Level']
 ];
 function acActLabel(k){ const f=AC_ACTIVITIES.find(a=>a[0]===k); return f?f[1]:(k||'—'); }
-const AC_EVENT = { tab_switch:'⚠️ Salida', reported:'🚩 Reportado', locked:'⛔ Eliminada (C)', translate_detected:'🌐 Traductor' };
+const AC_EVENT = { tab_switch:'⚠️ Left screen', reported:'🚩 Reported', locked:'⛔ Removed (C)', translate_detected:'🌐 Translator' };
 async function antiCheatPanel(){
   const { data, error } = await sb.from('anticheat_incidents')
     .select('id,student_id,activity,activity_label,level,event,lives_left,switch_count,seconds_away,os,browser,screen,grade_assigned,created_at, profiles(full_name,grades(name))')
@@ -1384,43 +1384,43 @@ async function antiCheatPanel(){
       <td style="text-align:center">${a.lives_left!=null?a.lives_left:'—'}</td>
       <td class="muted" style="font-size:.78rem">${esc(dev)}</td>
       <td class="muted" style="font-size:.78rem;white-space:nowrap">${esc(when)}</td>
-      <td style="text-align:center"><button class="btn sm" onclick="window._acGrant('${a.student_id}','${esc(a.activity)}','${sname}',this)">➕ Vida</button></td>
+      <td style="text-align:center"><button class="btn sm" onclick="window._acGrant('${a.student_id}','${esc(a.activity)}','${sname}',this)">➕ Life</button></td>
     </tr>`;
   }).join('');
 
-  $('#main').innerHTML=`<h1>🛡️ Honestidad — Anti-trampa</h1>
-    <div class="note">Cada actividad da <b>3 vidas</b>: salir de la pantalla (cambiar de pestaña, app o ventana) descuenta una. A la 2.ª se <b>reporta</b>, a la 3.ª se <b>elimina la actividad con nota C</b> y se notifica. Aquí puedes <b>otorgar una vida extra</b> a un alumno en una actividad concreta; el alumno la recibe al recargar (o pulsando «reintentar» si quedó bloqueado). Docentes y administradores están exentos del control. <b>El navegador no permite ver otras pestañas</b>; solo se registran los metadatos del evento.</div>
+  $('#main').innerHTML=`<h1>🛡️ Honesty — Anti-cheat</h1>
+    <div class="note">Each activity gives <b>3 lives</b>: leaving the screen (switching tab, app or window) uses one up. On the 2nd it is <b>reported</b>, on the 3rd the <b>activity is removed with a C grade</b> and a notification is sent. Here you can <b>grant an extra life</b> to a student in a specific activity; the student receives it on reload (or by pressing “retry” if it was locked). Teachers and administrators are exempt from this control. <b>The browser does not allow seeing other tabs</b>; only the metadata for the event is recorded.</div>
 
     <div class="card">
-      <h2>➕ Dar vida extra</h2>
+      <h2>➕ Give extra life</h2>
       <div class="row" style="gap:10px;flex-wrap:wrap;align-items:flex-end">
-        <div><label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">ALUMNO</label>
+        <div><label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">STUDENT</label>
           <select id="ac_stud" style="min-width:240px">${studOpts}</select></div>
-        <div><label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">ACTIVIDAD</label>
+        <div><label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">ACTIVITY</label>
           <select id="ac_act" style="min-width:220px">${actOpts}</select></div>
-        <div><label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">VIDAS EXTRA</label>
+        <div><label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">EXTRA LIVES</label>
           <input id="ac_qty" type="number" min="1" max="20" value="1" style="width:84px"></div>
-        <button class="btn" onclick="window._acGrantForm(this)">Otorgar vidas</button>
+        <button class="btn" onclick="window._acGrantForm(this)">Grant lives</button>
       </div>
       <div id="ac_msg" class="muted" style="margin-top:8px"></div>
     </div>
 
     <div class="card" style="padding:0">
       <div class="row" style="justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;padding:12px 16px 0">
-        <h2 style="margin:0">Incidentes recientes</h2>
+        <h2 style="margin:0">Recent incidents</h2>
         <div class="row" style="gap:8px;flex-wrap:wrap;align-items:center">
-          <input id="ac_search" type="search" placeholder="🔎 Buscar alumno o actividad…" oninput="window._acApplyFilters()" style="min-width:220px">
+          <input id="ac_search" type="search" placeholder="🔎 Search student or activity…" oninput="window._acApplyFilters()" style="min-width:220px">
           <select id="ac_filter" onchange="window._acApplyFilters()" style="min-width:160px">
-            <option value="">Todos los eventos</option>
-            <option value="locked">Solo eliminadas (C)</option>
-            <option value="reported">Solo reportados</option>
-            <option value="tab_switch">Solo salidas</option>
+            <option value="">All events</option>
+            <option value="locked">Removed only (C)</option>
+            <option value="reported">Reported only</option>
+            <option value="tab_switch">Screen exits only</option>
           </select>
         </div>
       </div>
       <div style="overflow-x:auto"><table>
-        <thead><tr><th style="text-align:left">Alumno</th><th style="text-align:left">Actividad</th><th>Evento</th><th>Vidas</th><th style="text-align:left">Equipo</th><th style="text-align:left">Fecha</th><th>Acción</th></tr></thead>
-        <tbody id="ac_rows">${rows || `<tr><td colspan="7" class="center muted" style="padding:20px">Sin incidentes registrados.</td></tr>`}<tr id="ac_empty" style="display:none"><td colspan="7" class="center muted" style="padding:20px">Ningún incidente coincide con la búsqueda.</td></tr></tbody>
+        <thead><tr><th style="text-align:left">Student</th><th style="text-align:left">Activity</th><th>Event</th><th>Lives</th><th style="text-align:left">Device</th><th style="text-align:left">Date</th><th>Action</th></tr></thead>
+        <tbody id="ac_rows">${rows || `<tr><td colspan="7" class="center muted" style="padding:20px">No incidents recorded.</td></tr>`}<tr id="ac_empty" style="display:none"><td colspan="7" class="center muted" style="padding:20px">No incident matches the search.</td></tr></tbody>
       </table></div>
     </div>
     ${error?`<div class="note err">${esc(error.message)}</div>`:''}`;
@@ -1447,14 +1447,14 @@ async function _acInsertGrant(studentId, activity, qty){
   return sb.from('anticheat_grants').insert({ student_id:studentId, activity, extra_lives:n, granted_by:uid });
 }
 window._acGrant=async(studentId, activity, name, btn)=>{
-  const ans=prompt(`¿Cuántas vidas extra dar a ${name} en «${acActLabel(activity)}»?`, '1');
+  const ans=prompt(`How many extra lives to give ${name} for “${acActLabel(activity)}”?`, '1');
   if(ans===null) return;
   const n=Math.max(1, Math.min(20, parseInt(ans,10)||0));
-  if(!n){ alert('Número no válido.'); return; }
+  if(!n){ alert('Invalid number.'); return; }
   if(btn){ btn.disabled=true; btn.textContent='…'; }
   const { error } = await _acInsertGrant(studentId, activity, n);
-  if(btn){ btn.disabled=false; btn.textContent = error?'➕ Vida':`✓ +${n}`; }
-  if(error) alert('No se pudo otorgar: '+error.message);
+  if(btn){ btn.disabled=false; btn.textContent = error?'➕ Life':`✓ +${n}`; }
+  if(error) alert('Could not grant: '+error.message);
 };
 window._acGrantForm=async(btn)=>{
   const studSel=$('#ac_stud'), actSel=$('#ac_act'), msg=$('#ac_msg');
@@ -1465,8 +1465,8 @@ window._acGrantForm=async(btn)=>{
   const { error } = await _acInsertGrant(studentId, activity, n);
   btn.disabled=false;
   msg.innerHTML = error
-    ? `<span style="color:var(--danger,#b91c1c)">No se pudo: ${esc(error.message)}</span>`
-    : `✓ <b>${n}</b> vida(s) extra otorgada(s) a <b>${esc(name)}</b> en <b>${esc(acActLabel(activity))}</b>. El alumno las recibe al recargar la actividad.`;
+    ? `<span style="color:var(--danger,#b91c1c)">Could not grant: ${esc(error.message)}</span>`
+    : `✓ <b>${n}</b> extra life(s) granted to <b>${esc(name)}</b> for <b>${esc(acActLabel(activity))}</b>. The student receives them when reloading the activity.`;
 };
 async function adminOverview(){
   const { data:profs } = await sb.from('profiles').select('role,grade_id,cefr_level');
@@ -1476,45 +1476,45 @@ async function adminOverview(){
   const mockMap={}; (mocks||[]).forEach(m=>mockMap[m.grade_id]=m.unlocked);
   const students=(profs||[]).filter(p=>p.role==='student');
   const byLevel=LEVELS.map(l=>({l,n:students.filter(s=>s.cefr_level===l).length}));
-  $('#main').innerHTML=`<h1>Resumen</h1>
+  $('#main').innerHTML=`<h1>Overview</h1>
     <div class="grid cols-3">
-      <div class="stat"><div class="n">${students.length}</div><div class="l">Alumnos</div></div>
-      <div class="stat"><div class="n">${(profs||[]).filter(p=>p.role==='teacher').length}</div><div class="l">Profesores</div></div>
-      <div class="stat"><div class="n">${att||0}</div><div class="l">Exámenes rendidos</div></div>
+      <div class="stat"><div class="n">${students.length}</div><div class="l">Students</div></div>
+      <div class="stat"><div class="n">${(profs||[]).filter(p=>p.role==='teacher').length}</div><div class="l">Teachers</div></div>
+      <div class="stat"><div class="n">${att||0}</div><div class="l">Exams taken</div></div>
     </div>
-    <div class="card"><h2>Alumnos por nivel</h2>
+    <div class="card"><h2>Students by level</h2>
       ${byLevel.map(x=>`<div style="margin:8px 0"><div class="row" style="justify-content:space-between"><b>${x.l}</b><span class="muted">${x.n}</span></div>
         <div class="bar"><span style="width:${students.length?Math.round(x.n/students.length*100):0}%"></span></div></div>`).join('')}
     </div>
-    <div class="card"><h2>¿Qué está activado?</h2>
-      <p class="muted" style="margin-top:-4px">Estado de los <b>Mocks</b> por grado (clic en la pestaña 🔓 Mocks para cambiarlos). ${teacherAcc||0} profesor(es) con accesos configurados (pestaña 👨‍🏫 Profesores).</p>
+    <div class="card"><h2>What is turned on?</h2>
+      <p class="muted" style="margin-top:-4px">Status of <b>Mocks</b> by grade (click the 🔓 Mocks tab to change them). ${teacherAcc||0} teacher(s) with access configured (👨‍🏫 Teachers tab).</p>
       <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px">
         ${GRADES.map(g=>`<span class="badge ${mockMap[g.id]?'on':'off'}" style="font-size:.82rem">${g.name}: ${mockMap[g.id]?'🔓':'🔒'}</span>`).join('')}
       </div>
-      <div class="row" style="gap:8px;margin-top:14px"><button class="btn sm" onclick="adminNewUser()">+ Crear alumno</button><button class="btn sm ghost" onclick="adminNewTeacher()">+ Crear profesor</button><button class="btn sm ghost" onclick="renderAdmin('stats')">📈 Ver estadísticas</button></div>
+      <div class="row" style="gap:8px;margin-top:14px"><button class="btn sm" onclick="adminNewUser()">+ Create student</button><button class="btn sm ghost" onclick="adminNewTeacher()">+ Create teacher</button><button class="btn sm ghost" onclick="renderAdmin('stats')">📈 View statistics</button></div>
     </div>
-    <div class="card"><h2>Roles y permisos</h2>
-      <p class="muted" style="margin-top:-4px">Cada persona entra con su correo y su rol decide qué ve y qué puede hacer.</p>
+    <div class="card"><h2>Roles and permissions</h2>
+      <p class="muted" style="margin-top:-4px">Each person signs in with their email, and their role decides what they see and can do.</p>
       <div style="overflow-x:auto"><table>
-        <thead><tr><th>Acción / Vista</th><th style="text-align:center">🛡️ Admin</th><th style="text-align:center">👨‍🏫 Profesor</th><th style="text-align:center">🎓 Alumno</th></tr></thead>
+        <thead><tr><th>Action / View</th><th style="text-align:center">🛡️ Admin</th><th style="text-align:center">👨‍🏫 Teacher</th><th style="text-align:center">🎓 Student</th></tr></thead>
         <tbody>
           ${[
-            ['Ver su propio avance y proyección','—','—','✓'],
-            ['Rendir exámenes (Mocks / Practice)','—','—','✓'],
-            ['Ver resultados de alumnos','✓ (todos)','Si se le habilita · sólo sus grados','—'],
-            ['Ver lista de alumnos','✓ (todos)','Si se le habilita · sólo sus grados','—'],
-            ['Calificar Writing','✓','✓ (sus grados)','—'],
-            ['📈 Estadísticas y reportes','✓ (sólo admin)','—','—'],
-            ['📝 Registro: crear / editar / eliminar usuarios','✓ (sólo admin)','—','—'],
-            ['Definir accesos y grados de profesores','✓ (sólo admin)','—','—'],
-            ['🔓 Desbloquear Mocks por grado','✓ (sólo admin)','—','—'],
-            ['Phonics y MUN Academy','✓','✓','✓']
+            ['View their own progress and projection','—','—','✓'],
+            ['Take exams (Mocks / Practice)','—','—','✓'],
+            ['View student results','✓ (all)','If enabled · only their grades','—'],
+            ['View student list','✓ (all)','If enabled · only their grades','—'],
+            ['Mark Writing','✓','✓ (their grades)','—'],
+            ['📈 Statistics and reports','✓ (admin only)','—','—'],
+            ['📝 Registration: create / edit / delete users','✓ (admin only)','—','—'],
+            ['Set teacher access and grades','✓ (admin only)','—','—'],
+            ['🔓 Unlock Mocks by grade','✓ (admin only)','—','—'],
+            ['Phonics and MUN Academy','✓','✓','✓']
           ].map(r=>`<tr><td>${r[0]}</td>
             <td style="text-align:center">${r[1]}</td>
             <td style="text-align:center;font-size:.85rem">${r[2]}</td>
             <td style="text-align:center">${r[3]}</td></tr>`).join('')}
         </tbody></table></div>
-      <p class="muted" style="font-size:.82rem;margin-top:8px">Para definir qué ve cada profesor y de qué grados, entra a <b>👨‍🏫 Profesores</b>. <b>Estadísticas</b> y <b>Registro</b> de usuarios son exclusivos del administrador.</p>
+      <p class="muted" style="font-size:.82rem;margin-top:8px">To set what each teacher sees and which grades, go to <b>👨‍🏫 Teachers</b>. <b>Statistics</b> and user <b>Registration</b> are for the administrator only.</p>
     </div>`;
 }
 async function adminTeachers(){
@@ -1549,58 +1549,58 @@ async function adminTeachers(){
     const suspended = t.active===false;
     return `<div class="card" data-tid="${t.id}" style="${suspended?'opacity:.6':''}">
       <div class="row" style="justify-content:space-between;align-items:flex-start">
-        <h2 style="margin:0;font-size:1.1rem">${esc(t.full_name||t.email)} ${suspended?'<span class="badge off" style="font-size:.7rem;vertical-align:middle">Suspendido</span>':''}</h2>
+        <h2 style="margin:0;font-size:1.1rem">${esc(t.full_name||t.email)} ${suspended?'<span class="badge off" style="font-size:.7rem;vertical-align:middle">Suspended</span>':''}</h2>
         <div style="text-align:right">
           <span class="muted" style="font-size:.82rem;display:block">${esc(t.email||'')}</span>
           <span style="display:inline-flex;align-items:center;gap:5px;margin-top:3px">
-            <span class="muted" style="font-size:.8rem">Acceso:</span>
-            <button onclick="window._resetPw('${t.id}')" title="Asignar una contraseña nueva"
-              style="background:none;border:none;cursor:pointer;font-size:.9rem;padding:2px;line-height:1;color:var(--muted)">🔑 Cambiar contraseña</button>
+            <span class="muted" style="font-size:.8rem">Access:</span>
+            <button onclick="window._resetPw('${t.id}')" title="Assign a new password"
+              style="background:none;border:none;cursor:pointer;font-size:.9rem;padding:2px;line-height:1;color:var(--muted)">🔑 Change password</button>
           </span>
           <span id="pw-box-${t.id}" style="display:none;margin-top:6px;gap:6px;align-items:center;justify-content:flex-end">
-            <input id="pw-new-${t.id}" type="password" placeholder="Nueva contraseña (mín. 8)"
+            <input id="pw-new-${t.id}" type="password" placeholder="New password (min. 8)"
               style="padding:5px 8px;border:1px solid var(--line);border-radius:7px;font-size:.82rem;width:190px">
-            <button class="btn small" onclick="window._guardaPw('${t.id}')">Guardar</button>
+            <button class="btn small" onclick="window._guardaPw('${t.id}')">Save</button>
             <span id="pw-msg-${t.id}" style="font-size:.78rem"></span>
           </span>
         </div>
       </div>
       <div class="row" style="gap:18px;flex-wrap:wrap;margin-top:10px">
-        <label style="${chipCss}"><input type="checkbox" class="tg-results" ${a.can_results?'checked':''}> 📝 Ver resultados</label>
-        <label style="${chipCss}"><input type="checkbox" class="tg-students" ${a.can_students?'checked':''}> 👥 Ver alumnos</label>
-        <label style="${chipCss}"><input type="checkbox" class="tg-all" ${a.all_grades?'checked':''} onchange="window._tgAll(this)"> 🏫 Todos los grados</label>
+        <label style="${chipCss}"><input type="checkbox" class="tg-results" ${a.can_results?'checked':''}> 📝 View results</label>
+        <label style="${chipCss}"><input type="checkbox" class="tg-students" ${a.can_students?'checked':''}> 👥 View students</label>
+        <label style="${chipCss}"><input type="checkbox" class="tg-all" ${a.all_grades?'checked':''} onchange="window._tgAll(this)"> 🏫 All grades</label>
       </div>
-      <div class="muted" style="margin:10px 0 4px;font-size:.85rem">Grados específicos (sólo si desmarcas "Todos los grados"):</div>
+      <div class="muted" style="margin:10px 0 4px;font-size:.85rem">Specific grades (only if you uncheck “All grades”):</div>
       <div style="display:flex;flex-wrap:wrap;gap:8px">${gradeChips}</div>
-      <div class="muted" style="margin:10px 0 4px;font-size:.85rem">Tarjetas que ve y gestiona:</div>
+      <div class="muted" style="margin:10px 0 4px;font-size:.85rem">Cards they see and manage:</div>
       <div style="display:flex;flex-wrap:wrap;gap:8px">${generalChips}</div>
-      <div class="muted" style="margin:8px 0 2px;font-size:.8rem">Classes — por grado (cada uno: la tarjeta del grado, sus Activities y su Grammar):</div>
+      <div class="muted" style="margin:8px 0 2px;font-size:.8rem">Classes — by grade (each one: the grade’s card, its Activities and its Grammar):</div>
       ${gradeBlocks}
-      <div class="row" style="margin-top:12px;align-items:center;gap:10px"><button class="btn sm" onclick="window._saveTeacher('${t.id}', this)">Guardar accesos</button>${suspended?`<button class="btn sm" style="background:var(--good)" onclick="suspendUser('${t.id}',true,'teacher')">Reactivar</button>`:`<button class="btn sm ghost" style="border-color:var(--warn);color:#92600a" onclick="suspendUser('${t.id}',false,'teacher')">Suspender</button>`}<button class="btn sm danger" onclick="deleteUser('${t.id}','teacher')">Eliminar profesor</button><span class="tmsg muted" style="font-size:.85rem"></span></div>
+      <div class="row" style="margin-top:12px;align-items:center;gap:10px"><button class="btn sm" onclick="window._saveTeacher('${t.id}', this)">Save access</button>${suspended?`<button class="btn sm" style="background:var(--good)" onclick="suspendUser('${t.id}',true,'teacher')">Reactivate</button>`:`<button class="btn sm ghost" style="border-color:var(--warn);color:#92600a" onclick="suspendUser('${t.id}',false,'teacher')">Suspend</button>`}<button class="btn sm danger" onclick="deleteUser('${t.id}','teacher')">Delete teacher</button><span class="tmsg muted" style="font-size:.85rem"></span></div>
     </div>`;
   }).join('');
-  const emptyMsg = teachers.length ? '' : `<div class="card"><p class="muted">Aún no hay profesores. Usa el botón de arriba para agregar uno.</p></div>`;
+  const emptyMsg = teachers.length ? '' : `<div class="card"><p class="muted">No teachers yet. Use the button above to add one.</p></div>`;
   $('#main').innerHTML=`
     <div class="row" style="justify-content:space-between;align-items:center;margin-bottom:6px">
-      <h1 style="margin:0">Profesores — accesos</h1>
-      <button class="btn sm" onclick="adminNewTeacher()">+ Agregar Profesor</button>
+      <h1 style="margin:0">Teachers — access</h1>
+      <button class="btn sm" onclick="adminNewTeacher()">+ Add Teacher</button>
     </div>
-    <div class="note">Asigna qué puede ver cada profesor. Por defecto: <b>Resultados</b> de <b>todos los grados</b>. Desmarca "Todos los grados" para limitarlo a grados específicos.</div>
+    <div class="note">Sets what each teacher can see. Default: <b>Results</b> for <b>all grades</b>. Uncheck “All grades” to limit it to specific grades.</div>
     ${cards}${emptyMsg}`;
 }
 window.adminNewTeacher=()=>{
-  $('#main').innerHTML=`<button class="btn sm ghost" onclick="adminTeachers()">← Volver a Profesores</button>
-    <div class="card" style="max-width:560px;margin-top:12px"><h2 style="margin-top:0">Agregar Profesor</h2>
-    <div class="field-2"><div><label>Nombres</label><input id="nt_first" placeholder="Ej: María"></div><div><label>Apellidos</label><input id="nt_last" placeholder="Ej: García"></div></div>
-    <label>Correo electrónico</label><input id="nt_email" type="email" placeholder="nombre.apellido@nordic-school.edu.pe">
-    <label style="margin-top:10px;display:block">Contraseña</label>
+  $('#main').innerHTML=`<button class="btn sm ghost" onclick="adminTeachers()">← Back to Teachers</button>
+    <div class="card" style="max-width:560px;margin-top:12px"><h2 style="margin-top:0">Add Teacher</h2>
+    <div class="field-2"><div><label>First name(s)</label><input id="nt_first" placeholder="E.g. María"></div><div><label>Last name(s)</label><input id="nt_last" placeholder="E.g. García"></div></div>
+    <label>Email address</label><input id="nt_email" type="email" placeholder="firstname.lastname@nordic-school.edu.pe">
+    <label style="margin-top:10px;display:block">Password</label>
     <div style="position:relative;display:flex;align-items:center">
-      <input id="nt_pw" type="password" placeholder="Mínimo 8 caracteres" style="flex:1;padding-right:40px">
-      <button onclick="window._toggleNewPw('nt_pw','nt_pw_btn')" id="nt_pw_btn" title="Mostrar/ocultar contraseña"
+      <input id="nt_pw" type="password" placeholder="Minimum 8 characters" style="flex:1;padding-right:40px">
+      <button onclick="window._toggleNewPw('nt_pw','nt_pw_btn')" id="nt_pw_btn" title="Show/hide password"
         style="position:absolute;right:10px;background:none;border:none;cursor:pointer;font-size:1rem;color:var(--muted);line-height:1;padding:0">👁</button>
     </div>
     <div id="nt_msg" style="margin-top:10px"></div>
-    <div class="row" style="margin-top:16px"><button class="btn" onclick="window.createTeacher()">Crear Profesor</button></div>
+    <div class="row" style="margin-top:16px"><button class="btn" onclick="window.createTeacher()">Create Teacher</button></div>
     </div>`;
 };
 window._toggleNewPw=(inputId,btnId)=>{
@@ -1614,9 +1614,9 @@ window.createTeacher=async()=>{
   const v=id=>($('#'+id)||{value:''}).value.trim();
   const first=v('nt_first'), last=v('nt_last'), email=v('nt_email'), pw=v('nt_pw');
   const msg=$('#nt_msg');
-  if(!first||!last||!email||!pw) return msg.innerHTML='<div class="note err">Completa todos los campos: nombres, apellidos, correo y contraseña.</div>';
-  if(pw.length<8) return msg.innerHTML='<div class="note err">La contraseña debe tener al menos 8 caracteres.</div>';
-  msg.innerHTML='<div class="note">Creando cuenta…</div>';
+  if(!first||!last||!email||!pw) return msg.innerHTML='<div class="note err">Complete all fields: first name, last name, email and password.</div>';
+  if(pw.length<8) return msg.innerHTML='<div class="note err">The password must be at least 8 characters long.</div>';
+  msg.innerHTML='<div class="note">Creating account…</div>';
   const meta={ first_name:first, last_name:last, full_name:first+' '+last, role:'teacher', academic_year:new Date().getFullYear() };
   let rpcErr=null, timedOut=false;
   try{
@@ -1627,12 +1627,12 @@ window.createTeacher=async()=>{
     rpcErr=error||null;
   }catch(e){ rpcErr=e; }
   if(timedOut){
-    msg.innerHTML='<div class="note">La creación está tardando más de lo normal por la conexión. <b>Es muy posible que la cuenta SÍ se haya creado.</b> Volviendo a la lista de Profesores para que verifiques — <b>no uses el mismo correo dos veces</b>. Si no aparece, espera unos segundos y recarga.</div>';
+    msg.innerHTML='<div class="note">Account creation is taking longer than usual due to the connection. <b>The account has very likely already been created.</b> Returning to the Teachers list so you can check — <b>do not use the same email twice</b>. If it does not appear, wait a few seconds and reload.</div>';
     setTimeout(adminTeachers, 3000);
     return;
   }
   if(rpcErr){ msg.innerHTML=`<div class="note err">${esc(rpcErr.message||String(rpcErr))}</div>`; return; }
-  msg.innerHTML='<div class="note ok">✓ Profesor creado correctamente. Redirigiendo…</div>';
+  msg.innerHTML='<div class="note ok">✓ Teacher created successfully. Redirecting…</div>';
   setTimeout(adminTeachers, 900);
 };
 window._tgAll=(cb)=>{ cb.closest('.card').querySelectorAll('.tg-grade').forEach(c=>{ c.disabled=cb.checked; }); };
@@ -1644,13 +1644,13 @@ window._saveTeacher=async(id,btn)=>{
     all_grades:card.querySelector('.tg-all').checked,
     grades:[...card.querySelectorAll('.tg-grade:checked')].map(c=>+c.value),
     updated_at:new Date().toISOString(), updated_by:(state.session&&state.session.user&&state.session.user.id)||null };
-  msgEl.textContent='Guardando…';
+  msgEl.textContent='Saving…';
   const { error } = await sb.from('teacher_access').upsert(row,{onConflict:'profile_id'});
   if(error){ msgEl.textContent='⚠ '+error.message; return; }
   const uid=(state.session&&state.session.user&&state.session.user.id)||null;
   const nodeRows=[...card.querySelectorAll('.tg-node')].map(c=>({profile_id:id,node_key:c.value,allowed:c.checked,updated_at:new Date().toISOString(),updated_by:uid}));
   const { error:e2 } = nodeRows.length ? await sb.from('teacher_node_access').upsert(nodeRows,{onConflict:'profile_id,node_key'}) : {error:null};
-  msgEl.textContent = e2 ? ('⚠ '+e2.message) : '✓ Guardado';
+  msgEl.textContent = e2 ? ('⚠ '+e2.message) : '✓ Saved';
 };
 /* Vista previa del motor de exámenes para admin/profesor: abre el mismo quiz que
    ve el alumno (branch 'mocks' o 'practice') en una pestaña nueva. nis-bridge.js
@@ -1661,8 +1661,8 @@ function _examPreviewCard(branch){
   const q = s => `${QUIZ_URL}${s}-quiz.html?branch=${branch}`;
   const btn = (href,label) => `<a class="btn sm ghost" href="${href}" target="_blank" rel="noopener" style="text-decoration:none">${label} ↗</a>`;
   return `<div class="card">
-      <h2 style="margin:0 0 4px">👁️ Ver los ${isMock?'Mocks':'Practice Tests'}</h2>
-      <div class="muted" style="font-size:.85rem;margin-bottom:12px">Ábrelos como los ve el alumno${isMock?' (MOCK 1 · 2 y el nivel se eligen dentro)':' (el nivel y la práctica 1 · 2 · 3 se eligen dentro)'}. Profesores y administradores <b>siempre</b> pueden verlos, incluso con el grado bloqueado.</div>
+      <h2 style="margin:0 0 4px">👁️ View the ${isMock?'Mocks':'Practice Tests'}</h2>
+      <div class="muted" style="font-size:.85rem;margin-bottom:12px">Open them as the student sees them${isMock?' (MOCK 1 · 2 and the level are chosen inside)':' (the level and practice 1 · 2 · 3 are chosen inside)'}. Teachers and administrators can <b>always</b> view them, even with the grade locked.</div>
       <div style="display:flex;gap:8px;flex-wrap:wrap">
         ${btn(q('reading'),'📖 Reading &amp; UoE')}
         ${btn(q('listening'),'🎧 Listening')}
@@ -1679,16 +1679,16 @@ async function adminMocks(){
     const when = (r&&r.updated_at)?new Date(r.updated_at).toLocaleString():'';
     return `<tr>
       <td><b>${g.name}</b></td>
-      <td><span class="badge ${on?'on':'off'}">${on?'🔓 Desbloqueado':'🔒 Bloqueado'}</span></td>
+      <td><span class="badge ${on?'on':'off'}">${on?'🔓 Unlocked':'🔒 Locked'}</span></td>
       <td class="muted" style="font-size:.82rem">${when}</td>
-      <td><button class="btn sm ${on?'ghost':''}" onclick="window._toggleMock(${g.id}, ${on?'false':'true'}, this)">${on?'Bloquear':'Desbloquear'}</button></td>
+      <td><button class="btn sm ${on?'ghost':''}" onclick="window._toggleMock(${g.id}, ${on?'false':'true'}, this)">${on?'Lock':'Unlock'}</button></td>
     </tr>`;
   }).join('');
-  $('#main').innerHTML = `<h1>Mocks — control de acceso</h1>
-    <div class="note">Por defecto los <b>MOCKS están bloqueados</b> para los alumnos: son exámenes oficiales y solo el admin los habilita por grado cuando se programan. Los <b>Practice Tests</b> se gestionan en su pestaña 🎯 (admin y profesores). Profesores y administradores siempre ven los mocks.</div>
+  $('#main').innerHTML = `<h1>Mocks — access control</h1>
+    <div class="note">By default <b>MOCKS are locked</b> for students: they are official exams and only the admin enables them by grade when scheduled. <b>Practice Tests</b> are managed in their own 🎯 tab (admin and teachers). Teachers and administrators always see the mocks.</div>
     ${_examPreviewCard('mocks')}
     <div class="card" style="padding:0;overflow-x:auto"><table>
-      <thead><tr><th>Grado</th><th>Estado de Mocks</th><th>Última actualización</th><th></th></tr></thead>
+      <thead><tr><th>Grade</th><th>Mocks status</th><th>Last updated</th><th></th></tr></thead>
       <tbody>${rows}</tbody></table></div>`;
 }
 window._toggleMock = async (gradeId, to, btn)=>{
@@ -1696,7 +1696,7 @@ window._toggleMock = async (gradeId, to, btn)=>{
   const { error } = await sb.from('mock_access').upsert(
     { grade_id:gradeId, unlocked:to, updated_at:new Date().toISOString(), updated_by:(state.session&&state.session.user&&state.session.user.id)||null },
     { onConflict:'grade_id' });
-  if(error){ alert('No se pudo actualizar: '+error.message); }
+  if(error){ alert('Could not update: '+error.message); }
   adminMocks();
 };
 /* 🎯 Practice Tests — control por grado. A diferencia de los Mocks (admin-only),
@@ -1711,16 +1711,16 @@ async function practicePanel(gradeList){
     const when = (r&&r.updated_at)?new Date(r.updated_at).toLocaleString():'';
     return `<tr>
       <td><b>${g.name}</b></td>
-      <td><span class="badge ${on?'on':'off'}">${on?'🔓 Desbloqueado':'🔒 Bloqueado'}</span></td>
+      <td><span class="badge ${on?'on':'off'}">${on?'🔓 Unlocked':'🔒 Locked'}</span></td>
       <td class="muted" style="font-size:.82rem">${when}</td>
-      <td><button class="btn sm ${on?'ghost':''}" onclick="window._togglePractice(${g.id}, ${on?'false':'true'}, this)">${on?'Bloquear':'Desbloquear'}</button></td>
+      <td><button class="btn sm ${on?'ghost':''}" onclick="window._togglePractice(${g.id}, ${on?'false':'true'}, this)">${on?'Lock':'Unlock'}</button></td>
     </tr>`;
   }).join('');
-  $('#main').innerHTML = `<h1>Practice Tests — control de acceso</h1>
-    <div class="note">Los <b>PRACTICE TESTS están desbloqueados por defecto</b> (práctica libre). Bloquéalos por grado cuando quieras reservarlos para usarlos en clase, y desbloquéalos al terminar. Los <b>Mocks</b> (exámenes oficiales) se gestionan aparte y solo por el admin.</div>
+  $('#main').innerHTML = `<h1>Practice Tests — access control</h1>
+    <div class="note"><b>PRACTICE TESTS are unlocked by default</b> (free practice). Lock them by grade when you want to reserve them for classroom use, then unlock them when done. <b>Mocks</b> (official exams) are managed separately, admin only.</div>
     ${_examPreviewCard('practice')}
     <div class="card" style="padding:0;overflow-x:auto"><table>
-      <thead><tr><th>Grado</th><th>Estado de Practice Tests</th><th>Última actualización</th><th></th></tr></thead>
+      <thead><tr><th>Grade</th><th>Practice Tests status</th><th>Last updated</th><th></th></tr></thead>
       <tbody>${rows}</tbody></table></div>`;
 }
 window._togglePractice = async (gradeId, to, btn)=>{
@@ -1728,7 +1728,7 @@ window._togglePractice = async (gradeId, to, btn)=>{
   const { error } = await sb.from('practice_access').upsert(
     { grade_id:gradeId, unlocked:to, updated_at:new Date().toISOString(), updated_by:(state.session&&state.session.user&&state.session.user.id)||null },
     { onConflict:'grade_id' });
-  if(error){ alert('No se pudo actualizar: '+error.message); }
+  if(error){ alert('Could not update: '+error.message); }
   practicePanel(state.profile && state.profile.role==='admin' ? GRADES : teacherAllowedGrades());
 };
 async function adminUsers(){
@@ -1753,47 +1753,47 @@ async function adminUsers(){
       && (showInactive || p.active!==false);
   const list = all.filter(p => pasaResto(p) && (!fr || esTipo(p, fr)));
 
-  const TIPOS = [['','Todos','👥'],['student','Alumnos','🎒'],['teacher','Profesores','👨‍🏫'],
+  const TIPOS = [['','All','👥'],['student','Students','🎒'],['teacher','Teachers','👨‍🏫'],
                  ['admin','Admins','🛡️'],['demo','Demos','🧪']];
   const botonesTipo = TIPOS.map(([v,l,ic])=>{
     const n = all.filter(p => pasaResto(p) && (!v || esTipo(p, v))).length;
     return `<button class="btn sm ${fr===v?'':'ghost'}" onclick="window._setUserFilter('role','${v}')"
-      title="Ver solo ${l.toLowerCase()}">${ic} ${l} <b>${n}</b></button>`;
+      title="Show only ${l.toLowerCase()}">${ic} ${l} <b>${n}</b></button>`;
   }).join(' ');
 
-  const gradeOpts = `<option value="">Todos los grados</option>`+GRADES.map(g=>`<option value="${g.id}" ${String(fg)===String(g.id)?'selected':''}>${g.name}</option>`).join('');
-  const yearOpts = `<option value="">Todos los años</option>`+years.map(y=>`<option value="${y}" ${String(fy)===String(y)?'selected':''}>${y}</option>`).join('');
-  const seccionOpts = `<option value="">Todas las secciones</option>`+secciones.map(s=>`<option value="${esc(s)}" ${fs===s?'selected':''}>Sección ${esc(s)}</option>`).join('');
+  const gradeOpts = `<option value="">All grades</option>`+GRADES.map(g=>`<option value="${g.id}" ${String(fg)===String(g.id)?'selected':''}>${g.name}</option>`).join('');
+  const yearOpts = `<option value="">All years</option>`+years.map(y=>`<option value="${y}" ${String(fy)===String(y)?'selected':''}>${y}</option>`).join('');
+  const seccionOpts = `<option value="">All sections</option>`+secciones.map(s=>`<option value="${esc(s)}" ${fs===s?'selected':''}>Section ${esc(s)}</option>`).join('');
   const rows=list.map(p=>{
     const suspended = p.active===false;
     const toggleBtn = suspended
-      ? `<button class="btn sm" style="background:var(--good)" onclick="suspendUser('${p.id}',true)">Reactivar</button>`
-      : `<button class="btn sm ghost" style="border-color:var(--warn);color:#92600a" onclick="suspendUser('${p.id}',false)">Suspender</button>`;
+      ? `<button class="btn sm" style="background:var(--good)" onclick="suspendUser('${p.id}',true)">Reactivate</button>`
+      : `<button class="btn sm ghost" style="border-color:var(--warn);color:#92600a" onclick="suspendUser('${p.id}',false)">Suspend</button>`;
     return `<tr data-id="${p.id}" style="${suspended?'opacity:.55':''}">
       <td><b>${esc(p.full_name||((p.first_name||'')+' '+(p.last_name||'')))}</b><div class="muted" style="font-size:.8rem">${esc(p.email||'')}</div></td>
       <td><span class="badge grade">${esc(p.grades?.name||'—')}</span> ${p.section?esc(p.section):''}</td>
       <td>${p.academic_year||2026}</td>
       <td><span class="badge lvl">${esc(p.cefr_level||'—')}</span></td>
-      <td><span class="badge ${p.role==='student'?'':'on'}">${esc(p.role)}</span>${p.is_demo?' <span class="badge" title="Cuenta de demostración">🧪 demo</span>':''}</td>
-      <td><span class="badge ${suspended?'off':'on'}">${suspended?'Suspendido':'Activo'}</span></td>
-      <td class="acts"><div class="acts-wrap">${p.role==='student'?`<button class="btn sm ghost" onclick="window._previewStudent('${p.id}','${esc((p.full_name||p.email||'').replace(/'/g,'’'))}')" title="Ver el portal tal como lo ve este alumno">👁️ Ver como</button> <button class="btn sm ghost" onclick="window._openStudentAccess('${p.id}',${p.grade_id||'null'},'${esc((p.full_name||p.email||'').replace(/'/g,'’'))}')">🔧 Accesos</button> <button class="btn sm ghost" onclick="window.resetStudentPassword('${p.id}','${esc((p.full_name||p.email||'').replace(/'/g,'’'))}','${esc((p.email||'').replace(/'/g,'’'))}')" title="Asignar una contraseña temporal nueva">🔑 Restablecer</button> `:''}<button class="btn sm ghost" onclick="editUser('${p.id}')">Editar</button> ${toggleBtn} <button class="btn sm danger" onclick="deleteUser('${p.id}','user')">Eliminar</button></div></td>
+      <td><span class="badge ${p.role==='student'?'':'on'}">${esc(p.role)}</span>${p.is_demo?' <span class="badge" title="Demo account">🧪 demo</span>':''}</td>
+      <td><span class="badge ${suspended?'off':'on'}">${suspended?'Suspended':'Active'}</span></td>
+      <td class="acts"><div class="acts-wrap">${p.role==='student'?`<button class="btn sm ghost" onclick="window._previewStudent('${p.id}','${esc((p.full_name||p.email||'').replace(/'/g,'’'))}')" title="View the portal as this student sees it">👁️ View as</button> <button class="btn sm ghost" onclick="window._openStudentAccess('${p.id}',${p.grade_id||'null'},'${esc((p.full_name||p.email||'').replace(/'/g,'’'))}')">🔧 Access</button> <button class="btn sm ghost" onclick="window.resetStudentPassword('${p.id}','${esc((p.full_name||p.email||'').replace(/'/g,'’'))}','${esc((p.email||'').replace(/'/g,'’'))}')" title="Assign a new temporary password">🔑 Reset</button> `:''}<button class="btn sm ghost" onclick="editUser('${p.id}')">Edit</button> ${toggleBtn} <button class="btn sm danger" onclick="deleteUser('${p.id}','user')">Delete</button></div></td>
     </tr>`;}).join('');
-  $('#main').innerHTML=`<div class="row" style="justify-content:space-between;align-items:center"><h1>Usuarios</h1>
-      <button class="btn sm" onclick="adminNewUser()">+ Nuevo</button></div>
+  $('#main').innerHTML=`<div class="row" style="justify-content:space-between;align-items:center"><h1>Users</h1>
+      <button class="btn sm" onclick="adminNewUser()">+ New</button></div>
     <div class="card">
       <div class="row" style="gap:6px;flex-wrap:wrap;margin-bottom:14px">${botonesTipo}</div>
       <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end">
-        <div><label>Grado</label><select onchange="window._setUserFilter('grade',this.value)" style="min-width:170px">${gradeOpts}</select></div>
-        <div><label>Sección</label><select onchange="window._setUserFilter('section',this.value)" style="min-width:150px">${seccionOpts}</select></div>
-        <div><label>Año académico</label><select onchange="window._setUserFilter('year',this.value)" style="min-width:150px">${yearOpts}</select></div>
-        <label style="display:flex;align-items:center;gap:7px;font-weight:500;margin:0 0 10px"><input type="checkbox" ${showInactive?'checked':''} onchange="window._setUserFilter('showInactive',this.checked)" style="width:auto"> Mostrar suspendidos${suspendedCount?` (${suspendedCount})`:''}</label>
-        <div class="muted" style="padding-bottom:11px">${list.length} usuario(s)</div>
-        ${(fr||fg||fy||fs) ? `<button class="btn sm ghost" style="margin-bottom:8px" onclick="window._limpiaUserFiltro()">Quitar filtros</button>` : ''}
+        <div><label>Grade</label><select onchange="window._setUserFilter('grade',this.value)" style="min-width:170px">${gradeOpts}</select></div>
+        <div><label>Section</label><select onchange="window._setUserFilter('section',this.value)" style="min-width:150px">${seccionOpts}</select></div>
+        <div><label>Academic year</label><select onchange="window._setUserFilter('year',this.value)" style="min-width:150px">${yearOpts}</select></div>
+        <label style="display:flex;align-items:center;gap:7px;font-weight:500;margin:0 0 10px"><input type="checkbox" ${showInactive?'checked':''} onchange="window._setUserFilter('showInactive',this.checked)" style="width:auto"> Show suspended${suspendedCount?` (${suspendedCount})`:''}</label>
+        <div class="muted" style="padding-bottom:11px">${list.length} user(s)</div>
+        ${(fr||fg||fy||fs) ? `<button class="btn sm ghost" style="margin-bottom:8px" onclick="window._limpiaUserFiltro()">Clear filters</button>` : ''}
       </div>
     </div>
     <div class="card" style="padding:0;overflow-x:auto">
-      <table class="usuarios"><thead><tr><th>Nombre</th><th>Grado</th><th>Año</th><th>Nivel</th><th>Rol</th><th>Estado</th><th></th></tr></thead>
-      <tbody>${rows||'<tr><td colspan="7" class="center muted">No hay usuarios con ese filtro.</td></tr>'}</tbody></table>
+      <table class="usuarios"><thead><tr><th>Name</th><th>Grade</th><th>Year</th><th>Level</th><th>Role</th><th>Status</th><th></th></tr></thead>
+      <tbody>${rows||'<tr><td colspan="7" class="center muted">No users match this filter.</td></tr>'}</tbody></table>
     </div>`;
 }
 window._setUserFilter = (k,v)=>{ userFilter[k]=v; adminUsers(); };
@@ -1819,22 +1819,22 @@ function _generateTemporaryPassword(){
 
 window.resetStudentPassword = function(id, name, email){
   const suggested = _generateTemporaryPassword();
-  $('#main').innerHTML=`<button class="btn sm ghost" onclick="adminUsers()">← Volver a Usuarios</button>
+  $('#main').innerHTML=`<button class="btn sm ghost" onclick="adminUsers()">← Back to Users</button>
     <div class="card" style="max-width:620px">
-      <h2>🔑 Restablecer contraseña</h2>
-      <p><b>${esc(name||'Alumno')}</b></p>
+      <h2>🔑 Reset password</h2>
+      <p><b>${esc(name||'Student')}</b></p>
       <p class="muted" style="margin-top:-8px">${esc(email||'')}</p>
-      <div class="note">Esta acción reemplaza la contraseña anterior. La nueva clave se mostrará aquí para que puedas copiarla y entregársela al alumno. NIS no conservará una copia visible.</div>
-      <label>Nueva contraseña temporal</label>
+      <div class="note">This action replaces the previous password. The new key will be shown here so you can copy it and give it to the student. NIS will not keep a visible copy.</div>
+      <label>New temporary password</label>
       <div class="row" style="gap:8px;align-items:center">
         <input id="rp_pw" type="text" autocomplete="off" value="${esc(suggested)}" style="flex:1;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-weight:700;letter-spacing:.4px">
-        <button class="btn sm ghost" type="button" onclick="window.regenerateStudentPassword()">↻ Generar otra</button>
+        <button class="btn sm ghost" type="button" onclick="window.regenerateStudentPassword()">↻ Generate another</button>
       </div>
-      <p class="muted" style="font-size:.82rem">Puedes usar la sugerida o escribir otra. Mínimo 8 caracteres recomendado.</p>
+      <p class="muted" style="font-size:.82rem">You can use the suggested one or type another. Minimum 8 characters recommended.</p>
       <div id="rp_msg"></div>
       <div class="row" style="margin-top:14px;gap:8px">
-        <button id="rp_save" class="btn" onclick="window.saveStudentPassword('${id}')">Cambiar contraseña</button>
-        <button class="btn ghost" onclick="adminUsers()">Cancelar</button>
+        <button id="rp_save" class="btn" onclick="window.saveStudentPassword('${id}')">Change password</button>
+        <button class="btn ghost" onclick="adminUsers()">Cancel</button>
       </div>
     </div>`;
   const input=$('#rp_pw'); if(input){ input.focus(); input.select(); }
@@ -1850,23 +1850,23 @@ window.regenerateStudentPassword = function(){
 window.saveStudentPassword = async function(id){
   const input=$('#rp_pw'), msg=$('#rp_msg'), btn=$('#rp_save');
   const pw=(input && input.value || '').trim();
-  if(pw.length<8){ msg.innerHTML='<div class="note err">Usa al menos 8 caracteres para la contraseña temporal.</div>'; return; }
-  if(btn){ btn.disabled=true; btn.textContent='Cambiando…'; }
-  msg.innerHTML='<div class="note">Actualizando la contraseña…</div>';
+  if(pw.length<8){ msg.innerHTML='<div class="note err">Use at least 8 characters for the temporary password.</div>'; return; }
+  if(btn){ btn.disabled=true; btn.textContent='Changing…'; }
+  msg.innerHTML='<div class="note">Updating the password…</div>';
   const r=await sb.rpc('admin_set_password',{p_id:id,p_password:pw});
   if(r.error){
     msg.innerHTML=`<div class="note err">${esc(r.error.message)}</div>`;
-    if(btn){ btn.disabled=false; btn.textContent='Cambiar contraseña'; }
+    if(btn){ btn.disabled=false; btn.textContent='Change password'; }
     return;
   }
   // Mantenerla visible solo en esta pantalla para poder entregársela al alumno.
   input.readOnly=true;
-  msg.innerHTML=`<div class="note ok"><b>Contraseña cambiada.</b> La contraseña anterior ya no funciona.<br>
+  msg.innerHTML=`<div class="note ok"><b>Password changed.</b> The previous password no longer works.<br>
     <div class="row" style="margin-top:10px;gap:8px;align-items:center;flex-wrap:wrap">
       <code id="rp_result" style="font-size:1.05rem;font-weight:800;user-select:all">${esc(pw)}</code>
-      <button class="btn sm" onclick="window.copyTemporaryPassword()">📋 Copiar</button>
+      <button class="btn sm" onclick="window.copyTemporaryPassword()">📋 Copy</button>
     </div>
-    <div class="muted" style="margin-top:8px">Al salir de esta pantalla NIS no volverá a mostrar esta clave.</div></div>`;
+    <div class="muted" style="margin-top:8px">Once you leave this screen, NIS will not show this key again.</div></div>`;
   if(btn) btn.style.display='none';
 };
 
@@ -1876,64 +1876,64 @@ window.copyTemporaryPassword = async function(){
   try{
     await navigator.clipboard.writeText(text);
     const old=el.nextElementSibling;
-    if(old){ old.textContent='✓ Copiada'; setTimeout(()=>{ old.textContent='📋 Copiar'; },1600); }
+    if(old){ old.textContent='✓ Copied'; setTimeout(()=>{ old.textContent='📋 Copy'; },1600); }
   }catch(_){
     const range=document.createRange(); range.selectNodeContents(el);
     const sel=window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
   }
 };
 window.adminNewUser = ()=>{
-  $('#main').innerHTML=`<button class="btn sm ghost" onclick="adminUsers()">← Volver</button>
-    <div class="card" style="max-width:600px"><h2>Nuevo usuario</h2>
-    <div class="field-2"><div><label>Nombres</label><input id="n_first"></div><div><label>Apellidos</label><input id="n_last"></div></div>
-    <label>Correo</label><input id="n_email" type="email" placeholder="nombre.apellido@nordic-school.edu.pe">
-    <div class="field-2"><div><label>Rol</label><select id="n_role"><option value="student">student</option><option value="teacher">teacher</option><option value="admin">admin</option></select></div>
-      <div><label>Contraseña</label><input id="n_pw" type="password" autocomplete="new-password" placeholder="mín. 8 caracteres"></div></div>
-    <div class="field-2"><div><label>Grado</label><select id="n_grade"><option value="">—</option>${GRADES.map(g=>`<option value="${g.id}">${g.name}</option>`).join('')}</select></div>
-      <div><label>Sección</label><input id="n_section"></div></div>
-    <div class="field-2"><div><label>Nivel</label><select id="n_level"><option value="">—</option>${LEVELS.map(l=>`<option>${l}</option>`).join('')}</select></div>
-      <div><label>Documento</label><input id="n_doc"></div></div>
-    <div class="field-2"><div><label>Año académico</label><select id="n_year">${yearOptions(2026)}</select></div><div></div></div>
+  $('#main').innerHTML=`<button class="btn sm ghost" onclick="adminUsers()">← Back</button>
+    <div class="card" style="max-width:600px"><h2>New user</h2>
+    <div class="field-2"><div><label>First name</label><input id="n_first"></div><div><label>Last name</label><input id="n_last"></div></div>
+    <label>Email</label><input id="n_email" type="email" placeholder="nombre.apellido@nordic-school.edu.pe">
+    <div class="field-2"><div><label>Role</label><select id="n_role"><option value="student">student</option><option value="teacher">teacher</option><option value="admin">admin</option></select></div>
+      <div><label>Password</label><input id="n_pw" type="password" autocomplete="new-password" placeholder="min. 8 characters"></div></div>
+    <div class="field-2"><div><label>Grade</label><select id="n_grade"><option value="">—</option>${GRADES.map(g=>`<option value="${g.id}">${g.name}</option>`).join('')}</select></div>
+      <div><label>Section</label><input id="n_section"></div></div>
+    <div class="field-2"><div><label>Level</label><select id="n_level"><option value="">—</option>${LEVELS.map(l=>`<option>${l}</option>`).join('')}</select></div>
+      <div><label>ID document</label><input id="n_doc"></div></div>
+    <div class="field-2"><div><label>Academic year</label><select id="n_year">${yearOptions(2026)}</select></div><div></div></div>
     <div id="nmsg"></div>
-    <div class="row" style="margin-top:14px"><button class="btn" onclick="createUser()">Crear cuenta</button></div></div>`;
+    <div class="row" style="margin-top:14px"><button class="btn" onclick="createUser()">Create account</button></div></div>`;
 };
 window.createUser = async ()=>{
   const v=id=>$('#'+id).value.trim();
   const email=v('n_email'), pw=v('n_pw');
-  if(!v('n_first')||!v('n_last')||!email||!pw) return $('#nmsg').innerHTML='<div class="note err">Completa nombres, apellidos, correo y contraseña.</div>';
-  if(pw.length<8) return $('#nmsg').innerHTML='<div class="note err">La contraseña debe tener al menos 8 caracteres.</div>';
+  if(!v('n_first')||!v('n_last')||!email||!pw) return $('#nmsg').innerHTML='<div class="note err">Fill in first name, last name, email and password.</div>';
+  if(pw.length<8) return $('#nmsg').innerHTML='<div class="note err">The password must be at least 8 characters long.</div>';
   const meta={first_name:v('n_first'),last_name:v('n_last'),full_name:v('n_first')+' '+v('n_last'),
     role:$('#n_role').value, document_id:v('n_doc'),
     grade_id:$('#n_grade').value||null, section:v('n_section')||null, cefr_level:$('#n_level').value||null,
     academic_year:$('#n_year').value||'2026'};
   const { error } = await sb.rpc('admin_create_user',{p_email:email,p_password:pw,p_meta:meta});
-  $('#nmsg').innerHTML = error?`<div class="note err">${esc(error.message)}</div>`:`<div class="note ok">Cuenta creada.</div>`;
+  $('#nmsg').innerHTML = error?`<div class="note err">${esc(error.message)}</div>`:`<div class="note ok">Account created.</div>`;
   if(!error) setTimeout(adminUsers,800);
 };
 window.editUser = async (id)=>{
   const { data:p } = await sb.from('profiles').select('*').eq('id',id).single();
   const m=$('#main');
-  m.innerHTML=`<button class="btn sm ghost" onclick="adminUsers()">← Volver</button>
+  m.innerHTML=`<button class="btn sm ghost" onclick="adminUsers()">← Back</button>
     <div class="card" style="max-width:560px">
-      <h2>Editar: ${esc(p.full_name||p.email)}</h2>
+      <h2>Edit: ${esc(p.full_name||p.email)}</h2>
       <div class="field-2">
-        <div><label>Grado</label><select id="e_grade">${GRADES.map(g=>`<option value="${g.id}" ${p.grade_id==g.id?'selected':''}>${g.name}</option>`).join('')}</select></div>
-        <div><label>Sección</label><input id="e_section" value="${esc(p.section||'')}"></div>
+        <div><label>Grade</label><select id="e_grade">${GRADES.map(g=>`<option value="${g.id}" ${p.grade_id==g.id?'selected':''}>${g.name}</option>`).join('')}</select></div>
+        <div><label>Section</label><input id="e_section" value="${esc(p.section||'')}"></div>
       </div>
       <div class="field-2">
-        <div><label>Nivel</label><select id="e_level"><option value="">—</option>${LEVELS.map(l=>`<option ${p.cefr_level===l?'selected':''}>${l}</option>`).join('')}</select></div>
-        <div><label>Rol</label><select id="e_role">${['student','teacher','admin'].map(r=>`<option ${p.role===r?'selected':''}>${r}</option>`).join('')}</select></div>
+        <div><label>Level</label><select id="e_level"><option value="">—</option>${LEVELS.map(l=>`<option ${p.cefr_level===l?'selected':''}>${l}</option>`).join('')}</select></div>
+        <div><label>Role</label><select id="e_role">${['student','teacher','admin'].map(r=>`<option ${p.role===r?'selected':''}>${r}</option>`).join('')}</select></div>
       </div>
       <div class="field-2">
-        <div><label>Año académico</label><select id="e_year">${yearOptions(p.academic_year||2026)}</select></div>
-        <div><label>Estado</label><select id="e_active"><option value="true" ${p.active?'selected':''}>Activo</option><option value="false" ${!p.active?'selected':''}>Inactivo</option></select></div>
+        <div><label>Academic year</label><select id="e_year">${yearOptions(p.academic_year||2026)}</select></div>
+        <div><label>Status</label><select id="e_active"><option value="true" ${p.active?'selected':''}>Active</option><option value="false" ${!p.active?'selected':''}>Inactive</option></select></div>
       </div>
       <label style="display:flex;align-items:center;gap:8px;font-weight:500">
         <input type="checkbox" id="e_demo" ${p.is_demo?'checked':''} style="width:auto">
-        🧪 Cuenta de demostración (no es un alumno ni un profesor real del colegio)</label>
-      <label>Restablecer contraseña de acceso (opcional)</label><input id="e_pw" type="password" autocomplete="new-password" placeholder="dejar vacío para no cambiar · mín. 8 caracteres">
+        🧪 Demo account (not a real student or teacher of the school)</label>
+      <label>Reset access password (optional)</label><input id="e_pw" type="password" autocomplete="new-password" placeholder="leave empty to keep unchanged · min. 8 characters">
       <div id="emsg"></div>
-      <div class="row" style="margin-top:14px"><button class="btn" onclick="saveUser('${id}')">Guardar</button></div>
+      <div class="row" style="margin-top:14px"><button class="btn" onclick="saveUser('${id}')">Save</button></div>
     </div>`;
 };
 window.saveUser = async (id)=>{
@@ -1944,31 +1944,31 @@ window.saveUser = async (id)=>{
   const pw=$('#e_pw').value.trim();
   let pwErr=null;
   if(pw){
-    if(pw.length<8){ $('#emsg').innerHTML='<div class="note err">La contraseña debe tener al menos 8 caracteres.</div>'; return; }
+    if(pw.length<8){ $('#emsg').innerHTML='<div class="note err">The password must be at least 8 characters long.</div>'; return; }
     // Cambia la contraseña REAL de Auth (no solo la visible), para que el usuario pueda entrar.
     const r = await sb.rpc('admin_set_password',{p_id:id,p_password:pw});
     pwErr = r.error;
   }
   const err = error||pwErr;
-  $('#emsg').innerHTML = err?`<div class="note err">${esc(err.message)}</div>`:`<div class="note ok">Guardado.${pw?' Contraseña actualizada — el usuario ya puede entrar con la nueva.':''}</div>`;
+  $('#emsg').innerHTML = err?`<div class="note err">${esc(err.message)}</div>`:`<div class="note ok">Saved.${pw?' Password updated — the user can now sign in with the new one.':''}</div>`;
   if(!err) setTimeout(adminUsers,900);
 };
 /* Permanently delete a user (admin only). Cascades to results, credentials and
    teacher access via the DB. Guarded server-side: can't delete self or the last admin. */
 window.deleteUser = async (id, kind)=>{
   const el = document.querySelector(`tr[data-id="${id}"]`) || document.querySelector(`.card[data-tid="${id}"]`);
-  const name = el ? ((el.querySelector('b')||el.querySelector('h2'))||{}).textContent || 'este usuario' : 'este usuario';
-  if(!await NISUI.pregunta(`Se borrará la cuenta de ${name} y TODOS sus resultados. Esto no se puede deshacer.`, {titulo:'¿Eliminar definitivamente?', si:'Sí, eliminar', no:'Cancelar', tono:'mal', peligro:true})) return;
+  const name = el ? ((el.querySelector('b')||el.querySelector('h2'))||{}).textContent || 'this user' : 'this user';
+  if(!await NISUI.pregunta(`The account of ${name} and ALL their results will be deleted. This cannot be undone.`, {titulo:'Delete permanently?', si:'Yes, delete', no:'Cancel', tono:'mal', peligro:true})) return;
   const { error } = await sb.rpc('admin_delete_user', { p_id:id });
-  if(error){ alert('No se pudo eliminar: '+error.message); return; }
+  if(error){ alert('Could not delete: '+error.message); return; }
   (kind==='teacher' ? adminTeachers : adminUsers)();
 };
 /* Suspend (soft): keep the account + data but block access and hide it from the
    default list. Reversible with Reactivar. */
 window.suspendUser = async (id, to, kind)=>{
-  if(!to && !await NISUI.pregunta('No podrá iniciar sesión y se ocultará de la lista. Puedes reactivarlo cuando quieras.', {titulo:'¿Suspender este usuario?', si:'Suspender', no:'Cancelar', tono:'ojo'})) return;
+  if(!to && !await NISUI.pregunta('They will not be able to sign in and will be hidden from the list. You can reactivate them whenever you want.', {titulo:'Suspend this user?', si:'Suspend', no:'Cancel', tono:'ojo'})) return;
   const { error } = await sb.from('profiles').update({ active:to }).eq('id',id);
-  if(error){ alert('No se pudo actualizar: '+error.message); return; }
+  if(error){ alert('Could not update: '+error.message); return; }
   (kind==='teacher' ? adminTeachers : adminUsers)();
 };
 async function adminResults(){
@@ -1984,32 +1984,32 @@ async function adminResults(){
   const rows = list.map(a=>{
     const ws=weakStrong(a);
     const wsCell = ws
-      ? `<span class="badge off" title="Parte más débil" style="font-size:.72rem">▼ ${esc(ws.weak.name)} ${ws.weak.pct}%</span> <span class="badge on" title="Parte más fuerte" style="font-size:.72rem">▲ ${esc(ws.strong.name)} ${ws.strong.pct}%</span>`
+      ? `<span class="badge off" title="Weakest part" style="font-size:.72rem">▼ ${esc(ws.weak.name)} ${ws.weak.pct}%</span> <span class="badge on" title="Strongest part" style="font-size:.72rem">▲ ${esc(ws.strong.name)} ${ws.strong.pct}%</span>`
       : '<span class="muted">—</span>';
     return `<tr data-sname="${esc((a.profiles?.full_name||'').toLowerCase())}">
     <td><b>${esc(a.profiles?.full_name||'')}</b></td>
     <td><span class="badge grade">${esc(a.profiles?.grades?.name||'—')}</span></td>
     <td style="text-align:center">${a.profiles?.section?`<span class="badge">${esc(a.profiles.section)}</span>`:'<span class="muted">—</span>'}</td>
     <td>${esc(a.skill)} · <span class="badge lvl">${esc(a.level)}</span> · ${mockLabel(a)}</td>
-    <td>${a.percent!=null?`<b>${a.percent}%</b> <span class="muted">(${a.score}/${a.total})</span>`:((a.breakdown&&a.breakdown.teacherMessage)?'<span class="badge on" style="font-size:.72rem">✓ comentario enviado</span>':'<span class="muted">— (revisión)</span>')}</td>
+    <td>${a.percent!=null?`<b>${a.percent}%</b> <span class="muted">(${a.score}/${a.total})</span>`:((a.breakdown&&a.breakdown.teacherMessage)?'<span class="badge on" style="font-size:.72rem">✓ comment sent</span>':'<span class="muted">— (pending review)</span>')}</td>
     <td style="min-width:200px">${wsCell}</td>
     <td class="muted">${new Date(a.submitted_at).toLocaleDateString()}</td>
     <td>${a.skill==='Writing'
-        ? `<button class="btn sm${(a.percent!=null||(a.breakdown&&a.breakdown.teacherMessage))?' ghost':''}" onclick="gradeWriting('${a.id}')">✍️ ${a.percent!=null?'Re-calificar':((a.breakdown&&a.breakdown.teacherMessage)?'Editar comentario':'Calificar')}</button>${(a.percent!=null||(a.breakdown&&a.breakdown.teacherMessage))?' <span class="badge on" style="font-size:.7rem">✓ enviado</span>':''}`
-        : `<button class="btn sm ghost" onclick="openAttempt('${a.id}')">Ver análisis →</button>`}</td>
+        ? `<button class="btn sm${(a.percent!=null||(a.breakdown&&a.breakdown.teacherMessage))?' ghost':''}" onclick="gradeWriting('${a.id}')">✍️ ${a.percent!=null?'Re-mark':((a.breakdown&&a.breakdown.teacherMessage)?'Edit comment':'Mark')}</button>${(a.percent!=null||(a.breakdown&&a.breakdown.teacherMessage))?' <span class="badge on" style="font-size:.7rem">✓ sent</span>':''}`
+        : `<button class="btn sm ghost" onclick="openAttempt('${a.id}')">View analysis →</button>`}</td>
   </tr>`;}).join('');
   $('#main').innerHTML=`
     <div class="row" style="justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:4px">
-      <h1 style="margin:0">Resultados</h1>
-      <button class="btn sm ghost" onclick="window.exportResultsExcel()">📥 Exportar Excel</button>
+      <h1 style="margin:0">Results</h1>
+      <button class="btn sm ghost" onclick="window.exportResultsExcel()">📥 Export Excel</button>
     </div>
     ${resultsFilterBar(GRADES,'window._setResFilter')}${tabs}
     ${partsBreakdownCard(list)}
     <div class="card" style="padding:0;overflow-x:auto"><table>
-      <thead><tr><th>Alumno</th><th>Grado</th><th>Sección</th><th>Examen</th><th>Puntaje</th><th>Débil / Fuerte (partes)</th><th>Fecha</th><th></th></tr></thead>
-      <tbody>${rows||`<tr><td colspan="8" class="center muted">Sin resultados para este filtro.</td></tr>`}</tbody>
+      <thead><tr><th>Student</th><th>Grade</th><th>Section</th><th>Exam</th><th>Score</th><th>Weak / Strong (parts)</th><th>Date</th><th></th></tr></thead>
+      <tbody>${rows||`<tr><td colspan="8" class="center muted">No results for this filter.</td></tr>`}</tbody>
     </table>
-    <div id="resCount" data-noun="resultado(s)" class="muted" style="padding:8px 14px;font-size:.82rem">${list.length} resultado(s)</div></div>`;
+    <div id="resCount" data-noun="result(s)" class="muted" style="padding:8px 14px;font-size:.82rem">${list.length} result(s)</div></div>`;
 }
 window._setResBranch = (b)=>{ resultsBranch=b; (state.profile && state.profile.role==='teacher') ? teacherResults() : adminResults(); };
 window.backToResults = ()=>{ (state.profile && state.profile.role==='teacher') ? teacherResults() : adminResults(); };
@@ -2023,30 +2023,30 @@ window.openAttempt = async (id)=>{
   const weaknesses = parts.filter(p=>p.pct<50).sort((x,y)=>x.pct-y.pct);
   const partsHtml = parts.length
     ? parts.map(p=>barRow(p.name + (p.total?` (${p.correct}/${p.total})`:''), p.pct)).join('')
-    : `<p class="muted">Este intento no guardó detalle por partes${a.percent==null?' (Writing no se califica por partes)':''}.</p>`;
+    : `<p class="muted">This attempt did not save a breakdown by part${a.percent==null?' (Writing is not marked by part)':''}.</p>`;
   const swHtml = parts.length ? `<div class="grid cols-2">
-      <div><h3 style="color:var(--good)">💪 Fortalezas</h3>${strengths.length?'<ul>'+strengths.map(p=>`<li>${esc(p.name)} — ${p.pct}%</li>`).join('')+'</ul>':'<p class="muted">Ninguna parte ≥70% todavía.</p>'}</div>
-      <div><h3 style="color:var(--bad)">⚠️ A reforzar</h3>${weaknesses.length?'<ul>'+weaknesses.map(p=>`<li>${esc(p.name)} — ${p.pct}%</li>`).join('')+'</ul>':'<p class="muted">Sin partes por debajo del 50%. 👏</p>'}</div>
-    </div>` : `<p class="muted">Se mostrarán al guardar el detalle por partes.</p>`;
-  const focus = weaknesses[0] ? `Enfocar el refuerzo en <b>${esc(weaknesses[0].name)}</b> (${weaknesses[0].pct}%).` : (parts.length?'Buen equilibrio entre las partes.':'');
+      <div><h3 style="color:var(--good)">💪 Strengths</h3>${strengths.length?'<ul>'+strengths.map(p=>`<li>${esc(p.name)} — ${p.pct}%</li>`).join('')+'</ul>':'<p class="muted">No part ≥70% yet.</p>'}</div>
+      <div><h3 style="color:var(--bad)">⚠️ To reinforce</h3>${weaknesses.length?'<ul>'+weaknesses.map(p=>`<li>${esc(p.name)} — ${p.pct}%</li>`).join('')+'</ul>':'<p class="muted">No parts below 50%. 👏</p>'}</div>
+    </div>` : `<p class="muted">They will be shown once the breakdown by part is saved.</p>`;
+  const focus = weaknesses[0] ? `Focus reinforcement on <b>${esc(weaknesses[0].name)}</b> (${weaknesses[0].pct}%).` : (parts.length?'Good balance between the parts.':'');
   // Writing answers (if present)
   let writingHtml='';
   if(a.skill==='Writing' && Array.isArray(a.answers)){
-    writingHtml = `<div class="card"><h2>Textos entregados (Writing)</h2>${a.answers.map(t=>`<div style="border:1px solid var(--line);border-radius:10px;padding:12px;margin-bottom:10px"><b>${esc(t.label||'')}</b> <span class="muted">${t.wordCount||''} palabras</span><div class="answer" style="white-space:pre-wrap;margin-top:6px">${esc(t.text||'(sin respuesta)')}</div></div>`).join('')}</div>`;
+    writingHtml = `<div class="card"><h2>Submitted texts (Writing)</h2>${a.answers.map(t=>`<div style="border:1px solid var(--line);border-radius:10px;padding:12px;margin-bottom:10px"><b>${esc(t.label||'')}</b> <span class="muted">${t.wordCount||''} words</span><div class="answer" style="white-space:pre-wrap;margin-top:6px">${esc(t.text||'(no answer)')}</div></div>`).join('')}</div>`;
   }
   $('#main').innerHTML=`
-    <button class="btn sm ghost" onclick="backToResults()">← Volver a resultados</button>
-    <div class="card"><h2 style="margin-bottom:2px">${esc(a.profiles?.full_name||'Alumno')}</h2>
+    <button class="btn sm ghost" onclick="backToResults()">← Back to results</button>
+    <div class="card"><h2 style="margin-bottom:2px">${esc(a.profiles?.full_name||'Student')}</h2>
       <div class="muted">${esc(a.profiles?.grades?.name||'')} · ${esc(a.skill)} · ${esc(a.level)} · ${mockLabel(a)} · ${new Date(a.submitted_at).toLocaleString()}</div>
       <div class="grid cols-3" style="margin-top:14px">
-        <div class="stat"><div class="l">Puntaje</div><div class="n">${a.percent!=null?a.percent+'%':'—'}</div><div class="muted">${a.score!=null?a.score+'/'+a.total:'revisión del profesor'}</div></div>
-        <div class="stat"><div class="l">Tiempo</div><div class="n">${a.duration_min!=null?a.duration_min:'—'}<span style="font-size:1rem"> min</span></div></div>
-        <div class="stat"><div class="l">Tipo</div><div class="n" style="font-size:1.3rem">${isMockAttempt(a)?'Mock':'Practice'}</div><div class="muted">${mockLabel(a)}</div></div>
+        <div class="stat"><div class="l">Score</div><div class="n">${a.percent!=null?a.percent+'%':'—'}</div><div class="muted">${a.score!=null?a.score+'/'+a.total:'teacher review'}</div></div>
+        <div class="stat"><div class="l">Time</div><div class="n">${a.duration_min!=null?a.duration_min:'—'}<span style="font-size:1rem"> min</span></div></div>
+        <div class="stat"><div class="l">Type</div><div class="n" style="font-size:1.3rem">${isMockAttempt(a)?'Mock':'Practice'}</div><div class="muted">${mockLabel(a)}</div></div>
       </div>
     </div>
-    <div class="card"><h2>Resultados por parte</h2>${partsHtml}</div>
-    <div class="card"><h2>Fortalezas y debilidades</h2>${swHtml}</div>
-    <div class="card"><h2>Recomendación CEFR</h2>
+    <div class="card"><h2>Results by part</h2>${partsHtml}</div>
+    <div class="card"><h2>Strengths and weaknesses</h2>${swHtml}</div>
+    <div class="card"><h2>CEFR recommendation</h2>
       <div class="note ${rec.tier==='good'?'ok':rec.tier==='bad'?'err':'info'}"><b>${esc(rec.label)}.</b> ${rec.text}</div>
       ${focus?`<p style="margin-top:8px">${focus}</p>`:''}
     </div>
@@ -2056,10 +2056,10 @@ window.openAttempt = async (id)=>{
 /* ===================== ADMIN · ESTADÍSTICAS (visual) ===================== */
 const CHART_PALETTE=['#4987c6','#76cbe5','#2f5f93','#d2909b','#16a34a','#f59e0b','#7c6fd2','#e07a5f','#2a9d8f','#9b5de5','#ef476f'];
 const READY_TIERS=[
-  {key:'high',label:'Aprobado alto (≥80%)',color:'#16a34a',min:80},
-  {key:'pass',label:'Aprobado (60–79%)',color:'#4987c6',min:60},
-  {key:'near',label:'Acercándose (40–59%)',color:'#f59e0b',min:40},
-  {key:'below',label:'Por debajo (<40%)',color:'#dc2626',min:0}
+  {key:'high',label:'High pass (≥80%)',color:'#16a34a',min:80},
+  {key:'pass',label:'Pass (60–79%)',color:'#4987c6',min:60},
+  {key:'near',label:'Approaching (40–59%)',color:'#f59e0b',min:40},
+  {key:'below',label:'Below (<40%)',color:'#dc2626',min:0}
 ];
 let statsState={view:'grade',type:'bar',grade:'',section:'',skill:'',exam:'all'};
 let _statsAll=null,_statsStudents=null,_chart=null,_chartDec=null,_chartLib=null;
@@ -2069,7 +2069,7 @@ function ensureChart(){
   _chartLib=new Promise((res,rej)=>{
     const s=document.createElement('script');
     s.src='vendor/chart.umd.min.js';
-    s.onload=()=>res(); s.onerror=()=>rej(new Error('No se pudo cargar Chart.js (conexión).'));
+    s.onload=()=>res(); s.onerror=()=>rej(new Error('Could not load Chart.js (connection issue).'));
     document.head.appendChild(s);
   });
   return _chartLib;
@@ -2090,7 +2090,7 @@ function statsFiltered(){
 function readyTier(pct){ for(const t of READY_TIERS){ if(pct>=t.min) return t; } return READY_TIERS[READY_TIERS.length-1]; }
 
 async function adminStats(){
-  $('#main').innerHTML=`<h1>Estadísticas y Reportes</h1><p class="muted">Cargando datos…</p>`;
+  $('#main').innerHTML=`<h1>Statistics and reports</h1><p class="muted">Loading data…</p>`;
   try{ await ensureChart(); }catch(e){ $('#main').innerHTML=`<div class="note err">${esc(e.message)}</div>`; return; }
   if(!_statsAll){
     const { data:att } = await sb.from('exam_attempts').select('skill,level,mock,percent,score,total,breakdown,submitted_at,student_id, profiles(full_name,grade_id,section,grades(name))').limit(3000);
@@ -2100,34 +2100,34 @@ async function adminStats(){
   }
   const sections=[...new Set((_statsStudents||[]).map(s=>s.section).filter(Boolean))].sort();
   const f=statsState;
-  const gOpts=`<option value="">Todos los grados</option>`+GRADES.map(g=>`<option value="${g.id}" ${String(f.grade)===String(g.id)?'selected':''}>${g.name}</option>`).join('');
-  const sOpts=`<option value="">Todas las secciones</option>`+sections.map(s=>`<option value="${s}" ${f.section===s?'selected':''}>${s}</option>`).join('');
-  const skOpts=`<option value="">Todas las destrezas</option>`+SKILLS.map(s=>`<option value="${s}" ${f.skill===s?'selected':''}>${s}</option>`).join('');
-  const exOpts=[['all','Todos los exámenes'],['mock1','Mock 1'],['mock2','Mock 2'],['practice','Practice Tests']].map(([v,l])=>`<option value="${v}" ${f.exam===v?'selected':''}>${l}</option>`).join('');
+  const gOpts=`<option value="">All grades</option>`+GRADES.map(g=>`<option value="${g.id}" ${String(f.grade)===String(g.id)?'selected':''}>${g.name}</option>`).join('');
+  const sOpts=`<option value="">All sections</option>`+sections.map(s=>`<option value="${s}" ${f.section===s?'selected':''}>${s}</option>`).join('');
+  const skOpts=`<option value="">All skills</option>`+SKILLS.map(s=>`<option value="${s}" ${f.skill===s?'selected':''}>${s}</option>`).join('');
+  const exOpts=[['all','All exams'],['mock1','Mock 1'],['mock2','Mock 2'],['practice','Practice Tests']].map(([v,l])=>`<option value="${v}" ${f.exam===v?'selected':''}>${l}</option>`).join('');
   const scored=statsFiltered();
   const studentsAssessed=new Set(scored.map(a=>a.student_id)).size;
   const overall=_avg(scored.map(a=>a.percent));
   // December readiness: per student, projected = latest mock (mock2 else mock1) avg
   const proj=decemberProjection();
   const readyPct=proj.students.length?Math.round(proj.students.filter(s=>s.proj!=null&&s.proj>=60).length/proj.students.filter(s=>s.proj!=null).length*100):0;
-  const VIEWS=[['grade','Por grado'],['skill','Por destreza'],['parts','Por parte del examen'],['gradesection','Por grado y sección'],['ready','Preparación CEFR'],['mockprog','Progreso Mock 1 → 2'],['level','Por nivel CEFR']];
-  const TYPES=[['bar','Barras'],['line','Línea'],['doughnut','Dona'],['polarArea','Polar']];
+  const VIEWS=[['grade','By grade'],['skill','By skill'],['parts','By exam part'],['gradesection','By grade and section'],['ready','CEFR readiness'],['mockprog','Progress Mock 1 → 2'],['level','By CEFR level']];
+  const TYPES=[['bar','Bars'],['line','Line'],['doughnut','Doughnut'],['polarArea','Polar']];
   $('#main').innerHTML=`
     <div class="row" style="justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
-      <h1 style="margin:0">Estadísticas y Reportes</h1>
-      <div class="row" style="gap:8px"><button class="btn sm" onclick="adminNewUser()">+ Alumno</button><button class="btn sm ghost" onclick="adminNewTeacher()">+ Profesor</button></div>
+      <h1 style="margin:0">Statistics and reports</h1>
+      <div class="row" style="gap:8px"><button class="btn sm" onclick="adminNewUser()">+ Student</button><button class="btn sm ghost" onclick="adminNewTeacher()">+ Teacher</button></div>
     </div>
     <div class="card" style="display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end">
-      <div><label>Grado</label><select onchange="window._stF('grade',this.value)" style="min-width:150px">${gOpts}</select></div>
-      <div><label>Sección</label><select onchange="window._stF('section',this.value)" style="min-width:140px">${sOpts}</select></div>
-      <div><label>Destreza</label><select onchange="window._stF('skill',this.value)" style="min-width:150px">${skOpts}</select></div>
-      <div><label>Examen</label><select onchange="window._stF('exam',this.value)" style="min-width:150px">${exOpts}</select></div>
+      <div><label>Grade</label><select onchange="window._stF('grade',this.value)" style="min-width:150px">${gOpts}</select></div>
+      <div><label>Section</label><select onchange="window._stF('section',this.value)" style="min-width:140px">${sOpts}</select></div>
+      <div><label>Skill</label><select onchange="window._stF('skill',this.value)" style="min-width:150px">${skOpts}</select></div>
+      <div><label>Exam</label><select onchange="window._stF('exam',this.value)" style="min-width:150px">${exOpts}</select></div>
     </div>
     <div class="grid cols-3" style="margin-bottom:4px">
-      <div class="stat"><div class="l">Exámenes calificados</div><div class="n">${scored.length}</div></div>
-      <div class="stat"><div class="l">Promedio general</div><div class="n">${overall!=null?overall+'%':'—'}</div></div>
-      <div class="stat"><div class="l">Alumnos evaluados</div><div class="n">${studentsAssessed}</div></div>
-      <div class="stat" style="background:linear-gradient(135deg,var(--blue),var(--celeste));color:#fff"><div class="l" style="color:#eaf4ff">Listos p/ oficial (Dic)</div><div class="n" style="color:#fff">${readyPct}%</div></div>
+      <div class="stat"><div class="l">Exams marked</div><div class="n">${scored.length}</div></div>
+      <div class="stat"><div class="l">Overall average</div><div class="n">${overall!=null?overall+'%':'—'}</div></div>
+      <div class="stat"><div class="l">Students assessed</div><div class="n">${studentsAssessed}</div></div>
+      <div class="stat" style="background:linear-gradient(135deg,var(--blue),var(--celeste));color:#fff"><div class="l" style="color:#eaf4ff">Ready for official exam (Dec)</div><div class="n" style="color:#fff">${readyPct}%</div></div>
     </div>
     <div class="card">
       <div class="row" style="justify-content:space-between;flex-wrap:wrap;gap:10px;align-items:center">
@@ -2138,11 +2138,11 @@ async function adminStats(){
       <div id="statLegend" class="row" style="gap:14px;flex-wrap:wrap;margin-top:10px;font-size:.82rem"></div>
     </div>
     <div class="card">
-      <h2>📅 Proyección a Diciembre — Examen oficial</h2>
-      <p class="muted" style="margin-top:-4px">Cada alumno se proyecta con su <b>Mock 2</b> (o Mock 1 si aún no rinde el segundo). Estándar de aprobación Cambridge ≈ 60%.</p>
+      <h2>📅 December projection — Official exam</h2>
+      <p class="muted" style="margin-top:-4px">Each student is projected using their <b>Mock 2</b> (or Mock 1 if they have not yet taken the second one). Cambridge pass standard ≈ 60%.</p>
       <div style="position:relative;height:300px;margin:10px 0"><canvas id="statDec"></canvas></div>
       <div style="overflow-x:auto"><table>
-        <thead><tr><th>Grado</th><th>Alumnos</th><th>Prom. Mock 1</th><th>Prom. Mock 2</th><th>Proyección Dic</th><th>Listos</th><th>Pendiente 2.º mock</th></tr></thead>
+        <thead><tr><th>Grade</th><th>Students</th><th>Avg. Mock 1</th><th>Avg. Mock 2</th><th>Dec projection</th><th>Ready</th><th>Pending 2nd mock</th></tr></thead>
         <tbody>${proj.byGrade.map(r=>`<tr>
           <td><b>${esc(r.grade)}</b></td>
           <td>${r.total}</td>
@@ -2151,7 +2151,7 @@ async function adminStats(){
           <td>${r.proj!=null?`<span class="badge ${r.proj>=60?'on':'off'}">${r.proj}%</span>`:'<span class="muted">—</span>'}</td>
           <td>${r.ready}/${r.assessed}</td>
           <td>${r.pending? `<span class="badge off">${r.pending}</span>`:'<span class="badge on">0</span>'}</td>
-        </tr>`).join('')||'<tr><td colspan="7" class="center muted">Sin datos de mocks todavía.</td></tr>'}</tbody>
+        </tr>`).join('')||'<tr><td colspan="7" class="center muted">No mock data yet.</td></tr>'}</tbody>
       </table></div>
     </div>`;
   drawStatChart();
@@ -2166,30 +2166,30 @@ function statSeries(){
   const v=statsState.view;
   if(v==='grade'){
     const rows=GRADES.map((g,i)=>({label:g.name, val:_avg(sc.filter(a=>String(a.profiles?.grade_id)===String(g.id)).map(a=>a.percent)), color:CHART_PALETTE[i%CHART_PALETTE.length]})).filter(r=>r.val!=null);
-    return {labels:rows.map(r=>r.label), data:rows.map(r=>r.val), colors:rows.map(r=>r.color), title:'Promedio (%) por grado'};
+    return {labels:rows.map(r=>r.label), data:rows.map(r=>r.val), colors:rows.map(r=>r.color), title:'Average (%) by grade'};
   }
   if(v==='skill'){
     const rows=SKILLS.map((s,i)=>({label:s, val:_avg(sc.filter(a=>a.skill===s).map(a=>a.percent)), color:CHART_PALETTE[i%CHART_PALETTE.length]})).filter(r=>r.val!=null);
-    return {labels:rows.map(r=>r.label), data:rows.map(r=>r.val), colors:rows.map(r=>r.color), title:'Promedio (%) por destreza'};
+    return {labels:rows.map(r=>r.label), data:rows.map(r=>r.val), colors:rows.map(r=>r.color), title:'Average (%) by skill'};
   }
   if(v==='level'){
     const rows=LEVELS.map((l,i)=>({label:l, val:_avg(sc.filter(a=>a.level===l).map(a=>a.percent)), color:CHART_PALETTE[i%CHART_PALETTE.length]})).filter(r=>r.val!=null);
-    return {labels:rows.map(r=>r.label), data:rows.map(r=>r.val), colors:rows.map(r=>r.color), title:'Promedio (%) por nivel CEFR'};
+    return {labels:rows.map(r=>r.label), data:rows.map(r=>r.val), colors:rows.map(r=>r.color), title:'Average (%) by CEFR level'};
   }
   if(v==='gradesection'){
     const keys=[...new Set(sc.map(a=>`${a.profiles?.grade_id}|${a.profiles?.section||'—'}`))]
       .filter(k=>!k.startsWith('undefined')).sort();
     const rows=keys.map((k,i)=>{ const [g,sec]=k.split('|'); return {label:`${gradeName(g)} ${sec}`, val:_avg(sc.filter(a=>`${a.profiles?.grade_id}|${a.profiles?.section||'—'}`===k).map(a=>a.percent)), color:CHART_PALETTE[i%CHART_PALETTE.length]};}).filter(r=>r.val!=null);
-    return {labels:rows.map(r=>r.label), data:rows.map(r=>r.val), colors:rows.map(r=>r.color), title:'Promedio (%) por grado y sección'};
+    return {labels:rows.map(r=>r.label), data:rows.map(r=>r.val), colors:rows.map(r=>r.color), title:'Average (%) by grade and section'};
   }
   if(v==='ready'){
     const rows=READY_TIERS.map(t=>({label:t.label, val:sc.filter(a=>readyTier(a.percent).key===t.key).length, color:t.color})).filter(r=>r.val>0);
-    return {labels:rows.map(r=>r.label), data:rows.map(r=>r.val), colors:rows.map(r=>r.color), title:'Distribución de preparación (n.º de exámenes)', distribution:true};
+    return {labels:rows.map(r=>r.label), data:rows.map(r=>r.val), colors:rows.map(r=>r.color), title:'Readiness distribution (no. of exams)', distribution:true};
   }
   if(v==='parts'){
     const ps=aggregateParts(sc); // weakest first
     const col=p=>p.avg<50?'#dc2626':p.avg<70?'#f59e0b':'#16a34a';
-    return {labels:ps.map(p=>p.name), data:ps.map(p=>p.avg), colors:ps.map(col), title:'Promedio (%) por parte del examen — débil → fuerte'};
+    return {labels:ps.map(p=>p.name), data:ps.map(p=>p.avg), colors:ps.map(col), title:'Average (%) by exam part — weak → strong'};
   }
   if(v==='mockprog'){
     const labels=GRADES.map(g=>g.name);
@@ -2199,7 +2199,7 @@ function statSeries(){
     return {labels:labels.filter((_,i)=>keep[i]), multi:[
       {label:'Mock 1', data:labels.map((_,i)=>m1[i]).filter((_,i)=>keep[i]), color:'#76cbe5'},
       {label:'Mock 2', data:labels.map((_,i)=>m2[i]).filter((_,i)=>keep[i]), color:'#2f5f93'}
-    ], title:'Progreso Mock 1 → Mock 2 (% por grado)'};
+    ], title:'Progress Mock 1 → Mock 2 (% by grade)'};
   }
   return {labels:[],data:[],colors:[],title:''};
 }
@@ -2258,7 +2258,7 @@ function drawDecChart(proj){
   _chartDec=new Chart(ctx,{type:'bar', data:{labels:rows.map(r=>r.grade), datasets:[
     {label:'Mock 1', data:rows.map(r=>r.m1), backgroundColor:'#76cbe5', borderRadius:6},
     {label:'Mock 2', data:rows.map(r=>r.m2), backgroundColor:'#2f5f93', borderRadius:6},
-    {label:'Meta (60%)', type:'line', data:rows.map(()=>60), borderColor:'#dc2626', borderDash:[6,4], pointRadius:0, borderWidth:2}
+    {label:'Target (60%)', type:'line', data:rows.map(()=>60), borderColor:'#dc2626', borderDash:[6,4], pointRadius:0, borderWidth:2}
   ]}, options:{responsive:true,maintainAspectRatio:false, scales:{y:{beginAtZero:true,max:100,ticks:{callback:v=>v+'%'}}}, plugins:{legend:{position:'bottom'}}}});
 }
 
@@ -2359,8 +2359,8 @@ function _rdrChapterTable(id,book,en){
   const T = en
     ? {ch:'Chapter',mark:'Control mark',tries:'Attempts',read:'⏱ Reading',ex:'⏱ Exercises',
        exs:'Exercises',lvl:'Level',last:'Last control',none:'not taken yet',att:' attempt(s)',done:' taken'}
-    : {ch:'Capítulo',mark:'Nota del control',tries:'Intentos',read:'⏱ Lectura',ex:'⏱ Ejercicios',
-       exs:'Ejercicios',lvl:'Nivel',last:'Último control',none:'sin rendir',att:' intento(s)',done:' rendidos'};
+    : {ch:'Chapter',mark:'Control mark',tries:'Attempts',read:'⏱ Reading',ex:'⏱ Exercises',
+       exs:'Exercises',lvl:'Level',last:'Last control',none:'not taken yet',att:' attempt(s)',done:' taken'};
   const rows=Array.from({length:meta.chapters},(_,i)=>{
     const c=(book&&book.chapters[i+1])||null;
     const worked=c && (c.readSec||c.actSec||c.tries);
@@ -2372,7 +2372,7 @@ function _rdrChapterTable(id,book,en){
       <td>${c?_rdrTime(c.actSec):'<span class="muted">—</span>'}</td>
       <td class="muted">${c?Object.keys(c.acts).length+'/13':'—'}</td>
       <td class="muted">${c&&Object.keys(c.levels).length?Object.keys(c.levels).sort().join(' · '):'—'}</td>
-      <td class="muted">${c&&c.last?new Date(c.last).toLocaleDateString():(worked?(en?'worked on':'trabajado'):'—')}</td>
+      <td class="muted">${c&&c.last?new Date(c.last).toLocaleDateString():(worked?(en?'worked on':'worked on'):'—')}</td>
     </tr>`;
   }).join('');
   return `<div class="card" style="padding:0;overflow-x:auto"><table>
@@ -2395,7 +2395,7 @@ const _attYear=a=>{ try{ return new Date(a.submitted_at).getFullYear(); }catch(e
    mano. `term:null` = aun sin decidir; se rellena con el ultimo trimestre que
    tenga lecturas asignadas. */
 const RDR_TERMS=[1,2,3];
-const _rdrTermLab=t=>t+'.º trimestre';
+const _rdrTermLab=t=>'Term '+t;
 let readerFilter={grade:'',section:'',term:null,year:SCHOOL_YEAR_NOW};
 const RDR_LEVELS=['a2','b1','b2','c1'];      // una celda vale por los cuatro
 function _rdrDefaultTerm(year){
@@ -2450,7 +2450,7 @@ const _rdrHM=iso=>{ try{ return new Date(iso).toLocaleTimeString([], {hour:'2-di
 window._setReaderTab=(t)=>{ readerTab=t; readerStatsPanel(); };
 function _readerTabs(){
   const b=(k,l)=>`<button class="btn sm ${readerTab===k?'':'ghost'}" onclick="window._setReaderTab('${k}')">${l}</button>`;
-  return `<div class="row" style="gap:8px;margin:0 0 14px">${b('stats','📊 Notas y tiempos')}${b('tiempo','⏱️ Tiempo de lectura')}${b('control','🔓 Abrir / cerrar controles')}</div>`;
+  return `<div class="row" style="gap:8px;margin:0 0 14px">${b('stats','📊 Grades and times')}${b('tiempo','⏱️ Reading time')}${b('control','🔓 Open / close controls')}</div>`;
 }
 /* Estado efectivo de una clave para una cadena de alcances (la fila más
    específica manda; el tiempo extra es el mayor). Mismo criterio que la app
@@ -2493,29 +2493,29 @@ window._stuCtl=async(studentId,what)=>{
       const r=await sb.from('reader_exam_access').upsert(rows);
       if(r.error) throw r.error;
     }
-    alert('Hecho: '+READER_META[book].short+' · Ch. '+ch+' — '+
-      (what==='open'?'abierto solo para este alumno':what==='close'?'cerrado solo para él':
-       what==='plus5'?'+5 minutos solo para él':'se quitaron sus reglas propias'));
+    alert('Done: '+READER_META[book].short+' · Ch. '+ch+' — '+
+      (what==='open'?'opened only for this student':what==='close'?'closed only for this student':
+       what==='plus5'?'+5 minutes only for this student':'their own rules were removed'));
     readerStatsPanel(studentId);
-  }catch(e){ alert('No se pudo guardar: '+(e.message||e)); }
+  }catch(e){ alert('Could not save: '+(e.message||e)); }
 };
 function _readerFilterBar(grades,years,books){
   const lab=t=>`<label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">${t}</label>`;
-  const y=(years&&years.length?years:[SCHOOL_YEAR_NOW]).map(v=>`<option value="${v}" ${String(readerFilter.year)===String(v)?'selected':''}>${v}${v===SCHOOL_YEAR_NOW?' (en curso)':''}</option>`).join('');
+  const y=(years&&years.length?years:[SCHOOL_YEAR_NOW]).map(v=>`<option value="${v}" ${String(readerFilter.year)===String(v)?'selected':''}>${v}${v===SCHOOL_YEAR_NOW?' (current)':''}</option>`).join('');
   const t=RDR_TERMS.map(v=>`<option value="${v}" ${+readerFilter.term===v?'selected':''}>${_rdrTermLab(v)}</option>`).join('');
-  const g=`<option value="">Todos los grados</option>`+grades.map(x=>`<option value="${x.id}" ${String(readerFilter.grade)===String(x.id)?'selected':''}>${x.name}</option>`).join('');
-  const s=`<option value="">Todas</option>`+['A','B'].map(x=>`<option value="${x}" ${readerFilter.section===x?'selected':''}>${x}</option>`).join('');
+  const g=`<option value="">All grades</option>`+grades.map(x=>`<option value="${x.id}" ${String(readerFilter.grade)===String(x.id)?'selected':''}>${x.name}</option>`).join('');
+  const s=`<option value="">All</option>`+['A','B'].map(x=>`<option value="${x}" ${readerFilter.section===x?'selected':''}>${x}</option>`).join('');
   /* La obra ya no se elige: la decide el trimestre. Se enseña para que quede
      claro de qué libro son las notas que hay debajo. */
   const obra=(books&&books.length)
     ? books.map(id=>`<b>${READER_META[id].icon} ${esc(READER_META[id].title)}</b>`).join(' · ')
-    : '<span class="muted">sin obra asignada a este trimestre</span>';
+    : '<span class="muted">no book assigned to this term</span>';
   return `<div class="card" style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;padding:14px 16px;margin-bottom:10px">
-    <div>${lab('AÑO ESCOLAR')}<select onchange="window._setReaderFilter('year',this.value)" style="min-width:120px">${y}</select></div>
-    <div>${lab('TRIMESTRE')}<select onchange="window._setReaderFilter('term',this.value)" style="min-width:150px">${t}</select></div>
-    <div>${lab('GRADO')}<select onchange="window._setReaderFilter('grade',this.value)" style="min-width:140px">${g}</select></div>
-    <div>${lab('SECCIÓN')}<select onchange="window._setReaderFilter('section',this.value)" style="min-width:100px">${s}</select></div>
-    <div style="margin-left:auto;text-align:right;min-width:230px">${lab('OBRA DEL TRIMESTRE')}<div style="font-size:.92rem;padding-top:4px">${obra}</div></div>
+    <div>${lab('SCHOOL YEAR')}<select onchange="window._setReaderFilter('year',this.value)" style="min-width:120px">${y}</select></div>
+    <div>${lab('TERM')}<select onchange="window._setReaderFilter('term',this.value)" style="min-width:150px">${t}</select></div>
+    <div>${lab('GRADE')}<select onchange="window._setReaderFilter('grade',this.value)" style="min-width:140px">${g}</select></div>
+    <div>${lab('SECTION')}<select onchange="window._setReaderFilter('section',this.value)" style="min-width:100px">${s}</select></div>
+    <div style="margin-left:auto;text-align:right;min-width:230px">${lab('BOOK OF THE TERM')}<div style="font-size:.92rem;padding-top:4px">${obra}</div></div>
   </div>`;
 }
 /* Panel del profesor. `detailId` abre debajo el desglose de un alumno. */
@@ -2524,7 +2524,7 @@ function _readerFilterBar(grades,years,books){
    profesor lleva: sus grados y los libros asignados a esos grados. */
 async function readerControlPanel(){
   state._tab='readers';
-  $('#main').innerHTML=`<h1>📖 Controles de lectura</h1>${_readerTabs()}<p class="muted">Cargando…</p>`;
+  $('#main').innerHTML=`<h1>📖 Reading controls</h1>${_readerTabs()}<p class="muted">Loading…</p>`;
   const isAdmin=state.profile&&state.profile.role==='admin';
   const grades=isAdmin?GRADES:teacherAllowedGrades();
   const gset=new Set(grades.map(g=>String(g.id)));
@@ -2533,12 +2533,12 @@ async function readerControlPanel(){
   if(!readerFilter.term) readerFilter.term=_rdrDefaultTerm(SCHOOL_YEAR_NOW);
   const term=+readerFilter.term;
   const books=_RDR_IDS.filter(id=>(READER_ASSIGN||[]).some(r=>+r.school_year===SCHOOL_YEAR_NOW&&+r.term===term&&gset.has(String(r.grade_id))&&r.book_id===id));
-  const termTabs=`<span class="muted" style="font-size:.78rem;font-weight:700">TRIMESTRE</span> `
-    +RDR_TERMS.map(t=>`<button class="btn sm ${t===term?'':'ghost'}" onclick="window._setReaderFilter('term',${t})">${t}.º</button>`).join(' ');
+  const termTabs=`<span class="muted" style="font-size:.78rem;font-weight:700">TERM</span> `
+    +RDR_TERMS.map(t=>`<button class="btn sm ${t===term?'':'ghost'}" onclick="window._setReaderFilter('term',${t})">Term ${t}</button>`).join(' ');
   if(!books.length){
-    $('#main').innerHTML=`<h1>📖 Controles de lectura</h1>${_readerTabs()}
+    $('#main').innerHTML=`<h1>📖 Reading controls</h1>${_readerTabs()}
       <div class="row" style="gap:6px;margin:0 0 10px;align-items:center">${termTabs}</div>
-      <div class="note info">Ningún reader asignado al <b>${_rdrTermLab(term)}</b> en tus grados.  Cada salón lee <b>una obra por trimestre</b>; se eligen en <b>📚 Library → Qué lee cada salón</b>.</div>`;
+      <div class="note info">No reader assigned for <b>${_rdrTermLab(term)}</b> in your grades.  Each class reads <b>one book per term</b>; they are chosen in <b>📚 Library → What each class reads</b>.</div>`;
     return;
   }
   const book=(examCtl.book&&books.indexOf(examCtl.book)>=0)?examCtl.book:books[0];
@@ -2555,7 +2555,7 @@ async function readerControlPanel(){
     const sec=String(p.section||'').trim(), k=p.grade_id+'|'+sec;
     (rooms[k]||(rooms[k]={gid:p.grade_id,sec,scope:'g'+p.grade_id+(sec?'-'+sec:''),
       label:((p.grades&&p.grades.name)||('G'+p.grade_id))+(sec?' · '+sec:''),n:0})).n++; });
-  const cols=[{scope:'all',label:'Todos',n:null}].concat(Object.values(rooms).sort((a,b)=>a.gid-b.gid||a.sec.localeCompare(b.sec)));
+  const cols=[{scope:'all',label:'All',n:null}].concat(Object.values(rooms).sort((a,b)=>a.gid-b.gid||a.sec.localeCompare(b.sec)));
   /* Estado de una celda: cuántos de los 4 niveles están abiertos. */
   const cell=(ch,scope)=>{
     const chain=_rdrScopeChain(scope);
@@ -2572,39 +2572,39 @@ async function readerControlPanel(){
   // parece que el reader no existe y se acaba buscando donde no esta.
   const sinAsignar=_RDR_IDS.filter(id=>!books.includes(id));
   const avisoLibros=sinAsignar.length?`<p class="muted" style="margin:6px 0 0;font-size:.85rem">
-    Fuera del ${_rdrTermLab(term)} en tus salones: ${sinAsignar.map(id=>`${READER_META[id].icon} ${esc(READER_META[id].short)}`).join(' · ')}.
-    Se asignan en <b>📚 Library → Qué lee cada salón</b>; hasta entonces no aparecen aquí.</p>`:'';
-  const head=`<th style="min-width:120px">Capítulo</th>`+cols.map(c=>`<th style="text-align:center">${esc(c.label)}${c.n?`<div class="muted" style="font-weight:400;font-size:.7rem">${c.n} alumnos</div>`:''}</th>`).join('')+`<th></th>`;
+    Outside the ${_rdrTermLab(term)} in your classes: ${sinAsignar.map(id=>`${READER_META[id].icon} ${esc(READER_META[id].short)}`).join(' · ')}.
+    They are assigned in <b>📚 Library → What each class reads</b>; until then they do not appear here.</p>`:'';
+  const head=`<th style="min-width:120px">Chapter</th>`+cols.map(c=>`<th style="text-align:center">${esc(c.label)}${c.n?`<div class="muted" style="font-weight:400;font-size:.7rem">${c.n} students</div>`:''}</th>`).join('')+`<th></th>`;
   const body=Array.from({length:meta.chapters},(_,i)=>{
     const ch=i+1;
     const tds=cols.map(c=>{ const st=cell(ch,c.scope);
       const heredado=st.own===0 && st.from && st.from!==c.scope;
       const cls=st.all?'':(st.none?'ghost':'');
-      const txt=st.all?'✅ abierto':(st.none?'🔒 cerrado':'◐ '+st.open+'/4');
+      const txt=st.all?'✅ open':(st.none?'🔒 closed':'◐ '+st.open+'/4');
       return `<td style="text-align:center">
-        <button class="btn sm ${cls}" style="padding:5px 10px;min-width:96px" title="${heredado?'Heredado de '+esc(st.from):'Los cuatro niveles a la vez'}"
+        <button class="btn sm ${cls}" style="padding:5px 10px;min-width:96px" title="${heredado?'Inherited from '+esc(st.from):'All four levels at once'}"
           onclick="window._ctlToggle(${ch},'${c.scope}',${st.all?'false':'true'})">${txt}</button>
-        <div class="muted" style="font-size:.7rem;margin-top:3px">${st.all&&st.until?'🕒 hasta '+_rdrHM(st.until):(heredado?'heredado':(st.extra?'+'+st.extra+' min':'&nbsp;'))}</div>
+        <div class="muted" style="font-size:.7rem;margin-top:3px">${st.all&&st.until?'🕒 until '+_rdrHM(st.until):(heredado?'inherited':(st.extra?'+'+st.extra+' min':'&nbsp;'))}</div>
         ${st.all?`<div style="margin-top:2px"><button class="btn sm ghost" style="padding:2px 7px;font-size:.68rem" onclick="window._ctlTime(${ch},'${c.scope}',5)">+5</button>${st.extra?` <button class="btn sm ghost" style="padding:2px 7px;font-size:.68rem" onclick="window._ctlTime(${ch},'${c.scope}',0)">✕</button>`:''}</div>`:''}
       </td>`; }).join('');
     return `<tr><td><b>Ch. ${ch}</b></td>${tds}
-      <td class="acts"><div class="acts-wrap"><button class="btn sm ghost" style="padding:4px 9px;font-size:.72rem" onclick="window._ctlRow(${ch},true)">abrir a todos</button>
-          <button class="btn sm ghost" style="padding:4px 9px;font-size:.72rem" onclick="window._ctlRow(${ch},false)">cerrar</button></div></td></tr>`;
+      <td class="acts"><div class="acts-wrap"><button class="btn sm ghost" style="padding:4px 9px;font-size:.72rem" onclick="window._ctlRow(${ch},true)">open for all</button>
+          <button class="btn sm ghost" style="padding:4px 9px;font-size:.72rem" onclick="window._ctlRow(${ch},false)">close</button></div></td></tr>`;
   }).join('');
-  $('#main').innerHTML=`<h1>📖 Controles de lectura</h1>${_readerTabs()}
-    <p class="muted" style="margin-top:-6px">Abre el control de un capítulo para un salón: <b>una celda vale por los cuatro niveles</b> (cada alumno rinde en el suyo).
-      Mientras el control está abierto, ese capítulo <b>no se puede leer</b> para esos alumnos. Un salón manda sobre su grado, y el grado sobre “Todos”. Año <b>${SCHOOL_YEAR_NOW}</b> · <b>${_rdrTermLab(term)}</b>.</p>
+  $('#main').innerHTML=`<h1>📖 Reading controls</h1>${_readerTabs()}
+    <p class="muted" style="margin-top:-6px">Open the control for a chapter for a class: <b>one cell covers all four levels</b> (each student takes it at their own level).
+      While the control is open, that chapter <b>cannot be read</b> by those students. A class overrides its grade, and the grade overrides “All”. Year <b>${SCHOOL_YEAR_NOW}</b> · <b>${_rdrTermLab(term)}</b>.</p>
     <div class="row" style="gap:6px;margin:0 0 8px;align-items:center">${termTabs}</div>
     <div class="row" style="gap:8px;margin:0 0 4px;align-items:center">${bookTabs}
-      <span style="margin-left:auto;font-size:12.5px;color:#475569">Cerrar automáticamente a las
+      <span style="margin-left:auto;font-size:12.5px;color:#475569">Close automatically at
         <input type="time" value="${esc(examCtl.until||'')}" onchange="window._setCtlUntil(this.value)"
                style="font-family:inherit;font-size:13px;padding:5px 7px;border:1.5px solid var(--line);border-radius:8px">
-        ${examCtl.until?`<button class="btn sm ghost" style="padding:3px 9px;font-size:.72rem" onclick="window._setCtlUntil('')">sin hora</button>`:''}
+        ${examCtl.until?`<button class="btn sm ghost" style="padding:3px 9px;font-size:.72rem" onclick="window._setCtlUntil('')">No time</button>`:''}
       </span></div>${avisoLibros}
-    ${examCtl.until?`<div class="note info" style="margin:0 0 12px">🕒 Lo que abras ahora se cerrará solo a las <b>${esc(examCtl.until)}</b> y la lectura volverá sin que tengas que acordarte. Deja el campo vacío para abrir sin hora de cierre.</div>`:''}
+    ${examCtl.until?`<div class="note info" style="margin:0 0 12px">🕒 Whatever you open now will close automatically at <b>${esc(examCtl.until)}</b> and reading will come back without you needing to remember. Leave the field empty to open with no closing time.</div>`:''}
     <div class="card" style="padding:0;overflow-x:auto"><table>
       <thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>
-    <p class="muted" style="font-size:.82rem;margin-top:8px">⏱ <b>+5</b> añade minutos a quien esté rindiendo ese control: el cronómetro crece solo en menos de 20 segundos, sin sacarlo del examen. Solo llega a tiempo si se da antes de que el reloj llegue a cero.</p>`;
+    <p class="muted" style="font-size:.82rem;margin-top:8px">⏱ <b>+5</b> adds minutes for whoever is taking that control: the timer grows on its own in under 20 seconds, without taking them out of the exam. It only arrives in time if given before the clock reaches zero.</p>`;
 }
 window._setCtlBook=(id)=>{ examCtl.book=id; readerControlPanel(); };
 window._setCtlUntil=(v)=>{ examCtl.until=v||''; readerControlPanel(); };
@@ -2613,7 +2613,7 @@ async function _ctlWrite(rowsToWrite){
     const r=await sb.from('reader_exam_access').upsert(rowsToWrite);
     if(r.error) throw r.error;
     readerControlPanel();
-  }catch(e){ alert('No se pudo guardar: '+(e.message||e)); }
+  }catch(e){ alert('Could not save: '+(e.message||e)); }
 }
 window._ctlToggle=(ch,scope,open)=>{
   const now=new Date().toISOString(), until=open?_rdrUntilISO(examCtl.until):null;
@@ -2634,7 +2634,7 @@ window._ctlRow=(ch,open)=>{
    La clave es grade:uUNITS:kind:level, y vive en la misma tabla
    reader_exam_access, con su año escolar, su alcance y sus minutos extra.  */
 const UEX_LEVELS=['a2','b1','b2','c1'];
-const UEX_KINDS=[['practice','📝 Práctica'],['official','🎓 Oficial']];
+const UEX_KINDS=[['practice','📝 Practice'],['official','🎓 Official']];
 /* units = null → la pantalla de tarjetas por bloque de unidades; con valor, el
    detalle de ese bloque. */
 const uexCtl={until:'', grade:'g9', units:null};
@@ -2647,10 +2647,10 @@ const uexGradeId=()=>+String(uexCtl.grade).replace(/\D/g,'');
    normalmente imprime los cuatro niveles seguidos. */
 const _uexDoc=(kind,lvl,doc)=>'unit-exam-print.html?grade='+uexCtl.grade+'&units='+uexCtl.units+
   '&kind='+kind+'&level='+lvl+'&doc='+doc;
-const _uexImprimir=(kind,lvl)=>[['exam','🖨️','Hoja del alumno'],['key','🔑','Clave'],['script','🎧','Guion']]
+const _uexImprimir=(kind,lvl)=>[['exam','🖨️','Student sheet'],['key','🔑','Answer key'],['script','🎧','Script']]
   .map(d=>`<a class="btn sm ghost" style="padding:2px 8px;font-size:.7rem;text-decoration:none"
       href="${_uexDoc(kind,lvl,d[0])}" target="_blank" rel="noopener"
-      title="${d[2]} · ${kind==='official'?'oficial':'práctica'} ${lvl.toUpperCase()} (se abre listo para imprimir o guardar en PDF)">${d[1]} ${d[2]}</a>`).join(' ');
+      title="${d[2]} · ${kind==='official'?'official':'practice'} ${lvl.toUpperCase()} (opens ready to print or save as PDF)">${d[1]} ${d[2]}</a>`).join(' ');
 
 /* Los bloques de unidades de un grado, de dos en dos, como se examinan: 1-2,
    3-4, 5-6. Salen del planner (unit-plans.js), no de una lista escrita a mano,
@@ -2664,13 +2664,13 @@ function _uexBloques(grade){
   return out.filter(b=>b.length);
 }
 const _uexUnits=b=>b.map(u=>u.n).join('-');
-const _uexRotulo=b=>b.length>1?('Unidades '+b[0].n+' y '+b[b.length-1].n):('Unidad '+b[0].n);
+const _uexRotulo=b=>b.length>1?('Units '+b[0].n+' and '+b[b.length-1].n):('Unit '+b[0].n);
 
 /* Pantalla 1: una tarjeta por bloque de unidades. */
 function _uexTarjetas(grade, porBloque, abiertosPorBloque){
   const bloques=_uexBloques(grade);
-  if(!bloques.length) return `<div class="note info">Este grado no tiene unidades en el planner, así que no hay
-    bloques que examinar. Las unidades se copian del planner de Toddle a <code>unit-plans.js</code>.</div>`;
+  if(!bloques.length) return `<div class="note info">This grade has no units in the planner, so there are
+    no blocks to test. Units are copied from the Toddle planner into <code>unit-plans.js</code>.</div>`;
   return `<div class="grid cols-2" style="margin-top:12px">${bloques.map(b=>{
     const units=_uexUnits(b);
     const n=(porBloque[units]||[]).length, abiertos=abiertosPorBloque[units]||0;
@@ -2678,8 +2678,8 @@ function _uexTarjetas(grade, porBloque, abiertosPorBloque){
     const titulos=b.map(u=>esc(u.title)).join(' · ');
     const chip=n
       ? `<span class="badge" style="background:${abiertos?'#dcfce7':'#e2e8f0'};color:${abiertos?'#065f46':'#475569'}">
-           ${n} ${n===1?'examen':'exámenes'} · ${abiertos?abiertos+(abiertos===1?' abierto':' abiertos'):'todos cerrados'}</span>`
-      : `<span class="badge" style="background:#f1f5f9;color:#64748b">Sin examen todavía</span>`;
+           ${n} ${n===1?'exam':'exams'} · ${abiertos?abiertos+(abiertos===1?' open':' open'):'all closed'}</span>`
+      : `<span class="badge" style="background:#f1f5f9;color:#64748b">No exam yet</span>`;
     /* Tambien se entra a los bloques vacios: aqui solo hay profesores y
        administradores, y ver por dentro que un bloque no tiene examen es
        informacion, no un sitio prohibido. */
@@ -2689,8 +2689,8 @@ function _uexTarjetas(grade, porBloque, abiertosPorBloque){
       <h2 style="margin:6px 0 2px;font-size:1.05rem">${_uexRotulo(b)}</h2>
       <p class="muted" style="margin:0 0 6px;font-size:.85rem">${titulos}</p>
       ${chip}
-      ${n?'':`<p class="muted" style="margin:8px 0 0;font-size:.78rem">Aparecerá aquí en cuanto se suba
-         con <code>exams/sube_examen.py</code>. Hasta entonces no hay nada que abrir ni que imprimir.</p>`}
+      ${n?'':`<p class="muted" style="margin:8px 0 0;font-size:.78rem">It will appear here as soon as it is uploaded
+         with <code>exams/sube_examen.py</code>. Until then there is nothing to open or print.</p>`}
     </div>`; }).join('')}</div>`;
 }
 window._uexAbreBloque=(units)=>{ uexCtl.units=units; unitExamPanel(); };
@@ -2698,14 +2698,14 @@ window._uexVuelve=()=>{ uexCtl.units=null; unitExamPanel(); };
 
 async function unitExamPanel(){
   state._tab='unitexams';
-  $('#main').innerHTML=`<h1>📋 Exámenes de unidad</h1><p class="muted">Cargando…</p>`;
+  $('#main').innerHTML=`<h1>📋 Unit exams</h1><p class="muted">Loading…</p>`;
   const isAdmin=state.profile&&state.profile.role==='admin';
   const grades=isAdmin?GRADES:teacherAllowedGrades();
   const gid=uexGradeId();
   if(!grades.some(g=>+g.id===gid)){
-    $('#main').innerHTML=`<h1>📋 Exámenes de unidad</h1>
-      <div class="note info">Los exámenes de unidad publicados son de <b>9.º grado</b> (unidades 3 y 4 con
-      <i>And Then There Were None</i>), y no tienes ese grado asignado.</div>`;
+    $('#main').innerHTML=`<h1>📋 Unit exams</h1>
+      <div class="note info">The published unit exams are for <b>Grade 9</b> (units 3 and 4 with
+      <i>And Then There Were None</i>), and you do not have that grade assigned.</div>`;
     return;
   }
   await _rdrSyncClock();
@@ -2731,20 +2731,20 @@ async function unitExamPanel(){
   });
 
   if(!uexCtl.units){
-    $('#main').innerHTML=`<h1>📋 Exámenes de unidad</h1>
-      <p class="muted" style="margin-top:-6px">Elige el bloque de unidades. Dentro están el <b>examen de práctica</b>
-        y el <b>oficial</b>, cada uno en sus cuatro niveles, con su candado y su hoja para imprimir.</p>
+    $('#main').innerHTML=`<h1>📋 Unit exams</h1>
+      <p class="muted" style="margin-top:-6px">Choose the block of units. Inside are the <b>practice exam</b>
+        and the <b>official</b> one, each in its four levels, with its lock and its sheet to print.</p>
       ${_uexTarjetas(uexCtl.grade, porBloque, abiertosPorBloque)}`;
     return;
   }
 
   const pub=porBloque[uexCtl.units]||[];
   const publicados=new Set(pub.map(x=>x.kind+':'+x.level));
-  const volver=`<button class="btn sm ghost" style="margin-bottom:10px" onclick="window._uexVuelve()">← Unidades</button>`;
+  const volver=`<button class="btn sm ghost" style="margin-bottom:10px" onclick="window._uexVuelve()">← Units</button>`;
   if(!publicados.size){
-    $('#main').innerHTML=`<h1>📋 Exámenes de unidad</h1>${volver}
-      <div class="note info">Todavía no hay ningún examen publicado para ${uexCtl.grade.toUpperCase()} · unidades ${uexCtl.units}.
-      Se suben con <code>exams/sube_examen.py</code>; hasta entonces no hay nada que abrir.</div>`;
+    $('#main').innerHTML=`<h1>📋 Unit exams</h1>${volver}
+      <div class="note info">There is no exam published yet for ${uexCtl.grade.toUpperCase()} · units ${uexCtl.units}.
+      They are uploaded with <code>exams/sube_examen.py</code>; until then there is nothing to open.</div>`;
     return;
   }
   const prefijo=uexCtl.grade+':u'+uexCtl.units+':';
@@ -2753,7 +2753,7 @@ async function unitExamPanel(){
   (studs||[]).forEach(p=>{ const sec=String(p.section||'').trim(), k=p.grade_id+'|'+sec;
     (rooms[k]||(rooms[k]={gid:p.grade_id,sec,scope:'g'+p.grade_id+(sec?'-'+sec:''),
       label:((p.grades&&p.grades.name)||('G'+p.grade_id))+(sec?' · '+sec:''),n:0})).n++; });
-  const cols=[{scope:'all',label:'Todos',n:null}].concat(Object.values(rooms).sort((a,b)=>a.sec.localeCompare(b.sec)));
+  const cols=[{scope:'all',label:'All',n:null}].concat(Object.values(rooms).sort((a,b)=>a.sec.localeCompare(b.sec)));
 
   /* Estado de una celda. `niveles` = los que entran en ella: los cuatro en la
      fila resumen, uno solo en las filas de nivel. Solo cuentan los publicados,
@@ -2776,28 +2776,28 @@ async function unitExamPanel(){
     const heredado=st.own===0&&st.from&&st.from!==c.scope;
     /* Candado ABIERTO cuando está abierto: el botón se lee como lo que hace al
        pulsarlo (cerrar), no solo como el estado en que está. */
-    const txt=st.all?'🔓 Abierto':(st.none?'🔒 Cerrado':'◐ '+st.open+'/'+st.n);
-    const accion=st.all?'Pulsa para CERRARLO':'Pulsa para ABRIRLO';
+    const txt=st.all?'🔓 Open':(st.none?'🔒 Closed':'◐ '+st.open+'/'+st.n);
+    const accion=st.all?'Click to CLOSE it':'Click to OPEN it';
     return `<td style="text-align:center">
       <button class="btn sm ${st.all?'':(st.none?'ghost':'')}" style="padding:5px 10px;min-width:100px"
-        title="${accion} · ${heredado?'Heredado de '+esc(st.from):esc(etiq)}"
+        title="${accion} · ${heredado?'Inherited from '+esc(st.from):esc(etiq)}"
         onclick="window._uexToggle('${kind}','${niveles.join(',')}','${c.scope}',${st.all?'false':'true'})">${txt}</button>
-      <div class="muted" style="font-size:.7rem;margin-top:3px">${st.all&&st.until?'🕒 hasta '+_rdrHM(st.until):(heredado?'heredado':(st.extra?'+'+st.extra+' min':'&nbsp;'))}</div>
+      <div class="muted" style="font-size:.7rem;margin-top:3px">${st.all&&st.until?'🕒 until '+_rdrHM(st.until):(heredado?'inherited':(st.extra?'+'+st.extra+' min':'&nbsp;'))}</div>
       ${st.all?`<div style="margin-top:2px"><button class="btn sm ghost" style="padding:2px 7px;font-size:.68rem" onclick="window._uexTime('${kind}','${niveles.join(',')}','${c.scope}',5)">+5</button>${st.extra?` <button class="btn sm ghost" style="padding:2px 7px;font-size:.68rem" onclick="window._uexTime('${kind}','${niveles.join(',')}','${c.scope}',0)">✕</button>`:''}</div>`:''}
     </td>`;
   };
-  const head=`<th style="min-width:150px">Examen</th>`
-    +cols.map(c=>`<th style="text-align:center">${esc(c.label)}${c.n?`<div class="muted" style="font-weight:400;font-size:.7rem">${c.n} alumno${c.n===1?'':'s'}</div>`:''}</th>`).join('');
+  const head=`<th style="min-width:150px">Exam</th>`
+    +cols.map(c=>`<th style="text-align:center">${esc(c.label)}${c.n?`<div class="muted" style="font-weight:400;font-size:.7rem">${c.n} student${c.n===1?'':'s'}</div>`:''}</th>`).join('');
   const body=UEX_KINDS.map(([kind,etiq])=>{
     const resumen=`<tr style="background:#f8fafc"><td><b>${etiq}</b>
-      <div class="muted" style="font-size:.72rem">los cuatro niveles a la vez</div></td>
-      ${cols.map(c=>celda(kind,UEX_LEVELS,c,'Los cuatro niveles a la vez')).join('')}</tr>`;
+      <div class="muted" style="font-size:.72rem">all four levels at once</div></td>
+      ${cols.map(c=>celda(kind,UEX_LEVELS,c,'All four levels at once')).join('')}</tr>`;
     const porNivel=UEX_LEVELS.filter(l=>publicados.has(kind+':'+l)).map(l=>{
       const e=(pub||[]).find(x=>x.kind===kind&&x.level===l)||{};
       return `<tr><td style="padding-left:22px">${l.toUpperCase()}
-        <span class="muted" style="font-size:.72rem">· ${e.minutes||''} min · ${e.questions||0} preguntas</span>
+        <span class="muted" style="font-size:.72rem">· ${e.minutes||''} min · ${e.questions||0} questions</span>
         <div style="margin-top:3px">${_uexImprimir(kind,l)}</div></td>
-        ${cols.map(c=>celda(kind,[l],c,'Solo '+l.toUpperCase())).join('')}</tr>`;
+        ${cols.map(c=>celda(kind,[l],c,'Only '+l.toUpperCase())).join('')}</tr>`;
     }).join('');
     return resumen+porNivel;
   }).join('');
@@ -2806,29 +2806,29 @@ async function unitExamPanel(){
   const _b=_uexBloques(uexCtl.grade).find(b=>_uexUnits(b)===uexCtl.units);
   const _rot=_b?_uexRotulo(_b):('Unidades '+uexCtl.units);
   const _sub=_b?_b.map(u=>esc(u.title)).join(' · '):'';
-  $('#main').innerHTML=`<h1>📋 Exámenes de unidad</h1>${volver}
-    <p class="muted" style="margin-top:-2px">${(GRADE_META[uexCtl.grade]||['','9.º'])[1]} · <b>${_rot}</b>${_sub?' — '+_sub:''}.
-      Cada alumno rinde <b>en su nivel</b>: abrir la fila de arriba abre los cuatro de una vez, y las filas de debajo
-      sirven para abrir uno solo. Un salón manda sobre su grado, y el grado sobre «Todos». Año <b>${SCHOOL_YEAR_NOW}</b>.</p>
-    <div class="note info" style="margin:0 0 12px">🔒 Mientras un examen está cerrado, el alumno <b>no puede ni descargarlo</b>:
-      la base se lo niega, no es solo que la pantalla no se lo enseñe. Tú y los administradores podéis entrar siempre a revisarlo,
-      y dentro veréis además el <b>guion del listening</b>.</div>
+  $('#main').innerHTML=`<h1>📋 Unit exams</h1>${volver}
+    <p class="muted" style="margin-top:-2px">${(GRADE_META[uexCtl.grade]||['','Grade 9'])[1]} · <b>${_rot}</b>${_sub?' — '+_sub:''}.
+      Each student takes it <b>at their own level</b>: opening the row above opens all four at once, and the rows below
+      are for opening just one. A class overrides its grade, and the grade overrides «All». Year <b>${SCHOOL_YEAR_NOW}</b>.</p>
+    <div class="note info" style="margin:0 0 12px">🔒 While an exam is closed, the student <b>cannot even download it</b>:
+      the database denies it, it is not only that the screen does not show it. You and the administrators can always go in to review it,
+      and inside you will also see the <b>listening script</b>.</div>
     <div class="row" style="gap:8px;margin:0 0 10px;align-items:center">
-      <span style="margin-left:auto;font-size:12.5px;color:#475569">Cerrar automáticamente a las
+      <span style="margin-left:auto;font-size:12.5px;color:#475569">Close automatically at
         <input type="time" value="${esc(uexCtl.until||'')}" onchange="window._uexUntil(this.value)"
                style="font-family:inherit;font-size:13px;padding:5px 7px;border:1.5px solid var(--line);border-radius:8px">
-        ${uexCtl.until?`<button class="btn sm ghost" style="padding:3px 9px;font-size:.72rem" onclick="window._uexUntil('')">sin hora</button>`:''}
+        ${uexCtl.until?`<button class="btn sm ghost" style="padding:3px 9px;font-size:.72rem" onclick="window._uexUntil('')">No time</button>`:''}
       </span></div>
-    ${uexCtl.until?`<div class="note info" style="margin:0 0 12px">🕒 Lo que abras ahora se cerrará solo a las <b>${esc(uexCtl.until)}</b>.</div>`:''}
+    ${uexCtl.until?`<div class="note info" style="margin:0 0 12px">🕒 Whatever you open now will close automatically at <b>${esc(uexCtl.until)}</b>.</div>`:''}
     <div class="card" style="padding:0;overflow-x:auto"><table>
       <thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>
-    <p class="muted" style="font-size:.82rem;margin-top:8px">⏱ <b>+5</b> añade minutos a quien esté rindiendo: el cronómetro
-      crece solo en menos de 20 segundos, sin sacarlo del examen, y llega incluso cuando el reloj ya está en cero.
-      El <b>Writing</b> no se corrige aquí: llega a <b>✅ Corrección → 🎯 Productos de unidad</b>.</p>
-    <p class="muted" style="font-size:.82rem;margin-top:4px">🖨️ Para quien rinde <b>en papel</b>: cada nivel tiene su
-      <b>hoja del alumno</b>, su <b>clave</b> y el <b>guion del listening</b>. Se abren en A4 listos para imprimir o para
-      guardar en PDF (Ctrl+P → Guardar como PDF). La clave y el guion <b>no se sirven a las cuentas de alumno</b>.
-      El audio del listening lo pones tú desde el examen en pantalla.</p>`;
+    <p class="muted" style="font-size:.82rem;margin-top:8px">⏱ <b>+5</b> adds minutes for whoever is taking it: the timer
+      grows on its own in under 20 seconds, without taking them out of the exam, and it even arrives once the clock has reached zero.
+      The <b>Writing</b> is not marked here: it goes to <b>✅ Marking → 🎯 Unit products</b>.</p>
+    <p class="muted" style="font-size:.82rem;margin-top:4px">🖨️ For whoever takes it <b>on paper</b>: each level has its own
+      <b>student sheet</b>, <b>answer key</b>, and <b>listening script</b>. They open in A4, ready to print or to
+      save as PDF (Ctrl+P → Save as PDF). The answer key and script <b>are not served to student accounts</b>.
+      You play the listening audio yourself from the on-screen exam.</p>`;
   $('#main').insertAdjacentHTML('beforeend', await _uexResultados(studs||[]));
 }
 
@@ -2865,37 +2865,37 @@ async function _uexResultados(studs){
   const rendidos=new Set(filas.filter(f=>f.kind==='official').map(f=>f.a.student_id));
   const sinRendir=studs.filter(p=>!rendidos.has(p.id))
     .sort((a,b)=>String(a.section||'').localeCompare(String(b.section||''))||String(a.full_name||'').localeCompare(String(b.full_name||'')));
-  const fecha=iso=>{ try{ return new Date(iso).toLocaleString('es-PE',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}); }catch(_){ return ''; } };
+  const fecha=iso=>{ try{ return new Date(iso).toLocaleString('en-GB',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}); }catch(_){ return ''; } };
   const fila=f=>{
     const pct=f.a.total?Math.round(100*f.a.score/f.a.total):0, b=banda(pct);
     const w=f.w, wp=(w&&w.payload)||{};
     return `<tr>
-      <td>${esc(f.p.full_name||'(alumno)')} <span class="muted">${f.p.grade_id?f.p.grade_id+'.º '+(f.p.section||''):''}</span></td>
-      <td style="white-space:nowrap">${f.kind==='official'?'🎓 oficial':'📝 práctica'} · <b>${f.lvl.toUpperCase()}</b></td>
+      <td>${esc(f.p.full_name||'(student)')} <span class="muted">${f.p.grade_id?'G'+f.p.grade_id+' '+(f.p.section||''):''}</span></td>
+      <td style="white-space:nowrap">${f.kind==='official'?'🎓 official':'📝 practice'} · <b>${f.lvl.toUpperCase()}</b></td>
       <td style="text-align:center;white-space:nowrap"><b>${f.a.score}/${f.a.total}</b> · ${pct}%
         <span class="badge" style="background:${b[1]}">${b[0]}</span></td>
       <td class="muted" style="white-space:nowrap">${fecha(f.a.submitted_at)} · ${Math.round((f.a.duration_sec||0)/60)} min</td>
       <td style="min-width:260px">${w ? `<details>
-          <summary style="cursor:pointer">✍️ ${wp.words||0} pal. ${w.reviewed_at
-            ? '<span class="badge" style="background:#dcfce7">corregido'+(w.score!=null?' · '+w.score:'')+'</span>'
-            : '<span class="badge" style="background:#fee2e2">sin corregir</span>'}</summary>
+          <summary style="cursor:pointer">✍️ ${wp.words||0} words ${w.reviewed_at
+            ? '<span class="badge" style="background:#dcfce7">marked'+(w.score!=null?' · '+w.score:'')+'</span>'
+            : '<span class="badge" style="background:#fee2e2">not marked</span>'}</summary>
           <div style="white-space:pre-wrap;font-size:.86rem;line-height:1.55;max-height:260px;overflow:auto;padding:8px 10px;margin-top:6px;border:1px solid var(--line);border-radius:8px;background:#fcfdff">${esc(wp.text||'')}</div>
           <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:6px">
-            <label style="font-size:.78rem">Nota <input type="number" min="0" max="20" value="${w.score!=null?w.score:''}" style="width:4rem"
+            <label style="font-size:.78rem">Grade <input type="number" min="0" max="20" value="${w.score!=null?w.score:''}" style="width:4rem"
               onchange="unitCalificar('${w.id}',this.value,null)"></label>
-            <input type="text" placeholder="comentario para el alumno" value="${esc(w.feedback||'')}" style="flex:1 1 200px"
+            <input type="text" placeholder="comment for the student" value="${esc(w.feedback||'')}" style="flex:1 1 200px"
               onchange="unitCalificar('${w.id}',null,this.value)">
-          </div></details>` : '<span class="muted">sin writing</span>'}</td>
+          </div></details>` : '<span class="muted">no writing</span>'}</td>
     </tr>`;
   };
   return `<div class="card" style="margin-top:14px">
-    <h2 style="font-size:1.05rem;margin-top:0">📊 Resultados · ${filas.length} intento${filas.length===1?'':'s'}</h2>
-    <p class="muted" style="font-size:.82rem">Las seis partes se corrigen solas. El Writing lo corriges aquí, con el texto delante.
-      Escala: <b>AD</b> ≥ 90 % · <b>A</b> ≥ 70 % · <b>B</b> ≥ 55 % · <b>C</b> por debajo.</p>
+    <h2 style="font-size:1.05rem;margin-top:0">📊 Results · ${filas.length} attempt${filas.length===1?'':'s'}</h2>
+    <p class="muted" style="font-size:.82rem">The six parts are marked automatically. You mark the Writing here, with the text in front of you.
+      Scale: <b>AD</b> ≥ 90 % · <b>A</b> ≥ 70 % · <b>B</b> ≥ 55 % · <b>C</b> below.</p>
     ${filas.length?`<div style="overflow-x:auto"><table class="tbl">
-      <thead><tr><th>Alumno</th><th>Examen</th><th style="text-align:center">Nota</th><th>Fecha</th><th>Writing</th></tr></thead>
-      <tbody>${filas.map(fila).join('')}</tbody></table></div>`:'<p class="muted">Nadie ha rendido todavía.</p>'}
-    ${sinRendir.length?`<p class="muted" style="font-size:.82rem;margin-top:10px"><b>Sin rendir el oficial (${sinRendir.length}):</b>
+      <thead><tr><th>Student</th><th>Exam</th><th style="text-align:center">Grade</th><th>Date</th><th>Writing</th></tr></thead>
+      <tbody>${filas.map(fila).join('')}</tbody></table></div>`:'<p class="muted">No one has taken it yet.</p>'}
+    ${sinRendir.length?`<p class="muted" style="font-size:.82rem;margin-top:10px"><b>Have not taken the official exam (${sinRendir.length}):</b>
       ${sinRendir.map(p=>esc(p.full_name||'')+(p.section?' ('+esc(String(p.section))+')':'')).join(', ')}</p>`:''}
   </div>`;
 }
@@ -2905,7 +2905,7 @@ async function _uexWrite(filas){
     const r=await sb.from('reader_exam_access').upsert(filas);
     if(r.error) throw r.error;
     unitExamPanel();
-  }catch(e){ alert('No se pudo guardar: '+(e.message||e)); }
+  }catch(e){ alert('Could not save: '+(e.message||e)); }
 }
 window._uexToggle=(kind,niveles,scope,open)=>{
   const now=new Date().toISOString(), until=open?_rdrUntilISO(uexCtl.until):null;
@@ -2950,7 +2950,7 @@ function _rdrLunes(iso){
    propio duration_sec, pero eso es resolver, no leer, y va en su columna. */
 async function readerTimePanel(){
   state._tab='readers';
-  $('#main').innerHTML=`<h1>📖 Controles de lectura</h1>${_readerTabs()}<p class="muted">Cargando…</p>`;
+  $('#main').innerHTML=`<h1>📖 Reading controls</h1>${_readerTabs()}<p class="muted">Loading…</p>`;
   const grades=(state.profile&&state.profile.role==='admin')?GRADES:teacherAllowedGrades();
   const gradeIds=new Set(grades.map(g=>String(g.id)));
   const [{data:studs},{data:atts}]=await Promise.all([
@@ -2996,15 +2996,15 @@ async function readerTimePanel(){
   const tope=Math.max(1,...data.map(d=>d.r.secs));
 
   const stats=`<div class="grid cols-3" style="margin-bottom:12px">
-    <div class="stat"><div class="l">⏱ Total leído</div><div class="n" style="font-size:1.5rem">${_rdrTime(totalSec)}</div>
-      <div class="muted" style="font-size:.8rem">${leen.length} de ${data.length} alumnos han leído</div></div>
-    <div class="stat"><div class="l">Media por alumno que lee</div><div class="n" style="font-size:1.5rem">${_rdrTime(mediaSec)}</div>
-      <div class="muted" style="font-size:.8rem">no cuenta a los que están a cero</div></div>
-    <div class="stat"><div class="l">Sin leer nada</div><div class="n">${cero}</div>
-      <div class="muted" style="font-size:.8rem">${capsTotal} capítulo(s) abiertos en total</div></div>
+    <div class="stat"><div class="l">⏱ Total read</div><div class="n" style="font-size:1.5rem">${_rdrTime(totalSec)}</div>
+      <div class="muted" style="font-size:.8rem">${leen.length} of ${data.length} students have read</div></div>
+    <div class="stat"><div class="l">Average per student who reads</div><div class="n" style="font-size:1.5rem">${_rdrTime(mediaSec)}</div>
+      <div class="muted" style="font-size:.8rem">does not count those at zero</div></div>
+    <div class="stat"><div class="l">Have not read anything</div><div class="n">${cero}</div>
+      <div class="muted" style="font-size:.8rem">${capsTotal} chapter(s) opened in total</div></div>
   </div>`;
 
-  const cab=semanas.map(s=>`<th style="text-align:center" title="Semana del ${s}">${s.slice(5).replace('-','/')}</th>`).join('');
+  const cab=semanas.map(s=>`<th style="text-align:center" title="Week of ${s}">${s.slice(5).replace('-','/')}</th>`).join('');
   const filas=data.map(d=>{
     const pct=Math.round(d.r.secs/tope*100);
     const barra=d.r.secs
@@ -3012,7 +3012,7 @@ async function readerTimePanel(){
            <div style="flex:1;min-width:60px;height:8px;background:var(--bg);border-radius:6px;overflow:hidden">
              <div style="width:${pct}%;height:100%;background:var(--blue)"></div></div>
            <b style="white-space:nowrap">${_rdrTime(d.r.secs)}</b></div>`
-      : '<span class="muted">— sin leer</span>';
+      : '<span class="muted">— has not read</span>';
     return `<tr${d.r.secs?'':' style="opacity:.6"'}>
       <td><b>${esc(d.p.full_name||'')}</b></td>
       <td><span class="badge grade">${esc(d.p.grades?.name||'—')}</span>${d.p.section?' <span class="badge">'+esc(d.p.section)+'</span>':''}</td>
@@ -3026,28 +3026,28 @@ async function readerTimePanel(){
     </tr>`;
   }).join('');
 
-  const aviso = totalSec ? '' : `<div class="note warn" style="margin-top:12px">Nadie del filtro ha usado
-    todavía <b>📖 Read along</b>, que es la única pantalla que mide lectura. Si los alumnos entran directo
-    a las actividades o al control, leen en papel o en otra pestaña, aquí saldrá cero aunque estén
-    trabajando la obra: míralo junto a <b>📊 Notas y tiempos</b>.</div>`;
+  const aviso = totalSec ? '' : `<div class="note warn" style="margin-top:12px">No one in the filter has
+    used <b>📖 Read along</b> yet, which is the only screen that measures reading. If students go straight
+    to the activities or the control, or read on paper or in another tab, this will show zero even though they are
+    working on the book: check it alongside <b>📊 Grades and times</b>.</div>`;
 
-  $('#main').innerHTML=`<h1>📖 Controles de lectura</h1>${_readerTabs()}
+  $('#main').innerHTML=`<h1>📖 Reading controls</h1>${_readerTabs()}
     ${_readerFilterBar(grades,years,books)}
     ${stats}
-    <div class="note">Minutos en <b>Read along</b>, la lectura con audio. No se cuentan los ejercicios ni
-      el control (eso es resolver, no leer) ni las visitas de menos de 20 segundos, y una pestaña olvidada
-      corta a los 45 minutos. El registro empezó el <b>25 de agosto de 2026</b>: antes de esa fecha no hay
-      datos de nadie.</div>
+    <div class="note">Minutes in <b>Read along</b>, reading with audio. Exercises and the control are not counted
+      (that is solving, not reading), nor are visits under 20 seconds, and a forgotten tab cuts off
+      at 45 minutes. Recording started on <b>August 25, 2026</b>: there is no
+      data for anyone before that date.</div>
     ${aviso}
     <div class="card" style="padding:0;overflow-x:auto;margin-top:12px"><table>
-      <thead><tr><th>Alumno</th><th>Grado</th>${cab}<th>Total leído</th><th title="Capítulos distintos abiertos">Caps.</th><th>Última vez</th></tr></thead>
-      <tbody>${filas||'<tr><td colspan="9" class="muted">Sin alumnos en el filtro.</td></tr>'}</tbody></table></div>`;
+      <thead><tr><th>Student</th><th>Grade</th>${cab}<th>Total read</th><th title="Distinct chapters opened">Ch.</th><th>Last time</th></tr></thead>
+      <tbody>${filas||'<tr><td colspan="9" class="muted">No students match this filter.</td></tr>'}</tbody></table></div>`;
 }
 async function readerStatsPanel(detailId){
   state._tab='readers';
   if(readerTab==='control') return readerControlPanel();
   if(readerTab==='tiempo') return readerTimePanel();
-  $('#main').innerHTML=`<h1>📖 Controles de lectura</h1><p class="muted">Cargando…</p>`;
+  $('#main').innerHTML=`<h1>📖 Reading controls</h1><p class="muted">Loading…</p>`;
   const grades=(state.profile&&state.profile.role==='admin')?GRADES:teacherAllowedGrades();
   const gradeIds=new Set(grades.map(g=>String(g.id)));
   const [{data:studs},{data:atts}]=await Promise.all([
@@ -3066,15 +3066,15 @@ async function readerStatsPanel(detailId){
   const one=books.length===1?books[0]:null;      // lo normal: un salón, una obra
   const meta=one?READER_META[one]:null;
   const cab=`<div class="row" style="justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:4px">
-      <h1 style="margin:0">📖 Controles de lectura</h1>
-      <a class="btn sm ghost" href="attwn-exam.html" style="text-decoration:none">🔓 Abrir / cerrar controles →</a>
+      <h1 style="margin:0">📖 Reading controls</h1>
+      <a class="btn sm ghost" href="attwn-exam.html" style="text-decoration:none">🔓 Open / close controls →</a>
     </div>
     ${_readerTabs()}`;
   if(!books.length){
     $('#main').innerHTML=`${cab}
       ${_readerFilterBar(grades,years,books)}
-      <div class="note info">Ningún salón de este filtro tiene obra asignada al <b>${_rdrTermLab(readerFilter.term)}</b> de ${esc(readerFilter.year)}.
-        Cada salón lee <b>una obra por trimestre</b>: se eligen en <b>📚 Library → Qué lee cada salón</b>.</div>`;
+      <div class="note info">No class in this filter has a book assigned for the <b>${_rdrTermLab(readerFilter.term)}</b> of ${esc(readerFilter.year)}.
+        Each class reads <b>one book per term</b>: they are chosen in <b>📚 Library → What each class reads</b>.</div>`;
     return;
   }
   const ofYear=(atts||[]).filter(a=>_attYear(a)===+readerFilter.year && bset.has(_rdrBookOfAtt(a)));
@@ -3091,18 +3091,18 @@ async function readerStatsPanel(detailId){
   const sumRead=data.reduce((s,d)=>s+(one?(d.r.books[one]?d.r.books[one].readSec:0):d.r.readSec),0);
   const sumAct =data.reduce((s,d)=>s+(one?(d.r.books[one]?d.r.books[one].actSec:0):d.r.actSec),0);
   const stats=`<div class="grid cols-3" style="margin-bottom:12px">
-    <div class="stat"><div class="l">Nota final de la clase</div><div class="n">${clase!=null?clase+'%':'—'}</div>
-      <div class="muted" style="font-size:.8rem">${clase!=null?_rdr20(clase)+'/20':'sin controles aún'}</div></div>
-    <div class="stat"><div class="l">Alumnos con nota</div><div class="n">${active.length}</div>
-      <div class="muted" style="font-size:.8rem">de ${data.length} en el filtro</div></div>
-    <div class="stat"><div class="l">Controles rendidos</div><div class="n">${data.reduce((s,d)=>s+(one?(d.r.books[one]?d.r.books[one].tries:0):d.r.tries),0)}</div>
-      <div class="muted" style="font-size:.8rem">intentos, se cuenta el mejor</div></div>
-    <div class="stat"><div class="l">⏱ Lectura con audio</div><div class="n" style="font-size:1.5rem">${_rdrTime(sumRead)}</div>
-      <div class="muted" style="font-size:.8rem">+ ${_rdrTime(sumAct)} en ejercicios</div></div>
+    <div class="stat"><div class="l">Class final grade</div><div class="n">${clase!=null?clase+'%':'—'}</div>
+      <div class="muted" style="font-size:.8rem">${clase!=null?_rdr20(clase)+'/20':'no controls yet'}</div></div>
+    <div class="stat"><div class="l">Students with a grade</div><div class="n">${active.length}</div>
+      <div class="muted" style="font-size:.8rem">of ${data.length} in the filter</div></div>
+    <div class="stat"><div class="l">Controls taken</div><div class="n">${data.reduce((s,d)=>s+(one?(d.r.books[one]?d.r.books[one].tries:0):d.r.tries),0)}</div>
+      <div class="muted" style="font-size:.8rem">attempts, best one counts</div></div>
+    <div class="stat"><div class="l">⏱ Reading with audio</div><div class="n" style="font-size:1.5rem">${_rdrTime(sumRead)}</div>
+      <div class="muted" style="font-size:.8rem">+ ${_rdrTime(sumAct)} in exercises</div></div>
   </div>`;
   const head = one
-    ? `<th>Alumno</th><th>Grado</th>${Array.from({length:meta.chapters},(_,i)=>`<th title="Capítulo ${i+1}">${i+1}</th>`).join('')}<th>Rendidos</th><th title="Promedio de los capítulos rendidos">Nota final</th><th>⏱ Lectura</th><th>⏱ Ejercicios</th><th></th>`
-    : `<th>Alumno</th><th>Grado</th>${books.map(id=>`<th>${READER_META[id].icon} ${READER_META[id].short}</th>`).join('')}<th>Nota final</th><th>⏱ Lectura</th><th>⏱ Ejercicios</th><th></th>`;
+    ? `<th>Student</th><th>Grade</th>${Array.from({length:meta.chapters},(_,i)=>`<th title="Chapter ${i+1}">${i+1}</th>`).join('')}<th>Taken</th><th title="Average of chapters taken">Final grade</th><th>⏱ Reading</th><th>⏱ Exercises</th><th></th>`
+    : `<th>Student</th><th>Grade</th>${books.map(id=>`<th>${READER_META[id].icon} ${READER_META[id].short}</th>`).join('')}<th>Final grade</th><th>⏱ Reading</th><th>⏱ Exercises</th><th></th>`;
   const rows=data.map(d=>{
     const b=one?d.r.books[one]:null;
     const cells = one
@@ -3116,7 +3116,7 @@ async function readerStatsPanel(detailId){
     return `<tr><td><b>${esc(d.p.full_name||'')}</b></td>
       <td><span class="badge grade">${esc(d.p.grades?.name||'—')}</span>${d.p.section?' <span class="badge">'+esc(d.p.section)+'</span>':''}</td>
       ${cells}
-      <td><button class="btn sm ghost" onclick="window._readerDetail('${d.p.id}')">Detalle →</button></td></tr>`;
+      <td><button class="btn sm ghost" onclick="window._readerDetail('${d.p.id}')">Details →</button></td></tr>`;
   }).join('');
   /* La obra del trimestre, capítulo a capítulo: qué saca la clase en cada
      control y cuántos lo han rendido. La NOTA FINAL es el promedio de los
@@ -3135,19 +3135,19 @@ async function readerStatsPanel(detailId){
     const filas=chs.map(c=>`<tr${c.done?'':' style="opacity:.55"'}>
       <td><b>Ch. ${c.n}</b></td>
       <td>${_rdrMark(c.avg)}</td>
-      <td style="text-align:center">${c.done?c.done+' de '+data.length:'<span class="muted">sin rendir</span>'}</td>
+      <td style="text-align:center">${c.done?c.done+' of '+data.length:'<span class="muted">not taken</span>'}</td>
       <td class="muted" style="text-align:center">${c.tries||'—'}</td>
       <td>${_rdrTime(c.readSec)}</td>
       <td>${_rdrTime(c.actSec)}</td></tr>`).join('');
-    return `<h2 style="font-size:16px;color:var(--blue-d);margin:20px 0 8px">${meta.icon} ${esc(meta.title)} — capítulo a capítulo</h2>
-      <p class="muted" style="margin:0 0 8px;font-size:.85rem">Nota media de la clase en cada control. La <b>nota final</b> es el promedio de los
-        <b>${avanzados} capítulo(s) avanzados</b> de los ${meta.chapters} de la obra: los que aún no se han rendido no cuentan.</p>
+    return `<h2 style="font-size:16px;color:var(--blue-d);margin:20px 0 8px">${meta.icon} ${esc(meta.title)} — chapter by chapter</h2>
+      <p class="muted" style="margin:0 0 8px;font-size:.85rem">Average grade of the class in each control. The <b>final grade</b> is the average of the
+        <b>${avanzados} chapter(s) covered</b> out of the ${meta.chapters} in the book: those not yet taken do not count.</p>
       <div class="card" style="padding:0;overflow-x:auto"><table>
-        <thead><tr><th style="min-width:110px">Capítulo</th><th>Nota media de la clase</th><th>Rendido por</th><th title="Intentos, se cuenta el mejor">Intentos</th><th>⏱ Lectura</th><th>⏱ Ejercicios</th></tr></thead>
+        <thead><tr><th style="min-width:110px">Chapter</th><th>Class average grade</th><th>Taken by</th><th title="Attempts, best one counts">Attempts</th><th>⏱ Reading</th><th>⏱ Exercises</th></tr></thead>
         <tbody>${filas}</tbody>
-        <tfoot><tr style="background:#f1f5f9"><td><b>Nota final</b></td>
+        <tfoot><tr style="background:#f1f5f9"><td><b>Final grade</b></td>
           <td>${_rdrMark(clase)}</td>
-          <td class="muted" style="text-align:center">${avanzados}/${meta.chapters} capítulos</td>
+          <td class="muted" style="text-align:center">${avanzados}/${meta.chapters} chapters</td>
           <td class="muted" style="text-align:center">${chs.reduce((s,c)=>s+c.tries,0)}</td>
           <td>${_rdrTime(sumRead)}</td><td>${_rdrTime(sumAct)}</td></tr></tfoot>
       </table></div>`;
@@ -3158,12 +3158,12 @@ async function readerStatsPanel(detailId){
     if(!d) return '';
     const bks=books.filter(id=>d.r.books[id]);
     return `<div class="card"><div class="row" style="justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
-        <h2 style="margin:0">${esc(d.p.full_name||'')} — capítulo a capítulo</h2>
-        <div>${_rdrMark(gradeOf(d))} <span class="muted" style="font-size:.82rem">nota final del trimestre</span></div>
+        <h2 style="margin:0">${esc(d.p.full_name||'')} — chapter by chapter</h2>
+        <div>${_rdrMark(gradeOf(d))} <span class="muted" style="font-size:.82rem">final grade for the term</span></div>
       </div>
-      <p class="muted" style="margin:4px 0 0;font-size:.85rem">⏱ ${_rdrTime(d.r.readSec)} de lectura con audio · ${_rdrTime(d.r.actSec)} de ejercicios · ${_rdrTime(d.r.examSec)} en los controles.</p>
+      <p class="muted" style="margin:4px 0 0;font-size:.85rem">⏱ ${_rdrTime(d.r.readSec)} of reading with audio · ${_rdrTime(d.r.actSec)} of exercises · ${_rdrTime(d.r.examSec)} in controls.</p>
       <div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--line);font-size:12.5px;color:#475569">
-        <b>Solo para ${esc((d.p.full_name||'').split(' ')[0])}:</b> abrirle un control que su salón tiene cerrado (recuperación) o darle minutos extra.
+        <b>Only for ${esc((d.p.full_name||'').split(' ')[0])}:</b> open a control that their class has closed (make-up) or give them extra minutes.
         <div class="row" style="gap:6px;margin-top:6px;align-items:center;flex-wrap:wrap">
           <select id="rdrStuBook" style="font-family:inherit;font-size:12.5px;padding:5px 7px;border:1.5px solid var(--line);border-radius:8px">
             ${books.map(id=>`<option value="${id}">${READER_META[id].icon} ${esc(READER_META[id].short)}</option>`).join('')}
@@ -3171,24 +3171,24 @@ async function readerStatsPanel(detailId){
           <select id="rdrStuCh" style="font-family:inherit;font-size:12.5px;padding:5px 7px;border:1.5px solid var(--line);border-radius:8px">
             ${Array.from({length:one?meta.chapters:10},(_,i)=>`<option value="${i+1}">Ch. ${i+1}</option>`).join('')}
           </select>
-          <button class="btn sm" onclick="window._stuCtl('${d.p.id}','open')">🔓 abrirle el control</button>
-          <button class="btn sm ghost" onclick="window._stuCtl('${d.p.id}','close')">🔒 cerrárselo</button>
+          <button class="btn sm" onclick="window._stuCtl('${d.p.id}','open')">🔓 open the control for them</button>
+          <button class="btn sm ghost" onclick="window._stuCtl('${d.p.id}','close')">🔒 close it for them</button>
           <button class="btn sm ghost" onclick="window._stuCtl('${d.p.id}','plus5')">⏱ +5 min</button>
-          <button class="btn sm ghost" onclick="window._stuCtl('${d.p.id}','clear')">✕ quitar lo suyo</button>
+          <button class="btn sm ghost" onclick="window._stuCtl('${d.p.id}','clear')">✕ remove their own rules</button>
         </div>
       </div></div>
-      ${bks.length?bks.map(id=>_rdrChapterTable(id,d.r.books[id])).join(''):'<div class="note info">Este alumno todavía no ha abierto la obra del trimestre.</div>'}`;
+      ${bks.length?bks.map(id=>_rdrChapterTable(id,d.r.books[id])).join(''):'<div class="note info">This student has not opened the book for the term yet.</div>'}`;
   })();
   $('#main').innerHTML=`${cab}
-    <p class="muted" style="margin-top:-6px">La nota de cada capítulo es su control (mejor intento) y la <b>nota final es el promedio de los capítulos avanzados</b>. El tiempo de lectura con audio y el de los ejercicios se muestran al lado como evidencia de trabajo: no cambian la nota.
-      Se ve el <b>${_rdrTermLab(readerFilter.term)}</b> del año escolar <b>${esc(readerFilter.year)}</b>${one?` — ${meta.icon} <b>${esc(meta.title)}</b>, la obra que toca ese trimestre`:''}.</p>
+    <p class="muted" style="margin-top:-6px">The grade for each chapter is its control (best attempt) and the <b>final grade is the average of the chapters covered</b>. Reading time with audio and exercise time are shown alongside as evidence of work: they do not change the grade.
+      This shows the <b>${_rdrTermLab(readerFilter.term)}</b> of the school year <b>${esc(readerFilter.year)}</b>${one?` — ${meta.icon} <b>${esc(meta.title)}</b>, the book assigned for that term`:''}.</p>
     ${_readerFilterBar(grades,years,books)}
     ${stats}
     <div class="card" style="padding:0;overflow-x:auto"><table>
       <thead><tr>${head}</tr></thead>
-      <tbody>${rows||`<tr><td colspan="12" class="center muted">Sin alumnos para este filtro.</td></tr>`}</tbody>
+      <tbody>${rows||`<tr><td colspan="12" class="center muted">No students for this filter.</td></tr>`}</tbody>
     </table>
-    <div class="muted" style="padding:8px 14px;font-size:.82rem">${data.length} alumno(s) · ${active.length} con nota${one?' en '+esc(meta.title):''}</div></div>
+    <div class="muted" style="padding:8px 14px;font-size:.82rem">${data.length} student(s) · ${active.length} with a grade${one?' in '+esc(meta.title):''}</div></div>
     ${chapterTable}
     ${detail}`;
 }
@@ -3202,7 +3202,7 @@ async function readerStatsPanel(detailId){
 ----------------------------------------------------------------- */
 async function littleReadersPanel(){
   const main=$('#main');
-  main.innerHTML='<div class="card"><p class="muted">Cargando los cuentos…</p></div>';
+  main.innerHTML='<div class="card"><p class="muted">Loading the stories…</p></div>';
   let libros=[];
   try{
     const r=await fetch('nis-fun/readers/data/index.json',{cache:'no-cache'});
@@ -3210,7 +3210,7 @@ async function littleReadersPanel(){
   }catch(e){}
   if(!libros.length){
     main.innerHTML=`<div class="card"><h1>🧒 Nordic Little Readers</h1>
-      <p class="err">No pude leer la lista de cuentos.</p></div>`;
+      <p class="err">Could not read the list of stories.</p></div>`;
     return;
   }
   const porGrado={};
@@ -3229,21 +3229,21 @@ async function littleReadersPanel(){
             <b style="font-size:15px">${esc(l.titulo)}</b>
             <div class="muted" style="font-size:.85rem">${esc(l.objetivo)}</div>
             <div style="font-size:.78rem;font-weight:700;color:var(--blue-d);margin-top:5px">
-              ${l.paginas} páginas</div>
+              ${l.paginas} pages</div>
           </div></a>`).join('')}
     </div>`).join('');
 
   main.innerHTML=`<div class="card">
     <h1>🧒 Nordic Little Readers</h1>
-    <p class="muted">Cuentos de Pre-A1 y A1 para primaria, con los personajes de Fun for Nordic.
-      Cada uno son ocho páginas con dibujo y audio, y una actividad al final.
-      Los readers de <b>📖 Library</b> (Tom Sawyer, Treasure Island…) empiezan en A2 y
-      son para los grados de arriba.</p>
+    <p class="muted">Pre-A1 and A1 stories for primary, with the characters from Fun for Nordic.
+      Each one has eight pages with illustrations and audio, and an activity at the end.
+      The readers in <b>📖 Library</b> (Tom Sawyer, Treasure Island…) start at A2 and
+      are for the grades above.</p>
     ${bloques}
-    <p class="muted" style="margin-top:18px;font-size:.85rem">Los títulos que pide el
-      Scope &amp; Sequence para estos grados (The Very Hungry Caterpillar, Dear Zoo,
-      Flat Stanley…) tienen copyright y siguen siendo lectura de biblioteca en papel:
-      estos cuentos cubren el mismo objetivo con material propio del colegio.</p>
+    <p class="muted" style="margin-top:18px;font-size:.85rem">The titles the
+      Scope &amp; Sequence calls for at these grades (The Very Hungry Caterpillar, Dear Zoo,
+      Flat Stanley…) are under copyright and remain paper library reading:
+      these stories meet the same objective with material created by the school.</p>
   </div>`;
 }
 
@@ -3259,7 +3259,7 @@ window._funFiltro = n => { funFiltro = (funFiltro===n ? '' : n); funNordicPanel(
 
 async function funNordicPanel(){
   const main = $('#main');
-  main.innerHTML = '<div class="card"><p class="muted">Cargando entregas…</p></div>';
+  main.innerHTML = '<div class="card"><p class="muted">Loading submissions…</p></div>';
 
   const NIVELES = ['starters','movers','flyers'];
   const COLS = 'id,student_id,level,unit,activity_code,kind,payload,audio_path,duration_sec,score,feedback,reviewed_at,created_at';
@@ -3278,21 +3278,21 @@ async function funNordicPanel(){
   const pastilla = (val,label,n) => `<button class="btn sm ${funFiltro===val?'':'ghost'}"
       onclick="window._funFiltro('${val}')">${label} <b>${n}</b></button>`;
   const chips = `<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
-      ${pastilla('','🧸 Todos',total)}
+      ${pastilla('','🧸 All',total)}
       ${NIVELES.map(n=>pastilla(n, FUN_CURSOS[n].em+' '+n[0].toUpperCase()+n.slice(1), nPorNivel[n])).join('')}
     </div>`;
 
   const marco = cuerpo => `<div class="card">
-    <h2>🧸 Fun for Nordic — entregas de los alumnos</h2>
-    <p class="muted">Lo que escriben y lo que graban en Starters, Movers y Flyers, lo más
-      reciente primero. Pon una nota de 0 a 10 y un comentario; se guarda solo.</p>
+    <h2>🧸 Fun for Nordic — student submissions</h2>
+    <p class="muted">What students write and record in Starters, Movers and Flyers, most
+      recent first. Give a score from 0 to 10 and a comment; it saves automatically.</p>
     ${chips}${cuerpo}</div>`;
 
-  if (error){ main.innerHTML = marco(`<p class="err">No pude leer las entregas: ${esc(error.message)}</p>`); return; }
+  if (error){ main.innerHTML = marco(`<p class="err">Could not load the submissions: ${esc(error.message)}</p>`); return; }
   if (!data || !data.length){
     main.innerHTML = marco(`<p class="muted">${funFiltro
-      ? 'Todavía no hay entregas de <b>'+esc(FUN_CURSOS[funFiltro].curso)+'</b>.'
-      : 'Todavía no hay entregas. Aparecerán aquí en cuanto los alumnos escriban o graben en el curso.'}</p>`);
+      ? 'There are no submissions yet for <b>'+esc(FUN_CURSOS[funFiltro].curso)+'</b>.'
+      : 'There are no submissions yet. They will appear here as soon as students write or record in the course.'}</p>`);
     return;
   }
 
@@ -3306,13 +3306,13 @@ async function funNordicPanel(){
 
   const fila = r => {
     const p = quien[r.student_id] || {};
-    const nombre = p.full_name || '(alumno)';
-    const grado = p.grade_id ? `${p.grade_id}º${p.section||''}` : '';
+    const nombre = p.full_name || '(student)';
+    const grado = p.grade_id ? `G${p.grade_id}${p.section||''}` : '';
     const cuerpo = r.kind === 'speaking'
-      ? `<button class="btn small" onclick="funOirAudio('${esc(r.audio_path||'')}', this)">▶ Escuchar</button>
+      ? `<button class="btn small" onclick="funOirAudio('${esc(r.audio_path||'')}', this)">▶ Listen</button>
          ${r.duration_sec ? `<span class="muted"> ${r.duration_sec}s</span>` : ''}`
       : r.kind === 'selfcheck'
-        ? `<span class="muted">${((r.payload||{}).puede||[]).length} / ${(r.payload||{}).total||0} marcadas</span>`
+        ? `<span class="muted">${((r.payload||{}).puede||[]).length} / ${(r.payload||{}).total||0} checked</span>`
         : `<span>${esc(((r.payload||{}).respuestas||[]).join(' · ')).slice(0,140)}</span>`;
     return `<tr>
       <td class="col-name">${esc(nombre)} <span class="muted">${grado}</span></td>
@@ -3321,15 +3321,15 @@ async function funNordicPanel(){
       <td>${cuerpo}</td>
       <td><input type="number" min="0" max="10" value="${r.score==null?'':r.score}"
             style="width:4rem" onchange="funCalificar('${r.id}', this.value, null)"></td>
-      <td class="col-flex"><input type="text" placeholder="comentario" value="${esc(r.feedback||'')}"
+      <td class="col-flex"><input type="text" placeholder="comment" value="${esc(r.feedback||'')}"
             onchange="funCalificar('${r.id}', null, this.value)"></td>
       <td class="muted">${r.reviewed_at ? '✔' : '—'}</td>
     </tr>`;
   };
 
   main.innerHTML = marco(`<div style="overflow-x:auto"><table class="tbl">
-      <thead><tr><th>Alumno</th><th>Unidad</th><th>Tipo</th><th>Entrega</th>
-        <th>Nota</th><th>Comentario</th><th>Visto</th></tr></thead>
+      <thead><tr><th>Student</th><th>Unit</th><th>Type</th><th>Submission</th>
+        <th>Grade</th><th>Comment</th><th>Seen</th></tr></thead>
       <tbody>${data.map(fila).join('')}</tbody></table></div>`);
 }
 
@@ -3337,7 +3337,7 @@ async function funNordicPanel(){
 window.funOirAudio = async function(ruta, boton){
   if (!ruta) return;
   const { data, error } = await sb.storage.from('fun-speaking').createSignedUrl(ruta, 3600);
-  if (error || !data){ boton.textContent = 'No disponible'; return; }
+  if (error || !data){ boton.textContent = 'Not available'; return; }
   const a = document.createElement('audio');
   a.controls = true; a.src = data.signedUrl; a.style.maxWidth = '15rem';
   boton.replaceWith(a);
@@ -3363,27 +3363,27 @@ async function renderTeacher(tab){
      ese acceso) no se pinta. Alumnos va suelto arriba: es por donde entra
      casi siempre. */
   const suelto=[], correccion=[], seguimiento=[], clases=[], cursos=[], cambridge=[], permisos=[];
-  if(acc.can_students) suelto.push({key:'students',label:'👥 Alumnos'});
+  if(acc.can_students) suelto.push({key:'students',label:'👥 Students'});
   if(acc.can_results){
-    correccion.push({key:'unitprod',label:'🎯 Productos de unidad'});
-    correccion.push({key:'corregir',label:'✅ Corregir fichas'});
-    correccion.push({key:'unitexams',label:'📋 Exámenes de unidad'});
-    correccion.push({key:'readers',label:'📖 Controles de lectura'});
+    correccion.push({key:'unitprod',label:'🎯 Unit products'});
+    correccion.push({key:'corregir',label:'✅ Mark worksheets'});
+    correccion.push({key:'unitexams',label:'📋 Unit exams'});
+    correccion.push({key:'readers',label:'📖 Reading checks'});
     correccion.push({key:'funnordic',label:'🧸 Fun for Nordic'});
-    seguimiento.push({key:'results',label:'📝 Resultados'});
-    seguimiento.push({key:'final',label:'🎓 Resultado final'});
-    seguimiento.push({key:'tiempo',label:'⏱️ Tiempo de pantalla'});
+    seguimiento.push({key:'results',label:'📝 Results'});
+    seguimiento.push({key:'final',label:'🎓 Final result'});
+    seguimiento.push({key:'tiempo',label:'⏱️ Screen time'});
   }
-  if(acc.can_results||acc.can_students) seguimiento.push({key:'honesty',label:'🛡️ Honestidad'});
+  if(acc.can_results||acc.can_students) seguimiento.push({key:'honesty',label:'🛡️ Honesty'});
   // Mismo orden que en el menu del admin, pestana por pestana: los dos
   // paneles se leen igual y una indicacion sirve para los dos.
   if(_canClasses) clases.push({key:'classes',label:'🏫 Classes'});
   if(_canFrench)  clases.push({key:'french',label:'🇫🇷 French'});
   clases.push({key:'scope',label:'📚 Scope & Sequence'});
-  if(acc.can_results) clases.push({key:'materiales',label:'📄 Materiales de clase'});
+  if(acc.can_results) clases.push({key:'materiales',label:'📄 Class materials'});
   clases.push({key:'littlereaders',label:'🧒 Little Readers'});
-  clases.push({key:'pizarra',label:'📝 Pizarra'});
-  clases.push({key:'corrector',label:'✍️ Corrector de material'});
+  clases.push({key:'pizarra',label:'📝 Whiteboard'});
+  clases.push({key:'corrector',label:'✍️ Material corrector'});
   /* Los tres cursos de primaria y el de frances. Van sin candado, como Little
      Readers: son material de consulta, no datos de alumnos. Sus entregas se
      corrigen en Correccion > Fun for Nordic. */
@@ -3392,26 +3392,26 @@ async function renderTeacher(tab){
   cursos.push({key:'funflyers',label:'🦅 Flyers'});
   cursos.push({key:'fr',label:'🇫🇷 Cap sur le français'});
   cambridge.push({key:'cambridgehub',label:'🎓 YLE + Main Suite'});
-  if(teacherAllowedGrades().length) cambridge.push({key:'yle',label:'🛡️ Panel YLE'});
-  cambridge.push({key:'exams',label:'🎧 Simulacros y Practice'});
+  if(teacherAllowedGrades().length) cambridge.push({key:'yle',label:'🛡️ YLE panel'});
+  cambridge.push({key:'exams',label:'🎧 Mock exams and Practice'});
   cambridge.push({key:'uoe',label:'🧩 Use of English'});
-  cambridge.push({key:'cambridgeinfo',label:'📘 Info Cambridge'});
-  if(teacherAllowedGrades().length) cambridge.push({key:'practice',label:'🔓 Abrir Practice Tests'});
+  cambridge.push({key:'cambridgeinfo',label:'📘 Cambridge info'});
+  if(teacherAllowedGrades().length) cambridge.push({key:'practice',label:'🔓 Open Practice Tests'});
   if(teacherAllowedGrades().length){
-    permisos.push({key:'unitaccess',label:'📚 Activar unidades'});
-    permisos.push({key:'funaccess',label:'🔐 Unidades por grado'});
+    permisos.push({key:'unitaccess',label:'📚 Activate units'});
+    permisos.push({key:'funaccess',label:'🔐 Units by grade'});
   }
 
   const nav = [];
   if(suelto.length) nav.push(...suelto);
-  else if(!acc.can_results) nav.push({key:'none',label:'— sin accesos —'});
+  else if(!acc.can_results) nav.push({key:'none',label:'— no access —'});
   const grupo = (g,ic,items)=>{ if(items.length) nav.push({group:g, icon:ic, items:items}); };
-  grupo('Corrección','✅',correccion);
-  grupo('Seguimiento','📈',seguimiento);
-  grupo('Clases','🏫',clases);
-  grupo('Cursos Nordic','🧸',cursos);
+  grupo('Marking','✅',correccion);
+  grupo('Tracking','📈',seguimiento);
+  grupo('Classes','🏫',clases);
+  grupo('Nordic courses','🧸',cursos);
   grupo('Cambridge','🎓',cambridge);
-  grupo('Actividades','🎮',[
+  grupo('Activities','🎮',[
     {key:'games',label:'🎲 Games Lab'},
     {key:'livequiz',label:'🎮 NIShoot Live'},
     {key:'mun',label:'🌐 MUN Academy'},
@@ -3421,13 +3421,13 @@ async function renderTeacher(tab){
       {key:'idioms',label:'💬 Idioms'},
     {key:'wordform',label:'🧩 Word formation'},
     {key:'dict',label:'📖 NIS Dictionary'},
-    {key:'coach',label:'🎙️ Pronunciación'},
+    {key:'coach',label:'🎙️ Pronunciation'},
   ]);
-  grupo('Permisos','🔐',permisos);
-  nav.push({key:'help',label:'❓ Ayuda'});
+  grupo('Permissions','🔐',permisos);
+  nav.push({key:'help',label:'❓ Help'});
   const claves = navKeys(nav);
   const active = (tab && claves.indexOf(tab)>=0) ? tab : claves[0];
-  document.body.innerHTML = shell(nav, active, `<div class="center muted">Cargando…</div>`, true);
+  document.body.innerHTML = shell(nav, active, `<div class="center muted">Loading…</div>`, true);
   bindNav(renderTeacher);
   if(active==='help') return $('#main').innerHTML = ayudaBody();
   if(active==='mun') return $('#main').innerHTML = munBody();
@@ -3475,39 +3475,39 @@ async function renderTeacher(tab){
   if(active==='pizarra') return $('#main').innerHTML = pizarraBody();
   if(active==='corrector') return $('#main').innerHTML = correctorBody();
   if(active==='cambridgeinfo') return $('#main').innerHTML = cambridgeInfoBody();
-  $('#main').innerHTML = `<div class="card">El administrador aún no te ha asignado accesos. Escríbele para que te habilite <b>Resultados</b> o <b>Alumnos</b>.</div>`;
+  $('#main').innerHTML = `<div class="card">The administrator has not assigned you any access yet. Message them so they can enable <b>Results</b> or <b>Students</b> for you.</div>`;
 }
 /* ── Shared results filter bar (admin + teacher) ────────────────────── */
 function resultsFilterBar(gradeList, onChangeFn){
   const f = resultsFilter;
-  const gradeOpts = `<option value="">Todos los grados</option>`
+  const gradeOpts = `<option value="">All grades</option>`
     + gradeList.map(g=>`<option value="${g.id}" ${String(f.grade)===String(g.id)?'selected':''}>${g.name}</option>`).join('');
-  const sectionOpts = `<option value="">Todas</option>`
+  const sectionOpts = `<option value="">All</option>`
     + ['A','B'].map(s=>`<option value="${s}" ${f.section===s?'selected':''}>${s}</option>`).join('');
   const hasFilter = f.grade||f.section||f.name||f.dateFrom||f.dateTo;
   return `<div class="card" style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;padding:14px 16px;margin-bottom:10px">
     <div>
-      <label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">GRADO</label>
+      <label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">GRADE</label>
       <select onchange="${onChangeFn}('grade',this.value)" style="min-width:140px">${gradeOpts}</select>
     </div>
     <div>
-      <label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">SECCIÓN</label>
+      <label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">SECTION</label>
       <select onchange="${onChangeFn}('section',this.value)" style="min-width:100px">${sectionOpts}</select>
     </div>
     <div>
-      <label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">NOMBRE</label>
-      <input type="text" placeholder="Buscar alumno…" value="${esc(f.name)}"
+      <label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">NAME</label>
+      <input type="text" placeholder="Search student…" value="${esc(f.name)}"
         oninput="window._liveNameFilter(this.value)" style="min-width:180px">
     </div>
     <div>
-      <label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">DESDE</label>
+      <label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">FROM</label>
       <input type="date" value="${f.dateFrom}" onchange="${onChangeFn}('dateFrom',this.value)">
     </div>
     <div>
-      <label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">HASTA</label>
+      <label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">TO</label>
       <input type="date" value="${f.dateTo}" onchange="${onChangeFn}('dateTo',this.value)">
     </div>
-    ${hasFilter ? `<button class="btn sm ghost" style="align-self:flex-end" onclick="${onChangeFn}('_clear','')">✕ Limpiar</button>` : ''}
+    ${hasFilter ? `<button class="btn sm ghost" style="align-self:flex-end" onclick="${onChangeFn}('_clear','')">✕ Clear</button>` : ''}
   </div>`;
 }
 function applyResultsFilter(list){
@@ -3539,14 +3539,14 @@ window._liveNameFilter = (v)=>{
     if(hit) shown++;
   });
   const c = document.getElementById('resCount');
-  if(c) c.textContent = shown + ' ' + (c.getAttribute('data-noun') || 'resultado(s)');
+  if(c) c.textContent = shown + ' ' + (c.getAttribute('data-noun') || 'result(s)');
 };
 
 /* ── Export filtered results to CSV (Excel-compatible with UTF-8 BOM) ── */
 window.exportResultsExcel = ()=>{
   const list = _currentResultsList || [];
-  if(!list.length){ alert('No hay resultados para exportar.'); return; }
-  const headers = ['Alumno','Grado','Sección','Nivel CEFR','Examen','Destreza','Puntaje (%)','Correctas','Total','Tiempo (min)','Fecha'];
+  if(!list.length){ alert('No results to export.'); return; }
+  const headers = ['Student','Grade','Section','CEFR level','Exam','Skill','Score (%)','Correct','Total','Time (min)','Date'];
   const rows = list.map(a=>[
     a.profiles?.full_name||'',
     a.profiles?.grades?.name||'',
@@ -3558,7 +3558,7 @@ window.exportResultsExcel = ()=>{
     a.score!=null   ? a.score   : '',
     a.total!=null   ? a.total   : '',
     a.duration_min!=null ? a.duration_min : '',
-    a.submitted_at  ? new Date(a.submitted_at).toLocaleDateString('es-PE') : ''
+    a.submitted_at  ? new Date(a.submitted_at).toLocaleDateString('en-GB') : ''
   ]);
   const csv = [headers,...rows]
     .map(r => r.map(c=>`"${String(c).replace(/"/g,'""')}"`).join(','))
@@ -3584,44 +3584,44 @@ async function teacherResults(){
   const rows=list.map(a=>{
     const ws=weakStrong(a);
     const wsCell = ws
-      ? `<span class="badge off" title="Parte más débil" style="font-size:.72rem">▼ ${esc(ws.weak.name)} ${ws.weak.pct}%</span> <span class="badge on" title="Parte más fuerte" style="font-size:.72rem">▲ ${esc(ws.strong.name)} ${ws.strong.pct}%</span>`
+      ? `<span class="badge off" title="Weakest part" style="font-size:.72rem">▼ ${esc(ws.weak.name)} ${ws.weak.pct}%</span> <span class="badge on" title="Strongest part" style="font-size:.72rem">▲ ${esc(ws.strong.name)} ${ws.strong.pct}%</span>`
       : '<span class="muted">—</span>';
     return `<tr data-sname="${esc((a.profiles?.full_name||'').toLowerCase())}">
     <td><b>${esc(a.profiles?.full_name||'')}</b></td>
     <td><span class="badge grade">${esc(a.profiles?.grades?.name||'—')}</span></td>
     <td style="text-align:center">${a.profiles?.section?`<span class="badge">${esc(a.profiles.section)}</span>`:'<span class="muted">—</span>'}</td>
     <td>${esc(a.skill)} · <span class="badge lvl">${esc(a.level)}</span> · ${mockLabel(a)}</td>
-    <td>${a.percent!=null?`<b>${a.percent}%</b> <span class="muted">(${a.score}/${a.total})</span>`:((a.breakdown&&a.breakdown.teacherMessage)?'<span class="badge on" style="font-size:.72rem">✓ comentario enviado</span>':'<span class="muted">— (revisión)</span>')}</td>
+    <td>${a.percent!=null?`<b>${a.percent}%</b> <span class="muted">(${a.score}/${a.total})</span>`:((a.breakdown&&a.breakdown.teacherMessage)?'<span class="badge on" style="font-size:.72rem">✓ comment sent</span>':'<span class="muted">— (review)</span>')}</td>
     <td style="min-width:200px">${wsCell}</td>
     <td class="muted">${new Date(a.submitted_at).toLocaleDateString()}</td>
     <td>${a.skill==='Writing'
-        ? `<button class="btn sm${(a.percent!=null||(a.breakdown&&a.breakdown.teacherMessage))?' ghost':''}" onclick="gradeWriting('${a.id}')">✍️ ${a.percent!=null?'Re-calificar':((a.breakdown&&a.breakdown.teacherMessage)?'Editar comentario':'Calificar')}</button>${(a.percent!=null||(a.breakdown&&a.breakdown.teacherMessage))?' <span class="badge on" style="font-size:.7rem">✓ enviado</span>':''}`
-        : `<button class="btn sm ghost" onclick="openAttempt('${a.id}')">Ver análisis →</button>`}</td></tr>`;}).join('');
+        ? `<button class="btn sm${(a.percent!=null||(a.breakdown&&a.breakdown.teacherMessage))?' ghost':''}" onclick="gradeWriting('${a.id}')">✍️ ${a.percent!=null?'Re-grade':((a.breakdown&&a.breakdown.teacherMessage)?'Edit comment':'Grade')}</button>${(a.percent!=null||(a.breakdown&&a.breakdown.teacherMessage))?' <span class="badge on" style="font-size:.7rem">✓ sent</span>':''}`
+        : `<button class="btn sm ghost" onclick="openAttempt('${a.id}')">View analysis →</button>`}</td></tr>`;}).join('');
   $('#main').innerHTML=`
     <div class="row" style="justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:4px">
-      <h1 style="margin:0">Resultados</h1>
-      <button class="btn sm ghost" onclick="window.exportResultsExcel()">📥 Exportar Excel</button>
+      <h1 style="margin:0">Results</h1>
+      <button class="btn sm ghost" onclick="window.exportResultsExcel()">📥 Export Excel</button>
     </div>
     ${resultsFilterBar(teacherAllowedGrades(),'window._setResFilter')}${tabs}
     ${partsBreakdownCard(list)}
     <div class="card" style="padding:0;overflow-x:auto"><table>
-      <thead><tr><th>Alumno</th><th>Grado</th><th>Sección</th><th>Examen</th><th>Puntaje</th><th>Débil / Fuerte (partes)</th><th>Fecha</th><th></th></tr></thead>
-      <tbody>${rows||`<tr><td colspan="8" class="center muted">Sin intentos ${isMock?'de mocks':'de practice tests'} para este filtro.</td></tr>`}</tbody>
+      <thead><tr><th>Student</th><th>Grade</th><th>Section</th><th>Exam</th><th>Score</th><th>Weak / Strong (parts)</th><th>Date</th><th></th></tr></thead>
+      <tbody>${rows||`<tr><td colspan="8" class="center muted">No ${isMock?'mock':'practice test'} attempts for this filter.</td></tr>`}</tbody>
     </table>
-    <div id="resCount" data-noun="resultado(s)" class="muted" style="padding:8px 14px;font-size:.82rem">${list.length} resultado(s)</div></div>`;
+    <div id="resCount" data-noun="result(s)" class="muted" style="padding:8px 14px;font-size:.82rem">${list.length} result(s)</div></div>`;
 }
 /* -- Barra de filtro por grado (pestaña Alumnos del profesor) ------- */
 let teacherFilter = { grade:'' };
 function gradeFilterBar(onChangeFn, gradeList){
   const list = gradeList || teacherAllowedGrades();
-  const opts = `<option value="">Todos los grados</option>`
+  const opts = `<option value="">All grades</option>`
     + list.map(g=>`<option value="${g.id}" ${String(teacherFilter.grade)===String(g.id)?'selected':''}>${g.name}</option>`).join('');
   return `<div class="card" style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;padding:14px 16px;margin-bottom:10px">
     <div>
-      <label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">GRADO</label>
+      <label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:3px;color:var(--muted)">GRADE</label>
       <select onchange="${onChangeFn}(this.value)" style="min-width:140px">${opts}</select>
     </div>
-    ${teacherFilter.grade ? `<button class="btn sm ghost" style="align-self:flex-end" onclick="${onChangeFn}('')">✕ Limpiar</button>` : ''}
+    ${teacherFilter.grade ? `<button class="btn sm ghost" style="align-self:flex-end" onclick="${onChangeFn}('')">✕ Clear</button>` : ''}
   </div>`;
 }
 window._setTeacherGrade = (v)=>{ teacherFilter.grade = v; teacherStudents(); };
@@ -3632,12 +3632,12 @@ async function teacherStudents(){
   if(fg) list=list.filter(p=>String(p.grade_id)===String(fg));
   list.sort((a,b)=>(a.full_name||'').localeCompare(b.full_name||''));
   const rows=list.map(p=>`<tr><td><b>${esc(p.full_name||p.email)}</b></td><td><span class="badge grade">${esc(p.grades?.name||'—')}</span> ${p.section?esc(p.section):''}</td><td><span class="badge lvl">${esc(p.cefr_level||'—')}</span></td>
-    <td><button class="btn sm ghost" onclick="window._openStudentAccess('${p.id}',${p.grade_id||'null'},'${esc((p.full_name||p.email||'').replace(/'/g,'’'))}')">🔧 Accesos</button></td></tr>`).join('');
-  $('#main').innerHTML=`<h1>Alumnos</h1>${gradeFilterBar('window._setTeacherGrade')}
+    <td><button class="btn sm ghost" onclick="window._openStudentAccess('${p.id}',${p.grade_id||'null'},'${esc((p.full_name||p.email||'').replace(/'/g,'’'))}')">🔧 Access</button></td></tr>`).join('');
+  $('#main').innerHTML=`<h1>Students</h1>${gradeFilterBar('window._setTeacherGrade')}
     <div class="card" style="padding:0;overflow-x:auto"><table>
-      <thead><tr><th>Alumno</th><th>Grado</th><th>Nivel</th><th>Accesos</th></tr></thead>
-      <tbody>${rows||'<tr><td colspan="4" class="center muted">Sin alumnos para este filtro.</td></tr>'}</tbody></table>
-      <div class="muted" style="padding:10px 14px">${list.length} alumno(s)</div></div>`;
+      <thead><tr><th>Student</th><th>Grade</th><th>Level</th><th>Access</th></tr></thead>
+      <tbody>${rows||'<tr><td colspan="4" class="center muted">No students for this filter.</td></tr>'}</tbody></table>
+      <div class="muted" style="padding:10px 14px">${list.length} student(s)</div></div>`;
 }
 /* Editor de accesos por alumno (profesor): override de nodos que el profesor gestiona y el grado tiene habilitados. */
 window._openStudentAccess = async (sid, gradeId, name)=>{
@@ -3659,21 +3659,21 @@ window._openStudentAccess = async (sid, gradeId, name)=>{
     const base=gradeOn(n.key);
     const eff=Object.prototype.hasOwnProperty.call(stuMap,n.key)?stuMap[n.key]:base;
     return `<tr><td><b>${esc(n.label)}</b></td>
-      <td style="text-align:center" class="muted">${base?'Habilitado':'Bloqueado'}</td>
+      <td style="text-align:center" class="muted">${base?'Enabled':'Blocked'}</td>
       <td style="text-align:center"><input type="checkbox" ${eff?'checked':''} onchange="window._setStudentAccess('${sid}','${n.key}',this.checked,this)"></td></tr>`;
   }).join('');
-  $('#main').innerHTML=`<button class="btn sm ghost" onclick="${isAdmin?'adminUsers':'teacherStudents'}()">← Volver a ${isAdmin?'Usuarios':'Alumnos'}</button>
-    <h1 style="margin-top:8px">Accesos — ${esc(name)}</h1>
-    <div class="note">Activa o bloquea actividades para este alumno. Por defecto hereda lo del grado; aquí defines la excepción.</div>
+  $('#main').innerHTML=`<button class="btn sm ghost" onclick="${isAdmin?'adminUsers':'teacherStudents'}()">← Back to ${isAdmin?'Users':'Students'}</button>
+    <h1 style="margin-top:8px">Access — ${esc(name)}</h1>
+    <div class="note">Turn activities on or off for this student. By default it inherits from the grade; here you set the exception.</div>
     <div class="card" style="padding:0;overflow-x:auto"><table>
-      <thead><tr><th>Actividad</th><th>Por grado</th><th>Este alumno</th></tr></thead>
-      <tbody>${rows||'<tr><td colspan="3" class="center muted">No tienes actividades asignadas para gestionar.</td></tr>'}</tbody></table></div>`;
+      <thead><tr><th>Activity</th><th>By grade</th><th>This student</th></tr></thead>
+      <tbody>${rows||'<tr><td colspan="3" class="center muted">You have no activities assigned to manage.</td></tr>'}</tbody></table></div>`;
 };
 window._setStudentAccess = async (sid,key,to,el)=>{
   el.disabled=true;
   const { error } = await sb.rpc('set_student_access',{p_student:sid,p_node:key,p_unlocked:to});
   el.disabled=false;
-  if(error){ alert('No se pudo guardar: '+error.message); el.checked=!to; }
+  if(error){ alert('Could not save: '+error.message); el.checked=!to; }
 };
 
 /* ===================== WRITING GRADING (teacher) ===================== */
@@ -3777,24 +3777,24 @@ function renderGradeWriting(){
   // Left column: both answer texts
   const textsHtml = answers.length
     ? answers.map(t=>`<div style="border:1px solid var(--line);border-radius:10px;padding:12px;margin-bottom:10px">
-        <div class="row" style="justify-content:space-between"><b>${esc(t.label||'Task')}</b><span class="muted" style="font-size:.82rem">${t.wordCount!=null?t.wordCount+' palabras':''}</span></div>
-        <div style="white-space:pre-wrap;margin-top:6px;font-size:.93rem;line-height:1.6">${esc(t.text||'(sin respuesta)')}</div></div>`).join('')
-    : `<p class="muted">Este intento no guardó el texto del alumno.</p>`;
+        <div class="row" style="justify-content:space-between"><b>${esc(t.label||'Task')}</b><span class="muted" style="font-size:.82rem">${t.wordCount!=null?t.wordCount+' words':''}</span></div>
+        <div style="white-space:pre-wrap;margin-top:6px;font-size:.93rem;line-height:1.6">${esc(t.text||'(no answer)')}</div></div>`).join('')
+    : `<p class="muted">This attempt did not save the text submitted by the student.</p>`;
 
   // Right column: Task 1 rubrics + Task 2 rubrics
   const t1Label = (answers[0] && answers[0].label) || 'Task 1 — Part 1';
   const t2Label = (answers[1] && answers[1].label) || 'Task 2 — Part 2';
 
   $('#main').innerHTML = `
-    <button class="btn sm ghost" onclick="teacherResults()">← Volver a resultados</button>
-    <h1 style="margin:.4rem 0 0">✍️ Calificar Writing</h1>
-    <div class="muted" style="margin-bottom:10px">${esc(a.profiles?.full_name||'Alumno')} · ${esc(a.profiles?.grades?.name||'')} · ${esc(a.level)} · ${mockLabel(a)} · ${new Date(a.submitted_at).toLocaleString()}</div>
+    <button class="btn sm ghost" onclick="teacherResults()">← Back to results</button>
+    <h1 style="margin:.4rem 0 0">✍️ Grade Writing</h1>
+    <div class="muted" style="margin-bottom:10px">${esc(a.profiles?.full_name||'Student')} · ${esc(a.profiles?.grades?.name||'')} · ${esc(a.level)} · ${mockLabel(a)} · ${new Date(a.submitted_at).toLocaleString()}</div>
     <div class="grid cols-2" style="align-items:start">
       <div>
-        <div class="card"><h2 style="margin-top:0">Texto del alumno</h2>${textsHtml}</div>
+        <div class="card"><h2 style="margin-top:0">Student text</h2>${textsHtml}</div>
       </div>
       <div>
-        <div class="note">Haz clic en el descriptor que corresponde en cada criterio (rúbrica Cambridge, 0–${rubric.bandMax}). La nota de cada parte se calcula sola.</div>
+        <div class="note">Click the matching descriptor for each criterion (Cambridge rubric, 0–${rubric.bandMax}). The score for each part is calculated automatically.</div>
         ${_taskRubricHtml(t1Label, 0)}
         ${_taskRubricHtml(t2Label, 1)}
         <div class="card" style="position:sticky;bottom:0">
@@ -3805,11 +3805,11 @@ function renderGradeWriting(){
               <div style="font-size:1.4rem;font-weight:800;color:#2d5a8d"><span id="gw-total">0</span> / ${totalMax} · <span id="gw-pct">0</span>% · <span id="gw-cefr" style="background:#d1d2ea;color:#244c77;border-radius:8px;padding:2px 10px;font-size:1.05rem">—</span></div>
             </div>
           </div>
-          <label style="margin-top:10px;display:block">Mensaje para el alumno (editable)</label>
+          <label style="margin-top:10px;display:block">Message for the student (editable)</label>
           <textarea id="gw-msg" rows="5" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:8px" oninput="gradeState.touched=true;gradeState.msg=this.value">${esc(gradeState.msg||'')}</textarea>
           <div id="gw-status" style="margin-top:6px;font-size:.88rem"></div>
           <div class="row" style="margin-top:10px;gap:10px">
-            <button class="btn" id="gw-send" onclick="window._sendWritingResult()">📧 Enviar resultado al alumno</button>
+            <button class="btn" id="gw-send" onclick="window._sendWritingResult()">📧 Send result to student</button>
           </div>
         </div>
       </div>
@@ -3857,7 +3857,7 @@ window._sendWritingResult = async ()=>{
   // when there is at least a written comment (a comment-only feedback).
   const graded = !!gradeState.complete;
   if(!graded && !msg){
-    st.innerHTML='<span style="color:var(--bad)">Escribe un comentario para el alumno, o marca un Band en cada criterio de ambas partes, antes de enviar.</span>';
+    st.innerHTML='<span style="color:var(--bad)">Write a comment for the student, or mark a Band for every criterion in both parts, before sending.</span>';
     return;
   }
   const breakdown={
@@ -3872,7 +3872,7 @@ window._sendWritingResult = async ()=>{
     gradedBy: (state.profile&&state.profile.full_name)||(state.session&&state.session.user&&state.session.user.email)||'teacher',
     gradedAt: new Date().toISOString()
   };
-  $('#gw-send').disabled=true; st.textContent='Guardando…';
+  $('#gw-send').disabled=true; st.textContent='Saving…';
   // Guardamos con fetch directo a PostgREST en vez de sb.rpc(): el cliente
   // supabase-js a veces se queda colgado esperando el "lock" de auth (sobre
   // todo con el portal abierto en varios dispositivos/pestañas a la vez) y la
@@ -3899,10 +3899,10 @@ window._sendWritingResult = async ()=>{
     }
   } catch(e){
     rpcErr = (e && e.name==='AbortError')
-      ? new Error('Tiempo de espera agotado — revisa tu conexión e intenta de nuevo.')
+      ? new Error('Timed out — check your connection and try again.')
       : e;
   }
-  if(rpcErr){ $('#gw-send').disabled=false; st.innerHTML=`<span style="color:var(--bad)">No se pudo guardar: ${esc(rpcErr.message||String(rpcErr))}</span>`; return; }
+  if(rpcErr){ $('#gw-send').disabled=false; st.innerHTML=`<span style="color:var(--bad)">Could not save: ${esc(rpcErr.message||String(rpcErr))}</span>`; return; }
   // Fire-and-forget webhook (Apps Script emails the student + archives to Drive).
   // We also send the student's own texts so the archived copy is complete.
   try{
@@ -3916,7 +3916,7 @@ window._sendWritingResult = async ()=>{
         texts,
         message:msg, teacherEmail:'pbaca@nordic-school.edu.pe', teacherName:breakdown.gradedBy, schoolName:'Nordic International School of Lima' }) });
   }catch(e){}
-  st.innerHTML=`<span style="color:var(--good)">✓ ${graded?'Resultado guardado y enviado al alumno.':'Comentario guardado y enviado al alumno.'}</span>`;
+  st.innerHTML=`<span style="color:var(--good)">✓ ${graded?'Result saved and sent to the student.':'Comment saved and sent to the student.'}</span>`;
   setTimeout(teacherResults, 1200);
 };
 
@@ -3930,8 +3930,8 @@ async function renderStudent(initial){
     // estaban identicas en Home, asi que era una pestaña que no llevaba a
     // nada nuevo. La ruta #general sigue viva por si algun enlace la usa.
     {key:'results',label:'📊 My Progress'},
-    {key:'help',label:'❓ Ayuda'},
-    {key:'account',label:'👤 Mi cuenta'},
+    {key:'help',label:'❓ Help'},
+    {key:'account',label:'👤 My account'},
   ], initial||'home', `<div class="center muted">Loading…</div>`);
   // Toda la navegación pasa por window._nav para que la ruta quede en el hash
   // (deep links desde las páginas de actividades + "atrás" del navegador).
@@ -3962,29 +3962,29 @@ function studentAccount(){
   const sessionUid=state.session && state.session.user ? state.session.user.id : null;
   const ownAccount=!_isPreview() && !!sessionUid && !!p.id && sessionUid===p.id;
   if(!ownAccount){
-    $('#main').innerHTML=`<h1>👤 Mi cuenta</h1>
+    $('#main').innerHTML=`<h1>👤 My account</h1>
       <div class="card" style="max-width:680px">
-        <div class="note info"><b>Cambio de contraseña no disponible en vista previa.</b><br>Sal de "Ver como" e inicia sesión con la cuenta del alumno para cambiar su contraseña.</div>
+        <div class="note info"><b>Password change not available in preview mode.</b><br>Exit “View as” and sign in with the student account to change the password.</div>
       </div>`;
     return;
   }
-  $('#main').innerHTML=`<h1>👤 Mi cuenta</h1>
+  $('#main').innerHTML=`<h1>👤 My account</h1>
     <div class="card" style="max-width:680px">
-      <h2>🔐 Cambiar contraseña</h2>
-      <p class="muted">Elige una contraseña que puedas recordar. La nueva contraseña reemplazará inmediatamente a la anterior.</p>
-      <label>Nueva contraseña</label>
+      <h2>🔐 Change password</h2>
+      <p class="muted">Choose a password you can remember. The new password will immediately replace the previous one.</p>
+      <label>New password</label>
       <div class="row" style="gap:8px;align-items:center">
-        <input id="my_pw1" type="password" autocomplete="new-password" placeholder="Mínimo 8 caracteres" style="flex:1">
-        <button class="btn sm ghost" type="button" onclick="window.toggleMyPassword('my_pw1',this)">Mostrar</button>
+        <input id="my_pw1" type="password" autocomplete="new-password" placeholder="Minimum 8 characters" style="flex:1">
+        <button class="btn sm ghost" type="button" onclick="window.toggleMyPassword('my_pw1',this)">Show</button>
       </div>
-      <label>Repite la nueva contraseña</label>
+      <label>Repeat the new password</label>
       <div class="row" style="gap:8px;align-items:center">
-        <input id="my_pw2" type="password" autocomplete="new-password" placeholder="Repite la contraseña" style="flex:1">
-        <button class="btn sm ghost" type="button" onclick="window.toggleMyPassword('my_pw2',this)">Mostrar</button>
+        <input id="my_pw2" type="password" autocomplete="new-password" placeholder="Repeat the password" style="flex:1">
+        <button class="btn sm ghost" type="button" onclick="window.toggleMyPassword('my_pw2',this)">Show</button>
       </div>
-      <div class="muted" style="font-size:.84rem;margin-top:8px">Consejo: usa una frase corta que recuerdes, combinando letras y números. No compartas tu contraseña.</div>
+      <div class="muted" style="font-size:.84rem;margin-top:8px">Tip: use a short phrase you can remember, combining letters and numbers. Do not share your password.</div>
       <div id="my_pw_msg" style="margin-top:12px"></div>
-      <button id="my_pw_save" class="btn" type="button" onclick="window.saveMyPassword()" style="margin-top:12px">Guardar nueva contraseña</button>
+      <button id="my_pw_save" class="btn" type="button" onclick="window.saveMyPassword()" style="margin-top:12px">Save new password</button>
     </div>`;
   const first=$('#my_pw1'); if(first) first.focus();
 }
@@ -3993,7 +3993,7 @@ window.toggleMyPassword=function(id,btn){
   const input=$('#'+id); if(!input) return;
   const show=input.type==='password';
   input.type=show?'text':'password';
-  if(btn) btn.textContent=show?'Ocultar':'Mostrar';
+  if(btn) btn.textContent=show?'Hide':'Show';
 };
 
 window.saveMyPassword=async function(){
@@ -4001,25 +4001,25 @@ window.saveMyPassword=async function(){
   const sessionUid=state.session && state.session.user ? state.session.user.id : null;
   const msg=$('#my_pw_msg'), btn=$('#my_pw_save');
   if(_isPreview() || !sessionUid || !p.id || sessionUid!==p.id){
-    if(msg) msg.innerHTML='<div class="note err">Por seguridad, solo puedes cambiar la contraseña de tu propia cuenta.</div>';
+    if(msg) msg.innerHTML='<div class="note err">For security reasons, you can only change the password of your own account.</div>';
     return;
   }
   const pw1=(($('#my_pw1')||{}).value||'').trim();
   const pw2=(($('#my_pw2')||{}).value||'').trim();
-  if(pw1.length<8){ if(msg) msg.innerHTML='<div class="note err">La contraseña debe tener al menos 8 caracteres.</div>'; return; }
-  if(pw1!==pw2){ if(msg) msg.innerHTML='<div class="note err">Las dos contraseñas no coinciden.</div>'; return; }
-  if(btn){ btn.disabled=true; btn.textContent='Guardando…'; }
-  if(msg) msg.innerHTML='<div class="note">Actualizando tu contraseña…</div>';
+  if(pw1.length<8){ if(msg) msg.innerHTML='<div class="note err">Password must be at least 8 characters.</div>'; return; }
+  if(pw1!==pw2){ if(msg) msg.innerHTML='<div class="note err">The two passwords do not match.</div>'; return; }
+  if(btn){ btn.disabled=true; btn.textContent='Saving…'; }
+  if(msg) msg.innerHTML='<div class="note">Updating your password…</div>';
   try{
     const { error } = await withTimeout(sb.auth.updateUser({password:pw1}), STARTUP_TIMEOUT_MS, 'PASSWORD_UPDATE_TIMEOUT');
     if(error) throw error;
     const a=$('#my_pw1'), b=$('#my_pw2'); if(a) a.value=''; if(b) b.value='';
-    if(msg) msg.innerHTML='<div class="note ok"><b>Contraseña actualizada correctamente.</b><br>Desde ahora usa tu nueva contraseña para iniciar sesión.</div>';
+    if(msg) msg.innerHTML='<div class="note ok"><b>Password updated successfully.</b><br>From now on use your new password to sign in.</div>';
   }catch(e){
-    const text=(e && e.message) ? e.message : 'No se pudo cambiar la contraseña.';
+    const text=(e && e.message) ? e.message : 'Could not change the password.';
     if(msg) msg.innerHTML=`<div class="note err">${esc(text)}</div>`;
   }finally{
-    if(btn){ btn.disabled=false; btn.textContent='Guardar nueva contraseña'; }
+    if(btn){ btn.disabled=false; btn.textContent='Save new password'; }
   }
 };
 
@@ -4073,7 +4073,7 @@ function studentHub(){
     <h2 style="margin:18px 0 8px">Subjects</h2>
     <div class="grid cols-3">
       ${_hubCard('🇬🇧','English','Pronunciation, Mocks, Classes and more.',"window._nav('english')")}
-      ${nodeVisible('french') ? _hubCard('🇫🇷','French','Pronunciation, Mocks, Classes y más.',"window._nav('french')") : _lockedCard('🇫🇷','French','Próximamente — pronto habilitaremos el francés.')}
+      ${nodeVisible('french') ? _hubCard('🇫🇷','French','Pronunciation, Mocks, Classes and more.',"window._nav('french')") : _lockedCard('🇫🇷','French','Coming soon — French will be enabled soon.')}
     </div>
     <h2 style="margin:22px 0 8px">General</h2>
     <div class="grid cols-3">
@@ -4127,7 +4127,7 @@ const ENGLISH_AREAS = [
   // 'My Progress' NO esta aqui: vive en la barra lateral, que es donde el
   // alumno lo busca desde cualquier pantalla. Tenerlo en los dos sitios era
   // el duplicado mas visible de esta vista.
-  {emoji:'🏅', title:'Resultado final',desc:'Tu nivel final CEFR (reporte para los padres) + PDF.',      nav:'final',   englishOnly:true, block:'results'},
+  {emoji:'🏅', title:'Final result',desc:'Your final CEFR level (report for parents) + PDF.',      nav:'final',   englishOnly:true, block:'results'},
 ];
 function _backBtn(onclick,label){
   return `<button class="btn sm ghost" onclick="${onclick}" style="margin-bottom:10px">← ${label}</button>`;
@@ -4233,17 +4233,17 @@ function _canPreview(){ const p=state.realProfile||state.profile; return !!(p &&
 window._previewStudent = async (sid, name)=>{
   if(!_canPreview()) return;
   const { data, error } = await sb.from('profiles').select('*, grades(name)').eq('id',sid).single();
-  if(error || !data) return alert('No se pudo abrir la vista del alumno: '+((error&&error.message)||'sin datos'));
-  await _previewEnter({kind:'student', label:(data.full_name||name||'alumno'), backTab:'users'}, data);
+  if(error || !data) return alert('Could not open the student view: '+((error&&error.message)||'no data'));
+  await _previewEnter({kind:'student', label:(data.full_name||name||'student'), backTab:'users'}, data);
 };
 window._previewGrade = async (gradeId)=>{
   if(!_canPreview()) return;
   const g = GRADES.find(x=>String(x.id)===String(gradeId));
-  if(!g) return alert('Elige un grado.');
+  if(!g) return alert('Choose a grade.');
   /* Alumno sintético SIN id: así no hay overrides por alumno que consultar y
      los paneles de historial avisan en vez de consultar con id nulo. */
-  await _previewEnter({kind:'grade', label:'alumno tipo de '+g.name, backTab:'access'},
-    {id:null, role:'student', full_name:'alumno de '+g.name, first_name:'alumno de '+g.name,
+  await _previewEnter({kind:'grade', label:'sample student from '+g.name, backTab:'access'},
+    {id:null, role:'student', full_name:'student from '+g.name, first_name:'student from '+g.name,
      last_name:'', section:null, cefr_level:null, grade_id:g.id, grades:{name:g.name}, active:true});
 };
 async function _previewEnter(meta, profile){
@@ -4269,19 +4269,19 @@ function _previewBar(){
   if(!_isPreview()) return '';
   const m=state.preview;
   const note = m.kind==='grade'
-    ? 'Alumno tipo: solo lo que abre el grado, sin excepciones por alumno.'
-    : 'Con sus excepciones por alumno.';
+    ? 'Sample student: only what the grade opens, with no per-student exceptions.'
+    : 'With their per-student exceptions.';
   return `<div class="preview-bar">
-    <span>👁️ Estás viendo el portal como <b>${esc(m.label)}</b></span>
-    <span class="pv-note">${note} Solo lectura.</span>
-    <button class="btn sm" onclick="window._previewExit()">✕ Salir de la vista</button></div>`;
+    <span>👁️ You are viewing the portal as <b>${esc(m.label)}</b></span>
+    <span class="pv-note">${note} Read only.</span>
+    <button class="btn sm" onclick="window._previewExit()">✕ Exit view</button></div>`;
 }
 /* Aviso en los paneles que necesitan un alumno concreto (modo por grado). */
 function _previewNeedsStudent(title, back){
   $('#main').innerHTML=`${back||''}<h1>${title}</h1>
-    <div class="note">Esta vista es el historial personal de un alumno, así que en la
-      <b>vista por grado</b> no hay datos que mostrar. Sal de la vista y entra desde
-      <b>👥 Usuarios → 👁️ Ver como</b> con un alumno concreto.</div>`;
+    <div class="note">This view is a student’s personal history, so there is no data to
+      show in the <b>by-grade view</b>. Exit the view and enter from
+      <b>👥 Users → 👁️ View as</b> with a specific student.</div>`;
 }
 /* Nodos gateables por el admin/profesor (Mocks va aparte; My Progress y Resultado final son datos propios). */
 /* Primaria (2.º–5.º): sin `.grammar` — como en francés, la gramática de
@@ -4562,8 +4562,8 @@ async function studentCambridgePortal(){
   cambridgeExamDate().then(x => {
     const caja = $('#cam-exam-date'); if(!caja || !x) return;
     const d = new Date(x.date + 'T12:00:00');
-    const txt = isNaN(d) ? x.date : d.toLocaleDateString('es-PE', {day: 'numeric', month: 'long', year: 'numeric'});
-    caja.innerHTML = `<div class="cam-plan"><b>🗓️ Examen oficial de Cambridge:</b> ${esc(txt)}${x.note ? ' · ' + esc(x.note) : ''}</div>`;
+    const txt = isNaN(d) ? x.date : d.toLocaleDateString('en-GB', {day: 'numeric', month: 'long', year: 'numeric'});
+    caja.innerHTML = `<div class="cam-plan"><b>🗓️ Official Cambridge exam:</b> ${esc(txt)}${x.note ? ' · ' + esc(x.note) : ''}</div>`;
   });
   cambridgePlanNotes().then(notas => {
     const box = $('#cam-plan-notes'); if(!box || !notas.length) return;
@@ -4596,14 +4596,14 @@ let _planTab = 'grades', _planStudent = null, _planFiltro = '';
 async function studyPlanPanel(){
   state._tab = 'studyplan';
   const tabs = `<div class="row" style="gap:8px;margin-bottom:12px;flex-wrap:wrap">
-      <button class="btn sm ${_planTab==='grades'?'':'ghost'}" onclick="window._planGo('grades')">🏫 Por grado</button>
-      <button class="btn sm ${_planTab==='epi'?'':'ghost'}" onclick="window._planGo('epi')">🧑‍🎓 Alumnos con plan individual (EPI)</button>
+      <button class="btn sm ${_planTab==='grades'?'':'ghost'}" onclick="window._planGo('grades')">🏫 By grade</button>
+      <button class="btn sm ${_planTab==='epi'?'':'ghost'}" onclick="window._planGo('epi')">🧑‍🎓 Students with individual plan (EPI)</button>
       <span style="flex:1"></span>
-      <button class="btn sm ghost" onclick="studentCambridgePortal()">👁️ Ver la tarjeta Cambridge</button>
+      <button class="btn sm ghost" onclick="studentCambridgePortal()">👁️ View the Cambridge card</button>
     </div>`;
-  $('#main').innerHTML = `<h1>📋 Plan de estudio — Cambridge</h1>
-    <div class="note">Aquí se decide <b>qué parte de YLE y Main Suite ve cada grado</b> y, abajo, qué ve <b>cada alumno con plan individual (EPI)</b>. Una casilla marcada = ese material se ofrece; sin marcar = candado. Lo que no se ha tocado nunca está abierto, como el resto de accesos. Las instrucciones que escribas aparecen al alumno arriba de su tarjeta Cambridge.</div>
-    ${tabs}<div id="plan-body"><div class="center muted">Cargando…</div></div>`;
+  $('#main').innerHTML = `<h1>📋 Study plan — Cambridge</h1>
+    <div class="note">Here you decide <b>which part of YLE and Main Suite each grade sees</b> and, below, what <b>each student with an individual plan (EPI)</b> sees. A checked box = that material is offered; unchecked = locked. Anything never touched is open, like the rest of the access settings. The instructions you write appear to the student above their Cambridge card.</div>
+    ${tabs}<div id="plan-body"><div class="center muted">Loading…</div></div>`;
   if(_planTab === 'grades') await _planGrades(); else await _planEpi();
 }
 window._planGo = (t) => { _planTab = t; studyPlanPanel(); };
@@ -4622,12 +4622,12 @@ async function _planGrades(){
   const on = (g, k) => Object.prototype.hasOwnProperty.call(map[g]||{}, k) ? !!map[g][k] : _nodeDefaultOpen(k);
   const chk = (g, k) => `<td class="${on(g,k)?'':'plan-off'}"><input type="checkbox" ${on(g,k)?'checked':''} title="${esc(k)}"
       onchange="window._planSetNode(${g},'${k}',this.checked,this)"></td>`;
-  const head1 = `<tr><th rowspan="2">Grado</th><th rowspan="2" title="Interruptor general de la tarjeta">🎓<br>Cambridge</th>`
+  const head1 = `<tr><th rowspan="2">Grade</th><th rowspan="2" title="General switch for the card">🎓<br>Cambridge</th>`
     + Object.keys(CAMBRIDGE_TRACKS).map(bk => { const b = CAMBRIDGE_TRACKS[bk];
         return `<th class="plan-track" colspan="${b.levels.length + 1}" style="background:${b.color}">${b.title}</th>`; }).join('')
-    + `<th rowspan="2">🎯<br>Practice</th><th rowspan="2" style="min-width:260px">Instrucciones para el grado</th></tr>`;
+    + `<th rowspan="2">🎯<br>Practice</th><th rowspan="2" style="min-width:260px">Instructions for the grade</th></tr>`;
   const head2 = `<tr>` + Object.keys(CAMBRIDGE_TRACKS).map(bk => { const b = CAMBRIDGE_TRACKS[bk];
-        return `<th title="Toda la rama">Rama</th>` + b.levels.map(l => `<th>${esc(l.short)}</th>`).join(''); }).join('') + `</tr>`;
+        return `<th title="Whole branch">Branch</th>` + b.levels.map(l => `<th>${esc(l.short)}</th>`).join(''); }).join('') + `</tr>`;
   const rows = GRADES.map(g => {
     const pOn = Object.prototype.hasOwnProperty.call(prac, g.id) ? !!prac[g.id] : true;
     const ref = 'g:' + g.id;
@@ -4635,14 +4635,14 @@ async function _planGrades(){
       + Object.keys(CAMBRIDGE_TRACKS).map(bk => { const b = CAMBRIDGE_TRACKS[bk];
           return chk(g.id, b.node) + b.levels.map(l => chk(g.id, l.node)).join(''); }).join('')
       + `<td class="${pOn?'':'plan-off'}"><input type="checkbox" ${pOn?'checked':''} onchange="window._planSetPractice(${g.id},this.checked,this)"></td>`
-      + `<td style="text-align:left"><textarea class="plan-note" data-ref="${ref}" placeholder="Ej.: Este bimestre: Movers unidades 1–10 y Flyers Tests 1–3.">${esc(notas[ref]||'')}</textarea>
-           <div class="row" style="gap:6px;margin-top:4px;align-items:center"><button class="btn sm" onclick="window._planNoteSave('grade','${ref}',${g.id},null,this)">Guardar</button><span class="muted plan-note-st" style="font-size:.78rem"></span></div></td></tr>`;
+      + `<td style="text-align:left"><textarea class="plan-note" data-ref="${ref}" placeholder="E.g.: This term: Movers units 1–10 and Flyers Tests 1–3.">${esc(notas[ref]||'')}</textarea>
+           <div class="row" style="gap:6px;margin-top:4px;align-items:center"><button class="btn sm" onclick="window._planNoteSave('grade','${ref}',${g.id},null,this)">Save</button><span class="muted plan-note-st" style="font-size:.78rem"></span></div></td></tr>`;
   }).join('');
   $('#plan-body').innerHTML = `
     <div class="row" style="gap:8px;margin-bottom:10px;flex-wrap:wrap;align-items:center">
-      <button class="btn sm" onclick="window._planReparto()">✨ Aplicar reparto sugerido</button>
-      <button class="btn sm ghost" onclick="window._planAbrirTodo()">🔓 Abrir todo</button>
-      <span class="muted" style="font-size:.82rem">El reparto sugerido sigue el nivel del Marco de cada grado (G1–G2 Starters · G3–G4 Movers · G5 Flyers + KET · G6 KET/PET · G7–G8 PET/FCE · G9–G11 FCE/CAE, y CPE solo en G11). Se puede corregir casilla a casilla después.</span>
+      <button class="btn sm" onclick="window._planReparto()">✨ Apply suggested distribution</button>
+      <button class="btn sm ghost" onclick="window._planAbrirTodo()">🔓 Open all</button>
+      <span class="muted" style="font-size:.82rem">The suggested distribution follows the Framework level of each grade (G1–G2 Starters · G3–G4 Movers · G5 Flyers + KET · G6 KET/PET · G7–G8 PET/FCE · G9–G11 FCE/CAE, and CPE only in G11). It can be corrected box by box afterwards.</span>
     </div>
     <div class="card" style="padding:0;overflow:auto;max-height:70vh"><table class="plan-grid"><thead>${head1}${head2}</thead><tbody>${rows}</tbody></table></div>`;
 }
@@ -4653,7 +4653,7 @@ window._planSetNode = async (gradeId, key, to, el) => {
       updated_by:(state.session&&state.session.user&&state.session.user.id)||null },
     { onConflict:'grade_id,node_key' });
   el.disabled = false;
-  if(error){ alert('No se pudo guardar: ' + error.message); el.checked = !to; return; }
+  if(error){ alert('Could not save: ' + error.message); el.checked = !to; return; }
   el.closest('td').classList.toggle('plan-off', !to);
 };
 window._planSetPractice = async (gradeId, to, el) => {
@@ -4662,7 +4662,7 @@ window._planSetPractice = async (gradeId, to, el) => {
     { grade_id:gradeId, unlocked:to, updated_at:new Date().toISOString(),
       updated_by:(state.session&&state.session.user&&state.session.user.id)||null }, { onConflict:'grade_id' });
   el.disabled = false;
-  if(error){ alert('No se pudo guardar: ' + error.message); el.checked = !to; return; }
+  if(error){ alert('Could not save: ' + error.message); el.checked = !to; return; }
   el.closest('td').classList.toggle('plan-off', !to);
 };
 window._planNoteSave = async (scope, ref, gradeId, studentId, btn) => {
@@ -4674,8 +4674,8 @@ window._planNoteSave = async (scope, ref, gradeId, studentId, btn) => {
       updated_at:new Date().toISOString(), updated_by:(state.session&&state.session.user&&state.session.user.id)||null },
     { onConflict:'area,ref' });
   btn.disabled = false;
-  if(error){ if(st) st.textContent = ''; alert('No se pudo guardar: ' + error.message); return; }
-  if(st){ st.textContent = '✓ Guardado'; setTimeout(() => { st.textContent = ''; }, 2500); }
+  if(error){ if(st) st.textContent = ''; alert('Could not save: ' + error.message); return; }
+  if(st){ st.textContent = '✓ Saved'; setTimeout(() => { st.textContent = ''; }, 2500); }
 };
 /* Filas que escribe el reparto sugerido para un grado: abre lo listado y
    cierra el resto (incluidas las ramas sin nada dentro). */
@@ -4695,22 +4695,22 @@ window._planReparto = async () => {
   const lineas = GRADES.map(g => {
     const abre = _planFilasReparto(g.id).filter(f => f.unlocked && !/^english\.cambridge(\.yle|\.main)?$/.test(f.node_key))
       .map(f => (_PLAN_COLS.find(c => c.node === f.node_key) || {}).short || f.node_key);
-    return `${g.name} → ${abre.length ? abre.join(', ') : '(nada)'}`;
+    return `${g.name} → ${abre.length ? abre.join(', ') : '(nothing)'}`;
   });
-  if(!await NISUI.pregunta('Se escribirá para TODOS los grados: lo que no aparece en un grado se cierra para ese grado. Después se ajusta casilla a casilla.', {titulo:'¿Aplicar a todos los grados?', si:'Escribir', no:'Cancelar', tono:'ojo', detalle: lineas.join('\n')})) return;
+  if(!await NISUI.pregunta('This will be written for ALL grades: whatever does not appear for a grade is closed for that grade. It can be adjusted box by box afterwards.', {titulo:'Apply to all grades?', si:'Write', no:'Cancel', tono:'ojo', detalle: lineas.join('\n')})) return;
   const ahora = new Date().toISOString(), uid = (state.session&&state.session.user&&state.session.user.id)||null;
   const rows = GRADES.flatMap(g => _planFilasReparto(g.id).map(f => ({ grade_id:g.id, node_key:f.node_key, unlocked:f.unlocked, updated_at:ahora, updated_by:uid })));
   const { error } = await sb.from('node_access').upsert(rows, { onConflict:'grade_id,node_key' });
-  if(error){ alert('No se pudo aplicar: ' + error.message); return; }
+  if(error){ alert('Could not apply: ' + error.message); return; }
   studyPlanPanel();
 };
 window._planAbrirTodo = async () => {
-  if(!await NISUI.pregunta('Se abre TODO el material Cambridge para todos los grados. Las excepciones por alumno se conservan.', {titulo:'¿Abrir todo Cambridge?', si:'Abrir todo', no:'Cancelar', tono:'ojo'})) return;
+  if(!await NISUI.pregunta('This opens ALL Cambridge material for all grades. Per-student exceptions are kept.', {titulo:'Open all Cambridge?', si:'Open all', no:'Cancel', tono:'ojo'})) return;
   const ahora = new Date().toISOString(), uid = (state.session&&state.session.user&&state.session.user.id)||null;
   const keys = ['english.cambridge', ..._CAMBRIDGE_NODES.map(n => n.key)];
   const rows = GRADES.flatMap(g => [...new Set(keys)].map(k => ({ grade_id:g.id, node_key:k, unlocked:true, updated_at:ahora, updated_by:uid })));
   const { error } = await sb.from('node_access').upsert(rows, { onConflict:'grade_id,node_key' });
-  if(error){ alert('No se pudo aplicar: ' + error.message); return; }
+  if(error){ alert('Could not apply: ' + error.message); return; }
   studyPlanPanel();
 };
 
@@ -4726,23 +4726,23 @@ async function _planEpi(){
   const fila = (p) => `<tr class="${_planStudent===p.id?'sel':''}">
       <td><b>${esc(p.full_name||p.email)}</b> <span class="epi-tag">EPI</span></td>
       <td><span class="badge grade">${esc(p.grades?.name||'—')}</span> ${p.section?esc(p.section):''}</td>
-      <td class="acts"><div class="acts-wrap"><button class="btn sm ${_planStudent===p.id?'':'ghost'}" onclick="window._planOpenStudent('${p.id}')">🔧 Su plan</button>
-          <button class="btn sm ghost" onclick="window._planEpiFlag('${p.id}',false)">✕ Quitar</button></div></td></tr>`;
+      <td class="acts"><div class="acts-wrap"><button class="btn sm ${_planStudent===p.id?'':'ghost'}" onclick="window._planOpenStudent('${p.id}')">🔧 Their plan</button>
+          <button class="btn sm ghost" onclick="window._planEpiFlag('${p.id}',false)">✕ Remove</button></div></td></tr>`;
   $('#plan-body').innerHTML = `
     <div class="grid cols-2" style="align-items:start">
       <div class="card" style="margin:0">
-        <h2 style="font-size:1.05rem;margin:0 0 8px">Alumnos con plan individual</h2>
-        <p class="muted" style="font-size:.84rem;margin:0 0 10px">Un alumno EPI hereda lo de su grado y aquí se le define su excepción: qué abre y qué no, y sus instrucciones.</p>
-        <div style="overflow-x:auto"><table><tbody>${epi.map(fila).join('') || '<tr><td class="muted center" colspan="3">Todavía no hay alumnos marcados. Búscalo a la derecha y márcalo.</td></tr>'}</tbody></table></div>
+        <h2 style="font-size:1.05rem;margin:0 0 8px">Students with individual plan</h2>
+        <p class="muted" style="font-size:.84rem;margin:0 0 10px">An EPI student inherits what applies to their grade, and here you define their exception: what is open, what is not, and their instructions.</p>
+        <div style="overflow-x:auto"><table><tbody>${epi.map(fila).join('') || '<tr><td class="muted center" colspan="3">No students marked yet. Search for them on the right and mark them.</td></tr>'}</tbody></table></div>
       </div>
       <div class="card" style="margin:0">
-        <h2 style="font-size:1.05rem;margin:0 0 8px">➕ Marcar un alumno como EPI</h2>
-        <input type="search" value="${esc(_planFiltro)}" placeholder="Nombre o correo del alumno…" style="width:100%;padding:9px 12px;border:1px solid var(--line);border-radius:var(--r-sm);font:inherit"
+        <h2 style="font-size:1.05rem;margin:0 0 8px">➕ Mark a student as EPI</h2>
+        <input type="search" value="${esc(_planFiltro)}" placeholder="Student name or email…" style="width:100%;padding:9px 12px;border:1px solid var(--line);border-radius:var(--r-sm);font:inherit"
                oninput="window._planBuscar(this.value)">
         <div id="plan-cands" style="margin-top:8px">${candidatos.map(p => `<div class="row" style="justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--line)">
             <span>${esc(p.full_name||p.email)} <span class="muted" style="font-size:.8rem">· ${esc(p.grades?.name||'—')}${p.section?' '+esc(p.section):''}</span></span>
-            <button class="btn sm" onclick="window._planEpiFlag('${p.id}',true)">Marcar EPI</button></div>`).join('')
-          || (f ? '<div class="muted" style="font-size:.84rem">Sin resultados (o ya está marcado).</div>' : '')}</div>
+            <button class="btn sm" onclick="window._planEpiFlag('${p.id}',true)">Mark EPI</button></div>`).join('')
+          || (f ? '<div class="muted" style="font-size:.84rem">No results (or already marked).</div>' : '')}</div>
       </div>
     </div>
     <div id="plan-student" style="margin-top:16px"></div>`;
@@ -4754,9 +4754,9 @@ window._planBuscar = (v) => { _planFiltro = v; clearTimeout(_planBuscaT); _planB
   const inp = document.activeElement; _planEpi().then(() => { const i = $('#plan-body input[type=search]'); if(i && inp && inp.type === 'search'){ i.focus(); i.setSelectionRange(i.value.length, i.value.length); } });
 }, 250); };
 window._planEpiFlag = async (sid, to) => {
-  if(!to && !await NISUI.pregunta('El alumno vuelve al plan de su grado. Sus excepciones de Cambridge y sus instrucciones se borran.', {titulo:'¿Quitar el plan individual?', si:'Quitar', no:'Cancelar', tono:'mal', peligro:true})) return;
+  if(!to && !await NISUI.pregunta('The student goes back to their grade’s plan. Their Cambridge exceptions and instructions are deleted.', {titulo:'Remove the individual plan?', si:'Remove', no:'Cancel', tono:'mal', peligro:true})) return;
   const { error } = await sb.from('profiles').update({ individual_plan:to }).eq('id', sid);
-  if(error){ alert('No se pudo guardar: ' + error.message); return; }
+  if(error){ alert('Could not save: ' + error.message); return; }
   if(!to){
     const keys = ['english.cambridge', ..._CAMBRIDGE_NODES.map(n => n.key)];
     await sb.from('student_access').delete().eq('student_id', sid).in('node_key', keys);
@@ -4769,7 +4769,7 @@ window._planOpenStudent = (sid) => { _planStudent = sid; _planEpi(); };
 
 async function _planStudentEditor(p){
   const box = $('#plan-student'); if(!box) return;
-  box.innerHTML = `<div class="center muted">Cargando…</div>`;
+  box.innerHTML = `<div class="center muted">Loading…</div>`;
   const [na, sa, sp] = await Promise.all([
     p.grade_id != null ? sb.from('node_access').select('node_key,unlocked').eq('grade_id', p.grade_id) : Promise.resolve({data:[]}),
     sb.from('student_access').select('node_key,unlocked').eq('student_id', p.id),
@@ -4781,7 +4781,7 @@ async function _planStudentEditor(p){
   const eff = k => Object.prototype.hasOwnProperty.call(sm, k) ? !!sm[k] : gradeOn(k);
   const celda = (k) => `<td class="${eff(k)?'':'plan-off'}" title="${esc(k)}">
       <input type="checkbox" ${eff(k)?'checked':''} onchange="window._planSetStudent('${p.id}','${k}',this.checked,this)">
-      <div class="muted" style="font-size:.66rem;margin-top:2px">${gradeOn(k)?'grado ✓':'grado ✕'}${Object.prototype.hasOwnProperty.call(sm,k)?' · excep.':''}</div></td>`;
+      <div class="muted" style="font-size:.66rem;margin-top:2px">${gradeOn(k)?'grade ✓':'grade ✕'}${Object.prototype.hasOwnProperty.call(sm,k)?' · exc.':''}</div></td>`;
   const head1 = `<tr><th rowspan="2">🎓<br>Cambridge</th>` + Object.keys(CAMBRIDGE_TRACKS).map(bk => { const b = CAMBRIDGE_TRACKS[bk];
       return `<th class="plan-track" colspan="${b.levels.length + 1}" style="background:${b.color}">${b.title}</th>`; }).join('') + `</tr>`;
   const head2 = `<tr>` + Object.keys(CAMBRIDGE_TRACKS).map(bk => { const b = CAMBRIDGE_TRACKS[bk];
@@ -4791,29 +4791,29 @@ async function _planStudentEditor(p){
   box.innerHTML = `<div class="card" style="border-top:5px solid #7c3aed">
     <div class="row" style="justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px">
       <div><h2 style="margin:0;font-size:1.1rem">${esc(p.full_name||p.email)} <span class="epi-tag">EPI</span></h2>
-        <div class="muted" style="font-size:.84rem">${esc(p.grades?.name||'—')}${p.section?' · '+esc(p.section):''} · hereda lo del grado; cada casilla que toques aquí es su excepción.</div></div>
-      <button class="btn sm ghost" onclick="window._planQuitarExcepciones('${p.id}')">↺ Volver a lo del grado</button>
+        <div class="muted" style="font-size:.84rem">${esc(p.grades?.name||'—')}${p.section?' · '+esc(p.section):''} · inherits from the grade; every box you change here becomes their exception.</div></div>
+      <button class="btn sm ghost" onclick="window._planQuitarExcepciones('${p.id}')">↺ Back to the grade’s plan</button>
     </div>
     <div style="overflow:auto;margin-top:10px"><table class="plan-grid"><thead>${head1}${head2}</thead><tbody>${row}</tbody></table></div>
     <div class="plan-note-wrap" style="margin-top:12px">
-      <label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:4px;color:var(--grey)">INSTRUCCIONES PARA ESTE ALUMNO (las ve arriba de su tarjeta Cambridge)</label>
-      <textarea class="plan-note" placeholder="Ej.: Trabaja Movers unidades 5–12 y haz el Flyers Test 1 esta semana. Ignora el Main Suite por ahora.">${esc((sp.data&&sp.data.note)||'')}</textarea>
-      <div class="row" style="gap:6px;margin-top:4px;align-items:center"><button class="btn sm" onclick="window._planNoteSave('student','s:${p.id}',null,'${p.id}',this)">Guardar</button><span class="muted plan-note-st" style="font-size:.78rem"></span></div>
+      <label style="font-size:.78rem;font-weight:700;display:block;margin-bottom:4px;color:var(--grey)">INSTRUCTIONS FOR THIS STUDENT (shown above their Cambridge card)</label>
+      <textarea class="plan-note" placeholder="E.g.: Work on Movers units 5–12 and do Flyers Test 1 this week. Ignore Main Suite for now.">${esc((sp.data&&sp.data.note)||'')}</textarea>
+      <div class="row" style="gap:6px;margin-top:4px;align-items:center"><button class="btn sm" onclick="window._planNoteSave('student','s:${p.id}',null,'${p.id}',this)">Save</button><span class="muted plan-note-st" style="font-size:.78rem"></span></div>
     </div></div>`;
 }
 window._planSetStudent = async (sid, key, to, el) => {
   el.disabled = true;
   const { error } = await sb.rpc('set_student_access', { p_student:sid, p_node:key, p_unlocked:to });
   el.disabled = false;
-  if(error){ alert('No se pudo guardar: ' + error.message); el.checked = !to; return; }
+  if(error){ alert('Could not save: ' + error.message); el.checked = !to; return; }
   el.closest('td').classList.toggle('plan-off', !to);
-  const hint = el.nextElementSibling; if(hint && hint.textContent.indexOf('excep.') < 0) hint.textContent += ' · excep.';
+  const hint = el.nextElementSibling; if(hint && hint.textContent.indexOf('exc.') < 0) hint.textContent += ' · exc.';
 };
 window._planQuitarExcepciones = async (sid) => {
-  if(!await NISUI.pregunta('Se borran las excepciones de Cambridge de este alumno: vuelve a ver exactamente lo de su grado.', {titulo:'¿Borrar las excepciones?', si:'Borrar', no:'Cancelar', tono:'mal', peligro:true})) return;
+  if(!await NISUI.pregunta('This student’s Cambridge exceptions are deleted: they go back to seeing exactly what their grade has.', {titulo:'Delete the exceptions?', si:'Delete', no:'Cancel', tono:'mal', peligro:true})) return;
   const keys = ['english.cambridge', ..._CAMBRIDGE_NODES.map(n => n.key)];
   const { error } = await sb.from('student_access').delete().eq('student_id', sid).in('node_key', keys);
-  if(error){ alert('No se pudo: ' + error.message); return; }
+  if(error){ alert('Could not delete: ' + error.message); return; }
   _planEpi();
 };
 
@@ -4842,10 +4842,10 @@ const ACCESS_NODES = [
   {key:'english.classes.g11.units',     label:'11th · Units (products)'},
   {key:'english.classes.g7.reader',     label:'7th · Readers'},
   {key:'english.classes.g9.reader',     label:'9th · Readers'},
-  {key:'french',                        label:'French (toda la materia)'},
+  {key:'french',                        label:'French (whole subject)'},
   {key:'french.crosswords',             label:'French · Crosswords'},
   {key:'french.wordsearch',             label:'French · Word Search'},
-  {key:'french.classes',                label:'🇫🇷 Classes (toda)'},
+  {key:'french.classes',                label:'🇫🇷 Classes (all)'},
   ..._FR_GRADE_NODES,
   {key:'general.library',               label:'Library'},
   {key:'general.mun',                   label:'MUN Academy'},
@@ -4861,11 +4861,11 @@ function studentSubject(key){
     // Dos vías distintas y no mezclables: Classes va POR GRADO (el temario que
     // se está dando) y CEFR va POR NIVEL del Marco (A1–C2, entrenamiento libre).
     const _cefrOn = nodeVisible('french.crosswords') || nodeVisible('french.wordsearch');
-    $('#main').innerHTML = `${_isStudent()?_backBtn("window._nav('home')",'Inicio'):''}<h1>🇫🇷 French</h1>
-      <p class="muted" style="margin-top:-6px">El material de clase va por grado; los juegos de vocabulario, por nivel del Marco Común Europeo.</p>
+    $('#main').innerHTML = `${_isStudent()?_backBtn("window._nav('home')",'Home'):''}<h1>🇫🇷 French</h1>
+      <p class="muted" style="margin-top:-6px">Class material goes by grade; vocabulary games go by level of the Common European Framework.</p>
       <div class="grid cols-2" style="margin-top:12px">
-        ${nodeVisible('french.classes') ? _hubCard('🏫','Classes','Le matériel de chaque grade : les jeux de l’unité, semaine par semaine.',"window._nav('fr_classes')") : _lockedCard('🏫','Classes','Material de clase de francés por grado.')}
-        ${_cefrOn ? _hubCard('📚','CEFR','Mots croisés et mots mêlés par niveau, de A1 à C2.',"window._nav('fr_cefr')") : _lockedCard('📚','CEFR','Juegos de vocabulario por nivel (A1–C2).')}
+        ${nodeVisible('french.classes') ? _hubCard('🏫','Classes','Le matériel de chaque grade : les jeux de l’unité, semaine par semaine.',"window._nav('fr_classes')") : _lockedCard('🏫','Classes','French class material by grade.')}
+        ${_cefrOn ? _hubCard('📚','CEFR','Mots croisés et mots mêlés par niveau, de A1 à C2.',"window._nav('fr_cefr')") : _lockedCard('📚','CEFR','Vocabulary games by level (A1–C2).')}
       </div>`;
     return;
   }
@@ -4909,41 +4909,41 @@ async function studentFinal(){
   _setNav('final');
   const p=state.profile;
   const back=_isStudent()?_backBtn("window._nav('english')",'English'):'';
-  if(!p.id) return _previewNeedsStudent('🏅 Resultado final · CEFR', back);
-  $('#main').innerHTML=`${back}<h1>🏅 Resultado final · CEFR</h1><p class="muted">Cargando…</p>`;
+  if(!p.id) return _previewNeedsStudent('🏅 Final result · CEFR', back);
+  $('#main').innerHTML=`${back}<h1>🏅 Final result · CEFR</h1><p class="muted">Loading…</p>`;
   const { data:at } = await sb.from('exam_attempts').select('id,skill,level,percent,mock,submitted_at').eq('student_id',p.id);
   let sp=null; try{ const r=await sb.from('speaking_results').select('*').eq('student_id',p.id).maybeSingle(); sp=r&&r.data; }catch(e){}
   const fin=_finalFromData(p, at||[], sp);
   const tgt=targetLevel(p), stt=targetStatus(fin.finalCefr,tgt);
-  const sttTxt = stt==='below'?`▼ Por debajo de tu objetivo (${tgt})`:stt==='above'?`▲ Por encima de tu objetivo (${tgt})`:stt==='meets'?`✓ Cumples tu objetivo (${tgt})`:'';
+  const sttTxt = stt==='below'?`▼ Below your target (${tgt})`:stt==='above'?`▲ Above your target (${tgt})`:stt==='meets'?`✓ Meets your target (${tgt})`:'';
   const ch='padding:8px;border:1px solid var(--line)';
   const row=(label,b)=>`<tr><td style="${ch}"><b>${label}</b></td>
     <td style="${ch};text-align:center">${b?b.level:'—'}</td>
-    <td style="${ch};text-align:center">${b?(b.pct!=null?b.pct+'%':'—'):'<span style="color:#b45309">Pendiente</span>'}</td>
+    <td style="${ch};text-align:center">${b?(b.pct!=null?b.pct+'%':'—'):'<span style="color:#b45309">Pending</span>'}</td>
     <td style="${ch};text-align:center;color:var(--blue-d);font-weight:700">${b?esc(b.cefr):'—'}</td>
     <td style="${ch};text-align:center">${b?b.scale:'—'}</td></tr>`;
   const wRow = fin.a2NoWriting
-    ? `<tr><td style="${ch}"><b>Writing</b></td><td colspan="4" style="${ch};color:var(--grey)">Incluido en Reading &amp; Use of English (A2 Key)</td></tr>`
+    ? `<tr><td style="${ch}"><b>Writing</b></td><td colspan="4" style="${ch};color:var(--grey)">Included in Reading &amp; Use of English (A2 Key)</td></tr>`
     : row('Writing', fin.skills.Writing);
-  $('#main').innerHTML=`${back}<h1>🏅 Resultado final · CEFR</h1>
-    <p class="muted" style="margin-top:-6px">Este es el reporte que se entrega a los padres: tu nivel final combinando tus mejores resultados por destreza en la Escala Cambridge.</p>
+  $('#main').innerHTML=`${back}<h1>🏅 Final result · CEFR</h1>
+    <p class="muted" style="margin-top:-6px">This is the report given to parents: your final level, combining your best results per skill on the Cambridge Scale.</p>
     <div class="card" style="overflow-x:auto"><table style="width:100%;border-collapse:collapse">
-      <thead><tr><th style="${ch};text-align:left">Destreza</th><th style="${ch}">Nivel</th><th style="${ch}">Resultado</th><th style="${ch}">CEFR</th><th style="${ch}">Escala</th></tr></thead>
+      <thead><tr><th style="${ch};text-align:left">Skill</th><th style="${ch}">Level</th><th style="${ch}">Result</th><th style="${ch}">CEFR</th><th style="${ch}">Scale</th></tr></thead>
       <tbody>
-        ${row('Reading &amp; Use of English'+(fin.a2NoWriting?' (incluye Writing)':''),fin.skills.Reading)}
+        ${row('Reading &amp; Use of English'+(fin.a2NoWriting?' (includes Writing)':''),fin.skills.Reading)}
         ${row('Listening',fin.skills.Listening)}
         ${wRow}
         ${row('Speaking',fin.skills.Speaking)}
       </tbody></table></div>
     <div class="card" style="display:flex;gap:16px;align-items:center;background:#0f2741;color:#fff">
-      <div><div style="font-size:.78rem;opacity:.8">RESULTADO FINAL</div><div style="font-size:2.2rem;font-weight:800;line-height:1">${esc(fin.finalCefr)}</div></div>
-      <div style="border-left:1px solid rgba(255,255,255,.3);padding-left:16px"><div style="font-size:.78rem;opacity:.8">ESCALA CAMBRIDGE</div><div style="font-size:1.6rem;font-weight:700">${fin.finalScale!=null?fin.finalScale:'—'}</div></div>
+      <div><div style="font-size:.78rem;opacity:.8">FINAL RESULT</div><div style="font-size:2.2rem;font-weight:800;line-height:1">${esc(fin.finalCefr)}</div></div>
+      <div style="border-left:1px solid rgba(255,255,255,.3);padding-left:16px"><div style="font-size:.78rem;opacity:.8">CAMBRIDGE SCALE</div><div style="font-size:1.6rem;font-weight:700">${fin.finalScale!=null?fin.finalScale:'—'}</div></div>
       <div style="margin-left:auto;text-align:right">
         ${sttTxt?`<div style="font-size:.85rem;font-weight:700;color:${stt==='below'?'#fca5a5':'#86efac'}">${sttTxt}</div>`:''}
-        ${fin.complete?'':`<div style="font-size:.74rem;opacity:.9;margin-top:4px">⚠ Provisional. Faltan: ${esc(fin.missing.join(', '))}.</div>`}
+        ${fin.complete?'':`<div style="font-size:.74rem;opacity:.9;margin-top:4px">⚠ Provisional. Missing: ${esc(fin.missing.join(', '))}.</div>`}
       </div>
     </div>
-    <button class="btn" onclick="window.studentReportPDF('${p.id}','es')">📄 PDF (Español)</button> <button class="btn ghost" onclick="window.studentReportPDF('${p.id}','en')">📄 PDF (English)</button>`;
+    <button class="btn" onclick="window.studentReportPDF('${p.id}','es')">📄 PDF (Spanish)</button> <button class="btn ghost" onclick="window.studentReportPDF('${p.id}','en')">📄 PDF (English)</button>`;
 }
 
 /* Metadatos de grados dentro de Classes y niveles de actividades por grado.
@@ -5470,7 +5470,7 @@ async function studentLibrary(){
     : _soonCard('📚','Library','Online catalogue (OPAC): soon you\'ll be able to search books and see your loans.');
   const staff = state.profile && (state.profile.role==='teacher'||state.profile.role==='admin');
   const back = _isStudent() ? _backBtn("window._nav('english')",'English') : '';
-  $('#main').innerHTML=`${back}<h1>📚 Library</h1><p class="muted">Cargando…</p>`;
+  $('#main').innerHTML=`${back}<h1>📚 Library</h1><p class="muted">Loading…</p>`;
   await loadReaderAssignments();
   const cat=_RDR_IDS.map(id=>{ const m=READER_META[id], c=READER_CARDS[id];
     const mine=!_isStudent() || readerBooksFor('g'+((state.profile&&state.profile.grade_id)||0)).indexOf(id)>=0;
@@ -5483,11 +5483,11 @@ async function studentLibrary(){
     </div>`; }).join('');
   const panel = staff ? await _assignPanel() : '';
   $('#main').innerHTML=`${back}<h1>📚 Library</h1>
-    <p class="muted" style="margin-top:-6px">Los readers del colegio${staff?' — y qué lee cada salón este año':''}.</p>
+    <p class="muted" style="margin-top:-6px">The school readers${staff?' — and what each class is reading this year':''}.</p>
     <h2 style="font-size:16px;color:var(--blue-d);margin:16px 0 10px">📖 Readers</h2>
     <div class="grid cols-3">${cat}</div>
     ${panel}
-    <h2 style="font-size:16px;color:var(--blue-d);margin:22px 0 10px">🔎 Catálogo (OPAC)</h2>
+    <h2 style="font-size:16px;color:var(--blue-d);margin:22px 0 10px">🔎 Catalogue (OPAC)</h2>
     <div class="grid cols-2">${libTile}</div>`;
 }
 /* Asignación del año: filas = salones reales, columnas = los tres trimestres.
@@ -5507,18 +5507,18 @@ async function _assignPanel(){
   const libro=(gid,sec,term)=>{ const r=(READER_ASSIGN||[]).find(x=>+x.school_year===SCHOOL_YEAR_NOW &&
       +x.grade_id===gid && String(x.section||'')===sec && +x.term===term); return r?r.book_id:''; };
   const rows=list.map(r=>`<tr>
-    <td><b>${esc(r.name)}${r.sec?' · '+esc(r.sec):''}</b> <span class="muted" style="font-size:.8rem">${r.n} alumnos</span></td>
+    <td><b>${esc(r.name)}${r.sec?' · '+esc(r.sec):''}</b> <span class="muted" style="font-size:.8rem">${r.n} students</span></td>
     ${RDR_TERMS.map(t=>{ const cur=libro(r.gid,r.sec,t);
       return `<td style="text-align:center"><select onchange="window._assignTerm(${r.gid},'${esc(r.sec)}',${t},this.value)"
         style="font-family:inherit;font-size:12.5px;padding:5px 7px;border:1.5px solid var(--line);border-radius:8px;max-width:200px">
-        <option value="">— sin asignar —</option>
+        <option value="">— not assigned —</option>
         ${_RDR_IDS.map(id=>`<option value="${id}" ${cur===id?'selected':''}>${READER_META[id].icon} ${esc(READER_META[id].short)}</option>`).join('')}
       </select></td>`; }).join('')}
   </tr>`).join('');
-  return `<h2 style="font-size:16px;color:var(--blue-d);margin:22px 0 8px">🗂️ Qué lee cada salón — año ${SCHOOL_YEAR_NOW}</h2>
-    <p class="muted" style="margin:0 0 10px;font-size:.85rem"><b>Una obra por trimestre</b>: elegir otra sustituye a la que estaba. Cada año se elige de nuevo — lo de ${SCHOOL_YEAR_NOW} no se arrastra a ${SCHOOL_YEAR_NOW+1}, porque en cada grado habrá otros alumnos. El alumno solo ve en <b>Classes → Readers</b> los libros marcados aquí para su salón, y <b>📖 Controles de lectura</b> lee de esta misma tabla para saber qué obra toca cada trimestre.</p>
+  return `<h2 style="font-size:16px;color:var(--blue-d);margin:22px 0 8px">🗂️ What each class is reading — ${SCHOOL_YEAR_NOW} school year</h2>
+    <p class="muted" style="margin:0 0 10px;font-size:.85rem"><b>One book per term</b>: choosing another one replaces the current choice. It is chosen again every year — ${SCHOOL_YEAR_NOW} does not carry over to ${SCHOOL_YEAR_NOW+1}, because each grade will have different students. The student only sees, under <b>Classes → Readers</b>, the books marked here for their class, and <b>📖 Chapter controls</b> reads from this same table to know which book is due each term.</p>
     <div class="card" style="padding:0;overflow-x:auto"><table>
-      <thead><tr><th>Salón</th>${RDR_TERMS.map(t=>`<th style="text-align:center">${_rdrTermLab(t)}</th>`).join('')}</tr></thead>
+      <thead><tr><th>Class</th>${RDR_TERMS.map(t=>`<th style="text-align:center">${_rdrTermLab(t)}</th>`).join('')}</tr></thead>
       <tbody>${rows}</tbody></table></div>`;
 }
 /* Cambiar la obra de un trimestre: se borra la que hubiera (la regla es una
@@ -5534,7 +5534,7 @@ window._assignTerm=async(gid,sec,term,bookId)=>{
     }
     READER_ASSIGN=null; await loadReaderAssignments();
     studentLibrary();
-  }catch(e){ alert('No se pudo guardar la asignación: '+(e.message||e)); }
+  }catch(e){ alert('Could not save the assignment: '+(e.message||e)); }
 };
 
 /* ---------- Classes: DOS etapas (Primary 2.º–5.º · Secondary 6.º–11.º) ----------
@@ -5642,7 +5642,7 @@ async function studentResults(){
   const p=state.profile;
   const back = _isStudent() ? _backBtn("window._nav('english')",'English') : '';
   if(!p.id) return _previewNeedsStudent('📊 My Progress', back);
-  $('#main').innerHTML=`${back}<h1>📊 My Progress</h1><p class="muted">Cargando…</p>`;
+  $('#main').innerHTML=`${back}<h1>📊 My Progress</h1><p class="muted">Loading…</p>`;
   const { data:atts } = await sb.from('exam_attempts').select('*').eq('student_id',p.id).order('submitted_at',{ascending:false});
   const bySkill = SKILLS.map(sk=>{
     const a=(atts||[]).filter(x=>x.skill===sk);
@@ -5651,46 +5651,46 @@ async function studentResults(){
     const avg=scored.length?Math.round(scored.reduce((s,x)=>s+(+x.percent),0)/scored.length):null;
     return {sk,n:a.length,best,avg};
   });
-  const histTable=(list)=> list.length ? `<table><thead><tr><th>Examen</th><th>Puntaje</th><th>Fecha</th></tr></thead><tbody>${
+  const histTable=(list)=> list.length ? `<table><thead><tr><th>Exam</th><th>Score</th><th>Date</th></tr></thead><tbody>${
       list.map(a=>{
         const lbl=`${esc(a.skill)} · ${esc(a.level)} · ${mockLabel(a)}`;
         const score = a.percent!=null ? `${a.score}/${a.total} (${a.percent}%)`
-          : (a.skill==='Writing' ? '<span class="muted">Pendiente de calificación</span>' : '—');
+          : (a.skill==='Writing' ? '<span class="muted">Pending grading</span>' : '—');
         const msg = (a.breakdown&&a.breakdown.teacherMessage)
-          ? `<tr><td colspan="3" style="background:#f7faff;font-size:.9rem">📣 <b>Profesor:</b> ${esc(a.breakdown.teacherMessage)}</td></tr>` : '';
+          ? `<tr><td colspan="3" style="background:#f7faff;font-size:.9rem">📣 <b>Teacher:</b> ${esc(a.breakdown.teacherMessage)}</td></tr>` : '';
         return `<tr><td>${lbl}</td><td>${score}</td><td class="muted">${new Date(a.submitted_at).toLocaleDateString()}</td></tr>${msg}`;
       }).join('')
-    }</tbody></table>` : `<p class="muted">Aún no hay intentos aquí.</p>`;
+    }</tbody></table>` : `<p class="muted">No attempts here yet.</p>`;
   const all=atts||[];
   const mocks=all.filter(isMockAttempt), practice=all.filter(a=>!isMockAttempt(a));
   const { data:acts } = await sb.from('activity_attempts').select('*').eq('student_id',p.id).order('submitted_at',{ascending:false});
   const fmtT=(s)=>{ s=s||0; return Math.floor(s/60)+'m '+String(s%60).padStart(2,'0')+'s'; };
-  const actTable=(list)=> list.length ? `<table><thead><tr><th>Actividad</th><th>Nivel</th><th>Resultado</th><th>⏱ Tiempo</th><th>💡 Pistas</th><th>Fecha</th></tr></thead><tbody>${
+  const actTable=(list)=> list.length ? `<table><thead><tr><th>Activity</th><th>Level</th><th>Result</th><th>⏱ Time</th><th>💡 Hints</th><th>Date</th></tr></thead><tbody>${
       list.map(a=>`<tr><td>${a.activity==='crossword'?'🔎':'🔍'} ${esc(a.title||(a.activity==='crossword'?'Crossword':'Word Search'))}</td><td>${esc(a.level)}</td><td>${a.score!=null?`${a.score}/${a.total}`:'—'}</td><td>${fmtT(a.duration_sec)}</td><td>${a.hints_used||0}</td><td class="muted">${new Date(a.submitted_at).toLocaleDateString()}</td></tr>`).join('')
-    }</tbody></table>` : `<p class="muted">Aún no has completado actividades. Ve a <b>Classes → Activities</b>.</p>`;
+    }</tbody></table>` : `<p class="muted">You haven’t completed any activities yet. Go to <b>Classes → Activities</b>.</p>`;
   $('#main').innerHTML=`${back}<h1>📊 My Progress</h1>
-    <p class="muted" style="margin-top:-6px">${esc(p.grades?.name||'')} ${p.section?'· '+esc(p.section):''} · Nivel ${esc(p.cefr_level||'sin asignar')}</p>
+    <p class="muted" style="margin-top:-6px">${esc(p.grades?.name||'')} ${p.section?'· '+esc(p.section):''} · Level ${esc(p.cefr_level||'not assigned')}</p>
     <div class="grid cols-3">
       ${bySkill.map(s=>`<div class="stat"><div class="l">${s.sk}</div>
         <div class="n">${s.best!=null?s.best+'%':'—'}</div>
-        <div class="muted" style="font-size:.8rem">${s.n} intento(s)${s.avg!=null?' · prom '+s.avg+'%':''}</div></div>`).join('')}
+        <div class="muted" style="font-size:.8rem">${s.n} attempt(s)${s.avg!=null?' · avg '+s.avg+'%':''}</div></div>`).join('')}
     </div>
-    <div class="card"><h2>Proyección</h2>${projection(p,bySkill,all)}</div>
+    <div class="card"><h2>Projection</h2>${projection(p,bySkill,all)}</div>
     <div class="card"><h2>📝 Mocks (${mocks.length})</h2>${histTable(mocks)}</div>
     <div class="card"><h2>🎯 Practice Tests (${practice.length})</h2>${histTable(practice)}</div>
     <div class="card"><h2>🎲 Activities (${(acts||[]).length})</h2>${actTable(acts||[])}</div>
-    ${all.length?'':'<div class="note info">Aún no has rendido exámenes. Empieza en <b>Practice Tests</b> o <b>Cambridge Mocks</b>.</div>'}`;
+    ${all.length?'':'<div class="note info">You haven’t taken any exams yet. Start with <b>Practice Tests</b> or <b>Cambridge Mocks</b>.</div>'}`;
 }
 function projection(p,bySkill,atts){
   const done=bySkill.filter(s=>s.avg!=null);
-  if(!done.length) return `<p class="muted">Rinde al menos un examen para ver tu proyección hacia ${esc(p.cefr_level||'tu nivel')}.</p>`;
+  if(!done.length) return `<p class="muted">Take at least one exam to see your projection toward ${esc(p.cefr_level||'your level')}.</p>`;
   const overall=Math.round(done.reduce((s,x)=>s+x.avg,0)/done.length);
   const lvl=p.cefr_level||'B1';
   let verdict, cls;
-  if(overall>=80){verdict=`Vas camino a un <b>aprobado alto</b> en ${lvl}. Listo para retar el siguiente nivel.`;cls='ok';}
-  else if(overall>=60){verdict=`Estás en <b>nivel de aprobación</b> para ${lvl} (≈60% es el estándar Cambridge). Sigue consolidando.`;cls='ok';}
-  else if(overall>=40){verdict=`Te estás <b>acercando</b> a ${lvl}. Enfócate en las destrezas más bajas de arriba.`;cls='info';}
-  else {verdict=`Aún <b>por debajo</b> de ${lvl}. Conviene más práctica antes del examen oficial.`;cls='err';}
+  if(overall>=80){verdict=`You are on track for a <b>high pass</b> in ${lvl}. Ready to take on the next level.`;cls='ok';}
+  else if(overall>=60){verdict=`You are at <b>pass level</b> for ${lvl} (≈60% is the Cambridge standard). Keep consolidating.`;cls='ok';}
+  else if(overall>=40){verdict=`You are <b>approaching</b> ${lvl}. Focus on the lowest skills above.`;cls='info';}
+  else {verdict=`Still <b>below</b> ${lvl}. More practice is recommended before the official exam.`;cls='err';}
   const weak=[...done].sort((a,b)=>a.avg-b.avg)[0];
   // December official-test roadmap: Mock 1 → Mock 2 → Examen oficial
   const hasM1=(atts||[]).some(a=>a.mock==='mock1');
@@ -5698,17 +5698,17 @@ function projection(p,bySkill,atts){
   const steps=[
     {k:'m1',label:'Mock 1',done:hasM1},
     {k:'m2',label:'Mock 2',done:hasM2},
-    {k:'off',label:'Examen oficial · Diciembre',done:false}
+    {k:'off',label:'Official exam · December',done:false}
   ];
   const roadmap=`<div class="row" style="gap:8px;flex-wrap:wrap;margin:12px 0 4px">${steps.map((s,i)=>`
     <span class="badge ${s.done?'on':(i===steps.findIndex(x=>!x.done)?'':'off')}" style="${(!s.done&&i===steps.findIndex(x=>!x.done))?'background:var(--blue);color:#fff':''}">${s.done?'✓ ':(i===steps.findIndex(x=>!x.done)?'▶ ':'')}${s.label}</span>${i<steps.length-1?'<span class="muted">→</span>':''}`).join('')}</div>`;
-  const nextMsg = !hasM1 ? 'Tu siguiente paso es rendir el <b>Mock 1</b>.'
-    : !hasM2 ? 'Rinde tu <b>Mock 2</b> para confirmar tu progreso antes del examen oficial de diciembre.'
-    : (overall>=60 ? 'Vas en camino al <b>examen oficial de diciembre</b>. ¡Sigue practicando para asegurar el resultado!'
-                   : 'Refuerza tus destrezas más bajas antes del <b>examen oficial de diciembre</b>.');
-  return `<div class="proj"><div style="font-size:1.1rem;margin-bottom:6px">Promedio general: <b>${overall}%</b></div>
+  const nextMsg = !hasM1 ? 'Your next step is to take <b>Mock 1</b>.'
+    : !hasM2 ? 'Take your <b>Mock 2</b> to confirm your progress before the official exam in December.'
+    : (overall>=60 ? 'You are on track for the <b>official exam in December</b>. Keep practising to secure your result!'
+                   : 'Strengthen your lowest skills before the <b>official exam in December</b>.');
+  return `<div class="proj"><div style="font-size:1.1rem;margin-bottom:6px">Overall average: <b>${overall}%</b></div>
     <div class="note ${cls}" style="margin:8px 0">${verdict}</div>
-    <div class="muted">Destreza a reforzar: <b>${weak.sk}</b> (${weak.avg}%).</div>
+    <div class="muted">Skill to strengthen: <b>${weak.sk}</b> (${weak.avg}%).</div>
     ${roadmap}
     <div class="note info" style="margin-top:8px">📅 ${nextMsg}</div></div>`;
 }
@@ -5829,7 +5829,7 @@ function _finalFromData(profile, atts, spk){
   if(spk && spk.percent!=null){
     const lvl = spk.level || targetLevel(profile) || 'B1';
     const sc = skillScale(lvl, Number(spk.percent));
-    Speaking = { scale:sc, cefr:scaleToCefr(sc), level:lvl, pct:Math.round(Number(spk.percent)), source:'Rúbrica' };
+    Speaking = { scale:sc, cefr:scaleToCefr(sc), level:lvl, pct:Math.round(Number(spk.percent)), source:'Rubric' };
   }
   Speaking = _applyCefrOverride(profile,'Speaking', Speaking);
   // Plegar Writing dentro de Reading SOLO en A2 puro (sin ningún writing rendido).
@@ -5902,7 +5902,7 @@ const SPEAKING_RUBRICS = {
 };
 
 async function cefrFinalPanel(){
-  if($('#main')) $('#main').innerHTML = `<div class="center muted">Cargando…</div>`;
+  if($('#main')) $('#main').innerHTML = `<div class="center muted">Loading…</div>`;
   const isTeacher = state.profile && state.profile.role==='teacher';
   const gradeList = isTeacher ? teacherAllowedGrades() : GRADES;
   const allowed = isTeacher ? gradeList.map(g=>g.id) : null;
@@ -5936,27 +5936,27 @@ async function cefrFinalPanel(){
       ms.sort((x,y)=>(x.mock||'').localeCompare(y.mock||'')||(x.level||'').localeCompare(y.level||''));
       const seen=new Set(), out=[];
       ms.forEach(a=>{ const key=(a.level||'?')+'·'+a.mock; if(seen.has(key))return; seen.add(key);
-        out.push(`<span class="badge lvl" style="font-size:.78rem" title="${esc(mockLabel(a))} · nivel ${esc(a.level||'?')}">${esc(a.level||'?')} · ${esc(mockLabel(a))}</span>`); });
+        out.push(`<span class="badge lvl" style="font-size:.78rem" title="${esc(mockLabel(a))} · level ${esc(a.level||'?')}">${esc(a.level||'?')} · ${esc(mockLabel(a))}</span>`); });
       return out.join('<br>');
     })();
     const wAtt=at.filter(a=>a.skill==='Writing').sort((x,y)=>(y.submitted_at||'').localeCompare(x.submitted_at||''))[0];
-    const wCell = fin.a2NoWriting ? '<span class="muted" style="font-size:.78rem" title="En A2 Key el Writing va dentro de Reading &amp; Use of English">— en Reading</span>'
-      : fin.skills.Writing ? `${_skillCellHtml(fin.skills.Writing)}${wAtt?` <button class="btn sm ghost" style="padding:2px 7px" onclick="gradeWriting('${wAtt.id}')" title="Editar calificación">✎</button>`:''}`
-      : (wAtt ? `<button class="btn sm ghost" onclick="gradeWriting('${wAtt.id}')">✍️ Calificar</button>`
-              : '<span class="muted" style="font-size:.8rem">sin examen</span>');
+    const wCell = fin.a2NoWriting ? '<span class="muted" style="font-size:.78rem" title="In A2 Key, Writing is included within Reading &amp; Use of English">— in Reading</span>'
+      : fin.skills.Writing ? `${_skillCellHtml(fin.skills.Writing)}${wAtt?` <button class="btn sm ghost" style="padding:2px 7px" onclick="gradeWriting('${wAtt.id}')" title="Edit grade">✎</button>`:''}`
+      : (wAtt ? `<button class="btn sm ghost" onclick="gradeWriting('${wAtt.id}')">✍️ Mark</button>`
+              : '<span class="muted" style="font-size:.8rem">no exam</span>');
     const spkLvl = (fin.skills.Speaking&&fin.skills.Speaking.level)||tgt||'';
     const sCell = fin.skills.Speaking
       ? `${_skillCellHtml(fin.skills.Speaking)} <button class="btn sm ghost" style="padding:2px 7px" onclick="speakingGrader('${s.id}','${spkLvl}')">✎</button>`
-      : `<button class="btn sm ghost" onclick="speakingGrader('${s.id}','${spkLvl}')">🗣️ Calificar</button>`;
+      : `<button class="btn sm ghost" onclick="speakingGrader('${s.id}','${spkLvl}')">🗣️ Mark</button>`;
     const stt=targetStatus(fin.finalCefr, tgt);
-    const sttChip = stt==='below' ? ` <span class="badge off" style="font-size:.66rem;background:#dc2626;color:#fff" title="Por debajo del objetivo ${tgt}">▼</span>`
-      : stt==='above' ? ' <span class="badge on" style="font-size:.66rem" title="Sobre el objetivo">▲</span>'
-      : stt==='meets' ? ' <span class="badge on" style="font-size:.66rem" title="Cumple el objetivo">✓</span>' : '';
+    const sttChip = stt==='below' ? ` <span class="badge off" style="font-size:.66rem;background:#dc2626;color:#fff" title="Below the target ${tgt}">▼</span>`
+      : stt==='above' ? ' <span class="badge on" style="font-size:.66rem" title="Above the target">▲</span>'
+      : stt==='meets' ? ' <span class="badge on" style="font-size:.66rem" title="Meets the target">✓</span>' : '';
     const finBadge = fin.finalScale!=null
-      ? `<span class="badge lvl" style="font-size:.92rem">${esc(fin.finalCefr)} · ${fin.finalScale}</span>${sttChip}${fin.complete?'':' <span class="badge off" style="font-size:.66rem" title="Faltan: '+esc(fin.missing.join(', '))+'">prov.</span>'}`
+      ? `<span class="badge lvl" style="font-size:.92rem">${esc(fin.finalCefr)} · ${fin.finalScale}</span>${sttChip}${fin.complete?'':' <span class="badge off" style="font-size:.66rem" title="Missing: '+esc(fin.missing.join(', '))+'">prov.</span>'}`
       : '<span class="muted">—</span>';
     return `<tr data-sname="${esc((s.full_name||'').toLowerCase())}">
-      <td><a href="#" onclick="event.preventDefault();studentDetailReport('${s.id}','es')" title="Ver informe detallado e imprimir" style="color:#2d5a8d;font-weight:700;text-decoration:none;cursor:pointer">${esc(s.full_name||'')}</a></td>
+      <td><a href="#" onclick="event.preventDefault();studentDetailReport('${s.id}','en')" title="View full report and print" style="color:#2d5a8d;font-weight:700;text-decoration:none;cursor:pointer">${esc(s.full_name||'')}</a></td>
       <td><span class="badge grade">${esc(s.grades?.name||'—')}</span> ${s.section?esc(s.section):''}</td>
       <td><span class="badge lvl" style="opacity:.8">${tgt||'—'}</span></td>
       <td style="white-space:nowrap">${mockCell}</td>
@@ -5970,13 +5970,13 @@ async function cefrFinalPanel(){
   }).join('');
 
   $('#main').innerHTML = `
-    <h1 style="margin:0 0 4px">🎓 Resultado final · CEFR</h1>
-    <p class="muted" style="margin-top:0;font-size:.88rem">Mejor resultado por destreza convertido a la <b>Escala Cambridge</b> (aprobar ≈60% cae en el límite del nivel; por debajo baja de banda). El <b>final</b> es el promedio de las destrezas evaluadas (se toma el mejor intento <b>aprobado ≥50%</b>; si ninguno aprueba, el de mayor %). <b>Writing</b> y <b>Speaking</b> se califican con la rúbrica Cambridge (0–5 por descriptor). En <b>A2</b> el Writing va dentro de Reading &amp; Use of English (examen A2 Key), así que no cuenta como destreza aparte. <b>Mock</b> = examen rendido (nivel · número de mock); “—” = aún no rinde mock. <b>Objetivo</b> = nivel al que apunta el grado; <span class="badge off" style="font-size:.66rem;background:#dc2626;color:#fff">▼</span> = por debajo del objetivo, <span class="badge on" style="font-size:.66rem">✓</span> = lo cumple. <span class="badge off" style="font-size:.66rem">prov.</span> = aún faltan destrezas.</p>
+    <h1 style="margin:0 0 4px">🎓 Final result · CEFR</h1>
+    <p class="muted" style="margin-top:0;font-size:.88rem">Best result per skill converted to the <b>Cambridge Scale</b> (a pass ≈60% lands at the level boundary; below that drops a band). The <b>final</b> is the average of the assessed skills (the best attempt <b>passed ≥50%</b> is taken; if none passed, the highest %). <b>Writing</b> and <b>Speaking</b> are graded with the Cambridge rubric (0–5 per descriptor). In <b>A2</b>, Writing is included within Reading &amp; Use of English (A2 Key exam), so it does not count as a separate skill. <b>Mock</b> = exam taken (level · mock number); “—” = has not taken a mock yet. <b>Target</b> = level the grade aims for; <span class="badge off" style="font-size:.66rem;background:#dc2626;color:#fff">▼</span> = below the target, <span class="badge on" style="font-size:.66rem">✓</span> = meets it. <span class="badge off" style="font-size:.66rem">prov.</span> = skills still missing.</p>
     ${resultsFilterBar(gradeList,'window._setFinalFilter')}
     <div class="card" style="padding:0;overflow-x:auto"><table>
-      <thead><tr><th>Alumno</th><th>Grado</th><th>Objetivo</th><th>Mock</th><th>Reading &amp; UoE</th><th>Listening</th><th>Writing</th><th>Speaking</th><th>Final CEFR</th><th></th></tr></thead>
-      <tbody>${rows||`<tr><td colspan="10" class="center muted">Sin alumnos para este filtro.</td></tr>`}</tbody>
-    </table><div id="resCount" data-noun="alumno(s)" class="muted" style="padding:8px 14px;font-size:.82rem">${students.length} alumno(s)</div></div>`;
+      <thead><tr><th>Student</th><th>Grade</th><th>Target</th><th>Mock</th><th>Reading &amp; UoE</th><th>Listening</th><th>Writing</th><th>Speaking</th><th>Final CEFR</th><th></th></tr></thead>
+      <tbody>${rows||`<tr><td colspan="10" class="center muted">No students for this filter.</td></tr>`}</tbody>
+    </table><div id="resCount" data-noun="student(s)" class="muted" style="padding:8px 14px;font-size:.82rem">${students.length} student(s)</div></div>`;
 }
 window.cefrFinalPanel = cefrFinalPanel;
 window._setFinalFilter = (k,v)=>{
@@ -6016,12 +6016,12 @@ function renderSpeakingGrader(){
   }).join('');
   const lvlSel=LEVELS.map(l=>`<option ${speakingState.level===l?'selected':''}>${l}</option>`).join('');
   $('#main').innerHTML=`
-    <button class="btn sm ghost" onclick="cefrFinalPanel()">← Volver al resultado final</button>
-    <h1 style="margin:.4rem 0 0">🗣️ Calificar Speaking</h1>
-    <div class="muted" style="margin-bottom:10px">${esc(p.full_name||'Alumno')} · ${esc(p.grades?.name||'')}</div>
-    <div class="note">Elige el descriptor que corresponde en cada criterio (escalas analíticas de Cambridge Speaking, 0–${r.bandMax}). La nota se calcula sola. El nivel define los criterios.</div>
+    <button class="btn sm ghost" onclick="cefrFinalPanel()">← Back to final result</button>
+    <h1 style="margin:.4rem 0 0">🗣️ Mark Speaking</h1>
+    <div class="muted" style="margin-bottom:10px">${esc(p.full_name||'Student')} · ${esc(p.grades?.name||'')}</div>
+    <div class="note">Choose the descriptor that matches each criterion (Cambridge Speaking analytical scales, 0–${r.bandMax}). The grade is calculated automatically. The level defines the criteria.</div>
     <div class="row" style="gap:10px;align-items:center;margin:10px 0">
-      <label style="font-weight:700">Nivel del examen</label>
+      <label style="font-weight:700">Exam level</label>
       <select onchange="window._setSpeakLevel(this.value)" style="min-width:90px">${lvlSel}</select>
     </div>
     ${subsHtml}
@@ -6030,11 +6030,11 @@ function renderSpeakingGrader(){
         <h2 style="margin:0">Total</h2>
         <div style="font-size:1.4rem;font-weight:800;color:#2d5a8d"><span>${total}</span> / ${max} · <span>${pct}</span>% · <span style="background:#d1d2ea;color:#244c77;border-radius:8px;padding:2px 10px;font-size:1.05rem">${esc(cefrBand)}</span></div>
       </div>
-      <label style="margin-top:10px;display:block">Comentario para el alumno (opcional)</label>
+      <label style="margin-top:10px;display:block">Comment for the student (optional)</label>
       <textarea id="sp-msg" rows="4" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:8px" oninput="speakingState.msg=this.value">${esc(speakingState.msg||'')}</textarea>
       <div id="sp-status" style="margin-top:6px;font-size:.88rem"></div>
       <div class="row" style="margin-top:10px;gap:10px">
-        <button class="btn" onclick="window._saveSpeaking()">💾 Guardar Speaking</button>
+        <button class="btn" onclick="window._saveSpeaking()">💾 Save Speaking</button>
       </div>
     </div>`;
 }
@@ -6043,14 +6043,14 @@ window._setSpeakLevel = (v)=>{ speakingState.level=v; speakingState.sel={}; rend
 window._saveSpeaking = async ()=>{
   const r=speakingRubric(), sel=speakingState.sel, st=$('#sp-status');
   let total=0, all=true; r.subs.forEach(s=>{ if(sel[s]!=null) total+=sel[s]; else all=false; });
-  if(!all){ st.innerHTML='<span style="color:var(--bad)">Marca un Band en cada criterio antes de guardar.</span>'; return; }
+  if(!all){ st.innerHTML='<span style="color:var(--bad)">Select a Band for each criterion before saving.</span>'; return; }
   const max=r.subs.length*r.bandMax, pct=Math.round(total/max*100);
   const breakdown={ kind:'speaking-graded', parts:r.subs.map(s=>({part:s, correct:sel[s], total:r.bandMax})) };
-  st.textContent='Guardando…';
+  st.textContent='Saving…';
   const { error } = await sb.rpc('upsert_speaking', {
     p_student:speakingState.studentId, p_level:speakingState.level, p_score:total, p_total:max,
     p_percent:pct, p_breakdown:breakdown, p_comment:(speakingState.msg||'').trim()||null });
-  if(error){ st.innerHTML=`<span style="color:var(--bad)">No se pudo guardar: ${esc(error.message)}</span>`; return; }
+  if(error){ st.innerHTML=`<span style="color:var(--bad)">Could not save: ${esc(error.message)}</span>`; return; }
   cefrFinalPanel();
 };
 
@@ -6062,7 +6062,7 @@ function ensureHtml2pdf(){
   _h2pLib=new Promise((res,rej)=>{
     const s=document.createElement('script');
     s.src='vendor/html2pdf.bundle.min.js';
-    s.onload=()=>res(); s.onerror=()=>rej(new Error('No se pudo cargar html2pdf (conexión).'));
+    s.onload=()=>res(); s.onerror=()=>rej(new Error('Could not load html2pdf (connection).'));
     document.head.appendChild(s);
   });
   return _h2pLib;
@@ -6074,7 +6074,7 @@ let _pdfLibs=null;
 function ensurePdfLibs(){
   if(window.html2canvas && window.jspdf && window.jspdf.jsPDF) return Promise.resolve();
   if(_pdfLibs) return _pdfLibs;
-  const load=(src)=>new Promise((res,rej)=>{ const s=document.createElement('script'); s.src=src; s.onload=res; s.onerror=()=>rej(new Error('No se pudieron cargar las librerías de PDF (conexión).')); document.head.appendChild(s); });
+  const load=(src)=>new Promise((res,rej)=>{ const s=document.createElement('script'); s.src=src; s.onload=res; s.onerror=()=>rej(new Error('Could not load the PDF libraries (connection).')); document.head.appendChild(s); });
   _pdfLibs=(async()=>{
     if(!window.html2canvas) await load('vendor/html2canvas.min.js');
     if(!(window.jspdf&&window.jspdf.jsPDF)) await load('vendor/jspdf.umd.min.js');
@@ -6100,12 +6100,12 @@ function cefrScaleSVG(scale, cefr){
   for(let v=80;v<=230;v+=10){const y=yOf(v);ticks+=`<line x1="${axisX-6}" y1="${y}" x2="${axisX}" y2="${y}" stroke="#94a3b8"/><text x="${axisX+5}" y="${y+4}" font-size="10" fill="#64748b">${v}</text>`;}
   let marker='';
   if(scale!=null){ const y=yOf(scale); const lblY=Math.max(topY+12, Math.min(botY-6, y));
-    marker=`<line x1="${bandX-12}" y1="${y}" x2="${axisX}" y2="${y}" stroke="#dc2626" stroke-width="2.5" stroke-dasharray="6 4"/><circle cx="${axisX}" cy="${y}" r="6" fill="#dc2626"/><rect x="${qBaseX+95}" y="${lblY-32}" width="234" height="24" rx="6" fill="#dc2626"/><text x="${qBaseX+212}" y="${lblY-15}" text-anchor="middle" fill="#fff" font-size="12" font-weight="800">● Tú estás aquí · ${cefr} · ${scale}</text>`;
+    marker=`<line x1="${bandX-12}" y1="${y}" x2="${axisX}" y2="${y}" stroke="#dc2626" stroke-width="2.5" stroke-dasharray="6 4"/><circle cx="${axisX}" cy="${y}" r="6" fill="#dc2626"/><rect x="${qBaseX+95}" y="${lblY-32}" width="234" height="24" rx="6" fill="#dc2626"/><text x="${qBaseX+212}" y="${lblY-15}" text-anchor="middle" fill="#fff" font-size="12" font-weight="800">● You are here · ${cefr} · ${scale}</text>`;
   }
   return `<svg viewBox="0 0 ${W} ${H}" width="100%" xmlns="http://www.w3.org/2000/svg" font-family="Montserrat,system-ui,sans-serif">
     <text x="${bandX+bandW/2}" y="30" text-anchor="middle" font-size="11" font-weight="700" fill="#334155">CEFR</text>
     <text x="${qBaseX+(quals.length*(qW+qGap))/2-qGap/2}" y="30" text-anchor="middle" font-size="11" font-weight="700" fill="#334155">Cambridge English Qualifications</text>
-    <text x="${axisX}" y="30" text-anchor="middle" font-size="11" font-weight="700" fill="#334155">Escala</text>
+    <text x="${axisX}" y="30" text-anchor="middle" font-size="11" font-weight="700" fill="#334155">Scale</text>
     ${bandRects}${qBars}${ticks}${marker}</svg>`;
 }
 /* Construye el HTML interior del reporte de resultados (compartido por el PDF y la
@@ -6264,9 +6264,9 @@ function _ensurePrintCss(){
 /* Vista detallada en pantalla (profesor/admin al hacer clic en el nombre del alumno):
    notas por destreza + detalle del Writing/Speaking evaluado + impresión + descarga PDF. */
 window.studentDetailReport = async (studentId, lang)=>{
-  lang=(lang==='en')?'en':'es'; const EN=lang==='en';
+  lang=(lang==='es')?'es':'en'; const EN=lang==='en';
   _setNav('final');
-  if($('#main')) $('#main').innerHTML='<div class="center muted">Cargando…</div>';
+  if($('#main')) $('#main').innerHTML='<div class="center muted">Loading…</div>';
   const { data:p, error } = await sb.from('profiles').select('id,full_name,email,section,cefr_level,grade_id,grades(name)').eq('id',studentId).single();
   if(error){ $('#main').innerHTML='<div class="note err">'+esc(error.message)+'</div>'; return; }
   const { data:at } = await sb.from('exam_attempts').select('id,skill,level,percent,score,total,mock,submitted_at,breakdown').eq('student_id',studentId);
@@ -6276,14 +6276,14 @@ window.studentDetailReport = async (studentId, lang)=>{
   const inner=_reportInner(p, at||[], sp, fin, EN, {detail:true});
   $('#main').innerHTML=
     '<div class="no-print" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px">'+
-      '<button class="btn sm ghost" onclick="cefrFinalPanel()">← Volver al resultado final</button>'+
+      '<button class="btn sm ghost" onclick="cefrFinalPanel()">← Back to final result</button>'+
       '<span style="width:1px;height:22px;background:var(--line)"></span>'+
       '<button class="btn sm '+(EN?'ghost':'')+'" onclick="studentDetailReport(\''+studentId+'\',\'es\')">🇪🇸 Español</button>'+
       '<button class="btn sm '+(EN?'':'ghost')+'" onclick="studentDetailReport(\''+studentId+'\',\'en\')">🇬🇧 English</button>'+
       '<span style="flex:1"></span>'+
-      (fin.complete?'':'<span class="badge off" style="font-size:.7rem" title="Faltan: '+esc(fin.missing.join(', '))+'">Provisional</span> ')+
-      '<button class="btn sm" onclick="window.print()">🖨️ Imprimir</button>'+
-      '<button class="btn sm ghost" onclick="studentReportPDF(\''+studentId+'\',\''+lang+'\')">📄 Descargar PDF</button>'+
+      (fin.complete?'':'<span class="badge off" style="font-size:.7rem" title="Missing: '+esc(fin.missing.join(', '))+'">Provisional</span> ')+
+      '<button class="btn sm" onclick="window.print()">🖨️ Print</button>'+
+      '<button class="btn sm ghost" onclick="studentReportPDF(\''+studentId+'\',\''+lang+'\')">📄 Download PDF</button>'+
     '</div>'+
     '<div id="print-report" style="max-width:820px;margin:0 auto;padding:24px;border:1px solid var(--line);border-radius:12px;background:#fff;box-shadow:0 8px 24px rgba(15,23,42,.08)">'+inner+'</div>';
   window.scrollTo(0,0);
@@ -6293,12 +6293,12 @@ window.studentReportPDF = async (studentId, lang)=>{
   lang = (lang==='en') ? 'en' : 'es';
   try{ await ensurePdfLibs(); }catch(e){ alert(e.message); return; }
   const { data:p, error } = await sb.from('profiles').select('id,full_name,email,section,cefr_level,grade_id,grades(name)').eq('id',studentId).single();
-  if(error){ alert('No se pudo cargar el alumno: '+error.message); return; }
+  if(error){ alert('Could not load the student: '+error.message); return; }
   const { data:at } = await sb.from('exam_attempts').select('id,skill,level,percent,score,total,mock,submitted_at,breakdown').eq('student_id',studentId);
   const { data:sp } = await sb.from('speaking_results').select('*').eq('student_id',studentId).maybeSingle();
   const fin=_finalFromData(p, at||[], sp);
   const EN = lang==='en';
-  const fname=(p.full_name||'alumno').replace(/\s+/g,'_')+'-'+(EN?'EN':'ES')+'.pdf';
+  const fname=(p.full_name||'student').replace(/\s+/g,'_')+'-'+(EN?'EN':'ES')+'.pdf';
   // Nodo del reporte (ancho fijo 760px) en el origen del documento.
   const node=document.createElement('div');
   node.style.cssText='width:760px;padding:22px;font-family:Montserrat,system-ui,sans-serif;color:#0f172a;background:#fff';
@@ -6349,7 +6349,7 @@ window.studentReportPDF = async (studentId, lang)=>{
       }
     }
     pdf.save(fname);
-  }catch(e){ alert('No se pudo generar el PDF: '+(e&&e.message||e)); }
+  }catch(e){ alert('Could not generate the PDF: '+(e&&e.message||e)); }
   finally{ host.remove(); }
 };
 
@@ -6365,7 +6365,7 @@ const UNIT_CRIT = { '1':'Speaking & listening', '2':'Reading', '3':'Writing' };
    misma tabla que el corrector de producciones escritas (writing-rubrics.js). */
 const UNIT_LVL  = ['AD','A','B','C'];
 const UNIT_VIG  = { AD:19, A:16, B:12, C:8 };
-const UNIT_SIG  = { AD:'logro destacado', A:'logro esperado', B:'en proceso', C:'en inicio' };
+const UNIT_SIG  = { AD:'outstanding achievement', A:'expected achievement', B:'in progress', C:'beginning' };
 const UNIT_TRAMO= { AD:'18-20', A:'14-17', B:'11-13', C:'0-10' };
 function unitNota(crits, puestos){
   const vs = crits.map(c=>UNIT_VIG[(puestos||{})[c.n]]).filter(v=>v!=null);
@@ -6380,7 +6380,7 @@ const _unit = { grade:null, unit:null, section:'', i:0, filas:[], quien:{}, plan
 
 async function unitProductsPanel(){
   const main = $('#main');
-  main.innerHTML = '<div class="card"><p class="muted">Cargando entregas…</p></div>';
+  main.innerHTML = '<div class="card"><p class="muted">Loading submissions…</p></div>';
 
   const { data, error } = await sb
     .from('unit_submissions')
@@ -6389,16 +6389,16 @@ async function unitProductsPanel(){
     .limit(3000);
 
   if (error){
-    main.innerHTML = `<div class="card"><p class="err">No pude leer las entregas: ${esc(error.message)}</p></div>`;
+    main.innerHTML = `<div class="card"><p class="err">Could not read the submissions: ${esc(error.message)}</p></div>`;
     return;
   }
   /* Solo el producto de la unidad (hito 'final'): el Writing de los examenes
      de unidad se corrige en 📋 Examenes de unidad, junto a su nota. */
   const productos = (data||[]).filter(r=>r.milestone==='final');
   if (!productos.length){
-    main.innerHTML = `<div class="card"><h2>🎯 Productos de unidad</h2>
-      <p class="muted">Todavía no hay entregas. Aparecerán aquí en cuanto los alumnos
-      escriban o suban su producto en el hub de la unidad.</p></div>`;
+    main.innerHTML = `<div class="card"><h2>🎯 Unit products</h2>
+      <p class="muted">There are no submissions yet. They will appear here once students
+      write or upload their product in the unit hub.</p></div>`;
     return;
   }
 
@@ -6427,9 +6427,9 @@ async function unitProductsPanel(){
      tiene plan, los tres de siempre. El cuaderno va aparte. */
   const dels = (plan.deliverables||[]).filter(d=>d.kind!=='notebook');
   const DELS = dels.length ? dels : [
-    {kind:'report',type:'text',icon:'📄',title:'Informe'},
-    {kind:'presentation',type:'file',icon:'🎤',title:'Presentación'},
-    {kind:'reflection',type:'text',icon:'💭',title:'Reflexión'}];
+    {kind:'report',type:'text',icon:'📄',title:'Report'},
+    {kind:'presentation',type:'file',icon:'🎤',title:'Presentation'},
+    {kind:'reflection',type:'text',icon:'💭',title:'Reflection'}];
   const crits = (plan.criteria||[]).length
     ? plan.criteria.map(c=>({n:String(c.n), text:c.text, levels:c.levels||null}))
     : Object.keys(UNIT_CRIT).map(k=>({n:k, text:UNIT_CRIT[k], levels:null}));
@@ -6480,33 +6480,33 @@ async function unitProductsPanel(){
   const opt = (v, txt, sel) => `<option value="${esc(String(v))}"${sel?' selected':''}>${esc(txt)}</option>`;
   const rotuloGrado = g => (GRADE_META[g]||[])[1] || g;
   const rubrica = `<details ${_unit.rubrica?'open':''} ontoggle="_unit.rubrica=this.open" style="margin-top:12px">
-    <summary style="cursor:pointer;font-weight:700">📏 Rúbrica de la unidad — qué significa cada nivel en cada criterio</summary>
+    <summary style="cursor:pointer;font-weight:700">📏 Unit rubric — what each level means for each criterion</summary>
     <div style="overflow-x:auto;margin-top:8px"><table class="tbl">
-      <thead><tr><th style="min-width:180px">Criterio</th>
-        ${UNIT_LVL.map(l=>`<th>${l} · ${UNIT_SIG[l]}<div class="muted" style="font-weight:400;font-size:.72rem">nota ${UNIT_TRAMO[l]}</div></th>`).join('')}</tr></thead>
+      <thead><tr><th style="min-width:180px">Criterion</th>
+        ${UNIT_LVL.map(l=>`<th>${l} · ${UNIT_SIG[l]}<div class="muted" style="font-weight:400;font-size:.72rem">grade ${UNIT_TRAMO[l]}</div></th>`).join('')}</tr></thead>
       <tbody>${crits.map(c=>`<tr><td><b>${c.n}.</b> ${esc(c.text)}</td>
         ${UNIT_LVL.map(l=>`<td style="font-size:.8rem;vertical-align:top">${esc((c.levels||{})[l]||'')}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
-    <p class="muted" style="font-size:.78rem;margin:8px 0 0">La nota del alumno sale sola de los niveles que le pongas:
-      AD = 19 · A = 16 · B = 12 · C = 8, media de los criterios, redondeada. Es la misma tabla con que se
-      corrigen las producciones escritas.</p>
+    <p class="muted" style="font-size:.78rem;margin:8px 0 0">The student’s grade is calculated automatically from the levels you set:
+      AD = 19 · A = 16 · B = 12 · C = 8, average of the criteria, rounded. It is the same table used to
+      mark written productions.</p>
   </details>`;
 
   main.innerHTML = `<div class="card">
-    <h2>🎯 Productos de unidad</h2>
-    <p class="muted">Lo que los alumnos producen, no lo que aciertan. Un alumno cada vez, con sus productos delante
-      y la rúbrica debajo; con las flechas (o ← → del teclado) pasas al siguiente.</p>
+    <h2>🎯 Unit products</h2>
+    <p class="muted">What students produce, not what they get right. One student at a time, with their products in front
+      and the rubric below; use the arrows (or ← → on the keyboard) to move to the next.</p>
     <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin:12px 0 0">
-      <label style="font-size:.85rem">Grado <select onchange="unitFiltra('grade',this.value)" style="margin-left:4px">
+      <label style="font-size:.85rem">Grade <select onchange="unitFiltra('grade',this.value)" style="margin-left:4px">
         ${grados.map(g=>opt(g, rotuloGrado(g), g===_unit.grade)).join('')}</select></label>
-      <label style="font-size:.85rem">Sección <select onchange="unitFiltra('section',this.value)" style="margin-left:4px">
-        ${opt('', 'Todas', !_unit.section)}${secciones.map(x=>opt(x, x, x===_unit.section)).join('')}</select></label>
-      <label style="font-size:.85rem">Unidad <select onchange="unitFiltra('unit',this.value)" style="margin-left:4px">
-        ${unidades.map(u=>opt(u, 'Unidad '+u, u===_unit.unit)).join('')}</select></label>
-      <span class="muted" style="font-size:.8rem">${filas.length} alumno${filas.length===1?'':'s'} con entregas
-        · <b>${evaluados}</b> evaluado${evaluados===1?'':'s'}${evaluados?' — '+UNIT_LVL.filter(l=>dist[l]).map(l=>`${dist[l]} en ${l} (${UNIT_SIG[l]})`).join(', '):''}</span>
+      <label style="font-size:.85rem">Section <select onchange="unitFiltra('section',this.value)" style="margin-left:4px">
+        ${opt('', 'All', !_unit.section)}${secciones.map(x=>opt(x, x, x===_unit.section)).join('')}</select></label>
+      <label style="font-size:.85rem">Unit <select onchange="unitFiltra('unit',this.value)" style="margin-left:4px">
+        ${unidades.map(u=>opt(u, 'Unit '+u, u===_unit.unit)).join('')}</select></label>
+      <span class="muted" style="font-size:.8rem">${filas.length} student${filas.length===1?'':'s'} with submissions
+        · <b>${evaluados}</b> student${evaluados===1?'':'s'} graded${evaluados?' — '+UNIT_LVL.filter(l=>dist[l]).map(l=>`${dist[l]} in ${l} (${UNIT_SIG[l]})`).join(', '):''}</span>
     </div>
-    <p style="margin:12px 0 0"><b>${esc(rotuloGrado(_unit.grade))}${_unit.section?' '+esc(_unit.section):''} · Unidad ${esc(_unit.unit)}${plan.title?' — '+esc(plan.title):''}</b>.
-      Se entrega: ${DELS.map(d=>`${d.icon||''} ${esc(d.title)}`).join(' · ')}.</p>
+    <p style="margin:12px 0 0"><b>${esc(rotuloGrado(_unit.grade))}${_unit.section?' '+esc(_unit.section):''} · Unit ${esc(_unit.unit)}${plan.title?' — '+esc(plan.title):''}</b>.
+      Deliverables: ${DELS.map(d=>`${d.icon||''} ${esc(d.title)}`).join(' · ')}.</p>
     ${rubrica}
   </div>
   <div id="unitAlumno"></div>
@@ -6539,7 +6539,7 @@ document.addEventListener('keydown', e=>{
 function unitPintaAlumno(){
   const U = _unit, host = $('#unitAlumno'); if(!host) return;
   const f = U.filas[U.i];
-  if(!f){ host.innerHTML = '<div class="card"><p class="muted">Todavía nadie ha entregado nada aquí.</p></div>'; return; }
+  if(!f){ host.innerHTML = '<div class="card"><p class="muted">Nobody has submitted anything here yet.</p></div>'; return; }
   const p = U.quien[f.alumno]||{};
   const base = f.report || f.presentation || f.reflection;   // dónde se guarda la evaluación
   const crit = (base && base.criteria) || {};
@@ -6557,23 +6557,23 @@ function unitPintaAlumno(){
     return r && (d.type==='file' ? !!r.file_path : !!(r.payload && r.payload.text && r.payload.text.trim())); }).length;
 
   const AUDIO = ['webm','ogg','mp3','m4a','wav'], VIDEO = ['mp4'];
-  const vacio = '<p class="muted" style="margin:0;font-size:.85rem">Sin entregar</p>';
+  const vacio = '<p class="muted" style="margin:0;font-size:.85rem">Not submitted</p>';
   const archivo = r => {
     if(!r || !r.file_path) return vacio;
     const url = U.firmadas[r.file_path], ext = (r.file_path.split('.').pop()||'').toLowerCase();
-    if(!url) return '<p class="muted" style="margin:0;font-size:.85rem">Archivo no disponible</p>';
+    if(!url) return '<p class="muted" style="margin:0;font-size:.85rem">File not available</p>';
     const kb = r.payload && r.payload.size ? ' · '+Math.round(r.payload.size/1024)+' KB' : '';
     const pie = `<div class="muted" style="font-size:.75rem;margin-top:4px">${esc(ext)}${kb} ·
-      <a href="${esc(url)}" target="_blank" rel="noopener">descargar</a></div>`;
+      <a href="${esc(url)}" target="_blank" rel="noopener">download</a></div>`;
     if(AUDIO.indexOf(ext)>=0) return `<audio controls preload="metadata" src="${esc(url)}" style="width:100%"></audio>${pie}`;
     if(VIDEO.indexOf(ext)>=0) return `<video controls preload="metadata" src="${esc(url)}" style="width:100%;max-height:260px;background:#000;border-radius:8px"></video>${pie}`;
-    return `<a class="btn small" href="${esc(url)}" target="_blank" rel="noopener">📎 Abrir archivo</a>${pie}`;
+    return `<a class="btn small" href="${esc(url)}" target="_blank" rel="noopener">📎 Open file</a>${pie}`;
   };
   const textoBox = r => {
     const q = r && r.payload;
     if(!q || typeof q.text!=='string' || !q.text.trim()) return vacio;
-    return `<div class="muted" style="font-size:.75rem;margin-bottom:4px">${q.words||0} palabras ·
-        <span class="badge" style="background:${q.draft===false?'#dcfce7':'#fef9c3'}">${q.draft===false?'entregado':'borrador'}</span></div>
+    return `<div class="muted" style="font-size:.75rem;margin-bottom:4px">${q.words||0} words ·
+        <span class="badge" style="background:${q.draft===false?'#dcfce7':'#fef9c3'}">${q.draft===false?'submitted':'draft'}</span></div>
       <div style="white-space:pre-wrap;font-size:.88rem;line-height:1.6;max-height:360px;overflow:auto;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:#fcfdff">${esc(q.text)}</div>`;
   };
   /* Cada entregable lleva debajo SU nota y SU comentario (las columnas score
@@ -6585,9 +6585,9 @@ function unitPintaAlumno(){
     const lv = unitNivelDeNota(r.score);
     return `<div style="margin-top:8px;padding:8px 10px;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:0 8px 8px 0;background:#f6f8fc">
         <div style="font-weight:800;font-size:1.05rem;color:var(--blue-dd)">${r.score!=null
-          ? `${r.score}/20 · ${lv} · ${UNIT_SIG[lv]}` : '<span class="muted" style="font-weight:400;font-size:.85rem">Sin nota · solo comentario</span>'}</div>
+          ? `${r.score}/20 · ${lv} · ${UNIT_SIG[lv]}` : '<span class="muted" style="font-weight:400;font-size:.85rem">No grade · comment only</span>'}</div>
         ${r.feedback ? `<div style="font-size:.8rem;line-height:1.5;margin-top:4px;white-space:pre-wrap">${esc(r.feedback)}</div>` : ''}
-        ${r.reviewed_at ? `<div class="muted" style="font-size:.72rem;margin-top:4px">enviado al alumno · ${esc(new Date(r.reviewed_at).toLocaleDateString('es-PE'))}</div>` : ''}
+        ${r.reviewed_at ? `<div class="muted" style="font-size:.72rem;margin-top:4px">sent to student · ${esc(new Date(r.reviewed_at).toLocaleDateString('en-GB'))}</div>` : ''}
       </div>`;
   };
   const producto = d => `<div style="flex:1 1 280px;min-width:260px">
@@ -6596,62 +6596,62 @@ function unitPintaAlumno(){
       ${notaBox(f[d.kind])}</div>`;
 
   const nav = `<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:14px 0 10px">
-      <button class="btn" onclick="unitMueve(-1)" ${U.i===0?'disabled':''}>◀ Anterior</button>
-      <span style="font-size:.9rem">Alumno <b>${U.i+1}</b> de ${U.filas.length} ·
+      <button class="btn" onclick="unitMueve(-1)" ${U.i===0?'disabled':''}>◀ Previous</button>
+      <span style="font-size:.9rem">Student <b>${U.i+1}</b> of ${U.filas.length} ·
         <select onchange="unitSalta(this.value)" style="max-width:260px">
-          ${U.filas.map((x,j)=>`<option value="${j}"${j===U.i?' selected':''}>${esc((U.quien[x.alumno]||{}).full_name||'(alumno)')}</option>`).join('')}
+          ${U.filas.map((x,j)=>`<option value="${j}"${j===U.i?' selected':''}>${esc((U.quien[x.alumno]||{}).full_name||'(student)')}</option>`).join('')}
         </select></span>
-      <button class="btn" onclick="unitMueve(1)" ${U.i>=U.filas.length-1?'disabled':''}>Siguiente ▶</button>
+      <button class="btn" onclick="unitMueve(1)" ${U.i>=U.filas.length-1?'disabled':''}>Next ▶</button>
     </div>`;
 
-  const evaluacion = !base ? '<p class="muted">Aún no ha entregado ningún producto: no hay nada que evaluar.</p>' : `
-    <h4 style="margin:0 0 8px">📏 Evaluación</h4>
+  const evaluacion = !base ? '<p class="muted">No product has been submitted yet: there is nothing to assess.</p>' : `
+    <h4 style="margin:0 0 8px">📏 Assessment</h4>
     ${U.crits.map(c=>{ const puesto = crit[c.n];
       return `<div style="margin-bottom:12px">
         <div style="font-size:.86rem;font-weight:600">${c.n}. ${esc(c.text)}
-          ${selfL[c.n]?`<span class="muted" style="font-weight:400;font-size:.75rem" title="autoevaluación"> · el alumno se puso ${selfL[c.n]}</span>`:''}</div>
+          ${selfL[c.n]?`<span class="muted" style="font-weight:400;font-size:.75rem" title="self-assessment"> · the student self-assessed as ${selfL[c.n]}</span>`:''}</div>
         <div style="display:flex;gap:6px;margin-top:6px;flex-wrap:wrap">
           ${UNIT_LVL.map(l=>`<button class="btn small ${puesto===l?'':'ghost'}" style="min-width:46px;${sug[c.n]===l&&puesto!==l?'border-color:#3b5bdb;color:#3b5bdb':''}"
-              title="${esc((c.levels||{})[l]||UNIT_SIG[l])}${sug[c.n]===l?' (propuesta)':''}" onclick="unitNivel('${base.id}','${c.n}','${l}')">${l}</button>`).join('')}
+              title="${esc((c.levels||{})[l]||UNIT_SIG[l])}${sug[c.n]===l?' (suggested)':''}" onclick="unitNivel('${base.id}','${c.n}','${l}')">${l}</button>`).join('')}
         </div>
         ${puesto?`<div style="font-size:.8rem;margin-top:6px;background:#f6f8fc;border-left:3px solid var(--blue);padding:6px 10px;border-radius:0 6px 6px 0">
             <b>${puesto} · ${UNIT_SIG[puesto]}</b>${(c.levels||{})[puesto]?' — '+esc(c.levels[puesto]):''}</div>`
-          : (sug[c.n]?`<div class="muted" style="font-size:.76rem;margin-top:4px">propuesta: <b>${sug[c.n]}</b> · ${UNIT_SIG[sug[c.n]]}</div>`:'')}
+          : (sug[c.n]?`<div class="muted" style="font-size:.76rem;margin-top:4px">suggested: <b>${sug[c.n]}</b> · ${UNIT_SIG[sug[c.n]]}</div>`:'')}
       </div>`; }).join('')}
     ${rv && (haySug || (!base.feedback && rv.borrador)) ? `<div style="font-size:.8rem;background:#e7ecfd;color:#2d5a8d;border-radius:8px;padding:8px 10px;margin:4px 0 10px">
-        🤖 <b>Propuesta automática</b>${rv.fecha?' del '+esc(rv.fecha):''} — ${esc(rv.por||'revísala antes de enviar')}.
-        ${haySug?`<button class="btn small" style="margin-left:8px" onclick="unitAceptaPropuesta('${base.id}')">✔ Aceptar los niveles propuestos</button>`:''}</div>` : ''}
+        🤖 <b>Automatic suggestion</b>${rv.fecha?' from '+esc(rv.fecha):''} — ${esc(rv.por||'review it before sending')}.
+        ${haySug?`<button class="btn small" style="margin-left:8px" onclick="unitAceptaPropuesta('${base.id}')">✔ Accept suggested levels</button>`:''}</div>` : ''}
     <div style="border-top:1px solid var(--line);padding-top:10px;margin-top:6px">
       <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px">
-        <b>Nota</b>
+        <b>Grade</b>
         <span style="font-weight:800;font-size:1.05rem;color:var(--blue-dd)">${nota!=null
           ? `${nivel} · ${UNIT_SIG[nivel]} · ${nota}/20`
-          : '<span class="muted" style="font-weight:400;font-size:.85rem">pon los niveles y sale sola</span>'}</span>
+          : '<span class="muted" style="font-weight:400;font-size:.85rem">add the levels and it shows automatically</span>'}</span>
       </div>
-      <p class="muted" style="font-size:.76rem;margin:4px 0 8px">${puestos} de ${U.crits.length} criterios puestos.
-        Los niveles se guardan al pulsarlos; el alumno ve la nota y el comentario cuando pulsas <b>Guardar y enviar</b>.</p>
-      <textarea id="unitComent" rows="${(base.feedback||(rv&&rv.borrador)||'').length>200?6:3}" placeholder="Comentario para el alumno" style="width:100%;padding:9px;border:1px solid var(--line);border-radius:8px;font-family:inherit;font-size:.86rem;line-height:1.5">${esc(base.feedback||(rv&&rv.borrador)||'')}</textarea>
+      <p class="muted" style="font-size:.76rem;margin:4px 0 8px">${puestos} of ${U.crits.length} criteria set.
+        Levels are saved as soon as you click them; the student sees the grade and comment when you click <b>Save and send</b>.</p>
+      <textarea id="unitComent" rows="${(base.feedback||(rv&&rv.borrador)||'').length>200?6:3}" placeholder="Comment for the student" style="width:100%;padding:9px;border:1px solid var(--line);border-radius:8px;font-family:inherit;font-size:.86rem;line-height:1.5">${esc(base.feedback||(rv&&rv.borrador)||'')}</textarea>
       <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:8px">
-        <button class="btn" onclick="unitEnvia('${base.id}')">📨 Guardar y enviar al alumno</button>
-        <span class="state" id="unitEstado">${base.reviewed_at?'Enviado · '+esc(new Date(base.reviewed_at).toLocaleDateString('es-PE')):''}</span>
+        <button class="btn" onclick="unitEnvia('${base.id}')">📨 Save and send to student</button>
+        <span class="state" id="unitEstado">${base.reviewed_at?'Sent · '+esc(new Date(base.reviewed_at).toLocaleDateString('en-GB')):''}</span>
       </div>
       <label style="display:block;font-size:.8rem;margin-top:10px">
         <input type="checkbox" ${base.shared?'checked':''} onchange="unitExhibe('${base.id}',this.checked)">
-        🖼️ Exhibir en la galería de la unidad — sus compañeros podrán ver este trabajo como ejemplo (por defecto solo lo veis tú y el alumno).</label>
+        🖼️ Show in the unit gallery — classmates will be able to see this work as an example (by default only you and the student can see it).</label>
     </div>`;
 
   host.innerHTML = `${nav}
     <div class="card" style="margin-bottom:14px">
       <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap">
-        <h3 style="margin:0;font-size:1.1rem">${esc(p.full_name||'(alumno)')}
-          <span class="muted" style="font-weight:400;font-size:.9rem">${p.grade_id?p.grade_id+'.º '+(p.section||''):''}</span></h3>
+        <h3 style="margin:0;font-size:1.1rem">${esc(p.full_name||'(student)')}
+          <span class="muted" style="font-weight:400;font-size:.9rem">${p.grade_id?'G'+p.grade_id+' '+(p.section||''):''}</span></h3>
         <span>
-          <span class="badge" style="background:${entregados===U.DELS.length?'#dcfce7':'#fef9c3'}">${entregados} de ${U.DELS.length} productos entregados</span>
-          ${base && base.reviewed_at ? '<span class="badge" style="background:#e0f2fe">enviado al alumno</span>' : ''}
+          <span class="badge" style="background:${entregados===U.DELS.length?'#dcfce7':'#fef9c3'}">${entregados} of ${U.DELS.length} products submitted</span>
+          ${base && base.reviewed_at ? '<span class="badge" style="background:#e0f2fe">sent to student</span>' : ''}
         </span>
       </div>
       <div style="display:flex;gap:18px;flex-wrap:wrap;margin:14px 0">${U.DELS.map(producto).join('')}</div>
-      ${nb && nb.file_path ? `<div style="margin:0 0 12px"><button class="btn small" onclick="unitVerArchivo('${esc(nb.file_path)}',this)">📓 Cuaderno</button></div>` : ''}
+      ${nb && nb.file_path ? `<div style="margin:0 0 12px"><button class="btn small" onclick="unitVerArchivo('${esc(nb.file_path)}',this)">📓 Notebook</button></div>` : ''}
       <div style="border-top:1px solid var(--line);padding-top:12px">${evaluacion}</div>
     </div>`;
 }
@@ -6667,7 +6667,7 @@ window.unitNivel = async function(id, crit, valor){
   unitPintaAlumno();
   const { error } = await sb.from('unit_submissions').update({ criteria:c, score:base.score }).eq('id', id);
   const st = $('#unitEstado');
-  if(error && st){ st.textContent = 'No se pudo guardar: '+error.message; st.className='state err'; }
+  if(error && st){ st.textContent = 'Could not save: '+error.message; st.className='state err'; }
 };
 
 /* Copia los niveles propuestos a los criterios (solo donde el profesor no
@@ -6682,7 +6682,7 @@ window.unitAceptaPropuesta = async function(id){
   unitPintaAlumno();
   const { error } = await sb.from('unit_submissions').update({ criteria:c, score:base.score }).eq('id', id);
   const st = $('#unitEstado');
-  if(st){ st.textContent = error ? 'No se pudo guardar: '+error.message : 'Niveles guardados — revisa el comentario y pulsa Guardar y enviar'; st.className = error?'state err':'state ok'; }
+  if(st){ st.textContent = error ? 'Could not save: '+error.message : 'Levels saved — review the comment and click Save and send'; st.className = error?'state err':'state ok'; }
 };
 
 window.unitEnvia = async function(id){
@@ -6691,19 +6691,19 @@ window.unitEnvia = async function(id){
   const ta = $('#unitComent'), st = $('#unitEstado');
   const cambio = { feedback:(ta?ta.value:base.feedback)||'', score:unitNota(_unit.crits, base.criteria),
                    reviewed_at:new Date().toISOString(), reviewed_by:(state.profile&&state.profile.id)||null };
-  if(st){ st.textContent='Guardando…'; st.className='state'; }
+  if(st){ st.textContent='Saving…'; st.className='state'; }
   const { error } = await sb.from('unit_submissions').update(cambio).eq('id', id);
-  if(error){ if(st){ st.textContent='No se pudo enviar: '+error.message; st.className='state err'; } return; }
+  if(error){ if(st){ st.textContent='Could not send: '+error.message; st.className='state err'; } return; }
   Object.assign(base, cambio);
   unitPintaAlumno();
-  const st2 = $('#unitEstado'); if(st2){ st2.textContent='Enviado al alumno ✓'; st2.className='state ok'; }
+  const st2 = $('#unitEstado'); if(st2){ st2.textContent='Sent to student ✓'; st2.className='state ok'; }
 };
 
 /* El bucket es privado: se pide un enlace temporal, como en Fun for Nordic. */
 window.unitVerArchivo = async function(ruta, boton){
   if(!ruta) return;
   const { data, error } = await sb.storage.from('unit-products').createSignedUrl(ruta, 3600);
-  if(error || !data){ boton.textContent='No disponible'; return; }
+  if(error || !data){ boton.textContent='Not available'; return; }
   const ext = (ruta.split('.').pop()||'').toLowerCase();
   if(['webm','ogg','mp3','m4a','wav'].indexOf(ext)>=0){
     const a=document.createElement('audio'); a.controls=true; a.src=data.signedUrl; a.style.maxWidth='15rem';
@@ -6786,7 +6786,7 @@ function _unitPlanCard(u,route,grade,open){
        </div>`
     : `<div style="font-size:3.4rem;line-height:1;padding:30px 18px 8px">${(u.cover&&u.cover.icon)||'📘'}</div>`;
   const body=`${visual}<div style="padding:18px">
-        <h2 style="margin:0 0 6px;color:var(--blue-d)">Unit ${esc(String(u.label||u.n))} · ${esc(u.title)}</h2>${u.pilot?`<div class="badge" style="background:#ede9fe;color:#5b21b6;margin-bottom:6px">🧪 Piloto 2027 · no visible para alumnos</div>`:''}
+        <h2 style="margin:0 0 6px;color:var(--blue-d)">Unit ${esc(String(u.label||u.n))} · ${esc(u.title)}</h2>${u.pilot?`<div class="badge" style="background:#ede9fe;color:#5b21b6;margin-bottom:6px">🧪 2027 pilot · not visible to students</div>`:''}
         <div class="muted" style="font-size:.85rem">${esc(u.deliverables.map(d=>d.title).join(' · '))} — ${u.weeks} weeks.</div>
         ${open?'':'<div class="badge" style="background:#fee2e2;color:#991b1b;margin-top:10px">🔒 Your teacher will unlock this unit</div>'}
       </div>`;
@@ -6837,42 +6837,42 @@ const MAT_RE = /^u(\d+)w(\d+)s(\d+)-(worksheet-(a2|b1|b2|c1)|slides)\.(pdf|docx|
 function materialesPanel(){
   const grados = ALL_GRADE_ORDER.map(g=>`<option value="${g}">${GRADE_META[g][1]}</option>`).join('');
   $('#main').innerHTML = `<div class="card">
-    <h2>📄 Materiales de clase</h2>
-    <p class="muted">Sube aquí las fichas del alumno y las diapositivas. <b>El nombre del archivo
-      decide dónde va</b>, así que puedes arrastrar la carpeta entera de una unidad de golpe.</p>
+    <h2>📄 Class materials</h2>
+    <p class="muted">Upload the student worksheets and slides here. <b>The file name
+      decides where it goes</b>, so you can drag the whole unit folder in one go.</p>
 
     <div class="row" style="gap:10px;align-items:center;margin:14px 0">
-      <label>Grado <select id="matGrado" style="margin-left:6px">${grados}</select></label>
-      <span class="muted" style="font-size:.85rem">La unidad, la semana y la sesión salen del nombre.</span>
+      <label>Grade <select id="matGrado" style="margin-left:6px">${grados}</select></label>
+      <span class="muted" style="font-size:.85rem">The unit, week and session come from the name.</span>
     </div>
 
     <label for="matFiles" style="display:block;border:2px dashed var(--lila);border-radius:12px;
         padding:26px;text-align:center;cursor:pointer;color:var(--grey)">
       <input type="file" id="matFiles" multiple accept=".pdf,.docx,.pptx" style="display:none">
-      📎 <b>Elige los archivos</b> — o arrástralos aquí
+      📎 <b>Choose the files</b> — or drag them here
     </label>
 
     <div class="row"><span class="state" id="matEstado"></span></div>
 
-    <h3 style="margin-top:24px;font-size:1rem;color:var(--blue-d)">Fichas digitales</h3>
-    <p class="muted">Para que el alumno la resuelva <b>dentro del portal</b>, sin bajarse nada.
-      Suelta aquí tus fichas en <b>Word</b> y el portal las convierte: te enseña lo que ha
-      entendido de cada una y tú decides si se publica.</p>
+    <h3 style="margin-top:24px;font-size:1rem;color:var(--blue-d)">Digital worksheets</h3>
+    <p class="muted">So the student can complete it <b>inside the portal</b>, without downloading anything.
+      Drop your worksheets here in <b>Word</b> and the portal converts them: it shows you what it
+      understood from each one and you decide whether to publish it.</p>
     <label for="matJson" style="display:block;border:2px dashed #cbe0c9;border-radius:12px;
         padding:18px;text-align:center;cursor:pointer;color:var(--grey)">
       <input type="file" id="matJson" multiple accept=".docx,.json" style="display:none">
-      🧩 <b>Digitalizar fichas</b> — elige tus <code>.docx</code>, o arrástralos aquí
+      🧩 <b>Digitize worksheets</b> — choose your <code>.docx</code> files, or drag them here
     </label>
     <div class="row"><span class="state" id="matJsonEstado"></span></div>
     <div id="matLista" style="margin-top:14px"></div>
 
     <details style="margin-top:18px">
-      <summary style="cursor:pointer;font-weight:600;color:var(--blue-d)">Cómo se deben llamar los archivos</summary>
+      <summary style="cursor:pointer;font-weight:600;color:var(--blue-d)">How the files should be named</summary>
       <div style="font-size:.86rem;color:var(--grey);margin-top:10px;line-height:1.8">
-        <code>u4w1s1-worksheet-a2.pdf</code> — ficha del alumno, unidad 4, semana 1, sesión 1, nivel A2<br>
-        <code>u4w1s1-worksheet-a2.docx</code> — la misma ficha en Word, para que la puedan editar<br>
-        <code>u4w1s1-slides.pptx</code> — las diapositivas de esa sesión<br>
-        Los niveles válidos son <b>a2, b1, b2, c1</b>. Lo que no siga este patrón se queda sin subir y te lo digo.
+        <code>u4w1s1-worksheet-a2.pdf</code> — student worksheet, unit 4, week 1, session 1, level A2<br>
+        <code>u4w1s1-worksheet-a2.docx</code> — the same worksheet in Word, so it can be edited<br>
+        <code>u4w1s1-slides.pptx</code> — the slides for that session<br>
+        The valid levels are <b>a2, b1, b2, c1</b>. Anything that does not follow this pattern is not uploaded, and you will be told.
       </div>
     </details>
   </div>`;
@@ -6904,7 +6904,7 @@ async function matSube(files){
   const filas = [];
   let ok = 0, mal = 0;
 
-  est.textContent = `Subiendo ${files.length} archivo(s)…`;
+  est.textContent = `Uploading ${files.length} file(s)…`;
   est.className = 'state';
 
   for(let i = 0; i < files.length; i++){
@@ -6912,7 +6912,7 @@ async function matSube(files){
     const m = MAT_RE.exec(f.name);
     if(!m){
       mal++;
-      filas.push(`<tr><td>${esc(f.name)}</td><td class="err">El nombre no sigue el patrón — no se sube</td></tr>`);
+      filas.push(`<tr><td>${esc(f.name)}</td><td class="err">The name does not follow the pattern — not uploaded</td></tr>`);
       continue;
     }
     const unidad = parseInt(m[1],10), semana = parseInt(m[2],10);
@@ -6926,17 +6926,17 @@ async function matSube(files){
       ok++;
       filas.push(`<tr><td>${esc(f.name)}</td><td class="muted">→ ${esc(ruta)}</td></tr>`);
     }
-    est.textContent = `${i+1} de ${files.length}…`;
+    est.textContent = `${i+1} of ${files.length}…`;
   }
 
-  est.textContent = `${ok} subido(s)${mal ? `, ${mal} sin subir` : ''}.`;
+  est.textContent = `${ok} uploaded${mal ? `, ${mal} not uploaded` : ''}.`;
   est.className = mal ? 'state err' : 'state ok';
   lista.innerHTML = `<div style="overflow-x:auto"><table class="tbl">
-    <thead><tr><th>Archivo</th><th>Dónde ha ido</th></tr></thead>
+    <thead><tr><th>File</th><th>Where it went</th></tr></thead>
     <tbody>${filas.join('')}</tbody></table></div>
-    <p class="muted" style="font-size:.82rem;margin-top:10px">Las fichas aparecen en el hub de la unidad
-      en cuanto se suben, sin tocar nada más. Las diapositivas hay que convertirlas a imagen aparte
-      (<code>tools/exporta_slides_png.ps1</code>) para que los alumnos las puedan ver sin descargarlas.</p>`;
+    <p class="muted" style="font-size:.82rem;margin-top:10px">Worksheets appear in the unit hub
+      as soon as they are uploaded, with nothing else to do. Slides need to be converted to images separately
+      (<code>tools/exporta_slides_png.ps1</code>) so students can view them without downloading.</p>`;
 }
 
 /* Fichas entregadas, ordenadas por sesión: es la corrección del día a día,
@@ -6950,9 +6950,9 @@ const _ficha = { sel:null, i:0 };
 /* De que es una entrega de ficha: sesion 'w1s1' o actividad suelta 'a:...'. */
 function unitFichaDonde(r){
   const m = /^w(\d+)s(\d+)$/.exec(r.milestone || '');
-  if(m) return 'Semana ' + m[1] + ' · Sesión ' + m[2];
+  if(m) return 'Week ' + m[1] + ' · Session ' + m[2];
   const titulo = (r.payload && r.payload.title) || (r.milestone || '').replace(/^a:/,'');
-  const semana = (r.payload && r.payload.week && !/(week|semaine|semana)\s*\d/i.test(titulo)) ? 'Semana ' + r.payload.week + ' · ' : '';
+  const semana = (r.payload && r.payload.week && !/(week|semaine|semana)\s*\d/i.test(titulo)) ? 'Week ' + r.payload.week + ' · ' : '';
   return semana + titulo;
 }
 function unitFichaOrden(r){
@@ -6971,11 +6971,11 @@ function unitFichasBloque(){
   const claves = Object.keys(grupos).sort((a,b)=>unitFichaOrden(grupos[a].r)-unitFichaOrden(grupos[b].r) || a.localeCompare(b));
   if(claves.indexOf(_ficha.sel)<0){ _ficha.sel = claves[0]; _ficha.i = 0; }
   return `<div class="card" style="margin-top:14px">
-    <h2>📄 Fichas entregadas</h2>
-    <p class="muted">Lo que entregan sesión a sesión: la ficha que resolvieron en el portal, el enlace de
-      Google Docs o el archivo. Elige la ficha y pasa alumno por alumno; la nota y el comentario los ve
-      el alumno en la propia actividad.</p>
-    <label style="font-size:.85rem">Ficha <select onchange="unitFichaElige(this.value)" style="margin-left:4px;max-width:420px">
+    <h2>📄 Submitted worksheets</h2>
+    <p class="muted">What students submit session by session: the worksheet completed in the portal, the
+      Google Docs link, or the file. Choose the worksheet and go through students one by one; the student
+      sees the grade and comment in the activity itself.</p>
+    <label style="font-size:.85rem">Worksheet <select onchange="unitFichaElige(this.value)" style="margin-left:4px;max-width:420px">
       ${claves.map(k=>`<option value="${esc(k)}"${k===_ficha.sel?' selected':''}>${esc(unitFichaDonde(grupos[k].r))} (${grupos[k].n})</option>`).join('')}
     </select></label>
     <div id="unitFicha"></div>
@@ -6998,7 +6998,7 @@ function unitFichaLista(){
 function unitPintaFicha(){
   const host = $('#unitFicha'); if(!host) return;
   const lista = unitFichaLista(), r = lista[_ficha.i];
-  if(!r){ host.innerHTML = '<p class="muted">Nadie ha entregado esta ficha.</p>'; return; }
+  if(!r){ host.innerHTML = '<p class="muted">Nobody has submitted this worksheet yet.</p>'; return; }
   const p = (_unit.quien||{})[r.student_id] || {};
   const pl = r.payload || {};
   const m = /^w(\d+)s(\d+)$/.exec(r.milestone || '');
@@ -7015,48 +7015,48 @@ function unitPintaFicha(){
   const valor = v => v===true ? '✔' : v==='T' ? 'True' : v==='F' ? 'False' : String(v);
 
   const nav = `<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:12px 0 10px">
-      <button class="btn" onclick="unitFichaMueve(-1)" ${_ficha.i===0?'disabled':''}>◀ Anterior</button>
-      <span style="font-size:.9rem">Alumno <b>${_ficha.i+1}</b> de ${lista.length} ·
+      <button class="btn" onclick="unitFichaMueve(-1)" ${_ficha.i===0?'disabled':''}>◀ Previous</button>
+      <span style="font-size:.9rem">Student <b>${_ficha.i+1}</b> of ${lista.length} ·
         <select onchange="unitFichaSalta(this.value)" style="max-width:260px">
-          ${lista.map((x,j)=>`<option value="${j}"${j===_ficha.i?' selected':''}>${esc(((_unit.quien||{})[x.student_id]||{}).full_name||'(alumno)')}</option>`).join('')}
+          ${lista.map((x,j)=>`<option value="${j}"${j===_ficha.i?' selected':''}>${esc(((_unit.quien||{})[x.student_id]||{}).full_name||'(student)')}</option>`).join('')}
         </select></span>
-      <button class="btn" onclick="unitFichaMueve(1)" ${_ficha.i>=lista.length-1?'disabled':''}>Siguiente ▶</button>
+      <button class="btn" onclick="unitFichaMueve(1)" ${_ficha.i>=lista.length-1?'disabled':''}>Next ▶</button>
     </div>`;
 
   let entrega;
   if(pl.answers){
-    entrega = `<div class="muted" style="font-size:.78rem;margin-bottom:6px">🧩 ${esc(pl.title||(planilla&&planilla.title)||'Ficha digital')}
-        ${pl.level?' · nivel '+esc(pl.level):''} · ${claves.length} campo${claves.length===1?'':'s'} respondido${claves.length===1?'':'s'}
-        · <span class="badge" style="background:${pl.handed_at||pl.draft===false?'#dcfce7':'#fef9c3'}">${pl.handed_at||pl.draft===false?'entregada':'borrador'}</span></div>
+    entrega = `<div class="muted" style="font-size:.78rem;margin-bottom:6px">🧩 ${esc(pl.title||(planilla&&planilla.title)||'Digital worksheet')}
+        ${pl.level?' · level '+esc(pl.level):''} · ${claves.length} field${claves.length===1?'':'s'} answered${claves.length===1?'':'s'}
+        · <span class="badge" style="background:${pl.handed_at||pl.draft===false?'#dcfce7':'#fef9c3'}">${pl.handed_at||pl.draft===false?'submitted':'draft'}</span></div>
       ${claves.length ? `<div style="overflow:auto;max-height:420px;border:1px solid var(--line);border-radius:8px"><table class="tbl" style="margin:0">
         <tbody>${claves.map(k=>`<tr>
           <td style="font-size:.8rem;vertical-align:top;min-width:160px;max-width:380px">${etiquetas[k]?esc(etiquetas[k]):'<span class="muted">'+esc(k)+'</span>'}</td>
           <td style="white-space:pre-wrap;font-size:.86rem;line-height:1.5">${esc(valor(resp[k]))}</td></tr>`).join('')}</tbody></table></div>`
-        : '<p class="muted" style="margin:0">No respondió ningún campo.</p>'}`;
+        : '<p class="muted" style="margin:0">No field was answered.</p>'}`;
   } else if(pl.link){
-    entrega = `<a class="btn small" href="${esc(pl.link)}" target="_blank" rel="noopener">🔗 Abrir en Google Docs</a>`;
+    entrega = `<a class="btn small" href="${esc(pl.link)}" target="_blank" rel="noopener">🔗 Open in Google Docs</a>`;
   } else if(r.file_path){
-    entrega = `<button class="btn small" onclick="unitVerArchivo('${esc(r.file_path)}',this)">📎 ${esc(pl.name||'Ver archivo')}</button>`;
+    entrega = `<button class="btn small" onclick="unitVerArchivo('${esc(r.file_path)}',this)">📎 ${esc(pl.name||'View file')}</button>`;
   } else {
-    entrega = '<p class="muted" style="margin:0">Sin entrega.</p>';
+    entrega = '<p class="muted" style="margin:0">Not submitted.</p>';
   }
 
   const conRubrica = !!(planilla && Array.isArray(planilla.rubric) && planilla.rubric.length);
   host.innerHTML = `${nav}
     <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap">
-      <h3 style="margin:0;font-size:1.05rem">${esc(p.full_name||'(alumno)')}
-        <span class="muted" style="font-weight:400;font-size:.9rem">${p.grade_id?p.grade_id+'.º '+(p.section||''):''}</span></h3>
-      <span class="muted" style="font-size:.85rem">${esc(unitFichaDonde(r))}${r.reviewed_at?' · <span class="badge" style="background:#e0f2fe">enviado al alumno</span>':''}</span>
+      <h3 style="margin:0;font-size:1.05rem">${esc(p.full_name||'(student)')}
+        <span class="muted" style="font-weight:400;font-size:.9rem">${p.grade_id?'G'+p.grade_id+' '+(p.section||''):''}</span></h3>
+      <span class="muted" style="font-size:.85rem">${esc(unitFichaDonde(r))}${r.reviewed_at?' · <span class="badge" style="background:#e0f2fe">sent to student</span>':''}</span>
     </div>
     <div style="margin:12px 0">${entrega}</div>
     <div style="border-top:1px solid var(--line);padding-top:10px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
-      <label style="font-size:.8rem">Nota <input type="number" min="0" max="20" id="unitFichaNota" value="${r.score!=null?r.score:''}" style="width:4.5rem"></label>
-      <input type="text" id="unitFichaComent" placeholder="Comentario para el alumno" value="${esc(r.feedback||'')}" style="flex:1 1 240px;min-width:200px">
-      <button class="btn" onclick="unitFichaEnvia('${r.id}')">📨 Guardar y enviar</button>
+      <label style="font-size:.8rem">Grade <input type="number" min="0" max="20" id="unitFichaNota" value="${r.score!=null?r.score:''}" style="width:4.5rem"></label>
+      <input type="text" id="unitFichaComent" placeholder="Comment for the student" value="${esc(r.feedback||'')}" style="flex:1 1 240px;min-width:200px">
+      <button class="btn" onclick="unitFichaEnvia('${r.id}')">📨 Save and send</button>
       <span class="state" id="unitFichaEstado"></span>
     </div>
-    ${conRubrica && m ? `<p class="muted" style="font-size:.78rem;margin:8px 0 0">Esta sesión tiene rúbrica de puntos:
-      <a href="#" onclick="unitFichaCorregir('${_unit.grade}',${parseInt(_unit.unit,10)},${+m[1]},${+m[2]});return false">corregirla con la rúbrica en ✅ Corregir fichas</a>.</p>` : ''}`;
+    ${conRubrica && m ? `<p class="muted" style="font-size:.78rem;margin:8px 0 0">This session has a points rubric:
+      <a href="#" onclick="unitFichaCorregir('${_unit.grade}',${parseInt(_unit.unit,10)},${+m[1]},${+m[2]});return false">mark it with the rubric in ✅ Mark worksheets</a>.</p>` : ''}`;
 }
 
 window.unitFichaEnvia = async function(id){
@@ -7064,12 +7064,12 @@ window.unitFichaEnvia = async function(id){
   const st = $('#unitFichaEstado'), nota = $('#unitFichaNota'), com = $('#unitFichaComent');
   const cambio = { feedback:(com?com.value:r.feedback)||'', reviewed_at:new Date().toISOString(), reviewed_by:(state.profile&&state.profile.id)||null };
   if(nota && nota.value!=='') cambio.score = Number(nota.value);
-  if(st){ st.textContent='Guardando…'; st.className='state'; }
+  if(st){ st.textContent='Saving…'; st.className='state'; }
   const { error } = await sb.from('unit_submissions').update(cambio).eq('id', id);
-  if(error){ if(st){ st.textContent='No se pudo enviar: '+error.message; st.className='state err'; } return; }
+  if(error){ if(st){ st.textContent='Could not send: '+error.message; st.className='state err'; } return; }
   Object.assign(r, cambio);
   unitPintaFicha();
-  const st2 = $('#unitFichaEstado'); if(st2){ st2.textContent='Enviado al alumno ✓'; st2.className='state ok'; }
+  const st2 = $('#unitFichaEstado'); if(st2){ st2.textContent='Sent to student ✓'; st2.className='state ok'; }
 };
 /* Abre esa sesion en Corregir fichas, que corrige con la rubrica de puntos. */
 window.unitFichaCorregir = function(grade, unit, week, session){
@@ -7111,7 +7111,7 @@ async function _zipLee(buf, queArchivo){
   for(let i = n - 22; i >= Math.max(0, n - 65558); i--){
     if(dv.getUint32(i, true) === 0x06054b50){ fin = i; break; }
   }
-  if(fin < 0) throw new Error('no parece un .docx (no encuentro el índice del ZIP)');
+  if(fin < 0) throw new Error('it does not look like a .docx (no ZIP index found)');
 
   let pos = dv.getUint32(fin + 16, true);
   const cuantos = dv.getUint16(fin + 10, true);
@@ -7136,15 +7136,15 @@ async function _zipLee(buf, queArchivo){
       const ini  = offLocal + 30 + lNom + lExt;
       const datos = new Uint8Array(buf, ini, compSize);
       if(metodo === 0) return new TextDecoder('utf-8').decode(datos);
-      if(metodo !== 8) throw new Error('el .docx usa una compresión que no sé leer');
+      if(metodo !== 8) throw new Error('the .docx uses a compression this tool cannot read');
       if(typeof DecompressionStream === 'undefined')
-        throw new Error('este navegador no puede descomprimir; ábrelo en Chrome o Edge actualizados');
+        throw new Error('this browser cannot decompress it; open it in an up-to-date Chrome or Edge');
       const flujo = new Blob([datos]).stream().pipeThrough(new DecompressionStream('deflate-raw'));
       return await new Response(flujo).text();
     }
     pos += 46 + lenNom + lenExtra + lenCom;
   }
-  throw new Error('el archivo no lleva ' + queArchivo + ' — ¿es un .docx de verdad?');
+  throw new Error('the file has no ' + queArchivo + ' — is it really a .docx?');
 }
 
 /* ---- 2. Del XML de Word a los bloques de la ficha ---------------------- */
@@ -7301,9 +7301,9 @@ async function matDigitaliza(files){
 
   for(let i = 0; i < docx.length; i++){
     const f = docx[i];
-    est.textContent = `Leyendo ${i+1} de ${docx.length}: ${f.name}…`;
+    est.textContent = `Reading ${i+1} of ${docx.length}: ${f.name}…`;
     const m = _RE_FICHA.exec(f.name);
-    if(!m){ malos.push(f.name + ' — el nombre no sigue el patrón uNwNsN-worksheet-nivel.docx'); continue; }
+    if(!m){ malos.push(f.name + ' — the name does not follow the pattern uNwNsN-worksheet-level.docx'); continue; }
     try{
       const xml = await _zipLee(await f.arrayBuffer(), 'word/document.xml');
       const {titulo, meta, bloques} = docxABloques(xml);
@@ -7311,7 +7311,7 @@ async function matDigitaliza(files){
       // Una ficha sin ningún campo que rellenar no es una ficha digital: es un
       // documento de lectura. Se avisa en vez de publicar algo que el alumno
       // abre y no puede responder.
-      if(!campos){ malos.push(f.name + ' — no encontré nada que el alumno pueda rellenar'); continue; }
+      if(!campos){ malos.push(f.name + ' — found nothing for the student to fill in'); continue; }
       fichas.push({
         grade: grado, unit: +m[1], week: +m[2], session: +m[3], level: m[4].toUpperCase(),
         code: `u${+m[1]}w${+m[2]}s${+m[3]}`, title: titulo || null, meta: meta || null,
@@ -7322,7 +7322,7 @@ async function matDigitaliza(files){
 
   if(!fichas.length){
     est.className = 'state err';
-    est.innerHTML = 'No pude digitalizar ninguna.<br>' + malos.map(esc).join('<br>');
+    est.innerHTML = 'Could not digitize any of them.<br>' + malos.map(esc).join('<br>');
     return;
   }
 
@@ -7331,26 +7331,26 @@ async function matDigitaliza(files){
   window._matPrevias = fichas;
   const filas = fichas.map((f,i) => `<tr>
       <td><b>${esc(f.code)}</b> <span class="badge lvl">${esc(f.level)}</span></td>
-      <td>${esc(f.title || '(sin título)')}</td>
+      <td>${esc(f.title || '(no title)')}</td>
       <td style="text-align:center">${f.blocks.length}</td>
       <td style="text-align:center"><b>${f.campos}</b></td>
-      <td><button class="btn sm ghost" onclick="matVistaPrevia(${i})">👁 Ver</button></td>
+      <td><button class="btn sm ghost" onclick="matVistaPrevia(${i})">👁 View</button></td>
     </tr>`).join('');
   est.className = 'state ok';
-  est.textContent = `${fichas.length} ficha(s) leídas. Revísalas y publica.`;
+  est.textContent = `${fichas.length} worksheet(s) read. Review them and publish.`;
   $('#matLista').innerHTML = `
     <div class="card" style="margin-top:12px">
-      <h3 style="margin-top:0;font-size:1rem;color:var(--blue-d)">Esto es lo que he entendido</h3>
+      <h3 style="margin-top:0;font-size:1rem;color:var(--blue-d)">This is what I understood</h3>
       <div style="overflow-x:auto"><table class="tbl">
-        <thead><tr><th>Ficha</th><th>Título</th><th style="text-align:center">Bloques</th>
-          <th style="text-align:center">Campos</th><th></th></tr></thead>
+        <thead><tr><th>Worksheet</th><th>Title</th><th style="text-align:center">Blocks</th>
+          <th style="text-align:center">Fields</th><th></th></tr></thead>
         <tbody>${filas}</tbody></table></div>
-      ${malos.length ? `<div class="note err" style="margin-top:12px">No pude con ${malos.length}:<br>
+      ${malos.length ? `<div class="note err" style="margin-top:12px">Could not process ${malos.length}:<br>
         ${malos.map(esc).join('<br>')}</div>` : ''}
       <div id="matPrev" style="display:none;margin-top:14px"></div>
       <div class="row" style="margin-top:14px;gap:10px">
-        <button class="btn" onclick="matPublica()">Publicar ${fichas.length} ficha(s) en ${esc(GRADE_META[grado][1])}</button>
-        <button class="btn ghost" onclick="$('#matLista').innerHTML='';$('#matJsonEstado').textContent='';">Cancelar</button>
+        <button class="btn" onclick="matPublica()">Publish ${fichas.length} worksheet(s) in ${esc(GRADE_META[grado][1])}</button>
+        <button class="btn ghost" onclick="$('#matLista').innerHTML='';$('#matJsonEstado').textContent='';">Cancel</button>
       </div>
     </div>`;
 }
@@ -7369,19 +7369,19 @@ window.matVistaPrevia = function(i){
         ${b.items.map(x=>`<span class="badge">${esc(x)}</span>`).join('')}</div>`;
     if(b.t === 'goals')    return `<ul style="margin:8px 0">${b.items.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`;
     if(b.t === 'write')    return `<div style="margin:8px 0;padding:8px 10px;border:2px dashed var(--blue);
-        border-radius:8px;color:var(--blue-d);font-size:.85rem">✍️ campo de escritura · ${b.lines} línea(s)</div>`;
+        border-radius:8px;color:var(--blue-d);font-size:.85rem">✍️ writing field · ${b.lines} line(s)</div>`;
     if(b.t === 'table')    return `<div style="overflow-x:auto;margin:8px 0"><table class="tbl">
         <thead><tr>${b.head.map(h=>`<th>${esc(h)}</th>`).join('')}</tr></thead>
         <tbody>${b.rows.map(r=>`<tr>${r.map(c=>c
           ? `<td>${esc(c)}</td>`
-          : '<td style="background:#eef4fb;color:var(--blue-d);font-size:.8rem">se rellena</td>').join('')}</tr>`).join('')}
+          : '<td style="background:#eef4fb;color:var(--blue-d);font-size:.8rem">to fill in</td>').join('')}</tr>`).join('')}
         </tbody></table></div>`;
     return '';
   };
   caja.style.display = 'block';
   caja.innerHTML = `<div style="border:1px solid var(--line);border-radius:12px;padding:16px;background:#fff">
     <div class="muted" style="font-size:.8rem">${esc(f.archivo)}</div>
-    <h3 style="margin:2px 0 2px">${esc(f.title || '(sin título)')}</h3>
+    <h3 style="margin:2px 0 2px">${esc(f.title || '(no title)')}</h3>
     ${f.meta ? `<div class="muted" style="font-size:.85rem;margin-bottom:8px">${esc(f.meta)}</div>` : ''}
     ${f.blocks.map(pinta).join('')}</div>`;
   caja.scrollIntoView({behavior:'smooth', block:'nearest'});
@@ -7391,7 +7391,7 @@ window.matPublica = async function(){
   const fichas = window._matPrevias || [];
   if(!fichas.length) return;
   const est = $('#matJsonEstado');
-  est.className = 'state'; est.textContent = 'Publicando…';
+  est.className = 'state'; est.textContent = 'Publishing…';
   const filas = fichas.map(f => ({
     grade: f.grade, unit: f.unit, week: f.week, session: f.session, level: f.level,
     code: f.code, title: f.title, meta: f.meta, blocks: f.blocks,
@@ -7407,21 +7407,21 @@ window.matPublica = async function(){
   }
   est.className = fallos ? 'state err' : 'state ok';
   est.textContent = fallos
-    ? `${ok} publicadas, ${fallos} con error (${ultimo})`
-    : `${ok} ficha(s) publicadas. Ya se pueden resolver en el portal.`;
+    ? `${ok} published, ${fallos} with error (${ultimo})`
+    : `${ok} worksheet(s) published. They can now be completed in the portal.`;
   if(!fallos) $('#matLista').innerHTML = '';
 };
 
 async function matImporta(file){
   if(!file) return;
   const est = $('#matJsonEstado');
-  est.textContent = 'Leyendo…'; est.className = 'state';
+  est.textContent = 'Reading…'; est.className = 'state';
   let fichas;
   try {
     fichas = JSON.parse(await file.text());
-    if(!Array.isArray(fichas) || !fichas.length) throw new Error('el archivo no trae fichas');
+    if(!Array.isArray(fichas) || !fichas.length) throw new Error('the file does not include any worksheets');
   } catch(e){
-    est.textContent = 'No pude leerlo: ' + e.message; est.className = 'state err'; return;
+    est.textContent = 'Could not read it: ' + e.message; est.className = 'state err'; return;
   }
 
   const filas = fichas.map(f => ({
@@ -7438,11 +7438,11 @@ async function matImporta(file){
       .upsert(lote, { onConflict: 'grade,unit,week,session,level' });
     if(error){ fallos += lote.length; ultimo = error.message; }
     else ok += lote.length;
-    est.textContent = `${Math.min(i + 12, filas.length)} de ${filas.length}…`;
+    est.textContent = `${Math.min(i + 12, filas.length)} of ${filas.length}…`;
   }
   est.textContent = fallos
-    ? `${ok} importadas, ${fallos} con error (${ultimo})`
-    : `${ok} fichas digitales importadas. Ya se pueden resolver en el portal.`;
+    ? `${ok} imported, ${fallos} with error (${ultimo})`
+    : `${ok} digital worksheets imported. They can now be completed in the portal.`;
   est.className = fallos ? 'state err' : 'state ok';
 }
 
@@ -7460,7 +7460,7 @@ async function matImporta(file){
 let _corr = { grade:null, unit:null, section:'', hito:null, week:1, session:1, fichas:[], entregas:[], todas:[], i:0, rubric:[], modo:'sesion', rubAbierta:true };
 
 async function corregirPanel(){
-  $('#main').innerHTML = `<div class="card"><p class="muted">Cargando…</p></div>`;
+  $('#main').innerHTML = `<div class="card"><p class="muted">Loading…</p></div>`;
   if(_corr.modo === 'escritas') return corrEscritasPanel();
   await corrCarga();
 }
@@ -7469,8 +7469,8 @@ window.corrModo = function(m){ _corr.modo = m; corregirPanel(); };
 
 function corrTabs(){
   return `<div class="row" style="gap:8px;margin-bottom:12px">
-    <button class="btn small ${_corr.modo !== 'escritas' ? '' : 'ghost'}" onclick="corrModo('sesion')">📄 Por sesión</button>
-    <button class="btn small ${_corr.modo === 'escritas' ? '' : 'ghost'}" onclick="corrModo('escritas')">✍️ Producciones escritas</button>
+    <button class="btn small ${_corr.modo !== 'escritas' ? '' : 'ghost'}" onclick="corrModo('sesion')">📄 By session</button>
+    <button class="btn small ${_corr.modo === 'escritas' ? '' : 'ghost'}" onclick="corrModo('escritas')">✍️ Written productions</button>
   </div>`;
 }
 
@@ -7478,10 +7478,10 @@ async function corrEscritasPanel(){
   $('#main').innerHTML = `
     <div class="card">
       ${corrTabs()}
-      <h2>✍️ Producciones escritas</h2>
-      <p class="muted">El texto entero a la izquierda y la rúbrica a la derecha, con una propuesta
-        automática de nota que sale de lo que la propia rúbrica pide. Nada le llega al alumno
-        hasta que pulses <b>Guardar y enviar</b>.</p>
+      <h2>✍️ Written productions</h2>
+      <p class="muted">The whole text on the left and the rubric on the right, with an automatic
+        grade suggestion drawn from what the rubric itself asks for. Nothing reaches the student
+        until you press <b>Save and send</b>.</p>
       <style>
         /* minmax(0,1fr): sin el, la columna del texto no puede encoger y la
            pantalla se va de ancho. Y por debajo de 1100px no caben dos
@@ -7492,7 +7492,7 @@ async function corrEscritasPanel(){
       </style>
       <div id="eCab"></div>
     </div>
-    <div class="card" id="eLista"><p class="muted">Cargando…</p></div>
+    <div class="card" id="eLista"><p class="muted">Loading…</p></div>
     <div id="eCorr"></div>`;
   await escCarga();
 }
@@ -7505,7 +7505,7 @@ function corrNota(rub, puestos){
   if(!vs.length) return null;
   return Math.round(vs.reduce((a,b)=>a+b,0)/vs.length);
 }
-function corrDonde(h){ const m=/^w(\d+)s(\d+)$/.exec(h||''); return m ? 'Semana '+m[1]+' · Sesión '+m[2] : h; }
+function corrDonde(h){ const m=/^w(\d+)s(\d+)$/.exec(h||''); return m ? 'Week '+m[1]+' · Session '+m[2] : h; }
 
 /* Se parte de lo entregado: grado → seccion → unidad → ficha, cada
    desplegable solo con lo que existe y con cuantos la entregaron. Antes se
@@ -7517,8 +7517,8 @@ async function corrCarga(){
   }
   const T = _corr.todas;
   if(!T.length){
-    $('#main').innerHTML = `<div class="card">${corrTabs()}<h2>✅ Corregir fichas</h2>
-      <p class="muted">Todavía no hay fichas entregadas.</p></div>`;
+    $('#main').innerHTML = `<div class="card">${corrTabs()}<h2>✅ Mark worksheets</h2>
+      <p class="muted">No worksheets have been submitted yet.</p></div>`;
     return;
   }
   const numG = g => parseInt(String(g).replace(/\D/g,''),10)||0;
@@ -7562,35 +7562,35 @@ async function corrCarga(){
   $('#main').innerHTML = `
     <div class="card">
       ${corrTabs()}
-      <h2>✅ Corregir fichas</h2>
-      <p class="muted">Lo que entregan sesión a sesión. Un alumno cada vez: sus respuestas con el enunciado
-        delante y la rúbrica al lado; con las flechas (o ← → del teclado) pasas al siguiente.</p>
+      <h2>✅ Mark worksheets</h2>
+      <p class="muted">What they submit session by session. One student at a time: their answers with the prompt
+        in front and the rubric alongside; use the arrows (or the ← → keyboard keys) to move to the next one.</p>
       <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin:12px 0 0">
-        <label style="font-size:.85rem">Grado <select onchange="corrFiltra('grade',this.value)" style="margin-left:4px">
+        <label style="font-size:.85rem">Grade <select onchange="corrFiltra('grade',this.value)" style="margin-left:4px">
           ${grados.map(g=>opt(g,(GRADE_META[g]||[])[1]||g,g===_corr.grade)).join('')}</select></label>
-        <label style="font-size:.85rem">Sección <select onchange="corrFiltra('section',this.value)" style="margin-left:4px">
-          ${opt('','Todas',!_corr.section)}${secciones.map(x=>opt(x,x,x===_corr.section)).join('')}</select></label>
-        <label style="font-size:.85rem">Unidad <select onchange="corrFiltra('unit',this.value)" style="margin-left:4px">
-          ${unidades.map(u=>opt(u,'Unidad '+u,String(u)===String(_corr.unit))).join('')}</select></label>
-        <label style="font-size:.85rem">Ficha <select onchange="corrFiltra('hito',this.value)" style="margin-left:4px;max-width:420px">
+        <label style="font-size:.85rem">Section <select onchange="corrFiltra('section',this.value)" style="margin-left:4px">
+          ${opt('','All',!_corr.section)}${secciones.map(x=>opt(x,x,x===_corr.section)).join('')}</select></label>
+        <label style="font-size:.85rem">Unit <select onchange="corrFiltra('unit',this.value)" style="margin-left:4px">
+          ${unidades.map(u=>opt(u,'Unit '+u,String(u)===String(_corr.unit))).join('')}</select></label>
+        <label style="font-size:.85rem">Worksheet <select onchange="corrFiltra('hito',this.value)" style="margin-left:4px;max-width:420px">
           ${hitos.map(h=>opt(h, corrDonde(h)+(fichas[h].title?' — '+fichas[h].title:'')+' ('+fichas[h].n+')', h===_corr.hito)).join('')}</select></label>
       </div>
       <p style="margin:12px 0 0"><b>${esc(corrDonde(_corr.hito))}${titulo?' — '+esc(titulo):''}</b> ·
-        ${n} entrega${n===1?'':'s'} · <b>${evaluados}</b> evaluada${evaluados===1?'':'s'} · ${enviados} enviada${enviados===1?'':'s'} al alumno</p>
+        ${n} submission${n===1?'':'s'} · <b>${evaluados}</b> graded${evaluados===1?'':''} · ${enviados} sent${enviados===1?'':''} to the student</p>
       <details ${_corr.rubAbierta?'open':''} ontoggle="_corr.rubAbierta=this.open" style="margin-top:12px">
-        <summary style="cursor:pointer;font-weight:700">📏 Rúbrica de esta ficha — vale para los cuatro niveles de la sesión</summary>
-        <p class="muted" style="font-size:.8rem;margin:8px 0 0">Cada criterio se califica <b>AD</b> logro destacado · <b>A</b> logro esperado ·
-          <b>B</b> en proceso · <b>C</b> en inicio, y la nota sale sola: AD = 19 · A = 16 · B = 12 · C = 8, media de los criterios, redondeada.
-          Puedes cambiar los criterios aquí; se guardan para los ${_corr.fichas.length||4} niveles.</p>
+        <summary style="cursor:pointer;font-weight:700">📏 Rubric for this worksheet — applies to all four levels of the session</summary>
+        <p class="muted" style="font-size:.8rem;margin:8px 0 0">Each criterion is graded <b>AD</b> outstanding achievement · <b>A</b> expected achievement ·
+          <b>B</b> in progress · <b>C</b> starting out, and the grade is calculated automatically: AD = 19 · A = 16 · B = 12 · C = 8, average of the criteria, rounded.
+          You can change the criteria here; they are saved for the ${_corr.fichas.length||4} levels.</p>
         <div id="cRub"></div>
         <div class="row">
-          <button class="btn small" onclick="corrAddCrit()">+ Criterio</button>
-          <button class="btn small ghost" onclick="corrGuardaRubrica()">Guardar rúbrica</button>
+          <button class="btn small" onclick="corrAddCrit()">+ Criterion</button>
+          <button class="btn small ghost" onclick="corrGuardaRubrica()">Save rubric</button>
           <span class="state" id="cRubEstado"></span>
         </div>
       </details>
     </div>
-    ${n ? `<div id="cCorreccion"></div>` : `<div class="card"><p class="muted">Todavía no hay entregas de esta ficha.</p></div>`}`;
+    ${n ? `<div id="cCorreccion"></div>` : `<div class="card"><p class="muted">There are no submissions for this worksheet yet.</p></div>`}`;
 
   corrPintaRubrica();
   if(n) corrAlumno(_corr.i);
@@ -7606,15 +7606,15 @@ window.corrFiltra = function(k, v){
 function corrPintaRubrica(){
   const r = _corr.rubric;
   $('#cRub').innerHTML = r.length ? `<table class="tbl" style="margin-top:10px">
-      <thead><tr><th style="width:40px">#</th><th>Criterio</th><th style="width:40px"></th></tr></thead>
+      <thead><tr><th style="width:40px">#</th><th>Criterion</th><th style="width:40px"></th></tr></thead>
       <tbody>${r.map((c,i)=>`<tr>
         <td class="muted">${i+1}</td>
         <td><input type="text" value="${esc(c.c||'')}" style="width:100%"
               onchange="_corr.rubric[${i}].c=this.value"></td>
         <td><button class="btn small ghost" onclick="corrDelCrit(${i})">✕</button></td>
       </tr>`).join('')}</tbody></table>`
-    : `<p class="muted" style="margin-top:10px">Sin rúbrica todavía. Añade criterios y guárdalos:
-       aparecerán al corregir a cada alumno.</p>`;
+    : `<p class="muted" style="margin-top:10px">No rubric yet. Add criteria and save them:
+       they will appear when marking each student.</p>`;
 }
 
 window.corrAddCrit = function(){
@@ -7631,12 +7631,12 @@ window.corrGuardaRubrica = async function(){
   /* `max` se conserva: el corrector de producciones escritas sigue leyendo
      estas rubricas por puntos. */
   const limpia = _corr.rubric.filter(c => (c.c||'').trim()).map(c=>({ c:c.c.trim(), max:c.max||4 }));
-  est.textContent = 'Guardando…'; est.className = 'state';
+  est.textContent = 'Saving…'; est.className = 'state';
   const { error } = await sb.from('worksheets').update({ rubric: limpia })
     .eq('grade',_corr.grade).eq('unit',parseInt(_corr.unit,10))
     .eq('week',_corr.week).eq('session',_corr.session);
-  est.textContent = error ? ('No se guardó: '+error.message)
-    : `Guardada para los ${_corr.fichas.length} niveles.`;
+  est.textContent = error ? ('Not saved: '+error.message)
+    : `Saved for ${_corr.fichas.length} levels.`;
   est.className = error ? 'state err' : 'state ok';
   if(!error){ _corr.rubric = limpia; corrPintaRubrica(); corrAlumno(_corr.i); }
 };
@@ -7689,26 +7689,26 @@ window.corrAlumno = async function(i){
   const nPuestos = rub.filter((c,j)=>puestos[j]).length;
 
   const nav = `<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:14px 0 10px">
-      <button class="btn" onclick="corrMueve(-1)" ${_corr.i===0?'disabled':''}>◀ Anterior</button>
-      <span style="font-size:.9rem">Alumno <b>${_corr.i+1}</b> de ${_corr.entregas.length} ·
+      <button class="btn" onclick="corrMueve(-1)" ${_corr.i===0?'disabled':''}>◀ Previous</button>
+      <span style="font-size:.9rem">Student <b>${_corr.i+1}</b> of ${_corr.entregas.length} ·
         <select onchange="corrAlumno(parseInt(this.value,10))" style="max-width:280px">
-          ${_corr.entregas.map((x,j)=>`<option value="${j}"${j===_corr.i?' selected':''}>${esc(x.full_name||'(alumno)')}${x.reviewed_at?' ✓':''}</option>`).join('')}
+          ${_corr.entregas.map((x,j)=>`<option value="${j}"${j===_corr.i?' selected':''}>${esc(x.full_name||'(student)')}${x.reviewed_at?' ✓':''}</option>`).join('')}
         </select></span>
-      <button class="btn" onclick="corrMueve(1)" ${_corr.i>=_corr.entregas.length-1?'disabled':''}>Siguiente ▶</button>
+      <button class="btn" onclick="corrMueve(1)" ${_corr.i>=_corr.entregas.length-1?'disabled':''}>Next ▶</button>
     </div>`;
 
   host.innerHTML = `${nav}
     <div class="card">
     <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap">
-      <h3 style="margin:0;font-size:1.1rem">${esc(e.full_name||'(alumno)')}
-        <span class="muted" style="font-weight:400;font-size:.9rem">${e.grade_id?e.grade_id+'.º '+(e.section||''):''}</span></h3>
+      <h3 style="margin:0;font-size:1.1rem">${esc(e.full_name||'(student)')}
+        <span class="muted" style="font-weight:400;font-size:.9rem">${e.grade_id?'G'+e.grade_id+' '+(e.section||''):''}</span></h3>
       <span>
-        ${e.level?`<span class="badge" style="background:#e7ecfd">nivel ${esc(e.level)}</span>`:''}
-        <span class="badge" style="background:${e._handed||e.draft===false?'#dcfce7':'#fef9c3'}">${e._handed||e.draft===false?'entregada':'borrador'}</span>
-        ${e.reviewed_at?'<span class="badge" style="background:#e0f2fe">enviado al alumno</span>':''}
+        ${e.level?`<span class="badge" style="background:#e7ecfd">level ${esc(e.level)}</span>`:''}
+        <span class="badge" style="background:${e._handed||e.draft===false?'#dcfce7':'#fef9c3'}">${e._handed||e.draft===false?'submitted':'draft'}</span>
+        ${e.reviewed_at?'<span class="badge" style="background:#e0f2fe">sent to student</span>':''}
       </span>
     </div>
-    <p class="muted" style="font-size:.8rem;margin:6px 0 0">${esc(corrDonde(_corr.hito))}${fAl&&fAl.title?' — '+esc(fAl.title):''} · ${claves.length} campo${claves.length===1?'':'s'} respondido${claves.length===1?'':'s'}</p>
+    <p class="muted" style="font-size:.8rem;margin:6px 0 0">${esc(corrDonde(_corr.hito))}${fAl&&fAl.title?' — '+esc(fAl.title):''} · ${claves.length} field${claves.length===1?'':'s'} answered${claves.length===1?'':''}</p>
 
     <style>#cGrid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:18px;margin-top:14px} #cGrid > div{min-width:0}
       @media (max-width:1100px){ #cGrid{grid-template-columns:minmax(0,1fr)} }</style>
@@ -7717,10 +7717,10 @@ window.corrAlumno = async function(i){
         ${claves.length ? `<table class="tbl" style="margin:0"><tbody>${claves.map(k=>`<tr>
             <td style="vertical-align:top;min-width:160px;max-width:380px;font-size:.84rem">${etiquetas[k] ? esc(etiquetas[k]) : '<span class="muted">'+esc(k)+'</span>'}</td>
             <td style="white-space:pre-wrap;font-size:.88rem;line-height:1.5;font-weight:600">${esc(valor(resp[k]))}</td></tr>`).join('')}</tbody></table>`
-          : '<p class="muted">No respondió nada.</p>'}
+          : '<p class="muted">Did not answer anything.</p>'}
       </div>
       <div>
-        <h4 style="margin:0 0 8px">📏 Evaluación</h4>
+        <h4 style="margin:0 0 8px">📏 Evaluation</h4>
         ${rub.length ? rub.map((c,j)=>{ const puesto = puestos[j];
           return `<div style="margin-bottom:12px">
             <div style="font-size:.85rem;font-weight:600">${j+1}. ${esc(c.c)}</div>
@@ -7730,22 +7730,22 @@ window.corrAlumno = async function(i){
             </div>
             ${puesto?`<div style="font-size:.78rem;margin-top:5px;background:#f6f8fc;border-left:3px solid var(--blue);padding:5px 9px;border-radius:0 6px 6px 0"><b>${puesto}</b> · ${UNIT_SIG[puesto]}</div>`:''}
           </div>`; }).join('')
-        : '<p class="muted">Define la rúbrica arriba para poder evaluar por criterio.</p>'}
+        : '<p class="muted">Define the rubric above in order to assess by criterion.</p>'}
 
         <div style="border-top:1px solid var(--line);padding-top:10px;margin-top:10px">
           <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap">
-            <b style="font-size:.9rem">Nota</b>
+            <b style="font-size:.9rem">Grade</b>
             <span style="font-weight:800;font-size:1.05rem;color:var(--blue-dd)">${nota!=null
               ? `${nivel} · ${UNIT_SIG[nivel]} · ${nota}/20`
-              : '<span class="muted" style="font-weight:400;font-size:.85rem">pon los niveles y sale sola</span>'}</span>
+              : '<span class="muted" style="font-weight:400;font-size:.85rem">set the levels and the grade appears automatically</span>'}</span>
           </div>
-          <p class="muted" style="font-size:.76rem;margin:4px 0 8px">${nPuestos} de ${rub.length} criterios puestos. Los niveles se guardan al pulsarlos;
-            el alumno ve la nota y el comentario cuando pulsas <b>Guardar y enviar</b>.</p>
-          <textarea id="cComent" rows="3" placeholder="Comentario para el alumno"
+          <p class="muted" style="font-size:.76rem;margin:4px 0 8px">${nPuestos} of ${rub.length} criteria set. The levels are saved when you click them;
+            the student sees the grade and the comment when you press <b>Save and send</b>.</p>
+          <textarea id="cComent" rows="3" placeholder="Comment for the student"
             style="width:100%;padding:9px;border:1px solid var(--line);border-radius:8px;font-family:inherit;font-size:.86rem;line-height:1.5">${esc(e.feedback||'')}</textarea>
           <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
-            <button class="btn" onclick="corrGuarda(true)">📨 Guardar, enviar y siguiente</button>
-            <button class="btn small ghost" onclick="corrGuarda(false)">Guardar y enviar</button>
+            <button class="btn" onclick="corrGuarda(true)">📨 Save, send and next</button>
+            <button class="btn small ghost" onclick="corrGuarda(false)">Save and send</button>
           </div>
           <div class="row"><span class="state" id="cEstado"></span></div>
         </div>
@@ -7764,13 +7764,13 @@ window.corrNivel = async function(j, l){
   corrAlumno(_corr.i);
   const { error } = await sb.from('unit_submissions').update({ criteria:c, score:e.score }).eq('id', e.id);
   const est = $('#cEstado');
-  if(error && est){ est.textContent = 'No se pudo guardar: '+error.message; est.className = 'state err'; }
+  if(error && est){ est.textContent = 'Could not save: '+error.message; est.className = 'state err'; }
 };
 
 window.corrGuarda = async function(siguiente){
   const e = _corr.entregas[_corr.i]; if(!e) return;
   const est = $('#cEstado');
-  if(est){ est.textContent = 'Guardando…'; est.className = 'state'; }
+  if(est){ est.textContent = 'Saving…'; est.className = 'state'; }
   const ta = $('#cComent');
   const cambio = {
     criteria: e.criteria || {},
@@ -7780,11 +7780,11 @@ window.corrGuarda = async function(siguiente){
     reviewed_by: (state.profile && state.profile.id) || null
   };
   const { error } = await sb.from('unit_submissions').update(cambio).eq('id', e.id);
-  if(error){ if(est){ est.textContent = 'No se pudo enviar: '+error.message; est.className='state err'; } return; }
+  if(error){ if(est){ est.textContent = 'Could not send: '+error.message; est.className='state err'; } return; }
   Object.assign(e, cambio);
   if(siguiente && _corr.i < _corr.entregas.length-1){ corrMueve(1); return; }
   await corrAlumno(_corr.i);
-  const est2 = $('#cEstado'); if(est2){ est2.textContent = 'Enviado al alumno ✓'; est2.className = 'state ok'; }
+  const est2 = $('#cEstado'); if(est2){ est2.textContent = 'Sent to student ✓'; est2.className = 'state ok'; }
 };
 
 
@@ -7809,6 +7809,7 @@ window.corrGuarda = async function(siguiente){
    que el alumno no ve. score y feedback, que sí ve, solo se escriben al
    enviar.
 ---------------------------------------------------------------- */
+const ESC_TIPO_EN = { causa:'cause', contraste:'contrast', adicion:'addition', ejemplo:'example' };
 const ESC_CONECTORES = {
   causa:     ['because','since','as a result','therefore','so','due to','thanks to',
               'that is why','consequently','thus','hence','owing to','lead to',
@@ -7865,14 +7866,14 @@ function escPropone(crit, an, ctx){
   if(m){
     const lo = +m[1], hi = +m[2], n = an.palabras;
     const datos = { lo:lo, hi:hi, n:n };
-    if(n >= lo && n <= hi) return { p:max, tipo:'extension', datos:datos, r:n + ' palabras, dentro de ' + lo + '–' + hi + '.' };
+    if(n >= lo && n <= hi) return { p:max, tipo:'extension', datos:datos, r:n + ' words, within ' + lo + '–' + hi + '.' };
     if(n >= lo * 0.8 && n <= hi * 1.25)
-      return { p:Math.max(0, max - 1), tipo:'extension', datos:datos, r:n + ' palabras, cerca de ' + lo + '–' + hi + '.' };
+      return { p:Math.max(0, max - 1), tipo:'extension', datos:datos, r:n + ' words, close to ' + lo + '–' + hi + '.' };
     return { p:nivel(n < lo ? (n / lo) * 0.6 : 0.5), tipo:'extension', datos:datos,
-             r:n + ' palabras, ' + (n < lo ? 'por debajo' : 'por encima') + ' de ' + lo + '–' + hi + '.' };
+             r:n + ' words, ' + (n < lo ? 'below' : 'above') + ' ' + lo + '–' + hi + '.' };
   }
   if(/\b(words|palabras|length|extensi)/.test(c))
-    return { p:null, r:'El criterio habla de extensión pero no dice el rango. Escríbelo en la rúbrica ("40-60 words") y se calcula solo.' };
+    return { p:null, r:'The criterion mentions length but does not give the range. Write it in the rubric (“40-60 words”) and it will be calculated automatically.' };
 
   /* 2. Conectores. El criterio suele decir de qué tipo. */
   if(/link|connector|conector|cause|efecto|effect/.test(c)){
@@ -7880,15 +7881,15 @@ function escPropone(crit, an, ctx){
     const hallados = quiere ? an.conectores[quiere]
       : Object.keys(an.conectores).reduce(function(a,k){ return a.concat(an.conectores[k]); }, []);
     if(hallados.length)
-      return { p:max, r:'Usa ' + hallados.slice(0,3).map(function(x){ return '"' + x + '"'; }).join(', ') + '.' };
-    return { p:0, r:'No se ve ningún conector' + (quiere ? ' de causa-efecto' : '') + '.' };
+      return { p:max, r:'Uses ' + hallados.slice(0,3).map(function(x){ return '“' + x + '”'; }).join(', ') + '.' };
+    return { p:0, r:'No connector is visible' + (quiere ? ' for cause and effect' : '') + '.' };
   }
 
   /* 3. Cuánto de la ficha completó. */
   if(/task completion|completion|finished|complet|tareas/.test(c)){
-    if(!ctx || !ctx.campos) return { p:null, r:'No sé cuántos campos tenía la ficha.' };
+    if(!ctx || !ctx.campos) return { p:null, r:'Unclear how many fields the worksheet had.' };
     const frac = ctx.respondidos / ctx.campos;
-    return { p:nivel(frac), r:ctx.respondidos + ' de ' + ctx.campos + ' campos (' + Math.round(frac * 100) + '%).' };
+    return { p:nivel(frac), r:ctx.respondidos + ' of ' + ctx.campos + ' fields (' + Math.round(frac * 100) + '%).' };
   }
 
   /* 4. Vocabulario. Con banco de palabras se mide de verdad; sin él solo se
@@ -7898,32 +7899,32 @@ function escPropone(crit, an, ctx){
       const usadas = escBusca(an.texto, ctx.banco);
       const frac = usadas.length / ctx.banco.length;
       return { p:nivel(Math.min(1, frac * 2)),
-               r:'Usa ' + usadas.length + ' de las ' + ctx.banco.length + ' del banco' +
+               r:'Uses ' + usadas.length + ' of the ' + ctx.banco.length + ' word bank items' +
                  (usadas.length ? ' (' + usadas.slice(0,4).join(', ') + ')' : '') + '.' };
     }
     /* La variedad lexica de un texto de diez palabras siempre sale altisima:
        no dice nada. Por debajo de 20 palabras no se propone nada. */
     if(an.palabras < 20)
-      return { p:null, r:'Solo ' + an.palabras + ' palabras: demasiado corto para medir el vocabulario.' };
+      return { p:null, r:'Only ' + an.palabras + ' words: too short to measure vocabulary.' };
     const v = an.variedad;
     const p = v >= 0.58 ? max : (v >= 0.48 ? Math.max(0, max - 1) : Math.max(0, max - 2));
-    return { p:p, r:'La ficha no trae banco de palabras: solo se mide variedad (' +
-             Math.round(v * 100) + '% distintas' +
-             (an.repetidas.length ? '; repite "' + an.repetidas.slice(0,2).join('", "') + '"' : '') +
-             '). Confírmalo tú.' };
+    return { p:p, r:'The worksheet has no word bank: only variety is measured (' +
+             Math.round(v * 100) + '% distinct' +
+             (an.repetidas.length ? '; repeats “' + an.repetidas.slice(0,2).join('”, “') + '”' : '') +
+             '). Confirm it yourself.' };
   }
 
   /* 5. Organización y párrafos. */
   if(/organi|structure|estructura|paragraph|párrafo|parrafo|coheren/.test(c)){
     if(an.parrafos >= 2 && an.totalConectores >= 2)
-      return { p:max, r:an.parrafos + ' párrafos y ' + an.totalConectores + ' conectores.' };
+      return { p:max, r:an.parrafos + ' paragraphs and ' + an.totalConectores + ' connectors.' };
     if(an.parrafos >= 2 || an.totalConectores >= 1)
-      return { p:Math.max(0, max - 1), r:an.parrafos + ' párrafo(s), ' + an.totalConectores + ' conector(es).' };
-    return { p:Math.max(0, max - 2), r:'Un solo bloque de texto y casi sin conectores.' };
+      return { p:Math.max(0, max - 1), r:an.parrafos + ' paragraph(s), ' + an.totalConectores + ' connector(s).' };
+    return { p:Math.max(0, max - 2), r:'A single block of text with almost no connectors.' };
   }
 
   /* 6. Lo que no se puede medir así. */
-  return { p:null, r:'Esto no se mide automáticamente — lo valoras tú.' };
+  return { p:null, r:'This is not measured automatically — you assess it.' };
 }
 
 /* Borrador del comentario para el alumno. En inglés, que es la lengua de la
@@ -7984,11 +7985,11 @@ function escGancho(texto){
   if(lineas.length > 1 && lineas[0].length <= 80 && !/[.]$/.test(lineas[0])) lineas = lineas.slice(1);
   const cuerpo = lineas.slice(0, 3).join(' ');
   const primera = (cuerpo.split(/(?<=[.!?])\s/)[0] || cuerpo).slice(0, 220);
-  if(/\?/.test(primera)) return { hay:true, como:'una pregunta', frase:primera };
+  if(/\?/.test(primera)) return { hay:true, como:'a question', frase:primera };
   if(/\b(imagine|picture this|what if|have you ever|did you know|stop|remember)\b/i.test(primera))
-    return { hay:true, como:'una llamada al lector', frase:primera };
+    return { hay:true, como:'a call to the reader', frase:primera };
   if(/\b\d+([.,]\d+)?\s*(%|percent|hours|minutes|out of|in \d+)\b/i.test(primera))
-    return { hay:true, como:'un dato', frase:primera };
+    return { hay:true, como:'a fact', frase:primera };
   return { hay:false, frase:primera };
 }
 
@@ -8005,9 +8006,9 @@ function escProponeNivel(c, an, W){
 
   if(c.auto === 'evidence'){
     const h = escBusca(t, ESC_EVIDENCIA);
-    if(h.length >= 2) return { n:'A', r:'Cita evidencia (' + h.slice(0,3).join(', ') + '). Para AD tendria que pesarla, no solo citarla \u2014 eso lo ves tu.' };
-    if(h.length === 1) return { n:'B', r:'Una sola marca de evidencia ("' + h[0] + '"); el resto es opinion propia.' };
-    return { n:'C', r:'No se ve ninguna fuente ni dato: todo es opinion.' };
+    if(h.length >= 2) return { n:'A', r:'Cites evidence (' + h.slice(0,3).join(', ') + '). For AD it would need to weigh it, not just cite it \u2014 you assess that.' };
+    if(h.length === 1) return { n:'B', r:'A single piece of evidence (\u201c' + h[0] + '\u201d); the rest is personal opinion.' };
+    return { n:'C', r:'No source or data is visible: it is all opinion.' };
   }
 
   if(c.auto === 'advice'){
@@ -8015,10 +8016,10 @@ function escProponeNivel(c, an, W){
     const esp = escBusca(t, ESC_ESPECULA);
     const ejemplos = usa.map(function(k){ return escBusca(t, ESC_CONSEJO[k])[0]; }).join(', ');
     if(usa.length >= 2 && esp.length)
-      return { n:'A', r:'Gradua el consejo (' + ejemplos + ') y usa modales de especulacion ("' + esp[0] + '"). Si separa lo seguro de lo probable, es AD.' };
-    if(usa.length >= 2) return { n:'A', r:'Gradua el consejo con mas de una fuerza (' + ejemplos + ').' };
-    if(usa.length === 1) return { n:'B', r:'Da consejo siempre con la misma fuerza ("' + ejemplos + '").' };
-    return { n:'C', r:'No hay modales de consejo en el texto.' };
+      return { n:'A', r:'Grades the advice (' + ejemplos + ') and uses modals of speculation (\u201c' + esp[0] + '\u201d). If it separates what is certain from what is probable, it is AD.' };
+    if(usa.length >= 2) return { n:'A', r:'Grades the advice with more than one strength (' + ejemplos + ').' };
+    if(usa.length === 1) return { n:'B', r:'Gives advice always with the same strength (\u201c' + ejemplos + '\u201d).' };
+    return { n:'C', r:'There are no advice modals in the text.' };
   }
 
   if(c.auto === 'structure'){
@@ -8027,16 +8028,16 @@ function escProponeNivel(c, an, W){
     const dentro = rango ? (n >= rango[0] && n <= rango[1]) : null;
     const cerca  = rango ? (n >= rango[0]*0.85 && n <= rango[1]*1.15) : null;
     const partes = [];
-    partes.push(tit.hay ? 'titulo' : null);
-    partes.push(an.parrafos >= 3 ? 'tres o mas parrafos' : (an.parrafos === 2 ? 'dos parrafos' : null));
-    partes.push(dentro ? 'dentro de ' + rango[0] + '\u2013' + rango[1] : null);
+    partes.push(tit.hay ? 'a title' : null);
+    partes.push(an.parrafos >= 3 ? 'three or more paragraphs' : (an.parrafos === 2 ? 'two paragraphs' : null));
+    partes.push(dentro ? 'within ' + rango[0] + '\u2013' + rango[1] : null);
     const tiene = partes.filter(Boolean);
     const falta = [];
-    if(!tit.hay) falta.push('titulo');
-    if(an.parrafos < 3) falta.push('parrafos (' + an.parrafos + ')');
-    if(rango && !dentro) falta.push(n + ' palabras, ' + (n < rango[0] ? 'por debajo' : 'por encima') + ' de ' + rango[0] + '\u2013' + rango[1]);
-    const r = ((tiene.length ? 'Tiene ' + tiene.join(', ') + '. ' : '') +
-               (falta.length ? 'Le falta: ' + falta.join('; ') + '.' : '')).trim();
+    if(!tit.hay) falta.push('a title');
+    if(an.parrafos < 3) falta.push('paragraphs (' + an.parrafos + ')');
+    if(rango && !dentro) falta.push(n + ' words, ' + (n < rango[0] ? 'below' : 'above') + ' ' + rango[0] + '\u2013' + rango[1]);
+    const r = ((tiene.length ? 'Has ' + tiene.join(', ') + '. ' : '') +
+               (falta.length ? 'Missing: ' + falta.join('; ') + '.' : '')).trim();
     /* Sin rango declarado solo hay dos senales que mirar, no tres: si no,
        una rubrica sin extension (la biografia de 6.o) nunca podia pasar de B. */
     const total = rango ? 3 : 2;
@@ -8047,8 +8048,8 @@ function escProponeNivel(c, an, W){
 
   if(c.auto === 'hook'){
     const g = escGancho(t);
-    if(g.hay) return { n:'A', r:'Abre con ' + g.como + ': \u201c' + g.frase.slice(0,70) + '\u2026\u201d. Que lo mantenga hasta el final lo ves tu.' };
-    return { n:'C', r:'Abre anunciando el tema: \u201c' + g.frase.slice(0,70) + '\u2026\u201d.' };
+    if(g.hay) return { n:'A', r:'Opens with ' + g.como + ': \u201c' + g.frase.slice(0,70) + '\u2026\u201d. Whether it keeps that up until the end is for you to assess.' };
+    return { n:'C', r:'Opens by announcing the topic: \u201c' + g.frase.slice(0,70) + '\u2026\u201d.' };
   }
 
   /* Palabras que ordenan: las piden media primaria (la receta, la carrera de
@@ -8056,18 +8057,18 @@ function escProponeNivel(c, an, W){
   if(c.auto === 'sequence'){
     const h = escBusca(t, ESC_SECUENCIA);
     const distintas = [...new Set(h.map(function(x){ return x.toLowerCase(); }))];
-    if(distintas.length >= 3) return { n:'A', r:'Ordena con ' + distintas.slice(0,4).join(', ') + '.' };
-    if(distintas.length) return { n:'B', r:'Solo ' + distintas.length + ' palabra(s) de orden ("' + distintas[0] + '").' };
-    return { n:'C', r:'No hay ninguna palabra que ponga los pasos en orden.' };
+    if(distintas.length >= 3) return { n:'A', r:'Sequences with ' + distintas.slice(0,4).join(', ') + '.' };
+    if(distintas.length) return { n:'B', r:'Only ' + distintas.length + ' sequencing word(s) (\u201c' + distintas[0] + '\u201d).' };
+    return { n:'C', r:'There is no word that puts the steps in order.' };
   }
 
   /* Conectores de cualquier tipo: el analisis ya los trae contados. */
   if(c.auto === 'linkers'){
     const tipos = Object.keys(an.conectores).filter(function(k){ return an.conectores[k].length; });
     const ejem = tipos.map(function(k){ return an.conectores[k][0]; }).slice(0,3);
-    if(tipos.length >= 2) return { n:'A', r:'Enlaza con ' + ejem.join(', ') + ' (' + tipos.join(', ') + ').' };
-    if(tipos.length === 1) return { n:'B', r:'Un solo tipo de conector: ' + tipos[0] + ' ("' + ejem[0] + '").' };
-    return { n:'C', r:'Las frases no estan enlazadas.' };
+    if(tipos.length >= 2) return { n:'A', r:'Links with ' + ejem.join(', ') + ' (' + tipos.map(function(k){ return ESC_TIPO_EN[k]||k; }).join(', ') + ').' };
+    if(tipos.length === 1) return { n:'B', r:'Only one type of connector: ' + (ESC_TIPO_EN[tipos[0]]||tipos[0]) + ' (\u201c' + ejem[0] + '\u201d).' };
+    return { n:'C', r:'The sentences are not linked.' };
   }
 
   /* Cifras de verdad. Una cantidad sin unidad no es un dato: "20" puede ser
@@ -8075,13 +8076,13 @@ function escProponeNivel(c, an, W){
   if(c.auto === 'data'){
     const conUnidad = t.match(/\d+([.,]\d+)?\s*(%|percent|cm|mm|km|kg|ml|min|hours|minutes|seconds|degrees|\u00b0|m\b|g\b|l\b|h\b)/gi) || [];
     const cifras = t.match(/\d+([.,]\d+)?/g) || [];
-    if(conUnidad.length >= 2) return { n:'A', r:'Trae ' + conUnidad.length + ' cifras con su unidad (' + conUnidad.slice(0,3).join(', ') + ').' };
-    if(conUnidad.length === 1) return { n:'B', r:'Una sola cifra con unidad ("' + conUnidad[0] + '").' };
-    if(cifras.length) return { n:'B', r:'Hay numeros (' + cifras.slice(0,3).join(', ') + ') pero ninguno lleva unidad.' };
-    return { n:'C', r:'No hay ninguna cifra en el texto.' };
+    if(conUnidad.length >= 2) return { n:'A', r:'Has ' + conUnidad.length + ' figures with their unit (' + conUnidad.slice(0,3).join(', ') + ').' };
+    if(conUnidad.length === 1) return { n:'B', r:'A single figure with a unit (\u201c' + conUnidad[0] + '\u201d).' };
+    if(cifras.length) return { n:'B', r:'There are numbers (' + cifras.slice(0,3).join(', ') + ') but none has a unit.' };
+    return { n:'C', r:'There is no figure in the text.' };
   }
 
-  return { n:null, r:'Esto no se mide automaticamente \u2014 lo valoras tu.' };
+  return { n:null, r:'This is not measured automatically \u2014 you assess it.' };
 }
 
 /* La rubrica con que se corrige esta produccion. */
@@ -8127,7 +8128,7 @@ async function escCarga(){
     .eq('grade', _esc.grade).eq('unit', _esc.unit).in('kind', ['worksheet','report','reflection'])
     .order('updated_at', { ascending:false }).limit(600);
   if(error){
-    $('#eLista').innerHTML = `<p class="err">No pude leerlo: ${esc(error.message)}</p>`;
+    $('#eLista').innerHTML = `<p class="err">Could not read it: ${esc(error.message)}</p>`;
     return;
   }
   const ids = [...new Set((data || []).map(function(r){ return r.student_id; }))];
@@ -8153,10 +8154,10 @@ async function escCarga(){
     textos.forEach(function(t){
       _esc.filas.push({
         id:r.id, campo:t.campo, texto:t.texto, fila:r, ficha:ficha,
-        nombre:(quien[r.student_id] || {}).full_name || '(alumno)',
+        nombre:(quien[r.student_id] || {}).full_name || '(student)',
         grado:(quien[r.student_id] || {}).grade_id, seccion:(quien[r.student_id] || {}).section,
-        donde:(r.kind === 'reflection') ? 'Reflexión de la unidad'
-              : (r.kind === 'report') ? 'Producto final de la unidad'
+        donde:(r.kind === 'reflection') ? 'Unit reflection'
+              : (r.kind === 'report') ? 'Final product of the unit'
               : ((r.payload && r.payload.title) || r.milestone),
         /* Mismo contador que el analisis: si no, el numero cambia al abrir. */
         palabras:(String(t.texto).match(/[A-Za-zÀ-ÿ']+/g) || []).length
@@ -8175,36 +8176,36 @@ function escPinta(){
   const grados = ALL_GRADE_ORDER.map(function(g){
     return `<option value="${g}" ${g === _esc.grade ? 'selected' : ''}>${GRADE_META[g][1]}</option>`; }).join('');
   const unidades = [1,2,3,4,5,6].map(function(u){
-    return `<option value="${u}" ${u === _esc.unit ? 'selected' : ''}>Unidad ${u}</option>`; }).join('');
+    return `<option value="${u}" ${u === _esc.unit ? 'selected' : ''}>Unit ${u}</option>`; }).join('');
 
   $('#eCab').innerHTML = `
     <div class="row" style="gap:10px;flex-wrap:wrap">
       <select id="eGrado">${grados}</select>
       <select id="eUnidad">${unidades}</select>
-      <button class="btn small" onclick="escCarga()">Ver</button>
+      <button class="btn small" onclick="escCarga()">View</button>
     </div>
-    <p class="muted" style="margin-top:10px">${_esc.filas.length} producción(es) ·
-      <b>${sinCorregir} sin enviar</b>. Se listan los textos largos de la unidad,
-      vengan de la ficha de la sesión o de una actividad suelta.</p>`;
+    <p class="muted" style="margin-top:10px">${_esc.filas.length} production(s) ·
+      <b>${sinCorregir} not sent yet</b>. The long texts of the unit are listed here,
+      whether they come from the session worksheet or from a stand-alone activity.</p>`;
 
   $('#eLista').innerHTML = _esc.filas.length ? `<div style="overflow-x:auto"><table class="tbl">
-      <thead><tr><th>Alumno</th><th>Dónde</th><th style="text-align:center">Palabras</th>
-        <th style="text-align:center">Estado</th><th></th></tr></thead>
+      <thead><tr><th>Student</th><th>Where</th><th style="text-align:center">Words</th>
+        <th style="text-align:center">Status</th><th></th></tr></thead>
       <tbody>${_esc.filas.map(function(f, j){
         const est = f.fila.reviewed_at
-          ? '<span class="badge" style="background:#dcfce7">enviado' + (f.fila.score != null ? ' · ' + f.fila.score : '') + '</span>'
+          ? '<span class="badge" style="background:#dcfce7">sent' + (f.fila.score != null ? ' · ' + f.fila.score : '') + '</span>'
           : ((f.fila.criteria && Object.keys(f.fila.criteria).length) ||
              (f.fila.payload && f.fila.payload.review && f.fila.payload.review.niveles)
-              ? '<span class="badge" style="background:#fef9c3">guardado sin enviar</span>'
-              : '<span class="badge" style="background:#fee2e2">sin corregir</span>');
+              ? '<span class="badge" style="background:#fef9c3">saved, not sent</span>'
+              : '<span class="badge" style="background:#fee2e2">not marked</span>');
         return `<tr>
-          <td>${esc(f.nombre)} <span class="muted">${f.grado || ''}º${f.seccion || ''}</span></td>
+          <td>${esc(f.nombre)} <span class="muted">G${f.grado || ''}${f.seccion || ''}</span></td>
           <td class="muted">${esc(f.donde)} <span style="font-size:.75rem">· ${esc(f.campo)}</span></td>
           <td style="text-align:center">${f.palabras}</td>
           <td style="text-align:center">${est}</td>
-          <td><button class="btn small" onclick="escAbre(${j})">Corregir</button></td></tr>`;
+          <td><button class="btn small" onclick="escAbre(${j})">Mark</button></td></tr>`;
       }).join('')}</tbody></table></div>`
-    : '<p class="muted">No hay producciones escritas en esta unidad todavía.</p>';
+    : '<p class="muted">There are no written productions in this unit yet.</p>';
 
   if(_esc.i >= 0 && _esc.filas[_esc.i]) escAbre(_esc.i, true);
   else $('#eCorr').innerHTML = '';
@@ -8262,8 +8263,8 @@ window.escAbre = function(j, silencioso){
     <div class="card">
       <div class="row" style="justify-content:space-between;align-items:baseline">
         <h3 style="margin:0;font-size:1.05rem;color:var(--blue-dd)">${esc(f.nombre)}</h3>
-        <span class="muted" style="font-size:.85rem">${esc(f.donde)} · campo ${esc(f.campo)} ·
-          ${_esc.i + 1} de ${_esc.filas.length}</span>
+        <span class="muted" style="font-size:.85rem">${esc(f.donde)} · field ${esc(f.campo)} ·
+          ${_esc.i + 1} of ${_esc.filas.length}</span>
       </div>
 
       <div id="eGrid">
@@ -8271,20 +8272,20 @@ window.escAbre = function(j, silencioso){
           <div style="white-space:pre-wrap;line-height:1.75;font-size:.95rem;border:1px solid var(--line);
                       border-radius:10px;padding:16px;max-height:56vh;overflow:auto;background:#fcfdff">${esc(f.texto)}</div>
           <p class="muted" style="font-size:.8rem;margin-top:8px">
-            ${an.palabras} palabras · ${an.frases} frases (${an.mediaFrase} palabras de media) ·
-            ${an.parrafos} párrafo(s) · ${Math.round(an.variedad * 100)}% de palabras distintas ·
-            ${an.totalConectores} conector(es)${an.repetidas.length ? ' · repite: ' + esc(an.repetidas.join(', ')) : ''}</p>
+            ${an.palabras} words · ${an.frases} sentences (${an.mediaFrase} words on average) ·
+            ${an.parrafos} paragraph(s) · ${Math.round(an.variedad * 100)}% distinct words ·
+            ${an.totalConectores} connector(s)${an.repetidas.length ? ' · repeats: ' + esc(an.repetidas.join(', ')) : ''}</p>
         </div>
 
         <div>
           ${rub.length ? `<div class="badge" style="background:#e7ecfd;color:#2d5a8d;margin-bottom:8px">
-              🤖 Propuesta automática — revísala antes de enviar</div>` : ''}
+              🤖 Automatic suggestion — review it before sending</div>` : ''}
           ${_esc.modo === 'niveles' ? `
             <p class="muted" style="font-size:.78rem;margin:0 0 10px">
-              Rúbrica del writing: <b>${esc(R.W.task)}</b> · ${esc(R.W.spec)}.
-              Es la que el alumno tiene delante desde el día uno.
-              ${R.W.fuera ? '<br>Fuera de esta corrección: ' + esc(R.W.fuera) : ''}
-              <br><b>AD no se propone nunca</b>: significa ir más allá de lo que se pidió, y eso lo decides tú.</p>` : ''}
+              Writing rubric: <b>${esc(R.W.task)}</b> · ${esc(R.W.spec)}.
+              It is the one the student has had in front of them since day one.
+              ${R.W.fuera ? '<br>Outside this marking: ' + esc(R.W.fuera) : ''}
+              <br><b>AD is never suggested</b>: it means going beyond what was asked, and that is for you to decide.</p>` : ''}
           ${rub.length && _esc.modo === 'niveles' ? rub.map(function(c, k){
             const pr = _esc.props[k] || {};
             const puesto = _esc.puntos[c.k];
@@ -8317,11 +8318,11 @@ window.escAbre = function(j, silencioso){
               </div>
               <div class="muted" style="font-size:.76rem;margin-top:4px">${esc(pr.r || '')}</div>
             </div>`; }).join('') : ''}
-          ${rub.length ? '' : '<p class="muted">Esta práctica no tiene rúbrica. Defínela en «Corregir fichas» y aquí se puntúa sola.</p>'}
+          ${rub.length ? '' : '<p class="muted">This practice has no rubric. Define it in «Mark worksheets» and it will be scored automatically here.</p>'}
 
           <div style="border-top:1px solid var(--line);padding-top:10px;margin-top:10px">
             <div class="row" style="justify-content:space-between">
-              <b style="font-size:.9rem">Nota</b>
+              <b style="font-size:.9rem">Grade</b>
               <span style="font-weight:800;color:var(--blue-dd)" id="eTotal">${escTotal()}${maxTotal ? (' / ' + maxTotal) : ''}${
                 _esc.modo === 'niveles' && escNivel() ? ' · ' + escNivel() + ' (' + WRITING_RUBRICS.SIGNIFICA[escNivel()] + ')' : ''}</span>
             </div>
@@ -8329,11 +8330,11 @@ window.escAbre = function(j, silencioso){
               border:1px solid var(--line);border-radius:8px;font-family:inherit;font-size:.85rem;
               line-height:1.6">${esc(borrador)}</textarea>
             <p class="muted" style="font-size:.75rem;margin:4px 0 0">
-              El alumno no ve nada hasta que pulses <b>Guardar y enviar</b>.</p>
+              The student sees nothing until you press <b>Save and send</b>.</p>
             <div class="row" style="margin-top:10px;gap:8px;flex-wrap:wrap">
-              <button class="btn" onclick="escGuarda(true)">📨 Guardar y enviar</button>
-              <button class="btn small ghost" onclick="escGuarda(false)">Guardar sin enviar</button>
-              <button class="btn small ghost" onclick="escAbre(${Math.min(_esc.i + 1, _esc.filas.length - 1)})">Siguiente ▸</button>
+              <button class="btn" onclick="escGuarda(true)">📨 Save and send</button>
+              <button class="btn small ghost" onclick="escGuarda(false)">Save without sending</button>
+              <button class="btn small ghost" onclick="escAbre(${Math.min(_esc.i + 1, _esc.filas.length - 1)})">Next ▸</button>
             </div>
             <div class="row"><span class="state" id="eEstado"></span></div>
           </div>
@@ -8368,7 +8369,7 @@ window.escGuarda = async function(enviar){
   const f = _esc.actual;
   if(!f) return;
   const est = $('#eEstado');
-  est.textContent = 'Guardando…'; est.className = 'state';
+  est.textContent = 'Saving…'; est.className = 'state';
   const comentario = ($('#eComent').value || '').trim();
   const hayPuntos = Object.keys(_esc.puntos).length > 0;
 
@@ -8395,7 +8396,7 @@ window.escGuarda = async function(enviar){
   }
 
   const { error } = await sb.from('unit_submissions').update(cambio).eq('id', f.id);
-  if(error){ est.textContent = 'No se guardó: ' + error.message; est.className = 'state err'; return; }
+  if(error){ est.textContent = 'Could not save: ' + error.message; est.className = 'state err'; return; }
 
   f.fila.criteria = criterios;
   if(enviar){
@@ -8404,7 +8405,7 @@ window.escGuarda = async function(enviar){
   } else {
     f.fila.payload = cambio.payload;
   }
-  est.textContent = enviar ? 'Enviado ✓ — el alumno ya lo ve.' : 'Guardado (todavía no le llega).';
+  est.textContent = enviar ? 'Submitted ✓ — the student can see it now.' : 'Saved (not sent yet).';
   est.className = 'state ok';
   escPinta();
 };
@@ -8427,13 +8428,13 @@ window._guardaPw = async function(id){
   const inp = document.getElementById('pw-new-' + id);
   const msg = document.getElementById('pw-msg-' + id);
   const pw  = (inp.value || '').trim();
-  if(pw.length < 8){ msg.textContent = 'Mínimo 8 caracteres'; msg.style.color = 'var(--bad)'; return; }
-  msg.textContent = 'Guardando…'; msg.style.color = 'var(--muted)';
+  if(pw.length < 8){ msg.textContent = 'Minimum 8 characters'; msg.style.color = 'var(--bad)'; return; }
+  msg.textContent = 'Saving…'; msg.style.color = 'var(--muted)';
 
   const r = await sb.rpc('admin_set_password', { p_id: id, p_password: pw });
   if(r.error){ msg.textContent = r.error.message; msg.style.color = 'var(--bad)'; return; }
 
-  msg.textContent = 'Cambiada ✓ ya puede entrar con ella';
+  msg.textContent = 'Changed ✓ — they can now sign in with it';
   msg.style.color = 'var(--good)';
   inp.value = '';
 };
@@ -8452,7 +8453,7 @@ window._guardaPw = async function(id){
 let _tp = { semanas: 8, grado: '', filas: [], act: [] };
 
 async function tiempoPantallaPanel(){
-  $('#main').innerHTML = '<div class="card"><p class="muted">Calculando…</p></div>';
+  $('#main').innerHTML = '<div class="card"><p class="muted">Calculating…</p></div>';
   await tpCarga();
 }
 
@@ -8469,7 +8470,7 @@ async function tpCarga(){
   if(_tp.grado) q = q.eq('grade_id', Number(_tp.grado));
   const { data, error } = await q;
   if(error){
-    $('#main').innerHTML = `<div class="card"><p class="err">No pude leerlo: ${esc(error.message)}</p></div>`;
+    $('#main').innerHTML = `<div class="card"><p class="err">Could not read it: ${esc(error.message)}</p></div>`;
     return;
   }
   _tp.filas = data || [];
@@ -8579,35 +8580,35 @@ function tpPinta(){
 
   $('#main').innerHTML = `
   <div class="card">
-    <h2>⏱️ Tiempo de pantalla</h2>
-    <p class="muted">Minutos por alumno y semana. Sirve para acordar un techo con dirección
-      y comprobar si se respeta, en vez de discutirlo de oídas.</p>
+    <h2>⏱️ Screen time</h2>
+    <p class="muted">Minutes per student and week. It helps to agree on a cap with school leadership
+      and check whether it is respected, instead of debating impressions.</p>
 
     <div class="row" style="gap:10px;margin:12px 0">
-      <select id="tpGrado"><option value="">Todos los grados</option>${grados}</select>
+      <select id="tpGrado"><option value="">All grades</option>${grados}</select>
       <select id="tpSemanas">
-        ${[4,8,12,20].map(n=>`<option value="${n}" ${n===_tp.semanas?'selected':''}>Últimas ${n} semanas</option>`).join('')}
+        ${[4,8,12,20].map(n=>`<option value="${n}" ${n===_tp.semanas?'selected':''}>Last ${n} weeks</option>`).join('')}
       </select>
-      <button class="btn small" onclick="tpCarga()">Ver</button>
+      <button class="btn small" onclick="tpCarga()">View</button>
     </div>
 
     <div class="grid cols-3" style="gap:12px;margin-top:6px">
       <div class="card center" style="margin:0;padding:16px">
         <div style="font-size:2rem;font-weight:800;color:var(--blue-dd)">${mediaGlobal}</div>
-        <div class="muted" style="font-size:.82rem">minutos por alumno y semana<br>(media)</div>
+        <div class="muted" style="font-size:.82rem">minutes per student per week<br>(average)</div>
       </div>
       <div class="card center" style="margin:0;padding:16px">
         <div style="font-size:2rem;font-weight:800;color:${pico>120?'#b45309':'var(--blue-dd)'}">${pico}</div>
-        <div class="muted" style="font-size:.82rem">la semana más alta<br>de un solo alumno</div>
+        <div class="muted" style="font-size:.82rem">the highest week<br>for a single student</div>
       </div>
       <div class="card center" style="margin:0;padding:16px">
         <div style="font-size:2rem;font-weight:800;color:var(--blue-dd)">${alumnos.length}</div>
-        <div class="muted" style="font-size:.82rem">alumnos con<br>actividad registrada</div>
+        <div class="muted" style="font-size:.82rem">students with<br>recorded activity</div>
       </div>
     </div>
 
     <div style="margin-top:16px">
-      <b style="font-size:.86rem">En qué se va el tiempo</b>
+      <b style="font-size:.86rem">Where the time goes</b>
       <div style="display:flex;height:26px;border-radius:8px;overflow:hidden;margin-top:8px;border:1px solid var(--line)">
         ${Object.keys(porTipo).sort((a,b)=>porTipo[b]-porTipo[a]).map((t,i) => {
           const pct = (porTipo[t]/totalTipo*100);
@@ -8626,41 +8627,41 @@ function tpPinta(){
   </div>
 
   <div class="card">
-    <h3 style="font-size:1rem;color:var(--blue-d)">Minutos por alumno y semana</h3>
-    <p class="muted" style="font-size:.82rem">En ámbar, las semanas por encima de 120 minutos.</p>
+    <h3 style="font-size:1rem;color:var(--blue-d)">Minutes per student and week</h3>
+    <p class="muted" style="font-size:.82rem">Weeks above 120 minutes are shown in amber.</p>
     <div style="overflow-x:auto"><table class="tbl">
-      <thead><tr><th>Alumno</th>${cab}<th style="text-align:center">Total</th></tr></thead>
-      <tbody>${cuerpo || '<tr><td colspan="9" class="muted">Sin actividad en el periodo.</td></tr>'}</tbody>
+      <thead><tr><th>Student</th>${cab}<th style="text-align:center">Total</th></tr></thead>
+      <tbody>${cuerpo || '<tr><td colspan="9" class="muted">No activity in this period.</td></tr>'}</tbody>
     </table></div>
-    ${alumnos.length > 60 ? `<p class="muted" style="font-size:.8rem">Se muestran los 60 de mayor uso, de ${alumnos.length}.</p>` : ''}
+    ${alumnos.length > 60 ? `<p class="muted" style="font-size:.8rem">Showing the 60 with the most use, out of ${alumnos.length}.</p>` : ''}
   </div>
 
   <div class="card">
-    <h3 style="font-size:1rem;color:var(--blue-d)">Actividades por alumno</h3>
-    <p class="muted" style="font-size:.82rem">Lo que cada uno ha abierto, terminado y entregado
-      desde que las actividades guardan solas — y el rato que les ha dedicado, incluido el de
-      las que dejó a medias.</p>
+    <h3 style="font-size:1rem;color:var(--blue-d)">Activities per student</h3>
+    <p class="muted" style="font-size:.82rem">What each student has opened, finished and submitted
+      since activities started saving on their own — and the time spent on them, including
+      the ones left half-done.</p>
     <div style="overflow-x:auto"><table class="tbl">
-      <thead><tr><th>Alumno</th>
-        <th style="text-align:center">Actividades</th>
-        <th style="text-align:center">Días/rondas<br>con trabajo</th>
-        <th style="text-align:center">Terminados</th>
-        <th style="text-align:center">Entregadas</th>
-        <th style="text-align:center">Minutos</th></tr></thead>
-      <tbody>${cuerpoAct || '<tr><td colspan="6" class="muted">Todavía nadie ha guardado una actividad.</td></tr>'}</tbody>
+      <thead><tr><th>Student</th>
+        <th style="text-align:center">Activities</th>
+        <th style="text-align:center">Days/rounds<br>with work</th>
+        <th style="text-align:center">Finished</th>
+        <th style="text-align:center">Submitted</th>
+        <th style="text-align:center">Minutes</th></tr></thead>
+      <tbody>${cuerpoAct || '<tr><td colspan="6" class="muted">No one has saved an activity yet.</td></tr>'}</tbody>
     </table></div>
   </div>
 
   <div class="card">
-    <h3 style="font-size:1rem;color:var(--blue-d)">Qué mide y qué no</h3>
+    <h3 style="font-size:1rem;color:var(--blue-d)">What it measures and what it does not</h3>
     <p class="muted" style="font-size:.85rem;line-height:1.7">
-      Suma el tiempo <b>registrado</b> en actividades, exámenes, grabaciones y entregas.
-      En las actividades que guardan solas se cuenta el rato con la pestaña <b>a la vista</b>,
-      terminen o no; en lo demás, solo lo que quedó registrado al acabar, así que ahí sigue
-      siendo un <b>suelo</b>: el tiempo real es algo mayor.<br>
-      Cada sesión se limita a 120 minutos porque algunas quedan abiertas y devuelven
-      duraciones imposibles (hay un examen registrado con 4114 minutos). En este periodo
-      se acotaron <b>${acotadas}</b> sesión(es); conviene revisarlas si son muchas.
+      It adds up the time <b>recorded</b> in activities, exams, recordings and submissions.
+      For activities that save on their own, the time is counted while the tab is <b>in view</b>,
+      finished or not; for everything else, only what was recorded at the end, so it is still
+      a <b>floor</b>: the actual time is somewhat higher.<br>
+      Each session is capped at 120 minutes because some are left open and return
+      impossible durations (there is one exam recorded at 4114 minutes). In this period
+      <b>${acotadas}</b> session(s) were capped; worth reviewing if there are many.
     </p>
   </div>`;
 }
@@ -8671,5 +8672,5 @@ function tpPinta(){
 window.unitExhibe = async function(id, si){
   const { error } = await sb.from('unit_submissions')
     .update({ shared: !!si }).eq('id', id);
-  if(error) alert('No se pudo cambiar: ' + error.message);
+  if(error) alert('Could not change it: ' + error.message);
 };
