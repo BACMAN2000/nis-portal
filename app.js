@@ -2723,7 +2723,7 @@ async function unitExamPanel(){
   /* Se pide el grado ENTERO, no solo el bloque abierto: la pantalla de tarjetas
      necesita saber cuáles tienen examen y cuántos están abiertos. */
   const [{data:studs},{data:acc},{data:todos},{data:ints},{data:wrs}]=await Promise.all([
-    sb.from('profiles').select('id,full_name,grade_id,section, grades(name)').eq('role','student').eq('grade_id',gid),
+    sb.from('profiles').select('id,full_name,grade_id,section,cefr_level, grades(name)').eq('role','student').eq('grade_id',gid),
     sb.from('reader_exam_access').select('key,scope,unlocked,extra_min,opens_at,closes_at').eq('school_year',SCHOOL_YEAR_NOW),
     sb.from('unit_exams_index').select('units,kind,level,title,minutes,questions').eq('grade',uexCtl.grade),
     /* Solo para contar en las tarjetas: cuantos rindieron cada bloque y cuantos
@@ -2904,7 +2904,8 @@ async function _uexResultados(studs){
     const pct=f.a.total?Math.round(100*f.a.score/f.a.total):0, b=banda(pct);
     const w=f.w, wp=(w&&w.payload)||{};
     return `<tr>
-      <td>${esc(f.p.full_name||'(student)')} <span class="muted">${f.p.grade_id?'G'+f.p.grade_id+' '+(f.p.section||''):''}</span></td>
+      <td>${esc(f.p.full_name||'(student)')} <span class="muted">${f.p.grade_id?'G'+f.p.grade_id+' '+(f.p.section||''):''}</span>
+        <div style="margin-top:2px">${nivelBadge(f.p.cefr_level, f.lvl)}</div></td>
       <td style="white-space:nowrap">${f.kind==='official'?'🎓 official':'📝 practice'} · <b>${f.lvl.toUpperCase()}</b></td>
       <td style="text-align:center;white-space:nowrap"><b>${f.a.score}/${f.a.total}</b> · ${pct}%
         <span class="badge" style="background:${b[1]}">${b[0]}</span></td>
@@ -6398,6 +6399,14 @@ const UNIT_CRIT = { '1':'Speaking & listening', '2':'Reading', '3':'Writing' };
 /* De mayor a menor, igual que en el hub del alumno (unit.html): primero
    adonde se quiere llegar. La nota vigesimal sale de los niveles con la
    misma tabla que el corrector de producciones escritas (writing-rubrics.js). */
+/* El nivel en que trabaja cada alumno (profiles.cefr_level) va junto a su
+   nombre en todos los paneles de correccion: se corrige a cada uno con su
+   nivel, no con una vara unica. Pedido el 11-sep-2026. */
+function nivelBadge(lvl, tomado){
+  if(!lvl) return '<span class="badge" style="background:#fee2e2" title="No level set for this student: 👥 Users → Cambridge level">no level</span>';
+  const mal = tomado && String(tomado).toUpperCase() !== String(lvl).toUpperCase();
+  return `<span class="badge" style="background:${mal?'#fef3c7':'#e7ecfd'}" title="${mal?'Took the '+String(tomado).toUpperCase()+' exam; works at '+esc(lvl):'Works at '+esc(lvl)}">${mal?'⚠ took '+esc(String(tomado).toUpperCase())+' · level '+esc(lvl):'level '+esc(lvl)}</span>`;
+}
 const UNIT_LVL  = ['AD','A','B','C'];
 const UNIT_VIG  = { AD:19, A:16, B:12, C:8 };
 const UNIT_SIG  = { AD:'outstanding achievement', A:'expected achievement', B:'in progress', C:'beginning' };
@@ -6439,7 +6448,7 @@ async function unitProductsPanel(){
 
   const worksheets = (data||[]).filter(r=>r.kind==='worksheet');
   const ids = [...new Set(productos.concat(worksheets).map(r=>r.student_id))];
-  const { data: gente } = await sb.from('profiles').select('id,full_name,grade_id,section').in('id', ids);
+  const { data: gente } = await sb.from('profiles').select('id,full_name,grade_id,section,cefr_level').in('id', ids);
   const quien = Object.fromEntries((gente||[]).map(p=>[p.id,p]));
   const seccionDe = r => String((quien[r.student_id]||{}).section||'').trim();
 
@@ -6680,7 +6689,8 @@ function unitPintaAlumno(){
     <div class="card" style="margin-bottom:14px">
       <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap">
         <h3 style="margin:0;font-size:1.1rem">${esc(p.full_name||'(student)')}
-          <span class="muted" style="font-weight:400;font-size:.9rem">${p.grade_id?'G'+p.grade_id+' '+(p.section||''):''}</span></h3>
+          <span class="muted" style="font-weight:400;font-size:.9rem">${p.grade_id?'G'+p.grade_id+' '+(p.section||''):''}</span>
+          ${nivelBadge(p.cefr_level)}</h3>
         <span>
           <span class="badge" style="background:${entregados===U.DELS.length?'#dcfce7':'#fef9c3'}">${entregados} of ${U.DELS.length} products submitted</span>
           ${base && base.released_at ? '<span class="badge" style="background:#dcfce7">sent to student</span>' : (base && base.reviewed_at ? '<span class="badge" style="background:#e0f2fe">marked · not sent</span>' : '')}
@@ -7113,7 +7123,8 @@ function unitPintaFicha(){
   host.innerHTML = `${nav}
     <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap">
       <h3 style="margin:0;font-size:1.05rem">${esc(p.full_name||'(student)')}
-        <span class="muted" style="font-weight:400;font-size:.9rem">${p.grade_id?'G'+p.grade_id+' '+(p.section||''):''}</span></h3>
+        <span class="muted" style="font-weight:400;font-size:.9rem">${p.grade_id?'G'+p.grade_id+' '+(p.section||''):''}</span>
+        ${nivelBadge(p.cefr_level, pl.level)}</h3>
       <span class="muted" style="font-size:.85rem">${esc(unitFichaDonde(r))}${r.released_at?' · <span class="badge" style="background:#dcfce7">sent to student</span>':(r.reviewed_at?' · <span class="badge" style="background:#e0f2fe">marked · not sent</span>':'')}</span>
     </div>
     <div style="margin:12px 0">${entrega}</div>
@@ -8207,7 +8218,7 @@ async function escCarga(){
     return;
   }
   const ids = [...new Set((data || []).map(function(r){ return r.student_id; }))];
-  const { data: gente } = await sb.from('profiles').select('id,full_name,grade_id,section').in('id', ids);
+  const { data: gente } = await sb.from('profiles').select('id,full_name,grade_id,section,cefr_level').in('id', ids);
   const quien = Object.fromEntries((gente || []).map(function(p){ return [p.id, p]; }));
 
   const { data: fichas } = await sb.from('worksheets')
@@ -8231,6 +8242,7 @@ async function escCarga(){
         id:r.id, campo:t.campo, texto:t.texto, fila:r, ficha:ficha,
         nombre:(quien[r.student_id] || {}).full_name || '(student)',
         grado:(quien[r.student_id] || {}).grade_id, seccion:(quien[r.student_id] || {}).section,
+        nivel:(quien[r.student_id] || {}).cefr_level,
         donde:(r.kind === 'reflection') ? 'Unit reflection'
               : (r.kind === 'report') ? 'Final product of the unit'
               : ((r.payload && r.payload.title) || r.milestone),
@@ -8274,7 +8286,7 @@ function escPinta(){
               ? '<span class="badge" style="background:#fef9c3">saved, not sent</span>'
               : '<span class="badge" style="background:#fee2e2">not marked</span>');
         return `<tr>
-          <td>${esc(f.nombre)} <span class="muted">G${f.grado || ''}${f.seccion || ''}</span></td>
+          <td>${esc(f.nombre)} <span class="muted">G${f.grado || ''}${f.seccion || ''}</span> ${nivelBadge(f.nivel)}</td>
           <td class="muted">${esc(f.donde)} <span style="font-size:.75rem">· ${esc(f.campo)}</span></td>
           <td style="text-align:center">${f.palabras}</td>
           <td style="text-align:center">${est}</td>
@@ -8337,7 +8349,7 @@ window.escAbre = function(j, silencioso){
   $('#eCorr').innerHTML = `
     <div class="card">
       <div class="row" style="justify-content:space-between;align-items:baseline">
-        <h3 style="margin:0;font-size:1.05rem;color:var(--blue-dd)">${esc(f.nombre)}</h3>
+        <h3 style="margin:0;font-size:1.05rem;color:var(--blue-dd)">${esc(f.nombre)} ${nivelBadge(f.nivel)}</h3>
         <span class="muted" style="font-size:.85rem">${esc(f.donde)} · field ${esc(f.campo)} ·
           ${_esc.i + 1} of ${_esc.filas.length}</span>
       </div>
