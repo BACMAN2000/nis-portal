@@ -926,8 +926,17 @@ function toggleRec(id){
 function upload(id, blob){
   var c = client(); if(!c) return Promise.resolve('Saved on this device.');
   return c.auth.getUser().then(function(u){ var user = u && u.data && u.data.user; if(!user) return 'Saved on this device (sign in through the portal to send it to your teacher).';
-    var ext = /ogg/.test(blob.type) ? 'ogg' : 'webm', ruta = user.id + '/yle-' + LEVEL + '-t' + nn() + '-' + id + '.' + ext;
-    return c.storage.from('fun-speaking').upload(ruta, blob, {upsert: true, contentType: blob.type || 'audio/webm'}).then(function(r){ if(r.error) return 'Saved on this device (' + r.error.message + ').';
+    var tipo = (blob.type || 'audio/webm').split(';')[0];   // Safari graba audio/mp4, no webm
+    var ext = {'audio/ogg': 'ogg', 'audio/mp4': 'm4a', 'audio/mpeg': 'mp3', 'audio/wav': 'wav'}[tipo] || 'webm', ruta = user.id + '/yle-' + LEVEL + '-t' + nn() + '-' + id + '.' + ext;
+    /* Safari (los iPad) manda vacio un Blob de MediaRecorder cuando viaja dentro de un FormData, que es como
+       supabase-js envuelve los Blob: Storage contesta "No content provided" y la grabacion se pierde. Los bytes
+       van como ArrayBuffer, que viaja tal cual; el Blob queda de segundo intento. */
+    var opts = {upsert: true, contentType: tipo};
+    var intento = Promise.resolve().then(function(){ return blob.arrayBuffer(); })
+      .then(function(bytes){ if(!bytes || !bytes.byteLength) throw new Error('empty'); return c.storage.from('fun-speaking').upload(ruta, bytes, opts); })
+      .catch(function(){ return {error: true}; })
+      .then(function(r){ return r.error ? c.storage.from('fun-speaking').upload(ruta, blob, opts) : r; });
+    return intento.then(function(r){ if(r.error) return 'Saved on this device (' + (r.error.message || 'upload failed') + ').';
       return saveAttempt('speaking', {score: null, total: null, parts: {}, shields: null}, {audio_path: ruta, answers: {part: id}}).then(function(){ return 'Sent to your teacher ✓'; }); });
   });
 }
