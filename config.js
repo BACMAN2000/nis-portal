@@ -114,6 +114,45 @@ window.NIS_CONFIG = {
   } catch (_) { /* si el navegador no deja, se queda como estaba */ }
 })();
 
+/* ---- los errores del navegador, a la base ---------------------------------
+   Lo que falla en el Safari de un alumno no se ve desde ningun sitio: el
+   alumno dice «no me deja hacer nada» y aqui no llega ni una peticion. Cada
+   error de JavaScript (y cada promesa rechazada sin atender) se guarda en
+   client_errors con la pagina y el navegador, como maximo cinco por pagina,
+   y el admin los lee desde SQL. Se manda con fetch directo a PostgREST, sin
+   pasar por el cliente de Supabase: si lo que fallo es justo el cliente, el
+   aviso tiene que salir igual. */
+(function () {
+  var enviados = 0, cfg = window.NIS_CONFIG;
+  function token() {
+    try {
+      var k = Object.keys(localStorage).filter(function (x) { return /^sb-.*-auth-token$/.test(x); })[0];
+      var v = k && JSON.parse(localStorage.getItem(k));
+      return v && (v.access_token || (v.currentSession && v.currentSession.access_token)) || null;
+    } catch (_) { return null; }
+  }
+  function uid(t) { try { return JSON.parse(atob(t.split('.')[1].replace(/-/g, '+').replace(/_/g, '/'))).sub || null; } catch (_) { return null; } }
+  function manda(mensaje, pila, extra) {
+    if (enviados >= 5 || !cfg || !cfg.SUPABASE_URL) return; enviados++;
+    var t = token(); // sin sesion va con la clave publica y sin user_id (la pantalla de login tambien falla)
+    try {
+      fetch(cfg.SUPABASE_URL + '/rest/v1/client_errors', {
+        method: 'POST', keepalive: true,
+        headers: { 'Content-Type': 'application/json', apikey: cfg.SUPABASE_KEY, Authorization: 'Bearer ' + (t || cfg.SUPABASE_KEY), Prefer: 'return=minimal' },
+        body: JSON.stringify({ user_id: t ? uid(t) : null, page: location.pathname + location.search + location.hash, ua: navigator.userAgent,
+          message: String(mensaje || '').slice(0, 500), stack: String(pila || '').slice(0, 2000), extra: extra || null })
+      }).catch(function () {});
+    } catch (_) {}
+  }
+  window.addEventListener('error', function (e) {
+    manda(e.message || (e.error && e.error.message), e.error && e.error.stack, { file: e.filename, line: e.lineno, col: e.colno });
+  });
+  window.addEventListener('unhandledrejection', function (e) {
+    var r = e.reason; manda(r && (r.message || String(r)), r && r.stack, { tipo: 'unhandledrejection' });
+  });
+  window.NIS_ERROR = manda;
+})();
+
 /* ---- envio al webhook, con acuse de recibo -------------------------------
    El Apps Script responde {ok:true} o {ok:false,error} y su Web App ya manda
    las cabeceras CORS. Pero el portal lo llamaba con mode:'no-cors', que deja
