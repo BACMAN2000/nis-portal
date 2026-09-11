@@ -159,6 +159,19 @@ window.nisSafeLogout = async ()=>{
   renderAuth();
 };
 
+/* Diagnostico de un panel colgado: a los 8 s con «Loading…» se manda a
+   client_errors el paso en que se quedo (window.__nisPaso), el estado y los
+   cerrojos que Safari tiene tomados. Lo pidio el 11-sep-2026 el iPad de un
+   alumno que no pasaba de «Loading…» sin dejar rastro en ningun sitio. */
+window.__nisPaso = 'arranque';
+setTimeout(async ()=>{ try{
+  const m=document.getElementById('main');
+  if(!(m && (m.textContent||'').trim()==='Loading…')) return;
+  let locks=null; try{ locks=(await navigator.locks.query()).held.map(l=>l.name); }catch(_){ locks='n/a'; }
+  if(window.NIS_ERROR) NIS_ERROR('PANEL_STALLED', '', { paso:window.__nisPaso, tab:state._tab||null,
+    sesion:!!state.session, rol:(state.profile&&state.profile.role)||null, acceso:!!state.access,
+    locks:locks, online:navigator.onLine, visible:!document.hidden, sbInit: !!(sb&&sb.auth) });
+}catch(_){ } }, 8000);
 // Safety net for a stalled panel after startup. Startup itself is handled by
 // explicit timeout/error states below, so users are never left on a spinner.
 setTimeout(()=>{ try{
@@ -193,7 +206,9 @@ async function init(){
     state.session = data && data.session ? data.session : null;
     const recoveryMode = (()=>{ try{return new URLSearchParams(location.search).get('recovery')==='1';}catch(_){return false;} })();
     if(recoveryMode && state.session){ renderRecoveryPassword(); return; }
+    window.__nisPaso='init:perfil';
     if(state.session) await withTimeout(loadProfile(), STARTUP_TIMEOUT_MS, 'PROFILE_TIMEOUT');
+    window.__nisPaso='init:route';
     route();
   }catch(e){
     state.session=null;
@@ -4109,10 +4124,13 @@ async function renderStudent(initial){
     {key:'help',label:'❓ Help'},
     {key:'account',label:'👤 My account'},
   ], initial||'home', `<div class="center muted">Loading…</div>`);
+  window.__nisPaso='alumno:shell';
   // Toda la navegación pasa por window._nav para que la ruta quede en el hash
   // (deep links desde las páginas de actividades + "atrás" del navegador).
   bindNav(k=>window._nav(k||'home'));
+  window.__nisPaso='alumno:acceso';
   state.access = await loadStudentAccess();   // Fase 2: visibilidad por nodo
+  window.__nisPaso='alumno:acceso-ok';
   // Anti-trampa en todo el portal: mismo criterio que las actividades, pero
   // solo para alumnos logueados (docentes/admin quedan exentos en el motor).
   // En la vista de alumno no se arma el anti-trampa: quien está dentro es el
@@ -4120,8 +4138,10 @@ async function renderStudent(initial){
   try{ if(window.NISAntiCheat && !_isPreview()) NISAntiCheat.init({activity:'portal', label:'Portal NIS', requireStudent:true}); }catch(_){}
   // Volver desde un juego (./#classes_g9_unit_u4) reabre esa vista, no el hub.
   const deep=(location.hash||'').replace(/^#/,'');
+  window.__nisPaso='alumno:hub';
   if(deep && _navRender(deep)) return;
   if(initial==='results') window._nav('results'); else studentHub();
+  window.__nisPaso='alumno:hub-ok';
 }
 function _setNav(k){ document.querySelectorAll('[data-nav]').forEach(e=>e.classList.toggle('active',e.dataset.nav===k)); }
 function studentPhonics(){ _setNav('phonics'); $('#main').innerHTML = phonicsPanel(); }
