@@ -183,9 +183,9 @@
 "who": "narrator",
 "text": "Ask your friend: When was the big earthquake in Pisco? — “In 2007.”."
 },
-"123517ac9a79": {
+"d4b95ba0afc2": {
 "who": "narrator",
-"text": "A seismograph draws the shaking of the ground as a zig-zag line."
+"text": "Our seismograph: the box shakes, the cup stays still, the pen draws the line."
 },
 "6cf0ee78ac2d": {
 "who": "narrator",
@@ -1415,6 +1415,10 @@
 "who": "narrator",
 "text": "You can ask and answer questions about a table: When was the earthquake in Arequipa? — It was in 2001. Which earthquake was the strongest? — The 1746 and 1868 earthquakes. How many people died in Pisco? — 596 people. Was the 2001 earthquake stronger than the 2007 earthquake? — Yes, it was."
 },
+"005fb83b8fa5": {
+"who": "narrator",
+"text": "The seismograph you will build: when the ground shakes, the pen draws a zig-zag on the moving paper."
+},
 "ac0ad3de1890": {
 "who": "narrator",
 "text": "The magnitude of the five earthquakes. Remember: one step on the scale makes waves ten times bigger!"
@@ -2206,6 +2210,10 @@
 "ec430aa61d36": {
 "who": "narrator",
 "text": "Good researchers ask good questions. Try question words with the table: When did the Áncash earthquake happen?, Where was the tsunami 16 metres high?, Which earthquake was stronger, 2001 or 2007?, How many years passed between 1746 and 1868?, Why did 1970 have more victims than 1868? Then compare: The 2001 earthquake was stronger than the 2007 one, but fewer people died."
+},
+"34acbb054282": {
+"who": "narrator",
+"text": "A shoebox seismograph: the box moves with the ground, the heavy cup stays still, and the marker records the difference."
 },
 "1d2f1b4233cc": {
 "who": "narrator",
