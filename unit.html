@@ -591,9 +591,21 @@ function pintaEntregas(){
     const chip = $('#hand-'+h), r = _entregas[h];
     if(!chip) return;
     chip.classList.add('done');
-    const nota = (r.score!=null) ? (' · ' + r.score + '/10') : '';
+    /* La ficha se corrige con niveles y la nota es vigesimal, como los
+       productos (AD 18-20 · A 14-17 · B 11-13 · C 0-10): decia /10. */
+    const lv = r.score==null?null:r.score>=18?'AD — Outstanding':r.score>=14?'A — Expected':r.score>=11?'B — In progress':'C — Starting out';
+    const nota = (r.score!=null) ? (' · ' + r.score + '/20 · ' + lv.split(' ')[0]) : '';
     chip.innerHTML = '✓ Handed in' + nota;
-    if(r.feedback) chip.title = r.feedback;
+    /* El comentario iba en un tooltip del chip, donde nadie lo lee: va en
+       su recuadro debajo de la fila, igual que el de los productos. */
+    if(r.feedback || r.score!=null){
+      const row = chip.closest('.ses-row');
+      let fb = $('#fbw-'+h);
+      if(!fb && row){ fb = document.createElement('div'); fb.className='fb'; fb.id='fbw-'+h; fb.style.margin='6px 0 10px'; row.insertAdjacentElement('afterend', fb); }
+      if(fb) fb.innerHTML = '<h4>Your teacher\'s feedback</h4><p>'
+        + (r.score!=null?('<span class="mark"><b>'+r.score+'/20</b> · '+lv+'</span>'):'')
+        + (r.feedback?esc(r.feedback):'') + '</p>';
+    }
     const u = $('#u-'+h);
     if(u && r.payload && r.payload.link) u.value = r.payload.link;
   });

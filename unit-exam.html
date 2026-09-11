@@ -452,8 +452,43 @@ window.viewLevels=(kind,fromHash)=>{
           </div>`:''}
         </div>`; }).join('')}
     </div>
+    <div id="misRes"></div>
     <div style="margin-top:16px"><button class="btn ghost" onclick="viewKinds()">← Back</button></div>`;
+  misResultados(kind);
 };
+
+/* Lo que el alumno ya rindió en este bloque: la nota de las seis partes y,
+   cuando el profesor la ha corregido, la del Writing con su comentario. Antes
+   el resultado solo se veía en la pantalla final del propio examen y la
+   corrección del Writing no llegaba a verla nadie más que el profesor. */
+async function misResultados(kind){
+  const host=$('#misRes'); if(!host||!sb||!me||!me.uid||isStaff()) return;
+  try{
+    const pref='unitexam-'+GRADE+'-u'+UNITS+'-'+kind+'-';
+    const [{data:ints},{data:wrs}]=await Promise.all([
+      sb.from('activity_attempts').select('activity,score,total,submitted_at').eq('student_id',me.uid)
+        .like('activity',pref+'%').order('submitted_at',{ascending:false}).limit(20),
+      sb.from('unit_submissions').select('milestone,payload,score,feedback,reviewed_at').eq('student_id',me.uid)
+        .eq('grade',GRADE).like('milestone','exam-'+kind+'-%')
+    ]);
+    if(!ints||!ints.length) return;
+    const wr={};
+    (wrs||[]).forEach(r=>{ const u=(r.payload&&r.payload.units)||''; if(u&&String(u)!==String(UNITS)) return;
+      wr[r.milestone.replace('exam-'+kind+'-','')]=r; });
+    /* La misma escala del colegio que la pantalla final: AD · A · B · C. */
+    const banda=p=>p>=90?'AD — Outstanding':p>=70?'A — Expected':p>=55?'B — In progress':'C — Starting out';
+    const nivelW=s=>s>=18?'AD — Outstanding':s>=14?'A — Expected':s>=11?'B — In progress':'C — Starting out';
+    host.innerHTML=`<h2 style="font-size:1.05rem;margin:18px 0 8px">📊 Your results</h2>`+ints.map(a=>{
+      const l=a.activity.split('-').pop()||'', pct=a.total?Math.round(100*a.score/a.total):0, w=wr[l];
+      const writing=!w ? '' : w.reviewed_at
+        ? `<div style="margin-top:6px"><b>Writing:</b> ${w.score!=null?`<b>${w.score}/20</b> · ${nivelW(w.score)}`:'no mark'}
+           ${w.feedback?`<div style="margin-top:4px;white-space:pre-wrap">${esc(w.feedback)}</div>`:''}</div>`
+        : '<div style="margin-top:6px"><b>Writing:</b> sent — your teacher has not marked it yet.</div>';
+      return `<div class="note" style="text-align:left;margin-bottom:8px"><b>${LVL[l]?LVL[l][1]:l.toUpperCase()}</b>
+        · ${new Date(a.submitted_at).toLocaleDateString()} · six marked parts: <b>${a.score}/${a.total}</b> · ${pct}% · ${banda(pct)}${writing}</div>`;
+    }).join('');
+  }catch(e){}
+}
 
 /* ---------- el examen ---------- */
 let EX=null;
