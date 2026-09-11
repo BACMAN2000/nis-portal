@@ -394,15 +394,15 @@ function munBody(){ return `<iframe src="mun-academy.html" title="MUN Academy" s
 function liveQuizBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
     <div class="muted" style="flex:1;min-width:220px">Host a live Kahoot-style game. Project this screen; students join with the PIN or the QR code from their phone.</div>
-    <a class="btn" href="live-quiz.html?v=77624886" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
+    <a class="btn" href="live-quiz.html?v=96d42d3f" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
   </div>
-  <iframe src="live-quiz.html?v=77624886" title="NIShoot Live" allow="autoplay" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#0d1d33"></iframe>`; }
+  <iframe src="live-quiz.html?v=96d42d3f" title="NIShoot Live" allow="autoplay" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#0d1d33"></iframe>`; }
 function gamesLabBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
     <div class="muted" style="flex:1;min-width:220px">Worksheets + games for grammar, vocabulary, phrasal verbs and idioms (A1–C1). Open any topic to play: quiz, gap-fill, matching, crossword, word search, word invaders and time attack.</div>
-    <a class="btn" href="games-lab.html?v=b199a6c9" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
+    <a class="btn" href="games-lab.html?v=474f4753" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
   </div>
-  <iframe src="games-lab.html?v=b199a6c9" title="English Games Lab" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#eef1f8"></iframe>`; }
+  <iframe src="games-lab.html?v=474f4753" title="English Games Lab" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#eef1f8"></iframe>`; }
 /* 📝 Pizarra — hoja de cuaderno proyectable (triple renglón, doble raya,
    rayado, cuadriculado o en blanco) donde el profesor escribe la muestra que
    los alumnos copian. Vive en pizarra.html, sin sesión: lo que se escribe se
@@ -410,9 +410,9 @@ function gamesLabBody(){ return `
 function pizarraBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
     <div class="muted" style="flex:1;min-width:220px">Write like in the student’s notebook and project it: triple-line paper, double line, ruled, squared or blank; several school fonts, size, colours, images and freehand drawing. What is written stays saved in this browser.</div>
-    <a class="btn" href="pizarra.html?v=d45dd6b5" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
+    <a class="btn" href="pizarra.html?v=b264d961" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
   </div>
-  <iframe src="pizarra.html?v=d45dd6b5" title="Whiteboard" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#2b2f3a"></iframe>`; }
+  <iframe src="pizarra.html?v=b264d961" title="Whiteboard" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#2b2f3a"></iframe>`; }
 /* ✍️ Corrector de material — revisa la ficha ANTES de publicarla: ortografía,
    mezcla de inglés británico y americano, y los calcos del hispanohablante
    ("explain me", "discuss about", "I have 12 years") que ningún corrector
@@ -422,9 +422,9 @@ function pizarraBody(){ return `
 function correctorBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
     <div class="muted" style="flex:1;min-width:220px">Paste a worksheet, an exam or a worksheet and check it before publishing it. It is reviewed in your browser: the text never leaves this screen.</div>
-    <a class="btn" href="corrector.html?v=a487d7e9" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
+    <a class="btn" href="corrector.html?v=8876d619" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
   </div>
-  <iframe src="corrector.html?v=a487d7e9" title="Material checker" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#f2f3ff"></iframe>`; }
+  <iframe src="corrector.html?v=8876d619" title="Material checker" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#f2f3ff"></iframe>`; }
 /* 🧩 Use of English — la app B2 (First, Part 1: multiple-choice cloze). Es la
    misma que ve el alumno en Classes > 9.º > Cambridge; aqui el admin la revisa.
    Se corrige sola en el navegador y no guarda intentos en Supabase. */
@@ -439,9 +439,9 @@ function useOfEnglishBody(){ return `
 function cambridgeInfoBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
     <div class="muted" style="flex:1;min-width:220px">What each Cambridge exam is, how many parts it has, how long it lasts, how it is scored on the Cambridge Scale, and which NIS grade is aiming for which.</div>
-    <a class="btn" href="cambridge-info.html?v=e7efefaf" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
+    <a class="btn" href="cambridge-info.html?v=f6772df5" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
   </div>
-  <iframe src="cambridge-info.html?v=e7efefaf" title="Cambridge info" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#eef3f9"></iframe>`; }
+  <iframe src="cambridge-info.html?v=f6772df5" title="Cambridge info" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#eef3f9"></iframe>`; }
 /* Los tres cursos de Fun for Nordic (YLE). El motor es UNO solo — nis-fun/engine —
    y el nivel va en la URL; aqui se embebe igual que Games Lab o Phonics para que
    el profesor lo vea sin salir del portal. Datos de nis-fun/content/levels.json. */
@@ -868,29 +868,29 @@ function studentGames(){ _setNav('games'); $('#main').innerHTML = `${_backBtn("w
    nombre lo pone el dominio dentro de la propia pagina, asi que no hay dos
    copias que mantener. */
 function dictPanel(){
-  return `<iframe src="dictionary-app/index.html?v=56c70c1d&embed=1" title="NIS Dictionary"
+  return `<iframe src="dictionary-app/index.html?v=78f9c77e&embed=1" title="NIS Dictionary"
     style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 
 function wordformPanel(){
-  return `<iframe src="word-formation-app/index.html?v=f10be8b2&embed=1" title="Word Formation"
+  return `<iframe src="word-formation-app/index.html?v=8323c1cd&embed=1" title="Word Formation"
     style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 
 /* Collocations e idioms: las otras dos apps de vocabulario. Mismo trato que
    phrasal verbs, embebidas para no sacar al alumno del portal. */
 function collocationsPanel(){
-  return `<iframe src="collocations-app/index.html?v=53149346&embed=1" title="Collocations"
+  return `<iframe src="collocations-app/index.html?v=d0287248&embed=1" title="Collocations"
     style="width:100%;height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 
 function idiomsPanel(){
-  return `<iframe src="idioms-app/index.html?v=58474f8a&embed=1" title="Idioms"
+  return `<iframe src="idioms-app/index.html?v=7040bf3b&embed=1" title="Idioms"
     style="width:100%;height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 
 function phrasalPanel(){
-  return `<iframe src="phrasal-app/index.html?v=495c7a74&embed=1" title="Phrasal Verbs"
+  return `<iframe src="phrasal-app/index.html?v=360c15eb&embed=1" title="Phrasal Verbs"
     style="width:100%;height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 
@@ -6606,9 +6606,15 @@ function unitNivelDeNota(n){ return n==null ? null : n>=18 ? 'AD' : n>=14 ? 'A' 
    filas ya cargadas, para pasar de un alumno a otro sin volver a la base. */
 const _unit = { grade:null, unit:null, section:'', i:0, filas:[], quien:{}, plan:{}, DELS:[], crits:[], firmadas:{}, rubrica:true };
 
+/* Balizas de diagnostico (11-sep-2026): el panel se quedaba en «Loading
+   submissions…» con el navegador colgado y sin rastro en ningun registro. Cada
+   paso manda una baliza a client_errors ANTES de seguir; la ultima que llega
+   dice donde se atasca. Se quitan cuando este resuelto. */
+function _upBaliza(paso, extra){ try{ if(window.NIS_ERROR) NIS_ERROR('UNITPROD:'+paso, '', Object.assign({t:Date.now()%100000}, extra||{})); }catch(_){} }
 async function unitProductsPanel(){
   const main = $('#main');
   main.innerHTML = '<div class="card"><p class="muted">Loading submissions…</p></div>';
+  _upBaliza('inicio', {grade:_unit.grade, unit:_unit.unit, section:_unit.section, i:_unit.i});
 
   const { data, error } = await sb
     .from('unit_submissions')
@@ -6620,6 +6626,7 @@ async function unitProductsPanel(){
     main.innerHTML = `<div class="card"><p class="err">Could not read the submissions: ${esc(error.message)}</p></div>`;
     return;
   }
+  _upBaliza('datos', {n:(data||[]).length, bytes:JSON.stringify(data||[]).length});
   /* Solo el producto de la unidad (hito 'final'): el Writing de los examenes
      de unidad se corrige en 📋 Examenes de unidad, junto a su nota. */
   const productos = (data||[]).filter(r=>r.milestone==='final');
@@ -6635,6 +6642,7 @@ async function unitProductsPanel(){
   const { data: gente } = await sb.from('profiles').select('id,full_name,grade_id,section,cefr_level').in('id', ids);
   const quien = Object.fromEntries((gente||[]).map(p=>[p.id,p]));
   const seccionDe = r => String((quien[r.student_id]||{}).section||'').trim();
+  _upBaliza('perfiles', {n:(gente||[]).length});
 
   /* Grado → unidad → seccion. Si lo elegido ya no existe (o es la primera
      vez) se abre lo mas reciente, que es lo que se esta corrigiendo. */
@@ -6681,6 +6689,7 @@ async function unitProductsPanel(){
 
   Object.assign(_unit, { filas, quien, plan, DELS, crits, firmadas });
   if(_unit.i >= filas.length) _unit.i = 0;
+  _upBaliza('firmadas', {filas:filas.length, rutas:rutas.length, grade:_unit.grade, unit:_unit.unit, section:_unit.section});
 
   /* Las fichas digitales de la misma unidad y seccion, debajo, con el mismo
      formato: una ficha elegida y un alumno cada vez. `blocks` sirve para
@@ -6694,6 +6703,7 @@ async function unitProductsPanel(){
     planillas = ws || [];
   }
   Object.assign(_unit, { fichas, planillas });
+  _upBaliza('fichas', {fichas:fichas.length, planillas:planillas.length});
 
   /* Cuantos van evaluados y en que nivel global quedaron, con palabras: una
      letra con un numero detras no le dice nada a nadie. */
@@ -6740,8 +6750,11 @@ async function unitProductsPanel(){
   </div>
   <div id="unitAlumno"></div>
   ${unitFichasBloque()}`;
+  _upBaliza('pintado');
   unitPintaAlumno();
+  _upBaliza('alumno');
   unitPintaFicha();
+  _upBaliza('fin');
 }
 
 window.unitFiltra = function(k, v){
