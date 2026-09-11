@@ -46,13 +46,56 @@ window.NIS_CONFIG = {
    no compite por el mismo token. */
 (function () {
   var cache = {};
+  /* ---- el cerrojo de la sesion no puede colgar la pagina -----------------
+     supabase-js protege la sesion con navigator.locks (Web Locks): getSession,
+     la renovacion del token y el aviso de SIGNED_IN esperan a que el cerrojo
+     este libre, y esperan SIN LIMITE. En Safari (Mac e iPad) una pestana del
+     mismo origen que el sistema deja suspendida se queda con el cerrojo y la
+     pestana viva no lo consigue nunca: el login responde 200 pero la app no
+     llega a pedir el perfil, el alumno vuelve a pulsar Enter y en los registros
+     salen cinco logins por segundo sin nada detras. Visto el 11-sep-2026 con
+     todo 9.o en iPad y Mac (178 logins en tres horas, ni una peticion de
+     perfil), mientras Windows funcionaba.
+
+     Este cerrojo intenta el de Web Locks y, si en 2 s no lo tiene, sigue sin
+     el. Sin cerrojo se vuelve a como era la libreria antes de Web Locks: dos
+     pestanas podrian renovar el token a la vez, y eso ya lo amortigua el
+     cliente unico de abajo y la ventana de reuso del refresh token. Colgarse
+     nunca es la opcion. */
+  function nisLock(name, acquireTimeout, fn) {
+    var locks = (typeof navigator !== 'undefined') && navigator.locks;
+    if (!locks || typeof locks.request !== 'function' || typeof AbortController === 'undefined') return fn();
+    return new Promise(function (resolve, reject) {
+      var done = false, ac = new AbortController();
+      var timer = setTimeout(function () {
+        if (done) return;
+        done = true; ac.abort();
+        Promise.resolve().then(fn).then(resolve, reject);
+      }, 2000);
+      locks.request(name, { mode: 'exclusive', signal: ac.signal }, function () {
+        if (done) return;                 // llego tarde: ya se corrio sin cerrojo
+        done = true; clearTimeout(timer);
+        return Promise.resolve().then(fn).then(resolve, reject);
+      }).catch(function (e) {
+        if (done) return;                 // el abort del timer, ya atendido
+        done = true; clearTimeout(timer);
+        Promise.resolve().then(fn).then(resolve, reject);
+      });
+    });
+  }
+  function conCerrojo(opciones) {
+    var o = opciones ? Object.assign({}, opciones) : {};
+    o.auth = Object.assign({}, o.auth || {});
+    if (!o.auth.lock) o.auth.lock = nisLock;
+    return o;
+  }
   function compartir(lib) {
     if (!lib || typeof lib.createClient !== 'function' || lib.__nisCompartido) return lib;
     var original = lib.createClient.bind(lib);
     lib.createClient = function (url, key, opciones) {
-      if (opciones) return original(url, key, opciones);
+      if (opciones) return original(url, key, conCerrojo(opciones));
       var k = String(url) + '|' + String(key);
-      if (!cache[k]) cache[k] = original(url, key);
+      if (!cache[k]) cache[k] = original(url, key, conCerrojo(null));
       return cache[k];
     };
     lib.__nisCompartido = true;

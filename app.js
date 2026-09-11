@@ -1069,15 +1069,22 @@ function signupForm(){
     <div style="margin-top:16px"><button class="btn" id="signupBtn" style="width:100%">Create account</button></div>`;
 }
 function msg(kind, text){ $('#msg').innerHTML = `<div class="note ${kind}">${esc(text)}</div>`; }
+let _loginEnCurso=false;
 async function doLogin(){
+  /* Un login por vez: con la sesion colgada (Safari, ver config.js) el alumno
+     pulsaba Enter sin parar y salian cinco logins por segundo. */
+  if(_loginEnCurso) return;
   const email=$('#li_email').value.trim(), pw=$('#li_pw').value;
   if(!email||!pw) return msg('err','Enter your email and password.');
+  _loginEnCurso=true; const _b=$('#loginBtn'); if(_b){ _b.disabled=true; _b.textContent='Signing in…'; }
+  setTimeout(()=>{ _loginEnCurso=false; const b=$('#loginBtn'); if(b){ b.disabled=false; b.textContent='Sign in'; } }, 6000);
   // Recordar (o olvidar) el correo según la casilla.
   try{
     if($('#li_remember') && $('#li_remember').checked) localStorage.setItem('nis_remember_email', email);
     else localStorage.removeItem('nis_remember_email');
   }catch(_){}
   const { error } = await sb.auth.signInWithPassword({ email, password:pw });
+  if(error){ _loginEnCurso=false; const b=$('#loginBtn'); if(b){ b.disabled=false; b.textContent='Sign in'; } }
   if(error) return msg('err', error.message.includes('Email not confirmed')?'Your email is not confirmed yet. (The admin can disable email confirmation in Supabase.)':error.message);
 }
 async function doSignup(){
