@@ -7033,7 +7033,7 @@ window.unitFichaEnvia = async function(id){
 };
 /* Abre esa sesion en Corregir fichas, que corrige con la rubrica de puntos. */
 window.unitFichaCorregir = function(grade, unit, week, session){
-  Object.assign(_corr, { grade, unit, week, session, modo:'sesion' });
+  Object.assign(_corr, { grade, unit:String(unit), section:'', hito:'w'+week+'s'+session, i:0, modo:'sesion' });
   state._tab = 'corregir';
   corregirPanel();
 };
@@ -7417,7 +7417,7 @@ async function matImporta(file){
    tienes sus respuestas a la izquierda y la rúbrica a la derecha. Pones
    puntos, y "Guardar y siguiente" te lleva al siguiente sin volver atrás.
 ---------------------------------------------------------------- */
-let _corr = { grade:'g9', unit:4, week:1, session:1, fichas:[], entregas:[], i:0, rubric:[], modo:'sesion' };
+let _corr = { grade:null, unit:null, section:'', hito:null, week:1, session:1, fichas:[], entregas:[], todas:[], i:0, rubric:[], modo:'sesion', rubAbierta:true };
 
 async function corregirPanel(){
   $('#main').innerHTML = `<div class="card"><p class="muted">Cargando…</p></div>`;
@@ -7457,90 +7457,120 @@ async function corrEscritasPanel(){
   await escCarga();
 }
 
-function corrSelector(){
-  const semanas = [1,2,3,4,5,6].map(w=>`<option value="${w}" ${w===_corr.week?'selected':''}>Semana ${w}</option>`).join('');
-  const sesiones = [1,2,3,4].map(s=>`<option value="${s}" ${s===_corr.session?'selected':''}>Sesión ${s}</option>`).join('');
-  const grados = ALL_GRADE_ORDER.map(g=>`<option value="${g}" ${g===_corr.grade?'selected':''}>${GRADE_META[g][1]}</option>`).join('');
-  return `<div class="row" style="gap:10px;flex-wrap:wrap">
-    <select id="cGrado">${grados}</select>
-    <select id="cUnidad">${[1,2,3,4,5,6].map(u=>`<option value="${u}" ${u===_corr.unit?'selected':''}>Unidad ${u}</option>`).join('')}</select>
-    <select id="cSemana">${semanas}</select>
-    <select id="cSesion">${sesiones}</select>
-    <button class="btn small" onclick="corrCarga()">Ver</button>
-  </div>`;
+/* La nota de una ficha sale de los niveles por criterio, con la misma tabla
+   que los productos de unidad y las producciones escritas. Las claves de
+   `criteria` son el indice del criterio en la rubrica de la sesion. */
+function corrNota(rub, puestos){
+  const vs = (rub||[]).map((c,j)=>UNIT_VIG[(puestos||{})[j]]).filter(v=>v!=null);
+  if(!vs.length) return null;
+  return Math.round(vs.reduce((a,b)=>a+b,0)/vs.length);
 }
+function corrDonde(h){ const m=/^w(\d+)s(\d+)$/.exec(h||''); return m ? 'Semana '+m[1]+' · Sesión '+m[2] : h; }
 
+/* Se parte de lo entregado: grado → seccion → unidad → ficha, cada
+   desplegable solo con lo que existe y con cuantos la entregaron. Antes se
+   elegia semana y sesion a ciegas y se pulsaba «Ver». */
 async function corrCarga(){
-  const sel = id => { const e=$(id); return e ? e.value : null; };
-  if($('#cGrado')){
-    _corr.grade   = sel('#cGrado');
-    _corr.unit    = parseInt(sel('#cUnidad'),10);
-    _corr.week    = parseInt(sel('#cSemana'),10);
-    _corr.session = parseInt(sel('#cSesion'),10);
+  if(!_corr.todas.length){
+    const { data } = await sb.from('v_entregas_ficha').select('*').like('milestone','w%').limit(3000);
+    _corr.todas = data || [];
   }
-  const hito = 'w'+_corr.week+'s'+_corr.session;
+  const T = _corr.todas;
+  if(!T.length){
+    $('#main').innerHTML = `<div class="card">${corrTabs()}<h2>✅ Corregir fichas</h2>
+      <p class="muted">Todavía no hay fichas entregadas.</p></div>`;
+    return;
+  }
+  const numG = g => parseInt(String(g).replace(/\D/g,''),10)||0;
+  const sec = e => String(e.section||'').trim();
+  const orden = h => { const m=/^w(\d+)s(\d+)$/.exec(h||''); return m ? (+m[1])*100+(+m[2]) : 9999; };
+  const grados = [...new Set(T.map(e=>e.grade))].sort((a,b)=>numG(a)-numG(b));
+  if(grados.indexOf(_corr.grade)<0) _corr.grade = grados[grados.length-1];
+  const deGrado = T.filter(e=>e.grade===_corr.grade);
+  const secciones = [...new Set(deGrado.map(sec).filter(Boolean))].sort();
+  if(_corr.section && secciones.indexOf(_corr.section)<0) _corr.section = '';
+  const deSec = _corr.section ? deGrado.filter(e=>sec(e)===_corr.section) : deGrado;
+  const unidades = [...new Set(deSec.map(e=>String(e.unit)))].sort((a,b)=>a-b);
+  if(unidades.indexOf(String(_corr.unit))<0) _corr.unit = unidades[unidades.length-1];
+  const deUnidad = deSec.filter(e=>String(e.unit)===String(_corr.unit));
+  const fichas = {};
+  deUnidad.forEach(e=>{ (fichas[e.milestone] = fichas[e.milestone] || {n:0,title:e.title}).n++; });
+  const hitos = Object.keys(fichas).sort((a,b)=>orden(a)-orden(b));
+  if(hitos.indexOf(_corr.hito)<0){ _corr.hito = hitos[0]; _corr.i = 0; }
+  const m = /^w(\d+)s(\d+)$/.exec(_corr.hito||'') || [];
+  _corr.week = +m[1] || 1; _corr.session = +m[2] || 1;
+  _corr.entregas = deUnidad.filter(e=>e.milestone===_corr.hito)
+    .sort((a,b)=>sec(a).localeCompare(sec(b)) || String(a.full_name||'').localeCompare(String(b.full_name||'')));
+  if(_corr.i >= _corr.entregas.length) _corr.i = 0;
 
   /* `blocks` hace falta para poner el ENUNCIADO junto a cada respuesta: sin
      el, WSITEMS.prepara() recibia undefined y el profesor solo veia la clave
      tecnica ("tf12: F"). */
-  const { data: fichas } = await sb.from('worksheets')
+  const { data: planillas } = await sb.from('worksheets')
     .select('id,level,title,rubric,blocks')
-    .eq('grade',_corr.grade).eq('unit',_corr.unit)
+    .eq('grade',_corr.grade).eq('unit',parseInt(_corr.unit,10))
     .eq('week',_corr.week).eq('session',_corr.session).order('level');
-  _corr.fichas = fichas || [];
-  _corr.rubric = (fichas && fichas[0] && fichas[0].rubric) || [];
+  _corr.fichas = planillas || [];
+  _corr.rubric = (planillas && planillas[0] && planillas[0].rubric) || [];
 
-  const { data: ent } = await sb.from('v_entregas_ficha')
-    .select('*').eq('grade',_corr.grade).eq('unit',_corr.unit).eq('milestone',hito)
-    .order('full_name');
-  _corr.entregas = ent || [];
-  _corr.i = 0;
-  corrPinta();
-}
-
-function corrPinta(){
-  const titulo = (_corr.fichas[0] && _corr.fichas[0].title) || '(sin ficha digital para esta sesión)';
+  const opt = (v, txt, sel) => `<option value="${esc(String(v))}"${sel?' selected':''}>${esc(txt)}</option>`;
   const n = _corr.entregas.length;
-  const sinCorregir = _corr.entregas.filter(e=>e.score==null).length;
+  const evaluados = _corr.entregas.filter(e=>corrNota(_corr.rubric, e.criteria)!=null).length;
+  const enviados = _corr.entregas.filter(e=>e.reviewed_at).length;
+  const titulo = (_corr.fichas[0] && _corr.fichas[0].title) || fichas[_corr.hito] && fichas[_corr.hito].title || '';
 
   $('#main').innerHTML = `
     <div class="card">
       ${corrTabs()}
       <h2>✅ Corregir fichas</h2>
-      <p class="muted">${esc(titulo)}</p>
-      ${corrSelector()}
-      <p class="muted" style="margin-top:12px">
-        ${n} entrega(s) · <b>${sinCorregir} sin corregir</b> ·
-        ${_corr.fichas.length} nivel(es) digitalizado(s)</p>
-    </div>
-
-    <div class="card">
-      <h3 style="font-size:1rem;color:var(--blue-d)">📏 Rúbrica de esta práctica</h3>
-      <p class="muted">Vale para los cuatro niveles de la sesión. La nota se suma sola.</p>
-      <div id="cRub"></div>
-      <div class="row">
-        <button class="btn small" onclick="corrAddCrit()">+ Criterio</button>
-        <button class="btn small ghost" onclick="corrGuardaRubrica()">Guardar rúbrica</button>
-        <span class="state" id="cRubEstado"></span>
+      <p class="muted">Lo que entregan sesión a sesión. Un alumno cada vez: sus respuestas con el enunciado
+        delante y la rúbrica al lado; con las flechas (o ← → del teclado) pasas al siguiente.</p>
+      <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin:12px 0 0">
+        <label style="font-size:.85rem">Grado <select onchange="corrFiltra('grade',this.value)" style="margin-left:4px">
+          ${grados.map(g=>opt(g,(GRADE_META[g]||[])[1]||g,g===_corr.grade)).join('')}</select></label>
+        <label style="font-size:.85rem">Sección <select onchange="corrFiltra('section',this.value)" style="margin-left:4px">
+          ${opt('','Todas',!_corr.section)}${secciones.map(x=>opt(x,x,x===_corr.section)).join('')}</select></label>
+        <label style="font-size:.85rem">Unidad <select onchange="corrFiltra('unit',this.value)" style="margin-left:4px">
+          ${unidades.map(u=>opt(u,'Unidad '+u,String(u)===String(_corr.unit))).join('')}</select></label>
+        <label style="font-size:.85rem">Ficha <select onchange="corrFiltra('hito',this.value)" style="margin-left:4px;max-width:420px">
+          ${hitos.map(h=>opt(h, corrDonde(h)+(fichas[h].title?' — '+fichas[h].title:'')+' ('+fichas[h].n+')', h===_corr.hito)).join('')}</select></label>
       </div>
+      <p style="margin:12px 0 0"><b>${esc(corrDonde(_corr.hito))}${titulo?' — '+esc(titulo):''}</b> ·
+        ${n} entrega${n===1?'':'s'} · <b>${evaluados}</b> evaluada${evaluados===1?'':'s'} · ${enviados} enviada${enviados===1?'':'s'} al alumno</p>
+      <details ${_corr.rubAbierta?'open':''} ontoggle="_corr.rubAbierta=this.open" style="margin-top:12px">
+        <summary style="cursor:pointer;font-weight:700">📏 Rúbrica de esta ficha — vale para los cuatro niveles de la sesión</summary>
+        <p class="muted" style="font-size:.8rem;margin:8px 0 0">Cada criterio se califica <b>AD</b> logro destacado · <b>A</b> logro esperado ·
+          <b>B</b> en proceso · <b>C</b> en inicio, y la nota sale sola: AD = 19 · A = 16 · B = 12 · C = 8, media de los criterios, redondeada.
+          Puedes cambiar los criterios aquí; se guardan para los ${_corr.fichas.length||4} niveles.</p>
+        <div id="cRub"></div>
+        <div class="row">
+          <button class="btn small" onclick="corrAddCrit()">+ Criterio</button>
+          <button class="btn small ghost" onclick="corrGuardaRubrica()">Guardar rúbrica</button>
+          <span class="state" id="cRubEstado"></span>
+        </div>
+      </details>
     </div>
-
-    ${n ? `<div class="card" id="cCorreccion"></div>` : `
-    <div class="card"><p class="muted">Todavía no hay entregas de esta sesión.</p></div>`}`;
+    ${n ? `<div id="cCorreccion"></div>` : `<div class="card"><p class="muted">Todavía no hay entregas de esta ficha.</p></div>`}`;
 
   corrPintaRubrica();
-  if(n) corrAlumno(0);
+  if(n) corrAlumno(_corr.i);
 }
+
+window.corrFiltra = function(k, v){
+  _corr[k] = v; _corr.i = 0;
+  if(k==='grade'){ _corr.section=''; _corr.unit=null; _corr.hito=null; }
+  if(k==='section' || k==='unit') _corr.hito=null;
+  corregirPanel();
+};
 
 function corrPintaRubrica(){
   const r = _corr.rubric;
   $('#cRub').innerHTML = r.length ? `<table class="tbl" style="margin-top:10px">
-      <thead><tr><th>Criterio</th><th style="width:90px">Máx.</th><th style="width:40px"></th></tr></thead>
+      <thead><tr><th style="width:40px">#</th><th>Criterio</th><th style="width:40px"></th></tr></thead>
       <tbody>${r.map((c,i)=>`<tr>
+        <td class="muted">${i+1}</td>
         <td><input type="text" value="${esc(c.c||'')}" style="width:100%"
               onchange="_corr.rubric[${i}].c=this.value"></td>
-        <td><input type="number" min="1" max="20" value="${c.max||4}" style="width:4.5rem"
-              onchange="_corr.rubric[${i}].max=Number(this.value)"></td>
         <td><button class="btn small ghost" onclick="corrDelCrit(${i})">✕</button></td>
       </tr>`).join('')}</tbody></table>`
     : `<p class="muted" style="margin-top:10px">Sin rúbrica todavía. Añade criterios y guárdalos:
@@ -7558,10 +7588,12 @@ window.corrDelCrit = function(i){
 
 window.corrGuardaRubrica = async function(){
   const est = $('#cRubEstado');
-  const limpia = _corr.rubric.filter(c => (c.c||'').trim());
+  /* `max` se conserva: el corrector de producciones escritas sigue leyendo
+     estas rubricas por puntos. */
+  const limpia = _corr.rubric.filter(c => (c.c||'').trim()).map(c=>({ c:c.c.trim(), max:c.max||4 }));
   est.textContent = 'Guardando…'; est.className = 'state';
   const { error } = await sb.from('worksheets').update({ rubric: limpia })
-    .eq('grade',_corr.grade).eq('unit',_corr.unit)
+    .eq('grade',_corr.grade).eq('unit',parseInt(_corr.unit,10))
     .eq('week',_corr.week).eq('session',_corr.session);
   est.textContent = error ? ('No se guardó: '+error.message)
     : `Guardada para los ${_corr.fichas.length} niveles.`;
@@ -7569,22 +7601,39 @@ window.corrGuardaRubrica = async function(){
   if(!error){ _corr.rubric = limpia; corrPintaRubrica(); corrAlumno(_corr.i); }
 };
 
-/* ---------- corrección de un alumno ---------- */
+/* ---------- un alumno cada vez ---------- */
+window.corrMueve = function(d){
+  const n = _corr.entregas.length; if(!n) return;
+  corrAlumno(Math.max(0, Math.min(n-1, _corr.i + d)));
+  const h = $('#cCorreccion'); if(h) h.scrollIntoView({ behavior:'smooth', block:'start' });
+};
+document.addEventListener('keydown', e=>{
+  if(!$('#cCorreccion')) return;
+  if(e.target && /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) return;
+  if(e.key==='ArrowLeft') corrMueve(-1);
+  else if(e.key==='ArrowRight') corrMueve(1);
+});
+
 window.corrAlumno = async function(i){
   if(!_corr.entregas.length) return;
   _corr.i = Math.max(0, Math.min(_corr.entregas.length-1, i));
   const e = _corr.entregas[_corr.i];
+  const host = $('#cCorreccion'); if(!host) return;
 
-  const { data: sub } = await sb.from('unit_submissions')
-    .select('payload').eq('id', e.id).maybeSingle();
-  const resp = (sub && sub.payload && sub.payload.answers) || {};
+  if(e._resp === undefined){
+    const { data: sub } = await sb.from('unit_submissions')
+      .select('payload').eq('id', e.id).maybeSingle();
+    e._resp = (sub && sub.payload && sub.payload.answers) || {};
+    e._handed = !!(sub && sub.payload && (sub.payload.handed_at || sub.payload.draft===false));
+  }
+  const resp = e._resp;
 
   /* Junto a cada respuesta, su enunciado. Con la clave tecnica sola ("tf12: F")
      no habia forma de corregir sin abrir la ficha en otra pestana. El orden es
      el de la ficha, no el orden en que el alumno fue contestando. */
   const fAl = _corr.fichas.find(f => f.level === e.level) || _corr.fichas[0];
-  const etiquetas = (window.WSITEMS && fAl && fAl.blocks)
-    ? WSITEMS.prepara(fAl.blocks).labels : {};
+  let etiquetas = {};
+  try{ if(window.WSITEMS && fAl && fAl.blocks) etiquetas = WSITEMS.prepara(fAl.blocks).labels || {}; }catch(_){}
   const orden = Object.keys(etiquetas);
   const claves = Object.keys(resp)
     .filter(k => resp[k] !== '' && resp[k] !== false && resp[k] != null)
@@ -7594,99 +7643,108 @@ window.corrAlumno = async function(i){
     });
   const valor = v => v === true ? '✔' : (v === 'T' ? 'True' : (v === 'F' ? 'False' : String(v)));
 
-  const puntos = e.criteria || {};
+  const puestos = e.criteria || {};
   const rub = _corr.rubric;
-  const maxTotal = rub.reduce((a,c)=>a+(c.max||0),0);
+  const nota = corrNota(rub, puestos), nivel = unitNivelDeNota(nota);
+  const nPuestos = rub.filter((c,j)=>puestos[j]).length;
 
-  $('#cCorreccion').innerHTML = `
-    <div class="row" style="justify-content:space-between;align-items:center">
-      <div>
-        <h3 style="margin:0;font-size:1.05rem;color:var(--blue-dd)">${esc(e.full_name)}</h3>
-        <span class="muted" style="font-size:.85rem">Nivel ${esc(e.level||'—')} ·
-          ${claves.length} campo(s) respondido(s) ·
-          ${e.draft===false ? 'entregada' : 'borrador'}</span>
-      </div>
-      <div class="muted" style="font-size:.85rem">${_corr.i+1} de ${_corr.entregas.length}</div>
+  const nav = `<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:14px 0 10px">
+      <button class="btn" onclick="corrMueve(-1)" ${_corr.i===0?'disabled':''}>◀ Anterior</button>
+      <span style="font-size:.9rem">Alumno <b>${_corr.i+1}</b> de ${_corr.entregas.length} ·
+        <select onchange="corrAlumno(parseInt(this.value,10))" style="max-width:280px">
+          ${_corr.entregas.map((x,j)=>`<option value="${j}"${j===_corr.i?' selected':''}>${esc(x.full_name||'(alumno)')}${x.reviewed_at?' ✓':''}</option>`).join('')}
+        </select></span>
+      <button class="btn" onclick="corrMueve(1)" ${_corr.i>=_corr.entregas.length-1?'disabled':''}>Siguiente ▶</button>
+    </div>`;
+
+  host.innerHTML = `${nav}
+    <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap">
+      <h3 style="margin:0;font-size:1.1rem">${esc(e.full_name||'(alumno)')}
+        <span class="muted" style="font-weight:400;font-size:.9rem">${e.grade_id?e.grade_id+'.º '+(e.section||''):''}</span></h3>
+      <span>
+        ${e.level?`<span class="badge" style="background:#e7ecfd">nivel ${esc(e.level)}</span>`:''}
+        <span class="badge" style="background:${e._handed||e.draft===false?'#dcfce7':'#fef9c3'}">${e._handed||e.draft===false?'entregada':'borrador'}</span>
+        ${e.reviewed_at?'<span class="badge" style="background:#e0f2fe">enviado al alumno</span>':''}
+      </span>
     </div>
+    <p class="muted" style="font-size:.8rem;margin:6px 0 0">${esc(corrDonde(_corr.hito))}${fAl&&fAl.title?' — '+esc(fAl.title):''} · ${claves.length} campo${claves.length===1?'':'s'} respondido${claves.length===1?'':'s'}</p>
 
-    <div style="display:grid;grid-template-columns:1fr 320px;gap:18px;margin-top:14px" id="cGrid">
-      <div style="max-height:60vh;overflow:auto;border:1px solid var(--line);border-radius:10px;padding:12px">
-        ${claves.length ? `<table class="tbl"><tbody>${claves.map(k=>`<tr>
-            <td style="vertical-align:top;max-width:22rem">
-              <span style="font-size:.85rem">${esc(etiquetas[k] || k)}</span>
-              ${etiquetas[k] ? `<span class="muted" style="font-size:.7rem"> · ${esc(k)}</span>` : ''}</td>
-            <td style="font-weight:600">${esc(valor(resp[k]))}</td></tr>`).join('')}</tbody></table>`
+    <style>#cGrid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:18px;margin-top:14px} #cGrid > div{min-width:0}
+      @media (max-width:1100px){ #cGrid{grid-template-columns:minmax(0,1fr)} }</style>
+    <div id="cGrid">
+      <div style="max-height:64vh;overflow:auto;border:1px solid var(--line);border-radius:10px;padding:4px 10px">
+        ${claves.length ? `<table class="tbl" style="margin:0"><tbody>${claves.map(k=>`<tr>
+            <td style="vertical-align:top;min-width:160px;max-width:380px;font-size:.84rem">${etiquetas[k] ? esc(etiquetas[k]) : '<span class="muted">'+esc(k)+'</span>'}</td>
+            <td style="white-space:pre-wrap;font-size:.88rem;line-height:1.5;font-weight:600">${esc(valor(resp[k]))}</td></tr>`).join('')}</tbody></table>`
           : '<p class="muted">No respondió nada.</p>'}
       </div>
       <div>
-        ${rub.length ? rub.map((c,j)=>`
-          <div style="margin-bottom:12px">
-            <div style="font-size:.85rem;font-weight:600">${esc(c.c)}</div>
-            <div class="row" style="gap:5px;margin-top:5px">
-              ${Array.from({length:(c.max||4)+1},(_,p)=>`
-                <button class="btn small ${puntos[j]===p?'':'ghost'}"
-                  style="padding:5px 10px;min-width:34px"
-                  onclick="corrPunto(${j},${p})">${p}</button>`).join('')}
+        <h4 style="margin:0 0 8px">📏 Evaluación</h4>
+        ${rub.length ? rub.map((c,j)=>{ const puesto = puestos[j];
+          return `<div style="margin-bottom:12px">
+            <div style="font-size:.85rem;font-weight:600">${j+1}. ${esc(c.c)}</div>
+            <div style="display:flex;gap:6px;margin-top:6px;flex-wrap:wrap">
+              ${UNIT_LVL.map(l=>`<button class="btn small ${puesto===l?'':'ghost'}" style="min-width:46px" title="${UNIT_SIG[l]}"
+                  onclick="corrNivel(${j},'${l}')">${l}</button>`).join('')}
             </div>
-          </div>`).join('')
-        : '<p class="muted">Define la rúbrica arriba para poder puntuar por criterio.</p>'}
+            ${puesto?`<div style="font-size:.78rem;margin-top:5px;background:#f6f8fc;border-left:3px solid var(--blue);padding:5px 9px;border-radius:0 6px 6px 0"><b>${puesto}</b> · ${UNIT_SIG[puesto]}</div>`:''}
+          </div>`; }).join('')
+        : '<p class="muted">Define la rúbrica arriba para poder evaluar por criterio.</p>'}
 
         <div style="border-top:1px solid var(--line);padding-top:10px;margin-top:10px">
-          <div class="row" style="justify-content:space-between">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap">
             <b style="font-size:.9rem">Nota</b>
-            <span id="cTotal" style="font-weight:800;color:var(--blue-dd)">
-              ${corrTotal(puntos)}${maxTotal?(' / '+maxTotal):''}</span>
+            <span style="font-weight:800;font-size:1.05rem;color:var(--blue-dd)">${nota!=null
+              ? `${nivel} · ${UNIT_SIG[nivel]} · ${nota}/20`
+              : '<span class="muted" style="font-weight:400;font-size:.85rem">pon los niveles y sale sola</span>'}</span>
           </div>
-          <input type="text" id="cComent" placeholder="Comentario para el alumno"
-            value="${esc(e.feedback||'')}" style="width:100%;margin-top:8px;padding:8px;
-            border:1px solid var(--line);border-radius:8px;font-family:inherit;font-size:.85rem">
-          <div class="row" style="margin-top:10px;gap:8px">
-            <button class="btn" onclick="corrGuarda(true)">Guardar y siguiente</button>
-            <button class="btn small ghost" onclick="corrGuarda(false)">Solo guardar</button>
+          <p class="muted" style="font-size:.76rem;margin:4px 0 8px">${nPuestos} de ${rub.length} criterios puestos. Los niveles se guardan al pulsarlos;
+            el alumno ve la nota y el comentario cuando pulsas <b>Guardar y enviar</b>.</p>
+          <textarea id="cComent" rows="3" placeholder="Comentario para el alumno"
+            style="width:100%;padding:9px;border:1px solid var(--line);border-radius:8px;font-family:inherit;font-size:.86rem;line-height:1.5">${esc(e.feedback||'')}</textarea>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+            <button class="btn" onclick="corrGuarda(true)">📨 Guardar, enviar y siguiente</button>
+            <button class="btn small ghost" onclick="corrGuarda(false)">Guardar y enviar</button>
           </div>
           <div class="row"><span class="state" id="cEstado"></span></div>
         </div>
       </div>
     </div>
-
-    <div class="row" style="margin-top:14px;gap:6px;flex-wrap:wrap">
-      ${_corr.entregas.map((x,j)=>`<button class="btn small ${j===_corr.i?'':'ghost'}"
-        style="padding:5px 9px;font-size:.78rem" onclick="corrAlumno(${j})">
-        ${esc((x.full_name||'').split(' ')[0])}${x.score!=null?' ✓':''}</button>`).join('')}
     </div>`;
 };
 
-function corrTotal(p){
-  return Object.keys(p||{}).reduce((a,k)=>a+(Number(p[k])||0),0);
-}
-
-window.corrPunto = function(j, p){
-  const e = _corr.entregas[_corr.i];
-  e.criteria = e.criteria || {};
-  e.criteria[j] = (e.criteria[j] === p) ? undefined : p;
-  if(e.criteria[j] === undefined) delete e.criteria[j];
+/* Un nivel por criterio. Se guarda al pulsarlo (con la nota que resulta),
+   sin marcar la ficha como enviada: eso es «Guardar y enviar». */
+window.corrNivel = async function(j, l){
+  const e = _corr.entregas[_corr.i]; if(!e) return;
+  const c = Object.assign({}, e.criteria || {});
+  if(c[j] === l) delete c[j]; else c[j] = l;
+  e.criteria = c; e.score = corrNota(_corr.rubric, c);
   corrAlumno(_corr.i);
+  const { error } = await sb.from('unit_submissions').update({ criteria:c, score:e.score }).eq('id', e.id);
+  const est = $('#cEstado');
+  if(error && est){ est.textContent = 'No se pudo guardar: '+error.message; est.className = 'state err'; }
 };
 
 window.corrGuarda = async function(siguiente){
-  const e = _corr.entregas[_corr.i];
+  const e = _corr.entregas[_corr.i]; if(!e) return;
   const est = $('#cEstado');
-  est.textContent = 'Guardando…'; est.className = 'state';
-  const total = corrTotal(e.criteria);
-  const { error } = await sb.from('unit_submissions').update({
+  if(est){ est.textContent = 'Guardando…'; est.className = 'state'; }
+  const ta = $('#cComent');
+  const cambio = {
     criteria: e.criteria || {},
-    score: Object.keys(e.criteria||{}).length ? total : null,
-    feedback: $('#cComent').value || null,
+    score: corrNota(_corr.rubric, e.criteria),
+    feedback: (ta ? ta.value : e.feedback) || null,
     reviewed_at: new Date().toISOString(),
     reviewed_by: (state.profile && state.profile.id) || null
-  }).eq('id', e.id);
-  if(error){ est.textContent = 'No se guardó: '+error.message; est.className='state err'; return; }
-  e.score = Object.keys(e.criteria||{}).length ? total : null;
-  e.feedback = $('#cComent').value || null;
-  e.reviewed_at = new Date().toISOString();
-  est.textContent = 'Guardado'; est.className = 'state ok';
-  if(siguiente && _corr.i < _corr.entregas.length-1) corrAlumno(_corr.i+1);
-  else corrAlumno(_corr.i);
+  };
+  const { error } = await sb.from('unit_submissions').update(cambio).eq('id', e.id);
+  if(error){ if(est){ est.textContent = 'No se pudo enviar: '+error.message; est.className='state err'; } return; }
+  Object.assign(e, cambio);
+  if(siguiente && _corr.i < _corr.entregas.length-1){ corrMueve(1); return; }
+  await corrAlumno(_corr.i);
+  const est2 = $('#cEstado'); if(est2){ est2.textContent = 'Enviado al alumno ✓'; est2.className = 'state ok'; }
 };
 
 
