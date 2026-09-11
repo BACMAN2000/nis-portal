@@ -880,6 +880,10 @@ function bloqueArchivo(d){
     </div>
     <audio id="pv-${d.kind}" controls style="display:none;width:100%;margin-bottom:12px"></audio>
     <a id="lnk-${d.kind}" target="_blank" rel="noopener" style="display:none;font-size:.85rem;margin:0 0 12px">&#128206; Open what you handed in</a>
+    <div class="row" id="rescate-${d.kind}" style="display:none;margin:0 0 12px">
+      <button class="btn" id="retry-${d.kind}">&#8635; Try uploading again</button>
+      <a class="btn" id="save-${d.kind}" download style="text-decoration:none;display:inline-block">&#128190; Save it to this device</a>
+    </div>
     <label class="drop" for="f-${d.kind}" id="lbl-${d.kind}">
       <input type="file" id="f-${d.kind}" accept="audio/*,video/*,application/pdf,image/png,image/jpeg,.docx">
       &#128206; <b>Choose a file</b> — or drag it here
@@ -1143,15 +1147,45 @@ const EXT={'audio/webm':'webm','audio/ogg':'ogg','audio/mpeg':'mp3','audio/mp4':
   'video/webm':'webm','video/mp4':'mp4','application/pdf':'pdf','image/png':'png','image/jpeg':'jpg',
   'application/vnd.openxmlformats-officedocument.wordprocessingml.document':'docx'};
 
+/* La ultima grabacion o archivo de cada entrega, por si la subida falla: se
+   reintenta o se guarda en el equipo sin volver a grabar. */
+const _ultimo={};
+
+function rescate(kind,mostrar){
+  const caja=$('#rescate-'+kind); if(!caja) return;
+  caja.style.display=mostrar?'flex':'none';
+  if(!mostrar) return;
+  const u=_ultimo[kind], a=$('#save-'+kind);
+  if(u && a){ a.href=URL.createObjectURL(u.blob); a.download=GRADE+'-u'+UNIT+'-'+kind+'.'+u.ext; }
+}
+
 async function sube(blob,ext,estado,kind){
-  if(!sb||!me){ estado.textContent='Sign in from the portal to upload.'; estado.className='state err'; return; }
+  _ultimo[kind]={blob:blob,ext:ext};
+  if(!sb||!me){ estado.textContent='Sign in from the portal to upload.'; estado.className='state err'; rescate(kind,true); return; }
   estado.textContent='Uploading…'; estado.className='state';
+  rescate(kind,false);
   const ruta=me.id+'/'+GRADE+'-u'+UNIT+'-'+kind+'.'+ext;
-  const up=await sb.storage.from('unit-products').upload(ruta,blob,{upsert:true,contentType:blob.type||'application/octet-stream'});
-  if(up.error){ estado.textContent='Upload failed: '+up.error.message; estado.className='state err'; return; }
+  const tipo=(blob.type||'application/octet-stream').split(';')[0];
+  /* Safari (los iPad) manda VACIO un Blob de MediaRecorder cuando viaja
+     dentro de un FormData, que es como supabase-js envuelve los Blob: Storage
+     contesta "No content provided" y la grabacion se queda en la pantalla.
+     Los bytes van como ArrayBuffer, que viaja tal cual; el Blob queda de
+     segundo intento por si algun navegador no sabe leerlo. */
+  let up=null;
+  try{
+    const bytes=await blob.arrayBuffer();
+    if(!bytes||!bytes.byteLength) throw new Error('empty');
+    up=await sb.storage.from('unit-products').upload(ruta,bytes,{upsert:true,contentType:tipo});
+  }catch(e){ up={error:e}; }
+  if(up.error) up=await sb.storage.from('unit-products').upload(ruta,blob,{upsert:true,contentType:tipo});
+  if(up.error){
+    estado.textContent='Upload failed: '+(up.error.message||up.error)+'. Your recording is still here — try again, or save it to this device and send it to your teacher.';
+    estado.className='state err'; rescate(kind,true); return;
+  }
   const r=await guarda(kind,{mime:blob.type,size:blob.size},{file_path:ruta});
   estado.textContent=r.ok?'Uploaded — your teacher can see it now.':'Uploaded, but not registered: '+r.motivo;
   estado.className=r.ok?'state ok':'state err';
+  if(!r.ok) rescate(kind,true);
 }
 
 /* El reproductor de esta entrega: la grabacion recien hecha, el archivo que
@@ -1219,6 +1253,9 @@ function cableaArchivo(kind){
   ['dragleave','drop'].forEach(ev=>lbl.addEventListener(ev,e=>{e.preventDefault();lbl.style.borderColor='var(--lila)';}));
   lbl.addEventListener('drop',e=>desde(e.dataTransfer.files&&e.dataTransfer.files[0]));
 
+  const retry=$('#retry-'+kind);
+  if(retry) retry.addEventListener('click',()=>{ const u=_ultimo[kind]; if(u) sube(u.blob,u.ext,st,kind); });
+
   const btn=$('#rec-'+kind);
   if(!btn) return;
   let rec=null, trozos=[], grabando=false;
@@ -1240,7 +1277,7 @@ function cableaArchivo(kind){
            comprime a unos 300 bytes por segundo y la voz no baja de miles. */
         const segs=(Date.now()-t0)/1000;
         const mudo = pico>=0 ? pico<0.01 : (segs>=2 && blob.size/segs<1200);
-        await sube(blob,(blob.type||'').indexOf('ogg')>=0?'ogg':'webm',st,kind);
+        await sube(blob,EXT[(blob.type||'').split(';')[0]]||'webm',st,kind);
         if(mudo){
           st.textContent='Nothing came through the microphone — play it back to check, turn the right microphone on, and record again.';
           st.className='state err';
