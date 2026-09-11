@@ -6547,6 +6547,12 @@ function unitPintaAlumno(){
   const nb = f.notebook;
   const nota = base ? unitNota(U.crits, crit) : null, nivel = unitNivelDeNota(nota);
   const puestos = U.crits.filter(c=>crit[c.n]).length;
+  /* Una propuesta previa (payload.review, hecha con la rubrica de la unidad)
+     se ensena como sugerencia: el nivel con borde azul y el comentario ya
+     escrito. No es nota hasta que el profesor la acepta o pone la suya. */
+  const rv = (base && base.payload && base.payload.review) || null;
+  const sug = (rv && rv.niveles) || {};
+  const haySug = U.crits.some(c=>sug[c.n] && !crit[c.n]);
   const entregados = U.DELS.filter(d=>{ const r=f[d.kind];
     return r && (d.type==='file' ? !!r.file_path : !!(r.payload && r.payload.text && r.payload.text.trim())); }).length;
 
@@ -6570,9 +6576,24 @@ function unitPintaAlumno(){
         <span class="badge" style="background:${q.draft===false?'#dcfce7':'#fef9c3'}">${q.draft===false?'entregado':'borrador'}</span></div>
       <div style="white-space:pre-wrap;font-size:.88rem;line-height:1.6;max-height:360px;overflow:auto;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:#fcfdff">${esc(q.text)}</div>`;
   };
+  /* Cada entregable lleva debajo SU nota y SU comentario (las columnas score
+     y feedback de su propia fila, que son las que el alumno lee en unit.html):
+     el articulo y la reflexion se corrigen por separado y aqui se ve, de un
+     vistazo, cuanto sacó en cada uno. La rubrica de abajo es la de la unidad. */
+  const notaBox = r => {
+    if(!r || (r.score==null && !r.feedback)) return '';
+    const lv = unitNivelDeNota(r.score);
+    return `<div style="margin-top:8px;padding:8px 10px;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:0 8px 8px 0;background:#f6f8fc">
+        <div style="font-weight:800;font-size:1.05rem;color:var(--blue-dd)">${r.score!=null
+          ? `${r.score}/20 · ${lv} · ${UNIT_SIG[lv]}` : '<span class="muted" style="font-weight:400;font-size:.85rem">Sin nota · solo comentario</span>'}</div>
+        ${r.feedback ? `<div style="font-size:.8rem;line-height:1.5;margin-top:4px;white-space:pre-wrap">${esc(r.feedback)}</div>` : ''}
+        ${r.reviewed_at ? `<div class="muted" style="font-size:.72rem;margin-top:4px">enviado al alumno · ${esc(new Date(r.reviewed_at).toLocaleDateString('es-PE'))}</div>` : ''}
+      </div>`;
+  };
   const producto = d => `<div style="flex:1 1 280px;min-width:260px">
       <div style="font-weight:700;font-size:.9rem;margin-bottom:6px">${d.icon||''} ${esc(d.title)}</div>
-      ${d.type==='file' ? archivo(f[d.kind]) : textoBox(f[d.kind])}</div>`;
+      ${d.type==='file' ? archivo(f[d.kind]) : textoBox(f[d.kind])}
+      ${notaBox(f[d.kind])}</div>`;
 
   const nav = `<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:14px 0 10px">
       <button class="btn" onclick="unitMueve(-1)" ${U.i===0?'disabled':''}>◀ Anterior</button>
@@ -6590,12 +6611,16 @@ function unitPintaAlumno(){
         <div style="font-size:.86rem;font-weight:600">${c.n}. ${esc(c.text)}
           ${selfL[c.n]?`<span class="muted" style="font-weight:400;font-size:.75rem" title="autoevaluación"> · el alumno se puso ${selfL[c.n]}</span>`:''}</div>
         <div style="display:flex;gap:6px;margin-top:6px;flex-wrap:wrap">
-          ${UNIT_LVL.map(l=>`<button class="btn small ${puesto===l?'':'ghost'}" style="min-width:46px"
-              title="${esc((c.levels||{})[l]||UNIT_SIG[l])}" onclick="unitNivel('${base.id}','${c.n}','${l}')">${l}</button>`).join('')}
+          ${UNIT_LVL.map(l=>`<button class="btn small ${puesto===l?'':'ghost'}" style="min-width:46px;${sug[c.n]===l&&puesto!==l?'border-color:#3b5bdb;color:#3b5bdb':''}"
+              title="${esc((c.levels||{})[l]||UNIT_SIG[l])}${sug[c.n]===l?' (propuesta)':''}" onclick="unitNivel('${base.id}','${c.n}','${l}')">${l}</button>`).join('')}
         </div>
         ${puesto?`<div style="font-size:.8rem;margin-top:6px;background:#f6f8fc;border-left:3px solid var(--blue);padding:6px 10px;border-radius:0 6px 6px 0">
-            <b>${puesto} · ${UNIT_SIG[puesto]}</b>${(c.levels||{})[puesto]?' — '+esc(c.levels[puesto]):''}</div>`:''}
+            <b>${puesto} · ${UNIT_SIG[puesto]}</b>${(c.levels||{})[puesto]?' — '+esc(c.levels[puesto]):''}</div>`
+          : (sug[c.n]?`<div class="muted" style="font-size:.76rem;margin-top:4px">propuesta: <b>${sug[c.n]}</b> · ${UNIT_SIG[sug[c.n]]}</div>`:'')}
       </div>`; }).join('')}
+    ${rv ? `<div style="font-size:.8rem;background:#e7ecfd;color:#2d5a8d;border-radius:8px;padding:8px 10px;margin:4px 0 10px">
+        🤖 <b>Propuesta automática</b>${rv.fecha?' del '+esc(rv.fecha):''} — ${esc(rv.por||'revísala antes de enviar')}.
+        ${haySug?`<button class="btn small" style="margin-left:8px" onclick="unitAceptaPropuesta('${base.id}')">✔ Aceptar los niveles propuestos</button>`:''}</div>` : ''}
     <div style="border-top:1px solid var(--line);padding-top:10px;margin-top:6px">
       <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px">
         <b>Nota</b>
@@ -6605,7 +6630,7 @@ function unitPintaAlumno(){
       </div>
       <p class="muted" style="font-size:.76rem;margin:4px 0 8px">${puestos} de ${U.crits.length} criterios puestos.
         Los niveles se guardan al pulsarlos; el alumno ve la nota y el comentario cuando pulsas <b>Guardar y enviar</b>.</p>
-      <textarea id="unitComent" rows="3" placeholder="Comentario para el alumno" style="width:100%;padding:9px;border:1px solid var(--line);border-radius:8px;font-family:inherit;font-size:.86rem;line-height:1.5">${esc(base.feedback||'')}</textarea>
+      <textarea id="unitComent" rows="${(base.feedback||(rv&&rv.borrador)||'').length>200?6:3}" placeholder="Comentario para el alumno" style="width:100%;padding:9px;border:1px solid var(--line);border-radius:8px;font-family:inherit;font-size:.86rem;line-height:1.5">${esc(base.feedback||(rv&&rv.borrador)||'')}</textarea>
       <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:8px">
         <button class="btn" onclick="unitEnvia('${base.id}')">📨 Guardar y enviar al alumno</button>
         <span class="state" id="unitEstado">${base.reviewed_at?'Enviado · '+esc(new Date(base.reviewed_at).toLocaleDateString('es-PE')):''}</span>
@@ -6643,6 +6668,21 @@ window.unitNivel = async function(id, crit, valor){
   const { error } = await sb.from('unit_submissions').update({ criteria:c, score:base.score }).eq('id', id);
   const st = $('#unitEstado');
   if(error && st){ st.textContent = 'No se pudo guardar: '+error.message; st.className='state err'; }
+};
+
+/* Copia los niveles propuestos a los criterios (solo donde el profesor no
+   ha puesto nada) y guarda la nota que resulta. Enviar sigue siendo aparte. */
+window.unitAceptaPropuesta = async function(id){
+  const f = _unit.filas[_unit.i]; if(!f) return;
+  const base = Object.values(f).find(r=>r && r.id===id); if(!base) return;
+  const sug = (base.payload && base.payload.review && base.payload.review.niveles) || {};
+  const c = Object.assign({}, base.criteria||{});
+  _unit.crits.forEach(k=>{ if(sug[k.n] && !c[k.n]) c[k.n] = sug[k.n]; });
+  base.criteria = c; base.score = unitNota(_unit.crits, c);
+  unitPintaAlumno();
+  const { error } = await sb.from('unit_submissions').update({ criteria:c, score:base.score }).eq('id', id);
+  const st = $('#unitEstado');
+  if(st){ st.textContent = error ? 'No se pudo guardar: '+error.message : 'Niveles guardados — revisa el comentario y pulsa Guardar y enviar'; st.className = error?'state err':'state ok'; }
 };
 
 window.unitEnvia = async function(id){
