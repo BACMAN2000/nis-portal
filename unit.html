@@ -165,7 +165,9 @@ textarea:focus{outline:none;border-color:var(--blue)}
 .note{background:#fff8e6;border:1px solid #f5dea0;border-radius:var(--r-sm);padding:12px 14px;font-size:.85rem;color:var(--ink)}
 .fb{background:var(--bg);border:1px solid #cbe6cd;border-radius:var(--r-sm);padding:14px 16px;margin-top:14px}
 .fb h4{margin:0 0 6px;color:var(--ink);font-size:.92rem}
-.fb p{margin:0;font-size:.88rem;color:var(--muted)}
+.fb p{margin:0;font-size:.88rem;color:var(--muted);white-space:pre-wrap}
+.fb .mark{display:block;margin:0 0 8px;padding:6px 10px;border-left:4px solid var(--blue);background:var(--card);border-radius:0 6px 6px 0;color:var(--ink);font-size:1rem}
+.fb .mark b{font-size:1.25rem}
 .drop{display:block;border:2px dashed var(--lila);border-radius:var(--r-sm);padding:20px;text-align:center;color:var(--grey);font-size:.87rem;cursor:pointer}
 .drop input{display:none}
 .checklist{list-style:none;padding:0;margin:14px 0 0}
@@ -987,12 +989,13 @@ async function arrancaSesion(){
     if(ta){ ta.value=(r.payload&&r.payload.text)||''; if(st && r.payload && r.payload.draft===false){ st.textContent='Handed in'; st.className='state ok'; } }
     else if(st && r.file_path){ st.textContent='Uploaded — you can replace it.'; st.className='state ok';
       muestraEntregado(r.kind, r.file_path); }
-    if(r.feedback){
+    if(r.feedback || r.score!=null){
       const fb=$('#fb-'+r.kind); if(fb){ fb.style.display='block';
         /* La nota es vigesimal y sale de los niveles de la rubrica (AD 18-20,
-           A 14-17, B 11-13, C 0-10): se dice con su nivel, no solo el numero. */
+           A 14-17, B 11-13, C 0-10): se dice con su nivel, no solo el numero,
+           y en su propia linea, grande, para que se vea antes que el comentario. */
         const lv=r.score==null?null:r.score>=18?'AD — Outstanding':r.score>=14?'A — Expected':r.score>=11?'B — In progress':'C — Starting out';
-        $('#fbt-'+r.kind).textContent=(r.score!=null?('Mark: '+r.score+'/20 · '+lv+' — '):'')+r.feedback; }
+        $('#fbt-'+r.kind).innerHTML=(r.score!=null?('<span class="mark"><b>'+r.score+'/20</b> · '+lv+'</span>'):'')+(r.feedback?esc(r.feedback):''); }
     }
   });
   recuperaLocales(data||[]);
