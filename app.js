@@ -1135,6 +1135,7 @@ async function renderAdmin(tab='users'){
        los dos paneles tienen que leerse igual, y quien entra aqui viene a
        corregir, no a mirar una grafica. */
     {group:'Marking', icon:'✅', items:[
+      {key:'levels',label:'🧭 Levels & roadmap'},
       {key:'unitprod',label:'🎯 Unit products'},
       {key:'corregir',label:'✅ Mark worksheets'},
       {key:'unitexams',label:'📋 Unit exams'},
@@ -1239,6 +1240,7 @@ async function renderAdmin(tab='users'){
   if(tab==='final') return cefrFinalPanel();
   if(tab==='readers') return readerStatsPanel();
   if(tab==='unitexams') return unitExamPanel();
+  if(tab==='levels') return levelsPanel();
   if(tab==='funnordic') return funNordicPanel();
   if(tab==='funaccess') return funAccessPanel(GRADES);
   if(tab==='yle') return window.ylePanel(GRADES, {admin:true});
@@ -2625,6 +2627,127 @@ window._ctlRow=(ch,open)=>{
   _ctlWrite(RDR_LEVELS.map(l=>({key:examCtl.book+':'+l+':ch'+ch,scope:'all',school_year:SCHOOL_YEAR_NOW,
     unlocked:!!open,closes_at:until,updated_at:now})));
 };
+/* ================= 🧭 Niveles y hoja de ruta ==============================
+   Pedido de Paolo (11-sep-2026): cada alumno trabaja en un nivel (A2·B1·B2·C1)
+   y se le corrige con la rúbrica de su nivel y de la habilidad, uno a uno,
+   nunca con una vara única para el salón. Aquí el profesor pone el nivel de
+   sus alumnos (RPC set_student_level: solo admin o profesor del grado) y ve
+   la hoja de ruta con el estado real de cada paso.                           */
+const NIVELES_CEFR = ['A2','B1','B2','C1'];
+const _lv = { grade:'', section:'', rub:'B1', skill:'writing' };
+
+/* La rúbrica de una habilidad en un nivel, en una tabla compacta. La usan
+   este panel y los paneles de corrección (junto al alumno, en SU nivel). */
+function nivelRubricaHTML(skill, lvl, opts){
+  const R = window.LEVEL_RUBRICS; if(!R || !R[skill]) return '';
+  lvl = String(lvl||'').toUpperCase();
+  const S = R[skill];
+  if(!S.levels){ /* reading / listening: una línea por nivel */
+    return S.expect && S.expect[lvl] ? `<p class="muted" style="font-size:.82rem;margin:4px 0">${esc(S.expect[lvl])}</p>` : '';
+  }
+  const L = S.levels[lvl]; if(!L) return `<p class="muted" style="font-size:.82rem">No rubric for level ${esc(lvl||'—')}.</p>`;
+  const ex = (S.expect||{})[lvl] || {};
+  const compacto = opts && opts.compacto;
+  return `<div style="overflow-x:auto"><table class="tbl" style="font-size:${compacto?'.76rem':'.82rem'}">
+      <thead><tr><th style="min-width:150px">${skill==='writing'?'Writing':'Speaking'} · ${esc(lvl)}</th>
+        ${UNIT_LVL.map(b=>`<th>${b}${b==='A'?' <span class="muted" style="font-weight:400">expected</span>':''}</th>`).join('')}</tr></thead>
+      <tbody>${S.criteria.map(c=>`<tr><td><b>${esc(c.text.split(' — ')[0])}</b>${compacto?'':'<div class="muted" style="font-weight:400">'+esc(c.text.split(' — ').slice(1).join(' — '))+'</div>'}</td>
+        ${UNIT_LVL.map(b=>`<td style="vertical-align:top">${esc((L[c.k]||{})[b]||'')}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
+    ${ex.summary?`<p class="muted" style="font-size:.78rem;margin:6px 0 0"><b>At ${esc(lvl)}:</b> ${esc(ex.summary)}${ex.length?' · <b>Length:</b> '+esc(ex.length):''}${ex.structures?' · <b>Structures:</b> '+esc(ex.structures):''}${ex.linkers?' · <b>Linkers:</b> '+esc(ex.linkers):''}${ex.accuracy?' · <b>Accuracy:</b> '+esc(ex.accuracy):''}</p>`:''}`;
+}
+/* El desplegable «Expected at <nivel>» que va junto al alumno al corregir. */
+function nivelEsperadoBox(skill, lvl){
+  if(!lvl) return `<div class="note info" style="margin:8px 0;font-size:.82rem">This student has <b>no level set</b>: mark them at the level you know they work at, and set it in 🧭 Levels &amp; roadmap.</div>`;
+  return `<details style="margin:8px 0"><summary style="cursor:pointer;font-weight:700;font-size:.85rem">📐 Expected at ${esc(String(lvl).toUpperCase())} — ${skill==='writing'?'writing':'speaking'} rubric for this level</summary>
+    <div style="margin-top:6px">${nivelRubricaHTML(skill, lvl, {compacto:true})}</div></details>`;
+}
+
+async function levelsPanel(){
+  state._tab='levels';
+  const isAdmin = state.profile && state.profile.role==='admin';
+  const grades = isAdmin ? GRADES : teacherAllowedGrades();
+  $('#main').innerHTML = `<h1>🧭 Levels &amp; roadmap</h1><p class="muted">Loading…</p>`;
+  const gids = grades.map(g=>g.id);
+  const [{data:studs},{data:subs}] = await Promise.all([
+    sb.from('profiles').select('id,full_name,grade_id,section,cefr_level').eq('role','student').in('grade_id', gids).order('full_name'),
+    sb.from('unit_submissions').select('id,grade,reviewed_at,released_at').not('reviewed_at','is',null).limit(5000)
+  ]);
+  const S = studs||[];
+  /* Estado por grado: cuántos tienen nivel. */
+  const porGrado = {}; S.forEach(p=>{ const g=porGrado[p.grade_id]=porGrado[p.grade_id]||{n:0,con:0}; g.n++; if(p.cefr_level) g.con++; });
+  const sinNivel = S.filter(p=>!p.cefr_level).length;
+  const pend = (subs||[]).filter(r=>!r.released_at && gids.indexOf(parseInt(String(r.grade).replace(/\D/g,''),10))>=0).length;
+  const estadoGrados = grades.map(g=>{ const x=porGrado[g.id]||{n:0,con:0}; return `<span class="badge" style="background:${x.n&&x.con===x.n?'#dcfce7':(x.con?'#fef3c7':'#fee2e2')}">${esc(g.name)} · ${x.con}/${x.n}</span>`; }).join(' ');
+
+  /* Por defecto, el primer grado que tenga alumnos: al admin le salían once
+     grados y el primero vacío. */
+  if(!_lv.grade || gids.indexOf(+_lv.grade)<0) _lv.grade = String((gids.find(g=>porGrado[g]&&porGrado[g].n)||gids[0])||'');
+  const deGrado = S.filter(p=>String(p.grade_id)===String(_lv.grade));
+  const secciones = [...new Set(deGrado.map(p=>String(p.section||'').trim()).filter(Boolean))].sort();
+  if(_lv.section && secciones.indexOf(_lv.section)<0) _lv.section='';
+  const lista = deGrado.filter(p=>!_lv.section || String(p.section||'').trim()===_lv.section);
+  const opt = (v,t,sel)=>`<option value="${esc(String(v))}"${sel?' selected':''}>${esc(t)}</option>`;
+  const selNivel = (p)=>`<select onchange="window._lvPon('${p.id}',this.value,this)" style="font-family:inherit;padding:4px 6px;border:1.5px solid var(--line);border-radius:8px;background:${p.cefr_level?'#fff':'#fff7ed'}">
+      ${opt('','— no level —',!p.cefr_level)}${NIVELES_CEFR.map(l=>opt(l,l,p.cefr_level===l)).join('')}</select>`;
+
+  const roadmap = `<div class="card">
+    <h2 style="margin-top:0">🗺️ How we mark from September 2026 — the roadmap</h2>
+    <ol style="margin:8px 0 0 18px;padding:0;line-height:1.6">
+      <li><b>Every student has a working level</b> (A2 · B1 · B2 · C1), set by their teacher — not by the grade they are in.
+        <div style="margin:4px 0 6px">${estadoGrados} ${sinNivel?`<span class="muted">· ${sinNivel} without level in your grades</span>`:'<span class="muted">· all set</span>'}</div></li>
+      <li><b>Each student is marked individually at their level</b>, with the rubric of the skill (Writing · Speaking · Reading · Listening) for that level — never with one rubric for the whole class. The unit rubric says <i>what</i> to look at; the level rubric says <i>how much</i> to expect. In every marking panel the level sits next to the name and the level rubric is one click away (📐 Expected at…).</li>
+      <li><b>Unit exams are taken at the student’s level.</b> Results flag anyone who took another level (⚠ took A2 · level B1).</li>
+      <li><b>Nothing reaches the student until you send the whole class.</b> Marking saves; <b>📣 Send grades and comments</b> publishes, after you have reviewed it.
+        <div style="margin:4px 0 0"><span class="badge" style="background:${pend?'#fef3c7':'#dcfce7'}">${pend} marked and not yet sent in your grades</span></div></li>
+    </ol>
+    <p class="muted" style="font-size:.8rem;margin:10px 0 0">Set levels below. A student with no level is marked at the level you know, and shows a red “no level” badge until you set it.</p>
+  </div>`;
+
+  const tabla = `<div class="card" style="margin-top:14px">
+    <h2 style="margin-top:0">🎚️ Working level of each student</h2>
+    <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin:6px 0 10px">
+      <label style="font-size:.85rem">Grade <select onchange="window._lvFiltra('grade',this.value)" style="margin-left:4px">${grades.map(g=>opt(g.id,g.name,String(g.id)===String(_lv.grade))).join('')}</select></label>
+      <label style="font-size:.85rem">Section <select onchange="window._lvFiltra('section',this.value)" style="margin-left:4px">${opt('','All',!_lv.section)}${secciones.map(s=>opt(s,s,s===_lv.section)).join('')}</select></label>
+      <span class="muted" style="font-size:.8rem">${lista.length} student${lista.length===1?'':'s'} · ${lista.filter(p=>p.cefr_level).length} with level</span>
+      <span style="margin-left:auto;font-size:.82rem">Everyone shown without level → <select id="lvBulk" style="font-family:inherit;padding:3px 6px">${NIVELES_CEFR.map(l=>opt(l,l,l==='B1')).join('')}</select>
+        <button class="btn sm" onclick="window._lvBulk()">Apply</button></span>
+    </div>
+    ${lista.length?`<div style="overflow-x:auto"><table class="tbl"><thead><tr><th>Student</th><th>Section</th><th>Working level</th><th></th></tr></thead>
+      <tbody>${lista.map(p=>`<tr><td>${esc(p.full_name||'')}</td><td>${esc(String(p.section||''))}</td><td>${selNivel(p)}</td><td class="muted" id="lvst-${p.id}" style="font-size:.78rem"></td></tr>`).join('')}</tbody></table></div>`
+      :'<p class="muted">No students in this grade.</p>'}
+  </div>`;
+
+  const rubricas = `<div class="card" style="margin-top:14px">
+    <h2 style="margin-top:0">📐 Rubrics by skill and level</h2>
+    <p class="muted" style="font-size:.82rem">A = what is expected at that level. AD is above it, B is close, C is not there yet. Same scale for everyone; different expectations per level.</p>
+    <div class="row" style="gap:6px;flex-wrap:wrap;margin:0 0 10px">
+      ${NIVELES_CEFR.map(l=>`<button class="btn sm ${_lv.rub===l?'':'ghost'}" onclick="window._lvRub('${l}',null)">${l}</button>`).join('')}
+      <span class="muted" style="margin:0 4px">|</span>
+      ${[['writing','✍️ Writing'],['speaking','🗣️ Speaking'],['reading','📖 Reading'],['listening','🎧 Listening']].map(s=>`<button class="btn sm ${_lv.skill===s[0]?'':'ghost'}" onclick="window._lvRub(null,'${s[0]}')">${s[1]}</button>`).join('')}
+    </div>
+    ${window.LEVEL_RUBRICS ? nivelRubricaHTML(_lv.skill, _lv.rub) : '<p class="muted">The rubrics file (level-rubrics.js) is not loaded.</p>'}
+  </div>`;
+
+  $('#main').innerHTML = `<h1>🧭 Levels &amp; roadmap</h1>${roadmap}${tabla}${rubricas}`;
+}
+window._lvFiltra = (k,v)=>{ _lv[k]=v; if(k==='grade') _lv.section=''; levelsPanel(); };
+window._lvRub = (l,s)=>{ if(l) _lv.rub=l; if(s) _lv.skill=s; levelsPanel(); };
+window._lvPon = async (id, lvl, sel)=>{
+  const st = document.getElementById('lvst-'+id); if(st) st.textContent='saving…';
+  const { data, error } = await sb.rpc('set_student_level', { p_student:id, p_level:lvl||null });
+  if(error){ if(st){ st.textContent='✗ '+error.message; st.style.color='var(--bad,#b91c1c)'; } return; }
+  if(sel) sel.style.background = data ? '#fff' : '#fff7ed';
+  if(st){ st.textContent = data ? '✓ '+data : '✓ cleared'; st.style.color=''; }
+};
+window._lvBulk = async ()=>{
+  const lvl = ($('#lvBulk')||{}).value; if(!lvl) return;
+  const sels = [...document.querySelectorAll('select[onchange^="window._lvPon"]')].filter(s=>!s.value);
+  if(!sels.length){ alert('Everyone shown already has a level.'); return; }
+  if(!await NISUI.pregunta(sels.length+' students without level will be set to '+lvl+'.', {titulo:'Set the level for all of them?', si:'Set '+lvl, no:'Cancel'})) return;
+  for(const s of sels){ const id=/'([0-9a-f-]{36})'/.exec(s.getAttribute('onchange'))[1]; s.value=lvl; await window._lvPon(id, lvl, s); }
+  levelsPanel();
+};
+
 /* ================= 📋 Exámenes de unidad ==================================
    La misma mecánica que los controles de lectura, y a propósito: el profesor
    ya sabe abrir una celda, dar +5 y poner hora de cierre. Cambia lo que hay en
@@ -2915,6 +3038,7 @@ async function _uexResultados(studs){
             ? '<span class="badge" id="uexw-'+w.id+'" style="background:#dcfce7">marked'+(w.score!=null?' · '+w.score+'/20':'')+(w.released_at?' · sent':'')+'</span>'
             : '<span class="badge" id="uexw-'+w.id+'" style="background:#fee2e2">not marked</span>'}</summary>
           <div style="white-space:pre-wrap;font-size:.86rem;line-height:1.55;max-height:260px;overflow:auto;padding:8px 10px;margin-top:6px;border:1px solid var(--line);border-radius:8px;background:#fcfdff">${esc(wp.text||'')}</div>
+          ${nivelEsperadoBox('writing', f.lvl)}
           <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:6px">
             <label style="font-size:.78rem">Grade <input type="number" min="0" max="20" value="${w.score!=null?w.score:''}" style="width:4rem"
               onchange="unitCalificar('${w.id}',this.value,null)"></label>
@@ -3400,6 +3524,7 @@ async function renderTeacher(tab){
      casi siempre. */
   const suelto=[], correccion=[], seguimiento=[], clases=[], cursos=[], cambridge=[], permisos=[];
   if(acc.can_students) suelto.push({key:'students',label:'👥 Students'});
+  if(acc.can_results||acc.can_students) correccion.push({key:'levels',label:'🧭 Levels & roadmap'});
   if(acc.can_results){
     correccion.push({key:'unitprod',label:'🎯 Unit products'});
     correccion.push({key:'corregir',label:'✅ Mark worksheets'});
@@ -3473,6 +3598,7 @@ async function renderTeacher(tab){
   if(active==='final') return cefrFinalPanel();
   if(active==='readers') return readerStatsPanel();
   if(active==='unitexams') return unitExamPanel();
+  if(active==='levels') return levelsPanel();
   if(active==='students') return teacherStudents();
   if(active==='unitprod') return unitProductsPanel();
   if(active==='materiales') return materialesPanel();
@@ -6698,7 +6824,7 @@ function unitPintaAlumno(){
       </div>
       <div style="display:flex;gap:18px;flex-wrap:wrap;margin:14px 0">${U.DELS.map(producto).join('')}</div>
       ${nb && nb.file_path ? `<div style="margin:0 0 12px"><button class="btn small" onclick="unitVerArchivo('${esc(nb.file_path)}',this)">📓 Notebook</button></div>` : ''}
-      <div style="border-top:1px solid var(--line);padding-top:12px">${evaluacion}</div>
+      <div style="border-top:1px solid var(--line);padding-top:12px">${nivelEsperadoBox('writing', p.cefr_level)}${evaluacion}</div>
     </div>`;
 }
 
@@ -8087,13 +8213,28 @@ function escTitulo(texto){
            texto: prim.slice(0, 80) };
 }
 
-function escProponeNivel(c, an, W){
+/* Umbrales de la propuesta según el nivel del alumno: lo que en A2 ya es A,
+   en C1 es B. Sin nivel se usa B2, el de la rúbrica de la unidad de 9.º. */
+const LEVEL_PARAMS = {
+  A2: { evidenciaA:1, consejoA:1, parrafosA:2, secuenciaA:2, conectoresA:1, datosA:1 },
+  B1: { evidenciaA:1, consejoA:2, parrafosA:3, secuenciaA:3, conectoresA:2, datosA:2 },
+  B2: { evidenciaA:2, consejoA:2, parrafosA:3, secuenciaA:3, conectoresA:2, datosA:2 },
+  C1: { evidenciaA:2, consejoA:3, parrafosA:4, secuenciaA:3, conectoresA:3, datosA:2 }
+};
+function escProponeNivel(c, an, W, nivel){
+  const lvl = String(nivel||'').toUpperCase();
+  const P = LEVEL_PARAMS[lvl] || LEVEL_PARAMS.B2;
+  const out = _escProponeNivel(c, an, W, P);
+  if(out && out.n) out.r = (out.r||'') + ' [expected at ' + (LEVEL_PARAMS[lvl] ? lvl : 'B2, no level set') + ']';
+  return out;
+}
+function _escProponeNivel(c, an, W, P){
   const t = an.texto;
 
   if(c.auto === 'evidence'){
     const h = escBusca(t, ESC_EVIDENCIA);
-    if(h.length >= 2) return { n:'A', r:'Cites evidence (' + h.slice(0,3).join(', ') + '). For AD it would need to weigh it, not just cite it \u2014 you assess that.' };
-    if(h.length === 1) return { n:'B', r:'A single piece of evidence (\u201c' + h[0] + '\u201d); the rest is personal opinion.' };
+    if(h.length >= P.evidenciaA) return { n:'A', r:'Cites evidence (' + h.slice(0,3).join(', ') + '). For AD it would need to weigh it, not just cite it \u2014 you assess that.' };
+    if(h.length) return { n:'B', r:'A single piece of evidence (\u201c' + h[0] + '\u201d); the rest is personal opinion.' };
     return { n:'C', r:'No source or data is visible: it is all opinion.' };
   }
 
@@ -8101,10 +8242,10 @@ function escProponeNivel(c, an, W){
     const usa = Object.keys(ESC_CONSEJO).filter(function(k){ return escBusca(t, ESC_CONSEJO[k]).length; });
     const esp = escBusca(t, ESC_ESPECULA);
     const ejemplos = usa.map(function(k){ return escBusca(t, ESC_CONSEJO[k])[0]; }).join(', ');
-    if(usa.length >= 2 && esp.length)
+    if(usa.length >= P.consejoA && esp.length)
       return { n:'A', r:'Grades the advice (' + ejemplos + ') and uses modals of speculation (\u201c' + esp[0] + '\u201d). If it separates what is certain from what is probable, it is AD.' };
-    if(usa.length >= 2) return { n:'A', r:'Grades the advice with more than one strength (' + ejemplos + ').' };
-    if(usa.length === 1) return { n:'B', r:'Gives advice always with the same strength (\u201c' + ejemplos + '\u201d).' };
+    if(usa.length >= P.consejoA) return { n:'A', r:'Gives advice' + (usa.length>1?' with more than one strength (':' (') + ejemplos + ').' };
+    if(usa.length) return { n:'B', r:'Gives advice always with the same strength (\u201c' + ejemplos + '\u201d).' };
     return { n:'C', r:'There are no advice modals in the text.' };
   }
 
@@ -8115,12 +8256,12 @@ function escProponeNivel(c, an, W){
     const cerca  = rango ? (n >= rango[0]*0.85 && n <= rango[1]*1.15) : null;
     const partes = [];
     partes.push(tit.hay ? 'a title' : null);
-    partes.push(an.parrafos >= 3 ? 'three or more paragraphs' : (an.parrafos === 2 ? 'two paragraphs' : null));
+    partes.push(an.parrafos >= P.parrafosA ? an.parrafos + ' paragraphs' : null);
     partes.push(dentro ? 'within ' + rango[0] + '\u2013' + rango[1] : null);
     const tiene = partes.filter(Boolean);
     const falta = [];
     if(!tit.hay) falta.push('a title');
-    if(an.parrafos < 3) falta.push('paragraphs (' + an.parrafos + ')');
+    if(an.parrafos < P.parrafosA) falta.push('paragraphs (' + an.parrafos + ' of ' + P.parrafosA + ' expected)');
     if(rango && !dentro) falta.push(n + ' words, ' + (n < rango[0] ? 'below' : 'above') + ' ' + rango[0] + '\u2013' + rango[1]);
     const r = ((tiene.length ? 'Has ' + tiene.join(', ') + '. ' : '') +
                (falta.length ? 'Missing: ' + falta.join('; ') + '.' : '')).trim();
@@ -8143,7 +8284,7 @@ function escProponeNivel(c, an, W){
   if(c.auto === 'sequence'){
     const h = escBusca(t, ESC_SECUENCIA);
     const distintas = [...new Set(h.map(function(x){ return x.toLowerCase(); }))];
-    if(distintas.length >= 3) return { n:'A', r:'Sequences with ' + distintas.slice(0,4).join(', ') + '.' };
+    if(distintas.length >= P.secuenciaA) return { n:'A', r:'Sequences with ' + distintas.slice(0,4).join(', ') + '.' };
     if(distintas.length) return { n:'B', r:'Only ' + distintas.length + ' sequencing word(s) (\u201c' + distintas[0] + '\u201d).' };
     return { n:'C', r:'There is no word that puts the steps in order.' };
   }
@@ -8152,7 +8293,7 @@ function escProponeNivel(c, an, W){
   if(c.auto === 'linkers'){
     const tipos = Object.keys(an.conectores).filter(function(k){ return an.conectores[k].length; });
     const ejem = tipos.map(function(k){ return an.conectores[k][0]; }).slice(0,3);
-    if(tipos.length >= 2) return { n:'A', r:'Links with ' + ejem.join(', ') + ' (' + tipos.map(function(k){ return ESC_TIPO_EN[k]||k; }).join(', ') + ').' };
+    if(tipos.length >= P.conectoresA) return { n:'A', r:'Links with ' + ejem.join(', ') + ' (' + tipos.map(function(k){ return ESC_TIPO_EN[k]||k; }).join(', ') + ').' };
     if(tipos.length === 1) return { n:'B', r:'Only one type of connector: ' + (ESC_TIPO_EN[tipos[0]]||tipos[0]) + ' (\u201c' + ejem[0] + '\u201d).' };
     return { n:'C', r:'The sentences are not linked.' };
   }
@@ -8162,7 +8303,7 @@ function escProponeNivel(c, an, W){
   if(c.auto === 'data'){
     const conUnidad = t.match(/\d+([.,]\d+)?\s*(%|percent|cm|mm|km|kg|ml|min|hours|minutes|seconds|degrees|\u00b0|m\b|g\b|l\b|h\b)/gi) || [];
     const cifras = t.match(/\d+([.,]\d+)?/g) || [];
-    if(conUnidad.length >= 2) return { n:'A', r:'Has ' + conUnidad.length + ' figures with their unit (' + conUnidad.slice(0,3).join(', ') + ').' };
+    if(conUnidad.length >= P.datosA) return { n:'A', r:'Has ' + conUnidad.length + ' figure(s) with their unit (' + conUnidad.slice(0,3).join(', ') + ').' };
     if(conUnidad.length === 1) return { n:'B', r:'A single figure with a unit (\u201c' + conUnidad[0] + '\u201d).' };
     if(cifras.length) return { n:'B', r:'There are numbers (' + cifras.slice(0,3).join(', ') + ') but none has a unit.' };
     return { n:'C', r:'There is no figure in the text.' };
@@ -8326,7 +8467,7 @@ window.escAbre = function(j, silencioso){
   const ctx = { campos:campos, respondidos:respondidos, banco:banco };
 
   _esc.props = (_esc.modo === 'niveles')
-    ? rub.map(function(c){ return escProponeNivel(c, an, R.W); })
+    ? rub.map(function(c){ return escProponeNivel(c, an, R.W, f.nivel); })
     : rub.map(function(c){ return escPropone(c, an, ctx); });
   /* Si ya se habia corregido, mandan los puntos guardados; si no, la propuesta. */
   const enBorrador = (f.fila.payload && f.fila.payload.review) || {};
@@ -8353,6 +8494,7 @@ window.escAbre = function(j, silencioso){
         <span class="muted" style="font-size:.85rem">${esc(f.donde)} · field ${esc(f.campo)} ·
           ${_esc.i + 1} of ${_esc.filas.length}</span>
       </div>
+      ${nivelEsperadoBox('writing', f.nivel)}
 
       <div id="eGrid">
         <div style="min-width:0">
