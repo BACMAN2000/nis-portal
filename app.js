@@ -379,15 +379,15 @@ function munBody(){ return `<iframe src="mun-academy.html" title="MUN Academy" s
 function liveQuizBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
     <div class="muted" style="flex:1;min-width:220px">Host a live Kahoot-style game. Project this screen; students join with the PIN or the QR code from their phone.</div>
-    <a class="btn" href="live-quiz.html?v=c9b57862" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
+    <a class="btn" href="live-quiz.html?v=77624886" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
   </div>
-  <iframe src="live-quiz.html?v=c9b57862" title="NIShoot Live" allow="autoplay" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#0d1d33"></iframe>`; }
+  <iframe src="live-quiz.html?v=77624886" title="NIShoot Live" allow="autoplay" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#0d1d33"></iframe>`; }
 function gamesLabBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
     <div class="muted" style="flex:1;min-width:220px">Worksheets + games for grammar, vocabulary, phrasal verbs and idioms (A1–C1). Open any topic to play: quiz, gap-fill, matching, crossword, word search, word invaders and time attack.</div>
-    <a class="btn" href="games-lab.html?v=f66cf7d1" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
+    <a class="btn" href="games-lab.html?v=b199a6c9" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
   </div>
-  <iframe src="games-lab.html?v=f66cf7d1" title="English Games Lab" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#eef1f8"></iframe>`; }
+  <iframe src="games-lab.html?v=b199a6c9" title="English Games Lab" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#eef1f8"></iframe>`; }
 /* 📝 Pizarra — hoja de cuaderno proyectable (triple renglón, doble raya,
    rayado, cuadriculado o en blanco) donde el profesor escribe la muestra que
    los alumnos copian. Vive en pizarra.html, sin sesión: lo que se escribe se
@@ -395,9 +395,9 @@ function gamesLabBody(){ return `
 function pizarraBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
     <div class="muted" style="flex:1;min-width:220px">Write like in the student’s notebook and project it: triple-line paper, double line, ruled, squared or blank; several school fonts, size, colours, images and freehand drawing. What is written stays saved in this browser.</div>
-    <a class="btn" href="pizarra.html?v=b6f01d64" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
+    <a class="btn" href="pizarra.html?v=d45dd6b5" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
   </div>
-  <iframe src="pizarra.html?v=b6f01d64" title="Whiteboard" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#2b2f3a"></iframe>`; }
+  <iframe src="pizarra.html?v=d45dd6b5" title="Whiteboard" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#2b2f3a"></iframe>`; }
 /* ✍️ Corrector de material — revisa la ficha ANTES de publicarla: ortografía,
    mezcla de inglés británico y americano, y los calcos del hispanohablante
    ("explain me", "discuss about", "I have 12 years") que ningún corrector
@@ -407,9 +407,9 @@ function pizarraBody(){ return `
 function correctorBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
     <div class="muted" style="flex:1;min-width:220px">Paste a worksheet, an exam or a worksheet and check it before publishing it. It is reviewed in your browser: the text never leaves this screen.</div>
-    <a class="btn" href="corrector.html?v=8f515bf0" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
+    <a class="btn" href="corrector.html?v=a487d7e9" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
   </div>
-  <iframe src="corrector.html?v=8f515bf0" title="Material checker" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#f2f3ff"></iframe>`; }
+  <iframe src="corrector.html?v=a487d7e9" title="Material checker" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#f2f3ff"></iframe>`; }
 /* 🧩 Use of English — la app B2 (First, Part 1: multiple-choice cloze). Es la
    misma que ve el alumno en Classes > 9.º > Cambridge; aqui el admin la revisa.
    Se corrige sola en el navegador y no guarda intentos en Supabase. */
@@ -424,9 +424,9 @@ function useOfEnglishBody(){ return `
 function cambridgeInfoBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
     <div class="muted" style="flex:1;min-width:220px">What each Cambridge exam is, how many parts it has, how long it lasts, how it is scored on the Cambridge Scale, and which NIS grade is aiming for which.</div>
-    <a class="btn" href="cambridge-info.html?v=a95856db" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
+    <a class="btn" href="cambridge-info.html?v=e7efefaf" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
   </div>
-  <iframe src="cambridge-info.html?v=a95856db" title="Cambridge info" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#eef3f9"></iframe>`; }
+  <iframe src="cambridge-info.html?v=e7efefaf" title="Cambridge info" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#eef3f9"></iframe>`; }
 /* Los tres cursos de Fun for Nordic (YLE). El motor es UNO solo — nis-fun/engine —
    y el nivel va en la URL; aqui se embebe igual que Games Lab o Phonics para que
    el profesor lo vea sin salir del portal. Datos de nis-fun/content/levels.json. */
@@ -5175,7 +5175,7 @@ function studentGrade(key){
       ${key==='g9' ? (nodeVisible('english.classes.g9.cambridge') ? _hubCard('🎓','Cambridge','B2 First (FCE) practice by skill: Listening, Use of English, Reading and Writing.',"window._nav('classes_g9_cambridge')") : _lockedCard('🎓','Cambridge','Cambridge B2 First practice.')) : ''}
       ${key==='g5' ? _hubCard('🦅','Cambridge Flyers','The A2 Flyers picture tasks, sorted by the unit you are working on: label the people, tick the right picture, match people to pictures and write the picture story.',"window._nav('classes_g5_flyers')") : ''}
       ${readerBooksFor(key).length ? (nodeVisible(base+'.reader') ? _hubCard('📚','Readers','Graded readers with activities for every chapter: '+readerBooksFor(key).map(id=>READER_CARDS[id][4]).join(', ')+'.',"window._nav('classes_"+key+"_readers')") : _lockedCard('📚','Readers','Graded readers with activities.')) : ''}
-      ${key==='g9' ? (nodeVisible('english.classes.g9.unitexams') ? _skillCard('📋','Unit Exams','The unit exam and its practice, at your level: multiple choice, true/false, word formation, transformations, word order, listening and writing. Your teacher opens each one when the class is ready.',_withBack('unit-exam.html?v=e56313cb',route)) : _lockedCard('📋','Unit Exams','The unit exam and its practice.')) : ''}
+      ${key==='g9' ? (nodeVisible('english.classes.g9.unitexams') ? _skillCard('📋','Unit Exams','The unit exam and its practice, at your level: multiple choice, true/false, word formation, transformations, word order, listening and writing. Your teacher opens each one when the class is ready.',_withBack('unit-exam.html?v=eb6e404b',route)) : _lockedCard('📋','Unit Exams','The unit exam and its practice.')) : ''}
     </div>`;
 }
 /* Cambridge (9.º): tarjeta madre con las destrezas del examen B2 First:
