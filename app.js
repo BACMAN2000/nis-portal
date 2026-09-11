@@ -5195,7 +5195,7 @@ function studentGrade(key){
       ${key==='g9' ? (nodeVisible('english.classes.g9.cambridge') ? _hubCard('🎓','Cambridge','B2 First (FCE) practice by skill: Listening, Use of English, Reading and Writing.',"window._nav('classes_g9_cambridge')") : _lockedCard('🎓','Cambridge','Cambridge B2 First practice.')) : ''}
       ${key==='g5' ? _hubCard('🦅','Cambridge Flyers','The A2 Flyers picture tasks, sorted by the unit you are working on: label the people, tick the right picture, match people to pictures and write the picture story.',"window._nav('classes_g5_flyers')") : ''}
       ${readerBooksFor(key).length ? (nodeVisible(base+'.reader') ? _hubCard('📚','Readers','Graded readers with activities for every chapter: '+readerBooksFor(key).map(id=>READER_CARDS[id][4]).join(', ')+'.',"window._nav('classes_"+key+"_readers')") : _lockedCard('📚','Readers','Graded readers with activities.')) : ''}
-      ${key==='g9' ? (nodeVisible('english.classes.g9.unitexams') ? _skillCard('📋','Unit Exams','The unit exam and its practice, at your level: multiple choice, true/false, word formation, transformations, word order, listening and writing. Your teacher opens each one when the class is ready.',_withBack('unit-exam.html?v=eb6e404b',route)) : _lockedCard('📋','Unit Exams','The unit exam and its practice.')) : ''}
+      ${key==='g9' ? (nodeVisible('english.classes.g9.unitexams') ? _skillCard('📋','Unit Exams','The unit exam and its practice, at your level: multiple choice, true/false, word formation, transformations, word order, listening and writing. Your teacher opens each one when the class is ready.',_withBack('unit-exam.html?v=b0858f09',route)) : _lockedCard('📋','Unit Exams','The unit exam and its practice.')) : ''}
     </div>`;
 }
 /* Cambridge (9.º): tarjeta madre con las destrezas del examen B2 First:
@@ -6583,17 +6583,27 @@ function traceDe(payload, campo){
   const ks = Object.keys(tr); return ks.length===1 ? tr[ks[0]] : null;
 }
 function traceResumen(t){
-  if(!t || (!t.keys && !t.blocked)) return '— no writing trace (before 11 Sep, or typed in an unmonitored box)';
+  if(!t || (!t.keys && !t.blocked && !t.allowed)) return '— no writing trace (before 11 Sep, or typed in an unmonitored box)';
   const min = Math.round((t.active_s||0)/60), out = [`✍️ ${(t.keys||0).toLocaleString('en')} keystrokes`, `${(t.typed||0).toLocaleString('en')} characters typed`, `${min} min in the box`];
+  const tams = ok => (t.pastes||[]).filter(x=>!x.ok===!ok && x.chars>0).map(x=>x.chars.toLocaleString('en'));
   if(t.blocked){
-    const tam = (t.pastes||[]).map(x=>x.chars).filter(c=>c>0);
-    out.push(`🚫 ${t.blocked} paste${t.blocked===1?'':'s'} blocked${tam.length?' ('+tam.map(c=>c.toLocaleString('en')).join(', ')+' chars)':''}`);
-  } else out.push('no pastes');
+    const tam = tams(false);
+    out.push(`🚫 ${t.blocked} paste${t.blocked===1?'':'s'} blocked${tam.length?' ('+tam.join(', ')+' chars)':''}`);
+  }
+  /* Puerta abierta por un admin (profiles.paste_allowed_until): el pegado
+     entró, pero se enseña igual — el tamaño frente a lo tecleado dice
+     cuánto del texto vino de fuera. */
+  if(t.allowed){
+    const ok = tams(true);
+    out.push(`📋 ${t.allowed} paste${t.allowed===1?'':'s'} allowed by the teacher${ok.length?' ('+ok.join(', ')+' chars)':''}`);
+  }
+  if(!t.blocked && !t.allowed) out.push('no pastes');
   return out.join(' · ');
 }
 function traceHTML(payload, campo){
   const t = traceDe(payload, campo);
-  return `<div class="muted" style="font-size:.76rem;margin-top:4px${t&&t.blocked?';color:#b91c1c;font-weight:600':''}">${esc(traceResumen(t))}</div>`;
+  const color = t&&t.blocked ? ';color:#b91c1c;font-weight:600' : t&&t.allowed ? ';color:#1d4ed8;font-weight:600' : '';
+  return `<div class="muted" style="font-size:.76rem;margin-top:4px${color}">${esc(traceResumen(t))}</div>`;
 }
 function unitNota(crits, puestos){
   const vs = crits.map(c=>UNIT_VIG[(puestos||{})[c.n]]).filter(v=>v!=null);

@@ -310,7 +310,7 @@ var rutaRastro = (function(){ var c = document.currentScript; return (c && c.src
 function cargaRastro(){
   if(window.WRITING_TRACE || !document.querySelector('textarea')) return;
   var s = document.createElement('script');
-  s.src = rutaRastro + 'writing-trace.js?v=2b1d82de';
+  s.src = rutaRastro + 'writing-trace.js?v=321f3e2c';
   document.head.appendChild(s);
 }
 
