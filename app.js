@@ -395,9 +395,9 @@ function gamesLabBody(){ return `
 function pizarraBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
     <div class="muted" style="flex:1;min-width:220px">Write like in the student’s notebook and project it: triple-line paper, double line, ruled, squared or blank; several school fonts, size, colours, images and freehand drawing. What is written stays saved in this browser.</div>
-    <a class="btn" href="pizarra.html?v=17c36d58" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
+    <a class="btn" href="pizarra.html?v=061a487c" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
   </div>
-  <iframe src="pizarra.html?v=17c36d58" title="Whiteboard" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#2b2f3a"></iframe>`; }
+  <iframe src="pizarra.html?v=061a487c" title="Whiteboard" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#2b2f3a"></iframe>`; }
 /* ✍️ Corrector de material — revisa la ficha ANTES de publicarla: ortografía,
    mezcla de inglés británico y americano, y los calcos del hispanohablante
    ("explain me", "discuss about", "I have 12 years") que ningún corrector
@@ -407,9 +407,9 @@ function pizarraBody(){ return `
 function correctorBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
     <div class="muted" style="flex:1;min-width:220px">Paste a worksheet, an exam or a worksheet and check it before publishing it. It is reviewed in your browser: the text never leaves this screen.</div>
-    <a class="btn" href="corrector.html?v=14017ee0" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
+    <a class="btn" href="corrector.html?v=b80259bd" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
   </div>
-  <iframe src="corrector.html?v=14017ee0" title="Material checker" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#f2f3ff"></iframe>`; }
+  <iframe src="corrector.html?v=b80259bd" title="Material checker" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#f2f3ff"></iframe>`; }
 /* 🧩 Use of English — la app B2 (First, Part 1: multiple-choice cloze). Es la
    misma que ve el alumno en Classes > 9.º > Cambridge; aqui el admin la revisa.
    Se corrige sola en el navegador y no guarda intentos en Supabase. */
@@ -424,9 +424,9 @@ function useOfEnglishBody(){ return `
 function cambridgeInfoBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
     <div class="muted" style="flex:1;min-width:220px">What each Cambridge exam is, how many parts it has, how long it lasts, how it is scored on the Cambridge Scale, and which NIS grade is aiming for which.</div>
-    <a class="btn" href="cambridge-info.html?v=f83c2cc8" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
+    <a class="btn" href="cambridge-info.html?v=b90b250e" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
   </div>
-  <iframe src="cambridge-info.html?v=f83c2cc8" title="Cambridge info" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#eef3f9"></iframe>`; }
+  <iframe src="cambridge-info.html?v=b90b250e" title="Cambridge info" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#eef3f9"></iframe>`; }
 /* Los tres cursos de Fun for Nordic (YLE). El motor es UNO solo — nis-fun/engine —
    y el nivel va en la URL; aqui se embebe igual que Games Lab o Phonics para que
    el profesor lo vea sin salir del portal. Datos de nis-fun/content/levels.json. */
@@ -853,29 +853,29 @@ function studentGames(){ _setNav('games'); $('#main').innerHTML = `${_backBtn("w
    nombre lo pone el dominio dentro de la propia pagina, asi que no hay dos
    copias que mantener. */
 function dictPanel(){
-  return `<iframe src="dictionary-app/index.html?v=2bcd8e14&embed=1" title="NIS Dictionary"
+  return `<iframe src="dictionary-app/index.html?v=56c70c1d&embed=1" title="NIS Dictionary"
     style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 
 function wordformPanel(){
-  return `<iframe src="word-formation-app/index.html?v=12d6a9c7&embed=1" title="Word Formation"
+  return `<iframe src="word-formation-app/index.html?v=f10be8b2&embed=1" title="Word Formation"
     style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 
 /* Collocations e idioms: las otras dos apps de vocabulario. Mismo trato que
    phrasal verbs, embebidas para no sacar al alumno del portal. */
 function collocationsPanel(){
-  return `<iframe src="collocations-app/index.html?v=5d61a44a&embed=1" title="Collocations"
+  return `<iframe src="collocations-app/index.html?v=53149346&embed=1" title="Collocations"
     style="width:100%;height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 
 function idiomsPanel(){
-  return `<iframe src="idioms-app/index.html?v=67adde26&embed=1" title="Idioms"
+  return `<iframe src="idioms-app/index.html?v=58474f8a&embed=1" title="Idioms"
     style="width:100%;height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 
 function phrasalPanel(){
-  return `<iframe src="phrasal-app/index.html?v=ff3063ad&embed=1" title="Phrasal Verbs"
+  return `<iframe src="phrasal-app/index.html?v=495c7a74&embed=1" title="Phrasal Verbs"
     style="width:100%;height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 
@@ -2637,7 +2637,7 @@ const UEX_LEVELS=['a2','b1','b2','c1'];
 const UEX_KINDS=[['practice','📝 Practice'],['official','🎓 Official']];
 /* units = null → la pantalla de tarjetas por bloque de unidades; con valor, el
    detalle de ese bloque. */
-const uexCtl={until:'', grade:'g9', units:null};
+const uexCtl={until:'', grade:'g9', units:null, vista:'abrir'};
 const uexKey=(kind,lvl)=>uexCtl.grade+':u'+uexCtl.units+':'+kind+':'+lvl;
 /* El grado de la clave ('g9') es el del EXAMEN; el alcance ('g9-B') es el del
    salón al que se le abre. Son cosas distintas aunque se parezcan. */
@@ -2667,7 +2667,7 @@ const _uexUnits=b=>b.map(u=>u.n).join('-');
 const _uexRotulo=b=>b.length>1?('Units '+b[0].n+' and '+b[b.length-1].n):('Unit '+b[0].n);
 
 /* Pantalla 1: una tarjeta por bloque de unidades. */
-function _uexTarjetas(grade, porBloque, abiertosPorBloque){
+function _uexTarjetas(grade, porBloque, abiertosPorBloque, notas){
   const bloques=_uexBloques(grade);
   if(!bloques.length) return `<div class="note info">This grade has no units in the planner, so there are
     no blocks to test. Units are copied from the Toddle planner into <code>unit-plans.js</code>.</div>`;
@@ -2680,20 +2680,31 @@ function _uexTarjetas(grade, porBloque, abiertosPorBloque){
       ? `<span class="badge" style="background:${abiertos?'#dcfce7':'#e2e8f0'};color:${abiertos?'#065f46':'#475569'}">
            ${n} ${n===1?'exam':'exams'} · ${abiertos?abiertos+(abiertos===1?' open':' open'):'all closed'}</span>`
       : `<span class="badge" style="background:#f1f5f9;color:#64748b">No exam yet</span>`;
+    /* Lo corregido, al lado del candado: el profesor venia a ver las notas y
+       la tarjeta solo le decia si el examen estaba abierto. Un boton para
+       abrir y cerrar, otro para corregir, y cuantos Writings esperan. */
+    const r=(notas&&notas[units])||{intentos:0,writings:0,pendientes:0};
+    const resumen=n?`<p class="muted" style="margin:8px 0 0;font-size:.8rem">📊 ${r.intentos} attempt${r.intentos===1?'':'s'}
+         · ✍️ ${r.writings} writing${r.writings===1?'':'s'}${r.pendientes?` · <b style="color:#b45309">${r.pendientes} to mark</b>`:(r.writings?' · all marked':'')}</p>`:'';
+    const botones=n?`<div class="row" style="gap:6px;margin-top:10px;flex-wrap:wrap">
+        <button class="btn sm" onclick="event.stopPropagation();window._uexAbreBloque('${units}','abrir')">🔓 Open / close</button>
+        <button class="btn sm ${r.pendientes?'':'ghost'}" onclick="event.stopPropagation();window._uexAbreBloque('${units}','notas')">✅ Marking${r.intentos?' · '+r.intentos:''}</button>
+      </div>`:'';
     /* Tambien se entra a los bloques vacios: aqui solo hay profesores y
        administradores, y ver por dentro que un bloque no tiene examen es
        informacion, no un sitio prohibido. */
     return `<div class="card" style="cursor:pointer;${n?'':'opacity:.72'}"
-        onclick="window._uexAbreBloque('${units}')">
+        onclick="window._uexAbreBloque('${units}','abrir')">
       <div style="font-size:1.9rem;line-height:1">${ico}</div>
       <h2 style="margin:6px 0 2px;font-size:1.05rem">${_uexRotulo(b)}</h2>
       <p class="muted" style="margin:0 0 6px;font-size:.85rem">${titulos}</p>
-      ${chip}
+      ${chip}${resumen}${botones}
       ${n?'':`<p class="muted" style="margin:8px 0 0;font-size:.78rem">It will appear here as soon as it is uploaded
          with <code>exams/sube_examen.py</code>. Until then there is nothing to open or print.</p>`}
     </div>`; }).join('')}</div>`;
 }
-window._uexAbreBloque=(units)=>{ uexCtl.units=units; unitExamPanel(); };
+window._uexAbreBloque=(units,vista)=>{ uexCtl.units=units; uexCtl.vista=vista||'abrir'; unitExamPanel(); };
+window._uexVista=(v)=>{ uexCtl.vista=v; unitExamPanel(); };
 window._uexVuelve=()=>{ uexCtl.units=null; unitExamPanel(); };
 
 async function unitExamPanel(){
@@ -2711,11 +2722,19 @@ async function unitExamPanel(){
   await _rdrSyncClock();
   /* Se pide el grado ENTERO, no solo el bloque abierto: la pantalla de tarjetas
      necesita saber cuáles tienen examen y cuántos están abiertos. */
-  const [{data:studs},{data:acc},{data:todos}]=await Promise.all([
+  const [{data:studs},{data:acc},{data:todos},{data:ints},{data:wrs}]=await Promise.all([
     sb.from('profiles').select('id,full_name,grade_id,section, grades(name)').eq('role','student').eq('grade_id',gid),
     sb.from('reader_exam_access').select('key,scope,unlocked,extra_min,opens_at,closes_at').eq('school_year',SCHOOL_YEAR_NOW),
-    sb.from('unit_exams_index').select('units,kind,level,title,minutes,questions').eq('grade',uexCtl.grade)
+    sb.from('unit_exams_index').select('units,kind,level,title,minutes,questions').eq('grade',uexCtl.grade),
+    /* Solo para contar en las tarjetas: cuantos rindieron cada bloque y cuantos
+       Writings esperan nota. El detalle lo trae _uexResultados. */
+    sb.from('activity_attempts').select('activity').like('activity','unitexam-'+uexCtl.grade+'-%').limit(5000),
+    sb.from('unit_submissions').select('payload,reviewed_at,milestone').eq('grade',uexCtl.grade).like('milestone','exam-%').limit(5000)
   ]);
+  const notas={};
+  const _nb=u=>notas[u]=notas[u]||{intentos:0,writings:0,pendientes:0};
+  (ints||[]).forEach(a=>{ const m=/^unitexam-[a-z0-9]+-u([0-9-]+)-/.exec(a.activity||''); if(m) _nb(m[1]).intentos++; });
+  (wrs||[]).forEach(r=>{ const u=String((r.payload&&r.payload.units)||''); if(!u) return; const b=_nb(u); b.writings++; if(!r.reviewed_at) b.pendientes++; });
   const porBloque={};
   (todos||[]).forEach(x=>{ (porBloque[x.units]=porBloque[x.units]||[]).push(x); });
   /* Para la tarjeta, un examen cuenta como abierto si lo está para ALGUIEN —un
@@ -2734,17 +2753,36 @@ async function unitExamPanel(){
     $('#main').innerHTML=`<h1>📋 Unit exams</h1>
       <p class="muted" style="margin-top:-6px">Choose the block of units. Inside are the <b>practice exam</b>
         and the <b>official</b> one, each in its four levels, with its lock and its sheet to print.</p>
-      ${_uexTarjetas(uexCtl.grade, porBloque, abiertosPorBloque)}`;
+      ${_uexTarjetas(uexCtl.grade, porBloque, abiertosPorBloque, notas)}`;
     return;
   }
 
   const pub=porBloque[uexCtl.units]||[];
   const publicados=new Set(pub.map(x=>x.kind+':'+x.level));
-  const volver=`<button class="btn sm ghost" style="margin-bottom:10px" onclick="window._uexVuelve()">← Units</button>`;
+  /* Dos pestanas, una al lado de la otra: abrir/cerrar el examen y corregirlo.
+     Antes los resultados iban debajo de la tabla de candados y nadie los
+     encontraba. */
+  const _b=_uexBloques(uexCtl.grade).find(b=>_uexUnits(b)===uexCtl.units);
+  const _rot=_b?_uexRotulo(_b):('Units '+uexCtl.units);
+  const _sub=_b?_b.map(u=>esc(u.title)).join(' · '):'';
+  const _notas=notas[uexCtl.units]||{intentos:0,writings:0,pendientes:0};
+  const enNotas=uexCtl.vista==='notas';
+  const volver=`<div class="row" style="gap:6px;margin:0 0 12px;align-items:center;flex-wrap:wrap">
+      <button class="btn sm ghost" onclick="window._uexVuelve()">← Units</button>
+      <span class="muted" style="margin:0 4px">|</span>
+      <button class="btn sm ${enNotas?'ghost':''}" onclick="window._uexVista('abrir')">🔓 Open / close</button>
+      <button class="btn sm ${enNotas?'':'ghost'}" onclick="window._uexVista('notas')">✅ Marking${_notas.intentos?' · '+_notas.intentos:''}${_notas.pendientes?' <span class="badge" style="background:#fef3c7;color:#92400e;margin-left:4px">'+_notas.pendientes+' to mark</span>':''}</button>
+    </div>`;
   if(!publicados.size){
     $('#main').innerHTML=`<h1>📋 Unit exams</h1>${volver}
       <div class="note info">There is no exam published yet for ${uexCtl.grade.toUpperCase()} · units ${uexCtl.units}.
       They are uploaded with <code>exams/sube_examen.py</code>; until then there is nothing to open.</div>`;
+    return;
+  }
+  if(enNotas){
+    $('#main').innerHTML=`<h1>📋 Unit exams</h1>${volver}
+      <p class="muted" style="margin-top:-2px">${(GRADE_META[uexCtl.grade]||['','Grade 9'])[1]} · <b>${_rot}</b>${_sub?' — '+_sub:''}.</p>`;
+    $('#main').insertAdjacentHTML('beforeend', await _uexResultados(studs||[]));
     return;
   }
   const prefijo=uexCtl.grade+':u'+uexCtl.units+':';
@@ -2803,9 +2841,6 @@ async function unitExamPanel(){
   }).join('');
   /* El rótulo sale del planner y del título del propio examen, no de un texto
      escrito a mano: el día que haya examen de 5 y 6 esta cabecera ya lo dirá. */
-  const _b=_uexBloques(uexCtl.grade).find(b=>_uexUnits(b)===uexCtl.units);
-  const _rot=_b?_uexRotulo(_b):('Unidades '+uexCtl.units);
-  const _sub=_b?_b.map(u=>esc(u.title)).join(' · '):'';
   $('#main').innerHTML=`<h1>📋 Unit exams</h1>${volver}
     <p class="muted" style="margin-top:-2px">${(GRADE_META[uexCtl.grade]||['','Grade 9'])[1]} · <b>${_rot}</b>${_sub?' — '+_sub:''}.
       Each student takes it <b>at their own level</b>: opening the row above opens all four at once, and the rows below
@@ -2824,12 +2859,11 @@ async function unitExamPanel(){
       <thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>
     <p class="muted" style="font-size:.82rem;margin-top:8px">⏱ <b>+5</b> adds minutes for whoever is taking it: the timer
       grows on its own in under 20 seconds, without taking them out of the exam, and it even arrives once the clock has reached zero.
-      The <b>Writing</b> is not marked here: it goes to <b>✅ Marking → 🎯 Unit products</b>.</p>
+      The results and the <b>Writing</b> are marked in the <b>✅ Marking</b> tab above.</p>
     <p class="muted" style="font-size:.82rem;margin-top:4px">🖨️ For whoever takes it <b>on paper</b>: each level has its own
       <b>student sheet</b>, <b>answer key</b>, and <b>listening script</b>. They open in A4, ready to print or to
       save as PDF (Ctrl+P → Save as PDF). The answer key and script <b>are not served to student accounts</b>.
       You play the listening audio yourself from the on-screen exam.</p>`;
-  $('#main').insertAdjacentHTML('beforeend', await _uexResultados(studs||[]));
 }
 
 /* Resultados del bloque: quien rindio que, con su nota y su banda, y el
@@ -2877,8 +2911,8 @@ async function _uexResultados(studs){
       <td class="muted" style="white-space:nowrap">${fecha(f.a.submitted_at)} · ${Math.round((f.a.duration_sec||0)/60)} min</td>
       <td style="min-width:260px">${w ? `<details>
           <summary style="cursor:pointer">✍️ ${wp.words||0} words ${w.reviewed_at
-            ? '<span class="badge" style="background:#dcfce7">marked'+(w.score!=null?' · '+w.score:'')+'</span>'
-            : '<span class="badge" style="background:#fee2e2">not marked</span>'}</summary>
+            ? '<span class="badge" id="uexw-'+w.id+'" style="background:#dcfce7">marked'+(w.score!=null?' · '+w.score+'/20':'')+'</span>'
+            : '<span class="badge" id="uexw-'+w.id+'" style="background:#fee2e2">not marked</span>'}</summary>
           <div style="white-space:pre-wrap;font-size:.86rem;line-height:1.55;max-height:260px;overflow:auto;padding:8px 10px;margin-top:6px;border:1px solid var(--line);border-radius:8px;background:#fcfdff">${esc(wp.text||'')}</div>
           <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:6px">
             <label style="font-size:.78rem">Grade <input type="number" min="0" max="20" value="${w.score!=null?w.score:''}" style="width:4rem"
@@ -4949,10 +4983,10 @@ async function studentFinal(){
 /* Metadatos de grados dentro de Classes y niveles de actividades por grado.
    Primary 2–5 → pre-A1/A1 · 6/7/8 → A1–B2 · 9/10/11 → A1–C1.
    Classes se divide en DOS etapas: Primary (2.º–5.º) y Secondary (6.º–11.º). */
-const GRADE_META = { g1:['1️⃣','1st grade'], g2:['2️⃣','2nd grade'], g3:['3️⃣','3rd grade'], g4:['4️⃣','4th grade'],
-  g5:['5️⃣','5th grade'],
-  g6:['6️⃣','6th grade'], g7:['7️⃣','7th grade'], g8:['8️⃣','8th grade'],
-  g9:['9️⃣','9th grade'], g10:['🔟','10th grade'], g11:['🎓','11th grade'] };
+const GRADE_META = { g1:['1️⃣','Grade 1'], g2:['2️⃣','Grade 2'], g3:['3️⃣','Grade 3'], g4:['4️⃣','Grade 4'],
+  g5:['5️⃣','Grade 5'],
+  g6:['6️⃣','Grade 6'], g7:['7️⃣','Grade 7'], g8:['8️⃣','Grade 8'],
+  g9:['9️⃣','Grade 9'], g10:['🔟','Grade 10'], g11:['🎓','Grade 11'] };
 const GRADE_LEVELS = { g1:'A1', g2:'A1', g3:'A1', g4:'A1,A2', g5:'A1,A2',
   g6:'A1,A2,B1,B2', g7:'A1,A2,B1,B2', g8:'A1,A2,B1,B2',
   g9:'A1,A2,B1,B2,C1', g10:'A1,A2,B1,B2,C1', g11:'A1,A2,B1,B2,C1' };
@@ -4999,7 +5033,7 @@ function studentGrade(key){
       ${key==='g9' ? (nodeVisible('english.classes.g9.cambridge') ? _hubCard('🎓','Cambridge','B2 First (FCE) practice by skill: Listening, Use of English, Reading and Writing.',"window._nav('classes_g9_cambridge')") : _lockedCard('🎓','Cambridge','Cambridge B2 First practice.')) : ''}
       ${key==='g5' ? _hubCard('🦅','Cambridge Flyers','The A2 Flyers picture tasks, sorted by the unit you are working on: label the people, tick the right picture, match people to pictures and write the picture story.',"window._nav('classes_g5_flyers')") : ''}
       ${readerBooksFor(key).length ? (nodeVisible(base+'.reader') ? _hubCard('📚','Readers','Graded readers with activities for every chapter: '+readerBooksFor(key).map(id=>READER_CARDS[id][4]).join(', ')+'.',"window._nav('classes_"+key+"_readers')") : _lockedCard('📚','Readers','Graded readers with activities.')) : ''}
-      ${key==='g9' ? (nodeVisible('english.classes.g9.unitexams') ? _skillCard('📋','Unit Exams','The unit exam and its practice, at your level: multiple choice, true/false, word formation, transformations, word order, listening and writing. Your teacher opens each one when the class is ready.',_withBack('unit-exam.html?v=07ed2a71',route)) : _lockedCard('📋','Unit Exams','The unit exam and its practice.')) : ''}
+      ${key==='g9' ? (nodeVisible('english.classes.g9.unitexams') ? _skillCard('📋','Unit Exams','The unit exam and its practice, at your level: multiple choice, true/false, word formation, transformations, word order, listening and writing. Your teacher opens each one when the class is ready.',_withBack('unit-exam.html?v=4dae6e07',route)) : _lockedCard('📋','Unit Exams','The unit exam and its practice.')) : ''}
     </div>`;
 }
 /* Cambridge (9.º): tarjeta madre con las destrezas del examen B2 First:
@@ -6717,7 +6751,13 @@ window.unitCalificar = async function(id, nota, comentario){
   const cambio = { reviewed_at:new Date().toISOString(), reviewed_by:(state.profile&&state.profile.id)||null };
   if(nota !== null && nota !== '') cambio.score = Number(nota);
   if(comentario !== null) cambio.feedback = comentario;
-  await sb.from('unit_submissions').update(cambio).eq('id', id);
+  const r = await sb.from('unit_submissions').update(cambio).eq('id', id);
+  if(r.error){ alert('Could not save: '+(r.error.message||r.error)); return; }
+  /* El badge de la fila cambia en el sitio: sin repintar la tabla, que
+     cerraria el texto que el profesor tiene delante. */
+  const b=document.getElementById('uexw-'+id);
+  if(b){ b.style.background='#dcfce7'; if(cambio.score!=null) b.textContent='marked · '+cambio.score+'/20'; else if(b.textContent.indexOf('marked')!==0) b.textContent='marked'; }
+  if(window.NISUI&&NISUI.aviso) NISUI.aviso(cambio.score!=null?'Grade saved · '+cambio.score+'/20':'Comment saved','bien',2500);
 };
 
 /* ---------------------------------------------------------------
