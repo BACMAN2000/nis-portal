@@ -6618,7 +6618,7 @@ function unitPintaAlumno(){
             <b>${puesto} · ${UNIT_SIG[puesto]}</b>${(c.levels||{})[puesto]?' — '+esc(c.levels[puesto]):''}</div>`
           : (sug[c.n]?`<div class="muted" style="font-size:.76rem;margin-top:4px">propuesta: <b>${sug[c.n]}</b> · ${UNIT_SIG[sug[c.n]]}</div>`:'')}
       </div>`; }).join('')}
-    ${rv ? `<div style="font-size:.8rem;background:#e7ecfd;color:#2d5a8d;border-radius:8px;padding:8px 10px;margin:4px 0 10px">
+    ${rv && (haySug || (!base.feedback && rv.borrador)) ? `<div style="font-size:.8rem;background:#e7ecfd;color:#2d5a8d;border-radius:8px;padding:8px 10px;margin:4px 0 10px">
         🤖 <b>Propuesta automática</b>${rv.fecha?' del '+esc(rv.fecha):''} — ${esc(rv.por||'revísala antes de enviar')}.
         ${haySug?`<button class="btn small" style="margin-left:8px" onclick="unitAceptaPropuesta('${base.id}')">✔ Aceptar los niveles propuestos</button>`:''}</div>` : ''}
     <div style="border-top:1px solid var(--line);padding-top:10px;margin-top:6px">
