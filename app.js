@@ -379,15 +379,15 @@ function munBody(){ return `<iframe src="mun-academy.html" title="MUN Academy" s
 function liveQuizBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
     <div class="muted" style="flex:1;min-width:220px">Aloja un juego en vivo estilo Kahoot. Proyecta esta pantalla; los alumnos entran con el PIN o el QR desde su celular.</div>
-    <a class="btn" href="live-quiz.html?v=ebb8894a" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Abrir en pantalla completa ↗</a>
+    <a class="btn" href="live-quiz.html?v=713f09b4" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Abrir en pantalla completa ↗</a>
   </div>
-  <iframe src="live-quiz.html?v=ebb8894a" title="NIShoot Live" allow="autoplay" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#0d1d33"></iframe>`; }
+  <iframe src="live-quiz.html?v=713f09b4" title="NIShoot Live" allow="autoplay" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#0d1d33"></iframe>`; }
 function gamesLabBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
     <div class="muted" style="flex:1;min-width:220px">Worksheets + games for grammar, vocabulary, phrasal verbs and idioms (A1–C1). Open any topic to play: quiz, gap-fill, matching, crossword, word search, word invaders and time attack.</div>
-    <a class="btn" href="games-lab.html?v=7aacbfac" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
+    <a class="btn" href="games-lab.html?v=148d4d33" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
   </div>
-  <iframe src="games-lab.html?v=7aacbfac" title="English Games Lab" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#eef1f8"></iframe>`; }
+  <iframe src="games-lab.html?v=148d4d33" title="English Games Lab" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#eef1f8"></iframe>`; }
 /* 📝 Pizarra — hoja de cuaderno proyectable (triple renglón, doble raya,
    rayado, cuadriculado o en blanco) donde el profesor escribe la muestra que
    los alumnos copian. Vive en pizarra.html, sin sesión: lo que se escribe se
@@ -395,9 +395,9 @@ function gamesLabBody(){ return `
 function pizarraBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
     <div class="muted" style="flex:1;min-width:220px">Escribe como en el cuaderno del alumno y proyéctalo: papel triple renglón, doble raya, rayado, cuadriculado o en blanco; varias letras escolares, tamaño, colores, imágenes y dibujo a mano. Lo escrito se queda guardado en este navegador.</div>
-    <a class="btn" href="pizarra.html?v=6335c005" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Abrir en pantalla completa ↗</a>
+    <a class="btn" href="pizarra.html?v=17c36d58" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Abrir en pantalla completa ↗</a>
   </div>
-  <iframe src="pizarra.html?v=6335c005" title="Pizarra" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#2b2f3a"></iframe>`; }
+  <iframe src="pizarra.html?v=17c36d58" title="Pizarra" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#2b2f3a"></iframe>`; }
 /* ✍️ Corrector de material — revisa la ficha ANTES de publicarla: ortografía,
    mezcla de inglés británico y americano, y los calcos del hispanohablante
    ("explain me", "discuss about", "I have 12 years") que ningún corrector
@@ -407,9 +407,9 @@ function pizarraBody(){ return `
 function correctorBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
     <div class="muted" style="flex:1;min-width:220px">Pega una ficha, un examen o un worksheet y compruébalo antes de publicarlo. Se revisa en tu navegador: el texto no sale de esta pantalla.</div>
-    <a class="btn" href="corrector.html?v=8cbf5ac6" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Abrir en pantalla completa ↗</a>
+    <a class="btn" href="corrector.html?v=14017ee0" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Abrir en pantalla completa ↗</a>
   </div>
-  <iframe src="corrector.html?v=8cbf5ac6" title="Corrector de material" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#f2f3ff"></iframe>`; }
+  <iframe src="corrector.html?v=14017ee0" title="Corrector de material" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#f2f3ff"></iframe>`; }
 /* 🧩 Use of English — la app B2 (First, Part 1: multiple-choice cloze). Es la
    misma que ve el alumno en Classes > 9.º > Cambridge; aqui el admin la revisa.
    Se corrige sola en el navegador y no guarda intentos en Supabase. */
@@ -424,9 +424,9 @@ function useOfEnglishBody(){ return `
 function cambridgeInfoBody(){ return `
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
     <div class="muted" style="flex:1;min-width:220px">Qué es cada examen Cambridge, cuántas partes tiene, cuánto dura, cómo se puntúa en la Escala Cambridge y qué grado del NIS apunta a cuál.</div>
-    <a class="btn" href="cambridge-info.html?v=bcdfbee4" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Abrir en pantalla completa ↗</a>
+    <a class="btn" href="cambridge-info.html?v=f83c2cc8" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Abrir en pantalla completa ↗</a>
   </div>
-  <iframe src="cambridge-info.html?v=bcdfbee4" title="Info Cambridge" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#eef3f9"></iframe>`; }
+  <iframe src="cambridge-info.html?v=f83c2cc8" title="Info Cambridge" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#eef3f9"></iframe>`; }
 /* Los tres cursos de Fun for Nordic (YLE). El motor es UNO solo — nis-fun/engine —
    y el nivel va en la URL; aqui se embebe igual que Games Lab o Phonics para que
    el profesor lo vea sin salir del portal. Datos de nis-fun/content/levels.json. */
@@ -853,29 +853,29 @@ function studentGames(){ _setNav('games'); $('#main').innerHTML = `${_backBtn("w
    nombre lo pone el dominio dentro de la propia pagina, asi que no hay dos
    copias que mantener. */
 function dictPanel(){
-  return `<iframe src="dictionary-app/index.html?v=ef11fd6c&embed=1" title="NIS Dictionary"
+  return `<iframe src="dictionary-app/index.html?v=2bcd8e14&embed=1" title="NIS Dictionary"
     style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 
 function wordformPanel(){
-  return `<iframe src="word-formation-app/index.html?v=104d8663&embed=1" title="Word Formation"
+  return `<iframe src="word-formation-app/index.html?v=12d6a9c7&embed=1" title="Word Formation"
     style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 
 /* Collocations e idioms: las otras dos apps de vocabulario. Mismo trato que
    phrasal verbs, embebidas para no sacar al alumno del portal. */
 function collocationsPanel(){
-  return `<iframe src="collocations-app/index.html?v=a6c4c3af&embed=1" title="Collocations"
+  return `<iframe src="collocations-app/index.html?v=5d61a44a&embed=1" title="Collocations"
     style="width:100%;height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 
 function idiomsPanel(){
-  return `<iframe src="idioms-app/index.html?v=925b0389&embed=1" title="Idioms"
+  return `<iframe src="idioms-app/index.html?v=67adde26&embed=1" title="Idioms"
     style="width:100%;height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 
 function phrasalPanel(){
-  return `<iframe src="phrasal-app/index.html?v=8ddfd90a&embed=1" title="Phrasal Verbs"
+  return `<iframe src="phrasal-app/index.html?v=ff3063ad&embed=1" title="Phrasal Verbs"
     style="width:100%;height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 
@@ -4999,7 +4999,7 @@ function studentGrade(key){
       ${key==='g9' ? (nodeVisible('english.classes.g9.cambridge') ? _hubCard('🎓','Cambridge','B2 First (FCE) practice by skill: Listening, Use of English, Reading and Writing.',"window._nav('classes_g9_cambridge')") : _lockedCard('🎓','Cambridge','Cambridge B2 First practice.')) : ''}
       ${key==='g5' ? _hubCard('🦅','Cambridge Flyers','The A2 Flyers picture tasks, sorted by the unit you are working on: label the people, tick the right picture, match people to pictures and write the picture story.',"window._nav('classes_g5_flyers')") : ''}
       ${readerBooksFor(key).length ? (nodeVisible(base+'.reader') ? _hubCard('📚','Readers','Graded readers with activities for every chapter: '+readerBooksFor(key).map(id=>READER_CARDS[id][4]).join(', ')+'.',"window._nav('classes_"+key+"_readers')") : _lockedCard('📚','Readers','Graded readers with activities.')) : ''}
-      ${key==='g9' ? (nodeVisible('english.classes.g9.unitexams') ? _skillCard('📋','Unit Exams','The unit exam and its practice, at your level: multiple choice, true/false, word formation, transformations, word order, listening and writing. Your teacher opens each one when the class is ready.',_withBack('unit-exam.html?v=a0abc49e',route)) : _lockedCard('📋','Unit Exams','The unit exam and its practice.')) : ''}
+      ${key==='g9' ? (nodeVisible('english.classes.g9.unitexams') ? _skillCard('📋','Unit Exams','The unit exam and its practice, at your level: multiple choice, true/false, word formation, transformations, word order, listening and writing. Your teacher opens each one when the class is ready.',_withBack('unit-exam.html?v=cedea4b8',route)) : _lockedCard('📋','Unit Exams','The unit exam and its practice.')) : ''}
     </div>`;
 }
 /* Cambridge (9.º): tarjeta madre con las destrezas del examen B2 First:
@@ -6361,8 +6361,22 @@ window.studentReportPDF = async (studentId, lang)=>{
 ---------------------------------------------------------------- */
 const UNIT_CRIT = { '1':'Speaking & listening', '2':'Reading', '3':'Writing' };
 /* De mayor a menor, igual que en el hub del alumno (unit.html): primero
-   adonde se quiere llegar. */
+   adonde se quiere llegar. La nota vigesimal sale de los niveles con la
+   misma tabla que el corrector de producciones escritas (writing-rubrics.js). */
 const UNIT_LVL  = ['AD','A','B','C'];
+const UNIT_VIG  = { AD:19, A:16, B:12, C:8 };
+const UNIT_SIG  = { AD:'logro destacado', A:'logro esperado', B:'en proceso', C:'en inicio' };
+const UNIT_TRAMO= { AD:'18-20', A:'14-17', B:'11-13', C:'0-10' };
+function unitNota(crits, puestos){
+  const vs = crits.map(c=>UNIT_VIG[(puestos||{})[c.n]]).filter(v=>v!=null);
+  if(!vs.length) return null;
+  return Math.round(vs.reduce((a,b)=>a+b,0)/vs.length);
+}
+function unitNivelDeNota(n){ return n==null ? null : n>=18 ? 'AD' : n>=14 ? 'A' : n>=11 ? 'B' : 'C'; }
+
+/* Lo que la pantalla tiene entre manos: los filtros, el alumno abierto y las
+   filas ya cargadas, para pasar de un alumno a otro sin volver a la base. */
+const _unit = { grade:null, unit:null, section:'', i:0, filas:[], quien:{}, plan:{}, DELS:[], crits:[], firmadas:{}, rubrica:true };
 
 async function unitProductsPanel(){
   const main = $('#main');
@@ -6378,31 +6392,36 @@ async function unitProductsPanel(){
     main.innerHTML = `<div class="card"><p class="err">No pude leer las entregas: ${esc(error.message)}</p></div>`;
     return;
   }
-  if (!data || !data.length){
+  /* Solo el producto de la unidad (hito 'final'): el Writing de los examenes
+     de unidad se corrige en 📋 Examenes de unidad, junto a su nota. */
+  const productos = (data||[]).filter(r=>r.milestone==='final');
+  if (!productos.length){
     main.innerHTML = `<div class="card"><h2>🎯 Productos de unidad</h2>
       <p class="muted">Todavía no hay entregas. Aparecerán aquí en cuanto los alumnos
       escriban o suban su producto en el hub de la unidad.</p></div>`;
     return;
   }
 
-  const ids = [...new Set(data.map(r=>r.student_id))];
+  const worksheets = (data||[]).filter(r=>r.kind==='worksheet');
+  const ids = [...new Set(productos.concat(worksheets).map(r=>r.student_id))];
   const { data: gente } = await sb.from('profiles').select('id,full_name,grade_id,section').in('id', ids);
   const quien = Object.fromEntries((gente||[]).map(p=>[p.id,p]));
+  const seccionDe = r => String((quien[r.student_id]||{}).section||'').trim();
 
-  /* Una unidad cada vez: la elegida arriba y, si no se ha elegido, la de la
-     entrega mas reciente. Con todos los grados y unidades mezclados en una
-     tabla el profesor no encontraba la que estaba corrigiendo. Aqui va solo
-     el producto de la unidad (hito 'final'): el Writing de los examenes de
-     unidad se corrige en 📋 Examenes de unidad, junto a su nota. */
-  const productos = data.filter(r=>r.milestone==='final');
-  const grupos = [...new Set(productos.map(r=>r.grade+'|'+r.unit))].sort((a,b)=>{
-    const [ga,ua]=a.split('|'), [gb,ub]=b.split('|');
-    return (parseInt(ga.slice(1),10)-parseInt(gb.slice(1),10)) || (ua-ub);
-  });
-  const F = grupos.indexOf(window._unitFiltro||'')>=0 ? window._unitFiltro
-          : (productos[0] ? productos[0].grade+'|'+productos[0].unit : (grupos[0]||''));
-  const [G, UN] = F.split('|');
-  const plan = unitPlansFor(G).find(u=>String(u.n)===String(UN)) || {};
+  /* Grado → unidad → seccion. Si lo elegido ya no existe (o es la primera
+     vez) se abre lo mas reciente, que es lo que se esta corrigiendo. */
+  const numG = g => parseInt(String(g).replace(/\D/g,''),10)||0;
+  const grados = [...new Set(productos.map(r=>r.grade))].sort((a,b)=>numG(a)-numG(b));
+  if(grados.indexOf(_unit.grade)<0) _unit.grade = productos[0].grade;
+  const deGrado = productos.filter(r=>r.grade===_unit.grade);
+  const unidades = [...new Set(deGrado.map(r=>String(r.unit)))].sort((a,b)=>a-b);
+  if(unidades.indexOf(String(_unit.unit))<0) _unit.unit = String(deGrado[0].unit);
+  const dataGU = deGrado.filter(r=>String(r.unit)===_unit.unit);
+  const secciones = [...new Set(dataGU.map(seccionDe).filter(Boolean))].sort();
+  if(_unit.section && secciones.indexOf(_unit.section)<0) _unit.section = '';
+  const dataF = _unit.section ? dataGU.filter(r=>seccionDe(r)===_unit.section) : dataGU;
+
+  const plan = unitPlansFor(_unit.grade).find(u=>String(u.n)===_unit.unit) || {};
   /* Los productos que la unidad declara en unit-plans.js, en su orden — en
      9.º U4: el articulo, el podcast y la reflexion del editor. Si la unidad no
      tiene plan, los tres de siempre. El cuaderno va aparte. */
@@ -6411,11 +6430,9 @@ async function unitProductsPanel(){
     {kind:'report',type:'text',icon:'📄',title:'Informe'},
     {kind:'presentation',type:'file',icon:'🎤',title:'Presentación'},
     {kind:'reflection',type:'text',icon:'💭',title:'Reflexión'}];
-  const crits = (plan.criteria||[]).length ? plan.criteria.map(c=>({n:String(c.n),text:c.text}))
-              : Object.keys(UNIT_CRIT).map(k=>({n:k,text:UNIT_CRIT[k]}));
-
-  const dataF = productos.filter(r=>r.grade+'|'+r.unit===F);
-  const fichas = data.filter(r=>r.kind==='worksheet' && r.grade+'|'+r.unit===F);
+  const crits = (plan.criteria||[]).length
+    ? plan.criteria.map(c=>({n:String(c.n), text:c.text, levels:c.levels||null}))
+    : Object.keys(UNIT_CRIT).map(k=>({n:k, text:UNIT_CRIT[k], levels:null}));
 
   const porAlumno = {};
   dataF.forEach(r=>{ (porAlumno[r.student_id] = porAlumno[r.student_id] || {alumno:r.student_id})[r.kind] = r; });
@@ -6426,8 +6443,7 @@ async function unitProductsPanel(){
   });
 
   /* Los archivos se firman todos de golpe: el bucket es privado y cada
-     reproductor necesita su enlace temporal. Asi el podcast suena en la
-     tarjeta, sin pulsar nada. */
+     reproductor necesita su enlace temporal. */
   const firmadas = {};
   const rutas = dataF.filter(r=>r.file_path).map(r=>r.file_path);
   if(rutas.length){
@@ -6435,106 +6451,204 @@ async function unitProductsPanel(){
     (urls||[]).forEach(u=>{ if(u && u.signedUrl && !u.error) firmadas[u.path]=u.signedUrl; });
   }
 
-  // Avance por criterio: cuántos alumnos hay en cada nivel. Es lo que el
-  // profesor mira primero y lo que se lleva a coordinación.
-  const conteo = {}; crits.forEach(c=>{ conteo[c.n]={}; });
+  Object.assign(_unit, { filas, quien, plan, DELS, crits, firmadas });
+  if(_unit.i >= filas.length) _unit.i = 0;
+
+  /* Las fichas digitales de la misma unidad y seccion, debajo, como siempre. */
+  const fichas = worksheets.filter(r=>r.grade===_unit.grade && String(r.unit)===_unit.unit &&
+    (!_unit.section || seccionDe(r)===_unit.section));
+  window._unitFichas = Object.fromEntries(fichas.map(r=>[r.id,r]));
+
+  /* Cuantos van evaluados y en que nivel global quedaron, con palabras: una
+     letra con un numero detras no le dice nada a nadie. */
+  const dist = {}; let evaluados = 0;
   filas.forEach(f=>{
     const base = f.report || f.presentation || f.reflection;
-    const c = base && base.criteria; if(!c) return;
-    crits.forEach(k=>{ if(c[k.n]) conteo[k.n][c[k.n]] = (conteo[k.n][c[k.n]]||0)+1; });
+    const n = base && unitNota(crits, base.criteria);
+    if(n==null) return;
+    evaluados++; const l = unitNivelDeNota(n); dist[l] = (dist[l]||0)+1;
   });
-  const COLOR = {AD:'#dcfce7', A:'#e0f2fe', B:'#fef9c3', C:'#fee2e2'};
-  const barra = k => UNIT_LVL.map(l=>
-    `<span class="badge" style="background:${COLOR[l]};margin-right:4px">${l}: ${conteo[k][l]||0}</span>`).join('');
 
-  const sel = (id, crit, valor) => `<select onchange="unitCriterio('${id}','${crit}',this.value)" style="font-size:.8rem">
-      <option value=""${valor?'':' selected'}>—</option>
-      ${UNIT_LVL.map(l=>`<option value="${l}"${valor===l?' selected':''}>${l}</option>`).join('')}
-    </select>`;
+  const opt = (v, txt, sel) => `<option value="${esc(String(v))}"${sel?' selected':''}>${esc(txt)}</option>`;
+  const rotuloGrado = g => (GRADE_META[g]||[])[1] || g;
+  const rubrica = `<details ${_unit.rubrica?'open':''} ontoggle="_unit.rubrica=this.open" style="margin-top:12px">
+    <summary style="cursor:pointer;font-weight:700">📏 Rúbrica de la unidad — qué significa cada nivel en cada criterio</summary>
+    <div style="overflow-x:auto;margin-top:8px"><table class="tbl">
+      <thead><tr><th style="min-width:180px">Criterio</th>
+        ${UNIT_LVL.map(l=>`<th>${l} · ${UNIT_SIG[l]}<div class="muted" style="font-weight:400;font-size:.72rem">nota ${UNIT_TRAMO[l]}</div></th>`).join('')}</tr></thead>
+      <tbody>${crits.map(c=>`<tr><td><b>${c.n}.</b> ${esc(c.text)}</td>
+        ${UNIT_LVL.map(l=>`<td style="font-size:.8rem;vertical-align:top">${esc((c.levels||{})[l]||'')}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
+    <p class="muted" style="font-size:.78rem;margin:8px 0 0">La nota del alumno sale sola de los niveles que le pongas:
+      AD = 19 · A = 16 · B = 12 · C = 8, media de los criterios, redondeada. Es la misma tabla con que se
+      corrigen las producciones escritas.</p>
+  </details>`;
+
+  main.innerHTML = `<div class="card">
+    <h2>🎯 Productos de unidad</h2>
+    <p class="muted">Lo que los alumnos producen, no lo que aciertan. Un alumno cada vez, con sus productos delante
+      y la rúbrica debajo; con las flechas (o ← → del teclado) pasas al siguiente.</p>
+    <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin:12px 0 0">
+      <label style="font-size:.85rem">Grado <select onchange="unitFiltra('grade',this.value)" style="margin-left:4px">
+        ${grados.map(g=>opt(g, rotuloGrado(g), g===_unit.grade)).join('')}</select></label>
+      <label style="font-size:.85rem">Sección <select onchange="unitFiltra('section',this.value)" style="margin-left:4px">
+        ${opt('', 'Todas', !_unit.section)}${secciones.map(x=>opt(x, x, x===_unit.section)).join('')}</select></label>
+      <label style="font-size:.85rem">Unidad <select onchange="unitFiltra('unit',this.value)" style="margin-left:4px">
+        ${unidades.map(u=>opt(u, 'Unidad '+u, u===_unit.unit)).join('')}</select></label>
+      <span class="muted" style="font-size:.8rem">${filas.length} alumno${filas.length===1?'':'s'} con entregas
+        · <b>${evaluados}</b> evaluado${evaluados===1?'':'s'}${evaluados?' — '+UNIT_LVL.filter(l=>dist[l]).map(l=>`${dist[l]} en ${l} (${UNIT_SIG[l]})`).join(', '):''}</span>
+    </div>
+    <p style="margin:12px 0 0"><b>${esc(rotuloGrado(_unit.grade))}${_unit.section?' '+esc(_unit.section):''} · Unidad ${esc(_unit.unit)}${plan.title?' — '+esc(plan.title):''}</b>.
+      Se entrega: ${DELS.map(d=>`${d.icon||''} ${esc(d.title)}`).join(' · ')}.</p>
+    ${rubrica}
+  </div>
+  <div id="unitAlumno"></div>
+  <div class="card" id="unitTexto" style="display:none"></div>${fichasTabla(fichas, quien)}`;
+  unitPintaAlumno();
+}
+
+window.unitFiltra = function(k, v){
+  _unit[k] = v; _unit.i = 0;
+  if(k==='grade'){ _unit.unit = null; _unit.section = ''; }
+  if(k==='unit') _unit.section = '';
+  unitProductsPanel();
+};
+window.unitMueve = function(d){
+  const n = _unit.filas.length; if(!n) return;
+  _unit.i = Math.max(0, Math.min(n-1, _unit.i + d));
+  unitPintaAlumno();
+  const h = $('#unitAlumno'); if(h) h.scrollIntoView({ behavior:'smooth', block:'start' });
+};
+window.unitSalta = function(j){ _unit.i = parseInt(j,10)||0; unitPintaAlumno(); };
+/* Flechas del teclado, salvo cuando se esta escribiendo en un campo. */
+document.addEventListener('keydown', e=>{
+  if(!$('#unitAlumno')) return;
+  if(e.target && /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) return;
+  if(e.key==='ArrowLeft') unitMueve(-1);
+  else if(e.key==='ArrowRight') unitMueve(1);
+});
+
+function unitPintaAlumno(){
+  const U = _unit, host = $('#unitAlumno'); if(!host) return;
+  const f = U.filas[U.i];
+  if(!f){ host.innerHTML = '<div class="card"><p class="muted">Todavía nadie ha entregado nada aquí.</p></div>'; return; }
+  const p = U.quien[f.alumno]||{};
+  const base = f.report || f.presentation || f.reflection;   // dónde se guarda la evaluación
+  const crit = (base && base.criteria) || {};
+  const selfL = (f.selfassess && f.selfassess.payload && f.selfassess.payload.levels) || {};
+  const nb = f.notebook;
+  const nota = base ? unitNota(U.crits, crit) : null, nivel = unitNivelDeNota(nota);
+  const puestos = U.crits.filter(c=>crit[c.n]).length;
+  const entregados = U.DELS.filter(d=>{ const r=f[d.kind];
+    return r && (d.type==='file' ? !!r.file_path : !!(r.payload && r.payload.text && r.payload.text.trim())); }).length;
 
   const AUDIO = ['webm','ogg','mp3','m4a','wav'], VIDEO = ['mp4'];
   const vacio = '<p class="muted" style="margin:0;font-size:.85rem">Sin entregar</p>';
   const archivo = r => {
     if(!r || !r.file_path) return vacio;
-    const url = firmadas[r.file_path], ext = (r.file_path.split('.').pop()||'').toLowerCase();
+    const url = U.firmadas[r.file_path], ext = (r.file_path.split('.').pop()||'').toLowerCase();
     if(!url) return '<p class="muted" style="margin:0;font-size:.85rem">Archivo no disponible</p>';
     const kb = r.payload && r.payload.size ? ' · '+Math.round(r.payload.size/1024)+' KB' : '';
     const pie = `<div class="muted" style="font-size:.75rem;margin-top:4px">${esc(ext)}${kb} ·
       <a href="${esc(url)}" target="_blank" rel="noopener">descargar</a></div>`;
-    if(AUDIO.indexOf(ext)>=0) return `<audio controls preload="none" src="${esc(url)}" style="width:100%"></audio>${pie}`;
-    if(VIDEO.indexOf(ext)>=0) return `<video controls preload="none" src="${esc(url)}" style="width:100%;max-height:220px;background:#000;border-radius:8px"></video>${pie}`;
+    if(AUDIO.indexOf(ext)>=0) return `<audio controls preload="metadata" src="${esc(url)}" style="width:100%"></audio>${pie}`;
+    if(VIDEO.indexOf(ext)>=0) return `<video controls preload="metadata" src="${esc(url)}" style="width:100%;max-height:260px;background:#000;border-radius:8px"></video>${pie}`;
     return `<a class="btn small" href="${esc(url)}" target="_blank" rel="noopener">📎 Abrir archivo</a>${pie}`;
   };
   const textoBox = r => {
-    const p = r && r.payload;
-    if(!p || typeof p.text!=='string' || !p.text.trim()) return vacio;
-    const rv = p.review || {};
-    return `<div class="muted" style="font-size:.75rem;margin-bottom:4px">${p.words||0} palabras ·
-        <span class="badge" style="background:${p.draft===false?'#dcfce7':'#fef9c3'}">${p.draft===false?'entregado':'borrador'}</span>
-        ${rv.nivel?` · propuesta <b>${esc(rv.nivel)}</b>${rv.nota!=null?' ('+esc(String(rv.nota))+')':''}`:''}</div>
-      <div style="white-space:pre-wrap;font-size:.86rem;line-height:1.55;max-height:240px;overflow:auto;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:#fcfdff">${esc(p.text)}</div>`;
+    const q = r && r.payload;
+    if(!q || typeof q.text!=='string' || !q.text.trim()) return vacio;
+    return `<div class="muted" style="font-size:.75rem;margin-bottom:4px">${q.words||0} palabras ·
+        <span class="badge" style="background:${q.draft===false?'#dcfce7':'#fef9c3'}">${q.draft===false?'entregado':'borrador'}</span></div>
+      <div style="white-space:pre-wrap;font-size:.88rem;line-height:1.6;max-height:360px;overflow:auto;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:#fcfdff">${esc(q.text)}</div>`;
   };
-  const producto = (d, f) => `<div style="flex:1 1 260px;min-width:240px">
-      <div style="font-weight:700;font-size:.85rem;margin-bottom:6px">${d.icon||''} ${esc(d.title)}</div>
+  const producto = d => `<div style="flex:1 1 280px;min-width:260px">
+      <div style="font-weight:700;font-size:.9rem;margin-bottom:6px">${d.icon||''} ${esc(d.title)}</div>
       ${d.type==='file' ? archivo(f[d.kind]) : textoBox(f[d.kind])}</div>`;
 
-  const tarjeta = f => {
-    const p = quien[f.alumno]||{};
-    const base = f.report || f.presentation || f.reflection;   // dónde se guarda la calificación
-    const crit = (base && base.criteria) || {};
-    const selfL = (f.selfassess && f.selfassess.payload && f.selfassess.payload.levels) || {};
-    const nb = f.notebook;
-    const entregados = DELS.filter(d=>{ const r=f[d.kind];
-      return r && (d.type==='file' ? !!r.file_path : !!(r.payload && r.payload.text && r.payload.text.trim())); }).length;
-    return `<div class="card" style="margin-bottom:14px">
+  const nav = `<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:14px 0 10px">
+      <button class="btn" onclick="unitMueve(-1)" ${U.i===0?'disabled':''}>◀ Anterior</button>
+      <span style="font-size:.9rem">Alumno <b>${U.i+1}</b> de ${U.filas.length} ·
+        <select onchange="unitSalta(this.value)" style="max-width:260px">
+          ${U.filas.map((x,j)=>`<option value="${j}"${j===U.i?' selected':''}>${esc((U.quien[x.alumno]||{}).full_name||'(alumno)')}</option>`).join('')}
+        </select></span>
+      <button class="btn" onclick="unitMueve(1)" ${U.i>=U.filas.length-1?'disabled':''}>Siguiente ▶</button>
+    </div>`;
+
+  const evaluacion = !base ? '<p class="muted">Aún no ha entregado ningún producto: no hay nada que evaluar.</p>' : `
+    <h4 style="margin:0 0 8px">📏 Evaluación</h4>
+    ${U.crits.map(c=>{ const puesto = crit[c.n];
+      return `<div style="margin-bottom:12px">
+        <div style="font-size:.86rem;font-weight:600">${c.n}. ${esc(c.text)}
+          ${selfL[c.n]?`<span class="muted" style="font-weight:400;font-size:.75rem" title="autoevaluación"> · el alumno se puso ${selfL[c.n]}</span>`:''}</div>
+        <div style="display:flex;gap:6px;margin-top:6px;flex-wrap:wrap">
+          ${UNIT_LVL.map(l=>`<button class="btn small ${puesto===l?'':'ghost'}" style="min-width:46px"
+              title="${esc((c.levels||{})[l]||UNIT_SIG[l])}" onclick="unitNivel('${base.id}','${c.n}','${l}')">${l}</button>`).join('')}
+        </div>
+        ${puesto?`<div style="font-size:.8rem;margin-top:6px;background:#f6f8fc;border-left:3px solid var(--blue);padding:6px 10px;border-radius:0 6px 6px 0">
+            <b>${puesto} · ${UNIT_SIG[puesto]}</b>${(c.levels||{})[puesto]?' — '+esc(c.levels[puesto]):''}</div>`:''}
+      </div>`; }).join('')}
+    <div style="border-top:1px solid var(--line);padding-top:10px;margin-top:6px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px">
+        <b>Nota</b>
+        <span style="font-weight:800;font-size:1.05rem;color:var(--blue-dd)">${nota!=null
+          ? `${nivel} · ${UNIT_SIG[nivel]} · ${nota}/20`
+          : '<span class="muted" style="font-weight:400;font-size:.85rem">pon los niveles y sale sola</span>'}</span>
+      </div>
+      <p class="muted" style="font-size:.76rem;margin:4px 0 8px">${puestos} de ${U.crits.length} criterios puestos.
+        Los niveles se guardan al pulsarlos; el alumno ve la nota y el comentario cuando pulsas <b>Guardar y enviar</b>.</p>
+      <textarea id="unitComent" rows="3" placeholder="Comentario para el alumno" style="width:100%;padding:9px;border:1px solid var(--line);border-radius:8px;font-family:inherit;font-size:.86rem;line-height:1.5">${esc(base.feedback||'')}</textarea>
+      <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:8px">
+        <button class="btn" onclick="unitEnvia('${base.id}')">📨 Guardar y enviar al alumno</button>
+        <span class="state" id="unitEstado">${base.reviewed_at?'Enviado · '+esc(new Date(base.reviewed_at).toLocaleDateString('es-PE')):''}</span>
+      </div>
+      <label style="display:block;font-size:.8rem;margin-top:10px">
+        <input type="checkbox" ${base.shared?'checked':''} onchange="unitExhibe('${base.id}',this.checked)">
+        🖼️ Exhibir en la galería de la unidad — sus compañeros podrán ver este trabajo como ejemplo (por defecto solo lo veis tú y el alumno).</label>
+    </div>`;
+
+  host.innerHTML = `${nav}
+    <div class="card" style="margin-bottom:14px">
       <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap">
-        <h3 style="margin:0;font-size:1rem">${esc(p.full_name||'(alumno)')}
-          <span class="muted" style="font-weight:400">${p.grade_id?p.grade_id+'.º '+(p.section||''):''}</span></h3>
+        <h3 style="margin:0;font-size:1.1rem">${esc(p.full_name||'(alumno)')}
+          <span class="muted" style="font-weight:400;font-size:.9rem">${p.grade_id?p.grade_id+'.º '+(p.section||''):''}</span></h3>
         <span>
-          <span class="badge" style="background:${entregados===DELS.length?'#dcfce7':'#fef9c3'}">${entregados} de ${DELS.length} productos</span>
-          ${base && base.reviewed_at ? '<span class="badge" style="background:#e0f2fe">revisado</span>' : ''}
+          <span class="badge" style="background:${entregados===U.DELS.length?'#dcfce7':'#fef9c3'}">${entregados} de ${U.DELS.length} productos entregados</span>
+          ${base && base.reviewed_at ? '<span class="badge" style="background:#e0f2fe">enviado al alumno</span>' : ''}
         </span>
       </div>
-      <div style="display:flex;gap:16px;flex-wrap:wrap;margin:12px 0">${DELS.map(d=>producto(d,f)).join('')}</div>
-      ${nb && nb.file_path ? `<div style="margin:0 0 10px"><button class="btn small" onclick="unitVerArchivo('${esc(nb.file_path)}',this)">📓 Cuaderno</button></div>` : ''}
-      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;border-top:1px solid var(--line);padding-top:10px">
-        ${crits.map(c=>`<label style="font-size:.78rem;white-space:nowrap" title="${esc(c.text)}">C${c.n} ${base?sel(base.id,c.n,crit[c.n]):'—'}${
-          selfL[c.n]?`<span class="muted" style="font-size:.7rem" title="lo que se puso el alumno"> ↖${selfL[c.n]}</span>`:''}</label>`).join('')}
-        <label style="font-size:.78rem">Nota <input type="number" min="0" max="20" value="${base&&base.score!=null?base.score:''}" style="width:4rem"
-            ${base?`onchange="unitCalificar('${base.id}',this.value,null)"`:'disabled'}></label>
-        <input type="text" placeholder="comentario para el alumno" value="${esc((base&&base.feedback)||'')}" style="flex:1 1 220px;min-width:180px"
-            ${base?`onchange="unitCalificar('${base.id}',null,this.value)"`:'disabled'}>
-        ${base?`<label style="font-size:.78rem;white-space:nowrap"><input type="checkbox" ${base.shared?'checked':''}
-            onchange="unitExhibe('${base.id}',this.checked)" title="Mostrar en la galería de la unidad"> Exhibir</label>`:''}
-      </div>
+      <div style="display:flex;gap:18px;flex-wrap:wrap;margin:14px 0">${U.DELS.map(producto).join('')}</div>
+      ${nb && nb.file_path ? `<div style="margin:0 0 12px"><button class="btn small" onclick="unitVerArchivo('${esc(nb.file_path)}',this)">📓 Cuaderno</button></div>` : ''}
+      <div style="border-top:1px solid var(--line);padding-top:12px">${evaluacion}</div>
     </div>`;
-  };
-
-  window._unitFichas = Object.fromEntries(fichas.map(r=>[r.id,r]));
-  const rotulo = ((GRADE_META[G]||[])[1]||G) + ' · Unidad ' + UN + (plan.title ? ' — ' + plan.title : '');
-
-  main.innerHTML = `<div class="card">
-    <h2>🎯 Productos de unidad</h2>
-    <p class="muted">Lo que los alumnos producen, no lo que aciertan. Cada alumno con sus productos delante
-      — el texto, el audio o el archivo — y debajo el avance por criterio de la rúbrica y la nota.</p>
-    <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:12px 0">
-      <label style="font-size:.85rem">Grado · unidad
-        <select onchange="window._unitFiltro=this.value;unitProductsPanel()" style="margin-left:6px">
-          ${grupos.map(g=>`<option value="${g}"${g===F?' selected':''}>${g.replace(/^g(\d+)\|(\d+)$/,'$1.º · U$2')}</option>`).join('')}
-        </select></label>
-      <span class="muted" style="font-size:.8rem">${filas.length} alumno${filas.length===1?'':'s'} con entregas</span>
-    </div>
-    <p style="margin:0 0 10px"><b>${esc(rotulo)}</b>. Se entrega: ${DELS.map(d=>`${d.icon||''} ${esc(d.title)}`).join(' · ')}.</p>
-    <div style="display:grid;gap:8px;margin:14px 0 10px">
-      ${crits.map(c=>`<div><b style="font-size:.85rem">${c.n}. ${esc(c.text)}</b><br>${barra(c.n)}</div>`).join('')}
-    </div>
-    <p class="muted" style="font-size:.8rem;margin:0">
-      <b>AD</b> logro destacado · <b>A</b> logro esperado · <b>B</b> en proceso · <b>C</b> en inicio ·
-      ↖ = el nivel que el propio alumno se puso.</p>
-  </div>
-  ${filas.length ? filas.map(tarjeta).join('') : '<div class="card"><p class="muted">Todavía nadie ha entregado nada en esta unidad.</p></div>'}
-  <div class="card" id="unitTexto" style="display:none"></div>${fichasTabla(fichas, quien)}`;
 }
+
+/* Un nivel por criterio. Se guarda al pulsarlo (con la nota que resulta),
+   sin marcar la entrega como enviada: eso es «Guardar y enviar». */
+window.unitNivel = async function(id, crit, valor){
+  const f = _unit.filas[_unit.i]; if(!f) return;
+  const base = Object.values(f).find(r=>r && r.id===id); if(!base) return;
+  const c = Object.assign({}, base.criteria||{});
+  if(c[crit]===valor) delete c[crit]; else c[crit] = valor;
+  base.criteria = c; base.score = unitNota(_unit.crits, c);
+  unitPintaAlumno();
+  const { error } = await sb.from('unit_submissions').update({ criteria:c, score:base.score }).eq('id', id);
+  const st = $('#unitEstado');
+  if(error && st){ st.textContent = 'No se pudo guardar: '+error.message; st.className='state err'; }
+};
+
+window.unitEnvia = async function(id){
+  const f = _unit.filas[_unit.i]; if(!f) return;
+  const base = Object.values(f).find(r=>r && r.id===id); if(!base) return;
+  const ta = $('#unitComent'), st = $('#unitEstado');
+  const cambio = { feedback:(ta?ta.value:base.feedback)||'', score:unitNota(_unit.crits, base.criteria),
+                   reviewed_at:new Date().toISOString(), reviewed_by:(state.profile&&state.profile.id)||null };
+  if(st){ st.textContent='Guardando…'; st.className='state'; }
+  const { error } = await sb.from('unit_submissions').update(cambio).eq('id', id);
+  if(error){ if(st){ st.textContent='No se pudo enviar: '+error.message; st.className='state err'; } return; }
+  Object.assign(base, cambio);
+  unitPintaAlumno();
+  const st2 = $('#unitEstado'); if(st2){ st2.textContent='Enviado al alumno ✓'; st2.className='state ok'; }
+};
 
 /* El bucket es privado: se pide un enlace temporal, como en Fun for Nordic. */
 window.unitVerArchivo = async function(ruta, boton){
@@ -6555,14 +6669,6 @@ window.unitCalificar = async function(id, nota, comentario){
   if(nota !== null && nota !== '') cambio.score = Number(nota);
   if(comentario !== null) cambio.feedback = comentario;
   await sb.from('unit_submissions').update(cambio).eq('id', id);
-};
-
-window.unitCriterio = async function(id, crit, valor){
-  const { data } = await sb.from('unit_submissions').select('criteria').eq('id',id).single();
-  const c = (data && data.criteria) || {};
-  if(valor) c[crit] = valor; else delete c[crit];
-  await sb.from('unit_submissions').update({ criteria:c, reviewed_at:new Date().toISOString(),
-    reviewed_by:(state.profile&&state.profile.id)||null }).eq('id', id);
 };
 
 /* ---------------------------------------------------------------

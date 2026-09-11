@@ -989,7 +989,10 @@ async function arrancaSesion(){
       muestraEntregado(r.kind, r.file_path); }
     if(r.feedback){
       const fb=$('#fb-'+r.kind); if(fb){ fb.style.display='block';
-        $('#fbt-'+r.kind).textContent=(r.score!=null?('Mark: '+r.score+'/10 — '):'')+r.feedback; }
+        /* La nota es vigesimal y sale de los niveles de la rubrica (AD 18-20,
+           A 14-17, B 11-13, C 0-10): se dice con su nivel, no solo el numero. */
+        const lv=r.score==null?null:r.score>=18?'AD — Outstanding':r.score>=14?'A — Expected':r.score>=11?'B — In progress':'C — Starting out';
+        $('#fbt-'+r.kind).textContent=(r.score!=null?('Mark: '+r.score+'/20 · '+lv+' — '):'')+r.feedback; }
     }
   });
   recuperaLocales(data||[]);
