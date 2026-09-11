@@ -438,7 +438,7 @@ async function guarda(final){
   document.title = (ficha.title || 'Worksheet') + ' · ' + ficha.level;
 
   const { data: prev } = await sb.from('unit_submissions')
-    .select('payload,score,feedback')
+    .select('payload,score,feedback,released_at')
     .eq('student_id',me.id).eq('grade',GRADE).eq('unit',UNIT)
     .eq('milestone',HITO).eq('kind','worksheet').maybeSingle();
   if(prev && prev.payload){
@@ -448,7 +448,7 @@ async function guarda(final){
 
   pinta();
 
-  if(prev && prev.feedback){
+  if(prev && prev.released_at && prev.feedback){
     $('#fb').style.display = 'block';
     $('#fbt').textContent = (prev.score!=null ? ('Mark: '+prev.score+' — ') : '') + prev.feedback;
   }

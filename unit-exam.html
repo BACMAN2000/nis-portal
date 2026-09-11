@@ -468,7 +468,7 @@ async function misResultados(kind){
     const [{data:ints},{data:wrs}]=await Promise.all([
       sb.from('activity_attempts').select('activity,score,total,submitted_at').eq('student_id',me.uid)
         .like('activity',pref+'%').order('submitted_at',{ascending:false}).limit(20),
-      sb.from('unit_submissions').select('milestone,payload,score,feedback,reviewed_at').eq('student_id',me.uid)
+      sb.from('unit_submissions').select('milestone,payload,score,feedback,reviewed_at,released_at').eq('student_id',me.uid)
         .eq('grade',GRADE).like('milestone','exam-'+kind+'-%')
     ]);
     if(!ints||!ints.length) return;
@@ -480,10 +480,12 @@ async function misResultados(kind){
     const nivelW=s=>s>=18?'AD — Outstanding':s>=14?'A — Expected':s>=11?'B — In progress':'C — Starting out';
     host.innerHTML=`<h2 style="font-size:1.05rem;margin:18px 0 8px">📊 Your results</h2>`+ints.map(a=>{
       const l=a.activity.split('-').pop()||'', pct=a.total?Math.round(100*a.score/a.total):0, w=wr[l];
-      const writing=!w ? '' : w.reviewed_at
+      /* La nota del Writing se ve cuando el profesor la publica al salon
+         (released_at), no cuando la corrige. */
+      const writing=!w ? '' : w.released_at
         ? `<div style="margin-top:6px"><b>Writing:</b> ${w.score!=null?`<b>${w.score}/20</b> · ${nivelW(w.score)}`:'no mark'}
            ${w.feedback?`<div style="margin-top:4px;white-space:pre-wrap">${esc(w.feedback)}</div>`:''}</div>`
-        : '<div style="margin-top:6px"><b>Writing:</b> sent — your teacher has not marked it yet.</div>';
+        : '<div style="margin-top:6px"><b>Writing:</b> sent — your mark will appear here when your teacher publishes the class results.</div>';
       return `<div class="note" style="text-align:left;margin-bottom:8px"><b>${LVL[l]?LVL[l][1]:l.toUpperCase()}</b>
         · ${new Date(a.submitted_at).toLocaleDateString()} · six marked parts: <b>${a.score}/${a.total}</b> · ${pct}% · ${banda(pct)}${writing}</div>`;
     }).join('');

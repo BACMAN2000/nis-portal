@@ -2875,7 +2875,7 @@ async function _uexResultados(studs){
   const [{data:ints},{data:wrs}]=await Promise.all([
     sb.from('activity_attempts').select('id,student_id,activity,score,total,duration_sec,submitted_at')
       .like('activity',pref+'%').order('submitted_at',{ascending:false}).limit(3000),
-    sb.from('unit_submissions').select('id,student_id,grade,unit,milestone,kind,payload,score,feedback,reviewed_at')
+    sb.from('unit_submissions').select('id,student_id,grade,unit,milestone,kind,payload,score,feedback,reviewed_at,released_at')
       .eq('grade',uexCtl.grade).like('milestone','exam-%').limit(3000)
   ]);
   const quien={}; studs.forEach(p=>{ quien[p.id]=p; });
@@ -2911,7 +2911,7 @@ async function _uexResultados(studs){
       <td class="muted" style="white-space:nowrap">${fecha(f.a.submitted_at)} · ${Math.round((f.a.duration_sec||0)/60)} min</td>
       <td style="min-width:260px">${w ? `<details>
           <summary style="cursor:pointer">✍️ ${wp.words||0} words ${w.reviewed_at
-            ? '<span class="badge" id="uexw-'+w.id+'" style="background:#dcfce7">marked'+(w.score!=null?' · '+w.score+'/20':'')+'</span>'
+            ? '<span class="badge" id="uexw-'+w.id+'" style="background:#dcfce7">marked'+(w.score!=null?' · '+w.score+'/20':'')+(w.released_at?' · sent':'')+'</span>'
             : '<span class="badge" id="uexw-'+w.id+'" style="background:#fee2e2">not marked</span>'}</summary>
           <div style="white-space:pre-wrap;font-size:.86rem;line-height:1.55;max-height:260px;overflow:auto;padding:8px 10px;margin-top:6px;border:1px solid var(--line);border-radius:8px;background:#fcfdff">${esc(wp.text||'')}</div>
           <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:6px">
@@ -2926,6 +2926,7 @@ async function _uexResultados(studs){
     <h2 style="font-size:1.05rem;margin-top:0">📊 Results · ${filas.length} attempt${filas.length===1?'':'s'}</h2>
     <p class="muted" style="font-size:.82rem">The six parts are marked automatically. You mark the Writing here, with the text in front of you.
       Scale: <b>AD</b> ≥ 90 % · <b>A</b> ≥ 70 % · <b>B</b> ≥ 55 % · <b>C</b> below.</p>
+    <div style="margin:0 0 10px">${unitBotonPublica(Object.values(writing),'Writing marks','unitExamPanel','the students')}</div>
     ${filas.length?`<div style="overflow-x:auto"><table class="tbl">
       <thead><tr><th>Student</th><th>Exam</th><th style="text-align:center">Grade</th><th>Date</th><th>Writing</th></tr></thead>
       <tbody>${filas.map(fila).join('')}</tbody></table></div>`:'<p class="muted">No one has taken it yet.</p>'}
@@ -5033,7 +5034,7 @@ function studentGrade(key){
       ${key==='g9' ? (nodeVisible('english.classes.g9.cambridge') ? _hubCard('🎓','Cambridge','B2 First (FCE) practice by skill: Listening, Use of English, Reading and Writing.',"window._nav('classes_g9_cambridge')") : _lockedCard('🎓','Cambridge','Cambridge B2 First practice.')) : ''}
       ${key==='g5' ? _hubCard('🦅','Cambridge Flyers','The A2 Flyers picture tasks, sorted by the unit you are working on: label the people, tick the right picture, match people to pictures and write the picture story.',"window._nav('classes_g5_flyers')") : ''}
       ${readerBooksFor(key).length ? (nodeVisible(base+'.reader') ? _hubCard('📚','Readers','Graded readers with activities for every chapter: '+readerBooksFor(key).map(id=>READER_CARDS[id][4]).join(', ')+'.',"window._nav('classes_"+key+"_readers')") : _lockedCard('📚','Readers','Graded readers with activities.')) : ''}
-      ${key==='g9' ? (nodeVisible('english.classes.g9.unitexams') ? _skillCard('📋','Unit Exams','The unit exam and its practice, at your level: multiple choice, true/false, word formation, transformations, word order, listening and writing. Your teacher opens each one when the class is ready.',_withBack('unit-exam.html?v=8adbee11',route)) : _lockedCard('📋','Unit Exams','The unit exam and its practice.')) : ''}
+      ${key==='g9' ? (nodeVisible('english.classes.g9.unitexams') ? _skillCard('📋','Unit Exams','The unit exam and its practice, at your level: multiple choice, true/false, word formation, transformations, word order, listening and writing. Your teacher opens each one when the class is ready.',_withBack('unit-exam.html?v=96e114da',route)) : _lockedCard('📋','Unit Exams','The unit exam and its practice.')) : ''}
     </div>`;
 }
 /* Cambridge (9.º): tarjeta madre con las destrezas del examen B2 First:
@@ -6418,7 +6419,7 @@ async function unitProductsPanel(){
 
   const { data, error } = await sb
     .from('unit_submissions')
-    .select('id,student_id,grade,unit,milestone,kind,payload,file_path,score,criteria,feedback,reviewed_at,created_at,updated_at,shared')
+    .select('id,student_id,grade,unit,milestone,kind,payload,file_path,score,criteria,feedback,reviewed_at,released_at,created_at,updated_at,shared')
     .order('updated_at', { ascending:false })
     .limit(3000);
 
@@ -6541,6 +6542,7 @@ async function unitProductsPanel(){
     </div>
     <p style="margin:12px 0 0"><b>${esc(rotuloGrado(_unit.grade))}${_unit.section?' '+esc(_unit.section):''} · Unit ${esc(_unit.unit)}${plan.title?' — '+esc(plan.title):''}</b>.
       Deliverables: ${DELS.map(d=>`${d.icon||''} ${esc(d.title)}`).join(' · ')}.</p>
+    <div style="margin:10px 0 0">${unitBotonPublica(dataF,'products','unitProductsPanel',_unit.section?rotuloGrado(_unit.grade)+' '+esc(_unit.section):'the whole grade')}</div>
     ${rubrica}
   </div>
   <div id="unitAlumno"></div>
@@ -6621,7 +6623,7 @@ function unitPintaAlumno(){
         <div style="font-weight:800;font-size:1.05rem;color:var(--blue-dd)">${r.score!=null
           ? `${r.score}/20 · ${lv} · ${UNIT_SIG[lv]}` : '<span class="muted" style="font-weight:400;font-size:.85rem">No grade · comment only</span>'}</div>
         ${r.feedback ? `<div style="font-size:.8rem;line-height:1.5;margin-top:4px;white-space:pre-wrap">${esc(r.feedback)}</div>` : ''}
-        ${r.reviewed_at ? `<div class="muted" style="font-size:.72rem;margin-top:4px">sent to student · ${esc(new Date(r.reviewed_at).toLocaleDateString('en-GB'))}</div>` : ''}
+        ${r.reviewed_at ? `<div class="muted" style="font-size:.72rem;margin-top:4px">marked · ${esc(new Date(r.reviewed_at).toLocaleDateString('en-GB'))}${r.released_at?' · sent to the student '+esc(new Date(r.released_at).toLocaleDateString('en-GB')):' · <b>hidden from the student</b> until you send the class'}</div>` : ''}
       </div>`;
   };
   const producto = d => `<div style="flex:1 1 280px;min-width:260px">
@@ -6663,11 +6665,11 @@ function unitPintaAlumno(){
           : '<span class="muted" style="font-weight:400;font-size:.85rem">add the levels and it shows automatically</span>'}</span>
       </div>
       <p class="muted" style="font-size:.76rem;margin:4px 0 8px">${puestos} of ${U.crits.length} criteria set.
-        Levels are saved as soon as you click them; the student sees the grade and comment when you click <b>Save and send</b>.</p>
+        Levels are saved as soon as you click them. The student sees nothing until you press <b>📣 Send grades and comments</b> at the top, for the whole class.</p>
       <textarea id="unitComent" rows="${(base.feedback||(rv&&rv.borrador)||'').length>200?6:3}" placeholder="Comment for the student" style="width:100%;padding:9px;border:1px solid var(--line);border-radius:8px;font-family:inherit;font-size:.86rem;line-height:1.5">${esc(base.feedback||(rv&&rv.borrador)||'')}</textarea>
       <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:8px">
-        <button class="btn" onclick="unitEnvia('${base.id}')">📨 Save and send to student</button>
-        <span class="state" id="unitEstado">${base.reviewed_at?'Sent · '+esc(new Date(base.reviewed_at).toLocaleDateString('en-GB')):''}</span>
+        <button class="btn" onclick="unitEnvia('${base.id}')">💾 Save grade and comment</button>
+        <span class="state" id="unitEstado">${base.released_at?'Sent to the student · '+esc(new Date(base.released_at).toLocaleDateString('en-GB')):(base.reviewed_at?'Marked · hidden until you send the class':'')}</span>
       </div>
       <label style="display:block;font-size:.8rem;margin-top:10px">
         <input type="checkbox" ${base.shared?'checked':''} onchange="unitExhibe('${base.id}',this.checked)">
@@ -6681,7 +6683,7 @@ function unitPintaAlumno(){
           <span class="muted" style="font-weight:400;font-size:.9rem">${p.grade_id?'G'+p.grade_id+' '+(p.section||''):''}</span></h3>
         <span>
           <span class="badge" style="background:${entregados===U.DELS.length?'#dcfce7':'#fef9c3'}">${entregados} of ${U.DELS.length} products submitted</span>
-          ${base && base.reviewed_at ? '<span class="badge" style="background:#e0f2fe">sent to student</span>' : ''}
+          ${base && base.released_at ? '<span class="badge" style="background:#dcfce7">sent to student</span>' : (base && base.reviewed_at ? '<span class="badge" style="background:#e0f2fe">marked · not sent</span>' : '')}
         </span>
       </div>
       <div style="display:flex;gap:18px;flex-wrap:wrap;margin:14px 0">${U.DELS.map(producto).join('')}</div>
@@ -6716,7 +6718,7 @@ window.unitAceptaPropuesta = async function(id){
   unitPintaAlumno();
   const { error } = await sb.from('unit_submissions').update({ criteria:c, score:base.score }).eq('id', id);
   const st = $('#unitEstado');
-  if(st){ st.textContent = error ? 'Could not save: '+error.message : 'Levels saved — review the comment and click Save and send'; st.className = error?'state err':'state ok'; }
+  if(st){ st.textContent = error ? 'Could not save: '+error.message : 'Levels saved — review the comment and click Save'; st.className = error?'state err':'state ok'; }
 };
 
 window.unitEnvia = async function(id){
@@ -6730,7 +6732,7 @@ window.unitEnvia = async function(id){
   if(error){ if(st){ st.textContent='Could not send: '+error.message; st.className='state err'; } return; }
   Object.assign(base, cambio);
   unitPintaAlumno();
-  const st2 = $('#unitEstado'); if(st2){ st2.textContent='Sent to student ✓'; st2.className='state ok'; }
+  const st2 = $('#unitEstado'); if(st2){ st2.textContent=base.released_at?'Saved ✓ — the student already sees it':'Saved ✓ — hidden until you send the class'; st2.className='state ok'; }
 };
 
 /* El bucket es privado: se pide un enlace temporal, como en Fun for Nordic. */
@@ -6746,6 +6748,32 @@ window.unitVerArchivo = async function(ruta, boton){
     window.open(data.signedUrl,'_blank','noopener');
   }
 };
+
+/* Corregir y publicar son dos pasos. La nota y el comentario se guardan con
+   reviewed_at y el alumno NO los ve; los ve cuando el profesor publica el
+   salon entero (released_at), despues de revisarlo. Pedido el 11-sep-2026:
+   habian salido notas que aun habia que mirar. */
+window.unitPublica = async function(ids, que, tras){
+  ids = (ids||[]).filter(Boolean);
+  if(!ids.length){ alert('Nothing to send: there is no marked work waiting to be published.'); return; }
+  const ok = await NISUI.pregunta('From now on those students will see their grade and comment. Sending '+ids.length+' '+que+'.',
+    {titulo:'Send grades and comments to the class?', si:'Send', no:'Not yet'});
+  if(!ok) return;
+  const { error } = await sb.from('unit_submissions')
+    .update({ released_at:new Date().toISOString(), released_by:(state.profile&&state.profile.id)||null }).in('id', ids);
+  if(error){ alert('Could not send: '+error.message); return; }
+  if(window.NISUI&&NISUI.aviso) NISUI.aviso('Sent to the class · '+ids.length+' '+que,'bien',3000);
+  if(tras) tras();
+};
+/* El boton, con su cuenta: cuantos estan corregidos y sin publicar. */
+function unitBotonPublica(filas, que, tras, aQuien){
+  const por = (filas||[]).filter(r=>r.reviewed_at && !r.released_at).map(r=>r.id);
+  const ya  = (filas||[]).filter(r=>r.released_at).length;
+  window._unitPub = window._unitPub || {}; window._unitPub[que] = por;
+  return `<span style="display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap">
+    <button class="btn" ${por.length?'':'disabled'} onclick="unitPublica(window._unitPub['${que}'],'${que}',${tras})">📣 Send grades and comments to ${aQuien} (${por.length})</button>
+    <span class="muted" style="font-size:.78rem">${ya?ya+' already sent · ':''}students see nothing until you send</span></span>`;
+}
 
 window.unitCalificar = async function(id, nota, comentario){
   const cambio = { reviewed_at:new Date().toISOString(), reviewed_by:(state.profile&&state.profile.id)||null };
@@ -7014,7 +7042,7 @@ function unitFichasBloque(){
     <h2>📄 Submitted worksheets</h2>
     <p class="muted">What students submit session by session: the worksheet completed in the portal, the
       Google Docs link, or the file. Choose the worksheet and go through students one by one; the student
-      sees the grade and comment in the activity itself.</p>
+      sees the grade and comment in the activity itself — once you send them to the class.</p>
     <label style="font-size:.85rem">Worksheet <select onchange="unitFichaElige(this.value)" style="margin-left:4px;max-width:420px">
       ${claves.map(k=>`<option value="${esc(k)}"${k===_ficha.sel?' selected':''}>${esc(unitFichaDonde(grupos[k].r))} (${grupos[k].n})</option>`).join('')}
     </select></label>
@@ -7086,15 +7114,16 @@ function unitPintaFicha(){
     <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap">
       <h3 style="margin:0;font-size:1.05rem">${esc(p.full_name||'(student)')}
         <span class="muted" style="font-weight:400;font-size:.9rem">${p.grade_id?'G'+p.grade_id+' '+(p.section||''):''}</span></h3>
-      <span class="muted" style="font-size:.85rem">${esc(unitFichaDonde(r))}${r.reviewed_at?' · <span class="badge" style="background:#e0f2fe">sent to student</span>':''}</span>
+      <span class="muted" style="font-size:.85rem">${esc(unitFichaDonde(r))}${r.released_at?' · <span class="badge" style="background:#dcfce7">sent to student</span>':(r.reviewed_at?' · <span class="badge" style="background:#e0f2fe">marked · not sent</span>':'')}</span>
     </div>
     <div style="margin:12px 0">${entrega}</div>
     <div style="border-top:1px solid var(--line);padding-top:10px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
       <label style="font-size:.8rem">Grade <input type="number" min="0" max="20" id="unitFichaNota" value="${r.score!=null?r.score:''}" style="width:4.5rem"></label>
       <input type="text" id="unitFichaComent" placeholder="Comment for the student" value="${esc(r.feedback||'')}" style="flex:1 1 240px;min-width:200px">
-      <button class="btn" onclick="unitFichaEnvia('${r.id}')">📨 Save and send</button>
+      <button class="btn" onclick="unitFichaEnvia('${r.id}')">💾 Save</button>
       <span class="state" id="unitFichaEstado"></span>
     </div>
+    <div style="margin-top:10px">${unitBotonPublica(lista,'worksheets','unitPintaFichaTras','this worksheet\u2019s students')}</div>
     ${conRubrica && m ? `<p class="muted" style="font-size:.78rem;margin:8px 0 0">This session has a points rubric:
       <a href="#" onclick="unitFichaCorregir('${_unit.grade}',${parseInt(_unit.unit,10)},${+m[1]},${+m[2]});return false">mark it with the rubric in ✅ Mark worksheets</a>.</p>` : ''}`;
 }
@@ -7109,7 +7138,13 @@ window.unitFichaEnvia = async function(id){
   if(error){ if(st){ st.textContent='Could not send: '+error.message; st.className='state err'; } return; }
   Object.assign(r, cambio);
   unitPintaFicha();
-  const st2 = $('#unitFichaEstado'); if(st2){ st2.textContent='Sent to student ✓'; st2.className='state ok'; }
+  const st2 = $('#unitFichaEstado'); if(st2){ st2.textContent=r.released_at?'Saved ✓ — the student already sees it':'Saved ✓ — hidden until you send the class'; st2.className='state ok'; }
+};
+/* Tras publicar fichas: las filas en memoria ya llevan released_at y se repinta. */
+window.unitPintaFichaTras = function(){
+  const ids = new Set((window._unitPub||{}).worksheets||[]), now = new Date().toISOString();
+  (_unit.fichas||[]).forEach(r=>{ if(ids.has(r.id)) r.released_at = now; });
+  unitPintaFicha();
 };
 /* Abre esa sesion en Corregir fichas, que corrige con la rubrica de puntos. */
 window.unitFichaCorregir = function(grade, unit, week, session){
@@ -7745,7 +7780,7 @@ window.corrAlumno = async function(i){
       <span>
         ${e.level?`<span class="badge" style="background:#e7ecfd">level ${esc(e.level)}</span>`:''}
         <span class="badge" style="background:${e._handed||e.draft===false?'#dcfce7':'#fef9c3'}">${e._handed||e.draft===false?'submitted':'draft'}</span>
-        ${e.reviewed_at?'<span class="badge" style="background:#e0f2fe">sent to student</span>':''}
+        ${e.reviewed_at?'<span class="badge" style="background:#e0f2fe">marked</span>':''}
       </span>
     </div>
     <p class="muted" style="font-size:.8rem;margin:6px 0 0">${esc(corrDonde(_corr.hito))}${fAl&&fAl.title?' — '+esc(fAl.title):''} · ${claves.length} field${claves.length===1?'':'s'} answered${claves.length===1?'':''}</p>
@@ -7780,12 +7815,12 @@ window.corrAlumno = async function(i){
               : '<span class="muted" style="font-weight:400;font-size:.85rem">set the levels and the grade appears automatically</span>'}</span>
           </div>
           <p class="muted" style="font-size:.76rem;margin:4px 0 8px">${nPuestos} of ${rub.length} criteria set. The levels are saved when you click them;
-            the student sees the grade and the comment when you press <b>Save and send</b>.</p>
+            the student sees the grade and the comment when you send them to the class from <b>🎯 Unit products → 📄 Submitted worksheets</b>.</p>
           <textarea id="cComent" rows="3" placeholder="Comment for the student"
             style="width:100%;padding:9px;border:1px solid var(--line);border-radius:8px;font-family:inherit;font-size:.86rem;line-height:1.5">${esc(e.feedback||'')}</textarea>
           <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
             <button class="btn" onclick="corrGuarda(true)">📨 Save, send and next</button>
-            <button class="btn small ghost" onclick="corrGuarda(false)">Save and send</button>
+            <button class="btn small ghost" onclick="corrGuarda(false)">Save as marked</button>
           </div>
           <div class="row"><span class="state" id="cEstado"></span></div>
         </div>
@@ -7824,7 +7859,7 @@ window.corrGuarda = async function(siguiente){
   Object.assign(e, cambio);
   if(siguiente && _corr.i < _corr.entregas.length-1){ corrMueve(1); return; }
   await corrAlumno(_corr.i);
-  const est2 = $('#cEstado'); if(est2){ est2.textContent = 'Sent to student ✓'; est2.className = 'state ok'; }
+  const est2 = $('#cEstado'); if(est2){ est2.textContent = 'Saved ✓ — hidden until you send the class'; est2.className = 'state ok'; }
 };
 
 
@@ -8370,9 +8405,9 @@ window.escAbre = function(j, silencioso){
               border:1px solid var(--line);border-radius:8px;font-family:inherit;font-size:.85rem;
               line-height:1.6">${esc(borrador)}</textarea>
             <p class="muted" style="font-size:.75rem;margin:4px 0 0">
-              The student sees nothing until you press <b>Save and send</b>.</p>
+              The student sees nothing until you send the class from <b>🎯 Unit products</b>.</p>
             <div class="row" style="margin-top:10px;gap:8px;flex-wrap:wrap">
-              <button class="btn" onclick="escGuarda(true)">📨 Save and send</button>
+              <button class="btn" onclick="escGuarda(true)">💾 Save as marked</button>
               <button class="btn small ghost" onclick="escGuarda(false)">Save without sending</button>
               <button class="btn small ghost" onclick="escAbre(${Math.min(_esc.i + 1, _esc.filas.length - 1)})">Next ▸</button>
             </div>

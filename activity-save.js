@@ -197,7 +197,7 @@ function quien(html){
 }
 
 function feedback(r){
-  if(!r || !r.feedback) return;
+  if(!r || !r.released_at || !r.feedback) return;
   if(!notaCaja){
     notaCaja = document.createElement('div');
     notaCaja.className = 'nisw-fb';
@@ -325,7 +325,7 @@ function arranca(){
     .then(function(){
       if(!me) return null;
       return sb.from('unit_submissions')
-        .select('payload,score,feedback,updated_at')
+        .select('payload,score,feedback,released_at,updated_at')
         .eq('student_id', me.id).eq('grade', O.grade).eq('unit', O.unit)
         .eq('milestone', 'a:' + O.slug).eq('kind', 'worksheet').maybeSingle()
         .then(function(q){ return q && q.data; }, function(){ return null; });

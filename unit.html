@@ -594,11 +594,11 @@ function pintaEntregas(){
     /* La ficha se corrige con niveles y la nota es vigesimal, como los
        productos (AD 18-20 · A 14-17 · B 11-13 · C 0-10): decia /10. */
     const lv = r.score==null?null:r.score>=18?'AD — Outstanding':r.score>=14?'A — Expected':r.score>=11?'B — In progress':'C — Starting out';
-    const nota = (r.score!=null) ? (' · ' + r.score + '/20 · ' + lv.split(' ')[0]) : '';
+    const nota = (r.released_at && r.score!=null) ? (' · ' + r.score + '/20 · ' + lv.split(' ')[0]) : '';
     chip.innerHTML = '✓ Handed in' + nota;
     /* El comentario iba en un tooltip del chip, donde nadie lo lee: va en
        su recuadro debajo de la fila, igual que el de los productos. */
-    if(r.feedback || r.score!=null){
+    if(r.released_at && (r.feedback || r.score!=null)){
       const row = chip.closest('.ses-row');
       let fb = $('#fbw-'+h);
       if(!fb && row){ fb = document.createElement('div'); fb.className='fb'; fb.id='fbw-'+h; fb.style.margin='6px 0 10px'; row.insertAdjacentElement('afterend', fb); }
@@ -989,7 +989,7 @@ async function arrancaSesion(){
   if(!me){ $('#gate').style.display='block'; U.deliverables.forEach(d=>{ if(d.type==='text') cuenta(d); }); return; }
   $('#handin').style.display='block';
   const {data}=await sb.from('unit_submissions')
-    .select('kind,milestone,payload,file_path,score,criteria,feedback,updated_at')
+    .select('kind,milestone,payload,file_path,score,criteria,feedback,released_at,updated_at')
     .eq('student_id',me.id).eq('grade',GRADE).eq('unit',UNIT);
   /* Las entregas de ficha llevan milestone 'w1s1'; las del producto, 'final'. */
   (data||[]).filter(r=>r.milestone!==MILESTONE).forEach(r=>{ _entregas[r.milestone]=r; });
@@ -1001,7 +1001,9 @@ async function arrancaSesion(){
     if(ta){ ta.value=(r.payload&&r.payload.text)||''; if(st && r.payload && r.payload.draft===false){ st.textContent='Handed in'; st.className='state ok'; } }
     else if(st && r.file_path){ st.textContent='Uploaded — you can replace it.'; st.className='state ok';
       muestraEntregado(r.kind, r.file_path); }
-    if(r.feedback || r.score!=null){
+    /* Solo lo publicado: la nota existe desde que el profesor corrige, pero el
+       alumno la ve cuando el profesor la envia al salon (released_at). */
+    if(r.released_at && (r.feedback || r.score!=null)){
       const fb=$('#fb-'+r.kind); if(fb){ fb.style.display='block';
         /* La nota es vigesimal y sale de los niveles de la rubrica (AD 18-20,
            A 14-17, B 11-13, C 0-10): se dice con su nivel, no solo el numero,
