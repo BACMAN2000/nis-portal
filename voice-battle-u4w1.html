@@ -103,11 +103,11 @@
 input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--accent);outline-offset:1px}
 </style>
   <meta name="google" content="notranslate">
-  <script src="ui-mensajes.js?v=18d6c1e2"></script>
+  <script src="ui-mensajes.js?v=22f3c588"></script>
 <script src="config.js?v=68725f64"></script>
-  <script src="anticheat.js?v=f2bd3ba6" data-activity="voice-battle-u4w1"></script>
+  <script src="anticheat.js?v=e8b83646" data-activity="voice-battle-u4w1"></script>
 <script src="nis-nav.js?v=c3230c7d"></script>
-<script src="activity-save.js?v=7bdace9a"></script>
+<script src="activity-save.js?v=9dbd5cb4"></script>
 </head>
 <body>
 <nav class="topnav">
@@ -134,12 +134,12 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px soli
     </div>
 
     <div id="lifebar">
-      <span id="hearts" title="Vidas: cada error cuesta 1 vida"></span>
+      <span id="hearts" title="Lives: each mistake costs 1 life"></span>
       <span id="watch">⏱ 00:00</span>
     </div>
 
     <div class="startgate" id="gate">
-      <p>🎧 Ponte los audifonos. Vas a escuchar una palabra: escribela correctamente para atacar a Robo-Noob.</p>
+      <p>🎧 Put on your headphones. You will hear a word: spell it correctly to attack Robo-Noob.</p>
       <button class="act b-attack big" id="startBtn" onclick="startBattle()">⚔️ Start battle</button>
     </div>
 
@@ -160,7 +160,7 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px soli
     </div>
 
     <div class="score" id="score"></div>
-    <div class="banner" id="banner">🎉 ¡Robo-Noob derrotado!</div>
+    <div class="banner" id="banner">🎉 Robo-Noob defeated!</div>
     <div class="audionote" id="audionote"></div>
   </div>
 
@@ -198,14 +198,14 @@ window.NISACT=(function(){
       const p=await c.from('profiles').select('full_name,first_name,email,cefr_level,grades(name)').eq('id',u.data.user.id).maybeSingle();
       const d=(p&&p.data)||{}; return {uid:u.data.user.id,email:u.data.user.email||d.email,full_name:d.full_name,first_name:d.first_name};
     }catch(e){ return null; } }
-  /* Corrige el «Guardando tu resultado…» del banner con lo que de verdad paso.
+  /* Corrige el «Saving your result…» del banner con lo que de verdad paso.
      Es la unica senal que tiene el alumno: si el guardado falla en silencio, se
      va convencido de que su trabajo quedo registrado. */
   function avisaGuardado(ok, motivo){
-    var P = 'Guardando tu resultado\u2026';
-    var texto = ok === null ? 'Entra al Portal para que tu resultado quede guardado.'
-              : ok ? 'Tu resultado quedo guardado en My Results.'
-              : '\u26a0 No se pudo guardar tu resultado (' + (motivo || 'sin conexion') + '). Avisa a tu profesor.';
+    var P = 'Saving your result\u2026';
+    var texto = ok === null ? 'Sign in to the Portal so your result gets saved.'
+              : ok ? 'Your result was saved in My Results.'
+              : '\u26a0 Your result could not be saved (' + (motivo || 'no connection') + '). Tell your teacher.';
     document.querySelectorAll('div,p,span,h1,h2,h3').forEach(function(n){
       if(n.children.length === 0 && n.textContent.indexOf(P) >= 0){
         n.textContent = n.textContent.replace(P, texto);
@@ -217,7 +217,7 @@ window.NISACT=(function(){
     let ok=true, motivo='';
     try{ const q=await client().from('activity_attempts').insert({student_id:s.uid,activity:r.activity,title:r.title,level:r.level,
       score:r.score,total:r.total,hints_used:r.hints,lives_left:r.lives,duration_sec:r.duration});
-      if(q && q.error){ ok=false; motivo=q.error.message; } }catch(e){ ok=false; motivo=(e&&e.message)||'sin conexion'; }
+      if(q && q.error){ ok=false; motivo=q.error.message; } }catch(e){ ok=false; motivo=(e&&e.message)||'no connection'; }
     try{ const m=Math.floor(r.duration/60), sec=r.duration%60;
       await fetch(NIS_CONFIG.WRITING_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
         body:JSON.stringify({skill:'Activity',name:s.full_name||s.first_name||'',email:s.email||'',level:r.level,
@@ -254,15 +254,15 @@ if(window.speechSynthesis){
 }
 function note(t){ const n=document.getElementById('audionote'); if(n) n.textContent = t||''; }
 function speak(word, slow){
-  if(!window.speechSynthesis){ note('⚠️ Este navegador no puede reproducir el audio.'); return; }
+  if(!window.speechSynthesis){ note('⚠️ This browser cannot play the audio.'); return; }
   try{
     window.speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(word.toLowerCase());
     u.lang = 'en-US'; if(ttsVoice) u.voice = ttsVoice;
     u.rate = slow ? 0.55 : 0.85; u.pitch = 1; u.volume = 1;
     window.speechSynthesis.speak(u);
-    note('🗣️ Voz del navegador (no hay audio grabado para esta semana).');
-  }catch(e){ note('⚠️ No se pudo reproducir el audio.'); }
+    note('🗣️ Browser voice (no recorded audio for this week).');
+  }catch(e){ note('⚠️ The audio could not be played.'); }
 }
 function playWord(slow){
   if(!cur) return;
@@ -278,7 +278,7 @@ function playWord(slow){
     a.addEventListener('playing', function(){ settled = true; audioProbed = true; note(''); });
     const p = a.play();
     if(p && p.catch) p.catch(function(err){
-      if(err && err.name === 'NotAllowedError'){ note('🔊 Toca "Replay" para escuchar la palabra.'); return; }
+      if(err && err.name === 'NotAllowedError'){ note('🔊 Tap "Replay" to hear the word.'); return; }
       fallback();
     });
   }catch(e){ fallback(); }
@@ -454,7 +454,7 @@ function attack(){
   if(!cur || busy || !started) return;
   const val = document.getElementById('answer').value;
   if(!norm(val)) return;
-  if(norm(val) === norm(cur.word)) hit(); else miss('❌ ¡Fallaste! Era otra palabra. Mira la pista.');
+  if(norm(val) === norm(cur.word)) hit(); else miss('❌ Missed! It was a different word. Look at the hint.');
 }
 
 function hit(){
@@ -466,7 +466,7 @@ function hit(){
   drawBoss(); renderDefeated(); updateScore();
   const b = document.getElementById('boss');
   b.classList.add('hurt'); setTimeout(()=>b.classList.remove('hurt'), 200);
-  feedback('⚔️ ¡Golpe directo! ' + w.word.toUpperCase(), 'hit');
+  feedback('⚔️ Direct hit! ' + w.word.toUpperCase(), 'hit');
   document.getElementById('answer').disabled = true;
   if(bossHP<=0){ win(); return; }
   setTimeout(nextRound, 900);
@@ -485,13 +485,13 @@ function miss(msg){
   setTimeout(nextRound, 2800);   // tiempo para leer la pista antes de la siguiente palabra
 }
 
-function timeUp(){ miss('⏳ ¡Se acabo el tiempo! Robo-Noob contraataca.'); }
+function timeUp(){ miss('⏳ Time is up! Robo-Noob strikes back.'); }
 
 function defeat(){
   clearInterval(roundInt); clearInterval(timerInt);
   try{ if(window.speechSynthesis) window.speechSynthesis.cancel(); }catch(e){}
   setTimeout(()=>{
-    alert('💔 ¡Te quedaste sin vidas! Robo-Noob gana esta ronda. El nivel se reinicia desde cero.');
+    alert('💔 You ran out of lives! Robo-Noob wins this round. The level restarts from zero.');
     load();
   }, 150);
 }
@@ -503,11 +503,11 @@ function win(){
     done[level] = true;
     RES[level] = { score:bossMax, total:bossMax, hints:hintsUsed, lives:lives, duration:elapsed };
     if(window.NIS_WORK) NIS_WORK.touch();
-    b.textContent = '🎉 ¡Robo-Noob derrotado en '+fmtT(elapsed)+'! Guardando tu resultado…';
+    b.textContent = '🎉 Robo-Noob defeated in '+fmtT(elapsed)+'! Saving your result…';
     if(window.NISACT) NISACT.submit({activity:'voice-battle',title:'Voice Battle — U4 Week 1',level:level,
       score:bossMax,total:bossMax,hints:hintsUsed,lives:lives,duration:elapsed});
   } else {
-    b.textContent = '🎉 ¡Robo-Noob derrotado otra vez en '+fmtT(elapsed)+'!';
+    b.textContent = '🎉 Robo-Noob defeated again in '+fmtT(elapsed)+'!';
   }
   b.classList.add('show');
   document.getElementById('round').style.display = 'none';
@@ -555,6 +555,6 @@ if(window.NIS_WORK) NIS_WORK.attach(Object.assign(NIS_WORK.ficha(), {
 
 load();
 </script>
-<script src="nis-tema.js?v=a7890d34" defer></script>
+<script src="nis-tema.js?v=410c4879" defer></script>
 </body>
 </html>

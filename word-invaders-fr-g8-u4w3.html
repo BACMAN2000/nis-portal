@@ -85,9 +85,9 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px soli
 </style>
   <meta name="google" content="notranslate">
   <script src="config.js?v=68725f64"></script>
-  <script src="anticheat.js?v=f2bd3ba6" data-activity="word-invaders-u4w1"></script>
+  <script src="anticheat.js?v=e8b83646" data-activity="word-invaders-u4w1"></script>
 <script src="nis-nav.js?v=c3230c7d"></script>
-<script src="activity-save.js?v=7bdace9a"></script>
+<script src="activity-save.js?v=9dbd5cb4"></script>
 </head>
 <body>
 <nav class="topnav">
@@ -151,14 +151,14 @@ window.NISACT=(function(){
       const p=await c.from('profiles').select('full_name,first_name,email,cefr_level,grades(name)').eq('id',u.data.user.id).maybeSingle();
       const d=(p&&p.data)||{}; return {uid:u.data.user.id,email:u.data.user.email||d.email,full_name:d.full_name,first_name:d.first_name};
     }catch(e){ return null; } }
-  /* Corrige el «Guardando tu resultado…» del banner con lo que de verdad paso.
+  /* Corrige el «Saving your result…» del banner con lo que de verdad paso.
      Es la unica senal que tiene el alumno: si el guardado falla en silencio, se
      va convencido de que su trabajo quedo registrado. */
   function avisaGuardado(ok, motivo){
-    var P = 'Guardando tu resultado\u2026';
-    var texto = ok === null ? 'Entra al Portal para que tu resultado quede guardado.'
-              : ok ? 'Tu resultado quedo guardado en My Results.'
-              : '\u26a0 No se pudo guardar tu resultado (' + (motivo || 'sin conexion') + '). Avisa a tu profesor.';
+    var P = 'Saving your result\u2026';
+    var texto = ok === null ? 'Sign in to the Portal so your result gets saved.'
+              : ok ? 'Your result was saved in My Results.'
+              : '\u26a0 Your result could not be saved (' + (motivo || 'no connection') + '). Tell your teacher.';
     document.querySelectorAll('div,p,span,h1,h2,h3').forEach(function(n){
       if(n.children.length === 0 && n.textContent.indexOf(P) >= 0){
         n.textContent = n.textContent.replace(P, texto);
@@ -170,7 +170,7 @@ window.NISACT=(function(){
     let ok=true, motivo='';
     try{ const q=await client().from('activity_attempts').insert({student_id:s.uid,activity:r.activity,title:r.title,level:r.level,
       score:r.score,total:r.total,hints_used:r.hints,lives_left:r.lives,duration_sec:r.duration});
-      if(q && q.error){ ok=false; motivo=q.error.message; } }catch(e){ ok=false; motivo=(e&&e.message)||'sin conexion'; }
+      if(q && q.error){ ok=false; motivo=q.error.message; } }catch(e){ ok=false; motivo=(e&&e.message)||'no connection'; }
     try{ const m=Math.floor(r.duration/60), sec=r.duration%60;
       await fetch(NIS_CONFIG.WRITING_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
         body:JSON.stringify({skill:'Activity',name:s.full_name||s.first_name||'',email:s.email||'',level:r.level,
@@ -340,8 +340,8 @@ function gameOver(){
   endRound();
   const b = $('banner');
   b.className = 'banner lose show';
-  b.textContent = '💀 ¡Te quedaste sin escudos! Destruiste ' + destroyed + ' de ' + TARGET +
-                  '. Pulsa "Restart day" para volver a intentarlo.';
+  b.textContent = '💀 You ran out of shields! You destroyed ' + destroyed + ' of ' + TARGET +
+                  '. Press "Restart day" to try again.';
   $('startCurtain').style.display = 'flex';
   $('curtainDay').textContent = 'Game over';
   $('curtainSub').textContent = 'Score ' + score + ' · destroyed ' + destroyed + '/' + TARGET;
@@ -355,8 +355,8 @@ function win(){
   if(window.NIS_WORK) NIS_WORK.touch();
   const b = $('banner');
   b.className = 'banner show';
-  b.textContent = '🎉 ¡Invasión detenida en ' + fmtT(elapsed) + '! Score ' + score +
-                  '. Guardando tu resultado…';
+  b.textContent = '🎉 Invasion stopped in ' + fmtT(elapsed) + '! Score ' + score +
+                  '. Saving your result…';
   if (!wasDone && window.NISACT) NISACT.submit({
     activity:'word-invaders', title:'Word Invaders — FR 8e Semaine 3', level:level,
     score:destroyed, total:TARGET, hints:0, lives:shields, duration:elapsed });
@@ -403,6 +403,6 @@ if(window.NIS_WORK) NIS_WORK.attach(Object.assign(NIS_WORK.ficha(), {
 
 load();
 </script>
-<script src="nis-tema.js?v=a7890d34" defer></script>
+<script src="nis-tema.js?v=410c4879" defer></script>
 </body>
 </html>

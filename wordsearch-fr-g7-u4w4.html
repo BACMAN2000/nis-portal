@@ -64,11 +64,11 @@
   @media (max-width:480px){ .topnav{margin:-8px -8px 12px; padding:8px 12px;} .navbtn{padding:7px 11px; font-size:.8rem;} }
 </style>
   <meta name="google" content="notranslate">
-  <script src="ui-mensajes.js?v=18d6c1e2"></script>
+  <script src="ui-mensajes.js?v=22f3c588"></script>
 <script src="config.js?v=68725f64"></script>
-  <script src="anticheat.js?v=f2bd3ba6" data-activity="wordsearch-u4w1"></script>
+  <script src="anticheat.js?v=e8b83646" data-activity="wordsearch-u4w1"></script>
 <script src="nis-nav.js?v=c3230c7d"></script>
-<script src="activity-save.js?v=7bdace9a"></script>
+<script src="activity-save.js?v=9dbd5cb4"></script>
 </head>
 <body>
 <nav class="topnav">
@@ -88,7 +88,7 @@
   <div class="board">
     <div class="gridbox" id="grid"></div>
     <div id="lifebar" style="margin-top:10px;font-weight:800;font-size:1.05rem;display:flex;gap:16px;align-items:center">
-      <span id="hearts" title="Vidas: cada pista cuesta 1 vida"></span>
+      <span id="hearts" title="Lives: each hint costs 1 life"></span>
       <span id="watch" style="font-variant-numeric:tabular-nums;color:var(--accent)">⏱ 00:00</span>
     </div>
     <div class="info" id="dirinfo"></div>
@@ -123,14 +123,14 @@ window.NISACT=(function(){
       const p=await c.from('profiles').select('full_name,first_name,email,cefr_level,grades(name)').eq('id',u.data.user.id).maybeSingle();
       const d=(p&&p.data)||{}; return {uid:u.data.user.id,email:u.data.user.email||d.email,full_name:d.full_name,first_name:d.first_name};
     }catch(e){ return null; } }
-  /* Corrige el «Guardando tu resultado…» del banner con lo que de verdad paso.
+  /* Corrige el «Saving your result…» del banner con lo que de verdad paso.
      Es la unica senal que tiene el alumno: si el guardado falla en silencio, se
      va convencido de que su trabajo quedo registrado. */
   function avisaGuardado(ok, motivo){
-    var P = 'Guardando tu resultado\u2026';
-    var texto = ok === null ? 'Entra al Portal para que tu resultado quede guardado.'
-              : ok ? 'Tu resultado quedo guardado en My Results.'
-              : '\u26a0 No se pudo guardar tu resultado (' + (motivo || 'sin conexion') + '). Avisa a tu profesor.';
+    var P = 'Saving your result\u2026';
+    var texto = ok === null ? 'Sign in to the Portal so your result gets saved.'
+              : ok ? 'Your result was saved in My Results.'
+              : '\u26a0 Your result could not be saved (' + (motivo || 'no connection') + '). Tell your teacher.';
     document.querySelectorAll('div,p,span,h1,h2,h3').forEach(function(n){
       if(n.children.length === 0 && n.textContent.indexOf(P) >= 0){
         n.textContent = n.textContent.replace(P, texto);
@@ -142,7 +142,7 @@ window.NISACT=(function(){
     let ok=true, motivo='';
     try{ const q=await client().from('activity_attempts').insert({student_id:s.uid,activity:r.activity,title:r.title,level:r.level,
       score:r.score,total:r.total,hints_used:r.hints,lives_left:r.lives,duration_sec:r.duration});
-      if(q && q.error){ ok=false; motivo=q.error.message; } }catch(e){ ok=false; motivo=(e&&e.message)||'sin conexion'; }
+      if(q && q.error){ ok=false; motivo=q.error.message; } }catch(e){ ok=false; motivo=(e&&e.message)||'no connection'; }
     try{ const m=Math.floor(r.duration/60), sec=r.duration%60;
       await fetch(NIS_CONFIG.WRITING_WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},
         body:JSON.stringify({skill:'Activity',name:s.full_name||s.first_name||'',email:s.email||'',level:r.level,
@@ -302,7 +302,7 @@ function endSel(){
       clearInterval(timerInt);
       const dur=elapsedState[level]||0;
       const b=document.getElementById('banner');
-      b.textContent='🎉 Brilliant! All words found in '+fmtT(dur)+'! Guardando tu resultado…';
+      b.textContent='🎉 Brilliant! All words found in '+fmtT(dur)+'! Saving your result…';
       if(window.NISACT) NISACT.submit({activity:'wordsearch',title:'Mots mêlés — FR 7e Semaine 4',level:level,
         score:d.words.length,total:d.words.length,hints:hintsUsed,lives:livesState[level],duration:dur});
     }
@@ -339,7 +339,7 @@ function hint(){
   livesState[level]--; drawStatus();
   if(livesState[level]<=0){
     setTimeout(()=>{
-      alert('💔 ¡Te quedaste sin vidas! El nivel se reinicia desde cero.');
+      alert('💔 You ran out of lives! The level restarts from zero.');
       resetLevel();
     }, 900);
     return;
@@ -400,6 +400,6 @@ if(window.NIS_WORK) NIS_WORK.attach(Object.assign(NIS_WORK.ficha(), {
 
 load();
 </script>
-<script src="nis-tema.js?v=a7890d34" defer></script>
+<script src="nis-tema.js?v=410c4879" defer></script>
 </body>
 </html>
