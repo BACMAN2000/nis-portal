@@ -1790,6 +1790,11 @@ async function adminUsers(){
   const seccionOpts = `<option value="">All sections</option>`+secciones.map(s=>`<option value="${esc(s)}" ${fs===s?'selected':''}>Section ${esc(s)}</option>`).join('');
   const rows=list.map(p=>{
     const suspended = p.active===false;
+    const nombre = esc((p.full_name||p.email||'').replace(/'/g,'’'));
+    const pasteMs = p.role==='student' ? pasteHasta(p) : 0;
+    const pasteBtn = p.role!=='student' ? '' : pasteMs
+      ? `<button class="btn sm ghost" style="border-color:#2563eb;color:#1d4ed8" onclick="window._togglePaste('${p.id}','${nombre}',false)" title="Pasting into the writing boxes is allowed until ${pasteFecha(pasteMs)}. Click to switch it off now.">📋 Paste on · ${pasteFecha(pasteMs)}</button> `
+      : `<button class="btn sm ghost" onclick="window._togglePaste('${p.id}','${nombre}',true)" title="Pasting is blocked (school rule). Click to allow it for ${PASTE_DIAS} days; every paste is still recorded.">📋 Paste off</button> `;
     const toggleBtn = suspended
       ? `<button class="btn sm" style="background:var(--good)" onclick="suspendUser('${p.id}',true)">Reactivate</button>`
       : `<button class="btn sm ghost" style="border-color:var(--warn);color:#92600a" onclick="suspendUser('${p.id}',false)">Suspend</button>`;
@@ -1800,7 +1805,7 @@ async function adminUsers(){
       <td><span class="badge lvl">${esc(p.cefr_level||'—')}</span></td>
       <td><span class="badge ${p.role==='student'?'':'on'}">${esc(p.role)}</span>${p.is_demo?' <span class="badge" title="Demo account">🧪 demo</span>':''}</td>
       <td><span class="badge ${suspended?'off':'on'}">${suspended?'Suspended':'Active'}</span></td>
-      <td class="acts"><div class="acts-wrap">${p.role==='student'?`<button class="btn sm ghost" onclick="window._previewStudent('${p.id}','${esc((p.full_name||p.email||'').replace(/'/g,'’'))}')" title="View the portal as this student sees it">👁️ View as</button> <button class="btn sm ghost" onclick="window._openStudentAccess('${p.id}',${p.grade_id||'null'},'${esc((p.full_name||p.email||'').replace(/'/g,'’'))}')">🔧 Access</button> <button class="btn sm ghost" onclick="window.resetStudentPassword('${p.id}','${esc((p.full_name||p.email||'').replace(/'/g,'’'))}','${esc((p.email||'').replace(/'/g,'’'))}')" title="Assign a new temporary password">🔑 Reset</button> `:''}<button class="btn sm ghost" onclick="editUser('${p.id}')">Edit</button> ${toggleBtn} <button class="btn sm danger" onclick="deleteUser('${p.id}','user')">Delete</button></div></td>
+      <td class="acts"><div class="acts-wrap">${p.role==='student'?`<button class="btn sm ghost" onclick="window._previewStudent('${p.id}','${esc((p.full_name||p.email||'').replace(/'/g,'’'))}')" title="View the portal as this student sees it">👁️ View as</button> <button class="btn sm ghost" onclick="window._openStudentAccess('${p.id}',${p.grade_id||'null'},'${esc((p.full_name||p.email||'').replace(/'/g,'’'))}')">🔧 Access</button> <button class="btn sm ghost" onclick="window.resetStudentPassword('${p.id}','${esc((p.full_name||p.email||'').replace(/'/g,'’'))}','${esc((p.email||'').replace(/'/g,'’'))}')" title="Assign a new temporary password">🔑 Reset</button> ${pasteBtn}`:''}<button class="btn sm ghost" onclick="editUser('${p.id}')">Edit</button> ${toggleBtn} <button class="btn sm danger" onclick="deleteUser('${p.id}','user')">Delete</button></div></td>
     </tr>`;}).join('');
   $('#main').innerHTML=`<div class="row" style="justify-content:space-between;align-items:center"><h1>Users</h1>
       <button class="btn sm" onclick="adminNewUser()">+ New</button></div>
@@ -1989,6 +1994,25 @@ window.deleteUser = async (id, kind)=>{
 };
 /* Suspend (soft): keep the account + data but block access and hide it from the
    default list. Reversible with Reactivar. */
+/* Pegar con permiso. writing-trace.js bloquea pegar en toda caja de texto
+   del alumno (regla del colegio, 11-sep-2026); este interruptor abre la
+   puerta a UN alumno —profiles.paste_allowed_until, que solo un admin puede
+   tocar— para el caso del que ya tenía el texto escrito fuera del portal.
+   Se cierra sola a los PASTE_DIAS días para que nadie se quede con la puerta
+   abierta por olvido, y cada pegado queda anotado igual: el profesor lo ve en
+   azul junto a las pulsaciones («📋 1 paste allowed by the teacher»). */
+const PASTE_DIAS = 7;
+function pasteHasta(p){ const ms = p && p.paste_allowed_until ? Date.parse(p.paste_allowed_until) : 0; return ms > Date.now() ? ms : 0; }
+function pasteFecha(ms){ return new Date(ms).toLocaleDateString('en', { weekday:'short', day:'numeric', month:'short' }); }
+window._togglePaste = async (id, nombre, on)=>{
+  if(on && !await NISUI.pregunta(`${nombre} will be able to paste text into the writing boxes for ${PASTE_DIAS} days, or until you switch it off. Every paste is still recorded and shown next to the keystrokes.`, {titulo:'Allow pasting?', si:'Allow pasting', no:'Cancel', tono:'info', icono:'📋'})) return;
+  let hasta = null;
+  if(on){ hasta = new Date(Date.now() + PASTE_DIAS*864e5); hasta.setHours(23,59,59,0); }
+  const { error } = await sb.from('profiles').update({ paste_allowed_until: hasta ? hasta.toISOString() : null }).eq('id', id);
+  if(error){ alert('Could not update: '+error.message); return; }
+  if(window.NISUI&&NISUI.aviso) NISUI.aviso(on ? `📋 Pasting allowed for ${nombre} until ${pasteFecha(hasta.getTime())}` : `🚫 Pasting is off again for ${nombre}`, 'bien', 3500);
+  adminUsers();
+};
 window.suspendUser = async (id, to, kind)=>{
   if(!to && !await NISUI.pregunta('They will not be able to sign in and will be hidden from the list. You can reactivate them whenever you want.', {titulo:'Suspend this user?', si:'Suspend', no:'Cancel', tono:'ojo'})) return;
   const { error } = await sb.from('profiles').update({ active:to }).eq('id',id);
