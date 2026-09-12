@@ -184,6 +184,44 @@ window.NIS_CONFIG = {
   window.NIS_ERROR = manda;
 })();
 
+/* ---- aviso cuando una extension esta traduciendo la pagina ----------------
+   El portal esta en ingles y marcado notranslate, que frena al traductor
+   integrado del navegador. Una EXTENSION de traduccion (Google Traductor,
+   sobre todo) se lo salta: reescribe el DOM en cada pintado y en pantallas
+   grandes deja el hilo bloqueado («la pagina no responde», 12-sep-2026, en
+   la PC del admin; en incognito nunca). Google Translate deja huella (html
+   .translated-ltr y <font> con vertical-align:inherit); el de Edge, atributos
+   _msttexthash. Al verlas se avisa arriba, en ingles, con lo que hay que
+   apagar, y se anota una vez en client_errors para saber a quien le pasa. */
+(function () {
+  if (typeof document === 'undefined') return;
+  var avisado = false;
+  function traducida() {
+    var h = document.documentElement;
+    if (h.classList && (h.classList.contains('translated-ltr') || h.classList.contains('translated-rtl'))) return 'google';
+    if (document.querySelector('font[style*="vertical-align: inherit"]') || document.querySelector('font[style*="vertical-align:inherit"]')) return 'google';
+    if (document.querySelector('[_msttexthash], [_mstmutation]')) return 'edge';
+    return null;
+  }
+  function avisa(cual) {
+    if (avisado) return; avisado = true;
+    try { if (window.NIS_ERROR) window.NIS_ERROR('PAGE_TRANSLATED:' + cual, '', { url: location.pathname }); } catch (_) {}
+    var b = document.createElement('div');
+    b.setAttribute('translate', 'no'); b.className = 'notranslate';
+    b.style.cssText = 'position:fixed;left:0;right:0;top:0;z-index:2147483647;background:#7f1d1d;color:#fff;font:600 14px/1.4 system-ui,sans-serif;padding:10px 44px 10px 14px;box-shadow:0 2px 10px rgba(0,0,0,.3)';
+    b.innerHTML = '⚠ <b>Your browser (or an extension) is translating this page.</b> That rewrites the portal on every screen and can freeze it. ' +
+      'Please turn translation off for <b>nis.cohasset.pe</b>: click the translate icon in the address bar and choose “Never translate this site”, or disable the translation extension. ' +
+      '<button type="button" aria-label="Close" style="position:absolute;right:8px;top:6px;background:none;border:0;color:#fff;font-size:22px;cursor:pointer">×</button>';
+    b.querySelector('button').onclick = function () { b.remove(); };
+    (document.body || document.documentElement).appendChild(b);
+  }
+  function mira() { var c = traducida(); if (c) avisa(c); }
+  var n = 0, t = setInterval(function () { mira(); if (++n > 20 || avisado) { clearInterval(t); if (!avisado) setInterval(mira, 15000); } }, 3000);
+  try {
+    new MutationObserver(function () { mira(); }).observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+  } catch (_) {}
+})();
+
 /* ---- envio al webhook, con acuse de recibo -------------------------------
    El Apps Script responde {ok:true} o {ok:false,error} y su Web App ya manda
    las cabeceras CORS. Pero el portal lo llamaba con mode:'no-cors', que deja
