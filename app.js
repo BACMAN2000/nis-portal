@@ -3048,7 +3048,7 @@ async function unitExamPanel(){
 async function _uexResultados(studs){
   const pref='unitexam-'+uexCtl.grade+'-u'+uexCtl.units+'-';
   const [{data:ints},{data:wrs}]=await Promise.all([
-    sb.from('activity_attempts').select('id,student_id,activity,score,total,duration_sec,submitted_at')
+    sb.from('activity_attempts').select('id,student_id,activity,score,total,duration_sec,submitted_at,detail')
       .like('activity',pref+'%').order('submitted_at',{ascending:false}).limit(3000),
     sb.from('unit_submissions').select('id,student_id,grade,unit,milestone,kind,payload,score,feedback,reviewed_at,released_at')
       .eq('grade',uexCtl.grade).like('milestone','exam-%').limit(3000)
@@ -3064,6 +3064,16 @@ async function _uexResultados(studs){
   });
   /* La misma escala que ve el alumno al terminar (unit-exam.html). */
   const banda=pct=>pct>=90?['AD','#dcfce7']:pct>=70?['A','#e0f2fe']:pct>=55?['B','#fef9c3']:['C','#fee2e2'];
+  /* Un papel por columna, como en Cambridge: Reading and Use of English
+     (partes 1-5, 33 preguntas), Listening (parte 6, 6 preguntas) y Writing
+     (sobre 20, la pone el profesor). El desglose viene en detail.papers, que
+     unit-exam.html guarda con el intento desde el 12-sep-2026; lo anterior
+     solo tiene el total. */
+  const papel=(a,k)=>{ const o=a.detail&&a.detail.papers&&a.detail.papers[k];
+    if(!o) return '<span class="muted" title="Taken before the breakdown was recorded (12 Sep 2026): only the total is available">—</span>';
+    const q=o.of?Math.round(100*o.ok/o.of):0, b=banda(q);
+    return `<b>${o.ok}/${o.of}</b> · ${q}% <span class="badge" style="background:${b[1]}">${b[0]}</span>`; };
+  let sinDesglose=0;
   const filas=(ints||[]).map(a=>{
     const m=/-(practice|official)-(a2|b1|b2|c1)$/.exec(a.activity)||[];
     return {a, kind:m[1]||'', lvl:m[2]||'', p:quien[a.student_id]||{}, w:writing[a.student_id+'|'+m[1]+'|'+m[2]]};
@@ -3082,13 +3092,13 @@ async function _uexResultados(studs){
       <td>${esc(f.p.full_name||'(student)')} <span class="muted">${f.p.grade_id?'G'+f.p.grade_id+' '+(f.p.section||''):''}</span>
         <div style="margin-top:2px">${nivelBadge(f.p.cefr_level, f.lvl)}</div></td>
       <td style="white-space:nowrap">${f.kind==='official'?'🎓 official':'📝 practice'} · <b>${f.lvl.toUpperCase()}</b></td>
-      <td style="text-align:center;white-space:nowrap"><b>${f.a.score}/${f.a.total}</b> · ${pct}%
-        <span class="badge" style="background:${b[1]}">${b[0]}</span></td>
-      <td class="muted" style="white-space:nowrap">${fecha(f.a.submitted_at)} · ${Math.round((f.a.duration_sec||0)/60)} min</td>
+      <td style="text-align:center;white-space:nowrap">${papel(f.a,'rue')}</td>
+      <td style="text-align:center;white-space:nowrap">${papel(f.a,'listening')}</td>
       <td style="min-width:260px">${w ? `<details>
-          <summary style="cursor:pointer">✍️ ${wp.words||0} words ${w.reviewed_at
-            ? '<span class="badge" id="uexw-'+w.id+'" style="background:#dcfce7">marked'+(w.score!=null?' · '+w.score+'/20':'')+(w.released_at?' · sent':'')+'</span>'
-            : '<span class="badge" id="uexw-'+w.id+'" style="background:#fee2e2">not marked</span>'}</summary>
+          <summary style="cursor:pointer">${w.reviewed_at&&w.score!=null
+            ? '<span class="badge" id="uexw-'+w.id+'" style="background:'+UNIT_FONDO[unitNivelDeNota(w.score)]+'">'+w.score+'/20 · '+unitNivelDeNota(w.score)+(w.released_at?' · sent':' · marked')+'</span>'
+            : w.reviewed_at ? '<span class="badge" id="uexw-'+w.id+'" style="background:#dcfce7">marked'+(w.released_at?' · sent':'')+'</span>'
+            : '<span class="badge" id="uexw-'+w.id+'" style="background:#fee2e2">not marked</span>'} · ✍️ ${wp.words||0} words</summary>
           <div style="white-space:pre-wrap;font-size:.86rem;line-height:1.55;max-height:260px;overflow:auto;padding:8px 10px;margin-top:6px;border:1px solid var(--line);border-radius:8px;background:#fcfdff">${esc(wp.text||'')}</div>
           ${traceHTML(wp)}
           ${nivelEsperadoBox('writing', f.lvl)}
@@ -3098,15 +3108,21 @@ async function _uexResultados(studs){
             <input type="text" placeholder="comment for the student" value="${esc(w.feedback||'')}" style="flex:1 1 200px"
               onchange="unitCalificar('${w.id}',null,this.value)">
           </div></details>` : '<span class="muted">no writing</span>'}</td>
+      <td style="text-align:center;white-space:nowrap"><b>${f.a.score}/${f.a.total}</b> · ${pct}%
+        <span class="badge" style="background:${b[1]}">${b[0]}</span></td>
+      <td class="muted" style="white-space:nowrap">${fecha(f.a.submitted_at)} · ${Math.round((f.a.duration_sec||0)/60)} min</td>
     </tr>`;
   };
+  filas.forEach(f=>{ if(!(f.a.detail&&f.a.detail.papers)) sinDesglose++; });
   return `<div class="card" style="margin-top:14px">
     <h2 style="font-size:1.05rem;margin-top:0">📊 Results · ${filas.length} attempt${filas.length===1?'':'s'}</h2>
-    <p class="muted" style="font-size:.82rem">The six parts are marked automatically. You mark the Writing here, with the text in front of you.
-      Scale: <b>AD</b> ≥ 90 % · <b>A</b> ≥ 70 % · <b>B</b> ≥ 55 % · <b>C</b> below.</p>
+    <p class="muted" style="font-size:.82rem">One mark per paper: <b>Reading and Use of English</b> (parts 1-5, 33 questions) and <b>Listening</b> (part 6, 6 questions)
+      are marked automatically; you mark the <b>Writing</b> here (out of 20), with the text in front of you.
+      Scale: <b>AD</b> ≥ 90 % · <b>A</b> ≥ 70 % · <b>B</b> ≥ 55 % · <b>C</b> below (Writing: AD 18-20 · A 14-17 · B 11-13 · C 0-10).${sinDesglose
+      ? ` <b>${sinDesglose}</b> attempt${sinDesglose===1?'':'s'} taken before 12 Sep 2026 only ${sinDesglose===1?'has':'have'} the total (—).`:''}</p>
     <div style="margin:0 0 10px">${unitBotonPublica(Object.values(writing),'Writing marks','unitExamPanel','the students')}</div>
     ${filas.length?`<div style="overflow-x:auto"><table class="tbl">
-      <thead><tr><th>Student</th><th>Exam</th><th style="text-align:center">Grade</th><th>Date</th><th>Writing</th></tr></thead>
+      <thead><tr><th>Student</th><th>Exam</th><th style="text-align:center">📖 Reading &amp; Use of English</th><th style="text-align:center">🎧 Listening</th><th>✍️ Writing</th><th style="text-align:center">Total (39 q.)</th><th>Date</th></tr></thead>
       <tbody>${filas.map(fila).join('')}</tbody></table></div>`:'<p class="muted">No one has taken it yet.</p>'}
     ${sinRendir.length?`<p class="muted" style="font-size:.82rem;margin-top:10px"><b>Have not taken the official exam (${sinRendir.length}):</b>
       ${sinRendir.map(p=>esc(p.full_name||'')+(p.section?' ('+esc(String(p.section))+')':'')).join(', ')}</p>`:''}
@@ -5219,7 +5235,7 @@ function studentGrade(key){
       ${key==='g9' ? (nodeVisible('english.classes.g9.cambridge') ? _hubCard('🎓','Cambridge','B2 First (FCE) practice by skill: Listening, Use of English, Reading and Writing.',"window._nav('classes_g9_cambridge')") : _lockedCard('🎓','Cambridge','Cambridge B2 First practice.')) : ''}
       ${key==='g5' ? _hubCard('🦅','Cambridge Flyers','The A2 Flyers picture tasks, sorted by the unit you are working on: label the people, tick the right picture, match people to pictures and write the picture story.',"window._nav('classes_g5_flyers')") : ''}
       ${readerBooksFor(key).length ? (nodeVisible(base+'.reader') ? _hubCard('📚','Readers','Graded readers with activities for every chapter: '+readerBooksFor(key).map(id=>READER_CARDS[id][4]).join(', ')+'.',"window._nav('classes_"+key+"_readers')") : _lockedCard('📚','Readers','Graded readers with activities.')) : ''}
-      ${key==='g9' ? (nodeVisible('english.classes.g9.unitexams') ? _skillCard('📋','Unit Exams','The unit exam and its practice, at your level: multiple choice, true/false, word formation, transformations, word order, listening and writing. Your teacher opens each one when the class is ready.',_withBack('unit-exam.html?v=7c7cbfb6',route)) : _lockedCard('📋','Unit Exams','The unit exam and its practice.')) : ''}
+      ${key==='g9' ? (nodeVisible('english.classes.g9.unitexams') ? _skillCard('📋','Unit Exams','The unit exam and its practice, at your level: multiple choice, true/false, word formation, transformations, word order, listening and writing. Your teacher opens each one when the class is ready.',_withBack('unit-exam.html?v=c865dc3c',route)) : _lockedCard('📋','Unit Exams','The unit exam and its practice.')) : ''}
     </div>`;
 }
 /* Cambridge (9.º): tarjeta madre con las destrezas del examen B2 First:
@@ -6595,6 +6611,7 @@ const UNIT_LVL  = ['AD','A','B','C'];
 const UNIT_VIG  = { AD:19, A:16, B:12, C:8 };
 const UNIT_SIG  = { AD:'outstanding achievement', A:'expected achievement', B:'in progress', C:'beginning' };
 const UNIT_TRAMO= { AD:'18-20', A:'14-17', B:'11-13', C:'0-10' };
+const UNIT_FONDO= { AD:'#dcfce7', A:'#e0f2fe', B:'#fef9c3', C:'#fee2e2' };
 /* Cómo se escribió el texto — writing-trace.js en las páginas del alumno
    cuenta pulsaciones, minutos con la caja activa y pegados bloqueados, y lo
    deja en payload.trace (un rastro por producto; por campo en las fichas).
@@ -7013,7 +7030,8 @@ window.unitCalificar = async function(id, nota, comentario){
   /* El badge de la fila cambia en el sitio: sin repintar la tabla, que
      cerraria el texto que el profesor tiene delante. */
   const b=document.getElementById('uexw-'+id);
-  if(b){ b.style.background='#dcfce7'; if(cambio.score!=null) b.textContent='marked · '+cambio.score+'/20'; else if(b.textContent.indexOf('marked')!==0) b.textContent='marked'; }
+  if(b){ if(cambio.score!=null){ const nv=unitNivelDeNota(cambio.score); b.style.background=UNIT_FONDO[nv]; b.textContent=cambio.score+'/20 · '+nv+' · marked'; }
+         else if(b.textContent==='not marked'){ b.style.background='#dcfce7'; b.textContent='marked'; } }
   if(window.NISUI&&NISUI.aviso) NISUI.aviso(cambio.score!=null?'Grade saved · '+cambio.score+'/20':'Comment saved','bien',2500);
 };
 

@@ -467,7 +467,7 @@ async function misResultados(kind){
   try{
     const pref='unitexam-'+GRADE+'-u'+UNITS+'-'+kind+'-';
     const [{data:ints},{data:wrs}]=await Promise.all([
-      sb.from('activity_attempts').select('activity,score,total,submitted_at').eq('student_id',me.uid)
+      sb.from('activity_attempts').select('activity,score,total,submitted_at,detail').eq('student_id',me.uid)
         .like('activity',pref+'%').order('submitted_at',{ascending:false}).limit(20),
       sb.from('unit_submissions').select('milestone,payload,score,feedback,reviewed_at,released_at').eq('student_id',me.uid)
         .eq('grade',GRADE).like('milestone','exam-'+kind+'-%')
@@ -476,9 +476,8 @@ async function misResultados(kind){
     const wr={};
     (wrs||[]).forEach(r=>{ const u=(r.payload&&r.payload.units)||''; if(u&&String(u)!==String(UNITS)) return;
       wr[r.milestone.replace('exam-'+kind+'-','')]=r; });
-    /* La misma escala del colegio que la pantalla final: AD · A · B · C. */
-    const banda=p=>p>=90?'AD — Outstanding':p>=70?'A — Expected':p>=55?'B — In progress':'C — Starting out';
-    const nivelW=s=>s>=18?'AD — Outstanding':s>=14?'A — Expected':s>=11?'B — In progress':'C — Starting out';
+    /* La misma escala del colegio que la pantalla final, sin el emoji. */
+    const banda=p=>bandaDe(p)[0].split(' ').slice(1).join(' ');
     host.innerHTML=`<h2 style="font-size:1.05rem;margin:18px 0 8px">📊 Your results</h2>`+ints.map(a=>{
       const l=a.activity.split('-').pop()||'', pct=a.total?Math.round(100*a.score/a.total):0, w=wr[l];
       /* La nota del Writing se ve cuando el profesor la publica al salon
@@ -487,8 +486,13 @@ async function misResultados(kind){
         ? `<div style="margin-top:6px"><b>Writing:</b> ${w.score!=null?`<b>${w.score}/20</b> · ${nivelW(w.score)}`:'no mark'}
            ${w.feedback?`<div style="margin-top:4px;white-space:pre-wrap">${esc(w.feedback)}</div>`:''}</div>`
         : '<div style="margin-top:6px"><b>Writing:</b> sent — your mark will appear here when your teacher publishes the class results.</div>';
+      /* Un papel por línea, cada uno con sus preguntas y su nota. Los intentos
+         anteriores al desglose solo tienen el total. */
+      const pp=(a.detail&&a.detail.papers)||{};
+      const papeles=PAPERS.filter(([k])=>k!=='writing'&&pp[k]).map(([k,lab])=>{ const o=pp[k], q=o.of?Math.round(100*o.ok/o.of):0;
+        return `<div style="margin-top:4px"><b>${lab}:</b> <b>${o.ok}/${o.of}</b> · ${q}% · ${banda(q)}</div>`; }).join('');
       return `<div class="note" style="text-align:left;margin-bottom:8px"><b>${LVL[l]?LVL[l][1]:l.toUpperCase()}</b>
-        · ${new Date(a.submitted_at).toLocaleDateString()} · six marked parts: <b>${a.score}/${a.total}</b> · ${pct}% · ${banda(pct)}${writing}</div>`;
+        · ${new Date(a.submitted_at).toLocaleDateString()} · six marked parts: <b>${a.score}/${a.total}</b> · ${pct}% · ${banda(pct)}${papeles}${writing}</div>`;
     }).join('');
   }catch(e){}
 }
@@ -592,6 +596,18 @@ function construye(data){
 function numera(partes){
   let n=0; partes.forEach(p=>p.items.forEach(it=>{ it._n=++n; })); return n;
 }
+/* Los tres papeles del examen, como en Cambridge: Reading and Use of English
+   (partes 1-5: multiple choice, true/false, word formation, transformations y
+   word order), Listening (parte 6) y Writing (la corrige el profesor sobre
+   20). La nota de cada papel sale de sus propias preguntas, y el desglose se
+   guarda con el intento (activity_attempts.detail) para que el profesor lo
+   vea por alumno. */
+const PAPER=t=>t==='listening'?'listening':t==='writing'?'writing':'rue';
+const PAPERS=[['rue','📖 Reading and Use of English'],['listening','🎧 Listening'],['writing','✍️ Writing']];
+/* Escala del colegio (MINEDU), de mayor a menor: AD · A · B · C. */
+const bandaDe=pct=>pct>=90?['🏅 AD — Outstanding','#059669']:pct>=70?['✅ A — Expected','#0d9488']
+                  :pct>=55?['📗 B — In progress','#b45309']:['📖 C — Starting out','#dc2626'];
+const nivelW=s=>s>=18?'AD — Outstanding':s>=14?'A — Expected':s>=11?'B — In progress':'C — Starting out';
 
 window.startExam=async(kind,lvl,fromHash)=>{
   if(!fromHash) _setHash(UNITS+'/'+kind+'/'+lvl);
@@ -914,12 +930,14 @@ window.submit=async(forzado)=>{
         ${c.bien?'':`<tr><th>Correct</th><td><b>${esc(c.buena)}</b></td></tr>`}</table>
         <div class="explain">${c.bien?'✅':'❌'} ${it.ex||''}</div></div>`);
     });
-    porParte.push([p.n,p.title,bienes,p.items.length]);
+    porParte.push([p.n,p.title,bienes,p.items.length,p.type]);
   });
   const pct=Math.round(score/EX.total*100);
-  /* Escala del colegio (MINEDU), de mayor a menor: AD · A · B · C. */
-  const band=pct>=90?['🏅 AD — Outstanding','#059669']:pct>=70?['✅ A — Expected','#0d9488']
-           :pct>=55?['📗 B — In progress','#b45309']:['📖 C — Starting out','#dc2626'];
+  const band=bandaDe(pct);
+  /* Cada papel suma las preguntas de sus partes. */
+  const papers={};
+  porParte.forEach(x=>{ const o=papers[PAPER(x[4])]||(papers[PAPER(x[4])]={ok:0,of:0}); o.ok+=x[2]; o.of+=x[3]; });
+  const detail={parts:porParte.map(x=>({n:x[0],type:x[4],title:x[1],ok:x[2],of:x[3]})), papers};
   clearInterval(EX.poll);
   const dur=Math.max(1,Math.round((Date.now()-EX.t0)/1000));
   let wrEstado='';
@@ -933,7 +951,7 @@ window.submit=async(forzado)=>{
       await sb.from('activity_attempts').insert({student_id:me.uid,
         activity:'unitexam-'+GRADE+'-u'+UNITS+'-'+EX.kind+'-'+EX.lvl,
         title:'Unit exam '+GRADE.toUpperCase()+' U'+UNITS+' — '+KINDS[EX.kind][1]+' · '+EX.lvl.toUpperCase(),
-        level:EX.lvl.toUpperCase(),score,total:EX.total,hints_used:0,lives_left:3,duration_sec:dur});
+        level:EX.lvl.toUpperCase(),score,total:EX.total,hints_used:0,lives_left:3,duration_sec:dur,detail});
       /* El writing no se puntúa aquí: va a la cola de correcciones del profesor
          con la unidad y el criterio, como cualquier otra producción escrita. */
       const txt=(EX.wr.text||'').trim();
@@ -964,7 +982,13 @@ window.submit=async(forzado)=>{
       <div class="band" style="color:${band[1]}">${band[0]}</div>
       <p class="muted">${pct}% in the six marked parts · ${KINDS[EX.kind][1]} · ${LVL[EX.lvl][1]}</p>
       ${wrEstado?`<div class="note" style="text-align:left;margin-top:12px">${wrEstado}</div>`:''}
-      <table class="res"><tr><th>Part</th><th>Score</th></tr>
+      <table class="res"><tr><th>Paper</th><th>Score</th><th>Grade</th></tr>
+        ${PAPERS.map(([k,lab])=>{ const o=papers[k];
+          if(!o) return `<tr><td><b>${lab}</b></td><td>— /20</td><td>marked by your teacher</td></tr>`;
+          const pp=o.of?Math.round(100*o.ok/o.of):0, b=bandaDe(pp);
+          return `<tr><td><b>${lab}</b></td><td><b>${o.ok}/${o.of}</b> · ${pp}%</td><td style="color:${b[1]};font-weight:700">${b[0]}</td></tr>`; }).join('')}
+      </table>
+      <table class="res" style="margin-top:8px"><tr><th>Part</th><th>Score</th></tr>
         ${porParte.map(x=>`<tr><td>${x[0]} · ${esc(x[1])}</td><td><b>${x[2]}/${x[3]}</b></td></tr>`).join('')}
         <tr><td><b>Writing</b></td><td>marked by your teacher</td></tr></table>
       <div style="margin-top:14px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
