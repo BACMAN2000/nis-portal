@@ -83,10 +83,41 @@ window.NIS_CONFIG = {
       });
     });
   }
+  /* ---- ninguna peticion espera para siempre --------------------------------
+     supabase-js usa fetch sin tiempo limite. En los iPad del colegio una
+     peticion sale y a veces no vuelve nunca (12-sep-2026: PANEL_STALLED de un
+     alumno en «alumno:acceso» con la sesion bien y sin cerrojos): la app se
+     queda en «Loading…» sin remedio. Aqui: 25 s de tope para lo normal, 180 s
+     para subir archivos; lo idempotente (GET/HEAD) se reintenta una vez; lo
+     demas falla con un error que la app ya sabe enseñar. */
+  var fetchBase = (typeof window !== 'undefined' && window.fetch) ? window.fetch.bind(window) : null;
+  function fetchConTope(entrada, init) {
+    if (!fetchBase || typeof AbortController === 'undefined') return fetchBase ? fetchBase(entrada, init) : Promise.reject(new Error('no fetch'));
+    init = init || {};
+    var metodo = String(init.method || (entrada && entrada.method) || 'GET').toUpperCase();
+    var url = String((entrada && entrada.url) || entrada || '');
+    var subida = /\/storage\/v1\/object\//.test(url) && (metodo === 'POST' || metodo === 'PUT');
+    var tope = subida ? 180000 : 25000;
+    var reintentable = (metodo === 'GET' || metodo === 'HEAD') && !init.signal;
+    function intento(n) {
+      var ac = new AbortController();
+      var t = setTimeout(function () { ac.abort(); }, tope);
+      var o = Object.assign({}, init, { signal: init.signal || ac.signal });
+      if (init.signal) init.signal.addEventListener('abort', function () { ac.abort(); });
+      return fetchBase(entrada, o).then(function (r) { clearTimeout(t); return r; }, function (e) {
+        clearTimeout(t);
+        if (reintentable && n === 0) return intento(1);
+        throw e;
+      });
+    }
+    return intento(0);
+  }
   function conCerrojo(opciones) {
     var o = opciones ? Object.assign({}, opciones) : {};
     o.auth = Object.assign({}, o.auth || {});
     if (!o.auth.lock) o.auth.lock = nisLock;
+    o.global = Object.assign({}, o.global || {});
+    if (!o.global.fetch) o.global.fetch = fetchConTope;
     return o;
   }
   function compartir(lib) {

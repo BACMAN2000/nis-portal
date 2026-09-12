@@ -42,5 +42,16 @@
   el.addEventListener('click', close);
 
   var dur = parseFloat(getComputedStyle(el).getPropertyValue('--dur')) || 3.45;
-  setTimeout(close, dur * 1000 + 60);
+  var t0 = Date.now(), tope = dur * 1000 + 60;
+  setTimeout(close, tope);
+  /* El temporizador no es de fiar: en una pestaña abierta en segundo plano o
+     restaurada por el navegador puede no dispararse y la capa se queda tapando
+     el portal ya cargado («no cargó», 12-sep-2026). Se cierra también al
+     volver a la pestaña, al primer toque o tecla, y un vigilante mira la hora
+     real cada medio segundo. */
+  function siToca(){ if (Date.now() - t0 >= tope) close(); }
+  document.addEventListener('visibilitychange', function(){ if (!document.hidden) siToca(); });
+  window.addEventListener('focus', siToca);
+  ['pointerdown', 'keydown', 'touchstart'].forEach(function (ev) { document.addEventListener(ev, close, { once: true, capture: true }); });
+  var vig = setInterval(function(){ if (done) { clearInterval(vig); return; } siToca(); }, 500);
 })();
