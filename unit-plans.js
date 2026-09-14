@@ -3776,121 +3776,8 @@ window.UNIT_PLANS = {
 
 /* ---------------------------------------------------------------- U5 */
 {
-  cover:{icon:'⚡', from:'#6b3a12', to:'#c9772f', image:'assets/unit-covers/g9-u5-technology.png'},
-  n:5,
-  title:'The Double-Edged Sword: Technology, Society and the Environment',
-  weeks:5,
-  bigq:'What are the pros and cons of technology at both personal and social levels, and what environmental damage is caused by AI?',
-  situation:'Technology sits at the centre of today’s biggest opportunities and problems — from misinformation to the environmental cost of artificial intelligence. You act as a critical researcher and advocate: you analyse articles, debates and reports, compare arguments, and produce your own written and spoken contribution.',
-  audience:'Not only your teacher. You are writing and speaking as an informed citizen taking a position in a real debate — the same one governments, companies and scientists are having about AI, energy and e-waste.',
-  criteria:[
-    {n:1, text:'Speaking & listening — present and defend a viewpoint.',
-     levels:{
-       C:'I give an opinion but I struggle to explain why, and I read from my notes.',
-       B:'I present my viewpoint with some examples. I answer questions, though not always spontaneously.',
-       A:'I organise my ideas logically, use topic vocabulary, give examples and respond to others respectfully and spontaneously.',
-       AD:'I defend my position persuasively, take counterarguments on live, and judge how reliable or biased what others claim is.'}},
-    {n:2, text:'Reading — analyse how a text argues.',
-     levels:{
-       C:'I understand what a text is about, but not the position the writer takes.',
-       B:'I identify the main thesis and some of the details that support it.',
-       A:'I identify thesis, evidence, tone and bias, and I pull out evidence I can use in my own work.',
-       AD:'I compare how different texts present the same issue and explain why they differ.'}},
-    {n:3, text:'Writing — produce a structured analytical report.',
-     levels:{
-       C:'I write about the topic, but with no clear thesis and no structure.',
-       B:'I have a thesis and some arguments, but the evidence or the connectors are thin.',
-       A:'Clear thesis, logical organisation, arguments backed by evidence, at least one counterargument, formal style and advanced connectors.',
-       AD:'My argument is nuanced: I anticipate objections, and my vocabulary and grammar are precise throughout.'}}
-  ],
-  sequence:[
-    {n:1,title:'Introduction to pros and cons of technology',desc:'Identify and categorise the pros and cons of technology at three levels: personal, social and environmental.',give:'A short spoken and written reflection using the unit vocabulary.'},
-    {n:2,title:'Gathering evidence and structuring arguments',desc:'Structure an argument, tell a strong point from a weak one, and present it out loud with clarity.',give:'Three arguments with the evidence that supports each one.'},
-    {n:3,title:'Writing analytical paragraphs',desc:'Build short analytical paragraphs using evidence from the readings on the environmental impact of AI.',give:'Two analytical paragraphs — the core of your report.'},
-    {n:4,title:'From paragraphs to reports and debates',desc:'Expand to a report of two or three paragraphs, and take part in a structured debate using evidence.',give:'The first full draft of your report.'},
-    {n:5,title:'Finalising and presenting reports',desc:'Revise and finalise the report, present your findings orally and reflect on your learning.',give:'The final report and the presentation.'}
-  ],
-  words:['artificial intelligence','algorithm','data','efficiency','productivity','inequality','ethics','sustainability','environment','energy consumption','carbon footprint','e-waste','progress','responsibility','consequences'],
-  deliverables:[
-    {kind:'report', type:'text', icon:'&#128221;', title:'Analytical report',
-     desc:'Pros and cons of technology including its environmental cost. Thesis, arguments backed by evidence, and at least one counterargument.',
-     spec:'300–350 words · formal register', range:[300,350],
-     checklist:[
-       {k:'thesis', t:'My first paragraph states my thesis clearly', re:'.{200,}'},
-       {k:'evidence', t:'Every argument is supported with evidence or an example', re:'(for example|for instance|according to|research|study|data show)'},
-       {k:'counter', t:'I include at least one counterargument', re:'(however|although|critics|opponents|on the other hand|some argue)'},
-       {k:'linkers', t:'I use advanced connectors (nevertheless, moreover, in contrast)', re:'(nevertheless|moreover|in contrast|furthermore|on the other hand)'},
-       {k:'env', t:'I mention the environmental cost of AI (energy, carbon footprint or e-waste)', re:'(carbon|e-waste|energy consumption|emissions|environmental)'}
-     ]},
-    {kind:'presentation', type:'file', icon:'&#127908;', title:'Oral presentation',
-     desc:'Present your findings on AI and technology’s impact, defend your position and answer questions from the floor.',
-     spec:'Speak from notes, not from a script'}
-  ]
-},
-
-/* ---------------------------------------------------------------- U6 */
-{
-  cover:{icon:'🚀', from:'#1e2b6b', to:'#5566c4', image:'assets/unit-covers/g9-u6-future.png'},
-  n:6,
-  title:'Future Visions',
-  weeks:5,
-  bigq:'What kind of future do we want to create, and what can we learn from the present to build it?',
-  situation:'You hear warnings about the future all the time — pollution, artificial intelligence, overpopulation — but you rarely get to imagine your own vision of what the future could look like. In this final unit you analyse different ideas about the future, evaluate arguments, and present your own report on possible futures for humanity, society or the planet.',
-  audience:'The Future Forum: the class exchanges visions and reflections, and you have to make yours stand up to the others.',
-  criteria:[
-    {n:1, text:'Expresses clear ideas with logical organisation, in persuasive and formal language.'},
-    {n:2, text:'Identifies central themes and arguments, notes key evidence and the author’s purpose, and compares viewpoints accurately.'},
-    {n:3, text:'Structures the text with introduction, analysis and conclusion, using connectors and evidence correctly.'},
-    {n:4, text:'Demonstrates insight and balanced reasoning, and uses visual aids or devices effectively.'}
-  ],
-  sequence:[
-    {n:1,title:'Revisiting technology’s impact',desc:'Listening and summarising main ideas; reading short reports and noting the arguments.',give:'A chart of personal, social and environmental impacts.'},
-    {n:2,title:'Evaluating perspectives',desc:'Identifying claims, evidence and bias in texts, and discussing responsible use.',give:'Annotated reading and a group discussion summary.'},
-    {n:3,title:'Structuring analytical writing',desc:'Transitions and ellipses; writing topic sentences and thesis statements.',give:'The outline of your analytical report.'},
-    {n:4,title:'Writing and revising reports',desc:'Drafting and peer-reviewing the analytical report.',give:'The final analytical report.'},
-    {n:5,title:'Speaking for awareness',desc:'Presenting a short talk that summarises your findings and your reflections.',give:'The oral presentation and your self-evaluation.'}
-  ],
-  words:['future','progress','innovation','sustainability','technology','perspective','vision','argument','evidence','solution','consequence','reflection'],
-  deliverables:[
-    {kind:'report', type:'text', icon:'&#128221;', title:'Analytical report',
-     desc:'Your vision of a possible future for humanity, society or the planet — argued with evidence, in introduction, analysis and conclusion.',
-     spec:'400–450 words', range:[400,450],
-     checklist:[
-       {k:'thesis', t:'I state what future I am arguing for', re:'.{300,}'},
-       {k:'compare', t:'I compare more than one viewpoint', re:'(whereas|by contrast|others argue|some believe|on the other hand)'},
-       {k:'evidence', t:'I note key evidence and where it comes from', re:'(according to|research|study|evidence|data)'},
-       {k:'connect', t:'I use connectors to hold the argument together', re:'(therefore|consequently|moreover|nevertheless|furthermore|as a result)'},
-       {k:'concl', t:'I close with what we should learn from the present', re:'(in conclusion|to sum up|ultimately|overall)'}
-     ]},
-    {kind:'presentation', type:'file', icon:'&#127908;', title:'Future Forum talk',
-     desc:'Three minutes summarising your findings and your reflection, with visual aids if they help.',
-     spec:'3 minutes'},
-    {kind:'reflection', type:'text', icon:'&#128173;', title:'Reflection paragraph',
-     desc:'What changed in how you see the future after this unit.',
-     spec:'Around 100 words', range:[80,140]}
-  ]
-}
-,
-
-/* ============================================================ PILOTO 2027
-   Unidades 5 y 6 PILOTO de 9.o. No sustituyen a las unidades 5 y 6
-   planificadas, que siguen intactas arriba tal como estan en Toddle: son
-   unidades APARTE, con el mismo contenido curricular y otra forma de
-   trabajarlo. Van cerradas al alumno; las conducen profesor y admin.
-
-   Que las hace un proyecto y no una unidad con actividades:
-     · hay un CLIENTE fuera del aula que recibe el producto y decide algo,
-     · el producto existe fuera del colegio y no es un examen,
-     · cada semana entrega una PIEZA del producto, no un tema visto,
-     · dos areas comparten el producto y la nota (nivel 2),
-     · la rubrica esta a la vista desde la semana 1,
-     · lo que se practica de Cambridge es lo que el producto exige.
-   El numero interno (105/106) evita chocar con la unidad planificada; lo
-   que se muestra es `label`. -------------------------------------------- */
-{
   cover:{icon:'🔌', from:'#123f4f', to:'#3f9bb0'},
-  n:105,
-  label:'5 · pilot', pilot:true,
+  n:5,
   title:'Does Our School Run on Data?',
   weeks:5,
   bigq:'What does artificial intelligence really cost our school — and what should we do about it?',
@@ -4304,6 +4191,68 @@ window.UNIT_PLANS = {
      spec:'6 minutes plus questions'}
   ]
 },
+/* ---------------------------------------------------------------- U6 */
+{
+  cover:{icon:'🚀', from:'#1e2b6b', to:'#5566c4', image:'assets/unit-covers/g9-u6-future.png'},
+  n:6,
+  title:'Future Visions',
+  weeks:5,
+  bigq:'What kind of future do we want to create, and what can we learn from the present to build it?',
+  situation:'You hear warnings about the future all the time — pollution, artificial intelligence, overpopulation — but you rarely get to imagine your own vision of what the future could look like. In this final unit you analyse different ideas about the future, evaluate arguments, and present your own report on possible futures for humanity, society or the planet.',
+  audience:'The Future Forum: the class exchanges visions and reflections, and you have to make yours stand up to the others.',
+  criteria:[
+    {n:1, text:'Expresses clear ideas with logical organisation, in persuasive and formal language.'},
+    {n:2, text:'Identifies central themes and arguments, notes key evidence and the author’s purpose, and compares viewpoints accurately.'},
+    {n:3, text:'Structures the text with introduction, analysis and conclusion, using connectors and evidence correctly.'},
+    {n:4, text:'Demonstrates insight and balanced reasoning, and uses visual aids or devices effectively.'}
+  ],
+  sequence:[
+    {n:1,title:'Revisiting technology’s impact',desc:'Listening and summarising main ideas; reading short reports and noting the arguments.',give:'A chart of personal, social and environmental impacts.'},
+    {n:2,title:'Evaluating perspectives',desc:'Identifying claims, evidence and bias in texts, and discussing responsible use.',give:'Annotated reading and a group discussion summary.'},
+    {n:3,title:'Structuring analytical writing',desc:'Transitions and ellipses; writing topic sentences and thesis statements.',give:'The outline of your analytical report.'},
+    {n:4,title:'Writing and revising reports',desc:'Drafting and peer-reviewing the analytical report.',give:'The final analytical report.'},
+    {n:5,title:'Speaking for awareness',desc:'Presenting a short talk that summarises your findings and your reflections.',give:'The oral presentation and your self-evaluation.'}
+  ],
+  words:['future','progress','innovation','sustainability','technology','perspective','vision','argument','evidence','solution','consequence','reflection'],
+  deliverables:[
+    {kind:'report', type:'text', icon:'&#128221;', title:'Analytical report',
+     desc:'Your vision of a possible future for humanity, society or the planet — argued with evidence, in introduction, analysis and conclusion.',
+     spec:'400–450 words', range:[400,450],
+     checklist:[
+       {k:'thesis', t:'I state what future I am arguing for', re:'.{300,}'},
+       {k:'compare', t:'I compare more than one viewpoint', re:'(whereas|by contrast|others argue|some believe|on the other hand)'},
+       {k:'evidence', t:'I note key evidence and where it comes from', re:'(according to|research|study|evidence|data)'},
+       {k:'connect', t:'I use connectors to hold the argument together', re:'(therefore|consequently|moreover|nevertheless|furthermore|as a result)'},
+       {k:'concl', t:'I close with what we should learn from the present', re:'(in conclusion|to sum up|ultimately|overall)'}
+     ]},
+    {kind:'presentation', type:'file', icon:'&#127908;', title:'Future Forum talk',
+     desc:'Three minutes summarising your findings and your reflection, with visual aids if they help.',
+     spec:'3 minutes'},
+    {kind:'reflection', type:'text', icon:'&#128173;', title:'Reflection paragraph',
+     desc:'What changed in how you see the future after this unit.',
+     spec:'Around 100 words', range:[80,140]}
+  ]
+}
+,
+
+/* ============================================================ PILOTO 2027
+   La U5 de 9.o SALIO DEL PILOTO el 14-sep-2026: "Does Our School Run on
+   Data?" es la unidad real del trimestre y nace abierta como cualquier otra
+   (node_access english.classes.g9.units.u5 en true). La planificada que habia
+   en Toddle, "The Double-Edged Sword", queda en `superseded` mas abajo y se
+   sustituye tambien en Toddle. La U6 sigue en piloto: es una unidad APARTE
+   de la planificada, con el mismo contenido curricular y otra forma de
+   trabajarlo, cerrada al alumno; la conducen profesor y admin.
+
+   Que las hace un proyecto y no una unidad con actividades:
+     · hay un CLIENTE fuera del aula que recibe el producto y decide algo,
+     · el producto existe fuera del colegio y no es un examen,
+     · cada semana entrega una PIEZA del producto, no un tema visto,
+     · dos areas comparten el producto y la nota (nivel 2),
+     · la rubrica esta a la vista desde la semana 1,
+     · lo que se practica de Cambridge es lo que el producto exige.
+   El numero interno (106) evita chocar con la unidad planificada; lo que
+   se muestra es `label`. ------------------------------------------------ */
 {
   cover:{icon:'🔭', from:'#2a1f66', to:'#6e63c6'},
   n:106,
@@ -4790,6 +4739,67 @@ window.UNIT_PLANS = {
     {kind:'presentation', type:'file', icon:'&#127912;', title:'Your stand at NIS 2040',
      desc:'The visual piece and a recording of your defence at the exhibition.',
      spec:'The piece, plus 3 minutes of defence'}
+  ]
+},
+    ],
+
+    /* La U5 que el planner de Toddle tenia para 9.o antes de que la unidad
+       del piloto pasara a ser la real (14-sep-2026). NO se ofrece (el portal
+       solo lee `units`) y NO se borra: es lo que decia el planner hasta ese
+       dia, por si hay que volver a mirarlo. En Toddle se sustituye por la
+       nueva U5. */
+    superseded:[
+/* ---------------------------------------------------------------- U5 */
+{
+  cover:{icon:'⚡', from:'#6b3a12', to:'#c9772f', image:'assets/unit-covers/g9-u5-technology.png'},
+  n:5,
+  title:'The Double-Edged Sword: Technology, Society and the Environment',
+  weeks:5,
+  bigq:'What are the pros and cons of technology at both personal and social levels, and what environmental damage is caused by AI?',
+  situation:'Technology sits at the centre of today’s biggest opportunities and problems — from misinformation to the environmental cost of artificial intelligence. You act as a critical researcher and advocate: you analyse articles, debates and reports, compare arguments, and produce your own written and spoken contribution.',
+  audience:'Not only your teacher. You are writing and speaking as an informed citizen taking a position in a real debate — the same one governments, companies and scientists are having about AI, energy and e-waste.',
+  criteria:[
+    {n:1, text:'Speaking & listening — present and defend a viewpoint.',
+     levels:{
+       C:'I give an opinion but I struggle to explain why, and I read from my notes.',
+       B:'I present my viewpoint with some examples. I answer questions, though not always spontaneously.',
+       A:'I organise my ideas logically, use topic vocabulary, give examples and respond to others respectfully and spontaneously.',
+       AD:'I defend my position persuasively, take counterarguments on live, and judge how reliable or biased what others claim is.'}},
+    {n:2, text:'Reading — analyse how a text argues.',
+     levels:{
+       C:'I understand what a text is about, but not the position the writer takes.',
+       B:'I identify the main thesis and some of the details that support it.',
+       A:'I identify thesis, evidence, tone and bias, and I pull out evidence I can use in my own work.',
+       AD:'I compare how different texts present the same issue and explain why they differ.'}},
+    {n:3, text:'Writing — produce a structured analytical report.',
+     levels:{
+       C:'I write about the topic, but with no clear thesis and no structure.',
+       B:'I have a thesis and some arguments, but the evidence or the connectors are thin.',
+       A:'Clear thesis, logical organisation, arguments backed by evidence, at least one counterargument, formal style and advanced connectors.',
+       AD:'My argument is nuanced: I anticipate objections, and my vocabulary and grammar are precise throughout.'}}
+  ],
+  sequence:[
+    {n:1,title:'Introduction to pros and cons of technology',desc:'Identify and categorise the pros and cons of technology at three levels: personal, social and environmental.',give:'A short spoken and written reflection using the unit vocabulary.'},
+    {n:2,title:'Gathering evidence and structuring arguments',desc:'Structure an argument, tell a strong point from a weak one, and present it out loud with clarity.',give:'Three arguments with the evidence that supports each one.'},
+    {n:3,title:'Writing analytical paragraphs',desc:'Build short analytical paragraphs using evidence from the readings on the environmental impact of AI.',give:'Two analytical paragraphs — the core of your report.'},
+    {n:4,title:'From paragraphs to reports and debates',desc:'Expand to a report of two or three paragraphs, and take part in a structured debate using evidence.',give:'The first full draft of your report.'},
+    {n:5,title:'Finalising and presenting reports',desc:'Revise and finalise the report, present your findings orally and reflect on your learning.',give:'The final report and the presentation.'}
+  ],
+  words:['artificial intelligence','algorithm','data','efficiency','productivity','inequality','ethics','sustainability','environment','energy consumption','carbon footprint','e-waste','progress','responsibility','consequences'],
+  deliverables:[
+    {kind:'report', type:'text', icon:'&#128221;', title:'Analytical report',
+     desc:'Pros and cons of technology including its environmental cost. Thesis, arguments backed by evidence, and at least one counterargument.',
+     spec:'300–350 words · formal register', range:[300,350],
+     checklist:[
+       {k:'thesis', t:'My first paragraph states my thesis clearly', re:'.{200,}'},
+       {k:'evidence', t:'Every argument is supported with evidence or an example', re:'(for example|for instance|according to|research|study|data show)'},
+       {k:'counter', t:'I include at least one counterargument', re:'(however|although|critics|opponents|on the other hand|some argue)'},
+       {k:'linkers', t:'I use advanced connectors (nevertheless, moreover, in contrast)', re:'(nevertheless|moreover|in contrast|furthermore|on the other hand)'},
+       {k:'env', t:'I mention the environmental cost of AI (energy, carbon footprint or e-waste)', re:'(carbon|e-waste|energy consumption|emissions|environmental)'}
+     ]},
+    {kind:'presentation', type:'file', icon:'&#127908;', title:'Oral presentation',
+     desc:'Present your findings on AI and technology’s impact, defend your position and answer questions from the floor.',
+     spec:'Speak from notes, not from a script'}
   ]
 },
     ]

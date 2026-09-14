@@ -923,41 +923,35 @@ window.WRITING_RUBRICS = (function(){
       }
     },
 
-    /* ---- U5 · The Double-Edged Sword ---------------------------------- */
+    /* ---- U5 · Does Our School Run on Data? (la U5 real desde el 14-sep-2026;
+       la rubrica de The Double-Edged Sword queda en el historial) ----------- */
     5: {
       report: {
-        task:'Analytical report', spec:'300–350 words · formal register', range:[300,350],
-        nota:'El criterio 3 del planner es el de escritura y va tal cual, con sus niveles.',
-        fuera:'Criterion 1 (Speaking & listening) — the debate.',
+        task:'Proposal to the leadership team', spec:'300–350 words · proposal register', range:[300,350],
+        nota:'Los criterios 1 y 2 del planner van tal cual; el tercero es la forma y el registro del documento.',
+        fuera:'Criterion 3 (Defence) — defending it in front of whoever can say no.',
         criteria:[
-          { k:'w1', n:1, from:3, auto:null,
-            text:'Writing — produce a structured analytical report.',
+          { k:'w1', n:1, from:1, auto:null,
+            text:'Proposal — write something the leadership team can act on.',
             levels:{
-              AD:'My argument is nuanced: I anticipate objections, and my vocabulary and grammar are precise throughout.',
-              A:'Clear thesis, logical organisation, arguments backed by evidence, at least one counterargument, formal style and advanced connectors.',
-              B:'I have a thesis and some arguments, but the evidence or the connectors are thin.',
-              C:'I write about the topic, but with no clear thesis and no structure.'}},
-          { k:'w2', n:2, from:2, auto:'evidence',
-            text:'Evidence — pulled out of what you read, not invented.',
+              AD:'I anticipate the objection the leadership team will actually raise, and I answer it before they ask.',
+              A:'Clear recommendations in proposal register, ordered, each one justified with my evidence.',
+              B:'I make a recommendation, but the reader has to guess what to do first.',
+              C:'I describe the problem but I do not ask for anything specific.'}},
+          { k:'w2', n:2, from:2, auto:'data',
+            text:'Evidence — use your own data, not only what the internet says.',
             levels:{
-              AD:'I compare how two texts present the same issue and explain why they differ.',
-              A:'Every argument is supported with evidence or an example I can trace to a source.',
-              B:'I support some arguments and assert the rest.',
-              C:'I give opinions with nothing behind them.'}},
-          { k:'w3', n:3, from:3, auto:'structure',
-            text:'Structure and length — 300–350 words in formal register.',
+              AD:'I say what my data cannot prove, and where a better measurement would be needed.',
+              A:'My own measurements, the method explained, and the published research used to put them in context.',
+              B:'I have some data of my own but I do not say how I got it.',
+              C:'I quote articles; I have not measured anything myself.'}},
+          { k:'w3', n:3, from:1, auto:'structure',
+            text:'Register and length — 300–350 words written to be acted on, not marked.',
             levels:{
-              AD:'Each paragraph earns the next one; nothing could be cut without loss.',
-              A:'Thesis, arguments, counterargument and conclusion, inside 300–350 words.',
-              B:'The parts are there but the length is off or one is thin.',
-              C:'One block, or far from the length asked for.'}},
-          { k:'w4', n:4, from:3, auto:null,
-            text:'The environmental cost of AI — energy, carbon footprint or e-waste.',
-            levels:{
-              AD:'I weigh the environmental cost against the benefit instead of listing it.',
-              A:'I bring in the environmental cost with a concrete figure or example.',
-              B:'I mention that AI has an environmental cost.',
-              C:'The environmental cost is not there.'}}
+              AD:'It could be sent as it is, and it would get an answer.',
+              A:'Proposal register throughout, inside the word count, with the ask visible at a glance.',
+              B:'It reads as an essay in places, or the length is off.',
+              C:'It reads as homework.'}}
         ]
       }
     },
@@ -1023,38 +1017,6 @@ window.WRITING_RUBRICS = (function(){
               A:'Around 100 words, ordered and without padding.',
               B:'Roughly the right length, but it repeats itself.',
               C:'Too short to say anything, or padded to reach the count.'}}
-        ]
-      }
-    },
-
-    /* ---- U105 · Does Our School Run on Data? --------------------------- */
-    105: {
-      report: {
-        task:'Proposal to the leadership team', spec:'300–350 words · proposal register', range:[300,350],
-        nota:'Los criterios 1 y 2 del planner van tal cual; el tercero es la forma y el registro del documento.',
-        fuera:'Criterion 3 (Defence) — defending it in front of whoever can say no.',
-        criteria:[
-          { k:'w1', n:1, from:1, auto:null,
-            text:'Proposal — write something the leadership team can act on.',
-            levels:{
-              AD:'I anticipate the objection the leadership team will actually raise, and I answer it before they ask.',
-              A:'Clear recommendations in proposal register, ordered, each one justified with my evidence.',
-              B:'I make a recommendation, but the reader has to guess what to do first.',
-              C:'I describe the problem but I do not ask for anything specific.'}},
-          { k:'w2', n:2, from:2, auto:'data',
-            text:'Evidence — use your own data, not only what the internet says.',
-            levels:{
-              AD:'I say what my data cannot prove, and where a better measurement would be needed.',
-              A:'My own measurements, the method explained, and the published research used to put them in context.',
-              B:'I have some data of my own but I do not say how I got it.',
-              C:'I quote articles; I have not measured anything myself.'}},
-          { k:'w3', n:3, from:1, auto:'structure',
-            text:'Register and length — 300–350 words written to be acted on, not marked.',
-            levels:{
-              AD:'It could be sent as it is, and it would get an answer.',
-              A:'Proposal register throughout, inside the word count, with the ask visible at a glance.',
-              B:'It reads as an essay in places, or the length is off.',
-              C:'It reads as homework.'}}
         ]
       }
     },
