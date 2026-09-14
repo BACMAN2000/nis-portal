@@ -1705,23 +1705,25 @@ window.PROJECT_SEC11 = {
     titulo:L('The wellbeing observatory','El observatorio del bienestar'),
     descripcion:L('One working instrument — an app, a form, a sensor — that collects one single piece '+
       'of data about wellbeing in the school, with the philosophical criterion that justifies '+
-      'measuring that and not something else, the mathematics of how it grows, the short story of what '+
-      'that data becomes in the year 802,701, and the for-and-against essay on whether it should be '+
-      'collected at all.',
+      'measuring that and not something else, the mathematics of how it grows, the proposal to the '+
+      'leadership team on what the school should do with it, the short story of what that data '+
+      'becomes in the year 802,701, and the for-and-against essay on whether it should be collected '+
+      'at all.',
       'Un instrumento que funciona —una aplicación, un formulario, un sensor— que recoge un solo dato '+
       'sobre el bienestar en el colegio, con el criterio filosófico que justifica medir eso y no otra '+
-      'cosa, la matemática de cómo crece, el relato de en qué se convierte ese dato en el año 802.701 '+
-      'y el ensayo a favor y en contra de si debería recogerse siquiera.'),
+      'cosa, la matemática de cómo crece, la propuesta al equipo directivo sobre qué hacer con él, '+
+      'el relato de en qué se convierte ese dato en el año 802.701 y el ensayo a favor y en contra de '+
+      'si debería recogerse siquiera.'),
     integra:[
       ['fil','El criterio: por qué ese dato y no otro. Sen y Nussbaum dan la definición medible de estar bien.'],
       ['ict','El instrumento: la aplicación o el montaje que recoge el dato, con su algoritmo.'],
       ['mat','La forma del dato en el tiempo: dominio y rango, función cuadrática y progresión geométrica.'],
-      ['ing','El relato de 320-380 palabras y el ensayo a favor y en contra de 320-380 palabras.'],
+      ['ing','La propuesta al equipo directivo (300-350 palabras) y su defensa, el relato de 320-380 palabras y, en U6, el ensayo a favor y en contra de 320-380 palabras.'],
       ['com','La versión en castellano del criterio y la presentación del observatorio.']
     ],
     incluye:[L('The criterion','El criterio'), L('The instrument','El instrumento'),
              L('The data and its curve','El dato y su curva'),
-             L('The story and the essay','El relato y el ensayo')],
+             L('The proposal, the story and the essay','La propuesta, el relato y el ensayo')],
     modelo:{tipo:'experiment',
       partes:[L('what we measure','qué medimos'), L('why that','por qué eso'),
               L('how it grows','cómo crece'), L('who owns it','de quién es')],
@@ -1741,7 +1743,7 @@ window.PROJECT_SEC11 = {
       {fil:'Del plan: unidad «¿Qué significa ser feliz?» — la felicidad como estado de ánimo, deber moral o práctica de una vida.',
        mat:'Del plan: dominio y rango de una función real.',
        ict:'Del plan: identificación del proyecto y del dato que se va a recoger.',
-       ing:'Del Scope: géneros y elementos narrativos; The Time Machine, capítulos 1-6.',
+       ing:'Del Scope: géneros y elementos narrativos; The Time Machine, cap. 1. Y del portal —U5 «Does Our School Run on Data?»—: el brief del equipo directivo, la pregunta de la auditoría y el plan del equipo.',
        com:'La pregunta del observatorio, formulada en castellano para presentarla al colegio.'}),
     c(2, 5, L('The criterion','El criterio'), L('What people can be and do','Lo que se puede ser y hacer'),
       L('Capability list','Lista de capacidades'), 'sort',
@@ -1750,7 +1752,7 @@ window.PROJECT_SEC11 = {
       {fil:'Del plan: teoría de las capacidades (Sen y Nussbaum) — qué tiene que poder hacer alguien para que digamos que está bien.',
        ict:'Del plan: desarrollo de aplicaciones web con Mimo — primer prototipo del formulario.',
        mat:'Del plan: estudio de una función real.',
-       ing:'Del Scope: analizar técnicas narrativas, estructura y voz; colocaciones de plot, character y theme.',
+       ing:'Del Scope: analizar técnicas narrativas, estructura y voz; colocaciones de plot, character y theme. Y del portal: dos fuentes que discrepan sobre el coste de la IA, y el mapa del relato —el año 802.701 del dato—.',
        com:'La lista de capacidades, traducida y discutida.'}),
     c(3, 5, L('The criterion','El criterio'), L('The longest study','El estudio más largo'),
       L('What long data looks like','Qué forma tiene un dato largo'), 'chart',
@@ -1759,7 +1761,7 @@ window.PROJECT_SEC11 = {
       {fil:'Del plan: el estudio más largo sobre la felicidad (Harvard) — qué se puede saber solo mirando mucho tiempo.',
        mat:'Del plan: función cuadrática — cómo se ve una cosa que acelera.',
        ict:'Del plan: Arduino y su papel en robótica y automatización; simulación en Tinkercad.',
-       ing:'Del Scope: prosodia narrativa; entonación para el suspense y el clímax.',
+       ing:'Del Scope: los cuatro tiempos narrativos y los adverbios de secuencia; escucha de los cap. 3-4. Y del portal: la auditoría del edificio —protocolo, datos, gráfico— contada con esos tiempos.',
        com:'La ficha del estudio, resumida en castellano.'}),
     c(4, 5, L('The criterion','El criterio'), L('Stoics and believers','Estoicos y creyentes'),
       L('Two answers compared','Dos respuestas comparadas'), 'diagram',
@@ -1768,7 +1770,7 @@ window.PROJECT_SEC11 = {
       {fil:'Del plan: religión y felicidad; estoicismo.',
        mat:'Del plan: función valor absoluto y función raíz cuadrada.',
        ict:'Del plan: algoritmos iterativos y recursión — el algoritmo que procesa el dato.',
-       ing:'Del Scope: relato breve con tiempos narrativos, 320-380 palabras — primer borrador; adverbios de secuencia.',
+       ing:'Del Scope: relato breve con tiempos narrativos, 320-380 palabras — primer borrador; cohesión con expresiones de tiempo. Y del portal: la propuesta al equipo directivo, 300-350 palabras, en borrador.',
        com:'El contraste entre las dos tradiciones, por escrito.'}),
     c(5, 5, L('The criterion','El criterio'), L('The science of it','La ciencia del asunto'),
       L('Instrument collecting','Instrumento recogiendo'), 'log',
@@ -1777,7 +1779,7 @@ window.PROJECT_SEC11 = {
       {fil:'Del plan: eudaimonía moderna (Seligman y la psicología positiva); neurociencia y felicidad.',
        mat:'Del plan: sucesiones y progresión geométrica — cómo se compone el crecimiento.',
        ict:'Del plan: implementación de proyectos con recogida de datos — el instrumento, funcionando.',
-       ing:'Del Scope: cohesión narrativa y expresiones de tiempo; revisión de la consistencia verbal.',
+       ing:'Del Scope: versión final del relato y narración oral — primera evidencia calificada; autoevaluación del oficio. Y del portal: versión final de la propuesta y ensayo de la defensa.',
        com:'El guion de presentación del observatorio.'}),
     c(6, 5, L('The criterion','El criterio'), L('The observatory opens','El observatorio abre'),
       L('Instrument + story','Instrumento + relato'), 'stand',
@@ -1786,7 +1788,7 @@ window.PROJECT_SEC11 = {
       {ict:'Del plan: presentación del proyecto de software y de los datos recogidos.',
        fil:'Del plan: cierre de la unidad — qué respuesta damos ya a la pregunta de la felicidad.',
        mat:'Del plan: la curva del dato, interpretada y expuesta.',
-       ing:'Del Scope: narración oral de una historia real o imaginada; narración colaborativa en grupo.',
+       ing:'Del Scope: The Time Machine, cap. 5-6, y la pieza del grado en el Creative Arts Show. Y del portal: la defensa de la propuesta ante el equipo directivo, con el instrumento en la mesa.',
        com:'La presentación del observatorio al resto del grado.'}),
     c(7, 6, L('The ethics','La ética'), L('Should we be measuring this','Habría que estar midiendo esto'),
       L('The objection, written','La objeción, escrita'), 'question',
@@ -1832,15 +1834,16 @@ window.PROJECT_SEC11 = {
      descriptor:'El instrumento funciona, recoge el dato declarado y su algoritmo está explicado.'},
     {dimension:'Modelo matemático', areas:'MAT',
      descriptor:'Elige el tipo de función que corresponde al dato y sabe decir su dominio y su rango.'},
-    {dimension:'Relato y ensayo', areas:'ING',
-     descriptor:'El relato sostiene los tiempos narrativos; el ensayo presenta las dos posturas antes de tomar una.'},
+    {dimension:'Propuesta, relato y ensayo', areas:'ING',
+     descriptor:'La propuesta pide algo concreto con datos propios; el relato sostiene los tiempos narrativos; el ensayo presenta las dos posturas antes de tomar una.'},
     {dimension:'Ética del dato', areas:'todas',
      descriptor:'Dice por escrito quién ve el dato, para qué y hasta cuándo, antes de recogerlo.'}
   ],
   perfil:[8,9,10],
   revisar:['U6 no tiene contenido cargado en ninguna área: las semanas 7 a 11 se apoyan solo en el Scope de inglés.',
            'En U5 de 9.º hay tres áreas cargadas de nueve: Matemática, ICT y Philosophy. Comunicación entra como propuesta del portal.',
-           'El instrumento recoge datos de personas del colegio: hay que acordar con coordinación qué dato es admisible y con qué consentimiento, en la semana 1 y no en la 5.']
+           'El instrumento recoge datos de personas del colegio: hay que acordar con coordinación qué dato es admisible y con qué consentimiento, en la semana 1 y no en la 5.',
+    'La U5 de inglés es «Does Our School Run on Data?», la unidad que 9.º recibió el 14 de setiembre: conserva su nombre, su brief y sus productos —la propuesta al equipo directivo y su defensa—, y el número que audita es el primer dato del observatorio; el relato del Scope sigue ese mismo número.']
 },
 
 /* =================================================================== 10.o */

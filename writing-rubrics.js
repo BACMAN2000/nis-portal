@@ -953,6 +953,38 @@ window.WRITING_RUBRICS = (function(){
               B:'It reads as an essay in places, or the length is off.',
               C:'It reads as homework.'}}
         ]
+      },
+      /* El relato es la evidencia calificada que pide el Scope (U5: short
+         story con los cuatro tiempos narrativos, 320-380 palabras) y a la vez
+         el «relato de en que se convierte el dato» del proyecto de once
+         semanas. Nace entero del criterio 4 del planner, desdoblado en tres. */
+      story: {
+        task:'The year 802,701', spec:'320–380 words · narrative tenses', range:[320,380],
+        nota:'Criterio 4 del planner, desdoblado en tres: el numero que mueve la trama, los cuatro tiempos y la cohesion temporal, y la forma del relato.',
+        fuera:'Criteria 1–3 — the proposal (corrected under report) and the defence before the panel.',
+        criteria:[
+          { k:'w1', n:1, from:4, auto:'data',
+            text:'The number — the figure you measured drives the plot.',
+            levels:{
+              AD:'The reader works out what the number was from what it became — I never explain it.',
+              A:'The number I measured is in the story, grown, and what has happened to the world follows from it.',
+              B:'A future is imagined, but the number is decoration: the story would work without it.',
+              C:'I retell what happened during the audit; nothing is imagined.'}},
+          { k:'w2', n:2, from:4, auto:'sequence',
+            text:'Tenses and time — past simple, continuous, perfect and perfect continuous, with sequence adverbs.',
+            levels:{
+              AD:'The tenses carry every jump in time on their own: no dates are needed to rebuild the timeline.',
+              A:'Each of the four tenses goes where it belongs, and sequence adverbs move the reader along.',
+              B:'The story lives in one tense, or the tenses change without a reason.',
+              C:'The tenses wander and the order of events is not clear.'}},
+          { k:'w3', n:3, from:4, auto:'structure',
+            text:'Shape — an arc with a twist, in 320–380 words.',
+            levels:{
+              AD:'The first paragraph foreshadows what the last one confirms, and the twist lands on a second reading.',
+              A:'Opening, complication, climax and resolution, with a title, inside the word count.',
+              B:'The parts are there but one is thin, or the length is off.',
+              C:'One block of text with no arc.'}}
+        ]
       }
     },
 
