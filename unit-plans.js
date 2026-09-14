@@ -3776,7 +3776,7 @@ window.UNIT_PLANS = {
 
 /* ---------------------------------------------------------------- U5 */
 {
-  cover:{icon:'🔌', from:'#123f4f', to:'#3f9bb0'},
+  cover:{icon:'🔌', from:'#123f4f', to:'#3f9bb0', image:'assets/unit-covers/g9-u5-technology.png'},
   n:5,
   title:'Does Our School Run on Data?',
   weeks:11,
