@@ -778,8 +778,9 @@ grados:{
   hilo:'La primera mitad mide el colegio y sigue lo medido hasta el año 802.701 en un relato; la segunda '+
     'juzga si había que medirlo. Wells da el puente: un futuro partido en dos clases es a la vez una '+
     'técnica narrativa y un problema de justicia. La U5 conserva el nombre, el brief y los productos que '+
-    '9.º recibió el 14 de setiembre —la propuesta al equipo directivo y su defensa— y el relato del Scope '+
-    'entra como primera evidencia calificada: el número que se audita es el que el relato sigue.',
+    '9.º recibió el 14 de setiembre —la propuesta al equipo directivo y su defensa— y es la unidad de las '+
+    'once semanas enteras: el relato del Scope entra como primera evidencia calificada y el ensayo a favor '+
+    'y en contra como segunda; el número que se audita es el que el relato sigue y el que el ensayo discute.',
   escritura:[{de:'U5', que:'Proposal to the leadership team, 300-350 palabras, y short story «The year 802,701» con los tiempos narrativos, 320-380 palabras'},
              {de:'U6', que:'For-and-against essay, 320-380 palabras'}],
   semanas:[
@@ -825,7 +826,7 @@ grados:{
       'Defensa ante el equipo directivo, con el instrumento de ICT en la mesa; Creative Arts Show: la pieza del grado, lectura dramatizada.',
       L('Defence + Show + reader at half','Defensa + Show + reader a la mitad'),
       ['U5:Reading Plan']),
-    s(7,'U6',L('The global problem','El problema global'),
+    s(7,'U6',L('Should we be measuring this?','Habría que estar midiendo esto'),
       'Problemas globales y soluciones; ONG y organismos internacionales; vocabulario de debate formal. Fluidez y dicción para el debate académico.',
       'Ensayos argumentativos y artículos formales.','El asunto elegido, acotado por escrito.',
       'Plantear el asunto en treinta segundos.',L('The issue, framed','El asunto, acotado'),
@@ -836,7 +837,7 @@ grados:{
       'Escucha: posturas en debates formales; distinguir hecho de especulación.',
       L('Third conditional','Tercer condicional'),
       ['U6:Language Conventions (Writing)','U6:Listening Skills']),
-    s(9,'U6',L('Both sides','Las dos caras'),
+    s(9,'U6',L('Both sides, and the fallacy','Las dos caras, y la falacia'),
       'Autoedición de registro y estilo; portafolio como evidencia de progreso.','—',
       'For-and-against essay, 320-380 palabras: borrador con las dos posturas antes de la propia.',
       'Sostener la postura contraria a la propia.',L('Essay draft','Ensayo en borrador'),

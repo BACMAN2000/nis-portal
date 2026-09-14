@@ -1794,7 +1794,7 @@ window.PROJECT_SEC11 = {
       L('The objection, written','La objeción, escrita'), 'question',
       L('You built it. Now argue against it, seriously. Anything you cannot defend, you should not have built.',
         'Lo construiste. Ahora arguméntalo en contra, en serio. Lo que no sepas defender, no había que haberlo construido.'),
-      {ing:'Del Scope: problemas globales y soluciones; ONG y organismos internacionales; vocabulario de debate formal.',
+      {ing:'Del Scope: problemas globales y soluciones; ONG y organismos internacionales; vocabulario de debate formal. Y del portal: la respuesta del equipo directivo a la propuesta, y el asunto del ensayo acotado —«Should NIS be collecting this?»— con la primera objeción al propio instrumento.',
        ict:'Qué pasa con el dato recogido: dónde vive, quién lo ve, cuándo se borra.'},
       'A partir de aquí empieza U6 (noviembre), que NO tiene contenido cargado en ninguna área salvo Inglés. Estas cinco semanas se apoyan en el Scope y en la continuidad del proyecto.'),
     c(8, 6, L('The ethics','La ética'), L('If we had known','Si lo hubiéramos sabido'),
@@ -1815,14 +1815,14 @@ window.PROJECT_SEC11 = {
       L('For-and-against essay','Ensayo a favor y en contra'), 'report',
       L('Wells saw a future split in two. Your data is a small machine for seeing the same thing. Write it.',
         'Wells vio un futuro partido en dos. Tu dato es una máquina pequeña para ver lo mismo. Escríbelo.'),
-      {ing:'Del Scope: The Time Machine, del capítulo 7 al final, y ensayo comparativo de tres novelas; for-and-against essay de 320-380 palabras.',
+      {ing:'Del Scope: The Time Machine, del capítulo 7 al final, y ensayo comparativo de tres novelas; for-and-against essay de 320-380 palabras. Y del portal: el ensayo «Should NIS be collecting this?», segunda evidencia calificada, entregado en el portal con su rúbrica.',
        com:'La corrección del ensayo y su versión castellana.'},
       'U6 sigue sin contenido cargado fuera de Inglés.'),
     c(11, 6, L('The ethics','La ética'), L('The formal debate','El debate formal'),
       L('Debate + portfolio','Debate + portafolio'), 'speech',
       L('Point, evidence, explanation. Three sentences. If you cannot do it in three, you have not understood it yet.',
         'Idea, evidencia, explicación. Tres frases. Si no puedes en tres, todavía no lo has entendido.'),
-      {ing:'Del Scope: debate formal estructurado sobre un asunto global con el modelo Point–Evidence–Explanation; portafolio de fin de trimestre y autoevaluación semáforo.',
+      {ing:'Del Scope: debate formal estructurado sobre un asunto global con el modelo Point–Evidence–Explanation; portafolio de fin de trimestre y autoevaluación semáforo. Y del portal: la moción «This house would delete the data», tres oradores por bando, y el portafolio con la propuesta, el relato, el ensayo y las notas del debate.',
        ict:'La decisión final sobre el dato: se conserva, se anonimiza o se borra.',
        com:'La reflexión final del portafolio.'},
       'U6 sigue sin contenido cargado fuera de Inglés: el cierre se sostiene en el portafolio del Scope.')
@@ -1843,7 +1843,7 @@ window.PROJECT_SEC11 = {
   revisar:['U6 no tiene contenido cargado en ninguna área: las semanas 7 a 11 se apoyan solo en el Scope de inglés.',
            'En U5 de 9.º hay tres áreas cargadas de nueve: Matemática, ICT y Philosophy. Comunicación entra como propuesta del portal.',
            'El instrumento recoge datos de personas del colegio: hay que acordar con coordinación qué dato es admisible y con qué consentimiento, en la semana 1 y no en la 5.',
-    'La U5 de inglés es «Does Our School Run on Data?», la unidad que 9.º recibió el 14 de setiembre: conserva su nombre, su brief y sus productos —la propuesta al equipo directivo y su defensa—, y el número que audita es el primer dato del observatorio; el relato del Scope sigue ese mismo número.']
+    'La unidad de inglés es UNA y dura las once semanas: «Does Our School Run on Data?», la que 9.º recibió el 14 de setiembre. Conserva su nombre, su brief y sus productos —la propuesta al equipo directivo y su defensa— y suma los del Scope: el relato (semanas 1-6), el ensayo a favor y en contra y el debate formal (semanas 7-11). El número que audita es el primer dato del observatorio. Las U5 y U6 que había en Toddle («The Double-Edged Sword», «Future Visions») quedan sustituidas.']
 },
 
 /* =================================================================== 10.o */

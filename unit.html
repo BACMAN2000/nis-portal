@@ -58,6 +58,14 @@ header a.back:hover{background:rgba(255,255,255,.28)}
 .prod h3{margin:8px 0 4px;color:var(--blue-dd);font-size:1.02rem}
 .prod p{margin:0;font-size:.88rem;color:var(--grey)}
 .prod .spec{margin-top:10px;font-size:.78rem;font-weight:700;color:var(--blue-d);background:var(--bg);display:inline-block;padding:4px 10px;border-radius:999px}
+details.brief{margin-top:10px;font-size:.84rem;color:var(--grey);border-top:1px dashed var(--line,#d7dce5);padding-top:8px}
+details.brief summary{cursor:pointer;font-weight:700;color:var(--blue-dd);font-size:.86rem;list-style:none}
+details.brief summary::before{content:'▸ ';color:var(--blue)}
+details.brief[open] summary::before{content:'▾ '}
+details.brief ol{margin:8px 0 0 20px;padding:0}
+details.brief li{margin:4px 0;line-height:1.45}
+details.brief p{margin:6px 0 0}
+details.brief .graded{font-style:italic}
 .aud{font-size:.86rem;color:var(--grey)}
 table.rub{width:100%;border-collapse:collapse;font-size:.82rem}
 table.rub th,table.rub td{border:1px solid var(--line);padding:9px 10px;vertical-align:top;text-align:left}
@@ -234,8 +242,8 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px soli
 <script src="writing-trace.js?v=321f3e2c"></script>
 <script src="activities-data.js?v=38ce60ee"></script>
 <script src="class-files.js?v=1a59ee7e"></script>
-<script src="unit-plans.js?v=2dc54838"></script>
-<script src="writing-rubrics.js?v=3dedd59e"></script>
+<script src="unit-plans.js?v=eaa12026"></script>
+<script src="writing-rubrics.js?v=c484737f"></script>
 <script src="project-arcs.js?v=110db8f3"></script>
 <script src="nis-nav.js?v=c3230c7d"></script>
 <script>
@@ -389,6 +397,7 @@ function pinta(){
       <h3>${esc(d.title)}</h3>
       <p>${esc(d.desc)}</p>
       ${d.spec?`<div class="spec">${esc(d.spec)}</div>`:''}
+      ${briefDe(d,false)}
     </div>`).join('')}
   </div>
   <div class="card aud" style="margin-top:14px"><b>Who is this for?</b> ${esc(U.audience)}
@@ -873,10 +882,24 @@ function rubricaEscrita(d){
   </details>`;
 }
 
+
+/* Las instrucciones paso a paso de un producto (`brief` en unit-plans.js):
+   cuando se entrega, que lleva y con que se corrige. Solo las unidades que
+   lo declaran; las demas siguen con desc + spec. */
+function briefDe(d, abierto){
+  const b=d.brief; if(!b||!b.steps||!b.steps.length) return '';
+  return `<details class="brief"${abierto?' open':''}><summary>How to do it, step by step</summary>
+    ${b.when?`<p><b>When:</b> ${esc(b.when)}</p>`:''}
+    <ol>${b.steps.map(x=>`<li>${esc(x)}</li>`).join('')}</ol>
+    ${b.graded?`<p class="graded"><b>How it is graded:</b> ${esc(b.graded)}</p>`:''}
+  </details>`;
+}
+
 function bloqueTexto(d){
   return `<div class="card">
     <h3 style="color:var(--blue-dd);font-size:1rem">${d.icon} ${esc(d.title)}</h3>
     <p style="font-size:.86rem;color:var(--grey);margin:0 0 10px">${esc(d.desc)}</p>
+    ${briefDe(d,true)}
     ${rubricaEscrita(d)}
     ${window.WRITING_TRACE?WRITING_TRACE.aviso():''}
     <textarea id="t-${d.kind}" placeholder="Type your final version here…"></textarea>
@@ -894,6 +917,7 @@ function bloqueArchivo(d){
   return `<div class="card">
     <h3 style="color:var(--blue-dd);font-size:1rem">${d.icon} ${esc(d.title)}</h3>
     <p style="font-size:.86rem;color:var(--grey);margin:0 0 12px">${esc(d.desc)} Record it here, or upload the video, slides or audio you used — up to 50 MB.</p>
+    ${briefDe(d,true)}
     <div class="row" style="margin:0 0 12px">
       <button class="btn" id="rec-${d.kind}">&#9679; Record</button>
       <span class="meter" id="mtr-${d.kind}"><i></i></span>

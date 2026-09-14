@@ -985,6 +985,37 @@ window.WRITING_RUBRICS = (function(){
               B:'The parts are there but one is thin, or the length is off.',
               C:'One block of text with no arc.'}}
         ]
+      },
+      /* El for-and-against essay de la segunda mitad (semanas 7-11): la
+         evidencia calificada de U6 del Scope, escrita sobre el propio
+         instrumento del proyecto. Nace del criterio 5 del planner. */
+      essay: {
+        task:'Should NIS be collecting this?', spec:'320–380 words · for-and-against essay', range:[320,380],
+        nota:'Criterio 5 del planner, desdoblado en tres: las dos posturas con evidencia, la postura propia al final sin falacia, y la forma del ensayo.',
+        fuera:'Criteria 1–4 — the proposal, the defence and the story, corrected under their own rubrics.',
+        criteria:[
+          { k:'w1', n:1, from:5, auto:'evidence',
+            text:'Both sides — two reasons for and two against, each with evidence.',
+            levels:{
+              AD:'The strongest reason against is one I actually believe, and it is argued as well as my own side.',
+              A:'Two reasons for and two against, each supported by data, the leadership team’s answer or a source.',
+              B:'Both sides appear, but one is thin or one reason has no evidence.',
+              C:'One side only, or opinions without evidence.'}},
+          { k:'w2', n:2, from:5, auto:'linkers',
+            text:'Position and fairness — my view comes last, concedes the best point of the other side, and commits no fallacy.',
+            levels:{
+              AD:'I find the weakest point of my own side, say why I still hold it, and nothing in my text is a fallacy I would spot in somebody else’s.',
+              A:'My position appears only in the last paragraph, after a concession (admittedly, nevertheless), with a third conditional used well.',
+              B:'My position leaks into the middle paragraphs, or the concession is a formality.',
+              C:'I state my opinion first and defend it.'}},
+          { k:'w3', n:3, from:5, auto:'structure',
+            text:'Shape — a question as title, four paragraphs with a job each, in 320–380 words and formal register.',
+            levels:{
+              AD:'It could go into the school newsletter as it is.',
+              A:'Question title, introduction, for, against, position; inside the word count; formal throughout.',
+              B:'The parts are there but one is thin, the register slips, or the length is off.',
+              C:'One block of text.'}}
+        ]
       }
     },
 

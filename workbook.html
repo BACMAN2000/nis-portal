@@ -86,7 +86,7 @@ header a:hover,header button:hover{background:rgba(255,255,255,.3)}
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js?v=720edc7d"></script>
-<script src="unit-plans.js?v=2dc54838"></script>
+<script src="unit-plans.js?v=eaa12026"></script>
 <script src="nis-nav.js?v=c3230c7d"></script>
 <script>
 /* Cuaderno de trabajo de la unidad, para imprimir.
@@ -194,6 +194,22 @@ if(!U){
     <div class="nombre">Name: ______________________________   Class: __________   Started: __________</div>
   </div>`;
 
+  /* Si la unidad trae las instrucciones paso a paso de cada producto, van en
+     una hoja propia detras de la portada: es lo que el alumno tiene que
+     entregar, en su orden, con su fecha y su forma. */
+  const briefs = (U.deliverables||[]).filter(d=>d.brief&&d.brief.steps&&d.brief.steps.length);
+  const hojaBriefs = briefs.length ? `<div class="hoja">
+    <div class="cinta">What you hand in</div>
+    <h2>The products of the unit, step by step</h2>
+    ${briefs.map(d=>`<div style="margin:0 0 16px">
+      <h3 style="margin:0 0 2px">${d.icon} ${esc(d.title)}${d.spec?` <span style="font-weight:400;color:var(--grey);font-size:.9rem">· ${esc(d.spec)}</span>`:''}</h3>
+      <p style="margin:0 0 4px;font-size:.92rem">${esc(d.desc||'')}</p>
+      ${d.brief.when?`<p style="margin:0 0 4px;font-size:.9rem"><b>When:</b> ${esc(d.brief.when)}</p>`:''}
+      <ol style="margin:0 0 4px 20px;padding:0;font-size:.9rem">${d.brief.steps.map(x=>`<li style="margin:2px 0">${esc(x)}</li>`).join('')}</ol>
+      ${d.brief.graded?`<p style="margin:0;font-size:.86rem;color:var(--grey)"><i>${esc(d.brief.graded)}</i></p>`:''}
+    </div>`).join('')}
+  </div>` : '';
+
   const hojas = pasos.map((p, i) => `<div class="hoja">
       <div class="cinta">${esc(palabra)} ${p.n} · Task ${i+1} of ${pasos.length}</div>
       <h2>${esc(p.title)}</h2>
@@ -222,7 +238,7 @@ if(!U){
       <div class="bloque"><h3>What I changed after reading it again</h3>${renglones(6)}</div>
     </div>`;
 
-  document.getElementById('app').innerHTML = portada + hojas + cierre;
+  document.getElementById('app').innerHTML = portada + hojaBriefs + hojas + cierre;
 }
 })();
 </script>

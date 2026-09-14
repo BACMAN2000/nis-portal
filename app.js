@@ -5237,7 +5237,7 @@ function studentGrade(key){
       ${key==='g9' ? (nodeVisible('english.classes.g9.cambridge') ? _hubCard('🎓','Cambridge','B2 First (FCE) practice by skill: Listening, Use of English, Reading and Writing.',"window._nav('classes_g9_cambridge')") : _lockedCard('🎓','Cambridge','Cambridge B2 First practice.')) : ''}
       ${key==='g5' ? _hubCard('🦅','Cambridge Flyers','The A2 Flyers picture tasks, sorted by the unit you are working on: label the people, tick the right picture, match people to pictures and write the picture story.',"window._nav('classes_g5_flyers')") : ''}
       ${readerBooksFor(key).length ? (nodeVisible(base+'.reader') ? _hubCard('📚','Readers','Graded readers with activities for every chapter: '+readerBooksFor(key).map(id=>READER_CARDS[id][4]).join(', ')+'.',"window._nav('classes_"+key+"_readers')") : _lockedCard('📚','Readers','Graded readers with activities.')) : ''}
-      ${key==='g9' ? (nodeVisible('english.classes.g9.unitexams') ? _skillCard('📋','Unit Exams','The unit exam and its practice, at your level: multiple choice, true/false, word formation, transformations, word order, listening and writing. Your teacher opens each one when the class is ready.',_withBack('unit-exam.html?v=9ace9793',route)) : _lockedCard('📋','Unit Exams','The unit exam and its practice.')) : ''}
+      ${key==='g9' ? (nodeVisible('english.classes.g9.unitexams') ? _skillCard('📋','Unit Exams','The unit exam and its practice, at your level: multiple choice, true/false, word formation, transformations, word order, listening and writing. Your teacher opens each one when the class is ready.',_withBack('unit-exam.html?v=96000a6d',route)) : _lockedCard('📋','Unit Exams','The unit exam and its practice.')) : ''}
     </div>`;
 }
 /* Cambridge (9.º): tarjeta madre con las destrezas del examen B2 First:
@@ -8461,12 +8461,17 @@ function escTextos(payload, ficha){
 async function escCarga(){
   const sel = function(id){ const e = $(id); return e ? e.value : null; };
   if($('#eGrado')){ _esc.grade = sel('#eGrado'); _esc.unit = parseInt(sel('#eUnidad'), 10); }
+  /* Todo producto de texto que una unidad pueda declarar en unit-plans.js
+     (type:'text'): el relato y el ensayo de 9.º U5 se corrigen aqui igual
+     que la propuesta. Los de archivo (podcast, defensa) van por Productos. */
+  const ESC_KINDS_TEXTO = ['worksheet','report','reflection','story','essay','campaign'];
+  const plan = unitPlansFor(_esc.grade).find(function(u){ return String(u.n) === String(_esc.unit); }) || {};
 
   /* Todo lo entregado de esa unidad, venga de la ficha de la sesion o de una
      actividad suelta: para el docente son la misma cosa, texto que corregir. */
   const { data, error } = await sb.from('unit_submissions')
     .select('id,student_id,grade,unit,milestone,kind,payload,score,criteria,feedback,reviewed_at,updated_at')
-    .eq('grade', _esc.grade).eq('unit', _esc.unit).in('kind', ['worksheet','report','reflection'])
+    .eq('grade', _esc.grade).eq('unit', _esc.unit).in('kind', ESC_KINDS_TEXTO)
     .order('updated_at', { ascending:false }).limit(600);
   if(error){
     $('#eLista').innerHTML = `<p class="err">Could not read it: ${esc(error.message)}</p>`;
@@ -8486,10 +8491,13 @@ async function escCarga(){
     const ficha = m ? (_esc.fichas.find(function(f){
       return f.week === +m[1] && f.session === +m[2] && f.level === (r.payload && r.payload.level);
     }) || null) : null;
-    /* El producto final de la unidad (kind 'report') guarda su texto en
+    /* Los productos escritos de la unidad (report, story, essay, campaign,
+       reflection) guardan su texto en payload.text, no en answers: son una
+       redaccion sola, no una ficha. Para quien corrige es lo mismo.
+       El producto final de la unidad (kind 'report') guarda su texto en
        payload.text, no en answers: es una redaccion sola, no una ficha. Para
        quien corrige es lo mismo — texto que leer y puntuar. */
-    const textos = (r.kind === 'report' || r.kind === 'reflection')
+    const textos = (r.kind !== 'worksheet')
       ? ((r.payload && r.payload.text || '').trim() ? [{ campo:'texto', texto:r.payload.text }] : [])
       : escTextos(r.payload, ficha);
     textos.forEach(function(t){
@@ -8500,6 +8508,7 @@ async function escCarga(){
         nivel:(quien[r.student_id] || {}).cefr_level,
         donde:(r.kind === 'reflection') ? 'Unit reflection'
               : (r.kind === 'report') ? 'Final product of the unit'
+              : (r.kind !== 'worksheet') ? ((plan.deliverables||[]).filter(function(d){ return d.kind === r.kind; }).map(function(d){ return d.title; })[0] || r.kind)
               : ((r.payload && r.payload.title) || r.milestone),
         /* Mismo contador que el analisis: si no, el numero cambia al abrir. */
         palabras:(String(t.texto).match(/[A-Za-zÀ-ÿ']+/g) || []).length

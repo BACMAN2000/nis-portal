@@ -623,8 +623,9 @@ grados:{
     'story; the second judges whether it should have been measured at all. Wells provides the bridge: '+
     'a future split into two classes is at once a narrative technique and a problem of justice. U5 keeps '+
     'the name, the brief and the products Grade 9 received on 14 September — the proposal to the '+
-    'leadership team and its defence — and the Scope’s story comes in as the first graded piece: the '+
-    'number that gets audited is the one the story follows.',
+    'leadership team and its defence — and it is the unit of the whole eleven weeks: the Scope’s story '+
+    'comes in as the first graded piece and the for-and-against essay as the second; the number that gets '+
+    'audited is the one the story follows and the essay argues about.',
   escritura:[{de:'U5', que:'Proposal to the leadership team, 300-350 words, and short story «The year 802,701» with narrative tenses, 320-380 words'},
              {de:'U6', que:'For-and-against essay, 320-380 words'}],
   semanas:[
@@ -664,7 +665,7 @@ grados:{
       'Reflection: what the school did with the proposal.',
       'Defence before the leadership team, with the ICT instrument on the table; Creative Arts Show: the grade’s piece, a dramatised reading.',
       'Defence + Show + reader at half'),
-    s(7,'The global problem',
+    s(7,'Should we be measuring this?',
       'Global problems and solutions; NGOs and international organisations; formal debate vocabulary. Fluency and delivery for academic debate.',
       'Argumentative essays and formal articles.','The chosen issue, framed in writing.',
       'Framing the issue in thirty seconds.','The issue, framed'),
@@ -672,7 +673,7 @@ grados:{
       'Third Conditional for the hypothetical past; wish and if only; contrast and concession with whereas and nevertheless.',
       '—','Both sides of the issue, in conditional sentences.',
       'Listening: positions in formal debates; distinguishing fact from speculation.','Third conditional'),
-    s(9,'Both sides',
+    s(9,'Both sides, and the fallacy',
       'Self-editing for register and style; portfolio as evidence of progress.','—',
       'For-and-against essay, 320-380 words: draft presenting both positions before your own.',
       'Arguing the position opposite to your own.','Essay draft'),

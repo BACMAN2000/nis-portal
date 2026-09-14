@@ -3779,9 +3779,9 @@ window.UNIT_PLANS = {
   cover:{icon:'🔌', from:'#123f4f', to:'#3f9bb0'},
   n:5,
   title:'Does Our School Run on Data?',
-  weeks:6,
+  weeks:11,
   bigq:'What does artificial intelligence really cost our school — and what should we do about it?',
-  situation:'The school runs on screens: tablets in class, an AI assistant here, a cloud folder there. All of it costs energy, water and money somewhere, and nobody at NIS has ever measured it. The leadership team has to write a policy on how AI and screens are used next year, and they do not have the data. You are going to get it for them. You audit what really happens in this building, you compare it with what the research says, and you hand them a proposal they can act on — or reject, if you have not argued it well enough. This is the first half of the eleven-week project The instrument that measures whether we are better off: the number you audit is the first piece of data the observatory collects, and the story you write — with H.G. Wells as your model — is what that number becomes if nobody acts.',
+  situation:'The school runs on screens: tablets in class, an AI assistant here, a cloud folder there. All of it costs energy, water and money somewhere, and nobody at NIS has ever measured it. The leadership team has to write a policy on how AI and screens are used next year, and they do not have the data. You are going to get it for them. You audit what really happens in this building, you compare it with what the research says, and you hand them a proposal they can act on — or reject, if you have not argued it well enough. This is the English half of the eleven-week Term 3 project The instrument that measures whether we are better off, and it runs the whole term: in weeks 1–6 you audit the number, recommend what to do about it and follow it into the year 802,701 in a story written the way H.G. Wells wrote his; in weeks 7–11 you turn on what you built and argue, seriously, whether the school should be collecting that number at all — in an essay, and then in a formal debate.',
   audience:'The leadership team of NIS. They will read your proposal to write next year’s policy, and they will ask you questions you have not rehearsed.',
   client:'NIS leadership team · they write the policy',
   reader:{title:'The Time Machine', series:'Vicens Vives · Reading & Training Step Three B1.2', term:3, inPortal:false,
@@ -3804,7 +3804,7 @@ window.UNIT_PLANS = {
        B:'I have some data of my own but I do not say how I got it.',
        A:'My own measurements, the method explained, and the published research used to put them in context.',
        AD:'I say what my data cannot prove, and where a better measurement would be needed.'}},
-    {n:3, text:'Defence — hold your position in front of people who can say no.',
+    {n:3, text:'Defence and debate — hold your position in front of people who can say no.',
      levels:{
        C:'I read my proposal out loud.',
        B:'I present it and answer easy questions.',
@@ -3815,7 +3815,13 @@ window.UNIT_PLANS = {
        C:'I retell what happened during the audit; nothing is imagined, and the tenses wander.',
        B:'A future is imagined, but the story lives in one tense and the number is decoration.',
        A:'The number drives the plot; past simple, continuous, perfect and perfect continuous each go where they belong, with sequence adverbs.',
-       AD:'The reader works out what the number was from what it became — I never explain it, and the tenses carry every jump in time on their own.'}}
+       AD:'The reader works out what the number was from what it became — I never explain it, and the tenses carry every jump in time on their own.'}},
+    {n:5, text:'Essay — present both sides, with evidence, before your own.',
+     levels:{
+       C:'I give my opinion and one reason.',
+       B:'Both sides appear, but one is a straw man, or my position comes first.',
+       A:'Two reasons for and two against, each with evidence, and my position only at the end, in formal register.',
+       AD:'I find the weakest point of my own side, say why I still hold it, and nothing in my text is a fallacy I would spot in somebody else’s.'}}
   ],
   sequence:[
     {n:1,title:'The brief, and the machine',desc:'The leadership team explains what policy they have to write and what they are missing. Teams form and each one takes one question of the audit. And the book of the term opens: Wells, the man who measured his own century and followed it into the future.',
@@ -4255,13 +4261,379 @@ window.UNIT_PLANS = {
                help:'If they did not ask it, it is because it is uncomfortable.'},
          'C1':{task:'Perform, and write the first objection to your own instrument: what it should never be allowed to measure, and why.',
                help:'Anything you cannot defend, you should not have built.'}}}
+     ]},
+    {n:7,title:'Should we be measuring this?',desc:'The leadership team has answered and the instrument is collecting. Now the other half of the project: argue against what you built, seriously. The vocabulary of the global problem and of formal debate; the issue, framed.',
+     give:'Your team’s issue, framed as one question, and your first objection to your own instrument — both in writing.',
+     across:{
+       philosophy:'What any measure leaves out: the first objection to the criterion you chose in week 2.',
+       ict:'What happens to the data collected: where it lives, who can see it, when it is deleted.',
+       comunicacion:'The objection, written in Spanish for the school.'},
+     sessions:[
+      {s:1,title:'What happened to the number',
+       objective:'Move from your audit to the global problem it belongs to.',
+       view:[
+         'The instrument has been running for two weeks. The first numbers on screen: do they agree with what you counted by hand in week 3?',
+         'From NIS to the world: data centres, energy, water, e-waste. Who else is asking this question — NGOs, international organisations, governments? Three names on the board.',
+         'Vocabulary of global problems and solutions: emissions, regulation, consumption, sustainability, to phase out, to offset, to enforce.',
+         'One sentence per team: the global version of your local number.'],
+       levels:{
+         'A2':{task:'Complete the table: our number at NIS / the same problem in the world / one organisation working on it.',
+               help:'Table with an example row and the word bank of the week.'},
+         'B1':{task:'Write five sentences connecting your NIS number to the global problem, using five words of the week.',
+               help:'Frame: "At NIS we measured… In the world, …"'},
+         'B2':{task:'Write a paragraph placing your number in the global problem, with one organisation named and what it proposes.',
+               help:'Say what scale changes between the school and the world, and what does not.'},
+         'C1':{task:'Write the paragraph and say why the global solution may not apply to a school of this size.',
+               help:'Scale is an argument, not an excuse.'}}},
+      {s:2,title:'The vocabulary of a serious argument',
+       objective:'Learn the words and the sound of a formal debate.',
+       view:[
+         'The words: motion, proposition, opposition, rebuttal, point of information, chair. Match them to what they do.',
+         'Listen to thirty seconds of a real debate. Where does the speaker stress, where do they pause? Formal register has its own rhythm.',
+         'Shadow-read a short speech: same stress, same pauses. Then say it without the paper.',
+         'Frame your issue in thirty seconds, standing up, to a partner who times you.'],
+       levels:{
+         'A2':{task:'Match the six debate words to their definitions and read the model speech aloud with the stresses marked.',
+               help:'Definitions and the speech with the stresses underlined.'},
+         'B1':{task:'Write your thirty-second framing of the issue using four debate words, and deliver it.',
+               help:'Frame: "The question we are asking is… Some say… Others say…"'},
+         'B2':{task:'Write and deliver the framing so that a listener knows the two sides and what is at stake, without hearing your opinion.',
+               help:'Neutral framing is harder than taking a side.'},
+         'C1':{task:'Deliver it twice: once neutral, once loaded — and say what changed in the words and in the voice.',
+               help:'That difference is what bias sounds like.'}}},
+      {s:3,title:'Where does the data live?',
+       objective:'Find out what happens to the number after it is collected, and read how others argue about that.',
+       view:[
+         'With ICT: where the instrument stores its data, who has the password, whether it can be deleted, and who decided all that.',
+         'Two formal articles that disagree about collecting data on people: read for how each one frames the issue in its first paragraph.',
+         'Argumentative structure on the board: claim, reason, evidence, concession. Find the four in each article.',
+         'Note the sentence in each article that you would most like to argue against.'],
+       levels:{
+         'A2':{task:'Answer the four questions about your instrument’s data and copy the claim of each article.',
+               help:'The four questions; the articles shortened with the claims highlighted.'},
+         'B1':{task:'Write where your data lives and who sees it, and summarise the claim and one reason of each article.',
+               help:'Frame: "The data is stored… Only… can see it."'},
+         'B2':{task:'Write it, and explain how each article frames the issue in its opening — what it makes you feel before it argues.',
+               help:'Framing happens before the first argument.'},
+         'C1':{task:'Write it, and rewrite the opening of one article so that it frames the issue the other way.',
+               help:'Same facts, opposite frame.'}}},
+      {s:4,title:'The issue, framed',
+       objective:'Put in writing the question your team will argue, and your first objection to your own instrument.',
+       view:[
+         'One question per team, in the form "Should NIS be collecting…?". Neutral: the class checks it does not give away the answer.',
+         'Then the hard part: the first objection to your own instrument. Not somebody else’s — yours. What could go wrong with this number in the wrong hands?',
+         'Read both to the team on the right. They tell you whether the objection is serious or cosmetic.',
+         'Hand in: the issue framed and the objection, in your notebook and in the portal.'],
+       levels:{
+         'A2':{task:'Complete the issue with the frame given and choose your objection from three options, saying why.',
+               help:'Frame: "Should NIS be collecting ___?" and three objections written out.'},
+         'B1':{task:'Write your team’s issue and one objection of your own to your instrument, with a reason.',
+               help:'Frame: "The problem is that… because…"'},
+         'B2':{task:'Write the issue and an objection that the leadership team did not raise, and say why they missed it.',
+               help:'If they did not raise it, it is because it is uncomfortable.'},
+         'C1':{task:'Write the issue, the objection, and what you would have to change in the instrument to answer it.',
+               help:'An objection you can fix is a design change. One you cannot is an argument.'}}}
+     ]},
+    {n:8,title:'If we had known',desc:'The third conditional is the grammar of regret, and this week you use it about your own project. Contrast and concession; both sides of the issue in conditional sentences; listening to how positions are held in a formal debate.',
+     give:'Both sides of your issue in ten conditional and concessive sentences, and your listening notes.',
+     across:{
+       philosophy:'The objection to capabilities: what falls outside any measure, and whether that is a reason not to measure.',
+       ict:'The instrument keeps running: the log of who has accessed the data since week 5.'},
+     sessions:[
+      {s:1,title:'The grammar of regret',
+       objective:'Use the third conditional about a past that did not happen.',
+       view:[
+         'Five sentences about the project on the board: "If we had measured the whole school, we would have found…". Which are true?',
+         'Form: if + past perfect, would have + past participle. The mistake everyone makes: "would of".',
+         'Wish and if only: "I wish we had asked for permission earlier." Regret in one line.',
+         'Each team: three things it would have done differently in the audit, in the third conditional.'],
+       levels:{
+         'A2':{task:'Complete eight third-conditional sentences about the project with the verbs given.',
+               help:'The verbs in brackets and the form on the board.'},
+         'B1':{task:'Write five third-conditional sentences and two with wish / if only about your own audit.',
+               help:'Frame: "If we had…, we would have…"'},
+         'B2':{task:'Write them so that each one names a real decision your team took and its real alternative.',
+               help:'No imaginary regrets: what did you actually decide?'},
+         'C1':{task:'Write them, and one sentence in which the regret is the other side’s — what the leadership team would have done if they had had your data earlier.',
+               help:'Put the conditional in somebody else’s mouth.'}}},
+      {s:2,title:'Whereas and nevertheless',
+       objective:'Hold two sides in one sentence.',
+       view:[
+         'Contrast: whereas, while, on the other hand. Concession: nevertheless, even so, admittedly. Which is which?',
+         'A sentence that holds both sides is stronger than two sentences that take one each. Demonstration with your issue.',
+         'Ten sentences per team: five for, five against, each with a contrast or concession word.',
+         'Read the best one aloud. The class says which side it favours — a good one favours neither.'],
+       levels:{
+         'A2':{task:'Join ten pairs of sentences about your issue with whereas or nevertheless, choosing the right one.',
+               help:'The pairs written out; the two words explained with an example each.'},
+         'B1':{task:'Write ten sentences — five for, five against — using at least three different contrast or concession words.',
+               help:'Word bank: whereas, while, nevertheless, even so, admittedly, on the other hand.'},
+         'B2':{task:'Write the ten so that each one carries evidence, not just an opinion, and none reveals your side.',
+               help:'Data, the leadership team’s answer, a source.'},
+         'C1':{task:'Write the ten, then mark the two that would survive a rebuttal and say why the others would not.',
+               help:'A sentence that survives a rebuttal has evidence AND concedes something.'}}},
+      {s:3,title:'Listening to a formal debate',
+       objective:'Hear how a position is held, and tell fact from speculation.',
+       view:[
+         'A formal debate on data or technology, in two listenings. First: what is the motion, who is for, who is against?',
+         'Second: for each speaker, one fact they state and one thing they only speculate. Modals of speculation: might, may, could, is likely to.',
+         'The move to notice: a speaker conceding a point and still holding the position.',
+         'Notes in two columns: fact / speculation. Compare with a partner.'],
+       levels:{
+         'A2':{task:'Answer eight true/false questions on the debate and copy two modals of speculation you heard.',
+               help:'The questions; the transcript of the two key minutes.'},
+         'B1':{task:'Complete the fact / speculation table for two speakers and say who you found more convincing, with a reason.',
+               help:'Table with the first row done.'},
+         'B2':{task:'Complete the table and identify the moment a speaker concedes a point; write what they conceded and what they kept.',
+               help:'Conceding is not losing. Find where it makes them stronger.'},
+         'C1':{task:'Complete the table and write the rebuttal you would have given to the weakest speculation you heard.',
+               help:'Point – evidence – explanation, in three sentences.'}}},
+      {s:4,title:'The capabilities objection',
+       objective:'Write the strongest case against your own number, using this week’s grammar.',
+       view:[
+         'With Philosophy: Sen and Nussbaum say being well is what you can do and be. What does your number NOT capture about that? List it.',
+         'That list is the objection. Write it in three sentences: one third conditional, one concession, one plain statement.',
+         'Swap with the team on the left. They have to find the weakest sentence.',
+         'Hand in: the ten sentences from Tuesday, revised, plus the objection.'],
+       levels:{
+         'A2':{task:'Complete the objection with the three frames given, and hand in your ten sentences.',
+               help:'Frames: "If we had…", "Although the number shows…", "It does not tell us…"'},
+         'B1':{task:'Write the objection in three sentences using the three structures, and hand in the ten revised.',
+               help:'One conditional, one concession, one statement.'},
+         'B2':{task:'Write the objection so that it uses the capabilities idea explicitly — what the number leaves out about what people can do and be.',
+               help:'Name the theory; do not just say "feelings".'},
+         'C1':{task:'Write the objection and then the reply to it — why you would still measure — in the same register.',
+               help:'The best objection is the one you can answer and still respect.'}}}
+     ]},
+    {n:9,title:'Both sides, and the fallacy',desc:'Find the fallacy in a text you agree with — that is the only version of the exercise that teaches anything. Then the for-and-against essay, drafted: both positions before your own.',
+     give:'The draft of the essay "Should NIS be collecting this?", both sides before your own, by hand.',
+     across:{
+       comunicacion:'The same exercise — bias and fallacy — on a newspaper text in Spanish.',
+       ict:'The access log of the instrument, read: who looked at the data, and whether they should have.'},
+     sessions:[
+      {s:1,title:'Find the fallacy in a text you agree with',
+       objective:'Recognise the five fallacies that appear most in arguments about technology, first in others, then in yourself.',
+       view:[
+         'Five fallacies with a name and a picture: straw man, false dilemma, appeal to fear, cherry-picking, slippery slope.',
+         'An article on AI or data that most of the class agrees with. Read it looking for the five. There is at least one.',
+         'The uncomfortable part: your own ten sentences from week 8. Which one is a fallacy?',
+         'On the board: the fallacy of the week, found by the class in its own words.'],
+       levels:{
+         'A2':{task:'Match the five fallacies to five example sentences, and mark one in the article.',
+               help:'The fallacies with one example each; the article with the paragraphs numbered.'},
+         'B1':{task:'Find two fallacies in the article, name them, and rewrite one of your own sentences without its fallacy.',
+               help:'Frame: "This is a ___ because it…"'},
+         'B2':{task:'Find the fallacies, explain why each one still persuades, and rewrite the article’s weakest paragraph fairly.',
+               help:'A fallacy works because it feels true. Say what it appeals to.'},
+         'C1':{task:'Find them, and write the version of the article’s argument that would hold without any fallacy — if one exists.',
+               help:'Sometimes it does not. That is a result too.'}}},
+      {s:2,title:'The shape of a for-and-against essay',
+       objective:'Learn the structure of the B2 First essay before writing yours.',
+       view:[
+         'Model essay on the board, on a different question: introduction, arguments for, arguments against, position. Where does the writer’s opinion first appear? Only in the last paragraph.',
+         'Each paragraph has a job: the introduction says why the question is real; the two middle ones give two reasons each with evidence; the last one chooses.',
+         'The language: whereas, nevertheless, admittedly, on the one hand / on the other, in conclusion. And one third conditional somewhere.',
+         'Plan your own: your issue from week 7, two reasons for, two against, your position — in a grid, not in sentences yet.'],
+       levels:{
+         'A2':{task:'Label the four paragraphs of the model essay with their job and complete your plan grid with the prompts given.',
+               help:'The grid with the prompts; a bank of reasons for and against for your issue.'},
+         'B1':{task:'Complete your plan grid with two reasons for, two against, one piece of evidence for each, and your position.',
+               help:'Evidence: your data, the leadership team’s answer, the access log, a source.'},
+         'B2':{task:'Complete the grid so that the strongest reason against is one you actually believe, and note which fallacy you must avoid.',
+               help:'Cherry-picking is the one this essay invites.'},
+         'C1':{task:'Complete the grid, and write the one sentence of the essay where you will concede the other side its best point.',
+               help:'That sentence decides whether the essay is fair.'}}},
+      {s:3,title:'Drafting the essay',
+       objective:'Write the whole essay by hand, both sides before your own.',
+       view:[
+         'Title as a question: "Should NIS be collecting <your number>?"',
+         'Draft in the notebook, one paragraph at a time. Introduction (50–60 words), for (90–110), against (90–110), position (60–80).',
+         'Halfway check: has your opinion leaked into paragraph two or three? Cross it out.',
+         'Finish the draft. Nothing is typed up today.'],
+       levels:{
+         'A2':{task:'Write the essay with the four paragraph openings given and your plan grid, 320–380 words.',
+               help:'The four openings printed; the word bank of contrast and concession.'},
+         'B1':{task:'Write the essay, 320–380 words, with two reasons on each side and your position last.',
+               help:'Model essay on another topic.'},
+         'B2':{task:'Write the essay with evidence in every reason, one third conditional, and a concession in the last paragraph.',
+               help:'Whereas, nevertheless, admittedly.'},
+         'C1':{task:'Write the essay so that a reader cannot tell your side until the last paragraph, and the last paragraph still surprises.',
+               help:'Fairness first; then the turn.'}}},
+      {s:4,title:'Arguing the other side',
+       objective:'Sustain, out loud, the position opposite to your own — and check the draft against the rubric.',
+       view:[
+         'Pairs. Each one defends, for two minutes, the side they did NOT choose in the essay. The partner tries to break it.',
+         'What did you find out? Usually that the other side has one point you had not taken seriously. Write it down.',
+         'Then the rubric: swap drafts, read for criterion 5. Which level, and what is missing to move up one?',
+         'Twenty minutes of rewriting. Hand in the revised draft with the changes visible.'],
+       levels:{
+         'A2':{task:'Defend the other side with the three sentences given, mark the rubric level of your partner’s draft and fix one thing in yours.',
+               help:'Three sentences for each side; the rubric as a checklist.'},
+         'B1':{task:'Defend the other side for two minutes from notes, and rewrite the weakest paragraph of your draft.',
+               help:'Say what level and what is missing.'},
+         'B2':{task:'Defend it, write the point you had not taken seriously, and integrate it into your "against" paragraph.',
+               help:'That is the difference between B and A on criterion 5.'},
+         'C1':{task:'Defend it, and rewrite your position paragraph so that it answers the best point of the other side explicitly.',
+               help:'Name it, concede what is true in it, and say why you still choose.'}}}
+     ]},
+    {n:10,title:'The machine ends',desc:'The Time Machine, from chapter 7 to the end: Wells saw a future split in two, and your data is a small machine for seeing the same thing. The essay, delivered — second graded piece of the term.',
+     give:'The final essay, typed into the portal, and your notes for the comparative discussion.',
+     across:{
+       comunicacion:'The essay corrected, and its Spanish version for the school.',
+       ict:'The data so far, exported and anonymised: what the instrument would hand over if asked.'},
+     sessions:[
+      {s:1,title:'The Time Machine, chapters 7–9',
+       objective:'Read the Morlocks’ world with the eyes of somebody who has measured something.',
+       view:[
+         'Chapters 7–9. Underground, the machines are still running. Who runs them, for whom, and since when?',
+         'The Time Traveller changes his theory twice. Find the two sentences where he admits he was wrong.',
+         'Textual evidence: every claim about the Morlocks, with the line that supports it.',
+         'Ten minutes of silent reading to close.'],
+       levels:{
+         'A2':{task:'Answer six comprehension questions on chapters 7–9 and copy the sentence where the Traveller admits he was wrong.',
+               help:'Questions with two options; the page reference.'},
+         'B1':{task:'Summarise what the Traveller learns about the Morlocks and quote one line that proves it.',
+               help:'Frame: "He discovers that… The text says…"'},
+         'B2':{task:'Explain the two theories the Traveller holds and what evidence changes his mind each time.',
+               help:'That is how an argument with evidence works — in a novel too.'},
+         'C1':{task:'Explain the two theories and say which fallacy the Traveller commits in the first one.',
+               help:'He cherry-picks. Show where.'}}},
+      {s:2,title:'The machine ends',
+       objective:'Finish the novel and see what Wells decided not to say.',
+       view:[
+         'Chapters 10 to the end. The Traveller goes further, then comes back, then leaves and does not return.',
+         'What does Wells leave unsaid? The ending is a decision, not an accident. Discuss it.',
+         'Back to week 1: Wells took one fact of 1895 and followed it. Now that you have read the whole curve, was he right?',
+         'Reading diary, last entry: the sentence of the book you will remember.'],
+       levels:{
+         'A2':{task:'Answer six questions on the ending and write the sentence you will remember, with the page.',
+               help:'Questions with two options.'},
+         'B1':{task:'Explain how the novel ends and what you think happened to the Traveller, with one piece of evidence.',
+               help:'Frame: "I think that… because the text says…"'},
+         'B2':{task:'Explain what the ending leaves open and why Wells might have chosen that, with evidence from the last chapter.',
+               help:'An open ending is an argument too.'},
+         'C1':{task:'Explain the ending, and say whether the novel is on the side of the Eloi, the Morlocks, or neither — with textual evidence.',
+               help:'Look at the narrator, not at the Traveller.'}}},
+      {s:3,title:'Three novels, one question',
+       objective:'Compare The Time Machine with the readers of Terms 1 and 2 on the question of who a future is fair to.',
+       view:[
+         'Three novels on the board: the readers of Terms 1 and 2 and The Time Machine. One question: who wins and who loses, and does the author tell you which is which?',
+         'In groups: one novel each, three minutes to make the case for it as the one that says most about justice.',
+         'Then the comparison: what all three share, what only Wells does.',
+         'Notes for the portfolio: a comparative paragraph of 100–120 words.'],
+       levels:{
+         'A2':{task:'Complete the comparison table for the three novels (who wins, who loses, does the author say) and write three sentences.',
+               help:'Table with the first novel done.'},
+         'B1':{task:'Write a comparative paragraph of 100–120 words on the three novels using comparison language.',
+               help:'Both… whereas…; unlike…; similarly.'},
+         'B2':{task:'Write the paragraph arguing which novel says most about a future that is unfair to somebody, with evidence from two of them.',
+               help:'Quote once from each.'},
+         'C1':{task:'Write the paragraph, and say what The Time Machine adds that the other two could not — as craft, not as topic.',
+               help:'The narrator-witness and the far future are technique. Argue from them.'}}},
+      {s:4,title:'The essay, delivered',
+       objective:'Close the essay and hand it in. Second graded piece of the term.',
+       view:[
+         'The final version is not the draft typed up. Read it aloud once. Has your opinion stayed in the last paragraph?',
+         'Check against criterion 5 and the portal checklist: both sides, evidence in each reason, the third conditional, the concession, 320–380 words.',
+         'Type it into the portal. The marker gives you a first pass; the teacher gives you the grade.',
+         'Hand in: the essay in the portal, and your comparative paragraph in the notebook.'],
+       levels:{
+         'A2':{task:'Copy your corrected essay into the portal and tick the checklist.',
+               help:'Your draft with the corrections marked.'},
+         'B1':{task:'Produce the final version, check the four paragraphs do their job, and hand it in.',
+               help:'Checklist of five things to verify.'},
+         'B2':{task:'Produce the final version, check that every reason has evidence and no fallacy of your own survives, and hand it in.',
+               help:'Underline each reason and find its evidence.'},
+         'C1':{task:'Produce the final version and check that the last paragraph answers the best point of the other side.',
+               help:'If it does not, the essay is not finished.'}}}
+     ]},
+    {n:11,title:'The formal debate',desc:'Point, evidence, explanation — three sentences. If you cannot do it in three, you have not understood it yet. The motion: "This house would delete the data." Then the term portfolio and the traffic-light self-assessment.',
+     give:'The debate, and the term portfolio with your self-assessment.',
+     across:{
+       ict:'The final decision about the data: kept, anonymised or deleted — taken with the class after the debate.',
+       comunicacion:'The final portfolio reflection, in Spanish.'},
+     sessions:[
+      {s:1,title:'Point, evidence, explanation',
+       objective:'Build a debate speech from the PEE model.',
+       view:[
+         'The motion on the board: "This house would delete the data." Teams of three, sides drawn by lot: you may have to argue against your own essay.',
+         'The model: point (one sentence), evidence (one figure or one quote), explanation (why the evidence proves the point). Three sentences, then the next point.',
+         'Each team builds three PEE blocks for its side. One figure of your own data per block.',
+         'Read one block to the other side. They say whether the explanation actually connects the evidence to the point.'],
+       levels:{
+         'A2':{task:'Complete three PEE blocks for your side with the frames given and one figure each.',
+               help:'Frames: "Our point is… The evidence is… This shows that…"'},
+         'B1':{task:'Write three PEE blocks for your side, each with a figure or a quote, and time them: two minutes for the three.',
+               help:'Model block on a different motion.'},
+         'B2':{task:'Write the three blocks and the rebuttal to the other side’s likely first point.',
+               help:'Predict it from their essays.'},
+         'C1':{task:'Write the three blocks so that the third one concedes the other side’s best point and turns it.',
+               help:'Concede, then explain why it still supports your side.'}}},
+      {s:2,title:'The other side’s best points',
+       objective:'Prepare for what they will say, and decide what really happens to the data.',
+       view:[
+         'Each team lists the three strongest points of the other side and writes an answer to each. Not the weakest — the strongest.',
+         'With ICT: the three real options for the instrument’s data — keep it, anonymise it, delete it — and what each one costs and protects.',
+         'Rehearsal in pairs, timed: two minutes of speech, one point of information from the partner.',
+         'Roles for tomorrow: three speakers per side, one chair, two timekeepers. The chair writes the rules of the floor.'],
+       levels:{
+         'A2':{task:'Complete the table: the other side’s three points and your answer to each, with the frames given.',
+               help:'Table with the first row done; answer frames.'},
+         'B1':{task:'Write the three points and your answers, and rehearse your speech twice from notes.',
+               help:'Say what level the answer reaches on the rubric.'},
+         'B2':{task:'Write them, and mark which of the other side’s points you cannot fully answer — and what you will say about it.',
+               help:'"That is a fair point, and here is why we still…"'},
+         'C1':{task:'Write them, and draft the point of information you will offer at the exact moment the other side is weakest.',
+               help:'Timing is an argument.'}}},
+      {s:3,title:'The formal debate',
+       objective:'Hold your position for two minutes in front of the class, and take a point of information.',
+       view:[
+         'The chair opens the floor and reads the motion. Proposition first: three speeches of two minutes, then opposition, then one rebuttal each.',
+         'Points of information: the speaker may accept or decline. Timekeepers stop anyone at two minutes.',
+         'The audience takes notes in two columns: the best point of each side.',
+         'Vote at the end, on the argument — not on the side you believe. The chair announces the result and the class decides what happens to the data.'],
+       levels:{
+         'A2':{task:'Deliver your speech from your PEE cards and write the best point of each side.',
+               help:'Your three cards.'},
+         'B1':{task:'Deliver your speech from notes, accept one point of information, and write the best point of each side.',
+               help:'Your notes.'},
+         'B2':{task:'Deliver it, rebut one point of the other side with evidence, and write why the vote went the way it did.',
+               help:'"I do not know, but I would find out like this" is still a good answer.'},
+         'C1':{task:'Deliver it, take a point of information and turn it, and write what you would change in the motion to make the debate fairer.',
+               help:'The motion frames the debate the way the article framed the issue in week 7.'}}},
+      {s:4,title:'Portfolio and traffic light',
+       objective:'Close the term with what you made and an honest map of what you can do with the grammar.',
+       view:[
+         'The portfolio on the table: the proposal, the story, the essay, your debate notes. In that order — that is the term.',
+         'The traffic light: red / amber / green for each grammar point of the term — narrative tenses, proposal register, third conditional, contrast and concession. Honest: green means you could teach it.',
+         'Final reflection, 120–150 words: what does artificial intelligence really cost this school, and what did you decide about measuring it?',
+         'Hand in: the portfolio and the traffic light in the portal. Unit closed; the exam is on 2 December.'],
+       levels:{
+         'A2':{task:'Complete the traffic light with the four grammar points and write the reflection with the three openings given.',
+               help:'The traffic light printed; the openings.'},
+         'B1':{task:'Complete the traffic light with one example of your own per point, and write the reflection in 120–150 words.',
+               help:'Be specific: which moment of the term, and why.'},
+         'B2':{task:'Complete it, write the reflection answering both questions, and say which of the four products you would send to the leadership team again.',
+               help:'And what you would change in it first.'},
+         'C1':{task:'Complete it, write the reflection, and say what you would measure next year to answer the unit question better.',
+               help:'The next question is always better than the first.'}}}
      ]}
   ],
-  words:['artificial intelligence','algorithm','data centre','energy consumption','carbon footprint','e-waste','screen time','policy','trade-off','evidence','I would recommend','it is advisable to','although','despite','nevertheless','moreover','in contrast','tends to','may','might','plot','setting','narrator','foreshadow','twist','eventually','meanwhile','suddenly','by the time','had been'],
+  words:['artificial intelligence','algorithm','data centre','energy consumption','carbon footprint','e-waste','screen time','policy','trade-off','evidence','I would recommend','it is advisable to','although','despite','nevertheless','moreover','in contrast','tends to','may','might','plot','setting','narrator','foreshadow','twist','eventually','meanwhile','suddenly','by the time','had been','motion','proposition','opposition','rebuttal','point of information','whereas','admittedly','even so','if we had known','fallacy','bias','straw man','false dilemma','cherry-picking'],
   deliverables:[
     {kind:'report', type:'text', icon:'&#128203;', title:'Proposal to the leadership team',
      desc:'What you measured, what it means, and what you are asking NIS to do next year. Written to be acted on, not to be marked.',
-     spec:'300–350 words · proposal register', range:[300,350],
+     spec:'300–350 words · proposal register · handed in week 5', range:[300,350],
+     brief:{
+       when:'Draft by hand in week 4, session 3. Final version in week 5, session 2 (Tuesday 13 October): printed for the panel and typed into the portal.',
+       steps:[
+         'Title, one line: "Proposal: <what you measured> at NIS".',
+         'Paragraph 1 — Context (50–70 words): what the leadership team asked for and which question your team took.',
+         'Paragraph 2 — What we found (90–110 words): your headline figure with its unit, how you measured it (the method, in the passive, so it could be repeated), and one published source that puts it in context.',
+         'Paragraph 3 — What we recommend (100–120 words): two or three recommendations in proposal register (I would recommend, it is advisable to, a first step would be), ordered from the cheapest to the most ambitious, each justified with your data. Answer the objection they will raise: although, even though, it could be argued.',
+         'Paragraph 4 — What it costs and what we cannot prove (40–60 words): the time, money or effort of each recommendation, and what your data does not show.',
+         'Before handing in: 300–350 words; every figure matches your table; it reads as a proposal, not as an essay; no claim goes beyond your data.'],
+       graded:'Criteria 1 and 2. The portal marker checks the checklist below; the teacher gives the grade with the proposal rubric.'},
      checklist:[
        {k:'ask', t:'I make a specific recommendation, not a general complaint', re:'(i would recommend|we recommend|it is advisable|the school should|we propose)'},
        {k:'own', t:'I use data we measured ourselves at NIS', re:'(we measured|we counted|our data|we recorded|at nis|in our school)'},
@@ -4271,8 +4643,18 @@ window.UNIT_PLANS = {
        {k:'register', t:'I write in proposal register, not as an essay', re:'(recommend|advisable|should be|we suggest|first step)'}
      ]},
     {kind:'story', type:'text', icon:'&#9203;', title:'The year 802,701',
-     desc:'What your number becomes if nobody acts on your proposal. Wells took one fact of 1895 and followed it into the far future; you do the same with the figure you measured. First graded evidence of the term.',
-     spec:'320–380 words · narrative tenses', range:[320,380],
+     desc:'What your number becomes if nobody acts on your proposal. Wells took one fact of 1895 and followed it into the far future; you do the same with the figure you measured. First graded piece of the term.',
+     spec:'320–380 words · narrative tenses · handed in week 5', range:[320,380],
+     brief:{
+       when:'Story map in week 2, session 4. Test scene in week 3, session 4. Full draft by hand in week 4, session 4. Final version typed into the portal in week 5, session 2, and told out loud in week 5, session 4 (Friday 16 October).',
+       steps:[
+         'Start from your audit number. With Maths, work out what it becomes if it keeps growing every year the way it grew this year: that figure is the engine of the story.',
+         'A title of your own. Five parts: opening (the world of 802,701 as it looks now), inciting incident, complication, climax, resolution. Your story map gives you the protagonist, the setting, the conflict and the twist.',
+         'Voice and structure: the narrator you chose in week 2 (a first-person witness, like Wells, or third person) and the structure (linear, in medias res or flashback). Keep them to the end.',
+         'Tenses: past simple for what happened; past continuous for what was going on; past perfect for what had happened before; past perfect continuous for how long something had been going on. Move through time with eventually, meanwhile, suddenly, by the time, as soon as.',
+         'The number has to be visible in the world of the story — in what it did to the people who live there — not explained in a sentence.',
+         'Before handing in: 320–380 words; the four tenses; at least two sequence adverbs; a twist that the first paragraph foreshadows; the same tense control from the first line to the last.'],
+       graded:'Criterion 4. The portal marker checks the checklist below; the teacher grades with the story rubric. The oral telling in week 5 counts towards the same criterion.'},
      checklist:[
        {k:'pastperf', t:'I use the past perfect for what had happened before', re:'\\bhad (been |not |never |already |just )?[a-z]+(ed|en|t|n)\\b'},
        {k:'pastcont', t:'I use the past continuous for what was going on', re:'\\b(was|were) (not )?[a-z]+ing\\b'},
@@ -4283,61 +4665,63 @@ window.UNIT_PLANS = {
      ]},
     {kind:'presentation', type:'file', icon:'&#127908;', title:'Defence before the panel',
      desc:'Present the audit and defend the recommendation in front of the leadership team. Notes, not a script — they will interrupt.',
-     spec:'6 minutes plus questions'}
+     spec:'6 minutes plus questions · week 6',
+     brief:{
+       when:'Week 6, session 2 (Tuesday 20 October), in front of the leadership team. Rehearsed in week 5, session 3.',
+       steps:[
+         'The team of the audit presents; every member speaks. Notes on cards, not a script — whoever reads gets stopped.',
+         'Minute 1: the question you took and why it matters to the policy. Minutes 2–3: what you measured, how, and the headline figure — show the chart, with the ICT instrument on the table, running. Minutes 4–5: your recommendations, in order, with what each one costs. Minute 6: the objection you expect, answered before they raise it.',
+         'Then questions from the panel. Answer, or say honestly that you do not know and how you would find out. If the objection is good, concede it out loud and say what you would change.',
+         'Upload to the portal: the slides or the chart you showed (PDF or image) and, if the school records the session, the video or audio.',
+         'Assessed on the day: speaking from notes, taking a question you had not prepared, building on what your teammates say.'],
+       graded:'Criterion 3, on the day, by the teacher; the panel’s questions are part of the assessment.'}},
+    {kind:'essay', type:'text', icon:'&#9878;', title:'Should NIS be collecting this?',
+     desc:'The for-and-against essay on your own instrument: both sides, with evidence, before your own position. Second graded piece of the term.',
+     spec:'320–380 words · for-and-against essay · handed in week 10', range:[320,380],
+     brief:{
+       when:'Issue framed in week 7, session 4. Plan grid in week 9, session 2. Draft by hand in week 9, session 3. Final version typed into the portal in week 10, session 4 (Friday 20 November).',
+       steps:[
+         'Title as a question: "Should NIS be collecting <your number>?"',
+         'Paragraph 1 — Introduction (50–60 words): what the instrument collects and why the question is real. No opinion yet.',
+         'Paragraph 2 — Arguments for (90–110 words): two reasons to collect it, each with evidence — your data, the leadership team’s answer, a published source.',
+         'Paragraph 3 — Arguments against (90–110 words): two reasons not to, taken seriously — who sees the data, what any measure leaves out (the capabilities objection from Philosophy), what could go wrong. At least one third conditional: if we had known…, we would not have….',
+         'Paragraph 4 — Your position (60–80 words): only now. Concede the other side its best point (admittedly, nevertheless) and then choose.',
+         'Before handing in: 320–380 words; both sides before your own; evidence in every reason; none of the five fallacies from week 9 in your own text; formal register throughout.'],
+       graded:'Criterion 5. The portal marker checks the checklist below; the teacher grades with the essay rubric.'},
+     checklist:[
+       {k:'question', t:'The title is the question', re:'^\\s*should\\b.*\\?'},
+       {k:'for', t:'I give reasons for, with evidence', re:'(on the one hand|one argument (for|in favour)|supporters|those in favour|firstly|first of all)'},
+       {k:'against', t:'I give reasons against, taken seriously', re:'(on the other hand|however|opponents|those against|nevertheless|admittedly)'},
+       {k:'third', t:'I use the third conditional at least once', re:'\\bif [^.]{0,60}\\bhad\\b[^.]{0,80}\\bwould (not )?have\\b|\\bwould (not )?have\\b[^.]{0,80}\\bif [^.]{0,60}\\bhad\\b'},
+       {k:'evidence', t:'There is evidence, not only opinion', re:'([0-9]+ ?(%|kwh|minutes|hours|devices|litres|liters|kg)|according to|research|study|our data|we measured)'},
+       {k:'position', t:'My position comes at the end', re:'(in conclusion|to conclude|on balance|all things considered|in my (view|opinion)|i believe)'}
+     ]},
+    {kind:'debate', type:'file', icon:'&#128483;', title:'The formal debate',
+     desc:'"This house would delete the data." Three speakers a side, two minutes each, point–evidence–explanation, one rebuttal, points of information. Then the term portfolio.',
+     spec:'2-minute speech · week 11',
+     brief:{
+       when:'Week 11, session 3 (Wednesday 2 December is the exam; the debate is on Tuesday 1 December or as the timetable allows). Prepared in sessions 1 and 2 of that week.',
+       steps:[
+         'Teams of three; proposition and opposition drawn by lot — you may have to argue against your own essay.',
+         'Each speech: point – evidence – explanation, three blocks in two minutes, timed by the timekeepers. One figure of your own data per block. One rebuttal per side after the six speeches.',
+         'Prepare the three strongest points of the other side and your answer to each. Accept at least one point of information during your speech.',
+         'Upload to the portal: your speech notes (photo or PDF) and the recording if the class makes one.',
+         'Session 4 closes the term: the portfolio — proposal, story, essay, debate notes — and the traffic-light self-assessment (red / amber / green) of the four grammar points of the term, plus the final reflection of 120–150 words, all handed in in the portal.'],
+       graded:'Criterion 3 (defence and debate), on the day. The portfolio and the reflection are the evidence for the unit review, not a separate grade.'}}
   ]
 },
-/* ---------------------------------------------------------------- U6 */
-{
-  cover:{icon:'🚀', from:'#1e2b6b', to:'#5566c4', image:'assets/unit-covers/g9-u6-future.png'},
-  n:6,
-  title:'Future Visions',
-  weeks:5,
-  bigq:'What kind of future do we want to create, and what can we learn from the present to build it?',
-  situation:'You hear warnings about the future all the time — pollution, artificial intelligence, overpopulation — but you rarely get to imagine your own vision of what the future could look like. In this final unit you analyse different ideas about the future, evaluate arguments, and present your own report on possible futures for humanity, society or the planet.',
-  audience:'The Future Forum: the class exchanges visions and reflections, and you have to make yours stand up to the others.',
-  criteria:[
-    {n:1, text:'Expresses clear ideas with logical organisation, in persuasive and formal language.'},
-    {n:2, text:'Identifies central themes and arguments, notes key evidence and the author’s purpose, and compares viewpoints accurately.'},
-    {n:3, text:'Structures the text with introduction, analysis and conclusion, using connectors and evidence correctly.'},
-    {n:4, text:'Demonstrates insight and balanced reasoning, and uses visual aids or devices effectively.'}
-  ],
-  sequence:[
-    {n:1,title:'Revisiting technology’s impact',desc:'Listening and summarising main ideas; reading short reports and noting the arguments.',give:'A chart of personal, social and environmental impacts.'},
-    {n:2,title:'Evaluating perspectives',desc:'Identifying claims, evidence and bias in texts, and discussing responsible use.',give:'Annotated reading and a group discussion summary.'},
-    {n:3,title:'Structuring analytical writing',desc:'Transitions and ellipses; writing topic sentences and thesis statements.',give:'The outline of your analytical report.'},
-    {n:4,title:'Writing and revising reports',desc:'Drafting and peer-reviewing the analytical report.',give:'The final analytical report.'},
-    {n:5,title:'Speaking for awareness',desc:'Presenting a short talk that summarises your findings and your reflections.',give:'The oral presentation and your self-evaluation.'}
-  ],
-  words:['future','progress','innovation','sustainability','technology','perspective','vision','argument','evidence','solution','consequence','reflection'],
-  deliverables:[
-    {kind:'report', type:'text', icon:'&#128221;', title:'Analytical report',
-     desc:'Your vision of a possible future for humanity, society or the planet — argued with evidence, in introduction, analysis and conclusion.',
-     spec:'400–450 words', range:[400,450],
-     checklist:[
-       {k:'thesis', t:'I state what future I am arguing for', re:'.{300,}'},
-       {k:'compare', t:'I compare more than one viewpoint', re:'(whereas|by contrast|others argue|some believe|on the other hand)'},
-       {k:'evidence', t:'I note key evidence and where it comes from', re:'(according to|research|study|evidence|data)'},
-       {k:'connect', t:'I use connectors to hold the argument together', re:'(therefore|consequently|moreover|nevertheless|furthermore|as a result)'},
-       {k:'concl', t:'I close with what we should learn from the present', re:'(in conclusion|to sum up|ultimately|overall)'}
-     ]},
-    {kind:'presentation', type:'file', icon:'&#127908;', title:'Future Forum talk',
-     desc:'Three minutes summarising your findings and your reflection, with visual aids if they help.',
-     spec:'3 minutes'},
-    {kind:'reflection', type:'text', icon:'&#128173;', title:'Reflection paragraph',
-     desc:'What changed in how you see the future after this unit.',
-     spec:'Around 100 words', range:[80,140]}
-  ]
-}
-,
 
 /* ============================================================ PILOTO 2027
    La U5 de 9.o SALIO DEL PILOTO el 14-sep-2026: "Does Our School Run on
    Data?" es la unidad real del trimestre y nace abierta como cualquier otra
-   (node_access english.classes.g9.units.u5 en true). La planificada que habia
-   en Toddle, "The Double-Edged Sword", queda en `superseded` mas abajo y se
-   sustituye tambien en Toddle. La U6 sigue en piloto: es una unidad APARTE
-   de la planificada, con el mismo contenido curricular y otra forma de
-   trabajarlo, cerrada al alumno; la conducen profesor y admin.
+   (node_access english.classes.g9.units.u5 en true). Ese mismo dia el area
+   pidio que fuera UNA unidad de once semanas, no dos (U5 + U6): la U5 cubre
+   el trimestre entero —semanas 1-6 auditoria, propuesta y relato; 7-11
+   ensayo a favor y en contra, reader hasta el final y debate formal— y los
+   22 bloques del Scope de U5 y U6. Las dos planificadas que habia en Toddle,
+   "The Double-Edged Sword" (U5) y "Future Visions" (U6), quedan en
+   `superseded` mas abajo. La U106 sigue en piloto: es una unidad APARTE,
+   cerrada al alumno; la conducen profesor y admin.
 
    Que las hace un proyecto y no una unidad con actividades:
      · hay un CLIENTE fuera del aula que recibe el producto y decide algo,
@@ -4838,11 +5222,11 @@ window.UNIT_PLANS = {
 },
     ],
 
-    /* La U5 que el planner de Toddle tenia para 9.o antes de que la unidad
-       del piloto pasara a ser la real (14-sep-2026). NO se ofrece (el portal
-       solo lee `units`) y NO se borra: es lo que decia el planner hasta ese
-       dia, por si hay que volver a mirarlo. En Toddle se sustituye por la
-       nueva U5. */
+    /* La U5 y la U6 que el planner de Toddle tenia para 9.o antes de que la
+       unidad de once semanas las sustituyera (14-sep-2026). NO se ofrecen (el
+       portal solo lee `units`) y NO se borran: es lo que decia el planner
+       hasta ese dia, por si hay que volver a mirarlo. En Toddle se sustituyen
+       por la nueva U5. */
     superseded:[
 /* ---------------------------------------------------------------- U5 */
 {
@@ -4897,6 +5281,48 @@ window.UNIT_PLANS = {
      spec:'Speak from notes, not from a script'}
   ]
 },
+/* ---------------------------------------------------------------- U6 */
+{
+  cover:{icon:'🚀', from:'#1e2b6b', to:'#5566c4', image:'assets/unit-covers/g9-u6-future.png'},
+  n:6,
+  title:'Future Visions',
+  weeks:5,
+  bigq:'What kind of future do we want to create, and what can we learn from the present to build it?',
+  situation:'You hear warnings about the future all the time — pollution, artificial intelligence, overpopulation — but you rarely get to imagine your own vision of what the future could look like. In this final unit you analyse different ideas about the future, evaluate arguments, and present your own report on possible futures for humanity, society or the planet.',
+  audience:'The Future Forum: the class exchanges visions and reflections, and you have to make yours stand up to the others.',
+  criteria:[
+    {n:1, text:'Expresses clear ideas with logical organisation, in persuasive and formal language.'},
+    {n:2, text:'Identifies central themes and arguments, notes key evidence and the author’s purpose, and compares viewpoints accurately.'},
+    {n:3, text:'Structures the text with introduction, analysis and conclusion, using connectors and evidence correctly.'},
+    {n:4, text:'Demonstrates insight and balanced reasoning, and uses visual aids or devices effectively.'}
+  ],
+  sequence:[
+    {n:1,title:'Revisiting technology’s impact',desc:'Listening and summarising main ideas; reading short reports and noting the arguments.',give:'A chart of personal, social and environmental impacts.'},
+    {n:2,title:'Evaluating perspectives',desc:'Identifying claims, evidence and bias in texts, and discussing responsible use.',give:'Annotated reading and a group discussion summary.'},
+    {n:3,title:'Structuring analytical writing',desc:'Transitions and ellipses; writing topic sentences and thesis statements.',give:'The outline of your analytical report.'},
+    {n:4,title:'Writing and revising reports',desc:'Drafting and peer-reviewing the analytical report.',give:'The final analytical report.'},
+    {n:5,title:'Speaking for awareness',desc:'Presenting a short talk that summarises your findings and your reflections.',give:'The oral presentation and your self-evaluation.'}
+  ],
+  words:['future','progress','innovation','sustainability','technology','perspective','vision','argument','evidence','solution','consequence','reflection'],
+  deliverables:[
+    {kind:'report', type:'text', icon:'&#128221;', title:'Analytical report',
+     desc:'Your vision of a possible future for humanity, society or the planet — argued with evidence, in introduction, analysis and conclusion.',
+     spec:'400–450 words', range:[400,450],
+     checklist:[
+       {k:'thesis', t:'I state what future I am arguing for', re:'.{300,}'},
+       {k:'compare', t:'I compare more than one viewpoint', re:'(whereas|by contrast|others argue|some believe|on the other hand)'},
+       {k:'evidence', t:'I note key evidence and where it comes from', re:'(according to|research|study|evidence|data)'},
+       {k:'connect', t:'I use connectors to hold the argument together', re:'(therefore|consequently|moreover|nevertheless|furthermore|as a result)'},
+       {k:'concl', t:'I close with what we should learn from the present', re:'(in conclusion|to sum up|ultimately|overall)'}
+     ]},
+    {kind:'presentation', type:'file', icon:'&#127908;', title:'Future Forum talk',
+     desc:'Three minutes summarising your findings and your reflection, with visual aids if they help.',
+     spec:'3 minutes'},
+    {kind:'reflection', type:'text', icon:'&#128173;', title:'Reflection paragraph',
+     desc:'What changed in how you see the future after this unit.',
+     spec:'Around 100 words', range:[80,140]}
+  ]
+}
     ]
   },
 

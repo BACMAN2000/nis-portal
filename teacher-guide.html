@@ -130,7 +130,7 @@ td.sem{font-weight:800;color:var(--blue-d);white-space:nowrap;width:52px}
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="config.js?v=720edc7d"></script>
-<script src="unit-plans.js?v=2dc54838"></script>
+<script src="unit-plans.js?v=eaa12026"></script>
 <script src="nis-nav.js?v=c3230c7d"></script>
 <script>
 /* Guia del profesor de la unidad, para imprimir.
@@ -321,6 +321,9 @@ function entregables(){
       <div class="bloque">
         <h3>${esc(d.title)}${d.spec?' · '+esc(d.spec):''}</h3>
         <p style="font-size:.9rem;color:var(--grey);margin-bottom:6px">${esc(d.desc||'')}</p>
+        ${d.brief&&d.brief.steps?`<p style="font-size:.86rem;margin:0 0 4px"><b>When:</b> ${esc(d.brief.when||'')}</p>
+          <ol style="font-size:.86rem;margin:0 0 8px 18px;padding:0">${d.brief.steps.map(x=>`<li style="margin:2px 0">${esc(x)}</li>`).join('')}</ol>
+          ${d.brief.graded?`<p style="font-size:.84rem;color:var(--grey);margin:0 0 6px"><i>${esc(d.brief.graded)}</i></p>`:''}`:''}
         ${d.checklist&&d.checklist.length?`<ul class="check">${d.checklist.map(k=>`<li>${esc(k.t)}</li>`).join('')}</ul>`
           :`<p style="font-size:.86rem;color:var(--grey)">File submission — reviewed by the teacher, not the marker.</p>`}
       </div>`).join('')}
