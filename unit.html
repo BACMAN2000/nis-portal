@@ -260,6 +260,19 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px soli
 const Q = new URLSearchParams(location.search);
 const GRADE = (Q.get('grade')||'g9').toLowerCase();
 const UNIT  = parseInt(Q.get('unit')||'0',10);
+/* El boton "Portal" del header traia el href fijo en "./": volvia siempre a
+   la raiz del portal sin importar de donde venia el alumno, que tenia que
+   rehacer Classes -> grado -> Units. El portal SI manda a donde volver
+   (?back=./%23classes_g9_units, ver _withBack en app.js); aqui lo usamos, y
+   si no vino (enlace viejo o entrada directa) caemos en el mismo destino que
+   ya usa el enlace "Back to units" de la pantalla de entrega, mas abajo en
+   este archivo. */
+(function(){
+  const back = Q.get('back');
+  const safe = back && !/^[a-z][a-z0-9+.\-]*:/i.test(back) && back.slice(0,2)!=='//';
+  const backBtn = document.getElementById('backBtn');
+  if(backBtn) backBtn.setAttribute('href', safe ? back : ('./#classes_'+GRADE+'_units'));
+})();
 const MILESTONE = 'final';
 /* De mayor a menor: lo primero que se lee es adonde se quiere llegar, no el
    nivel mas bajo. El orden manda en las columnas de la rubrica y en la escala
