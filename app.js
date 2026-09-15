@@ -152,12 +152,20 @@ function renderStartupError(error){
   </div></div>`;
 }
 
-window.nisSafeLogout = async ()=>{
-  try{ if(sb) await withTimeout(sb.auth.signOut(), 5000, 'SIGNOUT_TIMEOUT'); }catch(_){ }
+/* Cierre de sesión que no depende del servidor. supabase-js 2.45 solo borra la
+   sesión local si /auth/v1/logout responde 2xx, 401 o 404: con un 403
+   session_not_found (la sesión ya revocada desde otro navegador o perfil;
+   14-sep-2026, el admin) devolvía el error, dejaba el token en localStorage y
+   Sign out no hacía nada — y al recargar, la sesión «volvía». Se intenta el
+   cierre normal con tope y después se borra el token a mano pase lo que pase. */
+async function cerrarSesion(){
+  try{ if(sb) await withTimeout(sb.auth.signOut(), 8000, 'SIGNOUT_TIMEOUT'); }catch(_){ }
+  try{ Object.keys(localStorage).filter(k=>/^sb-.*-auth-token/.test(k)).forEach(k=>localStorage.removeItem(k)); }catch(_){ }
   state.session=null; state.profile=null;
   try{ history.replaceState(null,'',location.pathname); }catch(_){ }
   renderAuth();
-};
+}
+window.nisSafeLogout = cerrarSesion;
 
 /* Diagnostico de un panel colgado: a los 8 s con «Loading…» se manda a
    client_errors el paso en que se quedo (window.__nisPaso), el estado y los
@@ -191,10 +199,7 @@ async function init(){
   try{
     const params = new URLSearchParams(location.search);
     if(params.get('logout')==='1'){
-      try{ await withTimeout(sb.auth.signOut(), 5000, 'SIGNOUT_TIMEOUT'); }catch(_){ }
-      try{ history.replaceState(null,'',location.pathname); }catch(_){ }
-      state.session=null; state.profile=null;
-      renderAuth();
+      await cerrarSesion();
       subscribeAuthChanges();
       return;
     }
@@ -271,7 +276,7 @@ function route(){
   }
   return renderStudent();
 }
-async function logout(){ await sb.auth.signOut(); }
+async function logout(){ await cerrarSesion(); }
 
 /* ---------- shared chrome ---------- */
 function header(){
@@ -1044,7 +1049,7 @@ async function saveRecoveredPassword(){
     if(card){
       const go=document.createElement('button');
       go.className='btn ghost'; go.style.width='100%'; go.style.marginTop='10px'; go.textContent='Go to sign in';
-      go.onclick=async()=>{ try{ await sb.auth.signOut(); }catch(_){ } state.session=null; state.profile=null; renderAuth('login'); };
+      go.onclick=()=>cerrarSesion();
       card.appendChild(go);
     }
   }catch(e){
