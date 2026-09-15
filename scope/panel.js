@@ -17,6 +17,8 @@
 (function () {
 
   let DATOS = null, AUDIT = null, gradoActivo = null;
+  // 'grado' = un grado con su detalle; 'tabla' = los once grados en una sola tabla
+  let vista = 'grado', conDetalle = false;
 
   const esc = t => String(t == null ? '' : t)
     .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -73,7 +75,39 @@
   .sq-cuantas{margin-left:auto;font-size:.78rem;font-weight:700;opacity:.6}
   .sq-curso{background:var(--surface2,#f4f7fa);border-radius:10px;padding:.5rem .8rem;
     margin:.2rem 0 .6rem}
-  .sq-curso a{font-weight:800;text-decoration:none;border-bottom:2px solid currentColor}`;
+  .sq-curso a{font-weight:800;text-decoration:none;border-bottom:2px solid currentColor}
+  /* la secuencia entera: una columna por grado, cabecera y primera columna fijas */
+  .sq-g.all{margin-left:auto;background:var(--blue-d,#2f5f93);color:var(--card,#fff);border-color:var(--blue-d,#2f5f93)}
+  .sq-g.all.on{background:var(--accent,#d97d0d);border-color:var(--accent,#d97d0d)}
+  .sq-herr{display:flex;flex-wrap:wrap;gap:.6rem 1.2rem;align-items:center;margin:0 0 .8rem;font-size:.86rem}
+  .sq-herr label{display:flex;gap:.35rem;align-items:center;cursor:pointer}
+  .sq-twrap{overflow:auto;max-height:78vh;border:1px solid var(--line,#dde3ea);border-radius:12px}
+  .sq-t{border-collapse:separate;border-spacing:0;font-size:.8rem;width:100%}
+  .sq-t th,.sq-t td{text-align:left;vertical-align:top;padding:.45rem .55rem;
+    border-bottom:1px solid var(--line,#dde3ea);border-right:1px solid var(--line,#dde3ea);line-height:1.4}
+  .sq-t td{min-width:9.5rem}
+  .sq-t thead th{position:sticky;top:0;z-index:3;background:var(--blue-d,#2f5f93);color:var(--card,#fff);
+    font-size:.82rem;text-align:center;white-space:nowrap}
+  .sq-t thead th.prim{background:var(--accent,#d97d0d)}
+  .sq-t thead th small{display:block;font-weight:400;opacity:.85;font-size:.7rem}
+  .sq-t tbody th{position:sticky;left:0;z-index:2;background:var(--surface2,#eef2f7);
+    font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;width:10rem;min-width:10rem}
+  .sq-t thead th:first-child{left:0;z-index:4}
+  .sq-t tr.sq-sep th{background:var(--card,#fff);font-size:.78rem;letter-spacing:.08em;
+    padding-top:.9rem;border-right:0;white-space:normal}
+  .sq-t tr.sq-sep td{background:var(--card,#fff);border-right:0}
+  .sq-t td.u b{display:block}
+  .sq-t td.u ul{margin:.2rem 0 0;padding-left:.9rem;font-size:.72rem;opacity:.85}
+  .sq-t td.u li{margin:0}
+  .sq-t td.u .bl{display:block;font-size:.66rem;text-transform:uppercase;letter-spacing:.05em;
+    opacity:.6;margin-top:.3rem}
+  @media print{
+    @page{size:landscape}
+    .sq-grados,.sq-herr{display:none}
+    .sq-twrap{overflow:visible;max-height:none;border:0}
+    .sq-t{min-width:0;font-size:.62rem}
+    .sq-t th,.sq-t td{position:static!important}
+  }`;
 
   /* ---------- carga ---------- */
   async function carga() {
@@ -195,6 +229,56 @@
       </table></div>`;
   }
 
+  /* ---------- los once grados en una sola tabla ---------- */
+  function tabla() {
+    const grados = (DATOS.pathway || []).map(p => p.grado);
+    const primaria = new Set(['G1', 'G2', 'G3', 'G4', 'G5']);
+    const fila = (titulo, celda, cls) => `<tr><th>${esc(titulo)}</th>${grados.map(g =>
+      `<td class="${cls || ''}">${celda(g)}</td>`).join('')}</tr>`;
+    const sep = titulo => `<tr class="sq-sep"><th>${esc(titulo)}</th><td colspan="${grados.length}"></td></tr>`;
+    const v = (g, k) => esc(via(g)[k] || '—');
+    const b = (g, k) => esc(bench(g)[k] || '—');
+    // una unidad: el tema y, si se pide, cada bloque con sus puntos
+    const unidad = (g, n) => {
+      const d = grado(g);
+      const u = d && d.unidades.find(x => x.n === n);
+      if (!u) return '—';
+      if (!conDetalle) return `<b>${esc(u.tema)}</b>`;
+      return `<b>${esc(u.tema)}</b>` + u.bloques.map(bl =>
+        `<span class="bl">${esc(bl.bloque)}</span><ul>${bl.puntos.map(p => `<li>${esc(p)}</li>`).join('')}</ul>`).join('');
+    };
+    const nUnidades = Math.max(0, ...(DATOS.grados || []).map(d => d.unidades.length));
+    const filasU = [];
+    for (let n = 1; n <= nUnidades; n++) filasU.push(fila('Unit ' + n, g => unidad(g, n), 'u'));
+    return `<div class="sq-herr">
+        <label><input type="checkbox" id="sq-det" ${conDetalle ? 'checked' : ''}> Show the blocks of each unit (phonics, vocabulary, reading, writing…)</label>
+        <button class="sq-g" type="button" onclick="window.print()">🖨️ Print</button>
+        <span class="muted">Scroll sideways; the grade row and the first column stay put.</span>
+      </div>
+      <div class="sq-twrap"><table class="sq-t">
+        <thead><tr><th></th>${grados.map(g => `<th class="${primaria.has(g) ? 'prim' : ''}">${esc(g)}
+          <small>${esc(via(g).cefr || '')}</small></th>`).join('')}</tr></thead>
+        <tbody>
+          ${sep('Pathway')}
+          ${fila('Age', g => v(g, 'edad'))}
+          ${fila('CEFR level', g => v(g, 'cefr'))}
+          ${fila('Cambridge exam', g => v(g, 'examen'))}
+          ${fila('MINEDU cycle', g => v(g, 'minedu'))}
+          ${fila('Grammar for the year', g => v(g, 'gramatica'))}
+          ${fila('Writing', g => v(g, 'escritura'))}
+          ${fila('Reading', g => v(g, 'lectura'))}
+          ${sep('The six units of the year')}
+          ${filasU.join('')}
+          ${sep('By the end of the year, the student can…')}
+          ${fila('Listening', g => b(g, 'listening'))}
+          ${fila('Speaking', g => b(g, 'speaking'))}
+          ${fila('Reading', g => b(g, 'reading'))}
+          ${fila('Writing', g => b(g, 'writing'))}
+          ${fila('Grammar & Vocabulary', g => b(g, 'lengua'))}
+        </tbody>
+      </table></div>`;
+  }
+
   function pinta() {
     const main = document.getElementById('main');
     const g = gradoActivo;
@@ -202,6 +286,7 @@
     const botones = (DATOS.pathway || []).map(p =>
       `<button class="sq-g${p.grado === g ? ' on' : ''}${primaria.has(p.grado) ? ' prim' : ''}"
         data-g="${p.grado}" type="button">${p.grado}</button>`).join('');
+    const todos = `<button class="sq-g all${vista === 'tabla' ? ' on' : ''}" type="button" data-todos="1">📋 All grades in one table</button>`;
 
     main.innerHTML = `<style>${CSS}</style>
       <div class="card">
@@ -209,20 +294,25 @@
         <p class="muted">What applies to each grade: level, exam, the six themes for the year
           and how the platform covers it today. It comes from coordination’s master document
           (${esc(DATOS.origen || '')}).</p>
-        <div class="sq-grados">${botones}</div>
+        <div class="sq-grados">${botones}${todos}</div>
+        ${vista === 'tabla' ? tabla() : `
         ${ficha(g)}
         ${benchmarks(g)}
         ${resumenAudit(audit(g))}
         <h3>The six units of the year</h3>
-        ${unidades(g)}
+        ${unidades(g)}`}
         ${calendario()}
       </div>`;
 
-    main.querySelectorAll('.sq-g').forEach(b => b.onclick = () => {
-      gradoActivo = b.dataset.g;
+    main.querySelectorAll('.sq-g[data-g]').forEach(b => b.onclick = () => {
+      gradoActivo = b.dataset.g; vista = 'grado';
       pinta();
       main.scrollIntoView({ block: 'start', behavior: 'smooth' });
     });
+    const t = main.querySelector('[data-todos]');
+    if (t) t.onclick = () => { vista = vista === 'tabla' ? 'grado' : 'tabla'; pinta(); };
+    const det = main.querySelector('#sq-det');
+    if (det) det.onchange = () => { conDetalle = det.checked; pinta(); };
   }
 
   /* ---------- entrada ---------- */
