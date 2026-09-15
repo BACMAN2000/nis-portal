@@ -883,29 +883,29 @@ function studentGames(){ _setNav('games'); $('#main').innerHTML = `${_backBtn("w
    nombre lo pone el dominio dentro de la propia pagina, asi que no hay dos
    copias que mantener. */
 function dictPanel(){
-  return `<iframe src="dictionary-app/index.html?v=78f9c77e&embed=1" title="NIS Dictionary"
+  return `<iframe src="dictionary-app/index.html?v=eb2eb919&embed=1" title="NIS Dictionary"
     style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 
 function wordformPanel(){
-  return `<iframe src="word-formation-app/index.html?v=8323c1cd&embed=1" title="Word Formation"
+  return `<iframe src="word-formation-app/index.html?v=f52db718&embed=1" title="Word Formation"
     style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 
 /* Collocations e idioms: las otras dos apps de vocabulario. Mismo trato que
    phrasal verbs, embebidas para no sacar al alumno del portal. */
 function collocationsPanel(){
-  return `<iframe src="collocations-app/index.html?v=d0287248&embed=1" title="Collocations"
+  return `<iframe src="collocations-app/index.html?v=51467f31&embed=1" title="Collocations"
     style="width:100%;height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 
 function idiomsPanel(){
-  return `<iframe src="idioms-app/index.html?v=7040bf3b&embed=1" title="Idioms"
+  return `<iframe src="idioms-app/index.html?v=3f7a35a0&embed=1" title="Idioms"
     style="width:100%;height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 
 function phrasalPanel(){
-  return `<iframe src="phrasal-app/index.html?v=360c15eb&embed=1" title="Phrasal Verbs"
+  return `<iframe src="phrasal-app/index.html?v=d9f2b495&embed=1" title="Phrasal Verbs"
     style="width:100%;height:600px;border:0;border-radius:12px;display:block"></iframe>`;
 }
 
@@ -1509,55 +1509,9 @@ window._acGrantForm=async(btn)=>{
     ? `<span style="color:var(--danger,#b91c1c)">Could not grant: ${esc(error.message)}</span>`
     : `✓ <b>${n}</b> extra life(s) granted to <b>${esc(name)}</b> for <b>${esc(acActLabel(activity))}</b>. The student receives them when reloading the activity.`;
 };
-async function adminOverview(){
-  const { data:profs } = await sb.from('profiles').select('role,grade_id,cefr_level');
-  const { count:att } = await sb.from('exam_attempts').select('*',{count:'exact',head:true});
-  const { data:mocks } = await sb.from('mock_access').select('grade_id,unlocked');
-  const { count:teacherAcc } = await sb.from('teacher_access').select('*',{count:'exact',head:true});
-  const mockMap={}; (mocks||[]).forEach(m=>mockMap[m.grade_id]=m.unlocked);
-  const students=(profs||[]).filter(p=>p.role==='student');
-  const byLevel=LEVELS.map(l=>({l,n:students.filter(s=>s.cefr_level===l).length}));
-  $('#main').innerHTML=`<h1>Overview</h1>
-    <div class="grid cols-3">
-      <div class="stat"><div class="n">${students.length}</div><div class="l">Students</div></div>
-      <div class="stat"><div class="n">${(profs||[]).filter(p=>p.role==='teacher').length}</div><div class="l">Teachers</div></div>
-      <div class="stat"><div class="n">${att||0}</div><div class="l">Exams taken</div></div>
-    </div>
-    <div class="card"><h2>Students by level</h2>
-      ${byLevel.map(x=>`<div style="margin:8px 0"><div class="row" style="justify-content:space-between"><b>${x.l}</b><span class="muted">${x.n}</span></div>
-        <div class="bar"><span style="width:${students.length?Math.round(x.n/students.length*100):0}%"></span></div></div>`).join('')}
-    </div>
-    <div class="card"><h2>What is turned on?</h2>
-      <p class="muted" style="margin-top:-4px">Status of <b>Mocks</b> by grade (click the 🔓 Mocks tab to change them). ${teacherAcc||0} teacher(s) with access configured (👨‍🏫 Teachers tab).</p>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px">
-        ${GRADES.map(g=>`<span class="badge ${mockMap[g.id]?'on':'off'}" style="font-size:.82rem">${g.name}: ${mockMap[g.id]?'🔓':'🔒'}</span>`).join('')}
-      </div>
-      <div class="row" style="gap:8px;margin-top:14px"><button class="btn sm" onclick="adminNewUser()">+ Create student</button><button class="btn sm ghost" onclick="adminNewTeacher()">+ Create teacher</button><button class="btn sm ghost" onclick="renderAdmin('stats')">📈 View statistics</button></div>
-    </div>
-    <div class="card"><h2>Roles and permissions</h2>
-      <p class="muted" style="margin-top:-4px">Each person signs in with their email, and their role decides what they see and can do.</p>
-      <div style="overflow-x:auto"><table>
-        <thead><tr><th>Action / View</th><th style="text-align:center">🛡️ Admin</th><th style="text-align:center">👨‍🏫 Teacher</th><th style="text-align:center">🎓 Student</th></tr></thead>
-        <tbody>
-          ${[
-            ['View their own progress and projection','—','—','✓'],
-            ['Take exams (Mocks / Practice)','—','—','✓'],
-            ['View student results','✓ (all)','If enabled · only their grades','—'],
-            ['View student list','✓ (all)','If enabled · only their grades','—'],
-            ['Mark Writing','✓','✓ (their grades)','—'],
-            ['📈 Statistics and reports','✓ (admin only)','—','—'],
-            ['📝 Registration: create / edit / delete users','✓ (admin only)','—','—'],
-            ['Set teacher access and grades','✓ (admin only)','—','—'],
-            ['🔓 Unlock Mocks by grade','✓ (admin only)','—','—'],
-            ['Phonics and MUN Academy','✓','✓','✓']
-          ].map(r=>`<tr><td>${r[0]}</td>
-            <td style="text-align:center">${r[1]}</td>
-            <td style="text-align:center;font-size:.85rem">${r[2]}</td>
-            <td style="text-align:center">${r[3]}</td></tr>`).join('')}
-        </tbody></table></div>
-      <p class="muted" style="font-size:.82rem;margin-top:8px">To set what each teacher sees and which grades, go to <b>👨‍🏫 Teachers</b>. <b>Statistics</b> and user <b>Registration</b> are for the administrator only.</p>
-    </div>`;
-}
+/* La portada del admin vive en overview-panel.js (la misma del profesor,
+   con los bloques de administracion al final). */
+async function adminOverview(){ return window.overviewPanel({admin:true}); }
 async function adminTeachers(){
   const { data:profs, error } = await sb.from('profiles').select('id, full_name, email, active, grades(name)').eq('role','teacher').order('full_name');
   if(error){ $('#main').innerHTML=`<div class="note err">${esc(error.message)}</div>`; return; }
@@ -3609,6 +3563,7 @@ async function renderTeacher(tab){
      ese acceso) no se pinta. Alumnos va suelto arriba: es por donde entra
      casi siempre. */
   const suelto=[], correccion=[], seguimiento=[], clases=[], cursos=[], cambridge=[], permisos=[];
+  suelto.push({key:'overview',label:'🏠 Overview'});
   if(acc.can_students) suelto.push({key:'students',label:'👥 Students'});
   if(acc.can_results||acc.can_students) correccion.push({key:'levels',label:'🧭 Levels & roadmap'});
   if(acc.can_results){
@@ -3677,6 +3632,7 @@ async function renderTeacher(tab){
   const active = (tab && claves.indexOf(tab)>=0) ? tab : claves[0];
   document.body.innerHTML = shell(nav, active, `<div class="center muted">Loading…</div>`, true);
   bindNav(renderTeacher);
+  if(active==='overview') return window.overviewPanel({admin:false});
   if(active==='help') return $('#main').innerHTML = ayudaBody();
   if(active==='mun') return $('#main').innerHTML = munBody();
   if(active==='livequiz') return $('#main').innerHTML = liveQuizBody();
