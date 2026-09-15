@@ -405,8 +405,16 @@ if(window.NIS_WORK) NIS_WORK.attach(Object.assign(NIS_WORK.ficha(), {
         if(x.given && x.given[r] && x.given[r][c]) return;
         huecos++; if(v) puestas++;
       }));
+      out[par[0] + ' / ' + (palabra || ('word ' + (+par[1] + 1)))] =
+        puestas + '/' + huecos + ' filled / ' + fmt(x.elapsed || 0) +
+        ' / hints ' + (x.hints || 0) + (x.done ? ' / solved' : '');
+    });
+    return out;
+  }
+}));
+
 newPuzzle();
 </script>
-<script src="nis-tema.js?v=410c4879" defer></script>
+<script src="nis-tema.js?v=26380e12" defer></script>
 </body>
 </html>

@@ -12,17 +12,6 @@
 (function () {
   var me = document.currentScript;
   var KEY = (me && me.getAttribute('data-key')) || 'nis_splash_seen';
-  /* data-hold-body: mientras el splash tapa la pantalla, el <body> no se
-     dispone (display:none). Sin esto, Chrome se quedaba colgado para siempre
-     («La página no responde») cuando el portal pintaba un panel grande (la
-     tabla de Usuarios del admin, 163 filas) DEBAJO del splash: no era el JS
-     (acababa en 168 ms) sino el primer layout+composición de ese contenido con
-     el overlay fijo encima; visibility:hidden no bastaba, display:none sí.
-     Reproducido el 14-sep-2026 con datos sintéticos en un Chrome limpio. Al
-     cerrarse el splash el body entra con un fundido corto. Solo lo pide el
-     portal (index.html): el curso no lo necesita y su motor mide el layout al
-     arrancar. */
-  var HOLD = !!(me && me.hasAttribute('data-hold-body'));
   // ?nosplash=1 lo desactiva: sirve para capturas, pruebas automaticas y
   // para enlazar una pantalla concreta sin la animacion de por medio.
   if (/[?&]nosplash=1/.test(location.search)) return;
@@ -33,7 +22,6 @@
 
   var style = document.createElement('style');
   style.textContent = CSS;
-  if (HOLD) style.textContent += "html.nisSplashHold{background:var(--bg,#fff)}html.nisSplashHold>body{display:none!important}html.nisSplashIn>body{animation:nisBodyIn .35s ease-out}@keyframes nisBodyIn{from{opacity:0}to{opacity:1}}";
   (document.head || document.documentElement).appendChild(style);
 
   var host = document.createElement('div');
@@ -43,7 +31,6 @@
   // document.body.innerHTML = ... y ahi el splash moriria a media
   // animacion. Al estar fuera del body sobrevive a esos repintados.
   document.documentElement.appendChild(el);
-  if (HOLD) document.documentElement.classList.add('nisSplashHold');
   try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
 
   var done = false;
@@ -51,25 +38,11 @@
     if (done) return;
     done = true;
     if (el.parentNode) el.parentNode.removeChild(el);
-    if (HOLD) {
-      var h = document.documentElement;
-      h.classList.remove('nisSplashHold'); h.classList.add('nisSplashIn');
-      setTimeout(function () { h.classList.remove('nisSplashIn'); }, 400);
-      // El login enfoca su campo al pintarse; con el body sin disponer ese
-      // foco se pierde, así que se repite aquí.
-      try {
-        var f = document.getElementById('li_email');
-        if (f && (!document.activeElement || document.activeElement === document.body)) (f.value ? document.getElementById('li_pw') || f : f).focus();
-      } catch (e) {}
-    }
   }
   el.addEventListener('click', close);
 
   var dur = parseFloat(getComputedStyle(el).getPropertyValue('--dur')) || 3.45;
-  // Con el body sin disponer, el fundido de salida del splash (último 10 %)
-  // dejaría ver el fondo vacío: se cierra al empezar ese fundido y lo
-  // sustituye la entrada del body.
-  var t0 = Date.now(), tope = dur * 1000 * (HOLD ? 0.9 : 1) + 60;
+  var t0 = Date.now(), tope = dur * 1000 + 60;
   setTimeout(close, tope);
   /* El temporizador no es de fiar: en una pestaña abierta en segundo plano o
      restaurada por el navegador puede no dispararse y la capa se queda tapando

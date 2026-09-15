@@ -99,8 +99,19 @@
     return document.elementFromPoint(x, y) === boton;
   }
 
+  /* La barra en la que ya se probo. Si el boton no cabe en ella (tapado o
+     fuera de la pantalla) se va al body, y NO se vuelve a intentar en esa
+     misma barra: recolocar() -> colocar() -> body -> mutacion -> recolocar()
+     era un bucle sin fin que dejaba la pagina colgada («La pagina no
+     responde», 12 y 14-sep-2026: el splash tapaba la cabecera del portal al
+     cargar, y en word-wheel/cambridge-bonus la propia barra tapa el boton).
+     Solo se reintenta cuando aparece una barra nueva (el portal repinta la
+     cabecera con cada pantalla). */
+  var barraIntentada = null;
+
   function colocar() {
     var barra = buscaBarra();
+    barraIntentada = barra;
     if (barra) {
       boton.style.cssText = ESTILO_EN_BARRA;
       barra.appendChild(boton);
@@ -122,7 +133,7 @@
   function recolocar() {
     if (!boton || !document.body.contains(boton)) return;
     var barra = buscaBarra();
-    if (barra && boton.parentElement !== barra) colocar();
+    if (barra && barra !== barraIntentada && boton.parentElement !== barra) colocar();
   }
 
   // Si nadie ha elegido, se sigue al sistema y se sigue reaccionando a él.
@@ -154,6 +165,12 @@
     crearBoton();
     setTimeout(recolocar, 1500);   // por si la cabecera la pinta el JS de la pagina
     vigila();
+    // Si quedo suelto porque la barra estaba tapada (el splash de entrada, un
+    // modal), se vuelve a probar de tarde en tarde: un intento cada 4 s como
+    // mucho, nunca en bucle.
+    setInterval(function () {
+      if (boton && boton.parentElement === document.body && buscaBarra()) { barraIntentada = null; recolocar(); }
+    }, 4000);
   }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', arranca);

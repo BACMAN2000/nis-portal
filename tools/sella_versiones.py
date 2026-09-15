@@ -91,7 +91,9 @@ def una_pasada(escribir, solo_estacionados=False):
 
         def sella_ref(m):
             comilla, ruta, ver = m.group(1), m.group(2), m.group(3)
-            destino = os.path.normpath(os.path.join(carpeta, ruta))
+            # /ruta absoluta (404.html la usa porque GitHub Pages la sirve desde
+            # cualquier carpeta): se resuelve contra la raiz, no contra la carpeta.
+            destino = os.path.normpath(os.path.join(RAIZ, ruta.lstrip('/')) if ruta.startswith('/') else os.path.join(carpeta, ruta))
             if not os.path.isfile(destino):
                 return m.group(0)          # ruta armada al vuelo: no es nuestro asunto
             if os.path.samefile(destino, p):
