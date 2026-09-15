@@ -447,6 +447,16 @@ function cambridgeInfoBody(){ return `
     <a class="btn" href="cambridge-info.html?v=3d595420" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
   </div>
   <iframe src="cambridge-info.html?v=3d595420" title="Cambridge info" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#eef3f9"></iframe>`; }
+/* 🎶 Rhymes & chants — rimas tradicionales de patio (dominio publico), las
+   primeras 100 palabras y frases de uso diario, para los profesores de
+   primaria. Datos en nis-fun/songs/tradicionales.json, etiquetados con la
+   lista YLE; la pagina es rhymes.html, embebida igual que Info Cambridge. */
+function rhymesBody(){ return `
+  <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px">
+    <div class="muted" style="flex:1;min-width:220px">Traditional playground rhymes, counting-out and clapping chants, the first 100 words and everyday phrases for G1–G5, tagged with the YLE wordlist. Filter, search and print.</div>
+    <a class="btn" href="rhymes.html?v=88a64138" target="_blank" rel="noopener" style="text-decoration:none">🖥️ Open in full screen ↗</a>
+  </div>
+  <iframe src="rhymes.html?v=88a64138" title="Rhymes & chants" style="width:100%;height:82vh;min-height:600px;border:0;border-radius:12px;display:block;background:#eef3f9"></iframe>`; }
 /* Los tres cursos de Fun for Nordic (YLE). El motor es UNO solo — nis-fun/engine —
    y el nivel va en la URL; aqui se embebe igual que Games Lab o Phonics para que
    el profesor lo vea sin salir del portal. Datos de nis-fun/content/levels.json. */
@@ -1204,6 +1214,7 @@ async function renderAdmin(tab='users'){
       {key:'funstarters',label:'🐧 Starters'},
       {key:'funmovers',label:'🐺 Movers'},
       {key:'funflyers',label:'🦅 Flyers'},
+      {key:'rhymes',label:'🎶 Rhymes & chants'},
       {key:'fr',label:'🇫🇷 Cap sur le français'},
     ]},
     /* Cambridge: las apps del examen y los dos candados que lo abren. Los
@@ -1280,6 +1291,7 @@ async function renderAdmin(tab='users'){
   if(tab==='funstarters') return $('#main').innerHTML = funCursoBody('starters');
   if(tab==='funmovers') return $('#main').innerHTML = funCursoBody('movers');
   if(tab==='funflyers') return $('#main').innerHTML = funCursoBody('flyers');
+  if(tab==='rhymes') return $('#main').innerHTML = rhymesBody();
   if(tab==='scope') return scopePanel();
   if(tab==='littlereaders') return littleReadersPanel();
   if(tab==='teachers') return adminTeachers();
@@ -3625,6 +3637,7 @@ async function renderTeacher(tab){
   cursos.push({key:'funstarters',label:'🐧 Starters'});
   cursos.push({key:'funmovers',label:'🐺 Movers'});
   cursos.push({key:'funflyers',label:'🦅 Flyers'});
+  cursos.push({key:'rhymes',label:'🎶 Rhymes & chants'});
   cursos.push({key:'fr',label:'🇫🇷 Cap sur le français'});
   cambridge.push({key:'cambridgehub',label:'🎓 YLE + Main Suite'});
   if(teacherAllowedGrades().length) cambridge.push({key:'yle',label:'🛡️ YLE panel'});
@@ -3706,6 +3719,7 @@ async function renderTeacher(tab){
   if(active==='funstarters') return $('#main').innerHTML = funCursoBody('starters');
   if(active==='funmovers') return $('#main').innerHTML = funCursoBody('movers');
   if(active==='funflyers') return $('#main').innerHTML = funCursoBody('flyers');
+  if(active==='rhymes') return $('#main').innerHTML = rhymesBody();
   if(active==='cambridgehub') return studentCambridgePortal();
   if(active==='uoe') return $('#main').innerHTML = useOfEnglishBody();
   if(active==='pizarra') return $('#main').innerHTML = pizarraBody();
