@@ -3,9 +3,11 @@
    La paleta del portal vive en nis-tokens.css, que ya trae los dos temas. Esto
    es solo el interruptor: pone data-theme en el <html> y lo guarda.
 
-   Tres estados, no dos. Quien no toca nada sigue al sistema —es la mayoría—;
-   quien elige, manda sobre el sistema hasta que vuelva a elegir. Por eso el
-   botón muestra a dónde te lleva, no dónde estás.
+   El portal sale claro para todo el mundo. Hasta el 15-sep-2026 seguía al
+   sistema de quien no había elegido nada, y eso lo cambiaba solo a mitad de
+   clase cuando el equipo pasaba a oscuro por su cuenta. Ahora oscuro es solo
+   para quien lo pide con el botón, y se queda así en ese navegador hasta que
+   vuelva a pulsarlo. Por eso el botón muestra a dónde te lleva, no dónde estás.
 
    El parpadeo se evita en el <head> de cada página con una línea que lee
    localStorage antes de pintar: si esperásemos a este archivo, la página
@@ -15,14 +17,8 @@
   if (window.NISTema) return;
   var CLAVE = 'nis-tema';
 
-  function guardado() {
-    try { return localStorage.getItem(CLAVE) || ''; } catch (_) { return ''; }
-  }
-  function delSistema() {
-    return window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  }
   function actual() {
-    return document.documentElement.getAttribute('data-theme') || delSistema();
+    return document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
   }
   function aplicar(t) {
     document.documentElement.setAttribute('data-theme', t);
@@ -31,12 +27,21 @@
   }
   function alternar() { aplicar(actual() === 'dark' ? 'light' : 'dark'); }
 
-  var boton = null;
+  /* En la barra cabe la palabra y así se ve que es un botón; suelto en una
+     esquina va solo el símbolo. El idioma lo dice el <html lang>: el portal
+     está en inglés y Fun for Nordic en francés tiene sus seis páginas. */
+  var LANG = (document.documentElement.lang || 'en').slice(0, 2).toLowerCase();
+  var PALABRA = { en: ['Dark', 'Light'], fr: ['Sombre', 'Clair'], es: ['Oscuro', 'Claro'] }[LANG] || ['Dark', 'Light'];
+  var TITULO = { en: ['Switch to dark mode', 'Switch to light mode'],
+                 fr: ['Passer en mode sombre', 'Passer en mode clair'],
+                 es: ['Ver en oscuro', 'Ver en claro'] }[LANG] || ['Switch to dark mode', 'Switch to light mode'];
+  var boton = null, enBarra = false;
   function pintarBoton() {
     if (!boton) return;
     var oscuro = actual() === 'dark';
-    boton.textContent = oscuro ? '☀' : '☾';
-    boton.title = oscuro ? 'Switch to light mode' : 'Switch to dark mode';
+    var simbolo = oscuro ? '☀' : '☾';
+    boton.textContent = enBarra ? simbolo + ' ' + PALABRA[oscuro ? 1 : 0] : simbolo;
+    boton.title = TITULO[oscuro ? 1 : 0];
     boton.setAttribute('aria-label', boton.title);
   }
 
@@ -57,8 +62,8 @@
 
   var ESTILO_EN_BARRA = 'margin-left:8px;border:1px solid var(--line,#e9ecf3);' +
     'background:var(--card,#fff);color:var(--ink,#1e2433);border-radius:9px;' +
-    'width:34px;height:34px;line-height:1;cursor:pointer;font-size:1rem;' +
-    'flex:0 0 auto;padding:0';
+    'height:34px;padding:0 12px;line-height:1;cursor:pointer;font-size:.85rem;' +
+    'font-weight:600;font-family:inherit;white-space:nowrap;flex:0 0 auto';
 
   /* Sin barra donde meterlo -los readers, la pizarra, los juegos- va suelto en
      una esquina. Discreto y por encima de la pagina, pero por debajo de los
@@ -85,7 +90,6 @@
       document.head.appendChild(st);
     }
     colocar();
-    pintarBoton();
   }
 
   /* Las cuatro esquinas, por orden. La pizarra y los juegos tienen sus propias
@@ -113,12 +117,16 @@
     var barra = buscaBarra();
     barraIntentada = barra;
     if (barra) {
+      enBarra = true;
       boton.style.cssText = ESTILO_EN_BARRA;
+      pintarBoton();
       barra.appendChild(boton);
       // Un <header> puede ser un hero con la foto encima, y una .bar un
       // contenedor cualquiera: si ahi el boton queda tapado, no vale.
       if (libre()) return;
     }
+    enBarra = false;
+    pintarBoton();
     document.body.appendChild(boton);
     for (var i = 0; i < ESQUINAS.length; i++) {
       boton.style.cssText = ESTILO_SUELTO + ';' + ESQUINAS[i];
@@ -136,15 +144,6 @@
     if (barra && barra !== barraIntentada && boton.parentElement !== barra) colocar();
   }
 
-  // Si nadie ha elegido, se sigue al sistema y se sigue reaccionando a él.
-  if (!guardado() && window.matchMedia) {
-    try {
-      matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () {
-        if (!guardado()) pintarBoton();
-      });
-    } catch (_) {}
-  }
-
   window.NISTema = { alternar: alternar, aplicar: aplicar, actual: actual };
 
   /* El portal se dibuja entero con document.body.innerHTML en cada pantalla, y
@@ -157,7 +156,7 @@
       if (pendiente || !boton) return;
       if (document.body.contains(boton)) { recolocar(); return; }
       pendiente = true;
-      setTimeout(function () { pendiente = false; colocar(); pintarBoton(); }, 60);
+      setTimeout(function () { pendiente = false; colocar(); }, 60);
     }).observe(document.body, { childList: true });
   }
 

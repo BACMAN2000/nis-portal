@@ -9,7 +9,7 @@
 <link rel="preload" href="fonts/GothamBook.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="nis-fonts.css?v=fd196882">
 <script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<link rel="stylesheet" href="nis-tokens.css?v=36174a4f">
+<link rel="stylesheet" href="nis-tokens.css?v=b3bffd5c">
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
   body{font:15px/1.55 'Gotham',"Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
@@ -188,6 +188,6 @@ function _pickEn(){ try{ var vs=speechSynthesis.getVoices(); _enVoice=vs.find(fu
 if('speechSynthesis' in window){ _pickEn(); try{ speechSynthesis.onvoiceschanged=_pickEn; }catch(e){} }
 function speakEN(t){ if(!t||!('speechSynthesis' in window))return; var u=new SpeechSynthesisUtterance(t); u.lang='en-GB'; if(_enVoice)u.voice=_enVoice; u.rate=0.95; try{speechSynthesis.cancel();}catch(e){} speechSynthesis.speak(u); }
 </script>
-<script src="nis-tema.js?v=26380e12" defer></script>
+<script src="nis-tema.js?v=f3778b4d" defer></script>
 </body>
 </html>
