@@ -100,5 +100,10 @@ nis-fun/audio/*
 !nis-fun/audio/b2f/
 mocks-cambridge/mp3/
 yle-audio/
-yle-img/
+yle-img/*
+# excepcion: las ilustraciones por palabra de los practice tests YLE (frutas,
+# animales, cosas, acciones) son pocas y pequenas (~5 MB) y SI se sirven de
+# GitHub Pages, para que las tareas sin lamina se vean con dibujo y no emoji.
+# Las laminas grandes (flyers/movers/starters) siguen fuera del repo.
+!yle-img/words/
 _test-admin.html
