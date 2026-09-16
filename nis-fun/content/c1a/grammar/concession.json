@@ -1,0 +1,199 @@
+{
+  "id": "concession",
+  "level": "c1a",
+  "area": "Sentence building",
+  "title": "Concession and contrast at C1",
+  "tagline": "Give ground gracefully, then make your point — the connectors that raise the register.",
+  "cefr": "C1",
+  "exam": [
+    "Reading & Use of English Part 4 — key word transformations (MUCH, MATTER, ALBEIT, MAY, SAID)",
+    "Reading & Use of English Part 2 — open cloze (however, whilst, granted, admittedly)",
+    "Writing Part 1 — essay: conceding a counter-argument before making your case",
+    "Speaking Parts 3 and 4 — sounding balanced when you weigh up two sides of an issue"
+  ],
+  "why": "Concession is what separates a one-sided C1 essay from one that has clearly weighed the other side before arguing its own case. Use of English Part 4 regularly sets these connectors as key words, and Part 2's open cloze often tests the one word that introduces a concession in an academic text. Knowing which device takes a full clause and which takes only a phrase — and which register each belongs to — is exactly what examiners reward under 'range' and 'coherence'.",
+  "diagrams": [
+    {
+      "type": "map",
+      "title": "Concession devices by register",
+      "center": "Concession & contrast",
+      "branches": [
+        {
+          "label": "Formal / academic",
+          "items": ["albeit", "whilst", "granted that"],
+          "tone": "a"
+        },
+        {
+          "label": "Essay-neutral",
+          "items": ["much as", "for all + noun", "however + adj/adv"],
+          "tone": "b"
+        },
+        {
+          "label": "Spoken / conversational",
+          "items": ["that said", "all the same", "even so"],
+          "tone": "c"
+        },
+        {
+          "label": "Inverted / literary",
+          "items": ["Tired as he was", "Try as she might", "No matter how hard"],
+          "tone": "a"
+        }
+      ]
+    },
+    {
+      "type": "transform",
+      "title": "From although to much as",
+      "before": {
+        "text": "Although I admire her ambition, I think she is taking on too much.",
+        "hl": ["Although"]
+      },
+      "after": {
+        "text": "Much as I admire her ambition, I think she is taking on too much.",
+        "hl": ["Much as"]
+      },
+      "steps": [
+        "Replace <b>although</b> with <b>much as</b>.",
+        "<i>Much as</i> is followed by a full clause (subject + verb), exactly like <i>although</i>.",
+        "No change of word order is needed — only the connector changes, and the tone becomes more grudging."
+      ]
+    },
+    {
+      "type": "formula",
+      "title": "The inverted, literary pattern",
+      "parts": [
+        {"chip": "Adjective / Adverb", "tone": "kw", "ex": "Tired / Hard"},
+        {"chip": "as / though", "tone": "a"},
+        {"chip": "subject + verb", "tone": "b", "ex": "he was / she tried"},
+        {"chip": "→", "tone": "arrow"},
+        {"chip": "main clause", "tone": "c", "ex": "he refused to rest"}
+      ],
+      "caption": "Front the adjective or adverb, then add as or though — a compact, literary way to concede a point before making yours."
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "Concessive connector", "tone": "kw", "ex": "Although / Much as / Albeit"},
+      {"chip": "clause or phrase", "tone": "a", "ex": "I respect his view / a lack of resources"},
+      {"chip": "→", "tone": "arrow"},
+      {"chip": "main clause (the real point)", "tone": "b", "ex": "I cannot agree"}
+    ],
+    "table": {
+      "head": ["Connector", "Pattern", "Example"],
+      "rows": [
+        ["much as", "much as + clause, main clause", "<b>Much as</b> I respect the decision, I think it was rushed."],
+        ["however + adjective/adverb", "however + adj/adv + clause, main clause", "<b>However</b> carefully you plan a field trip, something always goes wrong."],
+        ["no matter how/what/who/whatever", "no matter + wh-word + clause, main clause", "<b>No matter how</b> much revision you do, nerves still get the better of you."],
+        ["whilst", "whilst + clause, main clause (contrast, formal)", "<b>Whilst</b> the proposal has merit, the budget makes it unrealistic."],
+        ["albeit", "main clause, albeit + adjective/adverb/noun phrase", "The trip was a success, <b>albeit</b> an exhausting one."],
+        ["granted / admittedly", "Granted / Admittedly, clause. Main clause.", "<b>Granted</b>, the museum was closed, but the walk through the old town made up for it."],
+        ["for all + noun phrase", "for all + noun phrase, main clause", "<b>For all</b> his experience, the guide still misjudged the weather on the trek."],
+        ["adjective/adverb + as/though", "Adj/Adv + as/though + S + V, main clause", "<b>Difficult as</b> it was, Nadia finished the essay before midnight."]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Conceding formally before disagreeing",
+      "examples": [
+        {"text": "<b>Much as</b> I enjoyed the debate, I still think the motion was poorly worded.", "note": "grudging concession before the writer's real opinion"},
+        {"text": "<b>Whilst</b> the coastal route is more scenic, it adds two hours to the journey.", "note": "whilst = while, but favoured in formal writing"}
+      ]
+    },
+    {
+      "point": "Conceding with however, no matter how / what / who, and whatever",
+      "examples": [
+        {"text": "<b>However</b> well you know Cusco, the altitude still catches you out.", "note": "however + adjective fronted together"},
+        {"text": "<b>No matter how</b> hard the team trained, the final result was out of their hands.", "note": "no matter how + adjective + clause"},
+        {"text": "<b>Whatever</b> the examiners decide, the school will appeal the result.", "note": "whatever = it makes no difference what"}
+      ]
+    },
+    {
+      "point": "Adding a concession after the point has already been made",
+      "examples": [
+        {"text": "The internet connection in the village was patchy. <b>Even so</b>, the video call went ahead.", "note": "even so ~ despite that"},
+        {"text": "It rained for most of the excursion. <b>All the same</b>, nobody wanted to go home early.", "note": "all the same, slightly more conversational than even so"},
+        {"text": "The lecture overran badly. <b>That said</b>, it was the most useful session of the week.", "note": "that said, common in spoken and semi-formal register"}
+      ]
+    },
+    {
+      "point": "Emphatic, literary concession: inversion and for all",
+      "examples": [
+        {"text": "<b>Tired as</b> she was, Sofia stayed up to finish the mural for the festival.", "note": "adjective + as, inverted, literary tone"},
+        {"text": "<b>Try as</b> he might, Liam could not persuade the committee to change the date.", "note": "try as + subject + might, a fixed pattern"},
+        {"text": "<b>For all</b> its reputation, the new app crashes constantly during exams.", "note": "for all + noun phrase = despite"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "Much as I respect him, but I cannot agree.", "right": "<b>Much as</b> I respect him, I cannot agree.", "why": "Much as already signals the contrast; adding but as well duplicates the connector."},
+    {"wrong": "However you are tired, finish the report.", "right": "<b>However tired</b> you are, finish the report.", "why": "However and the adjective or adverb must be fronted together, before the subject."},
+    {"wrong": "Whilst I was in Arequipa, but the volcano was hidden in cloud.", "right": "<b>Whilst</b> I was in Arequipa, the volcano was hidden in cloud.", "why": "Whilst already carries the contrast on its own; no extra but is needed."},
+    {"wrong": "The hike was hard, granted the views were spectacular.", "right": "The hike was hard. <b>Granted</b>, the views were spectacular.", "why": "Granted / admittedly opens its own sentence or clause; it cannot simply join two clauses like and."},
+    {"wrong": "Albeit the trek was gruelling, we reached the summit.", "right": "The trek was gruelling, <b>albeit</b> a rewarding one.", "why": "Albeit is followed by an adjective, adverb or noun phrase, not a full finite clause."},
+    {"wrong": "Difficult it was, Nadia kept going.", "right": "<b>Difficult as</b> it was, Nadia kept going.", "why": "The inverted pattern needs as (or though) immediately after the fronted adjective."}
+  ],
+  "dialogue": {
+    "title": "Rehearsal week",
+    "context": "Miss Vega checks on the school play three days before the festival, and Mateo, Sofia, Liam and Nadia admit how far behind they really are.",
+    "lines": [
+      {"speaker": "Miss Vega", "text": "How's the play coming along? Be honest with me."},
+      {"speaker": "Mateo", "text": "<b>Much as</b> I hate to admit it, we're behind schedule."},
+      {"speaker": "Sofia", "text": "<b>However</b> hard we rehearse, Liam still forgets act two."},
+      {"speaker": "Liam", "text": "That's unfair — <b>no matter how</b> many times I read the script, the lines just vanish on stage."},
+      {"speaker": "Nadia", "text": "<b>Whilst</b> that's true, the costumes are finally ready, so that's one problem solved."},
+      {"speaker": "Miss Vega", "text": "Small mercies. What about the sound system?"},
+      {"speaker": "Sofia", "text": "It's still unreliable. <b>Even so</b>, we tested it twice yesterday and it held up both times."},
+      {"speaker": "Mateo", "text": "<b>For all</b> its problems, this is still the best set the school has ever built."},
+      {"speaker": "Liam", "text": "<b>Tired as</b> we all are, I honestly think we can pull this off by Friday."},
+      {"speaker": "Nadia", "text": "<b>Granted</b>, we're cutting it close, but I'd rather finish strong than rush now."},
+      {"speaker": "Miss Vega", "text": "That's the spirit. One more full run tomorrow, then."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "___ the criticism, the director refused to change the ending.", "options": ["For all", "Despite of", "Even so"], "answer": 0, "why": "for all + noun phrase means despite; 'despite of' is not standard English."},
+        {"sentence": "___ hard you practise, stage fright never fully disappears.", "options": ["No matter", "No matter how", "However much"], "answer": 1, "why": "no matter how + adjective + clause; 'no matter' alone needs a wh-word after it."},
+        {"sentence": "The plan was risky. ___, the team voted to go ahead.", "options": ["Much as", "Whilst", "Even so"], "answer": 2, "why": "even so links back to a fact already stated, in a new sentence."},
+        {"sentence": "___ I understand your concerns, I still think we should proceed.", "options": ["Much as", "For all", "Albeit"], "answer": 0, "why": "much as + clause (subject + verb) expresses grudging concession; albeit cannot introduce a full clause like this."},
+        {"sentence": "The show was chaotic backstage, ___ a memorable one.", "options": ["whilst", "albeit", "granted"], "answer": 1, "why": "albeit + adjective phrase follows the clause it qualifies."},
+        {"sentence": "___, the rehearsal ran late, but everyone stayed until the end.", "options": ["Whatever", "As", "Admittedly"], "answer": 2, "why": "admittedly opens a sentence to concede a fact before the contrast that follows."},
+        {"sentence": "___ she might, Sofia could not fix the microphone before the show.", "options": ["Try as", "However", "Whilst"], "answer": 0, "why": "try as + subject + might is a fixed pattern for a determined but unsuccessful attempt."}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with one or two words so that it is grammatically correct.",
+      "items": [
+        {"sentence": "Much ___ I admire her work ethic, I think she needs more rest.", "answers": ["as"]},
+        {"sentence": "___ carefully you word it, the email will upset someone.", "answers": ["However", "No matter how"]},
+        {"sentence": "The results were disappointing. ___, the coach praised the team's effort.", "answers": ["That said", "Even so", "All the same"]},
+        {"sentence": "___ its flaws, the new library is a huge improvement on the old one.", "answers": ["For all"]},
+        {"sentence": "The trek up to the ruins is exhausting, ___ genuinely unforgettable.", "answers": ["albeit"]},
+        {"sentence": "He ___ be the most talented player on the team, but he never turns up to practice on time.", "answers": ["may"]},
+        {"sentence": "Nervous ___ she was, Sofia delivered the speech without a single mistake.", "answers": ["as", "though"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first, using the word given. Do not change the word given. Use between two and five words.",
+      "items": [
+        {"first": "Although I admire her, I think she has taken on too much.", "key": "MUCH", "second_start": "", "second_end": ", I think she has taken on too much.", "answers": ["Much as I admire her"]},
+        {"first": "It doesn't matter how much you practise; stage fright never fully goes away.", "key": "MATTER", "second_start": "No", "second_end": "you practise, stage fright never fully goes away.", "answers": ["matter how much"]},
+        {"first": "The conference speakers were disappointing, yet the audience still enjoyed the networking session.", "key": "SAID", "second_start": "The conference speakers were disappointing.", "second_end": "the audience still enjoyed the networking session.", "answers": ["That said"]},
+        {"first": "Despite his experience, the guide still misjudged the weather on the trek.", "key": "EXPERIENCE", "second_start": "", "second_end": "the guide still misjudged the weather on the trek.", "answers": ["For all his experience,"]},
+        {"first": "The trek was exhausting, but it was genuinely unforgettable.", "key": "ALBEIT", "second_start": "The trek was exhausting,", "second_end": "unforgettable.", "answers": ["albeit genuinely"]},
+        {"first": "He is undeniably talented, but he never turns up to rehearsals on time.", "key": "MAY", "second_start": "He", "second_end": "he never turns up to rehearsals on time.", "answers": ["may be talented, but"]}
+      ]
+    }
+  ],
+  "summary": [
+    "Front a concessive connector to concede a point before disagreeing: <i>Much as</i> I admire it, I can't agree.",
+    "<i>However</i> and <i>no matter how/what/who</i> need the adjective, adverb or wh-word fronted together with them.",
+    "<i>Even so, all the same</i> and <i>that said</i> add a concession as a separate sentence, after the fact has been stated.",
+    "<i>Albeit</i> and <i>for all</i> take a phrase, not a full clause; <i>whilst</i> and <i>much as</i> take a clause.",
+    "Save the inverted, literary forms — <i>Tired as she was, Try as he might</i> — for writing that wants extra weight."
+  ]
+}

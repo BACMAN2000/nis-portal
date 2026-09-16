@@ -1,0 +1,173 @@
+{
+  "id": "purpose-reason-result",
+  "level": "b2f",
+  "area": "Sentence building",
+  "title": "Purpose, reason and result",
+  "tagline": "Why you did it, why it happened, and what happened because of it — three different sets of linkers.",
+  "cefr": "B2",
+  "exam": [
+    "Reading & Use of English Part 4 — key word transformations",
+    "Reading & Use of English Part 2 — open cloze",
+    "Writing Part 1 — essay: cause and effect"
+  ],
+  "why": "Essays and reports need to explain why something is done (purpose), why something happens (reason), and what the consequence is (result) — and B2 First expects three different sets of linkers for these, not one all-purpose 'because'. The fixed patterns so...that, such...that and too/enough are especially common in Part 4.",
+  "diagrams": [
+    {
+      "type": "contrast",
+      "title": "Purpose, reason or result?",
+      "columns": ["Purpose (why you do it)", "Reason (why it happens)", "Result (what happens because of it)"],
+      "rows": [
+        {"label": "Linkers", "cells": ["to / in order to / so as to / so that", "because / as / since / because of / due to / owing to", "so...that / such...that / as a result / therefore"]},
+        {"label": "Followed by", "cells": ["infinitive, or a clause with so that", "a clause (because/as/since) or a noun (because of/due to)", "a clause"]},
+        {"label": "Example", "cells": ["She left early so as to catch the bus.", "The match was cancelled due to the storm.", "It rained so hard that the match was cancelled."]}
+      ]
+    },
+    {
+      "type": "formula",
+      "title": "so ... that / such ... that",
+      "parts": [
+        {"chip": "so", "tone": "kw"},
+        {"chip": "adjective / adverb", "tone": "a", "ex": "tired"},
+        {"chip": "that", "tone": "arrow"},
+        {"chip": "result clause", "tone": "b", "ex": "she fell asleep in class"}
+      ],
+      "caption": "She was <b>so tired that</b> she fell asleep in class."
+    },
+    {
+      "type": "formula",
+      "title": "too / enough",
+      "parts": [
+        {"chip": "too", "tone": "kw"},
+        {"chip": "adjective", "tone": "a", "ex": "young"},
+        {"chip": "to-infinitive", "tone": "b", "ex": "to vote"}
+      ],
+      "caption": "He's <b>too young to vote</b> in the school elections."
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "clause / noun", "tone": "kw"},
+      {"chip": "linker", "tone": "a", "ex": "so that"},
+      {"chip": "purpose / reason / result", "tone": "b", "ex": "she wouldn't miss the bus"}
+    ],
+    "table": {
+      "head": ["Function", "Pattern", "Example"],
+      "rows": [
+        ["Purpose (to-infinitive)", "to + infinitive", "She saved money to buy a new phone."],
+        ["Purpose (formal / negative)", "so as to / in order to (+ not)", "He whispered so as not to wake the baby."],
+        ["Purpose (with a modal)", "so that + can / could / will / would", "Leave early so that you won't be late."],
+        ["Reason (+ clause)", "because / as / since + subject + verb", "Because it was raining, we stayed in."],
+        ["Reason (+ noun)", "because of / due to / owing to + noun", "The trip was cancelled due to bad weather."],
+        ["Result (adjective/adverb)", "so + adj/adv + that", "It was so cold that the match was postponed."],
+        ["Result (noun)", "such (a/an) + adj + noun + that", "It was such a cold day that we stayed in."],
+        ["Result (linking two sentences)", "as a result / therefore / consequently", "It snowed heavily; as a result, school was closed."]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Purpose: explaining why you do something",
+      "examples": [
+        {"text": "Nadia joined the debate club <b>to improve</b> her public speaking.", "note": "simple to-infinitive"},
+        {"text": "Miss Vega spoke slowly <b>so as to make</b> sure everyone understood the instructions.", "note": "so as to, slightly more formal"},
+        {"text": "Take a jacket <b>so that</b> you <b>won't</b> get cold on the way home.", "note": "so that + will/won't for a future purpose"}
+      ]
+    },
+    {
+      "point": "Reason: explaining why something happens",
+      "examples": [
+        {"text": "<b>Because</b> the internet was down, the class had to reschedule the test.", "note": "because + clause"},
+        {"text": "The final was postponed <b>due to</b> the terrible weather in Cusco.", "note": "due to + noun, common in formal writing"},
+        {"text": "<b>Since</b> most students already knew the topic, Miss Vega skipped the introduction.", "note": "since = because, giving background reason"}
+      ]
+    },
+    {
+      "point": "Result: so...that, such...that and too/enough",
+      "examples": [
+        {"text": "The exam was <b>so difficult that</b> half the class ran out of time.", "note": "so + adjective + that"},
+        {"text": "It was <b>such a difficult exam that</b> the teacher gave everyone extra minutes.", "note": "such + a + adjective + noun + that"},
+        {"text": "The instructions were <b>too confusing to follow</b> without help.", "note": "too + adjective + to-infinitive"},
+        {"text": "Mateo wasn't <b>confident enough to raise</b> his hand.", "note": "enough goes after the adjective, before the infinitive"}
+      ]
+    },
+    {
+      "point": "Result linkers between two sentences",
+      "examples": [
+        {"text": "The bridge was closed for repairs. <b>As a result</b>, traffic built up across the city.", "note": "as a result, comma after"},
+        {"text": "Attendance had been falling for months; <b>therefore</b>, the club changed its meeting time.", "note": "therefore after a semicolon"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "We stayed home because the rain.", "right": "We stayed home <b>because of</b> the rain. / We stayed home <b>because</b> it was raining.", "why": "Because needs a full clause; before a noun you need because of, due to or owing to."},
+    {"wrong": "She ran so as she wouldn't miss the bus.", "right": "She ran <b>so that</b> she wouldn't miss the bus.", "why": "So as to is only followed by an infinitive; a clause with a modal needs so that."},
+    {"wrong": "It was such cold that we cancelled the match.", "right": "It was <b>such</b> cold <b>weather that</b> we cancelled the match. / It was <b>so cold that</b> we cancelled the match.", "why": "Such needs a noun (such cold weather); with just an adjective, use so."},
+    {"wrong": "He was too tired to studying.", "right": "He was too tired <b>to study</b>.", "why": "Too + adjective is always followed by a to-infinitive, never -ing."},
+    {"wrong": "She isn't enough old to drive.", "right": "She isn't <b>old enough</b> to drive.", "why": "Enough goes after the adjective, not before it."},
+    {"wrong": "The concert was cancelled, due to the storm damaged the stage.", "right": "The concert was cancelled <b>because</b> the storm damaged the stage. / ... <b>due to</b> the storm damage.", "why": "Due to takes a noun, not a clause with its own verb."}
+  ],
+  "dialogue": {
+    "title": "Why the sports day was cancelled",
+    "context": "Sofia and Mateo are explaining to Nadia, who was absent, why the school sports day didn't happen.",
+    "lines": [
+      {"speaker": "Sofia", "text": "It was cancelled <b>because of</b> the storm — the field was completely flooded."},
+      {"speaker": "Nadia", "text": "Seriously? It rained <b>so hard that</b> they couldn't even open the gates?"},
+      {"speaker": "Mateo", "text": "Exactly. The ground was <b>too wet to walk on</b>, let alone run a race."},
+      {"speaker": "Sofia", "text": "Miss Vega checked the field early <b>so as to decide</b> before everyone arrived."},
+      {"speaker": "Nadia", "text": "Good thinking. <b>Since</b> the buses were already booked, what happened to those?"},
+      {"speaker": "Mateo", "text": "They used them anyway, <b>so that</b> nobody would waste the trip."},
+      {"speaker": "Sofia", "text": "We went to the sports centre instead — it wasn't <b>big enough for</b> everyone, though."},
+      {"speaker": "Nadia", "text": "It was <b>such a chaotic morning that</b> half the year didn't even find out in time."},
+      {"speaker": "Mateo", "text": "True. <b>As a result</b>, they're rescheduling it for next month."},
+      {"speaker": "Sofia", "text": "Good — I trained for weeks <b>to win</b> the relay this year."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "The trip was cancelled ___ the bad weather.", "options": ["because", "due to", "so that"], "answer": 1, "why": "due to + noun"},
+        {"sentence": "Nadia left the party early ___ she wouldn't miss the last bus.", "options": ["so that", "so as to", "because of"], "answer": 0, "why": "so that + clause with a modal (wouldn't)"},
+        {"sentence": "It was ___ noisy in the hall that nobody heard the announcement.", "options": ["such", "so", "too"], "answer": 1, "why": "so + adjective + that"},
+        {"sentence": "The instructions were ___ complicated to follow without an example.", "options": ["so", "enough", "too"], "answer": 2, "why": "too + adjective + to-infinitive"},
+        {"sentence": "Liam wasn't fast ___ to catch the bus in time.", "options": ["too", "so", "enough"], "answer": 2, "why": "adjective + enough + to-infinitive"},
+        {"sentence": "___ she had studied every topic, Sofia still felt nervous.", "options": ["Because of", "Although", "Since"], "answer": 2, "why": "since = because, giving a reason clause"},
+        {"sentence": "The stadium roof was damaged in the storm. ___, the concert was moved indoors.", "options": ["As a result", "So that", "Due to"], "answer": 0, "why": "as a result links two full sentences"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with the correct word or phrase.",
+      "items": [
+        {"sentence": "Mateo woke up early ___ (in order/get) to the airport on time.", "answers": ["in order to get"]},
+        {"sentence": "___ (because/the) traffic, the bus arrived twenty minutes late.", "answers": ["Because of the"]},
+        {"sentence": "The lecture was ___ (so/boring) that half the audience left early.", "answers": ["so boring"]},
+        {"sentence": "It was ___ (such/a) difficult question that nobody answered it correctly.", "answers": ["such a"]},
+        {"sentence": "The bag was ___ (too/heavy) to carry up the stairs alone.", "answers": ["too heavy"]},
+        {"sentence": "She wasn't tall ___ (enough) to reach the top shelf.", "answers": ["enough"]},
+        {"sentence": "Ticket sales fell sharply; ___ (therefore), the festival was shortened to two days.", "answers": ["therefore"]},
+        {"sentence": "He whispered the answer ___ (so as/not) to disturb the rest of the class.", "answers": ["so as not"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first. Use the word given. Do not change it. Use between two and five words.",
+      "items": [
+        {"first": "The road was closed because there had been an accident.", "key": "DUE", "second_start": "The road was closed", "second_end": "an accident.", "answers": ["due to"]},
+        {"first": "Sofia practised every day because she wanted to improve her Spanish.", "key": "ORDER", "second_start": "Sofia practised every day", "second_end": "her Spanish.", "answers": ["in order to improve"]},
+        {"first": "The music was extremely loud, so we couldn't hear each other talk.", "key": "SO", "second_start": "The music was", "second_end": "we couldn't hear each other talk.", "answers": ["so loud that"]},
+        {"first": "Nadia is not experienced enough to lead the project on her own.", "key": "TOO", "second_start": "Nadia is", "second_end": "to lead the project on her own.", "answers": ["too inexperienced"]},
+        {"first": "There was a power cut, so the whole street lost internet access.", "key": "RESULT", "second_start": "There was a power cut;", "second_end": "the whole street lost internet access.", "answers": ["as a result"]},
+        {"first": "He locked the door quietly because he didn't want to wake anyone.", "key": "NOT", "second_start": "He locked the door quietly so as", "second_end": "anyone.", "answers": ["not to wake"]}
+      ]
+    }
+  ],
+  "summary": [
+    "Purpose (why you do it) uses to, in order to, so as to, or so that + clause.",
+    "Reason (why it happens) uses because/as/since + clause, or because of/due to/owing to + noun.",
+    "Result (what happens because of it) uses so + adjective + that, such (a) + noun + that, or as a result/therefore between two sentences.",
+    "Too + adjective + to-infinitive means 'more than necessary'; enough goes after the adjective, before the infinitive.",
+    "Because of and due to need a noun, never a clause with its own verb."
+  ]
+}

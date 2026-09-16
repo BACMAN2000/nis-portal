@@ -1,0 +1,174 @@
+{
+  "id": "reporting-verbs",
+  "level": "b2f",
+  "area": "Reporting",
+  "title": "Reporting verbs and their patterns",
+  "tagline": "Swap 'said' for a verb that shows what someone actually did with their words.",
+  "cefr": "B2",
+  "exam": [
+    "Reading & Use of English Part 4 — key word transformations",
+    "Reading & Use of English Part 1 — multiple-choice cloze",
+    "Speaking Part 3 — reporting what a partner suggested or agreed"
+  ],
+  "why": "Repeating 'said' and 'told' through a whole story or essay sounds flat, and it hides what a person actually did with their words: did they warn, admit, refuse or insist? B2 First rewards the precise verb, and Part 4 regularly turns a line of direct speech into one of these patterns. Losing marks here is usually about the pattern, not the meaning — the wrong preposition, or an infinitive where a gerund belongs.",
+  "diagrams": [
+    {
+      "type": "map",
+      "title": "Reporting verb patterns",
+      "center": "Reporting verbs",
+      "branches": [
+        {"label": "+ -ing (no object)", "items": ["suggest", "recommend", "deny", "admit", "risk"], "tone": "a"},
+        {"label": "+ sb + (not) to-infinitive", "items": ["warn", "advise", "persuade", "remind", "encourage"], "tone": "b"},
+        {"label": "+ to-infinitive (no object)", "items": ["agree", "offer", "refuse", "promise", "threaten"], "tone": "c"},
+        {"label": "+ sb + of + -ing", "items": ["accuse", "suspect"], "tone": "a"}
+      ]
+    },
+    {
+      "type": "contrast",
+      "title": "Same idea, three different patterns",
+      "columns": ["suggest / recommend", "advise / warn / persuade", "accuse / suspect"],
+      "rows": [
+        {"label": "Pattern", "cells": ["+ -ing (or a that-clause)", "+ sb + (not) to-infinitive", "+ sb + of + -ing"]},
+        {"label": "Example", "cells": ["suggested rescheduling the match", "advised us not to be late", "accused him of cheating"]},
+        {"label": "Typical error", "cells": ["suggested me to reschedule (wrong)", "advised to be late — missing sb (wrong)", "accused him to cheat (wrong)"]}
+      ]
+    },
+    {
+      "type": "formula",
+      "title": "Blaming someone: accuse / suspect",
+      "parts": [
+        {"chip": "accuse / suspect", "tone": "kw"},
+        {"chip": "sb", "tone": "a", "ex": "the goalkeeper"},
+        {"chip": "of", "tone": "arrow"},
+        {"chip": "-ing", "tone": "b", "ex": "missing the penalty"}
+      ],
+      "caption": "They <b>accused</b> the goalkeeper <b>of missing</b> the penalty."
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "Reporting verb", "tone": "kw"},
+      {"chip": "(sb)", "tone": "a", "ex": "us"},
+      {"chip": "pattern", "tone": "arrow"},
+      {"chip": "-ing / to-infinitive / that-clause", "tone": "b", "ex": "apologised for missing"}
+    ],
+    "table": {
+      "head": ["Pattern", "Verbs", "Example"],
+      "rows": [
+        ["Verb + -ing", "suggest, recommend, deny, admit, risk", "She suggested postponing the trip."],
+        ["Verb + preposition + -ing", "insist on, apologise for, admit to", "He insisted on paying for the tickets."],
+        ["Verb + sb + of + -ing", "accuse, suspect", "They suspected her of copying."],
+        ["Verb + sb + (not) to-infinitive", "warn, advise, persuade, remind, encourage, tell", "Miss Vega warned us not to be late."],
+        ["Verb + to-infinitive (no object)", "agree, offer, refuse, promise, threaten", "Liam offered to design the poster."],
+        ["Verb + (that) clause", "admit, suggest, insist, deny, agree", "Sofia admitted (that) she'd forgotten."]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Reporting suggestions and advice",
+      "examples": [
+        {"text": "Nadia <b>suggested moving</b> the training session to the morning.", "note": "suggest + -ing, no object"},
+        {"text": "The coach <b>advised us to warm up</b> properly before the match.", "note": "advise + sb + to-infinitive"},
+        {"text": "Miss Vega <b>recommended reading</b> the whole article before the debate.", "note": "recommend + -ing"}
+      ]
+    },
+    {
+      "point": "Admitting, denying and accusing",
+      "examples": [
+        {"text": "Liam finally <b>admitted losing</b> the school key.", "note": "admit + -ing"},
+        {"text": "Sofia <b>denied sending</b> the message, but her name was on it.", "note": "deny + -ing"},
+        {"text": "Two students <b>accused</b> the referee <b>of favouring</b> the other team.", "note": "accuse sb of + -ing"}
+      ]
+    },
+    {
+      "point": "Promises, offers and refusals",
+      "examples": [
+        {"text": "Mateo <b>promised to send</b> the notes before the exam.", "note": "promise + to-infinitive"},
+        {"text": "Nadia <b>offered to translate</b> the poem for the magazine.", "note": "offer + to-infinitive, no object"},
+        {"text": "He <b>refused to apologise</b>, even after Miss Vega spoke to him.", "note": "refuse + to-infinitive"}
+      ]
+    },
+    {
+      "point": "Warnings, reminders and persuasion",
+      "examples": [
+        {"text": "The lifeguard <b>warned</b> the swimmers <b>not to go</b> past the flags.", "note": "warn + sb + not to-infinitive"},
+        {"text": "Can you <b>remind</b> me <b>to bring</b> my ID card tomorrow?", "note": "remind + sb + to-infinitive"},
+        {"text": "Her older brother <b>persuaded</b> her <b>to apply</b> for the scholarship.", "note": "persuade + sb + to-infinitive"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "She suggested me to join the debate team.", "right": "She suggested <b>joining</b> the debate team. / She suggested <b>that I join</b> the debate team.", "why": "<i>Suggest</i> never takes sb + to-infinitive; use -ing or a that-clause."},
+    {"wrong": "He denied to take the money.", "right": "He denied <b>taking</b> the money.", "why": "<i>Deny</i> is followed by -ing, not a to-infinitive."},
+    {"wrong": "They accused him to cheat in the test.", "right": "They accused him <b>of cheating</b> in the test.", "why": "<i>Accuse</i> needs sb + <i>of</i> + -ing, not a bare to-infinitive."},
+    {"wrong": "She recommended to book the tickets early.", "right": "She recommended <b>booking</b> the tickets early.", "why": "<i>Recommend</i> (without an object) is followed by -ing or a that-clause, never to-infinitive."},
+    {"wrong": "He warned to be careful on the ice.", "right": "He warned <b>us to be</b> careful on the ice.", "why": "<i>Warn</i> almost always needs an object (sb) before the to-infinitive."},
+    {"wrong": "I apologised to be late for rehearsal.", "right": "I apologised <b>for being</b> late for rehearsal.", "why": "<i>Apologise</i> is followed by <i>for</i> + -ing, not a to-infinitive."}
+  ],
+  "dialogue": {
+    "title": "Who said what about the group project",
+    "context": "Miss Vega is asking Mateo, Sofia and Liam to explain a mix-up over their class presentation on the Nazca Lines.",
+    "lines": [
+      {"speaker": "Miss Vega", "text": "So, Mateo, you <b>suggested changing</b> the topic on Monday. Why didn't the others know?"},
+      {"speaker": "Mateo", "text": "I did tell them! Sofia even <b>agreed to email</b> you about it."},
+      {"speaker": "Sofia", "text": "I never <b>agreed to do</b> that — I only said I'd think about it."},
+      {"speaker": "Liam", "text": "Actually, Nadia <b>warned us not to leave</b> it until the last minute, remember?"},
+      {"speaker": "Sofia", "text": "She did. And I <b>admitted forgetting</b> about the deadline in front of everyone."},
+      {"speaker": "Miss Vega", "text": "Liam, didn't you <b>offer to finish</b> the slides yourself?"},
+      {"speaker": "Liam", "text": "I did, but then Mateo <b>insisted on redoing</b> the whole design."},
+      {"speaker": "Mateo", "text": "Because the first version was a mess. I'm not going to <b>deny saying</b> that."},
+      {"speaker": "Sofia", "text": "Nobody's <b>accusing</b> anyone <b>of ruining</b> the project, Mateo — we just need a plan now."},
+      {"speaker": "Miss Vega", "text": "Good. I <b>recommend finishing</b> this by Friday, and no more surprises."},
+      {"speaker": "Liam", "text": "Deal. I <b>promise to send</b> the final file tonight."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "The teacher advised us ___ arrive early for the exam.", "options": ["arrive", "to arrive", "arriving"], "answer": 1, "why": "advise + sb + to-infinitive"},
+        {"sentence": "Liam denied ___ the message before the meeting.", "options": ["to read", "reading", "read"], "answer": 1, "why": "deny + -ing"},
+        {"sentence": "They accused the goalkeeper ___ the match.", "options": ["of losing", "to lose", "losing"], "answer": 0, "why": "accuse sb + of + -ing"},
+        {"sentence": "The coach insisted ___ extra training before the tournament.", "options": ["on doing", "to do", "doing"], "answer": 0, "why": "insist on + -ing"},
+        {"sentence": "Mateo offered ___ the presentation slides.", "options": ["designing", "to design", "design"], "answer": 1, "why": "offer + to-infinitive, no object"},
+        {"sentence": "Nadia apologised ___ late to rehearsal.", "options": ["to be", "being", "for being"], "answer": 2, "why": "apologise + for + -ing"},
+        {"sentence": "The manager warned the players ___ late again.", "options": ["not to be", "to not being", "not being"], "answer": 0, "why": "warn + sb + not + to-infinitive"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with the correct form of the verb in brackets.",
+      "items": [
+        {"sentence": "The manager warned the staff ___ (not/be) late for the meeting.", "answers": ["not to be"]},
+        {"sentence": "Sofia admitted ___ (forget) her lines during the play.", "answers": ["forgetting"]},
+        {"sentence": "Liam's parents encouraged him ___ (try) out for the football team.", "answers": ["to try"]},
+        {"sentence": "The police accused the driver ___ (speed) through the town centre.", "answers": ["of speeding"]},
+        {"sentence": "Nadia offered ___ (help) with the school fundraiser.", "answers": ["to help"]},
+        {"sentence": "The coach insisted ___ (train) every morning before school.", "answers": ["on training"]},
+        {"sentence": "Mateo apologised ___ (miss) the rehearsal on Tuesday.", "answers": ["for missing"]},
+        {"sentence": "Mateo denied ___ (not/do) his homework, insisting he had finished it early.", "answers": ["not doing"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first. Use the word given. Do not change it. Use between two and five words.",
+      "items": [
+        {"first": "'I'll help you carry the boxes,' said Liam.", "key": "OFFERED", "second_start": "Liam", "second_end": "carry the boxes.", "answers": ["offered to help"]},
+        {"first": "'You should apply for the exchange programme,' the teacher told Nadia.", "key": "RECOMMENDED", "second_start": "The teacher", "second_end": "for the exchange programme.", "answers": ["recommended applying"]},
+        {"first": "'I didn't take Sofia's charger,' said Mateo.", "key": "DENIED", "second_start": "Mateo", "second_end": "Sofia's charger.", "answers": ["denied taking"]},
+        {"first": "'You must hand in the essay by Friday,' said Miss Vega.", "key": "INSISTED", "second_start": "Miss Vega", "second_end": "in the essay by Friday.", "answers": ["insisted on handing"]},
+        {"first": "'Remember your passport,' Sofia's mum said.", "key": "REMINDED", "second_start": "Sofia's mum", "second_end": "to bring her passport.", "answers": ["reminded her"]},
+        {"first": "'You broke the window, Liam!' said Nadia.", "key": "ACCUSED", "second_start": "Nadia", "second_end": "of breaking the window.", "answers": ["accused Liam"]}
+      ]
+    }
+  ],
+  "summary": [
+    "Reporting verbs replace 'said' with a verb that shows what someone actually did: suggested, denied, warned, offered.",
+    "Each verb has its own pattern — -ing, to-infinitive, sb + to-infinitive, or sb + of + -ing — and mixing them up is the most common mistake.",
+    "Suggest, recommend, admit and deny take -ing (or a that-clause), never sb + to-infinitive.",
+    "Accuse and suspect need sb + of + -ing; warn, advise, persuade and remind need sb + to-infinitive.",
+    "In Part 4, the reporting verb given as the key word usually tells you which pattern the answer needs."
+  ]
+}

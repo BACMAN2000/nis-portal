@@ -1,0 +1,182 @@
+{
+  "id": "comparison-advanced",
+  "level": "c1a",
+  "area": "Comparison & description",
+  "title": "Advanced comparison",
+  "tagline": "Fine degrees of comparison: nowhere near, every bit as, by far, and like vs as.",
+  "cefr": "C1",
+  "exam": [
+    "Reading & Use of English Part 4 — key word transformations (NOWHERE, FAR, BIT, MUCH, HAD, IF)",
+    "Reading & Use of English Part 2 — open cloze (as, than, like)",
+    "Writing Part 2 — reviews and reports: precise, graded comparisons",
+    "Speaking Part 2 — comparing photographs with more than a flat comparative"
+  ],
+  "why": "At C1, a flat comparative such as 'more interesting' or 'as good as' reads as B2. Examiners expect graded, precise comparison: how far below, how exactly equal, or how much further ahead something is. Use of English Part 4 regularly sets these expressions as key words, and Part 2's open cloze often tests the one small word — as, than, like — that a weaker answer gets wrong.",
+  "diagrams": [
+    {
+      "type": "scale",
+      "title": "How close is the comparison?",
+      "left": "well below",
+      "right": "far ahead",
+      "items": [
+        {"label": "nowhere near as difficult", "pct": 5},
+        {"label": "nothing like as expensive", "pct": 15},
+        {"label": "not quite as popular", "pct": 35},
+        {"label": "just as demanding", "pct": 50},
+        {"label": "every bit as talented", "pct": 55},
+        {"label": "as good as any", "pct": 65},
+        {"label": "by far the hardest", "pct": 100}
+      ]
+    },
+    {
+      "type": "contrast",
+      "title": "like vs as vs as if",
+      "columns": ["like (+ noun)", "as (+ role/clause)", "as if / as though (+ unreal)"],
+      "rows": [
+        {"label": "Function", "cells": ["similarity between two things", "a real role, job or true manner", "an impression, often unreal"]},
+        {"label": "Followed by", "cells": ["a noun phrase", "a noun (role) or a clause", "a clause, often past for the unreal"]},
+        {"label": "Example", "cells": ["<b>Like</b> her sister, Nadia plays the violin.", "She works <b>as</b> a tour guide in Cusco.", "He talks <b>as if</b> he owned the place."]},
+        {"label": "Common error", "cells": ["Like she plays the violin", "She works like a guide (but she IS one)", "as if he owns it (too literal for a firm unreal impression)"]}
+      ]
+    },
+    {
+      "type": "formula",
+      "title": "The more..., the more... (with ellipsis)",
+      "parts": [
+        {"chip": "The + comparative", "tone": "kw", "ex": "The harder"},
+        {"chip": "clause", "tone": "a", "ex": "you train"},
+        {"chip": ",", "tone": "arrow"},
+        {"chip": "the + comparative", "tone": "b", "ex": "the stronger"},
+        {"chip": "(clause, often dropped)", "tone": "c", "ex": "(you become)"}
+      ],
+      "caption": "In speech and informal writing, the second clause is often left out entirely: 'The sooner, the better.'"
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "not so much", "tone": "kw"},
+      {"chip": "X", "tone": "a", "ex": "a language course"},
+      {"chip": "as", "tone": "arrow"},
+      {"chip": "Y", "tone": "b", "ex": "a way of life"}
+    ],
+    "table": {
+      "head": ["Pattern", "Structure", "Example"],
+      "rows": [
+        ["the + comparative, the + comparative", "The + comp + clause, the + comp + clause", "<b>The earlier</b> we leave, <b>the more</b> time we'll have at the ruins."],
+        ["nowhere near / nothing like", "nowhere near / nothing like + as...as", "This year's team is <b>nowhere near as</b> strong as last year's."],
+        ["by far", "by far + the + superlative", "Cusco is <b>by far</b> the most visited city on the tour."],
+        ["every bit as / just as", "every bit as / just as + adjective + as", "Nadia is <b>every bit as</b> capable as the head girl."],
+        ["not so much X as Y", "not so much + noun/clause + as + noun/clause", "It's <b>not so much</b> a rule <b>as</b> a strong recommendation."],
+        ["comparative + than + clause", "comparative + than + had been expected/anticipated", "The exam was harder <b>than</b> we <b>had</b> expected."],
+        ["as...as any", "as + adjective + as any + noun", "She's <b>as</b> dedicated <b>as any</b> student I've taught."],
+        ["all the more", "all the more + adjective (+ because/since)", "The win was <b>all the more</b> satisfying because no one expected it."]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Emphasising how far apart two things are",
+      "examples": [
+        {"text": "The new stadium is <b>nowhere near</b> as big as the one in Lima.", "note": "nowhere near + as...as, a strong negative comparison"},
+        {"text": "This translation is <b>nothing like</b> as accurate as the original.", "note": "nothing like, interchangeable with nowhere near, slightly more informal"},
+        {"text": "Of all the entries, Sofia's essay was <b>by far</b> the most original.", "note": "by far intensifies a superlative"}
+      ]
+    },
+    {
+      "point": "Emphasising how close two things are",
+      "examples": [
+        {"text": "Liam is <b>every bit as</b> competitive as his older brother.", "note": "every bit as = fully as, emphatic equality"},
+        {"text": "The coastal route is <b>just as</b> scenic as the mountain one, and far safer.", "note": "just as, slightly less emphatic than every bit as"},
+        {"text": "She argues <b>as</b> convincingly <b>as any</b> lawyer I've watched.", "note": "as + adjective + as any + noun, a strong claim among the best examples"}
+      ]
+    },
+    {
+      "point": "Making a fine distinction, not a simple comparison",
+      "examples": [
+        {"text": "It was <b>not so much</b> a mistake <b>as</b> a missed opportunity.", "note": "correcting how something should be understood, not its size"},
+        {"text": "The result was <b>all the more</b> impressive given how little time they had.", "note": "all the more + adjective, often followed by a reason"},
+        {"text": "Winning felt <b>all the more</b> satisfying because nobody had expected it.", "note": "all the more before an adjective, with because/since/given"}
+      ]
+    },
+    {
+      "point": "Comparatives with a following clause, and like vs as vs as if",
+      "examples": [
+        {"text": "The turnout was far higher <b>than</b> the organisers <b>had</b> anticipated.", "note": "comparative + than + clause, often past perfect for an earlier expectation"},
+        {"text": "<b>Like</b> her mother, Nadia has a talent for languages.", "note": "like + noun, for similarity"},
+        {"text": "He spoke <b>as if</b> the decision had already been made.", "note": "as if + past (hypothetical), even about the present"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "This year's team is nowhere near strong as last year's.", "right": "This year's team is <b>nowhere near as</b> strong as last year's.", "why": "nowhere near needs as before the adjective: nowhere near as + adjective + as."},
+    {"wrong": "She is just so talented as her sister.", "right": "She is <b>just as</b> talented as her sister.", "why": "just as, not just so, before the adjective in this comparative pattern."},
+    {"wrong": "It's not so much a rule than a recommendation.", "right": "It's <b>not so much</b> a rule <b>as</b> a recommendation.", "why": "not so much X pairs with as, never than."},
+    {"wrong": "The exam was harder that we had expected.", "right": "The exam was harder <b>than</b> we had expected.", "why": "a comparative clause is introduced by than, not that."},
+    {"wrong": "He talked as he owned the place.", "right": "He talked <b>as if</b> he owned the place.", "why": "an unreal impression needs as if / as though, not as alone."},
+    {"wrong": "She works like a tour guide, taking groups out every weekend.", "right": "She works <b>as</b> a tour guide, taking groups out every weekend.", "why": "as + role/job describes what someone genuinely is; like compares to something they are not."}
+  ],
+  "dialogue": {
+    "title": "Comparing notes after the debate",
+    "context": "Miss Vega asks the team how the inter-school debate against San Martín went, and they compare this year's performance with last year's.",
+    "lines": [
+      {"speaker": "Miss Vega", "text": "So, how did the debate team do against San Martín?"},
+      {"speaker": "Liam", "text": "Honestly? We were <b>nowhere near as</b> prepared as they were."},
+      {"speaker": "Sofia", "text": "Speak for yourself — Nadia was <b>every bit as</b> sharp as their top speaker."},
+      {"speaker": "Nadia", "text": "Thanks, but their rebuttals were <b>by far</b> the strongest part of their case."},
+      {"speaker": "Mateo", "text": "It wasn't <b>so much</b> the arguments <b>as</b> the timing that let us down."},
+      {"speaker": "Miss Vega", "text": "Fair point. Was it harder than you expected?"},
+      {"speaker": "Liam", "text": "Much harder <b>than</b> we <b>had</b> prepared for, yes."},
+      {"speaker": "Sofia", "text": "He spoke <b>as if</b> he'd done this a hundred times before."},
+      {"speaker": "Nadia", "text": "Losing was <b>all the more</b> frustrating because we'd won last year."},
+      {"speaker": "Mateo", "text": "Still, Sofia argued <b>as</b> confidently <b>as any</b> senior on that stage."},
+      {"speaker": "Miss Vega", "text": "Good. Then next term we train <b>like</b> a team that expects to win."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "Our results were ___ as impressive as we'd hoped.", "options": ["by far", "nowhere near", "all the more"], "answer": 1, "why": "nowhere near + as...as shows a big gap below the standard hoped for."},
+        {"sentence": "Of all the entries, this one was ___ the most original.", "options": ["by far", "every bit as", "nothing like"], "answer": 0, "why": "by far intensifies a superlative — the most original."},
+        {"sentence": "She's ___ dedicated as any athlete I've coached.", "options": ["so", "as", "such"], "answer": 1, "why": "as + adjective + as any + noun claims equality with the very best examples."},
+        {"sentence": "It isn't ___ a punishment as a chance to reflect.", "options": ["so much", "as much", "too much"], "answer": 0, "why": "not so much X as Y reframes how something should be understood, not how big it is."},
+        {"sentence": "The film was funnier ___ the critics had suggested.", "options": ["as", "that", "than"], "answer": 2, "why": "a comparative clause is introduced by than, not that."},
+        {"sentence": "He walked in ___ he'd never left.", "options": ["as if", "like", "as"], "answer": 0, "why": "as if + clause gives an unreal impression; like needs a noun, not a clause, here."},
+        {"sentence": "Nadia trains ___ a professional, six days a week.", "options": ["like", "as", "so"], "answer": 1, "why": "as + role describes what someone genuinely is; like would suggest she isn't really a professional."}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with one or two words so that it is grammatically correct.",
+      "items": [
+        {"sentence": "This laptop is nowhere ___ as fast as the one at school.", "answers": ["near"]},
+        {"sentence": "Of the whole squad, Mateo trains ___ far the hardest.", "answers": ["by"]},
+        {"sentence": "Nadia is every ___ as capable as the head girl.", "answers": ["bit"]},
+        {"sentence": "It's not so much a rule ___ a strong recommendation.", "answers": ["as"]},
+        {"sentence": "The turnout was higher ___ the organisers had expected.", "answers": ["than"]},
+        {"sentence": "He spoke as ___ the decision had already been made.", "answers": ["if", "though"]},
+        {"sentence": "The win felt all the ___ satisfying because nobody expected it.", "answers": ["more"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first, using the word given. Do not change the word given. Use between two and five words.",
+      "items": [
+        {"first": "Our team wasn't nearly as prepared as theirs.", "key": "NOWHERE", "second_start": "Our team was", "second_end": "as prepared as theirs.", "answers": ["nowhere near"]},
+        {"first": "This entry was clearly the most original of them all.", "key": "FAR", "second_start": "This entry was", "second_end": "the most original of them all.", "answers": ["by far"]},
+        {"first": "Liam is fully as competitive as his older brother.", "key": "BIT", "second_start": "Liam is", "second_end": "as competitive as his older brother.", "answers": ["every bit as"]},
+        {"first": "This was more a missed opportunity than a genuine mistake.", "key": "MUCH", "second_start": "This was not", "second_end": "a mistake as a missed opportunity.", "answers": ["so much"]},
+        {"first": "The exam was harder than we expected.", "key": "HAD", "second_start": "The exam was harder", "second_end": "expected.", "answers": ["than we had"]},
+        {"first": "From the way he spoke, it seemed the decision had already been made.", "key": "IF", "second_start": "He spoke", "second_end": "the decision had already been made.", "answers": ["as if"]}
+      ]
+    }
+  ],
+  "summary": [
+    "Use <i>nowhere near / nothing like</i> for a big gap below, and <i>every bit as / just as</i> for genuine equality.",
+    "<i>By far</i> intensifies a superlative; <i>all the more</i> intensifies an adjective, often with a reason attached.",
+    "<i>Not so much X as Y</i> corrects how something should be understood, not how big it is.",
+    "A comparative clause takes <i>than</i>, not <i>that</i>: harder <i>than</i> we had expected.",
+    "<i>Like</i> takes a noun; <i>as</i> names a real role; <i>as if / as though</i> gives an impression, often unreal."
+  ]
+}

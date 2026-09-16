@@ -1,0 +1,172 @@
+{
+  "id": "present-perfect",
+  "level": "b2f",
+  "area": "Tenses & time",
+  "title": "Present perfect simple and continuous",
+  "tagline": "A finished result you can see now, or an activity that has been running up to this moment.",
+  "cefr": "B2",
+  "exam": [
+    "Reading & Use of English Part 2 — open cloze",
+    "Reading & Use of English Part 4 — key word transformations",
+    "Speaking Part 2 — describing experience and change over time"
+  ],
+  "why": "The present perfect links the past to now, and B2 First tests both halves of it: the choice between simple (a result, a number, a first time) and continuous (an ongoing activity, its duration), plus the classic trap of <i>for</i> versus <i>since</i>. Get the time reference wrong and the whole sentence sounds like a translation.",
+  "diagrams": [
+    {
+      "type": "timeline",
+      "title": "Unfinished time",
+      "marks": [
+        {"at": "past", "label": "Sofia started swimming lessons.", "sub": "since March"},
+        {"at": "now", "label": "She is still swimming, and the period isn't over.", "sub": "present perfect"}
+      ],
+      "arrows": [[0, 1, "continues up to now"]],
+      "caption": "Sofia <b>has been swimming</b> since March."
+    },
+    {
+      "type": "contrast",
+      "title": "Result or activity?",
+      "columns": ["Present perfect simple", "Present perfect continuous"],
+      "rows": [
+        {"label": "Focus", "cells": ["the result — it's finished", "the activity — how long it went on"]},
+        {"label": "Typical words", "cells": ["already, yet, just, ever, how many", "still, how long, for/since, lately"]},
+        {"label": "Example", "cells": ["She's written three pages.", "She's been writing all afternoon."]}
+      ]
+    },
+    {
+      "type": "formula",
+      "title": "for or since?",
+      "parts": [
+        {"chip": "have/has + past participle", "tone": "kw"},
+        {"chip": "for + a length of time", "tone": "a", "ex": "for three years"},
+        {"chip": "or", "tone": "arrow"},
+        {"chip": "since + a point in time", "tone": "b", "ex": "since 2019"}
+      ],
+      "caption": "Both describe unfinished time — <i>for</i> counts the duration, <i>since</i> names the starting point."
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "have/has", "tone": "kw"},
+      {"chip": "+ past participle", "tone": "a", "ex": "have finished"},
+      {"chip": "or", "tone": "arrow"},
+      {"chip": "have/has + been + verb-ing", "tone": "b", "ex": "have been waiting"}
+    ],
+    "table": {
+      "head": ["Use", "Form", "Example"],
+      "rows": [
+        ["Unfinished time up to now", "have/has + past participle", "I've lived in Lima for ten years."],
+        ["Recent action, result visible now", "have/has + just + past participle", "Nadia has just finished her essay."],
+        ["Life experience", "have/has (+ ever/never) + past participle", "Have you ever tried ceviche?"],
+        ["Not completed yet", "haven't/hasn't + past participle + yet", "We haven't booked the tickets yet."],
+        ["Completed sooner than expected", "have/has + already + past participle", "Liam has already left."],
+        ["Emphasis on duration or activity", "have/has been + verb-ing", "They've been rehearsing for two hours."],
+        ["With superlatives and first time", "the + superlative + present perfect", "It's the best film I've ever seen."]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Unfinished time: how long something has continued",
+      "examples": [
+        {"text": "Mateo <b>has played</b> the guitar since he was eight.", "note": "for/since + present perfect"},
+        {"text": "We <b>have known</b> each other for almost three years now.", "note": "for + duration"},
+        {"text": "Miss Vega <b>has taught</b> at this school since 2018.", "note": "since + a point in time"}
+      ]
+    },
+    {
+      "point": "A finished result versus an ongoing activity",
+      "examples": [
+        {"text": "Nadia <b>has written</b> two chapters of her story.", "note": "simple — a countable result"},
+        {"text": "Nadia <b>has been writing</b> all weekend — her hand actually hurts.", "note": "continuous — the activity itself, with visible evidence"},
+        {"text": "Look at the state of the kitchen — someone <b>has been cooking</b>.", "note": "continuous — recent activity, evidence in the present"}
+      ]
+    },
+    {
+      "point": "Updates: just, already, yet, still",
+      "examples": [
+        {"text": "Liam <b>has just heard</b> that the trip is confirmed.", "note": "just = very recently"},
+        {"text": "Sofia <b>has already finished</b> the reading, so she's helping the others.", "note": "already = sooner than expected"},
+        {"text": "We <b>haven't chosen</b> a topic <b>yet</b>.", "note": "yet = negative/question, not done at the time of speaking"}
+      ]
+    },
+    {
+      "point": "Superlatives, first experiences and firsts",
+      "examples": [
+        {"text": "It's the most difficult exam we <b>have ever taken</b>.", "note": "superlative + present perfect"},
+        {"text": "This is the first time Liam <b>has cooked</b> for the whole team.", "note": "first time + present perfect"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "I live here since five years.", "right": "I<b>'ve lived</b> here for five years.", "why": "<i>For</i> introduces a duration, not <i>since</i>, and unfinished time takes the present perfect, not the present simple."},
+    {"wrong": "I have seen him yesterday.", "right": "I <b>saw</b> him yesterday.", "why": "A finished time word (<i>yesterday</i>) needs the past simple, never the present perfect."},
+    {"wrong": "How long are you studying English?", "right": "How long <b>have you been studying</b> English?", "why": "<i>How long</i> with an unfinished action asks for the present perfect continuous."},
+    {"wrong": "She has been finishing three exercises.", "right": "She <b>has finished</b> three exercises.", "why": "A specific number or result takes the present perfect simple, not the continuous."},
+    {"wrong": "I have never went to Cusco.", "right": "I have never <b>been</b> to Cusco.", "why": "The past participle of <i>go</i> is <i>been</i> or <i>gone</i>, not <i>went</i>."},
+    {"wrong": "I know her since we were children.", "right": "I<b>'ve known</b> her since we were children.", "why": "A state verb in an unfinished-time sentence still needs the present perfect, not the present simple."}
+  ],
+  "dialogue": {
+    "title": "Packing for Cusco",
+    "context": "Mateo and Nadia are checking what still needs doing before the school trip, while Miss Vega looks over the list.",
+    "lines": [
+      {"speaker": "Miss Vega", "text": "Right, <b>have</b> you two <b>finished</b> the packing list yet?"},
+      {"speaker": "Nadia", "text": "Almost. I<b>'ve been checking</b> it all morning — we're just missing the medical forms."},
+      {"speaker": "Mateo", "text": "I<b>'ve already sent</b> mine. Nadia, <b>have</b> you <b>emailed</b> yours to the office?"},
+      {"speaker": "Nadia", "text": "Not yet — my mum <b>hasn't signed</b> it. She<b>'s been</b> so busy this week."},
+      {"speaker": "Miss Vega", "text": "How long <b>have</b> you <b>been waiting</b> for her to sign it?"},
+      {"speaker": "Nadia", "text": "Since Monday. I'll ask her tonight, I promise."},
+      {"speaker": "Mateo", "text": "This is the first proper trip we<b>'ve had</b> since Year 8, right?"},
+      {"speaker": "Miss Vega", "text": "Exactly — and it<b>'s been</b> years since a group <b>has been</b> this organised."},
+      {"speaker": "Nadia", "text": "We<b>'ve worked</b> hard on it! Sofia and Liam <b>have made</b> the whole itinerary."},
+      {"speaker": "Miss Vega", "text": "Good. Get that form signed and we're all set."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "Sofia ___ three letters this evening, and she's about to write a fourth.", "options": ["has written", "has been writing", "wrote"], "answer": 0, "why": "a countable result (three letters) → present perfect simple"},
+        {"sentence": "Miss Vega ___ at this school since 2018.", "options": ["taught", "has taught", "teaches"], "answer": 1, "why": "since + a point in time → present perfect"},
+        {"sentence": "Your eyes are red — ___?", "options": ["have you cried", "did you cry", "have you been crying"], "answer": 2, "why": "visible present evidence of a recent activity → present perfect continuous"},
+        {"sentence": "I ___ him since we were at primary school together.", "options": ["have known", "know", "knew"], "answer": 0, "why": "a state verb in unfinished time → present perfect"},
+        {"sentence": "We ___ to Arequipa last summer, not this year.", "options": ["have travelled", "travelled", "have been travelling"], "answer": 1, "why": "a finished time word (last summer) → past simple"},
+        {"sentence": "This is the best pizza I ___.", "options": ["ever ate", "eat ever", "have ever eaten"], "answer": 2, "why": "superlative + present perfect for an experience up to now"},
+        {"sentence": "Liam ___ his homework yet, so he can't come out.", "options": ["didn't finish", "hasn't finished", "isn't finishing"], "answer": 1, "why": "<i>yet</i> in a negative sentence → present perfect"},
+        {"sentence": "How long ___ for the bus?", "options": ["have you been waiting", "are you waiting", "do you wait"], "answer": 0, "why": "<i>how long</i> + an unfinished action → present perfect continuous"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with the correct form of the verb in brackets.",
+      "items": [
+        {"sentence": "Nadia ___ (write) two chapters of her story so far.", "answers": ["has written"]},
+        {"sentence": "We ___ (rehearse) since four o'clock, and we're exhausted.", "answers": ["have been rehearsing"]},
+        {"sentence": "I ___ (not/decide) which university to apply to yet.", "answers": ["haven't decided", "have not decided"]},
+        {"sentence": "___ (Liam/ever/try) ceviche before this trip?", "answers": ["Has Liam ever tried"]},
+        {"sentence": "Mateo ___ (already/pack) his bag, but Sofia hasn't started.", "answers": ["has already packed"]},
+        {"sentence": "Look at your hands — you ___ (paint) again, haven't you?", "answers": ["have been painting"]},
+        {"sentence": "This is the longest essay I ___ (ever/write) for this class.", "answers": ["have ever written"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first. Use the word given. Do not change it. Use between two and five words.",
+      "items": [
+        {"first": "Sofia started learning the violin four years ago and she still plays it.", "key": "FOR", "second_start": "Sofia has played the violin", "second_end": "years.", "answers": ["for four"]},
+        {"first": "It is Liam's first visit to a football stadium.", "key": "NEVER", "second_start": "Liam", "second_end": "to a football stadium before.", "answers": ["has never been"]},
+        {"first": "Nadia began writing her story this morning and she is still writing it now.", "key": "BEEN", "second_start": "Nadia", "second_end": "since this morning.", "answers": ["has been writing"]},
+        {"first": "We haven't picked a topic for the project so far.", "key": "STILL", "second_start": "We", "second_end": "a topic for the project.", "answers": ["still haven't picked", "still haven't chosen"]},
+        {"first": "This essay is more difficult than any other essay I've written.", "key": "MOST", "second_start": "This is the", "second_end": "I have ever written.", "answers": ["most difficult essay"]},
+        {"first": "Mateo's parents moved to Lima in 2015 and they still live there.", "key": "SINCE", "second_start": "Mateo's parents", "second_end": "2015.", "answers": ["have lived in Lima since"]}
+      ]
+    }
+  ],
+  "summary": [
+    "Present perfect simple: a result, a number, a first time — the action itself matters less than what changed.",
+    "Present perfect continuous: an activity and its duration, often with visible evidence now.",
+    "<i>For</i> + a duration, <i>since</i> + a starting point — both need the present perfect if the time is unfinished.",
+    "A finished time word (yesterday, last year, in 2015 without <i>since</i>) always needs the past simple instead.",
+    "<i>Just, already, yet, still</i> and <i>how long</i> are the words that usually give the tense away."
+  ]
+}

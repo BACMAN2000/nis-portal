@@ -1,0 +1,565 @@
+{
+  "id": "relative-clauses-advanced",
+  "level": "c1a",
+  "area": "Sentence building",
+  "title": "Advanced relative clauses",
+  "tagline": "Front the preposition, count the group, or drop the finite verb — three ways to sound more precise.",
+  "cefr": "C1",
+  "exam": [
+    "Reading & Use of English Part 4 — key word transformations (preposition + whom/which, quantifier + of which)",
+    "Reading & Use of English Part 2 — open cloze (whereby, whom, whose, whichever)",
+    "Writing Part 1 — essay: formal register and precise reference",
+    "Writing Part 2 — reports and proposals: whereby, of which, non-finite relatives"
+  ],
+  "why": "Advanced relative clauses let a C1 writer be exact about how two ideas connect — not just who did what, but the precise relationship: a preposition fronted before whom or which, the means by which something happens (whereby), or a quantity already mentioned (ten of whom). C1 Advanced tests the fronted-preposition pattern directly in Use of English, and a report or proposal in the Writing paper reads noticeably more professional once repetition is replaced by a single, well-built relative clause.",
+  "diagrams": [
+    {
+      "type": "map",
+      "title": "Which advanced relative fits?",
+      "center": "Advanced relative clauses",
+      "branches": [
+        {
+          "label": "Preposition + whom/which (formal)",
+          "items": [
+            "the person to whom I spoke",
+            "the reason for which she resigned",
+            "the school in which she studied"
+          ],
+          "tone": "a"
+        },
+        {
+          "label": "whereby / wherein",
+          "items": [
+            "a system whereby students choose their own topics",
+            "a clause wherein the terms are defined"
+          ],
+          "tone": "b"
+        },
+        {
+          "label": "Quantifier + of which/whom",
+          "items": [
+            "ten students, three of whom failed",
+            "two essays, neither of which was finished",
+            "a list, all of which I checked"
+          ],
+          "tone": "c"
+        },
+        {
+          "label": "whatever / whichever / whoever",
+          "items": [
+            "whatever you decide",
+            "whichever option is cheaper",
+            "whoever wins the debate"
+          ],
+          "tone": "a"
+        },
+        {
+          "label": "Non-finite relatives",
+          "items": [
+            "the first student to arrive",
+            "the only one to notice",
+            "the best place to study"
+          ],
+          "tone": "b"
+        }
+      ]
+    },
+    {
+      "type": "contrast",
+      "title": "Formal vs informal: where does the preposition go?",
+      "columns": [
+        "Formal (fronted preposition)",
+        "Informal (stranded preposition)"
+      ],
+      "rows": [
+        {
+          "label": "Pattern",
+          "cells": [
+            "preposition + which/whom + clause",
+            "which/that/(nothing) + clause ... + preposition at the end"
+          ]
+        },
+        {
+          "label": "Example",
+          "cells": [
+            "The topic <b>about which</b> we argued was trivial.",
+            "The topic <b>we argued about</b> was trivial."
+          ]
+        },
+        {
+          "label": "Register",
+          "cells": [
+            "essays, reports, academic and legal writing",
+            "conversation, informal writing"
+          ]
+        },
+        {
+          "label": "Relative pronoun",
+          "cells": [
+            "only which or whom — never that",
+            "that, which, or nothing at all"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "transform",
+      "title": "Reducing a relative clause to the infinitive",
+      "before": {
+        "text": "Liam was the first student who finished the marathon.",
+        "hl": [
+          "who finished"
+        ]
+      },
+      "after": {
+        "text": "Liam was the first student to finish the marathon.",
+        "hl": [
+          "to finish"
+        ]
+      },
+      "steps": [
+        "This works after superlatives and words like 'the first / the last / the only'.",
+        "Drop the relative pronoun and the auxiliary or modal.",
+        "Change the verb to the to-infinitive: <b>to finish</b>."
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {
+        "chip": "noun",
+        "tone": "kw",
+        "ex": "the teacher / the method"
+      },
+      {
+        "chip": "preposition",
+        "tone": "a",
+        "ex": "to / with / for / in"
+      },
+      {
+        "chip": "which / whom",
+        "tone": "b",
+        "ex": "which (things) / whom (people)"
+      },
+      {
+        "chip": "→",
+        "tone": "arrow"
+      },
+      {
+        "chip": "rest of clause",
+        "tone": "c",
+        "ex": "we could always rely on"
+      }
+    ],
+    "table": {
+      "head": [
+        "Structure",
+        "Use",
+        "Example"
+      ],
+      "rows": [
+        [
+          "preposition + whom (people)",
+          "formal, a person as the object of a preposition",
+          "The colleague <b>with whom</b> I share an office is from Arequipa."
+        ],
+        [
+          "preposition + which (things)",
+          "formal, a thing as the object of a preposition",
+          "The method <b>by which</b> the data was collected is described in Appendix 2."
+        ],
+        [
+          "whereby",
+          "= by which / through which, for a system or process",
+          "The school introduced a scheme <b>whereby</b> senior students mentor younger ones."
+        ],
+        [
+          "quantifier + of which/whom",
+          "refers back to a whole group already mentioned",
+          "We interviewed forty candidates, <b>five of whom</b> withdrew before the final round."
+        ],
+        [
+          "whose / of which (things)",
+          "possession with things; whose sounds the most natural",
+          "The museum, <b>whose</b> collection dates back to colonial times, reopens in March."
+        ],
+        [
+          "whatever / whichever / whoever",
+          "an open category: any thing / option / person",
+          "<b>Whichever</b> path you take, the summit is at least three hours away."
+        ],
+        [
+          "the first/only/superlative + to-infinitive",
+          "reduces a relative clause after ordinals and superlatives",
+          "Nadia was the only student <b>to submit</b> her project early."
+        ],
+        [
+          "which (referring to a whole clause)",
+          "a formal comment on the entire idea just stated",
+          "The trains were cancelled, <b>which</b> meant we missed the connection."
+        ]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Preposition + whom/which for a precise, formal link",
+      "examples": [
+        {
+          "text": "The professor <b>to whom</b> I sent my application never replied.",
+          "note": "formal — preposition fronted before whom"
+        },
+        {
+          "text": "This is the argument <b>on which</b> the whole essay depends.",
+          "note": "fronted preposition + which for things"
+        },
+        {
+          "text": "The village <b>from which</b> her grandmother came no longer appears on modern maps.",
+          "note": "'from which' marks origin"
+        }
+      ]
+    },
+    {
+      "point": "whereby and wherein for systems and processes",
+      "examples": [
+        {
+          "text": "The council has adopted a policy <b>whereby</b> every classroom recycles its own paper.",
+          "note": "whereby = by which"
+        },
+        {
+          "text": "The report contains a section <b>wherein</b> the methodology is explained in detail.",
+          "note": "wherein = in which; very formal, close to legal register"
+        }
+      ]
+    },
+    {
+      "point": "Quantifier + of which/whom, and whose/of which for things",
+      "examples": [
+        {
+          "text": "The committee reviewed sixty applications, <b>ten of which</b> were rejected immediately.",
+          "note": "quantifier + of which"
+        },
+        {
+          "text": "Cusco has hundreds of colonial buildings, <b>many of which</b> are now hotels.",
+          "note": "many of which"
+        },
+        {
+          "text": "The theory, <b>the basic principles of which</b> remain unchanged, was first published in 1905.",
+          "note": "a long, very formal alternative to whose for abstract things"
+        }
+      ]
+    },
+    {
+      "point": "Non-finite relatives, and whatever/whichever/whoever",
+      "examples": [
+        {
+          "text": "Mateo was the last person <b>to leave</b> the lab that evening.",
+          "note": "non-finite relative after 'the last'"
+        },
+        {
+          "text": "<b>Whoever</b> designed this exam clearly enjoyed making it difficult.",
+          "note": "whoever = the person who, an open reference"
+        },
+        {
+          "text": "Take <b>whichever</b> seat is free; it doesn't matter which row.",
+          "note": "whichever = any one of a limited set"
+        }
+      ]
+    }
+  ],
+  "watch_out": [
+    {
+      "wrong": "The teacher who I spoke to whom was very helpful.",
+      "right": "The teacher <b>to whom</b> I spoke was very helpful.",
+      "why": "Don't combine a fronted preposition with a stranded one — choose a single pattern."
+    },
+    {
+      "wrong": "The system which whereby students vote was introduced last year.",
+      "right": "The system <b>whereby</b> students vote was introduced last year.",
+      "why": "Whereby already means 'by which'; it replaces which + preposition, it doesn't add to it."
+    },
+    {
+      "wrong": "We tested thirty samples, which five failed.",
+      "right": "We tested thirty samples, <b>five of which</b> failed.",
+      "why": "After a quantity, use 'number/quantifier + of which/whom', not 'which' alone."
+    },
+    {
+      "wrong": "The device to who I complained is being replaced.",
+      "right": "The device <b>to which</b> I complained is being replaced.",
+      "why": "Whom is only for people; things need which after a preposition."
+    },
+    {
+      "wrong": "Nadia was the first who arrived to the meeting.",
+      "right": "Nadia was the first <b>to arrive</b> at the meeting.",
+      "why": "After 'the first/last/only' and superlatives, the non-finite to-infinitive relative is usually preferred over a finite clause."
+    },
+    {
+      "wrong": "The bus was late, that annoyed everyone.",
+      "right": "The bus was late, <b>which</b> annoyed everyone.",
+      "why": "Only which — never that — can refer back to a whole previous clause."
+    }
+  ],
+  "dialogue": {
+    "title": "Drafting the council proposal",
+    "context": "Miss Vega reviews the formal proposal that Sofia, Liam and Mateo are writing for the school council, checking that the relative clauses sound appropriately formal.",
+    "lines": [
+      {
+        "speaker": "Miss Vega",
+        "text": "Remember, this document goes to the council, so keep the register formal. Read me your opening sentence."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "'We propose a scheme <b>whereby</b> every class manages its own recycling point.'"
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "Good use of whereby — that's exactly the register we want."
+      },
+      {
+        "speaker": "Liam",
+        "text": "What about this: 'The teacher to who I first mentioned the idea was Mr Ramos.'"
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "Almost — whom is for people. Try again."
+      },
+      {
+        "speaker": "Liam",
+        "text": "'The teacher <b>to whom</b> I first mentioned the idea was Mr Ramos.'"
+      },
+      {
+        "speaker": "Mateo",
+        "text": "I've written: 'We surveyed eighty students, <b>thirty of whom</b> said they already separate their rubbish at home.'"
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "That's a strong sentence — quantifier plus 'of whom' is very natural in a report like this."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "And for the conclusion: 'The pilot programme, <b>the results of which</b> will be published in July, starts next month.'"
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "Excellent. One more thing — can anyone make 'Nadia is the student who suggested the idea first' sound more formal?"
+      },
+      {
+        "speaker": "Mateo",
+        "text": "'Nadia was the student <b>to suggest</b> the idea first.'"
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "<b>Whoever</b> reads this proposal will be impressed. Let's finish the last paragraph."
+      }
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {
+          "sentence": "The teacher ___ I owe my interest in astronomy has just retired.",
+          "options": [
+            "to whom",
+            "to which",
+            "whom"
+          ],
+          "answer": 0,
+          "why": "person + preposition fronted = 'to whom'"
+        },
+        {
+          "sentence": "The bridge ___ the two towns are connected was rebuilt after the earthquake.",
+          "options": [
+            "by whom",
+            "by which",
+            "which"
+          ],
+          "answer": 1,
+          "why": "'by which' refers to a thing — the bridge is the means of connection"
+        },
+        {
+          "sentence": "The council introduced a new timetable ___ students choose four optional subjects.",
+          "options": [
+            "whereby",
+            "whom",
+            "of which"
+          ],
+          "answer": 0,
+          "why": "whereby = by which, used for a system or process"
+        },
+        {
+          "sentence": "We shortlisted twelve candidates, ___ withdrew before the interview.",
+          "options": [
+            "which three",
+            "three of whom",
+            "whom three"
+          ],
+          "answer": 1,
+          "why": "quantifier + of whom refers back to people already mentioned"
+        },
+        {
+          "sentence": "Sofia was the only student ___ every question correctly.",
+          "options": [
+            "who answered",
+            "to answer",
+            "answering"
+          ],
+          "answer": 1,
+          "why": "after 'the only', the non-finite to-infinitive relative is the more natural, formal choice"
+        },
+        {
+          "sentence": "___ you decide, let me know by Friday so I can book the venue.",
+          "options": [
+            "Whatever",
+            "Whoever",
+            "Whichever"
+          ],
+          "answer": 0,
+          "why": "whatever = any thing/decision, an open category"
+        },
+        {
+          "sentence": "The exhibition, ___ opens next week, took two years to prepare.",
+          "options": [
+            "that",
+            "which",
+            "whom"
+          ],
+          "answer": 1,
+          "why": "non-defining relative clauses about things use which, never that"
+        },
+        {
+          "sentence": "The storm damaged the roof, ___ meant the museum had to close for repairs.",
+          "options": [
+            "what",
+            "that",
+            "which"
+          ],
+          "answer": 2,
+          "why": "which refers back to the whole previous clause"
+        }
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with one or two words.",
+      "items": [
+        {
+          "sentence": "The professor ___ office is next to the library has just published a new book.",
+          "answers": [
+            "whose"
+          ]
+        },
+        {
+          "sentence": "The hostel introduced a rule ___ guests must leave their key at reception.",
+          "answers": [
+            "whereby"
+          ]
+        },
+        {
+          "sentence": "We interviewed fifteen witnesses, most ___ agreed on the sequence of events.",
+          "answers": [
+            "of whom"
+          ]
+        },
+        {
+          "sentence": "This is the very reason ___ which the trip was cancelled.",
+          "answers": [
+            "for"
+          ]
+        },
+        {
+          "sentence": "Liam was the first ___ notice the mistake in the timetable.",
+          "answers": [
+            "to notice"
+          ]
+        },
+        {
+          "sentence": "___ wins the scholarship will represent the school at the regional final.",
+          "answers": [
+            "Whoever"
+          ]
+        },
+        {
+          "sentence": "The lecture overran by twenty minutes, ___ meant we missed the bus.",
+          "answers": [
+            "which"
+          ]
+        },
+        {
+          "sentence": "Take ___ route you prefer; both lead to the main square.",
+          "answers": [
+            "whichever"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first, using the word given. Do not change the word given. Use between two and five words.",
+      "items": [
+        {
+          "first": "This is the topic we disagreed about.",
+          "key": "WHICH",
+          "second_start": "This is",
+          "second_end": "we disagreed.",
+          "answers": [
+            "the topic about which"
+          ]
+        },
+        {
+          "first": "The manager is the person I sent my complaint to.",
+          "key": "WHOM",
+          "second_start": "The manager is the person",
+          "second_end": "I sent my complaint.",
+          "answers": [
+            "to whom"
+          ]
+        },
+        {
+          "first": "The school introduced a scheme so that students can borrow tablets for the term.",
+          "key": "WHEREBY",
+          "second_start": "The school introduced a scheme",
+          "second_end": "borrow tablets for the term.",
+          "answers": [
+            "whereby students can"
+          ]
+        },
+        {
+          "first": "We tested fifty devices, and twelve of them failed within a week.",
+          "key": "OF",
+          "second_start": "We tested fifty devices,",
+          "second_end": "failed within a week.",
+          "answers": [
+            "twelve of which"
+          ]
+        },
+        {
+          "first": "Mateo was the first student who solved the puzzle.",
+          "key": "SOLVE",
+          "second_start": "Mateo was the first student",
+          "second_end": "the puzzle.",
+          "answers": [
+            "to solve"
+          ]
+        },
+        {
+          "first": "I don't mind which option you choose.",
+          "key": "WHICHEVER",
+          "second_start": "",
+          "second_end": "you choose, I don't mind.",
+          "answers": [
+            "Whichever option"
+          ]
+        }
+      ]
+    }
+  ],
+  "summary": [
+    "Front the preposition before whom (people) or which (things) for a formal register: <b>to whom</b>, <b>on which</b>, <b>by which</b>.",
+    "<i>Whereby</i> and <i>wherein</i> replace preposition + which for systems, processes and legal or academic contexts.",
+    "After a quantity already mentioned, use <i>number/quantifier + of which/whom</i>, never which alone: <b>ten of whom</b>, <b>none of which</b>.",
+    "<i>Whatever, whichever</i> and <i>whoever</i> open the reference to any thing, option or person; only <i>which</i> — never <i>that</i> — refers back to a whole previous clause.",
+    "After <i>the first/last/only</i> and superlatives, a non-finite to-infinitive relative is often more natural than a finite clause: <b>the first to arrive</b>."
+  ]
+}

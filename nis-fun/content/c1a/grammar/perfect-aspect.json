@@ -1,0 +1,180 @@
+{
+  "id": "perfect-aspect",
+  "level": "c1a",
+  "area": "Tenses & aspect",
+  "title": "The perfect aspect across tenses",
+  "tagline": "Complete before now, before then, or before a point still to come — one logic, three timelines.",
+  "cefr": "C1",
+  "exam": [
+    "Reading & Use of English Part 1 — multiple-choice cloze (choosing the right tense and aspect)",
+    "Reading & Use of English Part 4 — key word transformations (FOR, SINCE, ALREADY, JUST, BY)",
+    "Writing Part 2 — report or review: sequencing events accurately",
+    "Speaking Part 2 — describing experience, change and progress over time"
+  ],
+  "why": "At C1, the perfect aspect stops being 'the present perfect tense' and becomes a tool you use across all three timelines to show that one event is complete before a reference point. Use & of English tests the fine line between simple and continuous forms directly, and examiners notice when a candidate can move fluently between <i>has done</i>, <i>had done</i> and <i>will have done</i> without defaulting to the simple past.",
+  "diagrams": [
+    {
+      "type": "timeline",
+      "title": "Always a point before a reference point",
+      "marks": [
+        {"at": "before-past", "label": "had already started rehearsing", "sub": "past perfect: before the past reference"},
+        {"at": "past", "label": "when the director arrived", "sub": "the past reference point"},
+        {"at": "now", "label": "has just finished a rehearsal", "sub": "present perfect: before now"},
+        {"at": "future", "label": "will have performed six times", "sub": "future perfect: before a future point (by July)"}
+      ],
+      "arrows": [
+        [0, 1, "complete before this moment"],
+        [2, 3, "the same logic, later"]
+      ],
+      "caption": "Whichever tense it borrows, the perfect aspect always looks back from a reference point to something already complete."
+    },
+    {
+      "type": "contrast",
+      "title": "has written vs has been writing",
+      "columns": ["Present perfect simple", "Present perfect continuous"],
+      "rows": [
+        {"label": "Focus", "cells": ["the result or the fact", "the activity itself, often unfinished"]},
+        {"label": "Example", "cells": ["<b>has written</b> three articles", "<b>has been writing</b> an article all afternoon"]},
+        {"label": "for / since", "cells": ["a completed total, often with stative verbs", "a duration of activity, usually dynamic verbs"]},
+        {"label": "Evidence now", "cells": ["the finished product: <i>I've painted the fence</i>", "the mess it left: <i>I've been painting the fence</i>"]}
+      ]
+    },
+    {
+      "type": "formula",
+      "title": "Perfect infinitive and perfect -ing",
+      "parts": [
+        {"chip": "modal / reporting verb", "tone": "kw", "ex": "must / seems / is thought"},
+        {"chip": "(to) have + past participle", "tone": "a", "ex": "(to) have left"},
+        {"chip": "→", "tone": "arrow"},
+        {"chip": "having + past participle", "tone": "b", "ex": "Having finished the exam,"},
+        {"chip": "one action completed before another", "tone": "c"}
+      ],
+      "caption": "The perfect infinitive points back after a modal or reporting verb; perfect -ing sequences two actions in a single sentence."
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "subject", "tone": "kw", "ex": "she / the team / I"},
+      {"chip": "have / has / had / will have", "tone": "a", "ex": "has / had / will have"},
+      {"chip": "(been) + past participle", "tone": "b", "ex": "finished / been revising"},
+      {"chip": "→", "tone": "arrow"},
+      {"chip": "complete before a reference point", "tone": "c"}
+    ],
+    "table": {
+      "head": ["Pattern", "Reference point", "Example"],
+      "rows": [
+        ["Present perfect (simple / continuous)", "now", "<b>has revised</b> all term / <b>has been revising</b> all week"],
+        ["Past perfect (simple / continuous)", "a moment in the past", "<b>had already left</b> / <b>had been waiting</b> for an hour"],
+        ["Future perfect (simple / continuous)", "a moment in the future", "<b>will have graduated</b> / <b>will have been studying</b> for six years"],
+        ["Perfect infinitive", "after a modal or reporting verb", "seems <b>to have finished</b> early"],
+        ["Perfect -ing", "before another past action", "<b>Having finished</b> the report, she left"]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Present perfect simple vs continuous: the result vs the activity",
+      "examples": [
+        {"text": "<b>Nadia has read</b> the whole set text twice this term.", "note": "simple: a completed, countable achievement"},
+        {"text": "<b>Nadia has been reading</b> late into the night all week, and it shows.", "note": "continuous: the activity, with visible present evidence"},
+        {"text": "<b>I've lived</b> in Cusco for six years, but <b>I've only been living</b> in this flat since March.", "note": "a permanent state (simple) vs a recent, possibly temporary one (continuous)"}
+      ]
+    },
+    {
+      "point": "Past perfect (simple and continuous) with before, by the time and until",
+      "examples": [
+        {"text": "By the time the results were announced, Liam <b>had already accepted</b> a place at another school.", "note": "completed before a past point"},
+        {"text": "Her hands were shaking because she <b>had been rehearsing</b> the speech for hours.", "note": "the activity leading up to the past moment"},
+        {"text": "Mateo <b>hadn't finished</b> the essay before the deadline passed.", "note": "an unmet deadline, seen from a later point"}
+      ]
+    },
+    {
+      "point": "Future perfect (simple and continuous) with by and by the time",
+      "examples": [
+        {"text": "By next June, the school orchestra <b>will have performed</b> in four countries.", "note": "a completed total by a future point"},
+        {"text": "By the time you read this, I <b>will have left</b> for the airport.", "note": "future perfect seen from the reader's later perspective"},
+        {"text": "In September, Sofia <b>will have been studying</b> French for a decade.", "note": "duration continuing up to a future point"}
+      ]
+    },
+    {
+      "point": "Perfect infinitive and perfect -ing: pointing back to an earlier action",
+      "examples": [
+        {"text": "The team <b>seems to have solved</b> the coding problem overnight.", "note": "an inference about something that happened earlier"},
+        {"text": "<b>Having submitted</b> the coursework early, Nadia spent the weekend relaxing.", "note": "one clearly finished action before another"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "I have seen him yesterday.", "right": "I <b>saw</b> him yesterday.", "why": "A finished time expression (<i>yesterday</i>) needs the past simple, not the present perfect."},
+    {"wrong": "She has been living here since ten years.", "right": "She <b>has been living</b> here <b>for</b> ten years.", "why": "<i>Since</i> introduces a point in time; <i>for</i> introduces a duration."},
+    {"wrong": "By the time we arrived, the film already started.", "right": "By the time we arrived, the film <b>had already started</b>.", "why": "An action completed before another past action needs the past perfect, not the past simple."},
+    {"wrong": "I will have finish the report by Friday.", "right": "I <b>will have finished</b> the report by Friday.", "why": "Future perfect needs the past participle after <i>have</i>, not the bare infinitive."},
+    {"wrong": "He claims to have win the competition twice.", "right": "He claims <b>to have won</b> the competition twice.", "why": "The perfect infinitive is <i>to have</i> + past participle, never <i>to have</i> + base form."},
+    {"wrong": "She has been knowing the answer for ages.", "right": "She <b>has known</b> the answer for ages.", "why": "Stative verbs like <i>know</i> don't normally take the continuous, even in the perfect."}
+  ],
+  "dialogue": {
+    "title": "One week before the mock exam",
+    "context": "Miss Vega checks how the class is preparing for Friday's mock exam, and the students report their progress using the perfect aspect.",
+    "lines": [
+      {"speaker": "Miss Vega", "text": "Right, before Friday's mock — what exactly <b>have you done</b> this week?"},
+      {"speaker": "Nadia", "text": "<b>I've finished</b> the whole grammar workbook, and <b>I've been revising</b> vocabulary every evening."},
+      {"speaker": "Miss Vega", "text": "Impressive. Liam?"},
+      {"speaker": "Liam", "text": "Less, I'm afraid. By Sunday <b>I'll have read</b> only half the set novel."},
+      {"speaker": "Miss Vega", "text": "Still a start. Sofia, what about the writing paper?"},
+      {"speaker": "Sofia", "text": "<b>I'd already written</b> two practice essays before half term, so this week I focused on speaking."},
+      {"speaker": "Mateo", "text": "I feel behind everyone else. <b>I hadn't realised</b> how much listening practice this exam needs until yesterday."},
+      {"speaker": "Miss Vega", "text": "That's exactly why we're doing this now, not the night before the exam."},
+      {"speaker": "Nadia", "text": "By the time the exam comes round, I hope <b>I'll have covered</b> every paper from the last five years."},
+      {"speaker": "Liam", "text": "<b>Having seen</b> Nadia's notes, I finally understand how much organisation matters."},
+      {"speaker": "Sofia", "text": "And once this term <b>has finished</b>, we can finally relax — for about a week."},
+      {"speaker": "Miss Vega", "text": "Fair enough. Then <b>you'll all have learnt</b> something valuable even before the results arrive."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "By the time the guests arrived, Mrs Alva ___ dinner.", "options": ["had cooked", "was cooking", "has cooked"], "answer": 0, "why": "an action completed before another past action needs the past perfect simple"},
+        {"sentence": "___ this novel? You must read it, it's brilliant.", "options": ["Did you ever read", "Have you ever read", "Had you ever read"], "answer": 1, "why": "an experience within an unfinished period (life) needs the present perfect"},
+        {"sentence": "My eyes are sore because I ___ at a screen all afternoon.", "options": ["looked", "have looked", "have been looking"], "answer": 2, "why": "a visible present result of a recent activity needs the present perfect continuous"},
+        {"sentence": "___ the marathon by six o'clock tomorrow.", "options": ["I'll have finished", "I'll finish", "I finish"], "answer": 0, "why": "completed before a specific future point needs the future perfect"},
+        {"sentence": "The manager claims ___ the letter, but nobody received it.", "options": ["to send", "to have sent", "having sent"], "answer": 1, "why": "an earlier action reported in the present needs the perfect infinitive"},
+        {"sentence": "___ the report, she went straight to bed.", "options": ["Finished", "Have finished", "Having finished"], "answer": 2, "why": "perfect -ing shows one action completed just before another"},
+        {"sentence": "He ___ the guitar since he was seven, so he's remarkably good now.", "options": ["has been playing", "played", "has played"], "answer": 0, "why": "a long activity continuing up to now, with present relevance, favours the continuous"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with the correct perfect form of the verb in brackets.",
+      "items": [
+        {"sentence": "By next year, Liam ___ (finish) secondary school.", "answers": ["will have finished", "'ll have finished"]},
+        {"sentence": "I ___ (never / try) sushi before last night.", "answers": ["had never tried", "'d never tried"]},
+        {"sentence": "She's exhausted — she ___ (revise) since six this morning.", "answers": ["has been revising", "'s been revising"]},
+        {"sentence": "___ (you / finish) your project by the deadline next Friday?", "answers": ["Will you have finished"]},
+        {"sentence": "He claims ___ (meet) the president once.", "answers": ["to have met"]},
+        {"sentence": "___ (complete) the marathon, she collapsed with relief.", "answers": ["Having completed"]},
+        {"sentence": "They ___ (know) each other for over a decade now.", "answers": ["have known", "'ve known"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first, using the word given. Do not change the word given. Use between two and five words.",
+      "items": [
+        {"first": "She began teaching at this school in 2016 and she is still teaching here.", "key": "SINCE", "second_start": "She", "second_end": "2016.", "answers": ["has been teaching since", "'s been teaching since"]},
+        {"first": "The bus left, and then we reached the stop two minutes later.", "key": "ALREADY", "second_start": "By the time we reached the stop, the bus", "second_end": ".", "answers": ["had already left"]},
+        {"first": "The construction workers will finish the new library before the end of term.", "key": "FINISHED", "second_start": "By the end of term, the new library", "second_end": "by the construction workers.", "answers": ["will have been finished"]},
+        {"first": "People say that the ancient bridge was built by the Incas without any metal tools.", "key": "HAVE", "second_start": "The ancient bridge is said", "second_end": "without any metal tools.", "answers": ["to have been built"]},
+        {"first": "It had been raining heavily for hours, which was why the pitch was flooded.", "key": "BEEN", "second_start": "The pitch was flooded because it", "second_end": "heavily for hours.", "answers": ["had been raining"]},
+        {"first": "Nadia finished her application only a moment ago.", "key": "JUST", "second_start": "Nadia", "second_end": "her application.", "answers": ["has just finished", "'s just finished"]}
+      ]
+    }
+  ],
+  "summary": [
+    "The perfect aspect frames an event as complete before a reference point — now, a past moment or a future one.",
+    "Simple forms (<i>has written</i>) focus on the result; continuous forms (<i>has been writing</i>) focus on the activity and its visible effects.",
+    "<i>By</i>, <i>by the time</i> and <i>before</i> often signal a deadline that needs a perfect form, not the simple past or future.",
+    "After modals and reporting verbs, use the perfect infinitive (<i>to have left</i>); to sequence two past actions in one sentence, use perfect -ing (<i>Having left</i>).",
+    "Stative verbs (<i>know, own, believe</i>) rarely take the continuous, even in the perfect."
+  ]
+}

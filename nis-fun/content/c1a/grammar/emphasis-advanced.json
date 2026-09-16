@@ -1,0 +1,204 @@
+{
+  "id": "emphasis-advanced",
+  "level": "c1a",
+  "area": "Conditionals & hypothesis",
+  "title": "Emphasis and fronting",
+  "tagline": "Stress the right word, front the right phrase, and a plain statement becomes unmistakable.",
+  "cefr": "C1",
+  "exam": [
+    "Reading & Use of English Part 4 — key word transformations (DID, DOES, THIS, UTTERLY, OWN)",
+    "Writing Part 1 — essay: making a point stand out without shouting it",
+    "Speaking Parts 3 and 4 — sounding convincing, not just correct",
+    "Listening — recognising stress and contradiction in spoken English"
+  ],
+  "why": "At C1, emphasis is not just about intonation — English has grammatical tools that do the stressing for you: emphatic do, fronting, intensifying adverbs and fixed phrases like the thing is. Use of English Part 4 tests several of these directly, and a well-placed one lifts an essay or a spoken answer out of the merely correct.",
+  "diagrams": [
+    {
+      "type": "formula",
+      "title": "Emphatic do / does / did",
+      "parts": [
+        {"chip": "subject", "tone": "a", "ex": "she"},
+        {"chip": "do / does / did", "tone": "kw", "ex": "did"},
+        {"chip": "bare infinitive", "tone": "b", "ex": "call"},
+        {"chip": "→", "tone": "arrow"},
+        {"chip": "stressed in speech, contradicts doubt", "tone": "c", "ex": "She DID call, I promise."}
+      ],
+      "caption": "Do/does/did carries the stress that a plain past or present tense doesn't have."
+    },
+    {
+      "type": "contrast",
+      "title": "Normal order vs. fronting for emphasis",
+      "columns": ["Normal order", "Fronted for emphasis"],
+      "rows": [
+        {"label": "Object fronting", "cells": ["I can accept this.", "This I can accept."]},
+        {"label": "Adverbial fronting", "cells": ["The results were disappointing, to say the least.", "To say the least, the results were disappointing."]},
+        {"label": "Negative object fronting", "cells": ["She didn't say a single word.", "Not a single word did she say."]},
+        {"label": "Effect", "cells": ["Neutral statement", "The fronted element carries the stress"]}
+      ]
+    },
+    {
+      "type": "map",
+      "title": "Other ways to add emphasis",
+      "center": "Emphasis",
+      "branches": [
+        {"label": "Intensifying adverbs", "items": ["utterly ridiculous", "downright rude", "thoroughly convinced", "absolutely essential"], "tone": "a"},
+        {"label": "own / very", "items": ["my own idea", "the very thought of it", "this very moment"], "tone": "b"},
+        {"label": "Discourse emphasis", "items": ["The thing is, …", "What's more, …"], "tone": "c"},
+        {"label": "Emphatic whatever/whoever", "items": ["whatever you decide", "whoever wins", "whatever happens"], "tone": "a"}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "subject", "tone": "a", "ex": "I"},
+      {"chip": "do / does / did", "tone": "kw", "ex": "did"},
+      {"chip": "bare infinitive", "tone": "b", "ex": "warn"},
+      {"chip": "→", "tone": "arrow"},
+      {"chip": "extra stress, often contradicting doubt", "tone": "c", "ex": "I did warn you."}
+    ],
+    "table": {
+      "head": ["Pattern", "Structure", "Example"],
+      "rows": [
+        ["Emphatic do/does/did", "do/does/did + bare infinitive", "I <b>did</b> warn you about the traffic."],
+        ["Fronted object", "Object + subject + verb", "<b>This</b> I can accept; the rest I cannot."],
+        ["Fronted negative object", "Negative object + inverted clause", "<b>Not a word</b> did she say for the rest of the journey."],
+        ["Intensifying adverb + adjective", "utterly / downright / thoroughly + adjective", "The excuse was <b>downright</b> unconvincing."],
+        ["own for emphatic possession", "possessive + own + noun", "She wrote the whole script in her <b>own</b> words."],
+        ["very for emphatic identity", "the very + noun", "The <b>very</b> idea of cheating disgusted him."],
+        ["the thing is, for emphasis in speech", "The thing is, + clause", "<b>The thing is</b>, we simply ran out of time."],
+        ["Emphatic whatever/whoever", "whatever/whoever + clause", "<b>Whatever</b> you decide, I'll support you."]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Emphatic do/does/did to stress that something really happened",
+      "examples": [
+        {"text": "I <b>did</b> send the report — check your spam folder.", "note": "emphatic did, contradicting a doubt"},
+        {"text": "She <b>does</b> care about the result, even if she hides it.", "note": "emphatic does, present simple"},
+        {"text": "We <b>did</b> try to warn them, but nobody listened.", "note": "emphatic did, past"}
+      ]
+    },
+    {
+      "point": "Fronting an object, adverbial or negative expression for emphasis",
+      "examples": [
+        {"text": "<b>This</b> I can accept; the deadline extension, I cannot.", "note": "fronted object, contrastive"},
+        {"text": "<b>To say the least</b>, the meeting did not go as planned.", "note": "fronted adverbial, ironic understatement"},
+        {"text": "<b>Not a single word</b> did she say for the rest of the journey.", "note": "fronted negative object triggers inversion"}
+      ]
+    },
+    {
+      "point": "Intensifying adverbs with the right collocation",
+      "examples": [
+        {"text": "The behaviour was <b>utterly</b> unacceptable in a school assembly.", "note": "utterly + strong negative adjective"},
+        {"text": "His comment was <b>downright</b> rude, whatever his intention.", "note": "downright + negative adjective, informal edge"},
+        {"text": "She seemed <b>thoroughly</b> convinced by the argument.", "note": "thoroughly + convinced, a fixed collocation"}
+      ]
+    },
+    {
+      "point": "own, very and the thing is for emphasis without raising your voice",
+      "examples": [
+        {"text": "He insisted on writing the speech in his <b>own</b> words, not a template.", "note": "own for emphatic possession"},
+        {"text": "The <b>very</b> mention of exams made the room go quiet.", "note": "very + noun, emphatic identity"},
+        {"text": "<b>The thing is</b>, we can't reschedule without losing the deposit.", "note": "introduces the real issue"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {
+      "wrong": "I do sent the report yesterday.",
+      "right": "I <b>did</b> send the report yesterday.",
+      "why": "Emphatic do/does/did is followed by the bare infinitive, never a past tense form."
+    },
+    {
+      "wrong": "This I can to accept.",
+      "right": "<b>This</b> I can accept.",
+      "why": "After a fronted object, the clause keeps normal, non-inverted word order — no extra to."
+    },
+    {
+      "wrong": "Not a single word she said.",
+      "right": "<b>Not a single word did she say</b>.",
+      "why": "Fronting a negative object triggers subject-auxiliary inversion."
+    },
+    {
+      "wrong": "The excuse was very unconvincing, downright.",
+      "right": "The excuse was <b>downright</b> unconvincing.",
+      "why": "Downright/utterly/thoroughly go immediately before the adjective, not after it."
+    },
+    {
+      "wrong": "The very of exams made her nervous.",
+      "right": "The <b>very</b> mention of exams made her nervous.",
+      "why": "Very must be followed by a noun in this pattern — it cannot stand alone."
+    },
+    {
+      "wrong": "Thing is we can't reschedule.",
+      "right": "<b>The thing is</b>, we can't reschedule.",
+      "why": "The fixed phrase needs the definite article and a comma before the explanation."
+    }
+  ],
+  "dialogue": {
+    "title": "Who did the reading",
+    "context": "Mateo, Liam and Miss Vega sort out a disagreement about a group project, with tempers running high enough for some real emphasis.",
+    "lines": [
+      {"speaker": "Miss Vega", "text": "The group project mark was much lower than everyone expected. What happened?"},
+      {"speaker": "Mateo", "text": "I <b>did</b> do my part, Miss — I sent Liam my notes on Monday."},
+      {"speaker": "Liam", "text": "<b>This</b> I have to say: I never received any notes from anyone."},
+      {"speaker": "Mateo", "text": "I <b>did</b> send them! Check your email, not just WhatsApp."},
+      {"speaker": "Miss Vega", "text": "Let's stay calm. Liam, what exactly is missing?"},
+      {"speaker": "Liam", "text": "<b>The thing is</b>, the whole introduction was left half-finished."},
+      {"speaker": "Mateo", "text": "That's because Sofia said she'd write it — <b>whatever</b> she wrote, it never reached me."},
+      {"speaker": "Miss Vega", "text": "Right. And how would you describe the final result, honestly?"},
+      {"speaker": "Liam", "text": "<b>Utterly</b> disorganised, if I'm honest. Nobody checked the final draft."},
+      {"speaker": "Mateo", "text": "I agree it was <b>downright</b> messy — but I really <b>did</b> try to keep it together."},
+      {"speaker": "Miss Vega", "text": "Good. <b>Whoever</b> is missing something, next time everyone confirms their part in writing."},
+      {"speaker": "Mateo", "text": "<b>Not a single message</b> will I send without a screenshot from now on."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "I ___ send the invitation — check your inbox again.", "options": ["did", "do", "done"], "answer": 0, "why": "Emphatic did + bare infinitive stresses a past action, contradicting doubt."},
+        {"sentence": "She ___ care about the outcome, whatever she says.", "options": ["is", "does", "did"], "answer": 1, "why": "Present simple emphatic uses does + bare infinitive."},
+        {"sentence": "___ I can accept, but the extra cost is out of the question.", "options": ["It", "That is", "This"], "answer": 2, "why": "Fronting the object (This) throws stress onto what follows, contrasting it with what can't be accepted."},
+        {"sentence": "Not a single excuse ___ willing to accept.", "options": ["was he", "he was", "he is"], "answer": 0, "why": "Fronting a negative object triggers subject-auxiliary inversion."},
+        {"sentence": "The comment was ___ inappropriate for a school assembly.", "options": ["utter", "utterly", "very much"], "answer": 1, "why": "Utterly is an intensifying adverb placed directly before the adjective."},
+        {"sentence": "He always insists on doing it in his ___ way.", "options": ["very", "itself", "own"], "answer": 2, "why": "Own after a possessive emphasises that nobody else is involved."},
+        {"sentence": "___, we simply don't have the budget for a second trip.", "options": ["The thing is", "It is the thing", "Thing is that"], "answer": 0, "why": "The fixed phrase the thing is introduces the real issue behind a decision."}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with one word so that it is grammatically correct.",
+      "items": [
+        {"sentence": "I ___ warn you about the traffic — you just didn't listen.", "answers": ["did"]},
+        {"sentence": "___ I can accept; the extra homework, I cannot.", "answers": ["This"]},
+        {"sentence": "Not a word ___ she say for the rest of the trip.", "answers": ["did"]},
+        {"sentence": "His remark was ___ unacceptable in front of the whole class.", "answers": ["utterly", "downright", "thoroughly"]},
+        {"sentence": "She always plans her trips entirely in her ___ way.", "answers": ["own"]},
+        {"sentence": "The ___ mention of the exam made him nervous.", "answers": ["very"]},
+        {"sentence": "___ thing is, we ran out of time before the final section.", "answers": ["The"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first, using the word given. Do not change the word given. Use between two and five words.",
+      "items": [
+        {"first": "I know you don't believe me, but I sent the email on Monday.", "key": "DID", "second_start": "I know you don't believe me, but I", "second_end": "the email on Monday.", "answers": ["did send"]},
+        {"first": "Believe me, she cares about the result, even though she hides it.", "key": "DOES", "second_start": "She", "second_end": "about the result, even though she hides it.", "answers": ["does care"]},
+        {"first": "I can tell you this: the deadline will not be extended.", "key": "THIS", "second_start": "", "second_end": "I can tell you: the deadline will not be extended.", "answers": ["This much"]},
+        {"first": "The comment was extremely inappropriate for a school assembly.", "key": "UTTERLY", "second_start": "The comment was", "second_end": "for a school assembly.", "answers": ["utterly inappropriate"]},
+        {"first": "He always writes his speeches without any help from a template.", "key": "OWN", "second_start": "He always writes his speeches in his", "second_end": "words, without any help from a template.", "answers": ["very own"]},
+        {"first": "His remark was extremely rude, whatever he intended.", "key": "DOWNRIGHT", "second_start": "His remark was", "second_end": ", whatever he intended.", "answers": ["downright rude"]}
+      ]
+    }
+  ],
+  "summary": [
+    "Emphatic <i>do/does/did</i> + bare infinitive stresses that something really did happen — useful for contradicting doubt.",
+    "Fronting an object, adverbial or negative expression throws stress onto it; a fronted negative also triggers inversion.",
+    "Intensifying adverbs like <i>utterly, downright, thoroughly</i> collocate with specific adjectives — learn them as pairs.",
+    "<i>own</i>, <i>the very</i> and <i>the thing is</i> add emphasis without raising your voice; <i>whatever/whoever</i> add emphatic indifference.",
+    "These devices work because they are used sparingly — save them for the moment that really needs the stress."
+  ]
+}

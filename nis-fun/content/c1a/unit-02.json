@@ -1,924 +1,926 @@
 {
- "id": "c1a-02",
- "level": "c1a",
- "number": 2,
- "title": "It's the message that matters",
- "topic": "cleft sentences",
- "grammar": "Cleft sentences (It is/was… that/who… / What… is/was…)",
- "wordlist": [
-  "rhetoric",
-  "emphasis",
-  "persuade",
-  "resonate",
-  "concise",
-  "compelling",
-  "understatement",
-  "get your point across",
-  "articulate",
-  "sway"
- ],
- "exam_focus": {
-  "paper": "Reading & Use of English",
-  "part": 7,
-  "skill": "gapped text"
- },
- "characters": [
-  "nova"
- ],
- "scene": {
-  "speaker": "nova",
-  "bubble": "This unit is about persuasion. Learn cleft sentences — It is… that…, What… is… — and the extra tricks that make one sentence impossible to ignore.",
-  "intro": "Welcome back to the reading club. This time we ask a different question about Melville's Ahab: not why he is obsessed, but how he gets an entire crew to agree with him. Our club has been studying rhetoric — the tools speakers and writers use to put one idea in the spotlight and leave everything else in shadow. You will read a gapped magazine article in the format of Reading Part 7, hear an interview with a communication coach in the format of Listening Part 3, learn the cleft sentence — the structure that lets you say, quite literally, “It is this that matters” — and a second family of emphasis tools: emphatic do/does/did and intensifiers like by far and nothing short of. You will also write your first review for the Inspiring Nordic project. It is, in the end, the message that matters. Let's begin."
- },
- "activities": [
-  {
-   "code": "A",
-   "type": "pairwork",
-   "title": "Speaking — Parts 1 and 2. Talk with a partner, then record yourself.",
-   "outputs": [
-    "book",
-    "digital"
-   ],
-   "speaking": {
-    "part": 2,
-    "name": "Interview and long turn"
-   },
-   "tips": {
-    "expect": "Part 1 (2 minutes): the examiner asks you and your partner questions about yourselves — your studies, opinions and experience of speaking to other people. Part 2 (about 4 minutes): each of you talks alone for one minute about two of three pictures, answering the two questions printed above them; then your partner answers a short question about your pictures (30 seconds).",
-    "how": [
-     "In Part 1, support your answers with a reason and an example, but do not turn any answer into a speech.",
-     "In Part 2, do not simply describe the pictures. Compare them and answer both questions, speculating about what you cannot know for certain (<i>they may well be…, it looks as though…</i>).",
-     "Keep talking for the full minute: if you run out of things to say about the first question, move straight to the second."
-    ]
-   },
-   "data": {
-    "text": "Part 1: talk about communication and persuasion. Part 2: compare two of the three pictures and say why the speaker's message might work and how the audience might react.",
-    "parts": [
-     {
-      "part": 1,
-      "title": "Interview",
-      "time": "2 min",
-      "prompts": [
-       "Do you find it easy or difficult to speak in front of a group? Why?",
-       "Who is the most persuasive person you know, and what makes them so convincing?",
-       "Do you think the way something is said matters as much as what is actually said?",
-       "Can you think of a time when someone's words changed your mind about something? What happened?"
-      ]
-     },
-     {
-      "part": 2,
-      "title": "Long turn",
-      "time": "1 min + 30 s",
-      "question": "Compare two of the pictures and say <b>why the speaker's message might be effective</b> and <b>how the audience might be reacting</b>.",
-      "pictures": [
-       {
-        "emoji": "🎤🏟️",
-        "caption": "a speaker addressing a large audience from a stage"
-       },
-       {
-        "emoji": "🧑‍🏫🙋",
-        "caption": "a teacher answering a student's question in class"
-       },
-       {
-        "emoji": "📣🚶",
-        "caption": "an activist addressing passers-by with a megaphone"
-       }
+  "id": "c1a-02",
+  "level": "c1a",
+  "number": 2,
+  "title": "It's the message that matters",
+  "topic": "cleft sentences",
+  "grammar": "Cleft sentences (It is/was… that/who… / What… is/was…)",
+  "wordlist": [
+    "rhetoric",
+    "emphasis",
+    "persuade",
+    "resonate",
+    "concise",
+    "compelling",
+    "understatement",
+    "get your point across",
+    "articulate",
+    "sway"
+  ],
+  "exam_focus": {
+    "paper": "Reading & Use of English",
+    "part": 7,
+    "skill": "gapped text"
+  },
+  "characters": [
+    "nova"
+  ],
+  "scene": {
+    "speaker": "nova",
+    "bubble": "This unit is about persuasion. Learn cleft sentences — It is… that…, What… is… — and the extra tricks that make one sentence impossible to ignore.",
+    "intro": "Welcome back to the reading club. This time we ask a different question about Melville's Ahab: not why he is obsessed, but how he gets an entire crew to agree with him. Our club has been studying rhetoric — the tools speakers and writers use to put one idea in the spotlight and leave everything else in shadow. You will read a gapped magazine article in the format of Reading Part 7, hear an interview with a communication coach in the format of Listening Part 3, learn the cleft sentence — the structure that lets you say, quite literally, “It is this that matters” — and a second family of emphasis tools: emphatic do/does/did and intensifiers like by far and nothing short of. You will also write your first review for the Inspiring Nordic project. It is, in the end, the message that matters. Let's begin."
+  },
+  "activities": [
+    {
+      "code": "A",
+      "type": "pairwork",
+      "title": "Speaking — Parts 1 and 2. Talk with a partner, then record yourself.",
+      "outputs": [
+        "book",
+        "digital"
       ],
-      "partner": "Which of these speakers do you think has the hardest audience to convince? Why? (about 30 seconds)"
-     }
-    ],
-    "useful_language": {
-     "Speculating": [
-      "They might well be…",
-      "It looks as though…",
-      "She could be hoping to…",
-      "Judging by their expression, …"
-     ],
-     "Comparing": [
-      "Unlike the first picture, the second…",
-      "Both speakers seem to…",
-      "One key difference is…"
-     ],
-     "Giving your view": [
-      "As I see it, …",
-      "What strikes me most is…",
-      "If anything, …"
-     ]
-    }
-   }
-  },
-  {
-   "code": "B",
-   "type": "match_words",
-   "title": "Vocabulary — rhetoric and persuasion. Match each word with its meaning.",
-   "outputs": [
-    "book",
-    "digital",
-    "quiz"
-   ],
-   "data": {
-    "left_label": "Word",
-    "right_label": "Meaning",
-    "pairs": [
-     {
-      "left": "rhetoric",
-      "right": "the art of using language effectively and persuasively, especially in speaking"
-     },
-     {
-      "left": "emphasis",
-      "right": "special importance or prominence given to one particular point"
-     },
-     {
-      "left": "persuade",
-      "right": "to make someone believe or do something through reasoning and argument"
-     },
-     {
-      "left": "resonate",
-      "right": "to have a lasting emotional effect on people, to strike a chord"
-     },
-     {
-      "left": "concise",
-      "right": "giving the necessary information clearly, in very few words"
-     },
-     {
-      "left": "compelling",
-      "right": "so interesting or convincing that it holds your full attention"
-     },
-     {
-      "left": "understatement",
-      "right": "a way of describing something as smaller or less important than it really is"
-     },
-     {
-      "left": "get your point across",
-      "right": "to succeed in making other people understand exactly what you mean"
-     },
-     {
-      "left": "articulate",
-      "right": "able to express thoughts and ideas clearly and fluently"
-     },
-     {
-      "left": "sway",
-      "right": "to influence someone's opinion or decision, often gradually"
-     }
-    ]
-   }
-  },
-  {
-   "code": "C",
-   "type": "gapped_text",
-   "title": "Reading and Use of English Part 7 — gapped text. Six paragraphs have been removed. Choose the paragraph that fits each gap.",
-   "outputs": [
-    "digital"
-   ],
-   "tips": {
-    "expect": "One long text with six paragraphs removed and placed, in the wrong order, after it, together with one extra paragraph that does not fit anywhere. You choose which paragraph fits each of the six gaps.",
-    "how": [
-     "Read the base text first, ignoring the gaps, to get the overall argument.",
-     "For each gap, look closely at the sentences immediately before and after it: pronouns (this, it, they), references back (the same idea, that principle) and logical links usually point to only one paragraph.",
-     "Check your answer both ways: the paragraph you choose must connect naturally to what comes before it AND to what comes after it.",
-     "One paragraph is always a distractor. If a paragraph seems to fit two gaps equally well, it is probably the extra one."
-    ],
-    "remember": "There are seven paragraphs for six gaps. Do not force the extra paragraph into a gap just because you have one left over."
-   },
-   "data": {
-    "title": "Six Seconds to Be Remembered",
-    "text": "<p>Every year, Nordic International School holds an open assembly at the end of the autumn term, and every year at least one speech is forgotten within the hour while another is quoted for months afterwards. The difference, according to the teachers who judge the event, has almost nothing to do with the size of the speaker's vocabulary.</p><p>{1}</p><p>Consider the closing line of a speech given last year by a nervous Year 13 student who wanted the school to plant more trees along the drive. She had prepared six paragraphs of statistics on carbon and rainfall. In rehearsal, her teacher cut five of them and told her to keep only one sentence: “It is the next ten years that will decide whether this courtyard has any shade left.” The statistics were gone from most people's memory within a week. The sentence was not.</p><p>{2}</p><p>Our own Grade 11 reading club stumbled on a version of the same principle from an unexpected direction, while working through Moby Dick for the Inspiring Nordic project. Captain Ahab does not win his crew over with evidence, and he barely tries. He wins them over by repeating one image — the whale, always the whale — until it becomes the only idea left in the room.</p><p>{3}</p><p>None of this means that content stops mattering. A memorable sentence built on a false or shallow claim is, if anything, more dangerous than a forgettable one, because it goes on shaping what people believe long after the reasoning behind it should have been questioned. What separates persuasion from manipulation is not the technique itself but the honesty of what is being emphasised.</p><p>{4}</p><p>There is a practical lesson here for anyone preparing a speech, an essay, or even a difficult conversation with a parent. Decide, before you write a single word, what the one sentence is that you would keep if you were allowed to keep only one, and build everything else around that sentence rather than the other way round.</p><p>{5}</p><p>Miss Vega, who has coached the assembly speakers for six years running, puts the point more bluntly than any psychologist has managed to. “Nobody has ever complained that a speech was too short,” she says. “I have lost count of the ones that were too long.”</p><p>{6}</p><p>So the next time you sit down to write something you actually want people to remember, resist the temptation to say everything you know. Choose the one idea that matters most, put it in the spotlight, and trust your audience to do the rest.</p>",
-    "paragraphs": [
-     {
-      "letter": "A",
-      "text": "Advertisers worked this out decades before psychologists gave it a name. A soft drink once marketed itself as “the pause that refreshes” — a phrase that claims almost nothing measurable about taste, yet it outlived the marketing department that invented it, because it handed the audience a single image and then had the discipline to stop talking."
-     },
-     {
-      "letter": "B",
-      "text": "Cutting is nearly always harder than writing. Most first drafts run three or four times longer than the one idea they are supposed to be protecting, and every extra sentence quietly dilutes the sentence that actually matters, however elegant it sounds when read on its own."
-     },
-     {
-      "letter": "C",
-      "text": "What the memorable speeches share, without a single exception, is one line the speaker refuses to bury under qualifications and footnotes: a single claim, given more weight than everything surrounding it, and then left alone to do the work."
-     },
-     {
-      "letter": "D",
-      "text": "Nerves are rarely the real obstacle, in our experience. Most speakers who freeze halfway through a sentence know their material perfectly well; what fails them is not memory but confidence, and confidence, unlike content, cannot be rehearsed from a script the night before."
-     },
-     {
-      "letter": "E",
-      "text": "English even supplies ready-made tools for exactly this kind of emphasis — structures such as It is… that… or What matters most here is…, which exist for no other reason than to tell a listener precisely where to look."
-     },
-     {
-      "letter": "F",
-      "text": "Psychologists who study memory would not be surprised by any of this. We do not remember arguments; we remember images and single striking claims, and everything else in a message is, cognitively speaking, scaffolding that can be taken down again once the building is left standing."
-     },
-     {
-      "letter": "G",
-      "text": "Nadia, who is drafting the opening address for this year's assembly, put the dilemma rather well at a recent club meeting. “My job,” she said, “isn't to find the loudest sentence I can write. It's to find the truest one that also happens to be unforgettable.”"
-     }
-    ],
-    "answers": [
-     "C",
-     "F",
-     "A",
-     "G",
-     "B",
-     "E"
-    ]
-   }
-  },
-  {
-   "code": "D",
-   "type": "grammar_box",
-   "title": "Language focus 1 — Cleft sentences",
-   "outputs": [
-    "book",
-    "digital"
-   ],
-   "data": {
-    "title": "Cleft sentences: It is/was… that/who… and What… is/was…",
-    "can": "I can use it-clefts and wh-clefts (pseudo-clefts) to place a single idea in the spotlight, choosing exactly what a listener or reader notices first.",
-    "intro": "A cleft sentence splits an ordinary sentence in two so that one part can be highlighted. English has several patterns: the it-cleft (It is/was X that/who…), the wh-cleft (What… is/was X) and other pseudo-clefts built with the thing, the reason or all.",
-    "examples": [
-     {
-      "text": "<b>It is emphasis</b>, not volume, <b>that</b> makes a speech memorable.",
-      "note": "It + is + focus + that, with a contrast"
-     },
-     {
-      "text": "<b>It was Miss Vega who</b> first told the club to cut their drafts in half.",
-      "note": "It + was + person + who"
-     },
-     {
-      "text": "<b>It was in the closing line that</b> the whole speech came alive.",
-      "note": "clefting an adverbial of place or time"
-     },
-     {
-      "text": "<b>What the audience remembers is</b> a single striking image, rarely the exact words.",
-      "note": "wh-cleft: the focus comes after is"
-     },
-     {
-      "text": "<b>What Ahab does is</b> repeat one image until his crew can think of nothing else.",
-      "note": "wh-cleft spotlighting an action, with do"
-     },
-     {
-      "text": "<b>The reason the speech worked is that</b> she trusted one sentence instead of six paragraphs.",
-      "note": "pseudo-cleft with the reason … is that"
-     },
-     {
-      "text": "<b>All you need to do is</b> choose the one idea that matters most.",
-      "note": "pseudo-cleft with all"
-     }
-    ],
-    "rules": [
-     "Use It + is/was + the focus + that (things, ideas, adverbials) or who (people) to spotlight one part of a sentence: <b>It was Nadia who</b> wrote the opening line.",
-     "Use What + clause + is/was + focus to highlight an action or idea, usually placing the focus at the end: <b>What matters here is</b> honesty, not eloquence.",
-     "Other pseudo-clefts work the same way: <b>The thing that</b> surprised us <b>was…</b>; <b>the reason</b> she rehearsed so hard <b>was that…</b>; <b>all</b> she wanted <b>was…</b>.",
-     "Keep tenses consistent across the split: <b>It is</b> emphasis <b>that counts</b>; <b>It was</b> Ahab <b>who spoke</b>.",
-     "Do not confuse a cleft sentence with there is/are: <i>There is a sentence that…</i> simply reports existence; <i>It is the sentence that…</i> creates emphasis.",
-     "Use clefts sparingly in writing: one per paragraph draws the eye; several in a row sound artificial."
-    ],
-    "practice": {
-     "instructions": "Choose the correct form.",
-     "items": [
-      {
-       "sentence": "___ the message that matters, not the volume.",
-       "options": [
-        "It is",
-        "That is",
-        "There is"
-       ],
-       "answer": 0
+      "speaking": {
+        "part": 2,
+        "name": "Interview and long turn"
       },
-      {
-       "sentence": "___ Miss Vega who told the club to cut their drafts.",
-       "options": [
-        "There was",
-        "It was",
-        "She was"
-       ],
-       "answer": 1
+      "tips": {
+        "expect": "Part 1 (2 minutes): the examiner asks you and your partner questions about yourselves — your studies, opinions and experience of speaking to other people. Part 2 (about 4 minutes): each of you talks alone for one minute about two of three pictures, answering the two questions printed above them; then your partner answers a short question about your pictures (30 seconds).",
+        "how": [
+          "In Part 1, support your answers with a reason and an example, but do not turn any answer into a speech.",
+          "In Part 2, do not simply describe the pictures. Compare them and answer both questions, speculating about what you cannot know for certain (<i>they may well be…, it looks as though…</i>).",
+          "Keep talking for the full minute: if you run out of things to say about the first question, move straight to the second."
+        ]
       },
-      {
-       "sentence": "___ the audience remembers is a feeling, not the exact words.",
-       "options": [
-        "It",
-        "Who",
-        "What"
-       ],
-       "answer": 2
-      },
-      {
-       "sentence": "It was in the closing line ___ the whole speech came alive.",
-       "options": [
-        "that",
-        "which",
-        "who"
-       ],
-       "answer": 0
-      },
-      {
-       "sentence": "___ Ahab does is repeat one image until nobody can think of anything else.",
-       "options": [
-        "It",
-        "What",
-        "That"
-       ],
-       "answer": 1
-      },
-      {
-       "sentence": "The reason the speech worked is ___ she trusted one sentence.",
-       "options": [
-        "what",
-        "who",
-        "that"
-       ],
-       "answer": 2
-      },
-      {
-       "sentence": "All she wanted ___ one honest sentence, not six paragraphs of statistics.",
-       "options": [
-        "was",
-        "is",
-        "were"
-       ],
-       "answer": 0
+      "data": {
+        "text": "Part 1: talk about communication and persuasion. Part 2: compare two of the three pictures and say why the speaker's message might work and how the audience might react.",
+        "parts": [
+          {
+            "part": 1,
+            "title": "Interview",
+            "time": "2 min",
+            "prompts": [
+              "Do you find it easy or difficult to speak in front of a group? Why?",
+              "Who is the most persuasive person you know, and what makes them so convincing?",
+              "Do you think the way something is said matters as much as what is actually said?",
+              "Can you think of a time when someone's words changed your mind about something? What happened?"
+            ]
+          },
+          {
+            "part": 2,
+            "title": "Long turn",
+            "time": "1 min + 30 s",
+            "question": "Compare two of the pictures and say <b>why the speaker's message might be effective</b> and <b>how the audience might be reacting</b>.",
+            "pictures": [
+              {
+                "emoji": "🎤🏟️",
+                "caption": "a speaker addressing a large audience from a stage"
+              },
+              {
+                "emoji": "🧑‍🏫🙋",
+                "caption": "a teacher answering a student's question in class"
+              },
+              {
+                "emoji": "📣🚶",
+                "caption": "an activist addressing passers-by with a megaphone"
+              }
+            ],
+            "partner": "Which of these speakers do you think has the hardest audience to convince? Why? (about 30 seconds)"
+          }
+        ],
+        "useful_language": {
+          "Speculating": [
+            "They might well be…",
+            "It looks as though…",
+            "She could be hoping to…",
+            "Judging by their expression, …"
+          ],
+          "Comparing": [
+            "Unlike the first picture, the second…",
+            "Both speakers seem to…",
+            "One key difference is…"
+          ],
+          "Giving your view": [
+            "As I see it, …",
+            "What strikes me most is…",
+            "If anything, …"
+          ]
+        }
       }
-     ]
-    }
-   }
-  },
-  {
-   "code": "E",
-   "type": "key_transform",
-   "title": "Reading and Use of English Part 4 — key word transformations",
-   "outputs": [
-    "digital"
-   ],
-   "tips": {
-    "expect": "Six sentences. For each one you complete a second sentence so that it means the same as the first, using a given key word that must not be changed. You write between three and six words, including the key word. Each item is worth up to two marks.",
-    "how": [
-     "Decide first what is being tested: here, mostly cleft sentences, plus one or two fixed expressions.",
-     "Write the whole gap, then read the complete second sentence in your head: does it mean exactly the same as the first?",
-     "Count your words carefully, and make sure the key word itself has not changed form."
-    ],
-    "remember": "Partial marks exist. A transformation with the right structure but one wrong small word can still earn one mark out of two."
-   },
-   "data": {
-    "instructions": "Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and six words, including the word given.",
-    "items": [
-     {
-      "first": "The closing sentence persuaded the judges, not the statistics.",
-      "key": "IT",
-      "second_start": "It",
-      "second_end": "the judges, not the statistics.",
-      "answers": [
-       "was the closing sentence that persuaded"
-      ]
-     },
-     {
-      "first": "Nadia wrote the opening line of the assembly speech.",
-      "key": "WHO",
-      "second_start": "It was Nadia",
-      "second_end": "of the assembly speech.",
-      "answers": [
-       "who wrote the opening line"
-      ]
-     },
-     {
-      "first": "Miss Vega tells every speaker to cut their draft in half.",
-      "key": "WHAT",
-      "second_start": "What",
-      "second_end": "is tell every speaker to cut their draft in half.",
-      "answers": [
-       "Miss Vega does"
-      ]
-     },
-     {
-      "first": "She only wanted one honest sentence, not six paragraphs of statistics.",
-      "key": "ALL",
-      "second_start": "All",
-      "second_end": "one honest sentence, not six paragraphs of statistics.",
-      "answers": [
-       "she wanted was"
-      ]
-     },
-     {
-      "first": "She found it hard to make her main idea clear to the audience.",
-      "key": "ACROSS",
-      "second_start": "She found it hard to get",
-      "second_end": "to the audience.",
-      "answers": [
-       "her point across"
-      ]
-     },
-     {
-      "first": "The speech worked because she trusted one sentence instead of six paragraphs.",
-      "key": "REASON",
-      "second_start": "The reason the speech worked",
-      "second_end": "she trusted one sentence instead of six paragraphs.",
-      "answers": [
-       "was simply that",
-       "was that"
-      ]
-     }
-    ]
-   }
-  },
-  {
-   "code": "F",
-   "type": "listening_mc",
-   "title": "Listening Part 3 — multiple choice. Listen to the interview and choose the best answer.",
-   "outputs": [
-    "digital"
-   ],
-   "audio": "c1a/u02-f.mp3",
-   "tips": {
-    "expect": "One interview of about four minutes, with six four-option questions. You hear the recording twice. The questions test opinion, attitude, feeling and purpose — not simply facts you can hear word for word.",
-    "how": [
-     "Before listening, read all six questions and options: they tell you what to listen for at each stage of the interview.",
-     "Listen for the speaker's tone and the words they use to qualify an opinion (partly, only if, enormously so) — these usually signal the correct option.",
-     "Do not choose an option just because you hear one of its words in the recording: the wrong options often reuse vocabulary from the interview with a different meaning."
-    ],
-    "remember": "Use the second listening to check answers you were unsure about, not to start again from question one."
-   },
-   "data": {
-    "voice_note": "Presenter + Dr Elena Cross, a communication coach and former debate trainer. One extract, an interview.",
-    "script": "Presenter: This week we're talking about something everyone has to do sooner or later, whether they like it or not: standing up and trying to convince somebody of something. My guest is Dr Elena Cross, a communication coach who spent ten years training debaters before she started coaching business leaders. Elena, welcome.\nDr Cross: Thank you for having me.\nPresenter: Let's start with a provocation. Some people say rhetoric is basically a polite word for manipulation. Do you agree?\nDr Cross: I used to think that question was a trap, and now I think it's actually the most useful question in the whole field. My honest answer is no, but only if you're careful about the difference. Manipulation hides its methods and often hides the truth as well. Good rhetoric does the opposite: it makes the argument clearer, not murkier. If a technique only works because the audience doesn't notice it's being used, that's a warning sign, not a compliment.\nPresenter: You coach a lot of nervous first-time speakers. What's the mistake you see most often?\nDr Cross: Overloading. Almost everybody arrives with too much to say and too little sense of which part actually matters. They've done real research, and understandably they don't want to waste it, so they try to squeeze in every point they've prepared. What I tell them, every single time, is that an audience can hold onto one idea beautifully and three ideas badly. Cutting is not a loss. It's the whole skill.\nPresenter: Is that harder for some people than others?\nDr Cross: Enormously so, and not for the reason people expect. It has very little to do with confidence. Some of the most self-assured speakers I've coached are the worst at cutting, because they're convinced every sentence they've written is essential. If anything, the speakers who find it easiest are the ones who are slightly unsure of themselves, because they're already asking, from the start, what the audience actually needs.\nPresenter: Let's talk about something more controversial: repetition. Politicians repeat the same phrase constantly, and it's often mocked. Is that mockery fair?\nDr Cross: Only partly. I understand the irritation, and when a phrase is repeated without any variation, purely as a slogan, I share it. But dismissing repetition altogether misunderstands how memory actually works. A single well-placed repetition, with a slight change of angle each time, is one of the oldest and most legitimate tools a speaker has. What should worry us is not repetition itself but repetition used to avoid answering a real question.\nPresenter: Our listeners are mostly students preparing speeches or debates for school. What's the one piece of advice you'd give them, if you were only allowed one?\nDr Cross: Choose your one sentence before you choose your words. I mean that literally: decide, in advance, the single idea you want someone to repeat to a friend afterwards, and then write towards that sentence rather than away from it. Students almost never do this, because school trains you to show how much you know, not how clearly you can say one true thing.\nPresenter: And finally — do you think this generation, with social media and short videos, is actually getting better at this, or worse?\nDr Cross: Better, in one narrow sense, and worse in a way that concerns me more. Young speakers today are remarkably good at compression; they've grown up needing to make a point in fifteen seconds. What worries me is patience — the ability to sit with a longer, more complicated argument instead of reaching for the punchiest line available. The instinct for emphasis is sharper than it's ever been. The instinct for depth needs more attention.\nPresenter: Dr Elena Cross, thank you very much.\nDr Cross: Thank you.",
-    "extracts": [
-     {
-      "title": "Extract",
-      "intro": "You hear an interview in which a communication coach talks about persuasion and public speaking.",
-      "questions": [
-       {
-        "q": "What is Dr Cross's opinion of the claim that rhetoric is “manipulation”?",
-        "options": [
-         "She fully agrees with it.",
-         "She refuses to answer the question directly.",
-         "She partly agrees, but draws a clear distinction.",
-         "She rejects it completely, without qualification."
-        ],
-        "answer": 2
-       },
-       {
-        "q": "What does Dr Cross suggest about speakers who prepare too much material?",
-        "options": [
-         "They deliberately try to impress the audience with detail.",
-         "They struggle to identify what really matters.",
-         "They usually run out of time before finishing.",
-         "They lack confidence in their own ideas."
-        ],
-        "answer": 1
-       },
-       {
-        "q": "What is surprising about Dr Cross's view on confident speakers?",
-        "options": [
-         "They find it easier to cut their material than nervous speakers do.",
-         "Their confidence sometimes makes editing more difficult, not easier.",
-         "They tend to avoid speaking about topics they know well.",
-         "They rarely receive coaching because they think they don't need it."
-        ],
-        "answer": 1
-       },
-       {
-        "q": "How does Dr Cross feel about repetition in speeches?",
-        "options": [
-         "She thinks it should always be avoided as a lazy technique.",
-         "She believes it is only acceptable in political speeches.",
-         "She distinguishes between repetition that adds meaning and repetition that avoids one.",
-         "She thinks audiences never actually notice repetition."
-        ],
-        "answer": 2
-       },
-       {
-        "q": "What does Dr Cross imply about the way school trains students to prepare speeches?",
-        "options": [
-         "It encourages them to display knowledge rather than communicate clearly.",
-         "It gives them too little time to research their topic properly.",
-         "It focuses too heavily on grammar rather than content.",
-         "It fails to teach them how to structure an argument at all."
-        ],
-        "answer": 0
-       },
-       {
-        "q": "What is Dr Cross's attitude towards young speakers who have grown up with social media?",
-        "options": [
-         "She believes they have become worse at persuasion overall.",
-         "She thinks they excel at brevity but need to develop patience for depth.",
-         "She feels they rely too heavily on scripted responses.",
-         "She is confident they will naturally improve without any extra effort."
-        ],
-        "answer": 1
-       }
-      ]
-     }
-    ]
-   }
-  },
-  {
-   "code": "G",
-   "type": "grammar_box",
-   "title": "Language focus 2 — Adding emphasis: do/does/did and intensifying expressions",
-   "outputs": [
-    "book",
-    "digital"
-   ],
-   "data": {
-    "title": "Adding emphasis: emphatic do/does/did and intensifying expressions",
-    "can": "I can add emphasis with the auxiliary do/does/did before a verb and with intensifying expressions like the very, by far and nothing short of.",
-    "intro": "Besides restructuring a sentence with a cleft, English lets you intensify a claim with a small word or phrase, without changing the structure at all. Two families are especially useful at C1: the emphatic auxiliary (do/does/did + base verb) and a set of intensifying expressions that go well beyond very.",
-    "examples": [
-     {
-      "text": "She <b>did</b> warn us, but nobody listened.",
-      "note": "emphatic did + base verb, often with a contrast"
-     },
-     {
-      "text": "I <b>do</b> think the closing line is the strongest part of the speech.",
-      "note": "emphatic do + verb, insisting against doubt"
-     },
-     {
-      "text": "It was, <b>by far</b>, the most compelling speech of the evening.",
-      "note": "by far + superlative"
-     },
-     {
-      "text": "Her argument was <b>nothing short of</b> brilliant.",
-      "note": "nothing short of + strong noun/adjective"
-     },
-     {
-      "text": "He is <b>the very</b> person who convinced the committee to change its mind.",
-      "note": "the very + noun, singling something out precisely"
-     },
-     {
-      "text": "The statistics convinced <b>absolutely</b> no one in the room.",
-      "note": "absolutely + negative, total emphasis"
-     },
-     {
-      "text": "She had no interest <b>whatsoever</b> in reading the whole report aloud.",
-      "note": "whatsoever after a negative, strengthens it"
-     }
-    ],
-    "rules": [
-     "Add do/does/did before the base form of the verb to insist that something is true, especially after doubt or contrast: I <b>do</b> agree; she <b>did</b> tell them.",
-     "Emphatic do/does/did carries the stress in speech and is often followed by but or a contrast: he <b>did</b> apologise, but far too late.",
-     "Use by far with superlatives to intensify a comparison: <i>by far the most persuasive speaker</i>.",
-     "Use nothing short of + a strong noun or adjective to say something is remarkable or extreme: nothing short of <i>a triumph, remarkable, astonishing</i>.",
-     "Use the very + noun to single something or someone out precisely: the very <i>reason, person, moment, idea</i>.",
-     "Negative intensifiers (whatsoever, at all, in the slightest) strengthen a negative statement and normally come at the end: no interest whatsoever; not persuasive in the slightest."
-    ],
-    "practice": {
-     "instructions": "Choose the correct form.",
-     "items": [
-      {
-       "sentence": "She ___ warn the club, but nobody took her seriously.",
-       "options": [
-        "does",
-        "was",
-        "did"
-       ],
-       "answer": 2
-      },
-      {
-       "sentence": "It was ___ the most memorable assembly the school has had.",
-       "options": [
-        "the very",
-        "by far",
-        "nothing short of"
-       ],
-       "answer": 1
-      },
-      {
-       "sentence": "His closing argument was ___ brilliant.",
-       "options": [
-        "nothing short of",
-        "by far",
-        "the very"
-       ],
-       "answer": 0
-      },
-      {
-       "sentence": "He is ___ person who first suggested cutting the speech in half.",
-       "options": [
-        "nothing short of",
-        "by far",
-        "the very"
-       ],
-       "answer": 2
-      },
-      {
-       "sentence": "I ___ believe that one honest sentence beats six clever ones.",
-       "options": [
-        "did",
-        "do",
-        "does"
-       ],
-       "answer": 1
-      },
-      {
-       "sentence": "The statistics convinced ___ nobody in the room.",
-       "options": [
-        "absolutely",
-        "the very",
-        "by far"
-       ],
-       "answer": 0
-      },
-      {
-       "sentence": "She had no interest ___ in reading the whole report aloud.",
-       "options": [
-        "the very",
-        "by far",
-        "whatsoever"
-       ],
-       "answer": 2
-      }
-     ]
-    }
-   }
-  },
-  {
-   "code": "H",
-   "type": "mc_cloze",
-   "title": "Reading and Use of English Part 1 — multiple-choice cloze. Choose the best word for each gap.",
-   "outputs": [
-    "digital"
-   ],
-   "tips": {
-    "expect": "A short text with eight gaps, each followed by four options. Only one option is correct for meaning, collocation or grammar in that exact place.",
-    "how": [
-     "Read the whole text first for general meaning before choosing any answer.",
-     "For each gap, look at the words immediately before and after it: many gaps test a fixed collocation (strike a chord, point out) rather than the meaning of a single word.",
-     "Watch out for options that look almost identical to the correct word (rely/reply/relay) — only one fits both the grammar and the meaning."
-    ],
-    "remember": "All four options are usually the same part of speech, so grammar alone will not eliminate them. Meaning and collocation will."
-   },
-   "data": {
-    "title": "The Persuasion Habit",
-    "text": "For centuries, philosophers have tried to work {1} exactly what makes one speaker more persuasive than another. Some have argued that persuasion is a natural gift; most now agree that it can, {2} some extent, be learned. What is certain is that the strongest arguments rarely {3} on volume or vocabulary alone. Instead, they depend on structure: a speaker who repeats a single idea, rather than scattering a dozen weaker ones, is far more likely to strike a {4} with an audience. This is not merely a matter of style. Psychologists who study memory point {5} that listeners retain images and single striking claims long after the surrounding detail has faded. A well-placed pause, a short sentence, or a deliberate contrast can all help an idea {6} home in a way that a page of statistics never could. None of this excuses dishonesty: a speaker who manipulates an audience by hiding the weaknesses of an argument is exploiting the very techniques that should serve the truth, not {7} it. The real skill, then, is not simply persuading people but doing so {8} a way that respects them.",
-    "items": [
-     {
-      "options": [
-       "up",
-       "out",
-       "on",
-       "in"
-      ],
-      "answer": 1
-     },
-     {
-      "options": [
-       "at",
-       "to",
-       "in",
-       "by"
-      ],
-      "answer": 1
-     },
-     {
-      "options": [
-       "reply",
-       "rely",
-       "relay",
-       "rally"
-      ],
-      "answer": 1
-     },
-     {
-      "options": [
-       "cord",
-       "key",
-       "chord",
-       "note"
-      ],
-      "answer": 2
-     },
-     {
-      "options": [
-       "to",
-       "up",
-       "out",
-       "at"
-      ],
-      "answer": 2
-     },
-     {
-      "options": [
-       "land",
-       "drop",
-       "fall",
-       "hit"
-      ],
-      "answer": 3
-     },
-     {
-      "options": [
-       "underline",
-       "undertake",
-       "undergo",
-       "undermine"
-      ],
-      "answer": 3
-     },
-     {
-      "options": [
-       "in",
-       "on",
-       "by",
-       "with"
-      ],
-      "answer": 0
-     }
-    ]
-   }
-  },
-  {
-   "code": "I",
-   "type": "writing",
-   "title": "Writing Part 2 — review. Plan, write 220–260 words and hand it in.",
-   "outputs": [
-    "digital"
-   ],
-   "tips": {
-    "expect": "Part 2 offers a choice of tasks, one of which is often a review. You write about a book, film, talk, podcast or similar for a specific reader (a school website, a magazine), giving your opinion and, usually, a recommendation. 220–260 words, semi-formal register.",
-    "how": [
-     "Name the talk, podcast or book early, and say briefly what it is about — do not assume the reader already knows it.",
-     "Balance description with evaluation: a review that only summarises the content, without saying what was good or weak about it, is not really a review.",
-     "End with a clear recommendation and say who it would suit.",
-     "A lively, personal style is appropriate here — more so than in an essay — but stay organised: one clear idea per paragraph."
-    ],
-    "remember": "Content, communicative achievement, organisation and language are all marked. A review that never actually evaluates anything loses marks whatever the English is like."
-   },
-   "data": {
-    "part": 2,
-    "genre": "review",
-    "words": [
-     220,
-     260
-    ],
-    "task": "<p>The Nordic International School website is collecting reviews of talks, podcasts or books about communication and public speaking, to help students prepare for this year's assembly.</p><p>Write a <b>review</b> of a talk, a podcast episode or a book about communication that you have found useful or inspiring. You should say <b>what it was about</b>, <b>what made it effective (or not)</b>, and <b>whether you would recommend it to other students</b>. Write <b>220–260 words</b>.</p>",
-    "plan": [
-     "<b>Introduction</b> (2–3 sentences): name the talk, podcast or book and say very briefly what it covers. No strong opinion yet.",
-     "<b>Paragraph 2</b> — content: what it actually covers, with one specific detail or example so the reader can picture it.",
-     "<b>Paragraph 3</b> — evaluation: what works well (or doesn't) — the structure, the speaker, the balance of ideas. This is where most of your opinion belongs.",
-     "<b>Conclusion</b>: your recommendation and who it would suit. A cleft sentence works well here: <i>It is… that makes it worth your time.</i>"
-    ],
-    "useful_language": {
-     "Introducing the talk/book": [
-      "If you are looking for…, I would point you towards…",
-      "The episode/book I want to recommend is…",
-      "Few talks on this topic manage to…"
-     ],
-     "Describing content": [
-      "The talk moves through…",
-      "What struck me most was…",
-      "A particularly memorable moment is when…"
-     ],
-     "Evaluating": [
-      "The strongest part is, without doubt, …",
-      "It is not perfect: …",
-      "A tighter edit/structure would have…"
-     ],
-     "Recommending": [
-      "I would recommend this to anyone who…",
-      "It is, quite simply, …",
-      "This is well worth your time if…"
-     ]
     },
-    "checklist": [
-     "I have named the talk, podcast or book early and said briefly what it is about.",
-     "I have both described the content and evaluated it — not just one or the other.",
-     "My final paragraph gives a clear recommendation and says who it would suit.",
-     "The register is engaging but organised: one clear idea per paragraph.",
-     "I have used at least one cleft sentence and one intensifying expression from this unit.",
-     "Between 220 and 260 words."
-    ],
-    "model": "<p><i>A model answer (241 words). Notice the title, the balance between description and evaluation, and the cleft sentence in the final verdict.</i></p><p><b>The Art of the Unforgettable Line — a podcast worth your commute</b></p><p>If you only have twenty minutes and a genuine interest in public speaking, I would point you straight to the episode of <i>Speak Up</i> in which the host interviews communication coach Dr Elena Cross. The conversation moves quickly through persuasion, repetition and the psychology of memory, but it never feels rushed.</p><p>What struck me most was Dr Cross's advice to choose one sentence before writing a single word of a speech. It sounds obvious once she says it, yet almost none of my classmates prepare speeches that way, and neither, I confess, did I before listening.</p><p>The episode is not perfect. The middle section on political rhetoric drifts slightly, and a couple of examples are repeated rather than developed further. A tighter edit would have made an already good episode genuinely excellent, which is faintly ironic given the subject matter.</p><p>Even so, it is the closing exchange, about students and social media, that makes the whole episode worth recommending. Dr Cross is convincing without ever sounding as though she is performing conviction, which is rarer than it should be in this genre.</p><p>I would recommend this podcast to any student preparing a speech, a debate or even a difficult conversation. It is, quite simply, the most useful twenty minutes I have spent on this topic all year.</p>"
-   }
-  },
-  {
-   "code": "J",
-   "type": "pairwork",
-   "title": "Speaking — Parts 3 and 4. Collaborative task and discussion. Record your best answer.",
-   "outputs": [
-    "book",
-    "digital"
-   ],
-   "speaking": {
-    "part": 3,
-    "name": "Collaborative task and discussion"
-   },
-   "tips": {
-    "expect": "Part 3 (about 4 minutes): you and your partner discuss a question with five written prompts for two minutes, then have one minute to reach a decision together. Part 4 (about 5 minutes): the examiner asks you both broader questions on the same theme.",
-    "how": [
-     "In Part 3 you are marked on how well you interact, not on whether you agree: ask your partner's opinion, respond to it, and build on or challenge what they say.",
-     "Do not try to cover all five prompts in the two minutes. Discussing two or three in real depth scores higher than rushing through five.",
-     "In the decision minute, negotiate rather than simply announcing your own choice: <i>Shall we agree that…? I could go along with that if…</i>",
-     "In Part 4, develop each answer: opinion, reason, example, and a wider point."
-    ],
-    "remember": "Look at each other, not at the examiner, during Part 3. The examiner listens; your partner is who you are talking to."
-   },
-   "data": {
-    "text": "Part 3: discuss how these things might make a message more persuasive and decide which matters most. Part 4: discuss persuasion, social media and changing your mind.",
-    "parts": [
-     {
-      "part": 3,
-      "title": "Collaborative task",
-      "time": "2 min + 1 min",
-      "intro": "Here are some things that can make a message more persuasive. Talk to each other about <b>how each of these might make a message more persuasive</b>.",
-      "centre": "How might each of these make a message more persuasive?",
-      "spokes": [
-       "a personal story",
-       "statistics and data",
-       "repetition of one key phrase",
-       "the speaker's tone of voice",
-       "an appeal to the audience's emotions"
+    {
+      "code": "B",
+      "type": "match_words",
+      "title": "Vocabulary — rhetoric and persuasion. Match each word with its meaning.",
+      "outputs": [
+        "book",
+        "digital",
+        "quiz"
       ],
-      "decide": "Now you have a minute to decide <b>which of these is the most powerful way to persuade an audience</b>."
-     },
-     {
-      "part": 4,
-      "title": "Further discussion",
-      "time": "5 min",
-      "prompts": [
-       "Do you think it's possible for a message to be too persuasive?",
-       "Should schools teach students how to build a persuasive argument?",
-       "Is it fair to judge a speaker by their delivery rather than the strength of their ideas?",
-       "How has social media changed the way people try to persuade each other?",
-       "Can you think of an occasion when the right words changed someone's mind, including your own?"
-      ]
-     }
-    ],
-    "useful_language": {
-     "Involving your partner": [
-      "What's your take on…?",
-      "Would you agree that…?",
-      "How do you see it?",
-      "Do you feel the same way?"
-     ],
-     "Building on an idea": [
-      "Building on what you said…",
-      "That ties in with…",
-      "Not only that, but…"
-     ],
-     "Reaching a decision": [
-      "Shall we settle on…?",
-      "I'd lean towards…, since…",
-      "We might not fully agree, but if we had to choose…"
-     ],
-     "Part 4: developing an answer": [
-      "It really depends on…",
-      "There's a strong argument that…",
-      "Rarely is it that simple…"
-     ]
+      "data": {
+        "left_label": "Word",
+        "right_label": "Meaning",
+        "pairs": [
+          {
+            "left": "rhetoric",
+            "right": "the art of using language effectively and persuasively, especially in speaking"
+          },
+          {
+            "left": "emphasis",
+            "right": "special importance or prominence given to one particular point"
+          },
+          {
+            "left": "persuade",
+            "right": "to make someone believe or do something through reasoning and argument"
+          },
+          {
+            "left": "resonate",
+            "right": "to have a lasting emotional effect on people, to strike a chord"
+          },
+          {
+            "left": "concise",
+            "right": "giving the necessary information clearly, in very few words"
+          },
+          {
+            "left": "compelling",
+            "right": "so interesting or convincing that it holds your full attention"
+          },
+          {
+            "left": "understatement",
+            "right": "a way of describing something as smaller or less important than it really is"
+          },
+          {
+            "left": "get your point across",
+            "right": "to succeed in making other people understand exactly what you mean"
+          },
+          {
+            "left": "articulate",
+            "right": "able to express thoughts and ideas clearly and fluently"
+          },
+          {
+            "left": "sway",
+            "right": "to influence someone's opinion or decision, often gradually"
+          }
+        ]
+      }
+    },
+    {
+      "code": "C",
+      "type": "gapped_text",
+      "title": "Reading and Use of English Part 7 — gapped text. Six paragraphs have been removed. Choose the paragraph that fits each gap.",
+      "outputs": [
+        "digital"
+      ],
+      "tips": {
+        "expect": "One long text with six paragraphs removed and placed, in the wrong order, after it, together with one extra paragraph that does not fit anywhere. You choose which paragraph fits each of the six gaps.",
+        "how": [
+          "Read the base text first, ignoring the gaps, to get the overall argument.",
+          "For each gap, look closely at the sentences immediately before and after it: pronouns (this, it, they), references back (the same idea, that principle) and logical links usually point to only one paragraph.",
+          "Check your answer both ways: the paragraph you choose must connect naturally to what comes before it AND to what comes after it.",
+          "One paragraph is always a distractor. If a paragraph seems to fit two gaps equally well, it is probably the extra one."
+        ],
+        "remember": "There are seven paragraphs for six gaps. Do not force the extra paragraph into a gap just because you have one left over."
+      },
+      "data": {
+        "title": "Six Seconds to Be Remembered",
+        "text": "<p>Every year, Nordic International School holds an open assembly at the end of the autumn term, and every year at least one speech is forgotten within the hour while another is quoted for months afterwards. The difference, according to the teachers who judge the event, has almost nothing to do with the size of the speaker's vocabulary.</p><p>{1}</p><p>Consider the closing line of a speech given last year by a nervous Year 13 student who wanted the school to plant more trees along the drive. She had prepared six paragraphs of statistics on carbon and rainfall. In rehearsal, her teacher cut five of them and told her to keep only one sentence: “It is the next ten years that will decide whether this courtyard has any shade left.” The statistics were gone from most people's memory within a week. The sentence was not.</p><p>{2}</p><p>Our own reading club stumbled on a version of the same principle from an unexpected direction, while working through Moby Dick for the Inspiring Nordic project. Captain Ahab does not win his crew over with evidence, and he barely tries. He wins them over by repeating one image — the whale, always the whale — until it becomes the only idea left in the room.</p><p>{3}</p><p>None of this means that content stops mattering. A memorable sentence built on a false or shallow claim is, if anything, more dangerous than a forgettable one, because it goes on shaping what people believe long after the reasoning behind it should have been questioned. What separates persuasion from manipulation is not the technique itself but the honesty of what is being emphasised.</p><p>{4}</p><p>There is a practical lesson here for anyone preparing a speech, an essay, or even a difficult conversation with a parent. Decide, before you write a single word, what the one sentence is that you would keep if you were allowed to keep only one, and build everything else around that sentence rather than the other way round.</p><p>{5}</p><p>Miss Vega, who has coached the assembly speakers for six years running, puts the point more bluntly than any psychologist has managed to. “Nobody has ever complained that a speech was too short,” she says. “I have lost count of the ones that were too long.”</p><p>{6}</p><p>So the next time you sit down to write something you actually want people to remember, resist the temptation to say everything you know. Choose the one idea that matters most, put it in the spotlight, and trust your audience to do the rest.</p>",
+        "paragraphs": [
+          {
+            "letter": "A",
+            "text": "Advertisers worked this out decades before psychologists gave it a name. A soft drink once marketed itself as “the pause that refreshes” — a phrase that claims almost nothing measurable about taste, yet it outlived the marketing department that invented it, because it handed the audience a single image and then had the discipline to stop talking."
+          },
+          {
+            "letter": "B",
+            "text": "Cutting is nearly always harder than writing. Most first drafts run three or four times longer than the one idea they are supposed to be protecting, and every extra sentence quietly dilutes the sentence that actually matters, however elegant it sounds when read on its own."
+          },
+          {
+            "letter": "C",
+            "text": "What the memorable speeches share, without a single exception, is one line the speaker refuses to bury under qualifications and footnotes: a single claim, given more weight than everything surrounding it, and then left alone to do the work."
+          },
+          {
+            "letter": "D",
+            "text": "Nerves are rarely the real obstacle, in our experience. Most speakers who freeze halfway through a sentence know their material perfectly well; what fails them is not memory but confidence, and confidence, unlike content, cannot be rehearsed from a script the night before."
+          },
+          {
+            "letter": "E",
+            "text": "English even supplies ready-made tools for exactly this kind of emphasis — structures such as It is… that… or What matters most here is…, which exist for no other reason than to tell a listener precisely where to look."
+          },
+          {
+            "letter": "F",
+            "text": "Psychologists who study memory would not be surprised by any of this. We do not remember arguments; we remember images and single striking claims, and everything else in a message is, cognitively speaking, scaffolding that can be taken down again once the building is left standing."
+          },
+          {
+            "letter": "G",
+            "text": "Nadia, who is drafting the opening address for this year's assembly, put the dilemma rather well at a recent club meeting. “My job,” she said, “isn't to find the loudest sentence I can write. It's to find the truest one that also happens to be unforgettable.”"
+          }
+        ],
+        "answers": [
+          "C",
+          "F",
+          "A",
+          "G",
+          "B",
+          "E"
+        ]
+      }
+    },
+    {
+      "code": "D",
+      "type": "grammar_box",
+      "title": "Language focus 1 — Cleft sentences",
+      "outputs": [
+        "book",
+        "digital"
+      ],
+      "data": {
+        "title": "Cleft sentences: It is/was… that/who… and What… is/was…",
+        "can": "I can use it-clefts and wh-clefts (pseudo-clefts) to place a single idea in the spotlight, choosing exactly what a listener or reader notices first.",
+        "intro": "A cleft sentence splits an ordinary sentence in two so that one part can be highlighted. English has several patterns: the it-cleft (It is/was X that/who…), the wh-cleft (What… is/was X) and other pseudo-clefts built with the thing, the reason or all.",
+        "examples": [
+          {
+            "text": "<b>It is emphasis</b>, not volume, <b>that</b> makes a speech memorable.",
+            "note": "It + is + focus + that, with a contrast"
+          },
+          {
+            "text": "<b>It was Miss Vega who</b> first told the club to cut their drafts in half.",
+            "note": "It + was + person + who"
+          },
+          {
+            "text": "<b>It was in the closing line that</b> the whole speech came alive.",
+            "note": "clefting an adverbial of place or time"
+          },
+          {
+            "text": "<b>What the audience remembers is</b> a single striking image, rarely the exact words.",
+            "note": "wh-cleft: the focus comes after is"
+          },
+          {
+            "text": "<b>What Ahab does is</b> repeat one image until his crew can think of nothing else.",
+            "note": "wh-cleft spotlighting an action, with do"
+          },
+          {
+            "text": "<b>The reason the speech worked is that</b> she trusted one sentence instead of six paragraphs.",
+            "note": "pseudo-cleft with the reason … is that"
+          },
+          {
+            "text": "<b>All you need to do is</b> choose the one idea that matters most.",
+            "note": "pseudo-cleft with all"
+          }
+        ],
+        "rules": [
+          "Use It + is/was + the focus + that (things, ideas, adverbials) or who (people) to spotlight one part of a sentence: <b>It was Nadia who</b> wrote the opening line.",
+          "Use What + clause + is/was + focus to highlight an action or idea, usually placing the focus at the end: <b>What matters here is</b> honesty, not eloquence.",
+          "Other pseudo-clefts work the same way: <b>The thing that</b> surprised us <b>was…</b>; <b>the reason</b> she rehearsed so hard <b>was that…</b>; <b>all</b> she wanted <b>was…</b>.",
+          "Keep tenses consistent across the split: <b>It is</b> emphasis <b>that counts</b>; <b>It was</b> Ahab <b>who spoke</b>.",
+          "Do not confuse a cleft sentence with there is/are: <i>There is a sentence that…</i> simply reports existence; <i>It is the sentence that…</i> creates emphasis.",
+          "Use clefts sparingly in writing: one per paragraph draws the eye; several in a row sound artificial."
+        ],
+        "practice": {
+          "instructions": "Choose the correct form.",
+          "items": [
+            {
+              "sentence": "___ the message that matters, not the volume.",
+              "options": [
+                "It is",
+                "That is",
+                "There is"
+              ],
+              "answer": 0
+            },
+            {
+              "sentence": "___ Miss Vega who told the club to cut their drafts.",
+              "options": [
+                "There was",
+                "It was",
+                "She was"
+              ],
+              "answer": 1
+            },
+            {
+              "sentence": "___ the audience remembers is a feeling, not the exact words.",
+              "options": [
+                "It",
+                "Who",
+                "What"
+              ],
+              "answer": 2
+            },
+            {
+              "sentence": "It was in the closing line ___ the whole speech came alive.",
+              "options": [
+                "that",
+                "which",
+                "who"
+              ],
+              "answer": 0
+            },
+            {
+              "sentence": "___ Ahab does is repeat one image until nobody can think of anything else.",
+              "options": [
+                "It",
+                "What",
+                "That"
+              ],
+              "answer": 1
+            },
+            {
+              "sentence": "The reason the speech worked is ___ she trusted one sentence.",
+              "options": [
+                "what",
+                "who",
+                "that"
+              ],
+              "answer": 2
+            },
+            {
+              "sentence": "All she wanted ___ one honest sentence, not six paragraphs of statistics.",
+              "options": [
+                "was",
+                "is",
+                "were"
+              ],
+              "answer": 0
+            }
+          ]
+        },
+        "lab": "cleft-sentences"
+      }
+    },
+    {
+      "code": "E",
+      "type": "key_transform",
+      "title": "Reading and Use of English Part 4 — key word transformations",
+      "outputs": [
+        "digital"
+      ],
+      "tips": {
+        "expect": "Six sentences. For each one you complete a second sentence so that it means the same as the first, using a given key word that must not be changed. You write between three and six words, including the key word. Each item is worth up to two marks.",
+        "how": [
+          "Decide first what is being tested: here, mostly cleft sentences, plus one or two fixed expressions.",
+          "Write the whole gap, then read the complete second sentence in your head: does it mean exactly the same as the first?",
+          "Count your words carefully, and make sure the key word itself has not changed form."
+        ],
+        "remember": "Partial marks exist. A transformation with the right structure but one wrong small word can still earn one mark out of two."
+      },
+      "data": {
+        "instructions": "Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and six words, including the word given.",
+        "items": [
+          {
+            "first": "The closing sentence persuaded the judges, not the statistics.",
+            "key": "IT",
+            "second_start": "It",
+            "second_end": "the judges, not the statistics.",
+            "answers": [
+              "was the closing sentence that persuaded"
+            ]
+          },
+          {
+            "first": "Nadia wrote the opening line of the assembly speech.",
+            "key": "WHO",
+            "second_start": "It was Nadia",
+            "second_end": "of the assembly speech.",
+            "answers": [
+              "who wrote the opening line"
+            ]
+          },
+          {
+            "first": "Miss Vega tells every speaker to cut their draft in half.",
+            "key": "WHAT",
+            "second_start": "What",
+            "second_end": "is tell every speaker to cut their draft in half.",
+            "answers": [
+              "Miss Vega does"
+            ]
+          },
+          {
+            "first": "She only wanted one honest sentence, not six paragraphs of statistics.",
+            "key": "ALL",
+            "second_start": "All",
+            "second_end": "one honest sentence, not six paragraphs of statistics.",
+            "answers": [
+              "she wanted was"
+            ]
+          },
+          {
+            "first": "She found it hard to make her main idea clear to the audience.",
+            "key": "ACROSS",
+            "second_start": "She found it hard to get",
+            "second_end": "to the audience.",
+            "answers": [
+              "her point across"
+            ]
+          },
+          {
+            "first": "The speech worked because she trusted one sentence instead of six paragraphs.",
+            "key": "REASON",
+            "second_start": "The reason the speech worked",
+            "second_end": "she trusted one sentence instead of six paragraphs.",
+            "answers": [
+              "was simply that",
+              "was that"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "code": "F",
+      "type": "listening_mc",
+      "title": "Listening Part 3 — multiple choice. Listen to the interview and choose the best answer.",
+      "outputs": [
+        "digital"
+      ],
+      "audio": "c1a/u02-f.mp3",
+      "tips": {
+        "expect": "One interview of about four minutes, with six four-option questions. You hear the recording twice. The questions test opinion, attitude, feeling and purpose — not simply facts you can hear word for word.",
+        "how": [
+          "Before listening, read all six questions and options: they tell you what to listen for at each stage of the interview.",
+          "Listen for the speaker's tone and the words they use to qualify an opinion (partly, only if, enormously so) — these usually signal the correct option.",
+          "Do not choose an option just because you hear one of its words in the recording: the wrong options often reuse vocabulary from the interview with a different meaning."
+        ],
+        "remember": "Use the second listening to check answers you were unsure about, not to start again from question one."
+      },
+      "data": {
+        "voice_note": "Presenter + Dr Elena Cross, a communication coach and former debate trainer. One extract, an interview.",
+        "script": "Presenter: This week we're talking about something everyone has to do sooner or later, whether they like it or not: standing up and trying to convince somebody of something. My guest is Dr Elena Cross, a communication coach who spent ten years training debaters before she started coaching business leaders. Elena, welcome.\nDr Cross: Thank you for having me.\nPresenter: Let's start with a provocation. Some people say rhetoric is basically a polite word for manipulation. Do you agree?\nDr Cross: I used to think that question was a trap, and now I think it's actually the most useful question in the whole field. My honest answer is no, but only if you're careful about the difference. Manipulation hides its methods and often hides the truth as well. Good rhetoric does the opposite: it makes the argument clearer, not murkier. If a technique only works because the audience doesn't notice it's being used, that's a warning sign, not a compliment.\nPresenter: You coach a lot of nervous first-time speakers. What's the mistake you see most often?\nDr Cross: Overloading. Almost everybody arrives with too much to say and too little sense of which part actually matters. They've done real research, and understandably they don't want to waste it, so they try to squeeze in every point they've prepared. What I tell them, every single time, is that an audience can hold onto one idea beautifully and three ideas badly. Cutting is not a loss. It's the whole skill.\nPresenter: Is that harder for some people than others?\nDr Cross: Enormously so, and not for the reason people expect. It has very little to do with confidence. Some of the most self-assured speakers I've coached are the worst at cutting, because they're convinced every sentence they've written is essential. If anything, the speakers who find it easiest are the ones who are slightly unsure of themselves, because they're already asking, from the start, what the audience actually needs.\nPresenter: Let's talk about something more controversial: repetition. Politicians repeat the same phrase constantly, and it's often mocked. Is that mockery fair?\nDr Cross: Only partly. I understand the irritation, and when a phrase is repeated without any variation, purely as a slogan, I share it. But dismissing repetition altogether misunderstands how memory actually works. A single well-placed repetition, with a slight change of angle each time, is one of the oldest and most legitimate tools a speaker has. What should worry us is not repetition itself but repetition used to avoid answering a real question.\nPresenter: Our listeners are mostly students preparing speeches or debates for school. What's the one piece of advice you'd give them, if you were only allowed one?\nDr Cross: Choose your one sentence before you choose your words. I mean that literally: decide, in advance, the single idea you want someone to repeat to a friend afterwards, and then write towards that sentence rather than away from it. Students almost never do this, because school trains you to show how much you know, not how clearly you can say one true thing.\nPresenter: And finally — do you think this generation, with social media and short videos, is actually getting better at this, or worse?\nDr Cross: Better, in one narrow sense, and worse in a way that concerns me more. Young speakers today are remarkably good at compression; they've grown up needing to make a point in fifteen seconds. What worries me is patience — the ability to sit with a longer, more complicated argument instead of reaching for the punchiest line available. The instinct for emphasis is sharper than it's ever been. The instinct for depth needs more attention.\nPresenter: Dr Elena Cross, thank you very much.\nDr Cross: Thank you.",
+        "extracts": [
+          {
+            "title": "Extract",
+            "intro": "You hear an interview in which a communication coach talks about persuasion and public speaking.",
+            "questions": [
+              {
+                "q": "What is Dr Cross's opinion of the claim that rhetoric is “manipulation”?",
+                "options": [
+                  "She fully agrees with it.",
+                  "She refuses to answer the question directly.",
+                  "She partly agrees, but draws a clear distinction.",
+                  "She rejects it completely, without qualification."
+                ],
+                "answer": 2
+              },
+              {
+                "q": "What does Dr Cross suggest about speakers who prepare too much material?",
+                "options": [
+                  "They deliberately try to impress the audience with detail.",
+                  "They struggle to identify what really matters.",
+                  "They usually run out of time before finishing.",
+                  "They lack confidence in their own ideas."
+                ],
+                "answer": 1
+              },
+              {
+                "q": "What is surprising about Dr Cross's view on confident speakers?",
+                "options": [
+                  "They find it easier to cut their material than nervous speakers do.",
+                  "Their confidence sometimes makes editing more difficult, not easier.",
+                  "They tend to avoid speaking about topics they know well.",
+                  "They rarely receive coaching because they think they don't need it."
+                ],
+                "answer": 1
+              },
+              {
+                "q": "How does Dr Cross feel about repetition in speeches?",
+                "options": [
+                  "She thinks it should always be avoided as a lazy technique.",
+                  "She believes it is only acceptable in political speeches.",
+                  "She distinguishes between repetition that adds meaning and repetition that avoids one.",
+                  "She thinks audiences never actually notice repetition."
+                ],
+                "answer": 2
+              },
+              {
+                "q": "What does Dr Cross imply about the way school trains students to prepare speeches?",
+                "options": [
+                  "It encourages them to display knowledge rather than communicate clearly.",
+                  "It gives them too little time to research their topic properly.",
+                  "It focuses too heavily on grammar rather than content.",
+                  "It fails to teach them how to structure an argument at all."
+                ],
+                "answer": 0
+              },
+              {
+                "q": "What is Dr Cross's attitude towards young speakers who have grown up with social media?",
+                "options": [
+                  "She believes they have become worse at persuasion overall.",
+                  "She thinks they excel at brevity but need to develop patience for depth.",
+                  "She feels they rely too heavily on scripted responses.",
+                  "She is confident they will naturally improve without any extra effort."
+                ],
+                "answer": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "code": "G",
+      "type": "grammar_box",
+      "title": "Language focus 2 — Adding emphasis: do/does/did and intensifying expressions",
+      "outputs": [
+        "book",
+        "digital"
+      ],
+      "data": {
+        "title": "Adding emphasis: emphatic do/does/did and intensifying expressions",
+        "can": "I can add emphasis with the auxiliary do/does/did before a verb and with intensifying expressions like the very, by far and nothing short of.",
+        "intro": "Besides restructuring a sentence with a cleft, English lets you intensify a claim with a small word or phrase, without changing the structure at all. Two families are especially useful at C1: the emphatic auxiliary (do/does/did + base verb) and a set of intensifying expressions that go well beyond very.",
+        "examples": [
+          {
+            "text": "She <b>did</b> warn us, but nobody listened.",
+            "note": "emphatic did + base verb, often with a contrast"
+          },
+          {
+            "text": "I <b>do</b> think the closing line is the strongest part of the speech.",
+            "note": "emphatic do + verb, insisting against doubt"
+          },
+          {
+            "text": "It was, <b>by far</b>, the most compelling speech of the evening.",
+            "note": "by far + superlative"
+          },
+          {
+            "text": "Her argument was <b>nothing short of</b> brilliant.",
+            "note": "nothing short of + strong noun/adjective"
+          },
+          {
+            "text": "He is <b>the very</b> person who convinced the committee to change its mind.",
+            "note": "the very + noun, singling something out precisely"
+          },
+          {
+            "text": "The statistics convinced <b>absolutely</b> no one in the room.",
+            "note": "absolutely + negative, total emphasis"
+          },
+          {
+            "text": "She had no interest <b>whatsoever</b> in reading the whole report aloud.",
+            "note": "whatsoever after a negative, strengthens it"
+          }
+        ],
+        "rules": [
+          "Add do/does/did before the base form of the verb to insist that something is true, especially after doubt or contrast: I <b>do</b> agree; she <b>did</b> tell them.",
+          "Emphatic do/does/did carries the stress in speech and is often followed by but or a contrast: he <b>did</b> apologise, but far too late.",
+          "Use by far with superlatives to intensify a comparison: <i>by far the most persuasive speaker</i>.",
+          "Use nothing short of + a strong noun or adjective to say something is remarkable or extreme: nothing short of <i>a triumph, remarkable, astonishing</i>.",
+          "Use the very + noun to single something or someone out precisely: the very <i>reason, person, moment, idea</i>.",
+          "Negative intensifiers (whatsoever, at all, in the slightest) strengthen a negative statement and normally come at the end: no interest whatsoever; not persuasive in the slightest."
+        ],
+        "practice": {
+          "instructions": "Choose the correct form.",
+          "items": [
+            {
+              "sentence": "She ___ warn the club, but nobody took her seriously.",
+              "options": [
+                "does",
+                "was",
+                "did"
+              ],
+              "answer": 2
+            },
+            {
+              "sentence": "It was ___ the most memorable assembly the school has had.",
+              "options": [
+                "the very",
+                "by far",
+                "nothing short of"
+              ],
+              "answer": 1
+            },
+            {
+              "sentence": "His closing argument was ___ brilliant.",
+              "options": [
+                "nothing short of",
+                "by far",
+                "the very"
+              ],
+              "answer": 0
+            },
+            {
+              "sentence": "He is ___ person who first suggested cutting the speech in half.",
+              "options": [
+                "nothing short of",
+                "by far",
+                "the very"
+              ],
+              "answer": 2
+            },
+            {
+              "sentence": "I ___ believe that one honest sentence beats six clever ones.",
+              "options": [
+                "did",
+                "do",
+                "does"
+              ],
+              "answer": 1
+            },
+            {
+              "sentence": "The statistics convinced ___ nobody in the room.",
+              "options": [
+                "absolutely",
+                "the very",
+                "by far"
+              ],
+              "answer": 0
+            },
+            {
+              "sentence": "She had no interest ___ in reading the whole report aloud.",
+              "options": [
+                "the very",
+                "by far",
+                "whatsoever"
+              ],
+              "answer": 2
+            }
+          ]
+        },
+        "lab": "emphasis-advanced"
+      }
+    },
+    {
+      "code": "H",
+      "type": "mc_cloze",
+      "title": "Reading and Use of English Part 1 — multiple-choice cloze. Choose the best word for each gap.",
+      "outputs": [
+        "digital"
+      ],
+      "tips": {
+        "expect": "A short text with eight gaps, each followed by four options. Only one option is correct for meaning, collocation or grammar in that exact place.",
+        "how": [
+          "Read the whole text first for general meaning before choosing any answer.",
+          "For each gap, look at the words immediately before and after it: many gaps test a fixed collocation (strike a chord, point out) rather than the meaning of a single word.",
+          "Watch out for options that look almost identical to the correct word (rely/reply/relay) — only one fits both the grammar and the meaning."
+        ],
+        "remember": "All four options are usually the same part of speech, so grammar alone will not eliminate them. Meaning and collocation will."
+      },
+      "data": {
+        "title": "The Persuasion Habit",
+        "text": "For centuries, philosophers have tried to work {1} exactly what makes one speaker more persuasive than another. Some have argued that persuasion is a natural gift; most now agree that it can, {2} some extent, be learned. What is certain is that the strongest arguments rarely {3} on volume or vocabulary alone. Instead, they depend on structure: a speaker who repeats a single idea, rather than scattering a dozen weaker ones, is far more likely to strike a {4} with an audience. This is not merely a matter of style. Psychologists who study memory point {5} that listeners retain images and single striking claims long after the surrounding detail has faded. A well-placed pause, a short sentence, or a deliberate contrast can all help an idea {6} home in a way that a page of statistics never could. None of this excuses dishonesty: a speaker who manipulates an audience by hiding the weaknesses of an argument is exploiting the very techniques that should serve the truth, not {7} it. The real skill, then, is not simply persuading people but doing so {8} a way that respects them.",
+        "items": [
+          {
+            "options": [
+              "up",
+              "out",
+              "on",
+              "in"
+            ],
+            "answer": 1
+          },
+          {
+            "options": [
+              "at",
+              "to",
+              "in",
+              "by"
+            ],
+            "answer": 1
+          },
+          {
+            "options": [
+              "reply",
+              "rely",
+              "relay",
+              "rally"
+            ],
+            "answer": 1
+          },
+          {
+            "options": [
+              "cord",
+              "key",
+              "chord",
+              "note"
+            ],
+            "answer": 2
+          },
+          {
+            "options": [
+              "to",
+              "up",
+              "out",
+              "at"
+            ],
+            "answer": 2
+          },
+          {
+            "options": [
+              "land",
+              "drop",
+              "fall",
+              "hit"
+            ],
+            "answer": 3
+          },
+          {
+            "options": [
+              "underline",
+              "undertake",
+              "undergo",
+              "undermine"
+            ],
+            "answer": 3
+          },
+          {
+            "options": [
+              "in",
+              "on",
+              "by",
+              "with"
+            ],
+            "answer": 0
+          }
+        ]
+      }
+    },
+    {
+      "code": "I",
+      "type": "writing",
+      "title": "Writing Part 2 — review. Plan, write 220–260 words and hand it in.",
+      "outputs": [
+        "digital"
+      ],
+      "tips": {
+        "expect": "Part 2 offers a choice of tasks, one of which is often a review. You write about a book, film, talk, podcast or similar for a specific reader (a school website, a magazine), giving your opinion and, usually, a recommendation. 220–260 words, semi-formal register.",
+        "how": [
+          "Name the talk, podcast or book early, and say briefly what it is about — do not assume the reader already knows it.",
+          "Balance description with evaluation: a review that only summarises the content, without saying what was good or weak about it, is not really a review.",
+          "End with a clear recommendation and say who it would suit.",
+          "A lively, personal style is appropriate here — more so than in an essay — but stay organised: one clear idea per paragraph."
+        ],
+        "remember": "Content, communicative achievement, organisation and language are all marked. A review that never actually evaluates anything loses marks whatever the English is like."
+      },
+      "data": {
+        "part": 2,
+        "genre": "review",
+        "words": [
+          220,
+          260
+        ],
+        "task": "<p>The Nordic International School website is collecting reviews of talks, podcasts or books about communication and public speaking, to help students prepare for this year's assembly.</p><p>Write a <b>review</b> of a talk, a podcast episode or a book about communication that you have found useful or inspiring. You should say <b>what it was about</b>, <b>what made it effective (or not)</b>, and <b>whether you would recommend it to other students</b>. Write <b>220–260 words</b>.</p>",
+        "plan": [
+          "<b>Introduction</b> (2–3 sentences): name the talk, podcast or book and say very briefly what it covers. No strong opinion yet.",
+          "<b>Paragraph 2</b> — content: what it actually covers, with one specific detail or example so the reader can picture it.",
+          "<b>Paragraph 3</b> — evaluation: what works well (or doesn't) — the structure, the speaker, the balance of ideas. This is where most of your opinion belongs.",
+          "<b>Conclusion</b>: your recommendation and who it would suit. A cleft sentence works well here: <i>It is… that makes it worth your time.</i>"
+        ],
+        "useful_language": {
+          "Introducing the talk/book": [
+            "If you are looking for…, I would point you towards…",
+            "The episode/book I want to recommend is…",
+            "Few talks on this topic manage to…"
+          ],
+          "Describing content": [
+            "The talk moves through…",
+            "What struck me most was…",
+            "A particularly memorable moment is when…"
+          ],
+          "Evaluating": [
+            "The strongest part is, without doubt, …",
+            "It is not perfect: …",
+            "A tighter edit/structure would have…"
+          ],
+          "Recommending": [
+            "I would recommend this to anyone who…",
+            "It is, quite simply, …",
+            "This is well worth your time if…"
+          ]
+        },
+        "checklist": [
+          "I have named the talk, podcast or book early and said briefly what it is about.",
+          "I have both described the content and evaluated it — not just one or the other.",
+          "My final paragraph gives a clear recommendation and says who it would suit.",
+          "The register is engaging but organised: one clear idea per paragraph.",
+          "I have used at least one cleft sentence and one intensifying expression from this unit.",
+          "Between 220 and 260 words."
+        ],
+        "model": "<p><i>A model answer (241 words). Notice the title, the balance between description and evaluation, and the cleft sentence in the final verdict.</i></p><p><b>The Art of the Unforgettable Line — a podcast worth your commute</b></p><p>If you only have twenty minutes and a genuine interest in public speaking, I would point you straight to the episode of <i>Speak Up</i> in which the host interviews communication coach Dr Elena Cross. The conversation moves quickly through persuasion, repetition and the psychology of memory, but it never feels rushed.</p><p>What struck me most was Dr Cross's advice to choose one sentence before writing a single word of a speech. It sounds obvious once she says it, yet almost none of my classmates prepare speeches that way, and neither, I confess, did I before listening.</p><p>The episode is not perfect. The middle section on political rhetoric drifts slightly, and a couple of examples are repeated rather than developed further. A tighter edit would have made an already good episode genuinely excellent, which is faintly ironic given the subject matter.</p><p>Even so, it is the closing exchange, about students and social media, that makes the whole episode worth recommending. Dr Cross is convincing without ever sounding as though she is performing conviction, which is rarer than it should be in this genre.</p><p>I would recommend this podcast to any student preparing a speech, a debate or even a difficult conversation. It is, quite simply, the most useful twenty minutes I have spent on this topic all year.</p>"
+      }
+    },
+    {
+      "code": "J",
+      "type": "pairwork",
+      "title": "Speaking — Parts 3 and 4. Collaborative task and discussion. Record your best answer.",
+      "outputs": [
+        "book",
+        "digital"
+      ],
+      "speaking": {
+        "part": 3,
+        "name": "Collaborative task and discussion"
+      },
+      "tips": {
+        "expect": "Part 3 (about 4 minutes): you and your partner discuss a question with five written prompts for two minutes, then have one minute to reach a decision together. Part 4 (about 5 minutes): the examiner asks you both broader questions on the same theme.",
+        "how": [
+          "In Part 3 you are marked on how well you interact, not on whether you agree: ask your partner's opinion, respond to it, and build on or challenge what they say.",
+          "Do not try to cover all five prompts in the two minutes. Discussing two or three in real depth scores higher than rushing through five.",
+          "In the decision minute, negotiate rather than simply announcing your own choice: <i>Shall we agree that…? I could go along with that if…</i>",
+          "In Part 4, develop each answer: opinion, reason, example, and a wider point."
+        ],
+        "remember": "Look at each other, not at the examiner, during Part 3. The examiner listens; your partner is who you are talking to."
+      },
+      "data": {
+        "text": "Part 3: discuss how these things might make a message more persuasive and decide which matters most. Part 4: discuss persuasion, social media and changing your mind.",
+        "parts": [
+          {
+            "part": 3,
+            "title": "Collaborative task",
+            "time": "2 min + 1 min",
+            "intro": "Here are some things that can make a message more persuasive. Talk to each other about <b>how each of these might make a message more persuasive</b>.",
+            "centre": "How might each of these make a message more persuasive?",
+            "spokes": [
+              "a personal story",
+              "statistics and data",
+              "repetition of one key phrase",
+              "the speaker's tone of voice",
+              "an appeal to the audience's emotions"
+            ],
+            "decide": "Now you have a minute to decide <b>which of these is the most powerful way to persuade an audience</b>."
+          },
+          {
+            "part": 4,
+            "title": "Further discussion",
+            "time": "5 min",
+            "prompts": [
+              "Do you think it's possible for a message to be too persuasive?",
+              "Should schools teach students how to build a persuasive argument?",
+              "Is it fair to judge a speaker by their delivery rather than the strength of their ideas?",
+              "How has social media changed the way people try to persuade each other?",
+              "Can you think of an occasion when the right words changed someone's mind, including your own?"
+            ]
+          }
+        ],
+        "useful_language": {
+          "Involving your partner": [
+            "What's your take on…?",
+            "Would you agree that…?",
+            "How do you see it?",
+            "Do you feel the same way?"
+          ],
+          "Building on an idea": [
+            "Building on what you said…",
+            "That ties in with…",
+            "Not only that, but…"
+          ],
+          "Reaching a decision": [
+            "Shall we settle on…?",
+            "I'd lean towards…, since…",
+            "We might not fully agree, but if we had to choose…"
+          ],
+          "Part 4: developing an answer": [
+            "It really depends on…",
+            "There's a strong argument that…",
+            "Rarely is it that simple…"
+          ]
+        }
+      }
     }
-   }
-  }
- ],
- "homework": [
-  {
-   "type": "write_sentences",
-   "prompt": "Write a short persuasive paragraph (10–12 sentences) about an idea, a person or a cause you believe in, using at least three cleft sentences (It is… that…, What… is…, All… was…) and two emphasis expressions from Language focus 2 (by far, nothing short of, the very, do/does/did + verb). Capital letters and full stops!"
-  }
- ],
- "scope": {
-  "grado": "G11",
-  "temaN": 2,
-  "tema": "The Message That Matters — Inspiring Nordic",
-  "outcomes": [
-   {
-    "destreza": "Listening",
-    "puede": "Follow a four-minute interview with a communication expert and answer multiple-choice questions on opinion and attitude (C1 Advanced Listening Part 3)."
-   },
-   {
-    "destreza": "Speaking",
-    "puede": "Give a persuasive opinion and negotiate a decision with a partner, using cleft sentences and emphasis expressions (C1 Advanced Speaking Parts 1–4)."
-   },
-   {
-    "destreza": "Reading",
-    "puede": "Read a gapped magazine article on persuasion and reinsert missing paragraphs by following reference and argument (C1 Advanced Reading Part 7)."
-   },
-   {
-    "destreza": "Writing",
-    "puede": "Plan and write a 220–260-word review of a talk, podcast or book about communication (C1 Advanced Writing Part 2)."
-   },
-   {
-    "destreza": "Use of English",
-    "puede": "Cleft sentences (It is/was… that/who…, What… is…); emphatic do/does/did and intensifying expressions; multiple-choice cloze (Part 1) and key word transformations (Part 4)."
-   }
   ],
-  "vocabulario": [
-   "rhetoric",
-   "emphasis",
-   "persuade",
-   "resonate",
-   "concise",
-   "compelling"
+  "homework": [
+    {
+      "type": "write_sentences",
+      "prompt": "Write a short persuasive paragraph (10–12 sentences) about an idea, a person or a cause you believe in, using at least three cleft sentences (It is… that…, What… is…, All… was…) and two emphasis expressions from Language focus 2 (by far, nothing short of, the very, do/does/did + verb). Capital letters and full stops!"
+    }
   ],
-  "gramatica": [
-   "Cleft sentences (It is/was… that/who… / What… is/was…)",
-   "Emphasis: emphatic do/does/did and intensifying expressions",
-   "Multiple-choice cloze (Part 1)",
-   "Key word transformations (Part 4)"
-  ],
-  "pendiente": {}
- },
- "wordlist_extra": [
-  "orator",
-  "argument",
-  "conviction"
- ]
+  "scope": {
+    "grado": "G11",
+    "temaN": 2,
+    "tema": "The Message That Matters — Inspiring Nordic",
+    "outcomes": [
+      {
+        "destreza": "Listening",
+        "puede": "Follow a four-minute interview with a communication expert and answer multiple-choice questions on opinion and attitude (C1 Advanced Listening Part 3)."
+      },
+      {
+        "destreza": "Speaking",
+        "puede": "Give a persuasive opinion and negotiate a decision with a partner, using cleft sentences and emphasis expressions (C1 Advanced Speaking Parts 1–4)."
+      },
+      {
+        "destreza": "Reading",
+        "puede": "Read a gapped magazine article on persuasion and reinsert missing paragraphs by following reference and argument (C1 Advanced Reading Part 7)."
+      },
+      {
+        "destreza": "Writing",
+        "puede": "Plan and write a 220–260-word review of a talk, podcast or book about communication (C1 Advanced Writing Part 2)."
+      },
+      {
+        "destreza": "Use of English",
+        "puede": "Cleft sentences (It is/was… that/who…, What… is…); emphatic do/does/did and intensifying expressions; multiple-choice cloze (Part 1) and key word transformations (Part 4)."
+      }
+    ],
+    "vocabulario": [
+      "rhetoric",
+      "emphasis",
+      "persuade",
+      "resonate",
+      "concise",
+      "compelling"
+    ],
+    "gramatica": [
+      "Cleft sentences (It is/was… that/who… / What… is/was…)",
+      "Emphasis: emphatic do/does/did and intensifying expressions",
+      "Multiple-choice cloze (Part 1)",
+      "Key word transformations (Part 4)"
+    ],
+    "pendiente": {}
+  },
+  "wordlist_extra": [
+    "orator",
+    "argument",
+    "conviction"
+  ]
 }

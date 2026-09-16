@@ -1,0 +1,210 @@
+{
+  "id": "passive-advanced",
+  "level": "c1a",
+  "area": "Passive & reporting",
+  "title": "Advanced passive structures",
+  "tagline": "The passive isn't just be + participle — it also hedges, reports rumours and describes bad luck.",
+  "cefr": "C1",
+  "exam": [
+    "Reading & Use of English Part 4 — key word transformations (BELIEVED, THOUGHT, GOT, NEEDS, HAD, OBJECTED)",
+    "Reading & Use of English Part 2 — open cloze",
+    "Writing Part 2 — report/article: hedged, impersonal statements",
+    "Speaking Part 3 — reporting what is thought or said without naming a source"
+  ],
+  "why": "Beyond the classic be + past participle, C1 English uses the passive to hedge a claim (it is believed that…), to describe misfortune (get-passive), and to compress ideas into infinitives and gerunds. Use of English regularly tests the difference between having something done to you and something simply happening to you.",
+  "diagrams": [
+    {
+      "type": "transform",
+      "title": "Reporting a belief without naming anyone",
+      "before": {
+        "text": "People believe that the bridge is unsafe.",
+        "hl": ["People believe"]
+      },
+      "after": {
+        "text": "The bridge is believed to be unsafe.",
+        "hl": ["is believed to be"]
+      },
+      "steps": [
+        "Make the object of the reporting verb (<b>the bridge</b>) the subject.",
+        "Add be + past participle of the reporting verb: <b>is believed</b>.",
+        "Follow with a to-infinitive — <i>to be</i> for the same time, <i>to have been</i> for an earlier one."
+      ]
+    },
+    {
+      "type": "contrast",
+      "title": "have something done vs. have something happen",
+      "columns": ["have + object + past participle", "have + object + bare infinitive"],
+      "rows": [
+        {"label": "Meaning", "cells": ["Someone acts on your object — arranged or unfortunate", "Something happens, performed by the object or another person"]},
+        {"label": "Arranged example", "cells": ["<b>She had her essay checked</b> by a tutor.", "<b>She had her students present</b> their projects in pairs."]},
+        {"label": "Unplanned example", "cells": ["<b>He had his bike stolen</b> outside the library.", "<b>He had his phone ring</b> in the middle of the exam."]},
+        {"label": "Typical verbs", "cells": ["stolen, fixed, delivered, checked", "break down, ring, walk in, happen"]}
+      ]
+    },
+    {
+      "type": "map",
+      "title": "Other passive forms",
+      "center": "Beyond be + participle",
+      "branches": [
+        {"label": "Impersonal passive", "items": ["It is said that…", "It is believed that…", "She is thought to have…"], "tone": "a"},
+        {"label": "get-passive", "items": ["get injured", "get promoted", "get caught"], "tone": "b"},
+        {"label": "Passive non-finite", "items": ["to be told", "being told", "having been told"], "tone": "c"},
+        {"label": "Passive phrasal verbs", "items": ["be looked after", "be laughed at", "be relied on"], "tone": "a"}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "It", "tone": "kw"},
+      {"chip": "be + past participle", "tone": "a", "ex": "is believed"},
+      {"chip": "that + clause", "tone": "b", "ex": "that the bridge is unsafe"},
+      {"chip": "→", "tone": "arrow"},
+      {"chip": "subject + be + past participle + to-infinitive", "tone": "c", "ex": "The bridge is believed to be unsafe"}
+    ],
+    "table": {
+      "head": ["Pattern", "Structure", "Example"],
+      "rows": [
+        ["Impersonal passive (that-clause)", "It + be + past participle + that…", "<b>It is believed that</b> the company knew about the fault."],
+        ["Impersonal passive (to-infinitive)", "subject + be + past participle + to-infinitive", "The company <b>is believed to have known</b> about the fault."],
+        ["get-passive", "get + past participle", "Two students <b>got selected</b> for the national final."],
+        ["Passive infinitive", "to be + past participle", "Nobody wants <b>to be told</b> what to do."],
+        ["Passive gerund", "being + past participle", "<b>Being told</b> off in front of the class was humiliating."],
+        ["need + -ing (passive meaning)", "need + gerund", "This paragraph <b>needs rewriting</b> completely."],
+        ["have/get something done", "have/get + object + past participle", "She <b>had her essay proofread</b> before submitting it."],
+        ["Passive phrasal verbs", "be + past participle + preposition", "The new policy <b>was strongly objected to</b> by the staff."]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Impersonal passive: reporting what people believe, say or think, without naming them",
+      "examples": [
+        {"text": "<b>It is thought that</b> the ancient trail once connected three valleys.", "note": "impersonal passive with a that-clause"},
+        {"text": "The results <b>are believed to have been</b> affected by a printing error.", "note": "impersonal passive with a perfect infinitive"},
+        {"text": "She <b>is said to be</b> the youngest student ever admitted to the programme.", "note": "impersonal passive with a present infinitive"}
+      ]
+    },
+    {
+      "point": "get-passive: for something sudden, informal or (mis)fortunate",
+      "examples": [
+        {"text": "Two of our classmates <b>got selected</b> for the regional science fair.", "note": "get-passive, positive and informal"},
+        {"text": "He <b>got caught</b> copying his homework and had to redo it.", "note": "get-passive, negative outcome"},
+        {"text": "The old gymnasium <b>got demolished</b> over the summer holidays.", "note": "get-passive, a sudden change"}
+      ]
+    },
+    {
+      "point": "Passive infinitives, gerunds and need + -ing",
+      "examples": [
+        {"text": "Nobody enjoys <b>being told</b> they're wrong in front of the whole class.", "note": "passive gerund"},
+        {"text": "The contract seems <b>to have been signed</b> without proper checks.", "note": "passive perfect infinitive"},
+        {"text": "This essay <b>needs rewriting</b> before Friday.", "note": "need + -ing has a passive meaning: needs to be rewritten"}
+      ]
+    },
+    {
+      "point": "have/get something done vs. have something happen; passive phrasal verbs",
+      "examples": [
+        {"text": "We <b>had the whole hall repainted</b> before the graduation ceremony.", "note": "have + object + past participle, arranged"},
+        {"text": "He <b>had his bike stolen</b> outside the library.", "note": "have + object + past participle, unfortunate"},
+        {"text": "The proposal <b>was strongly objected to</b> by several parents.", "note": "passive with a prepositional (phrasal) verb"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {
+      "wrong": "It is believed the bridge that is unsafe.",
+      "right": "<b>It is believed that</b> the bridge is unsafe.",
+      "why": "That introduces the clause immediately after the passive verb, not in the middle of it."
+    },
+    {
+      "wrong": "The company is believed knowing about the fault.",
+      "right": "The company <b>is believed to have known</b> about the fault.",
+      "why": "After the impersonal passive, use a to-infinitive (perfect, if earlier), not an -ing form."
+    },
+    {
+      "wrong": "He got stealing his bike.",
+      "right": "He <b>had his bike stolen</b>.",
+      "why": "Something taken from you needs the causative have/get + past participle, not get + -ing."
+    },
+    {
+      "wrong": "This essay needs to rewrite.",
+      "right": "This essay <b>needs rewriting</b>.",
+      "why": "Need + -ing already has a passive meaning here (needs to be rewritten); needs + to-infinitive would mean the essay does the rewriting itself."
+    },
+    {
+      "wrong": "She had her essay proofreading.",
+      "right": "She <b>had her essay proofread</b>.",
+      "why": "The causative have needs a past participle, not an -ing form, when someone else does the action for you."
+    },
+    {
+      "wrong": "The plan was objected by the staff.",
+      "right": "The plan <b>was objected to</b> by the staff.",
+      "why": "With passive phrasal verbs, the preposition stays right after the past participle."
+    }
+  ],
+  "dialogue": {
+    "title": "Rumours about the Cusco trip",
+    "context": "Nadia is writing for the school newspaper and checks facts about the cancelled Cusco trip with Miss Vega and Sofia.",
+    "lines": [
+      {"speaker": "Nadia", "text": "For the article — what can I actually say about why the trip was cancelled?"},
+      {"speaker": "Miss Vega", "text": "Be careful with rumours. <b>It is believed that</b> the bus company cancelled the contract, but nothing is confirmed."},
+      {"speaker": "Sofia", "text": "I heard the deposit <b>got lost</b> somewhere in the admin office."},
+      {"speaker": "Miss Vega", "text": "That's exactly the kind of thing that <b>needs checking</b> before it goes in print."},
+      {"speaker": "Nadia", "text": "So I shouldn't write that the money <b>is thought to have disappeared</b>?"},
+      {"speaker": "Miss Vega", "text": "Not without proof. The accounts <b>are being audited</b> this week."},
+      {"speaker": "Sofia", "text": "Apparently the coordinator <b>had her laptop stolen</b>, and all the records were on it."},
+      {"speaker": "Nadia", "text": "Wow. If that's true, this article <b>needs rewriting</b> completely."},
+      {"speaker": "Miss Vega", "text": "Exactly. Write only what <b>can be confirmed</b>, not what <b>is said to have happened</b>."},
+      {"speaker": "Nadia", "text": "Got it. I'll say the trip <b>was postponed</b>, and that an official statement <b>is expected to be released</b> on Friday."},
+      {"speaker": "Sofia", "text": "Much safer. Nobody likes <b>being told</b> off for printing gossip."},
+      {"speaker": "Miss Vega", "text": "Precisely — a good journalist reports facts, not what <b>is rumoured to be</b> true."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "It ___ that the museum will reopen next month.", "options": ["is rumoured", "rumoured", "is rumour"], "answer": 0, "why": "Impersonal passive: It + be + past participle + that-clause."},
+        {"sentence": "The suspect ___ to have left the country before the investigation began.", "options": ["is believing", "is believed", "believes"], "answer": 1, "why": "Impersonal passive with a perfect infinitive for an earlier action."},
+        {"sentence": "Their car ___ broken into while they were at the concert.", "options": ["was get", "did get", "got"], "answer": 2, "why": "Get-passive: get + past participle, common for sudden or unfortunate events."},
+        {"sentence": "This proposal clearly ___ before we present it to the board.", "options": ["needs revising", "needs revise", "needs to revising"], "answer": 0, "why": "Need + -ing carries a passive meaning: needs to be revised."},
+        {"sentence": "She ___ her parcel stolen from the front porch.", "options": ["was", "had", "did"], "answer": 1, "why": "The causative have + object + past participle describes something, often unwelcome, happening to your possession."},
+        {"sentence": "Nobody enjoys ___ criticised in front of colleagues.", "options": ["be", "to be", "being"], "answer": 2, "why": "After enjoys, use the passive gerund being + past participle."},
+        {"sentence": "The new rule was strongly ___ by most of the staff.", "options": ["objected to", "objected", "object to"], "answer": 0, "why": "Passive phrasal verbs keep the preposition right after the past participle."}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with one word so that it is grammatically correct.",
+      "items": [
+        {"sentence": "It ___ believed that the ancient trail once linked three valleys.", "answers": ["is"]},
+        {"sentence": "The results ___ believed to have been affected by a printing error.", "answers": ["are"]},
+        {"sentence": "Two classmates ___ selected for the regional science fair.", "answers": ["got"]},
+        {"sentence": "This paragraph ___ rewriting before Friday.", "answers": ["needs"]},
+        {"sentence": "She had her essay ___ before submitting it.", "answers": ["proofread"]},
+        {"sentence": "He had his bike ___ outside the library.", "answers": ["stolen"]},
+        {"sentence": "The proposal was strongly objected ___ by several parents.", "answers": ["to"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first, using the word given. Do not change the word given. Use between two and five words.",
+      "items": [
+        {"first": "People believe that the ancient trail once linked three valleys.", "key": "BELIEVED", "second_start": "", "second_end": "that the ancient trail once linked three valleys.", "answers": ["It is believed"]},
+        {"first": "People think the suspect left the country before the investigation began.", "key": "THOUGHT", "second_start": "The suspect", "second_end": "to have left the country before the investigation began.", "answers": ["is thought"]},
+        {"first": "Someone broke into their car while they were at the concert.", "key": "GOT", "second_start": "Their car", "second_end": "while they were at the concert.", "answers": ["got broken into"]},
+        {"first": "We must revise this proposal before presenting it to the board.", "key": "NEEDS", "second_start": "This proposal", "second_end": "before we present it to the board.", "answers": ["needs revising"]},
+        {"first": "A tutor checked her essay before she submitted it.", "key": "HAD", "second_start": "She", "second_end": "before submitting it.", "answers": ["had her essay checked"]},
+        {"first": "Someone stole his bike outside the library.", "key": "STOLEN", "second_start": "He", "second_end": "outside the library.", "answers": ["had his bike stolen"]},
+        {"first": "Several parents strongly objected to the proposal.", "key": "OBJECTED", "second_start": "The proposal was strongly", "second_end": "by several parents.", "answers": ["objected to"]}
+      ]
+    }
+  ],
+  "summary": [
+    "The impersonal passive (<i>It is believed that… / X is believed to have…</i>) reports what people think without naming them.",
+    "The get-passive suits sudden, informal or (mis)fortunate events: <i>got caught, got promoted</i>.",
+    "Passive infinitives and gerunds (<i>to be told, being told</i>) and <i>need + -ing</i> (<i>needs rewriting</i>) carry a passive meaning without a full be + participle.",
+    "<i>have/get something done</i> (someone acts on your object) contrasts with <i>have something happen</i> (an event simply occurs).",
+    "Passive phrasal verbs keep their preposition: <i>be looked after, be objected to, be relied on</i>."
+  ]
+}

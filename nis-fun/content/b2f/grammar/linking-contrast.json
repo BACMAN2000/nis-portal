@@ -1,0 +1,171 @@
+{
+  "id": "linking-contrast",
+  "level": "b2f",
+  "area": "Sentence building",
+  "title": "Contrast and concession",
+  "tagline": "Say two things pull in different directions — with a clause, a noun, or a whole new sentence.",
+  "cefr": "B2",
+  "exam": [
+    "Reading & Use of English Part 4 — key word transformations",
+    "Reading & Use of English Part 2 — open cloze",
+    "Writing Part 1 — essay"
+  ],
+  "why": "Every B2 First essay needs to weigh up two sides of an argument, and the linker you choose signals whether what follows is a clause, a noun, or a completely new sentence. Mixing these up — despite + a clause without 'the fact that', or however joined with a comma splice — is one of the most common accuracy errors in Writing Part 1.",
+  "diagrams": [
+    {
+      "type": "contrast",
+      "title": "although / even though vs despite / in spite of",
+      "columns": ["although / even though / though", "despite / in spite of"],
+      "rows": [
+        {"label": "Followed by", "cells": ["subject + verb (a clause)", "a noun phrase, an -ing form, or 'the fact that' + clause"]},
+        {"label": "Example", "cells": ["Although it was raining, we went hiking.", "Despite the rain, we went hiking."]},
+        {"label": "With a full clause?", "cells": ["yes, always", "only with 'the fact that'"]},
+        {"label": "Position", "cells": ["start or middle of the sentence, comma if first", "start or middle of the sentence, comma if first"]}
+      ]
+    },
+    {
+      "type": "map",
+      "title": "Contrast and concession linkers",
+      "center": "Contrast & concession",
+      "branches": [
+        {"label": "Conjunctions (+ clause)", "items": ["although", "even though", "though", "while", "whereas"], "tone": "a"},
+        {"label": "Prepositions (+ noun / -ing)", "items": ["despite", "in spite of"], "tone": "b"},
+        {"label": "Adverbs (start a new sentence)", "items": ["however", "nevertheless", "on the other hand", "yet"], "tone": "c"}
+      ]
+    },
+    {
+      "type": "formula",
+      "title": "despite / in spite of + -ing",
+      "parts": [
+        {"chip": "despite / in spite of", "tone": "kw"},
+        {"chip": "noun / -ing / the fact that + clause", "tone": "a", "ex": "losing the first set"}
+      ],
+      "caption": "<b>Despite losing</b> the first set, Nadia won the match."
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "clause 1", "tone": "kw"},
+      {"chip": "although / though", "tone": "a"},
+      {"chip": "clause 2", "tone": "b", "ex": "she still finished the race"}
+    ],
+    "table": {
+      "head": ["Linker", "Followed by", "Example"],
+      "rows": [
+        ["although / even though / though", "subject + verb", "Although she was tired, she finished the race."],
+        ["despite / in spite of", "noun", "Despite the heat, they kept playing."],
+        ["despite / in spite of + -ing", "gerund", "In spite of losing, the team stayed positive."],
+        ["despite / in spite of the fact that", "clause", "Despite the fact that it rained, the match went ahead."],
+        ["whereas / while", "contrast between two clauses", "Mateo loves maths, whereas Sofia prefers art."],
+        ["however / nevertheless", "sentence adverb, comma after", "It was raining. However, we still went out."],
+        ["on the other hand", "balances a second point of view", "On the other hand, staying in is safer."],
+        ["though (informal, end position)", "adds a contrast to the previous sentence", "It was fun. Tiring, though."]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Conjunctions followed by a clause",
+      "examples": [
+        {"text": "<b>Although</b> the coach warned them about the wind, the team still went sailing.", "note": "clause after although"},
+        {"text": "<b>Even though</b> she'd never played chess before, Nadia beat the school champion.", "note": "stronger contrast than although"},
+        {"text": "Mateo finished the marathon, <b>though</b> he could barely walk afterwards.", "note": "though at the end of a clause, informal"}
+      ]
+    },
+    {
+      "point": "Prepositions followed by a noun, -ing or 'the fact that'",
+      "examples": [
+        {"text": "<b>Despite</b> the traffic, we reached the stadium just in time.", "note": "despite + noun"},
+        {"text": "<b>In spite of</b> feeling nervous, Liam gave a confident presentation.", "note": "in spite of + -ing"},
+        {"text": "<b>Despite the fact that</b> he'd studied all week, Mateo felt unprepared.", "note": "the only way to follow despite with a full clause"}
+      ]
+    },
+    {
+      "point": "Balancing two ideas: whereas, while",
+      "examples": [
+        {"text": "Sofia prefers working in silence, <b>whereas</b> Nadia needs music in the background.", "note": "whereas = direct contrast"},
+        {"text": "<b>While</b> some students revise alone, others prefer group study sessions.", "note": "while at the start of a sentence"}
+      ]
+    },
+    {
+      "point": "Starting a new sentence: however, nevertheless, on the other hand",
+      "examples": [
+        {"text": "The forecast predicted heavy rain. <b>However</b>, the match went ahead as planned.", "note": "new sentence, comma after however"},
+        {"text": "The team lost every game this season. <b>Nevertheless</b>, they never stopped training.", "note": "nevertheless = despite this"},
+        {"text": "Staying up late feels productive. <b>On the other hand</b>, it makes revision harder the next day.", "note": "balances a second viewpoint"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "Despite it was raining, we went to the beach.", "right": "<b>Despite</b> the rain, we went to the beach. / <b>Although</b> it was raining, we went to the beach.", "why": "Despite is a preposition — it cannot be followed directly by a subject and verb."},
+    {"wrong": "In spite of the fact it was late, she called back.", "right": "In spite of <b>the fact that</b> it was late, she called back.", "why": "Before a full clause you need the complete phrase 'the fact that', not just 'the fact'."},
+    {"wrong": "It was raining, however we still went out.", "right": "It was raining. <b>However</b>, we still went out.", "why": "However joins ideas across two sentences (or after a semicolon), not with a comma splice."},
+    {"wrong": "Despite of the cold, they kept training.", "right": "<b>Despite</b> the cold, they kept training.", "why": "Despite never takes 'of' — only in spite of does."},
+    {"wrong": "Although the storm, the flight left on time.", "right": "<b>Although</b> there was a storm, the flight left on time. / <b>Despite the storm</b>, the flight left on time.", "why": "Although needs a full clause; use despite/in spite of before a noun."},
+    {"wrong": "Liam is confident, meanwhile Sofia gets nervous before exams.", "right": "Liam is confident, <b>whereas</b> Sofia gets nervous before exams.", "why": "Meanwhile is about time, not contrast — whereas or while is what's needed here."}
+  ],
+  "dialogue": {
+    "title": "Two ways to prepare for the debate",
+    "context": "Sofia and Liam disagree about how to prepare for the school debate, and Miss Vega joins in with some advice.",
+    "lines": [
+      {"speaker": "Sofia", "text": "<b>Although</b> we've only got two days left, I think we should still rewrite the opening."},
+      {"speaker": "Liam", "text": "<b>Despite</b> the time pressure, I actually think the opening is fine as it is."},
+      {"speaker": "Sofia", "text": "Maybe. <b>Whereas</b> you focus on delivery, I care more about the actual arguments."},
+      {"speaker": "Liam", "text": "Fair point. <b>In spite of</b> disagreeing about the opening, we do agree on the main argument."},
+      {"speaker": "Sofia", "text": "True. <b>Even though</b> the topic is difficult, our research is solid."},
+      {"speaker": "Miss Vega", "text": "Good. <b>Nevertheless</b>, I'd practise the timing again — you both ran over last time."},
+      {"speaker": "Liam", "text": "We will. Sofia prefers rehearsing alone, <b>while</b> I like practising in front of people."},
+      {"speaker": "Sofia", "text": "<b>Despite the fact that</b> that makes me nervous, maybe I should try your way once."},
+      {"speaker": "Miss Vega", "text": "Good idea. On the other hand, don't change your whole method two days before the debate."},
+      {"speaker": "Sofia", "text": "Fine. Tiring week, <b>though</b>, whichever way we prepare."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "___ the heavy rain, the match went ahead as scheduled.", "options": ["Despite", "Although", "However"], "answer": 0, "why": "despite + noun phrase (the heavy rain)"},
+        {"sentence": "___ she'd never skied before, Nadia reached the bottom of the slope standing up.", "options": ["Despite", "Even though", "Whereas"], "answer": 1, "why": "even though + subject + verb"},
+        {"sentence": "Mateo enjoys team sports, ___ his sister prefers running alone.", "options": ["despite", "nevertheless", "whereas"], "answer": 2, "why": "whereas balances two contrasting clauses"},
+        {"sentence": "The bus was late. ___, we still made it to the airport on time.", "options": ["Nevertheless", "Although", "Despite"], "answer": 0, "why": "nevertheless starts a new sentence"},
+        {"sentence": "___ of feeling exhausted, the team kept training until sunset.", "options": ["Despite", "In spite", "Even"], "answer": 1, "why": "in spite of + -ing (the full phrase is 'in spite of')"},
+        {"sentence": "She passed the exam ___ having missed two weeks of school.", "options": ["although", "whereas", "despite"], "answer": 2, "why": "despite + -ing form"},
+        {"sentence": "___ the fact that he'd practised for weeks, Liam still felt nervous before the concert.", "options": ["Despite", "Although", "While"], "answer": 0, "why": "despite the fact that + clause"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with although, even though, despite, in spite of, whereas or however.",
+      "items": [
+        {"sentence": "___ the long queue, they managed to get tickets for the final.", "answers": ["Despite", "In spite of"]},
+        {"sentence": "___ it was freezing outside, the students still trained on the field.", "answers": ["Although", "Even though"]},
+        {"sentence": "Nadia loves early mornings, ___ Sofia can barely get out of bed before nine.", "answers": ["whereas"]},
+        {"sentence": "The exam was difficult. ___, most of the class passed.", "answers": ["However"]},
+        {"sentence": "___ feeling nervous, Mateo answered every question calmly.", "answers": ["Despite", "In spite of"]},
+        {"sentence": "___ she studies every day, Sofia still finds grammar difficult.", "answers": ["Although", "Even though"]},
+        {"sentence": "___ the fact that the trip was cancelled, nobody complained.", "answers": ["Despite", "In spite of"]},
+        {"sentence": "He plays the guitar well, ___ he's never had a proper lesson.", "answers": ["although", "even though"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first. Use the word given. Do not change it. Use between two and five words.",
+      "items": [
+        {"first": "It was raining hard, but the school trip still went ahead.", "key": "DESPITE", "second_start": "The school trip still went ahead", "second_end": "rain.", "answers": ["despite the heavy"]},
+        {"first": "Liam trained every day, but he still didn't make the final.", "key": "SPITE", "second_start": "Liam didn't make the final", "second_end": "every day.", "answers": ["in spite of training"]},
+        {"first": "Sofia likes quiet study rooms; Nadia prefers noisy cafés.", "key": "WHEREAS", "second_start": "Sofia likes quiet study rooms,", "second_end": "noisy cafés.", "answers": ["whereas Nadia prefers"]},
+        {"first": "The internet was down, but the class continued as normal.", "key": "EVEN", "second_start": "The class continued as normal", "second_end": "the internet was down.", "answers": ["even though"]},
+        {"first": "Nobody expected them to win, but the team lifted the trophy.", "key": "FACT", "second_start": "Despite", "second_end": "nobody expected them to win, the team lifted the trophy.", "answers": ["the fact that"]},
+        {"first": "The film got bad reviews, but it was still very popular.", "key": "HOWEVER", "second_start": "The film got bad reviews.", "second_end": "very popular.", "answers": ["it was however", "however it was"]}
+      ]
+    }
+  ],
+  "summary": [
+    "Although, even though and though are conjunctions: they need a subject and a verb.",
+    "Despite and in spite of are prepositions: they need a noun, an -ing form, or 'the fact that' + clause.",
+    "Whereas and while set two ideas directly against each other, usually in one sentence.",
+    "However, nevertheless and on the other hand start a new sentence (or follow a semicolon) — never a comma splice.",
+    "In Part 4, the key word usually tells you whether the answer needs a clause or a noun phrase after it."
+  ]
+}

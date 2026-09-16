@@ -1,0 +1,171 @@
+{
+  "id": "causative",
+  "level": "b2f",
+  "area": "Passive & causative",
+  "title": "Causative: have/get something done",
+  "tagline": "You didn't do it yourself — you arranged it, ordered it, or it just happened to you.",
+  "cefr": "B2",
+  "exam": [
+    "Reading & Use of English Part 4 — key word transformations",
+    "Reading & Use of English Part 2 — open cloze (had / to / done)",
+    "Speaking Part 1 — talking about everyday services and arrangements"
+  ],
+  "why": "Not every action in English needs the person who does it as the subject. When you pay someone to cut your hair, ask a friend to lend you a charger, or your phone gets stolen on the bus, the causative structures let you say all of that without naming who actually did the action. B2 First tests the exact pattern for each one — and they are not interchangeable.",
+  "diagrams": [
+    {
+      "type": "formula",
+      "title": "have / get something done",
+      "parts": [
+        {"chip": "have / get", "tone": "kw"},
+        {"chip": "object", "tone": "a", "ex": "the car"},
+        {"chip": "→", "tone": "arrow"},
+        {"chip": "past participle", "tone": "b", "ex": "repaired"}
+      ],
+      "caption": "Someone else does the action for you — you only arrange or pay for it."
+    },
+    {
+      "type": "contrast",
+      "title": "Three ways to involve other people",
+      "columns": ["have + sth + past participle", "have + sb + infinitive", "get + sb + to-infinitive"],
+      "rows": [
+        {"label": "Meaning", "cells": ["you arrange a service", "you ask/instruct someone directly", "you persuade or arrange informally"]},
+        {"label": "Example", "cells": ["I had my bike serviced.", "I'll have Liam bring the chairs.", "She got her dad to drive us."]},
+        {"label": "Note", "cells": ["the object receives the action", "no <i>to</i> before the infinitive", "always needs <i>to</i> before the infinitive"]}
+      ]
+    },
+    {
+      "type": "map",
+      "title": "Causative and permission verbs",
+      "center": "Making things happen",
+      "branches": [
+        {"label": "make (+ sb + infinitive) — force", "items": ["The teacher made us redo the exercise.", "Don't make me repeat it."], "tone": "a"},
+        {"label": "let (+ sb + infinitive) — permit, informal", "items": ["My parents let me stay out later.", "They wouldn't let us in."], "tone": "b"},
+        {"label": "allow (+ sb + to-infinitive) — permit, formal", "items": ["Students are allowed to leave early on Fridays.", "The school doesn't allow phones in class."], "tone": "b"},
+        {"label": "have / get sth done — arrange a service", "items": ["We had the posters printed.", "I need to get my laptop fixed."], "tone": "c"},
+        {"label": "have sth happen to you — misfortune", "items": ["He had his wallet stolen at the fair.", "She had her essay marked down for late submission."], "tone": "c"}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "subject", "tone": "kw"},
+      {"chip": "have / get", "tone": "a", "ex": "had"},
+      {"chip": "object + participle", "tone": "b", "ex": "the report printed"}
+    ],
+    "table": {
+      "head": ["Pattern", "Structure", "Example"],
+      "rows": [
+        ["have sth done — present", "have + object + participle", "We have the equipment checked every term."],
+        ["have sth done — past", "had + object + participle", "They had the hall decorated for the ceremony."],
+        ["get sth done — informal", "get + object + participle", "I need to get my phone screen fixed."],
+        ["have sth done — future", "will have + object + participle", "I'll have my essay proofread before Friday."],
+        ["have sb do sth", "have + person + bare infinitive", "Miss Vega had Nadia read the announcement."],
+        ["get sb to do sth", "get + person + to-infinitive", "He got his sister to help with the poster."],
+        ["make sb do sth", "make + person + bare infinitive", "The coach made the team run an extra lap."],
+        ["have sth happen to you", "have + object + participle (misfortune)", "Liam had his charger stolen during the trip."]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "have/get something done: arranging for someone else to do a job for you",
+      "examples": [
+        {"text": "We <b>had</b> the science posters <b>printed</b> at the shop near school.", "note": "a service arranged, not done by hand"},
+        {"text": "Sofia <b>is getting</b> her bike <b>fixed</b> before the weekend trip.", "note": "get = a more informal alternative to have"},
+        {"text": "The club <b>will have</b> the new kit <b>delivered</b> by next month.", "note": "future causative, same pattern"}
+      ]
+    },
+    {
+      "point": "have/get somebody do something: asking or persuading someone directly",
+      "examples": [
+        {"text": "Miss Vega <b>had</b> Mateo <b>explain</b> the rules to the new students.", "note": "have + bare infinitive, no to"},
+        {"text": "Nadia <b>got</b> her older brother <b>to lend</b> her his calculator.", "note": "get + to-infinitive, some persuasion involved"},
+        {"text": "I'll <b>have</b> Liam <b>set up</b> the projector before the presentation.", "note": "an instruction, not a request"}
+      ]
+    },
+    {
+      "point": "make, let and allow: obligation and permission",
+      "examples": [
+        {"text": "The coach <b>made</b> the whole team <b>arrive</b> an hour early for training.", "note": "make + bare infinitive = force, no choice"},
+        {"text": "My parents finally <b>let</b> me <b>go</b> to the concert on my own.", "note": "let + bare infinitive = informal permission"},
+        {"text": "The school doesn't <b>allow</b> students <b>to use</b> phones during exams.", "note": "allow + to-infinitive = more formal permission"}
+      ]
+    },
+    {
+      "point": "have something happen to you: things that happen to you, often unfortunate",
+      "examples": [
+        {"text": "Sofia <b>had</b> her essay <b>marked down</b> for handing it in late.", "note": "something unwelcome happened to her"},
+        {"text": "We <b>had</b> our tent <b>blown away</b> during the storm on the trip.", "note": "an event, not something you arranged"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "I got him fix the printer.", "right": "I got him <b>to fix</b> the printer.", "why": "After <i>get + person</i>, the infinitive always needs <i>to</i>."},
+    {"wrong": "The teacher had us to hand in our phones.", "right": "The teacher had us <b>hand in</b> our phones.", "why": "After <i>have + person</i>, use the bare infinitive, with no <i>to</i>."},
+    {"wrong": "They didn't let us to leave the building.", "right": "They didn't let us <b>leave</b> the building.", "why": "<i>Let</i> is always followed by the bare infinitive, never <i>to</i>."},
+    {"wrong": "The school doesn't allow students use their phones.", "right": "The school doesn't allow students <b>to use</b> their phones.", "why": "<i>Allow</i>, unlike <i>let</i>, needs <i>to</i> before the infinitive."},
+    {"wrong": "We were made redo the whole project.", "right": "We were made <b>to redo</b> the whole project.", "why": "In the passive, <i>make</i> takes <i>to</i> before the infinitive, even though the active form doesn't."},
+    {"wrong": "I had my hair cutted yesterday.", "right": "I had my hair <b>cut</b> yesterday.", "why": "<i>Cut</i> is an irregular verb — the past participle has the same form as the base verb."}
+  ],
+  "dialogue": {
+    "title": "Getting ready for the science fair",
+    "context": "Nadia, Mateo and Liam are organising the last details before the school science fair, and something has already gone wrong.",
+    "lines": [
+      {"speaker": "Nadia", "text": "Did you <b>have</b> the posters <b>printed</b> in the end? The shop said Wednesday."},
+      {"speaker": "Mateo", "text": "Yes, and I <b>got</b> my sister <b>to laminate</b> them so they survive the day."},
+      {"speaker": "Liam", "text": "Smart. I <b>had</b> my charger <b>stolen</b> from my bag yesterday, so I'll need to borrow one."},
+      {"speaker": "Nadia", "text": "Seriously? Miss Vega will probably <b>have</b> someone <b>bring</b> a spare from the staff room."},
+      {"speaker": "Mateo", "text": "She always does. She <b>had</b> Sofia <b>set up</b> the extension leads first thing this morning."},
+      {"speaker": "Liam", "text": "Good, because the caretaker won't <b>let</b> us <b>use</b> the hall wiring without supervision."},
+      {"speaker": "Nadia", "text": "Right. And remember, they don't <b>allow</b> us <b>to bring</b> food near the electronics table."},
+      {"speaker": "Mateo", "text": "Noted. I'll <b>have</b> the volunteers <b>check</b> that before the judges arrive."},
+      {"speaker": "Liam", "text": "One more thing — did you <b>get</b> your model <b>repaired</b> after it broke last week?"},
+      {"speaker": "Nadia", "text": "Yes, my uncle fixed it in an hour. Now let's just hope nobody <b>has</b> anything else <b>go wrong</b> today."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "We ___ the hall decorated for the ceremony by the art club.", "options": ["had", "made", "let"], "answer": 0, "why": "arranging a service for you → have sth done"},
+        {"sentence": "Miss Vega ___ Nadia read the announcement to the class.", "options": ["got", "had", "allowed"], "answer": 1, "why": "have + person + bare infinitive = a direct instruction"},
+        {"sentence": "He finally ___ his cousin to help him with the coursework.", "options": ["had", "made", "got"], "answer": 2, "why": "get + person + to-infinitive = persuading someone"},
+        {"sentence": "The coach ___ the team run three extra laps for being late.", "options": ["let", "made", "allowed"], "answer": 1, "why": "make + bare infinitive = force, no choice"},
+        {"sentence": "My parents won't ___ me stay out past ten on a school night.", "options": ["allow", "get", "let"], "answer": 2, "why": "let + bare infinitive = informal permission"},
+        {"sentence": "Liam ___ his bike stolen outside the library last week.", "options": ["had", "made", "let"], "answer": 0, "why": "something unfortunate happened to him → have sth happen"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with the correct causative form of the verb in brackets.",
+      "items": [
+        {"sentence": "We ___ (print) the tickets at the shop near the school.", "answers": ["had the tickets printed", "got the tickets printed"]},
+        {"sentence": "Sofia ___ (fix) her laptop before the deadline.", "answers": ["had her laptop fixed", "got her laptop fixed"]},
+        {"sentence": "The teacher ___ (redo) our whole essay because of the formatting.", "answers": ["made us redo"]},
+        {"sentence": "Nadia ___ (lend) her a jacket by her best friend.", "answers": ["got her best friend to lend her a jacket", "had her best friend lend her a jacket"]},
+        {"sentence": "My parents don't ___ (use) my phone after nine o'clock.", "answers": ["let me use"]},
+        {"sentence": "The school doesn't ___ (bring) energy drinks onto the premises.", "answers": ["allow students to bring"]},
+        {"sentence": "Mateo ___ (steal) his headphones on the bus this morning.", "answers": ["had his headphones stolen"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first. Use the word given. Do not change it. Use between two and five words.",
+      "items": [
+        {"first": "A professional photographer took our class photo.", "key": "HAD", "second_start": "We", "second_end": "taken by a professional photographer.", "answers": ["had our class photo"]},
+        {"first": "Nadia persuaded her brother to lend her his laptop.", "key": "GOT", "second_start": "Nadia", "second_end": "her his laptop.", "answers": ["got her brother to lend"]},
+        {"first": "The teacher forced the students to rewrite their essays.", "key": "MADE", "second_start": "The teacher", "second_end": "their essays.", "answers": ["made the students rewrite"]},
+        {"first": "Someone stole Sofia's scarf while she was at practice.", "key": "STOLEN", "second_start": "Sofia", "second_end": "while she was at practice.", "answers": ["had her scarf stolen"]},
+        {"first": "The school permits senior students to use the study room at lunchtime.", "key": "ALLOWED", "second_start": "Senior students", "second_end": "the study room at lunchtime.", "answers": ["are allowed to use"]}
+      ]
+    }
+  ],
+  "summary": [
+    "<b>have/get + object + past participle</b> = you arrange for someone else to do it for you: <i>I had my bike repaired</i>.",
+    "<b>have + person + bare infinitive</b> is a direct instruction; <b>get + person + to-infinitive</b> involves persuading them.",
+    "<b>make</b> and <b>let</b> take the bare infinitive; <b>allow</b> needs <i>to</i> — but the passive <i>be made to</i> does too.",
+    "The same <b>have + object + past participle</b> pattern also describes something unfortunate that happened to you.",
+    "Choose the pattern by who actually performs the action: you, someone you ask, someone you pay, or nobody at all."
+  ]
+}

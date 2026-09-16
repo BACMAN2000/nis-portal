@@ -1,0 +1,171 @@
+{
+  "id": "narrative-tenses",
+  "level": "b2f",
+  "area": "Tenses & time",
+  "title": "Narrative tenses",
+  "tagline": "Four past tenses working together to tell a story with a clear order of events.",
+  "cefr": "B2",
+  "exam": [
+    "Writing Part 2 — story",
+    "Reading & Use of English Part 2 — open cloze",
+    "Listening Part 2 — sentence completion (recounting events)"
+  ],
+  "why": "A good B2 story doesn't just use the past simple. Setting the scene, showing what was already happening, and stepping further back to explain what came before all need different past tenses working together — and Writing Part 2's story task rewards exactly that control.",
+  "diagrams": [
+    {
+      "type": "timeline",
+      "title": "Four layers of one story",
+      "marks": [
+        {"at": "before-past", "label": "The team had already trained for months.", "sub": "past perfect"},
+        {"at": "past", "label": "It was raining and the crowd was arriving.", "sub": "past continuous"},
+        {"at": "now", "label": "The whistle blew and the match started.", "sub": "past simple"}
+      ],
+      "arrows": [[0, 2, "background before the main event"]],
+      "caption": "By the time the whistle <b>blew</b>, the team <b>had trained</b> for months, and the crowd <b>was still arriving</b>."
+    },
+    {
+      "type": "contrast",
+      "title": "Four tenses, four jobs",
+      "columns": ["Job in the story", "Typical signal words"],
+      "rows": [
+        {"label": "Past simple", "cells": ["the main events, one after another", "then, next, after that"]},
+        {"label": "Past continuous", "cells": ["the background scene, or an action interrupted", "while, as, when"]},
+        {"label": "Past perfect simple", "cells": ["something finished before the main story time", "already, by the time, before"]},
+        {"label": "Past perfect continuous", "cells": ["an activity going on before that point, often explaining a result", "for + duration, because"]}
+      ]
+    },
+    {
+      "type": "formula",
+      "title": "Interrupting a background action",
+      "parts": [
+        {"chip": "while / as", "tone": "kw"},
+        {"chip": "past continuous", "tone": "a", "ex": "was walking"},
+        {"chip": "when", "tone": "arrow"},
+        {"chip": "past simple", "tone": "b", "ex": "the lights went out"}
+      ],
+      "caption": "The longer background action is continuous; the short event that cuts across it is simple."
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "subject", "tone": "kw"},
+      {"chip": "was/were + verb-ing", "tone": "a", "ex": "was walking"},
+      {"chip": "or", "tone": "arrow"},
+      {"chip": "had (been) + past participle", "tone": "b", "ex": "had left / had been waiting"}
+    ],
+    "table": {
+      "head": ["Tense", "Form", "Job", "Example"],
+      "rows": [
+        ["Past simple", "verb + -ed / irregular", "one event after another", "She opened the door and stepped outside."],
+        ["Past continuous", "was/were + verb-ing", "the scene, or a longer action in progress", "It was pouring with rain and the wind was howling."],
+        ["Past continuous, interrupted", "was/were + verb-ing + when + past simple", "an action cut short by a sudden event", "We were queuing for tickets when the alarm went off."],
+        ["Past perfect simple", "had + past participle", "a completed event before the story time", "By the time we arrived, the film had already started."],
+        ["Past perfect continuous", "had been + verb-ing", "an activity going on before that point, often with a result", "Her hands were shaking because she had been climbing for an hour."],
+        ["Sequencing words", "when / while / as / after / before / by the time", "signal which event comes first", "As soon as the bell rang, everyone rushed outside."]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Setting the scene with the past continuous",
+      "examples": [
+        {"text": "The market <b>was buzzing</b> with tourists, and vendors <b>were shouting</b> out their prices.", "note": "background description"},
+        {"text": "Nadia <b>was walking</b> home from rehearsal when she heard the news.", "note": "an action in progress, interrupted"}
+      ]
+    },
+    {
+      "point": "Main events, one after another, in the past simple",
+      "examples": [
+        {"text": "Mateo <b>grabbed</b> his bag, <b>ran</b> for the bus and just <b>caught</b> it.", "note": "a sequence of quick actions"},
+        {"text": "Miss Vega <b>opened</b> the envelope and <b>read</b> the results out loud.", "note": "the main storyline"}
+      ]
+    },
+    {
+      "point": "Going further back with the past perfect",
+      "examples": [
+        {"text": "By the time the band came on stage, half the crowd <b>had already left</b>.", "note": "finished before the main story time"},
+        {"text": "Liam realised he <b>had left</b> his phone on the bus.", "note": "past perfect after a reporting verb"},
+        {"text": "Sofia was exhausted because she <b>had been rehearsing</b> since six that morning.", "note": "an activity, not just a fact — past perfect continuous"}
+      ]
+    },
+    {
+      "point": "Linking the layers with time words",
+      "examples": [
+        {"text": "<b>As soon as</b> the rain <b>stopped</b>, the match <b>started</b> again.", "note": "as soon as + past simple, past simple"},
+        {"text": "<b>While</b> Mateo <b>was setting</b> up the equipment, Sofia <b>checked</b> the microphones.", "note": "while + past continuous, past simple"},
+        {"text": "<b>By the time</b> she <b>had finished</b> explaining, the whole class understood.", "note": "by the time + past perfect"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "When I arrived, they were already leaving five minutes before.", "right": "When I arrived, they <b>had</b> already <b>left</b> five minutes before.", "why": "An event completed before another past event needs the past perfect, not the past continuous."},
+    {"wrong": "While I walked to school, it started to rain.", "right": "While I <b>was walking</b> to school, it started to rain.", "why": "The longer background action after <i>while</i> is usually continuous, not simple."},
+    {"wrong": "She was living in Cusco for two years before she moved to Lima.", "right": "She <b>had lived</b> in Cusco for two years before she moved to Lima.", "why": "A finished period before another past event needs the past perfect, not the past continuous."},
+    {"wrong": "I was knowing him for years before we became friends.", "right": "I <b>had known</b> him for years before we became friends.", "why": "State verbs don't take the continuous — even in a narrative, use the past perfect simple."},
+    {"wrong": "By the time the bell rang, we finished the test.", "right": "By the time the bell rang, we <b>had finished</b> the test.", "why": "<i>By the time</i> + a past event needs the past perfect for the earlier action."}
+  ],
+  "dialogue": {
+    "title": "The blackout",
+    "context": "Liam is telling Sofia and Mateo what happened during last night's power cut at his house.",
+    "lines": [
+      {"speaker": "Liam", "text": "So I <b>was doing</b> my homework when suddenly all the lights <b>went out</b>."},
+      {"speaker": "Sofia", "text": "No way. What <b>had happened</b> before that — did you already know there was a problem?"},
+      {"speaker": "Liam", "text": "Actually, yes. The neighbours <b>had mentioned</b> some work on the street earlier that day."},
+      {"speaker": "Mateo", "text": "So while you <b>were sitting</b> there in the dark, what did you do?"},
+      {"speaker": "Liam", "text": "I <b>found</b> a candle. My hands <b>were shaking</b> a bit because I <b>had been reading</b> a horror story just before."},
+      {"speaker": "Sofia", "text": "Of course you were reading a horror story. Then what?"},
+      {"speaker": "Liam", "text": "My sister <b>came</b> downstairs — she <b>had been sleeping</b> and the noise woke her up."},
+      {"speaker": "Mateo", "text": "By the time the power <b>came</b> back, how long <b>had</b> you two <b>been sitting</b> there?"},
+      {"speaker": "Liam", "text": "About an hour. We <b>had told</b> each other every scary story we knew."},
+      {"speaker": "Sofia", "text": "That explains why you looked so tired this morning."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "The sun ___ and the birds were singing when we set off.", "options": ["was shining", "shone", "had shone"], "answer": 0, "why": "background description → past continuous"},
+        {"sentence": "By the time Mateo arrived, the meeting ___.", "options": ["already ended", "had already ended", "was already ending"], "answer": 1, "why": "finished before another past event → past perfect"},
+        {"sentence": "While Nadia ___ dinner, the phone rang three times.", "options": ["cooked", "had cooked", "was cooking"], "answer": 2, "why": "longer background action interrupted → past continuous"},
+        {"sentence": "Sofia was out of breath because she ___ for the bus.", "options": ["had been running", "ran", "was running"], "answer": 0, "why": "an activity before the story moment, explaining a result → past perfect continuous"},
+        {"sentence": "We ___ the museum, and then we walked to the café.", "options": ["were visiting", "visited", "had visited"], "answer": 1, "why": "one main event in the sequence → past simple"},
+        {"sentence": "I knew the town well because I ___ there as a child.", "options": ["was living", "lived", "had lived"], "answer": 2, "why": "an earlier, finished period before another past state → past perfect"},
+        {"sentence": "As soon as the teacher ___, everyone stopped talking.", "options": ["entered", "was entering", "had entered"], "answer": 0, "why": "a quick event that triggers the next → past simple"},
+        {"sentence": "It ___ heavily, so we decided to stay inside.", "options": ["rained", "was raining", "had rained"], "answer": 1, "why": "ongoing weather forming the background → past continuous"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with the correct form of the verb in brackets.",
+      "items": [
+        {"sentence": "The band ___ (play) their last song when the fire alarm went off.", "answers": ["were playing"]},
+        {"sentence": "By the time we got to the stadium, the match ___ (already/start).", "answers": ["had already started"]},
+        {"sentence": "Liam ___ (not/finish) his project, so he stayed up all night.", "answers": ["hadn't finished", "had not finished"]},
+        {"sentence": "While Mateo ___ (fix) his bike, Sofia read her book in the shade.", "answers": ["was fixing"]},
+        {"sentence": "We were tired because we ___ (walk) for six hours.", "answers": ["had been walking"]},
+        {"sentence": "As soon as the results ___ (appear), everyone cheered.", "answers": ["appeared"]},
+        {"sentence": "Nadia ___ (not/recognise) her old classmate at first.", "answers": ["didn't recognise", "did not recognise"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first. Use the word given. Do not change it. Use between two and five words.",
+      "items": [
+        {"first": "First the rain stopped, and then the match started.", "key": "HAD", "second_start": "By the time the match started, the rain", "second_end": ".", "answers": ["had stopped"]},
+        {"first": "I was tired because I had run for an hour before the race.", "key": "BEEN", "second_start": "I was tired because I", "second_end": "for an hour before the race.", "answers": ["had been running"]},
+        {"first": "The film began, and after that we arrived at the cinema.", "key": "ALREADY", "second_start": "When we arrived at the cinema, the film", "second_end": ".", "answers": ["had already begun", "had already started"]},
+        {"first": "Liam was reading a scary story, and then the lights went out.", "key": "WHILE", "second_start": "The lights went out", "second_end": "a scary story.", "answers": ["while Liam was reading"]},
+        {"first": "Mateo had never visited Arequipa before this trip.", "key": "TIME", "second_start": "This was the first", "second_end": "Arequipa.", "answers": ["time Mateo had visited"]},
+        {"first": "Sofia finished her homework and then she watched a film.", "key": "AFTER", "second_start": "Sofia watched a film", "second_end": "her homework.", "answers": ["after finishing", "after she had finished"]}
+      ]
+    }
+  ],
+  "summary": [
+    "Past simple carries the main events, one after another.",
+    "Past continuous paints the background scene or a longer action that gets interrupted.",
+    "Past perfect (simple or continuous) reaches further back, before the main story time.",
+    "Signal words — when, while, as, by the time, as soon as — tell you which tense to expect.",
+    "In a story, mixing all four tenses on purpose is what makes it read like a real account, not a list of events."
+  ]
+}

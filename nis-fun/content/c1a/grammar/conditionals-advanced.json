@@ -1,0 +1,209 @@
+{
+  "id": "conditionals-advanced",
+  "level": "c1a",
+  "area": "Conditionals & hypothesis",
+  "title": "Advanced conditionals",
+  "tagline": "Drop the if, invert the clause, and the same hypothesis suddenly sounds like a policy document.",
+  "cefr": "C1",
+  "exam": [
+    "Reading & Use of English Part 4 — key word transformations (HAD, WERE, SHOULD, BUT, PROVIDED, WHETHER)",
+    "Reading & Use of English Part 2 — open cloze",
+    "Writing Part 1 — essay: formal hypothesis and concession",
+    "Speaking Part 3 — negotiating conditions and compromises"
+  ],
+  "why": "At C1, examiners expect more than a bare <i>if</i>: inverted and alternative conditionals are a hallmark of formal writing and are tested directly in Use of English Part 4. They also let you vary how a sentence opens in an essay, instead of starting every hypothesis with the same word.",
+  "diagrams": [
+    {
+      "type": "transform",
+      "title": "Dropping if: the inverted conditional",
+      "before": {
+        "text": "If I had known about the delay, I would have left earlier.",
+        "hl": ["If I had known"]
+      },
+      "after": {
+        "text": "Had I known about the delay, I would have left earlier.",
+        "hl": ["Had I known"]
+      },
+      "steps": [
+        "Remove <i>if</i> and invert the auxiliary and the subject: <b>Had I</b>.",
+        "The rest of the if-clause and the whole main clause stay exactly as they were.",
+        "The same happens with <i>were</i> (present/future unreal) and <i>should</i> (possible future)."
+      ]
+    },
+    {
+      "type": "map",
+      "title": "Formal alternatives to if",
+      "center": "Beyond if",
+      "branches": [
+        {"label": "Inversion", "items": ["Had I known", "Were she to resign", "Should you need help"], "tone": "a"},
+        {"label": "Negative condition", "items": ["but for + noun", "if it weren't for + noun", "were it not for + noun"], "tone": "b"},
+        {"label": "Formal positive condition", "items": ["provided (that)", "providing", "on condition that"], "tone": "c"},
+        {"label": "Indifference / assumption", "items": ["whether or not", "assuming (that)"], "tone": "a"},
+        {"label": "Implied condition", "items": ["otherwise", "or else"], "tone": "b"}
+      ]
+    },
+    {
+      "type": "contrast",
+      "title": "If-clause vs. formal inversion",
+      "columns": ["If-clause", "Formal inversion"],
+      "rows": [
+        {"label": "Past unreal", "cells": ["If I had known…", "Had I known…"]},
+        {"label": "Present/future unreal", "cells": ["If she were to resign…", "Were she to resign…"]},
+        {"label": "Possible future (formal)", "cells": ["If you need help…", "Should you need help…"]},
+        {"label": "Register", "cells": ["Neutral, everyday", "Formal, written"]}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "Had / Were / Should", "tone": "kw", "ex": "Had I known / Were she to resign / Should you need"},
+      {"chip": "subject", "tone": "a", "ex": "I / she / you"},
+      {"chip": "rest of the clause (no if)", "tone": "b", "ex": "known the risk / to resign / need help"},
+      {"chip": "→", "tone": "arrow"},
+      {"chip": "main clause", "tone": "c", "ex": "I would have said something"}
+    ],
+    "table": {
+      "head": ["Pattern", "Structure", "Example"],
+      "rows": [
+        ["Past unreal (inverted)", "Had + subject + past participle, …", "<b>Had</b> we left earlier, we would have caught the train."],
+        ["Present/future unreal (inverted)", "Were + subject + to-infinitive, …", "<b>Were</b> she to resign, the board would panic."],
+        ["Polite/formal future condition", "Should + subject + bare infinitive, …", "<b>Should</b> you require further details, contact the office."],
+        ["Negative condition without if", "But for + noun / Were it not for + noun", "<b>But for</b> her quick thinking, the experiment would have failed."],
+        ["Positive condition, formal", "provided (that) / providing / on condition that", "You may leave early, <b>provided that</b> the report is finished."],
+        ["Indifference to alternatives", "whether or not + clause", "The match will go ahead <b>whether or not</b> it rains."],
+        ["Formal assumption", "assuming (that) + clause", "<b>Assuming that</b> the figures are correct, the plan is sound."],
+        ["Implied condition", "otherwise / or else", "Leave now, <b>otherwise</b> you'll miss the bus."]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Inversion instead of if, for a formal or literary tone",
+      "examples": [
+        {"text": "<b>Had I known</b> the venue would change, I would have told everyone.", "note": "past unreal, inverted"},
+        {"text": "<b>Were the results to disappoint</b> the board, the director would resign.", "note": "present/future unreal, inverted"},
+        {"text": "<b>Should the fire alarm sound</b> during the exam, remain seated and wait for instructions.", "note": "polite, formal future condition"}
+      ]
+    },
+    {
+      "point": "Negative conditions without if: but for / were it not for",
+      "examples": [
+        {"text": "<b>But for</b> a last-minute donation, the trip would have been cancelled.", "note": "but for + noun phrase"},
+        {"text": "<b>Were it not for</b> her sense of humour, the rehearsals would have been unbearable.", "note": "more formal than but for"},
+        {"text": "<b>If it weren't for</b> the traffic, we'd already be there.", "note": "everyday equivalent, still C1-appropriate"}
+      ]
+    },
+    {
+      "point": "Precise conjunctions instead of a plain if",
+      "examples": [
+        {"text": "You can use the recording studio <b>provided that</b> you book it in advance.", "note": "provided (that) = a formal condition"},
+        {"text": "The trek goes ahead <b>whether or not</b> the forecast improves.", "note": "whether or not = indifferent to the alternative"},
+        {"text": "<b>Assuming that</b> the bus arrives on time, we'll reach Cusco by noon.", "note": "assuming (that) = taking something as a starting point"}
+      ]
+    },
+    {
+      "point": "Implied conditions: the if-clause is understood, not stated",
+      "examples": [
+        {"text": "Finish the form today; <b>otherwise</b> your place will be given away.", "note": "otherwise = if you don't"},
+        {"text": "Save your work now, <b>or else</b> you'll lose everything if the laptop crashes.", "note": "or else, more spoken than otherwise"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {
+      "wrong": "If I would have known, I would have called.",
+      "right": "<b>Had I known</b>, I would have called.",
+      "why": "No <i>would</i> in the if-clause; the formal inversion drops <i>if</i> altogether."
+    },
+    {
+      "wrong": "Were I to knew the truth, I'd tell you.",
+      "right": "<b>Were I to know</b> the truth, I'd tell you.",
+      "why": "After <i>were … to</i>, use the bare infinitive, not the past tense."
+    },
+    {
+      "wrong": "Should you needed help, call me.",
+      "right": "<b>Should you need</b> help, call me.",
+      "why": "After <i>should</i>, the verb stays in the bare infinitive."
+    },
+    {
+      "wrong": "But for you helped me, I would have failed.",
+      "right": "<b>But for</b> your help, I would have failed.",
+      "why": "<i>But for</i> is followed by a noun phrase, never by a clause with a verb."
+    },
+    {
+      "wrong": "You can go, provided you will finish the work.",
+      "right": "You can go, <b>provided you finish</b> the work.",
+      "why": "After <i>provided / providing</i>, a present tense already refers to the future."
+    },
+    {
+      "wrong": "Whether it rains or not it rains, we're going.",
+      "right": "<b>Whether or not</b> it rains, we're going.",
+      "why": "The verb is not repeated; <i>whether or not</i> already covers both alternatives."
+    }
+  ],
+  "dialogue": {
+    "title": "The scholarship interview",
+    "context": "Mateo has a scholarship interview next week, and Miss Vega and Sofia help him rehearse formal conditional sentences.",
+    "lines": [
+      {"speaker": "Miss Vega", "text": "Right, Mateo — if the panel asks a hypothetical question, don't panic. Use the structures we practised."},
+      {"speaker": "Mateo", "text": "Okay... 'If I would be accepted, I would study Engineering'?"},
+      {"speaker": "Miss Vega", "text": "Careful — no <i>would</i> in the if-clause. Try it again, more formally this time."},
+      {"speaker": "Mateo", "text": "<b>Were I to be accepted</b>, I would study Engineering at university."},
+      {"speaker": "Sofia", "text": "Much better. Now imagine they ask about a mistake in your application."},
+      {"speaker": "Mateo", "text": "<b>Had I noticed</b> the deadline earlier, I would have submitted the essay in English, not Spanish."},
+      {"speaker": "Miss Vega", "text": "Good. And if they want to test your judgement under pressure?"},
+      {"speaker": "Mateo", "text": "<b>Should the scholarship require</b> community service, I would happily volunteer at the library."},
+      {"speaker": "Sofia", "text": "Nice. What about persuading them you're serious, even without the money?"},
+      {"speaker": "Mateo", "text": "<b>But for</b> the cost, I would already be enrolled — the scholarship simply makes it possible sooner."},
+      {"speaker": "Miss Vega", "text": "Excellent. <b>Should they say</b> no, what would you do?"},
+      {"speaker": "Mateo", "text": "I'll apply again next year — <b>otherwise</b> I'll never know if I was good enough."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "___ I known about the traffic, I would have left an hour earlier.", "options": ["If", "Had", "Would"], "answer": 1, "why": "Had + subject + past participle replaces If + past perfect in formal, inverted style."},
+        {"sentence": "___ you require further information, please contact the office.", "options": ["Should", "Would", "Did"], "answer": 0, "why": "Should-inversion makes a polite, formal condition — common in official letters."},
+        {"sentence": "___ she be offered the role, she would need to relocate immediately.", "options": ["Was", "Is", "Were"], "answer": 2, "why": "Were-inversion is the formal alternative to If + were, for present/future unreal conditions."},
+        {"sentence": "___ his calm advice, the negotiations would have collapsed completely.", "options": ["Unless", "But for", "Except"], "answer": 1, "why": "But for + noun phrase means 'if it hadn't been for'; it cannot be followed by a clause."},
+        {"sentence": "You may borrow the equipment, ___ you return it by Friday.", "options": ["provided that", "otherwise", "unless"], "answer": 0, "why": "Provided (that) introduces a formal positive condition, close in meaning to if/as long as."},
+        {"sentence": "Finish the report by five ___ we'll have to reschedule the meeting.", "options": ["assuming", "provided that", "otherwise"], "answer": 2, "why": "Otherwise introduces an implied negative condition: if you don't finish, we'll reschedule."},
+        {"sentence": "The tournament will go ahead ___ it rains or not.", "options": ["if", "whether", "unless"], "answer": 1, "why": "Whether … or not expresses indifference to which alternative happens."}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with one word so that it is grammatically correct.",
+      "items": [
+        {"sentence": "___ we left earlier, we wouldn't have missed the opening ceremony.", "answers": ["Had"]},
+        {"sentence": "___ it not for the scholarship, Mateo wouldn't be studying abroad.", "answers": ["Were"]},
+        {"sentence": "___ any problems arise, contact the coordinator immediately.", "answers": ["Should"]},
+        {"sentence": "___ for the volunteers, the festival would never have been ready in time.", "answers": ["But"]},
+        {"sentence": "You can use the lab after hours, ___ that a teacher is present.", "answers": ["provided", "providing"]},
+        {"sentence": "We're going hiking this weekend ___ or not it rains.", "answers": ["whether"]},
+        {"sentence": "Submit the form today; ___ your place will be given to someone else.", "answers": ["otherwise"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first, using the word given. Do not change the word given. Use between two and five words.",
+      "items": [
+        {"first": "If I had known about the delay, I would have booked an earlier flight.", "key": "HAD", "second_start": "", "second_end": "about the delay, I would have booked an earlier flight.", "answers": ["Had I known"]},
+        {"first": "If she were to resign unexpectedly, the board would be shocked.", "key": "WERE", "second_start": "", "second_end": "resign unexpectedly, the board would be shocked.", "answers": ["Were she to"]},
+        {"first": "If you need any help while I'm away, call my assistant.", "key": "SHOULD", "second_start": "", "second_end": "any help while I'm away, call my assistant.", "answers": ["Should you need"]},
+        {"first": "If it hadn't been for her quick thinking, the experiment would have failed.", "key": "BUT", "second_start": "", "second_end": "her quick thinking, the experiment would have failed.", "answers": ["But for"]},
+        {"first": "You can join the trip as long as you pay the deposit by Friday.", "key": "PROVIDED", "second_start": "You can join the trip", "second_end": "the deposit by Friday.", "answers": ["provided that you pay", "provided you pay"]},
+        {"first": "It doesn't matter if the match is postponed or not — we'll celebrate anyway.", "key": "WHETHER", "second_start": "", "second_end": "the match is postponed, we'll celebrate anyway.", "answers": ["Whether or not"]}
+      ]
+    }
+  ],
+  "summary": [
+    "Formal writing prefers inversion to if: <i>Had I known</i>, <i>Were she to resign</i>, <i>Should you require</i>.",
+    "<i>But for</i> and <i>were it not for</i> replace a negative if-clause with a noun phrase.",
+    "<i>Provided (that) / providing / on condition that</i> state a formal positive condition; <i>whether or not</i> shows indifference to the alternative.",
+    "<i>Otherwise</i> and <i>or else</i> imply a negative condition without stating it.",
+    "Use these forms to sound more formal in essays and official writing — not in every sentence."
+  ]
+}

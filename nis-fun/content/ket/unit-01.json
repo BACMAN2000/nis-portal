@@ -28,7 +28,7 @@
  "scene": {
   "speaker": "nova",
   "bubble": "New year, new class! Read our class blog, learn the present simple, then tell us all about you.",
-  "intro": "Welcome to Grade 6 and to the Inspiring Nordic year. In this first unit you get to know your class. You read the class blog, where Mateo, Sofía, Liam and Nadia introduce themselves, you learn how to talk about routines with the present simple, and then you write and say a few true things about you. This is how our project starts: before we build anything together, we find out who is in the room. Turn the page and meet Grade 6."
+  "intro": "Welcome to A2 Key and to the Inspiring Nordic year. In this first unit you get to know your class. You read the class blog, where Mateo, Sofía, Liam and Nadia introduce themselves, you learn how to talk about routines with the present simple, and then you write and say a few true things about you. This is how our project starts: before we build anything together, we find out who is in the room. Turn the page and meet A2 Key."
  },
  "activities": [
   {
@@ -82,10 +82,10 @@
    ],
    "data": {
     "kicker": "Nordic School Blog",
-    "title": "Welcome to Grade 6!",
+    "title": "Welcome to A2 Key!",
     "byline": "by Miss Vega's class",
-    "text": "<p>Hello! We are the new Grade 6 class at Nordic School, and this year our big project is called <b>Inspiring Nordic — Trades</b>. Before we start, let us introduce ourselves.</p><p><b>Mateo</b> is twelve. He lives with his mum, his dad and his little brother. His favourite hobby is chess, and he plays every weekend with his cousin. He also loves building things, so he is very happy about the Trades project.</p><p><b>Sofía</b> is new this year. She is a little shy, but she loves books, and she has already joined the reading club. Right now the club is reading <i>Charlotte's Web</i>.</p><p><b>Liam</b> is eleven and full of energy. He plays football every day after school, and he has friends from many countries. His timetable is always busy!</p><p><b>Nadia</b> loves art and design. She draws in every free minute, and she wants to make the posters for our project.</p><p>We are all different, but we are one class. What about you? Tell us about your family, your classmates and your favourite hobby!</p>",
-    "script": "Hello! We are the new Grade 6 class at Nordic School, and this year our big project is called Inspiring Nordic, Trades. Before we start, let us introduce ourselves. Mateo is twelve. He lives with his mum, his dad and his little brother. His favourite hobby is chess, and he plays every weekend with his cousin. Sofía is new this year. She is a little shy, but she loves books, and she has already joined the reading club. Liam is eleven and full of energy. He plays football every day after school. Nadia loves art and design, and she wants to make the posters for our project. We are all different, but we are one class!",
+    "text": "<p>Hello! We are the new A2 class at Nordic School, and this year our big project is called <b>Inspiring Nordic — Trades</b>. Before we start, let us introduce ourselves.</p><p><b>Mateo</b> is twelve. He lives with his mum, his dad and his little brother. His favourite hobby is chess, and he plays every weekend with his cousin. He also loves building things, so he is very happy about the Trades project.</p><p><b>Sofía</b> is new this year. She is a little shy, but she loves books, and she has already joined the reading club. Right now the club is reading <i>Charlotte's Web</i>.</p><p><b>Liam</b> is eleven and full of energy. He plays football every day after school, and he has friends from many countries. His timetable is always busy!</p><p><b>Nadia</b> loves art and design. She draws in every free minute, and she wants to make the posters for our project.</p><p>We are all different, but we are one class. What about you? Tell us about your family, your classmates and your favourite hobby!</p>",
+    "script": "Hello! We are the new A2 class at Nordic School, and this year our big project is called Inspiring Nordic, Trades. Before we start, let us introduce ourselves. Mateo is twelve. He lives with his mum, his dad and his little brother. His favourite hobby is chess, and he plays every weekend with his cousin. Sofía is new this year. She is a little shy, but she loves books, and she has already joined the reading club. Liam is eleven and full of energy. He plays football every day after school. Nadia loves art and design, and she wants to make the posters for our project. We are all different, but we are one class!",
     "questions": [
      {
       "q": "What is the class project called?",
@@ -240,7 +240,7 @@
      "together",
      "weekend"
     ],
-    "text": "Hi! I am Mateo, from Grade 6. I live with my mum, dad {1} my little brother. I go to the chess club {2} Saturday {3} it is my {4} hobby. My cousin comes too, and we play {5}. I really love the {6}!",
+    "text": "Hi! I am Mateo, from A2 Key. I live with my mum, dad {1} my little brother. I go to the chess club {2} Saturday {3} it is my {4} hobby. My cousin comes too, and we play {5}. I really love the {6}!",
     "answers": [
      "and",
      "on",
@@ -262,7 +262,7 @@
    "audio": "ket/u01-e.mp3",
    "data": {
     "voice_note": "Voz: una profesora (Miss Vega), tono amable de bienvenida.",
-    "script": "Good morning, Grade 6, and welcome to the Inspiring Nordic year! Here is the news about our clubs. The chess club meets on Monday in Room 12. The art club is on Wednesday, and this year you can paint one big picture together. On Friday there is a new music club, so bring your favourite song. Remember, the club timetable is on the green door. Have a great weekend, and see you at your first club!",
+    "script": "Good morning, A2 Key, and welcome to the Inspiring Nordic year! Here is the news about our clubs. The chess club meets on Monday in Room 12. The art club is on Wednesday, and this year you can paint one big picture together. On Friday there is a new music club, so bring your favourite song. Remember, the club timetable is on the green door. Have a great weekend, and see you at your first club!",
     "questions": [
      {
       "q": "The chess club meets on …",

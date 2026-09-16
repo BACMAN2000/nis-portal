@@ -1,0 +1,171 @@
+{
+  "id": "passive",
+  "level": "b2f",
+  "area": "Passive & causative",
+  "title": "The passive in all tenses",
+  "tagline": "Turning the sentence around so the action — not the person who did it — comes first.",
+  "cefr": "B2",
+  "exam": [
+    "Reading & Use of English Part 4 — key word transformations",
+    "Reading & Use of English Part 2 — open cloze (be / been / being)",
+    "Writing Part 2 — report or article: describing processes and results"
+  ],
+  "why": "News reports, rules, instructions and results usually don't care who did the action — they care what happened. The passive lets English do that without an awkward <i>somebody</i> or <i>they</i>. B2 First checks it across every tense, with two-object verbs, and in fixed patterns like <b>is said to</b> that turn a whole opinion into one clause.",
+  "diagrams": [
+    {
+      "type": "formula",
+      "title": "The passive pattern",
+      "parts": [
+        {"chip": "object → new subject", "tone": "kw"},
+        {"chip": "be (in the right tense)", "tone": "a", "ex": "was"},
+        {"chip": "+", "tone": "arrow"},
+        {"chip": "past participle", "tone": "b", "ex": "built"},
+        {"chip": "(by + agent)", "tone": "c", "ex": "by local workers"}
+      ],
+      "caption": "Whatever received the action becomes the subject; the person who did it becomes optional."
+    },
+    {
+      "type": "transform",
+      "title": "Active to passive, step by step",
+      "before": {"text": "Cambridge English administers the B2 First exam in over 130 countries.", "hl": ["Cambridge English", "administers"]},
+      "after": {"text": "The B2 First exam is administered by Cambridge English in over 130 countries.", "hl": ["is administered", "by Cambridge English"]},
+      "steps": [
+        "Move the object of the active sentence (<b>the exam</b>) to the front, as the new subject.",
+        "Put <i>be</i> in the same tense as the original verb: <i>administers</i> → <i>is administered</i>.",
+        "Add the original subject after <i>by</i> only if it's useful information: <i>by Cambridge English</i>."
+      ]
+    },
+    {
+      "type": "contrast",
+      "title": "Reporting a general opinion",
+      "columns": ["Active (people say)", "Impersonal: It is said that…", "Personal: X is said to…"],
+      "rows": [
+        {"label": "Pattern", "cells": ["People/they/everyone + say", "It + be + said + that + clause", "subject + be + said + to + infinitive"]},
+        {"label": "Example", "cells": ["People say the new coach is very strict.", "It is said that the new coach is very strict.", "The new coach is said to be very strict."]},
+        {"label": "Use", "cells": ["informal, names a vague source", "formal, keeps the whole clause", "formal, sounds more like a fact about the subject"]}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "subject (was the object)", "tone": "kw"},
+      {"chip": "be", "tone": "a", "ex": "is / was / has been"},
+      {"chip": "+", "tone": "arrow"},
+      {"chip": "past participle", "tone": "b", "ex": "written"}
+    ],
+    "table": {
+      "head": ["Tense / form", "Structure", "Example"],
+      "rows": [
+        ["Present simple", "am/is/are + participle", "The results are published online."],
+        ["Present continuous", "am/is/are being + participle", "The gym is being repainted this week."],
+        ["Past simple", "was/were + participle", "The mural was designed by three students."],
+        ["Past continuous", "was/were being + participle", "The hall was being cleaned when we arrived."],
+        ["Present perfect", "has/have been + participle", "The trophy has been moved to the main office."],
+        ["Past perfect", "had been + participle", "The tickets had already been sold by Monday."],
+        ["Future simple", "will be + participle", "The winners will be announced on Friday."],
+        ["Modal passive", "modal + be + participle", "The essay must be handed in by Thursday."]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Focusing on the action or the result, not on who did it",
+      "examples": [
+        {"text": "The new library <b>was opened</b> last September.", "note": "the opening matters, not necessarily who cut the ribbon"},
+        {"text": "Over three hundred entries <b>have been received</b> for the poetry competition.", "note": "the number matters more than who sent them"},
+        {"text": "Mistakes <b>are usually corrected</b> before the final draft.", "note": "a general process, agent unknown or unimportant"}
+      ]
+    },
+    {
+      "point": "Naming the agent with by, only when it adds real information",
+      "examples": [
+        {"text": "The mural <b>was painted</b> by a group of Year 12 students from Arequipa.", "note": "the agent is the interesting part of the sentence"},
+        {"text": "The announcement <b>will be made</b> by the head teacher herself.", "note": "worth mentioning because it shows importance"},
+        {"text": "The data <b>was collected</b> by sensors placed around the school garden.", "note": "explains how, not just who"}
+      ]
+    },
+    {
+      "point": "Verbs with two objects: two possible passive subjects",
+      "examples": [
+        {"text": "Nadia <b>was given</b> a certificate for the best project in the fair.", "note": "the person (indirect object) as subject — the more natural choice"},
+        {"text": "A certificate <b>was given</b> to Nadia for the best project in the fair.", "note": "the thing (direct object) as subject — possible, but less common"}
+      ]
+    },
+    {
+      "point": "Reporting opinions, and combining the passive with modals",
+      "examples": [
+        {"text": "It <b>is said</b> that the school will introduce a new uniform next year.", "note": "impersonal passive for a general rumour"},
+        {"text": "The coach <b>is thought to</b> be considering Liam for the first team.", "note": "personal passive — sounds like established fact"},
+        {"text": "The final version <b>should be submitted</b> before Friday at noon.", "note": "modal + passive: an instruction, not a statement of fact"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "The letter was wrote by the head of department.", "right": "The letter <b>was written</b> by the head of department.", "why": "The passive needs the past participle (<i>written</i>), not the past simple form (<i>wrote</i>)."},
+    {"wrong": "The homework must finished by Monday.", "right": "The homework <b>must be finished</b> by Monday.", "why": "A modal passive always needs <i>be</i> before the past participle."},
+    {"wrong": "The trophy was given to by the mayor.", "right": "The trophy <b>was given</b> to the winning team <b>by</b> the mayor.", "why": "Don't double up the preposition — <i>to</i> introduces the receiver, <i>by</i> introduces the agent, and both aren't needed together like that."},
+    {"wrong": "It says that the results come out on Friday.", "right": "<b>It is said</b> that the results come out on Friday.", "why": "The impersonal reporting pattern needs the passive: <i>it is said</i>, not the active <i>it says</i>."},
+    {"wrong": "The photos were took by a student from the club.", "right": "The photos <b>were taken</b> by a student from the club.", "why": "Use the past participle <i>taken</i>, not the past simple <i>took</i>, after <i>were</i>."}
+  ],
+  "dialogue": {
+    "title": "The mural competition results",
+    "context": "Sofia, Liam and Nadia are reading the noticeboard outside the art room, where the results of the interschool mural competition have just gone up.",
+    "lines": [
+      {"speaker": "Sofia", "text": "Look — the winners <b>were announced</b> this morning while we were in class!"},
+      {"speaker": "Liam", "text": "Our mural <b>was chosen</b> for the coastal wall, near the main gate."},
+      {"speaker": "Nadia", "text": "Really? It <b>is said</b> that the judges loved the recycling theme."},
+      {"speaker": "Sofia", "text": "And apparently the paint <b>is being donated</b> by a local hardware shop — we don't even have to buy it."},
+      {"speaker": "Liam", "text": "Nice. When <b>is</b> the wall <b>going to be prepared</b>? It needs a proper base coat first."},
+      {"speaker": "Nadia", "text": "Miss Vega said it <b>will be sanded</b> and primed by the maintenance team on Thursday."},
+      {"speaker": "Sofia", "text": "Then we <b>'ll be given</b> the whole weekend to paint it, I think."},
+      {"speaker": "Liam", "text": "Perfect. And a plaque with our names <b>is going to be added</b> next to the mural, apparently."},
+      {"speaker": "Nadia", "text": "That's brilliant. This project <b>has never been done</b> at our school before."},
+      {"speaker": "Sofia", "text": "Exactly why it <b>should be taken</b> seriously — let's not mess it up."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "The new science block ___ next year.", "options": ["will be built", "will built", "builds"], "answer": 0, "why": "future passive → will be + participle"},
+        {"sentence": "This song ___ by a group of students from Cusco.", "options": ["was wrote", "wrote", "was written"], "answer": 2, "why": "past passive needs the participle written"},
+        {"sentence": "The gym floor ___ at the moment, so PE is in the hall.", "options": ["is repaired", "is being repaired", "repairs"], "answer": 1, "why": "an action in progress → present continuous passive"},
+        {"sentence": "All entries ___ before the deadline on Friday.", "options": ["must be submitted", "must submit", "must submitted"], "answer": 0, "why": "modal passive needs be + participle"},
+        {"sentence": "Liam ___ a medal for the best design.", "options": ["was gave", "was given", "gave"], "answer": 1, "why": "passive with a two-object verb, person as subject"},
+        {"sentence": "It ___ that the trip will be moved to October.", "options": ["says", "said", "is said"], "answer": 2, "why": "impersonal passive reporting pattern"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with the correct passive form of the verb in brackets.",
+      "items": [
+        {"sentence": "The results ___ (publish) on the website every June.", "answers": ["are published"]},
+        {"sentence": "The mural ___ (paint) by three students last term.", "answers": ["was painted"]},
+        {"sentence": "The classroom ___ already ___ (clean) when we got there this morning.", "answers": ["had already been cleaned", "had been already cleaned"]},
+        {"sentence": "New laptops ___ (order) for the computer lab right now.", "answers": ["are being ordered"]},
+        {"sentence": "The final decision ___ (make) by the committee next week.", "answers": ["will be made"]},
+        {"sentence": "Nadia ___ (award) a scholarship for her science project.", "answers": ["was awarded"]},
+        {"sentence": "The coach ___ (think) to be one of the best in the region.", "answers": ["is thought"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first. Use the word given. Do not change it. Use between two and five words.",
+      "items": [
+        {"first": "Someone stole Liam's bike from outside the library.", "key": "STOLEN", "second_start": "Liam's bike", "second_end": "outside the library.", "answers": ["was stolen from"]},
+        {"first": "They are going to announce the results next Monday.", "key": "BE", "second_start": "The results", "second_end": "next Monday.", "answers": ["are going to be announced"]},
+        {"first": "People say that the exam will be more difficult this year.", "key": "SAID", "second_start": "It", "second_end": "the exam will be more difficult this year.", "answers": ["is said that"]},
+        {"first": "The teacher gave Sofia the certificate in front of the whole class.", "key": "GIVEN", "second_start": "Sofia", "second_end": "in front of the whole class.", "answers": ["was given the certificate"]},
+        {"first": "You must finish this report before the meeting starts.", "key": "FINISHED", "second_start": "This report", "second_end": "before the meeting starts.", "answers": ["must be finished"]}
+      ]
+    }
+  ],
+  "summary": [
+    "Build the passive with <b>be</b> in the right tense + <b>past participle</b>; only add <i>by + agent</i> when it matters.",
+    "The passive exists in every tense and after every modal — <i>is done</i>, <i>was being done</i>, <i>has been done</i>, <i>must be done</i>.",
+    "Verbs with two objects usually make the person, not the thing, the subject of the passive: <i>She was given a prize</i>.",
+    "<i>It is said that…</i> and <i>X is said to…</i> turn a vague <i>they say</i> into a more formal, impersonal report.",
+    "Choose the passive when the receiver of the action, or the action itself, matters more than who did it."
+  ]
+}

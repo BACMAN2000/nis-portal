@@ -1,0 +1,716 @@
+/* teen.js — los cursos de secundaria (KET · PET · B2 First · C1 Advanced) con
+   su propia piel y su Grammar Lab.
+   ------------------------------------------------------------------------
+   El motor de Fun for Nordic nacio para primaria y lo cuenta todo con una
+   mascota: bocadillo, "The story", "Picture words", caja magica. Con quince
+   anos eso no se lee como un curso; se lee como un juego para ninos. Aqui
+   van las tres pantallas que cambian de arriba abajo para los cuatro niveles
+   de secundaria —la portada del curso, la unidad y una referencia de
+   gramatica de 24 temas por nivel, explicada en diagramas— sin tocar ni el
+   contenido ni los renderers de las actividades, que siguen siendo los del
+   motor (RENDER) y los de exam-c1.js.
+
+   index.html solo necesita: cargar este archivo, y en hub() y unit() ceder
+   el paso con `if (window.TEEN && TEEN.es(LEVEL)) return TEEN.hub(idx)` /
+   `TEEN.unit(UD, digital)`. Las globales que usa (LEVEL, UD, PROG, T, Q,
+   esc, j, SCREENS, RENDER, SAY, REC, store, BACKEND, PORTAL, PERMISO,
+   montaHistoria, partirFrases, marcaClaves, makeIntro, pintaSelfCheck,
+   puenteProyectoChip, proyectoDeUnidad, camIcon) son las del motor.
+
+   Rutas nuevas:  ?level=b2f&grammar=hub      el indice del Grammar Lab
+                  ?level=b2f&grammar=<id>     un tema
+   Contenido:     content/<level>/grammar/index.json + <id>.json
+                  (esquema en tools/grammar-lab/SCHEMA.md)
+   Fotos:         assets/teen/<level>-cover.jpg, <level>-u<N>.jpg,
+                  area-<slug>.jpg (+ "-s" la miniatura), credits.json
+   Audio:         audio/grammar/<level>/<id>.mp3 (dialogo del tema)
+   ------------------------------------------------------------------------ */
+window.TEEN = (function () {
+  'use strict';
+
+  const TEEN_V = '2026-09-16a';   // sube al cambiar fotos o audio del lab
+
+  const NIV = {
+    ket: { name: 'A2 Key', full: 'A2 Key for Schools', cefr: 'A2', icon: 'ket',
+           blurb: 'Your first Cambridge exam: everyday English for school, home and free time — reading, writing, listening and speaking, in the real exam format.' },
+    pet: { name: 'B1 Preliminary', full: 'B1 Preliminary for Schools', cefr: 'B1', icon: 'pet',
+           blurb: 'Independent English: stories, opinions, emails and articles — and the grammar that holds them together, in the real exam format.' },
+    b2f: { name: 'B2 First', full: 'B2 First for Schools', cefr: 'B2', icon: 'fce',
+           blurb: 'The exam that opens doors: essays, reports and reviews, Use of English, listening to real speech — and the grammar a B2 speaker is expected to control.' },
+    c1a: { name: 'C1 Advanced', full: 'C1 Advanced', cefr: 'C1', icon: 'cae',
+           blurb: 'English for university and work: nuance, register and precision — inversion, cleft sentences, hedging and the whole Use of English paper.' },
+  };
+  const es = lv => Object.prototype.hasOwnProperty.call(NIV, lv);
+
+  /* ---- dibujos 3D: los de Cambridge (cambridge-icons.js) y los emoji 3D
+     de Microsoft Fluent (MIT), servidos por jsDelivr ---- */
+  const F3D = name => `https://cdn.jsdelivr.net/gh/microsoft/fluentui-emoji@main/assets/${encodeURIComponent(name)}/3D/${name.toLowerCase().replace(/ /g, '_')}_3d.png`;
+  const ICO = {
+    speaking: F3D('Speaking head'), vocabulary: F3D('Books'), grammar: F3D('Puzzle piece'),
+    listening: 'cam:listening', reading: 'cam:reading', uoe: 'cam:uoe', writing: 'cam:writing',
+    selfcheck: F3D('Check mark button'), lab: F3D('Light bulb'), exam: F3D('Graduation cap'),
+    tip: F3D('Warning'), brain: F3D('Brain'), talk: F3D('Speech balloon'), target: F3D('Bullseye'),
+    rocket: F3D('Rocket'), compass: F3D('Compass'), mic: F3D('Microphone'), pencil: F3D('Pencil'),
+    trophy: F3D('Trophy'), search: F3D('Magnifying glass tilted left'), clock: F3D('Hourglass not done'),
+    spark: F3D('Sparkles'), clip: F3D('Clipboard'), scale: F3D('Balance scale'), link: F3D('Link'),
+    gear: F3D('Gear'), speaker: F3D('Loudspeaker'), open: F3D('Open book'),
+  };
+  function ico(key, size) {
+    const v = ICO[key] || key;
+    const s = size || 48;
+    if (typeof v === 'string' && v.slice(0, 4) === 'cam:')
+      return (typeof camIcon === 'function') ? camIcon(v.slice(4), s) : '';
+    return `<img src="${v}" alt="" width="${s}" height="${s}" loading="lazy" decoding="async">`;
+  }
+
+  /* ---- fotos y sus creditos (licencia Unsplash: nombre + enlace) ---- */
+  const FOTO = n => `../assets/teen/${n}.jpg?v=${TEEN_V}`;
+  let CRED = null;
+  async function creditos() {
+    if (CRED) return CRED;
+    try { CRED = await j('../assets/teen/credits.json'); } catch (e) { CRED = {}; }
+    return CRED;
+  }
+  function credito(n) {
+    const c = (CRED || {})[n];
+    if (!c) return '';
+    return `<span class="t-credit">Photo: <a href="${esc(c.link)}?utm_source=nis&utm_medium=referral" target="_blank" rel="noopener">${esc(c.name)}</a> / <a href="https://unsplash.com/?utm_source=nis&utm_medium=referral" target="_blank" rel="noopener">Unsplash</a></span>`;
+  }
+  // la foto de la unidad cae a la portada del nivel si no existe
+  const fotoUnidad = (n, small) => `<img class="bg" src="${FOTO(`${LEVEL}-u${n}${small ? '-s' : ''}`)}" alt=""
+      onerror="this.onerror=null;this.src='${FOTO(`${LEVEL}-cover${small ? '-s' : ''}`)}'">`;
+
+  /* ---- que seccion del examen es cada actividad ---- */
+  const SECCION = {
+    pairwork: ['Speaking', 'speaking'], match_words: ['Vocabulary', 'vocabulary'], crossword: ['Vocabulary', 'vocabulary'],
+    unscramble: ['Vocabulary', 'vocabulary'], grammar_box: ['Grammar', 'grammar'],
+    reading: ['Reading & Use of English', 'reading'], gapped_text: ['Reading & Use of English', 'reading'],
+    multiple_matching: ['Reading & Use of English', 'reading'], story_qa: ['Reading', 'reading'],
+    mc_cloze: ['Reading & Use of English', 'uoe'], word_formation: ['Reading & Use of English', 'uoe'],
+    key_transform: ['Reading & Use of English', 'uoe'], gap_text: ['Reading & Use of English', 'uoe'],
+    listening: ['Listening', 'listening'], listening_mc: ['Listening', 'listening'], listening_match: ['Listening', 'listening'],
+    writing: ['Writing', 'writing'], write_sentences: ['Writing', 'writing'], exam_task: ['Exam task', 'exam'],
+  };
+  const seccion = a => SECCION[a.type] || ['Activity', 'target'];
+  function parte(a) {
+    const m = /Parts?\s+(\d(?:\s*(?:and|&|,)\s*\d)*)/i.exec(a.title || '');
+    if (m) return 'Part ' + m[1].replace(/\s*(and|&)\s*/g, ' & ');
+    if (a.data && a.data.part) return 'Part ' + a.data.part;
+    return '';
+  }
+  function tituloCorto(a) {
+    const t = String(a.title || '').split(/\.\s|\s—\s/)[0];
+    return t.replace(/\.$/, '');
+  }
+  function barraTarea(a) {
+    const [sec, ik] = seccion(a);
+    const p = parte(a);
+    return `<div class="t-task"><div class="ico">${ico(ik, 56)}</div>
+      <div><span class="t-kicker">${esc(a.code)} · ${esc(sec)}</span><h2>${esc(tituloCorto(a))}</h2></div>
+      ${p ? `<span class="part">${esc(p)}</span>` : ''}</div>`;
+  }
+
+  /* la barra de progreso: los segmentos ya pasados se tiñen */
+  function marcaPasados(i) {
+    document.querySelectorAll('.scr-dot').forEach((d, k) => d.classList.toggle('past', k < i));
+  }
+
+  /* ---- Grammar Lab: indice y progreso ---- */
+  let LAB = null;
+  async function labIndex() {
+    if (LAB !== null) return LAB;
+    try { LAB = await j(`${CDIR}/${LEVEL}/grammar/index.json`); if (!LAB || !LAB.count) LAB = false; } catch (e) { LAB = false; }
+    return LAB;
+  }
+  const labKey = id => `${LPFX}-gl-${LEVEL}-${id}`;
+  function labProg(id) { try { return JSON.parse(localStorage.getItem(labKey(id)) || '{}'); } catch (e) { return {}; } }
+  function labHecho(id) { const p = labProg(id); return !!(p.mc && p.gap && p.transform); }
+  const AREA_FOTO = {
+    'Tenses & time': 'area-tenses', 'Tenses & aspect': 'area-tenses', 'Modals': 'area-modals',
+    'Conditionals & hypothesis': 'area-conditionals', 'Passive & causative': 'area-passive',
+    'Passive & reporting': 'area-reporting', 'Reporting': 'area-reporting', 'Sentence building': 'area-sentence',
+    'Comparison & description': 'area-comparison', 'Emphasis & questions': 'area-emphasis', 'Words': 'area-words',
+  };
+  function labIndexHTML(lab) {
+    let n = 0;
+    return lab.areas.map(ar => `
+      <div class="t-lab-area"><img src="${FOTO((AREA_FOTO[ar.area] || 'area-words') + '-s')}" alt="">
+        <div><h3>${esc(ar.area)}</h3><small>${ar.topics.length} ${T('topics', 'sujets')}</small></div></div>
+      <div class="t-topics">${ar.topics.map(t => { n++; const done = labHecho(t.id);
+        return `<a class="t-topic ${done ? 'done' : ''}" href="${Q(`?level=${LEVEL}&grammar=${t.id}`)}">
+          <span class="n">${done ? '✓' : n}</span><span><b>${esc(t.title)}</b><small>${esc(t.tagline || '')}</small></span>
+          <span class="cefr">${esc(t.cefr || NIV[LEVEL].cefr)}</span></a>`; }).join('')}</div>`).join('');
+  }
+
+  /* ---- el mapa del examen: papers, partes y tiempos ---- */
+  const EXAM = {
+    ket: [
+      ['reading', 'Reading & Writing', '1 hour · 7 parts', ['Reading 1 — signs and messages (6)', 'Reading 2 — three texts, match (7)', 'Reading 3 — long text, multiple choice (5)', 'Reading 4 — multiple-choice cloze (6)', 'Reading 5 — open cloze (6)', 'Writing 6 — short email (25 words)', 'Writing 7 — picture story (35 words)']],
+      ['listening', 'Listening', 'about 30 min · 5 parts', ['1 — short conversations, pictures (5)', '2 — gap fill (5)', '3 — multiple choice (5)', '4 — five short texts, match (5)', '5 — match names and options (5)']],
+      ['speaking', 'Speaking', '8–10 min · 2 parts · in pairs', ['1 — questions about yourself', '2 — discussion with prompts']],
+    ],
+    pet: [
+      ['reading', 'Reading', '45 min · 6 parts', ['1 — signs and messages (5)', '2 — match people to texts (5)', '3 — long text, multiple choice (5)', '4 — gapped text (5)', '5 — multiple-choice cloze (6)', '6 — open cloze (6)']],
+      ['writing', 'Writing', '45 min · 2 parts', ['1 — email (about 100 words)', '2 — article or story (about 100 words)']],
+      ['listening', 'Listening', 'about 30 min · 4 parts', ['1 — pictures, multiple choice (7)', '2 — multiple choice (6)', '3 — gap fill (6)', '4 — interview, multiple choice (6)']],
+      ['speaking', 'Speaking', '12–17 min · 4 parts · in pairs', ['1 — questions about yourself', '2 — describe a photo (1 min)', '3 — discuss a situation with your partner', '4 — discussion on the same topic']],
+    ],
+    b2f: [
+      ['uoe', 'Reading & Use of English', '1 h 15 min · 7 parts · 52 questions', ['1 — multiple-choice cloze (8)', '2 — open cloze (8)', '3 — word formation (8)', '4 — key word transformations (6)', '5 — multiple choice (6)', '6 — gapped text (6)', '7 — multiple matching (10)']],
+      ['writing', 'Writing', '1 h 20 min · 2 parts', ['1 — essay (140–190 words), compulsory', '2 — article, email/letter, review or story (140–190 words)']],
+      ['listening', 'Listening', 'about 40 min · 4 parts · 30 questions', ['1 — eight short extracts, multiple choice (8)', '2 — sentence completion (10)', '3 — five speakers, multiple matching (5)', '4 — interview, multiple choice (7)']],
+      ['speaking', 'Speaking', '14 min · 4 parts · in pairs', ['1 — interview (2 min)', '2 — long turn with photos (4 min)', '3 — collaborative task (4 min)', '4 — discussion (4 min)']],
+    ],
+    c1a: [
+      ['uoe', 'Reading & Use of English', '1 h 30 min · 8 parts · 56 questions', ['1 — multiple-choice cloze (8)', '2 — open cloze (8)', '3 — word formation (8)', '4 — key word transformations (6)', '5 — multiple choice (6)', '6 — cross-text multiple matching (4)', '7 — gapped text (6)', '8 — multiple matching (10)']],
+      ['writing', 'Writing', '1 h 30 min · 2 parts', ['1 — essay (220–260 words), compulsory', '2 — letter/email, proposal, report or review (220–260 words)']],
+      ['listening', 'Listening', 'about 40 min · 4 parts · 30 questions', ['1 — three short extracts, multiple choice (6)', '2 — sentence completion (8)', '3 — interview, multiple choice (6)', '4 — five speakers, two tasks (10)']],
+      ['speaking', 'Speaking', '15 min · 4 parts · in pairs', ['1 — interview (2 min)', '2 — long turn with photos (4 min)', '3 — collaborative task (4 min)', '4 — discussion (5 min)']],
+    ],
+  };
+  function examMapHTML() {
+    const n = NIV[LEVEL];
+    return `<div class="t-section"><h2>${ico('exam', 34)} ${esc(n.full)}</h2><p>${T('The papers, their parts and their timing — so nothing surprises you on the day.', 'Les épreuves, leurs parties et leur durée.')}</p></div>
+      <div class="t-exam">${(EXAM[LEVEL] || []).map(([ik, nombre, meta, partes]) => `
+        <div class="t-paper"><div class="h">${ico(ik, 44)}<div><b>${esc(nombre)}</b><small>${esc(meta)}</small></div></div>
+          <ul>${partes.map(p => `<li>${esc(p)}</li>`).join('')}</ul></div>`).join('')}</div>
+      <p class="scr-pie" style="margin-top:1rem">${T('Practice tests and mocks in the real format are in the portal: Cambridge → Practice Tests · Mocks.', 'Les tests blancs sont dans le portail.')}</p>`;
+  }
+
+  /* ======================================================================
+     LA PORTADA DEL CURSO
+     ====================================================================== */
+  async function hub(idx) {
+    document.body.classList.add('teen');
+    const n = NIV[LEVEL];
+    await creditos();
+    const lab = await labIndex();
+    document.title = `${n.name} · Nordic`;
+    app.classList.add('hub');
+    const unidades = DEMO ? idx.units.slice(0, 2) : idx.units;
+    const progreso = unidades.map(u => {
+      const p = store.get(u.n);
+      return { unit: u, done: Math.min(4, p.done ? Object.keys(p.done).length : 0) };
+    });
+    const totalHechas = progreso.reduce((s, p) => s + p.done, 0);
+    const porcentaje = Math.round(totalHechas * 100 / Math.max(1, unidades.length * 4));
+    const ultima = Number(localStorage.getItem(`${LPFX}-${LEVEL}-lastUnit`));
+    const siguiente = progreso.find(p => p.unit.n === ultima && p.done < 4) || progreso.find(p => p.done < 4) || progreso[progreso.length - 1];
+    const terminadas = progreso.filter(p => p.done >= 4).length;
+    const nLab = lab ? lab.areas.reduce((s, a) => s + a.topics.length, 0) : 0;
+    const labHechos = lab ? lab.areas.reduce((s, a) => s + a.topics.filter(t => labHecho(t.id)).length, 0) : 0;
+
+    const hero = `<div class="t-hero">
+      <img class="bg" src="${FOTO(`${LEVEL}-cover`)}" alt="" onerror="this.remove()">
+      <div class="icon3d">${ico('cam:' + n.icon, 104)}</div>
+      <div class="in"><span class="t-kicker">Cambridge English · ${esc(n.cefr)}</span>
+        <h1>${esc(n.name)}</h1>
+        <p class="lead">${esc(n.blurb)}</p>
+        <div class="row"><span class="t-chip">${unidades.length} ${T('units', 'unités')}</span>
+          ${nLab ? `<span class="t-chip">${nLab} ${T('grammar topics', 'points de grammaire')}</span>` : ''}
+          <span class="t-chip">${T('Real exam tasks', 'Tâches d’examen')}</span>
+          <span class="t-chip">${T('Audio, photos, dialogues', 'Audio, photos, dialogues')}</span></div></div>
+      ${credito(`${LEVEL}-cover`)}</div>`;
+
+    const estado = `<section class="course-status" aria-label="${T('Course progress', 'Progression')}">
+      <div><h3>${totalHechas ? T(`Continue with Unit ${siguiente.unit.n}`, `Continuer l'unité ${siguiente.unit.n}`) : T('Start with Unit 1', 'Commencer l’unité 1')}</h3>
+        <p>${T(`${terminadas} of ${unidades.length} units completed · ${porcentaje}% overall`, `${terminadas} unités sur ${unidades.length} · ${porcentaje}%`)}${nLab ? ` · ${labHechos}/${nLab} ${T('grammar topics', 'points')}` : ''}</p></div>
+      <a class="continue" href="${Q(`?level=${LEVEL}&unit=${siguiente.unit.n}`)}">${totalHechas ? T('Continue', 'Continuer') : T('Start', 'Commencer')} <span aria-hidden="true">›</span></a>
+      <div class="course-meter" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${porcentaje}"><span style="--progress:${porcentaje}%"></span></div>
+    </section>`;
+
+    const dentro = `<div class="t-inside">
+      <button class="it" type="button" data-go="0" style="cursor:pointer">${ico('open', 46)}<span><b>${unidades.length} ${T('units', 'unités')}</b><small>${T('Reading, Use of English, listening, writing and speaking, one part at a time.', 'Toutes les compétences, une partie à la fois.')}</small></span></button>
+      ${lab ? `<a class="it" href="${Q(`?level=${LEVEL}&grammar=hub`)}">${ico('lab', 46)}<span><b>Grammar Lab · ${nLab}</b><small>${T('Every structure explained in diagrams, with a dialogue and practice.', 'Chaque structure en schémas, avec dialogue et exercices.')}</small></span></a>` : ''}
+      <button class="it" type="button" data-go="${lab ? 2 : 1}" style="cursor:pointer">${ico('exam', 46)}<span><b>${T('Exam map', 'Carte de l’examen')}</b><small>${esc(n.full)}: ${T('papers, parts and timing.', 'épreuves, parties et durée.')}</small></span></button>
+    </div>`;
+
+    const tarjeta = u => {
+      const p = store.get(u.n);
+      const hechas = Math.min(4, p.done ? Object.keys(p.done).length : 0);
+      const cerrada = !(window.BACKEND && BACKEND.puedeAbrir(PERMISO, u.n));
+      const inner = `<div class="ph">${fotoUnidad(u.n, true)}<span class="num">${u.n}</span></div>
+        <div class="bd"><b>${esc(u.title)}</b><small>${esc(u.topic || '')}</small>
+          <div class="ft">${cerrada ? `<span>🔒 ${T('Your teacher opens this one later', 'Ton professeur l’ouvrira plus tard')}</span>`
+            : `<span class="t-meter"><span style="width:${hechas * 25}%"></span></span><span>${hechas}/4</span>`}</div></div>`;
+      return cerrada ? `<span class="t-card locked" aria-disabled="true">${inner}</span>`
+                     : `<a class="t-card" href="${Q(`?level=${LEVEL}&unit=${u.n}`)}">${inner}</a>`;
+    };
+
+    const pantallas = [
+      { titulo: n.full, etiquetaSiguiente: lab ? 'Grammar Lab' : T('Exam map', 'Carte de l’examen'),
+        html: `<div class="scr-centro">${hero}${estado}${dentro}
+          <div class="t-section"><h2>${T('Units', 'Unités')}</h2><p>${T('Each one is a full lesson: vocabulary, a text, grammar, an exam task, listening, writing and speaking.', 'Chacune est une leçon complète.')}</p></div>
+          <div class="t-grid">${unidades.map(tarjeta).join('')}</div>
+          ${DEMO ? `<div class="demoflag">${T(`Demonstration — the first two units. The full course has ${idx.units.length}.`, `Démonstration — les deux premières unités.`)}</div>` : ''}
+        </div>`,
+        alMostrar(el) {
+          localStorage.setItem(`${LPFX}-${LEVEL}-intro-seen`, '1');
+          el.querySelectorAll('[data-go]').forEach(b => b.onclick = () => {
+            const k = +b.dataset.go;
+            if (k === 0) { const g = el.querySelector('.t-grid'); if (g) g.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+            else SCREENS.ir(k);
+          });
+        } },
+    ];
+    if (lab) pantallas.push({
+      titulo: 'Grammar Lab', etiquetaSiguiente: T('Exam map', 'Carte de l’examen'),
+      html: `<div class="scr-centro">
+        <div class="t-hero" style="min-height:13rem"><img class="bg" src="${FOTO('area-sentence')}" alt="" onerror="this.remove()">
+          <div class="icon3d">${ico('lab', 104)}</div>
+          <div class="in"><span class="t-kicker">${esc(n.name)} · ${T('reference', 'référence')}</span><h1>Grammar Lab</h1>
+            <p class="lead">${T(`The ${nLab} structures a ${n.cefr} candidate is expected to control — each one in diagrams, with real examples, the mistakes to avoid, a conversation and three rounds of practice.`, `Les ${nLab} structures du niveau ${n.cefr}.`)}</p></div>${credito('area-sentence')}</div>
+        ${labIndexHTML(lab)}</div>`,
+    });
+    pantallas.push({ titulo: T('Exam map', 'Carte de l’examen'), html: `<div class="scr-centro">${examMapHTML()}</div>` });
+
+    SCREENS.montar(app, pantallas, {
+      arriba: { href: Q('?'), texto: T('Courses', 'Cours') },
+      portal: PORTAL, alCambiar: marcaPasados,
+    });
+    marcaPasados(0);
+  }
+
+  /* ======================================================================
+     LA UNIDAD
+     ====================================================================== */
+  async function unit(ud, digital) {
+    document.body.classList.add('teen');
+    const n = NIV[LEVEL];
+    await creditos();
+    const lab = await labIndex();
+    const exam = ud.exam_focus || {};
+    const proyecto = (typeof puenteProyectoChip === 'function' && typeof proyectoDeUnidad === 'function') ? puenteProyectoChip(proyectoDeUnidad()) : '';
+
+    // que hay en la unidad, y a que pantalla lleva cada cosa (0 portada,
+    // 1 lead-in, 2 word bank, 3.. actividades, ultima self-check)
+    const plan = digital.map((a, k) => {
+      const [sec, ik] = seccion(a);
+      return `<button type="button" data-go="${k + 3}" class="${PROG.done[a.code] ? 'done' : ''}">${ico(ik, 30)}
+        <span><span class="k">${esc(a.code)} · ${esc(sec)}</span>${esc(tituloCorto(a))}</span></button>`;
+    }).join('');
+
+    const hero = `<div class="t-hero unit">${fotoUnidad(ud.number)}
+      <div class="icon3d">${ico('cam:' + n.icon, 96)}</div>
+      <div class="in"><span class="t-kicker">${esc(n.name)} · ${T('Unit', 'Unité')} ${ud.number}</span>
+        <h1>${esc(ud.title)}</h1>
+        ${ud.scene && ud.scene.bubble ? `<p class="lead">${esc(ud.scene.bubble)}</p>` : ''}
+        <div class="row">${ud.grammar ? `<span class="t-chip">${ico('grammar', 18)} ${esc(ud.grammar)}</span>` : ''}
+          ${exam.paper ? `<span class="t-chip">${esc(exam.paper)}${exam.part ? ` · ${T('Part', 'Partie')} ${esc(exam.part)}` : ''}</span>` : ''}
+          ${proyecto}</div></div>
+      ${credito(`${LEVEL}-u${ud.number}`)}</div>`;
+
+    // el texto de la unidad, frase a frase para el reproductor del motor
+    const frases = partirFrases(makeIntro(ud));
+    const vistas = new Set();
+    const historia = frases.map((f, k) => `<span class="sfr" data-k="${k}" role="button" tabindex="0">${marcaClaves(f, ud.wordlist, vistas)}</span>`).join(' ');
+
+    // las palabras con su significado, si la unidad lo trae en el emparejado
+    const significados = {};
+    (ud.activities || []).filter(a => a.type === 'match_words' && a.data && a.data.pairs).forEach(a =>
+      a.data.pairs.forEach(p => { if (p.left && p.right && !significados[p.left]) significados[p.left] = p.right; }));
+    const palabras = [...(ud.wordlist || []).map(w => ({ w, extra: false })), ...(ud.wordlist_extra || []).map(w => ({ w, extra: true }))];
+    const banco = `<div class="t-words">${palabras.map(({ w, extra }) => `<div class="t-word">
+        <button type="button" data-say="${esc(w)}" aria-label="${T('Say', 'Dis')} ${esc(w)}">🔊</button>
+        <div><b>${esc(w)}</b>${significados[w] ? `<small>${esc(significados[w])}</small>` : ''}${extra ? `<span class="x">${T('from the syllabus', 'du programme')}</span>` : ''}</div></div>`).join('')}</div>`;
+
+    // el tema del Grammar Lab que corresponde a cada caja de gramatica
+    const temaDe = a => {
+      if (!lab) return null;
+      const todos = lab.areas.flatMap(x => x.topics);
+      const id = a.data && a.data.lab;
+      return (id && todos.find(t => t.id === id)) || null;
+    };
+
+    const pantallas = [
+      { titulo: `${T('Unit', 'Unité')} ${ud.number} · ${ud.title}`, etiquetaSiguiente: T('Lead-in', 'Introduction'),
+        html: `<div class="scr-centro">${hero}
+          <div class="t-section"><h2>${T('In this unit', 'Dans cette unité')}</h2><p>${T('Tap a step to jump to it.', 'Touche une étape pour y aller.')}</p></div>
+          <div class="t-plan">${plan}<button type="button" data-go="${digital.length + 3}">${ico('selfcheck', 30)}<span><span class="k">${T('End', 'Fin')}</span>${T('Self-check', 'Auto-évaluation')}</span></button></div></div>`,
+        alMostrar(el) { el.querySelectorAll('[data-go]').forEach(b => b.onclick = () => SCREENS.ir(+b.dataset.go)); } },
+      { titulo: T('Lead-in', 'Introduction'), etiquetaSiguiente: T('Word bank', 'Vocabulaire'),
+        html: `<div class="scr-centro"><div class="t-article">
+          <span class="t-kicker">${T('Before you start', 'Avant de commencer')}</span>
+          <h2>${esc(ud.title)}</h2>
+          <div class="t-lead"><button class="guia-say historia-say t-btn sm" type="button">🔊 ${T('Listen', 'Écoute')}</button>
+            <span class="t-chip">${T('Tap any sentence to hear it again', 'Touche une phrase pour la réécouter')}</span></div>
+          <p id="lahistoria">${historia}</p>
+          <div class="sp" hidden><audio class="sp-audio" preload="none"></audio>
+            <div class="sp-btns"><button class="sp-b sp-main sp-play" type="button">&#9654; ${T('Play', 'Lire')}</button>
+              <button class="sp-b sp-stop" type="button">&#9209; ${T('Stop', 'Arrêter')}</button>
+              <button class="sp-b sp-prev" type="button">&#9198; ${T('Back', 'Retour')}</button>
+              <button class="sp-b sp-again" type="button">&#128257; ${T('Again', 'Encore')}</button>
+              <button class="sp-b sp-next" type="button">&#9197; ${T('Next', 'Suivant')}</button>
+              <button class="sp-b sp-slow" type="button" aria-pressed="false">&#128034; ${T('Slow', 'Lent')}</button></div>
+            <div class="sp-bar"><div class="sp-fill"></div></div>
+            <div class="sp-pie"><span class="sp-parte"></span><span class="sp-reloj"></span></div>
+            <p class="sp-tip"></p></div>
+        </div></div>`,
+        alMostrar(el) { montaHistoria(el, frases); } },
+      { titulo: T('Word bank', 'Vocabulaire'), etiquetaSiguiente: digital.length ? `${digital[0].code} · ${seccion(digital[0])[0]}` : T('Finish', 'Terminer'),
+        html: `<div class="scr-centro"><div class="t-section" style="max-width:60rem;margin-left:auto;margin-right:auto"><h2>${ico('vocabulary', 34)} ${T('Word bank', 'Vocabulaire')}</h2><p>${T('The words of this unit. Listen, then use them in the tasks.', 'Les mots de l’unité.')}</p></div>${banco}</div>`,
+        alMostrar(el) { el.querySelectorAll('.t-word [data-say]').forEach(b => b.onclick = () => SAY.play(b.dataset.say, b)); } },
+    ];
+
+    digital.forEach((a, k) => {
+      const sig = k < digital.length - 1 ? `${digital[k + 1].code} · ${seccion(digital[k + 1])[0]}` : T('Self-check', 'Auto-évaluation');
+      const tema = a.type === 'grammar_box' ? temaDe(a) : null;
+      pantallas.push({
+        titulo: `${a.code} · ${tituloCorto(a)}`, etiquetaSiguiente: sig,
+        html: `<div class="scr-centro">${barraTarea(a)}
+          <section class="act ${PROG.done[a.code] ? 'done' : ''}" id="act-${a.code}"><div class="body" id="body-${a.code}"></div></section>
+          ${tema ? `<div class="gb-lab">${ico('lab', 42)}<div><b>${T('Go deeper in the Grammar Lab', 'Approfondir')}: ${esc(tema.title)}</b><small>${esc(tema.tagline || '')}</small></div>
+            <a class="t-btn sm" href="${Q(`?level=${LEVEL}&grammar=${tema.id}`)}">${T('Open', 'Ouvrir')} ›</a></div>` : ''}</div>`,
+        alMostrar() {
+          const cuerpo = document.getElementById('body-' + a.code);
+          if (cuerpo && !cuerpo.dataset.listo) {
+            RENDER[a.type](a, cuerpo);
+            cuerpo.dataset.listo = '1';
+            if (a.type === 'pairwork' || a.type === 'spot_diff') {
+              const g = document.createElement('div');
+              cuerpo.parentNode.appendChild(g);
+              REC.montar(g, { nivel: LEVEL, unidad: ud.number, codigo: a.code });
+            }
+          }
+        } });
+    });
+
+    pantallas.push({
+      titulo: T('Self-check — what can you do now?', 'Auto-évaluation'),
+      html: `<div class="scr-centro"><div class="t-task"><div class="ico">${ico('selfcheck', 56)}</div><div><span class="t-kicker">${T('End of the unit', 'Fin de l’unité')}</span><h2>${T('What can you do now?', 'Qu’est-ce que tu sais faire ?')}</h2></div></div>
+        <div class="selfcheck act" id="selfcheck"></div></div>`,
+      alMostrar() { pintaSelfCheck(document.getElementById('selfcheck'), digital); } });
+
+    SCREENS.montar(app, pantallas, {
+      arriba: { href: Q(`?level=${LEVEL}`), texto: n.name },
+      portal: PORTAL, alCambiar: marcaPasados,
+    });
+    marcaPasados(SCREENS.actual());
+  }
+
+  /* ======================================================================
+     LOS DIAGRAMAS
+     ====================================================================== */
+  const inl = t => String(t == null ? '' : t).replace(/<(?!\/?[bi]>)/g, '&lt;');   // solo <b> e <i>
+  function diagrama(g) {
+    const f = { timeline, formula, contrast, transform, map, scale }[g.type];
+    if (!f) return '';
+    return `<div class="t-diag t-${g.type}"><h4><span class="t-kicker">${esc(g.type === 'timeline' ? 'Timeline' : g.type === 'formula' ? 'Pattern' : g.type === 'contrast' ? 'Compare' : g.type === 'transform' ? 'Transform' : g.type === 'map' ? 'Map' : 'Scale')}</span> ${inl(g.title || '')}</h4>
+      ${f(g)}${g.caption ? `<p class="cap">${inl(g.caption)}</p>` : ''}</div>`;
+  }
+  function timeline(g) {
+    const X = { 'before-past': 120, past: 300, now: 520, future: 700 };
+    const marks = g.marks || [];
+    const W = 800, yAxis = 72;
+    const usados = {};
+    const px = marks.map(m => { const x = X[m.at] || 400; usados[x] = (usados[x] || 0) + 1; return x + (usados[x] - 1) * 44; });
+    const envuelve = (t, w) => {
+      const out = []; let cur = '';
+      String(t || '').split(' ').forEach(p => { if ((cur + ' ' + p).trim().length > w) { out.push(cur.trim()); cur = p; } else cur += ' ' + p; });
+      if (cur.trim()) out.push(cur.trim());
+      return out;
+    };
+    // las etiquetas van debajo del eje, alternando dos alturas para que dos
+    // marcas vecinas no se pisen; las flechas van por encima del eje
+    const marcas = marks.map((m, i) => {
+      const x = px[i], y0 = i % 2 === 0 ? 104 : 168;
+      const lineas = envuelve(m.label, 24);
+      const sub = envuelve(m.sub, 26);
+      const txt = lineas.map((l, k) => `<text class="lbl" x="${x}" y="${y0 + k * 15}" text-anchor="middle">${esc(l)}</text>`).join('')
+        + sub.map((l, k) => `<text class="sub" x="${x}" y="${y0 + lineas.length * 15 + k * 13}" text-anchor="middle">${esc(l)}</text>`).join('');
+      return `<line x1="${x}" y1="${yAxis}" x2="${x}" y2="${y0 - 12}" stroke="var(--line)" stroke-width="2" stroke-dasharray="3 3"/>
+        <circle class="mark ${i % 2 ? 'b' : ''}" cx="${x}" cy="${yAxis}" r="9"/>${txt}`;
+    }).join('');
+    const flechas = (g.arrows || []).map(([a, b, lbl]) => {
+      const x1 = px[a], x2 = px[b], mid = (x1 + x2) / 2;
+      const c = `M ${x1} ${yAxis - 12} C ${x1} ${yAxis - 58}, ${x2} ${yAxis - 58}, ${x2} ${yAxis - 12}`;
+      return `<path class="arr" d="${c}"/>${lbl ? `<text class="arrlbl" x="${mid}" y="${yAxis - 54}" text-anchor="middle">${esc(lbl)}</text>` : ''}`;
+    }).join('');
+    return `<svg viewBox="0 0 ${W} 236" role="img" aria-label="${esc(g.title || 'timeline')}">
+      <defs><marker id="t-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--t-kw)"/></marker></defs>
+      <line class="axis" x1="40" y1="${yAxis}" x2="${W - 40}" y2="${yAxis}"/>
+      <polygon points="${W - 40},${yAxis - 7} ${W - 26},${yAxis} ${W - 40},${yAxis + 7}" fill="var(--line)"/>
+      <line class="now" x1="${X.now}" y1="${yAxis - 16}" x2="${X.now}" y2="224"/>
+      <text class="zone" x="${X.past - 30}" y="232" text-anchor="middle">PAST</text>
+      <text class="zone" x="${X.now}" y="232" text-anchor="middle">NOW</text>
+      <text class="zone" x="${X.future}" y="232" text-anchor="middle">FUTURE</text>
+      ${flechas}${marcas}</svg>`;
+  }
+  function chips(parts) {
+    return `<div class="t-formula">${(parts || []).map(p => `<span class="t-fchip ${esc(p.tone || 'a')}">${inl(p.chip)}${p.ex ? `<small>${inl(p.ex)}</small>` : ''}</span>`).join('')}</div>`;
+  }
+  function formula(g) { return chips(g.parts); }
+  function contrast(g) {
+    return `<table class="t-contrast"><thead><tr><th></th>${(g.columns || []).map(c => `<th>${inl(c)}</th>`).join('')}</tr></thead>
+      <tbody>${(g.rows || []).map(r => `<tr><td>${inl(r.label)}</td>${(r.cells || []).map(c => `<td>${inl(c)}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+  }
+  function resalta(texto, hl) {
+    let out = inl(texto);
+    (hl || []).slice().sort((a, b) => b.length - a.length).forEach(h => {
+      const re = new RegExp(h.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i');
+      out = out.replace(re, m => `<mark>${m}</mark>`);
+    });
+    return out;
+  }
+  function transform(g) {
+    return `<div class="t-tr"><div class="sent"><span class="k">${T('Before', 'Avant')}</span>${resalta(g.before.text, g.before.hl)}</div>
+      <div class="down">⌄</div>
+      <div class="sent after"><span class="k">${T('After', 'Après')}</span>${resalta(g.after.text, g.after.hl)}</div>
+      ${(g.steps || []).length ? `<ol>${g.steps.map(s => `<li>${inl(s)}</li>`).join('')}</ol>` : ''}</div>`;
+  }
+  function map(g) {
+    const tonos = ['a', 'b', 'c', 'kw'];
+    return `<div class="t-map"><div class="center">${inl(g.center || g.title)}</div>
+      ${(g.branches || []).map((b, i) => `<div class="br ${esc(b.tone || tonos[i % 4])}"><div class="h">${inl(b.label)}</div><ul>${(b.items || []).map(x => `<li>${inl(x)}</li>`).join('')}</ul></div>`).join('')}</div>`;
+  }
+  function scale(g) {
+    return `<div class="t-scale"><div class="bar"></div>
+      ${(g.items || []).map(x => `<span class="pt" style="left:${Math.max(0, Math.min(100, x.pct))}%">${inl(x.label)}</span>`).join('')}
+      <span class="end l">${inl(g.left || '')}</span><span class="end r">${inl(g.right || '')}</span></div>`;
+  }
+
+  /* ======================================================================
+     LA CAJA DE GRAMATICA DE LA UNIDAD, EN VERSION SECUNDARIA
+     Misma data que el renderer del motor (title, intro, examples, rules,
+     practice) mas, si la trae, data.formula (bloques) y data.diagram.
+     ====================================================================== */
+  function grammarBox(act, el) {
+    el.classList.add('gbox');
+    const d = act.data || {};
+    const pr = (d.practice && d.practice.items) || [];
+    el.innerHTML = `<div class="gb-card">
+      <div class="gb-h"><span class="gb-tag">${T('Grammar', 'Grammaire')}</span><h3>${inl(d.title || '')}</h3></div>
+      ${d.can ? `<p class="t-kicker" style="margin:.2rem 0 .6rem">${T('Goal', 'Objectif')}: <span style="text-transform:none;letter-spacing:0;font-weight:500">${inl(d.can)}</span></p>` : ''}
+      ${d.intro ? `<p class="gb-intro">${inl(d.intro)}</p>` : ''}
+      ${d.formula ? chips(d.formula) : ''}
+      ${d.diagram ? diagrama(d.diagram) : ''}
+      ${(!d.formula && d.lab) ? '<div class="gb-visual"></div>' : ''}
+      ${(d.examples || []).length ? `<ul class="gb-ex">${d.examples.map((e, i) => `<li><button class="clue-say" type="button" data-ex="${i}" aria-label="${T('Listen', 'Écoute')}">🔊</button>
+        ${inl((e && e.text) ? e.text : e)}${(e && e.note) ? ` <span class="gb-note">${inl(e.note)}</span>` : ''}</li>`).join('')}</ul>` : ''}
+      ${(d.rules || []).length ? `<ol class="gb-rules">${d.rules.map(r => `<li>${inl(r)}</li>`).join('')}</ol>` : ''}
+    </div>
+    ${pr.length ? `<div class="gb-practice t-pr"><p class="gb-ph"><b>${T('Your turn', 'À toi')}</b>${d.practice.instructions ? ` · ${inl(d.practice.instructions)}` : ''}</p>
+      ${pr.map((it, i) => `<div class="item" data-i="${i}"><div class="stem">${i + 1}. ${inl(it.sentence).replace('___', '<b>____</b>')}</div>
+        <div class="opts">${it.options.map((o, k) => `<button class="obtn" type="button" data-k="${k}">${inl(o)}</button>`).join('')}</div>${it.why ? `<p class="why">${inl(it.why)}</p>` : ''}</div>`).join('')}
+      <div class="checkrow"><button class="chk t-btn sm" type="button">${T('Check', 'Vérifier')}</button><span class="score"></span></div></div>` : ''}`;
+    el.querySelectorAll('.gb-ex .clue-say').forEach(b => b.onclick = () => {
+      const e = (d.examples || [])[+b.dataset.ex];
+      const t = (e && e.text) ? e.text : e;
+      if (t) SAY.frase(String(t).replace(/<[^>]+>/g, ''), b, 'grammar');
+    });
+    montaMC(el, pr, ok => { if (ok === pr.length && typeof complete === 'function') complete(act.code); });
+    // La caja de la unidad no trae diagrama: se le pide al tema del Lab al
+    // que apunta (data.lab) su formula y su primer diagrama, y asi la regla
+    // se ve tambien dentro de la unidad, no solo en la referencia.
+    const hueco = el.querySelector('.gb-visual');
+    if (hueco && d.lab) j(`${CDIR}/${LEVEL}/grammar/${d.lab}.json`).then(t => {
+      hueco.innerHTML = (t.form && t.form.formula ? chips(t.form.formula) : '') + ((t.diagrams || [])[0] ? diagrama(t.diagrams[0]) : '');
+    }).catch(() => hueco.remove());
+  }
+
+  /* ---- practica: opcion multiple, huecos, transformaciones ---- */
+  const norm = v => String(v || '').toLowerCase().replace(/[’']/g, "'").replace(/[.,!?;:"]/g, '').replace(/\s+/g, ' ').trim();
+  function montaMC(el, items, alTerminar) {
+    el.querySelectorAll('.item').forEach(item => item.querySelectorAll('.obtn').forEach(b => b.onclick = () => {
+      item.querySelectorAll('.obtn').forEach(x => x.classList.remove('sel')); b.classList.add('sel'); }));
+    const chk = el.querySelector('.chk');
+    if (!chk) return;
+    chk.onclick = () => {
+      let ok = 0;
+      el.querySelectorAll('.item').forEach(item => {
+        const it = items[+item.dataset.i];
+        item.classList.add('checked');
+        item.querySelectorAll('.obtn').forEach(b => {
+          b.classList.remove('ok', 'bad');
+          if (+b.dataset.k === it.answer) { if (b.classList.contains('sel')) ok++; b.classList.add('ok'); }
+          else if (b.classList.contains('sel')) b.classList.add('bad');
+        });
+      });
+      const sc = el.querySelector('.score'); sc.textContent = `${ok} / ${items.length}`;
+      sc.className = 'score ' + (ok === items.length ? 'good' : 'partial');
+      if (alTerminar) alTerminar(ok, items.length);
+    };
+  }
+  function practicaMC(bl) {
+    return `<div class="t-pr"><p class="instr">${inl(bl.instructions || '')}</p>
+      ${bl.items.map((it, i) => `<div class="item" data-i="${i}"><div class="stem">${i + 1}. ${inl(it.sentence).replace('___', '<b>____</b>')}</div>
+        <div class="opts">${it.options.map((o, k) => `<button class="obtn" type="button" data-k="${k}">${inl(o)}</button>`).join('')}</div>${it.why ? `<p class="why">${inl(it.why)}</p>` : ''}</div>`).join('')}
+      <div class="checkrow"><button class="chk t-btn sm" type="button">${T('Check', 'Vérifier')}</button><span class="score"></span></div></div>`;
+  }
+  function practicaGap(bl) {
+    return `<div class="t-pr"><p class="instr">${inl(bl.instructions || '')}</p>
+      ${bl.items.map((it, i) => `<div class="item" data-i="${i}"><div class="stem">${i + 1}. ${inl(it.sentence).replace('___', `<input class="gap" autocomplete="off" spellcheck="false" aria-label="gap ${i + 1}">`)}<span class="fix"></span></div></div>`).join('')}
+      <div class="checkrow"><button class="chk t-btn sm" type="button">${T('Check', 'Vérifier')}</button><span class="score"></span></div></div>`;
+  }
+  function montaGap(el, items, alTerminar) {
+    el.querySelector('.chk').onclick = () => {
+      let ok = 0;
+      el.querySelectorAll('.item').forEach(item => {
+        const it = items[+item.dataset.i], inp = item.querySelector('input.gap'), fix = item.querySelector('.fix');
+        const bien = (it.answers || []).some(a => norm(a) === norm(inp.value));
+        inp.className = 'gap ' + (bien ? 'ok' : 'bad');
+        fix.textContent = bien ? '' : `→ ${it.answers[0]}`;
+        if (bien) ok++;
+      });
+      const sc = el.querySelector('.score'); sc.textContent = `${ok} / ${items.length}`;
+      sc.className = 'score ' + (ok === items.length ? 'good' : 'partial');
+      if (alTerminar) alTerminar(ok, items.length);
+    };
+  }
+  function practicaTransform(bl) {
+    return `<div class="t-pr"><p class="instr">${inl(bl.instructions || '')}</p>
+      ${bl.items.map((it, i) => `<div class="item kwt-item" data-i="${i}">
+        <p class="kwt-first">${i + 1}. ${inl(it.first)}</p>
+        <p class="kwt-key"><span class="kwt-tag">${T('KEY WORD', 'MOT')}</span> <b>${inl(it.key)}</b></p>
+        <p class="kwt-second">${inl(it.second_start || '')} <input class="gap" autocomplete="off" spellcheck="false" style="min-width:12rem" aria-label="answer ${i + 1}"> ${inl(it.second_end || '')}<span class="fix"></span></p></div>`).join('')}
+      <div class="checkrow"><button class="chk t-btn sm" type="button">${T('Check', 'Vérifier')}</button><span class="score"></span></div></div>`;
+  }
+
+  /* ======================================================================
+     EL GRAMMAR LAB: un tema
+     ====================================================================== */
+  async function grammar() {
+    document.body.classList.add('teen');
+    const n = NIV[LEVEL];
+    await creditos();
+    const lab = await labIndex();
+    const id = qs.get('grammar');
+    const todos = lab ? lab.areas.flatMap(a => a.topics.map(t => Object.assign({ area: a.area }, t))) : [];
+    if (!lab || id === 'hub') {
+      document.title = `Grammar Lab · ${n.name}`;
+      app.classList.add('hub');
+      SCREENS.montar(app, [{ titulo: 'Grammar Lab',
+        html: `<div class="scr-centro">
+          <div class="t-hero" style="min-height:13rem"><img class="bg" src="${FOTO('area-sentence')}" alt="" onerror="this.remove()">
+            <div class="icon3d">${ico('lab', 104)}</div>
+            <div class="in"><span class="t-kicker">${esc(n.name)} · ${T('reference', 'référence')}</span><h1>Grammar Lab</h1>
+              <p class="lead">${lab ? T(`The ${todos.length} structures a ${n.cefr} candidate is expected to control — each one in diagrams, with real examples, the mistakes to avoid, a conversation and three rounds of practice.`, `Les ${todos.length} structures du niveau ${n.cefr}.`) : T('Coming soon for this level.', 'Bientôt.')}</p></div>${credito('area-sentence')}</div>
+          ${lab ? labIndexHTML(lab) : ''}</div>` }],
+        { arriba: { href: Q(`?level=${LEVEL}`), texto: n.name }, portal: PORTAL });
+      return;
+    }
+    const pos = todos.findIndex(t => t.id === id);
+    if (pos < 0) { app.innerHTML = `<p class="scr-pie" style="padding:2rem">${T('Topic not found.', 'Sujet introuvable.')} <a href="${Q(`?level=${LEVEL}&grammar=hub`)}">Grammar Lab</a></p>`; return; }
+    const d = await j(`${CDIR}/${LEVEL}/grammar/${id}.json`);
+    const meta = todos[pos], sig = todos[pos + 1], ant = todos[pos - 1];
+    document.title = `${d.title} · Grammar Lab`;
+    const prog = labProg(id);
+    const guarda = (bloque, ok, total) => {
+      prog[bloque] = ok === total; prog[bloque + '_score'] = `${ok}/${total}`;
+      try { localStorage.setItem(labKey(id), JSON.stringify(prog)); } catch (e) {}
+      if (window.BACKEND) BACKEND.guardar('grammar_lab', { nivel: LEVEL, unidad: 0, codigo: 'GL:' + id },
+        { tema: d.title, area: meta.area, bloque, ok, total, hecho: labHecho(id) }).catch(() => {});
+    };
+    const fotoArea = AREA_FOTO[meta.area] || 'area-words';
+    const cab = (kicker, titulo, ik) => `<div class="t-task"><div class="ico">${ico(ik, 56)}</div><div><span class="t-kicker">${esc(kicker)}</span><h2>${inl(titulo)}</h2></div></div>`;
+    const dg = d.diagrams || [];
+
+    // el dialogo: avatares del elenco (retratos SVG del nivel) o la inicial
+    const AV = { mateo: 'mateo', sofia: 'sofia', liam: 'liam', nadia: 'nadia' };
+    const avatar = who => {
+      const s = AV[String(who || '').toLowerCase().split(' ')[0]];
+      return s ? `<span class="av"><img src="../assets/characters/${LEVEL}/${s}/pose-01.svg?v=${ART_V}" alt="" onerror="this.replaceWith(document.createTextNode('${esc(String(who || '?')[0])}'))"></span>`
+               : `<span class="av">${esc(String(who || '?')[0])}</span>`;
+    };
+    const hablantes = [...new Set((d.dialogue.lines || []).map(l => l.speaker))];
+    const dlg = `<div class="t-dlg"><div class="ctx">${ico('talk', 34)}<span><b>${inl(d.dialogue.title)}</b> — ${inl(d.dialogue.context)}</span>
+        <button class="t-btn sm dlg-play" type="button">▶ ${T('Play the conversation', 'Écouter')}</button></div>
+      <audio class="dlg-audio" preload="none" src="${ADIR}/grammar/${LEVEL}/${id}.mp3?v=${TEEN_V}"></audio>
+      ${(d.dialogue.lines || []).map((l, i) => `<div class="ln ${hablantes.indexOf(l.speaker) % 2 ? 'r' : ''}" data-i="${i}">${avatar(l.speaker)}
+        <div class="bb"><span class="who">${esc(l.speaker)}</span>${inl(l.text)}<button class="say" type="button" data-i="${i}" aria-label="${T('Listen', 'Écoute')}">🔊</button></div></div>`).join('')}</div>`;
+
+    const bloques = { mc: d.practice.find(b => b.type === 'mc'), gap: d.practice.find(b => b.type === 'gap'), transform: d.practice.find(b => b.type === 'transform') };
+    const puntuacion = () => `<div class="t-scores">${['mc', 'gap', 'transform'].map(b => `<span class="t-chip ${prog[b] ? 'acc' : ''}">${prog[b] ? '✓' : '·'} ${b === 'mc' ? T('Choose', 'Choisir') : b === 'gap' ? T('Complete', 'Compléter') : T('Transform', 'Transformer')} ${prog[b + '_score'] ? prog[b + '_score'] : ''}</span>`).join('')}</div>`;
+
+    const pantallas = [
+      { titulo: d.title, etiquetaSiguiente: T('How it works', 'Comment ça marche'),
+        html: `<div class="scr-centro">
+          <div class="t-hero" style="min-height:15rem"><img class="bg" src="${FOTO(fotoArea)}" alt="" onerror="this.remove()">
+            <div class="icon3d">${ico('grammar', 96)}</div>
+            <div class="in"><span class="t-kicker">Grammar Lab · ${esc(meta.area)} · ${esc(d.cefr)}</span><h1>${inl(d.title)}</h1><p class="lead">${inl(d.tagline)}</p>
+              <div class="row">${(d.exam || []).map(x => `<span class="t-chip">${ico('exam', 16)} ${inl(x)}</span>`).join('')}</div></div>${credito(fotoArea)}</div>
+          <div class="t-why"><div class="box"><h4>${T('Why it matters', 'Pourquoi')}</h4><p>${inl(d.why)}</p></div></div>
+          ${dg[0] ? diagrama(dg[0]) : ''}</div>` },
+      { titulo: T('How it works', 'Comment ça marche'), etiquetaSiguiente: T('In use', 'En contexte'),
+        html: `<div class="scr-centro">${cab(T('Form', 'Forme'), d.title, 'gear')}
+          <div class="t-diag"><h4><span class="t-kicker">${T('Pattern', 'Structure')}</span></h4>${chips(d.form.formula)}
+            ${d.form.table ? `<table class="t-contrast" style="margin-top:.8rem"><thead><tr>${d.form.table.head.map((h, i) => `<th${i ? '' : ' style="background:var(--t-navy);color:#fff;border-radius:10px 0 0 0"'}>${inl(h)}</th>`).join('')}</tr></thead>
+              <tbody>${d.form.table.rows.map(r => `<tr>${r.map((c, i) => `<td${i ? '' : ' style="text-transform:none;letter-spacing:0;font-size:.9rem;width:auto"'}>${inl(c)}</td>`).join('')}</tr>`).join('')}</tbody></table>` : ''}</div>
+          ${dg.slice(1).map(diagrama).join('')}</div>` },
+      { titulo: T('In use', 'En contexte'), etiquetaSiguiente: T('Watch out', 'Attention'),
+        html: `<div class="scr-centro">${cab(T('Use', 'Emploi'), T('When and how it is used', 'Quand et comment'), 'compass')}
+          <div class="t-uses">${(d.use || []).map((u, i) => `<div class="t-use"><h4><span class="n">${i + 1}</span>${inl(u.point)}</h4>
+            <ul>${(u.examples || []).map(e => `<li><button type="button" class="ex-say" data-t="${esc(String(e.text || '').replace(/<[^>]+>/g, ''))}" aria-label="${T('Listen', 'Écoute')}">🔊</button><span>${inl(e.text)}${e.note ? `<span class="note">${inl(e.note)}</span>` : ''}</span></li>`).join('')}</ul></div>`).join('')}</div></div>`,
+        alMostrar(el) { el.querySelectorAll('.ex-say').forEach(b => b.onclick = () => SAY.frase(b.dataset.t, b, 'grammar')); } },
+      { titulo: T('Watch out', 'Attention'), etiquetaSiguiente: T('In conversation', 'En conversation'),
+        html: `<div class="scr-centro">${cab(T('Common mistakes', 'Erreurs fréquentes'), T('What the examiner sees too often', 'Ce que l’examinateur voit trop souvent'), 'tip')}
+          <div class="t-wo">${(d.watch_out || []).map(w => `<div class="it"><div class="w"><span>${inl(w.wrong)}</span></div><div class="r"><span>${inl(w.right)}</span></div><p class="why">${inl(w.why)}</p></div>`).join('')}</div></div>` },
+      { titulo: T('In conversation', 'En conversation'), etiquetaSiguiente: T('Practice 1', 'Exercice 1'),
+        html: `<div class="scr-centro">${cab(T('Listen', 'Écoute'), d.dialogue.title, 'mic')}${dlg}</div>`,
+        alMostrar(el) {
+          const au = el.querySelector('.dlg-audio'), btn = el.querySelector('.dlg-play');
+          const lineas = d.dialogue.lines || [];
+          let cola = null;
+          // el mp3 del dialogo (edge-tts, varias voces); si no esta, la voz
+          // del navegador lee linea a linea con la misma pausa que tendria
+          const leerTodo = () => {
+            if (!window.speechSynthesis) return;
+            speechSynthesis.cancel(); let i = 0;
+            const paso = () => {
+              if (i >= lineas.length) { btn.textContent = `▶ ${T('Play the conversation', 'Écouter')}`; return; }
+              el.querySelectorAll('.ln').forEach(x => x.classList.toggle('playing', +x.dataset.i === i));
+              const u = new SpeechSynthesisUtterance(String(lineas[i].text).replace(/<[^>]+>/g, ''));
+              u.lang = 'en-GB'; u.rate = 0.95;
+              // voces distintas por hablante, si el navegador tiene varias
+              const voces = speechSynthesis.getVoices().filter(v => /^en/.test(v.lang));
+              if (voces.length > 1) u.voice = voces[hablantes.indexOf(lineas[i].speaker) % voces.length];
+              u.onend = () => { i++; setTimeout(paso, 350); };
+              speechSynthesis.speak(u);
+            };
+            cola = paso; paso();
+          };
+          btn.onclick = () => {
+            if (!au.paused) { au.pause(); btn.textContent = `▶ ${T('Play the conversation', 'Écouter')}`; return; }
+            if (window.speechSynthesis && speechSynthesis.speaking) { speechSynthesis.cancel(); el.querySelectorAll('.ln').forEach(x => x.classList.remove('playing')); btn.textContent = `▶ ${T('Play the conversation', 'Écouter')}`; return; }
+            btn.textContent = `⏸ ${T('Pause', 'Pause')}`;
+            au.play().catch(() => leerTodo());
+          };
+          au.onended = () => { btn.textContent = `▶ ${T('Play the conversation', 'Écouter')}`; };
+          au.onerror = () => { if (btn.textContent.startsWith('⏸')) leerTodo(); };
+          el.querySelectorAll('.bb .say').forEach(b => b.onclick = () => {
+            const l = lineas[+b.dataset.i]; SAY.frase(String(l.text).replace(/<[^>]+>/g, ''), b, 'grammar'); });
+        } },
+      { titulo: T('Practice 1 — choose', 'Exercice 1'), etiquetaSiguiente: T('Practice 2', 'Exercice 2'),
+        html: `<div class="scr-centro">${cab(T('Practice 1', 'Exercice 1'), T('Choose the correct option', 'Choisis la bonne réponse'), 'target')}${practicaMC(bloques.mc)}</div>`,
+        alMostrar(el) { montaMC(el, bloques.mc.items, (ok, t) => guarda('mc', ok, t)); } },
+      { titulo: T('Practice 2 — complete', 'Exercice 2'), etiquetaSiguiente: T('Practice 3', 'Exercice 3'),
+        html: `<div class="scr-centro">${cab(T('Practice 2', 'Exercice 2'), T('Complete the sentences', 'Complète les phrases'), 'pencil')}${practicaGap(bloques.gap)}</div>`,
+        alMostrar(el) { montaGap(el, bloques.gap.items, (ok, t) => guarda('gap', ok, t)); } },
+      { titulo: T('Practice 3 — transform', 'Exercice 3'), etiquetaSiguiente: T('Summary', 'Résumé'),
+        html: `<div class="scr-centro">${cab(T('Practice 3', 'Exercice 3'), T('Key word transformations', 'Transformations'), 'rocket')}${practicaTransform(bloques.transform)}</div>`,
+        alMostrar(el) { montaGap(el, bloques.transform.items, (ok, t) => guarda('transform', ok, t)); } },
+      { titulo: T('Summary', 'Résumé'),
+        html: `<div class="scr-centro">${cab(T('Take away', 'À retenir'), d.title, 'trophy')}
+          <div class="t-sum"><ul>${(d.summary || []).map(s => `<li><span>${inl(s)}</span></li>`).join('')}</ul></div>
+          <div id="gl-scores"></div>
+          <div class="t-next">${ant ? `<a class="t-btn ghost" href="${Q(`?level=${LEVEL}&grammar=${ant.id}`)}">‹ ${esc(ant.title)}</a>` : ''}
+            <a class="t-btn ghost" href="${Q(`?level=${LEVEL}&grammar=hub`)}">Grammar Lab</a>
+            ${sig ? `<a class="t-btn" href="${Q(`?level=${LEVEL}&grammar=${sig.id}`)}">${esc(sig.title)} ›</a>` : ''}</div></div>`,
+        alMostrar(el) { const s = el.querySelector('#gl-scores'); if (s) s.innerHTML = puntuacion(); } },
+    ];
+    SCREENS.montar(app, pantallas, {
+      arriba: { href: Q(`?level=${LEVEL}&grammar=hub`), texto: 'Grammar Lab' },
+      portal: PORTAL, alCambiar: marcaPasados,
+    });
+    marcaPasados(SCREENS.actual());
+  }
+
+  /* el renderer de la caja de gramatica se sustituye solo en secundaria.
+     Lo llama index.html al arrancar, cuando RENDER ya existe; exam-c1.js
+     carga despues y envuelve tambien esta version con su caja de tips. */
+  function instala() {
+    if (typeof RENDER !== 'undefined' && es(LEVEL)) RENDER.grammar_box = grammarBox;
+  }
+
+  return { es, hub, unit, grammar, instala, diagrama, NIV };
+})();

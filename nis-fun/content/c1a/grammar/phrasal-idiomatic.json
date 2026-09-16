@@ -1,0 +1,178 @@
+{
+  "id": "phrasal-idiomatic",
+  "level": "c1a",
+  "area": "Words",
+  "title": "Phrasal verbs, dependent prepositions and idioms",
+  "tagline": "Multi-meaning phrasal verbs, what particles mean, and the dependent prepositions that go with them.",
+  "cefr": "C1",
+  "exam": [
+    "Reading & Use of English Part 2 — open cloze (dependent prepositions and particles)",
+    "Reading & Use of English Part 4 — key word transformations (PUT, INTO, OFF, DOWN, OUT, OF, UP)",
+    "Listening Parts 1 and 3 — recognising phrasal verbs at natural speed",
+    "Speaking Parts 3 and 4 — sounding idiomatic instead of translating word for word"
+  ],
+  "why": "Phrasal verbs and dependent prepositions are the clearest giveaway of a non-native answer in Part 2 and Part 4: the grammar is often right, but the small word is wrong. At C1, examiners also expect range — using <i>put up with</i> instead of always reaching for <i>tolerate</i> — because idiomatic phrasal verbs are how fluent speakers actually talk, not just formal alternatives learned for an exam.",
+  "diagrams": [
+    {
+      "type": "map",
+      "title": "What particles mean",
+      "center": "Particles in phrasal verbs",
+      "branches": [
+        {"label": "up = completion", "items": ["eat up", "finish up", "use up"], "tone": "a"},
+        {"label": "out = disappearance / discovery", "items": ["die out", "find out", "run out"], "tone": "b"},
+        {"label": "off = separation", "items": ["call off", "set off", "tell off"], "tone": "c"},
+        {"label": "through = completion / difficulty", "items": ["get through", "see through", "think through"], "tone": "a"}
+      ]
+    },
+    {
+      "type": "contrast",
+      "title": "Separable vs inseparable phrasal verbs",
+      "columns": ["Separable (transitive)", "Inseparable (transitive)"],
+      "rows": [
+        {"label": "Object position", "cells": ["before or after the particle", "always after the whole phrasal verb"]},
+        {"label": "With a pronoun", "cells": ["must go between verb and particle", "stays after the particle"]},
+        {"label": "Example", "cells": ["<b>turn</b> the offer <b>down</b> / <b>turn</b> it <b>down</b>", "<b>look into</b> the complaint / <b>look into</b> it"]},
+        {"label": "Common error", "cells": ["turn down it (wrong with a pronoun)", "look the complaint into (wrong order)"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "title": "From a single verb to a phrasal verb",
+      "before": {"text": "I can no longer tolerate his constant excuses.", "hl": ["tolerate"]},
+      "after": {"text": "I can no longer put up with his constant excuses.", "hl": ["put up with"]},
+      "steps": [
+        "Replace the single verb (<b>tolerate</b>) with the three-part phrasal verb.",
+        "<i>Put up with</i> is always inseparable: the object goes after <i>with</i>.",
+        "This kind of phrasal verb sounds more natural in speech and semi-formal writing than its single-word equivalent."
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "verb", "tone": "kw", "ex": "put / look / come"},
+      {"chip": "particle", "tone": "a", "ex": "up / into / down"},
+      {"chip": "(+ object)", "tone": "b", "ex": "with the delay"},
+      {"chip": "+ dependent preposition", "tone": "c", "ex": "with / for / to"}
+    ],
+    "table": {
+      "head": ["Pattern", "Structure", "Example"],
+      "rows": [
+        ["Multi-meaning phrasal verbs", "same verb + particle, different meaning by context", "<b>come round</b> (visit) vs <b>come round</b> (regain consciousness)"],
+        ["up = completion", "verb + up = finish something completely", "Please <b>use up</b> the leftover paint before we buy more."],
+        ["out = disappearance / discovery", "verb + out = vanish or come to light", "The tradition slowly <b>died out</b> after the schools merged."],
+        ["off = separation", "verb + off = cancel, separate or interrupt", "The final was <b>called off</b> because of the storm."],
+        ["through = completion / difficulty", "verb + through = get to the end of something hard", "It took hours to <b>get through</b> the reading list."],
+        ["separable phrasal verbs", "verb + object + particle, or verb + particle + object", "<b>turn</b> the offer <b>down</b>; <b>turn</b> it <b>down</b>."],
+        ["inseparable phrasal verbs", "verb + particle + object, never split", "The committee will <b>look into</b> the complaint."],
+        ["dependent prepositions", "adjective/verb + fixed preposition", "She's <b>capable of</b> far more than she thinks."]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "One phrasal verb, several meanings",
+      "examples": [
+        {"text": "Can you <b>turn down</b> the music? He also decided to <b>turn down</b> the scholarship.", "note": "turn down: reduce volume, or refuse an offer"},
+        {"text": "Miss Vega will <b>go over</b> the essay plan before we start, then we'll <b>go over</b> the bridge on the way home.", "note": "go over: review, or physically cross"},
+        {"text": "The team needs to <b>pick up</b> the pace, and someone still has to <b>pick up</b> the trophy from the office.", "note": "pick up: increase, or collect something"}
+      ]
+    },
+    {
+      "point": "What the particle contributes",
+      "examples": [
+        {"text": "<b>Use up</b> the paint before we buy more; don't waste it.", "note": "up = to the end, completely"},
+        {"text": "The old custom slowly <b>died out</b> once the school merged with another.", "note": "out = disappearance, coming to an end"},
+        {"text": "The match was <b>called off</b> because of the storm.", "note": "off = cancellation, separation"}
+      ]
+    },
+    {
+      "point": "Separable and inseparable phrasal verbs",
+      "examples": [
+        {"text": "<b>Turn</b> the offer <b>down</b>, or <b>turn</b> it <b>down</b> — both work; only turn down it is wrong.", "note": "separable: object can go before or after the particle, but a pronoun must go between"},
+        {"text": "The council will <b>look into</b> the complaint as soon as possible.", "note": "inseparable: the object always follows the whole phrase"},
+        {"text": "You can always <b>rely on</b> Nadia to stay calm under pressure.", "note": "inseparable, verb + dependent preposition already built in"}
+      ]
+    },
+    {
+      "point": "Dependent prepositions and idiomatic collocations",
+      "examples": [
+        {"text": "She has always been <b>capable of</b> far more than her grades suggest.", "note": "adjective + dependent preposition"},
+        {"text": "The committee finally <b>agreed on</b> a date for the trip.", "note": "verb + dependent preposition"},
+        {"text": "After weeks of arguing, they decided to <b>put up with</b> the situation instead of fighting it.", "note": "three-part phrasal verb, idiomatic, means tolerate"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "Please turn down it, it's too loud.", "right": "Please <b>turn</b> it <b>down</b>, it's too loud.", "why": "with a pronoun, separable phrasal verbs must split: verb + pronoun + particle."},
+    {"wrong": "The council will look the complaint into.", "right": "The council will <b>look into</b> the complaint.", "why": "look into is inseparable; the object always comes after the whole phrase."},
+    {"wrong": "She's capable to do far more than she thinks.", "right": "She's <b>capable of</b> doing far more than she thinks.", "why": "capable takes the dependent preposition of, followed by a gerund, not a to-infinitive."},
+    {"wrong": "I can't put up his constant excuses any more.", "right": "I can't <b>put up with</b> his constant excuses any more.", "why": "put up with is a fixed three-part phrasal verb; with cannot be dropped."},
+    {"wrong": "The tradition died off after the merger.", "right": "The tradition <b>died out</b> after the merger.", "why": "die out (disappear gradually), not die off, is the fixed phrasal verb for a custom or species disappearing."},
+    {"wrong": "We agreed with a date for the trip.", "right": "We <b>agreed on</b> a date for the trip.", "why": "agree on/about a decision; agree with is for agreeing with a person or opinion."}
+  ],
+  "dialogue": {
+    "title": "Planning the Arequipa trip",
+    "context": "Miss Vega and the students sort out the details of the Arequipa trip after the museum on the itinerary suddenly closes for renovation.",
+    "lines": [
+      {"speaker": "Miss Vega", "text": "Right, let's <b>go over</b> the plan for the Arequipa trip."},
+      {"speaker": "Mateo", "text": "Can we <b>turn down</b> the idea of the six a.m. bus? Nobody will survive that."},
+      {"speaker": "Sofia", "text": "Agreed. Let's <b>look into</b> a later departure instead."},
+      {"speaker": "Liam", "text": "Also, the museum visit got <b>called off</b> — it's closed for renovation."},
+      {"speaker": "Nadia", "text": "That's a shame — I was really <b>looking forward to</b> that."},
+      {"speaker": "Miss Vega", "text": "We'll <b>come up with</b> an alternative. Any ideas?"},
+      {"speaker": "Mateo", "text": "The old chocolate museum, maybe? Local traditions there haven't <b>died out</b> yet."},
+      {"speaker": "Sofia", "text": "I can <b>put up with</b> a longer walk if the museum's worth it."},
+      {"speaker": "Liam", "text": "Fine by me. Someone needs to <b>sort out</b> the tickets before Friday, though."},
+      {"speaker": "Nadia", "text": "I'll <b>take care of</b> that — I'm <b>capable of</b> more than just complaining."},
+      {"speaker": "Miss Vega", "text": "Perfect. Let's <b>wrap up</b> here and confirm everything by email."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct phrasal verb or expression.",
+      "items": [
+        {"sentence": "Could you ___ the music a bit? It's too loud for studying.", "options": ["turn down", "turn up", "turn off"], "answer": 0, "why": "turn down = reduce the volume or intensity of something."},
+        {"sentence": "The council promised to ___ the noise complaints properly.", "options": ["look at", "look into", "look for"], "answer": 1, "why": "look into = investigate; look at and look for don't fit a formal promise to investigate complaints."},
+        {"sentence": "The concert was ___ because of the storm warning.", "options": ["called out", "called up", "called off"], "answer": 2, "why": "called off = cancelled; called out and called up mean something different (summoned, drafted)."},
+        {"sentence": "That old custom has almost completely ___ in the city.", "options": ["died out", "died off", "died down"], "answer": 0, "why": "died out = gradually disappeared, typically of a custom, species or tradition."},
+        {"sentence": "I really can't ___ his constant complaining any longer.", "options": ["put down with", "put up with", "put off with"], "answer": 1, "why": "put up with = tolerate; the particle order in put down with / put off with doesn't exist."},
+        {"sentence": "She's perfectly ___ organising the whole event herself.", "options": ["capable to", "capable for", "capable of"], "answer": 2, "why": "capable takes the dependent preposition of, followed by a gerund (organising)."},
+        {"sentence": "We finally ___ a solution everyone could accept.", "options": ["came up with", "came over with", "came through with"], "answer": 0, "why": "came up with = thought of or produced (an idea or solution)."}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with the missing particle or preposition.",
+      "items": [
+        {"sentence": "Could you turn ___ the music? It's too loud.", "answers": ["down"]},
+        {"sentence": "The council promised to look ___ the complaints properly.", "answers": ["into"]},
+        {"sentence": "The final was called ___ because of the storm.", "answers": ["off"]},
+        {"sentence": "The custom slowly died ___ after the two schools merged.", "answers": ["out"]},
+        {"sentence": "I can't put up ___ his constant excuses any longer.", "answers": ["with"]},
+        {"sentence": "She's perfectly capable ___ organising the whole trip herself.", "answers": ["of"]},
+        {"sentence": "We finally came ___ with a solution everyone could accept.", "answers": ["up"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first, using the word given. Do not change the word given. Use between two and five words.",
+      "items": [
+        {"first": "I can no longer tolerate his constant excuses.", "key": "PUT", "second_start": "I can no longer", "second_end": "his constant excuses.", "answers": ["put up with"]},
+        {"first": "The council will investigate the noise complaints.", "key": "INTO", "second_start": "The council will", "second_end": "the noise complaints.", "answers": ["look into"]},
+        {"first": "The concert was cancelled because of the storm warning.", "key": "OFF", "second_start": "The concert was", "second_end": "because of the storm warning.", "answers": ["called off"]},
+        {"first": "Please could you reduce the volume of the music?", "key": "DOWN", "second_start": "Please could you", "second_end": "the music?", "answers": ["turn down"]},
+        {"first": "The tradition gradually disappeared after the merger.", "key": "OUT", "second_start": "The tradition gradually", "second_end": "after the merger.", "answers": ["died out"]},
+        {"first": "She is fully able to organise the whole event by herself.", "key": "OF", "second_start": "She is", "second_end": "organising the whole event by herself.", "answers": ["capable of"]},
+        {"first": "They eventually thought of a solution everyone could accept.", "key": "UP", "second_start": "They eventually", "second_end": "a solution everyone could accept.", "answers": ["came up with"]}
+      ]
+    }
+  ],
+  "summary": [
+    "Many phrasal verbs change meaning completely with context: <i>turn down</i> the volume, or <i>turn down</i> an offer.",
+    "Particles carry meaning of their own: <i>up</i> = completion, <i>out</i> = disappearance, <i>off</i> = separation, <i>through</i> = getting past a difficulty.",
+    "Separable phrasal verbs split with a pronoun (<i>turn it down</i>); inseparable ones never split (<i>look into it</i>).",
+    "Dependent prepositions are fixed and must be learned with the word: <i>capable of, agree on, rely on</i>.",
+    "Idiomatic phrasal verbs like <i>put up with</i> and <i>come up with</i> sound far more natural at C1 than their single-word equivalents."
+  ]
+}

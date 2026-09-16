@@ -1,0 +1,174 @@
+{
+  "id": "questions-tags",
+  "level": "b2f",
+  "area": "Emphasis & questions",
+  "title": "Questions: indirect, tags and echo",
+  "tagline": "Asking politely, checking with a tag, and reacting fast — all without sounding rude.",
+  "cefr": "B2",
+  "exam": [
+    "Speaking Part 1 — polite, natural questions",
+    "Reading & Use of English Part 4 — key word transformations",
+    "Speaking Parts 3 and 4 — checking and reacting naturally in conversation"
+  ],
+  "why": "A direct question can sound blunt when you're asking a stranger for something, and a flat statement can sound unsure of itself without a tag to check it. B2 First speaking examiners listen for natural indirect questions and question tags, and Part 4 sometimes tests the exact word order that both require.",
+  "diagrams": [
+    {
+      "type": "transform",
+      "title": "Making a direct question indirect",
+      "before": {"text": "Where is the nearest pharmacy?", "hl": ["Where is"]},
+      "after": {"text": "Could you tell me where the nearest pharmacy is?", "hl": ["where the nearest pharmacy is"]},
+      "steps": [
+        "Start with a polite frame: Could you tell me / Do you know / I wonder.",
+        "Keep the question word (where), but switch to statement word order: subject before verb.",
+        "Drop the extra auxiliary do/does/did — it isn't needed once the verb is back in statement order."
+      ]
+    },
+    {
+      "type": "contrast",
+      "title": "The tag always flips the polarity",
+      "columns": ["Positive statement", "Negative statement"],
+      "rows": [
+        {"label": "Tag", "cells": ["negative tag, matching auxiliary", "positive tag, matching auxiliary"]},
+        {"label": "Example", "cells": ["You've finished the essay, haven't you?", "You haven't finished the essay, have you?"]},
+        {"label": "Typical use", "cells": ["checking something you expect to be true", "checking something you're honestly unsure about"]}
+      ]
+    },
+    {
+      "type": "map",
+      "title": "Question tags — special cases",
+      "center": "Not the usual auxiliary rule",
+      "branches": [
+        {"label": "Imperatives", "items": ["Close the door, will you?", "Don't be late, will you?"], "tone": "a"},
+        {"label": "Let's ...", "items": ["Let's ask Miss Vega, shall we?"], "tone": "b"},
+        {"label": "I am ...", "items": ["I'm right, aren't I?"], "tone": "c"},
+        {"label": "Negative words (never, nobody, no one)", "items": ["You never listen, do you?", "Nobody called, did they?"], "tone": "kw"}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "statement", "tone": "kw", "ex": "You've met her"},
+      {"chip": "+ opposite auxiliary", "tone": "a", "ex": "haven't"},
+      {"chip": "+ pronoun subject", "tone": "b", "ex": "you"},
+      {"chip": "?", "tone": "arrow"}
+    ],
+    "table": {
+      "head": ["Pattern", "Structure", "Example"],
+      "rows": [
+        ["Indirect wh-question", "polite frame + wh-word + statement order", "Could you tell me where the museum is?"],
+        ["Indirect yes/no question", "polite frame + if/whether + statement order", "Do you know if the shop is open?"],
+        ["Tag: positive statement", "statement + negative tag", "You've met her, haven't you?"],
+        ["Tag: negative statement", "statement + positive tag", "You haven't met her, have you?"],
+        ["Tag: imperative", "imperative + will you?", "Pass the salt, will you?"],
+        ["Tag: let's", "let's + shall we?", "Let's leave early, shall we?"],
+        ["Negative question", "auxiliary + n't + subject + verb — surprise or criticism", "Didn't you bring your notes?"],
+        ["Echo question", "repeat the key word, rising intonation, to check or react", "'I'm moving to Cusco.' 'You're moving where?'"]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Asking politely with indirect questions",
+      "examples": [
+        {"text": "<b>Could you tell me</b> where the nearest pharmacy is?", "note": "polite frame + statement order"},
+        {"text": "<b>Do you know if</b> the museum is open on Mondays?", "note": "yes/no question → if/whether"},
+        {"text": "<b>I wonder what time</b> the bus to Cusco leaves.", "note": "not even a question mark needed here"}
+      ]
+    },
+    {
+      "point": "Checking or confirming with a question tag",
+      "examples": [
+        {"text": "You've already booked the tickets, <b>haven't you</b>?", "note": "positive statement → negative tag"},
+        {"text": "Nadia isn't coming to training today, <b>is she</b>?", "note": "negative statement → positive tag"},
+        {"text": "They'll announce the results tomorrow, <b>won't they</b>?", "note": "future with will"}
+      ]
+    },
+    {
+      "point": "Special tags: imperatives, let's, and negative words",
+      "examples": [
+        {"text": "Pass me that charger, <b>will you</b>?", "note": "imperative tag"},
+        {"text": "Let's ask Miss Vega for an extension, <b>shall we</b>?", "note": "let's tag"},
+        {"text": "You never check your messages, <b>do you</b>?", "note": "never already negative, so the tag is positive"}
+      ]
+    },
+    {
+      "point": "Reacting fast: negative questions, echo questions and short answers",
+      "examples": [
+        {"text": "<b>Didn't you</b> bring your notes to the revision session?", "note": "negative question, showing surprise"},
+        {"text": "'I'm thinking of quitting the team.' '<b>You're thinking of what</b>?'", "note": "echo question, checking what you heard"},
+        {"text": "'Did you finish the report?' '<b>I did</b>.'", "note": "short answer, no need to repeat the whole sentence"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "You like pizza, do you like?", "right": "You like pizza, <b>don't you</b>?", "why": "A tag is only the opposite auxiliary + pronoun, never a repeated full question."},
+    {"wrong": "Could you tell me where is the museum?", "right": "Could you tell me <b>where the museum is</b>?", "why": "Indirect questions use statement word order, not question word order."},
+    {"wrong": "I'm right, amn't I?", "right": "I'm right, <b>aren't I</b>?", "why": "The irregular tag for 'I am' is 'aren't I', not 'amn't I'."},
+    {"wrong": "Close the window, do you?", "right": "Close the window, <b>will you</b>?", "why": "Imperatives don't have a subject to match, so they always take the fixed tag 'will you?'."},
+    {"wrong": "Nobody called, didn't they?", "right": "Nobody called, <b>did they</b>?", "why": "Negative words like nobody/never already make the statement negative, so the tag must be positive."},
+    {"wrong": "'She's from Cusco.' 'Is she from Cusco?'", "right": "'She's from Cusco.' '<b>Is she</b>?'", "why": "A quick reacting question repeats only the auxiliary and subject, not the whole sentence again."}
+  ],
+  "dialogue": {
+    "title": "Packing list for the Sacred Valley",
+    "context": "Mateo, Sofia and Liam are checking last-minute details for a school trip, and Miss Vega confirms the plan.",
+    "lines": [
+      {"speaker": "Mateo", "text": "Miss Vega, <b>could you tell me what time</b> the coach leaves on Saturday?"},
+      {"speaker": "Miss Vega", "text": "Seven sharp. You've all got your permission slips signed, <b>haven't you</b>?"},
+      {"speaker": "Sofia", "text": "Mine's signed. Liam, <b>you haven't forgotten yours, have you</b>?"},
+      {"speaker": "Liam", "text": "Of course not. Actually... <b>didn't you</b> say the slips were due last Friday?"},
+      {"speaker": "Sofia", "text": "Wait, <b>due when</b>?"},
+      {"speaker": "Miss Vega", "text": "Last Friday, yes. But don't worry — bring it Saturday morning, <b>will you</b>?"},
+      {"speaker": "Liam", "text": "Will do. <b>Do you know if</b> we're stopping anywhere for breakfast?"},
+      {"speaker": "Miss Vega", "text": "We are, actually."},
+      {"speaker": "Mateo", "text": "Great. Let's double-check the packing list before we leave, <b>shall we</b>?"},
+      {"speaker": "Sofia", "text": "Good idea. Nobody's bringing snacks for everyone, <b>are they</b>?"},
+      {"speaker": "Liam", "text": "I will."},
+      {"speaker": "Mateo", "text": "Perfect — that settles it."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "You're coming to the concert, ___?", "options": ["aren't you", "don't you", "won't you"], "answer": 0, "why": "the statement uses 'are' (present continuous), so the tag matches: aren't you"},
+        {"sentence": "Could you tell me ___ the museum opens?", "options": ["does what time", "what time", "what time does"], "answer": 1, "why": "an indirect question keeps statement word order — no extra 'does'"},
+        {"sentence": "Let's leave a bit earlier, ___?", "options": ["do we", "shall we", "will we"], "answer": 1, "why": "'let's' suggestions always take the tag 'shall we?'"},
+        {"sentence": "Close the door on your way out, ___?", "options": ["will you", "do you", "are you"], "answer": 0, "why": "imperatives take the fixed tag 'will you?'"},
+        {"sentence": "Nobody warned us about the change, ___?", "options": ["did they", "didn't they", "weren't they"], "answer": 0, "why": "nobody already makes the statement negative, so the tag stays positive"},
+        {"sentence": "'I'm not going to the party.' 'You're ___?'", "options": ["going not", "don't going", "not going"], "answer": 2, "why": "an echo question repeats the key words to check or react, keeping normal word order"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with one suitable word.",
+      "items": [
+        {"sentence": "___ you tell me where the ticket office is?", "answers": ["Could", "Can", "Would"]},
+        {"sentence": "You haven't seen my notebook, ___ you?", "answers": ["have"]},
+        {"sentence": "Let's take the early bus, ___ we?", "answers": ["shall"]},
+        {"sentence": "Turn off the lights before you leave, ___ you?", "answers": ["will"]},
+        {"sentence": "Nobody told Liam about the change, ___ they?", "answers": ["did"]},
+        {"sentence": "Do you know ___ the museum is open on Mondays?", "answers": ["if", "whether"]},
+        {"sentence": "'I forgot my passport.' 'You forgot ___?'", "answers": ["what"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first. Use the word given. Do not change it. Use between two and five words.",
+      "items": [
+        {"first": "Please pass me the charger.", "key": "WILL", "second_start": "Pass me the charger,", "second_end": "?", "answers": ["will you"]},
+        {"first": "I'd like to know the opening times of the museum.", "key": "TELL", "second_start": "Could you", "second_end": "the opening times of the museum?", "answers": ["tell me"]},
+        {"first": "Let's leave a bit earlier than planned.", "key": "SHALL", "second_start": "Let's leave a bit earlier than planned,", "second_end": "?", "answers": ["shall we"]},
+        {"first": "I'm sure you've already met Nadia before.", "key": "HAVEN'T", "second_start": "You've already met Nadia before,", "second_end": "?", "answers": ["haven't you"]},
+        {"first": "Nobody informed the team about the schedule change.", "key": "DID", "second_start": "Nobody informed the team about the schedule change,", "second_end": "?", "answers": ["did they"]}
+      ]
+    }
+  ],
+  "summary": [
+    "Indirect questions (Could you tell me..., Do you know if...) use statement word order, not question word order.",
+    "Question tags flip the polarity of the statement: positive statement → negative tag, negative statement → positive tag.",
+    "Imperatives take 'will you?' and 'let's' takes 'shall we?' — they don't follow the usual auxiliary-matching rule.",
+    "Negative words like nobody, never or no one already make a statement negative, so their tag stays positive.",
+    "Echo questions and short answers let you react fast in conversation without repeating the whole sentence."
+  ]
+}

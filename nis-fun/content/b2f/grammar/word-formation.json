@@ -1,0 +1,174 @@
+{
+  "id": "word-formation",
+  "level": "b2f",
+  "area": "Words",
+  "title": "Word formation for Use of English Part 3",
+  "tagline": "One root, four jobs: noun, verb, adjective, adverb — plus the prefix that flips it.",
+  "cefr": "B2",
+  "exam": [
+    "Reading & Use of English Part 3 — word formation",
+    "Writing Parts 1 and 2 — precise, varied vocabulary"
+  ],
+  "why": "Part 3 gives you a root word and expects you to reshape it: add a suffix to make a noun or adjective, or a prefix to make it negative. Reading quickly, it's easy to miss whether the gap actually needs a plural, a negative, or a completely different word class — which is exactly what this part of the exam is testing.",
+  "diagrams": [
+    {
+      "type": "map",
+      "title": "One root, four word classes",
+      "center": "Word families",
+      "branches": [
+        {"label": "Noun", "items": ["-ment (development)", "-tion (creation)", "-ness (happiness)", "-ity (activity)"], "tone": "a"},
+        {"label": "Verb", "items": ["-ise/-ize (modernise)", "-ify (simplify)", "-en (strengthen)"], "tone": "b"},
+        {"label": "Adjective", "items": ["-ful (successful)", "-less (careless)", "-able/-ible (readable)", "-ive (creative)"], "tone": "c"},
+        {"label": "Adverb", "items": ["-ly (successfully)"], "tone": "kw"}
+      ]
+    },
+    {
+      "type": "map",
+      "title": "Negative prefixes — which one fits?",
+      "center": "Negative prefixes",
+      "branches": [
+        {"label": "un-", "items": ["fair → unfair", "predictable → unpredictable"], "tone": "a"},
+        {"label": "in-", "items": ["decisive → indecisive", "visible → invisible"], "tone": "b"},
+        {"label": "im- (before p/m)", "items": ["polite → impolite", "possible → impossible"], "tone": "c"},
+        {"label": "il- (before l)", "items": ["logical → illogical", "legal → illegal"], "tone": "kw"},
+        {"label": "ir- (before r)", "items": ["responsible → irresponsible", "regular → irregular"], "tone": "a"},
+        {"label": "dis- / mis-", "items": ["honest → dishonest", "understand → misunderstand"], "tone": "b"}
+      ]
+    },
+    {
+      "type": "contrast",
+      "title": "Reading the sentence: plural or negative?",
+      "columns": ["Needs a plural", "Needs a negative"],
+      "rows": [
+        {"label": "Clue in the sentence", "cells": ["a number, 'many', 'several', 'both', 'these/those' + countable noun", "'not', 'seemed the opposite of', 'unlike normal', 'failed to'"]},
+        {"label": "What changes", "cells": ["add -s/-es to a noun", "add a prefix (un-/in-/im-/il-/ir-/dis-/mis-) to an adjective or verb"]},
+        {"label": "Example", "cells": ["The teacher marked all fifteen ___ (ESSAY) → essays", "The plan seemed completely ___ (LOGIC) → illogical"]},
+        {"label": "Trap", "cells": ["easy to forget the -s while you're focused on the root's spelling", "easy to reach for -s when the answer actually needs a prefix"]}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "root: DECIDE", "tone": "kw"},
+      {"chip": "noun", "tone": "a", "ex": "decision"},
+      {"chip": "adjective", "tone": "b", "ex": "decisive / indecisive"},
+      {"chip": "adverb", "tone": "c", "ex": "decisively"}
+    ],
+    "table": {
+      "head": ["Category", "Typical endings", "Example"],
+      "rows": [
+        ["Noun suffixes", "-ness, -ment, -tion, -ity", "kindness, development, creation, activity"],
+        ["Adjective suffixes", "-ful, -less, -able/-ible, -ive", "successful, careless, readable, creative"],
+        ["Adverb suffix", "-ly", "successfully, carefully"],
+        ["Negative prefixes", "un-, in-, im-, il-, ir-, dis-, mis-", "unfair, indecisive, impolite, illogical, irresponsible, dishonest, misunderstand"],
+        ["Compound adjectives", "noun/adjective/adverb + participle, hyphenated", "a well-known author, a three-hour flight, an English-speaking guide"],
+        ["Spelling changes", "final -e often drops before a vowel suffix; -y usually becomes -i", "create → creation; happy → happiness"]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "One root, four forms: noun, verb, adjective, adverb",
+      "examples": [
+        {"text": "Mateo's sudden <b>decision</b> to change subjects surprised everyone.", "note": "noun"},
+        {"text": "Was Sofia being <b>decisive</b>, or just impatient?", "note": "adjective"},
+        {"text": "Liam always speaks so <b>decisively</b> in debates.", "note": "adverb"}
+      ]
+    },
+    {
+      "point": "Choosing the right negative prefix",
+      "examples": [
+        {"text": "It felt completely <b>unfair</b> that the match was postponed twice.", "note": "un- before f"},
+        {"text": "Their instructions were so <b>illogical</b> that nobody followed them properly.", "note": "il- before l"},
+        {"text": "Leaving your phone on the bus was pretty <b>irresponsible</b>, Liam.", "note": "ir- before r"}
+      ]
+    },
+    {
+      "point": "Compound adjectives before a noun",
+      "examples": [
+        {"text": "Miss Vega is a <b>well-known</b> figure at every regional debate competition.", "note": "adverb + participle, hyphenated"},
+        {"text": "It was a <b>three-hour</b> bus journey to the trailhead near Ausangate.", "note": "number stays singular in the compound"}
+      ]
+    },
+    {
+      "point": "Plural or negative? Reading the sentence before you write anything",
+      "examples": [
+        {"text": "The form asked for the names of all <b>participants</b>, not just the captain.", "note": "plural noun, not a negative form"},
+        {"text": "Sofia's answer in the interview was completely <b>unexpected</b>.", "note": "negative adjective, not a plural"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "The pilot's sudden indecisive cost them the match.", "right": "The pilot's sudden <b>indecision</b> cost them the match.", "why": "After 'sudden', the sentence needs a noun, not an adjective."},
+    {"wrong": "It would be very unfairly to blame just one player.", "right": "It would be very <b>unfair</b> to blame just one player.", "why": "After 'be', the sentence needs an adjective, not an adverb."},
+    {"wrong": "Their explanation was completely inlogical.", "right": "Their explanation was completely <b>illogical</b>.", "why": "The negative prefix before a word starting with l is il-, not in-."},
+    {"wrong": "The mistake was totally unresponsible of him.", "right": "The mistake was totally <b>irresponsible</b> of him.", "why": "The negative prefix before a word starting with r is ir-, not un-."},
+    {"wrong": "The teacher marked all fifteen essay.", "right": "The teacher marked all fifteen <b>essays</b>.", "why": "'Fifteen' signals that a plural is needed here, not a negative form."},
+    {"wrong": "It was a three-hours flight.", "right": "It was a <b>three-hour</b> flight.", "why": "In a compound adjective before a noun, the number stays singular: three-hour, not three-hours."}
+  ],
+  "dialogue": {
+    "title": "Essay feedback",
+    "context": "Miss Vega is handing back essays, and Mateo, Sofia, Liam and Nadia compare notes on the comments they got.",
+    "lines": [
+      {"speaker": "Miss Vega", "text": "Overall, good work. Liam, your conclusion needed more <b>confidence</b> — you kept hedging."},
+      {"speaker": "Liam", "text": "I know, I felt pretty <b>indecisive</b> about the ending."},
+      {"speaker": "Sofia", "text": "Mine got marked down for being <b>repetitive</b>, apparently."},
+      {"speaker": "Nadia", "text": "Mine too — but Miss Vega said the <b>creativity</b> in my introduction saved it."},
+      {"speaker": "Miss Vega", "text": "It did. Mateo, yours was strong, but a couple of sentences felt <b>illogical</b> — the order didn't quite make sense."},
+      {"speaker": "Mateo", "text": "Fair enough. I wrote it the night before, so that was pretty <b>irresponsible</b> of me."},
+      {"speaker": "Sofia", "text": "At least none of us got 'unclear', like last term."},
+      {"speaker": "Liam", "text": "True. That was genuinely <b>unfair</b> — half the class got that comment."},
+      {"speaker": "Miss Vega", "text": "For the next essay, focus on compound adjectives — things like <b>well-written</b> or <b>fast-paced</b>. They make your style sound more natural."},
+      {"speaker": "Nadia", "text": "So instead of 'a play that lasts two hours', we'd write 'a <b>two-hour</b> play'?"},
+      {"speaker": "Miss Vega", "text": "Exactly."},
+      {"speaker": "Sofia", "text": "Noted. Let's aim for fewer corrections next time."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "Sofia felt a strange sense of ___ after the interview.", "options": ["happiness", "happy", "happily"], "answer": 0, "why": "'a sense of' is followed by a noun"},
+        {"sentence": "The volcano trek turned out to be far more ___ than we expected.", "options": ["danger", "dangerous", "dangerously"], "answer": 1, "why": "'more ___ than' needs an adjective (comparative)"},
+        {"sentence": "Their explanation was completely ___ — nobody could follow it.", "options": ["logical", "logically", "illogical"], "answer": 2, "why": "an adjective is needed after 'was', and the negative prefix il- fits before a word starting with l"},
+        {"sentence": "Liam's ___ during the debate surprised everyone — he's usually so quiet.", "options": ["confidence", "confident", "confidently"], "answer": 0, "why": "the subject of the sentence needs a noun"},
+        {"sentence": "It would be ___ to leave without saying thank you to the host family.", "options": ["polite", "impolite", "politely"], "answer": 1, "why": "an adjective is needed after 'would be', and the negative prefix im- fits before p"},
+        {"sentence": "Nadia reacted ___ when she heard the news.", "options": ["calm", "calmness", "calmly"], "answer": 2, "why": "an adverb is needed to modify the verb 'reacted'"},
+        {"sentence": "The teacher's feedback on the essay was really ___.", "options": ["helpful", "helpfulness", "help"], "answer": 0, "why": "an adjective is needed after 'was really'"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with the correct form of the word in brackets.",
+      "items": [
+        {"sentence": "Mateo's ___ (DECIDE) to switch subjects surprised his parents.", "answers": ["decision"]},
+        {"sentence": "The trek to Rainbow Mountain was physically ___ (DEMAND).", "answers": ["demanding"]},
+        {"sentence": "Sofia's essay showed real ___ (MATURE) for someone her age.", "answers": ["maturity"]},
+        {"sentence": "It seems ___ (RESPONSIBLE) to leave the stove on when nobody's home.", "answers": ["irresponsible"]},
+        {"sentence": "The coach praised the team's ___ (ACHIEVE) at the tournament.", "answers": ["achievement", "achievements"]},
+        {"sentence": "Liam's argument was ___ (CONVINCE) enough to change Miss Vega's mind.", "answers": ["convincing"]},
+        {"sentence": "The results were completely ___ (SURPRISE) to everyone in the class.", "answers": ["surprising"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Use the word given in capitals to form a word that fits in the gap.",
+      "items": [
+        {"first": "The pilot's sudden ___ cost the team the match.", "key": "DECIDE", "second_start": "The pilot's sudden", "second_end": "cost the team the match.", "answers": ["indecision"]},
+        {"first": "Miss Vega was impressed by the ___ of the students' presentation.", "key": "CREATE", "second_start": "Miss Vega was impressed by the", "second_end": "of the students' presentation.", "answers": ["creativity"]},
+        {"first": "Nadia's parents were proud of her ___ on the school council.", "key": "PARTICIPATE", "second_start": "Nadia's parents were proud of her", "second_end": "on the school council.", "answers": ["participation"]},
+        {"first": "The new rule seemed completely ___ to most students.", "key": "FAIR", "second_start": "The new rule seemed completely", "second_end": "to most students.", "answers": ["unfair"]},
+        {"first": "Liam's handwriting is nearly ___.", "key": "READ", "second_start": "Liam's handwriting is nearly", "second_end": ".", "answers": ["unreadable"]},
+        {"first": "The hikers were warned about the ___ weather conditions in the mountains.", "key": "PREDICT", "second_start": "The hikers were warned about the", "second_end": "weather conditions in the mountains.", "answers": ["unpredictable"]}
+      ]
+    }
+  ],
+  "summary": [
+    "One root usually has a noun, verb, adjective and adverb form: decide, decision, decisive, decisively.",
+    "The negative prefix depends on the first letter of the root: un-/in- are common, but il- (before l), im- (before p or m) and ir- (before r) are fixed.",
+    "Compound adjectives (well-known, three-hour, English-speaking) stay singular before a noun even when the idea is plural.",
+    "Before you add a suffix, check whether the gap actually needs a plural (-s) instead of a different word form.",
+    "Always read the whole sentence first — the word class you need depends on what comes right before and after the gap."
+  ]
+}

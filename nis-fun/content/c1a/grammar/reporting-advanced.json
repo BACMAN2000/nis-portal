@@ -1,0 +1,202 @@
+{
+  "id": "reporting-advanced",
+  "level": "c1a",
+  "area": "Passive & reporting",
+  "title": "Reporting: verbs, patterns and distance",
+  "tagline": "Every reporting verb has its own grammar — get it right, and 'he said that' stops sounding flat.",
+  "cefr": "C1",
+  "exam": [
+    "Reading & Use of English Part 4 — key word transformations (DENIED, INSISTED, ACCUSED, DISSUADED, CLAIMS, WHETHER)",
+    "Reading & Use of English Part 2 — open cloze",
+    "Writing Part 2 — article/report: attributing claims responsibly",
+    "Speaking Part 3 — reporting group disagreements accurately"
+  ],
+  "why": "Reporting is more than 'he said that…': each reporting verb has its own grammar — deny + -ing, insist + that, accuse + of — and choosing the wrong pattern is a classic C1 slip. Hedged reporting (claim, allege, is thought to) also lets a writer distance themselves from a claim, which examiners and journalists both value.",
+  "diagrams": [
+    {
+      "type": "map",
+      "title": "Reporting verbs by pattern",
+      "center": "Reporting verbs",
+      "branches": [
+        {"label": "+ (that) clause", "items": ["deny (that)…", "insist (that)…", "claim (that)…"], "tone": "a"},
+        {"label": "+ to-infinitive", "items": ["threaten to…", "refuse to…", "offer to…"], "tone": "b"},
+        {"label": "+ object + to-infinitive", "items": ["urge sb to…", "persuade sb to…", "warn sb to…"], "tone": "c"},
+        {"label": "+ object + preposition + -ing", "items": ["accuse sb of…", "blame sb for…", "dissuade sb from…", "object to…"], "tone": "a"}
+      ]
+    },
+    {
+      "type": "contrast",
+      "title": "Backshift vs. no backshift",
+      "columns": ["Reporting with backshift", "Reporting without backshift"],
+      "rows": [
+        {"label": "When", "cells": ["The reporting verb is past, and the fact may have changed", "The fact is still true, general, or a permanent truth"]},
+        {"label": "Example", "cells": ["She said she <b>was</b> tired.", "She said the school <b>is</b> the oldest in the region."]},
+        {"label": "Typical context", "cells": ["Everyday reported speech", "Facts, habits, quotes reported soon after they were said"]}
+      ]
+    },
+    {
+      "type": "formula",
+      "title": "Accuse, blame, dissuade: object + preposition + -ing",
+      "parts": [
+        {"chip": "subject", "tone": "a", "ex": "They"},
+        {"chip": "accused / blamed / dissuaded", "tone": "kw", "ex": "accused"},
+        {"chip": "object", "tone": "b", "ex": "him"},
+        {"chip": "of / for / from", "tone": "c", "ex": "of"},
+        {"chip": "-ing", "tone": "c", "ex": "cheating"}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "subject", "tone": "a", "ex": "The teacher"},
+      {"chip": "urged / persuaded / warned", "tone": "kw", "ex": "urged"},
+      {"chip": "object", "tone": "b", "ex": "the students"},
+      {"chip": "to-infinitive", "tone": "c", "ex": "to revise early"}
+    ],
+    "table": {
+      "head": ["Verb pattern", "Structure", "Example"],
+      "rows": [
+        ["deny / insist / claim + (that)", "verb + (that) + clause", "He <b>denied</b> (that) he had copied the answer."],
+        ["threaten / refuse / offer + to-infinitive", "verb + to-infinitive", "She <b>threatened to</b> report the incident."],
+        ["urge / persuade / warn + object + to-infinitive", "verb + object + to-infinitive", "Miss Vega <b>urged them to</b> submit the draft early."],
+        ["accuse + object + of + -ing", "verb + object + of + -ing", "They <b>accused him of</b> copying the essay."],
+        ["blame + object + for + -ing", "verb + object + for + -ing", "She <b>blamed the printer for</b> ruining her assignment."],
+        ["dissuade + object + from + -ing", "verb + object + from + -ing", "Her parents <b>dissuaded her from</b> dropping the subject."],
+        ["hedged reporting: claim/allege", "claim/allege + (that) + clause", "The article <b>alleges that</b> the results were manipulated."],
+        ["hedged reporting: is said/thought to", "subject + is said/thought to + infinitive", "The manuscript <b>is thought to</b> date back centuries."]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Reporting verbs with their own patterns",
+      "examples": [
+        {"text": "He <b>denied</b> copying the answer from his classmate.", "note": "deny + -ing, no to-infinitive"},
+        {"text": "She <b>insisted that</b> the deadline be extended for everyone.", "note": "insist + that + subjunctive/should"},
+        {"text": "The coach <b>threatened to</b> cancel the match if the noise continued.", "note": "threaten + to-infinitive"}
+      ]
+    },
+    {
+      "point": "Object + preposition + -ing: accuse, blame, dissuade",
+      "examples": [
+        {"text": "They <b>accused him of</b> copying the essay word for word.", "note": "accuse + of + -ing"},
+        {"text": "She <b>blamed the printer for</b> ruining her assignment.", "note": "blame + for + -ing"},
+        {"text": "Her parents <b>dissuaded her from</b> dropping the subject.", "note": "dissuade + from + -ing"}
+      ]
+    },
+    {
+      "point": "Hedged reporting: claim, allege, is said/thought to",
+      "examples": [
+        {"text": "The article <b>alleges that</b> the results were manipulated.", "note": "allege, more formal than claim, often unproven"},
+        {"text": "He <b>claims to have</b> read the entire syllabus overnight.", "note": "claim + perfect infinitive"},
+        {"text": "The manuscript <b>is thought to</b> date back several centuries.", "note": "hedged passive reporting"}
+      ]
+    },
+    {
+      "point": "Reported questions, no backshift, and summarising",
+      "examples": [
+        {"text": "She asked <b>whether the results had been</b> published yet.", "note": "reported yes/no question, backshift"},
+        {"text": "He said the school <b>is</b> the oldest in the region.", "note": "no backshift, still true"},
+        {"text": "In short, Miss Vega <b>told them to</b> revise their bibliography and resubmit.", "note": "summarising a request"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {
+      "wrong": "He denied that he copy the answer.",
+      "right": "He <b>denied copying</b> the answer.",
+      "why": "Deny takes an -ing form or a correctly tensed that-clause, not a bare infinitive."
+    },
+    {
+      "wrong": "She insisted to extend the deadline.",
+      "right": "She <b>insisted that</b> the deadline be extended.",
+      "why": "Insist is followed by a that-clause (with should/subjunctive), not a to-infinitive."
+    },
+    {
+      "wrong": "They accused him for copying.",
+      "right": "They <b>accused him of</b> copying.",
+      "why": "Accuse takes of; blame takes for — the two prepositions are not interchangeable."
+    },
+    {
+      "wrong": "Her parents dissuaded her to drop the subject.",
+      "right": "Her parents <b>dissuaded her from</b> dropping the subject.",
+      "why": "Dissuade takes from + -ing, not to + infinitive."
+    },
+    {
+      "wrong": "He claims that he has reading the whole book.",
+      "right": "He <b>claims to have read</b> the whole book.",
+      "why": "A perfect infinitive needs have + past participle, not have + -ing."
+    },
+    {
+      "wrong": "She asked did the results come out yet.",
+      "right": "She asked <b>whether the results had come out</b> yet.",
+      "why": "Reported questions use normal word order and whether/if, never the original question form."
+    }
+  ],
+  "dialogue": {
+    "title": "Setting the record straight",
+    "context": "After a mix-up during the mock exam, Liam and Nadia report to Miss Vega exactly what different people said and did.",
+    "lines": [
+      {"speaker": "Miss Vega", "text": "Before I write the incident report, tell me exactly what happened, please."},
+      {"speaker": "Liam", "text": "Well, Mr Ramos <b>accused Mateo of</b> talking during the silent reading section."},
+      {"speaker": "Nadia", "text": "But Mateo <b>denied talking</b> — he said he was only pointing at the clock."},
+      {"speaker": "Miss Vega", "text": "And what did Mateo say when Mr Ramos confronted him?"},
+      {"speaker": "Liam", "text": "He <b>insisted that</b> he hadn't said a single word."},
+      {"speaker": "Nadia", "text": "Sofia, who sits nearby, <b>claims to have seen</b> the whole thing, and she agrees with Mateo."},
+      {"speaker": "Miss Vega", "text": "Did anyone try to calm the situation down?"},
+      {"speaker": "Liam", "text": "Yes — the invigilator <b>urged everyone to</b> stay quiet and keep working."},
+      {"speaker": "Nadia", "text": "Mr Ramos later <b>blamed the confusion on</b> the poor lighting, not on Mateo directly."},
+      {"speaker": "Miss Vega", "text": "And Mateo — did he threaten to complain, or anything like that?"},
+      {"speaker": "Liam", "text": "No, he just <b>threatened to</b> ask for a seat change next time, nothing dramatic."},
+      {"speaker": "Miss Vega", "text": "Good. In short, then, nobody <b>should be blamed for</b> anything — it was a genuine misunderstanding."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "He ___ copying the answer from his neighbour.", "options": ["denied", "denied to", "denied that to"], "answer": 0, "why": "Deny is followed directly by an -ing form (or a that-clause), never a to-infinitive."},
+        {"sentence": "She ___ that the deadline be extended for everyone.", "options": ["persuaded", "insisted", "threatened"], "answer": 1, "why": "Insist + that-clause (with should/subjunctive) expresses a firm demand."},
+        {"sentence": "They ___ him of copying the essay.", "options": ["blamed", "denied", "accused"], "answer": 2, "why": "Accuse + object + of + -ing is the fixed pattern."},
+        {"sentence": "She ___ the printer for ruining her assignment.", "options": ["blamed", "accused", "dissuaded"], "answer": 0, "why": "Blame + object + for + -ing assigns responsibility."},
+        {"sentence": "Her parents ___ her from dropping the subject.", "options": ["prevented", "dissuaded", "denied"], "answer": 1, "why": "Dissuade + object + from + -ing is the pattern for talking someone out of something."},
+        {"sentence": "He ___ to have read the entire syllabus overnight.", "options": ["says", "alleges", "claims"], "answer": 2, "why": "Claim + perfect infinitive (to have + participle) hedges a boastful statement."},
+        {"sentence": "She asked ___ the results had been published yet.", "options": ["whether", "that", "if that"], "answer": 0, "why": "Reported yes/no questions use whether/if + normal word order, not inversion."}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with one word so that it is grammatically correct.",
+      "items": [
+        {"sentence": "He denied ___ the answer from his neighbour.", "answers": ["copying"]},
+        {"sentence": "She insisted ___ the deadline be extended for everyone.", "answers": ["that"]},
+        {"sentence": "They accused him ___ copying the essay.", "answers": ["of"]},
+        {"sentence": "Her parents dissuaded her ___ dropping the subject.", "answers": ["from"]},
+        {"sentence": "He claims ___ have read the entire syllabus overnight.", "answers": ["to"]},
+        {"sentence": "The manuscript is thought ___ date back centuries.", "answers": ["to"]},
+        {"sentence": "She asked ___ the results had been published yet.", "answers": ["whether", "if"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first, using the word given. Do not change the word given. Use between two and five words.",
+      "items": [
+        {"first": "'I didn't copy the answer,' said Mateo.", "key": "DENIED", "second_start": "Mateo", "second_end": "the answer.", "answers": ["denied copying"]},
+        {"first": "'The deadline really must be extended,' said Sofia firmly.", "key": "INSISTED", "second_start": "Sofia", "second_end": "the deadline be extended.", "answers": ["insisted that"]},
+        {"first": "The teacher said Mateo copied the essay.", "key": "OF", "second_start": "The teacher", "second_end": "copying the essay.", "answers": ["accused Mateo of"]},
+        {"first": "Her parents persuaded her not to drop the subject.", "key": "FROM", "second_start": "Her parents dissuaded her", "second_end": "the subject.", "answers": ["from dropping"]},
+        {"first": "He says he read the entire syllabus overnight, apparently.", "key": "CLAIMS", "second_start": "He", "second_end": "the entire syllabus overnight.", "answers": ["claims to have read"]},
+        {"first": "People think the manuscript dates back centuries.", "key": "THOUGHT", "second_start": "The manuscript", "second_end": "date back centuries.", "answers": ["is thought to"]},
+        {"first": "'Have the results come out yet?' she wanted to know.", "key": "WHETHER", "second_start": "She asked", "second_end": "had come out yet.", "answers": ["whether the results"]}
+      ]
+    }
+  ],
+  "summary": [
+    "Reporting verbs carry their own grammar: <i>deny + -ing</i>, <i>insist + that</i>, <i>threaten/refuse/offer + to-infinitive</i>.",
+    "<i>Accuse … of</i>, <i>blame … for</i> and <i>dissuade … from</i> all take object + preposition + -ing.",
+    "Hedge a claim with <i>claim/allege + that</i> or <i>is said/thought to</i> when you can't confirm it.",
+    "Backshift the tense when reporting after a past verb, unless the fact is still true or very recent.",
+    "A good summary reports the gist — who said, asked or urged what — not every original word."
+  ]
+}

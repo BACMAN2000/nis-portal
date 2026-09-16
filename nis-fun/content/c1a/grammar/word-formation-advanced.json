@@ -1,0 +1,178 @@
+{
+  "id": "word-formation-advanced",
+  "level": "c1a",
+  "area": "Words",
+  "title": "Word formation at C1",
+  "tagline": "Turn words into the right part of speech: suffixes, negative prefixes, compounds and Part 3 strategy.",
+  "cefr": "C1",
+  "exam": [
+    "Reading & Use of English Part 3 — word formation (the whole task)",
+    "Reading & Use of English Part 2 — open cloze (prefix and suffix collocations)",
+    "Writing Parts 1 and 2 — precise, varied vocabulary instead of repeating the same word class",
+    "Listening Part 4 — recognising derived words spoken at natural speed"
+  ],
+  "why": "Part 3 rewards exactly one skill: seeing past the root word to the part of speech the gap actually needs — noun, adjective, negative adjective, or verb. The same suffixes and prefixes also raise the level of essays and reports, where a nominalisation like <i>disillusionment</i> reads as noticeably more advanced than <i>people don't believe in it any more</i>, and a precise negative prefix shows control that a vague 'not' never can.",
+  "diagrams": [
+    {
+      "type": "map",
+      "title": "Suffix families for nouns",
+      "center": "Noun-forming suffixes",
+      "branches": [
+        {"label": "-ance / -ence", "items": ["performance", "confidence", "persistence"], "tone": "a"},
+        {"label": "-ity / -ety", "items": ["stability", "anxiety", "curiosity"], "tone": "b"},
+        {"label": "-ism", "items": ["realism", "tourism", "optimism"], "tone": "c"},
+        {"label": "-hood", "items": ["childhood", "likelihood", "neighbourhood"], "tone": "a"}
+      ]
+    },
+    {
+      "type": "contrast",
+      "title": "Negative prefixes: same idea, different flavour",
+      "columns": ["un- / in- / dis- (simple negative)", "mis- (wrongly)", "non- (outside the category)"],
+      "rows": [
+        {"label": "Meaning", "cells": ["absence or opposite of a quality", "done incorrectly or badly", "simply outside the category, often neutral or technical"]},
+        {"label": "Example", "cells": ["<b>unreliable</b>, <b>inaccurate</b>, <b>dishonest</b>", "<b>misjudge</b>, <b>miscalculate</b>", "<b>non-negotiable</b>, <b>non-verbal</b>"]},
+        {"label": "Register", "cells": ["general, everyday", "general, usually about errors", "formal, technical, legal"]}
+      ]
+    },
+    {
+      "type": "formula",
+      "title": "Turning adjectives and nouns into verbs",
+      "parts": [
+        {"chip": "adjective / noun", "tone": "kw", "ex": "strong / class"},
+        {"chip": "-en / -ify / -ise", "tone": "a", "ex": "strengthen / classify / modernise"},
+        {"chip": "→", "tone": "arrow"},
+        {"chip": "verb", "tone": "b", "ex": "to strengthen"}
+      ],
+      "caption": "There's no shortcut except learning which suffix each word family takes."
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "adjective / adverb / noun", "tone": "kw", "ex": "well / time"},
+      {"chip": "+", "tone": "arrow"},
+      {"chip": "participle", "tone": "a", "ex": "established / consuming"},
+      {"chip": "→", "tone": "arrow"},
+      {"chip": "compound adjective", "tone": "b", "ex": "well-established / time-consuming"}
+    ],
+    "table": {
+      "head": ["Pattern", "Structure", "Example"],
+      "rows": [
+        ["-ance / -ence", "verb → abstract noun (a quality or state)", "perform → <b>performance</b>; persist → <b>persistence</b>"],
+        ["-ity / -ety", "adjective → abstract noun", "stable → <b>stability</b>; anxious → <b>anxiety</b>"],
+        ["-ism", "noun/adjective → belief, practice or condition", "real → <b>realism</b>; tour → <b>tourism</b>"],
+        ["-hood", "noun → a state, period or group", "child → <b>childhood</b>; likely → <b>likelihood</b>"],
+        ["dis- / mis- / un- / in- / non-", "prefix + base = negative, with different nuances", "<b>dishonest</b>, <b>misjudge</b>, <b>unreliable</b>, <b>inaccurate</b>, <b>non-verbal</b>"],
+        ["compound adjectives", "adjective/adverb/noun + participle, hyphenated", "a <b>well-established</b> routine; a <b>time-consuming</b> task"],
+        ["-en / -ify / -ise", "adjective/noun → verb", "strong → <b>strengthen</b>; class → <b>classify</b>; modern → <b>modernise</b>"],
+        ["conversion", "noun/verb used as the other word class, unchanged", "to <b>google</b> something; to <b>text</b> a friend"]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Nominalising suffixes: turning actions and qualities into nouns",
+      "examples": [
+        {"text": "Her sudden <b>resignation</b> shocked the whole department.", "note": "-ation, verb → noun"},
+        {"text": "The council questioned the project's long-term <b>viability</b>.", "note": "-ity, adjective → noun"},
+        {"text": "There's a growing sense of <b>disillusionment</b> among young voters.", "note": "-ment + dis-, a negative noun"}
+      ]
+    },
+    {
+      "point": "Choosing the right negative prefix",
+      "examples": [
+        {"text": "The witness's account was <b>inconsistent</b> with the evidence.", "note": "in-, a simple negative before certain roots"},
+        {"text": "He <b>misjudged</b> the distance and missed the bus by seconds.", "note": "mis- = wrongly, not simply 'not'"},
+        {"text": "The contract includes a <b>non-disclosure</b> clause.", "note": "non-, formal/technical, a category rather than a fault"}
+      ]
+    },
+    {
+      "point": "Compound adjectives that pack a description into one word",
+      "examples": [
+        {"text": "It was a <b>well-established</b> tradition long before Miss Vega arrived.", "note": "adverb + past participle"},
+        {"text": "Filling in the census forms is a genuinely <b>time-consuming</b> job.", "note": "noun + present participle"},
+        {"text": "The volcano's <b>ash-covered</b> slopes made the climb even harder.", "note": "noun + past participle"}
+      ]
+    },
+    {
+      "point": "Conversion, and the -en / -ify / -ise verb families",
+      "examples": [
+        {"text": "Teachers now <b>google</b> unfamiliar terms in front of the class without embarrassment.", "note": "conversion: noun used directly as a verb"},
+        {"text": "New regulations will <b>strengthen</b> safety checks on school trips.", "note": "-en, adjective → verb"},
+        {"text": "The ministry wants to <b>modernise</b> the exam system within five years.", "note": "-ise, adjective/noun → verb"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "Her sudden resign shocked everyone.", "right": "Her sudden <b>resignation</b> shocked everyone.", "why": "the sentence needs the noun form (resignation), not the bare verb."},
+    {"wrong": "He unjudged the distance badly.", "right": "He <b>misjudged</b> the distance badly.", "why": "mis- (wrongly), not un-, is the prefix that means 'did it incorrectly'."},
+    {"wrong": "The clause is nonnegotiable.", "right": "The clause is <b>non-negotiable</b>.", "why": "non- usually keeps a hyphen before the base word, unlike un-/dis-/in-."},
+    {"wrong": "It's a well established routine.", "right": "It's a <b>well-established</b> routine.", "why": "compound adjectives before a noun need a hyphen: well-established, not well established."},
+    {"wrong": "The council doubted the project's viable.", "right": "The council doubted the project's <b>viability</b>.", "why": "after a possessive, the sentence needs the noun (viability), not the adjective viable."},
+    {"wrong": "The ministry wants to modern the exam system.", "right": "The ministry wants to <b>modernise</b> the exam system.", "why": "modern is an adjective; the verb needs the -ise suffix, modernise."}
+  ],
+  "dialogue": {
+    "title": "Quick round",
+    "context": "Miss Vega runs a rapid vocabulary round, and the conversation about student council reform turns out to supply most of the examples itself.",
+    "lines": [
+      {"speaker": "Miss Vega", "text": "Quick round — give me a sentence with a word from today's list."},
+      {"speaker": "Sofia", "text": "The head boy's <b>resignation</b> caught everyone off guard."},
+      {"speaker": "Liam", "text": "Because he completely <b>misjudged</b> how much work the role actually needed."},
+      {"speaker": "Mateo", "text": "Or maybe he just wanted to <b>modernise</b> the student council instead."},
+      {"speaker": "Nadia", "text": "There's definitely <b>disillusionment</b> among the younger students about how it's run."},
+      {"speaker": "Miss Vega", "text": "Good. Now a compound adjective."},
+      {"speaker": "Sofia", "text": "The whole system feels <b>well-established</b>, if a bit outdated."},
+      {"speaker": "Liam", "text": "Rewriting the constitution would be seriously <b>time-consuming</b>, though."},
+      {"speaker": "Mateo", "text": "True — but I'd rather we <b>strengthen</b> the rules than scrap them completely."},
+      {"speaker": "Nadia", "text": "Can I just say I love that 'to <b>google</b>' counts as a real verb now?"},
+      {"speaker": "Miss Vega", "text": "It does. Language changes — a <b>non-negotiable</b> fact of life."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct word form.",
+      "items": [
+        {"sentence": "Her sudden ___ shocked the whole department.", "options": ["resignation", "resign", "resigning"], "answer": 0, "why": "the sentence needs the noun form (resignation) as the subject, not the bare verb or gerund used loosely here."},
+        {"sentence": "He completely ___ the distance and missed the bus.", "options": ["unjudged", "misjudged", "disjudged"], "answer": 1, "why": "mis- (wrongly) is the prefix for judging something incorrectly; unjudged and disjudged are not real words."},
+        {"sentence": "The clause is legally ___ in every contract we sign.", "options": ["unnegotiable", "innegotiable", "non-negotiable"], "answer": 2, "why": "non- combines with negotiable in this fixed expression, and normally keeps the hyphen."},
+        {"sentence": "It's a ___ tradition at this school.", "options": ["well-established", "well established", "well-establish"], "answer": 0, "why": "before a noun, the compound adjective needs a hyphen: well-established."},
+        {"sentence": "The council questioned the plan's long-term ___.", "options": ["viable", "viability", "viably"], "answer": 1, "why": "after 'the plan's long-term', the sentence needs the noun (viability), not the adjective viable."},
+        {"sentence": "The ministry wants to ___ the exam system within five years.", "options": ["modern", "modernity", "modernise"], "answer": 2, "why": "modern is the adjective; the verb form needs the -ise suffix: modernise."},
+        {"sentence": "There's growing ___ among young voters about politics.", "options": ["disillusionment", "illusion", "disillusion"], "answer": 0, "why": "disillusionment (dis- + noun) names the state of feeling; illusion and disillusion don't fit as the subject here."}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with the correct form of the word in brackets.",
+      "items": [
+        {"sentence": "Her sudden ___ (RESIGN) shocked the whole department.", "answers": ["resignation"]},
+        {"sentence": "He completely ___ (JUDGE) the distance and missed the bus.", "answers": ["misjudged"]},
+        {"sentence": "The contract includes a ___ (DISCLOSE) clause.", "answers": ["non-disclosure"]},
+        {"sentence": "It's a ___ (ESTABLISH) tradition at this school.", "answers": ["well-established"]},
+        {"sentence": "The council doubted the plan's long-term ___ (VIABLE).", "answers": ["viability"]},
+        {"sentence": "The ministry wants to ___ (MODERN) the exam system.", "answers": ["modernise"]},
+        {"sentence": "There's growing ___ (ILLUSION) among young voters.", "answers": ["disillusionment"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Use the word in capitals to form a word that fits the gap in each sentence. Do not change the word in capitals.",
+      "items": [
+        {"first": "The device's constant breakdowns proved its ___.", "key": "RELY", "second_start": "The device's constant breakdowns proved its", "second_end": ".", "answers": ["unreliability"]},
+        {"first": "The referee's ___ cost the team the match.", "key": "JUDGE", "second_start": "The referee's", "second_end": "cost the team the match.", "answers": ["misjudgement", "misjudgment"]},
+        {"first": "The board still has doubts about the plan's ___.", "key": "VIABLE", "second_start": "The board still has doubts about the plan's", "second_end": ".", "answers": ["viability"]},
+        {"first": "The school announced a major ___ of its science labs.", "key": "MODERN", "second_start": "The school announced a major", "second_end": "of its science labs.", "answers": ["modernisation"]},
+        {"first": "She spent her ___ in a small village near Arequipa.", "key": "CHILD", "second_start": "She spent her", "second_end": "in a small village near Arequipa.", "answers": ["childhood"]},
+        {"first": "There's growing ___ among voters about the new policy.", "key": "ILLUSION", "second_start": "There's growing", "second_end": "among voters about the new policy.", "answers": ["disillusionment"]},
+        {"first": "New regulations will ___ safety checks on school trips.", "key": "STRONG", "second_start": "New regulations will", "second_end": "safety checks on school trips.", "answers": ["strengthen"]}
+      ]
+    }
+  ],
+  "summary": [
+    "Nominalising suffixes turn a verb or adjective into a noun: <i>-ance/-ence, -ity, -ism, -hood</i>.",
+    "Negative prefixes are not interchangeable: <i>un-/in-/dis-</i> = simple opposite, <i>mis-</i> = wrongly, <i>non-</i> = outside the category.",
+    "Compound adjectives like <i>well-established</i> and <i>time-consuming</i> keep their hyphen before a noun.",
+    "<i>-en, -ify, -ise</i> turn an adjective or noun into a verb; there's no single rule for which suffix a word takes.",
+    "In Part 3, read the whole sentence first — the gap needs a specific part of speech, not just 'a version of the word'."
+  ]
+}

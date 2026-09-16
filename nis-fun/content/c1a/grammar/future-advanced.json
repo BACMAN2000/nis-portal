@@ -1,0 +1,182 @@
+{
+  "id": "future-advanced",
+  "level": "c1a",
+  "area": "Tenses & aspect",
+  "title": "Advanced ways of talking about the future",
+  "tagline": "Official, imminent, inevitable or just polite — English keeps a different future for each.",
+  "cefr": "C1",
+  "exam": [
+    "Reading & Use of English Part 1 — multiple-choice cloze (be to / due to / bound to / verge of)",
+    "Reading & Use of English Part 4 — key word transformations (TO, DUE, BOUND, VERGE, HAVE)",
+    "Writing Part 1 — formal proposal or report: announcing plans and schedules",
+    "Speaking Part 3 — negotiating and making polite offers and suggestions"
+  ],
+  "why": "General English gives you <i>going to</i> and <i>will</i>; C1 English needs to sound like a press release, a timetable, a worried friend and a polite host, sometimes within the same paragraph. Use of English tests these forms precisely because each one commits the speaker to a different degree of certainty and formality, and Writing Part 1 rewards a report that announces plans without repeating <i>will</i> in every sentence.",
+  "diagrams": [
+    {
+      "type": "timeline",
+      "title": "From arrangement to opening day",
+      "marks": [
+        {"at": "before-past", "label": "signed the funding agreement", "sub": "two years before it opens"},
+        {"at": "past", "label": "confirmed the final building details last month", "sub": "be to: the official arrangement"},
+        {"at": "now", "label": "is on the verge of opening", "sub": "be on the verge of + -ing: happening any moment"},
+        {"at": "future", "label": "is due to welcome its first visitors on Monday", "sub": "be due to: a scheduled future point"}
+      ],
+      "arrows": [
+        [0, 1, "formalised the plan"],
+        [1, 3, "leads to the scheduled opening"]
+      ],
+      "caption": "The closer an event gets, the more precisely English can name how fixed, imminent or certain it is."
+    },
+    {
+      "type": "map",
+      "title": "A map of future expressions",
+      "center": "Talking about the future",
+      "branches": [
+        {"label": "Official / scheduled", "items": ["be to (formal arrangements)", "be due to (timetabled)"], "tone": "a"},
+        {"label": "Imminent", "items": ["be about to", "be on the verge of + -ing"], "tone": "b"},
+        {"label": "Certain, given the evidence", "items": ["be bound to"], "tone": "c"},
+        {"label": "Present forms used for the future", "items": ["future continuous (politeness, assumption)", "will (assumption, habit)"], "tone": "a"},
+        {"label": "Formal offers & suggestions", "items": ["Shall I…?", "Shall we…?"], "tone": "b"}
+      ]
+    },
+    {
+      "type": "contrast",
+      "title": "will vs the future continuous",
+      "columns": ["will", "future continuous"],
+      "rows": [
+        {"label": "Meaning", "cells": ["a decision, promise or prediction", "a routine or arranged event, softened"]},
+        {"label": "Example", "cells": ["<b>I'll call</b> you tonight, I promise.", "<b>I'll be calling</b> the client later, so I can ask then."]},
+        {"label": "Politeness", "cells": ["direct — can sound like a decision", "softer: presents it as already arranged, not a favour"]},
+        {"label": "Typical use", "cells": ["offers, promises, spontaneous decisions", "polite enquiries: <i>Will you be needing the car?</i>"]}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "subject", "tone": "kw", "ex": "the ceremony / she / we"},
+      {"chip": "be to / be about to / be due to / be bound to / be on the verge of", "tone": "a", "ex": "is due to / is about to"},
+      {"chip": "→", "tone": "arrow"},
+      {"chip": "infinitive (or -ing after 'on the verge of')", "tone": "b", "ex": "begin / opening"}
+    ],
+    "table": {
+      "head": ["Pattern", "Meaning", "Example"],
+      "rows": [
+        ["be to + infinitive", "a formal, official arrangement", "the minister <b>is to visit</b> the school next week"],
+        ["be about to + infinitive", "happening in the next few moments", "the plane <b>is about to</b> take off"],
+        ["be due to + infinitive", "scheduled for a specific time", "the results <b>are due to</b> be published on Friday"],
+        ["be bound to + infinitive", "certain to happen, given the circumstances", "with that much talent, she <b>is bound to</b> succeed"],
+        ["be on the verge of + -ing", "right at the point of happening", "the talks <b>are on the verge of</b> collapsing"],
+        ["future continuous", "a routine future event, or a polite assumption", "<b>will be arriving</b> around nine; <b>Will</b> you <b>be needing</b> the hall?"],
+        ["future perfect continuous", "a duration completed by a future point", "by June, she <b>will have been working</b> here for five years"],
+        ["shall (formal)", "offers and suggestions, first person", "<b>Shall</b> we begin? / <b>Shall</b> I fetch the results?"]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Imminent and near-certain futures: about to, on the verge of, bound to",
+      "examples": [
+        {"text": "The keynote speaker <b>is about to</b> take the stage.", "note": "about to = seconds away"},
+        {"text": "Talks between the two schools <b>are on the verge of</b> breaking down completely.", "note": "on the verge of + -ing = right at the point of happening"},
+        {"text": "Given her results this term, Nadia <b>is bound to</b> come top of the class.", "note": "bound to = certain, based on the evidence"}
+      ]
+    },
+    {
+      "point": "Official and scheduled futures: be to, be due to",
+      "examples": [
+        {"text": "The Minister of Education <b>is to open</b> the new science block on Thursday.", "note": "be to = a formal, official arrangement"},
+        {"text": "The bus <b>is due to</b> leave at exactly 7.15, not a minute later.", "note": "be due to = scheduled, timetabled"}
+      ]
+    },
+    {
+      "point": "Future continuous for routine plans, politeness and assumption; will for assumption and habit",
+      "examples": [
+        {"text": "Don't worry about a lift — <b>I'll be passing</b> your street anyway.", "note": "future continuous softens an offer as something already arranged"},
+        {"text": "<b>Will</b> you <b>be needing</b> the projector this afternoon, Mr Ramos?", "note": "a polite enquiry, assuming a routine plan rather than asking a favour"},
+        {"text": "That <b>will</b> be the courier at the door — he's always this punctual.", "note": "will for a confident assumption about the present"},
+        {"text": "Left alone for five minutes, the twins <b>will</b> argue about absolutely anything.", "note": "will for a typical, predictable habit"}
+      ]
+    },
+    {
+      "point": "Future perfect continuous and shall in formal contexts",
+      "examples": [
+        {"text": "By December, the choir <b>will have been rehearsing</b> this programme for eight months.", "note": "duration completed by a future point"},
+        {"text": "<b>Shall</b> we reconvene at half past two?", "note": "shall for a formal, first-person suggestion"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "The ceremony is to starting at noon.", "right": "The ceremony <b>is to start</b> at noon.", "why": "<i>Be to</i> is followed by the bare infinitive, not the -ing form."},
+    {"wrong": "Hurry, the train is on the verge to leave!", "right": "Hurry, the train <b>is on the verge of leaving</b>!", "why": "<i>Be on the verge of</i> is followed by a gerund introduced by <i>of</i>, not <i>to</i>."},
+    {"wrong": "With that talent, she is bound succeed.", "right": "With that talent, she <b>is bound to succeed</b>.", "why": "<i>Be bound to</i> needs the infinitive with <i>to</i>."},
+    {"wrong": "Will you needing the hall this evening?", "right": "<b>Will</b> you <b>be needing</b> the hall this evening?", "why": "The polite, assumption use of <i>will</i> needs the continuous form, not the bare present."},
+    {"wrong": "By Friday, the team will finish the project for two weeks.", "right": "By Friday, the team <b>will have been working on</b> the project for two weeks.", "why": "A duration completed by a future point needs the future perfect continuous, not the future simple."},
+    {"wrong": "Shall he collect the certificates tomorrow?", "right": "<b>Shall I</b> collect the certificates tomorrow?", "why": "In modern formal English, <i>shall</i> for offers and suggestions is almost always first person."}
+  ],
+  "dialogue": {
+    "title": "Opening day",
+    "context": "The class makes last-minute preparations before the mayor officially opens the school's new library, and things almost go wrong.",
+    "lines": [
+      {"speaker": "Miss Vega", "text": "Right, everyone — the mayor <b>is to</b> officially open the new library tomorrow morning."},
+      {"speaker": "Mateo", "text": "Is he definitely coming? Politicians cancel all the time."},
+      {"speaker": "Miss Vega", "text": "He confirmed yesterday. The ceremony <b>is due to</b> start at nine sharp."},
+      {"speaker": "Sofia", "text": "Look outside — the delivery van <b>is on the verge of</b> reversing straight into the gate!"},
+      {"speaker": "Liam", "text": "Someone stop him! He<b>'s about to</b> hit the new sign."},
+      {"speaker": "Nadia", "text": "Phew, that was close. Honestly, with this much chaos, something <b>is bound to</b> go wrong tomorrow."},
+      {"speaker": "Miss Vega", "text": "Don't jinx it. Now, <b>will</b> you all <b>be wearing</b> your uniforms for the photos?"},
+      {"speaker": "Sofia", "text": "Of course. And by the time the mayor arrives, the whole class <b>will have been setting up</b> chairs for two hours."},
+      {"speaker": "Mateo", "text": "Typical. Knowing our luck, it <b>will</b> rain right when the ribbon gets cut."},
+      {"speaker": "Liam", "text": "<b>Shall</b> we check the sound system one more time, just to be safe?"},
+      {"speaker": "Miss Vega", "text": "Good idea. And Mateo — <b>will</b> you <b>be bringing</b> the spare microphone, just in case?"},
+      {"speaker": "Mateo", "text": "Already in my bag."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "The final whistle blows any second — the referee ___ end the match.", "options": ["is about to", "is due to", "is to"], "answer": 0, "why": "be about to = happening in the next few moments"},
+        {"sentence": "According to the timetable, the ferry ___ depart at exactly 6 pm.", "options": ["is bound to", "is due to", "is on the verge of"], "answer": 1, "why": "be due to = scheduled, timetabled"},
+        {"sentence": "With three trophies already this season, the team ___ win the league.", "options": ["is bound to", "is about to", "is to"], "answer": 0, "why": "be bound to = certain, given the evidence"},
+        {"sentence": "The Queen ___ unveil the new wing of the museum next spring, according to the official programme.", "options": ["is about to", "is to", "is on the verge of"], "answer": 1, "why": "be to = a formal, official arrangement"},
+        {"sentence": "___ you be needing any help with the boxes?", "options": ["Do", "Will", "Are"], "answer": 1, "why": "polite future continuous, not a direct request"},
+        {"sentence": "By the time we land, we ___ flying for over fourteen hours.", "options": ["will have been", "will be", "have been"], "answer": 0, "why": "future perfect continuous for a duration completed by a future point"},
+        {"sentence": "___ I open a window? It's rather warm in here.", "options": ["Will", "Do", "Shall"], "answer": 2, "why": "shall for a formal, first-person offer"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with the correct form of the words in brackets.",
+      "items": [
+        {"sentence": "The concert ___ (about / start) any minute — take your seats.", "answers": ["is about to start"]},
+        {"sentence": "The delegation ___ (due / arrive) at noon, according to the schedule.", "answers": ["is due to arrive"]},
+        {"sentence": "After years of preparation, the team ___ (bound / succeed) at the championship.", "answers": ["is bound to succeed"]},
+        {"sentence": "Look at those clouds — we ___ (verge / get) soaked!", "answers": ["are on the verge of getting"]},
+        {"sentence": "___ (you / need) the car this weekend, or can I borrow it?", "answers": ["Will you be needing"]},
+        {"sentence": "By next year, she ___ (teach) at this school for two decades.", "answers": ["will have been teaching"]},
+        {"sentence": "___ (we / begin) the meeting, ladies and gentlemen?", "answers": ["Shall we begin"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first, using the word given. Do not change the word given. Use between two and five words.",
+      "items": [
+        {"first": "The award ceremony has been officially arranged to start at seven.", "key": "TO", "second_start": "The award ceremony", "second_end": "at seven.", "answers": ["is to start"]},
+        {"first": "The negotiations are almost certainly going to fail within days, everyone can see it coming.", "key": "VERGE", "second_start": "The negotiations are", "second_end": "failing.", "answers": ["on the verge of"]},
+        {"first": "It's certain that Nadia will pass, given her results this term.", "key": "BOUND", "second_start": "Given her results this term, Nadia", "second_end": "the exam.", "answers": ["is bound to pass"]},
+        {"first": "The mall is scheduled to open its doors to the public in exactly one hour.", "key": "DUE", "second_start": "The mall", "second_end": "to the public in exactly one hour.", "answers": ["is due to open"]},
+        {"first": "I promise I'll ring you the moment I land, don't worry.", "key": "BE", "second_start": "Don't worry —", "second_end": "you the moment I land.", "answers": ["I'll be ringing", "I will be ringing"]},
+        {"first": "By the time she retires, my grandmother will have worked at the hospital for forty years.", "key": "HAVE", "second_start": "By the time she retires, my grandmother", "second_end": "at the hospital for forty years.", "answers": ["will have been working"]}
+      ]
+    }
+  ],
+  "summary": [
+    "The near future runs from <i>on the verge of</i> (this instant) through <i>about to</i> and <i>due to</i> (scheduled) to <i>bound to</i> (certain, but not yet fixed).",
+    "<i>Be to</i> and <i>be due to</i> belong to official, scheduled or programmed events — timetables, ceremonies, announcements.",
+    "The future continuous can soften a plan into something already arranged, which is why it sounds more polite than <i>will</i> for offers and requests.",
+    "<i>Will</i> also expresses a confident assumption about the present, or a predictable habit — not only a decision about the future.",
+    "<i>Shall</i> survives in formal English mainly for first-person offers and suggestions: <i>Shall I…? / Shall we…?</i>"
+  ]
+}

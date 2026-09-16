@@ -1,0 +1,572 @@
+{
+  "id": "discourse-markers",
+  "level": "c1a",
+  "area": "Sentence building",
+  "title": "Discourse markers and cohesion",
+  "tagline": "The right connector shows how two ideas relate — not just that they're next to each other.",
+  "cefr": "C1",
+  "exam": [
+    "Reading & Use of English Part 2 — open cloze (hence, thereby, notwithstanding, such)",
+    "Reading & Use of English Part 6 — cross-text cohesion and reference",
+    "Writing Part 1 — essay: formal linkers and referencing without repetition",
+    "Speaking Parts 3 and 4 — natural spoken markers (mind you, anyway, that said)"
+  ],
+  "why": "Discourse markers are the glue that turns a list of sentences into a single, coherent argument. At C1 the range widens sharply: formal linkers like albeit, notwithstanding and hence belong in an essay or report; the former/the latter and the above avoid clumsy repetition when referring back to something already said; and a completely different set — mind you, anyway, that said — keeps spoken English natural. Reading & Use of English tests the formal set directly, and examiners reward genuine cohesion, not just a string of linking words, in both Writing tasks.",
+  "diagrams": [
+    {
+      "type": "map",
+      "title": "Discourse markers, by function",
+      "center": "Cohesion",
+      "branches": [
+        {
+          "label": "Concession (formal)",
+          "items": [
+            "albeit",
+            "notwithstanding",
+            "that said (less formal)"
+          ],
+          "tone": "a"
+        },
+        {
+          "label": "Result / means (formal)",
+          "items": [
+            "hence",
+            "thus",
+            "thereby + -ing"
+          ],
+          "tone": "b"
+        },
+        {
+          "label": "Explanation",
+          "items": [
+            "in that",
+            "given that"
+          ],
+          "tone": "c"
+        },
+        {
+          "label": "Referencing back",
+          "items": [
+            "the former / the latter",
+            "the above",
+            "such"
+          ],
+          "tone": "a"
+        },
+        {
+          "label": "Spoken markers",
+          "items": [
+            "mind you",
+            "anyway",
+            "as I was saying",
+            "that said"
+          ],
+          "tone": "b"
+        }
+      ]
+    },
+    {
+      "type": "contrast",
+      "title": "Formal linkers vs spoken markers",
+      "columns": [
+        "Formal / written",
+        "Spoken / informal"
+      ],
+      "rows": [
+        {
+          "label": "Concession",
+          "cells": [
+            "<b>albeit</b> late / <b>notwithstanding</b> the delay",
+            "<b>mind you</b>, it was late / <b>that said</b>, it was late"
+          ]
+        },
+        {
+          "label": "Returning to the point",
+          "cells": [
+            "as previously stated / to return to the point",
+            "<b>anyway</b>, as I was saying"
+          ]
+        },
+        {
+          "label": "Result",
+          "cells": [
+            "<b>hence</b> the delay / <b>thereby</b> causing a delay",
+            "so / that's why it was delayed"
+          ]
+        },
+        {
+          "label": "Typical text type",
+          "cells": [
+            "essays, reports, academic articles",
+            "conversation, Speaking Parts 3 and 4"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "formula",
+      "title": "Referring back: the former / the latter",
+      "parts": [
+        {
+          "chip": "two nouns mentioned",
+          "tone": "kw",
+          "ex": "trains and buses"
+        },
+        {
+          "chip": "the former",
+          "tone": "a",
+          "ex": "= trains, the first one named"
+        },
+        {
+          "chip": "the latter",
+          "tone": "b",
+          "ex": "= buses, the second one named"
+        },
+        {
+          "chip": "such",
+          "tone": "c",
+          "ex": "= this whole kind of thing"
+        }
+      ],
+      "caption": "Use these only after both things have already been named — never as the first mention."
+    }
+  ],
+  "form": {
+    "formula": [
+      {
+        "chip": "clause 1",
+        "tone": "kw",
+        "ex": "The results were disappointing"
+      },
+      {
+        "chip": "formal linker",
+        "tone": "a",
+        "ex": "notwithstanding / albeit / hence"
+      },
+      {
+        "chip": "→",
+        "tone": "arrow"
+      },
+      {
+        "chip": "clause 2",
+        "tone": "b",
+        "ex": "the team kept trying"
+      }
+    ],
+    "table": {
+      "head": [
+        "Marker",
+        "Function",
+        "Example"
+      ],
+      "rows": [
+        [
+          "albeit",
+          "concession, very compact, + adjective/clause",
+          "The project succeeded, <b>albeit</b> later than planned."
+        ],
+        [
+          "notwithstanding",
+          "concession, formal, + noun phrase directly",
+          "<b>Notwithstanding</b> the delays, the bridge opened on schedule."
+        ],
+        [
+          "hence / thus",
+          "result, formal, often without a full second clause",
+          "The bridge was closed for repairs; <b>hence</b> the diversion."
+        ],
+        [
+          "thereby",
+          "result or means, + -ing",
+          "She rewrote the introduction, <b>thereby</b> clarifying her argument."
+        ],
+        [
+          "in that",
+          "explanation, = because, formal",
+          "The plan is unusual <b>in that</b> it relies entirely on volunteers."
+        ],
+        [
+          "the former / the latter",
+          "referencing two things already named",
+          "We considered buses and trains; <b>the latter</b> proved cheaper."
+        ],
+        [
+          "such",
+          "referencing a whole idea or category",
+          "Persistent absence, and <b>such</b> behaviour, worries every teacher."
+        ],
+        [
+          "mind you / that said (spoken)",
+          "informal concession or addition",
+          "The test was hard — <b>mind you</b>, everyone struggled equally."
+        ]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Formal linkers of concession and result",
+      "examples": [
+        {
+          "text": "The scheme was expensive, <b>albeit</b> effective in reducing traffic.",
+          "note": "albeit + adjective, a very compact concession"
+        },
+        {
+          "text": "<b>Notwithstanding</b> some early criticism, the reform is now widely supported.",
+          "note": "notwithstanding + noun phrase, formal concession"
+        },
+        {
+          "text": "Attendance fell sharply; <b>hence</b> the school's decision to review the timetable.",
+          "note": "hence = as a result, formal"
+        }
+      ]
+    },
+    {
+      "point": "thereby and in that: precise formal connectors",
+      "examples": [
+        {
+          "text": "The council extended the deadline, <b>thereby</b> giving every team a fair chance.",
+          "note": "thereby + -ing = 'and by doing this'"
+        },
+        {
+          "text": "The essay is unusual <b>in that</b> it argues against its own title.",
+          "note": "in that = because, introduces an explanation"
+        },
+        {
+          "text": "The new bridge reduced journey times, <b>thereby</b> easing pressure on the old road.",
+          "note": "a result clause in formal register"
+        }
+      ]
+    },
+    {
+      "point": "Referencing back without repeating: the former/the latter, the above, such",
+      "examples": [
+        {
+          "text": "The school offers Cambridge and IB routes; <b>the latter</b> suits students planning to study abroad.",
+          "note": "the latter = the second of two things just mentioned"
+        },
+        {
+          "text": "<b>The above</b> figures suggest attendance rises when clubs run after school.",
+          "note": "the above = what has just been said or shown"
+        },
+        {
+          "text": "Constant phone use, poor sleep, missed deadlines — <b>such</b> patterns rarely improve without support.",
+          "note": "such = referring to a whole category just described"
+        }
+      ]
+    },
+    {
+      "point": "Spoken markers that keep a conversation natural",
+      "examples": [
+        {
+          "text": "It was a difficult exam. <b>Mind you</b>, nobody finished it in time either.",
+          "note": "mind you = adds a contrasting point casually"
+        },
+        {
+          "text": "<b>Anyway</b>, as I was saying, the trip is booked for October.",
+          "note": "anyway = returning to the main topic"
+        },
+        {
+          "text": "The film was slow. <b>That said</b>, the ending made it worth watching.",
+          "note": "that said = a spoken concession, less formal than 'nevertheless'"
+        }
+      ]
+    }
+  ],
+  "watch_out": [
+    {
+      "wrong": "Albeit the rain, we finished the match.",
+      "right": "We finished the match, <b>albeit</b> in the rain.",
+      "why": "'Albeit' is followed directly by an adjective, a clause or a short phrase — it doesn't work like 'despite + noun' in every context."
+    },
+    {
+      "wrong": "Notwithstanding of the delays, the project succeeded.",
+      "right": "<b>Notwithstanding</b> the delays, the project succeeded.",
+      "why": "'Notwithstanding' is followed directly by a noun phrase, with no preposition after it."
+    },
+    {
+      "wrong": "The lecture overran, thereby we missed the bus.",
+      "right": "The lecture overran, <b>thereby</b> making us miss the bus.",
+      "why": "'Thereby' introduces a result with an -ing form, not a new full clause with its own subject."
+    },
+    {
+      "wrong": "We discussed grammar and vocabulary; the letter matters more for the exam.",
+      "right": "We discussed grammar and vocabulary; <b>the latter</b> matters more for the exam.",
+      "why": "It's 'the latter' (= the second one mentioned), not 'the letter'."
+    },
+    {
+      "wrong": "Such behaviour worry teachers every year.",
+      "right": "<b>Such</b> behaviour worries teachers every year.",
+      "why": "'Such + uncountable/singular noun' takes a singular verb: behaviour worries, not worry."
+    },
+    {
+      "wrong": "Mind you that the shop closes early on Sundays.",
+      "right": "<b>Mind you</b>, the shop closes early on Sundays.",
+      "why": "'Mind you' is a spoken discourse marker that stands alone, followed by a comma — it doesn't take 'that'."
+    }
+  ],
+  "dialogue": {
+    "title": "Two registers, one idea",
+    "context": "Miss Vega compares how Liam and Nadia express the same opinion — one in a spoken discussion, one in a formal essay — to show how discourse markers change with register.",
+    "lines": [
+      {
+        "speaker": "Miss Vega",
+        "text": "Liam, tell the class what you think about school uniforms — informally, like you would to a friend."
+      },
+      {
+        "speaker": "Liam",
+        "text": "Honestly, uniforms are a bit pointless. <b>Mind you</b>, they do stop arguments about clothes."
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "Good. Now, Nadia, give me the same idea in essay style."
+      },
+      {
+        "speaker": "Nadia",
+        "text": "'Uniforms may seem unnecessary; <b>notwithstanding</b> this, they remove a common source of conflict among students.'"
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "Excellent contrast. Liam, what's your final point, casually?"
+      },
+      {
+        "speaker": "Liam",
+        "text": "<b>Anyway</b>, most students get used to it after the first term."
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "And Nadia, formally?"
+      },
+      {
+        "speaker": "Nadia",
+        "text": "'Most students adapt within a term; <b>hence</b>, initial objections rarely persist.'"
+      },
+      {
+        "speaker": "Sofia",
+        "text": "Can I add something about two schools we compared — the public one and the private one?"
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "Go on."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "'We compared the public and the private school; <b>the latter</b> enforces uniform rules far more strictly.'"
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "Perfect use of 'the latter'. <b>That said</b>, remember: never mix these two registers in the same paragraph."
+      }
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {
+          "sentence": "The trip was expensive, ___ unforgettable.",
+          "options": [
+            "albeit",
+            "notwithstanding",
+            "thereby"
+          ],
+          "answer": 0,
+          "why": "'albeit' + adjective is a compact way of conceding a point"
+        },
+        {
+          "sentence": "___ the criticism, the mayor pressed ahead with the plan.",
+          "options": [
+            "Albeit",
+            "Notwithstanding",
+            "Hence"
+          ],
+          "answer": 1,
+          "why": "'notwithstanding' + noun phrase = 'despite', a formal concession"
+        },
+        {
+          "sentence": "Ticket sales fell sharply; ___ the decision to cancel the tour.",
+          "options": [
+            "hence",
+            "thereby",
+            "in that"
+          ],
+          "answer": 0,
+          "why": "'hence' introduces a result, often without a full second clause"
+        },
+        {
+          "sentence": "The team rewrote the proposal, ___ addressing every objection raised.",
+          "options": [
+            "hence",
+            "in that",
+            "thereby"
+          ],
+          "answer": 2,
+          "why": "'thereby' + -ing = 'and by doing this'"
+        },
+        {
+          "sentence": "The offer is unusual ___ it requires no deposit at all.",
+          "options": [
+            "in that",
+            "such that",
+            "the latter"
+          ],
+          "answer": 0,
+          "why": "'in that' introduces an explanation, similar to 'because'"
+        },
+        {
+          "sentence": "We can walk or take the bus; ___ takes twice as long.",
+          "options": [
+            "the former",
+            "the latter",
+            "such"
+          ],
+          "answer": 1,
+          "why": "'the latter' refers to the second of two things just mentioned — the bus"
+        },
+        {
+          "sentence": "The lecture was long. ___, most students stayed until the end.",
+          "options": [
+            "Mind you",
+            "Notwithstanding",
+            "In that"
+          ],
+          "answer": 0,
+          "why": "a spoken discourse marker adding a contrasting comment"
+        },
+        {
+          "sentence": "Late arrivals, missed deadlines, forgotten homework — ___ patterns concern every teacher.",
+          "options": [
+            "the former",
+            "such",
+            "thereby"
+          ],
+          "answer": 1,
+          "why": "'such' refers back to a whole category just listed"
+        }
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with one or two words.",
+      "items": [
+        {
+          "sentence": "The plan was risky, ___ ultimately successful.",
+          "answers": [
+            "albeit"
+          ]
+        },
+        {
+          "sentence": "___ the setbacks, the charity reached its fundraising target.",
+          "answers": [
+            "Notwithstanding"
+          ]
+        },
+        {
+          "sentence": "The bridge was closed for months; ___ the long detour every morning.",
+          "answers": [
+            "hence"
+          ]
+        },
+        {
+          "sentence": "She simplified the instructions, ___ reducing the number of errors.",
+          "answers": [
+            "thereby"
+          ]
+        },
+        {
+          "sentence": "The offer is generous ___ it covers accommodation as well as travel.",
+          "answers": [
+            "in that"
+          ]
+        },
+        {
+          "sentence": "We studied French and German; ___ proved far more useful for her career.",
+          "answers": [
+            "the latter"
+          ]
+        },
+        {
+          "sentence": "Constant lateness, unfinished homework — ___ habits rarely go unnoticed.",
+          "answers": [
+            "such"
+          ]
+        },
+        {
+          "sentence": "The film dragged in places. ___, the acting was superb.",
+          "answers": [
+            "That said",
+            "Mind you"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first, using the word given. Do not change the word given. Use between two and five words.",
+      "items": [
+        {
+          "first": "The trip was fun, but it was tiring for everyone.",
+          "key": "ALBEIT",
+          "second_start": "The trip was fun,",
+          "second_end": "for everyone.",
+          "answers": [
+            "albeit tiring"
+          ]
+        },
+        {
+          "first": "Despite the setbacks, the charity reached its fundraising target.",
+          "key": "NOTWITHSTANDING",
+          "second_start": "",
+          "second_end": "the charity reached its fundraising target.",
+          "answers": [
+            "Notwithstanding the setbacks,"
+          ]
+        },
+        {
+          "first": "Ticket sales fell sharply, so the tour was cancelled.",
+          "key": "HENCE",
+          "second_start": "Ticket sales fell sharply;",
+          "second_end": "of the tour.",
+          "answers": [
+            "hence the cancellation"
+          ]
+        },
+        {
+          "first": "She simplified the instructions, and this reduced the number of errors.",
+          "key": "THEREBY",
+          "second_start": "She simplified the instructions,",
+          "second_end": "the number of errors.",
+          "answers": [
+            "thereby reducing"
+          ]
+        },
+        {
+          "first": "The offer is generous because it covers accommodation as well as travel.",
+          "key": "THAT",
+          "second_start": "The offer is generous",
+          "second_end": "it covers accommodation as well as travel.",
+          "answers": [
+            "in that"
+          ]
+        },
+        {
+          "first": "We studied French and German; German proved far more useful for her career.",
+          "key": "LATTER",
+          "second_start": "We studied French and German;",
+          "second_end": "proved far more useful for her career.",
+          "answers": [
+            "the latter"
+          ]
+        }
+      ]
+    }
+  ],
+  "summary": [
+    "Formal linkers like <i>albeit, notwithstanding, hence</i> and <i>thereby</i> belong in essays and reports; keep <i>mind you, anyway</i> and <i>that said</i> for speech.",
+    "<i>The former/the latter</i>, <i>the above</i> and <i>such</i> refer back to something already mentioned, without clumsy repetition.",
+    "<i>In that</i> introduces an explanation (= because); <i>thereby</i> introduces a result, usually with an -ing verb.",
+    "Real cohesion is more than linking words: repeating a key idea with a synonym ties a paragraph together as much as any connector does.",
+    "Never mix registers in the same paragraph — a formal essay with 'anyway' in it, or a conversation full of 'notwithstanding', both sound wrong."
+  ]
+}

@@ -1,862 +1,864 @@
 {
- "id": "c1a-05",
- "level": "c1a",
- "number": 5,
- "title": "Joining the dots",
- "topic": "discourse markers & cohesion",
- "grammar": "Discourse markers and cohesion (however, moreover, consequently, in contrast)",
- "wordlist": [
-  "cohesion",
-  "discourse",
-  "contrast",
-  "signpost",
-  "coherent",
-  "disjointed",
-  "qualify",
-  "furthermore",
-  "nevertheless",
-  "tie together"
- ],
- "wordlist_extra": [
-  "furthermore",
-  "nevertheless",
-  "coherent"
- ],
- "exam_focus": {
-  "paper": "Reading & Use of English",
-  "part": 7,
-  "skill": "gapped text"
- },
- "characters": [
-  "nova"
- ],
- "scene": {
-  "speaker": "nova",
-  "bubble": "A good argument isn't a pile of points — it's a line the reader can follow from the first sentence to the last. Today you learn what really holds a text together.",
-  "intro": "A pile of good points is not an argument. This unit is about the thread that turns separate ideas into a single line of thought: discourse markers, reference and substitution. You will put six missing paragraphs back into a feature article in the format of Reading and Use of English Part 7, complete an open cloze in the format of Part 2, tackle a lexical cloze in the format of Part 1, and follow five different speakers in the format of Listening Part 4. You will also plan the essay from Writing Part 1. For the Inspiring Nordic project, this is how you join the dots so the reader never loses the thread. Let's begin."
- },
- "activities": [
-  {
-   "code": "A",
-   "type": "pairwork",
-   "title": "Speaking — Parts 1 and 2. Talk with a partner, then record yourself.",
-   "outputs": [
-    "book",
-    "digital"
-   ],
-   "speaking": {
-    "part": 2,
-    "name": "Interview and long turn"
-   },
-   "tips": {
-    "expect": "Part 1 (2 minutes): the examiner asks you and your partner about yourselves — routines, interests, plans. Part 2 (about 4 minutes): you speak alone for a minute about two of three pictures, answering the two questions printed above them; your partner then answers a short question about your pictures (30 seconds).",
-    "how": [
-     "In Part 1, develop each answer with a reason or a brief example rather than a one-line reply.",
-     "In Part 2, don't just describe what you see: compare the two pictures and answer both questions, speculating with language like <i>it looks as though…, she might well be…</i>",
-     "Keep talking for the whole minute. If you run out of things to say about the first question, move on to the second."
-    ]
-   },
-   "data": {
-    "text": "Part 1: talk about explaining things clearly. Part 2: compare two of the three pictures and say what might make it hard for the person to get their point across.",
-    "parts": [
-     {
-      "part": 1,
-      "title": "Interview",
-      "time": "2 min",
-      "prompts": [
-       "When you're explaining something complicated, do you plan what you're going to say, or just start talking?",
-       "Do you find it easy to follow an argument that jumps from one idea to another? Why, or why not?",
-       "Is there a subject you find hard to explain clearly? What makes it difficult?",
-       "Who do you know who explains things particularly well? What do they do differently?"
-      ]
-     },
-     {
-      "part": 2,
-      "title": "Long turn",
-      "time": "1 min + 30 s",
-      "question": "Compare two of the pictures and say <b>what might make it hard for this person to get their point across</b> and <b>how they could make their explanation clearer</b>.",
-      "pictures": [
-       {
-        "emoji": "🧑‍🏫📊",
-        "caption": "a teacher explaining a diagram to a confused class"
-       },
-       {
-        "emoji": "🗣️📝",
-        "caption": "a student giving a rambling answer in an exam"
-       },
-       {
-        "emoji": "👥🧩",
-        "caption": "two friends trying to piece together what happened after an argument"
-       }
+  "id": "c1a-05",
+  "level": "c1a",
+  "number": 5,
+  "title": "Joining the dots",
+  "topic": "discourse markers & cohesion",
+  "grammar": "Discourse markers and cohesion (however, moreover, consequently, in contrast)",
+  "wordlist": [
+    "cohesion",
+    "discourse",
+    "contrast",
+    "signpost",
+    "coherent",
+    "disjointed",
+    "qualify",
+    "furthermore",
+    "nevertheless",
+    "tie together"
+  ],
+  "wordlist_extra": [
+    "furthermore",
+    "nevertheless",
+    "coherent"
+  ],
+  "exam_focus": {
+    "paper": "Reading & Use of English",
+    "part": 7,
+    "skill": "gapped text"
+  },
+  "characters": [
+    "nova"
+  ],
+  "scene": {
+    "speaker": "nova",
+    "bubble": "A good argument isn't a pile of points — it's a line the reader can follow from the first sentence to the last. Today you learn what really holds a text together.",
+    "intro": "A pile of good points is not an argument. This unit is about the thread that turns separate ideas into a single line of thought: discourse markers, reference and substitution. You will put six missing paragraphs back into a feature article in the format of Reading and Use of English Part 7, complete an open cloze in the format of Part 2, tackle a lexical cloze in the format of Part 1, and follow five different speakers in the format of Listening Part 4. You will also plan the essay from Writing Part 1. For the Inspiring Nordic project, this is how you join the dots so the reader never loses the thread. Let's begin."
+  },
+  "activities": [
+    {
+      "code": "A",
+      "type": "pairwork",
+      "title": "Speaking — Parts 1 and 2. Talk with a partner, then record yourself.",
+      "outputs": [
+        "book",
+        "digital"
       ],
-      "partner": "Which of these situations would be hardest for you to handle calmly? Why? (about 30 seconds)"
-     }
-    ],
-    "useful_language": {
-     "Speculating": [
-      "They may well be…",
-      "It looks as though…",
-      "I'd imagine she's finding it hard to…",
-      "Presumably he's trying to…"
-     ],
-     "Comparing": [
-      "Whereas the teacher is…, the student…",
-      "What they have in common is…",
-      "In both cases…"
-     ],
-     "Giving your view": [
-      "To my mind…",
-      "I can't help feeling that…",
-      "If anything, …"
-     ]
-    }
-   }
-  },
-  {
-   "code": "B",
-   "type": "match_words",
-   "title": "Vocabulary — cohesion and argument. Match each word with its meaning.",
-   "outputs": [
-    "book",
-    "digital",
-    "quiz"
-   ],
-   "data": {
-    "left_label": "Word",
-    "right_label": "Meaning",
-    "pairs": [
-     {
-      "left": "cohesion",
-      "right": "the quality of ideas fitting together smoothly as a whole"
-     },
-     {
-      "left": "discourse",
-      "right": "connected spoken or written communication, especially on a serious topic"
-     },
-     {
-      "left": "contrast",
-      "right": "a clear difference between two things placed together"
-     },
-     {
-      "left": "signpost",
-      "right": "a word or phrase that shows the reader where an argument is heading"
-     },
-     {
-      "left": "coherent",
-      "right": "logical and easy to follow because the parts connect clearly"
-     },
-     {
-      "left": "disjointed",
-      "right": "lacking a clear connection between ideas or parts"
-     },
-     {
-      "left": "qualify",
-      "right": "to add a detail that limits or makes a statement less absolute"
-     },
-     {
-      "left": "furthermore",
-      "right": "used to introduce an additional, supporting point"
-     },
-     {
-      "left": "nevertheless",
-      "right": "in spite of what has just been said"
-     },
-     {
-      "left": "tie together",
-      "right": "to link separate ideas or parts so that they form a whole"
-     }
-    ]
-   }
-  },
-  {
-   "code": "C",
-   "type": "gapped_text",
-   "title": "Reading and Use of English Part 7 — gapped text. Six paragraphs have been removed from the article. Choose from the paragraphs A–G the one which fits each gap.",
-   "outputs": [
-    "book",
-    "digital"
-   ],
-   "tips": {
-    "expect": "One long article (about 700–850 words including the missing paragraphs) with six gaps. You choose the correct paragraph for each gap from seven options — one paragraph is not used at all.",
-    "how": [
-     "Read the base text first, ignoring the gaps, to get the overall argument.",
-     "For each gap, look at what comes immediately <b>before</b> and <b>after</b> it. The missing paragraph must connect to both: watch for references (<i>this, such, the former, the latter</i>), names that need introducing, and links of time, contrast or cause.",
-     "Check your answer by reading the joined text straight through — a correct paragraph makes the argument flow without a bump."
-    ],
-    "remember": "The extra paragraph is designed to look plausible in more than one place. If two paragraphs seem to fit the same gap, the wrong one is usually missing a specific link to what follows."
-   },
-   "data": {
-    "title": "The invisible thread",
-    "text": "<p>Ask anyone who has sat through a bad lecture what went wrong, and they rarely blame the facts. The facts, more often than not, were perfectly sound. What was missing was the thread — the sense that each sentence had grown out of the one before it, rather than being dropped beside it. For our Inspiring Nordic project, three of us spent a week trying to work out what separates an argument that holds together from a pile of true statements that merely sit next to each other.</p><p>{1}</p><p>Our first stop was Miss Vega's filing cabinet, where she keeps a decade of essay drafts submitted for exam practice. Reading twenty of them in a single afternoon taught us more than any grammar lesson could have. The strongest scripts, without exception, read like one unbroken sentence stretched over four paragraphs; the weakest read like four separate essays stapled together by accident.</p><p>{2}</p><p>Word order mattered too, and not only where a linking word was placed. Every strong essay recycled its own vocabulary: <i>this problem</i>, <i>such a claim</i>, <i>the argument above</i>. Rather than restating an idea in full, the writer simply pointed back at it, and the reader, trusting that the pointer meant something, kept following.</p><p>{3}</p><p>None of this, it turns out, is unique to Cambridge exam scripts. The same mechanism runs through courtroom closing arguments, scientific papers and the best man's speech at a wedding: an idea is planted early, referred back to repeatedly, and only fully resolved at the very end.</p><p>{4}</p><p>Nadia, who is writing her extended essay on rhetoric, put it more bluntly than any of us had managed. A list, she said, can be rearranged without anyone noticing; a genuine argument cannot. If you can swap paragraph two and paragraph three of an essay and it still makes perfect sense, something is wrong — because in a real argument, each part depends on what came immediately before it.</p><p>{5}</p><p>That does not mean an essay full of <i>however</i> and <i>therefore</i> is automatically well organised. Mateo tested this by inserting linking words into a genuinely disjointed piece of writing without changing a single idea underneath. The result read no more convincingly than before; if anything, the excess of signposting only drew attention to how little the sentences actually had to do with one another.</p><p>{6}</p><p>So a thread, in the end, is not a decoration stitched on afterwards. It has to run through an argument from the very first sentence, tying together points that were never really separate to begin with. Once you start noticing it in someone else's writing, oddly enough, you begin hearing it everywhere else too — in the shape of a debate, an advert or a well-told joke.</p>",
-    "paragraphs": [
-     {
-      "letter": "A",
-      "text": "The same principles, we suspect, apply just as strongly to spoken English, although nobody in the group had the courage to record an entire class discussion to check. Certainly the pauses and false starts of speech make signposting even more necessary than in writing, if only to remind a listener what a speaker is still talking about."
-     },
-     {
-      "letter": "B",
-      "text": "Sofía tested the theory on her own writing. She took an essay that had scored poorly, rewrote nothing except the opening word of each paragraph, and watched her score rise by a full band at the next practice test. The ideas underneath had not changed at all — only the visible joints between them."
-     },
-     {
-      "letter": "C",
-      "text": "This raised an obvious question: if discourse markers were the glue, could we not simply sprinkle a few over a weak argument and fix it? It sounded too easy to be true, and Mateo, ever the sceptic, volunteered to find out for the rest of us."
-     },
-     {
-      "letter": "D",
-      "text": "What the experiment confirmed, in the end, was something Miss Vega had told us on the very first day, and which none of us had quite believed until we had broken an essay in order to check it: a linking word only works when there is already a link underneath it for the word to describe."
-     },
-     {
-      "letter": "E",
-      "text": "We agreed on one rule before opening a single script: judge nothing by its vocabulary alone. An essay could use every discourse marker in the coursebook and still fall apart under its own weight, or use almost none of them and still read perfectly. What we were hunting for was something harder to fake."
-     },
-     {
-      "letter": "F",
-      "text": "Once you start looking for this pattern, it becomes strangely difficult to switch it off again. A good comedian, we noticed, plants a small detail early in a routine purely so that the final joke can refer back to it, and the laugh depends entirely on the audience remembering that earlier moment."
-     },
-     {
-      "letter": "G",
-      "text": "Looking closer at the strongest scripts, one habit stood out immediately. The best writers almost never introduced a brand-new noun phrase for something already mentioned two lines earlier. Instead, they built a small, private vocabulary of pointers that ran through the whole essay."
-     }
-    ],
-    "answers": [
-     "E",
-     "G",
-     "B",
-     "F",
-     "C",
-     "D"
-    ]
-   }
-  },
-  {
-   "code": "D",
-   "type": "grammar_box",
-   "title": "Language focus 1 — Discourse markers and cohesion",
-   "outputs": [
-    "book",
-    "digital"
-   ],
-   "data": {
-    "title": "Discourse markers and cohesion",
-    "can": "I can link ideas clearly across a whole text using discourse markers for contrast, addition, cause and effect, exemplification and reference.",
-    "intro": "A convincing argument is not a pile of separate points; it is a single line of thought. Discourse markers are the joints that let a reader move from one idea to the next without losing the thread, while words like <i>this</i>, <i>such</i> and <i>the latter</i> let you point back at something already said instead of repeating it in full.",
-    "examples": [
-     {
-      "text": "The plan is cheap; <b>however</b>, it is unrealistic.",
-      "note": "however = contrast"
-     },
-     {
-      "text": "It cuts costs; <b>moreover</b>, it saves time.",
-      "note": "moreover = adding a stronger point"
-     },
-     {
-      "text": "Demand fell; <b>as a result</b>, prices dropped.",
-      "note": "as a result = consequence"
-     },
-     {
-      "text": "Liam enjoys debating, <b>whereas</b> Nadia prefers writing alone.",
-      "note": "whereas joins two clauses in one sentence — it does not stand alone like however"
-     },
-     {
-      "text": "The scheme failed for one reason above all: <b>namely</b>, a lack of funding.",
-      "note": "namely = introduces a specific example or reformulation"
-     },
-     {
-      "text": "Two students objected loudly. <b>The latter</b> later apologised.",
-      "note": "the latter = refers back to the second of two things just mentioned"
-     },
-     {
-      "text": "Sofía revised the essay twice; Mateo chose not to <b>do so</b>.",
-      "note": "do so = substitutes for a whole verb phrase already mentioned"
-     }
-    ],
-    "rules": [
-     "Contrast: <b>however, nevertheless, whereas, on the other hand</b>. Addition: <b>moreover, furthermore, in addition</b>. Cause/consequence: <b>consequently, therefore, as a result, thus</b>.",
-     "Exemplification and reformulation: <b>namely</b> (introduces a specific example), <b>in other words</b> (restates more simply).",
-     "Reference and substitution keep a text from repeating itself: <i>this/such</i> point back at an idea already mentioned; <i>the former/the latter</i> distinguish between two things just named; <i>do so</i> replaces a repeated verb phrase.",
-     "Punctuation: after a full stop or semicolon, a sentence-initial marker is usually followed by a comma — <i>However, …</i>; <i>…; however, …</i>. <i>Whereas</i>, by contrast, joins two clauses inside one sentence.",
-     "Do not overuse markers: one per idea-shift is emphatic; a marker in every sentence feels mechanical rather than fluent.",
-     "In formal writing, choose the marker that matches the exact logical relationship — <i>however</i> and <i>although</i> are not interchangeable, even though both express contrast."
-    ],
-    "practice": {
-     "instructions": "Choose the best marker.",
-     "items": [
-      {
-       "sentence": "The proposal was ambitious; ___, it was never fully funded.",
-       "options": [
-        "moreover",
-        "however",
-        "namely"
-       ],
-       "answer": 1
+      "speaking": {
+        "part": 2,
+        "name": "Interview and long turn"
       },
-      {
-       "sentence": "Sales fell sharply; ___, the company cut a third of its staff.",
-       "options": [
-        "in contrast",
-        "as a result",
-        "in other words"
-       ],
-       "answer": 1
+      "tips": {
+        "expect": "Part 1 (2 minutes): the examiner asks you and your partner about yourselves — routines, interests, plans. Part 2 (about 4 minutes): you speak alone for a minute about two of three pictures, answering the two questions printed above them; your partner then answers a short question about your pictures (30 seconds).",
+        "how": [
+          "In Part 1, develop each answer with a reason or a brief example rather than a one-line reply.",
+          "In Part 2, don't just describe what you see: compare the two pictures and answer both questions, speculating with language like <i>it looks as though…, she might well be…</i>",
+          "Keep talking for the whole minute. If you run out of things to say about the first question, move on to the second."
+        ]
       },
-      {
-       "sentence": "___ Liam enjoys debating, Nadia prefers writing quietly.",
-       "options": [
-        "However",
-        "Moreover",
-        "Whereas"
-       ],
-       "answer": 2
-      },
-      {
-       "sentence": "The report raised one serious concern: ___ the lack of any long-term funding.",
-       "options": [
-        "namely",
-        "nevertheless",
-        "moreover"
-       ],
-       "answer": 0
-      },
-      {
-       "sentence": "Two students disagreed publicly at the debate: one calmly, one furiously. ___ later apologised for losing his temper.",
-       "options": [
-        "the former",
-        "the latter",
-        "the same student"
-       ],
-       "answer": 1
-      },
-      {
-       "sentence": "Sofía revised her whole essay before the deadline; Mateo chose not to ___.",
-       "options": [
-        "such",
-        "this",
-        "do so"
-       ],
-       "answer": 2
-      },
-      {
-       "sentence": "The plan cuts costs; ___, it reduces waste.",
-       "options": [
-        "moreover",
-        "on the other hand",
-        "namely"
-       ],
-       "answer": 0
+      "data": {
+        "text": "Part 1: talk about explaining things clearly. Part 2: compare two of the three pictures and say what might make it hard for the person to get their point across.",
+        "parts": [
+          {
+            "part": 1,
+            "title": "Interview",
+            "time": "2 min",
+            "prompts": [
+              "When you're explaining something complicated, do you plan what you're going to say, or just start talking?",
+              "Do you find it easy to follow an argument that jumps from one idea to another? Why, or why not?",
+              "Is there a subject you find hard to explain clearly? What makes it difficult?",
+              "Who do you know who explains things particularly well? What do they do differently?"
+            ]
+          },
+          {
+            "part": 2,
+            "title": "Long turn",
+            "time": "1 min + 30 s",
+            "question": "Compare two of the pictures and say <b>what might make it hard for this person to get their point across</b> and <b>how they could make their explanation clearer</b>.",
+            "pictures": [
+              {
+                "emoji": "🧑‍🏫📊",
+                "caption": "a teacher explaining a diagram to a confused class"
+              },
+              {
+                "emoji": "🗣️📝",
+                "caption": "a student giving a rambling answer in an exam"
+              },
+              {
+                "emoji": "👥🧩",
+                "caption": "two friends trying to piece together what happened after an argument"
+              }
+            ],
+            "partner": "Which of these situations would be hardest for you to handle calmly? Why? (about 30 seconds)"
+          }
+        ],
+        "useful_language": {
+          "Speculating": [
+            "They may well be…",
+            "It looks as though…",
+            "I'd imagine she's finding it hard to…",
+            "Presumably he's trying to…"
+          ],
+          "Comparing": [
+            "Whereas the teacher is…, the student…",
+            "What they have in common is…",
+            "In both cases…"
+          ],
+          "Giving your view": [
+            "To my mind…",
+            "I can't help feeling that…",
+            "If anything, …"
+          ]
+        }
       }
-     ]
-    }
-   }
-  },
-  {
-   "code": "E",
-   "type": "gap_text",
-   "title": "Use of English Part 2 — open cloze. Write ONE word in each gap.",
-   "outputs": [
-    "digital"
-   ],
-   "tips": {
-    "expect": "A short text with eight gaps and no options given. The missing words are mostly grammar words: prepositions, relatives, auxiliaries, articles and parts of fixed phrases.",
-    "how": [
-     "Read the whole text once before filling any gap — later sentences often confirm what a gap needs.",
-     "Look at both sides of each gap: does it need a preposition after a fixed phrase, a relative pronoun, or a word completing a linking expression?",
-     "Only one word goes in each gap, and contractions are not allowed."
-    ],
-    "remember": "Check your spelling. A correct word spelt wrongly scores nothing."
-   },
-   "data": {
-    "text": "Why do some talks stay in the memory long after the details have faded, while others disappear the moment they end? The difference has less {1} do with cleverness than with structure: a speaker who connects each point clearly {2} the next gives an audience something worth following, while one who jumps around, however brilliant the individual ideas, quickly loses them. It is not only what is said {3} matters, but the order in which it arrives.\n\n{4} struck me most at a debate final I watched last month was not the facts each side had gathered — both teams had clearly done their research — {5} the way one team, before introducing anything new, first reminded the audience {6} a claim made minutes earlier. By the final round their argument felt inevitable, {7} though every step had been agreed in advance. The other team, {8} contrast, offered six separate observations, any one of which could have been dropped without the speech losing much at all.\n\nEver since that afternoon, I have found it hard to sit through any talk without silently sorting each new sentence into one of two piles in my head: genuinely connected to what came before, or simply added on beside it.",
-    "answers": [
-     "to",
-     "with",
-     "that",
-     "What",
-     "but",
-     "of",
-     "as",
-     "in"
-    ]
-   }
-  },
-  {
-   "code": "F",
-   "type": "listening_match",
-   "title": "Listening Part 4 — multiple matching. You will hear five short talks. Complete both tasks as you listen.",
-   "outputs": [
-    "digital"
-   ],
-   "audio": "c1a/u05-f.mp3",
-   "tips": {
-    "expect": "Part 4 (about 5 minutes): you hear five short, unrelated monologues on a related theme, each about 30 seconds. There are two tasks, each with eight options (A–H); while listening once, you complete both tasks, choosing a different letter for each speaker in each task.",
-    "how": [
-     "Skim both sets of options before listening and note the general idea of each; some overlap closely, so listen for the detail that separates them.",
-     "Task One usually asks for the main point of what a speaker says; Task Two usually asks for an attitude or feeling. The same words in the extract can answer both, so listen for content and tone separately.",
-     "You hear the recording twice: use the first listening for Task One and confirm or complete Task Two on the second."
-    ],
-    "remember": "Each letter is used only once per task. If two speakers seem to fit the same option, at least one of your answers is based on a misheard detail."
-   },
-   "data": {
-    "voice_note": "Cinco hablantes distintos (Speaker 1–5), monólogos independientes sin relación entre sí (formato real de Listening Part 4).",
-    "script": "Speaker 1: I entered a public-speaking competition last spring with a talk about renewable energy, absolutely convinced it would sink under the weight of statistics. What actually happened surprised me. I'd built the whole thing around one image – a single lightbulb – and kept coming back to it every few minutes, however far the argument had wandered into figures and policy. Afterwards, three separate judges mentioned that image, not the numbers I'd sweated over for weeks. It taught me that an audience doesn't remember a talk because every fact was accurate; they remember it because they could feel one idea running underneath all the others, holding the whole thing together.\n[pause]\nSpeaker 2: Marking practice essays for my tutoring group, I started to notice something a bit depressing. Half of them had learned exactly the same trick: drop in 'however', 'moreover' and 'consequently' at regular intervals and the essay suddenly looks organised, at least at first glance. Strip those words out, though, and several of the arguments simply fall apart – the ideas underneath were never actually connected, just dressed up to look that way. I've started telling my students that a linking word is a promise, not a decoration, and if the sentence on either side doesn't keep that promise, the word is doing more harm than good.\n[pause]\nSpeaker 3: My grandfather tells the worst-organised stories I have ever heard – he'll start describing a fishing trip, wander off into an argument he had with a neighbour thirty years ago, then somehow end up back at the fish. On paper it sounds unbearable. In practice, everyone at the table is completely hooked, because he's so obviously delighted by his own tangents that you want to follow him anywhere. There's barely a 'however' or a 'therefore' in the whole performance. It's made me question whether the neat, signposted structure we're taught at school is really what makes people listen, or just what makes people mark you highly.\n[pause]\nSpeaker 4: I edit our school newsletter, and last month one article just wasn't landing, no matter how many times I reworded the sentences. In the end I gave up trying to fix the language and moved the third paragraph to the start instead. Nothing else changed – same facts, same linking words, same conclusion – and suddenly the whole piece read as though it had always been meant to go that way. It was a genuinely satisfying moment, realising that the problem had never been the words joining the ideas together; it was the order the ideas had been placed in to begin with.\n[pause]\nSpeaker 5: I sat through a two-hour lecture recently where the speaker seemed to have learned a list of linking words and was determined to use every single one. Furthermore this, consequently that, on the other hand something else – by the end I felt like I'd been shouted directions the entire way through a city I already knew. None of the individual points were wrong, but the constant signposting stopped feeling like guidance and started feeling like noise, as if he didn't trust us to notice the connections for ourselves. I left more exhausted by the linking words than by the actual content of the talk.",
-    "speakers": [
-     "Speaker 1",
-     "Speaker 2",
-     "Speaker 3",
-     "Speaker 4",
-     "Speaker 5"
-    ],
-    "tasks": [
-     {
-      "title": "Task One",
-      "prompt": "For questions 1–5, choose from the list (A–H) what each speaker says is the main point about what makes a talk or a piece of writing work. Use the letters only once.",
-      "options": [
-       "A single central idea can hold a whole talk together.",
-       "Linking words can create an illusion of structure that isn't really there.",
-       "Genuine enthusiasm can connect ideas even without formal signposting.",
-       "Changing the order of paragraphs can solve a problem that rewording cannot.",
-       "Too many linking words can make a talk exhausting to follow.",
-       "A text is only coherent if every paragraph is exactly the same length.",
-       "The best writers avoid using any linking words at all.",
-       "Audiences remember facts better when they are repeated several times."
-      ],
-      "answers": [
-       "A",
-       "B",
-       "C",
-       "D",
-       "E"
-      ]
-     },
-     {
-      "title": "Task Two",
-      "prompt": "For questions 6–10, choose from the list (A–H) how each speaker feels about what they describe. Use the letters only once.",
-      "options": [
-       "mildly amused and affectionate",
-       "pleasantly surprised",
-       "quietly proud",
-       "sceptical about a technique that is often taught",
-       "irritated and worn out",
-       "completely indifferent",
-       "embarrassed about a mistake",
-       "anxious about an upcoming exam"
-      ],
-      "answers": [
-       "B",
-       "D",
-       "A",
-       "C",
-       "E"
-      ]
-     }
-    ]
-   }
-  },
-  {
-   "code": "G",
-   "type": "grammar_box",
-   "title": "Language focus 2 — Substitution and ellipsis",
-   "outputs": [
-    "book",
-    "digital"
-   ],
-   "data": {
-    "title": "Substitution and ellipsis",
-    "can": "I can avoid repeating words by using substitution (so, do, one, likewise) and ellipsis (leaving out words that the reader can supply).",
-    "intro": "Repeating the same words is not cohesive; it is just repetition. Advanced English keeps a text moving by substituting a short word for something already said, or by leaving it out altogether once the reader can recover it from context.",
-    "examples": [
-     {
-      "text": "Liam finished on time, and <b>so did</b> Nadia.",
-      "note": "so did = substitutes for the whole verb phrase after an affirmative statement"
-     },
-     {
-      "text": "Sofía can't stand editing, and <b>neither can</b> Mateo.",
-      "note": "neither/nor + auxiliary = the same substitution after a negative"
-     },
-     {
-      "text": "‘Will the plan work?’ ‘I <b>hope so</b>.’",
-      "note": "so replaces a whole clause after hope, think, expect, be afraid, suppose"
-     },
-     {
-      "text": "I don't like this draft; I prefer the blue <b>one</b>.",
-      "note": "one substitutes for a countable noun already mentioned"
-     },
-     {
-      "text": "She revised the essay twice; he did <b>likewise</b>.",
-      "note": "likewise/similarly substitutes for a whole action"
-     },
-     {
-      "text": "Sofía wanted feedback, and Nadia [wanted feedback] too.",
-      "note": "ellipsis: the repeated verb phrase is simply left out"
-     },
-     {
-      "text": "Mateo can present today; Liam [can present] tomorrow.",
-      "note": "ellipsis after an auxiliary: only <i>can</i> is kept"
-     }
-    ],
-    "rules": [
-     "Substitution replaces a word or phrase with a short one: <i>so/neither/nor</i> (after hope, think, believe, be afraid, expect, suppose); <i>one/ones</i> (for a countable noun); <i>do so/likewise</i> (for a verb phrase).",
-     "After <i>so</i> and <i>neither/nor</i> at the start of a clause, invert subject and auxiliary — <b>so did Nadia</b>, <b>neither can Mateo</b> — the same subject-auxiliary inversion you use after a negative adverbial.",
-     "Ellipsis leaves out a word or phrase entirely once it is recoverable from context, usually after an auxiliary or a coordinating conjunction: <i>Mateo can present today; Liam [can present] tomorrow.</i>",
-     "Ellipsis is common after <i>and, but, or</i> and in short answers; do not use it if the missing words are not completely recoverable — ambiguity kills cohesion instead of creating it.",
-     "In formal writing, prefer one clear substitution per idea; stacking several in one sentence confuses rather than streamlines."
-    ],
-    "practice": {
-     "instructions": "Choose the correct form.",
-     "items": [
-      {
-       "sentence": "Nadia enjoyed the debate, and so ___ Mateo.",
-       "options": [
-        "does",
-        "did",
-        "do"
-       ],
-       "answer": 1
-      },
-      {
-       "sentence": "‘Is the deadline still Friday?’ ‘I ___ so.’",
-       "options": [
-        "want",
-        "wish",
-        "hope"
-       ],
-       "answer": 2
-      },
-      {
-       "sentence": "Liam can't come to the meeting, and ___ can Sofía.",
-       "options": [
-        "so",
-        "neither",
-        "either"
-       ],
-       "answer": 1
-      },
-      {
-       "sentence": "I didn't like the first draft, but I liked the second ___.",
-       "options": [
-        "so",
-        "do",
-        "one"
-       ],
-       "answer": 2
-      },
-      {
-       "sentence": "Sofía revised her essay carefully, and Mateo did ___.",
-       "options": [
-        "neither",
-        "likewise",
-        "ones"
-       ],
-       "answer": 1
-      },
-      {
-       "sentence": "Mateo can finish the report by Friday; Liam ___ by Monday.",
-       "options": [
-        "can",
-        "can finish",
-        "does"
-       ],
-       "answer": 0
-      },
-      {
-       "sentence": "‘Would you like to help?’ ‘I'd love ___.’",
-       "options": [
-        "to",
-        "so",
-        "one"
-       ],
-       "answer": 0
-      }
-     ]
-    }
-   }
-  },
-  {
-   "code": "H",
-   "type": "mc_cloze",
-   "title": "Use of English Part 1 — multiple-choice cloze. Read the text and decide which answer best fits each gap.",
-   "outputs": [
-    "digital"
-   ],
-   "tips": {
-    "expect": "A short text with eight gaps, each followed by four options. The gaps test collocation, phrasal verbs and precise word choice rather than grammar alone.",
-    "how": [
-     "Read the whole text first for meaning, then look at each gap with its four options: only one fits both the grammar and the exact meaning.",
-     "Watch for fixed collocations (<i>carry weight</i>, <i>boil down to</i>) and phrasal verbs (<i>follow up on</i>) — the wrong options are often real words that simply don't collocate here.",
-     "If two options seem possible, reread the whole sentence aloud in your head: the natural-sounding one is usually correct."
-    ],
-    "remember": "Every option is grammatically possible; only one is the word that native speakers would actually use in that exact phrase."
-   },
-   "data": {
-    "instructions": "Read the text and decide which word (A, B, C or D) best fits each gap.",
-    "title": "Editing for flow",
-    "text": "Learning to argue convincingly on paper is less about {1} clever than about editing ruthlessly. A first draft usually contains every thought that crossed your mind while writing it; a final draft should {2} only the ones that actually serve the argument. Cutting a paragraph you are fond of can feel like a small defeat, but if it does not {3} weight, it has to go.\n\nStructure matters just as much as content. Readers instinctively expect an idea introduced early in a piece to be {4} up on later, not simply abandoned. A conclusion that seems to arrive out of nowhere usually means a step was missed several paragraphs earlier, not that the final paragraph itself is weak.\n\nIt also helps to imagine a sceptical reader looking over your shoulder, ready to ask why one sentence should {5} from the last. If you cannot answer in a single breath, the connection probably is not there yet, however neatly the paragraph {6} on the page. In the end, a strong piece of writing does not {7} down to a list of impressive sentences; it comes {8} to whether, read aloud from start to finish, it sounds like one continuous thought.",
-    "items": [
-     {
-      "options": [
-       "being",
-       "sounding",
-       "feeling",
-       "looking"
-      ],
-      "answer": 0
-     },
-     {
-      "options": [
-       "invent",
-       "ignore",
-       "copy",
-       "keep"
-      ],
-      "answer": 3
-     },
-     {
-      "options": [
-       "bear",
-       "lift",
-       "hold",
-       "carry"
-      ],
-      "answer": 3
-     },
-     {
-      "options": [
-       "chased",
-       "followed",
-       "picked",
-       "caught"
-      ],
-      "answer": 1
-     },
-     {
-      "options": [
-       "jump",
-       "run",
-       "come",
-       "follow"
-      ],
-      "answer": 3
-     },
-     {
-      "options": [
-       "looks",
-       "feels",
-       "reads",
-       "sits"
-      ],
-      "answer": 2
-     },
-     {
-      "options": [
-       "boil",
-       "break",
-       "cut",
-       "add"
-      ],
-      "answer": 0
-     },
-     {
-      "options": [
-       "down",
-       "back",
-       "through",
-       "round"
-      ],
-      "answer": 0
-     }
-    ]
-   }
-  },
-  {
-   "code": "I",
-   "type": "writing",
-   "title": "Writing Part 1 — essay. Plan, write 220–260 words and hand it in.",
-   "outputs": [
-    "digital"
-   ],
-   "tips": {
-    "expect": "Part 1 is compulsory. You are given a short text — notes from a lecture, seminar or discussion — with three points and three opinions. You write an essay discussing <b>two</b> of the three points, saying which matters more and why. 220–260 words, formal or neutral register.",
-    "how": [
-     "Pick the two points you have most to say about; leave the third out completely, even if it is tempting to mention it.",
-     "Plan four paragraphs: introduction (the issue, no opinion yet) · point 1 · point 2 · conclusion with your decision.",
-     "You may borrow the opinions in the notes, but rephrase them in your own words; quoting them directly loses marks.",
-     "Vary your linking devices across the essay: contrast, addition and reference in the same piece read better than four 'howevers'."
-    ],
-    "remember": "Marks are given for content, organisation, communicative achievement and language separately — a beautifully written essay that only discusses one point loses content marks regardless of the English."
-   },
-   "data": {
-    "part": 1,
-    "genre": "essay",
-    "words": [
-     220,
-     260
-    ],
-    "task": "<p>Your class has attended a panel discussion on <b>what makes an argument truly convincing</b>. You have made the notes below.</p><blockquote><p><b>Factors that make an argument convincing:</b></p><ul><li>clear structure</li><li>strong evidence and examples</li><li>the way ideas are linked together</li></ul><p><b>Some opinions expressed in the discussion:</b></p><ul><li>‘People forget the facts long before they forget how clearly an idea was explained.’</li><li>‘Brilliant evidence with no structure convinces nobody.’</li><li>‘It isn't what you say — it's how one point leads to the next.’</li></ul></blockquote><p>Write an <b>essay</b> discussing <b>two</b> of the factors in your notes. You should <b>explain which factor is more important</b>, giving reasons in support of your answer.</p><p>You may, if you wish, make use of the opinions expressed in the discussion, but you should use your own words as far as possible. Write <b>220–260 words</b>.</p>",
-    "plan": [
-     "<b>Introduction</b> (2–3 sentences): why the question matters for anyone writing an essay or preparing a talk; name the two factors you will discuss. No opinion yet.",
-     "<b>Paragraph 2</b> — first factor: how it makes an argument convincing + one concrete example or consequence.",
-     "<b>Paragraph 3</b> — second factor: the same depth. Use a contrast or addition link (<i>Whereas…, Moreover…</i>) to connect it to paragraph 2.",
-     "<b>Conclusion</b>: which factor is more important and why — ideally combining the two. A reference or substitution device reads well here: <i>the former…, the latter…, do so</i>."
-    ],
-    "useful_language": {
-     "Introducing the issue": [
-      "It is often said that…",
-      "Few people would deny that…",
-      "The question of what makes an argument convincing has rarely mattered more."
-     ],
-     "Developing a point": [
-      "What stands out about … is that…",
-      "This becomes especially clear when…",
-      "A case in point is…",
-      "The result, more often than not, is…"
-     ],
-     "Contrasting and conceding": [
-      "Whereas …, it is equally true that…",
-      "This is not to suggest that…",
-      "Admittedly, …; nevertheless, …"
-     ],
-     "Concluding": [
-      "On balance, …",
-      "Of the two, it is … that seems to me the more decisive, since…",
-      "Only when … does an argument truly convince."
-     ]
     },
-    "checklist": [
-     "I have discussed exactly two of the three factors, each in its own paragraph.",
-     "My conclusion says clearly which factor is more important and why.",
-     "I have not copied the opinions from the notes word for word.",
-     "The register is formal or neutral: no contractions, no repeated 'I think'.",
-     "I have used at least two discourse markers and one substitution or reference device from this unit.",
-     "Between 220 and 260 words."
-    ],
-    "model": "<p><i>A model answer (241 words). Notice the four-paragraph structure, the two factors only, and the discourse markers doing real work.</i></p><p>Anyone who has sat through a talk full of impressive facts that somehow failed to persuade will recognise the question behind this discussion. Two factors seem to me particularly decisive: having a clear structure, and linking each idea to the next so that the argument reads as a single line of thought.</p><p>A clear structure gives an audience a map before the journey begins. When a speaker states early on which two or three points will be covered, listeners can relax into the detail instead of anxiously guessing where things are heading. Without this, even accurate information starts to feel like a list of separate facts rather than a case being built.</p><p>Linking ideas together, however, does something structure alone cannot: it makes the steps between one point and the next feel inevitable rather than assumed. A speaker who says “this suggests, therefore, that…” is not simply adding decoration; they are showing their working, and an audience that can follow the working is far more likely to accept the conclusion. Structure without this kind of linking is just a well-labelled pile of separate points.</p><p>Of the two, it is the linking of ideas that seems to me the more important. A clear structure can be borrowed from a template, but a genuine connection between one point and the next has to be built from the argument itself — and only when that connection is visible does an audience stop listening politely and start being persuaded.</p>"
-   }
-  },
-  {
-   "code": "J",
-   "type": "pairwork",
-   "title": "Speaking — Parts 3 and 4. Collaborative task and discussion. Record your best answer.",
-   "outputs": [
-    "book",
-    "digital"
-   ],
-   "speaking": {
-    "part": 3,
-    "name": "Collaborative task and discussion"
-   },
-   "tips": {
-    "expect": "Part 3 (about 4 minutes): you and your partner discuss a question with five written prompts for two minutes, then have one minute to reach a decision. Part 4 (about 5 minutes): the examiner asks you both wider questions on the same theme.",
-    "how": [
-     "In Part 3 you are not marked on agreeing; you are marked on interacting. Ask your partner's opinion, respond to it, build on it, disagree politely.",
-     "Do not try to cover all five prompts. Two or three explored in depth is better than five rushed.",
-     "In the decision minute, negotiate: <i>Shall we go for…? I'd be happy with that, as long as…</i>",
-     "In Part 4, develop your answers: opinion → reason → example → so what."
-    ],
-    "remember": "Look at your partner, not at the examiner. The examiner is listening, not talking."
-   },
-   "data": {
-    "text": "Part 3: discuss how each of these might affect whether people are convinced by an argument, and decide which matters least. Part 4: discuss persuasion, logic and clear communication.",
-    "parts": [
-     {
-      "part": 3,
-      "title": "Collaborative task",
-      "time": "2 min + 1 min",
-      "intro": "Here are some things that can affect whether an argument is convincing. Talk to each other about <b>how each of these might affect whether people are convinced</b>.",
-      "centre": "How might each of these affect whether people are convinced by an argument?",
-      "spokes": [
-       "the confidence of the speaker's voice",
-       "the number of statistics used",
-       "the order in which points are presented",
-       "how well the speaker knows the audience",
-       "the length of the argument"
+    {
+      "code": "B",
+      "type": "match_words",
+      "title": "Vocabulary — cohesion and argument. Match each word with its meaning.",
+      "outputs": [
+        "book",
+        "digital",
+        "quiz"
       ],
-      "decide": "Now you have a minute to decide <b>which of these matters least when it comes to being genuinely convincing</b>."
-     },
-     {
-      "part": 4,
-      "title": "Further discussion",
-      "time": "5 min",
-      "prompts": [
-       "Do you think people are persuaded more by logic or by emotion? Why?",
-       "Who should be responsible for teaching young people to argue clearly — schools, families, or both equally?",
-       "Is it becoming harder or easier to follow a long, complex argument today? Why?",
-       "Do you think confident speakers are always the most convincing ones?",
-       "How can someone tell a genuinely well-connected argument from one that only sounds well-connected?"
-      ]
-     }
-    ],
-    "useful_language": {
-     "Involving your partner": [
-      "What's your take on…?",
-      "Would you go along with that?",
-      "You've got a point, but…",
-      "That's true up to a point, although…"
-     ],
-     "Building on an idea": [
-      "Following on from what you said…",
-      "And that ties in with…",
-      "Not only that, but…"
-     ],
-     "Reaching a decision": [
-      "Shall we settle on…?",
-      "I'd be inclined to go for…, on the grounds that…",
-      "We could agree to differ, but if we had to choose…"
-     ],
-     "Part 4: developing an answer": [
-      "It very much depends on…",
-      "There's a strong case for saying…",
-      "Rarely is it as simple as…"
-     ]
+      "data": {
+        "left_label": "Word",
+        "right_label": "Meaning",
+        "pairs": [
+          {
+            "left": "cohesion",
+            "right": "the quality of ideas fitting together smoothly as a whole"
+          },
+          {
+            "left": "discourse",
+            "right": "connected spoken or written communication, especially on a serious topic"
+          },
+          {
+            "left": "contrast",
+            "right": "a clear difference between two things placed together"
+          },
+          {
+            "left": "signpost",
+            "right": "a word or phrase that shows the reader where an argument is heading"
+          },
+          {
+            "left": "coherent",
+            "right": "logical and easy to follow because the parts connect clearly"
+          },
+          {
+            "left": "disjointed",
+            "right": "lacking a clear connection between ideas or parts"
+          },
+          {
+            "left": "qualify",
+            "right": "to add a detail that limits or makes a statement less absolute"
+          },
+          {
+            "left": "furthermore",
+            "right": "used to introduce an additional, supporting point"
+          },
+          {
+            "left": "nevertheless",
+            "right": "in spite of what has just been said"
+          },
+          {
+            "left": "tie together",
+            "right": "to link separate ideas or parts so that they form a whole"
+          }
+        ]
+      }
+    },
+    {
+      "code": "C",
+      "type": "gapped_text",
+      "title": "Reading and Use of English Part 7 — gapped text. Six paragraphs have been removed from the article. Choose from the paragraphs A–G the one which fits each gap.",
+      "outputs": [
+        "book",
+        "digital"
+      ],
+      "tips": {
+        "expect": "One long article (about 700–850 words including the missing paragraphs) with six gaps. You choose the correct paragraph for each gap from seven options — one paragraph is not used at all.",
+        "how": [
+          "Read the base text first, ignoring the gaps, to get the overall argument.",
+          "For each gap, look at what comes immediately <b>before</b> and <b>after</b> it. The missing paragraph must connect to both: watch for references (<i>this, such, the former, the latter</i>), names that need introducing, and links of time, contrast or cause.",
+          "Check your answer by reading the joined text straight through — a correct paragraph makes the argument flow without a bump."
+        ],
+        "remember": "The extra paragraph is designed to look plausible in more than one place. If two paragraphs seem to fit the same gap, the wrong one is usually missing a specific link to what follows."
+      },
+      "data": {
+        "title": "The invisible thread",
+        "text": "<p>Ask anyone who has sat through a bad lecture what went wrong, and they rarely blame the facts. The facts, more often than not, were perfectly sound. What was missing was the thread — the sense that each sentence had grown out of the one before it, rather than being dropped beside it. For our Inspiring Nordic project, three of us spent a week trying to work out what separates an argument that holds together from a pile of true statements that merely sit next to each other.</p><p>{1}</p><p>Our first stop was Miss Vega's filing cabinet, where she keeps a decade of essay drafts submitted for exam practice. Reading twenty of them in a single afternoon taught us more than any grammar lesson could have. The strongest scripts, without exception, read like one unbroken sentence stretched over four paragraphs; the weakest read like four separate essays stapled together by accident.</p><p>{2}</p><p>Word order mattered too, and not only where a linking word was placed. Every strong essay recycled its own vocabulary: <i>this problem</i>, <i>such a claim</i>, <i>the argument above</i>. Rather than restating an idea in full, the writer simply pointed back at it, and the reader, trusting that the pointer meant something, kept following.</p><p>{3}</p><p>None of this, it turns out, is unique to Cambridge exam scripts. The same mechanism runs through courtroom closing arguments, scientific papers and the best man's speech at a wedding: an idea is planted early, referred back to repeatedly, and only fully resolved at the very end.</p><p>{4}</p><p>Nadia, who is writing her extended essay on rhetoric, put it more bluntly than any of us had managed. A list, she said, can be rearranged without anyone noticing; a genuine argument cannot. If you can swap paragraph two and paragraph three of an essay and it still makes perfect sense, something is wrong — because in a real argument, each part depends on what came immediately before it.</p><p>{5}</p><p>That does not mean an essay full of <i>however</i> and <i>therefore</i> is automatically well organised. Mateo tested this by inserting linking words into a genuinely disjointed piece of writing without changing a single idea underneath. The result read no more convincingly than before; if anything, the excess of signposting only drew attention to how little the sentences actually had to do with one another.</p><p>{6}</p><p>So a thread, in the end, is not a decoration stitched on afterwards. It has to run through an argument from the very first sentence, tying together points that were never really separate to begin with. Once you start noticing it in someone else's writing, oddly enough, you begin hearing it everywhere else too — in the shape of a debate, an advert or a well-told joke.</p>",
+        "paragraphs": [
+          {
+            "letter": "A",
+            "text": "The same principles, we suspect, apply just as strongly to spoken English, although nobody in the group had the courage to record an entire class discussion to check. Certainly the pauses and false starts of speech make signposting even more necessary than in writing, if only to remind a listener what a speaker is still talking about."
+          },
+          {
+            "letter": "B",
+            "text": "Sofía tested the theory on her own writing. She took an essay that had scored poorly, rewrote nothing except the opening word of each paragraph, and watched her score rise by a full band at the next practice test. The ideas underneath had not changed at all — only the visible joints between them."
+          },
+          {
+            "letter": "C",
+            "text": "This raised an obvious question: if discourse markers were the glue, could we not simply sprinkle a few over a weak argument and fix it? It sounded too easy to be true, and Mateo, ever the sceptic, volunteered to find out for the rest of us."
+          },
+          {
+            "letter": "D",
+            "text": "What the experiment confirmed, in the end, was something Miss Vega had told us on the very first day, and which none of us had quite believed until we had broken an essay in order to check it: a linking word only works when there is already a link underneath it for the word to describe."
+          },
+          {
+            "letter": "E",
+            "text": "We agreed on one rule before opening a single script: judge nothing by its vocabulary alone. An essay could use every discourse marker in the coursebook and still fall apart under its own weight, or use almost none of them and still read perfectly. What we were hunting for was something harder to fake."
+          },
+          {
+            "letter": "F",
+            "text": "Once you start looking for this pattern, it becomes strangely difficult to switch it off again. A good comedian, we noticed, plants a small detail early in a routine purely so that the final joke can refer back to it, and the laugh depends entirely on the audience remembering that earlier moment."
+          },
+          {
+            "letter": "G",
+            "text": "Looking closer at the strongest scripts, one habit stood out immediately. The best writers almost never introduced a brand-new noun phrase for something already mentioned two lines earlier. Instead, they built a small, private vocabulary of pointers that ran through the whole essay."
+          }
+        ],
+        "answers": [
+          "E",
+          "G",
+          "B",
+          "F",
+          "C",
+          "D"
+        ]
+      }
+    },
+    {
+      "code": "D",
+      "type": "grammar_box",
+      "title": "Language focus 1 — Discourse markers and cohesion",
+      "outputs": [
+        "book",
+        "digital"
+      ],
+      "data": {
+        "title": "Discourse markers and cohesion",
+        "can": "I can link ideas clearly across a whole text using discourse markers for contrast, addition, cause and effect, exemplification and reference.",
+        "intro": "A convincing argument is not a pile of separate points; it is a single line of thought. Discourse markers are the joints that let a reader move from one idea to the next without losing the thread, while words like <i>this</i>, <i>such</i> and <i>the latter</i> let you point back at something already said instead of repeating it in full.",
+        "examples": [
+          {
+            "text": "The plan is cheap; <b>however</b>, it is unrealistic.",
+            "note": "however = contrast"
+          },
+          {
+            "text": "It cuts costs; <b>moreover</b>, it saves time.",
+            "note": "moreover = adding a stronger point"
+          },
+          {
+            "text": "Demand fell; <b>as a result</b>, prices dropped.",
+            "note": "as a result = consequence"
+          },
+          {
+            "text": "Liam enjoys debating, <b>whereas</b> Nadia prefers writing alone.",
+            "note": "whereas joins two clauses in one sentence — it does not stand alone like however"
+          },
+          {
+            "text": "The scheme failed for one reason above all: <b>namely</b>, a lack of funding.",
+            "note": "namely = introduces a specific example or reformulation"
+          },
+          {
+            "text": "Two students objected loudly. <b>The latter</b> later apologised.",
+            "note": "the latter = refers back to the second of two things just mentioned"
+          },
+          {
+            "text": "Sofía revised the essay twice; Mateo chose not to <b>do so</b>.",
+            "note": "do so = substitutes for a whole verb phrase already mentioned"
+          }
+        ],
+        "rules": [
+          "Contrast: <b>however, nevertheless, whereas, on the other hand</b>. Addition: <b>moreover, furthermore, in addition</b>. Cause/consequence: <b>consequently, therefore, as a result, thus</b>.",
+          "Exemplification and reformulation: <b>namely</b> (introduces a specific example), <b>in other words</b> (restates more simply).",
+          "Reference and substitution keep a text from repeating itself: <i>this/such</i> point back at an idea already mentioned; <i>the former/the latter</i> distinguish between two things just named; <i>do so</i> replaces a repeated verb phrase.",
+          "Punctuation: after a full stop or semicolon, a sentence-initial marker is usually followed by a comma — <i>However, …</i>; <i>…; however, …</i>. <i>Whereas</i>, by contrast, joins two clauses inside one sentence.",
+          "Do not overuse markers: one per idea-shift is emphatic; a marker in every sentence feels mechanical rather than fluent.",
+          "In formal writing, choose the marker that matches the exact logical relationship — <i>however</i> and <i>although</i> are not interchangeable, even though both express contrast."
+        ],
+        "practice": {
+          "instructions": "Choose the best marker.",
+          "items": [
+            {
+              "sentence": "The proposal was ambitious; ___, it was never fully funded.",
+              "options": [
+                "moreover",
+                "however",
+                "namely"
+              ],
+              "answer": 1
+            },
+            {
+              "sentence": "Sales fell sharply; ___, the company cut a third of its staff.",
+              "options": [
+                "in contrast",
+                "as a result",
+                "in other words"
+              ],
+              "answer": 1
+            },
+            {
+              "sentence": "___ Liam enjoys debating, Nadia prefers writing quietly.",
+              "options": [
+                "However",
+                "Moreover",
+                "Whereas"
+              ],
+              "answer": 2
+            },
+            {
+              "sentence": "The report raised one serious concern: ___ the lack of any long-term funding.",
+              "options": [
+                "namely",
+                "nevertheless",
+                "moreover"
+              ],
+              "answer": 0
+            },
+            {
+              "sentence": "Two students disagreed publicly at the debate: one calmly, one furiously. ___ later apologised for losing his temper.",
+              "options": [
+                "the former",
+                "the latter",
+                "the same student"
+              ],
+              "answer": 1
+            },
+            {
+              "sentence": "Sofía revised her whole essay before the deadline; Mateo chose not to ___.",
+              "options": [
+                "such",
+                "this",
+                "do so"
+              ],
+              "answer": 2
+            },
+            {
+              "sentence": "The plan cuts costs; ___, it reduces waste.",
+              "options": [
+                "moreover",
+                "on the other hand",
+                "namely"
+              ],
+              "answer": 0
+            }
+          ]
+        },
+        "lab": "discourse-markers"
+      }
+    },
+    {
+      "code": "E",
+      "type": "gap_text",
+      "title": "Use of English Part 2 — open cloze. Write ONE word in each gap.",
+      "outputs": [
+        "digital"
+      ],
+      "tips": {
+        "expect": "A short text with eight gaps and no options given. The missing words are mostly grammar words: prepositions, relatives, auxiliaries, articles and parts of fixed phrases.",
+        "how": [
+          "Read the whole text once before filling any gap — later sentences often confirm what a gap needs.",
+          "Look at both sides of each gap: does it need a preposition after a fixed phrase, a relative pronoun, or a word completing a linking expression?",
+          "Only one word goes in each gap, and contractions are not allowed."
+        ],
+        "remember": "Check your spelling. A correct word spelt wrongly scores nothing."
+      },
+      "data": {
+        "text": "Why do some talks stay in the memory long after the details have faded, while others disappear the moment they end? The difference has less {1} do with cleverness than with structure: a speaker who connects each point clearly {2} the next gives an audience something worth following, while one who jumps around, however brilliant the individual ideas, quickly loses them. It is not only what is said {3} matters, but the order in which it arrives.\n\n{4} struck me most at a debate final I watched last month was not the facts each side had gathered — both teams had clearly done their research — {5} the way one team, before introducing anything new, first reminded the audience {6} a claim made minutes earlier. By the final round their argument felt inevitable, {7} though every step had been agreed in advance. The other team, {8} contrast, offered six separate observations, any one of which could have been dropped without the speech losing much at all.\n\nEver since that afternoon, I have found it hard to sit through any talk without silently sorting each new sentence into one of two piles in my head: genuinely connected to what came before, or simply added on beside it.",
+        "answers": [
+          "to",
+          "with",
+          "that",
+          "What",
+          "but",
+          "of",
+          "as",
+          "in"
+        ]
+      }
+    },
+    {
+      "code": "F",
+      "type": "listening_match",
+      "title": "Listening Part 4 — multiple matching. You will hear five short talks. Complete both tasks as you listen.",
+      "outputs": [
+        "digital"
+      ],
+      "audio": "c1a/u05-f.mp3",
+      "tips": {
+        "expect": "Part 4 (about 5 minutes): you hear five short, unrelated monologues on a related theme, each about 30 seconds. There are two tasks, each with eight options (A–H); while listening once, you complete both tasks, choosing a different letter for each speaker in each task.",
+        "how": [
+          "Skim both sets of options before listening and note the general idea of each; some overlap closely, so listen for the detail that separates them.",
+          "Task One usually asks for the main point of what a speaker says; Task Two usually asks for an attitude or feeling. The same words in the extract can answer both, so listen for content and tone separately.",
+          "You hear the recording twice: use the first listening for Task One and confirm or complete Task Two on the second."
+        ],
+        "remember": "Each letter is used only once per task. If two speakers seem to fit the same option, at least one of your answers is based on a misheard detail."
+      },
+      "data": {
+        "voice_note": "Cinco hablantes distintos (Speaker 1–5), monólogos independientes sin relación entre sí (formato real de Listening Part 4).",
+        "script": "Speaker 1: I entered a public-speaking competition last spring with a talk about renewable energy, absolutely convinced it would sink under the weight of statistics. What actually happened surprised me. I'd built the whole thing around one image – a single lightbulb – and kept coming back to it every few minutes, however far the argument had wandered into figures and policy. Afterwards, three separate judges mentioned that image, not the numbers I'd sweated over for weeks. It taught me that an audience doesn't remember a talk because every fact was accurate; they remember it because they could feel one idea running underneath all the others, holding the whole thing together.\n[pause]\nSpeaker 2: Marking practice essays for my tutoring group, I started to notice something a bit depressing. Half of them had learned exactly the same trick: drop in 'however', 'moreover' and 'consequently' at regular intervals and the essay suddenly looks organised, at least at first glance. Strip those words out, though, and several of the arguments simply fall apart – the ideas underneath were never actually connected, just dressed up to look that way. I've started telling my students that a linking word is a promise, not a decoration, and if the sentence on either side doesn't keep that promise, the word is doing more harm than good.\n[pause]\nSpeaker 3: My grandfather tells the worst-organised stories I have ever heard – he'll start describing a fishing trip, wander off into an argument he had with a neighbour thirty years ago, then somehow end up back at the fish. On paper it sounds unbearable. In practice, everyone at the table is completely hooked, because he's so obviously delighted by his own tangents that you want to follow him anywhere. There's barely a 'however' or a 'therefore' in the whole performance. It's made me question whether the neat, signposted structure we're taught at school is really what makes people listen, or just what makes people mark you highly.\n[pause]\nSpeaker 4: I edit our school newsletter, and last month one article just wasn't landing, no matter how many times I reworded the sentences. In the end I gave up trying to fix the language and moved the third paragraph to the start instead. Nothing else changed – same facts, same linking words, same conclusion – and suddenly the whole piece read as though it had always been meant to go that way. It was a genuinely satisfying moment, realising that the problem had never been the words joining the ideas together; it was the order the ideas had been placed in to begin with.\n[pause]\nSpeaker 5: I sat through a two-hour lecture recently where the speaker seemed to have learned a list of linking words and was determined to use every single one. Furthermore this, consequently that, on the other hand something else – by the end I felt like I'd been shouted directions the entire way through a city I already knew. None of the individual points were wrong, but the constant signposting stopped feeling like guidance and started feeling like noise, as if he didn't trust us to notice the connections for ourselves. I left more exhausted by the linking words than by the actual content of the talk.",
+        "speakers": [
+          "Speaker 1",
+          "Speaker 2",
+          "Speaker 3",
+          "Speaker 4",
+          "Speaker 5"
+        ],
+        "tasks": [
+          {
+            "title": "Task One",
+            "prompt": "For questions 1–5, choose from the list (A–H) what each speaker says is the main point about what makes a talk or a piece of writing work. Use the letters only once.",
+            "options": [
+              "A single central idea can hold a whole talk together.",
+              "Linking words can create an illusion of structure that isn't really there.",
+              "Genuine enthusiasm can connect ideas even without formal signposting.",
+              "Changing the order of paragraphs can solve a problem that rewording cannot.",
+              "Too many linking words can make a talk exhausting to follow.",
+              "A text is only coherent if every paragraph is exactly the same length.",
+              "The best writers avoid using any linking words at all.",
+              "Audiences remember facts better when they are repeated several times."
+            ],
+            "answers": [
+              "A",
+              "B",
+              "C",
+              "D",
+              "E"
+            ]
+          },
+          {
+            "title": "Task Two",
+            "prompt": "For questions 6–10, choose from the list (A–H) how each speaker feels about what they describe. Use the letters only once.",
+            "options": [
+              "mildly amused and affectionate",
+              "pleasantly surprised",
+              "quietly proud",
+              "sceptical about a technique that is often taught",
+              "irritated and worn out",
+              "completely indifferent",
+              "embarrassed about a mistake",
+              "anxious about an upcoming exam"
+            ],
+            "answers": [
+              "B",
+              "D",
+              "A",
+              "C",
+              "E"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "code": "G",
+      "type": "grammar_box",
+      "title": "Language focus 2 — Substitution and ellipsis",
+      "outputs": [
+        "book",
+        "digital"
+      ],
+      "data": {
+        "title": "Substitution and ellipsis",
+        "can": "I can avoid repeating words by using substitution (so, do, one, likewise) and ellipsis (leaving out words that the reader can supply).",
+        "intro": "Repeating the same words is not cohesive; it is just repetition. Advanced English keeps a text moving by substituting a short word for something already said, or by leaving it out altogether once the reader can recover it from context.",
+        "examples": [
+          {
+            "text": "Liam finished on time, and <b>so did</b> Nadia.",
+            "note": "so did = substitutes for the whole verb phrase after an affirmative statement"
+          },
+          {
+            "text": "Sofía can't stand editing, and <b>neither can</b> Mateo.",
+            "note": "neither/nor + auxiliary = the same substitution after a negative"
+          },
+          {
+            "text": "‘Will the plan work?’ ‘I <b>hope so</b>.’",
+            "note": "so replaces a whole clause after hope, think, expect, be afraid, suppose"
+          },
+          {
+            "text": "I don't like this draft; I prefer the blue <b>one</b>.",
+            "note": "one substitutes for a countable noun already mentioned"
+          },
+          {
+            "text": "She revised the essay twice; he did <b>likewise</b>.",
+            "note": "likewise/similarly substitutes for a whole action"
+          },
+          {
+            "text": "Sofía wanted feedback, and Nadia [wanted feedback] too.",
+            "note": "ellipsis: the repeated verb phrase is simply left out"
+          },
+          {
+            "text": "Mateo can present today; Liam [can present] tomorrow.",
+            "note": "ellipsis after an auxiliary: only <i>can</i> is kept"
+          }
+        ],
+        "rules": [
+          "Substitution replaces a word or phrase with a short one: <i>so/neither/nor</i> (after hope, think, believe, be afraid, expect, suppose); <i>one/ones</i> (for a countable noun); <i>do so/likewise</i> (for a verb phrase).",
+          "After <i>so</i> and <i>neither/nor</i> at the start of a clause, invert subject and auxiliary — <b>so did Nadia</b>, <b>neither can Mateo</b> — the same subject-auxiliary inversion you use after a negative adverbial.",
+          "Ellipsis leaves out a word or phrase entirely once it is recoverable from context, usually after an auxiliary or a coordinating conjunction: <i>Mateo can present today; Liam [can present] tomorrow.</i>",
+          "Ellipsis is common after <i>and, but, or</i> and in short answers; do not use it if the missing words are not completely recoverable — ambiguity kills cohesion instead of creating it.",
+          "In formal writing, prefer one clear substitution per idea; stacking several in one sentence confuses rather than streamlines."
+        ],
+        "practice": {
+          "instructions": "Choose the correct form.",
+          "items": [
+            {
+              "sentence": "Nadia enjoyed the debate, and so ___ Mateo.",
+              "options": [
+                "does",
+                "did",
+                "do"
+              ],
+              "answer": 1
+            },
+            {
+              "sentence": "‘Is the deadline still Friday?’ ‘I ___ so.’",
+              "options": [
+                "want",
+                "wish",
+                "hope"
+              ],
+              "answer": 2
+            },
+            {
+              "sentence": "Liam can't come to the meeting, and ___ can Sofía.",
+              "options": [
+                "so",
+                "neither",
+                "either"
+              ],
+              "answer": 1
+            },
+            {
+              "sentence": "I didn't like the first draft, but I liked the second ___.",
+              "options": [
+                "so",
+                "do",
+                "one"
+              ],
+              "answer": 2
+            },
+            {
+              "sentence": "Sofía revised her essay carefully, and Mateo did ___.",
+              "options": [
+                "neither",
+                "likewise",
+                "ones"
+              ],
+              "answer": 1
+            },
+            {
+              "sentence": "Mateo can finish the report by Friday; Liam ___ by Monday.",
+              "options": [
+                "can",
+                "can finish",
+                "does"
+              ],
+              "answer": 0
+            },
+            {
+              "sentence": "‘Would you like to help?’ ‘I'd love ___.’",
+              "options": [
+                "to",
+                "so",
+                "one"
+              ],
+              "answer": 0
+            }
+          ]
+        },
+        "lab": "substitution-ellipsis"
+      }
+    },
+    {
+      "code": "H",
+      "type": "mc_cloze",
+      "title": "Use of English Part 1 — multiple-choice cloze. Read the text and decide which answer best fits each gap.",
+      "outputs": [
+        "digital"
+      ],
+      "tips": {
+        "expect": "A short text with eight gaps, each followed by four options. The gaps test collocation, phrasal verbs and precise word choice rather than grammar alone.",
+        "how": [
+          "Read the whole text first for meaning, then look at each gap with its four options: only one fits both the grammar and the exact meaning.",
+          "Watch for fixed collocations (<i>carry weight</i>, <i>boil down to</i>) and phrasal verbs (<i>follow up on</i>) — the wrong options are often real words that simply don't collocate here.",
+          "If two options seem possible, reread the whole sentence aloud in your head: the natural-sounding one is usually correct."
+        ],
+        "remember": "Every option is grammatically possible; only one is the word that native speakers would actually use in that exact phrase."
+      },
+      "data": {
+        "instructions": "Read the text and decide which word (A, B, C or D) best fits each gap.",
+        "title": "Editing for flow",
+        "text": "Learning to argue convincingly on paper is less about {1} clever than about editing ruthlessly. A first draft usually contains every thought that crossed your mind while writing it; a final draft should {2} only the ones that actually serve the argument. Cutting a paragraph you are fond of can feel like a small defeat, but if it does not {3} weight, it has to go.\n\nStructure matters just as much as content. Readers instinctively expect an idea introduced early in a piece to be {4} up on later, not simply abandoned. A conclusion that seems to arrive out of nowhere usually means a step was missed several paragraphs earlier, not that the final paragraph itself is weak.\n\nIt also helps to imagine a sceptical reader looking over your shoulder, ready to ask why one sentence should {5} from the last. If you cannot answer in a single breath, the connection probably is not there yet, however neatly the paragraph {6} on the page. In the end, a strong piece of writing does not {7} down to a list of impressive sentences; it comes {8} to whether, read aloud from start to finish, it sounds like one continuous thought.",
+        "items": [
+          {
+            "options": [
+              "being",
+              "sounding",
+              "feeling",
+              "looking"
+            ],
+            "answer": 0
+          },
+          {
+            "options": [
+              "invent",
+              "ignore",
+              "copy",
+              "keep"
+            ],
+            "answer": 3
+          },
+          {
+            "options": [
+              "bear",
+              "lift",
+              "hold",
+              "carry"
+            ],
+            "answer": 3
+          },
+          {
+            "options": [
+              "chased",
+              "followed",
+              "picked",
+              "caught"
+            ],
+            "answer": 1
+          },
+          {
+            "options": [
+              "jump",
+              "run",
+              "come",
+              "follow"
+            ],
+            "answer": 3
+          },
+          {
+            "options": [
+              "looks",
+              "feels",
+              "reads",
+              "sits"
+            ],
+            "answer": 2
+          },
+          {
+            "options": [
+              "boil",
+              "break",
+              "cut",
+              "add"
+            ],
+            "answer": 0
+          },
+          {
+            "options": [
+              "down",
+              "back",
+              "through",
+              "round"
+            ],
+            "answer": 0
+          }
+        ]
+      }
+    },
+    {
+      "code": "I",
+      "type": "writing",
+      "title": "Writing Part 1 — essay. Plan, write 220–260 words and hand it in.",
+      "outputs": [
+        "digital"
+      ],
+      "tips": {
+        "expect": "Part 1 is compulsory. You are given a short text — notes from a lecture, seminar or discussion — with three points and three opinions. You write an essay discussing <b>two</b> of the three points, saying which matters more and why. 220–260 words, formal or neutral register.",
+        "how": [
+          "Pick the two points you have most to say about; leave the third out completely, even if it is tempting to mention it.",
+          "Plan four paragraphs: introduction (the issue, no opinion yet) · point 1 · point 2 · conclusion with your decision.",
+          "You may borrow the opinions in the notes, but rephrase them in your own words; quoting them directly loses marks.",
+          "Vary your linking devices across the essay: contrast, addition and reference in the same piece read better than four 'howevers'."
+        ],
+        "remember": "Marks are given for content, organisation, communicative achievement and language separately — a beautifully written essay that only discusses one point loses content marks regardless of the English."
+      },
+      "data": {
+        "part": 1,
+        "genre": "essay",
+        "words": [
+          220,
+          260
+        ],
+        "task": "<p>Your class has attended a panel discussion on <b>what makes an argument truly convincing</b>. You have made the notes below.</p><blockquote><p><b>Factors that make an argument convincing:</b></p><ul><li>clear structure</li><li>strong evidence and examples</li><li>the way ideas are linked together</li></ul><p><b>Some opinions expressed in the discussion:</b></p><ul><li>‘People forget the facts long before they forget how clearly an idea was explained.’</li><li>‘Brilliant evidence with no structure convinces nobody.’</li><li>‘It isn't what you say — it's how one point leads to the next.’</li></ul></blockquote><p>Write an <b>essay</b> discussing <b>two</b> of the factors in your notes. You should <b>explain which factor is more important</b>, giving reasons in support of your answer.</p><p>You may, if you wish, make use of the opinions expressed in the discussion, but you should use your own words as far as possible. Write <b>220–260 words</b>.</p>",
+        "plan": [
+          "<b>Introduction</b> (2–3 sentences): why the question matters for anyone writing an essay or preparing a talk; name the two factors you will discuss. No opinion yet.",
+          "<b>Paragraph 2</b> — first factor: how it makes an argument convincing + one concrete example or consequence.",
+          "<b>Paragraph 3</b> — second factor: the same depth. Use a contrast or addition link (<i>Whereas…, Moreover…</i>) to connect it to paragraph 2.",
+          "<b>Conclusion</b>: which factor is more important and why — ideally combining the two. A reference or substitution device reads well here: <i>the former…, the latter…, do so</i>."
+        ],
+        "useful_language": {
+          "Introducing the issue": [
+            "It is often said that…",
+            "Few people would deny that…",
+            "The question of what makes an argument convincing has rarely mattered more."
+          ],
+          "Developing a point": [
+            "What stands out about … is that…",
+            "This becomes especially clear when…",
+            "A case in point is…",
+            "The result, more often than not, is…"
+          ],
+          "Contrasting and conceding": [
+            "Whereas …, it is equally true that…",
+            "This is not to suggest that…",
+            "Admittedly, …; nevertheless, …"
+          ],
+          "Concluding": [
+            "On balance, …",
+            "Of the two, it is … that seems to me the more decisive, since…",
+            "Only when … does an argument truly convince."
+          ]
+        },
+        "checklist": [
+          "I have discussed exactly two of the three factors, each in its own paragraph.",
+          "My conclusion says clearly which factor is more important and why.",
+          "I have not copied the opinions from the notes word for word.",
+          "The register is formal or neutral: no contractions, no repeated 'I think'.",
+          "I have used at least two discourse markers and one substitution or reference device from this unit.",
+          "Between 220 and 260 words."
+        ],
+        "model": "<p><i>A model answer (241 words). Notice the four-paragraph structure, the two factors only, and the discourse markers doing real work.</i></p><p>Anyone who has sat through a talk full of impressive facts that somehow failed to persuade will recognise the question behind this discussion. Two factors seem to me particularly decisive: having a clear structure, and linking each idea to the next so that the argument reads as a single line of thought.</p><p>A clear structure gives an audience a map before the journey begins. When a speaker states early on which two or three points will be covered, listeners can relax into the detail instead of anxiously guessing where things are heading. Without this, even accurate information starts to feel like a list of separate facts rather than a case being built.</p><p>Linking ideas together, however, does something structure alone cannot: it makes the steps between one point and the next feel inevitable rather than assumed. A speaker who says “this suggests, therefore, that…” is not simply adding decoration; they are showing their working, and an audience that can follow the working is far more likely to accept the conclusion. Structure without this kind of linking is just a well-labelled pile of separate points.</p><p>Of the two, it is the linking of ideas that seems to me the more important. A clear structure can be borrowed from a template, but a genuine connection between one point and the next has to be built from the argument itself — and only when that connection is visible does an audience stop listening politely and start being persuaded.</p>"
+      }
+    },
+    {
+      "code": "J",
+      "type": "pairwork",
+      "title": "Speaking — Parts 3 and 4. Collaborative task and discussion. Record your best answer.",
+      "outputs": [
+        "book",
+        "digital"
+      ],
+      "speaking": {
+        "part": 3,
+        "name": "Collaborative task and discussion"
+      },
+      "tips": {
+        "expect": "Part 3 (about 4 minutes): you and your partner discuss a question with five written prompts for two minutes, then have one minute to reach a decision. Part 4 (about 5 minutes): the examiner asks you both wider questions on the same theme.",
+        "how": [
+          "In Part 3 you are not marked on agreeing; you are marked on interacting. Ask your partner's opinion, respond to it, build on it, disagree politely.",
+          "Do not try to cover all five prompts. Two or three explored in depth is better than five rushed.",
+          "In the decision minute, negotiate: <i>Shall we go for…? I'd be happy with that, as long as…</i>",
+          "In Part 4, develop your answers: opinion → reason → example → so what."
+        ],
+        "remember": "Look at your partner, not at the examiner. The examiner is listening, not talking."
+      },
+      "data": {
+        "text": "Part 3: discuss how each of these might affect whether people are convinced by an argument, and decide which matters least. Part 4: discuss persuasion, logic and clear communication.",
+        "parts": [
+          {
+            "part": 3,
+            "title": "Collaborative task",
+            "time": "2 min + 1 min",
+            "intro": "Here are some things that can affect whether an argument is convincing. Talk to each other about <b>how each of these might affect whether people are convinced</b>.",
+            "centre": "How might each of these affect whether people are convinced by an argument?",
+            "spokes": [
+              "the confidence of the speaker's voice",
+              "the number of statistics used",
+              "the order in which points are presented",
+              "how well the speaker knows the audience",
+              "the length of the argument"
+            ],
+            "decide": "Now you have a minute to decide <b>which of these matters least when it comes to being genuinely convincing</b>."
+          },
+          {
+            "part": 4,
+            "title": "Further discussion",
+            "time": "5 min",
+            "prompts": [
+              "Do you think people are persuaded more by logic or by emotion? Why?",
+              "Who should be responsible for teaching young people to argue clearly — schools, families, or both equally?",
+              "Is it becoming harder or easier to follow a long, complex argument today? Why?",
+              "Do you think confident speakers are always the most convincing ones?",
+              "How can someone tell a genuinely well-connected argument from one that only sounds well-connected?"
+            ]
+          }
+        ],
+        "useful_language": {
+          "Involving your partner": [
+            "What's your take on…?",
+            "Would you go along with that?",
+            "You've got a point, but…",
+            "That's true up to a point, although…"
+          ],
+          "Building on an idea": [
+            "Following on from what you said…",
+            "And that ties in with…",
+            "Not only that, but…"
+          ],
+          "Reaching a decision": [
+            "Shall we settle on…?",
+            "I'd be inclined to go for…, on the grounds that…",
+            "We could agree to differ, but if we had to choose…"
+          ],
+          "Part 4: developing an answer": [
+            "It very much depends on…",
+            "There's a strong case for saying…",
+            "Rarely is it as simple as…"
+          ]
+        }
+      }
     }
-   }
+  ],
+  "homework": [
+    {
+      "type": "write_sentences",
+      "prompt": "Write a short paragraph (10–12 sentences) about what makes a talk, an article or a school project feel well put together. Link your ideas with at least four different discourse markers (contrast, addition, cause/consequence, exemplification) and use at least one substitution or ellipsis device from Language focus 2 (so do I, do so, one, the latter…). Capital letters and full stops!"
+    }
+  ],
+  "scope": {
+    "grado": "G11",
+    "temaN": 5,
+    "tema": "Joining the Dots — Inspiring Nordic",
+    "outcomes": [
+      {
+        "destreza": "Listening",
+        "puede": "Follow five short, unrelated speakers and match each one to their main point and their attitude (C1 Advanced Listening Part 4)."
+      },
+      {
+        "destreza": "Speaking",
+        "puede": "Speculate, compare and negotiate with a partner, using discourse markers to keep the discussion coherent (C1 Advanced Speaking Parts 1–4)."
+      },
+      {
+        "destreza": "Reading",
+        "puede": "Read a feature article and use reference and contrast to relocate six missing paragraphs (C1 Advanced Reading and Use of English Part 7)."
+      },
+      {
+        "destreza": "Writing",
+        "puede": "Plan and write a 220–260-word discursive essay, linking ideas clearly across paragraphs (C1 Advanced Writing Part 1)."
+      },
+      {
+        "destreza": "Use of English",
+        "puede": "Discourse markers and cohesion; substitution and ellipsis; open cloze (Part 2) and lexical cloze (Part 1)."
+      }
+    ],
+    "vocabulario": [
+      "cohesion",
+      "discourse",
+      "contrast",
+      "signpost",
+      "disjointed",
+      "qualify"
+    ],
+    "gramatica": [
+      "Discourse markers and cohesion",
+      "Substitution and ellipsis",
+      "Gapped text (Part 7)",
+      "Open cloze (Part 2)",
+      "Lexical cloze (Part 1)"
+    ],
+    "pendiente": {}
   }
- ],
- "homework": [
-  {
-   "type": "write_sentences",
-   "prompt": "Write a short paragraph (10–12 sentences) about what makes a talk, an article or a school project feel well put together. Link your ideas with at least four different discourse markers (contrast, addition, cause/consequence, exemplification) and use at least one substitution or ellipsis device from Language focus 2 (so do I, do so, one, the latter…). Capital letters and full stops!"
-  }
- ],
- "scope": {
-  "grado": "G11",
-  "temaN": 5,
-  "tema": "Joining the Dots — Inspiring Nordic",
-  "outcomes": [
-   {
-    "destreza": "Listening",
-    "puede": "Follow five short, unrelated speakers and match each one to their main point and their attitude (C1 Advanced Listening Part 4)."
-   },
-   {
-    "destreza": "Speaking",
-    "puede": "Speculate, compare and negotiate with a partner, using discourse markers to keep the discussion coherent (C1 Advanced Speaking Parts 1–4)."
-   },
-   {
-    "destreza": "Reading",
-    "puede": "Read a feature article and use reference and contrast to relocate six missing paragraphs (C1 Advanced Reading and Use of English Part 7)."
-   },
-   {
-    "destreza": "Writing",
-    "puede": "Plan and write a 220–260-word discursive essay, linking ideas clearly across paragraphs (C1 Advanced Writing Part 1)."
-   },
-   {
-    "destreza": "Use of English",
-    "puede": "Discourse markers and cohesion; substitution and ellipsis; open cloze (Part 2) and lexical cloze (Part 1)."
-   }
-  ],
-  "vocabulario": [
-   "cohesion",
-   "discourse",
-   "contrast",
-   "signpost",
-   "disjointed",
-   "qualify"
-  ],
-  "gramatica": [
-   "Discourse markers and cohesion",
-   "Substitution and ellipsis",
-   "Gapped text (Part 7)",
-   "Open cloze (Part 2)",
-   "Lexical cloze (Part 1)"
-  ],
-  "pendiente": {}
- }
 }

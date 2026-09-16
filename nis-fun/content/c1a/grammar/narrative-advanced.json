@@ -1,0 +1,186 @@
+{
+  "id": "narrative-advanced",
+  "level": "c1a",
+  "area": "Tenses & aspect",
+  "title": "Advanced narrative and the future in the past",
+  "tagline": "The plan didn't need to come true — that's exactly why English has a tense for it.",
+  "cefr": "C1",
+  "exam": [
+    "Reading & Use of English Part 2 — open cloze (was/would/going/to)",
+    "Reading & Use of English Part 4 — key word transformations (GOING, WOULD, HELD, START)",
+    "Writing Part 2 — story or article: sequencing a narrative with variety",
+    "Speaking Part 2 — recounting a personal anecdote vividly"
+  ],
+  "why": "Flat storytelling at B2 becomes layered storytelling at C1: a narrative that shows what had already happened, what was expected to happen, and what actually happened, sometimes in the same sentence. Examiners reward candidates who can narrate with this kind of depth in the Writing paper, and the historic present is exactly the shift that makes a spoken anecdote sound natural rather than rehearsed.",
+  "diagrams": [
+    {
+      "type": "timeline",
+      "title": "A plan that never became real",
+      "marks": [
+        {"at": "before-past", "label": "had bought a one-way ticket", "sub": "past perfect: what happened earlier"},
+        {"at": "past", "label": "was going to move to Australia", "sub": "future in the past: the plan at that time"},
+        {"at": "now", "label": "still lives in Arequipa", "sub": "present: what actually happened"}
+      ],
+      "arrows": [
+        [0, 1, "the plan"],
+        [1, 2, "but it never happened"]
+      ],
+      "caption": "The future in the past narrates an intention from inside the story — the timeline itself shows whether it came true."
+    },
+    {
+      "type": "contrast",
+      "title": "used to, would and wouldn't",
+      "columns": ["used to", "would (repeated action)", "wouldn't (refusal)"],
+      "rows": [
+        {"label": "Covers states?", "cells": ["yes: <i>used to believe</i>", "no: actions only", "no: actions only"]},
+        {"label": "Meaning", "cells": ["a past habit or state, now different", "a repeated past action", "a refusal to do something"]},
+        {"label": "Example", "cells": ["Sofia <i>used to be</i> shy.", "Every winter we <b>would</b> ski in Huaraz.", "The old printer <b>wouldn't</b> print in colour."]},
+        {"label": "Negative", "cells": ["<i>didn't use to</i>", "rare in the negative", "<b>wouldn't</b> = refused to"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "title": "Shifting into the historic present",
+      "before": {
+        "text": "Sofia opened the letter and immediately burst into tears.",
+        "hl": ["opened", "burst"]
+      },
+      "after": {
+        "text": "Sofia opens the letter and immediately bursts into tears.",
+        "hl": ["opens", "bursts"]
+      },
+      "steps": [
+        "Shift every main verb from the past simple to the present simple.",
+        "Keep any earlier, past-before-past event in the past perfect for contrast.",
+        "Use it only in spoken storytelling or a vivid passage — never across a whole formal narrative."
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "subject", "tone": "kw", "ex": "she / they / I"},
+      {"chip": "was/were going to · would · was/were to (have)", "tone": "a", "ex": "was going to leave / would leave / was to have left"},
+      {"chip": "→", "tone": "arrow"},
+      {"chip": "a plan or arrangement, seen from a point in the past", "tone": "b"}
+    ],
+    "table": {
+      "head": ["Pattern", "Meaning", "Example"],
+      "rows": [
+        ["was/were going to + infinitive", "an intention that may or may not have happened", "<b>was going to</b> apply, but changed her mind"],
+        ["would + infinitive", "a later event in the story, viewed from an earlier point", "Little did he know he <b>would</b> regret it"],
+        ["was/were to + infinitive", "a formal or fated arrangement", "the ceremony <b>was to</b> begin at dawn"],
+        ["was/were to have + past participle", "a plan that was cancelled or never completed", "she <b>was to have graduated</b> that June"],
+        ["past perfect continuous", "an activity in progress before another past event", "<b>had been raining</b> for hours when we left"],
+        ["would (habit)", "a repeated past action", "we <b>would</b> gather every Sunday"],
+        ["wouldn't (refusal)", "a refusal, often stubborn", "the car <b>wouldn't</b> start"],
+        ["historic present", "a past event narrated as if happening now, for drama", "suddenly the door <b>opens</b>…"]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Past perfect continuous: the activity behind a past situation",
+      "examples": [
+        {"text": "The pitch was waterlogged because it <b>had been raining</b> all night.", "note": "the activity explains the later state"},
+        {"text": "Mateo was out of breath — he <b>had been running</b> to catch the bus.", "note": "explains a past result, not just a fact"},
+        {"text": "By the time the ambulance arrived, the paramedics realised she <b>had been lying</b> there for over an hour.", "note": "duration before another past event"}
+      ]
+    },
+    {
+      "point": "Future in the past: was going to / would / was to (have) for plans that changed",
+      "examples": [
+        {"text": "Nadia <b>was going to</b> study abroad, but the scholarship fell through at the last minute.", "note": "was going to = a plan that didn't happen"},
+        {"text": "None of us realised that the quiet new student <b>would</b> become captain within a year.", "note": "would = a later event, seen from the story's viewpoint"},
+        {"text": "The exchange programme <b>was to have started</b> in March, but it was postponed indefinitely.", "note": "was to have + participle = a plan that was cancelled"}
+      ]
+    },
+    {
+      "point": "Would for past habits vs wouldn't for refusal",
+      "examples": [
+        {"text": "Every December, the whole family <b>would</b> travel down to the coast.", "note": "a repeated past action"},
+        {"text": "However hard Liam tried, the old laptop <b>wouldn't</b> connect to the network.", "note": "refusal — common with machines, not just people"},
+        {"text": "As children, Sofia and her cousins <b>would</b> spend entire afternoons building sandcastles near Máncora.", "note": "a nostalgic repeated habit"}
+      ]
+    },
+    {
+      "point": "Historic present for drama in spoken narrative",
+      "examples": [
+        {"text": "So I'm sitting in the library, minding my own business, when suddenly the fire alarm <b>goes</b> off.", "note": "historic present builds tension in a personal anecdote"},
+        {"text": "The final whistle <b>blows</b>, the crowd <b>erupts</b>, and Cusco has its first regional title in a decade.", "note": "present tense narrating a decisive past moment"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "I was going to called you, but I forgot.", "right": "I <b>was going to call</b> you, but I forgot.", "why": "<i>Was going to</i> is followed by the bare infinitive, never a past form."},
+    {"wrong": "We would live in Trujillo when I was small, until we moved.", "right": "We <b>used to live</b> in Trujillo when I was small, until we moved.", "why": "<i>Would</i> doesn't normally describe a past state; use <i>used to</i> (or the past simple) for states."},
+    {"wrong": "The door wouldn't opened however hard I pushed.", "right": "The door <b>wouldn't open</b> however hard I pushed.", "why": "After <i>wouldn't</i> (refusal), use the bare infinitive, not the past participle."},
+    {"wrong": "He was to have finished the report, and in fact he finished it on time.", "right": "He <b>was to have finished</b> the report, but in fact he never did.", "why": "<i>Was to have</i> + participle implies the plan did not happen — don't use it for something that did."},
+    {"wrong": "It has been raining for hours before we left, so the pitch was flooded.", "right": "It <b>had been raining</b> for hours before we left, so the pitch was flooded.", "why": "A past-before-past activity needs the past perfect continuous, not the present perfect."},
+    {"wrong": "So he opens the door yesterday and sees the mess.", "right": "So he <b>opens</b> the door and <b>sees</b> the mess.", "why": "Historic present replaces the past tense entirely for that stretch — it never mixes with a past time marker like <i>yesterday</i>."}
+  ],
+  "dialogue": {
+    "title": "The plan that changed",
+    "context": "Miss Vega asks Liam to recount his summer holiday using the historic present, and the story turns into an account of a trip that fell through.",
+    "lines": [
+      {"speaker": "Miss Vega", "text": "Liam, you promised us a story about your summer. Go on, and try the historic present — make it dramatic."},
+      {"speaker": "Liam", "text": "Alright. So it's the last day of the holidays, and I'm at the airport, when suddenly my flight <b>gets</b> cancelled."},
+      {"speaker": "Sofia", "text": "Wait, weren't you <b>going to</b> spend the summer in Chile with your cousins?"},
+      {"speaker": "Liam", "text": "Exactly. I <b>was going to</b> stay there for six weeks, but the whole trip fell apart."},
+      {"speaker": "Mateo", "text": "What happened?"},
+      {"speaker": "Liam", "text": "My cousin <b>had been planning</b> the whole itinerary for months, and then her university offer changed everything."},
+      {"speaker": "Nadia", "text": "So you never went at all?"},
+      {"speaker": "Liam", "text": "No. The trip <b>was to have started</b> on the fifteenth, but it never did."},
+      {"speaker": "Miss Vega", "text": "And back at the airport — what did you do?"},
+      {"speaker": "Liam", "text": "Well, I ring my mum, and she <b>wouldn't</b> answer the phone — she was still asleep."},
+      {"speaker": "Sofia", "text": "Classic. Did anything good come out of it?"},
+      {"speaker": "Liam", "text": "Actually, yes. As kids, my family <b>would</b> always go camping instead, so we did that — old habits die hard."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "By the time we got to the stadium, the players ___ warming up for twenty minutes.", "options": ["had been", "have been", "were"], "answer": 0, "why": "past perfect continuous: an activity in progress before another past event"},
+        {"sentence": "I ___ hand in my project a day early, but my laptop crashed.", "options": ["would", "was going to", "was to"], "answer": 1, "why": "was going to = an intention that didn't happen"},
+        {"sentence": "As a boy, my grandfather ___ walk two hours to school every day.", "options": ["was going to", "was to", "would"], "answer": 2, "why": "would for a repeated past habit"},
+        {"sentence": "However many times I tried, the printer ___ connect to the network.", "options": ["wouldn't", "didn't", "isn't going to"], "answer": 0, "why": "wouldn't = refusal, often with machines"},
+        {"sentence": "The two countries signed an agreement that ___ end the conflict, though peace took years to arrive.", "options": ["would", "was to", "was going to"], "answer": 1, "why": "was to + infinitive for a formal, fated arrangement"},
+        {"sentence": "The ceremony ___ take place outdoors, but it was moved inside because of the storm.", "options": ["took", "was taking", "was to have taken"], "answer": 2, "why": "was to have + participle for a plan that was cancelled"},
+        {"sentence": "So I ___ down the corridor when I hear this strange noise behind me.", "options": ["walk", "walked", "have walked"], "answer": 0, "why": "historic present narrates a past event as if it's happening now"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with the correct form of the verb in brackets.",
+      "items": [
+        {"sentence": "We ___ (wait) for almost an hour before the doctor finally called our name.", "answers": ["had been waiting"]},
+        {"sentence": "She ___ (go) to art school, but she chose engineering instead.", "answers": ["was going to go"]},
+        {"sentence": "Every August, the whole village ___ (celebrate) the harvest festival together.", "answers": ["would celebrate"]},
+        {"sentence": "The old gate ___ (not / open), no matter how hard we pushed.", "answers": ["wouldn't open"]},
+        {"sentence": "The bridge ___ (open) in 1998, but construction delays pushed the date back two years.", "answers": ["was to have opened"]},
+        {"sentence": "So I'm walking home when this dog suddenly ___ (appear) out of nowhere.", "answers": ["appears"]},
+        {"sentence": "The negotiations ___ (resume) the following Monday, according to the official statement.", "answers": ["were to resume"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first, using the word given. Do not change the word given. Use between two and five words.",
+      "items": [
+        {"first": "It rained heavily all morning, and that's why the field was too wet to play on.", "key": "BEEN", "second_start": "The field was too wet to play on because it", "second_end": "heavily all morning.", "answers": ["had been raining"]},
+        {"first": "Nadia intended to audition for the choir, but she lost her nerve at the last moment.", "key": "GOING", "second_start": "Nadia", "second_end": "for the choir, but she lost her nerve.", "answers": ["was going to audition"]},
+        {"first": "My uncle walked to the market every single morning when he was young.", "key": "WOULD", "second_start": "When he was young, my uncle", "second_end": "to the market every morning.", "answers": ["would walk"]},
+        {"first": "However hard we tried, the engine refused to start.", "key": "START", "second_start": "However hard we tried, the engine", "second_end": ".", "answers": ["wouldn't start"]},
+        {"first": "The summit was arranged to take place in Geneva, but it was later moved to Vienna.", "key": "TAKE", "second_start": "The summit", "second_end": "place in Geneva, but it was later moved to Vienna.", "answers": ["was to take"]},
+        {"first": "The festival was arranged for June, but organisers cancelled it after the storm.", "key": "HELD", "second_start": "The festival", "second_end": "in June, but organisers cancelled it after the storm.", "answers": ["was to have been held"]}
+      ]
+    }
+  ],
+  "summary": [
+    "Future in the past (<i>was going to</i>, <i>would</i>, <i>was to (have)</i>) narrates a plan from inside the story, whether or not it actually happened.",
+    "The past perfect continuous shows the activity leading up to another past moment, not just the bare fact that it happened.",
+    "<i>Would</i> for a repeated habit needs an action verb; <i>wouldn't</i> for a refusal often describes people or machines.",
+    "Historic present drops the past tense for a stretch of spoken storytelling — it never mixes with past time markers like <i>yesterday</i>.",
+    "<i>Was to have</i> + participle always signals a plan that fell through."
+  ]
+}

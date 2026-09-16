@@ -1,0 +1,202 @@
+{
+  "id": "verb-patterns-advanced",
+  "level": "c1a",
+  "area": "Sentence building",
+  "title": "Advanced verb patterns",
+  "tagline": "The verb after the verb changes the meaning: seeing someone leave is not the same as seeing them leaving.",
+  "cefr": "C1",
+  "exam": [
+    "Reading & Use of English Part 4 — key word transformations (SAW, SEEM, APPEARS, FORWARD, USED, HELP)",
+    "Reading & Use of English Part 3 — word formation with derived verb patterns",
+    "Writing Part 2 — precise, varied sentence structure",
+    "Speaking Parts 2 and 4 — describing what you witnessed or what you're used to"
+  ],
+  "why": "Which form follows a verb — bare infinitive, -ing or to-infinitive — changes the meaning, not just the style: <i>I saw him leave</i> reports a different fact from <i>I saw him leaving</i>. C1 Advanced tests these patterns precisely, especially perception verbs, perfect and continuous infinitives, and fixed expressions like can't help and look forward to.",
+  "diagrams": [
+    {
+      "type": "contrast",
+      "title": "see him leave vs. see him leaving",
+      "columns": ["object + bare infinitive", "object + -ing"],
+      "rows": [
+        {"label": "Meaning", "cells": ["The whole action, from start to finish", "Part of the action, in progress or interrupted"]},
+        {"label": "Example", "cells": ["<b>I saw him leave</b> the building.", "<b>I saw him leaving</b> as I arrived."]},
+        {"label": "Typical verbs", "cells": ["see, hear, feel, watch, notice", "see, hear, feel, watch, notice — same verbs"]}
+      ]
+    },
+    {
+      "type": "map",
+      "title": "Verb + object patterns",
+      "center": "Verb + object",
+      "branches": [
+        {"label": "+ object + bare infinitive", "items": ["see him leave", "make her cry", "let them go", "help him carry"], "tone": "a"},
+        {"label": "+ object + -ing", "items": ["catch her cheating", "keep them waiting", "find it raining"], "tone": "b"},
+        {"label": "+ object + to-infinitive", "items": ["want her to stay", "expect him to call", "advise them to wait"], "tone": "c"},
+        {"label": "can't help/bear/stand + -ing", "items": ["can't help laughing", "can't bear waiting", "can't stand losing"], "tone": "a"}
+      ]
+    },
+    {
+      "type": "formula",
+      "title": "Perfect and continuous infinitives",
+      "parts": [
+        {"chip": "subject", "tone": "a", "ex": "She"},
+        {"chip": "seems / appears / is believed", "tone": "kw", "ex": "seems"},
+        {"chip": "to have been / to be", "tone": "b", "ex": "to have been"},
+        {"chip": "→", "tone": "arrow"},
+        {"chip": "past participle / -ing", "tone": "c", "ex": "waiting for hours"}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "be/get used to / look forward to", "tone": "kw", "ex": "is used to"},
+      {"chip": "noun / -ing", "tone": "a", "ex": "the noise / waking up early"},
+      {"chip": "≠", "tone": "arrow"},
+      {"chip": "used + bare infinitive (past habit)", "tone": "b", "ex": "used to live"}
+    ],
+    "table": {
+      "head": ["Pattern", "Structure", "Example"],
+      "rows": [
+        ["Perception verb + object + bare infinitive", "see/hear/watch + object + infinitive", "I <b>saw him leave</b> before the end of the talk."],
+        ["Perception verb + object + -ing", "see/hear/watch + object + -ing", "I <b>saw him leaving</b> as I arrived."],
+        ["make/let/help + object + bare infinitive", "make/let/help + object + infinitive", "The teacher <b>made them redo</b> the whole exercise."],
+        ["want/expect/advise + object + to-infinitive", "verb + object + to-infinitive", "She <b>advised him to</b> revise the introduction."],
+        ["Perfect infinitive", "seem/appear/claim + to have + participle", "The results <b>seem to have been</b> lost."],
+        ["Continuous infinitive", "seem/appear + to be + -ing", "He <b>appears to be</b> struggling with the last question."],
+        ["can't help/bear/stand + -ing", "can't help/bear/stand + -ing", "I <b>can't help wondering</b> if we made the right choice."],
+        ["be used to / look forward to + -ing", "verb/adj + to + -ing, not bare infinitive", "She's <b>used to</b> getting up at five."]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Perception verbs: object + bare infinitive vs. -ing",
+      "examples": [
+        {"text": "I <b>saw her hand</b> in the assignment just before the bell rang.", "note": "whole action, bare infinitive"},
+        {"text": "I <b>saw her handing</b> in the assignment as I walked past the office.", "note": "action in progress, -ing"},
+        {"text": "Nobody <b>heard him say</b> a word all lesson.", "note": "bare infinitive, a single complete event"}
+      ]
+    },
+    {
+      "point": "Perfect and continuous infinitives",
+      "examples": [
+        {"text": "The manuscript <b>seems to have been</b> written in the early twentieth century.", "note": "perfect infinitive, earlier action"},
+        {"text": "She <b>appears to have finished</b> the project ahead of schedule.", "note": "perfect infinitive"},
+        {"text": "He <b>seems to be</b> avoiding the question on purpose.", "note": "continuous infinitive, ongoing"}
+      ]
+    },
+    {
+      "point": "Passive infinitives and verb + preposition + -ing",
+      "examples": [
+        {"text": "The proposal is <b>expected to be approved</b> by the board next week.", "note": "passive infinitive"},
+        {"text": "Nobody wants <b>to be left</b> out of the group project.", "note": "passive infinitive"},
+        {"text": "He <b>apologised for arriving</b> late to the rehearsal.", "note": "verb + preposition + -ing"}
+      ]
+    },
+    {
+      "point": "can't help/bear/stand and to vs. to + -ing",
+      "examples": [
+        {"text": "I <b>can't help wondering</b> whether we made the right choice.", "note": "can't help + -ing"},
+        {"text": "She's really <b>looking forward to</b> starting her exchange programme.", "note": "look forward to + -ing, not bare infinitive"},
+        {"text": "After two years abroad, he's finally <b>used to eating</b> spicy food every day.", "note": "be used to + -ing, contrast with used to + infinitive"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {
+      "wrong": "I saw him to leave the room.",
+      "right": "I <b>saw him leave</b> the room.",
+      "why": "Perception verbs (see/hear/watch) take object + bare infinitive, not a to-infinitive."
+    },
+    {
+      "wrong": "The results seem to lost.",
+      "right": "The results <b>seem to have been</b> lost.",
+      "why": "An earlier, completed action needs the perfect infinitive: to have been + participle."
+    },
+    {
+      "wrong": "He appears struggling with the question.",
+      "right": "He <b>appears to be</b> struggling with the question.",
+      "why": "An ongoing action needs the continuous infinitive: to be + -ing."
+    },
+    {
+      "wrong": "She's looking forward to start the exchange programme.",
+      "right": "She's <b>looking forward to starting</b> the exchange programme.",
+      "why": "In look forward to, to is a preposition, so it takes -ing, not the bare infinitive."
+    },
+    {
+      "wrong": "I used to living in Cusco, so the altitude doesn't bother me.",
+      "right": "I <b>am used to living</b> in Cusco, so the altitude doesn't bother me.",
+      "why": "Be/get used to + -ing means 'accustomed to'; used to + infinitive describes a past habit that has stopped."
+    },
+    {
+      "wrong": "I can't help to laugh whenever he tells that story.",
+      "right": "I <b>can't help laughing</b> whenever he tells that story.",
+      "why": "Can't help/bear/stand are followed by -ing, not a to-infinitive."
+    }
+  ],
+  "dialogue": {
+    "title": "What exactly did you see?",
+    "context": "Liam and Sofia compare what they noticed backstage during the talent show, while Miss Vega tries to piece the story together.",
+    "lines": [
+      {"speaker": "Miss Vega", "text": "So the microphone cut out halfway through Act 3. What did either of you actually see?"},
+      {"speaker": "Liam", "text": "I <b>saw Mateo trip</b> over the cable right before it happened."},
+      {"speaker": "Sofia", "text": "I didn't see that, but I <b>saw him fixing</b> something backstage just after."},
+      {"speaker": "Miss Vega", "text": "Interesting. Did anyone notice the sound technician?"},
+      {"speaker": "Liam", "text": "I <b>heard her say</b> something about a loose connection, but I couldn't hear the rest."},
+      {"speaker": "Sofia", "text": "The cable <b>seems to have been</b> damaged already, honestly, not just unplugged."},
+      {"speaker": "Miss Vega", "text": "And Mateo — how's he feeling about it now?"},
+      {"speaker": "Liam", "text": "He <b>can't help apologising</b>, even though it clearly wasn't his fault."},
+      {"speaker": "Sofia", "text": "I told him I <b>can't help laughing</b> a little, but only because he handled it so calmly."},
+      {"speaker": "Miss Vega", "text": "Well, he's certainly <b>used to dealing</b> with pressure after three years on stage crew."},
+      {"speaker": "Liam", "text": "True. He's already <b>looking forward to fixing</b> the whole system before the next show."},
+      {"speaker": "Miss Vega", "text": "Good attitude. Nobody wants <b>to be blamed</b> for something out of their control."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "I ___ leave the room just before the alarm went off.", "options": ["saw him", "saw him to", "saw that he"], "answer": 0, "why": "Perception verbs take object + bare infinitive for a completed action seen from start to finish."},
+        {"sentence": "I ___ as I walked past the classroom.", "options": ["saw her leave", "saw her leaving", "saw her to leave"], "answer": 1, "why": "-ing shows an action in progress or interrupted, not a completed one."},
+        {"sentence": "The manuscript ___ written in the early twentieth century.", "options": ["seems written", "seems to write", "seems to have been"], "answer": 2, "why": "An earlier, completed action needs the perfect infinitive: to have been + participle."},
+        {"sentence": "He ___ struggling with the last question.", "options": ["appears to be", "appears be", "appears being"], "answer": 0, "why": "An ongoing action needs the continuous infinitive: to be + -ing."},
+        {"sentence": "She's really ___ starting her exchange programme.", "options": ["look forward", "looking forward to", "looking forward"], "answer": 1, "why": "In look forward to + -ing, to functions as a preposition."},
+        {"sentence": "After two years abroad, he's finally ___ spicy food every day.", "options": ["used to eat", "used eating", "used to eating"], "answer": 2, "why": "Be/get used to + -ing means accustomed to, unlike used to + infinitive for past habits."},
+        {"sentence": "I ___ laughing whenever he tells that story.", "options": ["can't help", "can't help to", "can't to help"], "answer": 0, "why": "Can't help/bear/stand are followed directly by -ing."}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with the correct form of the verb in brackets.",
+      "items": [
+        {"sentence": "I saw him ___ (leave) the room just before the bell rang.", "answers": ["leave"]},
+        {"sentence": "I saw him ___ (leave) as I was walking in.", "answers": ["leaving"]},
+        {"sentence": "The manuscript seems ___ (write) in the early twentieth century.", "answers": ["to have been written"]},
+        {"sentence": "He appears ___ (struggle) with the last question.", "answers": ["to be struggling"]},
+        {"sentence": "She's looking forward to ___ (start) her exchange programme.", "answers": ["starting"]},
+        {"sentence": "He's finally used to ___ (eat) spicy food every day.", "answers": ["eating"]},
+        {"sentence": "I can't help ___ (laugh) whenever he tells that story.", "answers": ["laughing"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first, using the word given. Do not change the word given. Use between two and five words.",
+      "items": [
+        {"first": "I watched him leave the building before the talk ended.", "key": "SAW", "second_start": "I", "second_end": "the building before the talk ended.", "answers": ["saw him leave"]},
+        {"first": "As I arrived, I noticed he was in the middle of leaving.", "key": "LEAVING", "second_start": "I", "second_end": "as I arrived.", "answers": ["saw him leaving"]},
+        {"first": "It's likely that the results were lost somewhere in the system.", "key": "SEEM", "second_start": "The results", "second_end": "lost somewhere in the system.", "answers": ["seem to have been"]},
+        {"first": "It looks like he's struggling with the last question.", "key": "APPEARS", "second_start": "He", "second_end": "with the last question.", "answers": ["appears to be struggling"]},
+        {"first": "She's very excited about starting her exchange programme.", "key": "FORWARD", "second_start": "She's really looking", "second_end": "starting her exchange programme.", "answers": ["forward to"]},
+        {"first": "Spicy food doesn't bother him any more after two years abroad.", "key": "USED", "second_start": "After two years abroad, he's", "second_end": "spicy food every day.", "answers": ["used to eating"]},
+        {"first": "He always makes me laugh whenever he tells that story, and I just can't stop it.", "key": "HELP", "second_start": "I", "second_end": "whenever he tells that story.", "answers": ["can't help laughing"]}
+      ]
+    }
+  ],
+  "summary": [
+    "Perception verbs (see/hear/watch) + object + bare infinitive report a whole action; + -ing reports it in progress.",
+    "Perfect infinitives (<i>to have been</i>) point to an earlier action; continuous infinitives (<i>to be -ing</i>) point to one in progress.",
+    "Passive infinitives (<i>to be told</i>) and verb + preposition + -ing (<i>apologise for being</i>) follow their own fixed patterns.",
+    "<i>can't help/bear/stand</i> + -ing express a reaction you can't control.",
+    "<i>look forward to</i> and <i>be/get used to</i> end in the preposition to, so they take -ing, not the bare infinitive."
+  ]
+}

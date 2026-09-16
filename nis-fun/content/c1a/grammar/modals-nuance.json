@@ -1,0 +1,185 @@
+{
+  "id": "modals-nuance",
+  "level": "c1a",
+  "area": "Modals",
+  "title": "Modal verbs: fine distinctions",
+  "tagline": "Needlessly done, wisely skipped, or never required at all — the small print of English modals.",
+  "cefr": "C1",
+  "exam": [
+    "Reading & Use of English Part 4 — key word transformations (NEEDN'T, NEED, COULD, SHOULD, WELL, SUPPOSED)",
+    "Reading & Use of English Part 1 — multiple-choice cloze (needn't have / could have / supposed to)",
+    "Writing Part 2 — informal letter: reproach, advice and reassurance about the past",
+    "Speaking Part 3 — weighing options and reacting to what other people did or didn't do"
+  ],
+  "why": "At B2, most students already handle should and could have. What separates a C1 answer is the fine print: whether an unnecessary action actually happened, whether could have expresses regret or irritation, and whether an expectation (supposed to) was ever a real obligation. Use of English tests exactly this precision, and it's what makes spoken reactions sound like a fluent speaker rather than a rulebook.",
+  "diagrams": [
+    {
+      "type": "contrast",
+      "title": "needn't have vs didn't need to",
+      "columns": ["needn't have + participle", "didn't need to + infinitive"],
+      "rows": [
+        {"label": "Did the action happen?", "cells": ["yes — and it turned out to be unnecessary", "we usually don't know, or it wasn't done"]},
+        {"label": "Viewpoint", "cells": ["hindsight: looking back at a wasted effort", "a simple report of what was or wasn't necessary"]},
+        {"label": "Example", "cells": ["You <b>needn't have brought</b> an umbrella — it never rained.", "We <b>didn't need to bring</b> passports, so we left them at home."]},
+        {"label": "Focus", "cells": ["the unnecessary effort itself", "the lack of necessity, before the fact"]}
+      ]
+    },
+    {
+      "type": "map",
+      "title": "A map of modal nuances",
+      "center": "Modal nuances",
+      "branches": [
+        {"label": "Missed chances & criticism", "items": ["could have (regret / reproach)", "should / ought to have (criticism)"], "tone": "a"},
+        {"label": "Worth doing", "items": ["may / might as well"], "tone": "b"},
+        {"label": "Habits & assumptions", "items": ["will (typical behaviour)", "would (past habit)"], "tone": "c"},
+        {"label": "Rare modal-like verbs", "items": ["dare (question / negative)", "need (question / negative)"], "tone": "a"},
+        {"label": "Expectation, not obligation", "items": ["be supposed to"], "tone": "b"}
+      ]
+    },
+    {
+      "type": "transform",
+      "title": "Turning a fact into hindsight criticism",
+      "before": {
+        "text": "You forgot to tell me about the change of plan.",
+        "hl": ["forgot"]
+      },
+      "after": {
+        "text": "You should have told me about the change of plan!",
+        "hl": ["should have told"]
+      },
+      "steps": [
+        "Take the past fact that went wrong.",
+        "Replace the verb with should/ought to have + past participle.",
+        "In speech, the stress falls on 'should' — that's what signals reproach, not just advice."
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "subject", "tone": "kw", "ex": "you / she / we"},
+      {"chip": "modal + have + past participle", "tone": "a", "ex": "should have gone / needn't have gone / could have gone"},
+      {"chip": "→", "tone": "arrow"},
+      {"chip": "a judgement about a past action: necessary? wise? possible?", "tone": "b"}
+    ],
+    "table": {
+      "head": ["Pattern", "Meaning", "Example"],
+      "rows": [
+        ["needn't have + participle", "an unnecessary action that was actually done", "you <b>needn't have</b> worried"],
+        ["didn't need to + infinitive", "simply not necessary (often not done)", "we <b>didn't need to</b> queue at all"],
+        ["could have + participle", "a missed opportunity, or mild annoyance", "you <b>could have</b> called me first!"],
+        ["should / ought to have + participle", "criticism of a past action or inaction", "they <b>should have</b> checked the forecast"],
+        ["may / might as well + infinitive", "doing something because there's no better option", "we <b>might as well</b> leave now"],
+        ["will / would for habits & assumptions", "a typical, predictable pattern", "she <b>will</b> talk for hours; he <b>would</b> always be late"],
+        ["dare / need as modals", "mainly in questions and negatives, quite formal", "<b>dare</b> he ask? / you <b>needn't</b> ask twice"],
+        ["be supposed to", "an expectation, rule or reputation — not always kept", "the shop <b>is supposed to</b> open at nine"]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "needn't have vs didn't need to: wasted effort vs simple lack of necessity",
+      "examples": [
+        {"text": "You <b>needn't have</b> baked a cake — we already had dessert.", "note": "an unnecessary action that was actually done, seen in hindsight"},
+        {"text": "We <b>didn't need to</b> show our tickets, since the gates were already open.", "note": "simply not necessary, stated before or independent of the fact"}
+      ]
+    },
+    {
+      "point": "could have for missed opportunities and mild annoyance",
+      "examples": [
+        {"text": "You <b>could have</b> mentioned the dress code before the party!", "note": "mild reproach or annoyance"},
+        {"text": "With that talent, she <b>could have</b> gone professional.", "note": "an unrealised possibility, a missed opportunity"},
+        {"text": "We <b>could have</b> taken the earlier bus, but we decided to walk instead.", "note": "an option that existed but wasn't taken"}
+      ]
+    },
+    {
+      "point": "should/ought to have for criticism; may/might as well for a lack of better options",
+      "examples": [
+        {"text": "You <b>should have</b> asked for help instead of struggling alone.", "note": "criticism of a past action or inaction"},
+        {"text": "The council <b>ought to have</b> repaired the road months ago.", "note": "ought to have — slightly more formal than should have"},
+        {"text": "Since the last bus has gone, we <b>might as well</b> walk.", "note": "may/might as well = worth doing, since nothing better is on offer"}
+      ]
+    },
+    {
+      "point": "will/would for habits and assumptions; dare as a modal; be supposed to",
+      "examples": [
+        {"text": "Left to his own devices, Mateo <b>will</b> spend hours reorganising his notes.", "note": "will for typical, predictable present behaviour"},
+        {"text": "Every exam season, Nadia <b>would</b> colour-code her entire timetable.", "note": "would for a repeated past habit"},
+        {"text": "How <b>dare</b> you read my messages without asking?", "note": "dare as a modal, mainly in exclamations and questions"},
+        {"text": "The workshop <b>is supposed to</b> finish by four, but it never does.", "note": "be supposed to = an expectation that isn't always kept"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "You needn't have to bring your notes.", "right": "You <b>needn't have brought</b> your notes.", "why": "Needn't have is followed directly by the past participle — no <i>to</i>."},
+    {"wrong": "We didn't need buy tickets in advance.", "right": "We <b>didn't need to buy</b> tickets in advance.", "why": "Didn't need to is followed by the infinitive with <i>to</i>, unlike needn't have."},
+    {"wrong": "You could have text me instead of calling.", "right": "You <b>could have texted</b> me instead of calling.", "why": "After could have, use the past participle, not the base form."},
+    {"wrong": "He should has finished the report by now.", "right": "He <b>should have finished</b> the report by now.", "why": "The auxiliary after should/ought to is always have, not has, whatever the subject."},
+    {"wrong": "Dare you to ask her?", "right": "<b>Dare</b> you <b>ask</b> her? / Do you <b>dare</b> ask her?", "why": "As a modal, dare is followed by the bare infinitive and inverts like a question word, without do-support."},
+    {"wrong": "The train is suppose to arrive at six.", "right": "The train <b>is supposed to</b> arrive at six.", "why": "Be supposed to needs the past participle 'supposed', not the base form 'suppose'."}
+  ],
+  "dialogue": {
+    "title": "After the trek",
+    "context": "Back from a school trip to Colca Canyon, the group reviews what went wrong and what wasn't actually necessary.",
+    "lines": [
+      {"speaker": "Miss Vega", "text": "So, how was the trek? Everyone survived, I see."},
+      {"speaker": "Sofia", "text": "Barely. We <b>needn't have</b> packed so much water — there were shops every hour."},
+      {"speaker": "Liam", "text": "Speak for yourself. I <b>could have</b> used more, honestly."},
+      {"speaker": "Mateo", "text": "You <b>should have</b> told us about the altitude beforehand — half the group felt sick."},
+      {"speaker": "Nadia", "text": "To be fair, the guide <b>ought to have</b> warned us too, not just relied on the handout."},
+      {"speaker": "Miss Vega", "text": "Fair point. What about the extra torches?"},
+      {"speaker": "Sofia", "text": "We <b>didn't need to</b> bring them at all — the lodge had plenty."},
+      {"speaker": "Liam", "text": "Since we're already exhausted, we <b>might as well</b> rest here for the afternoon."},
+      {"speaker": "Mateo", "text": "Agreed. Left on his own, Liam <b>will</b> always find an excuse to stop walking."},
+      {"speaker": "Liam", "text": "How <b>dare</b> you! I'm resting strategically."},
+      {"speaker": "Nadia", "text": "The bus <b>is supposed to</b> pick us up at five — we should head back."},
+      {"speaker": "Miss Vega", "text": "Good plan. Let's go before anyone else needlessly complains."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "You ___ worried about the exam — it was postponed.", "options": ["needn't have", "didn't need to", "shouldn't have"], "answer": 0, "why": "needn't have = an unnecessary action that was actually done"},
+        {"sentence": "We ___ bring our passports, since it was a domestic flight.", "options": ["needn't have", "didn't need to", "couldn't have"], "answer": 1, "why": "didn't need to = simply not necessary, before the fact"},
+        {"sentence": "With her voice, she ___ become an opera singer.", "options": ["should have", "needn't have", "could have"], "answer": 2, "why": "could have = an unrealised possibility"},
+        {"sentence": "You ___ warned me the road was closed — I drove for nothing!", "options": ["should have", "might as well have", "would have"], "answer": 0, "why": "should have = criticism of a past action or inaction"},
+        {"sentence": "There's no bus for another hour, so we ___ get a coffee.", "options": ["should", "might as well", "needn't"], "answer": 1, "why": "might as well = worth doing, since there's no better option"},
+        {"sentence": "___ you speak to me like that again!", "options": ["Should", "Ought", "Dare"], "answer": 2, "why": "dare as a modal in an exclamation of outrage"},
+        {"sentence": "The meeting ___ start at nine, but it's already quarter past.", "options": ["is supposed to", "supposes to", "was supposed"], "answer": 0, "why": "be supposed to = an expectation not always kept"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with the correct form of the word(s) in brackets.",
+      "items": [
+        {"sentence": "You ___ (needn't / worry) — the exam was postponed.", "answers": ["needn't have worried"]},
+        {"sentence": "We ___ (not / need / bring) our passports, since it was a domestic flight.", "answers": ["didn't need to bring"]},
+        {"sentence": "With her voice, she ___ (could / become) an opera singer.", "answers": ["could have become"]},
+        {"sentence": "You ___ (should / warn) me the road was closed!", "answers": ["should have warned"]},
+        {"sentence": "There's no bus for an hour, so we ___ (might / as well / get) a coffee.", "answers": ["might as well get"]},
+        {"sentence": "___ (dare) you speak to me like that!", "answers": ["Dare"]},
+        {"sentence": "The meeting ___ (supposed / start) at nine, but it's already quarter past.", "answers": ["is supposed to start"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first, using the word given. Do not change the word given. Use between two and five words.",
+      "items": [
+        {"first": "It wasn't necessary for you to buy me a present, but thank you anyway.", "key": "NEEDN'T", "second_start": "You", "second_end": "me a present, but thank you anyway.", "answers": ["needn't have bought"]},
+        {"first": "It wasn't necessary for us to reserve a table in advance.", "key": "NEED", "second_start": "We", "second_end": "a table in advance.", "answers": ["didn't need to reserve"]},
+        {"first": "It's a pity you didn't apply for the scholarship — you were easily good enough.", "key": "COULD", "second_start": "You", "second_end": "for the scholarship.", "answers": ["could have applied"]},
+        {"first": "I think it was wrong of the referee not to check the replay.", "key": "SHOULD", "second_start": "The referee", "second_end": "the replay.", "answers": ["should have checked"]},
+        {"first": "There's nothing better to do, so let's just start the meeting now.", "key": "WELL", "second_start": "We", "second_end": "the meeting now.", "answers": ["might as well start"]},
+        {"first": "The train is scheduled to leave at noon, according to the timetable.", "key": "SUPPOSED", "second_start": "The train", "second_end": "at noon, according to the timetable.", "answers": ["is supposed to leave"]}
+      ]
+    }
+  ],
+  "summary": [
+    "Needn't have + participle = an unnecessary action that was actually done; didn't need to + infinitive = simply not necessary, whether or not it happened.",
+    "Could have + participle covers both a missed opportunity and mild annoyance at someone's inaction.",
+    "Should/ought to have + participle criticises a past action or omission — the stress on should signals reproach.",
+    "May/might as well + infinitive means doing something because there's no better option, not genuine enthusiasm.",
+    "Be supposed to reports an expectation, rule or reputation that isn't always kept — quite different from a real obligation."
+  ]
+}

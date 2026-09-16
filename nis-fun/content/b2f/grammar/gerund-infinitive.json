@@ -1,0 +1,171 @@
+{
+  "id": "gerund-infinitive",
+  "level": "b2f",
+  "area": "Sentence building",
+  "title": "Verb patterns: gerund and infinitive",
+  "tagline": "The verb right before decides the form: -ing, to + infinitive, or the infinitive with no 'to' at all.",
+  "cefr": "B2",
+  "exam": [
+    "Reading & Use of English Part 4 — key word transformations",
+    "Reading & Use of English Part 3 — word formation and multiple-choice cloze",
+    "Writing Part 1 — essay"
+  ],
+  "why": "A handful of very common verbs — remember, forget, stop, try, regret, mean, go on — change meaning completely depending on whether they're followed by -ing or a to-infinitive. B2 First tests this directly, and getting it wrong doesn't just cost a mark: it changes what the sentence says.",
+  "diagrams": [
+    {
+      "type": "map",
+      "title": "Which form comes next?",
+      "center": "Verb + -ing / to-infinitive",
+      "branches": [
+        {"label": "+ -ing only", "items": ["enjoy", "avoid", "finish", "suggest", "imagine", "risk"], "tone": "a"},
+        {"label": "+ to-infinitive only", "items": ["decide", "hope", "plan", "promise", "manage", "afford"], "tone": "b"},
+        {"label": "+ -ing or to- (little or no change)", "items": ["start", "begin", "continue", "love", "hate"], "tone": "c"},
+        {"label": "preposition + -ing", "items": ["look forward to", "be interested in", "succeed in", "insist on"], "tone": "a"}
+      ]
+    },
+    {
+      "type": "contrast",
+      "title": "Same verb, different meaning",
+      "columns": ["remember / forget", "stop", "try"],
+      "rows": [
+        {"label": "+ -ing", "cells": ["a past action you recall (or don't) doing", "an activity ends — it stops happening", "experiment, to see what happens"]},
+        {"label": "+ to-infinitive", "cells": ["a task you need to do, before or after", "you pause to do something else instead", "make an effort at something difficult"]},
+        {"label": "Example", "cells": ["I remember locking the door. / Remember to lock the door.", "She stopped eating meat. / She stopped to eat lunch.", "Try restarting the laptop. / Try to finish on time."]}
+      ]
+    },
+    {
+      "type": "formula",
+      "title": "make / let + bare infinitive",
+      "parts": [
+        {"chip": "make / let", "tone": "kw"},
+        {"chip": "sb", "tone": "a", "ex": "us"},
+        {"chip": "bare infinitive (no 'to')", "tone": "b", "ex": "leave early"}
+      ],
+      "caption": "Miss Vega <b>let</b> us <b>leave</b> early after the test."
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "verb 1", "tone": "kw", "ex": "avoid"},
+      {"chip": "-ing / to-infinitive", "tone": "a", "ex": "meeting"},
+      {"chip": "verb 2 (+ object)", "tone": "b"}
+    ],
+    "table": {
+      "head": ["Pattern", "Meaning change?", "Example"],
+      "rows": [
+        ["Verb + -ing (no change)", "no — fixed pattern", "Sofia avoids meeting new people on the first day."],
+        ["Verb + to-infinitive (no change)", "no — fixed pattern", "Liam managed to finish the project on time."],
+        ["start / begin / continue / love / hate + -ing or to-", "little or none", "It started raining. / It started to rain."],
+        ["remember / forget + -ing vs + to", "yes — before or after", "I remember locking the door. / Don't forget to lock it."],
+        ["stop + -ing vs + to", "yes — what stops vs what's next", "He stopped smoking. / He stopped to smoke."],
+        ["try + -ing vs + to", "yes — experiment vs effort", "Try restarting the router. / Try to stay calm."],
+        ["adjective + to-infinitive", "—", "It was hard to concentrate during the storm."],
+        ["make / let + bare infinitive", "no 'to'", "Her parents let her go to the concert."]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Verbs that only take -ing",
+      "examples": [
+        {"text": "Nadia can't <b>imagine living</b> anywhere other than Arequipa.", "note": "imagine + -ing, fixed"},
+        {"text": "I'd <b>avoid mentioning</b> the exam results if I were you — Liam's upset.", "note": "avoid + -ing"}
+      ]
+    },
+    {
+      "point": "Verbs that only take a to-infinitive",
+      "examples": [
+        {"text": "Sofia <b>decided to apply</b> for the summer exchange programme.", "note": "decide + to-infinitive, fixed"},
+        {"text": "We finally <b>managed to book</b> the tickets before they sold out.", "note": "manage + to-infinitive"}
+      ]
+    },
+    {
+      "point": "Verbs that change meaning with -ing or to-infinitive",
+      "examples": [
+        {"text": "I clearly <b>remember switching</b> off the lights before we left.", "note": "a past action I recall doing"},
+        {"text": "Please <b>remember to switch</b> off the lights when you leave.", "note": "a task not yet done"},
+        {"text": "Liam <b>stopped checking</b> his phone during dinner — finally.", "note": "the checking stopped"},
+        {"text": "We <b>stopped to check</b> the map halfway up the trail.", "note": "paused an activity in order to do something else"}
+      ]
+    },
+    {
+      "point": "Adjectives, prepositions, and make/let",
+      "examples": [
+        {"text": "Nadia is <b>interested in studying</b> marine biology after school.", "note": "preposition + -ing"},
+        {"text": "The teacher <b>let</b> the class <b>choose</b> their own topics this term.", "note": "let + bare infinitive"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "I enjoy to read before bed.", "right": "I enjoy <b>reading</b> before bed.", "why": "<i>Enjoy</i> is always followed by -ing, never a to-infinitive."},
+    {"wrong": "She decided joining the choir.", "right": "She decided <b>to join</b> the choir.", "why": "<i>Decide</i> is always followed by a to-infinitive, never -ing."},
+    {"wrong": "I'll never forget to visit Machu Picchu for the first time.", "right": "I'll never forget <b>visiting</b> Machu Picchu for the first time.", "why": "A past memory takes -ing; <i>forget to</i> means a task you didn't do."},
+    {"wrong": "He stopped to smoke ten years ago, and he's never gone back.", "right": "He stopped <b>smoking</b> ten years ago, and he's never gone back.", "why": "The habit itself ending needs -ing, not to-infinitive."},
+    {"wrong": "My parents let me to stay out later on Fridays.", "right": "My parents let me <b>stay</b> out later on Fridays.", "why": "<i>Let</i> is followed by the bare infinitive — never add <i>to</i>."},
+    {"wrong": "It's important arriving on time for the mock exam.", "right": "It's important <b>to arrive</b> on time for the mock exam.", "why": "Adjective + to-infinitive is the fixed pattern, not -ing."}
+  ],
+  "dialogue": {
+    "title": "Revising for the mock exam",
+    "context": "Nadia and Mateo are comparing study habits before the B2 First mock exam, with Miss Vega checking in.",
+    "lines": [
+      {"speaker": "Nadia", "text": "I really <b>need to finish</b> the reading paper tonight — I keep <b>putting</b> it <b>off</b>."},
+      {"speaker": "Mateo", "text": "Same. I <b>tried studying</b> after dinner yesterday, but I fell asleep on the sofa."},
+      {"speaker": "Nadia", "text": "Try <b>doing</b> it earlier then. Have you <b>finished revising</b> the reported speech unit?"},
+      {"speaker": "Mateo", "text": "Almost. I <b>remember struggling</b> with that one in class, so I'm going over it again."},
+      {"speaker": "Nadia", "text": "Don't <b>forget to check</b> the listening scripts too — I found them really useful."},
+      {"speaker": "Miss Vega", "text": "Good habits, both of you. I'd <b>recommend practising</b> under timed conditions before Friday."},
+      {"speaker": "Mateo", "text": "We will. Actually, could you <b>let</b> us <b>see</b> last year's paper again?"},
+      {"speaker": "Miss Vega", "text": "I can email it tonight — just <b>remind me</b> if I forget."},
+      {"speaker": "Nadia", "text": "We won't <b>stop</b> you <b>forgetting</b> — Mateo already set two reminders."},
+      {"speaker": "Mateo", "text": "I <b>plan to sleep</b> properly this week too. No more studying until midnight."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "Sofia suggested ___ the museum before the trip ends.", "options": ["visiting", "to visit", "visit"], "answer": 0, "why": "suggest + -ing"},
+        {"sentence": "Liam hopes ___ the football team next season.", "options": ["joining", "to join", "join"], "answer": 1, "why": "hope + to-infinitive"},
+        {"sentence": "I clearly remember ___ the door before we left the house.", "options": ["to lock", "lock", "locking"], "answer": 2, "why": "a memory of a completed action = -ing"},
+        {"sentence": "We stopped ___ photos at the viewpoint before continuing the walk.", "options": ["taking", "to take", "take"], "answer": 1, "why": "paused the walk in order to take photos"},
+        {"sentence": "Her coach let her ___ the training session early.", "options": ["to leave", "leaving", "leave"], "answer": 2, "why": "let + bare infinitive, no 'to'"},
+        {"sentence": "It was impossible ___ during the storm last night.", "options": ["to sleep", "sleeping", "sleep"], "answer": 0, "why": "adjective + to-infinitive"},
+        {"sentence": "Mateo is thinking ___ a new laptop before the school year starts.", "options": ["to buy", "buy", "of buying"], "answer": 2, "why": "preposition (of) + -ing"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with the correct form of the verb in brackets.",
+      "items": [
+        {"sentence": "Nadia finally managed ___ (finish) the essay just before the deadline.", "answers": ["to finish"]},
+        {"sentence": "I really enjoy ___ (listen) to podcasts on the way to school.", "answers": ["listening"]},
+        {"sentence": "Please remember ___ (bring) your ID card for the exam tomorrow.", "answers": ["to bring"]},
+        {"sentence": "He stopped ___ (check) his phone every five minutes — it was driving everyone mad.", "answers": ["checking"]},
+        {"sentence": "Try ___ (explain) it more slowly; maybe that will help.", "answers": ["explaining"]},
+        {"sentence": "The teacher made us ___ (rewrite) the whole paragraph.", "answers": ["rewrite"]},
+        {"sentence": "Sofia is interested in ___ (study) marine biology after school.", "answers": ["studying"]},
+        {"sentence": "We can't afford ___ (miss) any more classes before the exam.", "answers": ["to miss"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first. Use the word given. Do not change it. Use between two and five words.",
+      "items": [
+        {"first": "Liam didn't manage to finish the report on time.", "key": "FAILED", "second_start": "Liam", "second_end": "the report on time.", "answers": ["failed to finish"]},
+        {"first": "I have a clear memory of switching off the lights.", "key": "REMEMBER", "second_start": "I clearly", "second_end": "off the lights.", "answers": ["remember switching"]},
+        {"first": "Don't forget: you need to bring your passport tomorrow.", "key": "REMEMBER", "second_start": "Please", "second_end": "your passport tomorrow.", "answers": ["remember to bring"]},
+        {"first": "Her parents allowed her to stay out until midnight.", "key": "LET", "second_start": "Her parents", "second_end": "out until midnight.", "answers": ["let her stay"]},
+        {"first": "Nadia paused her homework in order to answer the phone.", "key": "STOPPED", "second_start": "Nadia", "second_end": "the phone.", "answers": ["stopped to answer"]},
+        {"first": "It isn't easy to concentrate with all this noise.", "key": "HARD", "second_start": "It's", "second_end": "with all this noise.", "answers": ["hard to concentrate"]}
+      ]
+    }
+  ],
+  "summary": [
+    "The verb before decides the form: some verbs (enjoy, avoid, finish) always take -ing; others (decide, hope, manage) always take to-infinitive.",
+    "Remember, forget, stop and try change meaning: -ing looks at a past or ongoing action, to-infinitive looks at a task still to do.",
+    "Start, begin, continue, love and hate accept either form with little or no change in meaning.",
+    "Adjectives are usually followed by a to-infinitive; prepositions are always followed by -ing.",
+    "Make and let are followed by the bare infinitive — never add 'to' after them."
+  ]
+}

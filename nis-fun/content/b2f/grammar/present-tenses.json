@@ -1,0 +1,174 @@
+{
+  "id": "present-tenses",
+  "level": "b2f",
+  "area": "Tenses & time",
+  "title": "Present simple and continuous",
+  "tagline": "Facts and routines against actions in progress, arrangements and things that annoy you.",
+  "cefr": "B2",
+  "exam": [
+    "Reading & Use of English Part 1 — multiple-choice cloze",
+    "Reading & Use of English Part 4 — key word transformations",
+    "Speaking Part 1 — talking about routines and life now"
+  ],
+  "why": "Both tenses look easy, but B2 First tests the edge cases: state verbs that never take <b>-ing</b>, present continuous for a fixed arrangement, and <i>always + -ing</i> for a complaint. Getting the choice wrong changes the meaning, not just the grammar.",
+  "diagrams": [
+    {
+      "type": "contrast",
+      "title": "Present simple or present continuous?",
+      "columns": ["Present simple", "Present continuous"],
+      "rows": [
+        {"label": "Typical time word", "cells": ["every day, usually, on Mondays", "now, at the moment, these days"]},
+        {"label": "Meaning", "cells": ["permanent, general, repeated", "in progress, temporary, changing"]},
+        {"label": "State verbs (know, want, seem)", "cells": ["yes — the only option", "no — not used"]},
+        {"label": "Example", "cells": ["The gates open at seven.", "The gates are staying open late this week."]}
+      ]
+    },
+    {
+      "type": "map",
+      "title": "Four jobs for the present continuous",
+      "center": "Present continuous",
+      "branches": [
+        {"label": "Now", "items": ["Look, it's raining.", "She's texting Nadia."], "tone": "a"},
+        {"label": "Temporary", "items": ["staying with my cousins", "working from the library this week"], "tone": "b"},
+        {"label": "Fixed arrangements", "items": ["We're meeting at four.", "playing on Saturday"], "tone": "c"},
+        {"label": "Annoying habits", "items": ["always losing his kit", "constantly checking his phone"], "tone": "a"}
+      ]
+    },
+    {
+      "type": "formula",
+      "title": "State verbs stay simple",
+      "parts": [
+        {"chip": "state verb", "tone": "kw", "ex": "know / want / believe / own"},
+        {"chip": "→", "tone": "arrow"},
+        {"chip": "present simple only", "tone": "b", "ex": "I understand"}
+      ],
+      "caption": "Verbs of thought, feeling, senses and possession describe a state, not an action, so they don't take <i>-ing</i> — even when the meaning feels immediate."
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "subject", "tone": "kw"},
+      {"chip": "base verb (+s/es)", "tone": "a", "ex": "plays"},
+      {"chip": "or", "tone": "arrow"},
+      {"chip": "am/is/are + verb-ing", "tone": "b", "ex": "is playing"}
+    ],
+    "table": {
+      "head": ["Use", "Present simple", "Present continuous", "Example"],
+      "rows": [
+        ["General truths & facts", "subject + base verb (+s)", "—", "Water boils at 100°C."],
+        ["Routines & habits", "subject + base verb (+s), with adverbs of frequency", "—", "Sofia checks her phone every ten minutes."],
+        ["Right now", "—", "am/is/are + verb-ing", "Look, it's raining again."],
+        ["Temporary situations", "—", "am/is/are + verb-ing (+ this week/these days)", "Liam is staying with his cousins this month."],
+        ["Fixed arrangements", "—", "am/is/are + verb-ing + time/place", "We're meeting Miss Vega at four on Friday."],
+        ["Annoying repeated actions", "—", "am/is/are + always + verb-ing", "He's always losing his keys."],
+        ["State verbs (feelings, senses, opinions)", "subject + base verb (+s)", "—", "I don't understand this question."],
+        ["Negative & question forms", "don't/doesn't + base verb / do/does + subject + base verb", "isn't/aren't + verb-ing / am/is/are + subject + verb-ing", "Doesn't she live near the stadium? / Isn't he coming today?"]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Facts, routines and timetables",
+      "examples": [
+        {"text": "The 8:15 bus <b>leaves</b> from outside the market, not the main gate.", "note": "a timetable"},
+        {"text": "Miss Vega <b>marks</b> essays every weekend during term time.", "note": "a routine"},
+        {"text": "Sofia <b>doesn't eat</b> meat, but she <b>loves</b> Andean cheese.", "note": "a general fact + a state verb"}
+      ]
+    },
+    {
+      "point": "Now, temporary situations and changing trends",
+      "examples": [
+        {"text": "Look — Nadia <b>is filming</b> the rehearsal on her phone.", "note": "happening right now"},
+        {"text": "We<b>'re staying</b> with my aunt in Cusco while our flat is being painted.", "note": "a temporary situation"},
+        {"text": "More schools <b>are switching</b> to digital textbooks every year.", "note": "a trend that is changing"}
+      ]
+    },
+    {
+      "point": "Arrangements and annoying habits",
+      "examples": [
+        {"text": "Mateo <b>is meeting</b> the coach at six tomorrow to talk about the trip.", "note": "a fixed arrangement"},
+        {"text": "Liam <b>is always forgetting</b> his kit on training days.", "note": "a complaint"},
+        {"text": "We <b>are performing</b> at the festival on Saturday — it's already on the poster.", "note": "an arrangement with evidence"}
+      ]
+    },
+    {
+      "point": "State verbs with an action meaning",
+      "examples": [
+        {"text": "I <b>think</b> the second option is better, but we <b>'re thinking</b> about changing the topic anyway.", "note": "think = opinion (simple) vs a mental process (continuous)"},
+        {"text": "This soup <b>tastes</b> amazing, but the chef <b>is tasting</b> it again before it goes out.", "note": "taste = a sense (simple) vs an action (continuous)"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "I'm knowing the answer.", "right": "I <b>know</b> the answer.", "why": "<i>Know</i> is a state verb — it never takes the continuous, whatever the time word suggests."},
+    {"wrong": "She always is complaining about homework.", "right": "She<b>'s always complaining</b> about homework.", "why": "<i>Always</i> goes after am/is/are, not before, in this pattern for complaints."},
+    {"wrong": "The train leave at 6pm every day.", "right": "The train <b>leaves</b> at 6pm every day.", "why": "Third person singular needs the <i>-s</i> ending in the present simple."},
+    {"wrong": "We are meeting the coach every Tuesday for training.", "right": "We <b>meet</b> the coach every Tuesday for training.", "why": "A repeated routine takes the present simple, not the continuous — save <i>meeting</i> for one fixed occasion."},
+    {"wrong": "I'm having a car.", "right": "I <b>have</b> a car.", "why": "<i>Have</i> meaning possess is a state verb; only <i>have</i> meaning an action (having lunch, having a shower) can be continuous."}
+  ],
+  "dialogue": {
+    "title": "What's on today?",
+    "context": "Sofia and Mateo are checking the sports and music schedule on the noticeboard while Liam keeps interrupting with excuses.",
+    "lines": [
+      {"speaker": "Sofia", "text": "Wait, <b>does</b> the robotics club <b>meet</b> on Wednesdays or Thursdays this term?"},
+      {"speaker": "Mateo", "text": "Thursdays. And Miss Vega <b>is running</b> an extra session tomorrow because the regional contest <b>is coming</b> up."},
+      {"speaker": "Liam", "text": "Guys, I<b>'m not joining</b> today — my knee still hurts from Tuesday."},
+      {"speaker": "Sofia", "text": "Since when <b>do</b> you <b>care</b> about your knee? You never warm up properly."},
+      {"speaker": "Liam", "text": "I<b>'m warming up</b> right now, actually."},
+      {"speaker": "Mateo", "text": "Sure you are. Anyway, the bus for the away match <b>leaves</b> at four sharp, not half past."},
+      {"speaker": "Sofia", "text": "Nadia <b>doesn't know</b> that yet — she <b>thinks</b> it's at half four."},
+      {"speaker": "Liam", "text": "She<b>'s always confusing</b> the times. Someone should text her."},
+      {"speaker": "Mateo", "text": "I<b>'m texting</b> her right now."},
+      {"speaker": "Sofia", "text": "Good. And Liam, if your knee really hurts, tell the coach — don't just disappear."},
+      {"speaker": "Liam", "text": "Fine, fine. I promise I'll say something."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "Look! Liam ___ his skateboard down the school ramp.", "options": ["rides", "is riding", "ride"], "answer": 1, "why": "an action happening now (Look!) → present continuous"},
+        {"sentence": "Water ___ at 100°C at sea level.", "options": ["boils", "is boiling", "boil"], "answer": 0, "why": "a scientific fact → present simple"},
+        {"sentence": "I ___ this song — can you turn it up?", "options": ["love", "am loving", "loves"], "answer": 0, "why": "<i>love</i> is a state verb; it doesn't take the continuous"},
+        {"sentence": "We ___ a French exchange student next month — it's all arranged.", "options": ["host", "are hosting", "hosted"], "answer": 1, "why": "a fixed arrangement with a future time → present continuous"},
+        {"sentence": "Nadia's always ___ her homework until the last minute.", "options": ["leave", "leaves", "leaving"], "answer": 2, "why": "<i>always</i> + be + verb-ing = an annoying repeated habit"},
+        {"sentence": "The museum ___ at five on weekdays.", "options": ["closes", "is closing", "close"], "answer": 0, "why": "a timetable → present simple"},
+        {"sentence": "Right now, I ___ exactly what you mean.", "options": ["see", "am seeing", "saw"], "answer": 0, "why": "<i>see</i> meaning understand is a state verb, even with <i>right now</i>"},
+        {"sentence": "Every Saturday, Mateo and his dad ___ football in the park.", "options": ["are playing", "play", "played"], "answer": 1, "why": "a routine/habit → present simple"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with the correct form of the verb in brackets.",
+      "items": [
+        {"sentence": "Miss Vega ___ (check) attendance at the start of every lesson.", "answers": ["checks"]},
+        {"sentence": "Right now, the whole class ___ (wait) for the fire drill to finish.", "answers": ["is waiting"]},
+        {"sentence": "Sofia ___ (not/like) horror films, but she watches them anyway for Liam.", "answers": ["doesn't like", "does not like"]},
+        {"sentence": "We ___ (rehearse) the school play every day this week — the performance is on Friday.", "answers": ["are rehearsing"]},
+        {"sentence": "___ (Liam/train) with the athletics team these days?", "answers": ["Is Liam training"]},
+        {"sentence": "I ___ (not/understand) why the bus is leaving early today.", "answers": ["don't understand", "do not understand"]},
+        {"sentence": "The shop on the corner ___ (not/open) on Sundays.", "answers": ["doesn't open", "does not open"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first. Use the word given. Do not change it. Use between two and five words.",
+      "items": [
+        {"first": "Liam forgets his kit on nearly every training day, and it really annoys Miss Vega.", "key": "ALWAYS", "second_start": "Liam", "second_end": "his kit, and it really annoys Miss Vega.", "answers": ["is always forgetting"]},
+        {"first": "My cousin has come to live with us for a few weeks while her flat is repaired.", "key": "STAYING", "second_start": "My cousin", "second_end": "with us for a few weeks while her flat is repaired.", "answers": ["is staying"]},
+        {"first": "We have arranged to meet the head teacher at nine on Monday.", "key": "MEETING", "second_start": "We", "second_end": "the head teacher at nine on Monday.", "answers": ["are meeting"]},
+        {"first": "My brother has no interest at all in classical music.", "key": "DOES", "second_start": "My brother", "second_end": "classical music.", "answers": ["doesn't like", "does not like"]},
+        {"first": "The museum's doors close at five every weekday, without exception.", "key": "CLOSES", "second_start": "The museum", "second_end": "at five every weekday, without exception.", "answers": ["always closes"]},
+        {"first": "It seems that Nadia has no idea what time the match starts.", "key": "KNOW", "second_start": "Nadia", "second_end": "what time the match starts.", "answers": ["doesn't know", "does not know"]}
+      ]
+    }
+  ],
+  "summary": [
+    "Present simple: facts, routines and timetables — permanent and repeated.",
+    "Present continuous: now, temporary situations, fixed arrangements and complaints with <i>always</i>.",
+    "State verbs (know, want, believe, taste as a sense, have as possession) stay in the present simple, even when the time word suggests <i>now</i>.",
+    "Many verbs shift meaning between a state and an action — check which one the sentence needs.",
+    "In transformations, look for <i>always</i>, a fixed future arrangement or a finished routine to decide the tense."
+  ]
+}

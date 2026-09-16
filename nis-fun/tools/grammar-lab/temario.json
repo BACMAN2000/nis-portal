@@ -1,0 +1,86 @@
+{
+ "b2f": {"cefr":"B2","exam":"B2 First for Schools","areas":[
+  {"area":"Tenses & time","topics":[
+   {"id":"present-tenses","title":"Present simple and continuous","brief":"State vs action verbs; present continuous for temporary situations, annoyance (always) and arrangements; present simple for timetables."},
+   {"id":"present-perfect","title":"Present perfect simple and continuous","brief":"for/since/just/yet/already/still; unfinished time; result vs activity; how long vs how many; with superlatives and first time."},
+   {"id":"narrative-tenses","title":"Narrative tenses","brief":"Past simple, past continuous, past perfect simple and continuous together in a story; sequencing; when/while/as; by the time."},
+   {"id":"habits-past-present","title":"used to, would, be used to, get used to","brief":"Past habits and states vs present habits; be/get used to + -ing; would only for repeated actions."},
+   {"id":"future-forms","title":"Future forms","brief":"will/going to/present continuous/present simple; future continuous and future perfect; be about to, be likely to; time clauses (when/as soon as + present)."}
+  ]},
+  {"area":"Modals","topics":[
+   {"id":"modals-obligation","title":"Obligation, permission and advice","brief":"must/have to/should/ought to/needn't/don't have to/mustn't; be allowed to; had better; past forms (had to, should have)."},
+   {"id":"modals-deduction","title":"Speculation and deduction","brief":"must/might/may/could/can't for present and past (+ have + participle); degrees of certainty; continuous forms (must be joking)."}
+  ]},
+  {"area":"Conditionals & hypothesis","topics":[
+   {"id":"conditionals-review","title":"Conditionals: zero to third","brief":"The four types with their meanings; unless/as long as/provided that/in case/even if; were in the second conditional; alternatives to will in results."},
+   {"id":"mixed-conditionals","title":"Mixed conditionals","brief":"Past cause with present result and present state with past result."},
+   {"id":"wish-if-only","title":"wish, if only, would rather, it's time","brief":"wish/if only + past, past perfect and would; would rather + past; it's (high) time + past; as if/as though."}
+  ]},
+  {"area":"Passive & causative","topics":[
+   {"id":"passive","title":"The passive in all tenses","brief":"Forms across tenses and with modals; by + agent; verbs with two objects; it is said that / he is said to; when to prefer the passive."},
+   {"id":"causative","title":"Causative: have/get something done","brief":"have/get + object + participle in all tenses; get sb to do; have sb do; make/let/allow; have something happen to you."}
+  ]},
+  {"area":"Reporting","topics":[
+   {"id":"reported-speech","title":"Reported speech","brief":"Tense, pronoun, time and place shifts; reported questions (if/whether, word order); commands and requests; when the tense does not change."},
+   {"id":"reporting-verbs","title":"Reporting verbs and their patterns","brief":"suggest/recommend + -ing; deny/admit + -ing; accuse sb of; insist on; warn/advise/persuade sb (not) to; agree/offer/refuse + to; apologise for."}
+  ]},
+  {"area":"Sentence building","topics":[
+   {"id":"relative-clauses","title":"Relative clauses","brief":"Defining vs non-defining (commas, that, omission); whose/where/when/why; which referring to a whole clause; prepositions in relative clauses; reduced relatives (-ing/-ed)."},
+   {"id":"gerund-infinitive","title":"Verb patterns: gerund and infinitive","brief":"Verbs + -ing vs + to; verbs that change meaning (remember/forget/stop/try/regret/mean/go on); adjectives + to; prepositions + -ing; make/let + bare infinitive."},
+   {"id":"linking-contrast","title":"Contrast and concession","brief":"although/even though/though; despite/in spite of (+ -ing/the fact that); whereas/while; however/nevertheless/on the other hand; position and punctuation."},
+   {"id":"purpose-reason-result","title":"Purpose, reason and result","brief":"so that/in order to/so as to/to; because of/due to/owing to/as/since; so…that/such…that; too/enough; as a result/therefore/consequently."}
+  ]},
+  {"area":"Comparison & description","topics":[
+   {"id":"comparatives","title":"Comparison","brief":"Comparatives and superlatives (regular and irregular); modifiers (far/much/a lot/slightly/by far/easily); as…as / not as…as / twice as…as; the + comparative, the + comparative; like vs as."},
+   {"id":"articles-quantifiers","title":"Articles and quantifiers","brief":"a/an/the/zero article with general, specific and abstract nouns; countable/uncountable; few/a few/little/a little; plenty of/hardly any; all/both/neither/either/each/every/none of."},
+   {"id":"adjectives-adverbs","title":"Adjectives and adverbs","brief":"Order of adjectives; -ed vs -ing; gradable and ungradable adjectives with intensifiers (very/absolutely/really); adverb position (frequency, manner, sentence adverbs); adjectives vs adverbs (hard/hardly, late/lately)."}
+  ]},
+  {"area":"Emphasis & questions","topics":[
+   {"id":"emphasis-intro","title":"Emphasis: cleft sentences and basic inversion","brief":"What I need is…; It was Sofia who…; The reason (why)…is; Not only…but also; Never/Rarely + inversion (introductory); so/neither/nor do I."},
+   {"id":"questions-tags","title":"Questions: indirect, tags and echo","brief":"Indirect questions (Could you tell me where…); question tags with all auxiliaries, imperatives (will you?), let's (shall we?); negative questions; echo questions and short answers."}
+  ]},
+  {"area":"Words","topics":[
+   {"id":"word-formation","title":"Word formation for Use of English Part 3","brief":"Noun/verb/adjective/adverb families; negative prefixes (un/in/im/il/ir/dis/mis); suffixes (-ness/-ment/-tion/-ity/-ful/-less/-able/-ive/-ly); compound adjectives; plural or negative? — reading the sentence for the right form."}
+  ]}
+ ]},
+ "c1a": {"cefr":"C1","exam":"C1 Advanced","areas":[
+  {"area":"Tenses & aspect","topics":[
+   {"id":"perfect-aspect","title":"The perfect aspect across tenses","brief":"Present, past and future perfect, simple and continuous; by/by the time/before; perfect infinitive and perfect -ing; subtle differences (has lived vs has been living)."},
+   {"id":"narrative-advanced","title":"Advanced narrative and the future in the past","brief":"Past perfect continuous; was going to / would / was to (have) for plans that changed; would for past habits vs refusal; historic present for drama."},
+   {"id":"future-advanced","title":"Advanced ways of talking about the future","brief":"be to / be about to / be due to / be bound to / be on the verge of; future continuous for politeness and assumptions; future perfect continuous; will for assumptions and habits; shall in formal contexts."},
+   {"id":"unreal-past","title":"Unreal past and hypothetical meaning","brief":"as if/as though (+ past/past perfect); would rather/sooner (+ past for other subjects); it's (high/about) time; suppose/supposing/what if; wish + would for irritation; if only with all three times."}
+  ]},
+  {"area":"Modals","topics":[
+   {"id":"modals-nuance","title":"Modal verbs: fine distinctions","brief":"needn't have vs didn't need to; may/might as well; could have (missed opportunity/annoyance); should/ought to have; will/would for habits and assumptions; dare and need as modals; be supposed to."},
+   {"id":"modals-past-speculation","title":"Speculating about the past","brief":"must/can't/couldn't/may/might + have + participle; continuous forms (must have been waiting); was/were to have; ought to have; hedged speculation in formal writing."}
+  ]},
+  {"area":"Conditionals & hypothesis","topics":[
+   {"id":"conditionals-advanced","title":"Advanced conditionals","brief":"Inverted conditionals (Had I known / Should you require / Were it not for); but for / if it weren't for; if + were to / if + should; provided that / on condition that / whether or not / assuming that; implied conditions (otherwise, or else)."},
+   {"id":"inversion","title":"Inversion after negative and limiting adverbials","brief":"never/rarely/seldom/little/nowhere; not until/not only/no sooner…than/hardly…when/scarcely; only then/only when/only by; under no circumstances/on no account/in no way; so + adjective…that / such…that; inversion after as and than."},
+   {"id":"cleft-sentences","title":"Cleft sentences","brief":"it-clefts (It was the message that mattered), wh-clefts (What matters is…), all/the only thing…, the reason/place/person…, reversed wh-clefts (That's what I meant); clefts for contrast and correction."},
+   {"id":"emphasis-advanced","title":"Emphasis and fronting","brief":"Emphatic do/does/did; fronting objects and adverbials (This I can accept); intensifying adverbs (utterly, downright, thoroughly) and collocation; own and very; the thing is; emphatic whatever/whoever."}
+  ]},
+  {"area":"Passive & reporting","topics":[
+   {"id":"passive-advanced","title":"Advanced passive structures","brief":"Impersonal passive (it is believed that / she is believed to have); get-passive; passive infinitives and gerunds (to be told / being told); need + -ing; have/get something done vs have something happen; passive with phrasal verbs."},
+   {"id":"reporting-advanced","title":"Reporting: verbs, patterns and distance","brief":"Reporting verbs with their patterns (deny/insist/urge/object to/threaten/accuse of/blame for/dissuade from); reporting with hedges (claim/allege/is said to/is thought to); reported questions and requests; reporting without backshift; summarising what was said."}
+  ]},
+  {"area":"Sentence building","topics":[
+   {"id":"verb-patterns-advanced","title":"Advanced verb patterns","brief":"Verbs + object + infinitive/-ing (I saw him leave / leaving); perfect and continuous infinitives (seems to have been); passive infinitives; verb + preposition + -ing; can't help/bear/stand; to vs to + -ing after object to/look forward to/be used to."},
+   {"id":"participle-clauses","title":"Participle clauses","brief":"Present, past and perfect participle clauses (Having finished…, Built in 1900…); reduced relatives; with + noun + participle; participles after conjunctions (when asked, if given); avoiding dangling participles."},
+   {"id":"relative-clauses-advanced","title":"Advanced relative clauses","brief":"Preposition + whom/which; whereby/wherein; whatever/whichever/whoever; of which/whose with things; all of whom / some of which; non-finite relatives (the first person to…); which for whole clauses in formal writing."},
+   {"id":"nominalisation","title":"Nominalisation and academic style","brief":"Turning verbs and adjectives into nouns (fail → failure, likely → likelihood); noun phrases with pre- and post-modification; abstract nouns with the + noun + of; impersonal subjects; when NOT to nominalise."},
+   {"id":"hedging-impersonal","title":"Hedging and impersonal structures","brief":"it seems/appears/would seem that; tend to; arguably/presumably/apparently; there is some evidence that; modals for tentativeness (may/might/could); one; passive to avoid naming the agent; softeners in speech (sort of, I'd say)."},
+   {"id":"discourse-markers","title":"Discourse markers and cohesion","brief":"Formal linkers (albeit, notwithstanding, hence, thereby, whereby, in that); sequencing and referencing (the former/the latter, the above, such); spoken markers (mind you, as I was saying, anyway, that said); cohesion through repetition and synonyms."},
+   {"id":"substitution-ellipsis","title":"Substitution and ellipsis","brief":"so/not after think/hope/suppose; do so/did so; one/ones; ellipsis after auxiliaries and to (I'd like to); if so / if not; omitting repeated subjects and verbs; the same; leaving out that and relative pronouns."},
+   {"id":"concession","title":"Concession and contrast at C1","brief":"much as / however + adjective / no matter how / whatever; whilst; albeit; even so / all the same / that said; granted / admittedly; for all + noun; may…but; as in Tired as he was."}
+  ]},
+  {"area":"Comparison & description","topics":[
+   {"id":"comparison-advanced","title":"Advanced comparison","brief":"the + comparative, the + comparative with ellipsis; nowhere near / nothing like / by far / every bit as / just as; not so much X as Y; comparatives with clauses (than had been expected); like vs as vs as if; as … as any; all the more."},
+   {"id":"articles-determiners","title":"Articles and determiners at C1","brief":"Generic the (the tiger, the rich); zero article with abstract and institutional nouns (in hospital, at university); the with superlatives, ordinals and unique things; quite a / rather a / such a; half/all/both (of); a with jobs and units of measure; determiner + own."}
+  ]},
+  {"area":"Words","topics":[
+   {"id":"word-formation-advanced","title":"Word formation at C1","brief":"Nominalising suffixes (-ance/-ence/-ity/-ism/-hood); negative prefixes and their nuances (dis-/mis-/un-/in-/non-); compound adjectives (well-established, time-consuming); conversion (to google); -en/-ify/-ise verbs; strategy for Use of English Part 3."},
+   {"id":"phrasal-idiomatic","title":"Phrasal verbs, dependent prepositions and idioms","brief":"Phrasal verbs with several meanings; what particles mean (up = completion, out = disappearance, off = separation, through = completion); separable/inseparable; dependent prepositions (Use of English Part 2); idiomatic collocations for C1 speaking and writing."}
+  ]}
+ ]}
+}

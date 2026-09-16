@@ -1,846 +1,848 @@
 {
- "id": "c1a-06",
- "level": "c1a",
- "number": 6,
- "title": "The last word",
- "topic": "review & critical debate",
- "grammar": "The language of formal argument (concession and hedging); a review of inversion, cleft sentences and emphatic structures for debate",
- "wordlist": [
-  "concede",
-  "hedge",
-  "rebut",
-  "qualify",
-  "provocative",
-  "counterargument",
-  "on balance",
-  "compelling",
-  "valid",
-  "one-sided"
- ],
- "wordlist_extra": [
-  "motion",
-  "counter",
-  "measured"
- ],
- "exam_focus": {
-  "paper": "Reading & Use of English",
-  "part": 6,
-  "skill": "cross-text multiple matching"
- },
- "characters": [
-  "nova"
- ],
- "scene": {
-  "speaker": "nova",
-  "bubble": "The last word! One final debate, one last review of everything you've learned - inversion, clefts, concession and hedging - all put to work arguing the biggest questions of the year.",
-  "intro": "This is the final unit of C1 Advanced, and of the Inspiring Nordic project. Our Grade 11 class holds its last critical debate, drawing together everything the reading club has argued about all year: ambition, society, obsession and the value of literature itself. You will read four critics arguing about a single question in the format of Reading Part 6, listen to an interview about the art of debating in the format of Listening Part 3, learn the language of formal argument - concession and hedging, such as admittedly, arguably and on balance - and review the emphatic structures from earlier units: inversion, cleft sentences and emphatic do. You will complete Use of English Parts 3 and 4, write a formal letter for Writing Part 2, and prepare for the Speaking Parts 3 and 4 discussion. Never has a class had so much to say. Let's have the last word."
- },
- "activities": [
-  {
-   "code": "A",
-   "type": "pairwork",
-   "title": "Speaking - Parts 1 and 2. Talk with a partner, then record yourself.",
-   "outputs": [
-    "book",
-    "digital"
-   ],
-   "speaking": {
-    "part": 2,
-    "name": "Interview and long turn"
-   },
-   "tips": {
-    "expect": "Part 1 (2 minutes): the examiner asks you and your partner questions about yourselves - routines, opinions, plans. Part 2 (about 4 minutes): each of you speaks alone for one minute about two of three pictures, answering two printed questions; then your partner answers a short follow-up question about your pictures (about 30 seconds).",
-    "how": [
-     "In Part 1, answer with a reason or a short example - a single word sounds unprepared, a long speech sounds rehearsed.",
-     "In Part 2, do not simply describe the pictures: compare them, speculate about what you cannot be sure of (<i>they might be…, perhaps he's arguing that…</i>), and answer both printed questions.",
-     "Keep talking for the full minute; if you run out of things to say about the first question, move to the second."
-    ],
-    "remember": "The interlocutor cannot help you if you dry up, but your partner's short answer at the end is marked too - listen properly."
-   },
-   "data": {
-    "text": "Part 1: talk about disagreement and persuasion. Part 2: compare two of the three pictures and say what the people might be trying to achieve.",
-    "parts": [
-     {
-      "part": 1,
-      "title": "Interview",
-      "time": "2 min",
-      "prompts": [
-       "Do you find it easy to change your mind when someone gives you a good argument? Why or why not?",
-       "Is there a subject you and your friends often disagree about? What is it?",
-       "Do you think it's more important to be right or to be tactful in an argument?",
-       "Who is the best debater you know? What makes them convincing?"
-      ]
-     },
-     {
-      "part": 2,
-      "title": "Long turn",
-      "time": "1 min + 30 s",
-      "question": "Compare two of the pictures and say <b>what the people might be trying to achieve</b> and <b>how difficult you think it is</b>.",
-      "pictures": [
-       {
-        "emoji": "🎤🏫",
-        "caption": "a student giving a speech in a school hall"
-       },
-       {
-        "emoji": "📺🗳️",
-        "caption": "two politicians in a televised debate"
-       },
-       {
-        "emoji": "👨‍👩‍👧⚖️",
-        "caption": "a family arguing about a decision at home"
-       }
+  "id": "c1a-06",
+  "level": "c1a",
+  "number": 6,
+  "title": "The last word",
+  "topic": "review & critical debate",
+  "grammar": "The language of formal argument (concession and hedging); a review of inversion, cleft sentences and emphatic structures for debate",
+  "wordlist": [
+    "concede",
+    "hedge",
+    "rebut",
+    "qualify",
+    "provocative",
+    "counterargument",
+    "on balance",
+    "compelling",
+    "valid",
+    "one-sided"
+  ],
+  "wordlist_extra": [
+    "motion",
+    "counter",
+    "measured"
+  ],
+  "exam_focus": {
+    "paper": "Reading & Use of English",
+    "part": 6,
+    "skill": "cross-text multiple matching"
+  },
+  "characters": [
+    "nova"
+  ],
+  "scene": {
+    "speaker": "nova",
+    "bubble": "The last word! One final debate, one last review of everything you've learned - inversion, clefts, concession and hedging - all put to work arguing the biggest questions of the year.",
+    "intro": "This is the final unit of C1 Advanced, and of the Inspiring Nordic project. Our C1 class holds its last critical debate, drawing together everything the reading club has argued about all year: ambition, society, obsession and the value of literature itself. You will read four critics arguing about a single question in the format of Reading Part 6, listen to an interview about the art of debating in the format of Listening Part 3, learn the language of formal argument - concession and hedging, such as admittedly, arguably and on balance - and review the emphatic structures from earlier units: inversion, cleft sentences and emphatic do. You will complete Use of English Parts 3 and 4, write a formal letter for Writing Part 2, and prepare for the Speaking Parts 3 and 4 discussion. Never has a class had so much to say. Let's have the last word."
+  },
+  "activities": [
+    {
+      "code": "A",
+      "type": "pairwork",
+      "title": "Speaking - Parts 1 and 2. Talk with a partner, then record yourself.",
+      "outputs": [
+        "book",
+        "digital"
       ],
-      "partner": "Which of these situations do you think is hardest to stay calm in? Why? (about 30 seconds)"
-     }
-    ],
-    "useful_language": {
-     "Speculating": [
-      "They may well be trying to…",
-      "It looks as though…",
-      "I'd imagine he's arguing that…",
-      "Presumably she's hoping to…"
-     ],
-     "Comparing": [
-      "Whereas the first picture shows…, the second…",
-      "What they have in common is…",
-      "In both cases…"
-     ],
-     "Giving your view": [
-      "To my mind…",
-      "Arguably, …",
-      "On balance, I'd say…"
-     ]
-    }
-   }
-  },
-  {
-   "code": "B",
-   "type": "match_words",
-   "title": "Vocabulary - debate and nuance. Match each word or phrase with its meaning.",
-   "outputs": [
-    "book",
-    "digital",
-    "quiz"
-   ],
-   "data": {
-    "left_label": "Word",
-    "right_label": "Meaning",
-    "pairs": [
-     {
-      "left": "concede",
-      "right": "to admit, often reluctantly, that a point made by someone else is valid"
-     },
-     {
-      "left": "hedge",
-      "right": "to avoid committing to a definite statement by qualifying it"
-     },
-     {
-      "left": "rebut",
-      "right": "to argue, with evidence, that a claim or accusation is false"
-     },
-     {
-      "left": "qualify",
-      "right": "to add a condition or limitation to a statement to make it more accurate"
-     },
-     {
-      "left": "provocative",
-      "right": "deliberately likely to provoke a strong argument or reaction"
-     },
-     {
-      "left": "counterargument",
-      "right": "a point made to oppose or weaken another argument"
-     },
-     {
-      "left": "on balance",
-      "right": "considering everything, after weighing both sides"
-     },
-     {
-      "left": "compelling",
-      "right": "so convincing that it demands to be believed or accepted"
-     },
-     {
-      "left": "valid",
-      "right": "based on sound reasoning, logically acceptable"
-     },
-     {
-      "left": "one-sided",
-      "right": "unfairly favouring one side of an argument while ignoring the other"
-     }
-    ]
-   }
-  },
-  {
-   "code": "C",
-   "type": "multiple_matching",
-   "title": "Reading and Use of English Part 6 - cross-text multiple matching. Read what four critics say and answer the questions.",
-   "outputs": [
-    "digital"
-   ],
-   "tips": {
-    "expect": "Four short texts (150–180 words each) on the same debatable question, followed by four questions. Each question asks which writer agrees or disagrees with another writer, or with the group, about a specific point. The questions do not follow the order of the texts.",
-    "how": [
-     "Read the introduction and skim all four texts once before answering anything, to get each writer's overall position.",
-     "For each question, work out exactly what opinion is being compared, then scan the relevant texts for that specific idea - writers rarely use identical wording, so look for paraphrase.",
-     "The writer named in the question is not usually the answer: the answer is the other writer who shares, or rejects, that particular view."
-    ],
-    "remember": "There are only four letters and four questions in this part, so a wrong guess costs you more than in Part 8, where there are ten questions to fall back on."
-   },
-   "data": {
-    "title": "Worth the struggle? Four views on demanding novels",
-    "intro": "As part of our final debate, we asked four people who think about books for a living the same question: should long, difficult classic novels remain compulsory reading in schools? Read what each of them says, then answer the questions below.",
-    "sections": [
-     {
-      "letter": "A",
-      "heading": "Dr Elena Frost, literary scholar",
-      "text": "Every year someone suggests that Moby Dick, or novels like it, should be quietly dropped from the reading list in favour of something shorter and friendlier. I understand the impulse, but I think it mistakes the problem. A novel's difficulty is not an obstacle to its value; for a certain kind of book, it is the value. If Melville's sentences gave up their meaning as easily as a magazine article, we would have finished with them in an afternoon and forgotten them by the following week. Admittedly, few seventeen-year-olds would get far with such a book entirely unsupported, and I am not proposing we simply hand it over and walk away. What I resist is the idea that struggle itself is something to be designed out of education. Learning to sit with a difficult sentence until it yields its sense is arguably one of the most transferable skills a school can teach, and it cannot be taught with texts that never resist us. Replace the hard books, and you have not made reading easier. You have made it smaller."
-     },
-     {
-      "letter": "B",
-      "heading": "Tom Ridley, education journalist",
-      "text": "Ask most adults which classic novel put them off reading for good, and you will get an instant answer - usually a long, dense nineteenth-century one, assigned at fifteen and abandoned by page forty. Defenders of these books like to talk about the character-building power of difficulty, but on balance the evidence points the other way: students handed books far beyond their ability to enjoy do not become more resilient readers, they simply stop reading, often for years. There are contemporary novels - shorter, sharper, no less serious in what they attempt - that could do the same intellectual work without the same casualty rate. Nobody is arguing for easy books; the case is for accessible ones, which is not the same thing. I would happily set a demanding text once a student had a reason to want to read it. What I will not accept is the idea that swapping one impenetrable classic for a more approachable, equally ambitious novel amounts to lowering standards. It is arguably the only way most students get any standards to raise at all."
-     },
-     {
-      "letter": "C",
-      "heading": "Amara Osei, novelist and former teacher",
-      "text": "I have taught Moby Dick to two very different classes. One gave up on chapter three; the other, three years later, still argues about it. The difference was never the book. It was ten minutes of talk before each chapter, a reading group that met twice a week, and permission to say 'I don't understand this bit' without shame. Elena Frost is right that difficulty can be valuable, and Tom Ridley is right that forcing it on students with no support does more harm than good - the mistake is treating these as opposites. A hard novel handed over cold will sink most readers; the same novel, read alongside others and talked through slowly, can be the best thing that happens to them all year. The question schools should be asking is not 'is this book too difficult?' but 'have we built the scaffolding to get students through it?' Change the book, and you solve nothing if the scaffolding was the real problem. Keep the book and add the scaffolding, and, arguably, you get the benefits both sides are actually after."
-     },
-     {
-      "letter": "D",
-      "heading": "Priya Chandra, reading-habits researcher",
-      "text": "For a five-year study, my team tracked what predicted whether teenagers still read novels for pleasure at twenty-five. It was not the length of the books they had been assigned at school, and it was not, as far as we could measure, the difficulty either. The single strongest predictor was choice: students who remembered choosing at least some of what they read, even once or twice a year, were far more likely to have kept reading than those who had read only assigned texts, however carefully chosen those texts were. This should complicate a debate that keeps asking the wrong question. Whether Moby Dick is more or less valuable than a contemporary novel matters far less than whether the student picking it up feels any ownership over the choice. A demanding classic selected by a curious student can do more good than an accessible one imposed on a reluctant one. On balance, I suspect we spend too much energy arguing about texts and too little asking who gets to choose them."
-     }
-    ],
-    "questions": [
-     {
-      "q": "Which writer, like Amara Osei, believes that a demanding novel needs to be actively supported rather than simply assigned?",
-      "answer": "A"
-     },
-     {
-      "q": "Which writer would be most likely to agree with Tom Ridley that forcing students through overly demanding texts without support causes lasting damage to their reading habits?",
-      "answer": "C"
-     },
-     {
-      "q": "Which writer disagrees with the idea that a shorter, more approachable novel must be intellectually less ambitious than a longer, harder one?",
-      "answer": "B"
-     },
-     {
-      "q": "Which writer takes a different view from the other three about what actually determines whether someone becomes a lifelong reader?",
-      "answer": "D"
-     }
-    ]
-   }
-  },
-  {
-   "code": "D",
-   "type": "grammar_box",
-   "title": "Language focus 1 - the language of formal argument: concession and hedging",
-   "outputs": [
-    "book",
-    "digital"
-   ],
-   "data": {
-    "title": "The language of formal argument: concession and hedging",
-    "can": "I can concede a point, hedge a claim and qualify a statement so that my argument sounds reasoned rather than absolute - and I can tell a carefully qualified claim from an unsupported one.",
-    "intro": "Advanced speakers and writers rarely overstate. Dr Frost, in Text A, hedges twice in one paragraph - <i>admittedly, few seventeen-year-olds would get far… arguably one of the most transferable skills</i> - and sounds more, not less, convincing for it. Conceding a fair point before defending your own is the single most persuasive move in formal argument.",
-    "examples": [
-     {
-      "text": "<b>Admittedly</b>, the plan has weaknesses, but on balance it remains the best option.",
-      "note": "admittedly = conceding before defending your own position"
-     },
-     {
-      "text": "<b>Arguably</b>, no policy pleases everyone.",
-      "note": "arguably = a claim you stand behind, softened"
-     },
-     {
-      "text": "I accept the criticism <b>to some extent</b>, though not entirely.",
-      "note": "to some extent = partial agreement, not full concession"
-     },
-     {
-      "text": "<b>Granted</b>, costs will rise; <b>even so</b>, the change is worth making.",
-      "note": "granted = a one-word concession, often followed by even so / nevertheless"
-     },
-     {
-      "text": "<b>It could be said that</b> ambition is simply focus by another name.",
-      "note": "it could be said that = a hedged claim, keeps some distance from the speaker"
-     },
-     {
-      "text": "<b>While it may be true that</b> difficulty puts some students off, it does not follow that we should abandon demanding texts altogether.",
-      "note": "while it may be true that = concede a fact, reject the conclusion drawn from it"
-     },
-     {
-      "text": "<b>On balance</b>, the risks are outweighed by what a well-supported challenge can teach.",
-      "note": "on balance = a verdict reached after weighing both sides"
-     }
-    ],
-    "rules": [
-     "Concede, then counter: <i>admittedly / granted / while it may be true that</i> + the point you accept, followed by <i>but / even so / nevertheless</i> + your real position.",
-     "Hedge to avoid overclaiming: <i>arguably, it could be said that, to some extent</i> soften a claim without abandoning it - useful when your evidence is suggestive rather than conclusive.",
-     "Tell a hedged claim from a vague one: <i>arguably, the policy will help</i> (a real position, softened) is not the same as <i>some people think it might possibly help</i> (no position at all, just noise).",
-     "Qualify claims that rest on partial evidence: prefer <i>the evidence suggests</i> to <i>the evidence proves</i>; the second claims a certainty you may not have earned.",
-     "<i>On balance</i> signals a verdict reached after weighing both sides - it belongs in your conclusion, not your introduction.",
-     "Don't over-hedge: an essay or speech built entirely of qualifications says nothing; concede once, hedge once, then commit to a position."
-    ],
-    "practice": {
-     "instructions": "Choose the best option.",
-     "items": [
-      {
-       "sentence": "___, the results are not perfect, but they are still an improvement.",
-       "options": [
-        "Never",
-        "Admittedly",
-        "Obviously"
-       ],
-       "answer": 1
+      "speaking": {
+        "part": 2,
+        "name": "Interview and long turn"
       },
-      {
-       "sentence": "The proposal is ___ the fairest way to divide the funding, though reasonable people disagree.",
-       "options": [
-        "arguably",
-        "utterly",
-        "undeniably"
-       ],
-       "answer": 0
+      "tips": {
+        "expect": "Part 1 (2 minutes): the examiner asks you and your partner questions about yourselves - routines, opinions, plans. Part 2 (about 4 minutes): each of you speaks alone for one minute about two of three pictures, answering two printed questions; then your partner answers a short follow-up question about your pictures (about 30 seconds).",
+        "how": [
+          "In Part 1, answer with a reason or a short example - a single word sounds unprepared, a long speech sounds rehearsed.",
+          "In Part 2, do not simply describe the pictures: compare them, speculate about what you cannot be sure of (<i>they might be…, perhaps he's arguing that…</i>), and answer both printed questions.",
+          "Keep talking for the full minute; if you run out of things to say about the first question, move to the second."
+        ],
+        "remember": "The interlocutor cannot help you if you dry up, but your partner's short answer at the end is marked too - listen properly."
       },
-      {
-       "sentence": "I agree with the criticism ___, though I think it goes too far in places.",
-       "options": [
-        "to some extent",
-        "at any price",
-        "in no way"
-       ],
-       "answer": 0
-      },
-      {
-       "sentence": "___ that the novel is difficult, that is precisely what makes it worth persevering with.",
-       "options": [
-        "Because",
-        "While it may be true",
-        "Unless"
-       ],
-       "answer": 1
-      },
-      {
-       "sentence": "The evidence ___ that longer novels build patience; it does not prove it beyond doubt.",
-       "options": [
-        "shouts",
-        "proves absolutely",
-        "suggests"
-       ],
-       "answer": 2
-      },
-      {
-       "sentence": "___, I still believe the classics deserve their place on the syllabus.",
-       "options": [
-        "At no time",
-        "Under no circumstances",
-        "On balance"
-       ],
-       "answer": 2
+      "data": {
+        "text": "Part 1: talk about disagreement and persuasion. Part 2: compare two of the three pictures and say what the people might be trying to achieve.",
+        "parts": [
+          {
+            "part": 1,
+            "title": "Interview",
+            "time": "2 min",
+            "prompts": [
+              "Do you find it easy to change your mind when someone gives you a good argument? Why or why not?",
+              "Is there a subject you and your friends often disagree about? What is it?",
+              "Do you think it's more important to be right or to be tactful in an argument?",
+              "Who is the best debater you know? What makes them convincing?"
+            ]
+          },
+          {
+            "part": 2,
+            "title": "Long turn",
+            "time": "1 min + 30 s",
+            "question": "Compare two of the pictures and say <b>what the people might be trying to achieve</b> and <b>how difficult you think it is</b>.",
+            "pictures": [
+              {
+                "emoji": "🎤🏫",
+                "caption": "a student giving a speech in a school hall"
+              },
+              {
+                "emoji": "📺🗳️",
+                "caption": "two politicians in a televised debate"
+              },
+              {
+                "emoji": "👨‍👩‍👧⚖️",
+                "caption": "a family arguing about a decision at home"
+              }
+            ],
+            "partner": "Which of these situations do you think is hardest to stay calm in? Why? (about 30 seconds)"
+          }
+        ],
+        "useful_language": {
+          "Speculating": [
+            "They may well be trying to…",
+            "It looks as though…",
+            "I'd imagine he's arguing that…",
+            "Presumably she's hoping to…"
+          ],
+          "Comparing": [
+            "Whereas the first picture shows…, the second…",
+            "What they have in common is…",
+            "In both cases…"
+          ],
+          "Giving your view": [
+            "To my mind…",
+            "Arguably, …",
+            "On balance, I'd say…"
+          ]
+        }
       }
-     ]
-    }
-   }
-  },
-  {
-   "code": "E",
-   "type": "key_transform",
-   "title": "Use of English Part 4 - key word transformations",
-   "outputs": [
-    "digital"
-   ],
-   "tips": {
-    "expect": "Six sentences, each followed by a gapped second sentence containing a key word that must not be changed. You complete the gap with three to six words, including the key word, so that the second sentence means the same as the first. Each item carries up to two marks.",
-    "how": [
-     "Decide exactly what is being tested before you write anything - here, mostly the structures reviewed this year, plus some fixed debate expressions.",
-     "Build the whole gap, then reread the complete second sentence and check it means precisely the same as the first.",
-     "Count your words carefully; contractions count as two words."
-    ],
-    "remember": "You can still score one mark out of two for the right structure with a small error, so never leave a gap blank."
-   },
-   "data": {
-    "instructions": "Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and six words, including the word given.",
-    "items": [
-     {
-      "first": "I have never heard such a persuasive rebuttal in a debate.",
-      "key": "NEVER",
-      "second_start": "Never",
-      "second_end": "such a persuasive rebuttal in a debate.",
-      "answers": [
-       "before have I heard",
-       "have I heard",
-       "have I ever heard"
-      ]
-     },
-     {
-      "first": "The audience found Nadia's closing argument most convincing.",
-      "key": "WHAT",
-      "second_start": "What",
-      "second_end": "was Nadia's closing argument.",
-      "answers": [
-       "the audience found most convincing"
-      ]
-     },
-     {
-      "first": "Liam admitted he was sorry for interrupting Nadia.",
-      "key": "APOLOGISED",
-      "second_start": "Liam",
-      "second_end": "interrupting her.",
-      "answers": [
-       "apologised for",
-       "apologised to Nadia for"
-      ]
-     },
-     {
-      "first": "There are strong reasons to support banning phones in schools.",
-      "key": "CASE",
-      "second_start": "There is a strong",
-      "second_end": "phones in schools.",
-      "answers": [
-       "case for banning"
-      ]
-     },
-     {
-      "first": "Sofía would not accept defeat and continued to argue her point.",
-      "key": "INSISTED",
-      "second_start": "Sofía",
-      "second_end": "her point.",
-      "answers": [
-       "insisted on arguing",
-       "insisted on defending"
-      ]
-     },
-     {
-      "first": "Her argument was so persuasive that nobody could rebut it.",
-      "key": "SUCH",
-      "second_start": "",
-      "second_end": "that nobody could rebut it.",
-      "answers": [
-       "such was her argument's force"
-      ]
-     }
-    ]
-   }
-  },
-  {
-   "code": "F",
-   "type": "listening_mc",
-   "title": "Listening Part 3 - multiple choice. Listen to the interview and choose the best answer.",
-   "outputs": [
-    "digital"
-   ],
-   "audio": "c1a/u06-f.mp3",
-   "tips": {
-    "expect": "One interview or discussion of about four minutes, with one or two speakers, followed by six four-option questions. The questions test opinion, attitude, agreement or disagreement and purpose rather than small facts. You hear the recording twice.",
-    "how": [
-     "Before listening, read all six questions and options: they tell you what to listen for - feelings and opinions, not dates or numbers.",
-     "The questions follow the order of the interview, but the correct option usually paraphrases what is said rather than repeating the exact words.",
-     "Watch out for options that mention something a speaker refers to only to reject it - that is not the same as it being their opinion."
-    ],
-    "remember": "Use your first listening to choose your best guess for every question, then use the second to confirm or change your answers."
-   },
-   "data": {
-    "voice_note": "Presenter (Ryan) interviews Dr Naomi Clarke, a debate coach and author, about the art of arguing well.",
-    "script": "Ryan: Welcome back to Talking Points. My guest this week is Dr Naomi Clarke, a debate coach and the author of a new book called Hearing the Other Side. Naomi, welcome.\nDr Clarke: Thank you, Ryan, it's a pleasure to be here.\nRyan: Let's start with the book. What made you want to write it?\nDr Clarke: Honestly, it was frustration. I'd spent fifteen years coaching young debaters, and I kept noticing that the students who won competitions weren't always the ones who had understood the other side's argument best - they were the ones who had learned to sound confident regardless. That bothered me. I wanted to write something that separated genuine persuasion from mere performance, because I think we've quietly confused the two, and not just in debating competitions.\nRyan: You're quite critical of how people argue online. Is social media making us worse at this?\nDr Clarke: I'd resist blaming the technology itself - a platform doesn't make anyone rude. But I do think it rewards the wrong instincts. Nuance doesn't travel well in a short post, and a measured, hedged opinion rarely goes anywhere, while an extreme one spreads in minutes. So people learn, without ever deciding to, that certainty performs better than accuracy. That's a genuinely worrying incentive, and I don't think we've reckoned with it properly yet.\nRyan: How do you feel personally when someone proves you wrong in an argument?\nDr Clarke: Delighted, if I'm honest - though it took me years to get there. Early in my career I treated every challenge as an attack on my competence, and I'd argue myself into corners rather than admit I'd missed something. Now I think being shown wrong is close to the best thing that can happen in a conversation, because it means you've actually learned something, rather than just defended a position you already held before you walked in.\nRyan: What about the teenagers you coach now - are they good at this?\nDr Clarke: Better than my generation gives them credit for, and I say that as someone who spends every week in a room with them. What impresses me isn't their vocabulary, though that's often excellent. It's how quickly they can hold two things in mind at once - their own position and a fair account of the opposing one. That used to take my students years to manage. I suspect growing up watching every issue argued from six directions online has, oddly, sharpened that particular muscle, even as it's blunted others.\nRyan: So what do you actually want a teenager to take from learning to debate - if not winning competitions?\nDr Clarke: The ability to change their mind without feeling that they've lost something by doing it. That's the whole point, as far as I'm concerned. Winning a trophy is a pleasant side effect. What I actually care about is a sixteen-year-old who can sit in a room, hear an argument that unsettles something they believed, and update their view instead of defending it out of pride. If a debate club produces confident talkers who never once change their minds, I'd count that as a failure, whatever the scoreboard says.\nRyan: That's a lovely note to end on. Naomi Clarke, thank you very much.\nDr Clarke: Thank you, Ryan.",
-    "extracts": [
-     {
-      "title": "Interview",
-      "intro": "You hear an interview with a debate coach about the art of arguing well.",
-      "questions": [
-       {
-        "q": "What does Dr Clarke say motivated her to write her book?",
-        "options": [
-         "a personal argument she had lost badly",
-         "noticing that skilled performers didn't always understand opposing arguments",
-         "a request from her publisher to write about coaching",
-         "her own experience of losing a competition unfairly"
-        ],
-        "answer": 1
-       },
-       {
-        "q": "What is Dr Clarke's opinion about social media?",
-        "options": [
-         "It directly causes people to become ruder.",
-         "It has no real effect on how people argue.",
-         "It rewards certainty over accurate, nuanced opinions.",
-         "It has made teenagers better listeners than before."
-        ],
-        "answer": 2
-       },
-       {
-        "q": "How does Dr Clarke feel now about being proven wrong?",
-        "options": [
-         "genuinely pleased, because it means she has learned something",
-         "embarrassed, but she hides it well",
-         "irritated, though less than she used to be",
-         "indifferent, because she rarely changes her opinions"
-        ],
-        "answer": 0
-       },
-       {
-        "q": "What does Dr Clarke find impressive about the teenagers she coaches?",
-        "options": [
-         "their wide vocabulary compared to previous generations",
-         "their ability to win competitions more consistently",
-         "their willingness to change the subject when losing an argument",
-         "their ability to hold their own view and a fair opposing one together"
-        ],
-        "answer": 3
-       },
-       {
-        "q": "According to Dr Clarke, what is the main purpose of teaching teenagers to debate?",
-        "options": [
-         "helping them win as many trophies as possible",
-         "helping them change their minds without feeling they have lost",
-         "training them to sound confident in any situation",
-         "preparing them for a career in law or politics"
-        ],
-        "answer": 1
-       },
-       {
-        "q": "What does the presenter's final comment suggest about the interview?",
-        "options": [
-         "He feels the interview has ended on a positive point.",
-         "He disagrees with what Dr Clarke has just said.",
-         "He wants Dr Clarke to explain her point further.",
-         "He is running out of time and wants to move on quickly."
-        ],
-        "answer": 0
-       }
-      ]
-     }
-    ]
-   }
-  },
-  {
-   "code": "G",
-   "type": "grammar_box",
-   "title": "Language focus 2 - a review: emphatic and persuasive structures for debate",
-   "outputs": [
-    "book",
-    "digital"
-   ],
-   "data": {
-    "title": "A review: emphatic and persuasive structures for debate",
-    "can": "I can use inversion, cleft sentences and emphatic auxiliaries to add emphasis and formality to a spoken or written argument.",
-    "intro": "Across this course you have met several ways of adding emphasis to a sentence: inversion (Unit 1), cleft sentences (Unit 2) and, more simply, the emphatic auxiliary <i>do</i>. In a debate all three do the same job - they tell the listener which part of the sentence matters most - but with different degrees of formality. Knowing all three, and when to reach for each one, is what separates a fluent debater from merely a loud one.",
-    "examples": [
-     {
-      "text": "<b>Rarely has</b> a debate produced so clear a winner.",
-      "note": "inversion: rarely + has"
-     },
-     {
-      "text": "<b>Not only did</b> Nadia win the argument, <b>but</b> she also changed three minds.",
-      "note": "inversion: not only + did … but"
-     },
-     {
-      "text": "<b>What convinced</b> the judges <b>was</b> the quality of her evidence, not the volume of her voice.",
-      "note": "what-cleft: highlights an idea or reason"
-     },
-     {
-      "text": "<b>It was</b> Liam's calm tone, <b>not</b> his facts, <b>that</b> won the room over.",
-      "note": "it-cleft: isolates the exact element you want to highlight"
-     },
-     {
-      "text": "I <b>do</b> think the motion deserved more debate than it got.",
-      "note": "emphatic do: adds stress to a present-tense claim"
-     },
-     {
-      "text": "She <b>did</b> make a fair point, even if I disagree with her conclusion.",
-      "note": "emphatic did: concedes a point before disagreeing"
-     },
-     {
-      "text": "<b>Never has</b> a class argued so hard over a single motion.",
-      "note": "inversion: never has, for a whole group"
-     }
-    ],
-    "rules": [
-     "Inversion fronts a negative or limiting adverbial (<i>never, rarely, not only, no sooner</i>) and swaps subject and auxiliary - the most formal of the three, common in writing and prepared speech.",
-     "It-cleft (<i>It was X that/who…</i>) isolates the exact element you want to highlight - a person, a fact, a reason - and pushes everything else into the background.",
-     "What-cleft (<i>What X is/was…</i>) works well for highlighting an idea, an action or a whole clause, often at the start of a sentence to build towards your main point.",
-     "Emphatic <i>do/does/did</i> + base verb is the least formal of the three and the easiest to use in speech - perfect for conceding a point before disagreeing with it (<i>She did have a point, but…</i>).",
-     "Do not stack too many devices in one sentence: one clear emphatic structure is persuasive; three in a row sounds rehearsed.",
-     "Match the structure to the register: inversion and cleft sentences suit your Writing Part 2 letter; emphatic do suits the spoken Speaking Part 4 discussion."
-    ],
-    "practice": {
-     "instructions": "Choose the correct form.",
-     "items": [
-      {
-       "sentence": "___ a debate as passionate as this one.",
-       "options": [
-        "Never have we seen",
-        "We have never seen",
-        "Never we have seen"
-       ],
-       "answer": 0
-      },
-      {
-       "sentence": "___ the evidence, not the emotion, that finally persuaded the judges.",
-       "options": [
-        "What was",
-        "It was",
-        "There was"
-       ],
-       "answer": 1
-      },
-      {
-       "sentence": "I ___ believe the motion was worth debating, even if we lost.",
-       "options": [
-        "am",
-        "have",
-        "do"
-       ],
-       "answer": 2
-      },
-      {
-       "sentence": "___ we need now is a calmer, more reasoned discussion.",
-       "options": [
-        "What",
-        "It",
-        "There"
-       ],
-       "answer": 0
-      },
-      {
-       "sentence": "Only later ___ how carefully the argument had been prepared.",
-       "options": [
-        "the audience realised",
-        "did the audience realise",
-        "realised the audience"
-       ],
-       "answer": 1
-      },
-      {
-       "sentence": "She ___ raise a fair point, but I still disagree with her conclusion.",
-       "options": [
-        "was",
-        "has",
-        "did"
-       ],
-       "answer": 2
-      }
-     ]
-    }
-   }
-  },
-  {
-   "code": "H",
-   "type": "word_formation",
-   "title": "Use of English Part 3 - word formation. Use the word given to form a word that fits the gap.",
-   "outputs": [
-    "digital"
-   ],
-   "tips": {
-    "expect": "A short text with eight gaps. Beside each gap is a root word in capital letters that you must change - usually into a noun, adjective, adverb, negative form or plural - so that it fits both the grammar and the meaning of the sentence.",
-    "how": [
-     "Read the whole text first for general meaning before you touch a single gap.",
-     "Decide what part of speech each gap needs from its position in the sentence, then decide whether the meaning also requires a negative prefix or a plural ending.",
-     "Watch for spelling changes when you add a suffix (y becomes i, a final e is dropped, consonants sometimes double)."
-    ],
-    "remember": "A correctly chosen word with a spelling mistake scores nothing, so check each answer letter by letter."
-   },
-   "data": {
-    "title": "The last debate",
-    "text": "Few school activities provoke as much {1:DISAGREE} as a formal debate, and that is rather the point of the exercise. From the first, nervous attempts in Unit 1 to the confident performance in June, this year's Grade 11 class has learned that disagreement, handled well, is not something to avoid but something to use. Every unit this year, from the inversions of September to the concessions of June, has in its own way been building towards this single afternoon. Learning to defend a position under pressure, calmly and {2:STRONG}, is a genuinely {3:VALUE} skill, one that a purely {4:THEORY} lesson could never teach half so well; it has to be practised, argued and occasionally lost. This year's {5:DEBATE} argued their motions with real skill, weighing evidence, conceding fair points and only rarely raising their voices. A few speakers, admittedly, remained {6:CONVINCE} even after hearing strong evidence against their own view, and no coach can entirely cure that particular stubbornness. What struck Miss Vega most, in the end, was not the {7:CONFIDENT} of the winning team but their {8:WILLING} to change position once a genuinely opposing argument was made. Whatever the scoreboard eventually said, that single shift, from wanting to win to wanting to understand, was arguably the real achievement of the year.",
-    "answers": [
-     "disagreement",
-     "strongly",
-     "valuable",
-     "theoretical",
-     "debaters",
-     "unconvinced",
-     "confidence",
-     "willingness"
-    ]
-   }
-  },
-  {
-   "code": "I",
-   "type": "writing",
-   "title": "Writing Part 2 - formal letter. Plan, write 220-260 words and hand it in.",
-   "outputs": [
-    "digital"
-   ],
-   "tips": {
-    "expect": "Part 2 gives you a choice of task - often an article, a review, or, as here, a letter or email. You write 220–260 words in the register the task requires: a letter to a newspaper needs a consistently formal register, with a proper greeting and sign-off.",
-    "how": [
-     "Identify your reader and register immediately: an unnamed editor takes <i>Dear Sir or Madam</i> and <i>Yours faithfully</i>; a named person takes <i>Dear Mr/Ms X</i> and <i>Yours sincerely</i>.",
-     "Address every bullet point in the task, but do not simply list them - build them into paragraphs with a clear line of argument.",
-     "A letter that only agrees or only disagrees with the article sounds one-sided; concede a fair point before making your case."
-    ],
-    "remember": "Contractions, exclamation marks and casual vocabulary lose marks for register in a formal letter, however good your argument is."
-   },
-   "data": {
-    "part": 2,
-    "genre": "letter",
-    "words": [
-     220,
-     260
-    ],
-    "task": "<p>You recently read an opinion piece in a local newspaper called “Let's Stop Wasting Time on 'Difficult' Classics”, arguing that schools should remove long, demanding novels from the syllabus in favour of shorter, easier texts. You feel strongly that this misses something important about what your final year of English has taught you.</p><blockquote><p><b>Write a letter to the newspaper's editor. In your letter, you should:</b></p><ul><li>summarise, briefly, the article's main argument</li><li>explain where you agree with it, at least in part</li><li>explain why you nonetheless think demanding novels deserve their place</li></ul></blockquote><p>Write your <b>letter</b>. You do not need to include postal addresses. Write <b>220–260 words</b> in an appropriate style.</p>",
-    "plan": [
-     "<b>Opening</b>: a formal greeting; state clearly which article you are responding to and why you are writing.",
-     "<b>Paragraph 2</b> - concede: summarise the article's argument briefly and say where you agree, at least in part (<i>It is certainly true that…, Admittedly, …</i>).",
-     "<b>Paragraph 3</b> - counter: explain, with a concrete example, why demanding novels still deserve their place (<i>This does not mean, however, that…</i>).",
-     "<b>Closing</b>: a firm but courteous conclusion, one clear recommendation, and a formal sign-off matching your greeting."
-    ],
-    "useful_language": {
-     "Opening formally": [
-      "I am writing in response to…",
-      "I read with interest your recent article on…",
-      "Dear Sir or Madam,"
-     ],
-     "Conceding a point": [
-      "It is certainly true that…",
-      "Admittedly, …",
-      "I do not dispute that…"
-     ],
-     "Countering and arguing your case": [
-      "Nevertheless, …",
-      "This does not mean, however, that…",
-      "Arguably, the opposite is closer to the truth."
-     ],
-     "Closing formally": [
-      "I hope you will consider these points.",
-      "Yours faithfully,",
-      "Yours sincerely,"
-     ]
     },
-    "checklist": [
-     "I have used a formal greeting and a matching sign-off (Dear Sir or Madam … Yours faithfully / Dear Mr or Ms X … Yours sincerely).",
-     "I have summarised the article's argument briefly, in my own words.",
-     "I have conceded at least one fair point before disagreeing.",
-     "I have used at least one hedging or concession phrase from Language focus 1.",
-     "The register is consistently formal: no contractions, no informal vocabulary.",
-     "Between 220 and 260 words."
-    ],
-    "model": "<p><i>A model answer (236 words). Notice the formal greeting and sign-off, the clear concession before the counter-argument, and the measured tone throughout.</i></p><p>Dear Editor,</p><p>I am writing in response to your recent article arguing that long, demanding novels such as Moby Dick should be removed from the school syllabus in favour of shorter, more accessible texts. As a student about to finish a year built almost entirely around one such novel, I feel I ought to offer a different view.</p><p>It is certainly true that many students give up on demanding classics within the first few chapters, and I do not dispute that a badly taught difficult book can put a teenager off reading for years. Admittedly, forcing an unsupported class through four hundred pages of nineteenth-century prose achieves very little beyond resentment.</p><p>This does not mean, however, that the solution is to remove the challenge altogether. My class spent the year discussing, arguing about and eventually defending our reading of a genuinely difficult book, and the final debate we held last month was, without question, the most demanding and rewarding piece of work I have done at school this year. What made the difference was not the novel's length but the support built around it: discussion, disagreement and time.</p><p>Rather than lowering the bar, I would urge schools to keep the difficult books and invest properly in teaching them well. On balance, that seems a far better use of everyone's time than simply giving up on the challenge.</p><p>Yours faithfully,</p><p>A Grade 11 student</p>"
-   }
-  },
-  {
-   "code": "J",
-   "type": "pairwork",
-   "title": "Speaking - Parts 3 and 4. Collaborative task and discussion. Record your best answer.",
-   "outputs": [
-    "book",
-    "digital"
-   ],
-   "speaking": {
-    "part": 3,
-    "name": "Collaborative task and discussion"
-   },
-   "tips": {
-    "expect": "Part 3 (about 4 minutes): you and your partner discuss a question using five written prompts for two minutes, then spend one minute reaching a decision together. Part 4 (about 5 minutes): the examiner asks you both broader questions related to the same topic.",
-    "how": [
-     "In Part 3 you are marked on how you interact, not on whether you agree - invite your partner's opinion, respond to it, and disagree politely when you want to.",
-     "Do not try to discuss all five prompts in depth; two or three explored properly is stronger than five rushed.",
-     "In the decision minute, negotiate rather than simply stating your preference: <i>I'd be inclined to say…, unless you feel strongly about…</i>",
-     "In Part 4, develop each answer: opinion, reason, example, and a brief final comment."
-    ],
-    "remember": "Look at your partner during Part 3, and at the examiner during Part 4 - eye contact signals who you are actually talking to."
-   },
-   "data": {
-    "text": "Part 3: discuss how persuasive each technique is and decide which works best. Part 4: discuss debate, ambition, society and the value of literature.",
-    "parts": [
-     {
-      "part": 3,
-      "title": "Collaborative task",
-      "time": "2 min + 1 min",
-      "intro": "Here are some techniques people use when trying to win an argument. Talk to each other about <b>how persuasive each of these techniques really is</b>.",
-      "centre": "How persuasive is each of these when trying to win an argument?",
-      "spokes": [
-       "having more facts and statistics than the other side",
-       "staying calm while the other side gets frustrated",
-       "telling a personal story that illustrates your point",
-       "quoting a respected expert or authority",
-       "finding one weakness in the opponent's argument and focusing on it"
+    {
+      "code": "B",
+      "type": "match_words",
+      "title": "Vocabulary - debate and nuance. Match each word or phrase with its meaning.",
+      "outputs": [
+        "book",
+        "digital",
+        "quiz"
       ],
-      "decide": "Now you have a minute to decide <b>which of these is the most persuasive technique of all</b>."
-     },
-     {
-      "part": 4,
-      "title": "Further discussion",
-      "time": "5 min",
-      "prompts": [
-       "Do you think society rewards people who argue confidently more than people who are actually right? Why?",
-       "Is it more important for a school to teach students facts or to teach them how to argue well?",
-       "Some people say the ability to change your mind is a sign of weakness. Do you agree?",
-       "Looking back at this year's project, which of the big questions - ambition, society, obsession or the value of literature - do you find hardest to reach a clear opinion on? Why?",
-       "What is the most persuasive argument you have ever changed your mind because of?"
-      ]
-     }
-    ],
-    "useful_language": {
-     "Involving your partner": [
-      "What's your take on…?",
-      "Would you go along with that?",
-      "You've got a point, but…",
-      "That's true up to a point, although…"
-     ],
-     "Building on an idea": [
-      "Following on from what you said…",
-      "And that ties in with…",
-      "Not only that, but…"
-     ],
-     "Reaching a decision": [
-      "Shall we settle on…?",
-      "I'd be inclined to go for…, on the grounds that…",
-      "We could agree to differ, but if we had to choose…"
-     ],
-     "Part 4: developing an answer": [
-      "It very much depends on…",
-      "There's a strong case for saying…",
-      "Arguably, the more persuasive view is…"
-     ]
+      "data": {
+        "left_label": "Word",
+        "right_label": "Meaning",
+        "pairs": [
+          {
+            "left": "concede",
+            "right": "to admit, often reluctantly, that a point made by someone else is valid"
+          },
+          {
+            "left": "hedge",
+            "right": "to avoid committing to a definite statement by qualifying it"
+          },
+          {
+            "left": "rebut",
+            "right": "to argue, with evidence, that a claim or accusation is false"
+          },
+          {
+            "left": "qualify",
+            "right": "to add a condition or limitation to a statement to make it more accurate"
+          },
+          {
+            "left": "provocative",
+            "right": "deliberately likely to provoke a strong argument or reaction"
+          },
+          {
+            "left": "counterargument",
+            "right": "a point made to oppose or weaken another argument"
+          },
+          {
+            "left": "on balance",
+            "right": "considering everything, after weighing both sides"
+          },
+          {
+            "left": "compelling",
+            "right": "so convincing that it demands to be believed or accepted"
+          },
+          {
+            "left": "valid",
+            "right": "based on sound reasoning, logically acceptable"
+          },
+          {
+            "left": "one-sided",
+            "right": "unfairly favouring one side of an argument while ignoring the other"
+          }
+        ]
+      }
+    },
+    {
+      "code": "C",
+      "type": "multiple_matching",
+      "title": "Reading and Use of English Part 6 - cross-text multiple matching. Read what four critics say and answer the questions.",
+      "outputs": [
+        "digital"
+      ],
+      "tips": {
+        "expect": "Four short texts (150–180 words each) on the same debatable question, followed by four questions. Each question asks which writer agrees or disagrees with another writer, or with the group, about a specific point. The questions do not follow the order of the texts.",
+        "how": [
+          "Read the introduction and skim all four texts once before answering anything, to get each writer's overall position.",
+          "For each question, work out exactly what opinion is being compared, then scan the relevant texts for that specific idea - writers rarely use identical wording, so look for paraphrase.",
+          "The writer named in the question is not usually the answer: the answer is the other writer who shares, or rejects, that particular view."
+        ],
+        "remember": "There are only four letters and four questions in this part, so a wrong guess costs you more than in Part 8, where there are ten questions to fall back on."
+      },
+      "data": {
+        "title": "Worth the struggle? Four views on demanding novels",
+        "intro": "As part of our final debate, we asked four people who think about books for a living the same question: should long, difficult classic novels remain compulsory reading in schools? Read what each of them says, then answer the questions below.",
+        "sections": [
+          {
+            "letter": "A",
+            "heading": "Dr Elena Frost, literary scholar",
+            "text": "Every year someone suggests that Moby Dick, or novels like it, should be quietly dropped from the reading list in favour of something shorter and friendlier. I understand the impulse, but I think it mistakes the problem. A novel's difficulty is not an obstacle to its value; for a certain kind of book, it is the value. If Melville's sentences gave up their meaning as easily as a magazine article, we would have finished with them in an afternoon and forgotten them by the following week. Admittedly, few seventeen-year-olds would get far with such a book entirely unsupported, and I am not proposing we simply hand it over and walk away. What I resist is the idea that struggle itself is something to be designed out of education. Learning to sit with a difficult sentence until it yields its sense is arguably one of the most transferable skills a school can teach, and it cannot be taught with texts that never resist us. Replace the hard books, and you have not made reading easier. You have made it smaller."
+          },
+          {
+            "letter": "B",
+            "heading": "Tom Ridley, education journalist",
+            "text": "Ask most adults which classic novel put them off reading for good, and you will get an instant answer - usually a long, dense nineteenth-century one, assigned at fifteen and abandoned by page forty. Defenders of these books like to talk about the character-building power of difficulty, but on balance the evidence points the other way: students handed books far beyond their ability to enjoy do not become more resilient readers, they simply stop reading, often for years. There are contemporary novels - shorter, sharper, no less serious in what they attempt - that could do the same intellectual work without the same casualty rate. Nobody is arguing for easy books; the case is for accessible ones, which is not the same thing. I would happily set a demanding text once a student had a reason to want to read it. What I will not accept is the idea that swapping one impenetrable classic for a more approachable, equally ambitious novel amounts to lowering standards. It is arguably the only way most students get any standards to raise at all."
+          },
+          {
+            "letter": "C",
+            "heading": "Amara Osei, novelist and former teacher",
+            "text": "I have taught Moby Dick to two very different classes. One gave up on chapter three; the other, three years later, still argues about it. The difference was never the book. It was ten minutes of talk before each chapter, a reading group that met twice a week, and permission to say 'I don't understand this bit' without shame. Elena Frost is right that difficulty can be valuable, and Tom Ridley is right that forcing it on students with no support does more harm than good - the mistake is treating these as opposites. A hard novel handed over cold will sink most readers; the same novel, read alongside others and talked through slowly, can be the best thing that happens to them all year. The question schools should be asking is not 'is this book too difficult?' but 'have we built the scaffolding to get students through it?' Change the book, and you solve nothing if the scaffolding was the real problem. Keep the book and add the scaffolding, and, arguably, you get the benefits both sides are actually after."
+          },
+          {
+            "letter": "D",
+            "heading": "Priya Chandra, reading-habits researcher",
+            "text": "For a five-year study, my team tracked what predicted whether teenagers still read novels for pleasure at twenty-five. It was not the length of the books they had been assigned at school, and it was not, as far as we could measure, the difficulty either. The single strongest predictor was choice: students who remembered choosing at least some of what they read, even once or twice a year, were far more likely to have kept reading than those who had read only assigned texts, however carefully chosen those texts were. This should complicate a debate that keeps asking the wrong question. Whether Moby Dick is more or less valuable than a contemporary novel matters far less than whether the student picking it up feels any ownership over the choice. A demanding classic selected by a curious student can do more good than an accessible one imposed on a reluctant one. On balance, I suspect we spend too much energy arguing about texts and too little asking who gets to choose them."
+          }
+        ],
+        "questions": [
+          {
+            "q": "Which writer, like Amara Osei, believes that a demanding novel needs to be actively supported rather than simply assigned?",
+            "answer": "A"
+          },
+          {
+            "q": "Which writer would be most likely to agree with Tom Ridley that forcing students through overly demanding texts without support causes lasting damage to their reading habits?",
+            "answer": "C"
+          },
+          {
+            "q": "Which writer disagrees with the idea that a shorter, more approachable novel must be intellectually less ambitious than a longer, harder one?",
+            "answer": "B"
+          },
+          {
+            "q": "Which writer takes a different view from the other three about what actually determines whether someone becomes a lifelong reader?",
+            "answer": "D"
+          }
+        ]
+      }
+    },
+    {
+      "code": "D",
+      "type": "grammar_box",
+      "title": "Language focus 1 - the language of formal argument: concession and hedging",
+      "outputs": [
+        "book",
+        "digital"
+      ],
+      "data": {
+        "title": "The language of formal argument: concession and hedging",
+        "can": "I can concede a point, hedge a claim and qualify a statement so that my argument sounds reasoned rather than absolute - and I can tell a carefully qualified claim from an unsupported one.",
+        "intro": "Advanced speakers and writers rarely overstate. Dr Frost, in Text A, hedges twice in one paragraph - <i>admittedly, few seventeen-year-olds would get far… arguably one of the most transferable skills</i> - and sounds more, not less, convincing for it. Conceding a fair point before defending your own is the single most persuasive move in formal argument.",
+        "examples": [
+          {
+            "text": "<b>Admittedly</b>, the plan has weaknesses, but on balance it remains the best option.",
+            "note": "admittedly = conceding before defending your own position"
+          },
+          {
+            "text": "<b>Arguably</b>, no policy pleases everyone.",
+            "note": "arguably = a claim you stand behind, softened"
+          },
+          {
+            "text": "I accept the criticism <b>to some extent</b>, though not entirely.",
+            "note": "to some extent = partial agreement, not full concession"
+          },
+          {
+            "text": "<b>Granted</b>, costs will rise; <b>even so</b>, the change is worth making.",
+            "note": "granted = a one-word concession, often followed by even so / nevertheless"
+          },
+          {
+            "text": "<b>It could be said that</b> ambition is simply focus by another name.",
+            "note": "it could be said that = a hedged claim, keeps some distance from the speaker"
+          },
+          {
+            "text": "<b>While it may be true that</b> difficulty puts some students off, it does not follow that we should abandon demanding texts altogether.",
+            "note": "while it may be true that = concede a fact, reject the conclusion drawn from it"
+          },
+          {
+            "text": "<b>On balance</b>, the risks are outweighed by what a well-supported challenge can teach.",
+            "note": "on balance = a verdict reached after weighing both sides"
+          }
+        ],
+        "rules": [
+          "Concede, then counter: <i>admittedly / granted / while it may be true that</i> + the point you accept, followed by <i>but / even so / nevertheless</i> + your real position.",
+          "Hedge to avoid overclaiming: <i>arguably, it could be said that, to some extent</i> soften a claim without abandoning it - useful when your evidence is suggestive rather than conclusive.",
+          "Tell a hedged claim from a vague one: <i>arguably, the policy will help</i> (a real position, softened) is not the same as <i>some people think it might possibly help</i> (no position at all, just noise).",
+          "Qualify claims that rest on partial evidence: prefer <i>the evidence suggests</i> to <i>the evidence proves</i>; the second claims a certainty you may not have earned.",
+          "<i>On balance</i> signals a verdict reached after weighing both sides - it belongs in your conclusion, not your introduction.",
+          "Don't over-hedge: an essay or speech built entirely of qualifications says nothing; concede once, hedge once, then commit to a position."
+        ],
+        "practice": {
+          "instructions": "Choose the best option.",
+          "items": [
+            {
+              "sentence": "___, the results are not perfect, but they are still an improvement.",
+              "options": [
+                "Never",
+                "Admittedly",
+                "Obviously"
+              ],
+              "answer": 1
+            },
+            {
+              "sentence": "The proposal is ___ the fairest way to divide the funding, though reasonable people disagree.",
+              "options": [
+                "arguably",
+                "utterly",
+                "undeniably"
+              ],
+              "answer": 0
+            },
+            {
+              "sentence": "I agree with the criticism ___, though I think it goes too far in places.",
+              "options": [
+                "to some extent",
+                "at any price",
+                "in no way"
+              ],
+              "answer": 0
+            },
+            {
+              "sentence": "___ that the novel is difficult, that is precisely what makes it worth persevering with.",
+              "options": [
+                "Because",
+                "While it may be true",
+                "Unless"
+              ],
+              "answer": 1
+            },
+            {
+              "sentence": "The evidence ___ that longer novels build patience; it does not prove it beyond doubt.",
+              "options": [
+                "shouts",
+                "proves absolutely",
+                "suggests"
+              ],
+              "answer": 2
+            },
+            {
+              "sentence": "___, I still believe the classics deserve their place on the syllabus.",
+              "options": [
+                "At no time",
+                "Under no circumstances",
+                "On balance"
+              ],
+              "answer": 2
+            }
+          ]
+        },
+        "lab": "concession"
+      }
+    },
+    {
+      "code": "E",
+      "type": "key_transform",
+      "title": "Use of English Part 4 - key word transformations",
+      "outputs": [
+        "digital"
+      ],
+      "tips": {
+        "expect": "Six sentences, each followed by a gapped second sentence containing a key word that must not be changed. You complete the gap with three to six words, including the key word, so that the second sentence means the same as the first. Each item carries up to two marks.",
+        "how": [
+          "Decide exactly what is being tested before you write anything - here, mostly the structures reviewed this year, plus some fixed debate expressions.",
+          "Build the whole gap, then reread the complete second sentence and check it means precisely the same as the first.",
+          "Count your words carefully; contractions count as two words."
+        ],
+        "remember": "You can still score one mark out of two for the right structure with a small error, so never leave a gap blank."
+      },
+      "data": {
+        "instructions": "Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and six words, including the word given.",
+        "items": [
+          {
+            "first": "I have never heard such a persuasive rebuttal in a debate.",
+            "key": "NEVER",
+            "second_start": "Never",
+            "second_end": "such a persuasive rebuttal in a debate.",
+            "answers": [
+              "before have I heard",
+              "have I heard",
+              "have I ever heard"
+            ]
+          },
+          {
+            "first": "The audience found Nadia's closing argument most convincing.",
+            "key": "WHAT",
+            "second_start": "What",
+            "second_end": "was Nadia's closing argument.",
+            "answers": [
+              "the audience found most convincing"
+            ]
+          },
+          {
+            "first": "Liam admitted he was sorry for interrupting Nadia.",
+            "key": "APOLOGISED",
+            "second_start": "Liam",
+            "second_end": "interrupting her.",
+            "answers": [
+              "apologised for",
+              "apologised to Nadia for"
+            ]
+          },
+          {
+            "first": "There are strong reasons to support banning phones in schools.",
+            "key": "CASE",
+            "second_start": "There is a strong",
+            "second_end": "phones in schools.",
+            "answers": [
+              "case for banning"
+            ]
+          },
+          {
+            "first": "Sofía would not accept defeat and continued to argue her point.",
+            "key": "INSISTED",
+            "second_start": "Sofía",
+            "second_end": "her point.",
+            "answers": [
+              "insisted on arguing",
+              "insisted on defending"
+            ]
+          },
+          {
+            "first": "Her argument was so persuasive that nobody could rebut it.",
+            "key": "SUCH",
+            "second_start": "",
+            "second_end": "that nobody could rebut it.",
+            "answers": [
+              "such was her argument's force"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "code": "F",
+      "type": "listening_mc",
+      "title": "Listening Part 3 - multiple choice. Listen to the interview and choose the best answer.",
+      "outputs": [
+        "digital"
+      ],
+      "audio": "c1a/u06-f.mp3",
+      "tips": {
+        "expect": "One interview or discussion of about four minutes, with one or two speakers, followed by six four-option questions. The questions test opinion, attitude, agreement or disagreement and purpose rather than small facts. You hear the recording twice.",
+        "how": [
+          "Before listening, read all six questions and options: they tell you what to listen for - feelings and opinions, not dates or numbers.",
+          "The questions follow the order of the interview, but the correct option usually paraphrases what is said rather than repeating the exact words.",
+          "Watch out for options that mention something a speaker refers to only to reject it - that is not the same as it being their opinion."
+        ],
+        "remember": "Use your first listening to choose your best guess for every question, then use the second to confirm or change your answers."
+      },
+      "data": {
+        "voice_note": "Presenter (Ryan) interviews Dr Naomi Clarke, a debate coach and author, about the art of arguing well.",
+        "script": "Ryan: Welcome back to Talking Points. My guest this week is Dr Naomi Clarke, a debate coach and the author of a new book called Hearing the Other Side. Naomi, welcome.\nDr Clarke: Thank you, Ryan, it's a pleasure to be here.\nRyan: Let's start with the book. What made you want to write it?\nDr Clarke: Honestly, it was frustration. I'd spent fifteen years coaching young debaters, and I kept noticing that the students who won competitions weren't always the ones who had understood the other side's argument best - they were the ones who had learned to sound confident regardless. That bothered me. I wanted to write something that separated genuine persuasion from mere performance, because I think we've quietly confused the two, and not just in debating competitions.\nRyan: You're quite critical of how people argue online. Is social media making us worse at this?\nDr Clarke: I'd resist blaming the technology itself - a platform doesn't make anyone rude. But I do think it rewards the wrong instincts. Nuance doesn't travel well in a short post, and a measured, hedged opinion rarely goes anywhere, while an extreme one spreads in minutes. So people learn, without ever deciding to, that certainty performs better than accuracy. That's a genuinely worrying incentive, and I don't think we've reckoned with it properly yet.\nRyan: How do you feel personally when someone proves you wrong in an argument?\nDr Clarke: Delighted, if I'm honest - though it took me years to get there. Early in my career I treated every challenge as an attack on my competence, and I'd argue myself into corners rather than admit I'd missed something. Now I think being shown wrong is close to the best thing that can happen in a conversation, because it means you've actually learned something, rather than just defended a position you already held before you walked in.\nRyan: What about the teenagers you coach now - are they good at this?\nDr Clarke: Better than my generation gives them credit for, and I say that as someone who spends every week in a room with them. What impresses me isn't their vocabulary, though that's often excellent. It's how quickly they can hold two things in mind at once - their own position and a fair account of the opposing one. That used to take my students years to manage. I suspect growing up watching every issue argued from six directions online has, oddly, sharpened that particular muscle, even as it's blunted others.\nRyan: So what do you actually want a teenager to take from learning to debate - if not winning competitions?\nDr Clarke: The ability to change their mind without feeling that they've lost something by doing it. That's the whole point, as far as I'm concerned. Winning a trophy is a pleasant side effect. What I actually care about is a sixteen-year-old who can sit in a room, hear an argument that unsettles something they believed, and update their view instead of defending it out of pride. If a debate club produces confident talkers who never once change their minds, I'd count that as a failure, whatever the scoreboard says.\nRyan: That's a lovely note to end on. Naomi Clarke, thank you very much.\nDr Clarke: Thank you, Ryan.",
+        "extracts": [
+          {
+            "title": "Interview",
+            "intro": "You hear an interview with a debate coach about the art of arguing well.",
+            "questions": [
+              {
+                "q": "What does Dr Clarke say motivated her to write her book?",
+                "options": [
+                  "a personal argument she had lost badly",
+                  "noticing that skilled performers didn't always understand opposing arguments",
+                  "a request from her publisher to write about coaching",
+                  "her own experience of losing a competition unfairly"
+                ],
+                "answer": 1
+              },
+              {
+                "q": "What is Dr Clarke's opinion about social media?",
+                "options": [
+                  "It directly causes people to become ruder.",
+                  "It has no real effect on how people argue.",
+                  "It rewards certainty over accurate, nuanced opinions.",
+                  "It has made teenagers better listeners than before."
+                ],
+                "answer": 2
+              },
+              {
+                "q": "How does Dr Clarke feel now about being proven wrong?",
+                "options": [
+                  "genuinely pleased, because it means she has learned something",
+                  "embarrassed, but she hides it well",
+                  "irritated, though less than she used to be",
+                  "indifferent, because she rarely changes her opinions"
+                ],
+                "answer": 0
+              },
+              {
+                "q": "What does Dr Clarke find impressive about the teenagers she coaches?",
+                "options": [
+                  "their wide vocabulary compared to previous generations",
+                  "their ability to win competitions more consistently",
+                  "their willingness to change the subject when losing an argument",
+                  "their ability to hold their own view and a fair opposing one together"
+                ],
+                "answer": 3
+              },
+              {
+                "q": "According to Dr Clarke, what is the main purpose of teaching teenagers to debate?",
+                "options": [
+                  "helping them win as many trophies as possible",
+                  "helping them change their minds without feeling they have lost",
+                  "training them to sound confident in any situation",
+                  "preparing them for a career in law or politics"
+                ],
+                "answer": 1
+              },
+              {
+                "q": "What does the presenter's final comment suggest about the interview?",
+                "options": [
+                  "He feels the interview has ended on a positive point.",
+                  "He disagrees with what Dr Clarke has just said.",
+                  "He wants Dr Clarke to explain her point further.",
+                  "He is running out of time and wants to move on quickly."
+                ],
+                "answer": 0
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "code": "G",
+      "type": "grammar_box",
+      "title": "Language focus 2 - a review: emphatic and persuasive structures for debate",
+      "outputs": [
+        "book",
+        "digital"
+      ],
+      "data": {
+        "title": "A review: emphatic and persuasive structures for debate",
+        "can": "I can use inversion, cleft sentences and emphatic auxiliaries to add emphasis and formality to a spoken or written argument.",
+        "intro": "Across this course you have met several ways of adding emphasis to a sentence: inversion (Unit 1), cleft sentences (Unit 2) and, more simply, the emphatic auxiliary <i>do</i>. In a debate all three do the same job - they tell the listener which part of the sentence matters most - but with different degrees of formality. Knowing all three, and when to reach for each one, is what separates a fluent debater from merely a loud one.",
+        "examples": [
+          {
+            "text": "<b>Rarely has</b> a debate produced so clear a winner.",
+            "note": "inversion: rarely + has"
+          },
+          {
+            "text": "<b>Not only did</b> Nadia win the argument, <b>but</b> she also changed three minds.",
+            "note": "inversion: not only + did … but"
+          },
+          {
+            "text": "<b>What convinced</b> the judges <b>was</b> the quality of her evidence, not the volume of her voice.",
+            "note": "what-cleft: highlights an idea or reason"
+          },
+          {
+            "text": "<b>It was</b> Liam's calm tone, <b>not</b> his facts, <b>that</b> won the room over.",
+            "note": "it-cleft: isolates the exact element you want to highlight"
+          },
+          {
+            "text": "I <b>do</b> think the motion deserved more debate than it got.",
+            "note": "emphatic do: adds stress to a present-tense claim"
+          },
+          {
+            "text": "She <b>did</b> make a fair point, even if I disagree with her conclusion.",
+            "note": "emphatic did: concedes a point before disagreeing"
+          },
+          {
+            "text": "<b>Never has</b> a class argued so hard over a single motion.",
+            "note": "inversion: never has, for a whole group"
+          }
+        ],
+        "rules": [
+          "Inversion fronts a negative or limiting adverbial (<i>never, rarely, not only, no sooner</i>) and swaps subject and auxiliary - the most formal of the three, common in writing and prepared speech.",
+          "It-cleft (<i>It was X that/who…</i>) isolates the exact element you want to highlight - a person, a fact, a reason - and pushes everything else into the background.",
+          "What-cleft (<i>What X is/was…</i>) works well for highlighting an idea, an action or a whole clause, often at the start of a sentence to build towards your main point.",
+          "Emphatic <i>do/does/did</i> + base verb is the least formal of the three and the easiest to use in speech - perfect for conceding a point before disagreeing with it (<i>She did have a point, but…</i>).",
+          "Do not stack too many devices in one sentence: one clear emphatic structure is persuasive; three in a row sounds rehearsed.",
+          "Match the structure to the register: inversion and cleft sentences suit your Writing Part 2 letter; emphatic do suits the spoken Speaking Part 4 discussion."
+        ],
+        "practice": {
+          "instructions": "Choose the correct form.",
+          "items": [
+            {
+              "sentence": "___ a debate as passionate as this one.",
+              "options": [
+                "Never have we seen",
+                "We have never seen",
+                "Never we have seen"
+              ],
+              "answer": 0
+            },
+            {
+              "sentence": "___ the evidence, not the emotion, that finally persuaded the judges.",
+              "options": [
+                "What was",
+                "It was",
+                "There was"
+              ],
+              "answer": 1
+            },
+            {
+              "sentence": "I ___ believe the motion was worth debating, even if we lost.",
+              "options": [
+                "am",
+                "have",
+                "do"
+              ],
+              "answer": 2
+            },
+            {
+              "sentence": "___ we need now is a calmer, more reasoned discussion.",
+              "options": [
+                "What",
+                "It",
+                "There"
+              ],
+              "answer": 0
+            },
+            {
+              "sentence": "Only later ___ how carefully the argument had been prepared.",
+              "options": [
+                "the audience realised",
+                "did the audience realise",
+                "realised the audience"
+              ],
+              "answer": 1
+            },
+            {
+              "sentence": "She ___ raise a fair point, but I still disagree with her conclusion.",
+              "options": [
+                "was",
+                "has",
+                "did"
+              ],
+              "answer": 2
+            }
+          ]
+        },
+        "lab": "inversion"
+      }
+    },
+    {
+      "code": "H",
+      "type": "word_formation",
+      "title": "Use of English Part 3 - word formation. Use the word given to form a word that fits the gap.",
+      "outputs": [
+        "digital"
+      ],
+      "tips": {
+        "expect": "A short text with eight gaps. Beside each gap is a root word in capital letters that you must change - usually into a noun, adjective, adverb, negative form or plural - so that it fits both the grammar and the meaning of the sentence.",
+        "how": [
+          "Read the whole text first for general meaning before you touch a single gap.",
+          "Decide what part of speech each gap needs from its position in the sentence, then decide whether the meaning also requires a negative prefix or a plural ending.",
+          "Watch for spelling changes when you add a suffix (y becomes i, a final e is dropped, consonants sometimes double)."
+        ],
+        "remember": "A correctly chosen word with a spelling mistake scores nothing, so check each answer letter by letter."
+      },
+      "data": {
+        "title": "The last debate",
+        "text": "Few school activities provoke as much {1:DISAGREE} as a formal debate, and that is rather the point of the exercise. From the first, nervous attempts in Unit 1 to the confident performance in June, this year's C1 class has learned that disagreement, handled well, is not something to avoid but something to use. Every unit this year, from the inversions of September to the concessions of June, has in its own way been building towards this single afternoon. Learning to defend a position under pressure, calmly and {2:STRONG}, is a genuinely {3:VALUE} skill, one that a purely {4:THEORY} lesson could never teach half so well; it has to be practised, argued and occasionally lost. This year's {5:DEBATE} argued their motions with real skill, weighing evidence, conceding fair points and only rarely raising their voices. A few speakers, admittedly, remained {6:CONVINCE} even after hearing strong evidence against their own view, and no coach can entirely cure that particular stubbornness. What struck Miss Vega most, in the end, was not the {7:CONFIDENT} of the winning team but their {8:WILLING} to change position once a genuinely opposing argument was made. Whatever the scoreboard eventually said, that single shift, from wanting to win to wanting to understand, was arguably the real achievement of the year.",
+        "answers": [
+          "disagreement",
+          "strongly",
+          "valuable",
+          "theoretical",
+          "debaters",
+          "unconvinced",
+          "confidence",
+          "willingness"
+        ]
+      }
+    },
+    {
+      "code": "I",
+      "type": "writing",
+      "title": "Writing Part 2 - formal letter. Plan, write 220-260 words and hand it in.",
+      "outputs": [
+        "digital"
+      ],
+      "tips": {
+        "expect": "Part 2 gives you a choice of task - often an article, a review, or, as here, a letter or email. You write 220–260 words in the register the task requires: a letter to a newspaper needs a consistently formal register, with a proper greeting and sign-off.",
+        "how": [
+          "Identify your reader and register immediately: an unnamed editor takes <i>Dear Sir or Madam</i> and <i>Yours faithfully</i>; a named person takes <i>Dear Mr/Ms X</i> and <i>Yours sincerely</i>.",
+          "Address every bullet point in the task, but do not simply list them - build them into paragraphs with a clear line of argument.",
+          "A letter that only agrees or only disagrees with the article sounds one-sided; concede a fair point before making your case."
+        ],
+        "remember": "Contractions, exclamation marks and casual vocabulary lose marks for register in a formal letter, however good your argument is."
+      },
+      "data": {
+        "part": 2,
+        "genre": "letter",
+        "words": [
+          220,
+          260
+        ],
+        "task": "<p>You recently read an opinion piece in a local newspaper called “Let's Stop Wasting Time on 'Difficult' Classics”, arguing that schools should remove long, demanding novels from the syllabus in favour of shorter, easier texts. You feel strongly that this misses something important about what your final year of English has taught you.</p><blockquote><p><b>Write a letter to the newspaper's editor. In your letter, you should:</b></p><ul><li>summarise, briefly, the article's main argument</li><li>explain where you agree with it, at least in part</li><li>explain why you nonetheless think demanding novels deserve their place</li></ul></blockquote><p>Write your <b>letter</b>. You do not need to include postal addresses. Write <b>220–260 words</b> in an appropriate style.</p>",
+        "plan": [
+          "<b>Opening</b>: a formal greeting; state clearly which article you are responding to and why you are writing.",
+          "<b>Paragraph 2</b> - concede: summarise the article's argument briefly and say where you agree, at least in part (<i>It is certainly true that…, Admittedly, …</i>).",
+          "<b>Paragraph 3</b> - counter: explain, with a concrete example, why demanding novels still deserve their place (<i>This does not mean, however, that…</i>).",
+          "<b>Closing</b>: a firm but courteous conclusion, one clear recommendation, and a formal sign-off matching your greeting."
+        ],
+        "useful_language": {
+          "Opening formally": [
+            "I am writing in response to…",
+            "I read with interest your recent article on…",
+            "Dear Sir or Madam,"
+          ],
+          "Conceding a point": [
+            "It is certainly true that…",
+            "Admittedly, …",
+            "I do not dispute that…"
+          ],
+          "Countering and arguing your case": [
+            "Nevertheless, …",
+            "This does not mean, however, that…",
+            "Arguably, the opposite is closer to the truth."
+          ],
+          "Closing formally": [
+            "I hope you will consider these points.",
+            "Yours faithfully,",
+            "Yours sincerely,"
+          ]
+        },
+        "checklist": [
+          "I have used a formal greeting and a matching sign-off (Dear Sir or Madam … Yours faithfully / Dear Mr or Ms X … Yours sincerely).",
+          "I have summarised the article's argument briefly, in my own words.",
+          "I have conceded at least one fair point before disagreeing.",
+          "I have used at least one hedging or concession phrase from Language focus 1.",
+          "The register is consistently formal: no contractions, no informal vocabulary.",
+          "Between 220 and 260 words."
+        ],
+        "model": "<p><i>A model answer (236 words). Notice the formal greeting and sign-off, the clear concession before the counter-argument, and the measured tone throughout.</i></p><p>Dear Editor,</p><p>I am writing in response to your recent article arguing that long, demanding novels such as Moby Dick should be removed from the school syllabus in favour of shorter, more accessible texts. As a student about to finish a year built almost entirely around one such novel, I feel I ought to offer a different view.</p><p>It is certainly true that many students give up on demanding classics within the first few chapters, and I do not dispute that a badly taught difficult book can put a teenager off reading for years. Admittedly, forcing an unsupported class through four hundred pages of nineteenth-century prose achieves very little beyond resentment.</p><p>This does not mean, however, that the solution is to remove the challenge altogether. My class spent the year discussing, arguing about and eventually defending our reading of a genuinely difficult book, and the final debate we held last month was, without question, the most demanding and rewarding piece of work I have done at school this year. What made the difference was not the novel's length but the support built around it: discussion, disagreement and time.</p><p>Rather than lowering the bar, I would urge schools to keep the difficult books and invest properly in teaching them well. On balance, that seems a far better use of everyone's time than simply giving up on the challenge.</p><p>Yours faithfully,</p><p>A C1 student</p>"
+      }
+    },
+    {
+      "code": "J",
+      "type": "pairwork",
+      "title": "Speaking - Parts 3 and 4. Collaborative task and discussion. Record your best answer.",
+      "outputs": [
+        "book",
+        "digital"
+      ],
+      "speaking": {
+        "part": 3,
+        "name": "Collaborative task and discussion"
+      },
+      "tips": {
+        "expect": "Part 3 (about 4 minutes): you and your partner discuss a question using five written prompts for two minutes, then spend one minute reaching a decision together. Part 4 (about 5 minutes): the examiner asks you both broader questions related to the same topic.",
+        "how": [
+          "In Part 3 you are marked on how you interact, not on whether you agree - invite your partner's opinion, respond to it, and disagree politely when you want to.",
+          "Do not try to discuss all five prompts in depth; two or three explored properly is stronger than five rushed.",
+          "In the decision minute, negotiate rather than simply stating your preference: <i>I'd be inclined to say…, unless you feel strongly about…</i>",
+          "In Part 4, develop each answer: opinion, reason, example, and a brief final comment."
+        ],
+        "remember": "Look at your partner during Part 3, and at the examiner during Part 4 - eye contact signals who you are actually talking to."
+      },
+      "data": {
+        "text": "Part 3: discuss how persuasive each technique is and decide which works best. Part 4: discuss debate, ambition, society and the value of literature.",
+        "parts": [
+          {
+            "part": 3,
+            "title": "Collaborative task",
+            "time": "2 min + 1 min",
+            "intro": "Here are some techniques people use when trying to win an argument. Talk to each other about <b>how persuasive each of these techniques really is</b>.",
+            "centre": "How persuasive is each of these when trying to win an argument?",
+            "spokes": [
+              "having more facts and statistics than the other side",
+              "staying calm while the other side gets frustrated",
+              "telling a personal story that illustrates your point",
+              "quoting a respected expert or authority",
+              "finding one weakness in the opponent's argument and focusing on it"
+            ],
+            "decide": "Now you have a minute to decide <b>which of these is the most persuasive technique of all</b>."
+          },
+          {
+            "part": 4,
+            "title": "Further discussion",
+            "time": "5 min",
+            "prompts": [
+              "Do you think society rewards people who argue confidently more than people who are actually right? Why?",
+              "Is it more important for a school to teach students facts or to teach them how to argue well?",
+              "Some people say the ability to change your mind is a sign of weakness. Do you agree?",
+              "Looking back at this year's project, which of the big questions - ambition, society, obsession or the value of literature - do you find hardest to reach a clear opinion on? Why?",
+              "What is the most persuasive argument you have ever changed your mind because of?"
+            ]
+          }
+        ],
+        "useful_language": {
+          "Involving your partner": [
+            "What's your take on…?",
+            "Would you go along with that?",
+            "You've got a point, but…",
+            "That's true up to a point, although…"
+          ],
+          "Building on an idea": [
+            "Following on from what you said…",
+            "And that ties in with…",
+            "Not only that, but…"
+          ],
+          "Reaching a decision": [
+            "Shall we settle on…?",
+            "I'd be inclined to go for…, on the grounds that…",
+            "We could agree to differ, but if we had to choose…"
+          ],
+          "Part 4: developing an answer": [
+            "It very much depends on…",
+            "There's a strong case for saying…",
+            "Arguably, the more persuasive view is…"
+          ]
+        }
+      }
     }
-   }
+  ],
+  "homework": [
+    {
+      "type": "write_sentences",
+      "prompt": "Write a short reflective paragraph (10–12 sentences) giving your own verdict on one of this year's big debates - ambition, obsession, society, or whether difficult books are worth the struggle. Concede at least one point against your view before defending it, using at least three markers of concession or hedging (admittedly, arguably, to some extent, granted, on balance) and one inversion or cleft sentence for emphasis."
+    }
+  ],
+  "scope": {
+    "grado": "G11",
+    "temaN": 6,
+    "tema": "The Last Word - Inspiring Nordic",
+    "outcomes": [
+      {
+        "destreza": "Listening",
+        "puede": "Follow a debate-themed interview and answer four-option questions on opinion, attitude and purpose (C1 Advanced Listening Part 3)."
+      },
+      {
+        "destreza": "Speaking",
+        "puede": "Discuss persuasive techniques, reach a decision with a partner and debate the big questions of the year with authority (C1 Advanced Speaking Parts 3–4)."
+      },
+      {
+        "destreza": "Reading",
+        "puede": "Compare the opinions of four critics on the same debatable question and identify agreement and disagreement across texts (C1 Advanced Reading Part 6)."
+      },
+      {
+        "destreza": "Writing",
+        "puede": "Plan and write a 220–260-word formal letter responding to a published opinion, conceding a point before arguing a case (C1 Advanced Writing Part 2)."
+      },
+      {
+        "destreza": "Use of English",
+        "puede": "The language of formal argument (concession and hedging); a review of inversion, cleft sentences and emphatic do; key word transformations (Part 4) and word formation (Part 3)."
+      }
+    ],
+    "vocabulario": [
+      "concede",
+      "hedge",
+      "rebut",
+      "qualify",
+      "provocative",
+      "compelling"
+    ],
+    "gramatica": [
+      "The language of formal argument (concession and hedging)",
+      "A review of inversion, cleft sentences and emphatic do",
+      "Key word transformations (Part 4)",
+      "Word formation (Part 3)"
+    ],
+    "pendiente": {}
   }
- ],
- "homework": [
-  {
-   "type": "write_sentences",
-   "prompt": "Write a short reflective paragraph (10–12 sentences) giving your own verdict on one of this year's big debates - ambition, obsession, society, or whether difficult books are worth the struggle. Concede at least one point against your view before defending it, using at least three markers of concession or hedging (admittedly, arguably, to some extent, granted, on balance) and one inversion or cleft sentence for emphasis."
-  }
- ],
- "scope": {
-  "grado": "G11",
-  "temaN": 6,
-  "tema": "The Last Word - Inspiring Nordic",
-  "outcomes": [
-   {
-    "destreza": "Listening",
-    "puede": "Follow a debate-themed interview and answer four-option questions on opinion, attitude and purpose (C1 Advanced Listening Part 3)."
-   },
-   {
-    "destreza": "Speaking",
-    "puede": "Discuss persuasive techniques, reach a decision with a partner and debate the big questions of the year with authority (C1 Advanced Speaking Parts 3–4)."
-   },
-   {
-    "destreza": "Reading",
-    "puede": "Compare the opinions of four critics on the same debatable question and identify agreement and disagreement across texts (C1 Advanced Reading Part 6)."
-   },
-   {
-    "destreza": "Writing",
-    "puede": "Plan and write a 220–260-word formal letter responding to a published opinion, conceding a point before arguing a case (C1 Advanced Writing Part 2)."
-   },
-   {
-    "destreza": "Use of English",
-    "puede": "The language of formal argument (concession and hedging); a review of inversion, cleft sentences and emphatic do; key word transformations (Part 4) and word formation (Part 3)."
-   }
-  ],
-  "vocabulario": [
-   "concede",
-   "hedge",
-   "rebut",
-   "qualify",
-   "provocative",
-   "compelling"
-  ],
-  "gramatica": [
-   "The language of formal argument (concession and hedging)",
-   "A review of inversion, cleft sentences and emphatic do",
-   "Key word transformations (Part 4)",
-   "Word formation (Part 3)"
-  ],
-  "pendiente": {}
- }
 }

@@ -1,0 +1,172 @@
+{
+  "id": "emphasis-intro",
+  "level": "b2f",
+  "area": "Emphasis & questions",
+  "title": "Emphasis: cleft sentences and basic inversion",
+  "tagline": "Fronting, inversion and agreement: how English puts the important word first.",
+  "cefr": "B2",
+  "exam": [
+    "Reading & Use of English Part 4 — key word transformations",
+    "Speaking Part 3 — collaborative task: making a point stand out",
+    "Writing Part 2 — essay: a confident, varied style"
+  ],
+  "why": "Standard word order tells a story in a flat, neutral voice. Emphatic structures let you highlight exactly which word matters — who did something, what you actually need, how rarely it happens — and B2 First rewards that control directly in Part 4 transformations, and less directly whenever an examiner notices a more confident style.",
+  "diagrams": [
+    {
+      "type": "transform",
+      "title": "Cleft sentence: moving the focus to the front",
+      "before": {"text": "Sofia found the solution to the problem.", "hl": ["Sofia"]},
+      "after": {"text": "It was Sofia who found the solution to the problem.", "hl": ["It was Sofia", "who"]},
+      "steps": [
+        "Identify the part you want to emphasise (Sofia).",
+        "Put it straight after 'It was'.",
+        "Add 'who' for people or 'that' for things, then the rest of the sentence."
+      ]
+    },
+    {
+      "type": "transform",
+      "title": "Inversion after a negative or restrictive adverb",
+      "before": {"text": "Miss Vega rarely gives extra homework.", "hl": ["rarely"]},
+      "after": {"text": "Rarely does Miss Vega give extra homework.", "hl": ["Rarely", "does"]},
+      "steps": [
+        "Move the adverb (Rarely) to the front of the sentence.",
+        "Add the auxiliary that matches the tense (does, for present simple) before the subject.",
+        "Put the main verb back in its base form: gives → give."
+      ]
+    },
+    {
+      "type": "formula",
+      "title": "Agreeing with so, neither and nor",
+      "parts": [
+        {"chip": "So / Neither / Nor", "tone": "kw"},
+        {"chip": "auxiliary", "tone": "a", "ex": "do / does / did / have / can"},
+        {"chip": "subject", "tone": "b", "ex": "I / Nadia / we"}
+      ],
+      "caption": "Liam loves hiking. So does Nadia. — Mateo hasn't finished. Neither has Sofia."
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "What", "tone": "kw"},
+      {"chip": "clause", "tone": "a", "ex": "I need"},
+      {"chip": "is / was", "tone": "arrow"},
+      {"chip": "emphasised part", "tone": "b", "ex": "more time"}
+    ],
+    "table": {
+      "head": ["Pattern", "Structure", "Example"],
+      "rows": [
+        ["What-cleft", "What + clause + is/was + focus", "What Sofia wants is a fair result."],
+        ["It-cleft", "It + is/was + focus + who/that + clause", "It was Liam who forgot the tickets."],
+        ["Reason cleft", "The reason (why) + clause + is (that)", "The reason we're late is that the bus broke down."],
+        ["Not only... but also", "Not only + inverted clause, but + subject + also + verb", "Not only did she win, but she also broke the record."],
+        ["Never/Rarely + inversion", "Never/Rarely + auxiliary + subject + verb", "Rarely does Miss Vega cancel a class."],
+        ["So + agreement (positive)", "So + do/does/did/have/can + subject", "Liam loves football. So do I."],
+        ["Neither/Nor + agreement (negative)", "Neither/Nor + do/does/did/have/can + subject", "Sofia hasn't finished. Neither have I."]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Emphasising who or what is responsible for something",
+      "examples": [
+        {"text": "<b>It was Nadia who</b> suggested filming the whole trip for the school channel.", "note": "it-cleft: who did it"},
+        {"text": "<b>What really impressed</b> the judges was how calmly the team answered questions.", "note": "what-cleft: the cause of the reaction"},
+        {"text": "<b>What we need</b> now is a proper plan, not more meetings.", "note": "what-cleft: the missing thing"}
+      ]
+    },
+    {
+      "point": "Explaining a reason without starting every sentence with 'because'",
+      "examples": [
+        {"text": "<b>The reason we're behind</b> schedule is that the printer broke down twice.", "note": "reason cleft, no 'why'"},
+        {"text": "<b>The reason why</b> Sofia chose Arequipa for the exchange is the volcano-watching club there.", "note": "reason cleft with 'why'"}
+      ]
+    },
+    {
+      "point": "Adding force with not only... but also, and negative inversion",
+      "examples": [
+        {"text": "<b>Not only did</b> the choir win first prize, but they also got invited to perform in Lima.", "note": "not only triggers inversion"},
+        {"text": "<b>Never have</b> the judges given a score that high before.", "note": "fronted negative adverb → inversion"},
+        {"text": "<b>Rarely does</b> Miss Vega let a class run over time, so something must be wrong.", "note": "fronted restrictive adverb → inversion"}
+      ]
+    },
+    {
+      "point": "Agreeing quickly with so, neither and nor",
+      "examples": [
+        {"text": "Liam can't stand horror films. <b>Neither can</b> Sofia.", "note": "negative agreement"},
+        {"text": "Mateo loves early morning training. <b>So does</b> Nadia.", "note": "positive agreement"},
+        {"text": "I haven't finished the reading yet. <b>Nor has</b> Liam.", "note": "negative agreement, nor instead of neither"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "Not only she won the race, but also broke the record.", "right": "<b>Not only did she win</b> the race, but she also broke the record.", "why": "'Not only' at the front triggers auxiliary inversion, and 'but also' still needs its own subject."},
+    {"wrong": "Never I have seen such dedication.", "right": "<b>Never have I</b> seen such dedication.", "why": "The order after a fronted negative adverb is adverb + auxiliary + subject, not adverb + subject + auxiliary."},
+    {"wrong": "So I do too.", "right": "<b>So do I</b>.", "why": "After 'so', the auxiliary comes before the subject — that inversion is what shows agreement."},
+    {"wrong": "Neither I don't like Mondays.", "right": "<b>Neither do I</b>.", "why": "Neither and nor already carry the negative meaning, so don't add another negative auxiliary like 'don't'."},
+    {"wrong": "It was Sofia which found the mistake.", "right": "It was Sofia <b>who</b> found the mistake.", "why": "Use 'who' for people in it-clefts; 'that' or 'which' are for things."},
+    {"wrong": "What I need it's more practice.", "right": "<b>What I need is</b> more practice.", "why": "'What I need' is already the subject of the sentence — don't add a second subject like 'it'."}
+  ],
+  "dialogue": {
+    "title": "Sports Day record",
+    "context": "Liam, Sofia and Nadia are talking after Sports Day, where Nadia broke a school record, and Miss Vega joins them.",
+    "lines": [
+      {"speaker": "Liam", "text": "Did you hear? <b>It was Nadia who</b> broke the school record in the 200 metres."},
+      {"speaker": "Sofia", "text": "Really? <b>Not only did she win</b>, but she also beat her own personal best."},
+      {"speaker": "Liam", "text": "<b>Never have I seen</b> her run that fast before."},
+      {"speaker": "Sofia", "text": "<b>What surprised me most</b> was how calm she looked at the finish line."},
+      {"speaker": "Nadia", "text": "Thanks. Honestly, <b>the reason I ran so well</b> is that the whole team was cheering."},
+      {"speaker": "Liam", "text": "I was shouting myself hoarse. <b>So was Miss Vega</b>, actually."},
+      {"speaker": "Miss Vega", "text": "I certainly was. <b>Rarely does this school</b> get a record broken on Sports Day."},
+      {"speaker": "Sofia", "text": "I couldn't sit still either."},
+      {"speaker": "Nadia", "text": "<b>Nor could I</b>, and I was the one running."},
+      {"speaker": "Liam", "text": "<b>What we need now</b> is a bigger trophy cabinet."},
+      {"speaker": "Miss Vega", "text": "One step at a time, Liam."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "___ Sofia who organised the whole fundraiser last month.", "options": ["It was", "This was", "It is"], "answer": 0, "why": "an it-cleft in the past, matching 'last month'"},
+        {"sentence": "Not only ___ the exam, but she also helped her classmates revise.", "options": ["she did pass", "did she pass", "she passed"], "answer": 1, "why": "'not only' at the front of a clause triggers subject-auxiliary inversion"},
+        {"sentence": "___ have I felt so proud of the whole team.", "options": ["Never before", "Sometimes", "Usually"], "answer": 0, "why": "'never before' as a fronted negative adverbial triggers inversion (have + I)"},
+        {"sentence": "Liam loves hiking in the Andes. ___ does Nadia.", "options": ["Neither", "Nor", "So"], "answer": 2, "why": "'so' agrees with a positive statement"},
+        {"sentence": "Mateo hasn't finished his essay yet. ___ has Sofia.", "options": ["So", "Too", "Neither"], "answer": 2, "why": "'neither' agrees with a negative statement"},
+        {"sentence": "___ we need right now is more time to prepare for the mock exam.", "options": ["It", "What", "That"], "answer": 1, "why": "a what-cleft puts 'what we need' as the subject, followed by is/was"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with one suitable word.",
+      "items": [
+        {"sentence": "___ was Liam who forgot to bring the tickets.", "answers": ["It"]},
+        {"sentence": "___ I need is a quiet place to revise before the exam.", "answers": ["What"]},
+        {"sentence": "The reason ___ Nadia trains every morning is that she wants to qualify for Nationals.", "answers": ["why"]},
+        {"sentence": "Not only ___ she win the race, but she also broke the record.", "answers": ["did"]},
+        {"sentence": "___ have I seen such a well-organised Sports Day.", "answers": ["Never"]},
+        {"sentence": "___ does Miss Vega cancel a lesson — she's very reliable.", "answers": ["Rarely"]},
+        {"sentence": "Mateo hasn't started revising yet. ___ has Liam.", "answers": ["Neither", "Nor"]},
+        {"sentence": "Sofia loves salsa music. ___ does Nadia.", "answers": ["So"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first. Use the word given. Do not change it. Use between two and five words.",
+      "items": [
+        {"first": "Sofia organised the whole fundraiser, nobody else.", "key": "WAS", "second_start": "It", "second_end": "who organised the whole fundraiser.", "answers": ["was Sofia"]},
+        {"first": "The team didn't only win the match; they also broke the record.", "key": "BUT", "second_start": "Not only did the team win the match,", "second_end": "the record.", "answers": ["but they also broke"]},
+        {"first": "I need a quiet place to revise before the exam, nothing else.", "key": "WHAT", "second_start": "___", "second_end": "is a quiet place to revise before the exam.", "answers": ["What I need"]},
+        {"first": "I have never felt this proud of a team before.", "key": "HAVE", "second_start": "Never before", "second_end": "felt this proud of a team.", "answers": ["have I"]},
+        {"first": "Mateo hasn't finished his essay, and Sofia hasn't either.", "key": "NEITHER", "second_start": "Mateo hasn't finished his essay, and", "second_end": ".", "answers": ["neither has Sofia"]}
+      ]
+    }
+  ],
+  "summary": [
+    "Cleft sentences (It was... who, What I need is...) move the important word or idea to the front for emphasis.",
+    "'The reason (why)... is' introduces a cause without starting every sentence with 'because'.",
+    "'Not only' and negative adverbs like 'never' or 'rarely' at the front of a clause trigger subject-auxiliary inversion.",
+    "So/neither/nor + auxiliary + subject shows quick agreement — so for positive statements, neither/nor for negative ones.",
+    "None of these structures are compulsory, but using two or three naturally signals a confident, high-level style."
+  ]
+}

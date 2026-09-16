@@ -1,0 +1,175 @@
+{
+  "id": "articles-determiners",
+  "level": "c1a",
+  "area": "Comparison & description",
+  "title": "Articles and determiners at C1",
+  "tagline": "The fine print of articles: generic the, zero article, quite a, half the, and determiner plus own.",
+  "cefr": "C1",
+  "exam": [
+    "Reading & Use of English Part 2 — open cloze (the, a, of, own)",
+    "Reading & Use of English Part 4 — key word transformations (THE, HOSPITAL, QUITE, ONLY, HALF, OWN)",
+    "Writing Part 1 — essay: generic statements without overusing the",
+    "Speaking Parts 1 and 3 — natural article use under pressure"
+  ],
+  "why": "Articles rarely cause errors of meaning at C1, but they are exactly what a careless answer gets wrong in the open cloze, and what makes an otherwise fluent sentence read as slightly foreign. The difference between 'poverty' and 'the poverty', or 'in hospital' and 'in the hospital', is small on paper and large in how natural the writing sounds — precisely what examiners are reading and listening for at this level.",
+  "diagrams": [
+    {
+      "type": "contrast",
+      "title": "Generic the vs zero article",
+      "columns": ["the + singular noun", "zero article + plural/uncountable"],
+      "rows": [
+        {"label": "Use", "cells": ["a whole species or class, seen as a type", "a whole category, stated generally"]},
+        {"label": "Example", "cells": ["<b>The condor</b> is native to the Andes.", "<b>Condors</b> are native to the Andes."]},
+        {"label": "Also used for", "cells": ["adjective as noun: <b>the rich</b>, <b>the unemployed</b>", "abstract nouns in general: <b>happiness</b>, <b>education</b>"]},
+        {"label": "Common error", "cells": ["A condor is native to the Andes (one bird, not the species)", "The education is important (adds the wrongly)"]}
+      ]
+    },
+    {
+      "type": "contrast",
+      "title": "in hospital vs in the hospital",
+      "columns": ["zero article — institutional idiom", "the + noun — the actual building"],
+      "rows": [
+        {"label": "Meaning", "cells": ["there for the institution's purpose (a patient, a student)", "a specific building, for any reason at all"]},
+        {"label": "Example", "cells": ["Liam's uncle is <b>in hospital</b> after the accident.", "The ambulance is parked outside <b>the hospital</b>."]},
+        {"label": "More examples", "cells": ["<b>at university</b>, <b>in prison</b>, <b>at sea</b>", "visiting <b>the university</b> as a guest speaker"]}
+      ]
+    },
+    {
+      "type": "map",
+      "title": "Determiners that come before the article",
+      "center": "Determiner + a/an/the",
+      "branches": [
+        {"label": "Degree before a/an", "items": ["quite a surprise", "rather a shock", "such a mess"], "tone": "a"},
+        {"label": "half / all / both (of)", "items": ["half (of) the class", "all (of) the students", "both (of) the twins"], "tone": "b"},
+        {"label": "a with jobs & units", "items": ["a doctor", "twice a week", "three soles a kilo"], "tone": "c"},
+        {"label": "determiner + own", "items": ["my own room", "its own rules", "Sofia's own idea"], "tone": "a"}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "quite / rather / such", "tone": "kw"},
+      {"chip": "a/an", "tone": "a"},
+      {"chip": "(adjective)", "tone": "b", "ex": "surprising"},
+      {"chip": "noun", "tone": "c", "ex": "result"}
+    ],
+    "table": {
+      "head": ["Pattern", "Structure", "Example"],
+      "rows": [
+        ["Generic the + singular noun", "the + singular noun = the whole species/class", "<b>The smartphone</b> has changed how teenagers communicate."],
+        ["Zero article + abstract/institutional noun", "no article before a general idea, or an institution's real purpose", "<b>Poverty</b> shouldn't decide who gets an education. She's <b>at university</b> now."],
+        ["the + superlative/ordinal/unique thing", "the + superlative/ordinal/only one of its kind", "This is <b>the first</b> time the choir has performed live."],
+        ["quite a / rather a / such a", "quite/rather/such + a/an + (adjective) + noun", "That was <b>quite a</b> performance."],
+        ["half / all / both (of)", "half/all/both (+ of) + the + noun", "<b>Half the</b> class stayed behind to help clean up."],
+        ["a with jobs and units of measure", "a/an before a job, rate or unit", "She works <b>as a</b> volunteer twice <b>a</b> month."],
+        ["determiner + own", "possessive + own + noun", "Every student designed <b>their own</b> quiz."]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "The generic the: a whole species or type",
+      "examples": [
+        {"text": "<b>The condor</b> is a symbol you see everywhere in the Andes.", "note": "the + singular noun for a whole species"},
+        {"text": "In this essay, I will argue that <b>the smartphone</b> has reshaped teenage friendships.", "note": "generic the with an invention or device"},
+        {"text": "<b>The unemployed</b> in rural areas often have fewer options than in the cities.", "note": "the + adjective = a whole group of people"}
+      ]
+    },
+    {
+      "point": "Zero article: abstract ideas and institutions used for their purpose",
+      "examples": [
+        {"text": "<b>Poverty</b> remains the biggest obstacle to education in some regions.", "note": "zero article, abstract noun in a general statement"},
+        {"text": "Nadia's brother has been <b>in hospital</b> since Tuesday.", "note": "in hospital = as a patient, no article"},
+        {"text": "Mateo's sister is <b>at university</b> in Lima, studying law.", "note": "at university = as a student, no article"}
+      ]
+    },
+    {
+      "point": "the with superlatives, ordinals and things that are unique",
+      "examples": [
+        {"text": "It was <b>the toughest</b> exam the school had ever set.", "note": "the + superlative"},
+        {"text": "This is only <b>the second</b> time the team has reached the final.", "note": "the + ordinal"},
+        {"text": "<b>The sun</b> set behind Misti just as the concert began.", "note": "the + a thing that is unique in context"}
+      ]
+    },
+    {
+      "point": "Determiners that add precision or emphasis before a noun",
+      "examples": [
+        {"text": "That was <b>quite a</b> risk to take just before the exam.", "note": "quite a + noun, admiration or surprise"},
+        {"text": "<b>Half the</b> school turned up to support the team.", "note": "half + the + noun, no of needed before the"},
+        {"text": "Every group designed <b>its own</b> version of the experiment.", "note": "determiner + own, emphasising it belongs to no one else"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "The poverty is the main cause of low literacy rates.", "right": "<b>Poverty</b> is the main cause of low literacy rates.", "why": "abstract nouns used generally take zero article, not the."},
+    {"wrong": "My uncle is in the hospital after the accident.", "right": "My uncle is <b>in hospital</b> after the accident.", "why": "in hospital (no article) means as a patient; in the hospital would mean inside the building, for any reason."},
+    {"wrong": "This is second time we have won the tournament.", "right": "This is <b>the second</b> time we have won the tournament.", "why": "ordinals naming a position in a sequence need the."},
+    {"wrong": "That was such surprise!", "right": "That was <b>such a</b> surprise!", "why": "such needs a/an before a singular countable noun."},
+    {"wrong": "Half of class went on the trip.", "right": "<b>Half of the</b> class went on the trip.", "why": "half of needs the (or a possessive) before the noun; of class alone, with no article, is not correct."},
+    {"wrong": "This is the own room of Sofia.", "right": "This is <b>Sofia's own</b> room.", "why": "own always follows a possessive (my, your, its, Sofia's), never the on its own."}
+  ],
+  "dialogue": {
+    "title": "Current affairs warm-up",
+    "context": "Miss Vega opens the lesson by asking the class for something from the news, and the conversation drifts to family news of their own.",
+    "lines": [
+      {"speaker": "Miss Vega", "text": "Right, let's warm up — tell me something from the news this week."},
+      {"speaker": "Mateo", "text": "<b>The condor</b> population near Colca Canyon is growing again, apparently."},
+      {"speaker": "Sofia", "text": "That's <b>quite a</b> change from last year's report."},
+      {"speaker": "Nadia", "text": "My cousin's <b>in hospital</b> after a climbing accident near Huaraz, actually."},
+      {"speaker": "Miss Vega", "text": "Oh no. Is he alright?"},
+      {"speaker": "Nadia", "text": "He will be. <b>Half the</b> class have already messaged him."},
+      {"speaker": "Liam", "text": "Meanwhile, my sister starts <b>at university</b> next month — <b>the first</b> in our family."},
+      {"speaker": "Mateo", "text": "That's brilliant. <b>Poverty</b> shouldn't decide who gets that chance."},
+      {"speaker": "Sofia", "text": "Exactly — and everyone in the group has <b>their own</b> reason for caring about it."},
+      {"speaker": "Miss Vega", "text": "Good discussion. Now, can anyone tell me why <b>the smartphone</b> divides opinion so much?"},
+      {"speaker": "Liam", "text": "Because <b>the rich</b> and the poor end up using it completely differently."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "___ elderly in this neighbourhood often feel isolated during the week.", "options": ["The", "An", "no article"], "answer": 0, "why": "an adjective used as a noun for a whole group (the elderly) always takes the."},
+        {"sentence": "___ poverty is the biggest barrier to education in the region.", "options": ["A", "no article", "The"], "answer": 1, "why": "abstract nouns used in a general statement take no article, not the or a."},
+        {"sentence": "My uncle has been ___ hospital since the accident.", "options": ["in the", "at", "in"], "answer": 2, "why": "in hospital (no article) means as a patient; in the hospital would refer to the building itself."},
+        {"sentence": "This is only ___ second time we've reached the final.", "options": ["the", "a", "no article"], "answer": 0, "why": "ordinal numbers naming a position in a sequence need the."},
+        {"sentence": "That was ___ shock, I have to admit.", "options": ["quite", "quite a", "such"], "answer": 1, "why": "quite a + noun expresses mild surprise; quite alone cannot go directly before a noun like this."},
+        {"sentence": "___ play the violin beautifully.", "options": ["Both them", "Both of they", "Both of them"], "answer": 2, "why": "both of + object pronoun (them); of cannot be dropped before a pronoun, and they is never used as an object."},
+        {"sentence": "Every student handed in ___ own version of the report.", "options": ["their", "a", "the"], "answer": 0, "why": "own always follows a possessive (their, my, Sofia's), never an article."}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with one or two words so that it is grammatically correct.",
+      "items": [
+        {"sentence": "This is ___ second time the choir has won regionals.", "answers": ["the"]},
+        {"sentence": "That was ___ generous offer — I wasn't expecting it at all.", "answers": ["quite a", "such a"]},
+        {"sentence": "Nadia's grandmother has been ___ hospital for a week now.", "answers": ["in"]},
+        {"sentence": "___ the class stayed behind to help clean up after the fair.", "answers": ["Half", "All"]},
+        {"sentence": "Every group came up with ___ own solution to the problem.", "answers": ["its", "their"]},
+        {"sentence": "The mangoes here cost about three soles ___ kilo.", "answers": ["a"]},
+        {"sentence": "___ of the trophies were later donated to the school museum.", "answers": ["Both", "All"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first, using the word given. Do not change the word given. Use between two and five words.",
+      "items": [
+        {"first": "People who are elderly often feel isolated in this neighbourhood.", "key": "THE", "second_start": "", "second_end": "in this neighbourhood often feel isolated.", "answers": ["The elderly"]},
+        {"first": "My uncle was admitted as a patient after the accident.", "key": "HOSPITAL", "second_start": "My uncle has been", "second_end": "since the accident.", "answers": ["in hospital"]},
+        {"first": "I wasn't expecting such a generous offer — I found it surprising.", "key": "QUITE", "second_start": "That was", "second_end": "— I wasn't expecting it.", "answers": ["quite a generous offer"]},
+        {"first": "This is the second time the choir has won regionals.", "key": "ONLY", "second_start": "This is", "second_end": "the choir has won regionals.", "answers": ["only the second time"]},
+        {"first": "Roughly 50% of the class stayed behind to help clean up.", "key": "HALF", "second_start": "", "second_end": "stayed behind to help clean up.", "answers": ["Half the class"]},
+        {"first": "Every group designed its own version of the experiment.", "key": "OWN", "second_start": "Every group designed", "second_end": "version of the experiment.", "answers": ["its own"]}
+      ]
+    }
+  ],
+  "summary": [
+    "<i>The</i> + singular noun, or an adjective like <i>the rich</i>, names a whole class or group generically.",
+    "Zero article covers abstract nouns in general statements and institutions used for their real purpose: <i>in hospital, at university</i>.",
+    "<i>The</i> marks superlatives, ordinals and things that are unique in context: <i>the first, the sun</i>.",
+    "<i>Quite a / rather a / such a</i> come before the article, not after: <i>quite a shock</i>, never <i>a quite shock</i>.",
+    "<i>Half / all / both</i> can go straight before <i>the</i>; <i>own</i> always needs a possessive in front of it."
+  ]
+}

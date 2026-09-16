@@ -1,0 +1,576 @@
+{
+  "id": "hedging-impersonal",
+  "level": "c1a",
+  "area": "Sentence building",
+  "title": "Hedging and impersonal structures",
+  "tagline": "Say it without overclaiming it: impersonal subjects and softened verbs do the distancing for you.",
+  "cefr": "C1",
+  "exam": [
+    "Reading & Use of English Part 2 — open cloze (it, there, one, seems, appears)",
+    "Reading & Use of English Part 4 — key word transformations (arguably, presumably, tend to, one)",
+    "Writing Part 1 — essay: arguing a case without overclaiming",
+    "Speaking Parts 3 and 4 — softening an opinion without sounding vague"
+  ],
+  "why": "Hedging is how careful C1-level writers avoid sounding more certain than the evidence allows — 'the data suggest' rather than 'the data prove'. English has a whole toolkit for this: impersonal subjects like 'it' and 'there', the generic pronoun 'one', and the agentless passive all remove the person making the claim and turn it into a careful observation. C1 Advanced rewards this in the essay, where a confident-but-hedged argument scores higher than an overstated one, and tests the vocabulary of tentativeness directly in Use of English.",
+  "diagrams": [
+    {
+      "type": "scale",
+      "title": "How sure is the writer?",
+      "left": "tentative",
+      "right": "confident",
+      "items": [
+        {
+          "label": "it could be argued that",
+          "pct": 15
+        },
+        {
+          "label": "it would seem that",
+          "pct": 30
+        },
+        {
+          "label": "it appears / seems that",
+          "pct": 40
+        },
+        {
+          "label": "there is some evidence that",
+          "pct": 55
+        },
+        {
+          "label": "tends to / is likely to",
+          "pct": 65
+        },
+        {
+          "label": "clearly / undoubtedly",
+          "pct": 95
+        }
+      ]
+    },
+    {
+      "type": "map",
+      "title": "Hedging devices, by function",
+      "center": "Hedging",
+      "branches": [
+        {
+          "label": "Verbs of appearance",
+          "items": [
+            "it seems that",
+            "it appears that",
+            "it would seem that"
+          ],
+          "tone": "a"
+        },
+        {
+          "label": "Adverbs of tentativeness",
+          "items": [
+            "arguably",
+            "presumably",
+            "apparently",
+            "supposedly"
+          ],
+          "tone": "b"
+        },
+        {
+          "label": "Modals",
+          "items": [
+            "may / might / could + verb",
+            "may well",
+            "could arguably"
+          ],
+          "tone": "c"
+        },
+        {
+          "label": "Impersonal subjects",
+          "items": [
+            "there is some evidence that",
+            "research suggests that",
+            "it is thought that"
+          ],
+          "tone": "a"
+        },
+        {
+          "label": "Generic reference",
+          "items": [
+            "one tends to assume",
+            "the passive: it is believed that"
+          ],
+          "tone": "b"
+        }
+      ]
+    },
+    {
+      "type": "contrast",
+      "title": "Academic hedging vs spoken softeners",
+      "columns": [
+        "Formal / written",
+        "Informal / spoken"
+      ],
+      "rows": [
+        {
+          "label": "Typical device",
+          "cells": [
+            "it would appear that / arguably",
+            "sort of / kind of / I'd say"
+          ]
+        },
+        {
+          "label": "Example",
+          "cells": [
+            "<b>It would appear that</b> the policy has failed.",
+            "It's <b>sort of</b> failed, I'd say."
+          ]
+        },
+        {
+          "label": "Function",
+          "cells": [
+            "distances the writer from an absolute claim",
+            "softens a blunt opinion in conversation"
+          ]
+        },
+        {
+          "label": "Where you'll meet it",
+          "cells": [
+            "essays, reports, academic articles",
+            "Speaking Parts 3 and 4, informal writing"
+          ]
+        }
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {
+        "chip": "It / There",
+        "tone": "kw",
+        "ex": "It / There"
+      },
+      {
+        "chip": "seems / appears / would seem",
+        "tone": "a",
+        "ex": "appears"
+      },
+      {
+        "chip": "that + clause",
+        "tone": "b",
+        "ex": "that costs will rise"
+      }
+    ],
+    "table": {
+      "head": [
+        "Device",
+        "Function",
+        "Example"
+      ],
+      "rows": [
+        [
+          "it seems / appears that",
+          "softens an observation based on present evidence",
+          "<b>It appears that</b> the new timetable has reduced absences."
+        ],
+        [
+          "it would seem that",
+          "extra distance — more tentative than 'seems'",
+          "<b>It would seem that</b> the plan was never realistic."
+        ],
+        [
+          "tend to",
+          "a general pattern, not an absolute rule",
+          "Younger students <b>tend to</b> underestimate how long revision takes."
+        ],
+        [
+          "arguably / presumably / apparently",
+          "an adverb that hedges a whole sentence",
+          "<b>Arguably</b>, the exam was too long for the time given."
+        ],
+        [
+          "there is some evidence that",
+          "impersonal, cites unnamed evidence",
+          "<b>There is some evidence that</b> shorter lessons improve focus."
+        ],
+        [
+          "may / might / could + verb",
+          "a modal for tentative possibility",
+          "The results <b>may reflect</b> a change in teaching method."
+        ],
+        [
+          "one",
+          "a generic subject, distances the writer from 'I'",
+          "<b>One</b> could argue that the reform came too late."
+        ],
+        [
+          "passive without an agent",
+          "removes the person making the claim",
+          "<b>It is widely believed</b> that the merger will go ahead."
+        ]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Softening a claim with impersonal it/there + a verb of appearance",
+      "examples": [
+        {
+          "text": "<b>It appears that</b> the new policy has had little real effect.",
+          "note": "it + appears + that-clause"
+        },
+        {
+          "text": "<b>It would seem that</b> the committee underestimated the cost.",
+          "note": "'would seem' is more tentative than 'seems'"
+        },
+        {
+          "text": "<b>There is some evidence that</b> students learn better in smaller groups.",
+          "note": "impersonal 'there is' plus unnamed evidence"
+        }
+      ]
+    },
+    {
+      "point": "Hedging adverbs and generalising verbs",
+      "examples": [
+        {
+          "text": "<b>Arguably</b>, the school could have consulted parents earlier.",
+          "note": "the adverb hedges the whole sentence"
+        },
+        {
+          "text": "Younger candidates <b>tend to</b> rush the final section of the exam.",
+          "note": "'tend to' describes a general pattern, not every single case"
+        },
+        {
+          "text": "The results were, <b>presumably</b>, affected by the change of venue.",
+          "note": "presumably = the writer is guessing based on reason, not certainty"
+        }
+      ]
+    },
+    {
+      "point": "Modals for tentative possibility",
+      "examples": [
+        {
+          "text": "This drop in attendance <b>may reflect</b> the new bus schedule, rather than a loss of interest.",
+          "note": "may + verb: one possible explanation among others"
+        },
+        {
+          "text": "The delay <b>could well be</b> connected to the recent staff changes.",
+          "note": "'could well' is a natural, plausible hedge"
+        },
+        {
+          "text": "Further research <b>might reveal</b> other contributing factors.",
+          "note": "might = a weaker possibility than may"
+        }
+      ]
+    },
+    {
+      "point": "Impersonal 'one' and the agentless passive",
+      "examples": [
+        {
+          "text": "<b>One</b> might question whether the deadline was realistic in the first place.",
+          "note": "formal 'one' replaces 'I' for a generalised opinion"
+        },
+        {
+          "text": "<b>It is generally accepted that</b> exam stress affects performance.",
+          "note": "agentless passive — no one is named as accepting it"
+        },
+        {
+          "text": "The proposal <b>is thought to</b> have been rejected for budgetary reasons.",
+          "note": "passive + infinitive, hedges without naming who thinks it"
+        }
+      ]
+    }
+  ],
+  "watch_out": [
+    {
+      "wrong": "It seem that the plan will not work.",
+      "right": "<b>It seems</b> that the plan will not work.",
+      "why": "'It' is singular, so the verb needs an -s: it seems, not it seem."
+    },
+    {
+      "wrong": "Presumably that the results were affected by the weather.",
+      "right": "<b>Presumably</b>, the results were affected by the weather.",
+      "why": "Sentence adverbs like presumably/arguably/apparently stand alone — they don't take 'that' the way a verb like 'seem' does."
+    },
+    {
+      "wrong": "Students tend rushing the last question.",
+      "right": "Students <b>tend to rush</b> the last question.",
+      "why": "'Tend to' is followed by the to-infinitive, not the -ing form."
+    },
+    {
+      "wrong": "One should be careful with his conclusions.",
+      "right": "<b>One</b> should be careful with <b>one's</b> conclusions.",
+      "why": "Formal 'one' keeps its own possessive form, 'one's', rather than switching to 'his' or 'their'."
+    },
+    {
+      "wrong": "It is believe that the reform will be delayed.",
+      "right": "<b>It is believed</b> that the reform will be delayed.",
+      "why": "The impersonal passive needs the past participle after 'is/are': is believed, not is believe."
+    },
+    {
+      "wrong": "The results could may show a wider pattern.",
+      "right": "The results <b>could show</b> a wider pattern.",
+      "why": "Only one modal per verb phrase — never stack two modals like 'could may'."
+    }
+  ],
+  "dialogue": {
+    "title": "Presenting the survey results",
+    "context": "Nadia, Mateo and Sofia are preparing the results of their class survey on study habits for a presentation, and Miss Vega reminds them not to claim more than the data actually show.",
+    "lines": [
+      {
+        "speaker": "Miss Vega",
+        "text": "You surveyed forty students, not the whole school, so be careful with how you word your conclusions."
+      },
+      {
+        "speaker": "Nadia",
+        "text": "So I shouldn't write 'Students don't revise enough'?"
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "Exactly — try something more careful: '<b>It appears that</b> many students underestimate how much revision they need.'"
+      },
+      {
+        "speaker": "Mateo",
+        "text": "What about the result on phone use? Nearly everyone who scored low said they revised with their phone nearby."
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "Good — you can hedge that with a modal: 'Low scores <b>may be linked</b> to phone use during revision.'"
+      },
+      {
+        "speaker": "Sofia",
+        "text": "<b>There is some evidence that</b> students who study in silence remember more, but our sample is small."
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "Perfect phrasing. And instead of saying 'I think group study doesn't work', try distancing yourself a little."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "'<b>Arguably</b>, group study is less effective for exam revision, although some students clearly prefer it.'"
+      },
+      {
+        "speaker": "Mateo",
+        "text": "<b>One</b> could also argue that motivation matters more than method."
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "Nice. And for the final slide?"
+      },
+      {
+        "speaker": "Nadia",
+        "text": "'<b>It is widely believed</b> that shorter, more frequent revision sessions work better than long ones — our results <b>would seem to</b> support that.'"
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "That's exactly the tone a C1 presentation needs — confident, but never overstating the evidence."
+      }
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {
+          "sentence": "___ that the new bus route has reduced congestion near the school.",
+          "options": [
+            "It appears",
+            "It appear",
+            "Appears it"
+          ],
+          "answer": 0,
+          "why": "impersonal 'it' takes a singular verb: it appears, followed by a that-clause"
+        },
+        {
+          "sentence": "The committee's decision, ___, was influenced by budget concerns.",
+          "options": [
+            "presumable",
+            "presumably",
+            "presuming"
+          ],
+          "answer": 1,
+          "why": "the sentence adverb 'presumably' hedges the whole clause"
+        },
+        {
+          "sentence": "Younger students ___ underestimate how long an essay takes to plan.",
+          "options": [
+            "tend",
+            "tend to",
+            "tending to"
+          ],
+          "answer": 1,
+          "why": "'tend to' + bare infinitive expresses a general pattern"
+        },
+        {
+          "sentence": "The delay ___ be connected to last week's staff changes.",
+          "options": [
+            "could well",
+            "well could",
+            "could to"
+          ],
+          "answer": 0,
+          "why": "'could well' is a natural hedge meaning 'quite possibly'"
+        },
+        {
+          "sentence": "___ might question whether the survey sample was large enough.",
+          "options": [
+            "I",
+            "One",
+            "We"
+          ],
+          "answer": 1,
+          "why": "generic 'one' gives a formal, impersonal tone rather than a personal opinion"
+        },
+        {
+          "sentence": "It ___ believed that the results reflect a wider national trend.",
+          "options": [
+            "is",
+            "are",
+            "was is"
+          ],
+          "answer": 0,
+          "why": "the impersonal passive agrees with 'it': it is believed"
+        },
+        {
+          "sentence": "There ___ some evidence that shorter lessons improve concentration.",
+          "options": [
+            "is",
+            "are",
+            "be"
+          ],
+          "answer": 0,
+          "why": "'there is' agrees with the uncountable noun 'evidence'"
+        },
+        {
+          "sentence": "The results ___ a wider pattern, though more research is needed.",
+          "options": [
+            "could may show",
+            "could show",
+            "showing could"
+          ],
+          "answer": 1,
+          "why": "only one modal per verb phrase: could show, not could may show"
+        }
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with one or two words.",
+      "items": [
+        {
+          "sentence": "It ___ (seem) that the new timetable has helped attendance.",
+          "answers": [
+            "seems"
+          ]
+        },
+        {
+          "sentence": "___, the delay was caused by the printer breaking down twice.",
+          "answers": [
+            "Presumably"
+          ]
+        },
+        {
+          "sentence": "Students who revise in short bursts ___ to remember more in the long run.",
+          "answers": [
+            "tend"
+          ]
+        },
+        {
+          "sentence": "The drop in sales ___ well be linked to the new pricing policy.",
+          "answers": [
+            "could",
+            "may",
+            "might"
+          ]
+        },
+        {
+          "sentence": "___ could argue that the deadline was unrealistic from the start.",
+          "answers": [
+            "One"
+          ]
+        },
+        {
+          "sentence": "It is widely ___ that the museum will reopen by December.",
+          "answers": [
+            "believed"
+          ]
+        },
+        {
+          "sentence": "There ___ some evidence that smaller classes improve results.",
+          "answers": [
+            "is"
+          ]
+        },
+        {
+          "sentence": "The results ___ reflect a broader trend, though the sample is small.",
+          "answers": [
+            "may",
+            "might",
+            "could"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first, using the word given. Do not change the word given. Use between two and five words.",
+      "items": [
+        {
+          "first": "The department could have planned the trip better.",
+          "key": "ARGUABLY",
+          "second_start": "The department",
+          "second_end": "planned the trip better.",
+          "answers": [
+            "could arguably have"
+          ]
+        },
+        {
+          "first": "The reform will probably be delayed because of the budget cuts.",
+          "key": "PRESUMABLY",
+          "second_start": "The reform will",
+          "second_end": "because of the budget cuts.",
+          "answers": [
+            "presumably be delayed"
+          ]
+        },
+        {
+          "first": "Younger students usually underestimate how long revision takes.",
+          "key": "TEND",
+          "second_start": "Younger students",
+          "second_end": "how long revision takes.",
+          "answers": [
+            "tend to underestimate"
+          ]
+        },
+        {
+          "first": "It's possible that the delay is connected to staff changes.",
+          "key": "WELL",
+          "second_start": "The delay",
+          "second_end": "to staff changes.",
+          "answers": [
+            "could well be connected"
+          ]
+        },
+        {
+          "first": "People generally believe that the museum will reopen in December.",
+          "key": "BELIEVED",
+          "second_start": "It is",
+          "second_end": "that the museum will reopen in December.",
+          "answers": [
+            "widely believed"
+          ]
+        },
+        {
+          "first": "I think the deadline was unrealistic.",
+          "key": "ONE",
+          "second_start": "",
+          "second_end": "argue that the deadline was unrealistic.",
+          "answers": [
+            "One could"
+          ]
+        }
+      ]
+    }
+  ],
+  "summary": [
+    "Use impersonal <i>it</i> + a verb of appearance (seems, appears, would seem) + a that-clause to present a claim as an observation, not a fact.",
+    "Adverbs like <i>arguably, presumably, apparently</i> hedge a whole sentence and stand alone — they don't take 'that' the way 'seem' does.",
+    "Modals (<i>may, might, could</i>) and phrases like <i>tend to</i> soften a claim into one possible explanation among others.",
+    "Generic <i>one</i> and the agentless passive (<i>it is believed that</i>) remove the person making the claim for a formal, academic tone.",
+    "In speech, the same idea sounds looser: <i>sort of, kind of, I'd say</i> — keep these out of formal writing."
+  ]
+}

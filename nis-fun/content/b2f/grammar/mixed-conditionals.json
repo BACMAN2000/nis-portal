@@ -1,0 +1,164 @@
+{
+  "id": "mixed-conditionals",
+  "level": "b2f",
+  "area": "Conditionals & hypothesis",
+  "title": "Mixed conditionals",
+  "tagline": "One sentence, two moments: a past cause with a present result, or the other way round.",
+  "cefr": "B2",
+  "exam": [
+    "Reading & Use of English Part 4 — key word transformations",
+    "Reading & Use of English Part 2 — open cloze (would / had)",
+    "Writing Part 1 — essay: consequences and regrets"
+  ],
+  "why": "The second and third conditionals each stay inside one time. Real life doesn't: a decision you made years ago explains where you are today, and the person you are now explains what you did last week. B2 First tests exactly this crossing of times, usually in Part 4, where the key word is often <b>would</b>, <b>had</b> or <b>if</b>.",
+  "diagrams": [
+    {
+      "type": "timeline",
+      "title": "Past cause → present result",
+      "marks": [
+        {"at": "past", "label": "She didn't take the job in Lima.", "sub": "if + past perfect"},
+        {"at": "now", "label": "She isn't living there now.", "sub": "would + infinitive"}
+      ],
+      "arrows": [[0, 1, "because of that…"]],
+      "caption": "If she <b>had taken</b> the job, she <b>would be</b> living in Lima now."
+    },
+    {
+      "type": "timeline",
+      "title": "Present state → past result",
+      "marks": [
+        {"at": "now", "label": "He is a nervous driver (always).", "sub": "if + past simple"},
+        {"at": "past", "label": "He didn't drive us to the match yesterday.", "sub": "would have + participle"}
+      ],
+      "arrows": [[0, 1, "explains why…"]],
+      "caption": "If he <b>weren't</b> such a nervous driver, he <b>would have driven</b> us yesterday."
+    },
+    {
+      "type": "contrast",
+      "title": "Third, second or mixed?",
+      "columns": ["Third conditional", "Mixed: past → present", "Mixed: present → past"],
+      "rows": [
+        {"label": "If-clause", "cells": ["past perfect", "past perfect", "past simple"]},
+        {"label": "Result clause", "cells": ["would have + participle", "would + infinitive", "would have + participle"]},
+        {"label": "Time of the condition", "cells": ["past", "past", "now / always"]},
+        {"label": "Time of the result", "cells": ["past", "now", "past"]},
+        {"label": "Example", "cells": ["If I had studied, I would have passed.", "If I had studied, I would be at university now.", "If I were more organised, I would have passed."]}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "If", "tone": "kw"},
+      {"chip": "past perfect", "tone": "a", "ex": "had studied"},
+      {"chip": "→", "tone": "arrow"},
+      {"chip": "would / could / might + infinitive", "tone": "b", "ex": "would be"}
+    ],
+    "table": {
+      "head": ["Pattern", "If-clause", "Result clause", "What it means"],
+      "rows": [
+        ["Past → present", "if + past perfect", "would / could / might + infinitive (+ be + -ing)", "an imaginary past change with a result you can see now"],
+        ["Present → past", "if + past simple (were)", "would / could / might have + past participle", "a permanent or present fact that explains a past event"],
+        ["Negative forms", "if + hadn't / didn't / weren't", "wouldn't (have)…", "the same logic, turned round"]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "A past decision or event with a result you feel now",
+      "examples": [
+        {"text": "If Nadia <b>had joined</b> the robotics club last year, she <b>would know</b> how to code by now.", "note": "past choice → present skill"},
+        {"text": "If we <b>hadn't missed</b> the early bus, we <b>wouldn't be</b> standing in the rain.", "note": "negative past → present situation"},
+        {"text": "If my grandparents <b>hadn't moved</b> to Arequipa, I <b>might not speak</b> Spanish at home.", "note": "might = less certain result"}
+      ]
+    },
+    {
+      "point": "A present state, habit or personality that explains something in the past",
+      "examples": [
+        {"text": "If Liam <b>were</b> more patient, he <b>wouldn't have deleted</b> the whole project.", "note": "personality (always true) → past action"},
+        {"text": "If I <b>didn't live</b> so far from school, I <b>would have stayed</b> for the rehearsal.", "note": "present fact → past decision"},
+        {"text": "If she <b>spoke</b> German, she <b>could have applied</b> for the exchange.", "note": "could have = ability that was missing"}
+      ]
+    },
+    {
+      "point": "Regrets and blame, especially in conversation",
+      "examples": [
+        {"text": "If you <b>had told</b> me the truth, I <b>wouldn't be</b> so angry with you.", "note": "past honesty → present feeling"},
+        {"text": "If Mateo <b>hadn't lent</b> me his notes, I <b>would be</b> completely lost in this topic.", "note": "a positive past action, and its present effect"},
+        {"text": "If I <b>were</b> a morning person, I <b>would have set</b> three alarms — not one.", "note": "self-criticism: present → past"}
+      ]
+    },
+    {
+      "point": "In essays: consequences of policies and habits",
+      "examples": [
+        {"text": "If the city <b>had invested</b> in cycle lanes ten years ago, traffic <b>would be</b> far lighter today.", "note": "a typical Writing Part 1 sentence"},
+        {"text": "If people <b>cared</b> more about recycling, the river <b>would not have reached</b> this state.", "note": "present attitude → past result; formal register with no contractions"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "If I would have known about the concert, I would be there now.", "right": "If I <b>had known</b> about the concert, I would be there now.", "why": "No <i>would</i> in the if-clause. The condition takes the past perfect."},
+    {"wrong": "If she had studied medicine, she would have been a doctor now.", "right": "If she had studied medicine, she <b>would be</b> a doctor now.", "why": "<i>Now</i> tells you the result is present, so use <i>would</i> + infinitive, not <i>would have</i>."},
+    {"wrong": "If he was taller, he would have made the team.", "right": "If he <b>were</b> taller, he would have made the team.", "why": "In unreal conditions use <i>were</i> for all persons — it is the form the exam expects."},
+    {"wrong": "If I hadn't lost my phone, I would have been able to call you now.", "right": "If I hadn't lost my phone, I <b>would be able</b> to call you now.", "why": "The result is happening now, so the result clause stays in the present."},
+    {"wrong": "If you would be more careful, you wouldn't have broken it.", "right": "If you <b>were</b> more careful, you wouldn't have broken it.", "why": "The present-state condition takes the past simple, never <i>would</i>."}
+  ],
+  "dialogue": {
+    "title": "The science fair that almost wasn't",
+    "context": "Sofia and Liam are waiting outside the hall for the science fair results. Their project nearly missed the deadline.",
+    "lines": [
+      {"speaker": "Sofia", "text": "If you <b>had backed up</b> the files on Sunday, we <b>wouldn't be</b> this nervous right now."},
+      {"speaker": "Liam", "text": "I know, I know. And if I <b>weren't</b> so disorganised, I <b>would have done</b> it without you asking."},
+      {"speaker": "Sofia", "text": "Well, Mateo saved us. If he <b>hadn't stayed</b> up until two, we <b>wouldn't have</b> a project to present today."},
+      {"speaker": "Liam", "text": "True. If he <b>didn't like</b> coding so much, he <b>would have gone</b> home at ten like everyone else."},
+      {"speaker": "Sofia", "text": "And if Miss Vega <b>hadn't given</b> us an extra day, we <b>would be</b> sitting in the audience instead of waiting for results."},
+      {"speaker": "Liam", "text": "Honestly, if I <b>were</b> her, I <b>wouldn't have said</b> yes. We asked at the last minute."},
+      {"speaker": "Sofia", "text": "Look, they're opening the doors. If we <b>hadn't rebuilt</b> the model last night, I <b>wouldn't feel</b> this confident."},
+      {"speaker": "Liam", "text": "Confident? If you <b>were</b> really confident, you <b>wouldn't have checked</b> the poster six times this morning."},
+      {"speaker": "Sofia", "text": "Seven. Come on — whatever happens, we're here."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "If they had left earlier, they ___ here by now.", "options": ["are", "would be", "would have been"], "answer": 1, "why": "by now = a present result → would + infinitive"},
+        {"sentence": "If I ___ so busy this term, I would have joined the drama club.", "options": ["weren't", "hadn't been", "wouldn't be"], "answer": 0, "why": "a present state (this term) that explains a past decision → past simple"},
+        {"sentence": "If she hadn't moved to Cusco, she ___ Quechua today.", "options": ["wouldn't have spoken", "wouldn't speak", "didn't speak"], "answer": 1, "why": "today = present result"},
+        {"sentence": "If Mateo ___ a better swimmer, he would have entered the race last week.", "options": ["had been", "would be", "were"], "answer": 2, "why": "a permanent ability explains a past choice → were"},
+        {"sentence": "We ___ lost now if you had brought the map.", "options": ["wouldn't be", "wouldn't have been", "aren't"], "answer": 0, "why": "now → would + infinitive"},
+        {"sentence": "If you ___ my messages last night, you'd know where to meet us.", "options": ["read", "had read", "would read"], "answer": 1, "why": "past action (last night) → past perfect"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with the correct form of the verb in brackets.",
+      "items": [
+        {"sentence": "If I ___ (not/miss) the bus this morning, I wouldn't be so tired now.", "answers": ["hadn't missed", "had not missed"]},
+        {"sentence": "If Nadia ___ (be) less shy, she would have asked the question herself.", "answers": ["were", "was"]},
+        {"sentence": "If we had planted the trees in March, they ___ (be) much taller today.", "answers": ["would be"]},
+        {"sentence": "If he ___ (like) spicy food, he would have finished the ceviche.", "answers": ["liked"]},
+        {"sentence": "If you had listened to the forecast, we ___ (not/stand) in the rain now.", "answers": ["wouldn't be standing", "would not be standing"]},
+        {"sentence": "If my brother ___ (not/live) in Canada, he would have come to the wedding.", "answers": ["didn't live", "did not live"]},
+        {"sentence": "If they ___ (train) harder last season, they might be champions now.", "answers": ["had trained"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first. Use the word given. Do not change it. Use between two and five words.",
+      "items": [
+        {"first": "She didn't study medicine, so she isn't a doctor now.", "key": "WOULD", "second_start": "If she had studied medicine, she", "second_end": "a doctor now.", "answers": ["would be"]},
+        {"first": "I'm not a fast runner, so I didn't catch the thief.", "key": "WERE", "second_start": "If I", "second_end": "runner, I would have caught the thief.", "answers": ["were a fast", "were a faster"]},
+        {"first": "We took the wrong road, and that is why we are late now.", "key": "TAKEN", "second_start": "If we", "second_end": "the wrong road, we wouldn't be late now.", "answers": ["hadn't taken", "had not taken"]},
+        {"first": "He doesn't speak French, so he didn't understand the guide.", "key": "HAVE", "second_start": "If he spoke French, he", "second_end": "the guide.", "answers": ["would have understood"]},
+        {"first": "You didn't save your work, and now the essay is gone.", "key": "STILL", "second_start": "If you had saved your work, the essay", "second_end": "here.", "answers": ["would still be"]}
+      ]
+    }
+  ],
+  "summary": [
+    "A mixed conditional joins two different times in one sentence.",
+    "Past cause → present result: <b>if + past perfect</b>, <b>would + infinitive</b> (often with <i>now</i>, <i>today</i>, <i>by now</i>).",
+    "Present state → past result: <b>if + past simple</b>, <b>would have + past participle</b> (often a personality or a permanent fact).",
+    "Never put <i>would</i> in the if-clause, and use <i>were</i> for every person.",
+    "In Part 4, the key word (<i>would</i>, <i>had</i>, <i>were</i>) usually tells you which half of the sentence you are rewriting."
+  ]
+}

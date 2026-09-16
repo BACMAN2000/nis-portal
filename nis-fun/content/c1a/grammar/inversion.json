@@ -1,0 +1,558 @@
+{
+  "id": "inversion",
+  "level": "c1a",
+  "area": "Conditionals & hypothesis",
+  "title": "Inversion after negative and limiting adverbials",
+  "tagline": "Move the adverbial to the front, swap subject and auxiliary — and the sentence gains weight.",
+  "cefr": "C1",
+  "exam": [
+    "Reading & Use of English Part 4 — key word transformations (NO SOONER, ONLY, UNDER, LITTLE)",
+    "Reading & Use of English Part 2 — open cloze (did / had / than / when)",
+    "Writing Part 1 — essay: emphatic, formal sentences",
+    "Speaking Parts 3 and 4 — sounding emphatic when you argue"
+  ],
+  "why": "Inversion is one of the clearest markers of C1 writing: the same idea, said with more force and in a more formal register. C1 Advanced tests it directly in Part 4, where the key word is often the adverbial itself, and rewards it in the essay. The rule is mechanical; what takes practice is knowing which expressions trigger it and where the inversion happens.",
+  "diagrams": [
+    {
+      "type": "transform",
+      "title": "From neutral to emphatic",
+      "before": {
+        "text": "I have never seen such a mess in my life.",
+        "hl": [
+          "never",
+          "I have"
+        ]
+      },
+      "after": {
+        "text": "Never in my life have I seen such a mess.",
+        "hl": [
+          "Never in my life",
+          "have I"
+        ]
+      },
+      "steps": [
+        "Take the negative or limiting adverbial (<b>never in my life</b>) to the front.",
+        "Invert the auxiliary and the subject, as in a question: <b>have I</b>.",
+        "If there is no auxiliary, add <i>do / does / did</i>: <i>Little <b>did</b> she know…</i>"
+      ]
+    },
+    {
+      "type": "map",
+      "title": "What triggers inversion?",
+      "center": "Inversion",
+      "branches": [
+        {
+          "label": "Frequency & negation",
+          "items": [
+            "never",
+            "rarely",
+            "seldom",
+            "nowhere",
+            "at no time"
+          ],
+          "tone": "a"
+        },
+        {
+          "label": "Sequence of events",
+          "items": [
+            "no sooner … than",
+            "hardly / scarcely … when",
+            "not until",
+            "only when / only after"
+          ],
+          "tone": "b"
+        },
+        {
+          "label": "Limiting 'only'",
+          "items": [
+            "only then",
+            "only by + -ing",
+            "only in this way",
+            "not only … but also"
+          ],
+          "tone": "c"
+        },
+        {
+          "label": "Strong prohibition",
+          "items": [
+            "under no circumstances",
+            "on no account",
+            "in no way"
+          ],
+          "tone": "a"
+        },
+        {
+          "label": "Degree & result",
+          "items": [
+            "so + adjective … that",
+            "such … that",
+            "little (did I know)"
+          ],
+          "tone": "b"
+        }
+      ]
+    },
+    {
+      "type": "contrast",
+      "title": "Where does the inversion go?",
+      "columns": [
+        "Adverbial + main clause",
+        "Adverbial + time clause + main clause"
+      ],
+      "rows": [
+        {
+          "label": "Pattern",
+          "cells": [
+            "ADVERBIAL + aux + subject + verb",
+            "ADVERBIAL + [subordinate clause, normal order] + aux + subject + verb"
+          ]
+        },
+        {
+          "label": "Example",
+          "cells": [
+            "<b>Rarely have I</b> heard such a bad excuse.",
+            "<b>Not until</b> the bell rang <b>did he</b> stop talking."
+          ]
+        },
+        {
+          "label": "Typical triggers",
+          "cells": [
+            "never, rarely, seldom, under no circumstances",
+            "not until, only when, only after, only once"
+          ]
+        },
+        {
+          "label": "Common error",
+          "cells": [
+            "Rarely I have heard…",
+            "Not until did the bell ring…"
+          ]
+        }
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {
+        "chip": "Negative / limiting adverbial",
+        "tone": "kw",
+        "ex": "Never before / Only then / No sooner"
+      },
+      {
+        "chip": "auxiliary",
+        "tone": "a",
+        "ex": "have / had / did / can"
+      },
+      {
+        "chip": "subject",
+        "tone": "b",
+        "ex": "I / the team / she"
+      },
+      {
+        "chip": "→",
+        "tone": "arrow"
+      },
+      {
+        "chip": "rest of the clause",
+        "tone": "c",
+        "ex": "seen such a thing"
+      }
+    ],
+    "table": {
+      "head": [
+        "Trigger",
+        "Structure",
+        "Example"
+      ],
+      "rows": [
+        [
+          "Never / Rarely / Seldom",
+          "+ aux + subject",
+          "<b>Seldom does</b> a debut novel sell this well."
+        ],
+        [
+          "No sooner … than",
+          "No sooner + had + subject + participle + than …",
+          "<b>No sooner had</b> we sat down <b>than</b> the lights went out."
+        ],
+        [
+          "Hardly / Scarcely … when",
+          "Hardly + had + subject + participle + when …",
+          "<b>Hardly had</b> the match started <b>when</b> it began to pour."
+        ],
+        [
+          "Not until / Only when / Only after",
+          "adverbial + clause + aux + subject",
+          "<b>Not until</b> I reread it <b>did I</b> notice the mistake."
+        ],
+        [
+          "Not only … but (also)",
+          "Not only + aux + subject … but (also) …",
+          "<b>Not only did</b> she win, <b>but</b> she <b>also</b> broke the record."
+        ],
+        [
+          "Under no circumstances / On no account",
+          "+ modal + subject",
+          "<b>Under no circumstances should</b> you share your password."
+        ],
+        [
+          "So + adjective … that / Such + noun … that",
+          "So/Such … + be + subject + that …",
+          "<b>So loud was</b> the music <b>that</b> the neighbours complained."
+        ],
+        [
+          "Little",
+          "Little + did + subject + know / realise",
+          "<b>Little did</b> they realise what was coming."
+        ]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Emphasising how unusual or extreme something is",
+      "examples": [
+        {
+          "text": "<b>Never before had</b> the school reached the national final.",
+          "note": "past perfect: never before that moment"
+        },
+        {
+          "text": "<b>Rarely do</b> you meet someone who listens as carefully as Nadia.",
+          "note": "present simple needs <i>do / does</i>"
+        },
+        {
+          "text": "<b>Nowhere else will</b> you find a view like this one.",
+          "note": "with modals, the modal inverts"
+        }
+      ]
+    },
+    {
+      "point": "Showing that two events happened almost at the same time",
+      "examples": [
+        {
+          "text": "<b>No sooner had</b> Mateo pressed 'send' <b>than</b> he spotted the typo.",
+          "note": "no sooner … than, always past perfect"
+        },
+        {
+          "text": "<b>Hardly had</b> the assembly begun <b>when</b> the fire alarm went off.",
+          "note": "hardly / scarcely … when"
+        },
+        {
+          "text": "<b>Not until</b> the results were published <b>did anyone</b> believe we had won.",
+          "note": "the inversion comes in the main clause, after the time clause"
+        }
+      ]
+    },
+    {
+      "point": "Limiting: only in one way, only at one moment",
+      "examples": [
+        {
+          "text": "<b>Only by</b> practising every day <b>can you</b> master a language.",
+          "note": "only by + -ing"
+        },
+        {
+          "text": "<b>Only after</b> the interview <b>did I</b> realise how nervous I had been.",
+          "note": "only after + noun phrase"
+        },
+        {
+          "text": "<b>Not only does</b> the plan cost less, <b>but it also</b> creates jobs.",
+          "note": "an essay favourite: two arguments in one sentence"
+        }
+      ]
+    },
+    {
+      "point": "Rules, warnings and formal prohibition",
+      "examples": [
+        {
+          "text": "<b>Under no circumstances should</b> candidates open the paper before the signal.",
+          "note": "exam-room register"
+        },
+        {
+          "text": "<b>On no account must</b> this door be left unlocked.",
+          "note": "passive after the modal is fine"
+        },
+        {
+          "text": "<b>Such was</b> the demand <b>that</b> the tickets sold out in an hour.",
+          "note": "such + be + noun … that"
+        }
+      ]
+    }
+  ],
+  "watch_out": [
+    {
+      "wrong": "Never I have seen such a mess.",
+      "right": "Never <b>have I</b> seen such a mess.",
+      "why": "The auxiliary must come before the subject, as in a question."
+    },
+    {
+      "wrong": "Rarely she complains about the workload.",
+      "right": "Rarely <b>does she</b> complain about the workload.",
+      "why": "With no auxiliary in the original, add <i>do / does / did</i> and use the bare infinitive."
+    },
+    {
+      "wrong": "Not until did the bell ring he stopped.",
+      "right": "Not until the bell rang <b>did he</b> stop.",
+      "why": "The time clause keeps normal order; the main clause inverts."
+    },
+    {
+      "wrong": "No sooner had we arrived when the show started.",
+      "right": "No sooner had we arrived <b>than</b> the show started.",
+      "why": "<i>No sooner</i> pairs with <i>than</i>; <i>hardly / scarcely</i> pair with <i>when</i>."
+    },
+    {
+      "wrong": "Only yesterday did I have seen the email.",
+      "right": "Only yesterday <b>did I see</b> the email.",
+      "why": "After <i>did</i> the verb is the bare infinitive — never a participle."
+    },
+    {
+      "wrong": "Not only she sings but also she dances.",
+      "right": "Not only <b>does she sing</b>, but she <b>also dances</b>.",
+      "why": "Invert only in the first clause; the second keeps normal order."
+    }
+  ],
+  "dialogue": {
+    "title": "The night the power went out",
+    "context": "Miss Vega asks Liam and Sofia to retell what happened at the school concert, using the emphatic structures they have been studying.",
+    "lines": [
+      {
+        "speaker": "Miss Vega",
+        "text": "So, tell the class what happened on Friday — and make it sound dramatic."
+      },
+      {
+        "speaker": "Liam",
+        "text": "<b>No sooner had</b> the choir started the first song <b>than</b> every light in the hall went out."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "<b>Never in my life have I</b> heard four hundred people go silent so quickly."
+      },
+      {
+        "speaker": "Liam",
+        "text": "<b>Hardly had</b> the audience begun to whisper <b>when</b> Mateo switched on his phone torch."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "And <b>not only did</b> he do that, <b>but</b> he <b>also</b> got the whole front row to do the same."
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "Beautiful. And when did the electricity come back?"
+      },
+      {
+        "speaker": "Liam",
+        "text": "<b>Not until</b> the last song <b>did the</b> lights return — so the choir sang the entire concert by torchlight."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "<b>Little did</b> we know that the video would get thirty thousand views by Sunday."
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "<b>Rarely does</b> a power cut turn into good publicity. One last sentence, Liam — a rule for next time?"
+      },
+      {
+        "speaker": "Liam",
+        "text": "<b>Under no circumstances should</b> anyone plug a fog machine into the same socket as the stage lights."
+      }
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {
+          "sentence": "Seldom ___ such a generous offer.",
+          "options": [
+            "I have received",
+            "I received",
+            "have I received"
+          ],
+          "answer": 2,
+          "why": "aux + subject after seldom"
+        },
+        {
+          "sentence": "Not until the plane landed ___ how tired she was.",
+          "options": [
+            "she realised",
+            "realised she",
+            "did she realise"
+          ],
+          "answer": 2,
+          "why": "inversion in the main clause with did"
+        },
+        {
+          "sentence": "No sooner had the film begun ___ the projector broke.",
+          "options": [
+            "when",
+            "than",
+            "that"
+          ],
+          "answer": 1,
+          "why": "no sooner … than"
+        },
+        {
+          "sentence": "Only by working together ___ finish the project on time.",
+          "options": [
+            "can we",
+            "we can",
+            "we could"
+          ],
+          "answer": 0,
+          "why": "only by + -ing triggers inversion"
+        },
+        {
+          "sentence": "___ was the noise that the teacher stopped the class.",
+          "options": [
+            "So loud",
+            "Such loud",
+            "Very loud"
+          ],
+          "answer": 0,
+          "why": "so + adjective + be + subject + that"
+        },
+        {
+          "sentence": "Under no circumstances ___ the laboratory without goggles.",
+          "options": [
+            "students may enter",
+            "may students enter",
+            "students enter"
+          ],
+          "answer": 1,
+          "why": "modal before subject"
+        },
+        {
+          "sentence": "Little ___ that the essay would win a prize.",
+          "options": [
+            "did he know",
+            "he knew",
+            "he did know"
+          ],
+          "answer": 0,
+          "why": "little + did + subject + know"
+        }
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with one or two words so that it is grammatically correct.",
+      "items": [
+        {
+          "sentence": "Never before ___ the town seen so much snow in April.",
+          "answers": [
+            "had",
+            "has"
+          ]
+        },
+        {
+          "sentence": "Rarely ___ a student answer so confidently.",
+          "answers": [
+            "does"
+          ]
+        },
+        {
+          "sentence": "Hardly had we left the house ___ it started to rain.",
+          "answers": [
+            "when"
+          ]
+        },
+        {
+          "sentence": "Not only ___ she apologise, but she also offered to help.",
+          "answers": [
+            "did"
+          ]
+        },
+        {
+          "sentence": "Only when the exam was over ___ I remember the formula.",
+          "answers": [
+            "did"
+          ]
+        },
+        {
+          "sentence": "No sooner ___ the coach blown the whistle than the crowd roared.",
+          "answers": [
+            "had"
+          ]
+        },
+        {
+          "sentence": "On no account ___ this file be deleted.",
+          "answers": [
+            "should",
+            "must"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first, using the word given. Do not change the word given. Use between three and six words.",
+      "items": [
+        {
+          "first": "The moment we arrived, the concert started.",
+          "key": "SOONER",
+          "second_start": "No",
+          "second_end": "the concert started.",
+          "answers": [
+            "sooner had we arrived than"
+          ]
+        },
+        {
+          "first": "She didn't understand the joke until she read it twice.",
+          "key": "DID",
+          "second_start": "Only after reading it twice",
+          "second_end": "the joke.",
+          "answers": [
+            "did she understand"
+          ]
+        },
+        {
+          "first": "I have never tasted anything as spicy as this.",
+          "key": "HAVE",
+          "second_start": "Never",
+          "second_end": "anything as spicy as this.",
+          "answers": [
+            "have I tasted",
+            "before have I tasted"
+          ]
+        },
+        {
+          "first": "You must not open the emergency exit unless there is a fire.",
+          "key": "CIRCUMSTANCES",
+          "second_start": "Under",
+          "second_end": "the emergency exit unless there is a fire.",
+          "answers": [
+            "no circumstances should you open",
+            "no circumstances must you open",
+            "no circumstances may you open"
+          ]
+        },
+        {
+          "first": "The lecture was so boring that half the audience left.",
+          "key": "WAS",
+          "second_start": "So",
+          "second_end": "that half the audience left.",
+          "answers": [
+            "boring was the lecture"
+          ]
+        },
+        {
+          "first": "He did not realise how serious the situation was.",
+          "key": "LITTLE",
+          "second_start": "",
+          "second_end": "how serious the situation was.",
+          "answers": [
+            "little did he realise",
+            "little did he know"
+          ]
+        }
+      ]
+    }
+  ],
+  "summary": [
+    "Front a negative or limiting adverbial and invert auxiliary and subject: <i>Never <b>have I</b>…</i>",
+    "No auxiliary? Add <i>do / does / did</i> and keep the bare infinitive: <i>Rarely <b>does she</b> complain.</i>",
+    "<i>No sooner … than</i>; <i>hardly / scarcely … when</i>; <i>not until / only when</i> + clause, then invert the main clause.",
+    "<i>Not only</i> inverts the first clause only; <i>so / such … that</i> inverts with <i>be</i>.",
+    "Use it for emphasis and formality — a couple of times in an essay, not in every sentence."
+  ]
+}

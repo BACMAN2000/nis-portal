@@ -18,6 +18,7 @@ if(/\.github\.io$/i.test(location.hostname)){
 <link rel="stylesheet" href="../../nis-fonts.css?v=fd196882">
 <script>try{var t=localStorage.getItem("nis-tema");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 <link rel="stylesheet" href="../../nis-tokens.css?v=b3bffd5c">
+<link rel="stylesheet" href="teen.css?v=d9915583">
 <style>
   :root{
   --surface:#fff;
@@ -782,6 +783,9 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px soli
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4"></script>
 <script src="../../config.js?v=720edc7d"></script>
 <script src="backend.js?v=a2a5e35f"></script>
+<!-- secundaria: piel propia y Grammar Lab (ver teen.js); los iconos 3D de Cambridge son los del portal -->
+<script src="../../cambridge-icons.js?v=b0b90bf0"></script>
+<script src="teen.js?v=52f325f5"></script>
 <main id="app"><div class="app-loading" role="status" aria-live="polite">
   <div><span aria-hidden="true"></span><strong id="splash-h2">Preparing your course…</strong>
     <small id="splash-sub">Loading activities and illustrations.</small></div></div></main>
@@ -990,6 +994,8 @@ let PERMISO = null;
 async function hub(){
   const idx = await j(`${CDIR}/${LEVEL}/index.json`);
   PERMISO = window.BACKEND ? await BACKEND.permiso() : null;
+  // Secundaria tiene su propia portada (teen.js): sin mascota ni cuentos.
+  if (window.TEEN && TEEN.es(LEVEL)) return TEEN.hub(idx);
   document.title = idx.name;
   app.classList.add('hub');
   const mascota = idx.mascot[0].toUpperCase() + idx.mascot.slice(1);
@@ -1357,6 +1363,10 @@ async function unit(){
   // el alumno las espera por letra
   const digital = UD.activities.filter(a=>a.outputs.includes('digital'))
     .slice().sort((x,y)=>(x.code||'').localeCompare(y.code||''));
+  // Secundaria: portada con foto, lead-in, word bank y barra de tarea en
+  // vez de mascota, historia y picture words (teen.js). Las actividades
+  // se pintan con los mismos RENDER.
+  if (window.TEEN && TEEN.es(LEVEL)) return TEEN.unit(UD, digital);
 
   const escenaHTML = (()=>{
     const sc = sceneFor(UD);
@@ -3179,7 +3189,8 @@ function puenteExamen(){
     <span class="puente-nota">${T('Same part, in a full practice test, with the official format and timing.','La même partie, dans un test complet, au format et au temps officiels.')}</span></p>`;
 }
 
-(UNIT ? unit() : (LEVEL ? hub() : levels())).catch(e=>{ app.textContent = T('Error loading content: ',"Erreur au chargement du contenu : ")+e.message; });
+if (window.TEEN) TEEN.instala();
+((qs.get('grammar') && window.TEEN && TEEN.es(LEVEL)) ? TEEN.grammar() : UNIT ? unit() : (LEVEL ? hub() : levels())).catch(e=>{ app.textContent = T('Error loading content: ',"Erreur au chargement du contenu : ")+e.message; });
 </script>
 <!-- Tareas de examen de secundaria (B2/C1): cloze MC, word formation, gapped text, matching, listening MC/matching, writing, speaking por partes. -->
 <script src="exam-c1.js?v=2d22afb6"></script>

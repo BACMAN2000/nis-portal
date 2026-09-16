@@ -1,0 +1,187 @@
+{
+  "level": "c1a",
+  "cefr": "C1",
+  "exam": "C1 Advanced",
+  "count": 24,
+  "areas": [
+    {
+      "area": "Tenses & aspect",
+      "topics": [
+        {
+          "id": "perfect-aspect",
+          "title": "The perfect aspect across tenses",
+          "tagline": "Complete before now, before then, or before a point still to come — one logic, three timelines.",
+          "cefr": "C1"
+        },
+        {
+          "id": "narrative-advanced",
+          "title": "Advanced narrative and the future in the past",
+          "tagline": "The plan didn't need to come true — that's exactly why English has a tense for it.",
+          "cefr": "C1"
+        },
+        {
+          "id": "future-advanced",
+          "title": "Advanced ways of talking about the future",
+          "tagline": "Official, imminent, inevitable or just polite — English keeps a different future for each.",
+          "cefr": "C1"
+        },
+        {
+          "id": "unreal-past",
+          "title": "Unreal past and hypothetical meaning",
+          "tagline": "Past tense, but not about the past — how English signals 'this isn't real' without a single if.",
+          "cefr": "C1"
+        }
+      ]
+    },
+    {
+      "area": "Modals",
+      "topics": [
+        {
+          "id": "modals-nuance",
+          "title": "Modal verbs: fine distinctions",
+          "tagline": "Needlessly done, wisely skipped, or never required at all — the small print of English modals.",
+          "cefr": "C1"
+        },
+        {
+          "id": "modals-past-speculation",
+          "title": "Speculating about the past",
+          "tagline": "How sure are you? English has a modal for every shade of certainty about something already over.",
+          "cefr": "C1"
+        }
+      ]
+    },
+    {
+      "area": "Conditionals & hypothesis",
+      "topics": [
+        {
+          "id": "conditionals-advanced",
+          "title": "Advanced conditionals",
+          "tagline": "Drop the if, invert the clause, and the same hypothesis suddenly sounds like a policy document.",
+          "cefr": "C1"
+        },
+        {
+          "id": "inversion",
+          "title": "Inversion after negative and limiting adverbials",
+          "tagline": "Move the adverbial to the front, swap subject and auxiliary — and the sentence gains weight.",
+          "cefr": "C1"
+        },
+        {
+          "id": "cleft-sentences",
+          "title": "Cleft sentences",
+          "tagline": "Split one sentence into two so the listener knows exactly which part matters.",
+          "cefr": "C1"
+        },
+        {
+          "id": "emphasis-advanced",
+          "title": "Emphasis and fronting",
+          "tagline": "Stress the right word, front the right phrase, and a plain statement becomes unmistakable.",
+          "cefr": "C1"
+        }
+      ]
+    },
+    {
+      "area": "Passive & reporting",
+      "topics": [
+        {
+          "id": "passive-advanced",
+          "title": "Advanced passive structures",
+          "tagline": "The passive isn't just be + participle — it also hedges, reports rumours and describes bad luck.",
+          "cefr": "C1"
+        },
+        {
+          "id": "reporting-advanced",
+          "title": "Reporting: verbs, patterns and distance",
+          "tagline": "Every reporting verb has its own grammar — get it right, and 'he said that' stops sounding flat.",
+          "cefr": "C1"
+        }
+      ]
+    },
+    {
+      "area": "Sentence building",
+      "topics": [
+        {
+          "id": "verb-patterns-advanced",
+          "title": "Advanced verb patterns",
+          "tagline": "The verb after the verb changes the meaning: seeing someone leave is not the same as seeing them leaving.",
+          "cefr": "C1"
+        },
+        {
+          "id": "participle-clauses",
+          "title": "Participle clauses",
+          "tagline": "Drop the subject and the conjunction — a single participle carries the whole clause.",
+          "cefr": "C1"
+        },
+        {
+          "id": "relative-clauses-advanced",
+          "title": "Advanced relative clauses",
+          "tagline": "Front the preposition, count the group, or drop the finite verb — three ways to sound more precise.",
+          "cefr": "C1"
+        },
+        {
+          "id": "nominalisation",
+          "title": "Nominalisation and academic style",
+          "tagline": "Turn the verb into a noun and the sentence gains the weight of a report.",
+          "cefr": "C1"
+        },
+        {
+          "id": "hedging-impersonal",
+          "title": "Hedging and impersonal structures",
+          "tagline": "Say it without overclaiming it: impersonal subjects and softened verbs do the distancing for you.",
+          "cefr": "C1"
+        },
+        {
+          "id": "discourse-markers",
+          "title": "Discourse markers and cohesion",
+          "tagline": "The right connector shows how two ideas relate — not just that they're next to each other.",
+          "cefr": "C1"
+        },
+        {
+          "id": "substitution-ellipsis",
+          "title": "Substitution and ellipsis",
+          "tagline": "Say it once — then let so, one, do so and a bare 'to' carry the rest.",
+          "cefr": "C1"
+        },
+        {
+          "id": "concession",
+          "title": "Concession and contrast at C1",
+          "tagline": "Give ground gracefully, then make your point — the connectors that raise the register.",
+          "cefr": "C1"
+        }
+      ]
+    },
+    {
+      "area": "Comparison & description",
+      "topics": [
+        {
+          "id": "comparison-advanced",
+          "title": "Advanced comparison",
+          "tagline": "Fine degrees of comparison: nowhere near, every bit as, by far, and like vs as.",
+          "cefr": "C1"
+        },
+        {
+          "id": "articles-determiners",
+          "title": "Articles and determiners at C1",
+          "tagline": "The fine print of articles: generic the, zero article, quite a, half the, and determiner plus own.",
+          "cefr": "C1"
+        }
+      ]
+    },
+    {
+      "area": "Words",
+      "topics": [
+        {
+          "id": "word-formation-advanced",
+          "title": "Word formation at C1",
+          "tagline": "Turn words into the right part of speech: suffixes, negative prefixes, compounds and Part 3 strategy.",
+          "cefr": "C1"
+        },
+        {
+          "id": "phrasal-idiomatic",
+          "title": "Phrasal verbs, dependent prepositions and idioms",
+          "tagline": "Multi-meaning phrasal verbs, what particles mean, and the dependent prepositions that go with them.",
+          "cefr": "C1"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,197 @@
+{
+  "level": "b2f",
+  "cefr": "B2",
+  "exam": "B2 First for Schools",
+  "count": 24,
+  "areas": [
+    {
+      "area": "Tenses & time",
+      "topics": [
+        {
+          "id": "present-tenses",
+          "title": "Present simple and continuous",
+          "tagline": "Facts and routines against actions in progress, arrangements and things that annoy you.",
+          "cefr": "B2"
+        },
+        {
+          "id": "present-perfect",
+          "title": "Present perfect simple and continuous",
+          "tagline": "A finished result you can see now, or an activity that has been running up to this moment.",
+          "cefr": "B2"
+        },
+        {
+          "id": "narrative-tenses",
+          "title": "Narrative tenses",
+          "tagline": "Four past tenses working together to tell a story with a clear order of events.",
+          "cefr": "B2"
+        },
+        {
+          "id": "habits-past-present",
+          "title": "used to, would, be used to, get used to",
+          "tagline": "Past habits that stopped, present habits that feel normal, and the change between them.",
+          "cefr": "B2"
+        },
+        {
+          "id": "future-forms",
+          "title": "Future forms",
+          "tagline": "Six ways to talk about what comes next, from a plan already fixed to a prediction based on evidence.",
+          "cefr": "B2"
+        }
+      ]
+    },
+    {
+      "area": "Modals",
+      "topics": [
+        {
+          "id": "modals-obligation",
+          "title": "Obligation, permission and advice",
+          "tagline": "Rules you can't break, rules you don't need to follow, and advice that's just strongly worded.",
+          "cefr": "B2"
+        },
+        {
+          "id": "modals-deduction",
+          "title": "Speculation and deduction",
+          "tagline": "Reading the evidence and choosing how sure you sound: must, might, could or can't.",
+          "cefr": "B2"
+        }
+      ]
+    },
+    {
+      "area": "Conditionals & hypothesis",
+      "topics": [
+        {
+          "id": "conditionals-review",
+          "title": "Conditionals: zero to third",
+          "tagline": "Four ways to talk about if: facts, real futures, unreal presents and unreal pasts.",
+          "cefr": "B2"
+        },
+        {
+          "id": "mixed-conditionals",
+          "title": "Mixed conditionals",
+          "tagline": "One sentence, two moments: a past cause with a present result, or the other way round.",
+          "cefr": "B2"
+        },
+        {
+          "id": "wish-if-only",
+          "title": "wish, if only, would rather, it's time",
+          "tagline": "Five ways to say things aren't the way you want them — each with its own tense.",
+          "cefr": "B2"
+        }
+      ]
+    },
+    {
+      "area": "Passive & causative",
+      "topics": [
+        {
+          "id": "passive",
+          "title": "The passive in all tenses",
+          "tagline": "Turning the sentence around so the action — not the person who did it — comes first.",
+          "cefr": "B2"
+        },
+        {
+          "id": "causative",
+          "title": "Causative: have/get something done",
+          "tagline": "You didn't do it yourself — you arranged it, ordered it, or it just happened to you.",
+          "cefr": "B2"
+        }
+      ]
+    },
+    {
+      "area": "Reporting",
+      "topics": [
+        {
+          "id": "reported-speech",
+          "title": "Reported speech",
+          "tagline": "Telling someone what was said, one step back in time, person and place.",
+          "cefr": "B2"
+        },
+        {
+          "id": "reporting-verbs",
+          "title": "Reporting verbs and their patterns",
+          "tagline": "Swap 'said' for a verb that shows what someone actually did with their words.",
+          "cefr": "B2"
+        }
+      ]
+    },
+    {
+      "area": "Sentence building",
+      "topics": [
+        {
+          "id": "relative-clauses",
+          "title": "Relative clauses",
+          "tagline": "One extra clause, two jobs: pin down exactly who or what you mean, or simply add more about it.",
+          "cefr": "B2"
+        },
+        {
+          "id": "gerund-infinitive",
+          "title": "Verb patterns: gerund and infinitive",
+          "tagline": "The verb right before decides the form: -ing, to + infinitive, or the infinitive with no 'to' at all.",
+          "cefr": "B2"
+        },
+        {
+          "id": "linking-contrast",
+          "title": "Contrast and concession",
+          "tagline": "Say two things pull in different directions — with a clause, a noun, or a whole new sentence.",
+          "cefr": "B2"
+        },
+        {
+          "id": "purpose-reason-result",
+          "title": "Purpose, reason and result",
+          "tagline": "Why you did it, why it happened, and what happened because of it — three different sets of linkers.",
+          "cefr": "B2"
+        }
+      ]
+    },
+    {
+      "area": "Comparison & description",
+      "topics": [
+        {
+          "id": "comparatives",
+          "title": "Comparison",
+          "tagline": "Not just faster or fastest: how much faster, faster than what, and what keeps rising together.",
+          "cefr": "B2"
+        },
+        {
+          "id": "articles-quantifiers",
+          "title": "Articles and quantifiers",
+          "tagline": "Small words, real difference: a/an/the/zero, and exactly how much of something there is.",
+          "cefr": "B2"
+        },
+        {
+          "id": "adjectives-adverbs",
+          "title": "Adjectives and adverbs",
+          "tagline": "Order, feeling vs cause, how extreme, and exactly where the adverb goes.",
+          "cefr": "B2"
+        }
+      ]
+    },
+    {
+      "area": "Emphasis & questions",
+      "topics": [
+        {
+          "id": "emphasis-intro",
+          "title": "Emphasis: cleft sentences and basic inversion",
+          "tagline": "Fronting, inversion and agreement: how English puts the important word first.",
+          "cefr": "B2"
+        },
+        {
+          "id": "questions-tags",
+          "title": "Questions: indirect, tags and echo",
+          "tagline": "Asking politely, checking with a tag, and reacting fast — all without sounding rude.",
+          "cefr": "B2"
+        }
+      ]
+    },
+    {
+      "area": "Words",
+      "topics": [
+        {
+          "id": "word-formation",
+          "title": "Word formation for Use of English Part 3",
+          "tagline": "One root, four jobs: noun, verb, adjective, adverb — plus the prefix that flips it.",
+          "cefr": "B2"
+        }
+      ]
+    }
+  ]
+}

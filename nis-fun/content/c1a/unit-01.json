@@ -1,845 +1,847 @@
 {
- "id": "c1a-01",
- "level": "c1a",
- "number": 1,
- "title": "Never before...",
- "topic": "inversion",
- "grammar": "Inversion after negative adverbials",
- "wordlist": [
-  "obsession",
-  "relentless",
-  "single-minded",
-  "downfall",
-  "consume",
-  "fixation",
-  "restraint",
-  "blinkered",
-  "hubris",
-  "at any price"
- ],
- "wordlist_extra": [
-  "ambition",
-  "society",
-  "consequence"
- ],
- "exam_focus": {
-  "paper": "Reading & Use of English",
-  "part": 5,
-  "skill": "multiple choice"
- },
- "characters": [
-  "nova"
- ],
- "scene": {
-  "speaker": "nova",
-  "bubble": "Welcome to C1! This unit is about obsession — and about putting emphasis exactly where you want it.",
-  "intro": "Welcome to Grade 11 and to C1 Advanced. This year the Inspiring Nordic project turns to the biggest questions: ambition, society and the choices that define us. In this unit our reading club takes on Melville's Moby Dick and asks why we cannot stop reading about people who want one thing too much. You will read a full-length critical essay in the format of Reading Part 5, listen to a psychologist in the format of Listening Part 2, learn inversion — the elegant structure that fronts a negative adverbial for emphasis — and write your first C1 essay. Never before have your sentences had so much power. Let's begin."
- },
- "activities": [
-  {
-   "code": "A",
-   "type": "pairwork",
-   "title": "Speaking — Parts 1 and 2. Talk with a partner, then record yourself.",
-   "outputs": [
-    "book",
-    "digital"
-   ],
-   "speaking": {
-    "part": 2,
-    "name": "Interview and long turn"
-   },
-   "tips": {
-    "expect": "Part 1 (2 minutes): the examiner asks you and your partner questions about yourselves — studies, free time, plans. Part 2 (about 4 minutes): each of you talks alone for one minute about two of three pictures, answering two questions printed above them; then your partner answers a short question about your pictures (30 seconds).",
-    "how": [
-     "In Part 1, give reasons and an example, not one-word answers — but do not make a speech.",
-     "In Part 2, do not describe the pictures. Compare them and answer the questions: speculate (<i>they might be…, perhaps she's hoping to…</i>) and give your view.",
-     "Keep talking for the full minute. If you finish one idea, move to the second question."
-    ]
-   },
-   "data": {
-    "text": "Part 1: talk about ambition and goals. Part 2: compare two of the three pictures and say why the people might be pushing themselves so hard.",
-    "parts": [
-     {
-      "part": 1,
-      "title": "Interview",
-      "time": "2 min",
-      "prompts": [
-       "What do you hope to be doing five years from now? Why?",
-       "Is there anything you spend far more time on than other people do? Tell me about it.",
-       "Do you think ambition is something you are born with or something you learn?",
-       "Who is the most determined person you know? What drives them?"
-      ]
-     },
-     {
-      "part": 2,
-      "title": "Long turn",
-      "time": "1 min + 30 s",
-      "question": "Compare two of the pictures and say <b>why the people might be pushing themselves so hard</b> and <b>how they might feel if they fail</b>.",
-      "pictures": [
-       {
-        "emoji": "🏃‍♀️🌅",
-        "caption": "a runner training alone at dawn"
-       },
-       {
-        "emoji": "🔬🌙",
-        "caption": "a scientist still in the lab late at night"
-       },
-       {
-        "emoji": "♟️🏆",
-        "caption": "a young chess player at a tournament"
-       }
-      ],
-      "partner": "Which of these people do you think is under the most pressure? Why? (about 30 seconds)"
-     }
-    ],
-    "useful_language": {
-     "Speculating": [
-      "They may well be…",
-      "It looks as though…",
-      "I'd imagine she's hoping to…",
-      "Presumably he's been…"
-     ],
-     "Comparing": [
-      "Whereas the runner is…, the scientist…",
-      "What they have in common is…",
-      "In both cases…"
-     ],
-     "Giving your view": [
-      "To my mind…",
-      "I can't help feeling that…",
-      "If anything, …"
-     ]
-    }
-   }
+  "id": "c1a-01",
+  "level": "c1a",
+  "number": 1,
+  "title": "Never before...",
+  "topic": "inversion",
+  "grammar": "Inversion after negative adverbials",
+  "wordlist": [
+    "obsession",
+    "relentless",
+    "single-minded",
+    "downfall",
+    "consume",
+    "fixation",
+    "restraint",
+    "blinkered",
+    "hubris",
+    "at any price"
+  ],
+  "wordlist_extra": [
+    "ambition",
+    "society",
+    "consequence"
+  ],
+  "exam_focus": {
+    "paper": "Reading & Use of English",
+    "part": 5,
+    "skill": "multiple choice"
   },
-  {
-   "code": "B",
-   "type": "match_words",
-   "title": "Vocabulary — obsession and ambition. Match each word with its meaning.",
-   "outputs": [
-    "book",
-    "digital",
-    "quiz"
-   ],
-   "data": {
-    "left_label": "Word",
-    "right_label": "Meaning",
-    "pairs": [
-     {
-      "left": "obsession",
-      "right": "an idea or desire that fills a person's mind and will not let go"
-     },
-     {
-      "left": "relentless",
-      "right": "never stopping or becoming less intense"
-     },
-     {
-      "left": "single-minded",
-      "right": "concentrating on one aim and nothing else"
-     },
-     {
-      "left": "downfall",
-      "right": "a sudden loss of power, success or position — and what causes it"
-     },
-     {
-      "left": "consume",
-      "right": "(of a feeling) to take over someone completely"
-     },
-     {
-      "left": "fixation",
-      "right": "an unhealthy interest in one thing that is very hard to change"
-     },
-     {
-      "left": "restraint",
-      "right": "the ability to control what you feel or do"
-     },
-     {
-      "left": "blinkered",
-      "right": "unwilling to consider any other point of view"
-     },
-     {
-      "left": "hubris",
-      "right": "excessive pride or confidence that leads to a fall"
-     },
-     {
-      "left": "at any price",
-      "right": "whatever the cost or the consequences"
-     }
-    ]
-   }
+  "characters": [
+    "nova"
+  ],
+  "scene": {
+    "speaker": "nova",
+    "bubble": "Welcome to C1! This unit is about obsession — and about putting emphasis exactly where you want it.",
+    "intro": "Welcome to C1 and to C1 Advanced. This year the Inspiring Nordic project turns to the biggest questions: ambition, society and the choices that define us. In this unit our reading club takes on Melville's Moby Dick and asks why we cannot stop reading about people who want one thing too much. You will read a full-length critical essay in the format of Reading Part 5, listen to a psychologist in the format of Listening Part 2, learn inversion — the elegant structure that fronts a negative adverbial for emphasis — and write your first C1 essay. Never before have your sentences had so much power. Let's begin."
   },
-  {
-   "code": "C",
-   "type": "reading",
-   "title": "Reading and Use of English Part 5 — multiple choice. Read the essay and choose the answer that fits best.",
-   "outputs": [
-    "book",
-    "digital"
-   ],
-   "tips": {
-    "expect": "One long text (about 700–850 words) followed by six four-option questions. They test detail, opinion, attitude, tone, purpose, implication and the meaning of phrases in context. The questions follow the order of the text.",
-    "how": [
-     "Read the whole text once, quickly, to get the argument and the writer's attitude.",
-     "For each question, find the part of the text it refers to and read it closely. The correct option paraphrases the text; wrong options often use the <i>same words</i> as the text but change the meaning.",
-     "Be suspicious of options that are true in general but not what the writer actually says."
-    ],
-    "remember": "All four options are about the right part of the text. Eliminate; do not guess from the first line you recognise."
-   },
-   "data": {
-    "kicker": "Reading Club · Critical essay",
-    "title": "The whale in the room",
-    "author": "sofia",
-    "byline": "by Sofía, Grade 11",
-    "text": "<p>There is a moment, roughly a third of the way into <i>Moby Dick</i>, when Captain Ahab nails a gold coin to the mast and promises it to the first man who sights the white whale. The crew cheers. Nobody asks the obvious question — what happens to the ship, the voyage and the profits of forty men once their captain has turned a commercial whaling trip into a private vendetta? Melville lets the silence hang. It is, I think, the most modern scene in a very old book, because it shows us not a madman but a leader, and a crowd only too willing to be led.</p><p>We tend to picture obsession as something that happens to other people, preferably in the nineteenth century. Yet the pattern Melville draws is disturbingly familiar. Ahab does not lose his mind all at once; he narrows it. One idea grows until it crowds out every other consideration, and everything that might have acted as a brake — his family in Nantucket, the first mate's quiet objections, the plain arithmetic of a failing voyage — is reclassified as an obstacle. What makes him dangerous is not the strength of his feeling but the disappearance of everything that once competed with it.</p><p>Reading the novel with my classmates, I was struck by how quickly the conversation left the deck of the <i>Pequod</i> and turned to ourselves. A friend admitted she checked her running app before she got out of bed. Another described a cousin who had rebuilt the same motorbike engine so many times that the family no longer mentioned it. None of these are tragedies, obviously, and it would be absurd to compare a fitness tracker to a harpoon. But the mechanism is recognisable: a goal that begins as one part of a life and ends up standing in for the whole of it.</p><p>Psychologists distinguish between what they call harmonious and obsessive passion. In the first, the activity fits alongside the rest of your life; in the second, it takes the place of your life, and your sense of who you are becomes hostage to how well it is going. Ahab, needless to say, is the textbook case. When Starbuck begs him to turn back, the captain's reply is not that he refuses but that he <i>cannot</i>: he speaks of himself as a train on rails, as if the decision had been taken by someone else long ago. That is the sound of a person who has stopped being able to imagine an alternative — and it is worth noticing that he presents this loss of freedom as a kind of grandeur.</p><p>It is tempting to read the book as a warning against ambition, and I have heard it taught that way. I am not convinced. The <i>Pequod</i> is full of ambitious men, and most of them are perfectly sane; Starbuck wants a profitable voyage and a safe return, which is ambition of a very sensible kind. What Melville seems to be probing is something narrower and stranger: the point at which wanting something turns into being unable to stop wanting it, and at which the wanting starts to feel like identity. Ambition has objects. Obsession, in the end, has only itself.</p><p>Nor is the crew let off lightly. It would be comforting to think that forty reasonable people could not be talked into chasing a whale around the world for one man's revenge, but the novel insists that they can, and shows us how: with a gold coin, a rousing speech and the simple human reluctance to be the one who says no. Melville's sympathy is with the sailors, yet his verdict is unsparing. Obsession is rarely a solitary condition. It needs an audience, and it usually gets one.</p><p>So why do we keep coming back to a book that most people never finish? Partly, I suspect, because it flatters us to watch a catastrophe from a safe distance. But partly because the questions it raises have not gone away: how do you tell commitment from compulsion? At what point does persistence stop being a virtue? And who, in your own life, would have the nerve to play Starbuck? Never before, it seems to me, have we needed those questions more — and rarely has a novel put them with such force.</p>",
-    "script": "The whale in the room. There is a moment, roughly a third of the way into Moby Dick, when Captain Ahab nails a gold coin to the mast and promises it to the first man who sights the white whale. The crew cheers. Nobody asks the obvious question: what happens to the ship, the voyage and the profits of forty men once their captain has turned a commercial whaling trip into a private vendetta? Melville lets the silence hang. It is the most modern scene in a very old book, because it shows us not a madman but a leader, and a crowd only too willing to be led. We tend to picture obsession as something that happens to other people. Yet the pattern Melville draws is disturbingly familiar. Ahab does not lose his mind all at once; he narrows it. One idea grows until it crowds out every other consideration. What makes him dangerous is not the strength of his feeling but the disappearance of everything that once competed with it. Psychologists distinguish between harmonious and obsessive passion. In the first, the activity fits alongside the rest of your life; in the second, it takes the place of your life. Ambition has objects. Obsession, in the end, has only itself. Nor is the crew let off lightly. Obsession is rarely a solitary condition. It needs an audience, and it usually gets one. Never before have we needed those questions more, and rarely has a novel put them with such force.",
-    "questions": [
-     {
-      "q": "In the first paragraph, the writer describes the scene with the gold coin in order to",
-      "options": [
-       "show that Ahab was mentally ill from the start of the voyage.",
-       "suggest that the crew's silence is as significant as Ahab's promise.",
-       "explain why whaling voyages were rarely profitable.",
-       "criticise Melville for leaving an important question unanswered."
+  "activities": [
+    {
+      "code": "A",
+      "type": "pairwork",
+      "title": "Speaking — Parts 1 and 2. Talk with a partner, then record yourself.",
+      "outputs": [
+        "book",
+        "digital"
       ],
-      "answer": 1
-     },
-     {
-      "q": "According to the second paragraph, what makes Ahab dangerous is that",
-      "options": [
-       "his feelings are far stronger than other people's.",
-       "he deliberately hides his true intentions from his family.",
-       "nothing is left that could limit the force of his one idea.",
-       "he loses control of his mind suddenly and completely."
-      ],
-      "answer": 2
-     },
-     {
-      "q": "The writer mentions the running app and the motorbike engine to",
-      "options": [
-       "show that her classmates were not taking the novel seriously.",
-       "illustrate a familiar pattern while admitting the comparison has limits.",
-       "argue that modern obsessions are just as tragic as Ahab's.",
-       "explain why young people find nineteenth-century fiction difficult."
-      ],
-      "answer": 1
-     },
-     {
-      "q": "What does the writer find significant about Ahab's reply to Starbuck?",
-      "options": [
-       "He refuses to give any explanation for his decision.",
-       "He blames a member of the crew for what has happened.",
-       "He describes his own lack of choice as if it were something admirable.",
-       "He finally admits that he would prefer to turn back."
-      ],
-      "answer": 2
-     },
-     {
-      "q": "How does the writer respond to the idea that the novel is a warning against ambition?",
-      "options": [
-       "She accepts it, because most of the crew are shown to be reckless.",
-       "She rejects it, arguing that the book is about a different, narrower condition.",
-       "She finds it convincing but poorly taught in schools.",
-       "She thinks it applies to Starbuck more than to Ahab."
-      ],
-      "answer": 1
-     },
-     {
-      "q": "In the final paragraph, the writer suggests that people keep returning to the novel because",
-      "options": [
-       "it is short enough to read in a single sitting.",
-       "it allows them to feel superior to its characters.",
-       "its central questions remain relevant and uncomfortable.",
-       "it offers a clear answer to the problem of persistence."
-      ],
-      "answer": 2
-     }
-    ]
-   }
-  },
-  {
-   "code": "D",
-   "type": "grammar_box",
-   "title": "Language focus 1 — inversion after negative and limiting adverbials",
-   "outputs": [
-    "book",
-    "digital"
-   ],
-   "data": {
-    "title": "Inversion after negative and limiting adverbials",
-    "can": "I can front a negative or limiting adverbial and invert subject and auxiliary for emphasis (Never have I…, Not only did…, Only when… did…).",
-    "intro": "In formal, literary and persuasive English we can move a negative or limiting adverbial to the front of the sentence for emphasis. When we do, the subject and the auxiliary swap places, exactly as in a question. Sofía's essay ends with two of them: <i>Never before have we needed those questions more — and rarely has a novel put them with such force.</i>",
-    "examples": [
-     {
-      "text": "<b>Never before have</b> we faced such a challenge.",
-      "note": "never before + have we"
-     },
-     {
-      "text": "<b>Not only did</b> he ignore the warnings, <b>but</b> he <b>also</b> punished those who gave them.",
-      "note": "not only + did he … but (also)"
-     },
-     {
-      "text": "<b>Only when</b> it was too late <b>did</b> he understand.",
-      "note": "the inversion is in the MAIN clause, not after only when"
-     },
-     {
-      "text": "<b>No sooner had</b> the coin been nailed to the mast <b>than</b> the crew cheered.",
-      "note": "no sooner + had … than"
-     },
-     {
-      "text": "<b>Little did</b> the sailors know what they had agreed to.",
-      "note": "little + did"
-     },
-     {
-      "text": "<b>Under no circumstances should</b> a captain risk his crew for revenge.",
-      "note": "under no circumstances + should"
-     },
-     {
-      "text": "<b>So</b> narrow <b>had</b> his mind become <b>that</b> nothing else existed.",
-      "note": "so + adjective + auxiliary … that"
-     }
-    ],
-    "rules": [
-     "Front the adverbial: <i>never (before), rarely, seldom, hardly … when, no sooner … than, not only … but (also), not until, only when / only after / only by, little, under no circumstances, on no account, at no time, in no way, nowhere</i>.",
-     "Invert subject and auxiliary: Never <b>have I</b> seen… / Rarely <b>is it</b> discussed…",
-     "No auxiliary? Add <i>do / does / did</i>: Rarely <b>does he</b> speak. Little <b>did they</b> know.",
-     "With <i>only when / only after / not until</i> + clause, invert the <b>main</b> clause: Only when the ship sank <b>did they</b> understand.",
-     "<i>So / Such … that</i> can invert too: Such <b>was</b> his anger that nobody dared speak.",
-     "Use it for effect, not everywhere: one inversion in a paragraph is emphatic; five are exhausting."
-    ],
-    "practice": {
-     "instructions": "Choose the correct form.",
-     "items": [
-      {
-       "sentence": "Never before ___ such a storm in these waters.",
-       "options": [
-        "we had seen",
-        "had we seen",
-        "we saw"
-       ],
-       "answer": 1
+      "speaking": {
+        "part": 2,
+        "name": "Interview and long turn"
       },
-      {
-       "sentence": "Not only ___ the warnings, but he also blamed the messenger.",
-       "options": [
-        "he ignored",
-        "ignored he",
-        "did he ignore"
-       ],
-       "answer": 2
+      "tips": {
+        "expect": "Part 1 (2 minutes): the examiner asks you and your partner questions about yourselves — studies, free time, plans. Part 2 (about 4 minutes): each of you talks alone for one minute about two of three pictures, answering two questions printed above them; then your partner answers a short question about your pictures (30 seconds).",
+        "how": [
+          "In Part 1, give reasons and an example, not one-word answers — but do not make a speech.",
+          "In Part 2, do not describe the pictures. Compare them and answer the questions: speculate (<i>they might be…, perhaps she's hoping to…</i>) and give your view.",
+          "Keep talking for the full minute. If you finish one idea, move to the second question."
+        ]
       },
-      {
-       "sentence": "Only when the coin was nailed to the mast ___ what the voyage was really for.",
-       "options": [
-        "the crew realised",
-        "did the crew realise",
-        "realised the crew"
-       ],
-       "answer": 1
-      },
-      {
-       "sentence": "Little ___ that the decision had already been made.",
-       "options": [
-        "they knew",
-        "knew they",
-        "did they know"
-       ],
-       "answer": 2
-      },
-      {
-       "sentence": "No sooner ___ the whale than every other thought vanished.",
-       "options": [
-        "had he sighted",
-        "he had sighted",
-        "did he sight"
-       ],
-       "answer": 0
-      },
-      {
-       "sentence": "Under no circumstances ___ to risk the whole crew for one man's revenge.",
-       "options": [
-        "a captain should agree",
-        "should a captain agree",
-        "a captain agrees"
-       ],
-       "answer": 1
-      },
-      {
-       "sentence": "So single-minded ___ that he no longer heard objections.",
-       "options": [
-        "had he become",
-        "he had become",
-        "became he"
-       ],
-       "answer": 0
+      "data": {
+        "text": "Part 1: talk about ambition and goals. Part 2: compare two of the three pictures and say why the people might be pushing themselves so hard.",
+        "parts": [
+          {
+            "part": 1,
+            "title": "Interview",
+            "time": "2 min",
+            "prompts": [
+              "What do you hope to be doing five years from now? Why?",
+              "Is there anything you spend far more time on than other people do? Tell me about it.",
+              "Do you think ambition is something you are born with or something you learn?",
+              "Who is the most determined person you know? What drives them?"
+            ]
+          },
+          {
+            "part": 2,
+            "title": "Long turn",
+            "time": "1 min + 30 s",
+            "question": "Compare two of the pictures and say <b>why the people might be pushing themselves so hard</b> and <b>how they might feel if they fail</b>.",
+            "pictures": [
+              {
+                "emoji": "🏃‍♀️🌅",
+                "caption": "a runner training alone at dawn"
+              },
+              {
+                "emoji": "🔬🌙",
+                "caption": "a scientist still in the lab late at night"
+              },
+              {
+                "emoji": "♟️🏆",
+                "caption": "a young chess player at a tournament"
+              }
+            ],
+            "partner": "Which of these people do you think is under the most pressure? Why? (about 30 seconds)"
+          }
+        ],
+        "useful_language": {
+          "Speculating": [
+            "They may well be…",
+            "It looks as though…",
+            "I'd imagine she's hoping to…",
+            "Presumably he's been…"
+          ],
+          "Comparing": [
+            "Whereas the runner is…, the scientist…",
+            "What they have in common is…",
+            "In both cases…"
+          ],
+          "Giving your view": [
+            "To my mind…",
+            "I can't help feeling that…",
+            "If anything, …"
+          ]
+        }
       }
-     ]
-    }
-   }
-  },
-  {
-   "code": "E",
-   "type": "key_transform",
-   "title": "Reading and Use of English Part 4 — key word transformations",
-   "outputs": [
-    "digital"
-   ],
-   "tips": {
-    "expect": "Six sentences. For each one you complete a second sentence so that it means the same as the first, using a given key word. You write between three and six words, including the key word, which you must not change. Each item is worth up to two marks.",
-    "how": [
-     "Identify what is being tested — here, mostly inversion, but also a phrase or collocation.",
-     "Write the whole gap, then read the complete second sentence: does it mean exactly the same? Is the key word unchanged?",
-     "Count your words. Contractions count as two words (<i>didn't</i> = did not)."
-    ],
-    "remember": "Half marks exist: if you get the structure right but a small word wrong, you still score one."
-   },
-   "data": {
-    "instructions": "Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and six words, including the word given.",
-    "items": [
-     {
-      "first": "I have never read a novel that raises such uncomfortable questions.",
-      "key": "NEVER",
-      "second_start": "Never",
-      "second_end": "a novel that raises such uncomfortable questions.",
-      "answers": [
-       "before have I read",
-       "have I read",
-       "have I ever read",
-       "before have I ever read"
-      ]
-     },
-     {
-      "first": "The crew cheered as soon as the coin was nailed to the mast.",
-      "key": "SOONER",
-      "second_start": "No",
-      "second_end": "to the mast than the crew cheered.",
-      "answers": [
-       "sooner had the coin been nailed",
-       "sooner was the coin nailed"
-      ]
-     },
-     {
-      "first": "Ahab did not understand his mistake until the ship was sinking.",
-      "key": "DID",
-      "second_start": "Only when the ship was sinking",
-      "second_end": "his mistake.",
-      "answers": [
-       "did Ahab understand",
-       "did Ahab realise"
-      ]
-     },
-     {
-      "first": "The sailors had no idea what they had agreed to.",
-      "key": "LITTLE",
-      "second_start": "Little",
-      "second_end": "they had agreed to.",
-      "answers": [
-       "did the sailors know what",
-       "did the sailors realise what"
-      ]
-     },
-     {
-      "first": "He ignored the warnings and he also punished the people who gave them.",
-      "key": "ONLY",
-      "second_start": "Not",
-      "second_end": "the warnings, but he also punished the people who gave them.",
-      "answers": [
-       "only did he ignore"
-      ]
-     },
-     {
-      "first": "His obsession was so strong that nothing else mattered to him.",
-      "key": "SUCH",
-      "second_start": "",
-      "second_end": "that nothing else mattered to him.",
-      "answers": [
-       "such was his obsession"
-      ]
-     }
-    ]
-   }
-  },
-  {
-   "code": "F",
-   "type": "listening",
-   "title": "Listening Part 2 — sentence completion. Complete the sentences with a word or short phrase.",
-   "outputs": [
-    "digital"
-   ],
-   "audio": "c1a/u01-f.mp3",
-   "tips": {
-    "expect": "A monologue of about three minutes — a talk, a lecture, a podcast. You complete eight sentences with a word or short phrase (never more than three words) that you hear. You hear the recording twice.",
-    "how": [
-     "Before it starts, read the eight sentences and predict the kind of word that is missing: a noun? a number? an adjective?",
-     "The sentences follow the order of the recording. The words around the gap are paraphrased, but the answer itself is the exact word you hear.",
-     "Write what you hear, spelt correctly. Do not change the form of the word."
-    ],
-    "remember": "If you miss one, let it go and follow the next sentence. You have a second listening."
-   },
-   "data": {
-    "voice_note": "Presenter (Ryan) + Dr Helen Marsh, psychologist (Libby). Monologue with a short introduction.",
-    "script": "Presenter: Welcome to Mind Matters. Today's talk comes from Dr Helen Marsh, a psychologist who studies motivation, and it's called When wanting takes over.\nDr Marsh: Thank you. I want to start with a distinction that changed the way I think about ambition. About twenty years ago, researchers began separating two kinds of passion. The first they called harmonious passion: you love something, you give it real time, but it sits alongside the rest of your life. The second they called obsessive passion — and the key word there isn't obsessive, it's control. In harmonious passion, you control the activity. In obsessive passion, the activity controls you.\nDr Marsh: How can you tell the difference from the outside? Not by hours. A violinist practising six hours a day may be perfectly healthy. The clearest sign, in our studies, is what happens on a day off. People with a harmonious passion feel relaxed. People with an obsessive one feel guilt — sometimes physical discomfort. The activity has stopped being a source of pleasure and become a source of relief.\nDr Marsh: The second sign is language. Listen to how somebody talks about their goal. Obsessive passion tends to speak in absolutes: always, never, everything. And it shrinks the vocabulary of identity. Ask a healthy athlete who they are and you get a list: a runner, a sister, a nurse, a terrible cook. Ask someone whose passion has become obsessive and the list gets shorter and shorter until there's one word left.\nDr Marsh: Now, where does it come from? The research points less to personality than to environment. The strongest single predictor we've found is pressure — specifically, feeling that your worth as a person depends on the result. That pressure can come from a coach, from a parent, or, increasingly, from an audience. Social media has given every private goal a public scoreboard, and a scoreboard is a machine for turning enjoyment into anxiety.\nDr Marsh: Let me be clear about what I'm not saying. I'm not saying that intense commitment is unhealthy. Almost everything worth doing requires long periods of single-minded effort, and the people we admire most were rarely balanced in any tidy sense. The problem isn't intensity. It's rigidity — the loss of the ability to imagine stopping, or changing course, or simply having a bad week without it meaning something about you as a human being.\nDr Marsh: So what helps? Three things, in our experience. First, other identities: keep the list long. The people who recover fastest from a setback are the ones with somewhere else to stand. Second, what we call a Starbuck — a person with permission to say no to you, and whom you have promised in advance to listen to. And third, the humble day off, taken on purpose, not as a punishment. If the idea of a day off makes you anxious, that anxiety is the most useful piece of information you will get this year.\nDr Marsh: I'll finish with a question rather than a conclusion. When you picture your goal, is it something you are moving towards — or something you are afraid of falling away from? The first is ambition. The second, very often, is the beginning of something else. Thank you.",
-    "questions": [
-     {
-      "q": "Dr Marsh says the essential difference between the two kinds of passion is a question of …",
-      "answer": "control"
-     },
-     {
-      "q": "She says the number of … is not a reliable sign of obsessive passion.",
-      "answer": "hours"
-     },
-     {
-      "q": "The clearest sign in her studies is the feeling of … that people have on a day off.",
-      "answer": "guilt"
-     },
-     {
-      "q": "In an obsessive person, the activity has become a source of … rather than pleasure.",
-      "answer": "relief"
-     },
-     {
-      "q": "Obsessive passion shrinks the vocabulary people use to describe their own …",
-      "answer": "identity"
-     },
-     {
-      "q": "The strongest predictor of obsessive passion is …",
-      "answer": "pressure"
-     },
-     {
-      "q": "She compares social media to a public … for private goals.",
-      "answer": "scoreboard"
-     },
-     {
-      "q": "For Dr Marsh the real problem is not intensity but …",
-      "answer": "rigidity"
-     }
-    ]
-   }
-  },
-  {
-   "code": "G",
-   "type": "grammar_box",
-   "title": "Language focus 2 — adverbs of degree and the collocations that go with them",
-   "outputs": [
-    "book",
-    "digital"
-   ],
-   "data": {
-    "title": "Adverbs of degree: utterly, deeply, highly…",
-    "can": "I can choose the adverb of degree that collocates with an adjective (utterly exhausted, highly unlikely, bitterly disappointed) and grade my statements precisely.",
-    "intro": "At C1 the difference between <i>very tired</i> and <i>utterly exhausted</i> is not just strength: it is collocation. Some adverbs of degree go with almost anything (<i>extremely, really</i>); others belong to a small family of adjectives, and using the wrong one sounds foreign even when it is understood. Examiners notice these pairs in Reading Part 1 and reward them in Writing and Speaking.",
-    "examples": [
-     {
-      "text": "After the voyage the crew were <b>utterly exhausted</b>.",
-      "note": "utterly + exhausted, ridiculous, impossible, convinced (absolute adjectives)"
-     },
-     {
-      "text": "She is <b>deeply committed</b> to her research.",
-      "note": "deeply + committed, concerned, moved, rooted, unhappy"
-     },
-     {
-      "text": "It is <b>highly unlikely</b> that he will change his mind.",
-      "note": "highly + unlikely, successful, effective, competitive, skilled"
-     },
-     {
-      "text": "They were <b>bitterly disappointed</b> by the result.",
-      "note": "bitterly + disappointed, cold, opposed"
-     },
-     {
-      "text": "He is <b>perfectly capable</b> of finishing alone.",
-      "note": "perfectly + capable, normal, clear, reasonable"
-     },
-     {
-      "text": "The plan was <b>fairly ambitious</b> but <b>rather risky</b>.",
-      "note": "fairly (neutral-positive) vs rather (often negative)"
-     }
-    ],
-    "rules": [
-     "<b>Absolute</b> adjectives (exhausted, impossible, furious, convinced) take absolute adverbs: <i>utterly, completely, absolutely, totally</i> — not <i>very</i>.",
-     "<b>Gradable</b> adjectives (tired, difficult, angry, sure) take <i>very, extremely, fairly, rather, quite, pretty</i>.",
-     "Learn adverb + adjective as one chunk: <i>deeply concerned, highly unlikely, bitterly disappointed, painfully aware, wildly optimistic, seriously injured, entirely dependent</i>.",
-     "<i>Quite</i> changes meaning: <i>quite good</i> = fairly good; <i>quite impossible</i> = completely impossible.",
-     "In formal writing, one precise adverb beats two vague ones: <i>highly effective</i>, not <i>very very effective</i>."
-    ],
-    "practice": {
-     "instructions": "Choose the adverb that collocates naturally.",
-     "items": [
-      {
-       "sentence": "By the end of the race she was ___ exhausted.",
-       "options": [
-        "very",
-        "utterly",
-        "highly"
-       ],
-       "answer": 1
-      },
-      {
-       "sentence": "It is ___ unlikely that the crew would have refused.",
-       "options": [
-        "utterly",
-        "bitterly",
-        "highly"
-       ],
-       "answer": 2
-      },
-      {
-       "sentence": "His family were ___ concerned about how much time he spent alone.",
-       "options": [
-        "deeply",
-        "perfectly",
-        "fairly"
-       ],
-       "answer": 0
-      },
-      {
-       "sentence": "The team were ___ disappointed to lose in the final minute.",
-       "options": [
-        "highly",
-        "bitterly",
-        "utterly"
-       ],
-       "answer": 1
-      },
-      {
-       "sentence": "She is ___ capable of making her own decisions.",
-       "options": [
-        "deeply",
-        "bitterly",
-        "perfectly"
-       ],
-       "answer": 2
-      },
-      {
-       "sentence": "The forecast was ___ optimistic: nobody expected it to come true.",
-       "options": [
-        "wildly",
-        "fairly",
-        "perfectly"
-       ],
-       "answer": 0
-      }
-     ]
-    }
-   }
-  },
-  {
-   "code": "H",
-   "type": "gap_text",
-   "title": "Reading and Use of English Part 2 — open cloze. Write ONE word in each gap.",
-   "outputs": [
-    "digital"
-   ],
-   "tips": {
-    "expect": "A short text with eight gaps. You write one word in each gap — no options are given. The missing words are mostly grammar words: articles, prepositions, auxiliaries, pronouns, relative words, linkers, parts of fixed phrases.",
-    "how": [
-     "Read the whole text first: the sentence after the gap often decides the answer.",
-     "Look at both sides of the gap: what grammar does it need — a preposition after a verb, a relative pronoun, a word to complete <i>not only … but also</i>?",
-     "Contractions are not allowed, and only one word fits each gap."
-    ],
-    "remember": "Check your spelling. A correct word spelt wrongly scores nothing."
-   },
-   "data": {
-    "text": "Why do some people pursue a goal long after it has stopped making them happy? Psychologists have spent decades trying to answer that question, and the answer, it turns out, has less to do {1} personality than we might expect. Nobody is born obsessive. {2} tends to happen instead is that a healthy interest meets the wrong kind of pressure — the sense that one's worth as a person depends on the result. Under {3} conditions, an activity that used to be a source of pleasure becomes a source of relief: we no longer do it because we want to, {4} because we cannot bear the anxiety of not doing it. Not only {5} the goal take over the day; it takes over the vocabulary. Ask such a person who they are and the list of answers gets shorter every year, {6} only one word is left. None of this means that intense commitment is unhealthy in {7}. Almost everything worth achieving demands long periods of single-minded effort. The danger lies not in the intensity but in the rigidity: in losing the ability to imagine stopping. Only when we can picture ourselves walking away {8} we truly be said to have chosen to stay.",
-    "answers": [
-     "with",
-     "What",
-     "these",
-     "but",
-     "does",
-     "until",
-     "itself",
-     "can"
-    ]
-   }
-  },
-  {
-   "code": "I",
-   "type": "writing",
-   "title": "Writing Part 1 — essay. Plan, write 220–260 words and hand it in.",
-   "outputs": [
-    "digital"
-   ],
-   "tips": {
-    "expect": "Part 1 is compulsory. You read a short input text — notes from a lecture, a seminar or a discussion — with three points and three opinions. You write an essay discussing <b>two</b> of the three points and say which is more important, giving reasons. 220–260 words, formal or neutral register.",
-    "how": [
-     "Choose the two points you can say most about. Ignore the third completely.",
-     "Plan four paragraphs: introduction (the issue, no opinion yet) · point 1 · point 2 · conclusion with your decision and why.",
-     "You may use the opinions in the notes, but in your own words — copying them costs marks.",
-     "Link your ideas with a range of devices: not only <i>Firstly / Secondly</i> but also <i>While it is true that…, What is often overlooked is…, This is not to say that…</i>"
-    ],
-    "remember": "The examiner marks content, communicative achievement, organisation and language. An essay that discusses three points, or none in depth, loses content marks however good the English."
-   },
-   "data": {
-    "part": 1,
-    "genre": "essay",
-    "words": [
-     220,
-     260
-    ],
-    "task": "<p>Your class has attended a panel discussion on <b>what drives people to pursue a goal at any cost</b>. You have made the notes below.</p><blockquote><p><b>Factors that push people to extremes:</b></p><ul><li>social media</li><li>family expectations</li><li>personal identity</li></ul><p><b>Some opinions expressed in the discussion:</b></p><ul><li>“Online, everybody else's success is in your face all day long.”</li><li>“Some parents live their own ambitions through their children.”</li><li>“For some people the goal stops being something they do and becomes who they are.”</li></ul></blockquote><p>Write an <b>essay</b> discussing <b>two</b> of the factors in your notes. You should <b>explain which factor is more powerful</b>, giving reasons in support of your answer.</p><p>You may, if you wish, make use of the opinions expressed in the discussion, but you should use your own words as far as possible. Write <b>220–260 words</b>.</p>",
-    "plan": [
-     "<b>Introduction</b> (2–3 sentences): why the question matters now; name the two factors you will discuss. No opinion yet.",
-     "<b>Paragraph 2</b> — first factor: how it pushes people to extremes + one concrete example or consequence.",
-     "<b>Paragraph 3</b> — second factor: the same depth. Use a contrast link (<i>Whereas…, By contrast…</i>) to connect it to paragraph 2.",
-     "<b>Conclusion</b>: which factor is more powerful and the reason — ideally a reason that combines the two paragraphs. One inversion here reads well: <i>Only when… does…</i>"
-    ],
-    "useful_language": {
-     "Introducing the issue": [
-      "It is often claimed that…",
-      "Few would deny that…",
-      "The question of why some people… has rarely been more relevant."
-     ],
-     "Developing a point": [
-      "What is striking about … is that…",
-      "This is particularly evident in…",
-      "A case in point is…",
-      "The consequence, more often than not, is…"
-     ],
-     "Contrasting and conceding": [
-      "While it is true that…, it is equally clear that…",
-      "This is not to say that…",
-      "Admittedly, …; nevertheless, …"
-     ],
-     "Concluding": [
-      "On balance, …",
-      "Of the two, it is … that seems to me the more powerful, since…",
-      "Only when … does … become dangerous."
-     ]
     },
-    "checklist": [
-     "I have discussed exactly two of the three factors, each in its own paragraph.",
-     "My conclusion says clearly which is more powerful and why.",
-     "I have not copied the opinions word for word.",
-     "The register is formal or neutral: no contractions, no <i>I think… I think…</i> in every sentence.",
-     "I have used at least one inversion and two precise adverb + adjective collocations from this unit.",
-     "Between 220 and 260 words."
-    ],
-    "model": "<p><i>A model answer (246 words). Notice the four-paragraph structure, the two factors only, and how the conclusion connects them.</i></p><p>Most people can name someone who has pursued a goal long past the point where it made them happy. Why this happens is a question that has become more urgent as the pressures around young people multiply. Two factors seem to me especially powerful: the influence of social media and the way a goal can come to define a person's identity.</p><p>Social media has given every private ambition a public scoreboard. A student who once trained or studied for the pleasure of improving now measures each result against the polished achievements of thousands of strangers. Never before has comparison been so constant, and constant comparison turns enjoyment into anxiety: the activity is no longer done for its own sake but to avoid the discomfort of falling behind.</p><p>By contrast, the second factor works from the inside. When a goal stops being something a person does and becomes who they are, walking away no longer feels like a decision but like a loss of self. This is why highly committed people are often the least able to stop, even when the evidence says they should: to give up the goal would be to give up the only word left in their description of themselves.</p><p>Of the two, it is identity that seems to me the more powerful. Social media supplies pressure, but pressure can be switched off; an identity cannot. Only when a person has other things to be does a setback stop being a catastrophe.</p>"
-   }
-  },
-  {
-   "code": "J",
-   "type": "pairwork",
-   "title": "Speaking — Parts 3 and 4. Collaborative task and discussion. Record your best answer.",
-   "outputs": [
-    "book",
-    "digital"
-   ],
-   "speaking": {
-    "part": 3,
-    "name": "Collaborative task and discussion"
-   },
-   "tips": {
-    "expect": "Part 3 (about 4 minutes): you and your partner discuss a question with five written prompts for two minutes, then have one minute to reach a decision. Part 4 (about 5 minutes): the examiner asks you both wider questions on the same theme.",
-    "how": [
-     "In Part 3 you are not marked on agreeing; you are marked on interacting. Ask your partner's opinion, respond to it, build on it, disagree politely.",
-     "Do not try to cover all five prompts. Two or three in depth is better than five in a hurry.",
-     "In the decision minute, negotiate: <i>Shall we go for…? I'd be happy with that, as long as…</i>",
-     "In Part 4, develop your answers: opinion → reason → example → so what."
-    ],
-    "remember": "Look at your partner, not at the examiner. The examiner is listening, not talking."
-   },
-   "data": {
-    "text": "Part 3: discuss how these things might push a person to extremes and decide which is hardest to walk away from. Part 4: discuss ambition, pressure and knowing when to stop.",
-    "parts": [
-     {
-      "part": 3,
-      "title": "Collaborative task",
-      "time": "2 min + 1 min",
-      "intro": "Here are some things that people sometimes pursue single-mindedly. Talk to each other about <b>how each of these might push a person to extremes</b>.",
-      "centre": "How might these push a person to extremes?",
-      "spokes": [
-       "success in a competitive sport",
-       "top marks at school or university",
-       "a following on social media",
-       "perfection in an art or a craft",
-       "money and status"
+    {
+      "code": "B",
+      "type": "match_words",
+      "title": "Vocabulary — obsession and ambition. Match each word with its meaning.",
+      "outputs": [
+        "book",
+        "digital",
+        "quiz"
       ],
-      "decide": "Now you have a minute to decide <b>which of these is the hardest to walk away from</b>."
-     },
-     {
-      "part": 4,
-      "title": "Further discussion",
-      "time": "5 min",
-      "prompts": [
-       "Some people say that great achievements always require an unhealthy level of obsession. Do you agree?",
-       "Who should be responsible for noticing when a young person's ambition is becoming harmful — the person, their family, or their school?",
-       "Is it easier or harder to give up on a goal today than it was for your grandparents' generation? Why?",
-       "Do you think society admires the wrong kind of determination?",
-       "How can a person tell the difference between persistence and stubbornness?"
-      ]
-     }
-    ],
-    "useful_language": {
-     "Involving your partner": [
-      "What's your take on…?",
-      "Would you go along with that?",
-      "You've got a point, but…",
-      "That's true up to a point, although…"
-     ],
-     "Building on an idea": [
-      "Following on from what you said…",
-      "And that ties in with…",
-      "Not only that, but…"
-     ],
-     "Reaching a decision": [
-      "Shall we settle on…?",
-      "I'd be inclined to go for…, on the grounds that…",
-      "We could agree to differ, but if we had to choose…"
-     ],
-     "Part 4: developing an answer": [
-      "It very much depends on…",
-      "There's a strong case for saying…",
-      "Rarely is it as simple as…"
-     ]
+      "data": {
+        "left_label": "Word",
+        "right_label": "Meaning",
+        "pairs": [
+          {
+            "left": "obsession",
+            "right": "an idea or desire that fills a person's mind and will not let go"
+          },
+          {
+            "left": "relentless",
+            "right": "never stopping or becoming less intense"
+          },
+          {
+            "left": "single-minded",
+            "right": "concentrating on one aim and nothing else"
+          },
+          {
+            "left": "downfall",
+            "right": "a sudden loss of power, success or position — and what causes it"
+          },
+          {
+            "left": "consume",
+            "right": "(of a feeling) to take over someone completely"
+          },
+          {
+            "left": "fixation",
+            "right": "an unhealthy interest in one thing that is very hard to change"
+          },
+          {
+            "left": "restraint",
+            "right": "the ability to control what you feel or do"
+          },
+          {
+            "left": "blinkered",
+            "right": "unwilling to consider any other point of view"
+          },
+          {
+            "left": "hubris",
+            "right": "excessive pride or confidence that leads to a fall"
+          },
+          {
+            "left": "at any price",
+            "right": "whatever the cost or the consequences"
+          }
+        ]
+      }
+    },
+    {
+      "code": "C",
+      "type": "reading",
+      "title": "Reading and Use of English Part 5 — multiple choice. Read the essay and choose the answer that fits best.",
+      "outputs": [
+        "book",
+        "digital"
+      ],
+      "tips": {
+        "expect": "One long text (about 700–850 words) followed by six four-option questions. They test detail, opinion, attitude, tone, purpose, implication and the meaning of phrases in context. The questions follow the order of the text.",
+        "how": [
+          "Read the whole text once, quickly, to get the argument and the writer's attitude.",
+          "For each question, find the part of the text it refers to and read it closely. The correct option paraphrases the text; wrong options often use the <i>same words</i> as the text but change the meaning.",
+          "Be suspicious of options that are true in general but not what the writer actually says."
+        ],
+        "remember": "All four options are about the right part of the text. Eliminate; do not guess from the first line you recognise."
+      },
+      "data": {
+        "kicker": "Reading Club · Critical essay",
+        "title": "The whale in the room",
+        "author": "sofia",
+        "byline": "by Sofía, C1",
+        "text": "<p>There is a moment, roughly a third of the way into <i>Moby Dick</i>, when Captain Ahab nails a gold coin to the mast and promises it to the first man who sights the white whale. The crew cheers. Nobody asks the obvious question — what happens to the ship, the voyage and the profits of forty men once their captain has turned a commercial whaling trip into a private vendetta? Melville lets the silence hang. It is, I think, the most modern scene in a very old book, because it shows us not a madman but a leader, and a crowd only too willing to be led.</p><p>We tend to picture obsession as something that happens to other people, preferably in the nineteenth century. Yet the pattern Melville draws is disturbingly familiar. Ahab does not lose his mind all at once; he narrows it. One idea grows until it crowds out every other consideration, and everything that might have acted as a brake — his family in Nantucket, the first mate's quiet objections, the plain arithmetic of a failing voyage — is reclassified as an obstacle. What makes him dangerous is not the strength of his feeling but the disappearance of everything that once competed with it.</p><p>Reading the novel with my classmates, I was struck by how quickly the conversation left the deck of the <i>Pequod</i> and turned to ourselves. A friend admitted she checked her running app before she got out of bed. Another described a cousin who had rebuilt the same motorbike engine so many times that the family no longer mentioned it. None of these are tragedies, obviously, and it would be absurd to compare a fitness tracker to a harpoon. But the mechanism is recognisable: a goal that begins as one part of a life and ends up standing in for the whole of it.</p><p>Psychologists distinguish between what they call harmonious and obsessive passion. In the first, the activity fits alongside the rest of your life; in the second, it takes the place of your life, and your sense of who you are becomes hostage to how well it is going. Ahab, needless to say, is the textbook case. When Starbuck begs him to turn back, the captain's reply is not that he refuses but that he <i>cannot</i>: he speaks of himself as a train on rails, as if the decision had been taken by someone else long ago. That is the sound of a person who has stopped being able to imagine an alternative — and it is worth noticing that he presents this loss of freedom as a kind of grandeur.</p><p>It is tempting to read the book as a warning against ambition, and I have heard it taught that way. I am not convinced. The <i>Pequod</i> is full of ambitious men, and most of them are perfectly sane; Starbuck wants a profitable voyage and a safe return, which is ambition of a very sensible kind. What Melville seems to be probing is something narrower and stranger: the point at which wanting something turns into being unable to stop wanting it, and at which the wanting starts to feel like identity. Ambition has objects. Obsession, in the end, has only itself.</p><p>Nor is the crew let off lightly. It would be comforting to think that forty reasonable people could not be talked into chasing a whale around the world for one man's revenge, but the novel insists that they can, and shows us how: with a gold coin, a rousing speech and the simple human reluctance to be the one who says no. Melville's sympathy is with the sailors, yet his verdict is unsparing. Obsession is rarely a solitary condition. It needs an audience, and it usually gets one.</p><p>So why do we keep coming back to a book that most people never finish? Partly, I suspect, because it flatters us to watch a catastrophe from a safe distance. But partly because the questions it raises have not gone away: how do you tell commitment from compulsion? At what point does persistence stop being a virtue? And who, in your own life, would have the nerve to play Starbuck? Never before, it seems to me, have we needed those questions more — and rarely has a novel put them with such force.</p>",
+        "script": "The whale in the room. There is a moment, roughly a third of the way into Moby Dick, when Captain Ahab nails a gold coin to the mast and promises it to the first man who sights the white whale. The crew cheers. Nobody asks the obvious question: what happens to the ship, the voyage and the profits of forty men once their captain has turned a commercial whaling trip into a private vendetta? Melville lets the silence hang. It is the most modern scene in a very old book, because it shows us not a madman but a leader, and a crowd only too willing to be led. We tend to picture obsession as something that happens to other people. Yet the pattern Melville draws is disturbingly familiar. Ahab does not lose his mind all at once; he narrows it. One idea grows until it crowds out every other consideration. What makes him dangerous is not the strength of his feeling but the disappearance of everything that once competed with it. Psychologists distinguish between harmonious and obsessive passion. In the first, the activity fits alongside the rest of your life; in the second, it takes the place of your life. Ambition has objects. Obsession, in the end, has only itself. Nor is the crew let off lightly. Obsession is rarely a solitary condition. It needs an audience, and it usually gets one. Never before have we needed those questions more, and rarely has a novel put them with such force.",
+        "questions": [
+          {
+            "q": "In the first paragraph, the writer describes the scene with the gold coin in order to",
+            "options": [
+              "show that Ahab was mentally ill from the start of the voyage.",
+              "suggest that the crew's silence is as significant as Ahab's promise.",
+              "explain why whaling voyages were rarely profitable.",
+              "criticise Melville for leaving an important question unanswered."
+            ],
+            "answer": 1
+          },
+          {
+            "q": "According to the second paragraph, what makes Ahab dangerous is that",
+            "options": [
+              "his feelings are far stronger than other people's.",
+              "he deliberately hides his true intentions from his family.",
+              "nothing is left that could limit the force of his one idea.",
+              "he loses control of his mind suddenly and completely."
+            ],
+            "answer": 2
+          },
+          {
+            "q": "The writer mentions the running app and the motorbike engine to",
+            "options": [
+              "show that her classmates were not taking the novel seriously.",
+              "illustrate a familiar pattern while admitting the comparison has limits.",
+              "argue that modern obsessions are just as tragic as Ahab's.",
+              "explain why young people find nineteenth-century fiction difficult."
+            ],
+            "answer": 1
+          },
+          {
+            "q": "What does the writer find significant about Ahab's reply to Starbuck?",
+            "options": [
+              "He refuses to give any explanation for his decision.",
+              "He blames a member of the crew for what has happened.",
+              "He describes his own lack of choice as if it were something admirable.",
+              "He finally admits that he would prefer to turn back."
+            ],
+            "answer": 2
+          },
+          {
+            "q": "How does the writer respond to the idea that the novel is a warning against ambition?",
+            "options": [
+              "She accepts it, because most of the crew are shown to be reckless.",
+              "She rejects it, arguing that the book is about a different, narrower condition.",
+              "She finds it convincing but poorly taught in schools.",
+              "She thinks it applies to Starbuck more than to Ahab."
+            ],
+            "answer": 1
+          },
+          {
+            "q": "In the final paragraph, the writer suggests that people keep returning to the novel because",
+            "options": [
+              "it is short enough to read in a single sitting.",
+              "it allows them to feel superior to its characters.",
+              "its central questions remain relevant and uncomfortable.",
+              "it offers a clear answer to the problem of persistence."
+            ],
+            "answer": 2
+          }
+        ]
+      }
+    },
+    {
+      "code": "D",
+      "type": "grammar_box",
+      "title": "Language focus 1 — inversion after negative and limiting adverbials",
+      "outputs": [
+        "book",
+        "digital"
+      ],
+      "data": {
+        "title": "Inversion after negative and limiting adverbials",
+        "can": "I can front a negative or limiting adverbial and invert subject and auxiliary for emphasis (Never have I…, Not only did…, Only when… did…).",
+        "intro": "In formal, literary and persuasive English we can move a negative or limiting adverbial to the front of the sentence for emphasis. When we do, the subject and the auxiliary swap places, exactly as in a question. Sofía's essay ends with two of them: <i>Never before have we needed those questions more — and rarely has a novel put them with such force.</i>",
+        "examples": [
+          {
+            "text": "<b>Never before have</b> we faced such a challenge.",
+            "note": "never before + have we"
+          },
+          {
+            "text": "<b>Not only did</b> he ignore the warnings, <b>but</b> he <b>also</b> punished those who gave them.",
+            "note": "not only + did he … but (also)"
+          },
+          {
+            "text": "<b>Only when</b> it was too late <b>did</b> he understand.",
+            "note": "the inversion is in the MAIN clause, not after only when"
+          },
+          {
+            "text": "<b>No sooner had</b> the coin been nailed to the mast <b>than</b> the crew cheered.",
+            "note": "no sooner + had … than"
+          },
+          {
+            "text": "<b>Little did</b> the sailors know what they had agreed to.",
+            "note": "little + did"
+          },
+          {
+            "text": "<b>Under no circumstances should</b> a captain risk his crew for revenge.",
+            "note": "under no circumstances + should"
+          },
+          {
+            "text": "<b>So</b> narrow <b>had</b> his mind become <b>that</b> nothing else existed.",
+            "note": "so + adjective + auxiliary … that"
+          }
+        ],
+        "rules": [
+          "Front the adverbial: <i>never (before), rarely, seldom, hardly … when, no sooner … than, not only … but (also), not until, only when / only after / only by, little, under no circumstances, on no account, at no time, in no way, nowhere</i>.",
+          "Invert subject and auxiliary: Never <b>have I</b> seen… / Rarely <b>is it</b> discussed…",
+          "No auxiliary? Add <i>do / does / did</i>: Rarely <b>does he</b> speak. Little <b>did they</b> know.",
+          "With <i>only when / only after / not until</i> + clause, invert the <b>main</b> clause: Only when the ship sank <b>did they</b> understand.",
+          "<i>So / Such … that</i> can invert too: Such <b>was</b> his anger that nobody dared speak.",
+          "Use it for effect, not everywhere: one inversion in a paragraph is emphatic; five are exhausting."
+        ],
+        "practice": {
+          "instructions": "Choose the correct form.",
+          "items": [
+            {
+              "sentence": "Never before ___ such a storm in these waters.",
+              "options": [
+                "we had seen",
+                "had we seen",
+                "we saw"
+              ],
+              "answer": 1
+            },
+            {
+              "sentence": "Not only ___ the warnings, but he also blamed the messenger.",
+              "options": [
+                "he ignored",
+                "ignored he",
+                "did he ignore"
+              ],
+              "answer": 2
+            },
+            {
+              "sentence": "Only when the coin was nailed to the mast ___ what the voyage was really for.",
+              "options": [
+                "the crew realised",
+                "did the crew realise",
+                "realised the crew"
+              ],
+              "answer": 1
+            },
+            {
+              "sentence": "Little ___ that the decision had already been made.",
+              "options": [
+                "they knew",
+                "knew they",
+                "did they know"
+              ],
+              "answer": 2
+            },
+            {
+              "sentence": "No sooner ___ the whale than every other thought vanished.",
+              "options": [
+                "had he sighted",
+                "he had sighted",
+                "did he sight"
+              ],
+              "answer": 0
+            },
+            {
+              "sentence": "Under no circumstances ___ to risk the whole crew for one man's revenge.",
+              "options": [
+                "a captain should agree",
+                "should a captain agree",
+                "a captain agrees"
+              ],
+              "answer": 1
+            },
+            {
+              "sentence": "So single-minded ___ that he no longer heard objections.",
+              "options": [
+                "had he become",
+                "he had become",
+                "became he"
+              ],
+              "answer": 0
+            }
+          ]
+        },
+        "lab": "inversion"
+      }
+    },
+    {
+      "code": "E",
+      "type": "key_transform",
+      "title": "Reading and Use of English Part 4 — key word transformations",
+      "outputs": [
+        "digital"
+      ],
+      "tips": {
+        "expect": "Six sentences. For each one you complete a second sentence so that it means the same as the first, using a given key word. You write between three and six words, including the key word, which you must not change. Each item is worth up to two marks.",
+        "how": [
+          "Identify what is being tested — here, mostly inversion, but also a phrase or collocation.",
+          "Write the whole gap, then read the complete second sentence: does it mean exactly the same? Is the key word unchanged?",
+          "Count your words. Contractions count as two words (<i>didn't</i> = did not)."
+        ],
+        "remember": "Half marks exist: if you get the structure right but a small word wrong, you still score one."
+      },
+      "data": {
+        "instructions": "Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and six words, including the word given.",
+        "items": [
+          {
+            "first": "I have never read a novel that raises such uncomfortable questions.",
+            "key": "NEVER",
+            "second_start": "Never",
+            "second_end": "a novel that raises such uncomfortable questions.",
+            "answers": [
+              "before have I read",
+              "have I read",
+              "have I ever read",
+              "before have I ever read"
+            ]
+          },
+          {
+            "first": "The crew cheered as soon as the coin was nailed to the mast.",
+            "key": "SOONER",
+            "second_start": "No",
+            "second_end": "to the mast than the crew cheered.",
+            "answers": [
+              "sooner had the coin been nailed",
+              "sooner was the coin nailed"
+            ]
+          },
+          {
+            "first": "Ahab did not understand his mistake until the ship was sinking.",
+            "key": "DID",
+            "second_start": "Only when the ship was sinking",
+            "second_end": "his mistake.",
+            "answers": [
+              "did Ahab understand",
+              "did Ahab realise"
+            ]
+          },
+          {
+            "first": "The sailors had no idea what they had agreed to.",
+            "key": "LITTLE",
+            "second_start": "Little",
+            "second_end": "they had agreed to.",
+            "answers": [
+              "did the sailors know what",
+              "did the sailors realise what"
+            ]
+          },
+          {
+            "first": "He ignored the warnings and he also punished the people who gave them.",
+            "key": "ONLY",
+            "second_start": "Not",
+            "second_end": "the warnings, but he also punished the people who gave them.",
+            "answers": [
+              "only did he ignore"
+            ]
+          },
+          {
+            "first": "His obsession was so strong that nothing else mattered to him.",
+            "key": "SUCH",
+            "second_start": "",
+            "second_end": "that nothing else mattered to him.",
+            "answers": [
+              "such was his obsession"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "code": "F",
+      "type": "listening",
+      "title": "Listening Part 2 — sentence completion. Complete the sentences with a word or short phrase.",
+      "outputs": [
+        "digital"
+      ],
+      "audio": "c1a/u01-f.mp3",
+      "tips": {
+        "expect": "A monologue of about three minutes — a talk, a lecture, a podcast. You complete eight sentences with a word or short phrase (never more than three words) that you hear. You hear the recording twice.",
+        "how": [
+          "Before it starts, read the eight sentences and predict the kind of word that is missing: a noun? a number? an adjective?",
+          "The sentences follow the order of the recording. The words around the gap are paraphrased, but the answer itself is the exact word you hear.",
+          "Write what you hear, spelt correctly. Do not change the form of the word."
+        ],
+        "remember": "If you miss one, let it go and follow the next sentence. You have a second listening."
+      },
+      "data": {
+        "voice_note": "Presenter (Ryan) + Dr Helen Marsh, psychologist (Libby). Monologue with a short introduction.",
+        "script": "Presenter: Welcome to Mind Matters. Today's talk comes from Dr Helen Marsh, a psychologist who studies motivation, and it's called When wanting takes over.\nDr Marsh: Thank you. I want to start with a distinction that changed the way I think about ambition. About twenty years ago, researchers began separating two kinds of passion. The first they called harmonious passion: you love something, you give it real time, but it sits alongside the rest of your life. The second they called obsessive passion — and the key word there isn't obsessive, it's control. In harmonious passion, you control the activity. In obsessive passion, the activity controls you.\nDr Marsh: How can you tell the difference from the outside? Not by hours. A violinist practising six hours a day may be perfectly healthy. The clearest sign, in our studies, is what happens on a day off. People with a harmonious passion feel relaxed. People with an obsessive one feel guilt — sometimes physical discomfort. The activity has stopped being a source of pleasure and become a source of relief.\nDr Marsh: The second sign is language. Listen to how somebody talks about their goal. Obsessive passion tends to speak in absolutes: always, never, everything. And it shrinks the vocabulary of identity. Ask a healthy athlete who they are and you get a list: a runner, a sister, a nurse, a terrible cook. Ask someone whose passion has become obsessive and the list gets shorter and shorter until there's one word left.\nDr Marsh: Now, where does it come from? The research points less to personality than to environment. The strongest single predictor we've found is pressure — specifically, feeling that your worth as a person depends on the result. That pressure can come from a coach, from a parent, or, increasingly, from an audience. Social media has given every private goal a public scoreboard, and a scoreboard is a machine for turning enjoyment into anxiety.\nDr Marsh: Let me be clear about what I'm not saying. I'm not saying that intense commitment is unhealthy. Almost everything worth doing requires long periods of single-minded effort, and the people we admire most were rarely balanced in any tidy sense. The problem isn't intensity. It's rigidity — the loss of the ability to imagine stopping, or changing course, or simply having a bad week without it meaning something about you as a human being.\nDr Marsh: So what helps? Three things, in our experience. First, other identities: keep the list long. The people who recover fastest from a setback are the ones with somewhere else to stand. Second, what we call a Starbuck — a person with permission to say no to you, and whom you have promised in advance to listen to. And third, the humble day off, taken on purpose, not as a punishment. If the idea of a day off makes you anxious, that anxiety is the most useful piece of information you will get this year.\nDr Marsh: I'll finish with a question rather than a conclusion. When you picture your goal, is it something you are moving towards — or something you are afraid of falling away from? The first is ambition. The second, very often, is the beginning of something else. Thank you.",
+        "questions": [
+          {
+            "q": "Dr Marsh says the essential difference between the two kinds of passion is a question of …",
+            "answer": "control"
+          },
+          {
+            "q": "She says the number of … is not a reliable sign of obsessive passion.",
+            "answer": "hours"
+          },
+          {
+            "q": "The clearest sign in her studies is the feeling of … that people have on a day off.",
+            "answer": "guilt"
+          },
+          {
+            "q": "In an obsessive person, the activity has become a source of … rather than pleasure.",
+            "answer": "relief"
+          },
+          {
+            "q": "Obsessive passion shrinks the vocabulary people use to describe their own …",
+            "answer": "identity"
+          },
+          {
+            "q": "The strongest predictor of obsessive passion is …",
+            "answer": "pressure"
+          },
+          {
+            "q": "She compares social media to a public … for private goals.",
+            "answer": "scoreboard"
+          },
+          {
+            "q": "For Dr Marsh the real problem is not intensity but …",
+            "answer": "rigidity"
+          }
+        ]
+      }
+    },
+    {
+      "code": "G",
+      "type": "grammar_box",
+      "title": "Language focus 2 — adverbs of degree and the collocations that go with them",
+      "outputs": [
+        "book",
+        "digital"
+      ],
+      "data": {
+        "title": "Adverbs of degree: utterly, deeply, highly…",
+        "can": "I can choose the adverb of degree that collocates with an adjective (utterly exhausted, highly unlikely, bitterly disappointed) and grade my statements precisely.",
+        "intro": "At C1 the difference between <i>very tired</i> and <i>utterly exhausted</i> is not just strength: it is collocation. Some adverbs of degree go with almost anything (<i>extremely, really</i>); others belong to a small family of adjectives, and using the wrong one sounds foreign even when it is understood. Examiners notice these pairs in Reading Part 1 and reward them in Writing and Speaking.",
+        "examples": [
+          {
+            "text": "After the voyage the crew were <b>utterly exhausted</b>.",
+            "note": "utterly + exhausted, ridiculous, impossible, convinced (absolute adjectives)"
+          },
+          {
+            "text": "She is <b>deeply committed</b> to her research.",
+            "note": "deeply + committed, concerned, moved, rooted, unhappy"
+          },
+          {
+            "text": "It is <b>highly unlikely</b> that he will change his mind.",
+            "note": "highly + unlikely, successful, effective, competitive, skilled"
+          },
+          {
+            "text": "They were <b>bitterly disappointed</b> by the result.",
+            "note": "bitterly + disappointed, cold, opposed"
+          },
+          {
+            "text": "He is <b>perfectly capable</b> of finishing alone.",
+            "note": "perfectly + capable, normal, clear, reasonable"
+          },
+          {
+            "text": "The plan was <b>fairly ambitious</b> but <b>rather risky</b>.",
+            "note": "fairly (neutral-positive) vs rather (often negative)"
+          }
+        ],
+        "rules": [
+          "<b>Absolute</b> adjectives (exhausted, impossible, furious, convinced) take absolute adverbs: <i>utterly, completely, absolutely, totally</i> — not <i>very</i>.",
+          "<b>Gradable</b> adjectives (tired, difficult, angry, sure) take <i>very, extremely, fairly, rather, quite, pretty</i>.",
+          "Learn adverb + adjective as one chunk: <i>deeply concerned, highly unlikely, bitterly disappointed, painfully aware, wildly optimistic, seriously injured, entirely dependent</i>.",
+          "<i>Quite</i> changes meaning: <i>quite good</i> = fairly good; <i>quite impossible</i> = completely impossible.",
+          "In formal writing, one precise adverb beats two vague ones: <i>highly effective</i>, not <i>very very effective</i>."
+        ],
+        "practice": {
+          "instructions": "Choose the adverb that collocates naturally.",
+          "items": [
+            {
+              "sentence": "By the end of the race she was ___ exhausted.",
+              "options": [
+                "very",
+                "utterly",
+                "highly"
+              ],
+              "answer": 1
+            },
+            {
+              "sentence": "It is ___ unlikely that the crew would have refused.",
+              "options": [
+                "utterly",
+                "bitterly",
+                "highly"
+              ],
+              "answer": 2
+            },
+            {
+              "sentence": "His family were ___ concerned about how much time he spent alone.",
+              "options": [
+                "deeply",
+                "perfectly",
+                "fairly"
+              ],
+              "answer": 0
+            },
+            {
+              "sentence": "The team were ___ disappointed to lose in the final minute.",
+              "options": [
+                "highly",
+                "bitterly",
+                "utterly"
+              ],
+              "answer": 1
+            },
+            {
+              "sentence": "She is ___ capable of making her own decisions.",
+              "options": [
+                "deeply",
+                "bitterly",
+                "perfectly"
+              ],
+              "answer": 2
+            },
+            {
+              "sentence": "The forecast was ___ optimistic: nobody expected it to come true.",
+              "options": [
+                "wildly",
+                "fairly",
+                "perfectly"
+              ],
+              "answer": 0
+            }
+          ]
+        },
+        "lab": "emphasis-advanced"
+      }
+    },
+    {
+      "code": "H",
+      "type": "gap_text",
+      "title": "Reading and Use of English Part 2 — open cloze. Write ONE word in each gap.",
+      "outputs": [
+        "digital"
+      ],
+      "tips": {
+        "expect": "A short text with eight gaps. You write one word in each gap — no options are given. The missing words are mostly grammar words: articles, prepositions, auxiliaries, pronouns, relative words, linkers, parts of fixed phrases.",
+        "how": [
+          "Read the whole text first: the sentence after the gap often decides the answer.",
+          "Look at both sides of the gap: what grammar does it need — a preposition after a verb, a relative pronoun, a word to complete <i>not only … but also</i>?",
+          "Contractions are not allowed, and only one word fits each gap."
+        ],
+        "remember": "Check your spelling. A correct word spelt wrongly scores nothing."
+      },
+      "data": {
+        "text": "Why do some people pursue a goal long after it has stopped making them happy? Psychologists have spent decades trying to answer that question, and the answer, it turns out, has less to do {1} personality than we might expect. Nobody is born obsessive. {2} tends to happen instead is that a healthy interest meets the wrong kind of pressure — the sense that one's worth as a person depends on the result. Under {3} conditions, an activity that used to be a source of pleasure becomes a source of relief: we no longer do it because we want to, {4} because we cannot bear the anxiety of not doing it. Not only {5} the goal take over the day; it takes over the vocabulary. Ask such a person who they are and the list of answers gets shorter every year, {6} only one word is left. None of this means that intense commitment is unhealthy in {7}. Almost everything worth achieving demands long periods of single-minded effort. The danger lies not in the intensity but in the rigidity: in losing the ability to imagine stopping. Only when we can picture ourselves walking away {8} we truly be said to have chosen to stay.",
+        "answers": [
+          "with",
+          "What",
+          "these",
+          "but",
+          "does",
+          "until",
+          "itself",
+          "can"
+        ]
+      }
+    },
+    {
+      "code": "I",
+      "type": "writing",
+      "title": "Writing Part 1 — essay. Plan, write 220–260 words and hand it in.",
+      "outputs": [
+        "digital"
+      ],
+      "tips": {
+        "expect": "Part 1 is compulsory. You read a short input text — notes from a lecture, a seminar or a discussion — with three points and three opinions. You write an essay discussing <b>two</b> of the three points and say which is more important, giving reasons. 220–260 words, formal or neutral register.",
+        "how": [
+          "Choose the two points you can say most about. Ignore the third completely.",
+          "Plan four paragraphs: introduction (the issue, no opinion yet) · point 1 · point 2 · conclusion with your decision and why.",
+          "You may use the opinions in the notes, but in your own words — copying them costs marks.",
+          "Link your ideas with a range of devices: not only <i>Firstly / Secondly</i> but also <i>While it is true that…, What is often overlooked is…, This is not to say that…</i>"
+        ],
+        "remember": "The examiner marks content, communicative achievement, organisation and language. An essay that discusses three points, or none in depth, loses content marks however good the English."
+      },
+      "data": {
+        "part": 1,
+        "genre": "essay",
+        "words": [
+          220,
+          260
+        ],
+        "task": "<p>Your class has attended a panel discussion on <b>what drives people to pursue a goal at any cost</b>. You have made the notes below.</p><blockquote><p><b>Factors that push people to extremes:</b></p><ul><li>social media</li><li>family expectations</li><li>personal identity</li></ul><p><b>Some opinions expressed in the discussion:</b></p><ul><li>“Online, everybody else's success is in your face all day long.”</li><li>“Some parents live their own ambitions through their children.”</li><li>“For some people the goal stops being something they do and becomes who they are.”</li></ul></blockquote><p>Write an <b>essay</b> discussing <b>two</b> of the factors in your notes. You should <b>explain which factor is more powerful</b>, giving reasons in support of your answer.</p><p>You may, if you wish, make use of the opinions expressed in the discussion, but you should use your own words as far as possible. Write <b>220–260 words</b>.</p>",
+        "plan": [
+          "<b>Introduction</b> (2–3 sentences): why the question matters now; name the two factors you will discuss. No opinion yet.",
+          "<b>Paragraph 2</b> — first factor: how it pushes people to extremes + one concrete example or consequence.",
+          "<b>Paragraph 3</b> — second factor: the same depth. Use a contrast link (<i>Whereas…, By contrast…</i>) to connect it to paragraph 2.",
+          "<b>Conclusion</b>: which factor is more powerful and the reason — ideally a reason that combines the two paragraphs. One inversion here reads well: <i>Only when… does…</i>"
+        ],
+        "useful_language": {
+          "Introducing the issue": [
+            "It is often claimed that…",
+            "Few would deny that…",
+            "The question of why some people… has rarely been more relevant."
+          ],
+          "Developing a point": [
+            "What is striking about … is that…",
+            "This is particularly evident in…",
+            "A case in point is…",
+            "The consequence, more often than not, is…"
+          ],
+          "Contrasting and conceding": [
+            "While it is true that…, it is equally clear that…",
+            "This is not to say that…",
+            "Admittedly, …; nevertheless, …"
+          ],
+          "Concluding": [
+            "On balance, …",
+            "Of the two, it is … that seems to me the more powerful, since…",
+            "Only when … does … become dangerous."
+          ]
+        },
+        "checklist": [
+          "I have discussed exactly two of the three factors, each in its own paragraph.",
+          "My conclusion says clearly which is more powerful and why.",
+          "I have not copied the opinions word for word.",
+          "The register is formal or neutral: no contractions, no <i>I think… I think…</i> in every sentence.",
+          "I have used at least one inversion and two precise adverb + adjective collocations from this unit.",
+          "Between 220 and 260 words."
+        ],
+        "model": "<p><i>A model answer (246 words). Notice the four-paragraph structure, the two factors only, and how the conclusion connects them.</i></p><p>Most people can name someone who has pursued a goal long past the point where it made them happy. Why this happens is a question that has become more urgent as the pressures around young people multiply. Two factors seem to me especially powerful: the influence of social media and the way a goal can come to define a person's identity.</p><p>Social media has given every private ambition a public scoreboard. A student who once trained or studied for the pleasure of improving now measures each result against the polished achievements of thousands of strangers. Never before has comparison been so constant, and constant comparison turns enjoyment into anxiety: the activity is no longer done for its own sake but to avoid the discomfort of falling behind.</p><p>By contrast, the second factor works from the inside. When a goal stops being something a person does and becomes who they are, walking away no longer feels like a decision but like a loss of self. This is why highly committed people are often the least able to stop, even when the evidence says they should: to give up the goal would be to give up the only word left in their description of themselves.</p><p>Of the two, it is identity that seems to me the more powerful. Social media supplies pressure, but pressure can be switched off; an identity cannot. Only when a person has other things to be does a setback stop being a catastrophe.</p>"
+      }
+    },
+    {
+      "code": "J",
+      "type": "pairwork",
+      "title": "Speaking — Parts 3 and 4. Collaborative task and discussion. Record your best answer.",
+      "outputs": [
+        "book",
+        "digital"
+      ],
+      "speaking": {
+        "part": 3,
+        "name": "Collaborative task and discussion"
+      },
+      "tips": {
+        "expect": "Part 3 (about 4 minutes): you and your partner discuss a question with five written prompts for two minutes, then have one minute to reach a decision. Part 4 (about 5 minutes): the examiner asks you both wider questions on the same theme.",
+        "how": [
+          "In Part 3 you are not marked on agreeing; you are marked on interacting. Ask your partner's opinion, respond to it, build on it, disagree politely.",
+          "Do not try to cover all five prompts. Two or three in depth is better than five in a hurry.",
+          "In the decision minute, negotiate: <i>Shall we go for…? I'd be happy with that, as long as…</i>",
+          "In Part 4, develop your answers: opinion → reason → example → so what."
+        ],
+        "remember": "Look at your partner, not at the examiner. The examiner is listening, not talking."
+      },
+      "data": {
+        "text": "Part 3: discuss how these things might push a person to extremes and decide which is hardest to walk away from. Part 4: discuss ambition, pressure and knowing when to stop.",
+        "parts": [
+          {
+            "part": 3,
+            "title": "Collaborative task",
+            "time": "2 min + 1 min",
+            "intro": "Here are some things that people sometimes pursue single-mindedly. Talk to each other about <b>how each of these might push a person to extremes</b>.",
+            "centre": "How might these push a person to extremes?",
+            "spokes": [
+              "success in a competitive sport",
+              "top marks at school or university",
+              "a following on social media",
+              "perfection in an art or a craft",
+              "money and status"
+            ],
+            "decide": "Now you have a minute to decide <b>which of these is the hardest to walk away from</b>."
+          },
+          {
+            "part": 4,
+            "title": "Further discussion",
+            "time": "5 min",
+            "prompts": [
+              "Some people say that great achievements always require an unhealthy level of obsession. Do you agree?",
+              "Who should be responsible for noticing when a young person's ambition is becoming harmful — the person, their family, or their school?",
+              "Is it easier or harder to give up on a goal today than it was for your grandparents' generation? Why?",
+              "Do you think society admires the wrong kind of determination?",
+              "How can a person tell the difference between persistence and stubbornness?"
+            ]
+          }
+        ],
+        "useful_language": {
+          "Involving your partner": [
+            "What's your take on…?",
+            "Would you go along with that?",
+            "You've got a point, but…",
+            "That's true up to a point, although…"
+          ],
+          "Building on an idea": [
+            "Following on from what you said…",
+            "And that ties in with…",
+            "Not only that, but…"
+          ],
+          "Reaching a decision": [
+            "Shall we settle on…?",
+            "I'd be inclined to go for…, on the grounds that…",
+            "We could agree to differ, but if we had to choose…"
+          ],
+          "Part 4: developing an answer": [
+            "It very much depends on…",
+            "There's a strong case for saying…",
+            "Rarely is it as simple as…"
+          ]
+        }
+      }
     }
-   }
+  ],
+  "homework": [
+    {
+      "type": "write_sentences",
+      "prompt": "Write a short critical paragraph (10–12 sentences) about a modern obsession — fame, phones, fitness, success — or about Ahab. Use at least three inverted structures for emphasis (Never…, Not only…, Only when…) and three adverb + adjective collocations from Language focus 2."
+    }
+  ],
+  "scope": {
+    "grado": "G11",
+    "temaN": 1,
+    "tema": "The Danger of Obsession — Inspiring Nordic",
+    "outcomes": [
+      {
+        "destreza": "Listening",
+        "puede": "Follow a three-minute talk and complete sentences with the exact words heard (C1 Advanced Listening Part 2)."
+      },
+      {
+        "destreza": "Speaking",
+        "puede": "Speculate about pictures, negotiate a decision with a partner and discuss abstract social issues, using inversion for emphasis (C1 Advanced Speaking Parts 1–4)."
+      },
+      {
+        "destreza": "Reading",
+        "puede": "Read a demanding literary-critical essay of 800 words and identify the writer's argument, attitude and purpose (C1 Advanced Reading Part 5)."
+      },
+      {
+        "destreza": "Writing",
+        "puede": "Plan and write a 220–260-word discursive essay on two of three given points and justify a choice (C1 Advanced Writing Part 1)."
+      },
+      {
+        "destreza": "Use of English",
+        "puede": "Inversion after negative adverbials; adverb + adjective collocations; open cloze (Part 2) and key word transformations (Part 4)."
+      }
+    ],
+    "vocabulario": [
+      "obsession",
+      "relentless",
+      "single-minded",
+      "downfall",
+      "restraint",
+      "hubris"
+    ],
+    "gramatica": [
+      "Inversion after negative adverbials",
+      "Adverbs of degree and collocation",
+      "Open cloze (Part 2)",
+      "Key word transformations (Part 4)"
+    ],
+    "pendiente": {}
   }
- ],
- "homework": [
-  {
-   "type": "write_sentences",
-   "prompt": "Write a short critical paragraph (10–12 sentences) about a modern obsession — fame, phones, fitness, success — or about Ahab. Use at least three inverted structures for emphasis (Never…, Not only…, Only when…) and three adverb + adjective collocations from Language focus 2."
-  }
- ],
- "scope": {
-  "grado": "G11",
-  "temaN": 1,
-  "tema": "The Danger of Obsession — Inspiring Nordic",
-  "outcomes": [
-   {
-    "destreza": "Listening",
-    "puede": "Follow a three-minute talk and complete sentences with the exact words heard (C1 Advanced Listening Part 2)."
-   },
-   {
-    "destreza": "Speaking",
-    "puede": "Speculate about pictures, negotiate a decision with a partner and discuss abstract social issues, using inversion for emphasis (C1 Advanced Speaking Parts 1–4)."
-   },
-   {
-    "destreza": "Reading",
-    "puede": "Read a demanding literary-critical essay of 800 words and identify the writer's argument, attitude and purpose (C1 Advanced Reading Part 5)."
-   },
-   {
-    "destreza": "Writing",
-    "puede": "Plan and write a 220–260-word discursive essay on two of three given points and justify a choice (C1 Advanced Writing Part 1)."
-   },
-   {
-    "destreza": "Use of English",
-    "puede": "Inversion after negative adverbials; adverb + adjective collocations; open cloze (Part 2) and key word transformations (Part 4)."
-   }
-  ],
-  "vocabulario": [
-   "obsession",
-   "relentless",
-   "single-minded",
-   "downfall",
-   "restraint",
-   "hubris"
-  ],
-  "gramatica": [
-   "Inversion after negative adverbials",
-   "Adverbs of degree and collocation",
-   "Open cloze (Part 2)",
-   "Key word transformations (Part 4)"
-  ],
-  "pendiente": {}
- }
 }

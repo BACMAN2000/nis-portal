@@ -1,0 +1,169 @@
+{
+  "id": "reported-speech",
+  "level": "b2f",
+  "area": "Reporting",
+  "title": "Reported speech",
+  "tagline": "Telling someone what was said, one step back in time, person and place.",
+  "cefr": "B2",
+  "exam": [
+    "Reading & Use of English Part 4 — key word transformations",
+    "Listening Part 2/4 — following who said what",
+    "Speaking Part 1 — reporting what a friend or family member told you"
+  ],
+  "why": "The moment you repeat someone's words later, in a different place, the sentence has to move with you: tenses shift back, pronouns change, and <i>tomorrow</i> stops meaning anything. B2 First tests this constantly in Part 4, and getting the word order wrong in a reported question is one of the most common mistakes at this level.",
+  "diagrams": [
+    {
+      "type": "transform",
+      "title": "Direct speech to reported speech",
+      "before": {"text": "Sofia said, \"I finished the project yesterday.\"", "hl": ["I finished", "yesterday"]},
+      "after": {"text": "Sofia said (that) she had finished the project the day before.", "hl": ["she had finished", "the day before"]},
+      "steps": [
+        "Drop the quotation marks and add <i>that</i> (optional) after the reporting verb.",
+        "Move the verb one step back: <i>finished</i> → <i>had finished</i>.",
+        "Change the pronoun (<i>I</i> → <i>she</i>) and the time expression (<i>yesterday</i> → <i>the day before</i>)."
+      ]
+    },
+    {
+      "type": "map",
+      "title": "Time and place words move too",
+      "center": "What changes when you report",
+      "branches": [
+        {"label": "Time", "items": ["now → then", "today → that day", "tomorrow → the next day", "yesterday → the day before"], "tone": "a"},
+        {"label": "Place", "items": ["here → there", "this school → that school"], "tone": "b"},
+        {"label": "Demonstratives", "items": ["this → that", "these → those"], "tone": "c"}
+      ]
+    },
+    {
+      "type": "formula",
+      "title": "Reported questions: statement word order",
+      "parts": [
+        {"chip": "asked (+ object)", "tone": "kw"},
+        {"chip": "if / whether / wh-word", "tone": "a", "ex": "if I liked it"},
+        {"chip": "→", "tone": "arrow"},
+        {"chip": "subject + verb", "tone": "b", "ex": "I liked it"}
+      ],
+      "caption": "No question mark, no auxiliary do/does/did, and the word order of a normal statement."
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "reporting verb", "tone": "kw", "ex": "said / told / asked"},
+      {"chip": "(that)", "tone": "arrow"},
+      {"chip": "clause, one tense back", "tone": "a", "ex": "she had left"}
+    ],
+    "table": {
+      "head": ["Direct speech", "Reported speech", "Example"],
+      "rows": [
+        ["present simple", "past simple", "\"I play chess.\" → He said he played chess."],
+        ["present continuous", "past continuous", "\"I'm studying.\" → She said she was studying."],
+        ["present perfect", "past perfect", "\"I've finished.\" → He said he had finished."],
+        ["past simple", "past perfect", "\"I saw the match.\" → She said she had seen the match."],
+        ["will", "would", "\"I'll call you.\" → He said he would call me."],
+        ["can", "could", "\"I can help.\" → She said she could help."],
+        ["yes/no question", "if / whether + statement order", "\"Do you agree?\" → He asked if I agreed."],
+        ["command / request", "tell/ask + object + (not) to-infinitive", "\"Close the door.\" → She told him to close the door."]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Reporting statements: the verb moves one step back, and so do pronouns, times and places",
+      "examples": [
+        {"text": "Mateo <b>said</b> (that) he <b>had missed</b> the bus that morning.", "note": "present perfect → past perfect"},
+        {"text": "Nadia <b>told</b> us (that) she <b>was working</b> on the essay <b>then</b>.", "note": "now became then in reported speech"},
+        {"text": "Liam <b>said</b> he <b>would meet</b> us <b>the next day</b>.", "note": "will → would; tomorrow → the next day"}
+      ]
+    },
+    {
+      "point": "Reporting questions: yes/no questions with if/whether, wh-questions with the question word, both in statement order",
+      "examples": [
+        {"text": "Miss Vega <b>asked</b> whether the group <b>had finished</b> the reading.", "note": "yes/no question → whether + statement order, no auxiliary"},
+        {"text": "Sofia <b>asked</b> me <b>if</b> I <b>wanted</b> to join the debate club.", "note": "if works exactly like whether here"},
+        {"text": "He <b>asked</b> her what time the rehearsal <b>started</b>.", "note": "wh-question → wh-word + statement order, no question mark"}
+      ]
+    },
+    {
+      "point": "Reporting commands and requests with tell/ask + object + to-infinitive",
+      "examples": [
+        {"text": "The coach <b>told</b> the players <b>to warm up</b> before the match.", "note": "an order → tell + to-infinitive"},
+        {"text": "Nadia <b>asked</b> Liam <b>not to slam</b> the door during the test.", "note": "negative command → not to + infinitive"}
+      ]
+    },
+    {
+      "point": "When the tense does not change: general truths, and modals with no past form",
+      "examples": [
+        {"text": "Miss Vega said the Amazon rainforest <b>covers</b> a huge part of Peru.", "note": "a fact that's still true → tense can stay the same"},
+        {"text": "Sofia said she <b>should</b> revise more before the exam.", "note": "should, could, might, would, ought to don't backshift further"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "She asked me did I like the film.", "right": "She asked me <b>if I liked</b> the film.", "why": "A reported question keeps statement word order — no inverted auxiliary."},
+    {"wrong": "He asked me what did I want for lunch.", "right": "He asked me <b>what I wanted</b> for lunch.", "why": "No <i>did</i> and no inversion in a reported wh-question — it follows normal sentence order."},
+    {"wrong": "The teacher told us to not run in the corridor.", "right": "The teacher told us <b>not to run</b> in the corridor.", "why": "The negative goes before <i>to</i>, not between <i>to</i> and the verb."},
+    {"wrong": "She said she will see me tomorrow.", "right": "She said she <b>would see</b> me <b>the next day</b>.", "why": "Both the modal and the time expression need to shift when you report it later."},
+    {"wrong": "He asked if did she finish her homework?", "right": "He asked <b>if she had finished</b> her homework.", "why": "A reported question is not a question anymore — no question mark, no auxiliary before the subject."},
+    {"wrong": "Liam told that he was tired.", "right": "Liam <b>said</b> (that) he was tired.", "why": "<i>Tell</i> needs an object (tell someone); use <i>said</i> when there's no object stated."}
+  ],
+  "dialogue": {
+    "title": "Catching up after being away",
+    "context": "Mateo was away sick for two days. Sofia, Liam and Nadia fill him in on what happened at school in Lima.",
+    "lines": [
+      {"speaker": "Mateo", "text": "So what did I miss? Start with the science project."},
+      {"speaker": "Sofia", "text": "Miss Vega <b>said</b> the deadline <b>had been moved</b> to next Wednesday."},
+      {"speaker": "Liam", "text": "And she <b>asked</b> if everyone <b>had chosen</b> a topic yet — you'll need to tell her yours."},
+      {"speaker": "Mateo", "text": "Right. Anything about the trip to Cusco?"},
+      {"speaker": "Nadia", "text": "Yes, she <b>told</b> us <b>to bring</b> our forms back by Friday, no exceptions."},
+      {"speaker": "Sofia", "text": "Oh, and Liam's coach <b>asked</b> him <b>whether</b> he <b>could play</b> in Saturday's match."},
+      {"speaker": "Liam", "text": "I <b>told</b> him I <b>would confirm</b> after checking with my parents."},
+      {"speaker": "Mateo", "text": "What about the assembly on Tuesday? I heard there was an announcement."},
+      {"speaker": "Nadia", "text": "The head teacher <b>said</b> the new library <b>would open</b> in October."},
+      {"speaker": "Mateo", "text": "That's great news. Thanks for catching me up — I <b>told</b> my mum I<b>'d find out</b> everything today."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "Sofia said she ___ tired after the match.", "options": ["was", "is", "has been"], "answer": 0, "why": "present simple in direct speech → past simple in reported speech"},
+        {"sentence": "He asked me ___ I had finished the report.", "options": ["that", "if", "what"], "answer": 1, "why": "reported yes/no question → if / whether"},
+        {"sentence": "Nadia asked Liam what time the film ___.", "options": ["starts", "did it start", "started"], "answer": 2, "why": "reported wh-question keeps statement word order, no auxiliary"},
+        {"sentence": "The coach told the team ___ warm up properly.", "options": ["to", "that", "should"], "answer": 0, "why": "reported command → tell + object + to-infinitive"},
+        {"sentence": "Mateo said he ___ call us later that evening.", "options": ["will", "can", "would"], "answer": 2, "why": "will backshifts to would in reported speech"},
+        {"sentence": "Miss Vega told us the Andes ___ through several South American countries — that's just a fact.", "options": ["ran", "run", "had run"], "answer": 1, "why": "a general truth doesn't need to backshift"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Rewrite each part in reported speech, using the correct form of the verb in brackets.",
+      "items": [
+        {"sentence": "\"I'm studying for the exam,\" Nadia said. → Nadia said she ___ (study) for the exam.", "answers": ["was studying"]},
+        {"sentence": "\"Have you seen my notebook?\" Liam asked. → Liam asked if I ___ (see) his notebook.", "answers": ["had seen"]},
+        {"sentence": "\"Don't touch my laptop,\" Sofia said. → Sofia told me ___ (not/touch) her laptop.", "answers": ["not to touch"]},
+        {"sentence": "\"We will arrive tomorrow,\" they said. → They said they ___ (arrive) the next day.", "answers": ["would arrive"]},
+        {"sentence": "\"Where do you live?\" the interviewer asked. → The interviewer asked me where I ___ (live).", "answers": ["lived"]},
+        {"sentence": "\"I can't come to the party,\" Mateo said. → Mateo said he ___ (not/can) come to the party.", "answers": ["couldn't", "could not"]},
+        {"sentence": "\"I saw the results yesterday,\" Sofia said. → Sofia said she ___ (see) the results the day before.", "answers": ["had seen"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first. Use the word given. Do not change it. Use between two and five words.",
+      "items": [
+        {"first": "\"I finished the essay this morning,\" Nadia said.", "key": "HAD", "second_start": "Nadia said she", "second_end": "the essay that morning.", "answers": ["had finished"]},
+        {"first": "\"Will you help me with the poster?\" Liam asked Sofia.", "key": "WOULD", "second_start": "Liam asked Sofia if she", "second_end": "him with the poster.", "answers": ["would help"]},
+        {"first": "\"Don't be late for practice,\" the coach told the team.", "key": "NOT", "second_start": "The coach told the team", "second_end": "for practice.", "answers": ["not to be late"]},
+        {"first": "\"Where did you buy that jacket?\" Nadia asked Mateo.", "key": "WHERE", "second_start": "Nadia asked Mateo", "second_end": "that jacket.", "answers": ["where he had bought", "where he bought"]},
+        {"first": "\"I can't attend the meeting tomorrow,\" Sofia said.", "key": "COULDN'T", "second_start": "Sofia said she", "second_end": "the meeting the next day.", "answers": ["couldn't attend"]}
+      ]
+    }
+  ],
+  "summary": [
+    "Reporting a statement usually moves the verb one tense back: <i>am/is/are</i> → <i>was/were</i>, <i>will</i> → <i>would</i>, <i>have done</i> → <i>had done</i>.",
+    "Pronouns, times and places shift too: <i>I</i> → <i>he/she</i>, <i>tomorrow</i> → <i>the next day</i>, <i>here</i> → <i>there</i>.",
+    "Reported questions never keep question word order: no <i>do/does/did</i>, no inversion, no question mark.",
+    "Commands and requests become <b>tell/ask + object + (not) to-infinitive</b>.",
+    "A fact that's still true, or a modal like <i>would</i>, <i>could</i>, <i>should</i>, doesn't need to move any further back."
+  ]
+}

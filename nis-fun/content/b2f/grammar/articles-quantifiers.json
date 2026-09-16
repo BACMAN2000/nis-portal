@@ -1,0 +1,174 @@
+{
+  "id": "articles-quantifiers",
+  "level": "b2f",
+  "area": "Comparison & description",
+  "title": "Articles and quantifiers",
+  "tagline": "Small words, real difference: a/an/the/zero, and exactly how much of something there is.",
+  "cefr": "B2",
+  "exam": [
+    "Reading & Use of English Part 2 — open cloze",
+    "Reading & Use of English Part 4 — key word transformations",
+    "Writing Part 2 — article or report: general claims vs specific examples"
+  ],
+  "why": "Articles and quantifiers are tiny words, but they change the meaning of a sentence completely: <i>few</i> friends helped and <i>a few</i> friends helped describe almost opposite situations. B2 First tests this precision directly in the open cloze, and it shows up in every piece of writing, where the wrong article can make a general idea sound oddly specific, or a specific one sound vague.",
+  "diagrams": [
+    {
+      "type": "contrast",
+      "title": "a/an, the, or nothing at all?",
+      "columns": ["a/an", "the", "zero article"],
+      "rows": [
+        {"label": "Used with", "cells": ["a singular countable noun, first mention", "something specific, known or unique", "plural or uncountable nouns making a general statement"]},
+        {"label": "Example", "cells": ["Nadia joined a coding club.", "The coding club meets on Fridays.", "Coding clubs are popular in most schools."]},
+        {"label": "Key signal", "cells": ["one example among many, not identified yet", "already mentioned, obvious from context, or one of a kind", "talking about the whole idea, not one example of it"]},
+        {"label": "Common mistake", "cells": ["forgetting it before a new countable noun", "adding it to plural/uncountable nouns in general statements", "adding it to unique or abstract nouns like 'space' or 'nature'"]}
+      ]
+    },
+    {
+      "type": "map",
+      "title": "How much? How many?",
+      "center": "Quantifiers",
+      "branches": [
+        {"label": "Almost none (negative)", "items": ["few + countable", "little + uncountable", "hardly any + either"], "tone": "a"},
+        {"label": "Some (positive, small)", "items": ["a few + countable", "a little + uncountable", "several + countable"], "tone": "b"},
+        {"label": "A lot", "items": ["plenty of + either", "a great deal of + uncountable", "a large number of + countable"], "tone": "c"},
+        {"label": "The whole group", "items": ["all / both", "every / each", "neither / either", "none of"], "tone": "kw"}
+      ]
+    },
+    {
+      "type": "contrast",
+      "title": "Talking about a group precisely",
+      "columns": ["each / every", "all / both", "neither / none of"],
+      "rows": [
+        {"label": "Grammar", "cells": ["each/every + singular noun + singular verb", "all/both + plural noun + plural verb", "neither/none of + singular verb (formal)"]},
+        {"label": "Group size", "cells": ["every = three or more; each = two or more", "both = exactly two; all = three or more", "neither = two; none = three or more"]},
+        {"label": "Example", "cells": ["Every student handed in the essay on time.", "Both teams trained twice a week before the tournament.", "Neither answer was completely correct."]},
+        {"label": "With 'of'", "cells": ["each of + the/these + plural (never 'every of')", "all of / both of + the + plural", "none of + the + plural; neither of + the + two"]}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "noun", "tone": "kw"},
+      {"chip": "countable, first mention → a/an", "tone": "a", "ex": "a laptop"},
+      {"chip": "known or unique → the", "tone": "b", "ex": "the laptop I borrowed"},
+      {"chip": "uncountable or general plural → zero", "tone": "c", "ex": "laptops are expensive"}
+    ],
+    "table": {
+      "head": ["Pattern", "Rule", "Example"],
+      "rows": [
+        ["Zero article", "plural or uncountable noun making a general statement", "Music brings people together."],
+        ["a/an", "first mention of a singular countable noun", "She joined a debate club last term."],
+        ["the", "something already known, unique or specified", "The teacher who marked our essays retired."],
+        ["the", "superlatives and ranked or one-of-a-kind nouns", "the most reliable Wi-Fi in the building"],
+        ["few / little", "almost none — a negative idea; few + countable, little + uncountable", "few volunteers turned up / little time left"],
+        ["a few / a little", "some — a small, positive amount", "a few good ideas / a little patience"],
+        ["plenty of / hardly any", "more than enough / almost none; both work with countable and uncountable", "plenty of practice tests / hardly any excuses"],
+        ["all / both / every / each / either / neither / none of", "quantifying a defined group, not individuals", "Neither team scored in the first half."]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Choosing a/an, the or zero article for general, specific and abstract nouns",
+      "examples": [
+        {"text": "Nadia is doing <b>a</b> research project on renewable energy this term.", "note": "first mention, one example among many"},
+        {"text": "<b>The</b> project she chose looks at solar panels on school roofs.", "note": "specific, already mentioned"},
+        {"text": "Miss Vega says <b>hard work</b> matters more than natural talent.", "note": "uncountable noun used generally, no article"}
+      ]
+    },
+    {
+      "point": "Small or large amounts, countable and uncountable",
+      "examples": [
+        {"text": "There were <b>few</b> empty seats left, so most of us had to stand.", "note": "few = almost none, negative feeling"},
+        {"text": "Don't worry, there's <b>a little</b> time before the bus leaves.", "note": "a little = a small but useful amount"},
+        {"text": "We only have <b>a few</b> days before the mock exam.", "note": "a few = some, countable"}
+      ]
+    },
+    {
+      "point": "Talking about a whole group: all, both, every, each, neither, none",
+      "examples": [
+        {"text": "<b>Both</b> teams trained twice a week before the tournament.", "note": "both = exactly two"},
+        {"text": "<b>Neither</b> of the two guides spoke English fluently.", "note": "neither of + the + two, negative"},
+        {"text": "<b>None</b> of the buses were running because of the strike.", "note": "none of + three or more"}
+      ]
+    },
+    {
+      "point": "In writing: general claims that sound natural, not translated",
+      "examples": [
+        {"text": "<b>Teenagers</b> today spend too much time comparing themselves to influencers.", "note": "general plural, zero article, common Part 2/Writing pattern"},
+        {"text": "<b>The internet</b> has changed how <b>young people</b> learn languages.", "note": "the + specific technology, zero article + general group"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "The teenagers today spend too much time online.", "right": "<b>Teenagers</b> today spend too much time online.", "why": "A general statement about a whole group of people never takes <i>the</i>."},
+    {"wrong": "She gave me an advice about the interview.", "right": "She gave me <b>some advice</b> about the interview.", "why": "<i>Advice</i> is uncountable, so it can't take <i>a/an</i>; use <i>some</i> or leave it bare."},
+    {"wrong": "Sofia has read less books this term than Nadia.", "right": "Sofia has read <b>fewer</b> books this term than Nadia.", "why": "<i>Fewer</i> goes with countable nouns like <i>books</i>; <i>less</i> is for uncountable nouns."},
+    {"wrong": "There's little snacks left, so let's share.", "right": "There are <b>a few</b> snacks left, so let's share.", "why": "<i>Little</i> is for uncountable nouns; <i>snacks</i> is countable and plural, so it needs <i>a few</i> + plural verb."},
+    {"wrong": "Every of the students passed the mock exam.", "right": "<b>Every one</b> of the students passed the mock exam.", "why": "<i>Every</i> is never followed directly by <i>of</i>; use <i>every one of</i> or switch to <i>all of</i> / <i>each of</i>."},
+    {"wrong": "None of the two answers was correct.", "right": "<b>Neither</b> of the two answers was correct.", "why": "<i>None of</i> is for three or more; with exactly two, use <i>neither</i>."}
+  ],
+  "dialogue": {
+    "title": "Planning the coastal clean-up",
+    "context": "Mateo, Sofia and Liam are organising a beach clean-up on the coast for their environmental club, and Miss Vega stops by to check on the plan.",
+    "lines": [
+      {"speaker": "Mateo", "text": "So far only <b>a few</b> people have signed up. We need more volunteers."},
+      {"speaker": "Sofia", "text": "That's <b>the</b> problem with posting it online — <b>few</b> students actually read the group chat."},
+      {"speaker": "Liam", "text": "Let's ask Miss Vega if we can announce it in class. <b>The</b> whole point is getting more hands on <b>the</b> beach."},
+      {"speaker": "Miss Vega", "text": "Good idea. How much rubbish are we talking about, roughly?"},
+      {"speaker": "Sofia", "text": "<b>Plenty of</b> it, unfortunately — plastic bottles mostly, and hardly any bins nearby."},
+      {"speaker": "Miss Vega", "text": "And equipment? Do we have enough gloves and bags for everyone?"},
+      {"speaker": "Mateo", "text": "We've got <b>a little</b> money left from the last fundraiser, so we can buy more if we need to."},
+      {"speaker": "Liam", "text": "<b>Every</b> student who comes should bring their own water bottle, though — no plastic ones."},
+      {"speaker": "Miss Vega", "text": "Sensible. And Nadia mentioned <b>both</b> her cousins want to help too."},
+      {"speaker": "Sofia", "text": "Great — that's <b>a few</b> more names on the list, then."},
+      {"speaker": "Mateo", "text": "<b>None</b> of this works without transport, though. Can the school arrange a bus?"},
+      {"speaker": "Miss Vega", "text": "Leave that with me. If <b>enough</b> of you turn up on Saturday, I'll sort out the rest."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "___ moon looked enormous over the Andes last night.", "options": ["A", "The", "-"], "answer": 1, "why": "there is only one moon, so it's unique — use 'the'"},
+        {"sentence": "Mateo says ___ honesty matters more than talent in football.", "options": ["a", "the", "-"], "answer": 2, "why": "uncountable abstract noun in a general statement → zero article"},
+        {"sentence": "There were ___ empty seats left, so most of us had to stand.", "options": ["few", "a few", "a little"], "answer": 0, "why": "'few' = almost none, matching the negative idea of having to stand"},
+        {"sentence": "Don't worry, there's ___ time before the bus leaves — we can grab a snack.", "options": ["little", "a little", "few"], "answer": 1, "why": "'a little' = a small but useful amount, a positive idea here"},
+        {"sentence": "___ of the two teams scored, so the match finished nil-nil.", "options": ["Neither", "Both", "None"], "answer": 0, "why": "'neither' is for exactly two; 'none' would be used for three or more"},
+        {"sentence": "Sofia has read ___ books this term than Nadia has.", "options": ["less", "fewer", "little"], "answer": 1, "why": "'fewer' goes with the countable noun 'books'; 'less' is for uncountable nouns"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with a suitable article or quantifier.",
+      "items": [
+        {"sentence": "Nadia is doing ___ research project on renewable energy this term.", "answers": ["a"]},
+        {"sentence": "___ information Miss Vega gave us about the trip was really useful.", "answers": ["The", "the"]},
+        {"sentence": "There's ___ point complaining if we don't email the organisers ourselves.", "answers": ["little"]},
+        {"sentence": "We only have ___ days before the mock exam, so we need a revision timetable.", "answers": ["a few"]},
+        {"sentence": "___ of the two guides spoke English fluently, so we used a translation app.", "answers": ["Neither", "neither"]},
+        {"sentence": "___ single student in the group contributed something different to the poster.", "answers": ["Every", "every"]},
+        {"sentence": "That's ___ best essay Sofia has written so far this year.", "answers": ["the"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first. Use the word given. Do not change it. Use between two and five words.",
+      "items": [
+        {"first": "Hardly any of my classmates brought umbrellas today.", "key": "FEW", "second_start": "___", "second_end": "of my classmates brought umbrellas today.", "answers": ["Very few"]},
+        {"first": "There was more than enough food for everyone at the festival.", "key": "PLENTY", "second_start": "There was", "second_end": "food for everyone at the festival.", "answers": ["plenty of"]},
+        {"first": "The teacher gave every student a separate rubric.", "key": "EACH", "second_start": "The teacher gave", "second_end": "a separate rubric.", "answers": ["each student"]},
+        {"first": "The two restaurants were both closed on Sunday.", "key": "NEITHER", "second_start": "___", "second_end": "was open on Sunday.", "answers": ["Neither restaurant"]},
+        {"first": "Every single member of the choir turned up for rehearsal.", "key": "ALL", "second_start": "___", "second_end": "turned up for rehearsal.", "answers": ["All the members", "All of the members"]}
+      ]
+    }
+  ],
+  "summary": [
+    "Use a/an for a first mention, the for something specific or unique, and no article for general plural or uncountable nouns.",
+    "Few and little suggest almost none; a few and a little suggest a small but real amount.",
+    "Each and every take a singular noun and verb; all and both take a plural noun and verb.",
+    "Neither and none of both mean 'not one', but neither is only for two.",
+    "In open cloze and in your own writing, check whether the noun is general or specific before choosing the article."
+  ]
+}

@@ -1,0 +1,209 @@
+{
+  "id": "cleft-sentences",
+  "level": "c1a",
+  "area": "Conditionals & hypothesis",
+  "title": "Cleft sentences",
+  "tagline": "Split one sentence into two so the listener knows exactly which part matters.",
+  "cefr": "C1",
+  "exam": [
+    "Reading & Use of English Part 4 — key word transformations (IT, WHAT, ALL, REASON)",
+    "Writing Part 1 — essay: emphasis and correction",
+    "Speaking Parts 3 and 4 — highlighting the point you most want to make",
+    "Listening — recognising emphasis in spoken argument"
+  ],
+  "why": "Cleft sentences let a writer or speaker point at exactly one piece of information — this fact, not that one — instead of leaving the reader to guess. C1 Advanced rewards this precision in the essay, and Part 4 regularly hides an it-cleft or wh-cleft behind an ordinary-looking key word.",
+  "diagrams": [
+    {
+      "type": "transform",
+      "title": "Splitting a sentence for emphasis",
+      "before": {
+        "text": "The message mattered, not the delivery.",
+        "hl": ["The message mattered"]
+      },
+      "after": {
+        "text": "It was the message that mattered, not the delivery.",
+        "hl": ["It was the message that"]
+      },
+      "steps": [
+        "Put <b>It</b> + a form of <i>be</i> at the front.",
+        "Add the element you want to focus on straight after: <b>the message</b>.",
+        "Follow it with <i>that</i> (or <i>who / which</i>) and the rest of the original sentence."
+      ]
+    },
+    {
+      "type": "contrast",
+      "title": "it-cleft vs. wh-cleft",
+      "columns": ["it-cleft", "wh-cleft"],
+      "rows": [
+        {"label": "Structure", "cells": ["It + be + focus + that/who…", "What/All + clause + be + focus"]},
+        {"label": "Example", "cells": ["<b>It was Nadia</b> who found the mistake.", "<b>What Nadia found</b> was the mistake."]},
+        {"label": "Focus position", "cells": ["Straight after it + be", "At the end, after be"]},
+        {"label": "Typical use", "cells": ["Correcting or isolating one fact", "Building up to an action, need or feeling"]}
+      ]
+    },
+    {
+      "type": "map",
+      "title": "Cleft patterns",
+      "center": "Cleft sentences",
+      "branches": [
+        {"label": "it-cleft", "items": ["It was … that…", "It wasn't … who…"], "tone": "a"},
+        {"label": "wh-cleft", "items": ["What … is/was…", "All … is/was…"], "tone": "b"},
+        {"label": "Fixed clefts", "items": ["The reason … is that…", "The place/person … is…", "The only thing … is…"], "tone": "c"},
+        {"label": "Reversed wh-cleft", "items": ["That's what I meant.", "That's why I left early."], "tone": "a"}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "It", "tone": "kw"},
+      {"chip": "be (was/is)", "tone": "a", "ex": "was"},
+      {"chip": "focus", "tone": "b", "ex": "the message"},
+      {"chip": "that / who / which", "tone": "c", "ex": "that"},
+      {"chip": "→", "tone": "arrow"},
+      {"chip": "rest of the sentence", "tone": "c", "ex": "mattered, not the delivery"}
+    ],
+    "table": {
+      "head": ["Pattern", "Structure", "Example"],
+      "rows": [
+        ["it-cleft (thing)", "It + be + noun phrase + that …", "<b>It was the last question</b> that caught everyone out."],
+        ["it-cleft (person)", "It + be + person + who/that …", "<b>It was Liam</b> who spotted the error first."],
+        ["it-cleft, correction", "It + be + not + noun phrase + but …", "<b>It wasn't the exam</b> that worried her, but the interview afterwards."],
+        ["wh-cleft (what)", "What + clause + be + focus", "<b>What surprised</b> the teacher was the level of detail."],
+        ["wh-cleft (all)", "All + clause + be + focus", "<b>All she wanted</b> was a straight answer."],
+        ["reason/place cleft", "The reason/place + clause + be + focus", "<b>The reason</b> the trip was cancelled <b>was</b> the weather."],
+        ["the only thing cleft", "The only thing + clause + be + focus", "<b>The only thing</b> that matters now <b>is</b> the final result."],
+        ["reversed wh-cleft", "That's + what/why/how + clause", "<b>That's exactly what</b> I meant."]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "it-clefts: singling out one fact for emphasis or correction",
+      "examples": [
+        {"text": "<b>It was Sofia's presentation</b> that convinced the judges, not the data itself.", "note": "isolates the true cause"},
+        {"text": "<b>It wasn't the distance</b> that put them off, but the cost of the flights.", "note": "corrects a wrong assumption"},
+        {"text": "<b>It is precisely this kind of detail</b> that separates a good essay from an excellent one.", "note": "formal, academic register"}
+      ]
+    },
+    {
+      "point": "wh-clefts: building up to the important information",
+      "examples": [
+        {"text": "<b>What worries me</b> is the lack of preparation, not the difficulty of the exam.", "note": "the focus comes at the end"},
+        {"text": "<b>What the committee eventually decided</b> was to postpone the trip.", "note": "the focus can be a to-infinitive"},
+        {"text": "<b>What Nadia can't stand</b> is being interrupted mid-sentence.", "note": "the focus can be a gerund"}
+      ]
+    },
+    {
+      "point": "Fixed clefts with reason, place and all",
+      "examples": [
+        {"text": "<b>The reason</b> the museum closed early <b>was</b> a scheduled power cut.", "note": "reason-cleft"},
+        {"text": "<b>The place</b> where I feel most at ease <b>is</b> the school library.", "note": "place-cleft"},
+        {"text": "<b>All</b> she asked for <b>was</b> a little more time.", "note": "all-cleft, close in meaning to a wh-cleft"}
+      ]
+    },
+    {
+      "point": "Reversed wh-clefts, especially in speech",
+      "examples": [
+        {"text": "<b>That's why</b> I double-check every source before I quote it.", "note": "refers back to a reason just given"},
+        {"text": "<b>That's what</b> I've been trying to explain all along.", "note": "refers back to an idea already mentioned"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {
+      "wrong": "Was Liam who found the mistake.",
+      "right": "<b>It was Liam</b> who found the mistake.",
+      "why": "An it-cleft must always start with <i>it</i>; it can never be dropped."
+    },
+    {
+      "wrong": "It was the message what mattered.",
+      "right": "It was the message <b>that</b> mattered.",
+      "why": "The connector after the focus is <i>that</i> (or <i>who/which</i>), never <i>what</i>."
+    },
+    {
+      "wrong": "What worries me it is the silence.",
+      "right": "<b>What worries me</b> is the silence.",
+      "why": "No extra subject pronoun after the wh-clause — the clause itself is the subject."
+    },
+    {
+      "wrong": "The reason why the trip was cancelled was because of the weather.",
+      "right": "<b>The reason</b> the trip was cancelled <b>was</b> the weather.",
+      "why": "Choose either <i>reason … why</i> or <i>because</i>, not both — the two are redundant together."
+    },
+    {
+      "wrong": "That's that I meant.",
+      "right": "<b>That's what</b> I meant.",
+      "why": "A reversed wh-cleft needs <i>what / why / how</i> to introduce the clause, not <i>that</i>."
+    },
+    {
+      "wrong": "All what she wanted was quiet.",
+      "right": "<b>All</b> she wanted was quiet.",
+      "why": "No relative pronoun after <i>all</i> in this pattern — the clause follows directly."
+    }
+  ],
+  "dialogue": {
+    "title": "Who really won the debate",
+    "context": "Nadia, Liam and Miss Vega go over Saturday's inter-school debate, correcting each other about what actually made the difference.",
+    "lines": [
+      {"speaker": "Miss Vega", "text": "So, be honest — what do you think decided the debate on Saturday?"},
+      {"speaker": "Liam", "text": "<b>It was our rebuttal</b> that swung it, not the opening statement."},
+      {"speaker": "Nadia", "text": "I disagree. <b>What really impressed the judges</b> was Sofia's closing argument."},
+      {"speaker": "Liam", "text": "Maybe, but <b>it wasn't the argument itself</b> that convinced them — it was how calmly she delivered it."},
+      {"speaker": "Miss Vega", "text": "Interesting distinction. And the other team — why do you think they lost?"},
+      {"speaker": "Nadia", "text": "<b>The reason</b> they struggled <b>was</b> a lack of evidence, not a lack of confidence."},
+      {"speaker": "Liam", "text": "Exactly. <b>All they had</b> was strong opinions, no statistics to back them up."},
+      {"speaker": "Miss Vega", "text": "Fair point. What surprised you most about your own performance?"},
+      {"speaker": "Nadia", "text": "<b>What surprised me</b> was how nervous I still felt, even after all that practice."},
+      {"speaker": "Liam", "text": "<b>That's exactly what</b> I felt too — the nerves never really go away."},
+      {"speaker": "Miss Vega", "text": "Good. Now, one sentence each: what's the one thing you'll change for the next debate?"},
+      {"speaker": "Nadia", "text": "<b>The only thing</b> I'll change is my timing — I ran over by a whole minute."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "___ Sofia who wrote the final paragraph, not Mateo.", "options": ["It was", "It is", "Was it"], "answer": 0, "why": "An it-cleft for a specific past fact uses it was, matching the past tense of the story."},
+        {"sentence": "It was the noise ___ woke everyone up.", "options": ["who", "that", "what"], "answer": 1, "why": "After an it-cleft focusing on a thing, the connector is that (or which), never what."},
+        {"sentence": "___ annoys me most is people who don't listen.", "options": ["It", "That", "What"], "answer": 2, "why": "A wh-cleft opens with what, not it or that."},
+        {"sentence": "___ she wanted was a little peace and quiet.", "options": ["All", "What all", "The all"], "answer": 0, "why": "All-cleft: All + clause + be + focus, with no extra relative pronoun."},
+        {"sentence": "___ the concert was cancelled was a problem with the sound system.", "options": ["Why", "The reason", "Because"], "answer": 1, "why": "Reason-cleft: The reason + clause + be + focus, not why or because, which would duplicate the idea."},
+        {"sentence": "I know it sounds strange, but ___ I meant.", "options": ["it's what", "that's that", "that's what"], "answer": 2, "why": "A reversed wh-cleft is That's what + clause, referring back to something already said."},
+        {"sentence": "___ we decided in the end was to reschedule the trip.", "options": ["What", "It", "That"], "answer": 0, "why": "The focus of a wh-cleft can be a to-infinitive: What we decided was to reschedule."}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with one word so that it is grammatically correct.",
+      "items": [
+        {"sentence": "___ was the lighting, not the sound, that ruined the recording.", "answers": ["It"]},
+        {"sentence": "It was the lighting, not the sound, ___ ruined the recording.", "answers": ["that", "which"]},
+        {"sentence": "___ surprised everyone was how quickly she answered.", "answers": ["What"]},
+        {"sentence": "___ she needed was a moment to think.", "answers": ["All"]},
+        {"sentence": "___ reason the flight was delayed was the storm.", "answers": ["The"]},
+        {"sentence": "That's ___ I've been saying all along.", "answers": ["what"]},
+        {"sentence": "___ only thing that matters now is the final score.", "answers": ["The"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first, using the word given. Do not change the word given. Use between two and five words.",
+      "items": [
+        {"first": "The teacher's calm explanation reassured the class, not the extra handout.", "key": "WAS", "second_start": "", "second_end": "the teacher's calm explanation that reassured the class, not the extra handout.", "answers": ["It was"]},
+        {"first": "I can't stand people who arrive late without apologising.", "key": "WHAT", "second_start": "", "second_end": "people who arrive late without apologising.", "answers": ["What I can't stand is"]},
+        {"first": "She wanted nothing more than a little recognition.", "key": "ALL", "second_start": "", "second_end": "was a little recognition.", "answers": ["All she wanted"]},
+        {"first": "The museum closed early because of a scheduled power cut.", "key": "REASON", "second_start": "", "second_end": "the museum closed early was a scheduled power cut.", "answers": ["The reason"]},
+        {"first": "For that reason, I always check my sources twice.", "key": "WHY", "second_start": "That's", "second_end": "I always check my sources twice.", "answers": ["exactly why"]},
+        {"first": "The cost put them off, not the distance.", "key": "WASN'T", "second_start": "", "second_end": "the distance that put them off; it was the cost.", "answers": ["It wasn't"]}
+      ]
+    }
+  ],
+  "summary": [
+    "It-clefts (<i>It was … that…</i>) single out one element of a sentence, often to correct or emphasise a fact.",
+    "Wh-clefts (<i>What … is…</i>) build up to the important information, saving it for the end.",
+    "Fixed clefts with <i>the reason / the place / the only thing / all</i> follow the same clause + be + focus pattern.",
+    "Reversed wh-clefts (<i>That's what/why/how…</i>) refer back to something already said, especially in speech.",
+    "Overusing clefts sounds unnatural — save them for the one point you really want to stand out."
+  ]
+}

@@ -28,7 +28,7 @@
  "scene": {
   "speaker": "nova",
   "bubble": "Our workshop is being renovated right now! Learn the continuous passive to describe changes in progress.",
-  "intro": "For our Inspiring Nordic — Trades project, the Grade 9 workshop is being renovated this term. In this unit you read how the room is being changed, you learn the present and past continuous passive to describe actions in progress, and you talk about what is being built or improved around you. If a new sports centre is being built near your home, how would you say it? Let's find out."
+  "intro": "For our Inspiring Nordic — Trades project, the B1 workshop is being renovated this term. In this unit you read how the room is being changed, you learn the present and past continuous passive to describe actions in progress, and you talk about what is being built or improved around you. If a new sports centre is being built near your home, how would you say it? Let's find out."
  },
  "activities": [
   {
@@ -85,8 +85,8 @@
     "title": "Inside the workshop that is being rebuilt",
     "author": "liam",
     "byline": "by Liam",
-    "text": "<p>Walk past the old technology room this month and you will hear drills, hammers and laughter. As part of <i>Inspiring Nordic — Trades</i>, our school workshop <b>is being renovated</b> by Grade 9 and a friendly local team.</p><p>Right now, new workbenches <b>are being installed</b> along the walls, and brighter lights <b>are being fitted</b> in the ceiling. When I visited on Monday, the floor <b>was being replaced</b> with strong, non-slip tiles. At the same time, the tool cupboards <b>were being painted</b> a cheerful blue.</p><p><b>Mateo</b> is proud of the progress. “Every corner is being improved,” he told me. “Even the old sink is being repaired.” <b>Nadia</b> added that safety posters are being designed by the art class, so nobody forgets the rules.</p><p>The best part? Students are doing much of the work themselves. Skills like measuring, drilling and painting are being learned in real conditions, not just from a book. A short film <b>is being made</b> too, so families can see how the room was changed.</p><p>By next term, a modern, safe workshop will be ready — and we can honestly say it was built by us.</p>",
-    "script": "Walk past the old technology room this month and you will hear drills, hammers and laughter. As part of Inspiring Nordic Trades, our school workshop is being renovated by Grade 9 and a friendly local team. Right now, new workbenches are being installed along the walls, and brighter lights are being fitted in the ceiling. When I visited on Monday, the floor was being replaced with strong tiles. Mateo is proud of the progress. Every corner is being improved, he told me. Nadia added that safety posters are being designed by the art class. Students are doing much of the work themselves. Skills like measuring, drilling and painting are being learned in real conditions. By next term, a modern, safe workshop will be ready, and we can honestly say it was built by us.",
+    "text": "<p>Walk past the old technology room this month and you will hear drills, hammers and laughter. As part of <i>Inspiring Nordic — Trades</i>, our school workshop <b>is being renovated</b> by B1 and a friendly local team.</p><p>Right now, new workbenches <b>are being installed</b> along the walls, and brighter lights <b>are being fitted</b> in the ceiling. When I visited on Monday, the floor <b>was being replaced</b> with strong, non-slip tiles. At the same time, the tool cupboards <b>were being painted</b> a cheerful blue.</p><p><b>Mateo</b> is proud of the progress. “Every corner is being improved,” he told me. “Even the old sink is being repaired.” <b>Nadia</b> added that safety posters are being designed by the art class, so nobody forgets the rules.</p><p>The best part? Students are doing much of the work themselves. Skills like measuring, drilling and painting are being learned in real conditions, not just from a book. A short film <b>is being made</b> too, so families can see how the room was changed.</p><p>By next term, a modern, safe workshop will be ready — and we can honestly say it was built by us.</p>",
+    "script": "Walk past the old technology room this month and you will hear drills, hammers and laughter. As part of Inspiring Nordic Trades, our school workshop is being renovated by B1 and a friendly local team. Right now, new workbenches are being installed along the walls, and brighter lights are being fitted in the ceiling. When I visited on Monday, the floor was being replaced with strong tiles. Mateo is proud of the progress. Every corner is being improved, he told me. Nadia added that safety posters are being designed by the art class. Students are doing much of the work themselves. Skills like measuring, drilling and painting are being learned in real conditions. By next term, a modern, safe workshop will be ready, and we can honestly say it was built by us.",
     "questions": [
      {
       "q": "What is happening to the school workshop this month?",
@@ -241,7 +241,7 @@
      "being",
      "done"
     ],
-    "text": "At the moment the workshop {1} being renovated. New benches are {2} installed today. Yesterday the floor {3} being replaced. The old walls {4} being painted last week. A modern sign is {5} designed right now. All this work is being {6} by Grade 9 students.",
+    "text": "At the moment the workshop {1} being renovated. New benches are {2} installed today. Yesterday the floor {3} being replaced. The old walls {4} being painted last week. A modern sign is {5} designed right now. All this work is being {6} by B1 students.",
     "answers": [
      "is",
      "being",
@@ -263,7 +263,7 @@
    "audio": "pet/u08-e.mp3",
    "data": {
     "voice_note": "Voz: la profesora (Miss Vega), dando el parte de obra del taller.",
-    "script": "Good morning, Grade 9. Let me update you on our Trades project. Right now the workshop is being renovated for the Inspiring Nordic exhibition. New benches are being installed this week, and the old walls are being painted a fresh white. While we were away, the floor was being replaced by a local team. Liam is being trained to use the new drill safely. Remember, safety goggles are being provided for everyone. Next Monday the finished room is being opened. Bring your notebooks and your best ideas!",
+    "script": "Good morning, B1. Let me update you on our Trades project. Right now the workshop is being renovated for the Inspiring Nordic exhibition. New benches are being installed this week, and the old walls are being painted a fresh white. While we were away, the floor was being replaced by a local team. Liam is being trained to use the new drill safely. Remember, safety goggles are being provided for everyone. Next Monday the finished room is being opened. Bring your notebooks and your best ideas!",
     "questions": [
      {
       "q": "Right now the workshop is being …",

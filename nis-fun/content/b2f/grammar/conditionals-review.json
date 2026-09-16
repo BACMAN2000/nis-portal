@@ -1,0 +1,169 @@
+{
+  "id": "conditionals-review",
+  "level": "b2f",
+  "area": "Conditionals & hypothesis",
+  "title": "Conditionals: zero to third",
+  "tagline": "Four ways to talk about if: facts, real futures, unreal presents and unreal pasts.",
+  "cefr": "B2",
+  "exam": [
+    "Reading & Use of English Part 4 — key word transformations",
+    "Reading & Use of English Part 2 — open cloze (unless / provided / in case)",
+    "Speaking Part 3 — negotiating options with a partner"
+  ],
+  "why": "Every conditional answers the same question — what happens if something else happens? — but the four types are not interchangeable: mixing them up turns a general rule into an impossible fantasy, or a real plan into pure speculation. B2 First tests the whole system, from the linking words that replace <b>if</b> to the exact verb forms each type needs.",
+  "diagrams": [
+    {
+      "type": "contrast",
+      "title": "The four conditionals at a glance",
+      "columns": ["If-clause", "Result clause", "Meaning"],
+      "rows": [
+        {"label": "Zero", "cells": ["present simple", "present simple", "a general truth or a rule, true every time"]},
+        {"label": "First", "cells": ["present simple", "will / may / might / could + infinitive", "a real possibility in the future"]},
+        {"label": "Second", "cells": ["past simple (were)", "would / could / might + infinitive", "an unreal or unlikely present or future"]},
+        {"label": "Third", "cells": ["past perfect", "would / could / might have + participle", "an unreal past — it didn't happen"]}
+      ]
+    },
+    {
+      "type": "timeline",
+      "title": "How far from reality?",
+      "marks": [
+        {"at": "future", "label": "If you train harder, you'll make the team.", "sub": "first: a real future"},
+        {"at": "now", "label": "If I had more free time, I would learn guitar.", "sub": "second: an unreal present"},
+        {"at": "past", "label": "If I had practised, I would have passed the audition.", "sub": "third: an unreal past"}
+      ],
+      "arrows": [[0, 1, "less and less likely"], [1, 2, "already impossible to change"]],
+      "caption": "The further the condition is from real life, the further the verb forms move from the present simple."
+    },
+    {
+      "type": "map",
+      "title": "Alternatives to if",
+      "center": "Conditional linkers",
+      "branches": [
+        {"label": "unless (= if … not)", "items": ["Unless you leave now, you'll miss the bus.", "We won't go unless the rain stops."], "tone": "a"},
+        {"label": "as long as / provided (that)", "items": ["You can borrow my notes as long as you return them.", "Provided that you finish on time, it's fine."], "tone": "b"},
+        {"label": "even if", "items": ["Even if it rains, the match will go ahead.", "Even if she apologises, I won't forgive her that easily."], "tone": "c"},
+        {"label": "in case", "items": ["Take an umbrella in case it rains later.", "I'll save you a seat in case you're late."]}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "If", "tone": "kw"},
+      {"chip": "condition clause", "tone": "a", "ex": "you study"},
+      {"chip": "→", "tone": "arrow"},
+      {"chip": "result clause", "tone": "b", "ex": "you'll pass"}
+    ],
+    "table": {
+      "head": ["Type", "Pattern", "Example", "Note"],
+      "rows": [
+        ["Zero", "if/when + present, present", "If you heat ice, it melts.", "if and when are interchangeable here"],
+        ["First", "if + present, will + infinitive", "If Sofia finishes early, she'll help us.", "the classic real future"],
+        ["First (alternatives)", "if + present, may/might/could + infinitive", "If it rains, the trip might be cancelled.", "less certain result than will"],
+        ["Second", "if + past simple, would + infinitive", "If I were you, I would ask Miss Vega.", "were for all persons in formal or careful English"],
+        ["Second (alternatives)", "if + past simple, could/might + infinitive", "If we practised more, we could win the tournament.", "could = ability/possibility, might = less certain"],
+        ["Third", "if + past perfect, would have + participle", "If they had left earlier, they would have caught the train.", "the moment for the condition has already passed"]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Zero conditional: facts, rules and things that are always true",
+      "examples": [
+        {"text": "<b>If</b> the temperature <b>drops</b> below zero in the Andes, water <b>freezes</b> overnight.", "note": "a scientific fact"},
+        {"text": "<b>If</b> a student <b>arrives</b> after the bell, the teacher <b>marks</b> them late.", "note": "a school rule"}
+      ]
+    },
+    {
+      "point": "First conditional: real, likely situations in the future",
+      "examples": [
+        {"text": "<b>If</b> Liam <b>finishes</b> his project tonight, he <b>'ll present</b> it tomorrow.", "note": "will = the standard future result"},
+        {"text": "<b>Unless</b> Nadia <b>practises</b> every day, she <b>won't be</b> ready for the concert.", "note": "unless = if … not"},
+        {"text": "If the weather <b>stays</b> like this, the match <b>might be</b> cancelled.", "note": "might = alternative to will, less certain"}
+      ]
+    },
+    {
+      "point": "Second conditional: unreal or unlikely situations now or in the future",
+      "examples": [
+        {"text": "If I <b>were</b> the head boy, I <b>would change</b> the school lunch menu.", "note": "were for all persons; a hypothetical role"},
+        {"text": "If Mateo <b>had</b> more time, he <b>could join</b> the robotics team.", "note": "could = possibility, not certainty"},
+        {"text": "If people <b>cared</b> more about the coastline, there <b>wouldn't be</b> so much plastic on the beach.", "note": "a present wish about how things are"}
+      ]
+    },
+    {
+      "point": "Third conditional: unreal situations in the past — things that didn't happen",
+      "examples": [
+        {"text": "If Sofia <b>had checked</b> the timetable, she <b>wouldn't have missed</b> the exam.", "note": "a past mistake with a past consequence"},
+        {"text": "Provided that the coach <b>had picked</b> a stronger squad, they <b>might have won</b> the final.", "note": "provided that in a formal, hypothetical past sentence"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "If it will rain, we'll stay inside.", "right": "If it <b>rains</b>, we'll stay inside.", "why": "No <i>will</i> in the if-clause of a first conditional, even though the meaning is about the future."},
+    {"wrong": "If I was you, I would talk to Miss Vega.", "right": "If I <b>were</b> you, I would talk to Miss Vega.", "why": "<i>Were</i> is the expected form for all persons in the second conditional, especially in <i>if I were you</i>."},
+    {"wrong": "Unless you don't hurry, we'll be late.", "right": "<b>Unless</b> you hurry, we'll be late.", "why": "<i>Unless</i> already means <i>if not</i>, so a second negative makes the sentence say the opposite of what you mean."},
+    {"wrong": "If they would have trained harder, they would have won.", "right": "If they <b>had trained</b> harder, they would have won.", "why": "No <i>would</i> in the if-clause of a third conditional — it takes the past perfect."},
+    {"wrong": "Take a jacket if it gets cold later.", "right": "Take a jacket <b>in case</b> it gets cold later.", "why": "<i>In case</i> means as a precaution, before something happens; <i>if</i> describes a direct condition and result."},
+    {"wrong": "I'll lend you my notes as long as you will return them.", "right": "I'll lend you my notes as long as you <b>return</b> them.", "why": "After <i>as long as</i> and <i>provided that</i>, use the present simple, not <i>will</i>, even for a future meaning."}
+  ],
+  "dialogue": {
+    "title": "Planning the trip to Cusco",
+    "context": "Mateo, Sofia and Nadia are deciding whether their class trip to Cusco will still go ahead, with Miss Vega checking the details.",
+    "lines": [
+      {"speaker": "Mateo", "text": "<b>If</b> the forms <b>aren't</b> in by Friday, the trip <b>gets cancelled</b> automatically. That's the school rule."},
+      {"speaker": "Sofia", "text": "Then we need everyone's signature today. <b>Unless</b> we collect them all, Miss Vega <b>won't confirm</b> the bus."},
+      {"speaker": "Nadia", "text": "I'll ask Liam now. <b>If</b> he <b>signs</b> before lunch, we'll have every form."},
+      {"speaker": "Miss Vega", "text": "Good. And <b>provided that</b> the weather forecast <b>stays</b> good, we'll leave at six on Saturday."},
+      {"speaker": "Mateo", "text": "<b>Even if</b> it rains a little, we'd still go, right? It's the Andes, after all."},
+      {"speaker": "Miss Vega", "text": "A little rain, yes. But <b>if</b> there <b>were</b> a storm warning, we <b>would postpone</b> it — safety first."},
+      {"speaker": "Sofia", "text": "Makes sense. Last year, <b>if</b> we <b>had checked</b> the forecast properly, we <b>wouldn't have got</b> stuck in Ollantaytambo."},
+      {"speaker": "Nadia", "text": "True. I'm bringing an extra jumper this time, just <b>in case</b> it's cold at altitude."},
+      {"speaker": "Mateo", "text": "Smart. <b>If</b> I <b>were</b> more organised, I <b>would have packed</b> already, like you two."},
+      {"speaker": "Miss Vega", "text": "There's still time. Now go and find Liam before that deadline."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "If water ___ to 100 degrees, it boils.", "options": ["heats", "will heat", "heated"], "answer": 0, "why": "a scientific fact → zero conditional, present simple"},
+        {"sentence": "___ you finish the essay tonight, we can check it together tomorrow.", "options": ["If", "Unless", "In case"], "answer": 0, "why": "a real future condition → if"},
+        {"sentence": "If I ___ the captain, I would choose a completely different tactic.", "options": ["am", "was", "were"], "answer": 2, "why": "second conditional, unreal present → were for all persons"},
+        {"sentence": "They wouldn't have missed the flight if they ___ earlier.", "options": ["left", "had left", "would leave"], "answer": 1, "why": "third conditional, unreal past → past perfect in the if-clause"},
+        {"sentence": "___ it rains during the match, we'll still play — the pitch drains quickly.", "options": ["Unless", "As long as", "Even if"], "answer": 2, "why": "the result happens despite the condition → even if"},
+        {"sentence": "Bring your student card ___ they ask for identification at the museum.", "options": ["if", "in case", "unless"], "answer": 1, "why": "a precaution before something might happen → in case"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with the correct form of the verb in brackets.",
+      "items": [
+        {"sentence": "If the museum ___ (be) closed on Mondays, we'll go on Tuesday instead.", "answers": ["is"]},
+        {"sentence": "If I ___ (have) a car, I would drive you to training every day.", "answers": ["had"]},
+        {"sentence": "Unless the coach ___ (change) his mind, Liam won't start the final.", "answers": ["changes"]},
+        {"sentence": "If Nadia ___ (not/practise) so hard last year, she wouldn't have made the orchestra.", "answers": ["hadn't practised", "had not practised"]},
+        {"sentence": "Provided that you ___ (return) the equipment by Friday, there's no fine.", "answers": ["return"]},
+        {"sentence": "If people ___ (recycle) more, there would be far less rubbish on the coast.", "answers": ["recycled"]},
+        {"sentence": "If she ___ (ask) for help sooner, the project might have gone more smoothly.", "answers": ["had asked"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first. Use the word given. Do not change it. Use between two and five words.",
+      "items": [
+        {"first": "If you don't hand in the permission form, you won't be allowed on the trip.", "key": "UNLESS", "second_start": "You won't be allowed on the trip", "second_end": "the permission form.", "answers": ["unless you hand in"]},
+        {"first": "I'm not the team captain, so I don't decide the tactics.", "key": "WERE", "second_start": "If I", "second_end": "captain, I would decide the tactics.", "answers": ["were the team", "were team"]},
+        {"first": "They didn't book early, so they missed the discount.", "key": "HAD", "second_start": "If they", "second_end": "early, they wouldn't have missed the discount.", "answers": ["had booked"]},
+        {"first": "You can use my laptop on the condition that you return it charged.", "key": "LONG", "second_start": "You can use my laptop", "second_end": "you return it charged.", "answers": ["as long as"]},
+        {"first": "It's possible that it will rain later, so take an umbrella.", "key": "CASE", "second_start": "Take an umbrella", "second_end": "it rains later.", "answers": ["in case"]}
+      ]
+    }
+  ],
+  "summary": [
+    "Zero conditional states a fact or a rule; first conditional describes a real possibility in the future.",
+    "Second conditional imagines an unreal or unlikely present, with <b>were</b> for every person; third conditional imagines an unreal past.",
+    "<i>Unless</i>, <i>as long as</i>, <i>provided that</i>, <i>even if</i> and <i>in case</i> all replace or add to <i>if</i>, each with its own logic.",
+    "The result clause is not always <i>will</i> or <i>would</i> — <i>may</i>, <i>might</i> and <i>could</i> soften the certainty.",
+    "Match the verb forms to how real or unreal the condition is: present simple → past simple → past perfect, moving further from reality."
+  ]
+}

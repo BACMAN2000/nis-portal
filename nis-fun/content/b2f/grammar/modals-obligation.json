@@ -1,0 +1,176 @@
+{
+  "id": "modals-obligation",
+  "level": "b2f",
+  "area": "Modals",
+  "title": "Obligation, permission and advice",
+  "tagline": "Rules you can't break, rules you don't need to follow, and advice that's just strongly worded.",
+  "cefr": "B2",
+  "exam": [
+    "Reading & Use of English Part 4 — key word transformations",
+    "Reading & Use of English Part 1 — multiple-choice cloze",
+    "Speaking Part 3 — discussing rules and recommendations"
+  ],
+  "why": "Spanish speakers often confuse <i>mustn't</i> with <i>don't have to</i> — one forbids, the other simply says something isn't necessary — and that single mix-up can flip the meaning of a whole sentence. B2 First tests this contrast directly, along with the past forms (<i>had to</i>, <i>should have</i>) that students often forget exist.",
+  "diagrams": [
+    {
+      "type": "scale",
+      "title": "How strong is the obligation?",
+      "left": "just a suggestion",
+      "right": "no choice at all",
+      "items": [
+        {"label": "could / might", "pct": 15},
+        {"label": "should / ought to", "pct": 40},
+        {"label": "had better", "pct": 65},
+        {"label": "have to / must", "pct": 100}
+      ]
+    },
+    {
+      "type": "contrast",
+      "title": "mustn't or don't have to?",
+      "columns": ["mustn't", "don't have to"],
+      "rows": [
+        {"label": "Meaning", "cells": ["it is forbidden — a rule against it", "it isn't necessary — but you can if you want"]},
+        {"label": "Where the rule comes from", "cells": ["an external prohibition", "no external rule, so it's optional"]},
+        {"label": "Example", "cells": ["You mustn't use your phone in the exam.", "You don't have to bring a calculator, there's one for you."]}
+      ]
+    },
+    {
+      "type": "map",
+      "title": "Which modal for which job?",
+      "center": "Obligation & advice",
+      "branches": [
+        {"label": "Obligation (external rule)", "items": ["must", "have to", "had to (past)"], "tone": "a"},
+        {"label": "No obligation", "items": ["needn't", "don't have to", "didn't need to"], "tone": "b"},
+        {"label": "Prohibition", "items": ["mustn't", "not allowed to"], "tone": "c"},
+        {"label": "Advice", "items": ["should", "ought to", "had better", "should have (past regret)"], "tone": "a"}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "must / have to", "tone": "kw", "ex": "have to hand it in"},
+      {"chip": "mustn't", "tone": "a", "ex": "mustn't copy"},
+      {"chip": "needn't / don't have to", "tone": "b", "ex": "don't have to attend"},
+      {"chip": "should / ought to", "tone": "c", "ex": "should ask"}
+    ],
+    "table": {
+      "head": ["Form", "Meaning", "Example"],
+      "rows": [
+        ["must / have to", "obligation now (must = the speaker's own rule; have to = an external rule)", "I must remember to charge my phone. / We have to wear a uniform."],
+        ["mustn't", "prohibition — it's forbidden", "You mustn't run near the pool."],
+        ["needn't / don't have to", "no obligation — it's optional", "You needn't bring lunch, it's provided."],
+        ["should / ought to", "advice or a recommendation", "You should ask Miss Vega for an extension."],
+        ["had better", "strong advice, often with a warning of consequences", "You'd better hurry or you'll miss the bus."],
+        ["be allowed to / be permitted to", "permission, in any tense", "Are we allowed to use dictionaries in the test?"],
+        ["had to / didn't have to (past)", "past obligation / past lack of obligation", "We had to queue for an hour. We didn't have to pay."],
+        ["should have / shouldn't have + participle", "criticism or regret about the past", "You shouldn't have left it until the last minute."]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Present obligation: must vs have to",
+      "examples": [
+        {"text": "I <b>must</b> remember to email Miss Vega before Friday.", "note": "the speaker's own decision"},
+        {"text": "Students <b>have to</b> wear the school jumper in winter.", "note": "an external rule, not the speaker's opinion"},
+        {"text": "You <b>have to</b> show your ID card to enter the library.", "note": "an outside requirement"}
+      ]
+    },
+    {
+      "point": "Prohibition and no obligation",
+      "examples": [
+        {"text": "You <b>mustn't</b> use a phone during the listening exam.", "note": "forbidden — a rule against it"},
+        {"text": "You <b>don't have to</b> bring your own racket — the club has spares.", "note": "optional, not forbidden"},
+        {"text": "We <b>needn't</b> hurry; the gates don't open until six.", "note": "no obligation, said at the moment"}
+      ]
+    },
+    {
+      "point": "Advice, recommendations and warnings",
+      "examples": [
+        {"text": "You <b>should</b> ask for help instead of guessing every answer.", "note": "general advice"},
+        {"text": "Nadia <b>ought to</b> practise her presentation one more time.", "note": "a recommendation, slightly more formal"},
+        {"text": "You<b>'d better</b> finish that essay tonight — the deadline is tomorrow.", "note": "strong advice with a consequence"}
+      ]
+    },
+    {
+      "point": "Looking back: past obligation, permission and regret",
+      "examples": [
+        {"text": "We <b>had to</b> rewrite the whole report after the printer failed.", "note": "past obligation"},
+        {"text": "Sofia <b>didn't have to</b> pay for the trip — she won a scholarship.", "note": "past: no obligation existed"},
+        {"text": "Liam <b>should have</b> checked the timetable before leaving home.", "note": "criticism about a past action"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "You mustn't bring a laptop if you don't want to — it's your choice.", "right": "You <b>don't have to</b> bring a laptop if you don't want to.", "why": "<i>Mustn't</i> forbids something; use <i>don't have to</i> when there's simply no obligation."},
+    {"wrong": "Yesterday, we must hand in the forms before lunch.", "right": "Yesterday, we <b>had to</b> hand in the forms before lunch.", "why": "<i>Must</i> has no past form — use <i>had to</i> for a past obligation."},
+    {"wrong": "You should to ask the teacher first.", "right": "You <b>should</b> ask the teacher first.", "why": "<i>Should</i>, like other modals, is followed by the bare infinitive, never <i>to</i>."},
+    {"wrong": "I shouldn't have go to bed so late.", "right": "I shouldn't <b>have gone</b> to bed so late.", "why": "<i>Should have</i> takes a past participle, not the base form."},
+    {"wrong": "Are we allowed use dictionaries?", "right": "Are we <b>allowed to</b> use dictionaries?", "why": "<i>Be allowed to</i> needs <i>to</i> before the infinitive — unlike modal verbs."},
+    {"wrong": "You had better to call your mum now.", "right": "You<b>'d better</b> call your mum now.", "why": "<i>Had better</i> is followed directly by the bare infinitive, with no <i>to</i>."}
+  ],
+  "dialogue": {
+    "title": "Rules for the science trip",
+    "context": "Miss Vega is going over the rules for the trip to the coast with Sofia, Liam and Nadia before they set off.",
+    "lines": [
+      {"speaker": "Miss Vega", "text": "Right, before we go — everyone <b>must</b> wear a life jacket near the water. No exceptions."},
+      {"speaker": "Liam", "text": "Even for just looking at the tide pools? We <b>don't have to</b> go far in."},
+      {"speaker": "Miss Vega", "text": "It doesn't matter — you <b>mustn't</b> go near the rocks without one."},
+      {"speaker": "Sofia", "text": "Understood. Do we <b>have to</b> bring our own snorkels, or does the centre provide them?"},
+      {"speaker": "Miss Vega", "text": "You <b>needn't</b> bring anything — it's all included. But you <b>should</b> bring sun cream."},
+      {"speaker": "Nadia", "text": "I <b>should have</b> packed mine already, actually — I keep forgetting."},
+      {"speaker": "Miss Vega", "text": "You<b>'d better</b> do it tonight, then. Also, phones <b>aren't allowed</b> during the boat trip."},
+      {"speaker": "Liam", "text": "Seriously? Last year we <b>didn't have to</b> hand ours in."},
+      {"speaker": "Miss Vega", "text": "The rules changed after someone dropped one overboard. You <b>mustn't</b> risk it this time."},
+      {"speaker": "Sofia", "text": "Fair enough. We <b>should</b> get moving — the bus leaves in ten minutes."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "You ___ shout in the library — other people are studying.", "options": ["don't have to", "mustn't", "needn't"], "answer": 1, "why": "a prohibition, not simply optional → mustn't"},
+        {"sentence": "We ___ bring our own tents — the school provides them.", "options": ["don't have to", "mustn't", "shouldn't"], "answer": 0, "why": "no obligation, it's optional → don't have to"},
+        {"sentence": "Liam ___ finish his project by Friday, or he'll lose marks.", "options": ["should", "has to", "could"], "answer": 1, "why": "a firm outside requirement → have to"},
+        {"sentence": "You look exhausted — you ___ go to bed earlier tonight.", "options": ["must", "had better", "are allowed to"], "answer": 1, "why": "strong advice with a consequence → had better"},
+        {"sentence": "Yesterday, we ___ wait an hour because the bus was delayed.", "options": ["must", "have to", "had to"], "answer": 2, "why": "past obligation → had to (must has no past form)"},
+        {"sentence": "Sofia ___ the results earlier — she was so anxious all weekend.", "options": ["should have checked", "should check", "must have checked"], "answer": 0, "why": "criticism or regret about a past action → should have + participle"},
+        {"sentence": "___ we use calculators in this part of the exam?", "options": ["Should", "Are we allowed to", "Must"], "answer": 1, "why": "asking about permission → be allowed to"},
+        {"sentence": "You ___ worry about the interview — you're completely prepared.", "options": ["needn't", "mustn't", "shouldn't have"], "answer": 0, "why": "reassurance — there's no need → needn't"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with the correct modal form.",
+      "items": [
+        {"sentence": "Passengers ___ (must/not) leave luggage unattended at any time.", "answers": ["mustn't", "must not"]},
+        {"sentence": "You ___ (not/have to) pay for the museum tour — it's free for students.", "answers": ["don't have to"]},
+        {"sentence": "We ___ (have to) show our passports twice at the airport last week.", "answers": ["had to"]},
+        {"sentence": "Mateo ___ (should) practise his lines more before the play.", "answers": ["should"]},
+        {"sentence": "I think Nadia ___ (should/apologise) to her sister yesterday, but she didn't.", "answers": ["should have apologised"]},
+        {"sentence": "You ___ (had better) call the coach before he leaves without you.", "answers": ["had better", "'d better"]},
+        {"sentence": "___ (be/allowed to) students bring snacks into the exam hall?", "answers": ["Are students allowed to"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first. Use the word given. Do not change it. Use between two and five words.",
+      "items": [
+        {"first": "It is forbidden to take photographs inside the museum.", "key": "MUSTN'T", "second_start": "You", "second_end": "photographs inside the museum.", "answers": ["mustn't take"]},
+        {"first": "It isn't necessary for you to bring a packed lunch.", "key": "HAVE", "second_start": "You", "second_end": "a packed lunch.", "answers": ["don't have to bring"]},
+        {"first": "It would be a good idea for Liam to apologise to the coach.", "key": "SHOULD", "second_start": "Liam", "second_end": "to the coach.", "answers": ["should apologise"]},
+        {"first": "It was necessary for us to queue for over an hour.", "key": "HAD", "second_start": "We", "second_end": "for over an hour.", "answers": ["had to queue"]},
+        {"first": "It was a mistake for Sofia not to save her work before the crash.", "key": "SAVED", "second_start": "Sofia", "second_end": "her work before the crash.", "answers": ["should have saved"]},
+        {"first": "Are students permitted to leave the classroom during the exam?", "key": "ALLOWED", "second_start": "Are students", "second_end": "the classroom during the exam?", "answers": ["allowed to leave"]}
+      ]
+    }
+  ],
+  "summary": [
+    "<i>Must / have to</i>: obligation now — <i>must</i> for the speaker's own decision, <i>have to</i> for an outside rule.",
+    "<i>Mustn't</i> forbids; <i>don't have to / needn't</i> just means it isn't necessary — the two are opposites, not synonyms.",
+    "<i>Should / ought to / had better</i>: advice, from mild to strong, with <i>had better</i> warning of a consequence.",
+    "In the past, <i>must</i> becomes <i>had to</i>, and <i>should have / shouldn't have + participle</i> expresses regret or criticism.",
+    "<i>Be allowed to</i> needs <i>to</i> before the infinitive; true modals (must, should, had better) never do."
+  ]
+}

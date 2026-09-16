@@ -1,0 +1,172 @@
+{
+  "id": "habits-past-present",
+  "level": "b2f",
+  "area": "Tenses & time",
+  "title": "used to, would, be used to, get used to",
+  "tagline": "Past habits that stopped, present habits that feel normal, and the change between them.",
+  "cefr": "B2",
+  "exam": [
+    "Reading & Use of English Part 4 — key word transformations",
+    "Speaking Part 1 — talking about your past and how things have changed",
+    "Writing Part 2 — article or story about change"
+  ],
+  "why": "Four very similar-looking forms mean three different things, and B2 First loves testing exactly that confusion: <i>used to</i> talks about the past, <i>be used to</i> talks about the present, and mixing them up in Part 4 changes whether a habit is finished, current, or still becoming normal.",
+  "diagrams": [
+    {
+      "type": "timeline",
+      "title": "A habit that stopped",
+      "marks": [
+        {"at": "past", "label": "Liam played chess every lunchtime.", "sub": "used to / would play"},
+        {"at": "now", "label": "He doesn't play chess any more.", "sub": "not the same now"}
+      ],
+      "arrows": [[0, 1, "true then, not true now"]],
+      "caption": "Liam <b>used to play</b> chess every lunchtime, but he stopped when he joined the football team."
+    },
+    {
+      "type": "contrast",
+      "title": "Three different ideas, three different forms",
+      "columns": ["What it means", "Example"],
+      "rows": [
+        {"label": "used to + infinitive", "cells": ["a past habit or state, now finished", "I used to walk to school."]},
+        {"label": "would + infinitive", "cells": ["a repeated past action (not a state)", "She would call every Sunday."]},
+        {"label": "be used to + -ing", "cells": ["familiar with something now, it feels normal", "I'm used to the noise now."]},
+        {"label": "get used to + -ing", "cells": ["the process of becoming familiar with something", "I'm getting used to the heat."]}
+      ]
+    },
+    {
+      "type": "formula",
+      "title": "be used to vs get used to",
+      "parts": [
+        {"chip": "be used to", "tone": "kw", "ex": "I'm used to the noise"},
+        {"chip": "= already familiar", "tone": "a"},
+        {"chip": "→", "tone": "arrow"},
+        {"chip": "get used to", "tone": "b", "ex": "I'm getting used to the noise"},
+        {"chip": "= becoming familiar", "tone": "c"}
+      ],
+      "caption": "Both are followed by a noun or an -ing form, never a bare infinitive — this is the error the exam checks most often."
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "used to / would", "tone": "kw", "ex": "used to live"},
+      {"chip": "+ infinitive", "tone": "a"},
+      {"chip": "be/get used to", "tone": "b", "ex": "am used to"},
+      {"chip": "+ noun / -ing", "tone": "c", "ex": "used to getting up early"}
+    ],
+    "table": {
+      "head": ["Form", "Pattern", "Time", "Example"],
+      "rows": [
+        ["used to", "used to + infinitive", "past habit or state, now finished", "We used to live near the coast."],
+        ["would", "would + infinitive", "past repeated action (no states)", "My grandad would tell us stories every evening."],
+        ["be used to", "am/is/are used to + noun/-ing", "present — familiar, feels normal", "Nadia's used to studying in a noisy house."],
+        ["get used to", "am/is/are getting used to + noun/-ing", "present — in the process of adapting", "I'm still getting used to the new timetable."],
+        ["Negative", "didn't use to / isn't used to", "past habit that didn't happen / not familiar", "He didn't use to like vegetables."],
+        ["Question", "Did … use to …? / Are … used to …?", "asking about a past habit / present familiarity", "Did you use to walk to school?"]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Past habits and states that have finished",
+      "examples": [
+        {"text": "Sofia <b>used to be</b> terrified of public speaking.", "note": "a past state, now different"},
+        {"text": "We <b>used to spend</b> every summer with our cousins in Arequipa.", "note": "a past habit, now finished"},
+        {"text": "Mateo <b>didn't use to</b> care about football, but now he never misses a match.", "note": "negative form + contrast with now"}
+      ]
+    },
+    {
+      "point": "Repeated past actions with would",
+      "examples": [
+        {"text": "Every Friday, Miss Vega <b>would</b> read us a chapter before the bell went.", "note": "a repeated action, not a state"},
+        {"text": "My dad <b>would</b> always check the score before saying goodnight.", "note": "a habitual routine, told as a memory"}
+      ]
+    },
+    {
+      "point": "Familiarity now — be used to",
+      "examples": [
+        {"text": "Liam <b>is used to</b> getting up at five for training.", "note": "familiar with it now, it feels normal"},
+        {"text": "After three years here, we<b>'re</b> completely <b>used to</b> the mountain weather.", "note": "used to + noun"},
+        {"text": "I<b>'m not used to</b> speaking in front of the whole school.", "note": "negative — still not comfortable"}
+      ]
+    },
+    {
+      "point": "The process of adapting — get used to",
+      "examples": [
+        {"text": "Nadia <b>is getting used to</b> her new school, though it took her a while.", "note": "still adapting"},
+        {"text": "It took my parents months to <b>get used to</b> living in the city.", "note": "the process, described in the past"},
+        {"text": "You'll soon <b>get used to</b> waking up early for the trip.", "note": "future prediction about the process"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "I use to play chess every day.", "right": "I <b>used to</b> play chess every day.", "why": "<i>Used to</i> is always spelled with -d, even though it's pronounced like <i>use to</i>."},
+    {"wrong": "I am used to get up early now.", "right": "I<b>'m used to getting</b> up early now.", "why": "<i>Be used to</i> takes a noun or an <i>-ing</i> form, never a bare infinitive."},
+    {"wrong": "When I was young, I would be scared of the dark.", "right": "When I was young, I <b>used to be</b> scared of the dark.", "why": "<i>Would</i> doesn't work with states like <i>be</i>, <i>have</i> or <i>like</i> — use <i>used to</i> instead."},
+    {"wrong": "She didn't used to like coffee.", "right": "She <b>didn't use to</b> like coffee.", "why": "In the negative and question forms, <i>use to</i> loses the -d because <i>did</i> already carries the past."},
+    {"wrong": "He is getting used to lived in a new country.", "right": "He<b>'s getting used to living</b> in a new country.", "why": "<i>Get used to</i> also needs a noun or -ing form, not an infinitive."}
+  ],
+  "dialogue": {
+    "title": "New house, new routine",
+    "context": "Nadia has just moved to a new neighbourhood in Lima. Sofia and Mateo are asking how she's settling in.",
+    "lines": [
+      {"speaker": "Sofia", "text": "So how's the new house? Are you <b>used to</b> it yet?"},
+      {"speaker": "Nadia", "text": "Slowly. I<b>'m still getting used to</b> the traffic noise — my old street was so quiet."},
+      {"speaker": "Mateo", "text": "I remember when we moved. I <b>didn't use to</b> sleep well for the first month."},
+      {"speaker": "Nadia", "text": "Exactly! And my dad <b>used to</b> drive me everywhere, but now I <b>'m used to</b> taking the bus alone."},
+      {"speaker": "Sofia", "text": "That's a big change. What about the neighbours — friendly?"},
+      {"speaker": "Nadia", "text": "Very. There's an old man who <b>would</b> wave at everyone from his balcony every single morning."},
+      {"speaker": "Mateo", "text": "We <b>used to have</b> a neighbour like that too — she <b>would</b> bring us bread on Sundays."},
+      {"speaker": "Nadia", "text": "That sounds lovely. Honestly, I think I<b>'m finally getting used to</b> the whole area."},
+      {"speaker": "Sofia", "text": "Give it time. You'll be completely <b>used to</b> it before the school year ends."},
+      {"speaker": "Nadia", "text": "I hope so — I really <b>used to</b> miss the sea from my old flat."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "When I was small, I ___ afraid of dogs.", "options": ["would be", "used to be", "was used to being"], "answer": 1, "why": "a past state → used to, not would"},
+        {"sentence": "Every summer, my grandmother ___ take us fishing at dawn.", "options": ["would", "was used to", "used", "was"], "answer": 0, "why": "a repeated past action (not a state) → would"},
+        {"sentence": "It took Liam weeks to ___ the new gym schedule.", "options": ["use to", "get used to", "be used to"], "answer": 1, "why": "the process of adapting → get used to"},
+        {"sentence": "Mateo ___ studying with music on — he can't concentrate without it.", "options": ["used to", "is used to", "would"], "answer": 1, "why": "a present, familiar habit → be used to"},
+        {"sentence": "We ___ live in Trujillo before we moved to Lima.", "options": ["would", "are used to", "used to"], "answer": 2, "why": "a finished past state → used to"},
+        {"sentence": "___ you use to walk to school when you were younger?", "options": ["Did", "Were", "Have"], "answer": 0, "why": "question form → did + subject + use to"},
+        {"sentence": "She's still not ___ the cold weather up in the mountains.", "options": ["use to", "used to", "using to"], "answer": 1, "why": "be used to + noun, negative form"},
+        {"sentence": "He didn't ___ enjoy reading, but now he's always got a book with him.", "options": ["use to", "used to", "be used to"], "answer": 0, "why": "negative past habit → didn't use to"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with the correct form of the words in brackets.",
+      "items": [
+        {"sentence": "Sofia ___ (used to/be) shy, but now she loves performing.", "answers": ["used to be"]},
+        {"sentence": "My uncle ___ (would/tell) the same joke at every family dinner.", "answers": ["would tell"]},
+        {"sentence": "I'm slowly ___ (get used to/live) without my old friends nearby.", "answers": ["getting used to living"]},
+        {"sentence": "Nadia ___ (be used to/study) in silence — the noise here really bothers her.", "answers": ["isn't used to studying", "is not used to studying"]},
+        {"sentence": "We ___ (not/use to) eat so much fast food, but our habits changed.", "answers": ["didn't use to", "did not use to"]},
+        {"sentence": "By the end of the trip, everyone ___ (be used to/the altitude) in Cusco.", "answers": ["was used to the altitude"]},
+        {"sentence": "Mateo's parents ___ (would/take) him camping every winter.", "answers": ["would take"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first. Use the word given. Do not change it. Use between two and five words.",
+      "items": [
+        {"first": "Liam played chess every day at school, but he stopped years ago.", "key": "USED", "second_start": "Liam", "second_end": "chess every day at school.", "answers": ["used to play"]},
+        {"first": "It no longer feels strange to Nadia to take the bus alone.", "key": "USED", "second_start": "Nadia", "second_end": "the bus alone.", "answers": ["is used to taking"]},
+        {"first": "My grandmother told us stories every evening when we were children.", "key": "WOULD", "second_start": "When we were children, my grandmother", "second_end": "us stories every evening.", "answers": ["would tell"]},
+        {"first": "It is taking Sofia a while to feel comfortable with the new timetable.", "key": "GETTING", "second_start": "Sofia", "second_end": "the new timetable.", "answers": ["is getting used to"]},
+        {"first": "Mateo didn't like spicy food when he was younger.", "key": "USE", "second_start": "Mateo", "second_end": "spicy food when he was younger.", "answers": ["didn't use to like"]},
+        {"first": "It surprises me that Liam is now completely comfortable with early training.", "key": "USED", "second_start": "I'm surprised that Liam", "second_end": "early training.", "answers": ["is used to"]}
+      ]
+    }
+  ],
+  "summary": [
+    "<i>Used to</i> + infinitive: a past habit or state that isn't true any more.",
+    "<i>Would</i> + infinitive: a repeated past action, told as a memory — never for states like <i>be</i> or <i>like</i>.",
+    "<i>Be used to</i> + noun/-ing: familiar with something now, in the present.",
+    "<i>Get used to</i> + noun/-ing: the process of becoming familiar with something.",
+    "In negatives and questions, <i>used to</i> loses its -d: <i>didn't use to</i>, <i>did you use to…?</i>"
+  ]
+}

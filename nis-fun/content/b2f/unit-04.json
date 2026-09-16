@@ -1,779 +1,781 @@
 {
- "id": "b2f-04",
- "level": "b2f",
- "number": 4,
- "title": "The bigger picture",
- "topic": "relative clauses",
- "grammar": "Relative clauses (defining, non-defining and reduced)",
- "wordlist": [
-  "sustainable",
-  "recycle",
-  "landfill",
-  "packaging",
-  "consumption",
-  "resource",
-  "pollution",
-  "secondhand",
-  "repair",
-  "reusable"
- ],
- "wordlist_extra": [
-  "emissions",
-  "biodegradable",
-  "throwaway"
- ],
- "exam_focus": {
-  "paper": "Reading & Use of English",
-  "part": 5,
-  "skill": "multiple choice"
- },
- "characters": [
-  "nova"
- ],
- "scene": {
-  "speaker": "nova",
-  "bubble": "Zoom out and look at the bigger picture — every repair, every recycled bottle and every choice about what we buy adds up. Let's see how English describes it all.",
-  "intro": "Welcome to Unit 4. The Inspiring Nordic project now zooms out from individual trades to the bigger picture: what happens to everything we make, use and throw away. In this unit you read an article, in the format of Reading and Use of English Part 5, about the throwaway culture and the people quietly fighting it. You learn relative clauses, the structures that let you add information smoothly without starting a new sentence, and quantifiers for talking about waste, energy and research. You listen to five speakers, in the format of Listening Part 3, describing what they personally do for the environment, and you write a report, in the format of Writing Part 2, about recycling at your school. Sofía, Mateo, Liam and Nadia have already started collecting ideas — let's join them and see the bigger picture."
- },
- "activities": [
-  {
-   "code": "A",
-   "type": "pairwork",
-   "title": "Speaking — Parts 1 and 2. Talk with a partner, then record yourself.",
-   "outputs": [
-    "book",
-    "digital"
-   ],
-   "speaking": {
-    "part": 2,
-    "name": "Interview and long turn"
-   },
-   "tips": {
-    "expect": "Part 1 (2 minutes): the examiner asks you and your partner questions about yourselves. Part 2 (about 4 minutes): each of you compares two of three photographs for about a minute, answering the question printed above them; then your partner answers a short question about your photos (about 20 seconds).",
-    "how": [
-     "In Part 1, give a short reason or example, not one-word answers, but do not turn it into a speech.",
-     "In Part 2, do not simply describe the photographs. Compare them and answer both parts of the question: speculate (<i>they might be…, perhaps she's hoping to…</i>) and give your opinion.",
-     "Keep talking for the full minute. If you run out of things to say about the first question, move on to the second one."
-    ],
-    "remember": "You only need to talk about TWO of the three photographs — choose the two you can say most about."
-   },
-   "data": {
-    "text": "Part 1: talk about shopping, waste and the environment. Part 2: compare two of the three photographs and say why the people might be doing this and what effect it might have on the environment.",
-    "parts": [
-     {
-      "part": 1,
-      "title": "Interview",
-      "time": "2 min",
-      "prompts": [
-       "Do you usually keep things until they break, or do you replace them quite often?",
-       "What happens to things in your home that nobody wants any more?",
-       "Is recycling easy to do where you live? Tell me about it.",
-       "Do you think young people care more about the environment than older generations? Why?"
-      ]
-     },
-     {
-      "part": 2,
-      "title": "Long turn",
-      "time": "1 min + 20 s",
-      "question": "Compare the two photographs and say <b>why the people might be doing this</b> and <b>what effect it might have on the environment</b>.",
-      "pictures": [
-       {
-        "emoji": "♻️🧑",
-        "caption": "a teenager sorting rubbish into recycling bins"
-       },
-       {
-        "emoji": "🚲🏫",
-        "caption": "a student cycling to school"
-       }
-      ],
-      "partner": "Which of these actions do you think makes the biggest difference? (about 20 seconds)"
-     }
-    ],
-    "useful_language": {
-     "Speculating": [
-      "It looks like…",
-      "Perhaps he's…",
-      "I think she might be…",
-      "They could be…"
-     ],
-     "Comparing": [
-      "In the first picture…, whereas in the second…",
-      "Both pictures show…",
-      "Unlike the boy in the first photo, the person in the second one…"
-     ],
-     "Giving your view": [
-      "In my opinion…",
-      "I feel that…",
-      "What I find interesting is…"
-     ]
-    }
-   }
+  "id": "b2f-04",
+  "level": "b2f",
+  "number": 4,
+  "title": "The bigger picture",
+  "topic": "relative clauses",
+  "grammar": "Relative clauses (defining, non-defining and reduced)",
+  "wordlist": [
+    "sustainable",
+    "recycle",
+    "landfill",
+    "packaging",
+    "consumption",
+    "resource",
+    "pollution",
+    "secondhand",
+    "repair",
+    "reusable"
+  ],
+  "wordlist_extra": [
+    "emissions",
+    "biodegradable",
+    "throwaway"
+  ],
+  "exam_focus": {
+    "paper": "Reading & Use of English",
+    "part": 5,
+    "skill": "multiple choice"
   },
-  {
-   "code": "B",
-   "type": "match_words",
-   "title": "Vocabulary — waste and the planet. Match each word with its meaning.",
-   "outputs": [
-    "book",
-    "digital",
-    "quiz"
-   ],
-   "data": {
-    "left_label": "Word",
-    "right_label": "Meaning",
-    "pairs": [
-     {
-      "left": "sustainable",
-      "right": "able to continue for a long time without harming the environment"
-     },
-     {
-      "left": "recycle",
-      "right": "to treat used material so that it can be used again"
-     },
-     {
-      "left": "landfill",
-      "right": "a site where rubbish is buried under the ground"
-     },
-     {
-      "left": "packaging",
-      "right": "the boxes, plastic or paper used to wrap a product"
-     },
-     {
-      "left": "consumption",
-      "right": "the amount of something that people buy and use"
-     },
-     {
-      "left": "resource",
-      "right": "a useful supply of something, such as energy or raw materials"
-     },
-     {
-      "left": "pollution",
-      "right": "harmful substances that damage the air, water or land"
-     },
-     {
-      "left": "secondhand",
-      "right": "already owned or used by somebody else before"
-     },
-     {
-      "left": "repair",
-      "right": "to mend something that is broken or damaged"
-     },
-     {
-      "left": "reusable",
-      "right": "able to be used again rather than thrown away"
-     }
-    ]
-   }
+  "characters": [
+    "nova"
+  ],
+  "scene": {
+    "speaker": "nova",
+    "bubble": "Zoom out and look at the bigger picture — every repair, every recycled bottle and every choice about what we buy adds up. Let's see how English describes it all.",
+    "intro": "Welcome to Unit 4. The Inspiring Nordic project now zooms out from individual trades to the bigger picture: what happens to everything we make, use and throw away. In this unit you read an article, in the format of Reading and Use of English Part 5, about the throwaway culture and the people quietly fighting it. You learn relative clauses, the structures that let you add information smoothly without starting a new sentence, and quantifiers for talking about waste, energy and research. You listen to five speakers, in the format of Listening Part 3, describing what they personally do for the environment, and you write a report, in the format of Writing Part 2, about recycling at your school. Sofía, Mateo, Liam and Nadia have already started collecting ideas — let's join them and see the bigger picture."
   },
-  {
-   "code": "C",
-   "type": "reading",
-   "title": "Reading and Use of English Part 5 — multiple choice. Read the article and choose the answer that fits best.",
-   "outputs": [
-    "book",
-    "digital"
-   ],
-   "tips": {
-    "expect": "One text of about 500–650 words followed by six four-option questions. They test the main idea, detail, the writer's opinion or attitude, and simple inference. The questions follow the order of the text.",
-    "how": [
-     "Read the whole text once, quickly, to get the general idea and the writer's attitude.",
-     "For each question, find the part of the text it refers to and read it closely. The correct option paraphrases the text; wrong options often reuse words from the text but change the meaning.",
-     "Do not choose an option just because it sounds true in general — check that it is what the writer actually says."
-    ],
-    "remember": "All four options usually relate to the right part of the text. Eliminate the ones that are almost right, not just obviously wrong."
-   },
-   "data": {
-    "kicker": "Inspiring Nordic · Environment feature",
-    "title": "The bigger picture",
-    "author": "liam",
-    "byline": "by Liam, Grade 10",
-    "text": "<p>Have you ever wondered what actually happens to something after you throw it in the bin? Most of us never ask. We finish a drink, drop the bottle in, and move on with our day. Yet that single action is the start of a much longer journey — one that ends, more often than not, in a landfill site or a furnace. For our <i>Inspiring Nordic</i> project this term, we decided to follow that journey and see the bigger picture.</p><p>The numbers are hard to picture. Every year, the average person in a modern city throws away several hundred kilograms of rubbish — food, packaging, clothes, broken gadgets. Some of it can be recycled, but a surprising amount cannot, either because it is mixed with other materials or because nobody sorts it properly. What cannot be recycled is buried or burned, and both processes release gases that warm the planet. In other words, the bin in your kitchen is connected to something much bigger than your kitchen.</p><p>Part of the problem, our research suggested, is a habit rather than a single bad decision: the habit of replacing instead of repairing. A phone with a cracked screen, a jacket with a broken zip, a chair with a wobbly leg — these are usually thrown out rather than fixed, because a new one is often cheaper and always more convenient. Our grandparents' generation rarely had that choice. Clothes were mended, shoes were resoled, and furniture was passed down rather than thrown away. Somewhere along the way, that skill became rare.</p><p>This is where the trades we have been studying all term come back into the picture. Carpenters, tailors and electricians are, in a sense, the opposite of the throwaway culture: their entire job is to make things last longer. We visited a small repair workshop near school, whose owner spends her days bringing broken furniture back to life instead of sending it to landfill. “People are always surprised,” she told us, “that a chair somebody wanted to throw away can look brand new again.”</p><p>Of course, not every solution has to involve a workshop. Simple choices add up too: buying secondhand rather than new, choosing products with less packaging, or repairing a torn bag instead of replacing it. None of these choices is dramatic on its own, which is exactly why they are easy to forget. But multiply one small choice by a few million people, and the effect on landfill and emissions stops being small at all.</p><p>What struck us most, researching this article, was how disconnected the beginning and the end of an object's life usually feel. We rarely think about the landfill while we are shopping, and we rarely think about the shop while we are throwing something away. Repair, in that sense, is not just a practical skill but a way of reconnecting those two ends. Seeing the two ends of that journey together — that is the bigger picture this unit is named after, and it is one we hope readers will not forget the next time they reach for the bin.</p>",
-    "script": "The bigger picture. Have you ever wondered what actually happens to something after you throw it in the bin? Most of us never ask. That single action is the start of a much longer journey, one that ends, more often than not, in a landfill site or a furnace. Every year, the average person in a modern city throws away several hundred kilograms of rubbish. Some of it can be recycled, but a surprising amount cannot. What cannot be recycled is buried or burned, and both processes release gases that warm the planet. Part of the problem is a habit rather than a single bad decision: the habit of replacing instead of repairing. Our grandparents' generation rarely had that choice. This is where the trades we have been studying all term come back into the picture. We visited a small repair workshop near school, whose owner spends her days bringing broken furniture back to life. Simple choices add up too: buying secondhand rather than new, choosing products with less packaging, or repairing something instead of replacing it. Seeing the two ends of an object's journey together — that is the bigger picture this unit is named after.",
-    "questions": [
-     {
-      "q": "In the first paragraph, the writer uses the example of throwing away a bottle to",
-      "options": [
-       "warn readers about the dangers of recycling incorrectly.",
-       "introduce an everyday action that starts a process people rarely think about.",
-       "compare glass bottles with plastic packaging.",
-       "admit that he personally forgets to recycle."
+  "activities": [
+    {
+      "code": "A",
+      "type": "pairwork",
+      "title": "Speaking — Parts 1 and 2. Talk with a partner, then record yourself.",
+      "outputs": [
+        "book",
+        "digital"
       ],
-      "answer": 1
-     },
-     {
-      "q": "According to the second paragraph, a lot of rubbish cannot be recycled because",
-      "options": [
-       "cities do not provide enough recycling bins.",
-       "people refuse to sort their rubbish at home.",
-       "it is mixed with other materials or not sorted correctly.",
-       "recycling machines are too expensive to build."
-      ],
-      "answer": 2
-     },
-     {
-      "q": "What does the writer suggest about the habit of replacing rather than repairing?",
-      "options": [
-       "It is often a matter of convenience and cost, not a single bad choice.",
-       "It only affects expensive items such as phones and furniture.",
-       "It began because shops stopped selling spare parts.",
-       "It is a habit that our grandparents also had."
-      ],
-      "answer": 0
-     },
-     {
-      "q": "What does the workshop owner's comment illustrate?",
-      "options": [
-       "Customers are usually disappointed with the results of repairs.",
-       "Repairing furniture takes far longer than people expect.",
-       "Most customers already know that broken furniture can be restored.",
-       "People often underestimate how well a repaired object can look."
-      ],
-      "answer": 3
-     },
-     {
-      "q": "What point does the writer make about small individual choices, such as buying secondhand?",
-      "options": [
-       "They are only useful if combined with government action.",
-       "Their effect becomes significant when many people make them.",
-       "They are more dramatic than most people realise.",
-       "They matter less than the choices made by workshops."
-      ],
-      "answer": 1
-     },
-     {
-      "q": "In the final paragraph, what does the writer mean by 'the bigger picture'?",
-      "options": [
-       "The growing size of landfill sites around the world.",
-       "A photograph that shows an object before and after repair.",
-       "Seeing the connection between how we shop and how we throw things away.",
-       "The overall cost of recycling compared with repairing."
-      ],
-      "answer": 2
-     }
-    ]
-   }
-  },
-  {
-   "code": "D",
-   "type": "grammar_box",
-   "title": "Language focus 1 — relative clauses: defining, non-defining and reduced",
-   "outputs": [
-    "book",
-    "digital"
-   ],
-   "data": {
-    "title": "Relative clauses: defining, non-defining and reduced",
-    "can": "I can use defining and non-defining relative clauses accurately, including the commas, and reduce a clause with a participle.",
-    "intro": "Liam's article contains several relative clauses that add information smoothly, without starting a new sentence: <i>a small repair workshop, whose owner spends her days…</i>, <i>the trades we have been studying…</i>, <i>gases that warm the planet</i>. Some clauses identify exactly which noun we mean (defining); others simply add extra information about something already identified (non-defining), and some drop the relative pronoun altogether (reduced).",
-    "examples": [
-     {
-      "text": "The man <b>who repaired my bike</b> works near the school.",
-      "note": "defining — no commas; identifies which man"
-     },
-     {
-      "text": "My bike, <b>which is nearly ten years old</b>, still works perfectly.",
-      "note": "non-defining — commas; extra information, never 'that'"
-     },
-     {
-      "text": "The workshop <b>whose owner we interviewed</b> is near school.",
-      "note": "whose = possessive, for people or things"
-     },
-     {
-      "text": "The tools <b>used by carpenters</b> are often passed down for generations.",
-      "note": "reduced (which are used by carpenters)"
-     },
-     {
-      "text": "Sofía, <b>who led the research</b>, found the workshop.",
-      "note": "non-defining, with a person's name"
-     },
-     {
-      "text": "The rubbish <b>that cannot be recycled</b> ends up in landfill.",
-      "note": "defining, with 'that'; no commas"
-     },
-     {
-      "text": "Objects <b>thrown away too soon</b> often end up harming the environment.",
-      "note": "reduced passive (which are thrown away)"
-     }
-    ],
-    "rules": [
-     "Defining clauses identify exactly which person or thing we mean. Use <b>who / which / that</b> with NO commas.",
-     "Non-defining clauses add extra information about something already identified. Use <b>commas</b> on both sides, and never use <b>that</b>.",
-     "Use <b>whose</b> for possession, for both people and things: <i>the man whose car…, the company whose products…</i>",
-     "You can reduce a clause by dropping the relative pronoun and the auxiliary <i>be</i>: <i>the tools (which are) used by carpenters</i>.",
-     "In defining clauses, you can also drop <i>who / which / that</i> when it is the object of the clause: <i>the workshop (that) we visited</i>.",
-     "Commas change the meaning: <i>My brother who lives in Lima is a carpenter</i> (I have more than one brother) vs <i>My brother, who lives in Lima, is a carpenter</i> (I have only one brother)."
-    ],
-    "practice": {
-     "instructions": "Choose the correct word.",
-     "items": [
-      {
-       "sentence": "The tools ___ carpenters use are often expensive.",
-       "options": [
-        "that",
-        "who",
-        "whose"
-       ],
-       "answer": 0
+      "speaking": {
+        "part": 2,
+        "name": "Interview and long turn"
       },
-      {
-       "sentence": "Nadia, ___ idea impressed everyone, spoke first.",
-       "options": [
-        "who",
-        "whose",
-        "which"
-       ],
-       "answer": 1
+      "tips": {
+        "expect": "Part 1 (2 minutes): the examiner asks you and your partner questions about yourselves. Part 2 (about 4 minutes): each of you compares two of three photographs for about a minute, answering the question printed above them; then your partner answers a short question about your photos (about 20 seconds).",
+        "how": [
+          "In Part 1, give a short reason or example, not one-word answers, but do not turn it into a speech.",
+          "In Part 2, do not simply describe the photographs. Compare them and answer both parts of the question: speculate (<i>they might be…, perhaps she's hoping to…</i>) and give your opinion.",
+          "Keep talking for the full minute. If you run out of things to say about the first question, move on to the second one."
+        ],
+        "remember": "You only need to talk about TWO of the three photographs — choose the two you can say most about."
       },
-      {
-       "sentence": "This is the article ___ we read for homework.",
-       "options": [
-        "whose",
-        "who",
-        "that"
-       ],
-       "answer": 2
-      },
-      {
-       "sentence": "My uncle, ___ repairs furniture for a living, taught me a lot.",
-       "options": [
-        "who",
-        "which",
-        "that"
-       ],
-       "answer": 0
-      },
-      {
-       "sentence": "The rubbish ___ in landfill sites can take decades to break down.",
-       "options": [
-        "buries",
-        "buried",
-        "burying"
-       ],
-       "answer": 1
-      },
-      {
-       "sentence": "The workshop, ___ is run by two brothers, is always busy.",
-       "options": [
-        "that",
-        "who",
-        "which"
-       ],
-       "answer": 2
+      "data": {
+        "text": "Part 1: talk about shopping, waste and the environment. Part 2: compare two of the three photographs and say why the people might be doing this and what effect it might have on the environment.",
+        "parts": [
+          {
+            "part": 1,
+            "title": "Interview",
+            "time": "2 min",
+            "prompts": [
+              "Do you usually keep things until they break, or do you replace them quite often?",
+              "What happens to things in your home that nobody wants any more?",
+              "Is recycling easy to do where you live? Tell me about it.",
+              "Do you think young people care more about the environment than older generations? Why?"
+            ]
+          },
+          {
+            "part": 2,
+            "title": "Long turn",
+            "time": "1 min + 20 s",
+            "question": "Compare the two photographs and say <b>why the people might be doing this</b> and <b>what effect it might have on the environment</b>.",
+            "pictures": [
+              {
+                "emoji": "♻️🧑",
+                "caption": "a teenager sorting rubbish into recycling bins"
+              },
+              {
+                "emoji": "🚲🏫",
+                "caption": "a student cycling to school"
+              }
+            ],
+            "partner": "Which of these actions do you think makes the biggest difference? (about 20 seconds)"
+          }
+        ],
+        "useful_language": {
+          "Speculating": [
+            "It looks like…",
+            "Perhaps he's…",
+            "I think she might be…",
+            "They could be…"
+          ],
+          "Comparing": [
+            "In the first picture…, whereas in the second…",
+            "Both pictures show…",
+            "Unlike the boy in the first photo, the person in the second one…"
+          ],
+          "Giving your view": [
+            "In my opinion…",
+            "I feel that…",
+            "What I find interesting is…"
+          ]
+        }
       }
-     ]
-    }
-   }
-  },
-  {
-   "code": "E",
-   "type": "gap_text",
-   "title": "Reading and Use of English Part 2 — open cloze. Write ONE word in each gap.",
-   "outputs": [
-    "digital"
-   ],
-   "tips": {
-    "expect": "A short text with eight gaps. You write one word in each gap — no options are given. The missing words are mostly grammar words: articles, prepositions, pronouns, relative words, linkers, or parts of a fixed phrase.",
-    "how": [
-     "Read the whole text first: the sentence around a gap often decides the answer.",
-     "Look at both sides of the gap: does it need a preposition after a verb, a relative pronoun, or a word to complete a phrase like 'as well as'?",
-     "Only one word fits each gap, and contractions are not allowed."
-    ],
-    "remember": "Check your spelling. A correct word spelt wrongly scores nothing."
-   },
-   "data": {
-    "text": "Recycling has become part of daily life in many schools, yet the results vary enormously from one building to the next. Most schools now have some kind of recycling scheme, but not all of them work {1} well as they should. A bin that is never emptied is {2} no use to anyone, and pupils quickly lose interest {3} sorting rubbish if nothing seems to change. The schools {4} schemes work best are usually the ones {5} give pupils a clear reason to take part — a competition between classes, for example, {6} a visible result, such as a garden built {7} recycled materials. It is not enough {8} put a sign above a bin and hope for the best; people need to see that their small effort leads somewhere, and that somebody is actually checking what happens to the rubbish afterwards. Once pupils notice a real difference, the habit tends to stick, and the scheme keeps running long after the novelty has worn off.",
-    "answers": [
-     "as",
-     "of",
-     "in",
-     "whose",
-     "that",
-     "or",
-     "from",
-     "to"
-    ]
-   }
-  },
-  {
-   "code": "F",
-   "type": "listening_match",
-   "title": "Listening Part 3 — multiple matching. Match each speaker with what they do for the environment.",
-   "outputs": [
-    "digital"
-   ],
-   "audio": "b2f/u04-f.mp3",
-   "tips": {
-    "expect": "Five short monologues, about 30 seconds each, on a related topic. For each speaker (1–5) you choose one of eight options (A–H) that best matches what they say. Three options are not needed. You hear the recordings twice.",
-    "how": [
-     "Read all eight options before you listen, and think about how each idea might be paraphrased.",
-     "The answer is rarely the exact word you hear — the options rewrite the idea in different words.",
-     "Do not choose an option just because you recognise one word from it; check that it matches the whole idea."
-    ],
-    "remember": "Three options are never used. If two options seem to fit one speaker, wait — one of them almost certainly belongs to somebody else."
-   },
-   "data": {
-    "voice_note": "Five speakers (Speaker 1 to Speaker 5) talk in turn about what they personally do to help the environment.",
-    "script": "Speaker 1: At home, we've started separating our food waste from everything else. Peelings, eggshells, old bread — all of that used to go straight in with the rest of the rubbish, but now it goes into a special bin in the garden instead. After a few months it turns into this dark, crumbly material that's brilliant for the plants. It sounds like a small thing, but our black bin is barely half full by the time it gets collected now, which says a lot about how much of what we throw away isn't really rubbish at all. [pause]\nSpeaker 2: My parents used to drop me off outside school every morning, engine running in a queue of cars for a good ten minutes. Last year I asked if I could travel in some other way instead, and honestly it's the best change I've made. It takes about the same amount of time once you count the traffic, I get some exercise before lessons even start, and there's no petrol involved at all. The only difficulty is when it's raining, but even then I'd rather arrive a bit wet than add to that queue outside the gate every day. [pause]\nSpeaker 3: I used to buy new clothes almost every month, mostly things I only wore a couple of times before losing interest. A friend persuaded me to try a shop that sells things other people no longer want, and I was amazed by what was there — some items still had the original tags on. Now it's genuinely my first choice rather than something I do occasionally to save money, and my wardrobe is actually more interesting for it. [pause]\nSpeaker 4: We turned a corner of the garden that used to be completely wasted space into a few raised beds, and we now grow tomatoes, lettuce and herbs through most of the year. It isn't enough to replace a weekly shop, not even close, but there's something satisfying about eating a salad you planted yourself, with none of the packaging that normally comes with it. My grandmother thinks it's funny that we're excited about something she did her whole life without thinking twice. [pause]\nSpeaker 5: A few months ago a friend invited me to help clear rubbish from the river near our neighbourhood, and I've been going back most weekends since. We usually collect several bags of plastic bottles, wrappers and other bits people have dropped or left behind. It's not glamorous work, and some mornings the amount of rubbish is honestly a bit depressing, but the difference afterwards is obvious, and a couple of passers-by have even come back the following week to join in properly.",
-    "speakers": [
-     "Speaker 1",
-     "Speaker 2",
-     "Speaker 3",
-     "Speaker 4",
-     "Speaker 5"
-    ],
-    "tasks": [
-     {
-      "title": "What each speaker does for the environment",
-      "prompt": "For questions 1–5, choose from the list A–H what each speaker says they do to help the environment. Use the letters only once. There are three letters you do not need to use.",
-      "options": [
-       "I try to repair things rather than buy new ones.",
-       "I grow some of my own food at home.",
-       "I always use public transport instead of driving.",
-       "I avoid single-use plastic whenever I can.",
-       "I travel to school without using a car.",
-       "I take part in local clean-up events.",
-       "I buy secondhand clothes rather than new ones.",
-       "I compost my food waste at home."
-      ],
-      "answers": [
-       "H",
-       "E",
-       "G",
-       "B",
-       "F"
-      ]
-     }
-    ]
-   }
-  },
-  {
-   "code": "G",
-   "type": "grammar_box",
-   "title": "Language focus 2 — quantifiers and countable/uncountable nouns",
-   "outputs": [
-    "book",
-    "digital"
-   ],
-   "data": {
-    "title": "Quantifiers: much, many, a great deal of, few, little, plenty of",
-    "can": "I can choose the right quantifier for countable and uncountable nouns when talking about waste, energy and resources.",
-    "intro": "Talking about the environment means talking about amounts — how much waste we produce, how many resources we use. Words like <b>waste</b>, <b>energy</b> and <b>research</b> are uncountable in English, even though it can feel natural to imagine a plural.",
-    "examples": [
-     {
-      "text": "We don't produce <b>much</b> waste at home these days.",
-      "note": "much + uncountable noun (waste)"
-     },
-     {
-      "text": "How <b>many</b> plastic bottles do you use in a week?",
-      "note": "many + countable plural noun"
-     },
-     {
-      "text": "There has been <b>a great deal of</b> research into renewable energy.",
-      "note": "a great deal of + uncountable, formal"
-     },
-     {
-      "text": "<b>Few</b> people separate their rubbish properly.",
-      "note": "few (not many) + countable, negative"
-     },
-     {
-      "text": "There is <b>little</b> energy to spare if everyone leaves the lights on.",
-      "note": "little (not much) + uncountable, negative"
-     },
-     {
-      "text": "There are <b>plenty of</b> ways to reduce your own waste.",
-      "note": "plenty of + countable or uncountable, positive"
-     },
-     {
-      "text": "<b>A few</b> small changes make a big difference.",
-      "note": "a few (some) is positive, unlike few (almost none)"
-     }
-    ],
-    "rules": [
-     "<b>Waste, energy, research, rubbish, information</b> and <b>equipment</b> are uncountable in English: they have no plural and take much / little / a great deal of, never many / few + -s.",
-     "<b>Many, few</b> and <b>a few</b> go with countable plural nouns (bottles, changes, people); <b>much, little</b> and <b>a great deal of</b> go with uncountable nouns (energy, waste, research).",
-     "<b>Plenty of</b> and <b>a lot of</b> work with BOTH countable and uncountable nouns.",
-     "<b>Few</b> and <b>little</b> (without 'a') sound negative, meaning almost none. <b>A few</b> and <b>a little</b> sound positive, meaning some or enough.",
-     "In formal writing, <i>a great deal of</i> or <i>a large amount of</i> sound more natural than <i>much</i>, which is more common in questions and negatives (<i>I don't have much time</i>)."
-    ],
-    "practice": {
-     "instructions": "Choose the correct quantifier.",
-     "items": [
-      {
-       "sentence": "There isn't ___ point in recycling just one bottle a week.",
-       "options": [
-        "much",
-        "many",
-        "few"
-       ],
-       "answer": 0
-      },
-      {
-       "sentence": "How ___ plastic bags does your family use every month?",
-       "options": [
-        "much",
-        "many",
-        "little"
-       ],
-       "answer": 1
-      },
-      {
-       "sentence": "___ research has been done on ocean plastic in the last decade.",
-       "options": [
-        "Many",
-        "Few",
-        "A great deal of"
-       ],
-       "answer": 2
-      },
-      {
-       "sentence": "___ people realise how much water is wasted every day.",
-       "options": [
-        "Few",
-        "A few",
-        "Much"
-       ],
-       "answer": 0
-      },
-      {
-       "sentence": "We have ___ time before the recycling truck arrives — let's hurry.",
-       "options": [
-        "many",
-        "little",
-        "few"
-       ],
-       "answer": 1
-      },
-      {
-       "sentence": "There are ___ small things you can do today to help.",
-       "options": [
-        "much",
-        "little",
-        "plenty of"
-       ],
-       "answer": 2
-      }
-     ]
-    }
-   }
-  },
-  {
-   "code": "H",
-   "type": "word_formation",
-   "title": "Reading and Use of English Part 3 — word formation. Use the word in capitals to form a word that fits each gap.",
-   "outputs": [
-    "digital"
-   ],
-   "tips": {
-    "expect": "A short text with eight gaps. Beside each gap is a word in capitals; you must change its form — a noun, an adjective, an adverb, a negative, a plural — so that it fits the meaning and the grammar of the sentence.",
-    "how": [
-     "Decide first what part of speech is missing: a noun, an adjective, an adverb, a plural?",
-     "Check the words before and after the gap — an article or adjective often signals a noun; an -ly ending often signals an adverb.",
-     "Watch for negative prefixes (un-, in-, dis-) and for irregular spelling changes, such as responsible → responsibility."
-    ],
-    "remember": "The base word almost always has to change; using it unchanged is never the right answer."
-   },
-   "data": {
-    "text": "Anyone walking along a beach today is likely to notice how much plastic waste washes up with the tide. Plastic {1:POLLUTE} is one of the most visible signs of our throwaway culture. Every year, millions of tonnes of packaging end up in rivers and oceans, most of it far from {2:BIODEGRADE}. Scientists warn that without a serious {3:REDUCE} in how much plastic we produce, the problem will only get worse. Public {4:AWARE} of the issue has grown enormously in the last ten years, partly thanks to documentaries showing the effect on wildlife. Even so, {5:ENVIRONMENT} groups argue that awareness alone is not enough: real change depends on {6:CONSUME} habits actually shifting, not just on people feeling guilty. Governments, too, have a {7:RESPONSIBLE} to make recycling easier and cheaper than throwing things away. The good news is that more schools, shops and local councils are {8:INCREASE} choosing reusable materials over single-use plastic, which suggests that the bigger picture may finally be starting to change.",
-    "answers": [
-     "pollution",
-     "biodegradable",
-     "reduction",
-     "awareness",
-     "environmental",
-     [
-      "consumer",
-      "consumption"
-     ],
-     "responsibility",
-     "increasingly"
-    ]
-   }
-  },
-  {
-   "code": "I",
-   "type": "writing",
-   "title": "Writing Part 2 — report. Plan, write 140–190 words and hand it in.",
-   "outputs": [
-    "digital"
-   ],
-   "tips": {
-    "expect": "Part 2 offers a choice of task, and a report is one of the options that can appear. You are usually asked to describe a situation and make a recommendation, for a named reader such as a head teacher or a class. Reports use clear, factual language and often have section headings. 140–190 words.",
-    "how": [
-     "Use two, three or four short section headings in bold, so the reader can find information quickly.",
-     "Keep the style factual and fairly formal: avoid contractions and personal storytelling.",
-     "Base every section on the task: what you are describing, one clear problem, and one specific recommendation."
-    ],
-    "remember": "A report is marked down if it reads like an informal letter. Headings, short paragraphs and a clear recommendation matter more than colourful language."
-   },
-   "data": {
-    "part": 2,
-    "genre": "report",
-    "words": [
-     140,
-     190
-    ],
-    "task": "<p>Your school council has asked you to write a <b>report</b> about recycling at your school, to be read by the head teacher.</p><blockquote><p>Include information about:</p><ul><li>how well recycling currently works at school</li><li>one problem you have noticed</li><li>a recommendation for improvement</li></ul></blockquote><p>Write your <b>report</b> in <b>140–190 words</b> in an appropriate style, using clear section headings.</p>",
-    "plan": [
-     "<b>Introduction</b> (one sentence): state the purpose of the report.",
-     "<b>Current situation</b>: describe briefly how recycling works now.",
-     "<b>The problem</b>: describe ONE clear problem you have noticed, with a short example.",
-     "<b>Recommendation</b>: one specific, realistic suggestion, and why it would help."
-    ],
-    "useful_language": {
-     "Introducing the report": [
-      "The purpose of this report is to…",
-      "This report looks at…, with a view to…"
-     ],
-     "Describing the situation": [
-      "At present, …",
-      "Currently, most pupils…",
-      "On the whole, the scheme works reasonably well, although…"
-     ],
-     "Introducing a problem": [
-      "However, one issue that needs addressing is…",
-      "A clear problem is that…",
-      "Unfortunately, …"
-     ],
-     "Recommending": [
-      "It would therefore be advisable to…",
-      "I would recommend that…",
-      "One simple solution would be to…"
-     ]
     },
-    "checklist": [
-     "I have used clear section headings, in bold.",
-     "My report includes the current situation, one problem and one recommendation.",
-     "I have used a formal, impersonal style, with no contractions.",
-     "I have used at least two relative clauses to add information.",
-     "I have used quantifiers correctly (a great deal of waste, few pupils, and so on).",
-     "Between 140 and 190 words."
-    ],
-    "model": "<p><i>A model answer (161 words). Notice the four section headings and the single, clear recommendation.</i></p><p><b>Introduction</b></p><p>The purpose of this report is to look at how recycling currently works at our school and to recommend one change that could make it more effective.</p><p><b>Current situation</b></p><p>Most classrooms have a blue bin for paper, and pupils generally use it without being reminded. The canteen also separates plastic bottles, which are collected twice a week, so recycling already forms part of the daily routine for most pupils.</p><p><b>The problem</b></p><p>However, food waste from lunchtime is still thrown into the general bin, even though a great deal of it could be composted instead. Few pupils seem aware that this option even exists, and there is currently no bin for it anywhere near the tables.</p><p><b>Recommendation</b></p><p>I would therefore recommend introducing a clearly labelled compost bin in the canteen, along with a short assembly explaining what can go in it. This would reduce general waste significantly and, in time, cost very little to set up compared with current waste-collection fees.</p>"
-   }
-  },
-  {
-   "code": "J",
-   "type": "pairwork",
-   "title": "Speaking — Parts 3 and 4. Collaborative task and discussion. Record your best answer.",
-   "outputs": [
-    "book",
-    "digital"
-   ],
-   "speaking": {
-    "part": 3,
-    "name": "Collaborative task and discussion"
-   },
-   "tips": {
-    "expect": "Part 3 (about 4 minutes): you and your partner talk together about five written ideas for about 2 minutes, then have about a minute to reach a decision together. Part 4 (about 4 minutes): the examiner asks you both further questions on the same topic.",
-    "how": [
-     "In Part 3 you are not marked on agreeing; you are marked on interacting — ask your partner's opinion, respond to it, and build on it.",
-     "Do not try to cover all five ideas in detail. Three in depth is better than five in a rush.",
-     "In the decision minute, negotiate: <i>Shall we say…? I'd agree with that, as long as…</i>",
-     "In Part 4, develop your answers: opinion → reason → example."
-    ],
-    "remember": "Look at your partner, not at the examiner, during Part 3. The examiner is listening, not talking."
-   },
-   "data": {
-    "text": "Part 3: discuss how much difference each of these actions makes to the environment, then decide together which makes the biggest difference. Part 4: discuss consumption, waste and personal responsibility.",
-    "parts": [
-     {
-      "part": 3,
-      "title": "Collaborative task",
-      "time": "2 min + 1 min",
-      "intro": "Here are some things people can do for the environment. Talk to each other about <b>how much difference each of these might make</b>.",
-      "centre": "How much difference can each of these make to the environment?",
-      "spokes": [
-       "buying secondhand instead of new",
-       "recycling carefully at home",
-       "walking or cycling instead of driving",
-       "avoiding single-use plastic",
-       "repairing broken things instead of replacing them"
+    {
+      "code": "B",
+      "type": "match_words",
+      "title": "Vocabulary — waste and the planet. Match each word with its meaning.",
+      "outputs": [
+        "book",
+        "digital",
+        "quiz"
       ],
-      "decide": "Now you have a minute to decide together <b>which of these makes the biggest difference overall</b>."
-     },
-     {
-      "part": 4,
-      "title": "Further discussion",
-      "time": "4 min",
-      "prompts": [
-       "Do you think individuals can really make a difference to the environment, or is it mainly up to governments and companies?",
-       "Is it easy or difficult to recycle where you live? Why?",
-       "Do people buy too many things they don't really need? Why do you think that happens?",
-       "What could schools do to help students waste less?"
-      ]
-     }
-    ],
-    "useful_language": {
-     "Involving your partner": [
-      "What do you think about…?",
-      "Would you agree that…?",
-      "That's a fair point, but…"
-     ],
-     "Building on an idea": [
-      "Following on from what you said…",
-      "And that links to…",
-      "Not only that, but…"
-     ],
-     "Reaching a decision": [
-      "Shall we agree on…?",
-      "I'd go for…, because…",
-      "We could say they're equally important, but if we had to choose…"
-     ],
-     "Part 4: developing an answer": [
-      "It really depends on…",
-      "There's a strong case for saying…",
-      "It's not always as simple as…"
-     ]
+      "data": {
+        "left_label": "Word",
+        "right_label": "Meaning",
+        "pairs": [
+          {
+            "left": "sustainable",
+            "right": "able to continue for a long time without harming the environment"
+          },
+          {
+            "left": "recycle",
+            "right": "to treat used material so that it can be used again"
+          },
+          {
+            "left": "landfill",
+            "right": "a site where rubbish is buried under the ground"
+          },
+          {
+            "left": "packaging",
+            "right": "the boxes, plastic or paper used to wrap a product"
+          },
+          {
+            "left": "consumption",
+            "right": "the amount of something that people buy and use"
+          },
+          {
+            "left": "resource",
+            "right": "a useful supply of something, such as energy or raw materials"
+          },
+          {
+            "left": "pollution",
+            "right": "harmful substances that damage the air, water or land"
+          },
+          {
+            "left": "secondhand",
+            "right": "already owned or used by somebody else before"
+          },
+          {
+            "left": "repair",
+            "right": "to mend something that is broken or damaged"
+          },
+          {
+            "left": "reusable",
+            "right": "able to be used again rather than thrown away"
+          }
+        ]
+      }
+    },
+    {
+      "code": "C",
+      "type": "reading",
+      "title": "Reading and Use of English Part 5 — multiple choice. Read the article and choose the answer that fits best.",
+      "outputs": [
+        "book",
+        "digital"
+      ],
+      "tips": {
+        "expect": "One text of about 500–650 words followed by six four-option questions. They test the main idea, detail, the writer's opinion or attitude, and simple inference. The questions follow the order of the text.",
+        "how": [
+          "Read the whole text once, quickly, to get the general idea and the writer's attitude.",
+          "For each question, find the part of the text it refers to and read it closely. The correct option paraphrases the text; wrong options often reuse words from the text but change the meaning.",
+          "Do not choose an option just because it sounds true in general — check that it is what the writer actually says."
+        ],
+        "remember": "All four options usually relate to the right part of the text. Eliminate the ones that are almost right, not just obviously wrong."
+      },
+      "data": {
+        "kicker": "Inspiring Nordic · Environment feature",
+        "title": "The bigger picture",
+        "author": "liam",
+        "byline": "by Liam, B2",
+        "text": "<p>Have you ever wondered what actually happens to something after you throw it in the bin? Most of us never ask. We finish a drink, drop the bottle in, and move on with our day. Yet that single action is the start of a much longer journey — one that ends, more often than not, in a landfill site or a furnace. For our <i>Inspiring Nordic</i> project this term, we decided to follow that journey and see the bigger picture.</p><p>The numbers are hard to picture. Every year, the average person in a modern city throws away several hundred kilograms of rubbish — food, packaging, clothes, broken gadgets. Some of it can be recycled, but a surprising amount cannot, either because it is mixed with other materials or because nobody sorts it properly. What cannot be recycled is buried or burned, and both processes release gases that warm the planet. In other words, the bin in your kitchen is connected to something much bigger than your kitchen.</p><p>Part of the problem, our research suggested, is a habit rather than a single bad decision: the habit of replacing instead of repairing. A phone with a cracked screen, a jacket with a broken zip, a chair with a wobbly leg — these are usually thrown out rather than fixed, because a new one is often cheaper and always more convenient. Our grandparents' generation rarely had that choice. Clothes were mended, shoes were resoled, and furniture was passed down rather than thrown away. Somewhere along the way, that skill became rare.</p><p>This is where the trades we have been studying all term come back into the picture. Carpenters, tailors and electricians are, in a sense, the opposite of the throwaway culture: their entire job is to make things last longer. We visited a small repair workshop near school, whose owner spends her days bringing broken furniture back to life instead of sending it to landfill. “People are always surprised,” she told us, “that a chair somebody wanted to throw away can look brand new again.”</p><p>Of course, not every solution has to involve a workshop. Simple choices add up too: buying secondhand rather than new, choosing products with less packaging, or repairing a torn bag instead of replacing it. None of these choices is dramatic on its own, which is exactly why they are easy to forget. But multiply one small choice by a few million people, and the effect on landfill and emissions stops being small at all.</p><p>What struck us most, researching this article, was how disconnected the beginning and the end of an object's life usually feel. We rarely think about the landfill while we are shopping, and we rarely think about the shop while we are throwing something away. Repair, in that sense, is not just a practical skill but a way of reconnecting those two ends. Seeing the two ends of that journey together — that is the bigger picture this unit is named after, and it is one we hope readers will not forget the next time they reach for the bin.</p>",
+        "script": "The bigger picture. Have you ever wondered what actually happens to something after you throw it in the bin? Most of us never ask. That single action is the start of a much longer journey, one that ends, more often than not, in a landfill site or a furnace. Every year, the average person in a modern city throws away several hundred kilograms of rubbish. Some of it can be recycled, but a surprising amount cannot. What cannot be recycled is buried or burned, and both processes release gases that warm the planet. Part of the problem is a habit rather than a single bad decision: the habit of replacing instead of repairing. Our grandparents' generation rarely had that choice. This is where the trades we have been studying all term come back into the picture. We visited a small repair workshop near school, whose owner spends her days bringing broken furniture back to life. Simple choices add up too: buying secondhand rather than new, choosing products with less packaging, or repairing something instead of replacing it. Seeing the two ends of an object's journey together — that is the bigger picture this unit is named after.",
+        "questions": [
+          {
+            "q": "In the first paragraph, the writer uses the example of throwing away a bottle to",
+            "options": [
+              "warn readers about the dangers of recycling incorrectly.",
+              "introduce an everyday action that starts a process people rarely think about.",
+              "compare glass bottles with plastic packaging.",
+              "admit that he personally forgets to recycle."
+            ],
+            "answer": 1
+          },
+          {
+            "q": "According to the second paragraph, a lot of rubbish cannot be recycled because",
+            "options": [
+              "cities do not provide enough recycling bins.",
+              "people refuse to sort their rubbish at home.",
+              "it is mixed with other materials or not sorted correctly.",
+              "recycling machines are too expensive to build."
+            ],
+            "answer": 2
+          },
+          {
+            "q": "What does the writer suggest about the habit of replacing rather than repairing?",
+            "options": [
+              "It is often a matter of convenience and cost, not a single bad choice.",
+              "It only affects expensive items such as phones and furniture.",
+              "It began because shops stopped selling spare parts.",
+              "It is a habit that our grandparents also had."
+            ],
+            "answer": 0
+          },
+          {
+            "q": "What does the workshop owner's comment illustrate?",
+            "options": [
+              "Customers are usually disappointed with the results of repairs.",
+              "Repairing furniture takes far longer than people expect.",
+              "Most customers already know that broken furniture can be restored.",
+              "People often underestimate how well a repaired object can look."
+            ],
+            "answer": 3
+          },
+          {
+            "q": "What point does the writer make about small individual choices, such as buying secondhand?",
+            "options": [
+              "They are only useful if combined with government action.",
+              "Their effect becomes significant when many people make them.",
+              "They are more dramatic than most people realise.",
+              "They matter less than the choices made by workshops."
+            ],
+            "answer": 1
+          },
+          {
+            "q": "In the final paragraph, what does the writer mean by 'the bigger picture'?",
+            "options": [
+              "The growing size of landfill sites around the world.",
+              "A photograph that shows an object before and after repair.",
+              "Seeing the connection between how we shop and how we throw things away.",
+              "The overall cost of recycling compared with repairing."
+            ],
+            "answer": 2
+          }
+        ]
+      }
+    },
+    {
+      "code": "D",
+      "type": "grammar_box",
+      "title": "Language focus 1 — relative clauses: defining, non-defining and reduced",
+      "outputs": [
+        "book",
+        "digital"
+      ],
+      "data": {
+        "title": "Relative clauses: defining, non-defining and reduced",
+        "can": "I can use defining and non-defining relative clauses accurately, including the commas, and reduce a clause with a participle.",
+        "intro": "Liam's article contains several relative clauses that add information smoothly, without starting a new sentence: <i>a small repair workshop, whose owner spends her days…</i>, <i>the trades we have been studying…</i>, <i>gases that warm the planet</i>. Some clauses identify exactly which noun we mean (defining); others simply add extra information about something already identified (non-defining), and some drop the relative pronoun altogether (reduced).",
+        "examples": [
+          {
+            "text": "The man <b>who repaired my bike</b> works near the school.",
+            "note": "defining — no commas; identifies which man"
+          },
+          {
+            "text": "My bike, <b>which is nearly ten years old</b>, still works perfectly.",
+            "note": "non-defining — commas; extra information, never 'that'"
+          },
+          {
+            "text": "The workshop <b>whose owner we interviewed</b> is near school.",
+            "note": "whose = possessive, for people or things"
+          },
+          {
+            "text": "The tools <b>used by carpenters</b> are often passed down for generations.",
+            "note": "reduced (which are used by carpenters)"
+          },
+          {
+            "text": "Sofía, <b>who led the research</b>, found the workshop.",
+            "note": "non-defining, with a person's name"
+          },
+          {
+            "text": "The rubbish <b>that cannot be recycled</b> ends up in landfill.",
+            "note": "defining, with 'that'; no commas"
+          },
+          {
+            "text": "Objects <b>thrown away too soon</b> often end up harming the environment.",
+            "note": "reduced passive (which are thrown away)"
+          }
+        ],
+        "rules": [
+          "Defining clauses identify exactly which person or thing we mean. Use <b>who / which / that</b> with NO commas.",
+          "Non-defining clauses add extra information about something already identified. Use <b>commas</b> on both sides, and never use <b>that</b>.",
+          "Use <b>whose</b> for possession, for both people and things: <i>the man whose car…, the company whose products…</i>",
+          "You can reduce a clause by dropping the relative pronoun and the auxiliary <i>be</i>: <i>the tools (which are) used by carpenters</i>.",
+          "In defining clauses, you can also drop <i>who / which / that</i> when it is the object of the clause: <i>the workshop (that) we visited</i>.",
+          "Commas change the meaning: <i>My brother who lives in Lima is a carpenter</i> (I have more than one brother) vs <i>My brother, who lives in Lima, is a carpenter</i> (I have only one brother)."
+        ],
+        "practice": {
+          "instructions": "Choose the correct word.",
+          "items": [
+            {
+              "sentence": "The tools ___ carpenters use are often expensive.",
+              "options": [
+                "that",
+                "who",
+                "whose"
+              ],
+              "answer": 0
+            },
+            {
+              "sentence": "Nadia, ___ idea impressed everyone, spoke first.",
+              "options": [
+                "who",
+                "whose",
+                "which"
+              ],
+              "answer": 1
+            },
+            {
+              "sentence": "This is the article ___ we read for homework.",
+              "options": [
+                "whose",
+                "who",
+                "that"
+              ],
+              "answer": 2
+            },
+            {
+              "sentence": "My uncle, ___ repairs furniture for a living, taught me a lot.",
+              "options": [
+                "who",
+                "which",
+                "that"
+              ],
+              "answer": 0
+            },
+            {
+              "sentence": "The rubbish ___ in landfill sites can take decades to break down.",
+              "options": [
+                "buries",
+                "buried",
+                "burying"
+              ],
+              "answer": 1
+            },
+            {
+              "sentence": "The workshop, ___ is run by two brothers, is always busy.",
+              "options": [
+                "that",
+                "who",
+                "which"
+              ],
+              "answer": 2
+            }
+          ]
+        },
+        "lab": "relative-clauses"
+      }
+    },
+    {
+      "code": "E",
+      "type": "gap_text",
+      "title": "Reading and Use of English Part 2 — open cloze. Write ONE word in each gap.",
+      "outputs": [
+        "digital"
+      ],
+      "tips": {
+        "expect": "A short text with eight gaps. You write one word in each gap — no options are given. The missing words are mostly grammar words: articles, prepositions, pronouns, relative words, linkers, or parts of a fixed phrase.",
+        "how": [
+          "Read the whole text first: the sentence around a gap often decides the answer.",
+          "Look at both sides of the gap: does it need a preposition after a verb, a relative pronoun, or a word to complete a phrase like 'as well as'?",
+          "Only one word fits each gap, and contractions are not allowed."
+        ],
+        "remember": "Check your spelling. A correct word spelt wrongly scores nothing."
+      },
+      "data": {
+        "text": "Recycling has become part of daily life in many schools, yet the results vary enormously from one building to the next. Most schools now have some kind of recycling scheme, but not all of them work {1} well as they should. A bin that is never emptied is {2} no use to anyone, and pupils quickly lose interest {3} sorting rubbish if nothing seems to change. The schools {4} schemes work best are usually the ones {5} give pupils a clear reason to take part — a competition between classes, for example, {6} a visible result, such as a garden built {7} recycled materials. It is not enough {8} put a sign above a bin and hope for the best; people need to see that their small effort leads somewhere, and that somebody is actually checking what happens to the rubbish afterwards. Once pupils notice a real difference, the habit tends to stick, and the scheme keeps running long after the novelty has worn off.",
+        "answers": [
+          "as",
+          "of",
+          "in",
+          "whose",
+          "that",
+          "or",
+          "from",
+          "to"
+        ]
+      }
+    },
+    {
+      "code": "F",
+      "type": "listening_match",
+      "title": "Listening Part 3 — multiple matching. Match each speaker with what they do for the environment.",
+      "outputs": [
+        "digital"
+      ],
+      "audio": "b2f/u04-f.mp3",
+      "tips": {
+        "expect": "Five short monologues, about 30 seconds each, on a related topic. For each speaker (1–5) you choose one of eight options (A–H) that best matches what they say. Three options are not needed. You hear the recordings twice.",
+        "how": [
+          "Read all eight options before you listen, and think about how each idea might be paraphrased.",
+          "The answer is rarely the exact word you hear — the options rewrite the idea in different words.",
+          "Do not choose an option just because you recognise one word from it; check that it matches the whole idea."
+        ],
+        "remember": "Three options are never used. If two options seem to fit one speaker, wait — one of them almost certainly belongs to somebody else."
+      },
+      "data": {
+        "voice_note": "Five speakers (Speaker 1 to Speaker 5) talk in turn about what they personally do to help the environment.",
+        "script": "Speaker 1: At home, we've started separating our food waste from everything else. Peelings, eggshells, old bread — all of that used to go straight in with the rest of the rubbish, but now it goes into a special bin in the garden instead. After a few months it turns into this dark, crumbly material that's brilliant for the plants. It sounds like a small thing, but our black bin is barely half full by the time it gets collected now, which says a lot about how much of what we throw away isn't really rubbish at all. [pause]\nSpeaker 2: My parents used to drop me off outside school every morning, engine running in a queue of cars for a good ten minutes. Last year I asked if I could travel in some other way instead, and honestly it's the best change I've made. It takes about the same amount of time once you count the traffic, I get some exercise before lessons even start, and there's no petrol involved at all. The only difficulty is when it's raining, but even then I'd rather arrive a bit wet than add to that queue outside the gate every day. [pause]\nSpeaker 3: I used to buy new clothes almost every month, mostly things I only wore a couple of times before losing interest. A friend persuaded me to try a shop that sells things other people no longer want, and I was amazed by what was there — some items still had the original tags on. Now it's genuinely my first choice rather than something I do occasionally to save money, and my wardrobe is actually more interesting for it. [pause]\nSpeaker 4: We turned a corner of the garden that used to be completely wasted space into a few raised beds, and we now grow tomatoes, lettuce and herbs through most of the year. It isn't enough to replace a weekly shop, not even close, but there's something satisfying about eating a salad you planted yourself, with none of the packaging that normally comes with it. My grandmother thinks it's funny that we're excited about something she did her whole life without thinking twice. [pause]\nSpeaker 5: A few months ago a friend invited me to help clear rubbish from the river near our neighbourhood, and I've been going back most weekends since. We usually collect several bags of plastic bottles, wrappers and other bits people have dropped or left behind. It's not glamorous work, and some mornings the amount of rubbish is honestly a bit depressing, but the difference afterwards is obvious, and a couple of passers-by have even come back the following week to join in properly.",
+        "speakers": [
+          "Speaker 1",
+          "Speaker 2",
+          "Speaker 3",
+          "Speaker 4",
+          "Speaker 5"
+        ],
+        "tasks": [
+          {
+            "title": "What each speaker does for the environment",
+            "prompt": "For questions 1–5, choose from the list A–H what each speaker says they do to help the environment. Use the letters only once. There are three letters you do not need to use.",
+            "options": [
+              "I try to repair things rather than buy new ones.",
+              "I grow some of my own food at home.",
+              "I always use public transport instead of driving.",
+              "I avoid single-use plastic whenever I can.",
+              "I travel to school without using a car.",
+              "I take part in local clean-up events.",
+              "I buy secondhand clothes rather than new ones.",
+              "I compost my food waste at home."
+            ],
+            "answers": [
+              "H",
+              "E",
+              "G",
+              "B",
+              "F"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "code": "G",
+      "type": "grammar_box",
+      "title": "Language focus 2 — quantifiers and countable/uncountable nouns",
+      "outputs": [
+        "book",
+        "digital"
+      ],
+      "data": {
+        "title": "Quantifiers: much, many, a great deal of, few, little, plenty of",
+        "can": "I can choose the right quantifier for countable and uncountable nouns when talking about waste, energy and resources.",
+        "intro": "Talking about the environment means talking about amounts — how much waste we produce, how many resources we use. Words like <b>waste</b>, <b>energy</b> and <b>research</b> are uncountable in English, even though it can feel natural to imagine a plural.",
+        "examples": [
+          {
+            "text": "We don't produce <b>much</b> waste at home these days.",
+            "note": "much + uncountable noun (waste)"
+          },
+          {
+            "text": "How <b>many</b> plastic bottles do you use in a week?",
+            "note": "many + countable plural noun"
+          },
+          {
+            "text": "There has been <b>a great deal of</b> research into renewable energy.",
+            "note": "a great deal of + uncountable, formal"
+          },
+          {
+            "text": "<b>Few</b> people separate their rubbish properly.",
+            "note": "few (not many) + countable, negative"
+          },
+          {
+            "text": "There is <b>little</b> energy to spare if everyone leaves the lights on.",
+            "note": "little (not much) + uncountable, negative"
+          },
+          {
+            "text": "There are <b>plenty of</b> ways to reduce your own waste.",
+            "note": "plenty of + countable or uncountable, positive"
+          },
+          {
+            "text": "<b>A few</b> small changes make a big difference.",
+            "note": "a few (some) is positive, unlike few (almost none)"
+          }
+        ],
+        "rules": [
+          "<b>Waste, energy, research, rubbish, information</b> and <b>equipment</b> are uncountable in English: they have no plural and take much / little / a great deal of, never many / few + -s.",
+          "<b>Many, few</b> and <b>a few</b> go with countable plural nouns (bottles, changes, people); <b>much, little</b> and <b>a great deal of</b> go with uncountable nouns (energy, waste, research).",
+          "<b>Plenty of</b> and <b>a lot of</b> work with BOTH countable and uncountable nouns.",
+          "<b>Few</b> and <b>little</b> (without 'a') sound negative, meaning almost none. <b>A few</b> and <b>a little</b> sound positive, meaning some or enough.",
+          "In formal writing, <i>a great deal of</i> or <i>a large amount of</i> sound more natural than <i>much</i>, which is more common in questions and negatives (<i>I don't have much time</i>)."
+        ],
+        "practice": {
+          "instructions": "Choose the correct quantifier.",
+          "items": [
+            {
+              "sentence": "There isn't ___ point in recycling just one bottle a week.",
+              "options": [
+                "much",
+                "many",
+                "few"
+              ],
+              "answer": 0
+            },
+            {
+              "sentence": "How ___ plastic bags does your family use every month?",
+              "options": [
+                "much",
+                "many",
+                "little"
+              ],
+              "answer": 1
+            },
+            {
+              "sentence": "___ research has been done on ocean plastic in the last decade.",
+              "options": [
+                "Many",
+                "Few",
+                "A great deal of"
+              ],
+              "answer": 2
+            },
+            {
+              "sentence": "___ people realise how much water is wasted every day.",
+              "options": [
+                "Few",
+                "A few",
+                "Much"
+              ],
+              "answer": 0
+            },
+            {
+              "sentence": "We have ___ time before the recycling truck arrives — let's hurry.",
+              "options": [
+                "many",
+                "little",
+                "few"
+              ],
+              "answer": 1
+            },
+            {
+              "sentence": "There are ___ small things you can do today to help.",
+              "options": [
+                "much",
+                "little",
+                "plenty of"
+              ],
+              "answer": 2
+            }
+          ]
+        },
+        "lab": "articles-quantifiers"
+      }
+    },
+    {
+      "code": "H",
+      "type": "word_formation",
+      "title": "Reading and Use of English Part 3 — word formation. Use the word in capitals to form a word that fits each gap.",
+      "outputs": [
+        "digital"
+      ],
+      "tips": {
+        "expect": "A short text with eight gaps. Beside each gap is a word in capitals; you must change its form — a noun, an adjective, an adverb, a negative, a plural — so that it fits the meaning and the grammar of the sentence.",
+        "how": [
+          "Decide first what part of speech is missing: a noun, an adjective, an adverb, a plural?",
+          "Check the words before and after the gap — an article or adjective often signals a noun; an -ly ending often signals an adverb.",
+          "Watch for negative prefixes (un-, in-, dis-) and for irregular spelling changes, such as responsible → responsibility."
+        ],
+        "remember": "The base word almost always has to change; using it unchanged is never the right answer."
+      },
+      "data": {
+        "text": "Anyone walking along a beach today is likely to notice how much plastic waste washes up with the tide. Plastic {1:POLLUTE} is one of the most visible signs of our throwaway culture. Every year, millions of tonnes of packaging end up in rivers and oceans, most of it far from {2:BIODEGRADE}. Scientists warn that without a serious {3:REDUCE} in how much plastic we produce, the problem will only get worse. Public {4:AWARE} of the issue has grown enormously in the last ten years, partly thanks to documentaries showing the effect on wildlife. Even so, {5:ENVIRONMENT} groups argue that awareness alone is not enough: real change depends on {6:CONSUME} habits actually shifting, not just on people feeling guilty. Governments, too, have a {7:RESPONSIBLE} to make recycling easier and cheaper than throwing things away. The good news is that more schools, shops and local councils are {8:INCREASE} choosing reusable materials over single-use plastic, which suggests that the bigger picture may finally be starting to change.",
+        "answers": [
+          "pollution",
+          "biodegradable",
+          "reduction",
+          "awareness",
+          "environmental",
+          [
+            "consumer",
+            "consumption"
+          ],
+          "responsibility",
+          "increasingly"
+        ]
+      }
+    },
+    {
+      "code": "I",
+      "type": "writing",
+      "title": "Writing Part 2 — report. Plan, write 140–190 words and hand it in.",
+      "outputs": [
+        "digital"
+      ],
+      "tips": {
+        "expect": "Part 2 offers a choice of task, and a report is one of the options that can appear. You are usually asked to describe a situation and make a recommendation, for a named reader such as a head teacher or a class. Reports use clear, factual language and often have section headings. 140–190 words.",
+        "how": [
+          "Use two, three or four short section headings in bold, so the reader can find information quickly.",
+          "Keep the style factual and fairly formal: avoid contractions and personal storytelling.",
+          "Base every section on the task: what you are describing, one clear problem, and one specific recommendation."
+        ],
+        "remember": "A report is marked down if it reads like an informal letter. Headings, short paragraphs and a clear recommendation matter more than colourful language."
+      },
+      "data": {
+        "part": 2,
+        "genre": "report",
+        "words": [
+          140,
+          190
+        ],
+        "task": "<p>Your school council has asked you to write a <b>report</b> about recycling at your school, to be read by the head teacher.</p><blockquote><p>Include information about:</p><ul><li>how well recycling currently works at school</li><li>one problem you have noticed</li><li>a recommendation for improvement</li></ul></blockquote><p>Write your <b>report</b> in <b>140–190 words</b> in an appropriate style, using clear section headings.</p>",
+        "plan": [
+          "<b>Introduction</b> (one sentence): state the purpose of the report.",
+          "<b>Current situation</b>: describe briefly how recycling works now.",
+          "<b>The problem</b>: describe ONE clear problem you have noticed, with a short example.",
+          "<b>Recommendation</b>: one specific, realistic suggestion, and why it would help."
+        ],
+        "useful_language": {
+          "Introducing the report": [
+            "The purpose of this report is to…",
+            "This report looks at…, with a view to…"
+          ],
+          "Describing the situation": [
+            "At present, …",
+            "Currently, most pupils…",
+            "On the whole, the scheme works reasonably well, although…"
+          ],
+          "Introducing a problem": [
+            "However, one issue that needs addressing is…",
+            "A clear problem is that…",
+            "Unfortunately, …"
+          ],
+          "Recommending": [
+            "It would therefore be advisable to…",
+            "I would recommend that…",
+            "One simple solution would be to…"
+          ]
+        },
+        "checklist": [
+          "I have used clear section headings, in bold.",
+          "My report includes the current situation, one problem and one recommendation.",
+          "I have used a formal, impersonal style, with no contractions.",
+          "I have used at least two relative clauses to add information.",
+          "I have used quantifiers correctly (a great deal of waste, few pupils, and so on).",
+          "Between 140 and 190 words."
+        ],
+        "model": "<p><i>A model answer (161 words). Notice the four section headings and the single, clear recommendation.</i></p><p><b>Introduction</b></p><p>The purpose of this report is to look at how recycling currently works at our school and to recommend one change that could make it more effective.</p><p><b>Current situation</b></p><p>Most classrooms have a blue bin for paper, and pupils generally use it without being reminded. The canteen also separates plastic bottles, which are collected twice a week, so recycling already forms part of the daily routine for most pupils.</p><p><b>The problem</b></p><p>However, food waste from lunchtime is still thrown into the general bin, even though a great deal of it could be composted instead. Few pupils seem aware that this option even exists, and there is currently no bin for it anywhere near the tables.</p><p><b>Recommendation</b></p><p>I would therefore recommend introducing a clearly labelled compost bin in the canteen, along with a short assembly explaining what can go in it. This would reduce general waste significantly and, in time, cost very little to set up compared with current waste-collection fees.</p>"
+      }
+    },
+    {
+      "code": "J",
+      "type": "pairwork",
+      "title": "Speaking — Parts 3 and 4. Collaborative task and discussion. Record your best answer.",
+      "outputs": [
+        "book",
+        "digital"
+      ],
+      "speaking": {
+        "part": 3,
+        "name": "Collaborative task and discussion"
+      },
+      "tips": {
+        "expect": "Part 3 (about 4 minutes): you and your partner talk together about five written ideas for about 2 minutes, then have about a minute to reach a decision together. Part 4 (about 4 minutes): the examiner asks you both further questions on the same topic.",
+        "how": [
+          "In Part 3 you are not marked on agreeing; you are marked on interacting — ask your partner's opinion, respond to it, and build on it.",
+          "Do not try to cover all five ideas in detail. Three in depth is better than five in a rush.",
+          "In the decision minute, negotiate: <i>Shall we say…? I'd agree with that, as long as…</i>",
+          "In Part 4, develop your answers: opinion → reason → example."
+        ],
+        "remember": "Look at your partner, not at the examiner, during Part 3. The examiner is listening, not talking."
+      },
+      "data": {
+        "text": "Part 3: discuss how much difference each of these actions makes to the environment, then decide together which makes the biggest difference. Part 4: discuss consumption, waste and personal responsibility.",
+        "parts": [
+          {
+            "part": 3,
+            "title": "Collaborative task",
+            "time": "2 min + 1 min",
+            "intro": "Here are some things people can do for the environment. Talk to each other about <b>how much difference each of these might make</b>.",
+            "centre": "How much difference can each of these make to the environment?",
+            "spokes": [
+              "buying secondhand instead of new",
+              "recycling carefully at home",
+              "walking or cycling instead of driving",
+              "avoiding single-use plastic",
+              "repairing broken things instead of replacing them"
+            ],
+            "decide": "Now you have a minute to decide together <b>which of these makes the biggest difference overall</b>."
+          },
+          {
+            "part": 4,
+            "title": "Further discussion",
+            "time": "4 min",
+            "prompts": [
+              "Do you think individuals can really make a difference to the environment, or is it mainly up to governments and companies?",
+              "Is it easy or difficult to recycle where you live? Why?",
+              "Do people buy too many things they don't really need? Why do you think that happens?",
+              "What could schools do to help students waste less?"
+            ]
+          }
+        ],
+        "useful_language": {
+          "Involving your partner": [
+            "What do you think about…?",
+            "Would you agree that…?",
+            "That's a fair point, but…"
+          ],
+          "Building on an idea": [
+            "Following on from what you said…",
+            "And that links to…",
+            "Not only that, but…"
+          ],
+          "Reaching a decision": [
+            "Shall we agree on…?",
+            "I'd go for…, because…",
+            "We could say they're equally important, but if we had to choose…"
+          ],
+          "Part 4: developing an answer": [
+            "It really depends on…",
+            "There's a strong case for saying…",
+            "It's not always as simple as…"
+          ]
+        }
+      }
     }
-   }
+  ],
+  "homework": [
+    {
+      "type": "write_sentences",
+      "prompt": "Write a short paragraph (8–10 sentences) about what your family does, or could do, to reduce waste at home. Use at least three relative clauses (defining, non-defining or reduced) and three quantifiers from this unit (much/many, a great deal of, few/little, plenty of). Remember the commas in non-defining clauses!"
+    }
+  ],
+  "scope": {
+    "grado": "G10",
+    "temaN": 4,
+    "tema": "The Bigger Picture — Inspiring Nordic",
+    "outcomes": [
+      {
+        "destreza": "Listening",
+        "puede": "Follow five short monologues and match each speaker to what they say (B2 First Listening Part 3)."
+      },
+      {
+        "destreza": "Speaking",
+        "puede": "Compare photographs, negotiate a decision with a partner and discuss the environment, using relative clauses to add information (B2 First Speaking Parts 1–4)."
+      },
+      {
+        "destreza": "Reading",
+        "puede": "Read an article of 500–650 words and identify main ideas, detail and the writer's attitude (B2 First Reading Part 5)."
+      },
+      {
+        "destreza": "Writing",
+        "puede": "Plan and write a 140–190-word report with clear section headings and one recommendation (B2 First Writing Part 2)."
+      },
+      {
+        "destreza": "Use of English",
+        "puede": "Relative clauses; quantifiers for countable and uncountable nouns; open cloze (Part 2) and word formation (Part 3)."
+      }
+    ],
+    "vocabulario": [
+      "sustainable",
+      "recycle",
+      "landfill",
+      "packaging",
+      "consumption",
+      "resource"
+    ],
+    "gramatica": [
+      "Relative clauses (defining, non-defining and reduced)",
+      "Quantifiers and countable/uncountable nouns",
+      "Open cloze (Part 2)",
+      "Word formation (Part 3)"
+    ],
+    "pendiente": {}
   }
- ],
- "homework": [
-  {
-   "type": "write_sentences",
-   "prompt": "Write a short paragraph (8–10 sentences) about what your family does, or could do, to reduce waste at home. Use at least three relative clauses (defining, non-defining or reduced) and three quantifiers from this unit (much/many, a great deal of, few/little, plenty of). Remember the commas in non-defining clauses!"
-  }
- ],
- "scope": {
-  "grado": "G10",
-  "temaN": 4,
-  "tema": "The Bigger Picture — Inspiring Nordic",
-  "outcomes": [
-   {
-    "destreza": "Listening",
-    "puede": "Follow five short monologues and match each speaker to what they say (B2 First Listening Part 3)."
-   },
-   {
-    "destreza": "Speaking",
-    "puede": "Compare photographs, negotiate a decision with a partner and discuss the environment, using relative clauses to add information (B2 First Speaking Parts 1–4)."
-   },
-   {
-    "destreza": "Reading",
-    "puede": "Read an article of 500–650 words and identify main ideas, detail and the writer's attitude (B2 First Reading Part 5)."
-   },
-   {
-    "destreza": "Writing",
-    "puede": "Plan and write a 140–190-word report with clear section headings and one recommendation (B2 First Writing Part 2)."
-   },
-   {
-    "destreza": "Use of English",
-    "puede": "Relative clauses; quantifiers for countable and uncountable nouns; open cloze (Part 2) and word formation (Part 3)."
-   }
-  ],
-  "vocabulario": [
-   "sustainable",
-   "recycle",
-   "landfill",
-   "packaging",
-   "consumption",
-   "resource"
-  ],
-  "gramatica": [
-   "Relative clauses (defining, non-defining and reduced)",
-   "Quantifiers and countable/uncountable nouns",
-   "Open cloze (Part 2)",
-   "Word formation (Part 3)"
-  ],
-  "pendiente": {}
- }
 }

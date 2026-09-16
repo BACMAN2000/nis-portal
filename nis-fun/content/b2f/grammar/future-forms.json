@@ -1,0 +1,176 @@
+{
+  "id": "future-forms",
+  "level": "b2f",
+  "area": "Tenses & time",
+  "title": "Future forms",
+  "tagline": "Six ways to talk about what comes next, from a plan already fixed to a prediction based on evidence.",
+  "cefr": "B2",
+  "exam": [
+    "Reading & Use of English Part 4 — key word transformations",
+    "Listening Part 4 — multiple choice (plans, predictions, intentions)",
+    "Writing Part 1 — essay: consequences and the future of an issue"
+  ],
+  "why": "English doesn't have one future tense — it has several, and the choice signals how certain or how fixed the plan is. B2 First tests whether you can tell a spontaneous decision (<i>will</i>) from a firm intention (<i>going to</i>) from a diary arrangement (present continuous), plus the special time-clause rule that bans <i>will</i> after <i>when</i> and <i>as soon as</i>.",
+  "diagrams": [
+    {
+      "type": "scale",
+      "title": "How fixed is the plan?",
+      "left": "just an idea",
+      "right": "already arranged",
+      "items": [
+        {"label": "will (decided now)", "pct": 10},
+        {"label": "going to (intention)", "pct": 45},
+        {"label": "present continuous (arrangement)", "pct": 80},
+        {"label": "present simple (timetable)", "pct": 100}
+      ]
+    },
+    {
+      "type": "contrast",
+      "title": "will or going to?",
+      "columns": ["will", "going to"],
+      "rows": [
+        {"label": "Decision made", "cells": ["at the moment of speaking", "before now — already planned"]},
+        {"label": "Typical use", "cells": ["offers, promises, predictions with no evidence", "intentions, predictions with evidence now"]},
+        {"label": "Example", "cells": ["I'll carry that for you.", "I'm going to study medicine."]}
+      ]
+    },
+    {
+      "type": "formula",
+      "title": "No will after time words",
+      "parts": [
+        {"chip": "when / as soon as / before / until", "tone": "kw"},
+        {"chip": "present simple", "tone": "a", "ex": "arrives"},
+        {"chip": "→", "tone": "arrow"},
+        {"chip": "will + infinitive", "tone": "b", "ex": "will call"}
+      ],
+      "caption": "The future time clause takes the present simple, even though the whole sentence is about the future."
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "will", "tone": "kw", "ex": "will arrive"},
+      {"chip": "going to", "tone": "a", "ex": "is going to rain"},
+      {"chip": "present continuous", "tone": "b", "ex": "is meeting"},
+      {"chip": "present simple", "tone": "c", "ex": "leaves"}
+    ],
+    "table": {
+      "head": ["Form", "Use", "Example"],
+      "rows": [
+        ["will + infinitive", "a decision made now, an offer, a promise, a prediction with no evidence", "I think it'll be a close match."],
+        ["going to + infinitive", "an intention decided earlier, a prediction with evidence now", "Look at those clouds — it's going to pour."],
+        ["present continuous", "a fixed arrangement, with a time and often another person", "We're seeing the dentist on Thursday."],
+        ["present simple", "a timetable, a programme, an official schedule", "The train departs at 9.15."],
+        ["future continuous", "an action in progress at a stated time in the future", "This time next week, we'll be sitting the exam."],
+        ["future perfect", "an action finished before a stated point in the future", "By July, she'll have finished her portfolio."],
+        ["be about to / be likely to", "very soon / probability", "We're about to start. / Prices are likely to rise."],
+        ["Time clauses (when, as soon as, until, before)", "present simple, never will, even though the meaning is future", "As soon as I hear the results, I'll text you."]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Instant decisions, offers and promises",
+      "examples": [
+        {"text": "It's cold in here — I <b>'ll close</b> the window.", "note": "a decision made at the moment of speaking"},
+        {"text": "I <b>'ll help</b> you carry those boxes.", "note": "an offer"},
+        {"text": "I promise I <b>won't tell</b> anyone about the surprise.", "note": "a promise"}
+      ]
+    },
+    {
+      "point": "Plans, intentions and predictions with evidence",
+      "examples": [
+        {"text": "Mateo <b>is going to apply</b> for the exchange programme next year.", "note": "an intention, decided in advance"},
+        {"text": "Look at that sky — it <b>'s going to</b> pour any minute.", "note": "a prediction based on present evidence"},
+        {"text": "The whole team <b>is going to be</b> exhausted after that hike.", "note": "a confident prediction"}
+      ]
+    },
+    {
+      "point": "Arrangements and timetables already fixed",
+      "examples": [
+        {"text": "Sofia <b>is performing</b> at the school concert on Friday.", "note": "a fixed arrangement, already confirmed"},
+        {"text": "The coach bus <b>leaves</b> at 6 a.m. sharp — don't be late.", "note": "an official timetable → present simple"},
+        {"text": "We<b>'re meeting</b> Miss Vega before assembly to hand in the forms.", "note": "an arrangement with a time and a person"}
+      ]
+    },
+    {
+      "point": "A point in the future: continuous, perfect and time clauses",
+      "examples": [
+        {"text": "This time tomorrow, we <b>'ll be flying</b> over the Andes.", "note": "in progress at a stated future time"},
+        {"text": "By the end of the term, Liam <b>will have finished</b> every unit in this book.", "note": "completed before a future point"},
+        {"text": "<b>As soon as</b> the bell <b>rings</b>, everyone will rush to lunch.", "note": "present simple after a future time word"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "When I will arrive, I will call you.", "right": "When I <b>arrive</b>, I will call you.", "why": "Time clauses with <i>when, as soon as, before, until</i> take the present simple, never <i>will</i>."},
+    {"wrong": "I'm going to the cinema this weekend — I decided this right now.", "right": "I<b>'ll go</b> to the cinema this weekend.", "why": "A decision made at the moment of speaking needs <i>will</i>, not <i>going to</i>, which suggests an earlier plan."},
+    {"wrong": "Look at those dark clouds — it will rain.", "right": "Look at those dark clouds — it<b>'s going to</b> rain.", "why": "A prediction based on evidence you can see now uses <i>going to</i>, not <i>will</i>."},
+    {"wrong": "By next year I will finish the course.", "right": "By next year I <b>will have finished</b> the course.", "why": "An action completed before a future point needs the future perfect, not <i>will</i> + infinitive."},
+    {"wrong": "This time next week we will go skiing.", "right": "This time next week we <b>'ll be going</b> skiing.", "why": "An action in progress at a stated future moment needs the future continuous."},
+    {"wrong": "We meeting Miss Vega at four tomorrow.", "right": "We<b>'re meeting</b> Miss Vega at four tomorrow.", "why": "A fixed personal arrangement needs the auxiliary <i>be</i> before the present continuous."}
+  ],
+  "dialogue": {
+    "title": "Planning the trip to the coast",
+    "context": "Sofia, Mateo and Liam are working out the last details for a weekend trip while Miss Vega checks the schedule.",
+    "lines": [
+      {"speaker": "Sofia", "text": "Right, so what time does the bus <b>leave</b> on Saturday?"},
+      {"speaker": "Miss Vega", "text": "It <b>leaves</b> at seven sharp, according to the official timetable."},
+      {"speaker": "Mateo", "text": "Perfect. I <b>'m going to pack</b> everything tonight so I'm not rushing in the morning."},
+      {"speaker": "Liam", "text": "Good idea. I<b>'ll</b> probably <b>forget</b> something anyway, knowing me."},
+      {"speaker": "Sofia", "text": "As soon as we <b>arrive</b>, we<b>'ll drop</b> our bags and head straight for the beach."},
+      {"speaker": "Miss Vega", "text": "By the time you get there, the tide <b>will have gone</b> out, so watch your step on the rocks."},
+      {"speaker": "Liam", "text": "Noted. Oh — look at those clouds. It<b>'s going to</b> rain before we even leave."},
+      {"speaker": "Mateo", "text": "Don't worry, I<b>'ll bring</b> an umbrella just in case."},
+      {"speaker": "Sofia", "text": "This time tomorrow, we<b>'ll be lying</b> on the sand instead of sitting in class."},
+      {"speaker": "Liam", "text": "Can't wait. I promise I <b>won't complain</b> once, not even about the early start."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "I'm thirsty. I think I ___ a glass of water.", "options": ["'ll have", "'m going to have", "have"], "answer": 0, "why": "a decision made now → will"},
+        {"sentence": "Nadia ___ the piano exam in November — she's been preparing for months.", "options": ["will take", "is going to take", "takes"], "answer": 1, "why": "an intention decided in advance → going to"},
+        {"sentence": "The museum ___ at nine every day except Monday.", "options": ["is opening", "will open", "opens"], "answer": 2, "why": "an official timetable → present simple"},
+        {"sentence": "As soon as the rain ___, we'll go outside.", "options": ["stops", "will stop", "is stopping"], "answer": 0, "why": "present simple after a future time word, never will"},
+        {"sentence": "We ___ dinner with my grandparents on Sunday — it's already arranged.", "options": ["will have", "are having", "have"], "answer": 1, "why": "a fixed personal arrangement → present continuous"},
+        {"sentence": "By ten o'clock, Liam ___ his whole essay.", "options": ["will finish", "is finishing", "will have finished"], "answer": 2, "why": "completed before a future point → future perfect"},
+        {"sentence": "Careful — that shelf looks like it ___ down.", "options": ["is going to fall", "will fall", "falls"], "answer": 0, "why": "a prediction based on visible evidence → going to"},
+        {"sentence": "This time next month, we ___ for our final exams.", "options": ["will revise", "will be revising", "revise"], "answer": 1, "why": "in progress at a stated future time → future continuous"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with the correct future form of the verb in brackets.",
+      "items": [
+        {"sentence": "The plane ___ (depart) at 11.40, according to the boarding pass.", "answers": ["departs"]},
+        {"sentence": "Look at Liam's face — he ___ (tell) us bad news.", "answers": ["is going to tell"]},
+        {"sentence": "I promise I ___ (not/forget) to call you tonight.", "answers": ["won't forget", "will not forget"]},
+        {"sentence": "By the time we land, they ___ (already/start) the ceremony.", "answers": ["will already have started", "will have already started"]},
+        {"sentence": "We ___ (meet) the new exchange students at reception at nine — it's on the schedule.", "answers": ["are meeting"]},
+        {"sentence": "As soon as Nadia ___ (get) the results, she'll message the group.", "answers": ["gets"]},
+        {"sentence": "This time tomorrow, we ___ (sit) the listening exam.", "answers": ["will be sitting"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first. Use the word given. Do not change it. Use between two and five words.",
+      "items": [
+        {"first": "Mateo decided weeks ago to study engineering.", "key": "GOING", "second_start": "Mateo", "second_end": "engineering.", "answers": ["is going to study"]},
+        {"first": "The concert has an official start time of eight o'clock.", "key": "STARTS", "second_start": "The concert", "second_end": "at eight o'clock.", "answers": ["officially starts"]},
+        {"first": "Don't worry, I offer to answer the phone if it rings.", "key": "ANSWER", "second_start": "Don't worry, I", "second_end": "the phone if it rings.", "answers": ["will answer", "'ll answer"]},
+        {"first": "The exhibition will finish being built before the students arrive.", "key": "HAVE", "second_start": "By the time the students arrive, the exhibition", "second_end": ".", "answers": ["will have been built"]},
+        {"first": "Please wait until I finish this call, then we can talk.", "key": "FINISH", "second_start": "We can talk as soon as I", "second_end": ".", "answers": ["finish this call"]},
+        {"first": "At eight tomorrow evening, we will be in the middle of the flight.", "key": "FLYING", "second_start": "At eight tomorrow evening, we", "second_end": "over the Pacific.", "answers": ["will be flying"]}
+      ]
+    }
+  ],
+  "summary": [
+    "<i>Will</i>: a decision made now, an offer, a promise, or a prediction with no evidence.",
+    "<i>Going to</i>: an intention decided earlier, or a prediction based on evidence you can see.",
+    "Present continuous: a fixed personal arrangement; present simple: an official timetable.",
+    "Future continuous: in progress at a future moment; future perfect: finished before a future point.",
+    "After <i>when, as soon as, before, until</i>, the verb stays in the present simple — never <i>will</i>."
+  ]
+}

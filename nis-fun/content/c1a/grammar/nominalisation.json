@@ -1,0 +1,568 @@
+{
+  "id": "nominalisation",
+  "level": "c1a",
+  "area": "Sentence building",
+  "title": "Nominalisation and academic style",
+  "tagline": "Turn the verb into a noun and the sentence gains the weight of a report.",
+  "cefr": "C1",
+  "exam": [
+    "Reading & Use of English Part 3 — word formation (noun-forming suffixes)",
+    "Reading & Use of English Part 4 — key word transformations (verb/adjective → noun phrase)",
+    "Writing Part 1 — essay: an impersonal, formal register",
+    "Writing Part 2 — report: findings built around abstract nouns rather than personal verbs"
+  ],
+  "why": "Nominalisation — turning a verb or adjective into a noun — is the single biggest difference between a sentence that sounds spoken and one that sounds written. 'The company failed because managers decided badly' becomes 'The company's failure was due to poor management decisions': the same information, restructured around nouns instead of verbs. C1 Advanced tests the noun-forming suffixes directly in Use of English Part 3 and rewards the technique in the essay and report — but a whole paragraph built only from nominalisations sounds stiff, so knowing when not to use it matters just as much.",
+  "diagrams": [
+    {
+      "type": "transform",
+      "title": "From verb sentence to noun phrase",
+      "before": {
+        "text": "The government decided to raise taxes suddenly, and this surprised everyone.",
+        "hl": [
+          "decided",
+          "surprised"
+        ]
+      },
+      "after": {
+        "text": "The government's sudden decision to raise taxes surprised everyone.",
+        "hl": [
+          "sudden decision"
+        ]
+      },
+      "steps": [
+        "Turn the main verb into its noun form: <b>decided</b> → <b>decision</b>.",
+        "Attach the subject as a possessive or an of-phrase: the government's decision.",
+        "Fold adverbs into adjectives before the noun: 'decided suddenly' → 'sudden decision'."
+      ]
+    },
+    {
+      "type": "map",
+      "title": "How do verbs and adjectives become nouns?",
+      "center": "Nominalisation",
+      "branches": [
+        {
+          "label": "-tion / -sion",
+          "items": [
+            "decide → decision",
+            "inform → information",
+            "permit → permission",
+            "conclude → conclusion"
+          ],
+          "tone": "a"
+        },
+        {
+          "label": "-ment",
+          "items": [
+            "develop → development",
+            "achieve → achievement",
+            "announce → announcement"
+          ],
+          "tone": "b"
+        },
+        {
+          "label": "-ity / -ness",
+          "items": [
+            "stable → stability",
+            "likely → likelihood (irregular)",
+            "aware → awareness"
+          ],
+          "tone": "c"
+        },
+        {
+          "label": "-ance / -ence",
+          "items": [
+            "perform → performance",
+            "differ → difference",
+            "exist → existence"
+          ],
+          "tone": "a"
+        },
+        {
+          "label": "Irregular nouns",
+          "items": [
+            "fail → failure",
+            "succeed → success",
+            "choose → choice",
+            "lose → loss"
+          ],
+          "tone": "b"
+        }
+      ]
+    },
+    {
+      "type": "contrast",
+      "title": "Verbal style vs nominal style",
+      "columns": [
+        "Verbal (spoken, direct)",
+        "Nominal (formal, written)"
+      ],
+      "rows": [
+        {
+          "label": "Subject",
+          "cells": [
+            "a person or organisation (Managers decided...)",
+            "an abstract idea (The decision...)"
+          ]
+        },
+        {
+          "label": "Verb",
+          "cells": [
+            "a full verb carrying the action: decided, failed, improved",
+            "a 'light' verb + noun: made a decision, resulted in failure"
+          ]
+        },
+        {
+          "label": "Typical register",
+          "cells": [
+            "conversation, narrative, personal writing",
+            "essays, reports, academic articles"
+          ]
+        },
+        {
+          "label": "Risk",
+          "cells": [
+            "can sound too informal for a formal essay",
+            "overused, it sounds abstract and hard to follow"
+          ]
+        }
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {
+        "chip": "verb / adjective",
+        "tone": "kw",
+        "ex": "decide / likely"
+      },
+      {
+        "chip": "suffix",
+        "tone": "a",
+        "ex": "-tion / -ment / -ity / -hood"
+      },
+      {
+        "chip": "→",
+        "tone": "arrow"
+      },
+      {
+        "chip": "abstract noun",
+        "tone": "b",
+        "ex": "decision / likelihood"
+      }
+    ],
+    "table": {
+      "head": [
+        "Base word",
+        "Suffix",
+        "Example"
+      ],
+      "rows": [
+        [
+          "decide (v) → decision",
+          "-sion",
+          "The committee's <b>decision</b> will be announced on Friday."
+        ],
+        [
+          "develop (v) → development",
+          "-ment",
+          "Rapid <b>development</b> has transformed the coastline."
+        ],
+        [
+          "stable (adj) → stability",
+          "-ity",
+          "Political <b>stability</b> attracted foreign investors."
+        ],
+        [
+          "likely (adj) → likelihood",
+          "irregular -hood",
+          "There is a strong <b>likelihood</b> of rain this weekend."
+        ],
+        [
+          "fail (v) → failure",
+          "irregular",
+          "The <b>failure</b> of the crop led to a sharp rise in prices."
+        ],
+        [
+          "aware (adj) → awareness",
+          "-ness",
+          "Public <b>awareness</b> of the issue has grown steadily."
+        ],
+        [
+          "differ (v) → difference",
+          "-ence",
+          "The <b>difference</b> between the two proposals is significant."
+        ],
+        [
+          "argue (v) → argument",
+          "irregular -ment",
+          "Her <b>argument</b> rests on three pieces of evidence."
+        ]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Compressing a clause into a noun phrase with pre- and post-modification",
+      "examples": [
+        {
+          "text": "The <b>sudden collapse of the bridge</b> forced the council to close the road.",
+          "note": "adjective + noun + of-phrase replaces 'the bridge suddenly collapsed'"
+        },
+        {
+          "text": "<b>Growing concern about air quality</b> has pushed the city to act.",
+          "note": "pre-modifier (growing) + noun + post-modifier (about air quality)"
+        },
+        {
+          "text": "The report examines <b>the likelihood of further delays</b>.",
+          "note": "likely → likelihood, followed by an of-phrase"
+        }
+      ]
+    },
+    {
+      "point": "Abstract nouns with 'the + noun + of' for formal, impersonal writing",
+      "examples": [
+        {
+          "text": "<b>The introduction of the new syllabus</b> was met with mixed reactions.",
+          "note": "the verb 'introduce' nominalised; the agent is not named"
+        },
+        {
+          "text": "<b>The reduction in traffic</b> during the holidays is well documented.",
+          "note": "reduce → reduction"
+        },
+        {
+          "text": "<b>The lack of clear guidelines</b> caused confusion among staff.",
+          "note": "a nominal phrase avoids naming who lacked the guidelines"
+        }
+      ]
+    },
+    {
+      "point": "Impersonal subjects that hide the agent",
+      "examples": [
+        {
+          "text": "<b>Concerns have been raised</b> about the reliability of the data.",
+          "note": "impersonal — nobody is named as the one worrying"
+        },
+        {
+          "text": "<b>An improvement</b> in exam results <b>was observed</b> after the new timetable began.",
+          "note": "nominalisation plus a passive removes the agent completely"
+        },
+        {
+          "text": "<b>The assumption</b> that costs would fall proved wrong.",
+          "note": "assume → assumption, used as an impersonal subject"
+        }
+      ]
+    },
+    {
+      "point": "When not to nominalise",
+      "examples": [
+        {
+          "text": "Miss Vega <b>explained</b> the theory clearly — not 'Miss Vega gave an explanation of the theory'.",
+          "note": "in speech and narrative, the verb form is more natural"
+        },
+        {
+          "text": "We <b>decided</b> to leave early — not 'we made the decision to leave early'.",
+          "note": "an unnecessary nominalisation sounds bureaucratic"
+        },
+        {
+          "text": "The instructions simply say '<b>Submit</b> your essay by Friday' — not 'submission of your essay is required'.",
+          "note": "direct instructions and requests stay verbal"
+        }
+      ]
+    }
+  ],
+  "watch_out": [
+    {
+      "wrong": "The likely of rain is high.",
+      "right": "The <b>likelihood</b> of rain is high.",
+      "why": "'Likely' is an adjective; the noun form is 'likelihood', not 'likely'."
+    },
+    {
+      "wrong": "There was a big improve in her writing.",
+      "right": "There was a big <b>improvement</b> in her writing.",
+      "why": "The noun form of 'improve' is 'improvement', not the bare verb."
+    },
+    {
+      "wrong": "The success of the plan depend on funding.",
+      "right": "The <b>success</b> of the plan depends on funding.",
+      "why": "Once the verb becomes a noun, the following verb must agree with the new singular subject: success depends, not depend."
+    },
+    {
+      "wrong": "The teacher gave an explanation the theory.",
+      "right": "The teacher gave <b>an explanation of</b> the theory.",
+      "why": "A nominalised verb keeps its usual preposition (explain something → an explanation of something); it cannot take a direct object."
+    },
+    {
+      "wrong": "The city made an announcement of new the rules.",
+      "right": "The city made an announcement <b>of the new rules</b>.",
+      "why": "Word order inside the noun phrase follows normal English order: article + adjective + noun."
+    },
+    {
+      "wrong": "Please do a submission of your homework by Friday.",
+      "right": "Please <b>submit</b> your homework by Friday.",
+      "why": "A simple instruction is clearer as a verb; overusing nominalisation in direct requests sounds unnatural and bureaucratic."
+    }
+  ],
+  "dialogue": {
+    "title": "From chat to essay",
+    "context": "Miss Vega is helping Nadia and Liam turn a spoken-sounding paragraph about plastic waste into formal essay style for their Writing Part 1 practice.",
+    "lines": [
+      {
+        "speaker": "Miss Vega",
+        "text": "Read your first sentence — it needs to sound like an essay, not a conversation."
+      },
+      {
+        "speaker": "Nadia",
+        "text": "'The factory polluted the river and people got really angry.'"
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "Good content, informal style. Can you turn 'polluted' into a noun?"
+      },
+      {
+        "speaker": "Nadia",
+        "text": "'The factory's <b>pollution</b> of the river provoked <b>anger</b> among local residents.'"
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "Much better. Liam, what about your sentence on recycling?"
+      },
+      {
+        "speaker": "Liam",
+        "text": "I wrote: 'The city introduced a new law and now people recycle more.'"
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "Try building it around <b>the introduction of</b> and <b>an increase in</b>."
+      },
+      {
+        "speaker": "Liam",
+        "text": "'<b>The introduction of</b> the new law has led to <b>an increase in</b> recycling rates.'"
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "Exactly. But be careful — don't nominalise every single verb, or the paragraph turns stiff."
+      },
+      {
+        "speaker": "Nadia",
+        "text": "So for the conclusion, should I still write 'We recommend that the city acts now', not 'Our recommendation is action'?"
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "Yes — a direct recommendation like that reads better as a verb. Save the noun style for the body paragraphs."
+      },
+      {
+        "speaker": "Liam",
+        "text": "So it's a balance: <b>the reduction of</b> plastic waste in the introduction, but 'we should act' in the conclusion."
+      }
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {
+          "sentence": "The ___ of the negotiations took everyone by surprise.",
+          "options": [
+            "failure",
+            "fail",
+            "failing"
+          ],
+          "answer": 0,
+          "why": "irregular noun form of 'fail' is 'failure'"
+        },
+        {
+          "sentence": "There is a strong ___ that the match will be postponed because of the rain.",
+          "options": [
+            "likely",
+            "likeliness",
+            "likelihood"
+          ],
+          "answer": 2,
+          "why": "the noun form of 'likely' is 'likelihood', an irregular -hood suffix, not 'likeliness'"
+        },
+        {
+          "sentence": "Her sudden ___ to resign surprised the whole team.",
+          "options": [
+            "decide",
+            "decision",
+            "deciding"
+          ],
+          "answer": 1,
+          "why": "decide → decision, -sion suffix"
+        },
+        {
+          "sentence": "The government's ___ of the new policy faced strong opposition.",
+          "options": [
+            "introducing",
+            "introduce",
+            "introduction"
+          ],
+          "answer": 2,
+          "why": "introduce → introduction, -tion suffix"
+        },
+        {
+          "sentence": "Growing public ___ about climate change has changed consumer habits.",
+          "options": [
+            "aware",
+            "awaring",
+            "awareness"
+          ],
+          "answer": 2,
+          "why": "aware → awareness, -ness suffix"
+        },
+        {
+          "sentence": "The ___ between the two reports is hard to explain.",
+          "options": [
+            "differing",
+            "difference",
+            "differ"
+          ],
+          "answer": 1,
+          "why": "differ → difference, -ence suffix"
+        },
+        {
+          "sentence": "Please ___ your assignment by Friday, not 'make a submission of'.",
+          "options": [
+            "submission",
+            "submit",
+            "submitting"
+          ],
+          "answer": 1,
+          "why": "a direct instruction is clearer as a verb — avoid unnecessary nominalisation"
+        },
+        {
+          "sentence": "The team's ___ in the final was celebrated across the school.",
+          "options": [
+            "succeeding",
+            "success",
+            "succeed"
+          ],
+          "answer": 1,
+          "why": "succeed → success, an irregular noun form"
+        }
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with the correct noun form of the word in brackets.",
+      "items": [
+        {
+          "sentence": "The ___ (fail) of the first attempt taught the team a great deal.",
+          "answers": [
+            "failure"
+          ]
+        },
+        {
+          "sentence": "There is little ___ (likely) of snow this far south.",
+          "answers": [
+            "likelihood"
+          ]
+        },
+        {
+          "sentence": "The committee reached its ___ (decide) after a three-hour meeting.",
+          "answers": [
+            "decision"
+          ]
+        },
+        {
+          "sentence": "The gradual ___ (improve) in air quality has been widely reported.",
+          "answers": [
+            "improvement"
+          ]
+        },
+        {
+          "sentence": "Public ___ (aware) of the campaign grew within days.",
+          "answers": [
+            "awareness"
+          ]
+        },
+        {
+          "sentence": "The unexpected ___ (arrive) of the inspector caused panic in the office.",
+          "answers": [
+            "arrival"
+          ]
+        },
+        {
+          "sentence": "Her ___ (argue) convinced even the sceptics on the panel.",
+          "answers": [
+            "argument"
+          ]
+        },
+        {
+          "sentence": "The school's ___ (achieve) in the regional science fair was widely praised.",
+          "answers": [
+            "achievement"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first, using the word given. The answer should be a noun phrase built from the word given. Use between two and five words.",
+      "items": [
+        {
+          "first": "The negotiations failed, and this surprised no one.",
+          "key": "FAIL",
+          "second_start": "",
+          "second_end": "the negotiations surprised no one.",
+          "answers": [
+            "The failure of"
+          ]
+        },
+        {
+          "first": "Her writing improved significantly over the term.",
+          "key": "IMPROVE",
+          "second_start": "There was",
+          "second_end": "in her writing over the term.",
+          "answers": [
+            "a significant improvement"
+          ]
+        },
+        {
+          "first": "The team achieved a remarkable result this year.",
+          "key": "ACHIEVE",
+          "second_start": "",
+          "second_end": "this year was remarkable.",
+          "answers": [
+            "The team's achievement"
+          ]
+        },
+        {
+          "first": "The government announced new tax rules, and this worried many small businesses.",
+          "key": "ANNOUNCE",
+          "second_start": "",
+          "second_end": "of new tax rules worried many small businesses.",
+          "answers": [
+            "The government's announcement"
+          ]
+        },
+        {
+          "first": "People are becoming more aware of plastic pollution, and this is changing shopping habits.",
+          "key": "AWARE",
+          "second_start": "",
+          "second_end": "of plastic pollution is changing shopping habits.",
+          "answers": [
+            "Growing awareness"
+          ]
+        },
+        {
+          "first": "The course requires a great deal of independent study.",
+          "key": "REQUIRE",
+          "second_start": "",
+          "second_end": "for independent study on this course is considerable.",
+          "answers": [
+            "The requirement"
+          ]
+        }
+      ]
+    }
+  ],
+  "summary": [
+    "Turn the verb or adjective into its noun form (decide → decision, aware → awareness, likely → likelihood) and attach the subject as a possessive or an of-phrase.",
+    "Watch the suffix families — -tion/-sion, -ment, -ity, -ness, -ance/-ence — and the irregular nouns that follow none of them (fail → failure, succeed → success).",
+    "Fold adverbs into adjectives before the noun: 'decided suddenly' becomes <b>a sudden decision</b>, not 'a suddenly decision'.",
+    "Nominalisation removes the agent and suits reports, essays and academic writing — but a whole paragraph of noun phrases sounds stiff.",
+    "Keep instructions, conclusions and direct recommendations verbal: <i>submit your work</i>, not <i>the submission of your work is required</i>."
+  ]
+}

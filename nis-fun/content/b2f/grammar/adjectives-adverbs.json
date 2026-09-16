@@ -1,0 +1,180 @@
+{
+  "id": "adjectives-adverbs",
+  "level": "b2f",
+  "area": "Comparison & description",
+  "title": "Adjectives and adverbs",
+  "tagline": "Order, feeling vs cause, how extreme, and exactly where the adverb goes.",
+  "cefr": "B2",
+  "exam": [
+    "Reading & Use of English Part 3 — word formation",
+    "Reading & Use of English Part 4 — key word transformations",
+    "Speaking Part 1 — giving full, natural answers with accurate description"
+  ],
+  "why": "Getting adjectives and adverbs slightly wrong doesn't confuse a listener, but it does make you sound like you're translating: <i>a red small bag</i> instead of <i>a small red bag</i>, or <i>I'm boring</i> when you mean <i>I'm bored</i>. B2 First checks these patterns in word formation and transformations, and examiners notice them immediately in speaking and writing.",
+  "diagrams": [
+    {
+      "type": "formula",
+      "title": "The order adjectives go in before a noun",
+      "parts": [
+        {"chip": "opinion", "tone": "a", "ex": "beautiful"},
+        {"chip": "size", "tone": "b", "ex": "small"},
+        {"chip": "age", "tone": "c", "ex": "old"},
+        {"chip": "shape", "tone": "a", "ex": "round"},
+        {"chip": "colour", "tone": "b", "ex": "red"},
+        {"chip": "origin", "tone": "c", "ex": "Peruvian"},
+        {"chip": "material", "tone": "a", "ex": "wooden"},
+        {"chip": "purpose + noun", "tone": "b", "ex": "climbing boots"}
+      ],
+      "caption": "a beautiful, small, old, round, red, Peruvian, wooden table"
+    },
+    {
+      "type": "contrast",
+      "title": "-ed or -ing?",
+      "columns": ["-ed adjectives", "-ing adjectives"],
+      "rows": [
+        {"label": "Describes", "cells": ["how someone feels", "what something is like — the cause of the feeling"]},
+        {"label": "Typical subject", "cells": ["a person (or animal)", "a thing, situation or activity"]},
+        {"label": "Example", "cells": ["Liam was bored during the revision session.", "The revision session was boring."]},
+        {"label": "Common mistake", "cells": ["'I'm boring' when you mean you feel bored", "'the film was bored' when you mean it caused boredom"]}
+      ]
+    },
+    {
+      "type": "contrast",
+      "title": "Gradable or ungradable?",
+      "columns": ["Gradable adjectives", "Ungradable adjectives"],
+      "rows": [
+        {"label": "Meaning", "cells": ["can exist in degrees — more or less of it", "already at an extreme or absolute point"]},
+        {"label": "Typical intensifier", "cells": ["very / really / quite + adjective", "absolutely / completely / totally + adjective"]},
+        {"label": "Example", "cells": ["very tired, really interesting, quite good", "absolutely exhausted, completely convinced, totally amazing"]},
+        {"label": "Watch out", "cells": ["'absolutely good' sounds wrong — good is gradable", "'very exhausted' is common in speech, but absolutely/completely is more precise"]}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "adverb of frequency", "tone": "kw", "ex": "hardly ever"},
+      {"chip": "before the main verb", "tone": "a", "ex": "She hardly ever complains."},
+      {"chip": "after the verb 'be'", "tone": "b", "ex": "She is hardly ever late."},
+      {"chip": "→", "tone": "arrow"},
+      {"chip": "adverb of manner: end of clause", "tone": "c", "ex": "She answered confidently."}
+    ],
+    "table": {
+      "head": ["Pattern", "Rule", "Example"],
+      "rows": [
+        ["Adjective order", "opinion-size-age-shape-colour-origin-material-purpose + noun", "a beautiful small old round red Peruvian wooden table"],
+        ["-ed adjective", "describes how a person feels", "Sofia felt frustrated with the results."],
+        ["-ing adjective", "describes what causes the feeling", "The results were frustrating."],
+        ["Gradable + intensifier", "very / really / quite + adjective", "really nervous before the exam"],
+        ["Ungradable + intensifier", "absolutely / completely / totally + adjective", "absolutely convinced she was right"],
+        ["Adverbs of frequency", "before the main verb; after the verb 'be'", "She often checks her notes. She is often late."],
+        ["Adverbs of manner", "usually after the verb (+ object)", "He answered the question confidently."],
+        ["Sentence adverbs", "usually at the start, followed by a comma", "Honestly, I didn't expect to win."]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Putting adjectives in the right order before a noun",
+      "examples": [
+        {"text": "Nadia bought a <b>beautiful old</b> leather backpack at the market in Cusco.", "note": "opinion before age"},
+        {"text": "Mateo's <b>small round</b> glasses steamed up as soon as he walked into the café.", "note": "size before shape"}
+      ]
+    },
+    {
+      "point": "-ed for how you feel, -ing for what causes the feeling",
+      "examples": [
+        {"text": "Sofia felt <b>frustrated</b> when her code kept crashing the night before the deadline.", "note": "-ed = the person affected"},
+        {"text": "Honestly, debugging that programme was <b>exhausting</b>.", "note": "-ing = the cause"},
+        {"text": "Liam looked <b>embarrassed</b> after mixing up the dates for the trip.", "note": "-ed = his reaction"}
+      ]
+    },
+    {
+      "point": "Choosing the right intensifier for gradable and ungradable adjectives",
+      "examples": [
+        {"text": "I was <b>really nervous</b> before the mock speaking exam.", "note": "gradable + very/really"},
+        {"text": "By the final whistle, the whole team was <b>absolutely exhausted</b>.", "note": "ungradable + absolutely"},
+        {"text": "Miss Vega seemed <b>completely convinced</b> the new format would work.", "note": "ungradable + completely"}
+      ]
+    },
+    {
+      "point": "Where adverbs go, and the confusable pairs hard/hardly, late/lately",
+      "examples": [
+        {"text": "Nadia <b>hardly ever</b> misses a training session, even in the rainy season.", "note": "frequency adverb, mid position"},
+        {"text": "He answered every question <b>confidently</b>, even the ones he wasn't sure about.", "note": "manner adverb, end position"},
+        {"text": "<b>Honestly</b>, I didn't expect the coast trip to be cancelled.", "note": "sentence adverb, comment on the whole sentence"},
+        {"text": "Liam trained <b>hard</b> all summer, but by Saturday's match he could <b>hardly</b> stand.", "note": "hard = with effort; hardly = almost not"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "She has a big beautiful house.", "right": "She has a <b>beautiful big</b> house.", "why": "Opinion adjectives (beautiful) come before all other categories, including size."},
+    {"wrong": "I'm so boring in this class.", "right": "I'm so <b>bored</b> in this class.", "why": "-ed describes how the person feels; -ing describes what causes the feeling."},
+    {"wrong": "The results were absolutely good.", "right": "The results were <b>really good</b>.", "why": "Good is gradable, so it pairs with very/really/quite, not with absolutely."},
+    {"wrong": "Liam runs very hardly to catch the bus every morning.", "right": "Liam runs <b>really hard</b> to catch the bus every morning.", "why": "Hard (adverb) means 'with effort'; hardly means 'almost not' — 'very hardly' doesn't exist."},
+    {"wrong": "I haven't seen Mateo late.", "right": "I haven't seen Mateo <b>lately</b>.", "why": "Late means 'not on time' or 'at a late hour'; lately means 'recently' — completely different meanings."},
+    {"wrong": "She sings beautiful.", "right": "She sings <b>beautifully</b>.", "why": "A verb needs an adverb, not an adjective, to describe how the action happens."}
+  ],
+  "dialogue": {
+    "title": "Rehearsal notes",
+    "context": "Sofia, Liam and Nadia are reviewing their first rehearsal for the school talent show, and Miss Vega joins to give feedback.",
+    "lines": [
+      {"speaker": "Sofia", "text": "That was actually pretty <b>impressive</b> for a first rehearsal, wasn't it?"},
+      {"speaker": "Liam", "text": "I don't know, I felt genuinely <b>embarrassed</b> during the dance part."},
+      {"speaker": "Nadia", "text": "Come on, it wasn't that bad. You just need to move more <b>confidently</b>."},
+      {"speaker": "Liam", "text": "Easy for you to say. You've got that <b>beautiful old</b> guitar and you barely even rehearse."},
+      {"speaker": "Sofia", "text": "That's because she <b>hardly ever</b> needs to — she's already really good."},
+      {"speaker": "Nadia", "text": "Not true. I practised <b>hard</b> all week, actually."},
+      {"speaker": "Miss Vega", "text": "Can I interrupt? <b>Honestly</b>, the whole routine looked far better than last year's."},
+      {"speaker": "Liam", "text": "Really? Because from where I was standing, it looked pretty <b>chaotic</b>."},
+      {"speaker": "Miss Vega", "text": "It was a little chaotic, yes, but the ending was <b>absolutely brilliant</b>."},
+      {"speaker": "Sofia", "text": "See? We just need one more <b>really focused</b> rehearsal before Friday."},
+      {"speaker": "Nadia", "text": "Agreed. And Liam, maybe borrow Sofia's <b>small round</b> sunglasses for the final pose."},
+      {"speaker": "Liam", "text": "Fine, but only if nobody laughs."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "Sofia has a ___ backpack she bought in Cusco.", "options": ["leather red small", "red small leather", "small red leather"], "answer": 2, "why": "the correct order is size before colour before material"},
+        {"sentence": "I was ___ when the results came out.", "options": ["excited", "exciting", "excite"], "answer": 0, "why": "-ed describes how the person feels"},
+        {"sentence": "The documentary about the Amazon was genuinely ___.", "options": ["interested", "interesting", "interest"], "answer": 1, "why": "-ing describes what causes the feeling — the documentary itself"},
+        {"sentence": "After the final match, the players were ___ exhausted.", "options": ["very", "quite", "absolutely"], "answer": 2, "why": "exhausted is an extreme adjective, so it pairs with absolutely, not very/quite"},
+        {"sentence": "Nadia is ___ late for training — she's always the first to arrive.", "options": ["hardly ever", "hard", "lately"], "answer": 0, "why": "hardly ever = almost never, an adverb of frequency"},
+        {"sentence": "Liam answered the interview questions really ___.", "options": ["confident", "confidently", "confidence"], "answer": 1, "why": "an adverb is needed to modify the verb 'answered'"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with the correct form of the word in brackets.",
+      "items": [
+        {"sentence": "Liam felt really ___ (EMBARRASS) after tripping on stage.", "answers": ["embarrassed"]},
+        {"sentence": "The trek up to the ruins was ___ (EXHAUST), but absolutely worth it.", "answers": ["exhausting"]},
+        {"sentence": "She answered every question very ___ (CONFIDENT).", "answers": ["confidently"]},
+        {"sentence": "Nadia was ___ (AMAZE) when she got the scholarship.", "answers": ["amazed"]},
+        {"sentence": "Mateo gave a genuinely ___ (SURPRISE) answer in class today.", "answers": ["surprising"]},
+        {"sentence": "By the end of the marathon, all the runners looked completely ___ (EXHAUST).", "answers": ["exhausted"]},
+        {"sentence": "The team played surprisingly ___ (GOOD) in the second half.", "answers": ["well"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first. Use the word given. Do not change it. Use between two and five words.",
+      "items": [
+        {"first": "Sofia's trainers are red, small and made of leather.", "key": "LEATHER", "second_start": "Sofia has", "second_end": "trainers.", "answers": ["small red leather"]},
+        {"first": "The film made everyone in the cinema feel very bored.", "key": "BORING", "second_start": "Everyone in the cinema found the film", "second_end": ".", "answers": ["really boring"]},
+        {"first": "Liam trains with a lot of effort every single day.", "key": "HARD", "second_start": "Liam trains", "second_end": "every single day.", "answers": ["really hard"]},
+        {"first": "I haven't had any news from Mateo in recent days.", "key": "LATELY", "second_start": "I haven't heard", "second_end": ".", "answers": ["from Mateo lately"]},
+        {"first": "The whole performance was really amazing from start to finish.", "key": "ABSOLUTELY", "second_start": "The whole performance was", "second_end": "from start to finish.", "answers": ["absolutely amazing"]}
+      ]
+    }
+  ],
+  "summary": [
+    "Adjectives before a noun follow a fixed order: opinion, size, age, shape, colour, origin, material, purpose.",
+    "-ed adjectives describe how someone feels; -ing adjectives describe what causes that feeling.",
+    "Gradable adjectives (tired, good) take very/really/quite; ungradable ones (exhausted, amazing) take absolutely/completely.",
+    "Adverbs of frequency go before the main verb but after 'be'; adverbs of manner usually go at the end.",
+    "Don't confuse hard with hardly, or late with lately — they look similar but mean very different things."
+  ]
+}

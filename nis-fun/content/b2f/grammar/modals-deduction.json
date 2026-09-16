@@ -1,0 +1,170 @@
+{
+  "id": "modals-deduction",
+  "level": "b2f",
+  "area": "Modals",
+  "title": "Speculation and deduction",
+  "tagline": "Reading the evidence and choosing how sure you sound: must, might, could or can't.",
+  "cefr": "B2",
+  "exam": [
+    "Reading & Use of English Part 4 — key word transformations",
+    "Reading & Use of English Part 2 — open cloze (must / can't / have)",
+    "Listening Part 3 — inferring what speakers mean from clues"
+  ],
+  "why": "You don't always know the facts — sometimes you only have evidence, and you have to guess how certain you are. B2 First expects you to judge that certainty precisely: <b>must</b> is not the same as <b>might</b>, and getting the modal wrong changes the whole meaning of the sentence, in the present and in the past.",
+  "diagrams": [
+    {
+      "type": "scale",
+      "title": "How sure does the speaker sound?",
+      "left": "impossible",
+      "right": "certain",
+      "items": [
+        {"label": "can't (be)", "pct": 0},
+        {"label": "might not / may not (be)", "pct": 30},
+        {"label": "might / may / could (be)", "pct": 50},
+        {"label": "should (be)", "pct": 75},
+        {"label": "must (be)", "pct": 95}
+      ]
+    },
+    {
+      "type": "contrast",
+      "title": "Present evidence vs past evidence",
+      "columns": ["Speculating about now", "Speculating about the past"],
+      "rows": [
+        {"label": "Form", "cells": ["modal + infinitive", "modal + have + past participle"]},
+        {"label": "Certain, positive", "cells": ["Liam must be at training.", "Liam must have missed the bus."]},
+        {"label": "Impossible", "cells": ["She can't be serious.", "She can't have forgotten already."]},
+        {"label": "Possible", "cells": ["They might be stuck in traffic.", "They might have changed the plan."]},
+        {"label": "An action in progress", "cells": ["He must be sleeping.", "He must have been sleeping."]}
+      ]
+    },
+    {
+      "type": "map",
+      "title": "Which modal for which certainty?",
+      "center": "Deduction",
+      "branches": [
+        {"label": "Almost certain, positive", "items": ["must", "must be", "must have"], "tone": "a"},
+        {"label": "Almost certain, negative", "items": ["can't", "can't be", "can't have", "couldn't have"], "tone": "b"},
+        {"label": "Possible either way", "items": ["might", "may", "could", "might have", "could have"], "tone": "c"}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "must / might / could / can't", "tone": "kw"},
+      {"chip": "infinitive", "tone": "a", "ex": "be studying"},
+      {"chip": "or", "tone": "arrow"},
+      {"chip": "have + past participle", "tone": "b", "ex": "have left"}
+    ],
+    "table": {
+      "head": ["Modal", "Certainty", "Present example", "Past example"],
+      "rows": [
+        ["must", "almost certain — positive", "She must be tired after the match.", "She must have trained really hard."],
+        ["can't", "almost certain — negative", "That can't be Nadia's writing.", "He can't have read the whole book already."],
+        ["couldn't", "almost certain — negative (past only)", "—", "They couldn't have known about the change."],
+        ["might / may", "possible, less sure", "He might be joking.", "She might have missed the message."],
+        ["could", "possible, open to other ideas", "It could be a coincidence.", "They could have taken a different route."],
+        ["should / ought to", "expected, but not 100% sure", "The results should be out by now.", "The bus should have arrived by six."]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Deduction about the present, from something you can see or hear now",
+      "examples": [
+        {"text": "The lights are off, so Miss Vega <b>must be</b> out of the classroom.", "note": "must + infinitive = strong positive deduction"},
+        {"text": "That <b>can't be</b> Liam's phone ringing — his is still on the desk.", "note": "can't + infinitive = strong negative deduction"},
+        {"text": "Sofia isn't answering her messages, so she <b>might be</b> asleep already.", "note": "might = one possibility among others"}
+      ]
+    },
+    {
+      "point": "Deduction about the past, from evidence you find later",
+      "examples": [
+        {"text": "The pitch is completely wet, so it <b>must have rained</b> all night.", "note": "must have + participle = certain about a finished past event"},
+        {"text": "Nadia looks exhausted; she <b>can't have slept</b> more than a few hours.", "note": "can't have = impossible, based on how she looks now"},
+        {"text": "Someone <b>could have left</b> the window open, but we're not sure who.", "note": "could have = a possible explanation, not the only one"}
+      ]
+    },
+    {
+      "point": "An action that was probably or certainly happening at a specific moment",
+      "examples": [
+        {"text": "Mateo didn't hear his name; he <b>must have been listening</b> to music.", "note": "continuous form for an action in progress"},
+        {"text": "They <b>might have been waiting</b> outside when the doors finally opened.", "note": "less certain, continuous"}
+      ]
+    },
+    {
+      "point": "Everyday guesses about people, plans and results",
+      "examples": [
+        {"text": "The results <b>should be</b> on the noticeboard by lunchtime, if nothing has changed.", "note": "should = expected, based on a plan"},
+        {"text": "You <b>can't have finished</b> the whole essay already — you only started an hour ago.", "note": "expressing genuine surprise"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "She must to be at home now.", "right": "She <b>must be</b> at home now.", "why": "No <i>to</i> after a modal verb — the bare infinitive follows directly."},
+    {"wrong": "He mustn't be at school; his bag is here.", "right": "He <b>can't be</b> at school; his bag is here.", "why": "<i>Mustn't</i> means <i>it is forbidden</i>, not <i>it is impossible</i>. Use <i>can't</i> for a negative deduction."},
+    {"wrong": "They must have leave without us.", "right": "They must <b>have left</b> without us.", "why": "The past participle follows <i>have</i>, not the infinitive."},
+    {"wrong": "She might have been arrive late because of the traffic.", "right": "She might have <b>arrived</b> late because of the traffic.", "why": "Use the past participle after <i>have</i>, not the base form or the continuous form of a state that already finished."},
+    {"wrong": "It's raining, so the match could be cancel.", "right": "It's raining, so the match <b>could be cancelled</b>.", "why": "When the subject receives the action, the modal needs the passive: <i>could be + past participle</i>."}
+  ],
+  "dialogue": {
+    "title": "Where's Mateo?",
+    "context": "Sofia, Liam and Nadia are waiting for Mateo outside the science lab before an exam review session in Lima.",
+    "lines": [
+      {"speaker": "Sofia", "text": "He's ten minutes late. He <b>must have overslept</b> — he was coding until midnight."},
+      {"speaker": "Liam", "text": "Or he <b>might have missed</b> the bus. He usually catches the 7.40."},
+      {"speaker": "Nadia", "text": "His phone is off. That <b>can't be</b> a good sign — he never turns it off."},
+      {"speaker": "Sofia", "text": "Wait, isn't that his bike outside the gate? He <b>must be</b> in the building already."},
+      {"speaker": "Liam", "text": "You're right. He <b>could be</b> in the library finishing the reading."},
+      {"speaker": "Nadia", "text": "Or he <b>might have gone</b> straight to see Miss Vega about the deadline."},
+      {"speaker": "Sofia", "text": "That makes sense. He <b>must have been worrying</b> about that essay all weekend."},
+      {"speaker": "Liam", "text": "Look, there he is. He <b>can't have heard</b> us calling — he's got headphones on."},
+      {"speaker": "Nadia", "text": "Mateo! Finally. Where were you?"},
+      {"speaker": "Mateo", "text": "Sorry — I <b>must have set</b> my alarm for the wrong time."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "The classroom is empty and the lights are off. Everyone ___ gone home already.", "options": ["must have", "must", "can't have"], "answer": 0, "why": "evidence about a finished past situation → must have + participle"},
+        {"sentence": "That ___ be Nadia at the door — she's on a school trip until Friday.", "options": ["must", "can't", "should"], "answer": 1, "why": "impossible, because of what we know → can't"},
+        {"sentence": "I'm not sure where Liam is, but he ___ be in the music room; he often practises there.", "options": ["must", "can't", "might"], "answer": 2, "why": "one possibility among others → might"},
+        {"sentence": "The pitch is completely dry, so it ___ rained last night.", "options": ["can't have", "must", "should have"], "answer": 0, "why": "dry pitch = impossible that it rained → can't have"},
+        {"sentence": "They booked the tickets weeks ago, so the seats ___ be confirmed by now.", "options": ["can't", "should", "might"], "answer": 1, "why": "expected outcome based on a plan → should"},
+        {"sentence": "You ___ be joking — there's no way the trip was cancelled.", "options": ["can't", "should", "must"], "answer": 2, "why": "strong deduction about the present → must"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with the correct modal form of the verb in brackets.",
+      "items": [
+        {"sentence": "Sofia's bag is still on her desk, so she ___ (not/leave) the building yet.", "answers": ["can't have left"]},
+        {"sentence": "The lights in the gym are on; the team ___ (train) right now.", "answers": ["must be training"]},
+        {"sentence": "Nadia looks confused by the question, so she ___ (not/read) the instructions carefully.", "answers": ["can't have read", "couldn't have read"]},
+        {"sentence": "I'm not certain, but Liam ___ (forget) about the meeting — he's usually so reliable.", "answers": ["might have forgotten", "could have forgotten"]},
+        {"sentence": "The email was sent an hour ago, so it ___ (arrive) in your inbox by now.", "answers": ["should have arrived"]},
+        {"sentence": "There's no answer at the door; they ___ (go) out for the afternoon.", "answers": ["must have gone"]},
+        {"sentence": "He's still wearing his football kit, so he ___ (play) a match earlier.", "answers": ["must have played"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first. Use the word given. Do not change it. Use between two and five words.",
+      "items": [
+        {"first": "I'm almost certain Nadia forgot about the deadline.", "key": "HAVE", "second_start": "Nadia", "second_end": "about the deadline.", "answers": ["must have forgotten"]},
+        {"first": "It's impossible that they saw the message before the trip.", "key": "CAN'T", "second_start": "They", "second_end": "the message before the trip.", "answers": ["can't have seen"]},
+        {"first": "Perhaps Liam is still waiting outside the library.", "key": "MIGHT", "second_start": "Liam", "second_end": "outside the library.", "answers": ["might still be waiting", "might be still waiting"]},
+        {"first": "I'm sure it wasn't Mateo who broke the window.", "key": "CAN'T", "second_start": "It", "second_end": "who broke the window.", "answers": ["can't have been Mateo"]},
+        {"first": "It's likely that the results are already on the website.", "key": "SHOULD", "second_start": "The results", "second_end": "on the website by now.", "answers": ["should already be", "should be already"]}
+      ]
+    }
+  ],
+  "summary": [
+    "Choose the modal by how certain the evidence makes you feel, from <i>can't</i> (impossible) to <i>must</i> (almost certain).",
+    "For now: <b>modal + infinitive</b> — <i>She must be at home.</i>",
+    "For the past: <b>modal + have + past participle</b> — <i>She must have gone home.</i>",
+    "<i>Mustn't</i> means prohibition, never a negative deduction — use <i>can't</i> for that.",
+    "An action in progress at that moment needs the continuous form: <i>must have been training</i>."
+  ]
+}

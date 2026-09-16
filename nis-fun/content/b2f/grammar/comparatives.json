@@ -1,0 +1,175 @@
+{
+  "id": "comparatives",
+  "level": "b2f",
+  "area": "Comparison & description",
+  "title": "Comparison",
+  "tagline": "Not just faster or fastest: how much faster, faster than what, and what keeps rising together.",
+  "cefr": "B2",
+  "exam": [
+    "Reading & Use of English Part 4 — key word transformations",
+    "Reading & Use of English Part 3 — word formation",
+    "Speaking Part 2 — comparing photographs"
+  ],
+  "why": "At B2, comparison is more than -er and -est: it's about how much bigger a difference is (slightly, far, by far), comparing equal things (as...as), and structures like the more..., the better that don't exist in most other languages. Part 4 regularly tests these modifiers and fixed patterns, and Speaking Part 2 depends on them for comparing two photos naturally.",
+  "diagrams": [
+    {
+      "type": "scale",
+      "title": "How big is the difference?",
+      "left": "a small difference",
+      "right": "a huge difference",
+      "items": [
+        {"label": "slightly / a bit + -er", "pct": 15},
+        {"label": "a little + -er", "pct": 25},
+        {"label": "much / a lot / far + -er", "pct": 70},
+        {"label": "easily / by far + the -est", "pct": 100}
+      ]
+    },
+    {
+      "type": "formula",
+      "title": "the + comparative, the + comparative",
+      "parts": [
+        {"chip": "the", "tone": "kw"},
+        {"chip": "comparative", "tone": "a", "ex": "more you practise"},
+        {"chip": "the", "tone": "kw"},
+        {"chip": "comparative", "tone": "b", "ex": "better you get"}
+      ],
+      "caption": "The <b>more</b> you practise, <b>the better</b> you get."
+    },
+    {
+      "type": "contrast",
+      "title": "like vs as",
+      "columns": ["like", "as"],
+      "rows": [
+        {"label": "Meaning", "cells": ["similar to; for example", "in the role of; in the same way that"]},
+        {"label": "Followed by", "cells": ["a noun or pronoun", "subject + verb, or a noun (role)"]},
+        {"label": "Example", "cells": ["She sings like Shakira.", "As the captain, Sofia leads the warm-up."]}
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "modifier", "tone": "kw", "ex": "much"},
+      {"chip": "comparative / superlative", "tone": "a", "ex": "faster"},
+      {"chip": "than / of all", "tone": "b"}
+    ],
+    "table": {
+      "head": ["Pattern", "Use", "Example"],
+      "rows": [
+        ["Short adjectives: -er / -est", "one syllable, or two ending in -y", "faster, faster than; the fastest"],
+        ["Long adjectives: more / most", "two+ syllables", "more interesting; the most interesting"],
+        ["Irregular forms", "good, bad, far", "better / best; worse / worst; further / furthest"],
+        ["Modifiers + comparative", "much / a lot / far / slightly / a bit + -er", "much faster, slightly better"],
+        ["Modifiers + superlative", "by far / easily + the -est", "by far the fastest runner in the year"],
+        ["as ... as / not as ... as", "equal or unequal comparison", "as fast as; not as fast as"],
+        ["twice / three times as ... as", "multiples", "twice as expensive as the other one"],
+        ["the + comparative, the + comparative", "two things increasing or decreasing together", "The sooner we leave, the better."]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Basic comparatives and superlatives",
+      "examples": [
+        {"text": "Cusco is <b>higher</b> than Lima, so the air feels thinner.", "note": "short adjective + -er"},
+        {"text": "Chemistry is <b>more demanding</b> than most subjects, in Liam's opinion.", "note": "long adjective + more"},
+        {"text": "This is <b>the most exciting</b> match we've played all season.", "note": "superlative with most"}
+      ]
+    },
+    {
+      "point": "Modifiers: how big is the difference?",
+      "examples": [
+        {"text": "Sofia's score was only <b>slightly higher</b> than Nadia's.", "note": "a small difference"},
+        {"text": "The new stadium is <b>far bigger</b> than the old one.", "note": "a large difference"},
+        {"text": "Mateo is <b>by far the fastest</b> swimmer in the school.", "note": "modifier with a superlative"}
+      ]
+    },
+    {
+      "point": "Comparing equal things: as...as",
+      "examples": [
+        {"text": "This year's team isn't <b>as strong as</b> last year's.", "note": "unequal comparison"},
+        {"text": "The coast route is <b>twice as long as</b> the mountain route.", "note": "multiple with as...as"},
+        {"text": "Her Spanish is now <b>almost as fluent as</b> her English.", "note": "nearly equal"}
+      ]
+    },
+    {
+      "point": "Parallel increase, and like vs as",
+      "examples": [
+        {"text": "<b>The more</b> Nadia trains, <b>the more confident</b> she feels before a race.", "note": "the + comparative, the + comparative"},
+        {"text": "Sofia plays the guitar <b>like</b> a professional musician.", "note": "like + noun, for comparison"},
+        {"text": "<b>As</b> the team captain, Mateo has to arrive before everyone else.", "note": "as + noun (role)"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "This exam was more difficult that the last one.", "right": "This exam was more difficult <b>than</b> the last one.", "why": "Comparatives are followed by than, not that."},
+    {"wrong": "She's the more intelligent student in the class.", "right": "She's <b>the most intelligent</b> student in the class.", "why": "Comparing one person with a whole group needs a superlative, not a comparative."},
+    {"wrong": "This bag is very bigger than mine.", "right": "This bag is <b>much / far / a lot</b> bigger than mine.", "why": "Very cannot modify a comparative; use much, a lot, far or slightly instead."},
+    {"wrong": "He is as older as his brother.", "right": "He is <b>as old as</b> his brother.", "why": "As...as uses the base adjective, never the comparative form."},
+    {"wrong": "Miss Vega talks as a native speaker.", "right": "Miss Vega talks <b>like</b> a native speaker.", "why": "Comparing two things (similarity) needs like + noun, not as."},
+    {"wrong": "The harder you train, more you improve.", "right": "The harder you train, <b>the more</b> you improve.", "why": "Both halves of this pattern need 'the' before the comparative."}
+  ],
+  "dialogue": {
+    "title": "Choosing a new football boot",
+    "context": "Liam and Mateo are comparing two pairs of football boots before Liam buys new ones, with Nadia giving her opinion.",
+    "lines": [
+      {"speaker": "Liam", "text": "These are <b>lighter</b> than my old ones, but they're also <b>far more expensive</b>."},
+      {"speaker": "Mateo", "text": "The blue ones look <b>slightly better</b> for grip, though. Which pitch do you play on most?"},
+      {"speaker": "Liam", "text": "The school field — it's <b>not as smooth as</b> the club pitch."},
+      {"speaker": "Nadia", "text": "Then get the ones with more studs. The <b>rougher</b> the ground, <b>the more</b> grip you need."},
+      {"speaker": "Mateo", "text": "True. These red ones are <b>by far the most popular</b> with the team, by the way."},
+      {"speaker": "Liam", "text": "Popular doesn't mean better, though. My last pair felt <b>like</b> running in cardboard."},
+      {"speaker": "Nadia", "text": "As your <b>best</b> friend, I'd say get the ones that actually fit properly."},
+      {"speaker": "Mateo", "text": "Fair point. Try them on — the <b>sooner</b> you decide, <b>the sooner</b> we can leave."},
+      {"speaker": "Liam", "text": "These blue ones are <b>twice as comfortable as</b> the red pair, honestly."},
+      {"speaker": "Nadia", "text": "Done, then. They were also <b>a lot cheaper</b> than I expected."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "Arequipa is much ___ than Lima in July.", "options": ["colder", "more cold", "coldest"], "answer": 0, "why": "short adjective + -er, modified by much"},
+        {"sentence": "This is ___ exciting film I've seen all year.", "options": ["more", "the most", "as"], "answer": 1, "why": "superlative for one thing compared to a whole group"},
+        {"sentence": "Her grades are ___ as good as they were last term.", "options": ["not", "so", "very"], "answer": 0, "why": "not as ... as for an unequal comparison"},
+        {"sentence": "The new bridge is ___ longer than the old one — almost double the length.", "options": ["slightly", "a bit", "far"], "answer": 2, "why": "far shows a large difference"},
+        {"sentence": "He plays the piano ___ a professional, even though he's only fifteen.", "options": ["as", "like", "than"], "answer": 1, "why": "like + noun for similarity"},
+        {"sentence": "The ___ you leave, the more traffic you'll hit.", "options": ["later", "latest", "more late"], "answer": 0, "why": "the + comparative, the + comparative"},
+        {"sentence": "Mateo is ___ the fastest runner in his year group.", "options": ["very", "by far", "as"], "answer": 1, "why": "by far strengthens a superlative"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with the correct comparative or superlative form of the word in brackets.",
+      "items": [
+        {"sentence": "This year's science fair was ___ (good) than last year's by far.", "answers": ["much better", "far better", "a lot better"]},
+        {"sentence": "Sofia is ___ (organised) student in the whole class.", "answers": ["the most organised"]},
+        {"sentence": "The mountain route is ___ (far) than the coast road.", "answers": ["further", "farther"]},
+        {"sentence": "This laptop is ___ (expensive) than the one I wanted.", "answers": ["slightly more expensive", "a little more expensive"]},
+        {"sentence": "The bus wasn't ___ (crowded) as we expected.", "answers": ["as crowded"]},
+        {"sentence": "The new stadium holds ___ (many) people as the old one.", "answers": ["twice as many"]},
+        {"sentence": "The ___ (early) you book, the cheaper the tickets are.", "answers": ["earlier"]},
+        {"sentence": "Of all the players, Nadia trains ___ (hard).", "answers": ["the hardest"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first. Use the word given. Do not change it. Use between two and five words.",
+      "items": [
+        {"first": "No other student in the year is as tall as Liam.", "key": "TALLEST", "second_start": "Liam is", "second_end": "in the year.", "answers": ["the tallest student"]},
+        {"first": "Sofia's essay was a little better than Mateo's.", "key": "SLIGHTLY", "second_start": "Sofia's essay was", "second_end": "Mateo's.", "answers": ["slightly better than"]},
+        {"first": "This year's exam was much harder than last year's.", "key": "FAR", "second_start": "This year's exam was", "second_end": "last year's.", "answers": ["far harder than"]},
+        {"first": "As you practise more, you get more confident.", "key": "MORE", "second_start": "The", "second_end": "confident you get.", "answers": ["more you practise, the more"]},
+        {"first": "Nadia's bag costs double what mine cost.", "key": "TWICE", "second_start": "Nadia's bag costs", "second_end": "mine.", "answers": ["twice as much as"]},
+        {"first": "Liam is not as confident as his sister.", "key": "THAN", "second_start": "Liam's sister is", "second_end": "he is.", "answers": ["more confident than"]}
+      ]
+    }
+  ],
+  "summary": [
+    "Short adjectives take -er/-est; longer adjectives take more/most; good, bad and far are irregular.",
+    "Modifiers show the size of the difference: slightly/a bit (small), much/a lot/far (big), by far/easily (with superlatives).",
+    "As...as compares equal things and always uses the base adjective, never the comparative.",
+    "The + comparative, the + comparative links two things that rise or fall together.",
+    "Like compares two similar things (+ noun); as talks about a role or the way something is done (+ clause or noun)."
+  ]
+}

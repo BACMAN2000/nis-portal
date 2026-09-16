@@ -1,0 +1,174 @@
+{
+  "id": "relative-clauses",
+  "level": "b2f",
+  "area": "Sentence building",
+  "title": "Relative clauses",
+  "tagline": "One extra clause, two jobs: pin down exactly who or what you mean, or simply add more about it.",
+  "cefr": "B2",
+  "exam": [
+    "Reading & Use of English Part 4 — key word transformations",
+    "Reading & Use of English Part 2 — open cloze",
+    "Writing Part 2 — stories and descriptive pieces"
+  ],
+  "why": "A relative clause can change what a sentence actually means: 'the students who arrived late missed the bus' is not the same claim as 'the students, who arrived late, missed the bus'. B2 First tests both the comma and the pronoun, and reduced relative clauses (-ing/-ed) are a quick way to sound less repetitive in Writing Part 2.",
+  "diagrams": [
+    {
+      "type": "contrast",
+      "title": "Defining vs non-defining",
+      "columns": ["Defining", "Non-defining"],
+      "rows": [
+        {"label": "Punctuation", "cells": ["no commas", "commas (or dashes) around the clause"]},
+        {"label": "Function", "cells": ["identifies which person or thing we mean", "adds extra information; the sentence still makes sense without it"]},
+        {"label": "Can you use 'that'?", "cells": ["yes, instead of who/which", "no — never after a comma"]},
+        {"label": "Can you omit the pronoun?", "cells": ["yes, if it is the object of the clause", "no, never"]},
+        {"label": "Example", "cells": ["The teacher who marked our essays is strict.", "Miss Vega, who marked our essays, is strict."]}
+      ]
+    },
+    {
+      "type": "map",
+      "title": "Relative pronouns and adverbs",
+      "center": "Relative clauses",
+      "branches": [
+        {"label": "People", "items": ["who", "whom (formal, object)", "that"], "tone": "a"},
+        {"label": "Things / ideas", "items": ["which", "that"], "tone": "b"},
+        {"label": "Possession", "items": ["whose"], "tone": "c"},
+        {"label": "Place", "items": ["where"], "tone": "a"},
+        {"label": "Time", "items": ["when"], "tone": "b"},
+        {"label": "Reason", "items": ["why"], "tone": "c"}
+      ]
+    },
+    {
+      "type": "transform",
+      "title": "Reducing a relative clause",
+      "before": {"text": "The scientist who was leading the project resigned in March.", "hl": ["who was"]},
+      "after": {"text": "The scientist leading the project resigned in March.", "hl": ["leading"]},
+      "steps": ["Remove the relative pronoun and the auxiliary 'be'.", "Keep the -ing form to show an active, ongoing action.", "Use the -ed form instead if the meaning is passive."]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "noun", "tone": "kw"},
+      {"chip": "relative pronoun", "tone": "a", "ex": "who"},
+      {"chip": "clause", "tone": "arrow", "ex": "is late"},
+      {"chip": "commas = non-defining", "tone": "b"}
+    ],
+    "table": {
+      "head": ["Use", "Pattern", "Example"],
+      "rows": [
+        ["Subject, defining", "who / which / that + verb", "The student who forgot his badge waited outside."],
+        ["Object, defining (pronoun optional)", "(who / which / that) + subject + verb", "The essay (that) she wrote won first prize."],
+        ["Non-defining", ", who / which ... ,", "Cusco, which is in the Andes, gets cold at night."],
+        ["Possession", "whose + noun", "The girl whose bag was stolen reported it at once."],
+        ["Place", "where + clause", "the school where we study English"],
+        ["Time", "when + clause", "the year when we graduate"],
+        ["Reason", "why + clause", "the reason why she left the team"],
+        ["Whole clause (non-defining)", "which + comment on the clause before it", "He passed the exam, which surprised everyone."]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Defining relative clauses: saying exactly which one",
+      "examples": [
+        {"text": "The boy <b>who scored</b> the winning goal is in our class.", "note": "no comma — identifies which boy"},
+        {"text": "Is this the app <b>that</b> Liam <b>recommended</b> for learning vocabulary?", "note": "that can replace which for things"},
+        {"text": "Students <b>whose parents work</b> abroad often video-call every day.", "note": "whose + noun, no comma"}
+      ]
+    },
+    {
+      "point": "Non-defining relative clauses: extra information",
+      "examples": [
+        {"text": "Nadia, <b>who moved</b> here from Trujillo, still supports her old team.", "note": "commas — could be removed without losing the main fact"},
+        {"text": "The Andes, <b>which stretch</b> along the whole country, shape Peru's climate.", "note": "extra fact about the mountains"},
+        {"text": "The match was cancelled, <b>which annoyed</b> everyone on the team.", "note": "which refers to the whole previous idea, not a single noun"}
+      ]
+    },
+    {
+      "point": "Prepositions in relative clauses",
+      "examples": [
+        {"text": "The club <b>which</b> Sofia belongs <b>to</b> meets on Thursdays.", "note": "informal: preposition at the end"},
+        {"text": "The club <b>to which</b> Sofia belongs meets on Thursdays.", "note": "formal: preposition before which/whom"},
+        {"text": "The teacher <b>who</b> I spoke <b>to</b> gave me some useful advice.", "note": "everyday spoken and written style"}
+      ]
+    },
+    {
+      "point": "Reduced relative clauses",
+      "examples": [
+        {"text": "The girl <b>sitting</b> next to Mateo is his cousin.", "note": "active: -ing form (who is sitting)"},
+        {"text": "The photos <b>taken</b> during the trip are on the school website.", "note": "passive: -ed / past participle (which were taken)"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "Miss Vega who teaches us English is from Arequipa.", "right": "Miss Vega, <b>who teaches</b> us English, is from Arequipa.", "why": "A name is already specific, so the clause is non-defining and needs commas."},
+    {"wrong": "The book, that I borrowed, was really long.", "right": "The book <b>that I borrowed</b> was really long.", "why": "You can't use <i>that</i> in a non-defining clause, and this clause is actually defining, so it takes no commas."},
+    {"wrong": "The man who he lives next door plays the guitar.", "right": "The man <b>who lives</b> next door plays the guitar.", "why": "Don't repeat the subject with <i>he</i> — the relative pronoun already does that job."},
+    {"wrong": "This is the app who Liam recommended.", "right": "This is the app <b>that / which Liam recommended</b>.", "why": "<i>Who</i> is only for people; use <i>that</i> or <i>which</i> for things."},
+    {"wrong": "The house who's roof is blue belongs to my uncle.", "right": "The house <b>whose roof</b> is blue belongs to my uncle.", "why": "<i>Whose</i> (possession) is often confused with <i>who's</i> (who is / who has)."},
+    {"wrong": "I met a student, that comes from Canada.", "right": "I met a student <b>who comes</b> from Canada.", "why": "This information identifies which student, so no comma and no <i>that</i> needed here — but if you keep the comma, use <i>who</i>, not <i>that</i>."}
+  ],
+  "dialogue": {
+    "title": "Planning the Cusco trip",
+    "context": "Mateo, Sofia and Nadia are choosing which sites to visit on the school history trip, with Miss Vega checking the final list.",
+    "lines": [
+      {"speaker": "Mateo", "text": "I found a guide <b>who</b> used to work at the site — he's the one <b>whose</b> tours everyone recommends."},
+      {"speaker": "Sofia", "text": "Perfect. Sacsayhuamán, <b>which</b> we studied last term, has to be on the list."},
+      {"speaker": "Nadia", "text": "Agreed. And the market <b>where</b> we can buy souvenirs is right next to it."},
+      {"speaker": "Mateo", "text": "There's also that small museum <b>that</b> Liam mentioned — the one with the textiles."},
+      {"speaker": "Sofia", "text": "Miss Vega, is this the museum <b>which</b> you visited last year?"},
+      {"speaker": "Miss Vega", "text": "It is. The curator, <b>who</b> studied in Lima, gives a short talk in English."},
+      {"speaker": "Nadia", "text": "The students <b>whose</b> Spanish is still basic will appreciate that."},
+      {"speaker": "Mateo", "text": "One thing though: the hostel <b>we're staying at</b> doesn't have wifi in every room."},
+      {"speaker": "Sofia", "text": "That's fine — it's the view <b>that</b> matters, not the wifi."},
+      {"speaker": "Miss Vega", "text": "The reason <b>why</b> I chose this hostel is exactly that: fewer screens, more talking."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "The coach ___ trains the under-16 team used to play professionally.", "options": ["who", "which", "whose"], "answer": 0, "why": "who = people, defining clause"},
+        {"sentence": "My cousin, ___ lives in Trujillo, is coming to visit next month.", "options": ["that", "who", "which"], "answer": 1, "why": "that is not allowed after a comma"},
+        {"sentence": "This is the laptop ___ screen cracked last week.", "options": ["whose", "which", "who"], "answer": 0, "why": "whose shows possession, even for things"},
+        {"sentence": "The stadium ___ we watched the final is being rebuilt.", "options": ["which", "when", "where"], "answer": 2, "why": "where refers to a place"},
+        {"sentence": "Nadia's essay, ___ won first prize, took her three weeks to write.", "options": ["that", "which", "who"], "answer": 1, "why": "non-defining clause about a thing needs which, not that"},
+        {"sentence": "I don't remember the exact day ___ we first met.", "options": ["when", "where", "which"], "answer": 0, "why": "when refers to time"},
+        {"sentence": "The teacher ___ I told you about is retiring this year.", "options": ["who", "whose", "–"], "answer": 2, "why": "object pronoun can be omitted in a defining clause"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with who, which, whose, where, when, why or that. If the pronoun can be omitted, write '–'.",
+      "items": [
+        {"sentence": "The girl ___ sits next to me in Maths is Nadia's cousin.", "answers": ["who", "that"]},
+        {"sentence": "Arequipa, ___ is known as the White City, sits below three volcanoes.", "answers": ["which"]},
+        {"sentence": "That's the shop ___ owner used to play for the national team.", "answers": ["whose"]},
+        {"sentence": "The film ___ we watched in class last Friday was based on a true story.", "answers": ["–", "that", "which"]},
+        {"sentence": "This is the classroom ___ we do our Cambridge practice tests.", "answers": ["where"]},
+        {"sentence": "Can you tell me the reason ___ the match was postponed?", "answers": ["why"]},
+        {"sentence": "The summer ___ we travelled to the coast was unusually rainy.", "answers": ["when"]},
+        {"sentence": "Liam, ___ never misses training, was surprisingly late today.", "answers": ["who"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first. Use the word given. Do not change it. Use between two and five words.",
+      "items": [
+        {"first": "Sofia wrote an essay. It won a national prize.", "key": "WHICH", "second_start": "Sofia wrote an essay,", "second_end": "a national prize.", "answers": ["which won"]},
+        {"first": "That's the boy. His father coaches the football team.", "key": "WHOSE", "second_start": "That's the boy", "second_end": "coaches the football team.", "answers": ["whose father"]},
+        {"first": "This is the café. We meet our friends there every Saturday.", "key": "WHERE", "second_start": "This is the café", "second_end": "our friends every Saturday.", "answers": ["where we meet"]},
+        {"first": "I can't remember the exact date. We booked the trip on that date.", "key": "WHEN", "second_start": "I can't remember", "second_end": "the trip.", "answers": ["when we booked"]},
+        {"first": "The girl was sitting by the window. She is Mateo's sister.", "key": "SITTING", "second_start": "The girl", "second_end": "is Mateo's sister.", "answers": ["sitting by the window"]},
+        {"first": "The documents were left on the desk. They belong to Miss Vega.", "key": "LEFT", "second_start": "The documents", "second_end": "belong to Miss Vega.", "answers": ["left on the desk"]}
+      ]
+    }
+  ],
+  "summary": [
+    "A defining relative clause tells you which person or thing; a non-defining one adds extra information and needs commas.",
+    "Never use <i>that</i> after a comma — non-defining clauses need <i>who</i>, <i>which</i>, <i>whose</i>, <i>where</i> or <i>when</i>.",
+    "You can drop the pronoun only when it is the object of a defining clause: the book (that) I borrowed.",
+    "<i>Which</i> can also comment on a whole previous clause, not just one noun.",
+    "A reduced relative clause drops the pronoun and 'be': -ing for active meaning, -ed for passive."
+  ]
+}

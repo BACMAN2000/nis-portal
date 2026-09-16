@@ -1,0 +1,551 @@
+{
+  "id": "participle-clauses",
+  "level": "c1a",
+  "area": "Sentence building",
+  "title": "Participle clauses",
+  "tagline": "Drop the subject and the conjunction — a single participle carries the whole clause.",
+  "cefr": "C1",
+  "exam": [
+    "Reading & Use of English Part 4 — key word transformations (participle clauses for reason and time)",
+    "Reading & Use of English Part 7 — multiple matching: dense texts thick with reduced clauses",
+    "Writing Part 2 — stories and reviews: fluent, economical narrative",
+    "Speaking Part 2 — describing photos and events without strings of 'and' and 'because'"
+  ],
+  "why": "Participle clauses let a C1 writer pack a reason, a time relationship or extra information into a sentence with only one subject and no conjunction. Reading & Use of English texts are full of them, and examiners expect candidates to produce them, not just recognise them, in the Writing paper. The form itself is simple; the skill is knowing which participle carries which meaning, and never leaving one with no logical subject to attach to.",
+  "diagrams": [
+    {
+      "type": "transform",
+      "title": "From full clause to participle clause",
+      "before": {
+        "text": "Because she had trained for months, Sofia felt ready for the marathon.",
+        "hl": [
+          "Because she had trained",
+          "Sofia"
+        ]
+      },
+      "after": {
+        "text": "Having trained for months, Sofia felt ready for the marathon.",
+        "hl": [
+          "Having trained",
+          "Sofia"
+        ]
+      },
+      "steps": [
+        "Check that both clauses share the same subject (she = Sofia).",
+        "Drop the conjunction and the repeated subject, and turn the verb into a participle: <b>Having trained</b> shows an action completed before the main clause.",
+        "Keep the participle clause next to the noun it belongs to, so the meaning stays clear."
+      ]
+    },
+    {
+      "type": "map",
+      "title": "Which participle for which meaning?",
+      "center": "Participle clauses",
+      "branches": [
+        {
+          "label": "Present participle -ing (active, simultaneous)",
+          "items": [
+            "Walking home, ...",
+            "Not knowing the way, ...",
+            "..., causing a two-hour delay"
+          ],
+          "tone": "a"
+        },
+        {
+          "label": "Past participle -ed (passive)",
+          "items": [
+            "Built in 1900, ...",
+            "Left alone in the office, ...",
+            "Caught copying his neighbour's answers, ..."
+          ],
+          "tone": "b"
+        },
+        {
+          "label": "Perfect participle having + p.p. (earlier action)",
+          "items": [
+            "Having finished the report, ...",
+            "Having been warned twice, ..."
+          ],
+          "tone": "c"
+        },
+        {
+          "label": "With + noun + participle",
+          "items": [
+            "With prices rising, ...",
+            "With the report finished, ..."
+          ],
+          "tone": "a"
+        }
+      ]
+    },
+    {
+      "type": "contrast",
+      "title": "Correct participle vs dangling participle",
+      "columns": [
+        "Same subject — correct",
+        "Different subject — dangling"
+      ],
+      "rows": [
+        {
+          "label": "Pattern",
+          "cells": [
+            "participle clause + main clause, same doer",
+            "participle clause + main clause, different doer"
+          ]
+        },
+        {
+          "label": "Example",
+          "cells": [
+            "<b>Walking</b> home, I saw the accident.",
+            "<b>Walking</b> home, the accident surprised me."
+          ]
+        },
+        {
+          "label": "Problem",
+          "cells": [
+            "none — 'I' did the walking and the seeing",
+            "'the accident' cannot walk — the sentence is illogical"
+          ]
+        },
+        {
+          "label": "Fix",
+          "cells": [
+            "—",
+            "<b>While I was walking</b> home, I saw the accident."
+          ]
+        }
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {
+        "chip": "conjunction + subject (dropped)",
+        "tone": "kw",
+        "ex": "Because she..."
+      },
+      {
+        "chip": "participle",
+        "tone": "a",
+        "ex": "Having finished / Walking / Built"
+      },
+      {
+        "chip": "→",
+        "tone": "arrow"
+      },
+      {
+        "chip": "main clause",
+        "tone": "b",
+        "ex": "she left the office"
+      }
+    ],
+    "table": {
+      "head": [
+        "Participle",
+        "Meaning / time",
+        "Example"
+      ],
+      "rows": [
+        [
+          "Present participle (-ing)",
+          "simultaneous action or reason",
+          "<b>Waiting</b> for the bus, Liam checked his phone."
+        ],
+        [
+          "Present participle, negative",
+          "reason (= because ... not)",
+          "<b>Not knowing</b> the address, we asked a stranger."
+        ],
+        [
+          "Past participle (-ed / irregular)",
+          "passive meaning",
+          "<b>Written</b> in 1848, the novel still feels modern."
+        ],
+        [
+          "Perfect participle (having + p.p.)",
+          "an earlier completed action",
+          "<b>Having revised</b> for weeks, Nadia felt confident."
+        ],
+        [
+          "Perfect passive (having been + p.p.)",
+          "an earlier action, passive",
+          "<b>Having been warned</b> twice, he finally listened."
+        ],
+        [
+          "With + noun + -ing",
+          "accompanying circumstance",
+          "<b>With</b> the deadline <b>approaching</b>, the team worked late."
+        ],
+        [
+          "Conjunction + past participle (when/if/once)",
+          "time or condition, passive, subject omitted",
+          "<b>When asked</b> about the delay, she apologised."
+        ]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Replacing a reason or cause clause",
+      "examples": [
+        {
+          "text": "<b>Having missed</b> the bus twice that week, Mateo decided to leave home earlier.",
+          "note": "perfect participle = reason + an action completed before the main clause"
+        },
+        {
+          "text": "<b>Not wanting</b> to seem rude, Sofia stayed until the very end of the ceremony.",
+          "note": "negative present participle = because she didn't want to"
+        },
+        {
+          "text": "<b>Feeling</b> unprepared for the debate, Liam asked Miss Vega for an extra day.",
+          "note": "present participle = reason, simultaneous with the main clause"
+        }
+      ]
+    },
+    {
+      "point": "Replacing a time clause",
+      "examples": [
+        {
+          "text": "<b>Arriving</b> at the viewpoint just after dawn, they watched the mist lift over the valley.",
+          "note": "= as soon as they arrived"
+        },
+        {
+          "text": "<b>Having handed in</b> the final draft, Nadia finally allowed herself to relax.",
+          "note": "= after she had handed in"
+        },
+        {
+          "text": "<b>Once collected</b>, the surveys were analysed by the whole class.",
+          "note": "conjunction + past participle, subject omitted"
+        }
+      ]
+    },
+    {
+      "point": "Adding extra information (a reduced relative clause)",
+      "examples": [
+        {
+          "text": "Students <b>wishing</b> to resit the exam must register by Friday.",
+          "note": "= who wish to resit"
+        },
+        {
+          "text": "The mural, <b>painted</b> by last year's cohort, still covers the entire corridor.",
+          "note": "= which was painted; non-defining, so it takes commas"
+        },
+        {
+          "text": "Anyone <b>caught</b> using a phone during the test will be disqualified.",
+          "note": "= who is caught"
+        }
+      ]
+    },
+    {
+      "point": "With + noun + participle, and clauses of result",
+      "examples": [
+        {
+          "text": "<b>With</b> so many tourists <b>visiting</b> Cusco in July, hotel prices double.",
+          "note": "with + noun + -ing: an accompanying circumstance, no conjunction needed"
+        },
+        {
+          "text": "The bridge collapsed, <b>leaving</b> the village cut off for three days.",
+          "note": "-ing clause of result, placed after the main clause"
+        },
+        {
+          "text": "<b>With</b> the results <b>confirmed</b>, the team could finally celebrate.",
+          "note": "with + noun + past participle"
+        }
+      ]
+    }
+  ],
+  "watch_out": [
+    {
+      "wrong": "Walking to school, the rain started suddenly.",
+      "right": "<b>Walking</b> to school, I got caught in the rain.",
+      "why": "Dangling participle — 'the rain' cannot be the one walking; the participle must share its subject with the main clause."
+    },
+    {
+      "wrong": "Having finish the report, she sent it to her tutor.",
+      "right": "<b>Having finished</b> the report, she sent it to her tutor.",
+      "why": "The perfect participle needs the past participle after 'having', not the bare infinitive."
+    },
+    {
+      "wrong": "Interesting in the topic, Liam read three extra articles.",
+      "right": "<b>Interested</b> in the topic, Liam read three extra articles.",
+      "why": "For feelings, use the -ed form for the person who feels them; -ing describes what causes the feeling."
+    },
+    {
+      "wrong": "Build in the 1920s, the theatre has just been restored.",
+      "right": "<b>Built</b> in the 1920s, the theatre has just been restored.",
+      "why": "A passive meaning needs the past participle, not the base form of the verb."
+    },
+    {
+      "wrong": "Having been late, the meeting had already started when he had arrived.",
+      "right": "<b>Having arrived</b> late, he found the meeting had already started.",
+      "why": "Keep the timing of the two clauses clear: the perfect participle marks the earlier action, and the main clause should not also repeat 'had'."
+    },
+    {
+      "wrong": "When asking about the results, Miss Vega smiled.",
+      "right": "<b>When asked</b> about the results, Miss Vega smiled.",
+      "why": "After when/if/once, a passive meaning needs the past participle, not the -ing form."
+    }
+  ],
+  "dialogue": {
+    "title": "Editing the trip report",
+    "context": "Miss Vega is helping Mateo, Sofia and Nadia tighten their write-ups of the school trip to the Sacred Valley before they go on the class blog.",
+    "lines": [
+      {
+        "speaker": "Miss Vega",
+        "text": "This paragraph is accurate, but it's full of short sentences joined with 'and' and 'because'. Can you tighten it up?"
+      },
+      {
+        "speaker": "Mateo",
+        "text": "So instead of 'Because we left at five, we reached Ollantaytambo before the crowds', I could write '<b>Having left</b> at five, we reached Ollantaytambo before the crowds'?"
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "Exactly — and it reads far more fluently."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "What about description? I wrote 'The terraces were built by the Incas and they still look perfect.'"
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "Try a reduced relative clause: '<b>Built</b> by the Incas, the terraces still look perfect.'"
+      },
+      {
+        "speaker": "Sofia",
+        "text": "Nice. And '<b>Seen</b> from the top of the ruins, the whole valley looks like a green amphitheatre.'"
+      },
+      {
+        "speaker": "Nadia",
+        "text": "I've got a sentence I'm not sure about: '<b>Not knowing</b> the altitude would affect us, we ran up the last staircase.'"
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "That works well — the participle clause carries the reason without a separate sentence."
+      },
+      {
+        "speaker": "Mateo",
+        "text": "For the ending I want a result clause: 'The bus broke down on the way back, <b>leaving</b> half the class stranded for two hours.'"
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "Good — an -ing clause of result at the end. Just remember: the subject of the participle has to match the subject of the main clause, or the sentence falls apart."
+      },
+      {
+        "speaker": "Nadia",
+        "text": "Like the sentence I deleted: '<b>Walking</b> along the path, the view was incredible.' The view wasn't walking!"
+      },
+      {
+        "speaker": "Miss Vega",
+        "text": "Precisely. Give it a real subject and the sentence is fixed."
+      }
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {
+          "sentence": "___ she was close to the deadline, Sofia decided to skip lunch and keep working.",
+          "options": [
+            "Realising",
+            "Realised",
+            "Having realise"
+          ],
+          "answer": 0,
+          "why": "present participle for an active reason clause: Sofia is the one realising"
+        },
+        {
+          "sentence": "___ by torchlight, the ancient manuscript revealed details invisible under normal light.",
+          "options": [
+            "Examining",
+            "Examined",
+            "Having examine"
+          ],
+          "answer": 1,
+          "why": "passive meaning (the manuscript was examined) needs the past participle"
+        },
+        {
+          "sentence": "___ his essay twice, Liam finally felt ready to submit it.",
+          "options": [
+            "Revising",
+            "Having revise",
+            "Having revised"
+          ],
+          "answer": 2,
+          "why": "the perfect participle marks an action completed before the main clause"
+        },
+        {
+          "sentence": "The hikers, ___ by the sudden storm, took shelter under a rock overhang.",
+          "options": [
+            "Catching",
+            "Caught",
+            "Having catch"
+          ],
+          "answer": 1,
+          "why": "reduced passive relative clause: who were caught"
+        },
+        {
+          "sentence": "When ___ about the missing report, the intern admitted she had forgotten to send it.",
+          "options": [
+            "Questioning",
+            "Having question",
+            "Questioned"
+          ],
+          "answer": 2,
+          "why": "after 'when', a passive meaning takes the past participle: when questioned = when she was questioned"
+        },
+        {
+          "sentence": "___ so many applicants applying for the scholarship, the school extended the interview period by a week.",
+          "options": [
+            "With",
+            "Because",
+            "Since"
+          ],
+          "answer": 0,
+          "why": "'with + noun + -ing' introduces an accompanying circumstance without a conjunction"
+        },
+        {
+          "sentence": "Not ___ how to reach the shrine, the pilgrims asked a local guide for directions.",
+          "options": [
+            "Knowing",
+            "Known",
+            "Having know"
+          ],
+          "answer": 0,
+          "why": "negative present participle for reason: because they didn't know"
+        },
+        {
+          "sentence": "___ from the article, the quotation had lost its original meaning.",
+          "options": [
+            "Taking out of context",
+            "Having taken out of context",
+            "Taken out of context"
+          ],
+          "answer": 2,
+          "why": "passive past participle: the quotation was taken out of context"
+        }
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with the correct participle form of the verb in brackets.",
+      "items": [
+        {
+          "sentence": "___ (finish) the last exercise, Nadia closed her laptop and went outside.",
+          "answers": [
+            "Having finished"
+          ]
+        },
+        {
+          "sentence": "The email, ___ (send) to the wrong address, never reached the headteacher.",
+          "answers": [
+            "sent"
+          ]
+        },
+        {
+          "sentence": "___ (not/want) to interrupt the lesson, Liam waited outside the door.",
+          "answers": [
+            "Not wanting"
+          ]
+        },
+        {
+          "sentence": "With the whole team ___ (wait) for news, the coach finally announced the result.",
+          "answers": [
+            "waiting"
+          ]
+        },
+        {
+          "sentence": "When ___ (ask) why she was late, Sofia simply apologised and sat down.",
+          "answers": [
+            "asked"
+          ]
+        },
+        {
+          "sentence": "The trail, ___ (close) after the landslide, will reopen next month.",
+          "answers": [
+            "closed"
+          ]
+        },
+        {
+          "sentence": "___ (realise) her mistake, Nadia quickly rewrote the paragraph.",
+          "answers": [
+            "Realising"
+          ]
+        },
+        {
+          "sentence": "Having ___ (check) the figures twice, the accountant signed the report.",
+          "answers": [
+            "checked"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first, using the word given. Do not change the word given. Use between two and five words.",
+      "items": [
+        {
+          "first": "Because she had already read the book, Nadia didn't need to borrow it from the library.",
+          "key": "READ",
+          "second_start": "",
+          "second_end": "the book, Nadia didn't need to borrow it from the library.",
+          "answers": [
+            "Having already read"
+          ]
+        },
+        {
+          "first": "As he was not sure of the answer, Liam raised his hand cautiously.",
+          "key": "SURE",
+          "second_start": "",
+          "second_end": "of the answer, Liam raised his hand cautiously.",
+          "answers": [
+            "Not being sure"
+          ]
+        },
+        {
+          "first": "The flood damaged the bridge, so it had to be closed for repairs.",
+          "key": "DAMAGED",
+          "second_start": "",
+          "second_end": "by the flood, the bridge had to be closed for repairs.",
+          "answers": [
+            "Having been damaged"
+          ]
+        },
+        {
+          "first": "Since we don't know the final numbers, we can't confirm the budget.",
+          "key": "KNOWING",
+          "second_start": "",
+          "second_end": "the final numbers, we can't confirm the budget.",
+          "answers": [
+            "Not knowing"
+          ]
+        },
+        {
+          "first": "After the judges had checked the scores twice, they announced the winners.",
+          "key": "CHECKED",
+          "second_start": "",
+          "second_end": "the scores twice, the judges announced the winners.",
+          "answers": [
+            "Having checked"
+          ]
+        },
+        {
+          "first": "As the deadline was approaching, the team began to work extra hours.",
+          "key": "APPROACHING",
+          "second_start": "With the deadline",
+          "second_end": "the team began to work extra hours.",
+          "answers": [
+            "fast approaching"
+          ]
+        }
+      ]
+    }
+  ],
+  "summary": [
+    "Drop the conjunction and the subject when both clauses share the same subject, and turn the verb into a participle: <i>Because she was tired</i> → <b>Being tired</b>.",
+    "Use the perfect participle (<i>having + past participle</i>) when the action in the participle clause happened before the action in the main clause.",
+    "The past participle carries a passive meaning (<i>Built in 1900...</i>); the present participle carries an active one (<i>Building the wall...</i>).",
+    "<i>With + noun + participle</i> adds an accompanying circumstance without any conjunction at all.",
+    "Always check the subject: if the participle clause and the main clause do not share the same doer, the participle is left dangling — a classic C1 error."
+  ]
+}

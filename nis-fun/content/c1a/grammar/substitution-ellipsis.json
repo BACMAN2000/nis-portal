@@ -1,0 +1,561 @@
+{
+  "id": "substitution-ellipsis",
+  "level": "c1a",
+  "area": "Sentence building",
+  "title": "Substitution and ellipsis",
+  "tagline": "Say it once — then let so, one, do so and a bare 'to' carry the rest.",
+  "cefr": "C1",
+  "exam": [
+    "Reading & Use of English Part 2 — open cloze (so, not, one, do, to)",
+    "Reading & Use of English Part 4 — key word transformations (so, not, one, the same)",
+    "Speaking Parts 1-4 — natural short answers instead of repeating a whole clause",
+    "Writing Part 2 — fluent narrative without clumsy repetition"
+  ],
+  "why": "Fluent English avoids saying the same words twice. Substitution words like so, one and the same replace a whole idea, and ellipsis simply leaves out what the listener or reader can already recover — 'I'd like to (go)', 'She can (swim), and so can I'. C1 Advanced tests this constantly, in the open cloze and in key word transformations, and a text that keeps repeating full clauses instead of using so/not, do so or a well-placed gap reads as noticeably less fluent than one that doesn't.",
+  "diagrams": [
+    {
+      "type": "transform",
+      "title": "Avoiding repetition: substitution and ellipsis",
+      "before": {
+        "text": "I think it will rain tomorrow, and my sister thinks it will rain tomorrow too.",
+        "hl": [
+          "thinks it will rain tomorrow too"
+        ]
+      },
+      "after": {
+        "text": "I think it will rain tomorrow, and my sister thinks so too.",
+        "hl": [
+          "thinks so"
+        ]
+      },
+      "steps": [
+        "Find the repeated clause (it will rain tomorrow).",
+        "Replace it with 'so' after verbs like think/hope/suppose/expect, or drop it completely after an auxiliary.",
+        "Keep the rest of the sentence unchanged."
+      ]
+    },
+    {
+      "type": "map",
+      "title": "Substitution and ellipsis, by pattern",
+      "center": "Avoiding repetition",
+      "branches": [
+        {
+          "label": "so / not (think, hope, suppose, expect)",
+          "items": [
+            "I think so",
+            "I hope not",
+            "I suppose so"
+          ],
+          "tone": "a"
+        },
+        {
+          "label": "do so / did so",
+          "items": [
+            "replaces a whole verb phrase",
+            "She left early, and he did so too"
+          ],
+          "tone": "b"
+        },
+        {
+          "label": "one / ones",
+          "items": [
+            "replaces a countable noun",
+            "I need a pen — do you have one?"
+          ],
+          "tone": "c"
+        },
+        {
+          "label": "ellipsis after auxiliaries / to",
+          "items": [
+            "I'd like to (go)",
+            "She can (swim), and so can I",
+            "I haven't (finished), but I will (finish)"
+          ],
+          "tone": "a"
+        },
+        {
+          "label": "if so / if not",
+          "items": [
+            "shorthand for a whole preceding condition"
+          ],
+          "tone": "b"
+        }
+      ]
+    },
+    {
+      "type": "contrast",
+      "title": "Full form vs reduced form",
+      "columns": [
+        "Full (repeats everything)",
+        "Reduced (substitution/ellipsis)"
+      ],
+      "rows": [
+        {
+          "label": "Verb phrase",
+          "cells": [
+            "She wanted to leave, and I wanted to leave too.",
+            "She wanted to leave, and I <b>wanted to</b> too."
+          ]
+        },
+        {
+          "label": "Whole clause",
+          "cells": [
+            "I think it will work, and he thinks it will work.",
+            "I think it will work, and he thinks <b>so</b>."
+          ]
+        },
+        {
+          "label": "Noun",
+          "cells": [
+            "I lost my pen, so I bought a new pen.",
+            "I lost my pen, so I bought a new <b>one</b>."
+          ]
+        },
+        {
+          "label": "Effect",
+          "cells": [
+            "correct, but repetitive and unnatural at C1",
+            "fluent — a clear sign of native-like economy"
+          ]
+        }
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {
+        "chip": "verb (think/hope/suppose/expect/be afraid)",
+        "tone": "kw",
+        "ex": "think"
+      },
+      {
+        "chip": "so / not",
+        "tone": "a",
+        "ex": "so (positive) / not (negative)"
+      },
+      {
+        "chip": "→",
+        "tone": "arrow"
+      },
+      {
+        "chip": "replaces the whole clause",
+        "tone": "b",
+        "ex": "that it will rain"
+      }
+    ],
+    "table": {
+      "head": [
+        "Pattern",
+        "Replaces",
+        "Example"
+      ],
+      "rows": [
+        [
+          "so after think/hope/suppose/expect/be afraid",
+          "a whole that-clause, positive",
+          "'Will it rain?' 'I <b>think so</b>.'"
+        ],
+        [
+          "not after hope/be afraid/think",
+          "a whole that-clause, negative",
+          "'Is the shop open?' 'I'm <b>afraid not</b>.'"
+        ],
+        [
+          "do so / did so",
+          "a whole verb phrase, formal",
+          "She resigned first, and her deputy <b>did so</b> a week later."
+        ],
+        [
+          "one / ones",
+          "a countable noun already mentioned",
+          "My laptop is old; I need a new <b>one</b>."
+        ],
+        [
+          "the same",
+          "an identical action or choice",
+          "Liam ordered pizza, and Sofia had <b>the same</b>."
+        ],
+        [
+          "ellipsis after an auxiliary",
+          "the main verb, once it's clear",
+          "She hasn't finished, but I <b>have</b>."
+        ],
+        [
+          "ellipsis after 'to'",
+          "the whole infinitive verb phrase",
+          "I didn't want to go, but I felt I ought <b>to</b>."
+        ],
+        [
+          "if so / if not",
+          "a whole preceding condition",
+          "Are you free Friday? <b>If so</b>, let's meet then."
+        ]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "so and not after verbs of thinking and hoping",
+      "examples": [
+        {
+          "text": "'Is Mateo coming to the trip?' 'I <b>think so</b>.'",
+          "note": "think + so replaces 'that Mateo is coming'"
+        },
+        {
+          "text": "'Did the museum close early?' 'I'm <b>afraid so</b>.'",
+          "note": "afraid + so, a polite way of confirming bad news"
+        },
+        {
+          "text": "'Will the results be published today?' 'I <b>hope not</b>.'",
+          "note": "hope + not, the negative substitution"
+        }
+      ]
+    },
+    {
+      "point": "do so / did so, and one/ones",
+      "examples": [
+        {
+          "text": "Nadia submitted her project early, and Liam <b>did so</b> as well.",
+          "note": "did so replaces 'submitted his project early', formal register"
+        },
+        {
+          "text": "The old textbooks were replaced with new <b>ones</b> this term.",
+          "note": "ones replaces the plural countable noun 'textbooks'"
+        },
+        {
+          "text": "If you need a calculator, there's a spare <b>one</b> in the drawer.",
+          "note": "one replaces 'calculator'"
+        }
+      ]
+    },
+    {
+      "point": "Ellipsis after auxiliaries and 'to'",
+      "examples": [
+        {
+          "text": "Sofia hasn't finished her essay yet, but Nadia <b>has</b>.",
+          "note": "ellipsis of 'finished her essay' after the auxiliary"
+        },
+        {
+          "text": "'Are you coming to the concert?' 'I'd like <b>to</b>, but I can't.'",
+          "note": "'to' stands for the whole infinitive 'to come to the concert'"
+        },
+        {
+          "text": "He can speak French fluently, and so <b>can</b> his sister.",
+          "note": "inverted ellipsis: so + auxiliary + subject"
+        }
+      ]
+    },
+    {
+      "point": "Omitting repeated subjects, verbs and relative pronouns",
+      "examples": [
+        {
+          "text": "Mateo cleared the table <b>and washed</b> the dishes.",
+          "note": "the repeated subject 'Mateo' is dropped before the second verb"
+        },
+        {
+          "text": "The essay <b>she submitted</b> last week won the prize.",
+          "note": "'that/which' can be omitted when it's the object of the relative clause"
+        },
+        {
+          "text": "'<b>If so</b>, we'll leave at six; <b>if not</b>, we'll wait for the bus.'",
+          "note": "if so / if not stand for a whole condition already stated"
+        }
+      ]
+    }
+  ],
+  "watch_out": [
+    {
+      "wrong": "'Is he coming?' 'I think it.'",
+      "right": "'Is he coming?' 'I <b>think so</b>.'",
+      "why": "'It' cannot replace a whole clause after think/hope/suppose — use 'so' (or 'not' for the negative)."
+    },
+    {
+      "wrong": "She left early, and he did it so too.",
+      "right": "She left early, and he <b>did so</b> too.",
+      "why": "'Do so' is a fixed formal phrase — don't add 'it' inside it."
+    },
+    {
+      "wrong": "I lost my pen, so I bought a new.",
+      "right": "I lost my pen, so I bought a new <b>one</b>.",
+      "why": "After an adjective, a singular countable noun needs 'one' to stand in for it — you can't just drop it."
+    },
+    {
+      "wrong": "She can't come, but I can to.",
+      "right": "She can't come, but I <b>can</b>.",
+      "why": "After a modal or auxiliary, the rest of the verb phrase is simply dropped — don't add 'to'."
+    },
+    {
+      "wrong": "I didn't want to go, but I felt I ought.",
+      "right": "I didn't want to go, but I felt I ought <b>to</b>.",
+      "why": "After 'ought', the bare ellipted infinitive still needs 'to'; only the main verb is omitted."
+    },
+    {
+      "wrong": "Are you free tomorrow? If, let's meet.",
+      "right": "Are you free tomorrow? <b>If so</b>, let's meet.",
+      "why": "'If' alone can't stand for the whole condition — it must be 'if so' or 'if not'."
+    }
+  ],
+  "dialogue": {
+    "title": "Sorting out the weekend",
+    "context": "Mateo, Sofia, Liam and Nadia are messaging about a trip to the coast, using natural short answers instead of repeating whole sentences.",
+    "lines": [
+      {
+        "speaker": "Mateo",
+        "text": "Is the bus leaving at seven or eight?"
+      },
+      {
+        "speaker": "Sofia",
+        "text": "I <b>think so</b> — seven, I mean. Liam confirmed it yesterday."
+      },
+      {
+        "speaker": "Liam",
+        "text": "I <b>did</b>, yes. Also, does anyone still need a wetsuit? There's a spare <b>one</b> at my house."
+      },
+      {
+        "speaker": "Nadia",
+        "text": "I could use <b>one</b>, actually — mine is too small now."
+      },
+      {
+        "speaker": "Mateo",
+        "text": "Great. Sofia, are you bringing snacks?"
+      },
+      {
+        "speaker": "Sofia",
+        "text": "I'd <b>like to</b>, but I haven't had time to shop yet."
+      },
+      {
+        "speaker": "Liam",
+        "text": "No worries, I'll <b>do so</b> instead — I'm passing the supermarket anyway."
+      },
+      {
+        "speaker": "Nadia",
+        "text": "Is the weather supposed to be good on Saturday?"
+      },
+      {
+        "speaker": "Mateo",
+        "text": "I <b>hope so</b>. The forecast said sunny, but I'm not sure it's reliable."
+      },
+      {
+        "speaker": "Sofia",
+        "text": "<b>If so</b>, we should leave early to get the best spot on the beach."
+      },
+      {
+        "speaker": "Nadia",
+        "text": "Agreed. And <b>if not</b>, we'll just bring the tent instead."
+      },
+      {
+        "speaker": "Liam",
+        "text": "Either way, I can't wait — see you all at six thirty!"
+      }
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {
+          "sentence": "'Is the museum open today?' 'I ___.'",
+          "options": [
+            "think so",
+            "think it",
+            "think that"
+          ],
+          "answer": 0,
+          "why": "'so' replaces the whole clause 'that the museum is open today'"
+        },
+        {
+          "sentence": "'Will it rain later?' 'I ___.'",
+          "options": [
+            "hope it not",
+            "hope not",
+            "not hope"
+          ],
+          "answer": 1,
+          "why": "'hope not' is the fixed negative substitution pattern"
+        },
+        {
+          "sentence": "Nadia handed in her project on time, and Liam ___ as well.",
+          "options": [
+            "did it so",
+            "did that",
+            "did so"
+          ],
+          "answer": 2,
+          "why": "'do so' is a fixed formal phrase replacing the whole verb phrase"
+        },
+        {
+          "sentence": "My headphones broke, so I need to buy new ___.",
+          "options": [
+            "ones",
+            "one",
+            "it"
+          ],
+          "answer": 0,
+          "why": "'ones' replaces the plural countable noun 'headphones'"
+        },
+        {
+          "sentence": "'Can you swim fifty metres?' 'Yes, I ___.'",
+          "options": [
+            "can to",
+            "can",
+            "can do"
+          ],
+          "answer": 1,
+          "why": "after a modal, the rest of the verb phrase is simply dropped"
+        },
+        {
+          "sentence": "I didn't want to speak first, but I felt I had ___.",
+          "options": [
+            "to do",
+            "do so",
+            "to"
+          ],
+          "answer": 2,
+          "why": "after 'had', the bare 'to' stands for the whole infinitive that follows"
+        },
+        {
+          "sentence": "Are the tickets still available? ___, let's book them now.",
+          "options": [
+            "If so",
+            "If",
+            "So if"
+          ],
+          "answer": 0,
+          "why": "'if so' stands for the whole preceding condition"
+        },
+        {
+          "sentence": "Sofia ordered a salad, and Mateo had ___.",
+          "options": [
+            "same",
+            "the same",
+            "the one"
+          ],
+          "answer": 1,
+          "why": "'the same' = an identical choice or action already mentioned"
+        }
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with one or two words.",
+      "items": [
+        {
+          "sentence": "'Did the shop close early?' 'I'm afraid ___.'",
+          "answers": [
+            "so"
+          ]
+        },
+        {
+          "sentence": "'Is the bridge still closed?' 'I believe ___.'",
+          "answers": [
+            "not"
+          ]
+        },
+        {
+          "sentence": "Liam finished the race first, and Mateo ___ a minute later.",
+          "answers": [
+            "did so"
+          ]
+        },
+        {
+          "sentence": "This pen doesn't work — can I borrow a spare ___?",
+          "answers": [
+            "one"
+          ]
+        },
+        {
+          "sentence": "Our old chairs were uncomfortable, so the school bought new ___.",
+          "answers": [
+            "ones"
+          ]
+        },
+        {
+          "sentence": "She hasn't replied to the email yet, but I ___.",
+          "answers": [
+            "have"
+          ]
+        },
+        {
+          "sentence": "I'd love ___, but I'm busy that evening.",
+          "answers": [
+            "to"
+          ]
+        },
+        {
+          "sentence": "Are you both free on Saturday? ___, let's plan something.",
+          "answers": [
+            "If so"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first, using the word given. Do not change the word given. Use between two and five words.",
+      "items": [
+        {
+          "first": "Ticket prices will rise again next year — or at least, that's what Liam thinks.",
+          "key": "SO",
+          "second_start": "Liam",
+          "second_end": ".",
+          "answers": [
+            "thinks so"
+          ]
+        },
+        {
+          "first": "Sofia doesn't think the museum is still open.",
+          "key": "NOT",
+          "second_start": "Sofia",
+          "second_end": ".",
+          "answers": [
+            "thinks not"
+          ]
+        },
+        {
+          "first": "Liam handed in his essay early, and Mateo handed his in early too.",
+          "key": "DID",
+          "second_start": "Liam handed in his essay early, and Mateo",
+          "second_end": "too.",
+          "answers": [
+            "did so"
+          ]
+        },
+        {
+          "first": "My charger broke, so I bought a new charger.",
+          "key": "ONE",
+          "second_start": "My charger broke, so I bought a",
+          "second_end": ".",
+          "answers": [
+            "new one"
+          ]
+        },
+        {
+          "first": "I didn't want to help, but I felt obliged to help.",
+          "key": "TO",
+          "second_start": "I didn't want to help, but I felt",
+          "second_end": ".",
+          "answers": [
+            "obliged to"
+          ]
+        },
+        {
+          "first": "Mateo ordered a burger, and Nadia ordered a burger too.",
+          "key": "SAME",
+          "second_start": "Mateo ordered a burger, and Nadia had",
+          "second_end": ".",
+          "answers": [
+            "the same"
+          ]
+        }
+      ]
+    }
+  ],
+  "summary": [
+    "<i>So</i> and <i>not</i> replace a whole clause after think, hope, suppose, expect and be afraid: <b>I think so</b>, <b>I'm afraid not</b>.",
+    "<i>Do so / did so</i> replaces a whole verb phrase in formal writing; <i>one/ones</i> replaces a countable noun already mentioned.",
+    "After an auxiliary or modal, the rest of the verb phrase can simply be dropped: <i>She can't come, but I can.</i>",
+    "After verbs like <i>want to, need to, ought to</i>, the bare <i>to</i> stands for the whole infinitive that follows.",
+    "<i>If so / if not</i> stand for a whole condition already stated — a fast, natural way to link two sentences."
+  ]
+}

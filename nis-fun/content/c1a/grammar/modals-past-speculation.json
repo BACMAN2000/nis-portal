@@ -1,0 +1,186 @@
+{
+  "id": "modals-past-speculation",
+  "level": "c1a",
+  "area": "Modals",
+  "title": "Speculating about the past",
+  "tagline": "How sure are you? English has a modal for every shade of certainty about something already over.",
+  "cefr": "C1",
+  "exam": [
+    "Reading & Use of English Part 4 — key word transformations (MUST, CAN'T, MIGHT, BEEN, SHOULD, THOUGHT)",
+    "Reading & Use of English Part 1 — multiple-choice cloze (must/can't/might + have + participle)",
+    "Writing Part 1 — formal report or proposal: hedged speculation about causes and outcomes",
+    "Speaking Part 3 — negotiating explanations for something that happened off-screen"
+  ],
+  "why": "Speculating about the past is a daily conversational skill dressed up as grammar: deciding, from the evidence, how sure you actually are. C1 candidates need the full range — from a flat impossibility (can't have) to a hedged academic guess (it is thought that) — and Use of English checks the exact auxiliary and participle each modal demands, including the continuous forms that show an activity, not just a finished fact.",
+  "diagrams": [
+    {
+      "type": "scale",
+      "title": "How sure is the speaker?",
+      "left": "impossible",
+      "right": "certain",
+      "items": [
+        {"label": "can't / couldn't have", "pct": 0},
+        {"label": "may have", "pct": 35},
+        {"label": "might have", "pct": 45},
+        {"label": "could have", "pct": 50},
+        {"label": "should / ought to have", "pct": 65},
+        {"label": "must have", "pct": 95}
+      ]
+    },
+    {
+      "type": "formula",
+      "title": "Speculating about an ongoing past activity",
+      "parts": [
+        {"chip": "subject", "tone": "kw", "ex": "she / they"},
+        {"chip": "modal + have (been) + participle / -ing", "tone": "a", "ex": "must have been waiting"},
+        {"chip": "→", "tone": "arrow"},
+        {"chip": "a guess about a completed or ongoing past event", "tone": "b"}
+      ],
+      "caption": "Add been + -ing to shift the guess from a finished fact to an activity still in progress at that past moment."
+    },
+    {
+      "type": "transform",
+      "title": "Hedging a guess for formal writing",
+      "before": {
+        "text": "The ancient civilisation must have abandoned the site because of drought.",
+        "hl": ["must have abandoned"]
+      },
+      "after": {
+        "text": "It seems likely that the ancient civilisation abandoned the site because of drought.",
+        "hl": ["seems likely that"]
+      },
+      "steps": [
+        "Replace the modal + have + participle with a hedging phrase: it seems likely that / it is thought that / presumably.",
+        "Move the speculated verb into an ordinary past tense inside the that-clause.",
+        "This register shift is typical of academic or formal reports, where a bare modal can sound too casual, or too certain."
+      ]
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "subject", "tone": "kw", "ex": "she / they"},
+      {"chip": "must / can't / couldn't / may / might / could + have (been) + participle", "tone": "a", "ex": "must have been waiting"},
+      {"chip": "→", "tone": "arrow"},
+      {"chip": "a speculation about a completed or ongoing past event", "tone": "b"}
+    ],
+    "table": {
+      "head": ["Pattern", "Meaning", "Example"],
+      "rows": [
+        ["must have + participle", "a confident deduction", "she <b>must have</b> left already"],
+        ["can't / couldn't have + participle", "a confident negative deduction (impossible)", "he <b>can't have</b> forgotten"],
+        ["may / might have + participle", "a real but uncertain possibility", "they <b>might have</b> missed the train"],
+        ["could have + participle", "a possibility, sometimes among several", "the noise <b>could have</b> been the wind"],
+        ["modal + have been + -ing", "a guess about an ongoing past activity", "she <b>must have been waiting</b> for hours"],
+        ["should / ought to have + participle", "an expected outcome, not yet confirmed", "the parcel <b>should have arrived</b> by now"],
+        ["was / were to have + participle", "an arrangement whose outcome is uncertain or didn't happen", "the report <b>was to have been</b> finished by Monday"],
+        ["hedged speculation (formal)", "softened, academic-style speculation", "it <b>is thought that</b> the fire started accidentally"]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "Degrees of certainty: must/can't/couldn't have",
+      "examples": [
+        {"text": "The lights are off and the car's gone — they <b>must have left</b> already.", "note": "must have = a confident deduction from clear evidence"},
+        {"text": "He <b>can't have read</b> the whole novel in one night — it's nearly 900 pages.", "note": "can't have = a confident negative deduction"},
+        {"text": "She <b>couldn't have known</b> about the surprise; we only decided this morning.", "note": "couldn't have = impossible, given the facts"}
+      ]
+    },
+    {
+      "point": "May/might/could have for genuine, open uncertainty",
+      "examples": [
+        {"text": "They <b>may have taken</b> a different route — that would explain the delay.", "note": "may have = a real, open possibility"},
+        {"text": "The message <b>might have gone</b> to your spam folder.", "note": "might have = uncertain, slightly more tentative than may"},
+        {"text": "The strange sound <b>could have been</b> the pipes, or just the wind.", "note": "could have = one possibility among several"}
+      ]
+    },
+    {
+      "point": "Continuous forms: modal + have been + -ing",
+      "examples": [
+        {"text": "Judging by the mud on her boots, she <b>must have been walking</b> for hours.", "note": "continuous form for an ongoing past activity"},
+        {"text": "He looked shattered — he <b>might have been training</b> since dawn.", "note": "might have been + -ing = a tentative guess about an ongoing activity"}
+      ]
+    },
+    {
+      "point": "Should/ought to have and was/were to have for expected or uncertain outcomes; hedged speculation",
+      "examples": [
+        {"text": "The bus <b>should have arrived</b> by now — I hope nothing's wrong.", "note": "should have = expected, but not yet confirmed"},
+        {"text": "The bridge <b>was to have been</b> completed last year, but funding ran out.", "note": "was to have + participle = an arrangement whose outcome was uncertain, or never happened"},
+        {"text": "It <b>is thought that</b> the settlement was abandoned due to a prolonged drought.", "note": "hedged speculation, typical of formal or academic writing"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "She must had left already.", "right": "She <b>must have</b> left already.", "why": "The auxiliary after a modal is always have, never had, regardless of tense."},
+    {"wrong": "He can't have forget the meeting.", "right": "He <b>can't have forgotten</b> the meeting.", "why": "Use the past participle after can't have, not the base form."},
+    {"wrong": "They might have arrive late because of the traffic.", "right": "They <b>might have arrived</b> late because of the traffic.", "why": "Might have needs the past participle, not the bare infinitive."},
+    {"wrong": "She must have wait for hours in that queue.", "right": "She <b>must have been waiting</b> for hours in that queue.", "why": "An ongoing past activity needs the continuous form: modal + have been + -ing."},
+    {"wrong": "The results should have publish yesterday.", "right": "The results <b>should have been published</b> yesterday.", "why": "A passive event needs should have been + participle, not the base form."},
+    {"wrong": "I am sure the fire started deliberately.", "right": "It <b>is thought that</b> the fire started deliberately.", "why": "Formal or academic writing prefers a hedged structure to a flat, unsupported claim."}
+  ],
+  "dialogue": {
+    "title": "The mystery of the locked classroom",
+    "context": "Ten minutes before the lesson, Miss Vega's classroom is locked and dark, and the students speculate about what has happened.",
+    "lines": [
+      {"speaker": "Sofia", "text": "The door's locked and the lights are off. Where's Miss Vega?"},
+      {"speaker": "Mateo", "text": "She <b>must have</b> forgotten it's Tuesday — we have double English today."},
+      {"speaker": "Liam", "text": "No, she's never late. Something <b>must have</b> happened."},
+      {"speaker": "Nadia", "text": "She <b>can't have</b> gone home; her car's still in the car park."},
+      {"speaker": "Sofia", "text": "Maybe she's in a meeting. The head <b>might have</b> called an emergency staff meeting."},
+      {"speaker": "Mateo", "text": "Or she <b>could have</b> been held up marking our essays — there were a lot this week."},
+      {"speaker": "Liam", "text": "Look at Nadia's face — she <b>must have been waiting</b> outside the staffroom, listening."},
+      {"speaker": "Nadia", "text": "Fine, I overheard something. The heating <b>should have been fixed</b> this morning, apparently it wasn't."},
+      {"speaker": "Sofia", "text": "So the whole meeting <b>was to have</b> lasted ten minutes and ran over?"},
+      {"speaker": "Nadia", "text": "Exactly. Officially, it <b>is thought that</b> the boiler failed overnight."},
+      {"speaker": "Mateo", "text": "Well, that explains why she <b>couldn't have</b> texted us — no signal in that old building."},
+      {"speaker": "Liam", "text": "Mystery solved. Let's just wait quietly."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "The lights are off and her coat's gone — she ___ home already.", "options": ["must have gone", "can't have gone", "might have gone"], "answer": 0, "why": "must have = a confident deduction from clear evidence"},
+        {"sentence": "He ___ finished the marathon in two hours — he can barely run to the bus stop.", "options": ["must have", "can't have", "should have"], "answer": 1, "why": "can't have = a confident negative deduction, near-impossible"},
+        {"sentence": "I'm not sure why the light's flashing — it ___ a low battery.", "options": ["must have been", "can't have been", "might have been"], "answer": 2, "why": "might have been = a genuinely uncertain possibility"},
+        {"sentence": "Her hair's soaking wet — she ___ in the rain without an umbrella.", "options": ["must have been walking", "should have been walking", "was to have walked"], "answer": 0, "why": "modal + have been + -ing for a guess about an ongoing past activity"},
+        {"sentence": "The parcel ___ by Friday, according to the tracking information, but it still hasn't.", "options": ["must have arrived", "should have arrived", "can't have arrived"], "answer": 1, "why": "should have = an expected outcome, not yet confirmed"},
+        {"sentence": "The ceremony ___ finished by six, but nobody has confirmed whether it actually did.", "options": ["must have", "might have", "was to have"], "answer": 2, "why": "was to have = an arrangement whose outcome is uncertain"},
+        {"sentence": "Historians believe the fortress ___ abandoned after the earthquake, though no records survive.", "options": ["is thought to have been", "must have been", "can't have been"], "answer": 0, "why": "hedged speculation, typical of formal or academic writing"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with the correct form of the word(s) in brackets.",
+      "items": [
+        {"sentence": "She ___ (must / leave) already — her coat's gone.", "answers": ["must have left"]},
+        {"sentence": "He ___ (can't / finish) the marathon that fast — he can barely run to the bus stop.", "answers": ["can't have finished"]},
+        {"sentence": "The light was flashing oddly — it ___ (might / have) a low battery.", "answers": ["might have had"]},
+        {"sentence": "Her hair's soaking wet — she ___ (must / walk) in the rain for a while.", "answers": ["must have been walking"]},
+        {"sentence": "The parcel ___ (should / arrive) by Friday, according to the tracking information.", "answers": ["should have arrived"]},
+        {"sentence": "The ceremony ___ (be to / finish) by six, but nobody has confirmed it.", "answers": ["was to have finished"]},
+        {"sentence": "Historians believe the fortress ___ (thought / abandon) after the earthquake.", "answers": ["is thought to have been abandoned"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first, using the word given. Do not change the word given. Use between two and five words.",
+      "items": [
+        {"first": "I'm sure she left already, because her coat isn't here.", "key": "MUST", "second_start": "She", "second_end": "already.", "answers": ["must have left"]},
+        {"first": "It's impossible that he finished the marathon that fast.", "key": "CAN'T", "second_start": "He", "second_end": "the marathon that fast.", "answers": ["can't have finished"]},
+        {"first": "Perhaps the delay was caused by roadworks — nobody's sure.", "key": "MIGHT", "second_start": "The delay", "second_end": "by roadworks.", "answers": ["might have been caused"]},
+        {"first": "Judging by the noise outside, someone was probably mowing the lawn for a long time.", "key": "BEEN", "second_start": "Someone", "second_end": "the lawn for a long time.", "answers": ["must have been mowing"]},
+        {"first": "I expected the results to be published yesterday, but I haven't checked.", "key": "SHOULD", "second_start": "The results", "second_end": "yesterday.", "answers": ["should have been published"]},
+        {"first": "Experts believe the bridge collapsed because of metal fatigue, although this is not confirmed.", "key": "THOUGHT", "second_start": "The bridge", "second_end": "because of metal fatigue.", "answers": ["is thought to have collapsed"]}
+      ]
+    }
+  ],
+  "summary": [
+    "Must/can't/couldn't have + participle express confident deductions — positive certainty and its negative mirror.",
+    "May/might/could have + participle express genuine, open uncertainty about the past.",
+    "Modal + have been + -ing speculates about an activity in progress at some past moment, not just a completed fact.",
+    "Should/ought to have and was/were to have both describe an expected outcome whose result is unconfirmed, or never happened.",
+    "Formal and academic writing hedges speculation with phrases like it is thought that, rather than a bare modal."
+  ]
+}

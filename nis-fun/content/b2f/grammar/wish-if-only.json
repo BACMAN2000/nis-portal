@@ -1,0 +1,171 @@
+{
+  "id": "wish-if-only",
+  "level": "b2f",
+  "area": "Conditionals & hypothesis",
+  "title": "wish, if only, would rather, it's time",
+  "tagline": "Five ways to say things aren't the way you want them — each with its own tense.",
+  "cefr": "B2",
+  "exam": [
+    "Reading & Use of English Part 4 — key word transformations",
+    "Reading & Use of English Part 2 — open cloze (wish / rather / as / though)",
+    "Speaking Part 2 — expressing preference and regret about a photo or situation"
+  ],
+  "why": "Wishing, regretting and preferring all sound similar in Spanish but need very different English tenses. B2 First tests whether you know that <b>wish</b> looks backwards with the past, that <b>would rather</b> changes tense when it's about someone else, and that <b>as if</b> can make an ordinary sentence sound doubtful just by choosing the past.",
+  "diagrams": [
+    {
+      "type": "contrast",
+      "title": "wish + past, past perfect or would?",
+      "columns": ["wish + past simple", "wish + past perfect", "wish + would"],
+      "rows": [
+        {"label": "Time reference", "cells": ["now / a present state", "the past / a finished action", "the future / a change in behaviour"]},
+        {"label": "Typical subject", "cells": ["I, you, we…", "I, you, we…", "someone else (not usually I)"]},
+        {"label": "Feeling", "cells": ["regret about how things are", "regret about what happened", "irritation, a wish for change"]},
+        {"label": "Example", "cells": ["I wish I had more free time.", "I wish I had studied harder.", "I wish you would stop interrupting."]}
+      ]
+    },
+    {
+      "type": "map",
+      "title": "The wishing and preferring family",
+      "center": "Unreal wishes",
+      "branches": [
+        {"label": "wish / if only + past simple", "items": ["I wish I lived nearer the beach.", "If only I were taller."], "tone": "a"},
+        {"label": "wish / if only + past perfect", "items": ["I wish I hadn't said that.", "If only we had left earlier."], "tone": "a"},
+        {"label": "wish / if only + would", "items": ["I wish he would text back.", "If only it would stop raining."], "tone": "b"},
+        {"label": "would rather + past simple", "items": ["I'd rather you told me the truth.", "I'd rather we didn't argue about this."], "tone": "c"},
+        {"label": "it's (high) time + past simple", "items": ["It's time you started revising.", "It's high time this rule changed."], "tone": "c"}
+      ]
+    },
+    {
+      "type": "formula",
+      "title": "as if / as though — sounding doubtful",
+      "parts": [
+        {"chip": "as if / as though", "tone": "kw"},
+        {"chip": "past simple", "tone": "a", "ex": "talks as if he owned the place"},
+        {"chip": "or", "tone": "arrow"},
+        {"chip": "past perfect", "tone": "b", "ex": "looked as if she had seen a ghost"}
+      ],
+      "caption": "The past tense after as if / as though signals that the comparison probably isn't true."
+    }
+  ],
+  "form": {
+    "formula": [
+      {"chip": "I wish / if only", "tone": "kw"},
+      {"chip": "past simple / past perfect / would", "tone": "a", "ex": "I wish I knew"},
+      {"chip": "→", "tone": "arrow"},
+      {"chip": "regret or a wish for change", "tone": "b"}
+    ],
+    "table": {
+      "head": ["Structure", "Pattern", "Example", "Meaning"],
+      "rows": [
+        ["wish + past simple", "wish + subject + past simple", "I wish I had a louder alarm clock.", "regret about a present state"],
+        ["wish + past perfect", "wish + subject + had + participle", "I wish I hadn't skipped breakfast.", "regret about a past action"],
+        ["wish + would", "wish + subject (other) + would + infinitive", "I wish Liam would tidy his desk.", "wanting someone else to change"],
+        ["would rather + past simple", "'d rather + subject (other) + past simple", "I'd rather you didn't tell her yet.", "a preference about another person's action"],
+        ["it's (high) time + past simple", "it's (high) time + subject + past simple", "It's time we left for the station.", "something should already be happening"],
+        ["as if / as though + past", "as if/though + subject + past simple/perfect", "She acts as if she knew everything.", "a comparison that is probably untrue"]
+      ]
+    }
+  },
+  "use": [
+    {
+      "point": "wish / if only + past simple: a regret about the present",
+      "examples": [
+        {"text": "I <b>wish</b> I <b>had</b> more time to practise before the audition.", "note": "a present situation you'd like to be different"},
+        {"text": "<b>If only</b> the wifi <b>were</b> faster during the exam week.", "note": "were, not was, in careful written English"}
+      ]
+    },
+    {
+      "point": "wish / if only + past perfect: a regret about the past",
+      "examples": [
+        {"text": "Sofia <b>wishes</b> she <b>hadn't deleted</b> her project files the night before.", "note": "a specific past action she regrets"},
+        {"text": "<b>If only</b> we <b>had checked</b> the schedule before booking the flights.", "note": "a mistake that already happened"},
+        {"text": "I <b>wish</b> I <b>had listened</b> to Miss Vega's advice about the essay structure.", "note": "regret about ignoring advice"}
+      ]
+    },
+    {
+      "point": "wish / if only + would: irritation with someone else's behaviour, or a wish for change",
+      "examples": [
+        {"text": "I <b>wish</b> Liam <b>would stop</b> checking his phone during rehearsals.", "note": "annoyance at a repeated habit"},
+        {"text": "<b>If only</b> the buses <b>would run</b> on time in the mornings.", "note": "a wish about something outside your control"},
+        {"text": "I <b>wish</b> the neighbours <b>would turn</b> the music down; it's midnight.", "note": "irritation, not a fact about now"}
+      ]
+    },
+    {
+      "point": "would rather and it's time: preferences and things that should already be happening",
+      "examples": [
+        {"text": "I<b>'d rather</b> you <b>asked</b> me before borrowing my notes next time.", "note": "would rather + past simple for another person's action"},
+        {"text": "It<b>'s time</b> the school <b>updated</b> its recycling policy.", "note": "it's time + past simple, present meaning"},
+        {"text": "Mateo talks about the final as if he<b>'d already won</b> it.", "note": "as if + past perfect for a doubtful comparison"}
+      ]
+    }
+  ],
+  "watch_out": [
+    {"wrong": "I wish I would be taller.", "right": "I wish I <b>were</b> taller.", "why": "For a wish about your own present state, use the past simple, not <i>would</i>."},
+    {"wrong": "I wish I would have studied harder for the test.", "right": "I wish I <b>had studied</b> harder for the test.", "why": "A regret about a finished past action needs the past perfect, not <i>would have</i>."},
+    {"wrong": "I wish I would remember everyone's name.", "right": "I <b>wish</b> I <b>could remember</b> everyone's name.", "why": "<i>Wish + would</i> is for someone else's behaviour, not your own ability — use <i>wish + could</i> instead."},
+    {"wrong": "I'd rather you don't mention it to her.", "right": "I'd rather you <b>didn't mention</b> it to her.", "why": "After <i>would rather + someone else</i>, use the past simple, even though the meaning is present or future."},
+    {"wrong": "It's time we leave for the airport.", "right": "It's time we <b>left</b> for the airport.", "why": "<i>It's (high) time</i> takes the past simple, with a present meaning: this should be happening now."},
+    {"wrong": "He talks as if he is an expert on everything.", "right": "He talks as if he <b>were</b> an expert on everything.", "why": "When the comparison is probably untrue, <i>as if / as though</i> take a past form, even for the present."}
+  ],
+  "dialogue": {
+    "title": "The group project deadline",
+    "context": "Sofia, Liam and Nadia are finishing a group project the night before it's due, in the school library in Lima.",
+    "lines": [
+      {"speaker": "Sofia", "text": "I <b>wish</b> we <b>had started</b> this last week instead of leaving it until now."},
+      {"speaker": "Liam", "text": "Same. <b>If only</b> Mateo <b>hadn't cancelled</b> the meeting on Tuesday, we'd be finished."},
+      {"speaker": "Nadia", "text": "Honestly, I <b>wish</b> you two <b>would stop</b> blaming each other and just type."},
+      {"speaker": "Sofia", "text": "Fair. It<b>'s time</b> we <b>focused</b> and finished the last section."},
+      {"speaker": "Liam", "text": "I<b>'d rather</b> you <b>checked</b> my paragraph before I send it — my grammar's a bit shaky tonight."},
+      {"speaker": "Nadia", "text": "Sure. Also, I <b>wish</b> the library <b>would extend</b> its hours during deadline week."},
+      {"speaker": "Sofia", "text": "Tell me about it. Miss Vega acts as if deadlines <b>were</b> never a problem for her students."},
+      {"speaker": "Liam", "text": "That's because she plans everything early. I <b>wish</b> I <b>were</b> that organised."},
+      {"speaker": "Nadia", "text": "Well, next term, maybe. For now, <b>if only</b> this printer <b>would work</b> — it's jammed again."},
+      {"speaker": "Sofia", "text": "Of course it is. I <b>wish</b> something around here <b>went</b> right just once tonight."}
+    ]
+  },
+  "practice": [
+    {
+      "type": "mc",
+      "instructions": "Choose the correct option.",
+      "items": [
+        {"sentence": "I wish I ___ more confident before presentations.", "options": ["were", "am", "would be"], "answer": 0, "why": "a present state you'd like different → wish + past simple"},
+        {"sentence": "If only she ___ her notes before the exam started.", "options": ["reviewed", "had reviewed", "would review"], "answer": 1, "why": "a regret about a finished past action → wish + past perfect"},
+        {"sentence": "I wish my brother ___ borrowing my things without asking.", "options": ["stopped", "stops", "would stop"], "answer": 2, "why": "irritation at someone else's repeated behaviour → wish + would"},
+        {"sentence": "I'd rather you ___ me before changing the plan next time.", "options": ["asked", "ask", "would ask"], "answer": 0, "why": "would rather + another person's action → past simple"},
+        {"sentence": "It's high time the team ___ a new strategy.", "options": ["tries", "tried", "will try"], "answer": 1, "why": "it's (high) time + past simple, present meaning"},
+        {"sentence": "Nadia speaks Italian as if she ___ there for years.", "options": ["lived", "lives", "had lived"], "answer": 2, "why": "a doubtful comparison further back → as if + past perfect"}
+      ]
+    },
+    {
+      "type": "gap",
+      "instructions": "Complete each sentence with the correct form of the verb in brackets.",
+      "items": [
+        {"sentence": "I wish I ___ (have) a bigger bedroom for studying.", "answers": ["had"]},
+        {"sentence": "If only we ___ (not/miss) the first bus this morning.", "answers": ["hadn't missed", "had not missed"]},
+        {"sentence": "I wish the teachers ___ (give) us less homework at weekends.", "answers": ["would give"]},
+        {"sentence": "I'd rather you ___ (not/tell) Liam about the surprise yet.", "answers": ["didn't tell", "did not tell"]},
+        {"sentence": "It's about time this old computer ___ (be) replaced.", "answers": ["was", "were"]},
+        {"sentence": "Sofia acts as if she ___ (know) the whole syllabus already.", "answers": ["knew"]},
+        {"sentence": "I wish I ___ (listen) more carefully during the briefing.", "answers": ["had listened"]}
+      ]
+    },
+    {
+      "type": "transform",
+      "instructions": "Complete the second sentence so that it has a similar meaning to the first. Use the word given. Do not change it. Use between two and five words.",
+      "items": [
+        {"first": "I'm sorry I didn't back up my files before the crash.", "key": "WISH", "second_start": "I", "second_end": "my files before the crash.", "answers": ["wish I had backed up"]},
+        {"first": "I really want Liam to stop leaving his bag in the doorway.", "key": "WOULD", "second_start": "I wish Liam", "second_end": "leaving his bag in the doorway.", "answers": ["would stop"]},
+        {"first": "Please don't post that photo — I'd prefer it.", "key": "RATHER", "second_start": "I'd", "second_end": "post that photo.", "answers": ["rather you didn't"]},
+        {"first": "We should have left for the station five minutes ago.", "key": "TIME", "second_start": "It's", "second_end": "for the station.", "answers": ["time we left"]},
+        {"first": "He speaks about the trip as though it's already been booked, but it hasn't.", "key": "IF", "second_start": "He speaks about the trip", "second_end": "already been booked.", "answers": ["as if it had"]}
+      ]
+    }
+  ],
+  "summary": [
+    "<b>wish / if only</b> + past simple = a regret about now; + past perfect = a regret about the past; + would = irritation at someone or something else.",
+    "<i>Wish + would</i> almost never takes <i>I</i> as its subject — it's for other people's behaviour, not your own.",
+    "<b>Would rather</b> + another person's action uses the past simple, even with a present or future meaning.",
+    "<b>It's (high) time</b> + past simple says something should already be happening.",
+    "<b>As if / as though</b> + a past form makes a comparison sound doubtful, even when it describes the present."
+  ]
+}
