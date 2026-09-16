@@ -8,33 +8,115 @@
  "wordlist": [
   "misunderstanding",
   "interpret",
-  "report",
+  "convey",
   "perception",
   "accuse",
   "faithful",
   "retell",
-  "convey",
   "neutral",
-  "reliable"
+  "reliable",
+  "take something the wrong way"
+ ],
+ "wordlist_extra": [
+  "retell",
+  "convey",
+  "neutral"
  ],
  "exam_focus": {
   "paper": "Reading & Use of English",
-  "part": 2,
-  "skill": "open cloze"
+  "part": 8,
+  "skill": "multiple matching"
  },
  "characters": [
   "nova"
  ],
  "scene": {
   "speaker": "nova",
-  "bubble": "How we report what others say changes everything. Master advanced verb patterns and say exactly what you mean.",
-  "intro": "Communication is trickier than it looks. A single reporting verb can accuse, excuse or forgive; a verb of perception can turn a debate into a quarrel. In this unit you explore how we retell what others say, and you master the advanced verb patterns that C1 English demands — verb plus object plus infinitive or -ing, reporting verbs and verbs of perception. You will also practise the open cloze from Part 2. For the Inspiring Nordic project, saying it accurately is everything. Let's begin."
+  "bubble": "Choosing how to report what someone said can change everything — from a headline to a friendship. This unit sharpens your verb patterns and your reported speech.",
+  "intro": "Saying it accurately is harder than it sounds. In this unit the Inspiring Nordic project turns to journalists, interpreters and rumour-mongers, and asks how the words we choose to report a conversation can accuse, excuse or completely change its meaning. You will read five short interviews in the format of Reading Part 8, listen to three short extracts in the format of Listening Part 1, master advanced verb patterns — reporting verbs, verbs of perception, verbs that change meaning with -ing or to — and reported speech at C1, then write a formal report in the format of Writing Part 2. Choose your words carefully. Let's begin."
  },
  "activities": [
   {
    "code": "A",
+   "type": "pairwork",
+   "title": "Speaking — Parts 1 and 2. Talk with a partner, then record yourself.",
+   "outputs": [
+    "book",
+    "digital"
+   ],
+   "speaking": {
+    "part": 2,
+    "name": "Interview and long turn"
+   },
+   "tips": {
+    "expect": "Part 1 (2 minutes): the examiner asks you and your partner about yourselves — routines, opinions, plans. Part 2 (about 4 minutes): each of you speaks alone for a minute about two of three pictures, answering the two questions printed above them; your partner then answers a brief question about your pictures (30 seconds).",
+    "how": [
+     "In Part 1, develop your answers with a reason or an example, but don't turn a question into a monologue.",
+     "In Part 2, don't just describe the pictures — compare them and answer both questions, speculating where you're not certain (<i>it looks as though…, she might be…</i>).",
+     "Keep talking for the whole minute: if you run out of things to say about one question, move on to the other."
+    ],
+    "remember": "You are marked on your language, not on guessing the 'right' answer — there isn't one."
+   },
+   "data": {
+    "text": "Part 1: talk about how you communicate and how you get your information. Part 2: compare two of the three pictures and say why understanding each other might be difficult in these situations.",
+    "parts": [
+     {
+      "part": 1,
+      "title": "Interview",
+      "time": "2 min",
+      "prompts": [
+       "How do you usually find out what's happening at school — announcements, messages, or friends telling you?",
+       "Have you ever been badly misunderstood because of something you wrote rather than said?",
+       "Do you think people are more careful with their words in writing than when they speak? Why?",
+       "Who is the most reliable source of information in your life — and why do you trust them?"
+      ]
+     },
+     {
+      "part": 2,
+      "title": "Long turn",
+      "time": "1 min + 30 s",
+      "question": "Compare two of the pictures and say <b>why understanding each other might be difficult in these situations</b> and <b>what could go wrong</b>.",
+      "pictures": [
+       {
+        "emoji": "🗣️📰",
+        "caption": "a journalist interviewing someone for a story"
+       },
+       {
+        "emoji": "🌐📖",
+        "caption": "a translator working on a difficult text"
+       },
+       {
+        "emoji": "💬🤳",
+        "caption": "two friends texting late at night"
+       }
+      ],
+      "partner": "Which of these situations do you think is most likely to end in a misunderstanding? Why? (about 30 seconds)"
+     }
+    ],
+    "useful_language": {
+     "Speculating": [
+      "They may well be…",
+      "It looks as though…",
+      "I'd imagine she's trying to…",
+      "Presumably he's worried that…"
+     ],
+     "Comparing": [
+      "Whereas the journalist is…, the translator…",
+      "What they have in common is…",
+      "In both cases…"
+     ],
+     "Giving your view": [
+      "To my mind…",
+      "I can't help feeling that…",
+      "If anything, …"
+     ]
+    }
+   }
+  },
+  {
+   "code": "B",
    "type": "match_words",
-   "title": "Vocabulary — communication. Match each word with its meaning.",
+   "title": "Vocabulary — communication and interpretation. Match each word with its meaning.",
    "outputs": [
     "book",
     "digital",
@@ -46,176 +128,496 @@
     "pairs": [
      {
       "left": "misunderstanding",
-      "right": "a failure to understand something correctly"
+      "right": "a failure to understand something in the way it was meant"
      },
      {
       "left": "interpret",
-      "right": "to explain the meaning of what someone says"
+      "right": "to decide what you believe a statement or an action means"
      },
      {
-      "left": "report",
-      "right": "to tell others what someone said or did"
+      "left": "convey",
+      "right": "to communicate an idea, a feeling or a piece of information to someone"
      },
      {
       "left": "perception",
-      "right": "the way we notice and understand things"
+      "right": "the particular way in which someone understands or notices something"
      },
      {
       "left": "accuse",
-      "right": "to say that someone has done something wrong"
+      "right": "to say that someone has done something wrong or dishonest"
      },
      {
       "left": "faithful",
-      "right": "true to the original meaning"
-     }
-    ]
-   }
-  },
-  {
-   "code": "B",
-   "type": "reading",
-   "title": "Reading — the reading club on communication",
-   "outputs": [
-    "book",
-    "digital",
-    "quiz"
-   ],
-   "data": {
-    "kicker": "Language & Mind",
-    "title": "Ways of saying",
-    "author": "nadia",
-    "byline": "by Nadia",
-    "text": "<p>How often have you meant one thing and been understood to say another? Communication, it turns out, is far less reliable than we like to believe. We do not simply exchange words; we interpret, we report, and in reporting we quietly reshape.</p><p>Consider the humble reporting verb. If I tell you that <b>Mateo</b> <i>admitted forgetting</i> his homework, you picture guilt. If I say he <i>explained that he had forgotten</i> it, you feel sympathy. The event is identical; only the verb has changed. In our Grade 11 club we spent a whole session watching how a single word can accuse, excuse or forgive.</p><p>Verbs of perception play a similar game. When <b>Liam</b> said he <i>heard Sofía arguing</i> with a teacher, the class assumed a conflict — yet what he had actually seen was a lively debate about a poem. We hear people <i>doing</i> things and instantly build a story around them.</p><p>Then there are the verbs that carry instructions. Parents <i>warn us not to</i> stay out late; friends <i>persuade us to</i> take risks; teachers <i>advise us to</i> think twice. Each pattern — verb plus object plus infinitive or -ing — encodes an attitude as much as an action.</p><p>The lesson for the Inspiring Nordic project is sobering. Before we report what a tradesperson or an expert has told us, we should ask whether our chosen verbs are faithful or merely convenient. To misquote is easy; to represent someone accurately is a genuine skill. As <b>Nadia</b> reminded the club, the way of saying is never neutral.</p>",
-    "script": "How often have you meant one thing and been understood to say another? Communication is far less reliable than we like to believe. We do not simply exchange words; we interpret and report, and in reporting we reshape. Consider the reporting verb. If I say Mateo admitted forgetting his homework, you picture guilt. If I say he explained that he had forgotten it, you feel sympathy. Only the verb has changed. Verbs of perception play a similar game. When Liam said he heard Sofía arguing with a teacher, the class assumed a conflict. Yet it was only a lively debate. Before we report what an expert has told us, we should ask whether our verbs are faithful or merely convenient.",
-    "questions": [
-     {
-      "q": "According to Nadia, communication is …",
-      "options": [
-       "always perfectly clear",
-       "less reliable than we believe",
-       "completely unimportant"
-      ],
-      "answer": 1
+      "right": "staying very close to the facts or meaning of the original version"
      },
      {
-      "q": "If Mateo 'admitted forgetting', we picture …",
-      "options": [
-       "guilt",
-       "sympathy",
-       "joy"
-      ],
-      "answer": 0
+      "left": "retell",
+      "right": "to tell a story or an event again, often changing it slightly"
      },
      {
-      "q": "What had Liam actually seen between Sofía and the teacher?",
-      "options": [
-       "complete silence",
-       "a serious fight",
-       "a lively debate"
-      ],
-      "answer": 2
+      "left": "neutral",
+      "right": "not supporting or favouring any particular side in a disagreement"
      },
      {
-      "q": "Verb + object + infinitive patterns encode …",
-      "options": [
-       "an attitude as much as an action",
-       "nothing at all",
-       "only spelling rules"
-      ],
-      "answer": 0
+      "left": "reliable",
+      "right": "able to be trusted to be accurate or to behave as expected"
      },
      {
-      "q": "Before reporting an expert for the project, we should ask whether our verbs are …",
-      "options": [
-       "long enough",
-       "faithful or merely convenient",
-       "in the past tense"
-      ],
-      "answer": 1
+      "left": "take something the wrong way",
+      "right": "to feel offended by a remark that was not meant unkindly"
      }
     ]
    }
   },
   {
    "code": "C",
+   "type": "multiple_matching",
+   "title": "Reading and Use of English Part 8 — multiple matching. Read the texts and match each question to a person.",
+   "outputs": [
+    "digital"
+   ],
+   "tips": {
+    "expect": "Four or five short texts, each by a different person, followed by ten questions. Each question is a statement that matches the ideas of only one person; the statements paraphrase the text closely and never quote it word for word.",
+    "how": [
+     "Read the ten questions first and underline the key idea in each one.",
+     "Read each text and note where it seems to match a question, even loosely — you can compare candidates afterwards.",
+     "Be careful with texts that touch on the same general topic as several questions: only one text will match the precise idea behind each one."
+    ],
+    "remember": "The questions do not follow the order of the texts. Never choose an answer just because a word is repeated — the whole idea must match."
+   },
+   "data": {
+    "title": "Getting it right: five people on saying it accurately",
+    "intro": "For the Inspiring Nordic project, Grade 11 asked five people whose work depends on saying things accurately to describe a moment when a way of putting something changed everything.",
+    "sections": [
+     {
+      "letter": "A",
+      "heading": "Elena Voss, conference interpreter",
+      "text": "People imagine that interpreting is simply swapping one word for another, live, in real time. It isn't. The tricky moments are never the technical vocabulary — you can prepare for that — but the flashes of humour or sarcasm that arrive without warning. I remember a delegate making a dry joke about his own government, delivered with a completely straight face. Translated literally, it sounded like a serious complaint, so I had to add the smallest change of tone to signal that he wasn't being entirely sincere. Nobody in the room noticed the adjustment, which is exactly the point: a good interpreter should be invisible. What unsettles me more than difficult vocabulary is being faithful to an idea rather than to individual words, because faithfulness sometimes means changing the sentence completely so that the meaning survives the journey between languages. Trainees often think accuracy means translating every word; I spend most of my training sessions persuading them to let a few words go in order to keep the sense intact. The version that sounds most natural in the new language is very often the most faithful one, even though on paper it looks like the freest."
+     },
+     {
+      "letter": "B",
+      "heading": "Tomás Reyes, local journalist",
+      "text": "Early in my career, an editor told me that a quote is sacred and a headline is a suggestion, and I've never quite decided if that's reassuring or worrying. Readers assume that whatever is written between quotation marks is exactly what was said, word for word, and mostly it is — but a spoken sentence, full of pauses and false starts, rarely reads well on the page, so a small tidy-up happens almost automatically. The line I try never to cross is changing what someone meant, even while I'm allowed to change how they said it. I was once accused of twisting a councillor's words simply because I'd shortened a long, rambling answer into a single clear sentence; he claimed the shorter version made him sound more certain than he had actually been. Looking back, he had a point. Since then, I read every quote back to the person before it goes to print, however inconvenient the deadline. It costs me half an hour and saves me the kind of complaint that follows a journalist around for years."
+     },
+     {
+      "letter": "C",
+      "heading": "Priya Desai, customer-service trainer",
+      "text": "I train staff to deliver bad news — a delayed order, a cancelled appointment — without sounding as though they don't care, and without sounding as though it's entirely their own fault either. Customers rarely remember the actual outcome of a call as clearly as they remember how it felt. Say 'unfortunately, that's not possible' and people hear a wall going up; say 'let me see what I can do instead' and, even if the answer ends up being the same, people feel heard rather than dismissed. New staff often want a script for every situation, but what I actually teach is closer to a set of instincts: acknowledge the frustration first, explain the reason briefly, and only then offer the solution, in that order. Get the order wrong and the most generous offer in the world will sound grudging. I once watched a trainee apologise so briskly that the customer assumed she was reading from a card, which, to be fair, she was. Sincerity, it turns out, is something you can train people to sound like, even before they entirely feel it."
+     },
+     {
+      "letter": "D",
+      "heading": "Magnus Berg, radio presenter",
+      "text": "A caller once rang my afternoon show insisting that a local factory was about to close, and within an hour half the town seemed to believe it, purely because the claim had been made on air. It hadn't been confirmed by anyone; the caller had simply overheard something and repeated it as fact. We spent the rest of the programme walking it back, which taught me that a rumour travels roughly ten times faster than its correction ever will. Now I have a rule for my own show: if a caller states something as a fact rather than an opinion, I ask, on air, how they know. Most people, faced with that question, admit they heard it from someone else, which changes the story from news into gossip in about four seconds. It's a small habit, but it has saved me from repeating several stories that turned out to be entirely invented. Listeners forgive a presenter for not knowing something. They are far less forgiving of a presenter who states a rumour with total confidence."
+     },
+     {
+      "letter": "E",
+      "heading": "Ana Souto, subtitler",
+      "text": "Subtitling a joke is one of the smaller miseries of my profession. You have roughly forty characters and two seconds before the next line arrives, and jokes are built entirely out of the words you don't have room for. I once spent an entire afternoon on a single pun that depended on a word meaning two different things at once in the original language; there was no equivalent pun available, so I had to decide whether to keep the literal meaning and lose the joke, or invent a completely different joke that fitted the same moment in the scene. I chose the second option, and technically the line I wrote was never actually said by anyone. And yet I'd argue it was more faithful to the film than a literal translation would have been, because it preserved what the scene was actually trying to do: make the audience laugh at that exact second. Viewers who don't speak the original language will never know the substitution happened, which is precisely the aim. My job succeeds exactly when nobody notices I've done it."
+     }
+    ],
+    "questions": [
+     {
+      "q": "Which person says that changing the words was more faithful to the original than a literal translation would have been?",
+      "answer": "E"
+     },
+     {
+      "q": "Which person points out that customers remember the feeling of an interaction more clearly than its final outcome?",
+      "answer": "C"
+     },
+     {
+      "q": "Which person changed a working habit after a rumour spread because of something said on air?",
+      "answer": "D"
+     },
+     {
+      "q": "Which person admits to encouraging others to leave out individual words rather than translate every one?",
+      "answer": "A"
+     },
+     {
+      "q": "Which person now checks a quotation with the person who gave it before it is published?",
+      "answer": "B"
+     },
+     {
+      "q": "Which person believes that the order in which something is said matters as much as what is said?",
+      "answer": "C"
+     },
+     {
+      "q": "Which person suggests that a rumour tends to unravel once someone is asked how they know it?",
+      "answer": "D"
+     },
+     {
+      "q": "Which person was criticised for making someone sound more certain than they had actually been?",
+      "answer": "B"
+     },
+     {
+      "q": "Which person explains that going unnoticed is the clearest sign of having done the job well?",
+      "answer": "E"
+     },
+     {
+      "q": "Which person describes adjusting tone rather than words to show that a remark was not entirely serious?",
+      "answer": "A"
+     }
+    ]
+   }
+  },
+  {
+   "code": "D",
    "type": "grammar_box",
-   "title": "Grammar — Advanced verb patterns",
+   "title": "Language focus 1 — advanced verb patterns",
    "outputs": [
     "book",
-    "digital",
-    "quiz"
+    "digital"
    ],
    "data": {
-    "title": "Advanced verb patterns",
-    "intro": "Many verbs are followed by a particular pattern, and the pattern carries meaning. Learn which verbs take an object + to-infinitive, which take -ing, and how reporting and perception verbs behave.",
+    "title": "Advanced verb patterns: reporting, perception and verbs that change meaning",
+    "can": "I can choose the correct pattern after reporting verbs (admit doing, refuse to do, accuse someone of doing), use verbs of perception correctly (see someone do / doing) and use remember, stop, regret, mean and go on with the right meaning.",
+    "intro": "The pattern that follows a verb is not decoration: it carries meaning. Compare Tomás's confession — <i>I was once accused of twisting a councillor's words</i> — with a simple <i>I twisted his words</i>. The pattern <i>accuse someone of -ing</i> adds a formality and a distance that the plain verb doesn't have.",
     "examples": [
      {
-      "text": "The teacher <b>advised us to rewrite</b> the essay.",
-      "note": "verb + object + to-infinitive"
+      "text": "She <b>persuaded him to explain</b> what had really happened.",
+      "note": "persuade + object + to-infinitive"
      },
      {
-      "text": "Mateo <b>admitted breaking</b> the window.",
-      "note": "reporting verb + -ing"
+      "text": "He <b>suggested rephrasing</b> the whole message.",
+      "note": "suggest + -ing (no object before it)"
      },
      {
-      "text": "We <b>heard Sofía singing</b> in the hall.",
-      "note": "perception verb + object + -ing"
+      "text": "The journalist <b>admitted misquoting</b> the minister.",
+      "note": "admit + -ing"
      },
      {
-      "text": "They <b>warned us not to be</b> late.",
-      "note": "negative: not before the to-infinitive"
+      "text": "He <b>refused to apologise</b> for the mistake.",
+      "note": "refuse + to-infinitive (never -ing)"
+     },
+     {
+      "text": "They <b>accused her of exaggerating</b> the story, and later <b>blamed her for causing</b> the confusion.",
+      "note": "accuse sb OF + -ing / blame sb FOR + -ing"
+     },
+     {
+      "text": "We <b>saw him leave</b> before the meeting ended, but I <b>saw her leaving</b> as I arrived.",
+      "note": "perception verb + bare infinitive (whole action) vs + -ing (in progress)"
+     },
+     {
+      "text": "I <b>remembered to send</b> the correction, though I don't <b>remember writing</b> the first draft.",
+      "note": "remember to do (a task not yet done) vs remember -ing (a memory of the past)"
      }
     ],
     "rules": [
-     "persuade, advise, warn, encourage, remind + object + to-infinitive: <b>They encouraged me to apply</b>.",
-     "admit, deny, suggest, recommend + -ing: <b>She suggested leaving</b> early.",
-     "see, hear, watch, feel + object + -ing (action in progress) or bare infinitive (whole action): <b>I saw him fall</b>."
+     "persuade, warn, encourage, remind, advise, urge + object + to-infinitive: <b>They encouraged me to apply.</b>",
+     "admit, deny, suggest, recommend, imagine + -ing, with no object directly after the verb: <b>She suggested leaving early</b> (not <i>suggested me to leave</i>).",
+     "reporting verbs with a preposition take -ing: <i>accuse sb OF -ing, blame sb FOR -ing, insist ON -ing, apologise FOR -ing.</i>",
+     "refuse, agree, decide, offer, threaten + to-infinitive only, never -ing.",
+     "perception verbs (see, hear, watch, notice, feel) + object + bare infinitive = the whole action, start to finish; + object + -ing = the action already in progress, or only part of it.",
+     "some verbs change meaning with the pattern: <i>stop to do</i> (interrupt one thing to do another) vs <i>stop doing</i> (end an activity); <i>regret to say</i> (sorry to give bad news now) vs <i>regret doing</i> (sorry about a past action); <i>go on to do</i> (do next) vs <i>go on doing</i> (continue)."
     ],
     "practice": {
      "instructions": "Choose the correct form.",
      "items": [
       {
-       "sentence": "Nadia advised Mateo ___ the letter.",
+       "sentence": "The journalist admitted ___ the quote to make it more dramatic.",
        "options": [
-        "rewrite",
-        "rewriting",
-        "to rewrite"
-       ],
-       "answer": 2
-      },
-      {
-       "sentence": "Liam admitted ___ the vase.",
-       "options": [
-        "break",
-        "to break",
-        "breaking"
-       ],
-       "answer": 2
-      },
-      {
-       "sentence": "We heard someone ___ in the next room.",
-       "options": [
-        "shouting",
-        "to shout",
-        "shouts"
+        "changing",
+        "change",
+        "to change"
        ],
        "answer": 0
       },
       {
-       "sentence": "The sign warns visitors ___ the animals.",
+       "sentence": "Miss Vega warned us not ___ every rumour we heard.",
        "options": [
-        "not feeding",
-        "not to feed",
-        "to not feeding"
+        "trust",
+        "to trust",
+        "trusting"
        ],
        "answer": 1
       },
       {
-       "sentence": "She suggested ___ a different approach.",
+       "sentence": "The interpreter insisted on ___ every word before the meeting began.",
        "options": [
-        "to try",
-        "trying",
-        "try"
+        "check",
+        "to check",
+        "checking"
+       ],
+       "answer": 2
+      },
+      {
+       "sentence": "He was accused of ___ the minister's words out of context.",
+       "options": [
+        "quoting",
+        "quote",
+        "to quote"
+       ],
+       "answer": 0
+      },
+      {
+       "sentence": "We saw the two reporters ___ outside the courtroom, though we couldn't hear what it was about.",
+       "options": [
+        "argue",
+        "arguing",
+        "to argue"
+       ],
+       "answer": 1
+      },
+      {
+       "sentence": "I don't remember ___ that conversation at all — perhaps it never happened quite the way you describe it.",
+       "options": [
+        "have",
+        "to have",
+        "having"
+       ],
+       "answer": 2
+      },
+      {
+       "sentence": "She stopped ___ the article halfway through, unable to finish such a biased report.",
+       "options": [
+        "reading",
+        "read",
+        "to read"
+       ],
+       "answer": 0
+      }
+     ]
+    }
+   }
+  },
+  {
+   "code": "E",
+   "type": "gap_text",
+   "title": "Reading and Use of English Part 2 — open cloze. Write ONE word in each gap.",
+   "outputs": [
+    "digital"
+   ],
+   "tips": {
+    "expect": "A short text of about 200 words with eight gaps. There are no options: you write one word in each gap. Almost all the missing words are grammatical — articles, prepositions, auxiliaries, pronouns, relatives and linking words.",
+    "how": [
+     "Read the whole text before filling any gap: a later sentence often makes the grammar clear.",
+     "Decide what kind of word is missing — a preposition, a relative pronoun, part of a fixed phrase — before guessing a specific word.",
+     "Only one word fits each gap, and contractions are not accepted."
+    ],
+    "remember": "Marks are for grammar, not meaning — a word that fits the sense but breaks the grammar (or the other way round) will not be accepted."
+   },
+   "data": {
+    "text": "Few things travel faster than a rumour, and few things are harder to correct once they {1} begun to spread. A remark made in private gets passed on, and {2} it moves from one listener to the next, a detail is added here and a nuance lost there, until the story bears little resemblance {3} what was actually said. Psychologists who study gossip point out that people rarely invent facts {4} nothing; instead, they fill small gaps with whatever seems most likely and then forget they ever guessed. The person who first made the remark is rarely fully responsible {5} what happens to it next, yet by the time a sixth version reaches you, {6} began as an innocent comment can sound like an accusation. Journalists are trained to resist this drift by returning to the original source rather {7} trusting a secondhand account, but the rest of us rarely have {8} training, so a moment's caution before repeating a striking piece of news costs us nothing. In an age when a single message can reach thousands of people within minutes, this small habit of checking sources has become more valuable than ever.",
+    "answers": [
+     "have",
+     "as",
+     "to",
+     "from",
+     "for",
+     "what",
+     "than",
+     "such"
+    ]
+   }
+  },
+  {
+   "code": "F",
+   "type": "listening_mc",
+   "title": "Listening Part 1 — multiple choice. Listen to three extracts and choose the best answer.",
+   "outputs": [
+    "digital"
+   ],
+   "audio": "c1a/u03-f.mp3",
+   "tips": {
+    "expect": "Three unrelated extracts, each about thirty seconds long, each followed by two three-option questions. The questions test attitude, opinion, feeling or the relationship between the speakers — not small factual details.",
+    "how": [
+     "Read the two questions before each extract starts: they tell you exactly what to listen for.",
+     "Listen for tone of voice and how the speakers react to each other, not just the words they use.",
+     "You hear each extract twice, so if you're unsure after the first listening, focus on the part you missed the second time."
+    ],
+    "remember": "The correct option is rarely stated in the exact words you hear — it usually sums up the general feeling or opinion behind them."
+   },
+   "data": {
+    "voice_note": "Three unrelated extracts. Extract One: Zara and Ben (two friends). Extract Two: Dan and Sam (colleagues). Extract Three: Liam and Nadia (students).",
+    "script": "Zara: I still can't believe you thought I was being sarcastic. I meant it as a genuine compliment.\nBen: Well, when you write “great, thanks for that” with no exclamation mark, it doesn't exactly scream enthusiasm.\nZara: That's exactly the problem with texting, isn't it? You can't hear the tone of my voice.\nBen: True, but you know me — I always read the worst into a flat sentence. I probably owe you an apology, not the other way round.\nZara: It's fine, honestly. I've started adding far too many exclamation marks just to avoid this happening again.\nBen: Don't change how you write on my account. I'll try to give people the benefit of the doubt before I assume the worst.\nZara: Deal. Although I might still throw in the occasional smiley face, just to be safe.\n[pause]\nDan: So I rang them up ready to lose my temper, and the woman on the phone completely disarmed me.\nSam: How did she manage that?\nDan: She just said, “I can hear you're frustrated, and I'd be too” — before I'd even finished explaining.\nSam: That's a clever line, though. It sort of takes the wind out of your sails.\nDan: Exactly. I'd rehearsed this whole speech about how unacceptable it was, and suddenly there was nothing left to be angry about.\nSam: Did she actually solve the problem, though, or just calm you down?\nDan: Both, in the end — but I have to admit, if she'd started by reading me the company policy, I'd probably still be fuming.\nSam: Funny how the right opening line matters more than the actual solution sometimes.\n[pause]\nLiam: By the time it got to me, three different people had told me you were leaving the club.\nNadia: I only said I might miss one session because of an exam. That's genuinely all it was.\nLiam: Rumours really do grow a life of their own, don't they? It's like a game where the message changes every time.\nNadia: What annoys me is that nobody actually asked me. They just passed it on as if it were confirmed.\nLiam: To be fair, I didn't believe it completely, but I didn't correct it either, which is probably just as bad.\nNadia: Next time, maybe just ask the person directly instead of guessing.\nLiam: Fair point. I suppose it's easier to repeat a story than to check it.",
+    "extracts": [
+     {
+      "title": "Extract One",
+      "intro": "You hear two friends discussing a text message that was misunderstood.",
+      "questions": [
+       {
+        "q": "What does Ben now admit about the situation?",
+        "options": [
+         "He tends to assume the worst when a message sounds direct.",
+         "He deliberately misread Zara's message.",
+         "He never actually read the message properly."
+        ],
+        "answer": 0
+       },
+       {
+        "q": "How does Zara say she has responded to what happened?",
+        "options": [
+         "By avoiding text messages altogether.",
+         "By asking Ben to explain himself before assuming things.",
+         "By changing the way she writes to sound warmer."
+        ],
+        "answer": 2
+       }
+      ]
+     },
+     {
+      "title": "Extract Two",
+      "intro": "You hear a man telling a colleague about a phone call he made to a delivery company.",
+      "questions": [
+       {
+        "q": "What impressed Dan most about the phone call?",
+        "options": [
+         "The speed with which his problem was solved.",
+         "The way his frustration was acknowledged before he had explained it.",
+         "The clarity of the company's official policy."
+        ],
+        "answer": 1
+       },
+       {
+        "q": "What does Sam suggest at the end of the conversation?",
+        "options": [
+         "That the solution mattered less than how the call began.",
+         "That Dan exaggerated how angry he had been.",
+         "That most companies read out the same policy."
+        ],
+        "answer": 0
+       }
+      ]
+     },
+     {
+      "title": "Extract Three",
+      "intro": "You hear two students, Liam and Nadia, discussing a rumour that spread around their school.",
+      "questions": [
+       {
+        "q": "How does Nadia feel about how the rumour spread?",
+        "options": [
+         "Amused that people found it interesting.",
+         "Frustrated that nobody checked the facts with her.",
+         "Unsurprised, because it happens all the time."
+        ],
+        "answer": 1
+       },
+       {
+        "q": "What does Liam admit he did wrong?",
+        "options": [
+         "He started the rumour himself.",
+         "He repeated the rumour to other students.",
+         "He failed to correct the rumour when he heard it."
+        ],
+        "answer": 2
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "code": "G",
+   "type": "grammar_box",
+   "title": "Language focus 2 — reported speech at C1",
+   "outputs": [
+    "book",
+    "digital"
+   ],
+   "data": {
+    "title": "Reported speech at C1: backshifting and precise reporting verbs",
+    "can": "I can report statements, questions and instructions accurately, backshifting tenses where necessary, and choose a precise reporting verb (claim, deny, point out, warn, urge) instead of always using say or tell.",
+    "intro": "When Sam retold Dan's phone call, she didn't just repeat what was said — she reported it with a verb that captured the attitude behind it. A string of <i>he said that… she said that…</i> is grammatically correct and stylistically flat; a well-chosen reporting verb does the work of a whole clause.",
+    "examples": [
+     {
+      "text": "“I'll call you back,” she said. → She said (that) she <b>would call</b> me back.",
+      "note": "backshift: will → would"
+     },
+     {
+      "text": "“Have you finished the report?” he asked. → He asked <b>if I had finished</b> the report.",
+      "note": "reporting a yes/no question: if / whether + statement word order, no question mark"
+     },
+     {
+      "text": "“Why did you change the quote?” she asked. → She asked <b>why I had changed</b> the quote.",
+      "note": "reporting a wh-question: wh-word + statement word order, no auxiliary do"
+     },
+     {
+      "text": "“It wasn't me who started the rumour,” Nadia said. → Nadia <b>denied starting</b> the rumour.",
+      "note": "deny + -ing replaces say... not"
+     },
+     {
+      "text": "“You really should check your sources,” Miss Vega said. → Miss Vega <b>urged us to check</b> our sources.",
+      "note": "urge + object + to-infinitive"
+     },
+     {
+      "text": "“Actually, nobody ever confirmed that,” Liam said. → Liam <b>pointed out that</b> nobody had ever confirmed it.",
+      "note": "point out that + backshift"
+     },
+     {
+      "text": "“I promise I read it carefully,” he said. → He <b>claimed to have read</b> it carefully.",
+      "note": "claim + perfect infinitive for a completed past action"
+     }
+    ],
+    "rules": [
+     "Backshift one tense back: present → past, past / present perfect → past perfect, will → would, can → could, may → might (must usually stays, or becomes had to).",
+     "Reporting yes/no questions: <i>if / whether</i> + subject + verb, in statement order — never with an auxiliary at the front or a question mark.",
+     "Reporting wh-questions: wh-word + subject + verb, exactly like a statement: <b>He asked why I had changed it</b>, not <i>why had I changed</i>.",
+     "Precise reporting verbs replace <i>say / tell + that</i>: <i>claim, deny, point out, warn, urge, admit, insist, suggest</i> — each has its own pattern, so check whether it takes <i>to</i>, <i>-ing</i> or <i>that</i>.",
+     "Time and place words shift too: <i>now → then, today → that day, here → there, tomorrow → the next day</i> — unless the fact reported is still true or you are reporting it moments later.",
+     "You don't have to backshift if the reporting verb is in the present, or if what was said is a general truth that is still true."
+    ],
+    "practice": {
+     "instructions": "Choose the correct form.",
+     "items": [
+      {
+       "sentence": "She asked me ___ I had seen the original email.",
+       "options": [
+        "that",
+        "if",
+        "what"
+       ],
+       "answer": 1
+      },
+      {
+       "sentence": "Liam ___ that nobody had actually confirmed the rumour.",
+       "options": [
+        "told",
+        "said",
+        "pointed out"
+       ],
+       "answer": 2
+      },
+      {
+       "sentence": "Nadia ___ starting the story, insisting she had only mentioned an exam.",
+       "options": [
+        "denied",
+        "admitted",
+        "refused"
+       ],
+       "answer": 0
+      },
+      {
+       "sentence": "Miss Vega ___ us to check our sources before repeating anything.",
+       "options": [
+        "told",
+        "urged",
+        "warned"
+       ],
+       "answer": 1
+      },
+      {
+       "sentence": "He asked her ___ she had changed her mind about the interview.",
+       "options": [
+        "that",
+        "what",
+        "whether"
+       ],
+       "answer": 2
+      },
+      {
+       "sentence": "He ___ to have read the whole article, though nobody quite believed him.",
+       "options": [
+        "claimed",
+        "admitted",
+        "denied"
+       ],
+       "answer": 0
+      },
+      {
+       "sentence": "She asked me ___ I thought about the translation.",
+       "options": [
+        "if",
+        "what",
+        "that"
        ],
        "answer": 1
       }
@@ -224,147 +626,222 @@
    }
   },
   {
-   "code": "D",
+   "code": "H",
    "type": "key_transform",
-   "title": "Use of English Part 4 — key word transformations",
+   "title": "Reading and Use of English Part 4 — key word transformations",
    "outputs": [
-    "book",
-    "digital",
-    "quiz"
+    "digital"
    ],
+   "tips": {
+    "expect": "Six sentences. For each one you complete a second sentence so that it means the same as the first, using a given key word. You write between three and six words, including the key word, which you must not change. Each item is worth up to two marks.",
+    "how": [
+     "Identify the structure being tested — here, mostly reporting verbs and advanced verb patterns.",
+     "Write the whole gap, then read the complete second sentence: does it mean exactly the same as the first? Is the key word unchanged?",
+     "Count your words. Contractions count as two words (<i>didn't</i> = did not)."
+    ],
+    "remember": "Half marks exist: if you get the structure right but a small word wrong, you still score one."
+   },
    "data": {
-    "instructions": "Complete the second sentence so that it means the same as the first. Use the KEY WORD. Write between two and five words.",
+    "instructions": "Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between three and six words, including the word given.",
     "items": [
      {
-      "first": "“You should apologise,” Nadia told Mateo.",
-      "key": "ADVISED",
+      "first": "“I'm sorry I forgot to reply,” Ben said.",
+      "key": "APOLOGISED",
+      "second_start": "Ben",
+      "second_end": "reply.",
+      "answers": [
+       "apologised for forgetting to"
+      ]
+     },
+     {
+      "first": "“You didn't check the facts,” Dan told Sam.",
+      "key": "ACCUSED",
+      "second_start": "Dan",
+      "second_end": "the facts.",
+      "answers": [
+       "accused Sam of not checking"
+      ]
+     },
+     {
+      "first": "“It wasn't me who spread the rumour,” Nadia said.",
+      "key": "DENIED",
       "second_start": "Nadia",
       "second_end": ".",
       "answers": [
-       "advised Mateo to apologise"
+       "denied spreading the rumour"
       ]
      },
      {
-      "first": "“I broke the window,” Liam said.",
-      "key": "ADMITTED",
-      "second_start": "Liam",
-      "second_end": "the window.",
+      "first": "“You really must check your sources,” Miss Vega told the class.",
+      "key": "URGED",
+      "second_start": "Miss Vega",
+      "second_end": "their sources.",
       "answers": [
-       "admitted breaking"
+       "urged the class to check"
       ]
      },
      {
-      "first": "“Don't touch the wires,” the teacher said to us.",
-      "key": "WARNED",
-      "second_start": "The teacher",
-      "second_end": "the wires.",
+      "first": "“Why did you change the quotation?” she asked him.",
+      "key": "WHY",
+      "second_start": "She asked him",
+      "second_end": "the quotation.",
       "answers": [
-       "warned us not to touch"
+       "why he had changed"
       ]
      },
      {
-      "first": "Sofía was crossing the square when I saw her.",
-      "key": "SAW",
-      "second_start": "I",
-      "second_end": "the square.",
+      "first": "He insists that he read the report carefully.",
+      "key": "CLAIMS",
+      "second_start": "He",
+      "second_end": "carefully.",
       "answers": [
-       "saw Sofía crossing"
-      ]
-     },
-     {
-      "first": "“Let's take a different route,” said Nadia.",
-      "key": "SUGGESTED",
-      "second_start": "Nadia",
-      "second_end": "a different route.",
-      "answers": [
-       "suggested taking"
+       "claims to have read the report"
       ]
      }
     ]
    }
   },
   {
-   "code": "E",
-   "type": "gap_text",
-   "title": "Use of English Part 2 — open cloze. Write ONE word in each gap.",
+   "code": "I",
+   "type": "writing",
+   "title": "Writing Part 2 — report. Plan, write 220–260 words and hand it in.",
    "outputs": [
-    "book",
-    "digital",
-    "quiz"
+    "digital"
    ],
-   "data": {
-    "box": [
-     "as",
-     "for",
-     "to",
-     "what",
-     "which",
-     "do"
+   "tips": {
+    "expect": "Part 2 offers a choice of tasks, one of which may be a report. You write for a specified reader (senior management, a club, a magazine), using clear organisation — often with section headings — and a formal or semi-formal register. 220–260 words.",
+    "how": [
+     "Use headings to organise your report clearly: at minimum an introduction, your findings and your recommendations.",
+     "Base your content on the input given (a survey, comments, notes); don't invent unrelated information.",
+     "Keep the register impersonal: avoid contractions and direct address to the reader; use reporting verbs and passive forms (<i>it was found that…, students pointed out that…</i>)."
     ],
-    "text": "Communication often goes wrong. We assume that others think {1} we do, and then we blame them {2} the confusion. Nadia warned us not {3} jump to conclusions. When someone reports {4} another person said, the meaning can quietly shift. What matters is listening, {5} we rarely do carefully enough. Only then {6} we begin to understand each other.",
-    "answers": [
-     "as",
-     "for",
-     "to",
-     "what",
-     "which",
-     "do"
-    ]
-   }
-  },
-  {
-   "code": "F",
-   "type": "listening",
-   "title": "Listening — the reporting-verbs lesson. Write ONE word in each gap.",
-   "outputs": [
-    "digital",
-    "quiz"
-   ],
-   "audio": "c1a/u03-f.mp3",
+    "remember": "A report needs clear recommendations, not just a description of the problem — always end by saying what should be done."
+   },
    "data": {
-    "voice_note": "Voz: la profesora (Miss Vega), sobre los reporting verbs.",
-    "script": "Good morning, Grade 11. Today we look at reporting verbs and the way we retell what people say. Notice how a single verb changes everything: he admitted lying, she denied cheating, they suggested leaving. Small choices, big meanings. For homework, listen to a real conversation and report three sentences using different verbs. Nadia will share her examples first on Friday. Remember: verbs of perception like watch and hear take an object plus an -ing form. Bring your sharpest ear, and report what you hear precisely.",
-    "questions": [
-     {
-      "q": "Today we look at reporting …",
-      "answer": "verbs"
-     },
-     {
-      "q": "He admitted …",
-      "answer": "lying"
-     },
-     {
-      "q": "For homework, report three …",
-      "answer": "sentences"
-     },
-     {
-      "q": "… will share her examples first on Friday.",
-      "answer": "Nadia"
-     },
-     {
-      "q": "Verbs of perception take an object plus an -ing …",
-      "answer": "form"
-     }
-    ]
+    "part": 2,
+    "genre": "report",
+    "words": [
+     220,
+     260
+    ],
+    "task": "<p>The senior management team has asked Grade 11 to find out <b>how information passes between teachers and students</b> and to suggest improvements. You carried out a short survey and held two focus groups.</p><blockquote><p><b>Survey findings:</b></p><ul><li>68% of students miss at least one announcement a month</li><li>most teachers use different apps or platforms for homework</li><li>students want a single place to check everything</li></ul><p><b>Comments from the focus groups:</b></p><ul><li>“I only found out about the trip because a friend mentioned it.”</li><li>“Some teachers post on the portal, others just say it in class.”</li></ul></blockquote><p>Write a <b>report</b> for the senior management team. Include an introduction, your findings and clear recommendations, using section headings. Write <b>220–260 words</b>.</p>",
+    "plan": [
+     "<b>Introduction</b> (1–2 sentences): the purpose of the report and how the information was gathered (survey and focus groups).",
+     "<b>Current channels</b>: summarise how information actually reaches students at present and what the data shows.",
+     "<b>Problems identified</b>: the main issues — inconsistency between teachers, missed announcements, no single place to check.",
+     "<b>Recommendations</b>: two or three concrete, realistic suggestions, ending with a brief closing remark."
+    ],
+    "useful_language": {
+     "Introducing the report": [
+      "The purpose of this report is to…",
+      "This report is based on…",
+      "Information was gathered by means of…"
+     ],
+     "Presenting findings": [
+      "The survey revealed that…",
+      "A significant proportion of students…",
+      "It emerged from the focus groups that…"
+     ],
+     "Recommending": [
+      "It would be advisable to…",
+      "One option worth considering is…",
+      "I would strongly recommend that…"
+     ]
+    },
+    "checklist": [
+     "I have used clear section headings in bold.",
+     "My introduction states the purpose and method, without giving my opinion yet.",
+     "Findings and recommendations are in separate sections.",
+     "I have used at least one precise reporting verb (pointed out, claimed, admitted) to refer to what students said.",
+     "The register is formal and impersonal: no contractions, no direct address to the reader.",
+     "Between 220 and 260 words."
+    ],
+    "model": "<p><i>A model answer (238 words). Notice the four clear sections and the impersonal, formal register expected of a report.</i></p><p><b>Introduction</b><br>The purpose of this report is to examine how information about announcements, homework and timetable changes currently reaches students, and to recommend ways of making this more reliable. The findings are based on a survey of Grade 11 and two focus group discussions.</p><p><b>Current channels</b><br>At present, teachers rely on a mixture of methods: the school portal, messages read out in class, and, occasionally, informal reminders passed between students. Several students pointed out that this depended heavily on which teacher was involved, since some updated the portal promptly while others simply mentioned changes verbally.</p><p><b>Problems identified</b><br>The main issue to emerge was inconsistency rather than a lack of information. Sixty-eight per cent of those surveyed admitted missing at least one announcement a month, usually because it had only been given in class, not in writing. One student in the focus group claimed to have heard about a school trip purely by chance, from a friend.</p><p><b>Recommendations</b><br>It would be advisable to agree on a single platform that every teacher is required to use for announcements, however minor. In addition, a short daily digest sent each morning would allow students to check one place rather than several. Finally, students should be encouraged to confirm important dates directly with their teacher rather than relying on secondhand accounts. Adopting these measures should significantly reduce the number of missed announcements.</p>"
    }
   },
   {
-   "code": "G",
+   "code": "J",
    "type": "pairwork",
-   "title": "Speaking — retell a conversation. In pairs, then record it.",
+   "title": "Speaking — Parts 3 and 4. Collaborative task and discussion. Record your best answer.",
    "outputs": [
     "book",
     "digital"
    ],
+   "speaking": {
+    "part": 3,
+    "name": "Collaborative task and discussion"
+   },
+   "tips": {
+    "expect": "Part 3 (about 4 minutes): you and your partner discuss a question using five written prompts for two minutes, then spend a minute reaching a decision together. Part 4 (about 5 minutes): the examiner asks you both broader questions related to the same topic.",
+    "how": [
+     "In Part 3 you are assessed on how well you interact, not on agreeing with your partner — ask their opinion, respond to it, and disagree politely if you want to.",
+     "You don't need to discuss all five prompts: two or three developed in depth work better than five rushed ones.",
+     "When you reach the decision stage, negotiate rather than simply stating your own view: <i>Shall we say…? I could go along with that if…</i>",
+     "In Part 4, extend your answers: give an opinion, a reason, an example, and a wider conclusion."
+    ],
+    "remember": "Talk to your partner, not to the examiner — natural interaction is what earns marks here."
+   },
    "data": {
-    "text": "In pairs, retell a recent conversation, choosing your reporting verbs carefully. Model: “She admitted forgetting, but I suspect she simply chose not to reply.” 1) When was the last time you were badly misunderstood? 2) Do we report gossip more accurately than facts? 3) Which reporting verb — admit, deny, claim, insist — is most often abused in the news? Give reasons and examples, then record your discussion."
+    "text": "Part 3: discuss how these might change the way a message is understood and decide which is most likely to cause a serious misunderstanding. Part 4: discuss honesty, rumour and translation.",
+    "parts": [
+     {
+      "part": 3,
+      "title": "Collaborative task",
+      "time": "2 min + 1 min",
+      "intro": "Here are some ways in which a message can reach its audience. Talk to each other about <b>how each of these might change the way a message is understood</b>.",
+      "centre": "How might these change the way a message is understood?",
+      "spokes": [
+       "a text message with no punctuation",
+       "a story translated into another language",
+       "a headline written to attract clicks",
+       "a rumour passed from friend to friend",
+       "an official announcement read aloud in class"
+      ],
+      "decide": "Now you have a minute to decide <b>which of these is most likely to cause a serious misunderstanding</b>."
+     },
+     {
+      "part": 4,
+      "title": "Further discussion",
+      "time": "5 min",
+      "prompts": [
+       "Some people say that journalists should never rephrase what someone has told them. Do you agree?",
+       "Who is more responsible for a misunderstanding — the person who spoke or the person who listened?",
+       "Is gossip ever completely harmless, in your opinion?",
+       "Do you think translated books and films lose something essential, however skilled the translator?",
+       "How can schools help students communicate more accurately with each other?"
+      ]
+     }
+    ],
+    "useful_language": {
+     "Involving your partner": [
+      "What's your take on…?",
+      "Would you go along with that?",
+      "You've got a point, but…",
+      "That's true up to a point, although…"
+     ],
+     "Building on an idea": [
+      "Following on from what you said…",
+      "And that ties in with…",
+      "Not only that, but…"
+     ],
+     "Reaching a decision": [
+      "Shall we settle on…?",
+      "I'd be inclined to go for…, on the grounds that…",
+      "We could agree to differ, but if we had to choose…"
+     ],
+     "Part 4: developing an answer": [
+      "It very much depends on…",
+      "There's a strong case for saying…",
+      "Rarely is it as simple as…"
+     ]
+    }
    }
   }
  ],
  "homework": [
   {
    "type": "write_sentences",
-   "prompt": "Write a short account (10–12 sentences) of a real misunderstanding, reporting what each person said with a range of verb patterns (advised… to…, admitted …-ing, warned… not to…, heard… -ing). Capital letters and full stops!"
+   "prompt": "Write a short account (10–12 sentences) of a time something you said was reported inaccurately, or retell a rumour you once heard and how the story changed on its way to you. Use at least three advanced verb patterns (persuaded… to, admitted…-ing, accused… of -ing) and two reported-speech structures with a precise reporting verb (pointed out that, denied -ing, urged… to)."
   }
  ],
  "scope": {
@@ -374,42 +851,39 @@
   "outcomes": [
    {
     "destreza": "Listening",
-    "puede": "Follow a lesson on reporting verbs and note precise details (C1 Advanced Listening)."
+    "puede": "Follow three short unrelated conversations about communication and identify the speakers' opinion, attitude and feeling (C1 Advanced Listening Part 1)."
    },
    {
     "destreza": "Speaking",
-    "puede": "Retell conversations accurately, choosing reporting verbs with care (C1 Advanced Speaking)."
+    "puede": "Speculate about pictures of people communicating, negotiate a decision with a partner and discuss honesty and rumour, using advanced verb patterns and reported speech (C1 Advanced Speaking Parts 1–4)."
    },
    {
     "destreza": "Reading",
-    "puede": "Read a demanding text on communication and grasp its argument (C1 Advanced Reading)."
+    "puede": "Read five short texts about communication and match paraphrased statements to the right person (C1 Advanced Reading Part 8)."
    },
    {
     "destreza": "Writing",
-    "puede": "Write an accurate account using a range of advanced verb patterns."
+    "puede": "Plan and write a 220–260-word report with clear section headings, presenting findings and recommendations (C1 Advanced Writing Part 2)."
    },
    {
     "destreza": "Use of English",
-    "puede": "Advanced verb patterns; open cloze (Part 2)."
+    "puede": "Advanced verb patterns (reporting verbs, verbs of perception); reported speech at C1; open cloze (Part 2) and key word transformations (Part 4)."
    }
   ],
   "vocabulario": [
    "misunderstanding",
    "interpret",
-   "report",
+   "convey",
    "perception",
    "accuse",
    "faithful"
   ],
   "gramatica": [
-   "Advanced verb patterns",
-   "Open cloze (Part 2)"
+   "Advanced verb patterns (reporting verbs and verbs of perception)",
+   "Reported speech at C1 (backshifting, reporting questions, reporting verbs)",
+   "Open cloze (Part 2)",
+   "Key word transformations (Part 4)"
   ],
   "pendiente": {}
- },
- "wordlist_extra": [
-  "retell",
-  "convey",
-  "neutral"
- ]
+ }
 }
