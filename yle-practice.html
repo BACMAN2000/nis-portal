@@ -230,10 +230,18 @@ var WORD_IMG = 'yle-img/words/';
 var WORDS_HAVE = {};                  // slug -> true (se rellena al arrancar)
 var wslug = function(w){ return String(w == null ? '' : w).toLowerCase().replace(/^(a|an|the)\s+/, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, ''); };
 var emojiPic = function(word, size){ var e = ART.wordEmoji ? ART.wordEmoji(word) : null; return e ? ART.pic3d(e, size || 64) : '<span class="emoji" style="font-size:' + Math.round((size || 64) * .8) + 'px">🖼️</span>'; };
-var pic = function(word, size){
+/* Si la palabra tiene ilustracion de la libreria, la ilustracion GANA sobre el
+   emoji 3D que traiga el JSON del test: el usuario pidio dibujos tipo lamina, no
+   emoticon. El tercer argumento `emoji` es el respaldo — el emoji que el test
+   escribio para esa opcion (match_letters, definitions_copy, odd_one_out, las
+   tiras de mc_pictures); si no hay ilustracion, se pinta ese emoji, y si tampoco
+   hay emoji, uno derivado de la palabra. Las llamadas de dos argumentos siguen
+   igual (emoji indefinido -> respaldo derivado). */
+var pic = function(word, size, emoji){
   var s = size || 64, sl = wslug(word);
-  if(!WORDS_HAVE[sl]) return emojiPic(word, s);
-  var fb = emojiPic(word, s).replace(/"/g, '&quot;');
+  var fbHTML = emoji ? ART.pic3d(emoji, s) : emojiPic(word, s);
+  if(!WORDS_HAVE[sl]) return fbHTML;
+  var fb = fbHTML.replace(/"/g, '&quot;');
   return '<img class="wpic" src="' + YM(WORD_IMG + sl + '.jpg') + '" width="' + s + '" height="' + s + '" alt="' + esc(word) + '" loading="lazy" style="object-fit:contain;vertical-align:middle" data-fb="' + fb + '" onerror="var d=document.createElement(\'span\');d.innerHTML=this.getAttribute(\'data-fb\');this.replaceWith(d.firstChild||d);">';
 };
 
@@ -507,14 +515,14 @@ function listening(){
         (P.example ? '<div class="item ex"><span class="tagex">Example</span>' + esc(P.example.q) + ' → <b>' + esc(P.example.a) + '</b></div>' : '') +
         P.items.map(function(it, i){ return '<div class="item"><label>' + (i + 1) + '. ' + esc(it.q) + '</label><input type="text" data-name="' + pk + '_' + i + '" autocomplete="off" spellcheck="false"></div>'; }).join(''));
     } else if(P.type === 'mc_pictures'){
-      // sin lámina: las tres opciones se dibujan con los emoji 3D (pics: ["apple","banana","cake"] o [{"word":"monkey","n":3},…])
-      var strip = function(it){ if(!it.pics) return ''; return '<div class="abc">' + it.pics.map(function(p, j){ var w = typeof p === 'string' ? p : p.word, n = typeof p === 'string' ? 1 : (p.n || 1), e = typeof p === 'string' ? null : p.emoji; var h = ''; for(var k = 0; k < n; k++) h += e ? ART.pic3d(e, n > 3 ? 36 : 56) : pic(w, n > 3 ? 36 : 56); return '<div style="border:1.5px solid var(--border);border-radius:12px;padding:8px 10px;min-width:120px;text-align:center"><div class="letter" style="text-align:left">' + 'ABC'[j] + '</div><div style="display:flex;flex-wrap:wrap;gap:2px;justify-content:center;max-width:200px">' + h + '</div></div>'; }).join('') + '</div>'; };
+      // sin lámina: las tres opciones se dibujan con la ilustración de la palabra (pics: ["apple","banana","cake"] o [{"word":"monkey","n":3},…]); si no hay ilustración, cae al emoji 3D
+      var strip = function(it){ if(!it.pics) return ''; return '<div class="abc">' + it.pics.map(function(p, j){ var w = typeof p === 'string' ? p : p.word, n = typeof p === 'string' ? 1 : (p.n || 1), e = typeof p === 'string' ? null : p.emoji; var h = ''; for(var k = 0; k < n; k++) h += pic(w, n > 3 ? 36 : 56, e); return '<div style="border:1.5px solid var(--border);border-radius:12px;padding:8px 10px;min-width:120px;text-align:center"><div class="letter" style="text-align:left">' + 'ABC'[j] + '</div><div style="display:flex;flex-wrap:wrap;gap:2px;justify-content:center;max-width:200px">' + h + '</div></div>'; }).join('') + '</div>'; };
       var one = function(it, i, ex){ return '<div class="q"' + (ex ? '' : ' data-qstep="1"') + '><p><b>' + (ex ? 'Example' : i + 1) + '.</b> ' + esc(it.q) + '</p>' + (it.image ? img(it.image) : strip(it)) + '<div class="abc">' + ['A', 'B', 'C'].map(function(k, j){ return ex ? '<label class="' + (k === it.key ? 'ok' : '') + '"><span class="letter">' + k + '</span> ' + esc(it.options[j]) + (k === it.key ? ' ✓' : '') + '</label>' : '<label><input type="radio" name="' + pk + '_' + i + '" value="' + k + '"><span class="letter">' + k + '</span> ' + esc(it.options[j]) + '</label>'; }).join('') + '</div></div>'; };
       h += card('listening', p, 'Listen and tick the box', 'Listen and choose the right picture: A, B or C. One question at a time: press the arrow on the right for the next one.', (P.example ? one(P.example, 0, true) : '') +
         '<div class="qnav" data-qnav="' + pk + '"><button type="button" class="qarrow" data-qprev="' + pk + '" aria-label="Previous question">‹</button><div class="qhold">' + P.items.map(function(it, i){ return one(it, i, false); }).join('') + '</div><button type="button" class="qarrow" data-qnext="' + pk + '" aria-label="Next question">›</button></div><div class="qdots" data-qdots="' + pk + '"></div>');
     } else if(P.type === 'match_letters'){
-      // Movers P3: lista (quién / qué día…) → dibujos A–H (dos sobran). Los dibujos salen de los emoji 3D (word o emoji directo).
-      var bx = function(x){ return '<div class="bx"><span class="letter">' + x.letter + '</span>' + (x.emoji ? ART.pic3d(x.emoji, 56) : pic(x.word, 56)) + '<div>' + esc(x.word) + '</div></div>'; };
+      // Movers P3: lista (quién / qué día…) → dibujos A–H (dos sobran). Cada dibujo usa la ilustración de la palabra; si no la hay, el emoji 3D.
+      var bx = function(x){ return '<div class="bx"><span class="letter">' + x.letter + '</span>' + pic(x.word, 56, x.emoji) + '<div>' + esc(x.word) + '</div></div>'; };
       var letters = P.pictures.map(function(x){ return x.letter; });
       h += card('listening', p, 'Listen and write a letter', esc(P.intro || 'Listen and write a letter in each box.') + ' Two pictures are not used.',
         split('<div class="board">' + P.pictures.map(bx).join('') + '</div>',
@@ -561,7 +569,7 @@ function rw(){
         (P.image ? img(P.image) : '') + '<div class="bank">' + P.words.map(function(w){ return '<span>' + pic(w, 44) + esc(w) + '</span>'; }).join('') + '</div><h4 style="margin:6px 0">' + esc(P.title) + '</h4><p class="cloze">' + text + '</p>');
     } else if(P.type === 'definitions_copy'){
       h += card('rw', p, 'Look and read. Choose the correct words and write them', 'Read each sentence. Which picture is it? Write the word on the line (copy it from the pictures).',
-        '<div class="bank">' + P.words.map(function(w){ return '<span>' + (P.pics && P.pics[w] ? ART.pic3d(P.pics[w], 48) : pic(w, 48)) + esc(w) + '</span>'; }).join('') + '</div>' +
+        '<div class="bank">' + P.words.map(function(w){ return '<span>' + pic(w, 48, P.pics && P.pics[w]) + esc(w) + '</span>'; }).join('') + '</div>' +
         '<div class="item ex"><span class="tagex">Example</span>' + esc(P.example.def) + ' → <b>' + esc(P.example.word) + '</b></div>' +
         P.items.map(function(it, i){ return '<div class="item"><label style="min-width:60%">' + (i + 1) + '. ' + esc(it.def) + '</label><input type="text" data-name="' + pk + '_' + i + '" autocomplete="off" spellcheck="false" placeholder="write the word"></div>'; }).join(''));
     } else if(P.type === 'dialogue_mc3'){
@@ -653,7 +661,7 @@ function speaking(){
         split('<h4 style="margin:6px 0">' + esc(P.title) + '</h4>' + img(P.image), spk(P.examiner_open, null) + recorder(pk, 'Record the story, picture by picture') +
         '<details class="key"><summary>Show a model story</summary><ol>' + (P.frames || []).map(function(f){ return '<li>' + esc(f) + '</li>'; }).join('') + '</ol></details>') + '</div>';
     } else if(P.type === 'odd_one_out'){
-      var tile = function(x, si, j, ex, odd){ var w = typeof x === 'string' ? x : x.word, e = typeof x === 'string' ? null : x.emoji; var inner = (e ? ART.pic3d(e, 52) : pic(w, 52)) + '<span>' + esc(w) + '</span>'; return ex ? '<div class="oddt' + (j === odd ? ' ok' : '') + '">' + inner + '</div>' : '<button type="button" class="oddt" data-odd="' + si + '" data-j="' + j + '">' + inner + '</button>'; };
+      var tile = function(x, si, j, ex, odd){ var w = typeof x === 'string' ? x : x.word, e = typeof x === 'string' ? null : x.emoji; var inner = pic(w, 52, e) + '<span>' + esc(w) + '</span>'; return ex ? '<div class="oddt' + (j === odd ? ' ok' : '') + '">' + inner + '</div>' : '<button type="button" class="oddt" data-odd="' + si + '" data-j="' + j + '">' + inner + '</button>'; };
       var sets = P.sets.map(function(st, si){ var ex = si === 0; return '<div><p style="margin:8px 0 2px"><b>' + (ex ? 'Example' : si) + '.</b> ' + (ex ? esc(st.reason) : 'Which one is different? Why?') + ' <span class="small" data-odd-res="' + (si - 1) + '"></span></p><div class="oddset">' + st.pics.map(function(x, j){ return tile(x, si - 1, j, ex, st.odd); }).join('') + (ex ? '' : '<input type="hidden" data-name="p' + n + '_' + (si - 1) + '">') + '</div></div>'; }).join('');
       h += '<div class="card" data-screen="1"><h3>Speaking — Part ' + n + ' · Odd one out</h3><p class="instr">Look at each set of four pictures. Tap the one that is different and say why. The examiner shows you the example first.</p>' + sets +
         recorder(pk, 'Record why each one is different') + (mode === 'practice' ? '<p><button class="btn sec" data-checkodd="1">Check Part ' + n + '</button></p>' : '') +
