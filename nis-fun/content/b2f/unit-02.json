@@ -17,22 +17,101 @@
   "restore",
   "upholster"
  ],
+ "wordlist_extra": [
+  "tradesperson",
+  "contractor",
+  "invoice"
+ ],
  "exam_focus": {
   "paper": "Reading & Use of English",
-  "part": 2,
-  "skill": "open cloze"
+  "part": 6,
+  "skill": "gapped text"
  },
  "characters": [
   "nova"
  ],
  "scene": {
   "speaker": "nova",
-  "bubble": "Welcome back! For the Trades project we're getting the workshop rebuilt. Learn the causative — have and get things done — and master the open cloze.",
-  "intro": "Welcome to Unit 2. The Inspiring Nordic project moves into the workshop, where we arrange for experts to make, repair and build. In this unit you read how Grade 10 got an old workshop refurbished, you learn the causative (have/get something done) to talk about services, and you practise the open cloze from Reading and Use of English Part 2. Who does the work — and how do we say it in English? Let's find out."
+  "bubble": "Back to the workshop! This time you'll learn to talk about jobs you arrange for other people — the causative — and how to describe things that need fixing.",
+  "intro": "Welcome back to Unit 2. The Inspiring Nordic project returns to the workshop, but this time we look at who actually does the work. You will read a project diary in the format of Reading and Use of English Part 6 (gapped text), listen to eight short conversations about services and repairs in the format of Listening Part 1, learn the causative — have and get something done — for talking about jobs we arrange for other people, and a second language focus on describing problems and reporting faults. By the end of the unit you will be able to write a clear, polite email explaining exactly what went wrong and what should be done about it. Let's get things done."
  },
  "activities": [
   {
    "code": "A",
+   "type": "pairwork",
+   "title": "Speaking — Parts 1 and 2. Talk with a partner, then record yourself.",
+   "outputs": [
+    "book",
+    "digital"
+   ],
+   "speaking": {
+    "part": 2,
+    "name": "Interview and long turn"
+   },
+   "tips": {
+    "expect": "Part 1 (about 2 minutes): the examiner asks you and your partner questions about yourselves in turn — home, studies, free time, likes and dislikes. Part 2 (about 4 minutes in total): you look at three photographs and talk on your own for about a minute, comparing two of them and answering the question printed above them; then your partner answers a short question about your photographs (about 30 seconds).",
+    "how": [
+     "In Part 1, answer with a reason or a short example — a single word or a memorised sentence loses marks.",
+     "In Part 2, don't just describe the photographs one by one: compare them, and make sure you answer both parts of the question above them.",
+     "Use modals of speculation when you're not sure — might, could, may, possibly — rather than stating guesses as facts.",
+     "Keep talking for the full minute; if you run out of things to say about one photo, move to the question again."
+    ],
+    "remember": "Fluency matters more than perfect grammar here — stopping to correct every small mistake costs you more marks than the mistake itself."
+   },
+   "data": {
+    "text": "Part 1: talk about jobs and services in your own life. Part 2: compare two of the three photographs and say why the people might have decided to have this work done.",
+    "parts": [
+     {
+      "part": 1,
+      "title": "Interview",
+      "time": "2 min",
+      "prompts": [
+       "Do you enjoy making or fixing things yourself, or would you rather ask someone else to do it? Why?",
+       "Tell me about a job that was done in your home recently. Who did it?",
+       "What kind of jobs do you think people should always leave to a professional?",
+       "Is there a tradesperson or a craftsperson in your family? What do they do?"
+      ]
+     },
+     {
+      "part": 2,
+      "title": "Long turn",
+      "time": "1 min + 30 s",
+      "question": "Compare the two photographs and say <b>why the people might have decided to have this work done</b> and <b>how they might be feeling about it</b>.",
+      "pictures": [
+       {
+        "emoji": "🔧🚰",
+        "caption": "a plumber repairing a kitchen sink while the homeowner watches"
+       },
+       {
+        "emoji": "🖼️🔨",
+        "caption": "a framer fitting a picture into a new wooden frame in a workshop"
+       }
+      ],
+      "partner": "Which of these jobs would you rather have done for you? (about 30 seconds)"
+     }
+    ],
+    "useful_language": {
+     "Speculating": [
+      "They might well be...",
+      "It looks as though...",
+      "I'd imagine they're hoping to...",
+      "Perhaps she's decided to..."
+     ],
+     "Comparing": [
+      "Whereas the plumber is..., the decorator...",
+      "What they have in common is...",
+      "In both pictures..."
+     ],
+     "Giving your view": [
+      "Personally, I'd rather...",
+      "I think it depends on...",
+      "If it were me, I'd..."
+     ]
+    }
+   }
+  },
+  {
+   "code": "B",
    "type": "match_words",
    "title": "Vocabulary — trades and services. Match each word with its meaning.",
    "outputs": [
@@ -46,325 +125,725 @@
     "pairs": [
      {
       "left": "commission",
-      "right": "to formally arrange for something to be made or done"
+      "right": "to formally arrange for a professional to make or do something for you"
      },
      {
       "left": "refurbish",
-      "right": "to renovate and improve something old"
+      "right": "to renovate and improve an old building or room so that it looks new"
      },
      {
       "left": "workshop",
-      "right": "a room or building where things are made or repaired"
+      "right": "a room or building equipped for making or repairing things"
      },
      {
       "left": "install",
-      "right": "to put equipment into position, ready for use"
+      "right": "to fix a piece of equipment or a system in place, ready to be used"
      },
      {
       "left": "craftsmanship",
-      "right": "great skill in making things by hand"
+      "right": "skill in making things well, especially by hand"
      },
      {
       "left": "estimate",
-      "right": "a rough calculation of cost before work begins"
-     }
-    ]
-   }
-  },
-  {
-   "code": "B",
-   "type": "reading",
-   "title": "Reading — getting the workshop ready",
-   "outputs": [
-    "book",
-    "digital",
-    "quiz"
-   ],
-   "data": {
-    "kicker": "Project Diary",
-    "title": "Getting the workshop ready",
-    "author": "liam",
-    "byline": "by Liam",
-    "text": "<p>For our <i>Inspiring Nordic</i> project, Grade 10 decided to bring an old school workshop back to life. None of us are professional builders, so the real lesson has been learning how to <b>get things done</b> — by arranging for experts to do the difficult jobs.</p><p>First, we <b>had the walls repaired</b> by a local mason, because the plaster was falling apart. Then <b>Sofía</b> contacted a carpenter and we <b>had ten workbenches made</b> from recycled timber. They are beautiful, and much cheaper than new ones.</p><p>Not everything needs a specialist, of course. <b>Mateo</b> insisted on painting the door himself, and <b>Liam</b> and I sanded the old shelves. But we are <b>getting the electrics checked</b> by a qualified electrician this week — that is one job you should never do yourself.</p><p>The most exciting part is the sign. <b>Nadia</b> designed a logo on her tablet, and we are <b>having it printed</b> on metal so that it lasts for years. Next month we will <b>have photographs taken</b> for the school website.</p><p>What surprised us most was how much planning a small project needs. You cannot simply <b>have everything done</b> at once; you book each trade, wait, and pay. Still, seeing a tired old room transformed by so many skilled hands has taught us to respect the trades — and to value getting things done well.</p>",
-    "script": "For our Inspiring Nordic project, Grade 10 decided to bring an old school workshop back to life. None of us are professional builders, so the real lesson has been learning how to get things done. First, we had the walls repaired by a local mason. Then Sofía contacted a carpenter and we had ten workbenches made from recycled timber. Mateo painted the door himself, but we are getting the electrics checked by an electrician. Nadia designed a logo and we are having it printed on metal. Seeing a tired old room transformed by so many skilled hands has taught us to respect the trades.",
-    "questions": [
-     {
-      "q": "What did Grade 10 decide to do for the project?",
-      "options": [
-       "bring an old workshop back to life",
-       "build a brand-new school",
-       "close the old workshop"
-      ],
-      "answer": 0
+      "right": "a tradesperson's rough calculation of what a job will cost, given before work starts"
      },
      {
-      "q": "Who contacted a carpenter?",
-      "options": [
-       "Nadia",
-       "Mateo",
-       "Sofía"
-      ],
-      "answer": 2
+      "left": "repair",
+      "right": "to mend something that is broken or damaged"
      },
      {
-      "q": "What were the workbenches made from?",
-      "options": [
-       "plastic sheets",
-       "recycled timber",
-       "old glass"
-      ],
-      "answer": 1
+      "left": "quotation",
+      "right": "a written statement of the exact price a tradesperson will charge for a job"
      },
      {
-      "q": "Which job did the students not do themselves?",
-      "options": [
-       "checking the electrics",
-       "sanding the shelves",
-       "painting the door"
-      ],
-      "answer": 0
+      "left": "restore",
+      "right": "to return something old or damaged to its original condition"
      },
      {
-      "q": "What has the project taught the students?",
-      "options": [
-       "that planning is unnecessary",
-       "to respect the trades",
-       "to do every job alone"
-      ],
-      "answer": 1
+      "left": "upholster",
+      "right": "to cover the seat and back of a chair or sofa with fabric or padding"
      }
     ]
    }
   },
   {
    "code": "C",
-   "type": "grammar_box",
-   "title": "Grammar — The causative: have / get something done",
+   "type": "gapped_text",
+   "title": "Reading and Use of English Part 6 — gapped text. Choose the paragraph that fits each gap.",
    "outputs": [
     "book",
-    "digital",
-    "quiz"
+    "digital"
+   ],
+   "tips": {
+    "expect": "Reading and Use of English Part 6: one text of 500–650 words with six paragraphs removed and placed, in a different order, after the text, together with one extra paragraph that does not fit anywhere. You decide which paragraph fits each of the six gaps.",
+    "how": [
+     "Read the base text first, ignoring the gaps, to understand the overall story or argument.",
+     "Look for links just before and after each gap: pronouns (it, this, they), time expressions (by half term, that was only the beginning), and topic words that must match what comes next.",
+     "Check your choice by reading the gap together with the sentences BEFORE and AFTER it — a paragraph that fits grammatically may still break the flow of ideas."
+    ],
+    "remember": "One paragraph is a distractor and will not be used. If you have used the same letter twice, at least one of your answers must be wrong."
+   },
+   "data": {
+    "title": "How we built our workshop, one phone call at a time",
+    "text": "<p>When our class agreed to turn an unused storeroom into a proper woodworking workshop for the Inspiring Nordic project, none of us expected how many phone calls it would take. We had plenty of ideas and almost no practical skills, so from the very first week we learned to rely on other people's trades rather than our own.</p><p>{1}</p><p>That was only the beginning.</p><p>{2}</p><p>Meanwhile, not every job needed an outside expert.</p><p>{3}</p><p>The trickiest call, by far, concerned the wiring.</p><p>{4}</p><p>By half term, the room finally looked like a workshop rather than a storeroom.</p><p>{5}</p><p>Even so, a few things still needed attention.</p><p>{6}</p><p>Looking back, the workshop taught us something the timetable never could: that getting a job done well usually means knowing who to ask, not how to do it yourself.</p>",
+    "paragraphs": [
+     {
+      "letter": "A",
+      "text": "With solid walls at last, we turned our attention to furniture. None of us could build a proper workbench, so we asked a carpenter in town for a quotation. A week later we had six sturdy benches made from recycled timber, delivered on a trailer. Mateo says the smell of fresh sawdust is his favourite memory of the whole project."
+     },
+     {
+      "letter": "B",
+      "text": "Getting the electrics checked was far more serious. An old socket had been sparking for years, and nobody in our class was foolish enough to touch it. We had a qualified electrician inspect the whole room, and he insisted on replacing the wiring completely before any machinery could be plugged in. Safety, he told us, is never a job worth doing yourself."
+     },
+     {
+      "letter": "C",
+      "text": "One problem only appeared once the room was in daily use: a tap in the corner sink kept dripping. We reported the fault to the school caretaker, who agreed that it needed fixing rather than ignoring, and a plumber sorted it out within the week. It was a small job, but it taught us that even a finished project needs looking after."
+     },
+     {
+      "letter": "D",
+      "text": "A local mason came round on the very first Saturday. The old storeroom walls were cracked and damp in places, so we had them repaired and replastered before we could do anything else. It took him two days, and he charged less than we had feared once he saw how small the room was. Sofía kept a photo diary of the work, which later became part of our project report."
+     },
+     {
+      "letter": "E",
+      "text": "For the summer fair, the school also decided to hire a caterer instead of running the usual cake stall. A local company was commissioned to bring a small van and serve hot food to visiting families. It proved so popular that teachers are already asking whether it should become a yearly tradition rather than a one-off treat."
+     },
+     {
+      "letter": "F",
+      "text": "Painting the shelves, however, was something we could manage without professional help. Liam and Nadia spent an entire Wednesday afternoon sanding and repainting the old shelving units a cheerful blue, and Miss Vega let us skip half of double Maths to finish the job. It was hard work, but at least it didn't cost the project a penny."
+     },
+     {
+      "letter": "G",
+      "text": "The final touch was the sign above the door. Nadia designed a logo on her tablet, and we had it engraved on a sheet of metal by a signwriter who usually works for local shops. By half term it was fixed proudly to the wall, and visitors finally knew, without asking, what the room was for."
+     }
+    ],
+    "answers": [
+     "D",
+     "A",
+     "F",
+     "B",
+     "G",
+     "C"
+    ]
+   }
+  },
+  {
+   "code": "D",
+   "type": "grammar_box",
+   "title": "Language focus 1 — the causative: have/get something done",
+   "outputs": [
+    "book",
+    "digital"
    ],
    "data": {
-    "title": "The causative: have / get something done",
-    "intro": "We use the causative when we arrange for someone else to do something for us. The structure is have/get + object + past participle.",
+    "title": "The causative: have/get something done (and have someone do something)",
+    "can": "I can use have/get + object + past participle to talk about work I arrange for someone else, and have + person + base form to say exactly who does it.",
+    "intro": "In this unit's reading, the students didn't do most of the work themselves — they arranged for other people to do it. English has two related structures for this: <i>have/get something done</i>, when we focus on the job, and <i>have someone do something</i>, when we focus on the person who does it.",
     "examples": [
      {
-      "text": "We <b>had the workbenches made</b> from recycled timber.",
-      "note": "arranged by a carpenter"
+      "text": "We <b>had the walls repaired</b> by a local mason.",
+      "note": "have + object + past participle = we arranged it, we didn't do it"
      },
      {
-      "text": "We are <b>getting the electrics checked</b> this week.",
-      "note": "get is more informal than have"
+      "text": "We're <b>getting the electrics checked</b> this week.",
+      "note": "get is a little more informal than have"
      },
      {
-      "text": "Nadia <b>had her logo printed</b> on metal.",
-      "note": "object + past participle"
+      "text": "We <b>had an electrician inspect</b> the whole room.",
+      "note": "have + person + base form (no 'to') = names who does the job"
      },
      {
-      "text": "We will <b>have photographs taken</b> for the website.",
-      "note": "we don't take them ourselves"
+      "text": "Can you <b>get the carpenter to deliver</b> the benches on Friday?",
+      "note": "get + person + to + infinitive = informal version of 'have someone do'"
+     },
+     {
+      "text": "I <b>had my hair cut</b> yesterday.",
+      "note": "an everyday, personal example — not always about tradespeople"
      }
     ],
     "rules": [
-     "Structure: <b>have/get</b> + object + <b>past participle</b> (We had the room painted).",
-     "It shows that someone else did the work for us, not us.",
-     "<b>Get</b> is a little more informal than <b>have</b>, but the meaning is the same."
+     "<b>Have/get</b> + object + <b>past participle</b>: someone else does the action FOR us. Focus is on the result: <i>We had the sign made.</i>",
+     "<b>Have</b> + person + <b>base form</b> (no 'to'): names WHO does it. It sounds a little more like an instruction: <i>We had an electrician inspect the wiring.</i>",
+     "<b>Get</b> + person + <b>to</b> + infinitive is the informal equivalent of 'have + person + base form': <i>We got the electrician to inspect the wiring.</i>",
+     "Do NOT say 'get someone do something' — with <i>get</i>, the infinitive needs 'to'.",
+     "<i>Get</i> (rather than <i>have</i>) is usual when the job needs some persuading or arranging: <i>Can you get him to hurry up?</i>"
     ],
     "practice": {
      "instructions": "Choose the correct form.",
      "items": [
       {
-       "sentence": "We ___ the walls painted by a professional.",
+       "sentence": "We ___ our bike repaired at the shop yesterday.",
        "options": [
-        "have paint",
-        "painted",
-        "had"
-       ],
-       "answer": 2
-      },
-      {
-       "sentence": "She is getting her bike ___ at the shop.",
-       "options": [
-        "to repair",
-        "repair",
-        "repaired"
-       ],
-       "answer": 2
-      },
-      {
-       "sentence": "They had the photos ___ last month.",
-       "options": [
-        "taken",
-        "take",
-        "took"
+        "had",
+        "did have",
+        "were had"
        ],
        "answer": 0
       },
       {
-       "sentence": "We need to ___ the heater checked before winter.",
+       "sentence": "Can you get someone ___ the shelves before Friday?",
        "options": [
-        "getting",
+        "paint",
+        "to paint",
+        "painting"
+       ],
+       "answer": 1
+      },
+      {
+       "sentence": "We had an electrician ___ the wiring properly.",
+       "options": [
+        "inspected",
+        "to inspect",
+        "inspect"
+       ],
+       "answer": 2
+      },
+      {
+       "sentence": "Nadia ___ her logo printed on metal last week.",
+       "options": [
+        "had",
+        "having",
+        "have"
+       ],
+       "answer": 0
+      },
+      {
+       "sentence": "We're ___ the electrics checked this week.",
+       "options": [
         "get",
+        "getting",
         "got"
        ],
        "answer": 1
       },
       {
-       "sentence": "He had his hair ___ yesterday.",
+       "sentence": "I ___ my photos taken by a professional for the brochure.",
        "options": [
-        "cut",
-        "cutting",
-        "to cut"
+        "was had",
+        "were had",
+        "had"
        ],
-       "answer": 0
+       "answer": 2
       }
      ]
     }
    }
   },
   {
-   "code": "D",
-   "type": "key_transform",
-   "title": "Use of English Part 4 — key word transformations",
-   "outputs": [
-    "book",
-    "digital",
-    "quiz"
-   ],
-   "data": {
-    "instructions": "Complete the second sentence so that it means the same as the first. Use the KEY WORD. Write between two and five words.",
-    "items": [
-     {
-      "first": "A carpenter made our workbenches for us.",
-      "key": "HAD",
-      "second_start": "We",
-      "second_end": "by a carpenter.",
-      "answers": [
-       "had our workbenches made"
-      ]
-     },
-     {
-      "first": "An electrician is checking our wiring at the moment.",
-      "key": "GETTING",
-      "second_start": "We are",
-      "second_end": "at the moment.",
-      "answers": [
-       "getting our wiring checked"
-      ]
-     },
-     {
-      "first": "Someone printed Nadia's logo on metal.",
-      "key": "HAD",
-      "second_start": "Nadia",
-      "second_end": "on metal.",
-      "answers": [
-       "had her logo printed"
-      ]
-     },
-     {
-      "first": "A photographer will take our photos next month.",
-      "key": "HAVE",
-      "second_start": "We will",
-      "second_end": "next month.",
-      "answers": [
-       "have our photos taken"
-      ]
-     },
-     {
-      "first": "A mason repaired the school walls.",
-      "key": "GOT",
-      "second_start": "The school",
-      "second_end": "by a mason.",
-      "answers": [
-       "got its walls repaired"
-      ]
-     }
-    ]
-   }
-  },
-  {
    "code": "E",
    "type": "gap_text",
-   "title": "Use of English Part 2 — open cloze. Write ONE word in each gap.",
+   "title": "Reading and Use of English Part 2 — open cloze. Write ONE word in each gap.",
    "outputs": [
-    "book",
-    "digital",
-    "quiz"
+    "digital"
    ],
-   "data": {
-    "box": [
-     "had",
-     "done",
-     "were",
-     "made",
-     "being",
-     "have"
+   "tips": {
+    "expect": "Reading and Use of English Part 2: a short text of 150–200 words with eight gaps. You write ONE word in each gap — no options are given. Most answers are grammatical words: prepositions, articles, pronouns, auxiliaries, conjunctions and relative words.",
+    "how": [
+     "Read the whole text first before filling any gap — later sentences often make an earlier gap obvious.",
+     "Look at the words immediately before and after the gap: does a verb need a particular preposition? Does a clause need a relative pronoun?",
+     "Write only one word per gap, and check your spelling carefully."
     ],
-    "text": "Last term we {1} the old workshop refurbished by local experts. We didn't do the work ourselves; instead, we had it {2} for us. First, the walls {3} repaired, and then we got new benches {4}. The sign is {5} printed on metal right now. By June, we will {6} everything finished.",
+    "remember": "Contractions are not accepted, and a correct word spelt wrongly scores nothing."
+   },
+   "data": {
+    "text": "Before you have any work done on your home, it pays to plan carefully. First, ask {1} least three tradespeople for a quotation, {2} that you can compare prices fairly. Never assume that the cheapest quote is the best value: a professional {3} charges slightly more may finish the job faster and to a higher standard. Once you have chosen someone, ask for references from previous customers and, {4} possible, look at photographs of finished work. A trusted recommendation can save you both time and money. {5} soon as the job begins, keep a written record of {6} was agreed, including dates and costs, so that any disagreement can be settled quickly. Good communication protects both sides: the customer gets the work {7} wanted, and the tradesperson is paid on time and without argument. Finally, remember that a fair price does not always mean the lowest one. It is often worth paying a little more for craftsmanship that will last for years rather {8} having the same job done twice.",
     "answers": [
-     "had",
-     "done",
-     "were",
-     "made",
-     "being",
-     "have"
+     "at",
+     "so",
+     "who",
+     "if",
+     "As",
+     "what",
+     "they",
+     "than"
     ]
    }
   },
   {
    "code": "F",
-   "type": "listening",
-   "title": "Listening — the workshop plan. Write ONE word in each gap.",
+   "type": "listening_mc",
+   "title": "Listening Part 1 — eight short extracts. Choose the best answer for each.",
    "outputs": [
-    "digital",
-    "quiz"
+    "digital"
    ],
    "audio": "b2f/u02-f.mp3",
+   "tips": {
+    "expect": "Listening Part 1: eight short, unrelated extracts (monologues or conversations between two speakers). For each one you answer a single three-option multiple-choice question about gist, detail, function, opinion or attitude. You hear each extract twice.",
+    "how": [
+     "Before each extract plays, read its question and three options quickly so you know exactly what to listen for.",
+     "The correct answer is often a paraphrase of what you hear, not the exact words — be careful of an option that repeats a word from the recording but changes its meaning.",
+     "If you are not sure after the first listening, choose your best guess and use the second listening to confirm or change it."
+    ],
+    "remember": "Never leave an answer blank — an educated guess has a one-in-three chance; a blank has none."
+   },
    "data": {
-    "voice_note": "Voz: el profesor de proyecto (Mr. Vega), organizando el taller.",
-    "script": "Good morning, everyone. Great progress on the workshop this week. On Monday we had the floor repaired, and it looks fantastic. Tomorrow we are getting the windows cleaned by a professional, so please keep the room tidy. Remember, we are not painting the shelves ourselves; Sofía has arranged to have that done by an expert. On Friday we will have our project photos taken for the website. Finally, don't forget to get your reports finished before the holiday. Well done, team — the trades are teaching us a lot.",
-    "questions": [
+    "voice_note": "Varias voces distintas (hombres y mujeres) en ocho extractos breves e independientes: conversaciones, un mensaje de voz y un anuncio, todos sobre encargar y hablar de trabajos y servicios.",
+    "script": "Extract 1:\nWoman: You still riding that bike with the wobbly wheel, or did you finally get it looked at?\nMan: I took it to the shop on the corner last week, actually. They said the wheel wasn't even worth repairing — I'd be better off getting a new one.\nWoman: So what did you do?\nMan: I had them fit a secondhand wheel instead. Cost me almost nothing, and honestly, it rides better now than it ever did before.\nWoman: Good for you — mine's been making a strange clicking noise for weeks.\n[pause]\nExtract 2:\nClaire: Hi, it's Claire Dunmore here, from Flat 3. I left a message on Monday about the leak under the kitchen sink, but nobody's called back yet. It's getting worse, and I really need someone to come and have a look before the weekend, if that's at all possible. I'll be in most evenings after six, or you can try my mobile during the day. Please let me know when you can fit me in — thanks.\n[pause]\nExtract 3:\nAnnouncer: Is your kitchen looking a little tired? At Hollis Decorating, we don't just paint walls — we transform rooms, and we always finish on the day we promise. Every job comes with a free, no-obligation quotation, and all our painters are fully insured and DBS-checked. Call us this month and get your hallway decorated absolutely free when you book any two other rooms. Hollis Decorating: getting it done properly, the first time.\n[pause]\nExtract 4:\nMan: Have you seen the quote for repainting reception? It's almost double what we paid last time.\nWoman: I know, but the company we used before went out of business, remember? This lot came highly recommended, though — Sam had his whole flat done by them.\nMan: Fair enough. As long as they don't leave it looking like a building site for a fortnight, I'm not going to argue about the price.\nWoman: Just don't let them start until after half term, whatever you do.\n[pause]\nExtract 5:\nCustomer: I brought my laptop in three weeks ago to have the screen replaced, and it's still not ready.\nAssistant: I do apologise. Let me check... ah, I see the part that was ordered arrived damaged, so we had to send off for another one.\nCustomer: Nobody told me that. I've been calling every few days for an update.\nAssistant: You're quite right, and I'm sorry. We'll also take ten per cent off the final bill for the inconvenience.\n[pause]\nExtract 6:\nTeacher: Have the posters for the exhibition come back from the printers yet?\nStudent: Not yet, Miss. They said Thursday, but the sizes we asked for meant they had to order special paper first.\nTeacher: As long as they're ready before Saturday morning, we'll be fine.\nStudent: That's what they promised. I rang this morning just to check, and they confirmed everything's on schedule.\nTeacher: Good. Let the others know, so nobody panics if the posters aren't here by Friday.\n[pause]\nExtract 7:\nDanny: Hello, this is Danny from Fenwick Building Services, returning your call about the garden wall. I've had a look at the photos you sent, and I reckon it's about a three-day job, materials included. I'll pop round on Thursday afternoon if that suits, just to measure up properly before I give you a final figure — the price I mentioned is only a rough estimate at this stage. Give me a ring if Thursday's no good.\n[pause]\nExtract 8:\nWoman: You had your fence done in the end, then? It looks great.\nMan: Thanks — we got a local carpenter to build it rather than buying one of those flat-pack ones. Took him longer than he'd said, mind you, nearly two weeks instead of five days.\nWoman: Did he have to order any special wood for it?\nMan: Just a bit, yes, which is partly why it took longer.\nWoman: Still, good things come to those who wait, as they say.",
+    "extracts": [
      {
-      "q": "On Monday they had the floor …",
-      "answer": "repaired"
+      "title": "Extract 1",
+      "intro": "You hear two friends talking about a bicycle.",
+      "questions": [
+       {
+        "q": "What does the man say about the bicycle shop?",
+        "options": [
+         "They refused to do the repair.",
+         "They suggested a cheaper solution than a new wheel.",
+         "They charged him more than he expected."
+        ],
+        "answer": 1
+       }
+      ]
      },
      {
-      "q": "Tomorrow they are getting the windows …",
-      "answer": "cleaned"
+      "title": "Extract 2",
+      "intro": "You hear a woman leaving a message for a plumber.",
+      "questions": [
+       {
+        "q": "Why is the woman calling?",
+        "options": [
+         "To follow up on a message that got no reply.",
+         "To cancel an appointment she had booked.",
+         "To complain about a job that was done badly."
+        ],
+        "answer": 0
+       }
+      ]
      },
      {
-      "q": "Sofía arranged to have the shelves painted by an …",
-      "answer": "expert"
+      "title": "Extract 3",
+      "intro": "You hear an advertisement on local radio.",
+      "questions": [
+       {
+        "q": "What is being offered to new customers this month?",
+        "options": [
+         "A discount on painting materials.",
+         "A guarantee on all future repairs.",
+         "A free room when you book two others."
+        ],
+        "answer": 2
+       }
+      ]
      },
      {
-      "q": "On Friday they will have their project photos …",
-      "answer": "taken"
+      "title": "Extract 4",
+      "intro": "You hear two colleagues talking about their office.",
+      "questions": [
+       {
+        "q": "What does the man decide about the more expensive company?",
+        "options": [
+         "He accepts the price as long as the work is quick.",
+         "He refuses to use them because of the cost.",
+         "He wants to get a third quotation first."
+        ],
+        "answer": 0
+       }
+      ]
      },
      {
-      "q": "Students must get their reports … before the holiday.",
-      "answer": "finished"
+      "title": "Extract 5",
+      "intro": "You hear a customer talking to a shop assistant.",
+      "questions": [
+       {
+        "q": "What is the customer's main complaint?",
+        "options": [
+         "The repair was more expensive than promised.",
+         "The wrong part was fitted to the laptop.",
+         "Nobody kept her informed about the delay."
+        ],
+        "answer": 2
+       }
+      ]
+     },
+     {
+      "title": "Extract 6",
+      "intro": "You hear a teacher and a student talking about a school project.",
+      "questions": [
+       {
+        "q": "Why has the printing taken longer than expected?",
+        "options": [
+         "The printers made a mistake with the design.",
+         "The student forgot to confirm the order.",
+         "Special paper had to be ordered."
+        ],
+        "answer": 2
+       }
+      ]
+     },
+     {
+      "title": "Extract 7",
+      "intro": "You hear a builder leaving a voicemail message.",
+      "questions": [
+       {
+        "q": "What does Danny want to do on Thursday?",
+        "options": [
+         "To take exact measurements before quoting a final price.",
+         "To start work on the wall.",
+         "To collect payment for materials."
+        ],
+        "answer": 0
+       }
+      ]
+     },
+     {
+      "title": "Extract 8",
+      "intro": "You hear two neighbours talking about a garden fence.",
+      "questions": [
+       {
+        "q": "What does the man say about the carpenter's work?",
+        "options": [
+         "It cost less than a flat-pack fence.",
+         "It took longer than originally planned.",
+         "It needs to be replaced already."
+        ],
+        "answer": 1
+       }
+      ]
      }
     ]
    }
   },
   {
    "code": "G",
-   "type": "pairwork",
-   "title": "Speaking — services and arrangements. In pairs, then record it.",
+   "type": "grammar_box",
+   "title": "Language focus 2 — describing problems and services",
    "outputs": [
     "book",
     "digital"
    ],
    "data": {
-    "text": "In pairs, talk about jobs you would rather have done for you. Model: “I would rather have my photos taken by a professional than take them myself.” 1) What is one thing at home you should get repaired soon? 2) Would you rather cut your own hair or have it cut, and why? 3) For a school event, what jobs would you have done by experts, and what would you do yourselves? Give reasons and examples, then record your discussion."
+    "title": "Describing problems and services: needs + -ing, should have been done, reporting faults",
+    "can": "I can say that something needs attention using needs/wants + -ing, criticise a past action with should/shouldn't have been done, and use the passive to report a fault.",
+    "intro": "Once work has been arranged, we often need to describe what still needs doing, or complain politely about what should — or shouldn't — have happened. These structures are close cousins of the causative and are essential for writing about services and complaints.",
+    "examples": [
+     {
+      "text": "That tap <b>needs fixing</b> — it's been dripping for a week.",
+      "note": "needs + -ing = needs to be fixed (active form, passive meaning)"
+     },
+     {
+      "text": "This form <b>needs to be signed</b> before Friday.",
+      "note": "needs + to be + past participle = same meaning, more formal"
+     },
+     {
+      "text": "The wiring <b>should have been checked</b> years ago.",
+      "note": "should have been + past participle = criticising something that didn't happen but should have"
+     },
+     {
+      "text": "That shelf <b>shouldn't have been painted</b> before the plaster had dried.",
+      "note": "shouldn't have been + past participle = it happened, but it was wrong"
+     },
+     {
+      "text": "Any faults <b>must be reported</b> to the caretaker immediately.",
+      "note": "passive for official rules and procedures"
+     }
+    ],
+    "rules": [
+     "<b>Needs/wants</b> + verb-<b>ing</b> is an informal way of saying something needs to be done: <i>The door needs painting.</i>",
+     "<b>Needs/wants</b> + to be + past participle means exactly the same, and is a little more formal or explicit: <i>The door needs to be painted.</i>",
+     "<b>Should/shouldn't + have been</b> + past participle criticises a past action or a past omission — it did or didn't happen, and it was wrong.",
+     "Use the ordinary passive (is/was/has been + past participle) to describe official processes, rules or reporting faults, especially when who does it is unknown or unimportant.",
+     "These structures combine naturally with the causative: <i>We had it fixed because it needed fixing.</i>"
+    ],
+    "practice": {
+     "instructions": "Choose the correct form.",
+     "items": [
+      {
+       "sentence": "The window is broken; it ___ mending as soon as possible.",
+       "options": [
+        "is needing",
+        "needs",
+        "need"
+       ],
+       "answer": 1
+      },
+      {
+       "sentence": "The electrics ___ checked years ago, but nobody ever called anyone.",
+       "options": [
+        "should be",
+        "should having been",
+        "should have been"
+       ],
+       "answer": 2
+      },
+      {
+       "sentence": "All faults ___ to the school office, not left for someone else to notice.",
+       "options": [
+        "must be reported",
+        "must report",
+        "must reporting"
+       ],
+       "answer": 0
+      },
+      {
+       "sentence": "Honestly, that shelf ___ before the exhibition — now it's too late.",
+       "options": [
+        "should painted",
+        "should be painted",
+        "should have been painted"
+       ],
+       "answer": 2
+      },
+      {
+       "sentence": "The invoice for the workbenches ___ yet; we're still waiting for it.",
+       "options": [
+        "hasn't been sent",
+        "wasn't sending",
+        "hasn't sent"
+       ],
+       "answer": 0
+      },
+      {
+       "sentence": "Don't worry about the door — it only ___ a little oil on the hinges.",
+       "options": [
+        "need",
+        "needs",
+        "needing"
+       ],
+       "answer": 1
+      }
+     ]
+    }
+   }
+  },
+  {
+   "code": "H",
+   "type": "mc_cloze",
+   "title": "Reading and Use of English Part 1 — multiple-choice cloze. Choose the best word for each gap.",
+   "outputs": [
+    "digital"
+   ],
+   "tips": {
+    "expect": "Reading and Use of English Part 1: a short text of 150–200 words with eight gaps, each followed by four options. The options are usually close in meaning, and you choose the one that fits the exact word or phrase used around the gap — often a collocation, a phrasal verb or a fixed expression.",
+    "how": [
+     "Read the whole text first to understand the topic before choosing any answer.",
+     "For each gap, check which option forms a natural collocation or fixed phrase with the words around it — the other three often make sense in isolation but not in that exact combination.",
+     "If two options seem possible, check the grammar around the gap: does the verb need a preposition that only one option takes?"
+    ],
+    "remember": "This part tests vocabulary, not grammar — all four options are usually the same part of speech."
+   },
+   "data": {
+    "title": "Calling in the professionals",
+    "text": "When something goes wrong at home, it is tempting to {1} the job yourself rather than pay a professional. Sometimes that saves money; more often, it ends up {2} more than it would have cost in the first place. Before you {3} a builder, decorator or electrician, it is worth asking friends and family for a personal {4}, since word of mouth is usually more reliable than an online review. A trusted recommendation can save you both time and money. Once you have a shortlist, {5} in touch with at least two tradespeople for a quotation. Never agree to anything on the {6} of a phone call alone. A good tradesperson will not mind you asking questions, and will happily {7} you through exactly what the job involves. Finally, resist the temptation to {8} the cheapest option without checking their previous work — a bargain price is no bargain at all if the job has to be done twice.",
+    "items": [
+     {
+      "options": [
+       "tackle",
+       "achieve",
+       "reach",
+       "succeed"
+      ],
+      "answer": 0
+     },
+     {
+      "options": [
+       "spending",
+       "costing",
+       "paying",
+       "charging"
+      ],
+      "answer": 1
+     },
+     {
+      "options": [
+       "rent",
+       "lend",
+       "hire",
+       "loan"
+      ],
+      "answer": 2
+     },
+     {
+      "options": [
+       "information",
+       "description",
+       "direction",
+       "recommendation"
+      ],
+      "answer": 3
+     },
+     {
+      "options": [
+       "get",
+       "make",
+       "take",
+       "keep"
+      ],
+      "answer": 0
+     },
+     {
+      "options": [
+       "ground",
+       "basis",
+       "reason",
+       "cause"
+      ],
+      "answer": 1
+     },
+     {
+      "options": [
+       "explain",
+       "describe",
+       "talk",
+       "tell"
+      ],
+      "answer": 2
+     },
+     {
+      "options": [
+       "opt",
+       "selection",
+       "preferable",
+       "choose"
+      ],
+      "answer": 3
+     }
+    ]
+   }
+  },
+  {
+   "code": "I",
+   "type": "writing",
+   "title": "Writing Part 2 — email. Plan, write 140–190 words and hand it in.",
+   "outputs": [
+    "digital"
+   ],
+   "tips": {
+    "expect": "Part 2 offers you a choice of tasks — an article, an email/letter or a review. An email or letter usually responds to a situation with notes or a previous message, and asks you to cover two or three specific points. 140–190 words, in a style appropriate to the person you are writing to.",
+    "how": [
+     "Read the input carefully and note exactly which points you must cover — missing one loses marks even if your English is excellent.",
+     "Match your style to the person you are writing to: neutral or semi-formal for someone you don't know well, like a company manager.",
+     "Organise your email logically: one clear idea per paragraph, with a greeting and a suitable closing."
+    ],
+    "remember": "You are marked on content, communicative achievement, organisation and language — covering all the points matters as much as accurate grammar."
+   },
+   "data": {
+    "part": 2,
+    "genre": "email",
+    "words": [
+     140,
+     190
+    ],
+    "task": "<p>You recently had some building work done at a community club where you help out, but there have been some problems. Read part of an email from Mr Hart, the manager of the company that did the work, and the notes you have made.</p><blockquote><p><i>“…I understand there were some issues with the work our team carried out last week. Please let me know exactly what happened, and what you would like us to do about it, so we can put things right.”</i></p><ul><li>which job wasn't finished properly</li><li>a problem that needs fixing urgently</li><li>what you want the company to do next</li></ul></blockquote><p>Write an <b>email</b> to Mr Hart. Write <b>140–190 words</b> in an appropriate style.</p>",
+    "plan": [
+     "<b>Opening</b>: thank him for his email and say you will explain what happened.",
+     "<b>Paragraph 2</b>: name the job that wasn't finished properly, with one concrete detail.",
+     "<b>Paragraph 3</b>: describe the urgent problem clearly and why it matters.",
+     "<b>Closing</b>: say exactly what you want the company to do next, and end politely."
+    ],
+    "useful_language": {
+     "Opening and referring back": [
+      "Thank you for your email...",
+      "I am writing to explain exactly what happened."
+     ],
+     "Describing a problem": [
+      "Unfortunately, the... was never finished.",
+      "It clearly needs looking at as soon as possible.",
+      "The main problem is that..."
+     ],
+     "Making a request": [
+      "I would be grateful if you could...",
+      "What we would like is for someone to...",
+      "Could you possibly arrange for...?"
+     ],
+     "Closing": [
+      "I look forward to hearing from you.",
+      "Please let me know as soon as possible.",
+      "Thank you for your help with this."
+     ]
+    },
+    "checklist": [
+     "I have referred to Mr Hart's email at the start.",
+     "I have named the job that wasn't finished properly.",
+     "I have explained the urgent problem clearly.",
+     "I have said exactly what I want the company to do next.",
+     "The register is semi-formal throughout: no slang, but not stiffly formal either.",
+     "Between 140 and 190 words."
+    ],
+    "model": "<p><i>A model answer (150 words).</i></p><p>Dear Mr Hart,</p><p>Thank you for getting in touch so quickly. I am happy to explain exactly what happened last week.</p><p>The main problem is that the shelving in the storeroom was never finished. Your team fitted two of the three units, but left before completing the last one, so we still cannot use that part of the room properly.</p><p>More urgently, one of the electrical sockets your electrician installed on Tuesday has started sparking whenever anyone switches it on. We have taped over it and stopped using it, but it clearly needs looking at as soon as possible, since children use the club every afternoon.</p><p>I would be grateful if you could send someone to finish the shelving and check the faulty socket this week, if at all possible. We would also appreciate written confirmation once both jobs have been completed.</p><p>Thank you for your help with this.</p><p>Best wishes,<br>Nadia</p>"
+   }
+  },
+  {
+   "code": "J",
+   "type": "pairwork",
+   "title": "Speaking — Parts 3 and 4. Collaborative task and discussion. Record your best answer.",
+   "outputs": [
+    "book",
+    "digital"
+   ],
+   "speaking": {
+    "part": 3,
+    "name": "Collaborative task and discussion"
+   },
+   "tips": {
+    "expect": "Part 3 (about 3 minutes): you and your partner discuss a question together, using five written prompts arranged around it, then spend about a minute reaching a decision. Part 4 (about 4 minutes): the examiner asks you both further, more general questions on the same topic.",
+    "how": [
+     "In Part 3 you are marked on how well you interact, not on whether you agree — ask your partner's opinion, respond to it, and build on what they say.",
+     "Do not try to discuss all five prompts in detail; two or three explored properly is better than five rushed ones.",
+     "In the decision minute, negotiate rather than simply stating your own view: <i>Shall we agree that...? I could go along with that, as long as...</i>",
+     "In Part 4, develop each answer with a reason and an example, not just a one-line opinion."
+    ],
+    "remember": "You do not have to complete Part 3's discussion of all five prompts, and you are not marked on whether you and your partner agree — only on how well you interact."
+   },
+   "data": {
+    "text": "Part 3: discuss how these jobs might push someone to call in a professional, and decide which absolutely must be done by an expert. Part 4: discuss practical skills, cost and knowing when to ask for help.",
+    "parts": [
+     {
+      "part": 3,
+      "title": "Collaborative task",
+      "time": "2 min + 1 min",
+      "intro": "Here are some jobs that people sometimes do themselves or have done by a professional. Talk to each other about <b>which of these you would rather have done for you</b>.",
+      "centre": "Which of these would you rather have done by a professional?",
+      "spokes": [
+       "fixing a leaking tap",
+       "painting a bedroom",
+       "repairing a bicycle",
+       "designing a website",
+       "cutting your own hair"
+      ],
+      "decide": "Now you have a minute to decide <b>which of these absolutely must be done by a professional, whatever the cost</b>."
+     },
+     {
+      "part": 4,
+      "title": "Further discussion",
+      "time": "4 min",
+      "prompts": [
+       "Do you think young people today know less about practical skills, like fixing things, than their grandparents did? Why?",
+       "Is it becoming more or less expensive to get things repaired rather than simply replaced? What effect does this have?",
+       "Should schools teach practical skills such as basic repairs and DIY? Why or why not?",
+       "What kind of jobs do you think will always need a human tradesperson rather than a machine?",
+       "How do you decide whether to do a job yourself or pay someone else to do it?"
+      ]
+     }
+    ],
+    "useful_language": {
+     "Involving your partner": [
+      "What's your take on...?",
+      "Would you go along with that?",
+      "You've got a point, but...",
+      "That's true up to a point, although..."
+     ],
+     "Building on an idea": [
+      "Following on from what you said...",
+      "And that ties in with...",
+      "Not only that, but..."
+     ],
+     "Reaching a decision": [
+      "Shall we settle on...?",
+      "I'd be inclined to go for..., on the grounds that...",
+      "We could agree to differ, but if we had to choose..."
+     ],
+     "Part 4: developing an answer": [
+      "It very much depends on...",
+      "There's a strong case for saying...",
+      "It's not always as simple as..."
+     ]
+    }
    }
   }
  ],
  "homework": [
   {
    "type": "write_sentences",
-   "prompt": "Write a short project update (8–10 sentences) about a room you would like to transform. Use at least four causative structures with have/get something done (e.g. 'We are having the walls painted' / 'We had new shelves made'). Explain who does each job and why. Capital letters and full stops!"
+   "prompt": "Write a short email (10–12 sentences) to a friend about a job you are having done at home or at school. Use at least three causative structures (have/get something done) and two structures from Language Focus 2 (needs + -ing, should have been done, or a passive for reporting a fault). Capital letters and full stops!"
   }
  ],
  "scope": {
@@ -374,23 +853,23 @@
   "outcomes": [
    {
     "destreza": "Listening",
-    "puede": "Follow instructions about a practical project and note key details (B2 First Listening)."
+    "puede": "Understand eight short, independent extracts about everyday services and repairs, and answer one three-option question about each (B2 First Listening Part 1)."
    },
    {
     "destreza": "Speaking",
-    "puede": "Discuss services and arrangements using the causative and giving reasons (B2 First Speaking)."
+    "puede": "Compare photographs, discuss arranging jobs and services with a partner, negotiate a decision and answer wider questions, using the causative (B2 First Speaking Parts 1–4)."
    },
    {
     "destreza": "Reading",
-    "puede": "Read a project report and identify who does what (B2 First Reading)."
+    "puede": "Read a project diary of 500–650 words and restore six missing paragraphs to their correct place in the text (B2 First Reading Part 6, gapped text)."
    },
    {
     "destreza": "Writing",
-    "puede": "Write a project update using the causative to describe arranged work."
+    "puede": "Plan and write a 140–190-word semi-formal email explaining a problem with a service and saying what should be done about it (B2 First Writing Part 2)."
    },
    {
     "destreza": "Use of English",
-    "puede": "The causative have/get something done; open cloze (Part 2)."
+    "puede": "The causative have/get something done and have someone do something; needs + -ing and should have been done for describing problems; multiple-choice cloze (Part 1) and open cloze (Part 2)."
    }
   ],
   "vocabulario": [
@@ -402,14 +881,12 @@
    "estimate"
   ],
   "gramatica": [
-   "The causative: have/get something done",
-   "Open cloze (Part 2)"
+   "The causative: have/get something done (and have someone do something)",
+   "Describing problems: needs + -ing, should have been done, reporting faults",
+   "Multiple-choice cloze (Part 1)",
+   "Open cloze (Part 2)",
+   "Gapped text (Part 6)"
   ],
   "pendiente": {}
- },
- "wordlist_extra": [
-  "tradesperson",
-  "contractor",
-  "invoice"
- ]
+ }
 }

@@ -163,7 +163,8 @@ def revisa(u, act, nivel):
         parts = d.get('parts')
         if parts:
             for p in parts:
-                if p.get('part') == 2 and len(p.get('pictures', [])) != 3: grave(u, tag, 'Part 2 sin tres fotos')
+                need_pics = 2 if nivel == 'b2f' else 3
+                if p.get('part') == 2 and len(p.get('pictures', [])) != need_pics: grave(u, tag, 'Part 2 sin %d fotos' % need_pics)
                 if p.get('part') == 3 and len(p.get('spokes', [])) != 5: grave(u, tag, 'Part 3 sin cinco ideas')
                 if p.get('part') in (1, 4) and len(p.get('prompts', [])) < 3: grave(u, tag, f'Part {p.get("part")} con menos de 3 preguntas')
         elif not d.get('text'): grave(u, tag, 'pairwork sin texto')
@@ -201,7 +202,7 @@ def unidad(path):
     if len(set(codes)) != len(codes): grave(u, '-', 'códigos de actividad repetidos')
     if codes != sorted(codes): aviso(u, '-', 'las actividades no van en orden de letra')
     tipos = Counter(a.get('type') for a in U.get('activities', []))
-    if nivel == 'c1a':
+    if nivel in ('c1a', 'b2f'):
         for need in ('writing', 'pairwork'):
             if not tipos.get(need): grave(u, '-', f'la unidad no tiene {need}')
         if not any(tipos.get(t) for t in ('reading', 'gapped_text', 'multiple_matching')): grave(u, '-', 'sin tarea de Reading')

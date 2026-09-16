@@ -15,24 +15,101 @@
   "standpoint",
   "persuasive",
   "articulate",
-  "confidence"
+  "stance"
+ ],
+ "wordlist_extra": [
+  "interruption",
+  "turn-taking",
+  "summarise"
  ],
  "exam_focus": {
-  "paper": "Speaking",
-  "part": 4,
-  "skill": "discussion"
+  "paper": "Reading & Use of English",
+  "part": 7,
+  "skill": "multiple matching"
  },
  "characters": [
   "nova"
  ],
  "scene": {
   "speaker": "nova",
-  "bubble": "The final debate! Reflect on the year, learn discourse markers for debating, and speak with confidence.",
-  "intro": "Welcome to Unit 6, the finale of Inspiring Nordic. The class holds a formal debate and looks back on a year of growth. In this unit you read about our closing debate, you learn discourse markers that make a discussion flow (on balance, having said that, all in all), and you prepare for Speaking Part 4. This year gave us a voice — let's use it well."
+  "bubble": "The final debate of the year! Let's use everything we've learned — grammar and courage together — to make our voices heard.",
+  "intro": "Welcome to the last unit of B2 First, Grade Ten. The Inspiring Nordic — Trades project closes with Sofía, Mateo, Liam and Nadia holding a formal class debate, and this unit gets you ready for it. You will learn discourse markers for debating — having said that, on balance, all in all, to be honest, the way I see it — and see how this year's grammar, mixed conditionals, the causative and relative clauses, can make an argument sound more convincing. You will read five short opinions in the format of Reading Part 7, listen to an interview about the debate in the format of Listening Part 4, complete a word formation task and key word transformations, and write a review of a debate, a talk or a podcast. One year of English, one voice. Let's use it well."
  },
  "activities": [
   {
    "code": "A",
+   "type": "pairwork",
+   "title": "Speaking — Parts 1 and 2. Talk with a partner, then record yourself.",
+   "outputs": [
+    "book",
+    "digital"
+   ],
+   "speaking": {
+    "part": 2,
+    "name": "Interview and long turn"
+   },
+   "tips": {
+    "expect": "Part 1 (2 minutes): the examiner asks you and your partner questions about yourselves — studies, opinions, free time. Part 2 (about 4 minutes): you talk alone for 1 minute about two of three photographs, answering the question printed above them; then your partner answers a brief question about your photographs (about 30 seconds).",
+    "how": [
+     "In Part 1, give a reason or an example, not just a one-word answer — but do not turn it into a speech.",
+     "In Part 2, do not simply describe the photographs. Compare them and answer the question: speculate (<i>they might be…, perhaps she's hoping to…</i>) and give your opinion.",
+     "Keep talking for the full minute. If you run out of things to say about one photograph, move to the other."
+    ]
+   },
+   "data": {
+    "text": "Part 1: talk about opinions, discussions and speaking up. Part 2: compare two photographs and say why the young people might want to make their voices heard.",
+    "parts": [
+     {
+      "part": 1,
+      "title": "Interview",
+      "time": "2 min",
+      "prompts": [
+       "Do you enjoy discussing topics that you disagree with other people about? Why or why not?",
+       "Tell me about a time you changed your mind about something after a conversation.",
+       "Do you think young people are taken seriously enough when they share their opinions?",
+       "Who do you find it easiest to disagree with — a friend, a teacher or a family member? Why?"
+      ]
+     },
+     {
+      "part": 2,
+      "title": "Long turn",
+      "time": "1 min + 30 s",
+      "question": "Compare the two photographs and say <b>why the young people might want to make their voices heard</b> and <b>how they might be feeling</b>.",
+      "pictures": [
+       {
+        "emoji": "🎤🏫",
+        "caption": "a student speaking at a school assembly"
+       },
+       {
+        "emoji": "📢✊",
+        "caption": "a group of teenagers at a peaceful march"
+       }
+      ],
+      "partner": "Which of these situations would make you more nervous? Why? (about 30 seconds)"
+     }
+    ],
+    "useful_language": {
+     "Speculating": [
+      "They may well be…",
+      "It looks as though…",
+      "I'd imagine she's hoping to…",
+      "Presumably he's been…"
+     ],
+     "Comparing": [
+      "Whereas the student is…, the teenagers…",
+      "What they have in common is…",
+      "In both cases…"
+     ],
+     "Giving your view": [
+      "To my mind…",
+      "I can't help feeling that…",
+      "If anything, …"
+     ]
+    }
+   }
+  },
+  {
+   "code": "B",
    "type": "match_words",
    "title": "Vocabulary — debate and discussion. Match each word with its meaning.",
    "outputs": [
@@ -46,154 +123,206 @@
     "pairs": [
      {
       "left": "debate",
-      "right": "a formal discussion of opposing views"
+      "right": "a formal discussion in which people argue for and against an idea"
      },
      {
       "left": "concede",
-      "right": "to admit that something is true after first disagreeing"
+      "right": "to admit, often reluctantly, that a point someone else made is correct"
      },
      {
       "left": "rebuttal",
-      "right": "a reply that argues against a point"
+      "right": "a reply that argues against a point someone else has made"
      },
      {
       "left": "moderator",
-      "right": "the person who controls a debate"
+      "right": "the person who manages a discussion and makes sure everyone gets a turn"
      },
      {
       "left": "consensus",
-      "right": "an opinion that everyone in a group agrees on"
+      "right": "general agreement reached by a group after discussion"
      },
      {
       "left": "motion",
-      "right": "the statement that a debate argues for or against"
-     }
-    ]
-   }
-  },
-  {
-   "code": "B",
-   "type": "reading",
-   "title": "Reading — the debate that ended our year",
-   "outputs": [
-    "book",
-    "digital",
-    "quiz"
-   ],
-   "data": {
-    "kicker": "Project Finale",
-    "title": "The debate that ended our year",
-    "author": "mateo",
-    "byline": "by Mateo",
-    "text": "<p>Our <i>Inspiring Nordic</i> year ended with a formal debate. The motion was simple but sharp: “This house believes that practical trades matter as much as university degrees.” For weeks we had researched, argued and rehearsed. Now it was real.</p><p><b>Sofía</b> opened for the proposal. She spoke calmly, using the phrases we had practised: “On balance, the evidence is clear.” <b>Liam</b>, on the opposing side, was quick and clever. “Having said that,” he replied, “not every job needs a workshop.” The audience leaned forward.</p><p>What impressed our teacher was not who won, but how we spoke. A year ago, most of us were nervous. Now <b>Nadia</b>, once the quietest in the class, delivered a rebuttal that silenced the room. “All in all,” she concluded, “a society that respects every kind of work is a stronger society.”</p><p>I acted as moderator, keeping time and calm. It was harder than speaking. You must listen to both sides, concede good points fairly, and never take over.</p><p>When the vote came, the room was almost split — which felt right. The best debates rarely have easy answers. Looking back, the project gave us more than grammar and vocabulary. It gave us a voice. And a voice, used well, can change a small part of the world.</p>",
-    "script": "Our Inspiring Nordic year ended with a formal debate. The motion was: this house believes that practical trades matter as much as university degrees. For weeks we had researched, argued and rehearsed. Sofía opened for the proposal, using the phrases we had practised: on balance, the evidence is clear. Liam, on the opposing side, replied, having said that, not every job needs a workshop. What impressed our teacher was not who won, but how we spoke. Nadia, once the quietest in the class, delivered a rebuttal that silenced the room. I acted as moderator, keeping time and calm. The project gave us a voice.",
-    "questions": [
-     {
-      "q": "How did the project year end?",
-      "options": [
-       "with a holiday",
-       "with a long test",
-       "with a formal debate"
-      ],
-      "answer": 2
+      "right": "the statement that people argue for or against in a formal debate"
      },
      {
-      "q": "Who opened for the proposal?",
-      "options": [
-       "Sofía",
-       "Liam",
-       "Nadia"
-      ],
-      "answer": 0
+      "left": "standpoint",
+      "right": "the particular way a person looks at or judges an issue"
      },
      {
-      "q": "What impressed the teacher most?",
-      "options": [
-       "who won the vote",
-       "how the students spoke",
-       "the room decoration"
-      ],
-      "answer": 1
+      "left": "persuasive",
+      "right": "able to make people believe or do something through effective argument"
      },
      {
-      "q": "What was Mateo's role in the debate?",
-      "options": [
-       "moderator",
-       "opening speaker",
-       "audience member"
-      ],
-      "answer": 0
+      "left": "articulate",
+      "right": "able to express thoughts and arguments clearly and fluently"
      },
      {
-      "q": "What did the project give the students?",
-      "options": [
-       "a prize",
-       "a voice",
-       "a holiday"
-      ],
-      "answer": 1
+      "left": "stance",
+      "right": "a publicly stated opinion or position on an issue"
      }
     ]
    }
   },
   {
    "code": "C",
+   "type": "multiple_matching",
+   "title": "Reading and Use of English Part 7 — multiple matching. Which person…?",
+   "outputs": [
+    "digital"
+   ],
+   "tips": {
+    "expect": "Five short texts, each by a different young writer, followed by ten questions in the form 'Which person…'. Letters can be used more than once, and there is no fixed order.",
+    "how": [
+     "Read the questions first and underline the key idea in each one — they paraphrase the texts, so look for the same idea in different words, not matching vocabulary.",
+     "Read one whole text, then check it against every question before moving on to the next text — that is usually faster than reading all five texts first.",
+     "Be careful with texts that mention several ideas: the correct match is the person whose text really matches the exact meaning of the question, not just a shared topic."
+    ],
+    "remember": "There is no rule that each person is used the same number of times — check the whole text carefully before you decide."
+   },
+   "data": {
+    "title": "Can our generation really change things?",
+    "intro": "For the final unit, Miss Vega shared five posts from an international youth discussion forum, all answering the same question. Read what Amara, Lucas, Priya, Freya and Jack wrote, then answer the questions below.",
+    "sections": [
+     {
+      "letter": "A",
+      "heading": "Amara, 16, Ghana",
+      "text": "I used to think that changing the world meant marching in huge protests or making a speech that goes viral. Then our village started planting trees along the dry riverbed near my home, and within two years birds had come back that nobody remembered seeing. Nobody filmed it; nobody shared it online. What I have learned is that most real change happens quietly, on a small and local scale, long before anyone outside notices. Big campaigns matter, but they rarely succeed without hundreds of small, unnoticed efforts underneath them. So when people ask whether my generation can really change anything, I always point to the trees rather than to a hashtag."
+     },
+     {
+      "letter": "B",
+      "heading": "Lucas, 17, Brazil",
+      "text": "Everyone in my class has shared a petition or reposted a cause at some point, and I did too, until I noticed how little actually followed. A post can reach thousands of people in an afternoon, yet the problem it complains about is often exactly the same a year later. I am not saying online action is worthless — it can spread information fast, and it helped organise a real clean-up event near my school last spring. My concern is that clicking a button feels so much like doing something that people stop there. Genuine change, I now believe, still needs the boring, offline part: meetings, paperwork, showing up."
+     },
+     {
+      "letter": "C",
+      "heading": "Priya, 15, India",
+      "text": "My older cousins spent years studying for exams so they could eventually get an office job, and most of them are still waiting for one. I chose a different path: an apprenticeship with a local electrician. People sometimes look surprised when I say that fixing wiring is my contribution to changing things, but I disagree with them. Every village that gets reliable electricity for the first time changes because someone learned a practical trade well enough to install it properly. I think my generation talks a great deal about big ideas, and that is valuable, but the world is also changed, quietly, by people who know how to build and repair things."
+     },
+     {
+      "letter": "D",
+      "heading": "Freya, 16, UK",
+      "text": "Before I joined my school's debating society, I assumed changing someone's mind meant winning an argument against them. I now think that is exactly backwards. The skill that actually changes things is listening well enough to understand why somebody disagrees with you in the first place, and then finding the one point where you might actually be right and they might be wrong. I have watched furious disagreements in our debate club end with both sides slightly closer to the middle, which never happens when people simply shout past each other. If my generation is going to change anything, I suspect it will be because we learned to disagree properly."
+     },
+     {
+      "letter": "E",
+      "heading": "Jack, 17, Australia",
+      "text": "I joined our local council's youth board expecting fast results and left my first meeting rather deflated: three months of discussion over where to put a single new bicycle path. What I gradually understood, though, is that this slowness is not the same as failure. Real institutions move carefully because decisions affect people who were never in the room, and rushing them causes new problems. Two years later that bicycle path exists, and so does a youth curfew policy our board helped soften. Neither made the news. My generation is often told we are impatient, and perhaps we are, but I have learned that patience is itself a kind of power, if you are willing to use it."
+     }
+    ],
+    "questions": [
+     {
+      "q": "Which person says that big campaigns often depend on many smaller actions that nobody notices?",
+      "answer": "A"
+     },
+     {
+      "q": "Which person gives an example of a natural change that took place without any media attention?",
+      "answer": "A"
+     },
+     {
+      "q": "Which person admits to having done the same thing they are now criticising?",
+      "answer": "B"
+     },
+     {
+      "q": "Which person says that an online campaign helped bring about a real event in their area?",
+      "answer": "B"
+     },
+     {
+      "q": "Which person contrasts their own choice with the choice made by other family members?",
+      "answer": "C"
+     },
+     {
+      "q": "Which person says people are sometimes surprised by their opinion on how change happens?",
+      "answer": "C"
+     },
+     {
+      "q": "Which person changed their mind about what a disagreement should achieve?",
+      "answer": "D"
+     },
+     {
+      "q": "Which person gives an example of two opposing sides ending up closer in opinion?",
+      "answer": "D"
+     },
+     {
+      "q": "Which person felt disappointed by how slowly things happened at first?",
+      "answer": "E"
+     },
+     {
+      "q": "Which person mentions a specific policy that was changed as a result of their group's work?",
+      "answer": "E"
+     }
+    ]
+   }
+  },
+  {
+   "code": "D",
    "type": "grammar_box",
-   "title": "Grammar — Discourse markers for debating",
+   "title": "Language focus 1 — discourse markers for debating",
    "outputs": [
     "book",
-    "digital",
-    "quiz"
+    "digital"
    ],
    "data": {
     "title": "Discourse markers for debating",
-    "intro": "Discourse markers organise a discussion and signal your attitude. In a debate they help you concede a point, balance ideas, or sum up. They make you sound fluent and controlled — exactly what Speaking Part 4 rewards.",
+    "can": "I can use discourse markers to concede a point politely, weigh up both sides and sum up an argument in a debate.",
+    "intro": "A good debate is not just about strong arguments — it's about handling disagreement with control. Discourse markers let you concede a point without losing your position, weigh two sides against each other, and sum up your view politely but firmly. Used naturally, they make you sound fluent and fair-minded, exactly what Speaking Part 4 and a good review reward.",
     "examples": [
      {
-      "text": "<b>On balance</b>, the evidence supports the trades.",
-      "note": "weighing both sides"
+      "text": "<b>Having said that</b>, I do think trades deserve more respect.",
+      "note": "concedes a previous point before disagreeing"
      },
      {
-      "text": "<b>Having said that</b>, not every job needs a workshop.",
-      "note": "conceding, then adding a contrast"
+      "text": "<b>On balance</b>, I'd say the arguments for university are slightly stronger.",
+      "note": "weighs up both sides before concluding"
      },
      {
-      "text": "<b>All in all</b>, it was a fair debate.",
-      "note": "summing up"
+      "text": "<b>All in all</b>, it was a fair and well-argued debate.",
+      "note": "sums up an overall impression"
      },
      {
-      "text": "<b>That said</b>, we should still respect degrees.",
-      "note": "similar to 'having said that'"
+      "text": "<b>To be honest</b>, I hadn't considered that argument before.",
+      "note": "signals a frank, personal opinion"
+     },
+     {
+      "text": "<b>The way I see it</b>, both paths can lead to success.",
+      "note": "introduces a personal standpoint politely"
+     },
+     {
+      "text": "<b>That's a fair point, but</b> it doesn't apply to every case.",
+      "note": "acknowledges the other person before disagreeing"
      }
     ],
     "rules": [
-     "Use <b>on balance</b> and <b>all in all</b> to weigh arguments or conclude.",
-     "Use <b>having said that / that said</b> to concede a point before disagreeing.",
-     "Put the marker at the start of your sentence, followed by a comma."
+     "Use <i>having said that / that said</i> to accept a point and then add a contrast.",
+     "Use <i>on balance</i> and <i>all in all</i> to weigh arguments or summarise your overall opinion.",
+     "Use <i>to be honest</i> and <i>the way I see it</i> to introduce a personal opinion without sounding aggressive.",
+     "Use <i>that's a fair point, but…</i> to disagree respectfully instead of dismissing someone.",
+     "Put most of these markers at the start of the sentence, followed by a comma.",
+     "One or two markers per turn sound natural; using several in the same sentence sounds unnatural."
     ],
     "practice": {
      "instructions": "Choose the correct discourse marker.",
      "items": [
       {
-       "sentence": "___, both sides made good points.",
+       "sentence": "I understand your point. ___, I still think trades deserve more respect.",
        "options": [
-        "At balance",
-        "In balance",
-        "On balance"
+        "Having say that",
+        "Have said that",
+        "Having said that"
        ],
        "answer": 2
       },
       {
-       "sentence": "I love the plan. ___, it is expensive.",
+       "sentence": "___, both sides had strong arguments today.",
        "options": [
-        "Having say that",
-        "Having said that",
-        "Have said that"
+        "In balance",
+        "On balance",
+        "At balance"
        ],
        "answer": 1
       },
       {
-       "sentence": "___, it was the best project of the year.",
+       "sentence": "___, it was one of the best debates we've had this year.",
        "options": [
         "All in all",
         "All at all",
@@ -202,169 +331,492 @@
        "answer": 0
       },
       {
-       "sentence": "Degrees are useful. ___, trades are just as valuable.",
+       "sentence": "___, I didn't expect Nadia's rebuttal to be so strong.",
        "options": [
-        "That say",
-        "That saying",
-        "That said"
+        "The way I see it",
+        "To be honest",
+        "On the whole"
        ],
-       "answer": 2
+       "answer": 1
       },
       {
-       "sentence": "___, I think we should respect every kind of work.",
+       "sentence": "That's a fair point, ___ it doesn't change my overall opinion.",
        "options": [
-        "On the whole",
-        "On the all",
-        "In the whole"
+        "but",
+        "so",
+        "because"
        ],
        "answer": 0
+      },
+      {
+       "sentence": "___, I think practical skills are just as valuable as academic ones.",
+       "options": [
+        "Having said it",
+        "On the balance",
+        "The way I see it"
+       ],
+       "answer": 2
       }
      ]
     }
    }
   },
   {
-   "code": "D",
+   "code": "E",
    "type": "key_transform",
-   "title": "Use of English Part 4 — key word transformations",
+   "title": "Reading and Use of English Part 4 — key word transformations",
    "outputs": [
-    "book",
-    "digital",
-    "quiz"
+    "digital"
    ],
+   "tips": {
+    "expect": "Six sentences, each followed by a second sentence with a gap and a key word. You complete the gap so that the second sentence means the same as the first, using between two and five words including the key word, which must not change.",
+    "how": [
+     "Identify the structure being tested — this unit reviews mixed conditionals, the causative, relative clauses, persuasion verbs and debate vocabulary.",
+     "Write the whole gap, then read the complete second sentence in your head: does it mean exactly the same as the first?",
+     "Count your words carefully — contractions count as two words (<i>didn't</i> = did not)."
+    ],
+    "remember": "Half marks exist: if the structure is right but a small word is wrong, you can still score one mark."
+   },
    "data": {
-    "instructions": "Complete the second sentence so that it means the same as the first. Use the KEY WORD. Write between two and five words.",
+    "instructions": "Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between two and five words, including the word given.",
     "items": [
      {
-      "first": "The plan is good, but I admit it is expensive.",
-      "key": "SAID",
-      "second_start": "The plan is good.",
-      "second_end": ", it is expensive.",
+      "first": "She didn't practise enough, so she isn't confident in the debate today.",
+      "key": "HAD",
+      "second_start": "If she",
+      "second_end": "more, she would be more confident in the debate today.",
       "answers": [
-       "Having said that"
+       "had practised"
       ]
      },
      {
-      "first": "Degrees are useful, but trades are equally valuable.",
-      "key": "THAT",
-      "second_start": "Degrees are useful.",
-      "second_end": ", trades are equally valuable.",
+      "first": "Mateo asked a technician to fix the microphone before the debate.",
+      "key": "HAD",
+      "second_start": "Mateo",
+      "second_end": "before the debate.",
       "answers": [
-       "That said"
+       "had the microphone fixed",
+       "had the microphone repaired"
       ]
      },
      {
-      "first": "When we consider all the arguments, the debate was fair.",
-      "key": "BALANCE",
-      "second_start": "The debate was,",
-      "second_end": ", a fair one.",
+      "first": "Nadia gave a rebuttal. It surprised everyone in the room.",
+      "key": "WHICH",
+      "second_start": "Nadia gave a rebuttal,",
+      "second_end": "in the room.",
       "answers": [
-       "on balance"
+       "which surprised everyone"
       ]
      },
      {
-      "first": "In summary, the project was a great success.",
-      "key": "ALL",
-      "second_start": "The project,",
-      "second_end": ", was a great success.",
+      "first": "The moderator said we should listen to each other more carefully.",
+      "key": "INSISTED",
+      "second_start": "The moderator",
+      "second_end": "to each other more carefully.",
       "answers": [
-       "all in all"
+       "insisted that we listen",
+       "insisted we listen"
       ]
      },
      {
-      "first": "Generally, the students spoke with great confidence.",
-      "key": "WHOLE",
-      "second_start": "The students,",
-      "second_end": ", spoke with great confidence.",
+      "first": "In the end, Liam admitted that his argument was weaker than Sofía's.",
+      "key": "CONCEDED",
+      "second_start": "In the end, Liam",
+      "second_end": "was weaker than Sofía's.",
       "answers": [
-       "on the whole"
+       "conceded that his argument"
+      ]
+     },
+     {
+      "first": "We interviewed a student. Her speech had won the debate competition last year.",
+      "key": "WHOSE",
+      "second_start": "We interviewed a student",
+      "second_end": "had won the debate competition last year.",
+      "answers": [
+       "whose speech"
       ]
      }
     ]
    }
   },
   {
-   "code": "E",
-   "type": "gap_text",
-   "title": "Use of English Part 2 — open cloze. Write ONE word in each gap.",
-   "outputs": [
-    "book",
-    "digital",
-    "quiz"
-   ],
-   "data": {
-    "box": [
-     "balance",
-     "so",
-     "that",
-     "who",
-     "in",
-     "on"
-    ],
-    "text": "A good debate is not about shouting. On {1}, the calmest speaker is often the most convincing. You should listen carefully {2} you can answer the other side. Having said {3}, do not be afraid to disagree. It is the person {4} gives clear reasons who wins respect. All {5} all, a debate teaches you to think {6} your feet.",
-    "answers": [
-     "balance",
-     "so",
-     "that",
-     "who",
-     "in",
-     "on"
-    ]
-   }
-  },
-  {
    "code": "F",
-   "type": "listening",
-   "title": "Listening — the final debate. Write ONE word in each gap.",
+   "type": "listening_mc",
+   "title": "Listening Part 4 — multiple choice. Choose the best answer, A, B, C or D.",
    "outputs": [
-    "digital",
-    "quiz"
+    "digital"
    ],
    "audio": "b2f/u06-f.mp3",
+   "tips": {
+    "expect": "One interview of about three to four minutes with two speakers. You answer seven four-option questions about opinion, attitude, feeling and detail. You hear the recording twice.",
+    "how": [
+     "Before listening, read all seven questions and options: they follow the order of the interview.",
+     "Listen for opinion and feeling words (surprised, relieved, confident, proud) as well as facts — several questions test attitude, not just information.",
+     "The wrong options are often almost true, or true about the wrong speaker — check exactly who says what."
+    ],
+    "remember": "Use the first listening to choose your best answer for every question; use the second listening only to check, not to start again."
+   },
    "data": {
-    "voice_note": "Voz: la profesora (Miss Vega), preparando el debate final del proyecto.",
-    "script": "Well done, Grade 10 — we have reached the final debate. Here is how it works. The motion is that practical trades matter as much as degrees. One team argues for, the other against. Mateo will be the moderator, keeping time and order. Use the discourse markers we practised: on balance, having said that, all in all. Speak clearly, listen to your opponents, and concede a good point when you hear one. In Speaking Part four, examiners reward exactly this: fluency, respect and confidence. Take a breath, and let your voice be heard.",
-    "questions": [
+    "voice_note": "Presenter (Ryan) interviews Miss Vega, the students' English teacher, and Nadia, one of her Grade 10 students, about the final class debate.",
+    "script": "Presenter: Welcome back to Nordic Voices. Today we're talking about something a little different: a school debate that's been getting attention locally. With me are Miss Vega, who teaches English at the school, and Nadia, one of her Grade Ten students. Miss Vega, why a formal debate?\nMiss Vega: Well, we'd spent the whole year building up to it, really. Every unit gave the students a piece of the puzzle, grammar, vocabulary, ways of arguing a point, and the debate was where all of that finally had somewhere to go. I could have set an essay instead, and it would have been easier to mark, frankly, but an essay doesn't teach you to think on your feet the way a live debate does.\nPresenter: And Nadia, be honest, were you looking forward to it?\nNadia: Not even slightly. I'm usually the person who agrees with whoever spoke last, just to keep the peace. Standing up and defending one side of an argument, in front of the whole class, sounded like my idea of a nightmare.\nPresenter: What changed?\nNadia: Practice, mostly. We did smaller debates for weeks before the big one, and I noticed that nobody actually remembered my mistakes the next day. That took the pressure off. By the time the real debate happened, I'd almost forgotten to be nervous.\nPresenter: Miss Vega, was there a moment that surprised you?\nMiss Vega: Honestly, yes, Nadia's rebuttal. She'd been fairly quiet in class discussions all year, so when she stood up and calmly took apart the other side's main point, in about thirty seconds, the whole room went silent. I don't think she realised how good it was until people started clapping.\nNadia: I still don't entirely believe that happened.\nPresenter: What was the motion, exactly?\nMiss Vega: That practical trades matter as much as university degrees. It ties into the project we've run all year, so it wasn't a random topic, the students had researched real examples, not just opinions.\nPresenter: And did the debate change anyone's mind?\nNadia: A few people told me afterwards that they'd shifted slightly, which felt like a bigger achievement than winning would have been. Winning a vote doesn't prove your argument was right; changing someone's mind sort of does.\nPresenter: That's a rather mature way of putting it.\nNadia: I'm quoting Miss Vega, to be honest.\nPresenter: Miss Vega, what would you tell a teacher thinking about trying this with their own class?\nMiss Vega: Build up to it slowly, and don't expect politeness to appear on its own, we spent real class time on how to disagree without being rude, and that paid off more than any grammar point did. Also, let the quiet students go last. They often surprise you.\nPresenter: Nadia, one word for how you feel now that it's over?\nNadia: Relieved. And, oddly, a bit proud.\nPresenter: Miss Vega, Nadia, thank you both very much.\nMiss Vega: Thank you.\nNadia: Thanks for having us.",
+    "extracts": [
      {
-      "q": "The motion is that practical trades matter as much as …",
-      "answer": "degrees"
-     },
-     {
-      "q": "Mateo will be the …",
-      "answer": "moderator"
-     },
-     {
-      "q": "Concede a good point when you hear …",
-      "answer": "one"
-     },
-     {
-      "q": "Listen to your …",
-      "answer": "opponents"
-     },
-     {
-      "q": "Examiners reward fluency, respect and …",
-      "answer": "confidence"
+      "title": "The final debate",
+      "intro": "You will hear an interview with a teacher and a student about a school debate.",
+      "questions": [
+       {
+        "q": "Why did Miss Vega choose a debate instead of an essay for the final task?",
+        "options": [
+         "It gave the students a chance to think on their feet.",
+         "It was easier for her to prepare.",
+         "It required less marking time.",
+         "The students specifically requested it."
+        ],
+        "answer": 0
+       },
+       {
+        "q": "How did Nadia feel about the debate before it happened?",
+        "options": [
+         "confident that she would win",
+         "certain that nobody would notice her mistakes",
+         "annoyed that she had to take part",
+         "reluctant to argue for a side in public"
+        ],
+        "answer": 3
+       },
+       {
+        "q": "What helped Nadia overcome her nerves?",
+        "options": [
+         "support from her classmates",
+         "repeated smaller practice debates",
+         "advice from Miss Vega",
+         "writing out her arguments in advance"
+        ],
+        "answer": 1
+       },
+       {
+        "q": "What surprised Miss Vega during the debate?",
+        "options": [
+         "how nervous Nadia looked",
+         "how long the debate lasted",
+         "the strength of Nadia's rebuttal",
+         "the number of students who wanted to speak"
+        ],
+        "answer": 2
+       },
+       {
+        "q": "What was special about the debate topic, according to Miss Vega?",
+        "options": [
+         "it connected to the class's year-long project",
+         "it was chosen by the students themselves",
+         "it was more difficult than usual",
+         "it had never been debated before"
+        ],
+        "answer": 0
+       },
+       {
+        "q": "What does Nadia think matters more than winning the vote?",
+        "options": [
+         "enjoying the process",
+         "speaking without notes",
+         "being praised by the teacher",
+         "changing somebody's opinion"
+        ],
+        "answer": 3
+       },
+       {
+        "q": "What advice does Miss Vega give to other teachers?",
+        "options": [
+         "focus only on grammar before debating",
+         "prepare students gradually and teach respectful disagreement",
+         "let the strongest speakers go first",
+         "avoid quiet students until they volunteer"
+        ],
+        "answer": 1
+       }
+      ]
      }
     ]
    }
   },
   {
    "code": "G",
-   "type": "pairwork",
-   "title": "Speaking — a mini-debate. In pairs, then record it.",
+   "type": "grammar_box",
+   "title": "Language focus 2 — grammar for a strong debate: mixed conditionals, the causative and relative clauses",
    "outputs": [
     "book",
     "digital"
    ],
    "data": {
-    "text": "In pairs, hold a mini-debate. Model: “On balance, I believe practical skills deserve more respect at school.” 1) This house believes every student should learn a trade — argue for or against. 2) Use one discourse marker in every turn (on balance, having said that, all in all). 3) At the end, concede one good point your partner made. Give reasons and examples, then record your discussion."
+    "title": "Grammar for a strong debate: mixed conditionals, the causative and relative clauses",
+    "can": "I can use mixed conditionals, the causative and relative clauses to build more sophisticated arguments in a debate.",
+    "intro": "A great debate doesn't need new grammar — it needs this year's grammar working harder. Mixed conditionals let you connect a past cause to a present result, or a general truth to a past result; the causative lets you talk about arrangements without saying exactly who did the work; relative clauses let you add extra, precise information to a point without starting a new sentence. Use all three and your arguments will sound noticeably more mature.",
+    "examples": [
+     {
+      "text": "If we hadn't practised so much, we wouldn't be this confident today.",
+      "note": "mixed conditional: past condition, present result (Unit 1)"
+     },
+     {
+      "text": "If Liam weren't so calm under pressure, he wouldn't have won last year's debate.",
+      "note": "mixed conditional: general truth, past result (Unit 1)"
+     },
+     {
+      "text": "The school had a professional debate coach brought in before the final.",
+      "note": "causative: have something done (Unit 2)"
+     },
+     {
+      "text": "Nadia, whose rebuttal surprised everyone, is usually the quietest student in class.",
+      "note": "non-defining relative clause adds extra information (Unit 4)"
+     },
+     {
+      "text": "The motion, which had been chosen by the whole class, divided the room evenly.",
+      "note": "which refers back to the motion (Unit 4)"
+     },
+     {
+      "text": "We got the microphones tested the night before, which meant nothing went wrong.",
+      "note": "causative and relative clause combined"
+     }
+    ],
+    "rules": [
+     "Mixed conditional 1: <i>If</i> + past perfect, <i>would</i> + infinitive, for a past cause with a present result: <i>If she hadn't prepared, she wouldn't be so confident now.</i>",
+     "Mixed conditional 2: <i>If</i> + past simple, <i>would have</i> + past participle, for an ongoing truth with a past result: <i>If he weren't so shy, he wouldn't have avoided the debate last year.</i>",
+     "Causative: <i>have/get</i> + object + past participle, for something done for you or arranged by you: <i>We had the hall prepared. We got the posters printed.</i>",
+     "Defining relative clauses (<i>who, which, that, whose</i>) identify which person or thing you mean, with no commas: <i>the student who spoke last</i>.",
+     "Non-defining relative clauses (<i>who, which, whose</i>, never <i>that</i>), with commas, add extra information that could be removed: <i>Nadia, who is usually quiet, surprised everyone.</i>",
+     "In debating language, one well-placed relative clause or mixed conditional makes a point sound more persuasive than three short simple sentences."
+    ],
+    "practice": {
+     "instructions": "Choose the correct form.",
+     "items": [
+      {
+       "sentence": "If we ___ so hard all year, we wouldn't be ready for today's debate.",
+       "options": [
+        "hadn't trained",
+        "didn't train",
+        "haven't trained"
+       ],
+       "answer": 0
+      },
+      {
+       "sentence": "If Liam ___ so nervous, he wouldn't have avoided speaking in public last year.",
+       "options": [
+        "wasn't",
+        "weren't",
+        "hadn't been"
+       ],
+       "answer": 1
+      },
+      {
+       "sentence": "We ___ the sound system checked before the audience arrived.",
+       "options": [
+        "got",
+        "made",
+        "had"
+       ],
+       "answer": 2
+      },
+      {
+       "sentence": "The teacher ___ our essays corrected by a colleague this term.",
+       "options": [
+        "got",
+        "did",
+        "made"
+       ],
+       "answer": 0
+      },
+      {
+       "sentence": "Sofía, ___ argument was the strongest, spoke first.",
+       "options": [
+        "who's",
+        "whose",
+        "which"
+       ],
+       "answer": 1
+      },
+      {
+       "sentence": "The student ___ gave the final rebuttal is Nadia.",
+       "options": [
+        "whose",
+        "which",
+        "who"
+       ],
+       "answer": 2
+      }
+     ]
+    }
+   }
+  },
+  {
+   "code": "H",
+   "type": "word_formation",
+   "title": "Reading and Use of English Part 3 — word formation. Use the word given to form a word that fits the gap.",
+   "outputs": [
+    "digital"
+   ],
+   "tips": {
+    "expect": "A short text (150–200 words) with eight gaps. Each gap has a base word in capitals at the end of the line; you write the correct form of that word — a noun, adjective, adverb, verb or negative form.",
+    "how": [
+     "Decide what part of speech each gap needs by looking at the words around it: after <i>a/an</i> or <i>the</i>, you probably need a noun; before a noun, an adjective.",
+     "Check whether the meaning needs a negative form (<i>un-, dis-, im-, in-</i>) — the context often contains a clue such as 'surprisingly' or 'refreshingly'.",
+     "Read the whole sentence again once you've written your answer, to check spelling and that the word makes sense."
+    ],
+    "remember": "If your answer looks identical to the capitals, check it again — the base word is never the correct answer."
+   },
+   "data": {
+    "title": "What the debate taught us",
+    "text": "Learning to disagree well is one of the most useful skills a school debate can teach you, and this year's final project put that skill to the test. At the start of the year, open {1:DISAGREE} made most of the class feel rather uncomfortable, as if any argument might threaten a friendship. By the final unit, though, opinions were expressed with real {2:CONFIDENT}, and a lost vote no longer felt like a {3:PERSON} failure. Miss Vega's method was refreshingly {4:CONVENTION}: she gave less advice about facts than about tone, teaching phrases that combine {5:FIRM} with courtesy. What surprised everyone was that the loudest speaker at the start of the year often became the most {6:CONVINCE} by the end, having learned that {7:PATIENT} usually beats volume. The debate also revealed how {8:AWARE} some students had been of their own habit of interrupting, a habit almost nobody had noticed until it was pointed out. By the last week, the class agreed that the biggest lesson had nothing to do with grammar at all.",
+    "answers": [
+     "disagreement",
+     "confidence",
+     "personal",
+     "unconventional",
+     "firmness",
+     "convincing",
+     "patience",
+     "unaware"
+    ]
+   }
+  },
+  {
+   "code": "I",
+   "type": "writing",
+   "title": "Writing Part 2 — review. Plan, write 140–190 words and hand it in.",
+   "outputs": [
+    "digital"
+   ],
+   "tips": {
+    "expect": "Writing Part 2: you choose one task from a choice of two or three, which may include a review. A review describes something (an event, a talk, a podcast) and gives your opinion of it, usually for a website or magazine. 140–190 words, semi-formal or neutral register.",
+    "how": [
+     "Give the review a clear shape: what it was, what happened or what it covered, your opinion, and a recommendation.",
+     "Use discourse markers to organise your opinion (<i>on balance, having said that, all in all</i>) — reviews reward a controlled, balanced voice.",
+     "Support your opinion with a specific detail or example rather than only general praise or criticism."
+    ],
+    "remember": "A review needs a personal opinion and a recommendation — a text that only describes the event without saying what you thought of it will lose marks."
+   },
+   "data": {
+    "part": 2,
+    "genre": "review",
+    "words": [
+     140,
+     190
+    ],
+    "task": "<p>You see this notice on your school's English-language website:</p><blockquote><p><b>Reviews wanted!</b></p><p>Have you been to a debate, a talk or listened to a podcast recently? Write us a review saying what it was about, what you thought of the speakers, and whether you would recommend it to other students.</p></blockquote><p>Write your <b>review</b>.</p>",
+    "plan": [
+     "<b>Introduction</b>: what you attended or listened to, and where and when.",
+     "<b>Paragraph 2</b>: what it was about and who took part — the topic and the speakers.",
+     "<b>Paragraph 3</b>: your opinion, using discourse markers to weigh strengths and weaknesses.",
+     "<b>Conclusion</b>: whether you would recommend it, and to whom."
+    ],
+    "useful_language": {
+     "Describing the event": [
+      "The debate/talk was held at…",
+      "It focused on the question of…",
+      "Taking part were…"
+     ],
+     "Giving an opinion politely": [
+      "What struck me most was…",
+      "On balance, I felt that…",
+      "Having said that, …"
+     ],
+     "Recommending": [
+      "I would definitely recommend it to…",
+      "It's well worth watching if…"
+     ]
+    },
+    "checklist": [
+     "I described the event and named the topic clearly.",
+     "I gave my opinion of the speakers or content, using discourse markers naturally.",
+     "I said whether I would recommend it, and to whom.",
+     "I used at least one mixed conditional, one causative form or one relative clause.",
+     "The register is appropriate for a school website: neutral and engaging, not overly formal.",
+     "Between 140 and 190 words."
+    ],
+    "model": "<p><i>A model answer (151 words).</i></p><p>Last Friday I watched the final debate of our Inspiring Nordic project, held in the school hall in front of the whole of Grade Ten. The motion, which had been chosen by the class themselves, was that practical trades matter as much as university degrees.</p><p>Sofía opened confidently for the proposal, and Liam's replies were sharp and quick. The real surprise, though, was Nadia, whose calm rebuttal silenced the room completely — nobody expected the quietest student in the class to deliver the strongest argument of the afternoon. Mateo moderated fairly, giving both sides equal time.</p><p>On balance, I thought the proposal made the stronger case, mainly because their examples felt more concrete. Having said that, the opposing team's closing argument was genuinely persuasive, and the final vote was almost evenly split.</p><p>I would definitely recommend watching next year's debate, especially to anyone who thinks a school discussion can't be genuinely exciting.</p>"
+   }
+  },
+  {
+   "code": "J",
+   "type": "pairwork",
+   "title": "Speaking — Parts 3 and 4. Collaborative task and discussion. Record your best answer.",
+   "outputs": [
+    "book",
+    "digital"
+   ],
+   "speaking": {
+    "part": 3,
+    "name": "Collaborative task and discussion"
+   },
+   "tips": {
+    "expect": "Part 3 (about 4 minutes): you and your partner discuss a question with five written prompts for about two minutes, then have one minute to reach a decision together. Part 4 (about 4 minutes): the examiner asks you both wider questions on the same theme.",
+    "how": [
+     "In Part 3 you are not marked on agreeing with your partner; you are marked on interacting. Ask their opinion, respond to it, build on it, disagree politely.",
+     "Do not try to cover all five prompts. Two or three discussed properly is better than five rushed.",
+     "In the decision minute, negotiate: <i>Shall we go for…? I'd be happy with that, as long as…</i>",
+     "In Part 4, develop your answers: opinion, then reason, then example."
+    ],
+    "remember": "Look at your partner, not at the examiner. The examiner is listening, not talking."
+   },
+   "data": {
+    "text": "Part 3: discuss how these things could help young people make their voices heard, and decide which works best. Part 4: discuss debating, disagreement and having a voice.",
+    "parts": [
+     {
+      "part": 3,
+      "title": "Collaborative task",
+      "time": "2 min + 1 min",
+      "intro": "Here are some ways that young people can try to make their opinions heard. Talk to each other about <b>how each of these could help</b>.",
+      "centre": "How could these help young people make their voices heard?",
+      "spokes": [
+       "a school debate club",
+       "a social media campaign",
+       "a student council",
+       "a letter to a newspaper",
+       "volunteering in the local community"
+      ],
+      "decide": "Now you have a minute to decide <b>which of these is the most effective way for young people to be heard</b>."
+     },
+     {
+      "part": 4,
+      "title": "Further discussion",
+      "time": "4 min",
+      "prompts": [
+       "Do you think schools should teach debating as a subject? Why or why not?",
+       "Is it possible to disagree with someone without damaging the friendship?",
+       "How has technology changed the way young people share their opinions?",
+       "Do you think adults take young people's opinions seriously enough?",
+       "What is the hardest part of changing someone's mind about something they feel strongly about?"
+      ]
+     }
+    ],
+    "useful_language": {
+     "Involving your partner": [
+      "What's your take on…?",
+      "Would you go along with that?",
+      "You've got a point, but…",
+      "That's a fair point, although…"
+     ],
+     "Building on an idea": [
+      "Following on from what you said…",
+      "And that ties in with…",
+      "Not only that, but…"
+     ],
+     "Reaching a decision": [
+      "Shall we settle on…?",
+      "I'd be inclined to go for…, on the grounds that…",
+      "We could agree to differ, but if we had to choose…"
+     ],
+     "Part 4: developing an answer": [
+      "It very much depends on…",
+      "There's a strong case for saying…",
+      "On balance, I'd say…"
+     ]
+    }
    }
   }
  ],
  "homework": [
   {
    "type": "write_sentences",
-   "prompt": "Write a short reflection (8–10 sentences) on the Inspiring Nordic project: what did you learn and how did your English improve? Use at least four discourse markers for debating (on balance, having said that, that said, all in all). Capital letters and full stops!"
+   "prompt": "Write a short reflective paragraph (8–10 sentences) about what you would tell next year's Grade 10 about the final debate. Use at least two discourse markers for debating (on balance, having said that, all in all, to be honest) and at least one mixed conditional, one causative form or one relative clause from this year's grammar. Capital letters and full stops!"
   }
  ],
  "scope": {
@@ -374,23 +826,23 @@
   "outcomes": [
    {
     "destreza": "Listening",
-    "puede": "Follow instructions for a debate and note key details (B2 First Listening)."
+    "puede": "Follow an interview with two speakers and identify opinion and attitude as well as detail (B2 First Listening Part 4)."
    },
    {
     "destreza": "Speaking",
-    "puede": "Take part in a discussion using discourse markers and conceding points (B2 First Speaking Part 4)."
+    "puede": "Take part in a debate, using discourse markers to concede, weigh up arguments and summarise (B2 First Speaking Parts 1–4)."
    },
    {
     "destreza": "Reading",
-    "puede": "Read a reflective account of a class debate (B2 First Reading)."
+    "puede": "Match five short personal opinions to ten paraphrased statements (B2 First Reading & Use of English Part 7)."
    },
    {
     "destreza": "Writing",
-    "puede": "Write a reflective text using discourse markers to organise ideas."
+    "puede": "Plan and write a 140–190-word review of a debate, talk or podcast (B2 First Writing Part 2)."
    },
    {
     "destreza": "Use of English",
-    "puede": "Discourse markers for debating; open cloze (Part 2)."
+    "puede": "Review mixed conditionals, the causative and relative clauses; word formation with a negative prefix (Part 3); key word transformations (Part 4)."
    }
   ],
   "vocabulario": [
@@ -403,13 +855,12 @@
   ],
   "gramatica": [
    "Discourse markers for debating",
-   "Speaking Part 4 discussion"
+   "Review: mixed conditionals (Unit 1)",
+   "Review: the causative (Unit 2)",
+   "Review: relative clauses (Unit 4)",
+   "Word formation with negative prefixes (Part 3)",
+   "Key word transformations (Part 4)"
   ],
   "pendiente": {}
- },
- "wordlist_extra": [
-  "interruption",
-  "turn-taking",
-  "summarise"
- ]
+ }
 }

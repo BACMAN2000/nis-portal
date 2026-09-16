@@ -97,6 +97,7 @@ nis-fun/audio/*
 # escucha suene con voz real y no con la del navegador. El audio grande (YLE)
 # sigue fuera del repo.
 !nis-fun/audio/c1a/
+!nis-fun/audio/b2f/
 mocks-cambridge/mp3/
 yle-audio/
 yle-img/

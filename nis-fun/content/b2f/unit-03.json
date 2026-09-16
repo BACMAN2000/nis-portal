@@ -7,34 +7,112 @@
  "grammar": "Word formation for B2 (noun/adjective/adverb suffixes, negative prefixes)",
  "wordlist": [
   "employment",
+  "employer",
+  "unemployment",
   "qualification",
   "reliable",
-  "ambition",
-  "expertise",
-  "productive",
-  "unemployment",
-  "creativity",
+  "rewarding",
+  "hard-working",
+  "well-paid",
   "responsibility",
   "professional"
  ],
+ "wordlist_extra": [
+  "apprenticeship",
+  "motivation",
+  "teamwork"
+ ],
  "exam_focus": {
   "paper": "Reading & Use of English",
-  "part": 3,
-  "skill": "word formation"
+  "part": 7,
+  "skill": "multiple matching"
  },
  "characters": [
   "nova"
  ],
  "scene": {
   "speaker": "nova",
-  "bubble": "Words are tools too! Meet the language of work, learn how English builds word families, and master the word-formation task.",
-  "intro": "Welcome to Unit 3. Our Trades project turns to the language of work itself. In this unit you read how English builds whole families of words from a single root, you learn the suffixes and prefixes that make nouns, adjectives and adverbs, and you practise the word-formation task from Reading and Use of English Part 3. One root, many words — let's build them together."
+  "bubble": "Words don't just sit still — they grow into whole families! Meet the words that build a career, and get ready for the multiple matching task.",
+  "intro": "Welcome to Unit 3. Our Trades project turns to the language of the workplace itself — apprenticeships, motivation, teamwork and the everyday words that describe a job well done. In this unit you read how four Grade 10 students describe their first taste of work, in the format of Reading Part 7, learn the suffixes and prefixes that build noun, adjective and adverb families, meet the compound adjectives that describe a job (well-paid, hard-working, rewarding), and listen to a real interview about a trade. By the end you will be ready for the word-formation task and for describing your own dream job. Let's get to work."
  },
  "activities": [
   {
    "code": "A",
+   "type": "pairwork",
+   "title": "Speaking — Parts 1 and 2. Talk with a partner, then record yourself.",
+   "outputs": [
+    "book",
+    "digital"
+   ],
+   "speaking": {
+    "part": 2,
+    "name": "Interview and long turn"
+   },
+   "tips": {
+    "expect": "Part 1 (about 2 minutes): the examiner asks you and your partner questions about yourselves — work, study and future plans. Part 2 (about 3 minutes): each of you talks alone for about a minute about two of three photographs, answering a printed question; then your partner answers a short question about your photographs in about 20 seconds.",
+    "how": [
+     "In Part 2, do not describe every detail of the photographs. Choose two of the three, compare them directly (<i>In the first picture… whereas in the second…</i>) and answer both parts of the question.",
+     "Keep talking for the whole minute — if you run out of ideas, speculate about how the people might be feeling.",
+     "In Part 1, answer with a reason or an example, not a single word."
+    ],
+    "remember": "You only need to talk about two of the three photographs, and the examiner is listening for language, not for a 'correct' opinion."
+   },
+   "data": {
+    "text": "Part 1: talk about jobs and work experience. Part 2: compare two of the photographs and say why the people might have chosen these jobs.",
+    "parts": [
+     {
+      "part": 1,
+      "title": "Interview",
+      "time": "2 min",
+      "prompts": [
+       "Do you have a part-time job, or would you like to have one? Why?",
+       "What is the most useful skill you have learnt outside school?",
+       "Would you rather work alone or as part of a team? Why?",
+       "What job do you think you would find most rewarding? Why?"
+      ]
+     },
+     {
+      "part": 2,
+      "title": "Long turn",
+      "time": "1 min + 20 s",
+      "question": "Compare the two photographs and say <b>why the people might have chosen these jobs</b> and <b>what skills each job probably needs</b>.",
+      "pictures": [
+       {
+        "emoji": "👩‍🍳🥐",
+        "caption": "a young baker decorating cakes early in the morning"
+       },
+       {
+        "emoji": "👷‍♂️🏗️",
+        "caption": "an apprentice carpenter measuring a piece of wood"
+       }
+      ],
+      "partner": "Which of these three jobs would you prefer, and why? (about 20 seconds)"
+     }
+    ],
+    "useful_language": {
+     "Speculating": [
+      "They might well have chosen this job because…",
+      "It looks as though…",
+      "Perhaps she's always been interested in…",
+      "I'd imagine he needs a lot of…"
+     ],
+     "Comparing": [
+      "Whereas the baker is…, the carpenter…",
+      "Both jobs seem to require…",
+      "Unlike the first picture, the second…"
+     ],
+     "Giving your view": [
+      "Personally, I feel that…",
+      "What appeals to me most is…",
+      "I wouldn't fancy…, because…"
+     ]
+    }
+   }
+  },
+  {
+   "code": "B",
    "type": "match_words",
-   "title": "Vocabulary — skills and work. Match each word with its meaning.",
+   "title": "Vocabulary — the world of work. Match each word with its meaning.",
    "outputs": [
     "book",
     "digital",
@@ -46,176 +124,243 @@
     "pairs": [
      {
       "left": "employment",
-      "right": "the state of having paid work"
+      "right": "the state of having a paid job"
+     },
+     {
+      "left": "employer",
+      "right": "a person or company that pays others to work for them"
+     },
+     {
+      "left": "unemployment",
+      "right": "the situation of not having a paid job"
      },
      {
       "left": "qualification",
-      "right": "an official record that you have completed training"
+      "right": "an exam or course that proves you can do something"
      },
      {
       "left": "reliable",
-      "right": "able to be trusted to do what is expected"
+      "right": "able to be trusted to do what is needed"
      },
      {
-      "left": "ambition",
-      "right": "a strong desire to achieve something"
+      "left": "rewarding",
+      "right": "giving a feeling of satisfaction, even without much money"
      },
      {
-      "left": "expertise",
-      "right": "special skill or knowledge in a field"
+      "left": "hard-working",
+      "right": "putting a lot of effort and energy into your job"
      },
      {
-      "left": "productive",
-      "right": "achieving a lot; getting good results"
-     }
-    ]
-   }
-  },
-  {
-   "code": "B",
-   "type": "reading",
-   "title": "Reading — how English builds a career",
-   "outputs": [
-    "book",
-    "digital",
-    "quiz"
-   ],
-   "data": {
-    "kicker": "Careers Corner",
-    "title": "How English builds a career",
-    "author": "nadia",
-    "byline": "by Nadia",
-    "text": "<p>As part of <i>Inspiring Nordic</i>, our class interviewed local workers about their jobs. What fascinated me was not only what they do, but the language they use — because English builds so many work words from a single root.</p><p>Take the verb <b>employ</b>. Add a suffix and you get <i>employment</i>; add a prefix and you get <i>unemployment</i>; change it again and you describe an <i>employer</i> and an <i>employee</i>. One small word grows into a whole family.</p><p><b>Sofía</b> interviewed a nurse who spoke about <i>responsibility</i>, <i>patience</i> and <i>reliability</i> — all nouns formed from adjectives and verbs. <b>Mateo</b> met an electrician who valued <i>qualifications</i> and <i>expertise</i> above everything.</p><p>The pattern is powerful. If you know the suffixes, you can guess new words. The ending <i>-ment</i> often makes a noun; <i>-able</i> makes an adjective; <i>-ly</i> makes an adverb; and prefixes like <i>un-</i>, <i>in-</i> or <i>dis-</i> reverse a meaning. That is exactly what the Cambridge exam tests in the word-formation task.</p><p><b>Liam</b> put it well: “Learning one root is like getting several words for free.” He is right. The more you notice how words are built, the more <i>professional</i> and <i>confident</i> your English becomes — at work and in the exam.</p>",
-    "script": "As part of Inspiring Nordic, our class interviewed local workers about their jobs. What fascinated me was the language they use, because English builds so many work words from a single root. Take the verb employ. Add a suffix and you get employment; add a prefix and you get unemployment. Sofía interviewed a nurse who spoke about responsibility and reliability. Mateo met an electrician who valued qualifications and expertise. If you know the suffixes, you can guess new words. The ending -ment often makes a noun, -able makes an adjective, and prefixes like un- or dis- reverse a meaning. Learning one root gives you several words for free.",
-    "questions": [
-     {
-      "q": "What did the class do for the project?",
-      "options": [
-       "wrote a novel",
-       "interviewed local workers",
-       "built a workshop"
-      ],
-      "answer": 1
+      "left": "well-paid",
+      "right": "earning a good salary"
      },
      {
-      "q": "What grows from the verb 'employ'?",
-      "options": [
-       "a whole family of words",
-       "nothing new",
-       "only one noun"
-      ],
-      "answer": 0
+      "left": "responsibility",
+      "right": "a duty that you are expected to deal with"
      },
      {
-      "q": "Who interviewed a nurse?",
-      "options": [
-       "Liam",
-       "Mateo",
-       "Sofía"
-      ],
-      "answer": 2
-     },
-     {
-      "q": "What did the electrician value most?",
-      "options": [
-       "qualifications and expertise",
-       "money and fame",
-       "long holidays"
-      ],
-      "answer": 0
-     },
-     {
-      "q": "According to Liam, learning one root is like …",
-      "options": [
-       "wasting your time",
-       "getting several words for free",
-       "forgetting old words"
-      ],
-      "answer": 1
+      "left": "professional",
+      "right": "showing skill and good judgement at work"
      }
     ]
    }
   },
   {
    "code": "C",
+   "type": "multiple_matching",
+   "title": "Reading and Use of English Part 7 — multiple matching. Read about four students' first jobs and match the questions to the person.",
+   "outputs": [
+    "digital"
+   ],
+   "tips": {
+    "expect": "One text divided into several short sections, usually different people talking about a related experience, followed by ten questions. Each question matches one section; a section can match more than one question.",
+    "how": [
+     "Read the ten questions first and underline the key idea of each one.",
+     "Read each section and note, in one word, what it is mainly about — then check it against the questions.",
+     "The questions paraphrase the text closely: look for a different way of saying the same idea, not the same words repeated."
+    ],
+    "remember": "Do not assume the answers follow the order of the sections — work through the text in order and tick off questions as you find them."
+   },
+   "data": {
+    "title": "My first taste of work",
+    "intro": "As part of Inspiring Nordic, five Grade 10 and 11 students describe the first job or apprenticeship that taught them something about the world of work.<br><br>For questions 1–10, choose from the people (A–E). The people may be chosen more than once.",
+    "sections": [
+     {
+      "letter": "A",
+      "heading": "Sofía",
+      "text": "I got my first job last summer, at a small bakery two streets from my house. I remember being nervous on my very first morning — I had never worked with the public before, and I was worried I would make a mess of the till. The owner, Mrs Lund, paired me with an older colleague called Erik, and within a week we had become a proper team. He taught me how to organise the shelves and how to talk to customers who were in a hurry. By the end of the summer I had discovered something surprising: I actually enjoyed being given responsibility, from opening the shop to counting the money at closing time. It made me feel useful in a way that school rarely does."
+     },
+     {
+      "letter": "B",
+      "heading": "Mateo",
+      "text": "My uncle is an electrician, and last winter he let me help him on small jobs at weekends. Everything I know, I learned directly from him — how to read a wiring plan, how to stay safe around a live circuit, and, above all, patience. At first I found the work repetitive, but then he let me finish a job on my own, under his eyes, and something clicked. Now I am saving every spare pound so that I can enrol on a proper electrical course next year and finally get an official qualification. My uncle says that a good tradesperson never stops learning, and I believe him completely — every visit teaches me something new about the trade."
+     },
+     {
+      "letter": "C",
+      "heading": "Liam",
+      "text": "For two summers I have worked as a lifeguard at our local pool, and it is nothing like I expected. The early starts were hard at first, but the real challenge is staying completely calm if something goes wrong, because panicking helps nobody. My colleagues and I check the water constantly, and we trust each other completely — one whistle from anyone and we all react at once. Once I actually had to pull a young boy out of the deep end, and afterwards my hands were shaking, though my voice stayed steady the whole time. With the money I earned I finally bought the racing bike I had wanted for two years, which felt like the perfect reward."
+     },
+     {
+      "letter": "D",
+      "heading": "Nadia",
+      "text": "I never planned to get a job at the animal shelter; I started by volunteering there on Saturdays because I love dogs. After a few months the manager noticed how reliable I had become and offered me a few paid hours during the week, feeding the animals and cleaning their cages. It is not glamorous work, but caring for a frightened rescue dog and watching it relax is genuinely rewarding. Through the shelter I met a vet who let me watch her examine the animals, and now I am seriously considering training in animal care once I finish school — something I would never have imagined a year ago."
+     },
+     {
+      "letter": "E",
+      "heading": "Astrid",
+      "text": "Last summer I did a two-month apprenticeship at my grandfather's old boatyard, learning how traditional wooden boats are repaired. Nobody warned me how physically demanding it would be: by the first evening my arms ached from sanding and lifting, and I nearly gave up. My mentor, an elderly craftsman named Sven, never raised his voice, even when I made mistakes, and slowly I began to understand the pride he takes in his work. He earns far less than my cousin who works in an office, yet he is clearly the happier of the two. That summer taught me that a well-paid job is not automatically the most satisfying one."
+     }
+    ],
+    "questions": [
+     {
+      "q": "Which person felt nervous before their first day at work?",
+      "answer": "A"
+     },
+     {
+      "q": "Which person learned their skills directly from a family member?",
+      "answer": "B"
+     },
+     {
+      "q": "Which person had to stay calm during an emergency?",
+      "answer": "C"
+     },
+     {
+      "q": "Which person began the work without being paid?",
+      "answer": "D"
+     },
+     {
+      "q": "Which person found the physical side of the job harder than expected?",
+      "answer": "E"
+     },
+     {
+      "q": "Which person now enjoys being trusted with responsibility?",
+      "answer": "A"
+     },
+     {
+      "q": "Which person is working towards an official qualification?",
+      "answer": "B"
+     },
+     {
+      "q": "Which person used their wages to buy something they had wanted for a long time?",
+      "answer": "C"
+     },
+     {
+      "q": "Which person is now thinking about a completely different career path?",
+      "answer": "D"
+     },
+     {
+      "q": "Which person realised that money is not the most important part of a job?",
+      "answer": "E"
+     }
+    ]
+   }
+  },
+  {
+   "code": "D",
    "type": "grammar_box",
-   "title": "Grammar — Word formation for B2",
+   "title": "Language focus 1 — word formation: suffixes and prefixes",
    "outputs": [
     "book",
-    "digital",
-    "quiz"
+    "digital"
    ],
    "data": {
-    "title": "Word formation for B2",
-    "intro": "In word formation you change the form of a root word — usually by adding a suffix or prefix — so that it fits the gap. Common changes make nouns, adjectives, adverbs, or opposites.",
+    "title": "Word formation for B2: suffixes and prefixes",
+    "can": "I can change a root word into the noun, adjective, adverb or negative form that a sentence needs, using the suffixes and prefixes tested in Part 3.",
+    "intro": "In the word-formation task you are given a root word in capitals and you must change its form — often its word class — so that it fits the gap naturally. Recognising the common suffixes and prefixes below will help you do this quickly and confidently.",
     "examples": [
      {
-      "text": "They offered her secure <b>employment</b>.",
+      "text": "A good apprentice needs real <b>commitment</b>.",
       "note": "verb → noun (-ment)"
      },
      {
-      "text": "He is a very <b>reliable</b> worker.",
-      "note": "verb → adjective (-able)"
+      "text": "Her <b>motivation</b> never seems to fade.",
+      "note": "verb → noun (-tion)"
      },
      {
-      "text": "She spoke <b>professionally</b> to the client.",
-      "note": "noun → adverb (-ly)"
+      "text": "They admired his <b>kindness</b> towards new staff.",
+      "note": "adjective → noun (-ness)"
      },
      {
-      "text": "Sadly, <b>unemployment</b> rose last year.",
+      "text": "Good <b>reliability</b> matters more than speed.",
+      "note": "adjective → noun (-ity)"
+     },
+     {
+      "text": "She began her <b>apprenticeship</b> at sixteen.",
+      "note": "noun → noun (-ship)"
+     },
+     {
+      "text": "He is a <b>resourceful</b> young mechanic.",
+      "note": "noun → adjective (-ful)"
+     },
+     {
+      "text": "She is remarkably <b>creative</b> under pressure.",
+      "note": "noun → adjective (-ive)"
+     },
+     {
+      "text": "He spoke <b>confidently</b> to the client.",
+      "note": "adjective → adverb (-ly)"
+     },
+     {
+      "text": "Sadly, <b>unemployment</b> is still rising locally.",
       "note": "negative prefix (un-)"
+     },
+     {
+      "text": "Many apprentices feel <b>disorganised</b> in their first week.",
+      "note": "negative prefix (dis-)"
      }
     ],
     "rules": [
-     "Suffixes often change word class: <b>-ment/-tion/-ity</b> make nouns, <b>-able/-ful/-ive</b> make adjectives, <b>-ly</b> makes adverbs.",
-     "Negative prefixes like <b>un-, in-, im-, dis-</b> reverse the meaning (happy → unhappy).",
-     "Read the whole sentence: decide the word class and whether it is positive, negative, singular or plural."
+     "Noun suffixes: <b>-ment, -tion, -ness, -ity, -ship</b> (commit→commitment, motivate→motivation, kind→kindness, reliable→reliability, apprentice→apprenticeship).",
+     "Adjective suffixes: <b>-ful, -less, -ous, -al, -ive</b> (resource→resourceful, care→careless, ambition→ambitious, profession→professional, create→creative).",
+     "Adverb suffix: <b>-ly</b> is added to the adjective, not the root (confident→confidently, professional→professionally).",
+     "Negative prefixes <b>un-, in-, dis-, im-</b> reverse the meaning: employ→unemployed, formal→informal, organise→disorganise, possible→impossible. There is no fixed rule for which prefix a word takes — learn them with the word.",
+     "Read the whole sentence before you decide: is the missing word positive or negative? singular or plural? a person (-er/-or) or a quality (-ness/-ity)?"
     ],
     "practice": {
      "instructions": "Choose the correct form of the word in capitals.",
      "items": [
       {
-       "sentence": "The job gives her a real sense of ___. (RESPONSIBLE)",
+       "sentence": "My cousin has a ___ job in finance, but he never has time for his hobbies. (PAY well)",
        "options": [
-        "responsibly",
-        "responsible",
-        "responsibility"
-       ],
-       "answer": 2
-      },
-      {
-       "sentence": "He solved the problem very ___. (CREATIVE)",
-       "options": [
-        "creativity",
-        "creative",
-        "creatively"
-       ],
-       "answer": 2
-      },
-      {
-       "sentence": "Sadly, ___ rose again this year. (EMPLOY)",
-       "options": [
-        "unemployment",
-        "employment",
-        "employee"
+        "well-paid",
+        "hard-working",
+        "fulfilling"
        ],
        "answer": 0
       },
       {
-       "sentence": "A good electrician must be ___. (RELY)",
+       "sentence": "Her ___ is obvious in everything she does. (MOTIVATE)",
        "options": [
-        "reliably",
-        "reliable",
-        "reliability"
+        "motivate",
+        "motivating",
+        "motivation"
+       ],
+       "answer": 2
+      },
+      {
+       "sentence": "He always gives a ___ answer to difficult questions, even under pressure. (RESOURCE)",
+       "options": [
+        "resourceful",
+        "resource",
+        "resourcefully"
+       ],
+       "answer": 0
+      },
+      {
+       "sentence": "Sadly, local ___ has risen again this year. (EMPLOY)",
+       "options": [
+        "employment",
+        "unemployment",
+        "employable"
        ],
        "answer": 1
       },
       {
-       "sentence": "We admired her ___ and skill. (EXPERT)",
+       "sentence": "She spoke very ___ during the interview for the apprenticeship. (PROFESSION)",
        "options": [
-        "expertly",
-        "expertise",
-        "experted"
+        "professional",
+        "professionally",
+        "professionalism"
        ],
        "answer": 1
       }
@@ -224,150 +369,463 @@
    }
   },
   {
-   "code": "D",
-   "type": "key_transform",
-   "title": "Use of English Part 4 — key word transformations",
-   "outputs": [
-    "book",
-    "digital",
-    "quiz"
-   ],
-   "data": {
-    "instructions": "Complete the second sentence so that it means the same as the first. Use the KEY WORD. Write between two and five words.",
-    "items": [
-     {
-      "first": "She acts in a professional manner at work.",
-      "key": "PROFESSIONALLY",
-      "second_start": "She",
-      "second_end": "at work.",
-      "answers": [
-       "acts very professionally",
-       "behaves professionally"
-      ]
-     },
-     {
-      "first": "It is not easy to replace a reliable worker.",
-      "key": "IMPOSSIBLE",
-      "second_start": "It is nearly",
-      "second_end": "a reliable worker.",
-      "answers": [
-       "impossible to replace"
-      ]
-     },
-     {
-      "first": "The team works together extremely well.",
-      "key": "TEAMWORK",
-      "second_start": "The team shows",
-      "second_end": ".",
-      "answers": [
-       "excellent teamwork",
-       "very good teamwork"
-      ]
-     },
-     {
-      "first": "We can always depend on him.",
-      "key": "RELIABLE",
-      "second_start": "He is",
-      "second_end": ".",
-      "answers": [
-       "extremely reliable",
-       "very reliable"
-      ]
-     },
-     {
-      "first": "More and more people lost their jobs last year.",
-      "key": "UNEMPLOYMENT",
-      "second_start": "Last year, there was a rise in",
-      "second_end": ".",
-      "answers": [
-       "the level of unemployment"
-      ]
-     }
-    ]
-   }
-  },
-  {
    "code": "E",
-   "type": "gap_text",
-   "title": "Use of English Part 2 — open cloze. Write ONE word in each gap.",
+   "type": "word_formation",
+   "title": "Reading and Use of English Part 3 — word formation. Use the word in capitals to form a word that fits each gap.",
    "outputs": [
-    "book",
-    "digital",
-    "quiz"
+    "digital"
    ],
-   "data": {
-    "box": [
-     "which",
-     "can",
-     "with",
-     "if",
-     "that",
-     "in"
+   "tips": {
+    "expect": "A short text with eight gaps. Each gap has a root word in capitals beside it; you must change its form — often into a different word class — to complete the sentence correctly.",
+    "how": [
+     "Decide first what part of speech the gap needs: a noun, an adjective, an adverb, or perhaps a negative form.",
+     "Check for a plural, a negative prefix, or a change of spelling before you commit to an answer.",
+     "Once you've written your answer, read the whole sentence again — does it make sense and sound natural?"
     ],
-    "text": "English is a language {1} builds new words easily. From one root you {2} make many forms. For example, the verb 'employ' gives us 'employment' and, {3} a negative prefix, 'unemployment'. {4} you know the common suffixes, you can guess words {5} you have never seen before. This skill is tested {6} the Cambridge exam.",
+    "remember": "The base word almost never fits the gap unchanged — if your answer is identical to the word in capitals, look again."
+   },
+   "data": {
+    "title": "Learning a trade the Nordic way",
+    "text": "Across the region, an increasing number of teenagers are choosing an {1:APPRENTICE} instead of going straight to university, and the change is easy to notice in every local workshop. The shift reflects growing {2:MOTIVATE} among young people who want practical, hands-on skills rather than another three years in a classroom. Local employers say that {3:RELY} workers are hard to find, so many are happy to train teenagers themselves rather than wait for the perfect finished candidate to apply. According to one carpenter who has taken on apprentices for a decade, the {4:RESPONSIBLE} of guiding a new apprentice is genuinely {5:REWARD}, even when it slows the job down and tests his patience. Schools, too, have become far more {6:PROFESSION} about the process lately, offering proper careers advice and organising visits to local workshops so that students can see a trade close up before choosing it. Critics once thought that manual trades were {7:USE} for ambitious students, something to fall back on rather than aim for, but that old opinion is now {8:DOUBT} out of date. Employers, teachers and students all seem to agree: learning a trade properly builds confidence as fast as any exam does.",
     "answers": [
-     "which",
-     "can",
-     "with",
-     "If",
-     "that",
-     "in"
+     "apprenticeship",
+     "motivation",
+     "reliable",
+     "responsibility",
+     "rewarding",
+     "professional",
+     "useless",
+     "undoubtedly"
     ]
    }
   },
   {
    "code": "F",
-   "type": "listening",
-   "title": "Listening — the word-formation task. Write ONE word in each gap.",
+   "type": "listening_mc",
+   "title": "Listening Part 4 — multiple choice. Listen to the interview and choose the best answer.",
    "outputs": [
-    "digital",
-    "quiz"
+    "digital"
    ],
    "audio": "b2f/u03-f.mp3",
+   "tips": {
+    "expect": "A single interview or conversation of about four minutes, with seven four-option questions testing opinion, attitude, detail and general meaning. You hear it twice.",
+    "how": [
+     "Before listening, read all seven questions and options — they follow the order of the interview.",
+     "Listen for the speaker's opinion or feeling, not just facts: a change of tone or a phrase like 'to be honest' often signals the answer.",
+     "On the second listening, check any answers you were unsure of and eliminate options that are only partly true."
+    ],
+    "remember": "Wrong options are often mentioned in the recording but twisted slightly — choose what the speaker really means, not just what you recognise."
+   },
    "data": {
-    "voice_note": "Voz: la profesora (Miss Vega), sobre la tarea de formación de palabras.",
-    "script": "Hello, Grade 10. Today we focus on word formation, which appears in Part three of the exam. Remember three simple tricks. First, decide the word class you need: a noun, an adjective, or an adverb. Second, watch for negative prefixes; sometimes the answer must be negative, like unemployment. Third, check whether the noun should be plural. For homework, choose one root, such as employ, and build a whole family of words around it. Nadia will collect your lists on Friday. Work carefully, and your vocabulary will grow quickly.",
-    "questions": [
+    "voice_note": "Presenter (Ryan) interviews Sven, a boat-builder, about his trade and his apprenticeship.",
+    "script": "Presenter: Welcome back to Career Talk, the programme where we meet people who love their trade. Today I'm speaking to Sven, who has been building traditional wooden boats for over twenty years. Sven, thanks for joining us.\nSven: It's a pleasure to be here, Ryan.\nPresenter: Let's start at the beginning. How did you actually get into boat-building?\nSven: Almost by accident, to be honest. I left school without much idea of what I wanted to do, and a neighbour who ran a small boatyard offered me a few weeks of work over the summer. I only meant to stay until September, but I never really left. Twenty-two years later, here I still am.\nPresenter: What was your apprenticeship actually like?\nSven: Hard, in the best sense. My first jobs were sanding, sweeping and carrying wood — nothing glamorous at all. The owner, old Lars, barely explained anything; he expected me to watch closely and ask questions only when I was truly stuck. It frustrated me at first, but I now think it was the right approach, because I learned to notice details for myself instead of waiting to be told.\nPresenter: Many people assume a trade like yours is badly paid. Is that fair?\nSven: It's true that I earn less than friends who went into finance or law, and I won't pretend that never bothers me. But I measure the job differently. When a family sails away in a boat I repaired with my own hands, that feeling is worth more to me than a bigger salary would be. Money isn't nothing, but it isn't everything either.\nPresenter: What do you enjoy least about the work?\nSven: The waiting, honestly. Wood needs time — glue needs time to set, paint needs time to dry — and in a world that wants everything instantly, that patience is hard for some young apprentices to accept. I still have to remind myself, after all these years, that rushing a boat never actually saves time in the end; it just creates a boat that leaks.\nPresenter: What advice would you give a teenager considering an apprenticeship like yours?\nSven: Don't choose it because you dislike school; choose it because you genuinely want to build something with your hands. And find a workshop where the older workers are willing to teach, not just to give orders — that difference matters more than people realise. A good mentor can turn a difficult first year into an enjoyable one.\nPresenter: Finally, what keeps you motivated after two decades in the same boatyard?\nSven: Every boat is slightly different, so I'm never doing exactly the same job twice. And, honestly, there's something quietly satisfying about a trade that will still matter in a hundred years, long after most of today's fashionable jobs have disappeared.\nPresenter: Sven, thank you very much for your time.\nSven: Thank you, Ryan. It's been a pleasure.",
+    "extracts": [
      {
-      "q": "Word formation appears in which part of the exam? Part …",
-      "answer": "three"
-     },
-     {
-      "q": "First, decide the word … you need.",
-      "answer": "class"
-     },
-     {
-      "q": "Watch for negative …",
-      "answer": "prefixes"
-     },
-     {
-      "q": "Check whether the noun should be …",
-      "answer": "plural"
-     },
-     {
-      "q": "… will collect your lists on Friday.",
-      "answer": "Nadia"
+      "title": "Career Talk: a boat-builder's story",
+      "intro": "You will hear an interview with Sven, a boat-builder, about his trade.",
+      "questions": [
+       {
+        "q": "Why did Sven originally start working at the boatyard?",
+        "options": [
+         "He had always dreamed of building boats.",
+         "He needed the money badly.",
+         "He took a summer job almost by chance.",
+         "His father owned the boatyard."
+        ],
+        "answer": 2
+       },
+       {
+        "q": "How does Sven describe his early days as an apprentice?",
+        "options": [
+         "Exciting and full of variety.",
+         "Repetitive, with very little explanation.",
+         "Carefully organised with clear instructions.",
+         "Mostly spent studying design plans."
+        ],
+        "answer": 1
+       },
+       {
+        "q": "What does Sven now think about Lars's teaching method?",
+        "options": [
+         "It was unfair to a beginner.",
+         "It taught him nothing useful.",
+         "He never understood the reason for it.",
+         "It helped him learn to notice things for himself."
+        ],
+        "answer": 3
+       },
+       {
+        "q": "What is Sven's attitude to earning less than his friends in finance or law?",
+        "options": [
+         "He admits it sometimes bothers him, but other things matter more.",
+         "He denies that it is even true.",
+         "He regrets not choosing a better-paid career.",
+         "He plans to leave the boatyard soon."
+        ],
+        "answer": 0
+       },
+       {
+        "q": "What does Sven say he enjoys least about the work?",
+        "options": [
+         "Dealing with difficult customers.",
+         "The physical tiredness at the end of the day.",
+         "Having to wait for materials like glue and paint.",
+         "Working alone for long periods."
+        ],
+        "answer": 2
+       },
+       {
+        "q": "What advice does Sven give to a teenager thinking about an apprenticeship?",
+        "options": [
+         "Choose it mainly if you dislike school.",
+         "Expect the older workers to give clear orders.",
+         "Find the best-paid workshop you can.",
+         "Choose it because you want to build things, and find workshops willing to teach."
+        ],
+        "answer": 3
+       },
+       {
+        "q": "What does Sven say keeps him motivated after twenty years?",
+        "options": [
+         "The chance to train new apprentices.",
+         "No two boats being exactly the same, and the lasting value of the trade.",
+         "The steady increase in his salary.",
+         "Competing with other boatyards in the area."
+        ],
+        "answer": 1
+       }
+      ]
      }
     ]
    }
   },
   {
    "code": "G",
-   "type": "pairwork",
-   "title": "Speaking — skills and word families. In pairs, then record it.",
+   "type": "grammar_box",
+   "title": "Language focus 2 — compound adjectives and -ing/-ed adjectives",
    "outputs": [
     "book",
     "digital"
    ],
    "data": {
-    "text": "In pairs, talk about skills and jobs. Model: “A good nurse needs patience, reliability and real expertise.” 1) Which three qualities make someone employable, and why? 2) Turn each quality into a noun, an adjective and an adverb (e.g. create → creativity → creative → creatively). 3) Which job in your town do people most admire, and what skills does it need? Give reasons and examples, then record your discussion."
+    "title": "Compound adjectives and -ing/-ed adjectives for describing jobs",
+    "can": "I can build compound adjectives like well-paid and hard-working, and choose correctly between an -ing and an -ed adjective.",
+    "intro": "English often describes a job or a worker by joining two words together with a hyphen, or by using the -ing/-ed forms of a verb as adjectives. Getting these right makes your speaking and writing sound much more natural.",
+    "examples": [
+     {
+      "text": "She finally found a <b>well-paid</b> job in the city.",
+      "note": "adverb + past participle"
+     },
+     {
+      "text": "He has always been extremely <b>hard-working</b>.",
+      "note": "adjective + present participle"
+     },
+     {
+      "text": "It isn't a <b>badly-paid</b> job, but it's exhausting.",
+      "note": "adverb + past participle (negative)"
+     },
+     {
+      "text": "Many apprentices find the first year <b>rewarding</b>.",
+      "note": "-ing adjective: the job causes the feeling"
+     },
+     {
+      "text": "By the end of the day the apprentices felt <b>rewarded</b>.",
+      "note": "-ed adjective: the person feels the result"
+     },
+     {
+      "text": "A genuinely <b>fulfilling</b> career doesn't have to be well-paid.",
+      "note": "-ing adjective from 'fulfil'"
+     },
+     {
+      "text": "After the long shift, Sven looked completely <b>exhausted</b>.",
+      "note": "-ed adjective describes the person"
+     }
+    ],
+    "rules": [
+     "Compound adjectives often follow the pattern adverb/noun + past participle: <b>well-paid, badly-paid, hand-made, self-employed</b>. They go before the noun and never change form.",
+     "Compound adjectives can also be adjective/noun + present participle: <b>hard-working, good-looking, easy-going</b>.",
+     "-ing adjectives describe what causes a feeling (a <b>rewarding</b> job, a <b>motivating</b> boss); -ed adjectives describe the person who feels it (a <b>motivated</b> apprentice, an <b>exhausted</b> worker).",
+     "Do not confuse the two: 'I am boring' means you cause boredom in others; 'I am bored' means you feel it.",
+     "Hyphenate compound adjectives before a noun (<i>a well-paid job</i>); many are also used after 'be' without changing (<i>the job is well-paid</i>)."
+    ],
+    "practice": {
+     "instructions": "Choose the word that fits each gap.",
+     "items": [
+      {
+       "sentence": "My cousin has a ___ job in finance, but he never has time for his hobbies.",
+       "options": [
+        "well-paid",
+        "hard-working",
+        "fulfilling"
+       ],
+       "answer": 0
+      },
+      {
+       "sentence": "Sofía is one of the most ___ students in our class — she never stops trying.",
+       "options": [
+        "well-paid",
+        "hard-working",
+        "rewarded"
+       ],
+       "answer": 1
+      },
+      {
+       "sentence": "I find volunteering at the shelter really ___, even though nobody pays me.",
+       "options": [
+        "rewarding",
+        "rewarded",
+        "reward"
+       ],
+       "answer": 0
+      },
+      {
+       "sentence": "After the exam, the students felt completely ___.",
+       "options": [
+        "exhausting",
+        "exhaust",
+        "exhausted"
+       ],
+       "answer": 2
+      },
+      {
+       "sentence": "A truly ___ boss knows how to keep the whole team motivated.",
+       "options": [
+        "motivated",
+        "motivating",
+        "motivate"
+       ],
+       "answer": 1
+      }
+     ]
+    }
+   }
+  },
+  {
+   "code": "H",
+   "type": "key_transform",
+   "title": "Reading and Use of English Part 4 — key word transformations",
+   "outputs": [
+    "digital"
+   ],
+   "tips": {
+    "expect": "Six separate sentences. For each, you complete a second sentence with the same meaning as the first, using a given key word that must not be changed. You write between two and five words, including the key word. Each item is worth up to two marks.",
+    "how": [
+     "Identify the structure being tested — often a fixed phrase, a comparative, a passive, or a verb pattern.",
+     "Write the whole gap first, then read the complete sentence: does it mean exactly the same as the first sentence?",
+     "Count your words carefully, including the key word — going over five words scores nothing, even if the grammar is correct."
+    ],
+    "remember": "You can often score half marks: getting the main structure right, even with a small error, is better than leaving the gap empty."
+   },
+   "data": {
+    "instructions": "Complete the second sentence so that it means the same as the first sentence, using the word given. Do not change the word given. You must use between two and five words, including the word given.",
+    "items": [
+     {
+      "first": "Mateo learns everything about electrics from his uncle.",
+      "key": "TAUGHT",
+      "second_start": "Mateo",
+      "second_end": "everything about electrics by his uncle.",
+      "answers": [
+       "is taught",
+       "gets taught"
+      ]
+     },
+     {
+      "first": "It wasn't necessary for Liam to attend every training session.",
+      "key": "HAVE",
+      "second_start": "Liam",
+      "second_end": "attend every training session.",
+      "answers": [
+       "didn't have to",
+       "did not have to"
+      ]
+     },
+     {
+      "first": "Nadia is sure that she will pass the course.",
+      "key": "DOUBT",
+      "second_start": "Nadia has",
+      "second_end": "passing the course.",
+      "answers": [
+       "no doubt about",
+       "not the slightest doubt about"
+      ]
+     },
+     {
+      "first": "Someone repairs the old fishing boats every winter.",
+      "key": "REPAIRED",
+      "second_start": "The old fishing boats",
+      "second_end": "every winter.",
+      "answers": [
+       "are repaired"
+      ]
+     },
+     {
+      "first": "Sven's pride in his work was so obvious that everyone noticed it.",
+      "key": "SUCH",
+      "second_start": "",
+      "second_end": "that everyone noticed it.",
+      "answers": [
+       "such was his pride",
+       "such was his obvious pride"
+      ]
+     },
+     {
+      "first": "Fewer teenagers choose traditional trades than they used to.",
+      "key": "DECLINE",
+      "second_start": "The number of teenagers choosing traditional trades",
+      "second_end": "in recent years.",
+      "answers": [
+       "is in decline",
+       "has gone into decline"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "code": "I",
+   "type": "writing",
+   "title": "Writing Part 2 — article. Plan, write 140–190 words and hand it in.",
+   "outputs": [
+    "digital"
+   ],
+   "tips": {
+    "expect": "Part 2 offers a choice of task types — often an article, an email, a review or a story. For an article you usually respond to a question for a magazine read by other students, using an engaging opening and a personal, friendly tone. 140–190 words, neutral to informal register.",
+    "how": [
+     "Grab the reader's attention in your opening line — a question, a surprising statement, or a mini scene works well.",
+     "Organise your ideas in short paragraphs, each with one clear idea.",
+     "Address the reader directly sometimes (<i>you might think…, imagine…</i>) — that's what makes an article different from an essay."
+    ],
+    "remember": "An article is read for interest, not just information — a flat list of facts without any personal voice loses marks for communicative achievement."
+   },
+   "data": {
+    "part": 2,
+    "genre": "article",
+    "words": [
+     140,
+     190
+    ],
+    "task": "<p>You see this announcement on your school's website.</p><blockquote><p><b>Articles wanted for the school magazine!</b></p><p><b>The job I'd love to do</b></p><p>Tell us about a job you would love to do one day. What does the job involve? Why does it appeal to you, and what skills or qualifications would you need?</p><p>The best articles will be published in our next issue.</p></blockquote><p>Write your <b>article</b>.</p>",
+    "plan": [
+     "<b>Opening</b> (1–2 sentences): grab attention — a question or a short scene, then name the job.",
+     "<b>Paragraph 2</b>: what the job involves, in your own words, and why it appeals to you personally.",
+     "<b>Paragraph 3</b>: the skills, qualities or qualifications the job would need, using at least one word-formation item from this unit.",
+     "<b>Closing</b>: a short, memorable final thought — not a formal conclusion."
+    ],
+    "useful_language": {
+     "Grabbing attention": [
+      "Have you ever wondered what it's like to…?",
+      "Picture this: …",
+      "Ever since I was little, I've dreamt of…"
+     ],
+     "Explaining appeal": [
+      "What appeals to me most is…",
+      "I love the idea of…",
+      "Unlike most jobs, this one would let me…"
+     ],
+     "Talking about skills": [
+      "You would need to be genuinely…",
+      "It calls for real…",
+      "Above all, you need…"
+     ],
+     "Closing": [
+      "So watch this space — one day that could be me.",
+      "Who knows? Maybe I'll see you there.",
+      "One thing's for sure: I won't be choosing a boring job."
+     ]
+    },
+    "checklist": [
+     "My opening line would make someone want to keep reading.",
+     "I named the job early and explained why it appeals to me.",
+     "I mentioned real skills or qualifications, using at least one word-formation word.",
+     "My tone is personal and friendly, suitable for a school magazine.",
+     "I organised my ideas into clear short paragraphs with a strong closing line.",
+     "Between 140 and 190 words."
+    ],
+    "model": "<p><i>A model answer (146 words). Notice the engaging opening, the personal tone and the short, magazine-style paragraphs.</i></p><p>Ever since I watched a documentary about wildlife photographers, I've dreamt of one job: travelling the world with a camera, capturing animals that most people will never see in real life.</p><p>What appeals to me most is the mixture of patience and adventure. You might wait three days in the rain for one perfect shot of a fox, then fly somewhere completely different the following week. It's never, ever boring.</p><p>Of course, it isn't an easy career to fall into. You would need real technical expertise with cameras and editing software, and a qualification in biology or environmental science definitely helps. More than anything, though, you need to be hard-working and endlessly patient — nature doesn't perform on command.</p><p>Will I actually manage it? I honestly don't know. But every time I pick up a camera, it feels like the right direction to be heading in.</p>"
+   }
+  },
+  {
+   "code": "J",
+   "type": "pairwork",
+   "title": "Speaking — Parts 3 and 4. Collaborative task and discussion. Record your best answer.",
+   "outputs": [
+    "book",
+    "digital"
+   ],
+   "speaking": {
+    "part": 3,
+    "name": "Collaborative task and discussion"
+   },
+   "tips": {
+    "expect": "Part 3 (about 4 minutes): you and your partner discuss a question using five written prompts for about two minutes, then take one minute to reach a decision together. Part 4 (about 4 minutes): the examiner asks you both broader questions on the same topic.",
+    "how": [
+     "In Part 3 you are marked on how you interact, not on whether you agree — ask your partner's opinion and respond to it.",
+     "You don't have to discuss all five prompts. Two or three, explored properly, are better than five rushed ones.",
+     "In the decision minute, negotiate rather than simply agreeing: give a reason for your final choice.",
+     "In Part 4, extend your answers with a reason and an example — don't just answer yes or no."
+    ],
+    "remember": "Look at your partner during Part 3, not at the examiner — the examiner is assessing your conversation, not judging your opinions."
+   },
+   "data": {
+    "text": "Part 3: discuss which of these qualities matters most in a job, then decide together. Part 4: discuss work, motivation and choosing a career.",
+    "parts": [
+     {
+      "part": 3,
+      "title": "Collaborative task",
+      "time": "2 min + 1 min",
+      "intro": "Here are some qualities that people look for in a job. Talk to each other about <b>how important each of these qualities is when choosing a job</b>.",
+      "centre": "How important is each quality when choosing a job?",
+      "spokes": [
+       "a high salary",
+       "job security",
+       "interesting daily tasks",
+       "opportunities for training",
+       "a good team to work with"
+      ],
+      "decide": "Now you have a minute to decide <b>which single quality you would find hardest to give up</b>."
+     },
+     {
+      "part": 4,
+      "title": "Further discussion",
+      "time": "4 min",
+      "prompts": [
+       "Some people say that money is the most important reason to work. Do you agree?",
+       "Do you think schools prepare students well enough for the world of work?",
+       "Is it better to have one job for life or to change jobs often? Why?",
+       "How important is it to enjoy your job, rather than just to be good at it?",
+       "Do you think apprenticeships should be as respected as university degrees?"
+      ]
+     }
+    ],
+    "useful_language": {
+     "Involving your partner": [
+      "What do you reckon?",
+      "Would you agree that…?",
+      "How about you — what matters most to you?"
+     ],
+     "Building on an idea": [
+      "That's a fair point, and I'd add that…",
+      "Following on from that…",
+      "Not only that, but…"
+     ],
+     "Reaching a decision": [
+      "Shall we go for…?",
+      "I'd lean towards…, if that's alright with you.",
+      "We could compromise and say…"
+     ],
+     "Part 4: developing an answer": [
+      "I'd say that largely depends on…",
+      "There's definitely a case for…",
+      "Personally, I feel that…"
+     ]
+    }
    }
   }
  ],
  "homework": [
   {
    "type": "write_sentences",
-   "prompt": "Choose four root words connected with work (e.g. employ, create, rely, profession). For each, write two sentences using different formed words — a noun, an adjective, an adverb or a negative form. Aim for 8–10 sentences in total. Capital letters and full stops!"
+   "prompt": "Choose four jobs from this unit or your own ideas. For each one, write two sentences: one using a word-formation item (a noun, an adjective, an adverb or a negative form) and one using a compound adjective like well-paid, hard-working or rewarding. Aim for 8 sentences in total. Capital letters and full stops!"
   }
  ],
  "scope": {
@@ -377,42 +835,39 @@
   "outcomes": [
    {
     "destreza": "Listening",
-    "puede": "Understand advice about an exam task and note key points (B2 First Listening)."
+    "puede": "Understand a four-minute interview about a trade and answer detailed multiple-choice questions (B2 First Listening Part 4)."
    },
    {
     "destreza": "Speaking",
-    "puede": "Discuss skills and careers, forming word families accurately (B2 First Speaking)."
+    "puede": "Compare two photographs, negotiate a decision with a partner and discuss work and motivation (B2 First Speaking Parts 1–4)."
    },
    {
     "destreza": "Reading",
-    "puede": "Read an informative text about language and work (B2 First Reading)."
+    "puede": "Match ten questions to short personal accounts about first jobs (B2 First Reading and Use of English Part 7)."
    },
    {
     "destreza": "Writing",
-    "puede": "Write sentences that show control of word formation."
+    "puede": "Plan and write a 140–190-word article for a school magazine with a personal, engaging tone (B2 First Writing Part 2)."
    },
    {
     "destreza": "Use of English",
-    "puede": "Word formation with suffixes and prefixes (Part 3)."
+    "puede": "Word formation with suffixes and prefixes (Part 3) and key word transformations (Part 4)."
    }
   ],
   "vocabulario": [
    "employment",
+   "employer",
+   "unemployment",
    "qualification",
    "reliable",
-   "ambition",
-   "expertise",
-   "productive"
+   "rewarding"
   ],
   "gramatica": [
    "Word formation: suffixes and prefixes",
-   "Word-formation task (Part 3)"
+   "Compound adjectives and -ing/-ed adjectives",
+   "Reading Part 7: multiple matching",
+   "Key word transformations (Part 4)"
   ],
   "pendiente": {}
- },
- "wordlist_extra": [
-  "apprenticeship",
-  "motivation",
-  "teamwork"
- ]
+ }
 }

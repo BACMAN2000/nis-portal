@@ -17,22 +17,101 @@
   "opportunity",
   "consequence"
  ],
+ "wordlist_extra": [
+  "society",
+  "fairness",
+  "empathy"
+ ],
  "exam_focus": {
   "paper": "Reading & Use of English",
-  "part": 4,
-  "skill": "key word transformations"
+  "part": 5,
+  "skill": "multiple choice"
  },
  "characters": [
   "nova"
  ],
  "scene": {
   "speaker": "nova",
-  "bubble": "Welcome to B2! We're reading Oliver Twist. Learn mixed conditionals — and master key word transformations.",
-  "intro": "Welcome to Grade 10 and to B2 First. This year the Inspiring Nordic project asks harder questions about society and fairness. In this unit you read what our club thinks about Dickens's Oliver Twist, you learn mixed conditionals to connect a past cause with a present result, and you practise the key word transformation task from the exam. How much does our past decide our present? Let's explore it."
+  "bubble": "Welcome to B2 First! This unit is about the past shaping the present — get ready for mixed conditionals, wish and if only, and your first Use of English tasks.",
+  "intro": "Welcome to Grade 10 and to B2 First. This year the Inspiring Nordic project asks harder questions about society and fairness — and about how much our past decides our present. In this unit our reading club discusses Dickens's Oliver Twist in the format of Reading Part 5, listens to Miss Vega in the format of Listening Part 2, learns mixed conditionals to connect a past cause with a present result, adds wish and if only for regrets, and writes your first Part 1 essay. If only... two words that carry a whole unit. Let's begin."
  },
  "activities": [
   {
    "code": "A",
+   "type": "pairwork",
+   "title": "Speaking — Parts 1 and 2. Talk with a partner, then record yourself.",
+   "outputs": [
+    "book",
+    "digital"
+   ],
+   "speaking": {
+    "part": 2,
+    "name": "Interview and long turn"
+   },
+   "tips": {
+    "expect": "Part 1 (2 minutes): the examiner asks you and your partner questions about yourselves — studies, family, plans. Part 2 (about 4 minutes for the pair): each of you talks alone for about a minute about two of three photographs, answering the question printed above them; then your partner answers a short question about your photographs in about 30 seconds.",
+    "how": [
+     "In Part 1, give a reason or a short example with your answer — don't just say yes or no.",
+     "In Part 2, don't describe all three photographs: choose two, compare them and answer the question. Use link words like <i>whereas</i>, <i>while</i> or <i>both</i>.",
+     "Speculate even when you're not sure: <i>she might be…, perhaps he's thinking about…</i>.",
+     "Keep talking for the full minute. If you finish saying everything about one photo, move straight to the other."
+    ],
+    "remember": "There is no 'correct' story behind the photographs. You are marked on your language, not on guessing what is really happening."
+   },
+   "data": {
+    "text": "Part 1: talk about decisions, family and plans. Part 2: compare two photographs and say what decision each person might be facing.",
+    "parts": [
+     {
+      "part": 1,
+      "title": "Interview",
+      "time": "2 min",
+      "prompts": [
+       "Tell me about a decision you made recently. Was it easy or difficult to make?",
+       "Is there something in your life you would do differently if you could go back? Why?",
+       "Do you think family has the biggest influence on who we become, or is it something else?",
+       "Who is someone whose past you find inspiring, and why?"
+      ]
+     },
+     {
+      "part": 2,
+      "title": "Long turn",
+      "time": "1 min + 30 s",
+      "question": "Compare the two photographs and say <b>what decision each person might be facing or have faced</b> and <b>how their life might be different if they had chosen differently</b>.",
+      "pictures": [
+       {
+        "emoji": "🧭🎒",
+        "caption": "a teenager looking at two paths through a forest"
+       },
+       {
+        "emoji": "📷👵",
+        "caption": "an elderly woman looking through an old photo album"
+       }
+      ],
+      "partner": "Which of these situations do you think is hardest to think about — choosing a path now, or looking back at old choices? (about 30 seconds)"
+     }
+    ],
+    "useful_language": {
+     "Speculating": [
+      "She might be…",
+      "Perhaps he's thinking about…",
+      "I imagine she's remembering…",
+      "It looks as though…"
+     ],
+     "Comparing": [
+      "Both photographs show…",
+      "While the teenager is…, the woman is…",
+      "In one picture…, but in the other…"
+     ],
+     "Giving your view": [
+      "In my opinion…",
+      "I think…, because…",
+      "If I were in that situation, I would…"
+     ]
+    }
+   }
+  },
+  {
+   "code": "B",
    "type": "match_words",
    "title": "Vocabulary — society and circumstance. Match each word with its meaning.",
    "outputs": [
@@ -53,8 +132,16 @@
       "right": "the way a child is raised by their family"
      },
      {
+      "left": "deserve",
+      "right": "to have earned something, good or bad, because of what you have done"
+     },
+     {
       "left": "overcome",
       "right": "to succeed in dealing with a difficulty"
+     },
+     {
+      "left": "privilege",
+      "right": "an advantage that only some people have"
      },
      {
       "left": "injustice",
@@ -62,116 +149,157 @@
      },
      {
       "left": "resilience",
-      "right": "the ability to recover from hard times"
+      "right": "the ability to recover quickly from difficulties"
      },
      {
-      "left": "privilege",
-      "right": "an advantage that only some people have"
-     }
-    ]
-   }
-  },
-  {
-   "code": "B",
-   "type": "reading",
-   "title": "Reading — the reading club on Oliver Twist",
-   "outputs": [
-    "book",
-    "digital",
-    "quiz"
-   ],
-   "data": {
-    "kicker": "Reading Club",
-    "title": "Oliver Twist: the past in the present",
-    "author": "mateo",
-    "byline": "by Mateo",
-    "text": "<p>Our Grade 10 reading club has begun <i>Oliver Twist</i> by Charles Dickens, and it has started some serious conversations. Oliver is an orphan who grows up in poverty and cruelty, yet somehow stays gentle and honest.</p><p>The novel raises an uncomfortable question: how much does our past decide our present? If Oliver had been born into a rich family, he wouldn't be suffering now. If society cared more about poor children, thousands of Olivers wouldn't exist today. These are 'mixed conditionals' — a past cause with a present result.</p><p>In our discussion, <b>Nadia</b> argued that circumstances are powerful but not everything. “If Oliver were a weaker person,” she said, “he would have given up long ago.” <b>Liam</b> added that we shouldn't judge people without knowing their story: “If I had grown up like Oliver, I might not be so confident today.”</p><p>Dickens wrote the book to change minds. In his time, many people believed the poor deserved their poverty. He wanted readers to feel the injustice — and to act.</p><p>Almost two hundred years later, the question remains. If we understood each other's stories better, our world would be kinder. That is a conditional worth making real.</p>",
-    "script": "Our Grade 10 reading club has begun Oliver Twist by Charles Dickens. Oliver is an orphan who grows up in poverty and cruelty, yet somehow stays gentle and honest. The novel raises an uncomfortable question: how much does our past decide our present? If Oliver had been born into a rich family, he wouldn't be suffering now. In our discussion, Nadia argued that circumstances are powerful but not everything. If Oliver were a weaker person, she said, he would have given up long ago. Liam added that we shouldn't judge people without knowing their story. Dickens wrote the book to change minds. Almost two hundred years later, the question remains: if we understood each other's stories better, our world would be kinder.",
-    "questions": [
-     {
-      "q": "Who is Oliver?",
-      "options": [
-       "a cruel businessman",
-       "a rich young lord",
-       "an orphan who grows up in poverty"
-      ],
-      "answer": 2
+      "left": "fate",
+      "right": "a power some people believe controls events, which cannot be changed"
      },
      {
-      "q": "What uncomfortable question does the novel raise?",
-      "options": [
-       "how to become rich quickly",
-       "how much our past decides our present",
-       "where to find the best food"
-      ],
-      "answer": 1
+      "left": "opportunity",
+      "right": "a chance to do something that could lead to a good result"
      },
      {
-      "q": "What did Nadia argue?",
-      "options": [
-       "circumstances are powerful but not everything",
-       "circumstances mean nothing at all",
-       "Oliver was simply very lucky"
-      ],
-      "answer": 0
-     },
-     {
-      "q": "Why did Dickens write the book?",
-      "options": [
-       "to make readers laugh",
-       "to change minds about the poor",
-       "to describe London's buildings"
-      ],
-      "answer": 1
-     },
-     {
-      "q": "What is the writer's final point?",
-      "options": [
-       "understanding each other's stories would make the world kinder",
-       "the past should never be discussed",
-       "poverty is not a real problem"
-      ],
-      "answer": 0
+      "left": "consequence",
+      "right": "a result of a particular action or situation"
      }
     ]
    }
   },
   {
    "code": "C",
-   "type": "grammar_box",
-   "title": "Grammar — Mixed conditionals",
+   "type": "reading",
+   "title": "Reading and Use of English Part 5 — multiple choice. Read the essay and choose the answer that fits best.",
    "outputs": [
     "book",
-    "digital",
-    "quiz"
+    "digital"
+   ],
+   "tips": {
+    "expect": "One text of about 500–650 words followed by six four-option questions. They test main idea, detail, opinion, attitude and simple inference. The questions follow the order of the text.",
+    "how": [
+     "Read the whole text once, fairly quickly, to get the general idea and the writer's attitude.",
+     "For each question, find the part of the text it refers to and read it closely. The correct option paraphrases the text; wrong options often reuse words from the text but change the meaning.",
+     "Don't choose an option just because it sounds true in general — check it against exactly what the text says."
+    ],
+    "remember": "The six questions follow the order of the text. If you get stuck, look near the place where the previous answer came from."
+   },
+   "data": {
+    "kicker": "Reading Club · Oliver Twist",
+    "title": "If only he had chosen differently",
+    "author": "liam",
+    "byline": "by Liam, Grade 10",
+    "text": "<p>Our Grade 10 reading club has just finished <i>Oliver Twist</i>, and the conversation afterwards was louder than usual. Everyone had an opinion about the same question: how much of what happens to us is really our own doing, and how much is simply the circumstances we are born into?</p><p>Nancy is the character we argued about the longest. She grows up among thieves, and by the time the story begins she has already made choices that trap her — she stays loyal to Bill Sikes even though he treats her cruelly, and she risks everything to protect Oliver. Nadia said that if Nancy had been given a different upbringing, she would probably be a completely different woman today; her life looks less like a decision and more like a consequence of everything that came before it. Mateo disagreed. In his view, Nancy still has choices in front of her, and the moment when she decides to warn Mr Brownlow about Oliver proves it. “If she truly believed she had no freedom left,” he argued, “she wouldn't have taken that risk.”</p><p>What struck most of us, though, was a smaller scene: years later, Mr Bumble admits that he regrets how he treated Oliver as a child. He never quite says he wishes he had acted differently, but Dickens lets us see the discomfort underneath his excuses. Sofía pointed out that this is what makes the novel feel modern rather than old-fashioned: it isn't only interested in the children who suffer injustice, but also in the adults who caused it and now have to live with what they did.</p><p>Talking about the book gave us a reason to try out a piece of grammar we had just learnt: the mixed conditional, which connects a past cause to a present result in a single sentence. “If Nancy had grown up somewhere kinder, she wouldn't be trapped now,” Nadia said, testing the structure out loud. Mateo tried the opposite direction: “If Bumble weren't so proud today, he would have apologised long ago.” Miss Vega laughed and said the grammar had clearly done its job: nobody in the room was describing the past and the present separately any more; they were describing how one produces the other.</p><p>Miss Vega then asked us to think about our own “Bumble moments” — decisions we might look back on differently one day. Nobody wanted to answer first. Eventually Liam admitted that he had once refused to help a classmate with a project because he assumed the boy would not bother trying. “If I hadn't judged him so quickly,” he said, “we might actually be friends now.” It was a small confession, but the room went quiet in the way it does when someone says something everyone secretly recognises.</p><p>This is, in the end, the real subject of <i>Oliver Twist</i>: not poverty or crime as isolated problems, but the long, invisible line that connects a difficult beginning to an uncertain future — and the shorter, more private line that connects an unkind decision to the person we later become. Dickens never lets Oliver's good nature feel automatic; it survives in spite of everything, which is exactly why the ending feels earned rather than convenient.</p><p>Society, the club agreed, still asks the same question it asked in 1837: do we owe more patience to people whose circumstances we haven't lived through? Nobody left with a tidy answer, and Miss Vega seemed pleased about that. A novel that gives you an easy answer, she told us, probably was not asking a difficult enough question in the first place.</p>",
+    "script": "Our Grade 10 reading club has just finished Oliver Twist. Everyone had an opinion about how much of what happens to us is really our own doing, and how much is simply the circumstances we are born into. Nancy is the character we argued about the longest. Nadia said that if Nancy had been given a different upbringing, she would probably be a different woman today. Mateo disagreed, saying Nancy still has choices, and the moment she warns Mr Brownlow proves it. What struck most of us was Mr Bumble, who years later regrets how he treated Oliver as a child, even if he never quite says so. Sofía said this is what makes the novel feel modern: it cares about the adults who caused injustice, not only the children who suffered it. Talking about the book gave us a reason to try out mixed conditionals, connecting a past cause to a present result. Miss Vega then asked us to think about our own Bumble moments. Liam admitted that if he hadn't judged a classmate so quickly, they might be friends now. In the end, Oliver Twist connects a difficult beginning to an uncertain future, and an unkind decision to the person we later become. Society, the club agreed, still asks the same question it asked in 1837, and nobody left with a tidy answer.",
+    "questions": [
+     {
+      "q": "In the opening paragraph, the writer says the club's discussion afterwards was mainly about",
+      "options": [
+       "which character was easiest to like.",
+       "how far people are responsible for their own circumstances.",
+       "whether Dickens's language is too old-fashioned.",
+       "why the ending of the novel felt disappointing."
+      ],
+      "answer": 1
+     },
+     {
+      "q": "According to the second paragraph, what do Nadia and Mateo disagree about?",
+      "options": [
+       "whether Nancy loves Bill Sikes.",
+       "whether Oliver deserved Nancy's help.",
+       "whether Nancy still has real choices left.",
+       "whether Nancy should have left Fagin's gang earlier."
+      ],
+      "answer": 2
+     },
+     {
+      "q": "What does the writer suggest about Mr Bumble in the third paragraph?",
+      "options": [
+       "His discomfort reveals guilt that his words try to hide.",
+       "He believes he behaved correctly at the time.",
+       "He has completely forgotten how he treated Oliver.",
+       "He openly admits that he was wrong about Oliver."
+      ],
+      "answer": 0
+     },
+     {
+      "q": "What does Miss Vega mean when she says the grammar had “done its job”?",
+      "options": [
+       "The students had memorised the rule correctly.",
+       "The students were now describing how the past shapes the present, not two separate stories.",
+       "The students had stopped talking about Nancy and Bumble.",
+       "The students preferred grammar practice to discussing the novel."
+      ],
+      "answer": 1
+     },
+     {
+      "q": "Why does the writer mention Liam's story about his classmate?",
+      "options": [
+       "To criticise the way Liam usually treats his classmates.",
+       "To prove that Liam has changed his opinion of the novel.",
+       "To show that Miss Vega's question made students uncomfortable.",
+       "To give a real example of the kind of decision the club had been discussing."
+      ],
+      "answer": 3
+     },
+     {
+      "q": "What is the writer's overall conclusion about Oliver Twist?",
+      "options": [
+       "It offers a clear moral lesson about poverty.",
+       "It shows that people's characters never change.",
+       "It is more relevant to 1837 than it is today.",
+       "It leaves readers with a difficult question rather than an easy answer."
+      ],
+      "answer": 3
+     }
+    ]
+   }
+  },
+  {
+   "code": "D",
+   "type": "grammar_box",
+   "title": "Language focus 1 — mixed conditionals",
+   "outputs": [
+    "book",
+    "digital"
    ],
    "data": {
     "title": "Mixed conditionals",
-    "intro": "A mixed conditional combines two time frames: usually a past condition with a present result, or a present condition with a past result.",
+    "can": "I can use a mixed conditional to connect a past cause with a present result, or a present state with a past result.",
+    "intro": "A mixed conditional combines two different time frames in one sentence — usually a past cause with a present result, sometimes the other way round. In the reading, Nadia and Mateo both used this structure to talk about Nancy and Bumble: <i>If Nancy had grown up somewhere kinder, she wouldn't be trapped now.</i>",
     "examples": [
      {
-      "text": "If Oliver <b>had been born</b> rich, he <b>wouldn't be</b> poor now.",
-      "note": "past → present"
+      "text": "If Oliver <b>had been born</b> into a wealthier family, he <b>wouldn't be</b> struggling now.",
+      "note": "past cause → present result"
      },
      {
-      "text": "If I <b>were</b> braver, I <b>would have said</b> something.",
-      "note": "present → past"
+      "text": "If Nancy <b>hadn't grown up</b> among thieves, she <b>wouldn't be</b> trapped today.",
+      "note": "past cause → present result"
      },
      {
-      "text": "If they <b>had listened</b>, things <b>would be</b> different today.",
-      "note": "past → present"
+      "text": "If I <b>were</b> braver, I <b>would have spoken up</b> yesterday.",
+      "note": "present state → past result"
+     },
+     {
+      "text": "If he <b>weren't</b> so proud, he <b>would have apologised</b> long ago.",
+      "note": "present state → past result"
+     },
+     {
+      "text": "If we <b>understood</b> each other's stories better, the world <b>would have been</b> kinder to people like Oliver.",
+      "note": "present state → past result"
      }
     ],
     "rules": [
-     "Past cause → present result: If + <b>past perfect</b>, <b>would</b> + verb (now).",
-     "Present cause → past result: If + <b>past simple</b>, <b>would have</b> + participle.",
-     "Mixed conditionals are common when a past event still affects the present."
+     "Past cause → present result: <i>If</i> + <b>past perfect</b>, … <b>would</b> + base verb (now).",
+     "Present state → past result: <i>If</i> + <b>past simple</b>, … <b>would have</b> + past participle.",
+     "Use <i>were</i> instead of <i>was</i> for I / he / she / it in this structure: <i>If she were braver…</i>",
+     "Only mix the tenses when the two moments really are different — don't mix them just for variety.",
+     "This structure is a close relative of Language focus 2 in this unit: <i>wish / if only</i> also use the past perfect to look back at something that still matters now."
     ],
     "practice": {
      "instructions": "Choose the correct form.",
      "items": [
       {
-       "sentence": "If she had studied medicine, she ___ a doctor now.",
+       "sentence": "If she had studied harder, she ___ better grades now.",
        "options": [
         "is",
         "would have been",
@@ -180,38 +308,38 @@
        "answer": 2
       },
       {
-       "sentence": "If I weren't so tired, I ___ to the party last night.",
+       "sentence": "If I weren't so busy this week, I ___ to help you yesterday.",
        "options": [
-        "would have gone",
-        "would go",
-        "went"
+        "would have offered",
+        "would offer",
+        "offer"
        ],
        "answer": 0
       },
       {
-       "sentence": "If he had saved money, he ___ his own workshop today.",
+       "sentence": "If they had saved more money, they ___ a house by now.",
        "options": [
-        "has",
-        "would have had",
-        "would have"
-       ],
-       "answer": 2
-      },
-      {
-       "sentence": "If we understood each other, there ___ fewer problems now.",
-       "options": [
-        "would have been",
-        "would be",
-        "are"
+        "would have owned",
+        "would own",
+        "own"
        ],
        "answer": 1
       },
       {
-       "sentence": "If they had planned better, we ___ lost yesterday.",
+       "sentence": "If he ___ so stubborn, he would have accepted our help months ago.",
        "options": [
-        "wouldn't",
-        "wouldn't have",
-        "don't"
+        "weren't",
+        "wasn't",
+        "isn't"
+       ],
+       "answer": 0
+      },
+      {
+       "sentence": "If we had understood the risk, we ___ more careful now.",
+       "options": [
+        "are",
+        "would be",
+        "would have been"
        ],
        "answer": 1
       }
@@ -220,149 +348,403 @@
    }
   },
   {
-   "code": "D",
+   "code": "E",
    "type": "key_transform",
-   "title": "Use of English Part 4 — key word transformations",
+   "title": "Reading and Use of English Part 4 — key word transformations",
    "outputs": [
-    "book",
-    "digital",
-    "quiz"
+    "digital"
    ],
+   "tips": {
+    "expect": "Six sentences. For each one you complete a second sentence so that it means the same as the first, using a given key word. You write between two and five words, including the key word, which you must not change. Here the six items focus on mixed conditionals and on wish / if only.",
+    "how": [
+     "Decide first what is being tested: a past cause with a present result, a present state with a past result, or a regret with wish / if only.",
+     "Write the whole gap, then read the complete second sentence: does it mean exactly the same as the first? Is the key word unchanged?",
+     "Count your words. A contraction such as <i>hadn't</i> counts as one word."
+    ],
+    "remember": "The key word must appear only once, inside the gap — not repeated in the part of the sentence that is already given."
+   },
    "data": {
-    "instructions": "Complete the second sentence so that it means the same as the first. Use the KEY WORD. Write between two and five words.",
+    "instructions": "Complete the second sentence so that it has a similar meaning to the first sentence, using the word given. Do not change the word given. You must use between two and five words, including the word given.",
     "items": [
      {
-      "first": "Oliver is poor now because he was born into a poor family.",
-      "key": "BORN",
-      "second_start": "If Oliver",
-      "second_end": "into a rich family, he wouldn't be poor now.",
+      "first": "Nancy is trapped now because of the way she grew up.",
+      "key": "GROWN",
+      "second_start": "If Nancy",
+      "second_end": "up differently, she wouldn't be trapped now.",
       "answers": [
-       "had been born"
+       "had grown"
       ]
      },
      {
-      "first": "I'm not brave, so I didn't speak yesterday.",
+      "first": "Liam didn't get to know his classmate because he judged him too quickly.",
+      "key": "JUDGED",
+      "second_start": "If Liam",
+      "second_end": "his classmate so quickly, they might be friends today.",
+      "answers": [
+       "hadn't judged",
+       "had not judged"
+      ]
+     },
+     {
+      "first": "I'm sorry I didn't help my friend sooner.",
+      "key": "WISH",
+      "second_start": "I",
+      "second_end": "my friend sooner.",
+      "answers": [
+       "wish I had helped"
+      ]
+     },
+     {
+      "first": "We regret arguing so much last week.",
+      "key": "ONLY",
+      "second_start": "If",
+      "second_end": "so much last week.",
+      "answers": [
+       "only we hadn't argued",
+       "only we had not argued"
+      ]
+     },
+     {
+      "first": "I didn't apply for the scholarship because I'm not confident enough.",
       "key": "WERE",
       "second_start": "If I",
-      "second_end": ", I would have spoken yesterday.",
+      "second_end": ", I would have applied for the scholarship.",
       "answers": [
-       "were brave",
-       "were braver"
+       "were more confident"
       ]
      },
      {
-      "first": "She didn't train, so she isn't fit now.",
-      "key": "TRAINED",
-      "second_start": "If she",
-      "second_end": ", she would be fit now.",
-      "answers": [
-       "had trained"
-      ]
-     },
-     {
-      "first": "They didn't listen, so we have this problem today.",
-      "key": "LISTENED",
+      "first": "We have this problem today because they didn't plan properly.",
+      "key": "PLANNED",
       "second_start": "If they",
       "second_end": ", we wouldn't have this problem today.",
       "answers": [
-       "had listened"
-      ]
-     },
-     {
-      "first": "I'm tired now because I went to bed very late.",
-      "key": "GONE",
-      "second_start": "If I",
-      "second_end": "to bed so late, I wouldn't be tired now.",
-      "answers": [
-       "hadn't gone",
-       "had not gone"
+       "had planned properly"
       ]
      }
-    ]
-   }
-  },
-  {
-   "code": "E",
-   "type": "gap_text",
-   "title": "Use of English Part 2 — open cloze. Write ONE word in each gap.",
-   "outputs": [
-    "book",
-    "digital",
-    "quiz"
-   ],
-   "data": {
-    "box": [
-     "if",
-     "had",
-     "been",
-     "cared",
-     "would",
-     "not"
-    ],
-    "text": "{1} people {2} understood the poor, history would have {3} kinder. Even now, if we {4} more, the world {5} be better — but too often we do {6}.",
-    "answers": [
-     "If",
-     "had",
-     "been",
-     "cared",
-     "would",
-     "not"
     ]
    }
   },
   {
    "code": "F",
    "type": "listening",
-   "title": "Listening — the club plan. Write ONE word in each gap.",
+   "title": "Listening Part 2 — sentence completion. Complete the sentences with a word or short phrase.",
    "outputs": [
-    "digital",
-    "quiz"
+    "digital"
    ],
    "audio": "b2f/u01-f.mp3",
+   "tips": {
+    "expect": "A monologue of about three minutes, introduced by a presenter. You complete eight sentences with a word or short phrase (no more than three words) that you hear. You hear the recording twice.",
+    "how": [
+     "Before it starts, read the eight sentences and predict the kind of word that is missing: a noun? an adjective? a number?",
+     "The sentences follow the order of the recording. The words around the gap are often paraphrased, but the answer itself is the exact word you hear.",
+     "Write exactly what you hear, spelt correctly. Don't change the form of the word."
+    ],
+    "remember": "If you miss one gap, let it go and follow the next sentence. You get a second listening."
+   },
    "data": {
-    "voice_note": "Voz: la profesora (Miss Vega), presentando la novela.",
-    "script": "Good morning, Grade 10. This term we're reading Oliver Twist. Dickens wrote it to show the injustice of poverty. Remember our theme: how the past shapes the present. For Friday, prepare a mixed conditional about Oliver — for example, if he had been born rich, he wouldn't be suffering. Nadia will lead the debate, and we'll compare the book with the modern world. Bring your best argument!",
+    "voice_note": "Presenter + Miss Vega, teacher. Monologue with a short introduction.",
+    "script": "Presenter: Welcome back to Grade 10 Voices. Today's talk comes from Miss Vega, who teaches English here at school, and it's called Small decisions, big consequences.\nMiss Vega: Thank you. I want to start with something Charles Dickens understood very well: that a single moment, barely a page long, can decide the shape of an entire life. In Oliver Twist, that moment sometimes happens without the character even noticing it at the time.\nMiss Vega: Take Mr Bumble. He treats a hungry child unkindly because, in his mind, that is simply how the workhouse operates. He doesn't see it as a decision. Years later, though, it clearly weighs on him, even if he never quite admits it out loud.\nMiss Vega: I think the same thing happens outside novels. Most regrets don't come from huge, dramatic mistakes. They come from ordinary moments: a comment we didn't think twice about, an apology we kept putting off, an opportunity we let slide because we were tired or simply distracted.\nMiss Vega: What makes these moments dangerous is exactly how small they feel. If a decision felt enormous, we would think carefully before making it. But a five-second choice rarely gets that kind of attention, and yet five seconds can shape years.\nMiss Vega: So how should we deal with this? First, notice the pattern. The moment you catch yourself thinking it's not a big deal, that is exactly the moment worth slowing down for. Second, practise saying sorry quickly. An apology delayed by a week is far harder to give than one offered on the same day.\nMiss Vega: Third, and this is the point my students always find hardest, accept that some decisions cannot be undone, only understood. Wishing you had acted differently is not the same as pretending that you did. Understanding a mistake honestly is what actually changes how you act next time.\nMiss Vega: Finally, remember that circumstances explain a decision; they don't erase it completely. Bumble's cruelty grew out of a harsh system, and that context genuinely matters. But context is not an excuse that removes his responsibility; it is a reason to be more patient with people whose full story we don't know.\nMiss Vega: For your project this term, I would like you to write about one small decision, yours or a character's, and trace its consequences forward. You will be surprised how far a five-second choice can travel.",
     "questions": [
      {
-      "q": "This term the class is reading Oliver …",
-      "answer": "Twist"
+      "q": "Miss Vega's talk is called Small decisions, big …",
+      "answer": "consequences"
      },
      {
-      "q": "Dickens wrote it to show the injustice of …",
-      "answer": "poverty"
+      "q": "In Oliver Twist, a single … can decide the shape of a whole life.",
+      "answer": "moment"
      },
      {
-      "q": "The theme is how the past shapes the …",
-      "answer": "present"
+      "q": "Mr Bumble treats a hungry child unkindly because he doesn't see it as a …",
+      "answer": "decision"
      },
      {
-      "q": "For Friday, prepare a mixed … about Oliver.",
-      "answer": "conditional"
+      "q": "Miss Vega says most regrets come from … moments, not dramatic mistakes.",
+      "answer": "ordinary"
      },
      {
-      "q": "… will lead the debate.",
-      "answer": "Nadia"
+      "q": "She says a five-second choice can shape …",
+      "answer": "years"
+     },
+     {
+      "q": "An apology delayed by a week is harder to give than one offered on the same …",
+      "answer": "day"
+     },
+     {
+      "q": "She says some decisions cannot be undone, only …",
+      "answer": "understood"
+     },
+     {
+      "q": "Miss Vega says a five-second choice can …",
+      "answer": "travel"
      }
     ]
    }
   },
   {
    "code": "G",
-   "type": "pairwork",
-   "title": "Speaking — discuss society. In pairs, then record it.",
+   "type": "grammar_box",
+   "title": "Language focus 2 — wish / if only + past perfect",
    "outputs": [
     "book",
     "digital"
    ],
    "data": {
-    "text": "In pairs, discuss using mixed conditionals. Model: “If I had grown up in another country, I would probably speak a different language now.” 1) How would your life be different now if you had been born somewhere else? 2) If schools taught one more subject, what should it be, and why? 3) If people understood each other's stories better, would the world really be kinder? Give reasons and examples, then record your discussion."
+    "title": "Wish / if only for regrets about the past",
+    "can": "I can use wish / if only + past perfect to talk about something I regret, and I can see how this connects to mixed conditionals.",
+    "intro": "In the reading, Mr Bumble never quite says he wishes he had acted differently — but that is exactly the structure behind this focus. We use <i>wish</i> or <i>if only</i> + <b>past perfect</b> to talk about something in the past that we regret, often because — like a mixed conditional — it still affects the present.",
+    "examples": [
+     {
+      "text": "I <b>wish</b> I <b>had helped</b> my classmate sooner.",
+      "note": "wish + past perfect: regret about my own past action"
+     },
+     {
+      "text": "<b>If only</b> Bumble <b>had treated</b> Oliver more kindly.",
+      "note": "if only is stronger and more emotional than wish"
+     },
+     {
+      "text": "She <b>wishes</b> she <b>hadn't judged</b> him so quickly.",
+      "note": "negative regret: hadn't + past participle"
+     },
+     {
+      "text": "<b>If only</b> we <b>hadn't argued</b> so much last week.",
+      "note": "if only + hadn't + past participle"
+     },
+     {
+      "text": "I <b>wish</b> I <b>were</b> more confident. (not: I wish I had been more confident, this year, right now)",
+      "note": "compare: wish + past simple = regret about the present, not the past"
+     }
+    ],
+    "rules": [
+     "<i>Wish / if only</i> + past perfect (<b>had</b> + participle) = regret about something that happened, or didn't happen, in the past: <i>I wish I had studied harder.</i>",
+     "<i>If only</i> is stronger and more emotional than <i>wish</i>; both use the same past perfect.",
+     "The negative regret uses <b>hadn't</b> + participle: <i>If only I hadn't said that.</i>",
+     "Don't confuse this with <i>wish</i> + past simple, which is a regret about the present: <i>I wish I were taller</i> (not about the past).",
+     "This structure is a cousin of the mixed conditional: both look back with a past perfect. <i>Wish / if only</i> simply leaves out the result clause, because the regret itself is the point."
+    ],
+    "practice": {
+     "instructions": "Choose the correct form.",
+     "items": [
+      {
+       "sentence": "I wish I ___ more attention in class yesterday.",
+       "options": [
+        "pay",
+        "paid",
+        "had paid"
+       ],
+       "answer": 2
+      },
+      {
+       "sentence": "If only she ___ to her parents before making the decision.",
+       "options": [
+        "had listened",
+        "listened",
+        "would listen"
+       ],
+       "answer": 0
+      },
+      {
+       "sentence": "He wishes he ___ so rude to his friend last week.",
+       "options": [
+        "hadn't been",
+        "wasn't",
+        "isn't"
+       ],
+       "answer": 0
+      },
+      {
+       "sentence": "If only we ___ earlier — we missed the whole first half.",
+       "options": [
+        "leave",
+        "had left",
+        "would leave"
+       ],
+       "answer": 1
+      },
+      {
+       "sentence": "I wish I ___ that comment; it really hurt her.",
+       "options": [
+        "never made",
+        "had never made",
+        "never make"
+       ],
+       "answer": 1
+      }
+     ]
+    }
+   }
+  },
+  {
+   "code": "H",
+   "type": "gap_text",
+   "title": "Reading and Use of English Part 2 — open cloze. Write ONE word in each gap.",
+   "outputs": [
+    "digital"
+   ],
+   "tips": {
+    "expect": "A short text of about 150–200 words with eight gaps. You write one word in each gap — no options are given. The missing words are mostly grammar words: articles, prepositions, auxiliaries, pronouns, relative pronouns, linking words.",
+    "how": [
+     "Read the whole text first: the words before and after the gap usually decide the answer.",
+     "Check both sides of the gap: does it need a preposition after a verb, a relative pronoun, part of a fixed phrase like <i>if only</i>?",
+     "Only one word fits each gap, and contractions are not allowed."
+    ],
+    "remember": "Check your spelling. A correct word spelt wrongly scores nothing."
+   },
+   "data": {
+    "text": "Nobody in our reading club found it easy to defend Mr Bumble, but Sofía insisted that we try, if only for the sake of a fair discussion. {1} she pointed out is that Bumble grew up inside the same harsh system {2} treated Oliver so badly, working long hours for a workhouse that valued discipline far more than kindness. None of this makes his behaviour acceptable, and Sofía was careful to say so — the point was to explain his cruelty {3} excusing it completely. Nadia disagreed at first: plenty of people, she said, survive difficult circumstances and never become cruel at all, {4} she eventually admitted that circumstances and personal responsibility can both be true at the same time. If only he {5} chosen kindness even once, the class agreed, the whole story {6} have felt very different, both for Oliver and for Bumble himself. Miss Vega closed the discussion by reminding us {7} regret is only useful {8} it eventually changes what we do next.",
+    "answers": [
+     "What",
+     "which",
+     "without",
+     "but",
+     "had",
+     "would",
+     "that",
+     "if"
+    ]
+   }
+  },
+  {
+   "code": "I",
+   "type": "writing",
+   "title": "Writing Part 1 — essay. Plan, write 140–190 words and hand it in.",
+   "outputs": [
+    "digital"
+   ],
+   "tips": {
+    "expect": "Part 1 is compulsory. You are given a question and two notes, plus space for your own idea. You write an essay answering the question, using all three notes, in a formal or neutral register. 140–190 words.",
+    "how": [
+     "Use all three notes, including your own idea — an essay that ignores one of them loses content marks.",
+     "Plan four short paragraphs: introduction (the question, no opinion yet) · note 1 · note 2 and your own idea · conclusion with your opinion.",
+     "Don't copy the notes word for word — put them in your own words.",
+     "Link your ideas with a range of devices, not only <i>Firstly / Secondly</i> but also <i>What is more…, Another point worth considering is…</i>"
+    ],
+    "remember": "The examiner marks content, communicative achievement, organisation and language. An essay that ignores a note, or gives no clear opinion, loses content marks however good the English."
+   },
+   "data": {
+    "part": 1,
+    "genre": "essay",
+    "words": [
+     140,
+     190
+    ],
+    "task": "<p>Your class has been discussing this question: <b>“Can people really change, or does our past always decide who we are?”</b> Now your teacher has asked you to write an essay giving your opinion, using <b>all</b> the notes below.</p><blockquote><p><b>Notes</b></p><ul><li>upbringing</li><li>the choices we make later</li><li>………………… (your own idea)</li></ul></blockquote><p>Write an <b>essay</b> answering the question above. You should explain <b>your opinion</b>, giving reasons in support of your answer.</p><p>Write your answer in <b>140–190 words</b> in an appropriate style.</p>",
+    "plan": [
+     "<b>Introduction</b> (1–2 sentences): restate the question in your own words. No opinion yet.",
+     "<b>Paragraph 2</b> — upbringing: how much family and early years shape a person, with a brief example.",
+     "<b>Paragraph 3</b> — the choices we make later, plus your own idea (for example, the people we meet or the effort we make): show these can also change the outcome.",
+     "<b>Conclusion</b>: give your opinion clearly and say why, ideally connecting the two paragraphs."
+    ],
+    "useful_language": {
+     "Giving an opinion": [
+      "In my view, …",
+      "I would argue that…",
+      "It seems to me that…"
+     ],
+     "Adding a point": [
+      "What is more, …",
+      "Another important factor is…",
+      "This is particularly true when…"
+     ],
+     "Concluding": [
+      "All things considered, …",
+      "For these reasons, I believe…",
+      "On balance, …"
+     ]
+    },
+    "checklist": [
+     "I have used all three notes, including my own idea.",
+     "I have given my opinion clearly, with a reason.",
+     "My essay has four clear paragraphs.",
+     "The register is formal or neutral: no contractions, no very informal words.",
+     "I have used at least one mixed conditional or wish / if only sentence from this unit.",
+     "Between 140 and 190 words."
+    ],
+    "model": "<p><i>A model answer (153 words). Notice the four paragraphs and how all three notes are used.</i></p><p>It is often said that our past decides who we are, and there is some truth in this: nobody chooses the family they are born into.</p><p>Our upbringing certainly matters. Children who grow up surrounded by encouragement usually find it easier to trust themselves later in life, while children who face hardship, like Oliver in <i>Oliver Twist</i>, often have to work much harder to build the same confidence.</p><p>However, the choices we make later can be just as powerful. Two people from the same difficult background can end up leading completely different lives, depending on the decisions they take and the people they choose to spend time with. If we had no freedom at all, nobody would ever surprise us.</p><p>In my view, then, our past shapes us but does not control us completely. What we do next always matters, and that is precisely why it is worth taking our decisions seriously.</p>"
+   }
+  },
+  {
+   "code": "J",
+   "type": "pairwork",
+   "title": "Speaking — Parts 3 and 4. Collaborative task and discussion. Record your best answer.",
+   "outputs": [
+    "book",
+    "digital"
+   ],
+   "speaking": {
+    "part": 3,
+    "name": "Collaborative task and discussion"
+   },
+   "tips": {
+    "expect": "Part 3 (about 3 minutes: 2 to discuss, 1 to decide): you and your partner discuss five ideas with the help of a diagram, then reach a decision together. Part 4 (about 4 minutes): the examiner asks you both wider questions on the same theme.",
+    "how": [
+     "In Part 3 you are marked on interacting, not on agreeing: ask your partner's opinion, respond to it, build on it.",
+     "Don't try to discuss all five ideas in depth — two or three, developed properly, is better than five in a rush.",
+     "In the decide minute, negotiate: <i>Shall we agree that…? I see your point, but…</i>",
+     "In Part 4, develop your answers: opinion → reason → example."
+    ],
+    "remember": "Look at your partner, not at the examiner, during Part 3. The examiner is listening, not talking."
+   },
+   "data": {
+    "text": "Part 3: discuss how much these things shape who we become and decide which is hardest to overcome. Part 4: discuss change, decisions and looking back on the past.",
+    "parts": [
+     {
+      "part": 3,
+      "title": "Collaborative task",
+      "time": "2 min + 1 min",
+      "intro": "Here are five things that can change the direction of a person's life. Talk to each other about <b>how much each one really shapes who we become</b>.",
+      "centre": "How much does each of these shape who we become?",
+      "spokes": [
+       "the family we are born into",
+       "a teacher who believes in us",
+       "one big decision we make ourselves",
+       "the friends we choose",
+       "a piece of luck, good or bad"
+      ],
+      "decide": "Now you have a minute to decide <b>which one is hardest to overcome if it goes badly</b>."
+     },
+     {
+      "part": 4,
+      "title": "Further discussion",
+      "time": "4 min",
+      "prompts": [
+       "Do you think people can really change, or do we stay the same underneath?",
+       "Should schools spend more time helping students make good decisions?",
+       "Is it fair to judge someone without knowing their story, as Nadia said about Oliver Twist?",
+       "Do you think older people regret their past more than younger people worry about their future?",
+       "What advice would you give your younger self?"
+      ]
+     }
+    ],
+    "useful_language": {
+     "Involving your partner": [
+      "What's your take on…?",
+      "Would you go along with that?",
+      "That's true up to a point, although…"
+     ],
+     "Building on an idea": [
+      "Following on from what you said…",
+      "And that ties in with…",
+      "Not only that, but…"
+     ],
+     "Reaching a decision": [
+      "Shall we settle on…?",
+      "I'd be inclined to go for…, because…",
+      "We could agree to differ, but if we had to choose…"
+     ],
+     "Part 4: developing an answer": [
+      "It very much depends on…",
+      "There's a strong case for saying…",
+      "In my experience, …"
+     ]
+    }
    }
   }
  ],
  "homework": [
   {
    "type": "write_sentences",
-   "prompt": "Write an opinion paragraph (8–10 sentences) responding to Oliver Twist: does our past decide our present? Use at least three mixed conditionals (e.g. 'If society had cared more, fewer children would suffer today.'). Support your view with reasons. Capital letters and full stops!"
+   "prompt": "Write a short opinion paragraph (8–10 sentences) about a decision — yours or a character's from Oliver Twist — that still affects the present. Use at least two mixed conditionals and two wish / if only sentences (for example: 'If only I had spoken up, things would be different now.'). Capital letters and full stops!"
   }
  ],
  "scope": {
@@ -372,23 +754,23 @@
   "outcomes": [
    {
     "destreza": "Listening",
-    "puede": "Understand a discussion of social themes and note key details (B2 First Listening)."
+    "puede": "Follow a monologue introduced by a presenter and complete sentences with the exact words heard (B2 First Listening Part 2)."
    },
    {
     "destreza": "Speaking",
-    "puede": "Discuss society and fairness using mixed conditionals and giving reasons (B2 First Speaking)."
+    "puede": "Compare two photographs, negotiate a decision with a partner and discuss how the past shapes the present, using mixed conditionals and wish / if only (B2 First Speaking Parts 1–4)."
    },
    {
     "destreza": "Reading",
-    "puede": "Read a longer argumentative text and follow its ideas (B2 First Reading)."
+    "puede": "Read an original text of 500–650 words and answer multiple-choice questions on detail, opinion and inference (B2 First Reading Part 5)."
    },
    {
     "destreza": "Writing",
-    "puede": "Write an opinion paragraph using mixed conditionals to link past and present."
+    "puede": "Plan and write a 140–190-word essay using two given notes and an idea of your own to answer a question (B2 First Writing Part 1)."
    },
    {
     "destreza": "Use of English",
-    "puede": "Mixed conditionals; key word transformations (Part 4) and open cloze (Part 2)."
+    "puede": "Mixed conditionals; wish / if only + past perfect; key word transformations (Part 4) and open cloze (Part 2)."
    }
   ],
   "vocabulario": [
@@ -400,14 +782,13 @@
    "overcome"
   ],
   "gramatica": [
-   "Mixed conditionals (past cause → present result)",
-   "Key word transformations"
+   "Mixed conditionals (past cause → present result, and present state → past result)",
+   "Wish / if only + past perfect for regrets about the past",
+   "Reading Part 5 (multiple choice)",
+   "Key word transformations (Part 4)",
+   "Open cloze (Part 2)",
+   "Listening Part 2 (sentence completion)"
   ],
   "pendiente": {}
- },
- "wordlist_extra": [
-  "society",
-  "fairness",
-  "empathy"
- ]
+ }
 }
