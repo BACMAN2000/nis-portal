@@ -79,12 +79,12 @@
             "question": "Compare the two photographs and say <b>why the people might have decided to have this work done</b> and <b>how they might be feeling about it</b>.",
             "pictures": [
               {
-                "emoji": "🔧🚰",
-                "caption": "a plumber repairing a kitchen sink while the homeowner watches"
+                "caption": "a plumber repairing a kitchen sink while the homeowner watches",
+                "img": "b2f-u2-p1"
               },
               {
-                "emoji": "🖼️🔨",
-                "caption": "a framer fitting a picture into a new wooden frame in a workshop"
+                "caption": "a framer fitting a picture into a new wooden frame in a workshop",
+                "img": "b2f-u2-p2"
               }
             ],
             "partner": "Which of these jobs would you rather have done for you? (about 30 seconds)"

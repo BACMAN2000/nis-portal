@@ -78,12 +78,12 @@
             "question": "Compare the two photographs and say <b>why the people might have chosen these jobs</b> and <b>what skills each job probably needs</b>.",
             "pictures": [
               {
-                "emoji": "👩‍🍳🥐",
-                "caption": "a young baker decorating cakes early in the morning"
+                "caption": "a young baker decorating cakes early in the morning",
+                "img": "b2f-u3-p1"
               },
               {
-                "emoji": "👷‍♂️🏗️",
-                "caption": "an apprentice carpenter measuring a piece of wood"
+                "caption": "an apprentice carpenter measuring a piece of wood",
+                "img": "b2f-u3-p2"
               }
             ],
             "partner": "Which of these three jobs would you prefer, and why? (about 20 seconds)"

@@ -77,16 +77,16 @@
             "question": "Compare two of the pictures and say <b>why the people might be pushing themselves so hard</b> and <b>how they might feel if they fail</b>.",
             "pictures": [
               {
-                "emoji": "🏃‍♀️🌅",
-                "caption": "a runner training alone at dawn"
+                "caption": "a runner training alone at dawn",
+                "img": "c1a-u1-p1"
               },
               {
-                "emoji": "🔬🌙",
-                "caption": "a scientist still in the lab late at night"
+                "caption": "a scientist still in the lab late at night",
+                "img": "c1a-u1-p2"
               },
               {
-                "emoji": "♟️🏆",
-                "caption": "a young chess player at a tournament"
+                "caption": "a young chess player at a tournament",
+                "img": "c1a-u1-p3"
               }
             ],
             "partner": "Which of these people do you think is under the most pressure? Why? (about 30 seconds)"

@@ -79,12 +79,12 @@
             "question": "Compare the two photographs and say <b>what decision each person might be facing or have faced</b> and <b>how their life might be different if they had chosen differently</b>.",
             "pictures": [
               {
-                "emoji": "🧭🎒",
-                "caption": "a teenager looking at two paths through a forest"
+                "caption": "a teenager looking at two paths through a forest",
+                "img": "b2f-u1-p1"
               },
               {
-                "emoji": "📷👵",
-                "caption": "an elderly woman looking through an old photo album"
+                "caption": "an elderly woman looking through an old photo album",
+                "img": "b2f-u1-p2"
               }
             ],
             "partner": "Which of these situations do you think is hardest to think about — choosing a path now, or looking back at old choices? (about 30 seconds)"

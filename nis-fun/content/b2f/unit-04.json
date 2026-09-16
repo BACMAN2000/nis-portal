@@ -78,12 +78,12 @@
             "question": "Compare the two photographs and say <b>why the people might be doing this</b> and <b>what effect it might have on the environment</b>.",
             "pictures": [
               {
-                "emoji": "♻️🧑",
-                "caption": "a teenager sorting rubbish into recycling bins"
+                "caption": "a teenager sorting rubbish into recycling bins",
+                "img": "b2f-u4-p1"
               },
               {
-                "emoji": "🚲🏫",
-                "caption": "a student cycling to school"
+                "caption": "a student cycling to school",
+                "img": "b2f-u4-p2"
               }
             ],
             "partner": "Which of these actions do you think makes the biggest difference? (about 20 seconds)"

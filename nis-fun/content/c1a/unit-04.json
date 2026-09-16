@@ -77,16 +77,16 @@
             "question": "Compare two of the pictures and say <b>what makes the person's argument convincing</b> and <b>how the situation shapes the language they use</b>.",
             "pictures": [
               {
-                "emoji": "📝📚",
-                "caption": "a student drafting an essay surrounded by books"
+                "caption": "a student drafting an essay surrounded by books",
+                "img": "c1a-u4-p1"
               },
               {
-                "emoji": "⚖️💼",
-                "caption": "a lawyer presenting a case in court"
+                "caption": "a lawyer presenting a case in court",
+                "img": "c1a-u4-p2"
               },
               {
-                "emoji": "🔬📊",
-                "caption": "a scientist presenting data at a conference"
+                "caption": "a scientist presenting data at a conference",
+                "img": "c1a-u4-p3"
               }
             ],
             "partner": "Which of these arguments do you think would be hardest to prepare? Why? (about 30 seconds)"

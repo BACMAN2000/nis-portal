@@ -72,16 +72,16 @@
             "question": "Compare two of the pictures and say <b>why the speaker's message might be effective</b> and <b>how the audience might be reacting</b>.",
             "pictures": [
               {
-                "emoji": "🎤🏟️",
-                "caption": "a speaker addressing a large audience from a stage"
+                "caption": "a speaker addressing a large audience from a stage",
+                "img": "c1a-u2-p1"
               },
               {
-                "emoji": "🧑‍🏫🙋",
-                "caption": "a teacher answering a student's question in class"
+                "caption": "a teacher answering a student's question in class",
+                "img": "c1a-u2-p2"
               },
               {
-                "emoji": "📣🚶",
-                "caption": "an activist addressing passers-by with a megaphone"
+                "caption": "an activist addressing passers-by with a megaphone",
+                "img": "c1a-u2-p3"
               }
             ],
             "partner": "Which of these speakers do you think has the hardest audience to convince? Why? (about 30 seconds)"

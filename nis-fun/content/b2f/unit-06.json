@@ -77,12 +77,12 @@
             "question": "Compare the two photographs and say <b>why the young people might want to make their voices heard</b> and <b>how they might be feeling</b>.",
             "pictures": [
               {
-                "emoji": "🎤🏫",
-                "caption": "a student speaking at a school assembly"
+                "caption": "a student speaking at a school assembly",
+                "img": "b2f-u6-p1"
               },
               {
-                "emoji": "📢✊",
-                "caption": "a group of teenagers at a peaceful march"
+                "caption": "a group of teenagers at a peaceful march",
+                "img": "b2f-u6-p2"
               }
             ],
             "partner": "Which of these situations would make you more nervous? Why? (about 30 seconds)"

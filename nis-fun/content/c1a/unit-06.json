@@ -78,16 +78,16 @@
             "question": "Compare two of the pictures and say <b>what the people might be trying to achieve</b> and <b>how difficult you think it is</b>.",
             "pictures": [
               {
-                "emoji": "🎤🏫",
-                "caption": "a student giving a speech in a school hall"
+                "caption": "a student giving a speech in a school hall",
+                "img": "c1a-u6-p1"
               },
               {
-                "emoji": "📺🗳️",
-                "caption": "two politicians in a televised debate"
+                "caption": "two politicians in a televised debate",
+                "img": "c1a-u6-p2"
               },
               {
-                "emoji": "👨‍👩‍👧⚖️",
-                "caption": "a family arguing about a decision at home"
+                "caption": "a family arguing about a decision at home",
+                "img": "c1a-u6-p3"
               }
             ],
             "partner": "Which of these situations do you think is hardest to stay calm in? Why? (about 30 seconds)"

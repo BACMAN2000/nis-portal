@@ -78,12 +78,12 @@
             "question": "Compare the two photographs and say <b>why the people might be trying to persuade others</b> and <b>how they might feel about the reaction they get</b>.",
             "pictures": [
               {
-                "emoji": "🎤🏫",
-                "caption": "a student giving a speech in front of the class"
+                "caption": "a student giving a speech in front of the class",
+                "img": "b2f-u5-p1"
               },
               {
-                "emoji": "🗣️🪧",
-                "caption": "a group of people holding signs at a march"
+                "caption": "a group of people holding signs at a march",
+                "img": "b2f-u5-p2"
               }
             ],
             "partner": "Which of these people do you think finds it hardest to change someone's mind? Why? (about 30 seconds)"

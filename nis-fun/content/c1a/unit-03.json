@@ -78,16 +78,16 @@
             "question": "Compare two of the pictures and say <b>why understanding each other might be difficult in these situations</b> and <b>what could go wrong</b>.",
             "pictures": [
               {
-                "emoji": "🗣️📰",
-                "caption": "a journalist interviewing someone for a story"
+                "caption": "a journalist interviewing someone for a story",
+                "img": "c1a-u3-p1"
               },
               {
-                "emoji": "🌐📖",
-                "caption": "a translator working on a difficult text"
+                "caption": "a translator working on a difficult text",
+                "img": "c1a-u3-p2"
               },
               {
-                "emoji": "💬🤳",
-                "caption": "two friends texting late at night"
+                "caption": "two friends texting late at night",
+                "img": "c1a-u3-p3"
               }
             ],
             "partner": "Which of these situations do you think is most likely to end in a misunderstanding? Why? (about 30 seconds)"

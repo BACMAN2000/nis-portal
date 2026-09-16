@@ -77,16 +77,16 @@
             "question": "Compare two of the pictures and say <b>what might make it hard for this person to get their point across</b> and <b>how they could make their explanation clearer</b>.",
             "pictures": [
               {
-                "emoji": "🧑‍🏫📊",
-                "caption": "a teacher explaining a diagram to a confused class"
+                "caption": "a teacher explaining a diagram to a confused class",
+                "img": "c1a-u5-p1"
               },
               {
-                "emoji": "🗣️📝",
-                "caption": "a student giving a rambling answer in an exam"
+                "caption": "a student giving a rambling answer in an exam",
+                "img": "c1a-u5-p2"
               },
               {
-                "emoji": "👥🧩",
-                "caption": "two friends trying to piece together what happened after an argument"
+                "caption": "two friends trying to piece together what happened after an argument",
+                "img": "c1a-u5-p3"
               }
             ],
             "partner": "Which of these situations would be hardest for you to handle calmly? Why? (about 30 seconds)"

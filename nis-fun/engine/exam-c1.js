@@ -31,6 +31,18 @@
   const acepta = (val, resp) => (Array.isArray(resp) ? resp : [resp]).some(a => norm(a) === norm(val));
   const nWords = t => (String(t || '').trim().match(/\S+/g) || []).length;
 
+  /* Fotos reales del Speaking Part 2 (assets/teen/<slug>.jpg). El credito de
+     Unsplash lo pide la licencia: se carga credits.json una vez y se pinta
+     bajo cada foto. Si no hay credito, no se pinta nada. */
+  const TEEN_PIC_V = '2026-09-16b';
+  let CRED_FOTO = null;
+  fetch('../assets/teen/credits.json').then(r => r.json()).then(d => { CRED_FOTO = d || {}; }).catch(() => { CRED_FOTO = {}; });
+  function credFoto(slug) {
+    if (!slug || !CRED_FOTO || !CRED_FOTO[slug]) return '';
+    const c = CRED_FOTO[slug];
+    return `<span class="xcred">${T('Photo', 'Photo')}: <a href="${esc(c.link)}?utm_source=nis&utm_medium=referral" target="_blank" rel="noopener">${esc(c.name)}</a> / Unsplash</span>`;
+  }
+
   /* ---- CSS del módulo: va aquí y no en index.html para que las dos copias
      del motor lo lleven igual ---- */
   const CSS = `
@@ -129,10 +141,13 @@
   .xsp .xpart .xph b{font-family:"Baloo 2",sans-serif;font-size:1.15rem;color:var(--accent)}
   .xsp .xpart .xph span{color:var(--soft);font-size:.9rem}
   .xsp .xpart ol,.xsp .xpart ul{margin:.4rem 0 .2rem 1.3rem}
-  .xsp .xpics{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:.6rem;margin:.6rem 0}
-  .xsp .xpic{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:.7rem;text-align:center}
-  .xsp .xpic .xe{font-size:2.4rem;line-height:1.1}
-  .xsp .xpic .xc{font-size:.9rem;color:var(--soft);margin-top:.3rem}
+  .xsp .xpics{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:.6rem;margin:.6rem 0}
+  .xsp .xpic{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;text-align:center}
+  .xsp .xpic .xe{font-size:2.4rem;line-height:1.1;padding:.7rem}
+  .xsp .xpic .xphoto{width:100%;aspect-ratio:3/2;object-fit:cover;display:block;background:var(--surface2)}
+  .xsp .xpic .xc{font-size:.9rem;color:var(--soft);padding:.5rem .6rem}
+  .xsp .xpic .xcred{font-size:.62rem;color:var(--soft);opacity:.7;padding:0 .6rem .4rem;display:block}
+  .xsp .xpic .xcred a{color:inherit}
   .xsp .xmap{display:grid;grid-template-columns:1fr auto 1fr;gap:.5rem;align-items:center;margin:.7rem 0}
   .xsp .xmap .xcentre{grid-column:2;background:var(--accent);color:#fff;border-radius:14px;padding:.7rem 1rem;font-weight:800;text-align:center;max-width:14rem}
   .xsp .xmap .xspoke{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:.5rem .7rem;font-size:.95rem;text-align:center}
@@ -509,7 +524,9 @@
     const parte = p => {
       const cab = `<div class="xph"><b>${T('Part', 'Partie')} ${p.part} · ${esc(p.title || '')}</b>${p.time ? `<span>⏱ ${esc(p.time)}</span>` : ''}</div>${p.intro ? `<p>${p.intro}</p>` : ''}`;
       if (p.pictures) return `${cab}<p>${p.question || ''}</p>
-        <div class="xpics">${p.pictures.map(pic => `<div class="xpic"><div class="xe">${pic.emoji || '🖼️'}</div><div class="xc">${esc(pic.caption || '')}</div></div>`).join('')}</div>
+        <div class="xpics">${p.pictures.map(pic => `<div class="xpic">${pic.img
+          ? `<img class="xphoto" loading="lazy" alt="${esc(pic.caption || '')}" src="../assets/teen/${pic.img}.jpg?v=${TEEN_PIC_V}" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'xe',textContent:'${pic.emoji || '🖼️'}'}))">`
+          : `<div class="xe">${pic.emoji || '🖼️'}</div>`}<div class="xc">${esc(pic.caption || '')}</div>${credFoto(pic.img)}</div>`).join('')}</div>
         ${p.partner ? `<p><b>${T('Partner', 'Camarade')}:</b> ${p.partner}</p>` : ''}`;
       if (p.spokes) return `${cab}
         <div class="xmap">${p.spokes.slice(0, 2).map(s => `<div class="xspoke">${esc(s)}</div>`).join('')}<div class="xcentre">${esc(p.centre || '')}</div>${p.spokes.slice(2).map(s => `<div class="xspoke">${esc(s)}</div>`).join('')}</div>
