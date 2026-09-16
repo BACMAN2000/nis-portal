@@ -91,7 +91,12 @@ attwn-audio/
 earnest-audio/
 tomsawyer-audio/
 cambridge-audio/
-nis-fun/audio/
+nis-fun/audio/*
+# excepcion: el audio de los cursos de secundaria (KET/PET/B2/C1) son pocos mp3
+# pequenos (una escucha por unidad) y SI se sirven de GitHub Pages, para que la
+# escucha suene con voz real y no con la del navegador. El audio grande (YLE)
+# sigue fuera del repo.
+!nis-fun/audio/c1a/
 mocks-cambridge/mp3/
 yle-audio/
 yle-img/
