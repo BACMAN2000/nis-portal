@@ -98,7 +98,6 @@ nis-fun/audio/*
 # sigue fuera del repo.
 !nis-fun/audio/c1a/
 !nis-fun/audio/b2f/
-!nis-fun/audio/grammar/
 mocks-cambridge/mp3/
 yle-audio/
 yle-img/

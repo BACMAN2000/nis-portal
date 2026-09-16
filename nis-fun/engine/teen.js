@@ -559,10 +559,17 @@ window.TEEN = (function () {
   }
   function practicaTransform(bl) {
     return `<div class="t-pr"><p class="instr">${inl(bl.instructions || '')}</p>
-      ${bl.items.map((it, i) => `<div class="item kwt-item" data-i="${i}">
+      ${bl.items.map((it, i) => {
+        const input = `<input class="gap" autocomplete="off" spellcheck="false" style="min-width:12rem" aria-label="answer ${i + 1}">`;
+        // Word formation (Use of English Part 3): la frase trae el hueco y la
+        // clave es la raiz; no hay segunda frase que reescribir.
+        if (String(it.first || '').includes('___')) return `<div class="item kwt-item" data-i="${i}">
+          <p class="kwt-key"><span class="kwt-tag">${T('ROOT WORD', 'RACINE')}</span> <b>${inl(it.key)}</b></p>
+          <p class="kwt-second">${i + 1}. ${inl(it.first).replace('___', input)}<span class="fix"></span></p></div>`;
+        return `<div class="item kwt-item" data-i="${i}">
         <p class="kwt-first">${i + 1}. ${inl(it.first)}</p>
         <p class="kwt-key"><span class="kwt-tag">${T('KEY WORD', 'MOT')}</span> <b>${inl(it.key)}</b></p>
-        <p class="kwt-second">${inl(it.second_start || '')} <input class="gap" autocomplete="off" spellcheck="false" style="min-width:12rem" aria-label="answer ${i + 1}"> ${inl(it.second_end || '')}<span class="fix"></span></p></div>`).join('')}
+        <p class="kwt-second">${inl(it.second_start || '')} ${input} ${inl(it.second_end || '')}<span class="fix"></span></p></div>`; }).join('')}
       <div class="checkrow"><button class="chk t-btn sm" type="button">${T('Check', 'Vérifier')}</button><span class="score"></span></div></div>`;
   }
 
@@ -687,7 +694,7 @@ window.TEEN = (function () {
         html: `<div class="scr-centro">${cab(T('Practice 2', 'Exercice 2'), T('Complete the sentences', 'Complète les phrases'), 'pencil')}${practicaGap(bloques.gap)}</div>`,
         alMostrar(el) { montaGap(el, bloques.gap.items, (ok, t) => guarda('gap', ok, t)); } },
       { titulo: T('Practice 3 — transform', 'Exercice 3'), etiquetaSiguiente: T('Summary', 'Résumé'),
-        html: `<div class="scr-centro">${cab(T('Practice 3', 'Exercice 3'), T('Key word transformations', 'Transformations'), 'rocket')}${practicaTransform(bloques.transform)}</div>`,
+        html: `<div class="scr-centro">${cab(T('Practice 3', 'Exercice 3'), String((bloques.transform.items[0] || {}).first || '').includes('___') ? T('Word formation', 'Formation des mots') : T('Key word transformations', 'Transformations'), 'rocket')}${practicaTransform(bloques.transform)}</div>`,
         alMostrar(el) { montaGap(el, bloques.transform.items, (ok, t) => guarda('transform', ok, t)); } },
       { titulo: T('Summary', 'Résumé'),
         html: `<div class="scr-centro">${cab(T('Take away', 'À retenir'), d.title, 'trophy')}
