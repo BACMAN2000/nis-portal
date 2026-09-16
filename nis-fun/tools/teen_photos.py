@@ -21,6 +21,7 @@ CREDITS = os.path.join(OUT, "credits.json")
 # nombre de archivo -> consulta. Los nombres son los que pide teen.js.
 FOTOS = {
     # portadas de curso
+    "a1-cover": "colourful wooden building blocks stacked",
     "ket-cover": "teenagers school corridor smiling backpacks",
     "pet-cover": "students group project laptop classroom",
     "b2f-cover": "teenagers studying library modern",
